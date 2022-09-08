@@ -239,4 +239,4 @@ You can now execute your builds whenever you want in a consistent fashion. Can m
 
 ![CI as Code](static/ci_as_code.png)
 
-After you have built your artifact, the next step is to deploy your artifact. This is where Continuous Delivery steps in. 
+After you have built your artifact, the next step is to deploy your artifact. This is where Continuous Delivery steps in and make sure to check out some other CD Examples. 
