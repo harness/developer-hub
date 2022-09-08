@@ -1,0 +1,8 @@
+{
+  "label": "Tutorial - Continuous Delivery with Kubernetes",
+  "position": 5,
+  "link": {
+    "type": "generated-index",
+    "description": "Harness CD Quickstart for Kubernetes"
+  }
+}
