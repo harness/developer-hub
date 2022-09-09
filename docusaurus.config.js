@@ -6,7 +6,7 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "Harness Developer Hub",
+  title: "Harness Developer Hub (Beta)",
   tagline:
     "Learn intelligent software delivery skills at your own pace and in once place. Step-by-step tutorials, videos, and reference docs to help you create and deliver software.",
   url: "https://harness-developer.netlify.app",
@@ -59,9 +59,9 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: "Harness Developer Hub",
+        title: "Harness Developer Hub (Beta)",
         logo: {
-          alt: "Harness Developer Hub",
+          alt: "Harness Developer Hub (Beta)",
           src: "img/logo.svg",
         },
         items: [
