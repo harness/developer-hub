@@ -6,10 +6,10 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "Developer Learning Platform",
+  title: "Harness Developer Hub",
   tagline:
     "Learn intelligent software delivery skills at your own pace and in once place. Step-by-step tutorials, videos, and reference docs to help you create and deliver software.",
-  url: "https://harness-docs.netlify.app",
+  url: "https://harness-developer.netlify.app",
   baseUrl: "/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
@@ -38,14 +38,14 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            "https://github.com/wei-harness/developer-learning-portal/tree/main", // /tree/main/packages/create-docusaurus/templates/shared/
+            "https://github.com/harness/developer-hub/tree/main", // /tree/main/packages/create-docusaurus/templates/shared/
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            "https://github.com/wei-harness/developer-learning-portal/tree/main", // /tree/main/packages/create-docusaurus/templates/shared/
+            "https://github.com/harness/developer-hub/tree/main", // /tree/main/packages/create-docusaurus/templates/shared/
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
@@ -73,7 +73,7 @@ const config = {
           },
           // { to: "/blog", label: "Blog", position: "left" },
           {
-            href: "https://github.com/wei-harness/developer-learning-portal",
+            href: "https://github.com/harness/developer-hub",
             label: "GitHub",
             position: "right",
           },
@@ -122,7 +122,7 @@ const config = {
               },
               {
                 label: "GitHub",
-                href: "https://github.com/wei-harness/developer-learning-portal",
+                href: "https://github.com/harness/developer-hub",
               },
             ],
           },
