@@ -59,9 +59,9 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: "Dev Learning Platform",
+        title: "Harness Developer Hub",
         logo: {
-          alt: "Dev Learning Platform",
+          alt: "Harness Developer Hub",
           src: "img/logo.svg",
         },
         items: [
@@ -117,8 +117,8 @@ const config = {
                 href: "https://harness.io/blog",
               },
               {
-                label: "Harness Platform",
-                href: "https://app.harness.io",
+                label: "Try for Free",
+                href: "https://app.harness.io/auth/#/signup?utm_source=Website&utm_medium=harness-docs&utm_campaign=harness-docs-free-account-cta-main-navigation&utm_content=free-account",
               },
               {
                 label: "GitHub",
@@ -146,7 +146,7 @@ const config = {
         contextualSearch: true,
 
         // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
-        externalUrlRegex: "developer-learning-portal\\.netlify\\.app",
+        externalUrlRegex: "harness-developer\\.netlify\\.app",
 
         // Optional: Algolia search parameters
         searchParameters: {},
