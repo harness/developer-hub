@@ -1,0 +1,96 @@
+.features {
+  padding: 4rem 0 4rem 0;
+  h2 {
+    margin-bottom: 32px;
+
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 40px;
+  }
+  .getStart {
+    display: flex;
+    flex-flow: row wrap;
+    // align-items: center;
+    /* width: 100%; */
+    // flex-basis: 70%;
+    flex-grow: 1;
+    .getStartItem {
+      width: 250px;
+      height: 270px;
+      overflow: hidden;
+      /* Light/Background/White */
+      background: #FFFFFF;
+      /* Light/Medium */
+      box-shadow: 0px 0px 1px rgba(40, 41, 61, 0.04), 0px 2px 4px rgba(96, 97, 112, 0.16);
+      border-radius: 8px;
+      margin: 0 32px 32px 0;
+      padding: 32px 0 24px 0;
+      a {
+        color: #000;
+      }
+      .titleAndDesc {
+        height: 150px;
+      }
+      h3 {
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 24px;
+        margin-bottom: 4px;
+      }
+      p {
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 18px;
+      }
+      &:hover {
+        box-shadow: 0px 2px 4px rgba(40, 41, 61, 0.04), 0px 8px 16px rgba(96, 97, 112, 0.16);
+        border: 3px solid var(--mod-cd-200);
+      }
+      &.ci:hover {
+        border-color: var(--mod-ci-200);;
+      }
+      &.cd:hover {
+        border-color: var(--mod-cd-200);;
+      }
+      &.ccm:hover {
+        border-color: var(--mod-ccm-200);;
+      }
+      &.ff:hover {
+        border-color: var(--mod-ff-200);;
+      }
+      &.sto:hover {
+        border-color: var(--mod-sto-200);;
+      }
+      &.srm:hover {
+        border-color: var(--mod-srm-200);;
+      }
+      &.ce:hover {
+        border-color: var(--mod-ce-200);;
+      }
+    }
+    ul.docTypes {
+      display: flex;
+      li {
+        width: 24px;
+        height: 24px;
+        overflow: hidden;
+        background-color: #F3F3FA;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+        border-radius: 4px;
+        margin-right: 4px;
+        img {
+          width: 16px;
+          height: 16px;
+        }
+      }
+    }
+  }
+}
+
+.featureSvg {
+  height: 40px;
+  width: 40px;
+}

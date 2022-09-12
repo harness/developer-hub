@@ -15,6 +15,204 @@
   --ifm-color-primary-lightest: #3cad6e;
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+
+	/* ============ Colors ============ */
+	/* Primary colors - for links, buttons, etc. */
+    /* --primary-10: #1a1a1a; */
+    --primary-10: #07182B;
+	--primary-9: #0a3364; /* Darker Primary */
+	--primary-8: #004ba4;
+	--primary-7: #0278d5; /* Main Primary */
+	--primary-6: #0092e4; /* rgb(0 146 228 / 0.7) */
+	--primary-5: #00ade4; /* Brand Primary */
+	--primary-4: #3dc7f6;
+	--primary-3: #a3e9ff; /* Lighter Primary */
+	--primary-2: #cdf4fe;
+	--primary-1: #effbff;
+	/* Text & Background - Gray Scale */
+	--gray-1000: #000000;
+	--gray-900: #0b0b0d;
+	--gray-800: #22222a;
+	--gray-700: #383946;
+	--gray-600: #4f5162;
+	--gray-500: #6b6d85; /* Main */
+	--gray-400: #9293ab;
+	--gray-300: #b0b1c4;
+	--gray-200: #d9dae5;
+	--gray-100: #f3f3fa;
+	--gray-50: #fafbfc; /* Background */
+	--gray-0: #ffffff;
+	/* Alerts & Statues - Green */
+	--green-900: #1e5c1f;
+	--green-800: #1b841d;
+	--green-700: #299b2c;
+	--green-600: #42ab45;
+	--green-500: #4dc952; /* Main */
+	--green-400: #86d981;
+	--green-300: #a2e29b;
+	--green-200: #bdeab7;
+	--green-100: #d8f3d4;
+	--green-50: #e4f7e1; /* Background */
+	/* Alerts & Statues - Cornflower Blue */
+	--blue-900: #2d376d;
+	--blue-800: #39478f;
+	--blue-700: #4c5cb0;
+	--blue-600: #6374d0;
+	--blue-500: #798bec; /* Main */
+	--blue-400: #8598ff;
+	--blue-300: #97a7ff;
+	--blue-200: #b1beff;
+	--blue-100: #dae0ff;
+	--blue-50: #f4f6ff; /* Background */
+	/* Alerts & Statues - Yellow */
+	--yellow-900: #fcb519;
+	--yellow-800: #fcc026;
+	--yellow-700: #fcc62d;
+	--yellow-600: #fdcc35;
+	--yellow-500: #fdd13b; /* Main */
+	--yellow-400: #fedf76;
+	--yellow-300: #fee89d;
+	--yellow-200: #fef1c4;
+	--yellow-100: #fff9e7;
+	--yellow-50: #fffbee; /* Background */
+	/* Alerts & Statues - Orange */
+	--orange-900: #ff5310;
+	--orange-800: #ff661a;
+	--orange-700: #ff7020;
+	--orange-600: #ff7b26;
+	--orange-500: #ff832b; /* Main */
+	--orange-400: #ffa86b;
+	--orange-300: #ffc195;
+	--orange-200: #ffdabf;
+	--orange-100: #fff0e6;
+	--orange-50: #fff5ed; /* Background */
+	/* Alerts & Statues - Red */
+	--red-900: #b41710;
+	--red-800: #c41f17;
+	--red-700: #cf2318;
+	--red-600: #da291d;
+	--red-500: #e43326; /* Main */
+	--red-400: #ee5f54;
+	--red-300: #ef9790;
+	--red-200: #f5c0bc;
+	--red-100: #fbe6e4;
+	--red-50: #fcedec; /* Background */
+	/* Secondary & Charts - Teal */
+	--teal-900: #07a0ab;
+	--teal-800: #05aab6;
+	--teal-700: #06b7c4;
+	--teal-600: #03c0cd;
+	--teal-500: #0bc8d6; /* Main */
+	--teal-400: #47d5df;
+	--teal-300: #73dfe7;
+	--teal-200: #a9eff2;
+	--teal-100: #c0fbfe;
+	--teal-50: #d3fcfe; /* Background */
+	/* Secondary & Charts - Lime Green */
+	--lime-900: #487a34;
+	--lime-800: #558b2f;
+	--lime-700: #689f38;
+	--lime-600: #76af34;
+	--lime-500: #7fb800; /* Main */
+	--lime-400: #9ccc65;
+	--lime-300: #aadc72;
+	--lime-200: #c5e1a5;
+	--lime-100: #eaf8db;
+	--lime-50: #f1fae6; /* Background */
+	/* Secondary & Charts - Purple */
+	--purple-900: #4d0b8f;
+	--purple-800: #4d278f;
+	--purple-700: #592baa;
+	--purple-600: #6938c0;
+	--purple-500: #6938c0; /* Main */
+	--purple-400: #ae82fc;
+	--purple-300: #c19eff;
+	--purple-200: #cfb4ff;
+	--purple-100: #e1d0ff;
+	--purple-50: #eadeff; /* Background */
+	/* Secondary & Charts - Magenta */
+	--magenta-900: #ca136c;
+	--magenta-800: #d91f79;
+	--magenta-700: #ee2a89;
+	--magenta-600: #f53693;
+	--magenta-500: #ff479f; /* Main */
+	--magenta-400: #ff8ac1;
+	--magenta-300: #ffabd3;
+	--magenta-200: #ffcde4;
+	--magenta-100: #ffeef7;
+	--magenta-50: #fff3f9; /* Background */
+
+	/* ================================== *
+   * ===== Style Variable Aliases ===== *
+   * ================================== */
+
+	/* ----- Colors ----- */
+	--white: var(--gray-0);
+	--black: var(--gray-1000);
+	--gray: var(--gray-500);
+	--gray-bg: var(--gray-50);
+
+	--primary-darker: var(--primary-9);
+	--primary-main: var(--primary-7);
+	--primary: var(--primary-main);
+	--primary-brand: var(--primary-5);
+	--primary-lighter: var(--primary-3);
+	--primary-bg: #fafcff;
+	--green: var(--green-500);
+	--green-bg: var(--green-50);
+	--blue: var(--blue-500);
+	--blue-bg: var(--blue-50);
+	--yellow: var(--yellow-500);
+	--yellow-bg: var(--yellow-50);
+	--yellow: var(--yellow-500);
+	--yellow-bg: var(--yellow-50);
+	--red: var(--red-500);
+	--red-bg: var(--red-50);
+	--teal: var(--teal-500);
+	--teal-bg: var(--teal-50);
+	--lime: var(--lime-500);
+	--lime-bg: var(--lime-50);
+	--purple: var(--purple-500);
+	--purple-bg: var(--purple-50);
+	--magenta: var(--magenta-500);
+	--magenta-bg: var(--magenta-50);
+
+	/* Module Colors/Continuous Delivery/300 */
+	--mod-cd-300: #30841f;
+	/* Module Colors/Continuous Delivery/200 */
+	--mod-cd-200: #5fb34e;
+	/* Module Colors/Continuous Delivery/100 */
+	--mod-cd-100: #f6fff2;
+
+	/* Module Colors/Continuous Integration/300 */
+	--mod-ci-300: #0672b6;
+	/* Module Colors/Continuous Integration/200 */
+	--mod-ci-200: #2bb1f2;
+	/* Module Colors/Continuous Integration/100 */
+	--mod-ci-100: #e2f5ff;
+
+	/* Module Colors/Cloud Cost/300 */
+	--mod-ccm-300: #24807f;
+	/* Module Colors/Cloud Cost/200 */
+	--mod-ccm-200: #01c9cc;
+	/* Module Colors/Cloud Cost/100 */
+	--mod-100: #ecffff;
+
+	/* Module Colors/Feature Flags/300 */
+	--mod-ff-300: #c05809;
+	/* Module Colors/Feature Flags/200 */
+	--mod-ff-200: #ee8625;
+	/* Module Colors/Feature Flags/100 */
+	--mod-ff-100: #fcf4e3;
+
+	/* Module Colors/STO/200 */
+	--mod-sto-200: #2660ff;
+
+	/* Module Colors/SRM/200 */
+	--mod-srm-200: #8b73ce;
+
+	/* Module Colors/Chaos Engineering/200 */
+	--mod-ce-200: #cd0056;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -27,4 +225,8 @@
   --ifm-color-primary-lighter: #32d8b4;
   --ifm-color-primary-lightest: #4fddbf;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+.flexContainer {
+  display: flex;
 }

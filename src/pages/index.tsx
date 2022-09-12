@@ -4,9 +4,10 @@ import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
+import WhatsNew from '@site/src/components/WhatsNew';
 import MDXContent from '@theme/MDXContent';
 
-import styles from './index.module.css';
+import styles from './index.module.scss';
 
 function HomepageHeader() {
   const {siteConfig} = useDocusaurusContext();
@@ -37,7 +38,12 @@ export default function Home(): JSX.Element {
       description="Description will go into a meta tag in <head />">
       <HomepageHeader />
       <main>
-        <HomepageFeatures />
+        <div className="container">
+          <div className="flexContainer">
+            <HomepageFeatures />
+            <WhatsNew />
+          </div>
+        </div>
       </main>
     </Layout>
     </MDXContent>

@@ -1,52 +1,129 @@
 import React from 'react';
 import clsx from 'clsx';
-import styles from './styles.module.css';
+import styles from './styles.module.scss';
+
+enum docType {
+  Documentation = 'doc',
+  Interactive = 'interactive',
+  Video = 'video',
+}
 
 type FeatureItem = {
   title: string;
-  Svg: React.ComponentType<React.ComponentProps<'svg'>>;
+  module: string;
+  Svg?: string; // React.ComponentType<React.ComponentProps<'svg'>>;
   description: JSX.Element;
+  type: docType[];
+  link: string;
 };
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'Developer-First Experience',
-    Svg: require('@site/static/img/icon_ci.svg').default,
+    title: 'Build Code',
+    module: 'ci',
+    Svg: '/img/icon_ci.svg',
     description: (
       <>
-        Manage your delivery pipelines with the familiar developer experience - YAML, Git Commits & PRs. Remove all unnecessary toil and speed up developer productivity.
+        Create a CI build pipeline.
       </>
     ),
+    type: [docType.Documentation, docType.Interactive, docType.Video],
+    link: '/docs/category/continuous-integration',
   },
   {
-    title: 'One Pipeline For All',
-    Svg: require('@site/static/img/icon_cd.svg').default,
+    title: 'Deploy Services',
+    module: 'cd',
+    Svg: '/img/icon_cd.svg',
     description: (
       <>
-        CI, CD, feature flags, <code>infrastructure-as-code</code>, cloud costs, change tracking, and much more - in a single integrated pipeline.
+        Create a CD deployment.
       </>
     ),
+    type: [docType.Documentation, docType.Interactive],
+    link: '/docs/category/continuous-delivery',
   },
   {
-    title: 'AI/ML-Driven Workflows',
-    Svg: require('@site/static/img/icon_ccm.svg').default,
+    title: 'Manage Feature Flags',
+    module: 'ff',
+    Svg: '/img/icon_ff.svg',
     description: (
       <>
-        Our AI takes your delivery pipelines to the next level. You can automate canary verifications, prioritize what tests to run, determine the impact of changes, automate cloud costs, and much more.
+        Rollout new features progressively.
       </>
     ),
+    type: [docType.Documentation, docType.Interactive, docType.Video],
+    link: '/docs/category/common-platform',
+  },
+  {
+    title: 'Optimize Cloud Costs',
+    module: 'ccm',
+    Svg: '/img/icon_ccm.svg',
+    description: (
+      <>
+        Achieve cost transparency and cut costs
+      </>
+    ),
+    type: [docType.Documentation, docType.Video],
+    link: '/docs/category/common-platform',
+  },
+  {
+    title: 'Manage SLOs',
+    module: 'srm',
+    Svg: '/img/icon_srm.svg',
+    description: (
+      <>
+        Create SLOs. track error budgets, govern pipelines.
+      </>
+    ),
+    type: [docType.Documentation, docType.Interactive, docType.Video],
+    link: '/docs/category/common-platform',
+  },
+  {
+    title: 'Orchestrate Security Testings',
+    module: 'sto',
+    Svg: '/img/icon_sto.svg',
+    description: (
+      <>
+        Scan your code, containers and apps
+      </>
+    ),
+    type: [docType.Documentation, docType.Interactive, docType.Video],
+    link: '/docs/category/common-platform',
+  },
+  {
+    title: 'Run Chaos Experiments',
+    module: 'ce',
+    Svg: '/img/icon_ce.svg',
+    description: (
+      <>
+        Ensure app and infrastructure resilience.
+      </>
+    ),
+    type: [docType.Documentation, docType.Interactive, docType.Video],
+    link: '/docs/category/common-platform',
   },
 ];
 
-function Feature({title, Svg, description}: FeatureItem) {
+function Feature({title, Svg, description, type, module, link}: FeatureItem) {
   return (
-    <div className={clsx('col col--4')}>
+    <div className={clsx(styles.getStartItem, styles[module])}>
       <div className="text--center">
-        <Svg className={styles.featureSvg} role="img" />
+        {/* <Svg className={styles.featureSvg} role="img" /> */}
+        <img src={Svg} className={styles.featureSvg} alt={title} />
       </div>
-      <div className="text--center padding-horiz--md">
-        <h3>{title}</h3>
-        <p>{description}</p>
+      <div className={clsx('text--center padding-horiz--md', styles.titleAndDesc)}>
+        <a href={link}>
+          <h3>{title}</h3>
+          <p>{description}</p>
+        </a>
+      </div>
+      <div>
+        <ul className={styles.docTypes}>
+        {type.map((props, idx) => (
+            <li><img src={`/img/icon_doctype_${props}.svg`} alt={props} /></li>
+          ))}
+          
+        </ul>
       </div>
     </div>
   );
@@ -55,12 +132,11 @@ function Feature({title, Svg, description}: FeatureItem) {
 export default function HomepageFeatures(): JSX.Element {
   return (
     <section className={styles.features}>
-      <div className="container">
-        <div className="row">
+      <h2>Get Started</h2>
+      <div className={styles.getStart}>
           {FeatureList.map((props, idx) => (
             <Feature key={idx} {...props} />
           ))}
-        </div>
       </div>
     </section>
   );
