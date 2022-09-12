@@ -5,6 +5,8 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
 import WhatsNew from '@site/src/components/WhatsNew';
+import LearnAboutPlatform from '@site/src/components/LearnAboutPlatform';
+import HarnessU from '@site/src/components/HarnessU';
 import MDXContent from '@theme/MDXContent';
 
 import styles from './index.module.scss';
@@ -34,7 +36,7 @@ export default function Home(): JSX.Element {
   return (
     <MDXContent>
     <Layout
-      title={`Hello from ${siteConfig.title}`}
+      title={`${siteConfig.title}`}
       description="Description will go into a meta tag in <head />">
       <HomepageHeader />
       <main>
@@ -43,8 +45,11 @@ export default function Home(): JSX.Element {
             <HomepageFeatures />
             <WhatsNew />
           </div>
+          <LearnAboutPlatform />
         </div>
       </main>
+
+      <HarnessU />
     </Layout>
     </MDXContent>
   );
