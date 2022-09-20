@@ -1,9 +1,17 @@
-# Harness Developer Learning Portal - Developer Hub
+# Harness Developer Hub
 
-Repository for the Developer Learning Portal [DLP]
+![CI](static/img/icon_ci.svg)
+![CD](static/img/icon_cd.svg)
+![FF](static/img/icon_ff.svg)
+![CCM](static/img/icon_ccm.svg)
+![SRM](static/img/icon_srm.svg)
+![STO](static/img/icon_sto.svg)
+![CE](static/img/icon_ce.svg)
+
+Repository for the Harness Developer Hub [HDH].
 Learn intelligent software delivery skills at your own paceand in once place. Step-by-step tutorials, videos, and referencedocs to help you create and deliver software.
 
-### Installation
+### Local Installation
 
 ```
 $ yarn
