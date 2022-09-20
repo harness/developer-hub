@@ -3,8 +3,6 @@
 Repository for the Developer Learning Portal [DLP]
 Learn intelligent software delivery skills at your own paceand in once place. Step-by-step tutorials, videos, and referencedocs to help you create and deliver software.
 
-Internal (Remove Before Public): https://harness.atlassian.net/wiki/spaces/PD/pages/21164458172/SCM+Strategy
-
 ### Installation
 
 ```
