@@ -12,7 +12,7 @@ It takes two things to build software; teamwork and iteration. As software engin
 ## What You Need For Executing Your First Feature Flag 
 Feature Flags have a close relationship with the code base since they surround/decorate conditional statements. You’ll need to include a Feature Flag SDK as a dependency then wire the Feature Flag client. To support this, the underlying code base and necessary dependencies to build/run the code base is needed. If this is your first time leveraging a Feature Flag, [Google’s React Store](https://github.com/google-pay/react-store) is a great sample app to modify and use with Harness Feature Flags. This example will require a GitHub Account, an editor such as an IDE, a [Harness Feature Flags Account](https://app.harness.io/auth/#/signup/?module=cf), and the ability to run an [NPM Install](https://docs.npmjs.com/cli/v7/commands/npm-install) in your local or remote environment.
 
-![Feature Flag Overview](static/ff_overview.png)
+![Feature Flag Overview](static/ff-tutorial-typescript/ff_overview.png)
 
 ## Running The Example App Locally
 
@@ -22,7 +22,7 @@ Locally running Google's React Store app is simple. The first step is to clone t
 
 Or import the repository from an IDE such as VS Code:
 
-![Clone VS Code](static/vs_code_clone.png)
+![Clone VS Code](static/ff-tutorial-typescript/vs_code_clone.png)
 
 Once cloned/downloaded to your machine, you can follow the [project instructions](https://github.com/google-pay/react-store#readme) to start. The only requirement is that you have NPM installed on your machine. If you don’t have NPM:
 
@@ -39,11 +39,11 @@ npm install
 npm run
 ```
 
-![NPM Install](static/npm_install.png)
+![NPM Install](static/ff-tutorial-typescript/npm_install.png)
 
 Heading to your localhost URL, you can see the vanilla instance of the React Store. 
 
-![Vanilla](static/vanilla.png)
+![Vanilla](static/ff-tutorial-typescript/vanilla.png)
 
 Now you are ready to flag pieces of functionality inside the React Store. You can stop the NPM server by hitting *ctrl+c*, so as you make modifications, the just-in-time changes are not propagated until you are ready. 
 
@@ -56,11 +56,11 @@ The easiest way in the example application is to just include the dependency in 
 
 `"@harnessio/ff-javascript-client-sdk": "^1.4.10",`
 
-![Import SDK](static/import_sdk.png)
+![Import SDK](static/ff-tutorial-typescript/import_sdk.png)
 
 Once added, make sure to save and re-run `npm install`. 
 
-![Second NPM Install](static/second_npm_install.png)
+![Second NPM Install](static/ff-tutorial-typescript/second_npm_install.png)
 
 With the dependency installed, head to Harness Feature Flags to create your first Feature Flag. 
 
@@ -69,21 +69,21 @@ Head to the Harness Platform and navigate to the Feature Flags module. Here you 
 
 Harness -> Feature Flags -> Get Started, then click Get Started. 
 
-![Get Started](static/ff_start.png)
+![Get Started](static/ff-tutorial-typescript/ff_start.png)
 
 On the next screen, you will name your first Feature Flag and select the language the Feature Flag will use. 
 
 * Flag Name: mybooleanflag
 * Language: JavaScript
 
-![Select JS](static/select_js.png)
+![Select JS](static/ff-tutorial-typescript/select_js.png)
 
 Harness has a concept of Environments, which is target infrastructure or where your application will be running. When selecting the language, create a new Environment.
 
 * Environment Name: local
 * Environment Type: Non-Production
 
-![Set Environment](static/set_env.png)
+![Set Environment](static/ff-tutorial-typescript/set_env.png)
 
 Click **Create**, and then create a new SDK Key by clicking on **+ Create SDK Key**. 
 
@@ -95,7 +95,7 @@ An SDK Key will be created for you and scaffolding code will be generated to pop
 
 The SDK Key e.g. for this example is 6d467636-d27a-4000-904a-1fedde695133
 
-![SDK Key](static/sdk_key.png)
+![SDK Key](static/ff-tutorial-typescript/sdk_key.png)
 
 Now you’re ready to wire the application to leverage the Feature Flag. 
 
@@ -106,17 +106,17 @@ A good spot to initialize the client is a common module. In the React Store, the
 
 The linting rules on this project can be strict, so can disable the linting rules by adding `//@ts-nocheck` to the top of the file located at *react-store/src/App.tsx*.
 
-![TS No Check](static/ts_no_check.png)
+![TS No Check](static/ff-tutorial-typescript/ts_no_check.png)
 
 The next step is to import the client as part of the import statements. The import statement and other code snippets are available in the Feature Flags UI and the [Documentation](https://docs.harness.io/article/bmlvsxhp13-java-script-sdk-references). 
 
-![Init](static/init_statement.png)
+![Init](static/ff-tutorial-typescript/init_statement.png)
 
 In this example, the wiring into App.tsx is the third import:
 
 `import { initialize, Event } from '@harnessio/ff-javascript-client-sdk';`
 
-![Import](static/import.png)
+![Import](static/ff-tutorial-typescript/import.png)
 
 The below code will leverage a React Effect Hook (e.g. useEffect) to initialize the SDK, wire to the platform, and listen for events (e.g. changes in the Flags). Update your identifier and client-sdk-key.
 
@@ -151,7 +151,7 @@ useEffect(() => {
 }, []);
 ```
 
-![Use Effect](static/use_effect.png)
+![Use Effect](static/ff-tutorial-typescript/use_effect.png)
 
 With the SDK wired in and listening for events, now you can start wrapping items in Feature Flag evaluations. 
 
@@ -164,19 +164,19 @@ In App.tsx, add a let expression before the function return.
 
 `let className = featureFlags.mybooleanflag ? 'App.Left' : 'App';`
 
-![Let Class Name](static/let_classname.png)
+![Let Class Name](static/ff-tutorial-typescript/let_classname.png)
 
 In the return section of App.tsx where the `<div>` class is set, you can update that to be a variable e.g. className vs the static “App” class. 
 
 `div className={className}`
 
-![Div Classname](static/div_classname.png)
+![Div Classname](static/ff-tutorial-typescript/div_classname.png)
 
 Lastly, add the new App.Left CSS element into App.CSS. 
 
 `.App.Left { text-align: left;}`
 
-![Align Text](static/align.png)
+![Align Text](static/ff-tutorial-typescript/align.png)
 
 With the expression and SDK wired in to monitor for changes in events, you are now ready to execute the Feature Flag.
 
@@ -187,7 +187,7 @@ You are now ready to run your first Feature Flag. As a note, this project is an 
 "prettier/prettier": 0,
 /** Remove "sort-imports": "error" */
 ```
-![Linting Rules](static/estlint.png)
+![Linting Rules](static/ff-tutorial-typescript/estlint.png)
 
 With additional linting suppressed, you are now ready to run the application. 
 
@@ -196,21 +196,21 @@ For safety, you can re-run `npm install`, then execute `npm run`, and then you c
 
 Head to localhost:3000 and validate the base state of the application.
 
-![No FF](static/vanilla_state.png)
+![No FF](static/ff-tutorial-typescript/vanilla_state.png)
 
 Back in the Feature Flag Module, click **Verify**, and then enable/toggle “mybooleanflag”. The SDK should communicate back with Harness and will get a status message stating such. 
 
-![Validate FF](static/validate_ff.png)
+![Validate FF](static/ff-tutorial-typescript/validate_ff.png)
 
 Head back to localhost:3000 and check out your UI change.
 
-![Toggle](static/ff_active.png)
+![Toggle](static/ff-tutorial-typescript/ff_active.png)
 
 Congratulations on your first Feature Flag! If you want to get some stats/metrics on what has been executed, you can head back to the Harness Platform. 
 
 Harness -> Default Project -> Feature Flags -> mybooleanflag
 
-![FF Stats](static/stats.png)
+![FF Stats](static/ff-tutorial-typescript/stats.png)
 
 This is just the start with Feature Flags - there are so many more scenarios for improving your code and processes by leveraging them, such as multivariate and targeted flags, and infrastructure related flags. 
 
