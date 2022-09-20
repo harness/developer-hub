@@ -1,4 +1,4 @@
-# What is a Harness Delegate?
+# Harness Kubernetes Delegate Install
 
 Your on-ramp to the Harness Platform is the [Harness Delegate](https://docs.harness.io/article/2k7lnc7lvl-delegates-overview). In a nut-shell the Harness Delegate performs work on your behalf, so imagine this as a worker node which is installed on your infrastructure or machine.
 
@@ -33,7 +33,7 @@ Validate that you have kubectl access to your cluster.
 
 `kubectl get pods -A`
 
-![Kubectl Get Pods](static/kubectl_check.png)
+![Kubectl Get Pods](static/kubernetes-delegate-install/kubectl_check.png)
 
 Once validated, you can now create your first Harness Delegate.
 
@@ -43,11 +43,11 @@ As you explore different Harness Modules, keeping a Harness Delegate at the Acco
 
 Harness Platform -> Account Settings -> Account Resources -> Delegates
 
-![Account Delegate](static/account_delegate.png)
+![Account Delegate](static/kubernetes-delegate-install/account_delegate.png)
 
 Click on Delegates then +Create a Delegate. Can select Kubernetes as the Delegate Type.
 
-![Kubernetes Delegate Type](static/delegate_type.png)
+![Kubernetes Delegate Type](static/kubernetes-delegate-install/delegate_type.png)
 
 Click Continue and fill out a few details.
 
@@ -57,24 +57,24 @@ Click Continue and fill out a few details.
 - Delegate Token: _default_token_
 - Delegate Permissions: Cluster wide read/write. This will allow the Delegate to deploy and spin up workloads, resources, objects, etc that are needed on the Kubernetes cluster that the Delegate is deployed to.
 
-![Kubernets Delgate Setup](static/k8s_delegate_options.png)
+![Kubernets Delgate Setup](static/kubernetes-delegate-install/k8s_delegate_options.png)
 
 Click Continue and now you can apply the Kubernetes YAML that has been generated. Can download the YAML and apply.
 
-![YAML to Download](static/delgate_yaml.png)
+![YAML to Download](static/kubernetes-delegate-install/delgate_yaml.png)
 
 With the downloaded _harness-delegate.yml_ can apply this to your wired Kubernetes cluster.
 
 `kubectl apply -f harness-delegate.yml`
 
-![Apply Delegate YAML](static/apply_yaml.png)
+![Apply Delegate YAML](static/kubernetes-delegate-install/apply_yaml.png)
 
 Click Continue and in a few moments after the health checks pass, your Harness Delegate will be available for you to leverage.
 
-![Delegate Helathcheck](static/healthcheck.png)
+![Delegate Helathcheck](static/kubernetes-delegate-install/healthcheck.png)
 
 Click Done and can verify your new Delegate is on the list.
 
-![Delegate Available](static/available.png)
+![Delegate Available](static/kubernetes-delegate-install/available.png)
 
 You are now ready to explore Harness.
