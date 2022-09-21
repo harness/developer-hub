@@ -181,6 +181,8 @@ Metric for valid requests: Prometheus Metric [was connected during the connectin
 
 ![SLI Config](static/first-slo-tutorial/sli_config.png)
 
+### Set SLO Target
+
 Click Continue to set up the SLO Target [based on the SLI] and [Error Budget](https://www.atlassian.com/incident-management/kpis/error-budget) [amount of time system can fail] Policy. A goal we can set is that 50% of requests need to be <= to our Objective Value e.g this is our SLI. Since we are setting 50% of the target, we are also stating that 50% of the week if we set a rolling 7 day period can be included in our Error Budget which is indicated by Harness. 
 
 ![SLO Target](static/first-slo-tutorial/slo_target.png)
