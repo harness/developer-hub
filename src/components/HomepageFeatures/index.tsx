@@ -52,7 +52,7 @@ const FeatureList: FeatureItem[] = [
       </>
     ),
     type: [docType.Documentation, docType.Interactive, docType.Video],
-    link: '/docs/category/common-platform',
+    link: '/docs/category/feature-flags',
   },
   {
     title: 'Optimize Cloud Costs',
@@ -76,7 +76,7 @@ const FeatureList: FeatureItem[] = [
       </>
     ),
     type: [docType.Documentation, docType.Interactive, docType.Video],
-    link: '/docs/category/common-platform',
+    link: '/docs/category/service-reliability-management',
   },
   {
     title: 'Orchestrate Security Testings',

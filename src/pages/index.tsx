@@ -7,6 +7,7 @@ import HomepageFeatures from '@site/src/components/HomepageFeatures';
 import WhatsNew from '@site/src/components/WhatsNew';
 import LearnAboutPlatform from '@site/src/components/LearnAboutPlatform';
 import HarnessU from '@site/src/components/HarnessU';
+import Feedback from '@site/src/components/Feedback';
 import MDXContent from '@theme/MDXContent';
 
 import styles from './index.module.scss';
@@ -47,6 +48,7 @@ export default function Home(): JSX.Element {
           </div>
           <LearnAboutPlatform />
         </div>
+        <Feedback />
       </main>
 
       <HarnessU />
