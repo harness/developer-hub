@@ -88,7 +88,7 @@ const FeatureList: FeatureItem[] = [
       </>
     ),
     type: [docType.Documentation, docType.Interactive, docType.Video],
-    link: '/docs/category/common-platform',
+    link: '/docs/category/security-testing-orchestration',
   },
   {
     title: 'Run Chaos Experiments',
