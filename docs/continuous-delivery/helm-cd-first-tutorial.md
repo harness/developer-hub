@@ -4,6 +4,11 @@ sidebar_position: 1
 
 # Continuous Delivery Helm Tutorial
 
+
+```mdx-code-block
+import KuberentesDelegateInstall from '/docs/docs-shared-components/kubernetes-delegate-install-includes.md';
+```
+
 ## Background on Helm
 Introduced during the first KubeCon, [Helm](https://harness.io/blog/what-is-helm) has been a stalwart in the Kubernetes ecosystem almost since the inception of Kubernetes. If you are unfamiliar with Helm, Helm is a package manager for Kubernetes; similarly to Homebrew on your Mac or Chocolatey on your Windows machine. 
 
@@ -42,7 +47,10 @@ With the Default Project selected, clicking on Overview will bring up a wizard t
 There are a few Harness Objects that will need to be created in Harness. Harness works on a concept of worker nodes called [Harness Delegates](https://docs.harness.io/article/2k7lnc7lvl-delegates-overview). These Delegates can perform work on your behalf. One will need to be set up to deploy into a Kubenetes cluster. The second will be access to the Helm Chart Repository. Let’s set up the Harness Delegate first. 
 
 ### Deploying the Harness Delegate into a Kubernetes Cluster
-Todo: Progressive
+
+```mdx-code-block
+<KuberentesDelegateInstall />
+```
 
 ## Creating Your First Harness Pipeline with Helm
 
