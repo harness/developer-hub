@@ -116,7 +116,7 @@ const config = {
               },
               {
                 label: "Try for Free",
-                href: "https://app.harness.io/auth/#/signup?utm_source=Website&utm_medium=harness-docs&utm_campaign=harness-docs-free-account-cta-main-navigation&utm_content=free-account",
+                href: "https://app.harness.io/auth/#/signup/&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=plt-plg&utm_content=get-started",
               },
               {
                 label: "GitHub",

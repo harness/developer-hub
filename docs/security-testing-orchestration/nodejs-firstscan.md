@@ -4,6 +4,10 @@ sidebar_position: 1
 
 # NodeJS Security/DevSecOps Scan Tutorial
 
+```mdx-code-block
+import KuberentesDelegateInstall from '/docs/docs-shared-components/kubernetes-delegate-install-includes.md';
+```
+
 ## DevSecOps Background
 
 The DevSecOps movement is all about shifting left; empowering the development teams to make more hygienic decisions. With the pace and velocity that engineering teams are creating changes/features, in days gone by, security could be seen as an afterthought in the SDLC. Today, modern teams and organizations try to disseminate application security expertise throughout the development pipeline and security decisions and posture are being educated upfront during development. 
@@ -19,7 +23,10 @@ In this example, we will be using [OWASP Dependency Check](https://owasp.org/www
 Harness will facilitate the running of the security scan against your codebase. A workload runner, e.g. a [Harness Delegate](https://docs.harness.io/article/2k7lnc7lvl-delegates-overview) will need to be installed into a Kubernetes cluster of your choice. The first step is to sign up for Harness and install a Harness Delegate. 
 
 ### Harness Delegate Installation
-Todo: Progressive Harness Delegate Installation
+
+```mdx-code-block
+<KuberentesDelegateInstall />
+```
 
 ### Security Pipeline
 With the Delegate installation out of the way, next is to create a Pipeline that will just run your security scan. Harness runs off the concept of Projects which are logical groupings of resources. The Default Project which is created for you upon account signup can be used for this example. 

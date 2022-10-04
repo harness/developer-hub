@@ -64,7 +64,7 @@ const FeatureList: FeatureItem[] = [
       </>
     ),
     type: [docType.Documentation, docType.Video],
-    link: '/docs/category/common-platform',
+    link: '/docs/category/cloud-cost-management',
   },
   {
     title: 'Manage SLOs',

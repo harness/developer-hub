@@ -49,7 +49,7 @@ Now you are ready to flag pieces of functionality inside the React Store. You ca
 
 ## Getting Your Application Ready For Harness Feature Flags
 
-If you haven’t already, [sign up for a Harness Feature Flags account](https://app.harness.io/auth/#/signup/?module=cf).  Creating and executing a Feature Flag for the React app is pretty straightforward. Depending on your language, Feature Flags requires the use of a corresponding SDK (software development kit), which is installed as a dependency in your application.  Since this example application is React, we can leverage the [JavaScript Feature Flags SDK](https://docs.harness.io/article/bmlvsxhp13-java-script-sdk-references). We will be creating a simple boolean flag that will evaluate either true or false. 
+If you haven’t already, [sign up for a Harness Feature Flags account](https://app.harness.io/auth/#/signup/?module=cf&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=ff-plg&utm_content=get-started).  Creating and executing a Feature Flag for the React app is pretty straightforward. Depending on your language, Feature Flags requires the use of a corresponding SDK (software development kit), which is installed as a dependency in your application.  Since this example application is React, we can leverage the [JavaScript Feature Flags SDK](https://docs.harness.io/article/bmlvsxhp13-java-script-sdk-references). We will be creating a simple boolean flag that will evaluate either true or false. 
 
 ### Adding the Feature Flags SDK To The Project
 The easiest way in the example application is to just include the dependency in the package.json, which is “@harnessio/ff-javascript-client-sdk”: “^1.4.10”. Navigate to the package.json and add the JS Client as a dependency. 

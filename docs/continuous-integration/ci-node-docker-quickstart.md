@@ -4,6 +4,10 @@ sidebar_position: 1
 
 # Continuous Integration Node and Docker Tutorial
 
+```mdx-code-block
+import KuberentesDelegateInstall from '/docs/docs-shared-components/kubernetes-delegate-install-includes.md';
+```
+
 ## Background on Continuous Integration
 
 Continuous Integration is automated builds that can be triggered by some sort of event, such as a code check-in, merge, or on a regular schedule. The end goal of a build is to be deployed somewhere, and the main goal of [Continuous Integration](https://harness.io/blog/continuous-integration/what-is-continuous-integration/) is to build and publish that deployable unit. 
@@ -81,10 +85,11 @@ Harness is a Platform, but we will focus on the Continuous integration module. F
 
 Your onramp and workhorse in the Harness Platform is the Harness Delegate which can run in several places. For this example, using the Harness Kubernetes Delegate is the easiest. 
 
-### Wiring The Harness Kubernetes Delegate [Progressive]
-todo: Link to Doc for Delegate Install
+### Wiring The Harness Kubernetes Delegate 
 
-https://docusaurus.io/docs/markdown-features/links
+```mdx-code-block
+<KuberentesDelegateInstall />
+```
 
 ### Access To Your Sourcecode
 Assuming you are leveraging GitHub, Harness will need access to the repository. For the example, providing a Personal Access Token that is scooped to “repo” will allow for connectivity. 
