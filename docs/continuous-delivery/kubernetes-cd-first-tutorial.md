@@ -4,6 +4,10 @@ sidebar_position: 1
 
 # Continuous Delivery Kubernetes Tutorial
 
+```mdx-code-block
+import KuberentesDelegateInstall from '/docs/docs-shared-components/kubernetes-delegate-install-includes.md';
+```
+
 ## Background on Continuous Delivery
  
 Releases that were once done on a quarterly basis seem olden now, with the advent of [Agile Development](https://www.agilealliance.org/agile101/), getting incremental features out as fast as possible. Infrastructure and practices need to be in place to allow changes to propagate quickly. If we take a look at the definition of Continuous Delivery from Jez Humble’s book, Continuous Delivery:
@@ -31,7 +35,7 @@ For this example, we will deploy [Grafana](https://grafana.com/oss/grafana/), an
 
 ## Getting Started with Harness CD
 
-Getting started with Harness CD is simple, first if you do not have a Harness Account, you can [sign up for free for Harness CD](https://app.harness.io/auth/#/signup/?module=cd).  
+Getting started with Harness CD is simple, first if you do not have a Harness Account, you can [sign up for free for Harness CD](https://app.harness.io/auth/#/signup/?module=cd&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=cd-plg&utm_content=get-started).  
 
 ![Sign Up for Harness CD](static/k8s-cd-first-tutorial/signup_cd.png)
 
@@ -52,7 +56,10 @@ With the Default Project selected, clicking on Overview will bring up a wizard t
 There are a few Harness entities that will need to be created in Harness. The needed objects are wirings to Docker Hub for public image access and GitHub for the Granfa manifest. These objects can be set up during the Pipeline creation or set up ahead of time so they can be reused in multiple Pipelines.  Your onramp and workhorse in the Harness Platform is the Harness Delegate which can run in several places. For this example, using the Harness Kubernetes Delegate is the easiest. 
 
 ## Harness Delegate
-**ToDo**: Progresive Reveal to Delegate Page.
+
+```mdx-code-block
+<KuberentesDelegateInstall />
+```
 
 ## Your First CD Pipeline with Harness - What To Deploy
 With the Delegate install out of the way, you are now ready to create your first Pipeline. You will be deploying a Docker Image with a Kubernetes Manifest coming from Docker Hub and GitHub respectively. The following steps will walk you through how to create a Pipeline with those resources. 
@@ -163,12 +170,10 @@ Can wire those two manifests into Harness.
 * File/Folder Path: /applications/grafana/grafana.yaml 
 * Values.yaml: /applications/grafana/grafana_values.yaml
 
-#### [Progressive]
+
 Harness has the ability to read in input variables in your pipeline. In a deployment manifest, can wire in variables to be picked up by Harness. Later when executing the Pipeline, Harness can prompt you for which tag of the image to deploy with `{{.Values.image}}`.
 
 ![Image Value Template](static/k8s-cd-first-tutorial/image_value.png)
-
-#### [End Progressive]
 
 ![Manifest Details](static/k8s-cd-first-tutorial/manifest_details.png)
 
