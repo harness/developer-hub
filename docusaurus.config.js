@@ -36,6 +36,7 @@ const config = {
         docs: {
           sidebarPath: require.resolve("./sidebars.js"),
           editUrl: "https://github.com/harness/developer-hub/tree/main", // /tree/main/packages/create-docusaurus/templates/shared/
+          exclude: ["**/docs-shared-components/**"],
         },
         blog: {
           showReadingTime: true,
@@ -45,7 +46,7 @@ const config = {
           customCss: require.resolve("./src/css/custom.css"),
         },
         gtag: {
-          trackingID: 'G-Z62TFF68Z3',
+          trackingID: "G-Z62TFF68Z3",
           anonymizeIP: true,
         },
       }),
