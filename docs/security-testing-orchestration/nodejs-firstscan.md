@@ -5,7 +5,7 @@ sidebar_position: 1
 # NodeJS Security/DevSecOps Scan Tutorial
 
 ```mdx-code-block
-import KuberentesDelegateInstall from '/docs/docs-shared-components/kubernetes-delegate-install-includes.md';
+import KubernetesDelegateInstall from '/docs/docs-shared-components/kubernetes-delegate-install-includes.md';
 ```
 
 ## DevSecOps Background
@@ -25,7 +25,7 @@ Harness will facilitate the running of the security scan against your codebase. 
 ### Harness Delegate Installation
 
 ```mdx-code-block
-<KuberentesDelegateInstall />
+<KubernetesDelegateInstall />
 ```
 
 ### Security Pipeline

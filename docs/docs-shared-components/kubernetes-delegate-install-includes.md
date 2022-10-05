@@ -76,7 +76,7 @@ Click Continue and fill out a few details.
 - Delegate Token: _default_token_
 - Delegate Permissions: Cluster wide read/write. This will allow the Delegate to deploy and spin up workloads, resources, objects, etc that are needed on the Kubernetes cluster that the Delegate is deployed to.
 
-![Kubernets Delgate Setup](static/kubernetes-delegate-install/k8s_delegate_options.png)
+![Kubernetes Delgate Setup](static/kubernetes-delegate-install/k8s_delegate_options.png)
 
 Click Continue and now you can apply the Kubernetes YAML that has been generated. Can download the YAML and apply.
 

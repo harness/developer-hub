@@ -5,7 +5,7 @@ sidebar_position: 1
 # Continuous Integration Node and Docker Tutorial
 
 ```mdx-code-block
-import KuberentesDelegateInstall from '/docs/docs-shared-components/kubernetes-delegate-install-includes.md';
+import KubernetesDelegateInstall from '/docs/docs-shared-components/kubernetes-delegate-install-includes.md';
 ```
 
 ## Background on Continuous Integration
@@ -88,7 +88,7 @@ Your onramp and workhorse in the Harness Platform is the Harness Delegate which 
 ### Wiring The Harness Kubernetes Delegate 
 
 ```mdx-code-block
-<KuberentesDelegateInstall />
+<KubernetesDelegateInstall />
 ```
 
 ### Access To Your Sourcecode
@@ -235,7 +235,7 @@ Now you are ready to execute. Click “Run Pipeline”.
 
 Once a successful run, head back to Docker Hub, and `cibuilt` is there!
 
-![Sucess](static/ci-tutorial-node-docker/success.png)
+![Success](static/ci-tutorial-node-docker/success.png)
 
 This is just the start of your Continuous Integration journey. It might seem like multiple steps to get your local build in the platform, but it unlocks the world of possibilities. 
 
