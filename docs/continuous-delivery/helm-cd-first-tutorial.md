@@ -6,7 +6,7 @@ sidebar_position: 1
 
 
 ```mdx-code-block
-import KuberentesDelegateInstall from '/docs/docs-shared-components/kubernetes-delegate-install-includes.md';
+import KubernetesDelegateInstall from '/docs/docs-shared-components/kubernetes-delegate-install-includes.md';
 ```
 
 ## Background on Helm
@@ -44,12 +44,12 @@ With the Default Project selected, clicking on Overview will bring up a wizard t
 
 ![New Pipeline](static/first-helm-deployment/new_pipeline.png)
 
-There are a few Harness Objects that will need to be created in Harness. Harness works on a concept of worker nodes called [Harness Delegates](https://docs.harness.io/article/2k7lnc7lvl-delegates-overview). These Delegates can perform work on your behalf. One will need to be set up to deploy into a Kubenetes cluster. The second will be access to the Helm Chart Repository. Let’s set up the Harness Delegate first. 
+There are a few Harness Objects that will need to be created in Harness. Harness works on a concept of worker nodes called [Harness Delegates](https://docs.harness.io/article/2k7lnc7lvl-delegates-overview). These Delegates can perform work on your behalf. One will need to be set up to deploy into a Kubernetes cluster. The second will be access to the Helm Chart Repository. Let’s set up the Harness Delegate first. 
 
 ### Deploying the Harness Delegate into a Kubernetes Cluster
 
 ```mdx-code-block
-<KuberentesDelegateInstall />
+<KubernetesDelegateInstall />
 ```
 
 ## Creating Your First Harness Pipeline with Helm

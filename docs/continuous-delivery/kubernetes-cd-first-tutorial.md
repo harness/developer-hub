@@ -5,7 +5,7 @@ sidebar_position: 1
 # Continuous Delivery Kubernetes Tutorial
 
 ```mdx-code-block
-import KuberentesDelegateInstall from '/docs/docs-shared-components/kubernetes-delegate-install-includes.md';
+import KubernetesDelegateInstall from '/docs/docs-shared-components/kubernetes-delegate-install-includes.md';
 ```
 
 ## Background on Continuous Delivery
@@ -58,7 +58,7 @@ There are a few Harness entities that will need to be created in Harness. The ne
 ## Harness Delegate
 
 ```mdx-code-block
-<KuberentesDelegateInstall />
+<KubernetesDelegateInstall />
 ```
 
 ## Your First CD Pipeline with Harness - What To Deploy

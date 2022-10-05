@@ -6,7 +6,7 @@ sidebar_position: 1
 
 
 ```mdx-code-block
-import KuberentesDelegateInstall from '/docs/docs-shared-components/kubernetes-delegate-install-includes.md';
+import KubernetesDelegateInstall from '/docs/docs-shared-components/kubernetes-delegate-install-includes.md';
 ```
 
 ## Background on Cloud Costs
@@ -32,7 +32,7 @@ If you have not already, make sure to sign up for a [Harness CCM Account](https:
 ### Installing the Harness Delegate
 
 ```mdx-code-block
-<KuberentesDelegateInstall />
+<KubernetesDelegateInstall />
 ```
 
 ### Pointing Harness CCM to Your Cluster
