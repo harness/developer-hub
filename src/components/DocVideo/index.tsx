@@ -16,19 +16,13 @@ const DocVideo = ({
 		videoSrc = (src || '').replace('/medias/', '/embed/iframe/')
 	}
 	return isYoutubeVideo ? (
-		// <iframe
-		// 	width={width}
-		// 	height={height}
-		// 	src={`${videoSrc}?&autoplay=1`}
-		// 	title={title}
-		// 	frameBorder="0"
-		// 	allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-		// 	allowFullScreen
-		// />
-		<iframe width="560" height="315" src={videoSrc} title={title} frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+		// <iframe width="560" height="315" src={videoSrc} title={title} frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+
+		<iframe width="560" height="315" src={videoSrc} title={title} frameBorder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
 	) : (
 		<iframe
-			src={`${videoSrc}?&autoplay=1`}
+			// src={`${videoSrc}?&autoplay=1`}
+			src={`${videoSrc}`}
 			allowTransparency={true}
 			frameBorder="0"
 			scrolling="no"
