@@ -14,8 +14,7 @@ steps:
   settings:
     path: ./build
     prod: true
-    site:
-      from_secret: 2dc01b76-a219-41c6-8333-d2a7067c34d9
+    site: 2dc01b76-a219-41c6-8333-d2a7067c34d9
     token:
       from_secret: token
   when:
