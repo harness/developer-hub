@@ -4,9 +4,8 @@ name: default
 
 steps:
 - name: build
-  image: node
+  image: node:18
   commands:
-  - npm install -g yarn
   - yarn
   - yarn build
 
