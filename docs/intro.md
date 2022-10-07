@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Tutorial Introduction
+# Introduction
 
 ![CI](/img/icon_ci.svg)
 ![CD](/img/icon_cd.svg)
