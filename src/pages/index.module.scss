@@ -2,7 +2,24 @@
  * CSS files with the .module.css suffix will be treated as CSS modules
  * and scoped locally.
  */
-
+.homepageWrapper {
+  a {
+    color: var(--ifm-font-color-base); // #000;
+    &:hover {
+      color: var(--ifm-link-color);
+      text-decoration: none;
+    }
+  }
+  :global {
+    a.button {
+      color: #fff;
+      &:hover {
+        // color: var(--ifm-color-primary-lightest);
+        background-color: var(--ifm-color-primary-dark);
+      }
+    }
+  }
+}
 .heroBanner {
   padding: 4rem 4rem 8rem 4rem;
   /* text-align: center; */

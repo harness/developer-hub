@@ -38,20 +38,23 @@ export default function Home(): JSX.Element {
     <MDXContent>
     <Layout
       title={`${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />">
-      <HomepageHeader />
-      <main>
-        <div className="container">
-          <div className="flexContainer">
-            <HomepageFeatures />
-            <WhatsNew />
+      description="Description will go into a meta tag in <head />"
+    >
+      <div className={styles.homepageWrapper}>
+        <HomepageHeader />
+        <main>
+          <div className="container">
+            <div className="flexContainer">
+              <HomepageFeatures />
+              <WhatsNew />
+            </div>
+            <LearnAboutPlatform />
           </div>
-          <LearnAboutPlatform />
-        </div>
-        <Feedback />
-      </main>
+          <Feedback />
+        </main>
 
-      <HarnessU />
+        <HarnessU />
+      </div>
     </Layout>
     </MDXContent>
   );
