@@ -7,6 +7,7 @@ const sidebars = {
   // Getting Started
     {
       type: 'category',
+      label: 'Getting Started',
       link: {
         type: 'generated-index',
       },
