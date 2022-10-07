@@ -65,10 +65,66 @@ const config = {
         },
         items: [
           {
-            type: "doc",
-            docId: "intro",
-            position: "left",
-            label: "Tutorial",
+            position: "right",
+            type: "dropdown",
+            label: "Docs",
+            items: [
+              {
+                type: 'doc',
+                label: 'Continuous Integration',
+                docId: '/category/build-code',
+              },
+              {
+                type: 'doc',
+                label: 'Continuous Delivery',
+                docId: '/category/deploy-services',
+              },
+              {
+                type: 'doc',
+                label: 'Feature Flags',
+                docId: '/category/manage-feature-flags',
+              },
+              {
+                type: 'doc',
+                label: 'Cloud Cost Management',
+                docId: '/category/optimize-cloud-costs',
+              },
+              {
+                type: 'doc',
+                label: 'Service Reliability Management',
+                docId: '/category/manage-slos',
+              },
+              {
+                type: 'doc',
+                label: 'Security Test Orchestration',
+                docId: '/category/orchestrate-security-tests',
+              },
+              {
+                type: 'doc',
+                label: 'Chaos Engineering',
+                docId: '/category/run-chaos-experiments',
+              },
+            ],
+          },
+          {
+            position: "right",
+            type: "dropdown",
+            label: "Resources",
+            items: [
+              {
+                label: 'Harness Community',
+                href: 'https://community.harness.io',
+              },
+              {
+                label: 'Harness Community Slack',
+                href: 'https://join.slack.com/t/harnesscommunity/shared_invite/zt-y4hdqh7p-RVuEQyIl5Hcx4Ck8VCvzBw',
+              },
+            ],
+          },
+          {
+            position: "right",
+            label: "Sign Up For Harness",
+            href: "https://app.harness.io/auth/#/signup/&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=plt-plg&utm_content=get-started",
           },
           // { to: "/blog", label: "Blog", position: "left" },
           {

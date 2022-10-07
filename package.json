@@ -1,6 +1,6 @@
 {
-  "name": "learning-hub",
-  "version": "0.0.0",
+  "name": "harness-developer-hub",
+  "version": "0.1.0",
   "license": "MIT",
   "private": true,
   "scripts": {
