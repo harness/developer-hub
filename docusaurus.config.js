@@ -74,6 +74,49 @@ const config = {
             items: [
               {
                 type: "doc",
+                label: "Build Code",
+                docId: "/category/build-code",
+              },
+              {
+                type: "doc",
+                label: "Deploy Services",
+                docId: "/category/deploy-services",
+              },
+              {
+                type: "doc",
+                label: "Manage Feature Flags",
+                docId: "/category/manage-feature-flags",
+              },
+              {
+                type: "doc",
+                label: "Optimize Cloud Costs",
+                docId: "/category/optimize-cloud-costs",
+              },
+              {
+                type: "doc",
+                label: "Manage SLOs",
+                docId: "/category/manage-slos",
+              },
+              {
+                type: "doc",
+                label: "Orchestrate Security Tests",
+                docId: "/category/orchestrate-security-tests",
+              },
+              {
+                type: "doc",
+                label: "Run Chaos Experiments",
+                docId: "/category/run-chaos-experiments",
+              },
+            ],
+          },
+          {
+            position: "right",
+            type: "dropdown",
+            label: "Docs",
+            docId: "intro",
+            items: [
+              {
+                type: "doc",
                 label: "Continuous Integration",
                 docId: "/category/build-code",
               },

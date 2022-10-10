@@ -40,7 +40,7 @@ const FeatureList: FeatureItem[] = [
       </>
     ),
     type: [docType.Documentation, docType.Interactive],
-    link: '/tutorials/category/deploy-services',
+    link: '/category/deploy-services',
   },
   {
     title: 'Manage Feature Flags',
@@ -52,7 +52,7 @@ const FeatureList: FeatureItem[] = [
       </>
     ),
     type: [docType.Documentation, docType.Interactive, docType.Video],
-    link: '/tutorials/category/manage-feature-flags',
+    link: '/category/manage-feature-flags',
   },
   {
     title: 'Optimize Cloud Costs',
@@ -64,7 +64,7 @@ const FeatureList: FeatureItem[] = [
       </>
     ),
     type: [docType.Documentation, docType.Video],
-    link: '/tutorials/category/optimize-cloud-costs',
+    link: '/category/optimize-cloud-costs',
   },
   {
     title: 'Manage SLOs',
@@ -76,7 +76,7 @@ const FeatureList: FeatureItem[] = [
       </>
     ),
     type: [docType.Documentation, docType.Interactive, docType.Video],
-    link: '/tutorials/category/manage-slos',
+    link: '/category/manage-slos',
   },
   {
     title: 'Orchestrate Security Testings',
@@ -88,7 +88,7 @@ const FeatureList: FeatureItem[] = [
       </>
     ),
     type: [docType.Documentation, docType.Interactive, docType.Video],
-    link: 'docs/category/orchestrate-security-tests',
+    link: '/category/orchestrate-security-tests',
   },
   {
     title: 'Run Chaos Experiments',
@@ -100,7 +100,7 @@ const FeatureList: FeatureItem[] = [
       </>
     ),
     type: [docType.Documentation, docType.Interactive, docType.Video],
-    link: 'docs/category/run-chaos-experiments',
+    link: '/category/run-chaos-experiments',
   },
 ];
 
@@ -132,7 +132,7 @@ function Feature({title, Svg, description, type, module, link}: FeatureItem) {
 export default function HomepageFeatures(): JSX.Element {
   return (
     <section className={styles.features}>
-      <h2>Get Started</h2>
+      <h2>Tutorials</h2>
       <div className={styles.getStart}>
           {FeatureList.map((props, idx) => (
             <Feature key={idx} {...props} />

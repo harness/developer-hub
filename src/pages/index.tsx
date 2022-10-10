@@ -46,7 +46,7 @@ export default function Home(): JSX.Element {
           <div className="container">
             <div className="flexContainer">
               <HomepageFeatures />
-              <WhatsNew />
+              {/* <WhatsNew /> */}
             </div>
             <LearnAboutPlatform />
           </div>
