@@ -70,85 +70,44 @@ const config = {
             position: "right",
             type: "dropdown",
             label: "Tutorials",
-            docId: "intro",
             items: [
               {
-                type: "doc",
-                label: "Build Code",
-                docId: "/category/build-code",
-              },
-              {
-                type: "doc",
-                label: "Deploy Services",
-                docId: "/category/deploy-services",
-              },
-              {
-                type: "doc",
-                label: "Manage Feature Flags",
-                docId: "/category/manage-feature-flags",
-              },
-              {
-                type: "doc",
-                label: "Optimize Cloud Costs",
-                docId: "/category/optimize-cloud-costs",
-              },
-              {
-                type: "doc",
-                label: "Manage SLOs",
-                docId: "/category/manage-slos",
-              },
-              {
-                type: "doc",
-                label: "Orchestrate Security Tests",
-                docId: "/category/orchestrate-security-tests",
-              },
-              {
-                type: "doc",
-                label: "Run Chaos Experiments",
-                docId: "/category/run-chaos-experiments",
-              },
-            ],
-          },
-          {
-            position: "right",
-            type: "dropdown",
-            label: "Docs",
-            docId: "intro",
-            items: [
-              {
-                type: "doc",
+                // type: "doc",
+                to: "build-code",
                 label: "Continuous Integration",
-                docId: "/category/build-code",
+                // docId: "build-code",
+                // activeBasePath: "to",
               },
               {
-                type: "doc",
+                // type: "doc",
                 label: "Continuous Delivery",
-                docId: "/category/deploy-services",
+                to: "deploy-services",
               },
               {
-                type: "doc",
+                // type: "doc",
                 label: "Feature Flags",
-                docId: "/category/manage-feature-flags",
+                to: "manage-feature-flags",
+                // activeBaseRegex: "/manage-feature-flags",
               },
               {
-                type: "doc",
+                // type: "doc",
                 label: "Cloud Cost Management",
-                docId: "/category/optimize-cloud-costs",
+                to: "/category/optimize-cloud-costs",
               },
               {
-                type: "doc",
+                // type: "doc",
                 label: "Service Reliability Management",
-                docId: "/category/manage-slos",
+                to: "/category/manage-slos",
               },
               {
-                type: "doc",
+                // type: "doc",
                 label: "Security Test Orchestration",
-                docId: "/category/orchestrate-security-tests",
+                to: "/category/orchestrate-security-tests",
               },
               {
-                type: "doc",
+                // type: "doc",
                 label: "Chaos Engineering",
-                docId: "/category/run-chaos-experiments",
+                to: "/category/run-chaos-experiments",
               },
             ],
           },
@@ -256,6 +215,19 @@ const config = {
         searchPagePath: "search",
 
         //... other Algolia params
+      },
+      colorMode: {
+        defaultMode: "light",
+        disableSwitch: true,
+        respectPrefersColorScheme: false,
+      },
+      announcementBar: {
+        id: "support_us",
+        content:
+          'DLP is still a beta version, any suggestions please send email to <a href="mailto:ravi.lachhman@harness.io">ravi.lachhman@harness.io</a>',
+        backgroundColor: "#FF5310",
+        textColor: "#ffffff",
+        isCloseable: true,
       },
     }),
   plugins: ["docusaurus-plugin-sass"],

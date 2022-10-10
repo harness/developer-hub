@@ -28,7 +28,7 @@ const FeatureList: FeatureItem[] = [
       </>
     ),
     type: [docType.Documentation, docType.Interactive, docType.Video],
-    link: 'docs/category/build-code',
+    link: '/build-code',
   },
   {
     title: 'Deploy Services',
@@ -40,7 +40,7 @@ const FeatureList: FeatureItem[] = [
       </>
     ),
     type: [docType.Documentation, docType.Interactive],
-    link: '/category/deploy-services',
+    link: '/deploy-services',
   },
   {
     title: 'Manage Feature Flags',
@@ -52,7 +52,7 @@ const FeatureList: FeatureItem[] = [
       </>
     ),
     type: [docType.Documentation, docType.Interactive, docType.Video],
-    link: '/category/manage-feature-flags',
+    link: '/manage-feature-flags',
   },
   {
     title: 'Optimize Cloud Costs',

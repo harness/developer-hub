@@ -1,0 +1,121 @@
+.breadCrumb{
+    margin-top: 10px;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    li{
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 18px;
+        color: #22222A;
+        padding-right: 10px;
+        &::after{
+            top: 0;
+            right: 0;
+            content: '>';
+            padding-left: 10px;
+        }
+    }
+}
+.SectionName{
+    h3{
+        font-family: 'Inter';
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: #000000;
+    }
+}
+.topSection{
+    border-bottom: 1px solid #D9DAE5;
+    margin-bottom: 3.5rem;
+    padding-bottom: 3.5rem;
+    .moduleTitle{
+        display: flex;
+        align-items: center;
+        margin-bottom: 36px;
+        img{
+            padding-right: 10px;
+        }
+        h1{
+            margin-bottom: 0;
+        }
+    }
+    .ff_img{
+        margin: 56px 0;
+    }
+}
+.spaceBetween{
+    display: flex;
+    justify-content: space-between;
+}
+.alignCenter{
+    display: flex;
+    align-items: center;
+    h1{
+        margin-bottom: 0;
+    }
+}
+.link{
+    background: transparent;
+    border: none;
+    color: #0278D5;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    margin-left: 32px;
+}
+.btn{
+    color: white;
+    border-radius: 4px;
+    padding-right: 18px;
+    padding-left: 18px;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+}
+.btnLight{
+    background: #F3F3FA;
+    border: 1px solid #B0B1C4;
+    color: #22222A;
+    align-items: center;
+    display: flex;
+    img{
+        padding-right: 10px;
+    }
+    &:hover {
+        color: var(--black)
+    }
+}
+.btnCD{
+    background: #5FB34E;
+    border-color: #5FB34E;
+    img{
+        padding-left: 10px;
+    }
+}
+.btnCI{
+    background: #2BB1F2;
+    border-color: #2BB1F2;
+    img{
+        padding-left: 10px;
+    }
+}
+.btnFF{
+    background: #EE8625;
+    border-color: #EE8625;
+    img{
+        padding-left: 10px;
+    }
+}
+.subSection{
+    margin-top: 36px;
+    h3{
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 28px;
+        color: #22222A;
+    }    
+}

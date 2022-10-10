@@ -1,0 +1,77 @@
+.spaceBetween{
+    display: flex;
+    flex-flow: row wrap;
+}
+.tutorialCard{
+    border-radius: 8px;
+    box-shadow: 0px 0px 1px rgba(40, 41, 61, 0.04), 0px 2px 4px rgba(96, 97, 112, 0.16);
+    padding: 24px;
+    margin: 0 30px 30px 0;
+    width: 25%;
+    border: 3px solid white;
+    position: relative;
+    .ribbon{
+        position: absolute;
+        top: 24px;
+        right: -3px;
+    }
+    h6{
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 22px;
+        color: #6B6D85;
+    }
+    h4{
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 24px;
+        color: #000000;
+    }
+    p{
+        font-weight: 400;
+        font-size: 12px;
+        color: #22222A;
+    }
+    ul.docTypes {
+        display: flex;
+        padding-left: 0;
+        li {
+          width: 24px;
+          height: 24px;
+          overflow: hidden;
+          background-color: #F3F3FA;
+          display: flex;
+          justify-content: center;
+          align-content: center;
+          align-items: center;
+          border-radius: 4px;
+          margin-right: 4px;
+          img {
+            width: 16px;
+            height: 16px;
+          }
+        }
+      }
+}
+.ci:hover, .cd:hover, .ff:hover{
+    border: 3px solid;
+    border-image-slice: 1;
+    border-width: 3px;
+}
+.cd:hover{
+    border-image-source: linear-gradient(to left, rgba(98, 249, 31, 1), rgba(69, 189, 53, 1));
+}
+.ci:hover{
+    border-image-source: linear-gradient(to left, rgba(115, 223, 231, 1), rgba(0, 149, 247, 1));
+}
+.ff:hover{
+    border-image-source: linear-gradient(to left, rgba(255, 193, 0, 1), rgba(230, 107, 53, 1));
+}
+.featureCard{
+    border: 1px solid #D9DAE5;
+    box-shadow: none;
+    width: 47%;
+    .ribbon{
+        right: 0;
+    }
+}
