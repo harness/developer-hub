@@ -1,4 +1,3 @@
-
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -8,10 +7,9 @@ Your on-ramp to the Harness Platform is the [Harness Delegate](https://docs.harn
 
 There are multiple ways to install a Harness Delegate and there is strategy that can be applied with scaling Harness Delegates across an organization e.g Delegate placement, packaging, and access. Though as you are getting started with the Harness Platform, an easy way to install a single Harness Delegate into a Kubernetes cluster of your choice.
 
-
 ### Installing the Harness Delegate in a Kubernetes Cluster
 
-The Harness Delegate can be installed into a wide set of Kubernetes clusters. From locally on your machine such as [minikube](https://minikube.sigs.k8s.io/docs/start/) or [k3d](https://k3d.io/v5.4.4/) to a variety of cloud providers. The Harness Platform needs connectivity to talk to the Harness Delegate which can be configured for example if you are behind a proxy. For clusters on your own machine or ones readily available by public cloud providers, the Harness wirings will work automatically.
+The Harness Delegate can be installed into a wide set of Kubernetes clusters. From locally on your machine such as [minikube](https://minikube.sigs.k8s.io/tutorials/start/) or [k3d](https://k3d.io/v5.4.4/) to a variety of cloud providers. The Harness Platform needs connectivity to talk to the Harness Delegate which can be configured for example if you are behind a proxy. For clusters on your own machine or ones readily available by public cloud providers, the Harness wirings will work automatically.
 
 If you don’t have Minikube on a Windows Machine, you can use [Chocolatey](https://chocolatey.org/install) to install, or if using a Mac, [Homebrew](https://brew.sh/).
 
@@ -95,4 +93,3 @@ Click Continue and in a few moments after the health checks pass, your Harness D
 Click Done and can verify your new Delegate is on the list.
 
 ![Delegate Available](static/kubernetes-delegate-install/available.png)
-

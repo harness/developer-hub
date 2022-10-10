@@ -34,9 +34,11 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
+          path: "tutorials",
           sidebarPath: require.resolve("./sidebars.js"),
           editUrl: "https://github.com/harness/developer-hub/tree/main", // /tree/main/packages/create-docusaurus/templates/shared/
           exclude: ["**/docs-shared-components/**"],
+          routeBasePath: "/", //CHANGE HERE
         },
         blog: {
           showReadingTime: true,
@@ -67,42 +69,43 @@ const config = {
           {
             position: "right",
             type: "dropdown",
-            label: "Docs",
+            label: "Tutorials",
+            docId: "intro",
             items: [
               {
-                type: 'doc',
-                label: 'Continuous Integration',
-                docId: '/category/build-code',
+                type: "doc",
+                label: "Continuous Integration",
+                docId: "/category/build-code",
               },
               {
-                type: 'doc',
-                label: 'Continuous Delivery',
-                docId: '/category/deploy-services',
+                type: "doc",
+                label: "Continuous Delivery",
+                docId: "/category/deploy-services",
               },
               {
-                type: 'doc',
-                label: 'Feature Flags',
-                docId: '/category/manage-feature-flags',
+                type: "doc",
+                label: "Feature Flags",
+                docId: "/category/manage-feature-flags",
               },
               {
-                type: 'doc',
-                label: 'Cloud Cost Management',
-                docId: '/category/optimize-cloud-costs',
+                type: "doc",
+                label: "Cloud Cost Management",
+                docId: "/category/optimize-cloud-costs",
               },
               {
-                type: 'doc',
-                label: 'Service Reliability Management',
-                docId: '/category/manage-slos',
+                type: "doc",
+                label: "Service Reliability Management",
+                docId: "/category/manage-slos",
               },
               {
-                type: 'doc',
-                label: 'Security Test Orchestration',
-                docId: '/category/orchestrate-security-tests',
+                type: "doc",
+                label: "Security Test Orchestration",
+                docId: "/category/orchestrate-security-tests",
               },
               {
-                type: 'doc',
-                label: 'Chaos Engineering',
-                docId: '/category/run-chaos-experiments',
+                type: "doc",
+                label: "Chaos Engineering",
+                docId: "/category/run-chaos-experiments",
               },
             ],
           },
@@ -112,12 +115,12 @@ const config = {
             label: "Resources",
             items: [
               {
-                label: 'Harness Community',
-                href: 'https://community.harness.io',
+                label: "Harness Community",
+                href: "https://community.harness.io",
               },
               {
-                label: 'Harness Community Slack',
-                href: 'https://join.slack.com/t/harnesscommunity/shared_invite/zt-y4hdqh7p-RVuEQyIl5Hcx4Ck8VCvzBw',
+                label: "Harness Community Slack",
+                href: "https://join.slack.com/t/harnesscommunity/shared_invite/zt-y4hdqh7p-RVuEQyIl5Hcx4Ck8VCvzBw",
               },
             ],
           },
@@ -142,7 +145,7 @@ const config = {
             items: [
               {
                 label: "Tutorial",
-                to: "/docs/intro",
+                to: "/tutorials/intro",
               },
             ],
           },
