@@ -40,7 +40,7 @@ const FeatureList: FeatureItem[] = [
       </>
     ),
     type: [docType.Documentation, docType.Interactive],
-    link: '/docs/category/deploy-services',
+    link: '/tutorials/category/deploy-services',
   },
   {
     title: 'Manage Feature Flags',
@@ -52,7 +52,7 @@ const FeatureList: FeatureItem[] = [
       </>
     ),
     type: [docType.Documentation, docType.Interactive, docType.Video],
-    link: '/docs/category/manage-feature-flags',
+    link: '/tutorials/category/manage-feature-flags',
   },
   {
     title: 'Optimize Cloud Costs',
@@ -64,7 +64,7 @@ const FeatureList: FeatureItem[] = [
       </>
     ),
     type: [docType.Documentation, docType.Video],
-    link: '/docs/category/optimize-cloud-costs',
+    link: '/tutorials/category/optimize-cloud-costs',
   },
   {
     title: 'Manage SLOs',
@@ -76,7 +76,7 @@ const FeatureList: FeatureItem[] = [
       </>
     ),
     type: [docType.Documentation, docType.Interactive, docType.Video],
-    link: '/docs/category/manage-slos',
+    link: '/tutorials/category/manage-slos',
   },
   {
     title: 'Orchestrate Security Testings',
