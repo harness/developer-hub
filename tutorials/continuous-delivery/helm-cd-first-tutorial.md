@@ -171,7 +171,7 @@ Clicking Continue, you are now ready to configure the Execution Strategy or the 
 
 ![Deployment Strategy](static/first-helm-deployment/strategy.png)
 
-Select “Rolling” then click on Use Strategy. Now you are ready to save this Pipeline and execute the Pipeline to create a deployment e.g a [Helm Release](https://helm.sh/tutorials/intro/using_helm/).
+Select “Rolling” then click on Use Strategy. Now you are ready to save this Pipeline and execute the Pipeline to create a deployment e.g a [Helm Release](https://helm.sh/intro/using_helm/).
 
 ![Pre Run](static/first-helm-deployment/pre_run.png)
 
