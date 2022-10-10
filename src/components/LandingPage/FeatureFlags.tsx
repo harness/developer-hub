@@ -2,8 +2,8 @@ import React from 'react'
 // import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
 import clsx from 'clsx';
-import styles from './style.module.scss';
-import ModuleCard from '@site/src/components/Category/ModuleCard'; 
+import styles from './styles.module.scss';
+import ModuleCard from './ModuleCard'; 
 
 enum docType {
   Documentation = 'doc',

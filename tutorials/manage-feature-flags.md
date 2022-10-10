@@ -7,6 +7,6 @@ hide_title: true
 
 <!-- Custom component -->
 
-import FeatureFlags from '@site/src/pages/feature-flags';
+import FeatureFlags from '@site/src/components/LandingPage/FeatureFlags';
 
 <FeatureFlags />

@@ -1,6 +1,6 @@
 import React from 'react';
-import clsx from 'clsx';
-import styles from './styles.module.scss';
+// import clsx from 'clsx';
+import styles from './ModuleCard.module.scss';
 
 function Feature({title, ribbon, description, type, time, module, featureCard}: FeatureItem) {
   return (

@@ -7,6 +7,6 @@ hide_title: true
 
 <!-- Custom component -->
 
-import ContinuousDelivery from '@site/src/pages/continuous-delivery';
+import ContinuousDelivery from '@site/src/components/LandingPage/ContinuousDelivery';
 
 <ContinuousDelivery />

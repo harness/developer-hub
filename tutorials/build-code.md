@@ -7,6 +7,6 @@ hide_title: true
 
 <!-- Custom component -->
 
-import ContinuousIntegration from '@site/src/pages/continuous-integration';
+import ContinuousIntegration from '@site/src/components/LandingPage/ContinuousIntegration';
 
 <ContinuousIntegration />
