@@ -178,46 +178,78 @@ const config = {
         style: "dark",
         links: [
           {
-            title: "Docs",
+            title: "Product",
             items: [
               {
-                label: "Tutorial",
-                to: "/intro",
+                label: "Harness Platform Overview",
+                href: "https://harness.io/products/platform",
+              },
+              {
+                label: "Continuous Integration",
+                href: "https://harness.io/products/continuous-integration",
+              },
+              {
+                label: "Continuous Delivery",
+                href: "https://harness.io/products/continuous-delivery",
+              },
+              {
+                label: "Feature Flags",
+                href: "https://harness.io/products/feature-flags",
+              },
+              {
+                label: "Cloud Cost Management",
+                href: "https://harness.io/products/cloud-cost",
+              },
+              {
+                label: "Service Reliability Management",
+                href: "https://harness.io/products/service-reliability-management",
+              },
+              {
+                label: "Security Testing Orchestration",
+                href: "https://harness.io/products/security-testing-orchestration",
+              },
+              {
+                label: "Chaos Engineering",
+                href: "https://harness.io/products/chaos-engineering",
               },
             ],
           },
           {
-            title: "Community",
+            title: "Resources",
             items: [
               {
                 label: "Harness University",
                 href: "https://university.harness.io",
               },
               {
-                label: "Harness Docs",
-                href: "https://docs.harness.io",
+                label: "Harness Community",
+                href: "https://community.harness.io",
               },
               {
-                label: "Twitter",
-                href: "https://twitter.com/harness",
+                label: "Harness Community Slack",
+                href: "https://join.slack.com/t/harnesscommunity/shared_invite/zt-y4hdqh7p-RVuEQyIl5Hcx4Ck8VCvzBw",
+              },
+              {
+                label: "Harness Support",
+                href: "https://harness.io/support-search",
+              },
+              {
+                label: "Harness YouTube",
+                href: "https://www.youtube.com/c/Harnessio",
               },
             ],
           },
           {
-            title: "More",
+            title: "Legal",
             items: [
               {
-                label: "Blog",
+                label: "Terms of Use",
                 // to: "/blog",
-                href: "https://harness.io/blog",
+                href: "https://harness.io/legal/website-terms-of-use",
               },
               {
-                label: "Try for Free",
-                href: "https://app.harness.io/auth/#/signup/&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=plt-plg&utm_content=get-started",
-              },
-              {
-                label: "GitHub",
-                href: "https://github.com/harness/developer-hub",
+                label: "Privacy Policy",
+                href: "https://harness.io/legal/privacy",
               },
             ],
           },

@@ -25,28 +25,29 @@ type FeatureItem = {
 const FeaturedList: FeatureItem[] = [{
   title: 'First Kubernetes Deployment',
   module: 'cd',
-  // Svg: '/img/icon_ci.svg',
+  // Svg: '/img/icon_cd.svg',
   description: (
     <>
       Deploying your first set of Kubernetes Services in a CD Pipline with Kubernetes Manifests. 
     </>
   ),
   ribbon: true,
-  type: [docType.Documentation, docType.Interactive, docType.Video],
+  type: [docType.Documentation],
+  //type: [docType.Documentation, docType.Interactive, docType.Video],
   time: '10 min',
   link: '/deploy-services/kubernetes-cd-first-tutorial',
 },
 {
   title: 'First GitOps Deployment',
   module: 'cd',
-  // Svg: '/img/icon_ci.svg',
+  // Svg: '/img/icon_cd.svg',
   description: (
     <>
       Learn about GitOps and how to leverage your own GitOps Pipeline.
     </>
   ),
   ribbon: true,
-  type: [docType.Documentation, docType.Interactive],
+  type: [docType.Documentation],
   time: '8min',
   link: '/deploy-services/first-gitops-example',
 },];
@@ -61,7 +62,8 @@ const CDList: FeatureItem[] = [{
     </>
   ),
   ribbon: false,
-  type: [docType.Documentation, docType.Interactive, docType.Video],
+  type: [docType.Documentation],
+  //type: [docType.Documentation, docType.Interactive, docType.Video],
   time: '10 min',
   link: '/deploy-services/kubernetes-cd-first-tutorial',
 },
@@ -75,7 +77,7 @@ const CDList: FeatureItem[] = [{
     </>
   ),
   ribbon: false,
-  type: [docType.Documentation, docType.Interactive],
+  type: [docType.Documentation],
   time: '10min',
   link: '/deploy-services/first-gitops-example',
 },
@@ -89,7 +91,7 @@ const CDList: FeatureItem[] = [{
     </>
   ),
   ribbon: false,
-  type: [docType.Documentation, docType.Interactive],
+  type: [docType.Documentation],
   time: '10min',
   link: 'deploy-services/helm-cd-first-tutorial',
 },

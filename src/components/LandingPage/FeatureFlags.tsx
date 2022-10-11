@@ -24,14 +24,14 @@ type FeatureItem = {
 const FeaturedList: FeatureItem[] = [{
   title: 'TypeScript and React Feature Flags',
   module: 'ff',
-  // Svg: '/img/icon_ci.svg',
+  // Svg: '/img/icon_ff.svg',
   description: (
     <>
       Walks you through adding JavaScript Feature Flags to a TypeScript and React Application.
     </>
   ),
   ribbon: true,
-  type: [docType.Documentation, docType.Interactive, docType.Video],
+  type: [docType.Documentation],
   time: '10min',
   link: "/manage-feature-flags/typescript-react-first-feature-flag",
   }

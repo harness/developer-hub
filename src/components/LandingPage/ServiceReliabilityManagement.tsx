@@ -30,7 +30,7 @@ const FeaturedList: FeatureItem[] = [{
     </>
   ),
   ribbon: true,
-  type: [docType.Documentation, docType.Interactive, docType.Video],
+  type: [docType.Documentation],
   time: '15min',
   link: '/manage-slos/intro-to-srm'
 }]; 
@@ -44,7 +44,7 @@ const SRMList: FeatureItem[] = [{
     </>
   ),
   ribbon: false,
-  type: [docType.Documentation, docType.Interactive, docType.Video],
+  type: [docType.Documentation],
   time: '15min',
   link: '/manage-slos/intro-to-srm'
 }];
