@@ -115,10 +115,10 @@ export default function CI() {
         <ModuleCard FeatureList={FeaturedList} featureCard={true} />
       </div>
       <div className={styles.subSection}>
-        <h3>
+        {/* <h3>
           Drone Tutorials
         </h3>
-        <ModuleCard FeatureList={DroneList} />
+  <ModuleCard FeatureList={DroneList} /> */}
         <h3>
           All Building Code Tutorials
         </h3>

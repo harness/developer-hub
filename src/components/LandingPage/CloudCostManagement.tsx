@@ -30,7 +30,7 @@ const FeaturedList: FeatureItem[] = [{
     </>
   ),
   ribbon: true,
-  type: [docType.Documentation, docType.Interactive, docType.Video],
+  type: [docType.Documentation],
   time: '10min',
   link: '/optimize-cloud-costs/ccm-first-kubernetes-tutorial'
 }]; 
@@ -44,7 +44,7 @@ const CCMList: FeatureItem[] = [{
     </>
   ),
   ribbon: false,
-  type: [docType.Documentation, docType.Interactive, docType.Video],
+  type: [docType.Documentation],
   time: '10min',
   link: '/optimize-cloud-costs/ccm-first-kubernetes-tutorial'
 }]; 
