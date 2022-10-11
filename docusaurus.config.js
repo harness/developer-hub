@@ -132,6 +132,18 @@ const config = {
                 label: "Cloud Cost Management",
                 href: "https://docs.harness.io/category/exgoemqhji-ccm",
               },
+              {
+                label: "Service Reliability Management",
+                href: "https://docs.harness.io/category/ko19u4brsv-howtos-service-reliability-management",
+              },
+              {
+                label: "Security Testing Orchestration",
+                href: "https://docs.harness.io/category/txlccquh5c-sto-category",
+              },
+              {
+                label: "Chaos Engineering",
+                href: "https://docs.harness.io/category/kl0mxwpfw1-hce-category",
+              },
             ],
           },
           {

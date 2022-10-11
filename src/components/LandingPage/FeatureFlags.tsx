@@ -22,109 +22,20 @@ type FeatureItem = {
 };
  
 const FeatureList: FeatureItem[] = [{
-  title: 'Feature Flag Security',
+  title: 'TypeScript and React Feature Flags',
   module: 'ff',
   // Svg: '/img/icon_ci.svg',
   description: (
     <>
-      The deployment guides walk you through setting up a specific deployment using Harness, such as ECS, Kubernetes, and Helm. They are written to provide you with everything you need to learn how to model your CD process in Harness.
+      Walks you through adding Feature Flags to a TypeScript and React Application.
     </>
   ),
   ribbon: false,
   type: [docType.Documentation, docType.Interactive, docType.Video],
   time: '15min',
-},
-{
-  title: 'Build Code',
-  module: 'ff',
-  // Svg: '/img/icon_ci.svg',
-  description: (
-    <>
-      The deployment guides walk you through setting up a specific deployment using Harness, such as ECS, Kubernetes, and Helm. They are written to provide you with everything you need to learn how to model your CD process in Harness.
-    </>
-  ),
-  ribbon: false,
-  type: [docType.Documentation, docType.Interactive],
-  time: '15min',
-},
-{
-  title: 'Build Code',
-  module: 'ff',
-  // Svg: '/img/icon_ci.svg',
-  description: (
-    <>
-      The deployment guides walk you through setting up a specific deployment using Harness, such as ECS, Kubernetes, and Helm. 
-    </>
-  ),
-  ribbon: false,
-  type: [docType.Documentation, docType.Interactive],
-  time: '15min',
-},
-{
-    title: 'Build Code',
-    module: 'ff',
-    // Svg: '/img/icon_ci.svg',
-    description: (
-      <>
-        The deployment guides walk you through setting up a specific deployment using Harness, such as ECS, Kubernetes, and Helm. 
-      </>
-    ),
-    ribbon: false,
-    type: [docType.Documentation, docType.Interactive],
-    time: '15min',
-  },
-  {
-    title: 'Build Code',
-    module: 'ff',
-    // Svg: '/img/icon_ci.svg',
-    description: (
-      <>
-        The deployment guides walk you through setting up a specific deployment using Harness, such as ECS, Kubernetes, and Helm. They are written to provide you with everything you need to learn how to model your CD process in Harness.
-      </>
-    ),
-    ribbon: true,
-    type: [docType.Documentation, docType.Interactive],
-    time: '15min',
-  },
-  {
-    title: 'Build Code',
-    module: 'ff',
-    // Svg: '/img/icon_ci.svg',
-    description: (
-      <>
-        The deployment guides walk you through setting up a specific deployment using Harness, such as ECS, Kubernetes, and Helm.
-      </>
-    ),
-    ribbon: false,
-    type: [docType.Documentation, docType.Interactive],
-    time: '8min',
-  },
-{
-title: 'Build Code',
-module: 'ff',
-// Svg: '/img/icon_ci.svg',
-description: (
-    <>
-    The deployment guides walk you through setting up a specific deployment using Harness, such as ECS, Kubernetes, and Helm. They are written to provide you with everything you need to learn how to model your CD process in Harness.
-    </>
-),
-ribbon: true,
-type: [docType.Documentation, docType.Interactive],
-time: '15min',
-},
-{
-title: 'Build Code',
-module: 'ff',
-// Svg: '/img/icon_ci.svg',
-description: (
-    <>
-    The deployment guides walk you through setting up a specific deployment using Harness, such as ECS, Kubernetes, and Helm.
-    </>
-),
-ribbon: false,
-type: [docType.Documentation, docType.Interactive],
-time: '8min',
-},]; 
+  link: "/manage-feature-flags/typescript-react-first-feature-flag",
+  }
+]; 
 
 export default function FF() {
   return (
