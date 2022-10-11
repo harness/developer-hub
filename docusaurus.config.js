@@ -6,7 +6,7 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "Harness Developer Hub (Beta)",
+  title: "Harness Developer Hub",
   tagline:
     "Learn intelligent software delivery skills at your own pace and in once place. Step-by-step tutorials, videos, and reference docs to help you create and deliver software.",
   url: "https://harness-developer.netlify.app",
@@ -74,40 +74,63 @@ const config = {
               {
                 // type: "doc",
                 to: "build-code",
-                label: "Continuous Integration",
+                label: "Build Code",
                 // docId: "build-code",
                 // activeBasePath: "to",
               },
               {
                 // type: "doc",
-                label: "Continuous Delivery",
+                label: "Deploy Services",
                 to: "deploy-services",
               },
               {
                 // type: "doc",
-                label: "Feature Flags",
+                label: "Manage Feature Flags",
                 to: "manage-feature-flags",
                 // activeBaseRegex: "/manage-feature-flags",
               },
               {
                 // type: "doc",
-                label: "Cloud Cost Management",
+                label: "Optimize Cloud Costs",
                 to: "optimize-cloud-costs",
               },
               {
                 // type: "doc",
-                label: "Service Reliability Management",
+                label: "Manage SLOs",
                 to: "manage-slos",
               },
               {
                 // type: "doc",
-                label: "Security Test Orchestration",
+                label: "Orchestrate Security Tests",
                 to: "orchestrate-security-tests",
               },
               {
                 // type: "doc",
-                label: "Chaos Engineering",
+                label: "Run Chaos Experiments",
                 to: "run-chaos-experiments",
+              },
+            ],
+          },
+          {
+            position: "right",
+            type: "dropdown",
+            label: "Documentation",
+            items: [
+              {
+                label: "Continuous Integration",
+                href: "https://docs.harness.io/category/zgffarnh1m-ci-category",
+              },
+              {
+                label: "Continuous Delivery",
+                href: "https://docs.harness.io/category/pfzgb4tg05-howto-cd",
+              },
+              {
+                label: "Feature Flags",
+                href: "https://docs.harness.io/category/vjolt35atg-feature-flags",
+              },
+              {
+                label: "Cloud Cost Management",
+                href: "https://docs.harness.io/category/exgoemqhji-ccm",
               },
             ],
           },
@@ -224,7 +247,7 @@ const config = {
       announcementBar: {
         id: "support_us",
         content:
-          'DLP is still a beta version, any suggestions please send email to <a href="mailto:ravi.lachhman@harness.io">ravi.lachhman@harness.io</a>',
+          'Harness Developer Hub is still a beta version, any suggestions please submit feedback to the feedback form.</a>',
         backgroundColor: "#FF5310",
         textColor: "#ffffff",
         isCloseable: true,
