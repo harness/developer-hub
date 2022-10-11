@@ -4,52 +4,6 @@
 
 const sidebars = {
   allcontent: [
-    // Documentation Parent
-    {
-      type: "category",
-      label: "Documentation",
-      link: {
-        type: "generated-index",
-      },
-      collapsed: true,
-      items: [
-        {
-          type: "link",
-          label: "Continuous Integration",
-          href: "https://docs.harness.io/category/zgffarnh1m-ci-category",
-        },
-        {
-          type: "link",
-          label: "Continuous Delivery",
-          href: "https://docs.harness.io/category/pfzgb4tg05-howto-cd",
-        },
-        {
-          type: "link",
-          label: "Feature Flags",
-          href: "https://docs.harness.io/category/vjolt35atg-feature-flags",
-        },
-        {
-          type: "link",
-          label: "Cloud Cost Management",
-          href: "https://docs.harness.io/category/exgoemqhji-ccm",
-        },
-        {
-          type: "link",
-          label: "Service Reliability Management",
-          href: "https://docs.harness.io/category/ko19u4brsv-howtos-service-reliability-management",
-        },
-        {
-          type: "link",
-          label: "Security Testing Orchestration",
-          href: "https://docs.harness.io/category/txlccquh5c-sto-category",
-        },
-        {
-          type: "link",
-          label: "Chaos Engineering",
-          href: "https://docs.harness.io/category/kl0mxwpfw1-hce-category",
-        },
-      ],
-    },
 
     //Tutorial Parent
     {
@@ -181,9 +135,59 @@ const sidebars = {
           ],
         },
 
-        //Additional Items Can Go Below
+        //Additional Items in this parent can go here. 
+
       ],
     },
+    // Documentation Parent
+    {
+      type: "category",
+      label: "Documentation",
+      link: {
+        type: "generated-index",
+      },
+      collapsed: true,
+      items: [
+        {
+          type: "link",
+          label: "Continuous Integration",
+          href: "https://docs.harness.io/category/zgffarnh1m-ci-category",
+        },
+        {
+          type: "link",
+          label: "Continuous Delivery",
+          href: "https://docs.harness.io/category/pfzgb4tg05-howto-cd",
+        },
+        {
+          type: "link",
+          label: "Feature Flags",
+          href: "https://docs.harness.io/category/vjolt35atg-feature-flags",
+        },
+        {
+          type: "link",
+          label: "Cloud Cost Management",
+          href: "https://docs.harness.io/category/exgoemqhji-ccm",
+        },
+        {
+          type: "link",
+          label: "Service Reliability Management",
+          href: "https://docs.harness.io/category/ko19u4brsv-howtos-service-reliability-management",
+        },
+        {
+          type: "link",
+          label: "Security Testing Orchestration",
+          href: "https://docs.harness.io/category/txlccquh5c-sto-category",
+        },
+        {
+          type: "link",
+          label: "Chaos Engineering",
+          href: "https://docs.harness.io/category/kl0mxwpfw1-hce-category",
+        },
+      ],
+    },
+
+    //Additional Items in this parent can go here. 
+
   ],
 };
 
