@@ -138,7 +138,7 @@ const CCMList: FeatureItem[] = [{
   ribbon: false,
   type: [docType.Documentation],
   time: '10min',
-  link: '/tutorials/optimize-cloud-costs/ccm-first-kubernetes-tutorial'
+  link: '/tutorials/manage-cloud-costs/ccm-first-kubernetes-tutorial'
 }]; 
 
 const SRMList: FeatureItem[] = [{
@@ -153,11 +153,11 @@ const SRMList: FeatureItem[] = [{
   ribbon: false,
   type: [docType.Documentation],
   time: '15min',
-  link: '/tutorials/manage-slos/intro-to-srm'
+  link: '/tutorials/manage-service-reliability/intro-to-srm'
 }];
 
 const STOList: FeatureItem[] = [{
-  title: 'Introduction to SLO Management with Prometheus',
+  title: 'Scan a NodeJS Application',
   module: 'srm',
   Svg: '',
   description: (

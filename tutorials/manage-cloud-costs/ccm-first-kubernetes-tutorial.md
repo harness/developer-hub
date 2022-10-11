@@ -2,10 +2,10 @@
 sidebar_position: 1
 ---
 
-# Optimizing Your Cloud Costs on Kubernetes
+# Optimize cloud costs for Kubernetes
 
 ```mdx-code-block
-import KubernetesDelegateInstall from '/tutorials/docs-shared-components/kubernetes-delegate-install-includes.md';
+import KubernetesDelegateInstall from '/tutorials/shared/kubernetes-delegate-install-includes.md';
 ```
 
 ## Background on Cloud Costs

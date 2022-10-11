@@ -32,7 +32,7 @@ const FeaturedList: FeatureItem[] = [{
   ribbon: true,
   type: [docType.Documentation],
   time: '10min',
-  link: '/tutorials/optimize-cloud-costs/ccm-first-kubernetes-tutorial'
+  link: '/tutorials/manage-cloud-costs/ccm-first-kubernetes-tutorial'
 }]; 
 
 const CCMList: FeatureItem[] = [{
@@ -46,7 +46,7 @@ const CCMList: FeatureItem[] = [{
   ribbon: false,
   type: [docType.Documentation],
   time: '10min',
-  link: '/tutorials/optimize-cloud-costs/ccm-first-kubernetes-tutorial'
+  link: '/tutorials/manage-cloud-costs/ccm-first-kubernetes-tutorial'
 }]; 
 
 export default function CCM() {

@@ -1,4 +1,4 @@
-// @ts-check
+  // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
 const lightCodeTheme = require("prism-react-renderer/themes/github");
@@ -92,13 +92,13 @@ const config = {
               },
               {
                 // type: "doc",
-                label: "Optimize Cloud Costs",
-                to: "tutorials/optimize-cloud-costs",
+                label: "Manage Cloud Costs",
+                to: "tutorials/manage-cloud-costs",
               },
               {
                 // type: "doc",
-                label: "Manage SLOs",
-                to: "tutorials/manage-slos",
+                label: "Manage Service Reliability",
+                to: "tutorials/manage-service-reliability",
               },
               {
                 // type: "doc",
@@ -147,46 +147,54 @@ const config = {
               },
             ],
           },
+          /**
           {
             position: "right",
             type: "dropdown",
             label: "Resources",
             items: [
               {
-                label: "Harness Community",
-                href: "https://community.harness.io",
-              },
-              {
-                label: "Harness Community Slack",
+                label: "Community Slack",
                 href: "https://join.slack.com/t/harnesscommunity/shared_invite/zt-y4hdqh7p-RVuEQyIl5Hcx4Ck8VCvzBw",
               },
               {
-                label: "Harness University",
+                label: "Community Forum",
+                href: "https://community.harness.io",
+              },
+              {
+                label: "University",
                 href: "https://university.harness.io/",
               },
             ],
           },
+          */
           {
             position: "right",
-            label: "Sign Up For Harness",
+            href: "https://join.slack.com/t/harnesscommunity/shared_invite/zt-y4hdqh7p-RVuEQyIl5Hcx4Ck8VCvzBw",
+            label: "Join Slack",
+          },
+          {
+            position: "right",
+            label: "Sign up",
             href: "https://app.harness.io/auth/#/signup/&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=plt-plg&utm_content=get-started",
           },
-          // { to: "/blog", label: "Blog", position: "left" },
+          /**
           {
             href: "https://github.com/harness/developer-hub",
             label: "Developer Hub GitHub",
             position: "right",
           },
+          */
         ],
       },
       footer: {
         style: "dark",
         links: [
           {
-            title: "Product",
+            title: "Harness Software Delivery Platform",
             items: [
               {
-                label: "Harness Platform Overview",
+                label: "Overview",
                 href: "https://harness.io/products/platform",
               },
               {
@@ -223,27 +231,23 @@ const config = {
             title: "Resources",
             items: [
               {
-                label: "Harness University",
-                href: "https://university.harness.io",
-              },
-              {
-                label: "Harness Community",
-                href: "https://community.harness.io",
-              },
-              {
-                label: "Harness Community Slack",
+                label: "Slack",
                 href: "https://join.slack.com/t/harnesscommunity/shared_invite/zt-y4hdqh7p-RVuEQyIl5Hcx4Ck8VCvzBw",
               },
               {
-                label: "Harness Support",
-                href: "https://harness.io/support-search",
+                label: "Forum",
+                href: "https://community.harness.io",
               },
               {
-                label: "Harness YouTube",
+                label: "University",
+                href: "https://university.harness.io",
+              },
+              {
+                label: "YouTube",
                 href: "https://www.youtube.com/c/Harnessio",
               },
               {
-                label: "Sign Up For Harness",
+                label: "Sign up",
                 href: "https://app.harness.io/auth/#/signup/&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=plt-plg&utm_content=get-started",
               },
             ],

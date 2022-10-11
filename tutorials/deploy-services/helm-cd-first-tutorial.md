@@ -2,10 +2,10 @@
 sidebar_position: 1
 ---
 
-# Helm Deloyment Tutorial
+# Deploy a Helm Chart using a CD Pipeline
 
 ```mdx-code-block
-import KubernetesDelegateInstall from '/tutorials/docs-shared-components/kubernetes-delegate-install-includes.md';
+import KubernetesDelegateInstall from '/tutorials/shared/kubernetes-delegate-install-includes.md';
 ```
 
 ## Background on Helm

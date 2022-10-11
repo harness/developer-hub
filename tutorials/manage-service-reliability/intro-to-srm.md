@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Introduction to SLO Management
+# Manage SLOs using Prometheus metrics data
 
 ## Background on Service Level Objectives
 

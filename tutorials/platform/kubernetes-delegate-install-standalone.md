@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Harness Kubernetes Delegate Install
+# Install Kubernetes Delegate
 
 ```mdx-code-block
 import Tabs from '@theme/Tabs';

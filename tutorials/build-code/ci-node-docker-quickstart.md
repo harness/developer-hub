@@ -2,10 +2,10 @@
 sidebar_position: 1
 ---
 
-# Node and Docker Automated Build Tutorial
+# Build Docker image of a NodeJS app
 
 ```mdx-code-block
-import KubernetesDelegateInstall from '/tutorials/docs-shared-components/kubernetes-delegate-install-includes.md';
+import KubernetesDelegateInstall from '/tutorials/shared/kubernetes-delegate-install-includes.md';
 ```
 
 ## Background on Continuous Integration

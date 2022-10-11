@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Getting Started with GitOps
+# Deploy a Helm Chart using GitOps
 
 ## Background on GitOps
 
