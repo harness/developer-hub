@@ -18,6 +18,7 @@ type FeatureItem = {
   description: JSX.Element;
   type: docType[];
   time: string;
+  link?: string;
 };
  
 const FeaturedList: FeatureItem[] = [{
@@ -31,7 +32,7 @@ const FeaturedList: FeatureItem[] = [{
   ribbon: true,
   type: [docType.Documentation],
   time: '10min',
-  link: '/orchestrate-security-testing/nodejs-firstscan'
+  link: '/tutorials/orchestrate-security-tests/nodejs-firstscan'
 }]; 
 
 const STOList: FeatureItem[] = [{
@@ -45,7 +46,7 @@ const STOList: FeatureItem[] = [{
   ribbon: false,
   type: [docType.Documentation],
   time: '10min',
-  link: '/orchestrate-security-testing/nodejs-firstscan'
+  link: '/tutorials/orchestrate-security-tests/nodejs-firstscan'
 }];
 
 export default function STO() {

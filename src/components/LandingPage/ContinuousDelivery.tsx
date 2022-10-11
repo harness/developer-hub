@@ -35,7 +35,7 @@ const FeaturedList: FeatureItem[] = [{
   type: [docType.Documentation],
   //type: [docType.Documentation, docType.Interactive, docType.Video],
   time: '10 min',
-  link: '/deploy-services/kubernetes-cd-first-tutorial',
+  link: '/tutorials/deploy-services/kubernetes-cd-first-tutorial',
 },
 {
   title: 'First GitOps Deployment',
@@ -49,7 +49,7 @@ const FeaturedList: FeatureItem[] = [{
   ribbon: true,
   type: [docType.Documentation],
   time: '8min',
-  link: '/deploy-services/first-gitops-example',
+  link: '/tutorials/deploy-services/first-gitops-example',
 },];
 
 const CDList: FeatureItem[] = [{
@@ -65,7 +65,7 @@ const CDList: FeatureItem[] = [{
   type: [docType.Documentation],
   //type: [docType.Documentation, docType.Interactive, docType.Video],
   time: '10 min',
-  link: '/deploy-services/kubernetes-cd-first-tutorial',
+  link: '/tutorials/deploy-services/kubernetes-cd-first-tutorial',
 },
 {
   title: 'First GitOps Deployment',
@@ -79,7 +79,7 @@ const CDList: FeatureItem[] = [{
   ribbon: false,
   type: [docType.Documentation],
   time: '10min',
-  link: '/deploy-services/first-gitops-example',
+  link: '/tutorials/deploy-services/first-gitops-example',
 },
 {
   title: 'First Helm Deployment',
@@ -93,7 +93,7 @@ const CDList: FeatureItem[] = [{
   ribbon: false,
   type: [docType.Documentation],
   time: '10min',
-  link: 'deploy-services/helm-cd-first-tutorial',
+  link: 'tutorials/deploy-services/helm-cd-first-tutorial',
 },
 ];
 

@@ -34,7 +34,7 @@ const FeaturedList: FeatureItem[] = [{
   ribbon: true,
   type: [docType.Documentation],
   time: '10 min',
-  link: '/deploy-services/kubernetes-cd-first-tutorial',
+  link: '/tutorials/deploy-services/kubernetes-cd-first-tutorial',
 },
 {
   title: 'TypeScript and React Feature Flags',
@@ -48,7 +48,7 @@ const FeaturedList: FeatureItem[] = [{
   ribbon: true,
   type: [docType.Documentation],
   time: '10min',
-  link: "/manage-feature-flags/typescript-react-first-feature-flag",
+  link: "/tutorials/manage-feature-flags/typescript-react-first-feature-flag",
   }];
 
 const CIList: FeatureItem[] = [{
@@ -63,7 +63,7 @@ const CIList: FeatureItem[] = [{
   ribbon: false,
   type: [docType.Documentation],
   time: '15 min',
-  link: '/build-code/ci-node-docker-quickstart',
+  link: '/tutorials/build-code/ci-node-docker-quickstart',
 },
 ];
 
@@ -79,7 +79,7 @@ const CDList: FeatureItem[] = [{
   ribbon: false,
   type: [docType.Documentation],
   time: '10 min',
-  link: '/deploy-services/kubernetes-cd-first-tutorial',
+  link: '/tutorials/deploy-services/kubernetes-cd-first-tutorial',
 },
 {
   title: 'First GitOps Deployment',
@@ -93,7 +93,7 @@ const CDList: FeatureItem[] = [{
   ribbon: false,
   type: [docType.Documentation],
   time: '10min',
-  link: '/deploy-services/first-gitops-example',
+  link: '/tutorials/deploy-services/first-gitops-example',
 },
 {
   title: 'First Helm Deployment',
@@ -107,7 +107,7 @@ const CDList: FeatureItem[] = [{
   ribbon: false,
   type: [docType.Documentation],
   time: '10min',
-  link: 'deploy-services/helm-cd-first-tutorial',
+  link: '/tutorials/deploy-services/helm-cd-first-tutorial',
 },];
 
 const FFList: FeatureItem[] = [{
@@ -122,7 +122,7 @@ const FFList: FeatureItem[] = [{
   ribbon: true,
   type: [docType.Documentation],
   time: '10min',
-  link: "/manage-feature-flags/typescript-react-first-feature-flag",
+  link: "/tutorials/manage-feature-flags/typescript-react-first-feature-flag",
   },
 ];
 
@@ -138,7 +138,7 @@ const CCMList: FeatureItem[] = [{
   ribbon: false,
   type: [docType.Documentation],
   time: '10min',
-  link: '/optimize-cloud-costs/ccm-first-kubernetes-tutorial'
+  link: '/tutorials/optimize-cloud-costs/ccm-first-kubernetes-tutorial'
 }]; 
 
 const SRMList: FeatureItem[] = [{
@@ -153,7 +153,7 @@ const SRMList: FeatureItem[] = [{
   ribbon: false,
   type: [docType.Documentation],
   time: '15min',
-  link: '/manage-slos/intro-to-srm'
+  link: '/tutorials/manage-slos/intro-to-srm'
 }];
 
 const STOList: FeatureItem[] = [{
@@ -168,7 +168,7 @@ const STOList: FeatureItem[] = [{
   ribbon: false,
   type: [docType.Documentation],
   time: '10min',
-  link: '/orchestrate-security-testing/nodejs-firstscan'
+  link: '/tutorials/orchestrate-security-tests/nodejs-firstscan'
 }];
 
 const CEList: FeatureItem[] = [{
@@ -183,7 +183,7 @@ const CEList: FeatureItem[] = [{
   ribbon: false,
   type: [docType.Documentation],
   time: '10min',
-  link: '/run-chaos-experiments/first-chaos-engineering'
+  link: '/tutorials/run-chaos-experiments/first-chaos-engineering'
 }];
 
 export default function AllTutorials() {

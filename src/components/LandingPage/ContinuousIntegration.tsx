@@ -34,7 +34,7 @@ const FeaturedList: FeatureItem[] = [
     ribbon: true,
     type: [docType.Documentation],
     time: '15 min',
-    link: '/build-code/ci-node-docker-quickstart',
+    link: '/tutorials/build-code/ci-node-docker-quickstart',
   },];
 
 const DroneList: FeatureItem[] = [{
@@ -64,7 +64,7 @@ const CIList: FeatureItem[] = [{
   ribbon: false,
   type: [docType.Documentation],
   time: '15 min',
-  link: '/build-code/ci-node-docker-quickstart',
+  link: '/tutorials/build-code/ci-node-docker-quickstart',
 },
 ];
 

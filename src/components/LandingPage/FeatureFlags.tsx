@@ -33,7 +33,7 @@ const FeaturedList: FeatureItem[] = [{
   ribbon: true,
   type: [docType.Documentation],
   time: '10min',
-  link: "/manage-feature-flags/typescript-react-first-feature-flag",
+  link: "/tutorials/manage-feature-flags/typescript-react-first-feature-flag",
   }
 ]; 
 
@@ -49,7 +49,7 @@ const FFList: FeatureItem[] = [{
   ribbon: false,
   type: [docType.Documentation, docType.Interactive, docType.Video],
   time: '10min',
-  link: "/manage-feature-flags/typescript-react-first-feature-flag",
+  link: "/tutorials/manage-feature-flags/typescript-react-first-feature-flag",
   }
 ];
 

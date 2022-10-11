@@ -34,16 +34,17 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          path: "tutorials",
+          path: ".",
           sidebarPath: require.resolve("./sidebars.js"),
           editUrl: "https://github.com/harness/developer-hub/tree/main", // /tree/main/packages/create-docusaurus/templates/shared/
-          exclude: ["**/docs-shared-components/**"],
+          include: ["tutorials/**", "docs/**"],
+          exclude: ["**/docs-shared-components/**", "**/static"],
           routeBasePath: "/", //CHANGE HERE
         },
-        blog: {
-          showReadingTime: true,
-          editUrl: "https://github.com/harness/developer-hub/tree/main", // /tree/main/packages/create-docusaurus/templates/shared/
-        },
+        // blog: {
+        //   showReadingTime: true,
+        //   editUrl: "https://github.com/harness/developer-hub/tree/main", // /tree/main/packages/create-docusaurus/templates/shared/
+        // },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
         },
@@ -73,41 +74,41 @@ const config = {
             items: [
               {
                 // type: "doc",
-                to: "build-code",
                 label: "Build Code",
+                to: "tutorials/build-code",
                 // docId: "build-code",
                 // activeBasePath: "to",
               },
               {
                 // type: "doc",
                 label: "Deploy Services",
-                to: "deploy-services",
+                to: "tutorials/deploy-services",
               },
               {
                 // type: "doc",
                 label: "Manage Feature Flags",
-                to: "manage-feature-flags",
+                to: "tutorials/manage-feature-flags",
                 // activeBaseRegex: "/manage-feature-flags",
               },
               {
                 // type: "doc",
                 label: "Optimize Cloud Costs",
-                to: "optimize-cloud-costs",
+                to: "tutorials/optimize-cloud-costs",
               },
               {
                 // type: "doc",
                 label: "Manage SLOs",
-                to: "manage-slos",
+                to: "tutorials/manage-slos",
               },
               {
                 // type: "doc",
                 label: "Orchestrate Security Tests",
-                to: "orchestrate-security-tests",
+                to: "tutorials/orchestrate-security-tests",
               },
               {
                 // type: "doc",
                 label: "Run Chaos Experiments",
-                to: "run-chaos-experiments",
+                to: "tutorials/run-chaos-experiments",
               },
             ],
           },
@@ -291,7 +292,7 @@ const config = {
       announcementBar: {
         id: "support_us",
         content:
-          'Harness Developer Hub is still in beta, any suggestions please submit feedback to the feedback form.</a>',
+          "Harness Developer Hub is still in beta, any suggestions please submit feedback to the feedback form.</a>",
         backgroundColor: "#FF5310",
         textColor: "#ffffff",
         isCloseable: true,

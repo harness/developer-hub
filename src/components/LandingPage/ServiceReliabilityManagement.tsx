@@ -32,7 +32,7 @@ const FeaturedList: FeatureItem[] = [{
   ribbon: true,
   type: [docType.Documentation],
   time: '15min',
-  link: '/manage-slos/intro-to-srm'
+  link: '/tutorials/manage-slos/intro-to-srm'
 }]; 
 
 const SRMList: FeatureItem[] = [{
@@ -46,7 +46,7 @@ const SRMList: FeatureItem[] = [{
   ribbon: false,
   type: [docType.Documentation],
   time: '15min',
-  link: '/manage-slos/intro-to-srm'
+  link: '/tutorials/manage-slos/intro-to-srm'
 }];
 
 export default function SRM() {

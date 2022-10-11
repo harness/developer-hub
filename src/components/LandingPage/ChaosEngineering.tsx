@@ -18,6 +18,7 @@ type FeatureItem = {
   description: JSX.Element;
   type: docType[];
   time: string;
+  link?: string;
 };
  
 const FeaturedList: FeatureItem[] = [{
@@ -31,7 +32,7 @@ const FeaturedList: FeatureItem[] = [{
   ribbon: true,
   type: [docType.Documentation],
   time: '10min',
-  link: '/run-chaos-experiments/first-chaos-engineering'
+  link: '/tutorials/run-chaos-experiments/first-chaos-engineering'
 }]; 
 
 const CEList: FeatureItem[] = [{
@@ -45,7 +46,7 @@ const CEList: FeatureItem[] = [{
   ribbon: false,
   type: [docType.Documentation],
   time: '10min',
-  link: '/run-chaos-experiments/first-chaos-engineering'
+  link: '/tutorials/run-chaos-experiments/first-chaos-engineering'
 }];
 
 export default function CE() {
