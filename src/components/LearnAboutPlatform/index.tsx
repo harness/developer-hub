@@ -15,24 +15,24 @@ export default function LearnAboutPlatform(): JSX.Element {
       <div className={styles.subSectionName}><h3>Platform</h3></div>
       <ul className={styles.platformList}>
         <li>
-          <img src="/img/user-group-mgmt.svg" />
+          <a href="https://docs.harness.io/article/vz5cq0nfg2-rbac-in-harness" target="_blank"><img src="/img/user-group-mgmt.svg" />
           <h4>User &amp; Role Management</h4>
-          <p>0Auth/SAML/SSO Providers, Users Groups, RBAC</p>
+          <p>0Auth/SAML/SSO Providers, Users Groups, RBAC</p></a>
         </li>
         <li>
-          <img src="/img/secret-mgmt.svg" />
+        <a href="https://docs.harness.io/article/hngrlb7rd6-harness-secret-manager-overview" target="_blank"><img src="/img/secret-mgmt.svg" />
           <h4>Secrets Managment</h4>
-          <p>Secret Managers, KMS, Cloud Storage</p>
+          <p>Secret Managers, KMS, Cloud Storage</p></a>
         </li>
         <li>
-          <img src="/img/delegates.svg" />
+        <a href="https://docs.harness.io/article/2k7lnc7lvl-delegates-overview" target="_blank"><img src="/img/delegates.svg" />
           <h4>Delegates</h4>
-          <p>Install, Configure, Secure, Monitor, Upgrade</p>
+          <p>Install, Configure, Secure, Monitor, Upgrade</p></a>
         </li>
         <li>
-          <img src="/img/Templates.svg" />
+        <a href="https://docs.harness.io/article/6tl8zyxeol-template" target="_blank"><img src="/img/Templates.svg" />
           <h4>Templates</h4>
-          <p>Pipelines, Steps, Stages,Service, Infrastructure</p>
+          <p>Pipelines, Steps, Stages,Service, Infrastructure</p></a>
         </li>
       </ul>
     </section>

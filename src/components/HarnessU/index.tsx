@@ -13,14 +13,14 @@ export default function HarnessU(): JSX.Element {
       {/* <div className={styles.subSectionName}><h3>Platform</h3></div> */}
       <ul className={styles.platformList}>
         <li>
-          <a href="https://university.harness.io/page/self-paced-courses" target="_blank">
+          <a href="https://university.harness.io/page/self-paced-learning" target="_blank">
           <div className={styles.titleAndDesc}>
-          <h4>Product-Based Paths</h4>
+          <h4>Self Paced Product Based Paths</h4>
           <p>Self-paced modules and courses to help onboarding your teams to Harness</p>
           </div>
           <div className={styles.harnessUPath}>
             <img src="/img/icon_univ-path.svg" className={styles.harnssUIcon} />
-            <span>4 Paths</span>
+            <span>3 Paths</span>
           </div>
           </a>
         </li>
@@ -28,7 +28,7 @@ export default function HarnessU(): JSX.Element {
           <a href="https://university.harness.io/page/roles" target="_blank">
           <div className={styles.titleAndDesc}>
           <h4>Role-Based Paths</h4>
-          <p>Secret Managers, KMS, Cloud Storage</p>
+          <p>Developers, DevOps Engineers, SecOps Engineers, FinOps Engineers, SREs</p>
           </div>
           <div className={styles.harnessUPath}>
             <img src="/img/icon_univ-path.svg" className={styles.harnssUIcon} />
@@ -37,26 +37,14 @@ export default function HarnessU(): JSX.Element {
           </a>
         </li>
         <li>
-          <a href="#">
+          <a href="https://university.harness.io/page/certifications" target="_blank">
           <div className={styles.titleAndDesc}>
-          <h4>Delegates</h4>
-          <p>Install, Configure, Secure, Monitor, Upgrade</p>
+          <h4>Certifications</h4>
+          <p>Certifications in Software Delivery</p>
           </div>
           <div className={styles.harnessUPath}>
             <img src="/img/icon_univ-min.svg" className={styles.harnssUIcon} />
-            <span>15 min</span>
-          </div>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-          <div className={styles.titleAndDesc}>
-            <h4>Templates</h4>
-            <p>Pipelines, Steps, Stages,Service, Infrastructure</p>
-          </div>
-          <div className={styles.harnessUPath}>
-            <img src="/img/icon_univ-path.svg" className={styles.harnssUIcon} />
-            <span>5 Live courses</span>
+            <span>1 Certification</span>
           </div>
           </a>
         </li>
