@@ -18,6 +18,7 @@ type FeatureItem = {
   type: docType[];
   ribbon: boolean;
   time: string;
+  link?: string;
 };
  
 const FeatureList: FeatureItem[] = [{
