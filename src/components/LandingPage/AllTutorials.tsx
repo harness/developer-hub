@@ -19,6 +19,7 @@ type FeatureItem = {
   Svg: string;
   ribbon: boolean;
   time: string;
+  link?: string;
 };
  
 const FeatureList: FeatureItem[] = [{

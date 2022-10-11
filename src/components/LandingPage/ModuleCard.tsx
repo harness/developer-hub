@@ -3,8 +3,9 @@ import React from 'react';
 import { Tooltip } from 'antd';
 import 'antd/lib/tooltip/style/index.css'
 import styles from './ModuleCard.module.scss';
+import Link from '@docusaurus/Link';
 
-function Feature({title, ribbon, description, Svg, type, time, module, featureCard}: FeatureItem) {
+function Feature({title, ribbon, description, Svg, type, time, module, featureCard, link = "#"}: FeatureItem) {
   return (
     <div className={`${styles.tutorialCard} ${featureCard? styles.featureCard : styles[module]}`}>
         <h6>{ Svg && 
@@ -13,7 +14,7 @@ function Feature({title, ribbon, description, Svg, type, time, module, featureCa
         { ribbon && <div className={styles.ribbon}>
           <img src="/img/new.svg"/>
         </div>}
-        <h4>{title}</h4>
+        <h4><Link to={link}>{title}</Link></h4>
         <p>{description}</p>
         <div>
         <ul className={styles.docTypes}>

@@ -19,6 +19,7 @@ type FeatureItem = {
   description: JSX.Element;
   type: docType[];
   time: string;
+  link?: string;
 };
  
 const FeatureList: FeatureItem[] = [{
