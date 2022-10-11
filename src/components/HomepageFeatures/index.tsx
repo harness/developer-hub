@@ -30,7 +30,8 @@ const FeatureList: FeatureItem[] = [
         Create a CI build pipeline.
       </>
     ),
-    type: [docType.Documentation, docType.Interactive, docType.Video],
+    type: [docType.Documentation],
+    //type: [docType.Documentation, docType.Interactive, docType.Video],
     link: '/build-code',
   },
   {
@@ -42,7 +43,7 @@ const FeatureList: FeatureItem[] = [
         Create a CD deployment.
       </>
     ),
-    type: [docType.Documentation, docType.Interactive],
+    type: [docType.Documentation],
     link: '/deploy-services',
   },
   {
@@ -54,7 +55,7 @@ const FeatureList: FeatureItem[] = [
         Rollout new features progressively.
       </>
     ),
-    type: [docType.Documentation, docType.Interactive, docType.Video],
+    type: [docType.Documentation],
     link: '/manage-feature-flags',
   },
   {
@@ -66,7 +67,7 @@ const FeatureList: FeatureItem[] = [
         Achieve cost transparency and cut costs
       </>
     ),
-    type: [docType.Documentation, docType.Video],
+    type: [docType.Documentation],
     link: 'optimize-cloud-costs',
   },
   {
@@ -78,7 +79,7 @@ const FeatureList: FeatureItem[] = [
         Create SLOs. track error budgets, govern pipelines.
       </>
     ),
-    type: [docType.Documentation, docType.Interactive, docType.Video],
+    type: [docType.Documentation],
     link: 'manage-slos',
   },
   {
@@ -90,7 +91,7 @@ const FeatureList: FeatureItem[] = [
         Scan your code, containers and apps
       </>
     ),
-    type: [docType.Documentation, docType.Interactive, docType.Video],
+    type: [docType.Documentation],
     link: 'orchestrate-security-tests',
   },
   {
@@ -102,7 +103,7 @@ const FeatureList: FeatureItem[] = [
         Ensure app and infrastructure resilience.
       </>
     ),
-    type: [docType.Documentation, docType.Interactive, docType.Video],
+    type: [docType.Documentation],
     link: 'run-chaos-experiments',
   },
 ];

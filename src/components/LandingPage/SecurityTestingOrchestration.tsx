@@ -29,7 +29,7 @@ const FeaturedList: FeatureItem[] = [{
     </>
   ),
   ribbon: true,
-  type: [docType.Documentation, docType.Interactive, docType.Video],
+  type: [docType.Documentation],
   time: '10min',
   link: '/orchestrate-security-testing/nodejs-firstscan'
 }]; 
@@ -43,7 +43,7 @@ const STOList: FeatureItem[] = [{
     </>
   ),
   ribbon: false,
-  type: [docType.Documentation, docType.Interactive, docType.Video],
+  type: [docType.Documentation],
   time: '10min',
   link: '/orchestrate-security-testing/nodejs-firstscan'
 }];

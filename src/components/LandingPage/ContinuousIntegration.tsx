@@ -32,7 +32,7 @@ const FeaturedList: FeatureItem[] = [
       </>
     ),
     ribbon: true,
-    type: [docType.Documentation, docType.Interactive, docType.Video],
+    type: [docType.Documentation],
     time: '15 min',
     link: '/build-code/ci-node-docker-quickstart',
   },];
@@ -47,7 +47,7 @@ const DroneList: FeatureItem[] = [{
     </>
   ),
   ribbon: false,
-  type: [docType.Documentation, docType.Interactive, docType.Video],
+  type: [docType.Documentation],
   time: 'tbd',
 },
 ];
@@ -62,7 +62,7 @@ const CIList: FeatureItem[] = [{
     </>
   ),
   ribbon: false,
-  type: [docType.Documentation, docType.Interactive, docType.Video],
+  type: [docType.Documentation],
   time: '15 min',
   link: '/build-code/ci-node-docker-quickstart',
 },
