@@ -114,7 +114,9 @@ export default function CD() {
               <h1>Continuous Delivery</h1>
             </div>
             <div>
+              <Link href="https://docs.harness.io/category/pfzgb4tg05-howto-cd">
               <button className={clsx('button button--lg', styles.btn, styles.btnLight)}><img src="/img/icon_document.png"/> Documentation</button>
+              </Link>
             </div>       
           </div>
           <div className={styles.spaceBetween}>
@@ -125,11 +127,11 @@ export default function CD() {
               <div className={styles.alignCenter}>
               <Link
                   className={clsx('button button--lg', styles.btn, styles.btnCD)}
-                  to="#">
+                  to="#all-tutorials">
                   CD Quickstart 
                   <img src="/img/Stroke.svg"/>
               </Link>
-              <button className={styles.link}>Learn more about CD</button>
+              <Link href="https://harness.io/products/continuous-delivery"><button className={styles.link}>Learn more about CD</button></Link>
               </div>
             </div>
             <div>
@@ -144,7 +146,7 @@ export default function CD() {
             <ModuleCard FeatureList={FeaturedList} featureCard={true}/>
         </div>
         <div className={styles.subSection}>
-          <h3>
+          <h3 id="all-tutorials">
             All Deployment Tutorials 
           </h3>
             <ModuleCard FeatureList={CDList}/>

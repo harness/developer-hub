@@ -66,7 +66,9 @@ export default function CE() {
               <h1>Chaos Engineering</h1>
             </div>
             <div>
+              <Link href="https://docs.harness.io/category/kl0mxwpfw1-hce-category">
               <button className={clsx('button button--lg', styles.btn, styles.btnLight)}><img src="/img/icon_document.png"/> Documentation</button>
+              </Link>
             </div>       
           </div>
           <div className={styles.spaceBetween}>
@@ -77,11 +79,11 @@ export default function CE() {
               <div className={styles.alignCenter}>
                 <Link
                   className={clsx('button button--lg', styles.btn, styles.btnCE)}
-                  to="#">
+                  to="#all-tutorials">
                   CE Quickstart
                   <img src="/img/Stroke.svg"/>
                 </Link>
-                <button className={styles.link}>Learn more about CE</button>
+                <Link href="https://harness.io/products/chaos-engineering"><button className={styles.link}>Learn more about CE</button></Link>
               </div>
             </div>
             <div>
@@ -96,7 +98,7 @@ export default function CE() {
             <ModuleCard FeatureList={FeaturedList} featureCard={true}/>
         </div>
         <div className={styles.subSection}>
-          <h3>
+          <h3 id="all-tutorials">
             All Chaos Engineering Tutorials 
           </h3>
             <ModuleCard FeatureList={CEList}/>

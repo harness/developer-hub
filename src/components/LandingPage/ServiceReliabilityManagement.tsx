@@ -66,7 +66,10 @@ export default function SRM() {
               <h1>Service Reliability Management</h1>
             </div>
             <div>
-              <button className={clsx('button button--lg', styles.btn, styles.btnLight)}><img src="/img/icon_document.png"/> Documentation</button>
+              <Link
+                href="https://docs.harness.io/category/ko19u4brsv-howtos-service-reliability-management">
+                <button className={clsx('button button--lg', styles.btn, styles.btnLight)}><img src="/img/icon_document.png"/> Documentation</button>
+              </Link>
             </div>       
           </div>
           <div className={styles.spaceBetween}>
@@ -77,11 +80,11 @@ export default function SRM() {
               <div className={styles.alignCenter}>
                 <Link
                   className={clsx('button button--lg', styles.btn, styles.btnSRM)}
-                  to="#">
+                  to="#all-tutorials">
                   SRM Quickstart
                   <img src="/img/Stroke.svg"/>
                 </Link>
-                <button className={styles.link}>Learn more about SRM</button>
+                <Link href="https://harness.io/products/service-reliability-management"><button className={styles.link}>Learn more about SRM</button></Link>
               </div>
             </div>
             <div>
@@ -96,7 +99,7 @@ export default function SRM() {
             <ModuleCard FeatureList={FeaturedList} featureCard={true}/>
         </div>
         <div className={styles.subSection}>
-          <h3>
+          <h3 id="all-tutorials">
             All Cloud Cost Tutorials 
           </h3>
             <ModuleCard FeatureList={SRMList}/>

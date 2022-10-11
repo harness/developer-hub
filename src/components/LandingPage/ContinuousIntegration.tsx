@@ -85,7 +85,9 @@ export default function CI() {
             <h1>Continuous Integration</h1>
           </div>
           <div>
+            <Link href="https://docs.harness.io/category/zgffarnh1m-ci-category">
             <button className={clsx('button button--lg', styles.btn, styles.btnLight)}><img src="/img/icon_document.png" /> Documentation</button>
+            </Link>
           </div>
         </div>
         <div className={styles.spaceBetween}>
@@ -96,11 +98,11 @@ export default function CI() {
             <div className={styles.alignCenter}>
               <Link
                 className={clsx('button button--lg', styles.btn, styles.btnCI)}
-                to="#">
+                to="#all-tutorials">
                 CI Quickstart
                 <img src="/img/Stroke.svg" />
               </Link>
-              <button className={styles.link}>Learn more about CI</button>
+              <Link href="https://harness.io/products/continuous-integration"><button className={styles.link}>Learn more about CI</button></Link>
             </div>
           </div>
           <div>
@@ -119,7 +121,7 @@ export default function CI() {
           Drone Tutorials
         </h3>
   <ModuleCard FeatureList={DroneList} /> */}
-        <h3>
+        <h3 id="all-tutorials">
           All Building Code Tutorials
         </h3>
         <ModuleCard FeatureList={CIList} />

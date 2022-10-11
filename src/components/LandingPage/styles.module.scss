@@ -66,6 +66,11 @@
     font-size: 16px;
     line-height: 24px;
     margin-left: 32px;
+    cursor: pointer;
+    &:hover {
+        text-decoration: underline;
+        color: var(--primary-8);
+    }
 }
 .btn{
     color: white;
@@ -110,8 +115,55 @@
         padding-left: 10px;
     }
 }
+.btnCCM{
+    background: #01C9CC;
+    border-color: #01C9CC;
+    img{
+        padding-left: 10px;
+    }
+}
+.btnSRM{
+    background: #AE82FC;
+    border-color: #AE82FC;
+    img{
+        padding-left: 10px;
+    }
+}
+.btnSTO{
+    background: #4791FF;
+    border-color: #4791FF;
+    img{
+        padding-left: 10px;
+    }
+}
+.btnCE{
+    background: #FF006A;
+    border-color: #FF006A;
+    img{
+        padding-left: 10px;
+    }
+}
 .subSection{
     margin-top: 36px;
+    .SectionName{
+        display: flex;
+        align-items: center;
+        margin-bottom: 30px;
+        h3{
+            font-family: 'Inter';
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 13px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #000000;
+            margin-bottom: 0;
+        }
+        img{
+            width: 20px;
+            margin-right: 18px;
+        }
+    }
     h3{
         font-weight: 600;
         font-size: 20px;

@@ -66,7 +66,9 @@ export default function STO() {
               <h1>Security Testing Orchestration</h1>
             </div>
             <div>
+              <Link href="https://docs.harness.io/category/txlccquh5c-sto-category">
               <button className={clsx('button button--lg', styles.btn, styles.btnLight)}><img src="/img/icon_document.png"/> Documentation</button>
+              </Link>
             </div>       
           </div>
           <div className={styles.spaceBetween}>
@@ -77,11 +79,11 @@ export default function STO() {
               <div className={styles.alignCenter}>
                 <Link
                   className={clsx('button button--lg', styles.btn, styles.btnSTO)}
-                  to="#">
+                  to="#all-tutorials">
                   STO Quickstart
                   <img src="/img/Stroke.svg"/>
                 </Link>
-                <button className={styles.link}>Learn more about STO</button>
+                <Link href="https://harness.io/products/security-testing-orchestration"><button className={styles.link}>Learn more about STO</button></Link>
               </div>
             </div>
             <div>
@@ -96,7 +98,7 @@ export default function STO() {
             <ModuleCard FeatureList={FeaturedList} featureCard={true}/>
         </div>
         <div className={styles.subSection}>
-          <h3>
+          <h3 id="all-tutorials">
             All Security Testing Tutorials 
           </h3>
             <ModuleCard FeatureList={STOList}/>

@@ -70,7 +70,9 @@ export default function FF() {
               <h1>Feature Flags</h1>
             </div>
             <div>
+              <Link href="https://docs.harness.io/category/vjolt35atg-feature-flags">
               <button className={clsx('button button--lg', styles.btn, styles.btnLight)}><img src="/img/icon_document.png"/> Documentation</button>
+              </Link>
             </div>       
           </div>
           <div className={styles.spaceBetween}>
@@ -82,11 +84,11 @@ export default function FF() {
               <div className={styles.alignCenter}>
                 <Link
                   className={clsx('button button--lg', styles.btn, styles.btnFF)}
-                  to="#">
+                  to="#all-tutorials">
                   FF Quickstart
                   <img src="/img/Stroke.svg"/>
                 </Link>
-                <button className={styles.link}>Learn more about FF</button>
+                <Link href="https://harness.io/products/feature-flags"><button className={styles.link}>Learn more about FF</button></Link>
               </div>
             </div>     
           </div>          
@@ -98,7 +100,7 @@ export default function FF() {
             <ModuleCard FeatureList={FeaturedList} featureCard={true}/>
         </div>
         <div className={styles.subSection}>
-          <h3>
+          <h3 id="all-tutorials">
             All Feature Flag Tutorials 
           </h3>
             <ModuleCard FeatureList={FFList}/>

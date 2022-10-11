@@ -66,7 +66,9 @@ export default function CCM() {
               <h1>Cloud Costs Managment</h1>
             </div>
             <div>
+              <Link href="https://docs.harness.io/category/exgoemqhji-ccm">
               <button className={clsx('button button--lg', styles.btn, styles.btnLight)}><img src="/img/icon_document.png"/> Documentation</button>
+              </Link>
             </div>       
           </div>
           <div className={styles.spaceBetween}>
@@ -81,11 +83,11 @@ export default function CCM() {
               <div className={styles.alignCenter}>
                 <Link
                   className={clsx('button button--lg', styles.btn, styles.btnCCM)}
-                  to="#">
+                  to="#all-tutorials">
                   CCM Quickstart
                   <img src="/img/Stroke.svg"/>
                 </Link>
-                <button className={styles.link}>Learn more about CCM</button>
+                <Link href="https://harness.io/products/cloud-cost"><button className={styles.link}>Learn more about CCM</button></Link>
               </div>
             </div>
             <div>
@@ -100,7 +102,7 @@ export default function CCM() {
             <ModuleCard FeatureList={FeaturedList} featureCard={true}/>
         </div>
         <div className={styles.subSection}>
-          <h3>
+          <h3 id="all-tutorials">
             All Cloud Cost Tutorials 
           </h3>
             <ModuleCard FeatureList={CCMList}/>
