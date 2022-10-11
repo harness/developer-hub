@@ -21,7 +21,7 @@ type FeatureItem = {
 };
  
 const FeatureList: FeatureItem[] = [{
-  title: 'Feature Flag Security',
+  title: 'Typescript Feature Flag',
   module: 'ff',
   // Svg: '/img/icon_ci.svg',
   description: (
