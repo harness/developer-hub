@@ -21,7 +21,7 @@ type FeatureItem = {
   link?: string;
 };
  
-const FeatureList: FeatureItem[] = [{
+const FeaturedList: FeatureItem[] = [{
   title: 'TypeScript and React Feature Flags',
   module: 'ff',
   // Svg: '/img/icon_ci.svg',
@@ -95,7 +95,7 @@ export default function FF() {
           <h3>
             Featured Tutorials
           </h3>
-            <ModuleCard FeatureList={FeatureList} featureCard={true}/>
+            <ModuleCard FeatureList={FeaturedList} featureCard={true}/>
         </div>
         <div className={styles.subSection}>
           <h3>
