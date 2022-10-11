@@ -159,6 +159,10 @@ const config = {
                 label: "Harness Community Slack",
                 href: "https://join.slack.com/t/harnesscommunity/shared_invite/zt-y4hdqh7p-RVuEQyIl5Hcx4Ck8VCvzBw",
               },
+              {
+                label: "Harness University",
+                href: "https://university.harness.io/",
+              },
             ],
           },
           {
@@ -236,6 +240,10 @@ const config = {
               {
                 label: "Harness YouTube",
                 href: "https://www.youtube.com/c/Harnessio",
+              },
+              {
+                label: "Sign Up For Harness",
+                href: "https://app.harness.io/auth/#/signup/&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=plt-plg&utm_content=get-started",
               },
             ],
           },
