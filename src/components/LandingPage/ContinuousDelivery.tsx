@@ -22,7 +22,7 @@ type FeatureItem = {
   link?: string;
 };
  
-const FeatureList: FeatureItem[] = [{
+const FeaturedList: FeatureItem[] = [{
   title: 'First Kubernetes Deployment',
   module: 'cd',
   // Svg: '/img/icon_ci.svg',
@@ -37,84 +37,63 @@ const FeatureList: FeatureItem[] = [{
   link: '/deploy-services/kubernetes-cd-first-tutorial',
 },
 {
-  title: 'First Helm Deployment',
+  title: 'First GitOps Deployment',
   module: 'cd',
   // Svg: '/img/icon_ci.svg',
   description: (
     <>
-      Deploying your first set of Kubernetes Resources using Helm [Kubernetes Package Manager]
-    </>
-  ),
-  ribbon: false,
-  type: [docType.Documentation, docType.Interactive],
-  time: '8min',
-},];
-
-const PipelineList: FeatureItem[] = [{
-  title: 'Deploy Services',
-  module: 'cd',
-  // Svg: '/img/icon_ci.svg',
-  description: (
-    <>
-      The deployment guides walk you through setting up a specific deployment using Harness, such as ECS, Kubernetes, and Helm. They are written to provide you with everything you need to learn how to model your CD process in Harness.
-    </>
-  ),
-  ribbon: false,
-  type: [docType.Documentation, docType.Interactive, docType.Video],
-  time: '15min',
-},
-{
-  title: 'Build Code',
-  module: 'cd',
-  // Svg: '/img/icon_ci.svg',
-  description: (
-    <>
-      The deployment guides walk you through setting up a specific deployment using Harness, such as ECS, Kubernetes, and Helm. They are written to provide you with everything you need to learn how to model your CD process in Harness.
-    </>
-  ),
-  ribbon: false,
-  type: [docType.Documentation, docType.Interactive],
-  time: '15min',
-},
-{
-  title: 'Build Code',
-  module: 'cd',
-  // Svg: '/img/icon_ci.svg',
-  description: (
-    <>
-      The deployment guides walk you through setting up a specific deployment using Harness, such as ECS, Kubernetes, and Helm. 
-    </>
-  ),
-  ribbon: false,
-  type: [docType.Documentation, docType.Interactive],
-  time: '15min',
-},
-{
-  title: 'Build Code',
-  module: 'cd',
-  // Svg: '/img/icon_ci.svg',
-  description: (
-    <>
-      The deployment guides walk you through setting up a specific deployment using Harness, such as ECS, Kubernetes, and Helm. They are written to provide you with everything you need to learn how to model your CD process in Harness.
-    </>
-  ),
-  ribbon: false,
-  type: [docType.Documentation, docType.Interactive],
-  time: '15min',
-},
-{
-  title: 'Build Code',
-  module: 'cd',
-  // Svg: '/img/icon_ci.svg',
-  description: (
-    <>
-      The deployment guides walk you through setting up a specific deployment using Harness, such as ECS, Kubernetes, and Helm.
+      Learn about GitOps and how to leverage your own GitOps Pipeline.
     </>
   ),
   ribbon: true,
   type: [docType.Documentation, docType.Interactive],
   time: '8min',
+  link: '/deploy-services/first-gitops-example',
 },];
+
+const CDList: FeatureItem[] = [{
+  title: 'First Kubernetes Deployment',
+  module: 'cd',
+  // Svg: '/img/icon_ci.svg',
+  description: (
+    <>
+      Deploying your first set of Kubernetes Services in a CD Pipline with Kubernetes Manifests. 
+    </>
+  ),
+  ribbon: false,
+  type: [docType.Documentation, docType.Interactive, docType.Video],
+  time: '10 min',
+  link: '/deploy-services/kubernetes-cd-first-tutorial',
+},
+{
+  title: 'First GitOps Deployment',
+  module: 'cd',
+  // Svg: '/img/icon_ci.svg',
+  description: (
+    <>
+      Learn about GitOps and how to leverage your own GitOps Pipeline.
+    </>
+  ),
+  ribbon: false,
+  type: [docType.Documentation, docType.Interactive],
+  time: '10min',
+  link: '/deploy-services/first-gitops-example',
+},
+{
+  title: 'First Helm Deployment',
+  module: 'cd',
+  // Svg: '/img/icon_ci.svg',
+  description: (
+    <>
+      Deploying your first set of Kubernetes Resources in a CD Pipeline with Helm (K8s Package Manager).
+    </>
+  ),
+  ribbon: false,
+  type: [docType.Documentation, docType.Interactive],
+  time: '10min',
+  link: 'deploy-services/helm-cd-first-tutorial',
+},
+];
 
 export default function CD() {
   return (
@@ -160,13 +139,13 @@ export default function CD() {
           <h3>
             Featured Tutorials
           </h3>
-            <ModuleCard FeatureList={FeatureList} featureCard={true}/>
+            <ModuleCard FeatureList={FeaturedList} featureCard={true}/>
         </div>
         <div className={styles.subSection}>
           <h3>
             All Deployment Tutorials 
           </h3>
-            <ModuleCard FeatureList={PipelineList}/>
+            <ModuleCard FeatureList={CDList}/>
         </div>
       </div>
     // </Layout>

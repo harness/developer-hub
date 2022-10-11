@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Feature Flags - TypeScript and React - Getting Started Tutorial
+# JavaScript Feature Flags - TypeScript and React
 
 ## Background on Feature Flags
 

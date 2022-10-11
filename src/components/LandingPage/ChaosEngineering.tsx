@@ -20,110 +20,33 @@ type FeatureItem = {
   time: string;
 };
  
-const FeatureList: FeatureItem[] = [{
-  title: 'Feature Flag Security',
+const FeaturedList: FeatureItem[] = [{
+  title: 'Your First Chaos Experiment on Kubernetes',
   module: 'ce',
-  // Svg: '/img/icon_ci.svg',
   description: (
     <>
-      The deployment guides walk you through setting up a specific deployment using Harness, such as ECS, Kubernetes, and Helm. They are written to provide you with everything you need to learn how to model your CD process in Harness.
+      Running a Chaos Experiment on Kuberenetes for the first time. 
+    </>
+  ),
+  ribbon: true,
+  type: [docType.Documentation, docType.Interactive, docType.Video],
+  time: '10min',
+  link: '/run-chaos-experiments/first-chaos-engineering'
+}]; 
+
+const CEList: FeatureItem[] = [{
+  title: 'Your First Chaos Experiment on Kubernetes',
+  module: 'ce',
+  description: (
+    <>
+      Running a Chaos Experiment on Kuberenetes for the first time. 
     </>
   ),
   ribbon: false,
   type: [docType.Documentation, docType.Interactive, docType.Video],
-  time: '15min',
-},
-{
-  title: 'Build Code',
-  module: 'ce',
-  // Svg: '/img/icon_ci.svg',
-  description: (
-    <>
-      The deployment guides walk you through setting up a specific deployment using Harness, such as ECS, Kubernetes, and Helm. They are written to provide you with everything you need to learn how to model your CD process in Harness.
-    </>
-  ),
-  ribbon: false,
-  type: [docType.Documentation, docType.Interactive],
-  time: '15min',
-},
-{
-  title: 'Build Code',
-  module: 'ce',
-  // Svg: '/img/icon_ci.svg',
-  description: (
-    <>
-      The deployment guides walk you through setting up a specific deployment using Harness, such as ECS, Kubernetes, and Helm. 
-    </>
-  ),
-  ribbon: false,
-  type: [docType.Documentation, docType.Interactive],
-  time: '15min',
-},
-{
-    title: 'Build Code',
-    module: 'ce',
-    // Svg: '/img/icon_ci.svg',
-    description: (
-      <>
-        The deployment guides walk you through setting up a specific deployment using Harness, such as ECS, Kubernetes, and Helm. 
-      </>
-    ),
-    ribbon: false,
-    type: [docType.Documentation, docType.Interactive],
-    time: '15min',
-  },
-  {
-    title: 'Build Code',
-    module: 'ce',
-    // Svg: '/img/icon_ci.svg',
-    description: (
-      <>
-        The deployment guides walk you through setting up a specific deployment using Harness, such as ECS, Kubernetes, and Helm. They are written to provide you with everything you need to learn how to model your CD process in Harness.
-      </>
-    ),
-    ribbon: true,
-    type: [docType.Documentation, docType.Interactive],
-    time: '15min',
-  },
-  {
-    title: 'Build Code',
-    module: 'ce',
-    // Svg: '/img/icon_ci.svg',
-    description: (
-      <>
-        The deployment guides walk you through setting up a specific deployment using Harness, such as ECS, Kubernetes, and Helm.
-      </>
-    ),
-    ribbon: false,
-    type: [docType.Documentation, docType.Interactive],
-    time: '8min',
-  },
-{
-title: 'Build Code',
-module: 'ce',
-// Svg: '/img/icon_ci.svg',
-description: (
-    <>
-    The deployment guides walk you through setting up a specific deployment using Harness, such as ECS, Kubernetes, and Helm. They are written to provide you with everything you need to learn how to model your CD process in Harness.
-    </>
-),
-ribbon: true,
-type: [docType.Documentation, docType.Interactive],
-time: '15min',
-},
-{
-title: 'Build Code',
-module: 'ce',
-// Svg: '/img/icon_ci.svg',
-description: (
-    <>
-    The deployment guides walk you through setting up a specific deployment using Harness, such as ECS, Kubernetes, and Helm.
-    </>
-),
-ribbon: false,
-type: [docType.Documentation, docType.Interactive],
-time: '8min',
-},]; 
+  time: '10min',
+  link: '/run-chaos-experiments/first-chaos-engineering'
+}];
 
 export default function CE() {
   return (
@@ -167,9 +90,15 @@ export default function CE() {
         </div>
         <div className={styles.subSection}>
           <h3>
-            CE Tutorials 
+            Featured Tutorials
           </h3>
-            <ModuleCard FeatureList={FeatureList} />
+            <ModuleCard FeatureList={FeaturedList} featureCard={true}/>
+        </div>
+        <div className={styles.subSection}>
+          <h3>
+            All Chaos Engineering Tutorials 
+          </h3>
+            <ModuleCard FeatureList={CEList}/>
         </div>
       </div>
     // </Layout>

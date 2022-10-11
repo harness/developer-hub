@@ -21,7 +21,7 @@ type FeatureItem = {
   link?: string;
 };
 
-const FeatureList: FeatureItem[] = [
+const FeaturedList: FeatureItem[] = [
   {
     title: 'Node and Docker Pipeline',
     module: 'ci',
@@ -112,7 +112,7 @@ export default function CI() {
         <h3>
           Featured Tutorials
         </h3>
-        <ModuleCard FeatureList={FeatureList} featureCard={true} />
+        <ModuleCard FeatureList={FeaturedList} featureCard={true} />
       </div>
       <div className={styles.subSection}>
         <h3>
@@ -120,7 +120,7 @@ export default function CI() {
         </h3>
         <ModuleCard FeatureList={DroneList} />
         <h3>
-          All Tutorials
+          All Building Code Tutorials
         </h3>
         <ModuleCard FeatureList={CIList} />
       </div>

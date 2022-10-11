@@ -20,110 +20,33 @@ type FeatureItem = {
   time: string;
 };
  
-const FeatureList: FeatureItem[] = [{
-  title: 'Feature Flag Security',
-  module: 'sto',
-  // Svg: '/img/icon_ci.svg',
+const FeaturedList: FeatureItem[] = [{
+  title: 'Introduction to SLO Management with Prometheus',
+  module: 'srm',
   description: (
     <>
-      The deployment guides walk you through setting up a specific deployment using Harness, such as ECS, Kubernetes, and Helm. They are written to provide you with everything you need to learn how to model your CD process in Harness.
+      Scanning a NodeJS Application and prioritizing scan results. 
+    </>
+  ),
+  ribbon: true,
+  type: [docType.Documentation, docType.Interactive, docType.Video],
+  time: '10min',
+  link: '/orchestrate-security-testing/nodejs-firstscan'
+}]; 
+
+const STOList: FeatureItem[] = [{
+  title: 'Introduction to SLO Management with Prometheus',
+  module: 'srm',
+  description: (
+    <>
+       Scanning a NodeJS Application and prioritizing scan results. 
     </>
   ),
   ribbon: false,
   type: [docType.Documentation, docType.Interactive, docType.Video],
-  time: '15min',
-},
-{
-  title: 'Build Code',
-  module: 'sto',
-  // Svg: '/img/icon_ci.svg',
-  description: (
-    <>
-      The deployment guides walk you through setting up a specific deployment using Harness, such as ECS, Kubernetes, and Helm. They are written to provide you with everything you need to learn how to model your CD process in Harness.
-    </>
-  ),
-  ribbon: false,
-  type: [docType.Documentation, docType.Interactive],
-  time: '15min',
-},
-{
-  title: 'Build Code',
-  module: 'sto',
-  // Svg: '/img/icon_ci.svg',
-  description: (
-    <>
-      The deployment guides walk you through setting up a specific deployment using Harness, such as ECS, Kubernetes, and Helm. 
-    </>
-  ),
-  ribbon: false,
-  type: [docType.Documentation, docType.Interactive],
-  time: '15min',
-},
-{
-    title: 'Build Code',
-    module: 'sto',
-    // Svg: '/img/icon_ci.svg',
-    description: (
-      <>
-        The deployment guides walk you through setting up a specific deployment using Harness, such as ECS, Kubernetes, and Helm. 
-      </>
-    ),
-    ribbon: false,
-    type: [docType.Documentation, docType.Interactive],
-    time: '15min',
-  },
-  {
-    title: 'Build Code',
-    module: 'sto',
-    // Svg: '/img/icon_ci.svg',
-    description: (
-      <>
-        The deployment guides walk you through setting up a specific deployment using Harness, such as ECS, Kubernetes, and Helm. They are written to provide you with everything you need to learn how to model your CD process in Harness.
-      </>
-    ),
-    ribbon: true,
-    type: [docType.Documentation, docType.Interactive],
-    time: '15min',
-  },
-  {
-    title: 'Build Code',
-    module: 'sto',
-    // Svg: '/img/icon_ci.svg',
-    description: (
-      <>
-        The deployment guides walk you through setting up a specific deployment using Harness, such as ECS, Kubernetes, and Helm.
-      </>
-    ),
-    ribbon: false,
-    type: [docType.Documentation, docType.Interactive],
-    time: '8min',
-  },
-{
-title: 'Build Code',
-module: 'sto',
-// Svg: '/img/icon_ci.svg',
-description: (
-    <>
-    The deployment guides walk you through setting up a specific deployment using Harness, such as ECS, Kubernetes, and Helm. They are written to provide you with everything you need to learn how to model your CD process in Harness.
-    </>
-),
-ribbon: true,
-type: [docType.Documentation, docType.Interactive],
-time: '15min',
-},
-{
-title: 'Build Code',
-module: 'sto',
-// Svg: '/img/icon_ci.svg',
-description: (
-    <>
-    The deployment guides walk you through setting up a specific deployment using Harness, such as ECS, Kubernetes, and Helm.
-    </>
-),
-ribbon: false,
-type: [docType.Documentation, docType.Interactive],
-time: '8min',
-},]; 
+  time: '10min',
+  link: '/orchestrate-security-testing/nodejs-firstscan'
+}];
 
 export default function STO() {
   return (
@@ -167,9 +90,15 @@ export default function STO() {
         </div>
         <div className={styles.subSection}>
           <h3>
-            STO Tutorials 
+            Featured Tutorials
           </h3>
-            <ModuleCard FeatureList={FeatureList} />
+            <ModuleCard FeatureList={FeaturedList} featureCard={true}/>
+        </div>
+        <div className={styles.subSection}>
+          <h3>
+            All Security Testing Tutorials 
+          </h3>
+            <ModuleCard FeatureList={STOList}/>
         </div>
       </div>
     // </Layout>

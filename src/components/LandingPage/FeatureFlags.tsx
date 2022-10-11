@@ -27,15 +27,31 @@ const FeatureList: FeatureItem[] = [{
   // Svg: '/img/icon_ci.svg',
   description: (
     <>
-      Walks you through adding Feature Flags to a TypeScript and React Application.
+      Walks you through adding JavaScript Feature Flags to a TypeScript and React Application.
+    </>
+  ),
+  ribbon: true,
+  type: [docType.Documentation, docType.Interactive, docType.Video],
+  time: '10min',
+  link: "/manage-feature-flags/typescript-react-first-feature-flag",
+  }
+]; 
+
+const FFList: FeatureItem[] = [{
+  title: 'TypeScript and React Feature Flags',
+  module: 'ff',
+  // Svg: '/img/icon_ci.svg',
+  description: (
+    <>
+      Walks you through adding JavaScript Feature Flags to a TypeScript and React Application.
     </>
   ),
   ribbon: false,
   type: [docType.Documentation, docType.Interactive, docType.Video],
-  time: '15min',
+  time: '10min',
   link: "/manage-feature-flags/typescript-react-first-feature-flag",
   }
-]; 
+];
 
 export default function FF() {
   return (
@@ -77,9 +93,15 @@ export default function FF() {
         </div>
         <div className={styles.subSection}>
           <h3>
-            Feature Flags Tutorials 
+            Featured Tutorials
           </h3>
-            <ModuleCard FeatureList={FeatureList} />
+            <ModuleCard FeatureList={FeatureList} featureCard={true}/>
+        </div>
+        <div className={styles.subSection}>
+          <h3>
+            All Feature Flag Tutorials 
+          </h3>
+            <ModuleCard FeatureList={FFList}/>
         </div>
       </div>
     // </Layout>

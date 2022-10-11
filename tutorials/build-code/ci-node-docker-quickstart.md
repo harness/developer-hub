@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Node and Docker Tutorial
+# Node and Docker Automated Build Tutorial
 
 ```mdx-code-block
 import KubernetesDelegateInstall from '/tutorials/docs-shared-components/kubernetes-delegate-install-includes.md';
