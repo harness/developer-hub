@@ -12,9 +12,14 @@ sidebar_position: 1
 ![STO](/img/icon_sto.svg)
 ![CE](/img/icon_ce.svg)
 
-Welcome to the Harness Developer Hub! 
+Welcome to the Harness Developer Hub!
 
 ## Getting Started
 
-Check out one of the module tutorials to get started. 
+Check out one of the module tutorials to get started.
 
+<!-- Custom component -->
+
+import AllTutorials from '@site/src/components/LandingPage/AllTutorials';
+
+<AllTutorials />

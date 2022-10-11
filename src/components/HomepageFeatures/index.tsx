@@ -1,6 +1,9 @@
 import React from 'react';
 import clsx from 'clsx';
+import { Tooltip } from 'antd';
+import 'antd/lib/tooltip/style/index.css'
 import styles from './styles.module.scss';
+
 
 enum docType {
   Documentation = 'doc',
@@ -64,7 +67,7 @@ const FeatureList: FeatureItem[] = [
       </>
     ),
     type: [docType.Documentation, docType.Video],
-    link: '/category/optimize-cloud-costs',
+    link: 'optimize-cloud-costs',
   },
   {
     title: 'Manage SLOs',
@@ -76,7 +79,7 @@ const FeatureList: FeatureItem[] = [
       </>
     ),
     type: [docType.Documentation, docType.Interactive, docType.Video],
-    link: '/category/manage-slos',
+    link: 'manage-slos',
   },
   {
     title: 'Orchestrate Security Testings',
@@ -88,7 +91,7 @@ const FeatureList: FeatureItem[] = [
       </>
     ),
     type: [docType.Documentation, docType.Interactive, docType.Video],
-    link: '/category/orchestrate-security-tests',
+    link: 'orchestrate-security-tests',
   },
   {
     title: 'Run Chaos Experiments',
@@ -100,7 +103,7 @@ const FeatureList: FeatureItem[] = [
       </>
     ),
     type: [docType.Documentation, docType.Interactive, docType.Video],
-    link: '/category/run-chaos-experiments',
+    link: 'run-chaos-experiments',
   },
 ];
 
@@ -120,7 +123,11 @@ function Feature({title, Svg, description, type, module, link}: FeatureItem) {
       <div>
         <ul className={styles.docTypes}>
         {type.map((props, idx) => (
-            <li><img src={`/img/icon_doctype_${props}.svg`} alt={props} /></li>
+            <li>
+              <Tooltip title={props} mouseLeaveDelay={0}>
+                <img src={`/img/icon_doctype_${props}.svg`} alt={props} />
+              </Tooltip>
+            </li>
           ))}
           
         </ul>

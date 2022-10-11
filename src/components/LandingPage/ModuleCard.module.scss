@@ -8,18 +8,23 @@
     padding: 24px;
     margin: 0 30px 30px 0;
     width: 25%;
-    border: 3px solid white;
+    border: 3px solid transparent;
     position: relative;
     .ribbon{
         position: absolute;
         top: 24px;
         right: -3px;
+        z-index: -1;
     }
     h6{
         font-weight: 500;
         font-size: 14px;
         line-height: 22px;
         color: #6B6D85;
+        img{
+            width: 14px;
+            margin-right: 13.5px;
+        }
     }
     h4{
         font-weight: 600;
@@ -45,7 +50,7 @@
           align-content: center;
           align-items: center;
           border-radius: 4px;
-          margin-right: 4px;
+          margin: 0 4px 0 0;
           img {
             width: 16px;
             height: 16px;
@@ -53,7 +58,7 @@
         }
       }
 }
-.ci:hover, .cd:hover, .ff:hover{
+.ci:hover, .cd:hover, .ff:hover, .ccm:hover, .srm:hover, .sto:hover, .ce:hover{
     border: 3px solid;
     border-image-slice: 1;
     border-width: 3px;
@@ -66,6 +71,18 @@
 }
 .ff:hover{
     border-image-source: linear-gradient(to left, rgba(255, 193, 0, 1), rgba(230, 107, 53, 1));
+}
+.ccm:hover{
+    border-image-source: linear-gradient(to left, rgba(0, 207, 222, 1), rgba(5, 166, 96, 1));
+}
+.srm:hover{
+    border-image-source: linear-gradient(to left, rgba(190, 161, 255, 1), rgba(138, 54, 255, 1));
+}
+.sto:hover{
+    border-image-source: linear-gradient(to left, rgba(71, 145, 255, 1), rgba(46, 28, 243, 1));
+}
+.ce:hover{
+    border-image-source: linear-gradient(to left, rgba(255, 111, 171, 1), rgba(206, 0, 86, 1));
 }
 .featureCard{
     border: 1px solid #D9DAE5;

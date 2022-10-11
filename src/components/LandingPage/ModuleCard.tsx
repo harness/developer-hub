@@ -1,11 +1,15 @@
 import React from 'react';
 // import clsx from 'clsx';
+import { Tooltip } from 'antd';
+import 'antd/lib/tooltip/style/index.css'
 import styles from './ModuleCard.module.scss';
 
-function Feature({title, ribbon, description, type, time, module, featureCard}: FeatureItem) {
+function Feature({title, ribbon, description, Svg, type, time, module, featureCard}: FeatureItem) {
   return (
     <div className={`${styles.tutorialCard} ${featureCard? styles.featureCard : styles[module]}`}>
-        <h6>{time}</h6>
+        <h6>{ Svg && 
+          <img src={Svg}/>
+        }{time}</h6>
         { ribbon && <div className={styles.ribbon}>
           <img src="/img/new.svg"/>
         </div>}
@@ -14,7 +18,11 @@ function Feature({title, ribbon, description, type, time, module, featureCard}: 
         <div>
         <ul className={styles.docTypes}>
           {type.map((props, idx) => (
-              <li><img src={`/img/icon_doctype_${props}.svg`} alt={props} /></li>
+              <li>
+                <Tooltip title={props} mouseLeaveDelay={0}>
+                  <img src={`/img/icon_doctype_${props}.svg`} alt={props} />
+                </Tooltip>
+              </li>
             ))}          
         </ul>
       </div>

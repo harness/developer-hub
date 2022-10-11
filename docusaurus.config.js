@@ -92,22 +92,22 @@ const config = {
               {
                 // type: "doc",
                 label: "Cloud Cost Management",
-                to: "/category/optimize-cloud-costs",
+                to: "optimize-cloud-costs",
               },
               {
                 // type: "doc",
                 label: "Service Reliability Management",
-                to: "/category/manage-slos",
+                to: "manage-slos",
               },
               {
                 // type: "doc",
                 label: "Security Test Orchestration",
-                to: "/category/orchestrate-security-tests",
+                to: "orchestrate-security-tests",
               },
               {
                 // type: "doc",
                 label: "Chaos Engineering",
-                to: "/category/run-chaos-experiments",
+                to: "run-chaos-experiments",
               },
             ],
           },
