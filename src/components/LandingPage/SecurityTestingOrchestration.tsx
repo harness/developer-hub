@@ -22,7 +22,7 @@ type FeatureItem = {
 };
  
 const FeaturedList: FeatureItem[] = [{
-  title: 'Introduction to SLO Management with Prometheus',
+  title: 'Scanning a NodeJS Application',
   module: 'srm',
   description: (
     <>
@@ -36,7 +36,7 @@ const FeaturedList: FeatureItem[] = [{
 }]; 
 
 const STOList: FeatureItem[] = [{
-  title: 'Introduction to SLO Management with Prometheus',
+  title: 'Scanning a NodeJS Application',
   module: 'srm',
   description: (
     <>
