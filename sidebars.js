@@ -4,7 +4,7 @@
 
 const sidebars = {
   allcontent: [
-    // Documentation
+    // Documentation Parent
     {
       type: "category",
       label: "Documentation",
@@ -23,6 +23,31 @@ const sidebars = {
           label: 'Continuous Delivery',
           href: 'https://docs.harness.io/category/pfzgb4tg05-howto-cd',
         },
+        {
+          type: 'link',
+          label: 'Feature Flags',
+          href: 'https://docs.harness.io/category/vjolt35atg-feature-flags',
+        },
+        {
+          type: 'link',
+          label: 'Cloud Cost Management',
+          href: 'https://docs.harness.io/category/exgoemqhji-ccm',
+        },
+        {
+          type: 'link',
+          label: 'Service Reliability Management',
+          href: 'https://docs.harness.io/category/ko19u4brsv-howtos-service-reliability-management',
+        },
+        {
+          type: 'link',
+          label: 'Security Testing Orchestration',
+          href: 'https://docs.harness.io/category/txlccquh5c-sto-category',
+        },
+        {
+          type: 'link',
+          label: 'Chaos Engineering',
+          href: 'https://docs.harness.io/category/kl0mxwpfw1-hce-category',
+        },
       ],
     },
 
@@ -39,12 +64,6 @@ const sidebars = {
 
         // Build Code
         {
-          /*type: "category",
-          label: "Build Code",
-          link: {
-            type: "generated-index",
-          },
-          collapsed: true,*/
           type: "category",
           label: "Build Code",
           link: {

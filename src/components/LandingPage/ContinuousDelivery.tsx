@@ -23,25 +23,26 @@ type FeatureItem = {
 };
  
 const FeatureList: FeatureItem[] = [{
-  title: 'Build Code',
+  title: 'First Kubernetes Deployment',
   module: 'cd',
   // Svg: '/img/icon_ci.svg',
   description: (
     <>
-      The deployment guides walk you through setting up a specific deployment using Harness, such as ECS, Kubernetes, and Helm. They are written to provide you with everything you need to learn how to model your CD process in Harness.
+      Deploying your first set of Kubernetes Services in a CD Pipline with Kubernetes Manifests. 
     </>
   ),
   ribbon: true,
   type: [docType.Documentation, docType.Interactive, docType.Video],
-  time: '15 min',
+  time: '10 min',
+  link: '/deploy-services/kubernetes-cd-first-tutorial',
 },
 {
-  title: 'Manage Features',
+  title: 'First Helm Deployment',
   module: 'cd',
   // Svg: '/img/icon_ci.svg',
   description: (
     <>
-      The deployment guides walk you through setting up a specific deployment using Harness, such as ECS, Kubernetes, and Helm. They are written to provide you with everything you need to learn how to model your CD process in Harness.
+      Deploying your first set of Kubernetes Resources using Helm [Kubernetes Package Manager]
     </>
   ),
   ribbon: false,
@@ -115,7 +116,7 @@ const PipelineList: FeatureItem[] = [{
   time: '8min',
 },];
 
-export default function CI() {
+export default function CD() {
   return (
     // <Layout title="CD" description="CD">
     //   <ul className={styles.breadCrumb}>
@@ -157,13 +158,13 @@ export default function CI() {
         </div>
         <div className={styles.subSection}>
           <h3>
-            Feature Tutorials
+            Featured Tutorials
           </h3>
             <ModuleCard FeatureList={FeatureList} featureCard={true}/>
         </div>
         <div className={styles.subSection}>
           <h3>
-            All Pipeline Tutorials 
+            All Deployment Tutorials 
           </h3>
             <ModuleCard FeatureList={PipelineList}/>
         </div>

@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Continuous Integration Node and Docker Tutorial
+# Node and Docker Tutorial
 
 ```mdx-code-block
 import KubernetesDelegateInstall from '/tutorials/docs-shared-components/kubernetes-delegate-install-includes.md';
