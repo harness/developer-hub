@@ -38,7 +38,7 @@ const config = {
           sidebarPath: require.resolve("./sidebars.js"),
           editUrl: "https://github.com/harness/developer-hub/tree/main", // /tree/main/packages/create-docusaurus/templates/shared/
           exclude: ["**/docs-shared-components/**"],
-          routeBasePath: "/", //CHANGE HERE
+          routeBasePath: "/tutorials",
         },
         blog: {
           showReadingTime: true,
@@ -73,7 +73,7 @@ const config = {
             items: [
               {
                 // type: "doc",
-                to: "build-code",
+                to: "/tutorials/build-code",
                 label: "Build Code",
                 // docId: "build-code",
                 // activeBasePath: "to",
@@ -81,33 +81,33 @@ const config = {
               {
                 // type: "doc",
                 label: "Deploy Services",
-                to: "deploy-services",
+                to: "/tutorials/deploy-services",
               },
               {
                 // type: "doc",
                 label: "Manage Feature Flags",
-                to: "manage-feature-flags",
-                // activeBaseRegex: "/manage-feature-flags",
+                to: "/tutorials/manage-feature-flags",
+                // activeBaseRegex: "/tutorials/manage-feature-flags",
               },
               {
                 // type: "doc",
                 label: "Optimize Cloud Costs",
-                to: "optimize-cloud-costs",
+                to: "/tutorials/optimize-cloud-costs",
               },
               {
                 // type: "doc",
                 label: "Manage SLOs",
-                to: "manage-slos",
+                to: "/tutorials/manage-slos",
               },
               {
                 // type: "doc",
                 label: "Orchestrate Security Tests",
-                to: "orchestrate-security-tests",
+                to: "/tutorials/orchestrate-security-tests",
               },
               {
                 // type: "doc",
                 label: "Run Chaos Experiments",
-                to: "run-chaos-experiments",
+                to: "/tutorials/run-chaos-experiments",
               },
             ],
           },
@@ -170,7 +170,7 @@ const config = {
             items: [
               {
                 label: "Tutorial",
-                to: "/intro",
+                to: "/tutorials/intro",
               },
             ],
           },
@@ -247,7 +247,7 @@ const config = {
       announcementBar: {
         id: "support_us",
         content:
-          'Harness Developer Hub is still a beta version, any suggestions please submit feedback to the feedback form.</a>',
+          "Harness Developer Hub is still a beta version, any suggestions please submit feedback to the feedback form.</a>",
         backgroundColor: "#FF5310",
         textColor: "#ffffff",
         isCloseable: true,
