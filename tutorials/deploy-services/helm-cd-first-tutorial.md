@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Continuous Delivery Helm Tutorial
+# Helm Deloyment Tutorial
 
 ```mdx-code-block
 import KubernetesDelegateInstall from '/tutorials/docs-shared-components/kubernetes-delegate-install-includes.md';

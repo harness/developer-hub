@@ -21,110 +21,33 @@ type FeatureItem = {
   link?: string;
 };
  
-const FeatureList: FeatureItem[] = [{
-  title: 'Feature Flag Security',
+const FeaturedList: FeatureItem[] = [{
+  title: 'Optimizing Kubernetes Cloud Costs 101',
   module: 'ccm',
-  // Svg: '/img/icon_ci.svg',
   description: (
     <>
-      The deployment guides walk you through setting up a specific deployment using Harness, such as ECS, Kubernetes, and Helm. They are written to provide you with everything you need to learn how to model your CD process in Harness.
+      This guide will walk through how start to optimize your Kubernetes Costs on a public cloud provider.
+    </>
+  ),
+  ribbon: true,
+  type: [docType.Documentation, docType.Interactive, docType.Video],
+  time: '10min',
+  link: '/optimize-cloud-costs/ccm-first-kubernetes-tutorial'
+}]; 
+
+const CCMList: FeatureItem[] = [{
+  title: 'Optimizing Kubernetes Cloud Costs 101',
+  module: 'ccm',
+  description: (
+    <>
+      This guide will walk through how start to optimize your Kubernetes Costs on a public cloud provider.
     </>
   ),
   ribbon: false,
   type: [docType.Documentation, docType.Interactive, docType.Video],
-  time: '15min',
-},
-{
-  title: 'Build Code',
-  module: 'ccm',
-  // Svg: '/img/icon_ci.svg',
-  description: (
-    <>
-      The deployment guides walk you through setting up a specific deployment using Harness, such as ECS, Kubernetes, and Helm. They are written to provide you with everything you need to learn how to model your CD process in Harness.
-    </>
-  ),
-  ribbon: false,
-  type: [docType.Documentation, docType.Interactive],
-  time: '15min',
-},
-{
-  title: 'Build Code',
-  module: 'ccm',
-  // Svg: '/img/icon_ci.svg',
-  description: (
-    <>
-      The deployment guides walk you through setting up a specific deployment using Harness, such as ECS, Kubernetes, and Helm. 
-    </>
-  ),
-  ribbon: false,
-  type: [docType.Documentation, docType.Interactive],
-  time: '15min',
-},
-{
-    title: 'Build Code',
-    module: 'ccm',
-    // Svg: '/img/icon_ci.svg',
-    description: (
-      <>
-        The deployment guides walk you through setting up a specific deployment using Harness, such as ECS, Kubernetes, and Helm. 
-      </>
-    ),
-    ribbon: false,
-    type: [docType.Documentation, docType.Interactive],
-    time: '15min',
-  },
-  {
-    title: 'Build Code',
-    module: 'ccm',
-    // Svg: '/img/icon_ci.svg',
-    description: (
-      <>
-        The deployment guides walk you through setting up a specific deployment using Harness, such as ECS, Kubernetes, and Helm. They are written to provide you with everything you need to learn how to model your CD process in Harness.
-      </>
-    ),
-    ribbon: true,
-    type: [docType.Documentation, docType.Interactive],
-    time: '15min',
-  },
-  {
-    title: 'Build Code',
-    module: 'ccm',
-    // Svg: '/img/icon_ci.svg',
-    description: (
-      <>
-        The deployment guides walk you through setting up a specific deployment using Harness, such as ECS, Kubernetes, and Helm.
-      </>
-    ),
-    ribbon: false,
-    type: [docType.Documentation, docType.Interactive],
-    time: '8min',
-  },
-{
-title: 'Build Code',
-module: 'ccm',
-// Svg: '/img/icon_ci.svg',
-description: (
-    <>
-    The deployment guides walk you through setting up a specific deployment using Harness, such as ECS, Kubernetes, and Helm. They are written to provide you with everything you need to learn how to model your CD process in Harness.
-    </>
-),
-ribbon: true,
-type: [docType.Documentation, docType.Interactive],
-time: '15min',
-},
-{
-title: 'Build Code',
-module: 'ccm',
-// Svg: '/img/icon_ci.svg',
-description: (
-    <>
-    The deployment guides walk you through setting up a specific deployment using Harness, such as ECS, Kubernetes, and Helm.
-    </>
-),
-ribbon: false,
-type: [docType.Documentation, docType.Interactive],
-time: '8min',
-},]; 
+  time: '10min',
+  link: '/optimize-cloud-costs/ccm-first-kubernetes-tutorial'
+}]; 
 
 export default function CCM() {
   return (
@@ -172,9 +95,15 @@ export default function CCM() {
         </div>
         <div className={styles.subSection}>
           <h3>
-            Cloud Costs Tutorials 
+            Featured Tutorials
           </h3>
-            <ModuleCard FeatureList={FeatureList} />
+            <ModuleCard FeatureList={FeaturedList} featureCard={true}/>
+        </div>
+        <div className={styles.subSection}>
+          <h3>
+            All Cloud Cost Tutorials 
+          </h3>
+            <ModuleCard FeatureList={CCMList}/>
         </div>
       </div>
     // </Layout>

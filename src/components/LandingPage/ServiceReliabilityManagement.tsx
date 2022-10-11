@@ -21,110 +21,33 @@ type FeatureItem = {
   link?: string;
 };
  
-const FeatureList: FeatureItem[] = [{
-  title: 'Feature Flag Security',
-  module: 'srm',
-  // Svg: '/img/icon_ci.svg',
+const FeaturedList: FeatureItem[] = [{
+  title: 'Introduction to SLO Management with Prometheus',
+  module: 'ccm',
   description: (
     <>
-      The deployment guides walk you through setting up a specific deployment using Harness, such as ECS, Kubernetes, and Helm. They are written to provide you with everything you need to learn how to model your CD process in Harness.
+      Introducing SLOs and how to measure and manage your SLOs leveraging Prometheus.
+    </>
+  ),
+  ribbon: true,
+  type: [docType.Documentation, docType.Interactive, docType.Video],
+  time: '15min',
+  link: '/manage-slos/intro-to-srm'
+}]; 
+
+const SRMList: FeatureItem[] = [{
+  title: 'Introduction to SLO Management with Prometheus',
+  module: 'ccm',
+  description: (
+    <>
+      Introducing SLOs and how to measure and manage your SLOs leveraging Prometheus.
     </>
   ),
   ribbon: false,
   type: [docType.Documentation, docType.Interactive, docType.Video],
   time: '15min',
-},
-{
-  title: 'Build Code',
-  module: 'srm',
-  // Svg: '/img/icon_ci.svg',
-  description: (
-    <>
-      The deployment guides walk you through setting up a specific deployment using Harness, such as ECS, Kubernetes, and Helm. They are written to provide you with everything you need to learn how to model your CD process in Harness.
-    </>
-  ),
-  ribbon: false,
-  type: [docType.Documentation, docType.Interactive],
-  time: '15min',
-},
-{
-  title: 'Build Code',
-  module: 'srm',
-  // Svg: '/img/icon_ci.svg',
-  description: (
-    <>
-      The deployment guides walk you through setting up a specific deployment using Harness, such as ECS, Kubernetes, and Helm. 
-    </>
-  ),
-  ribbon: false,
-  type: [docType.Documentation, docType.Interactive],
-  time: '15min',
-},
-{
-    title: 'Build Code',
-    module: 'srm',
-    // Svg: '/img/icon_ci.svg',
-    description: (
-      <>
-        The deployment guides walk you through setting up a specific deployment using Harness, such as ECS, Kubernetes, and Helm. 
-      </>
-    ),
-    ribbon: false,
-    type: [docType.Documentation, docType.Interactive],
-    time: '15min',
-  },
-  {
-    title: 'Build Code',
-    module: 'srm',
-    // Svg: '/img/icon_ci.svg',
-    description: (
-      <>
-        The deployment guides walk you through setting up a specific deployment using Harness, such as ECS, Kubernetes, and Helm. They are written to provide you with everything you need to learn how to model your CD process in Harness.
-      </>
-    ),
-    ribbon: true,
-    type: [docType.Documentation, docType.Interactive],
-    time: '15min',
-  },
-  {
-    title: 'Build Code',
-    module: 'srm',
-    // Svg: '/img/icon_ci.svg',
-    description: (
-      <>
-        The deployment guides walk you through setting up a specific deployment using Harness, such as ECS, Kubernetes, and Helm.
-      </>
-    ),
-    ribbon: false,
-    type: [docType.Documentation, docType.Interactive],
-    time: '8min',
-  },
-{
-title: 'Build Code',
-module: 'srm',
-// Svg: '/img/icon_ci.svg',
-description: (
-    <>
-    The deployment guides walk you through setting up a specific deployment using Harness, such as ECS, Kubernetes, and Helm. They are written to provide you with everything you need to learn how to model your CD process in Harness.
-    </>
-),
-ribbon: true,
-type: [docType.Documentation, docType.Interactive],
-time: '15min',
-},
-{
-title: 'Build Code',
-module: 'srm',
-// Svg: '/img/icon_ci.svg',
-description: (
-    <>
-    The deployment guides walk you through setting up a specific deployment using Harness, such as ECS, Kubernetes, and Helm.
-    </>
-),
-ribbon: false,
-type: [docType.Documentation, docType.Interactive],
-time: '8min',
-},]; 
+  link: '/manage-slos/intro-to-srm'
+}];
 
 export default function SRM() {
   return (
@@ -168,9 +91,15 @@ export default function SRM() {
         </div>
         <div className={styles.subSection}>
           <h3>
-            Service Reliability Tutorials 
+            Featured Tutorials
           </h3>
-            <ModuleCard FeatureList={FeatureList} />
+            <ModuleCard FeatureList={FeaturedList} featureCard={true}/>
+        </div>
+        <div className={styles.subSection}>
+          <h3>
+            All Cloud Cost Tutorials 
+          </h3>
+            <ModuleCard FeatureList={SRMList}/>
         </div>
       </div>
     // </Layout>

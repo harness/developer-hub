@@ -169,7 +169,7 @@ const config = {
           // { to: "/blog", label: "Blog", position: "left" },
           {
             href: "https://github.com/harness/developer-hub",
-            label: "GitHub",
+            label: "Developer Hub GitHub",
             position: "right",
           },
         ],
@@ -259,7 +259,7 @@ const config = {
       announcementBar: {
         id: "support_us",
         content:
-          'Harness Developer Hub is still a beta version, any suggestions please submit feedback to the feedback form.</a>',
+          'Harness Developer Hub is still in beta, any suggestions please submit feedback to the feedback form.</a>',
         backgroundColor: "#FF5310",
         textColor: "#ffffff",
         isCloseable: true,

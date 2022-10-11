@@ -19,13 +19,13 @@ function HomepageHeader() {
       <div className={styles.heroContainer}>
         <h1 className={styles.heroTitle}>{siteConfig.title}</h1>
         <p className={styles.heroSubTitle}>{siteConfig.tagline}</p>
-        <div className={styles.buttons}>
+        {/*<div className={styles.buttons}>
           <Link
             className={clsx('button button--lg', styles.heroButton)}
             to="/intro">
             Start Here
           </Link>
-        </div>
+      </div> */}
       </div>
         {/* <img src="/img/hero.svg" className={styles.heroImg} /> */}
     </header>

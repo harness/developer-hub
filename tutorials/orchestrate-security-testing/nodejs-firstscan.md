@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# NodeJS Security/DevSecOps Scan Tutorial
+# NodeJS App Security Scan
 
 ```mdx-code-block
 import KubernetesDelegateInstall from '/tutorials/docs-shared-components/kubernetes-delegate-install-includes.md';
