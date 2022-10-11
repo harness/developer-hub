@@ -151,7 +151,7 @@ const sidebars = {
         // Platform - common-platform
         {
           type: "category",
-          label: "Platform",
+          label: "Harness Platform",
           link: {
             type: "doc",
             id: "platform",

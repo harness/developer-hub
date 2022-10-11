@@ -22,179 +22,169 @@ type FeatureItem = {
   link?: string;
 };
  
-const FeatureList: FeatureItem[] = [{
-  title: 'Build Code',
-  module: 'ci',
-  Svg: '/img/icon_ci.svg',
+const FeaturedList: FeatureItem[] = [{
+  title: 'First Kubernetes Deployment',
+  module: 'cd',
+  Svg: '/img/icon_cd.svg',
   description: (
     <>
-      The deployment guides walk you through setting up a specific deployment using Harness, such as ECS, Kubernetes, and Helm. They are written to provide you with everything you need to learn how to model your CD process in Harness.
+      Deploying your first set of Kubernetes Services in a CD Pipline with Kubernetes Manifests. 
     </>
   ),
   ribbon: true,
   type: [docType.Documentation, docType.Interactive, docType.Video],
-  time: '15 min',
+  time: '10 min',
+  link: '/deploy-services/kubernetes-cd-first-tutorial',
 },
 {
-  title: 'Manage Features',
+  title: 'TypeScript and React Feature Flags',
   module: 'ff',
   Svg: '/img/icon_ff.svg',
   description: (
     <>
-      The deployment guides walk you through setting up a specific deployment using Harness, such as ECS, Kubernetes, and Helm. They are written to provide you with everything you need to learn how to model your CD process in Harness.
-    </>
-  ),
-  ribbon: false,
-  type: [docType.Documentation, docType.Interactive],
-  time: '8 min',
-},];
-
-const CIList: FeatureItem[] = [{
-  title: 'Deploy Services',
-  module: 'ci',
-  Svg: '',
-  description: (
-    <>
-      The deployment guides walk you through setting up a specific deployment using Harness, such as ECS, Kubernetes, and Helm. They are written to provide you with everything you need to learn how to model your CD process in Harness.
-    </>
-  ),
-  ribbon: false,
-  type: [docType.Documentation, docType.Interactive, docType.Video],
-  time: '20 min',
-},
-{
-  title: 'Build Code',
-  module: 'ci',
-  Svg: '',
-  description: (
-    <>
-      The deployment guides walk you through setting up a specific deployment using Harness, such as ECS, Kubernetes, and Helm. 
-    </>
-  ),
-  ribbon: false,
-  type: [docType.Documentation, docType.Interactive],
-  time: '15 min',
-},
-{
-  title: 'Build Code',
-  module: 'ci',
-  Svg: '',
-  description: (
-    <>
-      The deployment guides walk you through setting up a specific deployment using Harness, such as ECS, Kubernetes, and Helm. They are written to provide you with everything you need to learn how to model your CD process in Harness.
-    </>
-  ),
-  ribbon: false,
-  type: [docType.Documentation, docType.Interactive],
-  time: '15 min',
-},];
-
-const CDList: FeatureItem[] = [{
-  title: 'Deploy Services',
-  module: 'cd',
-  Svg: '',
-  description: (
-    <>
-      The deployment guides walk you through setting up a specific deployment using Harness, such as ECS, Kubernetes, and Helm. They are written to provide you with everything you need to learn how to model your CD process in Harness.
-    </>
-  ),
-  ribbon: false,
-  type: [docType.Documentation, docType.Interactive, docType.Video],
-  time: '15 min',
-},
-{
-  title: 'Build Code',
-  module: 'cd',
-  Svg: '',
-  description: (
-    <>
-      The deployment guides walk you through setting up a specific deployment using Harness, such as ECS, Kubernetes, and Helm. They are written to provide you with everything you need to learn how to model your CD process in Harness.
-    </>
-  ),
-  ribbon: false,
-  type: [docType.Documentation, docType.Interactive],
-  time: '15 min',
-},
-{
-  title: 'Build Code',
-  module: 'cd',
-  Svg: '',
-  description: (
-    <>
-      The deployment guides walk you through setting up a specific deployment using Harness, such as ECS, Kubernetes, and Helm. 
-    </>
-  ),
-  ribbon: false,
-  type: [docType.Documentation, docType.Interactive],
-  time: '15 min',
-},
-{
-  title: 'Build Code',
-  module: 'cd',
-  Svg: '',
-  description: (
-    <>
-      The deployment guides walk you through setting up a specific deployment using Harness, such as ECS, Kubernetes, and Helm.
-    </>
-  ),
-  ribbon: false,
-  type: [docType.Documentation, docType.Interactive],
-  time: '15 min',
-},
-{
-  title: 'Build Code',
-  module: 'cd',
-  Svg: '',
-  description: (
-    <>
-      The deployment guides walk you through setting up a specific deployment using Harness, such as ECS, Kubernetes, and Helm. They are written to provide you with everything you need to learn how to model your CD process in Harness.
+      Walks you through adding JavaScript Feature Flags to a TypeScript and React Application.
     </>
   ),
   ribbon: true,
+  type: [docType.Documentation, docType.Interactive, docType.Video],
+  time: '10min',
+  link: "/manage-feature-flags/typescript-react-first-feature-flag",
+  }];
+
+const CIList: FeatureItem[] = [{
+  title: 'Node and Docker Pipeline',
+  module: 'ci',
+  Svg: '',
+  description: (
+    <>
+      This build automation guide walks you through building a NodeJS and Docker Application in a CI Pipeline.
+    </>
+  ),
+  ribbon: false,
+  type: [docType.Documentation, docType.Interactive, docType.Video],
+  time: '15 min',
+  link: '/build-code/ci-node-docker-quickstart',
+},
+];
+
+const CDList: FeatureItem[] = [{
+  title: 'First Kubernetes Deployment',
+  module: 'cd',
+  Svg: '',
+  description: (
+    <>
+      Deploying your first set of Kubernetes Services in a CD Pipline with Kubernetes Manifests. 
+    </>
+  ),
+  ribbon: false,
+  type: [docType.Documentation, docType.Interactive, docType.Video],
+  time: '10 min',
+  link: '/deploy-services/kubernetes-cd-first-tutorial',
+},
+{
+  title: 'First GitOps Deployment',
+  module: 'cd',
+  Svg: '',
+  description: (
+    <>
+      Learn about GitOps and how to leverage your own GitOps Pipeline.
+    </>
+  ),
+  ribbon: false,
   type: [docType.Documentation, docType.Interactive],
-  time: '8 min',
+  time: '10min',
+  link: '/deploy-services/first-gitops-example',
+},
+{
+  title: 'First Helm Deployment',
+  module: 'cd',
+  Svg: '',
+  description: (
+    <>
+      Deploying your first set of Kubernetes Resources in a CD Pipeline with Helm (K8s Package Manager).
+    </>
+  ),
+  ribbon: false,
+  type: [docType.Documentation, docType.Interactive],
+  time: '10min',
+  link: 'deploy-services/helm-cd-first-tutorial',
 },];
 
 const FFList: FeatureItem[] = [{
-    title: 'Deploy Services',
-    module: 'ff',
-    Svg: '',
-    description: (
-      <>
-        The deployment guides walk you through setting up a specific deployment using Harness, such as ECS, Kubernetes, and Helm. They are written to provide you with everything you need to learn how to model your CD process in Harness.
-      </>
-    ),
-    ribbon: true,
-    type: [docType.Documentation, docType.Interactive, docType.Video],
-    time: '8 min',
-  },
-  {
-    title: 'Build Code',
-    module: 'ff',
-    Svg: '',
-    description: (
-      <>
-        The deployment guides walk you through setting up a specific deployment using Harness, such as ECS, Kubernetes, and Helm. They are written to provide you with everything you need to learn how to model your CD process in Harness.
-      </>
-    ),
-    ribbon: false,
-    type: [docType.Documentation, docType.Interactive],
-    time: '15 min',
-  },
-  {
-    title: 'Build Code',
-    module: 'ff',
-    Svg: '',
-    description: (
-      <>
-        The deployment guides walk you through setting up a specific deployment using Harness, such as ECS, Kubernetes, and Helm.
-      </>
-    ),
-    ribbon: false,
-    type: [docType.Documentation, docType.Interactive],
-    time: '15 min',
+  title: 'TypeScript and React Feature Flags',
+  module: 'ff',
+  Svg: '',
+  description: (
+    <>
+      Walks you through adding JavaScript Feature Flags to a TypeScript and React Application.
+    </>
+  ),
+  ribbon: true,
+  type: [docType.Documentation, docType.Interactive, docType.Video],
+  time: '10min',
+  link: "/manage-feature-flags/typescript-react-first-feature-flag",
   },
 ];
+
+const CCMList: FeatureItem[] = [{
+  title: 'Optimizing Kubernetes Cloud Costs 101',
+  module: 'ccm',
+  Svg: '',
+  description: (
+    <>
+      This guide will walk through how start to optimize your Kubernetes Costs on a public cloud provider.
+    </>
+  ),
+  ribbon: false,
+  type: [docType.Documentation, docType.Interactive, docType.Video],
+  time: '10min',
+  link: '/optimize-cloud-costs/ccm-first-kubernetes-tutorial'
+}]; 
+
+const SRMList: FeatureItem[] = [{
+  title: 'Introduction to SLO Management with Prometheus',
+  module: 'srm',
+  Svg: '',
+  description: (
+    <>
+      Introducing SLOs and how to measure and manage your SLOs leveraging Prometheus.
+    </>
+  ),
+  ribbon: false,
+  type: [docType.Documentation, docType.Interactive, docType.Video],
+  time: '15min',
+  link: '/manage-slos/intro-to-srm'
+}];
+
+const STOList: FeatureItem[] = [{
+  title: 'Introduction to SLO Management with Prometheus',
+  module: 'srm',
+  Svg: '',
+  description: (
+    <>
+       Scanning a NodeJS Application and prioritizing scan results. 
+    </>
+  ),
+  ribbon: false,
+  type: [docType.Documentation, docType.Interactive, docType.Video],
+  time: '10min',
+  link: '/orchestrate-security-testing/nodejs-firstscan'
+}];
+
+const CEList: FeatureItem[] = [{
+  title: 'Your First Chaos Experiment on Kubernetes',
+  module: 'ce',
+  Svg: '',
+  description: (
+    <>
+      Running a Chaos Experiment on Kuberenetes for the first time. 
+    </>
+  ),
+  ribbon: false,
+  type: [docType.Documentation, docType.Interactive, docType.Video],
+  time: '10min',
+  link: '/run-chaos-experiments/first-chaos-engineering'
+}];
 
 export default function AllTutorials() {
   return (
@@ -212,9 +202,9 @@ export default function AllTutorials() {
         </div> 
         <div className={styles.subSection}>
           <h3>
-            Feature Tutorials
+            Featured Tutorials
           </h3>
-            <ModuleCard FeatureList={FeatureList} featureCard={true}/>
+            <ModuleCard FeatureList={FeaturedList} featureCard={true}/>
         </div>
         <div className={styles.subSection}>
             <div className={styles.SectionName}>
@@ -238,10 +228,46 @@ export default function AllTutorials() {
             <div className={styles.SectionName}>
                 <img src="/img/icon_ff.svg"/>
                 <h3>
-                    manage feature flags
+                    Manage Feature Flags
                 </h3>
             </div>
             <ModuleCard FeatureList={FFList}/>
+        </div>
+        <div className={styles.subSection}>
+            <div className={styles.SectionName}>
+                <img src="/img/icon_ccm.svg"/>
+                <h3>
+                    Optimize Cloud Costs
+                </h3>
+            </div>
+            <ModuleCard FeatureList={CCMList}/>
+        </div>
+        <div className={styles.subSection}>
+            <div className={styles.SectionName}>
+                <img src="/img/icon_srm.svg"/>
+                <h3>
+                    Manage SLOs
+                </h3>
+            </div>
+            <ModuleCard FeatureList={SRMList}/>
+        </div>
+        <div className={styles.subSection}>
+            <div className={styles.SectionName}>
+                <img src="/img/icon_sto.svg"/>
+                <h3>
+                    Orchestrate Security Tests
+                </h3>
+            </div>
+            <ModuleCard FeatureList={STOList}/>
+        </div>
+        <div className={styles.subSection}>
+            <div className={styles.SectionName}>
+                <img src="/img/icon_ce.svg"/>
+                <h3>
+                    Run Chaos Experiments
+                </h3>
+            </div>
+            <ModuleCard FeatureList={CEList}/>
         </div>
       </div>
     // </Layout>
