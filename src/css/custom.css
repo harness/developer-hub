@@ -236,6 +236,17 @@
   --ifm-link-color: var(--ifm-color-primary);
 }
 
+.button--cta {
+	background-color: var(--primary-7);
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    color: var(--white);
+}
+.button--cta:hover {
+	background-color: var(--primary-5);
+}
+
 /* style overwriting temporarily for the beta icon */
 .navbar__brand {
 	margin-right: 0;
