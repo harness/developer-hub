@@ -140,7 +140,7 @@ function Feature({title, Svg, description, type, module, link}: FeatureItem) {
 export default function HomepageFeatures(): JSX.Element {
   return (
     <section className={styles.features}>
-      <h2>Tutorials</h2>
+     {/* <h2>Tutorials</h2> */}
       <div className={styles.getStart}>
           {FeatureList.map((props, idx) => (
             <Feature key={idx} {...props} />
