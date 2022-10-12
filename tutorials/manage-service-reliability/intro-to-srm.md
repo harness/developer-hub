@@ -4,6 +4,10 @@ sidebar_position: 1
 
 # Manage SLOs using Prometheus metrics data
 
+```mdx-code-block
+import KubernetesDelegateInstall from '/tutorials/shared/kubernetes-delegate-install-includes.md';
+```
+
 ## Background on Service Level Objectives
 
 In technology, the adage that you can not improve what you can’t measure is very true. Indicators and measurements of how well a system is performing can be represented by one of the Service Level (SLx) commitments. There is a trio of metrics, SLAs, SLOs, and SLIs, that paint a picture of the agreement made vs the objectives and actuals to meet the agreement. Focusing on the SLO or Service Level objectives, those are the goals to meet in your system.
@@ -114,7 +118,9 @@ Wiring in your service metrics/telemetry as SLOs to Harness SRM has a few Harnes
 
 ### Kubernetes Delegate Wiring
 
-Placeholder: Progressive
+```mdx-code-block
+<KubernetesDelegateInstall />
+```
 
 ### Creating Your First SLO
 

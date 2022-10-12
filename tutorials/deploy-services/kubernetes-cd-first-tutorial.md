@@ -55,7 +55,7 @@ With the Default Project selected, clicking on Overview will bring up a wizard t
 
 There are a few Harness entities that will need to be created in Harness. The needed objects are wirings to Docker Hub for public image access and GitHub for the Granfa manifest. These objects can be set up during the Pipeline creation or set up ahead of time so they can be reused in multiple Pipelines. Your onramp and workhorse in the Harness Platform is the Harness Delegate which can run in several places. For this example, using the Harness Kubernetes Delegate is the easiest.
 
-## Harness Delegate
+## Harness Delegate Wiring
 
 ```mdx-code-block
 <KubernetesDelegateInstall />
@@ -104,7 +104,7 @@ Click continue and select GitHub as the Manifest Source/Store.
 
 Now you are ready to create a GitHub Connector. GitHub does require Personal Access Tokens [PATs] to access git operations. See below if you do not have one setup.
 
-### Wiring GitHub into Harness [Progressive]
+### Wiring GitHub into Harness 
 
 Harness will also need access to where to grab the Kubernetes manifests from GitHub and pull an image down from Docker Hub.
 

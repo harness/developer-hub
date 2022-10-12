@@ -20,7 +20,7 @@ export default function HarnessU(): JSX.Element {
           </div>
           <div className={styles.harnessUPath}>
             <img src="/img/icon_univ-path.svg" className={styles.harnssUIcon} />
-            <span>3 Paths</span>
+            <span>4 Paths</span>
           </div>
           </a>
         </li>
