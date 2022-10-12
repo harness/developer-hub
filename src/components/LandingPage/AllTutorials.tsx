@@ -193,13 +193,13 @@ export default function AllTutorials() {
     //     <li>Get Started</li>
     //     <li>All Tutorials</li>
     //   </ul>
-      <div className="container">
-        <div className={styles.topSection}>
-              <h1>All Tutorials</h1>
-            <p>
-                Learn intelligent software delivery skills with step-by-step tutorials, interactive labs, videos and reference docs.
-            </p>
-        </div> 
+    <div className="container">
+      <div className={styles.topSection}>
+        <h1>All Tutorials</h1>
+        <p>
+          Learn intelligent software delivery skills with step-by-step tutorials, interactive labs, videos and reference docs.
+        </p>
+      </div> 
         <div className={styles.subSection}>
           <h3>
             Featured Tutorials
