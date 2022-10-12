@@ -125,7 +125,7 @@ function Feature({title, Svg, description, type, module, link}: FeatureItem) {
         <ul className={styles.docTypes}>
         {type.map((props, idx) => (
             <li>
-              <Tooltip title={props} mouseLeaveDelay={0}>
+              <Tooltip title={props} mouseLeaveDelay={0.01}>
                 <img src={`/img/icon_doctype_${props}.svg`} alt={props} />
               </Tooltip>
             </li>

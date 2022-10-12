@@ -37,7 +37,7 @@ const config = {
           path: ".",
           sidebarPath: require.resolve("./sidebars.js"),
           editUrl: "https://github.com/harness/developer-hub/tree/main", // /tree/main/packages/create-docusaurus/templates/shared/
-          include: ["tutorials/**", "docs/**"],
+          include: ["tutorials/**"], // , also add "docs/**" after migrating docs md files into DLP
           exclude: ["**/docs-shared-components/**", "**/static"],
           routeBasePath: "/", //CHANGE HERE
         },

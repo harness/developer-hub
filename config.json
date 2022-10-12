@@ -1,10 +1,10 @@
 {
     "index_name": "dlp-docs",
     "start_urls": [
-      "https://harness-docs.netlify.app/"
+      "https://harness-developer.netlify.app/"
     ],
     "sitemap_urls": [
-      "https://harness-docs.netlify.app/sitemap.xml"
+      "https://harness-developer.netlify.app/sitemap.xml"
     ],
     "sitemap_alternate_links": true,
     "stop_urls": [
