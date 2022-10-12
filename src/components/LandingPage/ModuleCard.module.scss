@@ -84,6 +84,28 @@
 .ce:hover{
     border-image-source: linear-gradient(to left, rgba(255, 111, 171, 1), rgba(206, 0, 86, 1));
 }
+.getStartedCard{
+    text-align: center;
+    padding: 24px 40px;
+    .docTypes{
+        justify-content: center;
+    }
+    h4{
+        margin-bottom: 7px;
+    }
+    p{
+        margin-bottom: 50px;
+    }
+    a{
+        color: #000000;
+    }
+    &.sto{
+        h4{
+            margin-right: 30px;
+            margin-left: 30px;
+        }
+    }
+}
 .featureCard{
     border: 1px solid #D9DAE5;
     box-shadow: none;
