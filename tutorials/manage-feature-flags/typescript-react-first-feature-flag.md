@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# JavaScript Feature Flags - TypeScript and React
+# Add feature flags to JavaScript app
 
 ## Background on Feature Flags
 

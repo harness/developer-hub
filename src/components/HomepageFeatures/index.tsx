@@ -40,7 +40,7 @@ const FeatureList: FeatureItem[] = [
     Svg: '/img/icon_cd.svg',
     description: (
       <>
-        Create a CD deployment.
+        Create a CD deployment pipeline.
       </>
     ),
     type: [docType.Documentation],
@@ -52,26 +52,26 @@ const FeatureList: FeatureItem[] = [
     Svg: '/img/icon_ff.svg',
     description: (
       <>
-        Rollout new features progressively.
+        Roll out new features progressively.
       </>
     ),
     type: [docType.Documentation],
     link: '/tutorials/manage-feature-flags',
   },
   {
-    title: 'Optimize Cloud Costs',
+    title: 'Manage Cloud Costs',
     module: 'ccm',
     Svg: '/img/icon_ccm.svg',
     description: (
       <>
-        Achieve cost transparency and cut costs
+        Achieve cost transparency and cut costs.
       </>
     ),
     type: [docType.Documentation],
-    link: '/tutorials/optimize-cloud-costs',
+    link: '/tutorials/manage-cloud-costs',
   },
   {
-    title: 'Manage SLOs',
+    title: 'Manage Service Reliability',
     module: 'srm',
     Svg: '/img/icon_srm.svg',
     description: (
@@ -80,7 +80,7 @@ const FeatureList: FeatureItem[] = [
       </>
     ),
     type: [docType.Documentation],
-    link: '/tutorials/manage-slos',
+    link: '/tutorials/manage-service-reliability',
   },
   {
     title: 'Orchestrate Security Testings',
@@ -88,7 +88,7 @@ const FeatureList: FeatureItem[] = [
     Svg: '/img/icon_sto.svg',
     description: (
       <>
-        Scan your code, containers and apps
+        Scan code, containers and apps.
       </>
     ),
     type: [docType.Documentation],
