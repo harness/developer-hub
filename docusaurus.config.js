@@ -1,4 +1,4 @@
-  // @ts-check
+// @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
 const lightCodeTheme = require("prism-react-renderer/themes/github");
@@ -61,12 +61,18 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: "Harness Developer Hub (Beta)",
+        title: "Harness Developer Hub",
         logo: {
-          alt: "Harness Developer Hub (Beta)",
+          alt: "Harness Developer Hub",
           src: "img/logo.svg",
         },
         items: [
+          {
+            position: "left",
+            // label: "img",
+            html: "<img src='/img/icon_beta.svg' width='39' height='19' style='margin-top: 8px;' />",
+            href: "#",
+          },
           {
             position: "right",
             type: "dropdown",
@@ -188,7 +194,7 @@ const config = {
         ],
       },
       footer: {
-        style: "dark",
+        // style: "dark",
         links: [
           {
             title: "Harness Software Delivery Platform",

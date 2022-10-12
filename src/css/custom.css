@@ -236,6 +236,16 @@
   --ifm-link-color: var(--ifm-color-primary);
 }
 
+/* style overwriting temporarily for the beta icon */
+.navbar__brand {
+	margin-right: 0;
+}
+
+/* hide the algolia logo */
+.DocSearch-Logo {
+	display: none;
+}
+
 .flexContainer {
   display: flex;
 }

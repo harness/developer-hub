@@ -21,17 +21,18 @@
   }
 }
 .heroBanner {
-  padding: 4rem 4rem 8rem 4rem;
+  padding-top: 4rem;
+  padding-bottom: 8rem;
   /* text-align: center; */
   position: relative;
   overflow: hidden;
   display: flex;
   background: url(/img/hero.svg) no-repeat bottom right;
-
-  background-size: 66%;
+  min-height: 420px;
+  background-size: 64%;
 }
 .heroContainer {
-  flex-basis: 40%;
+  flex-basis: 42%;
 }
 .heroImg {
   flex-basis: 50%;
@@ -44,10 +45,12 @@
   font-weight: 700;
   text-align: left;
   margin-bottom: 24px;
+  letter-spacing: -0.5px;
 }
 .heroSubTitle{
   font-size: 18px;
   line-height: 26px;
+  padding-right: 1em;
 }
 .buttons {
   display: flex;
