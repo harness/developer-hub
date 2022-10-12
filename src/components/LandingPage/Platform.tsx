@@ -24,14 +24,14 @@ type FeatureItem = {
  
 const FeaturedList: FeatureItem[] = [{
   title: 'Install Kubernetes Delegate',
-  module: 'cd',
+  module: 'platform',
   description: (
     <>
       Install a Harness Delegate into a Kubernetes Cluster. 
     </>
   ),
   ribbon: true,
-  type: [docType.Documentation],
+  type: [docType.Documentation, docType.Video],
   time: '5 min',
   link: '/tutorials/platform/kubernetes-delegate-install-standalone',
 },
@@ -39,14 +39,14 @@ const FeaturedList: FeatureItem[] = [{
 
 const PlatformList: FeatureItem[] = [{
   title: 'Install Kubernetes Delegate',
-  module: 'cd',
+  module: 'platform',
   description: (
     <>
       Install a Harness Delegate into a Kubernetes Cluster. 
     </>
   ),
   ribbon: false,
-  type: [docType.Documentation],
+  type: [docType.Documentation, docType.Video],
   time: '5 min',
   link: '/tutorials/platform/kubernetes-delegate-install-standalone',
 },
