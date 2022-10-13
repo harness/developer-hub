@@ -125,7 +125,7 @@ const config = {
             items: [
               {
                 label: "Continuous Integration",
-                href: "docs/continuous-integration",
+                to: "docs/continuous-integration",
               },
               {
                 label: "Continuous Delivery",
