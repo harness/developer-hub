@@ -51,14 +51,9 @@ const SRMList: FeatureItem[] = [{
 
 export default function SRM() {
   return (
-    // <Layout title="SRM" description="SRM">
-    //   <ul className={styles.breadCrumb}>
-    //     <li>Get Started</li>
-    //     <li>Manage SLOs</li>
-    //   </ul>
       <div className="container">
         <img src="/img/srm.svg"/>
-        <div className={styles.SectionName}><h3>Manage SLOs</h3></div>
+        <div className={styles.SectionName}><h3>Manage Service Reliability</h3></div>
         <div className={styles.topSection}>
           <div className={styles.spaceBetween}>
             <div className={styles.moduleTitle}>
@@ -81,7 +76,7 @@ export default function SRM() {
                 <Link
                   className={clsx('button button--lg', styles.btn, styles.btnSRM)}
                   to="#all-tutorials">
-                  SRM Quickstart
+                  SRM Tutorials
                   <img src="/img/Stroke.svg"/>
                 </Link>
                 <Link href="https://harness.io/products/service-reliability-management"><button className={styles.link}>Learn more about SRM</button></Link>
@@ -100,7 +95,7 @@ export default function SRM() {
         </div>
         <div className={styles.subSection}>
           <h3 id="all-tutorials">
-            All Cloud Cost Tutorials 
+            All SRM Tutorials 
           </h3>
             <ModuleCard FeatureList={SRMList}/>
         </div>

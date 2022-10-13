@@ -58,7 +58,7 @@ const sidebars = {
           ],
         },
 
-        // Optimize Cloud Costs - cloud-cost-management
+        // Manage Cloud Costs - cloud-cost-management
         {
           type: "category",
           label: "Manage Cloud Costs",
@@ -75,7 +75,7 @@ const sidebars = {
           ],
         },
 
-        // Manage SLOs - service-reliability-management
+        // Manage Service Reliability - service-reliability-management
         {
           type: "category",
           label: "Manage Service Reliability",
@@ -121,7 +121,7 @@ const sidebars = {
           ],
         },
 
-        // Platform - common-platform
+        // Platform - platform
         {
           type: "category",
           label: "Administer Harness Platform",
@@ -151,7 +151,7 @@ const sidebars = {
         {
           type: "link",
           label: "Continuous Integration",
-          href: "https://docs.harness.io/category/zgffarnh1m-ci-category",
+          href: "docs/continuous-integration",
         },
         {
           type: "link",

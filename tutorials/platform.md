@@ -7,6 +7,9 @@ hide_title: true
 
 <!-- Custom component -->
 
+<<<<<<< Updated upstream
 import AllTutorials from '@site/src/components/LandingPage/Platform';
 
 <AllTutorials />
+=======
+>>>>>>> Stashed changes

@@ -17,7 +17,7 @@ export default function LearnAboutPlatform(): JSX.Element {
         <li>
           <a href="https://docs.harness.io/article/vz5cq0nfg2-rbac-in-harness" target="_blank"><img src="/img/user-group-mgmt.svg" />
           <h4>User &amp; Role Management</h4>
-          <p>0Auth/SAML/SSO Providers, Users Groups, RBAC</p></a>
+          <p>OAuth/SAML/SSO Providers, Users Groups, RBAC</p></a>
         </li>
         <li>
         <a href="https://docs.harness.io/article/hngrlb7rd6-harness-secret-manager-overview" target="_blank"><img src="/img/secret-mgmt.svg" />

@@ -99,7 +99,7 @@ export default function CI() {
               <Link
                 className={clsx('button button--lg', styles.btn, styles.btnCI)}
                 to="#all-tutorials">
-                CI Quickstart
+                CI Tutorials
                 <img src="/img/Stroke.svg" />
               </Link>
               <Link href="https://harness.io/products/continuous-integration"><button className={styles.link}>Learn more about CI</button></Link>
