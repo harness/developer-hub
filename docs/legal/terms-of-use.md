@@ -1,6 +1,8 @@
 ---
 hide_table_of_contents: false
 hide_title: true
+editCurrentVersion: false
+custom_edit_url: https://github.com/
 ---
 
 #    Terms of Use
