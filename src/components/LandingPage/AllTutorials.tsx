@@ -246,7 +246,7 @@ export default function AllTutorials() {
             <div className={styles.SectionName}>
                 <img src="/img/icon_srm.svg"/>
                 <h3>
-                    Manage SLOs
+                    Manage Service Reliability
                 </h3>
             </div>
             <ModuleCard FeatureList={SRMList}/>

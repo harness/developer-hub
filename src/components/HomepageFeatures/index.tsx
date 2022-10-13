@@ -76,7 +76,7 @@ const FeatureList: FeatureItem[] = [
     Svg: '/img/icon_srm.svg',
     description: (
       <>
-        Create SLOs. track error budgets, govern pipelines.
+        Monitor SLOs, track error budgets, debug code errors.
       </>
     ),
     type: [docType.Documentation],

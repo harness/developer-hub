@@ -37,8 +37,8 @@ const config = {
           path: ".",
           sidebarPath: require.resolve("./sidebars.js"),
           editUrl: "https://github.com/harness/developer-hub/tree/main", // /tree/main/packages/create-docusaurus/templates/shared/
-          include: ["tutorials/**"], // , also add "docs/**" after migrating docs md files into DLP
-          exclude: ["**/docs-shared-components/**", "**/static"],
+          include: ["tutorials/**", "docs/**"],
+          exclude: ["**/shared/**", "**/static"],
           routeBasePath: "/", //CHANGE HERE
         },
         // blog: {
@@ -125,7 +125,7 @@ const config = {
             items: [
               {
                 label: "Continuous Integration",
-                href: "https://docs.harness.io/category/zgffarnh1m-ci-category",
+                to: "docs/continuous-integration",
               },
               {
                 label: "Continuous Delivery",
@@ -151,29 +151,12 @@ const config = {
                 label: "Chaos Engineering",
                 href: "https://docs.harness.io/category/kl0mxwpfw1-hce-category",
               },
-            ],
-          },
-          /**
-          {
-            position: "right",
-            type: "dropdown",
-            label: "Resources",
-            items: [
               {
-                label: "Community Slack",
-                href: "https://join.slack.com/t/harnesscommunity/shared_invite/zt-y4hdqh7p-RVuEQyIl5Hcx4Ck8VCvzBw",
-              },
-              {
-                label: "Community Forum",
-                href: "https://community.harness.io",
-              },
-              {
-                label: "University",
-                href: "https://university.harness.io/",
+                label: "API Reference",
+                href: "https://apidocs.harness.io/",
               },
             ],
           },
-          */
           {
             position: "right",
             href: "https://join.slack.com/t/harnesscommunity/shared_invite/zt-y4hdqh7p-RVuEQyIl5Hcx4Ck8VCvzBw",
@@ -238,6 +221,10 @@ const config = {
             title: "Resources",
             items: [
               {
+                label: "Sign up",
+                href: "https://app.harness.io/auth/#/signup/&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=plt-plg&utm_content=get-started",
+              },
+              {
                 label: "Slack",
                 href: "https://join.slack.com/t/harnesscommunity/shared_invite/zt-y4hdqh7p-RVuEQyIl5Hcx4Ck8VCvzBw",
               },
@@ -252,10 +239,6 @@ const config = {
               {
                 label: "YouTube",
                 href: "https://www.youtube.com/c/Harnessio",
-              },
-              {
-                label: "Sign up",
-                href: "https://app.harness.io/auth/#/signup/&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=plt-plg&utm_content=get-started",
               },
             ],
           },
@@ -311,7 +294,7 @@ const config = {
       announcementBar: {
         id: "support_us",
         content:
-          "Harness Developer Hub is still in beta, any suggestions please submit feedback to the feedback form.</a>",
+          "Harness Developer Hub is in BETA. Submit the feedback form for any suggestions.</a>",
         backgroundColor: "#FF5310",
         textColor: "#ffffff",
         isCloseable: true,
