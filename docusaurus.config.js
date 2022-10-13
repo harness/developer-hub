@@ -244,6 +244,10 @@ const config = {
                 label: "YouTube",
                 href: "https://www.youtube.com/c/Harnessio",
               },
+              {
+                label: "Developer Hub GitHub",
+                href: "https://github.com/harness/developer-hub",
+              },
             ],
           },
           {
@@ -251,8 +255,7 @@ const config = {
             items: [
               {
                 label: "Terms of Use",
-                // to: "/blog",
-                href: "https://harness.io/legal/website-terms-of-use",
+                to: "docs/legal/terms-of-use",
               },
               {
                 label: "Privacy Policy",
