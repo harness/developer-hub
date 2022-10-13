@@ -149,7 +149,7 @@ const config = {
               },
               {
                 label: "Chaos Engineering",
-                href: "https://docs.harness.io/category/kl0mxwpfw1-hce-category",
+                to: "docs/chaos-engineering",
               },
               {
                 label: "API Reference",
@@ -227,6 +227,10 @@ const config = {
               {
                 label: "Slack",
                 href: "https://join.slack.com/t/harnesscommunity/shared_invite/zt-y4hdqh7p-RVuEQyIl5Hcx4Ck8VCvzBw",
+              },
+              {
+                label: "API Reference",
+                href: "https://apidocs.harness.io/",
               },
               {
                 label: "Forum",

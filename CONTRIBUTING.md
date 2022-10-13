@@ -120,5 +120,17 @@ Powering the left navigation are [Docusaurus Sidbars](https://docusaurus.io/docs
 			
 ```	 
 
+## Videos	
+Videos are great tools to embed. Can embed a video in your Markdown as the following:
+
+```
+
+<!-- Video:
+https://harness-1.wistia.com/medias/rpv5vwzpxz-->
+<docvideo src="https://harness-1.wistia.com/medias/rpv5vwzpxz" />
+
+
+```
+
 ## Change Approval Flow
 Harness Approvers will validate changes and approve the branch for merge into `main`. Once merged into `main`, the CI Process [Drone] will be kicked off automatically. 
