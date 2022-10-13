@@ -32,7 +32,7 @@ Address:
 San Francisco, CA 9405
 
 Email:
-[legalnotices@harness.io](legalnotices@harness.io) 
+[legalnotices@harness.io](mailto:legalnotices@harness.io) 
 
 ## 4 Contributions
 
@@ -102,7 +102,7 @@ The Company may investigate and prosecute violations of these Terms to the fulle
 
 ## 7. Your Account
 You may need to create and log into an account to use some features on the Website.
-To create an account, you must provide some information about yourself. If you create an account, you agree to provide, at a minimum, a valid e-mail address, and to keep that address up-to-date. You may close your account at any time by emailing [developer.hub@harness.io](developer.hub@harness.io).
+To create an account, you must provide some information about yourself. If you create an account, you agree to provide, at a minimum, a valid e-mail address, and to keep that address up-to-date. You may close your account at any time by emailing [developer.hub@harness.io](mailto:developer.hub@harness.io).
 
 You agree to be responsible for all action taken using your account, whether authorized by you or not, until you either close your account or notify the Company that your account has been compromised. You agree to notify the Company immediately if you suspect your account has been compromised. You are responsible for safeguarding your account, so use a strong password and limit its use to this account.
 
@@ -148,7 +148,7 @@ In the event that any provision of these Terms is held to be invalid or unenforc
 You may not assign your Agreement with the Company. The Company may assign your Agreement to any affiliate or successor of the Company. Any attempted assignment against these terms has no legal effect.  These terms embody all the terms of agreement between you and the Company about use of the Website. These terms entirely replace any other agreements about your use of the Website, written or not.
 
 ## 15. Contact
-You may contact and send questions to the Company regarding these Terms, at [developer.hub@harness.io](developer.hub@harness.io).
+You may contact and send questions to the Company regarding these Terms, at [developer.hub@harness.io](mailto:developer.hub@harness.io).
 
 The Company may contact you regarding these Terms using the e-mail address you provide for your account on the Website, or by posting a message to the homepage of the Website, or your account page.
 
