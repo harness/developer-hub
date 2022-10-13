@@ -33,7 +33,7 @@ const FeaturedList: FeatureItem[] = [
             </>
         ),
         type: [docType.Documentation, docType.Interactive, docType.Video],
-        link: '#',
+        link: '/tutorials/build-code',
     },
     {
         title: 'Deploy Services',
@@ -45,7 +45,7 @@ const FeaturedList: FeatureItem[] = [
             </>
         ),
         type: [docType.Documentation, docType.Interactive, docType.Video],
-        link: '#',
+        link: '/tutorials/deploy-services',
     },
     {
         title: 'Manage Feature Flags',
@@ -57,7 +57,7 @@ const FeaturedList: FeatureItem[] = [
             </>
         ),
         type: [docType.Documentation, docType.Interactive],
-        link: '#',
+        link: '/tutorials/manage-feature-flags',
     },
     {
         title: 'Optimize Cloud Costs',
@@ -69,7 +69,7 @@ const FeaturedList: FeatureItem[] = [
             </>
         ),
         type: [docType.Documentation, docType.Interactive, docType.Video],
-        link: '#',
+        link: '/tutorials/manage-cloud-costs',
     },
     {
         title: 'Manage SLOs',
@@ -81,7 +81,7 @@ const FeaturedList: FeatureItem[] = [
             </>
         ),
         type: [docType.Documentation, docType.Interactive, docType.Video],
-        link: '#',
+        link: '/tutorials/manage-service-reliability',
     },
     {
         title: 'Orchestrate Security Testings',
@@ -93,7 +93,7 @@ const FeaturedList: FeatureItem[] = [
             </>
         ),
         type: [docType.Documentation, docType.Interactive, docType.Video],
-        link: '#',
+        link: '/tutorials/orchestrate-security-tests',
     },
     {
         title: 'Run Chaos Experiments',
@@ -105,7 +105,7 @@ const FeaturedList: FeatureItem[] = [
             </>
         ),
         type: [docType.Documentation, docType.Interactive],
-        link: '#',
+        link: '/tutorials/run-chaos-experiments',
     },
 ];
   
