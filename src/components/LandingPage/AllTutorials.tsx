@@ -3,6 +3,7 @@ import React from 'react'
 import Link from '@docusaurus/Link';
 import clsx from 'clsx';
 import styles from './styles.module.scss';
+import moduleStyles from './ModuleCard.module.scss';
 import ModuleCard from './ModuleCard';
 
 enum docType {
@@ -193,7 +194,7 @@ export default function AllTutorials() {
     //     <li>Get Started</li>
     //     <li>All Tutorials</li>
     //   </ul>
-      <div className="container">
+      <div className={clsx('container', moduleStyles.allTutorials)}>
         <div className={styles.topSection}>
               <h1>All Tutorials</h1>
             <p>

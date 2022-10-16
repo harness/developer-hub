@@ -120,7 +120,7 @@ export default function CD() {
             </div>       
           </div>
           <div className={styles.spaceBetween}>
-            <div>
+            <div className={styles.content}>
               <p>
               Continuous Delivery focuses on delivery and deployment of any sort of change or ribbon feature in a safe and sustainable way. Your Continuous Delivery Pipeline focuses on all of the steps to get your changes into production. 
               </p>

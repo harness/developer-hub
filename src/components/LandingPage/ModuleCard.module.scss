@@ -84,6 +84,14 @@
 .ce:hover{
     border-image-source: linear-gradient(to left, rgba(255, 111, 171, 1), rgba(206, 0, 86, 1));
 }
+.allTutorials{
+    .tutorialCard{
+        width: 28%;
+    }
+    .featureCard{
+        width: 46%;
+    }
+}
 .getStartedCard{
     text-align: center;
     padding: 24px 40px;
