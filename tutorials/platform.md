@@ -7,9 +7,11 @@ hide_title: true
 
 <!-- Custom component -->
 
-
+<!--
 import AllTutorials from '@site/src/components/LandingPage/Platform';
-
 <AllTutorials />
+-->
 
+import GetStarted from '@site/src/components/LandingPage/GetStarted';
 
+<GetStarted />
