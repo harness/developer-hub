@@ -1,0 +1,13 @@
+{
+  "filters": {},
+  "rules": {
+    "no-todo": true,
+    "textlint-rule-unexpanded-acronym": true,
+    "textlint-rule-spelling": false,
+    "textlint-rule-rousseau": true,
+    "textlint-rule-alex": true,
+    "textlint-rule-write-good": true,
+    "textlint-rule-spellchecker": false,
+    "textlint-rule-common-misspellings": true
+  }
+}
