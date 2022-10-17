@@ -47,4 +47,4 @@ jobs:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
         with:
           # files: '["input1", "input2"]'
-          files: '["tutorials/**/**.md*", "docs/**/**.md*"]'
+          files: '["./tutorials/**/*.md*", "./docs/**/*.md*"]'
