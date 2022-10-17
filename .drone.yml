@@ -4,6 +4,7 @@ name: default
 
 steps:
 - name: lint
+  failure: ignore
   image: node:18
   commands:
   - echo | /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
