@@ -9,6 +9,7 @@ steps:
   - echo | /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
   - export PATH=$PATH:/home/linuxbrew/.linuxbrew/bin
   - brew install vale
+  - vale sync
   - yarn
   - yarn lint:vale
   - yarn build
