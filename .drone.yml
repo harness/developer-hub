@@ -3,7 +3,7 @@ type: docker
 name: default
 
 steps:
-- name: build
+- name: lint
   image: node:18
   commands:
   - echo | /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
@@ -12,6 +12,11 @@ steps:
   - vale sync
   - yarn
   - yarn lint:vale
+
+- name: build
+  image: node:18
+  commands:
+  - yarn
   - yarn build
 
 - name: publish
