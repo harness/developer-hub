@@ -45,3 +45,6 @@ jobs:
           # Required, set by GitHub actions automatically:
           # https://docs.github.com/en/actions/security-guides/automatic-token-authentication#about-the-github_token-secret
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        with:
+          # files: '["input1", "input2"]'
+          files: '["tutorials/**/**.md*", "docs/**/**.md*"]'
