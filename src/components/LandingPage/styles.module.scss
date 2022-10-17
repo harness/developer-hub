@@ -17,6 +17,12 @@
         }
     }
 }
+.getStarted{
+    h1{
+        font-size: 32px;
+    }
+    padding-bottom: 30px;
+}
 .SectionName{
     h3{
         font-family: 'Inter';
@@ -32,6 +38,9 @@
     border-bottom: 1px solid #D9DAE5;
     margin-bottom: 3.5rem;
     padding-bottom: 3.5rem;
+    h1{
+        font-size: 32px;
+    }
     .moduleTitle{
         display: flex;
         align-items: center;
