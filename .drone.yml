@@ -6,6 +6,7 @@ steps:
 - name: build
   image: node:18
   commands:
+  - brew install vale
   - yarn
   - yarn build
 
