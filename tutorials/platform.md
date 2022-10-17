@@ -12,6 +12,11 @@ import AllTutorials from '@site/src/components/LandingPage/Platform';
 <AllTutorials />
 -->
 
-import GetStarted from '@site/src/components/LandingPage/GetStarted';
-
+<!--
+import AllTutorials from '@site/src/components/LandingPage/GetStarted';
 <GetStarted />
+-->
+
+import Platform from '@site/src/components/LandingPage/Platform';
+
+<Platform />
