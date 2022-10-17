@@ -7,9 +7,16 @@ hide_title: true
 
 <!-- Custom component -->
 
-<<<<<<< Updated upstream
+<!--
 import AllTutorials from '@site/src/components/LandingPage/Platform';
-
 <AllTutorials />
-=======
->>>>>>> Stashed changes
+-->
+
+<!--
+import AllTutorials from '@site/src/components/LandingPage/GetStarted';
+<GetStarted />
+-->
+
+import Platform from '@site/src/components/LandingPage/Platform';
+
+<Platform />

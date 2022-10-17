@@ -5,11 +5,15 @@ name: ESlint
 
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - main
   pull_request:
     types:
       - opened
-    branches: [ "main" ]
+      - synchronize
+      - reopened
+    branches:
+      - main
 
 jobs:
   build:

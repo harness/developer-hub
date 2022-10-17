@@ -144,7 +144,7 @@ export default function GetStarted() {
   return ( 
       <div className="container">
         <div className={styles.getStarted}>
-              <h1>Get Started</h1>
+              {/* <h1>Get Started</h1> */}
             <p>
                 Learn intelligent software delivery skills with step-by-step tutorials, interactive labs, videos and reference docs.
             </p>
