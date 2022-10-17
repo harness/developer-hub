@@ -6,8 +6,11 @@ steps:
 - name: build
   image: node:18
   commands:
+  - echo | /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+  - export PATH=$PATH:/home/linuxbrew/.linuxbrew/bin
   - brew install vale
   - yarn
+  - yarn lint:vale
   - yarn build
 
 - name: publish

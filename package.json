@@ -15,7 +15,7 @@
     "write-heading-ids": "docusaurus write-heading-ids",
     "lint:eslint": "eslint ./src/**/*.js*",
     "lint:vale": "vale tutorials/**/**.md* docs/**/**.md*",
-    "lint:ci": "yarn lint:eslint && yarn lint:vale",
+    "lint:ci": "npm run lint:eslint",
     "typecheck": "tsc"
   },
   "dependencies": {
