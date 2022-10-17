@@ -128,7 +128,7 @@ export default function CD() {
               <Link
                   className={clsx('button button--lg', styles.btn, styles.btnCD)}
                   to="#all-tutorials">
-                  CD Quickstart 
+                  CD Tutorials 
                   <img src="/img/Stroke.svg"/>
               </Link>
               <Link href="https://harness.io/products/continuous-delivery"><button className={styles.link}>Learn more about CD</button></Link>

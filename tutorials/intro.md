@@ -1,6 +1,3 @@
----
-sidebar_position: 1
----
 
 # Introduction
 
@@ -13,10 +10,6 @@ sidebar_position: 1
 ![CE](/img/icon_ce.svg)
 
 Welcome to the Harness Developer Hub!
-
-## Getting Started
-
-Check out one of the module tutorials to get started.
 
 <!-- Custom component -->
 

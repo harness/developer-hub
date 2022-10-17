@@ -80,7 +80,7 @@ export default function STO() {
                 <Link
                   className={clsx('button button--lg', styles.btn, styles.btnSTO)}
                   to="#all-tutorials">
-                  STO Quickstart
+                  STO Tutorials
                   <img src="/img/Stroke.svg"/>
                 </Link>
                 <Link href="https://harness.io/products/security-testing-orchestration"><button className={styles.link}>Learn more about STO</button></Link>
