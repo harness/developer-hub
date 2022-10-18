@@ -301,8 +301,8 @@ const config = {
       announcementBar: {
         id: "support_us",
         content:
-          "Harness Developer Hub is in BETA. Submit the feedback form for any suggestions.</a>",
-        backgroundColor: "#FF5310",
+          "Harness Developer Hub is in BETA. Help us improve by submitting feedbacks for any suggestions.",
+        backgroundColor: "#000000",
         textColor: "#ffffff",
         isCloseable: true,
       },
