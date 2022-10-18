@@ -53,6 +53,10 @@ const config = {
           trackingID: "G-Z62TFF68Z3", 
           anonymizeIP: true,
         },
+        googleAnalytics: {
+          trackingID: 'GTM-MJB7HPB',
+          anonymizeIP: true,
+        },
       }),
     ],
   ],
