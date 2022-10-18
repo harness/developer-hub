@@ -17,7 +17,7 @@ on:
 
 jobs:
   build:
-
+    if: github.repository == 'harness/developer-hub'
     runs-on: ubuntu-latest
 
     strategy:
