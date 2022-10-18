@@ -251,6 +251,9 @@
 .navbar__brand {
 	margin-right: 0;
 }
+.navbar__title {
+	display: none;
+}
 
 /* hide the algolia logo */
 .DocSearch-Logo {
@@ -264,3 +267,8 @@
     color: var(--ifm-link-color);
     text-decoration: var(--ifm-link-decoration);
 } */
+
+/* for 3rd-party libs */
+.rc-tooltip-inner {
+	text-transform: capitalize;
+}
