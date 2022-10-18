@@ -3,6 +3,7 @@
 
 const lightCodeTheme = require("prism-react-renderer/themes/github");
 const darkCodeTheme = require("prism-react-renderer/themes/dracula");
+const path = require("path");
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -310,8 +311,14 @@ const config = {
         textColor: "#ffffff",
         isCloseable: true,
       },
+      hotjar: {
+        siteId: 3194971,
+      },
     }),
-  plugins: ["docusaurus-plugin-sass"],
+  plugins: [
+    "docusaurus-plugin-sass",
+    path.join(__dirname, "/plugins/hotjar-plugin"),
+  ],
 };
 
 module.exports = config;
