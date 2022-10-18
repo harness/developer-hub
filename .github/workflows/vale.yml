@@ -43,6 +43,7 @@ on:
 jobs:
   vale:
     name: runner / vale
+    if: github.repository == 'harness/developer-hub'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
