@@ -9,13 +9,14 @@
   }
   .getStart {
     display: flex;
+    justify-content: center;
     flex-flow: row wrap;
     // align-items: center;
     /* width: 100%; */
     // flex-basis: 70%;
     flex-grow: 1;
     .getStartItem {
-      width: 280px; // 250px;
+      width: 270px; // 250px;
       height: 270px;
       overflow: hidden;
       /* Light/Background/White */

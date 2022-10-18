@@ -23,9 +23,9 @@ module.exports = function (context) {
     name: "hotjar-plugin",
 
     injectHtmlTags() {
-      //   if (!isProd) {
-      //     return {};
-      //   }
+      if (!isProd) {
+        return {};
+      }
       return {
         headTags: [
           {

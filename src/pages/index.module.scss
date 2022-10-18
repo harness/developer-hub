@@ -67,8 +67,11 @@
 }
 
 @media screen and (max-width: 996px) {
+// @media screen and (max-width: 768px) {
   .heroBanner {
     padding: 2rem;
+    flex-flow: column nowrap;
+    min-height: unset;
+    background: none;
   }
 }
-
