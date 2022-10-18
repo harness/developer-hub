@@ -272,3 +272,6 @@
 .rc-tooltip-inner {
 	text-transform: capitalize;
 }
+.rc-tooltip-hidden {
+	display: none !important;
+}

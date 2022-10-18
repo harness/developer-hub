@@ -50,7 +50,7 @@ const config = {
           customCss: require.resolve("./src/css/custom.css"),
         },
         gtag: {
-          trackingID: "G-Z62TFF68Z3", 
+          trackingID: "G-Z62TFF68Z3",
           anonymizeIP: true,
         },
         googleAnalytics: {
@@ -260,7 +260,7 @@ const config = {
             items: [
               {
                 label: "Terms of Use",
-                to: "docs/legal/terms-of-use",
+                to: "legal/terms-of-use",
               },
               {
                 label: "Privacy Policy",

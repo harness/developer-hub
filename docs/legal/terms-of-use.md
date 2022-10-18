@@ -3,7 +3,8 @@ hide_table_of_contents: false
 hide_title: true
 title: Terms of Use
 editCurrentVersion: false
-custom_edit_url: https://github.com/
+custom_edit_url: null
+slug: /legal/terms-of-use/
 ---
 
 # Terms of Use
