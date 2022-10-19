@@ -1,6 +1,7 @@
 .spaceBetween{
     display: flex;
     flex-flow: row wrap;
+    justify-content: space-between;
 }
 .tutorialCard{
     border-radius: 8px;
@@ -121,8 +122,15 @@
 .featureCard{
     border: 1px solid #D9DAE5;
     box-shadow: none;
-    width: 47%;
+    width: 48%;
     .ribbon{
         right: 0;
+    }
+}
+
+// @media screen and (max-width: 996px) {
+@media screen and (max-width: 768px) {
+    .tutorialCard{
+        width: 48%;
     }
 }

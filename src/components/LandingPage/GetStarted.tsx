@@ -3,8 +3,8 @@ import React from 'react'
 import Link from '@docusaurus/Link';
 import clsx from 'clsx';
 import styles from './styles.module.scss';
-import { Tooltip } from 'antd';
-import 'antd/lib/tooltip/style/index.css'
+import Tooltip from 'rc-tooltip';
+import 'rc-tooltip/assets/bootstrap.css'
 import moduleStyles from './ModuleCard.module.scss';
 
 enum docType {
@@ -119,7 +119,7 @@ const FeaturedList: FeatureItem[] = [
           <ul className={moduleStyles.docTypes}>
             {type.map((props, idx) => (
                 <li>
-                  <Tooltip title={props} mouseLeaveDelay={0}>
+                  <Tooltip placement="top" overlay={props}>
                     <img src={`/img/icon_doctype_${props}.svg`} alt={props} />
                   </Tooltip>
                 </li>

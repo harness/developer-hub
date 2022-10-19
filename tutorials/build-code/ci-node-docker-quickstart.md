@@ -84,7 +84,7 @@ If you took a closer look at what your machine was doing during those local buil
 
 ### Starting off with Harness
 
-Harness is a Platform, but we will focus on the Continuous integration module. First, sign up for a [Harness account to get started](https://app.harness.io/auth/#/signup/?module=ci).
+Harness is a Platform, but we will focus on the Continuous integration module. First, sign up for a [Harness account to get started](https://app.harness.io/auth/#/signup/?module=ci&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=ci-plg&utm_content=get-started).
 
 ![Harness Signup](static/ci-tutorial-node-docker/harness_signup.png)
 

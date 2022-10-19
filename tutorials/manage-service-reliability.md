@@ -1,9 +1,10 @@
 ---
 hide_table_of_contents: true
 hide_title: true
+title: Manage Service Reliability
 ---
 
-<!-- # Build Code -->
+<!-- # Manage Service Reliability -->
 
 <!-- Custom component -->
 

@@ -3,6 +3,7 @@
 
 const lightCodeTheme = require("prism-react-renderer/themes/github");
 const darkCodeTheme = require("prism-react-renderer/themes/dracula");
+const path = require("path");
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -52,6 +53,10 @@ const config = {
           trackingID: "G-Z62TFF68Z3",
           anonymizeIP: true,
         },
+        googleAnalytics: {
+          trackingID: 'GTM-MJB7HPB',
+          anonymizeIP: true,
+        },
       }),
     ],
   ],
@@ -64,7 +69,7 @@ const config = {
         title: "Harness Developer Hub",
         logo: {
           alt: "Harness Developer Hub",
-          src: "img/logo.svg",
+          src: "img/logo_dlp.svg",
         },
         items: [
           {
@@ -115,6 +120,11 @@ const config = {
                 // type: "doc",
                 label: "Run Chaos Experiments",
                 to: "tutorials/run-chaos-experiments",
+              },
+              {
+                // type: "doc",
+                label: "Install Delegate",
+                to: "tutorials/platform/kubernetes-delegate-install-standalone",
               },
             ],
           },
@@ -255,7 +265,7 @@ const config = {
             items: [
               {
                 label: "Terms of Use",
-                to: "docs/legal/terms-of-use",
+                to: "legal/terms-of-use",
               },
               {
                 label: "Privacy Policy",
@@ -301,13 +311,19 @@ const config = {
       announcementBar: {
         id: "support_us",
         content:
-          "Harness Developer Hub is in BETA. Submit the feedback form for any suggestions.</a>",
-        backgroundColor: "#FF5310",
+          "Harness Developer Hub is in BETA. Help us improve by providing feedback.",
+        backgroundColor: "#000000",
         textColor: "#ffffff",
         isCloseable: true,
       },
+      hotjar: {
+        siteId: 3194971,
+      },
     }),
-  plugins: ["docusaurus-plugin-sass"],
+  plugins: [
+    "docusaurus-plugin-sass",
+    path.join(__dirname, "/plugins/hotjar-plugin"),
+  ],
 };
 
 module.exports = config;
