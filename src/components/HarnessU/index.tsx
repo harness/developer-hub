@@ -44,7 +44,7 @@ export default function HarnessU(): JSX.Element {
           </div>
           <div className={styles.harnessUPath}>
             <img src="/img/icon_univ-min.svg" className={styles.harnssUIcon} />
-            <span>1 Certification</span>
+            <span>4 Certifications</span>
           </div>
           </a>
         </li>
