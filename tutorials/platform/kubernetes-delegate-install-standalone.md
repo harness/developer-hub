@@ -1,5 +1,6 @@
 ---
 sidebar_position: 1
+description: Install a Harness Delegate into a Kubernetes Cluster
 ---
 
 # Install Kubernetes Delegate
