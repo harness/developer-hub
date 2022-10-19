@@ -1,5 +1,6 @@
 ---
 sidebar_position: 1
+description: This build automation guide walks you through building a NodeJS and Docker Application in a CI Pipeline
 ---
 
 # Build Docker image of a NodeJS app
@@ -27,7 +28,7 @@ To create a build, you need to have something that can be built, which means sou
 Languages and package formats have build specific tools. As an example, here is a simplistic NodeJS Application that can be built into a Docker Image; the Dockerfile has specifics on how to build and package the app.
 
 Sample App Repo:
-[https://github.com/ravilach/easy-node-docker](https://github.com/ravilach/easy-node-docker)
+[https://github.com/harness-apps/developer-hub/tree/main/applications/easy-node-docker](https://github.com/harness-apps/developer-hub/tree/main/applications/easy-node-docker)
 
 To execute the local build, the first step if using the sample application is to download/clone the repository to your local machine.
 
@@ -98,12 +99,13 @@ Your onramp and workhorse in the Harness Platform is the Harness Delegate which 
 
 ### Access To Your Sourcecode
 
-Assuming you are leveraging GitHub, Harness will need access to the repository. For the example, providing a Personal Access Token that is scooped to “repo” will allow for connectivity.
+Assuming you are leveraging GitHub, Harness will need access to the repository. For the example, providing a Personal Access Token that is scooped to “repo” will allow for connectivity. If you are leveraging the [sample repository](https://github.com/harness-apps/developer-hub-apps), make sure to Fork
+the sample repository. 
 
 If you have not created a Personal Access Token before.
 
 - GitHub -> Settings -> Developer Settings -> Personal Access Tokens
-- Name: harnessci
+- Name: harness
 - Scopes: repo
 - Expiration: 30 days
 

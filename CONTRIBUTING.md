@@ -134,7 +134,7 @@ https://harness-1.wistia.com/medias/rpv5vwzpxz-->
 
 ## Sample Applications
 If possible, we would like to persist sample applications in a [Sample Application
-Repository](https://github.com/harness-apps/developer-hub). The Sample Application Repository has a similar [contributors guide](https://github.com/harness-apps/developer-hub/blob/main/CONTRIBUTING.md). 	
+Repository](https://github.com/harness-apps/developer-hub-apps). The Sample Application Repository has a similar [contributors guide](https://github.com/harness-apps/developer-hub-apps/blob/main/CONTRIBUTING.md). 	
 
 ## Change Approval Flow
 Harness Approvers will validate changes and approve the branch for merge into `main`. Once merged into `main`, the CI Process [Drone] will be kicked off automatically. 

@@ -50,11 +50,11 @@ const config = {
           customCss: require.resolve("./src/css/custom.css"),
         },
         gtag: {
-          trackingID: "G-Z62TFF68Z3",
+          trackingID: "GTM-MJB7HPB", 
           anonymizeIP: true,
         },
         googleAnalytics: {
-          trackingID: 'GTM-MJB7HPB',
+          trackingID: 'G-Z62TFF68Z3',
           anonymizeIP: true,
         },
       }),
