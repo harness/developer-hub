@@ -121,6 +121,11 @@ const config = {
                 label: "Run Chaos Experiments",
                 to: "tutorials/run-chaos-experiments",
               },
+              {
+                // type: "doc",
+                label: "Install Delegate",
+                to: "tutorials/platform/kubernetes-delegate-install-standalone",
+              },
             ],
           },
           {
@@ -306,7 +311,7 @@ const config = {
       announcementBar: {
         id: "support_us",
         content:
-          "Harness Developer Hub is in BETA. Help us improve by submitting feedbacks for any suggestions.",
+          "Harness Developer Hub is in BETA. Help us improve by providing feedback.",
         backgroundColor: "#000000",
         textColor: "#ffffff",
         isCloseable: true,
