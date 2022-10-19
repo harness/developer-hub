@@ -267,6 +267,10 @@ const config = {
                 label: "Privacy Policy",
                 href: "https://harness.io/legal/privacy",
               },
+              {
+                html: "<a href='javascript:void(0)' class='footer__link-item' onclick='window.OneTrust && window.OneTrust.ToggleInfoDisplay()'>Cookie Management</a>",
+                // href: "javascript: alert(33)",
+              },
             ],
           },
         ],
@@ -315,10 +319,14 @@ const config = {
       hotjar: {
         siteId: 3194971,
       },
+      oneTrust: {
+        dataDomainScript: "3c92e1c8-6228-4d4a-a0e2-5569df288477",
+      },
     }),
   plugins: [
     "docusaurus-plugin-sass",
     path.join(__dirname, "/plugins/hotjar-plugin"),
+    path.join(__dirname, "/plugins/onetrust-plugin"),
   ],
 };
 
