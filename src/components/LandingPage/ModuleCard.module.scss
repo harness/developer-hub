@@ -8,6 +8,7 @@
     padding: 24px;
     margin: 0 30px 30px 0;
     width: 25%;
+    font-family: 'Inter';
     border: 3px solid transparent;
     position: relative;
     .ribbon{
@@ -27,14 +28,17 @@
         }
     }
     h4{
-        font-weight: 600;
-        font-size: 16px;
-        line-height: 24px;
-        color: #000000;
+        a{
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 24px;
+            color: #000000;
+        }        
     }
     p{
         font-weight: 400;
         font-size: 12px;
+        font-family: 'Inter';
         color: #22222A;
     }
     ul.docTypes {
