@@ -200,7 +200,7 @@ Click Save and now you have the ability to actively monitor and manage your SLOs
 
 ![SLO Status](static/first-slo-tutorial/slo_status.png)
 
-If this SLO is too aggressive or too lenient, Harness can provide the actual service data to help make that determination. In this example, we set the SLO target at 50% which is not a very good SLO. Changing the SLO target to be more aggressive, for example 99% can be chagned via the UI. 
+If this SLO is too aggressive or too lenient, Harness can provide the actual service data to help make that determination. In this example, we set the SLO target at 50% which is not a very good SLO. Changing the SLO target to be more aggressive, for example 99%, can be changed via the UI. 
 
 ![SLO Status](static/first-slo-tutorial/change_slo.png)
 
