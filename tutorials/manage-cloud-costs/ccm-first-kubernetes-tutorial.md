@@ -1,5 +1,6 @@
 ---
 sidebar_position: 1
+description: This guide will walk through how start to optimize your Kubernetes Costs on a public cloud provider.
 ---
 
 # Optimize cloud costs for Kubernetes

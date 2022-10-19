@@ -1,5 +1,6 @@
 ---
 sidebar_position: 1
+description: Deploying your first set of Kubernetes Resources in a CD Pipeline with Helm (K8s Package Manager).
 ---
 
 # Deploy a Helm Chart using a CD Pipeline

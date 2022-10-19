@@ -28,9 +28,9 @@ To create a build, you need to have something that can be built, which means sou
 Languages and package formats have build specific tools. As an example, here is a simplistic NodeJS Application that can be built into a Docker Image; the Dockerfile has specifics on how to build and package the app.
 
 Sample App Repo:
-[https://github.com/harness-apps/developer-hub/tree/main/applications/easy-node-docker](https://github.com/harness-apps/developer-hub/tree/main/applications/easy-node-docker)
+[https://github.com/harness-apps/easy-node-docker](https://github.com/harness-apps/easy-node-docker)
 
-To execute the local build, the first step if using the sample application is to download/clone the repository to your local machine.
+To execute the local build, the first step if using the sample application is to download/clone the repository to your local machine. For the later automated build steps, [Fork](https://docs.github.com/en/get-started/quickstart/fork-a-repo) the [sample repository](https://github.com/harness-apps/easy-node-docker). 
 
 ![Docker File](static/ci-tutorial-node-docker/dockerfile.png)
 
@@ -99,7 +99,7 @@ Your onramp and workhorse in the Harness Platform is the Harness Delegate which 
 
 ### Access To Your Sourcecode
 
-Assuming you are leveraging GitHub, Harness will need access to the repository. For the example, providing a Personal Access Token that is scooped to “repo” will allow for connectivity. If you are leveraging the [sample repository](https://github.com/harness-apps/developer-hub-apps), make sure to Fork
+Assuming you are leveraging GitHub, Harness will need access to the repository. For the example, providing a Personal Access Token that is scooped to “repo” will allow for connectivity. If you are leveraging the [sample repository](https://github.com/harness-apps/easy-node-docker), make sure to Fork
 the sample repository. 
 
 If you have not created a Personal Access Token before.
@@ -125,7 +125,7 @@ Once you click Get Started, select GitHub as the repository you use, and then yo
 
 ![SCM Choice](static/ci-tutorial-node-docker/scm_choice.png)
 
-Click Continue. Then click Select Repository to select the Repository that you want to build.
+Click Continue. Then click Select Repository to select the Repository that you want to build [the sample is called *easy-node-docker*].
 
 ![Node Docker Repo](static/ci-tutorial-node-docker/node_docker_repo.png)
 
@@ -254,4 +254,4 @@ You can now execute your builds whenever you want in a consistent fashion. Can m
 
 ![CI as Code](static/ci-tutorial-node-docker/ci_as_code.png)
 
-After you have built your artifact, the next step is to deploy your artifact. This is where Continuous Delivery steps in and make sure to check out some other CD Examples.
+After you have built your artifact, the next step is to deploy your artifact. This is where Continuous Delivery steps in and make sure to check out some other [CD Tutorials](/tutorials/deploy-services#all-tutorials).

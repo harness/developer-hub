@@ -1,5 +1,6 @@
 ---
 sidebar_position: 1
+description: Scanning a NodeJS Application and prioritizing scan results.
 ---
 
 # Scan a NodeJS App for security vulnerabilities
