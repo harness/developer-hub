@@ -9,6 +9,7 @@
     padding: 24px;
     margin: 0 0 30px 0;
     width: 30.5%;
+    font-family: 'Inter';
     border: 3px solid transparent;
     position: relative;
     .ribbon{
@@ -28,14 +29,17 @@
         }
     }
     h4{
-        font-weight: 600;
-        font-size: 16px;
-        line-height: 24px;
-        color: #000000;
+        a{
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 24px;
+            color: #000000;
+        }        
     }
     p{
         font-weight: 400;
         font-size: 12px;
+        font-family: 'Inter';
         color: #22222A;
     }
     ul.docTypes {
@@ -84,6 +88,14 @@
 }
 .ce:hover{
     border-image-source: linear-gradient(to left, rgba(255, 111, 171, 1), rgba(206, 0, 86, 1));
+}
+.allTutorials{
+    .tutorialCard{
+        width: 28%;
+    }
+    .featureCard{
+        width: 46%;
+    }
 }
 .getStartedCard{
     text-align: center;

@@ -52,9 +52,19 @@
             margin-bottom: 0;
         }
     }
+    p{
+        font-family: 'Inter'; 
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 26px;
+        color: #000000;
+    }
     .ff_img{
         margin: 56px 0;
     }
+}
+.content{
+    width: 50%;
 }
 .spaceBetween{
     display: flex;
@@ -181,3 +191,29 @@
         color: #22222A;
     }    
 }
+
+// @media screen and (max-width: 996px) {
+    @media screen and (max-width: 768px) {
+        .spaceBetween {
+            flex-flow: column wrap;
+            .content {
+                width: 100%;
+                margin: 2em 0;
+                & > p {
+                    text-align: left;
+                }
+                .alignCenter {
+                    display: flex;
+                    justify-content: center;
+                }
+            }
+            .moduleTitle+div {
+                display: flex;
+                justify-content: center;
+            }
+            // & > div:nth-child(2) {
+            & > div {
+                text-align: center;
+            }
+        }
+    }

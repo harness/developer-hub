@@ -91,7 +91,7 @@ export default function CI() {
           </div>
         </div>
         <div className={styles.spaceBetween}>
-          <div>
+          <div className={styles.content}>
             <p>
               The CI Overview provides a bird's-eye view of all your Builds — successful, failed, aborted, and expired — and the percentage of successful builds for individual codebases. You can easily see where your builds have failed and drill down into specific builds to troubleshoot and analyze the root causes.
             </p>
@@ -107,7 +107,7 @@ export default function CI() {
           </div>
           <div>
             <img src="/img/ci_flow.svg" />
-          </div>
+          </div>          
         </div>
       </div>
       <div className={styles.subSection}>
