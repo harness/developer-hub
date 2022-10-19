@@ -275,3 +275,6 @@
 .rc-tooltip-hidden {
 	display: none !important;
 }
+.buttonGroup_node_modules-\@docusaurus-theme-classic-lib-theme-CodeBlock-Content-styles-module button {
+	opacity: 0.6 !important;
+}
