@@ -7,8 +7,9 @@
     border-radius: 8px;
     box-shadow: 0px 0px 1px rgba(40, 41, 61, 0.04), 0px 2px 4px rgba(96, 97, 112, 0.16);
     padding: 24px;
-    margin: 0 0 30px 0;
-    width: 30.5%;
+    margin: 0 30px 30px 0;
+    width: 25%;
+    font-family: 'Inter';
     border: 3px solid transparent;
     position: relative;
     .ribbon{
@@ -28,14 +29,17 @@
         }
     }
     h4{
-        font-weight: 600;
-        font-size: 16px;
-        line-height: 24px;
-        color: #000000;
+        a{
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 24px;
+            color: #000000;
+        }        
     }
     p{
         font-weight: 400;
         font-size: 12px;
+        font-family: 'Inter';
         color: #22222A;
     }
     ul.docTypes {
