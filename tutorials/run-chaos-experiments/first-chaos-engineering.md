@@ -1,5 +1,6 @@
 ---
 sidebar_position: 1
+description: Running a Chaos Experiment on Kuberenetes for the first time.
 ---
 
 # Your First Chaos Experiment Run

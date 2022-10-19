@@ -1,5 +1,6 @@
 ---
 sidebar_position: 1
+description: Walks you through adding JavaScript Feature Flags to a TypeScript and React Application.
 ---
 
 # Add feature flags to JavaScript app
