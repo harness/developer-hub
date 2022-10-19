@@ -8,7 +8,7 @@ export default function HarnessU(): JSX.Element {
   return (
     <section className={styles.harnessU}>
     <div className="container">
-      <h2>Learn more with Harness University</h2>
+      <h2>Get Certified with Harness University</h2>
 
       {/* <div className={styles.subSectionName}><h3>Platform</h3></div> */}
       <ul className={styles.platformList}>
