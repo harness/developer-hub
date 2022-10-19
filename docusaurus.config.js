@@ -51,7 +51,7 @@ const config = {
         },
         gtag: {
           trackingID: "GTM-W895FNP", //, GTM-MJB7HPB is Prod
-          anonymizeIP: true,
+          anonymizeIP: false,
         },
       }),
     ],
