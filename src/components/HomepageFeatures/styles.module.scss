@@ -1,5 +1,5 @@
 .features {
-  padding: 4rem 0 4rem 0;
+  padding: 3rem 0 4rem 0;
   h2 {
     margin-bottom: 32px;
 
@@ -17,7 +17,7 @@
     flex-grow: 1;
     .getStartItem {
       width: 270px; // 250px;
-      height: 270px;
+      height: 230px;
       overflow: hidden;
       /* Light/Background/White */
       background: #FFFFFF;
@@ -30,7 +30,7 @@
         // color: #000;
       }
       .titleAndDesc {
-        height: 150px;
+        height: 96px;
       }
       h3 {
         font-weight: 600;

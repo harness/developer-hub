@@ -29,11 +29,11 @@
   overflow: hidden;
   display: flex;
   background: url(/img/hero.svg) no-repeat bottom right;
-  min-height: 420px;
-  background-size: 64%;
+  min-height: 400px;
+  background-size: 61%;
 }
 .heroContainer {
-  flex-basis: 42%;
+  // flex-basis: 42%;
 }
 .heroImg {
   flex-basis: 50%;
@@ -52,6 +52,7 @@
   font-size: 18px;
   line-height: 26px;
   padding-right: 1em;
+  width: 42%;
 }
 .buttons {
   display: flex;
@@ -69,9 +70,12 @@
 @media screen and (max-width: 996px) {
 // @media screen and (max-width: 768px) {
   .heroBanner {
-    padding: 2rem;
+    padding: 2rem 2rem 0 2rem;
     flex-flow: column nowrap;
     min-height: unset;
     background: none;
+  }
+  .heroSubTitle {
+    width: 100%;
   }
 }
