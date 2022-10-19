@@ -1,5 +1,6 @@
 ---
 sidebar_position: 1
+description: Introducing SLOs and how to measure and manage your SLOs leveraging Prometheus.
 ---
 
 # Manage SLOs using Prometheus metrics data
@@ -82,10 +83,10 @@ Now you are ready to deploy an application that writes to Prometheus.
 Following the [Open Observability Group’s Sample Application](https://github.com/open-o11y/prometheus-sample-app), you can build from source or use an already built rendition that we have built.
 
 E.g
-https://raw.githubusercontent.com/ravilach/prometheus-sample-app/master/prometheus-sample-app-k8s-deployment.yaml
+https://raw.githubusercontent.com/harness-apps/developer-hub-apps/main/applications/prometheus-sample-app/prometheus-sample-app-k8s-deployment.yaml
 
 ```
-Kubectl apply -f https://raw.githubusercontent.com/ravilach/prometheus-sample-app/master/prometheus-sample-app-k8s-deployment.yaml
+Kubectl apply -f https://raw.githubusercontent.com/harness-apps/developer-hub-apps/main/applications/prometheus-sample-app/prometheus-sample-app-k8s-deployment.yaml
 ```
 
 ![Sample Deploy](static/first-slo-tutorial/sample_deploy.png)
@@ -199,4 +200,8 @@ Click Save and now you have the ability to actively monitor and manage your SLOs
 
 ![SLO Status](static/first-slo-tutorial/slo_status.png)
 
-If this SLO is too aggressive or too lenient, Harness can provide the actual service data to help make that determination.
+If this SLO is too aggressive or too lenient, Harness can provide the actual service data to help make that determination. In this example, we set the SLO target at 50% which is not a very good SLO. Changing the SLO target to be more aggressive, for example 99% can be chagned via the UI. 
+
+![SLO Status](static/first-slo-tutorial/change_slo.png)
+
+

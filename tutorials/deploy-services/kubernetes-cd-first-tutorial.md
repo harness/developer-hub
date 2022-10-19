@@ -1,5 +1,6 @@
 ---
 sidebar_position: 1
+description: Deploying your first set of Kubernetes Services in a CD Pipline with Kubernetes Manifests.
 ---
 
 # Deploy a Kubernetes Manifest using a CD Pipeline
