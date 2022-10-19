@@ -80,7 +80,7 @@ export default function CE() {
                 <Link
                   className={clsx('button button--lg', styles.btn, styles.btnCE)}
                   to="#all-tutorials">
-                  CE Quickstart
+                  CE Tutorials
                   <img src="/img/Stroke.svg"/>
                 </Link>
                 <Link href="https://harness.io/products/chaos-engineering"><button className={styles.link}>Learn more about CE</button></Link>

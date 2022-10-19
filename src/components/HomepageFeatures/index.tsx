@@ -1,7 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
-import { Tooltip } from 'antd';
-import 'antd/lib/tooltip/style/index.css'
+import Tooltip from 'rc-tooltip';
+import 'rc-tooltip/assets/bootstrap.css'
 import styles from './styles.module.scss';
 
 
@@ -76,7 +76,7 @@ const FeatureList: FeatureItem[] = [
     Svg: '/img/icon_srm.svg',
     description: (
       <>
-        Create SLOs. track error budgets, govern pipelines.
+        Monitor SLOs, track error budgets, debug code errors.
       </>
     ),
     type: [docType.Documentation],
@@ -106,6 +106,18 @@ const FeatureList: FeatureItem[] = [
     type: [docType.Documentation],
     link: '/tutorials/run-chaos-experiments',
   },
+  {
+    title: 'Install Delegate',
+    module: 'platform',
+    Svg: '/img/logo.svg',
+    description: (
+      <>
+        Connect your infrastructure with Harness Platform using Docker & Kubernetes Delegate.
+      </>
+    ),
+    type: [docType.Documentation],
+    link: '/tutorials/platform/kubernetes-delegate-install-standalone',
+  },
 ];
 
 function Feature({title, Svg, description, type, module, link}: FeatureItem) {
@@ -125,7 +137,7 @@ function Feature({title, Svg, description, type, module, link}: FeatureItem) {
         <ul className={styles.docTypes}>
         {type.map((props, idx) => (
             <li>
-              <Tooltip title={props}>
+              <Tooltip placement="top" overlay={props}>
                 <img src={`/img/icon_doctype_${props}.svg`} alt={props} />
               </Tooltip>
             </li>

@@ -236,9 +236,23 @@
   --ifm-link-color: var(--ifm-color-primary);
 }
 
+.button--cta {
+	background-color: var(--primary-7);
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    color: var(--white);
+}
+.button--cta:hover {
+	background-color: var(--primary-5);
+}
+
 /* style overwriting temporarily for the beta icon */
 .navbar__brand {
 	margin-right: 0;
+}
+.navbar__title {
+	display: none;
 }
 
 /* hide the algolia logo */
@@ -253,3 +267,14 @@
     color: var(--ifm-link-color);
     text-decoration: var(--ifm-link-decoration);
 } */
+
+/* for 3rd-party libs */
+.rc-tooltip-inner {
+	text-transform: capitalize;
+}
+.rc-tooltip-hidden {
+	display: none !important;
+}
+.buttonGroup_node_modules-\@docusaurus-theme-classic-lib-theme-CodeBlock-Content-styles-module button {
+	opacity: 0.6 !important;
+}

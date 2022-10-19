@@ -15,7 +15,8 @@
       color: #fff;
       &:hover {
         // color: var(--ifm-color-primary-lightest);
-        background-color: var(--ifm-color-primary-dark);
+        // background-color: var(--ifm-color-primary-dark);
+        background-color: var(--primary-5);
       }
     }
   }
@@ -66,8 +67,11 @@
 }
 
 @media screen and (max-width: 996px) {
+// @media screen and (max-width: 768px) {
   .heroBanner {
     padding: 2rem;
+    flex-flow: column nowrap;
+    min-height: unset;
+    background: none;
   }
 }
-

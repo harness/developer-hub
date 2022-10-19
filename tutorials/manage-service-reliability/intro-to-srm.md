@@ -26,7 +26,7 @@ SLIs are used to measure your SLOs. SLO Management would not be possible without
 
 ## Getting Started with SLO Management
 
-Harness provides a module called Service Reliability Management to help with your SLO Management, if you have not already, [sign up for a Harness SRM Account](https://app.harness.io/auth/#/signup/?module=srm). Once signed up, the next step to on-ramp you to the Harness Platform is to install a Harness Delegate.
+Harness provides a module called Service Reliability Management to help with your SLO Management, if you have not already, [request a Harness SRM Account](https://harness.io/demo/srm). Once signed up, the next step to on-ramp you to the Harness Platform is to install a Harness Delegate.
 
 ![First SLO Overview](static/first-slo-tutorial/slo_overview.png)
 

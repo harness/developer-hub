@@ -3,6 +3,7 @@
 
 const lightCodeTheme = require("prism-react-renderer/themes/github");
 const darkCodeTheme = require("prism-react-renderer/themes/dracula");
+const path = require("path");
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -37,8 +38,8 @@ const config = {
           path: ".",
           sidebarPath: require.resolve("./sidebars.js"),
           editUrl: "https://github.com/harness/developer-hub/tree/main", // /tree/main/packages/create-docusaurus/templates/shared/
-          include: ["tutorials/**"], // , also add "docs/**" after migrating docs md files into DLP
-          exclude: ["**/docs-shared-components/**", "**/static"],
+          include: ["tutorials/**", "docs/**"],
+          exclude: ["**/shared/**", "**/static"],
           routeBasePath: "/", //CHANGE HERE
         },
         // blog: {
@@ -50,6 +51,10 @@ const config = {
         },
         gtag: {
           trackingID: "G-Z62TFF68Z3",
+          anonymizeIP: true,
+        },
+        googleAnalytics: {
+          trackingID: 'GTM-MJB7HPB',
           anonymizeIP: true,
         },
       }),
@@ -64,7 +69,7 @@ const config = {
         title: "Harness Developer Hub",
         logo: {
           alt: "Harness Developer Hub",
-          src: "img/logo.svg",
+          src: "img/logo_dlp.svg",
         },
         items: [
           {
@@ -116,6 +121,11 @@ const config = {
                 label: "Run Chaos Experiments",
                 to: "tutorials/run-chaos-experiments",
               },
+              {
+                // type: "doc",
+                label: "Install Delegate",
+                to: "tutorials/platform/kubernetes-delegate-install-standalone",
+              },
             ],
           },
           {
@@ -125,7 +135,7 @@ const config = {
             items: [
               {
                 label: "Continuous Integration",
-                href: "https://docs.harness.io/category/zgffarnh1m-ci-category",
+                to: "docs/continuous-integration",
               },
               {
                 label: "Continuous Delivery",
@@ -149,31 +159,14 @@ const config = {
               },
               {
                 label: "Chaos Engineering",
-                href: "https://docs.harness.io/category/kl0mxwpfw1-hce-category",
+                to: "docs/chaos-engineering",
+              },
+              {
+                label: "API Reference",
+                href: "https://apidocs.harness.io/",
               },
             ],
           },
-          /**
-          {
-            position: "right",
-            type: "dropdown",
-            label: "Resources",
-            items: [
-              {
-                label: "Community Slack",
-                href: "https://join.slack.com/t/harnesscommunity/shared_invite/zt-y4hdqh7p-RVuEQyIl5Hcx4Ck8VCvzBw",
-              },
-              {
-                label: "Community Forum",
-                href: "https://community.harness.io",
-              },
-              {
-                label: "University",
-                href: "https://university.harness.io/",
-              },
-            ],
-          },
-          */
           {
             position: "right",
             href: "https://join.slack.com/t/harnesscommunity/shared_invite/zt-y4hdqh7p-RVuEQyIl5Hcx4Ck8VCvzBw",
@@ -181,7 +174,8 @@ const config = {
           },
           {
             position: "right",
-            label: "Sign up",
+            // label: "Sign up",
+            html: '<button class="button button--cta">Sign up</button>',
             href: "https://app.harness.io/auth/#/signup/&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=plt-plg&utm_content=get-started",
           },
           /**
@@ -237,8 +231,16 @@ const config = {
             title: "Resources",
             items: [
               {
+                label: "Sign up",
+                href: "https://app.harness.io/auth/#/signup/&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=plt-plg&utm_content=get-started",
+              },
+              {
                 label: "Slack",
                 href: "https://join.slack.com/t/harnesscommunity/shared_invite/zt-y4hdqh7p-RVuEQyIl5Hcx4Ck8VCvzBw",
+              },
+              {
+                label: "API Reference",
+                href: "https://apidocs.harness.io/",
               },
               {
                 label: "Forum",
@@ -253,8 +255,8 @@ const config = {
                 href: "https://www.youtube.com/c/Harnessio",
               },
               {
-                label: "Sign up",
-                href: "https://app.harness.io/auth/#/signup/&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=plt-plg&utm_content=get-started",
+                label: "Developer Hub GitHub",
+                href: "https://github.com/harness/developer-hub",
               },
             ],
           },
@@ -263,8 +265,7 @@ const config = {
             items: [
               {
                 label: "Terms of Use",
-                // to: "/blog",
-                href: "https://harness.io/legal/website-terms-of-use",
+                to: "legal/terms-of-use",
               },
               {
                 label: "Privacy Policy",
@@ -310,13 +311,19 @@ const config = {
       announcementBar: {
         id: "support_us",
         content:
-          "Harness Developer Hub is still in beta, any suggestions please submit feedback to the feedback form.</a>",
-        backgroundColor: "#FF5310",
+          "Harness Developer Hub is in BETA. Help us improve by providing feedback.",
+        backgroundColor: "#000000",
         textColor: "#ffffff",
         isCloseable: true,
       },
+      hotjar: {
+        siteId: 3194971,
+      },
     }),
-  plugins: ["docusaurus-plugin-sass"],
+  plugins: [
+    "docusaurus-plugin-sass",
+    path.join(__dirname, "/plugins/hotjar-plugin"),
+  ],
 };
 
 module.exports = config;

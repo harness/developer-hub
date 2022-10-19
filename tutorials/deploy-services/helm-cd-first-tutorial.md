@@ -30,7 +30,7 @@ Harness does simplify this experience that you do not need to install a Helm Cli
 
 ## Getting Started with Harness Continuous Delivery to Deploy a Helm Chart
 
-Getting started with Harness CD is simple, first if you do not have a Harness Account, you can sign up for [free for Harness CD Account](https://app.harness.io/auth/#/signup/?module=cd).
+Getting started with Harness CD is simple, first if you do not have a Harness Account, you can sign up for [free for Harness CD Account](https://app.harness.io/auth/#/signup/?module=cd&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=cd-plg&utm_content=get-started).
 
 Once signed up, navigate to the Deployments icon on the left hand navigation and create your start your free forever CD Free Plan.
 

@@ -9,13 +9,14 @@
   }
   .getStart {
     display: flex;
+    justify-content: center;
     flex-flow: row wrap;
     // align-items: center;
     /* width: 100%; */
     // flex-basis: 70%;
     flex-grow: 1;
     .getStartItem {
-      width: 280px; // 250px;
+      width: 270px; // 250px;
       height: 270px;
       overflow: hidden;
       /* Light/Background/White */
@@ -44,7 +45,7 @@
       }
       &:hover {
         box-shadow: 0px 2px 4px rgba(40, 41, 61, 0.04), 0px 8px 16px rgba(96, 97, 112, 0.16);
-        border: 3px solid var(--mod-cd-200);
+        border: 3px solid var(--primary-6);
       }
       &.ci:hover {
         border-color: var(--mod-ci-200);;

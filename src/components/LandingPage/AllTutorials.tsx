@@ -194,6 +194,7 @@ export default function AllTutorials() {
     //     <li>Get Started</li>
     //     <li>All Tutorials</li>
     //   </ul>
+
       <div className={clsx('container', moduleStyles.allTutorials)}>
         <div className={styles.topSection}>
               <h1>All Tutorials</h1>
@@ -201,6 +202,7 @@ export default function AllTutorials() {
                 Learn intelligent software delivery skills with step-by-step tutorials, interactive labs, videos and reference docs.
             </p>
         </div> 
+
         <div className={styles.subSection}>
           <h3>
             Featured Tutorials
@@ -247,7 +249,7 @@ export default function AllTutorials() {
             <div className={styles.SectionName}>
                 <img src="/img/icon_srm.svg"/>
                 <h3>
-                    Manage SLOs
+                    Manage Service Reliability
                 </h3>
             </div>
             <ModuleCard FeatureList={SRMList}/>

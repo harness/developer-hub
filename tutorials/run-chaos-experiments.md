@@ -1,9 +1,10 @@
 ---
 hide_table_of_contents: true
 hide_title: true
+title: Run Chaos Experiments
 ---
 
-<!-- # Build Code -->
+<!-- # Run Chaos Experiments -->
 
 <!-- Custom component -->
 

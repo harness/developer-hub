@@ -3,6 +3,17 @@ type: docker
 name: default
 
 steps:
+# - name: lint
+#   failure: ignore
+#   image: node:18
+#   commands:
+#   - echo | /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+#   - export PATH=$PATH:/home/linuxbrew/.linuxbrew/bin
+#   - brew install vale
+#   - vale sync
+#   - yarn
+#   - yarn lint:vale
+
 - name: build
   image: node:18
   commands:
