@@ -67,6 +67,7 @@ With the Delegate install out of the way, you are now ready to create your first
 
 - Deployments -> Pipelines + Create new Pipeline
 - Name: my-first-pipeline
+- Setup: in-line
 
 ![New Pipeline](static/k8s-cd-first-tutorial/new_pipeline.png)
 
@@ -110,20 +111,19 @@ Harness will also need access to where to grab the Kubernetes manifests from Git
 
 #### GitHub Wiring
 
-GitHub as of 2021 [requires token authentication](https://github.blog/2020-12-15-token-authentication-requirements-for-git-operations/) e.g. no more passwords for git operations. Will need to create a GitHub Personal Access Token that can read in a public repository.
+GitHub as of 2021 [requires token authentication](https://github.blog/2020-12-15-token-authentication-requirements-for-git-operations/) e.g. no more passwords for git operations. 
 
 If you have not created a Personal Access Token before.
 
 - GitHub -> Settings -> Developer Settings -> Personal Access Tokens
-- Name: _harnesscd_
-- Scopes: repo -> public_repo
+- Name: _harness_
+- Scopes: repo 
 - Expiration: 30 days
 
 ![GitHub PAT](static/k8s-cd-first-tutorial/gh_pat.png)
 
 Make sure to copy down the token that is generated.
 
-**End Progressive**
 
 In the GitHub Connector Wizard, there are a few steps to wire in your GitHub credentials. For the example authenticate against the repo which is housing the manifest.
 
@@ -135,7 +135,7 @@ Click Next. Now can set up authentication against the repository.
 
 - URL Type: Repository
 - Connection Type: HTTP
-- [TODO: Migrate to Harness Pubic]GitHub URL: https://github.com/ravilach/harness-deployments
+- GitHub URL: https://github.com/harness-apps/developer-hub-apps
 
 ![GitHub URL](static/k8s-cd-first-tutorial/githuburl.png)
 
@@ -158,7 +158,7 @@ Click Save and Continue to validate the GitHub Connection.
 
 ![Validate GitHub](static/k8s-cd-first-tutorial/validate_gh.png)
 
-Next, you will need to wire in the Manifest Details which are being pulled from [https://github.com/ravilach/harness-deployments/tree/main/applications/grafana](https://github.com/ravilach/harness-deployments/tree/main/applications/grafana).
+Next, you will need to wire in the Manifest Details which are being pulled from [https://github.com/harness-apps/developer-hub-apps/tree/main/applications/grafana](https://github.com/harness-apps/developer-hub-apps/tree/main/applications/grafana).
 
 Looking at the GitHub structure there are two files to leverage, the deployment manifest and a _values.yaml_:
 
