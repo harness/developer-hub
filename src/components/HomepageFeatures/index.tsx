@@ -106,6 +106,18 @@ const FeatureList: FeatureItem[] = [
     type: [docType.Documentation],
     link: '/tutorials/run-chaos-experiments',
   },
+  {
+    title: 'Install Delegate',
+    module: 'platform',
+    Svg: '/img/logo.svg',
+    description: (
+      <>
+        Connect your infrastructure with Harness Platform using Docker & Kubernetes Delegate.
+      </>
+    ),
+    type: [docType.Documentation],
+    link: '/tutorials/platform/kubernetes-delegate-install-standalone',
+  },
 ];
 
 function Feature({title, Svg, description, type, module, link}: FeatureItem) {
