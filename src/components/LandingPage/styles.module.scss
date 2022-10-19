@@ -191,3 +191,29 @@
         color: #22222A;
     }    
 }
+
+// @media screen and (max-width: 996px) {
+    @media screen and (max-width: 768px) {
+        .spaceBetween {
+            flex-flow: column wrap;
+            .content {
+                width: 100%;
+                margin: 2em 0;
+                & > p {
+                    text-align: left;
+                }
+                .alignCenter {
+                    display: flex;
+                    justify-content: center;
+                }
+            }
+            .moduleTitle+div {
+                display: flex;
+                justify-content: center;
+            }
+            // & > div:nth-child(2) {
+            & > div {
+                text-align: center;
+            }
+        }
+    }
