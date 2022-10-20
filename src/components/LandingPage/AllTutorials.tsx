@@ -109,6 +109,20 @@ const CDList: FeatureItem[] = [{
   type: [docType.Documentation],
   time: '10min',
   link: '/tutorials/deploy-services/helm-cd-first-tutorial',
+},
+{
+  title: 'Private Image Amazon ECR Deployment',
+  module: 'cd',
+  Svg: '',
+  description: (
+    <>
+      Deploying from a private Amazon ECR Repository to Kubernetes. 
+    </>
+  ),
+  ribbon: false,
+  type: [docType.Documentation],
+  time: '15min',
+  link: '/tutorials/deploy-services/ecr-private-repo-deployment',
 },];
 
 const FFList: FeatureItem[] = [{
