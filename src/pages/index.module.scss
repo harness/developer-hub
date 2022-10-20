@@ -28,17 +28,29 @@
   position: relative;
   overflow: hidden;
   display: flex;
-  background: url(/img/hero.svg) no-repeat bottom right;
+  // background: url(/img/hero.svg) no-repeat bottom right;
   min-height: 400px;
   background-size: 61%;
 }
 .heroContainer {
   // flex-basis: 42%;
+  z-index: 9;
 }
 .heroImg {
-  flex-basis: 50%;
-  width: 50%;
+  flex-basis: 60%;
+  width: 60%;
   height: auto;
+  z-index: 1;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  video {
+    /* workaround to fix the black borders on left and right
+    remove it after switch to Lottie animation */
+    margin-left: -1px;
+    width: 101%;
+  }
 }
 .heroTitle{
   font-size: 50px;
@@ -77,5 +89,10 @@
   }
   .heroSubTitle {
     width: 100%;
+  }
+  .heroImg {
+    flex-basis: 100%;
+    width: 100%;
+    position: unset;
   }
 }
