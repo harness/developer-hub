@@ -278,3 +278,8 @@
 .buttonGroup_node_modules-\@docusaurus-theme-classic-lib-theme-CodeBlock-Content-styles-module button {
 	opacity: 0.6 !important;
 }
+.tooltip-max-width {
+	max-width: 200px;
+	padding: 0.5em;
+	margin: 0;
+}
