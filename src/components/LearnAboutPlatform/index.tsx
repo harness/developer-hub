@@ -14,43 +14,38 @@ export default function LearnAboutPlatform(): JSX.Element {
           <svg width="100%" height="742" viewBox="0 0 1533 742" fill="none" xmlns="http://www.w3.org/2000/svg" >
             {/* ----- links start ----- */}
             <a href="/docs/continuous-integration">
-                <Tooltip overlay={<p className='tooltip-max-width'>The CI Overview provides a bird's-eye view of all your Builds — successful, failed, aborted, and expired — and the percentage of successful builds for individual codebases. You can easily see where your builds have failed and drill down into specific builds to troubleshoot and analyze the root causes.</p>}>
+                <Tooltip overlay={<p className='tooltip-max-width'>Container-native CI and test optimization that takes source code to artifacts 98% faster.</p>}>
                     <path d="M172.227 518V100H287.811V517.9L172.227 592.138Z" fill="url(#paint2_linear_401_344)" />
                 </Tooltip>
             </a>
             <a href="https://docs.harness.io/category/txlccquh5c-sto-category"> 
-                <Tooltip overlay={<p className='tooltip-max-width'>Harness Security Testing Orchestration (STO) enables DevOps and DevSecOps teams to left shift security testing. STO orchestrates scanning, intelligently deduplicating scanner output, prioritizing remediations, and enforcing governance into your Pipeline. STO puts scanning directly into your Pipelines to ensure that vulnerabilities are caught and fixed before your products are ever released.</p>}>
+                <Tooltip overlay={<p className='tooltip-max-width'>Enables proactive application security scanning and governance for engineering and DevSecOps. Replace manual efforts, reduce toil and minimize risk associated with software vulnerabilities.</p>}>
                 <path d="M321.132 518V100H455.015V517.9L321.132 592Z" fill="url(#paint8_linear_401_344)" />
                 </Tooltip>
             </a>
             <a href="/docs/chaos-engineering"> 
-                <Tooltip overlay={<p className='tooltip-max-width'>Harness CE helps you find your system’s weak points using controlled systems-level failure experiments, and equips you with the information you need to prevent them from happening in the future. The result? Increased systems reliability and less downtime.</p>}>
+                <Tooltip overlay={<p className='tooltip-max-width'>Run controlled chaos experiments to understand how real-world stress and failures impact your systems. Create more reliable applications and infrastructure.</p>}>
                 <path d="M482.335 518V100H597.919V531.103L482.335 592.232Z" fill="url(#paint3_linear_401_344)" />
                 </Tooltip>
             </a>
             <a href="https://docs.harness.io/category/pfzgb4tg05-howto-cd"> 
-                <Tooltip overlay={<p className='tooltip-max-width'>Continuous Delivery focuses on delivery and deployment of any sort of change or ribbon feature in a safe and sustainable way. Your Continuous Delivery Pipeline focuses on all of the steps to get your changes into production.</p>}>
+                <Tooltip overlay={<p className='tooltip-max-width'>Enables engineers to deploy on-demand with Canary/Blue-Green templates, automated deployment verification, and automatic rollbacks.</p>}>
                 <path d="M632.81 252.212V0H748.394V231.938L632.81 252.212Z" fill="url(#paint4_linear_401_344)" />
                 </Tooltip>
             </a>
             <a href="https://docs.harness.io/category/vjolt35atg-feature-flags"> 
-                <Tooltip overlay={<p className='tooltip-max-width'>Harness Feature Flags (FF) is a feature management solution that lets you change your software's functionality without deploying new code. It does this by allowing you to hide code or behavior without having to ship new versions of the software. A feature flag is like a powerful if statement.</p>}>
+                <Tooltip overlay={<p className='tooltip-max-width'>Simpler, faster, more intelligent feature delivery for developers. Ship more features with less risk.</p>}>
                 <path d="M787.135 252.488L787.135 0H908.619V231.924L787.135 252.488Z" fill="url(#paint16_linear_401_344)" />
                 </Tooltip>
             </a>
             <a href="https://docs.harness.io/category/exgoemqhji-ccm">
-                <Tooltip overlay={<p className='tooltip-max-width'>
-                    Harness Cloud Cost Management (CCM) is an intelligent cloud cost management solution for FinOps, Infrastructure, and Engineering teams. Harness CCM provides: 
-                    <ul>
-                        <li>Complete cost transparency across engineering and finance with robust business intelligence (BI)</li>
-                        <li>Ability to reduce wasted cloud costs by up to 75% with Intelligent Cloud AutoStopping</li>
-                    </ul>
+                <Tooltip overlay={<p className='tooltip-max-width'>Empower teams to spend less time tagging and doing analysis, and get straight to optimizing their cloud spend.
                 </p>}>
                 <path d="M939.548 900V71.8071H1059.4V663.869H939.548Z" fill="url(#paint5_linear_401_344)" />
                 </Tooltip>
             </a>
             <a href="https://docs.harness.io/category/ko19u4brsv-howtos-service-reliability-management">
-                <Tooltip overlay={<p className='tooltip-max-width'>Harness Service Reliability Management (SRM) module helps engineering and DevOps teams to balance feature velocity and bug fixes along with the stability and reliability needs in a production environment.</p>}>
+                <Tooltip overlay={<p className='tooltip-max-width'>Achieve SLO based software delivery with automated governance, verification, and shared reliability goals - a unique solution for engineering, DevOps, and reliability teams.</p>}>
                 <path d="M1091.96 900V87.1436H1231.05V742H1091.96Z" fill="url(#paint6_linear_401_344)" />
                 </Tooltip>
             </a>

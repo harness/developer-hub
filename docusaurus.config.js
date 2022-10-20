@@ -9,7 +9,7 @@ const path = require("path");
 const config = {
   title: "Harness Developer Hub",
   tagline:
-    "Learn intelligent software delivery skills at your own pace and in once place. Step-by-step tutorials, videos, and reference docs to help you create and deliver software.",
+    "Learn intelligent software delivery at your own pace. Step-by-step tutorials, videos, and reference docs to help you deliver customer happiness.",
   url: "https://harness-developer.netlify.app",
   baseUrl: "/",
   onBrokenLinks: "throw",
@@ -158,6 +158,10 @@ const config = {
                 to: "docs/chaos-engineering",
               },
               {
+                label: "Harness Platform",
+                href: "https://docs.harness.io/category/3fso53aw1u-howto-general",
+              },
+              {
                 label: "API Reference",
                 href: "https://apidocs.harness.io/",
               },
@@ -198,7 +202,7 @@ const config = {
                 href: "https://harness.io/products/continuous-integration",
               },
               {
-                label: "Continuous Delivery",
+                label: "Continuous Delivery & GitOps",
                 href: "https://harness.io/products/continuous-delivery",
               },
               {

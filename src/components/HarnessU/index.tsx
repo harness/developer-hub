@@ -8,15 +8,15 @@ export default function HarnessU(): JSX.Element {
   return (
     <section className={styles.harnessU}>
     <div className="container">
-      <h2>Get Certified with Harness University</h2>
+      <h2>Become a Certified Expert with University</h2>
 
       {/* <div className={styles.subSectionName}><h3>Platform</h3></div> */}
       <ul className={styles.platformList}>
         <li>
           <a href="https://university.harness.io/page/self-paced-learning" target="_blank">
           <div className={styles.titleAndDesc}>
-          <h4>Self Paced Product Based Paths</h4>
-          <p>Self-paced modules and courses to help onboarding your teams to Harness</p>
+          <h4>Module-Based Paths</h4>
+          <p>Self-paced courses to help onboarding your teams to Harness</p>
           </div>
           <div className={styles.harnessUPath}>
             <img src="/img/icon_univ-path.svg" className={styles.harnssUIcon} />
