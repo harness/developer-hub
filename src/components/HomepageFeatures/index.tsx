@@ -83,7 +83,7 @@ const FeatureList: FeatureItem[] = [
     link: '/tutorials/manage-service-reliability',
   },
   {
-    title: 'Orchestrate Security Testings',
+    title: 'Orchestrate Security Tests',
     module: 'sto',
     Svg: '/img/icon_sto.svg',
     description: (
