@@ -50,7 +50,7 @@ const config = {
           customCss: require.resolve("./src/css/custom.css"),
         },
         gtag: {
-          trackingID: "GTM-W895FNP", //, GTM-MJB7HPB is Prod
+          trackingID: "GTM-MJB7HPB", //, GTM-MJB7HPB is Prod - GTM-W895FNP is Pre-Prod
           anonymizeIP: false,
         },
       }),
@@ -324,7 +324,7 @@ const config = {
         siteId: 3194971,
       },
       oneTrust: {
-        dataDomainScript: "3c92e1c8-6228-4d4a-a0e2-5569df288477",
+        dataDomainScript: "59633b83-e34c-443c-a807-63232ce145e5",
       },
     }),
   plugins: [
