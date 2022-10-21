@@ -171,4 +171,4 @@ The Company may contact you regarding these Terms using the e-mail address you p
 
 We may revise these Terms from time to time. We will try to notify you of material revisions, for example via a Website notification or an email to the email associated with your account. Following such notice, your continued access or use of the Website on or after the effective date of the changes to the Terms constitutes your acceptance of any updates. If you do not agree to any updates, you should stop using the Website.
 
-**Effective**: October 31, 2022
+**Effective**: October 21, 2022
