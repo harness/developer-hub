@@ -1,6 +1,8 @@
 ---
 sidebar_position: 1
 title: Introduction to Chaos Module
+description: Chaos engineering is the discipline of experimenting on a software system in order to build confidence in the system's 
+capability to withstand turbulent and unexpected conditions.
 ---
 
 Cloud Native applications are, by definition, highly distributed, elastic, resistant to failure and loosely coupled. That's easy to say, and even 
