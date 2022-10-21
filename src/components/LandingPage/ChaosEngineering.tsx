@@ -66,7 +66,7 @@ export default function CE() {
               <h1>Chaos Engineering</h1>
             </div>
             <div>
-              <Link href="/docs/chaos-engineering">
+              <Link href="https://docs.harness.io/category/kl0mxwpfw1-hce-category">
               <button className={clsx('button button--lg', styles.btn, styles.btnLight)}><img src="/img/icon_document.png"/> Documentation</button>
               </Link>
             </div>       
