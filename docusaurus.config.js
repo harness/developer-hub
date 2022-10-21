@@ -10,7 +10,7 @@ const config = {
   title: "Harness Developer Hub",
   tagline:
     "Learn intelligent software delivery at your own pace. Step-by-step tutorials, videos, and reference docs to help you deliver customer happiness.",
-  url: "https://harness-developer.netlify.app",
+  url: "https://developer.harness.io",
   baseUrl: "/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
@@ -286,10 +286,10 @@ const config = {
       },
       algolia: {
         // The application ID provided by Algolia
-        appId: "J3B54BEN74",
+        appId: "HPP2NHSWS8",
 
         // Public API key: it is safe to commit it
-        apiKey: "cc3d33ec999dab9f29859d20b9186408",
+        apiKey: "26d5fe04a4fb8f356e8f9f79882544c5",
 
         indexName: "dlp-docs",
 
@@ -297,7 +297,7 @@ const config = {
         contextualSearch: true,
 
         // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
-        externalUrlRegex: "harness-developer\\.netlify\\.app",
+        externalUrlRegex: "developer\\.harness\\.io",
 
         // Optional: Algolia search parameters
         searchParameters: {},
