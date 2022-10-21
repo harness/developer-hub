@@ -111,6 +111,17 @@
   }
 }
 
+@media screen and (max-width: 996px) {
+// @media screen and (max-width: 768px) {
+  .learnAboutPlatform {
+    ul.platformListMore {
+      li {
+        width: 270px;
+        height: 170px;
+      }
+    }
+  }
+}
 // @media screen and (max-width: 996px) {
 @media screen and (max-width: 768px) {
   .learnAboutPlatform h2 {
