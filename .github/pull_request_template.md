@@ -6,6 +6,7 @@ by the maintainers.
 
 - [ ] Issue
 - [ ] Feature
+- [ ] Maintenance/Chore
 
 If tied to an Issue, list the Issue(s) here:
 
