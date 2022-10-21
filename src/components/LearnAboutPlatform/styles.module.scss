@@ -2,7 +2,7 @@
   padding: 2rem 0 4rem 0;
   h2 {
     // margin-bottom: 32px;
-    width: 600px;
+    width: 100%;
     font-weight: 600;
     font-size: 32px;
     line-height: 40px;
@@ -24,6 +24,7 @@
     .platformIllustration {
       width: 100%;
       height: auto;
+      margin-top: 1em;
     }
   }
   ul.platformList {
@@ -81,5 +82,12 @@
         line-height: 18px;
       }
     }
+  }
+}
+
+// @media screen and (max-width: 996px) {
+@media screen and (max-width: 768px) {
+  .learnAboutPlatform h2 {
+    font-size: 28px;
   }
 }

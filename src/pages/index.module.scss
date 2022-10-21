@@ -22,8 +22,8 @@
   }
 }
 .heroBanner {
-  padding-top: 4rem;
-  padding-bottom: 8rem;
+  padding-top: 7rem;
+  padding-bottom: 7rem;
   /* text-align: center; */
   position: relative;
   overflow: hidden;
@@ -86,6 +86,9 @@
     flex-flow: column nowrap;
     min-height: unset;
     background: none;
+  }
+  .heroTitle {
+    font-size: 42px;
   }
   .heroSubTitle {
     width: 100%;

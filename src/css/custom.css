@@ -220,6 +220,9 @@
 	--docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 
 	--ifm-link-color: var(--ifm-color-primary);
+
+	--ifm-navbar-padding-vertical: calc(var(--ifm-spacing-vertical) * 0.75);
+	--ifm-navbar-height: 4.25rem;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */

@@ -95,3 +95,10 @@
   height: 40px;
   width: 40px;
 }
+
+// @media screen and (max-width: 996px) {
+@media screen and (max-width: 768px) {
+  .features h2 {
+    font-size: 28px;
+  }
+}
