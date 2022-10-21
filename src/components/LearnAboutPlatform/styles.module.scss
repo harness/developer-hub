@@ -27,7 +27,7 @@
       margin-top: 1em;
     }
   }
-  ul.platformList {
+  ul.platformList, ul.platformListMore {
     display: flex;
     flex-flow: row wrap;
     margin-top: 32px;
@@ -80,6 +80,32 @@
         font-weight: 500;
         font-size: 12px;
         line-height: 18px;
+      }
+    }
+  }
+  ul.platformListMore {
+    li {
+      width: 370px;
+      height: 150px;
+      h4 {
+        margin-top: 4px;;
+      }
+    }
+  }
+  .btnShowMore {
+    display: flex;
+    justify-content: center;
+    margin-top: 36px;
+    button {
+      border: none;
+      background: none;
+      color: var(--primary-7); // #0278D5;
+      font-weight: 600;
+      font-size: 13px;
+      cursor: pointer;
+      line-height: 16px;
+      &:hover {
+        color: var(--primary-5);
       }
     }
   }
