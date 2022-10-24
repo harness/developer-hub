@@ -75,6 +75,11 @@ const config = {
             href: "#",
           },
           {
+            type: "search",
+            position: "right",
+            className: "searchBar",
+          },
+          {
             position: "right",
             type: "dropdown",
             label: "Tutorials",

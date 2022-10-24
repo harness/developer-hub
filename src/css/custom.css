@@ -259,7 +259,7 @@
 }
 
 /* hide the algolia logo */
-.DocSearch-Logo {
+.DocSearch-Logo, a[aria-label="Search by Algolia"] {
 	display: none;
 }
 
@@ -285,4 +285,32 @@ button[title="Copy"] {
 	max-width: 200px;
 	padding: 0.5em;
 	margin: 0;
+}
+.searchBar .DocSearch-Button {
+	border-radius: 4px;
+	background: var(--white);
+	border: 1px solid var(--gray-500);
+}
+.searchBar .DocSearch-Button .DocSearch-Search-Icon {
+	color: var(--gray-600);
+}
+.searchBar .DocSearch-Button .DocSearch-Button-Key {
+	background: none;
+	box-shadow: none;
+	border: 1px solid var(--gray-400);
+	width: 22px;
+	height: 22px;
+	padding: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+@media screen and (min-width: 1200px) {
+/* @media screen and (max-width: 768px) { */
+	.searchBar {
+		width: 330px;
+	}
+	.searchBar .DocSearch-Button {
+		width: 100%;
+	}
 }
