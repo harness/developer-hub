@@ -120,7 +120,7 @@ const config = {
               {
                 // type: "doc",
                 label: "Install Delegate",
-                to: "tutorials/platform/kubernetes-delegate-install-standalone",
+                to: "tutorials/platform/install-delegate",
               },
             ],
           },

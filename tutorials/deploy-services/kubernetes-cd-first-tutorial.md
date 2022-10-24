@@ -5,10 +5,6 @@ description: Deploying your first set of Kubernetes Services in a CD Pipline wit
 
 # Deploy a Kubernetes Manifest using a CD Pipeline
 
-```mdx-code-block
-import KubernetesDelegateInstall from '/tutorials/shared/kubernetes-delegate-install-includes.md';
-```
-
 ## Background on Continuous Delivery
 
 Releases that were once done on a quarterly basis seem olden now, with the advent of [Agile Development](https://www.agilealliance.org/agile101/), getting incremental features out as fast as possible. Infrastructure and practices need to be in place to allow changes to propagate quickly. If we take a look at the definition of Continuous Delivery from Jez Humble’s book, Continuous Delivery:
@@ -54,13 +50,11 @@ With the Default Project selected, clicking on Overview will bring up a wizard t
 
 ![Create First Pipeline](static/k8s-cd-first-tutorial/first_pipeline.png)
 
-There are a few Harness entities that will need to be created in Harness. The needed objects are wirings to Docker Hub for public image access and GitHub for the Granfa manifest. These objects can be set up during the Pipeline creation or set up ahead of time so they can be reused in multiple Pipelines. Your onramp and workhorse in the Harness Platform is the Harness Delegate which can run in several places. For this example, using the Harness Kubernetes Delegate is the easiest.
+There are a few Harness entities that will need to be created in Harness. The needed objects are wirings to Docker Hub for public image access and GitHub for the Granfa manifest. These objects can be set up during the Pipeline creation or set up ahead of time so they can be reused in multiple Pipelines. 
 
-## Harness Delegate Wiring
+## Install Delegate
 
-```mdx-code-block
-<KubernetesDelegateInstall />
-```
+Your onramp and workhorse in the Harness Platform is the Harness Delegate which can run in several places. For this example, using the [Kubernetes Delegate](../platform/install-delegate) is the easiest.
 
 ## Your First CD Pipeline with Harness - What To Deploy
 

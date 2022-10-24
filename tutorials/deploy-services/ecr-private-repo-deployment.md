@@ -6,7 +6,6 @@ description: Deploying Kubernetes manifests with a private image hosted in Amazo
 # Deploying a Private Image in Amazon ECR to Kubernetes using a CD Pipeline
 
 ```mdx-code-block
-import KubernetesDelegateInstall from '/tutorials/shared/kubernetes-delegate-install-includes.md';
 import GitHubPAT from '/tutorials/shared/github-wiring-includes.md';
 ```
 
@@ -56,15 +55,13 @@ When navigating back to Deployments, can set the project context to the Default 
 
 ![Default Project](static/private-registry-ecr/default_project.png)
 
-With the Default Project selected, clicking on Overview will bring up a wizard to create your first Pipeline/Deployment. There are a few Harness entities that will need to be created in Harness. The needed objects are wirings to Amazon ECR for private  image access and GitHub for the manifests. Your onramp and workhorse in the Harness Platform is the Harness Delegate which can be installed into a Kubernetes cluster which can be created ahead of creating the Pipeline. 
+With the Default Project selected, clicking on Overview will bring up a wizard to create your first Pipeline/Deployment. There are a few Harness entities that will need to be created in Harness. The needed objects are wirings to Amazon ECR for private  image access and GitHub for the manifests. 
 
-### Deploying the Harness Delegate into a Kubernetes Cluster
+## Install Delegate
 
-```mdx-code-block
-<KubernetesDelegateInstall />
-```
+Your onramp and workhorse in the Harness Platform is the Harness Delegate which can run in several places. For this example, using the [Kubernetes Delegate](../platform/install-delegate) is the easiest.
 
-With the Delgate installation out of th way, now you can wire your AWS Credentials to Harness. 
+With the delegate installation out of th way, now you can wire your AWS Credentials to Harness. 
 
 ## Wiring Your AWS Credentials to Harness 
 Especially with a private registry/repository, credentials for the repository are usually scattered around a few scripts or prompted by a system to enter before deployment. Harness has a concept of a Cloud Connector so this will manage the persistence of your cloud provider credentials and use them on your behalf. 

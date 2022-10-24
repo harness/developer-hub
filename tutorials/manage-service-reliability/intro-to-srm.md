@@ -5,10 +5,6 @@ description: Introducing SLOs and how to measure and manage your SLOs leveraging
 
 # Manage SLOs using Prometheus metrics data
 
-```mdx-code-block
-import KubernetesDelegateInstall from '/tutorials/shared/kubernetes-delegate-install-includes.md';
-```
-
 ## Background on Service Level Objectives
 
 In technology, the adage that you can not improve what you can’t measure is very true. Indicators and measurements of how well a system is performing can be represented by one of the Service Level (SLx) commitments. There is a trio of metrics, SLAs, SLOs, and SLIs, that paint a picture of the agreement made vs the objectives and actuals to meet the agreement. Focusing on the SLO or Service Level objectives, those are the goals to meet in your system.
@@ -115,13 +111,11 @@ With this metric, you are now able to start to manage this metric.
 
 ## Getting Started With Your First SLO
 
-Wiring in your service metrics/telemetry as SLOs to Harness SRM has a few Harness Objects to be created. If you have not already, sign up for a [Harness SRM Account](https://app.harness.io/auth/#/signup/?module=srm). If this is your first time leveraging Harness, Harness has a concept of Projects. The Default Project is more than adequate to wire in your first SLO. You will also need to wire in a Harness Kubernetes Delegate if you have not done so already.
+Wiring in your service metrics/telemetry as SLOs to Harness SRM has a few Harness Objects to be created. If you have not already, sign up for a [Harness SRM Account](https://app.harness.io/auth/#/signup/?module=srm). If this is your first time leveraging Harness, Harness has a concept of Projects. The Default Project is more than adequate to wire in your first SLO. 
 
-### Kubernetes Delegate Wiring
+### Install Delegate
 
-```mdx-code-block
-<KubernetesDelegateInstall />
-```
+You will also need to wire in a [Kubernetes Delegate](../platform/install-delegate) if you have not done so already.
 
 ### Creating Your First SLO
 
