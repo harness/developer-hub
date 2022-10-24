@@ -116,7 +116,7 @@ const FeatureList: FeatureItem[] = [
       </>
     ),
     type: [docType.Documentation],
-    link: '/tutorials/platform/kubernetes-delegate-install-standalone',
+    link: '/tutorials/platform/install-delegate',
   },
 ];
 

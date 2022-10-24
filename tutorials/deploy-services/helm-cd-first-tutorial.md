@@ -5,10 +5,6 @@ description: Deploying your first set of Kubernetes Resources in a CD Pipeline w
 
 # Deploy a Helm Chart using a CD Pipeline
 
-```mdx-code-block
-import KubernetesDelegateInstall from '/tutorials/shared/kubernetes-delegate-install-includes.md';
-```
-
 ## Background on Helm
 
 Introduced during the first KubeCon, [Helm](https://harness.io/blog/what-is-helm) has been a stalwart in the Kubernetes ecosystem almost since the inception of Kubernetes. If you are unfamiliar with Helm, Helm is a package manager for Kubernetes; similarly to Homebrew on your Mac or Chocolatey on your Windows machine.
@@ -47,13 +43,11 @@ With the Default Project selected, clicking on Overview will bring up a wizard t
 
 ![New Pipeline](static/first-helm-deployment/new_pipeline.png)
 
-There are a few Harness Objects that will need to be created in Harness. Harness works on a concept of worker nodes called [Harness Delegates](https://docs.harness.io/article/2k7lnc7lvl-delegates-overview). These Delegates can perform work on your behalf. One will need to be set up to deploy into a Kubernetes cluster. The second will be access to the Helm Chart Repository. Let’s set up the Harness Delegate first.
+There are a few Harness Objects that will need to be created in Harness. Harness works on a concept of worker nodes called [Harness Delegates](https://docs.harness.io/article/2k7lnc7lvl-delegates-overview). These Delegates can perform work on your behalf. One will need to be set up to deploy into a Kubernetes cluster. The second will be access to the Helm Chart Repository. 
 
-### Deploying the Harness Delegate into a Kubernetes Cluster
+## Install Delegate
 
-```mdx-code-block
-<KubernetesDelegateInstall />
-```
+Your onramp and workhorse in the Harness Platform is the Delegate which can run in several places. For this example, using the [Kubernetes Delegate](../platform/install-delegate) is the easiest.
 
 ## Creating Your First Harness Pipeline with Helm
 

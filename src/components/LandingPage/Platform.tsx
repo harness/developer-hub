@@ -23,32 +23,32 @@ type FeatureItem = {
 };
  
 const FeaturedList: FeatureItem[] = [{
-  title: 'Install Kubernetes Delegate',
+  title: 'Install Delegate',
   module: 'platform',
   description: (
     <>
-      Install a Harness Delegate into a Kubernetes Cluster. 
+      Install a Docker or Kubernetes Delegate. 
     </>
   ),
   ribbon: true,
   type: [docType.Documentation, docType.Video],
   time: '5 min',
-  link: '/tutorials/platform/kubernetes-delegate-install-standalone',
+  link: '/tutorials/platform/install-delegate',
 },
 ];
 
 const PlatformList: FeatureItem[] = [{
-  title: 'Install Kubernetes Delegate',
+  title: 'Install Delegate',
   module: 'platform',
   description: (
     <>
-      Install a Harness Delegate into a Kubernetes Cluster. 
+      Install a Docker or Kubernetes Delegate on your infrastructure.
     </>
   ),
   ribbon: false,
   type: [docType.Documentation, docType.Video],
   time: '5 min',
-  link: '/tutorials/platform/kubernetes-delegate-install-standalone',
+  link: '/tutorials/platform/install-delegate',
 },
 
 ];

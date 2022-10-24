@@ -3,11 +3,7 @@ sidebar_position: 1
 description: This guide will walk through how start to optimize your Kubernetes Costs on a public cloud provider.
 ---
 
-# Optimize cloud costs for Kubernetes
-
-```mdx-code-block
-import KubernetesDelegateInstall from '/tutorials/shared/kubernetes-delegate-install-includes.md';
-```
+# Optimize Cloud Costs for Kubernetes
 
 ## Background on Cloud Costs
 
@@ -17,7 +13,7 @@ Resources on the public cloud are certainly not free. Public cloud vendors not o
 
 Optimizing costs focuses on right sizing resource usage to match workload actuals. Coupled with finding more emphermial infrastructure e.g spot instances can reduce costs. Monitoring solutions typically monitor for when usage exceeds a certain threshold, but the inverse if usage is under utilized, traditional monitoring solutions might not alert on that. Harness Cloud Cost Management, or CCM, can help unlock insights based on usage in how to optimize costs. This example will connect Kubernetes workload(s) on a public cloud vendor to Harness CCM to start getting cost insights and recommendations.
 
-## Getting Started with Optimizing Your Kubernetes Cloud Costs
+## Get Started with Optimizing Your Kubernetes Cloud Costs
 
 By connecting your public cloud Kubernetes cluster to Harness, you can start to get recommendations on right-sizing the workloads that are running. This example is assuming there are some workloads running in the Kubernetes cluster.
 
@@ -25,15 +21,13 @@ By connecting your public cloud Kubernetes cluster to Harness, you can start to 
 
 To get actual costing data from your public cloud vendor, it is recommended to [connect your public cloud billing API](https://docs.harness.io/article/80vbt5jv0q-set-up-cost-visibility-for-aws) [usage report, billing export, etc] to Harness CCM. This is not a requirement. Harness CCM will poll usage data from the [Kubernetes Metric Server](https://github.com/kubernetes-sigs/metrics-server) which comes installed by default with GKE and AKS. If using EKS, [installing the Kubernetes Metric Server](https://docs.aws.amazon.com/eks/latest/userguide/metrics-server.html) is needed.
 
-## Wiring Your Kubernetes Cluster for Optimization Recommendations
+## Prepare Your Kubernetes Cluster for Optimization Recommendations
 
 If you have not already, make sure to sign up for a [Harness CCM Account](https://app.harness.io/auth/#/signup/?module=ce&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=ccm-plg&utm_content=get-started). Once signed up, to start receiving optimizations for your cluster, you will need to install a [Harness Delegate](https://docs.harness.io/article/2k7lnc7lvl-delegates-overview), e.g the Harness worker node, into your cluster.
 
-### Installing the Harness Delegate
+### Install Delegate
 
-```mdx-code-block
-<KubernetesDelegateInstall />
-```
+You will also need to wire in a [Kubernetes Delegate](../platform/install-delegate) if you have not done so already.
 
 ### Pointing Harness CCM to Your Cluster
 
