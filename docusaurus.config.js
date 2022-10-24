@@ -286,7 +286,7 @@ const config = {
         copyright: `Copyright © ${new Date().getFullYear()} Harness Inc.`,
       },
       prism: {
-        theme: lightCodeTheme,
+        theme: darkCodeTheme, // lightCodeTheme,
         darkTheme: darkCodeTheme,
       },
       algolia: {
