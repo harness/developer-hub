@@ -312,7 +312,7 @@ button[title="Copy"] {
 @media screen and (min-width: 1200px) {
 /* @media screen and (max-width: 768px) { */
 	.searchBar {
-		width: 330px;
+		width: 900px;
 	}
 	.searchBar .DocSearch-Button {
 		width: 100%;

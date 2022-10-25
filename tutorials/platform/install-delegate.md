@@ -184,4 +184,4 @@ Click Continue and in a few moments after the health checks pass, your Harness D
 </TabItem>
 </Tabs>
 ```
-You are now ready to explore Harness.
+You can now route communication to external systems in Harness connectors and pipelines by simply selecting this delegate via a delegate selector. 
