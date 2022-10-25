@@ -309,6 +309,10 @@ button[title="Copy"] {
 	justify-content: center;
 	align-items: center;
 }
+body.DocSearch--active #__docusaurus > div[class*="announcementBar"] {
+	/* hide the announcement bar while the search bar called out */
+	display: none;
+}
 @media screen and (min-width: 1080px) {
 /* style for the search bar in higher resolution */
 	.searchBar {
