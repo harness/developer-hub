@@ -257,8 +257,9 @@
 .navbar__title {
 	display: none;
 }
-.navbar__logo {
-    max-width: calc(100% - 44px);
+.navbar__item img[alt='BETA'] {
+	margin-left: -1em;
+	margin-top: 9px;
 }
 
 /* hide the algolia logo */
@@ -315,5 +316,19 @@ button[title="Copy"] {
 	}
 	.searchBar .DocSearch-Button {
 		width: 100%;
+	}
+}
+
+@media screen and (max-width: 1056px) {
+/* for tablet */
+	.navbar__item img[alt='BETA'] {
+		display: none
+	}
+}
+
+@media screen and (max-width: 393px) {
+/* for mobile */
+	.navbar__logo {
+		max-width: calc(100% - 44px);
 	}
 }

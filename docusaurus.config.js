@@ -71,7 +71,7 @@ const config = {
           {
             position: "left",
             // label: "img",
-            html: "<img src='/img/icon_beta.svg' width='39' height='19' style='margin-top: 8px;' />",
+            html: "<img src='/img/icon_beta.svg' alt='BETA' width='39' height='19' />",
             href: "#",
           },
           {

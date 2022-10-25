@@ -104,8 +104,15 @@
 }
 @media screen and (max-width: 393px) {
   /* for mobile */
-  .features h2 {
-    font-size: 22px;
-    line-height: 150%;
+  .features {
+    h2 {
+      font-size: 22px;
+      line-height: 150%;
+    }
+    .getStart {
+      .getStartItem {
+        margin-right: unset;
+      }
+    }
   }
 }

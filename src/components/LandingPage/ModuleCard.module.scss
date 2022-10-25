@@ -134,3 +134,10 @@
         width: 48%;
     }
 }
+
+@media screen and (max-width: 393px) {
+    /* for mobile */
+    .tutorialCard{
+        width: unset;
+    }
+}

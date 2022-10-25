@@ -103,8 +103,12 @@
 
 @media screen and (max-width: 393px) {
   /* for mobile */
-  .heroTitle {
-    font-size: 28px;
-    line-height: 150%;
+  .heroBanner {
+    padding-left: var(--ifm-spacing-horizontal);
+    padding-right: var(--ifm-spacing-horizontal);
+    .heroTitle {
+      font-size: 28px;
+      line-height: 150%;
+    }
   }
 }
