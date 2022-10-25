@@ -196,12 +196,12 @@ Now you are ready to run once saved.
 
 ```mdx-code-block
 </TabItem>
-<TabItem value="Self Managed Build Infrastructure">
+<TabItem value="Self-Managed Build Infrastructure">
 ```
 
-Your onramp and workhorse in the Harness Platform is the Harness Delegate which can run in several places. For this example, using the [Kubernetes Delegate](../platform/install-delegate) is the easiest. If you do not have a Harness Delegate, refer to the instructions to [install](../platform/install-delegate) one. 
+If you want to use your own self-managed build infrastructure, then you should install the [Kubernetes Delegate](../platform/install-delegate) in the Kubernetes cluster of your choice. 
 
-For the self managed infrastructure, can leverage one of the Starter Configs or create a Starter Pipeline. In this case, can run the Starter Pipeline. 
+For the self-managed infrastructure, can leverage one of the Starter Configs or create a Starter Pipeline. In this case, can run the Starter Pipeline. 
 
 ![Build Self Hosted Step](static/ci-tutorial-node-docker/self_hosted_starter.png)
 
