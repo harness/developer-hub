@@ -102,3 +102,10 @@
     font-size: 28px;
   }
 }
+@media screen and (max-width: 393px) {
+  /* for mobile */
+  .features h2 {
+    font-size: 22px;
+    line-height: 150%;
+  }
+}

@@ -81,6 +81,7 @@
 
 @media screen and (max-width: 996px) {
 // @media screen and (max-width: 768px) {
+/* for tablet */
   .heroBanner {
     padding: 2rem 2rem 0 2rem;
     flex-flow: column nowrap;
@@ -97,5 +98,13 @@
     flex-basis: 100%;
     width: 100%;
     position: unset;
+  }
+}
+
+@media screen and (max-width: 393px) {
+  /* for mobile */
+  .heroTitle {
+    font-size: 28px;
+    line-height: 150%;
   }
 }

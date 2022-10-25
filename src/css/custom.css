@@ -257,6 +257,9 @@
 .navbar__title {
 	display: none;
 }
+.navbar__logo {
+    max-width: calc(100% - 44px);
+}
 
 /* hide the algolia logo */
 .DocSearch-Logo, a[aria-label="Search by Algolia"] {
