@@ -309,10 +309,10 @@ button[title="Copy"] {
 	justify-content: center;
 	align-items: center;
 }
-@media screen and (min-width: 1200px) {
-/* @media screen and (max-width: 768px) { */
+@media screen and (min-width: 1080px) {
+/* style for the search bar in higher resolution */
 	.searchBar {
-		width: 900px;
+		width: calc(100vw - 890px);
 	}
 	.searchBar .DocSearch-Button {
 		width: 100%;
