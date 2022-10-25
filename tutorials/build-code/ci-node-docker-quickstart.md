@@ -94,7 +94,7 @@ Bring Your Own Infrastructure:
 
 ### Starting off with Harness
 
-Harness is a Platform, but we will focus on the Continuous integration module. First, sign up for a [Harness account to get started](https://app.harness.io/auth/#/signup/?module=ci&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=ci-plg&utm_content=get-started).
+Harness is a Platform, but we will focus on the Continuous Integration module. First, sign up for a [Harness account to get started](https://app.harness.io/auth/#/signup/?module=ci&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=ci-plg&utm_content=get-started).
 
 ![Harness Signup](static/ci-tutorial-node-docker/harness_signup.png)
 
@@ -199,7 +199,7 @@ Now you are ready to run once saved.
 <TabItem value="Self Managed Build Infrastructure">
 ```
 
-Your onramp and workhorse in the Harness Platform is the Harness Delegate which can run in several places. For this example, using the [Kubernetes Delegate](../platform/install-delegate) is the easiest. If you do not have a Harness Delegate, refer to the above instructions to install one. 
+Your onramp and workhorse in the Harness Platform is the Harness Delegate which can run in several places. For this example, using the [Kubernetes Delegate](../platform/install-delegate) is the easiest. If you do not have a Harness Delegate, refer to the instructions to [install](../platform/install-delegate) one. 
 
 For the self managed infrastructure, can leverage one of the Starter Configs or create a Starter Pipeline. In this case, can run the Starter Pipeline. 
 
