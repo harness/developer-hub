@@ -111,7 +111,7 @@ With this metric, you are now able to start to manage this metric.
 
 ## Getting Started With Your First SLO
 
-Wiring in your service metrics/telemetry as SLOs to Harness SRM has a few Harness Objects to be created. If you have not already, sign up for a [Harness SRM Account](https://app.harness.io/auth/#/signup/?module=srm). If this is your first time leveraging Harness, Harness has a concept of Projects. The Default Project is more than adequate to wire in your first SLO. 
+Wiring in your service metrics/telemetry as SLOs to Harness SRM has a few Harness Objects to be created. If you have not already, request to sign up for a [Harness SRM Account](https://harness.io/demo/srm). If this is your first time leveraging Harness, Harness has a concept of Projects. The Default Project is more than adequate to wire in your first SLO. 
 
 ### Install Delegate
 
