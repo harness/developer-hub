@@ -20,6 +20,20 @@ steps:
   - yarn
   - yarn build
 
+- name: preview
+  image: plugins/netlify
+  settings:
+    environment: deploy-preview
+    path: ./build
+    site: 2dc01b76-a219-41c6-8333-d2a7067c34d9
+    token:
+      from_secret: token
+  when:
+    event:
+    - pull_request
+    branch:
+    - main
+
 - name: publish
   image: plugins/netlify
   settings:
