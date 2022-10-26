@@ -1,4 +1,4 @@
-## Cache Key Templates
+# Cache Key Templates
 
 Cache key can be templatized to use checksum of dependency requirements file. To use templates for key, you can use variables by prefixing them with a `.` in `{{ }}` construct, from provided metadata object (see below).
 

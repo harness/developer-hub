@@ -18,7 +18,7 @@ Step yaml syntax
 
 - **connectorRef** : AWS connector with permission to upload to specified bucket. Required
 
-- **key** : cache key to restore the cached directories. Refer [key template](/caching/key-template/) to templatize the key. Required
+- **key** : cache key to restore the cached directories. Refer [key template](../../key-template/) to templatize the key. Required
 
 - **bucket** : AWS bucket name. Required
 
