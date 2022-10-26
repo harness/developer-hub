@@ -137,12 +137,13 @@ If possible, we would like to persist sample applications in a [Sample Applicati
 Repository](https://github.com/harness-apps/developer-hub-apps). The Sample Application Repository has a similar [contributors guide](https://github.com/harness-apps/developer-hub-apps/blob/main/CONTRIBUTING.md). 
 
 ## Additional Metadata
-When adding a new Markdown files, above the initial H1 tag, a `description` is needed for SEO. Below is an example for a CI piece. 
+When adding a new Markdown files, above the initial H1 tag, a `description` is needed for SEO. Below is an example for a [CI piece](https://github.com/harness/developer-hub/blob/main/tutorials/build-code/ci-node-docker-quickstart.md). Having `keywords` is recommended. 
 
 ```
 ---
 sidebar_position: 1
 description: This build automation guide walks you through building a NodeJS and Docker Application in a CI Pipeline
+keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial]
 ---
 
 ``` 	
