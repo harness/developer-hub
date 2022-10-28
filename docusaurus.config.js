@@ -38,8 +38,8 @@ const config = {
           path: ".",
           sidebarPath: require.resolve("./sidebars.js"),
           editUrl: "https://github.com/harness/developer-hub/tree/main", // /tree/main/packages/create-docusaurus/templates/shared/
-          include: ["tutorials/**", "docs/**"],
-          exclude: ["**/shared/**", "**/static"],
+          include: ["tutorials/**/*.md*", "docs/**/*.md*"],
+          exclude: ["**/shared", "**/static"],
           routeBasePath: "/", //CHANGE HERE
         },
         // blog: {
