@@ -19,15 +19,15 @@
     "typecheck": "tsc"
   },
   "dependencies": {
-    "@docusaurus/core": "^2.1.0",
-    "@docusaurus/cssnano-preset": "2.1.0",
-    "@docusaurus/plugin-debug": "2.1.0",
-    "@docusaurus/plugin-google-analytics": "2.1.0",
-    "@docusaurus/plugin-google-gtag": "2.1.0",
-    "@docusaurus/plugin-sitemap": "2.1.0",
-    "@docusaurus/preset-classic": "2.1.0",
-    "@docusaurus/theme-classic": "2.1.0",
-    "@docusaurus/theme-search-algolia": "2.1.0",
+    "@docusaurus/core": "^2.2.0",
+    "@docusaurus/cssnano-preset": "2.2.0",
+    "@docusaurus/plugin-debug": "2.2.0",
+    "@docusaurus/plugin-google-analytics": "2.2.0",
+    "@docusaurus/plugin-google-gtag": "2.2.0",
+    "@docusaurus/plugin-sitemap": "2.2.0",
+    "@docusaurus/preset-classic": "2.2.0",
+    "@docusaurus/theme-classic": "2.2.0",
+    "@docusaurus/theme-search-algolia": "2.2.0",
     "@mdx-js/react": "^1.6.22",
     "clsx": "^1.2.1",
     "docusaurus-plugin-sass": "^0.2.2",
@@ -38,7 +38,7 @@
     "sass": "^1.54.9"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "2.1.0",
+    "@docusaurus/module-type-aliases": "2.2.0",
     "@tsconfig/docusaurus": "^1.0.5",
     "eslint": "^8.25.0",
     "eslint-plugin-react": "^7.31.10",
