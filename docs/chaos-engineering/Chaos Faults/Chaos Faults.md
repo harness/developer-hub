@@ -105,6 +105,6 @@ Following Platform Chaos faults are available:
   <tr>
     <td>VM Poweroff</td>
     <td>Poweroff VMware VMs using the MOIDs</td>
-    <td><a href="/docs/chaos-engineering/Chaos%20Faults/VMware/vmware-vm-poweroff">vmware-vm-poweroff</a></td>
+    <td><a href="/docs/chaos-engineering/Chaos%20Faults/VMware/vmware-vmpoweroff">vmware-vmpoweroff</a></td>
   </tr>
 </table>
