@@ -70,7 +70,7 @@ const CDList: FeatureItem[] = [{
 {
   title: 'First GitOps Deployment',
   module: 'cd',
-  // Svg: '/img/icon_ci.svg',
+  // Svg: '/img/icon_cd.svg',
   description: (
     <>
       Learn about GitOps and how to leverage your own GitOps Pipeline.
@@ -84,7 +84,7 @@ const CDList: FeatureItem[] = [{
 {
   title: 'First Helm Deployment',
   module: 'cd',
-  // Svg: '/img/icon_ci.svg',
+  // Svg: '/img/icon_cd.svg',
   description: (
     <>
       Deploying your first set of Kubernetes Resources in a CD Pipeline with Helm (K8s Package Manager).
@@ -98,7 +98,7 @@ const CDList: FeatureItem[] = [{
 {
   title: 'Private Image Amazon ECR Deployment',
   module: 'cd',
-  // Svg: '/img/icon_ci.svg',
+  // Svg: '/img/icon_cd.svg',
   description: (
     <>
       Deploying from a private Amazon ECR Repository to Kubernetes. 
@@ -108,6 +108,20 @@ const CDList: FeatureItem[] = [{
   type: [docType.Documentation],
   time: '15min',
   link: '/tutorials/deploy-services/ecr-private-repo-deployment',
+},
+{
+  title: 'First Amazon ECS Deployment',
+  module: 'cd',
+  // Svg: '/img/icon_cd.svg',
+  description: (
+    <>
+      Deploying to Amazon ECS with a CD Pipeline.
+    </>
+  ),
+  ribbon: false,
+  type: [docType.Documentation],
+  time: '15min',
+  link: '/tutorials/deploy-services/first-ecs-cd-deployment',
 },
 ];
 

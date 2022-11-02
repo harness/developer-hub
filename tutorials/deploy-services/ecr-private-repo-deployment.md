@@ -1,9 +1,9 @@
 ---
-sidebar_position: 1
+sidebar_position: 3
 description: Deploying Kubernetes manifests with a private image hosted in Amazon ECR. 
 ---
 
-# Deploying a Private Image in Amazon ECR to Kubernetes using a CD Pipeline
+# Deploy a Private Image in Amazon ECR to Kubernetes using a CD Pipeline
 
 ```mdx-code-block
 import GitHubPAT from '/tutorials/shared/github-wiring-includes.md';
