@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_position: 2
 description: Deploying your first set of Kubernetes Resources in a CD Pipeline with Helm (K8s Package Manager).
 ---
 
