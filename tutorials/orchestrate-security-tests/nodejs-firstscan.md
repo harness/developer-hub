@@ -5,6 +5,10 @@ description: Scanning a NodeJS Application and prioritizing scan results.
 
 # Scan a NodeJS App for security vulnerabilities
 
+```mdx-code-block
+import DelegateInstall from '/tutorials/platform/install-delegate.md';
+```
+
 ## DevSecOps Background
 
 The DevSecOps movement is all about shifting left; empowering the development teams to make more hygienic decisions. With the pace and velocity that engineering teams are creating changes/features, in days gone by, security could be seen as an afterthought in the SDLC. Today, modern teams and organizations try to disseminate application security expertise throughout the development pipeline and security decisions and posture are being educated upfront during development.
@@ -20,6 +24,11 @@ In this example, we will be using [OWASP Dependency Check](https://owasp.org/www
 ### Install Delegate
 
 Harness will facilitate the running of the security scan against your codebase. A workload runner, e.g. a [Harness Delegate](https://docs.harness.io/article/2k7lnc7lvl-delegates-overview) will need to be installed into a Kubernetes cluster of your choice. The first step is to request a [Harness Security Test Orchestration Account](https://harness.io/demo/sto) and install a [Harness Delegate](../platform/install-delegate).
+
+<details>
+<summary>Install Delegate</summary>
+<DelegateInstall />
+</details>
 
 ### Security Tests Pipeline
 

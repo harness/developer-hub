@@ -7,6 +7,7 @@ description: Deploying Kubernetes manifests with a private image hosted in Amazo
 
 ```mdx-code-block
 import GitHubPAT from '/tutorials/shared/github-wiring-includes.md';
+import DelegateInstall from '/tutorials/platform/install-delegate.md';
 ```
 
 ## Background on Private Registries
@@ -60,6 +61,11 @@ With the Default Project selected, clicking on Overview will bring up a wizard t
 ## Install Delegate
 
 Your onramp and workhorse in the Harness Platform is the Harness Delegate which can run in several places. For this example, using the [Kubernetes Delegate](../platform/install-delegate) is the easiest.
+
+<details>
+<summary>Install Delegate</summary>
+<DelegateInstall />
+</details>
 
 With the delegate installation out of th way, now you can wire your AWS Credentials to Harness. 
 

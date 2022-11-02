@@ -5,6 +5,10 @@ description: Deploying your first set of Kubernetes Resources in a CD Pipeline w
 
 # Deploy a Helm Chart using a CD Pipeline
 
+```mdx-code-block
+import DelegateInstall from '/tutorials/platform/install-delegate.md';
+```
+
 ## Background on Helm
 
 Introduced during the first KubeCon, [Helm](https://harness.io/blog/what-is-helm) has been a stalwart in the Kubernetes ecosystem almost since the inception of Kubernetes. If you are unfamiliar with Helm, Helm is a package manager for Kubernetes; similarly to Homebrew on your Mac or Chocolatey on your Windows machine.
@@ -48,6 +52,11 @@ There are a few Harness Objects that will need to be created in Harness. Harness
 ## Install Delegate
 
 Your onramp and workhorse in the Harness Platform is the Delegate which can run in several places. For this example, using the [Kubernetes Delegate](../platform/install-delegate) is the easiest.
+
+<details>
+<summary>Install Delegate</summary>
+<DelegateInstall />
+</details>
 
 ## Creating Your First Harness Pipeline with Helm
 
