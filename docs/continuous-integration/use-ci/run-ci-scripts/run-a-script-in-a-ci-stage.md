@@ -37,7 +37,7 @@ In your Harness Pipeline, click **Add Stage** and then click CI.
 Do one of the following:
 
 * If this is the first CI stage in the Pipeline, in the CI stage settings enable **Clone Codebase**.
-* If you have an existing Pipeline with a CI stage, click **Codebase**. See [Edit Codebase Configuration](../codebase-configuration/create-and-configure-a-codebase.md).
+* If you have an existing Pipeline with a CI stage, click **Codebase**. See [Edit Codebase Configuration](../codebase-configuration/create-and-configure-a-codebase.md#edit-codebase-configuration).
 
 ### Step 3: Define the Build Farm Infrastructure
 

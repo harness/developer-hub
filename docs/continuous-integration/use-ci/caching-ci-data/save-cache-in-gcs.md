@@ -1,6 +1,6 @@
 ---
 title: Save and Restore Cache from GCS
-description: Caching has two primary benefits &#8212;  It can make your jobs run faster by reusing the expensive fetch operation data from previous jobs. . It enables you to share data across Stages. In a Harness CI Pipe…
+description: Caching enables you to share data across stages. It also speed up builds by reusing the expensive fetch operation from previous jobs.
 tags: 
    - helpDocs
 sidebar_position: 10

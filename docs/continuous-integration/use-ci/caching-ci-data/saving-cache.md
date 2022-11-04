@@ -1,6 +1,6 @@
 ---
 title: Save and Restore Cache from S3
-description: To solve [problem], [general description of How-to solution]. In this topic &#8212;  Before You Begin. Visual Summary. Step 1 &#8212;  Title. Step 2 &#8212;  Title. Next Steps. Before You Begin. Your target environment must…
+description: Caching enables you to share data across stages. It also speed up builds by reusing the expensive fetch operation from previous jobs.
 tags: 
    - helpDocs
 # sidebar_position: 2

@@ -28,7 +28,7 @@ In your Harness Pipeline, click **Add Stage**, and then click CI.
 
 ### Step 2: Define the Build Farm Infrastructure
 
-In the CI stage Infrastructure, define the build farm for the codebase. See [Define Kubernetes Cluster Build Infrastructure](https://ngdocs.harness.io/article/x7aedul8qs-kubernetes-cluster-build-infrastructure-setup).
+In the CI stage Infrastructure, define the build farm for the codebase. See [Define Kubernetes Cluster Build Infrastructure](../set-up-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md).
 
 ### Step 3: Configure the Run Step
 
@@ -40,7 +40,7 @@ In the CI Artifact, select **Upload Artifacts to JFrog Artifactory**.
 
 In this step, configure the Harness Artifactory Connector, enter the source file/path, and the target path. 
 
-The JFrog Account associated with the Connector must have read/write permission. See [C](https://ngdocs.harness.io/article/euueiiai4m-artifactory-connector-settings-reference)[Connector Settings Reference](https://ngdocs.harness.io/article/euueiiai4m-artifactory-connector-settings-reference).
+The JFrog Account associated with the Connector must have read/write permission. See [Connector Settings Reference](https://ngdocs.harness.io/article/euueiiai4m-artifactory-connector-settings-reference).
 
 For the step Settings, see [Upload Artifacts to JFrog Artifactory](../../ci-technical-reference/upload-artifacts-to-jfrog-artifactory-step-settings.md).
 

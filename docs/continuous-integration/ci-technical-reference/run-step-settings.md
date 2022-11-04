@@ -43,7 +43,9 @@ Different container registries require different name formats:
 * **Docker Registry:** enter the name of the artifact you want to deploy, such as **library/tomcat**. Wildcards are not supported.
 * **GCR:** enter the FQN (fully-qualified name) of the artifact you want to deploy. Images in repos need to reference a path, for example: **us.gcr.io/playground-123/quickstart-image:latest**.
 
-![](./static/run-step-settings-03.png)* **ECR:** enter the FQN (fully-qualified name) of the artifact you want to deploy. Images in repos need to reference a path, for example: **40000005317.dkr.ecr.us-east-1.amazonaws.com/todolist:0.2**.
+![](./static/run-step-settings-03.png)
+
+* **ECR:** enter the FQN (fully-qualified name) of the artifact you want to deploy. Images in repos need to reference a path, for example: **40000005317.dkr.ecr.us-east-1.amazonaws.com/todolist:0.2**.
 
 ### Commands
 
@@ -63,7 +65,9 @@ Enable this option to run the container with escalated privileges. This is the e
 
 The path to the file(s) that store test results in the JUnit XML format. You can enter multiple paths. [Glob](https://en.wikipedia.org/wiki/Glob_(programming)) is supported.
 
-This variable must be set for the Run step to publish test results.#### Environment Variables
+This variable must be set for the Run step to publish test results.
+
+#### Environment Variables
 
 Environment variables may be injected into the container and used in the script in **Command**. When using these environment variables, make sure to enter a **Name** and **Value** for each variable.
 

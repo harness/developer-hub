@@ -79,7 +79,7 @@ You can see the URL for the repo account below **Repository Name**. Don't add th
 In **Repository Name**, enter the name of the repo containing the codebase.
 
 
-For example, if the account URL is **https://github.com/mycompany** and the repo in that account is **myapp**, you can simply enter **myapp** in **Repository Name**.
+For example, if the account URL is `https://github.com/mycompany` and the repo in that account is `myapp`, you can simply enter `myapp` in **Repository Name**.
 
 
 You specify the codebase repo here, but you enter the Git branch or tag when you deploy the Pipeline.

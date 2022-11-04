@@ -84,7 +84,7 @@ You can add Shared Paths to share data in folders outside the default workspace.
 
 ### Variables
 
-Environment variables are available to all steps in the stage. For an example use case, see [Option: Build a Docker Image without Pushing](../use-ci/build-and-upload-artifacts/build-and-upload-an-artifact.md).
+Environment variables are available to all steps in the stage. For an example use case, see [Option: Build a Docker Image without Pushing](../use-ci/build-and-upload-artifacts/build-and-upload-an-artifact.md#option-build-a-docker-image-without-pushing).
 
 ### Infrastructure
 
@@ -106,7 +106,9 @@ To override how the Build Stage pulls these images, create a Connector as descri
 
 ### Advanced
 
-![](./static/ci-stage-settings-12.png)#### Volumes
+![](./static/ci-stage-settings-12.png)
+
+#### Volumes
 
 A list of the volumes you want to mount onto the pod running the Stage.
 
@@ -184,7 +186,7 @@ A list of [`tolerations`](https://kubernetes.io/docs/concepts/scheduling-evictio
 
 The Execution section is where you add the steps that are performed in this stage.
 
-See [CI Technical Reference](https://docs.harness.io/category/ci-technical-reference).
+See [CI Technical Reference](/category/ci-technical-reference).
 
 ### Build Stage YAML Example
 
@@ -232,6 +234,6 @@ Here's an example of a Build Stage definition taken from a Pipeline YAML:
 ```
 ### See Also
 
-* [CI Technical Reference](https://docs.harness.io/category/ci-technical-reference)
+* [CI Technical Reference](/category/ci-technical-reference)
 * [Run Step Settings](run-step-settings.md)
 

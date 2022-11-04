@@ -31,11 +31,15 @@ You should carefully consider how a Pipeline reserves resources for Steps that r
 
 Consider the following Pipeline. In this case, the maximum consumption takes place when Step Group 1 is running. Given this, the Pipeline reserves 1700Mi of memory and 1200m of CPU. If the build infrastructure cannot reserve enough resources, the Pipeline fails.
 
-![](./static/group-ci-steps-using-step-groups-19.png)### Step 1: Add and Name the Step Group
+![](./static/group-ci-steps-using-step-groups-19.png)
+
+### Step 1: Add and Name the Step Group
 
 * In your stage, in **Execution**, click **Add Step** and then click **Step Group**.
 
-![](./static/group-ci-steps-using-step-groups-20.png)* Enter a name for the step group.
+![](./static/group-ci-steps-using-step-groups-20.png)
+
+* Enter a name for the step group.\
 
 ### Step 2: Add Steps to the Step Group
 

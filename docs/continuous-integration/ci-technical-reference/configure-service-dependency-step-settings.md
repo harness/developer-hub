@@ -77,11 +77,15 @@ ENTRYPOINT instructions allow you to configure a container that will run as an e
 
 You can add commands in Entry Point to override the image [ENTRYPOINT](https://docs.docker.com/engine/reference/builder/#entrypoint). See ENTRYPOINT best practices from Docker.
 
-![](./static/configure-service-dependency-step-settings-13.png)Commands should be in exec form.
+![](./static/configure-service-dependency-step-settings-13.png)
+
+Commands should be in exec form.
 
 Each command and parameter should be added separately. For example:
 
-![](./static/configure-service-dependency-step-settings-14.png)For a useful summary of ENTRYPOINT and CMD see [Demystifying ENTRYPOINT and CMD in Docker](https://aws.amazon.com/blogs/opensource/demystifying-entrypoint-cmd-docker/) from AWS.
+![](./static/configure-service-dependency-step-settings-14.png)
+
+For a useful summary of ENTRYPOINT and CMD see [Demystifying ENTRYPOINT and CMD in Docker](https://aws.amazon.com/blogs/opensource/demystifying-entrypoint-cmd-docker/) from AWS.
 
 #### Arguments
 

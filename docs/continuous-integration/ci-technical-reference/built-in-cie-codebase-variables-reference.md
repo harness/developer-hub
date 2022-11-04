@@ -22,26 +22,26 @@ If you want to use Codebase variables in your Pipelines, you need to be aware of
 
 Codebase variables are based on the Codebase defined for the Pipeline and the information in the Triggers and Input Sets used to start a Build. A Codebase variable is resolved only if the Build has the relevant information. For example, a variable like `<+codebase.prNumber>` gets resolved only if there is a Pull Request associated with the Build. 
 
-To return codebase variables to Harness, the Connector must use the Enable API access option and Username and Token authentication. See [Connect to a Git Repo](https://ngdocs.harness.io/article/zbhehjzsnv).Codebase variables are local to the Stage that ran the Build. Thus if your Pipeline includes a CI Build Stage and a CD Deploy Stage, the Codebase variables are accessible in the CI Stage only.  The following use cases specify which Codebase variables get resolved and when.
+To return codebase variables to Harness, the Connector must use the Enable API access option and Username and Token authentication. See [Connect to a Git Repo](https://ngdocs.harness.io/article/zbhehjzsnv). Codebase variables are local to the Stage that ran the Build. Thus if your Pipeline includes a CI Build Stage and a CD Deploy Stage, the Codebase variables are accessible in the CI Stage only.  The following use cases specify which Codebase variables get resolved and when.
 
 #### Manual Builds
 
 When a user starts a Build manually using an Input Set, the variables are based on the Input Set defined for the Trigger: 
 
-* Branch: [Manual Branch Build](#manual_branch_build) variables only.
-* Tag: [Manual Tag Build](#manual_tag_build) variables only.
-* Pull Request: [Manual Pull Request](#manual_pull_request_build) variables only.
+* Branch: [Manual Branch Build](#manual-branch-build) variables only.
+* Tag: [Manual Tag Build](#manual-tag-build) variables only.
+* Pull Request: [Manual Pull Request](#manual-pull-request-build) variables only.
 
 #### Builds from Git Webhook Triggers
 
 The most common use case for triggering CI Builds is in response to a Git event. When the Pipeline receives a webhook payload that matches a Trigger, it starts a Build. The Build maps the Trigger variables in the payload to the Codebase variables in the Build. The variables that get resolved are based on the event type and the payload:
 
-* Pull Request event: [Pull Request Webhook Event](#pull_request_webhook_event) variables only.
-* Push event: [Push Webhook Event](#push_webhook_event) variables only.
+* Pull Request event: [Pull Request Webhook Event](#pull-request-webhook-event) variables only.
+* Push event: [Push Webhook Event](#push-webhook-event) variables only.
 
 #### Builds Cannot Always Use Webhook Payloads to Set Codebase Variables
 
-A Build cannot always use webhook payloads to set Codebase variables. These Builds are considered manual. Thus you'll get [Manual Branch Build](#manual-branch-build), [Manual Tag Build](#manual-tag_-build), or [Manual Pull Request](#manual-pull-request-build) variables, based on the Input Set defined for the Trigger. Here are some examples of when this might happen:
+A Build cannot always use webhook payloads to set Codebase variables. These Builds are considered manual. Thus you'll get [Manual Branch Build](#manual-branch-build), [Manual Tag Build](#manual-tag-build), or [Manual Pull Request](#manual-pull-request-build) variables, based on the Input Set defined for the Trigger. Here are some examples of when this might happen:
 
 * You can set up a Cron Trigger to start a new Build every night at midnight. In this case, the incoming payload has no information about a specific Git event.
 * You have a Run Step that clones a repo, then builds and pushes an image using Docker-in-Docker commands. This repo is not specified in the Codebase for the Build Stage. In this case, the Codebase variables will not apply to this repo. If a Git event arrives from this repo and triggers a build, the [Trigger variables](https://ngdocs.harness.io/article/rset0jry8q) will describe this build.

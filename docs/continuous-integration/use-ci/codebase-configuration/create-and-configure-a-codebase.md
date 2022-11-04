@@ -44,7 +44,8 @@ In this step, you'll create the Codebase for a new Pipeline in Harness CIE.
 1. Go to **Pipeline Studio**, click **Add Stage**, and then click **Build**.
 2. Enter a unique name for the Build Stage.The Build Stage includes a **Clone Codebase** option, which is enabled by default. This tells Harness to clone the codebase into the build environment before building an artifact. In most cases, you want to leave this option enabled. You can disable this if you don't need a codebase for the build operation.
 3. In **Configure Codebase**, in **Connector**, click **Select Connector.**
-4. Click **New Connector** or select an existing Connector.![](./static/create-and-configure-a-codebase-02.png)
+4. Click **New Connector** or select an existing Connector.
+![](./static/create-and-configure-a-codebase-02.png)
 5. To create a new Connector, do the following:
 	1. Select the Connector scope:  
 	**Project:** available only in the current Project.  

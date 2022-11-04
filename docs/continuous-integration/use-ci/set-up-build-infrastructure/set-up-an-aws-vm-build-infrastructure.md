@@ -241,7 +241,10 @@ For details on the environment variables of the Harness Docker Delegate, see [Ha
 ### Step 6: Run a CI Build
 
 1. In the Harness CI Stage, in **Infrastructure**, select **AWS VMs**.![](./static/set-up-an-aws-vm-build-infrastructure-14.png)
-2. In the **Pool ID**, enter the pool name `<pool_id>` that you added in [Step 2: Configure the Drone Pool on the AWS VM](https://docs.harness.io/article/qfq7fy4cz6-draft-define-an-aws-vm-build-infrastructure-simplified#step_2_configure_the_drone_pool_on_the_aws_vm).![](./static/set-up-an-aws-vm-build-infrastructure-15.png)
+2. In the **Pool ID**, enter the pool name `<pool_id>` that you added in Step 2.
+
+![](./static/set-up-an-aws-vm-build-infrastructure-15.png)
+
 3. Your AWS build infrastructure is now set up. You can now run your Build Stages on AWS VMs.
 
 ### Pool Settings Reference

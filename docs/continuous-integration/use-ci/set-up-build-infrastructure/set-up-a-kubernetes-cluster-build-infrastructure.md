@@ -100,7 +100,7 @@ https://harness-1.wistia.com/medias/rpv5vwzpxz-->
 
 * Ensure your Kubernetes cluster meets the build infrastructure requirements in [CI Cluster Requirement](https://docs.harness.io/article/sjjik49xww-kubernetes-cluster-connector-settings-reference#harness_ci_cluster_requirements).
 * For Harness-specific permission requirements, see [permission required](https://docs.harness.io/article/sjjik49xww-kubernetes-cluster-connector-settings-reference#permissions_required) for CI.
-* Install the Harness Kubernetes Delegate on the same cluster you use as your build infrastructure. Make sure that the cluster has enough memory and CPU for the Delegate you are installing.Harness Kubernetes Delegates can be in a different [namespace](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) than the one you provide while [defining the build farm infrastructure](https://docs.harness.io/article/x7aedul8qs-kubernetes-cluster-build-infrastructure-setup#step_1_define_the_build_farm_infrastructure) for the CI Pipeline.
+* Install the Harness Kubernetes Delegate on the same cluster you use as your build infrastructure. Make sure that the cluster has enough memory and CPU for the Delegate you are installing.Harness Kubernetes Delegates can be in a different [namespace](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) than the one you provide while defining the build farm infrastructure for the CI Pipeline.
 
 To create a new Kubernetes cluster, see:
 
@@ -230,7 +230,9 @@ Harness adds the following labels automatically:
 * `orgID`: See `pipeline.orgIdentifier` in the Pipeline YAML.
 * `projectID`: See `pipeline.projectIdentifier` in the Pipeline YAML.
 * `pipelineID`: See `pipeline.identifier` in the Pipeline YAML.
-* `pipelineExecutionId`: To find this, go to a CI Build in the Harness UI. The `pipelineExecutionID` is near the end of the URL path, between executions/ and /pipeline: https://app.harness.io/ng/#/account/myaccount/ci/orgs/myusername/projects/myproject/pipelines/mypipeline/executions/**PIPELINE\_EXECUTION-ID**/pipeline
+* `pipelineExecutionId`: To find this, go to a CI Build in the Harness UI. The `pipelineExecutionID` is near the end of the URL path, between `executions` and `/pipeline`: 
+
+`https://app.harness.io/ng/#/account/myaccount/ci/orgs/myusername/projects/myproject/pipelines/mypipeline/executions/__PIPELINE_EXECUTION-ID__/pipeline`
 
 ### Configure As Code
 

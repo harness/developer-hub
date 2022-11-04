@@ -217,7 +217,9 @@ For details on the environment variables of the Harness Docker Delegate, see [Ha
 ### Step 6: Run a CI Build
 
 1. In the Harness CI Stage, in **Infrastructure**, select **VMs**.
-2. In the **Pool ID**, enter the pool name `<pool_id>` that you added in [Step 2: Configure the Drone Pool](https://docs.harness.io/article/qfq7fy4cz6-draft-define-an-aws-vm-build-infrastructure-simplified#step_2_configure_the_drone_pool_on_the_aws_vm).![](./static/define-a-ci-build-infrastructure-in-azure-18.png)
+2. In the **Pool ID**, enter the pool name `<pool_id>` that you added in Step 2.
+
+![](./static/define-a-ci-build-infrastructure-in-azure-18.png)
 
 You can now run Build Stages in your GCP build infrastructure.
 

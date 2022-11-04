@@ -32,7 +32,9 @@ When using private Docker registries, use a fully qualified repo name.### Tags
 
 Add each tag separately.
 
-![](./static/build-and-push-to-docker-hub-step-settings-10.png)### Optional Configurations
+![](./static/build-and-push-to-docker-hub-step-settings-10.png)
+
+### Optional Configurations
 
 #### Optimize
 

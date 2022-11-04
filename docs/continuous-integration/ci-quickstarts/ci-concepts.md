@@ -73,7 +73,7 @@ https://harness-1.wistia.com/medias/rpv5vwzpxz-->
 
 #### Test Intelligence
 
-Test Intelligence (TI) reduces test time significantly by running only the tests required to confirm the quality of the code changes that triggered the build. TI selects tests that are needed to confirm the quality of the code changes that triggered the build and ranks them in the best possible order to increase the rate of fault detection. See [Test Intelligence Overview](https://newdocs.helpdocs.io/article/vtu9k1dsfa-test-intelligence-concepts). 
+Test Intelligence (TI) reduces test time significantly by running only the tests required to confirm the quality of the code changes that triggered the build. TI selects tests that are needed to confirm the quality of the code changes that triggered the build and ranks them in the best possible order to increase the rate of fault detection. See [Test Intelligence Overview](test-intelligence-concepts.md). 
 
 ![](./static/ci-concepts-600.png)
 

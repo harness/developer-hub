@@ -18,7 +18,9 @@ This topic describes how to set up a build infrastructure using VMs on an MacOS 
 
 The following diagram shows the architecture of a CI build infrastructure on MacOS. The Delegate receives build requests from your Harness Manager. Then it forwards the requests to a Runner VM that starts, runs, and terminates the build VMs as needed.
 
-![](./static/define-a-macos-build-infrastructure-05.png)### Before You Begin
+![](./static/define-a-macos-build-infrastructure-05.png)
+
+### Before You Begin
 
 This topic assumes you're familiar with the following:
 
@@ -185,7 +187,9 @@ In the browser window, go to the following page: <https://github.com/drone-runne
 
  Download the latest **drone-runner-aws-darwin-amd64** executable:
 
-![](./static/define-a-macos-build-infrastructure-09.png)Copy the binary from the Downloads folder and make sure it has the correct permissions to run. In a CLI, run the following:
+![](./static/define-a-macos-build-infrastructure-09.png)
+
+Copy the binary from the Downloads folder and make sure it has the correct permissions to run. In a CLI, run the following:
 
 
 ```

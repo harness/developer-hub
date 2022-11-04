@@ -82,7 +82,9 @@ Remote Docker Layer Caching can dramatically improve build time by sharing layer
 
 Enter the name of the remote cache image (for example, `gcr.io/project-id/<image>`).
 
-The Remote Cache Repository must be in the same account and organization as the build image. For caching to work, the entered image name must exist.#### Run as User
+The Remote Cache Repository must be in the same account and organization as the build image. For caching to work, the entered image name must exist.
+
+#### Run as User
 
 Set the value to specify the user id for all processes in the pod, running in containers. See [Set the security context for a pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod).
 

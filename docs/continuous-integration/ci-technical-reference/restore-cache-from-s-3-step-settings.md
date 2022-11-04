@@ -53,15 +53,21 @@ Endpoint URL for S3-compatible providers (not needed for AWS).
 
 Select the archive format.
 
-The default archive format is Tar.#### Path Style
+The default archive format is Tar.
+
+#### Path Style
 
 Select whether to use Virtual Hosted Style (http://bucket.host/key) or Path Style (http://host/bucket/key). For MinIO, use Path Style (True).
 
-By default, the Path Style option is set to False.#### Fail if Key Doesn't Exist
+By default, the Path Style option is set to False.
+
+#### Fail if Key Doesn't Exist
 
 Select this option to fail the step if the key doesn’t exist.
 
-By default, the Fail if Key Doesn't Exist option is set to False.#### Run as User
+By default, the Fail if Key Doesn't Exist option is set to False.
+
+#### Run as User
 
 Set the value to specify the user id for all processes in the pod, running in containers. See [Set the security context for a pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod).
 
