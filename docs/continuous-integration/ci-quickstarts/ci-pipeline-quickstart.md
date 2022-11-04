@@ -54,7 +54,16 @@ Here's an architecture diagram of the very simple setup we use for Harness CI:
 
 #### Video Overview
 
-Here's a quick video that provides an overview of Harness CI Enterprise:
+Here's a quick video that provides an overview of Harness CI:
+
+<!-- Video:
+https://harness-1.wistia.com/medias/rpv5vwzpxz-->
+<docvideo src="https://harness-1.wistia.com/medias/fsc2b05uxz" />
+
+
+<!-- div class="hd--embed" data-provider="Wistia" data-thumbnail="">
+   <iframe src="//fast.wistia.net/embed/iframe/fsc2b05uxz" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" allowfullscreen="" mozallowfullscreen="" webkitallowfullscreen="" oallowfullscreen="" msallowfullscreen="" width="620" height="349"></iframe><script src="//fast.wistia.net/assets/external/E-v1.js" async=""></script>
+</div -->
 
 ### Option: Use Your Own Code Repo
 

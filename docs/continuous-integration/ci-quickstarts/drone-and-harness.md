@@ -28,21 +28,34 @@ See [Drone Documentation](https://docs.drone.io/) and the [Drone Plugins Registr
 
 Here's a quick walkthrough of using Drone with Harness:
 
-<div class="hd--embed" data-provider="YouTube" data-thumbnail="https://i.ytimg.com/vi/kZmOCLCpvmk/hqdefault.jpg"><iframe width=" 480" height="270" src="https://www.youtube.com/embed/kZmOCLCpvmk?feature=oembed" frameborder="0" allowfullscreen="allowfullscreen"></iframe></div>
+<!-- Video:
+https://harness-1.wistia.com/medias/rpv5vwzpxz-->
+<docvideo src="https://www.youtube.com/embed/kZmOCLCpvmk?feature=oembed" />
+
+
+<!-- div class="hd--embed" data-provider="YouTube" data-thumbnail="https://i.ytimg.com/vi/kZmOCLCpvmk/hqdefault.jpg"><iframe width=" 480" height="270" src="https://www.youtube.com/embed/kZmOCLCpvmk?feature=oembed" frameborder="0" allowfullscreen="allowfullscreen"></iframe></div -->
 
 
 ### Drone Overview
 
 Here is a quick introduction to Drone:
 
-<div class="hd--embed" data-provider="YouTube" data-thumbnail="https://i.ytimg.com/vi/f5QW667z8DM/hqdefault.jpg"><iframe width=" 480" height="270" src="https://www.youtube.com/embed/f5QW667z8DM?feature=oembed" frameborder="0" allowfullscreen="allowfullscreen"></iframe></div>
+<!-- Video:
+https://harness-1.wistia.com/medias/rpv5vwzpxz-->
+<docvideo src="https://www.youtube.com/embed/f5QW667z8DM?feature=oembed" />
+
+<!-- div class="hd--embed" data-provider="YouTube" data-thumbnail="https://i.ytimg.com/vi/f5QW667z8DM/hqdefault.jpg"><iframe width=" 480" height="270" src="https://www.youtube.com/embed/f5QW667z8DM?feature=oembed" frameborder="0" allowfullscreen="allowfullscreen"></iframe></div -->
 
 
-### Harness CI Enterprise
+### Harness CI
 
 The following presentation covers the basics of Harness CI:
 
-<div class="hd--embed" data-provider="Wistia" data-thumbnail="">
+<!-- Video:
+https://harness-1.wistia.com/medias/rpv5vwzpxz-->
+<docvideo src="https://harness-1.wistia.com/medias/fsc2b05uxz" />
+
+<!--div class="hd--embed" data-provider="Wistia" data-thumbnail="">
    <iframe src="//fast.wistia.net/embed/iframe/fsc2b05uxz" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" allowfullscreen="" mozallowfullscreen="" webkitallowfullscreen="" oallowfullscreen="" msallowfullscreen="" width="620" height="349"></iframe><script src="//fast.wistia.net/assets/external/E-v1.js" async=""></script>
-</div>
+</div -->
 

@@ -1,6 +1,6 @@
 ---
 title: Harness CI Concepts
-description: Harness CI Enterprise (CIE) simplifies the development and testing of code. In Harness Pipelines, you visually model your build and test processes as CIE stages. Each stage includes steps for building, testing, and pushing your code.
+description: Harness CI simplifies the development and testing of code. In Harness Pipelines, you visually model your build and test processes as CIE stages. Each stage includes steps for building, testing, and pushing your code.
 tags: 
    - helpDocs
    - CIE
@@ -31,9 +31,14 @@ Before learning about Harness CI, you should have an understanding of the follow
 
 The following video walks you through Harness CI.
 
-<div class="hd--embed" data-provider="Wistia" data-thumbnail="">
+<!-- Video:
+https://harness-1.wistia.com/medias/rpv5vwzpxz-->
+<docvideo src="https://harness-1.wistia.com/medias/fsc2b05uxz" />
+
+
+<!-- div class="hd--embed" data-provider="Wistia" data-thumbnail="">
    <iframe src="//fast.wistia.net/embed/iframe/fsc2b05uxz" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" allowfullscreen="" mozallowfullscreen="" webkitallowfullscreen="" oallowfullscreen="" msallowfullscreen="" width="620" height="349"></iframe><script src="//fast.wistia.net/assets/external/E-v1.js" async=""></script>
-</div>
+</div -->
 
 ### CI Overview
 
@@ -55,9 +60,14 @@ When a Build finishes successfully, the build infrastructure then sends the arti
 
 Here's a an end-to-end demo that shows how to set up a CI pipeline and run a build. You can go through this workflow yourself in the [CI Tutorial](ci-pipeline-quickstart.md).
 
-<div class="hd--embed" data-provider="YouTube" data-thumbnail="https://i.ytimg.com/vi/kZmOCLCpvmk/hqdefault.jpg"><iframe width=" 480" height="270" src="https://www.youtube.com/embed/r1GLYtOmJmM?feature=oembed" frameborder="0" allowfullscreen="allowfullscreen"></iframe></div>
+<!-- Video:
+https://harness-1.wistia.com/medias/rpv5vwzpxz-->
+<docvideo src="https://www.youtube.com/embed/r1GLYtOmJmM?feature=oembed" />
 
-### Harness CIE Features
+
+<!--div class="hd--embed" data-provider="YouTube" data-thumbnail="https://i.ytimg.com/vi/kZmOCLCpvmk/hqdefault.jpg"><iframe width=" 480" height="270" src="https://www.youtube.com/embed/r1GLYtOmJmM?feature=oembed" frameborder="0" allowfullscreen="allowfullscreen"></iframe></div -->
+
+### Harness CI Features
 
 #### Test Intelligence
 
@@ -75,7 +85,7 @@ Harness is seamlessly integrated with other Harness modules such as [Continuous 
 
 ![](./static/ci-enterprise-concepts-503.png)
 
-CI Enterprise uses [Kubernetes](https://kubernetes.io/) to run Pipeline Steps as containers, making it language-agnostic. Containers are lightweight abstractions of the host operating system that can package code and dependencies independently of the steps. You can specify a container in the pipeline itself, and the agent will fetch and start the container where the job runs. Because all of the steps run in containers, and plugins have their own containers, you don't need to worry about dependencies.
+CI uses [Kubernetes](https://kubernetes.io/) to run Pipeline Steps as containers, making it language-agnostic. Containers are lightweight abstractions of the host operating system that can package code and dependencies independently of the steps. You can specify a container in the pipeline itself, and the agent will fetch and start the container where the job runs. Because all of the steps run in containers, and plugins have their own containers, you don't need to worry about dependencies.
 
 #### Visual Pipeline Builder
 

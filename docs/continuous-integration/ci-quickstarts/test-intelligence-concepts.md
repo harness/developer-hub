@@ -25,6 +25,13 @@ Before learning about Test Intelligence, you should understand the following:
 
 The following video walks you through setting up Test Intelligence in the Harness CIE stage. The TI section starts after 11 min. mark in the video.
 
+<!-- Video:
+https://harness-1.wistia.com/medias/rpv5vwzpxz-->
+<docvideo src="https://www.youtube.com/embed/eAtIO4bJ3No" />
+
+<!-- div class="hd--embed" data-provider="YouTube" data-thumbnail="https://i.ytimg.com/vi/kZmOCLCpvmk/hqdefault.jpg"><iframe width=" 480" height="270" src="https://www.youtube.com/embed/eAtIO4bJ3No" frameborder="0" allowfullscreen="allowfullscreen"></iframe></div -->
+
+
 ### Overview
 
 Testing is an important part of Continuous Integration (CI). Testing safeguards the quality of your product before shipping. But testing can also take a lot of time because a test cycle involves multiple tests. Often, the tests run are irrelevant to the code changes that triggered the build.
