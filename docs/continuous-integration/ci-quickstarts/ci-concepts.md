@@ -48,7 +48,9 @@ Harness is a leading provider of the Continuous Delivery-as-a-Service platform. 
 
 The architecture diagram of the Harness CI setup is as follows:
 
-![](./static/ci-enterprise-concepts-10.png)The [Harness Delegate](https://docs.harness.io/article/2k7lnc7lvl-delegates-overview) is central to all CI processes and is in charge of all CI operations. It runs in your environment, such as your local network, virtual private cloud, or cluster. It connects the Harness Manager in your SaaS instance to all of your code repositories, artifacts, infrastructure, and cloud providers. See also [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h).
+![](./static/ci-concepts-10.png)
+
+The [Harness Delegate](https://docs.harness.io/article/2k7lnc7lvl-delegates-overview) is central to all CI processes and is in charge of all CI operations. It runs in your environment, such as your local network, virtual private cloud, or cluster. It connects the Harness Manager in your SaaS instance to all of your code repositories, artifacts, infrastructure, and cloud providers. See also [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h).
 
 The build infrastructure communicates directly with your repos, repositories, and cloud providers. You can maintain your code and artifacts internally or on public platforms such as GitHub or DockerHub.
 
@@ -73,29 +75,31 @@ https://harness-1.wistia.com/medias/rpv5vwzpxz-->
 
 Test Intelligence (TI) reduces test time significantly by running only the tests required to confirm the quality of the code changes that triggered the build. TI selects tests that are needed to confirm the quality of the code changes that triggered the build and ranks them in the best possible order to increase the rate of fault detection. See [Test Intelligence Overview](https://newdocs.helpdocs.io/article/vtu9k1dsfa-test-intelligence-concepts). 
 
-![](./static/ci-enterprise-concepts-600.png)
+![](./static/ci-concepts-600.png)
 
 #### Integrated Platform
 
-![](./static/ci-enterprise-concepts-501.png)
+![](./static/ci-concepts-501.png)
 
 Harness is seamlessly integrated with other Harness modules such as [Continuous Delivery](https://ngdocs.harness.io/article/0zsf97lo3c-deployment-concepts), [Cloud Cost Management](https://ngdocs.harness.io/category/7vy86n7cws-set-up-cloud-cost-management), and [Feature Flags](https://ngdocs.harness.io/article/7n9433hkc0-cf-feature-flag-overview). You no longer have to navigate from application to application to follow the steps of the Pipeline. Harness platform offers unified CI/CD Pipelines with visual controls and approval gates.  
 
 #### Containerized Steps
 
-![](./static/ci-enterprise-concepts-503.png)
+![](./static/ci-concepts-503.png)
 
 CI uses [Kubernetes](https://kubernetes.io/) to run Pipeline Steps as containers, making it language-agnostic. Containers are lightweight abstractions of the host operating system that can package code and dependencies independently of the steps. You can specify a container in the pipeline itself, and the agent will fetch and start the container where the job runs. Because all of the steps run in containers, and plugins have their own containers, you don't need to worry about dependencies.
 
 #### Visual Pipeline Builder
 
-![](./static/ci-enterprise-concepts-505.png)Scripting Pipelines can be time-consuming and tedious. You may also be unaware of the sequence of events. It's possible that things will get worse as the Pipeline becomes more complicated. As a result, CI provides a graphical representation of the Pipeline with nested steps. You can build directly from the UI, or you can use the YAML editor if you prefer. The YAML editor functions similarly to any other IDE. With YAML, you can easily configure it as code.
+![](./static/ci-concepts-505.png)
+
+Scripting Pipelines can be time-consuming and tedious. You may also be unaware of the sequence of events. It's possible that things will get worse as the Pipeline becomes more complicated. As a result, CI provides a graphical representation of the Pipeline with nested steps. You can build directly from the UI, or you can use the YAML editor if you prefer. The YAML editor functions similarly to any other IDE. With YAML, you can easily configure it as code.
 
 #### Harness Git Experience
 
 Harness Git Experience provides seamless integration between your Harness Projects, Pipelines, and resources and your Git repos. You can work entirely from Git or use a hybrid method of Git and the Harness Manager. Harness CI integrates with all the popular source control management tools including GitHub, GitLab, and Bitbucket. To get started, you need to activate the repository and include a `.harness` folder for the configuration files. This will trigger a build within Harness CI once a commit is detected. See [Git Experience](https://ngdocs.harness.io/article/utikdyxgfz-harness-git-experience-overview).
 
-![](./static/ci-enterprise-concepts-506.png)
+![](./static/ci-concepts-506.png)
 
 ### Harness CI Components
 
@@ -109,7 +113,7 @@ A Pipeline Step is defined as a series of commands that carry out an action. For
 
 Harness CI provides the following options as Step Library.
 
-![](./static/ci-enterprise-concepts-507.png)
+![](./static/ci-concepts-507.png)
 
 #### Shared Path
 
