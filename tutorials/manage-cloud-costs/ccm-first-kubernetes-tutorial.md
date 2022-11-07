@@ -5,6 +5,10 @@ description: This guide will walk through how start to optimize your Kubernetes 
 
 # Optimize Cloud Costs for Kubernetes
 
+```mdx-code-block
+import DelegateInstall from '/tutorials/platform/install-delegate.md';
+```
+
 ## Background on Cloud Costs
 
 As engineers, we are natural optimizers. Responding to users in more expeditious and efficient ways are core to optimizations. There are always tradeoffs between architecture and costs. With the rise of public cloud consumption with on the surface “nearly infinite” resources, this unlocks the next generation of distributed architecture. Though this is not without cost. From an engineering perspective, cost/billing data from the public cloud vendors depending on your organization might not be available to you or can take multiple billing cycles to be disseminated.
@@ -28,6 +32,11 @@ If you have not already, make sure to sign up for a [Harness CCM Account](https:
 ### Install Delegate
 
 You will also need to wire in a [Kubernetes Delegate](../platform/install-delegate) if you have not done so already.
+
+<details>
+<summary>Install Delegate</summary>
+<DelegateInstall />
+</details>
 
 ### Pointing Harness CCM to Your Cluster
 

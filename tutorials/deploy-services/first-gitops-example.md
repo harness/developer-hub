@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_position: 2
 description: Learn about GitOps and how to leverage your own GitOps Pipeline.
 ---
 
