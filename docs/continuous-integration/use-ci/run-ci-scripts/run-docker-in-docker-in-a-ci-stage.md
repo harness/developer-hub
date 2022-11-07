@@ -15,7 +15,9 @@ You can run Docker-in-Docker (**dind**) in a CI Stage. This is useful whenever y
 This topic illustrates a simple build-and-push workflow using Docker-in-Docker.
 
 Docker-in-Docker must run in privileged mode to work properly. You need to be careful because this provides full access to the host environment. See [Runtime Privilege and Linux Capabilities](https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities) in the Docker docs.  
-Docker-in-Docker is not supported in Harness-hosted build infrastructures or on platforms (such as those running Windows containers) that don't support Privileged mode. ### Before You Begin
+Docker-in-Docker is not supported in Harness-hosted build infrastructures or on platforms (such as those running Windows containers) that don't support Privileged mode. 
+
+### Before You Begin
 
 To go through this workflow, you need the following:
 

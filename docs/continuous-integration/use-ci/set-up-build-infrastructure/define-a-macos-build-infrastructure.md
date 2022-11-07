@@ -12,7 +12,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-> **NOTE**: Currently, this feature is behind the Feature Flag `CI_VM_INFRASTRUCTURE` Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+> **NOTE**: Currently, this feature is behind the Feature Flag `CI_VM_INFRASTRUCTURE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 This topic describes how to set up a build infrastructure using VMs on an MacOS EC2. Once you set up this infrastructure, your Harness Pipelines can use these VMs to build your software and run your tests safely and at scale. You can also [define MacOS build infrastructures on hardware devices such as MacBook Pros and Mac minis](define-a-mac-os-build-infrastructure.md). 
 
@@ -153,7 +153,9 @@ In the VNC window, click the Launchpad button in the Dock (bottom). Then search 
 
 ![](./static/define-a-macos-build-infrastructure-06.png)In the Welcome to Anka screen, click the button for the VM you just created on the right. This opens a second VNC window, for the VM, within the VNC window for the EC2.
 
-![](./static/define-a-macos-build-infrastructure-07.png)In the new VNC window, do the following:
+![](./static/define-a-macos-build-infrastructure-07.png)
+
+In the new VNC window, do the following:
 
 * Open a CLI and install Homebrew and wget on the VM:
 ```
@@ -327,7 +329,7 @@ In the Harness UI > Delegate Setup wizard, click **Continue** and wait for your 
 
 Once it is verified, close the wizard.
 
-### Step 7: Specify the Delegate in the Pipeline
+### Step 8: Specify the Delegate in the Pipeline
 
 In your Harness Project, go to a Pipeline that includes a Build Stage.
 

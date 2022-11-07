@@ -119,6 +119,7 @@ In the Mac UI, click the Launchpad button in the Dock (bottom). Then search for 
 
 ![](./static/define-a-mac-os-build-infrastructure-21.png)
 
+
 In the new VNC window, do the following:
 
 * Open a CLI and install Homebrew and wget on the VM:
@@ -292,7 +293,7 @@ In the Harness UI > Delegate Setup wizard, click **Continue** and wait for your 
 
 Once it is verified, close the wizard.
 
-### Step 7: Specify the Delegate in the Pipeline
+### Step 8: Specify the Delegate in the Pipeline
 
 In your Harness Project, go to a Pipeline that includes a Build Stage.
 

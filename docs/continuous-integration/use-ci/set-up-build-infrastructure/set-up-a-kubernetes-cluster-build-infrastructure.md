@@ -20,7 +20,7 @@ Harness build farms run on your infrastructure using battle-tested platforms f
 
 Once you set up the Kubernetes cluster to use as your build infrastructure, you connect Harness to it using a Harness Kubernetes Cluster Connector and Harness Delegate.
 
-You can also use an AWS VM build infrastructure. See [Define an AWS VM Build Infrastructure](set-up-an-aws-vm-build-infrastructure.md).
+You can also set up build infrastructures using VMs. See [Set Up Build Infrastructure](/category/set-up-build-infrastructure).
 
 ### Limitations
 

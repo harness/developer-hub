@@ -20,7 +20,9 @@ For information on using Kubernetes as a build farm, see [Define Kubernetes Clus
 
 The following diagram illustrates a build farm. The [​Harness Docker Delegate](https://docs.harness.io/article/cya29w2b99-install-a-docker-delegate) communicates directly with your Harness instance. The [VM Runner](https://docs.drone.io/runner/vm/overview/) maintains a pool of VMs for running builds. When the Delegate receives a build request, it forwards the request to the Runner, which runs the build on an available VM.
 
-![](./static/define-a-ci-build-infrastructure-in-azure-16.png)### Important Notes
+![](./static/define-a-ci-build-infrastructure-in-azure-16.png)
+
+### Important Notes
 
 * VM requirements:
 	+ For the Delegate VM, use a machine type with 4 vCPU and 16 GB memory or more.
@@ -111,7 +113,9 @@ instances:
       sku: 2019-Datacenter-with-Containers  
       version: latest
 ```
-Later in this workflow, you'll reference the pool identifier in the Harness Manager to map the pool with a Stage Infrastructure in a CI Pipeline. This is described later in this topic.### Step 3: Create the Docker-Compose YAML
+Later in this workflow, you'll reference the pool identifier in the Harness Manager to map the pool with a Stage Infrastructure in a CI Pipeline. This is described later in this topic.
+
+### Step 3: Create the Docker-Compose YAML
 
 1. Navigate to the Delegates page for your Harness account, organization, or project.
 2. Click **New Delegate** and select **Docker**.
