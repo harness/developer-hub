@@ -28,7 +28,7 @@ Click on Delegates then click +New Delegate. You now have two options `Docker` a
 <Tabs>
 <TabItem value="Docker">
 ```
-### Docker Prerequisite
+<h3> Prerequisite </h3>
 
 Ensure that you have the Docker runtime installed on your host. If not, use one of the following options to install Docker:
 
@@ -42,7 +42,7 @@ Ensure that you have the Docker runtime installed on your host. If not, use one 
 
 - [Docker for Windows](https://docs.docker.com/desktop/install/windows-install/)
 
-### Download Docker Compose YAML
+<h3> Download Docker Compose YAML </h3>
 
 After ensuring that your Docker runtime is installed, select `Docker` on the Delegate Install Wizard above. 
 
@@ -52,14 +52,14 @@ After ensuring that your Docker runtime is installed, select `Docker` on the Del
 
 2. Click Continue and download the `docker-compose.yml` file that is pre-populated with default delegate token specific to your account. 
 
-### Install on Docker
+<h3> Install on Docker </h3>
 
 Now you can install the delegate using the following command.
 
 ```bash
 docker-compose -f docker-compose.yml up -d
 ```
-### Verify Docker Delegate Connectivity
+<h3> Verify Docker Delegate Connectivity </h3>
 
 Click Continue and in a few moments after the health checks pass, your Docker Delegate will be available for you to leverage. Click Done and can verify your new Delegate is on the list.
 
@@ -70,7 +70,7 @@ Click Continue and in a few moments after the health checks pass, your Docker De
 </TabItem>
 <TabItem value="Kubernetes">
 ```
-### Kubernetes Prerequisite
+<h3> Prerequisite </h3>
 
 Ensure that you access to a Kubernetes cluster. For the purposes of this tutorial, we will use `minikube`.
 
@@ -113,13 +113,13 @@ You are presented with two options `Helm` and `Kubernetes` for installation. The
 <Tabs>
 <TabItem value="Helm Chart">
 ```
-### Download Helm Chart Values YAML
+<h3> Download Helm Chart Values YAML </h3>
 
 Click Continue and now you can download and apply the Helm values YAML that has been generated.
 
 ![YAML to Download](static/install-delegate/helm_values_yaml.png)
 
-### Install Helm Chart
+<h3> Install Helm Chart </h3>
 
 With the downloaded `harness-delegate-values.yaml`, you can now install the delegate using the Delegate Helm Chart. Let us first add the `harness` helm chart repo to your local helm registry.
 
@@ -144,7 +144,7 @@ harness/harness-delegate-ng \
 -f harness-delegate-values.yaml
 ```
 
-### Verify Helm Delegate Connectivity
+<h3> Verify Helm Delegate Connectivity </h3>
 
 Click Continue and in a few moments after the health checks pass, your Harness Delegate will be available for you to leverage. Click Done and can verify your new Delegate is on the list.
 
@@ -155,13 +155,13 @@ Click Continue and in a few moments after the health checks pass, your Harness D
 <TabItem value="Kubernetes Manifest">
 ```
 
-### Download Kubernetes Manifest
+<h3> Download Kubernetes Manifest </h3>
 
 Click Continue and now you can download and apply the Kubernetes YAML that has been generated.
 
 ![YAML to Download](static/install-delegate/k8s_manifest_yaml.png)
 
-### Apply Kubernetes Manifest
+<h3> Apply Kubernetes Manifest </h3>
 
 With the downloaded _harness-delegate.yml_ can apply this to your wired Kubernetes cluster.
 
@@ -169,7 +169,7 @@ With the downloaded _harness-delegate.yml_ can apply this to your wired Kubernet
 kubectl apply -f harness-delegate.yml
 ```
 
-### Verify Kubernetes Manifest Delegate Connectivity
+<h3> Verify Kubernetes Manifest Delegate Connectivity </h3>
 
 Click Continue and in a few moments after the health checks pass, your Harness Delegate will be available for you to leverage. Click Done and can verify your new Delegate is on the list.
 

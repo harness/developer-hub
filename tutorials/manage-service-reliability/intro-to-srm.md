@@ -33,7 +33,7 @@ Harness provides a module called Service Reliability Management to help with you
 
 In this example, will use [Prometheus](https://prometheus.io/), an open source monitoring solution, to intercept metrics from an example application. The Open Observability Group has an [example application](https://github.com/open-o11y/prometheus-sample-app) which can be deployed to Kubernetes that writes to Prometheus metrics.
 
-## Installing Prometheus
+## Install Prometheus
 
 An easy way to install Prometheus on your Kubernetes cluster is to use [Helm](https://helm.sh/).
 
