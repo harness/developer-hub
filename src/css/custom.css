@@ -196,14 +196,20 @@
 	/* Module Colors/Feature Flags/100 */
 	--mod-ff-100: #fcf4e3;
 
+	--mod-sto-300: #1947ec;
 	/* Module Colors/STO/200 */
 	--mod-sto-200: #2660ff;
+	--mod-sto-100: #ebefff;
 
+	--mod-srm-300: #6938c0;
 	/* Module Colors/SRM/200 */
 	--mod-srm-200: #8b73ce;
+	--mod-srm-100: #f6f1ff;
 
+	--mod-ce-300: #cd0056;
 	/* Module Colors/Chaos Engineering/200 */
-	--mod-ce-200: #cd0056;
+	--mod-ce-200: #ff006a;
+	--mod-ce-100: #fff1f7;
 
 
 	/* ----- */
@@ -313,6 +319,7 @@ body.DocSearch--active #__docusaurus > div[class*="announcementBar"] {
 	/* hide the announcement bar while the search bar called out */
 	display: none;
 }
+
 @media screen and (min-width: 1080px) {
 /* style for the search bar in higher resolution */
 	.searchBar {

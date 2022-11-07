@@ -75,9 +75,11 @@ const config = {
             href: "#",
           },
           {
-            type: "search",
+            // type: "search",
+            // position: "right",
+            // className: "searchBar",
+            type: "custom-coveo-search",
             position: "right",
-            className: "searchBar",
           },
           {
             position: "right",
@@ -289,6 +291,7 @@ const config = {
         theme: darkCodeTheme, // lightCodeTheme,
         darkTheme: darkCodeTheme,
       },
+      /*
       algolia: {
         // The application ID provided by Algolia
         appId: "HPP2NHSWS8",
@@ -312,6 +315,7 @@ const config = {
 
         //... other Algolia params
       },
+      */
       colorMode: {
         defaultMode: "light",
         disableSwitch: true,
