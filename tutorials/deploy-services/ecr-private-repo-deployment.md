@@ -1,6 +1,6 @@
 ---
 sidebar_position: 3
-description: Deploying Kubernetes manifests with a private image hosted in Amazon ECR. 
+description: Deploy Kubernetes manifests with a private image hosted in Amazon ECR. 
 ---
 
 # Deploy a Private Image in Amazon ECR to Kubernetes using a CD Pipeline
@@ -59,8 +59,6 @@ When navigating back to Deployments, can set the project context to the Default 
 With the Default Project selected, clicking on Overview will bring up a wizard to create your first Pipeline/Deployment. There are a few Harness entities that will need to be created in Harness. The needed objects are wirings to Amazon ECR for private  image access and GitHub for the manifests. 
 
 ## Install Delegate
-
-Your onramp and workhorse in the Harness Platform is the Harness Delegate which can run in several places. For this example, using the [Kubernetes Delegate](../platform/install-delegate) is the easiest.
 
 <details>
 <summary>Install Delegate</summary>
