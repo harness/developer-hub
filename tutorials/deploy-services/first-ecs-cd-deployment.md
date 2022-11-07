@@ -1,6 +1,6 @@
 ---
 sidebar_position: 3
-description: Deploying a Docker Image in Amazon ECS
+description: Deploy a Docker Image in Amazon ECS
 ---
 
 # Deploy a Docker Image in Amazon ECS with a CD Pipeline
@@ -80,8 +80,8 @@ With the Default Project selected, clicking on Overview will bring up a wizard t
 
 There are a few Harness entities that will need to be created in Harness. The needed objects are a Harness Delegate and an AWS Connector for your user credentials. 
 
-### Installing a Harness Delegate
-If you do not have a Delegate installed, follow [these Developer Hub instructions](https://developer.harness.io/tutorials/platform/install-delegate/) to get one installed either in Docker or Kubernetes. 
+### Install a Delegate
+If you do not have a Delegate installed, follow [these steps](../platform/install-delegate/) to get one installed either in Docker or Kubernetes. 
 
 <details>
 <summary>Install Delegate</summary>

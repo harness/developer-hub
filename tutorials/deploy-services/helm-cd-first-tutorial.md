@@ -1,6 +1,6 @@
 ---
 sidebar_position: 2
-description: Deploying your first set of Kubernetes Resources in a CD Pipeline with Helm (K8s Package Manager).
+description: Deploy a Helm Chart using a CD Pipeline
 ---
 
 # Deploy a Helm Chart using a CD Pipeline
@@ -50,8 +50,6 @@ With the Default Project selected, clicking on Overview will bring up a wizard t
 There are a few Harness Objects that will need to be created in Harness. Harness works on a concept of worker nodes called [Harness Delegates](https://docs.harness.io/article/2k7lnc7lvl-delegates-overview). These Delegates can perform work on your behalf. One will need to be set up to deploy into a Kubernetes cluster. The second will be access to the Helm Chart Repository. 
 
 ## Install Delegate
-
-Your onramp and workhorse in the Harness Platform is the Delegate which can run in several places. For this example, using the [Kubernetes Delegate](../platform/install-delegate) is the easiest.
 
 <details>
 <summary>Install Delegate</summary>
