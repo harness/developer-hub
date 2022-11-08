@@ -22,7 +22,7 @@ export default function LearnAboutPlatform(): JSX.Element {
                     <path d="M172.227 518V100H287.811V517.9L172.227 592.138Z" fill="url(#paint2_linear_401_344)" />
                 </Tooltip>
             </a>
-            <a href="https://docs.harness.io/category/txlccquh5c-sto-category"> 
+            <a href="/docs/security-testing-orchestration"> 
                 <Tooltip overlay={<p className='tooltip-max-width'>Enables proactive application security scanning and governance for engineering and DevSecOps. Replace manual efforts, reduce toil and minimize risk associated with software vulnerabilities.</p>}>
                 <path d="M321.132 518V100H455.015V517.9L321.132 592Z" fill="url(#paint8_linear_401_344)" />
                 </Tooltip>
@@ -48,7 +48,7 @@ export default function LearnAboutPlatform(): JSX.Element {
                 <path d="M939.548 900V71.8071H1059.4V663.869H939.548Z" fill="url(#paint5_linear_401_344)" />
                 </Tooltip>
             </a>
-            <a href="https://docs.harness.io/category/ko19u4brsv-howtos-service-reliability-management">
+            <a href="/docs/service-reliability-management">
                 <Tooltip overlay={<p className='tooltip-max-width'>Achieve SLO based software delivery with automated governance, verification, and shared reliability goals - a unique solution for engineering, DevOps, and reliability teams.</p>}>
                 <path d="M1091.96 900V87.1436H1231.05V742H1091.96Z" fill="url(#paint6_linear_401_344)" />
                 </Tooltip>
