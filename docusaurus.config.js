@@ -152,15 +152,19 @@ const config = {
               },
               {
                 label: "Service Reliability Management",
-                href: "https://docs.harness.io/category/ko19u4brsv-howtos-service-reliability-management",
+                to: "docs/service-reliability-management",
               },
               {
                 label: "Security Testing Orchestration",
-                href: "https://docs.harness.io/category/txlccquh5c-sto-category",
+                to: "docs/security-testing-orchestration",
               },
               {
                 label: "Chaos Engineering",
                 to: "docs/chaos-engineering",
+              },
+              {
+                label: "Self-Managed Enterprise Edition",
+                to: "docs/self-managed-enterprise-edition",
               },
               {
                 label: "Harness Platform",
