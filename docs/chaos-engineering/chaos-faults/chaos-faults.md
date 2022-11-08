@@ -26,7 +26,7 @@ Faults that apply to generic Kubernetes resources are classified into this categ
   <tr>
     <td>Pod Delete</td>
     <td>Deletes the application pods </td>
-    <td><a href="/docs/chaos-engineering/Chaos%20Faults/Kubernetes/Generic/Pod/pod-delete">pod-delete</a></td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/Kubernetes/Generic/Pod/pod-delete">pod-delete</a></td>
   </tr>
 </table>
 
@@ -40,7 +40,7 @@ Faults that apply to generic Kubernetes resources are classified into this categ
   <tr>
     <td>Node CPU Hog</td>
     <td>Exhaust CPU resources on the Kubernetes Node</td>
-    <td><a href="/docs/chaos-engineering/Chaos%20Faults/Kubernetes/Generic/Node/node-cpu-hog">node-cpu-hog</a></td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/Kubernetes/Generic/Node/node-cpu-hog">node-cpu-hog</a></td>
   </tr>
 </table>
 
@@ -60,7 +60,7 @@ Following Platform Chaos faults are available:
   <tr>
     <td>EC2 Stop By ID</td>
     <td>Stop EC2 instances using the instance IDs</td>
-    <td><a href="/docs/chaos-engineering/Chaos%20Faults/AWS/ec2-stop-by-id">ec2-stop-by-id</a></td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/AWS/ec2-stop-by-id">ec2-stop-by-id</a></td>
   </tr>
 </table>
 
@@ -75,7 +75,7 @@ Following Platform Chaos faults are available:
   <tr>
     <td>GCP VM Instance Stop</td>
     <td>Stop GCP VM instances using the VM names</td>
-    <td><a href="/docs/chaos-engineering/Chaos%20Faults/GCP/gcp-vm-instance-stop">gcp-vm-instance-stop</a></td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/GCP/gcp-vm-instance-stop">gcp-vm-instance-stop</a></td>
   </tr>
 </table>
 
@@ -90,7 +90,7 @@ Following Platform Chaos faults are available:
   <tr>
     <td>Azure Instance Stop</td>
     <td>Stop Azure VM instances</td>
-    <td><a href="/docs/chaos-engineering/Chaos%20Faults/Azure/azure-instance-stop">azure-instance-stop</a></td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/Azure/azure-instance-stop">azure-instance-stop</a></td>
   </tr>
 </table>
 
@@ -105,6 +105,11 @@ Following Platform Chaos faults are available:
   <tr>
     <td>VM Poweroff</td>
     <td>Poweroff VMware VMs using the MOIDs</td>
-    <td><a href="/docs/chaos-engineering/Chaos%20Faults/VMware/vmware-vmpoweroff">vmware-vmpoweroff</a></td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/VMware/vmware-vmpoweroff">vmware-vmpoweroff</a></td>
+  </tr>
+  <tr>
+    <td>VMWare DNS Chaos</td>
+    <td>Injects DNS errors on the VMWare VMs</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/VMware/vmware-dns-chaos">vmware-dns-chaos</a></td>
   </tr>
 </table>
