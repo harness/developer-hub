@@ -105,6 +105,21 @@ Following Platform Chaos faults are available:
   <tr>
     <td>VM Poweroff</td>
     <td>Poweroff VMware VMs using the MOIDs</td>
-    <td><a href="/docs/chaos-engineering/Chaos%20Faults/VMware/vmware-vmpoweroff">vmware-vmpoweroff</a></td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/VMware/vmware-vmpoweroff">vmware-vmpoweroff</a></td>
+  </tr>
+  <tr>
+    <td>VMware HTTP Latency</td>
+    <td>Add HTTP Latency to the services running on the VMs</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/VMware/vmware-http-latency">vmware-http-latency</a></td>
+  </tr>
+  <tr>
+    <td>VMware HTTP Reset Peer</td>
+    <td>Simulate connection lost for HTTP requests on the services running on the VMs</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/VMware/vmware-http-reset-peer">vmware-http-reset-peer</a></td>
+  </tr>
+  <tr>
+    <td>VMware HTTP Modify Response</td>
+    <td>Modify HTTP Response on services running on the VMs</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/VMware/vmware-http-modify-response">vmware-http-modify-response</a></td>
   </tr>
 </table>
