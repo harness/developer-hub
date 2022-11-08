@@ -123,7 +123,21 @@ const CDList: FeatureItem[] = [{
   type: [docType.Documentation],
   time: '15min',
   link: '/tutorials/deploy-services/ecr-private-repo-deployment',
-},];
+},
+{
+  title: 'First Amazon ECS Deployment',
+  module: 'cd',
+  Svg: '',
+  description: (
+    <>
+      Deploying to Amazon ECS with a CD Pipeline. 
+    </>
+  ),
+  ribbon: false,
+  type: [docType.Documentation],
+  time: '15min',
+  link: '/tutorials/deploy-services/first-ecs-cd-deployment',
+}];
 
 const FFList: FeatureItem[] = [{
   title: 'TypeScript and React Feature Flags',

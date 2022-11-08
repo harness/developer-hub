@@ -15,7 +15,7 @@ title: VMware DNS Chaos
 <details>
 <summary>View the uses of the experiment</summary>
 <div>
-The experiment causes DNS errors on the target VMs which can result in unavailability/distorted network connectivity from the VM to the target hosts. This will also help to produce a hypothesis where some services of an application are unreachable from the VM and what mitigation steps should be taken to overcome such scenarios. This experiment can also be used to know how the DNS error can impact your infra and standalone tasks as well.
+The experiment causes DNS errors on the target VMs which can result in unavailability/distorted network connectivity from the VM to the target hosts. This will also help to produce a hypothesis where some services of an application are unreachable from the VM. This will help the user to think the mitigation steps that should be taken to overcome such situation. This experiment can also be used to know how the DNS error can impact your infra and standalone tasks as well.
 </div>
 </details>
 

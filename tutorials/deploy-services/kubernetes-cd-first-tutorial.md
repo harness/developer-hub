@@ -1,9 +1,13 @@
 ---
 sidebar_position: 1
-description: Deploying your first set of Kubernetes Services in a CD Pipline with Kubernetes Manifests.
+description: Deploy a Kubernetes Manifest using a CD Pipeline
 ---
 
 # Deploy a Kubernetes Manifest using a CD Pipeline
+
+```mdx-code-block
+import DelegateInstall from '/tutorials/platform/install-delegate.md';
+```
 
 ## Background on Continuous Delivery
 
@@ -54,7 +58,10 @@ There are a few Harness entities that will need to be created in Harness. The ne
 
 ## Install Delegate
 
-Your onramp and workhorse in the Harness Platform is the Harness Delegate which can run in several places. For this example, using the [Kubernetes Delegate](../platform/install-delegate) is the easiest.
+<details>
+<summary>Install Delegate</summary>
+<DelegateInstall />
+</details>
 
 ## Your First CD Pipeline with Harness - What To Deploy
 
