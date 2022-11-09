@@ -4,7 +4,6 @@ FROM node:lts as base
 ENV NPM_CONFIG_LOGLEVEL=warn
 ENV NPM_CONFIG_COLOR=false
 
-# We'll run the app as the `node` user, so put it in their home directory
 WORKDIR /home/node/app
 # Copy the source code over
 COPY . /home/node/app/
