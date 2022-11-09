@@ -10,6 +10,7 @@ WORKDIR /home/node/app
 COPY --chown=node:node . /home/node/app/
 
 # Build the Docusaurus app
+RUN npm install
 RUN npm run build
 
 ## Deploy ######################################################################
