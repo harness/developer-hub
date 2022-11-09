@@ -11,10 +11,10 @@
 Thanks for considering to contribute to the Harness Developer Hub! Contributions come in all shapes and sizes and we appreciate them all. Contributions to the Harness Developer Hub comes in the form of Pull Requests or submitting Issues. 
 
 ## Change Process
-GitHub will be the primary mechanism for changes. Pull Requests are the mechanism to submitting and approving changes. For smaller changes, this can be done in-line on GitHub. For larger changes, a Fork is a better route. 
+GitHub will be the primary mechanism for changes. Pull Requests are the mechanism to submitting and approving changes. 
 
 ### Small Changes
-Small changes are items such as singular typo in an MD file does not require you to Fork. Create a new branch based on your change. 
+Small changes are items such as singular typo in an MD file do not require local testing and can be accomplished in the GitHub UI. 
 
 ![Fixing Typos](static/img/contributors_simple_branch.png)
 
