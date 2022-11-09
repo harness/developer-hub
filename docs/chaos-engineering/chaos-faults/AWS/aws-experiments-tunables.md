@@ -1,5 +1,5 @@
 ---
-title: AWS Common Experiment Tunables
+title: Common AWS Experiment Tunables
 ---
 AWS specific experiment tunables.
 

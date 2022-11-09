@@ -1,5 +1,5 @@
 ---
-title: Node Common Experiment Tunables
+title: Common Node Experiment Tunables
 ---
 Experiment tunables which are common for all the node experiments. These tunables can be provided at `.spec.experiment[*].spec.components.env` in chaosengine.
 

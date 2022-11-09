@@ -1,0 +1,9 @@
+{
+  "position": 4,
+  "label": "Pod",
+  "collapsible": true,
+  "collapsed": true,
+  "customProps": {
+    "description": "Pod faults documentation"
+  }
+}

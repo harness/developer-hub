@@ -24,106 +24,13 @@ This experiment helps to reproduce such a scenario with forced/graceful pod fail
 
 ## Prerequisites
 :::info
-- Ensure that Kubernetes Version > 1.16
-- Ensure that the Litmus Chaos Operator is running by executing <code>kubectl get pods</code> in operator namespace (typically, <code>litmus</code>).If not, install from <a href="https://v1-docs.litmuschaos.io/docs/getstarted/#install-litmus">here</a>.
-- Ensure that the <code>pod-delete</code> experiment resource is available in the cluster by executing <code>kubectl get chaosexperiments</code> in the desired namespace. If not, install from <a href="https://hub.litmuschaos.io/api/chaos/master?file=charts/generic/pod-delete/experiment.yaml">here</a>.
+- Ensure that Kubernetes Version > 1.16.
 :::
 
 ## Default Validations
 :::note
 The application pods should be in running state before and after chaos injection.
 :::
-
-## Minimal RBAC configuration example (optional)
-
-<details>
-<summary>Minimal RBAC configuration</summary>
-If you are using this experiment as part of a litmus workflow scheduled constructed & executed from chaos-center, then you may be making use of the <a href="https://litmuschaos.github.io/litmus/litmus-admin-rbac.yaml">litmus-admin</a> RBAC, which is pre installed in the cluster as part of the agent setup.
-
-```yaml
----
-  apiVersion: v1
-  kind: ServiceAccount
-  metadata:
-    name: pod-delete-sa
-    namespace: default
-    labels:
-      name: pod-delete-sa
-      app.kubernetes.io/part-of: litmus
-  ---
-  apiVersion: rbac.authorization.k8s.io/v1
-  kind: Role
-  metadata:
-    name: pod-delete-sa
-    namespace: default
-    labels:
-      name: pod-delete-sa
-      app.kubernetes.io/part-of: litmus
-  rules:
-    # Create and monitor the experiment & helper pods
-    - apiGroups: [""]
-      resources: ["pods"]
-      verbs: ["create","delete","get","list","patch","update", "deletecollection"]
-    # Performs CRUD operations on the events inside chaosengine and chaosresult
-    - apiGroups: [""]
-      resources: ["events"]
-      verbs: ["create","get","list","patch","update"]
-    # Fetch configmaps details and mount it to the experiment pod (if specified)
-    - apiGroups: [""]
-      resources: ["configmaps"]
-      verbs: ["get","list",]
-    # Track and get the runner, experiment, and helper pods log 
-    - apiGroups: [""]
-      resources: ["pods/log"]
-      verbs: ["get","list","watch"]  
-    # for creating and managing to execute comands inside target container
-    - apiGroups: [""]
-      resources: ["pods/exec"]
-      verbs: ["get","list","create"]
-    # deriving the parent/owner details of the pod(if parent is anyof {deployment, statefulset, daemonsets})
-    - apiGroups: ["apps"]
-      resources: ["deployments","statefulsets","replicasets", "daemonsets"]
-      verbs: ["list","get"]
-    # deriving the parent/owner details of the pod(if parent is deploymentConfig)  
-    - apiGroups: ["apps.openshift.io"]
-      resources: ["deploymentconfigs"]
-      verbs: ["list","get"]
-    # deriving the parent/owner details of the pod(if parent is deploymentConfig)
-    - apiGroups: [""]
-      resources: ["replicationcontrollers"]
-      verbs: ["get","list"]
-    # deriving the parent/owner details of the pod(if parent is argo-rollouts)
-    - apiGroups: ["argoproj.io"]
-      resources: ["rollouts"]
-      verbs: ["list","get"]
-    # for configuring and monitor the experiment job by the chaos-runner pod
-    - apiGroups: ["batch"]
-      resources: ["jobs"]
-      verbs: ["create","list","get","delete","deletecollection"]
-    # for creation, status polling and deletion of litmus chaos resources used within a chaos workflow
-    - apiGroups: ["litmuschaos.io"]
-      resources: ["chaosengines","chaosexperiments","chaosresults"]
-      verbs: ["create","list","get","patch","update","delete"]
-  ---
-  apiVersion: rbac.authorization.k8s.io/v1
-  kind: RoleBinding
-  metadata:
-    name: pod-delete-sa
-    namespace: default
-    labels:
-      name: pod-delete-sa
-      app.kubernetes.io/part-of: litmus
-  roleRef:
-    apiGroup: rbac.authorization.k8s.io
-    kind: Role
-    name: pod-delete-sa
-  subjects:
-  - kind: ServiceAccount
-    name: pod-delete-sa
-    namespace: default
-```
-Use this sample RBAC manifest to create a chaosServiceAccount in the desired (app) namespace. This example consists of the minimum necessary role permissions to execute the experiment.
-</details>
 
 ## Experiment tunables
 <details>

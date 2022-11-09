@@ -4,7 +4,6 @@ title: VMware HTTP Latency
 ---
 
 ## Introduction
-
 - It injects http response latency on the service whose port is provided as TARGET_SERVICE_PORT by starting proxy server and then redirecting the traffic through the proxy server.
 - It can test the application's resilience to lossy/flaky http responses.
 
@@ -13,9 +12,7 @@ title: VMware HTTP Latency
 :::
 
 ## Prerequisites
-
 :::info
-
 - Ensure that Kubernetes Version >= 1.17
 - Ensure that you have sufficient Vcenter access to stop and start the VM.
 - Ensure to create a Kubernetes secret having the Vcenter credentials in the `CHAOS_NAMESPACE`. A sample secret file looks like:
@@ -34,16 +31,12 @@ stringData:
 ```
 
 ### NOTE
-
 You can pass the VM credentials as secrets or as an chaosengine ENV variable.
 :::
 
 ## Default Validations
-
 :::info
-
 - VM should be in healthy state.
-
 :::
 
 ## Experiment tunables

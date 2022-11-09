@@ -22,9 +22,7 @@ Coming soon.
 
 ## Prerequisites
 :::info
-- Ensure that Kubernetes Version > 1.16 
-- Ensure that the Litmus Chaos Operator is running by executing <code>kubectl get pods</code> in operator namespace (typically, <code>litmus</code>). If not, install from <a href="https://v1-docs.litmuschaos.io/docs/getstarted/#install-litmus">here</a>.
-- Ensure that the <code>node-cpu-hog</code> experiment resource is available in the cluster by executing <code>kubectl get chaosexperiments</code> in the desired namespace. If not, install from <a href   ="https://hub.litmuschaos.io/api/chaos/master?file=charts/generic/node-cpu-hog/experiment.yaml">here</a>.
+- Ensure that Kubernetes Version > 1.16
 :::
 
 ## Default Validations
