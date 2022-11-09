@@ -151,5 +151,8 @@ keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial]
 ## Change Approval Flow
 Harness Approvers will validate changes and approve the branch for merge into `main`. Once merged into `main`, the CI Process [Drone] will be kicked off automatically. 
 
+### PR Preview Environment
+When PRs are filed, a preview environment is created for the Harness Approvers to validate. 
+
 ## Non-Content Changes
 Please raise an issue for non-content releated changes such as infrastructure or UX ideas/changes before submitting a PR. 
