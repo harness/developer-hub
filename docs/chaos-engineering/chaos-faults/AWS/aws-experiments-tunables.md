@@ -9,7 +9,7 @@ It specifies whether AWS EC2 instances are part of managed nodeGroups. If instan
 
 Use the following example to tune this:
 
-[embedmd]:# (https://raw.githubusercontent.com/litmuschaos/litmus/master/mkdocs/docs/experiments/categories/aws/common/managed-nodegroup.yaml yaml)
+[embedmd]:# (./static/manifests/common/managed-nodegroup.yaml yaml)
 ```yaml
 # it provided as enable if instances are part of self managed groups
 # it is applicable for [ec2-terminate-by-id, ec2-terminate-by-tag]
@@ -41,11 +41,12 @@ spec:
 ```
 
 ### Multiple Iterations Of Chaos
+
 Multiple iterations of chaos can be tuned via setting `CHAOS_INTERVAL` ENV. Which defines the delay between each iteration of chaos.
 
 Use the following example to tune this:
 
-[embedmd]:# (https://raw.githubusercontent.com/litmuschaos/litmus/master/mkdocs/docs/experiments/categories/aws/common/chaos-interval.yaml yaml)
+[embedmd]:# (./static/manifests/common/chaos-interval.yaml yaml)
 ```yaml
 # defines delay between each successive iteration of the chaos
 apiVersion: litmuschaos.io/v1alpha1
@@ -71,5 +72,4 @@ spec:
           value: '<region for instances>'
         - name: INSTANCE_TAG
           value: 'key:value'
-        
 ```

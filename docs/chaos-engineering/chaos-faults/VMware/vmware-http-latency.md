@@ -8,7 +8,7 @@ title: VMware HTTP Latency
 - It can test the application's resilience to lossy/flaky http responses.
 
 :::tip Fault execution flow chart
-![VMware HTTP Latency](./static/images/http-latency.png)
+![VMware HTTP Latency](./static/images/vmware-http-latency.png)
 :::
 
 ## Prerequisites

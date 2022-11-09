@@ -1,15 +1,16 @@
 ---
-id: vmware-http-reset-peer
-title: VMware HTTP Reset Peer
+id: ec2-http-latency
+title: EC2 HTTP Latency
 ---
 
 ## Introduction
 
-- It injects http reset on the service whose port is provided as TARGET_SERVICE_PORT which stops outgoing http requests by resetting the TCP connection for the requests.
-- It can test the application's resilience to lossy/flaky http connection.
+- EC2 HTTP Latency contains chaos to disrupt the state of infra resources. The experiment can induce a http chaos on AWS EC2 Instance using Amazon SSM Run Command, this is carried out by using SSM Docs which is in-built in the experiment for the give chaos scenario.
+- It injects http response latency on the service whose port is provided as TARGET_SERVICE_PORT by starting proxy server and then redirecting the traffic through the proxy server.
+- It causes http latency chaos on EC2 Instance using an SSM doc for a certain chaos duration.
 
 :::tip Fault execution flow chart
-![VMware HTTP Reset Peer](./static/images/vmware-http-reset-peer.png)
+![EC2 HTTP Latency](./static/images/ec2-http-latency.png)
 :::
 
 ## Prerequisites
@@ -17,21 +18,28 @@ title: VMware HTTP Reset Peer
 :::info
 
 - Ensure that Kubernetes Version >= 1.17
-- Ensure that you have sufficient Vcenter access to stop and start the VM.
-- Ensure to create a Kubernetes secret having the Vcenter credentials in the `CHAOS_NAMESPACE`. A sample secret file looks like:
+- Ensure that the <code>EC2-http-latency</code> experiment resource is available in the cluster by executing <code>kubectl get chaosexperiments</code> in the desired namespace.
+
+**AWS EC2 Access Requirement:**
+
+- Ensure that SSM agent is installed and running in the target EC2 instance.
+- Ensure to create a Kubernetes secret having the AWS Access Key ID and Secret Access Key credentials in the `CHAOS_NAMESPACE`. A sample secret file looks like:
 
 ```yaml
 apiVersion: v1
 kind: Secret
 metadata:
-    name: vcenter-secret
-    namespace: litmus
+  name: cloud-secret
 type: Opaque
 stringData:
-    VCENTERSERVER: XXXXXXXXXXX
-    VCENTERUSER: XXXXXXXXXXXXX
-    VCENTERPASS: XXXXXXXXXXXXX
+  cloud_config.yml: |-
+    # Add the cloud AWS credentials respectively
+    [default]
+    aws_access_key_id = XXXXXXXXXXXXXXXXXXX
+    aws_secret_access_key = XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ```
+
+- If you change the secret name then please also update the `experiment.yml` ENV values for deriving the respective data from the secret. Also account for the path at which this secret is mounted as a file in the manifest ENV `AWS_SHARED_CREDENTIALS_FILE`.
 
 ### NOTE
 
@@ -42,7 +50,7 @@ You can pass the VM credentials as secrets or as an chaosengine ENV variable.
 
 :::info
 
-- VM should be in healthy state.
+- EC2 instance should be in healthy state.
 
 :::
 
@@ -58,24 +66,19 @@ You can pass the VM credentials as secrets or as an chaosengine ENV variable.
             <th> Notes </th>
         </tr>
         <tr>
-            <td> VM_NAME </td>
-            <td> Name of VMware VM</td>
-            <td> Eg: test-vm </td>
+          <td> EC2_INSTANCE_ID </td>
+          <td> ID of the target EC2 instance </td>
+          <td> For example: <code>i-044d3cb4b03b8af1f</code> </td>
         </tr>
         <tr>
-            <td> VM_USER_NAME </td>
-            <td> Username with sudo priviliges.</td>
-            <td> Eg: vm-user</td>
+          <td> REGION </td>
+          <td> The AWS region ID where the EC2 instance has been created </td>
+          <td> For example: <code>us-east-1</code> </td>
         </tr>
         <tr>
-            <td> VM_PASSWORD </td>
-            <td> Password of the provided user</td>
-            <td> Eg: 1234</td>
-        </tr>
-        <tr>
-            <td> RESET_TIMEOUT  </td>
-            <td> Reset Timeout specifies after how much duration to reset the connection</td>
-            <td> Defaults to 0 </td>
+            <td> LATENCY </td>
+            <td> Provide latency to be added to request in miliseconds.</td>
+            <td> Eg: 1000</td>
         </tr>
         <tr>
             <td> TARGET_SERVICE_PORT </td>
@@ -100,6 +103,11 @@ You can pass the VM credentials as secrets or as an chaosengine ENV variable.
             <td> The interval (in sec) between successive instance termination </td>
             <td> Defaults to 30s </td>
         </tr>
+        <tr>
+            <td> AWS_SHARED_CREDENTIALS_FILE </td>
+            <td> Provide the path for aws secret credentials</td>
+            <td> Defaults to <code>/tmp/cloud_config.yml</code> </td>
+          </tr>
         <tr>
             <td> SEQUENCE </td>
             <td> It defines sequence of chaos execution for multiple instance </td>
@@ -145,7 +153,7 @@ It defines the port of the targeted service that is being targeted. It can be tu
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/http-reset-peer/target-service-port.yaml yaml)
+[embedmd]:# (./static/manifests/http-latency/target-service-port.yaml yaml)
 ```yaml
 ## provide the port of the targeted service
 apiVersion: litmuschaos.io/v1alpha1
@@ -156,7 +164,7 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: vmware-http-reset-peer
+  - name: ec2-http-latency
     spec:
       components:
         env:
@@ -171,7 +179,7 @@ It defines the port on which the proxy server will listen for requests. It can b
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/http-reset-peer/proxy-port.yaml yaml)
+[embedmd]:# (./static/manifests/http-latency/proxy-port.yaml yaml)
 ```yaml
 # provide the port for proxy server
 apiVersion: litmuschaos.io/v1alpha1
@@ -182,7 +190,7 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: vmware-http-reset-peer
+  - name: ec2-http-latency
     spec:
       components:
         env:
@@ -194,15 +202,15 @@ spec:
           value: "80"
 ```
 
-### RESET TIMEOUT
+### Latency
 
-It defines the reset timeout value to be added to the http request. It can be tuned via RESET_TIMEOUT ENV.
+It defines the latency value to be added to the http request. It can be tuned via `LATENCY` ENV.
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/http-reset-peer/reset-timeout.yaml yaml)
+[embedmd]:# (./static/manifests/http-latency/latency.yaml yaml)
 ```yaml
-## provide the reset timeout value
+## provide the latency value
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -211,12 +219,12 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: vmware-http-reset-peer
+  - name: ec2-http-latency
     spec:
       components:
         env:
-        # reset timeout specifies after how much duration to reset the connection
-        - name: RESET_TIMEOUT #in ms
+        # provide the latency value
+        - name: LATENCY
           value: '2000'
         # provide the port of the targeted service
         - name: TARGET_SERVICE_PORT
@@ -230,7 +238,7 @@ Toxicity value defines the percentage of the total number of http requests to be
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/http-reset-peer/toxicity.yaml yaml)
+[embedmd]:# (./static/manifests/http-latency/toxicity.yaml yaml)
 ```yaml
 ## provide the toxicity
 apiVersion: litmuschaos.io/v1alpha1
@@ -241,7 +249,7 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: vmware-http-reset-peer
+  - name: ec2-http-latency
     spec:
       components:
         env:
@@ -261,7 +269,7 @@ It defines the network interface to be used for the proxy. It can be tuned via `
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/http-reset-peer/network-interface.yaml yaml)
+[embedmd]:# (./static/manifests/http-latency/network-interface.yaml yaml)
 ```yaml
 ## provide the network interface for proxy
 apiVersion: litmuschaos.io/v1alpha1
@@ -272,7 +280,7 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: vmware-http-reset-peer
+  - name: ec2-http-latency
     spec:
       components:
         env:

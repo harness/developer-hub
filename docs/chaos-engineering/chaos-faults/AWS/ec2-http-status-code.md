@@ -1,17 +1,15 @@
 ---
-id: vmware-http-modify-response
-title: VMware HTTP Modify Response
+id: ec2-http-status-code
+title: EC2 HTTP Status Code
 ---
 
 ## Introduction
 
 - It injects HTTP chaos which can affect the request/response by modifying either the status code, body or the headers by starting proxy server and then redirecting the traffic through the proxy server.
 - It can test the application's resilience to error code http responses from the provided application server.
-- It can test the application's resilience to error or incorrect http response body.
-- It can cause modification of headers of requests and responses of the service. This can be used to test service resilience towards incorrect or incomplete headers
 
 :::tip Fault execution flow chart
-![VMware HTTP Modify Response](./static/images/vmware-http-modify-response.png)
+![EC2 HTTP Modify Response](./static/images/ec2-http-status-code.png)
 :::
 
 ## Prerequisites
@@ -19,21 +17,28 @@ title: VMware HTTP Modify Response
 :::info
 
 - Ensure that Kubernetes Version >= 1.17
-- Ensure that you have sufficient Vcenter access to stop and start the VM.
-- Ensure to create a Kubernetes secret having the Vcenter credentials in the `CHAOS_NAMESPACE`. A sample secret file looks like:
+- Ensure that the <code>EC2-http-latency</code> experiment resource is available in the cluster by executing <code>kubectl get chaosexperiments</code> in the desired namespace.
+
+**AWS EC2 Access Requirement:**
+
+- Ensure that SSM agent is installed and running in the target EC2 instance.
+- Ensure to create a Kubernetes secret having the AWS Access Key ID and Secret Access Key credentials in the `CHAOS_NAMESPACE`. A sample secret file looks like:
 
 ```yaml
 apiVersion: v1
 kind: Secret
 metadata:
-    name: vcenter-secret
-    namespace: litmus
+  name: cloud-secret
 type: Opaque
 stringData:
-    VCENTERSERVER: XXXXXXXXXXX
-    VCENTERUSER: XXXXXXXXXXXXX
-    VCENTERPASS: XXXXXXXXXXXXX
+  cloud_config.yml: |-
+    # Add the cloud AWS credentials respectively
+    [default]
+    aws_access_key_id = XXXXXXXXXXXXXXXXXXX
+    aws_secret_access_key = XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ```
+
+- If you change the secret name then please also update the `experiment.yml` ENV values for deriving the respective data from the secret. Also account for the path at which this secret is mounted as a file in the manifest ENV `AWS_SHARED_CREDENTIALS_FILE`.
 
 ### NOTE
 
@@ -44,7 +49,7 @@ You can pass the VM credentials as secrets or as an chaosengine ENV variable.
 
 :::info
 
-- VM should be in healthy state.
+- EC2 instance should be in healthy state.
 
 :::
 
@@ -60,19 +65,14 @@ You can pass the VM credentials as secrets or as an chaosengine ENV variable.
             <th> Notes </th>
         </tr>
         <tr>
-            <td> VM_NAME </td>
-            <td> Name of VMware VM</td>
-            <td> Eg: test-vm </td>
+          <td> EC2_INSTANCE_ID </td>
+          <td> ID of the target EC2 instance </td>
+          <td> For example: <code>i-044d3cb4b03b8af1f</code> </td>
         </tr>
         <tr>
-            <td> VM_USER_NAME </td>
-            <td> Username with sudo priviliges.</td>
-            <td> Eg: vm-user</td>
-        </tr>
-        <tr>
-            <td> VM_PASSWORD </td>
-            <td> Password of the provided user</td>
-            <td> Eg: 1234</td>
+          <td> REGION </td>
+          <td> The AWS region ID where the EC2 instance has been created </td>
+          <td> For example: <code>us-east-1</code> </td>
         </tr>
         <tr>
             <td> TARGET_SERVICE_PORT </td>
@@ -80,46 +80,17 @@ You can pass the VM credentials as secrets or as an chaosengine ENV variable.
             <td> Defaults to port 80 </td>
         </tr>
         <tr>
-            <td> HTTP_CHAOS_TYPE </td>
-            <td> Type of HTTP Modify Response chaos to be injected. </td>
-            <td> Accepted values are: status_code, body, header. Defaults to status_code. </td>
-        </tr>
-    </table>
-    <h2> Status Code Modification Related Fields </h2>
-    <table>
-    <tr>
-        <td> STATUS_CODE </td>
-        <td> Modified status code for the HTTP response</td>
-        <td> If no value is provided, then a random value is selected from the list of supported values.
-        Multiple values can be provided as comma separated, a random value from the provided list will be selected
-        Supported values: [200, 201, 202, 204, 300, 301, 302, 304, 307, 400, 401, 403, 404, 500, 501, 502, 503, 504].
-        Defaults to random status code </td>
-    </tr>
-    <tr>
-        <td> MODIFY_RESPONSE_BODY </td>
-        <td> Whether to modify the body as per the status code provided.</td>
-        <td> If true, then the body is replaced by a default template for the status code. Defaults to true </td>
-    </tr>
-    </table>
-    <h2> Body Modification Related Fields </h2>
-    <table>
-        <tr>
-            <td> RESPONSE_BODY </td>
-            <td> Body string to overwrite the http response body</td>
-            <td> If no value is provided, response will be an empty body. Defaults to empty body </td>
-        </tr>
-    </table>
-    <h2> Header Modification Related Fields</h2>
-    <table>
-        <tr>
-            <td> HEADERS_MAP </td>
-            <td> Map of headers to modify/add </td>
-            <td> Eg: &#123;"X-Litmus-Test-Header":"X-Litmus-Test-Value"&#125;. To remove a header, just set the value to ""; Eg: &#123;"X-Litmus-Test-Header": ""&#125; </td>
+            <td> STATUS_CODE </td>
+            <td> Modified status code for the HTTP response</td>
+            <td> If no value is provided, then a random value is selected from the list of supported values.
+            Multiple values can be provided as comma separated, a random value from the provided list will be selected
+            Supported values: [200, 201, 202, 204, 300, 301, 302, 304, 307, 400, 401, 403, 404, 500, 501, 502, 503, 504].
+            Defaults to random status code </td>
         </tr>
         <tr>
-            <td> HEADER_MODE </td>
-            <td> Whether to modify response headers or request headers. Accepted values: request, response</td>
-            <td> Defaults to response </td>
+            <td> MODIFY_RESPONSE_BODY </td>
+            <td> Whether to modify the body as per the status code provided.</td>
+            <td> If true, then the body is replaced by a default template for the status code. Defaults to true </td>
         </tr>
     </table>
     <h2>Optional Fields</h2>
@@ -138,6 +109,11 @@ You can pass the VM credentials as secrets or as an chaosengine ENV variable.
             <td> CHAOS_INTERVAL </td>
             <td> The interval (in sec) between successive instance termination </td>
             <td> Defaults to 30s </td>
+        </tr>
+        <tr>
+            <td> AWS_SHARED_CREDENTIALS_FILE </td>
+            <td> Provide the path for aws secret credentials</td>
+            <td> Defaults to <code>/tmp/cloud_config.yml</code> </td>
         </tr>
         <tr>
             <td> SEQUENCE </td>
@@ -184,7 +160,7 @@ It defines the port of the targeted service that is being targeted. It can be tu
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/http-modify-response/target-service-port.yaml yaml)
+[embedmd]:# (./static/manifests/http-status-code/target-service-port.yaml yaml)
 ```yaml
 ## provide the port of the targeted service
 apiVersion: litmuschaos.io/v1alpha1
@@ -195,7 +171,7 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: vmware-http-modify-response
+  - name: ec2-http-status-code
     spec:
       components:
         env:
@@ -210,7 +186,7 @@ Use this example to modify the status code of the response.
 
 ***Note***: `HTTP_CHAOS_TYPE` should be provided as `status_code`
 
-[embedmd]:# (./static/manifests/http-modify-response/status-code.yaml yaml)
+[embedmd]:# (./static/manifests/http-status-code/status-code.yaml yaml)
 ```yaml
 ## provide the headers as a map
 apiVersion: litmuschaos.io/v1alpha1
@@ -221,13 +197,10 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: vmware-http-modify-response
+  - name: ec2-http-status-code
     spec:
       components:
         env:
-        # HTTP response modification chaos type
-        - name: HTTP_CHAOS_TYPE
-          value: "status_code"
         # modified status code for the http response
         # if no value is provided, a random status code from the supported code list will selected
         # if multiple comma separated values are provided, then a random value
@@ -245,117 +218,13 @@ spec:
           value: "80"
 ```
 
-### Modifying the Response Headers
-
-Use this example to modify the headers of the response.
-
-***Note***: `HTTP_CHAOS_TYPE` should be provided as `header`
-
-[embedmd]:# (./static/manifests/http-modify-response/response-headers.yaml yaml)
-```yaml
-## provide the headers as a map
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: vmware-http-modify-response
-    spec:
-      components:
-        env:
-        # HTTP response modification chaos type
-        - name: HTTP_CHAOS_TYPE
-          value: "header"
-        # map of headers to modify/add; Eg: {"X-Litmus-Test-Header": "X-Litmus-Test-Value"}
-        # to remove a header, just set the value to ""; Eg: {"X-Litmus-Test-Header": ""}
-        - name: HEADERS_MAP
-          value: '{"X-Litmus-Test-Header": "X-Litmus-Test-Value"}'
-        # whether to modify response headers or request headers. Accepted values: request, response
-        - name: HEADER_MODE
-          value: 'response'
-        # provide the port of the targeted service
-        - name: TARGET_SERVICE_PORT
-          value: "80"
-```
-
-### Modifying the Request Headers
-
-Use this example to modify the headers of the response.
-
-***Note***: `HTTP_CHAOS_TYPE` should be provided as `header`
-
-[embedmd]:# (./static/manifests/http-modify-response/response-headers.yaml yaml)
-```yaml
-## provide the headers as a map
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: vmware-http-modify-response
-    spec:
-      components:
-        env:
-        # HTTP response modification chaos type
-        - name: HTTP_CHAOS_TYPE
-          value: "header"
-        # map of headers to modify/add; Eg: {"X-Litmus-Test-Header": "X-Litmus-Test-Value"}
-        # to remove a header, just set the value to ""; Eg: {"X-Litmus-Test-Header": ""}
-        - name: HEADERS_MAP
-          value: '{"X-Litmus-Test-Header": "X-Litmus-Test-Value"}'
-        # whether to modify response headers or request headers. Accepted values: request, response
-        - name: HEADER_MODE
-          value: 'response'
-        # provide the port of the targeted service
-        - name: TARGET_SERVICE_PORT
-          value: "80"
-```
-
-### Modifying the Response Body
-
-Use this example to modify the body of the response.
-
-***Note***: `HTTP_CHAOS_TYPE` should be provided as `body`
-
-[embedmd]:# (./static/manifests/http-modify-response/response-body.yaml yaml)
-```yaml
-## provide the headers as a map
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: vmware-http-modify-response
-    spec:
-      components:
-        env:
-        # HTTP response modification chaos type
-        - name: HTTP_CHAOS_TYPE
-          value: "body"
-        # provide the body string to overwrite the response body
-        - name: RESPONSE_BODY
-          value: '2000'
-        # provide the port of the targeted service
-        - name: TARGET_SERVICE_PORT
-          value: "80"
-```
-
 ### Proxy Port
 
 It defines the port on which the proxy server will listen for requests. It can be tuned via `PROXY_PORT` ENV.
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/http-modify-response/proxy-port.yaml yaml)
+[embedmd]:# (./static/manifests/http-status-code/proxy-port.yaml yaml)
 ```yaml
 # provide the port for proxy server
 apiVersion: litmuschaos.io/v1alpha1
@@ -366,7 +235,7 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: vmware-http-modify-response
+  - name: ec2-http-status-code
     spec:
       components:
         env:
@@ -385,7 +254,7 @@ Toxicity value defines the percentage of the total number of http requests to be
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/http-modify-response/toxicity.yaml yaml)
+[embedmd]:# (./static/manifests/http-status-code/toxicity.yaml yaml)
 ```yaml
 ## provide the toxicity
 apiVersion: litmuschaos.io/v1alpha1
@@ -396,7 +265,7 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: vmware-http-modify-response
+  - name: ec2-http-status-code
     spec:
       components:
         env:
@@ -416,7 +285,7 @@ It defines the network interface to be used for the proxy. It can be tuned via `
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/http-modify-response/network-interface.yaml yaml)
+[embedmd]:# (./static/manifests/http-status-code/network-interface.yaml yaml)
 ```yaml
 ## provide the network interface for proxy
 apiVersion: litmuschaos.io/v1alpha1
@@ -427,7 +296,7 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: vmware-http-modify-response
+  - name: ec2-http-status-code
     spec:
       components:
         env:

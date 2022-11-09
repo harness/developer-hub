@@ -4,6 +4,7 @@ title: EC2 Stop By ID
 ---
 
 ## Introduction
+
 - It causes stopping of an EC2 instance using the provided instance ID or list of instance IDs before bringing it back to running state after the specified chaos duration.
 - It helps to check the performance of the application/process running on the EC2 instance.
 - When the `MANAGED_NODEGROUP` is enable then the experiment will not try to start the instance post chaos instead it will check of the addition of the new node instance to the cluster.
@@ -13,6 +14,7 @@ title: EC2 Stop By ID
 :::
 
 ## Uses
+
 <details>
 <summary>View the uses of the experiment</summary>
 <div>
@@ -21,9 +23,11 @@ Coming soon.
 </details>
 
 ## Prerequisites
+
 :::info
-- Ensure that Kubernetes Version > 1.16.
-- Ensure that you have sufficient AWS access to stop and start an EC2 instance. 
+
+- Ensure that Kubernetes Version >= 1.17
+- Ensure that you have sufficient AWS access to stop and start an EC2 instance.
 - Ensure to create a Kubernetes secret having the AWS access configuration(key) in the `CHAOS_NAMESPACE`. A sample secret file looks like:
 
 ```yaml
@@ -39,18 +43,24 @@ stringData:
     aws_access_key_id = XXXXXXXXXXXXXXXXXXX
     aws_secret_access_key = XXXXXXXXXXXXXXX
 ```
+
 - If you change the secret key name (from `cloud_config.yml`) please also update the `AWS_SHARED_CREDENTIALS_FILE` ENV value on `experiment.yaml`with the same name.
 
 ### WARNING
+
 If the target EC2 instance is a part of a self-managed nodegroup then make sure to drain the target node if any application is running on it and also ensure to cordon the target node before running the experiment so that the experiment pods do not schedule on it.
 :::
-    
+
 ## Default Validations
-:::info 
+
+:::info
+
 - EC2 instance should be in healthy state.
+
 :::
 
 ## Experiment tunables
+
 <details>
     <summary>Check the Experiment Tunables</summary>
     <h2>Mandatory Fields</h2>
@@ -60,7 +70,7 @@ If the target EC2 instance is a part of a self-managed nodegroup then make sure 
         <th> Description </th>
         <th> Notes </th>
       </tr>
-      <tr> 
+      <tr>
         <td> EC2_INSTANCE_ID </td>
         <td> Instance ID of the target ec2 instance. Multiple IDs can also be provided as a comma(,) separated values</td>
         <td> Multiple IDs can be provided as `id1,id2` </td>
@@ -69,7 +79,7 @@ If the target EC2 instance is a part of a self-managed nodegroup then make sure 
         <td> REGION </td>
         <td> The region name of the target instace</td>
         <td> </td>
-      </tr> 
+      </tr>
     </table>
     <h2>Optional Fields</h2>
     <table>
@@ -78,21 +88,21 @@ If the target EC2 instance is a part of a self-managed nodegroup then make sure 
         <th> Description </th>
         <th> Notes </th>
       </tr>
-      <tr> 
+      <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> The total time duration for chaos insertion (sec) </td>
         <td> Defaults to 30s </td>
       </tr>
-      <tr> 
+      <tr>
         <td> CHAOS_INTERVAL </td>
         <td> The interval (in sec) between successive instance termination.</td>
         <td> Defaults to 30s </td>
-      </tr>  
-      <tr> 
+      </tr>
+      <tr>
         <td> MANAGED_NODEGROUP </td>
         <td> Set to <code>enable</code> if the target instance is the part of self-managed nodegroups </td>
         <td> Defaults to <code>disable</code> </td>
-      </tr>  
+      </tr>
       <tr>
         <td> SEQUENCE </td>
         <td> It defines sequence of chaos execution for multiple instance</td>
@@ -102,7 +112,7 @@ If the target EC2 instance is a part of a self-managed nodegroup then make sure 
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injection of chaos in sec </td>
         <td> </td>
-      </tr>    
+      </tr>
     </table>
 </details>
 
@@ -110,7 +120,7 @@ If the target EC2 instance is a part of a self-managed nodegroup then make sure 
 
 ### Common and AWS specific tunables
 
-Refer the [common attributes](../common-tunables-for-all-experiments) and [AWS specific tunable](./aws-experiments-tunables) to tune the common tunables for all experiments and aws specific tunables.  
+Refer the [common attributes](../common-tunables-for-all-experiments) and [AWS specific tunable](./aws-experiments-tunables) to tune the common tunables for all experiments and aws specific tunables.
 
 ### Stop Instances By ID
 
@@ -128,9 +138,9 @@ metadata:
 spec:
   engineState: "active"
   annotationCheck: "false"
-  chaosServiceAccount: ec2-stop-by-id-sa
+  chaosServiceAccount: ec2-terminate-by-id-sa
   experiments:
-  - name: ec2-stop-by-id
+  - name: ec2-terminate-by-id
     spec:
       components:
         env:
