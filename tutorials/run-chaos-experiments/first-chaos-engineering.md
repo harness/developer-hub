@@ -1,9 +1,10 @@
 ---
 sidebar_position: 1
-description: Running a Chaos Experiment on Kuberenetes for the first time.
+title: Your First Chaos Experiment Run
+description: Running a Chaos Experiment on Kubernetes for the first time.
 ---
 
-# Your First Chaos Experiment Run
+Welcome to Harness Chaos Engineering's first tutorial on running a chaos experiment. In this tutorial you'll be running a Chaos Experiment on Kubernetes for the first time!
 
 ## What is Chaos Engineering?
 Cloud Native applications are, by definition, highly distributed, elastic, resistant to failure and loosely coupled. That's easy to say, and even diagram. But how do we validate that our applications will perform as expected under different failure conditions?
@@ -19,13 +20,15 @@ Harness Chaos Engineering (HCE) helps simplify the chaos engineering practices f
 
 ![HCE Overview](./static/first-chaos/hce-overview.png)
 
-## Add a Chaos Infrastructure
+## Add a Chaos Environment
 
-Next, we need to add the infrastructure resources so that Harness can access them. More specifically, we will create a new environment such that the target infrastructure resources can be added as part of it. Go to **Environments** in sidebar menu, and choose a **New Environment**. Add environment name, and optionally a description and tags. Select the environment type, **Production** or **Non-Production**. Finally, click on **Create** to add the new environment.
+Next, we will create a new environment such that the chaos infrastructures can be added as part of it. Go to **Environments** page, and choose a **New Environment**. Add environment name, and optionally a description and tags. Select the environment type, **Production** or **Non-Production**. Finally, click on **Create** to add the new environment.
 
 ![Create New Environment](./static/first-chaos/create-new-environment.png)
 
-Once the environment is added, we can add different kinds of infrastructure to it. Here, we will add a Kubernetes infrastructure so that we can inject Kubernetes resource faults. Choose **New Chaos Infrastructure**.
+## Add a Chaos Infrastructure
+
+Once the environment is added, we can add chaos infrastructures to it. Here, we will add a Kubernetes infrastructure so that we can inject Kubernetes resource faults. Choose **New Chaos Infrastructure**.
 
 ![New Chaos Infrastructure](./static/first-chaos/new-chaos-infrastructure.png)
 
@@ -39,12 +42,7 @@ Lastly, provided that you have access to your Kubernetes cluster via [kubectl](h
 
 ![Deploy Chaos Infrastructure](./static/first-chaos/deploy-chaos-infrastructure.png)
 
-It will take a while for the delegate to setup in the k8s cluster. Eventually all the pods in the `litmus` namespace should be in a running state, which you can optionally validate using the following command:
-```bash
-❯ kubectl get pods -n litmus
-```
-
-Otherwise, head to the created environment and as soon as the delegate is ready, the connection status should get reflected as `CONNECTED`.
+It will take a while for the delegate to setup in the k8s cluster. Head to the created environment and as soon as the delegate is ready, the connection status should get reflected as `CONNECTED`.
 
 ![Infrastructure State](./static/first-chaos/infrastructure-state.png)
 
@@ -127,33 +125,37 @@ With our target application deployed, we can now create a chaos experiment. We w
 
 ![Online Boutique App Cart](./static/first-chaos/online-boutique-app-cart.png)
 
-To create the chaos experiment, go to **Chaos Experiments** in the sidebar menu and choose **New Experiment**. Then, add the experiment name and optionally a description and tags. Then, choose the target infrastructure, which we created previously. Choose **Next**. In the Experiment Builder, choose **Blank Canvas** and select **Start with blank canvas**.
+To create the chaos experiment, go to **Chaos Experiments** page and choose **New Experiment**. Then, add the experiment name and optionally a description and tags. Then, choose the target infrastructure, which we created previously. Choose **Next**. In the Experiment Builder, choose **Templates from Chaos Hubs** and select **Boutique cart delete**.
 
-![Chaos Studio](./static/first-chaos/chaos-studio.png)
+This will allow us to create our chaos experiment using a pre-defined template, which already has a pod-delete fault configured to target the Online Boutique application.
 
-The Chaos Studio helps you to construct varied chaos experiments involving different kinds of chaos probes, faults and custom action steps. Let us use it to define our Pod Delete fault. Choose **Add**. From the **Enterprise Chaos Hub** select Pod Delete fault under the Kubernetes category.
+Select **Use this template** to continue.
 
-![Pod Delete Fault](./static/first-chaos/pod-delete-fault.png)
+![Boutique Cart Delete Template](./static/first-chaos/boutique-cart-delete-template.png)
 
-Specify the target application namespace, type and label. We will be targeting the carts microservice and hence we will provide the appropriate `litmus` namespace and the `app=cartservice` label which corresponds to the cart microservice. HCE helps you to search for these entities from within the studio.
+You'll notice that we're currently in the **Chaos Studio**, which helps in constructing varied chaos experiments involving different kinds of chaos probes, faults and custom action steps. Since the template has already defined the pod-delete fault, let us inspect at its configuration.
 
-![Specify Target Application](./static/first-chaos/specify-target-application.png)
+Select the added pod-delete fault icon.
 
-Then, choose the **Tune Fault** tab to configure the fault parameters. Here, we have defined the fault execution duration to be 30 seconds, with an interval of 10 seconds so that in every 10 seconds we will be deleting the nginx deployment pods. Lastly we have specified the pod affected percentage to be 50% so that half of all the deployment pods and at minimum one pod will be deleted in each iteration of chaos.
+![Target Application Config](./static/first-chaos/target-application-config.png)
 
-![Tune Fault](./static/first-chaos/tune-fault.png)
+We are targeting the carts microservice and hence the appropriate `litmus` application namespace and the `app=cartservice` application label has been provided here, which corresponds to the cart microservice. Also, application kind is `deployment`. It is worth noting that you can discover these entities from within the UI using the search dropdown menu for the respective inputs.
 
-Lastly, choose the **Probes** tab. Here, we have a default application health-check probe defined which validates the target application health before and after the fault injection to ensure that the application is unharmed due to the experiment. Let us add one more probe so that we can validate the carts microservice health. Select **Deploy new Probe**, ensure that the probe type is `HTTP Probe`, select **Continue** and then again select **Continue**. Now, we need to provide the HTTP probe URL so that Litmus can make GET requests at that URL and check if the status code in response is 200 for the successful validation of the probe. Provide the URL `http://cartservice.litmus.svc.cluster.local:7070`, which is the URL for the service that exposes the carts microservice. Also, reduce the response timeout to 5 seconds. Then, select **Setup the Probe**.
+Then, choose the **Tune Fault** tab to view the fault parameters. Here, we the fault execution duration is defined to be 30 seconds with an interval of 10 seconds, so that in every 10 seconds the cart microservice pod(s) get deleted for a total of 30 seconds. The ramp time is empty and by default 0, which refers to the period to wait before and after chaos injection. Lastly, the pod affected percentage is also empty, and by default at least one pod of the cart deployment will be targeted.
 
-![HTTP Probe](./static/first-chaos/http-probe.png)
+![Tune Fault Config](./static/first-chaos/tune-fault-config.png)
 
-When done, simply close the overlay modal. We have added the Pod Delete fault now.
+Lastly, switch to the **Probes** tab. Here, we have a probe defined by the name of **http-cartservice-probe**, which will validate the availability of the `/cart` URL endpoint when the pod-delete fault will execute. It can be observed that the probe is of type HTTP Probe and it executes in a Continuous mode throughout the fault execution. Further, under probe details, the URL can be observed as `http://frontend/cart` and the response timeout is 15 milliseconds. Therefore, as part of the probe execution GET requests will be made to the specified URL and if no HTTP response is found within 15 milliseconds, the probe will be declared as failed. If all the probe executions pass, then the probe will be regarded as passed. The interval of probe evaluation, retries upon failure and other parameters, check its properties.
 
-In the last step, choose the **Set Fault Weight** tab. Here, we can observe that the default weight for the fault is 10, which we can use for calculating the resiliency score for the experiment run. 
+![Probes Config](./static/first-chaos/probes-config.png)
 
-![Set Fault Weight](./static/first-chaos/set-fault-weight.png)
+When done, simply close the overlay modal.
 
-## Observing Chaos Execution and Evaluating the Run
+In the last step, choose the **Set Fault Weight** tab. Here, we can observe that the default weight for the fault is 10, which we can use for calculating the resiliency score for the experiment run.
+
+![Fault Weight](./static/first-chaos/fault-weight.png)
+
+## Observing Chaos Execution
 
 When ready, start the experiment execution by selecting **Run** on the top right corner of the screen. You'll be able to observe the experiment added to the list of chaos experiments and it should be in a `Running` status. Choose **Current Execution** to get a detailed view.
 
@@ -165,7 +167,7 @@ Once the fault is running, we can check for the detailed view of the experiment.
 
 At the same time, we can also check for the status of the cart deployment pod. Upon executing the following command you will get a similar output. It is evident that the Pod Delete fault has caused the cart pod to be terminated and a new pod has recently replaced it, for whose container is yet to be created.
 
-```bash
+```
 ❯ k get pods -n litmus
 
 NAME                                           READY   STATUS    RESTARTS       AGE
@@ -197,20 +199,22 @@ We can validate this behavior using the application metrics dashboard as well. T
 
 ![Application Down Dashboard](./static/first-chaos/application-down-dashboard.png)
 
-When the experiment execution concludes, we get a resiliency score of 50%. We can also observe that the Pod Delete fault step has failed.
+## Evaluating the Experiment Run
 
-![Experiment Failed](./static/first-chaos/experiment-failed.png)
+When the experiment execution concludes, we get a resiliency score of 0%. We can also observe that the Pod Delete fault step has failed.
 
 Before we analyze the experiment result, we can validate that the application is now again normally accessible, without any errors. This can also be validated from the Grafana dashboard where we can observe the metrics to slowly normalize as the chaos duration is now over.
 
 ![App Metrics Normalizing](./static/first-chaos/app-metrics-normalizing.png)
 
-We can now check the check the chaos result, where it can be observed that the fault verdict is **Failed** and the Probe Success Percentage is 50%. This is because although the default probe execution in Edge mode validated the target application to be healthy before and after the chaos, the cart service URL HTTP probe has failed. The failure of this probe can be attributed to the unavailability of the cart pod due to the injection of the Pod Delete fault.  
+We can now check the check the chaos result, where it can be observed that the fault verdict is **Failed** and the Probe Success Percentage is 0%. This is because the http-cart-service probe has failed. The failure of this probe can be attributed to the unavailability of the cart pod and therefore the `/cart` endpoint, due to the injection of the Pod Delete fault.
 
-![Experiment Result Failed](./static/first-chaos/experiment-result-failed.png)
+![Experiment Failed Probe](./static/first-chaos/experiment-failed-probe.png)
 
-We can also check the Chaos Results tab to get a summary of the experiment execution, where the fail step can be observed to be "Probe execution result didn't met the passing criteria", referring the the failure of HTTP probe that we had defined.
+We can also observe that the fail step says "Probe execution result didn't met the passing criteria", referring the the failure of HTTP probe that we had defined.
 
-![Result Fail Step](./static/first-chaos/result-fail-step.png)
+![Fail Step Result](./static/first-chaos/fail-step-result.png)
 
 With that, we have successfully run our first chaos experiment! If you're wondering that how we can remediate our application so that it passes the experiment run and probe checks, it's as simple as bumping up the experiment pods to at least two, such that at least one deployment pod survives the Pod Delete fault and help the application stay afloat. Do try to run it on your own now!
+
+Once you've explored to your heart's content, head over to the next tutorial where you'll learn how to create chaos experiments from scratch and execute it for the same target application.

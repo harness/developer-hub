@@ -1,0 +1,9 @@
+{
+  "position": 3,
+  "label": "User Guides",
+  "collapsible": true,
+  "collapsed": true,
+  "customProps": {
+    "description": "User Guides for HCE"
+  }
+}

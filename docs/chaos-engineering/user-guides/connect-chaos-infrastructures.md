@@ -1,8 +1,12 @@
 ---
 title: Connect Chaos Infrastructures
+sidebar_position: 1
 ---
 
-Chaos infrastructure is a service that runs in your target environment and aids HCE in accessing and injecting chaos at cloud-native scale. There are different types of chaos infrastructures based on the target environments, such as Kubernetes, Linux VMs, AWS cloud, VMware, etc. Therefore, these chaos infrastructures might install as a Kubernetes service or a Linux daemon and so on, based on their type. All the chaos infrastructure services adhere to the principle of least privilege where they execute only with the minimum number of permissions required.
+Chaos infrastructure is a service that runs in your target environment and aids HCE in accessing and injecting chaos at cloud-native scale. There are different types of chaos infrastructures based on the target environments, such as Kubernetes, Linux VMs, etc. Therefore, these chaos infrastructures might install as a Kubernetes service or a Linux daemon and so on, based on their type.
+
+- Currently only Kubernetes chaos infrastructure is available, the other chaos infrastructures will be available soon.
+- All the chaos infrastructure services adhere to the principle of least privilege where they execute only with the minimum number of permissions required.
 
 ## Create Environment
 To add a chaos infrastructure for your target environment, first we need to create a new environment as part of which the chaos infrastructures will exist. Head to the **Environments** page, which lists all the environments added as part of your project. Choose **New Environment**.

@@ -1,5 +1,6 @@
 ---
 title: Construct and Run Custom Chaos Experiments
+sidebar_position: 2
 ---
 
 Harness Chaos Engineering provides you the flexibility of creating elaborate chaos experiments that can create complex, real-life failure scenarios for your applications to be validated against. At the same time, the chaos experiments are declarative and can be constructed simply using the Chaos Studio UI with no programmatic intervention.

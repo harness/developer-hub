@@ -1,5 +1,6 @@
 ---
 title: Delete Chaos Experiments
+sidebar_position: 6
 ---
 
 Deleting an experiment removes it from the list of experiments in the **Chaos Experiments** sidebar option under Chaos tab.
@@ -9,4 +10,4 @@ Deleting an experiment removes it from the list of experiments in the **Chaos Ex
 
 To delete any experiment, simply go to the **Chaos Experiments** sidebar option, select the **`⋮`** icon against the experiment, and select **Delete Experiment**.
 
-![Delete Experiment](./static/delete-experiment.png)
+![Delete Experiment](./static/delete-chaos-experiments/delete-experiment.png)

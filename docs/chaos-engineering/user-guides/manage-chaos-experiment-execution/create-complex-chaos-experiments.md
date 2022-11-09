@@ -1,5 +1,6 @@
 ---
 title: Create Complex Chaos Experiments
+sidebar_position: 1
 ---
 
 Complex chaos experiments can be used for validating the resiliency of the entire application stack as part of a single experiment only.
@@ -10,4 +11,4 @@ Complex chaos experiments can be used for validating the resiliency of the entir
 
 To add a fault in parallel to another fault, select the `+` icon below the already added fault; the icon will only appear upon hovering the cursor below the already added fault. Similarly, to add a fault in serial to another fault, select the `+` icon to the right of the already added fault. This way, you may add as many faults as necessary.
 
-![Complex Faults Experiment](./static/complex-faults-experiment.png)
+![Complex Faults Experiment](./static/create-complex-chaos-experiments/complex-faults-experiment.png)
