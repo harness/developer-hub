@@ -260,6 +260,10 @@ const config = {
                 href: "https://university.harness.io",
               },
               {
+                label: "Open Source",
+                href: "https://harness-community.github.io/",
+              },
+              {
                 label: "YouTube",
                 href: "https://www.youtube.com/c/Harnessio",
               },
