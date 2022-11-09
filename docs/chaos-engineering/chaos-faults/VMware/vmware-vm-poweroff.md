@@ -4,7 +4,6 @@ title: VMware VM-Poweroff
 ---
 
 ## Introduction
-
 - It causes VMWare VMs to Stop/Power-off before bringing them back to Powered-on state after a specified chaos duration using the VMWare APIs to start/stop the target VM.
 - It helps to check the performance of the application/process running on the VMWare VMs.
 
@@ -13,7 +12,6 @@ title: VMware VM-Poweroff
 :::
 
 ## Uses
-
 <details>
 <summary>View the uses of the experiment</summary>
 <div>
@@ -105,7 +103,6 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
 ## Experiment Examples
 
 ### Common Experiment Tunables
-
 Refer the [common attributes](../common-tunables-for-all-experiments) to tune the common tunables for all the experiments.
 
 ### Stop/Poweroff VM By MOID
@@ -115,29 +112,6 @@ It contains MOID of the vm instance. It can be tuned via `APP_VM_MOIDS` ENV.
 Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/vm-poweroff/app-vm-moid.yaml yaml)
-```yaml
-# power-off the VMWare VM
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  chaosServiceAccount: vm-poweroff-sa
-  experiments:
-  - name: vm-poweroff
-    spec:
-      components:
-        env:
-        # MOID of the VM
-        - name: APP_VM_MOIDS
-          value: 'vm-53,vm-65'
-
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
-```
-
 ```yaml
 # power-off the VMWare VM
 apiVersion: litmuschaos.io/v1alpha1

@@ -1,5 +1,6 @@
 ---
-title: Validate Hypothesis Using Probes
+title: Probes
+sidebar_position: 5
 ---
 
 Chaos probes automate the chaos hypothesis validation performed during an experiment. They are declarative checks that determine the outcome of the experiment. Probes are scoped to the faults and you can define as many probes as required as part of each fault. Currently four types of probes are available:
@@ -25,16 +26,6 @@ Some common attributes shared between the probes:
 - **Initial Delay:** Represents the initial waiting time interval in seconds for the probes.
 - **Stop On Failure:** It can be set to true/false to stop or continue the experiment execution after probe fails.
 
-## How to add a Probe
-To add a probe for a fault while constructing an experiment, once you add a fault to the experiment you'll be prompted to configure it. You can simply switch to the **Probes** tab to access the list of probes for the fault. By default, most of the experiments will have a default target application health check.
-
-![Probe List](./static/validate-hypothesis-using-probes/probe-list.png)
-
-Select **Deploy new Probe** to add a new probe. Next, you will need to specify the name, type, and mode of the probe.Select **Continue**. Then specify the probe properties. Select **Continue**. Finally, specify the probe specific details and select **Setup the Probe** to add the probe. 
-
-![New Probe Overview](./static/validate-hypothesis-using-probes/new-probe-overview.png)
-
-Now, let's try to better understand the different probe types.
 
 ## HTTP Probe
 The HTTP Probe allows developers to specify a URL which the experiment uses to gauge health/service availability (or other custom conditions) as part of the entry/exit criteria. The received status code is mapped against an expected status. It supports HTTP **Get** and **Post** methods.

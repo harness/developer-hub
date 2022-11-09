@@ -3,10 +3,6 @@
   "label": "Introduction",
   "collapsible": true,
   "collapsed": true,
-  "link": {
-    "type": "generated-index",
-    "title": "Introduction"
-  },
   "customProps": {
     "description": "Introduction to Chaos Engineering"
   }
