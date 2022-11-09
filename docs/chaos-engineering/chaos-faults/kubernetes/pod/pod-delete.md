@@ -89,7 +89,7 @@ The application pods should be in running state before and after chaos injection
 
 ### Common and Pod specific tunables
 
-Refer the [common attributes](../../../common-tunables-for-all-experiments) and [Pod specific tunable](./common-tunables-for-pod-experiments) to tune the common tunables for all experiments and pod specific tunables. 
+Refer the [common attributes](../../common-tunables-for-all-experiments) and [Pod specific tunable](./common-tunables-for-pod-experiments) to tune the common tunables for all experiments and pod specific tunables. 
 
 ### Force Delete
 

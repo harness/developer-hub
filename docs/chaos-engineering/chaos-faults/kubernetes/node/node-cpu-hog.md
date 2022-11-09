@@ -178,7 +178,7 @@ Use this sample RBAC manifest to create a chaosServiceAccount in the desired (ap
 ## Experiment Examples
 
 ### Common and Node specific tunables
-Refer the [common attributes](../../../common-tunables-for-all-experiments) and [Node specific tunable](./common-tunables-for-node-experiments) to tune the common tunables for all experiments and node specific tunables.  
+Refer the [common attributes](../../common-tunables-for-all-experiments) and [Node specific tunable](./common-tunables-for-node-experiments) to tune the common tunables for all experiments and node specific tunables.  
 
 ### Node CPU Cores
 It contains number of cores of node CPU to be consumed. It can be tuned via `NODE_CPU_CORE` ENV.
