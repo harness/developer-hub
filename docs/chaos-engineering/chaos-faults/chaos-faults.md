@@ -107,4 +107,35 @@ Following Platform Chaos faults are available:
     <td>Poweroff VMware VMs using the MOIDs</td>
     <td><a href="/docs/chaos-engineering/Chaos%20Faults/VMware/vmware-vmpoweroff">vmware-vmpoweroff</a></td>
   </tr>
-</table>
+  <tr>
+    <td>VM Processkill</td>
+    <td>Kill the processes running in the  VMware VMs using the PROCESSIDs</td>
+    <td><a href="/docs/chaos-engineering/Chaos%20Faults/VMware/vmware-vmprocesskill">vmware-vmprocesskill</a></td>
+  </tr>
+  <tr>
+    <td>VM CpuHog</td>
+    <td>VMware cpu hog experiment consumes the CPU resources on Linux OS based VMware VM</td>
+    <td><a href="/docs/chaos-engineering/Chaos%20Faults/VMware/vmware-cpuhog">vmware-cpuog</a></td>
+  </tr>
+
+  <tr>
+    <td>VM MemoryHog</td>
+    <td>VMware memory hog experiment consumes the Memory resources on Linux OS based VMware VM</td>
+    <td><a href="/docs/chaos-engineering/Chaos%20Faults/VMware/vmware-memoryhog">vmware-memoryhog</a></td>
+  </tr>
+  <tr>
+    <td>VM IoStress</td>
+    <td>This experiment causes disk stress on the target VMware VMs.</td>
+    <td><a href="/docs/chaos-engineering/Chaos%20Faults/VMware/vmware-vmprocesskill">vmware-vmprocesskill</a></td>
+  </tr>
+  <tr>
+    <td>VM ServiceStop</td>
+    <td>VMware Service Stop experiment stops the target systemd services running on Linux OS based VMware VM</td>
+    <td><a href="/docs/chaos-engineering/Chaos%20Faults/VMware/vmware-vmservicestop">vmware-vmservicestop</a></td>
+  </tr>
+  <tr>
+    <td>VM DiskLoss</td>
+    <td>VMware Disk Loss experiment will detach the disks attached to a Linux OS based VMware VM.</td>
+    <td><a href="/docs/chaos-engineering/Chaos%20Faults/VMware/vmware-diskloss">vmware-diskloss</a></td>
+  </tr>
+</table>  
