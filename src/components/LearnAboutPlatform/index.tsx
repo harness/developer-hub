@@ -37,7 +37,7 @@ export default function LearnAboutPlatform(): JSX.Element {
                 <path d="M632.81 252.212V0H748.394V231.938L632.81 252.212Z" fill="url(#paint4_linear_401_344)" />
                 </Tooltip>
             </a>
-            <a href="https://docs.harness.io/category/vjolt35atg-feature-flags"> 
+            <a href="/docs/feature-flags"> 
                 <Tooltip overlay={<p className='tooltip-max-width'>Simpler, faster, more intelligent feature delivery for developers. Ship more features with less risk.</p>}>
                 <path d="M787.135 252.488L787.135 0H908.619V231.924L787.135 252.488Z" fill="url(#paint16_linear_401_344)" />
                 </Tooltip>
