@@ -144,7 +144,7 @@ const config = {
               },
               {
                 label: "Feature Flags",
-                href: "https://docs.harness.io/category/vjolt35atg-feature-flags",
+                to: "docs/feature-flags",
               },
               {
                 label: "Cloud Cost Management",
