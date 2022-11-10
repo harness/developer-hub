@@ -1,9 +1,16 @@
-# EC2 IO Stress
+---
+id: ec2-io-stress
+title: EC2 IO Stress
+---
 
 ## Introduction
 
 - EC2 IO Stress contains chaos to disrupt the state of infra resources. The experiment can induce a stress chaos on AWS EC2 Instance using Amazon SSM Run Command, this is carried out by using SSM Docs which is in-built in the experiment for the give chaos scenario.
 - It causes IO Stress chaos on EC2 Instance using an SSM doc for a certain chaos duration.
+
+:::tip Fault execution flow chart
+![EC2 IO Stress](./static/images/ec2-io-stress.png)
+:::
 
 ## Uses
 
@@ -20,10 +27,7 @@
 
 ### Verify the prerequisites
 
-**Execution plane verification:**
-
-- Ensure that Kubernetes Version > 1.17
-- Ensure that the <code>ec2-io-stress</code> experiment resource is available in the cluster by executing <code>kubectl get chaosexperiments</code> in the desired namespace.
+- Ensure that Kubernetes Version >= 1.17
 
 **AWS EC2 Access Requirement:**
 
@@ -58,9 +62,8 @@ stringData:
 
 <details>
 <summary>Check the experiment tunables</summary>
-<br>
 
-<h4>Mandatory Fields</h4>
+<h2>Mandatory Fields</h2>
 
 <table>
     <tr>
@@ -80,7 +83,7 @@ stringData:
     </tr>
 </table>
 
-<h4>Optional Fields</h4>
+<h2>Optional Fields</h2>
 
 <table>
     <tr>

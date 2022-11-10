@@ -1,9 +1,16 @@
-# EC2 CPU Hog
+---
+id: ec2-cpu-hog
+title: EC2 CPU Hog
+---
 
 ## Introduction
 
 - EC2 CPU Hog contains chaos to disrupt the state of infra resources. The experiment can induce stress chaos on AWS EC2 Instance using Amazon SSM Run Command, this is carried out by using SSM Docs which is in-built in the experiment for the given chaos scenario.
 - It causes CPU Hog chaos on EC2 Instance using an SSM doc for a certain chaos duration.
+
+:::tip Fault execution flow chart
+![EC2 CPU Hog](./static/images/ec2-cpu-hog.png)
+:::
 
 ## Uses
 
@@ -20,10 +27,7 @@
 
 :::info
 
-**Execution plane verification:**
-
-- Ensure that Kubernetes Version > 1.17
-- Ensure that the <code>ec2-cpu-hog</code> experiment resource is available in the cluster by executing <code>kubectl get chaosexperiments</code> in the desired namespace.
+- Ensure that Kubernetes Version >= 1.17
 
 **AWS EC2 Access Requirement:**
 
@@ -60,8 +64,7 @@ stringData:
 
 <details>
     <summary>Check the experiment tunables</summary>
-    <br>
-    <h4>Mandatory Fields</h4>
+    <h2>Mandatory Fields</h2>
     <table>
         <tr>
             <th> Variables </th>
@@ -79,7 +82,7 @@ stringData:
             <td> For example: <code>us-east-1</code> </td>
         </tr>
     </table>
-    <h4>Optional Fields</h4>
+    <h2>Optional Fields</h2>
     <table>
         <tr>
             <th> Variables </th>

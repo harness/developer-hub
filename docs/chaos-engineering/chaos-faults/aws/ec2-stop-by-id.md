@@ -27,6 +27,9 @@ Coming soon.
 :::info
 
 - Ensure that Kubernetes Version >= 1.17
+
+**AWS EC2 Access Requirement:**
+
 - Ensure that you have sufficient AWS access to stop and start an EC2 instance.
 - Ensure to create a Kubernetes secret having the AWS access configuration(key) in the `CHAOS_NAMESPACE`. A sample secret file looks like:
 
