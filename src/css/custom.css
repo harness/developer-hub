@@ -258,8 +258,10 @@
 	display: none;
 }
 .navbar__item img[alt='BETA'] {
-	margin-left: -1em;
-	margin-top: 9px;
+	/* margin-left: -1em; */
+	margin-top: 10px;
+	width: 36px;
+	height: auto;
 }
 
 /* hide the algolia logo */
