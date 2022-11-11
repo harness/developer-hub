@@ -251,6 +251,21 @@ Following Platform Chaos faults are available:
     <td>Stop GCP VM instances using the VM names</td>
     <td><a href="/docs/chaos-engineering/chaos-faults/gcp/gcp-vm-instance-stop">gcp-vm-instance-stop</a></td>
   </tr>
+  <tr>
+    <td>GCP VM Disk Loss</td>
+    <td>Detach the gcp disk</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/gcp/gcp-vm-disk-loss">gcp-vm-disk-loss</a></td>
+  </tr>
+  <tr>
+    <td>GCP VM Instance Stop By Label</td>
+    <td>Stop GCP VM instances using label selectors</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/gcp/gcp-vm-instance-stop-by-label">gcp-vm-instance-stop-by-label</a></td>
+  </tr>
+  <tr>
+    <td>GCP VM Disk Loss By Label</td>
+    <td>Detach the gcp disk using label selectors</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/gcp/gcp-vm-disk-loss-by-label">gcp-vm-disk-loss-by-label</a></td>
+  </tr>
 </table>
 
 ### Azure
