@@ -167,3 +167,18 @@ Following Platform Chaos faults are available:
     <td><a href="/docs/chaos-engineering/chaos-faults/vmware/vmware-http-modify-response">vmware-http-modify-response</a></td>
   </tr>
 </table>
+
+### Kube Resilience
+
+<table>
+  <tr>
+    <th>Experiment Name</th>
+    <th>Description</th>
+    <th>User Guide</th>
+  </tr>
+  <tr>
+    <td>Kubelet Density</td>
+    <td>Check kubelet resilience for a specific node</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/kube-resilience/kubelet-density">kubelet-density</a></td>
+  </tr>
+</table>
