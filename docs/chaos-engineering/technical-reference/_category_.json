@@ -1,0 +1,9 @@
+{
+  "position": 2,
+  "label": "Technical Reference",
+  "collapsible": true,
+  "collapsed": true,
+  "customProps": {
+    "description": "Technical Reference to Harness Chaos Engineering"
+  }
+}

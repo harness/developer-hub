@@ -1,0 +1,9 @@
+{
+  "position": 4,
+  "label": "Node",
+  "collapsible": true,
+  "collapsed": true,
+  "customProps": {
+    "description": "Node faults documentation"
+  }
+}
