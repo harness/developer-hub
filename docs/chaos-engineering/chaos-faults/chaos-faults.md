@@ -137,6 +137,21 @@ Following Platform Chaos faults are available:
     <td><a href="/docs/chaos-engineering/chaos-faults/vmware/vmware-vmpoweroff">vmware-vmpoweroff</a></td>
   </tr>
   <tr>
+    <td>VMWare DNS Chaos</td>
+    <td>Injects DNS errors on the VMWare VMs</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/vmware/vmware-dns-chaos">vmware-dns-chaos</a></td>
+  </tr>
+  <tr>
+    <td>VMWare Network Loss</td>
+    <td>Injects network loss on the target VM(s)</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/vmware/vmware-network-loss">vmware-network-loss</a></td>
+  </tr>
+  <tr>
+    <td>VMWare Network Latency</td>
+    <td>Injects network latency on the target VM(s)</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/vmware/vmware-vmpoweroff">vmware-vmpoweroff</a></td>
+  </tr>
+  <tr>
     <td>VMware HTTP Latency</td>
     <td>Add HTTP Latency to the services running on the VMs</td>
     <td><a href="/docs/chaos-engineering/chaos-faults/vmware/vmware-http-latency">vmware-http-latency</a></td>
