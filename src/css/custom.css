@@ -338,14 +338,14 @@ aside nav.menu > ul > li > ul > li ul > li > div > a, aside nav.menu > ul > li >
 @media screen and (min-width: 1080px) {
 /* style for the search bar in higher resolution */
 	.searchBar {
-		width: calc(100vw - 890px);
+		width: calc(100vw - 896px);
 	}
 	.searchBar .DocSearch-Button {
 		width: 100%;
 	}
 }
 
-@media screen and (max-width: 1056px) {
+@media screen and (max-width: 1079px) {
 /* for tablet */
 	.navbar__item img[alt='BETA'] {
 		display: none
