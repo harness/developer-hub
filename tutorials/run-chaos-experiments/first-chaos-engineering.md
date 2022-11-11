@@ -3,65 +3,90 @@ sidebar_position: 1
 title: Your First Chaos Experiment Run
 description: Running a Chaos Experiment on Kubernetes for the first time.
 ---
+# Your first chaos experiment run
 
-Welcome to Harness Chaos Engineering's first tutorial on running a chaos experiment. In this tutorial you'll be running a Chaos Experiment on Kubernetes for the first time!
+Welcome to your first tutorial on running a chaos experiment in Harness Chaos Engineering. In this tutorial, you will learn some basics of chaos engineering and then use Harness Chaos Engineering to run your first experiment on Kubernetes.
 
-## What is Chaos Engineering?
-Cloud Native applications are, by definition, highly distributed, elastic, resistant to failure and loosely coupled. That's easy to say, and even diagram. But how do we validate that our applications will perform as expected under different failure conditions?
-Enter Chaos Engineering!
+## What is chaos engineering?
+Chaos engineering is a DevOps practice that involves proactive, controlled experimentation on a system to identify weak points and misconfiguration, gain insights into how the system behaves in turbulent conditions, and improve the system’s resilience. 
 
-Chaos Engineering is the discipline of experimenting on a software system in order to build confidence in the system's capability to withstand turbulent and unexpected conditions. Chaos Engineering is a great tool to help us find weaknesses and misconfiguration in our services. It is relevant for all types of systems (including the so called legacy applications and infrastructure), and particularly important for Cloud Native applications, which, due to their distributed and elastic nature, inherently carry multiple points of failure.
+Chaos experiments introduce one or more faults in the system, which typically comprises the application under test and all the components on which it depends, such as databases, networks, infrastructure, and cloud native services. Chaos experiments go beyond traditional checks on code, such as unit tests and system integration tests. Instead, they target the production environment into which you deploy your code.
 
-The standard chaos experimentation flow involves identifying the steady state of the system/application under test, hypothesizing around the impact a particular fault or failure would cause, injecting this fault in a controlled manner (with a pre-determined and often minimal "blast radius"), validating whether the hypothesis is proven and taking appropriate action in case if it is not, i.e., a weakness is found.
+Chaos engineering is relevant to all types of systems, including legacy applications and infrastructure. However, it assumes greater significance in deployments involving cloud native applications, which inherently carry multiple points of failure because of their distributed and elastic nature.
 
-![Chaos Engineering Overview](./static/first-chaos/chaos-engineering-overview.png)
+## Typical chaos experimentation workflow
+Chaos experiments target a steady-state system and simulate conditions that induce failure in components such as infrastructure, networks, and services. For example, a chaos experiment might terminate a pod in a functional Kubernetes cluster, shut down a working load balancer to validate failover, or induce CPU spikes on a server, and then observe how the system responds. 
 
-Harness Chaos Engineering (HCE) helps simplify the chaos engineering practices for your organization. To get started, create a new project or ask your administrator to add you to an existing project. Now, you can access the **Chaos** tab, where an overview of all the experiment runs can be observed.
+A key step in the chaos experiment workflow is the development of a hypothesis on the expected response to the faults you introduce. For example, if you are experimenting on a pair of load balancers in an active-passive configuration, the hypothesis might be that the passive load balancer takes over when you take the active load balancer off the network.
+ 
+Following is the typical workflow of a chaos experiment:
+1. Defining and applying a steady state to the test system, with well-defined service-level objectives (SLOs). 
+2. Developing a hypothesis on how the system will behave if you inject a specific fault.
+3. Injecting the fault.
+4. Observing whether the hypothesis holds true and the system regains its steady state.
 
-![HCE Overview](./static/first-chaos/hce-overview.png)
+![Chaos engineering overview](./static/first-chaos/chaos-engineering-overview.png)
 
-## Add a Chaos Environment
+# Chaos engineering with Harness
 
-Next, we will create a new environment such that the chaos infrastructures can be added as part of it. Go to **Environments** page, and choose a **New Environment**. Add environment name, and optionally a description and tags. Select the environment type, **Production** or **Non-Production**. Finally, click on **Create** to add the new environment.
+Harness Chaos Engineering (HCE) is a chaos engineering platform that is included with the Harness Software Delivery Platform. To get started, create a new project or ask your administrator to add you to an existing project. Thereafter, you can access the Chaos tab and run your first chaos experiment. 
 
-![Create New Environment](./static/first-chaos/create-new-environment.png)
+![HCE overview](./static/first-chaos/hce-overview.png)
 
-## Add a Chaos Infrastructure
+Before you run an experiment, you must create an environment and add a chaos infrastructure.
 
-Once the environment is added, we can add chaos infrastructures to it. Here, we will add a Kubernetes infrastructure so that we can inject Kubernetes resource faults. Choose **New Chaos Infrastructure**.
+## Add a chaos environment
 
-![New Chaos Infrastructure](./static/first-chaos/new-chaos-infrastructure.png)
+An environment represents where you are deploying your application. You categorize each Environment as either a production environment or a non-production environment that is used for pre-production activities such as testing or automation.
 
-Select **On New Infrastructures** and select **Continue**. Add a name to your chaos infrastructure and optionally a description and tags. Select **Next**.
+To add a chaos environment, do the following:
+1. On the Chaos tab, go to **Environments**, and then click **+ New Environment**. 
 
-After that, choose the mode of installation for Harness delegate. As a quick primer, Harness delegate is a remote agent for accessing your Kubernetes cluster resources and injecting faults into them as part of a chaos experiment. The **Cluster Wide** installation mode allows you to target resources across all the namespaces in your cluster while **Namespace Mode** installation restricts chaos injection to only the namespace in which the delegate will be installed. Choose **Namespace mode** installation mode. By default, the delegate will install in the **litmus** namespace, but you can change it. Then, select **Done**.
+![Create a new environment](./static/first-chaos/create-new-environment.png)
 
-![Configure Chaos Infrastructure](./static/first-chaos/configure-chaos-infrastructure.png)
+2. Enter a name for the environment and, optionally, enter a description and one or more tags. 
+3. In Select Environment Tyoe, click Production if you want to create a production environment. If you want to create an environment for purposes other than production (for example, QA or automation), click **Non-Production**. 
+4. Click **Create**.
 
-Lastly, provided that you have access to your Kubernetes cluster via [kubectl](https://kubernetes.io/docs/reference/kubectl/), deploy your chaos infrastructure by executing the given commands, then downloading and applying the given manifest using your terminal. Once done, choose **Next**.
+The **Chaos Infrastrucures** page is displayed.
 
-![Deploy Chaos Infrastructure](./static/first-chaos/deploy-chaos-infrastructure.png)
+## Add a chaos infrastructure
 
-It will take a while for the delegate to setup in the k8s cluster. Head to the created environment and as soon as the delegate is ready, the connection status should get reflected as `CONNECTED`.
+On the Chaos Infrastructures page, we add a Kubernetes infrastructure so that we can inject Kubernetes resource faults. 
+
+To add a chaos infrastructure, do the following:
+1. On the Chaos Infrastructures page, click **Enable Chaos**.
+2. In the **Enable Chaos** wizard, click **On New Infrastructures**, and then click **Continue**. 
+3. In the **Chaos Infrastructure wizard**, do the following:
+    1. Enter a name for your chaos infrastructure and, optionally, add a description and tags. Click **Next**.
+    2. In **Installation Mode**, click **Namespace mode**. 
+    The installation mode specifies where the Harness delegate gets installed. The Harness delegate is a remote agent for accessing your Kubernetes cluster resources and injecting faults into them as part of a chaos experiment. The **Namespace Mode** installation restricts chaos injection to only the namespace in which the delegate is installed. By default, the delegate installs in the litmus namespace. You can change the namespace, but we use the default namespace in this tutorial.
+    ![Configure Chaos Infrastructure](./static/first-chaos/configure-chaos-infrastructure.png)
+    4. Click **Next**
+    5. To deploy the chaos insfrastructure, follow the instructions displayed on the **Deplay the setup** page, and then click **Done**.
+4. On the **Environments** page, click your environment, and then verify that the status is `CONNECTED`.
+Delegate setup takes a few minutes, so you might have to wait for some time before the status is updated.
 
 ![Infrastructure State](./static/first-chaos/infrastructure-state.png)
 
 ## Creating Demo Application and Observability Infrastructure
 
-Now we are all ready to target our Kubernetes resources. In this quick start document, we will be executing one of the most popular and simplest fault, **Pod Delete**. It simply deletes the pods of a deployment, statefulset, daemonset, etc. to validate the resiliency of a microservice application. 
+We are all set to target our Kubernetes resources. In this quick start document, we execute one of the most popular and simplest of faults, namely **Pod Delete**. It deletes the pods in a deployment, statefulset, daemonset, and so on, to validate the resilience of a microservice application. 
 
-You can use your own application as a target, however, we will use the [Online Boutique](https://github.com/GoogleCloudPlatform/microservices-demo) microservices demo application as the target.
+This tutorial uses the [Online Boutique](https://github.com/GoogleCloudPlatform/microservices-demo) microservices demo application as the target.
 
-Before we setup our chaos experiment, let us install the target application. Run the following commands to setup the target application microservices and observability infrastructure, including, Grafana, Prometheus and a BlackBox exporter. Installation of the observability infrastructure is optional as it doesn't have any role in executing the experiment, however, it will provide us with a dashboard which will help us validate the health of the constituent application microservices in real time.
+Before you setup your chaos experiment, you must install the target application microservices and observability infrastructure, including Grafana, Prometheus, and a BlackBox exporter. Installation of the observability infrastructure is optional; it does not play a role in the execution of the experiment. However, it provides us with a dashboard to help us validate the health of the application microservices in real time.
+
+To install the target application and observability infrastructure, open a terminal window, and then run the following commands:
+
 ```bash
 ❯ kubectl apply -f https://raw.githubusercontent.com/Adarshkumar14/boutique-app-monitoring/main/manifest/app.yaml -n litmus
 
 ❯ kubectl apply -f https://raw.githubusercontent.com/Adarshkumar14/boutique-app-monitoring/main/manifest/monitoring.yaml -n litmus
 ```
 
-We are deploying these resources in the existing `litmus` namespace, since we had specified the Namespace mode of installation.
+Note that the target application and observability infrastructure pods are deployed in the default `litmus` namespace. To verify that they are installed in the default namespace, run the following command:
 
-Eventually, we will have all the target application and observability infrastructure pods available in the `litmus` namespace:
 ```
 ❯ kubectl get pods -n litmus
 
@@ -87,7 +112,7 @@ subscriber-7774bd95d4-4rnwp                    1/1     Running   0              
 workflow-controller-6d5d75dc7c-v9vqc           1/1     Running   0               11m
 ```
 
-You can list the services available in the `litmus` namespace as following:
+To show the list of services available in the `litmus` namespace, run the following command:
 ```
 ❯ kubectl get services -n litmus
 
@@ -111,17 +136,19 @@ shippingservice                ClusterIP      10.109.150.169   <none>        500
 workflow-controller-metrics    ClusterIP      10.106.97.173    <none>        9090/TCP         15m
 ```
 
-To access the target application frontend in your browser, use the `frontend-external` LoadBalancer service.
+## Access the target application and observability infrastructure in your browser
+
+To access the target application's user interface in your browser, use the `frontend-external` LoadBalancer service.
 
 ![Online Boutique](./static/first-chaos/online-boutique.png)
 
-Similarly you can access the Grafana dashboard, login with the default credentials username `admin` and password `admin`, and browse the Online Boutique application dashboard. Currently, all the metrics are indicating normal application behavior.
+Similarly, you can access the Grafana dashboard. Log in with the default credentials (user name `admin` and password `admin`), and then browse the Online Boutique application dashboard. All the metrics should indicate normal application behavior.
 
 ![Grafana App Dashboard](./static/first-chaos/grafana-app-dashboard.png)
 
-## Constructing a Chaos Experiment
+## Construct a chaos experiment
 
-With our target application deployed, we can now create a chaos experiment. We will be targeting the pods of the carts microservice with the Pod Delete fault. Right now, the cart page is healthy and accessible in the frontend, as seen at the `/cart` route.
+With your target application deployed, you can create a chaos experiment. In the current experiment, you target the pods of the carts microservice with the `Pod Delete` fault. Right now, the cart page is healthy and accessible in the frontend, as seen at the `/cart` route.
 
 ![Online Boutique App Cart](./static/first-chaos/online-boutique-app-cart.png)
 
