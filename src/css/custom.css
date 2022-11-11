@@ -258,7 +258,7 @@
 	display: none;
 }
 .navbar__item img[alt='BETA'] {
-	/* margin-left: -1em; */
+	margin-left: -0.25rem;
 	margin-top: 10px;
 	width: 36px;
 	height: auto;
@@ -340,7 +340,7 @@ aside nav.menu > ul > li > ul > li ul > li > div > a, aside nav.menu > ul > li >
 @media screen and (min-width: 1080px) {
 /* style for the search bar in higher resolution */
 	.searchBar {
-		width: calc(100vw - 896px);
+		width: calc(100vw - 925px);
 	}
 	.searchBar .DocSearch-Button {
 		width: 100%;
