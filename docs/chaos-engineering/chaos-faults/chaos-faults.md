@@ -26,9 +26,104 @@ Faults that apply to generic Kubernetes resources are classified into this categ
     <th>User Guide</th>
   </tr>
   <tr>
+    <td>Container Kill</td>
+    <td>Kills the container in the application pod</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/kubernetes/pod/container-kill">container-kill</a></td>
+  </tr>
+  <tr>
+    <td>Disk Fill</td>
+    <td>Fillup Ephemeral Storage of a Resourced</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/kubernetes/pod/disk-fill">disk-fill</a></td>
+  </tr>
+  <tr>
+    <td>Pod Autoscaler</td>
+    <td>Scales the application replicas and test the node autoscaling on cluster</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-autoscaler">pod-autoscaler</a></td>
+  </tr>
+  <tr>
+    <td>Pod CPU Hog Exec</td>
+    <td>Consumes CPU resources on the application container by invoking a utility within the app container base image</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-cpu-hog-exec">pod-cpu-hog-exec</a></td>
+  </tr>
+  <tr>
+    <td>Pod CPU Hog</td>
+    <td>Consumes CPU resources on the application container</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-cpu-hog">pod-cpu-hog</a></td>
+  </tr>
+  <tr>
     <td>Pod Delete</td>
     <td>Deletes the application pods </td>
     <td><a href="/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-delete">pod-delete</a></td>
+  </tr>
+  <tr>
+    <td>Pod DNS Error</td>
+    <td>Disrupt dns resolution in kubernetes po</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-dns-error">pod-dns-error</a></td>
+  </tr>
+  <tr>
+    <td>Pod DNS Spoof</td>
+    <td>Spoof dns resolution in kubernetes pod</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-dns-spoof">pod-dns-spoof</a></td>
+  </tr>
+  <tr>
+    <td>Pod IO Stress</td>
+    <td>Injects IO stress resources on the application container</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-io-stress">pod-io-stress</a></td>
+  </tr>
+  <tr>
+    <td>Pod Memory Hog Exec</td>
+    <td>Consumes Memory resources on the application container by invoking a utility within the app container base image</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-memory-hog-exec">pod-memory-hog-exec</a></td>
+  </tr>
+  <tr>
+    <td>Pod Memory Hog</td>
+    <td>Consumes Memory resources on the application container</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-memory-hog">pod-memory-hog</a></td>
+  </tr>
+  <tr>
+    <td>Pod Network Corruption</td>
+    <td>Injects Network Packet Corruption into Application Pod</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-network-corruption">pod-network-corruption</a></td>
+  </tr>
+  <tr>
+    <td>Pod Network Duplication</td>
+    <td>Injects Network Packet Duplication into Application Pod</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-network-duplication">pod-network-duplication</a></td>
+  </tr>
+  <tr>
+    <td>Pod Network Latency</td>
+    <td>Injects Network latency into Application Pod</td>
+   <td><a href="/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-network-latency">pod-network-latency</a></td>
+  </tr>
+  <tr>
+    <td>Pod Network Loss</td>
+    <td>Injects Network loss into Application Pod</td>
+   <td><a href="/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-network-loss">pod-network-loss</a></td>
+  </tr>
+  <tr>
+    <td>Pod HTTP Latency</td>
+    <td>Injects HTTP latency into Application Pod</td>
+   <td><a href="/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-http-latency">pod-http-latency</a></td>
+  </tr>
+  <tr>
+    <td>Pod HTTP Reset Peer</td>
+    <td>Injects HTTP reset peer into Application Pod</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-http-reset-peer">pod-http-reset-peer</a></td>
+  </tr>
+  <tr>
+    <td>Pod HTTP Status Code</td>
+    <td>Injects HTTP status code chaos into Application Pod</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-http-status-code">pod-http-status-code</a></td>
+  </tr>
+  <tr>
+    <td>Pod HTTP Modify Body</td>
+    <td>Injects HTTP modify body into Application Pod</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-http-modify-body">pod-http-modify-body</a></td>
+  </tr>
+  <tr>
+    <td>Pod HTTP Modify Header</td>
+    <td>Injects HTTP Modify Header into Application Pod</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-http-modify-header">pod-http-modify-header</a></td>
   </tr>
 </table>
 
@@ -41,9 +136,44 @@ Faults that apply to generic Kubernetes resources are classified into this categ
     <th>User Guide</th>
   </tr>
   <tr>
+    <td>Docker Service Kill</td>
+    <td>Kills the docker service on the application node</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/kubernetes/node/docker-service-kill">docker-service-kill</a></td>
+  </tr>
+  <tr>
+    <td>Kubelet Service Kill</td>
+    <td>Kills the kubelet service on the application node</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/kubernetes/node/kubelet-service-kill">kubelet-service-kill</a></td>
+  </tr>
+  <tr>
     <td>Node CPU Hog</td>
     <td>Exhaust CPU resources on the Kubernetes Node</td>
     <td><a href="/docs/chaos-engineering/chaos-faults/kubernetes/node/node-cpu-hog">node-cpu-hog</a></td>
+  </tr>
+  <tr>
+    <td>Node Drain</td>
+    <td>Drains the target node</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/kubernetes/node/node-drain">node-drain</a></td>
+  </tr>
+  <tr>
+    <td>Node IO Stress</td>
+    <td>Injects IO stress resources on the application node</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/kubernetes/node/node-io-stress">node-io-stress</a></td>
+  </tr>
+  <tr>
+    <td>Node Memory Hog</td>
+    <td>Exhaust Memory resources on the Kubernetes Node</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/kubernetes/node/node-memory-hog">node-memory-hog</a></td>
+  </tr>
+  <tr>
+    <td>Node Restart</td>
+    <td> Restarts the target node</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/kubernetes/node/node-restart">node-restart</a></td>
+  </tr>
+  <tr>
+    <td>Node Taint</td>
+    <td>Taints the target node</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/kubernetes/node/node-taint">node-taint</a></td>
   </tr>
 </table>
 
