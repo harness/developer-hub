@@ -1,13 +1,13 @@
 ---
 id: vmware-vmiostress
-title: VMware VM-IoStress
+title: VMware VM Io Stress
 ---
 
 ## Introduction
 - This experiment causes disk stress on the target VMware VMs. The experiment aims to verify the resiliency of applications that share this disk resource to the VM. 
 
 :::tip Fault execution flow chart
-![VMware VM IoStress](./static/images/vm-iostress.png)
+![VMware VM Io Stress](./static/images/vm-iostress.png)
 :::
 
 ## Prerequisites
@@ -94,6 +94,11 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
         <td> TOTAL_CHAOS_DURATION </td>
         <td> The total time duration for chaos insertion (sec) </td>
         <td> Defaults to 30s </td>
+      </tr>
+      <tr>
+        <td> SEQUENCE </td>
+        <td> It defines sequence of chaos execution for multiple instance </td>
+        <td> Default value: parallel. Supported: serial, parallel </td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>

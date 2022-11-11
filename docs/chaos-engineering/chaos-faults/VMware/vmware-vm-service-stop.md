@@ -1,6 +1,6 @@
 ---
 id: vmware-vmservicestop
-title: VMware VM-ServiceStop
+title: VMware VM Service Stop
 ---
 
 ## Introduction
@@ -80,6 +80,11 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
         <td> TOTAL_CHAOS_DURATION </td>
         <td> The total time duration for chaos insertion (sec) </td>
         <td> Defaults to 30s </td>
+      </tr>
+      <tr>
+        <td> SEQUENCE </td>
+        <td> It defines sequence of chaos execution for multiple instance </td>
+        <td> Default value: parallel. Supported: serial, parallel </td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>

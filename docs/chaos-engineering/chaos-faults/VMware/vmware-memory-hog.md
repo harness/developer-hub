@@ -1,6 +1,6 @@
 ---
 id: vmware-vmmemoryhog
-title: VMware VM-memoryhog
+title: VMware VM Memory Hog
 ---
 
 ## Introduction
@@ -8,7 +8,7 @@ title: VMware VM-memoryhog
 - It helps to check the performance of the application running on the VMWare VMs.
 
 :::tip Fault execution flow chart
-![VMware VM memoryhog](./static/images/vm-memoryhog.png)
+![VMware VM Memory Hog](./static/images/vm-memoryhog.png)
 :::
 
 ## Prerequisites
@@ -86,6 +86,11 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
         <td> TOTAL_CHAOS_DURATION </td>
         <td> The total time duration for chaos insertion (sec) </td>
         <td> Defaults to 30s </td>
+      </tr>
+      <tr>
+        <td> SEQUENCE </td>
+        <td> It defines sequence of chaos execution for multiple instance </td>
+        <td> Default value: parallel. Supported: serial, parallel </td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>

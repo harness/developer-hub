@@ -1,6 +1,6 @@
 ---
 id: vmware-vmprocesskill
-title: VMware VM-Processkill
+title: VMware VM Process kill
 ---
 
 ## Introduction
@@ -8,7 +8,7 @@ title: VMware VM-Processkill
 - It helps to check the performance of the application/process running on the VMWare VMs.
 
 :::tip Fault execution flow chart
-![VMware VM Processkill](./static/images/vm-processkill.png)
+![VMware VM Process kill](./static/images/vm-processkill.png)
 :::
 
 ## Uses

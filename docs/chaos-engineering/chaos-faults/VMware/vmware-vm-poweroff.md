@@ -1,6 +1,6 @@
 ---
 id: vmware-vmpoweroff
-title: VMware VM-Poweroff
+title: VMware VM Poweroff
 ---
 
 ## Introduction

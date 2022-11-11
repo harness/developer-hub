@@ -1,6 +1,6 @@
 ---
 id: vmware-vmcpuhog
-title: VMware VM-CpuHog
+title: VMware VM Cpu Hog
 ---
 
 ## Introduction
@@ -8,13 +8,12 @@ title: VMware VM-CpuHog
 - It helps to check the performance of the application running on the VMWare VMs.
 
 :::tip Fault execution flow chart
-![VMware VM CpuHog](./static/images/vm-cpuhog.png)
+![VMware Cpu Hog](./static/images/vm-cpuhog.png)
 :::
 
 ## Prerequisites
 :::info
 - Ensure that Kubernetes Version > 1.16 
-- Ensure that the <code>vmware-cpu-hog</code> experiment resource is available in the cluster by executing <code>kubectl get chaosexperiments</code> in the desired namespace.
 
 ** vCenter Requirements **
 - Ensure the connectivity of execution plane with vCenter and the hosts over 443 port. 
@@ -86,6 +85,11 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injection of chaos in sec </td>
         <td> </td>
+      </tr>
+      <tr>
+        <td> SEQUENCE </td>
+        <td> It defines sequence of chaos execution for multiple instance </td>
+        <td> Default value: parallel. Supported: serial, parallel </td>
       </tr>
     </table>
 </details>
