@@ -62,7 +62,7 @@ export default function SRM() {
             </div>
             <div>
               <Link
-                href="https://docs.harness.io/category/ko19u4brsv-howtos-service-reliability-management">
+                href="/docs/service-reliability-management">
                 <button className={clsx('button button--lg', styles.btn, styles.btnLight)}><img src="/img/icon_document.png"/> Documentation</button>
               </Link>
             </div>       

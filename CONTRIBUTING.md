@@ -11,10 +11,10 @@
 Thanks for considering to contribute to the Harness Developer Hub! Contributions come in all shapes and sizes and we appreciate them all. Contributions to the Harness Developer Hub comes in the form of Pull Requests or submitting Issues. 
 
 ## Change Process
-GitHub will be the primary mechanism for changes. Pull Requests are the mechanism to submitting and approving changes. For smaller changes, this can be done in-line on GitHub. For larger changes, a Fork is a better route. 
+GitHub will be the primary mechanism for changes. Pull Requests are the mechanism to submitting and approving changes. 
 
 ### Small Changes
-Small changes are items such as singular typo in an MD file does not require you to Fork. Create a new branch based on your change. 
+Small changes are items such as singular typo in an MD file do not require local testing and can be accomplished in the GitHub UI. 
 
 ![Fixing Typos](static/img/contributors_simple_branch.png)
 
@@ -150,6 +150,9 @@ keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial]
 
 ## Change Approval Flow
 Harness Approvers will validate changes and approve the branch for merge into `main`. Once merged into `main`, the CI Process [Drone] will be kicked off automatically. 
+
+### PR Preview Environment
+When PRs are filed, a preview environment is created for the Harness Approvers to validate. 
 
 ## Non-Content Changes
 Please raise an issue for non-content releated changes such as infrastructure or UX ideas/changes before submitting a PR. 
