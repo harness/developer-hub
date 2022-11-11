@@ -91,6 +91,21 @@ Following Platform Chaos faults are available:
     <td>Modifies HTTP request or response headers for services running  on EC2 instances</td>
     <td><a href="/docs/chaos-engineering/chaos-faults/aws/ec2-http-modify-header">ec2-http-modify-header</a></td>
   </tr>
+  <tr>
+    <td>EC2 Network Loss</td>
+    <td>Injects network loss on the target ec2 instance(s)</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/aws/ec2-network-loss">ec2-network-loss</a></td>
+  </tr>
+  <tr>
+    <td>EC2 Network Latency</td>
+    <td>Injects network latency on the target ec2 instance(s)</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/aws/ec2-network-latency">ec2-network-latency</a></td>
+  </tr>
+  <tr>
+    <td>EC2 Dns Chaos</td>
+    <td>Injects dns faults on the target ec2 instance(s)</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/aws/ec2-dns-chaos">ec2-dns-chaos</a></td>
+  </tr>
 </table>
 
 ### GCP
@@ -149,7 +164,7 @@ Following Platform Chaos faults are available:
   <tr>
     <td>VMWare Network Latency</td>
     <td>Injects network latency on the target VM(s)</td>
-    <td><a href="/docs/chaos-engineering/chaos-faults/vmware/vmware-vmpoweroff">vmware-vmpoweroff</a></td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/vmware/vmware-network-latency">vmware-network-latency</a></td>
   </tr>
   <tr>
     <td>VMware HTTP Latency</td>
