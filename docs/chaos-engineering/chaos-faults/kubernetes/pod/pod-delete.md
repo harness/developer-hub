@@ -6,7 +6,7 @@ title: Pod Delete
 ## Introduction
 
 - It causes (forced/graceful) pod failure of specific/random replicas of an application resources.
-- It tests deployment sanity (replica availability & uninterrupted service) and recovery workflow of the application
+- It tests deployment sanity (replica availability & uninterrupted service) and recovery workflow of the application.
 
 :::tip Fault execution flow chart
 ![Pod Delete](./static/images/pod-delete.png)
@@ -88,7 +88,6 @@ The application pods should be in running state before and after chaos injection
 ## Experiment Examples
 
 ### Common and Pod specific tunables
-
 Refer the [common attributes](../../common-tunables-for-all-experiments) and [Pod specific tunable](./common-tunables-for-pod-experiments) to tune the common tunables for all experiments and pod specific tunables. 
 
 ### Force Delete

@@ -22,90 +22,13 @@ Coming soon.
 
 ## Prerequisites
 :::info
-- Ensure that Kubernetes Version > 1.16
+- Ensure that Kubernetes Version > 1.16.
 :::
 
 ## Default Validations
 :::note
 The target nodes should be in ready state before and after chaos injection.
 :::
-
-## Minimal RBAC configuration example (optional)
-
-<details>
-<summary>Minimal RBAC configuration</summary>
-If you are using this experiment as part of a litmus workflow scheduled constructed & executed from chaos-center, then you may be making use of the <a href="https://litmuschaos.github.io/litmus/litmus-admin-rbac.yaml">litmus-admin</a> RBAC, which is pre installed in the cluster as part of the agent setup.
-
-```yaml
----
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: node-cpu-hog-sa
-  namespace: default
-  labels:
-    name: node-cpu-hog-sa
-    app.kubernetes.io/part-of: litmus
----
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRole
-metadata:
-  name: node-cpu-hog-sa
-  labels:
-    name: node-cpu-hog-sa
-    app.kubernetes.io/part-of: litmus
-rules:
-  # Create and monitor the experiment & helper pods
-  - apiGroups: [""]
-    resources: ["pods"]
-    verbs: ["create","delete","get","list","patch","update", "deletecollection"]
-  # Performs CRUD operations on the events inside chaosengine and chaosresult
-  - apiGroups: [""]
-    resources: ["events"]
-    verbs: ["create","get","list","patch","update"]
-  # Fetch configmaps details and mount it to the experiment pod (if specified)
-  - apiGroups: [""]
-    resources: ["configmaps"]
-    verbs: ["get","list",]
-  # Track and get the runner, experiment, and helper pods log 
-  - apiGroups: [""]
-    resources: ["pods/log"]
-    verbs: ["get","list","watch"]  
-  # for creating and managing to execute comands inside target container
-  - apiGroups: [""]
-    resources: ["pods/exec"]
-    verbs: ["get","list","create"]
-  # for configuring and monitor the experiment job by the chaos-runner pod
-  - apiGroups: ["batch"]
-    resources: ["jobs"]
-    verbs: ["create","list","get","delete","deletecollection"]
-  # for creation, status polling and deletion of litmus chaos resources used within a chaos workflow
-  - apiGroups: ["litmuschaos.io"]
-    resources: ["chaosengines","chaosexperiments","chaosresults"]
-    verbs: ["create","list","get","patch","update","delete"]
-  # for experiment to perform node status checks
-  - apiGroups: [""]
-    resources: ["nodes"]
-    verbs: ["get","list"]
----
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRoleBinding
-metadata:
-  name: node-cpu-hog-sa
-  labels:
-    name: node-cpu-hog-sa
-    app.kubernetes.io/part-of: litmus
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: node-cpu-hog-sa
-subjects:
-- kind: ServiceAccount
-  name: node-cpu-hog-sa
-  namespace: default
-```
-Use this sample RBAC manifest to create a chaosServiceAccount in the desired (app) namespace. This example consists of the minimum necessary role permissions to execute the experiment.
-</details>
 
 ## Experiment tunables
 <details>
@@ -178,7 +101,7 @@ Use this sample RBAC manifest to create a chaosServiceAccount in the desired (ap
 ## Experiment Examples
 
 ### Common and Node specific tunables
-Refer the [common attributes](../../common-tunables-for-all-experiments) and [Node specific tunable](./common-tunables-for-node-experiments) to tune the common tunables for all experiments and node specific tunables.  
+Refer the [common attributes](../../common-tunables-for-all-experiments) and [Node specific tunable](./common-tunables-for-node-experiments) to tune the common tunables for all experiments and node specific tunables.
 
 ### Node CPU Cores
 It contains number of cores of node CPU to be consumed. It can be tuned via `NODE_CPU_CORE` ENV.
