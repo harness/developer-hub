@@ -52,7 +52,7 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
 ## Default Validations
 :::info
 - EC2 instance should be in healthy state.
-  :::
+:::
 
 ## Experiment tunables
 <details>
@@ -106,26 +106,6 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injection of chaos in sec </td>
         <td> </td>
-      </tr>
-      <tr>
-        <td> DOCUMENT_NAME </td>
-        <td> Provide the name of addded ssm docs (if not using the in-build docs)</td>
-        <td> Default to Litmus-AWS-SSM-Docs-For-EC2-Network-Latency </td>
-      </tr>
-      <tr>
-        <td> DOCUMENT_FORMAT </td>
-        <td> Provide the format of the ssm docs. It can be YAML or JSON</td>
-        <td> Defaults to YAML</td>
-      </tr>
-      <tr>
-        <td> DOCUMENT_TYPE </td>
-        <td> Provide the document type of added ssm docs (if not using the default docs)</td>
-        <td> Defaults to Command </td>
-      </tr>
-      <tr>
-        <td> DOCUMENT_PATH </td>
-        <td> Provide the document path if added using configmaps</td>
-        <td> Defaults to Litmus-AWS-SSM-Docs-For-EC2-Network-Latency.yml </td>
       </tr>
       <tr>
         <td> INSTALL_DEPENDENCY </td>
@@ -185,7 +165,7 @@ spec:
           value: 'instance-1'
 
         - name: REGION
-          value: '<region for EC2_INSTANCE_ID>'
+          value: 'us-west-2'
 ```
 
 ### Run DNS Chaos With Target HostNames
@@ -218,7 +198,7 @@ spec:
           value: 'instance-1'
 
         - name: REGION
-          value: '<region for EC2_INSTANCE_ID>'
+          value: 'us-west-2'
 ```
 
 
@@ -252,7 +232,7 @@ spec:
           value: 'instance-1'
 
         - name: REGION
-          value: '<region for EC2_INSTANCE_ID>'
+          value: 'us-west-2'
 ```
 
 
@@ -286,5 +266,5 @@ spec:
           value: 'instance-1'
 
         - name: REGION
-          value: '<region for EC2_INSTANCE_ID>'
+          value: 'us-west-2'
 ```

@@ -102,26 +102,6 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
             <td> Defaults to <code>/tmp/cloud_config.yml</code> </td>
         </tr>
         <tr>
-            <td> DOCUMENT_NAME </td>
-            <td> Provide the name of addded ssm docs (if not using the in-build docs)</td>
-            <td> Default to Litmus-AWS-SSM-Docs-For-EC2-Network-Latency </td>
-        </tr>
-        <tr>
-            <td> DOCUMENT_FORMAT </td>
-            <td> Provide the format of the ssm docs. It can be YAML or JSON</td>
-            <td> Defaults to YAML</td>
-        </tr>
-        <tr>
-            <td> DOCUMENT_TYPE </td>
-            <td> Provide the document type of added ssm docs (if not using the default docs)</td>
-            <td> Defaults to Command </td>
-        </tr>
-        <tr>
-            <td> DOCUMENT_PATH </td>
-            <td> Provide the document path if added using configmaps</td>
-            <td> Defaults to Litmus-AWS-SSM-Docs-For-EC2-Network-Latency.yml </td>
-        </tr>
-        <tr>
             <td> INSTALL_DEPENDENCY </td>
             <td> Select to install dependencies used to run the network chaos. It can be either True or False </td>
             <td> If the dependency already exists, you can turn it off. Defaults to True.</td>
@@ -177,6 +157,7 @@ Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/ec2-network-latency/network-latency.yaml yaml)
 ```yaml
+# it injects the chaos into the egress traffic
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -198,7 +179,7 @@ spec:
           value: 'instance-1'
 
         - name: REGION
-          value: '<region for EC2_INSTANCE_ID>'
+          value: 'us-west-2'
 ```
 
 ### Run With Jitter
@@ -209,6 +190,7 @@ Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/ec2-network-latency/network-latency-with-jitter.yaml yaml)
 ```yaml
+# it injects the chaos into the egress traffic
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -233,7 +215,7 @@ spec:
           value: 'instance-1'
 
         - name: REGION
-          value: '<region for EC2_INSTANCE_ID>'
+          value: 'us-west-2'
 ```
 
 ### Run With Destination IPs And Destination Hosts
@@ -247,7 +229,7 @@ Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/ec2-network-latency/destination-host-and-ip.yaml yaml)
 ```yaml
-## it inject the chaos for the ingrees and egress traffic for specific ips/hosts
+# it injects the chaos into the egress traffic for specific IPs/hosts
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -272,7 +254,7 @@ spec:
           value: 'instance-1'
 
         - name: REGION
-          value: '<region for EC2_INSTANCE_ID>'
+          value: 'us-west-2'
 ```
 
 ###  Network Interface
@@ -283,7 +265,7 @@ Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/ec2-network-latency/network-interface.yaml yaml)
 ```yaml
-## it inject the chaos for the ingrees and egress traffic for specific ips/hosts
+# it injects the chaos into the egress traffic for specific network interface
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -305,5 +287,5 @@ spec:
           value: 'instance-1'
 
         - name: REGION
-          value: '<region for EC2_INSTANCE_ID>'
+          value: 'us-west-2'
 ```

@@ -1,4 +1,4 @@
-## it inject the chaos for the ingrees and egress traffic for specific ips/hosts
+# it injects the chaos into the egress traffic for specific network interface
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -20,4 +20,4 @@ spec:
           value: 'instance-1'
 
         - name: REGION
-          value: '<region for EC2_INSTANCE_ID>'
+          value: 'us-west-2'
