@@ -1,0 +1,23 @@
+# it injects the chaos into the egress traffic
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: ec2-network-latency
+    spec:
+      components:
+        env:
+        # network packet latency
+        - name: NETWORK_LATENCY
+          value: '2000'
+
+        - name: EC2_INSTANCE_ID
+          value: 'instance-1'
+
+        - name: REGION
+          value: 'us-west-2'
