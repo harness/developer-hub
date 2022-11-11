@@ -10,14 +10,9 @@ Provided below are tables with links to the individual fault docs for easy navig
 
 ## Kubernetes Faults
 
-Kubernetes faults disrupt the resources running on a Kubernetes cluster.
-<!-- They can be categorized into <code>Generic</code>, <code>Kafka</code>, <code>Cassandra</code> faults. -->
+Kubernetes faults disrupt the resources running on a Kubernetes cluster. They can be categorized into Pod-level faults and Node-level faults.
 
-### Generic
-
-Faults that apply to generic Kubernetes resources are classified into this category. Following chaos faults are supported under Generic chaos:
-
-#### Pod Chaos
+### Pod Chaos
 
 <table>
   <tr>
@@ -127,7 +122,7 @@ Faults that apply to generic Kubernetes resources are classified into this categ
   </tr>
 </table>
 
-#### Node Chaos
+### Node Chaos
 
 <table>
   <tr>
@@ -197,6 +192,21 @@ Following Platform Chaos faults are available:
     <td><a href="/docs/chaos-engineering/chaos-faults/aws/ec2-stop-by-id">ec2-stop-by-id</a></td>
   </tr>
   <tr>
+    <td>EC2 Stop By Tag</td>
+    <td>Stop the ec2 instance using the instance tag</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/aws/ec2-stop-by-tag">ec2-stop-by-tag</a></td>
+  </tr>
+  <tr>
+    <td>EBS Loss By ID</td>
+    <td>Detach the EBS volume using the volume id</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/aws/ebs-loss-by-id">ebs-loss-by-id</a></td>
+  </tr>
+  <tr>
+    <td>EBS Loss By Tag</td>
+    <td>Detach the EBS volume using the volume tag</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/aws/ebs-loss-by-tag">ebs-loss-by-tag</a></td>
+  </tr>
+  <tr>
     <td>EC2 HTTP Latency</td>
     <td>Inject HTTP latency for services running on EC2 instances</td>
     <td><a href="/docs/chaos-engineering/chaos-faults/aws/ec2-http-latency">ec2-http-latency</a></td>
@@ -253,7 +263,7 @@ Following Platform Chaos faults are available:
   </tr>
   <tr>
     <td>GCP VM Disk Loss</td>
-    <td>Detach the gcp disk</td>
+    <td>Detach the GCP disk</td>
     <td><a href="/docs/chaos-engineering/chaos-faults/gcp/gcp-vm-disk-loss">gcp-vm-disk-loss</a></td>
   </tr>
   <tr>
@@ -263,7 +273,7 @@ Following Platform Chaos faults are available:
   </tr>
   <tr>
     <td>GCP VM Disk Loss By Label</td>
-    <td>Detach the gcp disk using label selectors</td>
+    <td>Detach the GCP disk using label selectors</td>
     <td><a href="/docs/chaos-engineering/chaos-faults/gcp/gcp-vm-disk-loss-by-label">gcp-vm-disk-loss-by-label</a></td>
   </tr>
 </table>
