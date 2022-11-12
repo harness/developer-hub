@@ -5,8 +5,8 @@ title: EC2 HTTP Reset Peer
 
 ## Introduction
 
-- It injects http reset on the service whose port is provided as TARGET_SERVICE_PORT which stops outgoing http requests by resetting the TCP connection for the requests.
-- It can test the application's resilience to lossy/flaky http connection.
+- It injects http reset on the service whose port is provided as `TARGET_SERVICE_PORT` which stops outgoing http requests by resetting the TCP connection for the requests.
+- It can assess the application's resilience to a lossy/flaky http connection.
 
 :::tip Fault execution flow chart
 ![EC2 HTTP Reset Peer](./static/images/ec2-http-reset-peer.png)
@@ -16,13 +16,13 @@ title: EC2 HTTP Reset Peer
 
 :::info
 
-- Ensure that Kubernetes Version >= 1.17
-- Ensure that the <code>EC2-http-latency</code> experiment resource is available in the cluster by executing <code>kubectl get chaosexperiments</code> in the desired namespace.
+- Kubernetes >= 1.17
+- Ensure that the <code>EC2-http-latency</code> experiment resource is available in the cluster. Execute <code>kubectl get chaosexperiments</code> in the desired namespace.
 
 **AWS EC2 Access Requirement:**
 
-- Ensure that SSM agent is installed and running in the target EC2 instance.
-- Ensure to create a Kubernetes secret having the AWS Access Key ID and Secret Access Key credentials in the `CHAOS_NAMESPACE`. A sample secret file looks like:
+- SSM agent is installed and running in the target EC2 instance.
+- Create a Kubernetes secret with AWS Access Key ID and Secret Access Key credentials in the `CHAOS_NAMESPACE`. A sample secret file looks like:
 
 ```yaml
 apiVersion: v1
@@ -38,22 +38,22 @@ stringData:
     aws_secret_access_key = XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ```
 
-- If you change the secret name then please also update the `experiment.yml` ENV values for deriving the respective data from the secret. Also account for the path at which this secret is mounted as a file in the manifest ENV `AWS_SHARED_CREDENTIALS_FILE`.
+- If you change the secret, update the `experiment.yml` environment values to extract the relevant data from the secret. Also account for the path at which this secret is mounted as a file in the manifest environment variable `AWS_SHARED_CREDENTIALS_FILE`.
 
 ### NOTE
 
-You can pass the VM credentials as secrets or as an chaosengine ENV variable.
+You can pass the VM credentials as secrets or as an chaosengine environment variable.
 :::
 
 ## Default Validations
 
 :::info
 
-- EC2 instance should be in healthy state.
+- The EC2 instance should be in a healthy state.
 
 :::
 
-## Experiment tunables
+## Experiment Tunables
 
 <details>
     <summary>Check the Experiment Tunables</summary>
@@ -94,7 +94,7 @@ You can pass the VM credentials as secrets or as an chaosengine ENV variable.
         </tr>
         <tr>
             <td> TOTAL_CHAOS_DURATION </td>
-            <td> The total time duration for chaos insertion (sec) </td>
+            <td> The total time duration for chaos insertion (in sec) </td>
             <td> Defaults to 30s </td>
         </tr>
         <tr>
@@ -114,13 +114,13 @@ You can pass the VM credentials as secrets or as an chaosengine ENV variable.
         </tr>
         <tr>
             <td> RAMP_TIME </td>
-            <td> Period to wait before and after injection of chaos in sec </td>
-            <td> Eg: 30 </td>
+            <td> Period to wait before and after injection of chaos (in sec) </td>
+            <td> For example: 30 </td>
         </tr>
         <tr>
             <td> INSTALL_DEPENDENCY </td>
             <td> Whether to install the dependancy to run the experiment </td>
-            <td> If the dependency already exists, you can turn it off. Defaults to True.</td>
+            <td> If the dependency already exists, you can turn it off (defaults to True)</td>
         </tr>
         <tr>
             <td> PROXY_PORT  </td>
@@ -144,13 +144,13 @@ You can pass the VM credentials as secrets or as an chaosengine ENV variable.
 
 ### Common Experiment Tunables
 
-Refer the [common attributes](../common-tunables-for-all-experiments) to tune the common tunables for all the experiments.
+Refer to the [common attributes](../common-tunables-for-all-experiments) to tune the common tunables for all the experiments.
 
 ### Target Service Port
 
-It defines the port of the targeted service that is being targeted. It can be tuned via `TARGET_SERVICE_PORT` ENV.
+It is the targeted service's port being targeted. It can be tuned using the `TARGET_SERVICE_PORT` environment variable.
 
-Use the following example to tune this:
+You can use the following example to tune it:
 
 [embedmd]:# (./static/manifests/http-reset-peer/target-service-port.yaml yaml)
 ```yaml
@@ -174,9 +174,9 @@ spec:
 
 ### Proxy Port
 
-It defines the port on which the proxy server will listen for requests. It can be tuned via `PROXY_PORT` ENV.
+It is the port where the proxy server listens for requests. It can be tuned using the `PROXY_PORT` environment variable.
 
-Use the following example to tune this:
+You can use the following example to tune it:
 
 [embedmd]:# (./static/manifests/http-reset-peer/proxy-port.yaml yaml)
 ```yaml
@@ -201,11 +201,11 @@ spec:
           value: "80"
 ```
 
-### RESET TIMEOUT
+### Reset Timeout
 
-It defines the reset timeout value to be added to the http request. It can be tuned via RESET_TIMEOUT ENV.
+It defines the reset timeout value that is added to the http request. It can be tuned using `RESET_TIMEOUT` environment variable.
 
-Use the following example to tune this:
+You can use the following example to tune it:
 
 [embedmd]:# (./static/manifests/http-reset-peer/reset-timeout.yaml yaml)
 ```yaml
@@ -232,10 +232,10 @@ spec:
 
 ### Toxicity
 
-It defines the toxicity value to be added to the http request. It can be tuned via `TOXICITY` ENV.
-Toxicity value defines the percentage of the total number of http requests to be affected.
+It defines the toxicity value to be added to the http request. It can be tuned using the `TOXICITY` environment variable.
+Toxicity value defines the percentage of the total number of http requests that are affected.
 
-Use the following example to tune this:
+You can use the following example to tune it:
 
 [embedmd]:# (./static/manifests/http-reset-peer/toxicity.yaml yaml)
 ```yaml
@@ -252,9 +252,9 @@ spec:
     spec:
       components:
         env:
-        # toxicity is the probability of the request to be affected
+        # toxicity is the probability of the request that is affected
         # provide the percentage value in the range of 0-100
-        # 0 means no request will be affected and 100 means all request will be affected
+        # 0 means no request will be affected and 100 means all requests will be affected
         - name: TOXICITY
           value: "100"
         # provide the port of the targeted service
@@ -264,9 +264,9 @@ spec:
 
 ### Network Interface
 
-It defines the network interface to be used for the proxy. It can be tuned via `NETWORK_INTERFACE` ENV.
+It defines the network interface used for the proxy. It can be tuned via `NETWORK_INTERFACE` environment variable.
 
-Use the following example to tune this:
+You can use the following example to tune it:
 
 [embedmd]:# (./static/manifests/http-reset-peer/network-interface.yaml yaml)
 ```yaml
