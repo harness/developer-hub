@@ -144,7 +144,7 @@ const config = {
               },
               {
                 label: "Feature Flags",
-                href: "https://docs.harness.io/category/vjolt35atg-feature-flags",
+                to: "docs/feature-flags",
               },
               {
                 label: "Cloud Cost Management",
@@ -152,15 +152,19 @@ const config = {
               },
               {
                 label: "Service Reliability Management",
-                href: "https://docs.harness.io/category/ko19u4brsv-howtos-service-reliability-management",
+                to: "docs/service-reliability-management",
               },
               {
                 label: "Security Testing Orchestration",
-                href: "https://docs.harness.io/category/txlccquh5c-sto-category",
+                to: "docs/security-testing-orchestration",
               },
               {
                 label: "Chaos Engineering",
                 to: "docs/chaos-engineering",
+              },
+              {
+                label: "Self-Managed Enterprise Edition",
+                to: "docs/self-managed-enterprise-edition",
               },
               {
                 label: "Harness Platform",
@@ -254,6 +258,10 @@ const config = {
               {
                 label: "University",
                 href: "https://university.harness.io",
+              },
+              {
+                label: "Open Source",
+                href: "https://harness-community.github.io/",
               },
               {
                 label: "YouTube",

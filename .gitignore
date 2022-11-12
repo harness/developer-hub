@@ -16,10 +16,11 @@
 .env.development.local
 .env.test.local
 .env.production.local
+.markdownlint.json
 
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-# *.lock, leave yarn.lock 
+# *.lock, leave yarn.lock
 *-lock.json
 .env

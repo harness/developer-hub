@@ -9,6 +9,7 @@ keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial]
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import DelegateInstall from '/tutorials/platform/install-delegate.md';
 ```
 
 ## Background on Continuous Integration
@@ -201,6 +202,11 @@ Now you are ready to run once saved.
 ```
 
 If you want to use your own self-managed build infrastructure, then you should install the [Kubernetes Delegate](../platform/install-delegate) in the Kubernetes cluster of your choice. 
+
+<details>
+<summary>Install Delegate</summary>
+<DelegateInstall />
+</details>
 
 For the self-managed infrastructure, can leverage one of the Starter Configs or create a Starter Pipeline. In this case, can run the Starter Pipeline. 
 

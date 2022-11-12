@@ -1,0 +1,15 @@
+{
+   "label":"CI Technical Reference",
+   "position": 30,
+   "collapsible":"true",
+   "collapsed":"true",
+   "className":"red",
+   "link":{
+      "type":"generated-index",
+      "title":"CI Technical Reference"
+   },
+   "customProps":{
+      
+      "helpdocs_category_id":"4xo13zdnfx"
+   }
+}

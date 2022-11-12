@@ -70,7 +70,7 @@ export default function FF() {
               <h1>Feature Flags</h1>
             </div>
             <div>
-              <Link href="https://docs.harness.io/category/vjolt35atg-feature-flags">
+              <Link href="/docs/feature-flags">
               <button className={clsx('button button--lg', styles.btn, styles.btnLight)}><img src="/img/icon_document.png"/> Documentation</button>
               </Link>
             </div>       
