@@ -154,7 +154,7 @@ metadata:
 spec:
   engineState: "active"
   annotationCheck: "false"
-  chaosServiceAccount: ec2-cpu-hog-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: ec2-cpu-hog
     spec:
@@ -186,7 +186,7 @@ metadata:
 spec:
   engineState: "active"
   annotationCheck: "false"
-  chaosServiceAccount: ec2-cpu-hog-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: ec2-cpu-hog
     spec:
@@ -218,7 +218,7 @@ metadata:
 spec:
   engineState: "active"
   annotationCheck: "false"
-  chaosServiceAccount: ec2-cpu-hog-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: ec2-cpu-hog
     spec:
@@ -248,7 +248,7 @@ metadata:
 spec:
   engineState: "active"
   annotationCheck: "false"
-  chaosServiceAccount: ec2-cpu-hog-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: ec2-cpu-hog
     spec:

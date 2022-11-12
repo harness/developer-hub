@@ -25,6 +25,8 @@ title: EC2 Memory Hog
 
 ## Prerequisites
 
+:::info
+
 ### Verify the prerequisites
 
 - Ensure that Kubernetes Version >= 1.17
@@ -49,6 +51,8 @@ stringData:
 ```
 
 - If you change the secret name then please also update the `experiment.yml` ENV values for deriving the respective data from the secret. Also account for the path at which this secret is mounted as a file in the manifest ENV `AWS_SHARED_CREDENTIALS_FILE`.
+
+:::
 
 ## Default Validations
 
@@ -158,7 +162,7 @@ metadata:
 spec:
   engineState: "active"
   annotationCheck: "false"
-  chaosServiceAccount: ec2-memory-hog-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: ec2-memory-hog
     spec:
@@ -190,7 +194,7 @@ metadata:
 spec:
   engineState: "active"
   annotationCheck: "false"
-  chaosServiceAccount: ec2-memory-hog-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: ec2-memory-hog
     spec:
@@ -222,7 +226,7 @@ metadata:
 spec:
   engineState: "active"
   annotationCheck: "false"
-  chaosServiceAccount: ec2-memory-hog-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: ec2-memory-hog
     spec:
@@ -252,7 +256,7 @@ metadata:
 spec:
   engineState: "active"
   annotationCheck: "false"
-  chaosServiceAccount: ec2-memory-hog-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: ec2-memory-hog
     spec:
