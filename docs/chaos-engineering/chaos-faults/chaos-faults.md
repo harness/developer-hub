@@ -124,7 +124,7 @@ Following Platform Chaos faults are available:
     <td><a href="/docs/chaos-engineering/Chaos%20Faults/VMware/vmware-memoryhog">vmware-memoryhog</a></td>
   </tr>
   <tr>
-    <td>VMware VM Io Stress</td>
+    <td>VMware VM IO Stress</td>
     <td>This experiment causes disk stress on the target VMware VMs.</td>
     <td><a href="/docs/chaos-engineering/Chaos%20Faults/VMware/vmware-vmprocesskill">vmware-vmprocesskill</a></td>
   </tr>

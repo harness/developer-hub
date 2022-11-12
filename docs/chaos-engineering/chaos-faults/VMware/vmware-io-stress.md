@@ -1,19 +1,18 @@
 ---
 id: vmware-vmiostress
-title: VMware VM Io Stress
+title: VMware VM IO Stress
 ---
 
 ## Introduction
 - This experiment causes disk stress on the target VMware VMs. The experiment aims to verify the resiliency of applications that share this disk resource to the VM. 
 
 :::tip Fault execution flow chart
-![VMware VM Io Stress](./static/images/vm-iostress.png)
+![VMware VM IO Stress](./static/images/vm-iostress.png)
 :::
 
 ## Prerequisites
 :::info
 - Ensure that Kubernetes Version > 1.16 
-- Ensure that the <code>vmware-io-stress</code> experiment resource is available in the cluster by executing <code>kubectl get chaosexperiments</code> in the desired namespace.
 
 ** vCenter Requirements **
 - Ensure the connectivity of  execution plane with vCenter and the hosts over 443 port. 

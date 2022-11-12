@@ -14,7 +14,7 @@ title: VMware VM Service Stop
 ## Prerequisites
 :::info
 - Ensure that Kubernetes Version > 1.16 
-- Ensure that the <code>vmware-servicestop</code> experiment resource is available in the cluster by executing <code>kubectl get chaosexperiments</code> in the desired namespace.
+
 ** vCenter Requirements **
 - Ensure the connectivity of execution plane with vCenter and the hosts over 443 port. 
 - Ensure that Vmware tool is installed on the target VM with remote execution enabled.

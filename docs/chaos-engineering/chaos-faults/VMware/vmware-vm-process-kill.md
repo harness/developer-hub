@@ -22,7 +22,7 @@ Disrupt the application critical processes such as databases or message queues r
 ## Prerequisites
 :::info
 - Ensure that Kubernetes Version > 1.16 
-- Ensure that the <code>vmware-processkill</code> experiment resource is available in the cluster by executing <code>kubectl get chaosexperiments</code> in the desired namespace.
+
 ** vCenter Requirements **
 - Ensure the connectivity of execution plane with vCenter and the hosts over 443 port. 
 - Ensure that Vmware tool is installed on the target VM with remote execution enabled.
@@ -99,7 +99,7 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
 Refer the [common attributes](../common-tunables-for-all-experiments) to tune the common tunables for all the experiments.
 
 ### PROCESS_IDS
-It containes the target process Ids running on a particular VM
+It contains the target process Ids running on a particular VM
 
 
 Use the following example to tune this:
