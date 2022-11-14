@@ -8,7 +8,7 @@ spec:
   annotationCheck: "false"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: azure-instance-stop
+  - name: azure-disk-loss
     spec:
       components:
         env:
@@ -18,7 +18,7 @@ spec:
          # time duration for the chaos execution
         - name: TOTAL_CHAOS_DURATION
           VALUE: '60'
-        - name: AZURE_INSTANCE_NAMES
-          value: 'instance-01,instance-02'
+        - name: VIRTUAL_DISK_NAMES
+          value: 'disk-01,disk-02'
         - name: RESOURCE_GROUP
-          value: 'rg-azure'
+          value: '<resource group of VIRTUAL_DISK_NAMES>'

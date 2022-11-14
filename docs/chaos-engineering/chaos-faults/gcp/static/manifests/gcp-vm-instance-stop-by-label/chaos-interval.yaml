@@ -1,4 +1,3 @@
-# defines delay between each successive iteration of the chaos
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -8,20 +7,21 @@ spec:
   annotationCheck: "false"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: gcp-vm-instance-stop
+  - name: gcp-vm-instance-stop-by-label
     spec:
       components:
         env:
-        # delay between each iteration of chaos
         - name: CHAOS_INTERVAL
           value: '15'
-        # time duration for the chaos execution
+        
         - name: TOTAL_CHAOS_DURATION
           VALUE: '60'
-        - name: VM_INSTANCE_NAMES
-          value: 'instance-01,instance-02'
+
+        - name: INSTANCE_LABEL
+          value: 'vm:target-vm'
+
         - name: ZONES
-          value: 'zone-01,zone-02'
+          value: 'us-east1-b'
+
         - name: GCP_PROJECT_ID
-          value: 'project-id'
-       
+          value: 'my-project-4513'

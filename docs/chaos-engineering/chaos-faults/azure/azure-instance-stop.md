@@ -143,7 +143,7 @@ metadata:
 spec:
   engineState: "active"
   annotationCheck: "false"
-  chaosServiceAccount: azure-instance-stop-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: azure-instance-stop
     spec:
@@ -175,7 +175,7 @@ metadata:
 spec:
   engineState: "active"
   annotationCheck: "false"
-  chaosServiceAccount: azure-instance-stop-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: azure-instance-stop
     spec:
@@ -210,7 +210,7 @@ metadata:
 spec:
   engineState: "active"
   annotationCheck: "false"
-  chaosServiceAccount: azure-instance-stop-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: azure-instance-stop
     spec:

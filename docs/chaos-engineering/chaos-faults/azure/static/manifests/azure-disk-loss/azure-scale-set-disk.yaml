@@ -1,4 +1,4 @@
-## contains the azure instance details for scale set instances or AKS nodes
+# detach multiple azure disks attached to scale set VMs by their names
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -8,17 +8,17 @@ spec:
   annotationCheck: "false"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: azure-instance-stop
+  - name: azure-disk-loss
     spec:
       components:
         env:
-        # comma separated list of azure instance names
-        - name: AZURE_INSTANCE_NAMES
-          value: 'instance-01,instance-02'
+        # comma separated names of the azure disks attached to scaleset VMs
+        - name: VIRTUAL_DISK_NAMES
+          value: 'disk-01,disk-02'
         # name of the resource group
         - name: RESOURCE_GROUP
-          value: 'rg-azure'
-        # accepts enable/disable value. default is disable
+          value: '<resource group of VIRTUAL_DISK_NAMES>'
+        # VM belongs to scaleset or not
         - name: SCALE_SET
           value: 'enable'
         - name: TOTAL_CHAOS_DURATION
