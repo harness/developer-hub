@@ -11,7 +11,7 @@ spec:
     appns: "default"
     applabel: "app=nginx"
     appkind: "deployment"
-  chaosServiceAccount: disk-fill-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: disk-fill
     spec:

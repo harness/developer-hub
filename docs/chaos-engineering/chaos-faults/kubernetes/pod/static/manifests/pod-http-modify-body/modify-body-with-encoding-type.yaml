@@ -9,7 +9,7 @@ spec:
     appns: "default"
     applabel: "app=nginx"
     appkind: "deployment"
-  chaosServiceAccount: pod-http-modify-body-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: pod-http-modify-body
     spec:

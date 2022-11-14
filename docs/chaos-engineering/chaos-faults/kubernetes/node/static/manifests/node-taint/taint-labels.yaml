@@ -6,7 +6,7 @@ metadata:
 spec:
   engineState: "active"
   annotationCheck: "false"
-  chaosServiceAccount: node-taint-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: node-taint
     spec:

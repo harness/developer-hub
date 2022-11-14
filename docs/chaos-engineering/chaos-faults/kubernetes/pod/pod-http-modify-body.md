@@ -43,7 +43,7 @@ The application pods should be in running state before and after chaos injection
       <tr>
         <td> TARGET_SERVICE_PORT </td>
         <td> Port of the service to target</td>
-        <td>Defaults to port 80 </td>
+        <td> Defaults to port 80 </td>
       </tr>
       <tr>
         <td> RESPONSE_BODY  </td>
@@ -69,12 +69,12 @@ The application pods should be in running state before and after chaos injection
         <td> Defaults to text/plain </td>
       </tr>
       <tr>
-        <td> PROXY_PORT  </td>
+        <td> PROXY_PORT </td>
         <td> Port where the proxy will be listening for requests</td>
         <td> Defaults to 20000 </td>
       </tr>
       <tr>
-        <td> NETWORK_INTERFACE  </td>
+        <td> NETWORK_INTERFACE </td>
         <td> Network interface to be used for the proxy</td>
         <td> Defaults to `eth0` </td>
       </tr>
@@ -84,7 +84,7 @@ The application pods should be in running state before and after chaos injection
         <td> Defaults to 100 </td>
       </tr>
       <tr>
-        <td> CONTAINER_RUNTIME  </td>
+        <td> CONTAINER_RUNTIME </td>
         <td> container runtime interface for the cluster</td>
         <td> Defaults to docker, supported values: docker, containerd and crio for litmus and only docker for pumba LIB </td>
       </tr>
@@ -109,14 +109,14 @@ The application pods should be in running state before and after chaos injection
         <td> Defaults to 0 (corresponds to 1 replica), provide numeric value only </td>
       </tr>
       <tr>
-        <td> LIB_IMAGE  </td>
+        <td> LIB_IMAGE </td>
         <td> Image used to run the netem command </td>
         <td> Defaults to `litmuschaos/go-runner:latest` </td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injection of chaos in sec </td>
-        <td> </td>
+        <td> Eg. 30 </td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
@@ -151,7 +151,7 @@ spec:
     appns: "default"
     applabel: "app=nginx"
     appkind: "deployment"
-  chaosServiceAccount: pod-http-modify-body-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: pod-http-modify-body
     spec:
@@ -184,7 +184,7 @@ spec:
     appns: "default"
     applabel: "app=nginx"
     appkind: "deployment"
-  chaosServiceAccount: pod-http-modify-body-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: pod-http-modify-body
     spec:
@@ -218,7 +218,7 @@ spec:
     appns: "default"
     applabel: "app=nginx"
     appkind: "deployment"
-  chaosServiceAccount: pod-http-modify-body-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: pod-http-modify-body
     spec:
@@ -253,7 +253,7 @@ spec:
     appns: "default"
     applabel: "app=nginx"
     appkind: "deployment"
-  chaosServiceAccount: pod-http-modify-body-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: pod-http-modify-body
     spec:
@@ -287,7 +287,7 @@ spec:
     appns: "default"
     applabel: "app=nginx"
     appkind: "deployment"
-  chaosServiceAccount: pod-http-modify-body-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: pod-http-modify-body
     spec:
@@ -329,7 +329,7 @@ spec:
     appns: "default"
     applabel: "app=nginx"
     appkind: "deployment"
-  chaosServiceAccount: pod-http-modify-body-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: pod-http-modify-body
     spec:
@@ -369,7 +369,7 @@ spec:
     appns: "default"
     applabel: "app=nginx"
     appkind: "deployment"
-  chaosServiceAccount: pod-http-modify-body-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: pod-http-modify-body
     spec:

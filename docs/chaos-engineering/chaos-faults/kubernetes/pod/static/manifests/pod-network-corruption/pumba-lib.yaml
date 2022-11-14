@@ -10,7 +10,7 @@ spec:
     appns: "default"
     applabel: "app=nginx"
     appkind: "deployment"
-  chaosServiceAccount: pod-network-corruption-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: pod-network-corruption
     spec:

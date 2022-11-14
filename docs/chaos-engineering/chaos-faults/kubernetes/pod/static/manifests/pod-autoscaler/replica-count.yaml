@@ -10,7 +10,7 @@ spec:
     appns: "default"
     applabel: "app=nginx"
     appkind: "deployment"
-  chaosServiceAccount: pod-autoscaler-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: pod-autoscaler
     spec:

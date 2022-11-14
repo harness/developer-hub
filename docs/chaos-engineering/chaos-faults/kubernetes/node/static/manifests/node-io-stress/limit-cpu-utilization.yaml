@@ -6,7 +6,7 @@ metadata:
 spec:
   engineState: "active"
   annotationCheck: "false"
-  chaosServiceAccount: node-io-stress-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: node-io-stress
     spec:

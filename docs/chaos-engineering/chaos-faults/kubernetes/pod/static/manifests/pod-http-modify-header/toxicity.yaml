@@ -10,7 +10,7 @@ spec:
     appns: "default"
     applabel: "app=nginx"
     appkind: "deployment"
-  chaosServiceAccount: pod-http-modify-header-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: pod-http-modify-header
     spec:

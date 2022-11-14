@@ -45,7 +45,7 @@ The application pods should be in running state before and after chaos injection
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> The time duration for chaos insertion (in sec) </td>
-        <td> Defaults to 15s, <b>NOTE:</b> Overall run duration of the experiment may exceed the TOTAL_CHAOS_DURATION by a few min </td>
+        <td> Defaults to 15s, <b>NOTE:</b> Overall run duration of the experiment may exceed the <code>TOTAL_CHAOS_DURATION</code> by a few min </td>
       </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>
@@ -54,7 +54,7 @@ The application pods should be in running state before and after chaos injection
       </tr>
       <tr>
         <td> RANDOMNESS </td>
-        <td> Introduces randomness to pod deletions with a minimum period defined by CHAOS_INTERVAL </td>
+        <td> Introduces randomness to pod deletions with a minimum period defined by <code>CHAOS_INTERVAL</code> </td>
         <td> It supports true or false. Default value: false </td>
       </tr>
       <tr>
@@ -75,7 +75,7 @@ The application pods should be in running state before and after chaos injection
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injection of chaos in sec </td>
-        <td> </td>
+        <td> Eg. 30 </td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
@@ -110,7 +110,7 @@ spec:
     appns: "default"
     applabel: "app=nginx"
     appkind: "deployment"
-  chaosServiceAccount: pod-delete-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: pod-delete
     spec:
@@ -144,7 +144,7 @@ spec:
     appns: "default"
     applabel: "app=nginx"
     appkind: "deployment"
-  chaosServiceAccount: pod-delete-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: pod-delete
     spec:
@@ -182,7 +182,7 @@ spec:
     appns: "default"
     applabel: "app=nginx"
     appkind: "deployment"
-  chaosServiceAccount: pod-delete-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: pod-delete
     spec:
