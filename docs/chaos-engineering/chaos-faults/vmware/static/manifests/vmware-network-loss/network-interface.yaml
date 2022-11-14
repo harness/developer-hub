@@ -1,4 +1,4 @@
-# induces dns chaos on the VMWare VM
+## it inject the chaos for the egress traffic for specific ips/hosts
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -8,21 +8,22 @@ spec:
   annotationCheck: "false"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: vmware-dns-chaos
+  - name: vmware-network-loss
     spec:
       components:
         env:
-        - name: PORT
-          value: '54'
-
-        - name: VM_NAME
-          value: 'vm-1,vm-2'
+        # name of the network interface 
+        - name: NETWORK_INTERFACE
+          value: 'eth0'
 
         - name: TOTAL_CHAOS_DURATION
           VALUE: '60'
 
+        - name: VM_NAME
+          value: 'vm-1,vm-2'
+
         - name: VM_USER_NAME
           value: 'ubuntu,debian'
-
+          
         - name: VM_PASSWORD
           value: '123,123'

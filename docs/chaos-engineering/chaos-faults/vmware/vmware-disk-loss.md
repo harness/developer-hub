@@ -1,13 +1,13 @@
 ---
-id: vmware-vmdiskloss
-title: VMware VM Disk Loss
+id: vmware-disk-loss
+title: VMware Disk Loss
 ---
 
 ## Introduction
 - VMware Disk Loss experiment will detach the disks attached to a Linux OS based VMware VM.
 
 :::tip Fault execution flow chart
-![VMware VM Disk Loss](./static/images/vm-diskloss.png)
+![VMware Disk Loss](./static/images/vmware-disk-loss.png)
 :::
 
 ## Prerequisites
@@ -17,7 +17,7 @@ title: VMware VM Disk Loss
 ** vCenter Requirements **
 - Ensure the connectivity of execution plane with vCenter and the hosts over 443 port. 
 - Ensure that Vmware tool is installed on the target VM with remote execution enabled.
-- Ensure that you have sufficient vCenter permisssion to access hosts and VMs.
+- Ensure that you have sufficient vCenter permission to access hosts and VMs.
 - Ensure to create a Kubernetes secret having the Vcenter credentials in the `CHAOS_NAMESPACE`. A sample secret file looks like:
 ```yaml
 apiVersion: v1
@@ -71,6 +71,11 @@ stringData:
         <td> The total time duration for chaos insertion (sec) </td>
         <td> Defaults to 30s </td>
       </tr>
+      <tr> 
+        <td> CHAOS_INTERVAL </td>
+        <td> The interval (in sec) between successive instance termination </td>
+        <td> Defaults to 30s </td>
+      </tr>
       <tr>
         <td> SEQUENCE </td>
         <td> It defines sequence of chaos execution for multiple instance </td>
@@ -90,12 +95,11 @@ stringData:
 Refer the [common attributes](../common-tunables-for-all-experiments) to tune the common tunables for all the experiments.
 
 ### VIRTUAL_DISK_NAMES
-It containes the name of target disks attached to a particular VM
-
+It contains the name of target disks attached to a particular VM. It can be tuned via `VIRTUAL_DISK_NAMES` ENV.
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/vm-diskloss/vm-disk-loss-diskname.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-disk-loss/vm-disk-loss-diskname.yaml yaml)
 ```yaml
 # Disk loss in the VMWare VM
 apiVersion: litmuschaos.io/v1alpha1

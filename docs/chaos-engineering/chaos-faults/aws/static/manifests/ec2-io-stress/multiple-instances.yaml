@@ -1,4 +1,4 @@
-# mutilple instance targets
+# multiple instance targets
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -12,11 +12,9 @@ spec:
     spec:
       components:
         env:
-        - name: MEMORY_CONSUMPTION
-          VALUE: '1024'
         # ids of the ec2 instances
         - name: EC2_INSTANCE_ID
-          value: 'instance-1'
+          value: 'instance-1,instance-2'
         # region for the ec2 instance
         - name: REGION
           value: 'us-east-1'
