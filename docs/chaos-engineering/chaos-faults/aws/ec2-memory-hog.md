@@ -212,13 +212,13 @@ spec:
 
 ### MULTIPLE EC2 INSTANCES
 
-Multiple EC2 instances can be targeted in one chaos run. It can be tuned via `EC2_INSTANCE_ID` ENV.
+Multiple EC2 instances can be targeted in one chaos run by providing comma seperated instance ids. It can be tuned via `EC2_INSTANCE_ID` ENV.
 
 Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/ec2-memory-hog/multiple-instances.yaml yaml)
 ```yaml
-# mutilple instance targets
+# multiple instance targets
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:

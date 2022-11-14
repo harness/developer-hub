@@ -1,6 +1,6 @@
 ---
-id: vmware-vmmemoryhog
-title: VMware VM Memory Hog
+id: vmware-memory-hog
+title: VMware Memory Hog
 ---
 
 ## Introduction
@@ -8,7 +8,7 @@ title: VMware VM Memory Hog
 - It helps to check the performance of the application running on the VMWare VMs.
 
 :::tip Fault execution flow chart
-![VMware VM Memory Hog](./static/images/vm-memoryhog.png)
+![VMware Memory Hog](./static/images/vmware-memory-hog.png)
 :::
 
 ## Prerequisites
@@ -18,7 +18,7 @@ title: VMware VM Memory Hog
 ** vCenter Requirements **
 - Ensure the connectivity of execution plane with vCenter and the hosts over 443 port. 
 - Ensure that Vmware tool is installed on the target VM with remote execution enabled.
-- Ensure that you have sufficient vCenter permisssion to access hosts and VMs.
+- Ensure that you have sufficient vCenter permission to access hosts and VMs.
 - Ensure to create a Kubernetes secret having the Vcenter credentials in the `CHAOS_NAMESPACE`. A sample secret file looks like:
 ```yaml
 apiVersion: v1
@@ -86,6 +86,11 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
         <td> The total time duration for chaos insertion (sec) </td>
         <td> Defaults to 30s </td>
       </tr>
+      <tr> 
+        <td> CHAOS_INTERVAL </td>
+        <td> The interval (in sec) between successive instance termination </td>
+        <td> Defaults to 30s </td>
+      </tr>
       <tr>
         <td> SEQUENCE </td>
         <td> It defines sequence of chaos execution for multiple instance </td>
@@ -109,7 +114,7 @@ It stresses the MEMORY_CONSUMPTION MB memory of the targeted VM for the TOTAL_CH
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/vm-memoryhog/vm-memory-hog-memoryconsumption.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-memory-hog/vm-memory-hog-memoryconsumption.yaml yaml)
 ```yaml
 # Memory hog in the VMWare VM
 apiVersion: litmuschaos.io/v1alpha1
@@ -121,23 +126,23 @@ spec:
   annotationCheck: "false"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: vmware-memory-hog
-    spec:
-      components:
-        env:
-        # Name of the VM
-        - name: VM_NAME
-          value: 'test-vm-01'
-        # memory consumption value
-        - name: MEMORY_CONSUMPTION_MEBIBYTES
-          value: '500'
+    - name: vmware-memory-hog
+      spec:
+        components:
+          env:
+            # Name of the VM
+            - name: VM_NAME
+              value: 'test-vm-01'
+            # memory consumption value
+            - name: MEMORY_CONSUMPTION_MEBIBYTES
+              value: '500'
 ```
 ### Workers For Stress
 The worker's count for the stress can be tuned with NUMBER_OF_WORKERS ENV.
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/vm-memoryhog/vm-memory-hog-worker.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-memory-hog/vm-memory-hog-worker.yaml yaml)
 ```yaml
 # Memory hog in the VMWare VM
 apiVersion: litmuschaos.io/v1alpha1
@@ -149,14 +154,14 @@ spec:
   annotationCheck: "false"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: vmware-memory-hog
-    spec:
-      components:
-        env:
-        # Name of the VM
-        - name: VM_NAME
-          value: 'test-vm-01'
-        # Number of workers for stress
-        - name: NUMBER_OF_WORKERS
-          value: '4'
+    - name: vmware-memory-hog
+      spec:
+        components:
+          env:
+            # Name of the VM
+            - name: VM_NAME
+              value: 'test-vm-01'
+            # Number of workers for stress
+            - name: NUMBER_OF_WORKERS
+              value: '4'
 ```

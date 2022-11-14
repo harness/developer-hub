@@ -1,13 +1,13 @@
 ---
-id: vmware-vmiostress
-title: VMware VM IO Stress
+id: vmware-io-stress
+title: VMware IO Stress
 ---
 
 ## Introduction
 - This experiment causes disk stress on the target VMware VMs. The experiment aims to verify the resiliency of applications that share this disk resource to the VM. 
 
 :::tip Fault execution flow chart
-![VMware VM IO Stress](./static/images/vm-iostress.png)
+![VMware IO Stress](./static/images/vmware-io-stress.png)
 :::
 
 ## Prerequisites
@@ -17,7 +17,7 @@ title: VMware VM IO Stress
 ** vCenter Requirements **
 - Ensure the connectivity of  execution plane with vCenter and the hosts over 443 port. 
 - Ensure that Vmware tool is installed on the target VM with remote execution enabled.
-- Ensure that you have sufficient vCenter permisssion to access hosts and VMs.
+- Ensure that you have sufficient vCenter permission to access hosts and VMs.
 - Ensure to create a Kubernetes secret having the Vcenter credentials in the `CHAOS_NAMESPACE`. A sample secret file looks like:
 ```yaml
 apiVersion: v1
@@ -94,6 +94,11 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
         <td> The total time duration for chaos insertion (sec) </td>
         <td> Defaults to 30s </td>
       </tr>
+      <tr> 
+        <td> CHAOS_INTERVAL </td>
+        <td> The interval (in sec) between successive instance termination </td>
+        <td> Defaults to 30s </td>
+      </tr>
       <tr>
         <td> SEQUENCE </td>
         <td> It defines sequence of chaos execution for multiple instance </td>
@@ -113,11 +118,11 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
 Refer the [common attributes](../common-tunables-for-all-experiments) to tune the common tunables for all the experiments.
 
 ### FILESYSTEM_UTILIZATION_PERCENTAGE
-It stresses the FILESYSTEM_UTILIZATION_PERCENTAGE percentage of total free space available in the VM.
+It stresses the `FILESYSTEM_UTILIZATION_PERCENTAGE` percentage of total free space available in the VM.
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/vm-io-stress/vm-io-stress-filesystem-utilization-percenatge.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-io-stress/vm-io-stress-filesystem-utilization-percenatge.yaml yaml)
 ```yaml
 # io-stress in the VMWare VM
 apiVersion: litmuschaos.io/v1alpha1
@@ -143,13 +148,12 @@ spec:
           VALUE: '60'
 ```
 ### Filesystem Utilization Bytes
-It stresses the FILESYSTEM_UTILIZATION_BYTES GB of the i/o of the targeted VM. It is mutually exclusive with the FILESYSTEM_UTILIZATION_PERCENTAGE ENV. If FILESYSTEM_UTILIZATION_PERCENTAGE ENV is set then it will use the percentage for the stress otherwise, it will stress the i/o based on FILESYSTEM_UTILIZATION_BYTES ENV.
+It stresses the `FILESYSTEM_UTILIZATION_BYTES` GB of the i/o of the targeted VM. It is mutually exclusive with the FILESYSTEM_UTILIZATION_PERCENTAGE ENV. If FILESYSTEM_UTILIZATION_PERCENTAGE ENV is set then it will use the percentage for the stress otherwise, it will stress the i/o based on FILESYSTEM_UTILIZATION_BYTES ENV.
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/vm-servicestop/vm-io-stress-filesystem-utilization-bytes.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-io-stress/vm-io-stress-filesystem-utilization-bytes.yaml yaml)
 ```yaml
-# io-stress in the VMWare VM
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -173,11 +177,11 @@ spec:
           VALUE: '60'
 ```
 ### Mount Path
-The volume mount path, which needs to be filled. It can be tuned with VOLUME_MOUNT_PATH ENV
+The volume mount path, which needs to be filled. It can be tuned with `VOLUME_MOUNT_PATH` ENV
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/vm-servicestop/vm-io-stress-filesystem-mount-path.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-io-stress/vm-io-stress-filesystem-mount-path.yaml yaml)
 ```yaml
 # io-stress in the VMWare VM
 apiVersion: litmuschaos.io/v1alpha1
@@ -206,9 +210,9 @@ spec:
           VALUE: '60'
 ```
 ### Workers For Stress
-The worker's count for the stress can be tuned with NUMBER_OF_WORKERS ENV.
+The worker's count for the stress can be tuned with `NUMBER_OF_WORKERS` ENV.
 
-[embedmd]:# (./static/manifests/vm-servicestop/vm-io-stress-filesystem-worker.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-io-stress/vm-io-stress-filesystem-worker.yaml yaml)
 ```yaml
 # io-stress in the VMWare VM
 apiVersion: litmuschaos.io/v1alpha1

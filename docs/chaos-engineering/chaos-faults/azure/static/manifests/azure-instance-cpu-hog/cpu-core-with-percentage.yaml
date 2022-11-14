@@ -1,0 +1,24 @@
+# cpu core with percentage to utilize
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: azure-instance-cpu-hog
+    spec:
+      components:
+        env:
+        - name: CPU_CORE
+          VALUE: '2'
+        - name: CPU_LOAD
+          VALUE: '50'
+        # name of the azure instance
+        - name: AZURE_INSTANCE_NAMES
+          value: 'instance-1'
+        # resource group for the azure instance
+        - name: RESOURCE_GROUP
+          value: 'rg-azure'

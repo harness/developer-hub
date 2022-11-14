@@ -12,7 +12,7 @@ spec:
     spec:
       components:
         env:
-        # namespace where pods needs to be created
+        # namespace where pods need to be created
         - name: TARGET_NAMESPACE
           value: 'litmus'
         - name: TARGET_NODE

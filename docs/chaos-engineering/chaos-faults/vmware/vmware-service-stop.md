@@ -1,6 +1,6 @@
 ---
-id: vmware-vmservicestop
-title: VMware VM Service Stop
+id: vmware-service-stop
+title: VMware Service Stop
 ---
 
 ## Introduction
@@ -8,7 +8,7 @@ title: VMware VM Service Stop
 - It helps to check the performance of the application/service running on the VMWare VMs.
 
 :::tip Fault execution flow chart
-![VMware VM ServiceStop](./static/images/vm-servicestop.png)
+![VMware ServiceStop](./static/images/vmware-service-stop.png)
 :::
 
 ## Prerequisites
@@ -18,7 +18,7 @@ title: VMware VM Service Stop
 ** vCenter Requirements **
 - Ensure the connectivity of execution plane with vCenter and the hosts over 443 port. 
 - Ensure that Vmware tool is installed on the target VM with remote execution enabled.
-- Ensure that you have sufficient vCenter permisssion to access hosts and VMs.
+- Ensure that you have sufficient vCenter permission to access hosts and VMs.
 - Ensure to create a Kubernetes secret having the Vcenter credentials in the `CHAOS_NAMESPACE`. A sample secret file looks like:
 ```yaml
 apiVersion: v1
@@ -81,6 +81,11 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
         <td> The total time duration for chaos insertion (sec) </td>
         <td> Defaults to 30s </td>
       </tr>
+      <tr> 
+        <td> CHAOS_INTERVAL </td>
+        <td> The interval (in sec) between successive instance termination </td>
+        <td> Defaults to 30s </td>
+      </tr>
       <tr>
         <td> SEQUENCE </td>
         <td> It defines sequence of chaos execution for multiple instance </td>
@@ -100,12 +105,12 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
 Refer the [common attributes](../common-tunables-for-all-experiments) to tune the common tunables for all the experiments.
 
 ### SERVICE_NAME
-It containes the target service running on a particular VM
+It contains the target service running on a particular VM
 
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/vm-servicestop/vm-service-stop.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-service-stop/vmware-service-stop.yaml yaml)
 ```yaml
 # Service Stop in the VMWare VM
 apiVersion: litmuschaos.io/v1alpha1
@@ -117,14 +122,14 @@ spec:
   annotationCheck: "false"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: vmware-service-stop
-    spec:
-      components:
-        env:
-        # Name of the VM
-        - name: VM_NAME
-          value: 'test-vm-01'
-        # Name of service
-        - name: SERVICE_NAME
-          value: 'nginx'
+    - name: vmware-service-stop
+      spec:
+        components:
+          env:
+            # Name of the VM
+            - name: VM_NAME
+              value: 'test-vm-01'
+            # Name of service
+            - name: SERVICE_NAME
+              value: 'nginx'
 ```
