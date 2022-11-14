@@ -2,7 +2,6 @@
 id: chaos-faults
 title: Chaos Faults
 ---
-# Chaos Faults
 
 The fault execution is triggered upon creation of the ChaosEngine resource (various examples of which are provided under the respective faults). Typically, these chaosengines are embedded within the 'steps' of a Chaos fault. However, one may also create the ChaosEngines manually, and the chaos-operator reconciles this resource and triggers the fault execution.
 
@@ -192,6 +191,7 @@ Following Platform Chaos faults are available:
     <td><a href="/docs/chaos-engineering/chaos-faults/aws/ec2-stop-by-id">ec2-stop-by-id</a></td>
   </tr>
   <tr>
+<<<<<<< HEAD
     <td>EC2 Stop By Tag</td>
     <td>Stop the ec2 instance using the instance tag</td>
     <td><a href="/docs/chaos-engineering/chaos-faults/aws/ec2-stop-by-tag">ec2-stop-by-tag</a></td>
@@ -205,6 +205,21 @@ Following Platform Chaos faults are available:
     <td>EBS Loss By Tag</td>
     <td>Detach the EBS volume using the volume tag</td>
     <td><a href="/docs/chaos-engineering/chaos-faults/aws/ebs-loss-by-tag">ebs-loss-by-tag</a></td>
+=======
+    <td>EC2 CPU Hog</td>
+    <td>Inject CPU stress chaos on EC2 instance</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/aws/ec2-cpu-hog">ec2-cpu-hog</a></td>
+  </tr>
+  <tr>
+    <td>EC2 Memory Hog</td>
+    <td>Inject Memory stress chaos on EC2 instance</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/aws/ec2-memory-hog">ec2-memory-hog</a></td>
+  </tr>
+  <tr>
+    <td>EC2 IO Stress</td>
+    <td>Inject IO stress chaos on EC2 instance</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/aws/ec2-io-stress">ec2-io-stress</a></td>
+>>>>>>> main
   </tr>
   <tr>
     <td>EC2 HTTP Latency</td>
@@ -307,7 +322,7 @@ Following Platform Chaos faults are available:
     <th>User Guide</th>
   </tr>
   <tr>
-    <td>VM Poweroff</td>
+    <td>VMware VM Poweroff</td>
     <td>Poweroff VMware VMs using the MOIDs</td>
     <td><a href="/docs/chaos-engineering/chaos-faults/vmware/vmware-vmpoweroff">vmware-vmpoweroff</a></td>
   </tr>
@@ -356,4 +371,35 @@ Following Platform Chaos faults are available:
     <td>Check kubelet resilience for a specific node</td>
     <td><a href="/docs/chaos-engineering/chaos-faults/kube-resilience/kubelet-density">kubelet-density</a></td>
   </tr>
-</table>
+  <tr>
+    <td>VMware VM Process kill</td>
+    <td>Kill the processes running in the  VMware VMs using the PROCESSIDs</td>
+    <td><a href="/docs/chaos-engineering/Chaos%20Faults/VMware/vmware-vmprocesskill">vmware-vmprocesskill</a></td>
+  </tr>
+  <tr>
+    <td>VMware VM Cpu Hog</td>
+    <td>VMware cpu hog experiment consumes the CPU resources on Linux OS based VMware VM</td>
+    <td><a href="/docs/chaos-engineering/Chaos%20Faults/VMware/vmware-cpuhog">vmware-cpuog</a></td>
+  </tr>
+
+  <tr>
+    <td>VMware VM Memory Hog</td>
+    <td>VMware memory hog experiment consumes the Memory resources on Linux OS based VMware VM</td>
+    <td><a href="/docs/chaos-engineering/Chaos%20Faults/VMware/vmware-memoryhog">vmware-memoryhog</a></td>
+  </tr>
+  <tr>
+    <td>VMware VM IO Stress</td>
+    <td>This experiment causes disk stress on the target VMware VMs.</td>
+    <td><a href="/docs/chaos-engineering/Chaos%20Faults/VMware/vmware-vmprocesskill">vmware-vmprocesskill</a></td>
+  </tr>
+  <tr>
+    <td>VMware VM Service Stop</td>
+    <td>VMware Service Stop experiment stops the target systemd services running on Linux OS based VMware VM</td>
+    <td><a href="/docs/chaos-engineering/Chaos%20Faults/VMware/vmware-vmservicestop">vmware-vmservicestop</a></td>
+  </tr>
+  <tr>
+    <td>VMware VM Disk Loss</td>
+    <td>VMware Disk Loss experiment will detach the disks attached to a Linux OS based VMware VM.</td>
+    <td><a href="/docs/chaos-engineering/Chaos%20Faults/VMware/vmware-diskloss">vmware-diskloss</a></td>
+  </tr>
+</table>  
