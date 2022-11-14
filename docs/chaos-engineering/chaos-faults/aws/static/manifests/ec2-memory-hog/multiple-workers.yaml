@@ -1,0 +1,22 @@
+# multiple workers to utilize resources
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: ec2-memory-hog
+    spec:
+      components:
+        env:
+        - name: NUMBER_OF_WORKERS
+          VALUE: '3'
+        # id of the ec2 instance
+        - name: EC2_INSTANCE_ID
+          value: 'instance-1'
+        # region for the ec2 instance
+        - name: REGION
+          value: 'us-east-1'

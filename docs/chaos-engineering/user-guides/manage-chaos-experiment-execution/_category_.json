@@ -1,0 +1,9 @@
+{
+  "position": 4,
+  "label": "Manage Chaos Experiment Execution",
+  "collapsible": true,
+  "collapsed": true,
+  "customProps": {
+    "description": "Manage Chaos Experiment Execution"
+  }
+}

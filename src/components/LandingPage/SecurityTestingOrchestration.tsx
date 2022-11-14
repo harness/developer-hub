@@ -66,7 +66,7 @@ export default function STO() {
               <h1>Security Testing Orchestration</h1>
             </div>
             <div>
-              <Link href="https://docs.harness.io/category/txlccquh5c-sto-category">
+              <Link href="/docs/security-testing-orchestration">
               <button className={clsx('button button--lg', styles.btn, styles.btnLight)}><img src="/img/icon_document.png"/> Documentation</button>
               </Link>
             </div>       

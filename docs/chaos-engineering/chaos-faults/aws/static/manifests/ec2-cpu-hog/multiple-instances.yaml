@@ -1,0 +1,20 @@
+# mutilple instance targets
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: ec2-cpu-hog
+    spec:
+      components:
+        env:
+        # ids of the ec2 instances
+        - name: EC2_INSTANCE_ID
+          value: 'instance-1,instance-2,instance-3'
+        # region for the ec2 instance
+        - name: REGION
+          value: 'us-east-1'

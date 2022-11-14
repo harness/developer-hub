@@ -258,8 +258,10 @@
 	display: none;
 }
 .navbar__item img[alt='BETA'] {
-	margin-left: -1em;
-	margin-top: 9px;
+	margin-left: -0.25rem;
+	margin-top: 10px;
+	width: 36px;
+	height: auto;
 }
 
 /* hide the algolia logo */
@@ -313,17 +315,39 @@ body.DocSearch--active #__docusaurus > div[class*="announcementBar"] {
 	/* hide the announcement bar while the search bar called out */
 	display: none;
 }
+
+
+/* customize LHS menu items */
+aside nav.menu > ul > li > div > a, aside nav.menu > ul > li > ul > li > div > a, aside nav.menu > ul > li > a, aside nav.menu > ul > li > ul > li > a {
+	font-size: 13px;
+	line-height: 20px;
+	font-weight: 600;
+}
+aside nav.menu > ul > li > ul > li ul > li > div > a, aside nav.menu > ul > li > ul > li ul > li > a {
+	font-weight: 500;
+	font-size: 12px;
+	line-height: 18px;
+}
+.menu__link--sublist-caret:after, .menu__caret:before {
+	/* width: 0.7rem;
+	height: 0.7rem;
+	min-width: 0.7rem;
+	min-height: 0.7rem; */
+	/* background: var(--ifm-menu-link-sublist-icon) 50% / 1.25rem 1.25rem; */
+	background-size: 1.25rem 1.25rem;
+}
+
 @media screen and (min-width: 1080px) {
 /* style for the search bar in higher resolution */
 	.searchBar {
-		width: calc(100vw - 890px);
+		width: calc(100vw - 925px);
 	}
 	.searchBar .DocSearch-Button {
 		width: 100%;
 	}
 }
 
-@media screen and (max-width: 1056px) {
+@media screen and (max-width: 1079px) {
 /* for tablet */
 	.navbar__item img[alt='BETA'] {
 		display: none

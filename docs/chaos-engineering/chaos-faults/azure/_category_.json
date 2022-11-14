@@ -1,0 +1,9 @@
+{
+  "position": 4,
+  "label": "Azure",
+  "collapsible": true,
+  "collapsed": true,
+  "customProps": {
+    "description": "Azure faults documentation"
+  }
+}
