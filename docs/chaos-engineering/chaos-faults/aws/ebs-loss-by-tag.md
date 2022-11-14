@@ -142,7 +142,7 @@ spec:
           value: 'key:value'
         # region for the ebs volume
         - name: REGION
-          value: '<region for EBS_VOLUME_TAG>'
+          value: 'us-east-1'
         - name: TOTAL_CHAOS_DURATION
           VALUE: '60'
 ```
@@ -177,7 +177,7 @@ spec:
           value: 'key:value'
         # region for the ebs volume
         - name: REGION
-          value: '<region for EBS_VOLUME_TAG>'
+          value: 'us-east-1'
         - name: TOTAL_CHAOS_DURATION
           VALUE: '60'
 ```

@@ -134,7 +134,7 @@ spec:
           value: 'ebs-vol-1'
         # region for the ebs volume
         - name: REGION
-          value: '<region for EBS_VOLUME_ID>'
+          value: 'us-east-1'
         - name: TOTAL_CHAOS_DURATION
           VALUE: '60'
 ```

@@ -149,7 +149,7 @@ spec:
           value: 'instance-1'
         # region for the ec2 instance
         - name: REGION
-          value: '<region for EC2_INSTANCE_ID>'
+          value: 'us-east-1'
         - name: TOTAL_CHAOS_DURATION
           VALUE: '60'
 ```
