@@ -63,12 +63,12 @@ stringData:
       <tr> 
         <td> EBS_VOLUME_ID </td>
         <td> Comma separated list of volume IDs subjected to ebs detach chaos</td>
-        <td>  </td>
+        <td> Eg. ebs-vol-1,ebs-vol-2 </td>
       </tr>
       <tr>
         <td> REGION </td>
         <td> The region name for the target volumes</td>
-        <td> </td>
+        <td> Eg. us-east-1 </td>
       </tr>
     </table>
     <h2>Optional Fields</h2>
@@ -96,7 +96,7 @@ stringData:
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injection of chaos in sec </td>
-        <td> </td>
+        <td> Eg: 30 </td>
       </tr>   
     </table>
 </details>
