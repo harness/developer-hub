@@ -151,7 +151,7 @@ spec:
           VALUE: '60'
 ```
 
-### Mutiple Iterations Of Chaos
+### Multiple Iterations Of Chaos
 
 The multiple iterations of chaos can be tuned via setting `CHAOS_INTERVAL` ENV. Which defines the delay between each iteration of chaos.
 

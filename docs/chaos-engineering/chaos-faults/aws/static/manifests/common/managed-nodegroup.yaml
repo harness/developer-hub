@@ -19,7 +19,7 @@ spec:
           value: 'enable'
         # region for the ec2 instance
         - name: REGION
-          value: '<region for instances>'
+          value: 'us-east-1'
         # tag of the ec2 instance
         - name: INSTANCE_TAG
           value: 'key:value'

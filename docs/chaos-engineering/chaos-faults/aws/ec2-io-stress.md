@@ -157,7 +157,7 @@ Refer the [common attributes](../common-tunables-for-all-experiments) to tune th
 
 ### FILESYSTEM UTILIZATION IN MEGABYTES
 
-It defines the filesytem value to be utilised in megabytes on the EC2 instance. It can be tuned via `FILESYSTEM_UTILIZATION_BYTES` ENV.
+It defines the filesystem value to be utilised in megabytes on the EC2 instance. It can be tuned via `FILESYSTEM_UTILIZATION_BYTES` ENV.
 
 Use the following example to tune this:
 
@@ -189,7 +189,7 @@ spec:
 
 ### FILESYSTEM UTILIZATION IN PERCENTAGE
 
-It defines the filesytem percentage to be utilised on the EC2 instance. It can be tuned via `FILESYSTEM_UTILIZATION_PERCENTAGE` ENV.
+It defines the filesystem percentage to be utilised on the EC2 instance. It can be tuned via `FILESYSTEM_UTILIZATION_PERCENTAGE` ENV.
 
 Use the following example to tune this:
 
@@ -291,7 +291,7 @@ Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/ec2-io-stress/multiple-instances.yaml yaml)
 ```yaml
-# mutilple instance targets
+# multiple instance targets
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -305,11 +305,9 @@ spec:
     spec:
       components:
         env:
-        - name: MEMORY_CONSUMPTION
-          VALUE: '1024'
         # ids of the ec2 instances
         - name: EC2_INSTANCE_ID
-          value: 'instance-1'
+          value: 'instance-1,instance-2'
         # region for the ec2 instance
         - name: REGION
           value: 'us-east-1'

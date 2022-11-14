@@ -32,7 +32,7 @@ spec:
           value: 'enable'
         # region for the ec2 instance
         - name: REGION
-          value: '<region for instances>'
+          value: 'us-east-1'
         # tag of the ec2 instance
         - name: INSTANCE_TAG
           value: 'key:value'
@@ -69,7 +69,7 @@ spec:
         - name: TOTAL_CHAOS_DURATION
           VALUE: '60'
         - name: REGION
-          value: '<region for instances>'
+          value: 'us-east-1'
         - name: INSTANCE_TAG
           value: 'key:value'
 ```

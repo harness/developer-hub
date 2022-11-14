@@ -1,6 +1,6 @@
 ---
-id: vmware-vmcpuhog
-title: VMware VM Cpu Hog
+id: vmware-cpu-hog
+title: VMware Cpu Hog
 ---
 
 ## Introduction
@@ -8,7 +8,7 @@ title: VMware VM Cpu Hog
 - It helps to check the performance of the application running on the VMWare VMs.
 
 :::tip Fault execution flow chart
-![VMware Cpu Hog](./static/images/vm-cpuhog.png)
+![VMware Cpu Hog](./static/images/vmware-cpu-hog.png)
 :::
 
 ## Prerequisites
@@ -18,7 +18,7 @@ title: VMware VM Cpu Hog
 ** vCenter Requirements **
 - Ensure the connectivity of execution plane with vCenter and the hosts over 443 port. 
 - Ensure that Vmware tool is installed on the target VM with remote execution enabled.
-- Ensure that you have sufficient vCenter permisssion to access hosts and VMs.
+- Ensure that you have sufficient vCenter permission to access hosts and VMs.
 - Ensure to create a Kubernetes secret having the Vcenter credentials in the `CHAOS_NAMESPACE`. A sample secret file looks like:
 ```yaml
 apiVersion: v1
@@ -81,6 +81,11 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
         <td> The total time duration for chaos insertion (sec) </td>
         <td> Defaults to 30s </td>
       </tr>
+      <tr> 
+        <td> CHAOS_INTERVAL </td>
+        <td> The interval (in sec) between successive instance termination </td>
+        <td> Defaults to 30s </td>
+      </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injection of chaos in sec </td>
@@ -100,11 +105,11 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
 Refer the [common attributes](../common-tunables-for-all-experiments) to tune the common tunables for all the experiments.
 
 ### CPU_CORES
-It stresses the CPU_CORE of the targeted vm for the TOTAL_CHAOS_DURATION duration
+It stresses the `CPU_CORE` of the targeted vm for the `TOTAL_CHAOS_DURATION` duration
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/vm-cpuhog/vm-cpu-hog-core.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-cpu-hog/vm-cpu-hog-core.yaml yaml)
 ```yaml
 # cpu hog in the VMWare VM
 apiVersion: litmuschaos.io/v1alpha1
@@ -128,11 +133,11 @@ spec:
           value: '1'
 ```
 ### CPU Load
-It contains percentage of vm CPU to be consumed. It can be tuned via CPU_LOAD ENV.
+It contains percentage of vm CPU to be consumed. It can be tuned via `CPU_LOAD` ENV.
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/vm-cpuhog/vm-cpu-hog-load.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-cpu-hog/vm-cpu-hog-load.yaml yaml)
 ```yaml
 # cpu hog in the VMWare VM
 apiVersion: litmuschaos.io/v1alpha1

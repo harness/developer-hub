@@ -130,7 +130,7 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
       <tr>
         <td> GOVC_URL </td>
         <td> Provide the VMCenter Server URL</td>
-        <td> It is used to perform the vmware api calls using govc command and is derived from sceret.</td>
+        <td> It is used to perform the vmware api calls using govc command and is derived from secret.</td>
       </tr>
       <tr>
         <td> GOVC_USERNAME </td>
@@ -161,7 +161,7 @@ It defines the network packet loss percentage to be injected on the vm. It can b
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/vmware-network-chaos/network-packet-loss-percentage.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-network-loss/network-packet-loss-percentage.yaml yaml)
 ```yaml
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
@@ -202,9 +202,9 @@ The network experiments interrupt traffic for all the IPs/hosts by default. The 
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/vmware-network-chaos/destination-host-and-ip.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-network-loss/destination-host-and-ip.yaml yaml)
 ```yaml
-## it inject the chaos for the ingrees and egress traffic for specific ips/hosts
+## it inject the chaos for the egress traffic for specific ips/hosts
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -244,9 +244,9 @@ The defined name of the ethernet interface, which is considered for shaping traf
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/vmware-network-chaos/network-interface.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-network-loss/network-interface.yaml yaml)
 ```yaml
-## it inject the chaos for the ingrees and egress traffic for specific ips/hosts
+## it inject the chaos for the egress traffic for specific ips/hosts
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:

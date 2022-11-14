@@ -1,4 +1,4 @@
-## it inject the chaos for the ingrees and egress traffic for specific ips/hosts
+## it inject the chaos for the egress traffic for specific ips/hosts
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -8,7 +8,7 @@ spec:
   annotationCheck: "false"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: vmware-network-latency
+  - name: vmware-network-loss
     spec:
       components:
         env:
