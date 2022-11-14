@@ -6,7 +6,7 @@ metadata:
 spec:
   engineState: "active"
   annotationCheck: "false"
-  chaosServiceAccount: ec2-terminate-by-tag-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: ec2-terminate-by-tag
     spec:
@@ -17,6 +17,6 @@ spec:
           value: 'key:value'
         # region for the ec2 instance
         - name: REGION
-          value: '<region for instance>'
+          value: 'us-east-1'
         - name: TOTAL_CHAOS_DURATION
           VALUE: '60'

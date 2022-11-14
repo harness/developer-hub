@@ -6,7 +6,7 @@ metadata:
 spec:
   engineState: "active"
   annotationCheck: "false"
-  chaosServiceAccount: ebs-loss-by-tag-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: ebs-loss-by-tag
     spec:
@@ -20,6 +20,6 @@ spec:
           value: 'key:value'
         # region for the ebs volume
         - name: REGION
-          value: '<region for EBS_VOLUME_TAG>'
+          value: 'us-east-1'
         - name: TOTAL_CHAOS_DURATION
           VALUE: '60'

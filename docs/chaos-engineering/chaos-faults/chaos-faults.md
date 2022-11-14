@@ -191,7 +191,6 @@ Following Platform Chaos faults are available:
     <td><a href="/docs/chaos-engineering/chaos-faults/aws/ec2-stop-by-id">ec2-stop-by-id</a></td>
   </tr>
   <tr>
-<<<<<<< HEAD
     <td>EC2 Stop By Tag</td>
     <td>Stop the ec2 instance using the instance tag</td>
     <td><a href="/docs/chaos-engineering/chaos-faults/aws/ec2-stop-by-tag">ec2-stop-by-tag</a></td>
@@ -205,7 +204,8 @@ Following Platform Chaos faults are available:
     <td>EBS Loss By Tag</td>
     <td>Detach the EBS volume using the volume tag</td>
     <td><a href="/docs/chaos-engineering/chaos-faults/aws/ebs-loss-by-tag">ebs-loss-by-tag</a></td>
-=======
+  </tr>
+  <tr>
     <td>EC2 CPU Hog</td>
     <td>Inject CPU stress chaos on EC2 instance</td>
     <td><a href="/docs/chaos-engineering/chaos-faults/aws/ec2-cpu-hog">ec2-cpu-hog</a></td>
@@ -219,7 +219,6 @@ Following Platform Chaos faults are available:
     <td>EC2 IO Stress</td>
     <td>Inject IO stress chaos on EC2 instance</td>
     <td><a href="/docs/chaos-engineering/chaos-faults/aws/ec2-io-stress">ec2-io-stress</a></td>
->>>>>>> main
   </tr>
   <tr>
     <td>EC2 HTTP Latency</td>
