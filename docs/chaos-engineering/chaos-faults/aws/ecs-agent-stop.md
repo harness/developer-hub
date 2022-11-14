@@ -18,7 +18,7 @@ title: ECS Agent Stop
 <details>
 <summary>View the uses of the experiment</summary>
 <div>
-Agent chaos stop is another very common and frequent scenario we find with ECS clusters that can result in breaking of agent that manages task container on ECS cluster and impact its delivery. Such scenarios that can still occur despite whatever availability aids docker provides.
+Agent chaos stop is another very common and frequent scenario we find with ECS clusters that can break an agent that manages the task container on the ECS cluster and impacts their delivery. Such scenarios can still occur despite whatever availability aids docker provides.
 
 Killing the agent container will distrupt the performance of it and impact to smooth working of task containers. So this category of chaos experiment helps to build the immunity on the application undergoing any such scenarios.
 
@@ -70,19 +70,19 @@ stringData:
     <h2>Mandatory Fields</h2>
     <table>
         <tr>
-        <th> Variables </th>
-        <th> Description </th>
-        <th> Notes </th>
+          <th> Variables </th>
+          <th> Description </th>
+          <th> Notes </th>
         </tr>
         <tr> 
-        <td> CLUSTER_NAME </td>
-        <td> Name of the target ECS cluster</td>
-        <td>  </td>
+          <td> CLUSTER_NAME </td>
+          <td> Name of the target ECS cluster</td>
+          <td> Single name supported eg: <code>demo-cluster</code></td>
         </tr>
         <tr>
-        <td> REGION </td>
-        <td> The region name of the target ECS cluster</td>
-        <td> </td>
+          <td> REGION </td>
+          <td> The AWS region name of the target ECS cluster</td>
+          <td> Eg: <code>us-east-2</code></td>
         </tr>
     </table>
     <h2>Optional Fields</h2>
@@ -106,31 +106,6 @@ stringData:
         <td> AWS_SHARED_CREDENTIALS_FILE </td>
         <td> Provide the path for aws secret credentials</td>
         <td> Defaults to <code>/tmp/cloud_config.yml</code> </td>
-      </tr>
-      <tr> 
-        <td> DOCUMENT_NAME </td>
-        <td> Provide the name of addded ssm docs (if not using the in-build docs)</td>
-        <td> Default to Litmus-AWS-SSM-Docs-For-CPU-Hog</td>
-      </tr>
-      <tr> 
-        <td> DOCUMENT_FORMAT </td>
-        <td> Provide the format of the ssm docs. It can be YAML or JSON</td>
-        <td> Defaults to <code>YAML</code> </td>
-      </tr>
-      <tr> 
-        <td> DOCUMENT_TYPE </td>
-        <td> Provide the document type of added ssm docs (if not using the default docs)</td>
-        <td> Defaults to <code>Command</code> </td>
-      </tr>
-      <tr> 
-        <td> DOCUMENT_PATH </td>
-        <td> Provide the document path if added using configmaps</td>
-        <td> Defaults to Litmus-AWS-SSM-Docs-For-CPU-Hog.yml </td>
-      </tr>
-      <tr> 
-        <td> INSTALL_DEPENDENCIES </td>
-        <td> Select to install dependencies used to run the cpu chaos. It can be either True or False</td>
-        <td> Defaults to True </td>
       </tr>
       <tr>
         <td> SEQUENCE </td>

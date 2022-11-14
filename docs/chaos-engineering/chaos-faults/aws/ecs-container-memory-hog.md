@@ -22,7 +22,7 @@ title: ECS Container Memory Hog
 <details>
 <summary>View the uses of the experiment</summary>
 <div>
-Memory usage within containers is subject to various constraints. If the limits are specified in their spec, exceeding them can cause termination of the container (due to OOMKill of the primary process, often pid 1) - the restart of the container by docker, subject to the policy specified. For containers with no limits placed, the memory usage is uninhibited until such time as the VM level OOM Behaviour takes over. In this case, containers on the Instance can be killed based on their oom_score. This eval is extended to all task container running on the instance - thereby causing a bigger blast radius.
+Memory usage within containers is subject to various constraints. If the limits are specified in their spec, exceeding them can cause termination of the container (due to OOMKill of the primary process, often pid 1) - the restart of the container by docker, subject to the policy specified. For containers with no limits placed, the memory usage is uninhibited until such time as the VM level OOM Behaviour takes over. In this case, containers on the Instance can be killed based on their oom_score. This eval is extended to all task containers running on the instance - thereby causing a bigger blast radius.
 
 This experiment launches a stress process within the target container - which can cause either the primary process in the container to be resource constrained in cases where the limits are enforced OR eat up available system memory on the instance in cases where the limits are not specified.
 </div>
@@ -109,31 +109,6 @@ stringData:
         <td> AWS_SHARED_CREDENTIALS_FILE </td>
         <td> Provide the path for aws secret credentials</td>
         <td> Defaults to <code>/tmp/cloud_config.yml</code> </td>
-      </tr>
-      <tr> 
-        <td> DOCUMENT_NAME </td>
-        <td> Provide the name of addded ssm docs (if not using the in-build docs)</td>
-        <td> Default to Litmus-AWS-SSM-Docs-For-memory-hog</td>
-      </tr>
-      <tr> 
-        <td> DOCUMENT_FORMAT </td>
-        <td> Provide the format of the ssm docs. It can be YAML or JSON</td>
-        <td> Defaults to <code>YAML</code> </td>
-      </tr>
-      <tr> 
-        <td> DOCUMENT_TYPE </td>
-        <td> Provide the document type of added ssm docs (if not using the default docs)</td>
-        <td> Defaults to <code>Command</code> </td>
-      </tr>
-      <tr> 
-        <td> DOCUMENT_PATH </td>
-        <td> Provide the document path if added using configmaps</td>
-        <td> Defaults to Litmus-AWS-SSM-Docs-For-memory-hog.yml </td>
-      </tr>
-      <tr> 
-        <td> INSTALL_DEPENDENCIES </td>
-        <td> Select to install dependencies used to run the Memory chaos. It can be either True or False</td>
-        <td> Defaults to True </td>
       </tr>
       <tr> 
         <td>  MEMORY_CONSUMPTION </td>

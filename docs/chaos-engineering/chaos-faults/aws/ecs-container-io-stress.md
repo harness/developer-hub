@@ -111,31 +111,6 @@ stringData:
       <td> Defaults to <code>/tmp/cloud_config.yml</code> </td>
     </tr>
     <tr> 
-      <td> DOCUMENT_NAME </td>
-      <td> Provide the name of addded ssm docs (if not using the in-build docs)</td>
-      <td> Default to Litmus-AWS-SSM-Docs-For-IO-Stress</td>
-    </tr>
-    <tr> 
-      <td> DOCUMENT_FORMAT </td>
-      <td> Provide the format of the ssm docs. It can be YAML or JSON</td>
-      <td> Defaults to <code>YAML</code> </td>
-    </tr>
-    <tr> 
-      <td> DOCUMENT_TYPE </td>
-      <td> Provide the document type of added ssm docs (if not using the default docs)</td>
-      <td> Defaults to <code>Command</code> </td>
-    </tr>
-    <tr> 
-      <td> DOCUMENT_PATH </td>
-      <td> Provide the document path if added using configmaps</td>
-      <td> Defaults to Litmus-AWS-SSM-Docs-For-IO-Hog.yml </td>
-    </tr>
-    <tr> 
-      <td> INSTALL_DEPENDENCIES </td>
-      <td> Select to install dependencies used to run the io chaos. It can be either True or False</td>
-      <td> Defaults to True </td>
-    </tr>
-    <tr> 
       <td> FILESYSTEM_UTILIZATION_BYTES </td>
       <td> Provide the memory for IO stress (in GB)</td>
       <td> Defaults to 1 </td>
@@ -264,7 +239,7 @@ spec:
 
 ### Workers For Stress
 
-The worker's count for the stress can be tuned with NUMBER_OF_WORKERS ENV.
+The worker's count for the stress can be tuned with `NUMBER_OF_WORKERS` ENV.
 
 Use the following example to tune this:
 

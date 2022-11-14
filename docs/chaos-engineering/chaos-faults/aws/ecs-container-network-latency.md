@@ -110,34 +110,24 @@ stringData:
         <td> Defaults to <code>/tmp/cloud_config.yml</code> </td>
       </tr>
       <tr> 
-        <td> DOCUMENT_NAME </td>
-        <td> Provide the name of addded ssm docs (if not using the in-build docs)</td>
-        <td> Default to Litmus-AWS-SSM-Docs-For-memory-hog</td>
-      </tr>
-      <tr> 
-        <td> DOCUMENT_FORMAT </td>
-        <td> Provide the format of the ssm docs. It can be YAML or JSON</td>
-        <td> Defaults to <code>YAML</code> </td>
-      </tr>
-      <tr> 
-        <td> DOCUMENT_TYPE </td>
-        <td> Provide the document type of added ssm docs (if not using the default docs)</td>
-        <td> Defaults to <code>Command</code> </td>
-      </tr>
-      <tr> 
-        <td> DOCUMENT_PATH </td>
-        <td> Provide the document path if added using configmaps</td>
-        <td> Defaults to Litmus-AWS-SSM-Docs-For-memory-hog.yml </td>
-      </tr>
-      <tr> 
-        <td> INSTALL_DEPENDENCIES </td>
-        <td> Select to install dependencies used to run the Memory chaos. It can be either True or False</td>
-        <td> Defaults to True </td>
-      </tr>
-      <tr> 
         <td>  NETWORK_LATENCY </td>
         <td> Provide the value of latency in ms	</td>
         <td> Defaults to 2000 </td>
+      </tr>
+      <tr> 
+          <td> DESTINATION_IPS </td>
+          <td> IP addresses of the services or the CIDR blocks(range of IPs), the accessibility to which is impacted </td>
+          <td> Comma separated IP(S) or CIDR(S) can be provided. if not provided, it will induce network chaos for all ips/destinations </td>
+      </tr>
+      <tr> 
+          <td> DESTINATION_HOSTS </td>
+          <td> DNS Names of the services, the accessibility to which, is impacted </td>
+          <td> if not provided, it will induce network chaos for all ips/destinations or DESTINATION_IPS if already defined </td>
+      </tr>
+      <tr>
+          <td> NETWORK_INTERFACE  </td>
+          <td> Name of ethernet interface considered for shaping traffic </td>
+          <td> Defaults to <code>eth0</code> </td>
       </tr>
       <tr> 
         <td> JITTER </td>

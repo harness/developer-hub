@@ -5,7 +5,7 @@ title: ECS Container CPU Hog
 
 ## Introduction
 
-- ECS Container CPU hog contains chaos to disrupt the state of infra resources. The experiment can induce a stress chaos on AWS ECS container using Amazon SSM Run Command, this is carried out by using SSM Docs which is in-built in the experiment for the give chaos experiment.
+- ECS Container CPU hog contains chaos to disrupt the state of infra resources. The experiment can induce stress chaos on the AWS ECS container using Amazon SSM Run Command, this is carried out by using SSM Docs which is in-built into the experiment for the give chaos experiment.
 
 - It causes CPU chaos on containers of ECS task with given `CLUSTER_NAME` using an SSM docs for a certain chaos duration.
 
@@ -22,7 +22,7 @@ title: ECS Container CPU Hog
 <details>
 <summary>View the uses of the experiment</summary>
 <div>
-Disk Pressure or CPU hogs is another very common and frequent scenario we find with conrainers/applications that can result in the eviction of the application (task container) and impact its delivery. Such scenarios that can still occur despite whatever availability aids docker provides. These problems are generally referred to as "Noisy Neighbour" problems.
+CPU hogs are another very common and frequent scenario we find with containers/applications that can result in the eviction of the application (task container) and impact its delivery. Such scenarios can still occur despite whatever availability aids docker provides. These problems are generally referred to as "Noisy Neighbour" problems.
 
 Injecting a rogue process into a target task container, we starve the main microservice process (typically pid 1) of the resources allocated to it (where limits are defined) causing slowness in application traffic or in other cases unrestrained use can cause instance to exhaust resources leading to eviction of all task container. So this category of chaos experiment helps to build the immunity on the application undergoing any such stress scenario.
 </div>
@@ -109,31 +109,6 @@ stringData:
         <td> AWS_SHARED_CREDENTIALS_FILE </td>
         <td> Provide the path for aws secret credentials</td>
         <td> Defaults to <code>/tmp/cloud_config.yml</code> </td>
-      </tr>
-      <tr> 
-        <td> DOCUMENT_NAME </td>
-        <td> Provide the name of addded ssm docs (if not using the in-build docs)</td>
-        <td> Default to Litmus-AWS-SSM-Docs-For-CPU-Hog</td>
-      </tr>
-      <tr> 
-        <td> DOCUMENT_FORMAT </td>
-        <td> Provide the format of the ssm docs. It can be YAML or JSON</td>
-        <td> Defaults to <code>YAML</code> </td>
-      </tr>
-      <tr> 
-        <td> DOCUMENT_TYPE </td>
-        <td> Provide the document type of added ssm docs (if not using the default docs)</td>
-        <td> Defaults to <code>Command</code> </td>
-      </tr>
-      <tr> 
-        <td> DOCUMENT_PATH </td>
-        <td> Provide the document path if added using configmaps</td>
-        <td> Defaults to Litmus-AWS-SSM-Docs-For-CPU-Hog.yml </td>
-      </tr>
-      <tr> 
-        <td> INSTALL_DEPENDENCIES </td>
-        <td> Select to install dependencies used to run the cpu chaos. It can be either True or False</td>
-        <td> Defaults to True </td>
       </tr>
       <tr> 
         <td> CPU_CORE </td>
