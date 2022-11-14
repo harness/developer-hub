@@ -1,4 +1,4 @@
-# contains the instance id, to be terminated/stopped
+# io-stress in the VMWare VM
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -8,15 +8,15 @@ spec:
   annotationCheck: "false"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: ec2-terminate-by-id
+  - name: vmware-io-stress
     spec:
       components:
         env:
-        # id of the ec2 instance
-        - name: EC2_INSTANCE_ID
-          value: 'instance-1'
-        # region for the ec2 instance
-        - name: REGION
-          value: '<region for EC2_INSTANCE_ID>'
+        # Name of the VM
+        - name: VM_NAME
+          value: 'test-vm-01'
+        # percentage of free space of file system, need to be stressed
+        - name: FILESYSTEM_UTILIZATION_PERCENTAGE
+          value: '10' 
         - name: TOTAL_CHAOS_DURATION
           VALUE: '60'

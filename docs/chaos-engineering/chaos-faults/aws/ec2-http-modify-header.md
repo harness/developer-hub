@@ -17,7 +17,6 @@ title: EC2 HTTP Modify Header
 :::info
 
 - Ensure that Kubernetes Version >= 1.17
-- Ensure that the <code>EC2-http-latency</code> experiment resource is available in the cluster by executing <code>kubectl get chaosexperiments</code> in the desired namespace.
 
 **AWS EC2 Access Requirement:**
 
