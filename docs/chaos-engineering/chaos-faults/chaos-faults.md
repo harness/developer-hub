@@ -120,6 +120,31 @@ Following Platform Chaos faults are available:
     <td>Injects dns faults on the target ec2 instance(s)</td>
     <td><a href="/docs/chaos-engineering/chaos-faults/aws/ec2-dns-chaos">ec2-dns-chaos</a></td>
   </tr>
+  <tr>
+    <td>ECS Container CPU Hog</td>
+    <td>Injects container cpu hog chaos on task container</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/aws/ecs-container-cpu-hog">ec2-dns-chaos</a></td>
+  </tr>
+  <tr>
+    <td>ECS Container IO Stress</td>
+    <td>Injects container IO stress chaos on task container</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/aws/ecs-container-io-stress">ec2-dns-chaos</a></td>
+  </tr>
+  <tr>
+    <td>ECS Container Memory Hog</td>
+    <td>Injects container memory hog chaos on task container</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/aws/ecs-container-memory-hog">ec2-dns-chaos</a></td>
+  </tr>
+  <tr>
+    <td>EC2 Network Latency</td>
+    <td>Injects container network latency chaos on task container</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/aws/ecs-network-latency">ec2-dns-chaos</a></td>
+  </tr>
+  <tr>
+    <td>EC2 Network Loss</td>
+    <td>Injects container network latency chaos on task container</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/aws/ecs-network-loss">ec2-dns-chaos</a></td>
+  </tr>
 </table>
 
 ### GCP
@@ -213,32 +238,32 @@ Following Platform Chaos faults are available:
   <tr>
     <td>VMware VM Process kill</td>
     <td>Kill the processes running in the  VMware VMs using the PROCESSIDs</td>
-    <td><a href="/docs/chaos-engineering/Chaos%20Faults/VMware/vmware-vmprocesskill">vmware-vmprocesskill</a></td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/vmware/vmware-vmprocesskill">vmware-vmprocesskill</a></td>
   </tr>
   <tr>
     <td>VMware VM Cpu Hog</td>
     <td>VMware cpu hog experiment consumes the CPU resources on Linux OS based VMware VM</td>
-    <td><a href="/docs/chaos-engineering/Chaos%20Faults/VMware/vmware-cpuhog">vmware-cpuog</a></td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/vmware/vmware-cpuhog">vmware-cpuog</a></td>
   </tr>
 
   <tr>
     <td>VMware VM Memory Hog</td>
     <td>VMware memory hog experiment consumes the Memory resources on Linux OS based VMware VM</td>
-    <td><a href="/docs/chaos-engineering/Chaos%20Faults/VMware/vmware-memoryhog">vmware-memoryhog</a></td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/vmware/vmware-memoryhog">vmware-memoryhog</a></td>
   </tr>
   <tr>
     <td>VMware VM IO Stress</td>
     <td>This experiment causes disk stress on the target VMware VMs.</td>
-    <td><a href="/docs/chaos-engineering/Chaos%20Faults/VMware/vmware-vmprocesskill">vmware-vmprocesskill</a></td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/vmware/vmware-vmprocesskill">vmware-vmprocesskill</a></td>
   </tr>
   <tr>
     <td>VMware VM Service Stop</td>
     <td>VMware Service Stop experiment stops the target systemd services running on Linux OS based VMware VM</td>
-    <td><a href="/docs/chaos-engineering/Chaos%20Faults/VMware/vmware-vmservicestop">vmware-vmservicestop</a></td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/vmware/vmware-vmservicestop">vmware-vmservicestop</a></td>
   </tr>
   <tr>
     <td>VMware VM Disk Loss</td>
     <td>VMware Disk Loss experiment will detach the disks attached to a Linux OS based VMware VM.</td>
-    <td><a href="/docs/chaos-engineering/Chaos%20Faults/VMware/vmware-diskloss">vmware-diskloss</a></td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/vmware/vmware-diskloss">vmware-diskloss</a></td>
   </tr>
 </table>  

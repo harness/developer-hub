@@ -80,7 +80,7 @@ Coming soon.
       <tr>
         <td> POD_SELECTOR </td>
         <td> label selectors of the pods</td>
-        <td> Defaults to <code>{name: kubelet-density-app}</code> </td>
+        <td> Defaults to <code>name: kubelet-density-app</code> </td>
       </tr>
       <tr>
         <td> POD_IMAGE </td>
