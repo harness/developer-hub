@@ -278,12 +278,12 @@ Following Platform Chaos faults are available:
   <tr>
     <td>EC2 Container Network Latency</td>
     <td>Injects container network latency chaos on ECS task containers</td>
-    <td><a href="/docs/chaos-engineering/chaos-faults/aws/ecs-network-latency">ecs-container-network-latency</a></td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/aws/ecs-container-network-latency">ecs-container-network-latency</a></td>
   </tr>
   <tr>
     <td>EC2 Container Network Loss</td>
     <td>Injects container network latency chaos on ECS task containers</td>
-    <td><a href="/docs/chaos-engineering/chaos-faults/aws/ecs-network-loss">ecs-container-network-loss</a></td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/aws/ecs-container-network-loss">ecs-container-network-loss</a></td>
   </tr>
   <tr>
     <td>EC2 Agent Stop</td>
