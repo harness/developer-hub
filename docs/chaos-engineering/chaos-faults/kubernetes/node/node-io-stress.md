@@ -47,7 +47,7 @@ The target nodes should be in ready state before and after chaos injection.
       </tr>
       <tr>
         <td> NODE_LABEL </td>
-        <td> It contains node label, which will be used to filter the target nodes if <code>TARGET_NODES<code> ENV is not set </td>
+        <td> It contains node label, which will be used to filter the target nodes if <code>TARGET_NODES</code> ENV is not set </td>
         <td>It is mutually exclusive with the <code>TARGET_NODES</code> ENV. If both are provided then it will use the <code>TARGET_NODES</code></td>
       </tr>
     </table>
