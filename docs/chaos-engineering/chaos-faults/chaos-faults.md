@@ -306,6 +306,19 @@ Following Platform Chaos faults are available:
     <td><a href="/docs/chaos-engineering/chaos-faults/azure/azure-instance-stop">azure-instance-stop</a></td>
   </tr>
   <tr>
+    <td>Azure Instance CPU Hog</td>
+    <td>Inject CPU stress chaos on Azure instance</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/azure/azure-instance-cpu-hog">azure-instance-cpu-hog</a></td>
+  </tr>
+  <tr>
+    <td>Azure Instance Memory Hog</td>
+    <td>Inject Memory stress chaos on Azure instance</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/azure/azure-instance-memory-hog">azure-instance-memory-hog</a></td>
+  </tr>
+  <tr>
+    <td>Azure Instance IO Stress</td>
+    <td>Inject IO stress chaos on Azure instance</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/azure/azure-instance-io-stress">azure-instance-io-stress</a></td>
     <td>Azure Disk Loss</td>
     <td>Detach azure disk from instance</td>
     <td><a href="/docs/chaos-engineering/chaos-faults/azure/azure-disk-loss">azure-disk-loss</a></td>

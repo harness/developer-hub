@@ -4,6 +4,7 @@ title: Kubelet Density
 ---
 
 ## Introduction
+
 - It checks the resilience of the kubelet by creating pods on the specified node.
 - It helps to check the performance of the kubelet for the specified node
 
@@ -12,6 +13,7 @@ title: Kubelet Density
 :::
 
 ## Uses
+
 <details>
 <summary>View the uses of the experiment</summary>
 <div>
@@ -20,16 +22,23 @@ Coming soon.
 </details>
 
 ## Prerequisites
+
 :::info
+
 - Ensure that Kubernetes Version > 1.16.
+
 :::
 
 ## Default Validations
+
 :::info
+
 - The target nodes should be in healthy state before and after chaos injection.
+
 :::
 
 ## Experiment tunables
+
 <details>
     <summary>Check the Experiment Tunables</summary>
     <h2>Mandatory Fields</h2>
@@ -39,7 +48,7 @@ Coming soon.
         <th> Description </th>
         <th> Notes </th>
       </tr>
-      <tr> 
+      <tr>
         <td> TARGET_NODE </td>
         <td> name of the target node</td>
         <td> it selects a random target node, if this env is not set</td>
@@ -52,12 +61,12 @@ Coming soon.
         <th> Description </th>
         <th> Notes </th>
       </tr>
-      <tr> 
+      <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> The total time duration for chaos insertion (sec) </td>
         <td> Defaults to 90s </td>
       </tr>
-      <tr> 
+      <tr>
         <td> POD_COUNT </td>
         <td> total number of pods, which needs to be created during chaos</td>
         <td> Defaults to 50 </td>
@@ -103,7 +112,7 @@ Refer the [common attributes](../common-tunables-for-all-experiments) to tune th
 
 ### Pod Template provided as CM
 
-Experiment creates pods on the target node during chaos. Template of the pod can be provided by mounting pod-template via configmap and 
+Experiment creates pods on the target node during chaos. Template of the pod can be provided by mounting pod-template via configmap and
 pass its name and mountPath via `POD_TEMPLATE_CM` and `POD_TEMPLATE_PATH` ENV respectively.
 
 Use the following example to tune this:

@@ -1,4 +1,4 @@
-## contains the azure instance details
+# filesystem bytes to utilize
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -8,15 +8,15 @@ spec:
   annotationCheck: "false"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: azure-instance-stop
+  - name: azure-instance-io-stress
     spec:
       components:
         env:
-        # comma separated list of azure instance names
+        - name: FILESYSTEM_UTILIZATION_BYTES
+          VALUE: '1024'
+        # name of the azure instance
         - name: AZURE_INSTANCE_NAMES
-          value: 'instance-01,instance-02'
-        # name of the resource group
+          value: 'instance-1'
+        # resource group for the azure instance
         - name: RESOURCE_GROUP
           value: 'rg-azure'
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
