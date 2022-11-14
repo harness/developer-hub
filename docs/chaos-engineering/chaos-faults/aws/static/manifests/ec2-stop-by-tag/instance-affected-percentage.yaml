@@ -12,7 +12,7 @@ spec:
     spec:
       components:
         env:
-        # percentage of ec2 instance filterd by tags 
+        # percentage of ec2 instance filtered by tags
         - name: INSTANCE_AFFECTED_PERC
           value: '100'
         # tag of the ec2 instance

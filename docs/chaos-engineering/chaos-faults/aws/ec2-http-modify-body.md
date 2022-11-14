@@ -118,7 +118,7 @@ You can pass the VM credentials as secrets or as an chaosengine ENV variable.
         </tr>
         <tr>
             <td> INSTALL_DEPENDENCY </td>
-            <td> Whether to install the dependancy to run the experiment </td>
+            <td> Whether to install the dependency to run the experiment </td>
             <td> If the dependency already exists, you can turn it off. Defaults to True.</td>
         </tr>
         <tr>

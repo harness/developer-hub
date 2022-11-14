@@ -1,0 +1,22 @@
+# multiple workers to utilize resources
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: azure-instance-memory-hog
+    spec:
+      components:
+        env:
+        - name: NUMBER_OF_WORKERS
+          VALUE: '3'
+        # name of the azure instance
+        - name: AZURE_INSTANCE_NAMES
+          value: 'instance-1'
+        # resource group for the azure instance
+        - name: RESOURCE_GROUP
+          value: 'rg-azure'

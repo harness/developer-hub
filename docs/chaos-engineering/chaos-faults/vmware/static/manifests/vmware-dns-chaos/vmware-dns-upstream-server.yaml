@@ -1,29 +1,29 @@
-## it inject the chaos for the ingrees and egress traffic for specific ips/hosts
+# induces dns chaos on the VMware VMs
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
-  name: vmware-engine
+  name: engine-nginx
 spec:
   engineState: "active"
   annotationCheck: "false"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: vmware-network-latency
+  - name: vmware-dns-chaos
     spec:
       components:
         env:
-        # name of the network interface 
-        - name: NETWORK_INTERFACE
-          value: 'eth0'
-
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
+        # name of the upstream server
+        - name: UPSTREAM_SERVER
+          value: '8.8.8.8'
 
         - name: VM_NAME
           value: 'vm-1,vm-2'
 
+        - name: TOTAL_CHAOS_DURATION
+          VALUE: '60'
+
         - name: VM_USER_NAME
           value: 'ubuntu,debian'
-          
+
         - name: VM_PASSWORD
           value: '123,123'

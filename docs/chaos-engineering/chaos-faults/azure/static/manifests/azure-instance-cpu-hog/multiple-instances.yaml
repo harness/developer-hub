@@ -1,0 +1,20 @@
+# mutilple instance targets
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: azure-instance-cpu-hog
+    spec:
+      components:
+        env:
+        # names of the azure instance
+        - name: AZURE_INSTANCE_NAMES
+          value: 'instance-1,instance-2'
+        # resource group for the azure instance
+        - name: RESOURCE_GROUP
+          value: 'rg-azure'

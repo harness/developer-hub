@@ -73,7 +73,7 @@ If the target EC2 instance is a part of a self-managed nodegroup then make sure 
       </tr>
       <tr>
         <td> REGION </td>
-        <td> The region name of the target instace</td>
+        <td> The region name of the target instance</td>
         <td> </td>
       </tr> 
     </table>
@@ -141,7 +141,7 @@ spec:
   annotationCheck: "false"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: ec2-stop-by-tag
+  - name: ec2-terminate-by-tag
     spec:
       components:
         env:
@@ -173,11 +173,11 @@ spec:
   annotationCheck: "false"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: ec2-stop-by-tag
+  - name: ec2-terminate-by-tag
     spec:
       components:
         env:
-        # percentage of ec2 instance filterd by tags 
+        # percentage of ec2 instance filtered by tags
         - name: INSTANCE_AFFECTED_PERC
           value: '100'
         # tag of the ec2 instance

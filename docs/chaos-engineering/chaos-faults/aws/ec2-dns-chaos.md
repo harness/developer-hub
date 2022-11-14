@@ -260,7 +260,7 @@ spec:
         env:
         # name of the upstream server
         - name: UPSTREAM_SERVER
-          value: '<upstream-server>'
+          value: '8.8.8.8'
 
         - name: EC2_INSTANCE_ID
           value: 'instance-1'

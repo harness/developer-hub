@@ -26,7 +26,7 @@ Kubernetes faults disrupt the resources running on a Kubernetes cluster. They ca
   </tr>
   <tr>
     <td>Disk Fill</td>
-    <td>Fillup Ephemeral Storage of a Resourced</td>
+    <td>Fill up Ephemeral Storage of a Resourced</td>
     <td><a href="/docs/chaos-engineering/chaos-faults/kubernetes/pod/disk-fill">disk-fill</a></td>
   </tr>
   <tr>
@@ -306,6 +306,19 @@ Following Platform Chaos faults are available:
     <td><a href="/docs/chaos-engineering/chaos-faults/azure/azure-instance-stop">azure-instance-stop</a></td>
   </tr>
   <tr>
+    <td>Azure Instance CPU Hog</td>
+    <td>Inject CPU stress chaos on Azure instance</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/azure/azure-instance-cpu-hog">azure-instance-cpu-hog</a></td>
+  </tr>
+  <tr>
+    <td>Azure Instance Memory Hog</td>
+    <td>Inject Memory stress chaos on Azure instance</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/azure/azure-instance-memory-hog">azure-instance-memory-hog</a></td>
+  </tr>
+  <tr>
+    <td>Azure Instance IO Stress</td>
+    <td>Inject IO stress chaos on Azure instance</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/azure/azure-instance-io-stress">azure-instance-io-stress</a></td>
     <td>Azure Disk Loss</td>
     <td>Detach azure disk from instance</td>
     <td><a href="/docs/chaos-engineering/chaos-faults/azure/azure-disk-loss">azure-disk-loss</a></td>
@@ -355,6 +368,36 @@ Following Platform Chaos faults are available:
     <td>Modify HTTP Response on services running on the VMs</td>
     <td><a href="/docs/chaos-engineering/chaos-faults/vmware/vmware-http-modify-response">vmware-http-modify-response</a></td>
   </tr>
+  <tr>
+    <td>VMware VM Process kill</td>
+    <td>Kill the processes running in the VMware VMs using the PROCESS_IDS</td>
+    <td><a href="/docs/chaos-engineering/Chaos%20Faults/VMware/vmware-process-kill">vmware-process-kill</a></td>
+  </tr>
+  <tr>
+    <td>VMware VM Cpu Hog</td>
+    <td>VMware cpu hog experiment consumes the CPU resources on Linux OS based VMware VM</td>
+    <td><a href="/docs/chaos-engineering/Chaos%20Faults/VMware/vmware-cpu-hog">vmware-cpu-hog</a></td>
+  </tr>
+  <tr>
+    <td>VMware VM Memory Hog</td>
+    <td>VMware memory hog experiment consumes the Memory resources on Linux OS based VMware VM</td>
+    <td><a href="/docs/chaos-engineering/Chaos%20Faults/VMware/vmware-memory-hog">vmware-memory-hog</a></td>
+  </tr>
+  <tr>
+    <td>VMware VM IO Stress</td>
+    <td>This experiment causes disk stress on the target VMware VMs.</td>
+    <td><a href="/docs/chaos-engineering/Chaos%20Faults/VMware/vmware-io-stress">vmware-io-stress</a></td>
+  </tr>
+  <tr>
+    <td>VMware VM Service Stop</td>
+    <td>VMware Service Stop experiment stops the target systemd services running on Linux OS based VMware VM</td>
+    <td><a href="/docs/chaos-engineering/Chaos%20Faults/VMware/vmware-service-stop">vmware-service-stop</a></td>
+  </tr>
+  <tr>
+    <td>VMware VM Disk Loss</td>
+    <td>VMware Disk Loss experiment will detach the disks attached to a Linux OS based VMware VM.</td>
+    <td><a href="/docs/chaos-engineering/Chaos%20Faults/VMware/vmware-disk-loss">vmware-disk-loss</a></td>
+  </tr>
 </table>
 
 ### Kube Resilience
@@ -369,36 +412,5 @@ Following Platform Chaos faults are available:
     <td>Kubelet Density</td>
     <td>Check kubelet resilience for a specific node</td>
     <td><a href="/docs/chaos-engineering/chaos-faults/kube-resilience/kubelet-density">kubelet-density</a></td>
-  </tr>
-  <tr>
-    <td>VMware VM Process kill</td>
-    <td>Kill the processes running in the  VMware VMs using the PROCESSIDs</td>
-    <td><a href="/docs/chaos-engineering/Chaos%20Faults/VMware/vmware-vmprocesskill">vmware-vmprocesskill</a></td>
-  </tr>
-  <tr>
-    <td>VMware VM Cpu Hog</td>
-    <td>VMware cpu hog experiment consumes the CPU resources on Linux OS based VMware VM</td>
-    <td><a href="/docs/chaos-engineering/Chaos%20Faults/VMware/vmware-cpuhog">vmware-cpuog</a></td>
-  </tr>
-
-  <tr>
-    <td>VMware VM Memory Hog</td>
-    <td>VMware memory hog experiment consumes the Memory resources on Linux OS based VMware VM</td>
-    <td><a href="/docs/chaos-engineering/Chaos%20Faults/VMware/vmware-memoryhog">vmware-memoryhog</a></td>
-  </tr>
-  <tr>
-    <td>VMware VM IO Stress</td>
-    <td>This experiment causes disk stress on the target VMware VMs.</td>
-    <td><a href="/docs/chaos-engineering/Chaos%20Faults/VMware/vmware-vmprocesskill">vmware-vmprocesskill</a></td>
-  </tr>
-  <tr>
-    <td>VMware VM Service Stop</td>
-    <td>VMware Service Stop experiment stops the target systemd services running on Linux OS based VMware VM</td>
-    <td><a href="/docs/chaos-engineering/Chaos%20Faults/VMware/vmware-vmservicestop">vmware-vmservicestop</a></td>
-  </tr>
-  <tr>
-    <td>VMware VM Disk Loss</td>
-    <td>VMware Disk Loss experiment will detach the disks attached to a Linux OS based VMware VM.</td>
-    <td><a href="/docs/chaos-engineering/Chaos%20Faults/VMware/vmware-diskloss">vmware-diskloss</a></td>
   </tr>
 </table>  
