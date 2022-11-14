@@ -2,7 +2,6 @@
 id: chaos-faults
 title: Chaos Faults
 ---
-# Chaos Faults
 
 The fault execution is triggered upon creation of the ChaosEngine resource (various examples of which are provided under the respective faults). Typically, these chaosengines are embedded within the 'steps' of a Chaos fault. However, one may also create the ChaosEngines manually, and the chaos-operator reconciles this resource and triggers the fault execution.
 
@@ -65,6 +64,21 @@ Following Platform Chaos faults are available:
     <td>EC2 Stop By ID</td>
     <td>Stop EC2 instances using the instance IDs</td>
     <td><a href="/docs/chaos-engineering/chaos-faults/aws/ec2-stop-by-id">ec2-stop-by-id</a></td>
+  </tr>
+  <tr>
+    <td>EC2 CPU Hog</td>
+    <td>Inject CPU stress chaos on EC2 instance</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/aws/ec2-cpu-hog">ec2-cpu-hog</a></td>
+  </tr>
+  <tr>
+    <td>EC2 Memory Hog</td>
+    <td>Inject Memory stress chaos on EC2 instance</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/aws/ec2-memory-hog">ec2-memory-hog</a></td>
+  </tr>
+  <tr>
+    <td>EC2 IO Stress</td>
+    <td>Inject IO stress chaos on EC2 instance</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/aws/ec2-io-stress">ec2-io-stress</a></td>
   </tr>
   <tr>
     <td>EC2 HTTP Latency</td>
