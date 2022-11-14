@@ -1,0 +1,58 @@
+---
+title: Create a Project
+description: Before you can create a Feature Flag, you need to create a Project in the Harness platform. A Feature Flag is available only for the Project the Flag is created in, so you need to create any Flags in…
+tags: 
+   - helpDocs
+# sidebar_position: 2
+helpdocs_topic_id: 47fkt1ric5
+helpdocs_category_id: gjyyhm9f9h
+helpdocs_is_private: false
+helpdocs_is_published: true
+---
+
+Before you can create a Feature Flag, you need to create a Project in the Harness platform. A Feature Flag is available only for the Project the Flag is created in, so you need to create any Flags in each Project you want to use them for.
+
+This topic describes how to create a Project in the Harness Platform. 
+
+To read more about the Harness Platform, go to [Harness Platform](https://harness.helpdocs.io/category/3fso53aw1u-howto-general).
+
+## Before you begin
+
+Before you create a Feature Flag, you must have [Created an Organization](https://docs.harness.io/article/36fw2u92i4-create-an-organization). It's also useful to know about how Access Control works in Harness, to learn more about this, go to [Manage Access Control](../../1-ff-onboarding/3-ff-security-compliance/1-manage-access-control.md).
+
+## Create a Project
+
+1. In **Harness**, click **Feature Flags** and click **Create Project**.
+
+![A screenshot of the Harness Platform that highlights the Create Project button in the Feature Flag module.](./static/1-create-a-project-00.png)
+
+*Figure 1: Create a Project in Feature Flags*
+
+1. In **About the Project**, in **Name**, enter the name for your project and select a color for it.
+2. In the **Organization** drop-down menu, select the Organization for your Project. If you need to create a new Organization, go to [Create a Harness Organization](https://docs.harness.io/article/36fw2u92i4-create-an-organization#step_1_create_a_harness_org) and [Projects and Organizations](https://docs.harness.io/article/7fibxie636-projects-and-organizations).
+3. Click **Save and Continue**.
+
+![A screenshot of the About the Project form.](./static/1-create-a-project-01.png)*Figure 2: About the Project form*
+
+1. (Optional) In **Invite Collaborators**, in **Invite People to Collaborate**, add team members to the Project.
+2. (Optional) Assign a role to the collaborators and click **Add**. The roles you can select are:
+* Project Viewer
+* Project Admin
+* Pipeline Executer
+* Gitops Admin Role
+* Feature Flag Manage Role
+
+For more information about the permissions for each role, go to [Manage Access Control](../../1-ff-onboarding/3-ff-security-compliance/1-manage-access-control.md) and [Permissions Reference](https://ngdocs.harness.io/article/yaornnqh0z-permissions-reference).
+
+3. Click **Save and Continue**. Your Project is created.
+
+![A screenshot of the Invite Collaborators form when creating a Project. ](./static/1-create-a-project-02.png)*Figure 3: Invite Collaborators screen*
+
+4. In your **Project**, click **Feature Flags**.
+
+## Next step
+
+* [Create an Environment](2-create-an-environment.md) to host your Feature Flags. 
+
+
+
