@@ -52,11 +52,11 @@ stringData:
     }
 ```
 
-- If you change the secret key name (from `azure.auth`) please also update the `AZURE_AUTH_LOCATION` ENV value on `experiment.yaml`with the same name.
+- If you change the secret key name (from `azure.auth`) please also update the `AZURE_AUTH_LOCATION` ENV value on `experiment.yaml` with the same name.
 
 :::
 
-## Default Validationsw
+## Default Validations
 
 :::info
 

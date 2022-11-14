@@ -59,7 +59,7 @@ stringData:
     }
 ```
 
-- If you change the secret key name (from `azure.auth`) please also update the `AZURE_AUTH_LOCATION` ENV value on `experiment.yaml`with the same name.
+- If you change the secret key name (from `azure.auth`) please also update the `AZURE_AUTH_LOCATION` ENV value on `experiment.yaml` with the same name.
 
 :::
 
@@ -122,7 +122,7 @@ stringData:
     <tr>
         <td> SCALE_SET </td>
         <td> Whether the Instance are part of ScaleSet or not. It can be either disable or enable</td>
-        <td> Defaults to `disable` </td>
+        <td> Defaults to <code>disable</code> </td>
     </tr>
     <tr>
         <td> INSTALL_DEPENDENCIES </td>
