@@ -39,7 +39,7 @@ The application pods should be in running state before and after chaos injection
         <th> Notes </th>
       </tr>
       <tr>
-        <td> TARGET_CONTAINER  </td>
+        <td> TARGET_CONTAINER </td>
         <td> Name of container which is subjected to dns-error </td>
         <td> None </td>
       </tr>
@@ -64,7 +64,7 @@ The application pods should be in running state before and after chaos injection
         <td> Defaults to 0 (corresponds to 1 replica), provide numeric value only </td>
       </tr>
       <tr>
-        <td> CONTAINER_RUNTIME  </td>
+        <td> CONTAINER_RUNTIME </td>
         <td> container runtime interface for the cluster</td>
         <td> Defaults to docker, supported values: docker</td>
       </tr>
@@ -79,14 +79,14 @@ The application pods should be in running state before and after chaos injection
         <td> Default value: litmus, supported values: litmus </td>
       </tr>
       <tr>
-        <td> LIB_IMAGE  </td>
+        <td> LIB_IMAGE </td>
         <td> Image used to run the netem command </td>
         <td> Defaults to <code>litmuschaos/go-runner:latest</code> </td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injection of chaos in sec </td>
-        <td> </td>
+        <td> Eg. 30 </td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
@@ -122,7 +122,7 @@ spec:
     appns: "default"
     applabel: "app=nginx"
     appkind: "deployment"
-  chaosServiceAccount: pod-dns-error-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: pod-dns-error
     spec:
@@ -156,7 +156,7 @@ spec:
     appns: "default"
     applabel: "app=nginx"
     appkind: "deployment"
-  chaosServiceAccount: pod-dns-error-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: pod-dns-error
     spec:
@@ -192,7 +192,7 @@ spec:
     appns: "default"
     applabel: "app=nginx"
     appkind: "deployment"
-  chaosServiceAccount: pod-dns-error-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: pod-dns-error
     spec:

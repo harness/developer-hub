@@ -6,7 +6,7 @@ metadata:
 spec:
   engineState: "active"
   annotationCheck: "false"
-  chaosServiceAccount: node-memory-hog-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: node-memory-hog
     spec:

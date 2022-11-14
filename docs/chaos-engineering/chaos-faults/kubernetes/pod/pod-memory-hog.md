@@ -15,7 +15,7 @@ title: Pod Memory Hog
 <details>
 <summary>View the uses of the experiment</summary>
 <div>
-Memory usage within containers is subject to various constraints in Kubernetes. If the limits are specified in their spec, exceeding them can cause termination of the container (due to OOMKill of the primary process, often pid 1) - the restart of the container by kubelet, subject to the policy specified. For containers with no limits placed, the memory usage is uninhibited until such time as the Node level OOM Behaviour takes over. In this case, containers on the node can be killed based on their oom_score and the QoS class a given pod belongs to (bestEffort ones are first to be targeted). This eval is extended to all pods running on the node - thereby causing a bigger blast radius. 
+Memory usage within containers is subject to various constraints in Kubernetes. If the limits are specified in their spec, exceeding them can cause termination of the container (due to OOMKill of the primary process, often pid 1) - the restart of the container by kubelet, subject to the policy specified. For containers with no limits placed, the memory usage is uninhibited until such time as the Node level OOM behavior takes over. In this case, containers on the node can be killed based on their oom_score and the QoS class a given pod belongs to (bestEffort ones are first to be targeted). This eval is extended to all pods running on the node - thereby causing a bigger blast radius. 
 
 This experiment launches a stress process within the target container - which can cause either the primary process in the container to be resource constrained in cases where the limits are enforced OR eat up available system memory on the node in cases where the limits are not specified.
 </div>
@@ -57,17 +57,17 @@ The application pods should be in running state before and after chaos injection
         <td> Defaults to 60s </td>
       </tr>
       <tr>
-        <td> LIB  </td>
+        <td> LIB </td>
         <td> The chaos lib used to inject the chaos. Available libs are <code>litmus</code> and <code>pumba</code> </td>
         <td> Defaults to <code>litmus</code> </td>
       </tr>
       <tr>
-        <td> LIB_IMAGE  </td>
+        <td> LIB_IMAGE </td>
         <td> Image used to run the helper pod.</td>
         <td> Defaults to <code>litmuschaos/go-runner:1.13.8</code> </td>
       </tr>
       <tr>
-        <td> STRESS_IMAGE  </td>
+        <td> STRESS_IMAGE </td>
         <td> Container run on the node at runtime by the pumba lib to inject stressors. Only used in LIB <code>pumba</code></td>
         <td> Default to <code>alexeiled/stress-ng:latest-ubuntu</code> </td>
       </tr>
@@ -82,7 +82,7 @@ The application pods should be in running state before and after chaos injection
         <td> If not provided, it will select the first container of the target pod</td>
       </tr>   
       <tr>
-        <td> CONTAINER_RUNTIME  </td>
+        <td> CONTAINER_RUNTIME </td>
         <td> container runtime interface for the cluster</td>
         <td> Defaults to docker, supported values: docker, containerd and crio for litmus and only docker for pumba LIB </td>
       </tr>
@@ -99,7 +99,7 @@ The application pods should be in running state before and after chaos injection
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before injection of chaos in sec </td>
-        <td> </td>
+        <td> Eg. 30 </td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
@@ -134,7 +134,7 @@ spec:
     appns: "default"
     applabel: "app=nginx"
     appkind: "deployment"
-  chaosServiceAccount: pod-memory-hog-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: pod-memory-hog
     spec:
@@ -167,7 +167,7 @@ spec:
     appns: "default"
     applabel: "app=nginx"
     appkind: "deployment"
-  chaosServiceAccount: pod-memory-hog-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: pod-memory-hog
     spec:
@@ -208,7 +208,7 @@ spec:
     appns: "default"
     applabel: "app=nginx"
     appkind: "deployment"
-  chaosServiceAccount: pod-memory-hog-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: pod-memory-hog
     spec:

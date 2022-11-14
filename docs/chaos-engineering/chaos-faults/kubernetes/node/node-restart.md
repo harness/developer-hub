@@ -6,7 +6,7 @@ title: Node Restart
 ## Introduction
 
 - It causes chaos to disrupt state of node by restarting it.
-- It tests deployment sanity (replica availability & uninterrupted service) and recovery workflows of the application pod
+- It tests deployment sanity (replica availability & uninterrupted service) and recovery workflows of the application pod.
 
 :::tip Fault execution flow chart 
 ![Node Restart](./static/images/node-restart.png)
@@ -84,7 +84,7 @@ The target nodes should be in ready state before and after chaos injection.
         <th> Notes </th>
       </tr>
        <tr>
-        <td> LIB_IMAGE  </td>
+        <td> LIB_IMAGE </td>
         <td> The image used to restart the node </td>
         <td> Defaults to <code>litmuschaos/go-runner:latest</code> </td>
       </tr>
@@ -111,10 +111,10 @@ The target nodes should be in ready state before and after chaos injection.
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injection of chaos in sec </td>
-        <td> </td>
+        <td> Eg. 30 </td>
       </tr>
       <tr>
-        <td> LIB  </td>
+        <td> LIB </td>
         <td> The chaos lib used to inject the chaos </td>
         <td> Defaults to <code>litmus</code> supported litmus only </td>
       </tr>
@@ -142,7 +142,7 @@ metadata:
 spec:
   engineState: "active"
   annotationCheck: "false"
-  chaosServiceAccount: node-restart-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: node-restart
     spec:
@@ -174,7 +174,7 @@ metadata:
 spec:
   engineState: "active"
   annotationCheck: "false"
-  chaosServiceAccount: node-restart-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: node-restart
     spec:
@@ -206,7 +206,7 @@ metadata:
 spec:
   engineState: "active"
   annotationCheck: "false"
-  chaosServiceAccount: node-restart-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: node-restart
     spec:
@@ -214,7 +214,7 @@ spec:
         env:
         # internal ip of the targeted node
         - name: TARGET_NODE_IP
-          value: '<ip of node01>'
+          value: '10.0.170.92'
         # name of the target node
         - name: TARGET_NODE
           value: 'node01'

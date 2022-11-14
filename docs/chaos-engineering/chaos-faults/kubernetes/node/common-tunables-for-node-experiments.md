@@ -21,7 +21,7 @@ metadata:
 spec:
   engineState: "active"
   annotationCheck: "false"
-  chaosServiceAccount: node-drain-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: node-drain
     spec:
@@ -52,7 +52,7 @@ metadata:
 spec:
   engineState: "active"
   annotationCheck: "false"
-  chaosServiceAccount: node-cpu-hog-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: node-cpu-hog
     spec:
@@ -82,7 +82,7 @@ metadata:
 spec:
   engineState: "active"
   annotationCheck: "false"
-  chaosServiceAccount: node-cpu-hog-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: node-cpu-hog
     spec:
@@ -114,7 +114,7 @@ metadata:
 spec:
   engineState: "active"
   annotationCheck: "false"
-  chaosServiceAccount: node-cpu-hog-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: node-cpu-hog
     spec:

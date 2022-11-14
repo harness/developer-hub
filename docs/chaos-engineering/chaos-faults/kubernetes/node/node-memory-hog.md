@@ -6,8 +6,8 @@ title: Node Memory Hog
 ## Introduction
 
 - This experiment causes Memory resource exhaustion on the Kubernetes node. The experiment aims to verify resiliency of applications whose replicas may be evicted on account on nodes turning unschedulable (Not Ready) due to lack of Memory resources.
-- The Memory chaos is injected using a helper pod running the linux stress-ng tool (a workload generator)- The chaos is effected for a period equalling the TOTAL_CHAOS_DURATION and upto MEMORY_CONSUMPTION_PERCENTAGE(out of 100) or MEMORY_CONSUMPTION_MEBIBYTES(in Mebibytes out of total available memory).
-- Application implies services. Can be reframed as: Tests application resiliency upon replica evictions caused due to lack of Memory resources
+- The Memory chaos is injected using a helper pod running the linux stress-ng tool (a workload generator)- The chaos is effected for a period equalling the TOTAL_CHAOS_DURATION and up to <code>MEMORY_CONSUMPTION_PERCENTAGE</code> (out of 100) or <code>MEMORY_CONSUMPTION_MEBIBYTES</code> (in Mebibytes out of total available memory).
+- Application implies services. Can be reframed as: Tests application resiliency upon replica evictions caused due to lack of Memory resources.
 
 :::tip Fault execution flow chart 
 ![Node Memory Hog](./static/images/node-stress.png)
@@ -39,12 +39,12 @@ The target nodes should be in ready state before and after chaos injection.
       <tr>
         <td> TARGET_NODES </td>
         <td> Comma separated list of nodes, subjected to node memory hog chaos</td>
-        <td> </td>
+        <td> Eg. node-1,node-2 </td>
       </tr>
       <tr>
         <td> NODE_LABEL </td>
-        <td> It contains node label, which will be used to filter the target nodes if TARGET_NODES ENV is not set </td>
-        <td>It is mutually exclusive with the TARGET_NODES ENV. If both are provided then it will use the TARGET_NODES</td>
+        <td> It contains node label, which will be used to filter the target nodes if <code>TARGET_NODES</code> ENV is not set </td>
+        <td>It is mutually exclusive with the <code>TARGET_NODES</code> ENV. If both are provided then it will use the <code>TARGET_NODES</code> </td>
       </tr>
     </table>
     <h2>Optional Fields</h2>
@@ -57,49 +57,41 @@ The target nodes should be in ready state before and after chaos injection.
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> The time duration for chaos insertion (in seconds) </td>
-        <td> Optional </td>
         <td> Defaults to 120 </td>
       </tr>
       <tr>
-        <td> LIB  </td>
+        <td> LIB </td>
         <td> The chaos lib used to inject the chaos </td>
-        <td> Optional </td>
         <td> Defaults to `litmus` </td>
       </tr>
       <tr>
-        <td> LIB_IMAGE  </td>
+        <td> LIB_IMAGE </td>
         <td> Image used to run the stress command </td>
-        <td> Optional  </td>
         <td> Defaults to <code>litmuschaos/go-runner:latest</code> </td>
       </tr>
       <tr>
         <td> MEMORY_CONSUMPTION_PERCENTAGE </td>
         <td> Percent of the total node memory capacity </td>
-        <td> Optional </td>
         <td> Defaults to 30 </td>
       </tr>
       <tr>
         <td> MEMORY_CONSUMPTION_MEBIBYTES </td>
-        <td> The size in Mebibytes of total available memory. When using this we need to keep MEMORY_CONSUMPTION_PERCENTAGE empty as the percentage have more precedence</td>
-        <td> Optional </td>
-        <td> </td>
+        <td> The size in Mebibytes of total available memory. When using this we need to keep <code>MEMORY_CONSUMPTION_PERCENTAGE</code> empty as the percentage have more precedence</td>
+        <td> Eg. 256 </td>
       </tr>  
       <tr>
         <td> NUMBER_OF_WORKERS </td>
         <td> It is the number of VM workers involved in IO disk stress </td>
-        <td> Optional  </td>
         <td> Default to 1 </td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injection of chaos in sec </td>
-        <td> Optional  </td>
-        <td> </td>
+        <td> Eg. 30 </td>
       </tr>
       <tr>
         <td> NODES_AFFECTED_PERC </td>
-        <td> The Percentage of total nodes to target  </td>
-        <td> Optional </td>
+        <td> The Percentage of total nodes to target </td>
         <td> Defaults to 0 (corresponds to 1 node), provide numeric value only </td>
       </tr> 
       <tr>
@@ -132,7 +124,7 @@ metadata:
 spec:
   engineState: "active"
   annotationCheck: "false"
-  chaosServiceAccount: node-memory-hog-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: node-memory-hog
     spec:
@@ -148,7 +140,7 @@ spec:
 ### Memory Consumption Mebibytes
 
 It stresses the `MEMORY_CONSUMPTION_MEBIBYTES` MiBi of the memory of the targeted node. 
-It is mutually exclusive with the `MEMORY_CONSUMPTION_PERCENTAGE` ENV. If `MEMORY_CONSUMPTION_PERCENTAGE` ENV is set then it will use the percentage for the stress otherwise, it will stress the i/o based on `MEMORY_CONSUMPTION_MEBIBYTES` ENV.
+It is mutually exclusive with the `MEMORY_CONSUMPTION_PERCENTAGE` ENV. If `MEMORY_CONSUMPTION_PERCENTAGE` ENV is set then it will use the percentage for the stress otherwise, it will stress the IO based on `MEMORY_CONSUMPTION_MEBIBYTES` ENV.
 
 Use the following example to tune this:
 
@@ -164,7 +156,7 @@ metadata:
 spec:
   engineState: "active"
   annotationCheck: "false"
-  chaosServiceAccount: node-memory-hog-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: node-memory-hog
     spec:
@@ -193,7 +185,7 @@ metadata:
 spec:
   engineState: "active"
   annotationCheck: "false"
-  chaosServiceAccount: node-memory-hog-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: node-memory-hog
     spec:

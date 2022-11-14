@@ -10,7 +10,7 @@ spec:
     appns: "default"
     applabel: "app=nginx"
     appkind: "deployment"
-  chaosServiceAccount: pod-memory-hog-exec-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: pod-memory-hog-exec
     spec:

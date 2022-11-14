@@ -115,19 +115,19 @@ The application pods should be in running state before and after chaos injection
         <td> Defaults to 0 (corresponds to 1 replica), provide numeric value only </td>
       </tr> 
       <tr>
-        <td> LIB  </td>
+        <td> LIB </td>
         <td> The chaos lib used to inject the chaos </td>
         <td> Defaults to `litmus` supported litmus only </td>
       </tr>
       <tr>
-        <td> LIB_IMAGE  </td>
+        <td> LIB_IMAGE </td>
         <td> The image used to fill the disk </td>
         <td> Defaults to <code>litmuschaos/go-runner:latest</code> </td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before injection of chaos in sec </td>
-        <td> </td>
+        <td> Eg. 30 </td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
@@ -162,7 +162,7 @@ spec:
     appns: "default"
     applabel: "app=nginx"
     appkind: "deployment"
-  chaosServiceAccount: disk-fill-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: disk-fill
     spec:
@@ -197,7 +197,7 @@ spec:
     appns: "default"
     applabel: "app=nginx"
     appkind: "deployment"
-  chaosServiceAccount: disk-fill-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: disk-fill
     spec:
@@ -231,7 +231,7 @@ spec:
     appns: "default"
     applabel: "app=nginx"
     appkind: "deployment"
-  chaosServiceAccount: disk-fill-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: disk-fill
     spec:
@@ -264,7 +264,7 @@ spec:
     appns: "default"
     applabel: "app=nginx"
     appkind: "deployment"
-  chaosServiceAccount: disk-fill-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: disk-fill
     spec:
