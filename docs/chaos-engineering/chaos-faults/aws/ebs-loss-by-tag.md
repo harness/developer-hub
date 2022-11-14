@@ -131,7 +131,7 @@ metadata:
 spec:
   engineState: "active"
   annotationCheck: "false"
-  chaosServiceAccount: ebs-loss-by-tag-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: ebs-loss-by-tag
     spec:
@@ -163,7 +163,7 @@ metadata:
 spec:
   engineState: "active"
   annotationCheck: "false"
-  chaosServiceAccount: ebs-loss-by-tag-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: ebs-loss-by-tag
     spec:

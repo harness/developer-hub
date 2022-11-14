@@ -138,7 +138,7 @@ metadata:
 spec:
   engineState: "active"
   annotationCheck: "false"
-  chaosServiceAccount: ec2-terminate-by-id-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: ec2-terminate-by-id
     spec:

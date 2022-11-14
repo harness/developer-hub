@@ -132,7 +132,7 @@ metadata:
 spec:
   engineState: "active"
   annotationCheck: "false"
-  chaosServiceAccount: azure-disk-loss-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: azure-disk-loss
     spec:
@@ -165,7 +165,7 @@ metadata:
 spec:
   engineState: "active"
   annotationCheck: "false"
-  chaosServiceAccount: azure-disk-loss-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: azure-disk-loss
     spec:
@@ -200,7 +200,7 @@ metadata:
 spec:
   engineState: "active"
   annotationCheck: "false"
-  chaosServiceAccount: azure-disk-loss-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: azure-disk-loss
     spec:

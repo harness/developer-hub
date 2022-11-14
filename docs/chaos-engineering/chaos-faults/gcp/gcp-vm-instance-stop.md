@@ -133,7 +133,7 @@ metadata:
 spec:
   engineState: "active"
   annotationCheck: "false"
-  chaosServiceAccount: gcp-vm-instance-stop-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: gcp-vm-instance-stop
     spec:
@@ -169,7 +169,7 @@ metadata:
 spec:
   engineState: "active"
   annotationCheck: "false"
-  chaosServiceAccount: gcp-vm-instance-stop-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: gcp-vm-instance-stop
     spec:
@@ -209,7 +209,7 @@ metadata:
 spec:
   engineState: "active"
   annotationCheck: "false"
-  chaosServiceAccount: gcp-vm-instance-stop-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: gcp-vm-instance-stop
     spec:

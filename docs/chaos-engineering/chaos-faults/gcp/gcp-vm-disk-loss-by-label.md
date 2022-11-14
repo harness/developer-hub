@@ -132,7 +132,7 @@ metadata:
 spec:
   engineState: "active"
   annotationCheck: "false"
-  chaosServiceAccount: gcp-vm-disk-loss-by-label-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: gcp-vm-disk-loss-by-label
     spec:
@@ -166,7 +166,7 @@ metadata:
 spec:
   engineState: "active"
   annotationCheck: "false"
-  chaosServiceAccount: gcp-vm-disk-loss-by-label-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: gcp-vm-disk-loss-by-label
     spec:

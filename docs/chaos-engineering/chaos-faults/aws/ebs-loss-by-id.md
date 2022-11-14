@@ -123,7 +123,7 @@ metadata:
 spec:
   engineState: "active"
   annotationCheck: "false"
-  chaosServiceAccount: ebs-loss-by-id-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: ebs-loss-by-id
     spec:

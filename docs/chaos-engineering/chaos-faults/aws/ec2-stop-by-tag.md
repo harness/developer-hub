@@ -139,7 +139,7 @@ metadata:
 spec:
   engineState: "active"
   annotationCheck: "false"
-  chaosServiceAccount: ec2-stop-by-tag-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: ec2-stop-by-tag
     spec:
@@ -171,7 +171,7 @@ metadata:
 spec:
   engineState: "active"
   annotationCheck: "false"
-  chaosServiceAccount: ec2-stop-by-tag-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: ec2-stop-by-tag
     spec:
