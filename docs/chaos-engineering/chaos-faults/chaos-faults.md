@@ -147,7 +147,7 @@ Following Platform Chaos faults are available:
     <th>User Guide</th>
   </tr>
   <tr>
-    <td>VM Poweroff</td>
+    <td>VMware VM Poweroff</td>
     <td>Poweroff VMware VMs using the MOIDs</td>
     <td><a href="/docs/chaos-engineering/chaos-faults/vmware/vmware-vmpoweroff">vmware-vmpoweroff</a></td>
   </tr>
@@ -196,4 +196,35 @@ Following Platform Chaos faults are available:
     <td>Check kubelet resilience for a specific node</td>
     <td><a href="/docs/chaos-engineering/chaos-faults/kube-resilience/kubelet-density">kubelet-density</a></td>
   </tr>
-</table>
+  <tr>
+    <td>VMware VM Process kill</td>
+    <td>Kill the processes running in the  VMware VMs using the PROCESSIDs</td>
+    <td><a href="/docs/chaos-engineering/Chaos%20Faults/VMware/vmware-vmprocesskill">vmware-vmprocesskill</a></td>
+  </tr>
+  <tr>
+    <td>VMware VM Cpu Hog</td>
+    <td>VMware cpu hog experiment consumes the CPU resources on Linux OS based VMware VM</td>
+    <td><a href="/docs/chaos-engineering/Chaos%20Faults/VMware/vmware-cpuhog">vmware-cpuog</a></td>
+  </tr>
+
+  <tr>
+    <td>VMware VM Memory Hog</td>
+    <td>VMware memory hog experiment consumes the Memory resources on Linux OS based VMware VM</td>
+    <td><a href="/docs/chaos-engineering/Chaos%20Faults/VMware/vmware-memoryhog">vmware-memoryhog</a></td>
+  </tr>
+  <tr>
+    <td>VMware VM IO Stress</td>
+    <td>This experiment causes disk stress on the target VMware VMs.</td>
+    <td><a href="/docs/chaos-engineering/Chaos%20Faults/VMware/vmware-vmprocesskill">vmware-vmprocesskill</a></td>
+  </tr>
+  <tr>
+    <td>VMware VM Service Stop</td>
+    <td>VMware Service Stop experiment stops the target systemd services running on Linux OS based VMware VM</td>
+    <td><a href="/docs/chaos-engineering/Chaos%20Faults/VMware/vmware-vmservicestop">vmware-vmservicestop</a></td>
+  </tr>
+  <tr>
+    <td>VMware VM Disk Loss</td>
+    <td>VMware Disk Loss experiment will detach the disks attached to a Linux OS based VMware VM.</td>
+    <td><a href="/docs/chaos-engineering/Chaos%20Faults/VMware/vmware-diskloss">vmware-diskloss</a></td>
+  </tr>
+</table>  

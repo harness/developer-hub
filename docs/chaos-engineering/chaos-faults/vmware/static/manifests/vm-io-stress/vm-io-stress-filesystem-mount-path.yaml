@@ -1,0 +1,25 @@
+# io-stress in the VMWare VM
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: vmware-io-stress
+    spec:
+      components:
+        env:
+        # Name of the VM
+        - name: VM_NAME
+          value: 'test-vm-01'
+        # path need to be stressed/filled
+        - name: VOLUME_MOUNT_PATH
+          value: '/some-dir-in-container'
+        # size of io to be stressed
+        - name: FILESYSTEM_UTILIZATION_BYTES
+          value: '1' #in GB
+        - name: TOTAL_CHAOS_DURATION
+          VALUE: '60'
