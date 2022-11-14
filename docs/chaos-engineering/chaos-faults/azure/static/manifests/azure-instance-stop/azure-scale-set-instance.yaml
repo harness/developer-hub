@@ -5,7 +5,6 @@ metadata:
   name: engine-nginx
 spec:
   engineState: "active"
-  annotationCheck: "false"
   chaosServiceAccount: litmus-admin
   experiments:
   - name: azure-instance-stop
@@ -21,5 +20,3 @@ spec:
         # accepts enable/disable value. default is disable
         - name: SCALE_SET
           value: 'enable'
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'

@@ -120,7 +120,6 @@ metadata:
   name: engine-nginx
 spec:
   engineState: "active"
-  annotationCheck: "false"
   chaosServiceAccount: litmus-admin
   experiments:
   - name: vm-poweroff
@@ -130,7 +129,4 @@ spec:
         # MOID of the VM
         - name: APP_VM_MOIDS
           value: 'vm-53,vm-65'
-
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
 ```

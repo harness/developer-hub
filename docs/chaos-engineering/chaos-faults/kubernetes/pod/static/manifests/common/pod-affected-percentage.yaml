@@ -1,4 +1,5 @@
-# defines delay between each successive iteration of the chaos
+## it contains percentage of application pods to be targeted with matching labels or names in the application namespace
+## supported for all pod-level experiment expect pod-autoscaler
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -16,9 +17,6 @@ spec:
     spec:
       components:
         env:
-        # delay between each iteration of chaos
-        - name: CHAOS_INTERVAL
-          value: '15'
-        # time duration for the chaos execution
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
+        # percentage of application pods
+        - name: PODS_AFFECTED_PERC
+          value: '100'

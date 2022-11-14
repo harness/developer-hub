@@ -139,7 +139,7 @@ Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/pod-network-latency/network-latency.yaml yaml)
 ```yaml
-# it injects network-latency for the egress traffic
+# it inject the network-latency for the ingrees and egress traffic
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -175,7 +175,7 @@ Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/pod-network-latency/destination-ips-and-hosts.yaml yaml)
 ```yaml
-# it injects the chaos for the egress traffic for specific ips/hosts
+# it inject the chaos for the ingrees and egress traffic for specific ips/hosts
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:

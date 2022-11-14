@@ -1,4 +1,4 @@
-# defines delay between each successive iteration of the chaos
+# lib for the chaos injection
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -12,13 +12,10 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: container-kill
+  - name: pod-delete
     spec:
       components:
         env:
-        # delay between each iteration of chaos
-        - name: CHAOS_INTERVAL
-          value: '15'
-        # time duration for the chaos execution
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
+        # defines the name of the chaoslib used for the experiment
+        - name: LIB
+          value: 'litmus'

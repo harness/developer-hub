@@ -25,7 +25,7 @@ Coming soon.
 
 :::info
 - Ensure that Kubernetes Version > 1.16.
-- Ensure that you have sufficient AWS access to attach or detach an ebs volume for the instance. 
+- Ensure that you have sufficient AWS access to attach or detach an ebs volume for the instance.
 - Ensure to create a Kubernetes secret having the AWS access configuration(key) in the `CHAOS_NAMESPACE`. A sample secret file looks like:
 ```yaml
 apiVersion: v1
@@ -60,7 +60,7 @@ stringData:
         <th> Description </th>
         <th> Notes </th>
       </tr>
-      <tr> 
+      <tr>
         <td> EBS_VOLUME_ID </td>
         <td> Comma separated list of volume IDs subjected to ebs detach chaos</td>
         <td> Eg. ebs-vol-1,ebs-vol-2 </td>
@@ -78,26 +78,26 @@ stringData:
         <th> Description </th>
         <th> Notes </th>
       </tr>
-      <tr> 
+      <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> The time duration for chaos insertion (sec) </td>
         <td> Defaults to 30s </td>
       </tr>
-      <tr> 
+      <tr>
         <td> CHAOS_INTERVAL </td>
         <td> The time duration between the attachment and detachment of the volumes (sec) </td>
         <td> Defaults to 30s </td>
-      </tr>  
+      </tr>
       <tr>
         <td> SEQUENCE </td>
         <td> It defines sequence of chaos execution for multiple volumes</td>
         <td> Default value: parallel. Supported: serial, parallel </td>
-      </tr>  
+      </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injection of chaos in sec </td>
         <td> Eg: 30 </td>
-      </tr>   
+      </tr>
     </table>
 </details>
 
@@ -122,7 +122,6 @@ metadata:
   name: engine-nginx
 spec:
   engineState: "active"
-  annotationCheck: "false"
   chaosServiceAccount: litmus-admin
   experiments:
   - name: ebs-loss-by-id

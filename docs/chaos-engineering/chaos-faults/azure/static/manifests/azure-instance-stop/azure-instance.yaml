@@ -5,7 +5,6 @@ metadata:
   name: engine-nginx
 spec:
   engineState: "active"
-  annotationCheck: "false"
   chaosServiceAccount: litmus-admin
   experiments:
   - name: azure-instance-stop
@@ -18,5 +17,3 @@ spec:
         # name of the resource group
         - name: RESOURCE_GROUP
           value: 'rg-azure'
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'

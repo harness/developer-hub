@@ -203,7 +203,7 @@ Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/pod-network-partition/policy-type.yaml yaml)
 ```yaml
-# inject network loss for only ingress or only egress or all traffics
+# inject network loss for only ingress or only engress or all traffics
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:

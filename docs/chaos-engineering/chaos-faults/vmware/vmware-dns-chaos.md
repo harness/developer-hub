@@ -4,7 +4,7 @@ title: VMware DNS Chaos
 ---
 
 ## Introduction
-- It causes DNS errors in the provided VMWare VMs for a specified chaos duration. 
+- It causes DNS errors in the provided VMWare VMs for a specified chaos duration.
 - It helps to check the performance of the application/process running on the VMWare VMs.
 
 :::tip Fault execution flow chart
@@ -21,10 +21,10 @@ The experiment causes DNS errors on the target VMs which can result in unavailab
 
 ## Prerequisites
 :::info
-- Ensure that Kubernetes Version > 1.16 
+- Ensure that Kubernetes Version > 1.16
 
 ** vCenter Requirements **
-- Ensure the connectivity of execution plane with vCenter and the hosts over 443 port. 
+- Ensure the connectivity of execution plane with vCenter and the hosts over 443 port.
 - Ensure that Vmware tool is installed on the target VM with remote execution enabled.
 - Ensure that you have sufficient vCenter permission to access hosts and VMs.
 - Ensure to create a Kubernetes secret having the Vcenter credentials in the `CHAOS_NAMESPACE`. A sample secret file looks like:
@@ -45,7 +45,7 @@ stringData:
 You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
 :::
 
-    
+
 ## Default Validations
 :::info
 - VM should be in healthy state before and after chaos.
@@ -61,12 +61,12 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
         <th> Description </th>
         <th> Notes </th>
       </tr>
-      <tr> 
+      <tr>
         <td> VM_USER_NAME </td>
         <td> Provide the username of the target VM(s)</td>
         <td> Multiple usernames can be provided as comma separated (for more than one VM under chaos). It is used to run the govc command.</td>
       </tr>
-      <tr> 
+      <tr>
         <td> VM_PASSWORD </td>
         <td> Provide the password for the target VM(s)</td>
         <td> It is used to run the govc command.</td>
@@ -84,12 +84,12 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
         <th> Description </th>
         <th> Notes </th>
       </tr>
-      <tr> 
+      <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> The total time duration for chaos insertion (sec) </td>
         <td> Defaults to 30s </td>
       </tr>
-      <tr> 
+      <tr>
         <td> CHAOS_INTERVAL </td>
         <td> The interval (in sec) between successive instance termination </td>
         <td> Defaults to 30s </td>
@@ -147,7 +147,7 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
         <td> Provide the value as <code>true</code> </td>
         <td> It is used to run the govc in insecure mode and this ENV is setup using secret.</td>
       </tr>
-     </table>   
+     </table>
 </details>
 
 ## Experiment Examples
@@ -170,7 +170,6 @@ metadata:
   name: vmware-engine
 spec:
   engineState: "active"
-  annotationCheck: "false"
   chaosServiceAccount: litmus-admin
   experiments:
   - name: vmware-dns-chaos
@@ -179,16 +178,10 @@ spec:
         env:
         - name: PORT
           value: '54'
-
         - name: VM_NAME
           value: 'vm-1,vm-2'
-
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
-
         - name: VM_USER_NAME
           value: 'ubuntu,debian'
-
         - name: VM_PASSWORD
           value: '123,123'
 ```
@@ -208,7 +201,6 @@ metadata:
   name: engine-nginx
 spec:
   engineState: "active"
-  annotationCheck: "false"
   chaosServiceAccount: litmus-admin
   experiments:
   - name: vmware-dns-chaos
@@ -218,16 +210,10 @@ spec:
         # list of target host names
         - name: TARGET_HOSTNAMES
           value: '["litmuschaos","chaosnative.com"]'
-
         - name: VM_NAME
           value: 'vm-1,vm-2'
-
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
-
         - name: VM_USER_NAME
           value: 'ubuntu,debian'
-
         - name: VM_PASSWORD
           value: '123,123'
 ```
@@ -248,7 +234,6 @@ metadata:
   name: engine-nginx
 spec:
   engineState: "active"
-  annotationCheck: "false"
   chaosServiceAccount: litmus-admin
   experiments:
   - name: vmware-dns-chaos
@@ -258,16 +243,10 @@ spec:
         # match scheme type
         - name: MATCH_SCHEME
           value: 'exact'
-
         - name: VM_NAME
           value: 'vm-1,vm-2'
-
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
-
         - name: VM_USER_NAME
           value: 'ubuntu,debian'
-
         - name: VM_PASSWORD
           value: '123,123'
 ```
@@ -288,7 +267,6 @@ metadata:
   name: engine-nginx
 spec:
   engineState: "active"
-  annotationCheck: "false"
   chaosServiceAccount: litmus-admin
   experiments:
   - name: vmware-dns-chaos
@@ -298,16 +276,10 @@ spec:
         # name of the upstream server
         - name: UPSTREAM_SERVER
           value: '8.8.8.8'
-
         - name: VM_NAME
           value: 'vm-1,vm-2'
-
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
-
         - name: VM_USER_NAME
           value: 'ubuntu,debian'
-
         - name: VM_PASSWORD
           value: '123,123'
 ```

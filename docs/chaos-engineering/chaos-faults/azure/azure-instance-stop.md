@@ -142,7 +142,6 @@ metadata:
   name: engine-nginx
 spec:
   engineState: "active"
-  annotationCheck: "false"
   chaosServiceAccount: litmus-admin
   experiments:
   - name: azure-instance-stop
@@ -155,8 +154,6 @@ spec:
         # name of the resource group
         - name: RESOURCE_GROUP
           value: 'rg-azure'
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
 ```
 
 ### Stop Scale Set Instances
@@ -174,7 +171,6 @@ metadata:
   name: engine-nginx
 spec:
   engineState: "active"
-  annotationCheck: "false"
   chaosServiceAccount: litmus-admin
   experiments:
   - name: azure-instance-stop
@@ -190,40 +186,4 @@ spec:
         # accepts enable/disable value. default is disable
         - name: SCALE_SET
           value: 'enable'
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
-```
-
-### Multiple Iterations Of Chaos
-
-The multiple iterations of chaos can be tuned via setting `CHAOS_INTERVAL` ENV. Which defines the delay between each iteration of chaos.
-
-Use the following example to tune this:
-
-[embedmd]:# (./static/manifests/azure-instance-stop/chaos-interval.yaml yaml)
-```yaml
-# defines delay between each successive iteration of the chaos
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: azure-instance-stop
-    spec:
-      components:
-        env:
-        # delay between each iteration of chaos
-        - name: CHAOS_INTERVAL
-          value: '10'
-         # time duration for the chaos execution
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
-        - name: AZURE_INSTANCE_NAMES
-          value: 'instance-01,instance-02'
-        - name: RESOURCE_GROUP
-          value: 'rg-azure'
 ```

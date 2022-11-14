@@ -88,7 +88,7 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
         <th> Description </th>
         <th> Notes </th>
       </tr>
-      <tr> 
+      <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> The total time duration for chaos insertion (sec) </td>
         <td> Defaults to 30s </td>
@@ -121,7 +121,6 @@ metadata:
   name: engine-nginx
 spec:
   engineState: "active"
-  annotationCheck: "false"
   chaosServiceAccount: litmus-admin
   experiments:
   - name: ec2-process-kill
@@ -131,10 +130,8 @@ spec:
         # List of Process IDs
         - name: PROCESS_IDS
           value: '8688,4678'
-
         - name: EC2_INSTANCE_ID
           value: 'instance-1'
-
         - name: REGION
           value: 'us-west-2'
 ```
