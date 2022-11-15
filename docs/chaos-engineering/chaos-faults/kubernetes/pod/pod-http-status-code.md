@@ -13,7 +13,7 @@ title: Pod HTTP Status Code
 
 ## Uses
 <details>
-<summary>View the uses of the experiment</summary>
+<summary>View the uses of the fault</summary>
 <div>
 Coming soon.
 </div>
@@ -29,9 +29,9 @@ Coming soon.
 The application pods should be in running state before and after chaos injection.
 :::
 
-## Experiment tunables
+## Fault tunables
 <details>
-    <summary>Check the Experiment Tunables</summary>
+    <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>
     <table>
       <tr>
@@ -138,10 +138,10 @@ The application pods should be in running state before and after chaos injection
     </table>
 </details>
 
-## Experiment Examples
+## Fault Examples
 
 ### Common and Pod specific tunables
-Refer the [common attributes](../../common-tunables-for-all-experiments) and [Pod specific tunable](./common-tunables-for-pod-experiments) to tune the common tunables for all experiments and pod specific tunables.
+Refer the [common attributes](../../common-tunables-for-all-faults) and [Pod specific tunable](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
 
 ### Target Service Port
 
@@ -243,7 +243,7 @@ spec:
         # modified status code for the http response
         # if no value is provided, a random status code from the supported code list will selected
         # if multiple comma separated values are provided, then a random value from the provided list will be selected
-        # if an invalid status code is provided, the experiment will fail
+        # if an invalid status code is provided, the fault will fail
         # supported status code list: [200, 201, 202, 204, 300, 301, 302, 304, 307, 400, 401, 403, 404, 500, 501, 502, 503, 504]
         - name: STATUS_CODE
           value: '500'

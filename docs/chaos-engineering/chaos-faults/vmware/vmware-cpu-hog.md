@@ -1,10 +1,10 @@
 ---
 id: vmware-cpu-hog
-title: VMware Cpu Hog
+title: VMware CPU Hog
 ---
 
 ## Introduction
-- VMware cpu hog experiment consumes the CPU resources on Linux OS based VMware VM .
+- VMware cpu hog  fault consumes the CPU resources on Linux OS based VMware VM .
 - It helps to check the performance of the application running on the VMWare VMs.
 
 :::tip Fault execution flow chart
@@ -43,9 +43,9 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
 - VM should be in healthy state.
 :::
 
-## Experiment tunables
+## Fault tunables
 <details>
-    <summary>Check the Experiment Tunables</summary>
+    <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>
     <table>
       <tr>
@@ -89,7 +89,7 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injection of chaos in sec </td>
-        <td> </td>
+        <td> Eg. 30 </td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
@@ -99,10 +99,10 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
     </table>
 </details>
 
-## Experiment Examples
+## Fault Examples
 
-### Common Experiment Tunables
-Refer the [common attributes](../common-tunables-for-all-experiments) to tune the common tunables for all the experiments.
+### Common Fault Tunables
+Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
 ### CPU_CORES
 It stresses the `CPU_CORE` of the targeted vm for the `TOTAL_CHAOS_DURATION` duration

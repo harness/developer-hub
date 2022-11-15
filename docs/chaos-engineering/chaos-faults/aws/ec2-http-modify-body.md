@@ -52,10 +52,10 @@ You can pass the VM credentials as secrets or as an chaosengine ENV variable.
 
 :::
 
-## Experiment tunables
+## Fault tunables
 
 <details>
-    <summary>Check the Experiment Tunables</summary>
+    <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>
     <table>
         <tr>
@@ -118,7 +118,7 @@ You can pass the VM credentials as secrets or as an chaosengine ENV variable.
         </tr>
         <tr>
             <td> INSTALL_DEPENDENCY </td>
-            <td> Whether to install the dependency to run the experiment </td>
+            <td> Whether to install the dependency to run the fault </td>
             <td> If the dependency already exists, you can turn it off. Defaults to True.</td>
         </tr>
         <tr>
@@ -139,11 +139,11 @@ You can pass the VM credentials as secrets or as an chaosengine ENV variable.
     </table>
 </details>
 
-## Experiment Examples
+## Fault Examples
 
-### Common Experiment Tunables
+### Common Fault Tunables
 
-Refer the [common attributes](../common-tunables-for-all-experiments) to tune the common tunables for all the experiments.
+Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
 ### Target Service Port
 

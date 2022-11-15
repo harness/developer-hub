@@ -5,7 +5,7 @@ title: EC2 IO Stress
 
 ## Introduction
 
-- EC2 IO Stress contains chaos to disrupt the state of infra resources. The experiment can induce a stress chaos on AWS EC2 Instance using Amazon SSM Run Command, this is carried out by using SSM Docs which is in-built in the experiment for the give chaos scenario.
+- EC2 IO Stress contains chaos to disrupt the state of infra resources. The fault can induce a stress chaos on AWS EC2 Instance using Amazon SSM Run Command, this is carried out by using SSM Docs which is in-built in the fault for the give chaos scenario.
 - It causes IO Stress chaos on EC2 Instance using an SSM doc for a certain chaos duration.
 
 :::tip Fault execution flow chart
@@ -14,12 +14,12 @@ title: EC2 IO Stress
 
 ## Uses
 
-### Uses of the experiment
+### Uses of the fault
 
 :::info
 
 - Filesystem read and write is another very common and frequent scenario we find with processes/applications that can result in the impact on its delivery. These problems are generally referred to as "Noisy Neighbour" problems.
-- Injecting a rogue process into a target ec2 instance, we starve the main processes/applications (typically pid 1) of the resources allocated to it (where limits are defined) causing slowness in application traffic or in other cases unrestrained use can cause instance to exhaust resources leading to degradation in performance of processes/applications present on the instance. So this category of chaos experiment helps to build the immunity on the application undergoing any such stress scenario.
+- Injecting a rogue process into a target EC2 instance, we starve the main processes/applications (typically pid 1) of the resources allocated to it (where limits are defined) causing slowness in application traffic or in other cases unrestrained use can cause instance to exhaust resources leading to degradation in performance of processes/applications present on the instance. So this category of chaos  fault helps to build the immunity on the application undergoing any such stress scenario.
 
 :::
 
@@ -62,10 +62,10 @@ stringData:
 
 :::
 
-## Experiment tunables
+## Fault tunables
 
 <details>
-<summary>Check the experiment tunables</summary>
+<summary>Check the fault tunables</summary>
 
 <h2>Mandatory Fields</h2>
 
@@ -149,11 +149,11 @@ stringData:
 
 </details>
 
-## Experiment Examples
+## Fault Examples
 
-### Common Experiment Tunables
+### Common Fault Tunables
 
-Refer the [common attributes](../common-tunables-for-all-experiments) to tune the common tunables for all the experiments.
+Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
 ### FILESYSTEM UTILIZATION IN MEGABYTES
 
@@ -179,10 +179,10 @@ spec:
         env:
         - name: FILESYSTEM_UTILIZATION_BYTES
           VALUE: '1024'
-        # id of the ec2 instance
+        # id of the EC2 instance
         - name: EC2_INSTANCE_ID
           value: 'instance-1'
-        # region for the ec2 instance
+        # region for the EC2 instance
         - name: REGION
           value: 'us-east-1'
 ```
@@ -211,10 +211,10 @@ spec:
         env:
         - name: FILESYSTEM_UTILIZATION_PERCENTAGE
           VALUE: '50'
-        # id of the ec2 instance
+        # id of the EC2 instance
         - name: EC2_INSTANCE_ID
           value: 'instance-1'
-        # region for the ec2 instance
+        # region for the EC2 instance
         - name: REGION
           value: 'us-east-1'
 ```
@@ -243,10 +243,10 @@ spec:
         env:
         - name: NUMBER_OF_WORKERS
           VALUE: '3'
-        # id of the ec2 instance
+        # id of the EC2 instance
         - name: EC2_INSTANCE_ID
           value: 'instance-1'
-        # region for the ec2 instance
+        # region for the EC2 instance
         - name: REGION
           value: 'us-east-1'
 ```
@@ -275,10 +275,10 @@ spec:
         env:
         - name: VOLUME_MOUNT_PATH
           VALUE: '/tmp'
-        # id of the ec2 instance
+        # id of the EC2 instance
         - name: EC2_INSTANCE_ID
           value: 'instance-1'
-        # region for the ec2 instance
+        # region for the EC2 instance
         - name: REGION
           value: 'us-east-1'
 ```
@@ -305,10 +305,10 @@ spec:
     spec:
       components:
         env:
-        # ids of the ec2 instances
+        # ids of the EC2 instances
         - name: EC2_INSTANCE_ID
           value: 'instance-1,instance-2'
-        # region for the ec2 instance
+        # region for the EC2 instance
         - name: REGION
           value: 'us-east-1'
 ```

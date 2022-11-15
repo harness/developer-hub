@@ -1,7 +1,7 @@
 ---
-title: Common Pod Experiment Tunables
+title: Common Pod Fault Tunables
 ---
-Experiment tunables which are common for all pod-level experiments. These tunables can be provided at `.spec.experiment[*].spec.components.env` in chaosengine.
+Fault tunables which are common for all pod-level faults. These tunables can be provided at `.spec.experiment[*].spec.components.env` in chaosengine.
 
 ### Target Specific Pods
 

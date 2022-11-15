@@ -4,7 +4,7 @@ title: VMware IO Stress
 ---
 
 ## Introduction
-- This experiment causes disk stress on the target VMware VMs. The experiment aims to verify the resiliency of applications that share this disk resource to the VM. 
+- This fault causes disk stress on the target VMware VMs. It aims to verify the resiliency of applications that share this disk resource to the VM. 
 
 :::tip Fault execution flow chart
 ![VMware IO Stress](./static/images/vmware-io-stress.png)
@@ -41,9 +41,9 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
 - VM should be in healthy state.
 :::
 
-## Experiment tunables
+## Fault tunables
 <details>
-    <summary>Check the Experiment Tunables</summary>
+    <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>
     <table>
       <tr>
@@ -107,15 +107,15 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injection of chaos in sec </td>
-        <td> </td>
+        <td> Eg. 30 </td>
       </tr>
     </table>
 </details>
 
-## Experiment Examples
+## Fault Examples
 
-### Common Experiment Tunables
-Refer the [common attributes](../common-tunables-for-all-experiments) to tune the common tunables for all the experiments.
+### Common Fault Tunables
+Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
 ### FILESYSTEM_UTILIZATION_PERCENTAGE
 It stresses the `FILESYSTEM_UTILIZATION_PERCENTAGE` percentage of total free space available in the VM.

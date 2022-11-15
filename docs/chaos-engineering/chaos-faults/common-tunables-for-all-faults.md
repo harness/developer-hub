@@ -1,7 +1,7 @@
 ---
-title: Common Tunables for All Experiments
+title: Common Tunables for All Faults
 ---
-Experiment tunables which are common for all the experiments. These tunables can be provided at `.spec.experiment[*].spec.components.env` in chaosengine.
+Fault tunables which are common for all the faults. These tunables can be provided at `.spec.experiment[*].spec.components.env` in chaosengine.
 
 ### Duration of the chaos
 
@@ -131,7 +131,7 @@ spec:
     spec:
       components:
         env:
-        # defines the name of the chaoslib used for the experiment
+        # defines the name of the chaoslib used for the fault
         - name: LIB
           value: 'litmus'
         - name: TOTAL_CHAOS_DURATION

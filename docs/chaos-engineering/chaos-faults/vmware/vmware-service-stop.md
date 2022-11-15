@@ -4,7 +4,7 @@ title: VMware Service Stop
 ---
 
 ## Introduction
-- VMware Service Stop experiment stops the target systemd services running on Linux OS based VMware VM to determine the application/service resilience.
+- VMware Service Stop  fault stops the target systemd services running on Linux OS based VMware VM to determine the application/service resilience.
 - It helps to check the performance of the application/service running on the VMWare VMs.
 
 :::tip Fault execution flow chart
@@ -43,9 +43,9 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
 - The target services should exist in the VM.
 :::
 
-## Experiment tunables
+## Fault tunables
 <details>
-    <summary>Check the Experiment Tunables</summary>
+    <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>
     <table>
       <tr>
@@ -94,15 +94,15 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injection of chaos in sec </td>
-        <td> </td>
+        <td> Eg. 30 </td>
       </tr>
     </table>
 </details>
 
-## Experiment Examples
+## Fault Examples
 
-### Common Experiment Tunables
-Refer the [common attributes](../common-tunables-for-all-experiments) to tune the common tunables for all the experiments.
+### Common Fault Tunables
+Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
 ### SERVICE_NAME
 It contains the target service running on a particular VM

@@ -14,7 +14,7 @@ title: Node Restart
 
 ## Uses
 <details>
-<summary>View the uses of the experiment</summary>
+<summary>View the uses of the fault</summary>
 <div>
 Coming soon.
 </div>
@@ -23,7 +23,7 @@ Coming soon.
 ## Prerequisites
 :::info
 - Ensure that Kubernetes Version > 1.16
-- Create a Kubernetes secret named `id-rsa` where the experiment will run, where its contents will be the private SSH key for `SSH_USER` used to connect to the node that hosts the target pod in the secret field `ssh-privatekey`. A sample secret is shown below:
+- Create a Kubernetes secret named `id-rsa` where the fault will run, where its contents will be the private SSH key for `SSH_USER` used to connect to the node that hosts the target pod in the secret field `ssh-privatekey`. A sample secret is shown below:
 
         ```yaml
         apiVersion: v1
@@ -55,9 +55,9 @@ Coming soon.
 The target nodes should be in ready state before and after chaos injection.
 :::
 
-## Experiment tunables
+## Fault tunables
 <details>
-    <summary>Check the Experiment Tunables</summary>
+    <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>
     <table>
       <tr>
@@ -95,7 +95,7 @@ The target nodes should be in ready state before and after chaos injection.
       </tr>
       <tr>
         <td> TARGET_NODE_IP </td>
-        <td> Internal IP of the target node, subjected to chaos. If not provided, the experiment will lookup the node IP of the <code>TARGET_NODE</code> node</td>
+        <td> Internal IP of the target node, subjected to chaos. If not provided, the fault will lookup the node IP of the <code>TARGET_NODE</code> node</td>
         <td> Defaults to empty </td>
       </tr>
       <tr>
@@ -121,10 +121,10 @@ The target nodes should be in ready state before and after chaos injection.
     </table>
 </details>
 
-## Experiment Examples
+## Fault Examples
 
 ### Common and Node specific tunables
-Refer the [common attributes](../../common-tunables-for-all-experiments) and [Node specific tunable](./common-tunables-for-node-experiments) to tune the common tunables for all experiments and node specific tunables.
+Refer the [common attributes](../../common-tunables-for-all-faults) and [Node specific tunable](./common-tunables-for-node-faults) to tune the common tunables for all faults and node specific tunables.
 
 ### Reboot Command
 

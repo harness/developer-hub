@@ -1,4 +1,4 @@
-# Process kill running on ec2 instance
+# Process kill running on EC2 instance
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:

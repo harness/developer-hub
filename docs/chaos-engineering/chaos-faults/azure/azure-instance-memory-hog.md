@@ -5,7 +5,7 @@ title: Azure Instance Memory Hog
 
 ## Introduction
 
-- Azure Instance Memory Hog contains chaos to disrupt the state of infra resources. The experiment can induce stress chaos on Azure Instance using Azure Run Command, this is carried out by using bash scripts which are in-built in the experiment for the given chaos scenario.
+- Azure Instance Memory Hog contains chaos to disrupt the state of infra resources. The fault can induce stress chaos on Azure Instance using Azure Run Command, this is carried out by using bash scripts which are in-built in the fault for the given chaos scenario.
 - It causes Memory Hog chaos on Azure Instance using an bash script for a certain chaos duration.
 
 :::tip Fault execution flow chart
@@ -14,12 +14,12 @@ title: Azure Instance Memory Hog
 
 ## Uses
 
-### Uses of the experiment
+### Uses of the fault
 
 :::info
 
-- The experiment causes memory hog/stress on the target Azure Instance(s). The idea of this experiment is to simulate issues when there is lack of memory for other runnning processes/applications resulting into degrading their performance.
-- Injecting a rogue process into a target azure instance, we starve the main processes/applications (typically pid 1) of the resources allocated to it (where limits are defined) causing slowness in application traffic or in other cases unrestrained use can cause instance to exhaust resources leading to degradation in performance of processes/applications present on the instance. So this category of chaos experiment helps to build the immunity on the application undergoing any such stress scenario.
+- The fault causes memory hog/stress on the target Azure Instance(s). The idea of this fault is to simulate issues when there is lack of memory for other runnning processes/applications resulting into degrading their performance.
+- Injecting a rogue process into a target azure instance, we starve the main processes/applications (typically pid 1) of the resources allocated to it (where limits are defined) causing slowness in application traffic or in other cases unrestrained use can cause instance to exhaust resources leading to degradation in performance of processes/applications present on the instance. So this category of chaos fault helps to build the immunity on the application undergoing any such stress scenario.
 
 :::
 
@@ -34,7 +34,7 @@ title: Azure Instance Memory Hog
 **Azure Access Requirement:**
 
 - Ensure that Azure Run Command agent is installed and running in the target Azure instance.
-- We will use azure [file-based authentication](https://docs.microsoft.com/en-us/azure/developer/go/azure-sdk-authorization#use-file-based-authentication) to connect with the instance using azure GO SDK in the experiment. For generating auth file run `az ad sp create-for-rbac --sdk-auth > azure.auth` Azure CLI command.
+- We will use azure [file-based authentication](https://docs.microsoft.com/en-us/azure/developer/go/azure-sdk-authorization#use-file-based-authentication) to connect with the instance using azure GO SDK in the fault. For generating auth file run `az ad sp create-for-rbac --sdk-auth > azure.auth` Azure CLI command.
 - Ensure to create a Kubernetes secret having the auth file created in the step in `CHAOS_NAMESPACE`. A sample secret file looks like:
 
 ```yaml
@@ -71,10 +71,10 @@ stringData:
 
 :::
 
-## Experiment tunables
+## Fault tunables
 
 <details>
-<summary>Check the experiment tunables</summary>
+<summary>Check the fault tunables</summary>
 <h2>Mandatory Fields</h2>
 <table>
     <tr>
@@ -149,11 +149,11 @@ stringData:
 
 </details>
 
-## Experiment Examples
+## Fault Examples
 
-### Common Experiment Tunables
+### Common Fault Tunables
 
-Refer the [common attributes](../common-tunables-for-all-experiments) to tune the common tunables for all the experiments.
+Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
 ### MEMORY CONSUMPTION IN MEGABYTES
 

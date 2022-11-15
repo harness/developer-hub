@@ -5,7 +5,7 @@ title: EC2 HTTP Latency
 
 ## Introduction
 
-- EC2 HTTP Latency contains chaos to disrupt the state of infra resources. The experiment can induce a http chaos on AWS EC2 Instance using Amazon SSM Run Command, this is carried out by using SSM Docs which is in-built in the experiment for the give chaos scenario.
+- EC2 HTTP Latency contains chaos to disrupt the state of infra resources. The fault can induce a http chaos on AWS EC2 Instance using Amazon SSM Run Command, this is carried out by using SSM Docs which is in-built in the fault for the give chaos scenario.
 - It injects http response latency on the service whose port is provided as TARGET_SERVICE_PORT by starting proxy server and then redirecting the traffic through the proxy server.
 - It causes http latency chaos on EC2 Instance using an SSM doc for a certain chaos duration.
 
@@ -53,10 +53,10 @@ You can pass the VM credentials as secrets or as an chaosengine ENV variable.
 
 :::
 
-## Experiment tunables
+## Fault tunables
 
 <details>
-    <summary>Check the Experiment Tunables</summary>
+    <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>
     <table>
         <tr>
@@ -119,7 +119,7 @@ You can pass the VM credentials as secrets or as an chaosengine ENV variable.
         </tr>
         <tr>
             <td> INSTALL_DEPENDENCY </td>
-            <td> Whether to install the dependency to run the experiment </td>
+            <td> Whether to install the dependency to run the fault </td>
             <td> If the dependency already exists, you can turn it off. Defaults to True.</td>
         </tr>
         <tr>
@@ -140,11 +140,11 @@ You can pass the VM credentials as secrets or as an chaosengine ENV variable.
     </table>
 </details>
 
-## Experiment Examples
+## Fault Examples
 
-### Common Experiment Tunables
+### Common Fault Tunables
 
-Refer the [common attributes](../common-tunables-for-all-experiments) to tune the common tunables for all the experiments.
+Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
 ### Target Service Port
 

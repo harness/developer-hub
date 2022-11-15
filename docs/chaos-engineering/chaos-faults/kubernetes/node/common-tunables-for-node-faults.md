@@ -1,7 +1,7 @@
 ---
-title: Common Node Experiment Tunables
+title: Common Node Fault Tunables
 ---
-Experiment tunables which are common for all the node experiments. These tunables can be provided at `.spec.experiment[*].spec.components.env` in chaosengine.
+Fault tunables which are common for all the node faults. These tunables can be provided at `.spec.experiment[*].spec.components.env` in chaosengine.
 
 ### Target Single Node
 
@@ -99,7 +99,7 @@ spec:
 ### Node Affected Percentage
 
 It defines the percentage of nodes subjected to chaos with matching node labels. It can be tuned with `NODES_AFFECTED_PERC` ENV. If `NODES_AFFECTED_PERC` is provided as `empty` or `0` then it will target a minimum of one node.
-It is supported by [node-cpu-hog, node-memory-hog, node-io-stress] experiments. The rest of the experiment selects only a single node for the chaos.
+It is supported by [node-cpu-hog, node-memory-hog, node-io-stress] experiments. The rest of the fault selects only a single node for the chaos.
 
 Use the following example to tune this:
 

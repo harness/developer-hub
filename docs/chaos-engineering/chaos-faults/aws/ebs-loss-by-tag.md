@@ -4,8 +4,8 @@ title: EBS Loss By Tag
 ---
 
 ## Introduction
-- It causes chaos to disrupt state of ebs volume by detaching it from the node/ec2 instance for a certain chaos duration using volume tags.
-- In case of EBS persistent volumes, the volumes can get self-attached and experiment skips the re-attachment step.
+- It causes chaos to disrupt state of ebs volume by detaching it from the node/EC2 instance for a certain chaos duration using volume tags.
+- In case of EBS persistent volumes, the volumes can get self-attached and  fault skips the re-attachment step.
 Tests deployment sanity (replica availability & uninterrupted service) and recovery workflows of the application pod.
 
 :::tip Fault execution flow chart
@@ -15,7 +15,7 @@ Tests deployment sanity (replica availability & uninterrupted service) and recov
 ## Uses
 
 <details>
-<summary>View the uses of the experiment</summary>
+<summary>View the uses of the fault</summary>
 <div>
 Coming soon.
 </div>
@@ -52,10 +52,10 @@ stringData:
 
 :::
 
-## Experiment tunables
+## Fault tunables
 
 <details>
-    <summary>Check the Experiment Tunables</summary>
+    <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>
     <table>
       <tr>
@@ -109,11 +109,11 @@ stringData:
     </table>
 </details>
 
-## Experiment Examples
+## Fault Examples
 
 ### Common and AWS specific tunables
 
-Refer the [common attributes](../common-tunables-for-all-experiments) and [AWS specific tunable](./aws-experiments-tunables) to tune the common tunables for all experiments and aws specific tunables.
+Refer the [common attributes](../common-tunables-for-all-faults) and [AWS specific tunable](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
 
 ### Target single volume
 
