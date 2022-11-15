@@ -78,12 +78,12 @@ stringData:
         <tr> 
         <td> CLUSTER_NAME </td>
         <td> Name of the target ECS cluster</td>
-        <td>  </td>
+        <td> Eg. cluster-1 </td>
         </tr>
         <tr>
         <td> REGION </td>
         <td> The region name of the target ECS cluster</td>
-        <td> </td>
+        <td> Eg. us-east-1 </td>
         </tr>
     </table>
     <h2>Optional Fields</h2>
