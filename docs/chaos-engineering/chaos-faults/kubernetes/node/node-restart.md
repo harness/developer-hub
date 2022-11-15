@@ -47,7 +47,7 @@ Coming soon.
         ssh-copy-id -i my-id-rsa-key user@node
         ```
         
-    For further details, please check this [documentation](https://www.ssh.com/ssh/keygen/). Once you have copied the public key to all nodes and created the secret described earlier, you are ready to start your experiment.
+    For further details, please check this [documentation](https://www.ssh.com/ssh/keygen/). Once you have copied the public key to all nodes and created the secret described earlier, you are ready to start your fault.
 :::
 
 ## Default Validations

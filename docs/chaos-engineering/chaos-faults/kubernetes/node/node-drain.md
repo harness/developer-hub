@@ -21,7 +21,7 @@ Coming soon.
 ## Prerequisites
 :::info
 - Ensure that Kubernetes Version > 1.16.
-- Ensure that the node specified in the fault ENV variable <code>TARGET_NODE</code> (the node for which docker service need to be killed) should be cordoned before execution of the chaos experiment to ensure that the fault resources are not scheduled on it or subjected to eviction. This can be achieved with the following steps:
+- Ensure that the node specified in the fault ENV variable <code>TARGET_NODE</code> (the node for which docker service need to be killed) should be cordoned before execution of the chaos fault to ensure that the fault resources are not scheduled on it or subjected to eviction. This can be achieved with the following steps:
   - Get node names against the applications pods: <code>kubectl get pods -o wide</code>
   - Cordon the node <code>kubectl cordon &lt;nodename&gt;</code>
 :::
