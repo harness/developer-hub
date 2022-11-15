@@ -371,32 +371,37 @@ Following Platform Chaos faults are available:
   <tr>
     <td>VMware VM Process kill</td>
     <td>Kill the processes running in the VMware VMs using the PROCESS_IDS</td>
-    <td><a href="/docs/chaos-engineering/Chaos%20Faults/VMware/vmware-process-kill">vmware-process-kill</a></td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/vmware/vmware-process-kill">vmware-process-kill</a></td>
   </tr>
   <tr>
     <td>VMware VM Cpu Hog</td>
     <td>VMware cpu hog experiment consumes the CPU resources on Linux OS based VMware VM</td>
-    <td><a href="/docs/chaos-engineering/Chaos%20Faults/VMware/vmware-cpu-hog">vmware-cpu-hog</a></td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/vmware/vmware-cpu-hog">vmware-cpu-hog</a></td>
   </tr>
   <tr>
     <td>VMware VM Memory Hog</td>
     <td>VMware memory hog experiment consumes the Memory resources on Linux OS based VMware VM</td>
-    <td><a href="/docs/chaos-engineering/Chaos%20Faults/VMware/vmware-memory-hog">vmware-memory-hog</a></td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/vmware/vmware-memory-hog">vmware-memory-hog</a></td>
   </tr>
   <tr>
     <td>VMware VM IO Stress</td>
     <td>This experiment causes disk stress on the target VMware VMs.</td>
-    <td><a href="/docs/chaos-engineering/Chaos%20Faults/VMware/vmware-io-stress">vmware-io-stress</a></td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/vmware/vmware-io-stress">vmware-io-stress</a></td>
   </tr>
   <tr>
     <td>VMware VM Service Stop</td>
     <td>VMware Service Stop experiment stops the target systemd services running on Linux OS based VMware VM</td>
-    <td><a href="/docs/chaos-engineering/Chaos%20Faults/VMware/vmware-service-stop">vmware-service-stop</a></td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/vmware/vmware-service-stop">vmware-service-stop</a></td>
   </tr>
   <tr>
     <td>VMware VM Disk Loss</td>
     <td>VMware Disk Loss experiment will detach the disks attached to a Linux OS based VMware VM.</td>
-    <td><a href="/docs/chaos-engineering/Chaos%20Faults/VMware/vmware-disk-loss">vmware-disk-loss</a></td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/vmware/vmware-disk-loss">vmware-disk-loss</a></td>
+  </tr>
+  <tr>
+    <td>VMware Host Reboot</td>
+    <td>VMware Host Reboot fault reboots a VMware host attached to the Vcenter</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/vmware/vmware-host-reboot">vmware-host-reboot</a></td>
   </tr>
 </table>
 
