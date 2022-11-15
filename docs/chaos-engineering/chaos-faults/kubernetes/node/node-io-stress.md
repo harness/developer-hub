@@ -101,7 +101,7 @@ The target nodes should be in ready state before and after chaos injection.
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injection of chaos in sec </td>
-        <td> </td>
+        <td> Eg. 30 </td>
       </tr>
       <tr>
         <td> NODES_AFFECTED_PERC </td>
