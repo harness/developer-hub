@@ -4,7 +4,7 @@ title: EBS Loss By Tag
 ---
 
 ## Introduction
-- It causes chaos to disrupt state of ebs volume by detaching it from the node/EC2 instance for a certain chaos duration using volume tags.
+- It causes chaos to disrupt state of EBS volume by detaching it from the node/EC2 instance for a certain chaos duration using volume tags.
 - In case of EBS persistent volumes, the volumes can get self-attached and  fault skips the re-attachment step.
 Tests deployment sanity (replica availability & uninterrupted service) and recovery workflows of the application pod.
 
@@ -26,7 +26,7 @@ Coming soon.
 :::info
 
 - Ensure that Kubernetes Version > 1.16.
-- Ensure that you have sufficient AWS access to attach or detach an ebs volume for the instance. 
+- Ensure that you have sufficient AWS access to attach or detach an EBS volume for the instance. 
 - Ensure to create a Kubernetes secret having the AWS access configuration(key) in the `CHAOS_NAMESPACE`. A sample secret file looks like:
 ```yaml
 apiVersion: v1
@@ -83,7 +83,7 @@ stringData:
       </tr>
        <tr> 
         <td> VOLUME_AFFECTED_PERC </td>
-        <td> The Percentage of total ebs volumes to target </td>
+        <td> The Percentage of total EBS volumes to target </td>
         <td> Defaults to 0 (corresponds to 1 volume), provide numeric value only </td>
       </tr>
       <tr> 
@@ -117,13 +117,13 @@ Refer the [common attributes](../common-tunables-for-all-faults) and [AWS specif
 
 ### Target single volume
 
-It will detach a random single ebs volume with the given `EBS_VOLUME_TAG` tag and `REGION` region.
+It will detach a random single EBS volume with the given `EBS_VOLUME_TAG` tag and `REGION` region.
 
 Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/ebs-loss-by-tag/ebs-volume-tag.yaml yaml)
 ```yaml
-# contains the tags for the ebs volumes 
+# contains the tags for the EBS volumes 
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -137,10 +137,10 @@ spec:
     spec:
       components:
         env:
-        # tag of the ebs volume
+        # tag of the EBS volume
         - name: EBS_VOLUME_TAG
           value: 'key:value'
-        # region for the ebs volume
+        # region for the EBS volume
         - name: REGION
           value: 'us-east-1'
         - name: TOTAL_CHAOS_DURATION
@@ -149,13 +149,13 @@ spec:
 
 ### Target Percent of volumes
 
-It will detach the `VOLUME_AFFECTED_PERC` percentage of ebs volumes with the given `EBS_VOLUME_TAG` tag and `REGION` region.
+It will detach the `VOLUME_AFFECTED_PERC` percentage of EBS volumes with the given `EBS_VOLUME_TAG` tag and `REGION` region.
 
 Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/ebs-loss-by-tag/volume-affected-percentage.yaml yaml)
 ```yaml
-# target percentage of the ebs volumes with the provided tag
+# target percentage of the EBS volumes with the provided tag
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -169,13 +169,13 @@ spec:
     spec:
       components:
         env:
-        # percentage of ebs volumes filter by tag
+        # percentage of EBS volumes filter by tag
         - name: VOLUME_AFFECTED_PERC
           value: '100'
-        # tag of the ebs volume
+        # tag of the EBS volume
         - name: EBS_VOLUME_TAG
           value: 'key:value'
-        # region for the ebs volume
+        # region for the EBS volume
         - name: REGION
           value: 'us-east-1'
         - name: TOTAL_CHAOS_DURATION

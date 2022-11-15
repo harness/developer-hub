@@ -4,7 +4,7 @@ title: EBS Loss By ID
 ---
 
 ## Introduction
-- It causes chaos to disrupt state of ebs volume by detaching it from the node/EC2 instance for a certain chaos duration using volume id.
+- It causes chaos to disrupt state of EBS volume by detaching it from the node/EC2 instance for a certain chaos duration using volume id.
 - In case of EBS persistent volumes, the volumes can get self-attached and  fault skips the re-attachment step.
 Tests deployment sanity (replica availability & uninterrupted service) and recovery workflows of the application pod.
 
@@ -25,7 +25,7 @@ Coming soon.
 
 :::info
 - Ensure that Kubernetes Version > 1.16.
-- Ensure that you have sufficient AWS access to attach or detach an ebs volume for the instance. 
+- Ensure that you have sufficient AWS access to attach or detach an EBS volume for the instance. 
 - Ensure to create a Kubernetes secret having the AWS access configuration(key) in the `CHAOS_NAMESPACE`. A sample secret file looks like:
 ```yaml
 apiVersion: v1
@@ -62,7 +62,7 @@ stringData:
       </tr>
       <tr> 
         <td> EBS_VOLUME_ID </td>
-        <td> Comma separated list of volume IDs subjected to ebs detach chaos</td>
+        <td> Comma separated list of volume IDs subjected to EBS detach chaos</td>
         <td> Eg. ebs-vol-1,ebs-vol-2 </td>
       </tr>
       <tr>
@@ -109,13 +109,13 @@ Refer the [common attributes](../common-tunables-for-all-faults) and [AWS specif
 
 ### Detach Volumes By ID
 
-It contains comma separated list of volume IDs subjected to ebs detach chaos. It can be tuned via `EBS_VOLUME_ID` ENV.
+It contains comma separated list of volume IDs subjected to EBS detach chaos. It can be tuned via `EBS_VOLUME_ID` ENV.
 
 Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/ebs-loss-by-id/ebs-volume-id.yaml yaml)
 ```yaml
-# contains ebs volume id 
+# contains EBS volume id 
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -129,10 +129,10 @@ spec:
     spec:
       components:
         env:
-        # id of the ebs volume
+        # id of the EBS volume
         - name: EBS_VOLUME_ID
           value: 'ebs-vol-1'
-        # region for the ebs volume
+        # region for the EBS volume
         - name: REGION
           value: 'us-east-1'
         - name: TOTAL_CHAOS_DURATION
