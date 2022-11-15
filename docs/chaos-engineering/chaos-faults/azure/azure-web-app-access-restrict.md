@@ -1,5 +1,5 @@
 ---
-id: azure-web-access-restrict
+id: azure-web-app-access-restrict
 title: Azure Web App Access Restrict
 ---
 
@@ -8,7 +8,7 @@ title: Azure Web App Access Restrict
 - It helps to check the performance of the application/process running on the instance.
 
 :::tip Fault execution flow chart
-![Azure Disk Loss](./static/images/azure-web-access-restrict.png)
+![Azure Disk Loss](./static/images/azure-web-app-access-restrict.png)
 :::
 
 ## Uses
