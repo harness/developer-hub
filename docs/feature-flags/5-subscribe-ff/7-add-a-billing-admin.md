@@ -9,8 +9,13 @@ helpdocs_category_id: hdxts68dvo
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
-
+```mdx-code-block
+import billing_admin from './static/7-add-a-billing-admin-02.png'
+```
 Billing Admins can manage payments on the Harness Platform. To add a Billing Admin, use our [Role Based Access Control](https://docs.harness.io/article/hyoe7qcaz6-add-users) and add the user with a role of **Billing Admin**.
 
-![](./static/7-add-a-billing-admin-02.png)*Figure 1: Selecting the Billing Admin role*
+```mdx-code-block
+<img src={billing_admin} alt="Selecting the Billing Admin role" height="500" width="400" />
+```
+*Figure 1: Selecting the Billing Admin role*
 

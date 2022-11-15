@@ -11,6 +11,11 @@ helpdocs_category_id: skrwlcueml
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
+```mdx-code-block
+import edit_vars from './static/3-manage-variations-00.png'
+import edit_var_form from './static/3-manage-variations-01.png'
+import manage_vars from './static/3-manage-variations-02.png'
+```
 
 When you create a Feature Flag, it has default Variations that are served when the Flag is toggled `ON` or `OFF`. You can accept these default Variations or you can change them. 
 
@@ -28,7 +33,10 @@ You can edit the Variations of your Flags on the Harness Platform even after usi
 1. Go to the Feature Flag you want to edit the Variations for.
 2. In **Variations**, click the edit icon.
 
-![A screenshot of a flag with the edit icon next to the Variations heading highlighted.](./static/3-manage-variations-00.png)*Figure 1: The edit Variations icon*
+```mdx-code-block
+<img src={edit_vars} alt="The Edit Variations icon." height="500" width="300" />
+``` 
+*Figure 1: The edit Variations icon*
 
 3. In **Edit Variations**, you can add or delete a Variation and also edit the following:
 * **Name**: The name of the Variation, for example `Enabled`.
@@ -36,14 +44,21 @@ You can edit the Variations of your Flags on the Harness Platform even after usi
 * **Description**: An optional description for the Variation.
 * **Default rules for the flag**: The rules that are served by default for this Flag, for example, when the Flag is enabled, serve the `Enabled` Variation.
 
-![A screenshot of the Edit Variations page. ](./static/3-manage-variations-01.png)*Figure 2: The Edit Variations form*
+```mdx-code-block
+<img src={edit_var_form} alt="A screenshot of the Edit Variations page." height="500" width="400" />
+``` 
+
+*Figure 2: The Edit Variations form*
 
 ## Edit the Variations served for your current Environment
 
 1. Go to the Feature Flag you want to edit the Variations for.
 2. In the **Targeting** tab, under **When the Default Flag is Enabled** and **When the Default Flag is Disabled**, select the Variations you want to set as the default.
 
-![A screenshot of the Targeting tab of a Flag, which highlights where you can change which Flag Variation is served. ](./static/3-manage-variations-02.png)*Figure 3: Variations when the Flag is enabled and disabled*
+```mdx-code-block
+<img src={manage_vars} alt="A screenshot of the Targeting tab of a Flag, which highlights where you can change which Flag Variation is served." height="500" width="400" />
+``` 
+*Figure 3: Variations when the Flag is enabled and disabled*
 
 > **☆ NOTE —** For information about Specific Targeting, go to [Targeting Users with Flags](../4-ff-target-management/3-targeting-users-with-flags.md)
 

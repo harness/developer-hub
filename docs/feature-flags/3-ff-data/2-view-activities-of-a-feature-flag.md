@@ -12,7 +12,9 @@ helpdocs_category_id: axthyiihah
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
-
+```mdx-code-block
+import ff_metrics from './static/2-view-activities-of-a-feature-flag-01.png'
+```
 The **Activity** tab allows you to view the actions performed on the selected Feature Flag. The following details are available on the Activity page:
 
 * **Time**: The time at which the Flag was turned `on` or `off`
@@ -36,7 +38,11 @@ To view a summary of an event:
 2. Select the date range for the Feature Flag you want to view.
 3. Click **View Event Summary**.![A screenshot of list of actions. ](./static/2-view-activities-of-a-feature-flag-00.png)*Figure 1: Viewing the event summary*
 4. The **Event Summary** is displayed.
-5. Click **YAML DIFFERENCE** to view the details of the Flag. The YAML file also highlights the different states of the events.![A screenshot of a YAML file with the differences highlighed. ](./static/2-view-activities-of-a-feature-flag-01.png)
+5. Click **YAML DIFFERENCE** to view the details of the Flag. The YAML file also highlights the different states of the events.
+
+```mdx-code-block
+<img src={ff_metrics} alt="A screenshot of a YAML file with the differences highlighed." height="500" width="500" />
+```
 
 *Figure 2: An example YAML file*
 

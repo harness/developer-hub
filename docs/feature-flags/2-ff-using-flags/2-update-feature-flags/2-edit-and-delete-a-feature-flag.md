@@ -11,6 +11,10 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+```mdx-code-block
+import edit_flag from './static/2-edit-and-delete-a-feature-flag-06.png'
+```
+
 After you have created a Flag, you can edit the following details of it:
 
 
@@ -40,8 +44,9 @@ To edit a Flag:
 
 5. Edit the relevant details.
 
-
-![The Edit Flags Details page.](./static/2-edit-and-delete-a-feature-flag-06.png)
+```mdx-code-block
+<img src={edit_flag} alt="The Edit Flags Details page." height="300" width="200" />
+```
 
 *Figure 2: Details you can edit for a Flag*
 

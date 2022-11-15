@@ -9,7 +9,9 @@ helpdocs_category_id: hdxts68dvo
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
-
+```mdx-code-block
+import invoice from './static/8-access-your-subscription-invoices-03.png'
+```
 To get a copy of your subscription invoice:
 
 1. On the Harness Platform, on the lefthand navigation, click **Help**.
@@ -22,5 +24,8 @@ To get a copy of your subscription invoice:
 	5. **Priority**: Select **Priority:Normal**.
 4. Click **Send Feedback.**
 
-![An example of the feedback form for requesting a subscription invoice.](./static/8-access-your-subscription-invoices-03.png)*Figure 1: An example of a feedback form.*
+```mdx-code-block
+<img src={invoice} alt="An example of the feedback form for requesting a subscription invoice." height="500" width="400" />
+``` 
+*Figure 1: An example of a feedback form.*
 

@@ -12,6 +12,16 @@ helpdocs_category_id: 77l6flntwl
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
+```mdx-code-block
+import git_1 from './static/5-manage-featureflags-in-git-repos-04.png'
+import git_2 from './static/5-manage-featureflags-in-git-repos-05.png' 
+import git_3 from './static/5-manage-featureflags-in-git-repos-06.png' 
+import git_4 from './static/5-manage-featureflags-in-git-repos-07.png' 
+import git_5 from './static/5-manage-featureflags-in-git-repos-08.png' 
+import git_6 from './static/4-git-blue-circle.png'  
+import git_7 from './static/5-manage-featureflags-in-git-repos-09.png' 
+import git_8 from './static/8-git-off.png' 
+```
 
 > :warning: **Warning:** There is a known issue with this feature. When you turn on a Feature Flag, some Target rules may be reordered in your Git repo. This doesn't affect the functionality of your Feature Flag or Targets and we are working to fix this issue as soon as possible.
 
@@ -99,27 +109,40 @@ After you have enabled Git Experience and understand how it works with Harness F
 
 ### Sync with Git
 
-![The Sync with Git toggle highlighted.](./static/5-manage-featureflags-in-git-repos-04.png)*Figure 1: Sync with Git turned on, auto-commit turned off*
+```mdx-code-block
+<img src={git_1} alt="The Sync with Git toggle highlighted." height="500" width="300" />
+```
+*Figure 1: Sync with Git turned on, auto-commit turned off*
 
 This turns on syncing with Git. When you toggle only this button, each time you make a change on the Harness Platform, you will be prompted to confirm which branch you want to commit to in Git and to add a commit message. For example: 
 
-![An example commit message. ](./static/5-manage-featureflags-in-git-repos-05.png)*Figure 2: Example commit message*
+```mdx-code-block
+<img src={git_2} alt="An example commit message." height="500" width="400" />
+```
+*Figure 2: Example commit message*
 
 > **☆ NOTE —** If you select the checkbox Always commit to this branch and do not prompt for commit message, the Auto-commit to the selected branch option will be toggled on.
 
 When you are using this option, the branch icon is a gray circle:
 
-![A screenshot of the Git Sync button icon when using the Sync with Git option.](./static/5-manage-featureflags-in-git-repos-06.png)
+```mdx-code-block
+<img src={git_3} alt="A screenshot of the Git Sync button icon when using the Sync with Git option." height="500" width="300" />
+```
 
 *Figure 3: The branch icon when syncing with Git is enabled but auto-commit is disabled*
 
 ### Auto-commit to the selected branch
 
-![A screenshot with the Sync with Git and Auto-commit to selected branch toggles turned on.](./static/5-manage-featureflags-in-git-repos-07.png)*Figure 4: Sync with Git turned on, auto-commit turned on*
+```mdx-code-block
+<img src={git_4} alt="A screenshot with the Sync with Git and Auto-commit to selected branch toggles turned on." height="500" width="300" />
+```
+*Figure 4: Sync with Git turned on, auto-commit turned on*
 
 This turns on Auto committing, which means you do not have to manually enter a commit message and confirm the branch you want to commit to. Any changes you make will automatically be synced to the flags.yaml file on Git. Changes that are auto-committed have a [AUTO-COMMIT] prefix, for example:
 
-![A screenshot of an auto commit message on GitHub. ](./static/5-manage-featureflags-in-git-repos-08.png)
+```mdx-code-block
+<img src={git_5} alt="A screenshot of an auto commit message on GitHub. " height="500" width="700" />
+```
 
 *Figure 5: An auto-commit message in GitHub*
 
@@ -149,9 +172,13 @@ This turns on Auto committing, which means you do not have to manually enter a c
 [AUTO-COMMIT] Added feature flag to targets
 
 </details>
+
 When you are using the auto-commit option, the branch icon is a blue circle:
 
-![A screenshot of the blue circle on the branch icon. ](./static/4-git-blue-circle.png)
+
+```mdx-code-block
+<img src={git_6} alt="A screenshot of the blue circle on the branch icon." height="500" width="300" />
+```
 
 *Figure 6:* *The branch icon when syncing with Git is enabled but auto-commit is enabled*
 
@@ -159,7 +186,10 @@ When you are using the auto-commit option, the branch icon is a blue circle:
 
 To turn off syncing with Git, turn off the Sync with Git toggle. 
 
-![A screenshot of the Git sync toggle turned off. ](./static/5-manage-featureflags-in-git-repos-09.png)
+```mdx-code-block
+<img src={git_7} alt="Sync with Git turned off" height="500" width="300" />
+``` 
+
 *Figure 7: Sync with Git turned off*
 
 If you turn the toggle on again, your Flags will sync with Git again right away. 
@@ -168,7 +198,9 @@ If you turn the toggle on again, your Flags will sync with Git again right away.
 
 When syncing is off, the branch icon is a red warning circle:
 
-![A screenshot of the Git sync toggle turned off. ](./static/8-git-off.png)
+```mdx-code-block
+<img src={git_8} alt="A screenshot of the Git sync toggle turned off." height="500" width="300" />
+``` 
 
 *Figure 8: A screenshot of the Git Sync icon when Git Sync is toggled off.*
 

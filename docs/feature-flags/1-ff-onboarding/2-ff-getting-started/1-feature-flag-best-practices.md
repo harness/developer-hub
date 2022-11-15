@@ -68,6 +68,11 @@ Add a description to your Flag. This is optional on the Harness Platform, but we
 ![An example flag description](./static/1-feature-flag-best-practices-04.png)To help with this, you can use the [Harness Policy Engine to enforce descriptions](../../2-ff-using-flags/8-harness-policy-engine.md) when creating a Flag.
 
 
+
+import ffimage from './static/1-feature-flag-best-practices-04.png';
+<img src={ffimage} alt="An example flag description" height = "300" width = "600"/>
+
+
 ## Manage Targeting with Target Groups
 
 When using Feature Flags, you select Targets to serve a particular Variation of the Flag to, for example, serving True to enable a feature for some users and False to disable the feature for others. We often refer to Targets as users, but a Target can be anything that can be uniquely identified such as a user, an application, a machine, or any resource uniquely identified by an IP address, email ID, user ID, etc.

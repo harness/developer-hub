@@ -12,6 +12,11 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+```mdx-code-block
+import add_target_1 from './static/1-add-targets-00.png'
+import add_target_2 from './static/1-add-targets-01.png'
+```
+
 Targets are used to control which users see which Variation of a Feature Flag, for example, if you want to do internal testing or a beta program before a broader roll out, you can enable the Flag for some users and not others. While we refer to targeting users, when you create a Target you give it a name and a unique identifier, so a Target can be anything that can be uniquely identified. For example, a Target can be a user, an application, a system, a machine, or any resource uniquely identified by an IP address, email ID, user ID, etc.
 
 
@@ -76,8 +81,10 @@ To add a Target:
 5. In **Identifier**, enter a unique identifier for your Target. When [Targeting Users with Flags](3-targeting-users-with-flags.md) or [Managing Target Groups](2-add-target-groups.md), the Targets are identified by the identifier you give them.
 6. You can add multiple Targets. Click **+** to add more Targets.
 
+```mdx-code-block
+<img src={add_target_1} alt="Adding Targets" height="500" width="500" />
+```
 
-![An example of three Targets being created on the Add Target screen.](./static/1-add-targets-00.png)
 *Figure 1: Adding Targets*
 
 
@@ -107,8 +114,9 @@ This option allows you to import a list of Targets in CSV format. To do this:
 
 5. Click **Add**.
 
-
-![A screenshot of the Add Target screen that highlights the radio button for uploading a list of Targets.](./static/1-add-targets-01.png)
+```mdx-code-block
+<img src={add_target_1} alt="A screenshot of the Add Target screen that highlights the radio button for uploading a list of Targets." height="500" width="500" />
+``` 
 *Figure 2: Adding Targets from a CSV file*
 
 

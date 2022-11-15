@@ -10,6 +10,13 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+```mdx-code-block
+import create_project from './static/1-create-a-project-00.png'
+import about_project from './static/1-create-a-project-01.png'
+import invite_collabs from './static/1-create-a-project-02.png'
+```
+
+
 Before you can create a Feature Flag, you need to create a Project in the Harness platform. A Feature Flag is available only for the Project the Flag is created in, so you need to create any Flags in each Project you want to use them for.
 
 This topic describes how to create a Project in the Harness Platform. 
@@ -24,7 +31,9 @@ Before you create a Feature Flag, you must have [Created an Organization](https:
 
 1. In **Harness**, click **Feature Flags** and click **Create Project**.
 
-![A screenshot of the Harness Platform that highlights the Create Project button in the Feature Flag module.](./static/1-create-a-project-00.png)
+```mdx-code-block
+<img src={create_project} alt="A screenshot of the Harness Platform that highlights the Create Project button in the Feature Flag module." height="500" width="700" />
+```
 
 *Figure 1: Create a Project in Feature Flags*
 
@@ -32,7 +41,10 @@ Before you create a Feature Flag, you must have [Created an Organization](https:
 2. In the **Organization** drop-down menu, select the Organization for your Project. If you need to create a new Organization, go to [Create a Harness Organization](https://docs.harness.io/article/36fw2u92i4-create-an-organization#step_1_create_a_harness_org) and [Projects and Organizations](https://docs.harness.io/article/7fibxie636-projects-and-organizations).
 3. Click **Save and Continue**.
 
-![A screenshot of the About the Project form.](./static/1-create-a-project-01.png)*Figure 2: About the Project form*
+```mdx-code-block
+<img src={about_project} alt="A screenshot of the About the Project form." height="500" width="700" />
+```
+*Figure 2: About the Project form*
 
 1. (Optional) In **Invite Collaborators**, in **Invite People to Collaborate**, add team members to the Project.
 2. (Optional) Assign a role to the collaborators and click **Add**. The roles you can select are:
@@ -46,7 +58,11 @@ For more information about the permissions for each role, go to [Manage Access C
 
 3. Click **Save and Continue**. Your Project is created.
 
-![A screenshot of the Invite Collaborators form when creating a Project. ](./static/1-create-a-project-02.png)*Figure 3: Invite Collaborators screen*
+```mdx-code-block
+<img src={invite_collabs} alt="A screenshot of the Invite Collaborators form when creating a Project." height="500" width="700" />
+```
+
+*Figure 3: Invite Collaborators screen*
 
 4. In your **Project**, click **Feature Flags**.
 

@@ -11,6 +11,9 @@ helpdocs_category_id: eyzngtupao
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
+```mdx-code-block
+import sdk_arch from './static/1-client-side-and-server-side-sdks-00.png'
+```
 
 Harness Feature Flag provides several SDKs in different languages to help you access feature flags from your applications. The SDKs are divided into two main categories, regardless of the programming language:
 
@@ -20,8 +23,10 @@ Harness Feature Flag provides several SDKs in different languages to help you ac
 The client and server-side SDKs have different security considerations as well as some behavioral and architectural differences. This topic will help you understand the difference between Harness Feature Flag's client-side and server-side SDKs.
 
 ## SDK architecture
-
-![](./static/1-client-side-and-server-side-sdks-00.png)The above diagram defines the behavior of a SDK. It covers various aspects like what happens at the beginning (initialization and authentication) followed by behavior of an SDK during normal operation.
+```mdx-code-block
+<img src={sdk_arch} alt="A screenshot of the Harness Platform that highlights the Create Project button in the Feature Flag module." height="500" width="500" />
+```
+The above diagram defines the behavior of a SDK. It covers various aspects like what happens at the beginning (initialization and authentication) followed by behavior of an SDK during normal operation.
 
 * **SDK Initialization:** SDK initialization requires only one argument- SDK key and the optional configuration argument. There is a default configuration in the SDK and based on that configuration, an API client, a repository and an evaluator are set up.
 * **SDK Authentication:** Authentication is the first step in the development of the SDK. Without authentication, the evaluation function will return only the default values. To successfully log in to the system, use the SDK key. The key for client-side SDK cannot be used in the server-side SDK and vice versa. In order to log in successfully, a request is sent with SDK key. In case of client-side SDK key, add a target.

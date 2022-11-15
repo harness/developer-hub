@@ -10,6 +10,14 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+```mdx-code-block
+import target_group_1 from './static/2-add-target-groups-06.png' 
+import target_group_2 from './static/2-add-target-groups-07.png' 
+import target_group_3 from './static/2-add-target-groups-08.png' 
+import target_group_4 from './static/2-add-target-groups-09.png' 
+import target_group_5 from './static/2-add-target-groups-10.png' 
+```
+
 > **☆ NOTE —** While we refer to targeting users, when you create a Target you give it a name and a unique identifier, so a Target can be anything that can be uniquely identified. For example, a Target can be a user, an application, a system, a machine, or any resource uniquely identified by an IP address, email ID, user ID, etc.
 
 Target Groups are a collection of [Targets](1-add-targets.md) that allow you to serve Feature Flag Variations to a list of users in bulk. You can group Targets into a group either by picking individual Targets or by defining rules that automatically map Targets to a Target Group. For example, you can add individual Targets `joe@harness.io` and `jane@harness.io` to the QA internal users group or you can define a rule that all the emails ending with `@harness.io` are added to the QA internal users group.
@@ -43,7 +51,10 @@ You can add individual Targets from the Targets page or the Target Groups page.�
 
 2. In **Criteria**, click **Edit**.
 
-![The edit button next to Criteria. ](./static/2-add-target-groups-06.png)*Figure 2: Editing a Target Group*
+```mdx-code-block
+<img src={target_group_1} alt="The edit button next to Criteria." height="500" width="400" />
+```
+*Figure 2: Editing a Target Group*
 
 You can include or exclude specific Targets, or you can set rules to add Targets based on conditions you set. 
 
@@ -52,7 +63,10 @@ You can include or exclude specific Targets, or you can set rules to add Targets
 * To add specific Targets, in **Include the following**, select the Targets.
 * To exclude Targets, in **Exclude the following**, select the Targets.
 
-![A screenshot of Targets added to the Target Group Criteria. ](./static/2-add-target-groups-07.png)*Figure 3: Adding Targets to a Target Group*
+```mdx-code-block
+<img src={target_group_2} alt="A screenshot of Targets added to the Target Group Criteria." height="500" width="400" />
+```
+*Figure 3: Adding Targets to a Target Group*
 
 #### Add Targets based on conditions
 
@@ -87,12 +101,18 @@ To add Targets based on conditions:
 3. In the second drop-down menu, select the operator to apply to the Target Name or Identifier.
 4. In the search bar, enter the value you want the Target Name or Identifier to match and click the **+** button to add it. The following shows an example of a rule that adds all Targets with a Target Identifier ending in harness.io to the Target Group.
 
-![An example of the Target Group Criteria page with a condition added.](./static/2-add-target-groups-08.png)*Figure 5: Adding Targets based on a condition*
+```mdx-code-block
+<img src={target_group_3} alt="An example of the Target Group Criteria page with a condition added." height="500" width="400" />
+```
+
+*Figure 5: Adding Targets based on a condition*
 
 5. Click **Save**. Targets that meet the criteria are now included in the Target Group.
 
-![The Target Group page with the new condition displayed.](./static/2-add-target-groups-09.png
-)*Figure 6: Viewing the condition for adding a Target*
+```mdx-code-block
+<img src={target_group_4} alt="The Target Group page with the new condition displayed." height="500" width="400" />
+```
+*Figure 6: Viewing the condition for adding a Target*
 
 When you add Targets based on conditions, on the **Target Management:Targets** page, the Target Group is **not** displayed in the **Target Groups** column.### Add or exclude Targets from Target settings
 
@@ -101,7 +121,10 @@ You can use Target Settings to include or exclude Targets from a Target Group. C
 1. In **Target Management**, in **Targets**, click the Target you want to add to a group.
 2. Click **Target Groups**, then **Add to Target Groups** to add a specific Target, or click **Exclude from Target Groups** to exclude a specific Target. You can add or exclude the Target to multiple groups at once.
 
-![A screenshot of a Target with the Target Groups tab opened.](./static/2-add-target-groups-10.png)*Figure 7: Adding and excluding Targets from the Target's settings*
+```mdx-code-block
+<img src={target_group_5} alt="A screenshot of a Target with the Target Groups tab opened." height="500" width="400" />
+```
+*Figure 7: Adding and excluding Targets from the Target's settings*
 
 3. Select the Group(s) to add the Target to or to exclude a Target from, then click **Add to (1) Target Group**, or **Exclude from (1) Target Group**.
 4. The Targets are now added to the Target Group.

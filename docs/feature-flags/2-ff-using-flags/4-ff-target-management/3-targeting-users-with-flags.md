@@ -12,6 +12,11 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+```mdx-code-block
+import target_users_1 from './static/3-targeting-users-with-flags-03.png'
+import target_users_2 from './static/3-targeting-users-with-flags-04.png' 
+```
+
 Feature Flag Targeting allows you to serve a particular Variation of a Flag to specific Target when the Flag is enabled. Targets are anything that can be uniquely identified, we refer to these Targets as users, but they could also be apps, machines, resources, emails etc. 
 
 For example:
@@ -47,7 +52,11 @@ If you select one of the default Variations, for example, True or False:
 
 * Select the Target(s) or Target Group(s), then Click **Save**.
 
-![The Targeting Tab of a Flag with the dropdown menus for adding a Target highlighted.](./static/3-targeting-users-with-flags-03.png)*Figure 1: Adding Targets and Target Groups to serve a Variation to*
+```mdx-code-block
+<img src={target_users_1} alt="The Targeting Tab of a Flag with the dropdown menus for adding a Target highlighted." height="500" width="500" />
+```
+
+*Figure 1: Adding Targets and Target Groups to serve a Variation to*
 
 If you want to use a Percentage Rollout:
 
@@ -57,5 +66,9 @@ You can only use Percentage Rollouts on a single Target Group for each Flag. 
 
 2. Enter the percentage of each Variation you want to serve, then click **Save**.
 
-![The Targeting Tab of a Flag with percentage roll out applied.](./static/3-targeting-users-with-flags-04.png)*Figure 2: Using a percentage rollout for the Target Group*
+```mdx-code-block
+<img src={target_users_2} alt="The Targeting Tab of a Flag with percentage roll out applied." height="500" width="500" />
+```
+
+*Figure 2: Using a percentage rollout for the Target Group*
 

@@ -10,6 +10,10 @@ helpdocs_category_id: gjyyhm9f9h
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
+```mdx-code-block
+import var_settings from './static/4-create-a-feature-flag-07.png'
+import multivar_settings from './static/4-create-a-feature-flag-09.png'
+```
 
 Feature Flags allow you to toggle features in your code on or off, which allows you to progressively roll out features to particular users or groups. By using Feature Flags, you can manage continuous delivery and control who sees which features and when.
 
@@ -53,7 +57,11 @@ When you create a Feature Flag, you also create different options to label the l
 7. In the **Name** fields, enter the name for the true and false variations, for example, **True** and **False**.
 8. In **Default rules for the flag**, select which variation of the flag to serve when the flag is ON or OFF, for example, True when the flag is ON and False when the flag is OFF.
 
-![A screenshot of the Variation Settings form when creating a Feature Flag.](./static/4-create-a-feature-flag-07.png)*Figure 3: Variation settings*
+```mdx-code-block
+<img src={var_settings} alt="A screenshot of the Variation Settings form when creating a Feature Flag." height="500" width="700" />
+```
+
+*Figure 3: Variation settings*
 
 9. Click **Save and Close**. The Feature Flag is created and is set to **OFF** by default.
 
@@ -85,7 +93,11 @@ To create a multivariate Flag:
 6. Enter a **Name** and **Value** for each Variation you want to use.
 7. In **Default rules for the flag**, define which Variation you will see by default when the Flag is ON or OFF.
 
-![A screenshot of the Variation Settings form when creating a Feature Flag.](./static/4-create-a-feature-flag-09.png)*Figure 5: Variation settings of a multivariate fFag*
+```mdx-code-block
+<img src={multivar_settings} alt="A screenshot of the Variation Settings form when creating a Feature Flag." height="500" width="700" />
+```
+
+*Figure 5: Variation settings of a multivariate Flag*
 
 After you have created your multivariate Flag, you can then:
 
