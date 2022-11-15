@@ -197,7 +197,7 @@ Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/vmware-network-loss/destination-host-and-ip.yaml yaml)
 ```yaml
-## it inject the chaos for the egress traffic for specific ips/hosts
+## it injects the chaos for the egress traffic for specific ips/hosts
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -232,7 +232,7 @@ Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/vmware-network-loss/network-interface.yaml yaml)
 ```yaml
-## it inject the chaos for the egress traffic for specific ips/hosts
+## it injects the chaos for the egress traffic for specific ips/hosts
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:

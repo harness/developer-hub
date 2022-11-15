@@ -11,7 +11,7 @@ Use the following example to tune this:
 
 [embedmd]:# (./static/manifest/common/chaos-duration.yaml yaml)
 ```yaml
-# define the total chaos duration
+# defines total time duration of the chaos
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -62,7 +62,7 @@ spec:
         env:
         # delay between each iteration of chaos
         - name: CHAOS_INTERVAL
-          value: '10'
+          value: '15'
         # time duration for the chaos execution
         - name: TOTAL_CHAOS_DURATION
           VALUE: '60'

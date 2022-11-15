@@ -131,7 +131,7 @@ Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/pod-network-loss/network-loss.yaml yaml)
 ```yaml
-# it inject the network-loss for the ingrees and egress traffic
+# it injects network-loss for the egress traffic
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -166,7 +166,7 @@ Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/pod-network-loss/destination-ips-and-hosts.yaml yaml)
 ```yaml
-# it inject the chaos for the ingrees and egress traffic for specific ips/hosts
+# it injects the chaos for the egress traffic for specific ips/hosts
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:

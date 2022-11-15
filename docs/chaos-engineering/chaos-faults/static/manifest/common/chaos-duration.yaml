@@ -1,4 +1,4 @@
-# define the total chaos duration
+# defines total time duration of the chaos
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:

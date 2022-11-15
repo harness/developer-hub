@@ -1,4 +1,4 @@
-# it inject the chaos for specified namespaces, matched by labels
+# it injects the chaos for specified namespaces, matched by labels
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:

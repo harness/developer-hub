@@ -129,4 +129,6 @@ spec:
         # MOID of the VM
         - name: APP_VM_MOIDS
           value: 'vm-53,vm-65'
+        - name: TOTAL_CHAOS_DURATION
+          VALUE: '60'
 ```
