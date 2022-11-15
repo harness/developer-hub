@@ -231,7 +231,10 @@ $ docker ps
 $ docker logs <delegate-container-id>  
 $ docker logs <runner-container-id>
 ```
-5. In the Harness UI, verify that the Delegate appears in the Delegates list. This might take two or three minutes. You should see Connected next to the Delegate listing.![](./static/set-up-an-aws-vm-build-infrastructure-13.png)
+5. In the Harness UI, verify that the Delegate appears in the Delegates list. This might take two or three minutes. You should see Connected next to the Delegate listing.
+
+   ![](./static/set-up-an-aws-vm-build-infrastructure-13.png)
+   
 6. If you see **Not Connected**, make sure the Docker host can connect to **https://app.harness.io**.
 
 The Delegate and Runner have now been successfully installed, registered, and connected.
@@ -240,10 +243,13 @@ For details on the environment variables of the Harness Docker Delegate, see [Ha
 
 ### Step 6: Run a CI Build
 
-1. In the Harness CI Stage, in **Infrastructure**, select **AWS VMs**.![](./static/set-up-an-aws-vm-build-infrastructure-14.png)
+1. In the Harness CI Stage, in **Infrastructure**, select **AWS VMs**.
+
+   ![](./static/set-up-an-aws-vm-build-infrastructure-14.png)
+
 2. In the **Pool ID**, enter the pool name `<pool_id>` that you added in Step 2.
 
-![](./static/set-up-an-aws-vm-build-infrastructure-15.png)
+   ![](./static/set-up-an-aws-vm-build-infrastructure-15.png)
 
 3. Your AWS build infrastructure is now set up. You can now run your Build Stages on AWS VMs.
 

@@ -131,7 +131,7 @@ Plugins are Docker containers that perform predefined tasks and are configured a
 
 #### Caching
 
-Caching ensures faster job execution by reusing data from previous jobs' expensive fetch operations. Using the [Save Cache steps](/category/share-and-cache-ci-data) in Harness CI, you can save the cache to a cloud storage bucket and later restore it using the [Restore Cache steps](/category/share-and-cache-ci-data).
+Caching ensures faster job execution by reusing data from previous jobs' expensive fetch operations. Using the [Save Cache steps](https://docs.harness.io/category/share-and-cache-ci-data) in Harness CI, you can save the cache to a cloud storage bucket and later restore it using the [Restore Cache steps](https://docs.harness.io/category/share-and-cache-ci-data).
 
 #### Remote Docker Layer Caching
 

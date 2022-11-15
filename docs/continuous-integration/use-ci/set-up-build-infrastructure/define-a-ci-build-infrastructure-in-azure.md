@@ -211,7 +211,10 @@ $ docker ps
 $ docker logs <delegate-container-id>  
 $ docker logs <runner-container-id>
 ```
-5. In the Harness UI, verify that the Delegate appears in the Delegates list. This might take two or three minutes. You should see Connected next to the Delegate listing.![](./static/define-a-ci-build-infrastructure-in-azure-17.png)
+5. In the Harness UI, verify that the Delegate appears in the Delegates list. This might take two or three minutes. You should see Connected next to the Delegate listing.
+
+   ![](./static/define-a-ci-build-infrastructure-in-azure-17.png)
+
 6. If you see **Not Connected**, make sure the Docker host can connect to **https://app.harness.io**.
 
 The Delegate and Runner have now been successfully installed, registered, and connected.

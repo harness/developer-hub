@@ -128,7 +128,10 @@ In the new VNC window, do the following:
 brew install wget
 ```
 * Open a browser window in the UI, go to the Docker website, and download Docker Desktop for Mac Intel Chip: <https://docs.docker.com/desktop/mac/install/>
-* Run the Docker installer and accept the EULA that appears at the end of the install process.![](./static/define-a-mac-os-build-infrastructure-22.png)
+* Run the Docker installer and accept the EULA that appears at the end of the install process.
+
+![](./static/define-a-mac-os-build-infrastructure-22.png)
+
 * In a CLI, enter the following to make sure that Docker is running correctly: `docker run hello-world`
 * Install any additional tools that will be used by your builds on the VM, such Xcode.
 * Harness recommends that you suspend the master VM after you set it up. This will speed up the creation of new VMs.
