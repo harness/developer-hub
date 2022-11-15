@@ -14,9 +14,9 @@ spec:
         env:
         # image of the pod
         - name: POD_IMAGE
-          value: '<pod-image>'
+          value: 'nginx'
         # pod label selectors
         - name: POD_SELECTOR
-          value: '<label-selectors>'
+          value: '{name: kubelet-density-app}'
         - name: TARGET_NODE
           value: 'node1'

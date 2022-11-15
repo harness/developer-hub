@@ -1,0 +1,20 @@
+# vCenter host reboot
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  chaosServiceAccount: litmus-admin
+  experiments:
+    - name: vmware-host-reboot
+      spec:
+        components:
+          env:
+            # Name of the host
+            - name: HOST_NAME
+              value: 'host-1'
+            # Host datacenter
+            - name: HOST_DATACENTER
+              value: 'datacenter-1'

@@ -4,6 +4,7 @@ title: Azure Instance Stop
 ---
 
 ## Introduction
+
 - It causes PowerOff an Azure instance before bringing it back to running state after the specified chaos duration.
 - It helps to check the performance of the application/process running on the instance.
 
@@ -12,6 +13,7 @@ title: Azure Instance Stop
 :::
 
 ## Uses
+
 <details>
 <summary>View the uses of the experiment</summary>
 <div>
@@ -20,11 +22,14 @@ Coming soon.
 </details>
 
 ## Prerequisites
+
 :::info
+
 - Ensure that Kubernetes Version > 1.16.
-- Ensure that you have sufficient Azure access to stop and start the an instance. 
-- We will use azure [ file-based authentication ](https://docs.microsoft.com/en-us/azure/developer/go/azure-sdk-authorization#use-file-based-authentication) to connect with the instance using azure GO SDK in the experiment. For generating auth file run `az ad sp create-for-rbac --sdk-auth > azure.auth` Azure CLI command.
+- Ensure that you have sufficient Azure access to stop and start the an instance.
+- We will use azure [file-based authentication](https://docs.microsoft.com/en-us/azure/developer/go/azure-sdk-authorization#use-file-based-authentication) to connect with the instance using azure GO SDK in the experiment. For generating auth file run `az ad sp create-for-rbac --sdk-auth > azure.auth` Azure CLI command.
 - Ensure to create a Kubernetes secret having the auth file created in the step in `CHAOS_NAMESPACE`. A sample secret file looks like:
+
 ```yaml
 apiVersion: v1
 kind: Secret
@@ -46,15 +51,21 @@ stringData:
       "managementEndpointUrl": "XXXXXXXXX"
     }
 ```
-- If you change the secret key name (from `azure.auth`) please also update the `AZURE_AUTH_LOCATION` ENV value on `experiment.yaml`with the same name.
+
+- If you change the secret key name (from `azure.auth`) please also update the `AZURE_AUTH_LOCATION` ENV value on `experiment.yaml` with the same name.
+
 :::
 
 ## Default Validations
+
 :::info
+
 - Azure instance should be in healthy state.
+
 :::
 
 ## Experiment tunables
+
 <details>
     <summary>Check the Experiment Tunables</summary>
     <h2>Mandatory Fields</h2>
@@ -64,7 +75,7 @@ stringData:
         <th> Description </th>
         <th> Notes </th>
       </tr>
-      <tr> 
+      <tr>
         <td> AZURE_INSTANCE_NAME </td>
         <td> Instance name of the target azure instance</td>
         <td> For AKS nodes, the instance name is from the scale set section in Azure and not the node name from AKS node pool </td>
@@ -73,7 +84,7 @@ stringData:
         <td> RESOURCE_GROUP </td>
         <td> The resource group of the target instance</td>
         <td> </td>
-      </tr> 
+      </tr>
     </table>
     <h2>Optional Fields</h2>
     <table>
@@ -86,13 +97,13 @@ stringData:
         <td> SCALE_SET </td>
         <td> Whether instance is part of Scale set</td>
         <td> Accepts "enable"/"disable". Default is "disable"</td>
-      </tr> 
-      <tr> 
+      </tr>
+      <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> The total time duration for chaos insertion (sec) </td>
         <td> Defaults to 30s </td>
       </tr>
-      <tr> 
+      <tr>
         <td> CHAOS_INTERVAL </td>
         <td> The interval (in sec) between successive instance power off.</td>
         <td> Defaults to 30s </td>
@@ -132,18 +143,18 @@ metadata:
 spec:
   engineState: "active"
   annotationCheck: "false"
-  chaosServiceAccount: azure-instance-stop-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: azure-instance-stop
     spec:
       components:
         env:
         # comma separated list of azure instance names
-        - name: AZURE_INSTANCE_NAME
+        - name: AZURE_INSTANCE_NAMES
           value: 'instance-01,instance-02'
         # name of the resource group
         - name: RESOURCE_GROUP
-          value: '<resource group of AZURE_INSTANCE_NAME>'
+          value: 'rg-azure'
         - name: TOTAL_CHAOS_DURATION
           VALUE: '60'
 ```
@@ -164,18 +175,18 @@ metadata:
 spec:
   engineState: "active"
   annotationCheck: "false"
-  chaosServiceAccount: azure-instance-stop-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: azure-instance-stop
     spec:
       components:
         env:
         # comma separated list of azure instance names
-        - name: AZURE_INSTANCE_NAME
+        - name: AZURE_INSTANCE_NAMES
           value: 'instance-01,instance-02'
         # name of the resource group
         - name: RESOURCE_GROUP
-          value: '<resource group of Scale set>'
+          value: 'rg-azure'
         # accepts enable/disable value. default is disable
         - name: SCALE_SET
           value: 'enable'
@@ -199,7 +210,7 @@ metadata:
 spec:
   engineState: "active"
   annotationCheck: "false"
-  chaosServiceAccount: azure-instance-stop-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: azure-instance-stop
     spec:
@@ -211,8 +222,8 @@ spec:
          # time duration for the chaos execution
         - name: TOTAL_CHAOS_DURATION
           VALUE: '60'
-        - name: AZURE_INSTANCE_NAME
+        - name: AZURE_INSTANCE_NAMES
           value: 'instance-01,instance-02'
         - name: RESOURCE_GROUP
-          value: '<resource group of AZURE_INSTANCE_NAME>'
+          value: 'rg-azure'
 ```

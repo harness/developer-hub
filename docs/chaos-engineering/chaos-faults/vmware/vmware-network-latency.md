@@ -166,7 +166,7 @@ It defines the network packet latency to be injected on the vm. It can be tuned 
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/vmware-network-chaos/network-latency.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-network-latency/network-latency.yaml yaml)
 ```yaml
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
@@ -204,7 +204,7 @@ It defines the jitter (in ms), a parameter that allows introducing a network del
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/vmware-network-chaos/network-latency-with-jitter.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-network-latency/network-latency-with-jitter.yaml yaml)
 ```yaml
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
@@ -248,9 +248,9 @@ The network experiments interrupt traffic for all the IPs/hosts by default. The 
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/vmware-network-chaos/destination-host-and-ip.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-network-latency/destination-host-and-ip.yaml yaml)
 ```yaml
-## it inject the chaos for the ingrees and egress traffic for specific ips/hosts
+## it inject the chaos for the egress traffic for specific ips/hosts
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -290,9 +290,9 @@ The defined name of the ethernet interface, which is considered for shaping traf
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/vmware-network-chaos/network-interface.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-network-latency/network-interface.yaml yaml)
 ```yaml
-## it inject the chaos for the ingrees and egress traffic for specific ips/hosts
+## it inject the chaos for the egress traffic for specific ips/hosts
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:

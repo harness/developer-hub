@@ -7,10 +7,10 @@ title: EC2 Stop By ID
 
 - It causes stopping of an EC2 instance using the provided instance ID or list of instance IDs before bringing it back to running state after the specified chaos duration.
 - It helps to check the performance of the application/process running on the EC2 instance.
-- When the `MANAGED_NODEGROUP` is enable then the experiment will not try to start the instance post chaos instead it will check of the addition of the new node instance to the cluster.
+- When the `MANAGED_NODEGROUP` is enabled then the experiment will not try to start the instance post chaos instead it will check of the addition of the new node instance to the cluster.
 
 :::tip Fault execution flow chart
-![EC2 Stop](./static/images/ec2-stop.png)
+![EC2 Stop By ID](./static/images/ec2-stop.png)
 :::
 
 ## Uses
@@ -80,7 +80,7 @@ If the target EC2 instance is a part of a self-managed nodegroup then make sure 
       </tr>
       <tr>
         <td> REGION </td>
-        <td> The region name of the target instace</td>
+        <td> The region name of the target instance</td>
         <td> </td>
       </tr>
     </table>
@@ -152,7 +152,7 @@ spec:
           value: 'instance-1'
         # region for the ec2 instance
         - name: REGION
-          value: '<region for EC2_INSTANCE_ID>'
+          value: 'us-east-1'
         - name: TOTAL_CHAOS_DURATION
           VALUE: '60'
 ```

@@ -5,7 +5,7 @@ title: Docker Service Kill
 
 ## Introduction
 - This experiment Causes the application to become unreachable on account of node turning unschedulable (NotReady) due to docker service kill
-- The docker service has been stopped/killed on a node to make it unschedulable for a certain duration i.e TOTAL_CHAOS_DURATION. The application node should be healthy after the chaos injection and the services should be reaccessable.
+- The docker service has been stopped/killed on a node to make it unschedulable for a certain duration i.e `TOTAL_CHAOS_DURATION`. The application node should be healthy after the chaos injection and the services should be re-accessible.
 - The application implies services. Can be reframed as: Test application resiliency upon replica getting unreachable caused due to docker service down.
 
 :::tip Fault execution flow chart 
@@ -23,7 +23,7 @@ Coming soon.
 ## Prerequisites
 :::info
 - Ensure that Kubernetes Version > 1.16
-- Ensure that the node specified in the experiment ENV variable <code>TARGET_NODE</code> (the node for which docker service need to be killed) should be cordoned before execution of the chaos experiment (before applying the chaosengine manifest) to ensure that the litmus experiment runner pods are not scheduled on it / subjected to eviction. This can be achieved with the following steps:
+- Ensure that the node specified in the experiment ENV variable <code>TARGET_NODE</code> (the node for which docker service need to be killed) should be cordoned before execution of the chaos experiment to ensure that the experiment resources are not scheduled on it or subjected to eviction. This can be achieved with the following steps:
   - Get node names against the applications pods: <code>kubectl get pods -o wide</code>
   - Cordon the node <code>kubectl cordon &lt;nodename&gt;</code>
 :::
@@ -46,12 +46,12 @@ The target nodes should be in ready state before and after chaos injection.
       <tr>
         <td> TARGET_NODE </td>
         <td> Name of the target node</td>
-        <td> </td>
+        <td> Eg. node-1 </td>
       </tr>
       <tr>
         <td> NODE_LABEL </td>
         <td> It contains node label, which will be used to filter the target node if TARGET_NODE ENV is not set </td>
-        <td>It is mutually exclusive with the TARGET_NODE ENV. If both are provided then it will use the TARGET_NODE</td>
+        <td> It is mutually exclusive with the TARGET_NODE ENV. If both are provided then it will use the <code>TARGET_NODE</code> </td>
       </tr>
     </table>
     <h2>Optional Fields</h2>
@@ -67,14 +67,14 @@ The target nodes should be in ready state before and after chaos injection.
         <td> Defaults to 60s </td>
       </tr>
       <tr>
-        <td> LIB  </td>
+        <td> LIB </td>
         <td> The chaos lib used to inject the chaos </td>
         <td> Defaults to <code>litmus</code> </td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before injection of chaos in sec </td>
-        <td> </td>
+        <td> Eg. 30 </td>
       </tr>
     </table>
 </details>
@@ -100,7 +100,7 @@ metadata:
 spec:
   engineState: "active"
   annotationCheck: "false"
-  chaosServiceAccount: docker-service-kill-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: docker-service-kill
     spec:

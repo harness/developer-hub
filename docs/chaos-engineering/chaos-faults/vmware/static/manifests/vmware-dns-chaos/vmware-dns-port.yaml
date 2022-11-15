@@ -12,7 +12,6 @@ spec:
     spec:
       components:
         env:
-        # MOID of the VM
         - name: PORT
           value: '54'
 

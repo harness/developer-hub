@@ -64,7 +64,7 @@ You can pass the VM credentials as secrets or as an chaosengine ENV variable.
         </tr>
         <tr>
             <td> VM_USER_NAME </td>
-            <td> Username with sudo priviliges.</td>
+            <td> Username with sudo privileges.</td>
             <td> Eg: vm-user</td>
         </tr>
         <tr>
@@ -112,7 +112,7 @@ You can pass the VM credentials as secrets or as an chaosengine ENV variable.
         </tr>
         <tr>
             <td> INSTALL_DEPENDENCY </td>
-            <td> Whether to install the dependancy to run the experiment </td>
+            <td> Whether to install the dependency to run the experiment </td>
             <td> If the dependency already exists, you can turn it off. Defaults to True.</td>
         </tr>
         <tr>

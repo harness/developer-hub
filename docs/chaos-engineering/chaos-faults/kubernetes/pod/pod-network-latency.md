@@ -49,7 +49,7 @@ The application pods should be in running state before and after chaos injection
         <td> </td>
       </tr>
       <tr>
-        <td> TARGET_CONTAINER  </td>
+        <td> TARGET_CONTAINER </td>
         <td> Name of container which is subjected to network latency </td>
         <td> Applicable for containerd & CRI-O runtime only. Even with these runtimes, if the value is not provided, it injects chaos on the first container of the pod </td>
       </tr>
@@ -64,7 +64,7 @@ The application pods should be in running state before and after chaos injection
         <td> Default 0, provide numeric value only </td>
       </tr> 
       <tr>
-        <td> CONTAINER_RUNTIME  </td>
+        <td> CONTAINER_RUNTIME </td>
         <td> container runtime interface for the cluster</td>
         <td> Defaults to docker, supported values: docker, containerd and crio for litmus and only docker for pumba LIB </td>
       </tr>
@@ -109,14 +109,14 @@ The application pods should be in running state before and after chaos injection
         <td> default value is `gaiadocker/iproute2` </td>
       </tr>
       <tr>
-        <td> LIB_IMAGE  </td>
+        <td> LIB_IMAGE </td>
         <td> Image used to run the netem command </td>
         <td> Defaults to `litmuschaos/go-runner:latest` </td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injection of chaos in sec </td>
-        <td> </td>
+        <td> Eg. 30 </td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
@@ -139,7 +139,7 @@ Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/pod-network-latency/network-latency.yaml yaml)
 ```yaml
-# it inject the network-latency for the ingrees and egress traffic
+# it injects network-latency for the egress traffic
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -151,7 +151,7 @@ spec:
     appns: "default"
     applabel: "app=nginx"
     appkind: "deployment"
-  chaosServiceAccount: pod-network-latency-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: pod-network-latency
     spec:
@@ -175,7 +175,7 @@ Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/pod-network-latency/destination-ips-and-hosts.yaml yaml)
 ```yaml
-# it inject the chaos for the ingrees and egress traffic for specific ips/hosts
+# it injects the chaos for the egress traffic for specific ips/hosts
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -187,7 +187,7 @@ spec:
     appns: "default"
     applabel: "app=nginx"
     appkind: "deployment"
-  chaosServiceAccount: pod-network-latency-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: pod-network-latency
     spec:
@@ -223,7 +223,7 @@ spec:
     appns: "default"
     applabel: "app=nginx"
     appkind: "deployment"
-  chaosServiceAccount: pod-network-latency-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: pod-network-latency
     spec:
@@ -256,7 +256,7 @@ spec:
     appns: "default"
     applabel: "app=nginx"
     appkind: "deployment"
-  chaosServiceAccount: pod-network-latency-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: pod-network-latency
     spec:
@@ -290,7 +290,7 @@ spec:
     appns: "default"
     applabel: "app=nginx"
     appkind: "deployment"
-  chaosServiceAccount: pod-network-latency-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: pod-network-latency
     spec:
@@ -310,7 +310,7 @@ spec:
 ### Pumba Chaos Library
 
 It specifies the Pumba chaos library for the chaos injection. It can be tuned via `LIB` ENV. The defaults chaos library is `litmus`.
-Provide the traffic control image via `TC_IMAGE` ENV for the pumba library.
+Provide the traffic control image via `TC_IMAGE` ENV for the Pumba library.
 
 Use the following example to tune this:
 
@@ -328,7 +328,7 @@ spec:
     appns: "default"
     applabel: "app=nginx"
     appkind: "deployment"
-  chaosServiceAccount: pod-network-latency-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: pod-network-latency
     spec:

@@ -41,17 +41,17 @@ The application pods should be in running state before and after chaos injection
         <th> Notes </th>
       </tr>
       <tr>
-        <td> TARGET_CONTAINER  </td>
+        <td> TARGET_CONTAINER </td>
         <td> The name of container to be killed inside the pod </td>
         <td> If the TARGET_CONTAINER is not provided it will delete the first container </td>
       </tr>
       <tr>
-        <td> CHAOS_INTERVAL  </td>
+        <td> CHAOS_INTERVAL </td>
         <td> Time interval b/w two successive container kill (in sec) </td>
         <td> If the CHAOS_INTERVAL is not provided it will take the default value of 10s </td>
       </tr>
       <tr>
-        <td> TOTAL_CHAOS_DURATION  </td>
+        <td> TOTAL_CHAOS_DURATION </td>
         <td> The time duration for chaos injection (seconds) </td>
         <td> Defaults to 20s </td>
       </tr>
@@ -66,19 +66,19 @@ The application pods should be in running state before and after chaos injection
         <td> If not provided, it will select target pods randomly based on provided appLabels</td>
       </tr>
       <tr>
-        <td> LIB_IMAGE  </td>
+        <td> LIB_IMAGE </td>
         <td> LIB Image used to kill the container </td>
         <td> Defaults to <code>litmuschaos/go-runner:latest</code></td>
       </tr>
       <tr>
-        <td> LIB  </td>
+        <td> LIB </td>
         <td> The category of lib use to inject chaos </td>
         <td> Default value: litmus, supported values: pumba and litmus </td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before injection of chaos in sec </td>
-        <td> </td>
+        <td> Eg. 30 </td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
@@ -96,7 +96,7 @@ The application pods should be in running state before and after chaos injection
         <td> Defaults to `/var/run/docker.sock` </td>
       </tr>
       <tr>
-        <td> CONTAINER_RUNTIME  </td>
+        <td> CONTAINER_RUNTIME </td>
         <td> container runtime interface for the cluster</td>
         <td>  Defaults to docker, supported values: docker, containerd and crio for litmus and only docker for pumba LIB </td>
       </tr>
@@ -126,7 +126,7 @@ spec:
     appns: "default"
     applabel: "app=nginx"
     appkind: "deployment"
-  chaosServiceAccount: container-kill-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: container-kill
     spec:
@@ -157,7 +157,7 @@ spec:
     appns: "default"
     applabel: "app=nginx"
     appkind: "deployment"
-  chaosServiceAccount: container-kill-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: container-kill
     spec:
@@ -192,7 +192,7 @@ spec:
     appns: "default"
     applabel: "app=nginx"
     appkind: "deployment"
-  chaosServiceAccount: container-kill-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: container-kill
     spec:
@@ -227,7 +227,7 @@ spec:
     appns: "default"
     applabel: "app=nginx"
     appkind: "deployment"
-  chaosServiceAccount: container-kill-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: container-kill
     spec:
@@ -259,7 +259,7 @@ spec:
     appns: "default"
     applabel: "app=nginx"
     appkind: "deployment"
-  chaosServiceAccount: container-kill-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: container-kill
     spec:

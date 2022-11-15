@@ -121,7 +121,7 @@ metadata:
 spec:
   engineState: "active"
   annotationCheck: "false"
-  chaosServiceAccount: vm-poweroff-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: vm-poweroff
     spec:

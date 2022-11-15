@@ -1,6 +1,6 @@
 ---
-id: vmware-vmprocesskill
-title: VMware VM Process kill
+id: vmware-process-kill
+title: VMware Process kill
 ---
 
 ## Introduction
@@ -8,7 +8,7 @@ title: VMware VM Process kill
 - It helps to check the performance of the application/process running on the VMWare VMs.
 
 :::tip Fault execution flow chart
-![VMware VM Process kill](./static/images/vm-processkill.png)
+![VMware Process kill](./static/images/vmware-process-kill.png)
 :::
 
 ## Uses
@@ -26,7 +26,7 @@ Disrupt the application critical processes such as databases or message queues r
 ** vCenter Requirements **
 - Ensure the connectivity of execution plane with vCenter and the hosts over 443 port. 
 - Ensure that Vmware tool is installed on the target VM with remote execution enabled.
-- Ensure that you have sufficient vCenter permisssion to access hosts and VMs.
+- Ensure that you have sufficient vCenter permission to access hosts and VMs.
 - Ensure to create a Kubernetes secret having the Vcenter credentials in the `CHAOS_NAMESPACE`. A sample secret file looks like:
 ```yaml
 apiVersion: v1
@@ -104,7 +104,7 @@ It contains the target process Ids running on a particular VM
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/vm-processkill/vm-process-kill-processid.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-process-kill/vmware-process-kill.yaml yaml)
 ```yaml
 # Process kill in the VMWare VM
 apiVersion: litmuschaos.io/v1alpha1
@@ -116,15 +116,15 @@ spec:
   annotationCheck: "false"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: vmware-process-kill
-    spec:
-      components:
-        env:
-        # Name of the VM
-        - name: VM_NAME
-          value: 'test-vm-01'
-        # List of Process IDs
-        - name: PROCESS_IDS
-          value: '8688,4678'
+    - name: vmware-process-kill
+      spec:
+        components:
+          env:
+            # Name of the VM
+            - name: VM_NAME
+              value: 'test-vm-01'
+            # List of Process IDs
+            - name: PROCESS_IDS
+              value: '8688,4678'
 ```
 

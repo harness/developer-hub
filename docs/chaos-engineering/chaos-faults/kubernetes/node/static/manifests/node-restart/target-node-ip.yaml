@@ -6,7 +6,7 @@ metadata:
 spec:
   engineState: "active"
   annotationCheck: "false"
-  chaosServiceAccount: node-restart-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: node-restart
     spec:
@@ -14,7 +14,7 @@ spec:
         env:
         # internal ip of the targeted node
         - name: TARGET_NODE_IP
-          value: '<ip of node01>'
+          value: '10.0.170.92'
         # name of the target node
         - name: TARGET_NODE
           value: 'node01'
