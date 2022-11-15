@@ -46,7 +46,7 @@ The application pods should be in running state before and after chaos injection
         <td> Defaults to port 80 </td>
       </tr>
       <tr>
-        <td> RESPONSE_BODY  </td>
+        <td> RESPONSE_BODY </td>
         <td> Body string to overwrite the http response body</td>
         <td> If no value is provided, response will be an empty body. Defaults to empty body </td>
       </tr>
@@ -105,7 +105,7 @@ The application pods should be in running state before and after chaos injection
       </tr>
       <tr>
         <td> PODS_AFFECTED_PERC </td>
-        <td> The Percentage of total pods to target  </td>
+        <td> The Percentage of total pods to target </td>
         <td> Defaults to 0 (corresponds to 1 replica), provide numeric value only </td>
       </tr>
       <tr>

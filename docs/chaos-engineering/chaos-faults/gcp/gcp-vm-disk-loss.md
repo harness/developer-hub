@@ -72,12 +72,12 @@ stringData:
       <tr>
         <td> ZONES </td>
         <td> The zones of respective target disk volumes </td>
-        <td> Provide the zone for every target disk name as zone1,zone2... in the respective order of <code>DISK_VOLUME_NAMES</code>  </td>
+        <td> Provide the zone for every target disk name as zone1,zone2... in the respective order of <code>DISK_VOLUME_NAMES</code> </td>
       </tr>
       <tr>
         <td> DEVICE_NAMES </td>
         <td> The device names of respective target disk volumes </td>
-        <td> Provide the device name for every target disk name as deviceName1,deviceName2... in the respective order of <code>DISK_VOLUME_NAMES</code>  </td>
+        <td> Provide the device name for every target disk name as deviceName1,deviceName2... in the respective order of <code>DISK_VOLUME_NAMES</code> </td>
       </tr> 
     </table>
     <h2>Optional Fields</h2>
@@ -117,7 +117,7 @@ Refer the [common attributes](../common-tunables-for-all-faults) to tune the com
 
 ### Detach Volumes By Names
 
-It contains comma separated list of volume names subjected to disk loss chaos. It will detach all the disks with the given `DISK_VOLUME_NAMES` disk names and corresponding `ZONES` zone names and the `DEVICE_NAMES` device names in `GCP_PROJECT_ID` project.  It reattached the volume after waiting for the specified `TOTAL_CHAOS_DURATION` duration.
+It contains comma separated list of volume names subjected to disk loss chaos. It will detach all the disks with the given `DISK_VOLUME_NAMES` disk names and corresponding `ZONES` zone names and the `DEVICE_NAMES` device names in `GCP_PROJECT_ID` project. It re-attaches the volume after waiting for the specified `TOTAL_CHAOS_DURATION` duration.
 
 `NOTE:` The `DISK_VOLUME_NAMES` contains multiple comma-separated disk names. The comma-separated zone names should be provided in the same order as disk names.
 

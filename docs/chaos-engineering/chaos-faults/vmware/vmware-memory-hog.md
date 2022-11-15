@@ -4,7 +4,7 @@ title: VMware Memory Hog
 ---
 
 ## Introduction
-- VMware memory hog  fault consumes the Memory resources on Linux OS based VMware VM .
+- VMware memory hog fault consumes the Memory resources on Linux OS based VMware VM .
 - It helps to check the performance of the application running on the VMWare VMs.
 
 :::tip Fault execution flow chart
@@ -17,7 +17,7 @@ title: VMware Memory Hog
 
 ** vCenter Requirements **
 - Ensure the connectivity of execution plane with vCenter and the hosts over 443 port. 
-- Ensure that Vmware tool is installed on the target VM with remote execution enabled.
+- Ensure that VMware tool is installed on the target VM with remote execution enabled.
 - Ensure that you have sufficient vCenter permission to access hosts and VMs.
 - Ensure to create a Kubernetes secret having the Vcenter credentials in the `CHAOS_NAMESPACE`. A sample secret file looks like:
 ```yaml
@@ -69,17 +69,17 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
      <tr>
         <td> MEMORY_CONSUMPTION_MEBIBYTES </td>
         <td> The amount of memory used of hogging VMware VMs(megabytes) </td>
-        <td>  </td>
+        <td> </td>
       </tr>
       <tr>
         <td> MEMORY_CONSUMPTION_PERCENTAGE </td>
-        <td> Percentage of memory to be consumed  </td>
-        <td> Default to 100  </td>
+        <td> Percentage of memory to be consumed </td>
+        <td> Default to 100 </td>
       </tr>
       <tr>
         <td> NUMBER_OF_WORKERS </td>
         <td> The number of workers used to run the stress process </td>
-        <td> Default to 4  </td>
+        <td> Default to 4 </td>
       </tr>
       <tr> 
         <td> TOTAL_CHAOS_DURATION </td>

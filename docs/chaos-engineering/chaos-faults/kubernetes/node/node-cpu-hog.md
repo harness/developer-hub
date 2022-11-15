@@ -42,7 +42,7 @@ The target nodes should be in ready state before and after chaos injection.
       </tr>
       <tr>
         <td> TARGET_NODES </td>
-        <td> Comma separated list of nodes, subjected to node cpu hog chaos</td>
+        <td> Comma separated list of nodes, subjected to node CPU hog chaos</td>
         <td> </td>
       </tr>
       <tr>
@@ -81,12 +81,12 @@ The target nodes should be in ready state before and after chaos injection.
       </tr>
       <tr>
         <td> NODE_CPU_CORE </td>
-        <td> Number of cores of node CPU to be consumed  </td>
+        <td> Number of cores of node CPU to be consumed </td>
         <td> Defaults to <code>2</code> </td>
       </tr>  
         <tr>
             <td> NODES_AFFECTED_PERC </td>
-            <td> The Percentage of total nodes to target  </td>
+            <td> The Percentage of total nodes to target </td>
             <td> Defaults to 0 (corresponds to 1 node), provide numeric value only </td>
         </tr> 
         <tr>
@@ -109,7 +109,7 @@ Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/node-cpu-hog/node-cpu-core.yaml yaml)
 ```yaml
-# stress the cpu of the targeted nodes
+# stress the CPU of the targeted nodes
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -123,7 +123,7 @@ spec:
     spec:
       components:
         env:
-        # number of cpu cores to be stressed
+        # number of CPU cores to be stressed
         - name: NODE_CPU_CORE
           value: '2'
         - name: TOTAL_CHAOS_DURATION
@@ -138,7 +138,7 @@ Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/node-cpu-hog/node-cpu-load.yaml yaml)
 ```yaml
-# stress the cpu of the targeted nodes by load percentage
+# stress the CPU of the targeted nodes by load percentage
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -152,11 +152,11 @@ spec:
     spec:
       components:
         env:
-        # percentage of cpu to be stressed
+        # percentage of CPU to be stressed
         - name: CPU_LOAD
           value: "100"
-        # node cpu core should be provided as 0 for cpu load
-        # to work otherwise it will take cpu core as priority
+        # node CPU core should be provided as 0 for CPU load
+        # to work otherwise it will take CPU core as priority
         - name: NODE_CPU_CORE
           value: '0'
         - name: TOTAL_CHAOS_DURATION

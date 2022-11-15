@@ -66,7 +66,7 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
       </tr>
       <tr>
         <td> APP_VM_MOIDS </td>
-        <td> MOIDs of the vmware instance</td>
+        <td> MOIDs of the VMware instance</td>
         <td> Once you open VM in vCenter WebClient, you can find MOID in address field (VirtualMachine:vm-5365). Alternatively you can use the CLI to fetch the MOID. Eg: vm-5365 </td>
       </tr>
     </table>

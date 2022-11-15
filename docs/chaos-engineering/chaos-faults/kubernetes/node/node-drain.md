@@ -61,7 +61,7 @@ The target nodes should be in ready state before and after chaos injection.
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The time duration for chaos insertion (seconds)  </td>
+        <td> The time duration for chaos insertion (seconds) </td>
         <td> Defaults to 60s </td>
       </tr>
       <tr>

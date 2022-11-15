@@ -4,7 +4,7 @@ title: VMware Disk Loss
 ---
 
 ## Introduction
-- VMware Disk Loss  fault will detach the disks attached to a Linux OS based VMware VM.
+- VMware Disk Loss fault will detach the disks attached to a Linux OS based VMware VM.
 
 :::tip Fault execution flow chart
 ![VMware Disk Loss](./static/images/vmware-disk-loss.png)
@@ -16,7 +16,7 @@ title: VMware Disk Loss
 
 ** vCenter Requirements **
 - Ensure the connectivity of execution plane with vCenter and the hosts over 443 port. 
-- Ensure that Vmware tool is installed on the target VM with remote execution enabled.
+- Ensure that VMware tool is installed on the target VM with remote execution enabled.
 - Ensure that you have sufficient vCenter permission to access hosts and VMs.
 - Ensure to create a Kubernetes secret having the Vcenter credentials in the `CHAOS_NAMESPACE`. A sample secret file looks like:
 ```yaml

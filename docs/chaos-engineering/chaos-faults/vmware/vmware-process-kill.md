@@ -4,7 +4,7 @@ title: VMware Process kill
 ---
 
 ## Introduction
-- VMware Process Kill  fault kills the target processes running as part of a Linux OS based VMware VM to determine the application/process resilience.
+- VMware Process Kill fault kills the target processes running as part of a Linux OS based VMware VM to determine the application/process resilience.
 - It helps to check the performance of the application/process running on the VMWare VMs.
 
 :::tip Fault execution flow chart
@@ -25,7 +25,7 @@ Disrupt the application critical processes such as databases or message queues r
 
 ** vCenter Requirements **
 - Ensure the connectivity of execution plane with vCenter and the hosts over 443 port. 
-- Ensure that Vmware tool is installed on the target VM with remote execution enabled.
+- Ensure that VMware tool is installed on the target VM with remote execution enabled.
 - Ensure that you have sufficient vCenter permission to access hosts and VMs.
 - Ensure to create a Kubernetes secret having the Vcenter credentials in the `CHAOS_NAMESPACE`. A sample secret file looks like:
 ```yaml

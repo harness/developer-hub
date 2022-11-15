@@ -122,7 +122,7 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
             <td> if not provided, it will induce network chaos for all ips/destinations or DESTINATION_IPS if already defined </td>
         </tr>
         <tr>
-            <td> NETWORK_INTERFACE  </td>
+            <td> NETWORK_INTERFACE </td>
             <td> Name of ethernet interface considered for shaping traffic </td>
             <td> Defaults to `eth0` </td>
         </tr>
@@ -179,7 +179,7 @@ spec:
 
 ### Run With Destination IPs And Destination Hosts
 
-The network  faults interrupt traffic for all the IPs/hosts by default. The interruption of specific IPs/Hosts can be tuned via `DESTINATION_IPS` and `DESTINATION_HOSTS` ENV.
+The network faults interrupt traffic for all the IPs/hosts by default. The interruption of specific IPs/Hosts can be tuned via `DESTINATION_IPS` and `DESTINATION_HOSTS` ENV.
 
 `DESTINATION_IPS`: It contains the IP addresses of the services or the CIDR blocks(range of IPs), the accessibility to which is impacted.
 `DESTINATION_HOSTS`: It contains the DNS Names of the services, the accessibility to which, is impacted

@@ -16,7 +16,7 @@ title: VMware IO Stress
 
 ** vCenter Requirements **
 - Ensure the connectivity of  execution plane with vCenter and the hosts over 443 port. 
-- Ensure that Vmware tool is installed on the target VM with remote execution enabled.
+- Ensure that VMware tool is installed on the target VM with remote execution enabled.
 - Ensure that you have sufficient vCenter permission to access hosts and VMs.
 - Ensure to create a Kubernetes secret having the Vcenter credentials in the `CHAOS_NAMESPACE`. A sample secret file looks like:
 ```yaml
@@ -67,12 +67,12 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
        <tr>
         <td> FILESYSTEM_UTILIZATION_PERCENTAGE </td>
         <td> Specify the size as percentage of free space on the file system </td>
-        <td>  </td>
+        <td> </td>
       </tr>   
        <tr>
         <td> FILESYSTEM_UTILIZATION_BYTES </td>
         <td> Specify the size in GigaBytes(GB). FILESYSTEM_UTILIZATION_PERCENTAGE & FILESYSTEM_UTILIZATION_BYTES are mutually exclusive. If both are provided, FILESYSTEM_UTILIZATION_PERCENTAGE is prioritized. </td>
-        <td>  </td>
+        <td> </td>
       </tr>  
        <tr>
         <td> NUMBER_OF_WORKERS </td>
@@ -82,11 +82,11 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
        <tr>
         <td> VOLUME_MOUNT_PATH </td>
         <td> Fill the given volume mount path </td>
-        <td>  </td>
+        <td> </td>
       </tr>   
       <tr>
         <td> CPU_CORES </td>
-        <td> Number of the cpu cores subjected to CPU stress </td>
+        <td> Number of the CPU cores subjected to CPU stress </td>
         <td> Default to 1 </td>
         </tr>
       <tr> 

@@ -25,7 +25,7 @@ The fault causes DNS errors on the target VMs which can result in unavailability
 
 ** vCenter Requirements **
 - Ensure the connectivity of execution plane with vCenter and the hosts over 443 port. 
-- Ensure that Vmware tool is installed on the target VM with remote execution enabled.
+- Ensure that VMware tool is installed on the target VM with remote execution enabled.
 - Ensure that you have sufficient vCenter permission to access hosts and VMs.
 - Ensure to create a Kubernetes secret having the Vcenter credentials in the `CHAOS_NAMESPACE`. A sample secret file looks like:
 ```yaml
@@ -130,7 +130,7 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
       <tr>
         <td> GOVC_URL </td>
         <td> Provide the VMCenter Server URL</td>
-        <td> It is used to perform the vmware api calls using govc command and is derived from sceret.</td>
+        <td> It is used to perform the VMware API calls using govc command and is derived from secret.</td>
       </tr>
       <tr>
         <td> GOVC_USERNAME </td>

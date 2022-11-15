@@ -4,7 +4,7 @@ title: VMware CPU Hog
 ---
 
 ## Introduction
-- VMware cpu hog  fault consumes the CPU resources on Linux OS based VMware VM .
+- VMware CPU hog fault consumes the CPU resources on Linux OS based VMware VM .
 - It helps to check the performance of the application running on the VMWare VMs.
 
 :::tip Fault execution flow chart
@@ -17,7 +17,7 @@ title: VMware CPU Hog
 
 ** vCenter Requirements **
 - Ensure the connectivity of execution plane with vCenter and the hosts over 443 port. 
-- Ensure that Vmware tool is installed on the target VM with remote execution enabled.
+- Ensure that VMware tool is installed on the target VM with remote execution enabled.
 - Ensure that you have sufficient vCenter permission to access hosts and VMs.
 - Ensure to create a Kubernetes secret having the Vcenter credentials in the `CHAOS_NAMESPACE`. A sample secret file looks like:
 ```yaml
@@ -68,13 +68,13 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
       </tr>
       <tr>
         <td> CPU_CORES </td>
-        <td> Number of the cpu cores subjected to CPU stress </td>
+        <td> Number of the CPU cores subjected to CPU stress </td>
         <td> Default to 1 </td>
         </tr>
       <tr>
         <td> CPU_LOAD </td>
-        <td> Percentage of cpu to be consumed  </td>
-        <td> Default to 100  </td>
+        <td> Percentage of CPU to be consumed </td>
+        <td> Default to 100 </td>
       </tr>
       <tr> 
         <td> TOTAL_CHAOS_DURATION </td>
@@ -111,7 +111,7 @@ Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/vmware-cpu-hog/vm-cpu-hog-core.yaml yaml)
 ```yaml
-# cpu hog in the VMWare VM
+# CPU hog in the VMWare VM
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -128,7 +128,7 @@ spec:
         # Name of the VM
         - name: VM_NAME
           value: 'test-vm-01'
-       # cpu cores for stress
+       # CPU cores for stress
         - name: CPU_CORES 
           value: '1'
 ```
@@ -139,7 +139,7 @@ Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/vmware-cpu-hog/vm-cpu-hog-load.yaml yaml)
 ```yaml
-# cpu hog in the VMWare VM
+# CPU hog in the VMWare VM
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -156,7 +156,7 @@ spec:
         # Name of the VM
         - name: VM_NAME
           value: 'test-vm-01'
-        # cpu load in percentage for the stress
+        # CPU load in percentage for the stress
         - name: CPU_LOAD
           value: '100'
 ```

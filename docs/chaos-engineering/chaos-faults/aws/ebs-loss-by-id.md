@@ -5,7 +5,7 @@ title: EBS Loss By ID
 
 ## Introduction
 - It causes chaos to disrupt state of EBS volume by detaching it from the node/EC2 instance for a certain chaos duration using volume id.
-- In case of EBS persistent volumes, the volumes can get self-attached and  fault skips the re-attachment step.
+- In case of EBS persistent volumes, the volumes can get self-attached and the re-attachment step is skipped.
 Tests deployment sanity (replica availability & uninterrupted service) and recovery workflows of the application pod.
 
 :::tip Fault execution flow chart

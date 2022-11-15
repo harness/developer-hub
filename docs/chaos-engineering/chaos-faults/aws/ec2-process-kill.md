@@ -4,7 +4,7 @@ title: EC2 Process Kill
 ---
 
 ## Introduction
-- EC2 Process Kill  fault kills the target processes running on EC2 instance to determine the application/process resilience.
+- EC2 Process Kill fault kills the target processes running on EC2 instance to determine the application/process resilience.
 - It helps to check the performance of the application/process running on the EC2 instance(s).
 
 :::tip Fault execution flow chart

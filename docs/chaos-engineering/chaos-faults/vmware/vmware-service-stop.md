@@ -4,7 +4,7 @@ title: VMware Service Stop
 ---
 
 ## Introduction
-- VMware Service Stop  fault stops the target systemd services running on Linux OS based VMware VM to determine the application/service resilience.
+- VMware Service Stop fault stops the target systemd services running on Linux OS based VMware VM to determine the application/service resilience.
 - It helps to check the performance of the application/service running on the VMWare VMs.
 
 :::tip Fault execution flow chart
@@ -17,7 +17,7 @@ title: VMware Service Stop
 
 ** vCenter Requirements **
 - Ensure the connectivity of execution plane with vCenter and the hosts over 443 port. 
-- Ensure that Vmware tool is installed on the target VM with remote execution enabled.
+- Ensure that VMware tool is installed on the target VM with remote execution enabled.
 - Ensure that you have sufficient vCenter permission to access hosts and VMs.
 - Ensure to create a Kubernetes secret having the Vcenter credentials in the `CHAOS_NAMESPACE`. A sample secret file looks like:
 ```yaml

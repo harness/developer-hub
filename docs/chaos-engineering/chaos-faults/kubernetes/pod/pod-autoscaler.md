@@ -41,7 +41,7 @@ The application pods should be in running state before and after chaos injection
         <th> Notes </th>
       </tr>
       <tr>
-        <td> REPLICA_COUNT  </td>
+        <td> REPLICA_COUNT </td>
         <td> Number of replicas upto which we want to scale </td>
         <td> <code>nil</code> </td>
       </tr>
@@ -55,7 +55,7 @@ The application pods should be in running state before and after chaos injection
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The timeout for the chaos  fault (in seconds) </td>
+        <td> The timeout for the chaos fault (in seconds) </td>
         <td> Defaults to 60 </td>
       </tr>
       <tr>

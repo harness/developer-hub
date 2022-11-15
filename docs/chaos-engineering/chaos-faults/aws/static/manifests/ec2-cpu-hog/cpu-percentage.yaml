@@ -1,4 +1,4 @@
-# cpu percentage to utilize
+# CPU percentage to utilize
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:

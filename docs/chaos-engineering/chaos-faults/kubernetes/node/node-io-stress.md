@@ -65,13 +65,13 @@ The target nodes should be in ready state before and after chaos injection.
       </tr>
       <tr>
         <td> FILESYSTEM_UTILIZATION_PERCENTAGE </td>
-        <td> Specify the size as percentage of free space on the file system  </td>
+        <td> Specify the size as percentage of free space on the file system </td>
         <td> Default to 10%</td>
       </tr>
       <tr>
         <td> FILESYSTEM_UTILIZATION_BYTES </td>
         <td> Specify the size in GigaBytes(GB). <code>FILESYSTEM_UTILIZATION_PERCENTAGE</code> & <code>FILESYSTEM_UTILIZATION_BYTES</code> are mutually exclusive. If both are provided, <code>FILESYSTEM_UTILIZATION_PERCENTAGE</code> is prioritized. </td>
-        <td>  </td>
+        <td> </td>
       </tr>
       <tr>
         <td> CPU </td>
@@ -105,7 +105,7 @@ The target nodes should be in ready state before and after chaos injection.
       </tr>
       <tr>
         <td> NODES_AFFECTED_PERC </td>
-        <td> The Percentage of total nodes to target  </td>
+        <td> The Percentage of total nodes to target </td>
         <td> Defaults to 0 (corresponds to 1 node), provide numeric value only </td>
       </tr> 
       <tr>
@@ -186,13 +186,13 @@ spec:
 
 ### Limit CPU Utilization
 
-The CPU usage can be limit to `CPU` cpu while performing io stress. It can be tuned via `CPU` ENV.
+The CPU usage can be limit to `CPU` CPU while performing io stress. It can be tuned via `CPU` ENV.
 
 Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/node-io-stress/limit-cpu-utilization.yaml yaml)
 ```yaml
-# limit the cpu uses to the provided value while performing io stress
+# limit the CPU uses to the provided value while performing io stress
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -206,7 +206,7 @@ spec:
     spec:
       components:
         env:
-        # number of cpu cores to be stressed
+        # number of CPU cores to be stressed
         - name: CPU
           value: '1' 
         - name: TOTAL_CHAOS_DURATION

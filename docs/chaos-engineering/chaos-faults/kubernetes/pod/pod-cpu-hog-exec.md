@@ -16,9 +16,9 @@ title: Pod CPU Hog Exec
 <details>
 <summary>View the uses of the fault</summary>
 <div>
-Disk Pressure or CPU hogs is another very common and frequent scenario we find in kubernetes applications that can result in the eviction of the application replica and impact its delivery. Such scenarios that can still occur despite whatever availability aids K8s provides. These problems are generally referred to as "Noisy Neighbour"  problems.
-    
-Injecting a rogue process into a target container, we starve the main microservice process (typically pid 1) of the resources allocated to it (where limits are defined) causing slowness in application traffic or in other cases unrestrained use can cause node to exhaust resources leading to eviction of all pods.So this category of chaos  fault helps to build the immunity on the application undergoing any such stress scenario
+Disk Pressure or CPU hogs is another very common and frequent scenario we find in kubernetes applications that can result in the eviction of the application replica and impact its delivery. Such scenarios that can still occur despite whatever availability aids K8s provides. These problems are generally referred to as "Noisy Neighbor"  problems.
+
+Injecting a rogue process into a target container, we starve the main microservice process (typically pid 1) of the resources allocated to it (where limits are defined) causing slowness in application traffic or in other cases unrestrained use can cause node to exhaust resources leading to eviction of all pods. So this category of chaos fault helps to build the immunity of the application undergoing any such stress scenario.
 </div>
 </details>
 
@@ -44,12 +44,12 @@ The application pods should be in running state before and after chaos injection
       </tr>
       <tr>
         <td> CPU_CORES </td>
-        <td> Number of the cpu cores subjected to CPU stress  </td>
+        <td> Number of the CPU cores subjected to CPU stress </td>
         <td> Default to 1 </td>
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The time duration for chaos insertion (seconds)  </td>
+        <td> The time duration for chaos insertion (seconds) </td>
         <td> Default to 60s </td>
       </tr>
       <tr>
@@ -59,7 +59,7 @@ The application pods should be in running state before and after chaos injection
       </tr>
       <tr>
         <td> TARGET_PODS </td>
-        <td> Comma separated list of application pod name subjected to pod cpu hog chaos</td>
+        <td> Comma separated list of application pod name subjected to pod CPU hog chaos</td>
         <td> If not provided, it will select target pods randomly based on provided appLabels</td>
       </tr> 
       <tr> 
@@ -69,12 +69,12 @@ The application pods should be in running state before and after chaos injection
       </tr> 
       <tr>
         <td> PODS_AFFECTED_PERC </td>
-        <td> The Percentage of total pods to target  </td>
+        <td> The Percentage of total pods to target </td>
         <td> Defaults to 0 (corresponds to 1 replica), provide numeric value only </td>
       </tr>
       <tr>
         <td> CHAOS_INJECT_COMMAND </td>
-        <td> The command to inject the cpu chaos </td>
+        <td> The command to inject the CPU chaos </td>
         <td> Default to <code>md5sum /dev/zero</code> </td>
       </tr>
       <tr>
@@ -102,13 +102,13 @@ Refer the [common attributes](../../common-tunables-for-all-faults) and [Pod spe
 
 ### CPU Cores
 
-It stresses the `CPU_CORE` cpu cores of the targeted pod for the `TOTAL_CHAOS_DURATION` duration.
+It stresses the `CPU_CORE` CPU cores of the targeted pod for the `TOTAL_CHAOS_DURATION` duration.
 
 Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/pod-cpu-hog-exec/cpu-cores.yaml yaml)
 ```yaml
-# cpu cores for the stress
+# CPU cores for the stress
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -126,7 +126,7 @@ spec:
     spec:
       components:
         env:
-        # cpu cores for stress
+        # CPU cores for stress
         - name: CPU_CORES
           value: '1'
         - name: TOTAL_CHAOS_DURATION

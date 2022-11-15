@@ -4,7 +4,7 @@ title: Kubelet Service Kill
 ---
 
 ## Introduction
-- This fault Causes the application to become unreachable on account of node turning unschedulable (NotReady) due to kubelet service kill.
+- This fault causes the application to become unreachable on account of node turning unschedulable (NotReady) due to kubelet service kill.
 - The kubelet service has been stopped/killed on a node to make it unschedulable for a certain duration i.e `TOTAL_CHAOS_DURATION`. The application node should be healthy after the chaos injection and the services should be re-accessible.
 - The application implies services. Can be reframed as: Test application resiliency upon replica getting unreachable caused due to kubelet service down.
 
@@ -63,7 +63,7 @@ The target nodes should be in ready state before and after chaos injection.
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The time duration for chaos insertion (seconds)  </td>
+        <td> The time duration for chaos insertion (seconds) </td>
         <td> Defaults to 60s </td>
       </tr>
       <tr>

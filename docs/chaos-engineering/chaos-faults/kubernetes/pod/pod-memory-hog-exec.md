@@ -47,7 +47,7 @@ The application pods should be in running state before and after chaos injection
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The time duration for chaos insertion (seconds)  </td>
+        <td> The time duration for chaos insertion (seconds) </td>
         <td> Defaults to 60s </td>
       </tr>
       <tr>
@@ -72,7 +72,7 @@ The application pods should be in running state before and after chaos injection
       </tr>
       <tr>
         <td> PODS_AFFECTED_PERC </td>
-        <td> The Percentage of total pods to target  </td>
+        <td> The Percentage of total pods to target </td>
         <td> Defaults to 0 (corresponds to 1 replica), provide numeric value only </td>
       </tr>
       <tr>

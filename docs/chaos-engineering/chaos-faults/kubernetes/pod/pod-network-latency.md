@@ -17,9 +17,9 @@ title: Pod Network Latency
 <div>
 The fault causes network degradation without the pod being marked unhealthy/unworthy of traffic by kube-proxy (unless you have a liveness probe of sorts that measures latency and restarts/crashes the container). The idea of this fault is to simulate issues within your pod network OR microservice communication across services in different availability zones/regions etc. 
 
-Mitigation (in this case keep the timeout i.e., access latency low) could be via some middleware that can switch traffic based on some SLOs/perf parameters. If such an arrangement is not available the next best thing would be to verify if such a degradation is highlighted via notification/alerts etc,. so the admin/SRE has the opportunity to investigate and fix things. Another utility of the test would be to see what the extent of impact caused to the end-user OR the last point in the app stack on account of degradation in access to a downstream/dependent microservice. Whether it is acceptable OR breaks the system to an unacceptable degree. The fault provides DESTINATION_IPS or DESTINATION_HOSTS so that you can control the chaos against specific services within or outside the cluster.
+Mitigation (in this case keep the timeout i.e., access latency low) could be via some middleware that can switch traffic based on some SLOs/perf parameters. If such an arrangement is not available the next best thing would be to verify if such a degradation is highlighted via notification/alerts etc., so the admin/SRE has the opportunity to investigate and fix things. Another utility of the test would be to see what the extent of impact caused to the end-user OR the last point in the app stack on account of degradation in access to a downstream/dependent microservice. Whether it is acceptable OR breaks the system to an unacceptable degree. The fault provides `DESTINATION_IPS` or `DESTINATION_HOSTS` so that you can control the chaos against specific services within or outside the cluster.
 
-The applications may stall or get corrupted while they wait endlessly for a packet. The fault limits the impact (blast radius) to only the traffic you want to test by specifying IP addresses or application information.This fault will help to improve the resilience of your services over time.
+The applications may stall or get corrupted while they wait endlessly for a packet. The fault limits the impact (blast radius) to only the traffic you want to test by specifying IP addresses or application information. This fault will help to improve the resilience of your services over time.
 </div>
 </details>
 
@@ -45,7 +45,7 @@ The application pods should be in running state before and after chaos injection
       </tr>
       <tr>
         <td> NETWORK_INTERFACE </td>
-        <td> Name of ethernet interface considered for shaping traffic  </td>
+        <td> Name of ethernet interface considered for shaping traffic </td>
         <td> </td>
       </tr>
       <tr>
@@ -95,7 +95,7 @@ The application pods should be in running state before and after chaos injection
       </tr>      
       <tr>
         <td> PODS_AFFECTED_PERC </td>
-        <td> The Percentage of total pods to target  </td>
+        <td> The Percentage of total pods to target </td>
         <td> Defaults to 0 (corresponds to 1 replica), provide numeric value only </td>
       </tr> 
       <tr>
@@ -166,7 +166,7 @@ spec:
 
 ### Destination IPs And Destination Hosts
 
-The network  faults interrupt traffic for all the IPs/hosts by default. The interruption of specific IPs/Hosts can be tuned via `DESTINATION_IPS` and `DESTINATION_HOSTS` ENV.
+The network faults interrupt traffic for all the IPs/hosts by default. The interruption of specific IPs/Hosts can be tuned via `DESTINATION_IPS` and `DESTINATION_HOSTS` ENV.
 
 - `DESTINATION_IPS`: It contains the IP addresses of the services or pods or the CIDR blocks(range of IPs), the accessibility to which is impacted.
 - `DESTINATION_HOSTS`: It contains the DNS Names/FQDN names of the services, the accessibility to which, is impacted.

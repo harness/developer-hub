@@ -89,7 +89,7 @@ The target nodes should be in ready state before and after chaos injection.
         <td> Defaults to <code>litmuschaos/go-runner:latest</code> </td>
       </tr>
       <tr>
-        <td> SSH_USER  </td>
+        <td> SSH_USER </td>
         <td> name of ssh user </td>
         <td> Defaults to <code>root</code> </td>
       </tr>
@@ -99,7 +99,7 @@ The target nodes should be in ready state before and after chaos injection.
         <td> Defaults to empty </td>
       </tr>
       <tr>
-        <td> REBOOT_COMMAND  </td>
+        <td> REBOOT_COMMAND </td>
         <td> Command used for reboot </td>
         <td> Defaults to <code>sudo systemctl reboot</code> </td>
       </tr>

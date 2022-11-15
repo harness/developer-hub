@@ -45,7 +45,7 @@ The application pods should be in running state before and after chaos injection
         <td>This should be the port on which the application container runs at the pod level, not at the service level. Defaults to port 80 </td>
       </tr>
       <tr>
-        <td> STATUS_CODE  </td>
+        <td> STATUS_CODE </td>
         <td> Modified status code for the HTTP response</td>
         <td> If no value is provided, then a random value is selected from the list of supported values.
         Multiple values can be provided as comma separated, a random value from the provided list will be selected
@@ -53,7 +53,7 @@ The application pods should be in running state before and after chaos injection
         Defaults to random status code </td>
       </tr>
       <tr>
-        <td> MODIFY_RESPONSE_BODY  </td>
+        <td> MODIFY_RESPONSE_BODY </td>
         <td> Whether to modify the body as per the status code provided.</td>
         <td> If true, then the body is replaced by a default template for the status code. Defaults to true </td>
       </tr>
@@ -117,7 +117,7 @@ The application pods should be in running state before and after chaos injection
       </tr>
       <tr>
         <td> PODS_AFFECTED_PERC </td>
-        <td> The Percentage of total pods to target  </td>
+        <td> The Percentage of total pods to target </td>
         <td> Defaults to 0 (corresponds to 1 replica), provide numeric value only </td>
       </tr>
       <tr>

@@ -58,9 +58,9 @@ The application pods should be in running state before and after chaos injection
         <td> It supports true or false. Default value: false </td>
       </tr>
       <tr>
-        <td> FORCE  </td>
+        <td> FORCE </td>
         <td> Application Pod deletion mode. <code>false</code> indicates graceful deletion with default termination period of 30s. <code>true</code> indicates an immediate forceful deletion with 0s grace period</td>
-        <td> Default to <code>true</code>, With <code>terminationGracePeriodSeconds=0</code>  </td>
+        <td> Default to <code>true</code>, With <code>terminationGracePeriodSeconds=0</code> </td>
       </tr>
       <tr>
         <td> TARGET_PODS </td>
@@ -69,7 +69,7 @@ The application pods should be in running state before and after chaos injection
       </tr> 
       <tr>
         <td> PODS_AFFECTED_PERC </td>
-        <td> The Percentage of total pods to target  </td>
+        <td> The Percentage of total pods to target </td>
         <td> Defaults to 0 (corresponds to 1 replica), provide numeric value only </td>
       </tr> 
       <tr>

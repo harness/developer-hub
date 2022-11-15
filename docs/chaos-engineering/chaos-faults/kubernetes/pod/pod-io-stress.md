@@ -42,13 +42,13 @@ The application pods should be in running state before and after chaos injection
       </tr>
       <tr>
         <td> FILESYSTEM_UTILIZATION_PERCENTAGE </td>
-        <td> Specify the size as percentage of free space on the file system  </td>
+        <td> Specify the size as percentage of free space on the file system </td>
         <td> Default to 10%</td>
       </tr>
       <tr>
         <td> FILESYSTEM_UTILIZATION_BYTES </td>
         <td> Specify the size in GigaBytes(GB). <code>FILESYSTEM_UTILIZATION_PERCENTAGE</code> & <code>FILESYSTEM_UTILIZATION_BYTES</code> are mutually exclusive. If both are provided, <code>FILESYSTEM_UTILIZATION_PERCENTAGE</code> is prioritized. </td>
-        <td>  </td>
+        <td> </td>
       </tr>
       <tr>
         <td> NUMBER_OF_WORKERS </td>
@@ -57,13 +57,13 @@ The application pods should be in running state before and after chaos injection
       </tr> 
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The time duration for chaos (seconds)  </td>
+        <td> The time duration for chaos (seconds) </td>
         <td> Default to 120s </td>
       </tr>
       <tr>
         <td> VOLUME_MOUNT_PATH </td>
         <td> Fill the given volume mount path</td>
-        <td>  </td>
+        <td> </td>
       </tr>  
       <tr>
         <td> LIB </td>
@@ -82,7 +82,7 @@ The application pods should be in running state before and after chaos injection
       </tr>  
       <tr>
         <td> PODS_AFFECTED_PERC </td>
-        <td> The Percentage of total pods to target  </td>
+        <td> The Percentage of total pods to target </td>
         <td> Defaults to 0 (corresponds to 1 replica), provide numeric value only </td>
       </tr>
       <tr>

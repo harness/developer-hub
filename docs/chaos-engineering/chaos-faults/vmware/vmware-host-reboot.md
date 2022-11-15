@@ -15,7 +15,7 @@ title: VMware Host Reboot
 <details>
 <summary>View the uses of the fault</summary>
 <div>
-This fault has a high blast radius wherein all the VMs under the target host get disrupted.It can be used to measure the impact of host reboot on the VMs and underlying applications. It can be also used to measure the effectiveness of an HA cluster.
+This fault has a high blast radius wherein all the VMs under the target host get disrupted. It can be used to measure the impact of host reboot on the VMs and underlying applications. It can be also used to measure the effectiveness of an HA cluster.
 </div>
 </details>
 

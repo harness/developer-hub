@@ -19,7 +19,7 @@ title: Azure Instance CPU Hog
 :::info
 
 - The fault causes CPU hog/stress on the target Azure Instance(s). The idea of this fault is to simulate issues when there is lack of CPU for other runnning processes/applications resulting into degrading their performance.
-- Injecting a rogue process into a target azure instance, we starve the main processes/applications (typically pid 1) of the resources allocated to it (where limits are defined) causing slowness in application traffic or in other cases unrestrained use can cause instance to exhaust resources leading to degradation in performance of processes/applications present on the instance. So this category of chaos  fault helps to build the immunity on the application undergoing any such stress scenario.
+- Injecting a rogue process into a target azure instance, we starve the main processes/applications (typically pid 1) of the resources allocated to it (where limits are defined) causing slowness in application traffic or in other cases unrestrained use can cause instance to exhaust resources leading to degradation in performance of processes/applications present on the instance. So this category of chaos fault helps to build the immunity on the application undergoing any such stress scenario.
 
 :::
 
@@ -120,17 +120,17 @@ stringData:
         </tr>
         <tr>
             <td> INSTALL_DEPENDENCIES </td>
-            <td> Select to install dependencies used to run the cpu chaos. It can be either True or False</td>
+            <td> Select to install dependencies used to run the CPU chaos. It can be either True or False</td>
             <td> Defaults to True </td>
         </tr>
         <tr>
             <td> CPU_CORE </td>
-            <td> Provide the number of cpu cores to consume</td>
+            <td> Provide the number of CPU cores to consume</td>
             <td> Defaults to 0 </td>
         </tr>
         <tr>
             <td> CPU_LOAD </td>
-            <td> Provide the percentage of a single cpu core to be consumed</td>
+            <td> Provide the percentage of a single CPU core to be consumed</td>
             <td> Defaults to 100 </td>
         </tr>
         <tr>
@@ -154,13 +154,13 @@ Refer the [common attributes](../common-tunables-for-all-faults) to tune the com
 
 ### CPU CORE
 
-It defines the cpu core value to be utilised on the Azure instance. It can be tuned via `CPU_CORE` ENV.
+It defines the CPU core value to be utilised on the Azure instance. It can be tuned via `CPU_CORE` ENV.
 
 Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/azure-instance-cpu-hog/cpu-core.yaml yaml)
 ```yaml
-# cpu cores to utilize
+# CPU cores to utilize
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -186,13 +186,13 @@ spec:
 
 ### CPU PERCENTAGE
 
-It defines the cpu percentage value to be utilised on the Azure instance. It can be tuned via `CPU_LOAD` ENV.
+It defines the CPU percentage value to be utilised on the Azure instance. It can be tuned via `CPU_LOAD` ENV.
 
 Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/azure-instance-cpu-hog/cpu-percentage.yaml yaml)
 ```yaml
-# cpu percentage to utilize
+# CPU percentage to utilize
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -248,13 +248,13 @@ spec:
 
 ### CPU CORE WITH PERCENTAGE CONSUMPTION
 
-It defines how many cpu cores to utilise with percentage of utilisation on the Azure instance. It can be tuned via `CPU_CORE` and `CPU_LOAD` ENV.
+It defines how many CPU cores to utilise with percentage of utilisation on the Azure instance. It can be tuned via `CPU_CORE` and `CPU_LOAD` ENV.
 
 Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/azure-instance-cpu-hog/cpu-core-with-percentage.yaml yaml)
 ```yaml
-# cpu core with percentage to utilize
+# CPU core with percentage to utilize
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:

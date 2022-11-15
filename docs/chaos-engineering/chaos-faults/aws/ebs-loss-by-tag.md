@@ -5,7 +5,7 @@ title: EBS Loss By Tag
 
 ## Introduction
 - It causes chaos to disrupt state of EBS volume by detaching it from the node/EC2 instance for a certain chaos duration using volume tags.
-- In case of EBS persistent volumes, the volumes can get self-attached and  fault skips the re-attachment step.
+- In case of EBS persistent volumes, the volumes can get self-attached and the re-attachment step is skipped.
 Tests deployment sanity (replica availability & uninterrupted service) and recovery workflows of the application pod.
 
 :::tip Fault execution flow chart
@@ -66,7 +66,7 @@ stringData:
       <tr> 
         <td> EBS_VOLUME_TAG </td>
         <td> Provide the common tag for target volumes. It'll be in form of <code>key:value</code> (Ex: 'team:devops')</td>
-        <td>  </td>
+        <td> </td>
       </tr>
       <tr>
         <td> REGION </td>

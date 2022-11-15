@@ -19,7 +19,7 @@ title: EC2 Memory Hog
 :::info
 
 - The fault causes memory hog/stress on the target AWS EC2 Instance(s). The idea of this fault is to simulate issues when there is lack of memory for other runnning processes/applications resulting into degrading their performance.
-- Injecting a rogue process into a target EC2 instance, we starve the main processes/applications (typically pid 1) of the resources allocated to it (where limits are defined) causing slowness in application traffic or in other cases unrestrained use can cause instance to exhaust resources leading to degradation in performance of processes/applications present on the instance. So this category of chaos  fault helps to build the immunity on the application undergoing any such stress scenario.
+- Injecting a rogue process into a target EC2 instance, we starve the main processes/applications (typically pid 1) of the resources allocated to it (where limits are defined) causing slowness in application traffic or in other cases unrestrained use can cause instance to exhaust resources leading to degradation in performance of processes/applications present on the instance. So this category of chaos fault helps to build the immunity on the application undergoing any such stress scenario.
 
 :::
 
@@ -123,7 +123,7 @@ stringData:
     </tr>
     <tr>
         <td> NUMBER_OF_WORKERS </td>
-        <td> The number of workers used to run the stress process  </td>
+        <td> The number of workers used to run the stress process </td>
         <td> Defaults to 1 </td>
     </tr>
     <tr>

@@ -132,7 +132,7 @@ stringData:
     </tr>
     <tr>
         <td> NUMBER_OF_WORKERS </td>
-        <td> The number of workers used to run the stress process  </td>
+        <td> The number of workers used to run the stress process </td>
         <td> Defaults to 1 </td>
     </tr>
     <tr>
