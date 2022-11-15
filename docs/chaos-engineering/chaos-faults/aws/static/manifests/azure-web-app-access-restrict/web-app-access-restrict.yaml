@@ -17,6 +17,6 @@ spec:
           value: 'webApp-01,webApp-02'
         # name of the resource group
         - name: RESOURCE_GROUP
-          value: 'qa-rg'
+          value: 'chaos-rg'
         - name: TOTAL_CHAOS_DURATION
           VALUE: '60'
