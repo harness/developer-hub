@@ -15,6 +15,3 @@ spec:
         # Provide the name of the rule
         - name: RULE_NAME
           value: 'chaos-rule'
-         # time duration for the chaos execution
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'

@@ -8,12 +8,12 @@ title: Azure Web App Access Restrict
 - It helps to check the performance of the application/process running on the instance.
 
 :::tip Fault execution flow chart
-![Azure Disk Loss](./static/images/azure-web-app-access-restrict.png)
+![Azure Web App Access Restrict](./static/images/azure-web-app-access-restrict.png)
 :::
 
 ## Uses
 <details>
-<summary>View the uses of the experiment</summary>
+<summary>View the uses of the fault</summary>
 <div>
 Coming soon.
 </div>
@@ -22,8 +22,8 @@ Coming soon.
 ## Prerequisites
 :::info
 - Ensure that Kubernetes Version > 1.16
-- Ensure that you have sufficient Azure access to detach and attach a disk. 
-- We will use azure [ file-based authentication ](https://docs.microsoft.com/en-us/azure/developer/go/azure-sdk-authorization#use-file-based-authentication) to connect with the instance using azure GO SDK in the experiment. For generating auth file run `az ad sp create-for-rbac --sdk-auth > azure.auth` Azure CLI command.
+- Ensure that you have sufficient Azure access to web apps 
+- We will use azure [ file-based authentication ](https://docs.microsoft.com/en-us/azure/developer/go/azure-sdk-authorization#use-file-based-authentication) to connect with the instance using Azure GO SDK in the experiment. For generating auth file run `az ad sp create-for-rbac --sdk-auth > azure.auth` Azure CLI command.
 - Ensure to create a Kubernetes secret having the auth file created in the step in `CHAOS_NAMESPACE`. A sample secret file looks like:
 ```yaml
 apiVersion: v1
@@ -51,12 +51,12 @@ stringData:
 
 ## Default Validations
 :::info
-- Azure Disk should be connected to an instance.
+- Azure target web app should be in running state.
 :::
 
-## Experiment tunables
+## Fault tunables
 <details>
-    <summary>Check the Experiment Tunables</summary>
+    <summary>Check the Fault tunables</summary>
     <h2>Mandatory Fields</h2>
     <table>
         <tr>
@@ -67,7 +67,7 @@ stringData:
         <tr> 
             <td> AZURE_WEB_APP_NAMES </td>
             <td> Name of azure web app services to target.</td>
-            <td> Provide comma separated names web app stop chaos</td>
+            <td> Provide comma-separated names of the web apps </td>
         </tr>
         <tr>
             <td> RESOURCE_GROUP </td>
@@ -89,7 +89,7 @@ stringData:
         </tr>
         <tr>
             <td> IP_ADDRESS_BLOCK </td>
-            <td> Provide the IP address/CIRD range for the rule</td>
+            <td> Provide the IP address/CIDR Range for the rule</td>
             <td>  Default is <code>0.0.0.0/0</code></td>
         </tr>
         <tr>
@@ -99,7 +99,7 @@ stringData:
         </tr>
         <tr>
             <td> PRIORITY </td>
-            <td> Provide the priority of the rule</td>
+            <td> Provide the priority of the rule. Lower the number higher the priority and vice versa</td>
             <td>  Default is "300"</td>
         </tr>
         <tr> 
@@ -120,14 +120,14 @@ stringData:
         <tr>
             <td> RAMP_TIME </td>
             <td> Period to wait before and after injection of chaos in sec </td>
-            <td> </td>
+            <td> Eg: 30 </td>
         </tr>
     </table>
 </details>
 
-## Experiment Examples
+## Fault Examples
 
-### Common Experiment Tunables
+### Common Fault Tunables
 
 Refer the [common attributes](../common-tunables-for-all-experiments) to tune the common tunables for all the experiments.
 
@@ -164,7 +164,7 @@ spec:
 ```
 
 
-### Access Restrict For A Certain CIRD Range
+### Access Restrict For A Certain CIDR Range
 
 It contains a CIDR range to be used in rule. It can be tuned via `IP_ADDRESS_BLOCK`.
 
@@ -186,7 +186,7 @@ spec:
     spec:
       components:
         env:
-        # provide the value of ip address/CIRD range
+        # provide the value of ip address/CIDR Range
         - name: IP_ADDRESS_BLOCK
           value: '0.0.0.0/0'
         # name of the resource group
@@ -198,7 +198,7 @@ spec:
 
 ### Access Restrict With Action
 
-You can tune if you want to allow or deny a traffic for the provided rule using `ACTION` ENV. By default it is set to deny.
+You can tune if you want to allow or deny traffic for the provided rule using `ACTION` ENV. By default it is set to deny.
 
 Use the following example to tune this:
 
@@ -281,7 +281,4 @@ spec:
         # Provide the name of the rule
         - name: RULE_NAME
           value: 'chaos-rule'
-         # time duration for the chaos execution
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
 ```

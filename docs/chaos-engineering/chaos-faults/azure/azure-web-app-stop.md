@@ -4,7 +4,7 @@ title: Azure Web App Stop
 ---
 
 ## Introduction
-- It shutdown the app and verify if the requests are re-routed to another instance on app service.
+- It shutdowns the app and verify if the requests are re-routed to another instance on app service.
 - It helps to check the performance of the web application when subjected to such chaos scenario.
 
 :::tip Fault execution flow chart
@@ -13,19 +13,19 @@ title: Azure Web App Stop
 
 ## Uses
 <details>
-<summary>View the uses of the experiment</summary>
+<summary>View the uses of the fault</summary>
 <div>
-Web App stop is another very frequent scenario we find with Azure web app service which stops a running web app and impacts their delivery. Such scenarios can still occur despite whatever availability aids web app service provides.
+Web App stop is another very frequent scenario we find with Azure web app service which stops a running web app and impacts its delivery. Such scenarios can still occur despite whatever availability aids web app service provides.
 
-Stopping the web app will distrupt the performance of it and impact to smooth working of the application. So this category of chaos experiment helps to build the immunity to the application undergoing any such scenarios.
+Stopping the web app will disrupt its performance and impact the smooth working of the application. So this category of chaos experiment helps to build immunity to the application undergoing any such scenarios.
 </div>
 </details>
 
 ## Prerequisites
 :::info
 - Ensure that Kubernetes Version > 1.16.
-- Ensure that you have sufficient Azure access to detach and attach a disk. 
-- We will use azure [ file-based authentication ](https://docs.microsoft.com/en-us/azure/developer/go/azure-sdk-authorization#use-file-based-authentication) to connect with the instance using azure GO SDK in the experiment. For generating auth file run `az ad sp create-for-rbac --sdk-auth > azure.auth` Azure CLI command.
+- Ensure that you have sufficient Azure access to stop and start web apps. 
+- We will use azure [ file-based authentication ](https://docs.microsoft.com/en-us/azure/developer/go/azure-sdk-authorization#use-file-based-authentication) to connect with the instance using Azure GO SDK in the experiment. For generating auth file run `az ad sp create-for-rbac --sdk-auth > azure.auth` Azure CLI command.
 - Ensure to create a Kubernetes secret having the auth file created in the step in `CHAOS_NAMESPACE`. A sample secret file looks like:
 ```yaml
 apiVersion: v1
@@ -53,12 +53,12 @@ stringData:
 
 ## Default Validations
 :::info
-- Azure Disk should be connected to an instance.
+- Azure target web app should be in running state.
 :::
 
-## Experiment tunables
+## Fault tunables
 <details>
-    <summary>Check the Experiment Tunables</summary>
+    <summary>Check the Fault tunables</summary>
     <h2>Mandatory Fields</h2>
     <table>
         <tr>
@@ -69,12 +69,12 @@ stringData:
         <tr> 
             <td> AZURE_WEB_APP_NAMES </td>
             <td> Name of azure web app services to target.</td>
-            <td> Provide comma separated names web app stop chaos</td>
+            <td> Provide comma-separated names of the web apps </td>
         </tr>
         <tr>
             <td> RESOURCE_GROUP </td>
             <td> The resource group of the target web apps</td>
-            <td> </td>
+            <td> All the web apps must belong to the same resource group </td>
         </tr> 
     </table>
     <h2>Optional Fields</h2>
@@ -102,14 +102,14 @@ stringData:
         <tr>
             <td> RAMP_TIME </td>
             <td> Period to wait before and after injection of chaos in sec </td>
-            <td> </td>
+            <td> Eg: 30 </td>
         </tr>
     </table>
 </details>
 
-## Experiment Examples
+## Fault Examples
 
-### Common Experiment Tunables
+### Common Fault Tunables
 
 Refer the [common attributes](../common-tunables-for-all-experiments) to tune the common tunables for all the experiments.
 

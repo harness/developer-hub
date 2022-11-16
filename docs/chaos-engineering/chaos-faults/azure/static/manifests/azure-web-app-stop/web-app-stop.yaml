@@ -19,4 +19,4 @@ spec:
         - name: RESOURCE_GROUP
           value: 'chaos-rg'
         - name: TOTAL_CHAOS_DURATION
-          VALUE: ''
+          VALUE: '60'
