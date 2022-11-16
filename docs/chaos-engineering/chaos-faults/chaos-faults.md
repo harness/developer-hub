@@ -260,6 +260,41 @@ Following Platform Chaos faults are available:
     <td>Injects dns faults on the target ec2 instance(s)</td>
     <td><a href="/docs/chaos-engineering/chaos-faults/aws/ec2-dns-chaos">ec2-dns-chaos</a></td>
   </tr>
+  <tr>
+    <td>ECS Container CPU Hog</td>
+    <td>Injects container cpu hog chaos on ECS task containers</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/aws/ecs-container-cpu-hog">ecs-container-cpu-hog</a></td>
+  </tr>
+  <tr>
+    <td>ECS Container IO Stress</td>
+    <td>Injects container IO stress chaos on ECS task containers</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/aws/ecs-container-io-stress">ecs-container-io-stress</a></td>
+  </tr>
+  <tr>
+    <td>ECS Container Memory Hog</td>
+    <td>Injects container memory hog chaos on ECS task containers</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/aws/ecs-container-memory-hog">ecs-container-memory-hog</a></td>
+  </tr>
+  <tr>
+    <td>EC2 Container Network Latency</td>
+    <td>Injects container network latency chaos on ECS task containers</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/aws/ecs-container-network-latency">ecs-container-network-latency</a></td>
+  </tr>
+  <tr>
+    <td>EC2 Container Network Loss</td>
+    <td>Injects container network latency chaos on ECS task containers</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/aws/ecs-container-network-loss">ecs-container-network-loss</a></td>
+  </tr>
+  <tr>
+    <td>EC2 Agent Stop</td>
+    <td>Injects ECS agent stop chaos on target ECS cluster</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/aws/ecs-agent-stop">ecs-agent-stop</a></td>
+  </tr>
+  <tr>
+    <td>EC2 Instance Stop</td>
+    <td>Injects ECS instance stop chaos on target ECS cluster</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/aws/ecs-instance-stop">ecs-instance-stop</a></td>
+  </tr>
 </table>
 
 ### GCP

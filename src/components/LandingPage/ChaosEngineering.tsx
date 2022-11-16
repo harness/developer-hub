@@ -26,7 +26,7 @@ const FeaturedList: FeatureItem[] = [{
   module: 'ce',
   description: (
     <>
-      Running a Chaos Experiment on Kuberenetes for the first time. 
+      Running a Chaos Experiment on Kubernetes for the first time. 
     </>
   ),
   ribbon: true,
@@ -40,13 +40,26 @@ const CEList: FeatureItem[] = [{
   module: 'ce',
   description: (
     <>
-      Running a Chaos Experiment on Kuberenetes for the first time. 
+      Running a Chaos Experiment on Kubernetes for the first time. 
     </>
   ),
   ribbon: false,
   type: [docType.Documentation],
   time: '10min',
   link: '/tutorials/run-chaos-experiments/first-chaos-engineering'
+},
+{
+  title: 'Chaos Experiment from a Blank Canvas',
+  module: 'ce',
+  description: (
+    <>
+       Create, run, observe and evaluate a custom chaos experiment. 
+    </>
+  ),
+  ribbon: false,
+  type: [docType.Documentation],
+  time: '5min',
+  link: '/tutorials/run-chaos-experiments/chaos-experiment-from-blank-canvas'
 }];
 
 export default function CE() {

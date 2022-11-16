@@ -1,16 +1,16 @@
 ---
-id: ec2-stop-by-id
-title: EC2 Stop By ID
+id: ecs-instance-stop
+title: ECS Instance Stop
 ---
 
 ## Introduction
 
-- It causes stopping of an EC2 instance using the provided instance ID or list of instance IDs before bringing it back to running state after the specified chaos duration.
-- It helps to check the performance of the application/process running on the EC2 instance.
-- When the `MANAGED_NODEGROUP` is enabled then the experiment will not try to start the instance post chaos instead it will check of the addition of the new node instance to the cluster.
+- ECS Instance Stop can induce an ec2 instance stop chaos on AWS ECS cluster. It derives the instance under chaos from ECS cluster.
+
+- It causes ec2 instance to stopped and further gets deleted on ECS cluster for a certain chaos duration.
 
 :::tip Fault execution flow chart
-![EC2 Stop By ID](./static/images/ec2-stop.png)
+![ECS Instance Stop](./static/images/ecs-instance-stop.png)
 :::
 
 ## Uses
@@ -18,7 +18,9 @@ title: EC2 Stop By ID
 <details>
 <summary>View the uses of the experiment</summary>
 <div>
-Coming soon.
+EC2 instance chaos stop is another very common and frequent scenario we find with ECS clusters that can result in breaking of agent that manages task container on ECS cluster and impact its delivery. Such scenarios that can still occur despite whatever availability aids docker provides.
+
+Killing the EC2 instance container will distrupt the performance of it and impact to smooth working of task containers. So this category of chaos experiment helps to build the immunity on the application undergoing any such scenarios.
 </div>
 </details>
 
@@ -31,6 +33,7 @@ Coming soon.
 **AWS EC2 Access Requirement:**
 
 - Ensure that you have sufficient AWS access to stop and start an EC2 instance.
+
 - Ensure to create a Kubernetes secret having the AWS access configuration(key) in the `CHAOS_NAMESPACE`. A sample secret file looks like:
 
 ```yaml
@@ -49,16 +52,11 @@ stringData:
 
 - If you change the secret key name (from `cloud_config.yml`) please also update the `AWS_SHARED_CREDENTIALS_FILE` ENV value on `experiment.yaml`with the same name.
 
-### WARNING
-
-If the target EC2 instance is a part of a self-managed nodegroup then make sure to drain the target node if any application is running on it and also ensure to cordon the target node before running the experiment so that the experiment pods do not schedule on it.
-:::
-
 ## Default Validations
 
 :::info
 
-- EC2 instance should be in healthy state.
+- ECS container instance should be in healthy state.
 
 :::
 
@@ -68,21 +66,21 @@ If the target EC2 instance is a part of a self-managed nodegroup then make sure 
     <summary>Check the Experiment Tunables</summary>
     <h2>Mandatory Fields</h2>
     <table>
-      <tr>
+        <tr>
         <th> Variables </th>
         <th> Description </th>
         <th> Notes </th>
-      </tr>
-      <tr>
-        <td> EC2_INSTANCE_ID </td>
-        <td> Instance ID of the target ec2 instance. Multiple IDs can also be provided as a comma(,) separated values</td>
-        <td> Multiple IDs can be provided as `id1,id2` </td>
-      </tr>
-      <tr>
+        </tr>
+        <tr> 
+        <td> CLUSTER_NAME </td>
+        <td> Name of the target ECS cluster</td>
+        <td> Eg. cluster-1 </td>
+        </tr>
+        <tr>
         <td> REGION </td>
-        <td> The region name of the target instance</td>
-        <td> </td>
-      </tr>
+        <td> The region name of the target ECS cluster</td>
+        <td> Eg. us-east-1 </td>
+        </tr>
     </table>
     <h2>Optional Fields</h2>
     <table>
@@ -101,10 +99,15 @@ If the target EC2 instance is a part of a self-managed nodegroup then make sure 
         <td> The interval (in sec) between successive instance termination.</td>
         <td> Defaults to 30s </td>
       </tr>
-      <tr>
-        <td> MANAGED_NODEGROUP </td>
-        <td> Set to <code>enable</code> if the target instance is the part of self-managed nodegroups </td>
-        <td> Defaults to <code>disable</code> </td>
+      <tr> 
+        <td> AWS_SHARED_CREDENTIALS_FILE </td>
+        <td> Provide the path for aws secret credentials</td>
+        <td> Defaults to <code>/tmp/cloud_config.yml</code> </td>
+      </tr>
+      <tr> 
+        <td> EC2_INSTANCE_ID </td>
+        <td> Provide the target instance id from ECS cluster</td>
+        <td> If not provided will select randomly </td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
@@ -125,15 +128,15 @@ If the target EC2 instance is a part of a self-managed nodegroup then make sure 
 
 Refer the [common attributes](../common-tunables-for-all-experiments) and [AWS specific tunable](./aws-experiments-tunables) to tune the common tunables for all experiments and aws specific tunables.
 
-### Stop Instances By ID
+### ECS Instance Stop
 
-It contains comma separated list of instances IDs subjected to ec2 stop chaos. It can be tuned via `EC2_INSTANCE_ID` ENV.
+It stops the instance of an ECS cluster for a certain chaos duration. We can provide the EC2 instance ID using `EC2_INSTANCE_ID` ENVs as well. If not provided it will select randomly.
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/ec2-stop-by-id/instance-id.yaml yaml)
+[embedmd]:# (./static/manifests/ecs-instance-stop/instance-stop.yaml yaml)
 ```yaml
-# contains the instance id, to be terminated/stopped
+# stops the agent of an ecs cluster
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -143,16 +146,15 @@ spec:
   annotationCheck: "false"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: ec2-terminate-by-id
+  - name: ecs-instance-stop
     spec:
       components:
         env:
-        # id of the ec2 instance
+        # provide the name of ecs cluster
+        - name: CLUSTER_NAME
+          value: 'demo'
         - name: EC2_INSTANCE_ID
-          value: 'instance-1'
-        # region for the ec2 instance
-        - name: REGION
-          value: 'us-east-1'
+          value: 'us-east-2'
         - name: TOTAL_CHAOS_DURATION
           VALUE: '60'
 ```
