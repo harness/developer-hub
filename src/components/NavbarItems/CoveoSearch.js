@@ -118,7 +118,7 @@ const CoveoSearch = () => {
           className="coveo-script"
           src="https://static.cloud.coveo.com/searchui/v2.10094/js/CoveoJsSearch.min.js"
         ></script>
-        <script src="https://next.harness.io/js/coveo_template.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/wei-harness/cdn/js/coveo_template.js"></script>
       </Head>
       <div id="searchBoxCoveo" ref={searchBoxEl}></div>
       <div id="searchResultsCoveo" ref={searchResultsEl}></div>
