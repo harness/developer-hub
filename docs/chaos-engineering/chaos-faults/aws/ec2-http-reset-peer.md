@@ -5,7 +5,7 @@ title: EC2 HTTP Reset Peer
 
 ## Introduction
 
-- It injects http reset on the service whose port is provided as `TARGET_SERVICE_PORT` which stops outgoing http requests by resetting the TCP connection for the requests.
+- It injects HTTP reset on the service whose port is provided as `TARGET_SERVICE_PORT` which stops outgoing HTTP requests by resetting the TCP connection for the requests.
 - It can assess the application's resilience to a lossy/flaky http connection.
 
 :::tip Fault execution flow chart
@@ -22,7 +22,7 @@ title: EC2 HTTP Reset Peer
 **AWS EC2 Access Requirement:**
 
 - SSM agent is installed and running in the target EC2 instance.
-- Create a Kubernetes secret with AWS Access Key ID and Secret Access Key credentials in the `CHAOS_NAMESPACE`. A sample secret file looks like:
+- Kubernetes secret with AWS Access Key ID and Secret Access Key credentials in the `CHAOS_NAMESPACE`. A secret file looks like:
 
 ```yaml
 apiVersion: v1
@@ -148,7 +148,7 @@ Refer to the [common attributes](../common-tunables-for-all-experiments) to tune
 
 ### Target Service Port
 
-It is the targeted service's port being targeted. It can be tuned using the `TARGET_SERVICE_PORT` environment variable.
+It is the targeted service's port being targeted. You can tune it using the `TARGET_SERVICE_PORT` environment variable.
 
 You can use the following example to tune it:
 
@@ -174,7 +174,7 @@ spec:
 
 ### Proxy Port
 
-It is the port where the proxy server listens for requests. It can be tuned using the `PROXY_PORT` environment variable.
+It is the port where the proxy server listens for requests. You can tune it using the `PROXY_PORT` environment variable.
 
 You can use the following example to tune it:
 
@@ -203,7 +203,7 @@ spec:
 
 ### Reset Timeout
 
-It defines the reset timeout value that is added to the http request. It can be tuned using `RESET_TIMEOUT` environment variable.
+It defines the reset timeout value that is added to the http request. You can tune it using `RESET_TIMEOUT` environment variable.
 
 You can use the following example to tune it:
 
@@ -232,7 +232,7 @@ spec:
 
 ### Toxicity
 
-It defines the toxicity value to be added to the http request. It can be tuned using the `TOXICITY` environment variable.
+It defines the toxicity value to be added to the http request. You can tune it using the `TOXICITY` environment variable.
 Toxicity value defines the percentage of the total number of http requests that are affected.
 
 You can use the following example to tune it:
@@ -264,7 +264,7 @@ spec:
 
 ### Network Interface
 
-It defines the network interface used for the proxy. It can be tuned via `NETWORK_INTERFACE` environment variable.
+It defines the network interface used for the proxy. You can tune it using the `NETWORK_INTERFACE` environment variable.
 
 You can use the following example to tune it:
 

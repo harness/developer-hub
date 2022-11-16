@@ -27,7 +27,7 @@ The vm may stall or get corrupted while they wait endlessly for a packet. The ex
 :::info
 - Ensure that Kubernetes Version > 1.16 
 - Ensure that you have sufficient Vcenter access to stop and start the VM.
-- Ensure to create a Kubernetes secret having the Vcenter credentials in the `CHAOS_NAMESPACE`. A sample secret file looks like:
+- Ensure to create a Kubernetes secret having the Vcenter credentials in the `CHAOS_NAMESPACE`. A secret file looks like:
 ```yaml
 apiVersion: v1
 kind: Secret

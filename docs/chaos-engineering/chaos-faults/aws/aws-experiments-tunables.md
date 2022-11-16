@@ -42,7 +42,7 @@ spec:
 
 ### Multiple Iterations Of Chaos
 
-You can tune multiple iterations of chaos by setting the `CHAOS_INTERVAL` environment, which defines the delay between every iteration of chaos.
+You can tune multiple iterations of chaos by setting the `CHAOS_INTERVAL` environment variable, which defines the delay between every iteration of chaos.
 
 You can use the following example to tune this:
 
