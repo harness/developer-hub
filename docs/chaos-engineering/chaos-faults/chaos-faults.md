@@ -367,7 +367,7 @@ Following Platform Chaos faults are available:
   </tr>
   <tr>
     <td>Azure Web App Access Restrict</td>
-    <td>Add access resctriction for the target web app service</td>
+    <td>Add access restriction for the target web app service</td>
     <td><a href="/docs/chaos-engineering/chaos-faults/azure/azure-web-app-access-restrict">azure-web-app-access-restrict</a></td>
   </tr>
 </table>
