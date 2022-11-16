@@ -63,7 +63,9 @@ Harness includes two RBAC roles specifically for STO users:
 * **Developer** role — Permissions needed for developer workflows. These workflows are described in [Tutorial 1](30-tutorial-1-standalone-workflows.md).
 * **SecOps** role — Permissions needed for Security Operations staff. This role includes all Developer permissions and also allows users to approve security exemptions (Ignore rules). These workflows are covered in [Tutorial 2](40-sto-tutorial-2-integrated-sto-ci-cd-workflows.md).
 
-> :memo: **Note:** You need Administrative privileges at the Account level (Account Admin role) to assign these roles.
+:::note
+You need Administrative privileges at the Account level (Account Admin role) to assign these roles.
+:::
 
 <details>
   <summary>Assign Security Testing Roles: Default Workflow</summary>
@@ -92,7 +94,9 @@ You need a Kubernetes cluster for Harness to use for the Harness Delegate and as
 * Namespace: when you install the Harness Delegate, it will create the **harness-delegate-ng** namespace. You'll use the same namespace for the scanning infrastructure.
 * A Kubernetes service account with permission to create entities in the target namespace is required. The set of permissions should include **list**, **get**, **create**, and **delete permissions**. In general, the **cluster-admin** role or a namespace *admin* permission is enough. For more information, go to [User-Facing Roles](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles) from Kubernetes.
 
-> :memo: **Note:** Google Kubernetes Engine (GKE) [Autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview) is not supported at this time.
+:::note
+Google Kubernetes Engine (GKE) [Autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview) is not supported at this time.
+:::
 
 </details>
 
