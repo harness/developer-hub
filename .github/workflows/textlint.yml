@@ -32,6 +32,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'yarn'
+    - continue-on-error: true
     - run: yarn
     # - run: npm run build --if-present
     - run: yarn lint:textlint
