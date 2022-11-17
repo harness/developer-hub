@@ -59,9 +59,14 @@ The [Download plugin doc](https://plugins.drone.io/plugins/download) shows the i
 	+ `source` = The artifact to download.
 	+ `destination` = Save the downloaded artifact to this file.
 	+ `username` = A valid username for the Git provider.
-	+ `password` = The ID of the text secret that contains the Git provider password, using the convention described [here](https://ngdocs.harness.io/article/osfw70e59c-add-use-text-secrets#step_3_reference_the_encrypted_text_by_identifier). For example: `<+secrets.getValue("mygithubpersonalaccesstoken")>`![](./static/run-a-drone-plugin-in-ci-00.png)
+	+ `password` = The ID of the text secret that contains the Git provider password, using the convention described [here](https://ngdocs.harness.io/article/osfw70e59c-add-use-text-secrets#step_3_reference_the_encrypted_text_by_identifier). For example: `<+secrets.getValue("mygithubpersonalaccesstoken")>`
+  
+   ![](./static/run-a-drone-plugin-in-ci-00.png)
+   
 4. Click **Apply Changes** to apply your Stage settings, then **Save** to save the updated Pipeline
-5. Run the updated Pipeline and check the log output to verify that the Plugin Step works as intended.![](./static/run-a-drone-plugin-in-ci-01.png)
+5. Run the updated Pipeline and check the log output to verify that the Plugin Step works as intended.
+
+  ![](./static/run-a-drone-plugin-in-ci-01.png)
 
 ### Drone Plugin YAML and CI Step YAML
 
