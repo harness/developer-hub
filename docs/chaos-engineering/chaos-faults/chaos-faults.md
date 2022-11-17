@@ -354,9 +354,21 @@ Following Platform Chaos faults are available:
     <td>Azure Instance IO Stress</td>
     <td>Inject IO stress chaos on Azure instance</td>
     <td><a href="/docs/chaos-engineering/chaos-faults/azure/azure-instance-io-stress">azure-instance-io-stress</a></td>
+  </tr>
+  <tr>
     <td>Azure Disk Loss</td>
     <td>Detach azure disk from instance</td>
     <td><a href="/docs/chaos-engineering/chaos-faults/azure/azure-disk-loss">azure-disk-loss</a></td>
+  </tr>
+  <tr>
+    <td>Azure Web App Stop</td>
+    <td>Stops an Azure web app service</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/azure/azure-web-app-stop">azure-web-app-stop</a></td>
+  </tr>
+  <tr>
+    <td>Azure Web App Access Restrict</td>
+    <td>Add access restriction for the target web app service</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/azure/azure-web-app-access-restrict">azure-web-app-access-restrict</a></td>
   </tr>
 </table>
 
