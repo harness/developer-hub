@@ -3,13 +3,14 @@
 
 const lightCodeTheme = require("prism-react-renderer/themes/github");
 const darkCodeTheme = require("prism-react-renderer/themes/dracula");
+const path = require("path");
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "Harness Developer Hub",
   tagline:
-    "Learn intelligent software delivery skills at your own pace and in once place. Step-by-step tutorials, videos, and reference docs to help you create and deliver software.",
-  url: "https://harness-developer.netlify.app",
+    "Learn intelligent software delivery at your own pace. Step-by-step tutorials, videos, and reference docs to help you deliver customer happiness.",
+  url: "https://developer.harness.io",
   baseUrl: "/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
@@ -37,8 +38,8 @@ const config = {
           path: ".",
           sidebarPath: require.resolve("./sidebars.js"),
           editUrl: "https://github.com/harness/developer-hub/tree/main", // /tree/main/packages/create-docusaurus/templates/shared/
-          include: ["tutorials/**", "docs/**"],
-          exclude: ["**/shared/**", "**/static"],
+          include: ["tutorials/**/*.{md, mdx}", "docs/**/*.{md, mdx}"],
+          exclude: ["**/shared/**", "**/static/**"],
           routeBasePath: "/", //CHANGE HERE
         },
         // blog: {
@@ -49,8 +50,8 @@ const config = {
           customCss: require.resolve("./src/css/custom.css"),
         },
         gtag: {
-          trackingID: "G-Z62TFF68Z3",
-          anonymizeIP: true,
+          trackingID: "GTM-MJB7HPB", //, GTM-MJB7HPB is Prod - GTM-W895FNP is Pre-Prod
+          anonymizeIP: false,
         },
       }),
     ],
@@ -64,14 +65,19 @@ const config = {
         title: "Harness Developer Hub",
         logo: {
           alt: "Harness Developer Hub",
-          src: "img/logo.svg",
+          src: "img/logo_dlp.svg",
         },
         items: [
           {
             position: "left",
             // label: "img",
-            html: "<img src='/img/icon_beta.svg' width='39' height='19' style='margin-top: 8px;' />",
+            html: "<img src='/img/icon_beta.svg' alt='BETA' width='39' height='19' />",
             href: "#",
+          },
+          {
+            type: "search",
+            position: "right",
+            className: "searchBar",
           },
           {
             position: "right",
@@ -116,6 +122,11 @@ const config = {
                 label: "Run Chaos Experiments",
                 to: "tutorials/run-chaos-experiments",
               },
+              {
+                // type: "doc",
+                label: "Install Delegate",
+                to: "tutorials/platform/install-delegate",
+              },
             ],
           },
           {
@@ -133,7 +144,7 @@ const config = {
               },
               {
                 label: "Feature Flags",
-                href: "https://docs.harness.io/category/vjolt35atg-feature-flags",
+                to: "docs/feature-flags",
               },
               {
                 label: "Cloud Cost Management",
@@ -141,15 +152,23 @@ const config = {
               },
               {
                 label: "Service Reliability Management",
-                href: "https://docs.harness.io/category/ko19u4brsv-howtos-service-reliability-management",
+                to: "docs/service-reliability-management",
               },
               {
                 label: "Security Testing Orchestration",
-                href: "https://docs.harness.io/category/txlccquh5c-sto-category",
+                to: "docs/security-testing-orchestration",
               },
               {
                 label: "Chaos Engineering",
                 to: "docs/chaos-engineering",
+              },
+              {
+                label: "Self-Managed Enterprise Edition",
+                to: "docs/self-managed-enterprise-edition",
+              },
+              {
+                label: "Harness Platform",
+                to: "docs/platform",
               },
               {
                 label: "API Reference",
@@ -192,7 +211,7 @@ const config = {
                 href: "https://harness.io/products/continuous-integration",
               },
               {
-                label: "Continuous Delivery",
+                label: "Continuous Delivery & GitOps",
                 href: "https://harness.io/products/continuous-delivery",
               },
               {
@@ -241,6 +260,10 @@ const config = {
                 href: "https://university.harness.io",
               },
               {
+                label: "Open Source",
+                href: "https://harness-community.github.io/",
+              },
+              {
                 label: "YouTube",
                 href: "https://www.youtube.com/c/Harnessio",
               },
@@ -255,11 +278,15 @@ const config = {
             items: [
               {
                 label: "Terms of Use",
-                to: "docs/legal/terms-of-use",
+                to: "legal/terms-of-use",
               },
               {
                 label: "Privacy Policy",
                 href: "https://harness.io/legal/privacy",
+              },
+              {
+                html: "<a href='javascript:void(0)' class='footer__link-item' onclick='window.OneTrust && window.OneTrust.ToggleInfoDisplay()'>Cookie Management</a>",
+                // href: "javascript: alert(33)",
               },
             ],
           },
@@ -267,15 +294,15 @@ const config = {
         copyright: `Copyright © ${new Date().getFullYear()} Harness Inc.`,
       },
       prism: {
-        theme: lightCodeTheme,
+        theme: darkCodeTheme, // lightCodeTheme,
         darkTheme: darkCodeTheme,
       },
       algolia: {
         // The application ID provided by Algolia
-        appId: "J3B54BEN74",
+        appId: "HPP2NHSWS8",
 
         // Public API key: it is safe to commit it
-        apiKey: "cc3d33ec999dab9f29859d20b9186408",
+        apiKey: "26d5fe04a4fb8f356e8f9f79882544c5",
 
         indexName: "dlp-docs",
 
@@ -283,7 +310,7 @@ const config = {
         contextualSearch: true,
 
         // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
-        externalUrlRegex: "harness-developer\\.netlify\\.app",
+        // externalUrlRegex: "developer\\.harness\\.io",
 
         // Optional: Algolia search parameters
         searchParameters: {},
@@ -301,13 +328,23 @@ const config = {
       announcementBar: {
         id: "support_us",
         content:
-          "Harness Developer Hub is in BETA. Submit the feedback form for any suggestions.</a>",
-        backgroundColor: "#FF5310",
+          "Harness Developer Hub is in BETA. Help us improve by providing feedback.",
+        backgroundColor: "#000000",
         textColor: "#ffffff",
         isCloseable: true,
       },
+      hotjar: {
+        siteId: 3194971,
+      },
+      oneTrust: {
+        dataDomainScript: "59633b83-e34c-443c-a807-63232ce145e5",
+      },
     }),
-  plugins: ["docusaurus-plugin-sass"],
+  plugins: [
+    "docusaurus-plugin-sass",
+    path.join(__dirname, "/plugins/hotjar-plugin"),
+    path.join(__dirname, "/plugins/onetrust-plugin"),
+  ],
 };
 
 module.exports = config;

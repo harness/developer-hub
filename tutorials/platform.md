@@ -1,15 +1,23 @@
 ---
 hide_table_of_contents: true
 hide_title: true
+title: Administer Harness Platform
 ---
 
-## Harness Platform
+## Administer Harness Platform
 
 <!-- Custom component -->
 
-<<<<<<< Updated upstream
+<!--
 import AllTutorials from '@site/src/components/LandingPage/Platform';
-
 <AllTutorials />
-=======
->>>>>>> Stashed changes
+-->
+
+<!--
+import AllTutorials from '@site/src/components/LandingPage/GetStarted';
+<GetStarted />
+-->
+
+import Platform from '@site/src/components/LandingPage/Platform';
+
+<Platform />

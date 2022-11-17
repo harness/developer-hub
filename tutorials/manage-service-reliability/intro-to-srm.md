@@ -1,11 +1,12 @@
 ---
 sidebar_position: 1
+description: Introducing SLOs and how to measure and manage your SLOs leveraging Prometheus.
 ---
 
 # Manage SLOs using Prometheus metrics data
 
 ```mdx-code-block
-import KubernetesDelegateInstall from '/tutorials/shared/kubernetes-delegate-install-includes.md';
+import DelegateInstall from '/tutorials/platform/install-delegate.md';
 ```
 
 ## Background on Service Level Objectives
@@ -26,13 +27,13 @@ SLIs are used to measure your SLOs. SLO Management would not be possible without
 
 ## Getting Started with SLO Management
 
-Harness provides a module called Service Reliability Management to help with your SLO Management, if you have not already, [sign up for a Harness SRM Account](https://app.harness.io/auth/#/signup/?module=srm). Once signed up, the next step to on-ramp you to the Harness Platform is to install a Harness Delegate.
+Harness provides a module called Service Reliability Management to help with your SLO Management, if you have not already, [request a Harness SRM Account](https://harness.io/demo/srm). Once signed up, the next step to on-ramp you to the Harness Platform is to install a Harness Delegate.
 
 ![First SLO Overview](static/first-slo-tutorial/slo_overview.png)
 
 In this example, will use [Prometheus](https://prometheus.io/), an open source monitoring solution, to intercept metrics from an example application. The Open Observability Group has an [example application](https://github.com/open-o11y/prometheus-sample-app) which can be deployed to Kubernetes that writes to Prometheus metrics.
 
-## Installing Prometheus
+## Install Prometheus
 
 An easy way to install Prometheus on your Kubernetes cluster is to use [Helm](https://helm.sh/).
 
@@ -82,10 +83,10 @@ Now you are ready to deploy an application that writes to Prometheus.
 Following the [Open Observability Group’s Sample Application](https://github.com/open-o11y/prometheus-sample-app), you can build from source or use an already built rendition that we have built.
 
 E.g
-https://raw.githubusercontent.com/ravilach/prometheus-sample-app/master/prometheus-sample-app-k8s-deployment.yaml
+https://raw.githubusercontent.com/harness-apps/developer-hub-apps/main/applications/prometheus-sample-app/prometheus-sample-app-k8s-deployment.yaml
 
 ```
-Kubectl apply -f https://raw.githubusercontent.com/ravilach/prometheus-sample-app/master/prometheus-sample-app-k8s-deployment.yaml
+Kubectl apply -f https://raw.githubusercontent.com/harness-apps/developer-hub-apps/main/applications/prometheus-sample-app/prometheus-sample-app-k8s-deployment.yaml
 ```
 
 ![Sample Deploy](static/first-slo-tutorial/sample_deploy.png)
@@ -114,13 +115,16 @@ With this metric, you are now able to start to manage this metric.
 
 ## Getting Started With Your First SLO
 
-Wiring in your service metrics/telemetry as SLOs to Harness SRM has a few Harness Objects to be created. If you have not already, sign up for a [Harness SRM Account](https://app.harness.io/auth/#/signup/?module=srm). If this is your first time leveraging Harness, Harness has a concept of Projects. The Default Project is more than adequate to wire in your first SLO. You will also need to wire in a Harness Kubernetes Delegate if you have not done so already.
+Wiring in your service metrics/telemetry as SLOs to Harness SRM has a few Harness Objects to be created. If you have not already, request to sign up for a [Harness SRM Account](https://harness.io/demo/srm). If this is your first time leveraging Harness, Harness has a concept of Projects. The Default Project is more than adequate to wire in your first SLO. 
 
-### Kubernetes Delegate Wiring
+### Install Delegate
 
-```mdx-code-block
-<KubernetesDelegateInstall />
-```
+You will also need to wire in a [Kubernetes Delegate](../platform/install-delegate) if you have not done so already.
+
+<details>
+<summary>Install Delegate</summary>
+<DelegateInstall />
+</details>
 
 ### Creating Your First SLO
 
@@ -199,4 +203,8 @@ Click Save and now you have the ability to actively monitor and manage your SLOs
 
 ![SLO Status](static/first-slo-tutorial/slo_status.png)
 
-If this SLO is too aggressive or too lenient, Harness can provide the actual service data to help make that determination.
+If this SLO is too aggressive or too lenient, Harness can provide the actual service data to help make that determination. In this example, we set the SLO target at 50% which is not a very good SLO. Changing the SLO target to be more aggressive, for example 99%, can be changed via the UI. 
+
+![SLO Status](static/first-slo-tutorial/change_slo.png)
+
+

@@ -66,6 +66,20 @@ const CIList: FeatureItem[] = [{
   time: '15 min',
   link: '/tutorials/build-code/ci-node-docker-quickstart',
 },
+{
+  title: 'Run LocalStack as a Service',
+  module: 'ci',
+  // Svg: '/img/icon_ci.svg',
+  description: (
+    <>
+      This build automation guide shows how to run LocalStack as a Service Dependency in a CI Pipeline
+    </>
+  ),
+  ribbon: true,
+  type: [docType.Documentation],
+  time: '15 min',
+  link: '/tutorials/build-code/ci-localstack-service-dependency',
+},
 ];
 
 export default function CI() {
@@ -85,13 +99,13 @@ export default function CI() {
             <h1>Continuous Integration</h1>
           </div>
           <div>
-            <Link href="https://docs.harness.io/category/zgffarnh1m-ci-category">
+            <Link href="/docs/continuous-integration">
             <button className={clsx('button button--lg', styles.btn, styles.btnLight)}><img src="/img/icon_document.png" /> Documentation</button>
             </Link>
           </div>
         </div>
         <div className={styles.spaceBetween}>
-          <div>
+          <div className={styles.content}>
             <p>
               The CI Overview provides a bird's-eye view of all your Builds — successful, failed, aborted, and expired — and the percentage of successful builds for individual codebases. You can easily see where your builds have failed and drill down into specific builds to troubleshoot and analyze the root causes.
             </p>
@@ -107,7 +121,7 @@ export default function CI() {
           </div>
           <div>
             <img src="/img/ci_flow.svg" />
-          </div>
+          </div>          
         </div>
       </div>
       <div className={styles.subSection}>

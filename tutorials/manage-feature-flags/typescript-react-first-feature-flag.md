@@ -1,5 +1,6 @@
 ---
 sidebar_position: 1
+description: Walks you through adding JavaScript Feature Flags to a TypeScript and React Application.
 ---
 
 # Add feature flags to JavaScript app
@@ -12,7 +13,7 @@ It takes two things to build software; teamwork and iteration. As software engin
 
 ## What You Need For Executing Your First Feature Flag
 
-Feature Flags have a close relationship with the code base since they surround/decorate conditional statements. You’ll need to include a Feature Flag SDK as a dependency then wire the Feature Flag client. To support this, the underlying code base and necessary dependencies to build/run the code base is needed. If this is your first time leveraging a Feature Flag, [Google’s React Store](https://github.com/google-pay/react-store) is a great sample app to modify and use with Harness Feature Flags. This example will require a GitHub Account, an editor such as an IDE, a [Harness Feature Flags Account](https://app.harness.io/auth/#/signup/?module=cf), and the ability to run an [NPM Install](https://docs.npmjs.com/cli/v7/commands/npm-install) in your local or remote environment.
+Feature Flags have a close relationship with the code base since they surround/decorate conditional statements. You’ll need to include a Feature Flag SDK as a dependency then wire the Feature Flag client. To support this, the underlying code base and necessary dependencies to build/run the code base is needed. If this is your first time leveraging a Feature Flag, [Google’s React Store](https://github.com/google-pay/react-store) is a great sample app to modify and use with Harness Feature Flags. This example will require a GitHub Account, an editor such as an IDE, a [Harness Feature Flags Account](https://app.harness.io/auth/#/signup/?module=cf&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=ff-plg&utm_content=get-started), and the ability to run an [NPM Install](https://docs.npmjs.com/cli/v7/commands/npm-install) in your local or remote environment.
 
 ![Feature Flag Overview](static/ff-tutorial-typescript/ff_overview.png)
 

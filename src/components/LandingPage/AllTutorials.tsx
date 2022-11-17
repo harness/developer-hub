@@ -3,6 +3,7 @@ import React from 'react'
 import Link from '@docusaurus/Link';
 import clsx from 'clsx';
 import styles from './styles.module.scss';
+import moduleStyles from './ModuleCard.module.scss';
 import ModuleCard from './ModuleCard';
 
 enum docType {
@@ -65,6 +66,20 @@ const CIList: FeatureItem[] = [{
   time: '15 min',
   link: '/tutorials/build-code/ci-node-docker-quickstart',
 },
+{
+  title: 'Run LocalStack as a Service',
+  module: 'ci',
+  Svg: '',
+  description: (
+    <>
+      This build automation guide shows how to run LocalStack as a Service Dependency in a CI Pipeline
+    </>
+  ),
+  ribbon: true,
+  type: [docType.Documentation],
+  time: '15 min',
+  link: '/tutorials/build-code/ci-localstack-service-dependency',
+},
 ];
 
 const CDList: FeatureItem[] = [{
@@ -108,7 +123,35 @@ const CDList: FeatureItem[] = [{
   type: [docType.Documentation],
   time: '10min',
   link: '/tutorials/deploy-services/helm-cd-first-tutorial',
-},];
+},
+{
+  title: 'Private Image Amazon ECR Deployment',
+  module: 'cd',
+  Svg: '',
+  description: (
+    <>
+      Deploying from a private Amazon ECR Repository to Kubernetes. 
+    </>
+  ),
+  ribbon: false,
+  type: [docType.Documentation],
+  time: '15min',
+  link: '/tutorials/deploy-services/ecr-private-repo-deployment',
+},
+{
+  title: 'First Amazon ECS Deployment',
+  module: 'cd',
+  Svg: '',
+  description: (
+    <>
+      Deploying to Amazon ECS with a CD Pipeline. 
+    </>
+  ),
+  ribbon: false,
+  type: [docType.Documentation],
+  time: '15min',
+  link: '/tutorials/deploy-services/first-ecs-cd-deployment',
+}];
 
 const FFList: FeatureItem[] = [{
   title: 'TypeScript and React Feature Flags',
@@ -177,13 +220,27 @@ const CEList: FeatureItem[] = [{
   Svg: '',
   description: (
     <>
-      Running a Chaos Experiment on Kuberenetes for the first time. 
+      Running a Chaos Experiment on Kubernetes for the first time. 
     </>
   ),
   ribbon: false,
   type: [docType.Documentation],
   time: '10min',
   link: '/tutorials/run-chaos-experiments/first-chaos-engineering'
+},
+{
+  title: 'Chaos Experiment from a Blank Canvas',
+  module: 'ce',
+  Svg: '',
+  description: (
+    <>
+       Create, run, observe and evaluate a custom chaos experiment. 
+    </>
+  ),
+  ribbon: false,
+  type: [docType.Documentation],
+  time: '5min',
+  link: '/tutorials/run-chaos-experiments/chaos-experiment-from-blank-canvas'
 }];
 
 export default function AllTutorials() {
@@ -193,13 +250,13 @@ export default function AllTutorials() {
     //     <li>Get Started</li>
     //     <li>All Tutorials</li>
     //   </ul>
-    <div className="container">
-      <div className={styles.topSection}>
-        <h1>All Tutorials</h1>
-        <p>
-          Learn intelligent software delivery skills with step-by-step tutorials, interactive labs, videos and reference docs.
-        </p>
-      </div> 
+      <div className={clsx('container', moduleStyles.allTutorials)}>
+        <div className={styles.topSection}>
+              <h1>All Tutorials</h1>
+            <p>
+                Learn intelligent software delivery skills with step-by-step tutorials, interactive labs, videos and reference docs.
+            </p>
+        </div> 
         <div className={styles.subSection}>
           <h3>
             Featured Tutorials

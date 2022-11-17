@@ -26,7 +26,7 @@ const FeaturedList: FeatureItem[] = [{
   module: 'ce',
   description: (
     <>
-      Running a Chaos Experiment on Kuberenetes for the first time. 
+      Running a Chaos Experiment on Kubernetes for the first time. 
     </>
   ),
   ribbon: true,
@@ -40,13 +40,26 @@ const CEList: FeatureItem[] = [{
   module: 'ce',
   description: (
     <>
-      Running a Chaos Experiment on Kuberenetes for the first time. 
+      Running a Chaos Experiment on Kubernetes for the first time. 
     </>
   ),
   ribbon: false,
   type: [docType.Documentation],
   time: '10min',
   link: '/tutorials/run-chaos-experiments/first-chaos-engineering'
+},
+{
+  title: 'Chaos Experiment from a Blank Canvas',
+  module: 'ce',
+  description: (
+    <>
+       Create, run, observe and evaluate a custom chaos experiment. 
+    </>
+  ),
+  ribbon: false,
+  type: [docType.Documentation],
+  time: '5min',
+  link: '/tutorials/run-chaos-experiments/chaos-experiment-from-blank-canvas'
 }];
 
 export default function CE() {
@@ -66,7 +79,7 @@ export default function CE() {
               <h1>Chaos Engineering</h1>
             </div>
             <div>
-              <Link href="https://docs.harness.io/category/kl0mxwpfw1-hce-category">
+              <Link href="/docs/chaos-engineering">
               <button className={clsx('button button--lg', styles.btn, styles.btnLight)}><img src="/img/icon_document.png"/> Documentation</button>
               </Link>
             </div>       

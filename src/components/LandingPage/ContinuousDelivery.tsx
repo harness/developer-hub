@@ -70,7 +70,7 @@ const CDList: FeatureItem[] = [{
 {
   title: 'First GitOps Deployment',
   module: 'cd',
-  // Svg: '/img/icon_ci.svg',
+  // Svg: '/img/icon_cd.svg',
   description: (
     <>
       Learn about GitOps and how to leverage your own GitOps Pipeline.
@@ -84,7 +84,7 @@ const CDList: FeatureItem[] = [{
 {
   title: 'First Helm Deployment',
   module: 'cd',
-  // Svg: '/img/icon_ci.svg',
+  // Svg: '/img/icon_cd.svg',
   description: (
     <>
       Deploying your first set of Kubernetes Resources in a CD Pipeline with Helm (K8s Package Manager).
@@ -93,7 +93,35 @@ const CDList: FeatureItem[] = [{
   ribbon: false,
   type: [docType.Documentation],
   time: '10min',
-  link: 'tutorials/deploy-services/helm-cd-first-tutorial',
+  link: '/tutorials/deploy-services/helm-cd-first-tutorial',
+},
+{
+  title: 'Private Image Amazon ECR Deployment',
+  module: 'cd',
+  // Svg: '/img/icon_cd.svg',
+  description: (
+    <>
+      Deploying from a private Amazon ECR Repository to Kubernetes. 
+    </>
+  ),
+  ribbon: false,
+  type: [docType.Documentation],
+  time: '15min',
+  link: '/tutorials/deploy-services/ecr-private-repo-deployment',
+},
+{
+  title: 'First Amazon ECS Deployment',
+  module: 'cd',
+  // Svg: '/img/icon_cd.svg',
+  description: (
+    <>
+      Deploying to Amazon ECS with a CD Pipeline.
+    </>
+  ),
+  ribbon: false,
+  type: [docType.Documentation],
+  time: '15min',
+  link: '/tutorials/deploy-services/first-ecs-cd-deployment',
 },
 ];
 
@@ -120,7 +148,7 @@ export default function CD() {
             </div>       
           </div>
           <div className={styles.spaceBetween}>
-            <div>
+            <div className={styles.content}>
               <p>
               Continuous Delivery focuses on delivery and deployment of any sort of change or ribbon feature in a safe and sustainable way. Your Continuous Delivery Pipeline focuses on all of the steps to get your changes into production. 
               </p>

@@ -1,11 +1,12 @@
 ---
 sidebar_position: 1
+description: Scanning a NodeJS Application and prioritizing scan results.
 ---
 
 # Scan a NodeJS App for security vulnerabilities
 
 ```mdx-code-block
-import KubernetesDelegateInstall from '/tutorials/shared/kubernetes-delegate-install-includes.md';
+import DelegateInstall from '/tutorials/platform/install-delegate.md';
 ```
 
 ## DevSecOps Background
@@ -20,19 +21,20 @@ In this example, we will be using [OWASP Dependency Check](https://owasp.org/www
 
 ![Overview](static/node-first-scan/overview.png)
 
-Harness will facilitate the running of the security scan against your codebase. A workload runner, e.g. a [Harness Delegate](https://docs.harness.io/article/2k7lnc7lvl-delegates-overview) will need to be installed into a Kubernetes cluster of your choice. The first step is to sign up for Harness and install a Harness Delegate.
+### Install Delegate
 
-### Harness Delegate Installation
+Harness will facilitate the running of the security scan against your codebase. A workload runner, e.g. a [Harness Delegate](https://docs.harness.io/article/2k7lnc7lvl-delegates-overview) will need to be installed into a Kubernetes cluster of your choice. The first step is to request a [Harness Security Test Orchestration Account](https://harness.io/demo/sto) and install a [Harness Delegate](../platform/install-delegate).
 
-```mdx-code-block
-<KubernetesDelegateInstall />
-```
+<details>
+<summary>Install Delegate</summary>
+<DelegateInstall />
+</details>
 
-### Security Pipeline
+### Security Tests Pipeline
 
 With the Delegate installation out of the way, next is to create a Pipeline that will just run your security scan. Harness runs off the concept of Projects which are logical groupings of resources. The Default Project which is created for you upon account signup can be used for this example.
 
-## Creating Your First Security Pipeline
+## Creating Your First STO Pipeline
 
 To get started with your security scan that can be run in a pipeline, head to the Security Tests module and then Pipelines.
 

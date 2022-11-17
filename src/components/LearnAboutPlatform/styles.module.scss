@@ -2,7 +2,7 @@
   padding: 2rem 0 4rem 0;
   h2 {
     // margin-bottom: 32px;
-    width: 600px;
+    width: 100%;
     font-weight: 600;
     font-size: 32px;
     line-height: 40px;
@@ -24,9 +24,10 @@
     .platformIllustration {
       width: 100%;
       height: auto;
+      margin-top: 1em;
     }
   }
-  ul.platformList {
+  ul.platformList, ul.platformListMore {
     display: flex;
     flex-flow: row wrap;
     margin-top: 32px;
@@ -80,6 +81,69 @@
         font-size: 12px;
         line-height: 18px;
       }
+    }
+  }
+  ul.platformListMore {
+    li {
+      width: 370px;
+      height: 150px;
+      h4 {
+        margin-top: 4px;;
+      }
+    }
+  }
+  .btnShowMore {
+    display: flex;
+    justify-content: center;
+    margin-top: 36px;
+    button {
+      border: none;
+      background: none;
+      color: var(--primary-7); // #0278D5;
+      font-weight: 600;
+      font-size: 13px;
+      cursor: pointer;
+      line-height: 16px;
+      &:hover {
+        color: var(--primary-5);
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 996px) {
+// @media screen and (max-width: 768px) {
+  .learnAboutPlatform {
+    ul.platformListMore {
+      li {
+        width: 270px;
+        height: 170px;
+      }
+    }
+  }
+}
+// @media screen and (max-width: 996px) {
+@media screen and (max-width: 768px) {
+  .learnAboutPlatform h2 {
+    font-size: 28px;
+  }
+}
+@media screen and (max-width: 393px) {
+  /* for mobile */
+  .learnAboutPlatform{
+    h2 {
+      font-size: 22px;
+      line-height: 150%;
+    }
+    h3 {
+      font-size: 14px;
+      line-height: 150%;
+    }
+    .subSectionName {
+      padding: 0;
+    }
+    ul.platformList, ul.platformListMore {
+      padding-left: 0;
     }
   }
 }

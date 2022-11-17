@@ -9,6 +9,8 @@ import LearnAboutPlatform from '@site/src/components/LearnAboutPlatform';
 import HarnessU from '@site/src/components/HarnessU';
 import Feedback from '@site/src/components/Feedback';
 import MDXContent from '@theme/MDXContent';
+// import Lottie from "lottie-react";
+// import allModuleAnimation from "./all_module_animation.json";
 
 import styles from './index.module.scss';
 
@@ -27,7 +29,13 @@ function HomepageHeader() {
           </Link>
       </div> */}
       </div>
-        {/* <img src="/img/hero.svg" className={styles.heroImg} /> */}
+      {/* <img src="/img/hero.svg" className={styles.heroImg} /> */}
+      <div className={styles.heroImg}>
+        {/* <Lottie animationData={allModuleAnimation} loop={true} /> */}
+        <video autoPlay={true} loop={true} muted={true}>
+          <source src="/img/all_module_animation.mp4" type="video/mp4"/>
+        </video>
+      </div>
     </header>
   );
 }

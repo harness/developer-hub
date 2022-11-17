@@ -1,7 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
-import { Tooltip } from 'antd';
-import 'antd/lib/tooltip/style/index.css'
+import Tooltip from 'rc-tooltip';
+import 'rc-tooltip/assets/bootstrap.css'
 import styles from './styles.module.scss';
 
 
@@ -83,7 +83,7 @@ const FeatureList: FeatureItem[] = [
     link: '/tutorials/manage-service-reliability',
   },
   {
-    title: 'Orchestrate Security Testings',
+    title: 'Orchestrate Security Tests',
     module: 'sto',
     Svg: '/img/icon_sto.svg',
     description: (
@@ -106,6 +106,18 @@ const FeatureList: FeatureItem[] = [
     type: [docType.Documentation],
     link: '/tutorials/run-chaos-experiments',
   },
+  {
+    title: 'Install Delegate',
+    module: 'platform',
+    Svg: '/img/logo.svg',
+    description: (
+      <>
+        Connect your infrastructure with Harness Platform using Docker & Kubernetes Delegate.
+      </>
+    ),
+    type: [docType.Documentation],
+    link: '/tutorials/platform/install-delegate',
+  },
 ];
 
 function Feature({title, Svg, description, type, module, link}: FeatureItem) {
@@ -125,7 +137,7 @@ function Feature({title, Svg, description, type, module, link}: FeatureItem) {
         <ul className={styles.docTypes}>
         {type.map((props, idx) => (
             <li>
-              <Tooltip title={props}>
+              <Tooltip placement="top" overlay={props}>
                 <img src={`/img/icon_doctype_${props}.svg`} alt={props} />
               </Tooltip>
             </li>
@@ -140,7 +152,7 @@ function Feature({title, Svg, description, type, module, link}: FeatureItem) {
 export default function HomepageFeatures(): JSX.Element {
   return (
     <section className={styles.features}>
-     {/* <h2>Tutorials</h2> */}
+     {<h2>Get Started with Tutorials</h2>}
       <div className={styles.getStart}>
           {FeatureList.map((props, idx) => (
             <Feature key={idx} {...props} />

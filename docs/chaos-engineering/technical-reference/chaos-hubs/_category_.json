@@ -1,0 +1,9 @@
+{
+  "position": 4,
+  "label": "Chaos Hubs",
+  "collapsible": true,
+  "collapsed": true,
+  "customProps": {
+    "description": "Chaos Hubs reference"
+  }
+}

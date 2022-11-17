@@ -1,13 +1,15 @@
 .spaceBetween{
     display: flex;
     flex-flow: row wrap;
+    justify-content: space-between;
 }
 .tutorialCard{
     border-radius: 8px;
     box-shadow: 0px 0px 1px rgba(40, 41, 61, 0.04), 0px 2px 4px rgba(96, 97, 112, 0.16);
     padding: 24px;
-    margin: 0 30px 30px 0;
-    width: 25%;
+    margin: 0 0 30px 0;
+    width: 30.5%;
+    font-family: 'Inter';
     border: 3px solid transparent;
     position: relative;
     .ribbon{
@@ -27,14 +29,17 @@
         }
     }
     h4{
-        font-weight: 600;
-        font-size: 16px;
-        line-height: 24px;
-        color: #000000;
+        a{
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 24px;
+            color: #000000;
+        }        
     }
     p{
         font-weight: 400;
         font-size: 12px;
+        font-family: 'Inter';
         color: #22222A;
     }
     ul.docTypes {
@@ -84,11 +89,55 @@
 .ce:hover{
     border-image-source: linear-gradient(to left, rgba(255, 111, 171, 1), rgba(206, 0, 86, 1));
 }
+.allTutorials{
+    .tutorialCard{
+        width: 28%;
+    }
+    .featureCard{
+        width: 46%;
+    }
+}
+.getStartedCard{
+    text-align: center;
+    padding: 24px 40px;
+    .docTypes{
+        justify-content: center;
+    }
+    h4{
+        margin-bottom: 7px;
+    }
+    p{
+        margin-bottom: 50px;
+    }
+    a{
+        color: #000000;
+    }
+    &.sto{
+        h4{
+            margin-right: 30px;
+            margin-left: 30px;
+        }
+    }
+}
 .featureCard{
     border: 1px solid #D9DAE5;
     box-shadow: none;
-    width: 47%;
+    width: 48%;
     .ribbon{
         right: 0;
+    }
+}
+
+// @media screen and (max-width: 996px) {
+@media screen and (max-width: 768px) {
+    .tutorialCard{
+        width: 48%;
+    }
+}
+
+@media screen and (max-width: 393px) {
+    /* for mobile */
+    .tutorialCard{
+        width: unset;
     }
 }

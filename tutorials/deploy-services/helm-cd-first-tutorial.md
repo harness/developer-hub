@@ -1,11 +1,12 @@
 ---
-sidebar_position: 1
+sidebar_position: 2
+description: Deploy a Helm Chart using a CD Pipeline
 ---
 
 # Deploy a Helm Chart using a CD Pipeline
 
 ```mdx-code-block
-import KubernetesDelegateInstall from '/tutorials/shared/kubernetes-delegate-install-includes.md';
+import DelegateInstall from '/tutorials/platform/install-delegate.md';
 ```
 
 ## Background on Helm
@@ -30,7 +31,7 @@ Harness does simplify this experience that you do not need to install a Helm Cli
 
 ## Getting Started with Harness Continuous Delivery to Deploy a Helm Chart
 
-Getting started with Harness CD is simple, first if you do not have a Harness Account, you can sign up for [free for Harness CD Account](https://app.harness.io/auth/#/signup/?module=cd).
+Getting started with Harness CD is simple, first if you do not have a Harness Account, you can sign up for [free for Harness CD Account](https://app.harness.io/auth/#/signup/?module=cd&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=cd-plg&utm_content=get-started).
 
 Once signed up, navigate to the Deployments icon on the left hand navigation and create your start your free forever CD Free Plan.
 
@@ -46,13 +47,14 @@ With the Default Project selected, clicking on Overview will bring up a wizard t
 
 ![New Pipeline](static/first-helm-deployment/new_pipeline.png)
 
-There are a few Harness Objects that will need to be created in Harness. Harness works on a concept of worker nodes called [Harness Delegates](https://docs.harness.io/article/2k7lnc7lvl-delegates-overview). These Delegates can perform work on your behalf. One will need to be set up to deploy into a Kubernetes cluster. The second will be access to the Helm Chart Repository. Let’s set up the Harness Delegate first.
+There are a few Harness Objects that will need to be created in Harness. Harness works on a concept of worker nodes called [Harness Delegates](https://docs.harness.io/article/2k7lnc7lvl-delegates-overview). These Delegates can perform work on your behalf. One will need to be set up to deploy into a Kubernetes cluster. The second will be access to the Helm Chart Repository. 
 
-### Deploying the Harness Delegate into a Kubernetes Cluster
+## Install Delegate
 
-```mdx-code-block
-<KubernetesDelegateInstall />
-```
+<details>
+<summary>Install Delegate</summary>
+<DelegateInstall />
+</details>
 
 ## Creating Your First Harness Pipeline with Helm
 

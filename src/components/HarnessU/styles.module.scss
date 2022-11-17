@@ -12,7 +12,7 @@
   // line-height: 28px;
   h2 {
     margin-bottom: 50px;
-    width: 600px;
+    // width: 600px;
     font-weight: 600;
     font-size: 32px;
     line-height: 40px;
@@ -46,6 +46,7 @@
     justify-content: center;
     align-items: center;
     gap: 32px;
+    padding-left: 0;
     li {
       box-sizing: border-box;
 
@@ -111,5 +112,13 @@
         color: #4F5162;
       }
     }
+  }
+}
+
+@media screen and (max-width: 393px) {
+  /* for mobile */
+  .harnessU h2 {
+    font-size: 22px;
+    line-height: 150%;
   }
 }

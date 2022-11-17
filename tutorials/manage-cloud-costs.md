@@ -1,9 +1,10 @@
 ---
 hide_table_of_contents: true
 hide_title: true
+title: Manage Cloud Costs
 ---
 
-<!-- # Build Code -->
+<!-- # Manage Cloud Costs -->
 
 <!-- Custom component -->
 

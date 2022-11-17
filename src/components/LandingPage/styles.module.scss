@@ -17,6 +17,12 @@
         }
     }
 }
+.getStarted{
+    h1{
+        font-size: 32px;
+    }
+    padding-bottom: 30px;
+}
 .SectionName{
     h3{
         font-family: 'Inter';
@@ -32,6 +38,9 @@
     border-bottom: 1px solid #D9DAE5;
     margin-bottom: 3.5rem;
     padding-bottom: 3.5rem;
+    h1{
+        font-size: 32px;
+    }
     .moduleTitle{
         display: flex;
         align-items: center;
@@ -43,9 +52,19 @@
             margin-bottom: 0;
         }
     }
+    p{
+        font-family: 'Inter'; 
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 26px;
+        color: #000000;
+    }
     .ff_img{
         margin: 56px 0;
     }
+}
+.content{
+    width: 50%;
 }
 .spaceBetween{
     display: flex;
@@ -91,7 +110,8 @@
         padding-right: 10px;
     }
     &:hover {
-        color: var(--black)
+        // color: var(--black)
+        color: var(--primary-7);
     }
 }
 .btnCD{
@@ -170,4 +190,44 @@
         line-height: 28px;
         color: #22222A;
     }    
+}
+
+// @media screen and (max-width: 996px) {
+@media screen and (max-width: 768px) {
+    .spaceBetween {
+        flex-flow: column wrap;
+        .content {
+            width: 100%;
+            margin: 2em 0;
+            & > p {
+                text-align: left;
+            }
+            .alignCenter {
+                display: flex;
+                justify-content: center;
+            }
+        }
+        .moduleTitle+div {
+            display: flex;
+            justify-content: center;
+        }
+        // & > div:nth-child(2) {
+        & > div {
+            text-align: center;
+        }
+    }
+}
+
+@media screen and (max-width: 393px) {
+/* for mobile */
+    .topSection {
+        h1{
+            font-size: 22px;
+            line-height: 110%;
+            text-align: left;
+        }
+    }
+    .btn {
+        padding-right: 26px;
+    }
 }
