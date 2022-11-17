@@ -1,5 +1,5 @@
 ---
-title: ijkyokxrot
+title: Veracode Scanner Reference
 description: Veracode is a popular tool that performs dynamic and static code analysis and finds malicious code as well as the absence of functionality that can lead to security breaches.
 sidebar_position: 50
 helpdocs_topic_id: cy0deg32w9
