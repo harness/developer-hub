@@ -25,11 +25,7 @@ Coming soon.
 
 :::info
 - Ensure that Kubernetes Version > 1.16.
-<<<<<<< HEAD
 - Ensure that you have sufficient AWS access to stop and start an EC2 instance. 
-=======
-- Ensure that you have sufficient AWS access to stop and start an ec2 instance.
->>>>>>> main
 - Ensure to create a Kubernetes secret having the AWS access configuration(key) in the `CHAOS_NAMESPACE`. A sample secret file looks like:
 ```yaml
 apiVersion: v1
@@ -48,11 +44,7 @@ stringData:
 
 ### WARNING
 
-<<<<<<< HEAD
 If the target EC2 instance is a part of a self-managed nodegroup then make sure to drain the target node if any application is running on it and also ensure to cordon the target node before running the fault so that the fault pods do not schedule on it. 
-=======
-If the target EC2 instance is a part of a self-managed nodegroup then make sure to drain the target node if any application is running on it and also ensure to cordon the target node before running the experiment so that the experiment pods do not schedule on it.
->>>>>>> main
 :::
 
 ## Default Validations
@@ -120,13 +112,8 @@ If the target EC2 instance is a part of a self-managed nodegroup then make sure 
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injection of chaos in sec </td>
-<<<<<<< HEAD
         <td> Eg. 30 </td>
       </tr>    
-=======
-        <td> </td>
-      </tr>
->>>>>>> main
     </table>
 </details>
 

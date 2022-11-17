@@ -77,13 +77,8 @@ stringData:
       <tr>
         <td> DEVICE_NAMES </td>
         <td> The device names of respective target disk volumes </td>
-<<<<<<< HEAD
         <td> Provide the device name for every target disk name as deviceName1,deviceName2... in the respective order of <code>DISK_VOLUME_NAMES</code> </td>
       </tr> 
-=======
-        <td> Provide the device name for every target disk name as deviceName1,deviceName2... in the respective order of <code>DISK_VOLUME_NAMES</code>  </td>
-      </tr>
->>>>>>> main
     </table>
     <h2>Optional Fields</h2>
     <table>
