@@ -60,8 +60,7 @@ spec:
         volumeMounts:  
         - name: certvol  
           mountPath: /tmp/ca.bundle  
-          subPath:   
-        restartPolicy: Always  
+          subPath:  ca.bundle 
        volumes:  
         - name: certvol  
           secret:  
