@@ -1,0 +1,14 @@
+{
+  "filters": {},
+  "rules": {
+    "no-todo": {
+      "severity" : "warning"
+    },
+    "textlint-rule-spelling": {
+      "severity" : "warning"
+    },
+    "textlint-rule-write-good": {
+      "severity" : "warning"
+    }
+  }
+}
