@@ -100,7 +100,7 @@ stringData:
         <tr>
             <td> PRIORITY </td>
             <td> Provide the priority of the rule. Lower the number higher the priority and vice versa</td>
-            <td>  Default is "300". For more info <a herf="https://learn.microsoft.com/en-us/azure/virtual-network/network-security-groups-overview">refer</a></td>
+            <td>  Default is "300". For more info <a href="https://learn.microsoft.com/en-us/azure/virtual-network/network-security-groups-overview">refer</a></td>
         </tr>
         <tr> 
             <td> TOTAL_CHAOS_DURATION </td>
