@@ -14,12 +14,11 @@
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
     "typecheck": "tsc",
-    "test": "npm run textlint",
-    "test:ci": "npm run test",
-    "textlint": "textlint tutorials/**/**.md* docs/**/**.md*"
+    "lint:textlint": "textlint tutorials/**/**.md* docs/**/**.md*",
     "lint:eslint": "eslint ./src/**/*.js*",
-    "lint:vale": "npm run textlint",
-    "lint:ci": "npm run lint:eslint"
+    "lint:vale": "npm run lint:textlint",
+    "lint:ci": "npm run lint:eslint && npm run lint:textlint",
+    "test": "npm run lint:ci"
   },
   "dependencies": {
     "@docusaurus/core": "^2.2.0",
