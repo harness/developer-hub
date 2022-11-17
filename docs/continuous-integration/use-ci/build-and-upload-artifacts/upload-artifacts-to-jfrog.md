@@ -19,7 +19,7 @@ The following steps run SSH commands and push the artifacts to JFrog Artifactory
 
 * [CI Pipeline Quickstart](../../ci-quickstarts/ci-pipeline-quickstart.md)
 * [CI Stage Settings](../../ci-technical-reference/ci-stage-settings.md)
-* [Set Up Build Infrastructure](/category/set-up-build-infrastructure)
+* [Set Up Build Infrastructure](https://docs.harness.io/category/set-up-build-infrastructure)
 * [Learn Harness' Key Concepts](https://ngdocs.harness.io/article/hv2758ro4e-learn-harness-key-concepts)
 
 ### Step 1: Create the CI Stage
