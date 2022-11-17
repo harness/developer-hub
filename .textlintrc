@@ -1,0 +1,8 @@
+{
+  "filters": {},
+  "rules": {
+    "no-todo": true,
+    "textlint-rule-spelling": true,
+    "textlint-rule-write-good": true
+  }
+}
