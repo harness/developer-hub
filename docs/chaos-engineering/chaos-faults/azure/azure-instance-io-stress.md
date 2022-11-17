@@ -19,7 +19,7 @@ title: Azure Instance IO Stress
 :::info
 
 - Filesystem read and write is another very common and frequent scenario we find with processes/applications that can result in the impact on its delivery. These problems are generally referred to as "Noisy Neighbour" problems.
-- Injecting a rogue process into a target azure instance, we starve the main processes/applications (typically pid 1) of the resources allocated to it (where limits are defined) causing slowness in application traffic or in other cases unrestrained use can cause instance to exhaust resources leading to degradation in performance of processes/applications present on the instance. So this category of chaos fault helps to build the immunity on the application undergoing any such stress scenario.
+- Injecting a rogue process into a target Azure instance, we starve the main processes/applications (typically pid 1) of the resources allocated to it (where limits are defined) causing slowness in application traffic or in other cases unrestrained use can cause instance to exhaust resources leading to degradation in performance of processes/applications present on the instance. So this category of chaos fault helps to build the immunity on the application undergoing any such stress scenario.
 
 :::
 
@@ -34,7 +34,7 @@ title: Azure Instance IO Stress
 **Azure Access Requirement:**
 
 - Ensure that Azure Run Command agent is installed and running in the target Azure instance.
-- We will use azure [file-based authentication](https://docs.microsoft.com/en-us/azure/developer/go/azure-sdk-authorization#use-file-based-authentication) to connect with the instance using azure GO SDK in the fault. For generating auth file run `az ad sp create-for-rbac --sdk-auth > azure.auth` Azure CLI command.
+- We will use Azure [file-based authentication](https://docs.microsoft.com/en-us/azure/developer/go/azure-sdk-authorization#use-file-based-authentication) to connect with the instance using Azure GO SDK in the fault. For generating auth file run `az ad sp create-for-rbac --sdk-auth > azure.auth` Azure CLI command.
 - Ensure to create a Kubernetes secret having the auth file created in the step in `CHAOS_NAMESPACE`. A sample secret file looks like:
 
 ```yaml
@@ -116,7 +116,7 @@ stringData:
     </tr>
     <tr>
         <td> AZURE_AUTH_LOCATION </td>
-        <td> Provide the name of the azure secret credentials files</td>
+        <td> Provide the name of the Azure secret credentials files</td>
         <td> Defaults to <code>azure.auth</code> </td>
     </tr>
     <tr>
@@ -192,10 +192,10 @@ spec:
         env:
         - name: FILESYSTEM_UTILIZATION_BYTES
           VALUE: '1024'
-        # name of the azure instance
+        # name of the Azure instance
         - name: AZURE_INSTANCE_NAMES
           value: 'instance-1'
-        # resource group for the azure instance
+        # resource group for the Azure instance
         - name: RESOURCE_GROUP
           value: 'rg-azure'
 ```
@@ -223,10 +223,10 @@ spec:
         env:
         - name: FILESYSTEM_UTILIZATION_PERCENTAGE
           VALUE: '50'
-        # name of the azure instance
+        # name of the Azure instance
         - name: AZURE_INSTANCE_NAMES
           value: 'instance-1'
-        # resource group for the azure instance
+        # resource group for the Azure instance
         - name: RESOURCE_GROUP
           value: 'rg-azure'
 ```
@@ -254,10 +254,10 @@ spec:
         env:
         - name: NUMBER_OF_WORKERS
           VALUE: '3'
-        # name of the azure instance
+        # name of the Azure instance
         - name: AZURE_INSTANCE_NAMES
           value: 'instance-1'
-        # resource group for the azure instance
+        # resource group for the Azure instance
         - name: RESOURCE_GROUP
           value: 'rg-azure'
 ```
@@ -285,10 +285,10 @@ spec:
         env:
         - name: VOLUME_MOUNT_PATH
           VALUE: '/tmp'
-        # name of the azure instance
+        # name of the Azure instance
         - name: AZURE_INSTANCE_NAMES
           value: 'instance-1'
-        # resource group for the azure instance
+        # resource group for the Azure instance
         - name: RESOURCE_GROUP
           value: 'rg-azure'
 ```
@@ -316,10 +316,10 @@ spec:
         env:
         - name: MEMORY_CONSUMPTION
           VALUE: '1024'
-        # names of the azure instance
+        # names of the Azure instance
         - name: AZURE_INSTANCE_NAMES
           value: 'instance-1,instance-2'
-        # resource group for the azure instance
+        # resource group for the Azure instance
         - name: RESOURCE_GROUP
           value: 'rg-azure'
 ```

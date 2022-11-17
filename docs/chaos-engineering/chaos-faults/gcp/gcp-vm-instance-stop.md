@@ -125,7 +125,7 @@ Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/gcp-vm-instance-stop/gcp-instance.yaml yaml)
 ```yaml
-## details of the gcp instance
+## details of the GCP instance
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -145,7 +145,7 @@ spec:
         # it should be provided in same order of VM_INSTANCE_NAMES
         - name: ZONES
           value: 'zone-01,zone-02'
-        # gcp project id to which vm instance belongs
+        # GCP project id to which vm instance belongs
         - name: GCP_PROJECT_ID
           value: 'project-id'
 ```
@@ -182,7 +182,7 @@ spec:
         # it should be provided in same order of VM_INSTANCE_NAMES
         - name: ZONES
           value: 'zone-01,zone-02'
-        # gcp project id to which vm instance belongs
+        # GCP project id to which vm instance belongs
         - name: GCP_PROJECT_ID
           value: 'project-id'
 ```

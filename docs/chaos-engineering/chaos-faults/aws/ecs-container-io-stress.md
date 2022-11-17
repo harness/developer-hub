@@ -146,7 +146,7 @@ Refer the [common attributes](../common-tunables-for-all-experiments) and [AWS s
 
 ### Filesystem Utilization Percentage
 
-It stresses the `FILESYSTEM_UTILIZATION_PERCENTAGE` percentage of total free space available in the ecs container.
+It stresses the `FILESYSTEM_UTILIZATION_PERCENTAGE` percentage of total free space available in the ECS container.
 
 Use the following example to tune this:
 
@@ -177,7 +177,7 @@ spec:
 
 ### Filesystem Utilization Bytes
 
-It stresses the `FILESYSTEM_UTILIZATION_BYTES` GB of the i/o of the targeted ecs container. It is mutually exclusive with the `FILESYSTEM_UTILIZATION_PERCENTAGE` ENV. 
+It stresses the `FILESYSTEM_UTILIZATION_BYTES` GB of the i/o of the targeted ECS container. It is mutually exclusive with the `FILESYSTEM_UTILIZATION_PERCENTAGE` ENV. 
 
 If `FILESYSTEM_UTILIZATION_PERCENTAGE` ENV is set then it will use the percentage for the stress otherwise, it will stress the i/o based on `FILESYSTEM_UTILIZATION_BYTES` ENV.
 

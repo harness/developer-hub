@@ -25,7 +25,7 @@ Stopping the web app will disrupt its performance and impact the smooth working 
 :::info
 - Ensure that Kubernetes Version > 1.16.
 - Ensure that you have sufficient Azure access to stop and start web apps. 
-- We will use azure [ file-based authentication ](https://docs.microsoft.com/en-us/azure/developer/go/azure-sdk-authorization#use-file-based-authentication) to connect with the instance using Azure GO SDK in the experiment. For generating auth file run `az ad sp create-for-rbac --sdk-auth > azure.auth` Azure CLI command.
+- We will use Azure [ file-based authentication ](https://docs.microsoft.com/en-us/azure/developer/go/azure-sdk-authorization#use-file-based-authentication) to connect with the instance using Azure GO SDK in the experiment. For generating auth file run `az ad sp create-for-rbac --sdk-auth > azure.auth` Azure CLI command.
 - Ensure to create a Kubernetes secret having the auth file created in the step in `CHAOS_NAMESPACE`. A sample secret file looks like:
 ```yaml
 apiVersion: v1
@@ -68,7 +68,7 @@ stringData:
         </tr>
         <tr> 
             <td> AZURE_WEB_APP_NAMES </td>
-            <td> Name of azure web app services to target.</td>
+            <td> Name of Azure web app services to target.</td>
             <td> Provide comma-separated names of the web apps </td>
         </tr>
         <tr>
@@ -135,7 +135,7 @@ spec:
     spec:
       components:
         env:
-        # comma separated names of the azure web app
+        # comma separated names of the Azure web app
         - name: AZURE_WEB_APP_NAMES
           value: 'webApp-01,webApp-02'
         # name of the resource group

@@ -23,7 +23,7 @@ Coming soon.
 :::info
 - Ensure that Kubernetes Version > 1.16.
 - Ensure that you have sufficient Azure access to detach and attach a disk. 
-- We will use azure [ file-based authentication ](https://docs.microsoft.com/en-us/azure/developer/go/azure-sdk-authorization#use-file-based-authentication) to connect with the instance using azure GO SDK in the fault. For generating auth file run `az ad sp create-for-rbac --sdk-auth > azure.auth` Azure CLI command.
+- We will use Azure [ file-based authentication ](https://docs.microsoft.com/en-us/azure/developer/go/azure-sdk-authorization#use-file-based-authentication) to connect with the instance using Azure GO SDK in the fault. For generating auth file run `az ad sp create-for-rbac --sdk-auth > azure.auth` Azure CLI command.
 - Ensure to create a Kubernetes secret having the auth file created in the step in `CHAOS_NAMESPACE`. A sample secret file looks like:
 ```yaml
 apiVersion: v1
@@ -124,7 +124,7 @@ Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/azure-disk-loss/azure-disks.yaml yaml)
 ```yaml
-# detach multiple azure disks by their names
+# detach multiple Azure disks by their names
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -137,7 +137,7 @@ spec:
     spec:
       components:
         env:
-        # comma separated names of the azure disks attached to VMs
+        # comma separated names of the Azure disks attached to VMs
         - name: VIRTUAL_DISK_NAMES
           value: 'disk-01,disk-02'
         # name of the resource group
@@ -153,7 +153,7 @@ Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/azure-disk-loss/azure-scale-set-disk.yaml yaml)
 ```yaml
-# detach multiple azure disks attached to scale set VMs by their names
+# detach multiple Azure disks attached to scale set VMs by their names
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -166,7 +166,7 @@ spec:
     spec:
       components:
         env:
-        # comma separated names of the azure disks attached to scaleset VMs
+        # comma separated names of the Azure disks attached to scaleset VMs
         - name: VIRTUAL_DISK_NAMES
           value: 'disk-01,disk-02'
         # name of the resource group

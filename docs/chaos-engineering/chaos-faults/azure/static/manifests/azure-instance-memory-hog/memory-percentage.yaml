@@ -13,9 +13,9 @@ spec:
         env:
         - name: MEMORY_PERCENTAGE
           VALUE: '50'
-        # name of the azure instance
+        # name of the Azure instance
         - name: AZURE_INSTANCE_NAMES
           value: 'instance-1'
-        # resource group for the azure instance
+        # resource group for the Azure instance
         - name: RESOURCE_GROUP
           value: 'rg-azure'

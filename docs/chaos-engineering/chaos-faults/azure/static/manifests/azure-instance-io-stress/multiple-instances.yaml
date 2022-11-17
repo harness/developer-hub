@@ -13,9 +13,9 @@ spec:
         env:
         - name: MEMORY_CONSUMPTION
           VALUE: '1024'
-        # names of the azure instance
+        # names of the Azure instance
         - name: AZURE_INSTANCE_NAMES
           value: 'instance-1,instance-2'
-        # resource group for the azure instance
+        # resource group for the Azure instance
         - name: RESOURCE_GROUP
           value: 'rg-azure'

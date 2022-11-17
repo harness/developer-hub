@@ -27,7 +27,7 @@ Coming soon.
 
 - Ensure that Kubernetes Version > 1.16.
 - Ensure that you have sufficient Azure access to stop and start the an instance.
-- We will use azure [file-based authentication](https://docs.microsoft.com/en-us/azure/developer/go/azure-sdk-authorization#use-file-based-authentication) to connect with the instance using azure GO SDK in the fault. For generating auth file run `az ad sp create-for-rbac --sdk-auth > azure.auth` Azure CLI command.
+- We will use Azure [file-based authentication](https://docs.microsoft.com/en-us/azure/developer/go/azure-sdk-authorization#use-file-based-authentication) to connect with the instance using Azure GO SDK in the fault. For generating auth file run `az ad sp create-for-rbac --sdk-auth > azure.auth` Azure CLI command.
 - Ensure to create a Kubernetes secret having the auth file created in the step in `CHAOS_NAMESPACE`. A sample secret file looks like:
 
 ```yaml
@@ -77,7 +77,7 @@ stringData:
       </tr>
       <tr>
         <td> AZURE_INSTANCE_NAME </td>
-        <td> Instance name of the target azure instance</td>
+        <td> Instance name of the target Azure instance</td>
         <td> For AKS nodes, the instance name is from the scale set section in Azure and not the node name from AKS node pool </td>
       </tr>
       <tr>
@@ -135,7 +135,7 @@ Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/azure-instance-stop/azure-instance.yaml yaml)
 ```yaml
-## contains the azure instance details
+## contains the Azure instance details
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -148,7 +148,7 @@ spec:
     spec:
       components:
         env:
-        # comma separated list of azure instance names
+        # comma separated list of Azure instance names
         - name: AZURE_INSTANCE_NAMES
           value: 'instance-01,instance-02'
         # name of the resource group
@@ -164,7 +164,7 @@ Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/azure-instance-stop/azure-scale-set-instance.yaml yaml)
 ```yaml
-## contains the azure instance details for scale set instances or AKS nodes
+## contains the Azure instance details for scale set instances or AKS nodes
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -177,7 +177,7 @@ spec:
     spec:
       components:
         env:
-        # comma separated list of azure instance names
+        # comma separated list of Azure instance names
         - name: AZURE_INSTANCE_NAMES
           value: 'instance-01,instance-02'
         # name of the resource group

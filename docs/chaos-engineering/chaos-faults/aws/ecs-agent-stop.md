@@ -134,7 +134,7 @@ Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/ecs-agent-stop/agent-stop.yaml yaml)
 ```yaml
-# stops the agent of an ecs cluster
+# stops the agent of an ECS cluster
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -148,7 +148,7 @@ spec:
     spec:
       components:
         env:
-        # provide the name of ecs cluster
+        # provide the name of ECS cluster
         - name: CLUSTER_NAME
           value: 'demo'
         - name: REGION

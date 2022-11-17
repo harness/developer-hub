@@ -357,7 +357,7 @@ Following Platform Chaos faults are available:
   </tr>
   <tr>
     <td>Azure Disk Loss</td>
-    <td>Detach azure disk from instance</td>
+    <td>Detach Azure disk from instance</td>
     <td><a href="/docs/chaos-engineering/chaos-faults/azure/azure-disk-loss">azure-disk-loss</a></td>
   </tr>
   <tr>
