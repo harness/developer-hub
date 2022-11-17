@@ -12,7 +12,7 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: container-kill
+  - name: pod-delete
     spec:
       components:
         env:

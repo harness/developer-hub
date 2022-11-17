@@ -1,11 +1,10 @@
-# contains the tags for the ebs volumes 
+# contains the tags for the ebs volumes
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
   name: engine-nginx
 spec:
   engineState: "active"
-  annotationCheck: "false"
   chaosServiceAccount: litmus-admin
   experiments:
   - name: ebs-loss-by-tag

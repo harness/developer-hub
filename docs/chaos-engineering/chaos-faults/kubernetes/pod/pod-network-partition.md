@@ -102,7 +102,7 @@ Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/pod-network-partition/destination-ips-and-hosts.yaml yaml)
 ```yaml
-# it inject the chaos for specific ips/hosts
+# it injects the chaos for specific ips/hosts
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -138,7 +138,7 @@ Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/pod-network-partition/namespace-selectors.yaml yaml)
 ```yaml
-# it inject the chaos for specified namespaces, matched by labels
+# it injects the chaos for specified namespaces, matched by labels
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -170,7 +170,7 @@ Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/pod-network-partition/pod-selectors.yaml yaml)
 ```yaml
-# it inject the chaos for specified pods, matched by labels
+# it injects the chaos for specified pods, matched by labels
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -243,7 +243,7 @@ Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/pod-network-partition/ports.yaml yaml)
 ```yaml
-# it inject the chaos for specified ports
+# it injects the chaos for specified ports
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:

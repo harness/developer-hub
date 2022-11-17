@@ -13,10 +13,10 @@ title: VMware Cpu Hog
 
 ## Prerequisites
 :::info
-- Ensure that Kubernetes Version > 1.16 
+- Ensure that Kubernetes Version > 1.16
 
 ** vCenter Requirements **
-- Ensure the connectivity of execution plane with vCenter and the hosts over 443 port. 
+- Ensure the connectivity of execution plane with vCenter and the hosts over 443 port.
 - Ensure that Vmware tool is installed on the target VM with remote execution enabled.
 - Ensure that you have sufficient vCenter permission to access hosts and VMs.
 - Ensure to create a Kubernetes secret having the Vcenter credentials in the `CHAOS_NAMESPACE`. A sample secret file looks like:
@@ -37,7 +37,7 @@ stringData:
 You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
 :::
 
-    
+
 ## Default Validations
 :::info
 - VM should be in healthy state.
@@ -76,12 +76,12 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
         <td> Percentage of cpu to be consumed  </td>
         <td> Default to 100  </td>
       </tr>
-      <tr> 
+      <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> The total time duration for chaos insertion (sec) </td>
         <td> Defaults to 30s </td>
       </tr>
-      <tr> 
+      <tr>
         <td> CHAOS_INTERVAL </td>
         <td> The interval (in sec) between successive instance termination </td>
         <td> Defaults to 30s </td>
@@ -118,7 +118,6 @@ metadata:
   name: engine-nginx
 spec:
   engineState: "active"
-  annotationCheck: "false"
   chaosServiceAccount: litmus-admin
   experiments:
   - name: vmware-cpu-hog
@@ -129,7 +128,7 @@ spec:
         - name: VM_NAME
           value: 'test-vm-01'
        # cpu cores for stress
-        - name: CPU_CORES 
+        - name: CPU_CORES
           value: '1'
 ```
 ### CPU Load
@@ -146,7 +145,6 @@ metadata:
   name: engine-nginx
 spec:
   engineState: "active"
-  annotationCheck: "false"
   chaosServiceAccount: litmus-admin
   experiments:
   - name: vmware-cpu-hog

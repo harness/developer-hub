@@ -5,19 +5,16 @@ metadata:
   name: engine-nginx
 spec:
   engineState: "active"
-  annotationCheck: "false"
   chaosServiceAccount: litmus-admin
   experiments:
   - name: ec2-network-latency
     spec:
       components:
         env:
-        # name of the network interface 
+        # name of the network interface
         - name: NETWORK_INTERFACE
           value: 'eth0'
-
         - name: EC2_INSTANCE_ID
           value: 'instance-1'
-
         - name: REGION
           value: 'us-west-2'

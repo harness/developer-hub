@@ -1,11 +1,10 @@
-# detach multiple azure disks by their names 
+# detach multiple azure disks by their names
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
   name: engine-nginx
 spec:
   engineState: "active"
-  annotationCheck: "false"
   chaosServiceAccount: litmus-admin
   experiments:
   - name: azure-disk-loss
@@ -17,6 +16,4 @@ spec:
           value: 'disk-01,disk-02'
         # name of the resource group
         - name: RESOURCE_GROUP
-          value: '<resource group of VIRTUAL_DISK_NAMES>'
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
+          value: 'rg-azure-disks'

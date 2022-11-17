@@ -5,7 +5,6 @@ metadata:
   name: engine-nginx
 spec:
   engineState: "active"
-  annotationCheck: "false"
   chaosServiceAccount: litmus-admin
   experiments:
   - name: vmware-io-stress
@@ -21,5 +20,3 @@ spec:
         # size of io to be stressed
         - name: FILESYSTEM_UTILIZATION_BYTES
           value: '1' #in GB
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'

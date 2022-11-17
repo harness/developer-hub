@@ -5,7 +5,6 @@ metadata:
   name: engine-nginx
 spec:
   engineState: "active"
-  annotationCheck: "false"
   chaosServiceAccount: litmus-admin
   experiments:
   - name: ec2-network-latency
@@ -18,9 +17,7 @@ spec:
         # supports comma separated destination hosts
         - name: DESTINATION_HOSTS
           value: 'google.com'
-
         - name: EC2_INSTANCE_ID
           value: 'instance-1'
-
         - name: REGION
           value: 'us-west-2'

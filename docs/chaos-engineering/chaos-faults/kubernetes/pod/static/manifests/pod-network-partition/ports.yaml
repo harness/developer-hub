@@ -1,4 +1,4 @@
-# it inject the chaos for specified ports
+# it injects the chaos for specified ports
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
