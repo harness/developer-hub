@@ -4,11 +4,7 @@ title: EC2 DNS Chaos
 ---
 
 ## Introduction
-<<<<<<< HEAD
 - It causes DNS errors in the provided EC2 instance for a specified chaos duration. 
-=======
-- It causes DNS errors in the provided ec2 instance for a specified chaos duration.
->>>>>>> main
 - It helps to check the performance of the application/process running on the EC2 instance(s).
 
 :::tip Fault execution flow chart

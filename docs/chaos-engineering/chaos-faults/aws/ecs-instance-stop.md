@@ -5,9 +5,9 @@ title: ECS Instance Stop
 
 ## Introduction
 
-- ECS Instance Stop can induce an ec2 instance stop chaos on AWS ECS cluster. It derives the instance under chaos from ECS cluster.
+- ECS Instance Stop can induce an EC2 instance stop chaos on AWS ECS cluster. It derives the instance under chaos from ECS cluster.
 
-- It causes ec2 instance to stopped and further gets deleted on ECS cluster for a certain chaos duration.
+- It causes EC2 instance to stopped and further gets deleted on ECS cluster for a certain chaos duration.
 
 :::tip Fault execution flow chart
 ![ECS Instance Stop](./static/images/ecs-instance-stop.png)

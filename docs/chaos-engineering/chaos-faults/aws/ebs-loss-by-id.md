@@ -25,11 +25,7 @@ Coming soon.
 
 :::info
 - Ensure that Kubernetes Version > 1.16.
-<<<<<<< HEAD
 - Ensure that you have sufficient AWS access to attach or detach an EBS volume for the instance. 
-=======
-- Ensure that you have sufficient AWS access to attach or detach an ebs volume for the instance.
->>>>>>> main
 - Ensure to create a Kubernetes secret having the AWS access configuration(key) in the `CHAOS_NAMESPACE`. A sample secret file looks like:
 ```yaml
 apiVersion: v1

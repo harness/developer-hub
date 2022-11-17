@@ -26,11 +26,7 @@ Coming soon.
 :::info
 
 - Ensure that Kubernetes Version > 1.16.
-<<<<<<< HEAD
 - Ensure that you have sufficient AWS access to attach or detach an EBS volume for the instance. 
-=======
-- Ensure that you have sufficient AWS access to attach or detach an ebs volume for the instance.
->>>>>>> main
 - Ensure to create a Kubernetes secret having the AWS access configuration(key) in the `CHAOS_NAMESPACE`. A sample secret file looks like:
 ```yaml
 apiVersion: v1
@@ -127,11 +123,7 @@ Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/ebs-loss-by-tag/ebs-volume-tag.yaml yaml)
 ```yaml
-<<<<<<< HEAD
 # contains the tags for the EBS volumes 
-=======
-# contains the tags for the ebs volumes
->>>>>>> main
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:

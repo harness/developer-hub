@@ -14,11 +14,6 @@ spec:
         # Name of the VM
         - name: VM_NAME
           value: 'test-vm-01'
-<<<<<<< HEAD
        # CPU cores for stress
         - name: CPU_CORES 
-=======
-       # cpu cores for stress
-        - name: CPU_CORES
->>>>>>> main
           value: '1'
