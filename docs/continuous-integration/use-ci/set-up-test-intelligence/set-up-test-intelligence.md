@@ -75,7 +75,11 @@ You can trigger Pipelines in response to Git events automatically. For configuri
 
 Open the PR.
 
-> **NOTE**: This PR should trigger all the tests (pom.xml, non-Java, etc.)Merge the PR.
+:::note
+This PR should trigger all the tests (pom.xml, non-Java, etc.)
+:::
+
+Merge the PR.
 
 ### Step 6: View the Test Report
 

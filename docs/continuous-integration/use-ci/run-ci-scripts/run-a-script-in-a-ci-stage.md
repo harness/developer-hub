@@ -41,7 +41,7 @@ Do one of the following:
 
 ### Step 3: Define the Build Farm Infrastructure
 
-In the CI stage Infrastructure, define the build farm for the codebase. See [Set Up Build Infrastructure](/category/set-up-build-infrastructure).
+In the CI stage Infrastructure, define the build farm for the codebase. See [Set Up Build Infrastructure](https://docs.harness.io/category/set-up-build-infrastructure).
 
 ### Step 4: Configure the Run Step
 
@@ -64,7 +64,10 @@ Now you can run your Pipeline. You simply need to select the codebase.
 1. Click **Save and Publish**.
 2. Click **Run**. The Pipeline Inputs settings appear.
 3. In **CI Codebase**, click **Git branch**.
-4. In Git Branch, enter the name of the branch where the codebase is, such as a master.![](./static/run-a-script-in-a-ci-stage-528.png)
+4. In Git Branch, enter the name of the branch where the codebase is, such as a master.
+
+   ![](./static/run-a-script-in-a-ci-stage-528.png)
+
 5. Click **Run Pipeline**.
 
 ### Example: View a Test Report

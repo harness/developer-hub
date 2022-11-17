@@ -66,6 +66,20 @@ const CIList: FeatureItem[] = [{
   time: '15 min',
   link: '/tutorials/build-code/ci-node-docker-quickstart',
 },
+{
+  title: 'Run LocalStack as a Service',
+  module: 'ci',
+  Svg: '',
+  description: (
+    <>
+      This build automation guide shows how to run LocalStack as a Service Dependency in a CI Pipeline
+    </>
+  ),
+  ribbon: true,
+  type: [docType.Documentation],
+  time: '15 min',
+  link: '/tutorials/build-code/ci-localstack-service-dependency',
+},
 ];
 
 const CDList: FeatureItem[] = [{
