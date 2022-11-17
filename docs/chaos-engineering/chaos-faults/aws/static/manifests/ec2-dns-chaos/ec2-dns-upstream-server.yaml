@@ -5,7 +5,6 @@ metadata:
   name: engine-nginx
 spec:
   engineState: "active"
-  annotationCheck: "false"
   chaosServiceAccount: litmus-admin
   experiments:
   - name: ec2-dns-chaos
@@ -15,9 +14,7 @@ spec:
         # name of the upstream server
         - name: UPSTREAM_SERVER
           value: '8.8.8.8'
-
         - name: EC2_INSTANCE_ID
           value: 'instance-1'
-
         - name: REGION
           value: 'us-west-2'

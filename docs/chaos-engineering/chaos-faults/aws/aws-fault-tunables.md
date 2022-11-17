@@ -19,7 +19,6 @@ metadata:
   name: engine-nginx
 spec:
   engineState: "active"
-  annotationCheck: "false"
   chaosServiceAccount: litmus-admin
   experiments:
   - name: ec2-terminate-by-tag
@@ -38,38 +37,4 @@ spec:
           value: 'key:value'
         - name: TOTAL_CHAOS_DURATION
           VALUE: '60'
-```
-
-### Multiple Iterations Of Chaos
-
-Multiple iterations of chaos can be tuned via setting `CHAOS_INTERVAL` ENV. Which defines the delay between each iteration of chaos.
-
-Use the following example to tune this:
-
-[embedmd]:# (./static/manifests/common/chaos-interval.yaml yaml)
-```yaml
-# defines delay between each successive iteration of the chaos
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: ec2-terminate-by-tag
-    spec:
-      components:
-        env:
-         # delay between each iteration of chaos
-        - name: CHAOS_INTERVAL
-          value: '15'
-        # time duration for the chaos execution
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
-        - name: REGION
-          value: 'us-east-1'
-        - name: INSTANCE_TAG
-          value: 'key:value'
 ```

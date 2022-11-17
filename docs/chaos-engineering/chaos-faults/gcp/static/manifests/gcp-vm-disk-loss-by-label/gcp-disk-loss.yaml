@@ -4,7 +4,6 @@ metadata:
   name: engine-nginx
 spec:
   engineState: "active"
-  annotationCheck: "false"
   chaosServiceAccount: litmus-admin
   experiments:
   - name: gcp-vm-disk-loss-by-label
@@ -13,12 +12,9 @@ spec:
         env:
         - name: DISK_VOLUME_LABEL
           value: 'disk:target-disk'
-        
         - name: ZONES
           value: 'us-east1-b'
-        
         - name: GCP_PROJECT_ID
           value: 'my-project-4513'
-        
         - name: TOTAL_CHAOS_DURATION
           VALUE: '60'

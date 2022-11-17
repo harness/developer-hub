@@ -26,7 +26,11 @@ Coming soon.
 :::info
 
 - Ensure that Kubernetes Version > 1.16.
+<<<<<<< HEAD
 - Ensure that you have sufficient AWS access to attach or detach an EBS volume for the instance. 
+=======
+- Ensure that you have sufficient AWS access to attach or detach an ebs volume for the instance.
+>>>>>>> main
 - Ensure to create a Kubernetes secret having the AWS access configuration(key) in the `CHAOS_NAMESPACE`. A sample secret file looks like:
 ```yaml
 apiVersion: v1
@@ -63,7 +67,7 @@ stringData:
         <th> Description </th>
         <th> Notes </th>
       </tr>
-      <tr> 
+      <tr>
         <td> EBS_VOLUME_TAG </td>
         <td> Provide the common tag for target volumes. It'll be in form of <code>key:value</code> (Ex: 'team:devops')</td>
         <td> </td>
@@ -81,31 +85,31 @@ stringData:
         <th> Description </th>
         <th> Notes </th>
       </tr>
-       <tr> 
+       <tr>
         <td> VOLUME_AFFECTED_PERC </td>
         <td> The Percentage of total EBS volumes to target </td>
         <td> Defaults to 0 (corresponds to 1 volume), provide numeric value only </td>
       </tr>
-      <tr> 
+      <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> The time duration for chaos insertion (sec) </td>
         <td> Defaults to 30s </td>
       </tr>
-      <tr> 
+      <tr>
         <td> CHAOS_INTERVAL </td>
         <td> The time duration between the attachment and detachment of the volumes (sec) </td>
         <td> Defaults to 30s </td>
-      </tr>  
+      </tr>
       <tr>
         <td> SEQUENCE </td>
         <td> It defines sequence of chaos execution for multiple volumes</td>
         <td> Default value: parallel. Supported: serial, parallel </td>
-      </tr>  
+      </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injection of chaos in sec </td>
         <td> Eg: 30 </td>
-      </tr>   
+      </tr>
     </table>
 </details>
 
@@ -123,14 +127,17 @@ Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/ebs-loss-by-tag/ebs-volume-tag.yaml yaml)
 ```yaml
+<<<<<<< HEAD
 # contains the tags for the EBS volumes 
+=======
+# contains the tags for the ebs volumes
+>>>>>>> main
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
   name: engine-nginx
 spec:
   engineState: "active"
-  annotationCheck: "false"
   chaosServiceAccount: litmus-admin
   experiments:
   - name: ebs-loss-by-tag
@@ -162,7 +169,6 @@ metadata:
   name: engine-nginx
 spec:
   engineState: "active"
-  annotationCheck: "false"
   chaosServiceAccount: litmus-admin
   experiments:
   - name: ebs-loss-by-tag

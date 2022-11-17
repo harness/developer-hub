@@ -5,10 +5,9 @@ metadata:
   name: engine-nginx
 spec:
   engineState: "active"
-  annotationCheck: "false"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: vmware-disk-loss  
+  - name: vmware-disk-loss
     spec:
       components:
         env:

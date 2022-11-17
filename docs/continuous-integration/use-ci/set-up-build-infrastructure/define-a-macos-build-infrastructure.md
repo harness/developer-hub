@@ -12,7 +12,9 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-> **NOTE**: Currently, this feature is behind the Feature Flag `CI_VM_INFRASTRUCTURE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::note
+Currently, this feature is behind the Feature Flag `CI_VM_INFRASTRUCTURE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
 
 This topic describes how to set up a build infrastructure using VMs on an MacOS EC2. Once you set up this infrastructure, your Harness Pipelines can use these VMs to build your software and run your tests safely and at scale. You can also [define MacOS build infrastructures on hardware devices such as MacBook Pros and Mac minis](define-a-mac-os-build-infrastructure.md). 
 
@@ -163,7 +165,10 @@ In the new VNC window, do the following:
 brew install wget
 ```
 * Open a browser window in the UI, go to the Docker website, and download Docker Desktop for Mac Intel Chip: <https://docs.docker.com/desktop/mac/install/>
-* Run the Docker installer and accept the EULA that appears at the end of the install process.![](./static/define-a-macos-build-infrastructure-08.png)
+* Run the Docker installer and accept the EULA that appears at the end of the install process.
+
+  ![](./static/define-a-macos-build-infrastructure-08.png)
+
 * In a CLI, enter the following to make sure that Docker is running correctly: `docker run hello-world`
 * Install any additional tools that will be used by your builds on the VM, such xcode.
 * Harness recommends that you suspend the master VM after you set it up. This will speed up the creation of new VMs.

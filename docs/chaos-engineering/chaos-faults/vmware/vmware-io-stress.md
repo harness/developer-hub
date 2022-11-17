@@ -12,7 +12,7 @@ title: VMware IO Stress
 
 ## Prerequisites
 :::info
-- Ensure that Kubernetes Version > 1.16 
+- Ensure that Kubernetes Version > 1.16
 
 ** vCenter Requirements **
 - Ensure the connectivity of  execution plane with vCenter and the hosts over 443 port. 
@@ -35,7 +35,7 @@ stringData:
 You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
 :::
 
-    
+
 ## Default Validations
 :::info
 - VM should be in healthy state.
@@ -78,7 +78,7 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
         <td> NUMBER_OF_WORKERS </td>
         <td> It is the number of IO workers involved in IO disk stress </td>
         <td> Default to 4 </td>
-      </tr>    
+      </tr>
        <tr>
         <td> VOLUME_MOUNT_PATH </td>
         <td> Fill the given volume mount path </td>
@@ -89,12 +89,12 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
         <td> Number of the CPU cores subjected to CPU stress </td>
         <td> Default to 1 </td>
         </tr>
-      <tr> 
+      <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> The total time duration for chaos insertion (sec) </td>
         <td> Defaults to 30s </td>
       </tr>
-      <tr> 
+      <tr>
         <td> CHAOS_INTERVAL </td>
         <td> The interval (in sec) between successive instance termination </td>
         <td> Defaults to 30s </td>
@@ -131,7 +131,6 @@ metadata:
   name: engine-nginx
 spec:
   engineState: "active"
-  annotationCheck: "false"
   chaosServiceAccount: litmus-admin
   experiments:
   - name: vmware-io-stress
@@ -143,9 +142,7 @@ spec:
           value: 'test-vm-01'
         # percentage of free space of file system, need to be stressed
         - name: FILESYSTEM_UTILIZATION_PERCENTAGE
-          value: '10' 
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
+          value: '10'
 ```
 ### Filesystem Utilization Bytes
 It stresses the `FILESYSTEM_UTILIZATION_BYTES` GB of the i/o of the targeted VM. It is mutually exclusive with the FILESYSTEM_UTILIZATION_PERCENTAGE ENV. If FILESYSTEM_UTILIZATION_PERCENTAGE ENV is set then it will use the percentage for the stress otherwise, it will stress the i/o based on FILESYSTEM_UTILIZATION_BYTES ENV.
@@ -160,7 +157,6 @@ metadata:
   name: engine-nginx
 spec:
   engineState: "active"
-  annotationCheck: "false"
   chaosServiceAccount: litmus-admin
   experiments:
   - name: vmware-io-stress
@@ -173,8 +169,6 @@ spec:
         # size of io to be stressed
         - name: FILESYSTEM_UTILIZATION_BYTES
           value: '1' #in GB
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
 ```
 ### Mount Path
 The volume mount path, which needs to be filled. It can be tuned with `VOLUME_MOUNT_PATH` ENV
@@ -190,7 +184,6 @@ metadata:
   name: engine-nginx
 spec:
   engineState: "active"
-  annotationCheck: "false"
   chaosServiceAccount: litmus-admin
   experiments:
   - name: vmware-io-stress
@@ -206,8 +199,6 @@ spec:
         # size of io to be stressed
         - name: FILESYSTEM_UTILIZATION_BYTES
           value: '1' #in GB
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
 ```
 ### Workers For Stress
 The worker's count for the stress can be tuned with `NUMBER_OF_WORKERS` ENV.
@@ -221,7 +212,6 @@ metadata:
   name: engine-nginx
 spec:
   engineState: "active"
-  annotationCheck: "false"
   chaosServiceAccount: litmus-admin
   experiments:
   - name: vmware-io-stress
@@ -231,12 +221,10 @@ spec:
         # Name of the VM
         - name: VM_NAME
           value: 'test-vm-01'
-        # number of io workers 
+        # number of io workers
         - name: NUMBER_OF_WORKERS
           value: '4'
         # size of io to be stressed
         - name: FILESYSTEM_UTILIZATION_BYTES
           value: '1' #in GB
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
 ```

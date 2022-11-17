@@ -5,7 +5,6 @@ metadata:
   name: engine-nginx
 spec:
   engineState: "active"
-  annotationCheck: "false"
   chaosServiceAccount: litmus-admin
   experiments:
   - name: vmware-io-stress
@@ -17,6 +16,4 @@ spec:
           value: 'test-vm-01'
         # percentage of free space of file system, need to be stressed
         - name: FILESYSTEM_UTILIZATION_PERCENTAGE
-          value: '10' 
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
+          value: '10'

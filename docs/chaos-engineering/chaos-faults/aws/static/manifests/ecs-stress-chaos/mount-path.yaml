@@ -1,0 +1,19 @@
+# provide the volume mount path, which needs to be filled
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: ecs-container-io-stress
+    spec:
+      components:
+        env:
+        # path need to be stressed/filled
+        - name: VOLUME_MOUNT_PATH
+          value: '/some-dir-in-container'
+        - name: TOTAL_CHAOS_DURATION
+          VALUE: '60'

@@ -5,7 +5,6 @@ metadata:
   name: engine-nginx
 spec:
   engineState: "active"
-  annotationCheck: "false"
   chaosServiceAccount: litmus-admin
   experiments:
   - name: azure-disk-loss
@@ -17,9 +16,7 @@ spec:
           value: 'disk-01,disk-02'
         # name of the resource group
         - name: RESOURCE_GROUP
-          value: '<resource group of VIRTUAL_DISK_NAMES>'
+          value: 'rg-azure-disks'
         # VM belongs to scaleset or not
         - name: SCALE_SET
           value: 'enable'
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'

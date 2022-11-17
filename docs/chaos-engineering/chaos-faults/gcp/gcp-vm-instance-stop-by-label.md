@@ -23,7 +23,7 @@ Coming soon.
 ## Prerequisites
 :::info
 - Ensure that Kubernetes Version > 1.16.
-- Ensure that you have sufficient GCP permissions to stop and start the GCP VM instances. 
+- Ensure that you have sufficient GCP permissions to stop and start the GCP VM instances.
 - Ensure to create a Kubernetes secret having the GCP service account credentials in the default namespace. A sample secret file looks like:
 ```yaml
 apiVersion: v1
@@ -32,16 +32,16 @@ metadata:
   name: cloud-secret
 type: Opaque
 stringData:
-  type: 
-  project_id: 
-  private_key_id: 
-  private_key: 
-  client_email: 
-  client_id: 
-  auth_uri: 
-  token_uri: 
-  auth_provider_x509_cert_url: 
-  client_x509_cert_url: 
+  type:
+  project_id:
+  private_key_id:
+  private_key:
+  client_email:
+  client_id:
+  auth_uri:
+  token_uri:
+  auth_provider_x509_cert_url:
+  client_x509_cert_url:
 ```
 :::
 
@@ -60,12 +60,12 @@ stringData:
         <th> Description </th>
         <th> Notes </th>
       </tr>
-      <tr> 
+      <tr>
         <td> GCP_PROJECT_ID </td>
         <td> GCP project ID to which the VM instances belong </td>
         <td> All the VM instances must belong to a single GCP project </td>
       </tr>
-      <tr> 
+      <tr>
         <td> INSTANCE_LABEL </td>
         <td> Name of target VM instances </td>
         <td> The <code>INSTANCE_LABEL</code> should be provided as <code>key:value</code> or <code>key</code> if the corresponding value is empty ex: <code>vm:target-vm</code> </td>
@@ -83,37 +83,37 @@ stringData:
         <th> Description </th>
         <th> Notes </th>
       </tr>
-      <tr> 
+      <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> The total time duration for chaos insertion (sec) </td>
         <td> Defaults to 30s </td>
       </tr>
-       <tr> 
+       <tr>
         <td> CHAOS_INTERVAL </td>
         <td> The interval (in sec) between successive instance termination </td>
         <td> Defaults to 30s </td>
-      </tr>  
-      <tr> 
+      </tr>
+      <tr>
         <td> MANAGED_INSTANCE_GROUP </td>
         <td> Set to <code>enable</code> if the target instance is the part of a managed instance group </td>
         <td> Defaults to <code>disable</code> </td>
-      </tr> 
-      <tr> 
+      </tr>
+      <tr>
         <td> INSTANCE_AFFECTED_PERC </td>
         <td> The percentage of total VMs filtered using the label to target </td>
         <td> Defaults to 0 (corresponds to 1 instance), provide numeric value only </td>
-      </tr> 
+      </tr>
       <tr>
         <td> SEQUENCE </td>
         <td> It defines sequence of chaos execution for multiple instance </td>
         <td> Default value: parallel. Supported: serial, parallel </td>
-      </tr> 
+      </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injection of chaos in sec </td>
         <td> Eg. 30 </td>
       </tr>
-    </table> 
+    </table>
 </details>
 
 ## Fault Examples
@@ -123,7 +123,7 @@ Refer the [common attributes](../common-tunables-for-all-faults) to tune the com
 
 ### Target GCP Instances
 
-It will stop all the instances with filtered by the label `INSTANCE_LABEL` and corresponding `ZONES` zone in `GCP_PROJECT_ID` project. 
+It will stop all the instances with filtered by the label `INSTANCE_LABEL` and corresponding `ZONES` zone in `GCP_PROJECT_ID` project.
 
 `NOTE:` The `INSTANCE_LABEL` accepts only one label and `ZONES` also accepts only one zone name. Therefore, all the instances must lie in the same zone.
 
@@ -137,7 +137,6 @@ metadata:
   name: engine-nginx
 spec:
   engineState: "active"
-  annotationCheck: "false"
   chaosServiceAccount: litmus-admin
   experiments:
   - name: gcp-vm-instance-stop-by-label
@@ -146,20 +145,17 @@ spec:
         env:
         - name: INSTANCE_LABEL
           value: 'vm:target-vm'
-        
         - name: ZONES
           value: 'us-east1-b'
-        
         - name: GCP_PROJECT_ID
           value: 'my-project-4513'
-        
         - name: TOTAL_CHAOS_DURATION
           VALUE: '60'
 ```
 
 ### Manged Instance Group
 
-If vm instances belong to a managed instance group then provide the `MANAGED_INSTANCE_GROUP` as `enable` else provided it as `disable`, which is the default value. 
+If vm instances belong to a managed instance group then provide the `MANAGED_INSTANCE_GROUP` as `enable` else provided it as `disable`, which is the default value.
 
 Use the following example to tune this:
 
@@ -171,7 +167,6 @@ metadata:
   name: engine-nginx
 spec:
   engineState: "active"
-  annotationCheck: "false"
   chaosServiceAccount: litmus-admin
   experiments:
   - name: gcp-vm-instance-stop-by-label
@@ -180,54 +175,12 @@ spec:
         env:
         - name: MANAGED_INSTANCE_GROUP
           value: 'enable'
-        
         - name: INSTANCE_LABEL
           value: 'vm:target-vm'
-        
         - name: ZONES
           value: 'us-east1-b'
-        
         - name: GCP_PROJECT_ID
           value: 'my-project-4513'
-        
         - name: TOTAL_CHAOS_DURATION
           VALUE: '60'
 ```
-
-### Multiple Iterations Of Chaos
-
-The multiple iterations of chaos can be tuned via setting `CHAOS_INTERVAL` ENV. Which defines the delay between each iteration of chaos.
-
-Use the following example to tune this:
-
-[embedmd]:# (./static/manifests/gcp-vm-instance-stop-by-label/chaos-interval.yaml yaml)
-```yaml
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: gcp-vm-instance-stop-by-label
-    spec:
-      components:
-        env:
-        - name: CHAOS_INTERVAL
-          value: '15'
-        
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
-
-        - name: INSTANCE_LABEL
-          value: 'vm:target-vm'
-
-        - name: ZONES
-          value: 'us-east1-b'
-
-        - name: GCP_PROJECT_ID
-          value: 'my-project-4513'
-```
-

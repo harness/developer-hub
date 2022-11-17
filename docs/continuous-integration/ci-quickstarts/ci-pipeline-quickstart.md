@@ -41,7 +41,9 @@ Make sure you have the following set up before you begin this tutorial:
 		- **Networking:** Outbound HTTPS for the Harness connection, and to connect to Docker Hub. Allow TCP port 22 for SSH.
 		- **Namespace:** When you install the Harness Delegate, it will create the `harness-delegate` namespace. You'll use the same namespace for the build farm.
 
-> **NOTE**: Google Kubernetes Engine (GKE) [Autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview) is not supported at this time.
+:::note
+Google Kubernetes Engine (GKE) [Autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview) is not supported at this time.
+:::
 
 A **Kubernetes service account** with permission to create entities in the target namespace is required. The set of permissions should include `list`, `get`, `create`, and `delete` permissions. In general, the cluster-admin permission or namespace admin permission is enough.  
 For more information, see [User-Facing Roles](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles) from Kubernetes.
@@ -285,7 +287,8 @@ Next, you'll add a step to build your container and push it to your Docker Hub r
 		- Create a `ciquickstart`repository in your Docker Hub account.
 		- Then enter`<your_repo>/ciquickstart`where *`<your_repo>`* is your Docker Hub username.
 	+ **Tags:** `<+pipeline.sequenceId>`  
-	This tag is a built-in Harness variable that represents the Build ID number, for example `Build ID: 9`. The pipeline uses the Build ID to tag the image that it pushes in stage 1 and pulls in stage 2. You will see the Build ID when you run the pipeline. You will also this variable to identify the image location when you set up the [Configure Service Dependency](../ci-technical-reference/configure-service-dependency-step-settings.md) step in the next stage.![](./static/ci-pipeline-quickstart-25.png)
+	This tag is a built-in Harness variable that represents the Build ID number, for example `Build ID: 9`. The pipeline uses the Build ID to tag the image that it pushes in stage 1 and pulls in stage 2. You will see the Build ID when you run the pipeline. You will also this variable to identify the image location when you set up the [Configure Service Dependency](../ci-technical-reference/configure-service-dependency-step-settings.md) step in the next stage.
+    ![](./static/ci-pipeline-quickstart-25.png)
 	+ Click **Apply Changes** to return to the Pipeline Studio.
 * Click **Save** to save the Pipeline. You can run the Pipeline now, or you can continue and add the Integration Test stage.
 

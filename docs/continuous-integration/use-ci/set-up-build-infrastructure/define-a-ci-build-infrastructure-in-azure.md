@@ -10,7 +10,9 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-> **NOTE**: Currently, this feature is behind the Feature Flag `CI_VM_INFRASTRUCTURE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::note
+Currently, this feature is behind the Feature Flag `CI_VM_INFRASTRUCTURE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
 
 This topic describes how to set up a CI build infrastructure in Microsoft Azure. You will create a VM and install a CI Delegate and Drone Runner on it. The Delegate creates VMs dynamically in response to CI build requests.
 
@@ -211,7 +213,10 @@ $ docker ps
 $ docker logs <delegate-container-id>  
 $ docker logs <runner-container-id>
 ```
-5. In the Harness UI, verify that the Delegate appears in the Delegates list. This might take two or three minutes. You should see Connected next to the Delegate listing.![](./static/define-a-ci-build-infrastructure-in-azure-17.png)
+5. In the Harness UI, verify that the Delegate appears in the Delegates list. This might take two or three minutes. You should see Connected next to the Delegate listing.
+
+   ![](./static/define-a-ci-build-infrastructure-in-azure-17.png)
+
 6. If you see **Not Connected**, make sure the Docker host can connect to **https://app.harness.io**.
 
 The Delegate and Runner have now been successfully installed, registered, and connected.

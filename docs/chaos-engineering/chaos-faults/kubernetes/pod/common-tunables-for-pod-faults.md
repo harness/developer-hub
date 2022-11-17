@@ -9,7 +9,7 @@ It defines the comma-separated name of the target pods subjected to chaos. The t
 
 Use the following example to tune this:
 
-[embedmd]:# (https://raw.githubusercontent.com/litmuschaos/litmus/master/mkdocs/docs/experiments/categories/pods/common/target-pods.yaml yaml)
+[embedmd]:# (./static/manifests/common/target-pods.yaml yaml)
 ```yaml
 ## it contains comma separated target pod names
 apiVersion: litmuschaos.io/v1alpha1
@@ -32,8 +32,6 @@ spec:
         ## comma separated target pod names
         - name: TARGET_PODS
           value: 'pod1,pod2'
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
 ```
 
 ### Pod Affected Percentage
@@ -42,7 +40,7 @@ It defines the percentage of pods subjected to chaos with matching labels provid
 
 Use the following example to tune this:
 
-[embedmd]:# (https://raw.githubusercontent.com/litmuschaos/litmusThe target pods are selected that resides on node with given node label/master/mkdocs/docs/experiments/categories/pods/common/pod-affected-percentage.yaml yaml)
+[embedmd]:# (./static/manifests/common/pod-affected-percentage.yaml yaml)
 ```yaml
 ## it contains percentage of application pods to be targeted with matching labels or names in the application namespace
 ## supported for all pod-level experiment expect pod-autoscaler
@@ -66,8 +64,6 @@ spec:
         # percentage of application pods
         - name: PODS_AFFECTED_PERC
           value: '100'
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
 ```
 
 ### Target Specific Container
@@ -76,7 +72,7 @@ It defines the name of the targeted container subjected to chaos. It can be tune
 
 Use the following example to tune this:
 
-[embedmd]:# (https://raw.githubusercontent.com/litmuschaos/litmus/master/mkdocs/docs/experiments/categories/pods/common/target-container.yaml yaml)
+[embedmd]:# (./static/manifests/common/target-container.yaml yaml)
 ```yaml
 ## name of the target container
 ## it will use first container as target container if TARGET_CONTAINER is provided as empty
@@ -100,8 +96,6 @@ spec:
         # name of the target container
         - name: TARGET_CONTAINER
           value: 'nginx'
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
 ```
 
 ### Default Application Health Check
@@ -110,7 +104,7 @@ It defines the default application status checks as a tunable. It is helpful for
 
 Use the following example to tune this:
 
-[embedmd]:# (https://raw.githubusercontent.com/litmuschaos/litmus/master/mkdocs/docs/experiments/categories/pods/common/default-app-health-check.yaml yaml)
+[embedmd]:# (./static/manifests/common/default-app-health-check.yaml yaml)
 ```yaml
 ## application status check as tunable
 apiVersion: litmuschaos.io/v1alpha1
@@ -180,7 +174,7 @@ It defines the target application pod selection from a specific node. It is help
 </table>
 
 Use the following example to tune this:
-[embedmd]:# (https://raw.githubusercontent.com/litmuschaos/litmus/master/mkdocs/docs/experiments/categories/pods/common/node-label-filter.yaml yaml)
+[embedmd]:# (./static/manifests/common/node-label-filter.yaml yaml)
 ```yaml
 ## node label to filter target pods
 apiVersion: litmuschaos.io/v1alpha1

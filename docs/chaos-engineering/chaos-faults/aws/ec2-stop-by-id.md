@@ -140,7 +140,6 @@ metadata:
   name: engine-nginx
 spec:
   engineState: "active"
-  annotationCheck: "false"
   chaosServiceAccount: litmus-admin
   experiments:
   - name: ec2-terminate-by-id
@@ -153,6 +152,4 @@ spec:
         # region for the EC2 instance
         - name: REGION
           value: 'us-east-1'
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
 ```

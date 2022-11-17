@@ -115,7 +115,7 @@ It stresses the `CPU_CORE` of the targeted pod for the `TOTAL_CHAOS_DURATION` du
 
 Use the following example to tune this:
 
-[embedmd]:# (https://raw.githubusercontent.com/litmuschaos/litmus/master/mkdocs/docs/experiments/categories/pods/pod-cpu-hog/cpu-cores.yaml yaml)
+[embedmd]:# (./static/manifests/pod-cpu-hog/cpu-cores.yaml yaml)
 ```yaml
 # CPU cores for the stress
 apiVersion: litmuschaos.io/v1alpha1
@@ -147,7 +147,7 @@ It contains percentage of pod CPU to be consumed. It can be tuned via `CPU_LOAD`
 
 Use the following example to tune this:
 
-[embedmd]:# (https://raw.githubusercontent.com/litmuschaos/litmus/master/mkdocs/docs/experiments/categories/pods/pod-cpu-hog/cpu-load.yaml yaml)
+[embedmd]:# (./static/manifests/pod-cpu-hog/cpu-load.yaml yaml)
 ```yaml
 # CPU load for the stress
 apiVersion: litmuschaos.io/v1alpha1

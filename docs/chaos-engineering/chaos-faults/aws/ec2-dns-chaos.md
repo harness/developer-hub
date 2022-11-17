@@ -4,7 +4,11 @@ title: EC2 DNS Chaos
 ---
 
 ## Introduction
+<<<<<<< HEAD
 - It causes DNS errors in the provided EC2 instance for a specified chaos duration. 
+=======
+- It causes DNS errors in the provided ec2 instance for a specified chaos duration.
+>>>>>>> main
 - It helps to check the performance of the application/process running on the EC2 instance(s).
 
 :::tip Fault execution flow chart
@@ -87,12 +91,12 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
         <th> Description </th>
         <th> Notes </th>
       </tr>
-      <tr> 
+      <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> The total time duration for chaos insertion (sec) </td>
         <td> Defaults to 30s </td>
       </tr>
-      <tr> 
+      <tr>
         <td> CHAOS_INTERVAL </td>
         <td> The interval (in sec) between successive instance termination </td>
         <td> Defaults to 30s </td>
@@ -150,7 +154,6 @@ metadata:
   name: engine-nginx
 spec:
   engineState: "active"
-  annotationCheck: "false"
   chaosServiceAccount: litmus-admin
   experiments:
   - name: ec2-dns-chaos
@@ -160,10 +163,8 @@ spec:
         # target port
         - name: PORT
           value: '54'
-
         - name: EC2_INSTANCE_ID
           value: 'instance-1'
-
         - name: REGION
           value: 'us-west-2'
 ```
@@ -183,7 +184,6 @@ metadata:
   name: engine-nginx
 spec:
   engineState: "active"
-  annotationCheck: "false"
   chaosServiceAccount: litmus-admin
   experiments:
   - name: ec2-dns-chaos
@@ -193,10 +193,8 @@ spec:
         # list of target host names
         - name: TARGET_HOSTNAMES
           value: '["litmuschaos","chaosnative.com"]'
-
         - name: EC2_INSTANCE_ID
           value: 'instance-1'
-
         - name: REGION
           value: 'us-west-2'
 ```
@@ -217,7 +215,6 @@ metadata:
   name: engine-nginx
 spec:
   engineState: "active"
-  annotationCheck: "false"
   chaosServiceAccount: litmus-admin
   experiments:
   - name: ec2-dns-chaos
@@ -227,10 +224,8 @@ spec:
         # match scheme type
         - name: MATCH_SCHEME
           value: 'exact'
-
         - name: EC2_INSTANCE_ID
           value: 'instance-1'
-
         - name: REGION
           value: 'us-west-2'
 ```
@@ -251,7 +246,6 @@ metadata:
   name: engine-nginx
 spec:
   engineState: "active"
-  annotationCheck: "false"
   chaosServiceAccount: litmus-admin
   experiments:
   - name: ec2-dns-chaos
@@ -261,10 +255,8 @@ spec:
         # name of the upstream server
         - name: UPSTREAM_SERVER
           value: '8.8.8.8'
-
         - name: EC2_INSTANCE_ID
           value: 'instance-1'
-
         - name: REGION
           value: 'us-west-2'
 ```

@@ -52,7 +52,7 @@ stringData:
 You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
 :::
 
-    
+
 ## Default Validations
 :::info
 - EC2 instance should be in healthy state.
@@ -106,22 +106,22 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
             <td> Select to install dependencies used to run the network chaos. It can be either True or False </td>
             <td> If the dependency already exists, you can turn it off. Defaults to True.</td>
         </tr>
-        <tr> 
+        <tr>
             <td> NETWORK_LATENCY </td>
             <td> The latency/delay in milliseconds</td>
             <td> Default 2000, provide numeric value only </td>
         </tr>
-        <tr> 
+        <tr>
             <td> JITTER </td>
             <td> The network jitter value in ms</td>
             <td> Default 0, provide numeric value only </td>
         </tr>
-        <tr> 
+        <tr>
             <td> DESTINATION_IPS </td>
             <td> IP addresses of the services or the CIDR blocks(range of IPs), the accessibility to which is impacted </td>
             <td> Comma separated IP(S) or CIDR(S) can be provided. if not provided, it will induce network chaos for all ips/destinations </td>
         </tr>
-        <tr> 
+        <tr>
             <td> DESTINATION_HOSTS </td>
             <td> DNS Names of the services, the accessibility to which, is impacted </td>
             <td> if not provided, it will induce network chaos for all ips/destinations or DESTINATION_IPS if already defined </td>
@@ -164,7 +164,6 @@ metadata:
   name: engine-nginx
 spec:
   engineState: "active"
-  annotationCheck: "false"
   chaosServiceAccount: litmus-admin
   experiments:
   - name: ec2-network-latency
@@ -174,10 +173,8 @@ spec:
         # network packet latency
         - name: NETWORK_LATENCY
           value: '2000'
-
         - name: EC2_INSTANCE_ID
           value: 'instance-1'
-
         - name: REGION
           value: 'us-west-2'
 ```
@@ -197,23 +194,19 @@ metadata:
   name: engine-nginx
 spec:
   engineState: "active"
-  annotationCheck: "false"
   chaosServiceAccount: litmus-admin
   experiments:
   - name: ec2-network-latency
     spec:
       components:
         env:
-        # value of the network latency jitter (in ms) 
+        # value of the network latency jitter (in ms)
         - name: JITTER
           value: '200'
-
         - name: NETWORK_LATENCY
           value: '2000'
-
         - name: EC2_INSTANCE_ID
           value: 'instance-1'
-
         - name: REGION
           value: 'us-west-2'
 ```
@@ -236,7 +229,6 @@ metadata:
   name: engine-nginx
 spec:
   engineState: "active"
-  annotationCheck: "false"
   chaosServiceAccount: litmus-admin
   experiments:
   - name: ec2-network-latency
@@ -249,10 +241,8 @@ spec:
         # supports comma separated destination hosts
         - name: DESTINATION_HOSTS
           value: 'google.com'
-
         - name: EC2_INSTANCE_ID
           value: 'instance-1'
-
         - name: REGION
           value: 'us-west-2'
 ```
@@ -272,20 +262,17 @@ metadata:
   name: engine-nginx
 spec:
   engineState: "active"
-  annotationCheck: "false"
   chaosServiceAccount: litmus-admin
   experiments:
   - name: ec2-network-latency
     spec:
       components:
         env:
-        # name of the network interface 
+        # name of the network interface
         - name: NETWORK_INTERFACE
           value: 'eth0'
-
         - name: EC2_INSTANCE_ID
           value: 'instance-1'
-
         - name: REGION
           value: 'us-west-2'
 ```
