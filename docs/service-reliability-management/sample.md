@@ -1,5 +1,5 @@
-# SRM Docs Coming Soon
+# Service Reliability Management docs coming soon
 
-Coming soon.
+Service Reliability Management docs will be available here soon.
 
-You can find existing SRM Docs at: [https://docs.harness.io/category/ko19u4brsv-howtos-service-reliability-management](https://docs.harness.io/category/ko19u4brsv-howtos-service-reliability-management).
+In the meantime, you can find existing docs at: [https://docs.harness.io/category/ko19u4brsv-howtos-service-reliability-management](https://docs.harness.io/category/ko19u4brsv-howtos-service-reliability-management).

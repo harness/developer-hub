@@ -32,7 +32,7 @@ export default function LearnAboutPlatform(): JSX.Element {
                 <path d="M482.335 518V100H597.919V531.103L482.335 592.232Z" fill="url(#paint3_linear_401_344)" />
                 </Tooltip>
             </a>
-            <a href="https://docs.harness.io/category/pfzgb4tg05-howto-cd"> 
+            <a href="/docs/continuous-delivery"> 
                 <Tooltip overlay={<p className='tooltip-max-width'>Enables engineers to deploy on-demand with Canary/Blue-Green templates, automated deployment verification, and automatic rollbacks.</p>}>
                 <path d="M632.81 252.212V0H748.394V231.938L632.81 252.212Z" fill="url(#paint4_linear_401_344)" />
                 </Tooltip>
@@ -42,7 +42,7 @@ export default function LearnAboutPlatform(): JSX.Element {
                 <path d="M787.135 252.488L787.135 0H908.619V231.924L787.135 252.488Z" fill="url(#paint16_linear_401_344)" />
                 </Tooltip>
             </a>
-            <a href="https://docs.harness.io/category/exgoemqhji-ccm">
+            <a href="/docs/cloud-cost-management">
                 <Tooltip overlay={<p className='tooltip-max-width'>Empower teams to spend less time tagging and doing analysis, and get straight to optimizing their cloud spend.
                 </p>}>
                 <path d="M939.548 900V71.8071H1059.4V663.869H939.548Z" fill="url(#paint5_linear_401_344)" />

@@ -142,7 +142,7 @@ export default function CD() {
               <h1>Continuous Delivery</h1>
             </div>
             <div>
-              <Link href="https://docs.harness.io/category/pfzgb4tg05-howto-cd">
+              <Link href="/docs/continuous-delivery">
               <button className={clsx('button button--lg', styles.btn, styles.btnLight)}><img src="/img/icon_document.png"/> Documentation</button>
               </Link>
             </div>       

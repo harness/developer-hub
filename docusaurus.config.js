@@ -135,12 +135,16 @@ const config = {
             label: "Documentation",
             items: [
               {
+                label: "Get started",
+                to: "docs/get-started",
+              },
+              {
                 label: "Continuous Integration",
                 to: "docs/continuous-integration",
               },
               {
                 label: "Continuous Delivery",
-                href: "https://docs.harness.io/category/pfzgb4tg05-howto-cd",
+                to: "docs/continuous-delivery",
               },
               {
                 label: "Feature Flags",
@@ -148,7 +152,7 @@ const config = {
               },
               {
                 label: "Cloud Cost Management",
-                href: "https://docs.harness.io/category/exgoemqhji-ccm",
+                to: "docs/cloud-cost-management",
               },
               {
                 label: "Service Reliability Management",
@@ -163,12 +167,24 @@ const config = {
                 to: "docs/chaos-engineering",
               },
               {
+                label: "Harness Platform",
+                to: "docs/harness-platform",
+              },
+              {
                 label: "Self-Managed Enterprise Edition",
                 to: "docs/self-managed-enterprise-edition",
               },
               {
-                label: "Harness Platform",
-                to: "docs/platform",
+                label: "FirstGen docs",
+                to: "docs/first-gen-docs",
+              },
+              {
+                label: "FAQs",
+                to: "docs/frequently-asked-questions",
+              },
+              {
+                label: "Troubleshooting",
+                to: "docs/troubleshooting",
               },
               {
                 label: "API Reference",
