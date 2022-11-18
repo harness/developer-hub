@@ -4,8 +4,8 @@ title: Azure Instance Stop
 ---
 
 ## Introduction
-- It causes PowerOff an Azure instance before bringing it back to running state after the specified chaos duration.
-- It helps to check the performance of the application/process running on the instance.
+- It results in PowerOff of an Azure instance before bringing it back to running state after the specified chaos duration.
+- It checks the performance of the application/process running on the instance.
 
 :::tip Fault execution flow chart
 ![Azure Instance Stop](./static/images/azure-instance-stop.png)
@@ -21,10 +21,11 @@ Coming soon.
 
 ## Prerequisites
 :::info
-- Ensure that Kubernetes Version > 1.16.
+- Kubernetes > 1.16.
 - Ensure that you have sufficient Azure access to stop and start the an instance. 
-- We will use azure [ file-based authentication ](https://docs.microsoft.com/en-us/azure/developer/go/azure-sdk-authorization#use-file-based-authentication) to connect with the instance using azure GO SDK in the experiment. For generating auth file run `az ad sp create-for-rbac --sdk-auth > azure.auth` Azure CLI command.
-- Ensure to create a Kubernetes secret having the auth file created in the step in `CHAOS_NAMESPACE`. A sample secret file looks like:
+- Use Azure [ file-based authentication ](https://docs.microsoft.com/en-us/azure/developer/go/azure-sdk-authorization#use-file-based-authentication) to connect to the instance using Azure GO SDK in the experiment. To generate the auth file, run `az ad sp create-for-rbac --sdk-auth > azure.auth` Azure CLI command.
+- Create a Kubernetes secret that contains the auth file created in the previous step in `CHAOS_NAMESPACE`. A sample secret file looks like:
+
 ```yaml
 apiVersion: v1
 kind: Secret
@@ -46,15 +47,15 @@ stringData:
       "managementEndpointUrl": "XXXXXXXXX"
     }
 ```
-- If you change the secret key name (from `azure.auth`) please also update the `AZURE_AUTH_LOCATION` ENV value on `experiment.yaml`with the same name.
+- If you change the secret key name (from `azure.auth`), update the `AZURE_AUTH_LOCATION` environment variable on `experiment.yaml` with the same name.
 :::
 
 ## Default Validations
 :::info
-- Azure instance should be in healthy state.
+- The Azure instance should be in healthy state.
 :::
 
-## Experiment tunables
+## Experiment Tunables
 <details>
     <summary>Check the Experiment Tunables</summary>
     <h2>Mandatory Fields</h2>
@@ -118,9 +119,9 @@ Refer the [common attributes](../common-tunables-for-all-experiments) to tune th
 
 ### Stop Instances By Name
 
-It contains comma separated list of instance names subjected to instance stop chaos. It can be tuned via `AZURE_INSTANCE_NAME` ENV.
+It contains comma separated list of instance names subjected to instance stop chaos. It can be tuned using the `AZURE_INSTANCE_NAME` environment variable.
 
-Use the following example to tune this:
+You can use the following example to tune it:
 
 [embedmd]:# (./static/manifests/azure-instance-stop/azure-instance.yaml yaml)
 ```yaml
@@ -150,13 +151,13 @@ spec:
 
 ### Stop Scale Set Instances
 
-It contains comma separated list of instance names subjected to instance stop chaos belonging to Scale Set or AKS. It can be tuned via `SCALE_SET` ENV.
+It contains comma separated list of instance names that are subjected to instance stop chaos that belong to Scale Set or AKS. It can be tuned using the `SCALE_SET` environment variable.
 
-Use the following example to tune this:
+You can use the following example to tune it:
 
 [embedmd]:# (./static/manifests/azure-instance-stop/azure-scale-set-instance.yaml yaml)
 ```yaml
-## contains the azure instance details for scale set instances or AKS nodes
+## contains the Azure instance details for scale set instances or AKS nodes
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -170,7 +171,7 @@ spec:
     spec:
       components:
         env:
-        # comma separated list of azure instance names
+        # comma separated list of Azure instance names
         - name: AZURE_INSTANCE_NAME
           value: 'instance-01,instance-02'
         # name of the resource group
@@ -185,9 +186,9 @@ spec:
 
 ### Multiple Iterations Of Chaos
 
-The multiple iterations of chaos can be tuned via setting `CHAOS_INTERVAL` ENV. Which defines the delay between each iteration of chaos.
+Multiple iterations of chaos can be tuned by setting `CHAOS_INTERVAL` environment variable. This variable defines the delay between each iteration of chaos.
 
-Use the following example to tune this:
+You can use the following example to tune it:
 
 [embedmd]:# (./static/manifests/azure-instance-stop/chaos-interval.yaml yaml)
 ```yaml
