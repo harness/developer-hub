@@ -5,9 +5,9 @@ title: EC2 HTTP Latency
 
 ## Introduction
 
-- EC2 HTTP Latency contains chaos to disrupt the state of infra resources. The experiment can induce a http chaos on AWS EC2 Instance using Amazon SSM Run Command, this is carried out by using SSM Docs which is in-built in the experiment for the give chaos scenario.
-- It injects http response latency on the service whose port is provided as TARGET_SERVICE_PORT by starting proxy server and then redirecting the traffic through the proxy server.
-- It causes http latency chaos on EC2 Instance using an SSM doc for a certain chaos duration.
+- EC2 HTTP latency has chaos to disrupt the state of infra resources. This experiment induces HTTP chaos on an AWS EC2 instance using the Amazon SSM Run Command, carried out using SSM Docs that is in-built in the experiment for the given chaos scenario.
+- It injects HTTP response latency to the service whose port is specified using `TARGET_SERVICE_PORT` by starting the proxy server and redirecting the traffic through the proxy server.
+- It introduces HTTP latency chaos on the EC2 instance using an SSM doc for a certain chaos duration.
 
 :::tip Fault execution flow chart
 ![EC2 HTTP Latency](./static/images/ec2-http-latency.png)
@@ -17,12 +17,12 @@ title: EC2 HTTP Latency
 
 :::info
 
-- Ensure that Kubernetes Version >= 1.17
+- Kubernetes >= 1.17
 
-**AWS EC2 Access Requirement:**
+**AWS EC2 Access Requirements:**
 
-- Ensure that SSM agent is installed and running in the target EC2 instance.
-- Ensure to create a Kubernetes secret having the AWS Access Key ID and Secret Access Key credentials in the `CHAOS_NAMESPACE`. A sample secret file looks like:
+- SSM agent is installed and running in the target EC2 instance.
+- Kubernetes secret with AWS Access Key ID and Secret Access Key credentials in the `CHAOS_NAMESPACE`. A secret file looks like:
 
 ```yaml
 apiVersion: v1
@@ -38,22 +38,22 @@ stringData:
     aws_secret_access_key = XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ```
 
-- If you change the secret name then please also update the `experiment.yml` ENV values for deriving the respective data from the secret. Also account for the path at which this secret is mounted as a file in the manifest ENV `AWS_SHARED_CREDENTIALS_FILE`.
+- If you change the secret, update the `experiment.yml` environment values to extract the relevant data from the secret. Also account for the path at which this secret is mounted as a file in the manifest environment variable `AWS_SHARED_CREDENTIALS_FILE`.
 
 ### NOTE
 
-You can pass the VM credentials as secrets or as an chaosengine ENV variable.
+You can pass the VM credentials as secrets or as a chaosengine environment variable.
 :::
 
 ## Default Validations
 
 :::info
 
-- EC2 instance should be in healthy state.
+- The EC2 instance should be in a healthy state.
 
 :::
 
-## Experiment tunables
+## Experiment Tunables
 
 <details>
     <summary>Check the Experiment Tunables</summary>
@@ -77,7 +77,7 @@ You can pass the VM credentials as secrets or as an chaosengine ENV variable.
         <tr>
             <td> LATENCY </td>
             <td> Provide latency to be added to request in miliseconds.</td>
-            <td> Eg: 1000</td>
+            <td> For example: 1000</td>
         </tr>
         <tr>
             <td> TARGET_SERVICE_PORT </td>
@@ -94,7 +94,7 @@ You can pass the VM credentials as secrets or as an chaosengine ENV variable.
         </tr>
         <tr>
             <td> TOTAL_CHAOS_DURATION </td>
-            <td> The total time duration for chaos insertion (sec) </td>
+            <td> The total time duration for chaos insertion (in sec) </td>
             <td> Defaults to 30s </td>
         </tr>
         <tr>
@@ -104,37 +104,37 @@ You can pass the VM credentials as secrets or as an chaosengine ENV variable.
         </tr>
         <tr>
             <td> AWS_SHARED_CREDENTIALS_FILE </td>
-            <td> Provide the path for aws secret credentials</td>
+            <td> Provide the path for AWS secret credentials</td>
             <td> Defaults to <code>/tmp/cloud_config.yml</code> </td>
           </tr>
         <tr>
             <td> SEQUENCE </td>
-            <td> It defines sequence of chaos execution for multiple instance </td>
+            <td> Defines the sequence of chaos execution for multiple instances </td>
             <td> Default value: parallel. Supported: serial, parallel </td>
         </tr>
         <tr>
             <td> RAMP_TIME </td>
-            <td> Period to wait before and after injection of chaos in sec </td>
-            <td> Eg: 30 </td>
+            <td> Period to wait before and after injection of chaos (in sec) </td>
+            <td> For example: 30 </td>
         </tr>
         <tr>
             <td> INSTALL_DEPENDENCY </td>
             <td> Whether to install the dependency to run the experiment </td>
-            <td> If the dependency already exists, you can turn it off. Defaults to True.</td>
+            <td> If the dependency already exists, you can turn it off (defaults to True)</td>
         </tr>
         <tr>
             <td> PROXY_PORT  </td>
-            <td> Port where the proxy will be listening for requests</td>
+            <td> Port where the proxy listens for requests</td>
             <td> Defaults to 20000 </td>
         </tr>
         <tr>
             <td> TOXICITY </td>
-            <td> Percentage of HTTP requests to be affected </td>
+            <td> Percentage of HTTP requests affected </td>
             <td> Defaults to 100 </td>
         </tr>
         <tr>
           <td> NETWORK_INTERFACE  </td>
-          <td> Network interface to be used for the proxy</td>
+          <td> Network interface used for the proxy</td>
           <td> Defaults to `eth0` </td>
         </tr>
     </table>
@@ -144,13 +144,13 @@ You can pass the VM credentials as secrets or as an chaosengine ENV variable.
 
 ### Common Experiment Tunables
 
-Refer the [common attributes](../common-tunables-for-all-experiments) to tune the common tunables for all the experiments.
+Refer to the [common attributes](../common-tunables-for-all-experiments) to tune the common tunables for all the experiments.
 
 ### Target Service Port
 
-It defines the port of the targeted service that is being targeted. It can be tuned via `TARGET_SERVICE_PORT` ENV.
+It is the targeted service's port being targeted. You can tune it using the `TARGET_SERVICE_PORT` environment variable.
 
-Use the following example to tune this:
+You can use the following example to tune it:
 
 [embedmd]:# (./static/manifests/http-latency/target-service-port.yaml yaml)
 ```yaml
@@ -174,9 +174,9 @@ spec:
 
 ### Proxy Port
 
-It defines the port on which the proxy server will listen for requests. It can be tuned via `PROXY_PORT` ENV.
+It is the port where the proxy server listens for requests. You can tune it using the `PROXY_PORT` environment variable.
 
-Use the following example to tune this:
+You can use the following example to tune it:
 
 [embedmd]:# (./static/manifests/http-latency/proxy-port.yaml yaml)
 ```yaml
@@ -203,9 +203,9 @@ spec:
 
 ### Latency
 
-It defines the latency value to be added to the http request. It can be tuned via `LATENCY` ENV.
+It is the latency value that is added to the http request. You can tune it using the `LATENCY` environment variable.
 
-Use the following example to tune this:
+You can use the following example to tune it:
 
 [embedmd]:# (./static/manifests/http-latency/latency.yaml yaml)
 ```yaml
@@ -232,10 +232,10 @@ spec:
 
 ### Toxicity
 
-It defines the toxicity value to be added to the http request. It can be tuned via `TOXICITY` ENV.
-Toxicity value defines the percentage of the total number of http requests to be affected.
+It defines the toxicity value to be added to the http request. You can tune it using the `TOXICITY` environment variable.
+Toxicity value defines the percentage of the total number of http requests that are affected.
 
-Use the following example to tune this:
+You can use the following example to tune it:
 
 [embedmd]:# (./static/manifests/http-latency/toxicity.yaml yaml)
 ```yaml
@@ -264,9 +264,9 @@ spec:
 
 ### Network Interface
 
-It defines the network interface to be used for the proxy. It can be tuned via `NETWORK_INTERFACE` ENV.
+It defines the network interface used for the proxy. You can tune it using the `NETWORK_INTERFACE` environment variable.
 
-Use the following example to tune this:
+You can use the following example to tune it:
 
 [embedmd]:# (./static/manifests/http-latency/network-interface.yaml yaml)
 ```yaml

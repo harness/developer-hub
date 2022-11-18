@@ -1,17 +1,17 @@
 ---
 title: Common AWS Experiment Tunables
 ---
-AWS specific experiment tunables.
+AWS-specific experiment tunables.
 
 ### Managed Nodegroup
 
-It specifies whether AWS EC2 instances are part of managed nodeGroups. If instances belong to the managed nodeGroups then provide `MANAGED_NODEGROUP` as `enable` else provide it as `disable`. The default value is `disabled`.
+It specifies whether AWS EC2 instances are part of managed nodeGroups. If the instances belong to the managed nodeGroups, specify `MANAGED_NODEGROUP` as `enable` otherwise, specify it as `disable`. The default value is `disabled`.
 
-Use the following example to tune this:
+You can use the following example to tune this:
 
 [embedmd]:# (./static/manifests/common/managed-nodegroup.yaml yaml)
 ```yaml
-# it provided as enable if instances are part of self managed groups
+# provided as enable if instances are a part of self managed groups
 # it is applicable for [ec2-terminate-by-id, ec2-terminate-by-tag]
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
@@ -37,4 +37,37 @@ spec:
           value: 'key:value'
         - name: TOTAL_CHAOS_DURATION
           VALUE: '60'
+```
+
+### Multiple Iterations Of Chaos
+
+You can tune multiple iterations of chaos by setting the `CHAOS_INTERVAL` environment variable, which defines the delay between every iteration of chaos.
+
+You can use the following example to tune this:
+
+[embedmd]:# (./static/manifests/common/chaos-interval.yaml yaml)
+```yaml
+# defines delay between every successive iteration of the chaos
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  chaosServiceAccount: ec2-terminate-by-tag-sa
+  experiments:
+  - name: ec2-terminate-by-tag
+    spec:
+      components:
+        env:
+         # delay between each iteration of chaos
+        - name: CHAOS_INTERVAL
+          value: '15'
+        # time duration for the chaos execution
+        - name: TOTAL_CHAOS_DURATION
+          VALUE: '60'
+        - name: REGION
+          value: 'us-east-1'
+        - name: INSTANCE_TAG
+          value: 'key:value'
 ```

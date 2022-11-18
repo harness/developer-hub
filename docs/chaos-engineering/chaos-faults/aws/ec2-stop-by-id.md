@@ -5,9 +5,9 @@ title: EC2 Stop By ID
 
 ## Introduction
 
-- It causes stopping of an EC2 instance using the provided instance ID or list of instance IDs before bringing it back to running state after the specified chaos duration.
-- It helps to check the performance of the application/process running on the EC2 instance.
-- When the `MANAGED_NODEGROUP` is enabled then the experiment will not try to start the instance post chaos instead it will check of the addition of the new node instance to the cluster.
+- It stops an EC2 instance using the provided instance ID or list of instance IDs before bringing it back to running state after the specified chaos duration.
+- It checks the performance of the application/process running on the EC2 instance.
+- When the `MANAGED_NODEGROUP` is enabled, the experiment doesn't start the instance after chaos. It checks the cluster for the newly added node instance.
 
 :::tip Fault execution flow chart
 ![EC2 Stop By ID](./static/images/ec2-stop.png)
@@ -26,12 +26,9 @@ Coming soon.
 
 :::info
 
-- Ensure that Kubernetes Version >= 1.17
-
-**AWS EC2 Access Requirement:**
-
-- Ensure that you have sufficient AWS access to stop and start an EC2 instance.
-- Ensure to create a Kubernetes secret having the AWS access configuration(key) in the `CHAOS_NAMESPACE`. A sample secret file looks like:
+- Kubernetes >= 1.17
+- Access to start and stop an EC2 instance in AWS.
+- Kubernetes secret that has AWS access configuration(key) in the `CHAOS_NAMESPACE`. A secret file looks like:
 
 ```yaml
 apiVersion: v1
@@ -47,22 +44,22 @@ stringData:
     aws_secret_access_key = XXXXXXXXXXXXXXX
 ```
 
-- If you change the secret key name (from `cloud_config.yml`) please also update the `AWS_SHARED_CREDENTIALS_FILE` ENV value on `experiment.yaml`with the same name.
+- If you change the secret key name (from `cloud_config.yml`), update the `AWS_SHARED_CREDENTIALS_FILE` environment variable value on `experiment.yaml` with the same name.
 
 ### WARNING
 
-If the target EC2 instance is a part of a self-managed nodegroup then make sure to drain the target node if any application is running on it and also ensure to cordon the target node before running the experiment so that the experiment pods do not schedule on it.
+If the target EC2 instance is a part of a managed node group, drain the target node of any application running on it. Isolate the target node before running the experiment so that the experiment pods are not scheduled on it.
 :::
 
 ## Default Validations
 
 :::info
 
-- EC2 instance should be in healthy state.
+- The EC2 instance should be in a healthy state.
 
 :::
 
-## Experiment tunables
+## Experiment Tunables
 
 <details>
     <summary>Check the Experiment Tunables</summary>
@@ -127,7 +124,7 @@ Refer the [common attributes](../common-tunables-for-all-experiments) and [AWS s
 
 ### Stop Instances By ID
 
-It contains comma separated list of instances IDs subjected to ec2 stop chaos. It can be tuned via `EC2_INSTANCE_ID` ENV.
+It has comma separated list of instances IDs subject to EC2 stop chaos. You can tune it using the `EC2_INSTANCE_ID` environment variable.
 
 Use the following example to tune this:
 
