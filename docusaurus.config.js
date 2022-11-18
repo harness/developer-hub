@@ -168,7 +168,7 @@ const config = {
               },
               {
                 label: "Harness Platform",
-                href: "https://docs.harness.io/category/3fso53aw1u-howto-general",
+                to: "docs/platform",
               },
               {
                 label: "API Reference",
