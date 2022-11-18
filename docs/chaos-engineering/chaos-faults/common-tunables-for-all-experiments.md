@@ -5,7 +5,7 @@ Experiment tunables which are common for all the experiments. These tunables can
 
 ### Duration of the chaos
 
-It defines the total time duration of the chaos injection. It can be tuned with the `TOTAL_CHAOS_DURATION` ENV. It is provided in a unit of seconds.
+It defines the total time duration of the chaos injection. You can tune it using the `TOTAL_CHAOS_DURATION` environment variable. It is in unit of seconds.
 
 Use the following example to tune this:
 
@@ -36,7 +36,7 @@ spec:
 
 ### Ramp Time
 
-It defines the period to wait before and after the injection of chaos. It can be tuned with the `RAMP_TIME` ENV. It is provided in a unit of seconds.
+It defines the period to wait before and after the injection of chaos. You can tune it using the `RAMP_TIME` environment variable. It is in unit of seconds.
 
 Use the following example to tune this:
 
@@ -69,7 +69,7 @@ spec:
 
 ### Sequence of chaos execution
 
-It defines the sequence of the chaos execution in the case of multiple targets. It can be tuned with the `SEQUENCE` ENV. It supports the following modes:
+It defines the sequence of the chaos execution in the case of multiple targets. You can tune it using the `SEQUENCE` environment variable. It supports the following modes:
 
 - `parallel`: The chaos is injected in all the targets at once.
 - `serial`: The chaos is injected in all the targets one by one.
@@ -107,7 +107,7 @@ spec:
 
 ### Name of chaos library
 
-It defines the name of the chaos library used for the chaos injection. It can be tuned with the `LIB` ENV.
+It defines the name of the chaos library used for the chaos injection. You can tune it using the `LIB` environment variable.
 
 Use the following example to tune this:
 
@@ -140,7 +140,7 @@ spec:
 
 ### Instance ID
 
-It defines a user-defined string that holds metadata/info about the current run/instance of chaos. Ex: 04-05-2020-9-00. This string is appended as a suffix in the chaosresult CR name. It can be tuned with `INSTANCE_ID` ENV.
+It defines a user-defined string that holds metadata/info about the current run/instance of chaos. For example: 04-05-2020-9-00. This string is appended as a suffix in the chaosresult CR name. It can be tuned with `INSTANCE_ID` ENV.
 
 Use the following example to tune this:
 
@@ -173,7 +173,7 @@ spec:
 
 ### Image used by the helper pod
 
-It defines the image, which is used to launch the helper pod, if applicable. It can be tuned with the `LIB_IMAGE` ENV.
+It defines the image, which is used to launch the helper pod, if applicable. You can tune it using the `LIB_IMAGE` environment variable.
 It is supported by [container-kill, network-experiments, stress-experiments, dns-experiments, disk-fill, kubelet-service-kill, docker-service-kill, node-restart] experiments.
 
 Use the following example to tune this:

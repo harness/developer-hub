@@ -23,7 +23,7 @@ The experiment causes DNS errors on the target VMs which can result in unavailab
 :::info
 - Ensure that Kubernetes Version > 1.16 
 - Ensure that you have sufficient Vcenter access to stop and start the VM.
-- (Optional) Ensure to create a Kubernetes secret having the Vcenter credentials in the `CHAOS_NAMESPACE`. A sample secret file looks like:
+- (Optional) Ensure to create a Kubernetes secret having the Vcenter credentials in the `CHAOS_NAMESPACE`. A secret file looks like:
 ```yaml
 apiVersion: v1
 kind: Secret

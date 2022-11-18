@@ -5,9 +5,9 @@ title: EC2 HTTP Latency
 
 ## Introduction
 
-- EC2 HTTP latency contains chaos to disrupt the state of infra resources. This experiment induces http chaos on an AWS EC2 instance using the Amazon SSM Run Command, which is carried out using SSM Docs which are in-built in the experiment for the given chaos scenario.
-- It injects http response latency to the service whose port is specified using `TARGET_SERVICE_PORT` by starting the proxy server and redirecting the traffic through the proxy server.
-- It introduces http latency chaos on the EC2 instance using an SSM doc for a certain chaos duration.
+- EC2 HTTP latency has chaos to disrupt the state of infra resources. This experiment induces HTTP chaos on an AWS EC2 instance using the Amazon SSM Run Command, carried out using SSM Docs that is in-built in the experiment for the given chaos scenario.
+- It injects HTTP response latency to the service whose port is specified using `TARGET_SERVICE_PORT` by starting the proxy server and redirecting the traffic through the proxy server.
+- It introduces HTTP latency chaos on the EC2 instance using an SSM doc for a certain chaos duration.
 
 :::tip Fault execution flow chart
 ![EC2 HTTP Latency](./static/images/ec2-http-latency.png)
@@ -18,12 +18,12 @@ title: EC2 HTTP Latency
 :::info
 
 - Kubernetes >= 1.17
-- Ensure that the <code>EC2-http-latency</code> experiment resource is available in the cluster. Execute <code>kubectl get chaosexperiments</code> in the desired namespace.
+- <code>EC2-http-latency</code> experiment resource is available in the cluster. Execute <code>kubectl get chaosexperiments</code> in the desired namespace.
 
 **AWS EC2 Access Requirements:**
 
 - SSM agent is installed and running in the target EC2 instance.
-- Create a Kubernetes secret with AWS Access Key ID and Secret Access Key credentials in the `CHAOS_NAMESPACE`. A sample secret file looks like:
+- Kubernetes secret with AWS Access Key ID and Secret Access Key credentials in the `CHAOS_NAMESPACE`. A secret file looks like:
 
 ```yaml
 apiVersion: v1
@@ -149,7 +149,7 @@ Refer to the [common attributes](../common-tunables-for-all-experiments) to tune
 
 ### Target Service Port
 
-It is the targeted service's port being targeted. It can be tuned using the `TARGET_SERVICE_PORT` environment variable.
+It is the targeted service's port being targeted. You can tune it using the `TARGET_SERVICE_PORT` environment variable.
 
 You can use the following example to tune it:
 
@@ -175,7 +175,7 @@ spec:
 
 ### Proxy Port
 
-It is the port where the proxy server listens for requests. It can be tuned using the `PROXY_PORT` environment variable.
+It is the port where the proxy server listens for requests. You can tune it using the `PROXY_PORT` environment variable.
 
 You can use the following example to tune it:
 
@@ -204,7 +204,7 @@ spec:
 
 ### Latency
 
-It is the latency value that is added to the http request. It can be tuned using the `LATENCY` environment variable.
+It is the latency value that is added to the http request. You can tune it using the `LATENCY` environment variable.
 
 You can use the following example to tune it:
 
@@ -233,7 +233,7 @@ spec:
 
 ### Toxicity
 
-It defines the toxicity value to be added to the http request. It can be tuned using the `TOXICITY` environment variable.
+It defines the toxicity value to be added to the http request. You can tune it using the `TOXICITY` environment variable.
 Toxicity value defines the percentage of the total number of http requests that are affected.
 
 You can use the following example to tune it:
@@ -265,7 +265,7 @@ spec:
 
 ### Network Interface
 
-It defines the network interface used for the proxy. It can be tuned via `NETWORK_INTERFACE` environment variable.
+It defines the network interface used for the proxy. You can tune it using the `NETWORK_INTERFACE` environment variable.
 
 You can use the following example to tune it:
 

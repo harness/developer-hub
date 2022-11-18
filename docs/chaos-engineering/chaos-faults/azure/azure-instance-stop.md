@@ -22,9 +22,9 @@ Coming soon.
 ## Prerequisites
 :::info
 - Kubernetes > 1.16.
-- Ensure that you have sufficient Azure access to stop and start the an instance. 
+- Azure access to stop and start the an instance. 
 - Use Azure [ file-based authentication ](https://docs.microsoft.com/en-us/azure/developer/go/azure-sdk-authorization#use-file-based-authentication) to connect to the instance using Azure GO SDK in the experiment. To generate the auth file, run `az ad sp create-for-rbac --sdk-auth > azure.auth` Azure CLI command.
-- Create a Kubernetes secret that contains the auth file created in the previous step in `CHAOS_NAMESPACE`. A sample secret file looks like:
+- Kubernetes secret that has the auth file created in the earlier step in `CHAOS_NAMESPACE`. A secret file looks like:
 
 ```yaml
 apiVersion: v1
@@ -119,7 +119,7 @@ Refer the [common attributes](../common-tunables-for-all-experiments) to tune th
 
 ### Stop Instances By Name
 
-It contains comma separated list of instance names subjected to instance stop chaos. It can be tuned using the `AZURE_INSTANCE_NAME` environment variable.
+It has comma separated list of instance names subject to instance stop chaos. You can tune it using the `AZURE_INSTANCE_NAME` environment variable.
 
 You can use the following example to tune it:
 
@@ -151,7 +151,7 @@ spec:
 
 ### Stop Scale Set Instances
 
-It contains comma separated list of instance names that are subjected to instance stop chaos that belong to Scale Set or AKS. It can be tuned using the `SCALE_SET` environment variable.
+It has comma separated list of instance names subject to instance stop chaos that belong to Scale Set or AKS. You can tune it using the `SCALE_SET` environment variable.
 
 You can use the following example to tune it:
 
@@ -186,7 +186,7 @@ spec:
 
 ### Multiple Iterations Of Chaos
 
-Multiple iterations of chaos can be tuned by setting `CHAOS_INTERVAL` environment variable. This variable defines the delay between each iteration of chaos.
+You can tune different iterations of chaos by setting `CHAOS_INTERVAL` environment variable. This variable defines the delay between each iteration of chaos.
 
 You can use the following example to tune it:
 

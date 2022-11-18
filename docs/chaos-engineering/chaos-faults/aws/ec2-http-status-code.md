@@ -5,8 +5,8 @@ title: EC2 HTTP Status Code
 
 ## Introduction
 
-- It injects http chaos that affects the request/response by modifying the status code or the body or the headers by starting proxy server and redirecting the traffic through the proxy server.
-- It can test the application's resilience to error code http responses from the provided application server.
+- It injects HTTP chaos that affects the request/response by modifying the status code or the body or the headers by starting proxy server and redirecting the traffic through the proxy server.
+- It can test the application's resilience to error code HTTP responses from the provided application server.
 
 :::tip Fault execution flow chart
 ![EC2 HTTP Modify Response](./static/images/ec2-http-status-code.png)
@@ -17,12 +17,12 @@ title: EC2 HTTP Status Code
 :::info
 
 - Kubernetes >= 1.17
-- Ensure that the <code>EC2-http-latency</code> experiment resource is available in the cluster. Execute <code>kubectl get chaosexperiments</code> in the desired namespace.
+- <code>EC2-http-latency</code> experiment resource is available in the cluster. Execute <code>kubectl get chaosexperiments</code> in the desired namespace.
 
 **AWS EC2 Access Requirement:**
 
 - SSM agent is installed and running in the target EC2 instance.
-- Create a Kubernetes secret with AWS Access Key ID and Secret Access Key credentials in the `CHAOS_NAMESPACE`. A sample secret file looks like:
+- Kubernetes secret with AWS Access Key ID and Secret Access Key credentials in the `CHAOS_NAMESPACE`. A secret file looks like:
 
 ```yaml
 apiVersion: v1
@@ -156,7 +156,7 @@ Refer the [common attributes](../common-tunables-for-all-experiments) to tune th
 
 ### Target Service Port
 
-It is the targeted service's port being targeted. It can be tuned using the `TARGET_SERVICE_PORT` environment variable.
+It is the targeted service's port being targeted. You can tune it using the `TARGET_SERVICE_PORT` environment variable.
 
 You can use the following example to tune it:
 
@@ -220,7 +220,7 @@ spec:
 
 ### Proxy Port
 
-It is the port where the proxy server listens for requests. It can be tuned using the `PROXY_PORT` environment variable.
+It is the port where the proxy server listens for requests. You can tune it using the `PROXY_PORT` environment variable.
 
 You can use the following example to tune it:
 
@@ -249,7 +249,7 @@ spec:
 
 ### Toxicity
 
-It defines the toxicity value to be added to the http request. It can be tuned using the `TOXICITY` environment variable.
+It defines the toxicity value to be added to the http request. You can tune it using the `TOXICITY` environment variable.
 Toxicity value defines the percentage of the total number of http requests that are affected.
 
 You can use the following example to tune it:
@@ -281,7 +281,7 @@ spec:
 
 ### Network Interface
 
-It defines the network interface used for the proxy. It can be tuned via `NETWORK_INTERFACE` environment variable.
+It defines the network interface used for the proxy. You can tune it using the `NETWORK_INTERFACE` environment variable.
 
 You can use the following example to tune it:
 
