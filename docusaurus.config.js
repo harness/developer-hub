@@ -135,6 +135,10 @@ const config = {
             label: "Documentation",
             items: [
               {
+                label: "Getting Started",
+                to: "docs/getting-started",
+              },
+              {
                 label: "Continuous Integration",
                 to: "docs/continuous-integration",
               },

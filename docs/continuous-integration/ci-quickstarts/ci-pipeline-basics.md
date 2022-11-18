@@ -12,7 +12,7 @@ helpdocs_is_published: true
 
 This topic covers CI Pipeline basics to get you ready to start building Pipelines easily.
 
-For details on general Harness concepts, see [Learn Harness' Key Concepts](https://docs.harness.io/article/hv2758ro4e-learn-harness-key-concepts).
+For details on general Harness concepts, see [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md).
 
 ### Pipelines
 

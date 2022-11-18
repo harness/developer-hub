@@ -24,7 +24,7 @@ This topic describes CI concepts and provides a summary of the benefits of CI.
 
 Before learning about Harness CI, you should have an understanding of the following:
 
-* [Harness Key Concepts](https://ngdocs.harness.io/article/hv2758ro4e-learn-harness-key-concepts)
+* [Harness Key Concepts](../../getting-started/learn-harness-key-concepts.md)
 * [Drone and Harness](drone-and-harness.md)
 
 ### Visual Summary
