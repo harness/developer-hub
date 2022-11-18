@@ -197,6 +197,20 @@ const SRMList: FeatureItem[] = [{
   type: [docType.Documentation],
   time: '15min',
   link: '/tutorials/manage-service-reliability/intro-to-srm'
+},
+{
+  title: 'Introduction to Java Exception Management',
+  module: 'srm',
+  Svg: '',
+  description: (
+    <>
+     Finding and fixing caught, uncaught, and swallowed Java exceptions. Learn the process and find the right tooling.
+    </>
+  ),
+  ribbon: false,
+  type: [docType.Documentation],
+  time: '10min',
+  link: '/tutorials/manage-service-reliability/intro-java-exception-management'
 }];
 
 const STOList: FeatureItem[] = [{
