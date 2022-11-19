@@ -14,10 +14,10 @@ const sidebars = {
       },
       collapsed: false,
       items: [
-        // Build Code
+        // Build and Test Code
         {
           type: "category",
-          label: "Build Code",
+          label: "Build and Test Code",
           link: {
             type: "doc",
             id: "tutorials/build-code",

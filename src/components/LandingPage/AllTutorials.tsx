@@ -281,7 +281,7 @@ export default function AllTutorials() {
             <div className={styles.SectionName}>
                 <img src="/img/icon_ci.svg"/>
                 <h3>
-                    Build code
+                    Build and Test Code
                 </h3>
             </div>
             <ModuleCard FeatureList={CIList}/>

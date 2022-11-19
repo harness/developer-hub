@@ -1,10 +1,10 @@
 ---
 hide_table_of_contents: true
 hide_title: true
-title: Build Code
+title: Build and Test Code
 ---
 
-<!-- # Build Code -->
+<!-- # Build and Test Code -->
 
 <!-- Custom component -->
 

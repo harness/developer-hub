@@ -24,7 +24,7 @@ type FeatureItem = {
  
 const FeaturedList: FeatureItem[] = [
     {
-        title: 'Build Code',
+        title: 'Build and Test Code',
         module: 'ci',
         Svg: '/img/icon_ci.svg',
         description: (
