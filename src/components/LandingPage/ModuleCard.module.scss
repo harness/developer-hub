@@ -1,17 +1,24 @@
 .spaceBetween{
     display: flex;
     flex-flow: row wrap;
-    justify-content: space-between;
+    // justify-content: space-between;
+    
+    a:hover {
+        text-decoration: none;
+    }
 }
 .tutorialCard{
     border-radius: 8px;
     box-shadow: 0px 0px 1px rgba(40, 41, 61, 0.04), 0px 2px 4px rgba(96, 97, 112, 0.16);
     padding: 24px;
-    margin: 0 0 30px 0;
+    margin: 0 2.75% 30px 0;
     width: 30.5%;
     font-family: 'Inter';
     border: 3px solid transparent;
     position: relative;
+    // &:last-child {
+    //     margin-right: 0;
+    // }
     .ribbon{
         position: absolute;
         top: 24px;
@@ -122,16 +129,19 @@
 .featureCard{
     border: 1px solid #D9DAE5;
     box-shadow: none;
-    width: 48%;
+    width: 47%;
     .ribbon{
         right: 0;
     }
+    // &:last-child {
+    //     margin-right: 0;
+    // }
 }
 
 // @media screen and (max-width: 996px) {
 @media screen and (max-width: 768px) {
     .tutorialCard{
-        width: 48%;
+        width: 47%;
     }
 }
 
