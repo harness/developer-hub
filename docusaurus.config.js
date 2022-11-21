@@ -91,7 +91,7 @@ const config = {
               },
               {
                 // type: "doc",
-                label: "Build Code",
+                label: "Build and Test Code",
                 to: "tutorials/build-code",
                 // docId: "build-code",
                 // activeBasePath: "to",
