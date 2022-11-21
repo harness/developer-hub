@@ -530,32 +530,37 @@ export default function LearnAboutPlatform(): JSX.Element {
     <div className={styles.subSectionName}><h3>Platform</h3></div>
     <ul className={styles.platformList}>
         <li>
-          <a href="https://docs.harness.io/article/7fibxie636-projects-and-organizations" target="_blank"><img src="/img/automated-pipeline.svg" />
-          <h4>Organizations &amp; Projects</h4>
-          <p>Structure your development teams &amp; applications</p></a>
+          <a href="https://docs.harness.io/category/kncngmy17o-pipelines" target="_blank"><img src="/img/automated-pipeline.svg" />
+          <h4>Pipelines</h4>
+          <p>Run CI, CD, STO, FF and custom stages in an automated pipeline</p></a>
         </li>
         <li>
-          <a href="https://docs.harness.io/article/vz5cq0nfg2-rbac-in-harness" target="_blank"><img src="/img/user-group-mgmt.svg" />
-          <h4>User &amp; Role Management</h4>
-          <p>Use OAuth/SAML/SSO/LDAP providers for authentication and RBAC &amp; User Groups for authorization</p></a>
-        </li>
-        <li>
-        <a href="https://docs.harness.io/article/hngrlb7rd6-harness-secret-manager-overview" target="_blank"><img src="/img/secret-mgmt.svg" />
-          <h4>Secrets Managment</h4>
-          <p>Secure your secrets using popular Secret Managers and Key Management Systems</p></a>
+          <a href="https://docs.harness.io/article/6tl8zyxeol-template" target="_blank"><img src="/img/templates.svg" />
+          <h4>Templates</h4>
+          <p>Share organizational best practices for Pipelines, Steps, Stages, Services, Infrastructure</p></a>
         </li>
         <li>
         <a href="https://docs.harness.io/article/2k7lnc7lvl-delegates-overview" target="_blank"><img src="/img/delegates.svg" />
           <h4>Delegates</h4>
           <p>Install, configure, secure, monitor, upgrade Delegates running on your own infrastructure</p></a>
         </li>
+        <li>
+        <a href="https://docs.harness.io/article/hngrlb7rd6-harness-secret-manager-overview" target="_blank"><img src="/img/secret-mgmt.svg" />
+          <h4>Secrets Managment</h4>
+          <p>Secure your secrets using popular Secret Managers and Key Management Systems</p></a>
+        </li>    
     </ul>
     {showMore && (
       <ul className={styles.platformListMore}>
         <li>
-        <a href="https://docs.harness.io/article/6tl8zyxeol-template" target="_blank">{/* <img src="/img/Templates.svg" /> */}
-          <h4>Templates</h4>
-          <p>Share organizational best practices for Pipelines, Steps, Stages, Services, Infrastructure</p></a>
+        <a href="https://docs.harness.io/article/7fibxie636-projects-and-organizations" target="_blank">{/* <img src="/img/Templates.svg" /> */}
+          <h4>Organizations &amp; Projects</h4>
+          <p>Structure your development teams &amp; applications</p></a>
+        </li>
+        <li>
+        <a href="https://docs.harness.io/article/vz5cq0nfg2-rbac-in-harness" target="_blank">{/* <img src="/img/Templates.svg" /> */}
+          <h4>User &amp; Role Management</h4>
+          <p>Use OAuth/SAML/SSO/LDAP providers for authentication and RBAC &amp; User Groups for authorization</p></a>
         </li>
         <li>
         <a href="https://docs.harness.io/category/id0hnxv6sg-dashboards-custom" target="_blank">

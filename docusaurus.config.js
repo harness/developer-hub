@@ -84,6 +84,11 @@ const config = {
             type: "dropdown",
             label: "Tutorials",
             items: [
+               {
+                // type: "doc",
+                label: "All Tutorials",
+                to: "tutorials/get-started",
+              },
               {
                 // type: "doc",
                 label: "Build Code",
@@ -124,8 +129,8 @@ const config = {
               },
               {
                 // type: "doc",
-                label: "Install Delegate",
-                to: "tutorials/platform/install-delegate",
+                label: "Administer Harness Platform",
+                to: "tutorials/platform",
               },
             ],
           },
@@ -135,8 +140,8 @@ const config = {
             label: "Documentation",
             items: [
               {
-                label: "Get started",
-                to: "docs/get-started",
+                label: "Get Started",
+                to: "tutorials/get-started",
               },
               {
                 label: "Continuous Integration",
@@ -168,15 +173,15 @@ const config = {
               },
               {
                 label: "Harness Platform",
-                to: "docs/harness-platform",
+                to: "docs/platform",
               },
               {
                 label: "Self-Managed Enterprise Edition",
                 to: "docs/self-managed-enterprise-edition",
               },
               {
-                label: "FirstGen docs",
-                to: "docs/first-gen-docs",
+                label: "Harness FirstGen",
+                to: "docs/first-gen",
               },
               {
                 label: "FAQs",

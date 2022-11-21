@@ -8,6 +8,6 @@ title: Get Started
 
 <!-- Custom component -->
 
-import GetStarted from '@site/src/components/LandingPage/GetStarted';
+import GetStarted from '@site/src/components/LandingPage/AllTutorials';
 
 <GetStarted />

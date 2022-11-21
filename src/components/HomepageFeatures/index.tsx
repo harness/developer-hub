@@ -107,16 +107,16 @@ const FeatureList: FeatureItem[] = [
     link: '/tutorials/run-chaos-experiments',
   },
   {
-    title: 'Install Delegate',
+    title: 'Administer Harness Platform',
     module: 'platform',
     Svg: '/img/logo.svg',
     description: (
       <>
-        Connect your infrastructure with Harness Platform using Docker & Kubernetes Delegate.
+        Install a Kubernetes or Docker delegate, Onboard with Terraform Provider.
       </>
     ),
     type: [docType.Documentation],
-    link: '/tutorials/platform/install-delegate',
+    link: '/tutorials/platform',
   },
 ];
 

@@ -1,4 +1,4 @@
-# FirstGen docs coming soon
+# Harness FirstGen
 
 FirstGen docs will be available here soon.
 

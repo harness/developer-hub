@@ -257,6 +257,35 @@ const CEList: FeatureItem[] = [{
   link: '/tutorials/run-chaos-experiments/chaos-experiment-from-blank-canvas'
 }];
 
+const PlatformList: FeatureItem[] = [{
+  title: 'Install Delegate',
+  module: 'platform',
+  description: (
+    <>
+      Install a Docker or Kubernetes Delegate on your infrastructure.
+    </>
+  ),
+  ribbon: false,
+  type: [docType.Documentation],
+  time: '5 min',
+  link: '/tutorials/platform/install-delegate',
+},
+{
+  title: 'Onboard with Terraform',
+  module: 'platform',
+  description: (
+    <>
+      Automate lifecycle management of orgs, projects, services, environments, connectors and pipelines using the Harness Terraform Provider.
+    </>
+  ),
+  ribbon: true,
+  type: [docType.Documentation],
+  time: '5 min',
+  link: '/tutorials/platform/onboard-terraform-provider',
+},
+
+];
+
 export default function AllTutorials() {
   return (
     // <Layout title="All Tutorials" description="All Tutorials">
@@ -339,6 +368,15 @@ export default function AllTutorials() {
                 </h3>
             </div>
             <ModuleCard FeatureList={CEList}/>
+        </div>
+        <div className={styles.subSection}>
+            <div className={styles.SectionName}>
+                <img src="/img/logo.svg"/>
+                <h3>
+                    Administer Harness Platform
+                </h3>
+            </div>
+            <ModuleCard FeatureList={PlatformList}/>
         </div>
       </div>
     // </Layout>
