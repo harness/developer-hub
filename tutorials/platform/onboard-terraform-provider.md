@@ -5,7 +5,7 @@ description: Onboard with Terraform Provider
 
 # Onboard with Terraform Provider
 
-The [Harness Terraform Provider](https://registry.terraform.io/providers/harness/harness/) enables automated lifecycle management of the Harness Platform using Terraform. Currently the following Harness entities can be managed via the provider.
+The [Harness Terraform Provider](https://registry.terraform.io/providers/harness/harness/) enables automated lifecycle management of the Harness Platform using Terraform. You can onboard onto Harness on day 1 and also make day 2 changes using tthis Provider. Currently the following Harness resources can be managed via the Provider.
 
 - Organizations
 - Projects
@@ -17,7 +17,7 @@ The [Harness Terraform Provider](https://registry.terraform.io/providers/harness
 - Permissions
 - Secrets
 
-This tutorial shows you how to manage all the above entities except Permissions and Secrets.
+This tutorial shows you how to manage all the above resources except Permissions and Secrets.
 
 ## Prerequisite
 
@@ -30,7 +30,7 @@ terraform -version
 
 ### Get Your Harness Account ID 
 
-You will also need to provde your Harness accountId as an input parameter to the terraform provider. This accountId is present in every Harness URL. For example, in the following URL
+You will also need to provde your Harness accountId as an input parameter to the Provider. This accountId is present in every Harness URL. For example, in the following URL
 
 ```
 https://app.harness.io/ng/#/account/6_vVHzo9Qeu9fXvj-AcQCb/settings/overview
@@ -50,9 +50,9 @@ You can create your own main.tf file. For this tutorial, we will use a sample ma
 curl -LO https://raw.githubusercontent.com/harness-apps/developer-hub-apps/main/terraform/main.tf
 ```
 
-### Specify the harness provider
+### Configure the Harness Provider
 
-Open the `main.tf` file in a text editor and replace `PUT_YOUR_HARNESS_ACCOUNTID_HERE` and `PUT_YOUR_API_KEY_TOKEN_HERE` with your Harness accountId and PAT values respectively. 
+Open the `main.tf` file in a text editor and replace `PUT_YOUR_HARNESS_ACCOUNTID_HERE` and `PUT_YOUR_API_KEY_TOKEN_HERE` with your Harness accountId and API key token values respectively. 
 
 ```
 terraform {
@@ -76,7 +76,7 @@ provider "harness" {
 
 Review the`main.tf` file for the operations that terraform is going to execute for us. As you can see, the sample first creates a new organization as well as a new project inside that organization. It then creates a helm chart service that will be deployed to Kubernetes infrastructure running in a pre-production environment. A new pipeline is then created to make this service deployment happen. 
 
-At every step, you can use existing organizations, projects, services, environments if you so desire. We will now review the terraform resource definition for each of these entities.
+At every step, you can use existing organizations, projects, services, environments if you so desire. We will now review the terraform resource definition for each of these resources.
 
 #### Create a new organization
 ```
@@ -94,6 +94,9 @@ resource "harness_platform_project" "project" {
     identifier = "projbytf"
     org_id    = "orgbytf"
     description = "Created through Terraform"
+    depends_on = [
+        harness_platform_organization.org
+    ]
 }
 ```
 
@@ -105,9 +108,7 @@ resource "harness_platform_connector_helm" "helmconn" {
     name      = "HelmConnByTF"
     identifier = "helmconnbytf"
     description = "Created through Terraform"
-    yaml            = <<-EOT
-        ...
-    EOT
+    url = "https://charts.bitnami.com/bitnami"
 }
 ```
 
@@ -116,28 +117,33 @@ resource "harness_platform_connector_helm" "helmconn" {
 This service will use the above Helm connector to deploy a Helm Chart.
 ```
 resource "harness_platform_service" "service" {
-  identifier  = "identifier"
-  name        = "name"
-  description = "test"
-  org_id      = "org_id"
-  project_id  = "project_id"
+  name        = "ServiceByTF"
+  identifier  = "servicebytf"
+  description = "Created through Terraform"
+  org_id      = "orgbytf"
+  project_id  = "projbytf"
   yaml        = <<-EOT
-    ...  
+    ...
   EOT
+
+  depends_on = [
+        harness_platform_project.project
+  ]
 }
 ```
 
-#### Create a kubernetes connector at account level
+#### Create a Kubernetes connector at account level
 
-We will deploy the service defined earlier to the Kubernetes cluster associated with this connector.
+We will deploy the service defined earlier to the Kubernetes cluster associated with this connector. This connector will inherit the permissions of a delegate named `firstk8sdel` which you can install using the Kubernetes delegate instructions from [Install Delegate](/tutorials/platform/install-delegate)
 ```
 resource "harness_platform_connector_kubernetes" "k8sconn" {
-    name      = "K8SConnByTF"
-    identifier = "k8sconnbytf"
-    description = "Created through Terraform"
-    yaml            = <<-EOT
-        ...
-    EOT
+  name        = "K8SConnByTF"
+  identifier  = "k8sconnbytf"
+  description = "Created through Terraform"
+
+  inherit_from_delegate {
+    delegate_selectors = ["firstk8sdel"]
+  }
 }
 ```
 
@@ -146,15 +152,19 @@ resource "harness_platform_connector_kubernetes" "k8sconn" {
 Create an environment inside the project that refers to the Kubernetes connector we defined in the previous step. Environments can be of `PreProduction` or `Production` types and we will use the former for this example.
 ```
 resource "harness_platform_environment" "env" {
-  identifier = "identifier"
-  name       = "name"
+  name       = "EnvByTF"
+  identifier = "envbytf"
   org_id     = "orgbytf"
   project_id = "projbytf"
   tags       = []
   type       = "PreProduction"
   yaml       = <<-EOT
-    ...   
+    ...
   EOT
+
+  depends_on = [
+        harness_platform_project.project
+  ]
 }
 ```
 
@@ -163,8 +173,8 @@ resource "harness_platform_environment" "env" {
 Create a infrastructure definition in the environment we just created.
 ```
 resource "harness_platform_infrastructure" "infra" {
-  identifier      = "preprodk8s"
-  name            = "preprod-k8s"
+  name            = "InfraByTF"
+  identifier      = "infrabytf"
   org_id          = "orgbytf"
   project_id      = "projbytf"
   env_id          = "envbytf"
@@ -173,6 +183,10 @@ resource "harness_platform_infrastructure" "infra" {
   yaml            = <<-EOT
     ...
   EOT
+
+  depends_on = [
+        harness_platform_environment.env
+  ]
 }
 ```
 
@@ -181,19 +195,24 @@ resource "harness_platform_infrastructure" "infra" {
 Every run of this pipeline will deploy a particular version of the service onto the Kubernetes cluster.
 ```
 resource "harness_platform_pipeline" "pipeline" {
-  identifier = "identifier"
-  org_id     = "orgIdentifier"
-  project_id = "projectIdentifier"
-  name       = "name"
-  yaml = <<-EOT
-    ...     
+  name       = "PipelineByTF"
+  identifier = "pipelinebytf"
+  org_id     = "orgbytf"
+  project_id = "projbytf"
+  
+  yaml       = <<-EOT
+    ...
   EOT
+
+  depends_on = [
+        harness_platform_infrastructure.infra
+  ]
 }
 ```
 
 ## Run terraform init, plan and apply
 
-Initialize terraform. This will download the harnes provider onto your machine.
+Initialize terraform. This will download the Harness Provider onto your machine.
 ```
 terraform init
 ```
@@ -203,7 +222,7 @@ Run the following step to see exactly the changes terraform is going to make on 
 terraform plan
 ```
 
-Finally, run this step to make terraform onboard your entities onto the Harness Platform.
+Finally, run this step to make terraform onboard your resources onto the Harness Platform.
 ```
 terraform apply
 ```
@@ -233,7 +252,7 @@ Apply complete! Resources: 8 added, 0 changed, 0 destroyed.
 
 ## Verify and run pipeline on Harness UI
 
-On Harness UI, you can go to Account Settings --> Organizations to see the new organization. Click View Projects to see the new project. Click the project and go into the "Continuous Delivery" module. When you click Pipelines now, you can see the new pipeline has been created. You can run this pipeline as long as you have previously installed a delegate with name `firstk8sdel` using the Kubernetes delegate instructions from the [Install Delegate](/tutorials/platform/install-delegate).
+On Harness UI, you can go to Account Settings --> Organizations to see the new organization. Click View Projects to see the new project. Click the project and go into the "Continuous Delivery" module. When you click Pipelines now, you can see the new pipeline has been created. You can run this pipeline as long as you have previously installed a delegate with name `firstk8sdel` using the Kubernetes delegate instructions from [Install Delegate](/tutorials/platform/install-delegate). As previously shown, you can change the delegate name to any other delegate you may have installed by editing the Kubernetes connector resource of the main.tf file.
 
 ## Run terraform destroy
 
