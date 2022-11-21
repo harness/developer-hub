@@ -32,7 +32,7 @@ export default function LearnAboutPlatform(): JSX.Element {
                 <path d="M482.335 518V100H597.919V531.103L482.335 592.232Z" fill="url(#paint3_linear_401_344)" />
                 </Tooltip>
             </a>
-            <a href="https://docs.harness.io/category/pfzgb4tg05-howto-cd"> 
+            <a href="/docs/continuous-delivery"> 
                 <Tooltip overlay={<p className='tooltip-max-width'>Enables engineers to deploy on-demand with Canary/Blue-Green templates, automated deployment verification, and automatic rollbacks.</p>}>
                 <path d="M632.81 252.212V0H748.394V231.938L632.81 252.212Z" fill="url(#paint4_linear_401_344)" />
                 </Tooltip>
@@ -42,7 +42,7 @@ export default function LearnAboutPlatform(): JSX.Element {
                 <path d="M787.135 252.488L787.135 0H908.619V231.924L787.135 252.488Z" fill="url(#paint16_linear_401_344)" />
                 </Tooltip>
             </a>
-            <a href="https://docs.harness.io/category/exgoemqhji-ccm">
+            <a href="/docs/cloud-cost-management">
                 <Tooltip overlay={<p className='tooltip-max-width'>Empower teams to spend less time tagging and doing analysis, and get straight to optimizing their cloud spend.
                 </p>}>
                 <path d="M939.548 900V71.8071H1059.4V663.869H939.548Z" fill="url(#paint5_linear_401_344)" />
@@ -530,32 +530,37 @@ export default function LearnAboutPlatform(): JSX.Element {
     <div className={styles.subSectionName}><h3>Platform</h3></div>
     <ul className={styles.platformList}>
         <li>
-          <a href="https://docs.harness.io/article/7fibxie636-projects-and-organizations" target="_blank"><img src="/img/automated-pipeline.svg" />
-          <h4>Organizations &amp; Projects</h4>
-          <p>Structure your development teams &amp; applications</p></a>
+          <a href="https://docs.harness.io/category/kncngmy17o-pipelines" target="_blank"><img src="/img/automated-pipeline.svg" />
+          <h4>Pipelines</h4>
+          <p>Run CI, CD, STO, FF and custom stages in an automated pipeline</p></a>
         </li>
         <li>
-          <a href="https://docs.harness.io/article/vz5cq0nfg2-rbac-in-harness" target="_blank"><img src="/img/user-group-mgmt.svg" />
-          <h4>User &amp; Role Management</h4>
-          <p>Use OAuth/SAML/SSO/LDAP providers for authentication and RBAC &amp; User Groups for authorization</p></a>
-        </li>
-        <li>
-        <a href="https://docs.harness.io/article/hngrlb7rd6-harness-secret-manager-overview" target="_blank"><img src="/img/secret-mgmt.svg" />
-          <h4>Secrets Managment</h4>
-          <p>Secure your secrets using popular Secret Managers and Key Management Systems</p></a>
+          <a href="https://docs.harness.io/article/6tl8zyxeol-template" target="_blank"><img src="/img/templates.svg" />
+          <h4>Templates</h4>
+          <p>Share organizational best practices for Pipelines, Steps, Stages, Services, Infrastructure</p></a>
         </li>
         <li>
         <a href="https://docs.harness.io/article/2k7lnc7lvl-delegates-overview" target="_blank"><img src="/img/delegates.svg" />
           <h4>Delegates</h4>
           <p>Install, configure, secure, monitor, upgrade Delegates running on your own infrastructure</p></a>
         </li>
+        <li>
+        <a href="https://docs.harness.io/article/hngrlb7rd6-harness-secret-manager-overview" target="_blank"><img src="/img/secret-mgmt.svg" />
+          <h4>Secrets Managment</h4>
+          <p>Secure your secrets using popular Secret Managers and Key Management Systems</p></a>
+        </li>    
     </ul>
     {showMore && (
       <ul className={styles.platformListMore}>
         <li>
-        <a href="https://docs.harness.io/article/6tl8zyxeol-template" target="_blank">{/* <img src="/img/Templates.svg" /> */}
-          <h4>Templates</h4>
-          <p>Share organizational best practices for Pipelines, Steps, Stages, Services, Infrastructure</p></a>
+        <a href="https://docs.harness.io/article/7fibxie636-projects-and-organizations" target="_blank">{/* <img src="/img/Templates.svg" /> */}
+          <h4>Organizations &amp; Projects</h4>
+          <p>Structure your development teams &amp; applications</p></a>
+        </li>
+        <li>
+        <a href="https://docs.harness.io/article/vz5cq0nfg2-rbac-in-harness" target="_blank">{/* <img src="/img/Templates.svg" /> */}
+          <h4>User &amp; Role Management</h4>
+          <p>Use OAuth/SAML/SSO/LDAP providers for authentication and RBAC &amp; User Groups for authorization</p></a>
         </li>
         <li>
         <a href="https://docs.harness.io/category/id0hnxv6sg-dashboards-custom" target="_blank">

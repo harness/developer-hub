@@ -138,9 +138,9 @@ helm upgrade -i firstk8sdel \
 --namespace harness-delegate-ng --create-namespace \
 harness/harness-delegate-ng \
 -f harness-delegate-values.yaml \
+--set delegateName=firstk8sdel \
 --set accountId=PUT_YOUR_HARNESS_ACCOUNTID_HERE \
---set delegateToken=PUT_YOUR_DELEGATE_TOKEN_HERE \
---set delegateName=firstk8sdel 
+--set delegateToken=PUT_YOUR_DELEGATE_TOKEN_HERE
 ```
 
 <h3> Verify Helm Delegate Connectivity </h3>

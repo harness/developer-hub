@@ -84,6 +84,11 @@ const config = {
             type: "dropdown",
             label: "Tutorials",
             items: [
+               {
+                // type: "doc",
+                label: "All Tutorials",
+                to: "tutorials/get-started",
+              },
               {
                 // type: "doc",
                 label: "Build Code",
@@ -124,8 +129,8 @@ const config = {
               },
               {
                 // type: "doc",
-                label: "Install Delegate",
-                to: "tutorials/platform/install-delegate",
+                label: "Administer Harness Platform",
+                to: "tutorials/platform",
               },
             ],
           },
@@ -144,7 +149,7 @@ const config = {
               },
               {
                 label: "Continuous Delivery",
-                href: "https://docs.harness.io/category/pfzgb4tg05-howto-cd",
+                to: "docs/continuous-delivery",
               },
               {
                 label: "Feature Flags",
@@ -152,7 +157,7 @@ const config = {
               },
               {
                 label: "Cloud Cost Management",
-                href: "https://docs.harness.io/category/exgoemqhji-ccm",
+                to: "docs/cloud-cost-management",
               },
               {
                 label: "Service Reliability Management",
@@ -167,12 +172,24 @@ const config = {
                 to: "docs/chaos-engineering",
               },
               {
+                label: "Harness Platform",
+                to: "docs/platform",
+              },
+              {
                 label: "Self-Managed Enterprise Edition",
                 to: "docs/self-managed-enterprise-edition",
               },
               {
-                label: "Harness Platform",
-                to: "docs/platform",
+                label: "Harness FirstGen",
+                to: "docs/first-gen",
+              },
+              {
+                label: "FAQs",
+                to: "docs/frequently-asked-questions",
+              },
+              {
+                label: "Troubleshooting",
+                to: "docs/troubleshooting",
               },
               {
                 label: "API Reference",
