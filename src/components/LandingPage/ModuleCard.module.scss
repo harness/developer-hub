@@ -70,7 +70,7 @@
         }
       }
 }
-.ci:hover, .cd:hover, .ff:hover, .ccm:hover, .srm:hover, .sto:hover, .ce:hover{
+.ci:hover, .cd:hover, .ff:hover, .ccm:hover, .srm:hover, .sto:hover, .ce:hover, .platform:hover {
     border: 3px solid;
     border-image-slice: 1;
     border-width: 3px;
@@ -95,6 +95,9 @@
 }
 .ce:hover{
     border-image-source: linear-gradient(to left, rgba(255, 111, 171, 1), rgba(206, 0, 86, 1));
+}
+.platform:hover{
+    border-image-source: linear-gradient(to left, var(--primary-5), var(--primary-7));
 }
 .allTutorials{
     .tutorialCard{

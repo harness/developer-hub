@@ -272,6 +272,7 @@ const PlatformList: FeatureItem[] = [
   {
     title: "Install Delegate",
     module: "platform",
+    Svg: "",
     description: (
       <>Install a Docker or Kubernetes Delegate on your infrastructure.</>
     ),
@@ -283,6 +284,7 @@ const PlatformList: FeatureItem[] = [
   {
     title: "Onboard with Terraform",
     module: "platform",
+    Svg: "",
     description: (
       <>
         Automate lifecycle management of orgs, projects, services, environments,
