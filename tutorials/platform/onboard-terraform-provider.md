@@ -233,7 +233,7 @@ Apply complete! Resources: 8 added, 0 changed, 0 destroyed.
 
 ## Verify and run pipeline on Harness UI
 
-On Harness UI, you can go to Account Settings --> Organizations to see the new organization. Click View Projects to see the new project. Click the project and go into the "Continuous Delivery" module. When you click Pipelines now, you can see the new pipeline has been created. You can run this pipeline as long as you have previously installed a delegate with name `firstk8sdel` using the Kubernetes delegate instructions from the [Install Delegate](../install-delegate).
+On Harness UI, you can go to Account Settings --> Organizations to see the new organization. Click View Projects to see the new project. Click the project and go into the "Continuous Delivery" module. When you click Pipelines now, you can see the new pipeline has been created. You can run this pipeline as long as you have previously installed a delegate with name `firstk8sdel` using the Kubernetes delegate instructions from the [Install Delegate](/tutorials/platform/install-delegate).
 
 ## Run terraform destroy
 
