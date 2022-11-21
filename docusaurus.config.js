@@ -140,7 +140,7 @@ const config = {
             label: "Documentation",
             items: [
               {
-                label: "Getting Started",
+                label: "Get Started",
                 to: "docs/getting-started",
               },
               {
