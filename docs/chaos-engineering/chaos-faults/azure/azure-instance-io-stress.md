@@ -5,7 +5,7 @@ title: Azure Instance IO Stress
 
 ## Introduction
 
-- Azure Instance IO Stress contains chaos to disrupt the state of infra resources. The experiment can induce stress chaos on Azure Instance using Azure Run Command, this is carried out by using bash scripts which are in-built in the experiment for the given chaos scenario.
+- Azure Instance IO Stress contains chaos to disrupt the state of infra resources. The fault can induce stress chaos on Azure Instance using Azure Run Command, this is carried out by using bash scripts which are in-built in the fault for the given chaos scenario.
 - It causes IO Stress chaos on Azure Instance using an bash script for a certain chaos duration.
 
 :::tip Fault execution flow chart
@@ -19,7 +19,7 @@ title: Azure Instance IO Stress
 :::info
 
 - Filesystem read and write is another very common and frequent scenario we find with processes/applications that can result in the impact on its delivery. These problems are generally referred to as "Noisy Neighbour" problems.
-- Injecting a rogue process into a target azure instance, we starve the main processes/applications (typically pid 1) of the resources allocated to it (where limits are defined) causing slowness in application traffic or in other cases unrestrained use can cause instance to exhaust resources leading to degradation in performance of processes/applications present on the instance. So this category of chaos experiment helps to build the immunity on the application undergoing any such stress scenario.
+- Injecting a rogue process into a target Azure instance, we starve the main processes/applications (typically pid 1) of the resources allocated to it (where limits are defined) causing slowness in application traffic or in other cases unrestrained use can cause instance to exhaust resources leading to degradation in performance of processes/applications present on the instance. So this category of chaos fault helps to build the immunity on the application undergoing any such stress scenario.
 
 :::
 

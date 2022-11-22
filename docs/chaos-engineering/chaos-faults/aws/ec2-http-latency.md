@@ -5,7 +5,7 @@ title: EC2 HTTP Latency
 
 ## Introduction
 
-- EC2 HTTP latency has chaos to disrupt the state of infra resources. This experiment induces HTTP chaos on an AWS EC2 instance using the Amazon SSM Run Command, carried out using SSM Docs that is in-built in the experiment for the given chaos scenario.
+- EC2 HTTP latency has chaos to disrupt the state of infra resources. This fault induces HTTP chaos on an AWS EC2 instance using the Amazon SSM Run Command, carried out using SSM Docs that is in-built in the fault for the given chaos scenario.
 - It injects HTTP response latency to the service whose port is specified using `TARGET_SERVICE_PORT` by starting the proxy server and redirecting the traffic through the proxy server.
 - It introduces HTTP latency chaos on the EC2 instance using an SSM doc for a certain chaos duration.
 
@@ -119,7 +119,7 @@ You can pass the VM credentials as secrets or as a chaosengine environment varia
         </tr>
         <tr>
             <td> INSTALL_DEPENDENCY </td>
-            <td> Whether to install the dependency to run the experiment </td>
+            <td> Whether to install the dependency to run the fault </td>
             <td> If the dependency already exists, you can turn it off (defaults to True)</td>
         </tr>
         <tr>

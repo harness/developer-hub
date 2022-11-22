@@ -115,7 +115,7 @@ Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/ebs-loss-by-id/ebs-volume-id.yaml yaml)
 ```yaml
-# contains EBS volume id 
+# contains EBS volume ID 
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -128,7 +128,7 @@ spec:
     spec:
       components:
         env:
-        # id of the EBS volume
+        # ID of the EBS volume
         - name: EBS_VOLUME_ID
           value: 'ebs-vol-1'
         # region for the EBS volume

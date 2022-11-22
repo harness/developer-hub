@@ -5,7 +5,7 @@ title: ECS Container IO Hog
 
 ## Introduction
 
-- ECS Container IO hog contains chaos to disrupt the state of infra resources. The experiment can induce a stress chaos on AWS ECS container using Amazon SSM Run Command, this is carried out by using SSM Docs which is in-built in the experiment for the give chaos experiment.
+- ECS Container IO hog contains chaos to disrupt the state of infra resources. The fault can induce a stress chaos on AWS ECS container using Amazon SSM Run Command, this is carried out by using SSM Docs which is in-built in the fault for the give chaos experiment.
 
 - It causes IO chaos on containers of ECS task with given `CLUSTER_NAME` using an SSM docs for a certain chaos duration.
 
@@ -24,7 +24,7 @@ title: ECS Container IO Hog
 <div>
 Filesystem read and write is another very common and frequent scenario we find with conrainers/applications that can result in the eviction of the application (task container) and impact its delivery. Such scenarios that can still occur despite whatever availability aids docker provides. These problems are generally referred to as "Noisy Neighbour" problems.
 
-Injecting a rogue process into a target task container, we starve the main microservice process (typically pid 1) of the resources allocated to it (where limits are defined) causing slowness in application traffic or in other cases unrestrained use can cause instance to exhaust resources leading to eviction of all task containers. So this category of chaos experiment helps to build the immunity on the application undergoing any such stress scenario.
+Injecting a rogue process into a target task container, we starve the main microservice process (typically pid 1) of the resources allocated to it (where limits are defined) causing slowness in application traffic or in other cases unrestrained use can cause instance to exhaust resources leading to eviction of all task containers. So this category of chaos fault helps to build the immunity on the application undergoing any such stress scenario.
 </div>
 </details>
 
@@ -38,7 +38,7 @@ Injecting a rogue process into a target task container, we starve the main micro
 
 - Ensure that the ECS container metadata is enabled this feature is disabled by default. To enable it please follow the aws docs to [Enabling container metadata](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-metadata.html). If you have your task running prior this activity you may need to restart it to get the metadata directory as mentioned in the docs.
 
-- Ensure that both you and ECS cluster instances have a Role with required AWS access to do SSM and ECS operations. Refer the below mentioned sample policy for the experiment (please note that the sample policy can be minimised further). To know more checkout [Systems Manager Docs](https://docs.aws.amazon.com/systems-manager/latest/userguide/setup-launch-managed-instance.html). Also, please refer the below mentioned policy required for the experiment.
+- Ensure that both you and ECS cluster instances have a Role with required AWS access to do SSM and ECS operations. Refer the below mentioned sample policy for the fault (please note that the sample policy can be minimised further). To know more checkout [Systems Manager Docs](https://docs.aws.amazon.com/systems-manager/latest/userguide/setup-launch-managed-instance.html). Also, please refer the below mentioned policy required for the experiment.
 
 - Ensure to create a Kubernetes secret having the AWS access configuration(key) in the `CHAOS_NAMESPACE`. A sample secret file looks like:
 
@@ -66,10 +66,10 @@ stringData:
 
 :::
 
-## Experiment tunables
+## Fault tunables
 
 <details>
-    <summary>Check the Experiment Tunables</summary>
+    <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>
     <table>
         <tr>
@@ -138,7 +138,7 @@ stringData:
 </table>
 </details>
 
-## Experiment Examples
+## Fault Examples
 
 ### Common and AWS specific tunables
 

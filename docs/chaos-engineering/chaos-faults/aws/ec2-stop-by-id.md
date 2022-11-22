@@ -48,7 +48,7 @@ stringData:
 
 ### WARNING
 
-If the target EC2 instance is a part of a managed node group, drain the target node of any application running on it. Isolate the target node before running the experiment so that the experiment pods are not scheduled on it.
+If the target EC2 instance is a part of a managed node group, drain the target node of any application running on it. Isolate the target node before running the fault so that the fault pods are not scheduled on it.
 :::
 
 ## Default Validations
@@ -143,7 +143,7 @@ spec:
     spec:
       components:
         env:
-        # id of the EC2 instance
+        # ID of the EC2 instance
         - name: EC2_INSTANCE_ID
           value: 'instance-1'
         # region for the EC2 instance

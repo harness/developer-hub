@@ -43,7 +43,7 @@ Use the following example to tune this:
 [embedmd]:# (./static/manifests/common/pod-affected-percentage.yaml yaml)
 ```yaml
 ## it contains percentage of application pods to be targeted with matching labels or names in the application namespace
-## supported for all pod-level experiment expect pod-autoscaler
+## supported for all pod-level fault expect pod-autoscaler
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:

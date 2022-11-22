@@ -145,7 +145,7 @@ spec:
         # it should be provided in same order of DISK_VOLUME_NAMES
         - name: ZONES
           value: 'zone-01,zone-02'
-        # GCP project id to which disk volume belongs
+        # GCP project ID to which disk volume belongs
         - name: GCP_PROJECT_ID
           value: 'project-id'
         - name: TOTAL_CHAOS_DURATION

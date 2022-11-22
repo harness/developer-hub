@@ -20,7 +20,7 @@ title: ECS Instance Stop
 <div>
 EC2 instance chaos stop is another very common and frequent scenario we find with ECS clusters that can result in breaking of agent that manages task container on ECS cluster and impact its delivery. Such scenarios that can still occur despite whatever availability aids docker provides.
 
-Killing the EC2 instance container will distrupt the performance of it and impact to smooth working of task containers. So this category of chaos experiment helps to build the immunity on the application undergoing any such scenarios.
+Killing the EC2 instance container will distrupt the performance of it and impact to smooth working of task containers. So this category of chaos fault helps to build the immunity on the application undergoing any such scenarios.
 </div>
 </details>
 
@@ -60,10 +60,10 @@ stringData:
 
 :::
 
-## Experiment tunables
+## Fault tunables
 
 <details>
-    <summary>Check the Experiment Tunables</summary>
+    <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>
     <table>
         <tr>
@@ -106,7 +106,7 @@ stringData:
       </tr>
       <tr> 
         <td> EC2_INSTANCE_ID </td>
-        <td> Provide the target instance id from ECS cluster</td>
+        <td> Provide the target instance ID from ECS cluster</td>
         <td> If not provided will select randomly </td>
       </tr>
       <tr>
@@ -122,7 +122,7 @@ stringData:
     </table>
 </details>
 
-## Experiment Examples
+## Fault Examples
 
 ### Common and AWS specific tunables
 

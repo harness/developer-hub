@@ -17,7 +17,7 @@ title: Azure Web App Stop
 <div>
 Web App stop is another very frequent scenario we find with Azure web app service which stops a running web app and impacts its delivery. Such scenarios can still occur despite whatever availability aids web app service provides.
 
-Stopping the web app will disrupt its performance and impact the smooth working of the application. So this category of chaos experiment helps to build immunity to the application undergoing any such scenarios.
+Stopping the web app will disrupt its performance and impact the smooth working of the application. So this category of chaos fault helps to build immunity to the application undergoing any such scenarios.
 </div>
 </details>
 

@@ -1,7 +1,7 @@
 ---
-title: Common AWS Experiment Tunables
+title: Common AWS Fault Tunables
 ---
-AWS-specific experiment tunables.
+AWS-specific fault tunables.
 
 ### Managed Nodegroup
 
@@ -29,10 +29,10 @@ spec:
         # supports enable and disable values, default value: disable
         - name: MANAGED_NODEGROUP
           value: 'enable'
-        # region for the ec2 instance
+        # region for the EC2 instance
         - name: REGION
           value: 'us-east-1'
-        # tag of the ec2 instance
+        # tag of the EC2 instance
         - name: INSTANCE_TAG
           value: 'key:value'
         - name: TOTAL_CHAOS_DURATION

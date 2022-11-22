@@ -58,7 +58,7 @@ stringData:
 - The Azure instance should be in healthy state.
 :::
 
-## Experiment Tunables
+## Fault Tunables
 <details>
     <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>

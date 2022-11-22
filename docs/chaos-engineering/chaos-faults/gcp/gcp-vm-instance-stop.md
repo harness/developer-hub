@@ -6,7 +6,7 @@ title: GCP VM Instance Stop
 ## Introduction
 - It powers off of a GCP VM instance by instance name or list of instance names before bringing it back to the running state after the specified chaos duration.
 - It checks the performance of the application/process running on the VM instance.
-- When the `MANAGED_INSTANCE_GROUP` is `enable`, the experiment doesn't start the instances after chaos. It checks the instance group for new instances.
+- When the `MANAGED_INSTANCE_GROUP` is `enable`, the fault doesn't start the instances after chaos. It checks the instance group for new instances.
 
 :::tip Fault execution flow chart
 ![GCP VM Instance Stop](./static/images/gcp-vm-instance-stop.png)
@@ -145,7 +145,7 @@ spec:
         # it should be provided in same order of VM_INSTANCE_NAMES
         - name: ZONES
           value: 'zone-01,zone-02'
-        # GCP project id to which vm instance belongs
+        # GCP project ID to which vm instance belongs
         - name: GCP_PROJECT_ID
           value: 'project-id'
 ```
@@ -182,7 +182,7 @@ spec:
         # it should be provided in same order of VM_INSTANCE_NAMES
         - name: ZONES
           value: 'zone-01,zone-02'
-        # GCP project id to which vm instance belongs
+        # GCP project ID to which vm instance belongs
         - name: GCP_PROJECT_ID
           value: 'project-id'
         - name: TOTAL_CHAOS_DURATION

@@ -13,7 +13,7 @@ spec:
         env:
         - name: VOLUME_MOUNT_PATH
           VALUE: '/tmp'
-        # id of the EC2 instance
+        # ID of the EC2 instance
         - name: EC2_INSTANCE_ID
           value: 'instance-1'
         # region for the EC2 instance
