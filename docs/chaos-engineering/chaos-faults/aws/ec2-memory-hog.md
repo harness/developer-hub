@@ -5,7 +5,7 @@ title: EC2 Memory Hog
 
 ## Introduction
 
-- EC2 Memory Hog contains chaos to disrupt the state of infra resources. The fault can induce stress chaos on AWS EC2 Instance using Amazon SSM Run Command, this is carried out by using SSM Docs which is in-built in the fault for the give chaos scenario.
+- EC2 Memory Hog contains chaos to disrupt the state of infra resources. The experiment can induce stress chaos on AWS EC2 Instance using Amazon SSM Run Command, this is carried out by using SSM Docs which is in-built in the experiment for the give chaos scenario.
 - It causes Memory Hog chaos on EC2 Instance using an SSM doc for a certain chaos duration.
 
 :::tip Fault execution flow chart

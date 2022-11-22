@@ -4,9 +4,8 @@ title: Azure Instance Stop
 ---
 
 ## Introduction
-
-- It causes PowerOff an Azure instance before bringing it back to running state after the specified chaos duration.
-- It helps to check the performance of the application/process running on the instance.
+- It results in PowerOff of an Azure instance before bringing it back to running state after the specified chaos duration.
+- It checks the performance of the application/process running on the instance.
 
 :::tip Fault execution flow chart
 ![Azure Instance Stop](./static/images/azure-instance-stop.png)
@@ -24,11 +23,10 @@ Coming soon.
 ## Prerequisites
 
 :::info
-
-- Ensure that Kubernetes Version > 1.16.
-- Ensure that you have sufficient Azure access to stop and start the an instance.
-- We will use Azure [file-based authentication](https://docs.microsoft.com/en-us/azure/developer/go/azure-sdk-authorization#use-file-based-authentication) to connect with the instance using Azure GO SDK in the fault. For generating auth file run `az ad sp create-for-rbac --sdk-auth > azure.auth` Azure CLI command.
-- Ensure to create a Kubernetes secret having the auth file created in the step in `CHAOS_NAMESPACE`. A sample secret file looks like:
+- Kubernetes > 1.16.
+- Azure access to stop and start the an instance. 
+- Use Azure [ file-based authentication ](https://docs.microsoft.com/en-us/azure/developer/go/azure-sdk-authorization#use-file-based-authentication) to connect to the instance using Azure GO SDK in the experiment. To generate the auth file, run `az ad sp create-for-rbac --sdk-auth > azure.auth` Azure CLI command.
+- Kubernetes secret that has the auth file created in the earlier step in `CHAOS_NAMESPACE`. A secret file looks like:
 
 ```yaml
 apiVersion: v1
@@ -51,21 +49,16 @@ stringData:
       "managementEndpointUrl": "XXXXXXXXX"
     }
 ```
-
-- If you change the secret key name (from `azure.auth`) please also update the `AZURE_AUTH_LOCATION` ENV value on `experiment.yaml` with the same name.
-
+- If you change the secret key name (from `azure.auth`), update the `AZURE_AUTH_LOCATION` environment variable on `experiment.yaml` with the same name.
 :::
 
 ## Default Validations
 
 :::info
-
-- Azure instance should be in healthy state.
-
+- The Azure instance should be in healthy state.
 :::
 
-## Fault tunables
-
+## Experiment Tunables
 <details>
     <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>
@@ -129,9 +122,9 @@ Refer the [common attributes](../common-tunables-for-all-faults) to tune the com
 
 ### Stop Instances By Name
 
-It contains comma separated list of instance names subjected to instance stop chaos. It can be tuned via `AZURE_INSTANCE_NAME` ENV.
+It has comma separated list of instance names subject to instance stop chaos. You can tune it using the `AZURE_INSTANCE_NAME` environment variable.
 
-Use the following example to tune this:
+You can use the following example to tune it:
 
 [embedmd]:# (./static/manifests/azure-instance-stop/azure-instance.yaml yaml)
 ```yaml
@@ -158,9 +151,9 @@ spec:
 
 ### Stop Scale Set Instances
 
-It contains comma separated list of instance names subjected to instance stop chaos belonging to Scale Set or AKS. It can be tuned via `SCALE_SET` ENV.
+It has comma separated list of instance names subject to instance stop chaos that belong to Scale Set or AKS. You can tune it using the `SCALE_SET` environment variable.
 
-Use the following example to tune this:
+You can use the following example to tune it:
 
 [embedmd]:# (./static/manifests/azure-instance-stop/azure-scale-set-instance.yaml yaml)
 ```yaml

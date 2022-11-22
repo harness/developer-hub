@@ -5,8 +5,8 @@ title: EC2 HTTP Modify Body
 
 ## Introduction
 
-- It injects HTTP chaos which can affect the request/response by modifying either the status code, body or the headers by starting proxy server and then redirecting the traffic through the proxy server.
-- It can test the application's resilience to error or incorrect http response body.
+- It injects HTTP chaos which affects the request/response by modifying the status code or the body or the headers by starting proxy server and redirecting the traffic through the proxy server.
+- It can test the application's resilience to error or incorrect HTTP response body.
 
 :::tip Fault execution flow chart
 ![EC2 HTTP Modify Response](./static/images/ec2-http-modify-body.png)
@@ -16,12 +16,12 @@ title: EC2 HTTP Modify Body
 
 :::info
 
-- Ensure that Kubernetes Version >= 1.17
+- Kubernetes >= 1.17
 
 **AWS EC2 Access Requirement:**
 
-- Ensure that SSM agent is installed and running in the target EC2 instance.
-- Ensure to create a Kubernetes secret having the AWS Access Key ID and Secret Access Key credentials in the `CHAOS_NAMESPACE`. A sample secret file looks like:
+- SSM agent is installed and running in the target EC2 instance.
+- Kubernetes secret with AWS Access Key ID and Secret Access Key credentials in the `CHAOS_NAMESPACE`. A secret file looks like:
 
 ```yaml
 apiVersion: v1
@@ -37,18 +37,18 @@ stringData:
     aws_secret_access_key = XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ```
 
-- If you change the secret name then please also update the `experiment.yml` ENV values for deriving the respective data from the secret. Also account for the path at which this secret is mounted as a file in the manifest ENV `AWS_SHARED_CREDENTIALS_FILE`.
+- If you change the secret, update the `experiment.yml` environment values to extract the relevant data from the secret. Also account for the path at which this secret is mounted as a file in the manifest environment variable `AWS_SHARED_CREDENTIALS_FILE`.
 
 ### NOTE
 
-You can pass the VM credentials as secrets or as an chaosengine ENV variable.
+You can pass the VM credentials as secrets or as an chaosengine environment variable.
 :::
 
 ## Default Validations
 
 :::info
 
-- EC2 instance should be in healthy state.
+- The EC2 instance should be in a healthy state.
 
 :::
 
@@ -81,7 +81,7 @@ You can pass the VM credentials as secrets or as an chaosengine ENV variable.
         <tr>
             <td> RESPONSE_BODY </td>
             <td> Body string to overwrite the http response body</td>
-            <td> If no value is provided, response will be an empty body. Defaults to empty body </td>
+            <td> If no value is provided, response will be an empty body (defaults to empty body) </td>
         </tr>
     </table>
     <h2>Optional Fields</h2>
@@ -93,7 +93,7 @@ You can pass the VM credentials as secrets or as an chaosengine ENV variable.
         </tr>
         <tr>
             <td> TOTAL_CHAOS_DURATION </td>
-            <td> The total time duration for chaos insertion (sec) </td>
+            <td> The total time duration for chaos insertion (in sec) </td>
             <td> Defaults to 30s </td>
         </tr>
         <tr>
@@ -103,37 +103,37 @@ You can pass the VM credentials as secrets or as an chaosengine ENV variable.
         </tr>
         <tr>
             <td> AWS_SHARED_CREDENTIALS_FILE </td>
-            <td> Provide the path for aws secret credentials</td>
+            <td> Provide the path for AWS secret credentials</td>
             <td> Defaults to <code>/tmp/cloud_config.yml</code> </td>
-        </tr>
+          </tr>
         <tr>
             <td> SEQUENCE </td>
-            <td> It defines sequence of chaos execution for multiple instance </td>
+            <td> Defines the sequence of chaos execution for multiple instances </td>
             <td> Default value: parallel. Supported: serial, parallel </td>
         </tr>
         <tr>
             <td> RAMP_TIME </td>
-            <td> Period to wait before and after injection of chaos in sec </td>
-            <td> Eg: 30 </td>
+            <td> Period to wait before and after injection of chaos (in sec) </td>
+            <td> For example: 30 </td>
         </tr>
         <tr>
             <td> INSTALL_DEPENDENCY </td>
-            <td> Whether to install the dependency to run the fault </td>
-            <td> If the dependency already exists, you can turn it off. Defaults to True.</td>
+            <td> Whether to install the dependency to run the experiment </td>
+            <td> If the dependency already exists, you can turn it off (defaults to True)</td>
         </tr>
         <tr>
-            <td> PROXY_PORT </td>
-            <td> Port where the proxy will be listening for requests</td>
+            <td> PROXY_PORT  </td>
+            <td> Port where the proxy listens for requests</td>
             <td> Defaults to 20000 </td>
         </tr>
         <tr>
             <td> TOXICITY </td>
-            <td> Percentage of HTTP requests to be affected </td>
+            <td> Percentage of HTTP requests affected </td>
             <td> Defaults to 100 </td>
         </tr>
         <tr>
-          <td> NETWORK_INTERFACE </td>
-          <td> Network interface to be used for the proxy</td>
+          <td> NETWORK_INTERFACE  </td>
+          <td> Network interface used for the proxy</td>
           <td> Defaults to `eth0` </td>
         </tr>
     </table>
@@ -147,9 +147,9 @@ Refer the [common attributes](../common-tunables-for-all-faults) to tune the com
 
 ### Target Service Port
 
-It defines the port of the targeted service that is being targeted. It can be tuned via `TARGET_SERVICE_PORT` ENV.
+It is the targeted service's port being targeted. You can tune it using the `TARGET_SERVICE_PORT` environment variable.
 
-Use the following example to tune this:
+You can use the following example to tune it:
 
 [embedmd]:# (./static/manifests/http-modify-body/target-service-port.yaml yaml)
 ```yaml
@@ -173,7 +173,7 @@ spec:
 
 ### Modifying the Response Body
 
-Use this example to modify the body of the response.
+You can use the following example to modify the response body:
 
 ***Note***: `HTTP_CHAOS_TYPE` should be provided as `body`
 
@@ -202,9 +202,9 @@ spec:
 
 ### Proxy Port
 
-It defines the port on which the proxy server will listen for requests. It can be tuned via `PROXY_PORT` ENV.
+It is the port where the proxy server listens for requests. You can tune it using the `PROXY_PORT` environment variable.
 
-Use the following example to tune this:
+You can use the following example to tune it:
 
 [embedmd]:# (./static/manifests/http-modify-body/proxy-port.yaml yaml)
 ```yaml
@@ -231,10 +231,10 @@ spec:
 
 ### Toxicity
 
-It defines the toxicity value to be added to the http request. It can be tuned via `TOXICITY` ENV.
-Toxicity value defines the percentage of the total number of http requests to be affected.
+It defines the toxicity value to be added to the http request. You can tune it using the `TOXICITY` environment variable.
+Toxicity value defines the percentage of the total number of http requests that are affected.
 
-Use the following example to tune this:
+You can use the following example to tune it:
 
 [embedmd]:# (./static/manifests/http-modify-body/toxicity.yaml yaml)
 ```yaml
@@ -263,9 +263,9 @@ spec:
 
 ### Network Interface
 
-It defines the network interface to be used for the proxy. It can be tuned via `NETWORK_INTERFACE` ENV.
+It defines the network interface used for the proxy. You can tune it using the `NETWORK_INTERFACE` environment variable.
 
-Use the following example to tune this:
+You can use the following example to tune it:
 
 [embedmd]:# (./static/manifests/http-modify-body/network-interface.yaml yaml)
 ```yaml

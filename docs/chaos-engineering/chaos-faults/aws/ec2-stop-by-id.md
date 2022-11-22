@@ -26,12 +26,9 @@ Coming soon.
 
 :::info
 
-- Ensure that Kubernetes Version >= 1.17
-
-**AWS EC2 Access Requirement:**
-
-- Ensure that you have sufficient AWS access to stop and start an EC2 instance.
-- Ensure to create a Kubernetes secret having the AWS access configuration(key) in the `CHAOS_NAMESPACE`. A sample secret file looks like:
+- Kubernetes >= 1.17
+- Access to start and stop an EC2 instance in AWS.
+- Kubernetes secret that has AWS access configuration(key) in the `CHAOS_NAMESPACE`. A secret file looks like:
 
 ```yaml
 apiVersion: v1
@@ -47,18 +44,18 @@ stringData:
     aws_secret_access_key = XXXXXXXXXXXXXXX
 ```
 
-- If you change the secret key name (from `cloud_config.yml`) please also update the `AWS_SHARED_CREDENTIALS_FILE` ENV value on `experiment.yaml`with the same name.
+- If you change the secret key name (from `cloud_config.yml`), update the `AWS_SHARED_CREDENTIALS_FILE` environment variable value on `experiment.yaml` with the same name.
 
 ### WARNING
 
-If the target EC2 instance is a part of a self-managed nodegroup then make sure to drain the target node if any application is running on it and also ensure to cordon the target node before running the fault so that the fault pods do not schedule on it.
+If the target EC2 instance is a part of a managed node group, drain the target node of any application running on it. Isolate the target node before running the experiment so that the experiment pods are not scheduled on it.
 :::
 
 ## Default Validations
 
 :::info
 
-- EC2 instance should be in healthy state.
+- The EC2 instance should be in a healthy state.
 
 :::
 

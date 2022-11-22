@@ -1,5 +1,5 @@
-# Platform Docs Coming Soon
+# Harness Platform docs coming soon
 
-Coming soon.
+Harness Platform docs will be available here soon.
 
-You can find existing Harness Platform Docs at: [https://docs.harness.io/category/3fso53aw1u-howto-general](https://docs.harness.io/category/3fso53aw1u-howto-general).
+In the meantime, you can find existing Harness Platform docs at: [https://docs.harness.io/category/3fso53aw1u-howto-general](https://docs.harness.io/category/3fso53aw1u-howto-general).

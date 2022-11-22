@@ -5,7 +5,7 @@ Fault tunables which are common for all the faults. These tunables can be provid
 
 ### Duration of the chaos
 
-It defines the total time duration of the chaos injection. It can be tuned with the `TOTAL_CHAOS_DURATION` ENV. It is provided in a unit of seconds.
+It defines the total time duration of the chaos injection. You can tune it using the `TOTAL_CHAOS_DURATION` environment variable. It is in unit of seconds.
 
 Use the following example to tune this:
 
@@ -70,7 +70,41 @@ spec:
 
 ### Ramp Time
 
-It defines the period to wait before and after the injection of chaos. It can be tuned with the `RAMP_TIME` ENV. It is provided in a unit of seconds.
+The multiple iterations of chaos can be tuned via setting `CHAOS_INTERVAL` ENV. Which defines the delay between each iteration of chaos.
+
+Use the following example to tune this:
+
+[embedmd]:# (./static/manifest/common/chaos-interval.yaml yaml)
+```yaml
+# defines delay between each successive iteration of the chaos
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  appinfo:
+    appns: "default"
+    applabel: "app=nginx"
+    appkind: "deployment"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: pod-delete
+    spec:
+      components:
+        env:
+        # delay between each iteration of chaos
+        - name: CHAOS_INTERVAL
+          value: '15'
+        # time duration for the chaos execution
+        - name: TOTAL_CHAOS_DURATION
+          VALUE: '60'
+```
+
+### Ramp Time
+
+It defines the period to wait before and after the injection of chaos. You can tune it using the `RAMP_TIME` environment variable. It is in unit of seconds.
 
 Use the following example to tune this:
 
@@ -101,7 +135,7 @@ spec:
 
 ### Sequence of chaos execution
 
-It defines the sequence of the chaos execution in the case of multiple targets. It can be tuned with the `SEQUENCE` ENV. It supports the following modes:
+It defines the sequence of the chaos execution in the case of multiple targets. You can tune it using the `SEQUENCE` environment variable. It supports the following modes:
 
 - `parallel`: The chaos is injected in all the targets at once.
 - `serial`: The chaos is injected in all the targets one by one.
@@ -137,7 +171,7 @@ spec:
 
 ### Name of chaos library
 
-It defines the name of the chaos library used for the chaos injection. It can be tuned with the `LIB` ENV.
+It defines the name of the chaos library used for the chaos injection. You can tune it using the `LIB` environment variable.
 
 Use the following example to tune this:
 
@@ -168,7 +202,7 @@ spec:
 
 ### Instance ID
 
-It defines a user-defined string that holds metadata/info about the current run/instance of chaos. Ex: 04-05-2020-9-00. This string is appended as a suffix in the chaosresult CR name. It can be tuned with `INSTANCE_ID` ENV.
+It defines a user-defined string that holds metadata/info about the current run/instance of chaos. For example: 04-05-2020-9-00. This string is appended as a suffix in the chaosresult CR name. It can be tuned with `INSTANCE_ID` ENV.
 
 Use the following example to tune this:
 

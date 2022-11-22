@@ -5,7 +5,7 @@ title: Azure Instance CPU Hog
 
 ## Introduction
 
-- Azure Instance CPU Hog contains chaos to disrupt the state of infra resources. The fault can induce stress chaos on Azure Azure Instance using Azure Run Command, this is carried out by using bash scripts which are in-built in the fault for the given chaos scenario.
+- Azure Instance CPU Hog contains chaos to disrupt the state of infra resources. The experiment can induce stress chaos on Azure Azure Instance using Azure Run Command, this is carried out by using bash scripts which are in-built in the experiment for the given chaos scenario.
 - It causes CPU Hog chaos on Azure Instance using an bash script for a certain chaos duration.
 
 :::tip Fault execution flow chart
@@ -14,12 +14,12 @@ title: Azure Instance CPU Hog
 
 ## Uses
 
-### Uses of the fault
+### Uses of the experiment
 
 :::info
 
-- The fault causes CPU hog/stress on the target Azure Instance(s). The idea of this fault is to simulate issues when there is lack of CPU for other runnning processes/applications resulting into degrading their performance.
-- Injecting a rogue process into a target Azure instance, we starve the main processes/applications (typically pid 1) of the resources allocated to it (where limits are defined) causing slowness in application traffic or in other cases unrestrained use can cause instance to exhaust resources leading to degradation in performance of processes/applications present on the instance. So this category of chaos fault helps to build the immunity on the application undergoing any such stress scenario.
+- The experiment causes CPU hog/stress on the target Azure Instance(s). The idea of this experiment is to simulate issues when there is lack of CPU for other runnning processes/applications resulting into degrading their performance.
+- Injecting a rogue process into a target azure instance, we starve the main processes/applications (typically pid 1) of the resources allocated to it (where limits are defined) causing slowness in application traffic or in other cases unrestrained use can cause instance to exhaust resources leading to degradation in performance of processes/applications present on the instance. So this category of chaos experiment helps to build the immunity on the application undergoing any such stress scenario.
 
 :::
 

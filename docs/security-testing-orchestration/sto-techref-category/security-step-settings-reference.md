@@ -28,7 +28,7 @@ The following scanners are supported.
 | --- | --- | --- |
 | **Scanner Name** | **Scan Target Type** | **Scan Approach** |
 |  [Aqua Trivy](aqua-trivy-scanner-reference.md) | container | orchestratedScan, ingestionOnly |
-|  [AWS Elastic Container Registry (ECR)](#aws-elastic-container-registry-ecr) | container | dataLoad |
+|  [Image scanning - Amazon ECR](#image-scanning---amazon-ecr) | container | dataLoad |
 |  [AWS Security Hub](#aws-security-hub) | container | dataLoad |
 |  [Bandit](veracode-scanner-reference.md) | repository | orchestratedScan, ingestionOnly |
 |  [Black Duck Open Hub](#black-duck-open-hub) | repository, container | orchestratedScan, ingestionOnly |
@@ -157,7 +157,7 @@ See [Aqua Trivy Scanner Reference](aqua-trivy-scanner-reference.md)
 
 [↑ Scanners](#scanners-target-types-and-scan-approach)
 
-### AWS Elastic Container Registry (ECR)
+### Image scanning - Amazon ECR
 
 When `product_name` is set to `aws-ecr`:
 

@@ -4,9 +4,9 @@ title: GCP VM Instance Stop
 ---
 
 ## Introduction
-- It causes power-off of a GCP VM instance by instance name or list of instance names before bringing it back to the running state after the specified chaos duration.
-- It helps to check the performance of the application/process running on the VM instance.
-- When the `MANAGED_INSTANCE_GROUP` is `enable` then the fault will not try to start the instances post chaos, instead it will check the addition of new instances to the instance group.
+- It powers off of a GCP VM instance by instance name or list of instance names before bringing it back to the running state after the specified chaos duration.
+- It checks the performance of the application/process running on the VM instance.
+- When the `MANAGED_INSTANCE_GROUP` is `enable`, the experiment doesn't start the instances after chaos. It checks the instance group for new instances.
 
 :::tip Fault execution flow chart
 ![GCP VM Instance Stop](./static/images/gcp-vm-instance-stop.png)
@@ -22,9 +22,9 @@ Coming soon.
 
 ## Prerequisites
 :::info
-- Ensure that Kubernetes Version > 1.16.
-- Ensure that you have sufficient GCP permissions to stop and start the GCP VM instances.
-- Ensure to create a Kubernetes secret having the GCP service account credentials in the default namespace. A sample secret file looks like:
+- Kubernetes > 1.16.
+- GCP permissions to stop and start the GCP VM instances. 
+- Kubernetes secret that has the GCP service account credentials in the default namespace. A secret file looks like:
 ```yaml
 apiVersion: v1
 kind: Secret
@@ -47,7 +47,7 @@ stringData:
 
 ## Default Validations
 :::info
-- VM instances should be in a healthy state.
+- The VM instances should be in a healthy state.
 :::
 
 ## Fault tunables
@@ -117,11 +117,11 @@ stringData:
 Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
 ### Target GCP Instances
-It will stop all the instances with the given `VM_INSTANCE_NAMES` instance names and corresponding `ZONES` zone names in `GCP_PROJECT_ID` project.
+It stops all the instances with the given `VM_INSTANCE_NAMES` instance names and corresponding `ZONES` zone names in `GCP_PROJECT_ID` project. 
 
-`NOTE:` The `VM_INSTANCE_NAMES` contains multiple comma-separated vm instances. The comma-separated zone names should be provided in the same order as instance names.
+`NOTE:` The `VM_INSTANCE_NAMES` contains multiple comma-separated VM instances. The comma-separated zone names should be provided in the same order as the instance names.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/gcp-vm-instance-stop/gcp-instance.yaml yaml)
 ```yaml
@@ -152,9 +152,9 @@ spec:
 
 ### Managed Instance Group
 
-If vm instances belong to a managed instance group then provide the `MANAGED_INSTANCE_GROUP` as `enable` else provided it as `disable`, which is the default value.
+If VM instances belong to a managed instance group, specify the `MANAGED_INSTANCE_GROUP` as `enable`, otherwise specify it as `disable`, which is the default value. 
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/gcp-vm-instance-stop/managed-instance-group.yaml yaml)
 ```yaml
@@ -185,4 +185,43 @@ spec:
         # GCP project id to which vm instance belongs
         - name: GCP_PROJECT_ID
           value: 'project-id'
+        - name: TOTAL_CHAOS_DURATION
+          VALUE: '60'
+```
+
+### Mutiple Iterations Of Chaos
+
+You can tune different iterations of chaos by setting `CHAOS_INTERVAL` environment variable. It defines the delay between each iteration of chaos.
+
+Use the following example to tune it:
+
+[embedmd]:# (./static/manifests/gcp-vm-instance-stop/chaos-interval.yaml yaml)
+```yaml
+# defines delay between each successive iteration of the chaos
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  chaosServiceAccount: gcp-vm-instance-stop-sa
+  experiments:
+  - name: gcp-vm-instance-stop
+    spec:
+      components:
+        env:
+        # delay between each iteration of chaos
+        - name: CHAOS_INTERVAL
+          value: '15'
+        # time duration for the chaos execution
+        - name: TOTAL_CHAOS_DURATION
+          VALUE: '60'
+        - name: VM_INSTANCE_NAMES
+          value: 'instance-01,instance-02'
+        - name: ZONES
+          value: 'zone-01,zone-02'
+        - name: GCP_PROJECT_ID
+          value: 'project-id'
+       
 ```

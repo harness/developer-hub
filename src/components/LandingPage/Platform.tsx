@@ -30,8 +30,8 @@ const FeaturedList: FeatureItem[] = [{
       Install a Docker or Kubernetes Delegate. 
     </>
   ),
-  ribbon: true,
-  type: [docType.Documentation, docType.Video],
+  ribbon: false,
+  type: [docType.Documentation],
   time: '5 min',
   link: '/tutorials/platform/install-delegate',
 },
@@ -46,9 +46,22 @@ const PlatformList: FeatureItem[] = [{
     </>
   ),
   ribbon: false,
-  type: [docType.Documentation, docType.Video],
+  type: [docType.Documentation],
   time: '5 min',
   link: '/tutorials/platform/install-delegate',
+},
+{
+  title: 'Onboard with Terraform',
+  module: 'platform',
+  description: (
+    <>
+      Automate lifecycle management of orgs, projects, services, environments, connectors and pipelines using the Harness Terraform Provider.
+    </>
+  ),
+  ribbon: true,
+  type: [docType.Documentation],
+  time: '5 min',
+  link: '/tutorials/platform/onboard-terraform-provider',
 },
 
 ];

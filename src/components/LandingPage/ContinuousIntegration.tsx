@@ -87,11 +87,11 @@ export default function CI() {
     // <Layout title="CI" description="CI">
     //   <ul className={styles.breadCrumb}>
     //     <li>Get Started</li>
-    //     <li>Build Code</li>
+    //     <li>Build and Test Code</li>
     //   </ul>
     <div className="container">
       <img src="/img/ci.svg" />
-      <div className={styles.SectionName}><h3>Build Code</h3></div>
+      <div className={styles.SectionName}><h3>Build and Test Code</h3></div>
       <div className={styles.topSection}>
         <div className={styles.spaceBetween}>
           <div className={styles.moduleTitle}>

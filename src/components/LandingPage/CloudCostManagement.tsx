@@ -63,10 +63,10 @@ export default function CCM() {
           <div className={styles.spaceBetween}>
             <div className={styles.moduleTitle}>
               <img src="/img/icon_ccm.svg"/>
-              <h1>Cloud Costs Managment</h1>
+              <h1>Cloud Cost Management</h1>
             </div>
             <div>
-              <Link href="https://docs.harness.io/category/exgoemqhji-ccm">
+              <Link href="/docs/cloud-cost-management">
               <button className={clsx('button button--lg', styles.btn, styles.btnLight)}><img src="/img/icon_document.png"/> Documentation</button>
               </Link>
             </div>       

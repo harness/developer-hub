@@ -6,7 +6,7 @@ title: GCP VM Instance Stop By Label
 ## Introduction
 - It causes power-off of GCP VM instances filtered by a label before bringing it back to the running state after the specified chaos duration.
 - It helps to check the performance of the application/process running on the VM instance.
-- When the `MANAGED_INSTANCE_GROUP` is `enable` then the fault will not try to start the instances post chaos, instead it will check the addition of new instances to the instance group.
+- When the `MANAGED_INSTANCE_GROUP` is `enable` then the experiment will not try to start the instances post chaos, instead it will check the addition of new instances to the instance group.
 
 :::tip Fault execution flow chart
 ![GCP VM Instance Stop By Label](./static/images/gcp-vm-instance-stop.png)
