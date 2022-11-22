@@ -24,6 +24,7 @@ type FeatureItem = {
 const FeaturedList: FeatureItem[] = [{
   title: 'Optimizing Kubernetes Cloud Costs 101',
   module: 'ccm',
+  Svg: "/img/icon_ccm.svg",
   description: (
     <>
       This guide will walk through how start to optimize your Kubernetes Costs on a public cloud provider.
@@ -38,6 +39,7 @@ const FeaturedList: FeatureItem[] = [{
 const CCMList: FeatureItem[] = [{
   title: 'Optimizing Kubernetes Cloud Costs 101',
   module: 'ccm',
+  Svg: "/img/icon_ccm.svg",
   description: (
     <>
       This guide will walk through how start to optimize your Kubernetes Costs on a public cloud provider.
@@ -103,7 +105,7 @@ export default function CCM() {
         </div>
         <div className={styles.subSection}>
           <h3 id="all-tutorials">
-            All Cloud Cost Tutorials 
+            All CCM Tutorials 
           </h3>
             <ModuleCard FeatureList={CCMList}/>
         </div>
