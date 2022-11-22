@@ -295,6 +295,16 @@ Following Platform Chaos faults are available:
     <td>Injects ECS instance stop chaos on target ECS cluster</td>
     <td><a href="/docs/chaos-engineering/chaos-faults/aws/ecs-instance-stop">ecs-instance-stop</a></td>
   </tr>
+  <tr>
+    <td>Lambda Update function Timeout</td>
+    <td>Injects AWS upadte function timeout chaos</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/aws/lambda-update-function-timeout">lambda-update-function-timeout</a></td>
+  </tr>
+  <tr>
+    <td>Lambda Update function Memory</td>
+    <td>Injects AWS upadte function memory limit chaos</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/aws/lambda-update-function-memory">lambda-update-function-memory</a></td>
+  </tr>
 </table>
 
 ### GCP
