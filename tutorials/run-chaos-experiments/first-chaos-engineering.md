@@ -34,7 +34,7 @@ Once the environment is added, we can add chaos infrastructures to it. Here, we 
 
 Select **On New Infrastructures** and select **Continue**. Add a name to your chaos infrastructure and optionally a description and tags. Select **Next**.
 
-After that, choose the mode of installation for Harness delegate. As a quick primer, Harness delegate is a remote agent for accessing your Kubernetes cluster resources and injecting faults into them as part of a chaos experiment. The **Cluster Wide** installation mode allows you to target resources across all the namespaces in your cluster while **Namespace Mode** installation restricts chaos injection to only the namespace in which the delegate will be installed. Choose **Namespace mode** installation mode. By default, the delegate will install in the **litmus** namespace, but you can change it. Then, select **Done**.
+After that, choose the mode of installation for Harness delegate. As a quick primer, Harness delegate is a remote agent for accessing your Kubernetes cluster resources and injecting faults into them as part of a chaos experiment. The **Cluster Wide** installation mode allows you to target resources across all the namespaces in your cluster while **Namespace Mode** installation restricts chaos injection to only the namespace in which the delegate will be installed. Choose **Namespace mode** installation mode. By default, the delegate will install in the **hce** namespace, but you can change it. Then, select **Done**.
 
 ![Configure Chaos Infrastructure](./static/first-chaos/configure-chaos-infrastructure.png)
 
@@ -54,16 +54,16 @@ You can use your own application as a target, however, we will use the [Online B
 
 Before we setup our chaos experiment, let us install the target application. Run the following commands to setup the target application microservices and observability infrastructure, including, Grafana, Prometheus and a BlackBox exporter. Installation of the observability infrastructure is optional as it doesn't have any role in executing the experiment, however, it will provide us with a dashboard which will help us validate the health of the constituent application microservices in real time.
 ```bash
-❯ kubectl apply -f https://raw.githubusercontent.com/Adarshkumar14/boutique-app-monitoring/main/manifest/app.yaml -n litmus
+❯ kubectl apply -f https://raw.githubusercontent.com/chaosnative/harness-chaos-demo/main/boutique-app-manifests/manifest/app.yaml -n hce
 
-❯ kubectl apply -f https://raw.githubusercontent.com/Adarshkumar14/boutique-app-monitoring/main/manifest/monitoring.yaml -n litmus
+❯ kubectl apply -f https://raw.githubusercontent.com/chaosnative/harness-chaos-demo/main/boutique-app-manifests/manifest/monitoring.yaml -n hce
 ```
 
-We are deploying these resources in the existing `litmus` namespace, since we had specified the Namespace mode of installation.
+We are deploying these resources in the existing `hce` namespace, since we had specified the Namespace mode of installation.
 
-Eventually, we will have all the target application and observability infrastructure pods available in the `litmus` namespace:
+Eventually, we will have all the target application and observability infrastructure pods available in the `hce` namespace:
 ```
-❯ kubectl get pods -n litmus
+❯ kubectl get pods -n hce
 
 NAME                                           READY   STATUS    RESTARTS        AGE
 adservice-68db567bb5-hd47j                     1/1     Running   0               5m39s
@@ -87,9 +87,9 @@ subscriber-7774bd95d4-4rnwp                    1/1     Running   0              
 workflow-controller-6d5d75dc7c-v9vqc           1/1     Running   0               11m
 ```
 
-You can list the services available in the `litmus` namespace as following:
+You can list the services available in the `hce` namespace as following:
 ```
-❯ kubectl get services -n litmus
+❯ kubectl get services -n hce
 
 NAME                           TYPE           CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
 adservice                      ClusterIP      10.110.145.128   <none>        9555/TCP         9m48s
@@ -139,7 +139,7 @@ Select the added pod-delete fault icon.
 
 ![Target Application Config](./static/first-chaos/target-application-config.png)
 
-We are targeting the carts microservice and hence the appropriate `litmus` application namespace and the `app=cartservice` application label has been provided here, which corresponds to the cart microservice. Also, application kind is `deployment`. It is worth noting that you can discover these entities from within the UI using the search dropdown menu for the respective inputs.
+We are targeting the carts microservice and hence the appropriate `hce` application namespace and the `app=cartservice` application label has been provided here, which corresponds to the cart microservice. Also, application kind is `deployment`. It is worth noting that you can discover these entities from within the UI using the search dropdown menu for the respective inputs.
 
 Then, choose the **Tune Fault** tab to view the fault parameters. Here, we the fault execution duration is defined to be 30 seconds with an interval of 10 seconds, so that in every 10 seconds the cart microservice pod(s) get deleted for a total of 30 seconds. The ramp time is empty and by default 0, which refers to the period to wait before and after chaos injection. Lastly, the pod affected percentage is also empty, and by default at least one pod of the cart deployment will be targeted.
 
@@ -168,7 +168,7 @@ Once the fault is running, we can check for the detailed view of the experiment.
 At the same time, we can also check for the status of the cart deployment pod. Upon executing the following command you will get a similar output. It is evident that the Pod Delete fault has caused the cart pod to be terminated and a new pod has recently replaced it, for whose container is yet to be created.
 
 ```
-❯ k get pods -n litmus
+❯ kubectl get pods -n hce
 
 NAME                                           READY   STATUS    RESTARTS       AGE
 adservice-68db567bb5-hd47j                     1/1     Running   0              5h41m

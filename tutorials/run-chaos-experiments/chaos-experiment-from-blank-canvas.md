@@ -20,7 +20,7 @@ Let us try to define our Pod Delete fault. Choose **Add**. From the **Enterprise
 
 ![Pod Delete Fault](./static/chaos-experiment-from-blank-canvas/pod-delete-fault.png)
 
-Specify the target application namespace, type and label. We will be targeting the carts microservice and hence we will provide the appropriate `litmus` namespace and the `app=cartservice` label which corresponds to the cart microservice. The application kind will be `deployment`. 
+Specify the target application namespace, type and label. We will be targeting the carts microservice and hence we will provide the appropriate `hce` namespace and the `app=cartservice` label which corresponds to the cart microservice. The application kind will be `deployment`. 
 
 ![Specify Target Application](./static/chaos-experiment-from-blank-canvas/specify-target-application.png)
 
@@ -28,7 +28,7 @@ Then, choose the **Tune Fault** tab to configure the fault parameters. Here, we 
 
 ![Tune Fault](./static/chaos-experiment-from-blank-canvas/tune-fault.png)
 
-Lastly, choose the **Probes** tab. Here, we have a default application health-check probe defined which validates the target application health before and after the fault injection to ensure that the application is unharmed due to the experiment. Let us add one more probe so that we can validate the carts microservice health. Select **Deploy new Probe**, ensure that the probe type is `HTTP Probe`, select **Continue** and then again select **Continue**. Now, we need to provide the HTTP probe URL so that Litmus can make GET requests at that URL and check if the status code in response is 200 for the successful validation of the probe. Provide the URL `http://cartservice.litmus.svc.cluster.local:7070`, which is the URL for the service that exposes the carts microservice. Also, reduce the response timeout to 5 seconds. Then, select **Setup the Probe**.
+Lastly, choose the **Probes** tab. Here, we have a default application **health-check** probe defined which validates the target application health before and after the fault injection to ensure that the application is unharmed due to the experiment. Let us add one more probe so that we can validate the carts microservice health. Select **Deploy new Probe**, ensure that the probe type is `HTTP Probe`, select **Continue** and then again select **Continue**. Now, we need to provide the HTTP probe URL so that the probe can make GET requests at that URL and check if the status code in response is 200 for the successful validation of the probe. Provide the URL `http://frontend/cart`, which is the URL for the cart page. Also, reduce the response timeout to 5 seconds. Then, select **Setup the Probe**.
 
 ![HTTP Probe](./static/chaos-experiment-from-blank-canvas/http-probe.png)
 
@@ -51,7 +51,7 @@ Once the fault is running, we can check for the detailed view of the experiment.
 At the same time, we can also check for the status of the cart deployment pod. Upon executing the following command you will get a similar output. It is evident that the Pod Delete fault has caused the cart pod to be terminated and a new pod has recently replaced it, for whose container is yet to be created.
 
 ```
-❯ k get pods -n litmus
+❯ k get pods -n hce
 
 NAME                                           READY   STATUS    RESTARTS       AGE
 adservice-68db567bb5-hd47j                     1/1     Running   0              5h41m
