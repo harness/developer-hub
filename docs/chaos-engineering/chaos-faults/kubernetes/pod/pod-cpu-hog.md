@@ -52,12 +52,12 @@ The application pods should be in running state before and after chaos injection
         <td> Default to 60s </td>
       </tr>
       <tr>
-        <td> LIB  </td>
+        <td> LIB </td>
         <td> The chaos lib used to inject the chaos. Available libs are <code>litmus</code> and <code>pumba</code> </td>
         <td> Default to <code>litmus</code> </td>
       </tr>
       <tr>
-        <td> LIB_IMAGE  </td>
+        <td> LIB_IMAGE </td>
         <td> Image used to run the helper pod. </td>
         <td> Defaults to <code>litmuschaos/go-runner:1.13.8</code> </td>
       </tr>
@@ -82,7 +82,7 @@ The application pods should be in running state before and after chaos injection
         <td> Defaults to 0 (corresponds to 1 replica), provide numeric value only </td>
       </tr>
       <tr>
-        <td> CONTAINER_RUNTIME  </td>
+        <td> CONTAINER_RUNTIME </td>
         <td> container runtime interface for the cluster</td>
         <td> Defaults to docker, supported values: docker, containerd and crio for litmus and only docker for pumba LIB </td>
       </tr>
@@ -94,7 +94,7 @@ The application pods should be in running state before and after chaos injection
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before injection of chaos in sec </td>
-        <td> </td>
+        <td> Eg. 30 </td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
@@ -115,7 +115,7 @@ It stresses the `CPU_CORE` of the targeted pod for the `TOTAL_CHAOS_DURATION` du
 
 Use the following example to tune this:
 
-[embedmd]:# (https://raw.githubusercontent.com/litmuschaos/litmus/master/mkdocs/docs/experiments/categories/pods/pod-cpu-hog/cpu-cores.yaml yaml)
+[embedmd]:# (./static/manifests/pod-cpu-hog/cpu-cores.yaml yaml)
 ```yaml
 # cpu cores for the stress
 apiVersion: litmuschaos.io/v1alpha1
@@ -129,7 +129,7 @@ spec:
     appns: "default"
     applabel: "app=nginx"
     appkind: "deployment"
-  chaosServiceAccount: pod-cpu-hog-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: pod-cpu-hog
     spec:
@@ -147,7 +147,7 @@ It contains percentage of pod CPU to be consumed. It can be tuned via `CPU_LOAD`
 
 Use the following example to tune this:
 
-[embedmd]:# (https://raw.githubusercontent.com/litmuschaos/litmus/master/mkdocs/docs/experiments/categories/pods/pod-cpu-hog/cpu-load.yaml yaml)
+[embedmd]:# (./static/manifests/pod-cpu-hog/cpu-load.yaml yaml)
 ```yaml
 # cpu load for the stress
 apiVersion: litmuschaos.io/v1alpha1
@@ -161,7 +161,7 @@ spec:
     appns: "default"
     applabel: "app=nginx"
     appkind: "deployment"
-  chaosServiceAccount: pod-cpu-hog-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: pod-cpu-hog
     spec:
@@ -201,7 +201,7 @@ spec:
     appns: "default"
     applabel: "app=nginx"
     appkind: "deployment"
-  chaosServiceAccount: pod-cpu-hog-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: pod-cpu-hog
     spec:
@@ -239,7 +239,7 @@ spec:
     appns: "default"
     applabel: "app=nginx"
     appkind: "deployment"
-  chaosServiceAccount: pod-cpu-hog-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: pod-cpu-hog
     spec:

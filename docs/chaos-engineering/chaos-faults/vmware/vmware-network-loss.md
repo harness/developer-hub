@@ -25,7 +25,7 @@ The vm may stall or get corrupted while they wait endlessly for a packet. The ex
 
 ## Prerequisites
 :::info
-- Ensure that Kubernetes Version > 1.16 
+- Ensure that Kubernetes Version > 1.16
 - Ensure that you have sufficient Vcenter access to stop and start the VM.
 - Ensure to create a Kubernetes secret having the Vcenter credentials in the `CHAOS_NAMESPACE`. A secret file looks like:
 ```yaml
@@ -45,7 +45,7 @@ stringData:
 You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
 :::
 
-    
+
 ## Default Validations
 :::info
 - VM should be in healthy state before and after chaos.
@@ -66,12 +66,12 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
         <td> Provide the target vm names</td>
         <td> You can provide multiple vm names using comma separated value eg: vm-1,vm-2 </td>
       </tr>
-      <tr> 
+      <tr>
         <td> VM_USER_NAME </td>
         <td> Provide the username of the target VM(s)</td>
         <td> Multiple usernames can be provided as comma separated (for more than one VM under chaos). It is used to run the govc command.</td>
       </tr>
-      <tr> 
+      <tr>
         <td> VM_PASSWORD </td>
         <td> Provide the password for the target VM(s)</td>
         <td> It is used to run the govc command.</td>
@@ -84,27 +84,27 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
         <th> Description </th>
         <th> Notes </th>
       </tr>
-      <tr> 
+      <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> The total time duration for chaos insertion (sec) </td>
         <td> Defaults to 30s </td>
       </tr>
-      <tr> 
+      <tr>
         <td> CHAOS_INTERVAL </td>
         <td> The interval (in sec) between successive instance termination </td>
         <td> Defaults to 30s </td>
       </tr>
-      <tr> 
+      <tr>
         <td> NETWORK_PACKET_LOSS_PERCENTAGE </td>
         <td> The packet loss in percentage </td>
         <td> Default to 100 percentage </td>
       </tr>
-      <tr> 
+      <tr>
         <td> DESTINATION_IPS </td>
         <td> IP addresses of the services or the CIDR blocks(range of IPs), the accessibility to which is impacted </td>
         <td> Comma separated IP(S) or CIDR(S) can be provided. if not provided, it will induce network chaos for all ips/destinations </td>
       </tr>
-      <tr> 
+      <tr>
         <td> DESTINATION_HOSTS </td>
         <td> DNS Names of the services, the accessibility to which, is impacted </td>
         <td> if not provided, it will induce network chaos for all ips/destinations or DESTINATION_IPS if already defined </td>
@@ -117,7 +117,7 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injection of chaos in sec </td>
-        <td> </td>
+        <td> Eg. 30 </td>
       </tr>
     </table>
     <h2>Secret Fields</h2>
@@ -130,7 +130,7 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
       <tr>
         <td> GOVC_URL </td>
         <td> Provide the VMCenter Server URL</td>
-        <td> It is used to perform the vmware api calls using govc command and is derived from sceret.</td>
+        <td> It is used to perform the vmware api calls using govc command and is derived from secret.</td>
       </tr>
       <tr>
         <td> GOVC_USERNAME </td>
@@ -161,7 +161,7 @@ It defines the network packet loss percentage to be injected on the vm. It can b
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/vmware-network-chaos/network-packet-loss-percentage.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-network-loss/network-packet-loss-percentage.yaml yaml)
 ```yaml
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
@@ -169,7 +169,6 @@ metadata:
   name: vmware-engine
 spec:
   engineState: "active"
-  annotationCheck: "false"
   chaosServiceAccount: litmus-admin
   experiments:
   - name: vmware-network-loss
@@ -179,16 +178,10 @@ spec:
         # network packet loss percentage
         - name: NETWORK_PACKET_LOSS_PERCENTAGE
           value: '100'
-
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
-
         - name: VM_NAME
           value: 'vm-1,vm-2'
-
         - name: VM_USER_NAME
           value: 'ubuntu,debian'
-
         - name: VM_PASSWORD
           value: '123,123'
 ```
@@ -202,16 +195,15 @@ The network experiments interrupt traffic for all the IPs/hosts by default. The 
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/vmware-network-chaos/destination-host-and-ip.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-network-loss/destination-host-and-ip.yaml yaml)
 ```yaml
-## it inject the chaos for the ingrees and egress traffic for specific ips/hosts
+## it injects the chaos for the egress traffic for specific ips/hosts
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
   name: vmware-engine
 spec:
   engineState: "active"
-  annotationCheck: "false"
   chaosServiceAccount: litmus-admin
   experiments:
   - name: vmware-network-loss
@@ -224,16 +216,10 @@ spec:
         # supports comma separated destination hosts
         - name: DESTINATION_HOSTS
           value: 'google.com'
-
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
-
         - name: VM_NAME
           value: 'vm-1,vm-2'
-
         - name: VM_USER_NAME
           value: 'ubuntu,debian'
-          
         - name: VM_PASSWORD
           value: '123,123'
 ```
@@ -244,35 +230,28 @@ The defined name of the ethernet interface, which is considered for shaping traf
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/vmware-network-chaos/network-interface.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-network-loss/network-interface.yaml yaml)
 ```yaml
-## it inject the chaos for the ingrees and egress traffic for specific ips/hosts
+## it injects the chaos for the egress traffic for specific ips/hosts
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
   name: vmware-engine
 spec:
   engineState: "active"
-  annotationCheck: "false"
   chaosServiceAccount: litmus-admin
   experiments:
   - name: vmware-network-loss
     spec:
       components:
         env:
-        # name of the network interface 
+        # name of the network interface
         - name: NETWORK_INTERFACE
           value: 'eth0'
-
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
-
         - name: VM_NAME
           value: 'vm-1,vm-2'
-
         - name: VM_USER_NAME
           value: 'ubuntu,debian'
-          
         - name: VM_PASSWORD
           value: '123,123'
 ```

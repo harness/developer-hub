@@ -12,6 +12,7 @@ title: Azure Instance Stop
 :::
 
 ## Uses
+
 <details>
 <summary>View the uses of the experiment</summary>
 <div>
@@ -20,6 +21,7 @@ Coming soon.
 </details>
 
 ## Prerequisites
+
 :::info
 - Kubernetes > 1.16.
 - Azure access to stop and start the an instance. 
@@ -51,6 +53,7 @@ stringData:
 :::
 
 ## Default Validations
+
 :::info
 - The Azure instance should be in healthy state.
 :::
@@ -65,7 +68,7 @@ stringData:
         <th> Description </th>
         <th> Notes </th>
       </tr>
-      <tr> 
+      <tr>
         <td> AZURE_INSTANCE_NAME </td>
         <td> Instance name of the target azure instance</td>
         <td> For AKS nodes, the instance name is from the scale set section in Azure and not the node name from AKS node pool </td>
@@ -74,7 +77,7 @@ stringData:
         <td> RESOURCE_GROUP </td>
         <td> The resource group of the target instance</td>
         <td> </td>
-      </tr> 
+      </tr>
     </table>
     <h2>Optional Fields</h2>
     <table>
@@ -87,13 +90,13 @@ stringData:
         <td> SCALE_SET </td>
         <td> Whether instance is part of Scale set</td>
         <td> Accepts "enable"/"disable". Default is "disable"</td>
-      </tr> 
-      <tr> 
+      </tr>
+      <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> The total time duration for chaos insertion (sec) </td>
         <td> Defaults to 30s </td>
       </tr>
-      <tr> 
+      <tr>
         <td> CHAOS_INTERVAL </td>
         <td> The interval (in sec) between successive instance power off.</td>
         <td> Defaults to 30s </td>
@@ -106,7 +109,7 @@ stringData:
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injection of chaos in sec </td>
-        <td> </td>
+        <td> Eg. 30 </td>
       </tr>
     </table>
 </details>
@@ -132,21 +135,18 @@ metadata:
   name: engine-nginx
 spec:
   engineState: "active"
-  annotationCheck: "false"
-  chaosServiceAccount: azure-instance-stop-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: azure-instance-stop
     spec:
       components:
         env:
-        # comma separated list of azure instance names
-        - name: AZURE_INSTANCE_NAME
+        # comma separated list of Azure instance names
+        - name: AZURE_INSTANCE_NAMES
           value: 'instance-01,instance-02'
         # name of the resource group
         - name: RESOURCE_GROUP
-          value: '<resource group of AZURE_INSTANCE_NAME>'
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
+          value: 'rg-azure'
 ```
 
 ### Stop Scale Set Instances
@@ -164,19 +164,18 @@ metadata:
   name: engine-nginx
 spec:
   engineState: "active"
-  annotationCheck: "false"
-  chaosServiceAccount: azure-instance-stop-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: azure-instance-stop
     spec:
       components:
         env:
-        # comma separated list of Azure instance names
-        - name: AZURE_INSTANCE_NAME
+        # comma separated list of azure instance names
+        - name: AZURE_INSTANCE_NAMES
           value: 'instance-01,instance-02'
         # name of the resource group
         - name: RESOURCE_GROUP
-          value: '<resource group of Scale set>'
+          value: 'rg-azure'
         # accepts enable/disable value. default is disable
         - name: SCALE_SET
           value: 'enable'
@@ -199,7 +198,6 @@ metadata:
   name: engine-nginx
 spec:
   engineState: "active"
-  annotationCheck: "false"
   chaosServiceAccount: azure-instance-stop-sa
   experiments:
   - name: azure-instance-stop
@@ -215,5 +213,5 @@ spec:
         - name: AZURE_INSTANCE_NAME
           value: 'instance-01,instance-02'
         - name: RESOURCE_GROUP
-          value: '<resource group of AZURE_INSTANCE_NAME>'
+          value: 'rg-azure'
 ```

@@ -95,7 +95,7 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injection of chaos in sec </td>
-        <td> </td>
+        <td> Eg. 30 </td>
       </tr>
     </table>
 </details>
@@ -120,8 +120,7 @@ metadata:
   name: engine-nginx
 spec:
   engineState: "active"
-  annotationCheck: "false"
-  chaosServiceAccount: vm-poweroff-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: vm-poweroff
     spec:
@@ -130,7 +129,6 @@ spec:
         # MOID of the VM
         - name: APP_VM_MOIDS
           value: 'vm-53,vm-65'
-
         - name: TOTAL_CHAOS_DURATION
           VALUE: '60'
 ```

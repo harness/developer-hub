@@ -10,7 +10,7 @@ title: EC2 Stop By ID
 - When the `MANAGED_NODEGROUP` is enabled, the experiment doesn't start the instance after chaos. It checks the cluster for the newly added node instance.
 
 :::tip Fault execution flow chart
-![EC2 Stop](./static/images/ec2-stop.png)
+![EC2 Stop By ID](./static/images/ec2-stop.png)
 :::
 
 ## Uses
@@ -48,7 +48,7 @@ stringData:
 
 ### WARNING
 
-If the target EC2 instance is a part of a self-managed nodegroup, drain the target node of any application running on it. Isolate the target node before running the experiment so that the experiment pods are not scheduled on it.
+If the target EC2 instance is a part of a managed node group, drain the target node of any application running on it. Isolate the target node before running the experiment so that the experiment pods are not scheduled on it.
 :::
 
 ## Default Validations
@@ -77,7 +77,7 @@ If the target EC2 instance is a part of a self-managed nodegroup, drain the targ
       </tr>
       <tr>
         <td> REGION </td>
-        <td> The region name of the target instace</td>
+        <td> The region name of the target instance</td>
         <td> </td>
       </tr>
     </table>
@@ -111,7 +111,7 @@ If the target EC2 instance is a part of a self-managed nodegroup, drain the targ
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injection of chaos in sec </td>
-        <td> </td>
+        <td> Eg. 30 </td>
       </tr>
     </table>
 </details>
@@ -137,8 +137,7 @@ metadata:
   name: engine-nginx
 spec:
   engineState: "active"
-  annotationCheck: "false"
-  chaosServiceAccount: ec2-terminate-by-id-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: ec2-terminate-by-id
     spec:
@@ -149,7 +148,5 @@ spec:
           value: 'instance-1'
         # region for the ec2 instance
         - name: REGION
-          value: '<region for EC2_INSTANCE_ID>'
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
+          value: 'us-east-1'
 ```

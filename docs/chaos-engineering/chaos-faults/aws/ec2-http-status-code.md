@@ -17,7 +17,6 @@ title: EC2 HTTP Status Code
 :::info
 
 - Kubernetes >= 1.17
-- <code>EC2-http-latency</code> experiment resource is available in the cluster. Execute <code>kubectl get chaosexperiments</code> in the desired namespace.
 
 **AWS EC2 Access Requirement:**
 
@@ -127,7 +126,7 @@ You can pass the VM credentials as secrets or as an chaosengine environment vari
         </tr>
         <tr>
             <td> INSTALL_DEPENDENCY </td>
-            <td> Whether to install the dependancy to run the experiment </td>
+            <td> Whether to install the dependency to run the experiment </td>
             <td> If the dependency already exists, you can turn it off (defaults to True)</td>
         </tr>
         <tr>

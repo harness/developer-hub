@@ -19,8 +19,7 @@ metadata:
   name: engine-nginx
 spec:
   engineState: "active"
-  annotationCheck: "false"
-  chaosServiceAccount: ec2-terminate-by-tag-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: ec2-terminate-by-tag
     spec:
@@ -32,7 +31,7 @@ spec:
           value: 'enable'
         # region for the ec2 instance
         - name: REGION
-          value: '<region for instances>'
+          value: 'us-east-1'
         # tag of the ec2 instance
         - name: INSTANCE_TAG
           value: 'key:value'
@@ -55,7 +54,6 @@ metadata:
   name: engine-nginx
 spec:
   engineState: "active"
-  annotationCheck: "false"
   chaosServiceAccount: ec2-terminate-by-tag-sa
   experiments:
   - name: ec2-terminate-by-tag
@@ -69,7 +67,7 @@ spec:
         - name: TOTAL_CHAOS_DURATION
           VALUE: '60'
         - name: REGION
-          value: '<region for instances>'
+          value: 'us-east-1'
         - name: INSTANCE_TAG
           value: 'key:value'
 ```

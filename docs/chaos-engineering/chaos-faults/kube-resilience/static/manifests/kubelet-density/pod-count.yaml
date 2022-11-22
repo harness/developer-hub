@@ -1,0 +1,19 @@
+# defines count of the pod
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: kubelet-density
+    spec:
+      components:
+        env:
+        # number of pods, which needs to be created
+        - name: POD_COUNT
+          value: '50'
+        - name: TARGET_NODE
+          value: 'node1'

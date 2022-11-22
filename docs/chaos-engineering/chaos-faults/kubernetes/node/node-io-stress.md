@@ -22,7 +22,7 @@ Coming soon.
 
 ## Prerequisites
 :::info
-- Ensure that Kubernetes Version > 1.16
+- Ensure that Kubernetes Version > 1.16.
 :::
 
 ## Default Validations
@@ -43,12 +43,12 @@ The target nodes should be in ready state before and after chaos injection.
       <tr>
         <td> TARGET_NODES </td>
         <td> Comma separated list of nodes, subjected to node io stress chaos</td>
-        <td> </td>
+        <td> Eg. node-1,node-2 </td>
       </tr>
       <tr>
         <td> NODE_LABEL </td>
-        <td> It contains node label, which will be used to filter the target nodes if TARGET_NODES ENV is not set </td>
-        <td>It is mutually exclusive with the TARGET_NODES ENV. If both are provided then it will use the TARGET_NODES</td>
+        <td> It contains node label, which will be used to filter the target nodes if <code>TARGET_NODES</code> ENV is not set </td>
+        <td>It is mutually exclusive with the <code>TARGET_NODES</code> ENV. If both are provided then it will use the <code>TARGET_NODES</code></td>
       </tr>
     </table>
     <h2>Optional Fields</h2>
@@ -70,38 +70,38 @@ The target nodes should be in ready state before and after chaos injection.
       </tr>
       <tr>
         <td> FILESYSTEM_UTILIZATION_BYTES </td>
-        <td> Specify the size in GigaBytes(GB).  <code>FILESYSTEM_UTILIZATION_PERCENTAGE</code> & <code>FILESYSTEM_UTILIZATION_BYTES</code> are mutually exclusive. If both are provided, <code>FILESYSTEM_UTILIZATION_PERCENTAGE</code> is prioritized. </td>
+        <td> Specify the size in GigaBytes(GB). <code>FILESYSTEM_UTILIZATION_PERCENTAGE</code> & <code>FILESYSTEM_UTILIZATION_BYTES</code> are mutually exclusive. If both are provided, <code>FILESYSTEM_UTILIZATION_PERCENTAGE</code> is prioritized. </td>
         <td>  </td>
       </tr>
       <tr>
         <td> CPU </td>
         <td> Number of core of CPU to be used </td>
-        <td> Default to 1 </td>
+        <td> Defaults to 1 </td>
       </tr>    
       <tr>
         <td> NUMBER_OF_WORKERS </td>
         <td> It is the number of IO workers involved in IO disk stress </td>
-        <td> Default to 4 </td>
+        <td> Defaults to 4 </td>
       </tr> 
       <tr>
         <td> VM_WORKERS </td>
         <td> It is the number vm workers involved in IO disk stress </td>
-        <td> Default to 1 </td>
+        <td> Defaults to 1 </td>
       </tr>     
       <tr>
-        <td> LIB  </td>
+        <td> LIB </td>
         <td> The chaos lib used to inject the chaos </td>
-        <td> Default to <code>litmus</code> </td>
+        <td> Defaults to <code>litmus</code> </td>
       </tr>
       <tr>
-        <td> LIB_IMAGE  </td>
+        <td> LIB_IMAGE </td>
         <td> Image used to run the stress command </td>
-        <td> Default to <code>litmuschaos/go-runner:latest</code> </td>
+        <td> Defaults to <code>litmuschaos/go-runner:latest</code> </td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injection of chaos in sec </td>
-        <td> </td>
+        <td> Eg. 30 </td>
       </tr>
       <tr>
         <td> NODES_AFFECTED_PERC </td>
@@ -139,7 +139,7 @@ metadata:
 spec:
   engineState: "active"
   annotationCheck: "false"
-  chaosServiceAccount: node-io-stress-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: node-io-stress
     spec:
@@ -171,7 +171,7 @@ metadata:
 spec:
   engineState: "active"
   annotationCheck: "false"
-  chaosServiceAccount: node-io-stress-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: node-io-stress
     spec:
@@ -200,7 +200,7 @@ metadata:
 spec:
   engineState: "active"
   annotationCheck: "false"
-  chaosServiceAccount: node-io-stress-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: node-io-stress
     spec:
@@ -229,7 +229,7 @@ metadata:
 spec:
   engineState: "active"
   annotationCheck: "false"
-  chaosServiceAccount: node-io-stress-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: node-io-stress
     spec:

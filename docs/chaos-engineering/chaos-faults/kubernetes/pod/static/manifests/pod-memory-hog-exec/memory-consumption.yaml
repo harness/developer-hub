@@ -10,13 +10,13 @@ spec:
     appns: "default"
     applabel: "app=nginx"
     appkind: "deployment"
-  chaosServiceAccount: pod-memory-hog-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: pod-memory-hog
     spec:
       components:
         env:
-        # memory consuption value in MB
+        # memory consumption value in MB
         # it is limited to 2000MB
         - name: MEMORY_CONSUMPTION
           value: '500' #in MB

@@ -1,4 +1,4 @@
-# it inject the chaos for specific ips/hosts
+# it injects the chaos for specific ips/hosts
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -10,7 +10,7 @@ spec:
     appns: "default"
     applabel: "app=nginx"
     appkind: "deployment"
-  chaosServiceAccount: pod-network-partition-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: pod-network-partition
     spec:

@@ -51,17 +51,17 @@ The application pods should be in running state before and after chaos injection
       <tr>
         <td> POD_SELECTOR </td>
         <td> Contains labels of the destination pods </td>
-        <td> </td>
+        <td> Eg. app=cart </td>
       </tr>
       <tr>
         <td> NAMESPACE_SELECTOR </td>
         <td> Contains labels of the destination namespaces </td>
-        <td> </td>
+        <td> Eg. env=prod </td>
       </tr>
       <tr>
         <td> PORTS </td>
         <td> Comma separated list of the targeted ports </td>
-        <td> </td>
+        <td> Eg. 80,443,22 </td>
       </tr>
       <tr>
         <td> DESTINATION_IPS </td>
@@ -81,7 +81,7 @@ The application pods should be in running state before and after chaos injection
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injection of chaos in sec </td>
-        <td> </td>
+        <td> Eg. 30 </td>
       </tr>
     </table>
 </details>
@@ -102,7 +102,7 @@ Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/pod-network-partition/destination-ips-and-hosts.yaml yaml)
 ```yaml
-# it inject the chaos for specific ips/hosts
+# it injects the chaos for specific ips/hosts
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -114,7 +114,7 @@ spec:
     appns: "default"
     applabel: "app=nginx"
     appkind: "deployment"
-  chaosServiceAccount: pod-network-partition-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: pod-network-partition
     spec:
@@ -138,7 +138,7 @@ Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/pod-network-partition/namespace-selectors.yaml yaml)
 ```yaml
-# it inject the chaos for specified namespaces, matched by labels
+# it injects the chaos for specified namespaces, matched by labels
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -150,7 +150,7 @@ spec:
     appns: "default"
     applabel: "app=nginx"
     appkind: "deployment"
-  chaosServiceAccount: pod-network-partition-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: pod-network-partition
     spec:
@@ -164,13 +164,13 @@ spec:
 ```
 ### Target Specific Pod(s)
 
-The network partition experiment interrupt traffic for all the extranal pods by default. The access to/from specific pod(s) can be allowed via providing pod labels inside `POD_SELECTOR` ENV.
+The network partition experiment interrupt traffic for all the external pods by default. The access to/from specific pod(s) can be allowed via providing pod labels inside `POD_SELECTOR` ENV.
 
 Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/pod-network-partition/pod-selectors.yaml yaml)
 ```yaml
-# it inject the chaos for specified pods, matched by labels
+# it injects the chaos for specified pods, matched by labels
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -182,7 +182,7 @@ spec:
     appns: "default"
     applabel: "app=nginx"
     appkind: "deployment"
-  chaosServiceAccount: pod-network-partition-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: pod-network-partition
     spec:
@@ -203,7 +203,7 @@ Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/pod-network-partition/policy-type.yaml yaml)
 ```yaml
-# inject network loss for only ingress or only engress or all traffics
+# inject network loss for only ingress or only egress or all traffics
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -215,7 +215,7 @@ spec:
     appns: "default"
     applabel: "app=nginx"
     appkind: "deployment"
-  chaosServiceAccount: pod-network-partition-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: pod-network-partition
     spec:
@@ -243,7 +243,7 @@ Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/pod-network-partition/ports.yaml yaml)
 ```yaml
-# it inject the chaos for specified ports
+# it injects the chaos for specified ports
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -255,7 +255,7 @@ spec:
     appns: "default"
     applabel: "app=nginx"
     appkind: "deployment"
-  chaosServiceAccount: pod-network-partition-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: pod-network-partition
     spec:

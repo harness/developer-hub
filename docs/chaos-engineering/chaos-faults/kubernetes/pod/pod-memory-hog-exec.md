@@ -42,7 +42,7 @@ The application pods should be in running state before and after chaos injection
       </tr>
       <tr>
         <td> MEMORY_CONSUMPTION </td>
-        <td>  The amount of memory used of hogging a Kubernetes pod (megabytes)</td>
+        <td> The amount of memory used of hogging a Kubernetes pod (megabytes)</td>
         <td> Defaults to 500MB (Up to 2000MB)</td>
       </tr>
       <tr>
@@ -51,7 +51,7 @@ The application pods should be in running state before and after chaos injection
         <td> Defaults to 60s </td>
       </tr>
       <tr>
-        <td> LIB  </td>
+        <td> LIB </td>
         <td> The chaos lib used to inject the chaos. Available libs are <code>litmus</code></td>
         <td> Defaults to <code>litmus</code> </td>
       </tr>
@@ -78,7 +78,7 @@ The application pods should be in running state before and after chaos injection
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before injection of chaos in sec </td>
-        <td> </td>
+        <td> Eg. 30 </td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
@@ -114,13 +114,13 @@ spec:
     appns: "default"
     applabel: "app=nginx"
     appkind: "deployment"
-  chaosServiceAccount: pod-memory-hog-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: pod-memory-hog
     spec:
       components:
         env:
-        # memory consuption value in MB
+        # memory consumption value in MB
         # it is limited to 2000MB
         - name: MEMORY_CONSUMPTION
           value: '500' #in MB
@@ -151,7 +151,7 @@ spec:
     appns: "default"
     applabel: "app=nginx"
     appkind: "deployment"
-  chaosServiceAccount: pod-memory-hog-exec-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: pod-memory-hog-exec
     spec:

@@ -18,7 +18,6 @@ title: EC2 HTTP Latency
 :::info
 
 - Kubernetes >= 1.17
-- <code>EC2-http-latency</code> experiment resource is available in the cluster. Execute <code>kubectl get chaosexperiments</code> in the desired namespace.
 
 **AWS EC2 Access Requirements:**
 

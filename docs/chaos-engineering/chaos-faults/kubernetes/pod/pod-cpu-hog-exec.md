@@ -4,7 +4,7 @@ title: Pod CPU Hog Exec
 ---
 
 ## Introduction
-- This experiment consumes the CPU resources of the application container
+- This experiment consumes the CPU resources of the application container.
 
 - It simulates conditions where app pods experience CPU spikes either due to expected/undesired processes thereby testing how the overall application stack behaves when this occurs.
 
@@ -53,7 +53,7 @@ The application pods should be in running state before and after chaos injection
         <td> Default to 60s </td>
       </tr>
       <tr>
-        <td> LIB  </td>
+        <td> LIB </td>
         <td> The chaos lib used to inject the chaos. Available libs are <code>litmus</code></td>
         <td> Default to <code>litmus</code> </td>
       </tr>
@@ -85,7 +85,7 @@ The application pods should be in running state before and after chaos injection
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before injection of chaos in sec </td>
-        <td> </td>
+        <td> Eg. 30 </td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
@@ -120,7 +120,7 @@ spec:
     appns: "default"
     applabel: "app=nginx"
     appkind: "deployment"
-  chaosServiceAccount: pod-cpu-hog-exec-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: pod-cpu-hog-exec
     spec:
@@ -157,7 +157,7 @@ spec:
     appns: "default"
     applabel: "app=nginx"
     appkind: "deployment"
-  chaosServiceAccount: pod-cpu-hog-exec-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: pod-cpu-hog-exec
     spec:

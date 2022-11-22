@@ -47,7 +47,7 @@ The application pods should be in running state before and after chaos injection
       </tr>
       <tr>
         <td> FILESYSTEM_UTILIZATION_BYTES </td>
-        <td> Specify the size in GigaBytes(GB).  <code>FILESYSTEM_UTILIZATION_PERCENTAGE</code> & <code>FILESYSTEM_UTILIZATION_BYTES</code> are mutually exclusive. If both are provided, <code>FILESYSTEM_UTILIZATION_PERCENTAGE</code> is prioritized. </td>
+        <td> Specify the size in GigaBytes(GB). <code>FILESYSTEM_UTILIZATION_PERCENTAGE</code> & <code>FILESYSTEM_UTILIZATION_BYTES</code> are mutually exclusive. If both are provided, <code>FILESYSTEM_UTILIZATION_PERCENTAGE</code> is prioritized. </td>
         <td>  </td>
       </tr>
       <tr>
@@ -66,12 +66,12 @@ The application pods should be in running state before and after chaos injection
         <td>  </td>
       </tr>  
       <tr>
-        <td> LIB  </td>
+        <td> LIB </td>
         <td> The chaos lib used to inject the chaos </td>
         <td> Default to <code>litmus</code>. Available litmus and pumba. </td>
       </tr>
       <tr>
-        <td> LIB_IMAGE  </td>
+        <td> LIB_IMAGE </td>
         <td> Image used to run the stress command </td>
         <td> Default to <code>litmuschaos/go-runner:latest</code> </td>
       </tr>  
@@ -86,7 +86,7 @@ The application pods should be in running state before and after chaos injection
         <td> Defaults to 0 (corresponds to 1 replica), provide numeric value only </td>
       </tr>
       <tr>
-        <td> CONTAINER_RUNTIME  </td>
+        <td> CONTAINER_RUNTIME </td>
         <td> container runtime interface for the cluster</td>
         <td> Defaults to docker, supported values: docker, containerd and crio for litmus and only docker for pumba LIB </td>
       </tr>
@@ -98,7 +98,7 @@ The application pods should be in running state before and after chaos injection
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injection of chaos in sec </td>
-        <td> </td>
+        <td> Eg. 30 </td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
@@ -130,7 +130,7 @@ spec:
     appns: "default"
     applabel: "app=nginx"
     appkind: "deployment"
-  chaosServiceAccount: pod-io-stress-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: pod-io-stress
     spec:
@@ -166,7 +166,7 @@ spec:
     appns: "default"
     applabel: "app=nginx"
     appkind: "deployment"
-  chaosServiceAccount: pod-io-stress-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: pod-io-stress
     spec:
@@ -202,7 +202,7 @@ spec:
     appns: "default"
     applabel: "app=nginx"
     appkind: "deployment"
-  chaosServiceAccount: pod-io-stress-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: pod-io-stress
     spec:
@@ -239,7 +239,7 @@ spec:
     appns: "default"
     applabel: "app=nginx"
     appkind: "deployment"
-  chaosServiceAccount: pod-io-stress-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: pod-io-stress
     spec:
@@ -272,7 +272,7 @@ spec:
     appns: "default"
     applabel: "app=nginx"
     appkind: "deployment"
-  chaosServiceAccount: pod-io-stress-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: pod-io-stress
     spec:
@@ -305,7 +305,7 @@ spec:
     appns: "default"
     applabel: "app=nginx"
     appkind: "deployment"
-  chaosServiceAccount: pod-io-stress-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: pod-io-stress
     spec:

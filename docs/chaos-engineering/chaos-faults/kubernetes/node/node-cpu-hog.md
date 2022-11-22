@@ -64,26 +64,25 @@ The target nodes should be in ready state before and after chaos injection.
         <td> Defaults to 60 </td>
       </tr>
       <tr>
-        <td> LIB  </td>
+        <td> LIB </td>
         <td> The chaos lib used to inject the chaos </td>
         <td> Defaults to <code>litmus</code> </td>
       </tr>
       <tr>
-        <td> LIB_IMAGE  </td>
+        <td> LIB_IMAGE </td>
         <td> Image used to run the stress command </td>
         <td> Defaults to <code>litmuschaos/go-runner:latest</code> </td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before & after injection of chaos in sec </td>
-        <td> Optional  </td>
+        <td> Eg. 30 </td>
         <td> </td>
       </tr>
       <tr>
         <td> NODE_CPU_CORE </td>
         <td> Number of cores of node CPU to be consumed  </td>
         <td> Defaults to <code>2</code> </td>
-        <td> </td>
       </tr>  
         <tr>
             <td> NODES_AFFECTED_PERC </td>
@@ -118,7 +117,7 @@ metadata:
 spec:
   engineState: "active"
   annotationCheck: "false"
-  chaosServiceAccount: node-cpu-hog-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: node-cpu-hog
     spec:
@@ -147,7 +146,7 @@ metadata:
 spec:
   engineState: "active"
   annotationCheck: "false"
-  chaosServiceAccount: node-cpu-hog-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: node-cpu-hog
     spec:

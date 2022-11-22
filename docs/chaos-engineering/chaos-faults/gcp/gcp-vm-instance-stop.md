@@ -32,16 +32,16 @@ metadata:
   name: cloud-secret
 type: Opaque
 stringData:
-  type: 
-  project_id: 
-  private_key_id: 
-  private_key: 
-  client_email: 
-  client_id: 
-  auth_uri: 
-  token_uri: 
-  auth_provider_x509_cert_url: 
-  client_x509_cert_url: 
+  type:
+  project_id:
+  private_key_id:
+  private_key:
+  client_email:
+  client_id:
+  auth_uri:
+  token_uri:
+  auth_provider_x509_cert_url:
+  client_x509_cert_url:
 ```
 :::
 
@@ -60,12 +60,12 @@ stringData:
         <th> Description </th>
         <th> Notes </th>
       </tr>
-      <tr> 
+      <tr>
         <td> GCP_PROJECT_ID </td>
         <td> GCP project ID to which the VM instances belong </td>
         <td> All the VM instances must belong to a single GCP project </td>
       </tr>
-      <tr> 
+      <tr>
         <td> VM_INSTANCE_NAMES </td>
         <td> Name of target VM instances </td>
         <td> Multiple instance names can be provided as instance1,instance2,... </td>
@@ -83,30 +83,30 @@ stringData:
         <th> Description </th>
         <th> Notes </th>
       </tr>
-      <tr> 
+      <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> The total time duration for chaos insertion (sec) </td>
         <td> Defaults to 30s </td>
       </tr>
-       <tr> 
+       <tr>
         <td> CHAOS_INTERVAL </td>
         <td> The interval (in sec) between successive instance termination </td>
         <td> Defaults to 30s </td>
-      </tr>  
-      <tr> 
+      </tr>
+      <tr>
         <td> MANAGED_INSTANCE_GROUP </td>
         <td> Set to <code>enable</code> if the target instance is the part of a managed instance group </td>
         <td> Defaults to <code>disable</code> </td>
-      </tr>  
+      </tr>
       <tr>
         <td> SEQUENCE </td>
         <td> It defines sequence of chaos execution for multiple instance </td>
         <td> Default value: parallel. Supported: serial, parallel </td>
-      </tr> 
+      </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injection of chaos in sec </td>
-        <td> </td>
+        <td> Eg. 30 </td>
       </tr>
     </table>
 </details>
@@ -132,8 +132,7 @@ metadata:
   name: engine-nginx
 spec:
   engineState: "active"
-  annotationCheck: "false"
-  chaosServiceAccount: gcp-vm-instance-stop-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: gcp-vm-instance-stop
     spec:
@@ -149,8 +148,6 @@ spec:
         # gcp project id to which vm instance belongs
         - name: GCP_PROJECT_ID
           value: 'project-id'
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
 ```
 
 ### Managed Instance Group
@@ -168,8 +165,7 @@ metadata:
   name: engine-nginx
 spec:
   engineState: "active"
-  annotationCheck: "false"
-  chaosServiceAccount: gcp-vm-instance-stop-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: gcp-vm-instance-stop
     spec:

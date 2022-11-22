@@ -10,7 +10,7 @@ spec:
     appns: "default"
     applabel: "app=nginx"
     appkind: "deployment"
-  chaosServiceAccount: pod-delete-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: pod-delete
     spec:
@@ -22,5 +22,3 @@ spec:
           value: 'true'
         - name: TOTAL_CHAOS_DURATION
           value: '60'
-        
-       

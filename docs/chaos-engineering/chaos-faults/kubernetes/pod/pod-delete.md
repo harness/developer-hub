@@ -45,7 +45,7 @@ The application pods should be in running state before and after chaos injection
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> The time duration for chaos insertion (in sec) </td>
-        <td> Defaults to 15s, <b>NOTE:</b> Overall run duration of the experiment may exceed the TOTAL_CHAOS_DURATION by a few min </td>
+        <td> Defaults to 15s, <b>NOTE:</b> Overall run duration of the experiment may exceed the <code>TOTAL_CHAOS_DURATION</code> by a few min </td>
       </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>
@@ -54,7 +54,7 @@ The application pods should be in running state before and after chaos injection
       </tr>
       <tr>
         <td> RANDOMNESS </td>
-        <td> Introduces randomness to pod deletions with a minimum period defined by CHAOS_INTERVAL </td>
+        <td> Introduces randomness to pod deletions with a minimum period defined by <code>CHAOS_INTERVAL</code> </td>
         <td> It supports true or false. Default value: false </td>
       </tr>
       <tr>
@@ -66,16 +66,16 @@ The application pods should be in running state before and after chaos injection
         <td> TARGET_PODS </td>
         <td> Comma separated list of application pod name subjected to pod delete chaos</td>
         <td> If not provided, it will select target pods randomly based on provided appLabels</td>
-      </tr> 
+      </tr>
       <tr>
         <td> PODS_AFFECTED_PERC </td>
         <td> The Percentage of total pods to target  </td>
         <td> Defaults to 0 (corresponds to 1 replica), provide numeric value only </td>
-      </tr> 
+      </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injection of chaos in sec </td>
-        <td> </td>
+        <td> Eg. 30 </td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
@@ -88,7 +88,7 @@ The application pods should be in running state before and after chaos injection
 ## Experiment Examples
 
 ### Common and Pod specific tunables
-Refer the [common attributes](../../common-tunables-for-all-experiments) and [Pod specific tunable](./common-tunables-for-pod-experiments) to tune the common tunables for all experiments and pod specific tunables. 
+Refer the [common attributes](../../common-tunables-for-all-experiments) and [Pod specific tunable](./common-tunables-for-pod-experiments) to tune the common tunables for all experiments and pod specific tunables.
 
 ### Force Delete
 
@@ -110,7 +110,7 @@ spec:
     appns: "default"
     applabel: "app=nginx"
     appkind: "deployment"
-  chaosServiceAccount: pod-delete-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: pod-delete
     spec:
@@ -124,44 +124,10 @@ spec:
           value: '60'
 ```
 
-### Multiple Iterations Of Chaos
-
-The multiple iterations of chaos can be tuned via setting `CHAOS_INTERVAL` ENV. Which defines the delay between each iteration of chaos.
-
-Use the following example to tune this:
-
-[embedmd]:# (./static/manifests/pod-delete/chaos-interval.yaml yaml)
-```yaml
-# defines delay between each successive iteration of the chaos
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: pod-delete-sa
-  experiments:
-  - name: pod-delete
-    spec:
-      components:
-        env:
-        # delay between each iteration of chaos
-        - name: CHAOS_INTERVAL
-          value: '15'
-        # time duration for the chaos execution
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
-```
-
 ### Random Interval
 
 The randomness in the chaos interval can be enabled via setting `RANDOMNESS` ENV to `true`. It supports boolean values. The default value is `false`.
-The chaos interval can be tuned via `CHAOS_INTERVAL` ENV. 
+The chaos interval can be tuned via `CHAOS_INTERVAL` ENV.
 
 - If `CHAOS_INTERVAL` is set in the form of `l-r` i.e, `5-10` then it will select a random interval between l & r.
 - If `CHAOS_INTERVAL` is set in the form of `value` i.e, `10` then it will select a random interval between 0 & value.
@@ -182,7 +148,7 @@ spec:
     appns: "default"
     applabel: "app=nginx"
     appkind: "deployment"
-  chaosServiceAccount: pod-delete-sa
+  chaosServiceAccount: litmus-admin
   experiments:
   - name: pod-delete
     spec:
@@ -197,5 +163,5 @@ spec:
         # it will select a random interval within this range
         # if only one value is provided then it will select a random interval within 0-CHAOS_INTERVAL range
         - name: CHAOS_INTERVAL
-          value: '5-10' 
+          value: '5-10'
 ```
