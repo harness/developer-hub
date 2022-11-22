@@ -23,9 +23,9 @@ type FeatureItem = {
 
 const FeaturedList: FeatureItem[] = [
   {
-    title: 'Node and Docker Pipeline',
+    title: 'Node and Docker CI Pipeline',
     module: 'ci',
-    // Svg: '/img/icon_ci.svg',
+    Svg: '/img/icon_ci.svg',
     description: (
       <>
         This build automation guide walks you through building a NodeJS and Docker Application in a CI Pipeline.
@@ -40,7 +40,7 @@ const FeaturedList: FeatureItem[] = [
 const DroneList: FeatureItem[] = [{
   title: 'Coming Soon',
   module: 'ci',
-  // Svg: '/img/icon_ci.svg',
+  Svg: '/img/icon_ci.svg',
   description: (
     <>
       Drone Tutorials Coming Soon
@@ -53,9 +53,9 @@ const DroneList: FeatureItem[] = [{
 ];
 
 const CIList: FeatureItem[] = [{
-  title: 'Node and Docker Pipeline',
+  title: 'Node and Docker CI Pipeline',
   module: 'ci',
-  // Svg: '/img/icon_ci.svg',
+  Svg: '/img/icon_ci.svg',
   description: (
     <>
       This build automation guide walks you through building a NodeJS and Docker Application in a CI Pipeline.
@@ -69,7 +69,7 @@ const CIList: FeatureItem[] = [{
 {
   title: 'Run LocalStack as a Service',
   module: 'ci',
-  // Svg: '/img/icon_ci.svg',
+  Svg: '/img/icon_ci.svg',
   description: (
     <>
       This build automation guide shows how to run LocalStack as a Service Dependency in a CI Pipeline
@@ -91,7 +91,7 @@ export default function CI() {
     //   </ul>
     <div className="container">
       <img src="/img/ci.svg" />
-      <div className={styles.SectionName}><h3>Build and Test Code</h3></div>
+      <div className={styles.SectionName}><h3>Build & Test Code</h3></div>
       <div className={styles.topSection}>
         <div className={styles.spaceBetween}>
           <div className={styles.moduleTitle}>
@@ -136,7 +136,7 @@ export default function CI() {
         </h3>
   <ModuleCard FeatureList={DroneList} /> */}
         <h3 id="all-tutorials">
-          All Building Code Tutorials
+          All CI Tutorials
         </h3>
         <ModuleCard FeatureList={CIList} />
       </div>

@@ -26,20 +26,184 @@ export type FeatureItem = {
 
 const FeaturedList: FeatureItem[] = [
   {
-    title: "First Kubernetes Deployment",
-    module: "cd",
-    Svg: "/img/icon_cd.svg",
+    title: 'Deploy a Helm Chart using Harness GitOps for Argo CD',
+    module: 'cd',
+    Svg: '/img/icon_cd.svg',
     description: (
       <>
-        Deploying your first set of Kubernetes Services in a CD Pipline with
-        Kubernetes Manifests.
+        Get started with Harness GitOps for Argo CD.
       </>
     ),
     ribbon: true,
     type: [docType.Documentation],
-    time: "10 min",
-    link: "/tutorials/deploy-services/kubernetes-cd-first-tutorial",
+    time: '8min',
+    link: '/tutorials/deploy-services/helm-argocd-gitops-k8s',
   },
+  {
+    title: "TypeScript and React Feature Flags",
+    module: "ff",
+    Svg: "/img/icon_ff.svg",
+    description: (
+      <>
+        Walks you through adding JavaScript Feature Flags to a TypeScript and
+        React Application.
+      </>
+    ),
+    ribbon: true,
+    type: [docType.Documentation],
+    time: "10min",
+    link: "/tutorials/manage-feature-flags/typescript-react-first-feature-flag",
+  },
+  {
+    title: "Scan a NodeJS Application",
+    module: "sto",
+    Svg: "/img/icon_sto.svg",
+    description: (
+      <>Scanning a NodeJS Application and prioritizing scan results.</>
+    ),
+    ribbon: false,
+    type: [docType.Documentation],
+    time: "10min",
+    link: "/tutorials/orchestrate-security-tests/nodejs-firstscan",
+  },
+  {
+    title: "Onboard with Terraform",
+    module: "platform",
+    Svg: "/img/logo.svg",
+    description: (
+      <>
+        Automate lifecycle management of orgs, projects, services, environments,
+        connectors and pipelines using the Harness Terraform Provider.
+      </>
+    ),
+    ribbon: true,
+    type: [docType.Documentation],
+    time: "5 min",
+    link: "/tutorials/platform/onboard-terraform-provider",
+  },
+];
+
+const CIList: FeatureItem[] = [
+  {
+    title: "Node and Docker Pipeline",
+    module: "ci",
+    Svg: "/img/icon_ci.svg",
+    description: (
+      <>
+        This build automation guide walks you through building a NodeJS and
+        Docker Application in a CI Pipeline.
+      </>
+    ),
+    ribbon: false,
+    type: [docType.Documentation],
+    time: "15 min",
+    link: "/tutorials/build-code/ci-node-docker-quickstart",
+  },
+  {
+    title: "Run LocalStack as a Service",
+    module: "ci",
+    Svg: "/img/icon_ci.svg",
+    description: (
+      <>
+        This build automation guide shows how to run LocalStack as a Service
+        Dependency in a CI Pipeline
+      </>
+    ),
+    ribbon: true,
+    type: [docType.Documentation],
+    time: "15 min",
+    link: "/tutorials/build-code/ci-localstack-service-dependency",
+  },
+];
+
+const CDList: FeatureItem[] = [{
+  title: 'Deploy a Kubernetes Manifest',
+  module: 'cd',
+  Svg: '/img/icon_cd.svg',
+  description: (
+    <>
+      Deploying your first set of Kubernetes Services in a CD Pipline with Kubernetes Manifests. 
+    </>
+  ),
+  ribbon: false,
+  type: [docType.Documentation],
+  //type: [docType.Documentation, docType.Interactive, docType.Video],
+  time: '10 min',
+  link: '/tutorials/deploy-services/microservice-manifest-k8s',
+},
+{
+  title: 'Deploy a Helm Chart',
+  module: 'cd',
+  Svg: '/img/icon_cd.svg',
+  description: (
+    <>
+      Deploying your first set of Kubernetes Resources in a CD Pipeline with Helm, a popular Kubernetes Package Manager.
+    </>
+  ),
+  ribbon: false,
+  type: [docType.Documentation],
+  time: '10min',
+  link: '/tutorials/deploy-services/helm-k8s',
+},
+{
+  title: 'Deploy a Helm Chart using Harness GitOps for Argo CD',
+  module: 'cd',
+  Svg: '/img/icon_cd.svg',
+  description: (
+    <>
+      Learn about GitOps and how to leverage your own GitOps Pipeline.
+    </>
+  ),
+  ribbon: true,
+  type: [docType.Documentation],
+  time: '10min',
+  link: '/tutorials/deploy-services/helm-argocd-gitops-k8s',
+},
+{
+  title: 'Deploy a Helm Chart using CD Community Edition',
+  module: 'cd',
+  Svg: '/img/icon_cd.svg',
+  description: (
+    <>
+      Use the 100% free, source-available, self-managed Harness CD Community Edition to automate Helm Chart deployments.
+    </>
+  ),
+  ribbon: true,
+  type: [docType.Documentation],
+  time: '10min',
+  link: '/tutorials/deploy-services/helm-argocd-gitops-k8s',
+},
+{
+  title: 'Deploy a Docker Image to Amazon ECS ',
+  module: 'cd',
+  Svg: '/img/icon_cd.svg',
+  description: (
+    <>
+      Deploy a Docker image to Amazon ECS using a CD Pipeline.
+    </>
+  ),
+  ribbon: false,
+  type: [docType.Documentation],
+  time: '15min',
+  link: '/tutorials/deploy-services/docker-ecs',
+},
+{
+  title: 'Deploy a Private Image in Amazon ECR to Kubernetes ',
+  module: 'cd',
+  Svg: '/img/icon_cd.svg',
+  description: (
+    <>
+      Deploy a Docker image from a private Amazon ECR Repository to Kubernetes. 
+    </>
+  ),
+  ribbon: false,
+  type: [docType.Documentation],
+  time: '15min',
+  link: '/tutorials/deploy-services/docker-ecr-k8s',
+},
+];
+
+const FFList: FeatureItem[] = [
   {
     title: "TypeScript and React Feature Flags",
     module: "ff",
@@ -57,129 +221,11 @@ const FeaturedList: FeatureItem[] = [
   },
 ];
 
-const CIList: FeatureItem[] = [
-  {
-    title: "Node and Docker Pipeline",
-    module: "ci",
-    Svg: "",
-    description: (
-      <>
-        This build automation guide walks you through building a NodeJS and
-        Docker Application in a CI Pipeline.
-      </>
-    ),
-    ribbon: false,
-    type: [docType.Documentation],
-    time: "15 min",
-    link: "/tutorials/build-code/ci-node-docker-quickstart",
-  },
-  {
-    title: "Run LocalStack as a Service",
-    module: "ci",
-    Svg: "",
-    description: (
-      <>
-        This build automation guide shows how to run LocalStack as a Service
-        Dependency in a CI Pipeline
-      </>
-    ),
-    ribbon: true,
-    type: [docType.Documentation],
-    time: "15 min",
-    link: "/tutorials/build-code/ci-localstack-service-dependency",
-  },
-];
-
-const CDList: FeatureItem[] = [
-  {
-    title: "First Kubernetes Deployment",
-    module: "cd",
-    Svg: "",
-    description: (
-      <>
-        Deploying your first set of Kubernetes Services in a CD Pipline with
-        Kubernetes Manifests.
-      </>
-    ),
-    ribbon: false,
-    type: [docType.Documentation],
-    time: "10 min",
-    link: "/tutorials/deploy-services/kubernetes-cd-first-tutorial",
-  },
-  {
-    title: "First GitOps Deployment",
-    module: "cd",
-    Svg: "",
-    description: (
-      <>Learn about GitOps and how to leverage your own GitOps Pipeline.</>
-    ),
-    ribbon: false,
-    type: [docType.Documentation],
-    time: "10min",
-    link: "/tutorials/deploy-services/first-gitops-example",
-  },
-  {
-    title: "First Helm Deployment",
-    module: "cd",
-    Svg: "",
-    description: (
-      <>
-        Deploying your first set of Kubernetes Resources in a CD Pipeline with
-        Helm (K8s Package Manager).
-      </>
-    ),
-    ribbon: false,
-    type: [docType.Documentation],
-    time: "10min",
-    link: "/tutorials/deploy-services/helm-cd-first-tutorial",
-  },
-  {
-    title: "Private Image Amazon ECR Deployment",
-    module: "cd",
-    Svg: "",
-    description: (
-      <>Deploying from a private Amazon ECR Repository to Kubernetes.</>
-    ),
-    ribbon: false,
-    type: [docType.Documentation],
-    time: "15min",
-    link: "/tutorials/deploy-services/ecr-private-repo-deployment",
-  },
-  {
-    title: "First Amazon ECS Deployment",
-    module: "cd",
-    Svg: "",
-    description: <>Deploying to Amazon ECS with a CD Pipeline.</>,
-    ribbon: false,
-    type: [docType.Documentation],
-    time: "15min",
-    link: "/tutorials/deploy-services/first-ecs-cd-deployment",
-  },
-];
-
-const FFList: FeatureItem[] = [
-  {
-    title: "TypeScript and React Feature Flags",
-    module: "ff",
-    Svg: "",
-    description: (
-      <>
-        Walks you through adding JavaScript Feature Flags to a TypeScript and
-        React Application.
-      </>
-    ),
-    ribbon: true,
-    type: [docType.Documentation],
-    time: "10min",
-    link: "/tutorials/manage-feature-flags/typescript-react-first-feature-flag",
-  },
-];
-
 const CCMList: FeatureItem[] = [
   {
     title: "Optimizing Kubernetes Cloud Costs 101",
     module: "ccm",
-    Svg: "",
+    Svg: "/img/icon_ccm.svg",
     description: (
       <>
         This guide will walk through how start to optimize your Kubernetes Costs
@@ -197,7 +243,7 @@ const SRMList: FeatureItem[] = [
   {
     title: "Introduction to SLO Management with Prometheus",
     module: "srm",
-    Svg: "",
+    Svg: "/img/icon_srm.svg",
     description: (
       <>
         Introducing SLOs and how to measure and manage your SLOs leveraging
@@ -212,7 +258,7 @@ const SRMList: FeatureItem[] = [
   {
     title: "Introduction to Java Exception Management",
     module: "srm",
-    Svg: "",
+    Svg: "/img/icon_srm.svg",
     description: (
       <>
         Finding and fixing caught, uncaught, and swallowed Java exceptions.
@@ -220,7 +266,7 @@ const SRMList: FeatureItem[] = [
       </>
     ),
     ribbon: false,
-    type: [docType.Documentation],
+    type: [docType.Interactive, docType.Video],
     time: "10min",
     link: "/tutorials/manage-service-reliability/intro-java-exception-management",
   },
@@ -229,8 +275,8 @@ const SRMList: FeatureItem[] = [
 const STOList: FeatureItem[] = [
   {
     title: "Scan a NodeJS Application",
-    module: "srm",
-    Svg: "",
+    module: "sto",
+    Svg: "/img/icon_sto.svg",
     description: (
       <>Scanning a NodeJS Application and prioritizing scan results.</>
     ),
@@ -245,7 +291,7 @@ const CEList: FeatureItem[] = [
   {
     title: "Your First Chaos Experiment on Kubernetes",
     module: "ce",
-    Svg: "",
+    Svg: "/img/icon_ce.svg",
     description: (
       <>Running a Chaos Experiment on Kubernetes for the first time.</>
     ),
@@ -257,7 +303,7 @@ const CEList: FeatureItem[] = [
   {
     title: "Chaos Experiment from a Blank Canvas",
     module: "ce",
-    Svg: "",
+    Svg: "/img/icon_ce.svg",
     description: (
       <>Create, run, observe and evaluate a custom chaos experiment.</>
     ),
@@ -272,7 +318,7 @@ const PlatformList: FeatureItem[] = [
   {
     title: "Install Delegate",
     module: "platform",
-    Svg: "",
+    Svg: "/img/logo.svg",
     description: (
       <>Install a Docker or Kubernetes Delegate on your infrastructure.</>
     ),
@@ -284,7 +330,7 @@ const PlatformList: FeatureItem[] = [
   {
     title: "Onboard with Terraform",
     module: "platform",
-    Svg: "",
+    Svg: "/img/logo.svg",
     description: (
       <>
         Automate lifecycle management of orgs, projects, services, environments,
@@ -320,7 +366,7 @@ export default function AllTutorials() {
       <div className={styles.subSection}>
         <div className={styles.SectionName}>
           <img src="/img/icon_ci.svg" />
-          <h3>Build and Test Code</h3>
+          <h3>Build & Test Code</h3>
         </div>
         <ModuleCard FeatureList={CIList} />
       </div>

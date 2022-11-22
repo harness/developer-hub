@@ -1,16 +1,16 @@
 ---
-sidebar_position: 3
-description: Deploy Kubernetes manifests with a private image hosted in Amazon ECR. 
+sidebar_position: 6
+description: Deploy a Private Image in Amazon ECR to Kubernetes using a CD Pipeline
 ---
 
-# Deploy a Private Image in Amazon ECR to Kubernetes using a CD Pipeline
+# Deploy a Private Image in Amazon ECR to Kubernetes 
 
 ```mdx-code-block
 import GitHubPAT from '/tutorials/shared/github-wiring-includes.md';
 import DelegateInstall from '/tutorials/platform/install-delegate.md';
 ```
 
-## Background on Private Registries
+## Private Registry Basics
 
 Artifact repositories are the home for the application binaries that need to be deployed. Artifact repositories can also house the building blocks that applications need e.g the dependencies that a final build will bundle up as a deployable artifact. The Docker Ecosystem has a concept of [Docker Registries](https://docs.docker.com/registry/). These registries are designed to store and distribute Docker images. 
 
@@ -27,7 +27,7 @@ Head to the AWS Console and then to the ECR module. You can either create a [new
 
 Amazon does list out authentication commands by clicking into the Repository and clicking “View push commands”. This will require the [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) and [Docker](https://docs.docker.com/engine/install/) on your machine.  
 
-Execute the authentication command to run on your local machine. If you have a private image and corresponding manifest to deploy, you can skip to the [deployment section](/tutorials/deploy-services/ecr-private-repo-deployment#deploying-a-private-image-with-harness). If you do not, can use the below section to seed your private registry. 
+Execute the authentication command to run on your local machine. If you have a private image and corresponding manifest to deploy, you can skip to the [deployment section](#deploying-a-private-image-with-harness). If you do not, can use the below section to seed your private registry. 
 
 ### Seeding Your Private Registry 
 If you do not have an image that you want to deploy in your private registry, you can take an image that is publicly accessible that you want to deploy and push that into your private ECR Repository. 
