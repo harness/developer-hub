@@ -14,8 +14,8 @@ You can set notifications on Service Reliability Management (SRM) monitored serv
 
 * [Health Monitoring Quickstart](https://docs.harness.io/article/m4pbiqb4m9-verify-deployments-in-change-intelligence-quickstart)
 * [Change Monitoring Quickstart](https://docs.harness.io/article/fs64l16dbp-change-intelligence-quick-start-change-monitoring)
-* [SLO Management Quickstart](../../howtos-service-reliability-management/service-reliability-management-onboard/slo-management-quickstart.md)
-* [Service Reliability Management Basics](../../howtos-service-reliability-management/service-reliability-management-onboard/service-reliability-management-basics.md)
+* [SLO Management Quickstart](../../howtos-service-reliability-management/slo-management-quickstart.md)
+* [Service Reliability Management Basics](../../howtos-service-reliability-management/service-reliability-management-basics.md)
 
 ### Limitations
 
@@ -32,7 +32,7 @@ You can create notifications for Monitored Services or SLOs.
 
 First, ensure that you have a Monitored Service or SLO set up.
 
-See [Health Monitoring Quickstart](https://docs.harness.io/article/m4pbiqb4m9-verify-deployments-in-change-intelligence-quickstart), [Change Monitoring Quickstart](https://docs.harness.io/article/fs64l16dbp-change-intelligence-quick-start-change-monitoring), or [SLO Management Quickstart](../../howtos-service-reliability-management/service-reliability-management-onboard/slo-management-quickstart.md).
+See [Health Monitoring Quickstart](https://docs.harness.io/article/m4pbiqb4m9-verify-deployments-in-change-intelligence-quickstart), [Change Monitoring Quickstart](https://docs.harness.io/article/fs64l16dbp-change-intelligence-quick-start-change-monitoring), or [SLO Management Quickstart](../../howtos-service-reliability-management/slo-management-quickstart.md).
 
 #### Monitored Services
 
@@ -177,4 +177,3 @@ The channel indicates that the Connector was set up.
 ![](./static/srm-notifications-09.png)
 
 In Harness, in **Notification Method** settings, enter the Webhook URL for your Microsoft Teams Channel in **Microsoft Teams Webhook URL**.
-

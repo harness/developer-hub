@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Error Tracking in the Harness [Service Reliability Management (SRM)](../../howtos-service-reliability-management/service-reliability-management-onboard/service-reliability-management-basics.md#sort=relevancy&f:@commonsource=[NextGen%20Docs]) module is a continuous reliability solution that enables you to identify, triage, and resolve errors in your Service. This helps to implement rapid code changes by ensuring that the code is always in a deployable state.
+Error Tracking in the Harness [Service Reliability Management (SRM)](../../howtos-service-reliability-management/service-reliability-management-basics.md#sort=relevancy&f:@commonsource=[NextGen%20Docs]) module is a continuous reliability solution that enables you to identify, triage, and resolve errors in your Service. This helps to implement rapid code changes by ensuring that the code is always in a deployable state.
 
 This topic walks you through the steps to add an Error Tracking Health Source in SRM to identify and detect errors in your Service.
 
@@ -110,7 +110,7 @@ See [Install an Error Tracking Agent](install-the-error-tracking-agent.md).
 
 ### Step 5: View Automated Root Cause (ARC) Screen
 
-Once the Error Tracking Health Source is added, you can view the identified errors on the **Overall Health Score** timeline, in the [Service Health dashboard](../../howtos-service-reliability-management/service-reliability-management-onboard/change-impact-analysis-quickstart.md#step-4-view-service-health).
+Once the Error Tracking Health Source is added, you can view the identified errors on the **Overall Health Score** timeline, in the [Service Health dashboard](../../howtos-service-reliability-management/change-impact-analysis-quickstart.md#step-4-view-service-health).
 
 ![](./static/error-tracking-in-srm-06.png)1. Scroll up on the **Service Health** dashboard and then click the **Errors** tab. A list of all the identified errors appears.![](./static/error-tracking-in-srm-07.png)
 2. Click any listed error to access the **Automated Root Cause** (ARC) screen. The ARC screen offers a powerful mechanism to get to the root of errors and exceptions in production and staging environments.
@@ -124,4 +124,3 @@ Once the Error Tracking Health Source is added, you can view the identified erro
 * **Recorded Variables** displays the complete variable state from the moment the error occurred.
 * **Log** tab displays the log statements.
 * **Environment** tab displays the internal environment state at the moment when the error occurred, including memory usage (heap and non-heap), basic system information, CPU usage, and more.
-
