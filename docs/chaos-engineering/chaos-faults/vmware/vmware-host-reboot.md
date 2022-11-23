@@ -13,7 +13,7 @@ title: VMware Host Reboot
 
 ## Uses
 <details>
-<summary>View the uses of the experiment</summary>
+<summary>View the uses of the fault</summary>
 <div>
 This fault has a high blast radius wherein all the VMs under the target host get disrupted.It can be used to measure the impact of host reboot on the VMs and underlying applications. It can be also used to measure the effectiveness of an HA cluster.
 </div>
@@ -51,7 +51,7 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
 
 ## Experiment tunables
 <details>
-    <summary>Check the Experiment Tunables</summary>
+    <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>
     <table>
       <tr>
@@ -90,7 +90,7 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
     </table>
 </details>
 
-## Experiment Examples
+## Fault Examples
 
 ### Common Experiment Tunables
 Refer the [common attributes](../common-tunables-for-all-experiments) to tune the common tunables for all the experiments.

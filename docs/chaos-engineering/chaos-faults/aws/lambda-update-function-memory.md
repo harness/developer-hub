@@ -16,11 +16,11 @@ title: Lambda Update Function Memory
 ## Uses
 
 <details>
-<summary>View the uses of the experiment</summary>
+<summary>View the uses of the fault</summary>
 <div>
-Hitting a memory litmus is a very common and frequent scenario we find with lambda functions that can slow down the service and impacts their delivery. Such scenarios can still occur despite whatever availability aids AWS provides or we determine.
+Hitting a memory limit is a very common and frequent scenario we find with lambda functions that can slow down the service and impacts their delivery. Such scenarios can still occur despite whatever availability aids AWS provides or we determine.
 
-Running out of memory due to a smaller limit interrupts the flow of the given function. So this category of chaos experiment helps you to build immunity on the application undergoing any such scenarios.
+Running out of memory due to a smaller limit interrupts the flow of the given function. So this category of chaos fault helps you to build immunity on the application undergoing any such scenarios.
 </div>
 </details>
 
@@ -59,7 +59,7 @@ stringData:
 ## Experiment Tunables
 
 <details>
-    <summary>Check the Experiment Tunables</summary>
+    <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>
     <table>
       <tr>
@@ -79,7 +79,7 @@ stringData:
       </tr>
       <tr>
         <td> REGION </td>
-        <td> The region name of the target instance</td>
+        <td> The region name of the target lambda function</td>
         <td> </td>
       </tr>
     </table>
@@ -92,12 +92,12 @@ stringData:
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The total time duration for chaos insertion (sec) </td>
+        <td> The total time duration for chaos insertion in seconds </td>
         <td> Defaults to 30s </td>
       </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>
-        <td> The interval (in sec) between successive instance termination.</td>
+        <td> The interval (in seconds) between successive instance termination.</td>
         <td> Defaults to 30s </td>
       </tr>
       <tr>
@@ -113,37 +113,11 @@ stringData:
     </table>
 </details>
 
-## Experiment Examples
+## Fault Examples
 
 ### Common and AWS specific tunables
 
-Refer the [common attributes](../common-tunables-for-all-experiments) and [AWS specific tunable](./aws-experiments-tunables) to tune the common tunables for all experiments and aws specific tunables.
-
-### Function Name
-
-It injects the lambda function memory limit chaos for the given function name using `FUNCTION_NAME` Env.
-
-Use the following example to tune this:
-
-[embedmd]:# (./static/manifests/lambda-update-function-memory/function-name.yaml yaml)
-```yaml
-# contains the function name value for memory limit chaos
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: lambda-update-function-memory
-    spec:
-      components:
-        env:
-        # provide the function name for memory limit chaos
-        - name: FUNCTION_NAME
-          value: 'chaos-function'
-```
+Refer the [common attributes](../common-tunables-for-all-experiments) and [AWS specific tunable](./aws-experiments-tunables) to tune the common tunables for all faults and aws specific tunables.
 
 ### Memory Limit
 
@@ -169,4 +143,7 @@ spec:
         # provide the function memory limit
         - name: MEMORY_IN_MEGABYTES
           value: '10'
+        # provide the function name for memory limit chaos
+        - name: FUNCTION_NAME
+          value: 'chaos-function'
 ```

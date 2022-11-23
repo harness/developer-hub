@@ -14,3 +14,6 @@ spec:
         # provide the function timeout for 10seconds
         - name: FUNCTION_TIMEOUT
           value: '10'
+        # provide the function name for timeout chaos
+        - name: FUNCTION_NAME
+          value: 'chaos-function'
