@@ -27,22 +27,24 @@ For more information see [Fixed Values, Runtime Inputs, and Expressions](https:/
 
 ### Create a Monitored Service Template
 
-1. In Harness, click **Site Reliability** > **Project Setup** > **Templates**.The Template page appears. Click **+ New Template**, and then select **Monitored Service**.![](./static/monitored-service-template-quickstart-00.png)
+1. In Harness, click **Site Reliability** > **Project Setup** > **Templates**.The Template page appears. Click **+ New Template**, and then select **Monitored Service**.
+
+  ![](./static/monitored-service-template-quickstart-00.png)
 
 2. The Create New Monitored Service Template page appears.
 
 3. Enter the following information and then click **Start**:
-* **Name**: Provide a name for the template.
+  * **Name**: Provide a name for the template.
 
-  Note: Harness automatically allots a unique identifier, also known as Id for the Template. You can change the name any time, but the Id is immutable. You cannot modify the ID.
-* **Description (Optional)**: Enter a description for the template.
-* **Tags (Optional)**: You can assign a tag for the template. You can either assign an existing tag or create a new tag. You can assign multiple tags. Tags are metadata and they can contain any characters. Tags can be used to filter the templates. For example, you create a Tag called myTemplate and assign it two different templates. When you search using keyword myTemplate, it returns the two templates that have the tag myTemplate assigned to them.
-* **Version Label**: Enter a version for the template.
-* **Save To**: Select where you would like to save the template. You can save the template to an existing project, organization.
+    Note: Harness automatically allots a unique identifier, also known as Id for the Template. You can change the name any time, but the Id is immutable. You cannot modify the ID.
+  * **Description (Optional)**: Enter a description for the template.
+  * **Tags (Optional)**: You can assign a tag for the template. You can either assign an existing tag or create a new tag. You can assign multiple tags. Tags are metadata and they can contain any characters. Tags can be used to filter the templates. For example, you create a Tag called myTemplate and assign it two different templates. When you search using keyword myTemplate, it returns the two templates that have the tag myTemplate assigned to them.
+  * **Version Label**: Enter a version for the template.
+  * **Save To**: Select where you would like to save the template. You can save the template to an existing project, organization.
 
-The template is created, and the Service page appears.
+  The template is created, and the Service page appears.
 
-![](./static/monitored-service-template-quickstart-01.png)
+  ![](./static/monitored-service-template-quickstart-01.png)
 
 ### Create a Service
 
@@ -52,33 +54,31 @@ In the **Overview** section, do the following:
 
 1. In the **Type** field, select a service type that you want to monitor. Available options are **Application** and **Infrastructure**.
 
-2. In the **Create or Select a Service** field select a service.  
-You can either select an existing service or create a new service to monitor.   
-To create a new service:
+2. In the **Create or Select a Service** field select a service.
 
-  a. Click **+ Add New**.  
+You can either select an existing service or create a new service to monitor. To create a new service:
+1. Click **+ Add New**.  
 	The New Service dialog appears.
 
-  b. Enter the following information, and then click **Save**:  
-	* **Name**: Enter a name for the service.  
-	* **Description** (Optional)  
-	* **Tag** (Optional)
+1. Enter the following information, and then click **Save**:
+
+    * **Name** : Enter a name for the service.  
+    * **Description** (Optional)
+    * **Tag** (Optional)
 
   The new service is created.
 
-3. In the **Create or Select an Environment** field choose an environment in which Harness Service Reliability Management is deployed.  
+1. In the **Create or Select an Environment** field choose an environment in which Harness Service Reliability Management is deployed.  
 Environments represent your deployment targets QA, Prod, and so on. When you add an Environment to a Monitored Service, it allows you to associate change records, actions, logs, metrics, and SLO’s to the respective service within its associated environment.  
 You can either select an existing environment or create a new environment. To create a new environment:
 
-  a. Click **+ Add New** in the drop-down list.  
-	The New Environment dialog appears.
+  a. Click **+ Add New** in the drop-down list. The New Environment dialog appears.
 
-	b. Enter the following information and then click **Save**:  
-
-      * **Name**: Enter a name for the service.  
-      * **Description** (Optional)
-      * **Tag** (Optional)
-      * **Environment Type**: The available options are Production and Non-Production.
+  b. Enter the following information and then click **Save**:
+   * **Name**: Enter a name for the service.
+   * **Description** (Optional)
+   * **Tag** (Optional)
+   * **Environment Type**: The available options are Production and Non-Production.
 
 ### Select a Change Source
 
@@ -125,7 +125,11 @@ For example, if you have selected AppDynamics as the **Health Source Type**, the
 8. Click **Submit**.  
 The new health source appears in the Health Sources list.
 
-9. Click **Save** to save the settings.![](./static/monitored-service-template-quickstart-02.png)The Monitored Health Service template is now ready for use.
+9. Click **Save** to save the settings.
+
+  ![](./static/monitored-service-template-quickstart-02.png)
+
+  The Monitored Health Service template is now ready for use.
 
 ### Create a Monitored Service Using Template
 

@@ -42,7 +42,9 @@ Click a Service, and then, in the Service, click **Configurations**.
 
 Click **New Notification Rule**.
 
-![](./static/srm-notifications-00.png)The new rule settings appear.
+![](./static/srm-notifications-00.png)
+
+The new rule settings appear.
 
 Name the rule and click **Continue**.
 
@@ -93,18 +95,22 @@ Enter the remaining Error Budget percentage.
 The percentages are categorized like this:
 
 * **Healthy** - Number of SLOs for which the remaining Error Budget is above 75%.
+
 * **Observe** - Number of SLOs for which the remaining Error Budget is greater than 50% but less than 75%.
+
 * **Need** **Attention** - Number of SLOs for which the remaining Error Budget is greater than 25% but less than 50%.
+
 * **Unhealthy** - Number of SLOs for which the remaining Error Budget is between 0 to 25%.
+
 * **Exhausted** - Number of SLOs for which the remaining Error Budget is zero or less than zero.
 
 ##### Error Budget remaining minutes
 
 Enter the remaining Error Budget minutes.
 
-Error Budget remaining minutes is calculated like this:
+Error Budget remaining minutes are calculated as below:
 
-* *Error Budget Remaining = Total Error Budget - Number of Bad Minutes.*
+*Error Budget Remaining = Total Error Budget - Number of Bad Minutes.*
 
 ##### Error Budget Burn Rate is above
 
@@ -116,11 +122,13 @@ Enter a baseline Burn Rate percentage.
 
 For Slack notifications, you simply create a webhook in Slack and paste it into the **Slack Webhook URL** setting in the Notification Rule.
 
-Follow the steps in Slack documentation for creating a Slack app, selecting your channel, and creating a webhook:  [Sending messages using Incoming Webhooks](https://api.slack.com/messaging/webhooks).
+Follow the steps in Slack documentation for creating a Slack app, selecting your channel, and creating a webhook: [Sending messages using Incoming Webhooks](https://api.slack.com/messaging/webhooks).
 
 When you are done, you'll have a webhook that looks something like this:
 
-![](./static/srm-notifications-02.png)Copy the webhook.
+![](./static/srm-notifications-02.png)
+
+Copy the webhook.
 
 Paste the Webhook into **Slack Webhook URL**.
 
@@ -152,7 +160,7 @@ In Microsoft Teams, right-click the channel where you want to send notifications
 
 ![](./static/srm-notifications-05.png)
 
-In **Connectors**, locate **Incoming Webhook**, and click **Configure.**
+In **Connectors**, locate **Incoming Webhook**, and click **Configure**.
 
 ![](./static/srm-notifications-06.png)
 

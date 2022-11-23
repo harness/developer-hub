@@ -130,63 +130,89 @@ The list displays details like name, SLO/Error Budget, change events, health tre
 
 ### Step 4: View Service Health
 
-The Service Health dashboard in the **S****ervice Reliability Management** (SRM) module enables you to observe and track the health of Monitored Services.
+The Service Health dashboard in the **Service Reliability Management** (SRM) module enables you to observe and track the health of Monitored Services.
 
 Using this dashboard you can:
 
 * Track the overall health of your services, spot anomalies, and take timely action
+
 * Track change events that impact your Monitored Service
+
 * Observe and analyze dependencies between applications, infrastructure, and data
+
 * View metrics to analyze patterns, historic trends, performance changes, and correlate factors of your services over a period.
+
 * View log data that helps you debug and narrow down issues.
 
 ![](./static/change-impact-analysis-quickstart-58.png)
 
+#### View Service Heath Trends
+
 Perform the following steps to view the health trends of a service.
 
 1. Open a Harness Project with the Service you want to monitor and navigate to the **Service Reliability Management** (SRM) module.
+
 2. Click **Monitored Services**. You can see a list of Monitored Services.
+
 3. Click the Monitored Service whose health is to be tracked. The SLO dashboard appears.
+
 4. Select the **Service Health** tab. The **Service Health** dashboard is displayed.
+
 5. Select **Time Range** to narrow your selection further based on pre-defined time range filters. You'll see that by default **Last 24 hours** is selected. Available options are:
-* Last 4 hours
-* Last 24 hours
-* Last 3 days
-* Last 7 days
-* Last month
+  * Last 4 hours
+  * Last 24 hours
+  * Last 3 days
+  * Last 7 days
+  * Last month
 
-Once you have selected the **Time Range**, the data on the dashboard refreshes automatically with the latest data from the database. By default, **Last 24 hours** is selected.
+The default time range is **Last 24 hours**. Once you have selected the **Time Range**, the data on the dashboard refreshes automatically with the latest data from the database.
 
-1. The **Overall Health Score** timeline provides a high level overview of the health of a service. You can hover over the timeline to view the latest health score along with date and time. The timeline is divided into equal-length time slots based on the selected time range.![](./static/change-impact-analysis-quickstart-59.png)
+#### View Overall Service Health Score
+
+The **Overall Health Score** timeline provides a high level overview of the health of a service. You can hover over the timeline to view the latest health score along with date and time. The timeline is divided into equal-length time slots based on the selected time range.
+
+![](./static/change-impact-analysis-quickstart-59.png)
 
 The score is computed based on change events like deployments, infrastructure changes, and incidents associated with each of the service entities. The health score ranges between 0 to 100. Color-coded severity values are used to represent service health as shown below:
 
 
-
-|  |  |
-| --- | --- |
 | **Severity** | **Color-Code** |
-| Healthy |  |
-| Observe |  |
-| Needs Attention |  |
-| Unhealthy |  |
-| N/A |  |
+| --- | :---: |
+| Healthy |  ![](./static/servicehealth-healthy.png)|
+| Observe | ![](./static/servicehealth-observe.png) |
+| Needs Attention | ![](./static/servicehealth-needsattention.png) |
+| Unhealthy | ![](./static/servicehealth-unhealthy.png) |
+| N/A | ![](./static/servicehealth-na.png) |
 
 If the service health score is between 80 to 100, it indicates that the service is healthy. Any other value indicates that the service is impacted with several outages. The higher the health score, the healthier your service is.
 
-1. To view the service health score for a specific time slot along with the count of anomalies, metrics, and logs, click the time slot on the **Health Score Timeline**. A time window gets selected which can be expanded or contracted as per your requirement.![](./static/change-impact-analysis-quickstart-60.png)
+#### View Service Health for a specific Time slot
+
+To view the service health score for a specific time slot along with the count of anomalies, metrics, and logs, click the time slot on the **Health Score Timeline**. A time window gets selected which can be expanded or contracted as per your requirement.![](./static/change-impact-analysis-quickstart-60.png)
 
 Click **Reset** to return to the initial timeline data.
 
-1. In **Changes**, you can view breakdown of the following events:
+#### View Breakdown of Changes
+
+In **Changes**, you can view breakdown of the following events:
 * Deployments such as ECS, Kubernetes, and Helm from Harness CD Nextgen and Harness CD.
+
 * Infrastructure changes such as [Kubernetes events](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.19/#event-v1-events-k8s-io), [Terraform audit logs](https://www.terraform.io/docs/enterprise/admin/logging.html#audit-logs), [MongoDB audit events](https://docs.mongodb.com/manual/reference/audit-message/#system-event-audit-messages), AWS CloudTrail, GCP audit logs and Azure audit logs.
-* Incidents from PagerDuty![](./static/change-impact-analysis-quickstart-61.png)
-1. Click an event in **Changes** to drill down following details:
+
+* Incidents from PagerDuty
+
+  ![](./static/change-impact-analysis-quickstart-61.png)
+
+Click an event in **Changes** to drill down following details:
+
 * Time: Date and time at which the event occurred
+
 * Name: Name of the event
+
 * Impact: Name of the impacted Monitored Service
+
 * Source: Name of the source where the change originated
+
 * Type: Change event type
 
 Consider the following example of an infrastructure event.
@@ -196,20 +222,27 @@ Consider the following example of an infrastructure event.
 You can see a summarized view of infrastructure event with the following details:
 
 * Name of the Service, Environment, and Source
+
 * Time and date at which the event was triggered
+
 * View the YAML file of the event
+
 * Compare the current and previous YAML file
+
 * Health score timeline
-1. In the **Service Dependency Graph**, you can view dependencies between applications, infrastructure, and data.![](./static/change-impact-analysis-quickstart-63.png)
-2. In **Metrics & Logs**, you can view metrics collected at regular intervals and log data.
+
+#### View Service Dependency Graph and Metrics
+
+In the **Service Dependency Graph**, you can view dependencies between applications, infrastructure, and data.
+
+![](./static/change-impact-analysis-quickstart-63.png)
+
+In **Metrics & Logs**, you can view metrics collected at regular intervals and log data.
 
 You can further drill-down on metrics using the following filters:
 
-
-
-|  |  |
-| --- | --- |
 | **Filter** | **Description** |
+| --- | --- |
 | All Metrics | Displays all the metrics retrieved by the Health Sources. |
 | Anomalous Metrics | Displays the anomalous metrics retrieved by the Health Sources. |
 
@@ -219,11 +252,8 @@ You can also view the health data collected by a specific Health Source.
 
 You can drill-down log data using the following filters:
 
-
-
-|  |  |
-| --- | --- |
 | **Filter** | **Description** |
+| --- | --- |
 | All Events | Displays all log events. |
 | Known Events | Displays only known log events. |
 | Unknown Event | Displays unknown log events. |
@@ -236,68 +266,82 @@ The **Changes** dashboard in the Service Reliability Management module (SRM) p
 Using the **Changes** dashboard you can answer the following questions:
 
 * What has changed in the system?
+
 * When did it change?
+
 * Why has it changed?
+
 * What is the impact of the change on your system?
 
-Perform the following steps to track and monitor change events.
+#### Track and Monitor Change Events
+
+Perform the following steps to track and monitor change events:
 
 1. Open a Harness Project with the service you want to monitor and navigate to the **Service Reliability Management** module.
-2. Click **Changes**. The **Changes** dashboard is displayed.![](./static/change-impact-analysis-quickstart-65.png)
-3. You can apply the following filters to narrow your selection further and retrieve the desired data. Each filter has one or more options you can choose from.
 
+2. Click **Changes**.
 
+  The **Changes** dashboard is displayed.
 
-|  |  |
+  ![](./static/change-impact-analysis-quickstart-65.png)
+
+  You can apply the following filters to narrow your selection further and retrieve the desired data. Each filter has one or more options you can choose from.
+
+  | **Filter** | **Description** |
 | --- | --- |
-| **Filter** | **Description** |
-| **Time Range** | Filters the change events based on the selected time range. The available filters are:* Last 4 hours
-* Last 24 hours
-* Last 3 days
-* Last 7 days
-* Last month
- |
+| **Time Range** | Filters the change events based on the selected time range. The available filters are **Last 4 hours**, **Last 24 hours**, **Last 3 days**, **Last 7 days**, and **Last month**.|
 | **Services** | A Service represents your microservice and other workloads logically. Filter change events based on a single service or for any number of services. |
 | **Environments** | Environments represent your deployment targets logically (QA, Prod, etc). Filter change events based on a single environment or any number of environments. |
-| **Change Types** | Filters the change events based on the type of Change Source type. The available filters are:* Deployment
-* Infrastructure
-* Incidents
- |
-| **Sources** | Filters the change events based on Change Sources. The available filters are:* Harness CD NextGen
-* Harness CD
-* Kubernetes
-* PagerDuty
- |
+| **Change Types** | Filters the change events based on the type of Change Source type. The available filters are **Deployment**, **Infrastructure**, and **Incidents**.|
+| **Sources** | Filters the change events based on Change Sources. The available filters are **Harness CD NextGen**, **Harness CD**, **Kubernetes**, and **PagerDuty**.|
 
-1. The **Changes Timeline** provides an instant high-level overview of your Services. You can hover over the timeline to view the status of change events associated with deployment, infrastructure changes, and incidents. Each change event type is encoded with a specific color.
+#### View Changes Timeline
 
+The **Changes Timeline** provides an instant high-level overview of your Services. You can hover over the timeline to view the status of change events associated with deployment, infrastructure changes, and incidents. Each change event type is encoded with a specific color.
 
-
-|  |  |
-| --- | --- |
 | **Change Event Type** | **Color Code** |
-| Deployments |  |
-| Incidents |  |
-| Infrastructure |  |
+| --- | --- |
+| Deployments | ![](./static/change_event_type_deployment.png) |
+| Incidents | ![](./static/change_event_type_incident.png) |
+| Infrastructure | ![](./static/change_event_type_deployment_infrastructure.png) |
 
 To view the time, date, and number of change events that occurred in a specific time slot, click the desired time slot on the **Changes Timeline**. A time window gets selected, which can be expanded and contracted as per your requirement.
 
-![](./static/change-impact-analysis-quickstart-66.png)To return to the initial state, click **Reset** below the selected window on the **Changes Timeline**.
+![](./static/change-impact-analysis-quickstart-66.png)
 
-1. In **Changes**, you can view the list of all the change events along with the following details:
+To return to the initial state, click **Reset** below the selected window on the **Changes Timeline**.
+
+#### View Change Events
+
+In **Changes**, you can view the list of all the change events along with the following details:
 * **TIME** - Time at which the event occurred
+
 * **NAME** - Name of the event
+
 * **IMPACT** - Name of the impacted Monitored Service
+
 * **SOURCE** - Name of the Change Source
-* **TYPE** - Type of Change Source![](./static/change-impact-analysis-quickstart-67.png)
+* **TYPE** - Type of Change Source
+
+![](./static/change-impact-analysis-quickstart-67.png)
+
+#### View Change Event Details
 
 Click an event in **Changes** to drill down to the following details:
 
-* Name of the Service, Environment, and Source
-* Time and date at which the event was triggered
-* YAML file for the event
-* Service Health Trend timeline displaying the the Health Score of the service![](./static/change-impact-analysis-quickstart-68.png)
+  * Name of the Service, Environment, and Source
+
+  * Time and date at which the event was triggered
+
+  * YAML file for the event
+
+  * Service Health Trend timeline displaying the the Health Score of the service
+
+  ![](./static/change-impact-analysis-quickstart-68.png)
+
+
+#### View Changes in YAML Format
 
 Click **Show YAML Change** to compare the current and previous YAML files for the event.
 
-![](./static/change-impact-analysis-quickstart-69.png)
+  ![](./static/change-impact-analysis-quickstart-69.png)

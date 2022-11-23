@@ -98,8 +98,8 @@ In **Health Source Name**, enter a name for the Health Source.
 
 Click **Select Connector**. In the **Connector** settings, select an existing Connector or click **New Connector** to create a new one. Harness uses Connectors to authenticate and perform operations with a 3rd party tool.
 
-![](./static/slo-management-quickstart-05.png
-	
+![](./static/slo-management-quickstart-05.png)
+
 	After selecting the connector, click **Apply Selected**. The Connector is added to the Health Source.
 
 In **Select Feature**, select the APM or logging tool component to use. For example, if you select AppDynamics, **Application Monitoring** is selected by default.
@@ -146,7 +146,7 @@ Click **SLOs**. SLO is the target level of reliability for your service.
 
 ![](./static/slo-management-quickstart-10.png)
 
-Click **Create** **SLO**. The **Create SLO** settings appear.
+Click **Create SLO**. The **Create SLO** settings appear.
 
 ![](./static/slo-management-quickstart-11.png)
 
@@ -156,7 +156,7 @@ Creating an SLO involves the following steps:
 2. Configure SLI queries
 3. Set SLO target and Error Budget policy
 
-#### Step: Define an SLO
+#### Define an SLO
 
 In **Name** tab, in **SLO Name** enter a name for the SLO. For example Quickstart.
 
@@ -172,7 +172,7 @@ In **Name** enter a name for the user journey and click **Save**. For example, u
 
 Click **Continue**.
 
-#### Step: Configure SLI Queries
+#### Configure SLI Queries
 
 A Service Level Indicator (SLI) is a quantitative measure which defines if an SLO is being met and if the Service is working.
 
@@ -188,7 +188,7 @@ In **Metric for valid requests**, select the metrics that will most accurately t
 
 In **Objective Value**, specify the threshold value for your SLI. If your selected metric goes above or below this threshold, then that minute will be considered bad, and your SLI value will decrease.
 
-In **SLI value is good if** drop-down, choose **<****=** than objective value. This lets you define the SLI correlation with the **Objective Value**.
+In **SLI value is good if** drop-down, choose **<=** than objective value. This lets you define the SLI correlation with the **Objective Value**.
 
 In **Consider missing metric data as**, select **Bad**. You can choose if the missing metric values are:
 
@@ -202,7 +202,7 @@ In some cases, a metric can deviate from expected behavior and miss out on data 
 
 Click **Continue**.
 
-#### Step: Set SLO Target and Error Budget Policy
+#### Set SLO Target and Error Budget Policy
 
 SLO can be defined as a target percentage and Error Budget is 100% minus the target SLO. An Error Budget is automatically generated for each SLO, that indicates the speed and quality obligations that your services meet or, in other words, the unreliability that you can afford.
 
@@ -210,15 +210,15 @@ SLO can be defined as a target percentage and Error Budget is 100% minus the tar
 
 Compliance time period is the period over which you want to evaluate the SLO. There are two types of compliance period:
 
-* Rolling - Measures compliance over the last *n* days. 'n' refers to the Period Length in days which can be any value from 1 to 31.
+* Rolling - Measures compliance over the last *n* days. *n* refers to the Period Length in days which can be any value from 1 to 31.
 * Calendar - Measures the compliance over a fixed time period.
 
 For this example we are selecting **Calendar** in **Period Type**. The time window specifies the period for which the SLO runs its calculation. This helps to measure whether the reliability of a service during a given duration meets the expectations of most of its users. 
 
 In **Period Length**, select **Monthly**. You can also select:
 
-* Weekly.
-* Quarterly.
+* Weekly
+* Quarterly
 
 In **Window ends (Day)**, select 31. You can choose any value between 1 to 31.
 
@@ -230,34 +230,36 @@ Click **Save**. The SLO gets published on the **SLOs** dashboard.
 
 The **SLOs** (service level objectives) dashboard helps you track, manage, and monitor all the SLOs set for your service. It shows an aggregated view of overall organizational health.
 
+#### View SLO Status
+
 Perform the following steps to view the SLO status of your service:
 
 1. Open a Harness Project with the Service you want to monitor, and navigate to the **Service Reliability Management** module.
-2. Click **SLOs**. The **SLOs** dashboard is displayed.Only the Monitored Services for which SLOs are configured will show up on the dashboard.![](./static/slo-management-quickstart-16.png)
-3. Click **Create SLO** to create a new SLO.
-4. You can apply the following filters to narrow your selection further and retrieve the desired SLO data. You'll see that by default **All** is selected for all the filters and each filter has one or more options you can choose from.
+2. Click **SLOs**. The **SLOs** dashboard is displayed. Only the Monitored Services for which SLOs are configured will show up on the dashboard.![](./static/slo-management-quickstart-16.png)
+3. You can apply the following filters to narrow your selection further and retrieve the desired SLO data. You'll see that by default **All** is selected for all the filters and each filter has one or more options you can choose from.
 
-|  |  |
-| --- | --- |
 | **Filter** | **Description** |
+| --- | --- |
 | User Journey | A user journey can be defined as a sequence of tasks that are a part of the user experience to achieve a specific result. Filter the SLOs based on a specific User Journey or for all User Journeys. |
 | Monitored Services | A Harness Monitored Service is a Service and Environment combination that Harness monitors. Filter the SLOs based on a single Monitored Service or all available Monitored Services in the drop. |
-| Period Type | Filter the data based on the following time interval types:
-	* Rolling - Measures compliance over the last *n* days. 'n' refers to the Period Length in days which can be any value from 1 to 31.
-	* Calendar - Measures the compliance over a fixed time period. |
-| SLI Type | Filter the data based on SLI types.
-	* Availability - Indicates if the valid requests are served successfully.
-	* Latency - Indicates if the proportion of valid requests are served faster than the threshold.A Service Level Indicator (SLI) in Harness can be defined as a quantitative measure that defines if an SLO is being met. |
+| Period Type | Filter the data based on the following time interval types: <ul><li> **Rolling** - Measures compliance over the last *n* days. *n* refers to the Period Length in days which can be any value from 1 to 31.</li><li> **Calendar** - Measures the compliance over a fixed time period.</li></ul>|
+| SLI Type | Filter the data based on SLI types. <ul><li> **Availability** - Indicates if the valid requests are served successfully.</li><li> **Latency** - Indicates if the proportion of valid requests are served faster than the threshold. <br/>A Service Level Indicator (SLI) in Harness can be defined as a quantitative measure that defines if an SLO is being met.</li></ul>|
 
 ![](./static/slo-management-quickstart-17.png)
-5. You can analyze the SLO status by taking a look at the header section of the dashboard:![](./static/slo-management-quickstart-18.png)
+
+#### Analyze SLO Status
+
+You can analyze the SLO status by taking a look at the header section of the dashboard:![](./static/slo-management-quickstart-18.png)
 * **Total SLOs** - Total number of SLOs existing for all your services.
 * **Healthy** - Number of SLOs for which the remaining Error Budget is above 75%.
 * **Observe** - Number of SLOs for which the remaining Error Budget is greater than 50% but less than 75%.
 * **Need** **Attention** - Number of SLOs for which the remaining Error Budget is greater than 25% but less than 50%.
 * **Unhealthy** - Number of SLOs for which the remaining Error Budget is between 0 to 25%.
 * **Exhausted** - Number of SLOs for which the remaining Error Budget is zero or less than zero.
-1. You can view the summary of each SLO on the SLO card with the following details:
+
+#### View SLO Summary
+
+You can view the summary of each SLO on the SLO card with the following details:
 * **Monitored Service** - Shows the name of the Monitored Service, which is the Service and Environment combination that Harness monitors.
 * **SLI Type** - It can be Latency or Availability. Latency indicates if a proportion of valid requests are served faster than the threshold. Availability indicates if valid requests are served successfully.
 * **Health Source** - A Health Source is a combination of a Harness Service and the associated Environment that tracks changes in health trends of the service using logs or metrics collected from an APM or logging tool.
@@ -268,27 +270,42 @@ Perform the following steps to view the SLO status of your service:
 * **SLO** - SLO status percentage.
 * **SLI** - SLI status percentage.![](./static/slo-management-quickstart-19.png)
 
+#### View SLO Performance Trend
+
 The **SLO performance Trend** shows you the SLO and SLI percentages, which helps you understand how often the set threshold has been breached. This enables you to analyze if the reliability of the service during a given period meets the expectations of most of the users. 
 
 You can hover over the following graph to view the SLI evaluation at various time intervals.
 
-![](./static/slo-management-quickstart-20.png)1. Click the **Error Budget** toggle to see the following details:
+![](./static/slo-management-quickstart-20.png)
+
+
+#### View Error Budget Details
+
+Click the **Error Budget** toggle to see the following details:
 * **Error Budget Remaining (mins)** - The semi-circular donut chart shows the remaining Error Budget (in minutes and in percentage). It is calculated as follows:  
 *Error Budget Remaining = Total Error Budget - Number of Bad Minutes.*
 * **Error Budget Burndown** - Shows how fast your Error Budget is being used up.![](./static/slo-management-quickstart-21.png)
 
 Based on the SLO target and specified time window, Harness SRM automatically generates an Error Budget. This Error Budget indicates the speed and quality obligations that your service meets, or in other words, the unreliability you can afford before your SLO is breached.
 
-1. Click the vertical ellipsis icon at the top-right of the SLO card to perform the following actions:![](./static/slo-management-quickstart-22.png)
+#### Manage SLO and Error Budget Settings
+
+Click the vertical ellipsis icon at the top-right of the SLO card to perform the following actions:![](./static/slo-management-quickstart-22.png)
 
 * **Edit** - Select this option if you want to edit or modify the SLO details.
 * **Reset Error Budget** - When your Error Budget is nearly spent or is about to be exhausted, you can use this option to reset the Error Budget.  
-Perform the following steps to reset the Error Budget:
-	1. Select **Reset Error Budget**. The **Reset Error Budget** setting appears. It shows you the actual Error Budget and the remaining Error Budget in minutes.![](./static/slo-management-quickstart-23.png)
+
+	To reset the Error Budget, perform the following steps:
+	1. Select **Reset Error Budget**. The **Reset Error Budget** setting appears. It shows you the actual Error Budget and the remaining Error Budget in minutes.
+
+	![](./static/slo-management-quickstart-23.png)
+
 	2. In **Increase Error Budget** **by** you can enter the percentage value by which you want to increase or decrease the Error Budget. You can enter any value from 1 to 100.
+
 	3. In **Reason** you can enter the purpose for changing the Error Budget.
-	4. Click **Save**. The recalculated Error Budget appears in the **Error Budget Remaining** donut chart**.**
+
+	3. Click **Save**. The recalculated Error Budget appears in the **Error Budget Remaining** donut chart**.**
+
 * **Delete** - If you select **Delete**, you will see a warning that you are about to remove the SLO.
 
 Click **SLO** toggle to slide back to the SLO details.
-

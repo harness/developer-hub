@@ -29,7 +29,7 @@ The Harness Error Tracking Agent is installed on a Java application to capture a
 
 **You must install an Error Tracking Agent to use Harness Error Tracking for your application or Service.**
 
-Review the following to make sure that you have met the requirements to use Harness Error Tracking.
+Review the following to make sure that you have met the requirements to use Harness Error Tracking:
 
 * [Compatibility and Requirements](install-the-error-tracking-agent.md#compatibility-and-requirements).
 * [Install an Error Tracking Agent](install-the-error-tracking-agent.md).
@@ -112,15 +112,29 @@ See [Install an Error Tracking Agent](install-the-error-tracking-agent.md).
 
 Once the Error Tracking Health Source is added, you can view the identified errors on the **Overall Health Score** timeline, in the [Service Health dashboard](../../howtos-service-reliability-management/change-impact-analysis-quickstart.md#step-4-view-service-health).
 
-![](./static/error-tracking-in-srm-06.png)1. Scroll up on the **Service Health** dashboard and then click the **Errors** tab. A list of all the identified errors appears.![](./static/error-tracking-in-srm-07.png)
+![](./static/error-tracking-in-srm-06.png)
+
+
+1. Scroll up on the **Service Health** dashboard and then click the **Errors** tab. A list of all the identified errors appears.
+
+  ![](./static/error-tracking-in-srm-07.png)
+
 2. Click any listed error to access the **Automated Root Cause** (ARC) screen. The ARC screen offers a powerful mechanism to get to the root of errors and exceptions in production and staging environments.
 
-![](./static/error-tracking-in-srm-08.png)The ARC screen provides the following details:
+  ![](./static/error-tracking-in-srm-08.png)
 
-* Origin of the error and the error message it throws.
-* Date on which the error was first identified and the number of times it appeared.
-* **Code** tab displays the complete stack trace and associated source code, causing the issue.
-* Highlights the line of code in the source code where the error occurred.
-* **Recorded Variables** displays the complete variable state from the moment the error occurred.
-* **Log** tab displays the log statements.
-* **Environment** tab displays the internal environment state at the moment when the error occurred, including memory usage (heap and non-heap), basic system information, CPU usage, and more.
+  The ARC screen provides the following details:
+
+    * Origin of the error and the error message it throws.
+
+    * Date on which the error was first identified and the number of times it appeared.
+
+    * **Code** tab displays the complete stack trace and associated source code, causing the issue.
+
+    * Highlights the line of code in the source code where the error occurred.
+
+    * **Recorded Variables** displays the complete variable state from the moment the error occurred.
+
+    * **Log** tab displays the log statements.
+
+    * **Environment** tab displays the internal environment state at the moment when the error occurred, including memory usage (heap and non-heap), basic system information, CPU usage, and more.

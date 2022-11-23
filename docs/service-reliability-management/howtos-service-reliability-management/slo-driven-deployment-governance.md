@@ -124,7 +124,7 @@ You can create SLO-based policies using the following examples, or you can creat
 
 ```
 package pipeline  
-  
+
 authorize = "allow" {  
     stage = input.pipeline.stages[_].stage  
     stage.type == "Deployment"                                                    # ... that are deployments  
@@ -133,7 +133,7 @@ authorize = "allow" {
     step = input.pipeline.stages[i].stage.spec                                                    
     step.sloPolicy.statusOfMonitoredService == "NOT_CONFIGURED"  
 } else = "allow"  
-  
+
 deny ["SLO for the non prod env should be configured"]{  
   authorize == "deny"  
 }
@@ -143,7 +143,7 @@ deny ["SLO for the non prod env should be configured"]{
 
 ```
 package pipeline  
-  
+
 authorize = "allow" {  
     stage = input.pipeline.stages[_].stage  
     stage.type == "Deployment"                                                    # ... that are deployments  
@@ -152,7 +152,7 @@ authorize = "allow" {
     step = input.pipeline.stages[i].stage.spec                                                    
     step.sloPolicy.sloErrorBudgetRemainingPercentage<50  
 } else = "allow"  
-  
+
 deny["SLO error budget for the non prod env should be greater than 50"] {  
   authorize == "deny"  
 }
@@ -162,7 +162,7 @@ deny["SLO error budget for the non prod env should be greater than 50"] {
 
 ```
 package pipeline  
-  
+
 authorize = "allow" {  
     stage = input.pipeline.stages[_].stage  
     stage.type == "Deployment"                                                    # ... that are deployments  
@@ -171,7 +171,7 @@ authorize = "allow" {
     step = input.pipeline.stages[i].stage.spec                                                    
     not step.sloPolicy.statusOfMonitoredService == "CONFIGURED"  
 } else = "allow"  
-  
+
 deny ["SLO should be configured for the prod env"] {  
   authorize == "deny"  
 }
@@ -181,7 +181,7 @@ deny ["SLO should be configured for the prod env"] {
 
 ```
 package pipeline  
-  
+
 authorize = "allow" {  
     stage = input.pipeline.stages[_].stage  
     stage.type == "Deployment"                                                    # ... that are deployments  
@@ -190,7 +190,7 @@ authorize = "allow" {
     step = input.pipeline.stages[i].stage.spec                                                    
     step.sloPolicy.sloErrorBudgetRemainingPercentage<50  
 } else = "allow"  
-  
+
 deny ["SLO for the prod env should be more than 50"] {  
   authorize == "deny"  
 
@@ -239,7 +239,9 @@ Click **ENFORCED** to enforce the policy if not enabled already.
 
 ![](./static/slo-driven-deployment-governance-37.png)
 
-When you create Policy Sets they are applied to all matching entities (for example, Pipelines). Be careful that you do not create a Policy Set that might impact existing Pipelines unintentionally.### Step 5: Evaluate a Pipeline on Run
+When you create Policy Sets they are applied to all matching entities (for example, Pipelines). Be careful that you do not create a Policy Set that might impact existing Pipelines unintentionally.
+
+### Step 5: Evaluate a Pipeline on Run
 
 Click **Pipelines** to navigate back to the Pipeline you created earlier.
 
@@ -301,4 +303,3 @@ In this tutorial, you:
 
 * [Harness Governance Overview](https://ngdocs.harness.io/article/1d3lmhv4jl-harness-governance-overview)
 * [Harness Governance Quickstart](https://docs.harness.io/article/jws2znftay-harness-governance-quickstart)
-
