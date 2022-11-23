@@ -35,17 +35,33 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          path: ".",
+          path: "docs",
           sidebarPath: require.resolve("./sidebars.js"),
           editUrl: "https://github.com/harness/developer-hub/tree/main", // /tree/main/packages/create-docusaurus/templates/shared/
-          include: ["tutorials/**/*.{md, mdx}", "docs/**/*.{md, mdx}"],
+          // include: ["tutorials/**/*.{md, mdx}", "docs/**/*.{md, mdx}"],
           exclude: ["**/shared/**", "**/static/**"],
-          routeBasePath: "/", //CHANGE HERE
+          routeBasePath: "docs", //CHANGE HERE
         },
-        // blog: {
-        //   showReadingTime: true,
-        //   editUrl: "https://github.com/harness/developer-hub/tree/main", // /tree/main/packages/create-docusaurus/templates/shared/
-        // },
+        blog: {
+          //   showReadingTime: true,
+          editUrl: "https://github.com/harness/developer-hub/tree/main",
+          blogTitle: "Release Notes",
+          blogDescription: "Harness Platform Release Notes",
+          postsPerPage: "ALL",
+          blogSidebarTitle: "All Release Notes",
+          blogSidebarCount: "ALL",
+          feedOptions: {
+            type: "all",
+            copyright: `Copyright © ${new Date().getFullYear()} Harness, Inc.`,
+          },
+          // URL route for the blog section of your site.
+          // *DO NOT* include a trailing slash.
+          routeBasePath: "release-notes",
+          // Path to data on filesystem relative to site dir.
+          path: "release-notes",
+          include: ["**/*.{md,mdx}"],
+          exclude: ["**/shared/**", "**/static/**"],
+        },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
         },
@@ -84,7 +100,7 @@ const config = {
             type: "dropdown",
             label: "Tutorials",
             items: [
-               {
+              {
                 // type: "doc",
                 label: "All Tutorials",
                 to: "tutorials/get-started",
@@ -197,6 +213,7 @@ const config = {
               },
             ],
           },
+          { to: "release-notes", label: "Release Notes", position: "right" },
           {
             position: "right",
             href: "https://join.slack.com/t/harnesscommunity/shared_invite/zt-y4hdqh7p-RVuEQyIl5Hcx4Ck8VCvzBw",
@@ -362,6 +379,17 @@ const config = {
       },
     }),
   plugins: [
+    [
+      "@docusaurus/plugin-content-docs",
+      {
+        id: "tutorials",
+        path: "tutorials",
+        routeBasePath: "tutorials",
+        exclude: ["**/shared/**", "**/static/**"],
+        sidebarPath: require.resolve("./sidebars-tutorials.js"),
+        // ... other options
+      },
+    ],
     "docusaurus-plugin-sass",
     path.join(__dirname, "/plugins/hotjar-plugin"),
     path.join(__dirname, "/plugins/onetrust-plugin"),
