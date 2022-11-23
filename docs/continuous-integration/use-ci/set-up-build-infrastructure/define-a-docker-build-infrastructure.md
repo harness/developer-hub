@@ -38,9 +38,6 @@ The UI shows the delegate as not connected. This is expected behavior. You need 
 9. Enable execution permissions for the Runner. For example, on macOS you can run the command `sudo` `chmod +x` `drone-docker-runner-darwin-amd64`.
 10. Start the runner binary:
 	1. On macOS, run `./drone-docker-runner-darwin-amd64 server` (Note: You might have to allow this app to be run from `Security and Privacy` settings)
-
-	<img width="715" alt="Screen Shot 2022-11-23 at 2 27 56 PM" src="https://user-images.githubusercontent.com/96449740/203656816-ae33e4df-a905-4e1e-96cb-dcb12a31d063.png">
-
 	2. On Linux, run as sudo: `sudo ./drone-docker-runner-darwin-amd64 server`
 11. Go back to the Delegates page where you created the new delegate. The delegate should appear as connected. This might take a few minutes.
 
@@ -89,9 +86,6 @@ Update the infrastructure tab to use:
 
 1. Docker infrastructure
 2. Platform: Operating System and Architecture (Linux, AMD64 example below)
-
-<img width="983" alt="Screen Shot 2022-11-23 at 2 40 11 PM" src="https://user-images.githubusercontent.com/96449740/203658116-c8051df4-ea47-4ba5-90e9-3b96fbf7a5f6.png">
-
 
 ### Troubleshooting
 
