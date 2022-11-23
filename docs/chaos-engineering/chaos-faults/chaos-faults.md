@@ -295,6 +295,16 @@ Following Platform Chaos faults are available:
     <td>Injects ECS instance stop chaos on target ECS cluster</td>
     <td><a href="/docs/chaos-engineering/chaos-faults/aws/ecs-instance-stop">ecs-instance-stop</a></td>
   </tr>
+  <tr>
+    <td>RDS Instance Delete</td>
+    <td>Injects RDS instance delete chaos on target RDS instance/cluster</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/aws/rds-instance-delete">rds-instance-delete</a></td>
+  </tr>
+  <tr>
+    <td>RDS Instance Reboot</td>
+    <td>Injects RDS instance reboot chaos on target RDS instance/cluster</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/aws/rds-instance-reboot">rds-instance-reboot</a></td>
+  </tr>
 </table>
 
 ### GCP
