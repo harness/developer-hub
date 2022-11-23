@@ -304,7 +304,7 @@ Click the vertical ellipsis icon at the top-right of the SLO card to perform the
 
 	3. In **Reason** you can enter the purpose for changing the Error Budget.
 
-	3. Click **Save**. The recalculated Error Budget appears in the **Error Budget Remaining** donut chart**.**
+	4. Click **Save**. The recalculated Error Budget appears in the **Error Budget Remaining** donut chart**.**
 
 * **Delete** - If you select **Delete**, you will see a warning that you are about to remove the SLO.
 

@@ -54,13 +54,14 @@ In the **Overview** section, do the following:
 
 1. In the **Type** field, select a service type that you want to monitor. Available options are **Application** and **Infrastructure**.
 
-2. In the **Create or Select a Service** field select a service.
+1. In the **Create or Select a Service** field select a service.
 
-You can either select an existing service or create a new service to monitor. To create a new service:
-1. Click **+ Add New**.  
+  You can either select an existing service or create a new service to monitor. To create a new service:
+
+  a. Click **+ Add New**.  
 	The New Service dialog appears.
 
-1. Enter the following information, and then click **Save**:
+  b. Enter the following information, and then click **Save**:
 
     * **Name** : Enter a name for the service.  
     * **Description** (Optional)
@@ -79,6 +80,9 @@ You can either select an existing environment or create a new environment. To cr
    * **Description** (Optional)
    * **Tag** (Optional)
    * **Environment Type**: The available options are Production and Non-Production.
+
+  The new environment is created.
+
 
 ### Select a Change Source
 
