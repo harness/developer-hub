@@ -297,7 +297,7 @@ Following Platform Chaos faults are available:
   </tr>
   <tr>
     <td>Lambda Update Function Timeout</td>
-    <td>Injects AWS upadte function timeout chaos</td>
+    <td>Injects AWS update function timeout chaos</td>
     <td><a href="/docs/chaos-engineering/chaos-faults/aws/lambda-update-function-timeout">lambda-update-function-timeout</a></td>
   </tr>
   <tr>
