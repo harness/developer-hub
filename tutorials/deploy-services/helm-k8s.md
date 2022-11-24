@@ -3,25 +3,15 @@ sidebar_position: 2
 description: Deploy a Helm Chart using a CD Pipeline
 ---
 
-# Deploy a Helm Chart using a CD Pipeline
+# Deploy a Helm Chart
 
 ```mdx-code-block
 import DelegateInstall from '/tutorials/platform/install-delegate.md';
 ```
 
-## Background on Helm
+## Helm Deployment Pipeline Basics
 
-Introduced during the first KubeCon, [Helm](https://harness.io/blog/what-is-helm) has been a stalwart in the Kubernetes ecosystem almost since the inception of Kubernetes. If you are unfamiliar with Helm, Helm is a package manager for Kubernetes; similarly to Homebrew on your Mac or Chocolatey on your Windows machine.
-
-A Helm Chart is the unit of packaging that Helm creates/applies. Helm also has templating abilities so interactions or reuse with Helm Charts can be templated out.
-
-_Example structure of a Wordpress Helm Chart:_
-
-![Helm Structure](static/first-helm-deployment/helm_structure.png)
-
-Having a Helm Chart(s) as part of your Continuous Delivery Pipeline when deploying to Kubernetes is simple with Harness. From installing third party pieces of software/platforms to deploying your own application represented with Helm, this example will get your Helm Deployment integrated into a Pipeline.
-
-## Building Blocks of a Helm Deployment Pipeline
+[Helm](https://harness.io/blog/what-is-helm) is the de-facto package manager for Kubernetes; similarly to Homebrew on your Mac or Chocolatey on your Windows machine.
 
 To leverage Helm, you do need a few pieces. The first would be a Kubernetes Cluster and then Helm Resources to deploy.
 

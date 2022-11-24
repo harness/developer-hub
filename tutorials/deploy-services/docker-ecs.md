@@ -1,26 +1,26 @@
 ---
-sidebar_position: 3
-description: Deploy a Docker Image in Amazon ECS
+sidebar_position: 5
+description: Deploy a Docker Image to Amazon ECS using a CD Pipeline
 ---
 
-# Deploy a Docker Image in Amazon ECS with a CD Pipeline
+# Deploy a Docker Image to Amazon ECS 
 
 ```mdx-code-block
 import DelegateInstall from '/tutorials/platform/install-delegate.md';
 ```
 
-## Background on Amazon ECS
+## Amazon ECS Deployment Pipeline Basics
 
-With the rise of containerization in the 2010’s, in 2014 the same year that [Kubernetes hit GitHub](https://github.com/kubernetes/kubernetes/commit/2c4b3a562ce34cddc3f8218a2c4d11c7310e6d56#diff-67dd9e8f3ee257072765326cb4f242852554a2c0753563fa51e292c0a63a7b94) [and it would not be until Summer 2015 when Kubernetes hit 1.0], [Amazon Elastic Container Service](https://aws.amazon.com/ecs/) or Amazon ECS was released to the public. Amazon ECS is a container running service which includes and manages the needed compute infrastructure to power your containers. Unlike Kubernetes at the time which you had to provision infrastructure then install Kubernetes as a control plane, Amazon ECS was all encompassing being able to spin up Amazon EC2 instances and resources on your behalf. 
-
-Amazon ECS today is a compelling offering for those looking to run containerized workloads in AWS. Define an ECS [Task Definition](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definitions.html) describing your workload and a [Service Definition](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service_definition_parameters.html) where you want to run your workload and you are all set.  A Continuous Delivery Pipeline is an excellent spot to orchestrate a deployment to Amazon ECS. In this example, we will go through deploying an image with Amazon ECS inside a Harness Continuous Delivery Pipeline. 
+[Amazon Elastic Container Service](https://aws.amazon.com/ecs/) is an AWS offering for those looking to run containerized workloads. Define an ECS [Task Definition](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definitions.html) describing your workload and a [Service Definition](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service_definition_parameters.html) where you want to run your workload and you are all set.  A Continuous Delivery Pipeline is an excellent spot to orchestrate a deployment to Amazon ECS. In this example, we will go through deploying an image with Amazon ECS inside a Harness Continuous Delivery Pipeline. 
 
 ![Overview](static/first-ecs/overview.png)
 
 There are a few AWS Items to setup, such as the ECS Cluster itself, which we will go through configuring. If you have not signed up for Harness CD, sign up now before diving in. 
 
-## Creating Your First Amazon ECS Cluster
-The first item you will need is access to an [AWS Account](https://aws.amazon.com/console/). After that there are a few items to create ahead of ECS Cluster Creation or can leverage the AWS ECS Cluster Creation Wizard to create. Amazon ECS creates EC2 instances on your behalf to run your workloads. So if you have used EC2 in the past, some of these items will not be too foreign. 
+
+## Create Your First Amazon ECS Cluster
+
+ You need access to an [AWS Account](https://aws.amazon.com/console/) to create an ECS cluster. After that there are a few items to create ahead of ECS Cluster Creation or can leverage the AWS ECS Cluster Creation Wizard to create. Amazon ECS creates EC2 instances on your behalf to run your workloads. So if you have used EC2 in the past, some of these items will not be too foreign. 
 
 ### Create/Validate Ahead of Time
 #### ECS Instance Role - IAM

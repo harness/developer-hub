@@ -21,7 +21,7 @@ export type FeatureItem = {
 
 const FeatureList: FeatureItem[] = [
   {
-    title: "Build and Test Code",
+    title: "Build & Test Code",
     module: "ci",
     Svg: "/img/icon_ci.svg",
     description: <>Create a CI build pipeline.</>,
@@ -58,7 +58,7 @@ const FeatureList: FeatureItem[] = [
     module: "srm",
     Svg: "/img/icon_srm.svg",
     description: <>Monitor SLOs, track error budgets, debug code errors.</>,
-    type: [docType.Documentation],
+    type: [docType.Documentation, docType.Interactive, docType.Video],
     link: "/tutorials/manage-service-reliability",
   },
   {
