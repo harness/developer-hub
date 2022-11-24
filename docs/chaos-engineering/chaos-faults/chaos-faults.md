@@ -302,7 +302,7 @@ Following Platform Chaos faults are available:
   </tr>
   <tr>
     <td>Lambda Update Function Memory</td>
-    <td>Injects AWS upadte function memory limit chaos</td>
+    <td>Injects AWS update function memory limit chaos</td>
     <td><a href="/docs/chaos-engineering/chaos-faults/aws/lambda-update-function-memory">lambda-update-function-memory</a></td>
   </tr>
 </table>
