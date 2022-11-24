@@ -119,7 +119,7 @@ Refer the [common attributes](../common-tunables-for-all-experiments) and [AWS s
 
 ### RDS_CLUSTER_NAME
 
-It defines the cluster name of the target RDS cluster. We can provide the RDS_CLUSTER_NAME using `CLUSTER_NAME` ENVs as well. If not provided experiment will select the Instance Idenfier provided.
+It defines the cluster name of the target RDS cluster. We can also provide the `RDS_CLUSTER_NAME` using `CLUSTER_NAME` ENVs. If not provided, the experiment will select the Instance Identifier provided.
 
 Use the following example to tune this:
 
