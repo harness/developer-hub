@@ -295,6 +295,11 @@ Following Platform Chaos faults are available:
     <td>Injects ECS instance stop chaos on target ECS cluster</td>
     <td><a href="/docs/chaos-engineering/chaos-faults/aws/ecs-instance-stop">ecs-instance-stop</a></td>
   </tr>
+  <tr>
+    <td>ELB AZ Down</td>
+    <td>Injects AZ down chaos from AWS ELB</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/aws/elb-az-down">elb-az-down</a></td>
+  </tr>
 </table>
 
 ### GCP
