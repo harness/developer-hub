@@ -177,5 +177,5 @@ spec:
         - name: REGION
           value: 'us-east-2'
         - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
+          value: '60'
 ```
