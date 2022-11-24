@@ -79,7 +79,7 @@ stringData:
       <tr>
         <td> REGION </td>
         <td> The region name of the target lambda function</td>
-        <td> </td>
+        <td> Eg: <code>us-east-2</code> </td>
       </tr>
     </table>
     <h2>Optional Fields</h2>
