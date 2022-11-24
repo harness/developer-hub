@@ -5,7 +5,7 @@ title: RDS Instance Delete
 
 ## Introduction
 
-- RDS Instance delete can induce an rds instance delete chaos on AWS RDS cluster. It derives the instance under chaos from RDS cluster.
+- RDS Instance delete can induce an RDS instance delete chaos on AWS RDS cluster. It derives the instance under chaos from RDS cluster.
 
 
 :::tip Fault execution flow chart
