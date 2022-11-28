@@ -217,7 +217,7 @@ The following table lists Harness support for deployment platforms, artifacts, s
   </tr>
   <tr valign="top">
     <td>
-      <p> <a href="/article/mpx2y48ovx">Secure Shell (SSH)</a></p>
+      <p> <a href="https://docs.harness.io/article/mpx2y48ovx">Secure Shell (SSH)</a></p>
     </td>
     <td>
       <p> <strong>Non-container:</strong></p>
