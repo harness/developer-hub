@@ -3,32 +3,15 @@ sidebar_position: 1
 description: Deploy a Kubernetes Manifest using a CD Pipeline
 ---
 
-# Deploy a Kubernetes Manifest using a CD Pipeline
+# Deploy a Kubernetes Manifest
 
 ```mdx-code-block
 import DelegateInstall from '/tutorials/platform/install-delegate.md';
 ```
 
-## Background on Continuous Delivery
+## Continuous Delivery Pipeline Basics
 
-Releases that were once done on a quarterly basis seem olden now, with the advent of [Agile Development](https://www.agilealliance.org/agile101/), getting incremental features out as fast as possible. Infrastructure and practices need to be in place to allow changes to propagate quickly. If we take a look at the definition of Continuous Delivery from Jez Humble’s book, Continuous Delivery:
-
-_“Continuous Delivery is the ability to get changes of all types—including
-new features, configuration changes, bug fixes and experiments—
-into production, or into the hands of users, safely and quickly in a
-sustainable way._
-
-Safely means pipelines enforce quality, testing and a mechanism to
-deal with failure. Quickly implies pipelines promote code without human
-intervention, in an automated fashion, and finally, sustainable means
-pipelines can consistently achieve all this with low effort and resources.”
-
-Simply put, good pipelines are fast and repeatable, great pipelines are
-fast, safe, and repeatable. With Harness Continuous Delivery [Harness CD], you are on the path to creating great delivery pipelines in no time. This example will show you how to get up and started deploying a Kubernetes based workload with a Harness CD Pipeline.
-
-## Building Blocks to Continuous Delivery
-
-Automating your deployments does require a few pieces. You do need something that can be deployed and infrastructure for your deployment to head to. This can be in the form of a binary distribution e.g an image and a Kubernetes cluster. Typically with modern applications, the deployment manifests will be stored in source control, [GitHub](https://github.com/) being a common SCM [source code management] solution.
+Automating your deployments does require a few pieces. You do need something that can be deployed and infrastructure where the deployment will be performed. This can be in the form of a binary distribution e.g an image and a Kubernetes cluster. Typically with modern applications, the deployment manifests will be stored in source control, [GitHub](https://github.com/) being a common SCM [source code management] solution.
 
 For this example, we will deploy [Grafana](https://grafana.com/oss/grafana/), an open source analytics tool, to a Kubernetes cluster with Harness CD. The needed Grafana Manifests will be stored on GitHub and you can deploy to a Kubernetes cluster of your choice.
 

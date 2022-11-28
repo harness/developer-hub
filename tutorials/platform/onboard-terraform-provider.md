@@ -33,7 +33,7 @@ terraform -version
 You will also need to provde your Harness accountId as an input parameter to the Provider. This accountId is present in every Harness URL. For example, in the following URL
 
 ```
-https://app.harness.io/ng/#/account/6_vVHzo9Qeu9fXvj-AcQCb/settings/overview
+https://<harness-mgr-port>/ng/#/account/6_vVHzo9Qeu9fXvj-AcQCb/settings/overview
 ```
 
 `6_vVHzo9Qeu9fXvj-AcQCb` is the accountId. 
@@ -54,6 +54,13 @@ curl -LO https://raw.githubusercontent.com/harness-apps/developer-hub-apps/main/
 
 Open the `main.tf` file in a text editor and replace `PUT_YOUR_HARNESS_ACCOUNTID_HERE` and `PUT_YOUR_API_KEY_TOKEN_HERE` with your Harness accountId and API key token values respectively. 
 
+The `PUT_YOUR_MANAGER_ENDPOINT_HERE` value can be determined as follows:
+- For Harness SaaS, it is `https://app.harness.io/gateway`
+- For Harness CDCE Docker, it is `http://HARNESS_HOST` where HARNESS_HOST is the host IP where Harness CDCE is running. You can use `localhost` for HARNESS_HOST if terraform is running on the same machine.
+ - For Harness CDCE Helm, it is `http://HARNESS_HOST:7143` where HARNESS_HOST is the public IP of the Kubernetes node where CDCE Helm is running. You can use `localhost` for HARNESS_HOST if terraform is running on the same machine.
+
+Note that if terraform CLI is running local to CDCE (either docker compose or minikube port forward onto VM), then you can use `localhost` and `localhost:7143` for Docker and Kubernetes install options respectively.
+
 ```
 terraform {
   required_providers {
@@ -64,7 +71,7 @@ terraform {
 }
 
 provider "harness" {
-  endpoint         = "https://app.harness.io/gateway"
+  endpoint         = "PUT_YOUR_MANAGER_ENDPOINT_HERE"
   account_id       = "PUT_YOUR_HARNESS_ACCOUNTID_HERE"
   platform_api_key = "PUT_YOUR_API_KEY_TOKEN_HERE"
 }
@@ -114,7 +121,7 @@ resource "harness_platform_connector_helm" "helmconn" {
 
 #### Create a service inside the project 
 
-This service will use the above Helm connector to deploy a Helm Chart.
+This service will use the above Helm connector to deploy a Helm Chart. We are using the  `wildfly` helm chart available at `https://charts.bitnami.com/bitnami` as the sample service for this tutorial.
 ```
 resource "harness_platform_service" "service" {
   name        = "ServiceByTF"

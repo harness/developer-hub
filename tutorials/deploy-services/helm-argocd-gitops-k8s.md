@@ -1,24 +1,17 @@
 ---
-sidebar_position: 2
-description: Learn about GitOps and how to leverage your own GitOps Pipeline.
+sidebar_position: 3
+description: Deploy a Helm Chart using GitOps
 ---
 
-# Deploy a Helm Chart using GitOps
+# Deploy a Helm Chart using Harness GitOps for Argo CD
 
-## Background on GitOps
+## GitOps Basics
 
-Not to muddy the waters with one more prefix in front of ops, GitOps is a newer DevOps paradigm that slants towards the developer. As the names states, GitOps is focused around Git, the source code management [SCM] tool. As a developer, leveraging an SCM is one of the quintessential tools of the trade; allowing for collaboration and more importantly saving your hard work off of your machine. 
-
-Modern teams view checking in or committing code as the genesis to start certain processes. For example, checking in code can kick off a build automatically to start confidence building. Software is all about iteration and allowing for rapid iteration focusing on only the changes introduced. GitOps extends practices of SCM into infrastructure and deployment of applications. This [definitive piece by Weaveworks](https://www.weave.works/technologies/gitops/) is viewed as a manifesto around GitOps pillars. Like any paradigm, there is a combination of culture, processes, and technology. Doing a cursory Google Search on GitOps, [Argo CD](https://argoproj.github.io/cd/), a popular GitOps Engine would be one of the top results.
-
-Harness has the ability to manage Argo CD based deployments and provide a management interface and control plane for Argo CD. If you have not used Argo CD before, the easiest path is to let Harness manage the entire installation for you.
-
-## Setting the GitOps Foundation
-If you are new to GitOps and/or Argo CD, Harness makes this really easy to get started. First you will need to [sign up for a Harness Account](https://app.harness.io/auth/#/signup/?module=cd&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=cd-plg&utm_content=get-started). Harness works on a concept of Projects. The default project created when signing up for Harness is fine for the example. 
+GitOps extends practices of Source Code Management into infrastructure and deployment of applications. [Argo CD](https://argoproj.github.io/cd/) is the most popular project in this space. Even if you are new to GitOps and/or Argo CD, you have nothing to worry since Harness makes it really easy to get started. First you will need to [sign up for a Harness Account](https://app.harness.io/auth/#/signup/?module=cd&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=cd-plg&utm_content=get-started). Harness works on a concept of Projects. The default project created when signing up for Harness is fine for the example. 
 
 ![Overview](static/first-gitops/overview.png)
 
-Harness will install Argo CD on your behalf and wire that Argo CD instance to Harness. All you need is a Kubernetes cluster.
+Harness will install Argo CD on your behalf and connect that Argo CD instance to Harness. All you need is a Kubernetes cluster.
 
 Navigate to Deployments -> GitOps  -> Settings -> GitOps Agents
 
@@ -54,7 +47,7 @@ If you are familiar with Argo CD, these steps will be very familiar. If you have
 The Argo CD project has a sample Guestbook application that is deployed via Helm. This is located at:
 `https://github.com/argoproj/argocd-example-apps/tree/master/helm-guestbook`
 
-First will need to wire the repository to Harness. 
+First will need to connect the repository to Harness. 
 
 Deployments -> GitOps -> Settings -> Repositories + New Repository 
 
@@ -92,7 +85,7 @@ Click Continue. You can leverage the credentials of the Harness GitOps Agent to 
 
 ![Use Agent](static/first-gitops/use_agent.png)
 
-Click Finish and your Cluster will be ready to be wired into an Application, a combination of the “what” and the “where”.
+Click Finish and your Cluster will be ready to be connected into an Application, a combination of the “what” and the “where”.
 
 ### Creating an Application
 
@@ -111,9 +104,9 @@ Click Next and you can choose how the repository sync occurs. Automatic will loo
 
 ![Sync Policy](static/first-gitops/sync_policy.png)
 
-Click Continue to wire the Repository to the Application. 
+Click Continue to connect the Repository to the Application. 
 
-* Repository URL: Repo URL that was just wired [https://github.com/argoproj/argocd-example-apps]
+* Repository URL: Repo URL that was just connected [https://github.com/argoproj/argocd-example-apps]
 * Revision Type: Branch
 * Target Revision: master
 * Path: helm-guestbook
@@ -121,9 +114,9 @@ Click Continue to wire the Repository to the Application.
 
 ![Source](static/first-gitops/source.png)
 
-Click Continue and wire in the Cluster and Namespace Details. 
+Click Continue and connect in the Cluster and Namespace Details. 
 
-* Cluster: Select the Cluster that was wired in before [default.svc is fine]. 
+* Cluster: Select the Cluster that was connected in before [default.svc is fine]. 
 * Namespace: Define an existing Namespace, e.g default. 
 
 ![Destination](static/first-gitops/destination.png)

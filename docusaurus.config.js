@@ -91,7 +91,7 @@ const config = {
               },
               {
                 // type: "doc",
-                label: "Build and Test Code",
+                label: "Build & Test Code",
                 to: "tutorials/build-code",
                 // docId: "build-code",
                 // activeBasePath: "to",
@@ -148,7 +148,7 @@ const config = {
                 to: "docs/continuous-integration",
               },
               {
-                label: "Continuous Delivery",
+                label: "Continuous Delivery & GitOps",
                 to: "docs/continuous-delivery",
               },
               {

@@ -24,6 +24,7 @@ type FeatureItem = {
 const FeaturedList: FeatureItem[] = [{
   title: 'Your First Chaos Experiment on Kubernetes',
   module: 'ce',
+  Svg: "/img/icon_ce.svg",
   description: (
     <>
       Running a Chaos Experiment on Kubernetes for the first time. 
@@ -38,6 +39,7 @@ const FeaturedList: FeatureItem[] = [{
 const CEList: FeatureItem[] = [{
   title: 'Your First Chaos Experiment on Kubernetes',
   module: 'ce',
+  Svg: "/img/icon_ce.svg",
   description: (
     <>
       Running a Chaos Experiment on Kubernetes for the first time. 
@@ -51,6 +53,7 @@ const CEList: FeatureItem[] = [{
 {
   title: 'Chaos Experiment from a Blank Canvas',
   module: 'ce',
+  Svg: "/img/icon_ce.svg",
   description: (
     <>
        Create, run, observe and evaluate a custom chaos experiment. 
@@ -112,7 +115,7 @@ export default function CE() {
         </div>
         <div className={styles.subSection}>
           <h3 id="all-tutorials">
-            All Chaos Engineering Tutorials 
+            All CE Tutorials 
           </h3>
             <ModuleCard FeatureList={CEList}/>
         </div>

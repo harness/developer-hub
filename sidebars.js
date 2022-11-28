@@ -17,7 +17,7 @@ const sidebars = {
         // Build and Test Code
         {
           type: "category",
-          label: "Build and Test Code",
+          label: "Build & Test Code",
           link: {
             type: "doc",
             id: "tutorials/build-code",

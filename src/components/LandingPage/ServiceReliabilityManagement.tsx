@@ -23,7 +23,8 @@ type FeatureItem = {
  
 const FeaturedList: FeatureItem[] = [{
   title: 'Introduction to SLO Management with Prometheus',
-  module: 'ccm',
+  module: 'srm',
+  Svg: "/img/icon_srm.svg",
   description: (
     <>
       Introducing SLOs and how to measure and manage your SLOs leveraging Prometheus.
@@ -37,7 +38,8 @@ const FeaturedList: FeatureItem[] = [{
 
 const SRMList: FeatureItem[] = [{
   title: 'Introduction to SLO Management with Prometheus',
-  module: 'ccm',
+  module: 'srm',
+  Svg: "/img/icon_srm.svg",
   description: (
     <>
       Introducing SLOs and how to measure and manage your SLOs leveraging Prometheus.
@@ -50,14 +52,15 @@ const SRMList: FeatureItem[] = [{
 },
 {
   title: 'Introduction to Java Exception Management',
-  module: 'ccm',
+  module: 'srm',
+  Svg: "/img/icon_srm.svg",
   description: (
     <>
       Finding and fixing caught, uncaught, and swallowed Java exceptions. Learn the process and find the right tooling.
     </>
   ),
   ribbon: false,
-  type: [docType.Documentation],
+  type: [docType.Interactive, docType.Video],
   time: '10min',
   link: '/tutorials/manage-service-reliability/intro-java-exception-management'
 },];

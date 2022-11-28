@@ -57,13 +57,24 @@ Now you can install the delegate using the following command.
 ```bash
 docker run -d --name="firstdockerdel" --cpus="0.5" --memory="2g" \
 -e DELEGATE_NAME=firstdockerdel \
--e ACCOUNT_ID=PUT_YOUR_HARNESS_ACCOUNTID_HERE \
--e DELEGATE_TOKEN=PUT_YOUR_DELEGATE_TOKEN_HERE \
 -e NEXT_GEN=true \
 -e DELEGATE_TYPE=DOCKER \
--e MANAGER_HOST_AND_PORT=https://app.harness.io/gratis \
-harness/delegate:22.10.77221
+-e ACCOUNT_ID=PUT_YOUR_HARNESS_ACCOUNTID_HERE \
+-e DELEGATE_TOKEN=PUT_YOUR_DELEGATE_TOKEN_HERE \
+-e MANAGER_HOST_AND_PORT=PUT_YOUR_MANAGER_HOST_AND_PORT_HERE \
+harness/delegate:22.11.77436
 ```
+`PUT_YOUR_MANAGER_HOST_AND_PORT_HERE` should be replaced by the Harness Manager Endpoint noted below. For Harness SaaS accounts, you can find your Harness Cluster Location in the Account Overview page under Account Settings section of the left navigation. For Harness CDCE, the endpoint varies based on the Docker vs. Helm installation options.
+
+| Harness Cluster Location| Harness Manager Endpoint on Harness Cluster	|
+| ------------------------| -------------------------------------------	|
+| SaaS prod-1  	 		| `https://app.harness.io`       				|
+| SaaS prod-2  	 		| `https://app.harness.io/gratis`        		|
+| SaaS prod-3  	 		| `https://app3.harness.io`        				|
+| [CDCE Docker](/tutorials/deploy-services/cdce-helm-k8s)  	 		| `http://<HARNESS_HOST>` if Docker Delegate is remote to CDCE  or  `http://host.docker.internal` if Docker Delegate is on same host as CDCE |
+| [CDCE Helm](/tutorials/deploy-services/cdce-helm-k8s)      		| `http://<HARNESS_HOST>:7143`  where HARNESS_HOST is the public IP of the Kubernetes node where CDCE Helm is running|
+
+
 <h3> Verify Docker Delegate Connectivity </h3>
 
 Click Continue and in a few moments after the health checks pass, your Docker Delegate will be available for you to leverage. Click Done and can verify your new Delegate is on the list.
@@ -78,7 +89,8 @@ Click Continue and in a few moments after the health checks pass, your Docker De
 
 Ensure that you access to a Kubernetes cluster. For the purposes of this tutorial, we will use `minikube`.
 
-Install  `minikube`
+<h4>Install minikube </h4>
+
 - On Windows: 
 ```
 choco install minikube
@@ -87,13 +99,10 @@ choco install minikube
 ```
 brew install minikube
 ```
-
-Now start `minikube` with the following config.
+Now start minikube with the following config.
 ```
-minikube config set memory 8128
-minikube start
+minikube start --memory 4g --cpus 4
 ```
-
 Validate that you have kubectl access to your cluster.
 
 ```
@@ -140,9 +149,19 @@ harness/harness-delegate-ng \
 -f harness-delegate-values.yaml \
 --set delegateName=firstk8sdel \
 --set accountId=PUT_YOUR_HARNESS_ACCOUNTID_HERE \
---set delegateToken=PUT_YOUR_DELEGATE_TOKEN_HERE
+--set delegateToken=PUT_YOUR_DELEGATE_TOKEN_HERE \
+--set managerEndpoint=PUT_YOUR_MANAGER_HOST_AND_PORT_HERE
 ```
+`PUT_YOUR_MANAGER_HOST_AND_PORT_HERE` should be replaced by the Harness Manager Endpoint noted below. For Harness SaaS accounts, you can find your Harness Cluster Location in the Account Overview page under Account Settings section of the left navigation. For Harness CDCE, the endpoint varies based on the Docker vs. Helm installation options.
 
+| Harness Cluster Location| Harness Manager Endpoint on Harness Cluster	|
+| ------------------------| -------------------------------------------	|
+| SaaS prod-1  	 		| `https://app.harness.io`       				|
+| SaaS prod-2  	 		| `https://app.harness.io/gratis`        		|
+| SaaS prod-3  	 		| `https://app3.harness.io`        				|
+| [CDCE Docker](/tutorials/deploy-services/cdce-helm-k8s)  	 		| `http://<HARNESS_HOST>` if Docker Delegate is remote to CDCE  or  `http://host.docker.internal` if Docker Delegate is on same host as CDCE |
+| [CDCE Helm](/tutorials/deploy-services/cdce-helm-k8s)      		| `http://<HARNESS_HOST>:7143`  where HARNESS_HOST is the public IP of the Kubernetes node where CDCE Helm is running|
+	
 <h3> Verify Helm Delegate Connectivity </h3>
 
 Click Continue and in a few moments after the health checks pass, your Harness Delegate will be available for you to leverage. Click Done and can verify your new Delegate is on the list.
@@ -160,7 +179,17 @@ Click Continue and in a few moments after the health checks pass, your Harness D
 curl -LO https://raw.githubusercontent.com/harness-apps/developer-hub-apps/main/delegate/harness-delegate.yml
 ```
 
-Open the `harness-delegate.yml` file in a text editor and replace `PUT_YOUR_DELEGATE_NAME_HERE`, `PUT_YOUR_HARNESS_ACCOUNTID_HERE` and `PUT_YOUR_DELEGATE_TOKEN_HERE` with your delegate name (say `firstk8sdel`), Harness accountId and delegate token values respectively.
+Open the `harness-delegate.yml` file in a text editor and replace `PUT_YOUR_DELEGATE_NAME_HERE`, `PUT_YOUR_HARNESS_ACCOUNTID_HERE` and `PUT_YOUR_DELEGATE_TOKEN_HERE` with your delegate name (say `firstk8sdel`), Harness accountId, delegate token value respectively.
+
+`PUT_YOUR_MANAGER_HOST_AND_PORT_HERE` should be replaced by the Harness Manager Endpoint noted below. For Harness SaaS accounts, you can find your Harness Cluster Location in the Account Overview page under Account Settings section of the left navigation. For Harness CDCE, the endpoint varies based on the Docker vs. Helm installation options.
+
+| Harness Cluster Location| Harness Manager Endpoint on Harness Cluster	|
+| ------------------------| -------------------------------------------	|
+| SaaS prod-1  	 		| `https://app.harness.io`       				|
+| SaaS prod-2  	 		| `https://app.harness.io/gratis`        		|
+| SaaS prod-3  	 		| `https://app3.harness.io`        				|
+| [CDCE Docker](/tutorials/deploy-services/cdce-helm-k8s)  	 		| `http://<HARNESS_HOST>` if Docker Delegate is remote to CDCE  or  `http://host.docker.internal` if Docker Delegate is on same host as CDCE |
+| [CDCE Helm](/tutorials/deploy-services/cdce-helm-k8s)      		| `http://<HARNESS_HOST>:7143`  where HARNESS_HOST is the public IP of the Kubernetes node where CDCE Helm is running|
 
 <h3> Apply Kubernetes Manifest </h3>
 

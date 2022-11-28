@@ -22,40 +22,41 @@ type FeatureItem = {
   link?: string;
 };
  
-const FeaturedList: FeatureItem[] = [{
-  title: 'First Kubernetes Deployment',
-  module: 'cd',
-  // Svg: '/img/icon_cd.svg',
-  description: (
-    <>
-      Deploying your first set of Kubernetes Services in a CD Pipline with Kubernetes Manifests. 
-    </>
-  ),
-  ribbon: true,
-  type: [docType.Documentation],
-  //type: [docType.Documentation, docType.Interactive, docType.Video],
-  time: '10 min',
-  link: '/tutorials/deploy-services/kubernetes-cd-first-tutorial',
-},
+const FeaturedList: FeatureItem[] = [
 {
-  title: 'First GitOps Deployment',
+  title: 'Deploy a Helm Chart using Harness GitOps for Argo CD',
   module: 'cd',
-  // Svg: '/img/icon_cd.svg',
+  Svg: '/img/icon_cd.svg',
   description: (
     <>
-      Learn about GitOps and how to leverage your own GitOps Pipeline.
+      Get started with Harness GitOps for Argo CD.
     </>
   ),
   ribbon: true,
   type: [docType.Documentation],
   time: '8min',
-  link: '/tutorials/deploy-services/first-gitops-example',
-},];
+  link: '/tutorials/deploy-services/helm-argocd-gitops-k8s',
+},
+{
+  title: 'Deploy a Helm Chart using CD Community Edition',
+  module: 'cd',
+  Svg: '/img/icon_cd.svg',
+  description: (
+    <>
+      Use the 100% free, source-available, self-managed Harness CD Community Edition to automate Helm Chart deployments.
+    </>
+  ),
+  ribbon: true,
+  type: [docType.Documentation],
+  time: '10min',
+  link: '/tutorials/deploy-services/cdce-helm-k8s',
+},
+];
 
 const CDList: FeatureItem[] = [{
-  title: 'First Kubernetes Deployment',
+  title: 'Deploy a Kubernetes Manifest',
   module: 'cd',
-  // Svg: '/img/icon_ci.svg',
+  Svg: '/img/icon_cd.svg',
   description: (
     <>
       Deploying your first set of Kubernetes Services in a CD Pipline with Kubernetes Manifests. 
@@ -65,63 +66,77 @@ const CDList: FeatureItem[] = [{
   type: [docType.Documentation],
   //type: [docType.Documentation, docType.Interactive, docType.Video],
   time: '10 min',
-  link: '/tutorials/deploy-services/kubernetes-cd-first-tutorial',
+  link: '/tutorials/deploy-services/microservice-manifest-k8s',
 },
 {
-  title: 'First GitOps Deployment',
+  title: 'Deploy a Helm Chart',
   module: 'cd',
-  // Svg: '/img/icon_cd.svg',
+  Svg: '/img/icon_cd.svg',
+  description: (
+    <>
+      Deploying your first set of Kubernetes Resources in a CD Pipeline with Helm, a popular Kubernetes Package Manager.
+    </>
+  ),
+  ribbon: false,
+  type: [docType.Documentation],
+  time: '10min',
+  link: '/tutorials/deploy-services/helm-k8s',
+},
+{
+  title: 'Deploy a Helm Chart using Harness GitOps for Argo CD',
+  module: 'cd',
+  Svg: '/img/icon_cd.svg',
   description: (
     <>
       Learn about GitOps and how to leverage your own GitOps Pipeline.
     </>
   ),
-  ribbon: false,
+  ribbon: true,
   type: [docType.Documentation],
   time: '10min',
-  link: '/tutorials/deploy-services/first-gitops-example',
+  link: '/tutorials/deploy-services/helm-argocd-gitops-k8s',
 },
 {
-  title: 'First Helm Deployment',
+  title: 'Deploy a Helm Chart using CD Community Edition',
   module: 'cd',
-  // Svg: '/img/icon_cd.svg',
+  Svg: '/img/icon_cd.svg',
   description: (
     <>
-      Deploying your first set of Kubernetes Resources in a CD Pipeline with Helm (K8s Package Manager).
+      Use the 100% free, source-available, self-managed Harness CD Community Edition to automate Helm Chart deployments.
     </>
   ),
-  ribbon: false,
+  ribbon: true,
   type: [docType.Documentation],
   time: '10min',
-  link: '/tutorials/deploy-services/helm-cd-first-tutorial',
+  link: '/tutorials/deploy-services/helm-argocd-gitops-k8s',
 },
 {
-  title: 'Private Image Amazon ECR Deployment',
+  title: 'Deploy a Docker Image to Amazon ECS ',
   module: 'cd',
-  // Svg: '/img/icon_cd.svg',
+  Svg: '/img/icon_cd.svg',
   description: (
     <>
-      Deploying from a private Amazon ECR Repository to Kubernetes. 
+      Deploy a Docker image to Amazon ECS using a CD Pipeline.
     </>
   ),
   ribbon: false,
   type: [docType.Documentation],
   time: '15min',
-  link: '/tutorials/deploy-services/ecr-private-repo-deployment',
+  link: '/tutorials/deploy-services/docker-ecs',
 },
 {
-  title: 'First Amazon ECS Deployment',
+  title: 'Deploy a Private Image in Amazon ECR to Kubernetes ',
   module: 'cd',
-  // Svg: '/img/icon_cd.svg',
+  Svg: '/img/icon_cd.svg',
   description: (
     <>
-      Deploying to Amazon ECS with a CD Pipeline.
+      Deploy a Docker image from a private Amazon ECR Repository to Kubernetes. 
     </>
   ),
   ribbon: false,
   type: [docType.Documentation],
   time: '15min',
-  link: '/tutorials/deploy-services/first-ecs-cd-deployment',
+  link: '/tutorials/deploy-services/docker-ecr-k8s',
 },
 ];
 
@@ -139,7 +154,7 @@ export default function CD() {
           <div className={styles.spaceBetween}>
             <div className={styles.moduleTitle}>
               <img src="/img/icon_cd.svg"/>
-              <h1>Continuous Delivery</h1>
+              <h1>Continuous Delivery & GitOps</h1>
             </div>
             <div>
               <Link href="/docs/continuous-delivery">
@@ -150,16 +165,16 @@ export default function CD() {
           <div className={styles.spaceBetween}>
             <div className={styles.content}>
               <p>
-              Continuous Delivery focuses on delivery and deployment of application and infrastructure changes in a safe and sustainable way. Your Continuous Delivery Pipeline focuses on all of the steps to get your changes into production. 
+              Continuous Delivery & GitOps focuses on delivery and deployment of application and infrastructure changes in a safe and sustainable way. Your Continuous Delivery pipeline should automate all of the steps necessary to get your changes into production. 
               </p>
               <div className={styles.alignCenter}>
               <Link
                   className={clsx('button button--lg', styles.btn, styles.btnCD)}
                   to="#all-tutorials">
-                  CD Tutorials 
+                  CD & GitOps Tutorials 
                   <img src="/img/Stroke.svg"/>
               </Link>
-              <Link href="https://harness.io/products/continuous-delivery"><button className={styles.link}>Learn more about CD</button></Link>
+              <Link href="https://harness.io/products/continuous-delivery"><button className={styles.link}>Learn more about CD & GitOps</button></Link>
               </div>
             </div>
             <div>
@@ -175,7 +190,7 @@ export default function CD() {
         </div>
         <div className={styles.subSection}>
           <h3 id="all-tutorials">
-            All Deployment Tutorials 
+            All CD & GitOps Tutorials 
           </h3>
             <ModuleCard FeatureList={CDList}/>
         </div>
