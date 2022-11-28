@@ -17,7 +17,7 @@ title: RDS Instance Delete
 
 :::info
 
-- Ensure that Kubernetes Version >= 1.17
+- Kubernetes >= 1.17
 
 **AWS RDS Access Requirement:**
 
@@ -49,10 +49,10 @@ stringData:
 
 :::
 
-## Experiment tunables
+## Fault tunables
 
 <details>
-    <summary>Check the Experiment Tunables</summary>
+    <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>
     <table>
         <tr>
@@ -90,7 +90,7 @@ stringData:
       </tr>
       <tr>
         <td> INSTANCE_AFFECTED_PERC </td>
-        <td> The Percentage of total rds instance that are part of rds cluster to target </td>
+        <td> The Percentage of total RDS instance that are part of RDS cluster to target </td>
         <td> Defaults to 0 (corresponds to 1 instance), provide numeric value only </td>
       </tr>
       <tr>
@@ -111,21 +111,21 @@ stringData:
     </table>
 </details>
 
-## Experiment Examples
+## Fault Examples
 
 ### Common and AWS specific tunables
 
-Refer the [common attributes](../common-tunables-for-all-experiments) and [AWS specific tunable](./aws-experiments-tunables) to tune the common tunables for all experiments and aws specific tunables.
+Refer the [common attributes](../common-tunables-for-all-experiments) and [AWS specific tunable](./aws-experiments-tunables) to tune the common tunables for all faults and aws specific tunables.
 
 ### RDS_CLUSTER_NAME
 
-It defines the cluster name of the target RDS cluster. We can also provide the `RDS_CLUSTER_NAME` using `CLUSTER_NAME` ENVs. If not provided, the experiment will select the Instance Identifier provided.
+It defines the cluster name of the target RDS cluster. We can also provide the `RDS_CLUSTER_NAME` using `CLUSTER_NAME` ENVs. If not provided, the fault will select the Instance Identifier provided.
 
 Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/rds-instance-delete/instance-delete-cluster.yaml yaml)
 ```yaml
-# delete the rds instance
+# delete the RDS instance
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -139,13 +139,13 @@ spec:
     spec:
       components:
         env:
-        # provide the name of rds cluster
+        # provide the name of RDS cluster
         - name: CLUSTER_NAME
           value: 'rds-demo-cluster'
         - name: REGION
           value: 'us-east-2'
         - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
+          value: '60'
 ```
 ### RDS_INSTANCE_IDENTIFIER 
  
@@ -155,7 +155,7 @@ Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/rds-instance-delete/instance-delete-instance.yaml yaml)
 ```yaml
-# delete the rds instance
+# delete the RDS instance
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -169,7 +169,7 @@ spec:
     spec:
       components:
         env:
-        # provide the rds instance identifier 
+        # provide the RDS instance identifier 
         - name: RDS_INSTANCE_IDENTIFIER
           value: 'rds-demo-instance-1,rds-demo-instance-2'
         - name: INSTANCE_AFFECTED_PERC
