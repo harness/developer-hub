@@ -29,7 +29,7 @@ The following table lists Harness support for deployment platforms, artifacts, s
 <tbody>
   <tr valign="top">
     <td>
-      <p> <a href="/category/qfj6m1k2c4-cd-kubernetes-category">Kubernetes</a></p>
+      <p> <a href="https://docs.harness.io/category/qfj6m1k2c4-cd-kubernetes-category">Kubernetes</a></p>
     </td>
     <td>
       <ul>
@@ -91,7 +91,7 @@ The following table lists Harness support for deployment platforms, artifacts, s
   </tr>
   <tr valign="top">
     <td>
-      <p><a href="/article/cifa2yb19a">Helm v3.0</a></p>
+      <p><a href="https://docs.harness.io/article/cifa2yb19a">Helm v3.0</a></p>
     </td>
     <td>
       <p> <strong>Docker Image Repo:</strong></p>
@@ -157,7 +157,7 @@ The following table lists Harness support for deployment platforms, artifacts, s
   </tr>
   <tr valign="top">
     <td>
-      <p><a href="/article/5fnx4hgwsa">Serverless Lambda</a></p>
+      <p><a href="https://docs.harness.io/article/5fnx4hgwsa">Serverless Lambda</a></p>
     </td>
     <td>
       <ul>
@@ -177,7 +177,7 @@ The following table lists Harness support for deployment platforms, artifacts, s
   </tr>
   <tr valign="top">
     <td>
-      <p> <a href="/article/muegjde97q">Azure Web App</a></p>
+      <p> <a href="https://docs.harness.io/article/muegjde97q">Azure Web App</a></p>
     </td>
     <td>
       <p> <strong>Container and non-container:</strong></p>
@@ -262,7 +262,7 @@ The following table lists Harness support for deployment platforms, artifacts, s
   </tr>
   <tr valign="top">
     <td>
-      <p> <a href="/article/l8795ji7u3">Windows Remote Management (WinRM)</a></p>
+      <p> <a href="https://docs.harness.io/article/l8795ji7u3">Windows Remote Management (WinRM)</a></p>
     </td>
     <td>
       <p> <strong>Non-container:</strong></p>
@@ -296,7 +296,7 @@ The following table lists Harness support for deployment platforms, artifacts, s
   </tr>
   <tr valign="top">
     <td>
-      <p> <a href="/article/vytf6s0kwc">AWS ECS</a></p>
+      <p> <a href="https://docs.harness.io/article/vytf6s0kwc">AWS ECS</a></p>
     </td>
     <td>
       <p> <strong>Non-container:</strong></p>
