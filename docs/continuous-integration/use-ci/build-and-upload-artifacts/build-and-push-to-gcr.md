@@ -19,7 +19,7 @@ The following steps build an image and push it to GCR.
 * [CI Pipeline Quickstart](../../ci-quickstarts/ci-pipeline-quickstart.md)
 * [Delegates Overview](https://ngdocs.harness.io/article/2k7lnc7lvl-delegates-overview)
 * [CI Stage Settings](../../ci-technical-reference/ci-stage-settings.md)
-* [Learn Harness' Key Concepts](https://ngdocs.harness.io/article/hv2758ro4e-learn-harness-key-concepts)
+* [Learn Harness' Key Concepts](../../../getting-started/learn-harness-key-concepts.md)
 
 ### Step 1: Create the CI Stage
 

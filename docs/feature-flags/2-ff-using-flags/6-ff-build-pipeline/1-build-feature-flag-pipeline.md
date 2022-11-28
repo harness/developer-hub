@@ -25,7 +25,7 @@ This topic explains how to build a Feature Flag Pipeline.
 
 ## Before you begin
 
-You should be familiar with the [Harness' Key Concepts](https://docs.harness.io/article/hv2758ro4e-learn-harness-key-concepts) and how to [Create Organizations and Projects](https://docs.harness.io/article/36fw2u92i4-create-an-organization).
+You should be familiar with the [Harness' Key Concepts](../../../getting-started/learn-harness-key-concepts.md) and how to [Create Organizations and Projects](https://docs.harness.io/article/36fw2u92i4-create-an-organization).
 
 ## Create a Pipeline
 
