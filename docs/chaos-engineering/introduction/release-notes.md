@@ -5,7 +5,9 @@ title: HCE Release Notes
 
 # November 14, 2022, Beta release
 
-## Early access
+**Note:** Harness deploys updates progressively to different Harness cluster hosting accounts. The features and fixes in the release notes may not be available in your cluster immediately.
+
+## Early access features
 
 The Harness Chaos Engineering (HCE) module, which you can use to perform chaos experiments on your applications and infrastructure, is now available for beta testing. To be part of beta testing, contact Harness Support. HCE documentation, which includes user guides and tutorials, is available on the Harness Developer Hub. Harness recommends that you gain familiarity with the chaos experimentation workflow in HCE by following the instructions in Your First Chaos Experiment Run.
 
