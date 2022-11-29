@@ -92,7 +92,9 @@ Here is a quick summary of the steps for installing the Kubernetes Delegate in y
 	`harness-sample-k8s-delegate-vkjrqz-0 1/1 Running 0 57s`
 3. View the Delegate in Harness. In Harness, view the **Harness Delegates** page. Once the Delegate is installed, the Delegate is listed in the Installations page in a few moments.
 
-![](./static/1-harness-account-setup-20.png)### Cloud Providers Setup
+![](./static/1-harness-account-setup-20.png)
+
+### Cloud Providers Setup
 
 In this section, we will add a Harness Kubernetes Cluster Cloud Provider and a Azure Cloud Provider to your account.
 
@@ -115,7 +117,9 @@ To set up the Kubernetes Cluster Cloud Provider, do the following:
 7. In **Delegate Name**, select the name of the Delegate you installed in your cluster earlier. When you are finished, the dialog will look something like this:![](./static/1-harness-account-setup-21.png)
 8. Click **TEST** to verify the settings, and then click **SUBMIT**. The Kubernetes Cloud Provider is added.
 
-![](./static/1-harness-account-setup-22.png)#### Azure Cloud Provider
+![](./static/1-harness-account-setup-22.png)
+
+#### Azure Cloud Provider
 
 The Azure Cloud Provider connects to the ACR container. The Azure Cloud Provider requires the following App Registration information: Client ID (Application ID), Tenant ID (also called the Directory ID), and a Key. The Azure App you use for this connection must have the **Reader** role on the ACR container you want to use.
 

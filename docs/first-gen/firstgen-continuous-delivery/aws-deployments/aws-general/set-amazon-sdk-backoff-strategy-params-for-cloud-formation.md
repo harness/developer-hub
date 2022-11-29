@@ -60,7 +60,9 @@ Here's list of throttled error codes where Equal Jitter strategy is applied:
 "PriorRequestNotComplete",  
 "429 Too Many Requests"
 ```
-For more strategies, see [Exponential Backoff And Jitter](https://aws.amazon.com/blogs/architecture/exponential-backoff-and-jitter/) from AWS.### Setting Backoff Strategy Params in Harness
+For more strategies, see [Exponential Backoff And Jitter](https://aws.amazon.com/blogs/architecture/exponential-backoff-and-jitter/) from AWS.
+
+### Setting Backoff Strategy Params in Harness
 
 In a Harness CloudFormation or ECS implementation, you can set these parameters using **Account Defaults** settings.
 
@@ -86,7 +88,9 @@ All values are in milliseconds.
 
 When you're done, the **Account Defaults** will look something like this:
 
-![](./static/set-amazon-sdk-backoff-strategy-params-for-cloud-formation-02.png)### Next Steps
+![](./static/set-amazon-sdk-backoff-strategy-params-for-cloud-formation-02.png)
+
+### Next Steps
 
 You will need to tune Amazon SDK Default backoff strategy params based on the API request rate per AWS account and region already set.
 

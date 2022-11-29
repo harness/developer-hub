@@ -78,11 +78,15 @@ For S3 and the Git repo, you must have an AWS Cloud Provider or Source Repro Pro
 
 Let's walk through these options.
 
-CloudFormation templates may be in JSON or YAML and Harness accepts both formats. Nested stacks are supported for **Amazon S3** source types only. This is an [AWS limitation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-stack.html).#### Template Body
+CloudFormation templates may be in JSON or YAML and Harness accepts both formats. Nested stacks are supported for **Amazon S3** source types only. This is an [AWS limitation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-stack.html).
+
+#### Template Body
 
 1. If you select **Template Body**, then paste in the CloudFormation template JSON or YAML.
 
-![](./static/add-cloud-formation-templates-22.png)You can also use [Harness variable expressions](/article/9dvxcegm90-variables), such as [Workflow variables](/article/766iheu1bk-add-workflow-variables-new-template), in **Template Body**.#### Git Repository
+![](./static/add-cloud-formation-templates-22.png)You can also use [Harness variable expressions](/article/9dvxcegm90-variables), such as [Workflow variables](/article/766iheu1bk-add-workflow-variables-new-template), in **Template Body**.
+
+#### Git Repository
 
 For Git Repository, ensure that you have added a SourceRepo Provider in Harness that connects to your Git repo. For more information, see [Add SourceRepo Providers](https://docs.harness.io/article/ay9hlwbgwa-add-source-repo-providers).
 
@@ -97,7 +101,9 @@ For example, if the full path to your script is **http://github.com/johnsmith/ha
   
 Using the same example, if you selected **Specific Commit ID** and enter a commit ID, in **File Path** you can enter **scripts/foo.yaml** or even **./scripts/foo.yaml**.
 
-You cannot also use [Harness variable expressions](/article/9dvxcegm90-variables), such as [Workflow variables](/article/766iheu1bk-add-workflow-variables-new-template), in **File Path** at this time.#### Amazon S3
+You cannot also use [Harness variable expressions](/article/9dvxcegm90-variables), such as [Workflow variables](/article/766iheu1bk-add-workflow-variables-new-template), in **File Path** at this time.
+
+#### Amazon S3
 
 For Amazon S3, ensure you have added an AWS Cloud Provider to connect Harness to your AWS account, as described in [Set Up Your Harness Account for CloudFormation](/article/308nblm0vc-cloud-formation-account-setup).
 
@@ -105,7 +111,9 @@ If you select **Amazon S3**, in **Template File Path**, enter the URL for the te
 
 ![](./static/add-cloud-formation-templates-23.png)Only enter the [globally-unique S3 bucket name URL](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingBucket.html). Not the region-specific URL.You can also use [Harness variable expressions](/article/9dvxcegm90-variables), such as [Workflow variables](/article/766iheu1bk-add-workflow-variables-new-template), in **Template File Path**.Ensure that the AWS Cloud Provider has permissions to read the bucket contents. The required policies is `AmazonS3ReadOnlyAccess` and you need another policy with the action `cloudformation:GetTemplateSummary`. See [Set Up Your Harness Account for CloudFormation](/article/308nblm0vc-cloud-formation-account-setup).
 
-You can find many template samples from CloudFormation [Sample Templates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-sample-templates.html).### Step 3: Add Input Variables
+You can find many template samples from CloudFormation [Sample Templates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-sample-templates.html).
+
+### Step 3: Add Input Variables
 
 Likely, your template contains [input parameters](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/gettingstarted.templatebasics.html#gettingstarted.templatebasics.parameters) that require specific values be passed in when Harness creates a stack from the template. For example, here is an input parameter for a key pair named **KeyName**:
 
@@ -135,7 +143,9 @@ You can also use **Populate Variables** if you added your template manually, but
 
 Here is what the input variables look like in a Workflow CloudFormation Create Stack step:
 
-![](./static/add-cloud-formation-templates-26.png)### Step 4: Complete the CloudFormation Provisioner
+![](./static/add-cloud-formation-templates-26.png)
+
+### Step 4: Complete the CloudFormation Provisioner
 
 Once you have completed your setup, click **Submit**. The CloudFormation Provisioner is created.
 

@@ -10,7 +10,9 @@ helpdocs_is_published: true
 
 This content is for Harness [FirstGen](/article/1fjmm4by22). Switch to [NextGen](/article/lbhf2h71at).Once you have added the Harness Service and Environment for Helm, you can add a Harness Workflow to manage how your Harness Service is deployed, verified, and rolled back, among other important phases.
 
-Harness includes both Kubernetes and Helm deployments, and you can Helm charts in both. Harness [Kubernetes Deployments](https://docs.harness.io/article/pc6qglyp5h-kubernetes-deployments-overview) allow you to use your own Helm chart (remote or local), and Harness executes the Kubernetes API calls to build everything without Helm and Tiller (for Helm v2) needing to be installed in the target cluster. See [Helm Charts](https://docs.harness.io/article/t6zrgqq0ny-kubernetes-services#helm_charts).### Create the Workflow
+Harness includes both Kubernetes and Helm deployments, and you can Helm charts in both. Harness [Kubernetes Deployments](https://docs.harness.io/article/pc6qglyp5h-kubernetes-deployments-overview) allow you to use your own Helm chart (remote or local), and Harness executes the Kubernetes API calls to build everything without Helm and Tiller (for Helm v2) needing to be installed in the target cluster. See [Helm Charts](https://docs.harness.io/article/t6zrgqq0ny-kubernetes-services#helm_charts).
+
+### Create the Workflow
 
 Helm deployments use a Basic workflow that simply puts the Docker image on the Kubernetes cluster built using the Helm chart.
 
@@ -98,7 +100,9 @@ To use a **Git connector** in the **Helm Deploy** step, do the following:
 
 Here's an example of what the Git connector might look like:
 
-![](./static/4-helm-workflows-24.png)##### Completed Helm Deploy Step
+![](./static/4-helm-workflows-24.png)
+
+##### Completed Helm Deploy Step
 
 When you are done, the typical **Helm Deploy** dialog will look something like this:
 
@@ -122,7 +126,9 @@ Click **Phase 1**. You will the details of the phase, including the workflow ent
 
 ![](./static/4-helm-workflows-29.png)Click **Phase 1** to expand it and see **Deploy Containers**. Expand **Deploy Containers** and click the **Helm Deploy** step you set up in the workflow. The details for the step are displayed, along with the command output:
 
-![](./static/4-helm-workflows-30.png)#### Viewing Deployment in the Log
+![](./static/4-helm-workflows-30.png)
+
+#### Viewing Deployment in the Log
 
 Let's look through the deployment log and see how your Docker image was deployed to your cluster using Helm.
 

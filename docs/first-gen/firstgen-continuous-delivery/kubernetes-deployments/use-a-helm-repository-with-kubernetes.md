@@ -58,7 +58,9 @@ In some cases, you might have different charts in different repos, and you do no
 
 When you are finished, the dialog will look like this:
 
-![](./static/use-a-helm-repository-with-kubernetes-153.png)### Option: Skip Versioning for Service
+![](./static/use-a-helm-repository-with-kubernetes-153.png)
+
+### Option: Skip Versioning for Service
 
 By default, Harness versions ConfigMaps and Secrets deployed into Kubernetes clusters. In some cases, you might want to skip versioning.
 
@@ -90,7 +92,9 @@ The `--debug` option is not supported.For Kubernetes deployments using Helm char
 
 You will see the outputs for the commands you select in the Harness deployment logs. The output will be part of pre-processing and appear before `helm install/upgrade`.
 
-If you use Helm commands in the Harness Service and in a Workflow deploying that Service, the Helm commands in the Harness Service override the commands in the Workflow.#### Harness Variable Expressions are Supported
+If you use Helm commands in the Harness Service and in a Workflow deploying that Service, the Helm commands in the Harness Service override the commands in the Workflow.
+
+#### Harness Variable Expressions are Supported
 
 You can use [Harness variable expressions](/article/9dvxcegm90-variables) in any of the command options settings. For example, [Service Config variables](/article/q78p7rpx9u-add-service-level-config-variables) and [Workflow variables](/article/766iheu1bk-add-workflow-variables-new-template).
 
@@ -112,7 +116,9 @@ The latter paths are given higher priority.
 
 ### Example 1: Google GCS and AWS S3
 
-![](./static/use-a-helm-repository-with-kubernetes-155.png)### Example 2: Workflow Variable Expression
+![](./static/use-a-helm-repository-with-kubernetes-155.png)
+
+### Example 2: Workflow Variable Expression
 
 Here is an example using a Workflow variable expression. You can see the variable created in the Workflow's **Workflow Variables** section, referenced using an expression in **Remote Manifests**, and then a value provided for the variable in the deployment dialog that matches the chart folder's name.
 
@@ -128,7 +134,9 @@ When you deploy a Workflow using a Harness Kubernetes Service set up with a Helm
 If you use these objects in your chart, Harness will consider the chart invalid and fail the deployment.  
 See the Kubernetes API docs for information on these deployments.The Helm version info is displayed in the Service dashboard:
 
-![](./static/use-a-helm-repository-with-kubernetes-161.png)### Notes
+![](./static/use-a-helm-repository-with-kubernetes-161.png)
+
+### Notes
 
 Helm Dependencies are supported with charts in Helm Repositories, not with Helm charts in Git repos.
 

@@ -55,7 +55,9 @@ Follow the steps in [Add Microsoft Azure Cloud Provider](/article/4n3595l6in-ad
 
 That's all the setup you need to connect Harness to your account and start your deployment.
 
-If you store the Docker image in Azure Container Registry, then you can use this Azure Cloud Provider you set up and skip the next step.### Step 3: Set Up the Harness Artifact Server
+If you store the Docker image in Azure Container Registry, then you can use this Azure Cloud Provider you set up and skip the next step.
+
+### Step 3: Set Up the Harness Artifact Server
 
 If you store the Docker image in Azure Container Registry, then you can use the Azure Cloud Provider you set up and skip the Artifact Server setup.A Harness Azure Web App deployment uses a Docker image or non-containerized artifact. You connect Harness to the same repo you use in your Web App in Azure. You made this connection using a Harness Artifact Server or Cloud Provider.
 

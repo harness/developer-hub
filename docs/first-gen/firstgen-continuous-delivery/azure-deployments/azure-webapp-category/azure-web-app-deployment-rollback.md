@@ -53,9 +53,13 @@ Here's an example of a rollback.
 
 **Update Slot Configuration Settings**:
 
-![](./static/azure-web-app-deployment-rollback-10.png)**Deploy to Slot**:
+![](./static/azure-web-app-deployment-rollback-10.png)
 
-![](./static/azure-web-app-deployment-rollback-11.png)### Rollback Logs
+**Deploy to Slot**:
+
+![](./static/azure-web-app-deployment-rollback-11.png)
+
+### Rollback Logs
 
 Here's the log activity from a rollback with the timestamps removed:
 

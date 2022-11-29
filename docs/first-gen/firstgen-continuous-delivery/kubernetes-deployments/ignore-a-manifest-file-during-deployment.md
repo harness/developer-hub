@@ -32,7 +32,9 @@ In this topic:
 
 The following image shows how you can ignore a Jobs manifest and then apply it separately using the Apply step.
 
-![](./static/ignore-a-manifest-file-during-deployment-162.png)### Step 1: Ignore a Manifest
+![](./static/ignore-a-manifest-file-during-deployment-162.png)
+
+### Step 1: Ignore a Manifest
 
 To have a Workflow ignore a resource file in a Service **Manifests** section, you add the comment `# harness.io/skip-file-for-deploy` to the **top** of the file.
 
@@ -40,7 +42,9 @@ For more information on `harness.io/skip-file-for-deploy`, see [Kubernetes Versi
 
 ![](./static/ignore-a-manifest-file-during-deployment-163.png)Now, when this Service is deployed by a Workflow, this ConfigMap resource will not be applied.
 
-The comment `# harness.io/skip-file-for-deploy` must be at the **top** of the file. If it is on the second line it will not work and the resource will be deployed as part of the main Workflow rollout.### Option 1: Apply Ignored Resource
+The comment `# harness.io/skip-file-for-deploy` must be at the **top** of the file. If it is on the second line it will not work and the resource will be deployed as part of the main Workflow rollout.
+
+### Option 1: Apply Ignored Resource
 
 The Workflow Apply step will apply any resource in a Service **Manifest** section explicitly. You must provide the path and name of the file in **Apply**, and Harness will deploy the resource.
 
@@ -52,7 +56,9 @@ For example, the following image shows a Jobs resource in a Service **Manifest*
 
 You can include multiple resource files in the Apply step **File paths** field by separating them with commas, for example: `templates/jobs.yaml, templates/statefulSet.yaml`.
 
-If you apply the ignore comment `# harness.io/skip-file-for-deploy` to a resource but do not use the resource in an Apply step, the resource is never deployed.### Next Steps
+If you apply the ignore comment `# harness.io/skip-file-for-deploy` to a resource but do not use the resource in an Apply step, the resource is never deployed.
+
+### Next Steps
 
 * [Delete Kubernetes Resources](/article/78oginrhsh-delete-kubernetes-resources)
 

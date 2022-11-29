@@ -16,7 +16,9 @@ You use the Terragrunt Provisioner step in a Workflow to run the Terragrunt conf
 
 During deployment, the Terragrunt Provisioner step provisions the target infrastructure and then the Workflow deploys to it.
 
-The Harness Terragrunt Infrastructure Provisioner is supported in Canary and Multi-Service Workflows only. For AMI/ASG and ECS deployments, the Terragrunt Infrastructure Provisioner is also supported in Blue/Green Workflows.### Before You Begin
+The Harness Terragrunt Infrastructure Provisioner is supported in Canary and Multi-Service Workflows only. For AMI/ASG and ECS deployments, the Terragrunt Infrastructure Provisioner is also supported in Blue/Green Workflows.
+
+### Before You Begin
 
 * Get an overview how how Harness supports Terragrunt: [Terragrunt Provisioning with Harness](/article/a6onutvbem-terragrunt-provisioning-with-harness).
 * Ensure you have your Harness account settings prepared for Terragrunt: [Set Up Your Harness Account for Terragrunt](/article/ulhl7sjxva-set-up-your-harness-account-for-terragrunt).
@@ -35,6 +37,11 @@ Here is a visual summary of how you use your and Terragrunt and Terraform files 
 ![](./static/provision-using-the-terragrunt-provision-step-08.png)For step 1, see [Add Terragrunt Configuration Files](/article/mkjxbkglih-add-terragrunt-configuration-files). For step 2, see [Map Dynamically Provisioned Infrastructure using Terragrunt](/article/tphb27opry-map-terragrunt-infrastructure).
 
 Here's a 6 minute video walkthrough of Harness-Terragrunt integration:
+
+<!-- Video:
+https://harness-1.wistia.com/medias/rpv5vwzpxz-->
+<docvideo src="https://www.youtube.com/embed/HYSi2LAaYdc?feature=oembed" />
+
 
 ### Step 1: Add Environment to Workflow
 
@@ -56,7 +63,9 @@ Click **SUBMIT**. The new Workflow is created.
 
 By default, the Workflow includes a **Pre-deployment Steps** section. This is where you will add a step that uses your Terragrunt Provisioner.
 
-Infrastructure Definitions are added in Canary Workflow *Phases*, in the **Deployment Phases** section. You will add the Infrastructure Definition that uses your Terragrunt Infrastructure Provisioner when you add the Canary Phases, later in this topic.### Step 2: Add Terragrunt Step to Pre-deployment Steps
+Infrastructure Definitions are added in Canary Workflow *Phases*, in the **Deployment Phases** section. You will add the Infrastructure Definition that uses your Terragrunt Infrastructure Provisioner when you add the Canary Phases, later in this topic.
+
+### Step 2: Add Terragrunt Step to Pre-deployment Steps
 
 To provision the infrastructure in your Terragrunt Infrastructure Provisioner, you add the **Terraform Provisioner** Step in **Pre-deployment Steps**.
 
@@ -107,7 +116,9 @@ When you select **Apply All Modules**, the [Export Terragrunt Plan to next Terra
 When you select **Apply All Modules**, you might want to use [Backend Configuration (Remote state)](#option_backend_configuration_remote_state) to store your state file. Harness will not sync with the current state when Apply All Modules is selected. Instead, Harness simply applies the terragrunt.hcl files.
 * **Specify Specific Module:** Harness will use the terragrunt.hcl file in the folder you specify in **Path to Module**.
 
-You can use [Workflow variables](/article/766iheu1bk-add-workflow-variables-new-template) in **Path to Module**.#### Terragrunt Plan Configuration
+You can use [Workflow variables](/article/766iheu1bk-add-workflow-variables-new-template) in **Path to Module**.
+
+#### Terragrunt Plan Configuration
 
 Essentially, these settings allow you to use your Terraform Provision steps as a Terragrunt plan dry run.
 
@@ -117,7 +128,9 @@ Users typically do this and add a Harness [Approval step](/category/4edbfn50l8) 
 
 Select this option if there is a previous Terragrunt Provision step in the Workflow with **Export Terragrunt Plan to next Terragrunt Provision** selected.
 
-The **Inherit configurations from previous Terragrunt Provision step** will only work if a preceding Terragrunt Provision step uses **Export Terragrunt Plan to next Terragrunt Provision**.##### Set as Terragrunt Plan
+The **Inherit configurations from previous Terragrunt Provision step** will only work if a preceding Terragrunt Provision step uses **Export Terragrunt Plan to next Terragrunt Provision**.
+
+##### Set as Terragrunt Plan
 
 Run the step as a Terragrunt plan.
 
@@ -129,7 +142,9 @@ This option supports [Terraform version 12](https://www.terraform.io/upgrade-gui
 
 The next Terragrunt Provision step must have the **Inherit configurations from previous Terragrunt Provision** **step** selected to apply the plan.
 
-By default, Harness uses the [Harness Secret Manager](/article/uuer539u3l-add-a-secrets-manager) you have selected as your **default**.### Step 3: Input Values
+By default, Harness uses the [Harness Secret Manager](/article/uuer539u3l-add-a-secrets-manager) you have selected as your **default**.
+
+### Step 3: Input Values
 
 Input values are where you provide values for the Terraform input variables in the Terraform module (config.tf) that your Terragrunt config file uses.
 
@@ -160,7 +175,9 @@ In **File Path**, enter the path to the terraform.tfvars file from the root of t
 
 For example, if the file is located from the root at `variables/local_variables/terraform.tfvars` you would enter `variables/local_variables/terraform.tfvars`. You can enter multiple file paths separated by commas.
 
-You can use [Workflow variables](/article/766iheu1bk-add-workflow-variables-new-template) in **File Path**.##### Remote tfvar Files
+You can use [Workflow variables](/article/766iheu1bk-add-workflow-variables-new-template) in **File Path**.
+
+##### Remote tfvar Files
 
 In **Source Repository**, select the Harness [Source Repo Provider](/article/ay9hlwbgwa-add-source-repo-providers) that connects to the repo where your tfvar file is.
 
@@ -282,7 +299,9 @@ If you select Encrypted Text, you must select an existing Harness [Encrypted Tex
 
 You can use Harness [Workflow variables](/article/766iheu1bk-add-workflow-variables-new-template) and [expression variables](/article/9dvxcegm90-variables) for the name and value.
 
-Environment variables can also be deleted using the Terragrunt Destroy step. See [Remove Provisioned Infra with Terragrunt Destroy](/article/1zmz2vtdo2-remove-provisioned-infra-with-terragrunt-destroy).### Step 4: Add Infrastructure Definition to Phases
+Environment variables can also be deleted using the Terragrunt Destroy step. See [Remove Provisioned Infra with Terragrunt Destroy](/article/1zmz2vtdo2-remove-provisioned-infra-with-terragrunt-destroy).
+
+### Step 4: Add Infrastructure Definition to Phases
 
 Now that the Workflow **Pre-deployment** section has your Terragrunt Provisioner step added, you need to add the target Infrastructure Definition where the Workflow will deploy.
 

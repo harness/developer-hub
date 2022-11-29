@@ -52,7 +52,9 @@ That is all you have to do to set up the deployment Environment in Harness.
 
 Now that you have the Service and Environment set up. Now you can create the deployment Workflow in Harness.
 
-Your Environment can overwrite Service Config Variables, Config Files, and other settings. This enables you to have a Service keep its settings but have them changed when used with this Environment. For example, you might have a single Service but an Environment for QA and an Environment for Production, and you want to overwrite the values.yaml setting in the Service depending on the Environment. We don't overwrite any Services variables in this guide. For more information, see [Override Service Settings](https://docs.harness.io/article/2gffsizl8u-kubernetes-environments#override_service_settings) in the [Kubernetes Deployments](/article/pc6qglyp5h-kubernetes-deployments-overview) doc.### Next Step
+Your Environment can overwrite Service Config Variables, Config Files, and other settings. This enables you to have a Service keep its settings but have them changed when used with this Environment. For example, you might have a single Service but an Environment for QA and an Environment for Production, and you want to overwrite the values.yaml setting in the Service depending on the Environment. We don't overwrite any Services variables in this guide. For more information, see [Override Service Settings](https://docs.harness.io/article/2gffsizl8u-kubernetes-environments#override_service_settings) in the [Kubernetes Deployments](/article/pc6qglyp5h-kubernetes-deployments-overview) doc.
+
+### Next Step
 
 * [4 - Azure Workflows and Deployments](/article/x87732ti68-4-azure-workflows-and-deployments)
 

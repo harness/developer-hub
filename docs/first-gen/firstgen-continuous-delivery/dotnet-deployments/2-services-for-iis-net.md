@@ -160,13 +160,17 @@ Note the following:
 
 When you deploy this service as part of your workflow, you will see these variables used in the Harness deployment dashboard:
 
-![](./static/2-services-for-iis-net-41.png)### WinRM and Copy Configs Command
+![](./static/2-services-for-iis-net-41.png)
+
+### WinRM and Copy Configs Command
 
 The Copy Configs command copies configuration files defined in the **Configuration** section of the Service.
 
 There is no file size limit on the config files that can be copied using the Copy Configs command.
 
-![](./static/2-services-for-iis-net-42.png)### Next Step
+![](./static/2-services-for-iis-net-42.png)
+
+### Next Step
 
 * [3 - IIS Environments in AWS and Azure](/article/itseg37bji-iis-environments)
 

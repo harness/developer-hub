@@ -25,7 +25,9 @@ In this topic:
 * [Services](/article/eb3kfl8uls-service-configuration)
 * [Define Kubernetes Manifests](/article/2j2vi5oxrq-define-kubernetes-manifests)
 
-In Harness Kubernetes version 1 implementation, Harness would create the ConfigMap automatically using the `${CONFIG_MAP_NAME}` expression and all unencrypted Service **Config Variables** and **Config Files**. In the current Harness Kubernetes implementation, you define your ConfigMap manually using the values.yaml and **Config Variables** and **Config Files**.### Review: Config Variable Reference Scope
+In Harness Kubernetes version 1 implementation, Harness would create the ConfigMap automatically using the `${CONFIG_MAP_NAME}` expression and all unencrypted Service **Config Variables** and **Config Files**. In the current Harness Kubernetes implementation, you define your ConfigMap manually using the values.yaml and **Config Variables** and **Config Files**.
+
+### Review: Config Variable Reference Scope
 
 You cannot reference a Service's Config Variable in the Pre-Deployment Phase of a Workflow. Canary and Multi-Service Workflows are the only Workflow types with the Pre-Deployment Phase.
 
@@ -42,11 +44,15 @@ For this explanation, we'll create a variable that indicates the database to use
 
 ![](./static/using-harness-config-variables-in-manifests-211.png)1. Click **Submit**. The variable is added to the **Config Variables** section.
 
-![](./static/using-harness-config-variables-in-manifests-212.png)### Step 2: Reference the Service Variable in values.yaml
+![](./static/using-harness-config-variables-in-manifests-212.png)
+
+### Step 2: Reference the Service Variable in values.yaml
 
 1. In **values.yaml**, create a new variable named `databaseType` that references the Service variable `database`:
 
-![](./static/using-harness-config-variables-in-manifests-213.png)### Step 3: Reference the Variable in the Manifest
+![](./static/using-harness-config-variables-in-manifests-213.png)
+
+### Step 3: Reference the Variable in the Manifest
 
 1. In the manifest file containing you object (in this example, ConfigMap), reference the values.yaml variable in the ConfigMap `data` section.
 

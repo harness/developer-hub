@@ -86,7 +86,9 @@ templatized: false
 ```
 For more information, see [Configuration as Code](/article/htvzryeqjw-configuration-as-code) and [Harness GitOps](/article/khbt0yhctx-harness-git-ops).
 
-The above example is a simple one. If you are using more steps, like a [Terraform Infrastructure Provisioner](/article/uxwih21ps1-terraform-provisioner-step) step, there will be additional labels and values.### Review: Do Not Use Multiple ECS Setup Steps
+The above example is a simple one. If you are using more steps, like a [Terraform Infrastructure Provisioner](/article/uxwih21ps1-terraform-provisioner-step) step, there will be additional labels and values.
+
+### Review: Do Not Use Multiple ECS Setup Steps
 
 The ECS Service Setup is added to a Harness ECS Workflow automatically when you create the Workflow.
 

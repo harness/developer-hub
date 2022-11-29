@@ -71,7 +71,9 @@ Currently, this feature is behind the feature flag `SINGLE_MANIFEST_SUPPORT`. Co
 
 Harness requires the path to the manifest or vars file you are using. 
 
-![](./static/upload-local-and-remote-pcf-resource-files-70.png)If you enter a folder path and **no file**, deployment will fail.### Next Steps
+![](./static/upload-local-and-remote-pcf-resource-files-70.png)If you enter a folder path and **no file**, deployment will fail.
+
+### Next Steps
 
 * [Using Harness Config Variables in Tanzu Manifests](/article/mutc1hz25o-using-harness-config-variables-in-pcf-manifests)
 * [Define Your Tanzu Target Infrastructure](/article/r1crlrpjk4)

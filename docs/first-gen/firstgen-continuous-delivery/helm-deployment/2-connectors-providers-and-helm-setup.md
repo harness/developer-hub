@@ -103,7 +103,9 @@ To specify a Docker repository as an Artifact Server, do the following:
 6. Enter a username and password for the provider (for example, your **Docker Hub** account).
 7. Click **SUBMIT**. The artifact server is displayed.
 
-![](./static/2-connectors-providers-and-helm-setup-04.png)##### Single GCR Docker Registry across Multiple Projects
+![](./static/2-connectors-providers-and-helm-setup-04.png)
+
+##### Single GCR Docker Registry across Multiple Projects
 
 In this document, we perform a simple set up using Docker Registry. Another common artifact server for Kubernetes deployments is GCR (Google Container Registry), also supported by Harness.
 
@@ -146,7 +148,9 @@ There are only two Helm requirements Harness needs to deploy to your Kubernetes 
 * Helm and Tiller installed and running in one pod in your Kubernetes cluster.
 * Helm chart hosted on an accessible server. The server may allow anonymous access.
 
-The Helm version must match the Tiller version running in the cluster (use `helm version` to check). If Tiller is not the latest version, then upgrade Tiller to the latest version (`helm init --upgrade`), or match the Helm version with the Tiller version. You can set the Helm version in the Harness Delegate YAML file using the `HELM_DESIRED_VERSION` environment property. Include the `v` with the version. For example, `HELM_DESIRED_VERSION: v2.13.0`. For more information, see [Helm and the Kubernetes Delegate](#helm_and_the_kubernetes_delegate) in this document.##### Set Up Helm on a Kubernetes Cluster
+The Helm version must match the Tiller version running in the cluster (use `helm version` to check). If Tiller is not the latest version, then upgrade Tiller to the latest version (`helm init --upgrade`), or match the Helm version with the Tiller version. You can set the Helm version in the Harness Delegate YAML file using the `HELM_DESIRED_VERSION` environment property. Include the `v` with the version. For example, `HELM_DESIRED_VERSION: v2.13.0`. For more information, see [Helm and the Kubernetes Delegate](#helm_and_the_kubernetes_delegate) in this document.
+
+##### Set Up Helm on a Kubernetes Cluster
 
 Setting up Helm and Tiller on a Kubernetes cluster is a simple process. Log into the cluster (for example, using the **Google Cloud Shell**), and use the following commands to set up Helm.
 

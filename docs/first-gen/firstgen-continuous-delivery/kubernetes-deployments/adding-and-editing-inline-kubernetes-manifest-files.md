@@ -39,7 +39,9 @@ To add more files to that folder, use the same folder name when you create the f
 
 Harness validates the YAML in the editor at runtime.You can use Go templating for inline manifest files. See [Use Go Templating in Kubernetes Manifests](/article/mwy6zgz8gu-use-go-templating-in-kubernetes-manifests).
 
-The inline values.yaml file used in a Harness Service does not support Helm templating, only Go templating. Helm templating is fully supported in the remote Helm charts you add to your Harness Service.### Step 3: Create and Manage Folders
+The inline values.yaml file used in a Harness Service does not support Helm templating, only Go templating. Helm templating is fully supported in the remote Helm charts you add to your Harness Service.
+
+### Step 3: Create and Manage Folders
 
 1. Click the more options button (︙) and click **Rename File**. The **Rename File** dialog opens.[![](./static/adding-and-editing-inline-kubernetes-manifest-files-59.png)](./static/adding-and-editing-inline-kubernetes-manifest-files-59.png)
 2. Enter a folder name before the file name, including a forward slash, such as **myfolder/**.

@@ -238,13 +238,17 @@ To create the Scalable Target and Scalable Policy resources, see the [register-s
 ```
 When Harness deploys your ECS service, it will register the service with an AWS Auto Scaling Group to apply the scaling policy, scaling out (and in) using CloudWatch target tracking.
 
-To obtain the name of the Auto Scaling Group created by Harness, use the Harness variable `${ami.newAsgName}`. For example, you could add a Shell Script command to your Workflow that contains the command `echo ${ami.newAsgName}`.### Upgrade Containers and Rollback Containers Steps are Dependent
+To obtain the name of the Auto Scaling Group created by Harness, use the Harness variable `${ami.newAsgName}`. For example, you could add a Shell Script command to your Workflow that contains the command `echo ${ami.newAsgName}`.
+
+### Upgrade Containers and Rollback Containers Steps are Dependent
 
 In order for rollback to add ECS Auto Scaling to the previous, successful service, you must have both the **Upgrade Containers** and **Rollback Containers** steps in the same Phase.
 
 ![](./static/ecs-workflows-29.png)Since ECS Auto Scaling is added by the **Upgrade Containers** step, if you delete **Upgrade Containers**, then **Rollback Containers** has no ECS Auto Scaling to roll back to.
 
-If you want to remove ECS Auto Scaling from a Phase, delete both the **Upgrade Containers** and **Rollback Containers** steps. The Phase will no longer perform ECS Auto Scaling during deployment or rollback.### ECS Steady State Check Command
+If you want to remove ECS Auto Scaling from a Phase, delete both the **Upgrade Containers** and **Rollback Containers** steps. The Phase will no longer perform ECS Auto Scaling during deployment or rollback.
+
+### ECS Steady State Check Command
 
 You can use the **ECS Steady State Check** command in an ECS Workflow to check for the steady state of a service you have deployed using a method other than the default **ECS Service Setup** or **ECS Daemon Service Setup** commands, such as a **Shell Script** command.
 
@@ -354,7 +358,9 @@ INFO   2019-01-07 13:33:48    Command execution finished with status SUCCES
 ```
 This example is for Phase 1 of a Canary deployment where 50% of 2 services are deployed. Once the Canary deployment is complete and both services are deployed, you can see the deployed services in the AWS ECS console:
 
-![](./static/ecs-workflows-32.png)### Post-Production Rollback
+![](./static/ecs-workflows-32.png)
+
+### Post-Production Rollback
 
 Harness also supports post-production rollback for cases where you want to recover from a deployment that succeeded on technical criteria, but that you want to undo for other reasons.
 

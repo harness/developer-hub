@@ -69,7 +69,9 @@ Next, we will add the artifact source for the service, a sample app publicly hos
 
 Next, we will define the ECS task definition and service definition.
 
-ECS private registry authentication for tasks using AWS Secrets Manager enables you to store your credentials securely and then reference them in your container definition. For information on using private registry authentication for tasks, see [Private Registry Authentication for Tasks](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/private-auth.html) from AWS.#### Task Definition
+ECS private registry authentication for tasks using AWS Secrets Manager enables you to store your credentials securely and then reference them in your container definition. For information on using private registry authentication for tasks, see [Private Registry Authentication for Tasks](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/private-auth.html) from AWS.
+
+#### Task Definition
 
 If you are not very familiar with task and service definitions, see these examples from AWS: [Task Definitions for Amazon ECS](https://github.com/aws-samples/aws-containers-task-definitions), [Example Task Definitions](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/example_task_definitions.html).You specify the ECS Task Definition in the Harness Service.
 

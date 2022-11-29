@@ -86,7 +86,9 @@ With Multi-Service Deployment, all nodes within a single environment are updated
 
 * Risk, difficult to test/verify all service dependencies, outages, slow rollback.
 
-[![](./static/deployment-concepts-and-strategies-06.png)](./static/deployment-concepts-and-strategies-06.png)### Rolling Deployment
+[![](./static/deployment-concepts-and-strategies-06.png)](./static/deployment-concepts-and-strategies-06.png)
+
+### Rolling Deployment
 
 With a Rolling Deployment, all nodes within a single environment are incrementally updated one-by-one or in N batches (as defined by a window size) with a new service/artifact version.
 
@@ -118,7 +120,9 @@ QA and UAT are typically done on the blue environment. When satisfied, traffic 
 
 You can then decommission the old environment once deployment is successful.
 
-Some vendorscalls this a red/black deployment.#### When to use Blue/Green Deployments
+Some vendorscalls this a red/black deployment.
+
+#### When to use Blue/Green Deployments
 
 * When you want to perform verification in a full production environment.
 * When you want zero downtime.
@@ -203,7 +207,9 @@ Fast, easy and cheap way to test new features in production. Lots of tools exist
 * Scripting AB tests can be complex.
 * Database compatibility (schema changes, backward compatibility)
 
-[![](./static/deployment-concepts-and-strategies-15.png)](./static/deployment-concepts-and-strategies-15.png)### Which Deployment Strategy Should I Use?
+[![](./static/deployment-concepts-and-strategies-15.png)](./static/deployment-concepts-and-strategies-15.png)
+
+### Which Deployment Strategy Should I Use?
 
 It depends entirely on the type of application/service and environment. Most Harness customers are currently using blue/green or canary deployments for mission-critical applications.
 

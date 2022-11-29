@@ -57,7 +57,9 @@ Within Harness, you'll need the following resources:
 * An AMI-based [Service](/article/rd6ghl00va-ami-deployment#service).
 * An [Environment](/article/rd6ghl00va-ami-deployment#environment) with an Infrastructure Definition that specifies your base ASG.
 
-Harness specifically supports AWS *target* tracking scaling policies. For details, see AWS' [Dynamic Scaling for Amazon EC2 Auto Scaling](https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-scale-based-on-demand.html#as-scaling-types) topic.### Limitations
+Harness specifically supports AWS *target* tracking scaling policies. For details, see AWS' [Dynamic Scaling for Amazon EC2 Auto Scaling](https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-scale-based-on-demand.html#as-scaling-types) topic.
+
+### Limitations
 
 * If your base Auto Scaling Group is configured in AWS with [scaling policies](https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-scale-based-on-demand.html#as-scaling-types), Harness will apply those policies in your Workflow's *final* **Upgrade AutoScaling Group** step.
 	+ Harness does not support copying ASG scaling policies with **Metric Type** value **Application Load Balancer request count per target**.

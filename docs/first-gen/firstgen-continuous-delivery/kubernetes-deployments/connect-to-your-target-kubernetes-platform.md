@@ -115,7 +115,9 @@ In Harness Manager, in the **Harness Delegates** page, the new Delegate will a
 
 [![](./static/connect-to-your-target-kubernetes-platform-53.png)](./static/connect-to-your-target-kubernetes-platform-53.png)Note the **Delegate name**. You will use this name when you set up the Kubernetes Cluster Cloud Provider.
 
-When you onboard your own applications, you might need to install multiple Delegates, depending on their workloads, network segmentation, and firewall zones. Typically, you will need one Delegate for every 300-500 service instances across your applications, and will need one Delegate in each subnet or zone.### Step 2: Choose a Kubernetes Cluster Cloud Provider or Platform Cloud Provider
+When you onboard your own applications, you might need to install multiple Delegates, depending on their workloads, network segmentation, and firewall zones. Typically, you will need one Delegate for every 300-500 service instances across your applications, and will need one Delegate in each subnet or zone.
+
+### Step 2: Choose a Kubernetes Cluster Cloud Provider or Platform Cloud Provider
 
 The Kubernetes Cluster Cloud Provider is platform-agnostic. Consequently, you can use it to access a cluster on any platform, but it cannot also access platform-specific services and resources.
 

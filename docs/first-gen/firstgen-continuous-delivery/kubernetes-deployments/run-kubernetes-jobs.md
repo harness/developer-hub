@@ -41,7 +41,9 @@ Typically, Jobs are not part of the main deployment. You can exclude them from t
 
 In this topic, we will walk through a simple Job deployment. Here is the completed deployment in Harness:
 
-![](./static/run-kubernetes-jobs-61.png)### Review: Apply Step
+![](./static/run-kubernetes-jobs-61.png)
+
+### Review: Apply Step
 
 Workflows include an **Apply** step that allows you to deploy *any resource* you have set up in the Service **Manifests** section.
 
@@ -58,7 +60,9 @@ Here are some Job examples:
 * Create a Job that cleans up the configuration of an environment, to create a fresh environment for deployment.
 * Use a Job to spin down the replica count of a service, to save on cost.
 
-Any workload deployed with the **Apply** step is not rolled back by Harness.### Step 1: Add Job Manifest
+Any workload deployed with the **Apply** step is not rolled back by Harness.
+
+### Step 1: Add Job Manifest
 
 For this topic, we will create a Service named **Countdown** of the Kubernetes Deployment Type.
 
@@ -232,7 +236,9 @@ In the Shell Script step in **Verify**, we can see that our Job completed:
 
 ![](./static/run-kubernetes-jobs-71.png)Finally, in the **Delete** step, you can see the countdown Job deleted.
 
-![](./static/run-kubernetes-jobs-72.png)### Option: Showing Job Output
+![](./static/run-kubernetes-jobs-72.png)
+
+### Option: Showing Job Output
 
 To view Job output after the Apply step, you can use a simple script in a [Shell Script](/article/1fjrjbau7x-capture-shell-script-step-output) step:
 

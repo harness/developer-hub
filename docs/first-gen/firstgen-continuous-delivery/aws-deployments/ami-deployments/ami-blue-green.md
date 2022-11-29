@@ -72,7 +72,9 @@ In the first stage of deployment, the new ASG—created using the new AMI you ar
 
 ![](./static/ami-blue-green-45.png)In Amazon Web Services, you configure a base Launch Configuration that Harness will use when it creates new Launch Configurations; a base Auto Scaling Group that uses the base Launch Configuration; and the Stage and Prod Target Groups. In Harness, you identify the Region, base Auto Scaling Group, and Stage and Prod Target Groups that you've configured in AWS.
 
-This guide outlines the required setup in both AWS and Harness.### Prerequisites
+This guide outlines the required setup in both AWS and Harness.
+
+### Prerequisites
 
 An AMI Blue/Green deployment requires you to set up the following resources up within AWS (example setup [below](#aws_setup_bg)):
 
@@ -89,7 +91,9 @@ Within Harness, you'll need to set up the following resources (some of which you
 * An AMI-based Service (which can be any Service you've already set up for an [AMI Basic deployment](/article/rd6ghl00va-ami-deployment#basic_deploy)).
 * An Environment with an Infrastructure Definition that specifies your ASG and your Stage and Prod Target Groups.
 
-You do not need to register instances for your Target Groups. Harness will perform that step during deployment.#### Cloud Provider Requirements for Blue/Green Deployments
+You do not need to register instances for your Target Groups. Harness will perform that step during deployment.
+
+#### Cloud Provider Requirements for Blue/Green Deployments
 
 Ensure that the IAM role applied to the AWS access key user or Harness Delegate host has the policies described in [Policies Required: AWS AMI/ASG Deployments](/article/wt1gnigme7-add-amazon-web-services-cloud-provider#policies_required_aws_ami_asg_deployments).
 
@@ -123,7 +127,9 @@ In this tutorial, we will use a launch configuration.
 
 This defines a base Launch Configuration, from which Harness will create new Launch Configurations for new Auto Scaling Groups. This Launch Configuration's security group allows inbound HTTP traffic on port 80 (which we'll use for the Prod Target Group's instance listener).
 
-![](./static/ami-blue-green-46.png)#### Auto Scaling Group
+![](./static/ami-blue-green-46.png)
+
+#### Auto Scaling Group
 
 The Auto Scaling Group that you define in AWS must use the base [Launch Configuration](#launch_config_bg) created above or a launch template. When you later select this ASG in your Harness Infrastructure Definition, it becomes the base ASG from which Harness will create new ASGs to deploy new AMIs.
 
@@ -131,19 +137,25 @@ Our example specifies three subnets and modest scaling policies: one instance to
 
 ![](./static/ami-blue-green-47.png)Note that if you choose to instead configure scaling policies for your base ASG, Harness will apply these scaling policies in your Workflow's final  [Upgrade AutoScaling Group step](#upgrade_asg_bg). (Harness will also oblige these policies in any rollback steps.)
 
-![](./static/ami-blue-green-48.png)Harness specifically supports AWS *target* tracking scaling policies. For details, see AWS' [Dynamic Scaling for Amazon EC2 Auto Scaling](https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-scale-based-on-demand.html#as-scaling-types) topic.#### Target Groups
+![](./static/ami-blue-green-48.png)Harness specifically supports AWS *target* tracking scaling policies. For details, see AWS' [Dynamic Scaling for Amazon EC2 Auto Scaling](https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-scale-based-on-demand.html#as-scaling-types) topic.
+
+#### Target Groups
 
 We have a pair of identically configured Target Groups. We've arbitrarily named one TG to indicate production, and the other to indicate staging. This naming convention is a convenience to help us select these TGs when we later assign them to a Harness Infrastructure Definition.
 
 ![](./static/ami-blue-green-49.png)Both Target Groups are configured as **Target type: Instance**. They provide HTTP access for the load balancer on port 80, and specify the Default VPC.
 
-![](./static/ami-blue-green-50.png)#### Application Load Balancer (ALB)
+![](./static/ami-blue-green-50.png)
+
+#### Application Load Balancer (ALB)
 
 The Application Load Balancer is configured with the same Default VPC, and the same subnets, used for the base ASG and the Target Groups.
 
 ![](./static/ami-blue-green-51.png)It has two listeners, forwarding to the two Target Groups: one for production traffic, pointing to the Prod TG; and one for staging traffic, pointing to the Stage TG. In our example, the production Target Group's listener uses port 80, matching the access we configured for that TG.
 
-![](./static/ami-blue-green-52.png)### Define the Blue/Green Infrastructure
+![](./static/ami-blue-green-52.png)
+
+### Define the Blue/Green Infrastructure
 
 1. Within your Harness Application, select an existing [Environment](/article/rd6ghl00va-ami-deployment#create_environment), or create a new one.
 2. In the Environment's **Infrastructure Definition** section, click **Add Infrastructure Definition**.
@@ -180,7 +192,9 @@ If you select the **Use Already Provisioned Infrastructure** option along with 
 
 If you instead select the **Map Dynamically Provisioned Infrastructure** option along with the **Reset ASG revision numbers...** option, Harness will automatically create a new numbering series based on the new value for the base ASG value that your  [Infrastructure Provisioner](#infrastructure_provisioners) outputs in a variable expression.
 
-Once you **Submit** an Infrastructure Definition with this **Reset** check box enabled, the check box will be locked. You will not be able to disable this option later within the same Infrastructure Definition.### Infrastructure Provisioners
+Once you **Submit** an Infrastructure Definition with this **Reset** check box enabled, the check box will be locked. You will not be able to disable this option later within the same Infrastructure Definition.
+
+### Infrastructure Provisioners
 
 Harness Terraform and CloudFormation Infrastructure Provisioners support Blue/Green deployments for AMI.
 
@@ -229,7 +243,9 @@ You can manipulate traffic shifting using as many **Shift Traffic Weight** ste
 
 Approval steps are very useful because they enable you to cancel a deployment and return to the pre-deployment traffic weighting with a single step.The Workflow looks something like the following. Here the names of the **Shift Traffic Weight** steps have been changed to describe the weights they are assigning (10%, 100%):
 
-![](./static/ami-blue-green-60.png)#### Create the Blue/Green Workflow
+![](./static/ami-blue-green-60.png)
+
+#### Create the Blue/Green Workflow
 
 1. In the Harness Application containing the Service and Infrastructure Definition you want to use, click **Workflows**.
 2. Click **Add Workflow**.
@@ -323,7 +339,9 @@ Add more **Shift Traffic Weight** and **Approval** steps until you shift tra
 
 When you deploy, the final **Shift Traffic Weight** step will look something like this:
 
-![](./static/ami-blue-green-65.png)#### Downsize Old ASG at 0% weight
+![](./static/ami-blue-green-65.png)
+
+#### Downsize Old ASG at 0% weight
 
 The **Downsize Old ASG at 0% weight** setting should only be selected for the **Shift Traffic Weight** step that shifts traffic to **100%** in its **New ASG Weight** setting.
 
@@ -370,7 +388,9 @@ In Step 1, select **AWS AutoScaling Group Setup** to open a dialog where you can
 
 ![](./static/ami-blue-green-67.png)The **Instances** settings support [Harness variable expressions](/article/9dvxcegm90-variables), such as [Workflow variable expressions](/article/766iheu1bk-add-workflow-variables-new-template).For most settings here, see the corresponding [AMI Basic Workflow instructions](/article/rd6ghl00va-ami-deployment#basic_setup_asg). However:
 
-Harness recommends setting the **Auto Scaling Steady State Timeout (mins)** field to at least **20** minutes, as shown above. This is a safe interval to prevent failed deployments while the [Swap Routes](#swap_routes_bg) step's Blue/Green switchover completes.##### Setup AutoScaling Group in Deployment
+Harness recommends setting the **Auto Scaling Steady State Timeout (mins)** field to at least **20** minutes, as shown above. This is a safe interval to prevent failed deployments while the [Swap Routes](#swap_routes_bg) step's Blue/Green switchover completes.
+
+##### Setup AutoScaling Group in Deployment
 
 Let's look at an example where the AWS AutoScaling Group Setup—configured as shown above—is deployed. Here is the step in the Harness Deployments page:
 
@@ -395,7 +415,9 @@ In Step 2, select **Upgrade AutoScaling Group** to open a dialog where you can d
 
 For general information on customizing this dialog's settings, and on how they correspond to AWS parameters, see the corresponding [AMI Basic Workflow section](/article/rd6ghl00va-ami-deployment#upgrade_asg). This deployment example uses percentage scaling, with a desired target of 100%.
 
-If your base Auto Scaling Group is configured in AWS with [scaling policies](#scaling_policies), Harness will apply those policies in your Workflow's final **Upgrade AutoScaling Group** step.##### Deploy Service Step in Deployment
+If your base Auto Scaling Group is configured in AWS with [scaling policies](#scaling_policies), Harness will apply those policies in your Workflow's final **Upgrade AutoScaling Group** step.
+
+##### Deploy Service Step in Deployment
 
 At this point, Harness deploys the new ASG—containing the instances created using your new AMI—to the Stage Target Group:
 
@@ -432,7 +454,9 @@ All targets registered for Asg: [AMI__Blue__Green__Application_AMI__Blue__Green_
 
 This example shows an (optional) Approval added to Step 2. It requests manual approval, following successful registration of the staging group, and prior to the Blue/Green (staging/production) switchover in the next step.
 
-![](./static/ami-blue-green-71.png)#### Step 4: Swap Routes
+![](./static/ami-blue-green-71.png)
+
+#### Step 4: Swap Routes
 
 This is the heart of a Blue/Green deployment. Here, Harness directs the Application Load Balancer to:
 
@@ -444,7 +468,9 @@ When this step is complete, the new ASG—containing the instances created using
 
 ![](./static/ami-blue-green-72.png)In Step 4, open the **Switch Auto Scaling Group Route** dialog if you want to toggle the **Downsize Old Auto Scaling Group** setting. When enabled, this check box directs AWS to free up resources from the old ASG once the new ASG registers its targets and reaches steady state.
 
-![](./static/ami-blue-green-73.png)##### Switch Auto Scaling Group Route Step in Deployment
+![](./static/ami-blue-green-73.png)
+
+##### Switch Auto Scaling Group Route Step in Deployment
 
 Using the configuration shown above, here is the **Switch Auto Scaling Group Route** step in the Harness Deployments page:
 

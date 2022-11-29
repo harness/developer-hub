@@ -35,7 +35,9 @@ In this topic:
 
 Here is an example of a successful TAS Canary deployment containing two phases:
 
-![](./static/create-a-canary-pcf-deployment-83.png)### Review: App Resizing in Canary Deployments
+![](./static/create-a-canary-pcf-deployment-83.png)
+
+### Review: App Resizing in Canary Deployments
 
 To understand how app resizing works in a Canary deployment, let's look at an example of a 3 phase deployment.
 

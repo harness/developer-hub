@@ -154,7 +154,9 @@ If you select two Selectors, a Delegate must have both Selectors to be selected.
 
 You can use expressions for Harness built-in variables or Account Default variables in **Delegate Selectors**. When the variable expression is resolved at deployment runtime, it must match an existing Delegate Selector.  
   
-For example, if you have a Delegate Selector **prod** and the Workflow is using an Environment also named **prod**, the Delegate Selector can be `${env.name}`. This is very useful when you match Delegate Selectors to Application component names such as Environments, Services, etc. It's also a way to template the Delegate Selector setting.### Option: Override Values.yaml in Service
+For example, if you have a Delegate Selector **prod** and the Workflow is using an Environment also named **prod**, the Delegate Selector can be `${env.name}`. This is very useful when you match Delegate Selectors to Application component names such as Environments, Services, etc. It's also a way to template the Delegate Selector setting.
+
+### Option: Override Values.yaml in Service
 
 You can override the values.yaml in the remote folder you specified in **Path to Helm Charts** using the **Values YAML Override** option in **Configuration**.
 
@@ -200,7 +202,9 @@ For **Inherit Script from Service**, Harness will use the script you entered to 
 
 Here's an example overriding the values.yaml using a Service **Config Variable** from the Service you selected:
 
-![](./static/add-packaged-helm-charts-15.png)### Option: Use a Harness Artifact Source
+![](./static/add-packaged-helm-charts-15.png)
+
+### Option: Use a Harness Artifact Source
 
 The values.yaml file you use can have the image and/or dockercfg values hardcoded. In this case, you don't need to use a Harness Artifact Source in your Harness Service.
 

@@ -59,7 +59,9 @@ Make sure you have the **update** permission on the Service or the Environment
 
 1. In the **values.yaml** in the Harness Service **Manifests** section, reference the Config File using `my_file: ${configFile.getAsBase64("myFile")}`.
 
-![](./static/using-harness-config-files-in-manifests-103.png)### Step 3: Decode the File
+![](./static/using-harness-config-files-in-manifests-103.png)
+
+### Step 3: Decode the File
 
 1. In the manifest (in our example, a ConfigMap), decode the base64 Config File and indent it for the YAML syntax:
 

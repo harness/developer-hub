@@ -59,7 +59,9 @@ In the **Route Update** section, after each traffic split step, you can add the 
 
 Make sure you add the verification steps for traffic split only in the **Route Update** section.![](./static/configure-traffic-split-verification-01.png)The configure AppDynamics/ELK procedure is similar to the regular configuration, except for the **Baseline for Risk Analysis** input. You can select only **Canary Analysis**.
 
-Traffic split analysis will be performed only if the new traffic percentage is less than 50%. Analysis will not be performed if the traffic split is more than 50%.### Step 4: View Verification Results
+Traffic split analysis will be performed only if the new traffic percentage is less than 50%. Analysis will not be performed if the traffic split is more than 50%.
+
+### Step 4: View Verification Results
 
 Once you have executed the Workflow, Harness performs the verification you configured and displays the results in the **Deployments** and **Continuous Verification** pages. Verification is executed in real time, quantifying the business impact of every production deployment.
 

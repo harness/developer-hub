@@ -10,7 +10,9 @@ helpdocs_is_published: true
 
 This topic describes different methods for creating ECS Blue/Green Workflows.
 
-For Canary and Basic Workflows, see [ECS Workflows](/article/oinivtywnl-ecs-workflows).### Overview
+For Canary and Basic Workflows, see [ECS Workflows](/article/oinivtywnl-ecs-workflows).
+
+### Overview
 
 There are two types of ECS Blue/Green deployments in Harness:
 
@@ -48,7 +50,9 @@ You do not need to register instances for the target groups. Harness will perfor
 
 For more information on ELB Application Load Balancers, see [What Is an Application Load Balancer?](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html) from AWS.
 
-Application Load Balancer (ALB) and Network Load Balancer (NLB) are supported.#### Ports Used in Blue/Green Using ELB
+Application Load Balancer (ALB) and Network Load Balancer (NLB) are supported.
+
+#### Ports Used in Blue/Green Using ELB
 
 There are three places where ports are configured in this deployment:
 
@@ -209,7 +213,9 @@ In order for rollback to add ECS Auto Scaling to the previous, successful servic
 
 ![](./static/ecs-blue-green-workflows-66.png)Since ECS Auto Scaling is added by the **Upgrade Containers** step, if you delete **Upgrade Containers**, then **Rollback Containers** has no ECS Auto Scaling to roll back to.
 
-If you want to remove ECS Auto Scaling from a Phase, delete both the **Upgrade Containers** and **Rollback Containers** steps. The Phase will no longer perform ECS Auto Scaling during deployment or rollback.#### Swap Target Groups
+If you want to remove ECS Auto Scaling from a Phase, delete both the **Upgrade Containers** and **Rollback Containers** steps. The Phase will no longer perform ECS Auto Scaling during deployment or rollback.
+
+#### Swap Target Groups
 
 The **Swap Target Groups** step performs the Blue/Green route swap once the deployment is verified. That is why **Swap Target Groups** comes after the **Verify Service** section in the Workflow.
 
@@ -396,7 +402,9 @@ In order for rollback to add ECS Auto Scaling to the previous, successful servic
 
 ![](./static/ecs-blue-green-workflows-85.png)Since ECS Auto Scaling is added by the **Upgrade Containers** step, if you delete **Upgrade Containers**, then **Rollback Containers** has no ECS Auto Scaling to roll back to.
 
-If you want to remove ECS Auto Scaling from a Phase, delete both the **Upgrade Containers** and **Rollback Containers** steps. The Phase will no longer perform ECS Auto Scaling during deployment or rollback.#### Change Route 53 Weights
+If you want to remove ECS Auto Scaling from a Phase, delete both the **Upgrade Containers** and **Rollback Containers** steps. The Phase will no longer perform ECS Auto Scaling during deployment or rollback.
+
+#### Change Route 53 Weights
 
 A weight value determines the proportion of DNS queries that Route 53 responds to using the current record. The **Change Route 53 Weights** step is configured with two weights to apply to the CNAME records Harness registers.
 
@@ -426,7 +434,9 @@ In the Route 53 console, you can see the result of the CNAME weights in the zone
 
 ![](./static/ecs-blue-green-workflows-88.png)You can also see the Blue/Green tag in the ECS console, in the **Tags** tab for the service:
 
-![](./static/ecs-blue-green-workflows-89.png)### Rollbacks
+![](./static/ecs-blue-green-workflows-89.png)
+
+### Rollbacks
 
 See [ECS Rollbacks](/article/d7rnemtfuz-ecs-rollback).
 

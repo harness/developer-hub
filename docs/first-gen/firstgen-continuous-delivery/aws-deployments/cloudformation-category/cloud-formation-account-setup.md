@@ -42,7 +42,9 @@ This topic describes the Harness account setup steps that you perform before you
 
 Once your Harness account is set up, CloudFormation provisioning in Harness is as follows:
 
-![](./static/cloud-formation-account-setup-00.png)### Review: Limitations
+![](./static/cloud-formation-account-setup-00.png)
+
+### Review: Limitations
 
 * Harness CloudFormation integration does not support AWS Serverless Application Model (SAM) templates. Only standard [AWS CloudFormation templates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-whatis-concepts.html#w2ab1b5c15b7).
 * Harness Infrastructure Provisioners are only supported in Canary and Multi-Service deployment types. For AMI deployments, Infrastructure Provisioners are also supported in Blue/Green deployments.
@@ -64,7 +66,9 @@ To set up the Delegate, do the following:
 
 When you are done, the Delegate listing will look something like this:
 
-![](./static/cloud-formation-account-setup-02.png)#### Permissions
+![](./static/cloud-formation-account-setup-02.png)
+
+#### Permissions
 
 The Delegate requires permissions according to the target deployment service (ECS, EC2, Lambda).
 
@@ -107,7 +111,9 @@ CloudFormation templates are added to Harness by either pasting them into a text
 
 ![](./static/cloud-formation-account-setup-03.png)Setting up and AWS S3 and Git connections are described below.
 
-Connections to AWS CodeCommit are made in Harness Source Repo Providers, not as an AWS Cloud Provider.#### Option 1: Use AWS S3
+Connections to AWS CodeCommit are made in Harness Source Repo Providers, not as an AWS Cloud Provider.
+
+#### Option 1: Use AWS S3
 
 You can use the same AWS Cloud Provider to provision your AWS deployment environment and access the S3 bucket URL.
 

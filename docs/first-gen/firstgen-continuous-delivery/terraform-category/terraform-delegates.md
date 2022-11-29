@@ -72,7 +72,9 @@ Terraform is now installed on the Delegate.
 
 If you will be using a Cloud Provider that uses Delegate Selectors to identify Delegates (AWS Cloud Provider), add a Selector to this Delegate. For more information, see [Delegate Installation and Management](/article/h9tkwmkrm7-delegate-installation).
 
-The Delegate needs to be able to obtain the Terraform provider you specify in the modules in your Terraform script. For example, `provider "acme"`. On the Delegate, Terraform will download and initialize any providers that are not already initialized.### Step 3: Set Up the Cloud Provider
+The Delegate needs to be able to obtain the Terraform provider you specify in the modules in your Terraform script. For example, `provider "acme"`. On the Delegate, Terraform will download and initialize any providers that are not already initialized.
+
+### Step 3: Set Up the Cloud Provider
 
 Add a Harness Cloud Provider to connect Harness to your target platform (AWS, Kubernetes cluster, etc).
 

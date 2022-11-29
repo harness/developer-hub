@@ -60,7 +60,9 @@ When the Workflow is deployed, the user will have to provide a name for the Envi
 
 This substitution can be useful if you have folder names in your remote Git repo that match Harness Environment names, such as QA and PROD. The same Workflow and CF Command can be used for both Environments and use manifest files in separate repo folders.
 
-Harness checks out manifest files from your repo at deployment runtime. If any files in the repository contain non UTF-8 characters (binary, zip, etc), the checkout fails. For example, sometimes an operating system file such as .DS\_Store files get added to a repo.### Option: Delegate Selectors
+Harness checks out manifest files from your repo at deployment runtime. If any files in the repository contain non UTF-8 characters (binary, zip, etc), the checkout fails. For example, sometimes an operating system file such as .DS\_Store files get added to a repo.
+
+### Option: Delegate Selectors
 
 Ensure that the Harness Delegate(s) used for your deployment have the correct version of the CF CLI installed. See [Install Cloud Foundry CLI Versions on the Harness Delegate](/article/8tsb75aldu-install-cloud-foundry-cli-6-and-7-on-harness-delegates).In order for the commands in your script to execute, the Harness Delegate(s) running the script must have the CF CLI and any related CF plugins installed.
 

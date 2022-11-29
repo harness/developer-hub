@@ -54,7 +54,9 @@ To add the Infrastructure Definition:
 4. In **Deployment Type**, select **AWS Lambda**. This expands the **Infrastructure Definition** dialog to look something like this:![](./static/3-lambda-environments-26.png)
 5. Select **Use** **Already Provisioned Infrastructure**, and follow the [Define a Provisioned Infrastructure](#define_provisioned_infrastructure) steps below.
 
-If you are using a configured Harness [Infrastructure Provisioner](/article/o22jx8amxb-add-an-infra-provisioner), instead select **Map Dynamically Provisioned Infrastructure**, and then select the provisioner. The settings below are for **Use Already Provisioned Infrastructure**.#### Define a Provisioned Infrastructure
+If you are using a configured Harness [Infrastructure Provisioner](/article/o22jx8amxb-add-an-infra-provisioner), instead select **Map Dynamically Provisioned Infrastructure**, and then select the provisioner. The settings below are for **Use Already Provisioned Infrastructure**.
+
+#### Define a Provisioned Infrastructure
 
 The **Infrastructure Definition** dialog's lower section defines settings similar to the `‑‑role` and `‑‑vpc-config` options in the `aws lambda create-function` command. For example:
 

@@ -117,7 +117,9 @@ resource "aws_instance" "tf_instance" {
 ```
 The access and secret keys will be provided when you add the Terraform Apply step to your Workflow. In Harness, you create secrets in Harness [Secrets Management](/article/au38zpufhr-secret-management) and then you can use them in other Harness components.
 
-You can also use a Terraform Apply step with the [HashiCorp Vault](https://www.terraform.io/docs/providers/vault/index.html) provider to access Vault credentials for a Terraform configuration.### Step 2: Add a Terraform Infrastructure Provisioner
+You can also use a Terraform Apply step with the [HashiCorp Vault](https://www.terraform.io/docs/providers/vault/index.html) provider to access Vault credentials for a Terraform configuration.
+
+### Step 2: Add a Terraform Infrastructure Provisioner
 
 In Harness, add a Terraform Infrastructure Provisioner that uses the Terraform configuration file. This process is described in detail in the [Add Terraform Scripts](/article/ux2enus2ku-add-terraform-scripts) topic.
 

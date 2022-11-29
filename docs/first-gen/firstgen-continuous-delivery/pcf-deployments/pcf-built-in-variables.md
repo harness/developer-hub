@@ -162,7 +162,9 @@ If deployment fails during the App Setup or App Resize step, the following actio
 
 ![](./static/pcf-built-in-variables-14.png)The new app version is deleted and the previous app version is restored.
 
-For the previous inactive application (**OrderApp\_1**), the temp routes and environment variable (**STAGE**) are not restored. To restore these, enable the [Upsize inactive Service Option](https://docs.harness.io/article/52muxcsr1v-create-a-blue-green-pcf-deployment#upsize_inactive_service_option) in the Rollback step.##### Variable Resolution during App Resize Step Failure
+For the previous inactive application (**OrderApp\_1**), the temp routes and environment variable (**STAGE**) are not restored. To restore these, enable the [Upsize inactive Service Option](https://docs.harness.io/article/52muxcsr1v-create-a-blue-green-pcf-deployment#upsize_inactive_service_option) in the Rollback step.
+
+##### Variable Resolution during App Resize Step Failure
 
 
 

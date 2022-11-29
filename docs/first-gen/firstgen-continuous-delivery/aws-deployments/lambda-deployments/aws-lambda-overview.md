@@ -37,7 +37,9 @@ You can also add your Lambda Aliases and Tags as part of the Workflow.
 		1. **Deployment Verification** - Once you have successfully deployed you can add your APM and logging apps as Verification Providers, and then add Verify Steps to your Workflows. Harness will use its machine-learning to find anomalies in your deployments. For more information, see [Continuous Verification](/article/myw4h9u05l-verification-providers-list).
 		2. **24/7 Service Guard** - Monitor your live applications, catching problems that surface minutes or hours following deployment. For more information, see [24/7 Service Guard](/article/dajt54pyxd-24-7-service-guard-overview).
 
-Harness fully-integrates with **AWS CloudWatch** to apply Harness machine learning to CloudWatches monitoring and operational data. See [CloudWatch Verification](/article/q6ti811nck-cloud-watch-verification-overview).### Next Steps
+Harness fully-integrates with **AWS CloudWatch** to apply Harness machine learning to CloudWatches monitoring and operational data. See [CloudWatch Verification](/article/q6ti811nck-cloud-watch-verification-overview).
+
+### Next Steps
 
 * [Troubleshooting AWS Lambda Deployments](/article/g9o2g5jbye-troubleshooting-harness#aws_lambda)
 

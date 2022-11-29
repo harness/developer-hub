@@ -12,7 +12,9 @@ Currently, this feature is behind the Feature Flags `AZURE_WEBAPP`. Contact [Har
 
 These repo and settings are used when Harness deploys your Web App.
 
-This topic covers adding a non-containerized artifact. For steps on adding a Docker image for Web App Deployment, see [Add Your Docker Image for Azure Web App Deployment](/article/8s766bhiec-add-your-docker-image-for-azure-web-app-deployment).### Before You Begin
+This topic covers adding a non-containerized artifact. For steps on adding a Docker image for Web App Deployment, see [Add Your Docker Image for Azure Web App Deployment](/article/8s766bhiec-add-your-docker-image-for-azure-web-app-deployment).
+
+### Before You Begin
 
 * [Azure Web App Deployments Overview](/article/lluikqw7q7-azure-web-app-deployments-overview)
 * Make sure that you have connected Harness to your Azure subscription as described in [Connect to Azure and Artifact Repo for Your Web App Deployments](/article/e9k7ngaqiu-connect-to-azure-for-web-app-deployments).

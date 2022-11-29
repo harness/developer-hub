@@ -11,12 +11,16 @@ helpdocs_is_published: true
 Harness supports [Kustomize](https://kustomize.io/) kustomizations in your Kubernetes deployments. You can use overlays, multibase, plugins, sealed secrets, etc, just as you would in any native kustomization.
 
 **New to Kustomize?** In a nutshell, kustomizations let you create specific Kubernetes deployments while leaving the original manifests untouched. You drop a kustomization.yaml file next to your Kubernetes YAML files and it defines new behavior to be performed during deployment.  
-Please review the video [Kustomize: Deploy Your App with Template Free YAML](https://youtu.be/ahMIBxufNR0) (30min), the [Kustomize Glossary](https://kubectl.docs.kubernetes.io/references/kustomize/glossary/), and the [Declarative Management of Kubernetes Objects Using Kustomize](https://kubernetes.io/docs/tasks/manage-kubernetes-objects/kustomization/).### Before You Begin
+Please review the video [Kustomize: Deploy Your App with Template Free YAML](https://youtu.be/ahMIBxufNR0) (30min), the [Kustomize Glossary](https://kubectl.docs.kubernetes.io/references/kustomize/glossary/), and the [Declarative Management of Kubernetes Objects Using Kustomize](https://kubernetes.io/docs/tasks/manage-kubernetes-objects/kustomization/).
+
+### Before You Begin
 
 * [Connect to Your Target Kubernetes Platform](/article/m383u53mp1-connect-to-your-target-kubernetes-platform)
 * [Kubernetes Quickstart](/article/7in9z2boh6-kubernetes-quickstart)
 
-Kustomize is supported in Harness Kubernetes v2 Services only. This is the default type, but some Harness users might be using a legacy Kubernetes v1 Service.### Visual Summary
+Kustomize is supported in Harness Kubernetes v2 Services only. This is the default type, but some Harness users might be using a legacy Kubernetes v1 Service.
+
+### Visual Summary
 
 The following diagram shows a very simple topology for implementing Kustomize.
 
@@ -24,7 +28,11 @@ The following diagram shows a very simple topology for implementing Kustomize.
 
 In this diagram we use Google GCP, but Harness deploys to any Kubernetes cluster vendor.
 
-#### Video Summary
+### Video Summary
+
+<!-- Video:
+https://harness-1.wistia.com/medias/rpv5vwzpxz-->
+<docvideo src="https://www.youtube.com/embed/BlxPanrpaX0" />
 
 ### Limitations
 
@@ -386,7 +394,9 @@ To deploy each overlay in Harness, you could create a Service for each overlay a
 
 You can accomplish this using Harness Variable Expressions in **Path to kustomization directory**
 
-![](./static/use-kustomize-for-kubernetes-deployments-84.png)##### Environment Name Variables
+![](./static/use-kustomize-for-kubernetes-deployments-84.png)
+
+##### Environment Name Variables
 
 Using Environment name variables is the simplest method of using one Service and selecting from multiple bases.
 
@@ -546,7 +556,9 @@ In the Workflow, click **Deploy**. In **Start New Deployment**, select the name 
 
 ![](./static/use-kustomize-for-kubernetes-deployments-100.png)In this example, we select the **stage** Environment. Once deployment is complete you can see the stage repo folder's base used and the `staging-myapp-pod` created:
 
-![](./static/use-kustomize-for-kubernetes-deployments-101.png)### Review: What Workloads Can I Deploy?
+![](./static/use-kustomize-for-kubernetes-deployments-101.png)
+
+### Review: What Workloads Can I Deploy?
 
 See [What Can I Deploy in Kubernetes?](/article/6ujb3c70fh).
 

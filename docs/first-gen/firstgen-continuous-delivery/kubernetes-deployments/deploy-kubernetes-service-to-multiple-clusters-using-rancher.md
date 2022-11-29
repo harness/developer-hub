@@ -30,7 +30,9 @@ In this topic:
 * [Review: Rancher Expressions](https://harness.helpdocs.io/article/hsc50ny57g#review_rancher_expressions)
 * [See Also](https://harness.helpdocs.io/article/hsc50ny57g#see_also)
 
-You can also deploy to multiple infrastructures without using Rancher. See [Deploy a Workflow to Multiple Infrastructures Simultaneously](/article/bc65k2imoi-deploy-to-multiple-infrastructures).### Before You Begin
+You can also deploy to multiple infrastructures without using Rancher. See [Deploy a Workflow to Multiple Infrastructures Simultaneously](/article/bc65k2imoi-deploy-to-multiple-infrastructures).
+
+### Before You Begin
 
 * This topic assumes you are familiar with Rancher and have set up Kubernetes clusters in its UI. If you are new to Rancher, see [Setting up Kubernetes Clusters in Rancher](https://rancher.com/docs/rancher/v2.5/en/cluster-provisioning/) from Rancher.
 * This topic assumes you are familiar with Harness Kubernetes deployments. See [Kubernetes Quickstart](/article/7in9z2boh6-kubernetes-quickstart).
@@ -38,6 +40,10 @@ You can also deploy to multiple infrastructures without using Rancher. See [Depl
 ### Visual Summary
 
 The following brief video demonstrates how to deploy Services to multiple Kubernetes clusters simultaneously using Rancher:
+
+<!-- Video:
+https://harness-1.wistia.com/medias/rpv5vwzpxz-->
+<docvideo src="https://www.youtube.com/embed/dWgeMnVCmK4?feature=oembed" />
 
 ### Limitations
 
@@ -150,7 +156,9 @@ INFO   2022-02-16 12:46:39    Eligible clusters list after applying label filter
 
 ![](./static/deploy-kubernetes-service-to-multiple-clusters-using-rancher-201.png)Here's what a successful deployment looks like. You can see that two matching clusters were targeted.
 
-![](./static/deploy-kubernetes-service-to-multiple-clusters-using-rancher-202.png)#### Canary
+![](./static/deploy-kubernetes-service-to-multiple-clusters-using-rancher-202.png)
+
+#### Canary
 
 Canary deployment follows the standard Harness Kubernetes Canary deployment process as described in [Create a Kubernetes Canary Deployment](/article/2xp0oyubjj-create-a-kubernetes-canary-deployment). The only difference is that the process is performed on multiple clusters simultaneously.
 

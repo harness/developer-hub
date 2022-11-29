@@ -31,7 +31,9 @@ A Harness AWS AMI deployment requires the following:
 
 Harness takes the AMI and base ASG you provide, and creates a new ASG and populates it with instances using the AMI. You can specify the desired, min, and max instances for the new ASG, resize strategy, and other settings in Harness.
 
-Harness specifically supports AWS *target* tracking scaling policies. For details, see AWS' [Dynamic Scaling for Amazon EC2 Auto Scaling](https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-scale-based-on-demand.html#as-scaling-types) topic.### What Does a Harness AWS AMI Deployment Involve?
+Harness specifically supports AWS *target* tracking scaling policies. For details, see AWS' [Dynamic Scaling for Amazon EC2 Auto Scaling](https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-scale-based-on-demand.html#as-scaling-types) topic.
+
+### What Does a Harness AWS AMI Deployment Involve?
 
 The following list describes the major steps of a Harness AWS AMI deployment:
 

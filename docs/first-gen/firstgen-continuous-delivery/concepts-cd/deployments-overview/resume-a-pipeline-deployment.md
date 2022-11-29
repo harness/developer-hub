@@ -45,7 +45,9 @@ You can't modify any of the below mentioned settings:
 * The templatization can't be changed.
 * You cannot add any new stage or change any of the existing stages.
 
-**Aborting** and **Rollback** are different. When you abort, Harness does not clean up any deployed resources or rollback to a previous release and infrastructure.### Review: Permissions
+**Aborting** and **Rollback** are different. When you abort, Harness does not clean up any deployed resources or rollback to a previous release and infrastructure.
+
+### Review: Permissions
 
 To resume a Pipeline, a Harness User must belong to a User Group that has the following Application Permissions:
 
@@ -69,7 +71,9 @@ Resume capability runs at the stage level. Even if you have multiple Workflow se
 
 For example, in the following image, **To-Do List K8s Rolling** and **Failing** are set up to execute in parallel. They belong to the same stage, STAGE 4. Even if one of them fails, both the stages will rerun when you resume the Pipeline deployment.
 
-![](./static/resume-a-pipeline-deployment-03.png)### Option: View Execution History
+![](./static/resume-a-pipeline-deployment-03.png)
+
+### Option: View Execution History
 
 1. To view the execution history, go to the **Deployments** page.
 2. Click on the  history button to view the execution history. It lists the detail of the previous executions.![](./static/resume-a-pipeline-deployment-04.png)

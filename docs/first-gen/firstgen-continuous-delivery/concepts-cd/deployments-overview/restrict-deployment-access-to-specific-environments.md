@@ -68,7 +68,9 @@ The Application Permission settings appear. Configure the following settings:
 
 User Group members with only **Execute Workflow** permissions cannot **Execute Pipeline** or **Rollback Workflow**.When you're done, the Application Permission will look something like this:
 
-![](./static/restrict-deployment-access-to-specific-environments-18.png)### Option: Set Application Permissions for Execute Pipeline
+![](./static/restrict-deployment-access-to-specific-environments-18.png)
+
+### Option: Set Application Permissions for Execute Pipeline
 
 In **Application Permissions**, click the pencil icon to edit the default permissions.
 
@@ -81,7 +83,9 @@ The Application Permission settings appear. Configure the following settings:
 
 User Group members with only **Execute Pipeline** permissions cannot **Execute Workflow** or **Rollback Workflow**.When you're done, the Application Permission will look something like this:
 
-![](./static/restrict-deployment-access-to-specific-environments-19.png)### Option: Set Application Permissions for Rollback Workflow
+![](./static/restrict-deployment-access-to-specific-environments-19.png)
+
+### Option: Set Application Permissions for Rollback Workflow
 
 In **Application Permissions**, click the pencil icon to edit the default permissions.
 
@@ -94,7 +98,9 @@ The Application Permission settings appear. Configure the following settings:
 
 User Group members with only **Rollback Workflow** permissions cannot **Execute Pipeline** or **Execute Workflow**.When you're done, the Application Permission will look something like this:
 
-![](./static/restrict-deployment-access-to-specific-environments-20.png)### Deployments Permissions
+![](./static/restrict-deployment-access-to-specific-environments-20.png)
+
+### Deployments Permissions
 
 The following table lists the permissions of User Group members based on the Action assigned corresponding to the Deployments Permission Type:
 

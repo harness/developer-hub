@@ -13,7 +13,9 @@ This topic describes how to set up Harness to connect to your artifact repositor
 * **Artifact Repository** - To connect Harness to your artifact repository, you set up an Artifact Server in Harness.
 * **AWS ECS Cluster** - To connect Harness to your ECS environment, you need to set up an AWS Cloud Provider in Harness. The AWS Cloud Provider you set up below uses Delegate Selectors as described in [Harness ECS Delegate](/article/wrm6hpyrjl-harness-ecs-delegate).
 
-If your artifacts are in AWS along with your target ECS cluster, you can simply add a Harness AWS Cloud Provider and use it for all ECS deployment connections.### Add an Artifact Server
+If your artifacts are in AWS along with your target ECS cluster, you can simply add a Harness AWS Cloud Provider and use it for all ECS deployment connections.
+
+### Add an Artifact Server
 
 Harness integrates with many different types of repositories and artifact providers. We call these Artifact Servers, and they help you pull your artifacts into your Harness Applications.
 

@@ -30,7 +30,9 @@ Harness provides a Canary Phase as a way to test the new build, run your verific
 
 When you add phases to a Kubernetes Canary Workflow, Harness automatically generates the steps for Canary and Primary phases. You simply need to configure them.
 
-If you are new to Kubernetes RollingUpdate deployments, see [Performing a Rolling Update](https://kubernetes.io/docs/tutorials/kubernetes-basics/update/update-intro/) from Kubernetes. That guide summaries Rolling Update and provides an interactive, online tutorial.Although it is not covered here, you can also scale your Workloads between the Canary and Rolling Update phases if you like. You simply add a new Phase and use the Scale step. See [Scale Kubernetes Pods](/article/va3trqfy49-scale-kubernetes-pods).### Review: What Workloads Can I Deploy?
+If you are new to Kubernetes RollingUpdate deployments, see [Performing a Rolling Update](https://kubernetes.io/docs/tutorials/kubernetes-basics/update/update-intro/) from Kubernetes. That guide summaries Rolling Update and provides an interactive, online tutorial.Although it is not covered here, you can also scale your Workloads between the Canary and Rolling Update phases if you like. You simply add a new Phase and use the Scale step. See [Scale Kubernetes Pods](/article/va3trqfy49-scale-kubernetes-pods).
+
+### Review: What Workloads Can I Deploy?
 
 See [What Can I Deploy in Kubernetes?](/article/6ujb3c70fh).
 

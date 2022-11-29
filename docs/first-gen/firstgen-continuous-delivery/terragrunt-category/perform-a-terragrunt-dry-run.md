@@ -47,7 +47,9 @@ The following graphic shows a common use of a Terragrunt dry run in deployments.
 
 In a Harness Workflow it looks something like this:
 
-![](./static/perform-a-terragrunt-dry-run-03.png)### Limitations
+![](./static/perform-a-terragrunt-dry-run-03.png)
+
+### Limitations
 
 The Terragrunt and Terraform Plans are stored in the default Harness Secrets Manager as encrypted text. This is because plans often contain variables that store secrets.
 
@@ -77,7 +79,9 @@ This option supports modules with [Terraform version 12](https://www.terraform.
 
 Technically, this is a different plan. If you want use the actual plan because of security or audit requirements, use **Export Terragrunt Plan to next Terragrunt Provision step** in the previous Terragrunt Provision step along with **Set as Terragrunt Plan**.
 
-![](./static/perform-a-terragrunt-dry-run-05.png)##### Notes
+![](./static/perform-a-terragrunt-dry-run-05.png)
+
+##### Notes
 
 * If the **Export Terragrunt Plan to next Terragrunt Provision step** option is enabled in two consecutive Terragrunt Provision steps, the second Terragrunt Provision step overwrites the plan from the first Terragrunt Provision step.
 * Harness uses the [Harness Secret Manager](https://docs.harness.io/article/uuer539u3l-add-a-secrets-manager) you have selected as your default in the export process. As a result, the size of the plan you can export is limited to the size of secret that Secret Manager allows.
@@ -115,7 +119,9 @@ You do not need to enter any more settings. The Terragrunt Provision step inheri
 
 Your Workflow now looks something like this:
 
-![](./static/perform-a-terragrunt-dry-run-07.png)### Step 4: Deploy
+![](./static/perform-a-terragrunt-dry-run-07.png)
+
+### Step 4: Deploy
 
 Deploy your Workflow and see the `terragrunt plan` executed in the first Terragrunt Provision step.
 

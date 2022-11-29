@@ -89,7 +89,9 @@ To add an Infrastructure Definition, do the following:
 When you select a region, more settings appear, such as **VPC** and **Tags**.
 8. Provide the settings for your infrastructure. For example, here are the settings for an AWS infrastructure that identify the target host using AWS EC2 Tags.
 
-![](./static/define-your-traditional-ssh-target-infrastructure-09.png)##### Using Variable Expressions in Tags
+![](./static/define-your-traditional-ssh-target-infrastructure-09.png)
+
+##### Using Variable Expressions in Tags
 
 **Tags** support [Harness variable expressions](/article/9dvxcegm90-variables) from Harness Services, Environment Overrides, Workflows, and secrets.
 

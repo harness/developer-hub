@@ -12,7 +12,9 @@ This content is for Harness [FirstGen](/article/1fjmm4by22). Switch to [NextGen]
 
 Mappings provide Harness with the minimum settings needed to provision using your template.
 
-Harness supports first class mapping for AWS-based infrastructures (SSH, ASG, ECS, Lambda).### Before You Begin
+Harness supports first class mapping for AWS-based infrastructures (SSH, ASG, ECS, Lambda).
+
+### Before You Begin
 
 Ensure you have read the following topics before you map the CloudFormation Provisioner in an Infrastructure Definition:
 
@@ -82,7 +84,9 @@ In the following example, we show:
 * The outputs used for the optional Target Group and Application Load Balancer.
 * The stage Target Group and Application Load Balancer used for Blue/Green deployments.
 
-![](./static/map-cloud-formation-infrastructure-06.png)### Option 2: Map an AWS ECS Infrastructure
+![](./static/map-cloud-formation-infrastructure-06.png)
+
+### Option 2: Map an AWS ECS Infrastructure
 
 The ECS mapping supports both ECS launch types, EC2 and Fargate.
 

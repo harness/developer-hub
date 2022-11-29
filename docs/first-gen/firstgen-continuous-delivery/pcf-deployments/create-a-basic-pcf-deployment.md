@@ -71,7 +71,9 @@ If you select two Selectors, a Delegate must have both Selectors to be selected.
 
 You can use expressions for Harness built-in variables or Account Default variables in **Delegate Selectors**. When the variable expression is resolved at deployment runtime, it must match an existing Delegate Selector.  
   
-For example, if you have a Delegate Selector **prod** and the Workflow is using an Environment also named **prod**, the Delegate Selector can be `${env.name}`. This is very useful when you match Delegate Selectors to Application component names such as Environments, Services, etc. It's also a way to template the Delegate Selector setting.#### Version Management
+For example, if you have a Delegate Selector **prod** and the Workflow is using an Environment also named **prod**, the Delegate Selector can be `${env.name}`. This is very useful when you match Delegate Selectors to Application component names such as Environments, Services, etc. It's also a way to template the Delegate Selector setting.
+
+#### Version Management
 
 Currently, this feature is behind the Feature Flag `CF_APP_NON_VERSIONING_INACTIVE_ROLLBACK`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.For details on how Harness manages Tanzu app names and how this feature impacts naming, see [Tanzu App Naming](/article/hzyz7oc5k9-tanzu-app-naming-with-harness).
 
@@ -83,7 +85,9 @@ When you first create your TAS Workflow, the App Resize command is displayed as 
 
 Click **Advanced** to see **Desired Instances - Old Version**. Here you can set the number of instances for the previous version of the app. By default, the app will downsize to the same number as the number of new app instances.
 
-You can only have one App Resize step in a Basic TAS Workflow.#### Downsize or Retain Instances
+You can only have one App Resize step in a Basic TAS Workflow.
+
+#### Downsize or Retain Instances
 
 Currently, this feature is behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature. Feature Flags can only be removed for Harness Professional and Essentials editions. Once the feature is released to a general audience, it's available for Trial and Community Editions.  
   

@@ -50,7 +50,9 @@ In this topic:
 
 Here's a recording of what your completed deployment will look like, including approval steps:
 
-![](./static/traffic-splitting-without-istio-122.gif)### Step 1: Review Blue/Green Service Swap
+![](./static/traffic-splitting-without-istio-122.gif)
+
+### Step 1: Review Blue/Green Service Swap
 
 When you create a Harness Service for a Blue/Green deployment, you need to include a manifest for each of the Kubernetes services used in Blue/Green.
 
@@ -302,7 +304,9 @@ That's all the configuration needed in the Harness Service.
 
 There are no Harness Infrastructure Definition settings specific to Kubernetes Blue/Green deployment. Create or use the Infrastructure Definition that targets your cluster, as described in [Define Your Kubernetes Target Infrastructure](/article/u3rp89v80h-define-your-kubernetes-target-infrastructure).
 
-Ensure that the Kubernetes cluster includes an Ingress controller that supports traffic splitting, such as the [NGINX Ingress controller](https://kubernetes.github.io/ingress-nginx/deploy/) we are using as an example.### Step 8: Create the Blue/Green Workflow
+Ensure that the Kubernetes cluster includes an Ingress controller that supports traffic splitting, such as the [NGINX Ingress controller](https://kubernetes.github.io/ingress-nginx/deploy/) we are using as an example.
+
+### Step 8: Create the Blue/Green Workflow
 
 1. In your Application, click **Workflows**, and then click **Add Workflow**. The Workflow settings appear. Enter the following settings:
 
@@ -321,7 +325,9 @@ The Workflow is created with the default Blue/Green steps.
 
 When we are done with the following steps the Workflow will look like this:
 
-![](./static/traffic-splitting-without-istio-124.png)### Step 9: Add Workflow Sections
+![](./static/traffic-splitting-without-istio-124.png)
+
+### Step 9: Add Workflow Sections
 
 Workflow sections help you organize your steps. We'll add one section before the **Verify** section, and one after the **Route Update** section.
 
@@ -335,7 +341,9 @@ The new section is added to the bottom of the Workflow. Use the Reorder option t
 
 When you're done, the Workflow will look like this:
 
-![](./static/traffic-splitting-without-istio-127.png)### Step 10: Add Apply Steps
+![](./static/traffic-splitting-without-istio-127.png)
+
+### Step 10: Add Apply Steps
 
 Next we'll add the Apply steps for the Ingress objects to defined in your Harness Service.
 
@@ -416,13 +424,17 @@ Here is an example of the Approve step for the 25% increase:
 
 Create Approve steps before each of the remaining Apply steps. When you're done the Workflow will look like this:
 
-![](./static/traffic-splitting-without-istio-128.png)### Step 11: Deploy the Workflow
+![](./static/traffic-splitting-without-istio-128.png)
+
+### Step 11: Deploy the Workflow
 
 Now that your Workflow is complete, you can deploy it. If you added the Approve steps, be sure to approve each one.
 
 Here's a recording of what your deployment will look like:
 
-![](./static/traffic-splitting-without-istio-129.gif)### Option: Rollback Steps
+![](./static/traffic-splitting-without-istio-129.gif)
+
+### Option: Rollback Steps
 
 To make the Workflow more robust, you can add an ingress-traffic-split0.yaml in an Apply step in the Workflow Rollback Steps.
 

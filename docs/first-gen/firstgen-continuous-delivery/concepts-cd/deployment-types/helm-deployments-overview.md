@@ -12,7 +12,9 @@ This content is for Harness [FirstGen](/article/1fjmm4by22). Switch to [NextGen]
 
 For a quick tutorial on using Helm with a Harness Kubernetes deployment, see the [Helm Quickstart](/article/2aaevhygep-helm-quickstart).
 
-Harness supports Helm v2 and v3.### Before You Begin
+Harness supports Helm v2 and v3.
+
+### Before You Begin
 
 Before learning about Harness Helm-based Kubernetes deployments, you should have an understanding of [Harness Key Concepts](/article/4o7oqwih6h-harness-key-concepts).
 

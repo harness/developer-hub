@@ -82,7 +82,9 @@ If you have more than one service, Harness does not automatically know which is 
 
 Here's an example of what your BlueGreen deployment will look like:
 
-![](./static/create-a-kubernetes-blue-green-deployment-217.gif)### Step 1: Create the Harness Kubernetes Service
+![](./static/create-a-kubernetes-blue-green-deployment-217.gif)
+
+### Step 1: Create the Harness Kubernetes Service
 
 A Harness Service is different from a Kubernetes service. A Harness Service includes the manifests and container used for deployment. A Kubernetes service enables applications running in a Kubernetes cluster to find and communicate with each other, and the outside world. To avoid confusion, a Harness Service is always capitalized in Harness documentation. A Kubernetes service is not.1. In Harness, click **Setup**, and then click **Add Application**.
 2. Enter a name for the Application and click **Submit**.
@@ -375,7 +377,9 @@ For example, here is the Blue/Green workload in Google Cloud Kubernetes Engine, 
 
 [![](./static/create-a-kubernetes-blue-green-deployment-238.png)](./static/create-a-kubernetes-blue-green-deployment-238.png)If you click a workload, you will see the pods and service created:
 
-[![](./static/create-a-kubernetes-blue-green-deployment-240.png)](./static/create-a-kubernetes-blue-green-deployment-240.png)### Option: Scale Down Old Version
+[![](./static/create-a-kubernetes-blue-green-deployment-240.png)](./static/create-a-kubernetes-blue-green-deployment-240.png)
+
+### Option: Scale Down Old Version
 
 A great benefit of a Blue/Green deployment is rapid rollback: rolling back to the old version of a service/artifact is simple and reliable because network traffic is simply routed back to the original instances. You do not need to redeploy previous versions of the service/artifact and the instances that comprised their environment.
 

@@ -31,7 +31,9 @@ If you are running your TAS Cloud in AWS, you can use a Shell Script Delegate ru
 
 For information on setting up Harness Delegates, see [Harness Delegate Overview](/article/h9tkwmkrm7-delegate-installation).
 
-If you want to install the CF CLI on the Delegate, use a Harness Delegate Profile and the script shown in [Cloud Foundry CLI](https://docs.harness.io/article/nxhlbmbgkj-common-delegate-profile-scripts#cloud_foundry_cli).### Step 2: Add the Cloud Foundry CLI
+If you want to install the CF CLI on the Delegate, use a Harness Delegate Profile and the script shown in [Cloud Foundry CLI](https://docs.harness.io/article/nxhlbmbgkj-common-delegate-profile-scripts#cloud_foundry_cli).
+
+### Step 2: Add the Cloud Foundry CLI
 
 The host running the Harness Delegate must run the CF CLI in order to execute the required commands.
 

@@ -46,7 +46,9 @@ metadata:
 ```
 If you omit the `namespace` key and value from a manifest in your Service, Harness automatically uses the namespace you entered in the Harness Environment [Infrastructure Definition](https://docs.harness.io/article/n39w05njjv-environment-configuration#add_an_infrastructure_definition) settings **Namespace** field.The Harness variable `${infra.kubernetes.namespace}` refers to the namespace entered in the Harness Environment Infrastructure Definition settings **Namespace** field.
 
-![](./static/create-kubernetes-namespaces-based-on-infra-mapping-27.png)### Step 2: Enter the Namespace in the Infrastructure Definition
+![](./static/create-kubernetes-namespaces-based-on-infra-mapping-27.png)
+
+### Step 2: Enter the Namespace in the Infrastructure Definition
 
 1. In each Infrastructure Definition **Namespace** setting, enter the namespace you want to use.
 

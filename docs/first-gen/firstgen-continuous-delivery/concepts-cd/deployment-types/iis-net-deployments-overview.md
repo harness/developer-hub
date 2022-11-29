@@ -22,6 +22,11 @@ Before learning about Harness IIS (.NET) deployments, you should have an underst
 
 Here is a quick primer on deploying Microsoft IIS .NET applications and Microsoft .NET Core container applications using Harness Continuous Deployment.
 
+<!-- Video:
+https://harness-1.wistia.com/medias/rpv5vwzpxz-->
+<docvideo src="https://www.youtube.com/embed/udWD4LoG_R4" />
+
+
 ### What Does Harness Need Before You Start?
 
 A Harness IIS (.NET) deployment requires the following:
@@ -29,7 +34,9 @@ A Harness IIS (.NET) deployment requires the following:
 * Templates: IIS website, application, or virtual directory. Harness automatically creates the Deployment Specifications for these templates, which you can customize.
 * Target infrastructure: For example, an AWS region and load balancer or an Azure subscription and resource group.
 
-It is important to note that a site contains one or more applications, an application contains one or more virtual directories, and a virtual directory maps to a physical directory on a computer. To use Harness to deploy IIS sites, applications, and virtual directories, the IIS structural requirements (site > application > virtual directory) must be established on the Windows instances.### What Does Harness Deploy?
+It is important to note that a site contains one or more applications, an application contains one or more virtual directories, and a virtual directory maps to a physical directory on a computer. To use Harness to deploy IIS sites, applications, and virtual directories, the IIS structural requirements (site > application > virtual directory) must be established on the Windows instances.
+
+### What Does Harness Deploy?
 
 Harness takes the IIS website, application, or virtual directory templates and deployment specifications you provide, and creates an IIS website, application, or virtual directory in your target infrastructure.
 

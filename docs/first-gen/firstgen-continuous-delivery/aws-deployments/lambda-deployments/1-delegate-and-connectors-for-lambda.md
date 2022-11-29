@@ -20,7 +20,9 @@ Create an IAM role to support Harness Lambda deployments.
 
 You will apply this role to the host that runs the Harness Delegate you install later, or to the AWS account you use to connect with Harness.
 
-The AWS [IAM Policy Simulator](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_testing-policies.html) is a useful tool for evaluating policies and access.##### IAM Read Access
+The AWS [IAM Policy Simulator](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_testing-policies.html) is a useful tool for evaluating policies and access.
+
+##### IAM Read Access
 
 Ensure that the IAM role assigned to the Delegate host has the **IAMReadOnlyAccess** (arn:aws:iam::aws:policy/IAMReadOnlyAccess) policy attached. The policy provides read-only access to IAM for the Delegate so that it can confirm that it has other required policies.
 
@@ -104,7 +106,9 @@ To ensure the IAM role applied to the Delegate you installed in the AWS VPC is u
 
 In this section, we will add a Harness AWS Cloud Provider to your Harness account to connect to both AWS S3, Lambda, and the VPC. You can use a single or separate AWS Cloud Providers for the connections, but using a single AWS Cloud Provider is easiest.
 
-As Harness provides first-class support for [CloudWatch](/article/q6ti811nck-cloud-watch-verification-overview), you can also use the same AWS Cloud Provider for your CloudWatch connection.#### Permissions
+As Harness provides first-class support for [CloudWatch](/article/q6ti811nck-cloud-watch-verification-overview), you can also use the same AWS Cloud Provider for your CloudWatch connection.
+
+#### Permissions
 
 The AWS Cloud Provider in this example will assume the IAM Role associated with the Delegate you installed in your VPC. If you choose to use a AWS user account for the connection, apply the same policies to its IAM role described in [IAM Roles](/article/lo9taq0pze-1-delegate-and-connectors-for-lambda#iam_roles) above.
 
@@ -112,7 +116,9 @@ The AWS Cloud Provider in this example will assume the IAM Role associated with 
 
 For the AWS Cloud Provider in Harness, you can specify an AWS account or assume the IAM role used by the installed Harness Delegate (recommended).
 
-![](./static/1-delegate-and-connectors-for-lambda-01.png)##### AWS Cloud Provider
+![](./static/1-delegate-and-connectors-for-lambda-01.png)
+
+##### AWS Cloud Provider
 
 To set up an AWS Cloud Provider, do the following:
 

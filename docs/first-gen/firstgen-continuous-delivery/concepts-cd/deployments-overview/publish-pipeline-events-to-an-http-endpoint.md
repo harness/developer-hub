@@ -65,7 +65,9 @@ In **Pipelines**, select the Pipelines you want events for, or select **All Pipe
 
 In **Events**, select the event types you want to publish or select **All Events**.
 
-![](./static/publish-pipeline-events-to-an-http-endpoint-42.png)#### Send Me Everything
+![](./static/publish-pipeline-events-to-an-http-endpoint-42.png)
+
+#### Send Me Everything
 
 This option sends all events that Harness currently publishes.
 

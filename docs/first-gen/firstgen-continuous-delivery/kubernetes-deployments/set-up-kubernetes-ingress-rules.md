@@ -23,7 +23,9 @@ In this topic:
 * [Define Kubernetes Manifests](/article/2j2vi5oxrq-define-kubernetes-manifests)
 * If you are new to Ingress, see [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) from Kubernetes.
 
-A Harness Service is different from a Kubernetes service. A Harness Service includes the manifests and container used for deployment. A Kubernetes service enables applications running in a Kubernetes cluster to find and communicate with each other, and the outside world. To avoid confusion, a Harness Service is always capitalized in Harness documentation. A Kubernetes service is not.### Step 1: Add a Service Manifest
+A Harness Service is different from a Kubernetes service. A Harness Service includes the manifests and container used for deployment. A Kubernetes service enables applications running in a Kubernetes cluster to find and communicate with each other, and the outside world. To avoid confusion, a Harness Service is always capitalized in Harness documentation. A Kubernetes service is not.
+
+### Step 1: Add a Service Manifest
 
 For Ingress Rules, you simply add your Kubernetes service and Ingress manifests to your Harness Service, and then refer to the service name in the Ingress manifest.
 

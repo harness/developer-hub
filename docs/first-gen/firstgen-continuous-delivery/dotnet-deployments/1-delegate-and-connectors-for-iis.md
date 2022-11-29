@@ -196,7 +196,9 @@ Add a WinRM connection in Harness to execute deployment steps on the remote Wind
 | **Skip Cert Check** | When connected over HTTPS (**Use SSL** in enabled), the client does not validate server certificate. |
 | **WinRM Port** | Specifies the network port on the remote computer to use.To connect to a remote computer, the remote computer must be listening on the port that the connection uses. The default ports are 5985, which is the WinRM port for HTTP, and **5986**, which is the WinRM port for HTTPS.To determine what ports WinRM is listening on, use the command:**winrm e winrm/config/listener** |
 
-If you experience errors getting the WinRM connection to work, you might need to restart the Windows Server.### Cloud Provider Setup
+If you experience errors getting the WinRM connection to work, you might need to restart the Windows Server.
+
+### Cloud Provider Setup
 
 Add a connection to the Cloud Provider where the IIS website, application, or virtual directory will be deployed.
 
@@ -218,7 +220,9 @@ Once you have created Harness applications and environments, you can return to t
 
 Now that you have connected the IIS artifact server and a cloud provider, and configured a WinRM connection to execute deployment steps on the remote Windows servers, you can add your Harness application.
 
-Azure Storage is not currently supported as an Artifact Source. Azure Container Registry is supported for Docker and Kubernetes deployments.### Next Step
+Azure Storage is not currently supported as an Artifact Source. Azure Container Registry is supported for Docker and Kubernetes deployments.
+
+### Next Step
 
 * [2 - Services for IIS (.NET)](/article/mm84gjllge-2-services-for-iis-net)
 

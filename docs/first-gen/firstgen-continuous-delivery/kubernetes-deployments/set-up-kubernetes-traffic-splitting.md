@@ -99,7 +99,9 @@ Harness requires that the managed VirtualService have only one route in the `ht
 
 If the DestinationRule/VirtualService uses `harness.io/managed: "false"`, that is the same as if `harness.io/managed` were omitted. In this case, Harness will not perform any traffic shifting.
 
-The quotations around "true" and "false" are mandatory.### Step 3: Add VirtualService Manifest
+The quotations around "true" and "false" are mandatory.
+
+### Step 3: Add VirtualService Manifest
 
 Next, in your Harness Service, add a manifest for a simple [VirtualService](https://istio.io/docs/reference/config/networking/v1alpha3/virtual-service/) without route rules. As with the DestinationRule manifest, it will act as a template using the Service values.yaml file for names via its `{{.Values.name}}` placeholder.
 
@@ -133,7 +135,9 @@ Harness requires that the managed VirtualService have only one route in the `ht
 
 If the DestinationRule/VirtualService uses `harness.io/managed: "false"`, that is the same as if `harness.io/managed` were omitted. In this case, Harness will not perform any traffic shifting.
 
-The quotations around "true" and "false" are mandatory.### Step 4: Review Weighting
+The quotations around "true" and "false" are mandatory.
+
+### Step 4: Review Weighting
 
 You do not need to enter weights in the `destination` section.
 
@@ -188,7 +192,9 @@ You can use the Traffic Split step anywhere in your Workflow, but you will typic
 1. To add the Traffic Split step, in your Workflow, click **Add Step**.
 2. Select **Traffic Split**. The **Traffic Split** settings appear.
 
-![](./static/set-up-kubernetes-traffic-splitting-183.png)### Step 7: Define Virtual Service Name
+![](./static/set-up-kubernetes-traffic-splitting-183.png)
+
+### Step 7: Define Virtual Service Name
 
 By default, the Traffic Split step includes Harness variables to refer the VirtualService set up in the Service the Workflow is deploying, and the named destination service subsets Harness deploys.
 
@@ -239,7 +245,9 @@ In cases where you are using multiple subsets in destination rules and you want 
 
 You can use multiple Traffic Split steps in your Workflow to change the routing to your old and new service versions. Here is an example with Approval steps between each Traffic Split step:
 
-![](./static/set-up-kubernetes-traffic-splitting-187.png)### Notes
+![](./static/set-up-kubernetes-traffic-splitting-187.png)
+
+### Notes
 
 * **Canary Delete and Traffic Management** — If you are using the **Traffic Split** step or doing Istio traffic shifting using the **Apply step**, move the **Canary Delete** step from **Wrap Up** section of the **Canary** phase to the **Wrap Up** section of the *Primary* phase (the phase containing the Rollout Deployment step).  
 Moving the **Canary Delete** step to the **Wrap Up** section of the Primary phase will prevent any traffic from being routed to deleted pods before traffic is routed to stable pods in the Primary phase.

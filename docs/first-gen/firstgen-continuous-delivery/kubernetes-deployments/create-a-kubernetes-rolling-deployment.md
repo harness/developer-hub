@@ -12,7 +12,9 @@ This content is for Harness [FirstGen](/article/1fjmm4by22). Switch to [NextGen]
 
 This method is similar to a standard Canary strategy, but different to Harness Kubernetes Canary strategy. The Harness Kubernetes Canary strategy uses a rolling update as its final phase. See [Create a Kubernetes Canary Deployment](/article/2xp0oyubjj-create-a-kubernetes-canary-deployment) for more information.
 
-For a detailed explanation of Kubernetes rolling updates, see [Performing a Rolling Update](https://kubernetes.io/docs/tutorials/kubernetes-basics/update/update-intro/) from Kubernetes.### Before You Begin
+For a detailed explanation of Kubernetes rolling updates, see [Performing a Rolling Update](https://kubernetes.io/docs/tutorials/kubernetes-basics/update/update-intro/) from Kubernetes.
+
+### Before You Begin
 
 * [Define Kubernetes Manifests](/article/2j2vi5oxrq-define-kubernetes-manifests)
 * [Define Your Kubernetes Target Infrastructure](/article/u3rp89v80h-define-your-kubernetes-target-infrastructure)
@@ -113,7 +115,9 @@ For details on the settings, see RollingUpdateDeployment in the [Kubernetes AP
 8. When you are finished, the **Workflow** dialog will look like this example:![](./static/create-a-kubernetes-rolling-deployment-105.png)
 9. Click **SUBMIT**. The new Workflow appears.
 
-[![](./static/create-a-kubernetes-rolling-deployment-106.png)](./static/create-a-kubernetes-rolling-deployment-106.png)### Step 3: Rollout Deployment Step
+[![](./static/create-a-kubernetes-rolling-deployment-106.png)](./static/create-a-kubernetes-rolling-deployment-106.png)
+
+### Step 3: Rollout Deployment Step
 
 The Workflow generates the **Rollout Deployment** step automatically. There's nothing to update. You can deploy the Workflow.
 

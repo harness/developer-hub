@@ -61,7 +61,9 @@ Select **Send me everything** to send all the events that Harness currently publ
 
 Select **Workflow** to send events for specific Workflows. In **Workflows**, select the Workflows you want events for, or select **All Workflows**.
 
-![](./static/publish-workflow-events-to-an-http-endpoint-37.png)#### Option: Pipeline
+![](./static/publish-workflow-events-to-an-http-endpoint-37.png)
+
+#### Option: Pipeline
 
 Select **Pipeline** to send events for specific Pipelines. For more information, see [Publish Pipeline Events to an HTTP Endpoint](/article/scrsak5124-publish-pipeline-events-to-an-http-endpoint).
 
@@ -69,7 +71,9 @@ Select **Pipeline** to send events for specific Pipelines. For more information,
 
 In **Events**, select the event types you want to publish or select **All Events**.
 
-![](./static/publish-workflow-events-to-an-http-endpoint-38.png)### Step 3: Enter the Webhook URL
+![](./static/publish-workflow-events-to-an-http-endpoint-38.png)
+
+### Step 3: Enter the Webhook URL
 
 In **Webhook URL**, enter the HTTP endpoint URL where Harness will publish the events for this rule.
 
@@ -99,7 +103,9 @@ You can use expressions for Harness built-in variables or Account Default variab
 
 By default, the Rule you just created is disabled. You can enable the rule using the toggle button.
 
-![](./static/publish-workflow-events-to-an-http-endpoint-39.png)### Step 7: Test the Event Rule
+![](./static/publish-workflow-events-to-an-http-endpoint-39.png)
+
+### Step 7: Test the Event Rule
 
 You can test an event rule to see if the rule is enabled or disabled.
 

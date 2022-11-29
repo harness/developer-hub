@@ -103,7 +103,9 @@ See [Override a Service Configuration in an Environment](/article/4m2kst307m-ove
 
 Basically, you select the Service Config variable and provide a new value:
 
-![](./static/use-ecs-task-and-service-definitions-in-git-repos-34.png)### Option 3: Override Remote Paths in Workflows
+![](./static/use-ecs-task-and-service-definitions-in-git-repos-34.png)
+
+### Option 3: Override Remote Paths in Workflows
 
 To override a path in a Workflow, you can use a [Workflow variable](/article/766iheu1bk-add-workflow-variables-new-template) in the Harness ECS Service's **Task Definition** settings.
 

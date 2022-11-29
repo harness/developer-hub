@@ -46,7 +46,9 @@ To add the Harness Application and service, do the following:
 4. Click **SUBMIT**. The new application is added.
 5. Click the application name to open the application. The application entities are displayed.
 
-![](./static/2-helm-services-36.png)### Add the Helm Service to the Application
+![](./static/2-helm-services-36.png)
+
+### Add the Helm Service to the Application
 
 1. In your new application, click **Services**. The **Services** page appears.
 2. In the **Services** page, click **Add Service**. The **Service** dialog appears.
@@ -78,7 +80,9 @@ harness:  helm:    chart:      name: nginx      version: 1.0.1  �
 4. In **Docker Image Name**, enter the image name. Official images in public repos such as Docker Hub need the label **library**. For example, **library/nginx**. For this guide, we will use Docker Hub and the publicly available NGINX at **library/nginx**.
 5. Click **SUBMIT**. The Artifact Source is added.
 
-![](./static/2-helm-services-40.png)### Add the Helm Chart
+![](./static/2-helm-services-40.png)
+
+### Add the Helm Chart
 
 As explained earlier, you have two options when entering in the Helm chart info. The **Chart Specifications** or the **Values YAML**. For this guide, we will use the **Chart Specifications**.
 
@@ -114,7 +118,9 @@ Here are a couple of examples using GCS and S3:
 
 [![](./static/2-helm-services-44.png)](./static/2-helm-services-44.png)Next, you will see Harness initialize using the chart:
 
-[![](./static/2-helm-services-46.png)](./static/2-helm-services-46.png)#### Release Name Required
+[![](./static/2-helm-services-46.png)](./static/2-helm-services-46.png)
+
+#### Release Name Required
 
 Ensure that the workload-related manifests include a Release Name in their metadata.
 
@@ -152,7 +158,9 @@ The `--debug` option is not supported.For Native Helm deployments using Helm cha
 
 You will see the outputs for the commands you select in the Harness deployment logs. The output will be part of pre-processing and appear before `helm install/upgrade`.
 
-If you use Helm commands in the Harness Service and in a Workflow deploying that Service, the Helm commands in the Harness Service override the commands in the Workflow.#### Harness Variable Expressions are Supported
+If you use Helm commands in the Harness Service and in a Workflow deploying that Service, the Helm commands in the Harness Service override the commands in the Workflow.
+
+#### Harness Variable Expressions are Supported
 
 You can use [Harness variable expressions](/article/9dvxcegm90-variables) in any of the command options settings. For example, [Service Config variables](/article/q78p7rpx9u-add-service-level-config-variables) and [Workflow variables](/article/766iheu1bk-add-workflow-variables-new-template).
 
@@ -221,7 +229,9 @@ Multiple files can be used. When you enter the file paths, separate the paths us
 
 The latter paths are given higher priority.
 
-![](./static/2-helm-services-49.png)### Next Step
+![](./static/2-helm-services-49.png)
+
+### Next Step
 
 * [3 - Helm Environments](/article/134kx1k89d-3-helm-environments)
 

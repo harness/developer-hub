@@ -10,7 +10,9 @@ helpdocs_is_published: true
 
 This content is for Harness [FirstGen](/article/1fjmm4by22). Switch to [NextGen](/article/lbhf2h71at).Harness supports Helm 2 and Helm v3.This guide will walk you through deploying a Docker image to a Kubernetes cluster using a Helm chart. This deployment scenario is very popular and a walkthrough of all the steps involved will help you set up this scenario in Harness for your own microservices and apps.
 
-Harness includes both Kubernetes and Helm deployments, and you can use Helm charts in both. Harness [Kubernetes Deployments](https://docs.harness.io/article/pc6qglyp5h-kubernetes-deployments-overview) allow you to use your own Helm chart (remote or local), and Harness executes the Kubernetes API calls to build everything without Helm and Tiller (for Helm v2) needing to be installed in the target cluster. See [Helm Charts](https://docs.harness.io/article/t6zrgqq0ny-kubernetes-services#helm_charts).### Harness Helm or Kubernetes Deployments?
+Harness includes both Kubernetes and Helm deployments, and you can use Helm charts in both. Harness [Kubernetes Deployments](https://docs.harness.io/article/pc6qglyp5h-kubernetes-deployments-overview) allow you to use your own Helm chart (remote or local), and Harness executes the Kubernetes API calls to build everything without Helm and Tiller (for Helm v2) needing to be installed in the target cluster. See [Helm Charts](https://docs.harness.io/article/t6zrgqq0ny-kubernetes-services#helm_charts).
+
+### Harness Helm or Kubernetes Deployments?
 
 You can also use Helm with Harness Kubernetes Service and deployments and take advantage of Harness advanced Kubernetes features. See [Kubernetes Deployments Overview](/article/pc6qglyp5h-kubernetes-deployments-overview).
 
@@ -26,12 +28,16 @@ The following blog post walks you through creating a Helm 3 deployment from scra
 
 You can perform all of the steps in this guide using free accounts. You will need a Docker Hub account and a Google Cloud Platform account. Both offer free accounts.
 
-This document covers Harness Helm implementation. For Kubernetes implementation, see [Kubernetes Deployments](/category/n03qfofd5w-kubernetes-deployments).#### Intended Audience
+This document covers Harness Helm implementation. For Kubernetes implementation, see [Kubernetes Deployments](/category/n03qfofd5w-kubernetes-deployments).
+
+#### Intended Audience
 
 * Developers and DevOps with a working knowledge of Docker, Kubernetes, and Helm.
 * Harness users with a working knowledge of the Harness Delegate. For information, see [Delegate Installation](/article/h9tkwmkrm7-delegate-installation), [Harness Requirements](/article/70zh6cbrhg-harness-requirements), and [Connectivity and Permissions Requirements](/article/11hjhpatqz-connectivity-and-permissions-requirements).
 
-If you are entirely new to Harness, please see the [Quick Start Setup Guide](/article/9hd68pg5rs-quick-start-setup-guide).#### What Are We Going to Do?
+If you are entirely new to Harness, please see the [Quick Start Setup Guide](/article/9hd68pg5rs-quick-start-setup-guide).
+
+#### What Are We Going to Do?
 
 This guide walks you through deploying a publicly available Docker image of NGINX to a Google Cloud Platform (GCP) Kubernetes cluster using a publicly available Bitnami Helm chart. Basically, we do the following:
 

@@ -40,7 +40,9 @@ In this topic:
 
 Here's the output after a successful Blue/Green TAS Deployment.
 
-![](./static/create-a-blue-green-pcf-deployment-52.png)### Step 1: Specify the TAS Service Routes
+![](./static/create-a-blue-green-pcf-deployment-52.png)
+
+### Step 1: Specify the TAS Service Routes
 
 In the manifest.yml in your Harness TAS Service, you can specify the route(s) to use for the Blue/Green deployment. For example:
 
@@ -54,7 +56,9 @@ Each route for the app is created if it does not already exist.
 
 As you will see when you set up the Blue/Green Workflow, you specify a temporary route in the App Setup command's **Temporary Routes** setting:
 
-![](./static/create-a-blue-green-pcf-deployment-53.png)### Step 2: Set Up a TAS Blue/Green Workflow
+![](./static/create-a-blue-green-pcf-deployment-53.png)
+
+### Step 2: Set Up a TAS Blue/Green Workflow
 
 To explain TAS Blue/Green Workflow commands and settings, we will create a Blue/Green Workflow that uses a temporary route and, if it is successful, deploys 100% of instances using the primary route.
 
@@ -71,7 +75,9 @@ To implement this Blue/Green Workflow, do the following:
 
 The new Blue/Green Workflow is displayed, along with the preconfigured steps:
 
-![](./static/create-a-blue-green-pcf-deployment-54.png)### Step 3: App Setup
+![](./static/create-a-blue-green-pcf-deployment-54.png)
+
+### Step 3: App Setup
 
 Click **App Setup** to see the default, preconfigured command:
 

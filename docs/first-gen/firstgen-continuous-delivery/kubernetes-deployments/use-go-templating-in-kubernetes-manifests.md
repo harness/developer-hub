@@ -10,7 +10,9 @@ helpdocs_is_published: true
 
 This content is for Harness [FirstGen](/article/1fjmm4by22). Switch to [NextGen](/article/qvlmr4plcp).To make your Kubernetes manifest reusable and dynamic, you can use [Go templating](https://godoc.org/text/template) and Harness built-in variables in combination in your **Manifests** files.
 
-The inline values.yaml file used in a Harness Service does not support Helm templating, only Go templating. Helm templating is fully supported in the remote Helm charts you add to your Harness Service.### Before You Begin
+The inline values.yaml file used in a Harness Service does not support Helm templating, only Go templating. Helm templating is fully supported in the remote Helm charts you add to your Harness Service.
+
+### Before You Begin
 
 Ensue you are familiar with the following:
 

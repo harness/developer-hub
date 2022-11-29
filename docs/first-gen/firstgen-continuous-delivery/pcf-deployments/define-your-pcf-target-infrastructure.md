@@ -81,7 +81,9 @@ You can use Service variables in the TAS Infrastructure Definition **Organizatio
 
 ![](./static/define-your-pcf-target-infrastructure-23.png)This allows you to set the orgs and spaces in a Service, and have the Infrastructure Definition act as a template that multiple Services can use.
 
-The orgs specified must be available to the TAS user account used to set up the TAS Cloud Provider used in the Infrastructure Definition.### Next Steps
+The orgs specified must be available to the TAS user account used to set up the TAS Cloud Provider used in the Infrastructure Definition.
+
+### Next Steps
 
 * [Override Tanzu Manifests and Config Variables and Files](/article/r0vp331jnq-override-pcf-manifests-and-config-variables-and-files)
 * [Create a Basic Tanzu Deployment](/article/c92izkztka-create-a-basic-pcf-deployment)

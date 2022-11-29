@@ -31,7 +31,9 @@ In this topic, we will discuss the default commands and scripts, their processin
 
 Here is an example of the default scripts and commands Harness generates when you first create your Secure Shell (SSH) Service:
 
-![](./static/add-deployment-specs-for-traditional-ssh-deployments-02.png)### Review: Script Execution Order
+![](./static/add-deployment-specs-for-traditional-ssh-deployments-02.png)
+
+### Review: Script Execution Order
 
 When you look at the default commands in a file-based Service, their order of execution might be confusing. For example, it looks like they are executed like this: 
 
@@ -39,7 +41,9 @@ When you look at the default commands in a file-based Service, their order of ex
 
 ![](./static/add-deployment-specs-for-traditional-ssh-deployments-04.png)The order is clearer when you see the deployment in the **Deployments** page:
 
-![](./static/add-deployment-specs-for-traditional-ssh-deployments-05.png)### Step 1: Add Commands and Scripts
+![](./static/add-deployment-specs-for-traditional-ssh-deployments-05.png)
+
+### Step 1: Add Commands and Scripts
 
 The default scripts Harness generates will deploy the artifact and app package you add to the Service. No further changes are required.
 
@@ -47,7 +51,9 @@ If you like, you can add commands and scripts using the **Add Command** settin
 
 ![](./static/add-deployment-specs-for-traditional-ssh-deployments-06.png)All of the scripts include tooltips to explain how to use them:
 
-![](./static/add-deployment-specs-for-traditional-ssh-deployments-07.png)### Review: Download Artifact and Exec Scripts
+![](./static/add-deployment-specs-for-traditional-ssh-deployments-07.png)
+
+### Review: Download Artifact and Exec Scripts
 
 The Download Artifact script is supported for Amazon S3, Artifactory, SMB (PowerShell-only), SFTP (PowerShell-only), Azure DevOps artifacts, Nexus, Jenkins, and Bamboo. For other artifact sources, add a new command and use the Exec script to download the artifact. For more information, see  [Exec Script](/article/qluiky79j8-service-types-and-artifact-sources#exec_script).
 

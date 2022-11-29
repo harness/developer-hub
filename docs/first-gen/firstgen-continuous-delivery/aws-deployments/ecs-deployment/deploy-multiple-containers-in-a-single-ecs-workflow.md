@@ -69,7 +69,9 @@ The Main Container is identified using the following mandatory placeholders:
 * `${CONTAINER_NAME}` — At deployment runtime, this placeholder is replaced with a container name based on the image name. Such as `harness_todolist-sample_9`. Each time you deploy the container, its numeric suffix is increased (`_9`).
 * `${DOCKER_IMAGE_NAME}` — At deployment runtime, this placeholder is replaced with the Docker image name and tag. Such as `harness/todolist-sample:9`.
 
-The Main Container task spec must have a container definition using the placeholders.### Step 1: Add Sidecar Container Specs
+The Main Container task spec must have a container definition using the placeholders.
+
+### Step 1: Add Sidecar Container Specs
 
 ECS container specs are added in Harness Services. The **Deployment Type** for the Services must be **Amazon ECS Container Service (ECS)**:
 
@@ -356,7 +358,9 @@ Locate the ECS service you deployed, and then click its **Task definition**.
 
 ![](./static/deploy-multiple-containers-in-a-single-ecs-workflow-07.png)Do not edit or remove this tag.You will see the same Main Container tag when you deploy multiple sidecar containers also:
 
-![](./static/deploy-multiple-containers-in-a-single-ecs-workflow-08.png)### Option: Using Workflow Variables in Container Specs
+![](./static/deploy-multiple-containers-in-a-single-ecs-workflow-08.png)
+
+### Option: Using Workflow Variables in Container Specs
 
 In the container spec, the `${CONTAINER_NAME}` and `${DOCKER_IMAGE_NAME}` placeholders identifies the Main Container. These placeholders must be present.
 

@@ -37,13 +37,22 @@ In this topic:
 
 Here is a visual summary of how you use your and Terragrunt and Terraform files with Harness to provision target infra and then deploy to it:
 
-![](./static/add-terragrunt-configuration-files-27.png)Here's a 6 minute video walkthrough of Harness-Terragrunt integration:
+![](./static/add-terragrunt-configuration-files-27.png)
+
+Here's a 6 minute video walkthrough of Harness-Terragrunt integration:
+
+<!-- Video:
+https://harness-1.wistia.com/medias/rpv5vwzpxz-->
+<docvideo src="https://www.youtube.com/embed/HYSi2LAaYdc?feature=oembed" />
+
 
 You can use Terragrunt in Harness to provision any infrastructure, not just the target infrastructure for the deployment.
 
 In this use case, you simply add the Terragrunt Provision step to your Workflow and it runs some Terragrunt commands to provision some non-target resources in your infrastructure.
 
-![](./static/add-terragrunt-configuration-files-28.png)### Step 1: Add a Terragrunt Provisioner
+![](./static/add-terragrunt-configuration-files-28.png)
+
+### Step 1: Add a Terragrunt Provisioner
 
 To set up a Terragrunt Infrastructure Provisioner, do the following:
 

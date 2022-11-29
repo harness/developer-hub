@@ -55,7 +55,9 @@ The number may come from the Harness Service manifest or a previous Workflow ste
 
 For example, in you have `replicas: 4` in a manifest in your Service, and you enter **50** **PERCENT** in **Instances**, then 2 pods are deployed in this step.
 
-If you have an odd number of instances, such as 3 instances, and then enter 50% in Scale, the number of instances is scaled down to 2.### Step 4: Specify Resources to Scale
+If you have an odd number of instances, such as 3 instances, and then enter 50% in Scale, the number of instances is scaled down to 2.
+
+### Step 4: Specify Resources to Scale
 
 Enter the Harness built-in variable `${k8s.canaryWorkload}` or the name of the resource in the format `[namespace/]Kind/Name`, with `namespace` optional. For example: 
 
@@ -67,7 +69,9 @@ You can only enter one resource in **Workload**. To scale another resource, add 
 
 Here is what a completed step looks like:
 
-![](./static/scale-kubernetes-pods-112.png)### Option: Delegate Selector
+![](./static/scale-kubernetes-pods-112.png)
+
+### Option: Delegate Selector
 
 If your Workflow Infrastructure Definition's Cloud Provider uses a Delegate Selector (supported in Kubernetes Cluster and AWS Cloud Providers), then the Workflow uses the selected Delegate for all of its steps.
 

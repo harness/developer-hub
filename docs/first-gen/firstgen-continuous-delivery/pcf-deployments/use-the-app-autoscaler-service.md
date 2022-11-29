@@ -31,7 +31,9 @@ In this topic:
 
 The following diagram illustrates how you can define, bind, create, and use App Autoscaler with the TAS apps deployed by Harness.
 
-![](./static/use-the-app-autoscaler-service-47.png)### Review: Requirements for App Autoscaler
+![](./static/use-the-app-autoscaler-service-47.png)
+
+### Review: Requirements for App Autoscaler
 
 Ensure that the Harness Delegate(s) used for your deployment have the correct version of the CF CLI installed. See [Install Cloud Foundry CLI Versions on the Harness Delegate](/article/8tsb75aldu-install-cloud-foundry-cli-6-and-7-on-harness-delegates).If you are using the App Autoscaler plugin, then autoscaling is applied after the final phase of deployment.
 

@@ -32,7 +32,9 @@ To add a Harness environment, do the following:
 4. In **Environment Type**, select **Non-Production**.
 5. Click **SUBMIT**. The new Environment page appears.
 
-![](./static/3-helm-environments-09.png)### Add an Infrastructure Definition
+![](./static/3-helm-environments-09.png)
+
+### Add an Infrastructure Definition
 
 ​Infrastructure Definitions specify the target deployment infrastructure for your Harness Services, and the specific infrastructure details for the deployment, like VPC settings. 
 

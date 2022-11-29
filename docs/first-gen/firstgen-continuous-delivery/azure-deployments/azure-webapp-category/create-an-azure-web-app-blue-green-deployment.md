@@ -12,7 +12,9 @@ Currently, this feature is behind the Feature Flag `AZURE_WEBAPP`. Contact [Har
 
 If you are new to Azure Web App deployment slot swapping, see [What happens during a swap](https://docs.microsoft.com/en-us/azure/app-service/deploy-staging-slots#what-happens-during-a-swap) from Azure.
 
-If you want to shift traffic incrementally as part of the deployment, see [Create an Azure Web App Canary Deployment](/article/x0etkdg62q-create-an-azure-web-app-canary-deployment).### Before You Begin
+If you want to shift traffic incrementally as part of the deployment, see [Create an Azure Web App Canary Deployment](/article/x0etkdg62q-create-an-azure-web-app-canary-deployment).
+
+### Before You Begin
 
 Make sure you have read the following:
 
@@ -26,6 +28,11 @@ Make sure you have read the following:
 ### Visual Summary
 
 The following short video walks you through a Harness Azure Web App Blue/Green Workflow setup.
+
+<!-- Video:
+https://harness-1.wistia.com/medias/rpv5vwzpxz-->
+<docvideo src="https://www.youtube.com/embed/7B5BhaDkjUo?feature=oembed" />
+
 
 ### Supported Platforms and Technologies
 
@@ -73,7 +80,9 @@ Enter the following settings and click **Submit**.
 
 When you're done, the step will look like this:
 
-![](./static/create-an-azure-web-app-blue-green-deployment-07.png)### Option: Use Variable Expressions in Settings
+![](./static/create-an-azure-web-app-blue-green-deployment-07.png)
+
+### Option: Use Variable Expressions in Settings
 
 You can use built-in Harness or custom Workflow variable expressions in the **Slot Deployment** step. See [Set Workflow Variables](/article/766iheu1bk-add-workflow-variables-new-template).
 
@@ -153,7 +162,9 @@ Description : [Finished swapping site. New state is (Slot: 'stage', DeploymentId
 ```
 And the same information is displayed in the Azure portal Activity log:
 
-![](./static/create-an-azure-web-app-blue-green-deployment-09.png)### Option: Templatize the Workflow
+![](./static/create-an-azure-web-app-blue-green-deployment-09.png)
+
+### Option: Templatize the Workflow
 
 See [Create Pipeline Templates](/article/60j7391eyy-templatize-pipelines).
 

@@ -178,7 +178,9 @@ In the **cf-files** repo folder there is a file named **parameters.json**. So, i
 
 Use can use Harness encrypted text secrets in **Path to Parameters.json**. See [Use Encrypted Text Secrets](/article/ygyvp998mu-use-encrypted-text-secrets).
 
-![](./static/provision-cloudformation-create-stack-15.png)##### Multiple Parameter Files
+![](./static/provision-cloudformation-create-stack-15.png)
+
+##### Multiple Parameter Files
 
 You can enter paths to single and multiple files. Separate multiple files using commas:
 

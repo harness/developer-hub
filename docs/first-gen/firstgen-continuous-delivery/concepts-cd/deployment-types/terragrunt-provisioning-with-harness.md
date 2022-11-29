@@ -31,7 +31,14 @@ Looking for How-tos? See [Terragrunt How-tos](/article/a9e63yqb2j-terragrunt-how
 
 Here is a visual summary of how you use your and Terragrunt and Terraform files with Harness to provision target infra and then deploy to it:
 
-![](./static/terragrunt-provisioning-with-harness-36.png)Here's a 6 minute video walkthrough of the process:
+![](./static/terragrunt-provisioning-with-harness-36.png)
+
+Here's a 6 minute video walkthrough of the process:
+
+<!-- Video:
+https://harness-1.wistia.com/medias/rpv5vwzpxz-->
+<docvideo src="https://www.youtube.com/embed/HYSi2LAaYdc?feature=oembed" />
+
 
 You set up a Terragrunt deployment in the following order:
 

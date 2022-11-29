@@ -14,7 +14,9 @@ The following Kubernetes-specific Harness variables are available as expressions
 
 `${k8s.primaryServiceName}` - The service in your Harness Service **Manifests** section that uses the `annotations: harness.io/primary-service: "true"` annotation. See [Create a Kubernetes Blue/Green Deployment](/article/ukftzrngr1-create-a-kubernetes-blue-green-deployment).
 
-Boolean annotation values must use quotes (`"true"|"false"`).### ${k8s.stageServiceName}
+Boolean annotation values must use quotes (`"true"|"false"`).
+
+### ${k8s.stageServiceName}
 
 `${k8s.stageServiceName}` - The service in your Harness Service **Manifests** section uses the `annotations: harness.io/stage-service: "true"` annotation. See [Create a Kubernetes Blue/Green Deployment](/article/ukftzrngr1-create-a-kubernetes-blue-green-deployment).
 

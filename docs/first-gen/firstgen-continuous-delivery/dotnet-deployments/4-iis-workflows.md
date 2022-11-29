@@ -19,7 +19,9 @@ In this topic we walk through create a Workflow for the IIS website Service, but
 * [Deploy IIS Pipeline](https://docs.harness.io/article/z6ls3tgkqc-4-iis-workflows#deploy_iis_pipeline)
 * [Next Step](https://docs.harness.io/article/z6ls3tgkqc-4-iis-workflows#next_step)
 
-Before deploying the IIS website, application, or virtual directory to your Windows instances, there must be an existing [IIS Web Server Role](https://docs.microsoft.com/en-us/iis/web-hosting/web-server-for-shared-hosting/installing-the-web-server-role) on the instance. This ensures that the environment is ready for deployment. Harness IIS Website deployment requires the IIS Web Server Role. The Harness IIS Application and IIS Virtual Directory deployments require that an IIS Website exists. For more information, see [Installing IIS from the Command Line](/article/l639i8uqxs-5-best-practices-and-troubleshooting#installing_iis_from_the_command_line) below.### Create an IIS Website Workflow
+Before deploying the IIS website, application, or virtual directory to your Windows instances, there must be an existing [IIS Web Server Role](https://docs.microsoft.com/en-us/iis/web-hosting/web-server-for-shared-hosting/installing-the-web-server-role) on the instance. This ensures that the environment is ready for deployment. Harness IIS Website deployment requires the IIS Web Server Role. The Harness IIS Application and IIS Virtual Directory deployments require that an IIS Website exists. For more information, see [Installing IIS from the Command Line](/article/l639i8uqxs-5-best-practices-and-troubleshooting#installing_iis_from_the_command_line) below.
+
+### Create an IIS Website Workflow
 
 Workflows are the deployment steps for services and environments, including types such as Canary and Blue/Green. Workflows also include verification, rollback, and notification steps.
 
@@ -91,7 +93,9 @@ The steps for creating Workflows for IIS Applications and Virtual Directories ar
 2. Use the same Harness Environment and Infrastructure Definition you used to create the IIS Website Workflow.
 3. Deploy the IIS Virtual Directory Workflow first, then the IIS Application Workflow, and lastly the IIS Website Workflow. This sequence is best performed using a Harness Pipeline, described below.
 
-Before deploying the IIS website, application, or virtual directory to your Windows instances, there must be an existing [IIS Web Server Role](https://docs.microsoft.com/en-us/iis/web-hosting/web-server-for-shared-hosting/installing-the-web-server-role) on the instance. This ensures that the environment is ready for deployment. Harness IIS Website deployment requires the IIS Web Server Role. The Harness IIS Application and IIS Virtual Directory deployments require that an IIS Website exists. For more information, see [Installing IIS from the Command Line](#installing_iis_from_the_command_line) below.### Deploy IIS Pipeline
+Before deploying the IIS website, application, or virtual directory to your Windows instances, there must be an existing [IIS Web Server Role](https://docs.microsoft.com/en-us/iis/web-hosting/web-server-for-shared-hosting/installing-the-web-server-role) on the instance. This ensures that the environment is ready for deployment. Harness IIS Website deployment requires the IIS Web Server Role. The Harness IIS Application and IIS Virtual Directory deployments require that an IIS Website exists. For more information, see [Installing IIS from the Command Line](#installing_iis_from_the_command_line) below.
+
+### Deploy IIS Pipeline
 
 Once you have workflows for your IIS website, application, and virtual directory set up, you can create a Harness pipeline that deploys them in the correct order. For IIS, you must deploy them in the order website, application, and then virtual directory.
 

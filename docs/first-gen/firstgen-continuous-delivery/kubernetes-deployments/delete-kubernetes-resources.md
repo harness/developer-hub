@@ -41,7 +41,9 @@ At runtime, this will resolve to something like:
 ```
 Deployment/harness-example-deployment-canary
 ```
-The deployed Kubernetes object must reach steady state for Harness to be able to resolve the `${k8s.canaryWorkload}` expression. Consequently, if the Canary Deployment step fails to deploy the workload to steady state, Harness cannot set the `${k8s.canaryWorkload}` expression and it will not execute successfully.#### Resource Name
+The deployed Kubernetes object must reach steady state for Harness to be able to resolve the `${k8s.canaryWorkload}` expression. Consequently, if the Canary Deployment step fails to deploy the workload to steady state, Harness cannot set the `${k8s.canaryWorkload}` expression and it will not execute successfully.
+
+#### Resource Name
 
 Using a resource name in the format `[namespace]/Kind/Name`, with `namespace` being optional.
 
@@ -65,7 +67,9 @@ You cannot use the asterisk as a wildcard to match arbitrary resources. It is si
 
 If you want to delete the namespace(s) defined in the **Manifests** section of the Harness Service used in this deployment, click the **Delete all namespaces defined in the Manifests section of the Harness Service used in this deployment** checkbox.
 
-[![](./static/delete-kubernetes-resources-115.png)](./static/delete-kubernetes-resources-115.png)Ensure that you are not deleting a namespace that is used by other deployments.### Option: Enter the Path and Name of the Manifest
+[![](./static/delete-kubernetes-resources-115.png)](./static/delete-kubernetes-resources-115.png)Ensure that you are not deleting a namespace that is used by other deployments.
+
+### Option: Enter the Path and Name of the Manifest
 
 The Delete step will delete any resource in a Service **Manifest** section, Helm Source Repository, or Helm Repository explicitly.
 
@@ -83,19 +87,25 @@ For resources in the Service **Manifests** section, enter the folder name and th
 
 **templates/jobs.yaml, templates/statefulSet.yaml**.
 
-If you apply the ignore comment `# harness.io/skip-file-for-deploy` to a resource but do not use the resource in an Kubernetes Apply step, the resource is never deployed and does not need to be deleted.#### Helm Source Repository
+If you apply the ignore comment `# harness.io/skip-file-for-deploy` to a resource but do not use the resource in an Kubernetes Apply step, the resource is never deployed and does not need to be deleted.
+
+#### Helm Source Repository
 
 For resources in a Helm chart, provide the path and name of the file from the root folder of the repo.
 
 For example, the following Service uses a remote manifest that points to a Helm chart at **https://github.com/helm/charts.git/stable/chartsmuseum**. In the chart's **templates** folder, there is a **deployment.yaml** file. In **File Path**, you reference **templates/deployment.yaml**.
 
-![](./static/delete-kubernetes-resources-118.png)#### Helm Chart Repository
+![](./static/delete-kubernetes-resources-118.png)
+
+#### Helm Chart Repository
 
 For a Helm Chart Repository, you cannot see the resources as easily as a Helm Source Repository, but you can view the resources in the chart by extracting it or by viewing them in a deployment log.
 
 For example, here is a deployment log showing the chart resources in **Fetch Files**, a Service **Remote Manifests** using the chart as a Helm Chart Repository, and Delete step deleting the **deployment.yaml** resource:
 
-![](./static/delete-kubernetes-resources-119.png)### Option: Delegate Selector
+![](./static/delete-kubernetes-resources-119.png)
+
+### Option: Delegate Selector
 
 If your Workflow Infrastructure Definition's Cloud Provider uses a Delegate Selector (supported in Kubernetes Cluster and AWS Cloud Providers), then the Workflow uses the selected Delegate for all of its steps.
 

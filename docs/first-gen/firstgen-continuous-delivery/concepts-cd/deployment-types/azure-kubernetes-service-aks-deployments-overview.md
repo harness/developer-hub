@@ -14,7 +14,9 @@ For a vendor-agnostic, Harness Kubernetes deployment, see our [Kubernetes Deplo
 
 For detailed instructions on using AKS in Harness, see the [Azure How-tos](/category/gk062j3isk-azure-deployments).
 
-This guide covers new the **Version 2** features of Harness' Kubernetes implementation for AKS. For Version 1 Kubernetes see [Harness Kubernetes v1 FAQ](/article/dtu3ud1ok7-kubernetes-and-harness-faq). For Helm deployment features, see [Helm Quickstart](/article/2aaevhygep-helm-quickstart).### Before You Begin
+This guide covers new the **Version 2** features of Harness' Kubernetes implementation for AKS. For Version 1 Kubernetes see [Harness Kubernetes v1 FAQ](/article/dtu3ud1ok7-kubernetes-and-harness-faq). For Helm deployment features, see [Helm Quickstart](/article/2aaevhygep-helm-quickstart).
+
+### Before You Begin
 
 Before learning about Harness Azure Kubernetes Service (AKS) deployments, you should have an understanding of [Harness Key Concepts](/article/4o7oqwih6h-harness-key-concepts).
 

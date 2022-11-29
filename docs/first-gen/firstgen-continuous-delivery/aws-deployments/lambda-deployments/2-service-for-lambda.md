@@ -45,7 +45,9 @@ To add the Lambda Service, do the following:
 5. In **Deployment Type**, select **AWS Lambda**.
 6. Click **SUBMIT**. The new Service is displayed.
 
-![](./static/2-service-for-lambda-17.png)### Step 2: Add Lambda Functions
+![](./static/2-service-for-lambda-17.png)
+
+### Step 2: Add Lambda Functions
 
 An Artifact Source in a Lambda Service is the Lambda function file you want to deploy. The Artifact Source uses the AWS Cloud Provider you set up for your Harness account, as described in [Delegate and Connectors for Lambda](/article/lo9taq0pze-1-delegate-and-connectors-for-lambda).
 
@@ -60,7 +62,9 @@ To add an Artifact Source to this Service, do the following:
 
 1. Click **SUBMIT**. The Lambda function file is added as an Artifact Source.
 
-![](./static/2-service-for-lambda-20.png)### Step 3: Lambda Function Specification
+![](./static/2-service-for-lambda-20.png)
+
+### Step 3: Lambda Function Specification
 
 In **Lambda Function Specification**, you provide details about the Lambda functions in the zip file in Artifact Source.
 

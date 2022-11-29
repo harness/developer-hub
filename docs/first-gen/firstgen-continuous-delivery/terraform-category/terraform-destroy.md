@@ -198,7 +198,9 @@ The path to the variable definitions file is relative to the root of the Git rep
 
 If you only want to use the tfvars file, make sure to delete the Inline Values.
 
-You can also use [Workflow variables](/article/766iheu1bk-add-workflow-variables-new-template) in **File Path**. This allows you to make the setting a deployment runtime parameter and to output their values using a [Shell Script](/article/1fjrjbau7x-capture-shell-script-step-output) step.##### Remote tfvar Files
+You can also use [Workflow variables](/article/766iheu1bk-add-workflow-variables-new-template) in **File Path**. This allows you to make the setting a deployment runtime parameter and to output their values using a [Shell Script](/article/1fjrjbau7x-capture-shell-script-step-output) step.
+
+##### Remote tfvar Files
 
 In **Source Repository**, select the Harness [Source Repo Provider](/article/ay9hlwbgwa-add-source-repo-providers) that connects to the repo where your tfvar file is.
 

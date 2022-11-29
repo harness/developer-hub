@@ -32,11 +32,15 @@ To have a Workflow ignore a resource file in a Service Manifest section, you add
 
 ![](./static/deploy-manifests-separately-using-apply-step-188.png)Now, when this Service is deployed by a Workflow, this ConfigMap resource will not be applied by default.
 
-The comment `# harness.io/skip-file-for-deploy` must be at the **top** of the file. If it is on the second line it will not work and the resource will be deployed as part of the main Workflow rollout.### Step 2: Add the Apply Step
+The comment `# harness.io/skip-file-for-deploy` must be at the **top** of the file. If it is on the second line it will not work and the resource will be deployed as part of the main Workflow rollout.
+
+### Step 2: Add the Apply Step
 
 In your Kubernetes Workflow, click **Add Step**, and then select **Apply**.
 
-![](./static/deploy-manifests-separately-using-apply-step-189.png)### Step 3: Enter the Path and Name of the Manifest
+![](./static/deploy-manifests-separately-using-apply-step-189.png)
+
+### Step 3: Enter the Path and Name of the Manifest
 
 The Workflow Apply step will apply any resource in a Service **Manifest** section explicitly. You must provide the path and name of the file in **Apply**, and Harness will deploy the resource.
 
@@ -48,7 +52,9 @@ You can include multiple resource files in the Apply step **File paths** field
 
 ![](./static/deploy-manifests-separately-using-apply-step-192.png)If you apply the ignore comment `# harness.io/skip-file-for-deploy` to a resource but do not use the resource in an Apply step, the resource is never deployed.If you use a remote manifest in your Harness Service, in **File paths** enter a path relative to the path you specified for the manifest in the Harness Service.
 
-Harness variables such as [Workflow variables](/article/766iheu1bk-add-workflow-variables-new-template) are supported in the **File Paths** setting.### Option: Manifest Options
+Harness variables such as [Workflow variables](/article/766iheu1bk-add-workflow-variables-new-template) are supported in the **File Paths** setting.
+
+### Option: Manifest Options
 
 #### Export Manifest
 

@@ -46,7 +46,9 @@ Here is the Azure load balancer with two pools set up:
 
 ![](./static/create-an-azure-vmss-blue-green-deployment-01.png)Here is the final, deployed VMSS with its prod pool:
 
-![](./static/create-an-azure-vmss-blue-green-deployment-02.png)### Supported Platforms and Technologies
+![](./static/create-an-azure-vmss-blue-green-deployment-02.png)
+
+### Supported Platforms and Technologies
 
 See [Supported Platforms and Technologies](/article/220d0ojx5y-supported-platforms).
 
@@ -74,7 +76,9 @@ Enter a name for the Workflow. You will use this name to locate the Workflow in 
 
 Select **Blue/Green**. See [Deployment Concepts and Strategies](/article/325x7awntc-deployment-concepts-and-strategies).
 
-For other deployment strategies, see [Create an Azure VMSS Basic Deployment](/article/74htogyjad-create-an-azure-vmss-basic-deployment), and [Create an Azure VMSS Canary Deployment](/article/ebq6gwgs5r-create-an-azure-vmss-canary-deployment).#### Environment
+For other deployment strategies, see [Create an Azure VMSS Basic Deployment](/article/74htogyjad-create-an-azure-vmss-basic-deployment), and [Create an Azure VMSS Canary Deployment](/article/ebq6gwgs5r-create-an-azure-vmss-canary-deployment).
+
+#### Environment
 
 Select the Environment you created in [Define Your Azure VMSS Target Infrastructure](/article/2976rmk4kd-define-your-azure-vmss-target-infrastructure).
 
@@ -116,7 +120,9 @@ Hyphens in the names are converted to double underscores in Azure. For example, 
 
 You can use the default name, which is a concatenation of the names of your Application, Service, and Environment: `${app.name}_${service.name}_${env.name}`.
 
-For information on naming and versioning, see [Azure VMSS Versioning and Naming](/article/w67zx6mv87-azure-vmss-versioning-and-naming).#### Instances
+For information on naming and versioning, see [Azure VMSS Versioning and Naming](/article/w67zx6mv87-azure-vmss-versioning-and-naming).
+
+#### Instances
 
 Select **Fixed** or **Same as already running Default Instances**.
 
@@ -184,7 +190,9 @@ You can select a percentage or count.
 
 This is the same as the **Scale mode** settings in **Auto created scale condition** in VMSS:
 
-![](./static/create-an-azure-vmss-blue-green-deployment-05.png)#### Name
+![](./static/create-an-azure-vmss-blue-green-deployment-05.png)
+
+#### Name
 
 Enter a name for the Workflow step.
 
@@ -199,7 +207,9 @@ Your setting cannot exceed your **Maximum Instances** setting in the Workflow'
 
 This setting corresponds to the **Maximum** setting in **Instance limits** in VMSS.
 
-You can use [Harness variable expressions](/article/9dvxcegm90-variables), such as [Workflow variables](/article/766iheu1bk-add-workflow-variables-new-template), in this setting.### Step 4: Swap Virtual Machine Scale Set Route
+You can use [Harness variable expressions](/article/9dvxcegm90-variables), such as [Workflow variables](/article/766iheu1bk-add-workflow-variables-new-template), in this setting.
+
+### Step 4: Swap Virtual Machine Scale Set Route
 
 The Swap Virtual Machine Scale Set Route detaches the stage backend pool from the new VMSS, and then attached the production backend pool to it.
 
@@ -219,11 +229,15 @@ Now that the Canary Workflow is complete, you can deploy it to Azure.
 
 In **Azure Virtual Machine Scale Set Setup**, you can see Harness set up the new VMSS.
 
-![](./static/create-an-azure-vmss-blue-green-deployment-06.png)#### Upgrade Virtual Machine Scale Set
+![](./static/create-an-azure-vmss-blue-green-deployment-06.png)
+
+#### Upgrade Virtual Machine Scale Set
 
 In **Upgrade Virtual Machine Scale Set**, you can see the new VMSS upscaled to its desired instances.
 
-![](./static/create-an-azure-vmss-blue-green-deployment-07.png)#### Swap Virtual Machine Scale Set Route
+![](./static/create-an-azure-vmss-blue-green-deployment-07.png)
+
+#### Swap Virtual Machine Scale Set Route
 
 In **Swap Virtual Machine Scale Set Route**, you can see Harness detach the stage pool from the new VMSS and attached the production pool to it.
 

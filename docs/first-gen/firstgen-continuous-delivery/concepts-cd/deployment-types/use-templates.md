@@ -30,7 +30,9 @@ The Shared Template Library is available from **Setup** and the Application Temp
 
 For example, when you click **Add Command** in the Service, you see the option to select a template from the Application or Shared Template Library.
 
-![](./static/use-templates-18.png)### Template YAML
+![](./static/use-templates-18.png)
+
+### Template YAML
 
 When you look at the code for an Application containing Services or Workflows using linked templates, the YAML for the template information of the command is displayed like this:
 

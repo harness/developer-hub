@@ -64,7 +64,9 @@ After you have installed the CF CLI on a Delegate using a [Delegate Profile](/ar
 ![](./static/install-cloud-foundry-cli-6-and-7-on-harness-delegates-22.png)* **CF CLI 6:** By default, Harness uses CF CLI 6. If you are using CF CLI 6, then ensure that the **Enable CF CLI 7** setting is not selected.
 * **CF CLI 7:** To use CF CLI 7, select **Enable CF CLI 7**.
 
-Currently, the **Enable CF CLI 7** feature is behind the Feature Flag `CF_CLI7`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.### Install the CF CLI on Harness Delegates using a Package Manager
+Currently, the **Enable CF CLI 7** feature is behind the Feature Flag `CF_CLI7`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+### Install the CF CLI on Harness Delegates using a Package Manager
 
 Two different CF versions cannot be installed on the same Delegate using a package manager, but it can be done using compressed binaries.Create a [Delegate Profile](/article/h9tkwmkrm7-delegate-installation#delegate_profiles).
 

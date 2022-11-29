@@ -19,7 +19,9 @@ The following errors might occur when setting up and deploying ECS in Harness:
 * [ClientException: The 'memory' setting for container is greater than for the task](https://docs.harness.io/article/rdk1j5s32z-ecs-troubleshooting#client_exception_the_memory_setting_for_container_is_greater_than_for_the_task)
 * [AmazonElasticLoadBalancingException: Rate exceeded](https://docs.harness.io/article/rdk1j5s32z-ecs-troubleshooting#amazon_elastic_load_balancing_exception_rate_exceeded)
 
-For information on ECS troubleshooting, see [Amazon ECS Troubleshooting](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/troubleshooting.html) from AWS.### Rate Exceeded
+For information on ECS troubleshooting, see [Amazon ECS Troubleshooting](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/troubleshooting.html) from AWS.
+
+### Rate Exceeded
 
 A common issue with AWS deployments is exceeding an AWS rate limit for some AWS component, such as ECS clusters per region or maximum number of scaling policies per Auto Scaling Groups.
 

@@ -32,9 +32,16 @@ Looking for How-tos? See [Azure Resource Management (ARM) How-tos](/article/qhnn
 
 Here's a short video showing how to provision and deploy to the same Azure infrastructure using ARM and Harness:
 
+<!-- Video:
+https://harness-1.wistia.com/medias/rpv5vwzpxz-->
+<docvideo src="https://www.youtube.com/embed/WfPE9wk4tM0?feature=oembed" />
+
 Here's a visual summary of how you use your Azure ARM templates in Harness to provision infra and then deploy to it:
 
-![](./static/azure-arm-and-blueprint-provision-with-harness-19.png)1. **ARM Infrastructure Provisioner**: add your Azure ARM template as a Harness Infrastructure Provisioner. You add it by connecting to the Git repo for the ARM template. You also set the scope (Resource group, Tenant, etc). You can also enter the ARM template inline without connecting to a Git repo.
+
+![](./static/azure-arm-and-blueprint-provision-with-harness-19.png)
+
+1. **ARM Infrastructure Provisioner**: add your Azure ARM template as a Harness Infrastructure Provisioner. You add it by connecting to the Git repo for the ARM template. You also set the scope (Resource group, Tenant, etc). You can also enter the ARM template inline without connecting to a Git repo.
 2. **​Infrastructure Definition**: define a Harness Infrastructure Definition using the Infrastructure Provisioner. This setup identifies the ARM template's resources as a deployment target.
 3. **Workflow Setup:** when you create your Workflow, you select the Infrastructure Definition you created, identifying it as the target infrastructure for the Workflow deployment.
 4. **Workflow Provisioner Step:** in the Workflow pre-deployment section, you add a **ARM/Blueprint Create Resource** step that uses the ARM Infrastructure Provisioner you set up. The Workflow will build the infrastructure according to your ARM template.
@@ -45,7 +52,15 @@ Here's a visual summary of how you use your Azure ARM templates in Harness to pr
 
 Here's a short video showing how to provision Azure infrastructure using ARM and Harness:
 
+<!-- Video:
+https://harness-1.wistia.com/medias/rpv5vwzpxz-->
+<docvideo src="https://www.youtube.com/embed/_thro1sA6ek?feature=oembed" />
+
 Here's a short video showing how to provision Azure infrastructure using Blueprint and Harness:
+
+<!-- Video:
+https://harness-1.wistia.com/medias/rpv5vwzpxz-->
+<docvideo src="https://www.youtube.com/embed/cGjZCoz3HrY?feature=oembed" />
 
 You can use Azure ARM templates/Blueprint definitions in Harness for general Azure provisioning.
 
@@ -53,7 +68,9 @@ You can use Azure ARM templates/Blueprint definitions in Harness for general Azu
 2. **Workflow Provisioner Step**: create a Workflow and add an **ARM/Blueprint Create Resource** step in its pre-deployment section that uses the Infrastructure Provisioner. You can use the rest of the Workflow to deploy services, or just omit any further phases and steps.
 3. **Deploy:** the Workflow will build the Azure resources according to your ARM template/Blueprint definition.
 
-![](./static/azure-arm-and-blueprint-provision-with-harness-20.png)### Limitations
+![](./static/azure-arm-and-blueprint-provision-with-harness-20.png)
+
+### Limitations
 
 For ARM, see [Azure Resource Management (ARM) How-tos](/article/qhnnq1mks3-azure-arm-and-blueprint-how-tos).
 

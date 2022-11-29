@@ -12,7 +12,9 @@ Currently, this feature is behind the Feature Flag `AZURE_WEBAPP`. Contact [Har
 
 These Docker image and settings are used when Harness deploys your Web App.
 
-This topic covers adding a Docker image. For steps on adding a non-containerized artifact for Web App Deployment, see [Add Non-Containerized Artifacts for Azure Web App Deployment](/article/rflkjqxod2-add-a-non-containerized-artifacts-for-azure-web-app-deployment).### Before You Begin
+This topic covers adding a Docker image. For steps on adding a non-containerized artifact for Web App Deployment, see [Add Non-Containerized Artifacts for Azure Web App Deployment](/article/rflkjqxod2-add-a-non-containerized-artifacts-for-azure-web-app-deployment).
+
+### Before You Begin
 
 * [Azure Web App Deployments Overview](/article/lluikqw7q7-azure-web-app-deployments-overview)
 * Make sure that you have connected Harness to your Azure subscription as described in [Connect to Azure and Artifact Repo for Your Web App Deployments](/article/e9k7ngaqiu-connect-to-azure-for-web-app-deployments).
@@ -110,7 +112,9 @@ Here's an example of setting **Application settings** in the Harness Service:
 
 ![](./static/add-your-docker-image-for-azure-web-app-deployment-15.png)This is the same as setting them in the Azure portal **Advanced edit**.
 
-![](./static/add-your-docker-image-for-azure-web-app-deployment-16.png)#### Important Notes
+![](./static/add-your-docker-image-for-azure-web-app-deployment-16.png)
+
+#### Important Notes
 
 * If you add App Service Configuration settings in the Harness Service, you must include a **name** (`"name":`), and the name must be unique. This is the same requirement in Azure App Services.
 * Do not set Docker settings in the Harness Service **App Service Configuration**. Harness will override these using the Docker settings in the Harness Artifact Server and Artifact Source.

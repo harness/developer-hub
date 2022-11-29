@@ -31,7 +31,9 @@ Harness also includes first-class support for the [App Autoscaler plugin](https:
 
 Harness runs CF plugins using the Workflow command **CF Command**. CF Command automatically sets the `CF_PLUGIN_HOME` directory, logs in (using the Harness TAS Cloud Provider), and runs the plugin using the script in CF Command.
 
-![](./static/use-cli-plugins-in-harness-pcf-deployments-03.png)### Review: Requirements for Running Plugins
+![](./static/use-cli-plugins-in-harness-pcf-deployments-03.png)
+
+### Review: Requirements for Running Plugins
 
 To run plugins using CF Command, you must have the following:
 
@@ -68,7 +70,9 @@ echo y | cf install-plugin -r CF-Community "Create-Service-Push"
 ```
 If you are using the Kubernetes, ECS, or Helm Delegates, you can select the Profile when you download a new Delegate script. Typically, you will be using a Shell Script Delegate for TAS deployments. In that case, simply apply the Profile to each new Delegate:
 
-![](./static/use-cli-plugins-in-harness-pcf-deployments-06.png)#### Create-Service-Push Installed on Delegate
+![](./static/use-cli-plugins-in-harness-pcf-deployments-06.png)
+
+#### Create-Service-Push Installed on Delegate
 
 The Create-Service-Push plugin must be installed on the Delegate(s) to use the App AutoScaler plugin. See [Install Cloud Foundry CLI Versions on the Harness Delegate](/article/8tsb75aldu-install-cloud-foundry-cli-6-and-7-on-harness-delegates).The [Create-Service-Push](https://plugins.cloudfoundry.org/#Create-Service-Push) plugin reads in a services' manifest.yml file, creates the services listed in it, and pushes an application. Create-Service-Push extends `cf push`.
 

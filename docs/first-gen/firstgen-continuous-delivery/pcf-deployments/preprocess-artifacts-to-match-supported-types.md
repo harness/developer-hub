@@ -55,7 +55,9 @@ File-based Sources:
 * SFTP
 * Custom Repository
 
-Harness supports any single file (non-folder) deployed using `cf push`. TAR, WAR, JAR, ZIP, and Docker are supported.### Step 1: Select Preprocessing in App Setup Step
+Harness supports any single file (non-folder) deployed using `cf push`. TAR, WAR, JAR, ZIP, and Docker are supported.
+
+### Step 1: Select Preprocessing in App Setup Step
 
 This step assumes you've created a TAS Workflow before. If not, see:
 

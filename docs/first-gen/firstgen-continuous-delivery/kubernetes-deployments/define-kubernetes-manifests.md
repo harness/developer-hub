@@ -78,7 +78,9 @@ You can use [Go templating](https://godoc.org/text/template) and Harness built-i
 
 See [Use Go Templating in Kubernetes Manifests](/article/mwy6zgz8gu-use-go-templating-in-kubernetes-manifests).
 
-The inline values.yaml file used in a Harness Service does not support Helm templating, only Go templating. Helm templating is fully supported in the remote Helm charts you add to your Harness Service.Harness [variable expressions](/article/9dvxcegm90-variables) may be added to values.yaml, not the manifests themselves. This provides more flexibility.### Step 3: Expression Builder
+The inline values.yaml file used in a Harness Service does not support Helm templating, only Go templating. Helm templating is fully supported in the remote Helm charts you add to your Harness Service.Harness [variable expressions](/article/9dvxcegm90-variables) may be added to values.yaml, not the manifests themselves. This provides more flexibility.
+
+### Step 3: Expression Builder
 
 When you edit manifests in the Harness Service, you can enter expressions by entering `{{.` and Harness will fetch the values available in the values.yaml file.
 
@@ -95,7 +97,9 @@ You can use your Git repo for the configuration files in **Manifests** and Har
 * **OpenShift Template** — OpenShift params file from a Git repo. See [Using OpenShift with Harness Kubernetes](/article/p756zrn9vc-using-open-shift-with-harness-kubernetes).
 * **Files in a packaged archive** — In some cases, your manifests, templates, etc are in a packaged archive and you simply wish to extract then and use then at runtime. You can use a packaged archive with the **Custom Remote Manifests** setting in a Harness Kubernetes Service. See [Add Packaged Kubernetes Manifests](/article/53qqnebrak-deploy-kubernetes-manifests-packaged-with-artifacts).
 
-Remote files can also use Go templating.### Option: Deploy Helm Charts
+Remote files can also use Go templating.
+
+### Option: Deploy Helm Charts
 
 In addition to the Helm options above, you can also simply deploy the Helm chart without adding your artifact to Harness.
 
@@ -144,7 +148,9 @@ In this example. kubelet will not restart the pod when the probe exceeds two sec
 
 If you use [Harness secrets](/article/au38zpufhr-secret-management) in a values.yaml and the secret cannot be resolved by Harness during deployment, Harness will throw an exception.
 
-An exception is thrown regardless of whether the secret is commented out.### Next Steps
+An exception is thrown regardless of whether the secret is commented out.
+
+### Next Steps
 
 * [Use Go Templating in Kubernetes Manifests](/article/mwy6zgz8gu-use-go-templating-in-kubernetes-manifests)
 

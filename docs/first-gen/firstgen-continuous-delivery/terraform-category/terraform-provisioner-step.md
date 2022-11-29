@@ -98,7 +98,9 @@ You Workflow settings will look something like this:
 
 By default, the Workflow includes a **Pre-deployment Steps** section. This is where you will add a step that uses your Terraform Provisioner.
 
-![](./static/terraform-provisioner-step-13.png)Infrastructure Definitions are added in Canary Workflow *Phases*, in the **Deployment Phases** section. You will add the Infrastructure Definition that uses your Terraform Infrastructure Provisioner when you add the Canary Phases, later in this topic.### Step 2: Add Terraform Step to Pre-deployment Steps
+![](./static/terraform-provisioner-step-13.png)Infrastructure Definitions are added in Canary Workflow *Phases*, in the **Deployment Phases** section. You will add the Infrastructure Definition that uses your Terraform Infrastructure Provisioner when you add the Canary Phases, later in this topic.
+
+### Step 2: Add Terraform Step to Pre-deployment Steps
 
 To provision the infrastructure in your Terraform Infrastructure Provisioner, add the **Terraform Provisioner** Step in **Pre-deployment Steps**:
 
@@ -322,7 +324,9 @@ You can even set a Harness Trigger where you can set the workspace name used by 
 
 This Trigger can then be run in response to different events, such as a Git push. For more information, see [Passing Variables into Workflows and Pipelines from Triggers](/article/revc37vl0f-passing-variable-into-workflows).
 
-When rollbacks occur, Harness will rollback the Terraform state to the previous version of same workspace.### Option: Select Delegate
+When rollbacks occur, Harness will rollback the Terraform state to the previous version of same workspace.
+
+### Option: Select Delegate
 
 In **Delegate Selector**, you can select a specific Harness Delegate to execute the Terraform Provisioning step by selecting the Selector for the Delegate.
 
@@ -346,7 +350,9 @@ If you select Encrypted Text, you must select an existing Harness [Encrypted Tex
 
 You can use Harness [Workflow variables](/article/766iheu1bk-add-workflow-variables-new-template) and [expression variables](/article/9dvxcegm90-variables) for the name and value.
 
-Environment variables can also be deleted using the Terraform Destroy step. See [Remove Provisioned Infra with Terraform Destroy](/article/4egyxnse9r-terraform-destroy).### Step 3: Add Infrastructure Definition to Phases
+Environment variables can also be deleted using the Terraform Destroy step. See [Remove Provisioned Infra with Terraform Destroy](/article/4egyxnse9r-terraform-destroy).
+
+### Step 3: Add Infrastructure Definition to Phases
 
 Now that the Workflow **Pre-deployment** section has your Terraform Provisioner step added, you need to add the target Infrastructure Definition where the Workflow will deploy.
 

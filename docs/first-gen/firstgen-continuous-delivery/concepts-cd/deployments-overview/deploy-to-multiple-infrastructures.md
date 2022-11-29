@@ -42,7 +42,9 @@ First, the Workflow Infrastructure Definition setting is templated with the `${
 
 ![](./static/deploy-to-multiple-infrastructures-08.png)Here is an example of a Pipeline deployment Stage using the Workflow that deploys to two Infrastructure Definitions:
 
-![](./static/deploy-to-multiple-infrastructures-09.png)### Limitations
+![](./static/deploy-to-multiple-infrastructures-09.png)
+
+### Limitations
 
 * Multi-infrastructure deployments can be done using Pipelines only, not individual Workflow deployments.
 * You can only use the same variable when you template the Infrastructure Definitions settings in multiple phases or a Workflow for in multi-infrastructure deployments.  
@@ -79,7 +81,9 @@ For steps on templating the Infrastructure Definitions in a Pipeline, as well as
 
 Here is an example where the Workflow Infrastructure Definition setting is templated with the `${infrastructure}` expression and then, when deployed, the `infrastructure` Workflow variable is given multiple infrastructures.
 
-![](./static/deploy-to-multiple-infrastructures-10.png)### Step 4: Deploy to Multiple Infrastructure Definitions
+![](./static/deploy-to-multiple-infrastructures-10.png)
+
+### Step 4: Deploy to Multiple Infrastructure Definitions
 
 Now that you have added the Workflow to a Pipeline and templated the Infrastructure Definition setting, you can deploy the Pipeline and select multiple infrastructures.
 
@@ -95,7 +99,9 @@ The Workflows that use multiple Infrastructure Definitions are displayed in pare
 
 Click each Workflow and look in the **Infrastructure** displayed. It will show a different Infrastructure Definition for each Workflow.
 
-![](./static/deploy-to-multiple-infrastructures-12.png)### Step 5: Trigger Multiple Infrastructure Workflows and Pipelines
+![](./static/deploy-to-multiple-infrastructures-12.png)
+
+### Step 5: Trigger Multiple Infrastructure Workflows and Pipelines
 
 When you create a Trigger for the Pipeline, you must select the multiple Infrastructure Definitions for the Workflow(s) it contains:
 

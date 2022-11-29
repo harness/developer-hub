@@ -68,7 +68,9 @@ You map the Terraform script outputs using this syntax, where `exact_name` is th
 ```
 ${terraform.*exact\_name*}
 ```
-When you map a Terraform script output to a Harness Infrastructure Definition setting, the variable for the output, `${terraform.exact_name​}`, can be used anywhere in the Workflow that uses that Terraform Provisioner.### Option 1: Map an Agnostic Kubernetes Cluster
+When you map a Terraform script output to a Harness Infrastructure Definition setting, the variable for the output, `${terraform.exact_name​}`, can be used anywhere in the Workflow that uses that Terraform Provisioner.
+
+### Option 1: Map an Agnostic Kubernetes Cluster
 
 Provisioning Kubernetes is supported with the Kubernetes Cluster Cloud Provider and Google Cloud Platform Cloud Provider, but not the Azure Cloud Provider.Harness supports platform-agnostic Kubernetes cluster connections using its [Kubernetes Cluster Cloud Provider](/article/l68rujg6mp-add-kubernetes-cluster-cloud-provider).
 
@@ -120,11 +122,15 @@ The ECS deployment type requires the **Region** and **Cluster** fields. The foll
 
 The Lambda deployment type requires the IAM Role and Region fields. The following example shows the Terraform script outputs used for the mandatory and optional Lambda deployment type fields:
 
-![](./static/mapgcp-kube-terraform-infra-44.png)### Option 6: ​Map a Secure Shell (SSH) Infrastructure
+![](./static/mapgcp-kube-terraform-infra-44.png)
+
+### Option 6: ​Map a Secure Shell (SSH) Infrastructure
 
 The Secure Shell (SSH) deployment type requires the **Region** and **Tags** fields. The following example shows the Terraform script outputs used for the mandatory SSH deployment type fields:
 
-![](./static/mapgcp-kube-terraform-infra-45.png)### Option 7: Map an Azure Web App
+![](./static/mapgcp-kube-terraform-infra-45.png)
+
+### Option 7: Map an Azure Web App
 
 Currently, this feature is behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature. Feature Flags can only be removed for Harness Professional and Essentials editions. Once the feature is released to a general audience, it is available for Trial and Community Editions.The Azure Web App deployment requires the Subscription and Resource Group in the Infrastructure Definition.
 

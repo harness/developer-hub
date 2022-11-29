@@ -41,7 +41,9 @@ For other deployment strategies, see [Create an Azure VMSS Basic Deployment](/ar
 
 Here is a successful Canary VMSS deployment, showing both phases:
 
-![](./static/create-an-azure-vmss-canary-deployment-10.png)### Supported Platforms and Technologies
+![](./static/create-an-azure-vmss-canary-deployment-10.png)
+
+### Supported Platforms and Technologies
 
 See [Supported Platforms and Technologies](/article/220d0ojx5y-supported-platforms).
 
@@ -59,7 +61,9 @@ Enter a name for the Workflow. You will use this name to locate the Workflow in 
 
 Select **Canary**. See [Deployment Concepts and Strategies](/article/325x7awntc-deployment-concepts-and-strategies).
 
-For other deployment strategies, see [Create an Azure VMSS Basic Deployment](/article/74htogyjad-create-an-azure-vmss-basic-deployment), and [Create an Azure VMSS Blue/Green Deployment](/article/9op1u6dgks-create-an-azure-vmss-blue-green-deployment).#### Environment
+For other deployment strategies, see [Create an Azure VMSS Basic Deployment](/article/74htogyjad-create-an-azure-vmss-basic-deployment), and [Create an Azure VMSS Blue/Green Deployment](/article/9op1u6dgks-create-an-azure-vmss-blue-green-deployment).
+
+#### Environment
 
 Select the Environment you created in [Define Your Azure VMSS Target Infrastructure](/article/2976rmk4kd-define-your-azure-vmss-target-infrastructure).
 
@@ -106,7 +110,9 @@ Hyphens in the names are converted to double underscores in Azure. For example, 
 
 You can use the default name, which is a concatenation of the names of your Application, Service, and Environment: `${app.name}_${service.name}_${env.name}`.
 
-For information on naming and versioning, see [Azure VMSS Versioning and Naming](/article/w67zx6mv87-azure-vmss-versioning-and-naming).#### Instances
+For information on naming and versioning, see [Azure VMSS Versioning and Naming](/article/w67zx6mv87-azure-vmss-versioning-and-naming).
+
+#### Instances
 
 Select **Fixed** or **Same as already running Default Instances**.
 
@@ -160,7 +166,9 @@ You can select a percentage or count.
 
 This is the same as the **Scale mode** settings in **Auto created scale condition** in VMSS:
 
-![](./static/create-an-azure-vmss-canary-deployment-12.png)#### Name
+![](./static/create-an-azure-vmss-canary-deployment-12.png)
+
+#### Name
 
 Enter a name for the Workflow step.
 
@@ -175,7 +183,9 @@ Your setting cannot exceed your **Maximum Instances** setting in the Workflow'
 
 This setting corresponds to the **Maximum** setting in **Instance limits** in VMSS.
 
-You can use [Harness variable expressions](/article/9dvxcegm90-variables), such as [Workflow variables](/article/766iheu1bk-add-workflow-variables-new-template), in this setting.### Step 5: Create Phase 2
+You can use [Harness variable expressions](/article/9dvxcegm90-variables), such as [Workflow variables](/article/766iheu1bk-add-workflow-variables-new-template), in this setting.
+
+### Step 5: Create Phase 2
 
 Phase 2 of the Canary Workflow runs after phase 1 is successful. Phase 2 will upgrade the VMSS to the available capacity.
 
@@ -227,7 +237,9 @@ Attaching scaling policy to VMSS: [doc__canary__3] as number of Virtual Machine 
 ```
 Congratulations. Your deployment was successful.
 
-For information on naming and versioning, see [Azure VMSS Versioning and Naming](/article/w67zx6mv87-azure-vmss-versioning-and-naming).### Option: Templatize the Workflow
+For information on naming and versioning, see [Azure VMSS Versioning and Naming](/article/w67zx6mv87-azure-vmss-versioning-and-naming).
+
+### Option: Templatize the Workflow
 
 You can parameterize the Workflow's settings to turn it into a template. When it is deployed, values are provided for the parameters.
 

@@ -47,11 +47,15 @@ Click on a **deployment**. You can use the filter options to located specific de
 
 In the deployment, click a command. The details for the command appear.
 
-![](./static/view-the-delegates-used-in-a-deployment-30.png)### Step 2: Select View Delegate Selection
+![](./static/view-the-delegates-used-in-a-deployment-30.png)
+
+### Step 2: Select View Delegate Selection
 
 In the details pane for the command, click the more options button (**︙**) and select **View Delegate Selection**.
 
-![](./static/view-the-delegates-used-in-a-deployment-31.png)### Step 3: View the Delegate Selection for the Command
+![](./static/view-the-delegates-used-in-a-deployment-31.png)
+
+### Step 3: View the Delegate Selection for the Command
 
 The Delegate selection information contains the Delegate(s) used for the command, their assessment (Selected, etc), details about how the Delegate was used, and the timestamp of the log entry.
 
@@ -65,7 +69,9 @@ If you see the message `Delegate selection logs do not apply`, it means that the
 
 In the **Delegate** column you will see the Delegate name. You can click the name to go to the Harness Delegates page and see the Delegates.
 
-![](./static/view-the-delegates-used-in-a-deployment-33.png)### Limitations
+![](./static/view-the-delegates-used-in-a-deployment-33.png)
+
+### Limitations
 
 Full support for all Workflow steps will be added soon. A tooltip in **View Delegate Selection** will indicate any currently unsupported Workflow steps.
 

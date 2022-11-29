@@ -77,7 +77,9 @@ At deployment runtime, Harness will use this image definition to create the VMs 
 
 If Harness cannot obtain this information, verify that the Client ID used in the Azure Cloud Provider has permissions to read the image gallery.
 
-If you delete an image it might still show up here until Harness cleans up deleted images. Harness cleans up deleted images every 2 hours.### Next Steps
+If you delete an image it might still show up here until Harness cleans up deleted images. Harness cleans up deleted images every 2 hours.
+
+### Next Steps
 
 * [Define Your Azure VMSS Target Infrastructure](/article/2976rmk4kd-define-your-azure-vmss-target-infrastructure)
 

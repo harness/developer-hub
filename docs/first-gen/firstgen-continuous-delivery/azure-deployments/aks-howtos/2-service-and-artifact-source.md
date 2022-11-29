@@ -28,7 +28,9 @@ To create the Harness Application, do the following:
 4. Click **SUBMIT**. The new Application is added.
 5. Click the Application name to open the Application. The Application entities are displayed.
 
-![](./static/2-service-and-artifact-source-09.png)### Harness Service Setup
+![](./static/2-service-and-artifact-source-09.png)
+
+### Harness Service Setup
 
 There are different types of Harness Services for different deployment platforms. The Kubernetes type includes Kubernetes-specific settings.
 
@@ -63,11 +65,15 @@ When you are finished, the Artifact Source dialog will look something like this:
 
 ![](./static/2-service-and-artifact-source-13.png)You can add multiple Artifact Sources to a Service and view the build history for each one by clicking **Artifact History**.
 
-![](./static/2-service-and-artifact-source-14.png)#### Add Manifests
+![](./static/2-service-and-artifact-source-14.png)
+
+#### Add Manifests
 
 The **Manifests** section of Service contains the configuration files that describe the desired state of your application in terms of Kubernetes object descriptions.
 
-![](./static/2-service-and-artifact-source-15.png)##### What Can I Add in Manifests?
+![](./static/2-service-and-artifact-source-15.png)
+
+##### What Can I Add in Manifests?
 
 You can add any Kubernetes configuration files, formatted in YAML, such as object descriptions, in one or more files.
 

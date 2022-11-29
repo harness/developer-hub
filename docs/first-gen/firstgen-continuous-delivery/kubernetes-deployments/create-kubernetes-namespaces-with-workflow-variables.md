@@ -46,7 +46,9 @@ This can happen simultaneously because a different namespace is used each time. 
 
 To reference the variable we created, we use the expression `${workflow.variables.namespace}`:
 
-![](./static/create-kubernetes-namespaces-with-workflow-variables-208.png)### Option 1: Enter a Namespace Manually
+![](./static/create-kubernetes-namespaces-with-workflow-variables-208.png)
+
+### Option 1: Enter a Namespace Manually
 
 1. In your Workflow, click **Deploy**.
 2. For **namespace**, select one of the variable's allowed values.

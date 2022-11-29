@@ -73,7 +73,9 @@ The overwriting is granular. So if your first values.yaml file has a `key:value`
 1. In the **Values YAML Override** section of a Harness Kubernetes Service, click **Add Values**.
 2. In **Store Type**, select **Local** or **Remote**.
 
-![](./static/override-values-yaml-files-144.png)### Option: Use an Inline Override
+![](./static/override-values-yaml-files-144.png)
+
+### Option: Use an Inline Override
 
 1. Enter the YAML you want to use to override the Values YAML file (values.yaml).
 
@@ -123,7 +125,9 @@ Multiple files can be used. When you enter the file paths, separate the paths us
 
 The latter paths are given higher priority.
 
-![](./static/override-values-yaml-files-146.png)### Option: Override Files at the Environment Level
+![](./static/override-values-yaml-files-146.png)
+
+### Option: Override Files at the Environment Level
 
 You can override the values.yaml settings of a Service in an Environment's **Service Configuration Overrides** settings.
 
@@ -141,7 +145,9 @@ When you're done, the override will look something like this:
 
 ![](./static/override-values-yaml-files-148.png)Click **Submit**. The override is listed in the **Service Configuration Overrides** section:
 
-![](./static/override-values-yaml-files-149.png)### Option: Use Variable Expressions in Override File Settings
+![](./static/override-values-yaml-files-149.png)
+
+### Option: Use Variable Expressions in Override File Settings
 
 You can use [Harness variable expressions](/article/9dvxcegm90-variables), such as [Workflow variables](/article/766iheu1bk-add-workflow-variables-new-template), in the names and values of the values.yaml files you use as overrides.
 
@@ -161,7 +167,9 @@ Now, in your Service Configuration **Values YAML Override**, in **File Path(s)**
 
 ![](./static/override-values-yaml-files-151.png)Now, when you deploy the Workflow, you can provide the file path for that values.yaml override:
 
-![](./static/override-values-yaml-files-152.png)### Next Steps
+![](./static/override-values-yaml-files-152.png)
+
+### Next Steps
 
 * [Define Kubernetes Manifests](/article/2j2vi5oxrq-define-kubernetes-manifests)
 * [Pass Variables between Workflows](/article/gkmgrz9shh-how-to-pass-variables-between-workflows)

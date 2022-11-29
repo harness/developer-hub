@@ -54,7 +54,9 @@ The following problems can occur when deploying your IIS website, application, o
 
 You receive this error when deploying your workflow.
 
-![](./static/5-best-practices-and-troubleshooting-29.png)##### Solutions
+![](./static/5-best-practices-and-troubleshooting-29.png)
+
+##### Solutions
 
 * Ensure your artifact can be deployed via WinRM onto a Windows instance. It's possible to select the wrong artifact in Service.
 * Ensure you have access to the deployment environment, such as VPC, subnet, etc.

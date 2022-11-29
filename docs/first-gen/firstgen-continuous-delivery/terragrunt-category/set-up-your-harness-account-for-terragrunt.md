@@ -38,6 +38,10 @@ In this topic:
 
 Here's a 6 minute video walkthrough of Harness-Terragrunt integration that shows how each component is used:
 
+<!-- Video:
+https://harness-1.wistia.com/medias/rpv5vwzpxz-->
+<docvideo src="https://www.youtube.com/embed/HYSi2LAaYdc?feature=oembed" />
+
 ### Step 1: Set Up Harness Delegates
 
 A Harness Delegate performs the Terragrunt provisioning in your Terragrunt files. When installing the Delegate for Terragrunt provisioning, consider the following:
@@ -97,7 +101,9 @@ terragrunt --version
 ```
 See [Run Scripts on Delegates using Profiles](/article/yd4bs0pltf-run-scripts-on-the-delegate-using-profiles).
 
-The Delegate needs to be able to obtain any providers you specify in modules. For example, `provider "acme"`. On the Delegate, Terraform will download and initialize any providers that are not already initialized.### Step 3: Set Up the Cloud Provider
+The Delegate needs to be able to obtain any providers you specify in modules. For example, `provider "acme"`. On the Delegate, Terraform will download and initialize any providers that are not already initialized.
+
+### Step 3: Set Up the Cloud Provider
 
 Add a Harness Cloud Provider to connect Harness to your target platform (AWS, Kubernetes cluster, etc).
 
@@ -115,7 +121,9 @@ To use your Terragrunt and Terraform files in Harness, you host the files in a G
 
 Here is an example of a Source Repo Provider and the GitHub repo for Terragrunt. The Terragrunt configuration file in the repo points to a Terraform module in another repo.
 
-![](./static/set-up-your-harness-account-for-terragrunt-26.png)### Next Steps
+![](./static/set-up-your-harness-account-for-terragrunt-26.png)
+
+### Next Steps
 
 * [Add Terragrunt Configuration Files](/article/mkjxbkglih-add-terragrunt-configuration-files)
 

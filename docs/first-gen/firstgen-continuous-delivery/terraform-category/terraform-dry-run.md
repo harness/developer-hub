@@ -24,7 +24,9 @@ This topic assumes you have read the following:
 * [Map Dynamically Provisioned Infrastructure using Terraform](/article/a2f2bh35el-mapgcp-kube-terraform-infra)
 * [Provision using the Terraform Provision Step](/article/uxwih21ps1-terraform-provisioner-step)
 
-**What the difference between the Terraform Provision or Terraform Apply step?** The Terraform Provision step is used to provision infrastructure and is added in the **Pre-deployment Steps** of a Workflow. The Terraform Apply can be placed anywhere in the Workflow.### Visual Summary
+**What the difference between the Terraform Provision or Terraform Apply step?** The Terraform Provision step is used to provision infrastructure and is added in the **Pre-deployment Steps** of a Workflow. The Terraform Apply can be placed anywhere in the Workflow.
+
+### Visual Summary
 
 The following graphic shows a common use of a Terraform dry run in deployments.
 
@@ -35,7 +37,9 @@ The following graphic shows a common use of a Terraform dry run in deployments.
 
 In a Harness Workflow it looks something like this:
 
-![](./static/terraform-dry-run-31.png)### Limitations
+![](./static/terraform-dry-run-31.png)
+
+### Limitations
 
 The Terraform Plan is stored in the default Harness Secrets Manager as encrypted text. This is because plans often contain variables that store secrets.
 
@@ -70,7 +74,9 @@ Technically, this is a different plan. If you want use the actual plan because o
 * If the **Export Terraform Plan to Apply Step** option is enabled in two consecutive Terraform Provision steps, the second Terraform Provision step overwrites the plan from the first Terraform Provision step.
 * Harness uses the [Harness Secret Manager](/article/uuer539u3l-add-a-secrets-manager) you have selected as your default in the export process. As a result, the size of the plan you can export is limited to the size of secret that Secret Manager allows.
 
-If Harness detects that a Terraform plan produces no changes then the actual generated Terraform plan file is not be uploaded to the Secret Manager regardless of whether the Terraform Apply step has **Export Terraform Plan to Apply Step** enabled.### Step 2: Add Approval Step
+If Harness detects that a Terraform plan produces no changes then the actual generated Terraform plan file is not be uploaded to the Secret Manager regardless of whether the Terraform Apply step has **Export Terraform Plan to Apply Step** enabled.
+
+### Step 2: Add Approval Step
 
 Harness Workflow Approval steps can be done using Jira, ServiceNow, or the Harness UI. You can even use custom shell scripts. See [Approvals](/article/0ajz35u2hy-approvals).
 
@@ -98,7 +104,9 @@ You do not need to enter any more settings. The Terraform Provision or Terraform
 
 Your Workflow now looks something like this:
 
-![](./static/terraform-dry-run-34.png)### Step 4: Deploy
+![](./static/terraform-dry-run-34.png)
+
+### Step 4: Deploy
 
 Deploy your Workflow and see the `terraform plan` executed in the first Terraform Provision or Terraform Apply step. Next, approve the Approval step. Finally, see the `terraform apply` executed as part of the final Terraform Provision or Terraform Apply step.
 
@@ -108,7 +116,9 @@ If you select the **Set as Terraform Plan** option, you can display the output o
 
 For help in parsing the plan output, see [Parsing Terraform Plan Output](https://community.harness.io/t/parsing-terraform-plan-output/545) on Harness Community.
 
-The `${terraformApply.tfplan}` expression does not support plan files larger than 15MB.### Review: Terraform Plan File Output Variable
+The `${terraformApply.tfplan}` expression does not support plan files larger than 15MB.
+
+### Review: Terraform Plan File Output Variable
 
 Currently, this feature is behind the Feature Flag `OPTIMIZED_TF_PLAN`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.If you select the **Set as Terraform Plan** option, you can display the output of the plan using the variable expression `${terraformPlan.jsonFilePath()}`.
 

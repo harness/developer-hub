@@ -20,7 +20,9 @@ Looking for the API? You can use the Harness GraphQL to run a Helm chart deploym
 • **Harness Kubernetes Deployments** allow you to use your own Kubernetes manifests or a Helm chart (remote or local), and Harness executes the Kubernetes API calls to build everything without Helm and Tiller needing to be installed in the target cluster.  
 • Harness Kubernetes deployments also support all deployment strategies (Canary, Blue/Green, Rolling, etc).  
 • For **Harness Native Helm Deployments**, you must always have Helm and Tiller running on one pod in your target cluster. Tiller makes the API calls to Kubernetes in these cases.  
-• Harness Native Helm deployments only support Basic deployments.### Before You Begin
+• Harness Native Helm deployments only support Basic deployments.
+
+### Before You Begin
 
 * [Kubernetes Quickstart](/article/7in9z2boh6-kubernetes-quickstart)
 * [Use a Helm Repository with Kubernetes](/article/hddm3rgf1y-use-a-helm-repository-with-kubernetes)
@@ -111,7 +113,9 @@ Enable the **Artifact from Manifest** setting. This setting tells Harness that y
 
 Normally, there would be a **Manifests** section in your Kubernetes Service or a **Chart Specification** section in your Native Helm Service; however, since you are using the **Manifest Source** for the chart, those sections are omitted.
 
-![](./static/deploy-a-helm-chart-as-an-artifact-39.png)### Step 3: Add the Helm Chart
+![](./static/deploy-a-helm-chart-as-an-artifact-39.png)
+
+### Step 3: Add the Helm Chart
 
 The Helm chart is added the same way in both the Harness Kubernetes or Native Helm Services.
 
@@ -141,7 +145,9 @@ When you are done, it will look something like this:
 
 The remote Helm chart repository and chart is listed as a **Manifest Source**.
 
-![](./static/deploy-a-helm-chart-as-an-artifact-42.png)### Option: Multiple Manifest Sources
+![](./static/deploy-a-helm-chart-as-an-artifact-42.png)
+
+### Option: Multiple Manifest Sources
 
 You can add multiple charts by adding multiple Manifest Sources.
 
@@ -161,7 +167,9 @@ To view the manifest history,  do the following:
 
 Now all available manifest charts and version history metadata are displayed.
 
-![](./static/deploy-a-helm-chart-as-an-artifact-45.png)### Option: Values YAML Override
+![](./static/deploy-a-helm-chart-as-an-artifact-45.png)
+
+### Option: Values YAML Override
 
 In the **Values YAML Override** section, you can enter the YAML for your values.yaml file. The values.yaml file contains the default values for a chart. You will typically have this file in the repo for your chart, but you can add it in the Harness service instead.
 
@@ -350,7 +358,9 @@ Once you add the Workflow to a stage in a Pipeline, you must select the Helm cha
 
 The steps are the same as when deploying the Workflow. You select a chart version:
 
-![](./static/deploy-a-helm-chart-as-an-artifact-46.png)#### Trigger
+![](./static/deploy-a-helm-chart-as-an-artifact-46.png)
+
+#### Trigger
 
 You can create a Trigger for any Workflow or Pipeline to run when a new version of the chart is published.
 

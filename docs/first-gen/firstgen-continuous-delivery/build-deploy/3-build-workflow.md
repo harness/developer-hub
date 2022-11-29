@@ -106,7 +106,9 @@ When you are done, the Artifact Collection dialog will look something like this.
 
 You can run the Build Workflow to test its settings before setting up the rest of the Pipeline. In the following example, the Artifact Collection step displays the artifact metadata Harness obtained, including the Build/Tag. 
 
-![](./static/3-build-workflow-07.png)### Next Step
+![](./static/3-build-workflow-07.png)
+
+### Next Step
 
 * [Define Your Build and Deploy Pipeline Target Infrastructure](/article/fav3v3jx3d-4-environment)
 

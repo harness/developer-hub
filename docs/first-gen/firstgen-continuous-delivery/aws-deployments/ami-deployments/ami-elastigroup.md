@@ -230,7 +230,9 @@ In Step 2, select **Elastigroup Deploy** to open a dialog where you can define 
 
 For this example, we'll use a **Count** of **2**:
 
-![](./static/ami-elastigroup-97.png)##### Elastigroup Deploy Step in Deployment
+![](./static/ami-elastigroup-97.png)
+
+##### Elastigroup Deploy Step in Deployment
 
 Using the **Elastigroup Deploy** configuration shown above—requesting a modest **Desired Instances** count of **2**—here is the **Deploy Service** step in the Harness Deployments page:
 
@@ -312,7 +314,9 @@ You need the following AWS ELB setup:
 
 Here is an example of an ALB Listeners rule redirecting to two TGs:
 
-![](./static/ami-elastigroup-104.png)This example uses the default rule, but in most cases you will have several rules for redirecting traffic to your services. Typically, the default rule is used as the last rule to catch actions that the other rules do not.#### Target Group Weight Shifting
+![](./static/ami-elastigroup-104.png)This example uses the default rule, but in most cases you will have several rules for redirecting traffic to your services. Typically, the default rule is used as the last rule to catch actions that the other rules do not.
+
+#### Target Group Weight Shifting
 
 The ALB Listener has two TGs with the following weights:
 
@@ -386,7 +390,9 @@ This step simply deploys the new Elastigroup you created. It brings the new Elas
 
 There is nothing to configure in this step. You can see its output in the deployment details:
 
-![](./static/ami-elastigroup-111.png)#### Shift Traffic Weight
+![](./static/ami-elastigroup-111.png)
+
+#### Shift Traffic Weight
 
 This is the step where you shift traffic from the TG for the previous Elastigroup to the new Elastigroup you are deploying.
 
@@ -405,7 +411,9 @@ Add more **Shift Traffic Weight** and **Approval** steps until you shift traffic
 
 When you deploy, the final **Shift Traffic Weight** step will look something like this:
 
-![](./static/ami-elastigroup-115.png)##### Downsize Old Elastigroup at 0% weight
+![](./static/ami-elastigroup-115.png)
+
+##### Downsize Old Elastigroup at 0% weight
 
 The **Downsize Old Elastigroup at 0% weight** setting should only be selected for the **Shift Traffic Weight** step that shifts traffic to **100%** in its **New Elastigroup Weight** setting.
 
@@ -419,7 +427,9 @@ If no Spotinst service setup is found, Harness skips rollback.
 
 In many cases, Harness users place an Approval step in Rollback Steps also:
 
-![](./static/ami-elastigroup-116.png)### Blue/Green with Instant Traffic Shift
+![](./static/ami-elastigroup-116.png)
+
+### Blue/Green with Instant Traffic Shift
 
 In this scenario, a Blue/Green deployment reliably deploys your AMI(s) by maintaining new and old versions of Elastigroups that using these AMIs. The Elastigroups run behind an Application Load Balancer (ALB) using two listeners, Stage and Prod. These listeners forward respectively to two Target Groups (TGs), Stage and Prod, where the new and old Elastigroups are run. 
 
@@ -616,7 +626,9 @@ Assuming that you've set up all [prerequisites](#prerequisites), the following s
 * [Overview](/article/agv5t7d156-ami-canary#overview) and [Default Structure](/article/agv5t7d156-ami-canary#default_structure) for Canary deployment concepts—how Harness progressively deploys your AMI instances.
 * [Create a Canary Workflow](/article/agv5t7d156-ami-canary#workflow) for the fundamentals of a Harness AMI Canary deployment—how the default Workflow phases and steps implement the Canary model.
 
-Elastigroups perform the functions that Auto Scaling Groups perform in standard AMI deployments.#### To Create the Canary Workflow:
+Elastigroups perform the functions that Auto Scaling Groups perform in standard AMI deployments.
+
+#### To Create the Canary Workflow:
 
 1. In your Application, click **Workflows** > **Add Workflow**.
 2. In the resulting **Workflow** dialog, enter a unique **Name** and (optionally) a **Description** of this Workflow's purpose.

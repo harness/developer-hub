@@ -14,7 +14,9 @@ This enables you to have a Service keep its settings but change them when the Se
 
 For example, you might have a single Service but an Environment for QA and an Environment for Production, and you want to overwrite the `namespace` setting in the Service values.yaml depending on the Environment.
 
-You can also overwrite Service variables at the Phase-level of a multiple Phase Workflow.### Before You Begin
+You can also overwrite Service variables at the Phase-level of a multiple Phase Workflow.
+
+### Before You Begin
 
 * [Define Kubernetes Manifests](/article/2j2vi5oxrq-define-kubernetes-manifests)
 * [Using Harness Config Variables in Manifests](/article/qy6zw1u0y2-using-harness-config-variables-in-manifests)
@@ -63,7 +65,9 @@ You can use a specific Helm chart to override All Services deployed to this Envi
 2. In **Override Type**, select **Helm Chart Repository**.
 3. In **Helm Repository**, select the Helm Repository containing the Helm chart that you want to override all Service's Helm Charts, and then click **Submit**.
 
-![](./static/override-harness-kubernetes-service-settings-23.png)### Example
+![](./static/override-harness-kubernetes-service-settings-23.png)
+
+### Example
 
 Here is an example of overwriting a Service values.yaml with a **Service Configuration Override**.
 

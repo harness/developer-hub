@@ -42,6 +42,10 @@ Before deploying the IIS website, application, or virtual directory to your Wind
 
 Here is a quick primer on deploying Microsoft IIS .NET applications and Microsoft .NET Core container applications using Harness Continuous Delivery.
 
+<!-- Video:
+https://harness-1.wistia.com/medias/rpv5vwzpxz-->
+<docvideo src="https://www.youtube.com/embed/udWD4LoG_R4" />
+
 #### Deployment Preview
 
 Deploying IIS websites, applications, or virtual directories using Harness is a simple process. It involves setting up your deployment environment, establishing a connection with Harness, and then using Harness to define your deployment goals.

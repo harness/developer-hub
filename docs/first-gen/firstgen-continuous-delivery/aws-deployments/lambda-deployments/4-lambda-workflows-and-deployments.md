@@ -67,13 +67,17 @@ The AWS Lambda step in the Workflow applies the alias just like you would using 
 
 ![](./static/4-lambda-workflows-and-deployments-05.png)Once the Workflow is deployed and a Lambda function has been versioned using the alias in the **AWS Lambda** step, you can see the versioning in the AWS Lambda console:
 
-![](./static/4-lambda-workflows-and-deployments-06.png)#### Tags
+![](./static/4-lambda-workflows-and-deployments-06.png)
+
+#### Tags
 
 Tags are key-value pairs that you attach to AWS resources to organize them. For Lambda functions, tags simplify the process of tracking the frequency and cost of each function invocation.
 
 You can set the tags for your Lambda functions in the **AWS Lambda** step and, once deployed, you can see the tags in the AWS Lambda console:
 
-![](./static/4-lambda-workflows-and-deployments-07.png)##### Existing Tags are Replaced During Deployment
+![](./static/4-lambda-workflows-and-deployments-07.png)
+
+##### Existing Tags are Replaced During Deployment
 
 When you deploy a new version of your function, Harness replaces any existing tags with the tags you added in your Workflow. If you leave the tags empty on a subsequent deployment, the tags are replaced with empty values.
 

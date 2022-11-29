@@ -48,7 +48,9 @@ When you have selected a Service, the **Override Type** options appear.![](./sta
 When you are done, the dialog will look something like this:![](./static/override-pcf-manifests-and-config-variables-and-files-75.png)
 9. Click **Submit**. The override is added to the Environment:
 
-![](./static/override-pcf-manifests-and-config-variables-and-files-76.png)### Option 2: TAS Manifests Override
+![](./static/override-pcf-manifests-and-config-variables-and-files-76.png)
+
+### Option 2: TAS Manifests Override
 
 The most commonly-used override is for TAS manifests. You can override the entire manifest.yml of a Service or any of its values.
 
@@ -73,7 +75,9 @@ You can overwrite values in the vars.yml configured in your Service. It does not
 
 To overwrite the variable values configured in your Harness Service, you can simply enter the vars.yml variables you want to overwrite, and enter new values. Here is an example overwriting routes in an inline vars.yml:
 
-![](./static/override-pcf-manifests-and-config-variables-and-files-78.png)#### Overwrite using Remote Values
+![](./static/override-pcf-manifests-and-config-variables-and-files-78.png)
+
+#### Overwrite using Remote Values
 
 Typically, a single manifest.yml is used in a Service and then remote vars.yml files are used to supply different variable values.
 

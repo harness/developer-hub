@@ -24,11 +24,15 @@ You can review some of the other custom options Harness provides in addition to 
 * [Shell Script Provisioner](/article/1m3p7phdqo-shell-script-provisioner)
 * [Custom Verification Overview](/article/e87u8c63z4-custom-verification-overview)
 
-Google Cloud Function deployments using Deployment Templates are covered in [Google Cloud Functions with Harness Deployment Template](https://community.harness.io/t/google-cloud-functions-with-harness-deployment-template/598).### Visual Summary
+Google Cloud Function deployments using Deployment Templates are covered in [Google Cloud Functions with Harness Deployment Template](https://community.harness.io/t/google-cloud-functions-with-harness-deployment-template/598).
+
+### Visual Summary
 
 The following illustration shows how the settings in the Deployment Template are applied in a Harness Service, Infrastructure Definition, and Workflow Fetch Instances and Shell Script steps.
 
-![](./static/create-a-custom-deployment-00.png)### Review: Custom Deployment using Deployment Template Overview
+![](./static/create-a-custom-deployment-00.png)
+
+### Review: Custom Deployment using Deployment Template Overview
 
 Here is a summary of the steps for setting up custom deployments using Deployment Templates:
 
@@ -122,7 +126,9 @@ echo ${POD} > "${INSTANCE_OUTPUT_PATH}"
 ```
 When you create your Harness Workflow later, you will add a **Fetch Instances** step that will run this script:
 
-![](./static/create-a-custom-deployment-02.png)#### Host Object Array Path
+![](./static/create-a-custom-deployment-02.png)
+
+#### Host Object Array Path
 
 Enter the JSON path to the JSON array object for the target host.
 
@@ -173,7 +179,9 @@ For example, the following JSON object contains an Instances array with two item
 ```
 In this case, we want to point to the first item in the JSON file using its index, and so we use `Instances` in **Host Object Array Path**.
 
-To ensure that you referring to the correct item in your array, test your **Host Object Array Path** using your JSON collection and an online validator such as  [JSON Editor Online](https://jsoneditoronline.org/).#### Payloads without High-Level Objects
+To ensure that you referring to the correct item in your array, test your **Host Object Array Path** using your JSON collection and an online validator such as  [JSON Editor Online](https://jsoneditoronline.org/).
+
+#### Payloads without High-Level Objects
 
 In some cases you might have a JSON payload without a high-level object. In these cases, you can use `$` in **Host Object Array Path**.
 
@@ -265,7 +273,9 @@ In **Host Attributes**, you map `artifactBuildNumber` to `artifactBuildNo`:
 
 ![](./static/create-a-custom-deployment-04.png)In the Services Dashboard, you will see different artifact versions and the number of hosts where they were deployed:
 
-![](./static/create-a-custom-deployment-05.png)### Step 4: Create Harness Service
+![](./static/create-a-custom-deployment-05.png)
+
+### Step 4: Create Harness Service
 
 Create your Harness Service as described in [Add Specs and Artifacts using a Harness Service](/article/eb3kfl8uls-service-configuration).
 
@@ -306,7 +316,9 @@ In the Infrastructure Definition **Scope to Specific Services** setting, you can
 
 Now that the Infrastructure Definition is completed, you can use it in a Workflow.
 
-You can also override any Deployment Template variable values in the Environment overrides settings. See [Override Variables at the Infrastructure Definition Level](/article/cc59hfou9c-override-variables-per-infrastructure-definition).### Step 6: Create the Workflow
+You can also override any Deployment Template variable values in the Environment overrides settings. See [Override Variables at the Infrastructure Definition Level](/article/cc59hfou9c-override-variables-per-infrastructure-definition).
+
+### Step 6: Create the Workflow
 
 Once you have the created the Harness Service and Infrastructure Definition using the Deployment Template, you can create a Workflow to execute the **Fetch Instances Command Script** in the template.
 
@@ -369,7 +381,9 @@ You can also use any of the default Harness expressions that are host-related. S
 
 Here is an example using a Shell Script step:
 
-![](./static/create-a-custom-deployment-12.png)### See Also
+![](./static/create-a-custom-deployment-12.png)
+
+### See Also
 
 * [Using Custom Artifact Sources](/article/jizsp5tsms-custom-artifact-source)
 * [Add and Use a Custom Secrets Manager](/article/ejaddm3ddb-add-and-use-a-custom-secrets-manager)

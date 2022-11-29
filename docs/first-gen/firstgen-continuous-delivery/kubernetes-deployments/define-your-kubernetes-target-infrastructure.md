@@ -57,7 +57,9 @@ The **Helm** option is only if you are deploying to a Harness native Helm Servic
 
 Select the **Kubernetes Cluster Cloud Provider** that connects to your target cluster. All Kubernetes Cluster Cloud Providers are prefaced with **Kubernetes Cluster:**.
 
-![](./static/define-your-kubernetes-target-infrastructure-170.png)#### Namespace
+![](./static/define-your-kubernetes-target-infrastructure-170.png)
+
+#### Namespace
 
 Select the namespace of the target Kubernetes cluster. Typically, this is `default`.
 
@@ -65,7 +67,9 @@ The namespace must already exist during deployment. Harness will not create a ne
 
 You can use Harness variables to reference the name here in the Service Manifests files. See [Create Kubernetes Namespaces based on InfraMapping](/article/5xm4z4q3d8-create-kubernetes-namespaces-based-on-infra-mapping).
 
-If you omit the `namespace` key and value from a manifest in your Service, Harness automatically uses the namespace you entered in the Harness Environment  **Infrastructure Definition** settings **Namespace** field.#### Release Name
+If you omit the `namespace` key and value from a manifest in your Service, Harness automatically uses the namespace you entered in the Harness Environment  **Infrastructure Definition** settings **Namespace** field.
+
+#### Release Name
 
 Harness requires a Kubernetes release name for tracking.
 
@@ -99,7 +103,9 @@ If you leave this setting empty, the Infrastructure Definition is available to a
 
 #### Example
 
-![](./static/define-your-kubernetes-target-infrastructure-173.png)### Option 2: Specify a GCP or Azure Kubernetes Cluster
+![](./static/define-your-kubernetes-target-infrastructure-173.png)
+
+### Option 2: Specify a GCP or Azure Kubernetes Cluster
 
 If you are using a Harness Google Cloud Platform or Azure Cloud Provider to connect to your target cluster, enter the following settings:
 
@@ -161,7 +167,9 @@ The namespace must already exist during deployment. Harness will not create a ne
 
 You can use Harness variables to reference the name here in the Service Manifests files. See [Create Kubernetes Namespaces based on InfraMapping](/article/5xm4z4q3d8-create-kubernetes-namespaces-based-on-infra-mapping).
 
-If you omit the `namespace` key and value from a manifest in your Service, Harness automatically uses the namespace you entered in the Harness Environment  **Infrastructure Definition** settings **Namespace** field.#### Release Name
+If you omit the `namespace` key and value from a manifest in your Service, Harness automatically uses the namespace you entered in the Harness Environment  **Infrastructure Definition** settings **Namespace** field.
+
+#### Release Name
 
 Harness requires a Kubernetes release name for tracking.
 
@@ -181,7 +189,9 @@ Here is an example of a cluster targeted using a Google Cloud Platform Cloud Pro
 
 ![](./static/define-your-kubernetes-target-infrastructure-175.png)Here is an example of a cluster targeted using a Azure Cloud Provider:
 
-![](./static/define-your-kubernetes-target-infrastructure-176.png)### Next Steps
+![](./static/define-your-kubernetes-target-infrastructure-176.png)
+
+### Next Steps
 
 * [Provision Kubernetes Infrastructures](/article/huajnezo0r-provision-kubernetes-infrastructures)
 

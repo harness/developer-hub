@@ -75,9 +75,13 @@ When Harness registers the task definition, it will use this family name.
 
 The first task definition that is registered into a particular family is given a revision of 1, and any task definitions registered after that are given a sequential revision number.
 
-If the task definition you enter later uses the `family` parameter, the value provided in that parameter will override the family name you enter in the **ECS Run Task** step.### Option 1: Add Inline Task Definition
+If the task definition you enter later uses the `family` parameter, the value provided in that parameter will override the family name you enter in the **ECS Run Task** step.
 
-The Task Definition must follow the syntax described by AWS in [RegisterTaskDefinition](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_RegisterTaskDefinition.html).1. In **Add Task Definition**, click **Inline**.
+### Option 1: Add Inline Task Definition
+
+The Task Definition must follow the syntax described by AWS in [RegisterTaskDefinition](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_RegisterTaskDefinition.html).
+
+1. In **Add Task Definition**, click **Inline**.
 2. Enter the task definition.
 
 For example, here is a task definition from the [AWS sample repo](https://github.com/aws-samples/aws-containers-task-definitions/blob/master/nginx/nginx_ec2.json):
@@ -123,7 +127,9 @@ If you have an existing Task Definition, you can paste it into the JSON. You can
 
 `aws ecs describe-task-definition --task-definition ecsTaskDefinitionName`
 
-The task definitions support Harness [Workflow variables](/article/766iheu1bk-add-workflow-variables-new-template) and any other [Harness variables](/article/9dvxcegm90-variables) available at the point when the ECS Task Run step is executed.### Option 2: Add Remote Task Definition
+The task definitions support Harness [Workflow variables](/article/766iheu1bk-add-workflow-variables-new-template) and any other [Harness variables](/article/9dvxcegm90-variables) available at the point when the ECS Task Run step is executed.
+
+### Option 2: Add Remote Task Definition
 
 The Task Definition must follow the syntax described by AWS in [RegisterTaskDefinition](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_RegisterTaskDefinition.html).1. In **Add Task Definition**, click **Remote**.
 2. In **Source Repository**, select the Harness Source Repo Provider you added. See [Add Source Repo Providers](/article/ay9hlwbgwa-add-source-repo-providers).
@@ -148,7 +154,9 @@ Successfully fetched following files:
   
 Done.
 ```
-The task definitions support Harness [Workflow variables](/article/766iheu1bk-add-workflow-variables-new-template) and any other [Harness variables](/article/9dvxcegm90-variables) available at the point when the ECS Task Run step is executed.#### Multiple Task Definitions
+The task definitions support Harness [Workflow variables](/article/766iheu1bk-add-workflow-variables-new-template) and any other [Harness variables](/article/9dvxcegm90-variables) available at the point when the ECS Task Run step is executed.
+
+#### Multiple Task Definitions
 
 In **File Path**, you can enter multiple task definitions, separated by commas:
 
@@ -204,7 +212,9 @@ If you want to execute AWS CLI commands, ensure that the Delegate host has the A
 
 The **Rollback Containers** step in **Rollback Steps** only applies to the core service deployed by the Workflow. If a Workflow containing only an ECS Task Run step fails, the **Rollback Containers** step is skipped.
 
-![](./static/run-an-ecs-task-38.png)### Review: Tags Support
+![](./static/run-an-ecs-task-38.png)
+
+### Review: Tags Support
 
 Currently, this feature is behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature. Harness will remove Feature Flags for Harness Professional and Essentials editions. Once the feature is released to a general audience, it's available for Trial and Community Editions.You can add ECS tags to your task definition just as you would in the AWS console or CLI.
 

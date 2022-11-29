@@ -120,7 +120,9 @@ In the Service's **Deployment Specification** section, you can select the **User
 
 ![](./static/ami-deployment-16.png)The resulting **User Data** container corresponds to the AWS Launch Instance wizard's **Advanced Details** > **User data** container.
 
-![](./static/ami-deployment-17.png)##### What Can I Add in User Data?
+![](./static/ami-deployment-17.png)
+
+##### What Can I Add in User Data?
 
 You can enter the same shell scripts and cloud-init directives that AWS will accept through its own UI. For details about scripting requirements, formatting, and options, see Amazon's EC2 [User Data and Shell Scripts](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html#user-data-shell-scripts) documentation. When Harness creates a new instance, it will apply your defined User Data.
 
@@ -133,7 +135,9 @@ If your User Data is going to perform actions that require permissions beyond th
 
 **Config Variables** is supported for the AMI Service, but **Config Files** is not supported.In the Service's **Configuration** section, you can add Service-level variables and files. For details about the options here, see Harness' [Configuration Variables and Files](https://docs.harness.io/article/eb3kfl8uls-service-configuration#configuration_variables_and_files) topic.
 
-![](./static/ami-deployment-18.png)#### Referencing Config Variables in User Data
+![](./static/ami-deployment-18.png)
+
+#### Referencing Config Variables in User Data
 
 You can define variables in the Service's **Config Variables** section and reference them in [User Data](#user_data) scripts. Type the prefix: `${serviceVariable.` to prompt Harness to automatically display existing variables. Here is an example:
 
@@ -342,7 +346,9 @@ Either way, your setting here cannot exceed your **Max Instance** capacity set
 
 This diagram illustrates the relationship among Upgrade settings:
 
-![](./static/ami-deployment-35.png)##### Deploy Service Step in Deployment
+![](./static/ami-deployment-35.png)
+
+##### Deploy Service Step in Deployment
 
 Using the **Upgrade AutoScaling Group** configuration shown above—requesting a modest **Desired Instances** count of **1**—here is the **Deploy Service** step in the Harness Deployments page:
 

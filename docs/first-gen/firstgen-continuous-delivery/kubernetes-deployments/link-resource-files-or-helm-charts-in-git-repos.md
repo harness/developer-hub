@@ -37,7 +37,9 @@ In this topic:
 * [Define Kubernetes Manifests](/article/2j2vi5oxrq-define-kubernetes-manifests)
 * [Use a Helm Repository with Kubernetes](/article/hddm3rgf1y-use-a-helm-repository-with-kubernetes)
 
-You can also use a Git repo for your entire Harness Application, and sync it unidirectionally or bidirectionally. For more information, see  [Configuration as Code](/article/htvzryeqjw-configuration-as-code). There is no conflict between the Git repo used for remote **Manifests** files and the Git repo used for the entire Harness Application.### Step 1: Add a Source Repo Provider
+You can also use a Git repo for your entire Harness Application, and sync it unidirectionally or bidirectionally. For more information, see  [Configuration as Code](/article/htvzryeqjw-configuration-as-code). There is no conflict between the Git repo used for remote **Manifests** files and the Git repo used for the entire Harness Application.
+
+### Step 1: Add a Source Repo Provider
 
 To use a remote Git repo for your resource files or Helm charts, you must set up a Harness Source Repo Provider to connect to your repo. To set up the connection, see one of the following:
 
@@ -51,7 +53,9 @@ In your Harness Kubernetes Service, in **Manifests**, click the vertical ellips
 
 ![](./static/link-resource-files-or-helm-charts-in-git-repos-203.png)The **Remote Manifests** dialog appears.
 
-![](./static/link-resource-files-or-helm-charts-in-git-repos-204.png)### Step 3: Select a Manifest Format
+![](./static/link-resource-files-or-helm-charts-in-git-repos-204.png)
+
+### Step 3: Select a Manifest Format
 
 In **Manifest Format**, select one of the following options:
 
@@ -108,7 +112,9 @@ The `--debug` option is not supported.For Kubernetes deployments using Helm char
 
 You will see the outputs for the commands you select in the Harness deployment logs. The output will be part of pre-processing and appear before `helm install/upgrade`.
 
-If you use Helm commands in the Harness Service and in a Workflow deploying that Service, the Helm commands in the Harness Service override the commands in the Workflow.#### Harness Variable Expressions are Supported
+If you use Helm commands in the Harness Service and in a Workflow deploying that Service, the Helm commands in the Harness Service override the commands in the Workflow.
+
+#### Harness Variable Expressions are Supported
 
 You can use [Harness variable expressions](/article/9dvxcegm90-variables) in any of the command options settings. For example, [Service Config variables](/article/q78p7rpx9u-add-service-level-config-variables) and [Workflow variables](/article/766iheu1bk-add-workflow-variables-new-template).
 

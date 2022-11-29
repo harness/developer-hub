@@ -45,7 +45,14 @@ If you just want to provision non-target infrastructure you don't need to map ou
 
 Here is a visual summary of how you use your and Terragrunt and Terraform files with Harness to provision target infra and then deploy to it:
 
-![](./static/map-terragrunt-infrastructure-18.png)Here's a 6 minute video walkthrough of Harness-Terragrunt integration:
+![](./static/map-terragrunt-infrastructure-18.png)
+
+Here's a 6-minute video walkthrough of Harness-Terragrunt integration:
+
+<!-- Video:
+https://harness-1.wistia.com/medias/rpv5vwzpxz-->
+<docvideo src="https://www.youtube.com/embed/HYSi2LAaYdc?feature=oembed" />
+
 
 ### Limitations
 
@@ -80,7 +87,9 @@ You map the Terraform script outputs using this syntax, where `exact_name` is 
 ```
 ${terragrunt.exact_name}
 ```
-When you map a Terraform script output to a Harness Infrastructure Definition setting, the variable for the output, `${terragrunt.exact_name​}`, can be used anywhere in the Workflow that uses that Terragrunt Infrastructure Provisioner.### Option 1: Map a Platform Agnostic Kubernetes Cluster
+When you map a Terraform script output to a Harness Infrastructure Definition setting, the variable for the output, `${terragrunt.exact_name​}`, can be used anywhere in the Workflow that uses that Terragrunt Infrastructure Provisioner.
+
+### Option 1: Map a Platform Agnostic Kubernetes Cluster
 
 Provisioning Kubernetes is supported with the Kubernetes Cluster Cloud Provider and Google Cloud Platform Cloud Provider only. For Azure and AWS, use the Kubernetes Cluster Cloud Provider.Harness supports platform-agnostic Kubernetes cluster connections using its [Kubernetes Cluster Cloud Provider](https://docs.harness.io/article/l68rujg6mp-add-kubernetes-cluster-cloud-provider).
 
@@ -90,13 +99,17 @@ The agnostic Kubernetes deployment type requires mapping for the **Namespace**�
 
 The following example shows the Terraform script outputs used for the mandatory platform-agnostic Kubernetes deployment type fields:
 
-![](./static/map-terragrunt-infrastructure-19.png)### Option 2: ​Map a GCP Kubernetes Infrastructure​
+![](./static/map-terragrunt-infrastructure-19.png)
+
+### Option 2: ​Map a GCP Kubernetes Infrastructure​
 
 The GCP Kubernetes deployment type requires that you map the **Cluster Name** setting.
 
 Provisioning Kubernetes is supported with the Kubernetes Cluster Cloud Provider and Google Cloud Platform Cloud Provider only. For Azure and AWS, use the Kubernetes Cluster Cloud Provider.The following example shows the Terraform script outputs used for the mandatory GCP Kubernetes (GKE) deployment type field:
 
-![](./static/map-terragrunt-infrastructure-20.png)#### Cluster Name Format
+![](./static/map-terragrunt-infrastructure-20.png)
+
+#### Cluster Name Format
 
 If the cluster is multi-zonal, ensure the resolved value of the Terraform output mapped to **Cluster Name** uses the format `region/name`.
 

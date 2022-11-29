@@ -14,7 +14,9 @@ For a quick tutorial, see the [Kubernetes Quickstart](/article/7in9z2boh6-kubern
 
 For detailed instructions on using Kubernetes in Harness, see the [Kubernetes How-tos](/category/n03qfofd5w-kubernetes-deployments).
 
-This guide covers new Harness Kubernetes Deployment **Version 2** features. For **Version 1** Kubernetes and Helm deployment features, see [Harness Kubernetes v1 FAQ](/article/dtu3ud1ok7-kubernetes-and-harness-faq).### Before You Begin
+This guide covers new Harness Kubernetes Deployment **Version 2** features. For **Version 1** Kubernetes and Helm deployment features, see [Harness Kubernetes v1 FAQ](/article/dtu3ud1ok7-kubernetes-and-harness-faq).
+
+### Before You Begin
 
 Before learning about Harness Kubernetes deployments, you should have an understanding of [Harness Key Concepts](/article/4o7oqwih6h-harness-key-concepts).
 
