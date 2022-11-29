@@ -4,11 +4,11 @@ title: ELB AZ Down
 ---
 
 ## Introduction
-- It causes AZ down chaos on a target ELB for a specified duration. It can cause access restriction for a certain availability zones.
-- Tests application sanity and availability also recovery workflows of the application pod attached to the load balancer.
+- It causes AZ down chaos on a target ELB for a specified duration. It can cause access restrictions for certain availability zones.
+- Tests application sanity, availability, and recovery workflows of the application pod attached to the load balancer.
 
 :::tip Fault execution flow chart
-![ELB AZ Down](./static/images/ebs-loss.png)
+![ELB AZ Down](./static/images/elb-az-down.png)
 :::
 
 ## Uses
@@ -18,7 +18,7 @@ title: ELB AZ Down
 <div>
 AZ down is another very common and frequent scenario we find with ELB that can break the connectivity with the given zones and impacts their delivery. Such scenarios can still occur despite whatever availability aids AWS provides.
 
-Detaching the AZ from load balancer will distrupt the performance of an application and impact to smooth working of it. So this category of chaos fault helps to build the immunity on the application undergoing any such scenarios.
+Detaching the AZ from the load balancer will disrupt an application's performance and impact its smooth working. So this category of chaos fault helps build immunity in the application undergoing such scenarios.
 
 </div>
 </details>
@@ -28,7 +28,7 @@ Detaching the AZ from load balancer will distrupt the performance of an applicat
 :::info
 - Ensure that Kubernetes Version > 1.17
 - Ensure that you have sufficient AWS access to attach or detach an AZ from ELB.
-- Ensure the minimum number of AZ is attched to the ELB otherwise the fault will fail to detach the given AZ.
+- Ensure the minimum number of AZ is attached to the ELB otherwise the fault will fail to detach the given AZ.
 - Ensure to create a Kubernetes secret having the AWS access configuration(key) in the `CHAOS_NAMESPACE`. A sample secret file looks like:
 ```yaml
 apiVersion: v1
@@ -65,12 +65,12 @@ stringData:
       </tr>
       <tr>
         <td> LOAD_BALANCER_NAME </td>
-        <td> Provide the name of load balancer whoes AZ has to be detached</td>
+        <td> Provide the name of load balancer whose AZ has to be detached</td>
         <td> Eg. <code>elb-name</code> </td>
       </tr>
       <tr>
         <td> ZONES </td>
-        <td> Provide the target zones that has to be detached from ELB</td>
+        <td> Provide the target zones that have to be detached from ELB</td>
         <td> Eg. <code>us-east-1a</code> </td>
       </tr>
       <tr>
@@ -88,7 +88,7 @@ stringData:
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The time duration for chaos insertion (sec) </td>
+        <td> The time duration for chaos insertion (in seconds) </td>
         <td> Defaults to 30s </td>
       </tr>
       <tr>
