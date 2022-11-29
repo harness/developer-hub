@@ -6,7 +6,7 @@ title: Lambda Delete Event Source Mapping
 ## Introduction
 
 - It causes the removal of event source mapping from lambda function for a certain chaos duration.
-- It checks the performance of the application/service running without the event-source-mapping which can cause missing entries on db for example.
+- It checks the performance of the application/service running without the event-source-mapping which can cause missing entries on DB for example.
 
 :::tip Fault execution flow chart
 ![Lambda Delete Event Source Mapping](./static/images/lambda-delete-event-source-mapping.png)
@@ -19,7 +19,7 @@ title: Lambda Delete Event Source Mapping
 <div>
  Deletion of event source mapping from a lambda function can be very critical, it can lead to scenarios like failing to update DB when an event trigger this can break the service and impacts their delivery. Such scenarios can still occur despite whatever availability aids AWS provides or we determine.
 
-It will help us to know if we do have proper error handling or auto recovery configured for such scenarios. So this category of chaos fault helps you to build the immunity of the application undergoing any such scenarios.
+It will help us know if we have proper error handling or auto recovery configured for such scenarios. So this category of chaos fault helps you build the immunity of the application undergoing such scenarios.
 </div>
 </details>
 
@@ -28,7 +28,7 @@ It will help us to know if we do have proper error handling or auto recovery con
 :::info
 
 - Kubernetes >= 1.17
-- AWS Lambda event source mapping is attched to lambda function.
+- AWS Lambda event source mapping is attached to the lambda function.
 - Kubernetes secret that has AWS access configuration(key) in the `CHAOS_NAMESPACE`. A secret file looks like this:
 
 ```yaml
@@ -51,7 +51,7 @@ stringData:
 
 :::info
 
-- AWS Lambda event source mapping is healthy and attched to lambda function.
+- AWS Lambda event source mapping is healthy and attached to the lambda function.
 
 :::
 
@@ -68,7 +68,7 @@ stringData:
       </tr>
       <tr>
         <td> FUNCTION_NAME </td>
-        <td> Function name of the target lambda function. It support single function name.</td>
+        <td> Function name of the target lambda function. It supports single function name.</td>
         <td> Eg: <code>test-function</code> </td>
       </tr>
       <tr>
