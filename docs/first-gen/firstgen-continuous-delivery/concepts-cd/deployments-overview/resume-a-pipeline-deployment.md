@@ -57,11 +57,11 @@ To resume a Pipeline, a Harness User must belong to a User Group that has the fo
 
 1. From the **Continuous Deployment**, go to your **Deployments**.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/4dvyslwbun/1587148890156/image.png)1. Click on the failed deployment that you would want to resume and click on the **Resume Pipeline** icon.
+![](./static/resume-a-pipeline-deployment-00.png)1. Click on the failed deployment that you would want to resume and click on the **Resume Pipeline** icon.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/4dvyslwbun/1587149213610/image.png)1. In **Resume Pipeline**, select the stage from where you want to resume your Pipeline deployment and click **Resume**.
+![](./static/resume-a-pipeline-deployment-01.png)1. In **Resume Pipeline**, select the stage from where you want to resume your Pipeline deployment and click **Resume**.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/4dvyslwbun/1587149387839/screenshot-2020-04-18-at-12-18-35-am.png)Harness will execute the stage you choose and all the subsequent stages.
+![](./static/resume-a-pipeline-deployment-02.png)Harness will execute the stage you choose and all the subsequent stages.
 
 #### Multiple Workflow Sets Running in Parallel
 
@@ -69,10 +69,10 @@ Resume capability runs at the stage level. Even if you have multiple Workflow se
 
 For example, in the following image, **To-Do List K8s Rolling** and **Failing** are set up to execute in parallel. They belong to the same stage, STAGE 4. Even if one of them fails, both the stages will rerun when you resume the Pipeline deployment.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/4dvyslwbun/1587148890156/image.png)### Option: View Execution History
+![](./static/resume-a-pipeline-deployment-03.png)### Option: View Execution History
 
 1. To view the execution history, go to the **Deployments** page.
-2. Click on the  history button to view the execution history. It lists the detail of the previous executions.![](https://files.helpdocs.io/kw8ldg1itf/articles/4dvyslwbun/1587358706997/image.png)
+2. Click on the  history button to view the execution history. It lists the detail of the previous executions.![](./static/resume-a-pipeline-deployment-04.png)
 
 You can click on the previously failed execution to view its detail.
 

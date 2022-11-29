@@ -34,7 +34,7 @@ Here's a short video showing how to provision and deploy to the same Azure infra
 
 Here's a visual summary of how you use your Azure ARM templates in Harness to provision infra and then deploy to it:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/c7bzn7vjwn/1615332844702/image.png)1. **ARM Infrastructure Provisioner**: add your Azure ARM template as a Harness Infrastructure Provisioner. You add it by connecting to the Git repo for the ARM template. You also set the scope (Resource group, Tenant, etc). You can also enter the ARM template inline without connecting to a Git repo.
+![](./static/azure-arm-and-blueprint-provision-with-harness-19.png)1. **ARM Infrastructure Provisioner**: add your Azure ARM template as a Harness Infrastructure Provisioner. You add it by connecting to the Git repo for the ARM template. You also set the scope (Resource group, Tenant, etc). You can also enter the ARM template inline without connecting to a Git repo.
 2. **​Infrastructure Definition**: define a Harness Infrastructure Definition using the Infrastructure Provisioner. This setup identifies the ARM template's resources as a deployment target.
 3. **Workflow Setup:** when you create your Workflow, you select the Infrastructure Definition you created, identifying it as the target infrastructure for the Workflow deployment.
 4. **Workflow Provisioner Step:** in the Workflow pre-deployment section, you add a **ARM/Blueprint Create Resource** step that uses the ARM Infrastructure Provisioner you set up. The Workflow will build the infrastructure according to your ARM template.
@@ -53,7 +53,7 @@ You can use Azure ARM templates/Blueprint definitions in Harness for general Azu
 2. **Workflow Provisioner Step**: create a Workflow and add an **ARM/Blueprint Create Resource** step in its pre-deployment section that uses the Infrastructure Provisioner. You can use the rest of the Workflow to deploy services, or just omit any further phases and steps.
 3. **Deploy:** the Workflow will build the Azure resources according to your ARM template/Blueprint definition.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/c7bzn7vjwn/1615334078509/image.png)### Limitations
+![](./static/azure-arm-and-blueprint-provision-with-harness-20.png)### Limitations
 
 For ARM, see [Azure Resource Management (ARM) How-tos](/article/qhnnq1mks3-azure-arm-and-blueprint-how-tos).
 

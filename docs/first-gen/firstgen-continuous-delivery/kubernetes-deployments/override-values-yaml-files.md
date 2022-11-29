@@ -45,13 +45,13 @@ Harness Kubernetes Services use values.yaml files in the following scenarios:
 
 1. **Inline**, as part of Harness native manifest editor.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/p453sikbqt/1593639949609/image.png)1. **Remotely**, as part of a Kubernetes spec in a Git repo or a Helm Chart in a Helm repository or Git repo:![](https://files.helpdocs.io/kw8ldg1itf/articles/p453sikbqt/1593640008658/image.png)
+![](./static/override-values-yaml-files-140.png)1. **Remotely**, as part of a Kubernetes spec in a Git repo or a Helm Chart in a Helm repository or Git repo:![](./static/override-values-yaml-files-141.png)
 
 You can override values.yaml files from any of these sources in the Harness Service or in any Harness Environment in the same Harness Application.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/p453sikbqt/1593641263732/image.png)Environment-level values.yaml overrides are set up in the Environments of the same Application:
+![](./static/override-values-yaml-files-142.png)Environment-level values.yaml overrides are set up in the Environments of the same Application:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/p453sikbqt/1593641205705/image.png)Let's look at an advanced scenario where a user needs to override values.yaml files at multiple levels with a specific hierarchy, represented as highest to lowest here:
+![](./static/override-values-yaml-files-143.png)Let's look at an advanced scenario where a user needs to override values.yaml files at multiple levels with a specific hierarchy, represented as highest to lowest here:
 
 1. Environment-level overrides for a specific Service (Service override specific Service 2)
 2. Environment-level overrides for a specific Service (Service override specific Service 1)
@@ -73,11 +73,11 @@ The overwriting is granular. So if your first values.yaml file has a `key:value`
 1. In the **Values YAML Override** section of a Harness Kubernetes Service, click **Add Values**.
 2. In **Store Type**, select **Local** or **Remote**.
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/oha220x80l/1580767355108/image.png)### Option: Use an Inline Override
+![](./static/override-values-yaml-files-144.png)### Option: Use an Inline Override
 
 1. Enter the YAML you want to use to override the Values YAML file (values.yaml).
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/oha220x80l/1580767233711/image.png)1. Enter any new values and click **Submit**. The override is added to **Values YAML Override**.
+![](./static/override-values-yaml-files-145.png)1. Enter any new values and click **Submit**. The override is added to **Values YAML Override**.
 
 ### Option: Use a Single Remote Override
 
@@ -123,13 +123,13 @@ Multiple files can be used. When you enter the file paths, separate the paths us
 
 The latter paths are given higher priority.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/p453sikbqt/1627588950131/clean-shot-2021-07-29-at-13-02-21.png)### Option: Override Files at the Environment Level
+![](./static/override-values-yaml-files-146.png)### Option: Override Files at the Environment Level
 
 You can override the values.yaml settings of a Service in an Environment's **Service Configuration Overrides** settings.
 
 1. In an Environment, in **Service Configuration Overrides**, click **Add Configuration Overrides**.
 2. In **Service(s)**, click **All Services** or the name of a specific **Service**.
-3. In **Override Type**, select **Values YAML**.![](https://files.helpdocs.io/kw8ldg1itf/articles/p453sikbqt/1593642488849/image.png)
+3. In **Override Type**, select **Values YAML**.![](./static/override-values-yaml-files-147.png)
 4. Select **Inline** or **Remote**. For **Inline**, enter the YAML you want to use to override the Service-level values.yaml file(s).
 5. For **Remote**, in **Git Connector**, select the Git repo you added as a [Source Repo Provider](/article/ay9hlwbgwa-add-source-repo-providers).
 6. Select either **Use** **latest commit from branch** and enter in the branch name, or **Use specific commit ID** and enter in the **commit ID**.
@@ -139,9 +139,9 @@ This is a mandatory setting. You cannot leave **File Path(s)** empty.
 
 When you're done, the override will look something like this:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/p453sikbqt/1593642819623/image.png)Click **Submit**. The override is listed in the **Service Configuration Overrides** section:
+![](./static/override-values-yaml-files-148.png)Click **Submit**. The override is listed in the **Service Configuration Overrides** section:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/p453sikbqt/1593642864670/image.png)### Option: Use Variable Expressions in Override File Settings
+![](./static/override-values-yaml-files-149.png)### Option: Use Variable Expressions in Override File Settings
 
 You can use [Harness variable expressions](/article/9dvxcegm90-variables), such as [Workflow variables](/article/766iheu1bk-add-workflow-variables-new-template), in the names and values of the values.yaml files you use as overrides.
 
@@ -155,13 +155,13 @@ But now you want to provide the path for the second file (k8s/multiple-overrides
 
 In the Workflow that deploys the Service, you simply create a Workflow variable named **filePath**:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/p453sikbqt/1593643314130/image.png)This Workflow variable has a default value, but you can simply leave it blank.
+![](./static/override-values-yaml-files-150.png)This Workflow variable has a default value, but you can simply leave it blank.
 
 Now, in your Service Configuration **Values YAML Override**, in **File Path(s)**, you can replace the second file path with the Workflow variable expression `${workflow.variables.filePath}`:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/p453sikbqt/1593643456477/image.png)Now, when you deploy the Workflow, you can provide the file path for that values.yaml override:
+![](./static/override-values-yaml-files-151.png)Now, when you deploy the Workflow, you can provide the file path for that values.yaml override:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/p453sikbqt/1593643562518/image.png)### Next Steps
+![](./static/override-values-yaml-files-152.png)### Next Steps
 
 * [Define Kubernetes Manifests](/article/2j2vi5oxrq-define-kubernetes-manifests)
 * [Pass Variables between Workflows](/article/gkmgrz9shh-how-to-pass-variables-between-workflows)

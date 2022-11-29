@@ -64,7 +64,7 @@ When Harness fetches the chart, it runs the `helm pull` command and fetches and 
 
 Harness then compares the chart version from the Chart.yaml file (present in specified chart directory) with the version you specify in **Remote Manifests** > **Manifest Format** > **Helm Chart from Helm Repository** > **Version**.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/p5om530pe0/1648235744600/clean-shot-2022-03-25-at-12-15-34.png)If an incorrect or non-existing chart version is provided, Helm (and, consequently, Harness) fetches a random chart.
+![](./static/deploy-a-helm-chart-as-an-artifact-36.png)If an incorrect or non-existing chart version is provided, Helm (and, consequently, Harness) fetches a random chart.
 
 For example, suppose we have a repo with the following chart versions:                                
 
@@ -85,7 +85,7 @@ When Harness fetches the chart, it runs the `helm pull` command and fetches and 
 
 Harness then compares the chart version from the Chart.yaml file (present in specified chart directory) with the version you specify in **Remote Manifests** > **Manifest Format** > **Helm Chart from Helm Repository** > **Version**.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/p5om530pe0/1648235744600/clean-shot-2022-03-25-at-12-15-34.png)If the version you entered does not match the chart Harness pulls, Harness will fail deployment.
+![](./static/deploy-a-helm-chart-as-an-artifact-37.png)If the version you entered does not match the chart Harness pulls, Harness will fail deployment.
 
 If no version is entered, Harness does not check for a match.
 
@@ -107,11 +107,11 @@ In **Deployment Type**, select either **Kubernetes** or **Native Helm**. If you 
 
 Enable the **Artifact from Manifest** setting. This setting tells Harness that you will use the **Manifest Source** in the Service to link to your remove chart.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/p5om530pe0/1625784585561/clean-shot-2021-07-08-at-15-49-25.png)Click **Submit**. The new Service is created.
+![](./static/deploy-a-helm-chart-as-an-artifact-38.png)Click **Submit**. The new Service is created.
 
 Normally, there would be a **Manifests** section in your Kubernetes Service or a **Chart Specification** section in your Native Helm Service; however, since you are using the **Manifest Source** for the chart, those sections are omitted.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/p5om530pe0/1625784635535/clean-shot-2021-07-08-at-15-50-26.png)### Step 3: Add the Helm Chart
+![](./static/deploy-a-helm-chart-as-an-artifact-39.png)### Step 3: Add the Helm Chart
 
 The Helm chart is added the same way in both the Harness Kubernetes or Native Helm Services.
 
@@ -123,7 +123,7 @@ The steps are the same for Kubernetes and Native Helm. The only difference is th
 
 Here's the Remote Manifests settings from the Kubernetes Service **Manifest Source**:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/p5om530pe0/1625785075621/clean-shot-2021-07-08-at-15-57-46.png)Do the following:
+![](./static/deploy-a-helm-chart-as-an-artifact-40.png)Do the following:
 
 In **Manifest Format**, select **Helm Chart from Helm Repository**.
 
@@ -137,15 +137,15 @@ Enable the **Skip Versioning for Service** option to skip versioning of ConfigMa
 
 When you are done, it will look something like this:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/p5om530pe0/1625785351571/clean-shot-2021-07-08-at-16-02-22.png)Click **Submit**.
+![](./static/deploy-a-helm-chart-as-an-artifact-41.png)Click **Submit**.
 
 The remote Helm chart repository and chart is listed as a **Manifest Source**.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/p5om530pe0/1625785411710/clean-shot-2021-07-08-at-16-03-23.png)### Option: Multiple Manifest Sources
+![](./static/deploy-a-helm-chart-as-an-artifact-42.png)### Option: Multiple Manifest Sources
 
 You can add multiple charts by adding multiple Manifest Sources.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/p5om530pe0/1625785605449/clean-shot-2021-07-08-at-16-06-36.png)When you deploy the Service, you can specify which chart to use.
+![](./static/deploy-a-helm-chart-as-an-artifact-43.png)When you deploy the Service, you can specify which chart to use.
 
 ### Option: Pull a Specific Chart Version
 
@@ -154,14 +154,14 @@ When you add a Helm chart as a Manifest Source to the Service, Harness will pull
 To view the manifest history,  do the following:
 
 1. Click **Manifest History**. This assistant lists the chart names and versions Harness has pulled.
-2. In the **Manifest History** assistant, click **Manually pull Manifest**. The **Manually Select A Manifest** dialog appears.![](https://files.helpdocs.io/kw8ldg1itf/articles/p5om530pe0/1643957786167/screenshot-2022-02-04-at-12-25-44-pm.png)
+2. In the **Manifest History** assistant, click **Manually pull Manifest**. The **Manually Select A Manifest** dialog appears.![](./static/deploy-a-helm-chart-as-an-artifact-44.png)
 3. In **Manifest Source**, click the Manifest Source you added to the Service.
 4. In **Manifest**, select a manifest version, and then click **SUBMIT**.
 5. Click **Manifest History** to view the history.
 
 Now all available manifest charts and version history metadata are displayed.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/p5om530pe0/1643880759416/screenshot-2022-02-03-at-3-01-59-pm.png)### Option: Values YAML Override
+![](./static/deploy-a-helm-chart-as-an-artifact-45.png)### Option: Values YAML Override
 
 In the **Values YAML Override** section, you can enter the YAML for your values.yaml file. The values.yaml file contains the default values for a chart. You will typically have this file in the repo for your chart, but you can add it in the Harness service instead.
 
@@ -350,7 +350,7 @@ Once you add the Workflow to a stage in a Pipeline, you must select the Helm cha
 
 The steps are the same as when deploying the Workflow. You select a chart version:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/p5om530pe0/1603492609652/image.png)#### Trigger
+![](./static/deploy-a-helm-chart-as-an-artifact-46.png)#### Trigger
 
 You can create a Trigger for any Workflow or Pipeline to run when a new version of the chart is published.
 

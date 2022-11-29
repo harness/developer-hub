@@ -60,7 +60,7 @@ http:
 
 `${infra.kubernetes.namespace}` - The Harness variable `${infra.kubernetes.namespace}` refers to the namespace entered in the Harness Environment Infrastructure Definition settings **Namespace** field:
 
-![](https://files.helpdocs.io/kw8ldg1itf/other/1568672205379/image.png)You can use `${infra.kubernetes.namespace}` in your Harness Service **Manifests** definition of a Kubernetes Namespace to reference the name you entered in the Infrastructure Definition **Namespace** field. When the Harness Service is deployed to that Infrastructure Definition, it will create a Kubernetes namespace using the value you entered in the Infrastructure Definition **Namespace** field.
+![](./static/workflow-variables-expressions-52.png)You can use `${infra.kubernetes.namespace}` in your Harness Service **Manifests** definition of a Kubernetes Namespace to reference the name you entered in the Infrastructure Definition **Namespace** field. When the Harness Service is deployed to that Infrastructure Definition, it will create a Kubernetes namespace using the value you entered in the Infrastructure Definition **Namespace** field.
 
 In the values.yaml file, it will look like this:
 

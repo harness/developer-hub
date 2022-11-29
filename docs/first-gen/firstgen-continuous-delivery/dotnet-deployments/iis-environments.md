@@ -18,7 +18,7 @@ To add an environment for your IIS Website, do the following:
 
 1. In your application, click **Environments**. The Environments page for the applications appears.
 2. Click **Add Environment**. The **Environment** dialog appears.
-3. Enter a name for your deployment environment, such as **IIS-EC2**, and then, in **Environment Type**, click **Non-Production** or **Production**. When you are finished, click **SUBMIT**. The Environment page appears.![](https://files.helpdocs.io/kw8ldg1itf/articles/pvjfe077ii/1535411999410/image.png)Next, you will add an Infrastructure Definition using the Cloud Provider you added to define where your IIS Website will be deployed.
+3. Enter a name for your deployment environment, such as **IIS-EC2**, and then, in **Environment Type**, click **Non-Production** or **Production**. When you are finished, click **SUBMIT**. The Environment page appears.![](./static/iis-environments-13.png)Next, you will add an Infrastructure Definition using the Cloud Provider you added to define where your IIS Website will be deployed.
 
 ### Add an Infrastructure Definition
 
@@ -28,7 +28,7 @@ You define the Kubernetes cluster to use for deployment as an ​Infrastructure 
 
 To add the Infrastructure Definition, do the following:
 
-1. In the Harness Environment, click **Add Infrastructure Definition**. The **Infrastructure Definition** dialog appears.![](https://files.helpdocs.io/kw8ldg1itf/other/1568398274729/image.png)
+1. In the Harness Environment, click **Add Infrastructure Definition**. The **Infrastructure Definition** dialog appears.![](./static/iis-environments-14.png)
 2. In **Name**, enter the name you will use to select this Infrastructure Definition when you create a Workflow.
 3. In **Cloud Provider Type**, select the type of Cloud Provider you added earlier, such as **Amazon Web Services**, **Microsoft Azure**, etc. In the following steps we use the **Amazon Web Services** type, and so the settings are specific to AWS.
 4. In **Deployment Type**, select **Windows Remote Management (WinRM)**.
@@ -40,10 +40,10 @@ To add the Infrastructure Definition, do the following:
 Host Name Convention is used to derive the instance(s) hostname. The hostname that results from the convention should be same as the output of the command **hostname** on the host itself.  
 For information on obtaining the AWS instance hostname, see [Instance Metadata and User Data](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html) from AWS.
 10. In **Scope to specific Services**, select the Harness Service you created earlier.  
-The Infrastructure Definition will look something like this:![](https://files.helpdocs.io/kw8ldg1itf/other/1568413770282/image.png)
+The Infrastructure Definition will look something like this:![](./static/iis-environments-15.png)
 11. Click **Submit**. The new Infrastructure Definition is added to the Harness Environment.
 
-![](https://files.helpdocs.io/kw8ldg1itf/other/1568413816000/image.png)That is all you have to do to set up the deployment Environment in Harness.
+![](./static/iis-environments-16.png)That is all you have to do to set up the deployment Environment in Harness.
 
 Now that you have the Service and Environment set up. Now you can create the deployment Workflow in Harness.
 
@@ -72,7 +72,7 @@ This following table describes the fields for an AWS EC2 Infrastructure Definiti
 
 You can locate most of the Azure information on the VM overview page:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/tr8ddfm4lz/1540422644320/image.png)This following table describes the fields for an Azure Infrastructure Definition.
+![](./static/iis-environments-17.png)This following table describes the fields for an Azure Infrastructure Definition.
 
 
 
@@ -93,7 +93,7 @@ You can locate most of the Azure information on the VM overview page:
 
 Currently, support for Config Files override is behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature. Feature Flags can only be removed for Harness Professional and Essentials editions. Once the feature is released to a general audience, it's available for Trial and Community Editions.You can configure your Environment to override the **Config Variables** and **Config Files** in the IIS Services that use the Environment.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/itseg37bji/1615827661509/image.png)For more information, see [Override a Service Configuration in an Environment](https://docs.harness.io/article/4m2kst307m-override-service-files-and-variables-in-environments).
+![](./static/iis-environments-18.png)For more information, see [Override a Service Configuration in an Environment](https://docs.harness.io/article/4m2kst307m-override-service-files-and-variables-in-environments).
 
 ### Next Step
 

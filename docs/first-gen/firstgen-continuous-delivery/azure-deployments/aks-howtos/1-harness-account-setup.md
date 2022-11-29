@@ -32,12 +32,12 @@ If you choose to use the Harness Azure Cloud Provider to connect to AKS, then yo
 
 To set up the ACR container with the Azure App and **Reader** role, do the following:
 
-1. In the ACR container, click **Access control (IAM)**.![](https://files.helpdocs.io/kw8ldg1itf/articles/v13edrsui8/1551984282309/image.png)
-2. Click **Add a role assignment**.![](https://files.helpdocs.io/kw8ldg1itf/articles/v13edrsui8/1551984336847/image.png)
+1. In the ACR container, click **Access control (IAM)**.![](./static/1-harness-account-setup-16.png)
+2. Click **Add a role assignment**.![](./static/1-harness-account-setup-17.png)
 3. In **Role**, enter **Reader**.
 4. In **Assign access to**, select **Azure AD user, group, or service principal**.
 5. In **Select**, enter the name of the Azure App that you will use to connect Harness. In this example, the App is name **doc-app**.
-6. Click the name of the App. When you are finished, the settings will look something like this:![](https://files.helpdocs.io/kw8ldg1itf/articles/v13edrsui8/1551984520090/image.png)
+6. Click the name of the App. When you are finished, the settings will look something like this:![](./static/1-harness-account-setup-18.png)
 7. Click **Save**.
 
 When you add the Azure Cloud Provider later in this guide, you will use the Client ID (Application ID), Tenant ID (also called the Directory ID), and a Key from that App to set up the Azure Cloud Provider. Harness will use the Reader role attached to the Azure App to connect to your ACR container.
@@ -52,7 +52,7 @@ Here is a quick summary of the steps for installing the Kubernetes Delegate in y
 	1. In Harness, click **Setup**.
 	2. Click **Harness Delegates**.
 	3. Click **Download Delegate**, and then click **Kubernetes YAML**.  
-	The **Delegate Setup** dialog appears.![](https://files.helpdocs.io/kw8ldg1itf/articles/z75kx7sur5/1589498493369/image.png)
+	The **Delegate Setup** dialog appears.![](./static/1-harness-account-setup-19.png)
 	4. In **Name**, enter a name for your Delegate, for example **harness-sample-k8s-delegate**. You will use this name later when selecting this Delegate in the **Kubernetes Cluster Cloud Provider** dialog.
 	5. In **Profile**, select a Profile for the Delegate. The default is named **Primary**.
 	6. Click **Download**. The Kubernetes file is downloaded to your computer.
@@ -92,7 +92,7 @@ Here is a quick summary of the steps for installing the Kubernetes Delegate in y
 	`harness-sample-k8s-delegate-vkjrqz-0 1/1 Running 0 57s`
 3. View the Delegate in Harness. In Harness, view the **Harness Delegates** page. Once the Delegate is installed, the Delegate is listed in the Installations page in a few moments.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/v13edrsui8/1551991105911/image.png)### Cloud Providers Setup
+![](./static/1-harness-account-setup-20.png)### Cloud Providers Setup
 
 In this section, we will add a Harness Kubernetes Cluster Cloud Provider and a Azure Cloud Provider to your account.
 
@@ -112,10 +112,10 @@ To set up the Kubernetes Cluster Cloud Provider, do the following:
 4. In **Type**, select **Kubernetes Cluster**. The Cloud Provider dialog changes to display the Kubernetes Cluster settings.
 5. In **Display Name**, enter a name for the Cloud Provider, such as **Harness Sample K8s Cloud Provider**. You will use this name when setting up the Infrastructure Definition settings in Harness later.
 6. Select **Inherit from selected Delegate**.
-7. In **Delegate Name**, select the name of the Delegate you installed in your cluster earlier. When you are finished, the dialog will look something like this:![](https://files.helpdocs.io/kw8ldg1itf/articles/z75kx7sur5/1587667197457/image.png)
+7. In **Delegate Name**, select the name of the Delegate you installed in your cluster earlier. When you are finished, the dialog will look something like this:![](./static/1-harness-account-setup-21.png)
 8. Click **TEST** to verify the settings, and then click **SUBMIT**. The Kubernetes Cloud Provider is added.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/v13edrsui8/1551992399828/image.png)#### Azure Cloud Provider
+![](./static/1-harness-account-setup-22.png)#### Azure Cloud Provider
 
 The Azure Cloud Provider connects to the ACR container. The Azure Cloud Provider requires the following App Registration information: Client ID (Application ID), Tenant ID (also called the Directory ID), and a Key. The Azure App you use for this connection must have the **Reader** role on the ACR container you want to use.
 
@@ -133,10 +133,10 @@ To set up the Azure Cloud Provider, do the following:
 To access resources in your Azure subscription, you must assign the Azure App registration using this Client ID to a role in that subscription. Later, when you set up an Artifact Source in a Harness Source, you will select a subscription. If the Azure App registration using this Client ID is not assigned a role in a subscription, no subscriptions will be available. For more information, see [Assign the application to a role](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) from Microsoft.
 7. In **Tenant ID**, enter the Tenant ID of the Azure Active Directory in which you created your application. This is also called the **Directory ID**. For more information, see [Get tenant ID](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-tenant-id) from Azure.
 8. In **Key**, enter the authentication key for your application. This is found in **Azure Active Directory**, **App Registrations**. Doubleclick the App name. Click **Settings**, and then click **Keys**. You cannot view existing key values, but you can create a new key. For more information, see [Get application ID and authentication key](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-application-id-and-authentication-key) from Azure. Azure has previewed a new App Registrations blade that displays keys in the **Certificates & secrets** tab, under **Client secrets**.
-9. When you are finished the Azure Cloud Provider dialog will look something like this:![](https://files.helpdocs.io/kw8ldg1itf/articles/z75kx7sur5/1580237170193/image.png)
+9. When you are finished the Azure Cloud Provider dialog will look something like this:![](./static/1-harness-account-setup-23.png)
 10. Click **TEST** to verify the settings, and then click **SUBMIT**. The Azure Cloud Provider is added.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/v13edrsui8/1551992979375/image.png)You're all connected! Now you can start using Harness to set up CD.
+![](./static/1-harness-account-setup-24.png)You're all connected! Now you can start using Harness to set up CD.
 
 ### Next Step
 

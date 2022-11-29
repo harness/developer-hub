@@ -10,9 +10,9 @@ helpdocs_is_published: true
 
 All of the Harness configuration steps in this guide can be performed using code instead of the Harness user interface. You can view or edit the YAML for any Harness configuration by clicking the **YAML>** button on any page.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/zmrvylwqds/1539298950463/image.png)When you click the button, the Harness code editor appears.
+![](./static/ecs-setup-in-yaml-48.png)When you click the button, the Harness code editor appears.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/az9h2n0usr/1546990219012/image.png)For example, here is the YAML for the Daemon Scheduler, Basic Workflow we set up in this guide.
+![](./static/ecs-setup-in-yaml-49.png)For example, here is the YAML for the Daemon Scheduler, Basic Workflow we set up in this guide.
 
 
 ```

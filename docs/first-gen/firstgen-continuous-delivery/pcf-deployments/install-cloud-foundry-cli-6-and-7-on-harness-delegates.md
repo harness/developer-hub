@@ -61,7 +61,7 @@ In these cases, the Delegate might be looking for the old version. If so, you wi
 
 After you have installed the CF CLI on a Delegate using a [Delegate Profile](/article/h9tkwmkrm7-delegate-installation#delegate_profiles), you must select the CF CLI version in the Harness Service you are using for your TAS deployment.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/8tsb75aldu/1643395908566/clean-shot-2022-01-28-at-10-51-10.png)* **CF CLI 6:** By default, Harness uses CF CLI 6. If you are using CF CLI 6, then ensure that the **Enable CF CLI 7** setting is not selected.
+![](./static/install-cloud-foundry-cli-6-and-7-on-harness-delegates-22.png)* **CF CLI 6:** By default, Harness uses CF CLI 6. If you are using CF CLI 6, then ensure that the **Enable CF CLI 7** setting is not selected.
 * **CF CLI 7:** To use CF CLI 7, select **Enable CF CLI 7**.
 
 Currently, the **Enable CF CLI 7** feature is behind the Feature Flag `CF_CLI7`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.### Install the CF CLI on Harness Delegates using a Package Manager

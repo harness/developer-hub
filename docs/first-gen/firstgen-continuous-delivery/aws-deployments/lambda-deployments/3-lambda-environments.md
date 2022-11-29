@@ -38,7 +38,7 @@ The following procedure creates an Environment for the Lambda Service type, as s
 2. Click **Add Environment**. The **Environment** dialog appears.
 3. In **Name**, enter a name that describes the deployment environment, for example, **Lambda**.
 4. In **Environment Type**, select **Non-Production**.
-5. Click **SUBMIT**. The new **Environment** page appears.![](https://files.helpdocs.io/kw8ldg1itf/other/1568774865230/image.png)
+5. Click **SUBMIT**. The new **Environment** page appears.![](./static/3-lambda-environments-23.png)
 
 ### Step 2: Define the Lambda Infrastructure
 
@@ -48,10 +48,10 @@ A Harness Infrastructure Definition defines the AWS VPC, subnets, and security g
 
 To add the Infrastructure Definition:
 
-1. In the Harness Environment, click **Add Infrastructure Definition**. The **Infrastructure Definition** dialog appears.![](https://files.helpdocs.io/kw8ldg1itf/other/1568700465102/image.png)The **Infrastructure Definition** dialog appears.![](https://files.helpdocs.io/kw8ldg1itf/other/1568700582279/image.png)
+1. In the Harness Environment, click **Add Infrastructure Definition**. The **Infrastructure Definition** dialog appears.![](./static/3-lambda-environments-24.png)The **Infrastructure Definition** dialog appears.![](./static/3-lambda-environments-25.png)
 2. Enter a **Name** that will identify this Infrastructure Definition when you [add it to a Workflow](/article/491a6etr7a-4-lambda-workflows-and-deployments).
 3. In **Cloud Provider Type**, select **Amazon Web Services**.
-4. In **Deployment Type**, select **AWS Lambda**. This expands the **Infrastructure Definition** dialog to look something like this:![](https://files.helpdocs.io/kw8ldg1itf/other/1568758647596/image.png)
+4. In **Deployment Type**, select **AWS Lambda**. This expands the **Infrastructure Definition** dialog to look something like this:![](./static/3-lambda-environments-26.png)
 5. Select **Use** **Already Provisioned Infrastructure**, and follow the [Define a Provisioned Infrastructure](#define_provisioned_infrastructure) steps below.
 
 If you are using a configured Harness [Infrastructure Provisioner](/article/o22jx8amxb-add-an-infra-provisioner), instead select **Map Dynamically Provisioned Infrastructure**, and then select the provisioner. The settings below are for **Use Already Provisioned Infrastructure**.#### Define a Provisioned Infrastructure
@@ -79,7 +79,7 @@ Lambda runs your function code securely within a VPC by default. However, to ena
 
 Scoping is a recommended step, to make this Infrastructure Definition available to any Workflow or Phase that uses your Lambda Service.When you are done, the dialog will look something like this:
 
-![](https://files.helpdocs.io/kw8ldg1itf/other/1568774468395/image.png)1. Click **Submit**. The new Infrastructure Definition is added to the Harness environment.
+![](./static/3-lambda-environments-27.png)1. Click **Submit**. The new Infrastructure Definition is added to the Harness environment.
 
 ### Option: Provision the Lambda Infrastructure
 

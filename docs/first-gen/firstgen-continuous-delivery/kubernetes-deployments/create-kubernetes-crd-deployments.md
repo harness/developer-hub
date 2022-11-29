@@ -248,13 +248,13 @@ You add the manifest for your custom object in a Harness Service, along with the
 
 When you are done your Service will look something like this:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/pmmfqqo1uh/1598041809772/image.png)### Step 3: Define Target Cluster
+![](./static/create-kubernetes-crd-deployments-215.png)### Step 3: Define Target Cluster
 
 In the same Harness Application, create your Kubernetes target cluster as described in [Define Your Kubernetes Target Infrastructure](/article/u3rp89v80h-define-your-kubernetes-target-infrastructure).
 
 Ensure that the **Release Name** matches the name in the manifest's label, as described in [Review: Required Custom Resource Annotations and Labels](#review_required_custom_resource_annotations_and_labels):
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/pmmfqqo1uh/1598042036463/image.png)### Step 4: Create Workflow for Custom Resource Deployment
+![](./static/create-kubernetes-crd-deployments-216.png)### Step 4: Create Workflow for Custom Resource Deployment
 
 Only the Kubernetes Rolling deployment method is supported for CRDs. See [Create a Kubernetes Rolling Deployment](/article/dl0l34ge8l-create-a-kubernetes-rolling-deployment).
 

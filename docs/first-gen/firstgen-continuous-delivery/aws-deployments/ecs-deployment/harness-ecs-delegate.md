@@ -51,7 +51,7 @@ You can also use a Shell Script Delegate on an EC2 instance that assumes the sam
 
 
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/az9h2n0usr/1560975059823/image.png)
+![](./static/harness-ecs-delegate-11.png)
 
 The Harness ECS Delegate requires an IAM role and policies to execute its deployment tasks (API calls, etc). For ECS clusters, there are two IAM roles to consider:
 
@@ -106,7 +106,7 @@ The following procedure describes how to set up the ECS Delegate for the common 
 	  
 	
 	
-	![](https://files.helpdocs.io/kw8ldg1itf/articles/wrm6hpyrjl/1589498157475/image.png)
+	![](./static/harness-ecs-delegate-12.png)
 	3. In **Delegate Group Name**, enter the name for your Delegate. When you add more ECS Delegates in the future, you can add to this group. All Delegates in this group use the same Task Definition, and share the same Delegate settings,
 	 including Selectors. When you change a Selector, it will apply to all Delegates running under that Group.
 	4. In **Profile**, select a Profile for the Delegate. The default is named **Primary**. For more information, see
@@ -213,7 +213,7 @@ The following procedure describes how to set up the ECS Delegate for the common 
 5. View the new ECS Delegate in Harness Manager.
 	1. In **Harness Manager**, in the **Installations** page. When the ECS Delegate connects to the Harness Manager, it is listed with a status of **Connected**:
 	 
-	![](https://files.helpdocs.io/kw8ldg1itf/articles/vea9jn2wkl/1551295797757/image.png)
+	![](./static/harness-ecs-delegate-13.png)
 	Congratulations! You are done installing and running the ECS Delegate.
 	   
 	

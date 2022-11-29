@@ -67,7 +67,7 @@ Currently, Harness supports Bash shell scripts. PowerShell will be added soon.Th
 ```
 Next, in a Harness Infrastructure Definition, you map the keys from the JSON host objects to Shell Script Provisioner fields to tell Harness where to obtain the values for your infrastructure settings, such as hostname and subnet.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/drculfgwwn/1586112299030/image.png)At runtime, Harness queries your provisioner using your script and stores the returned JSON collection on the Harness Delegate as a file. Harness then uses the JSON key values to define the instructure for your deployment environment as it creates that environment in your target platform.
+![](./static/shell-script-provisioning-with-harness-00.png)At runtime, Harness queries your provisioner using your script and stores the returned JSON collection on the Harness Delegate as a file. Harness then uses the JSON key values to define the instructure for your deployment environment as it creates that environment in your target platform.
 
 Here is a high-level summary of the setup steps involved:
 

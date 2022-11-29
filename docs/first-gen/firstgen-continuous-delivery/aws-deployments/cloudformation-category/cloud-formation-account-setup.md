@@ -42,7 +42,7 @@ This topic describes the Harness account setup steps that you perform before you
 
 Once your Harness account is set up, CloudFormation provisioning in Harness is as follows:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/308nblm0vc/1589571720467/image.png)### Review: Limitations
+![](./static/cloud-formation-account-setup-00.png)### Review: Limitations
 
 * Harness CloudFormation integration does not support AWS Serverless Application Model (SAM) templates. Only standard [AWS CloudFormation templates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-whatis-concepts.html#w2ab1b5c15b7).
 * Harness Infrastructure Provisioners are only supported in Canary and Multi-Service deployment types. For AMI deployments, Infrastructure Provisioners are also supported in Blue/Green deployments.
@@ -59,12 +59,12 @@ Ideally, this is the same subnet as the instances you will provision, but if you
 
 To set up the Delegate, do the following:
 
-1. Install the Delegate on a host where it will have connectivity to your provisioned instances. To install a Delegate, follow the steps in [Delegate Installation and Management](/article/h9tkwmkrm7-delegate-installation) using a Shell Script or ECS Delegate. Once the Delegate is installed, it will be listed on the **Harness Delegates** page.![](https://files.helpdocs.io/kw8ldg1itf/articles/78g32khjcu/1559344455345/image.png)
+1. Install the Delegate on a host where it will have connectivity to your provisioned instances. To install a Delegate, follow the steps in [Delegate Installation and Management](/article/h9tkwmkrm7-delegate-installation) using a Shell Script or ECS Delegate. Once the Delegate is installed, it will be listed on the **Harness Delegates** page.![](./static/cloud-formation-account-setup-01.png)
 2. When you add a Harness AWS Cloud Provider, you will set up the Cloud Provider to assume the IAM role used by the Delegate. This is done using a Delegate Selector. For steps on installing a Delegate Selector, see [Delegate Installation and Management](/article/h9tkwmkrm7-delegate-installation).
 
 When you are done, the Delegate listing will look something like this:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/78g32khjcu/1585940704811/image.png)#### Permissions
+![](./static/cloud-formation-account-setup-02.png)#### Permissions
 
 The Delegate requires permissions according to the target deployment service (ECS, EC2, Lambda).
 
@@ -105,7 +105,7 @@ Just ensure that the IAM role assigned to the Delegate host (EC2 or ECS) has **c
 
 CloudFormation templates are added to Harness by either pasting them into a text field, using an AWS S3 URL that points to the template, or using a Git repo.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/308nblm0vc/1589835221717/image.png)Setting up and AWS S3 and Git connections are described below.
+![](./static/cloud-formation-account-setup-03.png)Setting up and AWS S3 and Git connections are described below.
 
 Connections to AWS CodeCommit are made in Harness Source Repo Providers, not as an AWS Cloud Provider.#### Option 1: Use AWS S3
 

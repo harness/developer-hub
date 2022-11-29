@@ -34,7 +34,7 @@ We are using IIS artifact types in this topic, but Harness WinRM Services suppor
 2. Give the service a name, such as **IIS-website**.
 3. In **Deployment Type**, select **Windows Remote Management (WinRM)**.
 4. In **Artifact Type**, select **IIS Website**.  
-There are several types supported, including **Other**, which you can use for a Windows-native application:![](https://files.helpdocs.io/kw8ldg1itf/articles/mm84gjllge/1610560710998/image.png)
+There are several types supported, including **Other**, which you can use for a Windows-native application:![](./static/2-services-for-iis-net-31.png)
 5. Click **SUBMIT**. The service is displayed. In **Service Overview** you can see the name and type of your service.
 6. To add the artifact source for your IIS website, click **Add Artifact Source**. A list of artifact source types appears.
 7. Click the artifact source type. The artifact sources consist of the cloud providers and build servers you added earlier. For this guide, we will use **Amazon S3**. Harness also supports other popular Windows protocols such as SMB and SFTP.
@@ -42,9 +42,9 @@ There are several types supported, including **Other**, which you can use for a 
 9. In **Bucket**, select one of the buckets in the S3. The list is automatically populated by Harness.
 10. In **Artifact Path**, select the file(s) for your IIS website. The list is automatically populated by Harness. For this guide, we will use a zip file.  
 **Harness** **uses Metadata-only:** For WinRM connections, Harness does not use direct artifact copy when you deploy. Harness executes Powershell scripts on the target host(s) to download the artifact.  
-Metadata is used to download the artifact directly onto the Windows Host during deployment runtime. For this reason, ensure that the target host has connectivity to the Artifact Server before deploying.When you are finished, the Artifact Source will look something like this:![](https://files.helpdocs.io/kw8ldg1itf/articles/mm84gjllge/1580246117923/image.png)
-11. Click **SUBMIT**. Harness builds the service, including the **Deployment Specification**.![](https://files.helpdocs.io/kw8ldg1itf/articles/tr8ddfm4lz/1546037278903/image.png)The **Deployment Specification** section is automatically filled with the Install IIS Website template, which pulls the artifact, expands it, creates the Application Pool (AppPool) and creates the website. Later you will create the environment where the scripts will be executed.  
-To add more scripts, mouseover anywhere in the script and click the plus icon:![](https://files.helpdocs.io/kw8ldg1itf/articles/pvjfe077ii/1535411820252/image.png)
+Metadata is used to download the artifact directly onto the Windows Host during deployment runtime. For this reason, ensure that the target host has connectivity to the Artifact Server before deploying.When you are finished, the Artifact Source will look something like this:![](./static/2-services-for-iis-net-32.png)
+11. Click **SUBMIT**. Harness builds the service, including the **Deployment Specification**.![](./static/2-services-for-iis-net-33.png)The **Deployment Specification** section is automatically filled with the Install IIS Website template, which pulls the artifact, expands it, creates the Application Pool (AppPool) and creates the website. Later you will create the environment where the scripts will be executed.  
+To add more scripts, mouseover anywhere in the script and click the plus icon:![](./static/2-services-for-iis-net-34.png)
 
 By default the Install IIS Website Template is *linked* to the template in the Template Library and its scripts cannot be edited in the Service (although its variables may be edited).
 
@@ -63,7 +63,7 @@ For more information on templates, see [Use Templates](/article/ygi6d8epse-use-t
 
 To edit the variables used in the Install IIS Website Template in the Service, click **Variables**. The **Edit Command** dialog appears.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/mm84gjllge/1580246255030/image.png)Add values for the variables as needed. The variables used in the Install IIS Website Template in the Service can be modified without influencing the Install IIS Website Template in the Template Library.
+![](./static/2-services-for-iis-net-35.png)Add values for the variables as needed. The variables used in the Install IIS Website Template in the Service can be modified without influencing the Install IIS Website Template in the Template Library.
 
 ##### Application Pools
 
@@ -86,17 +86,17 @@ To add a service for your IIS Application, do the following:
 2. Give the service a name, such as **IIS-application**.
 3. In **Deployment Type**, select **Windows Remote Management (WinRM)**.
 4. In **Artifact Type**, select **IIS Application**.
-5. Click **SUBMIT**. The service is displayed.![](https://files.helpdocs.io/kw8ldg1itf/articles/tr8ddfm4lz/1540505167186/image.png)In **Service Overview** you can see the name and type of your service.
+5. Click **SUBMIT**. The service is displayed.![](./static/2-services-for-iis-net-36.png)In **Service Overview** you can see the name and type of your service.
 6. To add the artifact source for your IIS application, click **Add Artifact Source**. A list of artifact source types appears.
 7. Click the artifact source type. The artifact sources consist of the cloud providers and build servers you added earlier. For this guide, we will use **Amazon S3**.
 8. For the Amazon S3 example, in **Cloud Provider**, select the S3 provider you added earlier. Harness connects to the provider automatically
 9. In **Bucket**, select one of the buckets in the S3. The list is automatically populated by Harness.
 10. In **Artifact Path**, select the file(s) for your IIS application. The list is automatically populated by Harness. For this guide, we will use a zip file.  
-For WinRM connections, Harness does not use direct artifact copy when you set up the Service. Metadata is supported and is used to download the artifact directly onto the Windows Host during deployment runtime. For this reason, ensure that the target host has connectivity to the Artifact Server before deploying.When you are finished, the Artifact Source will look something like this:![](https://files.helpdocs.io/kw8ldg1itf/articles/mm84gjllge/1580246510583/image.png)
+For WinRM connections, Harness does not use direct artifact copy when you set up the Service. Metadata is supported and is used to download the artifact directly onto the Windows Host during deployment runtime. For this reason, ensure that the target host has connectivity to the Artifact Server before deploying.When you are finished, the Artifact Source will look something like this:![](./static/2-services-for-iis-net-37.png)
 
 Click **SUBMIT** to add the artifact source. Harness builds the service, including the **Deployment Specification**.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/tr8ddfm4lz/1546040150567/image.png)The **Deployment Specification** section is automatically filled with, and linked to, the Install IIS Application template.
+![](./static/2-services-for-iis-net-38.png)The **Deployment Specification** section is automatically filled with, and linked to, the Install IIS Application template.
 
 By default, the Install IIS Application template is linked to the template in the Template Library and its scripts cannot be edited in the Service (although its variables may be edited). To modify its scripts, you must copy the template instead of linking to it. To do this, in the **Deployment Specification**, click **Add Command**, select **From Template Library**, select the **Install IIS Application Template**, and choose **Copy** instead of **Link**.
 
@@ -128,11 +128,11 @@ To add a service for your IIS virtual directory, do the following:
 8. For the Amazon S3 example, in **Cloud Provider**, select the S3 provider you added earlier. Harness connects to the provider automatically
 9. In **Bucket**, select one of the buckets in the S3. The list is automatically populated by Harness.
 10. In **Artifact Path**, select the file(s) for your IIS virtual directory. The list is automatically populated by Harness. For this guide, we will use a zip file.  
-For WinRM connections, Harness does not use direct artifact copy when you set up the Service. Meta-data is supported and is used to download the artifact directly onto the Windows Host during deployment runtime. For this reason, ensure that the target host has connectivity to the Artifact Server before deploying.When you are finished, the Artifact Source will look something like this:![](https://files.helpdocs.io/kw8ldg1itf/articles/mm84gjllge/1580246539327/image.png)
+For WinRM connections, Harness does not use direct artifact copy when you set up the Service. Meta-data is supported and is used to download the artifact directly onto the Windows Host during deployment runtime. For this reason, ensure that the target host has connectivity to the Artifact Server before deploying.When you are finished, the Artifact Source will look something like this:![](./static/2-services-for-iis-net-39.png)
 
 Click **SUBMIT** to add the artifact source. Harness builds the service, including the **Deployment Specification**.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/tr8ddfm4lz/1540508498061/image.png)The Install IIS Application template is also used for the IIS Virtual Directory service type. By default, as with the IIS Application Service, the Install IIS Application template is linked to the template in the Template Library and its scripts cannot be edited in the Service (although its variables may be edited). To modify its scripts, you must copy the template instead of linking to it. To do this, in the **Deployment Specification**, click **Add Command**, select **From Template Library**, select the **Install IIS Application Template**, and choose **Copy** instead of **Link**.
+![](./static/2-services-for-iis-net-40.png)The Install IIS Application template is also used for the IIS Virtual Directory service type. By default, as with the IIS Application Service, the Install IIS Application template is linked to the template in the Template Library and its scripts cannot be edited in the Service (although its variables may be edited). To modify its scripts, you must copy the template instead of linking to it. To do this, in the **Deployment Specification**, click **Add Command**, select **From Template Library**, select the **Install IIS Application Template**, and choose **Copy** instead of **Link**.
 
 You can modify the variables of the Install IIS Application template scripts by click **Variables**. The variables used in the Install IIS Application template in the Service can be modified without influencing the Install IIS Application Template in the Template Library.
 
@@ -160,13 +160,13 @@ Note the following:
 
 When you deploy this service as part of your workflow, you will see these variables used in the Harness deployment dashboard:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/tr8ddfm4lz/1540508807950/image.png)### WinRM and Copy Configs Command
+![](./static/2-services-for-iis-net-41.png)### WinRM and Copy Configs Command
 
 The Copy Configs command copies configuration files defined in the **Configuration** section of the Service.
 
 There is no file size limit on the config files that can be copied using the Copy Configs command.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/mm84gjllge/1628537961013/clean-shot-2021-08-09-at-12-39-10.png)### Next Step
+![](./static/2-services-for-iis-net-42.png)### Next Step
 
 * [3 - IIS Environments in AWS and Azure](/article/itseg37bji-iis-environments)
 

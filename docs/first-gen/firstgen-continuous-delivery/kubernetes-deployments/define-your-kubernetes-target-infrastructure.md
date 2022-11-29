@@ -57,7 +57,7 @@ The **Helm** option is only if you are deploying to a Harness native Helm Servic
 
 Select the **Kubernetes Cluster Cloud Provider** that connects to your target cluster. All Kubernetes Cluster Cloud Providers are prefaced with **Kubernetes Cluster:**.
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/0ud2ut4vt2/1580771174702/image.png)#### Namespace
+![](./static/define-your-kubernetes-target-infrastructure-170.png)#### Namespace
 
 Select the namespace of the target Kubernetes cluster. Typically, this is `default`.
 
@@ -77,9 +77,9 @@ The `${infra.kubernetes.infraId}` expression is a unique identifier that identif
 
 In the Infrastructure Definition **Service Infrastructure Mapping** below each listing has a unique identifier that can be referenced using `${infra.kubernetes.infraId}`:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/u3rp89v80h/1624554401882/clean-shot-2021-06-24-at-10-06-02.png)Use `release-${infra.kubernetes.infraId}` for the **Release Name** instead of just `${infra.kubernetes.infraId}`. Kubernetes service and pod names follow RFC-1035 and must consist of lowercase alphanumeric characters or '-', start with an alphabetic character, and end with an alphanumeric character. Using `release-` as a prefix will prevent any issues.Here is an example of how `${infra.kubernetes.infraId}` is used and how the ID is output as the **Release Name**:
+![](./static/define-your-kubernetes-target-infrastructure-171.png)Use `release-${infra.kubernetes.infraId}` for the **Release Name** instead of just `${infra.kubernetes.infraId}`. Kubernetes service and pod names follow RFC-1035 and must consist of lowercase alphanumeric characters or '-', start with an alphabetic character, and end with an alphanumeric character. Using `release-` as a prefix will prevent any issues.Here is an example of how `${infra.kubernetes.infraId}` is used and how the ID is output as the **Release Name**:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/u3rp89v80h/1623869897319/clean-shot-2021-06-16-at-11-55-07.png)See [Built-in Variables List](/article/aza65y4af6-built-in-variables-list) for more expressions.
+![](./static/define-your-kubernetes-target-infrastructure-172.png)See [Built-in Variables List](/article/aza65y4af6-built-in-variables-list) for more expressions.
 
 The release name is not incremented with each release. It identifies releases so that Harness knows which release is being replaced with a new version.
 
@@ -99,7 +99,7 @@ If you leave this setting empty, the Infrastructure Definition is available to a
 
 #### Example
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/0ud2ut4vt2/1580771833106/image.png)### Option 2: Specify a GCP or Azure Kubernetes Cluster
+![](./static/define-your-kubernetes-target-infrastructure-173.png)### Option 2: Specify a GCP or Azure Kubernetes Cluster
 
 If you are using a Harness Google Cloud Platform or Azure Cloud Provider to connect to your target cluster, enter the following settings:
 
@@ -151,7 +151,7 @@ Select the resource group where your VM is located.
 
 Select the cluster you created for this deployment.
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/0ud2ut4vt2/1580772255572/image.png)If the cluster name is taking a long time to load, check the connectivity of the host running the Harness Delegate.
+![](./static/define-your-kubernetes-target-infrastructure-174.png)If the cluster name is taking a long time to load, check the connectivity of the host running the Harness Delegate.
 
 #### Namespace
 
@@ -179,9 +179,9 @@ If you leave this setting empty, the Infrastructure Definition is available to a
 
 Here is an example of a cluster targeted using a Google Cloud Platform Cloud Provider:
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/0ud2ut4vt2/1580772383510/image.png)Here is an example of a cluster targeted using a Azure Cloud Provider:
+![](./static/define-your-kubernetes-target-infrastructure-175.png)Here is an example of a cluster targeted using a Azure Cloud Provider:
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/0ud2ut4vt2/1580772704694/image.png)### Next Steps
+![](./static/define-your-kubernetes-target-infrastructure-176.png)### Next Steps
 
 * [Provision Kubernetes Infrastructures](/article/huajnezo0r-provision-kubernetes-infrastructures)
 

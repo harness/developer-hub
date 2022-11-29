@@ -56,7 +56,7 @@ There are two ways to use the Terragrunt Destroy:
 
 Which method you use is determined by the **Inherit configurations from previous Terragrunt Provision step** option in the Terragrunt Destroy step.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/1zmz2vtdo2/1619474760483/image.png)When the Terragrunt Provision step is executed, Harness saved the **Inline Values** and **Backend Configuration** values using a combination of the following:
+![](./static/remove-provisioned-infra-with-terragrunt-destroy-01.png)When the Terragrunt Provision step is executed, Harness saved the **Inline Values** and **Backend Configuration** values using a combination of the following:
 
 * **Infrastructure Provisioner** used.
 * **Environment** used for the Workflow.

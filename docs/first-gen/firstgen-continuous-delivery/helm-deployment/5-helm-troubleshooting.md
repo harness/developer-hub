@@ -27,7 +27,7 @@ Make sure that the Helm client and Tiller are installed. Do the following:
 
 Likely, there is an incompatible Helm client or Tiller. The Helm client needs to be lesser or equal to the Tiller version:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/zmrvylwqds/1553543763944/image.png)To fix this, upgrade Tiller:
+![](./static/5-helm-troubleshooting-00.png)To fix this, upgrade Tiller:
 
 `helm init --upgrade`
 
@@ -45,7 +45,7 @@ A Helm install/upgrade can fail because Tiller is deployed in a namespace other 
 
 To fix this, pass the`--tiller-namespace <NAMESPACE>`as command flag in the Workflow **Helm Deploy** step.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/lajo3sdfgq/1580245000966/image.png)### Next Steps
+![](./static/5-helm-troubleshooting-01.png)### Next Steps
 
 * **Pipeline and Triggers** - Once you have a successful workflow, you can experiment with a Harness pipeline, which as a collection of one or more workflows, and Harness triggers, which enable you to execute a workflow or pipeline deployment using different criteria, such as when a new artifact is added to an artifact source. For more information, see [Add a Pipeline](/article/zc1u96u6uj-pipeline-configuration) and [Add a Trigger](/article/xerirloz9a-add-a-trigger-2).
 * **Continuous Verification** - Add verification steps using Splunk, SumoLogic, Elk, AppDynamics, New Relic, DynaTrace, and others to your workflow. For more information, see [Continuous Verification](/article/myw4h9u05l-verification-providers-list).

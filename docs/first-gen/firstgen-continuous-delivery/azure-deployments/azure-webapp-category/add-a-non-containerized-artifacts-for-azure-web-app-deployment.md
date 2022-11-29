@@ -56,7 +56,7 @@ In **Deployment Type**, select **Azure Web Application**.
 
 In **Artifact Type**, select a non-containerized type.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/rflkjqxod2/1643233562131/clean-shot-2022-01-26-at-13-45-28-2-x.png)Click **Submit**. The Service is created.
+![](./static/add-a-non-containerized-artifacts-for-azure-web-app-deployment-24.png)Click **Submit**. The Service is created.
 
 ### Step 2: Add the Artifact
 
@@ -74,7 +74,7 @@ For **Jenkins**, you will select the job and artifact. Harness will run the job 
 
 Here's an example of an Artifactory Artifact Source used to pull a WAR file:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/rflkjqxod2/1643233337237/clean-shot-2022-01-26-at-13-41-59-2-x.png)When you are done, click **Submit**.
+![](./static/add-a-non-containerized-artifacts-for-azure-web-app-deployment-25.png)When you are done, click **Submit**.
 
 Next, click **Artifact History** to see the artifacts and builds Harness pulls from the repo.
 
@@ -98,11 +98,11 @@ az webapp config appsettings set --resource-group <group-name> --name <app-name>
 ```
 Or via the portal:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/rflkjqxod2/1643234355363/clean-shot-2022-01-26-at-13-58-49-2-x.png)You can also set **Application settings** and **Connection strings** in the Harness Service.
+![](./static/add-a-non-containerized-artifacts-for-azure-web-app-deployment-26.png)You can also set **Application settings** and **Connection strings** in the Harness Service.
 
 Here's an example of setting **Application settings** in the Harness Service:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/rflkjqxod2/1643234385719/clean-shot-2022-01-26-at-13-59-35-2-x.png)This is the same as setting them in the Azure portal, in **Configuration**, **Application Settings**, **Advanced edit**.
+![](./static/add-a-non-containerized-artifacts-for-azure-web-app-deployment-27.png)This is the same as setting them in the Azure portal, in **Configuration**, **Application Settings**, **Advanced edit**.
 
 #### Important Note
 

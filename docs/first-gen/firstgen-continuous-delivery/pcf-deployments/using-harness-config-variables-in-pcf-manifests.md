@@ -37,9 +37,9 @@ For details on configuration variables and files, see [Add Service Config Variab
 
 You can use **Config Variables** in your Service in place of values in manifest.yml and vars.yml.
 
-![](https://files.helpdocs.io/kw8ldg1itf/other/1572290698365/image.png)You can then overwrite this variable in a Harness Environment's **Service Configuration Overrides**, and the new value is used when the Service and Environment are used for deployment.
+![](./static/using-harness-config-variables-in-pcf-manifests-45.png)You can then overwrite this variable in a Harness Environment's **Service Configuration Overrides**, and the new value is used when the Service and Environment are used for deployment.
 
-![](https://files.helpdocs.io/kw8ldg1itf/other/1572290802933/image.png)Overwriting Service variables is described in more detail in TAS Environments.
+![](./static/using-harness-config-variables-in-pcf-manifests-46.png)Overwriting Service variables is described in more detail in TAS Environments.
 
 ### Next Steps
 

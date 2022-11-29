@@ -119,7 +119,7 @@ For example, here is a task definition from the [AWS sample repo](https://github
 ```
 If you have an existing Task Definition, you can paste it into the JSON. You can obtain the Task Definition from the ECS console:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/jr8rhn5bk5/1620840065870/uctu-qnn-fen-k-2-awt-dndk-3-bse-8-y-rc-35-uw-zc-0-c-nvwbhxamwyin-wre-5-fke-kd-yiw-vb-ijh-pcnx-8-vkb-za-2-aj-ip-i-7-pkmj-6-c-h-2-ian-yt-m-98-ysh-tum-7-j-ktyiv-of-6-n-tw-y-7-t-vj-ce-qnlps-pee-8-y)You can also obtain the Task Definition using the AWS CLI ( [describe-task-definition](https://docs.aws.amazon.com/cli/latest/reference/ecs/describe-task-definition.html)):
+![](./static/run-an-ecs-task-36.png)You can also obtain the Task Definition using the AWS CLI ( [describe-task-definition](https://docs.aws.amazon.com/cli/latest/reference/ecs/describe-task-definition.html)):
 
 `aws ecs describe-task-definition --task-definition ecsTaskDefinitionName`
 
@@ -174,7 +174,7 @@ You cannot use Harness variable expressions in this setting. They are supported 
 
 When you deploy the Workflow, the ECS Task Run steps shows a successful deployment:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/jr8rhn5bk5/1602195558383/image.png)Here is an example of the output from a deployed ECS Run Task step:
+![](./static/run-an-ecs-task-37.png)Here is an example of the output from a deployed ECS Run Task step:
 
 
 ```
@@ -204,7 +204,7 @@ If you want to execute AWS CLI commands, ensure that the Delegate host has the A
 
 The **Rollback Containers** step in **Rollback Steps** only applies to the core service deployed by the Workflow. If a Workflow containing only an ECS Task Run step fails, the **Rollback Containers** step is skipped.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/jr8rhn5bk5/1602273175668/image.png)### Review: Tags Support
+![](./static/run-an-ecs-task-38.png)### Review: Tags Support
 
 Currently, this feature is behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature. Harness will remove Feature Flags for Harness Professional and Essentials editions. Once the feature is released to a general audience, it's available for Trial and Community Editions.You can add ECS tags to your task definition just as you would in the AWS console or CLI.
 

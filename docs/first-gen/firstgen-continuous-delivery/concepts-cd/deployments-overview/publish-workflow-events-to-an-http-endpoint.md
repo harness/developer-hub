@@ -49,9 +49,9 @@ Harness will be adding more events soon.
 
 In your Application, in **Event Rules**, click **Add**.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/okinra1xu2/1644922924708/screenshot-2022-02-15-at-4-31-13-pm.png)The **Rule Configuration** settings appear.
+![](./static/publish-workflow-events-to-an-http-endpoint-35.png)The **Rule Configuration** settings appear.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/okinra1xu2/1644922818472/screenshot-2022-02-15-at-4-29-35-pm.png)Enter a name for the event rule.
+![](./static/publish-workflow-events-to-an-http-endpoint-36.png)Enter a name for the event rule.
 
 #### Option: Send Me Everything
 
@@ -61,7 +61,7 @@ Select **Send me everything** to send all the events that Harness currently publ
 
 Select **Workflow** to send events for specific Workflows. In **Workflows**, select the Workflows you want events for, or select **All Workflows**.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/okinra1xu2/1644927550893/screenshot-2022-02-15-at-5-47-17-pm.png)#### Option: Pipeline
+![](./static/publish-workflow-events-to-an-http-endpoint-37.png)#### Option: Pipeline
 
 Select **Pipeline** to send events for specific Pipelines. For more information, see [Publish Pipeline Events to an HTTP Endpoint](/article/scrsak5124-publish-pipeline-events-to-an-http-endpoint).
 
@@ -69,7 +69,7 @@ Select **Pipeline** to send events for specific Pipelines. For more information,
 
 In **Events**, select the event types you want to publish or select **All Events**.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/okinra1xu2/1644927679936/screenshot-2022-02-15-at-5-49-53-pm.png)### Step 3: Enter the Webhook URL
+![](./static/publish-workflow-events-to-an-http-endpoint-38.png)### Step 3: Enter the Webhook URL
 
 In **Webhook URL**, enter the HTTP endpoint URL where Harness will publish the events for this rule.
 
@@ -99,7 +99,7 @@ You can use expressions for Harness built-in variables or Account Default variab
 
 By default, the Rule you just created is disabled. You can enable the rule using the toggle button.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/okinra1xu2/1644929069545/screenshot-2022-02-15-at-6-13-49-pm.png)### Step 7: Test the Event Rule
+![](./static/publish-workflow-events-to-an-http-endpoint-39.png)### Step 7: Test the Event Rule
 
 You can test an event rule to see if the rule is enabled or disabled.
 

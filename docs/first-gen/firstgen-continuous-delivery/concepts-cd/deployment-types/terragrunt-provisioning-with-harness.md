@@ -31,7 +31,7 @@ Looking for How-tos? See [Terragrunt How-tos](/article/a9e63yqb2j-terragrunt-how
 
 Here is a visual summary of how you use your and Terragrunt and Terraform files with Harness to provision target infra and then deploy to it:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/a6onutvbem/1618962617102/image.png)Here's a 6 minute video walkthrough of the process:
+![](./static/terragrunt-provisioning-with-harness-36.png)Here's a 6 minute video walkthrough of the process:
 
 You set up a Terragrunt deployment in the following order:
 
@@ -54,7 +54,7 @@ In this use case, you simply add the Terragrunt Provision step to your Workflow 
 
 You do not need to deploy artifacts via Harness Services to use Terragrunt provisioning in a Workflow. You can simply set up a Terragrunt Provisioner and use it in a Workflow to provision infrastructure without deploying any artifact.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/a6onutvbem/1618962645543/image.png)See [Provision using the Terragrunt Provision Step](/article/jbzxpljhlo-provision-using-the-terragrunt-provision-step).
+![](./static/terragrunt-provisioning-with-harness-37.png)See [Provision using the Terragrunt Provision Step](/article/jbzxpljhlo-provision-using-the-terragrunt-provision-step).
 
 ### Limitations
 
@@ -74,7 +74,7 @@ As a summary, you will need to manage the following permissions:
 	+ **Application:** All Applications that you want to use with Terragrunt.
 	+ **Filter:** All Provisioners.
 	+ **Action:** Create, Read, Update, Delete.  
-	See [Managing Users and Groups (RBAC)](/article/ven0bvulsj-users-and-permissions).![](https://files.helpdocs.io/kw8ldg1itf/articles/a6onutvbem/1619114140627/image.png)
+	See [Managing Users and Groups (RBAC)](/article/ven0bvulsj-users-and-permissions).![](./static/terragrunt-provisioning-with-harness-38.png)
 * **Delegate**: the Harness Delegate will require permissions according to the deployment platform. It will use any access, secret, and SSH keys you configure in Harness [Secrets Management](https://docs.harness.io/article/au38zpufhr-secret-management) to perform deployment operations. For ECS Delegates, you can add an IAM role to the ECS Delegate task definition. For more information, see  [Trust Relationships and Roles](https://docs.harness.io/article/wrm6hpyrjl-harness-ecs-delegate#trust_relationships_and_roles).
 * **Cloud Provider**: the Harness Cloud Provider must have access permissions for the resources you are planning to create using Terragrunt and Terraform. For some Harness Cloud Providers, you can use the installed Delegate and have the Cloud Provider assume the permissions used by the Delegate. For others, you can enter cloud platform account information.
 

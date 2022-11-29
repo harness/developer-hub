@@ -31,15 +31,15 @@ Harness allows one manifest file and one or more variable files. At runtime, Har
 
 From the options menu, click **Upload Local Manifest Files**.
 
-![](https://files.helpdocs.io/kw8ldg1itf/other/1572291857584/image.png)The **Upload Local Manifest Files** dialog appears.
+![](./static/upload-local-and-remote-pcf-resource-files-62.png)The **Upload Local Manifest Files** dialog appears.
 
-![](https://files.helpdocs.io/kw8ldg1itf/other/1572291677393/image.png)Choose the local folder or files using your file explorer or drag and drop the files into the dialog. The selected files are listed.
+![](./static/upload-local-and-remote-pcf-resource-files-63.png)Choose the local folder or files using your file explorer or drag and drop the files into the dialog. The selected files are listed.
 
-![](https://files.helpdocs.io/kw8ldg1itf/other/1572291980190/image.png)Click **Submit** to add the files.
+![](./static/upload-local-and-remote-pcf-resource-files-64.png)Click **Submit** to add the files.
 
 If you are uploading a manifest.yml or vars.yml file into the same folder with the default manifest.yml and vars.yml files, you will see the following warning.
 
-![](https://files.helpdocs.io/kw8ldg1itf/other/1572292265840/image.png)Simply click **Overwrite All** and then **Submit** to replace the default files.
+![](./static/upload-local-and-remote-pcf-resource-files-65.png)Simply click **Overwrite All** and then **Submit** to replace the default files.
 
 ### Step 2: Upload Remote Manifest and Variable Files
 
@@ -49,8 +49,8 @@ To use remote files, do the following:
 
 1. Create a [Harness Source Repro Provider](/article/ay9hlwbgwa-add-source-repo-providers) that connects to the branch where your remote files are located.  
   
-When you set up the Source Repro Provider, you specify the repo URL and branch name:![](https://files.helpdocs.io/kw8ldg1itf/other/1572298148272/image.png)
-2. In the TAS Service, in **Manifests**, click the options button, and then click **Link Remote Manifests**.![](https://files.helpdocs.io/kw8ldg1itf/other/1572298373582/image.png)The **Remote Manifests** dialog appears.![](https://files.helpdocs.io/kw8ldg1itf/other/1572298421272/image.png)
+When you set up the Source Repro Provider, you specify the repo URL and branch name:![](./static/upload-local-and-remote-pcf-resource-files-66.png)
+2. In the TAS Service, in **Manifests**, click the options button, and then click **Link Remote Manifests**.![](./static/upload-local-and-remote-pcf-resource-files-67.png)The **Remote Manifests** dialog appears.![](./static/upload-local-and-remote-pcf-resource-files-68.png)
 3. In **Source Repository**, select the Source Repo Provider you set up, and that points to the remote Git repo containing your manifest files.
 4. In **Commit ID**, select **Latest from Branch** or **Specific Commit ID**.  
   
@@ -60,7 +60,7 @@ When you set up the Source Repro Provider, you specify the repo URL and branch n
 
 The file path you enter in **File/Folder Path** will be used as the manifest for this Service.
 
-**Avoid listing a folder only:** If you enter a folder path only, Harness does not know which file in the folder to use, so Harness will list the files using Git and then select the last file listed. If the last file is invalid, Harness will select the second to last file, and so on. The order in which files are returned from Git is not constant, and so selecting the correct file is not always possible. Instead, provide the full path to the file.1. If you selected **Latest from Branch**, specify the **Branch** and **File/Folder** path to the remote manifest file (typically, a vars.yml file).![](https://files.helpdocs.io/kw8ldg1itf/articles/i5jxqsbkt7/1646947545034/clean-shot-2022-03-10-at-13-25-29.png)
+**Avoid listing a folder only:** If you enter a folder path only, Harness does not know which file in the folder to use, so Harness will list the files using Git and then select the last file listed. If the last file is invalid, Harness will select the second to last file, and so on. The order in which files are returned from Git is not constant, and so selecting the correct file is not always possible. Instead, provide the full path to the file.1. If you selected **Latest from Branch**, specify the **Branch** and **File/Folder** path to the remote manifest file (typically, a vars.yml file).![](./static/upload-local-and-remote-pcf-resource-files-69.png)
 2. If you selected **Specific Commit ID**, specify the **Commit ID** and **File/Folder** path to the remote manifest files.
 
 Click **Submit**. Your remote git repo is added as the source for **Manifests**.
@@ -71,7 +71,7 @@ Currently, this feature is behind the feature flag `SINGLE_MANIFEST_SUPPORT`. Co
 
 Harness requires the path to the manifest or vars file you are using. 
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/i5jxqsbkt7/1646947704933/clean-shot-2022-03-10-at-13-25-29.png)If you enter a folder path and **no file**, deployment will fail.### Next Steps
+![](./static/upload-local-and-remote-pcf-resource-files-70.png)If you enter a folder path and **no file**, deployment will fail.### Next Steps
 
 * [Using Harness Config Variables in Tanzu Manifests](/article/mutc1hz25o-using-harness-config-variables-in-pcf-manifests)
 * [Define Your Tanzu Target Infrastructure](/article/r1crlrpjk4)

@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 This content is for Harness [FirstGen](/article/1fjmm4by22). Switch to [NextGen](/article/0zsf97lo3c).You have likely heard terms like *blue/green* and *canary* when it comes to deploying code and applications into production. These are common deployment strategies, available in Harness as Workflow types, along with many others.
 
-[![](https://files.helpdocs.io/i5nl071jo5/articles/0zsf97lo3c/1578597448765/image.png)](https://files.helpdocs.io/i5nl071jo5/articles/0zsf97lo3c/1578597448765/image.png)This topic will explain these strategies to give you an idea of how to approach deployments in Harness, and to help you decide what strategy is best for you.
+[![](./static/deployment-concepts-and-strategies-02.png)](./static/deployment-concepts-and-strategies-02.png)This topic will explain these strategies to give you an idea of how to approach deployments in Harness, and to help you decide what strategy is best for you.
 
 In this topic:
 
@@ -67,7 +67,7 @@ With Basic Deployment, all nodes within a single environment are updated at the 
 
 Not too long ago, Basic deployment was how developers rolled out applications. Typically, someone in Ops updates the servers at midnight and then you hope all goes well.
 
-[![](https://files.helpdocs.io/i5nl071jo5/articles/0zsf97lo3c/1578597179853/image.png)](https://files.helpdocs.io/i5nl071jo5/articles/0zsf97lo3c/1578597179853/image.png)Basic deployments are supported in Harness for a number of platforms as a way for you to experiment with deployments. They are not intended for production deployments because they are not as safe as Canary or Blue/Green deployments.
+[![](./static/deployment-concepts-and-strategies-04.png)](./static/deployment-concepts-and-strategies-04.png)Basic deployments are supported in Harness for a number of platforms as a way for you to experiment with deployments. They are not intended for production deployments because they are not as safe as Canary or Blue/Green deployments.
 
 ### Multi-Service Deployment
 
@@ -86,7 +86,7 @@ With Multi-Service Deployment, all nodes within a single environment are updated
 
 * Risk, difficult to test/verify all service dependencies, outages, slow rollback.
 
-[![](https://files.helpdocs.io/kw8ldg1itf/articles/325x7awntc/1620840114744/multi-2.png)](https://files.helpdocs.io/kw8ldg1itf/articles/325x7awntc/1620840114744/multi-2.png)### Rolling Deployment
+[![](./static/deployment-concepts-and-strategies-06.png)](./static/deployment-concepts-and-strategies-06.png)### Rolling Deployment
 
 With a Rolling Deployment, all nodes within a single environment are incrementally updated one-by-one or in N batches (as defined by a window size) with a new service/artifact version.
 
@@ -108,7 +108,7 @@ One use of Rolling deployments is as the stage following a Canary deployment in 
 * App/DB needs to support both new and old artifacts. Manual checks/verification at each increment could take a long time.
 * Lost transactions and logged-off users are also something to take into consideration.
 
-[![](https://files.helpdocs.io/kw8ldg1itf/articles/325x7awntc/1620840114905/rolling-2.png)](https://files.helpdocs.io/kw8ldg1itf/articles/325x7awntc/1620840114905/rolling-2.png)See  [Kubernetes Rolling Update Workflows](/article/5gouaz9w5r-kubernetes-rolling-update-workflows).
+[![](./static/deployment-concepts-and-strategies-08.png)](./static/deployment-concepts-and-strategies-08.png)See  [Kubernetes Rolling Update Workflows](/article/5gouaz9w5r-kubernetes-rolling-update-workflows).
 
 ### Blue/Green Deployment
 
@@ -137,7 +137,7 @@ Some vendorscalls this a red/black deployment.#### When to use Blue/Green Deploy
 * Current transactions and sessions will be lost due to the physical switch from one machine serving the traffic to another one.
 * Database compatibility (schema changes, backward compatibility).
 
-[![](https://files.helpdocs.io/kw8ldg1itf/articles/325x7awntc/1620840115023/blue-green-2.png)](https://files.helpdocs.io/kw8ldg1itf/articles/325x7awntc/1620840115023/blue-green-2.png)See:
+[![](./static/deployment-concepts-and-strategies-10.png)](./static/deployment-concepts-and-strategies-10.png)See:
 
 * [ECS Blue/Green Workflows](/article/7qtpb12dv1-ecs-blue-green-workflows)
 * [AMI Blue/Green Deployment](/article/vw71c7rxhp-ami-blue-green)
@@ -172,13 +172,13 @@ This is currently the most common way to deploy apps/services into production.
 
 This is a standard Canary deployment:
 
-[![](https://files.helpdocs.io/kw8ldg1itf/articles/325x7awntc/1620840115126/canary-2.png)](https://files.helpdocs.io/kw8ldg1itf/articles/325x7awntc/1620840115126/canary-2.png)For Kubernetes, Harness does this a little different.
+[![](./static/deployment-concepts-and-strategies-12.png)](./static/deployment-concepts-and-strategies-12.png)For Kubernetes, Harness does this a little different.
 
 In Phase 1 we do a canary to the same group but we leave the production version alone. We just use other instances. Then we delete our canary version in Phase 1.
 
 In Phase 2 we do a rolling deployment with the production version and scale down the older version.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/325x7awntc/1616629921936/image.png)For examples, see:
+![](./static/deployment-concepts-and-strategies-14.png)For examples, see:
 
 * [AMI Canary Deployment](/article/agv5t7d156-ami-canary)
 * [Create a Kubernetes Canary Deployment](/article/2xp0oyubjj-create-a-kubernetes-canary-deployment)
@@ -203,7 +203,7 @@ Fast, easy and cheap way to test new features in production. Lots of tools exist
 * Scripting AB tests can be complex.
 * Database compatibility (schema changes, backward compatibility)
 
-[![](https://files.helpdocs.io/kw8ldg1itf/articles/325x7awntc/1620840115304/ab-2.png)](https://files.helpdocs.io/kw8ldg1itf/articles/325x7awntc/1620840115304/ab-2.png)### Which Deployment Strategy Should I Use?
+[![](./static/deployment-concepts-and-strategies-15.png)](./static/deployment-concepts-and-strategies-15.png)### Which Deployment Strategy Should I Use?
 
 It depends entirely on the type of application/service and environment. Most Harness customers are currently using blue/green or canary deployments for mission-critical applications.
 

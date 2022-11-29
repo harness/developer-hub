@@ -79,7 +79,7 @@ If you do not select this setting, you can select this Infrastructure Definition
 
 You can use Service variables in the TAS Infrastructure Definition **Organization** and **Space** settings:
 
-![](https://files.helpdocs.io/kw8ldg1itf/other/1572374732589/image.png)This allows you to set the orgs and spaces in a Service, and have the Infrastructure Definition act as a template that multiple Services can use.
+![](./static/define-your-pcf-target-infrastructure-23.png)This allows you to set the orgs and spaces in a Service, and have the Infrastructure Definition act as a template that multiple Services can use.
 
 The orgs specified must be available to the TAS user account used to set up the TAS Cloud Provider used in the Infrastructure Definition.### Next Steps
 

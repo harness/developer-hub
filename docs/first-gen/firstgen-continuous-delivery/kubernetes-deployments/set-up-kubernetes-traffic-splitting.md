@@ -67,7 +67,7 @@ spec:
 ```
 In Harness, you can use a simple DestinationRule and a VirtualService without route rules, and then specify the routing in the Workflow that uses the VirtualService, via the Traffic Split step:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/zwn6qgtqca/1580256686406/image.png)Setting up Traffic Splitting involves adding a standard traffic management manifest to your Harness Service, and then using the Traffic Split step in your Workflow.
+![](./static/set-up-kubernetes-traffic-splitting-182.png)Setting up Traffic Splitting involves adding a standard traffic management manifest to your Harness Service, and then using the Traffic Split step in your Workflow.
 
 ### Step 2: Add DestinationRule Manifest
 
@@ -188,13 +188,13 @@ You can use the Traffic Split step anywhere in your Workflow, but you will typic
 1. To add the Traffic Split step, in your Workflow, click **Add Step**.
 2. Select **Traffic Split**. The **Traffic Split** settings appear.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/zwn6qgtqca/1580256764375/image.png)### Step 7: Define Virtual Service Name
+![](./static/set-up-kubernetes-traffic-splitting-183.png)### Step 7: Define Virtual Service Name
 
 By default, the Traffic Split step includes Harness variables to refer the VirtualService set up in the Service the Workflow is deploying, and the named destination service subsets Harness deploys.
 
 In **Virtual Service Name**, Traffic Split takes the name of the VirtualService set up in the Service:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/zwn6qgtqca/1580256686406/image.png)The variable `${k8s.virtualServiceName}` refers to the value of the name label in your VirtualService manifest in the Harness Service.
+![](./static/set-up-kubernetes-traffic-splitting-184.png)The variable `${k8s.virtualServiceName}` refers to the value of the name label in your VirtualService manifest in the Harness Service.
 
 If you have multiple VirtualService manifests in your Harness Service **Manifests**, you can enter the name of the VirtualService you want to use manually.
 
@@ -227,19 +227,19 @@ Harness will use these variables to initialize destinations and then apply the t
 
 Here is an example of a Traffic Split step and the logs from its deployment showing how the destinations are initialized and then applied by Traffic Split:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/zwn6qgtqca/1580256924274/image.png)That's all that is needed to set up Traffic Splitting.
+![](./static/set-up-kubernetes-traffic-splitting-185.png)That's all that is needed to set up Traffic Splitting.
 
 ### Option 1: Use Subsets
 
 In cases where you are using multiple subsets in destination rules and you want to assign different values to them, you can use your own subsets in Traffic Split as well. Here is a simple example:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/zwn6qgtqca/1580257269510/image.png)The only requirement of Destination field values is that they contain a host, subset and are valid YAML. See  [Destination](https://istio.io/docs/reference/config/networking/v1alpha3/virtual-service/#Destination) from Istio for details.
+![](./static/set-up-kubernetes-traffic-splitting-186.png)The only requirement of Destination field values is that they contain a host, subset and are valid YAML. See  [Destination](https://istio.io/docs/reference/config/networking/v1alpha3/virtual-service/#Destination) from Istio for details.
 
 ### Option 2: Use Multiple Traffic Split Steps
 
 You can use multiple Traffic Split steps in your Workflow to change the routing to your old and new service versions. Here is an example with Approval steps between each Traffic Split step:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/zwn6qgtqca/1561395163754/image.png)### Notes
+![](./static/set-up-kubernetes-traffic-splitting-187.png)### Notes
 
 * **Canary Delete and Traffic Management** — If you are using the **Traffic Split** step or doing Istio traffic shifting using the **Apply step**, move the **Canary Delete** step from **Wrap Up** section of the **Canary** phase to the **Wrap Up** section of the *Primary* phase (the phase containing the Rollout Deployment step).  
 Moving the **Canary Delete** step to the **Wrap Up** section of the Primary phase will prevent any traffic from being routed to deleted pods before traffic is routed to stable pods in the Primary phase.

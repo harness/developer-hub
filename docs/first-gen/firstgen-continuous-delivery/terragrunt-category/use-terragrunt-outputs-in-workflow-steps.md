@@ -65,7 +65,7 @@ You can add a Shell Script step in your Workflow and use `echo ${terragrunt.clus
 
 In the following diagram, you can see two outputs in the Terraform script referenced and echoed in a Shell Script step and then resolved in the logs:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/rbw96hdr1c/1619473150732/image.png)The Shell Script step simply contains:
+![](./static/use-terragrunt-outputs-in-workflow-steps-00.png)The Shell Script step simply contains:
 
 
 ```

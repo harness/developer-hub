@@ -38,7 +38,7 @@ If you want the Delegate to use a specific Helm binary, do the following:
 1. In Harness, locate a Kubernetes Service that uses Helm charts, or where you plan on using Helm charts.
 2. In **Manifests**, click **Link Remote Manifests**. The **Remote Manifests** settings appear.
 3. In **Manifest Format**, **Helm Chart from Helm Repository** will be selected already if you are upgrading an existing Service. For steps on configuring all of these settings, see [Use a Helm Repository with Kubernetes](/article/hddm3rgf1y-use-a-helm-repository-with-kubernetes).
-4. In **Helm Version**, select the Helm version of your chart, such as **v3**.![](https://files.helpdocs.io/kw8ldg1itf/articles/lk57k7irla/1591394568217/image.png)
+4. In **Helm Version**, select the Helm version of your chart, such as **v3**.![](./static/upgrade-to-helm-3-charts-in-kubernetes-services-120.png)
 5. Click **Submit**.
 
 You can now use Helm 3 charts.
@@ -46,7 +46,7 @@ You can now use Helm 3 charts.
 ### Option 2: Upgrade Helm Version Number in YAML
 
 1. In Harness, locate a Service that uses Helm charts, or where you plan on using Helm charts.
-2. In your Harness Kubernetes Service, click the **Configure As Code** button. The index.yaml for your Service contains the current Helm version used as `helmVersion: V2`:![](https://files.helpdocs.io/i5nl071jo5/articles/53lkzi37n0/1580750786738/image.png)If `helmVersion` is not listed, do not worry. You can add it.
+2. In your Harness Kubernetes Service, click the **Configure As Code** button. The index.yaml for your Service contains the current Helm version used as `helmVersion: V2`:![](./static/upgrade-to-helm-3-charts-in-kubernetes-services-121.png)If `helmVersion` is not listed, do not worry. You can add it.
 3. Click **Edit**.
 4. Do one of the following:
 * Change `helmVersion: V2` to `helmVersion: V3`.

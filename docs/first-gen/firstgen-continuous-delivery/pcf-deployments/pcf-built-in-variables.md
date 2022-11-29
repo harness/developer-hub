@@ -140,7 +140,7 @@ Let's look at the 3 app versioning paths and how each deployment outcome changes
 
 Let's look at a successful deployment of this use case:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/ojd73hseby/1644967149462/image.png)As you can see, the new successful app version has no version suffix in its name and the previous version app has the suffix `_INACTIVE` added.
+![](./static/pcf-built-in-variables-13.png)As you can see, the new successful app version has no version suffix in its name and the previous version app has the suffix `_INACTIVE` added.
 
 Let's look at variable resolution during successful and failed deployments.
 
@@ -160,7 +160,7 @@ Let's look at variable resolution during successful and failed deployments.
 
 If deployment fails during the App Setup or App Resize step, the following actions are taken:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/ojd73hseby/1644967287236/image.png)The new app version is deleted and the previous app version is restored.
+![](./static/pcf-built-in-variables-14.png)The new app version is deleted and the previous app version is restored.
 
 For the previous inactive application (**OrderApp\_1**), the temp routes and environment variable (**STAGE**) are not restored. To restore these, enable the [Upsize inactive Service Option](https://docs.harness.io/article/52muxcsr1v-create-a-blue-green-pcf-deployment#upsize_inactive_service_option) in the Rollback step.##### Variable Resolution during App Resize Step Failure
 
@@ -176,7 +176,7 @@ For the previous inactive application (**OrderApp\_1**), the temp routes and env
 
 ##### Failure during Swap Route Step
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/ojd73hseby/1644967881360/image.png)If deployment fails during the Swap Route step, the following actions are taken:
+![](./static/pcf-built-in-variables-15.png)If deployment fails during the Swap Route step, the following actions are taken:
 
 * The new application is deleted.
 * The previous active app (UUID = 2) is renamed back to its original name in version mode (OrderApp\_2).
@@ -198,7 +198,7 @@ For the previous inactive application (**OrderApp\_1**), the temp routes and env
 
 First, let's look at a successful deployment:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/ojd73hseby/1644968096805/image.png)You can see the previous version OverApp (v3) is given the suffix **INACTIVE** and the new version OrderApp (v4) is not given any suffix.
+![](./static/pcf-built-in-variables-16.png)You can see the previous version OverApp (v3) is given the suffix **INACTIVE** and the new version OrderApp (v4) is not given any suffix.
 
 During the App Setup step:
 
@@ -230,7 +230,7 @@ During the Swap Route step the following actions are taken:
 
 If deployments fails during App Setup or App Resize steps, the following actions are taken:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/ojd73hseby/1644968634617/image.png)The state of the previous active application (OrderApp) was not changed and there is nothing to restore. The new application is deleted. The previous inactive application name is restored.
+![](./static/pcf-built-in-variables-17.png)The state of the previous active application (OrderApp) was not changed and there is nothing to restore. The new application is deleted. The previous inactive application name is restored.
 
 For the previous inactive application (**OrderApp\_INACTIVE**, **UUID = 2**), the temp routes and environment variable (**STAGE**) are not restored. To restore these, enable the [Upsize inactive Service Option](https://docs.harness.io/article/52muxcsr1v-create-a-blue-green-pcf-deployment#upsize_inactive_service_option) in the Rollback step.##### Variables Resolution during App Setup or App Resize Failure
 
@@ -246,7 +246,7 @@ For the previous inactive application (**OrderApp\_INACTIVE**, **UUID = 2**), th
 
 ##### Failure during the Swap Route Step
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/ojd73hseby/1644968817408/image.png)If deployment fails during the Swap Route step, the following actions are taken:
+![](./static/pcf-built-in-variables-18.png)If deployment fails during the Swap Route step, the following actions are taken:
 
 * The new app is deleted.
 * The previous active app (UUID = 3) is renamed back to its original name, **OrderApp**.
@@ -271,7 +271,7 @@ For the previous inactive application (**OrderApp\_INACTIVE**, **UUID = 2**), th
 
 First, let's look at a successful deployment:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/ojd73hseby/1644969019767/image.png)During the App Setup step, the following actions are taken:
+![](./static/pcf-built-in-variables-19.png)During the App Setup step, the following actions are taken:
 
 * Temp routes and the environment variable are removed from inactive application (**OrderApp\_INACTIVE**, **UUID = 2**).
 * The new app is created with the suffix **\_\_INACTIVE** in the App Setup step and temp routes are attached to it. The environment variable is set to **STAGE**.
@@ -302,7 +302,7 @@ If you change from non-version to version, in the next deployment the new app is
 
 If deployment fails during App Setup or App Resize step, the following actions are taken:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/ojd73hseby/1644969403587/image.png)The state of the previous active app (**OrderApp**) was not changed so there is nothing to restore. The new app is deleted. The previous inactive app name is restored.
+![](./static/pcf-built-in-variables-20.png)The state of the previous active app (**OrderApp**) was not changed so there is nothing to restore. The new app is deleted. The previous inactive app name is restored.
 
 For the previous inactive application (**OrderApp\_INACTIVE**, **UUID = 2**), the temp routes and environment variable (**STAGE**) are not restored. To restore these, enable the [Upsize inactive Service Option](https://docs.harness.io/article/52muxcsr1v-create-a-blue-green-pcf-deployment#upsize_inactive_service_option) in the Rollback step.##### Variables Resolution during App Setup or App Resize Failure
 
@@ -318,7 +318,7 @@ For the previous inactive application (**OrderApp\_INACTIVE**, **UUID = 2**), th
 
 ##### Failure during the Swap Route Step
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/ojd73hseby/1644969540227/image.png)If there failures during the Swap Route step, the following actions are taken:
+![](./static/pcf-built-in-variables-21.png)If there failures during the Swap Route step, the following actions are taken:
 
 * The new app is deleted.
 * The previous active app (**UUID = 3**) is renamed back to its original name, **OrderApp**.

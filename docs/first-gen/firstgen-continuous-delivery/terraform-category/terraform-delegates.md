@@ -90,9 +90,9 @@ To use your Terraform script in Harness, you host the script in a Git repo and a
 
 Here is an example of a Source Repo Provider and the GitHub repo it is using:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/9pvvgcdbjh/1557259873295/image.png)In the image above, there is no branch added in the Source Repo Provider **Branch Name** field as this is the master branch, and the **ec2** folder in the repo is not entered in the Source Repo Provider. Later, when you use the Source Repo Provider in your Terraform Provisioner, you can specify the branch and root directory:
+![](./static/terraform-delegates-00.png)In the image above, there is no branch added in the Source Repo Provider **Branch Name** field as this is the master branch, and the **ec2** folder in the repo is not entered in the Source Repo Provider. Later, when you use the Source Repo Provider in your Terraform Provisioner, you can specify the branch and root directory:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/9pvvgcdbjh/1557259999000/image.png)If you are using a private Git repo, an SSH key for the private repo is required on the Harness Delegate running Terraform to download the root module. You can copy the SSH key over to the Delegate. For more information, see [Using SSH Keys for Cloning Modules](https://www.terraform.io/docs/enterprise/workspaces/ssh-keys.html) (from HashiCorp) and [Adding a new SSH key to your GitHub account](https://help.github.com/en/articles/adding-a-new-ssh-key-to-your-github-account) (from Github).### Next Steps
+![](./static/terraform-delegates-01.png)If you are using a private Git repo, an SSH key for the private repo is required on the Harness Delegate running Terraform to download the root module. You can copy the SSH key over to the Delegate. For more information, see [Using SSH Keys for Cloning Modules](https://www.terraform.io/docs/enterprise/workspaces/ssh-keys.html) (from HashiCorp) and [Adding a new SSH key to your GitHub account](https://help.github.com/en/articles/adding-a-new-ssh-key-to-your-github-account) (from Github).### Next Steps
 
 Once your account is set up, you can begin integrating your Terraform scripts. See [Add Terraform Scripts](/article/ux2enus2ku-add-terraform-scripts).
 

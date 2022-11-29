@@ -49,7 +49,7 @@ This topic describes step 1 in the Harness Terraform Provisioning implementation
 
 The graphic shows how the scripts you add in this topic are used to provision the target infrastructure for a deployment:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/ux2enus2ku/1586284265080/image.png)Once you have completed this topic:
+![](./static/add-terraform-scripts-04.png)Once you have completed this topic:
 
 * If you are going to provision the deployment target infrastructure, move onto the next step: [Map Dynamically Provisioned Infrastructure using Terraform](/article/a2f2bh35el-mapgcp-kube-terraform-infra).
 * If want to simply provision any non-target infrastructure, see [Terraform Provisioning with Harness](/article/hh52ews03d-terraform-provisioning-with-harness).
@@ -77,7 +77,7 @@ In **Commit**, select **Latest from Branch** or **Specific Commit ID**:
 
 In **Terraform Configuration Root Directory**, enter the folder where the script is located. Here is an example showing the Git repo on GitHub and the **Script Repository** settings:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/ux2enus2ku/1607019827743/image.png)When you click **Next**, the **Plan Configuration** section is displayed.
+![](./static/add-terraform-scripts-05.png)When you click **Next**, the **Plan Configuration** section is displayed.
 
 Before you move onto **Plan Configuration**, let's review the option of using expressions in **Script Repository**.
 
@@ -85,11 +85,11 @@ Before you move onto **Plan Configuration**, let's review the option of using ex
 
 You can also use expressions in the **Git Repository Branch** and **Terraform Configuration Root Directory** and have them replaced by Workflow variable values when the Terraform Provisioner is used by the Workflow. For example, a Workflow can have variables for **branch** and **path**:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/9pvvgcdbjh/1557359599744/image.png)In **Script Repository**, you can enter variables as `${workflow.variables.branch}` and `${workflow.variables.path}`:
+![](./static/add-terraform-scripts-06.png)In **Script Repository**, you can enter variables as `${workflow.variables.branch}` and `${workflow.variables.path}`:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/ux2enus2ku/1586201944120/image.png)When the Workflow is deployed, you are prompted to provide values for the Workflow variables, which are then applied to the Script Repository settings:
+![](./static/add-terraform-scripts-07.png)When the Workflow is deployed, you are prompted to provide values for the Workflow variables, which are then applied to the Script Repository settings:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/9pvvgcdbjh/1557360093894/image.png)This allows the same Terraform Provisioner to be used by multiple Workflows, where each Workflow can use a different branch and path for the **Script Repository**.
+![](./static/add-terraform-scripts-08.png)This allows the same Terraform Provisioner to be used by multiple Workflows, where each Workflow can use a different branch and path for the **Script Repository**.
 
 ### Step 3: Select Secret Manager for Terraform Plan
 
@@ -129,7 +129,7 @@ This setting is available because a Terraform refresh is not always an idempoten
 
 When you are done, the **Terraform Provisioner** will look something like this:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/ux2enus2ku/1586207610160/image.png)Now you can use this provisioner in both Infrastructure Definitions and Workflows.
+![](./static/add-terraform-scripts-09.png)Now you can use this provisioner in both Infrastructure Definitions and Workflows.
 
 ### Next Steps
 

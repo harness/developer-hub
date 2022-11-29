@@ -49,7 +49,7 @@ In this topic:
 
 This topic describes step 1 in the Harness CloudFormation Provisioning implementation process:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/wtper654tn/1589837133398/image.png)Once you have completed this topic, you can move onto the next step: [Map CloudFormation Infrastructure](/article/4xtxj2f88b-map-cloud-formation-infrastructure).
+![](./static/add-cloud-formation-templates-20.png)Once you have completed this topic, you can move onto the next step: [Map CloudFormation Infrastructure](/article/4xtxj2f88b-map-cloud-formation-infrastructure).
 
 ### Step 1: Add a CloudFormation Provisioner
 
@@ -63,7 +63,7 @@ Let's get started.
 To set up a CloudFormation Infrastructure Provisioner, do the following:
 
 1. In your Harness Application, click **Infrastructure Provisioners**.
-2. Click **Add Infrastructure Provisioner**, and then click **CloudFormation**. The **Add CloudFormation Provisioner** dialog appears.![](https://files.helpdocs.io/kw8ldg1itf/articles/wtper654tn/1589841895308/image.png)
+2. Click **Add Infrastructure Provisioner**, and then click **CloudFormation**. The **Add CloudFormation Provisioner** dialog appears.![](./static/add-cloud-formation-templates-21.png)
 3. In **Display Name**, enter the name for this provisioner. You will use this name to select this provisioner in Harness Infrastructure Definition and the CloudFormation Create Stack Workflow step.
 
 ### Step 2: Add Your CloudFormation Template
@@ -82,7 +82,7 @@ CloudFormation templates may be in JSON or YAML and Harness accepts both formats
 
 1. If you select **Template Body**, then paste in the CloudFormation template JSON or YAML.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/wtper654tn/1589845130908/image.png)You can also use [Harness variable expressions](/article/9dvxcegm90-variables), such as [Workflow variables](/article/766iheu1bk-add-workflow-variables-new-template), in **Template Body**.#### Git Repository
+![](./static/add-cloud-formation-templates-22.png)You can also use [Harness variable expressions](/article/9dvxcegm90-variables), such as [Workflow variables](/article/766iheu1bk-add-workflow-variables-new-template), in **Template Body**.#### Git Repository
 
 For Git Repository, ensure that you have added a SourceRepo Provider in Harness that connects to your Git repo. For more information, see [Add SourceRepo Providers](https://docs.harness.io/article/ay9hlwbgwa-add-source-repo-providers).
 
@@ -103,7 +103,7 @@ For Amazon S3, ensure you have added an AWS Cloud Provider to connect Harness to
 
 If you select **Amazon S3**, in **Template File Path**, enter the URL for the template in its S3 bucket.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/wtper654tn/1589845742924/image.png)Only enter the [globally-unique S3 bucket name URL](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingBucket.html). Not the region-specific URL.You can also use [Harness variable expressions](/article/9dvxcegm90-variables), such as [Workflow variables](/article/766iheu1bk-add-workflow-variables-new-template), in **Template File Path**.Ensure that the AWS Cloud Provider has permissions to read the bucket contents. The required policies is `AmazonS3ReadOnlyAccess` and you need another policy with the action `cloudformation:GetTemplateSummary`. See [Set Up Your Harness Account for CloudFormation](/article/308nblm0vc-cloud-formation-account-setup).
+![](./static/add-cloud-formation-templates-23.png)Only enter the [globally-unique S3 bucket name URL](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingBucket.html). Not the region-specific URL.You can also use [Harness variable expressions](/article/9dvxcegm90-variables), such as [Workflow variables](/article/766iheu1bk-add-workflow-variables-new-template), in **Template File Path**.Ensure that the AWS Cloud Provider has permissions to read the bucket contents. The required policies is `AmazonS3ReadOnlyAccess` and you need another policy with the action `cloudformation:GetTemplateSummary`. See [Set Up Your Harness Account for CloudFormation](/article/308nblm0vc-cloud-formation-account-setup).
 
 You can find many template samples from CloudFormation [Sample Templates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-sample-templates.html).### Step 3: Add Input Variables
 
@@ -125,21 +125,21 @@ You can use **Populate Variables** if you added a URL to your template in an S3 
 
 You can also use **Populate Variables** if you added your template manually, but you will need to also select an AWS Cloud Provider and region. Harness uses those to access the AWS CloudFormation API, parse the template you entered manually, and extract the variables.We will cover the **Populate Variables** scenario.
 
-1. Click **Populate Variables**. The **Populate from Example** assistant appears.![](https://files.helpdocs.io/kw8ldg1itf/articles/wtper654tn/1590007669775/image.png)
+1. Click **Populate Variables**. The **Populate from Example** assistant appears.![](./static/add-cloud-formation-templates-24.png)
 2. If you are using an AWS S3 source:
 	1. In **AWS Cloud Provider**, select the AWS Cloud Provider you added that has permission to access the template in the S3 bucket.
 	2. In **Region**, select the AWS region where the AWS Cloud Provider should connect. AWS S3 is global, but AWS connections require a region.
 3. If you are using a Git Repository source, you do not need to enter anything.
-4. Click **Submit**. The input parameters from your template are added automatically:![](https://files.helpdocs.io/kw8ldg1itf/articles/wtper654tn/1590008843341/image.png)
+4. Click **Submit**. The input parameters from your template are added automatically:![](./static/add-cloud-formation-templates-25.png)
 5. For each input, select the type of value required: **Text** or **Encrypted Text**. When this provisioner is added to a Workflow, the user will have to provide a value for the input that matches the type. Encrypted Text values use secrets you set up in Harness [Secrets Management](/article/au38zpufhr-secret-management).
 
 Here is what the input variables look like in a Workflow CloudFormation Create Stack step:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/wtper654tn/1589841218642/image.png)### Step 4: Complete the CloudFormation Provisioner
+![](./static/add-cloud-formation-templates-26.png)### Step 4: Complete the CloudFormation Provisioner
 
 Once you have completed your setup, click **Submit**. The CloudFormation Provisioner is created.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/wtper654tn/1590009659349/image.png)Next you will map template outputs to the Harness Infrastructure Definition settings Harness requires for provisioning.
+![](./static/add-cloud-formation-templates-27.png)Next you will map template outputs to the Harness Infrastructure Definition settings Harness requires for provisioning.
 
 ### Next Steps
 

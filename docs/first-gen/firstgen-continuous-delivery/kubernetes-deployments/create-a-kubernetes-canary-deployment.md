@@ -16,9 +16,9 @@ While you can add multiple phases to a Kubernetes Canary Workflow, you should si
 
 This is a standard Canary deployment:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/2xp0oyubjj/1616697268055/image.png)Harness does this a little different:
+![](./static/create-a-kubernetes-canary-deployment-02.png)Harness does this a little different:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/325x7awntc/1616629921936/image.png)In a typical Canary deployment, all nodes in a single environment are incrementally updated in small phases, with each phase requiring a verification/gate to proceed to the next phase.
+![](./static/create-a-kubernetes-canary-deployment-03.png)In a typical Canary deployment, all nodes in a single environment are incrementally updated in small phases, with each phase requiring a verification/gate to proceed to the next phase.
 
 This typical method isn't needed for Kubernetes because Kubernetes includes Rolling Update. Rolling Update is a built-in control for rolling out in a controlled way. It incrementally updates pod instances with new ones. New pods are scheduled on nodes with available resources.
 
@@ -59,7 +59,7 @@ The **Canary Phase** creates a Canary deployment using your Service **Manifes
 
 To add the Canary Phase, do the following:
 
-1. In **Deployment Phases**, click **Add Phase**. The **Workflow Phase** dialog appears.[![](https://files.helpdocs.io/kw8ldg1itf/other/1568670285313/image.png)](https://files.helpdocs.io/kw8ldg1itf/other/1568670285313/image.png)
+1. In **Deployment Phases**, click **Add Phase**. The **Workflow Phase** dialog appears.[![](./static/create-a-kubernetes-canary-deployment-04.png)](./static/create-a-kubernetes-canary-deployment-04.png)
 2. In **Service**, select the **Service** where you set up your Kubernetes configuration files.
 3. In Infrastructure Definition, select the Infrastructure Definition where you want this Workflow Phase to deploy your Kubernetes objects. This is the Infrastructure Definition with the Kubernetes cluster and namespace for this Phase's deployment.
 4. In **Service Variable Overrides**, you can add a variable to overwrite any variable in the Service you selected. Ensure that the variable names are identical. This is the same process described for overwriting variables in  [Override Harness Kubernetes Service Settings](/article/ycacqs7tlx-override-harness-kubernetes-service-settings).
@@ -73,7 +73,7 @@ Let's look at the default settings for this first Phase of a Canary Workflow.
 
 Click the Phase 1 step, named **Canary Deployment**. The **Canary Deployment** step dialog appears.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/wkvsglxmzy/1580254052511/image.png)In this step, you will define how many pods are deployed for a Canary test of the configuration files in your Service **Manifests** section.
+![](./static/create-a-kubernetes-canary-deployment-06.png)In this step, you will define how many pods are deployed for a Canary test of the configuration files in your Service **Manifests** section.
 
 1. In **Instance Unit Type**, click **COUNT** or **PERCENTAGE**.
 2. In **Instances**, enter the number of pods to deploy.
@@ -141,14 +141,14 @@ You can select one of the following options for **Commit ID** in the **Remote** 
 * **Latest from Branch** - Uses the latest commit id for both Canary and Primary Phases.
 * **Specific Commit ID** - Uses the specific commit id for both Canary and Primary Phases.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/2xp0oyubjj/1633693925895/clean-shot-2021-10-07-at-10-38-03-20211007-174000.png)To ensure that the identical manifest is deployed in both the Canary and Primary phases, the commitId recorded in the Canary Phase is used when selecting manifests in the Primary Phase.
+![](./static/create-a-kubernetes-canary-deployment-07.png)To ensure that the identical manifest is deployed in both the Canary and Primary phases, the commitId recorded in the Canary Phase is used when selecting manifests in the Primary Phase.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/2xp0oyubjj/1633450209706/screenshot-2021-10-05-at-9-38-56-pm.png)To inherit manifests from the Canary to the Primary phase, you must select **Manifest Format** using Git Repositories. Following are the Manifest Formats that use Git Repo:
+![](./static/create-a-kubernetes-canary-deployment-08.png)To inherit manifests from the Canary to the Primary phase, you must select **Manifest Format** using Git Repositories. Following are the Manifest Formats that use Git Repo:
 
 1. Kubernetes Resource Specs in YAML format
 2. Helm Chart from Source Repository
 3. Kustomization Configuration
-4. OpenShift Template![](https://files.helpdocs.io/kw8ldg1itf/articles/2xp0oyubjj/1633435644400/screenshot-2021-10-05-at-5-32-11-pm.png)
+4. OpenShift Template![](./static/create-a-kubernetes-canary-deployment-09.png)
 
 #### Skip Dry Run
 
@@ -180,11 +180,11 @@ Similar to application-scaling, during a rolling update of a Deployment, the Kub
 
 To add the Primary Phase, do the following:
 
-1. In your **Workflow**, in **Deployment Phases**, under **Canary**, click **Add Phase**.[![](https://files.helpdocs.io/kw8ldg1itf/articles/zmca0zai3s/1550272664585/image.png)](https://files.helpdocs.io/kw8ldg1itf/articles/zmca0zai3s/1550272664585/image.png)The **Workflow Phase** dialog appears.
+1. In your **Workflow**, in **Deployment Phases**, under **Canary**, click **Add Phase**.[![](./static/create-a-kubernetes-canary-deployment-10.png)](./static/create-a-kubernetes-canary-deployment-10.png)The **Workflow Phase** dialog appears.
 2. In **Service**, select the same **Service** you selected in Phase 1.
 3. In Infrastructure Definition, select the same Infrastructure Definition you selected in Phase 1.
 4. In **Service Variable Overrides**, you can add a variable to overwrite any variable in the Service you selected. Ensure that the variable names are identical. This is the same process described for overwriting variables in  [Override Harness Kubernetes Service Settings](/article/ycacqs7tlx-override-harness-kubernetes-service-settings).
-5. Click **SUBMIT**. The new Phase is created.[![](https://files.helpdocs.io/kw8ldg1itf/articles/zmca0zai3s/1550272893566/image.png)](https://files.helpdocs.io/kw8ldg1itf/articles/zmca0zai3s/1550272893566/image.png)
+5. Click **SUBMIT**. The new Phase is created.[![](./static/create-a-kubernetes-canary-deployment-12.png)](./static/create-a-kubernetes-canary-deployment-12.png)
 
 The Phase is named **Primary** automatically, and contains one step, **Rollout Deployment**.
 
@@ -198,11 +198,11 @@ Let's look at how the Workflow steps deploy the workload.
 
 Let's look at an example where the **Canary Deployment** step is configured to deploy a **COUNT** of **2**. Here is the step in the Harness **Deployments** page:
 
-[![](https://files.helpdocs.io/kw8ldg1itf/articles/zmca0zai3s/1550268937971/image.png)](https://files.helpdocs.io/kw8ldg1itf/articles/zmca0zai3s/1550268937971/image.png)You can see **Target Instance Count 2** in the Details section.
+[![](./static/create-a-kubernetes-canary-deployment-14.png)](./static/create-a-kubernetes-canary-deployment-14.png)You can see **Target Instance Count 2** in the Details section.
 
 Below Details you can see the logs for the step.
 
-[![](https://files.helpdocs.io/kw8ldg1itf/articles/zmca0zai3s/1550269644094/image.png)](https://files.helpdocs.io/kw8ldg1itf/articles/zmca0zai3s/1550269644094/image.png)Let's look at the **Prepare**, **Apply**, and **Wait** **for Steady State** sections of the step's deployment log, with comments added:
+[![](./static/create-a-kubernetes-canary-deployment-16.png)](./static/create-a-kubernetes-canary-deployment-16.png)Let's look at the **Prepare**, **Apply**, and **Wait** **for Steady State** sections of the step's deployment log, with comments added:
 
 ##### Prepare
 
@@ -326,7 +326,7 @@ kubectl --kubeconfig=config describe --filename=manifests.yaml
 
 Let's look at an example where the **Primary** step deploys the Service **Manifests** objects. Here is the step in the Harness **Deployments** page:
 
-[![](https://files.helpdocs.io/kw8ldg1itf/articles/zmca0zai3s/1550273385657/image.png)](https://files.helpdocs.io/kw8ldg1itf/articles/zmca0zai3s/1550273385657/image.png)Before we look at the logs, let's look at the Service **Manifests** files it's deploying.
+[![](./static/create-a-kubernetes-canary-deployment-18.png)](./static/create-a-kubernetes-canary-deployment-18.png)Before we look at the logs, let's look at the Service **Manifests** files it's deploying.
 
 Here is the values.yaml from our Service **Manifests** section:
 
@@ -541,7 +541,7 @@ Now that you have successfully deployed your artifact to your Kubernetes cluster
 
 For example, here is the Deployment workload in Google Cloud Kubernetes Engine:
 
-[![](https://files.helpdocs.io/kw8ldg1itf/articles/zmca0zai3s/1550276136165/image.png)](https://files.helpdocs.io/kw8ldg1itf/articles/zmca0zai3s/1550276136165/image.png)Or you can simply connect to your cluster in a terminal and see the pod(s) deployed:
+[![](./static/create-a-kubernetes-canary-deployment-20.png)](./static/create-a-kubernetes-canary-deployment-20.png)Or you can simply connect to your cluster in a terminal and see the pod(s) deployed:
 
 
 ```

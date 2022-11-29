@@ -79,7 +79,7 @@ In particular, you specify the min, max, and desired number of instances for the
 
 These correspond to the **Instance limits** settings in **Auto created scale condition** in VMSS:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/74htogyjad/1602620781424/image.png)Later, in the **Upgrade Virtual Machine Scale Set** step, you will upgrade the number of instances by a percentage or count of the desired instances.
+![](./static/create-an-azure-vmss-basic-deployment-16.png)Later, in the **Upgrade Virtual Machine Scale Set** step, you will upgrade the number of instances by a percentage or count of the desired instances.
 
 #### Name
 
@@ -153,7 +153,7 @@ You can select a percentage or count.
 
 This is the same as the **Scale mode** settings in **Auto created scale condition** in VMSS:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/74htogyjad/1602620781424/image.png)#### Name
+![](./static/create-an-azure-vmss-basic-deployment-17.png)#### Name
 
 Enter a name for the Workflow step.
 

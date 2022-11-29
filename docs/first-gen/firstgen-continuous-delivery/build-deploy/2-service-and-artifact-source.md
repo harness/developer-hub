@@ -46,21 +46,21 @@ To add an Artifact Source, perform the following steps:
 4. Select the **Meta-data Only** setting. Typically, metadata is sufficient as it contains enough information for the target host(s) to obtain the artifact. Harness stores the metadata and, during runtime, the Harness Delegate passes the metadata to the target host(s) where it is used to obtain the artifact(s) from the source repo. Ensure that the target host has network connectivity to the Artifact Server.
 5. In **Artifact Path**, select the path and name of the artifact. In this example, **target/todolist.war** is used.  
   
-When you are done, the **Jenkins Artifact Source** will look something like this:![](https://files.helpdocs.io/kw8ldg1itf/articles/xhh8oi4bkh/1620840173417/8-q-x-4-gdc-p-4-tumwb-hlur-cg-yt-sv-pfkq-xt-8-ixdg-k-9-iazr-mcl-b-5-soz-sl-845-kzds-8-w-i-6-3-em-ay-7-kw-1-sz-mnezk-9-zxp-i-6-adb-2-kge-ug-xzw-t-79-kb-2-kax-bel-vq-qfp-wf-eys-3-u-phm-5-p-5-k-pg-uc)
+When you are done, the **Jenkins Artifact Source** will look something like this:![](./static/2-service-and-artifact-source-10.png)
 6. Click **Submit**.  
   
-The Artifact Source is added to the Service.![](https://files.helpdocs.io/kw8ldg1itf/articles/xhh8oi4bkh/1620840173670/tvec-vadx-nlz-wt-h-4-q-7398-oms-lkyh-ozi-1-nd-fz-yhqnk-elj-2-uzlq-xyd-xxo-4-k-40-sduec-ca-6-xh-go-04-mkw-segv-3-cgb-bz-rs-l-5-hqq-brrf-oei-wg-2-az-7-yf-t-3-gdw-zb-5-yceih-v-pxzxsxw-1-yhmq)
+The Artifact Source is added to the Service.![](./static/2-service-and-artifact-source-11.png)
 
 #### Step: View Artifact History
 
 Next, let's see the artifact history that Harness can pull from Jenkins.
 
 1. Click **Artifact History**.
-2. Click **Manually pull artifact**. The **Manually Select An Artifact** dialog appears.![](https://files.helpdocs.io/kw8ldg1itf/articles/xhh8oi4bkh/1620840173900/g-4-d-m-vhb-6-t-2-daxjyxn-lskn-zw-sp-1-tp-54-fs-z-d-f-gxbcan-ikg-o-3-i-7-e-6-mh-glk-auc-yi-byat-ok-at-yc-n-b-7-h-h-0-oi-df-jfi-xqic-tq-m-7-cpx-wb-zkgr-ra-5-x-5-agwjinp-pt-5-w-87-fl-0-us-ee-qg-y)
+2. Click **Manually pull artifact**. The **Manually Select An Artifact** dialog appears.![](./static/2-service-and-artifact-source-12.png)
 3. In **Artifact Stream**, select the artifact source you just added.
 4. In **Artifact**, select the build for which you want to view history.
 5. Click **Submit**.
-6. Click **Artifact History** again. The history for the build you specified is displayed.![](https://files.helpdocs.io/kw8ldg1itf/articles/xhh8oi4bkh/1620840174126/6-eaw-xlxx-iohuiw-ew-n-4-ww-7-tj-uys-1-rur-1-ny-hd-lnjc-7-cih-psip-7-jt-qsh-s-5-p-ddh-7-nb-0-fm-ih-zptkm-qsu-s-2-fxnrm-1-r-0-pux-mssoe-5-e-0-w-2-vd-ke-wf-tbf-2-yiqygpgf-2-x-1-t-0-q-sg-50-mrl-hw-o)
+6. Click **Artifact History** again. The history for the build you specified is displayed.![](./static/2-service-and-artifact-source-13.png)
 
  For more information on Service settings, see [Services](/article/eb3kfl8uls-service-configuration).
 

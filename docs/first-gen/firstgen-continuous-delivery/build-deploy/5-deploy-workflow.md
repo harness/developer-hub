@@ -26,8 +26,8 @@ To set up the Deploy Workflow, do the following:
 6. In **Service**, select the Service you created earlier.
 7. In **Infrastructure Definition**, select the Infrastructure Definition you created earlier. If the Infrastructure Definition does not appear, ensure that you added the Service to the Infrastructure Definition **Scope to specific Services** setting.  
   
-When you are done, the dialog will look something like this.![](https://files.helpdocs.io/kw8ldg1itf/other/1568331803338/image.png)
-8. Click **Submit**. The Deploy Workflow is created.![](https://files.helpdocs.io/kw8ldg1itf/other/1568331856619/image.png)
+When you are done, the dialog will look something like this.![](./static/5-deploy-workflow-21.png)
+8. Click **Submit**. The Deploy Workflow is created.![](./static/5-deploy-workflow-22.png)
 
 Let's look at the two commands created automatically.
 
@@ -35,15 +35,15 @@ Let's look at the two commands created automatically.
 
 The **Select Nodes** command simply selects the nodes in your Infrastructure Definition.
 
-1. Select **Yes** to specify specific hosts in the **Host Name(s)** field. Harness will add whatever hosts it can find using the criteria in your Infrastructure Definition. For example, the following image shows how the criteria in your Infrastructure Definition locates an EC2 instance, which is then displayed in the **Node Select**.![](https://files.helpdocs.io/kw8ldg1itf/articles/q6rtl33634/1580235173953/image.png)
-2. Select **No** to specify the number of **Desired Instances** and **Instance Unit Type** you want.![](https://files.helpdocs.io/kw8ldg1itf/articles/apwbji6gk5/1598891485455/screenshot-2020-08-31-at-9-45-12-pm.png)
+1. Select **Yes** to specify specific hosts in the **Host Name(s)** field. Harness will add whatever hosts it can find using the criteria in your Infrastructure Definition. For example, the following image shows how the criteria in your Infrastructure Definition locates an EC2 instance, which is then displayed in the **Node Select**.![](./static/5-deploy-workflow-23.png)
+2. Select **No** to specify the number of **Desired Instances** and **Instance Unit Type** you want.![](./static/5-deploy-workflow-24.png)
 3. When the **Exclude instances from future phases** setting is selected (recommended), the instance(s) selected by this Node Select step will not be eligible for selection by any future Node Select step. In cases where you want to perform a one-time operation using a node and then deploy to all nodes in later phases, you might want to leave this setting unselected.
 
 #### Configure Install
 
 The Install step installs the artifact onto the nodes you selected.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/q6rtl33634/1580235247881/image.png)The Install step uses the artifact build number obtained in the Artifact Collection step and the Artifact Source in the Harness Service. Basically, the Install step looks in the Artifact Source for the build number obtained by Artifact Collection by using artifact metadata. The logs for the step display the artifact copy to the target nodes.
+![](./static/5-deploy-workflow-25.png)The Install step uses the artifact build number obtained in the Artifact Collection step and the Artifact Source in the Harness Service. Basically, the Install step looks in the Artifact Source for the build number obtained by Artifact Collection by using artifact metadata. The logs for the step display the artifact copy to the target nodes.
 
 
 ```

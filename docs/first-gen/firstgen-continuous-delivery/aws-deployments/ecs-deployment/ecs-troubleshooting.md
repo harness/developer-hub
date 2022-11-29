@@ -49,7 +49,7 @@ See [Service Event Messages](https://docs.aws.amazon.com/AmazonECS/latest/develo
 
 You might see Docker errors indicating that when creating a task, the container image specified could not be retrieved.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/az9h2n0usr/1560362552896/image.png)See [Cannot Pull Container Image Error](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_cannot_pull_image.html) from AWS.
+![](./static/ecs-troubleshooting-90.png)See [Cannot Pull Container Image Error](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_cannot_pull_image.html) from AWS.
 
 ### Invalid CPU or Memory Value Specified
 

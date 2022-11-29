@@ -34,21 +34,21 @@ You can overwrite Service variables when one or more Services are paired with th
 
 To overwrite a Service variable, do the following:
 
-1. In the Harness Service, note the name of the Service variable in **Config Variables**.![](https://files.helpdocs.io/kw8ldg1itf/other/1572379253111/image.png)
-2. In the Harness Environment, click **Service Configuration Override**. The **Service Configuration Override** dialog appears.![](https://files.helpdocs.io/kw8ldg1itf/other/1572379343787/image.png)
+1. In the Harness Service, note the name of the Service variable in **Config Variables**.![](./static/override-pcf-manifests-and-config-variables-and-files-72.png)
+2. In the Harness Environment, click **Service Configuration Override**. The **Service Configuration Override** dialog appears.![](./static/override-pcf-manifests-and-config-variables-and-files-73.png)
 3. In **Service**, select the Harness Service that contains the variable you want to overwrite. If you select **All Services**, you will have to manually enter the name of the variable you want to overwrite. The following steps use a single Service.  
   
-When you have selected a Service, the **Override Type** options appear.![](https://files.helpdocs.io/kw8ldg1itf/other/1572379524688/image.png)
+When you have selected a Service, the **Override Type** options appear.![](./static/override-pcf-manifests-and-config-variables-and-files-74.png)
 4. Click **Variable Override**.
 5. In **Configuration Variable**, select the variable you want to overwrite.
 6. In **Override Scope**, the only option is **Entire Environment**, currently.
 7. In **Type**, select **Text** or **Encrypted Text**.
 8. In **Override Value**, if you selected **Text** in **Type**, enter a new value. If you selected **Encrypted Text**, select an existing Encrypted Text secret. Encrypted Text secrets are set up in Harness [Secrets Management](/article/au38zpufhr-secret-management).  
   
-When you are done, the dialog will look something like this:![](https://files.helpdocs.io/kw8ldg1itf/other/1572379758528/image.png)
+When you are done, the dialog will look something like this:![](./static/override-pcf-manifests-and-config-variables-and-files-75.png)
 9. Click **Submit**. The override is added to the Environment:
 
-![](https://files.helpdocs.io/kw8ldg1itf/other/1572379817081/image.png)### Option 2: TAS Manifests Override
+![](./static/override-pcf-manifests-and-config-variables-and-files-76.png)### Option 2: TAS Manifests Override
 
 The most commonly-used override is for TAS manifests. You can override the entire manifest.yml of a Service or any of its values.
 
@@ -56,7 +56,7 @@ To overwrite any property in an inline or remote manifest, the manifest.yml must
 
 For example, here are inline manifest.yml and vars.yml files using variables for routes. These variables are then overwritten in **Service Configuration Overrides**:
 
-![](https://files.helpdocs.io/kw8ldg1itf/other/1572382200912/image.png)You can only perform one overwrite of a single Service. If you attempt to add a second overwrite of the same Service, you will receive this error: `Can’t add, this override already exists. Please use the edit button to update.`
+![](./static/override-pcf-manifests-and-config-variables-and-files-77.png)You can only perform one overwrite of a single Service. If you attempt to add a second overwrite of the same Service, you will receive this error: `Can’t add, this override already exists. Please use the edit button to update.`
 
 To overwrite a TAS manifest, do the following:
 
@@ -73,7 +73,7 @@ You can overwrite values in the vars.yml configured in your Service. It does not
 
 To overwrite the variable values configured in your Harness Service, you can simply enter the vars.yml variables you want to overwrite, and enter new values. Here is an example overwriting routes in an inline vars.yml:
 
-![](https://files.helpdocs.io/kw8ldg1itf/other/1572384638429/image.png)#### Overwrite using Remote Values
+![](./static/override-pcf-manifests-and-config-variables-and-files-78.png)#### Overwrite using Remote Values
 
 Typically, a single manifest.yml is used in a Service and then remote vars.yml files are used to supply different variable values.
 
@@ -81,7 +81,7 @@ To overwrite manifest property values using remote files, you simply point to a 
 
 For example, here is a Service with an inline manifest.yml and vars.yml, and it uses the remote Git repo folder **pcf-dev/vars.yml** file to overwrite the vars.yml values:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/r0vp331jnq/1646948202997/clean-shot-2022-03-10-at-13-36-27.png)The remote vars.yml file does not need to supply all of the variables for the vars.yml file it is overwriting. You can simply overwrite the variables you want.
+![](./static/override-pcf-manifests-and-config-variables-and-files-79.png)The remote vars.yml file does not need to supply all of the variables for the vars.yml file it is overwriting. You can simply overwrite the variables you want.
 
 As you can see in the above example, the remote vars.yml file only overwrites the **routes** in the inline vars.yml file.
 
@@ -95,9 +95,9 @@ If the manifest you select is incorrect due to missing attributes or special cha
 
 Currently, this feature is behind the feature flag `SINGLE_MANIFEST_SUPPORT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.Manifests can defined at the following levels, from highest to lowest priority:
 
-1. **Environment level for a specific Service:** defined at Environment level with its scope set to a specific Service.![](https://files.helpdocs.io/kw8ldg1itf/articles/r0vp331jnq/1647625761468/clean-shot-2022-03-18-at-10-49-09.png)
-2. **Environment level for All Services:** defined at Environment level with its scope set to All Services.![](https://files.helpdocs.io/kw8ldg1itf/articles/r0vp331jnq/1647625792288/clean-shot-2022-03-18-at-10-49-39.png)
-3. **Service level manifest:** the app manifest set up in the Harness Service.![](https://files.helpdocs.io/kw8ldg1itf/articles/r0vp331jnq/1647884806327/clean-shot-2022-03-21-at-10-46-28.png)See:
+1. **Environment level for a specific Service:** defined at Environment level with its scope set to a specific Service.![](./static/override-pcf-manifests-and-config-variables-and-files-80.png)
+2. **Environment level for All Services:** defined at Environment level with its scope set to All Services.![](./static/override-pcf-manifests-and-config-variables-and-files-81.png)
+3. **Service level manifest:** the app manifest set up in the Harness Service.![](./static/override-pcf-manifests-and-config-variables-and-files-82.png)See:
 	* [Adding and Editing Inline Tanzu Manifest Files](https://docs.harness.io/article/3ekpbmpr4e)
 	* [Upload Local and Remote Tanzu Resource Files](https://docs.harness.io/article/i5jxqsbkt7-upload-local-and-remote-pcf-resource-files)
 

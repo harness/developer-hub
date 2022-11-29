@@ -24,7 +24,7 @@ You can also overwrite Service variables at the Phase-level of a multiple Phase 
 
 1. In the Harness Environment, in the **Service Configuration Overrides** section, click **Add Configuration Overrides**. The **Service Configuration Override** settings appear.
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/z4b962oaqk/1580774592425/image.png)1. In **Service**, select the Service you are using for your Kubernetes deployment.
+![](./static/override-harness-kubernetes-service-settings-22.png)1. In **Service**, select the Service you are using for your Kubernetes deployment.
 2. Select one of the **Override Type** options.
 
 ### Option: Variable Override
@@ -63,7 +63,7 @@ You can use a specific Helm chart to override All Services deployed to this Envi
 2. In **Override Type**, select **Helm Chart Repository**.
 3. In **Helm Repository**, select the Helm Repository containing the Helm chart that you want to override all Service's Helm Charts, and then click **Submit**.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/ycacqs7tlx/1587684044134/image.png)### Example
+![](./static/override-harness-kubernetes-service-settings-23.png)### Example
 
 Here is an example of overwriting a Service values.yaml with a **Service Configuration Override**.
 
@@ -84,7 +84,7 @@ spec:
 ```
 Now, in **Service Configuration Override**, you can overwrite the Service values.yaml `replicas` value using the **Local** option:
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/z4b962oaqk/1580774862908/image.png)At deployment runtime to this Environment, the overwritten `replicas` values is used:
+![](./static/override-harness-kubernetes-service-settings-24.png)At deployment runtime to this Environment, the overwritten `replicas` values is used:
 
 
 ```
@@ -101,7 +101,7 @@ spec:
 1. In **Service**, select the specific service that you want to override.
 2. In **Override Type**, select **OpenShift Param**.
 3. Select **Inline** or **Remote**.
-	1. If you select **Inline,** then enter the value inline. If you select **Remote**, perform the following steps.![](https://files.helpdocs.io/kw8ldg1itf/articles/ycacqs7tlx/1588679835373/screenshot-2020-05-05-at-5-26-54-pm.png)
+	1. If you select **Inline,** then enter the value inline. If you select **Remote**, perform the following steps.![](./static/override-harness-kubernetes-service-settings-25.png)
 4. Select the **Git Connector**.
 5. Select either **Use latest commit from branch** or **Use specific commit ID.**  
 - If you select **Use** **latest commit from branch**, enter the branch name where the file is located, such as `master`, `dev`, or `myAppName`. Do not provide the full URL to the branch.  
@@ -114,7 +114,7 @@ spec:
 1. In **Service**, select **All Services**.
 2. In **Override Type**, select **OpenShift Param**.
 3. Select **Inline** or **Remote**.
-	1. If you select **Inline,** then enter the value inline. If you select **Remote**, perform the following steps.![](https://files.helpdocs.io/kw8ldg1itf/articles/ycacqs7tlx/1588676781533/screenshot-2020-05-05-at-4-35-24-pm.png)
+	1. If you select **Inline,** then enter the value inline. If you select **Remote**, perform the following steps.![](./static/override-harness-kubernetes-service-settings-26.png)
 4. Select the **Git Connector**.
 5. Select either **Use latest commit from branch** or **Use specific commit ID.**  
 - If you select **Use** **latest commit from branch**, enter the branch name where the file is located, such as `master`, `dev`, or `myAppName`. Do not provide the full URL to the branch.  

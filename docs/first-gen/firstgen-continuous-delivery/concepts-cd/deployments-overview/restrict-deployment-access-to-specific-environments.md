@@ -26,7 +26,7 @@ Ensure you are familiar with the following Harness features:
 
 In the following image, you can see that the Application Permissions for a Harness User Group are set for a specific Application and three of its Environments:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/twlzny81xl/1594242327678/image.png)Members of this User Group will have permission to execute Workflow and Pipeline deployments for those target Environments only.
+![](./static/restrict-deployment-access-to-specific-environments-14.png)Members of this User Group will have permission to execute Workflow and Pipeline deployments for those target Environments only.
 
 ### Option: Create or Edit a User Group
 
@@ -40,9 +40,9 @@ For steps on setting up a User Group, see [Managing Users and Groups (RBAC)](/ar
 
 By default, all Harness User Groups members have full permissions on all Applications.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/twlzny81xl/1641457809659/screenshot-2022-01-06-at-1-58-49-pm.png)In **Application Permissions**, click the pencil icon to edit the default permissions.
+![](./static/restrict-deployment-access-to-specific-environments-15.png)In **Application Permissions**, click the pencil icon to edit the default permissions.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/twlzny81xl/1594242945297/image.png)The Application Permission settings appear. Configure the following settings:
+![](./static/restrict-deployment-access-to-specific-environments-16.png)The Application Permission settings appear. Configure the following settings:
 
 1. In **Permission Type**, enable **Deployments** or any other permissions other than **All Permission Types**.
 2. In **Application**, select the Application(s) you want to grant deployment permissions for. Use the search feature if needed.
@@ -51,7 +51,7 @@ By default, all Harness User Groups members have full permissions on all Applica
 
 When you're done, the Application Permission will look something like this:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/twlzny81xl/1594243344055/image.png)Now this User Group's members can only deploy to the Environments you selected.
+![](./static/restrict-deployment-access-to-specific-environments-17.png)Now this User Group's members can only deploy to the Environments you selected.
 
 Add and remove members as needed.
 
@@ -68,7 +68,7 @@ The Application Permission settings appear. Configure the following settings:
 
 User Group members with only **Execute Workflow** permissions cannot **Execute Pipeline** or **Rollback Workflow**.When you're done, the Application Permission will look something like this:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/twlzny81xl/1641447682459/screenshot-2022-01-06-at-11-10-51-am.png)### Option: Set Application Permissions for Execute Pipeline
+![](./static/restrict-deployment-access-to-specific-environments-18.png)### Option: Set Application Permissions for Execute Pipeline
 
 In **Application Permissions**, click the pencil icon to edit the default permissions.
 
@@ -81,7 +81,7 @@ The Application Permission settings appear. Configure the following settings:
 
 User Group members with only **Execute Pipeline** permissions cannot **Execute Workflow** or **Rollback Workflow**.When you're done, the Application Permission will look something like this:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/twlzny81xl/1641447809016/screenshot-2022-01-06-at-11-12-31-am.png)### Option: Set Application Permissions for Rollback Workflow
+![](./static/restrict-deployment-access-to-specific-environments-19.png)### Option: Set Application Permissions for Rollback Workflow
 
 In **Application Permissions**, click the pencil icon to edit the default permissions.
 
@@ -94,7 +94,7 @@ The Application Permission settings appear. Configure the following settings:
 
 User Group members with only **Rollback Workflow** permissions cannot **Execute Pipeline** or **Execute Workflow**.When you're done, the Application Permission will look something like this:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/twlzny81xl/1641447913315/screenshot-2022-01-06-at-11-14-47-am.png)### Deployments Permissions
+![](./static/restrict-deployment-access-to-specific-environments-20.png)### Deployments Permissions
 
 The following table lists the permissions of User Group members based on the Action assigned corresponding to the Deployments Permission Type:
 

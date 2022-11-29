@@ -29,7 +29,7 @@ When you create a TAS Service in Harness, a default vars.yml file is created wit
 
 
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/hzyz7oc5k9/1636592233635/image.png)
+![](./static/tanzu-app-naming-with-harness-32.png)
 You can change the `APP_NAME` in vars.yml and specific a new name for you app and Harness will use that for all deployments. For example:
 
 
@@ -157,7 +157,7 @@ Consequently, there will be no link between previous deployments and this new de
 This illustration provides examples of before and after enabling the Special Characters feature:
 
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/hzyz7oc5k9/1636741822414/clean-shot-2021-11-12-at-10-30-02-2-x.png)
+![](./static/tanzu-app-naming-with-harness-33.png)
 
 If something goes wrong after enabling the Special Characters feature, rollback will not work because the app family names have changed. Even Blue Green will not work as the previous app will belong to different family.
 

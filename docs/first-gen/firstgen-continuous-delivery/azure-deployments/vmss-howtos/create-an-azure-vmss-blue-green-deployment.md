@@ -42,11 +42,11 @@ For other deployment strategies, see [Create an Azure VMSS Basic Deployment](/ar
 
 Here is the Azure load balancer with two pools set up:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/9op1u6dgks/1602713649491/image.png)Here is a successful Blue/Green VMSS deployment, showing the swap from the stage to prod pool:
+![](./static/create-an-azure-vmss-blue-green-deployment-00.png)Here is a successful Blue/Green VMSS deployment, showing the swap from the stage to prod pool:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/9op1u6dgks/1602713876963/image.png)Here is the final, deployed VMSS with its prod pool:
+![](./static/create-an-azure-vmss-blue-green-deployment-01.png)Here is the final, deployed VMSS with its prod pool:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/9op1u6dgks/1602713759321/image.png)### Supported Platforms and Technologies
+![](./static/create-an-azure-vmss-blue-green-deployment-02.png)### Supported Platforms and Technologies
 
 See [Supported Platforms and Technologies](/article/220d0ojx5y-supported-platforms).
 
@@ -54,7 +54,7 @@ See [Supported Platforms and Technologies](/article/220d0ojx5y-supported-platfor
 
 A Harness Blue/Green VMSS deployment requires an Azure load balancer with two backend pools.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/9op1u6dgks/1602713649491/image.png)The load balancer distributes inbound flows that arrive at the load balancer's front end to the stage and production backend pool instances.
+![](./static/create-an-azure-vmss-blue-green-deployment-03.png)The load balancer distributes inbound flows that arrive at the load balancer's front end to the stage and production backend pool instances.
 
 The backend pool instances are instances in the virtual machine scale set Harness creates in the deployment.
 
@@ -102,7 +102,7 @@ You will define the new VMSS by specifying the min, max, and desired number of i
 
 These correspond to the **Instance limits** settings in **Auto created scale condition** in VMSS:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/74htogyjad/1602620781424/image.png)Later, in the **Upgrade Virtual Machine Scale Set** step, you will upgrade the number of instances by a percentage or count of the desired instances.
+![](./static/create-an-azure-vmss-blue-green-deployment-04.png)Later, in the **Upgrade Virtual Machine Scale Set** step, you will upgrade the number of instances by a percentage or count of the desired instances.
 
 #### Name
 
@@ -184,7 +184,7 @@ You can select a percentage or count.
 
 This is the same as the **Scale mode** settings in **Auto created scale condition** in VMSS:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/74htogyjad/1602620781424/image.png)#### Name
+![](./static/create-an-azure-vmss-blue-green-deployment-05.png)#### Name
 
 Enter a name for the Workflow step.
 
@@ -219,15 +219,15 @@ Now that the Canary Workflow is complete, you can deploy it to Azure.
 
 In **Azure Virtual Machine Scale Set Setup**, you can see Harness set up the new VMSS.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/9op1u6dgks/1602804784194/image.png)#### Upgrade Virtual Machine Scale Set
+![](./static/create-an-azure-vmss-blue-green-deployment-06.png)#### Upgrade Virtual Machine Scale Set
 
 In **Upgrade Virtual Machine Scale Set**, you can see the new VMSS upscaled to its desired instances.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/9op1u6dgks/1602804852092/image.png)#### Swap Virtual Machine Scale Set Route
+![](./static/create-an-azure-vmss-blue-green-deployment-07.png)#### Swap Virtual Machine Scale Set Route
 
 In **Swap Virtual Machine Scale Set Route**, you can see Harness detach the stage pool from the new VMSS and attached the production pool to it.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/9op1u6dgks/1602804876072/image.png)You can see the swap in the logs:
+![](./static/create-an-azure-vmss-blue-green-deployment-08.png)You can see the swap in the logs:
 
 
 ```
@@ -250,7 +250,7 @@ Azure tags are used for versioning by Harness, as described in [Azure VMSS Versi
 
 For Blue/Green deployments, the an additional tag named is `BG_VERSION` added.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/9op1u6dgks/1602620359490/image.png)The value for the tag is either BLUE or GREEN. The value alternates with each deployment.
+![](./static/create-an-azure-vmss-blue-green-deployment-09.png)The value for the tag is either BLUE or GREEN. The value alternates with each deployment.
 
 In the following example, the new deployment of `doc__blue__green` (`doc__blue__green__2`) is tagged with `BLUE` and the previous version `doc__blue__green__1` is tagged with `GREEN`.
 

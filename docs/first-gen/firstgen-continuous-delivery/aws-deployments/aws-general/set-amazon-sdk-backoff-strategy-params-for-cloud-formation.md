@@ -68,9 +68,9 @@ In your Harness account, click **Setup**.
 
 In **Account**, click more options (︙), and then click **Account Defaults**.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/actaxli00u/1644626045542/clean-shot-2022-02-11-at-16-33-47-2-x.png)The **Account Defaults** appear.
+![](./static/set-amazon-sdk-backoff-strategy-params-for-cloud-formation-00.png)The **Account Defaults** appear.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/actaxli00u/1644626100397/clean-shot-2022-02-11-at-16-34-52-2-x.png)To add a parameter, click **Add Row**.
+![](./static/set-amazon-sdk-backoff-strategy-params-for-cloud-formation-01.png)To add a parameter, click **Add Row**.
 
 Here's the list of supported Amazon default SDK backoff strategy parameters:
 
@@ -86,7 +86,7 @@ All values are in milliseconds.
 
 When you're done, the **Account Defaults** will look something like this:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/actaxli00u/1644626783358/image.png)### Next Steps
+![](./static/set-amazon-sdk-backoff-strategy-params-for-cloud-formation-02.png)### Next Steps
 
 You will need to tune Amazon SDK Default backoff strategy params based on the API request rate per AWS account and region already set.
 

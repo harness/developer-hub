@@ -67,7 +67,7 @@ You can only enter one resource in **Workload**. To scale another resource, add 
 
 Here is what a completed step looks like:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/va3trqfy49/1619460458124/image.png)### Option: Delegate Selector
+![](./static/scale-kubernetes-pods-112.png)### Option: Delegate Selector
 
 If your Workflow Infrastructure Definition's Cloud Provider uses a Delegate Selector (supported in Kubernetes Cluster and AWS Cloud Providers), then the Workflow uses the selected Delegate for all of its steps.
 

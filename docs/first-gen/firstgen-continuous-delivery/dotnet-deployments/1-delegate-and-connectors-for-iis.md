@@ -102,13 +102,13 @@ Listener
 ```
 You can also see WinRM running in Server Manager:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/tr8ddfm4lz/1540407312929/image.png)You can also test if the WinRM service is running on a local or remote computer using the Test-WSMan PowerShell command. For more information, see [Test-WSMan](https://docs.microsoft.com/en-us/powershell/module/microsoft.wsman.management/test-wsman?view=powershell-6) from Microsoft.
+![](./static/1-delegate-and-connectors-for-iis-19.png)You can also test if the WinRM service is running on a local or remote computer using the Test-WSMan PowerShell command. For more information, see [Test-WSMan](https://docs.microsoft.com/en-us/powershell/module/microsoft.wsman.management/test-wsman?view=powershell-6) from Microsoft.
 
 Ensure that the ports you need for the WinRM connection are open on your network security group and VM. For more information, see [How to open ports to a virtual machine with the Azure portal](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/nsg-quickstart-portal) to open the WinRM Inbound security rule.**Network Security Group:**
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/tr8ddfm4lz/1540505801830/image.png)**VM Inbound Port Rules:**
+![](./static/1-delegate-and-connectors-for-iis-20.png)**VM Inbound Port Rules:**
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/tr8ddfm4lz/1540506662076/image.png)For more information about Azure and WinRM, see the following:
+![](./static/1-delegate-and-connectors-for-iis-21.png)For more information about Azure and WinRM, see the following:
 
 * [Setting up WinRM access for Virtual Machines in Azure Resource Manager](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/winrm)
 * [Deploy a Windows VM and configures WinRM https listener](https://azure.microsoft.com/en-au/resources/templates/vm-winrm-windows/) (Azure Template)
@@ -129,7 +129,7 @@ In AWS EC2, you can enter the command as User data when creating the instance:
 Invoke-Expression ((New-Object System.Net.Webclient).DownloadString('https://raw.githubusercontent.com/ansible/ansible/devel/examples/scripts/ConfigureRemotingForAnsible.ps1'))   
 </powershell>
 ```
-![](https://files.helpdocs.io/kw8ldg1itf/articles/tr8ddfm4lz/1542157419725/image.png)If you launch more than one instance at a time, the user data is available to all the instances in that reservation.
+![](./static/1-delegate-and-connectors-for-iis-22.png)If you launch more than one instance at a time, the user data is available to all the instances in that reservation.
 
 You can also remote into the EC2 instance, open a PowerShell session, and run the `Invoke-Expression`.
 
@@ -166,7 +166,7 @@ Listener
 ```
 Here's an example:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/1n0t9vo7e4/1583455764670/image.png)For more information about EC2 and WinRM, see the following:
+![](./static/1-delegate-and-connectors-for-iis-23.png)For more information about EC2 and WinRM, see the following:
 
 * [WinRM (Windows Remote Management) Troubleshooting](https://blogs.technet.microsoft.com/jonjor/2009/01/09/winrm-windows-remote-management-troubleshooting/)
 * [Running Commands on Your Windows Instance at Launch](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-user-data.html)
@@ -180,7 +180,7 @@ If the default methods for setting up WinRM in your Windows instances is not wor
 Add a WinRM connection in Harness to execute deployment steps on the remote Windows servers.
 
 1. Mouseover **Continuous Security**, and then click **Secrets Management**. The Secrets Management page appears.
-2. Under **Executions Credentials**, click **WinRM Connection**. The **WinRM Connection Attributes** dialog appears.![](https://files.helpdocs.io/kw8ldg1itf/articles/1n0t9vo7e4/1580245602029/image.png)
+2. Under **Executions Credentials**, click **WinRM Connection**. The **WinRM Connection Attributes** dialog appears.![](./static/1-delegate-and-connectors-for-iis-24.png)
 3. Fill out the **WinRM Connection Attributes** dialog and click **SUBMIT**. The **WinRM Connection Attributes** dialog has the following fields.
 
 
@@ -201,7 +201,7 @@ If you experience errors getting the WinRM connection to work, you might need to
 Add a connection to the Cloud Provider where the IIS website, application, or virtual directory will be deployed.
 
 1. Click **Setup**, and then click **Cloud Providers**. The **Cloud Providers** page appears.
-2. Click **Add Cloud Provider**. The **Cloud Provider** dialog appears.![](https://files.helpdocs.io/kw8ldg1itf/articles/1n0t9vo7e4/1580245713295/image.png)
+2. Click **Add Cloud Provider**. The **Cloud Provider** dialog appears.![](./static/1-delegate-and-connectors-for-iis-25.png)
 3. In **Type**, select the type of cloud provider you want to add, such as **Amazon Web Services** or **Microsoft Azure**. The dialog settings will change for each cloud provider.
 4. Enter the cloud provider account information, and then click **SUBMIT**. For account details and Harness permission requirements for the different providers, see [Add Cloud Providers](/article/whwnovprrb-infrastructure-providers) ([AWS](/article/whwnovprrb-infrastructure-providers#amazon_web_services_aws_cloud), [Azure](/article/whwnovprrb-infrastructure-providers#azure)).  
 Once you have created Harness applications and environments, you can return to this dialog and add **Usage Scope** on which applications and environments may use this provider.
@@ -211,7 +211,7 @@ For certain Cloud Providers, such as AWS, instead of using account information t
 Add a connection to the Artifact Server where Harness can pull the IIS website, application, or virtual directory artifact.
 
 If you are using the same Cloud Provider as artifact server, then you can skip this step. For example, if you added AWS EC2 as a Cloud Provider and you are using AWS S3 as an artifact server, you do not need to add AWS S3 as an artifact server. You can simply use the same AWS connection.1. Click **Setup**, and then click **Connectors**. The **Connectors** page appears.
-2. Click **Artifact Server**, and then click **Add Artifact Server**. The artifact server dialog appears.![](https://files.helpdocs.io/kw8ldg1itf/articles/1n0t9vo7e4/1580245772528/image.png)
+2. Click **Artifact Server**, and then click **Add Artifact Server**. The artifact server dialog appears.![](./static/1-delegate-and-connectors-for-iis-26.png)
 3. In **Type**, click the artifact source you want to use. The dialog settings will change for each server.
 4. Enter the artifact server information and click **SUBMIT**. For account details and Harness permission requirements for the different servers, such as SMB and SFTP, see [Add Artifact Servers](/article/7dghbx1dbl-configuring-artifact-server).  
 Once you have created Harness applications and environments, you can return to this dialog and add **Usage Scope** on which applications and environments may use this server.

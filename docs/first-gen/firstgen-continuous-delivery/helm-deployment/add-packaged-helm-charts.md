@@ -132,11 +132,11 @@ Once you have a script that fetches your files and, if needed, extracts your pac
 
 You can enter a path to the chart folder or to the chart file. For example, here is a repo with the chart and related files and how it is referenced in Harness:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/xxwna12fso/1623108530953/image.png)You can use Harness Service, Workflow, and built-in variables in the path.
+![](./static/add-packaged-helm-charts-13.png)You can use Harness Service, Workflow, and built-in variables in the path.
 
 For example, here is the same script using a Service Config Variable:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/xxwna12fso/1623108745340/image.png)As you can see, there are also Service Config Variables for values.yaml overrides. You can reference these in Harness Environments **Service Configuration Overrides**. This is discussed later in this topic.
+![](./static/add-packaged-helm-charts-14.png)As you can see, there are also Service Config Variables for values.yaml overrides. You can reference these in Harness Environments **Service Configuration Overrides**. This is discussed later in this topic.
 
 ### Option: Delegate Selector
 
@@ -200,7 +200,7 @@ For **Inherit Script from Service**, Harness will use the script you entered to 
 
 Here's an example overriding the values.yaml using a Service **Config Variable** from the Service you selected:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/xxwna12fso/1623185211754/clean-shot-2021-06-08-at-13-46-24.png)### Option: Use a Harness Artifact Source
+![](./static/add-packaged-helm-charts-15.png)### Option: Use a Harness Artifact Source
 
 The values.yaml file you use can have the image and/or dockercfg values hardcoded. In this case, you don't need to use a Harness Artifact Source in your Harness Service.
 

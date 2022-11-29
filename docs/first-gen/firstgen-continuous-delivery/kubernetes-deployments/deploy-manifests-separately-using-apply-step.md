@@ -30,23 +30,23 @@ Typically, you will instruct Harness to ignore the workload that you want to dep
 
 To have a Workflow ignore a resource file in a Service Manifest section, you add the comment `# harness.io/skip-file-for-deploy` to the **top** of the file. For example, here is a ConfigMap file using the comment:
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/00el61pzok/1580859475944/image.png)Now, when this Service is deployed by a Workflow, this ConfigMap resource will not be applied by default.
+![](./static/deploy-manifests-separately-using-apply-step-188.png)Now, when this Service is deployed by a Workflow, this ConfigMap resource will not be applied by default.
 
 The comment `# harness.io/skip-file-for-deploy` must be at the **top** of the file. If it is on the second line it will not work and the resource will be deployed as part of the main Workflow rollout.### Step 2: Add the Apply Step
 
 In your Kubernetes Workflow, click **Add Step**, and then select **Apply**.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/4vjgmjcj6z/1619459232548/image.png)### Step 3: Enter the Path and Name of the Manifest
+![](./static/deploy-manifests-separately-using-apply-step-189.png)### Step 3: Enter the Path and Name of the Manifest
 
 The Workflow Apply step will apply any resource in a Service **Manifest** section explicitly. You must provide the path and name of the file in **Apply**, and Harness will deploy the resource.
 
 For example, the following image shows a Jobs resource in a Service **Manifest** section that uses the ignore comment `# harness.io/skip-file-for-deploy` so that the Workflow does not apply it as part of its main **Deploy** steps, and the **Apply** step that specifies the same Jobs resource:
 
-[![](https://files.helpdocs.io/kw8ldg1itf/articles/crzdm3458j/1580256082187/image.png)](https://files.helpdocs.io/kw8ldg1itf/articles/crzdm3458j/1580256082187/image.png)The **File paths** field in the Apply step must include the folder name and the file name. In the above example, the folder **templates** is included with the file name **jobs.yaml**: `templates/jobs.yaml`.
+[![](./static/deploy-manifests-separately-using-apply-step-190.png)](./static/deploy-manifests-separately-using-apply-step-190.png)The **File paths** field in the Apply step must include the folder name and the file name. In the above example, the folder **templates** is included with the file name **jobs.yaml**: `templates/jobs.yaml`.
 
 You can include multiple resource files in the Apply step **File paths** field by separating them with commas, for example: `templates/jobs.yaml, templates/statefulSet.yaml`:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/4vjgmjcj6z/1619460094014/image.png)If you apply the ignore comment `# harness.io/skip-file-for-deploy` to a resource but do not use the resource in an Apply step, the resource is never deployed.If you use a remote manifest in your Harness Service, in **File paths** enter a path relative to the path you specified for the manifest in the Harness Service.
+![](./static/deploy-manifests-separately-using-apply-step-192.png)If you apply the ignore comment `# harness.io/skip-file-for-deploy` to a resource but do not use the resource in an Apply step, the resource is never deployed.If you use a remote manifest in your Harness Service, in **File paths** enter a path relative to the path you specified for the manifest in the Harness Service.
 
 Harness variables such as [Workflow variables](/article/766iheu1bk-add-workflow-variables-new-template) are supported in the **File Paths** setting.### Option: Manifest Options
 
@@ -122,7 +122,7 @@ You can override values in the Values YAML file you are using with this **Apply*
 
 For example, if the Apply step is deploying a Kubernetes Job by referencing the jobs.yaml in the Harness Service used by this Workflow, you can override values in the values.yaml used in the Service.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/4vjgmjcj6z/1646676472273/clean-shot-2022-03-07-at-10-05-34.png)By adding or overriding values in the values.yaml, you can pass parameters into the Job being deployed.
+![](./static/deploy-manifests-separately-using-apply-step-193.png)By adding or overriding values in the values.yaml, you can pass parameters into the Job being deployed.
 
 Another example is traffic splitting. Let's say your Ingress object uses a values.yaml for the `canary-weight` annotation value. Here you can see the values.yaml `canaryWeight` values referenced:
 
@@ -132,7 +132,7 @@ nginx.ingress.kubernetes.io/canary-weight: {{ .Values.canaryWeight }}
 ```
 In the Apply step, you simply need to override this value to set the weight. For example:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/4vjgmjcj6z/1646677136149/clean-shot-2022-03-07-at-10-18-46.png)You can override values.yaml values using inline or remote values.
+![](./static/deploy-manifests-separately-using-apply-step-194.png)You can override values.yaml values using inline or remote values.
 
 #### Inline Override
 
@@ -166,7 +166,7 @@ In **File Path**, enter the path to the values file that contains the values you
 
 Here's an example:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/4vjgmjcj6z/1646678035185/clean-shot-2022-03-07-at-10-33-35.png)You can use [Workflow variables](/article/766iheu1bk-add-workflow-variables-new-template) in the value. For example:
+![](./static/deploy-manifests-separately-using-apply-step-195.png)You can use [Workflow variables](/article/766iheu1bk-add-workflow-variables-new-template) in the value. For example:
 
 
 ```

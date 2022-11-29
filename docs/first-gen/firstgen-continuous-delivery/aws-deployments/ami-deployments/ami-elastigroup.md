@@ -24,9 +24,9 @@ Harness can integrate AMI deployments with Spotinst's [Elastigroup](https://spot
 
 This guide outlines how to set up and orchestrate your AWS, Spotinst, and Harness resources for AMI Blue/Green or Canary deployments. Here is an example of a completed Blue/Green deployment on the Harness Deployments page:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/bkxhdsur2z/1620840150605/image.png)The deployed instances in your corresponding Elastigroup will appear in the Spotinst Console:
+![](./static/ami-elastigroup-78.png)The deployed instances in your corresponding Elastigroup will appear in the Spotinst Console:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/bkxhdsur2z/1620840150787/image.png)
+![](./static/ami-elastigroup-79.png)
 ### Prerequisites: AWS, Spotinst, and Harness Resources
 
 Before creating your Harness [Infrastructure Definition](#infrastructure_definition) and [Blue/Green](#blue_green) or [Canary Workflows](#canary), you will need to set up the following resources.
@@ -49,7 +49,7 @@ An AMI Blue/Green deployment has these further requirements:
 
 Within Spotinst, you must configure at least one Elastigroup cluster that matches your AWS configuration's AMI, VPC (virtual private cloud), Load Balancer(s), security groups, availability zones, and allowed instance types.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/bkxhdsur2z/1620840150933/image.png)For details, see [Spotinst tutorials](https://docs.spot.io/elastigroup/tutorials/).
+![](./static/ami-elastigroup-80.png)For details, see [Spotinst tutorials](https://docs.spot.io/elastigroup/tutorials/).
 
 
 #### Harness Prerequisites
@@ -86,7 +86,7 @@ Follow the instructions in [AWS Cloud Provider Setup](/article/rd6ghl00va-ami-de
 
 The Delegate must be in the same AWS VPC and subnet that you plan to use for your AWS resources.Once filled in, the AWS Cloud Provider dialog will look something like this:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/bkxhdsur2z/1620840151064/image.png)
+![](./static/ami-elastigroup-81.png)
 #### Spotinst Cloud Provider
 
 To set up the Spotinst Cloud Provider, follow the steps in [Spotinst Cloud Provider](/article/whwnovprrb-cloud-providers).
@@ -105,13 +105,13 @@ The [Infrastructure Definition](/article/v3l3wqovbe-infrastructure-definitions) 
 2. In the Environment's **Infrastructure Definition** section, click **Add Infrastructure Definition**.
 3. In the resulting **Infrastructure Definition** dialog, enter a **Name** to identify this Infrastructure Definition when you add it to a Workflow.
 4. In **Cloud Provider Type**, select **Amazon Web Services**.
-5. In **Deployment Type**, select **Amazon Machine Image**. This expands the **Infrastructure Definition** dialog's top section to look something like this:![](https://files.helpdocs.io/kw8ldg1itf/articles/bkxhdsur2z/1620840151268/image.png)
+5. In **Deployment Type**, select **Amazon Machine Image**. This expands the **Infrastructure Definition** dialog's top section to look something like this:![](./static/ami-elastigroup-82.png)
 6. Select the check box labeled **Use Spotinst Elastigroup to Manage Infrastructure**.
 7. For this example, accept the default **Use** **Already Provisioned Infrastucture** option.  
 If you have configured an [Infrastructure Provisioner](/article/o22jx8amxb-add-an-infra-provisioner) in Harness, you can use that configuration by instead selecting the **Dynamically Provisioned** option. For details, see our AMI Blue/Green Deployment Guide's [Infrastructure Provisioners](#infrastructure_provisioners), and our AMI [CloudFormation](/article/vw71c7rxhp-ami-blue-green#infrastructure_provisioners) and [Terraform](/article/9pvvgcdbjh-terrform-provisioner#ami_and_auto_scaling_group) examples.
 8. Select the **AWS** **Cloud Provider** that you [created earlier](#aws_cloud_provider).
 9. Select the **Spotinst** **Cloud Provider** that you [created earlier](#spotinst_cloud_provider).
-10. Select the **Region** that you configured earlier in [AWS](#aws_prereq) and [Spotinst](#spotinst_prereq). The dialog's center section will now look something like this:![](https://files.helpdocs.io/kw8ldg1itf/articles/bkxhdsur2z/1620840151413/image.png)
+10. Select the **Region** that you configured earlier in [AWS](#aws_prereq) and [Spotinst](#spotinst_prereq). The dialog's center section will now look something like this:![](./static/ami-elastigroup-83.png)
 
 Next, you'll complete the Infrastructure Definition by copying your Elastigroup configuration from Spotinst and pasting it into this dialog.
 
@@ -122,10 +122,10 @@ To populate the **Elastigroup Configuration** field with your configuration JSON
 
 1. In the Spotinst Console, click the [Elastigroups tab](https://console.spotinst.com/#/aws/ec2/elastigroup/list).
 2. Click the Elastigroup you configured earlier in [Spotinst Prerequisites](#spotinst_prerequisites).
-3. From the top-right **Actions** menu, select **View Configuration**.![](https://files.helpdocs.io/kw8ldg1itf/articles/bkxhdsur2z/1620840151570/image.png)
-4. In the resulting **Configuration** modal, select all the JSON and copy it to your clipboard.![](https://files.helpdocs.io/kw8ldg1itf/articles/bkxhdsur2z/1620840151691/image.png)If you prefer, click **EXPORT** to save the JSON to a file.
+3. From the top-right **Actions** menu, select **View Configuration**.![](./static/ami-elastigroup-84.png)
+4. In the resulting **Configuration** modal, select all the JSON and copy it to your clipboard.![](./static/ami-elastigroup-85.png)If you prefer, click **EXPORT** to save the JSON to a file.
 5. Back in Harness' Infrastructure Definition dialog, paste the JSON into the **Elastigroup Configuration** field. This will make your Elastigroup infrastructure available to Harness deployments.
-6. Select **Scope to Specific Services**, and—in the adjacent drop-down—select the AMI [Service](#service) that you created earlier and will deploy to this infrastructure. (This scoping ensures that this Infrastructure Definition will be available whenever a Workflow, or Pipeline Phase, is set up for this Service.)![](https://files.helpdocs.io/kw8ldg1itf/articles/bkxhdsur2z/1620840151868/image.png)The **Infrastructure Definition** dialog's lower section will now look something like this:![](https://files.helpdocs.io/kw8ldg1itf/articles/bkxhdsur2z/1620840151973/image.png)
+6. Select **Scope to Specific Services**, and—in the adjacent drop-down—select the AMI [Service](#service) that you created earlier and will deploy to this infrastructure. (This scoping ensures that this Infrastructure Definition will be available whenever a Workflow, or Pipeline Phase, is set up for this Service.)![](./static/ami-elastigroup-86.png)The **Infrastructure Definition** dialog's lower section will now look something like this:![](./static/ami-elastigroup-87.png)
 7. Click **Submit** to add the new Infrastructure Definition to your Harness Environment.
 
 You can now proceed to create a [Blue/Green](#blue_green) or [Canary](#canary) Workflow. The next few sections cover additional Infrastructure Definition details and options.
@@ -170,13 +170,13 @@ Your Workflows can use Harness' built-in `${artifact.metadata.tag}` variable to 
 To create a Basic Workflow for AMI Elastigroup deployment:
 
 1. In your Application, click **Workflows**.
-2. Click **Add Workflow**. The **Workflow** dialog appears.![](https://files.helpdocs.io/kw8ldg1itf/other/1568939997260/image.png)
+2. Click **Add Workflow**. The **Workflow** dialog appears.![](./static/ami-elastigroup-88.png)
 3. In **Name**, enter a name for your Workflow, such as **Elastigroup Basic**.
 4. Optionally, add a **Description** of this Workflow's purpose.
 5. In **Workflow Type**, select **Basic Deployment**.
 6. Select the **Environment** and [Service](#service) **that** you created for your AMI Elastigroup deployments.
-7. Select the **Infrastructure Definition** that you [configured earlier](#add_infra_def) for AMI Elastigroup deployments. The dialog will now look something like this:![](https://files.helpdocs.io/kw8ldg1itf/articles/3bb8sh701j/1573541935237/image.png)
-8. Click **Submit**. The new Basic Workflow is preconfigured.![](https://files.helpdocs.io/kw8ldg1itf/articles/3bb8sh701j/1573542143842/image.png)
+7. Select the **Infrastructure Definition** that you [configured earlier](#add_infra_def) for AMI Elastigroup deployments. The dialog will now look something like this:![](./static/ami-elastigroup-89.png)
+8. Click **Submit**. The new Basic Workflow is preconfigured.![](./static/ami-elastigroup-90.png)
 
 Next, we will examine options for configuring the Basic deployment's first two steps.
 
@@ -185,9 +185,9 @@ Next, we will examine options for configuring the Basic deployment's first two s
 
 In Step 1, select **Elastigroup Setup** to open a dialog where you can configure the Elastigroup that Harness will create for the AMI you are deploying.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/bkxhdsur2z/1580166423680/image.png)If you select **Fixed** Instances, the dialog expands as shown here:
+![](./static/ami-elastigroup-91.png)If you select **Fixed** Instances, the dialog expands as shown here:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/bkxhdsur2z/1580166450261/image.png)This expanded Setup dialog provides the following fields, all of which require entries:
+![](./static/ami-elastigroup-92.png)This expanded Setup dialog provides the following fields, all of which require entries:
 
 
 
@@ -202,14 +202,14 @@ In Step 1, select **Elastigroup Setup** to open a dialog where you can configure
 
 When you are done, the dialog will look something like this:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/bkxhdsur2z/1580166517485/image.png)This dialog's instance settings correspond directly to the resulting Elastigroup's settings, as shown here:
+![](./static/ami-elastigroup-93.png)This dialog's instance settings correspond directly to the resulting Elastigroup's settings, as shown here:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/bkxhdsur2z/1580166668957/image.png)
+![](./static/ami-elastigroup-94.png)
 ##### Elastigroup Setup in Deployment
 
 Let's look at an example where the Elastigroup Setup—configured as shown above—is deployed. Here is the step in the Harness Deployments page:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/3bb8sh701j/1573782804127/image.png)Here is partial output, showing a successful setup:
+![](./static/ami-elastigroup-95.png)Here is partial output, showing a successful setup:
 
 
 ```
@@ -223,18 +223,18 @@ Completed setup for Spotinst
 
 In Step 2, select **Elastigroup Deploy** to open a dialog where you can define how many instances to deploy in the Elastigroup, as either a count or a percentage:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/bkxhdsur2z/1580167040561/image.png)The right-hand drop-down offers two options that govern the values that you enter in the adjacent field:
+![](./static/ami-elastigroup-96.png)The right-hand drop-down offers two options that govern the values that you enter in the adjacent field:
 
 * **Percent:** Specify a percentage of the **Target Instances** that you set in [Step 1: Elastigroup Setup](#basic_setup_asg).
 * **Count:** Specify an exact number of instances. (This cannot exceed the **Max Instances** that you set in [Step 1: Elastigroup Setup](#basic_setup_asg).)
 
 For this example, we'll use a **Count** of **2**:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/bkxhdsur2z/1580167069862/image.png)##### Elastigroup Deploy Step in Deployment
+![](./static/ami-elastigroup-97.png)##### Elastigroup Deploy Step in Deployment
 
 Using the **Elastigroup Deploy** configuration shown above—requesting a modest **Desired Instances** count of **2**—here is the **Deploy Service** step in the Harness Deployments page:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/3bb8sh701j/1573784857833/image.png)Here's partial output, showing a successful resizing and deployment:
+![](./static/ami-elastigroup-98.png)Here's partial output, showing a successful resizing and deployment:
 
 
 ```
@@ -253,20 +253,20 @@ Elastigroup: [sig-1da775dc] reached steady state
 
 By default, each Elastigroup Basic Workflow includes a **Rollback Steps** section, containing an **Elastigroup****Rollback** step. There's nothing to configure in this step.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/bkxhdsur2z/1620840152132/image.png)To see how the default behavior works, see the [Canary > Rollback Steps](#rollback_1) section.
+![](./static/ami-elastigroup-99.png)To see how the default behavior works, see the [Canary > Rollback Steps](#rollback_1) section.
 
 
 #### Basic Workflow Deployment
 
 Now that the setup is complete, you can click **Deploy** in the Workflow to deploy the artifact to your Elastigroup.
 
-![](https://files.helpdocs.io/kw8ldg1itf/other/1551916036419/image.png)In the resulting dialog, use the **Build / Version** drop-down to select the AMI you want to deploy. (Harness populates this list from the Artifact Source settings in the [Service](#service) you created.) Then click **Submit**.
+![](./static/ami-elastigroup-100.png)In the resulting dialog, use the **Build / Version** drop-down to select the AMI you want to deploy. (Harness populates this list from the Artifact Source settings in the [Service](#service) you created.) Then click **Submit**.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/3bb8sh701j/1573805194503/image.png)Once the Workflow deploys, the Deployments page confirms success.
+![](./static/ami-elastigroup-101.png)Once the Workflow deploys, the Deployments page confirms success.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/3bb8sh701j/1573786415488/image.png)To verify the completed deployment, log into your Spotinst Console and display the newly deployed instance(s).
+![](./static/ami-elastigroup-102.png)To verify the completed deployment, log into your Spotinst Console and display the newly deployed instance(s).
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/3bb8sh701j/1573805254294/image.png)
+![](./static/ami-elastigroup-103.png)
 ### Blue/Green Deployments Overview
 
 Assuming that you've set up all [prerequisites](#prerequisites), the following sections outline how to create a Blue/Green Workflow and deploy your AMI.
@@ -312,18 +312,18 @@ You need the following AWS ELB setup:
 
 Here is an example of an ALB Listeners rule redirecting to two TGs:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/bkxhdsur2z/1588715483617/image.png)This example uses the default rule, but in most cases you will have several rules for redirecting traffic to your services. Typically, the default rule is used as the last rule to catch actions that the other rules do not.#### Target Group Weight Shifting
+![](./static/ami-elastigroup-104.png)This example uses the default rule, but in most cases you will have several rules for redirecting traffic to your services. Typically, the default rule is used as the last rule to catch actions that the other rules do not.#### Target Group Weight Shifting
 
 The ALB Listener has two TGs with the following weights:
 
 * One TG has a weight of 100 (100%) — This TG is used for the **existing Elastigroup** (pre-deployment).
 * The other TG has a weight of 0 — This TG is used for the **new Elastigroup** you are deploying.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/bkxhdsur2z/1588716089042/image.png)When Harness first creates the new Elastigroup it adjusts its instances to the TG with a weight of 0.
+![](./static/ami-elastigroup-105.png)When Harness first creates the new Elastigroup it adjusts its instances to the TG with a weight of 0.
 
 Later in the Workflow, you add **Shift Traffic Weight** step(s) to adjust the weight for this TG. For example, here is a **Shift Traffic Weight** step adjust the weight to 10%:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/bkxhdsur2z/1588716266988/image.png)The weight for the **other** TG is automatically set to the remaining percentage. In this case, 90%.
+![](./static/ami-elastigroup-106.png)The weight for the **other** TG is automatically set to the remaining percentage. In this case, 90%.
 
 You keep adding **Shift Traffic Weight** steps until the weight of the TG for the new Elastigroup is 100.
 
@@ -331,9 +331,9 @@ You can manipulate traffic shifting using as many **Shift Traffic Weight** steps
 
 Approval steps are very useful because they enable you to cancel a deployment and return to the pre-deployment traffic weighting with a single step.The Workflow looks something like the following. Here the names of the **Shift Traffic Weight** steps have been changed to describe the weights they are assigning (10%, 100%):
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/bkxhdsur2z/1588716542872/image.png)When you deploy the Workflow, you can see the traffic shift:
+![](./static/ami-elastigroup-107.png)When you deploy the Workflow, you can see the traffic shift:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/bkxhdsur2z/1588716676996/image.png)Let's walk through an example.
+![](./static/ami-elastigroup-108.png)Let's walk through an example.
 
 #### Create the Blue/Green Workflow
 
@@ -347,7 +347,7 @@ Approval steps are very useful because they enable you to cancel a deployment an
 
 Harness creates the Workflow and automatically adds the steps for deployment.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/bkxhdsur2z/1588717910655/image.png)By default, only one **Shift Traffic Weight** step is added. Unless you want to shift the traffic in one step, you will likely add more **Shift Traffic Weight** steps to incrementally shift traffic.
+![](./static/ami-elastigroup-109.png)By default, only one **Shift Traffic Weight** step is added. Unless you want to shift the traffic in one step, you will likely add more **Shift Traffic Weight** steps to incrementally shift traffic.
 
 Let's walk through each step.
 
@@ -355,7 +355,7 @@ Let's walk through each step.
 
 This step creates the new Elastigroup. In this step, you name the new Elastigroup, specify how instances its uses, and then identity the production load balancer, listener, and Rule to use.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/bkxhdsur2z/1588723566611/image.png)1. Once you have named and defined the number of instances for the Elastigroup, in **Load Balancer Details**, click **Add**.
+![](./static/ami-elastigroup-110.png)1. Once you have named and defined the number of instances for the Elastigroup, in **Load Balancer Details**, click **Add**.
 2. In **Elastic Load Balancer**, select the ELB to use for production traffic.
 3. In **Production Listener ARN**, select the Listener to use. This is the listener containing the rule whose weights you will adjust.
 4. In **Production Listener Rule ARN**, select the ARN for the rule to use. You can find the ARN by its number in the AWS console.
@@ -386,26 +386,26 @@ This step simply deploys the new Elastigroup you created. It brings the new Elas
 
 There is nothing to configure in this step. You can see its output in the deployment details:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/bkxhdsur2z/1588721356477/image.png)#### Shift Traffic Weight
+![](./static/ami-elastigroup-111.png)#### Shift Traffic Weight
 
 This is the step where you shift traffic from the TG for the previous Elastigroup to the new Elastigroup you are deploying.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/bkxhdsur2z/1588721445598/image.png)1. In **Name**, it can helpful to name the step after the traffic shift percentage it will apply, such as **10%**. You might also choose to name it according to its position, like **Shift Step 1**.
+![](./static/ami-elastigroup-112.png)1. In **Name**, it can helpful to name the step after the traffic shift percentage it will apply, such as **10%**. You might also choose to name it according to its position, like **Shift Step 1**.
 2. In **New Elastigroup Weight**, enter the percentage of traffic you want shifted from the previous Elastigroup to the new Elastigroup you are deploying.
 
 Most of the settings support [Workflow variable expressions](/article/766iheu1bk-add-workflow-variables-new-template). You can use these to template this step and then allow its values to be specified at deployment runtime. You can even pass in the values using a Harness [Trigger](/article/revc37vl0f-passing-variable-into-workflows).Here is an example of what this step looks like when it shifts traffic 10% during deployment:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/bkxhdsur2z/1588722695015/image.png)You can see that the New Elastigroup is receiving 10% of traffic and the old Elastigroup is receiving 90%.
+![](./static/ami-elastigroup-113.png)You can see that the New Elastigroup is receiving 10% of traffic and the old Elastigroup is receiving 90%.
 
 Next, you will likely want to follow the Shift Traffic Weight step with an [Approval step](/article/0ajz35u2hy-approvals). This way you can test the new Elastigroup before shifting more traffic to it.
 
 Add more **Shift Traffic Weight** and **Approval** steps until you shift traffic to 100.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/bkxhdsur2z/1588722317849/image.png)Now your Workflow is ready for deployment.
+![](./static/ami-elastigroup-114.png)Now your Workflow is ready for deployment.
 
 When you deploy, the final **Shift Traffic Weight** step will look something like this:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/bkxhdsur2z/1588722903358/image.png)##### Downsize Old Elastigroup at 0% weight
+![](./static/ami-elastigroup-115.png)##### Downsize Old Elastigroup at 0% weight
 
 The **Downsize Old Elastigroup at 0% weight** setting should only be selected for the **Shift Traffic Weight** step that shifts traffic to **100%** in its **New Elastigroup Weight** setting.
 
@@ -419,15 +419,15 @@ If no Spotinst service setup is found, Harness skips rollback.
 
 In many cases, Harness users place an Approval step in Rollback Steps also:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/bkxhdsur2z/1588723185976/image.png)### Blue/Green with Instant Traffic Shift
+![](./static/ami-elastigroup-116.png)### Blue/Green with Instant Traffic Shift
 
 In this scenario, a Blue/Green deployment reliably deploys your AMI(s) by maintaining new and old versions of Elastigroups that using these AMIs. The Elastigroups run behind an Application Load Balancer (ALB) using two listeners, Stage and Prod. These listeners forward respectively to two Target Groups (TGs), Stage and Prod, where the new and old Elastigroups are run. 
 
 Elastigroups perform the functions that Auto Scaling Groups perform in standard AMI deployments.In the first stage of deployment, the new Elastigroup—created using the new AMI you are deploying—is attached to the Stage Target Group:
 
-![](https://files.helpdocs.io/kw8ldg1itf/other/1571361422257/image.png)Blue/Green deployments are achieved by swapping routes between the Target Groups—always attaching the new Elastigroup first to the Stage Target Group, and then to the Prod Target Group:
+![](./static/ami-elastigroup-117.png)Blue/Green deployments are achieved by swapping routes between the Target Groups—always attaching the new Elastigroup first to the Stage Target Group, and then to the Prod Target Group:
 
-![](https://files.helpdocs.io/kw8ldg1itf/other/1571361397168/image.png)
+![](./static/ami-elastigroup-118.png)
 #### Workflow Overview
 
 By default, AMI Elastigroup Blue/Green Workflows in Harness have five steps:
@@ -450,8 +450,8 @@ In your Application, click **Workflows** > **Add Workflow**. The **Workflow** di
 1. Enter a **Name**, and (optionally) enter a **Description** of this Workflow's purpose.
 2. In **Workflow Type**, select **Blue/Green Deployment**.
 3. Select the **Environment** and [Service](#service) **that** you created for your AMI Elastigroup deployments.
-4. Select the **Infrastructure Definition** you [configured earlier](#add_infra_def) for AMI Elastigroup deployments. The dialog will now look something like this:![](https://files.helpdocs.io/kw8ldg1itf/articles/bkxhdsur2z/1620840152253/image.png)
-5. Click **Submit**. The new Blue/Green Workflow is preconfigured.![](https://files.helpdocs.io/kw8ldg1itf/articles/bkxhdsur2z/1620840152379/image.png)
+4. Select the **Infrastructure Definition** you [configured earlier](#add_infra_def) for AMI Elastigroup deployments. The dialog will now look something like this:![](./static/ami-elastigroup-119.png)
+5. Click **Submit**. The new Blue/Green Workflow is preconfigured.![](./static/ami-elastigroup-120.png)
 
 Next, we will examine options for configuring the Blue/Green deployment's **Elastigroup****Setup**, **Deploy Elastigroup**, and **Route Update** steps.
 
@@ -460,15 +460,15 @@ Next, we will examine options for configuring the Blue/Green deployment's **Elas
 
 In Step 1, select **Elastigroup Setup** to open a dialog where you can fine-tune the Elastigroup clusters and Load Balancer configuration for this deployment:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/bkxhdsur2z/1580167247030/image.png)For most settings here, see the corresponding [AMI Basic Workflow instructions](/article/rd6ghl00va-ami-deployment#basic_setup_asg). The following steps and recommendations are specific to Elastigroup Blue/Green deployments:
+![](./static/ami-elastigroup-121.png)For most settings here, see the corresponding [AMI Basic Workflow instructions](/article/rd6ghl00va-ami-deployment#basic_setup_asg). The following steps and recommendations are specific to Elastigroup Blue/Green deployments:
 
 1. In the **Elastigroup Name** field, you can choose to enter a short, recognizable name. (The default name will be a long string automatically concatenated from variables representing the Harness Application, Service, and Environment names.)
 2. Harness recommends setting the **Service Steady State Wait Timeout (min)** field to at least **20** minutes, as shown in the above screen capture. This is a safe interval to prevent deployments from failing while waiting for the [Route Update](#swap_routes_bg) step's Blue/Green switchover to complete.
-3. In the **AWS Load Balancer Configurations** section, click **Add** to open the controls shown below:![](https://files.helpdocs.io/kw8ldg1itf/articles/bkxhdsur2z/1583365028913/image.png)
+3. In the **AWS Load Balancer Configurations** section, click **Add** to open the controls shown below:![](./static/ami-elastigroup-122.png)
 4. Use the **Elastic Load Balancer** drop-down to select at least one load balancer specified in your Infrastructure Definition's [Elastigroup Configuration](#add_elastigroup_configuration).
 5. Select, or type in, your desired **Production Listener Port** and **Stage Listener Port**.  
   
-You can use the **Add** link to select additional load balancers for this Workflow.The dialog's lower panel will now look something like this:![](https://files.helpdocs.io/kw8ldg1itf/articles/bkxhdsur2z/1583365152826/image.png)
+You can use the **Add** link to select additional load balancers for this Workflow.The dialog's lower panel will now look something like this:![](./static/ami-elastigroup-123.png)
 
 **Listener Rules** — If you are using [Listener Rules](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html#listener-rules) in your target groups, you can select them in **Production Listener Rule ARN** and **Stage Listener Rule ARN**.
 
@@ -485,7 +485,7 @@ For example, if you have a path condition on a rule to enable [path-based routin
 
 Let's look at an example deployment of the Elastigroup Setup shown above. Here is this step in the Harness Deployments page:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/bkxhdsur2z/1620840152580/image.png)Here's partial output, showing a successful setup:
+![](./static/ami-elastigroup-124.png)Here's partial output, showing a successful setup:
 
 
 ```
@@ -503,16 +503,16 @@ Completed Blue green setup for Spotinst
 
 In Step 2, define how many instances to deploy in the new Elastigroup cluster, as either a count or a percentage. This deployment example uses percentage scaling, with a desired target of 100%.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/bkxhdsur2z/1580167498414/image.png)For details about how this setting corresponds to AWS parameters, see the AMI Basic Workflow topic's [Step 2: Deploy Service](/article/rd6ghl00va-ami-deployment#upgrade_asg) section.
+![](./static/ami-elastigroup-125.png)For details about how this setting corresponds to AWS parameters, see the AMI Basic Workflow topic's [Step 2: Deploy Service](/article/rd6ghl00va-ami-deployment#upgrade_asg) section.
 
 
 ##### Elastigroup Deploy Step in Deployment
 
 At this point, Harness deploys the new Elastigroup—containing instances created from your new AMI—to the Stage Target Group:
 
-![](https://files.helpdocs.io/kw8ldg1itf/other/1571361085902/image.png)Using the 100% **Desired Instances** configuration shown above, here is the **Elastigroup****Deploy** step in the Harness Deployments page:
+![](./static/ami-elastigroup-126.png)Using the 100% **Desired Instances** configuration shown above, here is the **Elastigroup****Deploy** step in the Harness Deployments page:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/bkxhdsur2z/1620840152817/image.png)The **Upscale Elastigroup** log shows the initial request to enlarge the Elastigroup:
+![](./static/ami-elastigroup-127.png)The **Upscale Elastigroup** log shows the initial request to enlarge the Elastigroup:
 
 
 ```
@@ -540,7 +540,7 @@ No deployment error. Execution success.
 
 This example shows an (optional) Approval added to Step 2. It requests manual approval, following successful registration of the Stage Elastigroup, and prior to the Blue/Green (staging/production) switchover in the Step 4.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/bkxhdsur2z/1580167570628/image.png)
+![](./static/ami-elastigroup-128.png)
 #### Step 4: Route Update
 
 This is the heart of a Blue/Green deployment. Here, Harness directs your selected Load Balancer(s) to perform the following swap:
@@ -550,14 +550,14 @@ This is the heart of a Blue/Green deployment. Here, Harness directs your selecte
 
 When this step is complete, the new Elastigroup—containing the instances created from your new AMI—are deployed to the production route:
 
-![](https://files.helpdocs.io/kw8ldg1itf/other/1571361372371/image.png)In Step 4, open the **Swap Production with Stage** dialog if you want to toggle the **Downsize Old Elastigroup** setting. When enabled, this check box directs AWS to free up resources from the old Elastigroup once the new Elastigroup registers its targets and reaches steady state.
+![](./static/ami-elastigroup-129.png)In Step 4, open the **Swap Production with Stage** dialog if you want to toggle the **Downsize Old Elastigroup** setting. When enabled, this check box directs AWS to free up resources from the old Elastigroup once the new Elastigroup registers its targets and reaches steady state.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/bkxhdsur2z/1580167603134/image.png)
+![](./static/ami-elastigroup-130.png)
 ##### Swap Production with Stage Step in Deployment
 
 Using the configuration shown above, here is the **Swap Production with Stage** step in the Harness Deployments page:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/bkxhdsur2z/1620840152954/image.png)Here's partial output. The **Swap Routes** log shows successful swapping of the two Elastigroups' routes:
+![](./static/ami-elastigroup-131.png)Here's partial output. The **Swap Routes** log shows successful swapping of the two Elastigroups' routes:
 
 
 ```
@@ -592,11 +592,11 @@ No deployment error. Execution success.
 
 Once your setup is complete, you can click the Workflow's **Deploy** button to start the Blue/Green deployment.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/bkxhdsur2z/1620840153107/image.png)In the resulting **Start New Deployment** dialog, select the AMI to deploy, and click **Submit**.
+![](./static/ami-elastigroup-132.png)In the resulting **Start New Deployment** dialog, select the AMI to deploy, and click **Submit**.
 
 As the Workflow deploys, the Deployments page displays details about the deployed instances.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/bkxhdsur2z/1620840153223/image.png)To verify the completed deployment, log into your [Spotinst Console](https://console.spotinst.com/#/aws/ec2/elastigroup/list) and locate the newly deployed instance(s).
+![](./static/ami-elastigroup-133.png)To verify the completed deployment, log into your [Spotinst Console](https://console.spotinst.com/#/aws/ec2/elastigroup/list) and locate the newly deployed instance(s).
 
 ### Continuous Verification with Route Update
 
@@ -606,7 +606,7 @@ To verify deployment after you use **Shift Traffic Weight** or **Swap Production
 
 Click **Add Step**, and then locate these options.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/bkxhdsur2z/1591733470894/image.png)For information on setting these up, see [Verify Deployments with AppDynamics](/article/ehezyvz163-3-verify-deployments-with-app-dynamics) and [Verify Deployments with Elasticsearch](/article/e2eghvcyas-3-verify-deployments-with-elasticsearch).
+![](./static/ami-elastigroup-134.png)For information on setting these up, see [Verify Deployments with AppDynamics](/article/ehezyvz163-3-verify-deployments-with-app-dynamics) and [Verify Deployments with Elasticsearch](/article/e2eghvcyas-3-verify-deployments-with-elasticsearch).
 
 
 ### Canary Workflow and Deployment
@@ -623,15 +623,15 @@ Elastigroups perform the functions that Auto Scaling Groups perform in standard 
 3. In **Workflow Type**, select **Canary Deployment**.
 4. Select the **Environment** that you [configured earlier](#harness_prereq). (This Environment provides a template for your Elastigroups.)  
   
-The dialog will now look something like this:![](https://files.helpdocs.io/kw8ldg1itf/articles/bkxhdsur2z/1620840153371/image.png)
-5. Click **SUBMIT**. You've now created your new Canary Workflow.![](https://files.helpdocs.io/kw8ldg1itf/articles/bkxhdsur2z/1620840153502/image.png)
+The dialog will now look something like this:![](./static/ami-elastigroup-135.png)
+5. Click **SUBMIT**. You've now created your new Canary Workflow.![](./static/ami-elastigroup-136.png)
 
 
 #### Example Structure
 
 In this guide's remaining sections, we will expand only the Workflow's **Deployment Phases**—adding multiple phases, each deploying a percentage of the instance count specified in the first phase. This will build out the following structure:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/bkxhdsur2z/1620840153648/image.png)Here are the phases and steps we'll build:
+![](./static/ami-elastigroup-137.png)Here are the phases and steps we'll build:
 
 1. [Phase 1: Canary](#phase_1)
 * [Elastigroup Setup](#setup_asg): Specify how many EC2 instances to launch in the Elastigroup that Harness deploys at the end of the Workflow. This step also specifies the steady state timeout.
@@ -658,25 +658,25 @@ To add a Canary Phase:
 3. Select the [Infrastructure Definition](#add_infra_def) that you previously configured.
 4. In **Service Variable Overrides**, you can add values to overwrite any variables in the Service you selected. Click **Add**, then enter the **Name** of the variable to override, and the override **Value**. (For details, see [Workflow Phases](/article/m220i1tnia-workflow-configuration#workflow_phases).)  
   
-The **Workflow Phase** dialog will now look something like this:![](https://files.helpdocs.io/kw8ldg1itf/articles/bkxhdsur2z/1620840153852/image.png)
-5. Click **Submit**. The new Phase is created.![](https://files.helpdocs.io/kw8ldg1itf/articles/bkxhdsur2z/1620840153963/image.png)
+The **Workflow Phase** dialog will now look something like this:![](./static/ami-elastigroup-138.png)
+5. Click **Submit**. The new Phase is created.![](./static/ami-elastigroup-139.png)
 6. Click **Phase 1** to define this Phase's Steps.  
   
-On the resulting page, we'll fill in the predefined structure for Steps 1 and 2, and add a Verification provider in Step 3.![](https://files.helpdocs.io/kw8ldg1itf/articles/bkxhdsur2z/1620840154082/image.png)You can give each Phase a descriptive name by clicking the pencil icon at the top right.
+On the resulting page, we'll fill in the predefined structure for Steps 1 and 2, and add a Verification provider in Step 3.![](./static/ami-elastigroup-140.png)You can give each Phase a descriptive name by clicking the pencil icon at the top right.
 
 
 #### Step 1: Elastigroup Setup
 
 In Step 1, select **Elastigroup Setup** to define your Elastigroup's instances in the dialog shown below:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/bkxhdsur2z/1580167938168/image.png)For details about this dialog's fields, see the corresponding [AMI Basic Workflow instructions](/article/rd6ghl00va-ami-deployment#basic_setup_asg). For this Workflow, we've selected **Fixed Instances**, and have set **Max Instances** to **10** and **Target Instances** to **4**. We've also increased the default **Timeout** to **20** minutes.
+![](./static/ami-elastigroup-141.png)For details about this dialog's fields, see the corresponding [AMI Basic Workflow instructions](/article/rd6ghl00va-ami-deployment#basic_setup_asg). For this Workflow, we've selected **Fixed Instances**, and have set **Max Instances** to **10** and **Target Instances** to **4**. We've also increased the default **Timeout** to **20** minutes.
 
 All Canary counts or percentages specified later in the Workflow are based on the **Target Instances** setting. So, when we later deploy **25%** in this phase's [Elastigroup Deploy](#upgrade_asg_1) step, that will be 25% of this **Target Instances** setting.
 ##### Elastigroup Setup Step in Deployment
 
 Let's look at an example of deploying the Elastigroup Setup we configured above. Here's the step in the Harness Deployments page:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/bkxhdsur2z/1620840154203/image.png)Here's partial output, showing a successful setup:
+![](./static/ami-elastigroup-142.png)Here's partial output, showing a successful setup:
 
 
 ```
@@ -692,14 +692,14 @@ The new Elastigroup is set up, but no instances are deployed yet. Instances will
 
 In Step 2, select **Elastigroup Deploy** to open a dialog where you can define how many (by **Count** or **Percent**) of the Elastigroup's Target Instances to deploy:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/bkxhdsur2z/1580168011025/image.png)In this example, we've selected **Percent** units, and **25** percent of the **Target Instances** we set in the [previous step](#setup_asg)'s **Elastigroup Setup**.
+![](./static/ami-elastigroup-143.png)In this example, we've selected **Percent** units, and **25** percent of the **Target Instances** we set in the [previous step](#setup_asg)'s **Elastigroup Setup**.
 
 For general information on customizing this dialog's settings, and on how they correspond to AWS parameters, see the corresponding [AMI Basic Workflow section](/article/rd6ghl00va-ami-deployment#upgrade_asg).
 ##### Elastigroup Deploy Step in Deployment
 
 Using the **Elastigroup Setup** configuration shown above, here is the **Elastigroup****Deploy** step in the Harness Deployments page:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/bkxhdsur2z/1620840154346/image.png)The **Upscale Elastigroup** log shows the request to expand the Elastigroup. We requested **25 Percent** of **4 Target Instances**, so the log shows a request for `target: [1]`.
+![](./static/ami-elastigroup-144.png)The **Upscale Elastigroup** log shows the request to expand the Elastigroup. We requested **25 Percent** of **4 Target Instances**, so the log shows a request for `target: [1]`.
 
 
 ```
@@ -731,7 +731,7 @@ For an example of how a **Verify Staging** step appears in the Harness Deploymen
 
 By default, each Elastigroup Canary phase includes a **Rollback Steps** section, containing an **Elastigroup****Rollback** step. There's nothing to configure in this step.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/bkxhdsur2z/1620840152132/image.png)If an Elastigroup Canary phase fails to deploy, its Rollback step will roll back the whole Workflow to its state prior to this deployment, by performing the following operations:
+![](./static/ami-elastigroup-145.png)If an Elastigroup Canary phase fails to deploy, its Rollback step will roll back the whole Workflow to its state prior to this deployment, by performing the following operations:
 
 * Roll back all Workflow phases, at once.
 * Restore the old Elastigroup to its original capacity.
@@ -741,7 +741,7 @@ A rollback does not modify the configuration JSON within Spotinst.
 
 Here is a rollback example, from a separate deployment:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/bkxhdsur2z/1620840154604/image.png)Excerpts from the **Upscale Elastigroup** and **Upscale wait for steady state** logs show the old Elastigroup expanding back to its original capacity:
+![](./static/ami-elastigroup-146.png)Excerpts from the **Upscale Elastigroup** and **Upscale wait for steady state** logs show the old Elastigroup expanding back to its original capacity:
 
 
 ```
@@ -775,7 +775,7 @@ Elastigroup: [sig-926c0052] deleted successfully
 
 In this example Workflow, we'll add a second Canary phase, in which we'll define a second **Elastigroup Deploy** step. To add the second phase:
 
-1. In **Deployment Phases**, again click **Add Phase**.![](https://files.helpdocs.io/kw8ldg1itf/articles/bkxhdsur2z/1620840154764/image.png)
+1. In **Deployment Phases**, again click **Add Phase**.![](./static/ami-elastigroup-147.png)
 2. In the resulting **Workflow Phase** dialog, select the same **Service**, **Infrastructure Definition**, and any **Service Variable Overrides** that you selected in [Phase 1](#phase_1).
 3. Click **Submit** to create the new Phase.
 
@@ -786,14 +786,14 @@ Since we already [set up the Elastigroup](#setup_asg) in Phase 1, this new phase
 
 Click the **Elastigroup Deploy** link to open this dialog, where we're again using **Percent** scaling, but doubling the percentage to **50****Percent** of the Elastigroup's **Target Instances**, before clicking **Submit**:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/bkxhdsur2z/1580168046736/image.png)To review: This means we're requesting 50 percent of the **4** Target Instances that we specified in Phase 1's [Elastigroup Setup](#setup_asg) step.
+![](./static/ami-elastigroup-148.png)To review: This means we're requesting 50 percent of the **4** Target Instances that we specified in Phase 1's [Elastigroup Setup](#setup_asg) step.
 
 
 ##### Deploy Service Step in Deployment
 
 Using the **Upgrade AutoScaling Group** configuration shown above, here is the **Deploy Service** step in the Harness Deployments page:
 
-![](https://files.helpdocs.io/kw8ldg1itf/other/1571119233755/image.png)Here is partial log output, showing the Elastigroup successfully resized and at steady state. The upgrade to `Desired instances: [2]` corresponds to our request for **50 Percent** of **4 Target Instances**:
+![](./static/ami-elastigroup-149.png)Here is partial log output, showing the Elastigroup successfully resized and at steady state. The upgrade to `Desired instances: [2]` corresponds to our request for **50 Percent** of **4 Target Instances**:
 
 
 ```
@@ -821,11 +821,11 @@ If prior Canary phases succeed, the Workflow's final phase runs the actual deplo
 To add this final phase:
 
 1. Return to the Workflow's details page.
-2. In **Deployment Phases**, below your two existing Phases, again click **Add Phase**.![](https://files.helpdocs.io/kw8ldg1itf/other/1571092040452/image.png)
+2. In **Deployment Phases**, below your two existing Phases, again click **Add Phase**.![](./static/ami-elastigroup-150.png)
 3. In the resulting **Workflow Phase** dialog, select the same **Service**, **Infrastructure Definition**, and any **Service Variable Overrides** that you selected in [Phase 1](#phase_1).
 4. Click **Submit** to create the new Phase.  
   
-The resulting **Phase 3** page provides structure only for an **Elastigroup Deploy** step, and that's the only step we'll define.![](https://files.helpdocs.io/kw8ldg1itf/other/1571092143686/image.png)
+The resulting **Phase 3** page provides structure only for an **Elastigroup Deploy** step, and that's the only step we'll define.![](./static/ami-elastigroup-151.png)
 
 
 #### Step 1: Deploy Service
@@ -833,15 +833,15 @@ The resulting **Phase 3** page provides structure only for an **Elastigroup Dep
 To define this phase's scaling:
 
 1. In Step 1, select **Elastigroup Deploy**.
-2. In the resulting dialog, again select **Percent** scaling, and set the **Desired Instances** to **100** percent of the Elastigroup's Target Instances**:**![](https://files.helpdocs.io/kw8ldg1itf/articles/bkxhdsur2z/1580168133925/image.png)
-3. Click **SUBMIT** to complete this Workflow's three-phase configuration.![](https://files.helpdocs.io/kw8ldg1itf/other/1571092621983/image.png)
+2. In the resulting dialog, again select **Percent** scaling, and set the **Desired Instances** to **100** percent of the Elastigroup's Target Instances**:**![](./static/ami-elastigroup-152.png)
+3. Click **SUBMIT** to complete this Workflow's three-phase configuration.![](./static/ami-elastigroup-153.png)
 
 
 ##### Elastigroup Deploy Step in Deployment
 
 Using the **Elastigroup Deploy** configuration shown above, here is this final **Deploy Service** step in the Harness Deployments page:
 
-![](https://files.helpdocs.io/kw8ldg1itf/other/1571122270150/image.png)Here is partial output, showing the Elastigroup fully upscaling to `Desired instances: [4]`, and reaching steady state:
+![](./static/ami-elastigroup-154.png)Here is partial output, showing the Elastigroup fully upscaling to `Desired instances: [4]`, and reaching steady state:
 
 
 ```
@@ -866,9 +866,9 @@ And at this point...our AMI is fully deployed.
 
 As with the [AMI Basic deployment](/article/rd6ghl00va-ami-deployment#deployment_basic), once your setup is complete, you can click the Workflow's **Deploy** button to start the Canary deployment.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/bkxhdsur2z/1620840153107/image.png)In the resulting **Start New Deployment** dialog, select the AMI to deploy, and click **Submit**.
+![](./static/ami-elastigroup-155.png)In the resulting **Start New Deployment** dialog, select the AMI to deploy, and click **Submit**.
 
-![](https://files.helpdocs.io/kw8ldg1itf/other/1571117860997/image.png)As the Workflow deploys, the Deployments page displays details about the deployed instances.To verify the completed deployment, log into your [Spotinst Console](https://console.spotinst.com/#/aws/ec2/elastigroup/list) and locate the newly deployed instance(s).
+![](./static/ami-elastigroup-156.png)As the Workflow deploys, the Deployments page displays details about the deployed instances.To verify the completed deployment, log into your [Spotinst Console](https://console.spotinst.com/#/aws/ec2/elastigroup/list) and locate the newly deployed instance(s).
 
 
 ### Frequently Asked Questions

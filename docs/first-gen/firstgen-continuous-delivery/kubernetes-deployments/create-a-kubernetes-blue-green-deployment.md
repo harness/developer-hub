@@ -82,13 +82,13 @@ If you have more than one service, Harness does not automatically know which is 
 
 Here's an example of what your BlueGreen deployment will look like:
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/mog5tnk5pi/1581018981351/k-8-s-b.gif)### Step 1: Create the Harness Kubernetes Service
+![](./static/create-a-kubernetes-blue-green-deployment-217.gif)### Step 1: Create the Harness Kubernetes Service
 
 A Harness Service is different from a Kubernetes service. A Harness Service includes the manifests and container used for deployment. A Kubernetes service enables applications running in a Kubernetes cluster to find and communicate with each other, and the outside world. To avoid confusion, a Harness Service is always capitalized in Harness documentation. A Kubernetes service is not.1. In Harness, click **Setup**, and then click **Add Application**.
 2. Enter a name for the Application and click **Submit**.
 3. Click **Services**, and then click **Add Service**. The **Add Service** settings appear.
 
-[![](https://files.helpdocs.io/i5nl071jo5/articles/4ifq51cp0i/1580881851308/image.png)](https://files.helpdocs.io/i5nl071jo5/articles/4ifq51cp0i/1580881851308/image.png)1. In **Name**, enter a name for the Service.
+[![](./static/create-a-kubernetes-blue-green-deployment-218.png)](./static/create-a-kubernetes-blue-green-deployment-218.png)1. In **Name**, enter a name for the Service.
 2. In **Deployment Type**, select **Kubernetes**, and then ensure **Enable Kubernetes V2** is selected.
 3. Click **Submit**. The new Harness Kubernetes Service is created.
 
@@ -117,10 +117,10 @@ To create a Kubernetes Blue/Green Workflow, do the following:
 5. In **Environment**, select the Environment you created for your Kubernetes deployment.
 6. In **Service**, select the Service containing manifests for the primary and stage Kubernetes services.
 7. In **Infrastructure Definition**, select the Infrastructure Definition where you want to deploy. As stated earlier, there are no Harness Infrastructure Definition settings specific to Kubernetes Blue/Green deployment.  
-When you are finished the Workflow dialog will look like this:![](https://files.helpdocs.io/kw8ldg1itf/other/1568671721291/image.png)
+When you are finished the Workflow dialog will look like this:![](./static/create-a-kubernetes-blue-green-deployment-220.png)
 8. Click **SUBMIT**. The new Workflow appears.
 
-[![](https://files.helpdocs.io/kw8ldg1itf/articles/zmca0zai3s/1550277294475/image.png)](https://files.helpdocs.io/kw8ldg1itf/articles/zmca0zai3s/1550277294475/image.png)Let's look at each step in the Workflow and its deployment step logs.
+[![](./static/create-a-kubernetes-blue-green-deployment-221.png)](./static/create-a-kubernetes-blue-green-deployment-221.png)Let's look at each step in the Workflow and its deployment step logs.
 
 ### Step 4: Stage Deployment Step
 
@@ -190,7 +190,7 @@ For example, if you have a Delegate Selector **prod** and the Workflow is usin
 
 The **Stage Deployment** step simply deploys the two Kubernetes services you have set up in the Harness Service **Manifests** section.
 
-[![](https://files.helpdocs.io/kw8ldg1itf/articles/zmca0zai3s/1550367272586/image.png)](https://files.helpdocs.io/kw8ldg1itf/articles/zmca0zai3s/1550367272586/image.png)When you look at the **Stage Deployment** step in Harness **Deployments**, you will see the following log sections.
+[![](./static/create-a-kubernetes-blue-green-deployment-223.png)](./static/create-a-kubernetes-blue-green-deployment-223.png)When you look at the **Stage Deployment** step in Harness **Deployments**, you will see the following log sections.
 
 #### Initialize
 
@@ -327,9 +327,9 @@ Next, the **Swap Primary with Stage** Workflow step will swap the blue and gre
 
 In the Blue/Green Workflow, click the **Swap Primary with Stage** step.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/zim6pw6hd5/1580255757784/image.png)For the **Delegate Selector** setting, see [Delegate Selector](#delegate_selector) above.You can see that the primary Kubernetes service is represented by the variable `${k8s.primaryServiceName}`, and the stage service by the variable `${k8s.stageServiceName}`. You can see how the swap works in the **Swap Primary with Stage** step in Harness Deployments.
+![](./static/create-a-kubernetes-blue-green-deployment-225.png)For the **Delegate Selector** setting, see [Delegate Selector](#delegate_selector) above.You can see that the primary Kubernetes service is represented by the variable `${k8s.primaryServiceName}`, and the stage service by the variable `${k8s.stageServiceName}`. You can see how the swap works in the **Swap Primary with Stage** step in Harness Deployments.
 
-[![](https://files.helpdocs.io/kw8ldg1itf/articles/zmca0zai3s/1550368735859/image.png)](https://files.helpdocs.io/kw8ldg1itf/articles/zmca0zai3s/1550368735859/image.png)Here is the log for the step, where the mandatory Selectors you used in the Harness Service **Manifests** files are used.
+[![](./static/create-a-kubernetes-blue-green-deployment-226.png)](./static/create-a-kubernetes-blue-green-deployment-226.png)Here is the log for the step, where the mandatory Selectors you used in the Harness Service **Manifests** files are used.
 
 
 ```
@@ -359,23 +359,23 @@ The **Swap Primary with Stage** command is simply the **Swap Service Selector
 
 Now that the setup is complete, you can click **Deploy** in the Workflow to deploy the artifact to your cluster.
 
-[![](https://files.helpdocs.io/kw8ldg1itf/articles/zmca0zai3s/1550514972283/image.png)](https://files.helpdocs.io/kw8ldg1itf/articles/zmca0zai3s/1550514972283/image.png)Next, select the artifact build version and click **SUBMIT**.
+[![](./static/create-a-kubernetes-blue-green-deployment-228.png)](./static/create-a-kubernetes-blue-green-deployment-228.png)Next, select the artifact build version and click **SUBMIT**.
 
-[![](https://files.helpdocs.io/kw8ldg1itf/articles/zmca0zai3s/1550515038984/image.png)](https://files.helpdocs.io/kw8ldg1itf/articles/zmca0zai3s/1550515038984/image.png)The Workflow is deployed. The swap is complete and the Blue/Green deployment was a success.
+[![](./static/create-a-kubernetes-blue-green-deployment-230.png)](./static/create-a-kubernetes-blue-green-deployment-230.png)The Workflow is deployed. The swap is complete and the Blue/Green deployment was a success.
 
 On the Harness **Deployments** page, expand the Workflow steps and click the **Swap Primary with Stage** step.
 
-[![](https://files.helpdocs.io/kw8ldg1itf/articles/zmca0zai3s/1550689456194/image.png)](https://files.helpdocs.io/kw8ldg1itf/articles/zmca0zai3s/1550689456194/image.png)In the **Details** section, click the vertical ellipsis and click **View Execution Context**.
+[![](./static/create-a-kubernetes-blue-green-deployment-232.png)](./static/create-a-kubernetes-blue-green-deployment-232.png)In the **Details** section, click the vertical ellipsis and click **View Execution Context**.
 
-[![](https://files.helpdocs.io/kw8ldg1itf/articles/zmca0zai3s/1550689514229/image.png)](https://files.helpdocs.io/kw8ldg1itf/articles/zmca0zai3s/1550689514229/image.png)You can see that the names and of primary and stage services deployed.
+[![](./static/create-a-kubernetes-blue-green-deployment-234.png)](./static/create-a-kubernetes-blue-green-deployment-234.png)You can see that the names and of primary and stage services deployed.
 
-[![](https://files.helpdocs.io/kw8ldg1itf/articles/zmca0zai3s/1550689570836/image.png)](https://files.helpdocs.io/kw8ldg1itf/articles/zmca0zai3s/1550689570836/image.png)Now that you have successfully deployed your artifact to your Kubernetes cluster pods using your Harness Application, look at the completed workload in the deployment environment of your Kubernetes cluster.
+[![](./static/create-a-kubernetes-blue-green-deployment-236.png)](./static/create-a-kubernetes-blue-green-deployment-236.png)Now that you have successfully deployed your artifact to your Kubernetes cluster pods using your Harness Application, look at the completed workload in the deployment environment of your Kubernetes cluster.
 
 For example, here is the Blue/Green workload in Google Cloud Kubernetes Engine, displaying the blue and green services and Deployment workload:
 
-[![](https://files.helpdocs.io/kw8ldg1itf/articles/zmca0zai3s/1550369115274/image.png)](https://files.helpdocs.io/kw8ldg1itf/articles/zmca0zai3s/1550369115274/image.png)If you click a workload, you will see the pods and service created:
+[![](./static/create-a-kubernetes-blue-green-deployment-238.png)](./static/create-a-kubernetes-blue-green-deployment-238.png)If you click a workload, you will see the pods and service created:
 
-[![](https://files.helpdocs.io/kw8ldg1itf/articles/zmca0zai3s/1550689709823/image.png)](https://files.helpdocs.io/kw8ldg1itf/articles/zmca0zai3s/1550689709823/image.png)### Option: Scale Down Old Version
+[![](./static/create-a-kubernetes-blue-green-deployment-240.png)](./static/create-a-kubernetes-blue-green-deployment-240.png)### Option: Scale Down Old Version
 
 A great benefit of a Blue/Green deployment is rapid rollback: rolling back to the old version of a service/artifact is simple and reliable because network traffic is simply routed back to the original instances. You do not need to redeploy previous versions of the service/artifact and the instances that comprised their environment.
 

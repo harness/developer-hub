@@ -58,12 +58,12 @@ Add an AWS Cloud Provider as follows:
 
 1. In Harness Manager, click **Setup**.
 2. Click **Cloud Providers**. The **Cloud Providers** page appears.
-3. Click **Add Cloud Provider**. The **Cloud Provider** dialog appears. (You will override some default entries shown below.)![](https://files.helpdocs.io/kw8ldg1itf/articles/rd6ghl00va/1559861922514/image.png)
+3. Click **Add Cloud Provider**. The **Cloud Provider** dialog appears. (You will override some default entries shown below.)![](./static/ami-deployment-03.png)
 4. In **Type**, select **Amazon Web Services**.
 5. In **Display Name**, enter a name for the Cloud Provider, such as **aws-ami-example**.
 6. Enable the **Assume IAM Role on Delegate** option.
 7. In **Delegate Selector**, enter the Selector that you gave your Delegate in Harness Manager's **Delegates** page.
-8. Click **TEST** to ensure that your credentials work.![](https://files.helpdocs.io/kw8ldg1itf/articles/rd6ghl00va/1559263382874/image.png)
+8. Click **TEST** to ensure that your credentials work.![](./static/ami-deployment-04.png)
 9. Click **SUBMIT**. The Cloud Provider is added, with a Selector matching your Delegate.
 
 
@@ -76,11 +76,11 @@ An Application in Harness represents a logical group of one or more entities, in
 To create a new Application:
 
 1. In Harness Manager, click **Setup**.
-2. In the **Applications** section, click **Add Application**. The **Application** dialog appears.![](https://files.helpdocs.io/kw8ldg1itf/articles/rd6ghl00va/1559865338522/image.png)
+2. In the **Applications** section, click **Add Application**. The **Application** dialog appears.![](./static/ami-deployment-05.png)
 3. Give your Application a name, such as **AMI Application**.
-4. Optionally, add a **Description** of this Application's purpose.![](https://files.helpdocs.io/kw8ldg1itf/articles/rd6ghl00va/1559865261200/image.png)
+4. Optionally, add a **Description** of this Application's purpose.![](./static/ami-deployment-06.png)
 5. Click **SUBMIT**. The new Application is added to the **Applications** list.
-6. Click your new Application's name. The Application's list of entities appears, initially empty.![](https://files.helpdocs.io/kw8ldg1itf/articles/vw71c7rxhp/1561598837801/image.png)
+6. Click your new Application's name. The Application's list of entities appears, initially empty.![](./static/ami-deployment-07.png)
 
 In the following sections, we will define this Application's Service, Environment, and Infrastructure Definition. We'll then define and execute deployment Workflows.
 
@@ -90,11 +90,11 @@ In the following sections, we will define this Application's Service, Environmen
 Different types of Harness Services are available for different deployment platforms. The AMI type includes AMI-specific settings. To add an AMI Service:
 
 1. In your new Application, click **Services**. The **Services** page appears.
-2. In the **Services** page, click **Add Service**. The **Add** **Service** dialog appears—initially empty.![](https://files.helpdocs.io/kw8ldg1itf/articles/rd6ghl00va/1559865485627/image.png)
+2. In the **Services** page, click **Add Service**. The **Add** **Service** dialog appears—initially empty.![](./static/ami-deployment-08.png)
 3. In **Name**, enter a name for your Service, such as **AMI Deployment Service**.
 4. In **Description**, (optionally) enter a description for your service.
-5. In **Deployment Type**, select **Amazon Machine Image**. Your dialog will now look something like this:![](https://files.helpdocs.io/kw8ldg1itf/articles/rd6ghl00va/1559865418838/image.png)
-6. Click **SUBMIT**. The new Service is displayed.![](https://files.helpdocs.io/kw8ldg1itf/articles/rd6ghl00va/1559884849716/image.png)
+5. In **Deployment Type**, select **Amazon Machine Image**. Your dialog will now look something like this:![](./static/ami-deployment-09.png)
+6. Click **SUBMIT**. The new Service is displayed.![](./static/ami-deployment-10.png)
 
 Next, we will set up the Artifact Source, User Data, and Configuration options.
 
@@ -103,24 +103,24 @@ Next, we will set up the Artifact Source, User Data, and Configuration options.
 
 A Service's Artifact Source is the AMI you want to use to create instances. In this guide, we specify our Artifact Source for deployment by AWS Region and (optionally) Tags and AmiResource Filters. To add an Artifact Source to this Service:
 
-1. From the **Service Overview** section, click **Add Artifact Source**, then click **Amazon AMI**.![](https://files.helpdocs.io/kw8ldg1itf/articles/rd6ghl00va/1559885047843/image.png)
+1. From the **Service Overview** section, click **Add Artifact Source**, then click **Amazon AMI**.![](./static/ami-deployment-11.png)
 
-1. In the resulting Artifact Source dialog, select the **Cloud Provider** you set up earlier under [AWS Cloud Provider Setup](#cloud_provider).![](https://files.helpdocs.io/kw8ldg1itf/articles/rd6ghl00va/1559885131874/image.png)
-2. Select the AWS **Region** where your AMI is located.![](https://files.helpdocs.io/kw8ldg1itf/articles/rd6ghl00va/1559885193701/image.png)
+1. In the resulting Artifact Source dialog, select the **Cloud Provider** you set up earlier under [AWS Cloud Provider Setup](#cloud_provider).![](./static/ami-deployment-12.png)
+2. Select the AWS **Region** where your AMI is located.![](./static/ami-deployment-13.png)
 3. Add any **AWS Tags** that you are using to identify your AMI. (For details on these key/value pairs, see Amazon's [Tagging Your Amazon EC2 Resources](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html) topic.)
-4. Optionally, in the **AmiResource Filters** field, add AMI filters to locate the AMI resource. These are key/value pairs that identify the AMI ID.![](https://files.helpdocs.io/kw8ldg1itf/articles/rd6ghl00va/1588828781021/image.png)
+4. Optionally, in the **AmiResource Filters** field, add AMI filters to locate the AMI resource. These are key/value pairs that identify the AMI ID.![](./static/ami-deployment-14.png)
 5. Click **SUBMIT** to add the Artifact Source.
 
 You can see the results of your Artifact Source settings clicking **Artifact History**.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/rd6ghl00va/1559198955005/image.png)
+![](./static/ami-deployment-15.png)
 #### Deployment Specification (User Data)
 
 In the Service's **Deployment Specification** section, you can select the **User Data** link to enter configuration scripts and directives that your AWS instance will run upon launch.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/rd6ghl00va/1559265408569/image.png)The resulting **User Data** container corresponds to the AWS Launch Instance wizard's **Advanced Details** > **User data** container.
+![](./static/ami-deployment-16.png)The resulting **User Data** container corresponds to the AWS Launch Instance wizard's **Advanced Details** > **User data** container.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/rd6ghl00va/1559281150871/image.png)##### What Can I Add in User Data?
+![](./static/ami-deployment-17.png)##### What Can I Add in User Data?
 
 You can enter the same shell scripts and cloud-init directives that AWS will accept through its own UI. For details about scripting requirements, formatting, and options, see Amazon's EC2 [User Data and Shell Scripts](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html#user-data-shell-scripts) documentation. When Harness creates a new instance, it will apply your defined User Data.
 
@@ -133,11 +133,11 @@ If your User Data is going to perform actions that require permissions beyond th
 
 **Config Variables** is supported for the AMI Service, but **Config Files** is not supported.In the Service's **Configuration** section, you can add Service-level variables and files. For details about the options here, see Harness' [Configuration Variables and Files](https://docs.harness.io/article/eb3kfl8uls-service-configuration#configuration_variables_and_files) topic.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/rd6ghl00va/1559265672528/image.png)#### Referencing Config Variables in User Data
+![](./static/ami-deployment-18.png)#### Referencing Config Variables in User Data
 
 You can define variables in the Service's **Config Variables** section and reference them in [User Data](#user_data) scripts. Type the prefix: `${serviceVariable.` to prompt Harness to automatically display existing variables. Here is an example:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/rd6ghl00va/1559244188226/image.png)
+![](./static/ami-deployment-19.png)
 ### Environment and Infrastructure Definition
 
 Once you've defined your Application's Service, you define Environments where your Service can be deployed. In an Environment's Infrastructure Definition settings, you specify:
@@ -154,11 +154,11 @@ An Environment represents one of your deployment infrastructures—such as Dev, 
 The following procedure creates an Environment for the AMI Service you've configured.
 
 1. In your Harness Application, click **Environments**. The **Environments** page appears.
-2. Click **Add Environment**. The **Environment** dialog appears.![](https://files.helpdocs.io/kw8ldg1itf/articles/rd6ghl00va/1559885566755/image.png)
+2. Click **Add Environment**. The **Environment** dialog appears.![](./static/ami-deployment-20.png)
 3. In **Name**, enter a name that describes the deployment Environment—for example, **AMI-Env**.
 4. Optionally, enter a **Description**.
 5. In **Environment Type**, select **Non-Production**.
-6. Click **SUBMIT**. In the resulting Environment Details page, you'll define your new Environment's contents.![](https://files.helpdocs.io/kw8ldg1itf/articles/rd6ghl00va/1559885636324/image.png)
+6. Click **SUBMIT**. In the resulting Environment Details page, you'll define your new Environment's contents.![](./static/ami-deployment-21.png)
 
 
 #### Add an Infrastructure Definition
@@ -167,10 +167,10 @@ An [Infrastructure Definition](/article/n39w05njjv-environment-configuration#add
 
 For AMI deployments, you build your Infrastructure Definition using an AWS Auto Scaling Group. To add the Infrastructure Definition:
 
-1. In your Environment's **Infrastructure Definition** section, click **Add Infrastructure Definition**. The **Infrastructure Definition** dialog appears.![](https://files.helpdocs.io/kw8ldg1itf/other/1568421062421/image.png)
+1. In your Environment's **Infrastructure Definition** section, click **Add Infrastructure Definition**. The **Infrastructure Definition** dialog appears.![](./static/ami-deployment-22.png)
 2. In **Name**, enter the name that will identify this Infrastructure Definition when you [add it to a Workflow](#basic_workflow_and_deployment).
 3. In **Cloud Provider Type**, select **Amazon Web Services**.
-4. In **Deployment Type**, select **Amazon Machine Image**. This expands the **Infrastructure Definition** dialog to look something like this:![](https://files.helpdocs.io/kw8ldg1itf/articles/b7ixwux6u3/1576469880997/image.png)
+4. In **Deployment Type**, select **Amazon Machine Image**. This expands the **Infrastructure Definition** dialog to look something like this:![](./static/ami-deployment-23.png)
 5. For this example, accept the default **Use Already Provisioned Infrastructure** option.
 
 (If you have configured an [Infrastructure Provisioner](/article/o22jx8amxb-add-an-infra-provisioner) in Harness, you can use that configuration by instead selecting the **Map** **Dynamically Provisioned Infrastructure** option. For details, see our AMI [CloudFormation](/article/vw71c7rxhp-ami-blue-green#infrastructure_provisioners) and [Terraform](/article/9pvvgcdbjh-terrform-provisioner#ami_and_auto_scaling_group_2) examples.)1. In **Cloud Provider**, select the Cloud Provider you added earlier in [AWS Cloud Provider Setup](#cloud_provider).
@@ -186,7 +186,7 @@ The newly created ASG will have unique name, Min and Max instances, and Desired 
   
 (This scoping will make this Infrastructure Definition available whenever a Workflow, or Phase, is set up for this Service. You can also select additional Services in this field—and you can do that later, by editing the Infrastructure Definition to match newly added Services.)  
   
-When you are done, the dialog's **Configuration** section will look something like this:![](https://files.helpdocs.io/kw8ldg1itf/articles/b7ixwux6u3/1576469924511/image.png)
+When you are done, the dialog's **Configuration** section will look something like this:![](./static/ami-deployment-24.png)
 6. Click **Submit**. The new Infrastructure Definition is added to your Harness Environment.
 
 Harness will register the ASGs it creates with whatever Target Groups and Classic Load Balancers you enter. If you delete the ASG that you've specified here, Workflows using this Infrastructure Definition will fail to deploy.This is the last required step to set up the deployment Environment in Harness. With both the Service and Environment set up, you can now proceed to [creating a deployment Workflow](#basic_deploy).
@@ -210,7 +210,7 @@ When the Freemium Workflow deploys, you want it to select the base ASG that mana
 
 To accomplish this, each Workflow uses an Infrastructure Provisioner to supply the right base ASG name to the Infrastructure Definition:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/rd6ghl00va/1576798052486/image.png)For Infrastructure Provisioner details, see our AMI [CloudFormation](/article/vw71c7rxhp-ami-blue-green#infrastructure_provisioners) and [Terraform](/article/9pvvgcdbjh-terrform-provisioner#ami_and_auto_scaling_group_2) examples.Since you are using the same Infrastructure Definition with multiple base ASGs, you will likely want to reset the revision numbers applied to the new ASGs that are created each time a new base ASG is used. Otherwise, the revision numbers will be applied to all new ASGs, in sequence.
+![](./static/ami-deployment-25.png)For Infrastructure Provisioner details, see our AMI [CloudFormation](/article/vw71c7rxhp-ami-blue-green#infrastructure_provisioners) and [Terraform](/article/9pvvgcdbjh-terrform-provisioner#ami_and_auto_scaling_group_2) examples.Since you are using the same Infrastructure Definition with multiple base ASGs, you will likely want to reset the revision numbers applied to the new ASGs that are created each time a new base ASG is used. Otherwise, the revision numbers will be applied to all new ASGs, in sequence.
 
 You direct Harness to start a new ASG numbering series each time you select a new base ASG by enabling **Reset ASG revision numbers each time a new base ASG is selected**.
 
@@ -220,7 +220,7 @@ If you select the **Map Dynamically Provisioned Infrastructure** option along w
 
 Once you **Submit** an Infrastructure Definition, the check box is locked. You will not be able to enable or disable this option later within the same Infrastructure Definition.In addition, the new ASGs you create from different base ASGs should have unique names. You can achieve this by using the Infrastructure Provisioner output expression in the **AWS Auto Scaling Group Setup** Workflow step:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/rd6ghl00va/1576800971595/image.png)If you select the **Use Already Provisioned Infrastructure** option along with the **Reset ASG revision numbers...** option, Harness will start a new ASG numbering series each time you manually select a new base ASG in the **Auto Scaling Group** drop-down.
+![](./static/ami-deployment-26.png)If you select the **Use Already Provisioned Infrastructure** option along with the **Reset ASG revision numbers...** option, Harness will start a new ASG numbering series each time you manually select a new base ASG in the **Auto Scaling Group** drop-down.
 
 
 #### Launch Configuration and Launch Template Support
@@ -241,7 +241,7 @@ Harness creates a new Launch Template *version* when it creates the new ASG. Thi
 
 Optionally, your Environment can override Config Variables and Config Files set in [Services](#service) that use the Environment. This enables you to maintain each Service's stored settings, but change them when using the Service with this Environment.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/rd6ghl00va/1559330336613/image.png)As an example, you might use a single Service across separate Environments for QA versus Production, and vary Service path variables depending on the Environment. For details, see [Override a Service Configuration](/article/n39w05njjv-environment-configuration#override_a_service_configuration).
+![](./static/ami-deployment-27.png)As an example, you might use a single Service across separate Environments for QA versus Production, and vary Service path variables depending on the Environment. For details, see [Override a Service Configuration](/article/n39w05njjv-environment-configuration#override_a_service_configuration).
 
 You can also overwrite Service variables at the Phase level of a multiple-Phase Workflow, such as Canary.
 ### Basic Workflow and Deployment
@@ -265,7 +265,7 @@ To create a Basic Workflow for AMI deployment, do the following:
 1. In your Application, click **Workflows**.
 2. Click **Add Workflow**. The **Workflow** dialog appears.  
   
-If you are using Infrastructure Definitions, the **Workflow** dialog will look like this:![](https://files.helpdocs.io/kw8ldg1itf/other/1568939997260/image.png)
+If you are using Infrastructure Definitions, the **Workflow** dialog will look like this:![](./static/ami-deployment-28.png)
 3. In **Name**, enter a name for your Workflow, such as **AMI Basic Workflow**.
 4. Optionally, add a **Description** of this Workflow's purpose.
 5. In **Workflow Type**, select **Basic Deployment**.
@@ -273,8 +273,8 @@ If you are using Infrastructure Definitions, the **Workflow** dialog will look l
 7. Select the **Service** you created for your AMI Basic deployment.
 8. Select the Infrastructure Definition you created for your AMI Basic deployment.  
   
-The dialog will now look something like this:![](https://files.helpdocs.io/kw8ldg1itf/other/1568615565019/image.png)
-9. Click **Submit**. The new Basic Workflow for AMI is preconfigured.![](https://files.helpdocs.io/kw8ldg1itf/articles/rd6ghl00va/1559885993161/image.png)
+The dialog will now look something like this:![](./static/ami-deployment-29.png)
+9. Click **Submit**. The new Basic Workflow for AMI is preconfigured.![](./static/ami-deployment-30.png)
 
 Next, we will examine options for configuring the Basic deployment's first two steps.
 
@@ -283,7 +283,7 @@ Next, we will examine options for configuring the Basic deployment's first two s
 
 In Step 1, select **AWS AutoScaling Group Setup** to open a dialog where you can fine-tune the Auto Scaling Group (ASG) that Harness creates for the AMI Service you are deploying.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/rd6ghl00va/1580161566610/image.png)Many of the ASG's settings are mirrored from the ASG selected in the Workflow's Infrastructure Definition. (This ASG is also called the *base Auto Scaling Group.*) However, this setup dialog enables you to provide the remaining settings, using the following options:
+![](./static/ami-deployment-31.png)Many of the ASG's settings are mirrored from the ASG selected in the Workflow's Infrastructure Definition. (This ASG is also called the *base Auto Scaling Group.*) However, this setup dialog enables you to provide the remaining settings, using the following options:
 
 
 
@@ -300,12 +300,12 @@ In Step 1, select **AWS AutoScaling Group Setup** to open a dialog where you can
 
 The **Instances** settings support [Harness variable expressions](/article/9dvxcegm90-variables), such as [Workflow variable expressions](/article/766iheu1bk-add-workflow-variables-new-template).Certain settings in this dialog correspond to AWS Console options, as shown here:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/rd6ghl00va/1580162715783/image.png)
+![](./static/ami-deployment-32.png)
 ##### Setup AutoScaling Group in Deployment
 
 Let's look at an example where the AWS AutoScaling Group Setup—configured as shown above—is deployed. Here is the step in the Harness Deployments page:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/rd6ghl00va/1559882022134/image.png)Here's the output, showing a successful setup:
+![](./static/ami-deployment-33.png)Here's the output, showing a successful setup:
 
 
 ```
@@ -327,7 +327,7 @@ AutoScalingGroup [Harness__Verification_AMI__Service__test__Quality__Assurance__
 
 In Step 2, select **Upgrade AutoScaling Group** to define how many instances to deploy in the Auto Scaling Group, as either a count or a percentage.
 
-Every new AMI/ASG deployment creates a new ASG. The instances in ASGs used by previous deployments are downsized to a max count of 3. Additional instances are detached.![](https://files.helpdocs.io/kw8ldg1itf/articles/rd6ghl00va/1580161646708/image.png)This dialog provides the following options:
+Every new AMI/ASG deployment creates a new ASG. The instances in ASGs used by previous deployments are downsized to a max count of 3. Additional instances are detached.![](./static/ami-deployment-34.png)This dialog provides the following options:
 
 
 
@@ -342,11 +342,11 @@ Either way, your setting here cannot exceed your **Max Instance** capacity set
 
 This diagram illustrates the relationship among Upgrade settings:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/rd6ghl00va/1580163079715/image.png)##### Deploy Service Step in Deployment
+![](./static/ami-deployment-35.png)##### Deploy Service Step in Deployment
 
 Using the **Upgrade AutoScaling Group** configuration shown above—requesting a modest **Desired Instances** count of **1**—here is the **Deploy Service** step in the Harness Deployments page:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/rd6ghl00va/1559883018585/image.png)Here is partial output, showing a successful resizing and deployment:
+![](./static/ami-deployment-36.png)Here is partial output, showing a successful resizing and deployment:
 
 
 ```
@@ -370,25 +370,25 @@ INFO   2019-06-04T19:06:13.937+0000   AutoScaling Group resize operation complet
 
 Now that the setup is complete, you can click **Deploy** in the Workflow to deploy the artifact to your Auto Scaling Group.
 
-![](https://files.helpdocs.io/kw8ldg1itf/other/1551916036419/image.png)Next, select the AMI you want to deploy. (Harness populates this list from the Artifact Source settings in the AMI Service you created.) Then click **SUBMIT**.
+![](./static/ami-deployment-37.png)Next, select the AMI you want to deploy. (Harness populates this list from the Artifact Source settings in the AMI Service you created.) Then click **SUBMIT**.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/rd6ghl00va/1559767202044/image.png)The Workflow deploys. Note that the Deployments page displays details about the deployed instances.
+![](./static/ami-deployment-38.png)The Workflow deploys. Note that the Deployments page displays details about the deployed instances.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/vw71c7rxhp/1562562097974/image.png)To verify the completed deployment, log into your AWS Console and locate the newly deployed instance(s).
+![](./static/ami-deployment-39.png)To verify the completed deployment, log into your AWS Console and locate the newly deployed instance(s).
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/rd6ghl00va/1559771184448/image.png)
+![](./static/ami-deployment-40.png)
 ### Rollback Steps
 
 When you create an AMI Workflow, its **Rollback Steps** section automatically includes a **Rollback Service** step. This step will execute when Harness needs to roll back your deployment and restore the previous working version.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/vw71c7rxhp/1562655713315/image.png)The configuration options available here depend on the deployment type. For general information about Rollback options, see [Workflows](/article/m220i1tnia-workflow-configuration#rollback_steps).
+![](./static/ami-deployment-41.png)The configuration options available here depend on the deployment type. For general information about Rollback options, see [Workflows](/article/m220i1tnia-workflow-configuration#rollback_steps).
 
 
 #### Multi-Service Rollback
 
 In an AMI Multi-Service Workflow's **Rollback Service** step, click **Rollback AutoScaling Group** to open the dialog shown below:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/rd6ghl00va/1580163171152/image.png)Enable the single option here, **Rollback all phases at once**, if you want to simultaneously roll back all of the AMI Workflow's Phases, up to the Phase where deployment failed.
+![](./static/ami-deployment-42.png)Enable the single option here, **Rollback all phases at once**, if you want to simultaneously roll back all of the AMI Workflow's Phases, up to the Phase where deployment failed.
 
 For example, if a Workflow's Phase 2 fails to deploy, both Phase 2 and Phase 1 will be rolled back simultaneously. (Harness will ignore any Phase 1 rollback strategy settings.)
 
@@ -426,7 +426,7 @@ To correct this:
 
 1. In Harness Manager, navigate to your Application's **Environments** details page.
 2. Open each Infrastructure Definition used by the Workflow that failed, and navigate to the dialog's lower configuration section. Ensure that the **Auto Scaling Groups** field points to an ASG to which you currently have access in the AWS Console.
-3. If this does not allow your deployment to proceed, you might also need to toggle the **Host Name Convention** field's entry between the `publicDnsName` and `privateDnsName` primitives. (This depends on whether the Launch Configuration that created your ASG template was configured to create a public DNS name.) For details, see AWS' [IP Addressing in a VPC](https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-in-vpc.html#as-vpc-ipaddress) topic.![](https://files.helpdocs.io/kw8ldg1itf/articles/vw71c7rxhp/1562827869045/image.png)
+3. If this does not allow your deployment to proceed, you might also need to toggle the **Host Name Convention** field's entry between the `publicDnsName` and `privateDnsName` primitives. (This depends on whether the Launch Configuration that created your ASG template was configured to create a public DNS name.) For details, see AWS' [IP Addressing in a VPC](https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-in-vpc.html#as-vpc-ipaddress) topic.![](./static/ami-deployment-43.png)
 
 Harness Manager will prevent you from simply removing a misconfigured Infrastructure Definition, if it's referenced by any of your Application's Workflows. So in some cases, you might find it easiest to create a new Infrastructure Definition, reconfigure your Workflow to use that new infrastructure, and then delete the broken Infrastructure Definition(s).
 ### Next Steps

@@ -98,7 +98,7 @@ For steps on installing a Delegate in your VPC, see [Delegate Installation and M
 
 To ensure the IAM role applied to the Delegate you installed in the AWS VPC is used by your AWS Cloud Provider, you add Selectors to the Delegate and reference the Selector in the AWS Cloud Provider.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/lo9taq0pze/1585862327889/image.png)For steps on adding Selectors, see [Delegate Installation and Management](/article/h9tkwmkrm7-delegate-installation).
+![](./static/1-delegate-and-connectors-for-lambda-00.png)For steps on adding Selectors, see [Delegate Installation and Management](/article/h9tkwmkrm7-delegate-installation).
 
 ### Step 3: Add an AWS Cloud Provider
 
@@ -112,7 +112,7 @@ The AWS Cloud Provider in this example will assume the IAM Role associated with 
 
 For the AWS Cloud Provider in Harness, you can specify an AWS account or assume the IAM role used by the installed Harness Delegate (recommended).
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/lo9taq0pze/1585937803477/image.png)##### AWS Cloud Provider
+![](./static/1-delegate-and-connectors-for-lambda-01.png)##### AWS Cloud Provider
 
 To set up an AWS Cloud Provider, do the following:
 

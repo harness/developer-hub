@@ -37,13 +37,13 @@ In this topic:
 
 Here is a visual summary of how you use your and Terragrunt and Terraform files with Harness to provision target infra and then deploy to it:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/a6onutvbem/1618962617102/image.png)Here's a 6 minute video walkthrough of Harness-Terragrunt integration:
+![](./static/add-terragrunt-configuration-files-27.png)Here's a 6 minute video walkthrough of Harness-Terragrunt integration:
 
 You can use Terragrunt in Harness to provision any infrastructure, not just the target infrastructure for the deployment.
 
 In this use case, you simply add the Terragrunt Provision step to your Workflow and it runs some Terragrunt commands to provision some non-target resources in your infrastructure.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/a6onutvbem/1618962645543/image.png)### Step 1: Add a Terragrunt Provisioner
+![](./static/add-terragrunt-configuration-files-28.png)### Step 1: Add a Terragrunt Provisioner
 
 To set up a Terragrunt Infrastructure Provisioner, do the following:
 
@@ -72,9 +72,9 @@ You can also use expressions in the **Git Repository Branch** and **Path to T
 
 For example, a Workflow can have variables for **branch** and **path**:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/mkjxbkglih/1619126337320/image.png)In **Script Repository**, you can enter variables as `${workflow.variables.branch}` and `${workflow.variables.path}`:
+![](./static/add-terragrunt-configuration-files-29.png)In **Script Repository**, you can enter variables as `${workflow.variables.branch}` and `${workflow.variables.path}`:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/mkjxbkglih/1619126380700/image.png)When the Workflow is deployed, you are prompted to provide values for the Workflow variables, which are then applied to the **Script Repository** settings.
+![](./static/add-terragrunt-configuration-files-30.png)When the Workflow is deployed, you are prompted to provide values for the Workflow variables, which are then applied to the **Script Repository** settings.
 
 This allows the same Terragrunt Provisioner to be used by multiple Workflows, where each Workflow can use a different branch and path for the **Script Repository**.
 
@@ -118,7 +118,7 @@ This setting is available because a Terraform refresh is not always an idempoten
 
 When you are done, the **Terragrunt** **Provisioner** will look something like this:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/mkjxbkglih/1619128485636/image.png)Now you can use this provisioner in both Infrastructure Definitions and Workflows.
+![](./static/add-terragrunt-configuration-files-31.png)Now you can use this provisioner in both Infrastructure Definitions and Workflows.
 
 ### Next Steps
 

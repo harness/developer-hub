@@ -121,7 +121,7 @@ Once you have deployed the Workflow, you can check which Delegate was selected i
 
 Look for the **CUSTOM\_MANIFEST\_VALUES\_FETCH\_TASK** task:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/53qqnebrak/1616197794785/image.png)You can also map specific Delegates to specific Harness tasks. See [Delegate Task Category Mapping](/article/nzuhppobyg-map-tasks-to-delegates-and-profiles).
+![](./static/deploy-kubernetes-manifests-packaged-with-artifacts-177.png)You can also map specific Delegates to specific Harness tasks. See [Delegate Task Category Mapping](/article/nzuhppobyg-map-tasks-to-delegates-and-profiles).
 
 ### Step 4: Add Path to Manifests
 
@@ -217,7 +217,7 @@ The **Custom Manifest Override Configuration** follows the same guidelines as ov
 
 Here's an example overriding Service file locations with new file locations:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/53qqnebrak/1616438995700/image.png)You can use Harness Service, Workflow, and built-in variables in the script and path. You can enter multiple values separated by commas.
+![](./static/deploy-kubernetes-manifests-packaged-with-artifacts-178.png)You can use Harness Service, Workflow, and built-in variables in the script and path. You can enter multiple values separated by commas.
 
 ### Option: Use a Harness Artifact Source
 
@@ -266,7 +266,7 @@ You can use Harness Service, Workflow, secrets, and built-in variables in the sc
 
 Here is an example using Service variables in the script and **Path to OpenShift Manifests** setting:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/53qqnebrak/1616194496801/image.png)Here is the script used:
+![](./static/deploy-kubernetes-manifests-packaged-with-artifacts-179.png)Here is the script used:
 
 Example Script
 ```

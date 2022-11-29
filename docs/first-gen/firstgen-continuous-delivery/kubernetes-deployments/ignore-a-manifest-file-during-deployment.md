@@ -32,13 +32,13 @@ In this topic:
 
 The following image shows how you can ignore a Jobs manifest and then apply it separately using the Apply step.
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/jyv7jbr8pg/1580759097095/image.png)### Step 1: Ignore a Manifest
+![](./static/ignore-a-manifest-file-during-deployment-162.png)### Step 1: Ignore a Manifest
 
 To have a Workflow ignore a resource file in a Service **Manifests** section, you add the comment `# harness.io/skip-file-for-deploy` to the **top** of the file.
 
 For more information on `harness.io/skip-file-for-deploy`, see [Kubernetes Versioning and Annotations](/article/ttn8acijrz-versioning-and-annotations).For example, here is a ConfigMap file using the comment:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/zmca0zai3s/1559861831088/image.png)Now, when this Service is deployed by a Workflow, this ConfigMap resource will not be applied.
+![](./static/ignore-a-manifest-file-during-deployment-163.png)Now, when this Service is deployed by a Workflow, this ConfigMap resource will not be applied.
 
 The comment `# harness.io/skip-file-for-deploy` must be at the **top** of the file. If it is on the second line it will not work and the resource will be deployed as part of the main Workflow rollout.### Option 1: Apply Ignored Resource
 
@@ -48,7 +48,7 @@ For details on the Apply Step, see [Deploy Manifests Separately using Apply Step
 
 For example, the following image shows a Jobs resource in a Service **Manifest** section that uses the ignore comment `# harness.io/skip-file-for-deploy` so that the Workflow does not apply it as part of its main **Deploy** steps, and the **Apply** step that specifies the same Jobs resource:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/crzdm3458j/1580256082187/image.png)The **File paths** field in the Apply step must include the folder name and the file name. In the above example, the folder **templates** is included with the file name **jobs.yaml**: `templates/jobs.yaml`.
+![](./static/ignore-a-manifest-file-during-deployment-164.png)The **File paths** field in the Apply step must include the folder name and the file name. In the above example, the folder **templates** is included with the file name **jobs.yaml**: `templates/jobs.yaml`.
 
 You can include multiple resource files in the Apply step **File paths** field by separating them with commas, for example: `templates/jobs.yaml, templates/statefulSet.yaml`.
 

@@ -54,7 +54,7 @@ Here is a quick summary of the steps for installing the Harness Delegate in your
 
 1. In Harness, click **Setup**, and then click **Harness Delegates**.
 2. Click **Download Delegate** and then click **Kubernetes YAML**.
-3. In the **Delegate Setup** dialog, enter a name for the Delegate, such as **doc-example**, select a Profile (the default is named **Primary**), and click **Download**. the YAML file is downloaded to your machine.![](https://files.helpdocs.io/kw8ldg1itf/articles/zmca0zai3s/1550513297681/image.png)
+3. In the **Delegate Setup** dialog, enter a name for the Delegate, such as **doc-example**, select a Profile (the default is named **Primary**), and click **Download**. the YAML file is downloaded to your machine.![](./static/2-connectors-providers-and-helm-setup-02.png)
 4. Install the Delegate in your cluster. You can copy the YAML file to your cluster any way you choose, but the following steps describe a common method.
 	1. In a Terminal, connect to the Kubernetes cluster, and then use the same terminal to navigate to the folder where you downloaded the Harness Delegate YAML file. For example, **cd ~/Downloads**.
 	2. Extract the YAML file: `tar -zxvf harness-delegate-kubernetes.tar.gz`.
@@ -81,7 +81,7 @@ Here is a quick summary of the steps for installing the Harness Delegate in your
 	  
 	You will see output with the status Pending. The Pending status simply means that the cluster is still loading the pod.  
 	Wait a few moments for the cluster to finish loading the pod and for the Delegate to connect to Harness Manager.  
-	In Harness Manager, in the **Harness Delegates** page, the new Delegate will appear. You can refresh the page if you like.![](https://files.helpdocs.io/kw8ldg1itf/articles/zmca0zai3s/1550513779934/image.png)
+	In Harness Manager, in the **Harness Delegates** page, the new Delegate will appear. You can refresh the page if you like.![](./static/2-connectors-providers-and-helm-setup-03.png)
 
 ### Connections and Providers Setup
 
@@ -103,7 +103,7 @@ To specify a Docker repository as an Artifact Server, do the following:
 6. Enter a username and password for the provider (for example, your **Docker Hub** account).
 7. Click **SUBMIT**. The artifact server is displayed.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/rm03ceguuq/1580238942305/image.png)##### Single GCR Docker Registry across Multiple Projects
+![](./static/2-connectors-providers-and-helm-setup-04.png)##### Single GCR Docker Registry across Multiple Projects
 
 In this document, we perform a simple set up using Docker Registry. Another common artifact server for Kubernetes deployments is GCR (Google Container Registry), also supported by Harness.
 
@@ -117,7 +117,7 @@ For this guide, we will use the **Kubernetes Cluster** Cloud Provider. If you us
 
 The specs for the Kubernetes cluster you create will depend on the microservices or apps you will deploy to it. To give you guidance on the node specs for the Kubernetes Cluster used in this guide, here is a node pool created for a Kubernetes cluster in GCP:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/zmrvylwqds/1539192490847/image.png)For Harness deployments, a Kubernetes cluster requires the following:
+![](./static/2-connectors-providers-and-helm-setup-05.png)For Harness deployments, a Kubernetes cluster requires the following:
 
 * Credentials for the Kubernetes cluster in order to add it as a Cloud Provider. If you set up GCP as a cloud provider using a GCP user account, that account should also be able to configure the Kubernetes cluster on the cloud provider.
 * The kubectl command-line tool must be configured to communicate with your cluster.
@@ -136,7 +136,7 @@ In this example, we will add a **Kubernetes Cluster** Cloud Provider, but there 
 4. In **Type**, select **Kubernetes Cluster**.
 5. In **Display Name**, enter a name for the Cloud Provider.
 6. Click the option **Inherit from selected Delegate** to use the credentials of the Delegate you installed in your cluster.
-7. In **Delegate Name**, select the name of the Delegate installed in your cluster. When you are done, the dialog will look something like this:![](https://files.helpdocs.io/kw8ldg1itf/articles/rm03ceguuq/1587666637059/image.png)
+7. In **Delegate Name**, select the name of the Delegate installed in your cluster. When you are done, the dialog will look something like this:![](./static/2-connectors-providers-and-helm-setup-06.png)
 8. Click **SUBMIT**. The Kubernetes Cluster Cloud Provider is added.
 
 #### Helm Setup
@@ -313,7 +313,7 @@ A Helm chart repository is an HTTP server that houses an **index.yaml** file a
 
 You can add a Helm Chart Repository as a Harness Artifact Server and then use it in Harness Kubernetes and Helm Services.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/zmrvylwqds/1556924135307/image.png)For steps on adding a Helm Chart Repository as a Harness Artifact Server, see [Helm Repository](/article/7dghbx1dbl-configuring-artifact-server#helm_repository).
+![](./static/2-connectors-providers-and-helm-setup-07.png)For steps on adding a Helm Chart Repository as a Harness Artifact Server, see [Helm Repository](/article/7dghbx1dbl-configuring-artifact-server#helm_repository).
 
 ### Helm and the Kubernetes Delegate
 

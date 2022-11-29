@@ -46,16 +46,16 @@ To add the Harness Application and service, do the following:
 4. Click **SUBMIT**. The new application is added.
 5. Click the application name to open the application. The application entities are displayed.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/zmrvylwqds/1539300754662/image.png)### Add the Helm Service to the Application
+![](./static/2-helm-services-36.png)### Add the Helm Service to the Application
 
 1. In your new application, click **Services**. The **Services** page appears.
 2. In the **Services** page, click **Add Service**. The **Service** dialog appears.
 3. In **Name**, enter a name for your microservice. For example, if your microservice were the checkout service in a Web application, you could name it **checkout**. For this guide, we will use **Docker-Helm**.
-4. In **Deployment Type**, select **Native** **Helm**. Harness will create a service that is designed for Helm deployments. When you are finished, the dialog will look like this:![](https://files.helpdocs.io/kw8ldg1itf/articles/svso08ogpb/1590689577320/image.png)
+4. In **Deployment Type**, select **Native** **Helm**. Harness will create a service that is designed for Helm deployments. When you are finished, the dialog will look like this:![](./static/2-helm-services-37.png)
 5. Select **Enable Helm V3**. This ensures that you are using the latest Helm settings.
 6. Click **SUBMIT**. The new service is added. Let's look at where Docker and Helm are configured in the Service page:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/svso08ogpb/1576695023502/image.png)The following table describes the different sections.
+![](./static/2-helm-services-38.png)The following table describes the different sections.
 
 
 
@@ -72,13 +72,13 @@ harness:  helm:    chart:      name: nginx      version: 1.0.1  �
 
 ### Add the Docker Artifact Source
 
-1. In the new service, click **Add****Artifact Source**, and select **Docker Registry**. There are a number of artifact sources you can use. For more information, see [Add a Docker Image Server](/article/gxv9gj6khz-add-a-docker-image-service#add_a_docker_image_service). The **Docker Registry** dialog appears.![](https://files.helpdocs.io/kw8ldg1itf/articles/svso08ogpb/1580239555588/image.png)
+1. In the new service, click **Add****Artifact Source**, and select **Docker Registry**. There are a number of artifact sources you can use. For more information, see [Add a Docker Image Server](/article/gxv9gj6khz-add-a-docker-image-service#add_a_docker_image_service). The **Docker Registry** dialog appears.![](./static/2-helm-services-39.png)
 2. In **Name**, let Harness generate a name for the source.
 3. In **Source Server**, select the Artifact Server you added earlier in this guide. We are using **Docker Hub** in this guide.
 4. In **Docker Image Name**, enter the image name. Official images in public repos such as Docker Hub need the label **library**. For example, **library/nginx**. For this guide, we will use Docker Hub and the publicly available NGINX at **library/nginx**.
 5. Click **SUBMIT**. The Artifact Source is added.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/zmrvylwqds/1550778178074/image.png)### Add the Helm Chart
+![](./static/2-helm-services-40.png)### Add the Helm Chart
 
 As explained earlier, you have two options when entering in the Helm chart info. The **Chart Specifications** or the **Values YAML**. For this guide, we will use the **Chart Specifications**.
 
@@ -105,16 +105,16 @@ If you are using Google Cloud Storage for your Helm repo, you will see a **Base 
 
 Here are a couple of examples using GCS and S3:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/svso08ogpb/1576696862182/image.png)Here is an example using a Workflow variable expression. You can see the variable created in the Workflow's **Workflow Variables** section, referenced using an expression in **Chart Specification**, and then a value provided for the variable in the deployment dialog that matches the chart folder's name.
+![](./static/2-helm-services-41.png)Here is an example using a Workflow variable expression. You can see the variable created in the Workflow's **Workflow Variables** section, referenced using an expression in **Chart Specification**, and then a value provided for the variable in the deployment dialog that matches the chart folder's name.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/svso08ogpb/1576701061276/image.png)1. To use Helm command flags, click **Enable Command Flags**, and then enter the command to use.
+![](./static/2-helm-services-42.png)1. To use Helm command flags, click **Enable Command Flags**, and then enter the command to use.
 2. Click **SUBMIT**. The chart specification is added to the service.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/zmrvylwqds/1556925241950/image.png)When you deploy a Workflow using a Harness Kubernetes Service set up with a Helm Repository, you will see Harness fetch the chart:
+![](./static/2-helm-services-43.png)When you deploy a Workflow using a Harness Kubernetes Service set up with a Helm Repository, you will see Harness fetch the chart:
 
-[![](https://files.helpdocs.io/kw8ldg1itf/articles/zmca0zai3s/1556315475242/image.png)](https://files.helpdocs.io/kw8ldg1itf/articles/zmca0zai3s/1556315475242/image.png)Next, you will see Harness initialize using the chart:
+[![](./static/2-helm-services-44.png)](./static/2-helm-services-44.png)Next, you will see Harness initialize using the chart:
 
-[![](https://files.helpdocs.io/kw8ldg1itf/articles/zmca0zai3s/1556315542170/image.png)](https://files.helpdocs.io/kw8ldg1itf/articles/zmca0zai3s/1556315542170/image.png)#### Release Name Required
+[![](./static/2-helm-services-46.png)](./static/2-helm-services-46.png)#### Release Name Required
 
 Ensure that the workload-related manifests include a Release Name in their metadata.
 
@@ -177,7 +177,7 @@ metadata:
 ```
 You will provide a name to be used in place of `{{ .Release.Name }}` in the Helm Workflow you create in Harness. The Workflow contains the **Helm Deploy** step, where you can enter in a release name to replace `{{ .Release.Name }}` at runtime:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/svso08ogpb/1580239803061/image.png)For information on the Helm Deploy step, see [Helm Deploy](/article/m8ra49bqd5-4-helm-workflows).
+![](./static/2-helm-services-48.png)For information on the Helm Deploy step, see [Helm Deploy](/article/m8ra49bqd5-4-helm-workflows).
 
 ### Values YAML Override
 
@@ -221,7 +221,7 @@ Multiple files can be used. When you enter the file paths, separate the paths us
 
 The latter paths are given higher priority.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/p453sikbqt/1627588950131/clean-shot-2021-07-29-at-13-02-21.png)### Next Step
+![](./static/2-helm-services-49.png)### Next Step
 
 * [3 - Helm Environments](/article/134kx1k89d-3-helm-environments)
 

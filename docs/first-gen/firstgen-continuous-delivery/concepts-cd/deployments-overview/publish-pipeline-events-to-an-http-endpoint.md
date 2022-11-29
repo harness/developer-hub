@@ -51,9 +51,9 @@ Harness will be adding more events soon.
 
 In your Application, in **Event Rules**, click **Add**.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/scrsak5124/1628892953023/clean-shot-2021-08-13-at-15-15-45.png)The **Event Rule Configuration** settings appear.
+![](./static/publish-pipeline-events-to-an-http-endpoint-40.png)The **Event Rule Configuration** settings appear.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/scrsak5124/1628893593695/clean-shot-2021-08-13-at-15-26-25.png)Enter a name for the event rule.
+![](./static/publish-pipeline-events-to-an-http-endpoint-41.png)Enter a name for the event rule.
 
 ### Option: Pipeline or Send Me Everything
 
@@ -65,7 +65,7 @@ In **Pipelines**, select the Pipelines you want events for, or select **All Pipe
 
 In **Events**, select the event types you want to publish or select **All Events**.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/scrsak5124/1628632834982/clean-shot-2021-08-10-at-15-00-27.png)#### Send Me Everything
+![](./static/publish-pipeline-events-to-an-http-endpoint-42.png)#### Send Me Everything
 
 This option sends all events that Harness currently publishes.
 

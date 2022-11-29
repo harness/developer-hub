@@ -25,7 +25,7 @@ In this topic:
 
 To set up the Environment, do the following:
 
-1. In your Harness Application, click **Environments**, and then click **Add Environment**. The **Environment** settings appear.![](https://files.helpdocs.io/kw8ldg1itf/articles/fav3v3jx3d/1580234081830/image.png)
+1. In your Harness Application, click **Environments**, and then click **Add Environment**. The **Environment** settings appear.![](./static/4-environment-08.png)
 2. In **Name**, enter a name for the Environment that identifies it to your colleagues. In this example, File-Based is used as the name for the Environment.
 3. In **Environment Type**, select **Production** or **Non-Production**, and click **Submit**. The new Environment is added.
 
@@ -46,7 +46,7 @@ To set up the ​Infrastructure Definition, do the following:
 7. Fill out the remaining infrastructure settings for your target deployment infrastructure.
 8. In **Scope to specific Services**, select the Service you created in [Service and Artifact Source](/article/xhh8oi4bkh-2-service-and-artifact-source).  
   
-Here is an example that targets an AWS EC2 instance.![](https://files.helpdocs.io/kw8ldg1itf/other/1568330631693/image.png)
+Here is an example that targets an AWS EC2 instance.![](./static/4-environment-09.png)
 9. Click **Submit**.  
   
 The Infrastructure Definition is added. You will select this Infrastructure Definition when you create the Deploy Workflow.

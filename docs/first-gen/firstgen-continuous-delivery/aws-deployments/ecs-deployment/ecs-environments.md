@@ -28,7 +28,7 @@ For ECS, an Infrastructure Definition specifies the ECS cluster, launch type, an
 
 To create an Infrastructure Definition:
 
-1. On your Environment page, click **Add Infrastructure Definition**.![](https://files.helpdocs.io/kw8ldg1itf/other/1568700465102/image.png)The **Infrastructure Definition** dialog appears.
+1. On your Environment page, click **Add Infrastructure Definition**.![](./static/ecs-environments-91.png)The **Infrastructure Definition** dialog appears.
 2. Enter a **Name** that will identify this Infrastructure Definition when you [add it to a Workflow](/article/oinivtywnl-ecs-workflows).
 3. In **Cloud Provider Type**, select **Amazon Web Services**.
 4. In **Deployment Type**, select **Amazon Elastic Container Service (ECS)**. This expands the **Infrastructure Definition** dialog to look something like this:

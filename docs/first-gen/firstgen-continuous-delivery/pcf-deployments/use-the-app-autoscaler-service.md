@@ -31,7 +31,7 @@ In this topic:
 
 The following diagram illustrates how you can define, bind, create, and use App Autoscaler with the TAS apps deployed by Harness.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/4xh8u7l86h/1623879771177/clean-shot-2021-06-16-at-14-42-28.png)### Review: Requirements for App Autoscaler
+![](./static/use-the-app-autoscaler-service-47.png)### Review: Requirements for App Autoscaler
 
 Ensure that the Harness Delegate(s) used for your deployment have the correct version of the CF CLI installed. See [Install Cloud Foundry CLI Versions on the Harness Delegate](/article/8tsb75aldu-install-cloud-foundry-cli-6-and-7-on-harness-delegates).If you are using the App Autoscaler plugin, then autoscaling is applied after the final phase of deployment.
 
@@ -62,7 +62,7 @@ You can also choose to install the plugin manually on each Delegate using the st
 
 ### Step 1: Define the App Autoscaler Service in Your Manifest File
 
-1. In your Harness TAS Service, select your manifest.yml file and click **Edit**.![](https://files.helpdocs.io/kw8ldg1itf/articles/6kt564f64q/1575324249721/image.png)
+1. In your Harness TAS Service, select your manifest.yml file and click **Edit**.![](./static/use-the-app-autoscaler-service-48.png)
 2. Add a `create-services` block that describes the App Autoscaler service you want to create:  
   
 
@@ -102,7 +102,7 @@ Now that the App Autoscaler service is defined and bound to your app, you can ad
 
 App Autoscaler manifest files are described in [Configure with a Manifest](https://docs.pivotal.io/application-service/2-7/appsman-services/autoscaler/using-autoscaler-cli.html#configure-autoscaling) from Pivotal.
 
-1. In your Harness Service, click the options button on **Files**, and then click **Add File**.![](https://files.helpdocs.io/kw8ldg1itf/articles/6kt564f64q/1575325958099/image.png)
+1. In your Harness Service, click the options button on **Files**, and then click **Add File**.![](./static/use-the-app-autoscaler-service-49.png)
 2. In **Add File**, enter the name of the App Autoscaler manifest file, such as **autoscaler.yml**. The file is added to the **Manifests** section.  
 You can use any name for the App Autoscaler manifest file. Harness will determine which file to use for the service.
 3. Select the App Autoscaler manifest file and click **Edit**.
@@ -126,7 +126,7 @@ You can use any name for the App Autoscaler manifest file. Harness will determin
         min: 10  
         max: 20
 ```
-5. Click **Save**. The App Autoscaler manifest file is complete.![](https://files.helpdocs.io/kw8ldg1itf/articles/6kt564f64q/1575326590689/image.png)
+5. Click **Save**. The App Autoscaler manifest file is complete.![](./static/use-the-app-autoscaler-service-50.png)
 
 ### Step 4: Create the App Autoscaler Service Using CF Command
 
@@ -159,7 +159,7 @@ The `--no-push` parameter creates the services but does not push the app. The ap
 
 The **App Setup** command in a Workflow includes a **Use App Autoscaler Plugin** setting so you can enable and disable autoscaling as needed.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/6kt564f64q/1580333525833/image.png)Select **Use App Autoscalar Plugin** to enable the App Autoscaler service bound to your app.
+![](./static/use-the-app-autoscaler-service-51.png)Select **Use App Autoscalar Plugin** to enable the App Autoscaler service bound to your app.
 
 When you deploy your Workflow, the App Autoscalar service is created using the command `create-service app-autoscaler standard myautoscaler`:
 

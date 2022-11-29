@@ -36,7 +36,7 @@ In this topic:
 
 For example, we'll name the variable `namespace`. and give it three allowed values: `qa,stage,prod`.
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/kkc3fhe3zh/1580776852280/image.png)Each time the Workflow is deployed, you manually enter a value for the Workflow namespace variable or use a Trigger to pass in a value, and the `${workflow.variables.namespace}` variable is replaced with a different namespace.
+![](./static/create-kubernetes-namespaces-with-workflow-variables-207.png)Each time the Workflow is deployed, you manually enter a value for the Workflow namespace variable or use a Trigger to pass in a value, and the `${workflow.variables.namespace}` variable is replaced with a different namespace.
 
 This can happen simultaneously because a different namespace is used each time. You can even update the variable as part of the Pipeline Stage that executes the Workflow.
 
@@ -46,19 +46,19 @@ This can happen simultaneously because a different namespace is used each time. 
 
 To reference the variable we created, we use the expression `${workflow.variables.namespace}`:
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/kkc3fhe3zh/1580776667774/image.png)### Option 1: Enter a Namespace Manually
+![](./static/create-kubernetes-namespaces-with-workflow-variables-208.png)### Option 1: Enter a Namespace Manually
 
 1. In your Workflow, click **Deploy**.
 2. For **namespace**, select one of the variable's allowed values.
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/kkc3fhe3zh/1580776950555/image.png)1. Click **Submit**. The Workflow deploys to the namespace you selected.
+![](./static/create-kubernetes-namespaces-with-workflow-variables-209.png)1. Click **Submit**. The Workflow deploys to the namespace you selected.
 
 ### Option 2: Enter a Namespace with a Trigger
 
 1. Create a Trigger for the Workflow.
 2. In the Actions section, select the Workflow with the namespace variable. The namespace variable appears.
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/kkc3fhe3zh/1580777249752/image.png)1. For **namespace**, select one of the variable's allowed values.  
+![](./static/create-kubernetes-namespaces-with-workflow-variables-210.png)1. For **namespace**, select one of the variable's allowed values.  
 If your Workflow variable is not limited to allowed values, you can enter custom values. For more information, see [Passing Variables into Workflows and Pipelines from Triggers](/article/revc37vl0f-passing-variable-into-workflows).
 2. Click **Submit**. When the Trigger condition is met, the Workflow deploys to the namespace you selected.
 

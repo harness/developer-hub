@@ -42,9 +42,9 @@ Start /w pkgmgr /iu:IIS-WebServerRole;IIS-WebServer;IIS-CommonHttpFeatures;IIS-S
 ```
 You will see IIS installed in the Server Manager.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/tr8ddfm4lz/1540412471438/image.png)In the IIS listing, in ROLES and FEATURES, you can see the Web Server Role:
+![](./static/5-best-practices-and-troubleshooting-27.png)In the IIS listing, in ROLES and FEATURES, you can see the Web Server Role:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/tr8ddfm4lz/1540412420998/image.png)For more information, see [Installing IIS 7.0 from the Command Line](https://docs.microsoft.com/en-us/iis/install/installing-iis-7/installing-iis-from-the-command-line) from Microsoft.
+![](./static/5-best-practices-and-troubleshooting-28.png)For more information, see [Installing IIS 7.0 from the Command Line](https://docs.microsoft.com/en-us/iis/install/installing-iis-7/installing-iis-from-the-command-line) from Microsoft.
 
 ### Troubleshooting
 
@@ -54,7 +54,7 @@ The following problems can occur when deploying your IIS website, application, o
 
 You receive this error when deploying your workflow.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/pvjfe077ii/1535412994991/image.png)##### Solutions
+![](./static/5-best-practices-and-troubleshooting-29.png)##### Solutions
 
 * Ensure your artifact can be deployed via WinRM onto a Windows instance. It's possible to select the wrong artifact in Service.
 * Ensure you have access to the deployment environment, such as VPC, subnet, etc.
@@ -64,7 +64,7 @@ You receive this error when deploying your workflow.
 
 Do not target the same port as another website. In the Harness **Service**, in **Variables**, ensure **${SitePort}** points to a port that isn't in use. In the following example, the port was changed to **8080** to avoid the error:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/l639i8uqxs/1583537252845/image.png)You can keep the same port and use host header names to host multiple IIS sites using the same port. For more information, search the Web for `use same port and use host header names to host multiple IIS sites`. There are multiple examples. 
+![](./static/5-best-practices-and-troubleshooting-30.png)You can keep the same port and use host header names to host multiple IIS sites using the same port. For more information, search the Web for `use same port and use host header names to host multiple IIS sites`. There are multiple examples. 
 
 ### Next Steps
 

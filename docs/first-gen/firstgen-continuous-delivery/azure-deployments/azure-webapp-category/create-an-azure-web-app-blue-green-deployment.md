@@ -39,7 +39,7 @@ In the Azure portal, click your Web App, and then click **Deployment slots**. Yo
 
 Click **Swap**. You can see the Source and Target slots.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/x0etkdg62q/1612219242264/image.png)You'll use these slot names in your Harness Workflow.
+![](./static/create-an-azure-web-app-blue-green-deployment-06.png)You'll use these slot names in your Harness Workflow.
 
 Don't click the **Swap** button. Click **Close**.
 
@@ -73,7 +73,7 @@ Enter the following settings and click **Submit**.
 
 When you're done, the step will look like this:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/qpfddekbax/1612310677836/image.png)### Option: Use Variable Expressions in Settings
+![](./static/create-an-azure-web-app-blue-green-deployment-07.png)### Option: Use Variable Expressions in Settings
 
 You can use built-in Harness or custom Workflow variable expressions in the **Slot Deployment** step. See [Set Workflow Variables](/article/766iheu1bk-add-workflow-variables-new-template).
 
@@ -143,7 +143,7 @@ Click **Deploy**, select an artifact, and then click **Submit**.
 
 The Workflow deploys:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/qpfddekbax/1612311345711/image.png)You can see the swap succeeded in the logs:
+![](./static/create-an-azure-web-app-blue-green-deployment-08.png)You can see the swap succeeded in the logs:
 
 
 ```
@@ -153,7 +153,7 @@ Description : [Finished swapping site. New state is (Slot: 'stage', DeploymentId
 ```
 And the same information is displayed in the Azure portal Activity log:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/qpfddekbax/1612311482653/image.png)### Option: Templatize the Workflow
+![](./static/create-an-azure-web-app-blue-green-deployment-09.png)### Option: Templatize the Workflow
 
 See [Create Pipeline Templates](/article/60j7391eyy-templatize-pipelines).
 

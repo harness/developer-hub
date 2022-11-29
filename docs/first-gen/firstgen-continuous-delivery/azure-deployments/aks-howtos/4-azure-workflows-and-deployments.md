@@ -30,12 +30,12 @@ For information on other Workflow types, see [Kubernetes Deployments](/category/
 3. In **Name**, enter a name for your Workflow, such as **Todo List AKS**.
 4. In **Workflow Type**, select **Rolling Deployment**.
 5. In **Environment**, select the Environment you create for your Kubernetes deployment.
-6. In Infrastructure Definition, select the Infrastructure Definition you created earlier. If the Infrastructure Definition does not appear, ensure that you added the Service to the Infrastructure Definition **Scope to specific Services** setting.![](https://files.helpdocs.io/kw8ldg1itf/other/1568403300479/image.png)
+6. In Infrastructure Definition, select the Infrastructure Definition you created earlier. If the Infrastructure Definition does not appear, ensure that you added the Service to the Infrastructure Definition **Scope to specific Services** setting.![](./static/4-azure-workflows-and-deployments-00.png)
 7. Click **SUBMIT**. The new Rolling Workflow is pre-configured.
 
-![](https://files.helpdocs.io/kw8ldg1itf/other/1568403331315/image.png)As you can see, there is a Rollout Deployment step set up automatically. That's all the Workflow setup required. The Workflow is ready to deploy. When it is deployed, it will look like this:
+![](./static/4-azure-workflows-and-deployments-01.png)As you can see, there is a Rollout Deployment step set up automatically. That's all the Workflow setup required. The Workflow is ready to deploy. When it is deployed, it will look like this:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/v13edrsui8/1551999548085/image.png)You can see each section of the Rollout Deployment listed on the right. To see what that Rollout Deployment step does at runtime, let's look at the logs for each section.
+![](./static/4-azure-workflows-and-deployments-02.png)You can see each section of the Rollout Deployment listed on the right. To see what that Rollout Deployment step does at runtime, let's look at the logs for each section.
 
 #### Initialize
 
@@ -239,17 +239,17 @@ Done.
 
 Now that the setup is complete, you can click **Deploy** in the Workflow to deploy the artifact to your cluster.
 
-![](https://files.helpdocs.io/kw8ldg1itf/other/1551916036419/image.png)Next, select the artifact build version and click **SUBMIT**.
+![](./static/4-azure-workflows-and-deployments-03.png)Next, select the artifact build version and click **SUBMIT**.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/v13edrsui8/1552000214475/image.png)The Workflow is deployed.
+![](./static/4-azure-workflows-and-deployments-04.png)The Workflow is deployed.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/x87732ti68/1578088062050/image.png)To see the completed deployment, log into your Azure AKS cluster, click **Insights**, and then click **Controllers**.
+![](./static/4-azure-workflows-and-deployments-05.png)To see the completed deployment, log into your Azure AKS cluster, click **Insights**, and then click **Controllers**.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/v13edrsui8/1552000489073/image.png)If you are using a older AKS cluster, you might have to enable Insights.The container details show the Docker image deployed:
+![](./static/4-azure-workflows-and-deployments-06.png)If you are using a older AKS cluster, you might have to enable Insights.The container details show the Docker image deployed:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/v13edrsui8/1552000533689/image.png)You can also launch the Kubernetes dashboard to see the results:
+![](./static/4-azure-workflows-and-deployments-07.png)You can also launch the Kubernetes dashboard to see the results:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/v13edrsui8/1552000591531/image.png)To view the Kubernetes dashboard, in your AKS cluster, click **Overview**, click **Kubernetes Dashboard**, and then follow the CLI steps.
+![](./static/4-azure-workflows-and-deployments-08.png)To view the Kubernetes dashboard, in your AKS cluster, click **Overview**, click **Kubernetes Dashboard**, and then follow the CLI steps.
 
 ### Next Step
 

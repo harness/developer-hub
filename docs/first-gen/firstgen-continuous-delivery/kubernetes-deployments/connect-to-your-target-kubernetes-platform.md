@@ -113,7 +113,7 @@ Wait a few moments for the cluster to finish loading the pod and for the Delegat
 
 In Harness Manager, in the **Harness Delegates** page, the new Delegate will appear. You can refresh the page if you like.
 
-[![](https://files.helpdocs.io/kw8ldg1itf/articles/zmca0zai3s/1550513779934/image.png)](https://files.helpdocs.io/kw8ldg1itf/articles/zmca0zai3s/1550513779934/image.png)Note the **Delegate name**. You will use this name when you set up the Kubernetes Cluster Cloud Provider.
+[![](./static/connect-to-your-target-kubernetes-platform-53.png)](./static/connect-to-your-target-kubernetes-platform-53.png)Note the **Delegate name**. You will use this name when you set up the Kubernetes Cluster Cloud Provider.
 
 When you onboard your own applications, you might need to install multiple Delegates, depending on their workloads, network segmentation, and firewall zones. Typically, you will need one Delegate for every 300-500 service instances across your applications, and will need one Delegate in each subnet or zone.### Step 2: Choose a Kubernetes Cluster Cloud Provider or Platform Cloud Provider
 

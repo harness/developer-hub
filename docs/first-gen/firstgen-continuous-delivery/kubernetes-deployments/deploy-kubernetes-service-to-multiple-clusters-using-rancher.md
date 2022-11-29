@@ -63,7 +63,7 @@ Harness targets Rancher clusters using cluster labels. When you set up a Rancher
 
 Here's an example where the labels from two clusters are added to **Cluster Selection Criteria**.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/hsc50ny57g/1645042501312/clean-shot-2022-02-16-at-12-14-25.png)Harness uses labels in the following way:
+![](./static/deploy-kubernetes-service-to-multiple-clusters-using-rancher-196.png)Harness uses labels in the following way:
 
 * Harness will only target clusters that match the name:value pair you add in the Infrastructure Definition.
 * If you add multiple name:value pairs, Harness treats those as AND conditions. Clusters must have all of the name:value pairs as labels to be selected.
@@ -73,13 +73,13 @@ Here's an example where the labels from two clusters are added to **Cluster Sele
 
 You can use existing cluster labels or add new ones for Harness deployments.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/hsc50ny57g/1644885576440/clean-shot-2022-02-14-at-16-39-14.png)In Rancher, add labels to the clusters to identify them for the Harness deployment.
+![](./static/deploy-kubernetes-service-to-multiple-clusters-using-rancher-197.png)In Rancher, add labels to the clusters to identify them for the Harness deployment.
 
 To add labels to an existing cluster in Rancher, select the cluster, click more options (**︙**), and then click **Edit Config**.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/hsc50ny57g/1644885657019/clean-shot-2022-02-14-at-16-40-42.png)Click **Add Label** to add new labels.
+![](./static/deploy-kubernetes-service-to-multiple-clusters-using-rancher-198.png)Click **Add Label** to add new labels.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/hsc50ny57g/1644885720039/clean-shot-2022-02-14-at-16-41-13.png)Now that the cluster has labels, you can identify it in Harness as a target cluster.
+![](./static/deploy-kubernetes-service-to-multiple-clusters-using-rancher-199.png)Now that the cluster has labels, you can identify it in Harness as a target cluster.
 
 ### Step 2: Add a Harness Rancher Cloud Provider
 
@@ -113,7 +113,7 @@ Click **Add**, and then enter the label name and value(s).
 
 See [Review: Cluster Labels and Harness Infrastructure Definitions](https://harness.helpdocs.io/article/hsc50ny57g#review_cluster_labels_and_harness_infrastructure_definitions) above.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/hsc50ny57g/1645043976334/clean-shot-2022-02-16-at-12-14-25.png)Click **Submit**. The Infrastructure Definition is added to the Environment. You can now select it in your Harness Workflows.
+![](./static/deploy-kubernetes-service-to-multiple-clusters-using-rancher-200.png)Click **Submit**. The Infrastructure Definition is added to the Environment. You can now select it in your Harness Workflows.
 
 ### Option: Harness Variables in Infrastructure Definition
 
@@ -148,9 +148,9 @@ INFO   2022-02-16 12:46:39    Eligible clusters list after applying label filter
 * **Rancher Rollout Deployment:** performs a new Kubernetes rollout deployment for each cluster matching the criteria in **Cluster Selection Criteria**.
 * **Rancher Rollback Deployment:** in the case of failures, rolls back each cluster to its previous app version.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/hsc50ny57g/1644950784997/clean-shot-2022-02-15-at-10-46-09.png)Here's what a successful deployment looks like. You can see that two matching clusters were targeted.
+![](./static/deploy-kubernetes-service-to-multiple-clusters-using-rancher-201.png)Here's what a successful deployment looks like. You can see that two matching clusters were targeted.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/hsc50ny57g/1645045078812/clean-shot-2022-02-16-at-12-57-49.png)#### Canary
+![](./static/deploy-kubernetes-service-to-multiple-clusters-using-rancher-202.png)#### Canary
 
 Canary deployment follows the standard Harness Kubernetes Canary deployment process as described in [Create a Kubernetes Canary Deployment](/article/2xp0oyubjj-create-a-kubernetes-canary-deployment). The only difference is that the process is performed on multiple clusters simultaneously.
 

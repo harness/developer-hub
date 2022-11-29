@@ -27,12 +27,12 @@ To add a Harness environment, do the following:
 
 1. In your Harness application, click **Environments**. The **Environments** page appears.
 2. Click **Add Environment**. The **Environment** settings appear.  
-![](https://files.helpdocs.io/kw8ldg1itf/articles/134kx1k89d/1588366584343/image.png)
+![](./static/3-helm-environments-08.png)
 3. In **Name**, enter a name that describes the deployment environment, for example, **GCP-K8S-Helm**.
 4. In **Environment Type**, select **Non-Production**.
 5. Click **SUBMIT**. The new Environment page appears.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/zmrvylwqds/1539210535625/image.png)### Add an Infrastructure Definition
+![](./static/3-helm-environments-09.png)### Add an Infrastructure Definition
 
 ​Infrastructure Definitions specify the target deployment infrastructure for your Harness Services, and the specific infrastructure details for the deployment, like VPC settings. 
 
@@ -40,7 +40,7 @@ You define the Kubernetes cluster to use for deployment as an ​Infrastructure 
 
 To add the Infrastructure Definition, do the following:
 
-1. In the Harness Environment, click **Add Infrastructure Definition**. The **Infrastructure Definition** dialog appears.![](https://files.helpdocs.io/kw8ldg1itf/other/1568398274729/image.png)
+1. In the Harness Environment, click **Add Infrastructure Definition**. The **Infrastructure Definition** dialog appears.![](./static/3-helm-environments-10.png)
 2. In **Name**, enter the name you will use to select this Infrastructure Definition when you create a Workflow.
 3. In **Cloud Provider Type**, select **Kubernetes Cluster**.
 4. In **Deployment Type**, select **Helm**.
@@ -50,10 +50,10 @@ To add the Infrastructure Definition, do the following:
 8. In **Namespace**, enter the name of the cluster namespace you want to use. As we noted in [Values YAML Override](https://docs.harness.io/article/svso08ogpb-2-helm-services#values_yaml_override), you can enter a `${NAMESPACE}` variable in your Service and Harness will replace it with the value you enter in **Namespace** at runtime.
 9. In **Scope to specific Services**, select the Harness Service you created earlier.  
   
-The Infrastructure Definition will look something like this:![](https://files.helpdocs.io/kw8ldg1itf/other/1568407061456/image.png)
+The Infrastructure Definition will look something like this:![](./static/3-helm-environments-11.png)
 10. Click **Submit**. The new Infrastructure Definition is added to the Harness Environment.
 
-![](https://files.helpdocs.io/kw8ldg1itf/other/1568407099991/image.png)That is all you have to do to set up the deployment Environment in Harness.
+![](./static/3-helm-environments-12.png)That is all you have to do to set up the deployment Environment in Harness.
 
 Now that you have the Service and Environment set up. Now you can create the deployment Workflow in Harness.
 

@@ -44,7 +44,7 @@ For more information about Blue/Green Deployment and Workflow creation, see [Blu
 1. Add the required steps in sections for deployment and staging verification.
 2. Add traffic shift steps in the Route Update section after the Verify Staging section based on the percentage shift required.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/e3ww34nu8g/1595996900071/configurephaseshift.png)You can manipulate traffic shifting using as many Shift Traffic Weight steps as you like.
+![](./static/configure-traffic-split-verification-00.png)You can manipulate traffic shifting using as many Shift Traffic Weight steps as you like.
 
 Typically, you add Approval steps between each Shift Traffic Weight step to ensure that everything is running smoothly. For example, you can test the new feature(s) of your app before approving. This is a simple way to incorporate A/B testing into your Workflow.
 
@@ -57,7 +57,7 @@ In the **Route Update** section, after each traffic split step, you can add the 
 * **Performance Monitoring**—**AppDynamics**: For more information on configuring AppDynamics verification, see [Verify Deployments with AppDynamics](https://docs.harness.io/article/ehezyvz163-3-verify-deployments-with-app-dynamics).
 * **Log Analysis**—**ELK**: For more information on configuring ELK verification see [Verify Deployments with Elasticsearch](https://docs.harness.io/article/e2eghvcyas-3-verify-deployments-with-elasticsearch).
 
-Make sure you add the verification steps for traffic split only in the **Route Update** section.![](https://files.helpdocs.io/kw8ldg1itf/articles/e3ww34nu8g/1595997062180/add-step-traffic-split-cv.png)The configure AppDynamics/ELK procedure is similar to the regular configuration, except for the **Baseline for Risk Analysis** input. You can select only **Canary Analysis**.
+Make sure you add the verification steps for traffic split only in the **Route Update** section.![](./static/configure-traffic-split-verification-01.png)The configure AppDynamics/ELK procedure is similar to the regular configuration, except for the **Baseline for Risk Analysis** input. You can select only **Canary Analysis**.
 
 Traffic split analysis will be performed only if the new traffic percentage is less than 50%. Analysis will not be performed if the traffic split is more than 50%.### Step 4: View Verification Results
 
@@ -65,4 +65,4 @@ Once you have executed the Workflow, Harness performs the verification you confi
 
 For a quick overview of the verification UI elements, see [Continuous Verification Tools](https://docs.harness.io/article/xldc13iv1y-meet-harness#continuous_verification_tools). For details about viewing and interpreting verification results, see [Verification Results Overview](https://docs.harness.io/article/2la30ysdz7-deployment-verification-results).
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/e3ww34nu8g/1596093933437/cv-tsout-2.png)
+![](./static/configure-traffic-split-verification-02.png)

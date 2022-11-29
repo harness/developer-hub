@@ -22,7 +22,7 @@ Before learning about Build and Deploy Pipelines, you should have an understandi
 
 An Artifact Build and Deploy pipeline runs a build process, deposits the built artifact (or metadata) in Harness, and deploys the build to a deployment environment. It is a simple, but useful deployment commonly used for traditional file-based and AMI deployments.
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/t8tftoab3s/1578340646232/image.png)### What Does Harness Need Before You Start?
+![](./static/artifact-build-and-deploy-pipelines-overview-35.png)### What Does Harness Need Before You Start?
 
 A Harness Build and Deploy Pipeline deployment requires the following:
 

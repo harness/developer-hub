@@ -31,7 +31,7 @@ Before learning about Harness Azure Web App deployments, you should have an unde
 
 ### Limitations
 
-* Harness deploys Docker images and non-containerized artifacts for Azure Web Apps. To see what's supported, when you create a Harness Service, see **Artifact Type**:![](https://files.helpdocs.io/kw8ldg1itf/articles/lluikqw7q7/1643235386267/image.png)
+* Harness deploys Docker images and non-containerized artifacts for Azure Web Apps. To see what's supported, when you create a Harness Service, see **Artifact Type**:![](./static/azure-web-app-deployments-overview-00.png)
 * Harness uses the Azure SDK among other methods and Authenticated proxy is not supported for Azure SDK. Consequently, you cannot use Azure connections for artifacts, machine images, etc, that require proxy authentication. This is an Azure limitation, not a Harness limitation. This is a known Azure limitation with Java environment properties and their SDK.
 
 #### Azure Limitations
@@ -57,8 +57,8 @@ To deploy an Azure Web App using Harness, you only need the following:
 	1. Docker |  |
 * **A Docker image or non-containerized artifact:** this is the same image or artifact you used when you created the Azure Web App.
 * Azure account connection information.
-* **App Service Plan:** the name of the Azure App Service configured for your existing Web App.![](https://files.helpdocs.io/kw8ldg1itf/articles/lluikqw7q7/1611878041274/image.png)
-* **Two or more running deployment slots for production and staging:** the slots created for your existing Azure Web App:![](https://files.helpdocs.io/kw8ldg1itf/articles/lluikqw7q7/1611878123467/image.png)
+* **App Service Plan:** the name of the Azure App Service configured for your existing Web App.![](./static/azure-web-app-deployments-overview-01.png)
+* **Two or more running deployment slots for production and staging:** the slots created for your existing Azure Web App:![](./static/azure-web-app-deployments-overview-02.png)
 
 ### What Does Harness Deploy?
 
@@ -92,4 +92,4 @@ The following list describes the major steps of a Harness Web App deployment:
 
 The Harness Services dashboard shows the new version of the Azure Web App that you deployed regardless of what slot it is deployed in.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/lluikqw7q7/1613071162492/image.png)
+![](./static/azure-web-app-deployments-overview-03.png)

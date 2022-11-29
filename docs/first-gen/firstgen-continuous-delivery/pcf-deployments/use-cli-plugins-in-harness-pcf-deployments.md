@@ -12,7 +12,7 @@ Harness supports Cloud Foundry CLI version 6 and 7. Support for version 7 is beh
 
 Harness also includes first-class support for the [App Autoscaler plugin](https://docs.pivotal.io/application-service/2-7/appsman-services/autoscaler/using-autoscaler-cli.html), enabling you to create it as part of your Harness Workflow, bind it to your app, and enable or disable it as needed. Here is the App Autoscaler option as part of the **App Setup** command.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/6kt564f64q/1580332748516/image.png)In this topic:
+![](./static/use-cli-plugins-in-harness-pcf-deployments-02.png)In this topic:
 
 * [Before You Begin](#before_you_begin)
 * [Visual Summary](#visual_summary)
@@ -31,7 +31,7 @@ Harness also includes first-class support for the [App Autoscaler plugin](https:
 
 Harness runs CF plugins using the Workflow command **CF Command**. CF Command automatically sets the `CF_PLUGIN_HOME` directory, logs in (using the Harness TAS Cloud Provider), and runs the plugin using the script in CF Command.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/ttu8ty2glb/1623880343848/image.png)### Review: Requirements for Running Plugins
+![](./static/use-cli-plugins-in-harness-pcf-deployments-03.png)### Review: Requirements for Running Plugins
 
 To run plugins using CF Command, you must have the following:
 
@@ -49,13 +49,13 @@ For more information, see [Install Cloud Foundry CLI Versions on the Harness Del
 
 In Harness, click **View Logs** to see the successful installation:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/6kt564f64q/1575334792407/image.png)A single Delegate Profile can be used on all Delegates to ensure that any Delegates used have the CF CLI installed.
+![](./static/use-cli-plugins-in-harness-pcf-deployments-04.png)A single Delegate Profile can be used on all Delegates to ensure that any Delegates used have the CF CLI installed.
 
 #### Plugins Installed on Harness Delegates
 
 The plugin you want to run must be installed on the Harness Delegates that CF Command will use. You can tag a Harness Delegate and then select the Tag in the CF Command, ensuring that the CF Command runs your plugin on a Harness Delegate with the plugin installed.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/6kt564f64q/1580332998447/image.png)You can install the plugin on the Harness Delegate using the same Delegate Profile you use to install the CF CLI on the Delegate(s).
+![](./static/use-cli-plugins-in-harness-pcf-deployments-05.png)You can install the plugin on the Harness Delegate using the same Delegate Profile you use to install the CF CLI on the Delegate(s).
 
 Here is an example installing the CF CLI and [Create-Service-Push](https://plugins.cloudfoundry.org/#Create-Service-Push) plugin:
 
@@ -68,7 +68,7 @@ echo y | cf install-plugin -r CF-Community "Create-Service-Push"
 ```
 If you are using the Kubernetes, ECS, or Helm Delegates, you can select the Profile when you download a new Delegate script. Typically, you will be using a Shell Script Delegate for TAS deployments. In that case, simply apply the Profile to each new Delegate:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/6kt564f64q/1574724912851/image.png)#### Create-Service-Push Installed on Delegate
+![](./static/use-cli-plugins-in-harness-pcf-deployments-06.png)#### Create-Service-Push Installed on Delegate
 
 The Create-Service-Push plugin must be installed on the Delegate(s) to use the App AutoScaler plugin. See [Install Cloud Foundry CLI Versions on the Harness Delegate](/article/8tsb75aldu-install-cloud-foundry-cli-6-and-7-on-harness-delegates).The [Create-Service-Push](https://plugins.cloudfoundry.org/#Create-Service-Push) plugin reads in a services' manifest.yml file, creates the services listed in it, and pushes an application. Create-Service-Push extends `cf push`.
 
@@ -76,7 +76,7 @@ If you want to create TAS services from the inline or remote manifest files set 
 
 For example, you can see the `cf create-service-push` command used to run a plugin defined in the manifest here:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/6kt564f64q/1580333121300/image.png)You can install the Create-Service-Push plugin in a Delegate Profile by itself:
+![](./static/use-cli-plugins-in-harness-pcf-deployments-07.png)You can install the Create-Service-Push plugin in a Delegate Profile by itself:
 
 
 ```
@@ -115,7 +115,7 @@ Once the CF plugin has been installed on a Harness Delegate, you can simply add 
 2. click **Add Command**. **Add Command** appears.
 3. Click **CF Command**. **CF Command** appears.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/6kt564f64q/1580333154645/image.png)As the commented-out text states, the CF Command will perform the login steps of using the CF CLI. So you do not need to include login credentials in CF Command. CF Command will use the credentials set up in your Harness TAS Cloud Provider.
+![](./static/use-cli-plugins-in-harness-pcf-deployments-08.png)As the commented-out text states, the CF Command will perform the login steps of using the CF CLI. So you do not need to include login credentials in CF Command. CF Command will use the credentials set up in your Harness TAS Cloud Provider.
 
 ### Step 2: Script
 
@@ -125,9 +125,9 @@ There are two built-in Harness TAS variables you can use to reference the manife
 
 * If you are using inline Manifest files, the variable `${service.manifest}` refers to the folder containing your manifest files.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/6kt564f64q/1574895511399/image.png)* If you are using remote Manifest files via a Git repo, `${service.manifest}` refers to the folder containing your manifest files and `${service.manifest.repoRoot}` refers to the root folder of the repo.
+![](./static/use-cli-plugins-in-harness-pcf-deployments-09.png)* If you are using remote Manifest files via a Git repo, `${service.manifest}` refers to the folder containing your manifest files and `${service.manifest.repoRoot}` refers to the root folder of the repo.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/6kt564f64q/1574890615262/image.png)You can use the variables together to point to different locations. For example, here the manifest.yml file is one folder and the vars.yml is located using a path from the repo root folder:
+![](./static/use-cli-plugins-in-harness-pcf-deployments-10.png)You can use the variables together to point to different locations. For example, here the manifest.yml file is one folder and the vars.yml is located using a path from the repo root folder:
 
 
 ```
@@ -136,7 +136,7 @@ cf plugins | grep autoscaling-apps
 ```
 These variables appear when you type `${service` in **Script**:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/6kt564f64q/1580333199973/image.png)Environment Service Overrides, such as [Tanzu Manifest Overrides](/article/r0vp331jnq), do not apply to or override the `${service.manifest}` variable. The `${service.manifest}` variable only looks in the Harness Service.You can also use variables in your script to templatize paths to manifest files. For example, if your Workflow Environment were templatized (see [Template a Workflow](/article/m220i1tnia-workflow-configuration#template_a_workflow)), you can use the Environment variable `${env.name}` in your path, like this:
+![](./static/use-cli-plugins-in-harness-pcf-deployments-11.png)Environment Service Overrides, such as [Tanzu Manifest Overrides](/article/r0vp331jnq), do not apply to or override the `${service.manifest}` variable. The `${service.manifest}` variable only looks in the Harness Service.You can also use variables in your script to templatize paths to manifest files. For example, if your Workflow Environment were templatized (see [Template a Workflow](/article/m220i1tnia-workflow-configuration#template_a_workflow)), you can use the Environment variable `${env.name}` in your path, like this:
 
 `${service.manifest.repoRoot}/${env.name}/vars.yml`
 
@@ -150,7 +150,7 @@ Ensure that the Harness Delegate(s) used for your deployment have the correct ve
 
 Unless all of your Harness Delegates have the plugin installed, you can refer to the specific Delegates with the plugin installed using [Delegate Selectors](/article/h9tkwmkrm7-delegate-installation#delegate_selectors). Add the Delegate Selectors for the Delegates with the plugins installed.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/6kt564f64q/1580333212513/image.png)If you do not add any Delegates Selectors to the CF Command, when the CF Command runs, Harness will only use Delegates that have the CF CLI installed.
+![](./static/use-cli-plugins-in-harness-pcf-deployments-12.png)If you do not add any Delegates Selectors to the CF Command, when the CF Command runs, Harness will only use Delegates that have the CF CLI installed.
 
 However, if you are running plugins in CF Command, Harness cannot know which Delegates have the plugins installed.
 

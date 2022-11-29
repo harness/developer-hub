@@ -62,10 +62,10 @@ Harness adds Helm within the Delegate directory path, in **/client-tools/helm/v3
 1. Log into Harness.
 2. Click **Setup**, and open your Harness Application.
 3. Open the Harness Service you use for native Helm 2 deployments.
-4. In the Harness Service, click vertical ellipsis (**︙**) and then click **Edit**:![](https://files.helpdocs.io/i5nl071jo5/articles/go8rv7a8jf/1580340686188/image.png)
+4. In the Harness Service, click vertical ellipsis (**︙**) and then click **Edit**:![](./static/upgrade-native-helm-2-deployments-to-helm-3-16.png)
 5. Select the **Enable Helm V3** setting and click **Submit**.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/cqidzwbzaa/1590689801501/image.png)That's it. Now your Harness Service is upgraded for Helm 3 and you can start using Helm 3 charts.
+![](./static/upgrade-native-helm-2-deployments-to-helm-3-17.png)That's it. Now your Harness Service is upgraded for Helm 3 and you can start using Helm 3 charts.
 
 ### Notes
 

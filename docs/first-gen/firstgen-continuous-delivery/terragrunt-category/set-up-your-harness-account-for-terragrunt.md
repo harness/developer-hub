@@ -115,7 +115,7 @@ To use your Terragrunt and Terraform files in Harness, you host the files in a G
 
 Here is an example of a Source Repo Provider and the GitHub repo for Terragrunt. The Terragrunt configuration file in the repo points to a Terraform module in another repo.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/ulhl7sjxva/1619124990605/image.png)### Next Steps
+![](./static/set-up-your-harness-account-for-terragrunt-26.png)### Next Steps
 
 * [Add Terragrunt Configuration Files](/article/mkjxbkglih-add-terragrunt-configuration-files)
 

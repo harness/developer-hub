@@ -194,7 +194,7 @@ You can use inline or remote tfvar files.
 
 The path to the variable definitions file is relative to the root of the Git repo specified in the Terraform Provisioner setting. For example, in the following image, the **testing.tfvars** file is located in the repo at `terraform/ec2/testing/testing.tfvars`:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/9pvvgcdbjh/1557441235992/image.png)If **Use tfvar files** is selected and there are also **Inline Values**, when Harness loads the variables from the **tfvars** file, the **Inline Values** variables override the variables from the tfvars file.
+![](./static/terraform-destroy-02.png)If **Use tfvar files** is selected and there are also **Inline Values**, when Harness loads the variables from the **tfvars** file, the **Inline Values** variables override the variables from the tfvars file.
 
 If you only want to use the tfvars file, make sure to delete the Inline Values.
 
@@ -219,4 +219,4 @@ See [Backend Configuration (Remote state)](/article/uxwih21ps1-terraform-provisi
 
 Click **Submit**. The Terraform Destroy step is added to the Workflow.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/9pvvgcdbjh/1557444090556/image.png)
+![](./static/terraform-destroy-03.png)

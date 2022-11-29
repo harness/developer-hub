@@ -53,13 +53,13 @@ In this example, we will use a file in a ConfigMap object.
 
 1. Add the unencrypted file to **Config Files**. In this example, the file is a base64 encoded file named `myFile`.
 
-Make sure you have the **update** permission on the Service or the Environment before you try to add the Service Config File. See [Managing Users and Groups (RBAC)](https://docs.harness.io/article/ven0bvulsj-users-and-permissions) for more information about assigning permissions.![](https://files.helpdocs.io/kw8ldg1itf/other/1572887504228/image.png)The base64 encoded file will be decoded when added to the manifest, as shown below.
+Make sure you have the **update** permission on the Service or the Environment before you try to add the Service Config File. See [Managing Users and Groups (RBAC)](https://docs.harness.io/article/ven0bvulsj-users-and-permissions) for more information about assigning permissions.![](./static/using-harness-config-files-in-manifests-102.png)The base64 encoded file will be decoded when added to the manifest, as shown below.
 
 ### Step 2: Reference Config File
 
 1. In the **values.yaml** in the Harness Service **Manifests** section, reference the Config File using `my_file: ${configFile.getAsBase64("myFile")}`.
 
-![](https://files.helpdocs.io/kw8ldg1itf/other/1572637555107/image.png)### Step 3: Decode the File
+![](./static/using-harness-config-files-in-manifests-103.png)### Step 3: Decode the File
 
 1. In the manifest (in our example, a ConfigMap), decode the base64 Config File and indent it for the YAML syntax:
 

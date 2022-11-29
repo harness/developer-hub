@@ -29,7 +29,7 @@ For Canary and Blue/Green Workflow deployments, only one managed object may be d
 
 You can specify the multiple workload objects in a single manifest or in individual manifests, or any other arrangement.For example, here is a Service **Manifests** section with two Deployment objects, each in their own manifest:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/5gouaz9w5r/1562025002754/image.png)Here is the log from the deployment, where you can see both Deployment objects deployed:
+![](./static/create-a-kubernetes-rolling-deployment-104.png)Here is the log from the deployment, where you can see both Deployment objects deployed:
 
 
 ```
@@ -110,10 +110,10 @@ For details on the settings, see RollingUpdateDeployment in the [Kubernetes AP
 5. In **Environment**, select the Environment you created for your Kubernetes deployment.
 6. In **Service**, select the Service containing the manifest files you want to use for your deployment.
 7. In Infrastructure Definition, select the Infrastructure Definition where you want to deploy.
-8. When you are finished, the **Workflow** dialog will look like this example:![](https://files.helpdocs.io/kw8ldg1itf/other/1568671934060/image.png)
+8. When you are finished, the **Workflow** dialog will look like this example:![](./static/create-a-kubernetes-rolling-deployment-105.png)
 9. Click **SUBMIT**. The new Workflow appears.
 
-[![](https://files.helpdocs.io/kw8ldg1itf/articles/zmca0zai3s/1550439416392/image.png)](https://files.helpdocs.io/kw8ldg1itf/articles/zmca0zai3s/1550439416392/image.png)### Step 3: Rollout Deployment Step
+[![](./static/create-a-kubernetes-rolling-deployment-106.png)](./static/create-a-kubernetes-rolling-deployment-106.png)### Step 3: Rollout Deployment Step
 
 The Workflow generates the **Rollout Deployment** step automatically. There's nothing to update. You can deploy the Workflow.
 
@@ -248,9 +248,9 @@ Done.
 
 Now that the setup is complete, you can click **Deploy** in the Workflow to deploy the artifact to your cluster.
 
-[![](https://files.helpdocs.io/kw8ldg1itf/articles/zmca0zai3s/1550514972283/image.png)](https://files.helpdocs.io/kw8ldg1itf/articles/zmca0zai3s/1550514972283/image.png)Next, select the artifact build version and click **SUBMIT**.
+[![](./static/create-a-kubernetes-rolling-deployment-108.png)](./static/create-a-kubernetes-rolling-deployment-108.png)Next, select the artifact build version and click **SUBMIT**.
 
-[![](https://files.helpdocs.io/kw8ldg1itf/articles/zmca0zai3s/1550515038984/image.png)](https://files.helpdocs.io/kw8ldg1itf/articles/zmca0zai3s/1550515038984/image.png)The Workflow is deployed.
+[![](./static/create-a-kubernetes-rolling-deployment-110.png)](./static/create-a-kubernetes-rolling-deployment-110.png)The Workflow is deployed.
 
 To see the completed deployment, log into your cluster and run `kubectl get all`. The output lists the new Deployment:
 

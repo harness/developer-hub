@@ -214,7 +214,7 @@ When you are finished setting up the Google Cloud Build step, and any other step
 
 The Google Cloud Build step **Details** displays information about the build, including a build URL you can click to open the build in the GCB console:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/dvm5q9j0d0/1595978514521/image.png)### Limitations
+![](./static/trigger-google-cloud-builds-00.png)### Limitations
 
 Harness only supports the use of JSON in inline and remote build config files. If you use a GCB trigger in the Google Cloud Build step, the config file it uses can be either YAML or JSON.
 

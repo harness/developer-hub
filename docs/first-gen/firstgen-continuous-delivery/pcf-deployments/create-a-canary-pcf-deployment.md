@@ -35,7 +35,7 @@ In this topic:
 
 Here is an example of a successful TAS Canary deployment containing two phases:
 
-![](https://files.helpdocs.io/kw8ldg1itf/other/1572471685499/image.png)### Review: App Resizing in Canary Deployments
+![](./static/create-a-canary-pcf-deployment-83.png)### Review: App Resizing in Canary Deployments
 
 To understand how app resizing works in a Canary deployment, let's look at an example of a 3 phase deployment.
 
@@ -89,7 +89,7 @@ To explain TAS Canary Workflow steps and settings, we will create a Canary Workf
 The Canary Workflow will contains two phases:
 
 1. Phase 1:
-	1. **App Setup** command: 6 instances set up. The number of instances defined in the manifest.yml via the vars.yml variable value for instances:![](https://files.helpdocs.io/kw8ldg1itf/other/1572386976797/image.png)
+	1. **App Setup** command: 6 instances set up. The number of instances defined in the manifest.yml via the vars.yml variable value for instances:![](./static/create-a-canary-pcf-deployment-84.png)
 	2. **App Resize** command: 50% desired instances. This ensures that the app deploys on a small number of instances before moving on to Phase 2.
 2. Phase 2:
 	1. **App Resize** command: 100% of instances.
@@ -116,13 +116,13 @@ To configure the Canary phases, do the following:
 3. In **Infrastructure Definition**, select the [Infrastructure Definition](https://docs.harness.io/article/n39w05njjv-environment-configuration#step_2_add_infrastructure_definition) that defines the target space where you want to deploy your app.
 4. Click **Submit**. Phase 1 appears.
 
-![](https://files.helpdocs.io/kw8ldg1itf/other/1572387401606/image.png)Now we configure this phase to deploy 50% of the TAS app instances we have set in the Service manifest.yml.
+![](./static/create-a-canary-pcf-deployment-85.png)Now we configure this phase to deploy 50% of the TAS app instances we have set in the Service manifest.yml.
 
 ### Step 3: Configure App Setup for Phase 1
 
 1. Click **App Setup**. The **App Setup** dialog appears.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/9ao4gsr93j/1580331932559/image.png)You don't need to change any settings in App Setup, but let's review the default settings:
+![](./static/create-a-canary-pcf-deployment-86.png)You don't need to change any settings in App Setup, but let's review the default settings:
 
 
 
@@ -167,11 +167,11 @@ Next, we'll add Phase 2 where we will deploy to 100% of the instances specified 
 
 The **Phase 2** steps appear.
 
-![](https://files.helpdocs.io/kw8ldg1itf/other/1572389017588/image.png)These step will be executed when the Phase 1 steps are successful.
+![](./static/create-a-canary-pcf-deployment-87.png)These step will be executed when the Phase 1 steps are successful.
 
 ### Step 6: Configure App Resize for Phase 2
 
-1. Click **App Resize**. The **App Resize** settings appear.![](https://files.helpdocs.io/kw8ldg1itf/articles/9ao4gsr93j/1583782343330/image.png)In Phase 1, the app successfully deployed to 50% of the instances set in the Service manifest.yml. In Phase 2, you can deploy it to 100% of the instances.
+1. Click **App Resize**. The **App Resize** settings appear.![](./static/create-a-canary-pcf-deployment-88.png)In Phase 1, the app successfully deployed to 50% of the instances set in the Service manifest.yml. In Phase 2, you can deploy it to 100% of the instances.
 2. In **Desired Instances**, enter **100** and choose **Percent**, and then click **Submit**. This will deploy the new app to 100% of the instances you set up in Phase 1. The Phase 2 steps are now complete.
 
 If your manifest does not specify the number of instances, Harness defaults to 2 instances.
@@ -186,16 +186,16 @@ If you are using the App Autoscaler plugin, then autoscaling is applied after th
 
 Now that the Canary Workflow is configured, from the breadcrumb menu, click back to the main Canary Workflow page. You can see both Phases are complete.
 
-![](https://files.helpdocs.io/kw8ldg1itf/other/1572389204739/image.png)You can now deploy the Canary Workflow.
+![](./static/create-a-canary-pcf-deployment-89.png)You can now deploy the Canary Workflow.
 
 1. Click **Deploy**.
 2. In **Start New Deployment**, select an artifact to deploy.
 
-![](https://files.helpdocs.io/kw8ldg1itf/other/1572389477322/image.png)1. Click **Submit** to deploy your app.
+![](./static/create-a-canary-pcf-deployment-90.png)1. Click **Submit** to deploy your app.
 
 Here you can see the **App Setup** step in Phase 1:
 
-![](https://files.helpdocs.io/kw8ldg1itf/other/1572390874041/image.png)When this step is deployed, the output will look something like this:
+![](./static/create-a-canary-pcf-deployment-91.png)When this step is deployed, the output will look something like this:
 
 
 ```
@@ -241,7 +241,7 @@ Note that since this is the first time this Workflow is deployed, there are no r
 
 Next is the **App Resize** step in Phase 1:
 
-![](https://files.helpdocs.io/kw8ldg1itf/other/1572390886602/image.png)When this step is deployed, the output will look something like this:
+![](./static/create-a-canary-pcf-deployment-92.png)When this step is deployed, the output will look something like this:
 
 
 ```
@@ -285,7 +285,7 @@ Note the `DESIRED-INSTANCE-COUNT: 3` and `INSTANCE-COUNT: 3` information. This i
 
 In Phase 2 we see the final step, **App Resize**:
 
-![](https://files.helpdocs.io/kw8ldg1itf/other/1572390918658/image.png)When this App Resize step is deployed, the output will look something like the following:
+![](./static/create-a-canary-pcf-deployment-93.png)When this App Resize step is deployed, the output will look something like the following:
 
 
 ```

@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 This topic describes how to use a Harness Terraform Infrastructure Provisioner to create a Harness Infrastructure Definition. When you select the **Map Dynamically Provisioned Infrastructure** option in an Infrastructure Definition, you select an Infrastructure Provisioner and then map its outputs to required settings.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/tphb27opry/1619468898144/image.png)Once you are done, you add the Infrastructure Definition to a Workflow as its deployment target. Finally, you add a Terraform Provisioner step to that Workflow to provision the infrastructure.
+![](./static/mapgcp-kube-terraform-infra-38.png)Once you are done, you add the Infrastructure Definition to a Workflow as its deployment target. Finally, you add a Terraform Provisioner step to that Workflow to provision the infrastructure.
 
 When the Workflow runs, it provisions the infrastructure using the Terraform Provisioner step and then deploys to the provisioned infrastructure using the Infrastructure Definition.
 
@@ -41,7 +41,7 @@ In this topic:
 
 This topic describes step 2 in the Harness Terraform Provisioning implementation process:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/ux2enus2ku/1586284265080/image.png)Once you have completed this topic, you can move onto steps 3 through 6 in [Provision using the Terraform Provisioner Step](/article/uxwih21ps1-terraform-provisioner-step).
+![](./static/mapgcp-kube-terraform-infra-39.png)Once you have completed this topic, you can move onto steps 3 through 6 in [Provision using the Terraform Provisioner Step](/article/uxwih21ps1-terraform-provisioner-step).
 
 ### Limitations
 
@@ -78,7 +78,7 @@ The agnostic Kubernetes deployment type requires mapping for the **Namespace** a
 
 The following example shows the Terraform script outputs used for the mandatory platform-agnostic Kubernetes deployment type fields:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/a2f2bh35el/1594407007297/image.png)For information on Kubernetes deployments, see [Kubernetes How-tos](/article/pc6qglyp5h-kubernetes-deployments-overview).
+![](./static/mapgcp-kube-terraform-infra-40.png)For information on Kubernetes deployments, see [Kubernetes How-tos](/article/pc6qglyp5h-kubernetes-deployments-overview).
 
 ### Option 2: ​Map a GCP Kubernetes Infrastructure​
 
@@ -86,7 +86,7 @@ The GCP Kubernetes deployment type requires the **Cluster Name** and **Namespace
 
 Provisioning Kubernetes is supported with the Kubernetes Cluster Cloud Provider and Google Cloud Platform Cloud Provider, but not the Azure Cloud Provider.The following example shows the Terraform script outputs used for the mandatory Kubernetes deployment type fields:
 
-![](https://files.helpdocs.io/kw8ldg1itf/other/1568843935341/image.png)For information on Kubernetes deployments, see [Kubernetes How-tos](/article/pc6qglyp5h-kubernetes-deployments-overview).
+![](./static/mapgcp-kube-terraform-infra-41.png)For information on Kubernetes deployments, see [Kubernetes How-tos](/article/pc6qglyp5h-kubernetes-deployments-overview).
 
 #### Cluster Name Format
 
@@ -100,7 +100,7 @@ See [Types of clusters](https://cloud.google.com/kubernetes-engine/docs/concepts
 
 AMI deployments are the only type that supports Terraform and CloudFormation Infrastructure Provisioners in Blue/Green deployments.The AWS AutoScaling Group deployment type requires the Region and Base Auto Scaling Group fields. The following example shows the Terraform script outputs used for all of the fields:
 
-![](https://files.helpdocs.io/kw8ldg1itf/other/1568843233697/image.png)For detailed information on AMI deployments, see [AMI Basic Deployment](/article/rd6ghl00va-ami-deployment). Here is what each of the output values are:
+![](./static/mapgcp-kube-terraform-infra-42.png)For detailed information on AMI deployments, see [AMI Basic Deployment](/article/rd6ghl00va-ami-deployment). Here is what each of the output values are:
 
 * **Region** - The target AWS region for the AMI deployment.
 * **Base Auto Scaling Group** - An existing Auto Scale Group that Harness will copy to create a new Auto Scaling Group for deployment by an AMI Workflow. The new Auto Scaling Group deployed by the AMI Workflow will have unique max and min instances and desired count.
@@ -114,17 +114,17 @@ Harness recommends you use Launch Templates instead of Launch Configurations. Wi
 
 The ECS deployment type requires the **Region** and **Cluster** fields. The following example shows the Terraform script outputs used for the mandatory ECS deployment type fields:
 
-![](https://files.helpdocs.io/kw8ldg1itf/other/1568842169542/image.png)For information on ECS deployments, see [AWS ECS Deployments Overview](/article/5z2kw34d7x-aws-ecs-deployments-overview).
+![](./static/mapgcp-kube-terraform-infra-43.png)For information on ECS deployments, see [AWS ECS Deployments Overview](/article/5z2kw34d7x-aws-ecs-deployments-overview).
 
 ### Option 5: ​Map an AWS Lambda Infrastructure​
 
 The Lambda deployment type requires the IAM Role and Region fields. The following example shows the Terraform script outputs used for the mandatory and optional Lambda deployment type fields:
 
-![](https://files.helpdocs.io/kw8ldg1itf/other/1568847962282/image.png)### Option 6: ​Map a Secure Shell (SSH) Infrastructure
+![](./static/mapgcp-kube-terraform-infra-44.png)### Option 6: ​Map a Secure Shell (SSH) Infrastructure
 
 The Secure Shell (SSH) deployment type requires the **Region** and **Tags** fields. The following example shows the Terraform script outputs used for the mandatory SSH deployment type fields:
 
-![](https://files.helpdocs.io/kw8ldg1itf/other/1568840005938/image.png)### Option 7: Map an Azure Web App
+![](./static/mapgcp-kube-terraform-infra-45.png)### Option 7: Map an Azure Web App
 
 Currently, this feature is behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature. Feature Flags can only be removed for Harness Professional and Essentials editions. Once the feature is released to a general audience, it is available for Trial and Community Editions.The Azure Web App deployment requires the Subscription and Resource Group in the Infrastructure Definition.
 
@@ -132,7 +132,7 @@ The Web App name and Deployment Slots are mapped in the Deployment Slot Workflow
 
 In the following example, `${terraform.webApp}` is used for both the Web App name and Target Slot.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/a2f2bh35el/1612213634599/image.png)See [Azure Web App Deployments Overview](/article/lluikqw7q7-azure-web-app-deployments-overview).
+![](./static/mapgcp-kube-terraform-infra-46.png)See [Azure Web App Deployments Overview](/article/lluikqw7q7-azure-web-app-deployments-overview).
 
 Here's an example Terraform script for this type of deployment:
 ```

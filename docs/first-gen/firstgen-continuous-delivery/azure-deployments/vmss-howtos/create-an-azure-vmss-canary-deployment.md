@@ -41,7 +41,7 @@ For other deployment strategies, see [Create an Azure VMSS Basic Deployment](/ar
 
 Here is a successful Canary VMSS deployment, showing both phases:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/ebq6gwgs5r/1602698622586/image.png)### Supported Platforms and Technologies
+![](./static/create-an-azure-vmss-canary-deployment-10.png)### Supported Platforms and Technologies
 
 See [Supported Platforms and Technologies](/article/220d0ojx5y-supported-platforms).
 
@@ -92,7 +92,7 @@ In particular, you specify the min, max, and desired number of instances for the
 
 These correspond to the **Instance limits** settings in **Auto created scale condition** in VMSS:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/74htogyjad/1602620781424/image.png)Later, in the **Upgrade Virtual Machine Scale Set** step, you will upgrade the number of instances by a percentage or count of the desired instances.
+![](./static/create-an-azure-vmss-canary-deployment-11.png)Later, in the **Upgrade Virtual Machine Scale Set** step, you will upgrade the number of instances by a percentage or count of the desired instances.
 
 #### Name
 
@@ -160,7 +160,7 @@ You can select a percentage or count.
 
 This is the same as the **Scale mode** settings in **Auto created scale condition** in VMSS:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/74htogyjad/1602620781424/image.png)#### Name
+![](./static/create-an-azure-vmss-canary-deployment-12.png)#### Name
 
 Enter a name for the Workflow step.
 

@@ -49,7 +49,7 @@ To set MaxSessions, do the following:
 
 For example, here is an Infrastructure Definition using an AWS Cloud Provider, and specifies the AWS infrastructure settings for the target AWS VPC and host.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/5qh02lv090/1598467538811/image.png)Later, when you create a Workflow, you will select the Service and this Infrastructure Definition.
+![](./static/define-your-traditional-ssh-target-infrastructure-08.png)Later, when you create a Workflow, you will select the Service and this Infrastructure Definition.
 
 ### Review: Software Required by Commands
 
@@ -89,7 +89,7 @@ To add an Infrastructure Definition, do the following:
 When you select a region, more settings appear, such as **VPC** and **Tags**.
 8. Provide the settings for your infrastructure. For example, here are the settings for an AWS infrastructure that identify the target host using AWS EC2 Tags.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/5qh02lv090/1598479848566/image.png)##### Using Variable Expressions in Tags
+![](./static/define-your-traditional-ssh-target-infrastructure-09.png)##### Using Variable Expressions in Tags
 
 **Tags** support [Harness variable expressions](/article/9dvxcegm90-variables) from Harness Services, Environment Overrides, Workflows, and secrets.
 

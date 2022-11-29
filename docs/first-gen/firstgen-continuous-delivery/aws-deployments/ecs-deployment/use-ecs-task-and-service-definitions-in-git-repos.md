@@ -93,7 +93,7 @@ In **Config Variable**, enter a name, such as **task\_path**, and enter a path i
 
 In **ECS Task Definitions**, in **File Folder Path to Task Definition**, enter the variable expression, such as `${serviceVariable.task_path}`:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/oy6sxbgqvc/1600802093286/image.png)You can also use Config Variables for values in your remote definitions, but this can be more complicated to manage.
+![](./static/use-ecs-task-and-service-definitions-in-git-repos-33.png)You can also use Config Variables for values in your remote definitions, but this can be more complicated to manage.
 
 ### Option 2: Override Remote Paths in Environments
 
@@ -103,7 +103,7 @@ See [Override a Service Configuration in an Environment](/article/4m2kst307m-ove
 
 Basically, you select the Service Config variable and provide a new value:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/oy6sxbgqvc/1600802458189/image.png)### Option 3: Override Remote Paths in Workflows
+![](./static/use-ecs-task-and-service-definitions-in-git-repos-34.png)### Option 3: Override Remote Paths in Workflows
 
 To override a path in a Workflow, you can use a [Workflow variable](/article/766iheu1bk-add-workflow-variables-new-template) in the Harness ECS Service's **Task Definition** settings.
 
@@ -111,7 +111,7 @@ First, you create a Workflow variable in the Workflow that will deploy the Harne
 
 Next, in the Harness ECS Service's **Task Definition** settings, you add the Workflow variable expression in the **File Folder Path to Task Definition** setting.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/oy6sxbgqvc/1600814902145/image.png)
+![](./static/use-ecs-task-and-service-definitions-in-git-repos-35.png)
 
 When you deploy the Workflow (independently or in a Pipeline), you are prompted to provide a value for the Workflow variable.
 

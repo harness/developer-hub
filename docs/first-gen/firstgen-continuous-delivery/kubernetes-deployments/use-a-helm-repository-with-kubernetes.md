@@ -58,7 +58,7 @@ In some cases, you might have different charts in different repos, and you do no
 
 When you are finished, the dialog will look like this:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/hddm3rgf1y/1591392858301/image.png)### Option: Skip Versioning for Service
+![](./static/use-a-helm-repository-with-kubernetes-153.png)### Option: Skip Versioning for Service
 
 By default, Harness versions ConfigMaps and Secrets deployed into Kubernetes clusters. In some cases, you might want to skip versioning.
 
@@ -108,27 +108,27 @@ Multiple files can be used. When you enter the file paths, separate the paths us
 
 The latter paths are given higher priority.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/p453sikbqt/1627588950131/clean-shot-2021-07-29-at-13-02-21.png)See [Override Values YAML Files](/article/p453sikbqt-override-values-yaml-files).
+![](./static/use-a-helm-repository-with-kubernetes-154.png)See [Override Values YAML Files](/article/p453sikbqt-override-values-yaml-files).
 
 ### Example 1: Google GCS and AWS S3
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/hddm3rgf1y/1586419974586/screenshot-2020-04-09-at-1-41-56-pm.png)### Example 2: Workflow Variable Expression
+![](./static/use-a-helm-repository-with-kubernetes-155.png)### Example 2: Workflow Variable Expression
 
 Here is an example using a Workflow variable expression. You can see the variable created in the Workflow's **Workflow Variables** section, referenced using an expression in **Remote Manifests**, and then a value provided for the variable in the deployment dialog that matches the chart folder's name.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/hddm3rgf1y/1586420577509/screenshot-2020-04-09-at-1-52-16-pm.png)Click **Submit**. The Helm repo is added to **Manifests**.
+![](./static/use-a-helm-repository-with-kubernetes-156.png)Click **Submit**. The Helm repo is added to **Manifests**.
 
 ### Example 3: Deploying Kubernetes Service Linked to a Helm Repository
 
 When you deploy a Workflow using a Harness Kubernetes Service set up with a Helm Repository, you will see Harness fetch the chart:
 
-[![](https://files.helpdocs.io/kw8ldg1itf/articles/zmca0zai3s/1556315475242/image.png)](https://files.helpdocs.io/kw8ldg1itf/articles/zmca0zai3s/1556315475242/image.png)Next, you will see Harness initialize using the chart:
+[![](./static/use-a-helm-repository-with-kubernetes-157.png)](./static/use-a-helm-repository-with-kubernetes-157.png)Next, you will see Harness initialize using the chart:
 
-[![](https://files.helpdocs.io/kw8ldg1itf/articles/zmca0zai3s/1556315542170/image.png)](https://files.helpdocs.io/kw8ldg1itf/articles/zmca0zai3s/1556315542170/image.png)Harness does not support the following objects when using Helm charts in Harness Kubernetes deployments: ClusterRoleBindingList, RoleBindingList, RoleList.  
+[![](./static/use-a-helm-repository-with-kubernetes-159.png)](./static/use-a-helm-repository-with-kubernetes-159.png)Harness does not support the following objects when using Helm charts in Harness Kubernetes deployments: ClusterRoleBindingList, RoleBindingList, RoleList.  
 If you use these objects in your chart, Harness will consider the chart invalid and fail the deployment.  
 See the Kubernetes API docs for information on these deployments.The Helm version info is displayed in the Service dashboard:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/hddm3rgf1y/1592954791545/image.png)### Notes
+![](./static/use-a-helm-repository-with-kubernetes-161.png)### Notes
 
 Helm Dependencies are supported with charts in Helm Repositories, not with Helm charts in Git repos.
 

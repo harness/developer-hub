@@ -40,7 +40,7 @@ In this topic:
 
 Here's the output after a successful Blue/Green TAS Deployment.
 
-![](https://files.helpdocs.io/kw8ldg1itf/other/1572471572840/image.png)### Step 1: Specify the TAS Service Routes
+![](./static/create-a-blue-green-pcf-deployment-52.png)### Step 1: Specify the TAS Service Routes
 
 In the manifest.yml in your Harness TAS Service, you can specify the route(s) to use for the Blue/Green deployment. For example:
 
@@ -54,7 +54,7 @@ Each route for the app is created if it does not already exist.
 
 As you will see when you set up the Blue/Green Workflow, you specify a temporary route in the App Setup command's **Temporary Routes** setting:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/9ao4gsr93j/1580332058626/image.png)### Step 2: Set Up a TAS Blue/Green Workflow
+![](./static/create-a-blue-green-pcf-deployment-53.png)### Step 2: Set Up a TAS Blue/Green Workflow
 
 To explain TAS Blue/Green Workflow commands and settings, we will create a Blue/Green Workflow that uses a temporary route and, if it is successful, deploys 100% of instances using the primary route.
 
@@ -71,11 +71,11 @@ To implement this Blue/Green Workflow, do the following:
 
 The new Blue/Green Workflow is displayed, along with the preconfigured steps:
 
-![](https://files.helpdocs.io/kw8ldg1itf/other/1572473530244/image.png)### Step 3: App Setup
+![](./static/create-a-blue-green-pcf-deployment-54.png)### Step 3: App Setup
 
 Click **App Setup** to see the default, preconfigured command:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/9ao4gsr93j/1580332136704/image.png)None of the settings in this dialog are mandatory, but for Blue/Green Workflows, the **Match running instances**, **Additional Routes**, and **Temporary Routes** settings are important.
+![](./static/create-a-blue-green-pcf-deployment-55.png)None of the settings in this dialog are mandatory, but for Blue/Green Workflows, the **Match running instances**, **Additional Routes**, and **Temporary Routes** settings are important.
 
 If you select **Match running instances**, Harness will ignore the number of instances set in the Service's manifest.yml `instances` property and use the number of currently running instances as the desired instance count during deployment.
 
@@ -116,7 +116,7 @@ Currently, this feature is behind the Feature Flag `CF_APP_NON_VERSIONING_INACTI
 
 Click **App Resize** to see the default settings.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/9ao4gsr93j/1580332157975/image.png)For Blue/Green deployments, the **App Resize** step is always 100% because it does not change the number of instances as it did in the Canary deployment. In Blue/Green, you are simply deploying the new app to the number of instances set in the **App Setup** step and keeping the old app at the same number of instances.
+![](./static/create-a-blue-green-pcf-deployment-56.png)For Blue/Green deployments, the **App Resize** step is always 100% because it does not change the number of instances as it did in the Canary deployment. In Blue/Green, you are simply deploying the new app to the number of instances set in the **App Setup** step and keeping the old app at the same number of instances.
 
 #### App Resize V2 or Default App Resize
 
@@ -137,7 +137,7 @@ Later, when you are developing Blue/Green Workflows, add verification steps to v
 
 The final step in the TAS Blue/Green Workflow is the **Swap Routes** command.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/9ao4gsr93j/1580332179128/image.png)This command will swap the route(s) used by the deployed app from the temporary route(s) to the route(s) specified in the manifest.yml in your Service.
+![](./static/create-a-blue-green-pcf-deployment-57.png)This command will swap the route(s) used by the deployed app from the temporary route(s) to the route(s) specified in the manifest.yml in your Service.
 
 **Previous app renamed.** During the **Swap Route** step, the previous app version is renamed according to the option you selected in **Version Management** in the **App Setup** step. The previous app version is not renamed until the **Swap Route** step in order to avoid errors with any monitoring tools you have pointed at the app version receiving production traffic.For detail on **Swap Routes** is a Workflow's **Rollback Steps**, see [Blue/Green Rollback](#blue_green_rollback).### Step 7: Deploy a TAS Blue/Green Workflow
 
@@ -152,7 +152,7 @@ The TAS Blue/Green Workflow deploys.
 
 Here you can see the **App Step** command deployed:
 
-![](https://files.helpdocs.io/kw8ldg1itf/other/1572475855314/image.png)When this step is deployed, the output will look something like this:
+![](./static/create-a-blue-green-pcf-deployment-58.png)When this step is deployed, the output will look something like this:
 
 
 ```
@@ -207,11 +207,11 @@ ROUTES: [examplefordocpcfbluegreenstaging3-insightful-cat.cfapps.io]
 ```
 The route specified in the Service manifest.yml is `docs.cfapps.io`:
 
-![](https://files.helpdocs.io/kw8ldg1itf/other/1572476202694/image.png)Note that in the **App Setup** step, a temporary route has been used: `examplefordocpcfbluegreenstaging3-insightful-cat.cfapps.io`.
+![](./static/create-a-blue-green-pcf-deployment-59.png)Note that in the **App Setup** step, a temporary route has been used: `examplefordocpcfbluegreenstaging3-insightful-cat.cfapps.io`.
 
 Here you can see the **App Resize** command deployed:
 
-![](https://files.helpdocs.io/kw8ldg1itf/other/1572476261030/image.png)When this step is deployed, the output will look something like this:
+![](./static/create-a-blue-green-pcf-deployment-60.png)When this step is deployed, the output will look something like this:
 
 
 ```
@@ -272,7 +272,7 @@ Note that 100% of the instances specified in the Service manifest.yml have been 
 
 Here you can see the **Swap Routes** command deployed:
 
-![](https://files.helpdocs.io/kw8ldg1itf/other/1572476360734/image.png)When this step is deployed, the output will look something like this:
+![](./static/create-a-blue-green-pcf-deployment-61.png)When this step is deployed, the output will look something like this:
 
 
 ```

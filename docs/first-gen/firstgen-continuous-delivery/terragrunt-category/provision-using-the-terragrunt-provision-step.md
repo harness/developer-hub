@@ -32,7 +32,7 @@ In addition, the following related features are documented in other topics:
 
 Here is a visual summary of how you use your and Terragrunt and Terraform files with Harness to provision target infra and then deploy to it:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/a6onutvbem/1618962617102/image.png)For step 1, see [Add Terragrunt Configuration Files](/article/mkjxbkglih-add-terragrunt-configuration-files). For step 2, see [Map Dynamically Provisioned Infrastructure using Terragrunt](/article/tphb27opry-map-terragrunt-infrastructure).
+![](./static/provision-using-the-terragrunt-provision-step-08.png)For step 1, see [Add Terragrunt Configuration Files](/article/mkjxbkglih-add-terragrunt-configuration-files). For step 2, see [Map Dynamically Provisioned Infrastructure using Terragrunt](/article/tphb27opry-map-terragrunt-infrastructure).
 
 Here's a 6 minute video walkthrough of Harness-Terragrunt integration:
 
@@ -192,7 +192,7 @@ provider "aws" {
 ```
 In **Inline Values**, you can enter values for those inputs or select Harness secrets for the values:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/jbzxpljhlo/1619215912362/image.png)See [Use Encrypted Text Secrets](/article/ygyvp998mu-use-encrypted-text-secrets).
+![](./static/provision-using-the-terragrunt-provision-step-09.png)See [Use Encrypted Text Secrets](/article/ygyvp998mu-use-encrypted-text-secrets).
 
 ### Option: Backend Configuration (Remote state)
 
@@ -200,7 +200,7 @@ In Backend Configuration (Remote state), enter values for each backend config (r
 
 For example, here's a config.tf with a backend the values for it in Harness:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/jbzxpljhlo/1619216443618/image.png)Depending on which platform you store your remote state data, Terragrunt and Terraform allow you to pass many different credentials and configuration settings, such as access and secret keys. For example, see the settings available for [AWS S3](https://www.terraform.io/docs/backends/types/s3.html#configuration) from Terraform and review [Keep your remote state configuration DRY](https://terragrunt.gruntwork.io/docs/features/keep-your-remote-state-configuration-dry/) from Terragrunt.
+![](./static/provision-using-the-terragrunt-provision-step-10.png)Depending on which platform you store your remote state data, Terragrunt and Terraform allow you to pass many different credentials and configuration settings, such as access and secret keys. For example, see the settings available for [AWS S3](https://www.terraform.io/docs/backends/types/s3.html#configuration) from Terraform and review [Keep your remote state configuration DRY](https://terragrunt.gruntwork.io/docs/features/keep-your-remote-state-configuration-dry/) from Terragrunt.
 
 ### Option: Resource Targeting
 
@@ -208,9 +208,9 @@ In **Additional Settings**, you can use the **Target** setting to target one or 
 
 For example, in the following image you can see the Terraform script has one resource and two modules and the **Targets** setting displays them as potential targets.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/uxwih21ps1/1586301265517/image.png)If you have multiple modules in your script and you do not select one in **Targets**, all modules are used.You can also use Workflow variables as your targets. For example, you can create a Workflow variable named **module** and then enter the variable `${workflow.variables.module}` in the **Targets** field. When you deploy the Workflow, you are prompted to provide a value for the variable:
+![](./static/provision-using-the-terragrunt-provision-step-11.png)If you have multiple modules in your script and you do not select one in **Targets**, all modules are used.You can also use Workflow variables as your targets. For example, you can create a Workflow variable named **module** and then enter the variable `${workflow.variables.module}` in the **Targets** field. When you deploy the Workflow, you are prompted to provide a value for the variable:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/9pvvgcdbjh/1559944106336/image.png)See [Set Workflow Variables](/article/766iheu1bk-add-workflow-variables-new-template).
+![](./static/provision-using-the-terragrunt-provision-step-12.png)See [Set Workflow Variables](/article/766iheu1bk-add-workflow-variables-new-template).
 
 ### Option: Workspaces
 
@@ -246,11 +246,11 @@ Harness will pass the workspace name you provide to the `terraform.workspace` va
 
 In the **Workspace** setting, you can simply select the name of the workspace to use.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/uxwih21ps1/1586301805802/image.png)So can also use a Workflow variable to enter the name in **Workspace**.
+![](./static/provision-using-the-terragrunt-provision-step-13.png)So can also use a Workflow variable to enter the name in **Workspace**.
 
 Later, when the Workflow is deployed, you can specify the name for the Workflow variable:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/uxwih21ps1/1586301948509/image.png)This allows you to specify a different workspace name each time the Workflow is run.
+![](./static/provision-using-the-terragrunt-provision-step-14.png)This allows you to specify a different workspace name each time the Workflow is run.
 
 You can even set a Harness Trigger where you can set the workspace name used by the Workflow:
 
@@ -298,7 +298,7 @@ In **Infrastructure Definition**, select the target Infrastructure Definition wh
 
 Here is an example:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/jbzxpljhlo/1619218606103/image.png)Click **Submit**. Use the same Infrastructure Definition for the remaining phases in your Canary Workflow.
+![](./static/provision-using-the-terragrunt-provision-step-15.png)Click **Submit**. Use the same Infrastructure Definition for the remaining phases in your Canary Workflow.
 
 Once you are done, your Workflow is ready to deploy. Let's look at an example below.
 
@@ -306,7 +306,7 @@ Once you are done, your Workflow is ready to deploy. Let's look at an example be
 
 This section shows the deployment steps for a Workflow using the Terragrunt Provisioner step and deploying to a Kubernetes cluster.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/jbzxpljhlo/1619218725999/image.png)In the **Pre-Deployment** section, two **Terragrunt** **Provision** steps are executed. When you click each step you can see the Terragrunt commands executed in **Details**.
+![](./static/provision-using-the-terragrunt-provision-step-16.png)In the **Pre-Deployment** section, two **Terragrunt** **Provision** steps are executed. When you click each step you can see the Terragrunt commands executed in **Details**.
 
 The first Terragrunt Provision step create a plan using the Terragrunt config files and the source Terraform module. The plan is encrypted and stored in a Secrets Manager.
 

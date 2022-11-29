@@ -41,7 +41,7 @@ Harness Manager's Serverless Functions Dashboard offers views of your Lambda dep
 
 Here is an individual Lambda deployment and how it is displayed on the Serverless Functions dashboard:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/491a6etr7a/1578426600779/image.png)See [Serverless Functions Dashboard](/article/vlj9xbj315-serverless-functions-dashboard).
+![](./static/view-lamba-deployments-in-the-serverless-functions-dashboard-28.png)See [Serverless Functions Dashboard](/article/vlj9xbj315-serverless-functions-dashboard).
 
 ### Next Steps
 

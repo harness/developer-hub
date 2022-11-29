@@ -78,7 +78,7 @@ If you run `kubectl api-resources` you should see a list of resources, and `kube
 
 1. In your Harness Service, in **Manifests**, click **Link Remote Manifests**.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/zrz7nstjha/1582584606916/image.png)1. In **Remote Manifests**, in **Manifest Format**, click **OpenShift Template**.
+![](./static/using-open-shift-with-harness-kubernetes-00.png)1. In **Remote Manifests**, in **Manifest Format**, click **OpenShift Template**.
 2. Enter the following settings and click **Submit**.
 
 
@@ -98,7 +98,7 @@ You can define Service variables in **OpenShift Param File**, after adding the 
 
 1. In the Harness Service, in the **Configuration** section, click **Add Param**.
 2. Select **Inline** or **Remote** Store Type.
-	1. If you select **Inline,** then enter the value inline. If you select **Remote**, perform the following steps.![](https://files.helpdocs.io/kw8ldg1itf/articles/p756zrn9vc/1588835880317/screenshot-2020-05-07-at-12-44-10-pm.png)
+	1. If you select **Inline,** then enter the value inline. If you select **Remote**, perform the following steps.![](./static/using-open-shift-with-harness-kubernetes-01.png)
 3. Select **Source Repository** from the drop-down menu.
 4. Select **Latest from Branch** or **Specific Commit ID**. Do one of the following:
 * **Branch:** Enter the branch name, such as **master**.

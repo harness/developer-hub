@@ -28,14 +28,14 @@ To create the Harness Application, do the following:
 4. Click **SUBMIT**. The new Application is added.
 5. Click the Application name to open the Application. The Application entities are displayed.
 
-![](https://files.helpdocs.io/kw8ldg1itf/other/1551914214481/image.png)### Harness Service Setup
+![](./static/2-service-and-artifact-source-09.png)### Harness Service Setup
 
 There are different types of Harness Services for different deployment platforms. The Kubernetes type includes Kubernetes-specific settings.
 
 To add the Kubernetes Service, do the following:
 
 1. In your new Application, click **Services**. The **Services** page appears.
-2. In the **Services** page, click **Add Service**. The **Service** dialog appears.![](https://files.helpdocs.io/kw8ldg1itf/articles/v13edrsui8/1551993890233/image.png)
+2. In the **Services** page, click **Add Service**. The **Service** dialog appears.![](./static/2-service-and-artifact-source-10.png)
 3. In **Name**, enter a name for your Service, such as **Todolist-ACR**.
 4. In **Description**, enter a description for your service.
 5. In **Deployment Type**, select **Kubernetes**.
@@ -52,22 +52,22 @@ For this Azure deployment, the Artifact Source uses the Azure Cloud Provider you
 
 To add an Artifact Source to this Service, do the following:
 
-1. In the Service, click **Add Artifact Source**, and select **Azure Container Registry**. The **Artifact Source** dialog appears.![](https://files.helpdocs.io/kw8ldg1itf/articles/v13edrsui8/1551994834751/image.png)
+1. In the Service, click **Add Artifact Source**, and select **Azure Container Registry**. The **Artifact Source** dialog appears.![](./static/2-service-and-artifact-source-11.png)
 2. Configure the following fields and click **SUBMIT**.
 * **Cloud Provider** - Select the Azure Cloud Provider we set up earlier.
-* **Subscription** - Select the Subscription set up in your ACR container registry. To locate the Subscription in ACR, click **Overview**, and see **Subscription**.![](https://files.helpdocs.io/kw8ldg1itf/articles/v13edrsui8/1551994998788/image.png)
+* **Subscription** - Select the Subscription set up in your ACR container registry. To locate the Subscription in ACR, click **Overview**, and see **Subscription**.![](./static/2-service-and-artifact-source-12.png)
 * **Azure Registry Name** - Select the registry you want to use.
 * **Repository Name** - Select the repository containing the Docker image you want to use.
 
 When you are finished, the Artifact Source dialog will look something like this:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/v13edrsui8/1551995118906/image.png)You can add multiple Artifact Sources to a Service and view the build history for each one by clicking **Artifact History**.
+![](./static/2-service-and-artifact-source-13.png)You can add multiple Artifact Sources to a Service and view the build history for each one by clicking **Artifact History**.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/v13edrsui8/1551995153899/image.png)#### Add Manifests
+![](./static/2-service-and-artifact-source-14.png)#### Add Manifests
 
 The **Manifests** section of Service contains the configuration files that describe the desired state of your application in terms of Kubernetes object descriptions.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/v13edrsui8/1551995284144/image.png)##### What Can I Add in Manifests?
+![](./static/2-service-and-artifact-source-15.png)##### What Can I Add in Manifests?
 
 You can add any Kubernetes configuration files, formatted in YAML, such as object descriptions, in one or more files.
 

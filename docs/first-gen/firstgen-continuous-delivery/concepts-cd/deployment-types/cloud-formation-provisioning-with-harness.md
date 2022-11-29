@@ -30,7 +30,7 @@ You use a CloudFormation Infrastructure Provisioner in the following ways:
 1. **CloudFormation Infrastructure Provisioner** — Add a Harness Infrastructure Provisioner as a blueprint for the infrastructure where you will deploy your application.  
 You add the CloudFormation template by pasting it into the Infrastructure Provisioner, or by connecting to an AWS S3 bucket or Git repo where the CloudFormation templates are kept.  
 You simply need to map some of the output variables in the template to the required fields in Harness. When Harness deploys your microservice, it will build your infrastructure according to this blueprint.
-2. **Infrastructure Definition** — In a Harness Infrastructure Definition, the outputs are mapped as part of the Infrastructure Definition:![](https://files.helpdocs.io/kw8ldg1itf/other/1569042536517/image.png)The provisioned environment is now a deployment target environment for a Workflow to use. You can use this Infrastructure Definition in any Workflow where you want to deploy to that provisioned deployment infrastructure.
+2. **Infrastructure Definition** — In a Harness Infrastructure Definition, the outputs are mapped as part of the Infrastructure Definition:![](./static/cloud-formation-provisioning-with-harness-01.png)The provisioned environment is now a deployment target environment for a Workflow to use. You can use this Infrastructure Definition in any Workflow where you want to deploy to that provisioned deployment infrastructure.
 3. **Workflow Step** — Add a CloudFormation Provisioner step to a Workflow to build the infrastructure according to your CloudFormation Provisioner and its template.
 
 ### Permissions

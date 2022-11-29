@@ -60,7 +60,7 @@ The Basic deployment Workflow is the most common Workflow type for traditional, 
 
 
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/lgg12f0yry/1598481325506/image.png)
+![](./static/create-a-basic-workflow-for-traditional-ssh-deployments-10.png)
 
 
 ### Step 1: Create the Workflow
@@ -93,7 +93,7 @@ The following image shows an **Infrastructure Definition** specifying an AWS R
 
 
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/lgg12f0yry/1598481648107/image.png)
+![](./static/create-a-basic-workflow-for-traditional-ssh-deployments-11.png)
 
 For details, see
  [Select Nodes Workflow Step](/article/9h1cqaxyp9-select-nodes-workflow-step).
@@ -124,7 +124,7 @@ The Basic Workflow is the most common deployment of Services deploying applicati
 
 
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/lgg12f0yry/1598481434247/image.png)
+![](./static/create-a-basic-workflow-for-traditional-ssh-deployments-12.png)
 
 You can expand logs for each script in the **Install** step to see the log of its execution by the Harness Delegate. For example, here is the **Copy Artifact** script copying the application package **todolist.war** to
  the runtime location set up in Application Defaults (`$HOME/${app.name}/${service.name}/${env.name}/runtime`):
@@ -148,7 +148,7 @@ You can SSH into the target host and see the application package:
 
 
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/lgg12f0yry/1598481470307/image.png)
+![](./static/create-a-basic-workflow-for-traditional-ssh-deployments-13.png)
 
 
 ### See Also

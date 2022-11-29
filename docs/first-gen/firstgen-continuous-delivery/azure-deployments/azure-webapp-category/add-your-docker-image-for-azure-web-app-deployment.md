@@ -76,11 +76,11 @@ Container Settings is deprecated and will be removed in March of 2021. The Deplo
 
 Here's the Harness [Docker Registry Artifact Server](/article/tdj2ghkqb0-add-docker-registry-artifact-servers):
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/e9k7ngaqiu/1611872765502/image.png)The above example uses a public repo, and it requires no username or password.
+![](./static/add-your-docker-image-for-azure-web-app-deployment-12.png)The above example uses a public repo, and it requires no username or password.
 
 In the Harness Service, the Artifact Source uses this Artifact Server and points to the Docker Image Name:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/e9k7ngaqiu/1611872861939/image.png)The above example uses a [publicly available Docker image from Harness](https://hub.docker.com/r/harness/todolist-sample/tags?page=1&ordering=last_updated). You might want to use that the first time you set up an Azure Web App deployment.When are done, click **Submit**.
+![](./static/add-your-docker-image-for-azure-web-app-deployment-13.png)The above example uses a [publicly available Docker image from Harness](https://hub.docker.com/r/harness/todolist-sample/tags?page=1&ordering=last_updated). You might want to use that the first time you set up an Azure Web App deployment.When are done, click **Submit**.
 
 Next, click **Artifact History** to see the artifacts and builds Harness pulls from the repo.
 
@@ -104,13 +104,13 @@ az webapp config appsettings set --resource-group <group-name> --name <app-name>
 ```
 Or via the portal:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/8s766bhiec/1611949944061/image.png)You can also set **Application settings** and **Connection strings** in the Harness Service.
+![](./static/add-your-docker-image-for-azure-web-app-deployment-14.png)You can also set **Application settings** and **Connection strings** in the Harness Service.
 
 Here's an example of setting **Application settings** in the Harness Service:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/8s766bhiec/1611950312799/image.png)This is the same as setting them in the Azure portal **Advanced edit**.
+![](./static/add-your-docker-image-for-azure-web-app-deployment-15.png)This is the same as setting them in the Azure portal **Advanced edit**.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/8s766bhiec/1611950462551/image.png)#### Important Notes
+![](./static/add-your-docker-image-for-azure-web-app-deployment-16.png)#### Important Notes
 
 * If you add App Service Configuration settings in the Harness Service, you must include a **name** (`"name":`), and the name must be unique. This is the same requirement in Azure App Services.
 * Do not set Docker settings in the Harness Service **App Service Configuration**. Harness will override these using the Docker settings in the Harness Artifact Server and Artifact Source.

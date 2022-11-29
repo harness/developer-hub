@@ -28,14 +28,14 @@ This topic assumes you have read the following:
 
 The following graphic shows a common use of a Terraform dry run in deployments.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/xthfj92dys/1586471873769/image.png)1. The dry run is used to verify the provisioning.
+![](./static/terraform-dry-run-30.png)1. The dry run is used to verify the provisioning.
 2. An Approval step to ensure that the Terraform plan is working correctly.
 3. The plan is run and the infrastructure is provisioned.
 4. The app is deployed to the provisioned infrastructure.
 
 In a Harness Workflow it looks something like this:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/xthfj92dys/1586472654242/image.png)### Limitations
+![](./static/terraform-dry-run-31.png)### Limitations
 
 The Terraform Plan is stored in the default Harness Secrets Manager as encrypted text. This is because plans often contain variables that store secrets.
 
@@ -49,7 +49,7 @@ This step assumes you are familiar with adding the [Terraform Provision](/articl
 
 To perform a dry run of your Terraform Provision and Terraform Apply steps, you simply select the **Set as Terraform Plan** option.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/xthfj92dys/1586469919868/image.png)That's it. Now this Terraform Provision or Terraform Apply step will run like a `terraform plan` command.
+![](./static/terraform-dry-run-32.png)That's it. Now this Terraform Provision or Terraform Apply step will run like a `terraform plan` command.
 
 The dry run will refresh the state file and generate a plan but it is not applied. You can then set up an Approval step to follow the dry run, followed by a Terraform Provision or Terraform Apply step to apply the plan.
 
@@ -91,14 +91,14 @@ When you select this option, the Terraform Provision or Terraform Apply step inh
 2. Select a **Terraform Provision** or **Terraform Apply** step.
 3. In **Name**, enter a name for the step to indicate that it will perform the provisioning. For example, **Apply Provisioning**.
 4. In **Provisioner**, select the Harness Terraform Infrastructure Provisioner you want to run. This is the same Terraform Infrastructure Provisioner you selected in the previous Terraform Provision or Terraform Apply step.
-5. Select the **Inherit following configurations from Terraform Plan** option.![](https://files.helpdocs.io/kw8ldg1itf/articles/xthfj92dys/1586472892374/image.png)
+5. Select the **Inherit following configurations from Terraform Plan** option.![](./static/terraform-dry-run-33.png)
 6. Click **Submit**.
 
 You do not need to enter any more settings. The Terraform Provision or Terraform Apply step inherits the settings of the Terraform Provision or Terraform Apply step that preceded it.
 
 Your Workflow now looks something like this:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/xthfj92dys/1586472654242/image.png)### Step 4: Deploy
+![](./static/terraform-dry-run-34.png)### Step 4: Deploy
 
 Deploy your Workflow and see the `terraform plan` executed in the first Terraform Provision or Terraform Apply step. Next, approve the Approval step. Finally, see the `terraform apply` executed as part of the final Terraform Provision or Terraform Apply step.
 

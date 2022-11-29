@@ -56,7 +56,7 @@ In **Application Stack**, select the app stack you want to use to as a runtime 
 
 When the Service is created, it contains the scripts need to install the application stack.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/umpe4zfnac/1598467125814/image.png)If you are deploying to an existing instance that already has an app stack installed, you can leave **Application Stack** empty. For more information, see  [Add Application Stacks](/article/g26sp2ay68-catalog).
+![](./static/add-artifacts-for-ssh-deployments-00.png)If you are deploying to an existing instance that already has an app stack installed, you can leave **Application Stack** empty. For more information, see  [Add Application Stacks](/article/g26sp2ay68-catalog).
 
 ### Review: Secure Shell Service Sections
 
@@ -68,7 +68,7 @@ The Service page has the following important sections:
 * **Add Commands** - You can add new commands from an Application or Shared Template Library, or simply add a blank command and add Harness scripts to it.
 * **Configuration** - You can add variables and files to use in your Service scripts. These can be encrypted by Harness, allowing you to use secrets. The variables and files can be overwritten in Environments and Workflows.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/umpe4zfnac/1598397506478/image.png)### Review: Software Required by Commands
+![](./static/add-artifacts-for-ssh-deployments-01.png)### Review: Software Required by Commands
 
 The commands in the Service will be executed on your target hosts, and so any of the software used in the commands must be installed on the target hosts.
 
