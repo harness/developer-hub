@@ -10,9 +10,6 @@ helpdocs_is_published: true
 
 Harness Code Repository Connectors connect your Harness account with your Git platform. Connectors are used to pull important files, such as Helm charts, Kubernetes manifests, and Terraform scripts.
 
-### Before You Begin
-
-* [Learn Harness' Key Concepts](/article/hv2758ro4e-learn-harness-key-concepts)
 
 ### Step 1: Add a GitHub Code Repo Connector
 
