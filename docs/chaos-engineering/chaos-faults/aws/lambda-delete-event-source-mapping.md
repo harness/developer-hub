@@ -5,7 +5,7 @@ title: Lambda Delete Event Source Mapping
 
 ## Introduction
 
-- It causes the removal of event source mapping from lambda function for a certain chaos duration.
+- It causes the removal of event source mapping from an AWS Lambda function for a certain chaos duration.
 - It checks the performance of the application/service running without the event-source-mapping which can cause missing entries on DB for example.
 
 :::tip Fault execution flow chart
@@ -17,7 +17,7 @@ title: Lambda Delete Event Source Mapping
 <details>
 <summary>View the uses of the fault</summary>
 <div>
- Deletion of event source mapping from a lambda function can be very critical, it can lead to scenarios like failing to update DB when an event trigger this can break the service and impacts their delivery. Such scenarios can still occur despite whatever availability aids AWS provides or we determine.
+Deletion of event source mapping from a lambda function can be very critical, which can lead to scenarios like failing to update DB upon an event trigger, which can break the service and impacts their delivery. Such scenarios can still occur despite whatever availability aids AWS provides or we determine.
 
 It will help us know if we have proper error handling or auto recovery configured for such scenarios. So this category of chaos fault helps you build the immunity of the application undergoing such scenarios.
 </div>
@@ -55,7 +55,7 @@ stringData:
 
 :::
 
-## Experiment Tunables
+## Fault Tunables
 
 <details>
     <summary>Check the Fault Tunables</summary>
