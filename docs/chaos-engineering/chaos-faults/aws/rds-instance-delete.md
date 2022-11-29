@@ -149,7 +149,7 @@ spec:
 ```
 ### RDS_INSTANCE_IDENTIFIER 
  
-It defines the RDS instnace name. We can provide the RDS_INSTANCE_IDENTIFIER using `RDS_INSTANCE_IDENTIFIER` ENVs.
+It defines the RDS instance name. We can provide the RDS_INSTANCE_IDENTIFIER using `RDS_INSTANCE_IDENTIFIER` ENVs.
 
 Use the following example to tune this:
 
