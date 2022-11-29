@@ -48,7 +48,7 @@ stringData:
       "managementEndpointUrl": "XXXXXXXXX"
     }
 ```
-- If you change the secret key name (from `azure.auth`) please also update the `AZURE_AUTH_LOCATION` ENV value on `experiment.yaml`with the same name.
+- If you change the secret key name (from `azure.auth`) please also update the `AZURE_AUTH_LOCATION` ENV value in the ChaosExperiment CR with the same name.
 :::
 
 ## Default Validations
@@ -56,7 +56,7 @@ stringData:
 - Azure target web app should be in running state.
 :::
 
-## Fault tunables
+## Fault Tunables
 <details>
     <summary>Check the Fault tunables</summary>
     <h2>Mandatory Fields</h2>

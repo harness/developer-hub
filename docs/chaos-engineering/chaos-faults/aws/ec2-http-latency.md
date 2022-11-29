@@ -38,7 +38,7 @@ stringData:
     aws_secret_access_key = XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ```
 
-- If you change the secret, update the `experiment.yml` environment values to extract the relevant data from the secret. Also account for the path at which this secret is mounted as a file in the manifest environment variable `AWS_SHARED_CREDENTIALS_FILE`.
+- If you change the secret key name (from `cloud_config.yml`) please also update the `AWS_SHARED_CREDENTIALS_FILE` ENV value in the ChaosExperiment CR with the same name.
 
 ### NOTE
 
@@ -53,7 +53,7 @@ You can pass the VM credentials as secrets or as a chaosengine environment varia
 
 :::
 
-## Fault tunables
+## Fault Tunables
 
 <details>
     <summary>Check the Fault Tunables</summary>

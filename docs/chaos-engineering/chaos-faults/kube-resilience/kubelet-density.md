@@ -37,7 +37,7 @@ Coming soon.
 
 :::
 
-## Fault tunables
+## Fault Tunables
 
 <details>
     <summary>Check the Fault Tunables</summary>

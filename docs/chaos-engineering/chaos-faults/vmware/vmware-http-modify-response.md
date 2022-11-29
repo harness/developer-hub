@@ -48,7 +48,7 @@ You can pass the VM credentials as secrets or as an chaosengine ENV variable.
 
 :::
 
-## Fault tunables
+## Fault Tunables
 
 <details>
     <summary>Check the Fault Tunables</summary>

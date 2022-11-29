@@ -68,7 +68,7 @@ spec:
           VALUE: '60'
 ```
 
-### Ramp Time
+### Chaos Interval
 
 The multiple iterations of chaos can be tuned via setting `CHAOS_INTERVAL` ENV. Which defines the delay between each iteration of chaos.
 
@@ -167,37 +167,6 @@ spec:
         # supports: serial, parallel. default: parallel
         - name: SEQUENCE
           value: 'parallel'
-```
-
-### Name of chaos library
-
-It defines the name of the chaos library used for the chaos injection. You can tune it using the `LIB` environment variable.
-
-Use the following example to tune this:
-
-[embedmd]:# (./static/manifest/common/lib.yaml yaml)
-```yaml
-# lib for the chaos injection
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: pod-delete
-    spec:
-      components:
-        env:
-        # defines the name of the chaoslib used for the fault
-        - name: LIB
-          value: 'litmus'
 ```
 
 ### Instance ID

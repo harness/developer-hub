@@ -53,7 +53,7 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
 
 :::
 
-## Fault tunables
+## Fault Tunables
 
 <details>
     <summary>Check the Fault Tunables</summary>

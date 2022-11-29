@@ -57,7 +57,7 @@ stringData:
     }
 ```
 
-- If you change the secret key name (from `azure.auth`) please also update the `AZURE_AUTH_LOCATION` ENV value on `experiment.yaml` with the same name.
+- If you change the secret key name (from `azure.auth`) please also update the `AZURE_AUTH_LOCATION` ENV value in the ChaosExperiment CR with the same name.
 
 :::
 
@@ -69,7 +69,7 @@ stringData:
 
 :::
 
-## Fault tunables
+## Fault Tunables
 
 <details>
     <summary>Check the fault tunables</summary>

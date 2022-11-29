@@ -30,7 +30,7 @@ Coming soon.
 The target nodes should be in ready state before and after chaos injection.
 :::
 
-## Fault tunables
+## Fault Tunables
 <details>
     <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>

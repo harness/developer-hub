@@ -59,7 +59,7 @@ If the target EC2 instance is a part of a managed node group, drain the target n
 
 :::
 
-## Fault tunables
+## Fault Tunables
 
 <details>
     <summary>Check the Fault Tunables</summary>

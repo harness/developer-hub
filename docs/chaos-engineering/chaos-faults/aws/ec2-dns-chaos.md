@@ -54,7 +54,7 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
 - EC2 instance should be in healthy state.
 :::
 
-## Fault tunables
+## Fault Tunables
 <details>
     <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>

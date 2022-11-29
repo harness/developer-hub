@@ -31,7 +31,7 @@ This fault launches a stress process within the target container - which can cau
 The application pods should be in running state before and after chaos injection.
 :::
 
-## Fault tunables
+## Fault Tunables
 <details>
     <summary>Check the Fault Tunables</summary>
     <table>

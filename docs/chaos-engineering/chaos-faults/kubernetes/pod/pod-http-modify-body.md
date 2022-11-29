@@ -30,7 +30,7 @@ Coming soon.
 The application pods should be in running state before and after chaos injection.
 :::
 
-## Fault tunables
+## Fault Tunables
 <details>
     <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>

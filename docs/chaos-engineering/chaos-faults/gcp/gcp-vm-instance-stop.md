@@ -50,7 +50,7 @@ stringData:
 - The VM instances should be in a healthy state.
 :::
 
-## Fault tunables
+## Fault Tunables
 <details>
     <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>

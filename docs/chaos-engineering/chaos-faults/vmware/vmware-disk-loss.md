@@ -38,7 +38,7 @@ stringData:
 - The target disks should be attached to the VM.
 :::
 
-## Fault tunables
+## Fault Tunables
 <details>
     <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>

@@ -15,7 +15,7 @@ Kubernetes faults disrupt the resources running on a Kubernetes cluster. They ca
 
 <table>
   <tr>
-    <th>Experiment Name</th>
+    <th>Fault Name</th>
     <th>Description</th>
     <th>User Guide</th>
   </tr>
@@ -125,7 +125,7 @@ Kubernetes faults disrupt the resources running on a Kubernetes cluster. They ca
 
 <table>
   <tr>
-    <th>Experiment Name</th>
+    <th>Fault Name</th>
     <th>Description</th>
     <th>User Guide</th>
   </tr>
@@ -181,7 +181,7 @@ Following Platform Chaos faults are available:
 
 <table>
   <tr>
-    <th>Experiment Name</th>
+    <th>Fault Name</th>
     <th>Description</th>
     <th>User Guide</th>
   </tr>
@@ -301,7 +301,7 @@ Following Platform Chaos faults are available:
 
 <table>
   <tr>
-    <th>Experiment Name</th>
+    <th>Fault Name</th>
     <th>Description</th>
     <th>User Guide</th>
   </tr>
@@ -331,7 +331,7 @@ Following Platform Chaos faults are available:
 
 <table>
   <tr>
-    <th>Experiment Name</th>
+    <th>Fault Name</th>
     <th>Description</th>
     <th>User Guide</th>
   </tr>
@@ -376,7 +376,7 @@ Following Platform Chaos faults are available:
 
 <table>
   <tr>
-    <th>Experiment Name</th>
+    <th>Fault Name</th>
     <th>Description</th>
     <th>User Guide</th>
   </tr>
@@ -456,7 +456,7 @@ Following Platform Chaos faults are available:
 
 <table>
   <tr>
-    <th>Experiment Name</th>
+    <th>Fault Name</th>
     <th>Description</th>
     <th>User Guide</th>
   </tr>

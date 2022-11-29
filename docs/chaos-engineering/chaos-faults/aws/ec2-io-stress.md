@@ -62,7 +62,7 @@ stringData:
 
 :::
 
-## Fault tunables
+## Fault Tunables
 
 <details>
 <summary>Check the fault tunables</summary>
