@@ -14,7 +14,8 @@ Templates enhance developer productivity, reduce onboarding time, and enforce st
 
 You can create a Template and save it either in Harness or in a Git repository using the Inline or Remote option respectively.​
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/e4xthq6sx0/1663585501664/screenshot-2022-09-19-at-4-34-29-pm.png)This topic walks you through the steps to create a Remote Stage Template.​
+![](./static/create-a-remote-stage-template-87.png)
+This topic walks you through the steps to create a Remote Stage Template.​
 
 ### Objectives
 
@@ -25,9 +26,9 @@ You will learn how to:
 
 ### Before you begin
 
-* Review [Harness Key Concepts​](/article/4o7oqwih6h-harness-key-concepts)
-* See [Templates Overview](/article/6tl8zyxeol-template)
-* See [CIE Quickstarts​](/article/x0d77ktjw8-ci-pipeline-quickstart)
+* Review [Harness Key Concepts​](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts)
+* See [Templates Overview](template.md)
+* See [CIE Quickstarts​](../../continuous-integration/ci-quickstarts/ci-pipeline-quickstart.md)
 
 ### Permissions
 
@@ -41,7 +42,7 @@ All your templates can be seen in **Templates** based on their scope. ​We will
 
 A Remote Stage Template is one which you save in your Git repositories.
 
-For information on inline Stage Template, see [Create a Stage Template](/article/s3wrqjsg43-add-a-stage-template).
+For information on inline Stage Template, see [Create a Stage Template](add-a-stage-template.md).
 
 ### Use Template in a Pipeline
 
@@ -77,41 +78,42 @@ You can create a Stage Template from your Account, Org or Project. ​This topic
 4. In **Name**, enter a name for the Template.​
 5. In **Version Label**, enter a version for the Template.​
 6. Click **Remote**.
-7. In **Git Connector**, select or create a Git Connector to the repo for your Project.​ For steps, see [Code Repo Connectors](/category/xyexvcc206-ref-source-repo-provider).Important: Connector must use the Enable API access option and TokenThe Connector must use the Enable API access option and Username and Token authentication. ​Harness requires the token for API access. Generate the token in your account on the Git provider and add it to Harness as a Secret. Next, use the token in the credentials for the Git Connector.​​  
-![](https://files.helpdocs.io/kw8ldg1itf/articles/e4xthq6sx0/1663600394071/screenshot-2022-09-15-at-7-59-53-pm.png)  
+7. In **Git Connector**, select or create a Git Connector to the repo for your Project.​ For steps, see [Code Repo Connectors](https://docs.harness.io/category/code-repo-connectors).Important: Connector must use the Enable API access option and TokenThe Connector must use the Enable API access option and Username and Token authentication. ​Harness requires the token for API access. Generate the token in your account on the Git provider and add it to Harness as a Secret. Next, use the token in the credentials for the Git Connector.​​  
+![](./static/create-a-remote-stage-template-88.png)  
 For GitHub, the token must have the following scopes:​  
-![](https://files.helpdocs.io/kw8ldg1itf/articles/e4xthq6sx0/1663600435149/screenshot-2022-09-15-at-8-01-11-pm.png)
+![](./static/create-a-remote-stage-template-89.png)
 8. In **Repository**, select your repository. If your repository isn't listed, enter its name since only a select few repositories are filled here.​Create the repository in Git before entering it in Select Repository. Harness does not create the repository for you.​
 9. In **Git Branch**, select your branch. If your branch isn't listed, enter its name since only a select few branches are filled here.Create the branch in your repository before entering it in Git Branch. Harness does not create the branch for you.​​
 10. ​Harness auto-populates the **YAML Path**. You can change this path and the file name.
 11. Click **Start**.​​  
 Your Stage Template is created and the Select Stage Type settings appear.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/e4xthq6sx0/1663600791947/screenshot-2022-09-19-at-8-48-30-pm.png)### Step 2: Add the Stage parameters
+![](./static/create-a-remote-stage-template-90.png)
+### Step 2: Add the Stage parameters
 
 1. Select **Deploy** in the **Select** **Stage Type** settings.  
 The Deploy stage type is a CD Stage that enables you to deploy any Service to your target environment.​  
-The **About your Stage** settings appear.![](https://files.helpdocs.io/kw8ldg1itf/articles/e4xthq6sx0/1663602322513/screenshot-2022-09-19-at-9-12-59-pm.png)
+The **About your Stage** settings appear.![](./static/create-a-remote-stage-template-91.png)
 2. Select the type of deployment this Stage must perform.​  
 A stage can deploy Services, and other workloads. The default selection is **Service**.
 3. Click **Set Up Stage**. The Template Studio page appears.
-4. In **Select Service**, select an existing service or add a new one. Click **Continue.**![](https://files.helpdocs.io/kw8ldg1itf/articles/e4xthq6sx0/1663603069317/screenshot-2022-09-19-at-9-26-54-pm.png)
+4. In **Select Service**, select an existing service or add a new one. Click **Continue.**![](./static/create-a-remote-stage-template-92.png)
 5. In **Specify** **Environment**, select an existing environment or add a new one.
 6. In **Specify Infrastructure**, select an existing infrastructure or add a new one. Click **Continue**.
 7. In **Execution Strategies**, select **Rolling** and click **Use Strategy**.  
 In Execution, you can see the **Rollout Deployment** step is added automatically.
-8. Click **Save**. The **Save Template to Git** settings appear.![](https://files.helpdocs.io/kw8ldg1itf/articles/e4xthq6sx0/1663603496609/screenshot-2022-09-19-at-9-33-54-pm.png)
+8. Click **Save**. The **Save Template to Git** settings appear.![](./static/create-a-remote-stage-template-93.png)
 9. In **Select Branch to Commit**, You can select one of the following:​
 	1. **Commit to an existing branch**: you can start a pull request if you like.​​
 	2. **Commit to a new branch**:​ enter the new branch name. You can start a pull request if you like.​
-10. Click **Save**. Your Remote Stage Template is saved to the repo branch.​​![](https://files.helpdocs.io/kw8ldg1itf/articles/e4xthq6sx0/1663603954527/screenshot-2022-09-19-at-9-41-09-pm.png)
+10. Click **Save**. Your Remote Stage Template is saved to the repo branch.​​![](./static/create-a-remote-stage-template-94.png)
 11. Click the YAML file to see the YAML for the Stage Template.​
 12. Edit the YAML. For example, change the name of the Template.​​
 13. Commit your changes to Git.​​
 14. Return to Harness and refresh the page.​​​  
-A **Template Updated** message appears.​![](https://files.helpdocs.io/kw8ldg1itf/articles/e4xthq6sx0/1663651847389/screenshot-2022-09-20-at-11-00-29-am.png)
+A **Template Updated** message appears.​![](./static/create-a-remote-stage-template-95.png)
 
 ### Next steps
 
-* [Use a Template](/article/1re7pz9bj8-use-a-template)
+* [Use a Template](use-a-template.md)
 

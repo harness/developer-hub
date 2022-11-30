@@ -16,17 +16,17 @@ First, let's review secrets in Harness, and then look at how Harness sanitizes l
 
 You can create secrets in Harness as described in:
 
-* [Add and Reference Text Secrets](https://ngdocs.harness.io/article/osfw70e59c-add-use-text-secrets)
-* [Add and Reference File Secrets](https://ngdocs.harness.io/article/77tfo7vtea-add-file-secrets)
-* [Add SSH Secrets](https://ngdocs.harness.io/article/xmp9j0dk8b-add-use-ssh-secrets)
+* [Add and Reference Text Secrets](../add-use-text-secrets.md)
+* [Add and Reference File Secrets](../add-file-secrets.md)
+* [Add SSH Secrets](../add-use-ssh-secrets.md)
 
-For text and file secrets, the secrets are stored in the Secrets Manager. For steps to add a Secret Manager, see [Add a Secret Manager](https://ngdocs.harness.io/article/bo4qbrcggv-add-secrets-manager).
+For text and file secrets, the secrets are stored in the Secrets Manager. For steps to add a Secret Manager, see [Add a Secret Manager](../add-secrets-manager.md).
 
 Once a secret is added, you can use other Harness entities instead of settings.
 
-You can reference an Encrypted Text secret created in the Org [scope](/article/vz5cq0nfg2-rbac-in-harness#scope) using the secret identifier in the expression: `<+secrets.getValue("org.your_secret_Id")>`.
+You can reference an Encrypted Text secret created in the Org [scope](../../4_Role-Based Access Control/rbac-in-harness.md#scope) using the secret identifier in the expression: `<+secrets.getValue("org.your_secret_Id")>`.
 
-You can reference a file secret created in the Org [scope](/article/vz5cq0nfg2-rbac-in-harness#scope) using the expression `<+secrets.getValue(“org.file-secret-Id”)>`.
+You can reference a file secret created in the Org [scope](../../4_Role-Based Access Control/rbac-in-harness.md#scope) using the expression `<+secrets.getValue(“org.file-secret-Id”)>`.
 
 At deployment runtime, the Harness Delegate uses the Secrets Manager to decrypt and read the secret only when it is needed.
 
@@ -59,7 +59,9 @@ Executing command ...
 text secret is:  **************  
 Command completed with ExitCode (0)​
 ```
-File secrets are not masked in Harness logs. As noted above they can be encoded in different formats, but they are not masked from users.​#### Quotes and secrets in a script
+File secrets are not masked in Harness logs. As noted above they can be encoded in different formats, but they are not masked from users.​
+
+#### Quotes and secrets in a script
 
 By default, secret expressions use quotes for the secret identifier:​ `<+secrets.getValue("secret_identifier")>`.
 
@@ -81,7 +83,9 @@ Here, the secret value is `"mysecret"` and the identifier is `secret_identifier`
 
 Avoid using `$` in your secret value. ​If your secret value includes `$`, you must use single quotes when you use the expression in a script.  
 For example, if your secret value is `'my$secret'`, and the identifier is `secret_identifier`, to echo, use single quotes:  
-`echo '<+secrets.getValue("secret_identifier")>'`#### Kubernetes secret objects
+`echo '<+secrets.getValue("secret_identifier")>'`
+
+#### Kubernetes secret objects
 
 When you deploy a [Kubernetes Secret object](https://kubernetes.io/docs/concepts/configuration/secret/) using Harness, Harness substitutes the secret values with asterisks (\*).​
 

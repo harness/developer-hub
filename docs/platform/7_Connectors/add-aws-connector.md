@@ -12,7 +12,9 @@ AWS is integrated with Harness using a Harness AWS Connector. You can use AWS wi
 
 This topic explains how to set up the AWS Connector.
 
-**What IAM roles should my AWS account have?** What IAM roles and policies needed by the AWS account used in the Connector depend on what AWS service you are using with Harness and what operations you want Harness to perform in AWS. For a list of roles and policies, see [AWS Connector Settings Reference](/article/m5vkql35ca-aws-connector-settings-reference).The [DescribeRegions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRegions.html) action is required for all AWS Connectors regardless of what AWS service you are using for your target infrastructure.### Before You Begin
+**What IAM roles should my AWS account have?** What IAM roles and policies needed by the AWS account used in the Connector depend on what AWS service you are using with Harness and what operations you want Harness to perform in AWS. For a list of roles and policies, see [AWS Connector Settings Reference](ref-cloud-providers/aws-connector-settings-reference.md).The [DescribeRegions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRegions.html) action is required for all AWS Connectors regardless of what AWS service you are using for your target infrastructure.
+
+### Before you begin
 
 * [Learn Harness' Key Concepts](https://ngdocs.harness.io/article/hv2758ro4e-learn-harness-key-concepts)
 
@@ -20,11 +22,13 @@ This topic explains how to set up the AWS Connector.
 
 The [DescribeRegions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRegions.html) action is required for all AWS Connectors regardless of what AWS service you are using for your target infrastructure.The IAM roles and policies needed by the AWS account used in the Connector depend on what AWS service you are using with Harness and what operations you want Harness to perform in AWS.
 
-For a list of roles and policies, see [AWS Connector Settings Reference](/article/m5vkql35ca-aws-connector-settings-reference).
+For a list of roles and policies, see [AWS Connector Settings Reference](ref-cloud-providers/aws-connector-settings-reference.md).
 
-The AWS [IAM Policy Simulator](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_testing-policies.html) is a useful tool for evaluating policies and access.### Review: Kubernetes Cluster Connector for EKS
+The AWS [IAM Policy Simulator](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_testing-policies.html) is a useful tool for evaluating policies and access.
 
-If you want to connect Harness to Elastic Kubernetes Service (Amazon EKS), use the platform-agnostic [Kubernetes Cluster Connector](/article/s9j6cggx1p-connect-to-a-cloud-provider).
+### Review: Kubernetes Cluster Connector for EKS
+
+If you want to connect Harness to Elastic Kubernetes Service (Amazon EKS), use the platform-agnostic [Kubernetes Cluster Connector](connect-to-a-cloud-provider.md).
 
 ### Review: Switching IAM Policies
 
@@ -34,9 +38,11 @@ You simply change the role assigned to the AWS account or the Harness Delegate y
 
 When you switch or modify the IAM role, it might take up to 5 minutes to take effect.
 
-The [DescribeRegions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRegions.html) action is required for all AWS Connectors regardless of what AWS service you are using for your target infrastructure.### Supported Platforms and Technologies
+The [DescribeRegions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRegions.html) action is required for all AWS Connectors regardless of what AWS service you are using for your target infrastructure.
 
-For a list of the platforms and technologies supported by Harness, see [Supported Platforms and Technologies](/article/1e536z41av).
+### Supported Platforms and Technologies
+
+For a list of the platforms and technologies supported by Harness, see [Supported Platforms and Technologies](https://docs.harness.io/article/1e536z41av).
 
 ### Step 1: Add an AWS Connector
 
@@ -46,7 +52,8 @@ In **Project Setup**, click **Connectors**.
 
 Click **New Connector**, and click **AWS**. The AWS Connector settings appear.
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/98ezfwox9u/1631911297431/clean-shot-2021-09-17-at-13-41-25-2-x.png)In **Name**, enter a name for this connector.
+![](./static/add-aws-connector-77.png)
+In **Name**, enter a name for this connector.
 
 Harness automatically creates the corresponding Id.
 
@@ -61,7 +68,7 @@ The [DescribeRegions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API
 For example, you can add or select a Harness Kubernetes Delegate running in Amazon Elastic Kubernetes Service (Amazon EKS).
 * **Use IRSA:** have the Harness Kubernetes Delegate in AWS EKS use a specific IAM role when making authenticated requests to resources. This option uses [IRSA (IAM roles for service accounts)](https://docs.aws.amazon.com/emr/latest/EMR-on-EKS-DevelopmentGuide/setting-up-enable-IAM.html).
 
-All of the settings for these options are described in detail in [AWS Connector Settings Reference](/article/m5vkql35ca-aws-connector-settings-reference).
+All of the settings for these options are described in detail in [AWS Connector Settings Reference](ref-cloud-providers/aws-connector-settings-reference.md).
 
 ### Test Region and AWS GovCloud Support
 
@@ -81,11 +88,11 @@ You cannot access AWS GovCloud with standard AWS credentials. Likewise, you cann
 
 Harness uses AWS Connectors at Pipeline runtime to authenticate and perform operations with AWS. Authentications and operations are performed by Harness Delegates.
 
-You can select **Any Available Harness Delegate** and Harness will select the Delegate. For a description of how Harness picks Delegates, see [Delegates Overview](/article/2k7lnc7lvl-delegates-overview).
+You can select **Any Available Harness Delegate** and Harness will select the Delegate. For a description of how Harness picks Delegates, see [Delegates Overview](../2_Delegates/delegates-overview.md).
 
-You can use Delegate Tags to select one or more Delegates. For details on Delegate Tags, see [Select Delegates with Tags](/article/nnuf8yv13o-select-delegates-with-selectors).
+You can use Delegate Tags to select one or more Delegates. For details on Delegate Tags, see [Select Delegates with Tags](../2_Delegates/delegate-guide/select-delegates-with-selectors.md).
 
-If you need to install a Delegate, see [Delegate Installation Overview](/article/re8kk0ex4k-delegate-installation-overview).
+If you need to install a Delegate, see [Delegate Installation Overview](https://docs.harness.io/article/re8kk0ex4k-delegate-installation-overview).
 
 Click **Save and Continue**.
 
@@ -99,7 +106,7 @@ For example, the [DescribeRegions](https://docs.aws.amazon.com/AWSEC2/latest/AP
 
 If you run into any error with an AWS Connector, verify that the IAM roles and policies it using are correct.
 
-For a list of roles and policies, see [AWS Connector Settings Reference](/article/m5vkql35ca-aws-connector-settings-reference).
+For a list of roles and policies, see [AWS Connector Settings Reference](ref-cloud-providers/aws-connector-settings-reference.md).
 
 Click **Finish**.
 

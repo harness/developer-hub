@@ -10,10 +10,12 @@ helpdocs_is_published: true
 
 This topic explains how to connect Harness to the Microsoft Azure cloud. Using this Connector, you can pull Azure artifacts and deploy your applications to Azure using Harness.
 
-Using Harness **Cloud Cost Management (CCM)**? See [Set Up Cloud Cost Management for Azure](/article/v682mz6qfd-set-up-cost-visibility-for-azure).### Before You Begin
+Using Harness **Cloud Cost Management (CCM)**? See [Set Up Cloud Cost Management for Azure](https://docs.harness.io/article/v682mz6qfd-set-up-cost-visibility-for-azure).
 
-* [Learn Harness' Key Concepts](/article/hv2758ro4e-learn-harness-key-concepts)
-* [CD Pipeline Basics](/article/cqgeblt4uh-cd-pipeline-basics)
+### Before you begin
+
+* [Learn Harness' Key Concepts](https://docs.harness.io/article/hv2758ro4e-learn-harness-key-concepts)
+* [CD Pipeline Basics](https://docs.harness.io/article/cqgeblt4uh-cd-pipeline-basics)
 
 ### Limitations
 
@@ -24,20 +26,22 @@ Using Harness **Cloud Cost Management (CCM)**? See [Set Up Cloud Cost Management
 
 The following example shows how to connect Harness to Azure using the Azure Cloud Connector and an Azure App registration.
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/9epdx5m9ae/1652392300818/clean-shot-2022-05-12-at-14-50-05.png)### Review: Permissions
+![](./static/add-a-microsoft-azure-connector-63.png)
+### Review: Permissions
 
 This section assumes you're familiar with Azure RBAC. For details, [Assign Azure roles using the Azure portal](https://docs.microsoft.com/en-us/azure/role-based-access-control/role-assignments-portal) from Azure.
 
 This graphic from Azure can be helpful as a reminder of how Azure manages RBAC:
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/9epdx5m9ae/1652820564505/image.png)For security reasons, Harness uses an application object and service principal rather than a user identity. The process is described in [How to: Use the portal to create an Azure AD application and service principal that can access resources](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal) from Azure.
+![](./static/add-a-microsoft-azure-connector-64.png)
+For security reasons, Harness uses an application object and service principal rather than a user identity. The process is described in [How to: Use the portal to create an Azure AD application and service principal that can access resources](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal) from Azure.
 
 ### AKS Cluster Setup Requirements
 
 * AKS managed AAD (enabled or disabled).
 * Kubernetes RBAC enabled.
 * Azure RBAC (enabled or disabled).
-	+ See **Deployments (CD)** in [Kubernetes Cluster Connector Settings Reference](/article/sjjik49xww-kubernetes-cluster-connector-settings-reference).
+	+ See **Deployments (CD)** in [Kubernetes Cluster Connector Settings Reference](ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md).
 * AKS property `disableLocalAccounts` (enabled or disabled).
 
 ##### Permissions List
@@ -115,9 +119,9 @@ If you do not use a custom role, the **Owner** role must be assigned.
 
 Here are the options for connecting Harness to your target AKS cluster:
 
-* Install a [Kubernetes Delegate](/article/f9bd10b3nj-install-a-kubernetes-delegate) in the target AKS cluster and use it for authentication in a Harness [Kubernetes Cluster Connector](/article/1gaud2efd4-add-a-kubernetes-cluster-connector). The Harness Kubernetes Cluster Connector is platform-agnostic.
+* Install a [Kubernetes Delegate](../2_Delegates/delegate-guide/install-a-kubernetes-delegate.md) in the target AKS cluster and use it for authentication in a Harness [Kubernetes Cluster Connector](add-a-kubernetes-cluster-connector.md). The Harness Kubernetes Cluster Connector is platform-agnostic.
 	+ You won't need to provide Microsoft Azure Service Principal or Managed Identity credentials.
-* Install a [Kubernetes Delegate](/article/f9bd10b3nj-install-a-kubernetes-delegate) in the target AKS cluster and use it for authentication in a Harness **Microsoft Azure Cloud Connector**, as described in this topic.
+* Install a [Kubernetes Delegate](../2_Delegates/delegate-guide/install-a-kubernetes-delegate.md) in the target AKS cluster and use it for authentication in a Harness **Microsoft Azure Cloud Connector**, as described in this topic.
 	+ You'll need to provide the Microsoft Azure Environment.
 	+ If you use a User Assigned Managed Identity, you will need to provide the Application (client) Id.
 	+ If you use a System Assigned Managed Identity, you do not need to provide any Ids.
@@ -210,7 +214,8 @@ subjects:
 
 If you do not use a custom role, the **Reader** role must be assigned. **This is the minimum requirement.**
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/4n3595l6in/1618946221348/image.png)You must provide the **Reader** role in the role assignment at the **Subscription** level used by the Application (Client) Id entered in the Connector. The application needs permission to list **all** container registries.
+![](./static/add-a-microsoft-azure-connector-65.png)
+You must provide the **Reader** role in the role assignment at the **Subscription** level used by the Application (Client) Id entered in the Connector. The application needs permission to list **all** container registries.
 
 Some common mistakes:
 
@@ -219,7 +224,9 @@ Some common mistakes:
 
 Harness supports 500 images from an ACR repo. If you don't see some of your images you might have exceeded this limit. This is the result of an Azure API limitation.  
   
-If you connect to an ACR repo via the platform agnostic [Docker Connector](/article/u9bsd77g5a-docker-registry-connector-settings-reference), the limit is 100.### Azure Web App Permissions
+If you connect to an ACR repo via the platform agnostic [Docker Connector](ref-cloud-providers/docker-registry-connector-settings-reference.md), the limit is 100.
+
+### Azure Web App Permissions
 
 If you use Microsoft Azure Cloud Connector and Service Principal or Managed Identity credentials, you can use a custom role or the **Contributor** role. The Contributor role is the minimum requirement.
 
@@ -259,9 +266,9 @@ To add the Connector separately, in your Account, Org, or Project **Connectors**
 
 Click **Azure**.
 
-Enter a name for the Connector. Harness automatically creates the Id ([Entity Identifier](/article/li0my8tcz3-entity-identifier-reference)) for the Connector. You can edit the Id before the Connector is saved. Once it is saved, it is immutable.
+Enter a name for the Connector. Harness automatically creates the Id ([Entity Identifier](../20_References/entity-identifier-reference.md)) for the Connector. You can edit the Id before the Connector is saved. Once it is saved, it is immutable.
 
-Add a Description and [Tags](/article/i8t053o0sq-tags-reference) if needed.
+Add a Description and [Tags](../20_References/tags-reference.md) if needed.
 
 Click **Continue**.
 
@@ -273,15 +280,17 @@ In **Details**, you can select how you'd like Harness to authenticate with Azure
 
 If you have a Harness Delegate installed in your Azure subscription (preferably in your target AKS cluster) you can select **Use the credentials of a specific Harness Delegate**.
 
-For steps on installing a Delegate, see [Delegate Installation Overview](/article/re8kk0ex4k-delegate-installation-overview).
+For steps on installing a Delegate, see [Delegate Installation Overview](https://docs.harness.io/article/re8kk0ex4k-delegate-installation-overview).
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/9epdx5m9ae/1652389065623/clean-shot-2022-05-12-at-13-57-37.png)In **Environment**, select **Azure Global** or **US Government**.
+![](./static/add-a-microsoft-azure-connector-66.png)
+In **Environment**, select **Azure Global** or **US Government**.
 
 In **Authentication**, select **System Assigned Managed Identity** or **User Assigned Managed Identity**.
 
 See [Use managed identities in Azure Kubernetes Service](https://docs.microsoft.com/en-us/azure/aks/use-managed-identity) and [How to use managed identities with Azure Container Instances](https://docs.microsoft.com/en-us/azure/container-instances/container-instances-managed-identity) from Azure.If you selected **User Assigned Managed Identity**, in **Client Id**, enter the Client Id from your Managed Identity.
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/9epdx5m9ae/1654019415607/clean-shot-2022-05-31-at-10-48-35.png)If you selected **User Assigned Managed Identity**, you can also use a [Pod Assigned Managed identity](https://docs.microsoft.com/en-us/azure/aks/use-azure-ad-pod-identity).
+![](./static/add-a-microsoft-azure-connector-67.png)
+If you selected **User Assigned Managed Identity**, you can also use a [Pod Assigned Managed identity](https://docs.microsoft.com/en-us/azure/aks/use-azure-ad-pod-identity).
 
 If you selected **System Assigned Managed Identity**, click **Continue**.
 
@@ -299,7 +308,8 @@ Using Azure credentials is covered in the following steps.
 
 In Microsoft Azure, you can find the information you need on the App registration **Overview** page:
 
-![](https://files.helpdocs.io/kw8ldg1itf/other/1567028367061/image.png)### Step 3: Environment
+![](./static/add-a-microsoft-azure-connector-68.png)
+### Step 3: Environment
 
 In **Environment**, select **Azure Global** or **US Government**.
 
@@ -321,11 +331,13 @@ Harness supports PEM files only. Currently, Harness does not support PFX files.I
 
 This is the authentication key for your application. This is found in **Azure Active Directory**, **App Registrations**. Click the App name. Click **Certificates & secrets**, and then click **New client secret**.
 
-[![](https://files.helpdocs.io/kw8ldg1itf/other/1567028538937/image.png)](https://files.helpdocs.io/kw8ldg1itf/other/1567028538937/image.png)You cannot view existing secret values, but you can create a new key. For more information, see [Create a new application secret](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-a-new-application-secret) from Azure.
+![](./static/add-a-microsoft-azure-connector-69.png)
+(./static/add-a-microsoft-azure-connector-69.png)
+You cannot view existing secret values, but you can create a new key. For more information, see [Create a new application secret](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-a-new-application-secret) from Azure.
 
-If you select **Secret**, create or use an existing [Harness Text Secret](/article/osfw70e59c-add-use-text-secrets).
+If you select **Secret**, create or use an existing [Harness Text Secret](../6_Security/add-use-text-secrets.md).
 
-If you select **Certificate**, create or use an existing [Harness File Secret](/article/77tfo7vtea-add-file-secrets).
+If you select **Certificate**, create or use an existing [Harness File Secret](../6_Security/add-file-secrets.md).
 
 ### Step 7: Delegates Setup
 
@@ -349,15 +361,15 @@ For example, you could use a Harness Shell Script step and the expression like t
 ```
 export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH} kubectl get pods -n default
 ```
-Steps can be executed on any Delegate or you can select specific Delegates using the steps [Delegate Selector](/article/nnuf8yv13o-select-delegates-with-selectors) setting.
+Steps can be executed on any Delegate or you can select specific Delegates using the steps [Delegate Selector](../2_Delegates/delegate-guide/select-delegates-with-selectors.md) setting.
 
 For Azure deployments, note the following:
 
 * If the Azure Connector used in the Stage's **Infrastructure** uses Azure Managed Identity for authentication, then the Shell Script step must use a Delegate Selector for a Delegate running in AKS.
 * If the Azure Connector used in the Stage's **Infrastructure** uses Azure Service Principal for authentication, then the Shell Script step can use any Delegate.
 
-### See Also
+### See also
 
-* [Azure ACR to AKS CD Quickstart](/article/m7nkbph0ac-azure-cd-quickstart)
-* [Kubernetes CD Quickstart](/article/knunou9j30-kubernetes-cd-quickstart)
+* [Azure ACR to AKS CD Quickstart](https://docs.harness.io/article/m7nkbph0ac-azure-cd-quickstart)
+* [Kubernetes CD Quickstart](https://docs.harness.io/article/knunou9j30-kubernetes-cd-quickstart)
 

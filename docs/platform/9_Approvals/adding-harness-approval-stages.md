@@ -12,22 +12,23 @@ You can specify Harness User Group(s) to approve or reject a Pipeline at any poi
 
 Approvals are added in between Stages to prevent the Pipeline execution from proceeding without an approval.
 
-For example, in a [Build Pipeline](/article/x0d77ktjw8-ci-pipeline-quickstart), you might want to add an approval stage between a Build Stage and an Integration Test Stage.
+For example, in a [Build Pipeline](../../continuous-integration/ci-quickstarts/ci-pipeline-quickstart.md), you might want to add an approval stage between a Build Stage and an Integration Test Stage.
 
 Other approval methods are:
 
-* [Manual Harness Approval Steps in CD Stages](/article/43pzzhrcbv-using-harness-approval-steps-in-cd-stages): add Approval steps to a stage for manual intervention.
-* [Adding Jira Approval Stages and Steps](/article/2lhfk506r8-adding-jira-approval-stages): add Jira Approval stages and steps.
+* [Manual Harness Approval Steps in CD Stages](https://docs.harness.io/article/43pzzhrcbv-using-harness-approval-steps-in-cd-stages): add Approval steps to a stage for manual intervention.
+* [Adding Jira Approval Stages and Steps](adding-jira-approval-stages.md): add Jira Approval stages and steps.
 
-### Before You Begin
+### Before you begin
 
-* [Add a Stage](/article/2chyf1acil-add-a-stage)
+* [Add a Stage](../8_Pipelines/add-a-stage.md)
 
 ### Visual Summary
 
 Here's a Manual Approval Stage step during the execution of a Pipeline:
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/43pzzhrcbv/1621893748315/image.png)An approver can approve/reject the stage, stopping the Pipeline. The approver can also add comments and define variables for use by subsequent approvers and steps.
+![](./static/adding-harness-approval-stages-15.png)
+An approver can approve/reject the stage, stopping the Pipeline. The approver can also add comments and define variables for use by subsequent approvers and steps.
 
 Here's a quick video that walks you through setting up and running the step:
 
@@ -81,7 +82,8 @@ The default timeout for an Approval step is **1d** (24 hours). You can use `**w
 
 The maximum timeout duration is 24 days.The timeout countdown appears when the step in executed.
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/43pzzhrcbv/1621637126501/image.png)### Option: Add Message
+![](./static/adding-harness-approval-stages-16.png)
+### Option: Add Message
 
 In **Approval Message**, add the message for the Users in **Approvers**.
 
@@ -93,7 +95,8 @@ Enable this option to provide approvers with the execution history for this Pipe
 
 In **Approvers**, in **User Groups**, select the Harness User Groups across Project/Org/Account scope, that will approve the step.
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/fkvso46bok/1629390556717/screenshot-2021-08-19-at-9-58-36-pm.png)In **Number of approvers**, enter how many of the Users in the User Groups must approve the step.
+![](./static/adding-harness-approval-stages-17.png)
+In **Number of approvers**, enter how many of the Users in the User Groups must approve the step.
 
 ### Option: Prevent Approval by Pipeline Executor
 
@@ -125,12 +128,12 @@ For example, in a subsequent step's **Conditional Execution** settings, you coul
 
 See:
 
-* [Step Skip Condition Settings](/article/i36ibenkq2-step-skip-condition-settings)
-* [Step Failure Strategy Settings](/article/htrur23poj-step-failure-strategy-settings)
-* [Select Delegates with Selectors](/article/nnuf8yv13o-select-delegates-with-selectors)
+* [Step Skip Condition Settings](../8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+* [Step Failure Strategy Settings](../8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+* [Select Delegates with Selectors](../2_Delegates/delegate-guide/select-delegates-with-selectors.md)
 
-### See Also
+### See also
 
-* [Using Manual Harness Approval Steps in CD Stages](/article/43pzzhrcbv-using-harness-approval-steps-in-cd-stages)
-* [Update Jira Issues in CD Stages](/article/urdkli9e74-update-jira-issues-in-cd-stages)
+* [Using Manual Harness Approval Steps in CD Stages](https://docs.harness.io/article/43pzzhrcbv-using-harness-approval-steps-in-cd-stages)
+* [Update Jira Issues in CD Stages](https://docs.harness.io/article/urdkli9e74-update-jira-issues-in-cd-stages)
 

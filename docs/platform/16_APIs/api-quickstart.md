@@ -19,28 +19,32 @@ You'll learn how to:
 * Authenticate with Harness via API using API keys.
 * Onboard Harness Projects, Connectors, and Pipelines using the Harness API.
 
-The API requests in this topic use curl, but Harness supports multiple languages, such as Go, Java, and Node.js. The [Harness API Reference Docs](https://harness.io/docs/api/) provides examples for all supported languages.### Before You Begin
+The API requests in this topic use curl, but Harness supports multiple languages, such as Go, Java, and Node.js. The [Harness API Reference Docs](https://harness.io/docs/api/) provides examples for all supported languages.### Before you begin
 
 * [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts)
-* [Access Management(RBAC) Overview](/article/vz5cq0nfg2)
-* This quickstart walks you through adding the Harness API keys needed to authenticate with the API. To review Harness API keys, see [Add and Manage API Keys](https://ngdocs.harness.io/article/tdoad7xrh9).
-* Make sure your Harness account has the required permissions to Create, Edit, Delete, and View the Harness resources you are creating via API. Any of the following default roles are sufficient: Account Administrator, Organization Admin, Project Admin. For more, see [Permissions Reference](https://ngdocs.harness.io/article/yaornnqh0z).
+* [Access Management(RBAC) Overview](../4_Role-Based Access Control/rbac-in-harness.md)
+* This quickstart walks you through adding the Harness API keys needed to authenticate with the API. To review Harness API keys, see [Add and Manage API Keys](../4_Role-Based Access Control/add-and-manage-api-keys.md).
+* Make sure your Harness account has the required permissions to Create, Edit, Delete, and View the Harness resources you are creating via API. Any of the following default roles are sufficient: Account Administrator, Organization Admin, Project Admin. For more, see [Permissions Reference](../4_Role-Based Access Control/ref-access-management/permissions-reference.md).
 
 ### Step 1: Create a Harness API Key and PAT
 
 The Harness API uses API keys to authenticate requests. You create the API key in your Harness Manager User Profile, add a Personal Access Token (PAT) to the key, and then use the PAT in your API requests.
 
-For an overview of Harness API keys, see [Add and Manage API Keys](/article/tdoad7xrh9).Let's create the API key and its Personal Access Token.
+For an overview of Harness API keys, see [Add and Manage API Keys](../4_Role-Based Access Control/add-and-manage-api-keys.md).Let's create the API key and its Personal Access Token.
 
 Here's a quick visual summary:
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/f0aqiv3td7/1636407720427/clean-shot-2021-11-08-at-13-37-44.gif)#### Create API Key
+![](./static/api-quickstart-00.gif)
+
+#### Create API Key
 
 In Harness, navigate to your **Profile**.
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/f0aqiv3td7/1636406930993/clean-shot-2021-11-08-at-13-28-24-2-x.png)In **My API Keys**, Click **API Key**. The API Key settings appear.
+![](./static/api-quickstart-01.png)
+In **My API Keys**, Click **API Key**. The API Key settings appear.
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/f0aqiv3td7/1636407815962/clean-shot-2021-11-08-at-13-43-23-2-x.png)Enter **Name, Description,** and **Tags** for your API.
+![](./static/api-quickstart-02.png)
+Enter **Name, Description,** and **Tags** for your API.
 
 Click **Save**. The new API Key is created.
 
@@ -50,7 +54,8 @@ Next, we'll add the Personal Access Token (PAT) that you will use when you make 
 
 Click **Token** below the API Key you just created.
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/f0aqiv3td7/1636408087557/clean-shot-2021-11-08-at-13-47-58-2-x.png)In the **New Token** settings, enter a Name, Description, and Tags.
+![](./static/api-quickstart-03.png)
+In the **New Token** settings, enter a Name, Description, and Tags.
 
 To set an expiration date for this token, select **Set Expiration Date** and enter the date in **Expiration Date (mm/dd/yyyy)**.
 
@@ -58,15 +63,18 @@ Click **Generate Token**.
 
 Your new token is generated.
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/f0aqiv3td7/1636390414362/clean-shot-2021-11-08-at-08-53-10.png)Please copy and store your token value somewhere safe. You won't be able to see it again.  
+![](./static/api-quickstart-04.png)
+Please copy and store your token value somewhere safe. You won't be able to see it again.  
   
-Your API keys carry many privileges, so be sure not to share them in publicly accessible areas. Make sure you always use the updated API Key value after you rotate the token. For more details, see [Rotate Token](https://ngdocs.harness.io/article/tdoad7xrh9-add-and-manage-api-keys#rotate_token).#### Service Account Tokens
+Your API keys carry many privileges, so be sure not to share them in publicly accessible areas. Make sure you always use the updated API Key value after you rotate the token. For more details, see [Rotate Token](../4_Role-Based Access Control/add-and-manage-api-keys.md#rotate-token).
 
-You can also use a Service Account Tokens instead of PAT. See [Add and Manage Service Accounts](/article/e5p4hdq6bd).
+#### Service Account Tokens
+
+You can also use a Service Account Tokens instead of PAT. See [Add and Manage Service Accounts](../4_Role-Based Access Control/add-and-manage-service-account.md).
 
 ### Step 2: Create a Project via API
 
-Now that we have our token, we can create a Harness Project. A Harness [Project](/article/hv2758ro4e-learn-harness-key-concepts#organizations_and_projects) is a group of Harness modules and their Pipelines.
+Now that we have our token, we can create a Harness Project. A Harness [Project](https://docs.harness.io/article/hv2758ro4e-learn-harness-key-concepts#organizations_and_projects) is a group of Harness modules and their Pipelines.
 
 To send the API request, you will need your Harness account Id and the token you created.
 
@@ -108,13 +116,14 @@ The successful response will be something like this:
 ```
 Open Harness to see your new Project (you might need to refresh the Project page):
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/f0aqiv3td7/1636410188051/clean-shot-2021-11-08-at-14-22-53-2-x.png)### Step 3: Create a Connector via API
+![](./static/api-quickstart-05.png)
+### Step 3: Create a Connector via API
 
 A Harness Connector contains the information necessary to integrate and work with 3rd party tools.
 
 Harness uses Connectors at Pipeline runtime to authenticate and perform operations with a 3rd party tool.
 
-Let's create a [Docker Registry Connector](/article/u9bsd77g5a-docker-registry-connector-settings-reference) that connects to DockerHub anonymously.
+Let's create a [Docker Registry Connector](../7_Connectors/ref-cloud-providers/docker-registry-connector-settings-reference.md) that connects to DockerHub anonymously.
 
 Copy the following curl command:
 
@@ -149,13 +158,14 @@ The successful response will be something like this:
 ```
 Take a look at your new Connector in Harness:
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/f0aqiv3td7/1636476384956/clean-shot-2021-11-09-at-08-46-17-2-x.png)### Step 4: Create a Pipeline
+![](./static/api-quickstart-06.png)
+### Step 4: Create a Pipeline
 
 A CD Pipeline is an end-to-end process that delivers a new version of your software.
 
 Let's create a simple CD Pipeline that contains a Shell Script step that echoes "hello world!".
 
-The Pipeline uses [Runtime Inputs](/article/f6yobn7iq0-runtime-inputs) (`<+input>`) for most settings.Copy the following curl command:
+The Pipeline uses [Runtime Inputs](../20_References/runtime-inputs.md) (`<+input>`) for most settings.Copy the following curl command:
 
 
 ```
@@ -216,7 +226,7 @@ curl --location --request POST 'https://app.harness.io/gateway/pipeline/api/pipe
                         action:  
                             type: StageRollback'
 ```
-This sample using [Runtime Inputs](/article/f6yobn7iq0-runtime-inputs) for many settings.Replace `{accountidentifier}` with your Harness account Id and `{api-key}` with the PAT you created.
+This sample using [Runtime Inputs](../20_References/runtime-inputs.md) for many settings.Replace `{accountidentifier}` with your Harness account Id and `{api-key}` with the PAT you created.
 
 Paste the updated curl command into a terminal and run it.
 
@@ -228,7 +238,8 @@ The successful response will be something like this:
 ```
 Take a look at your new Pipeline in Harness:
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/f0aqiv3td7/1636412672147/clean-shot-2021-11-08-at-15-04-19-2-x.png)You're all done.
+![](./static/api-quickstart-07.png)
+You're all done.
 
 In this tutorial, you learned how to:
 

@@ -14,13 +14,15 @@ This topic provides settings and permissions for the Bitbucket Connector.
 
 * Before Harness syncs with your Git repo, it verifies all the connection settings in Harness. If Harness cannot establish a connection, it won't sync with your Git repo.
 
-Harness supports both Cloud and Data Center (On-Prem) versions of Bitbucket. The following settings are applicable for both versions.### Name
+Harness supports both Cloud and Data Center (On-Prem) versions of Bitbucket. The following settings are applicable for both versions.
+
+### Name
 
 The unique name for this Connector.
 
 ### ID
 
-See [Entity Identifier Reference](/article/li0my8tcz3-entity-identifier-reference).
+See [Entity Identifier Reference](../../20_References/entity-identifier-reference.md).
 
 ### Description
 
@@ -28,7 +30,7 @@ Text string.
 
 ### Tags
 
-See [Tags Reference](/article/i8t053o0sq-tags-reference).
+See [Tags Reference](../../20_References/tags-reference.md).
 
 ### URL Type
 
@@ -69,11 +71,13 @@ The username for the account.
 
 #### Password
 
-A [Harness Encrypted Text secret](/article/osfw70e59c-add-text-secrets) for the credentials of your Bitbucket user account.
+A [Harness Encrypted Text secret](../../6_Security/add-use-text-secrets.md) for the credentials of your Bitbucket user account.
 
-If you have set up Two-Factor Authentication in your Bitbucket account, you need to generate a personal access token in your repo and enter that token in the **Password/Token** field.#### SSH Key
+If you have set up Two-Factor Authentication in your Bitbucket account, you need to generate a personal access token in your repo and enter that token in the **Password/Token** field.
 
-If you selected **SSH** as the connection protocol, you must add the **SSH Key** for use with the connection as a [Harness Encrypted File secret](/article/77tfo7vtea-add-file-secrets). For steps to create an SSH Key, see [Add new SSH Key](https://support.atlassian.com/bitbucket-cloud/docs/set-up-an-ssh-key/).
+#### SSH Key
+
+If you selected **SSH** as the connection protocol, you must add the **SSH Key** for use with the connection as a [Harness Encrypted File secret](../../6_Security/add-file-secrets.md). For steps to create an SSH Key, see [Add new SSH Key](https://support.atlassian.com/bitbucket-cloud/docs/set-up-an-ssh-key/).
 
 #### Enable API access
 
@@ -85,8 +89,10 @@ This option is required for using Git-based triggers, Webhook management, and up
 
 The username for the account.
 
-You must enter a plain-text username or a username secret for *both* Authentication and API Authentication. You cannot use a plain-text password for one field and a secret for the other.#### Personal Access Token
+You must enter a plain-text username or a username secret for *both* Authentication and API Authentication. You cannot use a plain-text password for one field and a secret for the other.
 
-A [Harness Encrypted Text secret](/article/osfw70e59c-add-text-secrets) for the App password of your Bitbucket user account.
+#### Personal Access Token
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/iz5tucdwyu/1646296801499/screenshot-2022-03-03-at-9-58-15-am.png)
+A [Harness Encrypted Text secret](../../6_Security/add-use-text-secrets.md) for the App password of your Bitbucket user account.
+
+![](./static/bitbucket-connector-settings-reference-05.png)

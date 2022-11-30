@@ -10,17 +10,30 @@ helpdocs_is_published: true
 
 Harness includes a built-in Secret Management feature that enables you to store encrypted secrets, such as access keys, and use them in your Harness Connectors and Pipelines.
 
-### Step 1: Configure secret manager
+Looking for specific secret managers? See:
+
+* [Add an AWS KMS Secret Manager](add-an-aws-kms-secrets-manager.md)
+* [Add a HashiCorp Vault Secret Manager](add-hashicorp-vault.md)
+* [Add an Azure Key Vault Secret Manager](azure-key-vault.md)
+* [Add Google KMS as a Harness Secret Manager](add-google-kms-secrets-manager.md)
+* [Add an AWS Secrets Manager](add-an-aws-secret-manager.md)
+
+### Before you begin
+
+* [Learn Harness' Key Concepts](https://docs.harness.io/article/hv2758ro4e-learn-harness-key-concepts)
+* [Harness Secret Management Overview](harness-secret-manager-overview.md)
+
+### Step 1: Configure Secret Manager
 
 1. Select your **Account** or **Organization** or **Project**.
 2. Select **Connectors** in **Setup****.**
 3. Create new **Connector.** The **Connectors** page appears**.**
 4. Select a Secret Manager type under **Secret Managers**. See:
-* [Add an AWS KMS Secret Manager](../6_Security/7-add-an-aws-kms-secrets-manager.md)
-* [Add a HashiCorp Vault Secret Manager](../6_Security/12-add-hashicorp-vault.md)
-* [Add an Azure Key Vault Secret Manager](../6_Security/8-azure-key-vault.md)
-* [Add Google KMS as a Harness Secret Manager](../6_Security/10-add-google-kms-secrets-manager.md)
-* [Add an AWS Secrets Manager](../6_Security/6-add-an-aws-secret-manager.md)
+* [Add an AWS KMS Secret Manager](./7-add-an-aws-kms-secrets-manager.md)
+* [Add a HashiCorp Vault Secret Manager](./12-add-hashicorp-vault.md)
+* [Add an Azure Key Vault Secret Manager](./8-azure-key-vault.md)
+* [Add Google KMS as a Harness Secret Manager](./10-add-google-kms-secrets-manager.md)
+* [Add an AWS Secrets Manager](./6-add-an-aws-secret-manager.md)
 1. Provide the account access information for the new secret manager.
 2. If you choose to set this secret manager as the default, select **Use as Default Secret Manager**.
 3. Click **Finish**.
@@ -35,8 +48,14 @@ You can't add secrets to the Org or Project scopes using an Account or Org Scope
 
 ### Next steps
 
+* Adding Secret Managers
+	+ [Add an AWS KMS Secret Manager](./7-add-an-aws-kms-secrets-manager.md)
+	+ [Add a HashiCorp Vault Secret Manager](./12-add-hashicorp-vault.md)
+	+ [Add an Azure Key Vault Secret Manager](./8-azure-key-vault.md)
+	+ [Add Google KMS as a Harness Secret Manager](./10-add-google-kms-secrets-manager.md)
+	+ [Add an AWS Secrets Manager](./6-add-an-aws-secret-manager.md)
 * Managing Secrets
-	+ [Add Text Secrets](../6_Security/2-add-use-text-secrets.md)
-	+ [Add File Secrets](../6_Security/3-add-file-secrets.md)
-	+ [Add SSH Keys](../6_Security/4-add-use-ssh-secrets.md)
+	+ [Add Text Secrets](./2-add-use-text-secrets.md)
+	+ [Add File Secrets](./3-add-file-secrets.md)
+	+ [Add SSH Keys](./4-add-use-ssh-secrets.md)
 

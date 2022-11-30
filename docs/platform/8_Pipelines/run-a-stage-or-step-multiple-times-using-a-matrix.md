@@ -14,23 +14,23 @@ A matrix enables you to run the same Stage or Step multiple times with different
 * A Build Stage that builds artifacts for 10 different JDK versions.
 * A Deploy Stage that deploys 3 different services to 4 different environments.
 
-### Before You Begin
+### Before you begin
 
 You can apply matrix strategies to both CI and CD workflows. This topic assumes that you are familiar with the following:
 
-* [CD Pipeline Basics](/article/cqgeblt4uh-cd-pipeline-basics) and [CI Pipeline Basics](/article/3amcd8hn53-ci-pipeline-basics)
-* [Looping Strategies Overview](https://docs.harness.io/article/eh4azj73m4)
-* [Best Practices for Looping Strategies](https://docs.harness.io/article/q7i0saqgw4)
+* [CD Pipeline Basics](https://docs.harness.io/article/cqgeblt4uh-cd-pipeline-basics) and [CI Pipeline Basics](../../continuous-integration/ci-quickstarts/ci-pipeline-basics.md)
+* [Looping Strategies Overview](looping-strategies-matrix-repeat-and-parallelism.md)
+* [Best Practices for Looping Strategies](best-practices-for-looping-strategies.md)
 
 ### Important Notes
 
 * There is no limit on the number of dimensions you can include in a matrix or the number of looping strategies you define in a Pipeline.
-* You should avoid complex looping scenarios unless you clearly understand the resources that your scenario will require. See [Best Practices for Looping Strategies](https://docs.harness.io/article/q7i0saqgw4).
+* You should avoid complex looping scenarios unless you clearly understand the resources that your scenario will require. See [Best Practices for Looping Strategies](best-practices-for-looping-strategies.md).
 
 ### Add a Matrix Strategy to a Stage or Step
 
 1. In the Pipeline Studio, go to the **Advanced** tab of the Stage or Step where you want to apply the Looping strategy.
-2. Under Looping Strategies, select **Matrix**.You can also use a Loop strategy to iterate through a simple list. See [Looping Strategies Overview: Matrix, Repeat, and Parallelism](https://docs.harness.io/article/eh4azj73m4).
+2. Under Looping Strategies, select **Matrix**.You can also use a Loop strategy to iterate through a simple list. See [Looping Strategies Overview: Matrix, Repeat, and Parallelism](looping-strategies-matrix-repeat-and-parallelism.md).
 3. Enter the YAML definition for your strategy as illustrated in the following examples.
 
 ### CI Example: Run an App in `[browser]` on `[os]`
@@ -134,7 +134,8 @@ echo "Current os for step: <+matrix.os>"
 ```
 Given the CD example above, you can go to the Service tab of the Deploy Stage and specify the service using  `<+matrix.service>`.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/kay7z1bi01/1658007795862/matrix-service-in-cd-stage.png)The following variables are also supported:
+![](./static/run-a-stage-or-step-multiple-times-using-a-matrix-40.png)
+The following variables are also supported:
 
 * `<+strategy.iteration>` — The current iteration.
 * `<+strategy.iterations>` — The total number of iterations.
@@ -213,9 +214,9 @@ matrix-pipeline-example.yml
                             environment: env1  
                   maxConcurrency: 2
 ```
-### See Also
+### See also
 
-* [Best Practices for Looping Strategies](https://docs.harness.io/article/q7i0saqgw4)
-* [Looping Strategies Overview: Matrix, Repeat, and Parallelism](https://docs.harness.io/article/eh4azj73m4)
-* [Speed Up CI Test Pipelines Using Parallelism](https://docs.harness.io/article/kce8mgionj)
+* [Best Practices for Looping Strategies](best-practices-for-looping-strategies.md)
+* [Looping Strategies Overview: Matrix, Repeat, and Parallelism](looping-strategies-matrix-repeat-and-parallelism.md)
+* [Speed Up CI Test Pipelines Using Parallelism](speed-up-ci-test-pipelines-using-parallelism.md)
 

@@ -26,15 +26,16 @@ Harness provides the following Delegate images. Each image includes a set of too
 | harness/delegate:*YY.MM.xxxxx* | Includes the Delegate and its dependencies.Includes client tools such as `kubectl`, Helm, and ChartMuseum. |
 | harness/delegate:*YY.MM.xxxxx*.minimal | Includes the Delegate and its dependencies. |
 
-For detailed information on the contents of Docker Delegate images, see [Support for Docker Delegate Images](https://docs.harness.io/article/6nwxxv14gr).
+For detailed information on the contents of Docker Delegate images, see [Support for Docker Delegate Images](support-for-delegate-docker-images.md).
 
 ### Select user privileges in the installer
 
 The easiest way to set user privileges for the Delegate container is to use the Delegate installer.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/lbndemc7qi/1664942486244/screen-shot-2022-09-13-at-2-47-12-pm-20220913-214902.png)**To set container privileges in the Delegate installer**
+![](./static/enable-root-user-privileges-to-add-custom-binaries-10.png)
+**To set container privileges in the Delegate installer**
 
-1. Advance to the **Delegate Setup** page.![](https://files.helpdocs.io/kw8ldg1itf/articles/lbndemc7qi/1664943347327/screen-shot-2022-10-04-at-8-53-59-pm.png)
+1. Advance to the **Delegate Setup** page.![](./static/enable-root-user-privileges-to-add-custom-binaries-11.png)
 2. Clear or select the checkbox as follows:
 * To set non-root user privileges, clear **Run delegate with root access**.
 * To set root user privileges, select **Run delegate with root access**.

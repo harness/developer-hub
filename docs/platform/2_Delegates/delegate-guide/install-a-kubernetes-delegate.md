@@ -18,7 +18,9 @@ Most importantly, the Delegate performs all Harness operations.
 
 There are several types of Delegates. This topic describes how to install the Kubernetes Delegate.
 
-If you are migrating from Harness FirstGen to Harness NextGen, you must install new Delegates in Harness NextGen. Harness FirstGen Delegates won't work with Harness NextGen.### Limitations
+If you are migrating from Harness FirstGen to Harness NextGen, you must install new Delegates in Harness NextGen. Harness FirstGen Delegates won't work with Harness NextGen.
+
+### Limitations
 
 Currently, Harness Kubernetes Delegates don't install with the default settings in GKE Auto Pilot Mode. Please use the Manual mode when creating the cluster to make sure it meets the Delegate requirements.
 
@@ -31,7 +33,8 @@ The Delegate requires access to all the Connectors and Harness Secrets needed to
 
 The following diagram shows how the Delegate enables Harness to integrate with all of your deployment resources:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/8o4cwqj1kv/1596840107816/image.png)Here's a 10min video that walks you through adding a Harness Kubernetes Cluster Connector and Harness Kubernetes Delegate. The Delegate is added to the target cluster and then the Kubernetes Cluster Connector uses the Delegate to connect to the cluster:
+![](./static/install-a-kubernetes-delegate-12.png)
+Here's a 10min video that walks you through adding a Harness Kubernetes Cluster Connector and Harness Kubernetes Delegate. The Delegate is added to the target cluster and then the Kubernetes Cluster Connector uses the Delegate to connect to the cluster:
 
 ### Inline or standalone installation
 
@@ -50,7 +53,7 @@ You can install the Kubernetes Delegate inside or outside your deployment target
 
 To install a Kubernetes Delegate, you must have access to a Kubernetes cluster. You'll install the Harness Delegate as YAML or Helm Chart.
 
-For connectivity, see [Delegate Requirements and Limitations](/article/k7sbhe419w-delegate-requirements-and-limitations).
+For connectivity, see [Delegate Requirements and Limitations](../delegate-reference/delegate-requirements-and-limitations.md).
 
 You'll need the following Kubernetes permissions to install the delegate:
 
@@ -63,13 +66,14 @@ Inline or standalone, click **New Delegate**.
 
  Delegate selection options appear.
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/f9bd10b3nj/1617750944225/image.png)Click **Kubernetes**, and then click **Continue**.
+![](./static/install-a-kubernetes-delegate-13.png)
+Click **Kubernetes**, and then click **Continue**.
 
 Enter a name and description for the Delegate that will let others know what it is used for, or where it's installed.
 
 ### Step 3: Add delegate name
 
-**Do not run Delegates with the same name in different clusters.** See [Troubleshooting](/article/jzklic4y2j-troubleshooting).Add a name for the Delegate. The name will be added to the Delegate YAML as the `name` metadata of the StatefulSet.
+**Do not run Delegates with the same name in different clusters.** See [Troubleshooting](https://docs.harness.io/article/jzklic4y2j-troubleshooting).Add a name for the Delegate. The name will be added to the Delegate YAML as the `name` metadata of the StatefulSet.
 
 **Legacy Delegates are deployed as StatefulSet objects. By default, the StatefulSet.serviceName field is empty (“”) and does not need to be specified. Delegates do not require service names.****The combined length of the Delegate name and the service name must not exceed 255 bytes. If the maximum length is exceeded, the Delegate might not appear in the Harness Manager UI. For more information on StatefulSet.serviceName, see** [**StatefulSetSpec**](https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/stateful-set-v1/#StatefulSetSpec) **in** [**Kubernetes API**](https://kubernetes.io/docs/reference/kubernetes-api/)**.**Add Tags to the Delegate. By default, Harness adds a Tag using the name you enter, but you can more. Simply type them in and press Enter.
 
@@ -86,7 +90,9 @@ Your Kubernetes cluster must have the unallocated resources required to run the 
 * Medium - 6.6GB memory, 2CPU
 * Large - 13.2GB memory, 4CPU
 
-**Important:** these sizing requirements are for the Delegate only. Your cluster will require more memory for Kubernetes, the operating system, and other services.#### Important resource considerations
+**Important:** these sizing requirements are for the Delegate only. Your cluster will require more memory for Kubernetes, the operating system, and other services.
+
+#### Important resource considerations
 
 These requirements are for the Delegate only. Your cluster will have system, Kubernetes, and other resources consumers. Make sure that the cluster has enough memory, storage, and CPU for all of its resource consumers.
 
@@ -151,9 +157,10 @@ If you don’t want to use `resources: [“*”]` for the Role, you can list o
 
 In the Delegate installation settings, you also have the option to select cluster read-only access and namespace-specific access. When you select these options, the YAML generated by Harness is changed to reflect the limited access:
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/f9bd10b3nj/1655137603325/clean-shot-2022-06-13-at-09-26-02.png)### Step 6: Verify
+![](./static/install-a-kubernetes-delegate-14.png)
+### Step 6: Verify
 
-For an overview of verification, see [Delegate Registration and Verification](/article/39tx85rekj-delegate-registration).
+For an overview of verification, see [Delegate Registration and Verification](delegate-registration.md).
 
 In the Delegate wizard, click **Verify** and Harness will verify that it is receiving heartbeats from the Delegate.
 
@@ -248,12 +255,12 @@ The following table lists each of the environment variables in the Harness Kuber
 - name: DEPLOY_MODE  value: KUBERNETES
 ```
  |
-| `DELEGATE_NAME` | The name of the Delegate. This is the name that will appear in Harness when the Delegate is registered.You can automate Delegate creation by omitting the name, and then have a script copying the Delegate YAML file and add a unique name to `value` for each new Delegate you want to register.See [Automate Delegate Installation](/article/9deaame3qz-automate-delegate-installation). | 
+| `DELEGATE_NAME` | The name of the Delegate. This is the name that will appear in Harness when the Delegate is registered.You can automate Delegate creation by omitting the name, and then have a script copying the Delegate YAML file and add a unique name to `value` for each new Delegate you want to register.See [Automate Delegate Installation](automate-delegate-installation.md). | 
 ```
 - name: DELEGATE_NAME  value: qa
 ```
  |
-| `NEXT_GEN` | Indicates that this Delegate will register in [Harness NextGen](/article/ra3nqcdbaf-compare-first-gen-and-next-gen).If this variable is set to `false`, the Delegate will attempt to register in Harness FirstGen. | 
+| `NEXT_GEN` | Indicates that this Delegate will register in [Harness NextGen](https://docs.harness.io/article/ra3nqcdbaf-compare-first-gen-and-next-gen).If this variable is set to `false`, the Delegate will attempt to register in Harness FirstGen. | 
 ```
 - name: NEXT_GEN  value: "true"
 ```
@@ -268,7 +275,7 @@ The following table lists each of the environment variables in the Harness Kuber
 - name: DELEGATE_TYPE  value: "KUBERNETES"
 ```
  |
-| `DELEGATE_TAGS` | The Tags added to the Delegate in the Harness Manager or YAML before registering.Tags are generated by Harness using the Delegate name but you can also add your own Tags.Tags appear in the Delegate details page in the Harness Manager.See [Tags Reference](/article/i8t053o0sq-tags-reference) and [Select Delegates with Tags](/article/nnuf8yv13o-select-delegates-with-selectors). | 
+| `DELEGATE_TAGS` | The Tags added to the Delegate in the Harness Manager or YAML before registering.Tags are generated by Harness using the Delegate name but you can also add your own Tags.Tags appear in the Delegate details page in the Harness Manager.See [Tags Reference](../../20_References/tags-reference.md) and [Select Delegates with Tags](select-delegates-with-selectors.md). | 
 ```
 - name: DELEGATE_TAGS  value: ""
 ```
@@ -278,12 +285,12 @@ The following table lists each of the environment variables in the Harness Kuber
 - name: DELEGATE_TASK_LIMIT  value: "50"
 ```
  |
-| `DELEGATE_ORG_IDENTIFIER` | The Harness Organization [Identifier](/article/li0my8tcz3-entity-identifier-reference) where the Delegate will register.Delegates at the account-level do not have a value for this variable. | 
+| `DELEGATE_ORG_IDENTIFIER` | The Harness Organization [Identifier](../../20_References/entity-identifier-reference.md) where the Delegate will register.Delegates at the account-level do not have a value for this variable. | 
 ```
 - name: DELEGATE_ORG_IDENTIFIER  value: "engg"
 ```
  |
-| `DELEGATE_PROJECT_IDENTIFIER` | The Harness Project [Identifier](/article/li0my8tcz3-entity-identifier-reference) where the Delegate will register.Delegates at the account or Org-level do not have a value for this variable. | 
+| `DELEGATE_PROJECT_IDENTIFIER` | The Harness Project [Identifier](../../20_References/entity-identifier-reference.md) where the Delegate will register.Delegates at the account or Org-level do not have a value for this variable. | 
 ```
 - name: DELEGATE_PROJECT_IDENTIFIER  value: "myproject"
 ```
@@ -293,7 +300,7 @@ The following table lists each of the environment variables in the Harness Kuber
 - name: PROXY_HOST  value: ""- name: PROXY_PORT  value: ""- name: PROXY_SCHEME  value: ""- name: NO_PROXY  value: ""- name: PROXY_MANAGER  value: "true"- name: PROXY_USER  valueFrom:    secretKeyRef:      name: mydel-proxy      key: PROXY_USER- name: PROXY_PASSWORD  valueFrom:    secretKeyRef:      name: mydel-proxy      key: PROXY_PASSWORD
 ```
  |
-| `INIT_SCRIPT` | You can run scripts on the Delegate using `INIT_SCRIPT`.For example, if you wanted to install software on the Delegate pod, you can enter the script in `INIT_SCRIPT` and then apply the Delegate YAML.A multiline script must follow the YAML spec for [literal scalar style](https://yaml.org/spec/1.2-old/spec.html#id2795688).See [Run Scripts on Delegates](/article/yte6x6cyhn-run-scripts-on-delegates). | 
+| `INIT_SCRIPT` | You can run scripts on the Delegate using `INIT_SCRIPT`.For example, if you wanted to install software on the Delegate pod, you can enter the script in `INIT_SCRIPT` and then apply the Delegate YAML.A multiline script must follow the YAML spec for [literal scalar style](https://yaml.org/spec/1.2-old/spec.html#id2795688).See [Run Scripts on Delegates](run-scripts-on-delegates.md). | 
 ```
 - name: INIT_SCRIPT  value: |-    echo install wget    apt-get install wget    echo wget installed
 ```
@@ -323,7 +330,7 @@ The following table lists each of the environment variables in the Harness Kuber
 - name: JRE_VERSION  value: 1.8.0_242
 ```
  |
-| `HELM3_PATH`,`HELM_PATH` | When you Install and run a new Harness Delegate, Harness includes Helm 3 support automatically. But in some cases, you might want to use one of the custom Helm binaries available from [Helm release](https://github.com/helm/helm/releases).For a Helm 3 binary, enter the local path to the binary in `HELM3_PATH`.For a Helm 2 binary, enter the path local path to the binary in `HELM_PATH`.If you are performing a [Native Helm deployment](/article/lbhf2h71at-native-helm-quickstart), do not use `HELM_PATH` for the Helm 2 binary. Harness will look for the Helm 2 binary on the Delegate in its standard path, such as `/usr/local/bin/helm`. | 
+| `HELM3_PATH`,`HELM_PATH` | When you Install and run a new Harness Delegate, Harness includes Helm 3 support automatically. But in some cases, you might want to use one of the custom Helm binaries available from [Helm release](https://github.com/helm/helm/releases).For a Helm 3 binary, enter the local path to the binary in `HELM3_PATH`.For a Helm 2 binary, enter the path local path to the binary in `HELM_PATH`.If you are performing a [Native Helm deployment](https://docs.harness.io/article/lbhf2h71at-native-helm-quickstart), do not use `HELM_PATH` for the Helm 2 binary. Harness will look for the Helm 2 binary on the Delegate in its standard path, such as `/usr/local/bin/helm`. | 
 ```
 - name: HELM3_PATH  value: ""- name: HELM_PATH  value: ""
 ```

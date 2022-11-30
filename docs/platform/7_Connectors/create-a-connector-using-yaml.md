@@ -1,6 +1,6 @@
 ---
 title: Create a Connector using YAML
-description: To solve [problem], [general description of How-to solution]. In this topic --  Before You Begin. Visual Summary. Step 1 --  Title. Step 2 --  Title. Next Steps. Before You Begin. Your target environment must…
+description: To solve [problem], [general description of How-to solution]. In this topic --  Before you begin. Visual Summary. Step 1 --  Title. Step 2 --  Title. Next steps. Before you begin. Your target environment must…
 # sidebar_position: 2
 helpdocs_topic_id: m0awmzipdp
 helpdocs_category_id: o1zhrfo8n5
@@ -8,21 +8,16 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Harness [Connectors](/category/o1zhrfo8n5-connectors) integrate Harness with your cloud platforms, codebase and artifact repos, and collaboration and monitoring tools.
+Harness [Connectors](https://docs.harness.io/category/connectors) integrate Harness with your cloud platforms, codebase and artifact repos, and collaboration and monitoring tools.
 
 You can add Connectors using the Harness GUI or via YAML using the Harness YAML Builder.
 
 This topic shows you how to add a Connector using the YAML Builder.
 
-In this topic:
 
-* [Before You Begin](#before_you_begin)
-* [Step 1: Create Secrets or Keys](#step_1_create_secrets_or_keys)
-* [Step 2: Create the Connector](#step_2_create_the_connector)
+### Before you begin
 
-### Before You Begin
-
-* [Learn Harness' Key Concepts](/article/hv2758ro4e-learn-harness-key-concepts)
+* [Learn Harness' Key Concepts](https://docs.harness.io/article/hv2758ro4e-learn-harness-key-concepts)
 
 ### Step 1: Create Secrets or Keys
 
@@ -54,7 +49,7 @@ secret:
 ```
 The `identifier` value (in this example, `docsdockerhubpassword`) is what you'll reference when you add your Connector in YAML.
 
-For steps on other types of secrets, see [Secrets and Secret Management](/category/48wnu4u0tj-secrets-and-secret-management).
+For steps on other types of secrets, see [Secrets and Secret Management](https://docs.harness.io/category/security).
 
 ### Step 2: Create the Connector
 

@@ -12,14 +12,11 @@ You can add an extra layer of security by using a 2-step-verification, also know
 
 This document explains the basic steps to set up Two-Factor Authentication in Harness.
 
-In this topic:
-
 ### Before you begin
 
-* See [Access Management (RBAC) Overview](../4_Role-Based-Access-Control/1-rbac-in-harness.md)
 * Make sure you have permissions to **Create/Edit, Delete** Authentication Settings.
 
-### Set up two-factor authentication
+### Set Up Two-Factor Authentication
 
 You can manage Two-Factor Authentication (2FA) in two ways:
 
@@ -28,11 +25,11 @@ You can manage Two-Factor Authentication (2FA) in two ways:
 
 If 2FA is disabled at the account level, you can still enable 2FA for your user account. If 2FA is enabled account-wide, you cannot turn it off for your user account.When you enforce 2FA, users receive an email where they can scan a QR Code using their smartphones and a token generator app. The next time they log in with their username and password, they are prompted to use 2FA to complete the log in.
 
-### Set up two-factor authentication for your profile
+### Set Up Two-Factor Authentication For Your Profile
 
 1. Click on your **User Profile** icon at the bottom-left corner to go to the Profile page.
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/ipsux8n7gm/1623321334161/screenshot-2021-06-10-at-4-04-05-pm.png)
+![](./static/two-factor-authentication-00.png)
 1. The Profile page appears.
 2. Toggle the **Two-Factor Authentication** indicator. The **Enable Two-Factor Authentication** page appears.
 3. Using your smartphone's 2FA token generator app, such as Google Authenticator, scan the QR Code and add it to the list in your app.  
@@ -41,7 +38,7 @@ You can now see **Harness-Inc** in your 2FA token generator app, which provides 
 4. Click **Enable**. The next time you log in by entering your username and password, you are prompted to provide the 2FA authentication code.
 5. Obtain the code from your 2FA token generator app, and enter it. You can then log into your Harness account.
 
-### Set up account-wide two-factor authentication
+### Set Up Account-Wide Two-Factor Authentication
 
 Once you have set up 2FA for your account, you can enforce it for all users and groups in the account. When 2FA is enforced, account users will experience the following changes:
 
@@ -50,16 +47,16 @@ Once you have set up 2FA for your account, you can enforce it for all users and 
 
 To require that all account users and groups use 2FA, do the following:
 
-1. Enable 2FA for your account as described in [Set Up Two-Factor Authentication for Your Profile](/article/ipsux8n7gm-two-factor-authentication#set_up_two_factor_authentication_for_your_profile).
+1. Enable 2FA for your account as described in [Set Up Two-Factor Authentication for Your Profile](#set-up-two-factor-authentication-for-your-profile).
 2. Select **ACCOUNT SETUP** > **Authentication**. The **Authentication: Configuration** page appears.  
-![](https://files.helpdocs.io/i5nl071jo5/articles/ipsux8n7gm/1623324747425/screenshot-2021-06-10-at-5-00-29-pm.png)
+![](./static/two-factor-authentication-01.png)
 3. Slide the **Enforce Two Factor Authentication** setting on.  
   
-If you have not yet [set up 2FA for your own profile](#to_set_up_2fa_for_your_profile), this prompt reminds you to protect your own login before proceeding:![](https://files.helpdocs.io/i5nl071jo5/articles/ipsux8n7gm/1623326431032/screenshot-2021-06-10-at-5-05-00-pm.png)
+If you have not yet [set up 2FA for your own profile](#set-up-two-factor-authentication-for-your-profile), this prompt reminds you to protect your own login before proceeding:![](./static/two-factor-authentication-02.png)
 4. Click **Go to settings** to display a QR Code and secret key that you can store to make sure your own ability to log in:  
-![](https://files.helpdocs.io/i5nl071jo5/articles/ipsux8n7gm/1623330903675/screenshot-2021-06-10-at-6-38-14-pm.png)
+![](./static/two-factor-authentication-03.png)
 5. Return to **ACCOUNT SETUP** > **Authentication** to enable account-wide, two-factor authentication.
 6. Slide the **Enforce Two Factor Authentication** setting on. This prompt asks for a confirmation to enable 2FA for all the users:  
-![](https://files.helpdocs.io/i5nl071jo5/articles/ipsux8n7gm/1623332118815/screenshot-2021-06-10-at-7-02-44-pm.png)
+![](./static/two-factor-authentication-04.png)
 7. Click **Confirm**.
 

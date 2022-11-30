@@ -14,11 +14,11 @@ For example, when a pull request or push event occurs on a Git repo, a CI or CD 
 
 Triggers enable event driven CI/CD and support the practice of every commit building and/or deploying to a target environment.
 
-For general Triggers reference, see [Triggers Reference](/article/rset0jry8q-triggers-reference).### Before You Begin
+For general Triggers reference, see [Triggers Reference](../8_Pipelines/w_pipeline-steps-reference/triggers-reference.md).### Before you begin
 
-* [Learn Harness' Key Concepts](/article/hv2758ro4e-learn-harness-key-concepts)
-* [Kubernetes CD Quickstart](/article/knunou9j30-kubernetes-cd-quickstart)
-* [CI Pipeline Quickstart](/article/x0d77ktjw8-ci-pipeline-quickstart)
+* [Learn Harness' Key Concepts](https://docs.harness.io/article/hv2758ro4e-learn-harness-key-concepts)
+* [Kubernetes CD Quickstart](https://docs.harness.io/article/knunou9j30-kubernetes-cd-quickstart)
+* [CI Pipeline Quickstart](../../continuous-integration/ci-quickstarts/ci-pipeline-quickstart.md)
 
 ### Limitations
 
@@ -38,7 +38,7 @@ The first Build Step in your Pipeline specifies the codebase to build. If your P
 
 To edit an existing Codebase, click **Codebase** on the right side of the Pipeline Studio.
 
-See [Create and Configure a Codebase](https://ngdocs.harness.io/article/mozd8b49td).
+See [Create and Configure a Codebase](../../continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md).
 
 ### Step 2: Add a Trigger to a Pipeline
 
@@ -56,7 +56,7 @@ Enter a name for the Trigger.
 
 In **Payload Type**, select your Git provider. This setting is populated with the provider you selected automatically.
 
-Select or create a Connector to the Git account for the Trigger repo. See [Code Repo Connectors](/category/xyexvcc206-ref-source-repo-provider).
+Select or create a Connector to the Git account for the Trigger repo. See [Code Repo Connectors](https://docs.harness.io/category/code-repo-connectors).
 
 * **If you set up an account-level Code Repo Connector:** in **Repository Name**, enter the name of the repo in the account in the Connector.
 * **If you set up a repo-level Code Repo Connector:** the repo name cannot be edited.
@@ -65,7 +65,7 @@ In **Event**, select the Git event for the Webhook.
 
 If the event you select results in the **Actions** settings appearing, select the actions for the Webhook or select **Any Actions**.
 
-For details on these settings, see [Triggers Reference](/article/rset0jry8q-triggers-reference).
+For details on these settings, see [Triggers Reference](../8_Pipelines/w_pipeline-steps-reference/triggers-reference.md).
 
 For details on the payloads of the different repo Webhooks, see GitHub [Event Types & Payloads](https://docs.github.com/en/developers/webhooks-and-events/webhooks/webhook-events-and-payloads), Bitbucket [Event Payloads](https://confluence.atlassian.com/bitbucket/event-payloads-740262817.html), and Gitlab [Events](https://docs.gitlab.com/ee/user/project/integrations/webhooks.html#events).### Option: Auto-abort Previous Execution
 
@@ -101,15 +101,16 @@ For example:
 
 Conditions support Harness built-in expressions for accessing Trigger settings, Git payload data and headers.
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/hndnde8usz/1624919275031/clean-shot-2021-06-28-at-15-27-08.png)JEXL expressions are also supported.
+![](./static/triggering-pipelines-15.png)
+JEXL expressions are also supported.
 
-For details on these settings, see [Triggers Reference](/article/rset0jry8q-triggers-reference).
+For details on these settings, see [Triggers Reference](../8_Pipelines/w_pipeline-steps-reference/triggers-reference.md).
 
 Conditions are ANDed together (boolean AND operation). All Conditions must match an event payload for it to execute the Trigger.### Step 3: Set Pipeline Input
 
-Pipelines often have [Runtime Inputs](/article/f6yobn7iq0-runtime-inputs) like codebase branch names or artifact versions and tags.
+Pipelines often have [Runtime Inputs](../20_References/runtime-inputs.md) like codebase branch names or artifact versions and tags.
 
-Provide values for the inputs. You can also use [Input Sets](/article/3fqwa8et3d-input-sets).
+Provide values for the inputs. You can also use [Input Sets](../8_Pipelines/input-sets.md).
 
 Click **Create Trigger**.
 
@@ -121,7 +122,8 @@ When you create or edit the Trigger, Harness registers the webhook in your Git p
 
 * **Scopes:** select all the **repo**, **user**, and **admin:repo\_hook** options
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/hndnde8usz/1637177263636/clean-shot-2021-11-17-at-11-26-59.png)You should also be repo admin.
+![](./static/triggering-pipelines-16.png)
+You should also be repo admin.
 
 ### Step 4: Test Trigger
 
@@ -129,19 +131,22 @@ Make a change on the repo and see if it executes the Trigger. For example, chang
 
 In your Git provider repo, you can see that the request and response were successful.
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/hndnde8usz/1614104307757/image.png)In Harness, view the Pipeline execution.
+![](./static/triggering-pipelines-17.png)
+In Harness, view the Pipeline execution.
 
 In Harness CI, click **Builds**.
 
 You can see the source and target branches. You can also see the pull request comment and number.
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/hndnde8usz/1614104376860/image.png)Click the pull request number and it opens the Git provider repo at the pull request.
+![](./static/triggering-pipelines-18.png)
+Click the pull request number and it opens the Git provider repo at the pull request.
 
 If you open the Trigger in the Pipeline you will see a status in **Last Activation Details**.
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/hndnde8usz/1624922961169/clean-shot-2021-06-28-at-16-29-13.png)Activation means the Trigger was able to request Pipeline execution. It does not mean that the Webhook didn't work.
+![](./static/triggering-pipelines-19.png)
+Activation means the Trigger was able to request Pipeline execution. It does not mean that the Webhook didn't work.
 
-### See Also
+### See also
 
-* [Triggers Reference](/article/rset0jry8q-triggers-reference)
+* [Triggers Reference](../8_Pipelines/w_pipeline-steps-reference/triggers-reference.md)
 

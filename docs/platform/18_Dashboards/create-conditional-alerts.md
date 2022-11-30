@@ -14,15 +14,9 @@ Conditional alerts let you trigger notifications when the specific conditions ar
 * Dashboards check whether each alert’s conditions have been met or exceeded based on the alert’s frequency, and then notifies users of this change.
 * To create alerts, your dashboard must be out of edit mode.
 
-In this topic:
+### Before you begin
 
-* [Before You Begin](https://ngdocs.harness.io/article/ro0i58mvby-create-conditional-alerts#before_you_begin)
-* [Visual Summary](https://ngdocs.harness.io/article/ro0i58mvby-create-conditional-alerts#visual_summary)
-* [Step: Create Conditional Alerts](https://ngdocs.harness.io/article/ro0i58mvby-create-conditional-alerts#step_create_conditional_alerts)
-
-### Before You Begin
-
-* [Create Dashboards](/article/ardf4nbvcy-create-dashboards)
+* [Create Dashboards](create-dashboards.md)
 
 ### Visual Summary
 
@@ -32,7 +26,7 @@ The following video explains how to create conditional alerts for a dashboard:
 
 To create an alert on a dashboard tile, perform the following steps:
 
-1. Click the tile’s bell icon.![](https://files.helpdocs.io/i5nl071jo5/articles/ro0i58mvby/1626971065877/screenshot-2021-07-22-at-9-53-43-pm.png)
+1. Click the tile’s bell icon.![](./static/create-conditional-alerts-16.png)
 2. The default alert title indicates which conditions need to be true for the alert to be triggered. If you want to rename your alert, enter a custom title.
 3. In the **Condition** drop-down, set the components that tell dashboard how to check the tile data for changes and the kinds of changes that trigger an alert notification.  
 The alert condition is represented by these components:
@@ -63,6 +57,6 @@ The alert condition is represented by these components:
 	* **Minutes** at a specified interval (the default is to check the data every 15 minutes) with specified **Start** and **End** times (the default is **05:00** and **17:00**). With minute-based intervals, you can have Looker check the data at these intervals:
 		+ **15 minutes**
 		+ **30 minutes****Start** and **End** times are inclusive. For example, if you set **Check every** to **12 hours** with a **Start** time of **05:00** and an **End** time of **17:00**, Dashboard will check the data at 05:00 *and* 17:00
-6. Click **Save Alert**.![](https://files.helpdocs.io/i5nl071jo5/articles/ro0i58mvby/1626971718285/screenshot-2021-07-22-at-10-05-00-pm.png)
-7. Hover over the bell icon that appears on the dashboard tile. A numeric indicator shows how many alerts you have created for that tile.![](https://files.helpdocs.io/i5nl071jo5/articles/ro0i58mvby/1626972222507/screenshot-2021-07-22-at-10-13-18-pm.png)
+6. Click **Save Alert**.![](./static/create-conditional-alerts-17.png)
+7. Hover over the bell icon that appears on the dashboard tile. A numeric indicator shows how many alerts you have created for that tile.![](./static/create-conditional-alerts-18.png)
 

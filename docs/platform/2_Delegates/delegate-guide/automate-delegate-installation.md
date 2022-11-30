@@ -51,7 +51,7 @@ For the Kubernetes delegate, you only need one delegate in the cluster. Simply i
 
 ### Step 1: Duplicate the delegate config file
 
-These steps assume you have already installed and registered a Delegate. If you haven't, see the [Delegate installation topics](/category/9i5thr0ot2).Duplicate the configuration file for a delegate you have installed and registered with your Harness account.
+These steps assume you have already installed and registered a Delegate. If you haven't, see the [Delegate installation topics](https://docs.harness.io/category/9i5thr0ot2).Duplicate the configuration file for a delegate you have installed and registered with your Harness account.
 
 Ensure that the delegate environment variables are set correctly.
 
@@ -61,7 +61,9 @@ If your delegate is registered at the account level, the Organization and Projec
 
 If your delegate configuration file uses other environment variables, review them to make certain that you want them duplicated.
 
-The Delegate Environment Variables are described in the relevant Delegate installation topics.### Step 2: Rename the New Delegate
+The Delegate Environment Variables are described in the relevant Delegate installation topics.
+
+### Step 2: Rename the New Delegate
 
 The process you use to rename a delegate depends on its type. For Docker delegates, you change the name in one environment variable in the Docker compose file. For the Kubernetes delegate, you change multiple instances of the name.
 
@@ -101,5 +103,5 @@ After you update the delegate names, you can apply the configuration file. The d
 
 ### See also
 
-* [Run Scripts on Delegates](/article/yte6x6cyhn-run-scripts-on-delegates)
+* [Run Scripts on Delegates](run-scripts-on-delegates.md)
 

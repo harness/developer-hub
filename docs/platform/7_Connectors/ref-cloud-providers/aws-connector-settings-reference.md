@@ -12,7 +12,9 @@ AWS is used as a Harness Connector for activities such as obtaining artifacts, b
 
 This topic provides settings and permissions for the AWS Connector.
 
-The [DescribeRegions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRegions.html) action is required for all AWS Connectors regardless of what AWS service you are using for your target or build infrastructures.### AWS Permissions
+The [DescribeRegions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRegions.html) action is required for all AWS Connectors regardless of what AWS service you are using for your target or build infrastructures.
+
+### AWS Permissions
 
 The [DescribeRegions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRegions.html) action is required for all AWS Connectors regardless of what AWS service you are using for your target or build infrastructure.The AWS role policy requirements depend on what AWS services you are using for your artifacts and target infrastructure.
 
@@ -46,7 +48,9 @@ Create a [Customer Managed Policy](https://docs.aws.amazon.com/IAM/latest/UserGu
 ```
 ### AWS Policies Required
 
-The [DescribeRegions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRegions.html) action is required for all AWS Connectors regardless of what AWS service you are using for your target or build infrastructure.### AWS S3
+The [DescribeRegions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRegions.html) action is required for all AWS Connectors regardless of what AWS service you are using for your target or build infrastructure.
+
+### AWS S3
 
 #### Reading from AWS S3
 
@@ -99,7 +103,9 @@ The AWS [IAM Policy Simulator](https://docs.aws.amazon.com/IAM/latest/UserGuide/
     ]  
 }
 ```
-If you want to use an S3 bucket that is in a separate account than the account used to set up the AWS Cloud Provider, you can grant cross-account bucket access. For more information, see [Bucket Owner Granting Cross-Account Bucket Permissions](https://docs.aws.amazon.com/AmazonS3/latest/dev/example-walkthroughs-managing-access-example2.html) from AWS.#### Writing to AWS S3
+If you want to use an S3 bucket that is in a separate account than the account used to set up the AWS Cloud Provider, you can grant cross-account bucket access. For more information, see [Bucket Owner Granting Cross-Account Bucket Permissions](https://docs.aws.amazon.com/AmazonS3/latest/dev/example-walkthroughs-managing-access-example2.html) from AWS.
+
+#### Writing to AWS S3
 
 There are two policies required:
 
@@ -146,7 +152,9 @@ There are two policies required:
     ]  
 }
 ```
-If you want to use an S3 bucket that is in a separate account than the account used to set up the AWS Cloud Provider, you can grant cross-account bucket access. For more information, see [Bucket Owner Granting Cross-Account Bucket Permissions](https://docs.aws.amazon.com/AmazonS3/latest/dev/example-walkthroughs-managing-access-example2.html) from AWS.#### Read and Write to AWS S3
+If you want to use an S3 bucket that is in a separate account than the account used to set up the AWS Cloud Provider, you can grant cross-account bucket access. For more information, see [Bucket Owner Granting Cross-Account Bucket Permissions](https://docs.aws.amazon.com/AmazonS3/latest/dev/example-walkthroughs-managing-access-example2.html) from AWS.
+
+#### Read and Write to AWS S3
 
 You can have a single policy that reads and writes with an S3 bucket.
 
@@ -334,7 +342,7 @@ If you wanted to provide limited permissions for EKS clusters, you might use a p
 ```
 ### Use Kubernetes Cluster Connector for EKS
 
-If you want to connect Harness to Elastic Kubernetes Service (Amazon EKS), use the platform-agnostic [Kubernetes Cluster Connector](/article/sjjik49xww-kubernetes-cluster-connector-settings-reference).
+If you want to connect Harness to Elastic Kubernetes Service (Amazon EKS), use the platform-agnostic [Kubernetes Cluster Connector](kubernetes-cluster-connector-settings-reference.md).
 
 ### AWS Serverless Lambda
 
@@ -346,9 +354,11 @@ There are three authentication options for the AWS Connector when used for AWS E
 * [Enable cross-account access (STS Role)](#enable_cross_account_access_sts_role)
 	+ Requires that the AWS CLI is installed on the Delegate. See [Serverless and ​Enable cross-account access (STS Role)](#serverless_and_enable_cross_account_access_sts_role).
 
-For steps on Serverless Lambda deployments, see [Serverless Lambda CD Quickstart](/article/5fnx4hgwsa-serverless-lambda-cd-quickstart).
+For steps on Serverless Lambda deployments, see [Serverless Lambda CD Quickstart](https://docs.harness.io/article/5fnx4hgwsa-serverless-lambda-cd-quickstart).
 
-The [DescribeRegions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRegions.html) action is required for all AWS Connectors regardless of what AWS service you are using for your target or build infrastructure.#### Permissions
+The [DescribeRegions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRegions.html) action is required for all AWS Connectors regardless of what AWS service you are using for your target or build infrastructure.
+
+#### Permissions
 
 All authentication methods for Serverless deployments require an AWS User with specific AWS permissions, as described in [AWS Credentials](https://www.serverless.com/framework/docs/providers/aws/guide/credentials) from Serverless. To create the AWS User, do the following:
 
@@ -519,7 +529,7 @@ If you use the ​**Enable cross-account access (STS Role)** option in the AWS C
 
 The AWS CLI is not required for the other authentication methods.
 
-For steps on installing software with the Delegate, see [Run Initialization Scripts on Delegates](/article/yte6x6cyhn-run-scripts-on-delegates).
+For steps on installing software with the Delegate, see [Run Initialization Scripts on Delegates](../../2_Delegates/delegate-guide/run-scripts-on-delegates.md).
 
 ### Switching Policies
 
@@ -573,7 +583,7 @@ Typically, the Delegate(s) is running in the target infrastructure.
 
 The access key and your secret key of the IAM Role to use for the AWS account.
 
-You can use Harness secrets for both. See [Add Text Secrets](/article/osfw70e59c-add-use-text-secrets).
+You can use Harness secrets for both. See [Add Text Secrets](../../6_Security/add-use-text-secrets.md).
 
 #### Access and Secret Keys
 
@@ -603,7 +613,7 @@ eksctl create iamserviceaccount \
     --approve \  
     --override-existing-serviceaccounts —region=us-east-1
 ```
-In Harness, download the Harness Kubernetes Delegate YAML file. See [Install a Kubernetes Delegate](/article/f9bd10b3nj-install-a-kubernetes-delegate).
+In Harness, download the Harness Kubernetes Delegate YAML file. See [Install a Kubernetes Delegate](../../2_Delegates/delegate-guide/install-a-kubernetes-delegate.md).
 
 Open the Delegate YAML file in text editor.
 
@@ -647,7 +657,7 @@ Next, update StatefulSet spec with the new `serviceAccountName`.
 
 Save the Delegate YAML file.
 
-Install the Delegate in your EKS cluster and register the Delegate with Harness. See [Install a Kubernetes Delegate](/article/f9bd10b3nj-install-a-kubernetes-delegate).
+Install the Delegate in your EKS cluster and register the Delegate with Harness. See [Install a Kubernetes Delegate](../../2_Delegates/delegate-guide/install-a-kubernetes-delegate.md).
 
 When you install the Delegate in the cluster, the serviceAccount you added is used and the environment variables `AWS_ROLE_ARN` and `AWS_WEB_IDENTITY_TOKEN_FILE` are added automatically by EKS.Create a new AWS Connector.
 
@@ -667,7 +677,9 @@ In this scenario, the AWS account used for AWS access in **Credentials** will 
 
 The Harness Delegate(s) always runs in the account you specify in **Credentials** via **Access/Secret Key** or **Assume IAM Role on Delegate**.To assume the role in **Role ARN**, the AWS account in **Credentials** must be trusted by the role. The trust relationship is defined in the **Role ARN** role's trust policy when the role is created. That trust policy states which accounts are allowed to give that access to users in the account.
 
-You can use **Assume STS Role** to establish trust between roles in the same account, but cross-account trust is more common.#### Role ARN
+You can use **Assume STS Role** to establish trust between roles in the same account, but cross-account trust is more common.
+
+#### Role ARN
 
 The Amazon Resource Name (ARN) of the role that you want to assume. This is an IAM role in the target deployment AWS account.
 
@@ -679,7 +691,9 @@ If the administrator of the account to which the role belongs provided you with 
 
 For more information, see [How to Use an External ID When Granting Access to Your AWS Resources to a Third Party](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html) from AWS.
 
-The AWS [IAM Policy Simulator](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_testing-policies.html) is a useful tool for evaluating policies and access.### Test Region and AWS GovCloud Support
+The AWS [IAM Policy Simulator](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_testing-policies.html) is a useful tool for evaluating policies and access.
+
+### Test Region and AWS GovCloud Support
 
 By default, Harness uses the **us-east-1** region to test the credentials for this Connector.
 
@@ -695,10 +709,12 @@ You cannot access AWS GovCloud with standard AWS credentials. Likewise, you cann
 
 ### Troubleshooting
 
-See [Troubleshooting Harness](/article/jzklic4y2j-troubleshooting).
+See [Troubleshooting Harness](https://docs.harness.io/article/jzklic4y2j-troubleshooting).
 
-The [DescribeRegions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRegions.html) action is required for all AWS Connectors regardless of what AWS service you are using for your target infrastructure.### See Also
+The [DescribeRegions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRegions.html) action is required for all AWS Connectors regardless of what AWS service you are using for your target infrastructure.
 
-* [Google Cloud Platform (GCP) Connector Settings Reference](/article/yykfduond6-gcs-connector-settings-reference)
-* [Kubernetes Cluster Connector Settings Reference](/article/sjjik49xww-kubernetes-cluster-connector-settings-reference)
+### See also
+
+* [Google Cloud Platform (GCP) Connector Settings Reference](gcs-connector-settings-reference.md)
+* [Kubernetes Cluster Connector Settings Reference](kubernetes-cluster-connector-settings-reference.md)
 

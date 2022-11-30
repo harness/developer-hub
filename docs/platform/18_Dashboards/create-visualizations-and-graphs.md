@@ -12,15 +12,9 @@ You can add an eye-catching chart to any query result set on the Explore. The Da
 
 This topic explains how to create visualizations that best show off your data.
 
-In this topic:
+### Before you begin
 
-* [Before You Begin](https://ngdocs.harness.io/article/n2jqctdt7c-create-visualizations-and-graphs#before_you_begin)
-* [Step: Choose a Visualization Type](https://ngdocs.harness.io/article/n2jqctdt7c-create-visualizations-and-graphs#step_choose_a_visualization_type)
-* [Step: Fine-Tune Your Visualizations](https://ngdocs.harness.io/article/n2jqctdt7c-create-visualizations-and-graphs#step_fine_tune_your_visualizations)
-
-### Before You Begin
-
-* [Create Dashboards](/article/ardf4nbvcy-create-dashboards)
+* [Create Dashboards](create-dashboards.md)
 
 ### Step: Choose a Visualization Type
 
@@ -29,7 +23,7 @@ Once you’ve created and run your query, click the Visualization tab in the Exp
 1. Create and run your query.
 2. Click the **Visualization** tab to start configuring your visualization options.
 3. Use the chart buttons to pick the visualization type that’s right for the data. For more information, see [Visualization types](https://docs.looker.com/exploring-data/visualizing-query-results/visualization-types).  
-![](https://files.helpdocs.io/i5nl071jo5/articles/n2jqctdt7c/1626973154560/screenshot-2021-07-22-at-10-28-57-pm.png)
+![](./static/create-visualizations-and-graphs-19.png)
 
 ### Step: Fine-Tune Your Visualizations
 

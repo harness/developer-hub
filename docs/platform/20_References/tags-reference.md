@@ -18,10 +18,11 @@ Harness Tags are applied to entities and then used to filter them. Multiple Tags
 
 For example, the Tag **docs** has been added to two Projects and so a search for **doc** returns Projects with name and Tags that match:
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/i8t053o0sq/1626466620365/clean-shot-2021-07-16-at-13-15-18.png)### Limitations
+![](./static/tags-reference-18.png)
+### Limitations
 
-* [Runtime inputs](/article/f6yobn7iq0-runtime-inputs) (`<+input>`) are not supported in Tags.
-* Harness variable expressions cannot be used in Tags. See [Built-in Harness Variables Reference](/article/lml71vhsim-harness-variables).
+* [Runtime inputs](runtime-inputs.md) (`<+input>`) are not supported in Tags.
+* Harness variable expressions cannot be used in Tags. See [Built-in Harness Variables Reference](../12_Variables and Expressions/harness-variables.md).
 
 ### Delegate Tags and General Tags
 
@@ -33,7 +34,7 @@ Delegate Tags are different from general Tags in the following ways:
 
 ### Tag Expressions
 
-You can reference Tags using [Harness expressions](/article/lml71vhsim-harness-variables).
+You can reference Tags using [Harness expressions](../12_Variables and Expressions/harness-variables.md).
 
 You simply reference the tagged entity and then use `tags.[tag name]`, like `<+pipeline.tags.docs>`
 
@@ -46,5 +47,5 @@ For example, here are several different references:
 
 ### Related Reference Material
 
-* [Built-in Harness Variables Reference](/article/lml71vhsim-harness-variables)
+* [Built-in Harness Variables Reference](../12_Variables and Expressions/harness-variables.md)
 

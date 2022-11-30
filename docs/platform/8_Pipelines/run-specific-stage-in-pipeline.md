@@ -14,27 +14,19 @@ While executing a Pipeline, you might encounter situations where most of the sta
 
 This topic explains how to run specific stages in a Pipeline.
 
-In this topic:
 
-* [Before You Begin](#before_you_begin)
-* [Review: Dependent and Independent Stages](#review_dependent_and_independent_stages)
-* [Step 1: Select Stage Execution Settings](#step_1_select_stage_execution_settings)
-* [Option: Run Specific Independent Stages](#option_run_specific_independent_stages)
-* [Option: Run Specific Dependent Stages](#option_run_specific_dependent_stages)
-* [Option: Rerun Stage](#option_rerun_stage)
-
-### Before You Begin
+### Before you begin
 
 * [Learn Harness' Key Concepts](https://ngdocs.harness.io/article/hv2758ro4e-learn-harness-key-concepts)
-* [Create Organizations and Projects](https://ngdocs.harness.io/article/36fw2u92i4-create-an-organization)
-* [Add a Stage](/article/2chyf1acil-add-a-stage#add-a-stage)
-* Make sure you have **Execute** permissions for Pipeline to run a specific Stage of the Pipeline. For example, the [Pipeline Executor](/article/yaornnqh0z-permissions-reference) default role in the Project where your Pipeline is located.
+* [Create Organizations and Projects](../1_Organizations and Projects/create-an-organization.md)
+* [Add a Stage](add-a-stage.md#add-a-stage)
+* Make sure you have **Execute** permissions for Pipeline to run a specific Stage of the Pipeline. For example, the [Pipeline Executor](../4_Role-Based Access Control/ref-access-management/permissions-reference.md) default role in the Project where your Pipeline is located.
 
 ### Review: Dependent and Independent Stages
 
 The Services and Environments in a Pipeline stage can be propagated to subsequent Stages. Also, the settings of one stage such as its variables and step inputs and outputs can be referenced in other Stages as expressions.
 
-See [Fixed Values, Runtime Inputs, and Expressions](/article/f6yobn7iq0-runtime-inputs).
+See [Fixed Values, Runtime Inputs, and Expressions](../20_References/runtime-inputs.md).
 
 If a Stage uses the settings of another Stage, it is a dependent Stage.
 
@@ -52,28 +44,33 @@ To do this, in your Pipeline click **Advanced Options**.
 
 In **Stage Execution Settings**, set **Allow selective stage(s) executions?** to **Yes**.
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/95q2sp1hpr/1644601442680/clean-shot-2022-02-11-at-09-43-47.png)### Option: Run Specific Independent Stages
+![](./static/run-specific-stage-in-pipeline-44.png)
+### Option: Run Specific Independent Stages
 
-This topic assumes you have a Harness Project set up. If not, see [Create Organizations and Projects](https://ngdocs.harness.io/article/36fw2u92i4-create-an-organization).
+This topic assumes you have a Harness Project set up. If not, see [Create Organizations and Projects](../1_Organizations and Projects/create-an-organization.md).
 
-You can [create a Pipeline](/article/2chyf1acil-add-a-stage#step_1_create_a_pipeline) from any module in your Project, and then [add Stages](/article/2chyf1acil-add-a-stage#add-a-stage) for any module.
+You can [create a Pipeline](add-a-stage.md#step-1-create-a-pipeline) from any module in your Project, and then [add Stages](add-a-stage.md#add-a-stage) for any module.
 
 In your Pipeline, click Run. The Run Pipeline settings appear.
 
 In Stages, select one or more stages in your Pipeline which are independent of other stages.
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/95q2sp1hpr/1636940898394/screenshot-2021-11-15-at-7-17-31-am.png)If the selected stage requires any [Runtime Inputs](/article/f6yobn7iq0-runtime-inputs#runtime_inputs), you can provide the inputs only for that Stage manually or by selecting an input set.
+![](./static/run-specific-stage-in-pipeline-45.png)
+If the selected stage requires any [Runtime Inputs](../20_References/runtime-inputs.md#runtime-inputs), you can provide the inputs only for that Stage manually or by selecting an input set.
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/95q2sp1hpr/1636738356923/screenshot-2021-11-12-at-11-01-23-pm.png)You can also view the execution details in the Pipeline execution history.
+![](./static/run-specific-stage-in-pipeline-46.png)
+You can also view the execution details in the Pipeline execution history.
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/95q2sp1hpr/1636952333430/screenshot-2021-11-15-at-10-26-55-am.png)### Option: Run Specific Dependent Stages
+![](./static/run-specific-stage-in-pipeline-47.png)
+### Option: Run Specific Dependent Stages
 
-If you want to run Stages that propagate settings or need inputs from previous Stages as [expressions](/article/f6yobn7iq0-runtime-inputs#expressions), you can provide the inputs manually while executing this Stage independently.
+If you want to run Stages that propagate settings or need inputs from previous Stages as [expressions](../20_References/runtime-inputs.md#expressions), you can provide the inputs manually while executing this Stage independently.
 
 The below example shows a Pipeline with 3 stages. Stage2 uses the value of timeout in stage1 using an expression. When you run stage2 without executing stage1, this expression is evaluated as a runtime input. You can input the value during execution and run this Stage independently.
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/95q2sp1hpr/1638289607458/screenshot-2021-11-30-at-9-55-35-pm.png)### Option: Rerun Stage
+![](./static/run-specific-stage-in-pipeline-48.png)
+### Option: Rerun Stage
 
 You can rerun an executed Stage by clicking the Rerun Stage button and providing any Runtime inputs.
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/95q2sp1hpr/1636956662207/screenshot-2021-11-15-at-11-35-02-am.png)
+![](./static/run-specific-stage-in-pipeline-49.png)

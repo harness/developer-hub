@@ -33,9 +33,9 @@ If you extend the retention policy:
 * The new retention policy applies on all entities. You can’t have different policies per Project, Pipeline, etc.
 * The new retention policy will affect all existing entities and their retention will be extended by the new policy. An extended retention policy does not affect newly created entities only.
 
-### See Also
+### See also
 
-* [Entity Identifier Reference](/article/li0my8tcz3-entity-identifier-reference)
-* [Harness Entity Reference](/article/tygjin99y9-harness-entity-reference)
-* [Entity Deletion Reference](/article/amj1oz4x4k-entity-deletion-reference)
+* [Entity Identifier Reference](entity-identifier-reference.md)
+* [Harness Entity Reference](harness-entity-reference.md)
+* [Entity Deletion Reference](entity-deletion-reference.md)
 

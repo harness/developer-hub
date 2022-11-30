@@ -27,9 +27,9 @@ This topic walks you through the steps to create a Remote Pipeline Template.​�
 
 ### Before you begin
 
-* Review [Harness Key Concepts​​](/article/4o7oqwih6h-harness-key-concepts)
-* See [Templates Overview​](/article/6tl8zyxeol-template)
-* See [CIE Quickstarts​​](/article/x0d77ktjw8-ci-pipeline-quickstart)
+* Review [Harness Key Concepts​​](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts)
+* See [Templates Overview​](template.md)
+* See [CIE Quickstarts​​](../../continuous-integration/ci-quickstarts/ci-pipeline-quickstart.md)
 
 ### Permissions
 
@@ -41,7 +41,7 @@ Harness Pipeline Templates give you the ability to enforce consistency. You can 
 
 For example, if you have a core Pipeline that you want all of your teams to use, you can put the template in a core repo and then refer to it. Now you can reuse this Template.​
 
-For information on inline Pipeline Templates, see [Create a Pipeline Template](/article/gvbaldmib5-create-pipeline-template).
+For information on inline Pipeline Templates, see [Create a Pipeline Template](create-pipeline-template.md).
 
 ### Use a Remote Pipeline Template
 
@@ -74,10 +74,10 @@ You can create a Stage Template from your Account, Org or Project. ​This topic
 4. In **Name**, enter a name for the Template.​​
 5. In **Version Label**, enter a version for the Template.​​
 6. Click **Remote**.​
-7. In **Git Connector**, select or create a Git Connector to the repo for your Project.​ For steps, see [Code Repo Connectors](/category/xyexvcc206-ref-source-repo-provider).Important: Connector must use the Enable API access option and TokenThe Connector must use the Enable API access option and Username and Token authentication. ​Harness requires the token for API access. Generate the token in your account on the Git provider and add it to Harness as a Secret. Next, use the token in the credentials for the Git Connector.​​  
-![](https://files.helpdocs.io/kw8ldg1itf/articles/0qu91h5rwu/1663674040428/screenshot-2022-09-15-at-7-59-53-pm.png)  
+7. In **Git Connector**, select or create a Git Connector to the repo for your Project.​ For steps, see [Code Repo Connectors](https://docs.harness.io/category/code-repo-connectors).Important: Connector must use the Enable API access option and TokenThe Connector must use the Enable API access option and Username and Token authentication. ​Harness requires the token for API access. Generate the token in your account on the Git provider and add it to Harness as a Secret. Next, use the token in the credentials for the Git Connector.​​  
+![](./static/create-a-remote-pipeline-template-24.png)  
 For GitHub, the token must have the following scopes:​  
-![](https://files.helpdocs.io/kw8ldg1itf/articles/0qu91h5rwu/1663674059828/screenshot-2022-09-15-at-8-01-11-pm.png)
+![](./static/create-a-remote-pipeline-template-25.png)
 8. In **Repository**, select your repository.​ If your repository isn't listed, enter its name since only a select few repositories are filled here.​Create the repository in Git before entering it in Select Repository. ​Harness does not create the repository for you.​
 9. In **Git Branch**, select your branch.​ If your branch isn't listed, enter its name since only a select few branches are filled here.Create the branch in your repository before entering it in Git Branch. ​Harness does not create the branch for you.​​
 10. ​Harness auto-populates the **YAML Path**.​ You can change this path and the file name.
@@ -95,7 +95,7 @@ Select the entity that this stage should deploy.
 
 ### Step 3: Add Service details
 
-1. In **Select Service**, select an existing Service that you want to deploy from the Specify Service drop-down list or create a new one.​ You can also use [Fixed Values, Runtime Inputs, and Expressions](/article/f6yobn7iq0-runtime-inputs).
+1. In **Select Service**, select an existing Service that you want to deploy from the Specify Service drop-down list or create a new one.​ You can also use [Fixed Values, Runtime Inputs, and Expressions](../20_References/runtime-inputs.md).
 2. Click **Continue**.
 3. In **Specify Environment**, select an existing environment or add a new one.​
 4. In **Specify Infrastructure**, select an existing infrastructure or add a new one.​ Click **Continue.**  
@@ -105,23 +105,23 @@ The **Execution Strategies** settings appear.
 
 1. In **Execution Strategies**, select the deployment strategy for your Pipeline Template.​  
 This topic uses the example of Rolling deployment.​  
-For more information on different execution strategies, see [Deployment Concepts and Strategies.](/article/0zsf97lo3c-deployment-concepts)
+For more information on different execution strategies, see [Deployment Concepts and Strategies.](https://docs.harness.io/article/0zsf97lo3c-deployment-concepts)
 2. Click **Use Strategy**.​
-3. Click **Save**. The **Save Template to Git** settings appear.![](https://files.helpdocs.io/kw8ldg1itf/articles/0qu91h5rwu/1663730450752/screenshot-2022-09-21-at-8-50-27-am.png)
+3. Click **Save**. The **Save Template to Git** settings appear.![](./static/create-a-remote-pipeline-template-26.png)
 
 ### Step 6: Save Remote Pipeline Template to Git
 
 1. In **Select Branch to Commit**, You can select one of the following:​​
 	1. **Commit to an existing branch**: you can start a pull request if you like.​​​
 	2. **Commit to a new branch:​** enter the new branch name. You can start a pull request if you like.​​
-2. Click **Save**. ​Your Remote Pipeline Template is saved to the repo branch.​​![](https://files.helpdocs.io/kw8ldg1itf/articles/0qu91h5rwu/1663730866418/screenshot-2022-09-21-at-8-56-43-am.png)
+2. Click **Save**. ​Your Remote Pipeline Template is saved to the repo branch.​​![](./static/create-a-remote-pipeline-template-27.png)
 3. Click the YAML file to see the YAML for the Stage Template.​​
 4. Edit the YAML. For example, change the name of the Template.​​​
 5. Commit your changes to Git.​​​
 6. Return to Harness and refresh the page.​​​​  
-A **Template Updated** message appears.​​![](https://files.helpdocs.io/kw8ldg1itf/articles/0qu91h5rwu/1663731064230/screenshot-2022-09-21-at-9-00-46-am.png)
+A **Template Updated** message appears.​​![](./static/create-a-remote-pipeline-template-28.png)
 
 ### Next steps
 
-* [Use a Template](/article/1re7pz9bj8-use-a-template)
+* [Use a Template](use-a-template.md)
 

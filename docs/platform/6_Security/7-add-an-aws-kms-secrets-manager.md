@@ -12,9 +12,14 @@ To store and use encrypted secrets (such as access keys) and files, you can add 
 
 This topic describes how to add an AWS KMS Secret Manager in Harness.
 
-### Step 1: Add a secret manager
+### Before you begin
 
-This topic assumes you have a Harness Project set up. If not, see [Create Organizations and Projects](https://ngdocs.harness.io/article/36fw2u92i4-create-an-organization).
+* [Learn Harness' Key Concepts](https://docs.harness.io/article/hv2758ro4e-learn-harness-key-concepts).
+* [Harness Secret Manager Overview](harness-secret-manager-overview.md).
+
+### Step 1: Add a Secret Manager
+
+This topic assumes you have a Harness Project set up. If not, see [Create Organizations and Projects](../1_Organizations and Projects/create-an-organization.md).
 
 You can add a Connector from any module in your Project in Project setup, or in your Organization, or Account Resources.
 
@@ -22,13 +27,12 @@ In **Connectors**, click **Connector**.
 
 In **Secret Managers**, click **AWS KMS**. The **AWS Key Management Service** settings appear.
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/pt52h8sb6z/1627881928900/aws-key-management-service-dialo.png)
-
+![](./static/add-an-aws-kms-secrets-manager-53.png)
 ### Step 2: Overview
 
 Enter **Name** for your secret manager.
 
-You can choose to update the **ID** or let it be the same as your secret manager's name. For more information, see [Entity Identifier Reference](/article/li0my8tcz3-entity-identifier-reference).
+You can choose to update the **ID** or let it be the same as your secret manager's name. For more information, see [Entity Identifier Reference](../20_References/entity-identifier-reference.md).
 
 Enter **Description** for your secret manager.
 
@@ -50,27 +54,28 @@ Use your AWS IAM user login credentials.
 
 Either from the JSON for the **Key Policy**, or in the AWS **IAM** console, under **Encryption keys,** gather the **AWS Access Key ID**, **AWS Secret Key**, and **Amazon Resource Name (ARN)**.
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/pt52h8sb6z/1625570818189/screenshot-2021-07-06-at-4-54-51-pm.png)For more information, see [Finding the Key ID and ARN](https://docs.aws.amazon.com/kms/latest/developerguide/viewing-keys.html#find-cmk-id-arn) from Amazon.
+![](./static/add-an-aws-kms-secrets-manager-54.png)
+For more information, see [Finding the Key ID and ARN](https://docs.aws.amazon.com/kms/latest/developerguide/viewing-keys.html#find-cmk-id-arn) from Amazon.
 
-#### AWS Access key ID
+#### AWS Access Key ID
 
 Click **Create or Select a Secret**.
 
-In the secret settings dialog, you can create/select a [Secret](../6_Security/2-add-use-text-secrets.md) and enter your AWS Access Key as it's value.
+In the secret settings dialog, you can create/select a [Secret](add-use-text-secrets.md) and enter your AWS Access Key as it's value.
 
 The AWS Access Key is the AWS Access Key ID for the IAM user you want to use to connect to Secret Manager.
 
-#### AWS Secret Access key
+#### AWS Secret Access Key
 
 Click **Create or Select a Secret**.
 
-You can create a new [Secret](/article/osfw70e59c-add-use-text-secrets) with your Access Key ID's secret key as the **Secret Value**, or use an existing secret.
+You can create a new [Secret](add-use-text-secrets.md) with your Access Key ID's secret key as the **Secret Value**, or use an existing secret.
 
 #### AWS ARN
 
 Click **Create or Select a Secret**.
 
-As explained above, you can create a new [Secret](/article/osfw70e59c-add-use-text-secrets) with your ARN as the **Secret Value**, or use an existing secret.
+As explained above, you can create a new [Secret](add-use-text-secrets.md) with your ARN as the **Secret Value**, or use an existing secret.
 
 ### Option: Assume IAM Role on Delegate
 
@@ -94,11 +99,11 @@ For more information, see [How to Use an External ID When Granting Access to Yo
 
 This is the AssumeRole Session Duration. See Session Duration in the [AssumeRole AWS docs](https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRole.html).
 
-### Step 3: Setup delegates
+### Step 3: Setup Delegates
 
-In **Delegates** **Setup****,** enter [**Selectors**](/article/nnuf8yv13o-select-delegates-with-selectors#option_select_a_delegate_for_a_connector_using_tags) for specific **Delegates** that you want to allow to connect to this Connector. Click **Save and Continue**.
+In **Delegates** **Setup****,** enter [**Selectors**](../2_Delegates/delegate-guide/select-delegates-with-selectors.md#option-select-a-delegate-for-a-connector-using-tags) for specific **Delegates** that you want to allow to connect to this Connector. Click **Save and Continue**.
 
-### Step 4: Test connection
+### Step 4: Test Connection
 
 In **Connection** **Test**, click **Finish** after your connection is successful**.**
 

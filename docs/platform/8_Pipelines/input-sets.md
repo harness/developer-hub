@@ -24,17 +24,14 @@ Overlays are groups of Input Sets. Overlays enable you to provide several Input 
 
 With Input Sets and Overlays, you can make a single Pipeline template that can be used for multiple scenarios. Each scenario can be defined in an Input Set or Overlay and simply selected at runtime.
 
-Looking for the How-to? See [Run Pipelines using Input Sets and Overlays](/article/gfk52g74xt-run-pipelines-using-input-sets-and-overlays).In this topic:
-
-* [Input Sets Overview](https://ngdocs.harness.io/article/3fqwa8et3d-input-sets#input_sets_overview)
-* [Overlays Overview](https://ngdocs.harness.io/article/3fqwa8et3d-input-sets#overlays_overview)
-* [Using Input Sets for Pipeline Execution](https://ngdocs.harness.io/article/3fqwa8et3d-input-sets#using_input_sets_for_pipeline_execution)
+Looking for the How-to? See [Run Pipelines using Input Sets and Overlays](run-pipelines-using-input-sets-and-overlays.md).
 
 ### Input Sets Overview
 
 Nearly every setting in a Pipeline can be configured as a runtime input. You can then create an Input Set from those inputs.
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/3fqwa8et3d/1626809923154/clean-shot-2021-07-20-at-12-38-32.png)Here are some Input Set examples:
+![](./static/input-sets-05.png)
+Here are some Input Set examples:
 
 * Values of fields and variables
 * Artifacts

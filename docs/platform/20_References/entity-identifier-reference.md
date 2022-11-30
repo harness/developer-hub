@@ -87,7 +87,8 @@ Identifiers cannot be reused within the same scope, even if one entity was delet
 
 Here's a secret with its Identifier in both the Visual and YAML editors.
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/li0my8tcz3/1609371485893/image.png)YAML Editor:
+![](./static/entity-identifier-reference-17.png)
+YAML Editor:
 
 
 ```
@@ -102,5 +103,5 @@ secret:
 ```
 ### Related Reference Material
 
-* [Harness Entity Reference](/article/tygjin99y9-harness-entity-reference)
+* [Harness Entity Reference](harness-entity-reference.md)
 

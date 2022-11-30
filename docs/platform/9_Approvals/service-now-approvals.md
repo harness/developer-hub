@@ -14,18 +14,18 @@ During deployment, a ServiceNow ticket's fields are evaluated according to the c
 
 Approvals can be added as stages or in-between stage steps to prevent stage execution from proceeding without approval.
 
-For example, in a [Kubernetes Blue Green Deployment](/article/mog5tnk5pi-create-a-kubernetes-blue-green-deployment), you might want to add an approval step between the Stage Deployment step, where the new app version is deployed to the staging environment, and the Swap Primary with Stage step, where production traffic is routed to the pods for the new version.
+For example, in a [Kubernetes Blue Green Deployment](https://docs.harness.io/article/mog5tnk5pi-create-a-kubernetes-blue-green-deployment), you might want to add an approval step between the Stage Deployment step, where the new app version is deployed to the staging environment, and the Swap Primary with Stage step, where production traffic is routed to the pods for the new version.
 
-### Before You Begin
+### Before you begin
 
-* [Connect to ServiceNow](/article/illz8off8q-connect-to-service-now)
+* [Connect to ServiceNow](../7_Connectors/connect-to-service-now.md)
 
 ### Review: ServiceNow Approval Stages vs Steps
 
 You can use ServiceNow Approvals in two ways:
 
 * **ServiceNow Approval step:** you can add a ServiceNow Approval step to any Pipeline or Approval stage.
-* **ServiceNow** **Approval stage:** the ServiceNow Approval stage.![](https://files.helpdocs.io/i5nl071jo5/articles/h1so82u9ub/1640002249102/screenshot-2021-12-20-at-5-37-12-pm.png)
+* **ServiceNow** **Approval stage:** the ServiceNow Approval stage.![](./static/service-now-approvals-00.png)
 
 ### UTC Timezone Only
 
@@ -33,23 +33,28 @@ The ServiceNow API only allows date time and time values in the UTC timezone. Co
 
 The timezone settings govern the display value of the settings not their actual value.
 
-The display values in the Harness UI depend on ServiceNow timezone settings.### Step: Add an Approval Step
+The display values in the Harness UI depend on ServiceNow timezone settings.
+
+### Step: Add an Approval Step
 
 In your Pipeline, click **Add Stage**.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/h1so82u9ub/1665077098807/screen-shot-2022-10-06-at-1-14-26-pm.png)Click **Approval**. The Stage settings appear.
+![](./static/service-now-approvals-01.png)
+Click **Approval**. The Stage settings appear.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/h1so82u9ub/1665077140897/screen-shot-2022-10-06-at-1-14-51-pm.png)In **Name**, enter a name for your Stage and select **ServiceNow** as approval type. Click **Setup Stage**. The pipeline appears.
+![](./static/service-now-approvals-02.png)
+In **Name**, enter a name for your Stage and select **ServiceNow** as approval type. Click **Setup Stage**. The pipeline appears.
 
 In the pipeline, click **ServiceNow Approval.** The **ServiceNow Approval** settings appear.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/h1so82u9ub/1665075257875/service-now-approval-dialo.png)In **Timeout**, enter how long you want Harness to try to complete the step before failing (and initiating the stage or step [Failure Strategy](/article/0zvnn5s1ph-define-a-failure-strategy-on-stages-and-steps)).
+![](./static/service-now-approvals-03.png)
+In **Timeout**, enter how long you want Harness to try to complete the step before failing (and initiating the stage or step [Failure Strategy](../8_Pipelines/define-a-failure-strategy-on-stages-and-steps.md)).
 
 You can use `**w**`  for week, `**d**`  for day, `**h**`  for hour, `**m**`  for minutes, `**s**`  for seconds and `**ms**` for milliseconds. For example, 1d for one day.
 
 ServiceNow communication can take a few minutes. Do not use a brief timeout.
 
-The maximum is 3w 3d 20h 30m.In **ServiceNow** **Connector,** create or select the [ServiceNow Connector](/article/illz8off8q-connect-to-service-now) you want to use.
+The maximum is 3w 3d 20h 30m.In **ServiceNow** **Connector,** create or select the [ServiceNow Connector](../7_Connectors/connect-to-service-now.md) you want to use.
 
 Select the ServiceNow **Ticket Type**. Use the same type as the ticket you created in the Workflow.
 
@@ -59,7 +64,8 @@ Enter the ServiceNow **Ticket Number**.
 
 The **Approval Criteria** in the step determines if the Pipeline or stage is approved or rejected. Define the approval criteria using the ServiceNow status items.
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/h1so82u9ub/1640003318519/screenshot-2021-12-20-at-5-58-11-pm.png)Whether the Pipeline/stage stops executing depends on the stage or step [Failure Strategy](/article/0zvnn5s1ph-define-a-failure-strategy-on-stages-and-steps).You can specify criteria using **Conditions** and/or **JEXL Expression**. If you use them in combination, they both must evaluate to `True` for the step to be successful.
+![](./static/service-now-approvals-04.png)
+Whether the Pipeline/stage stops executing depends on the stage or step [Failure Strategy](../8_Pipelines/define-a-failure-strategy-on-stages-and-steps.md).You can specify criteria using **Conditions** and/or **JEXL Expression**. If you use them in combination, they both must evaluate to `True` for the step to be successful.
 
 In **Conditions**, you can use the ServiceNow ticket related fields to define approval criteria.
 
@@ -75,15 +81,16 @@ If you add rejection criteria, it is used in addition to the settings in **Appr
 
 In **Approval Change Window**, use **Window Start** and **Window End** values to specify the window in which Harness will proceed with the deployment. Once this step is approved, Harness proceeds with deployment if the current time is within this window. The values that appear depend on the type selected in **Ticket Type**. 
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/h1so82u9ub/1665075984810/service-now-approval-change-window.png)The start and end times use the time zone set in the ServiceNow account selected in the ServiceNow Connector.
+![](./static/service-now-approvals-05.png)
+The start and end times use the time zone set in the ServiceNow account selected in the ServiceNow Connector.
 
 ### Option: Advanced Settings
 
 In **Advanced**, you can use the following options:
 
-* [Delegate Selector](/article/nnuf8yv13o-select-delegates-with-selectors#option_select_a_delegate_for_a_step_using_tags)
-* [Step Skip Condition Settings](https://ngdocs.harness.io/article/i36ibenkq2-step-skip-condition-settings)
-* [Step Failure Strategy Settings](https://ngdocs.harness.io/article/htrur23poj-step-failure-strategy-settings)
+* [Delegate Selector](../2_Delegates/delegate-guide/select-delegates-with-selectors.md#option-select-a-delegate-for-a-step-using-tags)
+* [Step Skip Condition Settings](../8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+* [Step Failure Strategy Settings](../8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
 
 ### Step 3: Apply and Test
 
@@ -93,16 +100,18 @@ Run the Pipeline.
 
 When the ServiceNow Approval step is reached, you can see its approval and rejection criteria:
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/h1so82u9ub/1640006368709/screenshot-2021-12-20-at-6-44-48-pm.png)### Review: Issue Expressions
+![](./static/service-now-approvals-06.png)
+### Review: Issue Expressions
 
 You can use `<+ticket>` to refer to the value in the **JEXL Expression** setting.
 
 For example, `<+ticket.state.displayValue> == "New"` in the Approval Criteria, **JEXL Expression** checks to see if the status of the ticket is **New.**
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/h1so82u9ub/1640004463342/screenshot-2021-12-20-at-6-17-02-pm.png)`state` is a ticket field. You can use any ticket field.
+![](./static/service-now-approvals-07.png)
+`state` is a ticket field. You can use any ticket field.
 
-### See Also
+### See also
 
-* [Using Manual Harness Approval Stages](/article/fkvso46bok-adding-harness-approval-stages)
-* [Using Manual Harness Approval Steps in CD Stages](/article/43pzzhrcbv-using-harness-approval-steps-in-cd-stages)
+* [Using Manual Harness Approval Stages](adding-harness-approval-stages.md)
+* [Using Manual Harness Approval Steps in CD Stages](https://docs.harness.io/article/43pzzhrcbv-using-harness-approval-steps-in-cd-stages)
 

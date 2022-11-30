@@ -10,13 +10,15 @@ helpdocs_is_published: true
 
 This topic provides settings and permissions for the GitHub Connector.
 
-You can also use a GitHub App for authentication in a Harness GitHub Connector. See [Use a GitHub App in a GitHub Connector](/article/nze5evmqu1-git-hub-app-support).### Name
+You can also use a GitHub App for authentication in a Harness GitHub Connector. See [Use a GitHub App in a GitHub Connector](../git-hub-app-support.md).
+
+### Name
 
 The unique name for this Connector.
 
 ### ID
 
-See [Entity Identifier Reference](/article/li0my8tcz3-entity-identifier-reference).
+See [Entity Identifier Reference](../../20_References/entity-identifier-reference.md).
 
 ### Description
 
@@ -24,7 +26,7 @@ Text string.
 
 ### Tags
 
-See [Tags Reference](/article/i8t053o0sq-tags-reference).
+See [Tags Reference](../../20_References/tags-reference.md).
 
 ### URL Type
 
@@ -51,7 +53,9 @@ Next, follow the prompts to create the PEM key. See the  [ssh-keygen man page](
   
 Generating an SSH key in ECDSA looks like this:  
   
-`ssh-keygen -t ecdsa -b 256 -f /home/user/Documents/ECDSA/key -m pem`### GitHub Repository URL
+`ssh-keygen -t ecdsa -b 256 -f /home/user/Documents/ECDSA/key -m pem`
+
+### GitHub Repository URL
 
 The URL for a Git org or repo. The URL format must match the [Connection Type](#connection_type) you selected --for example:
 
@@ -60,7 +64,8 @@ The URL for a Git org or repo. The URL format must match the [Connection Type](#
 
 You can get the URL from GitHub using its Code feature:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/v9sigwjlgo/1659115090026/clean-shot-2022-07-29-at-10-16-49.png)If you selected **Git Repository** in [URL Type](#url_type), enter the full URL for the repo with the format `https://github.com/[org-name]/[repo-name]`.
+![](./static/git-hub-connector-settings-reference-00.png)
+If you selected **Git Repository** in [URL Type](#url_type), enter the full URL for the repo with the format `https://github.com/[org-name]/[repo-name]`.
 
 If you selected **Git Account** in [URL Type](#url_type), enter the URL without the repo name, like `https://github.com/[org-name]`. You will need to provide a repo name before you can use the Connector in Harness.
 
@@ -76,7 +81,7 @@ Your personal GitHub account username.
 
 ### Personal Access Token
 
-A [Harness Encrypted Text secret](/article/osfw70e59c-add-text-secrets) for the credentials of your GitHub user account.
+A [Harness Encrypted Text secret](../../6_Security/add-use-text-secrets.md) for the credentials of your GitHub user account.
 
 A Personal Access Token (PAT) is required if your GitHub authentication uses 2FA.
 
@@ -84,14 +89,17 @@ Typically, you can validate your token from the command line before using it in 
 
 `curl -i https://api.github.com -u <username>:<token>`
 
-If you have Two-Factor Authentication set up in your Git repo, then you need to generate a personal access token in your repo and enter that token in the **Personal Access Token** field. In GitHub, you can set up the personal access token at <https://github.com/settings/tokens/new>.#### PAT Permissions
+If you have Two-Factor Authentication set up in your Git repo, then you need to generate a personal access token in your repo and enter that token in the **Personal Access Token** field. In GitHub, you can set up the personal access token at <https://github.com/settings/tokens/new>.
+
+#### PAT Permissions
 
 To use a personal access token with a GitHub organization that uses SAML single sign-on (SSO), you must first authorize the token. See [Authorizing a personal access token for use with SAML single sign-on](https://docs.github.com/en/enterprise-cloud@latest/authentication/authenticating-with-saml-single-sign-on/authorizing-a-personal-access-token-for-use-with-saml-single-sign-on) from GitHub.* The GitHub user account used to create the Personal Access Token must have admin permissions on the repo.
 * GitHub doesn't provide a way of scoping a PAT for read-only access to repos. You must select the following permissions:
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/v9sigwjlgo/1643087216872/image.png)### SSH Key
+![](./static/git-hub-connector-settings-reference-01.png)
+### SSH Key
 
-If you selected **SSH** as the connection protocol, you must add the **SSH Key** to use with the connection as a [Harness Encrypted Text secret](/article/osfw70e59c-add-text-secrets). For detailed steps to create an SSH Key, see [Add new SSH Key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account).
+If you selected **SSH** as the connection protocol, you must add the **SSH Key** to use with the connection as a [Harness Encrypted Text secret](../../6_Security/add-use-text-secrets.md). For detailed steps to create an SSH Key, see [Add new SSH Key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account).
 
 Harness also supports [GitHub deploy keys](https://docs.github.com/en/developers/overview/managing-deploy-keys#deploy-keys). Deploy keys grant access to a single repo. Using a deploy key ensures that the Connector only works with the specific repo you selected in **URL Type**.
 

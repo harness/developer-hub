@@ -16,23 +16,24 @@ In addition to Triggers that use Git providers, artifact providers, manifests, a
 
 Once you create a Custom Trigger, Harness provides the Webhook URL and cURL command to initiate the Trigger.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/qghequ5vxu/1663275340854/image.png)You can do the following with a Custom Trigger:
+![](./static/trigger-deployments-using-custom-triggers-00.png)
+You can do the following with a Custom Trigger:
 
 * Start a deployment using a cURL command.
 * Use a REST call to get deployment status.
 * Start a deployment using a URL provided by Harness.
 
-### Create the Custom Trigger
+### Create the custom trigger
 
 1. In your Harness Pipeline in Pipeline Studio, click **Triggers**.
 2. Click **New Trigger**.
 3. In **Webhook**, click **Custom**.  
-![](https://files.helpdocs.io/kw8ldg1itf/articles/qghequ5vxu/1668811498379/image.png)
+![](./static/trigger-deployments-using-custom-triggers-01.png)
 4. Name the new Trigger and click **Continue**.
 
 The **Payload Type** is set as Custom. If this were a Git provider Trigger, you would specify the repo URL and events for the Trigger.
 
-For more details, see [Trigger Pipelines using Git Event Payload Conditions](/article/10y3mvkdvk-trigger-pipelines-using-custom-payload-conditions) and [Trigger Pipelines using Git Events](/article/hndnde8usz-triggering-pipelines).
+For more details, see [Trigger Pipelines using Git Event Payload Conditions](trigger-pipelines-using-custom-payload-conditions.md) and [Trigger Pipelines using Git Events](triggering-pipelines.md).
 
 ### Conditions
 
@@ -49,23 +50,24 @@ Conditions support Harness built-in expressions for accessing Trigger settings, 
 
 JEXL expressions are also supported.
 
-For details on these settings, see [Triggers Reference](https://docs.harness.io/article/rset0jry8q-triggers-reference).
+For details on these settings, see [Triggers Reference](../8_Pipelines/w_pipeline-steps-reference/triggers-reference.md).
 
 Conditions are ANDed together (boolean AND operation). All Conditions must match an event payload for it to execute the Trigger.### Pipeline Input
 
-Pipelines often have [Runtime Inputs](https://docs.harness.io/article/f6yobn7iq0-runtime-inputs) like codebase branch names or artifact versions and tags.
+Pipelines often have [Runtime Inputs](../20_References/runtime-inputs.md) like codebase branch names or artifact versions and tags.
 
-Provide values for the inputs. You can also use [Input Sets](https://docs.harness.io/article/3fqwa8et3d-input-sets).
+Provide values for the inputs. You can also use [Input Sets](../8_Pipelines/input-sets.md).
 
 Click **Create Trigger**.
 
 The Trigger is now added to the Triggers page.
 
-### Trigger a Deployment using cURL
+### Trigger a deployment using cURL
 
 1. On the Triggers page, in the **Webhook** column, click the link icon for your Trigger and then click **Copy as cURL Command**.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/qghequ5vxu/1663275340854/image.png)Here's an example of the cURL command:
+![](./static/trigger-deployments-using-custom-triggers-02.png)
+Here's an example of the cURL command:
 
 
 ```
@@ -89,7 +91,8 @@ Run this command in a Terminal to trigger a Pipeline execution. The response wil
 ```
 The Execution History page shows that the execution was triggered by a Custom Trigger:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/qghequ5vxu/1663276371266/image.png)### Links in the Response
+![](./static/trigger-deployments-using-custom-triggers-03.png)
+### Links in the response
 
 The JSON response of the Custom Trigger cURL command contains several links.
 
@@ -113,7 +116,8 @@ The following section describe each link and what you can do with them.
 
 **apiUrl** can be used to track deployment status programmatically, such as using a REST call.
 
-See [Get Deployment Status using REST](#get_deployment_status_using_rest) below.
+See [Get Deployment Status using REST](#get-deployment-status-using-rest) below.
+
 
 #### uiUrl
 

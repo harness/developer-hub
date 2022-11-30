@@ -10,26 +10,16 @@ helpdocs_is_published: true
 
 This topic provides settings and permissions for the HTTP Helm Repo Connector.
 
-You can add a Helm Chart Repository as an Artifact Server and then use it in Harness Kubernetes and Helm deployments. See [Helm CD Quickstart](/article/cifa2yb19a-helm-cd-quickstart).
+You can add a Helm Chart Repository as an Artifact Server and then use it in Harness Kubernetes and Helm deployments. See [Helm CD Quickstart](https://docs.harness.io/article/cifa2yb19a-helm-cd-quickstart).
 
 A Helm chart repository is an HTTP server that houses an **index.yaml** file and, if needed, packaged charts. For details, see [The Chart Repository Guide](https://helm.sh/docs/topics/chart_repository/) from Helm.
 
-For instructions on how to use this Connector to perform specific tasks, see [Helm CD Quickstart](/article/cifa2yb19a-helm-cd-quickstart).
+For instructions on how to use this Connector to perform specific tasks, see [Helm CD Quickstart](https://docs.harness.io/article/cifa2yb19a-helm-cd-quickstart).
 
-In this topic:
-
-* [Limitations](#limitations)
-* [Name](#name)
-* [ID](#id)
-* [Description](#description)
-* [Tags](#tags)
-* [Helm Repository URL](#helm_repository_url)
-* [Username and Password](#username_and_password)
-* [See Also](#see_also)
 
 ### Limitations
 
-For Helm charts stored in repos such as **Amazon S3** or **GCS** (Google Cloud Storage), you will need a Cloud Provider for that account. For more information, see [Cloud Platform Connectors](/category/1ehb4tcksy).
+For Helm charts stored in repos such as **Amazon S3** or **GCS** (Google Cloud Storage), you will need a Cloud Provider for that account. For more information, see [Cloud Platform Connectors](https://docs.harness.io/category/cloud-platform-connectors).
 
 ### Name
 
@@ -37,7 +27,7 @@ The unique name for this Connector.
 
 ### ID
 
-See [Entity Identifier Reference](https://ngdocs.harness.io/article/li0my8tcz3-entity-identifier-reference).
+See [Entity Identifier Reference](../../20_References/entity-identifier-reference.md).
 
 ### Description
 
@@ -45,7 +35,7 @@ Text string.
 
 ### Tags
 
-See [Tags Reference](https://ngdocs.harness.io/article/i8t053o0sq-tags-reference).
+See [Tags Reference](../../20_References/tags-reference.md).
 
 ### Helm Repository URL
 
@@ -55,7 +45,8 @@ Helm Hub at `https://hub.helm.sh` is not a Helm repo. It is a website for disc
 
 Some chart servers, like Nexus, require a trailing slash. 
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/a0jotsvsi7/1637352021496/clean-shot-2021-11-19-at-12-00-06.png)### Username and Password
+![](./static/http-helm-repo-connector-settings-reference-02.png)
+### Username and Password
 
 From Helm:
 
@@ -67,8 +58,8 @@ From Helm:
 
 If the charts are backed by HTTP basic authentication, you can also supply the username and password. See [Share your charts with others](https://helm.sh/docs/topics/chart_repository/#share-your-charts-with-others) from Helm.
 
-### See Also
+### See also
 
-* [AWS Connector Settings Reference](/article/m5vkql35ca-aws-connector-settings-reference)
-* [Google Cloud Platform (GCP) Connector Settings Reference](/article/yykfduond6-gcs-connector-settings-reference)
+* [AWS Connector Settings Reference](../ref-cloud-providers/aws-connector-settings-reference.md)
+* [Google Cloud Platform (GCP) Connector Settings Reference](../ref-cloud-providers/gcs-connector-settings-reference.md)
 

@@ -14,16 +14,7 @@ Connectors contain the information necessary for Harness to integrate and work w
 
 Harness uses Connectors at Pipeline runtime to authenticate and perform operations with a 3rd party tool.
 
-In this topic:
-
-* [Before You Begin](https://ngdocs.harness.io/article/s9j6cggx1p-connect-to-a-cloud-provider#before_you_begin)
-* [Add a Cloud Provider Connector](https://ngdocs.harness.io/article/s9j6cggx1p-connect-to-a-cloud-provider#add_a_cloud_provider_connector)
-* [Step: Add an AWS Connector](https://ngdocs.harness.io/article/s9j6cggx1p-connect-to-a-cloud-provider#step_add_an_aws_connector)
-* [Step: Add a GCP Connector](https://ngdocs.harness.io/article/s9j6cggx1p-connect-to-a-cloud-provider#step_add_a_gcp_connector)
-* [Step: Add a Kubernetes Cluster Connector](https://ngdocs.harness.io/article/s9j6cggx1p-connect-to-a-cloud-provider#step_add_a_kubernetes_cluster_connector)
-* [See Also](https://ngdocs.harness.io/article/s9j6cggx1p-connect-to-a-cloud-provider#see_also)
-
-### Before You Begin
+### Before you begin
 
 * [Learn Harness' Key Concepts](https://ngdocs.harness.io/article/hv2758ro4e-learn-harness-key-concepts)
 
@@ -33,30 +24,30 @@ You can add a Cloud Provider Connector at the Account, Org, or Project scope. Th
 
 ### Step: Add an AWS Connector
 
-For steps on setting up an AWS Connector, see [Add an AWS Connector](/article/98ezfwox9u-add-aws-connector).
+For steps on setting up an AWS Connector, see [Add an AWS Connector](add-aws-connector.md).
 
-For details on settings and permissions, see [AWS Connector Settings Reference](/article/m5vkql35ca-aws-connector-settings-reference).
+For details on settings and permissions, see [AWS Connector Settings Reference](ref-cloud-providers/aws-connector-settings-reference.md).
 
 ### Step: Add a GCP Connector
 
-For steps on setting up a GCP Connector, see [Add a Google Cloud Platform (GCP) Connector](/article/cii3t8ra3v-connect-to-google-cloud-platform-gcp).
+For steps on setting up a GCP Connector, see [Add a Google Cloud Platform (GCP) Connector](connect-to-google-cloud-platform-gcp.md).
 
-For details on settings and permissions, see [Google Cloud Platform (GCP) Connector Settings Reference](/article/yykfduond6-gcs-connector-settings-reference).
+For details on settings and permissions, see [Google Cloud Platform (GCP) Connector Settings Reference](ref-cloud-providers/gcs-connector-settings-reference.md).
 
 ### Step: Add a Kubernetes Cluster Connector
 
-For steps on setting up a Kubernetes Cluster Connector, see [Add a Kubernetes Cluster Connector](/article/1gaud2efd4-add-a-kubernetes-cluster-connector).
+For steps on setting up a Kubernetes Cluster Connector, see [Add a Kubernetes Cluster Connector](add-a-kubernetes-cluster-connector.md).
 
-For details on settings and permissions, see [Kubernetes Cluster Connector Settings Reference](/article/sjjik49xww-kubernetes-cluster-connector-settings-reference).
+For details on settings and permissions, see [Kubernetes Cluster Connector Settings Reference](ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md).
 
 Here's a quick video that shows you how to add a Kubernetes Cluster Connector and install the Kubernetes Delegate in the target cluster at the same time:
 
 ### Step: Add a Microsoft Azure Cloud Connector
 
-For steps on setting up a Microsoft Azure Cloud Connector, see [Add a Microsoft Azure Cloud Connector](/article/9epdx5m9ae-add-a-microsoft-azure-connector).
+For steps on setting up a Microsoft Azure Cloud Connector, see [Add a Microsoft Azure Cloud Connector](add-a-microsoft-azure-connector.md).
 
-### See Also
+### See also
 
-* [Install a Kubernetes Delegate](/article/f9bd10b3nj-install-a-kubernetes-delegate)
-* [Select Delegates with Selectors](/article/nnuf8yv13o-select-delegates-with-selectors)
+* [Install a Kubernetes Delegate](../2_Delegates/delegate-guide/install-a-kubernetes-delegate.md)
+* [Select Delegates with Selectors](../2_Delegates/delegate-guide/select-delegates-with-selectors.md)
 

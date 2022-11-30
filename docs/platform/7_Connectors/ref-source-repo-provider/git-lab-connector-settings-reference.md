@@ -20,7 +20,7 @@ The unique name for this Connector.
 
 ### ID
 
-See [Entity Identifier Reference](/article/li0my8tcz3-entity-identifier-reference).
+See [Entity Identifier Reference](../../20_References/entity-identifier-reference.md).
 
 ### Description
 
@@ -28,7 +28,7 @@ Text string.
 
 ### Tags
 
-See [Tags Reference](/article/i8t053o0sq-tags-reference).
+See [Tags Reference](../../20_References/tags-reference.md).
 
 ### URL Type
 
@@ -58,7 +58,8 @@ If you selected **Repository** in **Type**, enter the full URL for the repo. F
 
 You can get the URL from the **Clone** button in your repo.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/5abnoghjgo/1661463243500/image.png)If you selected **Account** in **Type**, enter the URL without the repo name. When you use this Connector in a Harness setting you will be prompted to provide a repo name.
+![](./static/git-lab-connector-settings-reference-03.png)
+If you selected **Account** in **Type**, enter the URL without the repo name. When you use this Connector in a Harness setting you will be prompted to provide a repo name.
 
 ### Authentication
 
@@ -70,17 +71,20 @@ If you selected **SSH** as the connection protocol, you must add the **SSH Ke
 
 Enter the username **git**. Do not enter any other value.
 
-**git** is the only value you should use in **Username**.### Password/Personal Access Token
+**git** is the only value you should use in **Username**.
 
-Enter a [Harness Encrypted Text secret](/article/osfw70e59c-add-text-secrets) for the credentials of your GitLab user account.
+### Password/Personal Access Token
+
+Enter a [Harness Encrypted Text secret](../../6_Security/add-use-text-secrets.md) for the credentials of your GitLab user account.
 
 Typically, a Personal Access Token is used. See [Personal Access Tokens](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html) from GitLab.
 
 The Personal Access Token requirements for Harness are: `api`, `read_repository`, `write_repository`.
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/5abnoghjgo/1646939076070/image.png)### SSH Key
+![](./static/git-lab-connector-settings-reference-04.png)
+### SSH Key
 
-If you selected **SSH** as the connection protocol, you must add the **SSH Key** for use with the connection as a [Harness Encrypted Text secret](/article/osfw70e59c-add-text-secrets).
+If you selected **SSH** as the connection protocol, you must add the **SSH Key** for use with the connection as a [Harness Encrypted Text secret](../../6_Security/add-use-text-secrets.md).
 
 See [Use SSH keys to communicate with GitLab](https://docs.gitlab.com/ee/user/ssh.html) from GitLab.
 

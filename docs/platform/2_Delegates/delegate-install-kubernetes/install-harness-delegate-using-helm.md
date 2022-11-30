@@ -32,7 +32,7 @@ Harness Delegate for Helm requires the following access and permissions:
 	+ A namespace to host Harness Delegate
 	+ [**Deployment**](https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/deployment-v1/) resources, including the [**StatefulSet**](https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/stateful-set-v1/) objects required to manage Harness Delegate
 
-For more information about the permissions you need to install a Delegate, see [Review: Delegate Role Requirements](https://docs.harness.io/article/f9bd10b3nj-install-a-kubernetes-delegate#review_delegate_role_requirements).
+For more information about the permissions you need to install a Delegate, see [Review: Delegate Role Requirements](../delegate-guide/install-a-kubernetes-delegate.md#review-delegate-role-requirements).
 
 #### Compute Resources
 
@@ -47,13 +47,13 @@ The compute resources that the Delegate workload requires depend on the scale of
 
 Harness Delegate for Helm is installed by deploying a Helm chart. The installation process requires you to configure the deployment and, if you are using a proxy, to configure proxy settings. Harness deploys the Delegate and listens for a heartbeat to confirm the Delegate is running. If you receive a message that the Delegate could not be installed, see the final section of this document for troubleshooting information.
 
-For basic information on Harness Delegate, see [Delegate Requirements and Limitations](https://docs.harness.io/article/2k7lnc7lvl-delegates-overview).
+For basic information on Harness Delegate, see [Delegate Requirements and Limitations](../delegates-overview.md).
 
 #### Configure the Deployment
 
-1. Select the **Kubernetes** option.![](https://files.helpdocs.io/kw8ldg1itf/articles/zo44dwgmin/1660169076429/helm-install-1.png)
+1. Select the **Kubernetes** option.![](./static/install-harness-delegate-using-helm-00.png)
 
-1. Review **Kubernetes Prerequisites** to ensure that your cluster can support the deployment. Click **Continue**.![](https://files.helpdocs.io/kw8ldg1itf/articles/zo44dwgmin/1660169137939/helm-install-2.png)
+1. Review **Kubernetes Prerequisites** to ensure that your cluster can support the deployment. Click **Continue**.![](./static/install-harness-delegate-using-helm-01.png)
 2. In **Delegate Name**, give your Delegate a name. The Delegate name is populated into the **ID** field.  
 A valid Delegate name is a lowercase character string that does not begin or end with a number. You can use the dash mark (“-”) to separate segments of the string; other special characters are not permitted. Delegate names must be unique in the cluster.
 3. (Optional) Click the pencil icon to change the identifier of the Delegate resource.
@@ -72,7 +72,7 @@ The size of the deployment determines the CPU and memory resources allocated to 
 | **Medium** | 4 | 2.0/8.0 GB | Run up to 20 parallel deployments or builds.For medium-scale production workloads. |
 | **Large** | 8 | 4.0/16.0 GB | Run up to 40 parallel deployments or builds.For large-scale production workloads. |
 
-1. Select the **Helm Chart** installer option. Harness Delegate for Helm is installed using a Helm chart.![](https://files.helpdocs.io/kw8ldg1itf/articles/zo44dwgmin/1660169172050/helm-install-3.png)
+1. Select the **Helm Chart** installer option. Harness Delegate for Helm is installed using a Helm chart.![](./static/install-harness-delegate-using-helm-02.png)
 
 1. In **Delegate Tokens**, specify the one or more token names to be associated with the Delegate. In the example above, `default_token` is specified.
 2. In **Delegate Permissions**, select the permissions you want to grant the Delegate.
@@ -92,7 +92,8 @@ For detailed information about Kubernetes default user roles, see [Using RBAC Au
 
 The configuration of proxy settings is an optional step in the installation process. You can download the Delegate YAML and configure settings to modify how the Delegate connects to Harness Manager. Skip this step if your environment is not configured to use the Kubernetes proxy service.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/zo44dwgmin/1660091292310/helm-install-4.png)Proxy settings are configured using the following process:
+![](./static/install-harness-delegate-using-helm-03.png)
+Proxy settings are configured using the following process:
 
 * Download the Delegate YAML.
 * Open the YAML file and configure the desired proxies.
@@ -122,9 +123,9 @@ For in-cluster Delegates with configured proxies, the `noProxy` value must be th
 
 1. Click **Download YAML File**.
 2. Navigate to the download location and open the `harness-helm-values.yaml` file.
-3. Modify the proxy settings and save the file.![](https://files.helpdocs.io/kw8ldg1itf/articles/zo44dwgmin/1660091821420/helm-install-5.png)
+3. Modify the proxy settings and save the file.![](./static/install-harness-delegate-using-helm-04.png)
 
-For information on using proxy settings with Helm Delegate, see [Configure Delegate Proxy Settings](https://docs.harness.io/article/5ww21ewdt8-configure-delegate-proxy-settings).
+For information on using proxy settings with Helm Delegate, see [Configure Delegate Proxy Settings](../delegate-guide/configure-delegate-proxy-settings.md).
 
 #### Deploy and Verify
 
@@ -132,14 +133,15 @@ Deploy the configured Harness Delegate using the `helm` CLI from a machine confi
 
 **To deploy Harness Delegate**
 
-1. Copy and run the provided commands.![](https://files.helpdocs.io/kw8ldg1itf/articles/zo44dwgmin/1660169241755/helm-install-6.png)
+1. Copy and run the provided commands.![](./static/install-harness-delegate-using-helm-05.png)
 
 Harness Manager waits for a heartbeat to confirm that Harness Delegate is installed and running.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/zo44dwgmin/1660092362747/checking-for-heartbeat.png)Installation could take several minutes.
+![](./static/install-harness-delegate-using-helm-06.png)
+Installation could take several minutes.
 
 1. If Harness Delegate was successfully installed, click **Done**.  
-If Harness Delegate cannot be installed, the following message appears:![](https://files.helpdocs.io/kw8ldg1itf/articles/zo44dwgmin/1660169282753/delegate-not-installed.png)
+If Harness Delegate cannot be installed, the following message appears:![](./static/install-harness-delegate-using-helm-07.png)
 
 If the Delegate cannot be installed, see the following section for information on common problems.
 
@@ -159,7 +161,8 @@ You can retrieve the information required to triage and resolve most failure con
 
 When the issue is resolved, apply the Delegate YAML a second time.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/zo44dwgmin/1660169324773/helm-install-6.png)From **Apply YAML and verify connection**, copy the instructions to the command line.
+![](./static/install-harness-delegate-using-helm-08.png)
+From **Apply YAML and verify connection**, copy the instructions to the command line.
 
 For further information on troubleshooting, see [Troubleshooting Harness](https://docs.harness.io/article/jzklic4y2j-troubleshooting).
 

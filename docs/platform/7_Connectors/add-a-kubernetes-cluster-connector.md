@@ -8,14 +8,16 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-You can connect Harness with your Kubernetes clusters using a Kubernetes Cluster Connector or [Google Cloud Platform (GCP) Connector](/article/cii3t8ra3v-connect-to-google-cloud-platform-gcp). This topic explains how to set up the Kubernetes Cluster Connector.
+You can connect Harness with your Kubernetes clusters using a Kubernetes Cluster Connector or [Google Cloud Platform (GCP) Connector](connect-to-google-cloud-platform-gcp.md). This topic explains how to set up the Kubernetes Cluster Connector.
 
 Once connected, you can use Kubernetes and Harness for provisioning infrastructure, running a CI build farm, and deploying microservices and other workloads to clusters.
 
-**What roles should my Kubernetes account have?** What roles and policies needed by the account used in the Connector depend on what operations you are using Harness for in the cluster. For a list of roles and policies, see [Kubernetes Cluster Connector Settings Reference](/article/sjjik49xww-kubernetes-cluster-connector-settings-reference).### Before You Begin
+**What roles should my Kubernetes account have?** What roles and policies needed by the account used in the Connector depend on what operations you are using Harness for in the cluster. For a list of roles and policies, see [Kubernetes Cluster Connector Settings Reference](ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md).
 
-* [Learn Harness' Key Concepts](/article/hv2758ro4e-learn-harness-key-concepts)
-* [Kubernetes CD Quickstart](/article/knunou9j30-kubernetes-cd-quickstart)
+### Before you begin
+
+* [Learn Harness' Key Concepts](https://docs.harness.io/article/hv2758ro4e-learn-harness-key-concepts)
+* [Kubernetes CD Quickstart](https://docs.harness.io/article/knunou9j30-kubernetes-cd-quickstart)
 
 ### Visual Summary
 
@@ -29,7 +31,7 @@ You can use different methods for authenticating with the Kubernetes cluster, bu
 
 The Role used must have either the `cluster-admin` permission in the target cluster or admin permissions in the target namespace.
 
-For a detailed list of roles and policies, see [Kubernetes Cluster Connector Settings Reference](/article/sjjik49xww-kubernetes-cluster-connector-settings-reference).
+For a detailed list of roles and policies, see [Kubernetes Cluster Connector Settings Reference](ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md).
 
 In general, the following permissions are require:
 
@@ -44,7 +46,7 @@ The YAML provided for the Harness Delegate defaults to `cluster-admin` because t
 
 ### Review: Kubernetes Cluster Connector for EKS
 
-If you want to connect Harness to Elastic Kubernetes Service (Amazon EKS), use the platform-agnostic Kubernetes Cluster Connector discussed here. Do not use an [AWS Connector](/article/98ezfwox9u-add-aws-connector).
+If you want to connect Harness to Elastic Kubernetes Service (Amazon EKS), use the platform-agnostic Kubernetes Cluster Connector discussed here. Do not use an [AWS Connector](add-aws-connector.md).
 
 ### Review: AKS Clusters Must have Local Accounts Enabled
 
@@ -60,7 +62,7 @@ When you switch or modify the IAM role, it might take up to 5 minutes to take ef
 
 ### Supported Platforms and Technologies
 
-For a list of the platforms and technologies supported by Harness, see [Supported Platforms and Technologies](/article/1e536z41av).
+For a list of the platforms and technologies supported by Harness, see [Supported Platforms and Technologies](https://docs.harness.io/article/1e536z41av).
 
 ### Step 1: Add a Kubernetes Cluster Connector
 
@@ -70,9 +72,10 @@ In **Project Setup**, click **Connectors**.
 
 Click **New Connector**, and click **Kubernetes Cluster**. The Kubernetes Cluster Connector settings appear.
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/1gaud2efd4/1632172340471/clean-shot-2021-09-20-at-14-12-11.png)In **Name**, enter a name for this connector.
+![](./static/add-a-kubernetes-cluster-connector-06.png)
+In **Name**, enter a name for this connector.
 
-Harness automatically creates the corresponding Id ([entity identifier](/article/li0my8tcz3-entity-identifier-reference)).
+Harness automatically creates the corresponding Id ([entity identifier](../20_References/entity-identifier-reference.md)).
 
 Click **Continue**.
 
@@ -87,7 +90,7 @@ Select one of the following:
 	+ Next, enter the **Service Account Key** or other credentials.
 * **Use the credentials of a specific Harness Delegate**: Select this option to have the Connector inherit the credentials used by the Harness Delegate running in the cluster. You can install a Delegate as part of adding this Connector.
 
-For details on all of the credential settings, see [Kubernetes Cluster Connector Settings Reference](/article/sjjik49xww-kubernetes-cluster-connector-settings-reference).
+For details on all of the credential settings, see [Kubernetes Cluster Connector Settings Reference](ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md).
 
 #### Obtaining the Service Account Token using kubectl
 
@@ -158,11 +161,11 @@ If you do not have Harness Delegates, click **Install New Delegate** to add one 
 
 Harness uses Kubernetes Cluster Connectors at Pipeline runtime to authenticate and perform operations with Kubernetes. Authentications and operations are performed by Harness Delegates.
 
-You can select **Any Available Harness Delegate** and Harness will select the Delegate. For a description of how Harness picks Delegates, see [Delegates Overview](/article/2k7lnc7lvl-delegates-overview).
+You can select **Any Available Harness Delegate** and Harness will select the Delegate. For a description of how Harness picks Delegates, see [Delegates Overview](../2_Delegates/delegates-overview.md).
 
-You can use Delegate Tags to select one or more Delegates. For details on Delegate Tags, see [Select Delegates with Tags](/article/nnuf8yv13o-select-delegates-with-selectors).
+You can use Delegate Tags to select one or more Delegates. For details on Delegate Tags, see [Select Delegates with Tags](../2_Delegates/delegate-guide/select-delegates-with-selectors.md).
 
-If you need to install a Delegate, see [Delegate Installation Overview](/article/re8kk0ex4k-delegate-installation-overview) or the [Visual Summary](#visual_summary) above.
+If you need to install a Delegate, see [Delegate Installation Overview](https://docs.harness.io/article/re8kk0ex4k-delegate-installation-overview) or the [Visual Summary](#visual_summary) above.
 
 Click **Save and Continue**.
 

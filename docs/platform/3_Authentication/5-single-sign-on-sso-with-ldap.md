@@ -33,7 +33,8 @@ Harness supports Single Sign-On through Active Directory and OpenLDAP.
 
 Here is an overview of the steps to set up SSO with LDAP in Harness.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/142gh64nux/1661837086749/screenshot-2022-08-30-at-10-54-25-am.png)Here are the steps for setting up Harness SSO with LDAP:
+![](./static/single-sign-on-sso-with-ldap-21.png)
+Here are the steps for setting up Harness SSO with LDAP:
 
 1. Add LDAP as a SSO Provider in Harness. This step involves authenticating with your LDAP server and defining how Harness will query it for users and groups.
 2. Add a Harness User Group and link it to your LDAP directory. Harness syncs all the users in that LDAP user group automatically and manages user authorization.
@@ -103,13 +104,14 @@ To add your LDAP directory as a Harness SSO provider, perform the following step
 
 1. In your Harness Account, click **Account Settings**.
 2. Click **Authentication**.
-3. Select **LDAP Provider**.![](https://files.helpdocs.io/kw8ldg1itf/articles/142gh64nux/1662097902069/screenshot-2022-09-02-at-11-21-05-am.png)The LDAP Provider settings appear.
+3. Select **LDAP Provider**.![](./static/single-sign-on-sso-with-ldap-22.png)
+The LDAP Provider settings appear.
 4. Enter a **Name** for your LDAP Provider.
 5. To use the LDAP SSO configuration for authorization, select **Enable Authorization**.  
 Use this setting if you want to synchronize LDAP users into Harness through linked Harness user groups. If you link the LDAP SSO configuration with a Harness user group without enabling authorization, Harness does not synchronize LDAP users into the user group periodically. The manual synchronization option also remains unavailable. You can choose to leave authorization disabled when creating the LDAP configuration and enable it at a later time.
 6. Click **Continue**.
 
-#### Add connection settings
+#### Add Connection Settings
 
 1. In **Host**, enter the hostname for the LDAP server. Harness uses DNS to resolve the hostname. You can also use the public IP address of the host.
 2. In **Port**, enter `389` for standard LDAP. If you want to connect over Secure LDAP (LDAPS), use port 636, and enable the **Use SSL** setting.
@@ -125,10 +127,10 @@ For example:
 `cn=Administrator,CN=Users,DC=example,DC=com`  
 This user will be used for all LDAP queries performed by Harness.
 10. In **Password**, enter the password to log into the LDAP host.  
-This is the password associated with the user identified in **Bind DN**.![](https://files.helpdocs.io/kw8ldg1itf/articles/142gh64nux/1662480116065/screenshot-2022-09-06-at-9-30-11-pm.png)
+This is the password associated with the user identified in **Bind DN**.![](./static/single-sign-on-sso-with-ldap-23.png)
 11. Click **Test Connection**. Once the connection is successful, click **Continue**.
 
-#### Add a user query
+#### Add a User Query
 
 The details you enter in this section will be used to search for users in the LDAP directory. These users are added to Harness.
 
@@ -164,10 +166,10 @@ Typically, the attribute name is **userPrincipalName** (most common), **email
 ```
 dsquery user -samid john.doe | dsget user -memberof | dsget group -samid
 ```
-7. Click **Test**.![](https://files.helpdocs.io/kw8ldg1itf/articles/142gh64nux/1662986824615/user-queries.png)
+7. Click **Test**.![](./static/single-sign-on-sso-with-ldap-24.png)
 8. Once your test is successful, click **Continue**.
 
-#### Add a group query
+#### Add a Group Query
 
 The details you enter in this section will be used to search for user groups in the LDAP directory. These user groups are added to Harness.
 
@@ -194,14 +196,15 @@ To see the description in your LDAP directory, use dsquery:
 ```
 dsquery * -Filter "(objectCategory=group)" -attr sAMAccountName description
 ```
-5. Click **Test**.![](https://files.helpdocs.io/kw8ldg1itf/articles/142gh64nux/1662986847288/groupqueries.png)
+5. Click **Test**.![](./static/single-sign-on-sso-with-ldap-25.png)
 6. Once your test is successful, click **Save**.
 
 Your new LDAP Provideris listed in the SSO Providers.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/142gh64nux/1662121347459/screenshot-2022-09-02-at-5-52-13-pm.png)Once LDAP is set up and enabled in Harness, you cannot add a second LDAP SSO entry in Harness. The UI for adding LDAP will be disabled.
+![](./static/single-sign-on-sso-with-ldap-26.png)
+Once LDAP is set up and enabled in Harness, you cannot add a second LDAP SSO entry in Harness. The UI for adding LDAP will be disabled.
 
-### Add a Harness user group with LDAP users
+### Add a Harness User Group with LDAP users
 
 Once you have configured an LDAP SSO Provider for Harness, you can create a Harness User Group and sync it to your LDAP directory.
 
@@ -214,7 +217,7 @@ To do this perform the following steps:
 Your User Group is listed in User Groups.
 5. Click on your User Group and then click **Link to SSO Provider Group**.
 6. Search and select your LDAP Provider.
-7. In **LDAP Group Search Query**, search LDAP group.![](https://files.helpdocs.io/kw8ldg1itf/articles/142gh64nux/1662480757566/screenshot-2022-09-06-at-9-42-12-pm.png)
+7. In **LDAP Group Search Query**, search LDAP group.![](./static/single-sign-on-sso-with-ldap-27.png)
 8. Select your LDAP group from the list and click **Save**.
 
 Once you link your SSO Provider Group in Harness, it will take a few minutes to sync the LDAP group users with the Harness group. Harness syncs with the LDAP server every 15 minutes. If you add users to your LDAP directory you will not see it immediately in Harness. Once Harness syncs with your LDAP directory, the users are added to the Harness group.If you want to use the LDAP SSO configuration for authorization, enable authorization on the LDAP SSO configuration and link the SSO configuration to the user group. Harness synchronizes LDAP users into the user group only if you enable authorization.Later, when you enable LDAP SSO in Harness, and users in this group log into Harness, Harness will verify their email addresses and passwords using its connection to the LDAP provider.
@@ -238,14 +241,14 @@ Contact Harness Support at [support@harness.io](mailto:support@harness.io) if t
 
 Users provisioned with LDAP are added to the Account scope and are sent an email invitation to log into Harness. If SAML is also set up with Harness, then can log in via SAML. See [Single Sign-On (SSO) with SAML](../3_Authentication/3-single-sign-on-saml.md).With a Harness user group synced with an LDAP group and LDAP SSO enabled, you can now log into Harness using LDAP users from the LDAP group.
 
-### Delink a user group from LDAP
+### Delink a User Group from LDAP
 
 To delink a Harness user group from its linked LDAP provider, perform the following steps:
 
 1. In your Harness Account, click **Account Settings**.
 2. Click **Access Control** and click **User Groups**.
 3. Click the User Group you wish to delink.
-4. Click **Delink Group**. The **Delink Group** confirmation appears.![](https://files.helpdocs.io/kw8ldg1itf/articles/142gh64nux/1662480822965/screenshot-2022-09-06-at-9-43-29-pm.png)
+4. Click **Delink Group**. The **Delink Group** confirmation appears.![](./static/single-sign-on-sso-with-ldap-28.png)
 5. To retain the members in the Harness User Group, select **Retain all members in the User Group**.  
 If LDAP SSO is enabled in Harness, the users can still log into Harness. If LDAP SSO is disabled, then the user cannot log into Harness.
 6. Click **Save.**
@@ -265,7 +268,7 @@ To synchronize LDAP users with a Harness user group manually, perform the follow
 3. Verify that Harness is synchronizing LDAP users into the user group.  
 In **Account Settings**, click **Access Control**, and then click the **User Groups** tab. Then, click the user group that is linked to the LDAP SSO configuration, and verify that LDAP users are listed in the group.
 
-### Harness local login
+### Harness Local Login
 
 To prevent lockouts, a User in the Harness Administrators Group can use the [**Local Login**](http://app.harness.io/auth/#/local-login) URL to log in and update the settings.
 

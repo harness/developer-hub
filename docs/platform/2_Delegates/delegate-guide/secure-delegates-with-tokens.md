@@ -12,17 +12,6 @@ Delegate tokens are used by Harness to encrypt communication between Harness Del
 
 You can further secure Delegate to Harness communication by replacing the default Delegate token with new tokens. You can add and revoke Delegate tokens per your governance policies and replace revoked tokens with custom tokens when needed.
 
-In this topic:
-
-* [Before You Begin](https://ngdocs.harness.io/article/omydtsrycn-secure-delegates-with-tokens#before_you_begin)
-* [Step 1: Generate a New Token](https://ngdocs.harness.io/article/omydtsrycn-secure-delegates-with-tokens#step_1_generate_a_new_token)
-	+ [Generate a Token when Creating a Delegate](https://ngdocs.harness.io/article/omydtsrycn-secure-delegates-with-tokens#generate_a_token_when_creating_a_delegate)
-	+ [Generate a Token without Creating a Delegate](https://ngdocs.harness.io/article/omydtsrycn-secure-delegates-with-tokens#generate_a_token_without_creating_a_delegate_2)
-* [Option: Update and Restart Existing Delegate](https://ngdocs.harness.io/article/omydtsrycn-secure-delegates-with-tokens#option_update_and_restart_existing_delegate)
-	+ [Kubernetes Delegate](https://ngdocs.harness.io/article/omydtsrycn-secure-delegates-with-tokens#kubernetes_delegate)
-	+ [Docker Delegate](https://ngdocs.harness.io/article/omydtsrycn-secure-delegates-with-tokens#docker_delegate)
-* [Option: Revoke Tokens](https://ngdocs.harness.io/article/omydtsrycn-secure-delegates-with-tokens#option_revoke_tokens)
-
 ### Step 1: Generate a new token
 
 You can generate a new token when you create a Delegate or as a separate process.
@@ -33,7 +22,8 @@ When you create a new Delegate, you can generate a new token.
 
 In **Delegate Setup**, in **Delegate Tokens**, click **Add**, and then name and apply the new token:
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/omydtsrycn/1647384869537/clean-shot-2022-03-15-at-15-54-03.png)The new token is created and its value is copied to your system clipboard. The new token also appears in the list using the name you gave it.
+![](./static/secure-delegates-with-tokens-02
+The new token is created and its value is copied to your system clipboard. The new token also appears in the list using the name you gave it.
 
 Save the new token value. You cannot retrieve the token value after this.
 
@@ -51,17 +41,20 @@ Click **New Token**.
 
 Here's an Account Settings example:
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/omydtsrycn/1647384471625/clean-shot-2022-03-15-at-15-46-52.png)Enter a name for the new token, and then click **Apply**.
+![](./static/secure-delegates-with-tokens-03
+Enter a name for the new token, and then click **Apply**.
 
 You can copy the token and save it somewhere safe, if needed.
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/omydtsrycn/1647384579220/clean-shot-2022-03-15-at-15-49-24.png)The new token is created and its value is copied to your system clipboard. The new token also appears in the list using the name you gave it.
+![](./static/secure-delegates-with-tokens-04.png)
+The new token is created and its value is copied to your system clipboard. The new token also appears in the list using the name you gave it.
 
 Save the new token value. You cannot retrieve the token value after this.
 
 When you install a new Delegate, you can select the token to use:
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/omydtsrycn/1647384785437/clean-shot-2022-03-15-at-15-50-53.png)### Option: Update and restart existing delegate
+![](./static/secure-delegates-with-tokens-05.png)
+### Option: Update and restart existing delegate
 
 You can update an existing Delegate with a new token value and then restart the Delegate.
 
@@ -124,5 +117,6 @@ You can verify that the environment variable has the new token using `docker exe
 
 On the **Tokens** page, click **Revoke** to revoke any token.
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/omydtsrycn/1647385557250/clean-shot-2022-03-15-at-16-05-24.png)Click **Revoke**. The token is revoked. The Harness Manager will not accept connections from any Delegates using this revoked token.
+![](./static/secure-delegates-with-tokens-06.png)
+Click **Revoke**. The token is revoked. The Harness Manager will not accept connections from any Delegates using this revoked token.
 

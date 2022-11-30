@@ -12,9 +12,11 @@ This topic provides settings and permissions for the Kubernetes Cluster Connecto
 
 The Kubernetes Cluster Connector is a platform-agnostic connection to a Kubernetes cluster located anywhere.
 
-For cloud platform-specific connections, see platform [Cloud Connectors](/category/1ehb4tcksy).
+For cloud platform-specific connections, see platform [Cloud Connectors](https://docs.harness.io/category/cloud-platform-connectors).
 
-Looking for the How-to? See [Add a Kubernetes Cluster Connector](/article/1gaud2efd4-add-a-kubernetes-cluster-connector).### Video Summary
+Looking for the How-to? See [Add a Kubernetes Cluster Connector](../add-a-kubernetes-cluster-connector.md).
+
+### Video Summary
 
 Here's a 10min video that walks you through adding a Harness Kubernetes Cluster Connector and Harness Kubernetes Delegate. The Delegate is added to the target cluster and then the Kubernetes Cluster Connector uses the Delegate to connect to the cluster:
 
@@ -24,7 +26,7 @@ The Kubernetes Cluster Connector is platform-agnostic. Use it to access a cluste
 
 It cannot also access platform-specific services and resources. For those, use a platform Connector like Google Cloud Platform or Amazon Web Services.
 
-See [Add a Google Cloud Platform (GCP) Connector](/article/cii3t8ra3v-connect-to-google-cloud-platform-gcp), [Add an AWS Connector](/article/98ezfwox9u-add-aws-connector).
+See [Add a Google Cloud Platform (GCP) Connector](../connect-to-google-cloud-platform-gcp.md), [Add an AWS Connector](../add-aws-connector.md).
 
 For example, let's say you have a GKE Kubernetes cluster hosted in Google Cloud Platform (GCP). You can use the Kubernetes Cluster Connector to connect Harness to the cluster in GCP. The Kubernetes Cluster Connector cannot also access Google Container Registry (GCR).
 
@@ -45,7 +47,7 @@ You can use different methods for authenticating with the Kubernetes cluster, bu
 
 The Role used must have either the `cluster-admin` permission in the target cluster or admin permissions in the target namespace.
 
-For a detailed list of roles and policies, see [Harness Role-Based Access Control Overview](https://ngdocs.harness.io/article/vz5cq0nfg2#role).
+For a detailed list of roles and policies, see [Harness Role-Based Access Control Overview](../../4_Role-Based Access Control/rbac-in-harness.md#role).
 
 #### Harness CI Permission Requirements
 
@@ -144,7 +146,7 @@ The unique name for this Connector.
 
 ### ID
 
-See [Entity Identifier Reference](/article/li0my8tcz3-entity-identifier-reference).
+See [Entity Identifier Reference](../../20_References/entity-identifier-reference.md).
 
 ### Description
 
@@ -152,7 +154,7 @@ Text string.
 
 ### Tags
 
-See [Tags Reference](/article/i8t053o0sq-tags-reference).
+See [Tags Reference](../../20_References/tags-reference.md).
 
 ### Cluster Details
 
@@ -164,7 +166,7 @@ When you select a Delegate, the Harness Delegate will inherit the Kubernetes ser
 
 The service account associated with the Delegate pod must have the Kubernetes `cluster-admin` role.
 
-See [Install a Kubernetes Delegate](/article/f9bd10b3nj-install-a-kubernetes-delegate).
+See [Install a Kubernetes Delegate](../../2_Delegates/delegate-guide/install-a-kubernetes-delegate.md).
 
 #### Master URL
 
@@ -176,7 +178,9 @@ The Kubernetes master node URL. The easiest method to obtain the master URL is u
 
 Select an authentication method.
 
-Basic (Username and Password) authentication is not recommended. Basic authentication has been removed in GKE 1.19 and later.### Username and Password
+Basic (Username and Password) authentication is not recommended. Basic authentication has been removed in GKE 1.19 and later.
+
+### Username and Password
 
 Username and password for the Kubernetes cluster. For example, **admin** or **john@example.com**, and a Basic authentication password.
 
@@ -184,7 +188,9 @@ You can use an inline username or a Harness [Encrypted Text secret](https://docs
 
 For the password, select or create a new Harness Encrypted Text secret.
 
-This is not used, typically. Some Connectors have Basic authentication disabled by default. The cluster would need Basic authentication enabled and a specific username and password configured for authentication.For OpenShift or any other platform, this is not the username/password for the platform. It is the username/password for the cluster.### Service Account
+This is not used, typically. Some Connectors have Basic authentication disabled by default. The cluster would need Basic authentication enabled and a specific username and password configured for authentication.For OpenShift or any other platform, this is not the username/password for the platform. It is the username/password for the cluster.
+
+### Service Account
 
 Add the service account token for the service account. The token must be pasted in decoded in the Encrypted Text secret you create/select.
 
@@ -259,7 +265,9 @@ The issuer URI for the provider authentication server.
 
 For example, in Okta, this is the Issuer URL for the [Authorization Server](https://developer.okta.com/docs/concepts/auth-servers/):
 
-[![](https://files.helpdocs.io/kw8ldg1itf/articles/whwnovprrb/1583352263225/image.png)](https://files.helpdocs.io/kw8ldg1itf/articles/whwnovprrb/1583352263225/image.png)Providers use different API versions. If you want to identify the version also, you can obtain it from the token endpoint.
+![](./static/kubernetes-cluster-connector-settings-reference-02.png)
+(./static/kubernetes-cluster-connector-settings-reference-02.png)
+Providers use different API versions. If you want to identify the version also, you can obtain it from the token endpoint.
 
 In Okta, in the authentication server **Settings**, click the **Metadata URI**. Locate the **token\_endpoint**. Use the **token\_endpoint** URL except for the **/token** part. For example, you would use `https://dev-00000.okta.com/oauth2/default/v1` from the following endpoint:
 
@@ -273,7 +281,9 @@ Login credentials for a user assigned to the provider app.
 
 * **OIDC** **Client ID:** Public identifier for the client that is required for all OAuth flows. In Okta, this is located in the **Client Credentials** for the app:
 
-[![](https://files.helpdocs.io/kw8ldg1itf/articles/whwnovprrb/1583352850791/image.png)](https://files.helpdocs.io/kw8ldg1itf/articles/whwnovprrb/1583352850791/image.png)#### OIDC Secret
+![](./static/kubernetes-cluster-connector-settings-reference-04.png)
+(./static/kubernetes-cluster-connector-settings-reference-04.png)
+#### OIDC Secret
 
 The client secret for the app. For Okta, you can see this in the above picture.
 
@@ -281,7 +291,9 @@ The client secret for the app. For Okta, you can see this in the above picture.
 
 OIDC scopes are used by an application during authentication to authorize access to a user's details, like name and picture. In Okta, you can find them in the Authorization Server **Scopes** tab:
 
-[![](https://files.helpdocs.io/kw8ldg1itf/articles/whwnovprrb/1583353336258/image.png)](https://files.helpdocs.io/kw8ldg1itf/articles/whwnovprrb/1583353336258/image.png)If you enter multiple scopes, separate them using spaces.
+![](./static/kubernetes-cluster-connector-settings-reference-06.png)
+(./static/kubernetes-cluster-connector-settings-reference-06.png)
+If you enter multiple scopes, separate them using spaces.
 
 The remaining OIDC Token settings are part of the provider app you are using to log in.
 
@@ -316,7 +328,7 @@ AWS EKS is supported using the Inherit Delegate Credentials option in the Kubern
 To install a delegate in your AWS infrastructure, do the following:
 
 * Install a Harness Kubernetes Delegate in your EKS cluster.You must be logged in as an admin user when you run the `kubectl apply -f harness-delegate.yaml` command.
-* Give it a name that you can recognize as an EKS cluster Delegate. For information on installing a Kubernetes Delegate, see [Install a Kubernetes Delegate](/article/f9bd10b3nj-install-a-kubernetes-delegate).
+* Give it a name that you can recognize as an EKS cluster Delegate. For information on installing a Kubernetes Delegate, see [Install a Kubernetes Delegate](../../2_Delegates/delegate-guide/install-a-kubernetes-delegate.md).
 * In the Kubernetes Cluster Connector settings, select the Delegate.
 * When setting up the EKS cluster as the target Infrastructure, select the Kubernetes Cluster Connector.
 

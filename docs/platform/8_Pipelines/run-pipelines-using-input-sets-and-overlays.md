@@ -16,21 +16,13 @@ Overlays are groups of Input Sets. Overlays enable you to provide several input 
 
 Input Sets and Overlays allow you to create a Pipeline template that can use different runtime input values for different services, codebases, target environments, and goals.
 
-In this topic:
 
-* [Before You Begin](https://ngdocs.harness.io/article/gfk52g74xt-run-pipelines-using-input-sets-and-overlays#before_you_begin)
-* [Step 1: Create the Input Sets](https://ngdocs.harness.io/article/gfk52g74xt-run-pipelines-using-input-sets-and-overlays#step_1_create_the_input_sets)
-	+ [YAMl Example](https://ngdocs.harness.io/article/gfk52g74xt-run-pipelines-using-input-sets-and-overlays#ya_ml_example)
-* [Step 2: Create an Overlay](https://ngdocs.harness.io/article/gfk52g74xt-run-pipelines-using-input-sets-and-overlays#step_2_create_an_overlay)
-* [Step 3: Run the Pipeline using Input Set or Overlay](https://ngdocs.harness.io/article/gfk52g74xt-run-pipelines-using-input-sets-and-overlays#step_3_run_the_pipeline_using_input_set_or_overlay)
-* [Limitations](https://ngdocs.harness.io/article/gfk52g74xt-run-pipelines-using-input-sets-and-overlays#limitations)
+### Before you begin
 
-### Before You Begin
-
-* [CI Pipeline Quickstart](/article/x0d77ktjw8-ci-pipeline-quickstart)
-* [Kubernetes CD Quickstart](/article/knunou9j30-kubernetes-cd-quickstart)
-* [Input Sets and Overlays](/article/3fqwa8et3d-input-sets)
-* [Runtime Inputs](/article/f6yobn7iq0-runtime-inputs)
+* [CI Pipeline Quickstart](../../continuous-integration/ci-quickstarts/ci-pipeline-quickstart.md)
+* [Kubernetes CD Quickstart](https://docs.harness.io/article/knunou9j30-kubernetes-cd-quickstart)
+* [Input Sets and Overlays](input-sets.md)
+* [Runtime Inputs](../20_References/runtime-inputs.md)
 
 ### Step 1: Create the Input Sets
 
@@ -39,7 +31,7 @@ You can create an Input Set in two ways:
 * From the **Run Pipeline** page:
 1. Configure your Pipeline and click **Run**.
 2. Enter values for the required runtime inputs.
-3. Click **Save as Input Set**. The Input Set setup appears.![](https://files.helpdocs.io/i5nl071jo5/articles/gfk52g74xt/1622238594982/image.png)
+3. Click **Save as Input Set**. The Input Set setup appears.![](./static/run-pipelines-using-input-sets-and-overlays-08.png)
 4. Enter a name, description, and tags for the new Input Set, and then click **Save**.
 * By simply creating an Input Set:
 1. In **Pipeline Studio**, click **Input Sets**.
@@ -102,7 +94,7 @@ You can select Input Sets and Overlays in two ways:
 
 * From the **Run Pipeline** page:
 1. In **Pipeline Studio**, click **Run**.
-2. In the **Run Pipeline** page, click the Input Sets option.![](https://files.helpdocs.io/i5nl071jo5/articles/gfk52g74xt/1622242899546/image.png)
+2. In the **Run Pipeline** page, click the Input Sets option.![](./static/run-pipelines-using-input-sets-and-overlays-09.png)
 3. Click an Input Set(s) or Overlay(s) to apply their settings.
 4. Click **Run Pipeline**.
 * From the **Input Sets** list:
@@ -119,5 +111,6 @@ Only runtime inputs are available in Input Sets. Most, but not all, Pipeline and
 
 You can use any setting that offers the **Runtime input** option:
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/gfk52g74xt/1622239179136/image.png)### 
+![](./static/run-pipelines-using-input-sets-and-overlays-10.png)
+### 
 

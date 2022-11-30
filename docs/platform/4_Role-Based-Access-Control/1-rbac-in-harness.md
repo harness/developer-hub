@@ -1,5 +1,5 @@
 ---
-title: Role-based access control overview
+title: Harness Role-Based Access Control Overview
 description: This topic explains the concept of Harness Role-Based Access Control.
 # sidebar_position: 2
 helpdocs_topic_id: vz5cq0nfg2
@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 Access management for resources is a critical function for your Accounts, Organizations, and Projects. Harness Role-Based Access Control (RBAC) helps you manage who has access to your Harness resources, what they can do with those resources, and in what scope they have access.
 
-### What is Harness role-based access control?
+### What is Harness Role-Based Access Control?
 
 Harness RBAC is role-based. This means the permissions to resources are determined by the roles assigned to Users, User Groups, and Service Accounts.
 
@@ -20,7 +20,9 @@ Harness RBAC is an authorization system that provides fine-grained access manage
 
 This video provides a quick overview of how you can manage access to your resources using Harness RBAC.
 
-This video provides a quick overview of how you can manage access to your resources using Harness RBAC.### Visual Summary
+This video provides a quick overview of how you can manage access to your resources using Harness RBAC.
+
+### Visual Summary
 
 Here is a quick overview of Harness RBAC:
 
@@ -30,23 +32,23 @@ Here is a quick overview of Harness RBAC:
 * Role Assignments happen on individual Users, User Groups, or Service Accounts.
 * Each User can be a member of multiple user groups and hence can have multiple role assignments.
 * Each User Group and Service Account can have multiple role assignments.
-* You can assign roles at any [scope](#rbac-scope).![](https://files.helpdocs.io/i5nl071jo5/articles/vz5cq0nfg2/1653267079470/screenshot-2022-05-23-at-6-20-17-am.png)
+* You can assign roles at any [scope](#rbac-scope).![](./static/rbac-in-harness-00.png)
 
-### Harness RBAC components
+### Harness RBAC Components
 
 * **Users:** These are individual users within the Harness system. One User can belong to many user groups.  
-For more information on creating a new User, see [Add and Manage Users](../4_Role-Based-Access-Control/2-add-users.md).
+For more information on creating a new User, see [Add and Manage Users](../4_Role-Based-Access-Control/3-add-users.md).
 * **User Groups:** User Groups contain multiple Harness Users. Each User Group has assigned roles. You can create User Groups at Account/Org/Project scope.  
-For more information on creating a new User Group, see [Add and Manage User Groups](../4_Role-Based-Access-Control/3-add-user-groups.md).
-* **Service Account****:** A Service Account is a set of [API Keys](../4_Role-Based-Access-Control/5-add-and-manage-api-keys.md) with a set of permissions assigned to them via role assignment. API Keys are used for authenticating and authorizing remote services attempting to perform operations in Harness via our APIs. API Keys that are part of a Service Account are assigned permissions (equivalent to users) that Service Accounts inherit.  
-For more information on creating a new Service Account, see [Add and Manage Service Accounts.](../4_Role-Based-Access-Control/4-add-and-manage-service-account.md)
-* **Resource Groups:** A [Resource Group](#resource-groups) is a set of Harness resources that a User or User Group can access. You can create Resource Groups at Account/Org/Project scope.  
-For more information on creating a new Resource Group, see [Add and Manage Resource Groups](../4_Role-Based-Access-Control/6-add-resource-groups.md).
+For more information on creating a new User Group, see [Add and Manage User Groups](../4_Role-Based-Access-Control/4-add-user-groups.md).
+* **Service Account****:** A Service Account is a set of [API Keys](../4_Role-Based-Access-Control/7-add-and-manage-api-keys.md) with a set of permissions assigned to them via role assignment. API Keys are used for authenticating and authorizing remote services attempting to perform operations in Harness via our APIs. API Keys that are part of a Service Account are assigned permissions (equivalent to users) that Service Accounts inherit.  
+For more information on creating a new Service Account, see [Add and Manage Service Accounts.](../4_Role-Based-Access-Control/6-add-and-manage-service-account.md)
+* **Resource Groups:** A [Resource Group](#resource-group) is a set of Harness resources that a User or User Group can access. You can create Resource Groups at Account/Org/Project scope.  
+For more information on creating a new Resource Group, see [Add and Manage Resource Groups](../4_Role-Based-Access-Control/8-add-resource-groups.md).
 * **Roles:** A [Role](#role) is a group of permissions you assign to a User Group. You can create roles at Account/Org/Project scope.  
-For more information on creating a new Role, see [Add and Manage Roles](../4_Role-Based-Access-Control/7-add-manage-roles.md).
-* **Principal:** A principal can be a **User**, **User Group,** or **Service Account** to which you provide access. [Role assignments](#role-assignment) are done on any of these principals, also known as **Subjects**.![](https://files.helpdocs.io/i5nl071jo5/articles/vz5cq0nfg2/1650428905802/screenshot-2022-04-20-at-9-57-36-am.png)
+For more information on creating a new Role, see [Add and Manage Roles](../4_Role-Based-Access-Control/9-add-manage-roles.md).
+* **Principal:** A principal can be a **User**, **User Group,** or **Service Account** to which you provide access. [Role assignments](#role-assignment) are done on any of these principals, also known as **Subjects**.![](./static/rbac-in-harness-01.png)
 
-### What can you do with RBAC?
+### What Can You do with RBAC?
 
 Here are a few examples of what RBAC can be used for:
 
@@ -54,7 +56,7 @@ Here are a few examples of what RBAC can be used for:
 * Allow Users, User Groups, or Service Accounts to view the resources through the Account/Org/Project Viewer role.
 * Allow Users, User Groups, or Service Accounts to manage and access specific resources through Custom Roles.
 
-### How does RBAC work?
+### How Does RBAC Work?
 
 The way you control access to resources using RBAC is to assign permissions to users and groups to manage resources.
 
@@ -63,7 +65,7 @@ The way you control access to resources using RBAC is to assign permissions to u
 * An account administrator assigns a Role and Resource Group to a Principal - User or User Group or Service Account. This assignment is called [Role Assignment](#role-assignment).
 * Role Assignment grants the Principal the permissions from the Role on the set of resources in the Resource Group.
 
-### RBAC scope
+### RBAC Scope
 
 Harness Accounts allow you to group Organizations and Projects that share the same goal. These have their own scope of access.
 
@@ -75,7 +77,8 @@ In Harness, you can specify scopes at three levels:
 
 Scopes are structured in a parent-child relationship. You can assign roles at any of these levels of scope.
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/vz5cq0nfg2/1650388345217/screenshot-2022-04-19-at-10-41-46-pm.png)The following table shows what it means to add users and resources at different scopes or hierarchies:
+![](./static/rbac-in-harness-02.png)
+The following table shows what it means to add users and resources at different scopes or hierarchies:
 
 
 
@@ -86,9 +89,9 @@ Scopes are structured in a parent-child relationship. You can assign roles at an
 | **Organization** | To have visibility and control over all of the projects within this Org, add users to the Org scope. | Add resources to the Org scope to allow sharing across projects within this Org while isolating from other organizations. |
 | **Project** | To manage or contribute to this Project, add users to the Project scope. | Add resources to the Project scope to provide total control to the Project teams. |
 
-To know more about Organizations and Projects, see [Create Organizations and Projects](../1_Organizations-and-Projects/2-create-an-organization.md).
+To know more about Organizations and Projects, see [Create Organizations and Projects](../1_Organizations and Projects/create-an-organization.md).
 
-### Resource group
+### Resource Group
 
 A Resource Group is a collection of resources that are all managed by the same set of users and have the same access control policies.
 
@@ -97,7 +100,8 @@ Resource Groups can be of two types:
 * **All Resources**– Collection of all the resources of a given type.
 * **Named Resources**– Collection of a specific set of individual resources.
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/vz5cq0nfg2/1650293582241/screenshot-2022-04-18-at-8-20-55-pm.png)Harness includes the following default Resource Groups at each scope:
+![](./static/rbac-in-harness-03.png)
+Harness includes the following default Resource Groups at each scope:
 
 
 
@@ -112,7 +116,7 @@ Resource Groups can be of two types:
 
 You can also create custom resource groups within any scope.
 
-For more information, see [Add and Manage Resource Groups](../4_Role-Based-Access-Control/6-add-resource-groups.md).
+For more information, see [Add and Manage Resource Groups](../4_Role-Based-Access-Control/8-add-resource-groups.md).
 
 ### Role
 
@@ -136,9 +140,9 @@ Harness provides the following default roles at the Account, Org, and Project sc
 | **Project** | Pipeline Executor |
 | **Project** | Feature Flag Manage Role |
 
-For more information, see [Add and Manage Roles](../4_Role-Based-Access-Control/7-add-manage-roles.md).
+For more information, see [Add and Manage Roles](../4_Role-Based-Access-Control/9-add-manage-roles.md).
 
-### Role assignment
+### Role Assignment
 
 A role assignment consists of the following elements:
 
@@ -155,43 +159,48 @@ Following are a few key points for role assignment in Harness:
 * Each Principal can have multiple role assignments.
 * Depending on where you wish to set up access control, you may assign roles at the Account, Org, or Project scope.
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/vz5cq0nfg2/1650371751826/screenshot-2022-04-19-at-5-59-19-pm.png)
+![](./static/rbac-in-harness-04.png)
 The following list explains the different role assignments with the default roles and resource groups:
+
+
 
 |  |  |
 | --- | --- |
 | **Role Assignment (Default Role + Default Resource Group)** | **Description** |
-| **Account Admin +** **All Resources Including Child Scopes** | A User Group with this role assignment has the following permissions:<li> All permissions on all the resources in the Account scope as well as Organizations and Project scopes within the entire Account.</li>
+| **Account Admin +** **All Resources Including Child Scopes** | A User Group with this role assignment has the following permissions:* All permissions on all the resources in the Account scope as well as Organizations and Project scopes within the entire Account.
  |
-| **Account Admin +** **All Account Level Resources** | A User Group with this role assignment has the following permissions:<li> All permissions on all the resources in the Account scope only.</li>
+| **Account Admin +** **All Account Level Resources** | A User Group with this role assignment has the following permissions:* All permissions on all the resources in the Account scope only.
  |
-| **Account Viewer +** **All Resources Including Child Scopes** | A User Group with this role assignment has the following permissions:<li> View permissions on all the resources in the Account as well as Organizations and Projects scopes within the entire Account.</li>
+| **Account Viewer +** **All Resources Including Child Scopes** | A User Group with this role assignment has the following permissions:* View permissions on all the resources in the Account as well as Organizations and Projects scopes within the entire Account.
  |
-| **Account Viewer +** **All Account Level Resources** | A User Group with this role assignment has the following permissions:<li> View permissions on all the resources in the Account scope only.</li>
+| **Account Viewer +** **All Account Level Resources** | A User Group with this role assignment has the following permissions:* View permissions on all the resources in the Account scope only.
  |
-| **Feature Flag Manage Role +** **All Resources Including Child Scopes** | A User Group with this role assignment has the following permissions:<li> Create/Edit permissions on Feature Flags and Target Management in the Account as well as Organizations and Projects scopes within the entire Account.</li>
+| **Feature Flag Manage Role +** **All Resources Including Child Scopes** | A User Group with this role assignment has the following permissions:* Create/Edit permissions on Feature Flags and Target Management in the Account as well as Organizations and Projects scopes within the entire Account.
  |
-| **Feature Flag Manage Role +** **All Account Level Resources** | A User Group with this role assignment has the following permissions:<li> Create/Edit permissions on Feature Flags and Target Management in the Account scope only.</li>
+| **Feature Flag Manage Role +** **All Account Level Resources** | A User Group with this role assignment has the following permissions:* Create/Edit permissions on Feature Flags and Target Management in the Account scope only.
  |
-| **Organization Admin +** **All Resources Including Child Scopes** | A User Group with this role assignment has the following permissions:<li> All permissions on all the resources in the Organization as well as Projects within the Organization.</li>
+| **Organization Admin +** **All Resources Including Child Scopes** | A User Group with this role assignment has the following permissions:* All permissions on all the resources in the Organization as well as Projects within the Organization.
  |
-| **Organization Admin + All Organization Level Resources** | A User Group with this role assignment has the following permissions:<li> All permissions on all the resources in the Organization scope only.</li>
+| **Organization Admin + All Organization Level Resources** | A User Group with this role assignment has the following permissions:* All permissions on all the resources in the Organization scope only.
  |
-| **Organization Viewer +** **All Resources Including Child Scopes** | A User Group with this role assignment has the following permissions:<li> View permissions on all the resources in the Organization as well as Projects within the Organization.</li>
+| **Organization Viewer +** **All Resources Including Child Scopes** | A User Group with this role assignment has the following permissions:* View permissions on all the resources in the Organization as well as Projects within the Organization.
  |
-| **Organization Viewer + All Organization Level Resources** | A User Group with this role assignment has the following permissions:<li> View permissions on all the resources in the Organization scope only.</li>
+| **Organization Viewer + All Organization Level Resources** | A User Group with this role assignment has the following permissions:* View permissions on all the resources in the Organization scope only.
  |
-| **Feature Flag Manage Role +** **All Resources Including Child Scopes** | A User Group with this role assignment has the following permissions:<li> Create/Edit permissions on Feature Flags and Target Management in the Organizations, and Projects within the entire Organization.</li>
+| **Feature Flag Manage Role +** **All Resources Including Child Scopes** | A User Group with this role assignment has the following permissions:* Create/Edit permissions on Feature Flags and Target Management in the Organizations, and Projects within the entire Organization.
  |
-| **Feature Flag Manage Role + All Organization Level Resources** | A User Group with this role assignment has the following permissions:<li> Create/Edit permissions for Feature Flags and Target Management in the Organization scope only.</li>
+| **Feature Flag Manage Role + All Organization Level Resources** | A User Group with this role assignment has the following permissions:* Create/Edit permissions for Feature Flags and Target Management in the Organization scope only.
  |
-| **Project Admin + All Project Level Resources** | A User Group with this role assignment has the following permissions:<li> All permissions on all the resources within the Project scope.</li>
+| **Project Admin + All Project Level Resources** | A User Group with this role assignment has the following permissions:* All permissions on all the resources within the Project scope.
  |
-| **Project Viewer + All Project Level Resources** | A User Group with this role assignment has the following permissions:<li> View permissions on all the resources in the Project.</li>
+| **Project Viewer + All Project Level Resources** | A User Group with this role assignment has the following permissions:* View permissions on all the resources in the Project.
  |
-| **Feature Flag Manage + All Project Level Resources** | A User Group with this role assignment has the following permissions:<li> Create/Edit permissions for Feature Flags and Target Management within the Project scope.</li>
+| **Feature Flag Manage + All Project Level Resources** | A User Group with this role assignment has the following permissions:* Create/Edit permissions for Feature Flags and Target Management within the Project scope.
  |
-| **Pipeline Executor + All Project Level Resources** | A User Group with this role assignment has the following permissions:<li> View permission on Resource Group, Project, Users, User Groups, and Roles</li><li>View and Access permissions on Secrets, Connectors, Environments, Services</li><li>View and Execute permissions on Pipelines</li>|
+| **Pipeline Executor + All Project Level Resources** | A User Group with this role assignment has the following permissions:* View permission on Resource Group, Project, Users, User Groups, and Roles
+* View and Access permissions on Secrets, Connectors, Environments, Services
+* View and Execute permissions on Pipelines
+ |
 
 ### Permissions
 
@@ -204,7 +213,9 @@ For example, let us consider a user with the following role assignments:
 
 The sum of these role assignments is effectively the **Account Admin** role for **All Resources Including Child Scopes.** Therefore, in this case, the **Organization Viewer** role for **All Resources Including Child Scopes** has no impact.
 
-By default, users will have **View** permissions for all resources at all scopes (Account/Org/Project).### Blog Post
+By default, users will have **View** permissions for all resources at all scopes (Account/Org/Project).
+
+### Blog Post
 
 The following blog post walks you through User and Role Management in Harness:
 
@@ -212,12 +223,12 @@ The following blog post walks you through User and Role Management in Harness:
 
 ### Next steps
 
-* [Get Started with RBAC](../4_Role-Based-Access-Control/1-rbac-in-harness.md)
-* [Add and Manage Users](../4_Role-Based-Access-Control/2-add-users.md)
-* [Add and Manage User Groups](../4_Role-Based-Access-Control/3-add-user-groups.md)
-* [Add and Manage Service Accounts](../4_Role-Based-Access-Control/4-add-and-manage-service-account.md)
-* [Add and Manage Resource Groups](../4_Role-Based-Access-Control/6-add-resource-groups.md)
-* [Add and Manage Roles](../4_Role-Based-Access-Control/7-add-manage-roles.md)
-* [Attribute-Based Access Control](../4_Role-Based-Access-Control/attribute-based-access-control.md)
+* [Get Started with RBAC](https://docs.harness.io/article/e1ww0jmacp-getting-started-with-rbac)
+* [Add and Manage Users](../4_Role-Based-Access-Control/3-add-users.md)
+* [Add and Manage User Groups](../4_Role-Based-Access-Control/4-add-user-groups.md)
+* [Add and Manage Service Accounts](../4_Role-Based-Access-Control/6-add-and-manage-service-account.md)
+* [Add and Manage Resource Groups](../4_Role-Based-Access-Control/8-add-resource-groups.md)
+* [Add and Manage Roles](../4_Role-Based-Access-Control/9-add-manage-roles.md)
+* [Attribute-Based Access Control](../4_Role-Based-Access-Control/2-attribute-based-access-control.md)
 * [Permissions Reference](../4_Role-Based-Access-Control/ref-access-management/permissions-reference.md)
 

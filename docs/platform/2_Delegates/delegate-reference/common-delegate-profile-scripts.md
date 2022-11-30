@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 You can run scripts on Harness Delegate pods, hosts, and containers to install applications or run commands.
 
-For more information about running scripts, see [Install Software on the Delegate with Initialization Scripts](/article/yte6x6cyhn-run-scripts-on-delegates).This topic provides information on script availability and some common delegate initialization scripts.
+For more information about running scripts, see [Install Software on the Delegate with Initialization Scripts](../delegate-guide/run-scripts-on-delegates.md).This topic provides information on script availability and some common delegate initialization scripts.
 
 ### Limitations
 
@@ -88,7 +88,7 @@ The `helm init` command is used with Helm 2 to install Tiller into a Kubernetes 
 ```
 kubectl config current-context cluster_name
 ```
-If you are using TLS for communication between Helm and Tiller, ensure that you use the `--tls` parameter with your commands. For more information, see [Using SSL Between Helm and Tiller](https://docs.helm.sh/using_helm/#using-ssl-between-helm-and-tiller) from Helm, and the section **Securing your Helm Installation** in that document.The following example shows how to add a Helm chart from a private repository using the secrets `repoUsername` and `repoPassword` from Harness [Text Secrets](/article/osfw70e59c-add-use-text-secrets). 
+If you are using TLS for communication between Helm and Tiller, ensure that you use the `--tls` parameter with your commands. For more information, see [Using SSL Between Helm and Tiller](https://docs.helm.sh/using_helm/#using-ssl-between-helm-and-tiller) from Helm, and the section **Securing your Helm Installation** in that document.The following example shows how to add a Helm chart from a private repository using the secrets `repoUsername` and `repoPassword` from Harness [Text Secrets](../../6_Security/add-use-text-secrets.md). 
 
 
 ```

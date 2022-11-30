@@ -10,14 +10,6 @@ helpdocs_is_published: true
 
 The term entity is used to refer to the components of Harness. Most entities can be created at the account, organization, and project level.
 
-In this topic:
-
-* [Examples of Entities](#examples_of_entities)
-* [Entity Identifiers](#entity_identifiers)
-* [Entities are Connected](#entities_are_connected)
-* [Entity Deletion](#entity_deletion)
-	+ [Permissions](#permissions)
-* [Related Reference Material](#related_reference_material)
 
 ### Examples of Entities
 
@@ -42,7 +34,7 @@ Most Harness entities and resources include a unique Id (Identifier) that is imm
 
 Identifiers provide a permanent way to refer to an entity, and avoid issues that can arise when a name is changed.
 
-See [Entity Identifier Reference](/article/li0my8tcz3-entity-identifier-reference).
+See [Entity Identifier Reference](entity-identifier-reference.md).
 
 ### Entity Id Scope
 
@@ -87,9 +79,9 @@ The Id should not be any of the following words:
 * org
 * account
 
-### See Also
+### See also
 
-* [Entity Identifier Reference](/article/li0my8tcz3-entity-identifier-reference)
-* [Entity Retention Policy](/article/9i2kt42ztb-entity-retention-policy)
-* [Entity Deletion Reference](/article/amj1oz4x4k-entity-deletion-reference)
+* [Entity Identifier Reference](entity-identifier-reference.md)
+* [Entity Retention Policy](entity-retention-policy.md)
+* [Entity Deletion Reference](entity-deletion-reference.md)
 

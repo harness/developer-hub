@@ -10,16 +10,11 @@ helpdocs_is_published: true
 
 You can connect Harness to Jira using a Harness Jira Connector. This Connector allows you to create and update Jira issues, and to use Jira issues in Approval steps.
 
-Looking for How-tos? See [Create Jira Issues in CD Stages](/article/yu40zr6cvm-create-jira-issues-in-cd-stages), [Update Jira Issues in CD Stages](/article/urdkli9e74-update-jira-issues-in-cd-stages), and [Adding Jira Approval Stages and Steps](/article/2lhfk506r8-adding-jira-approval-stages).In this topic:
+Looking for How-tos? See [Create Jira Issues in CD Stages](https://docs.harness.io/article/yu40zr6cvm-create-jira-issues-in-cd-stages), [Update Jira Issues in CD Stages](https://docs.harness.io/article/urdkli9e74-update-jira-issues-in-cd-stages), and [Adding Jira Approval Stages and Steps](../9_Approvals/adding-jira-approval-stages.md).
 
-* [Before You Begin](https://ngdocs.harness.io/article/e6s32ec7i7-connect-to-jira#before_you_begin)
-* [Limitations](https://ngdocs.harness.io/article/e6s32ec7i7-connect-to-jira#limitations)
-* [Step: Add Jira Connector](https://ngdocs.harness.io/article/e6s32ec7i7-connect-to-jira#step_add_jira_connector)
-* [See Also](https://ngdocs.harness.io/article/e6s32ec7i7-connect-to-jira#see_also)
+### Before you begin
 
-### Before You Begin
-
-* [Learn Harness' Key Concepts](/article/hv2758ro4e-learn-harness-key-concepts)
+* [Learn Harness' Key Concepts](https://docs.harness.io/article/hv2758ro4e-learn-harness-key-concepts)
 
 ### Limitations
 
@@ -47,7 +42,7 @@ In **URL**, enter the base URL by which your users access your Jira applications
 
 In Jira, the base URL is set to the same URL that Web browsers use to view your Jira instance. For details, see [Configuring the Base URL](https://confluence.atlassian.com/adminjiraserver071/configuring-the-base-url-802593107.html) from Atlassian.If you are using on-premises Jira server with HTTPS redirects enabled, use the HTTPS URL to ensure the [JIRA client follows redirects](https://confluence.atlassian.com/adminjiraserver/running-jira-applications-over-ssl-or-https-938847764.html#:~:text=If%20you%20want%20to%20only,to%20the%20corresponding%20HTTPS%20URLs.).Enter your credentials. For username, use the **full email address** you use to log into Jira.
 
-For **API Key**, use a Harness [Text Secret](/article/osfw70e59c-add-use-text-secrets). See [Manage API tokens for your Atlassian account](https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/) from Atlassian.
+For **API Key**, use a Harness [Text Secret](../6_Security/add-use-text-secrets.md). See [Manage API tokens for your Atlassian account](https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/) from Atlassian.
 
 Click **Continue**.
 
@@ -57,14 +52,15 @@ Click **Save and Continue**.
 
 Harness tests the connection.
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/e6s32ec7i7/1624492018297/clean-shot-2021-06-23-at-16-46-50-2-x.png)Click **Finish**.
+![](./static/connect-to-jira-42.png)
+Click **Finish**.
 
 The Jira Connector is listed in Connectors.
 
-### See Also
+### See also
 
-* [Create Jira Issues in CD Stages](/article/yu40zr6cvm-create-jira-issues-in-cd-stages)
-* [Update Jira Issues in CD Stages](/article/urdkli9e74-update-jira-issues-in-cd-stages)
-* [Adding Jira Approval Stages and Steps](/article/2lhfk506r8-adding-jira-approval-stages)
-* [Adding Jira Approval Stages](/article/2lhfk506r8-adding-jira-approval-stages)
+* [Create Jira Issues in CD Stages](https://docs.harness.io/article/yu40zr6cvm-create-jira-issues-in-cd-stages)
+* [Update Jira Issues in CD Stages](https://docs.harness.io/article/urdkli9e74-update-jira-issues-in-cd-stages)
+* [Adding Jira Approval Stages and Steps](../9_Approvals/adding-jira-approval-stages.md)
+* [Adding Jira Approval Stages](../9_Approvals/adding-jira-approval-stages.md)
 

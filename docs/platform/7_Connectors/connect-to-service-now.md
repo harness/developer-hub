@@ -10,9 +10,9 @@ helpdocs_is_published: true
 
 You can connect Harness to ServiceNow using a Harness ServiceNow Connector. This Connector allows you to approve and reject Pipeline steps.
 
-### Before You Begin
+### Before you begin
 
-* [Learn Harness' Key Concepts](/article/hv2758ro4e-learn-harness-key-concepts)
+* [Learn Harness' Key Concepts](https://docs.harness.io/article/hv2758ro4e-learn-harness-key-concepts)
 
 ### Limitations
 
@@ -22,7 +22,7 @@ You can connect Harness to ServiceNow using a Harness ServiceNow Connector. This
 
 ### Step: Add ServiceNow Connector
 
-This topic assumes you have a Harness Project set up. If not, see [Create Organizations and Projects](/article/36fw2u92i4-create-an-organization).
+This topic assumes you have a Harness Project set up. If not, see [Create Organizations and Projects](../1_Organizations and Projects/create-an-organization.md).
 
 You can add a Connector from any module in your Project in Project setup, or in your Organization, or Account Resources.
 
@@ -32,9 +32,10 @@ In **Project Setup**, click **Connectors**.
 
 Click **New Connector**, and then click **ServiceNow**. The ServiceNow Connector settings appear.
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/illz8off8q/1639132495502/screenshot-2021-12-10-at-4-04-20-pm.png)Enter **Name** for this Connector.
+![](./static/connect-to-service-now-43.png)
+Enter **Name** for this Connector.
 
-You can choose to update the **Id** or let it be the same as your ServiceNow Connector's name. For more information, see [Entity Identifier Reference](/article/li0my8tcz3-entity-identifier-reference).
+You can choose to update the **Id** or let it be the same as your ServiceNow Connector's name. For more information, see [Entity Identifier Reference](../20_References/entity-identifier-reference.md).
 
 Enter **Description** and **Tags** for your Connector.
 
@@ -44,7 +45,7 @@ Enter your **Username**.
 
 In **URL**, enter the base URL by which your users will access ServiceNow. For example: `https://example.service-now.com`**.**
 
-Enter your credentials. For **API Key**, use a Harness [Text Secret](/article/osfw70e59c-add-use-text-secrets). 
+Enter your credentials. For **API Key**, use a Harness [Text Secret](../6_Security/add-use-text-secrets.md). 
 
 Click **Continue**.
 
@@ -54,7 +55,8 @@ Click **Save and Continue**.
 
 Harness tests the connection.
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/illz8off8q/1639414877788/screenshot-2021-12-13-at-10-30-31-pm.png)Click **Finish**.
+![](./static/connect-to-service-now-44.png)
+Click **Finish**.
 
 The ServiceNow Connector is listed in Connectors.
 

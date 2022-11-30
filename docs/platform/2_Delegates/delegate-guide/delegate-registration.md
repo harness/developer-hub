@@ -14,11 +14,12 @@ The Delegate config file (for example, Kubernetes Delegate YAML file) contains y
 
 ### Installing and registering delegates
 
-To install a Delegate, follow the steps in the relevant Delegate installation topic, such as [Install a Kubernetes Delegate](/article/f9bd10b3nj-install-a-kubernetes-delegate) or [Install a Docker Delegate](/article/cya29w2b99-install-a-docker-delegate).
+To install a Delegate, follow the steps in the relevant Delegate installation topic, such as [Install a Kubernetes Delegate](install-a-kubernetes-delegate.md) or [Install a Docker Delegate](../delegate-install-docker/install-a-docker-delegate.md).
 
 Once you have installed the Delegate in your environment, click **Verify** in the Delegate wizard and Harness will verify that it is receiving heartbeats from the Delegate.
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/39tx85rekj/1645743199994/clean-shot-2022-02-24-at-14-53-07-2-x.png)This means Harness is waiting for the Delegate you installed to register.
+![](./static/delegate-registration-01.png)
+This means Harness is waiting for the Delegate you installed to register.
 
 Registration can take a few minutes.
 

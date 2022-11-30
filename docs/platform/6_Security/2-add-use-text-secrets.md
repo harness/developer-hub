@@ -12,9 +12,9 @@ You can add a text secret to the Secret Manager and use them in your resources l
 
 This topic describes how to add a text secret in Harness.
 
-### Step 1: Add text secret
+### Step 1: Add Text Secret
 
-This topic assumes you have a Harness Project set up. If not, see [Create Organizations and Projects](../1_Organizations-and-Projects/2-create-an-organization.md).
+This topic assumes you have a Harness Project set up. If not, see [Create Organizations and Projects](../1_Organizations and Projects/create-an-organization.md).
 
 Secrets can be added inline while setting up a Connector or other setting, and they can also be set up in the Account/Organization/Project resources.
 
@@ -24,13 +24,15 @@ Click **Secrets**.
 
 Click **Secret** and select **Text.**
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/osfw70e59c/1627450167939/screenshot-2021-07-28-at-10-58-14-am.png)The **Add new Encrypted Text** settings appear.
+![](./static/add-use-text-secrets-45.png)
+The **Add new Encrypted Text** settings appear.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/osfw70e59c/1658124419929/screenshot-2022-07-18-at-11-36-24-am.png)Select the **Secret Manager** you will use to encrypt this secret.
+![](./static/add-use-text-secrets-46.png)
+Select the **Secret Manager** you will use to encrypt this secret.
 
 In **Secret Name**, enter a name for the encrypted text. This is the name you will use to reference the text elsewhere in your resources.
 
-#### Option: Inline secret value
+#### Option: Inline Secret Value
 
 In **Inline Secret** **Value**, enter a value for the encrypted text.
 
@@ -55,15 +57,17 @@ All of the passwords and keys used in Harness Connectors are stored as Encrypted
 
 You can either create the Encrypted Text secret first and then select it in the Connector or you can create/select it from the Connector by clicking **Create or Select a Secret**:
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/osfw70e59c/1618812254692/screenshot-2021-04-19-at-11-31-10-am.png)![](https://files.helpdocs.io/i5nl071jo5/articles/osfw70e59c/1618812282235/screenshot-2021-04-19-at-11-33-13-am.png)You can also edit it in the Connector.
+![](./static/add-use-text-secrets-47.png)![]
+(./static/add-use-text-secrets-48.png)
+You can also edit it in the Connector.
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/osfw70e59c/1618812596840/screenshot-2021-04-19-at-11-38-59-am.png)
-
-### Step 3: Reference the encrypted text by identifier
+![](./static/add-use-text-secrets-49.png)
+### Step 3: Reference the Encrypted Text by Identifier
 
 For an Encrypted Text secret that's been scoped to a Project, you reference the secret in using the secret identifier in the expression: `<+secrets.getValue("your_secret_Id")>`.
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/osfw70e59c/1646177108158/clean-shot-2022-03-01-at-15-24-04.png)Always reference a secret in an expression using its identifier. Names will not work.For example, if you have a text secret with the identifier `doc-secret`, you can reference it in a Shell Script step like this:
+![](./static/add-use-text-secrets-50.png)
+Always reference a secret in an expression using its identifier. Names will not work.For example, if you have a text secret with the identifier `doc-secret`, you can reference it in a Shell Script step like this:
 
 
 ```
@@ -85,7 +89,7 @@ Avoid using `$` in your secret value. If your secret value includes `$`, you mus
 For example, if your secret in the Project scope has a value `'my$secret'`, and identifier `doc-secret`, to echo, use single quotes:  
 `echo '<+secrets.getValue("doc-secret")>'`
 
-### Review: Invalid characters in secret names
+### Review: Invalid Characters in Secret Names
 
 The following characters aren't allowed in the names of secrets:
 
@@ -93,17 +97,19 @@ The following characters aren't allowed in the names of secrets:
 ```
  ~ ! @ # $ % ^ & * ' " ? / < > , ;
 ```
-### Review: Secrets in outputs
+
+### Review: Secrets in Outputs
 
 When a secret is displayed in an output, Harness substitutes the secret value with asterisks so that the secret value is masked. Harness replaces each character in the name with an asterisk (\*).
 
 For example, here the secret values referenced in a Shell Script step are replaced with `*****`:
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/osfw70e59c/1618913494624/screenshot-2021-04-20-at-2-59-18-pm.png)If you accidentally use a very common value in your secret, like whitespace, the `*` substitution might appear in multiple places in the output.
+![](./static/add-use-text-secrets-51.png)
+If you accidentally use a very common value in your secret, like whitespace, the `*` substitution might appear in multiple places in the output.
 
 If you see an output like this, review your secret and fix the error.
 
-### Review: Secret scope
+### Review: Secret Scope
 
 When creating secrets, it's important to understand their scope in your Harness account.
 
@@ -111,7 +117,7 @@ A user can only create a secret according to the scope set by its Harness User p
 
 For example, when you create a new project or a new organization, a Harness Secret Manager is automatically scoped to that level.
 
-### Review: Line breaks and shell-interpreted characters
+### Review: Line breaks and Shell-Interpreted Characters
 
 A text secret can be referenced in a script and written to a file as well. For example, here is a secret decoded from [base64](https://linux.die.net/man/1/base64) and written to a file:
 
@@ -155,8 +161,7 @@ echo <+secrets.getValue("linebreaks")> | base64 -d
 ```
 The result loses any secret sanitization.
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/osfw70e59c/1652308084680/image.png)
-
+![](./static/add-use-text-secrets-52.png)
 ### Nested expressions uing string concatenation
 
 You can use the + operator or concat method inside the secret reference. For example, each of these expressions use one method and another Harness variable expression:

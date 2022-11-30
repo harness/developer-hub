@@ -12,34 +12,34 @@ The Delegate Guide includes the following how-to topics.
 
 ### Basic installation
 
-* [Install Harness Delegate on Kubernetes](https://docs.harness.io/article/2132l9r4gt)
-* [Install Harness Delegate Using Helm](https://docs.harness.io/article/zo44dwgmin)
-* [Install a Docker Delegate](https://docs.harness.io/article/cya29w2b99)
-* [Install a Legacy Kubernetes Delegate](https://docs.harness.io/article/f9bd10b3nj)
+* [Install Harness Delegate on Kubernetes](../delegate-install-kubernetes/install-harness-delegate-on-kubernetes.md)
+* [Install Harness Delegate Using Helm](../delegate-install-kubernetes/install-harness-delegate-using-helm.md)
+* [Install a Docker Delegate](../delegate-install-docker/install-a-docker-delegate.md)
+* [Install a Legacy Kubernetes Delegate](install-a-kubernetes-delegate.md)
 
 ### Advanced installation
 
-* [Automate Delegate Installation](https://docs.harness.io/article/9deaame3qz)
-* [Non-Root Delegate Installation](https://docs.harness.io/article/h2kydm6qme)
-* [Install a Delegate with Third-Party Custom Tool Binaries](https://docs.harness.io/article/ql86a0iqta)
+* [Automate Delegate Installation](automate-delegate-installation.md)
+* [Non-Root Delegate Installation](non-root-delegate-installation.md)
+* [Install a Delegate with Third-Party Custom Tool Binaries](install-a-delegate-with-3-rd-party-tool-custom-binaries.md)
 
 ### Delegate customization
 
-* [Create a Custom Delegate that Includes Custom Tools](/article/nbi9uj9wm4-custom-delegate)
+* [Create a Custom Delegate that Includes Custom Tools](custom-delegate.md)
 
 ### Configuring delegates
 
-* [Run Initialization Scripts on Delegates](/article/yte6x6cyhn-run-scripts-on-delegates)
-* [Configure Delegate Proxy Settings](/article/5ww21ewdt8-configure-delegate-proxy-settings)
+* [Run Initialization Scripts on Delegates](run-scripts-on-delegates.md)
+* [Configure Delegate Proxy Settings](configure-delegate-proxy-settings.md)
 
 ### Delegate management
 
-* [Select Delegates with Tags](/article/nnuf8yv13o-select-delegates-with-selectors)
-* [Delegate Registration and Verification](/article/39tx85rekj-delegate-registration)
-* [Delete a Delegate](/article/tl6ql57em6-delete-a-delegate)
+* [Select Delegates with Tags](select-delegates-with-selectors.md)
+* [Delegate Registration and Verification](delegate-registration.md)
+* [Delete a Delegate](delete-a-delegate.md)
 
 ### Secure delegates
 
-* [Secure Delegates with Tokens](/article/omydtsrycn-secure-delegates-with-tokens)
-* [Truststore Override for Delegates](/article/nh6tdfse6g-trust-store-override-for-delegates)
+* [Secure Delegates with Tokens](secure-delegates-with-tokens.md)
+* [Truststore Override for Delegates](trust-store-override-for-delegates.md)
 

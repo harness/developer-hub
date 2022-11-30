@@ -89,12 +89,12 @@ To run steps on multiple target hosts, such as in a CD stage that performs a Dep
 repeat:  
   items: <+stage.output.hosts>
 ```
-For more information, go to [Run a step on multiple target instances](/article/c5mcm36cp8-run-a-script-on-multiple-target-instances).
+For more information, go to [Run a step on multiple target instances](https://docs.harness.io/article/c5mcm36cp8-run-a-script-on-multiple-target-instances).
 
-### See Also
+### See also
 
-* [Best Practices for Looping Strategies](https://docs.harness.io/article/q7i0saqgw4)
-* [Run a Stage or Step Multiple Times using a Matrix](/article/kay7z1bi01-run-a-stage-or-step-multiple-times-using-a-matrix)
+* [Best Practices for Looping Strategies](best-practices-for-looping-strategies.md)
+* [Run a Stage or Step Multiple Times using a Matrix](run-a-stage-or-step-multiple-times-using-a-matrix.md)
 * [Speed Up CI Test Pipelines Using Parallelism](https://harness.helpdocs.io/article/kce8mgionj)
 * [Optimizing CI Build Times](https://harness.helpdocs.io/article/g3m7pjq79y)
 

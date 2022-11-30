@@ -12,13 +12,15 @@ You can be a part of more than one Harness Accounts.
 
 This topic explains how to switch between multiple Accounts in Harness.
 
-### View and switch accounts
+### View and switch Accounts
 
 You can check to see if you are a part of multiple Accounts by clicking on your User Profile. 
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/918lei069y/1659947223593/screenshot-2022-08-08-at-1-55-04-pm.png)Click **Switch Account**. The **Switch Account** settings appear.
+![](./static/switch-account-51.png)
+Click **Switch Account**. The **Switch Account** settings appear.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/918lei069y/1659947371793/screenshot-2022-08-08-at-1-58-49-pm.png)All the Accounts that you are a member of, are listed here. 
+![](./static/switch-account-52.png)
+All the Accounts that you are a member of, are listed here. 
 
 You can set a specific Account as default by clicking **Set as Default**.
 

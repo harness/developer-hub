@@ -8,11 +8,11 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Continuous Integration (CI) can be performed in Harness using the module and [CI Pipelines](/article/3amcd8hn53-ci-pipeline-basics).
+Continuous Integration (CI) can be performed in Harness using the module and [CI Pipelines](../../continuous-integration/ci-quickstarts/ci-pipeline-basics.md).
 
 If you are using Harness Continuous Delivery (CD) but not Harness Continuous Integration (CI), you can still perform CI using the **Jenkins** step in your CD Stage.
 
-You can connect Harness to Jenkins using a Harness Jenkins Connector. This Connector allows you to Jenkins jobs in [Jenkins steps](/article/as4dtppasg-run-jenkins-jobs-in-cd-pipelines).
+You can connect Harness to Jenkins using a Harness Jenkins Connector. This Connector allows you to Jenkins jobs in [Jenkins steps](https://docs.harness.io/article/as4dtppasg-run-jenkins-jobs-in-cd-pipelines).
 
 This topic shows you how to add a Jenkins Connector to Harness.
 
@@ -59,7 +59,8 @@ If you are using the Jenkins SaaS (cloud) edition, the URL is in your browser's 
 
 If you are using the standalone edition of Jenkins, the URL is located in **Manage Jenkins**, **Jenkins Location**:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/7frr40zml5/1658791347201/image.png)### Step 3: Authentication
+![](./static/connect-to-jenkins-10.png)
+### Step 3: Authentication
 
 If you use Okta or 2FA for connections to Jenkins, use **API token** for **Authentication** in the Harness Jenkins Connector.Enter the credentials to authenticate with the server.
 
@@ -73,7 +74,7 @@ Click **Submit**.
 
 The Jenkins Connector is added.
 
-### See Also
+### See also
 
-* [Run Jenkins Jobs in CD Pipelines](/article/as4dtppasg-run-jenkins-jobs-in-cd-pipelines)
+* [Run Jenkins Jobs in CD Pipelines](https://docs.harness.io/article/as4dtppasg-run-jenkins-jobs-in-cd-pipelines)
 

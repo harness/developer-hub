@@ -16,8 +16,8 @@ The Docker Connector is platform-agnostic and can be used to connect to any Dock
 
 See:
 
-* [Add an AWS Connector](/article/98ezfwox9u-add-aws-connector)
-* [Google Cloud Platform (GCP) Connector Settings Reference](/article/cii3t8ra3v-connect-to-google-cloud-platform-gcp)
+* [Add an AWS Connector](../add-aws-connector.md)
+* [Google Cloud Platform (GCP) Connector Settings Reference](../connect-to-google-cloud-platform-gcp.md)
 
 ### Docker Registry Permissions Required
 
@@ -32,13 +32,15 @@ The user needs access and permissions to the following:
 
 See [Docker Permissions](https://docs.docker.com/datacenter/dtr/2.0/user-management/permission-levels/).
 
-If you are using anonymous access to a Docker registry for a Kubernetes deployment, then `imagePullSecrets` should be removed from the container specification. This is standard Kubernetes behavior and not related to Harness specifically.### Name
+If you are using anonymous access to a Docker registry for a Kubernetes deployment, then `imagePullSecrets` should be removed from the container specification. This is standard Kubernetes behavior and not related to Harness specifically.
+
+### Name
 
 The unique name for this Connector.
 
 ### ID
 
-See [Entity Identifier Reference](/article/li0my8tcz3-entity-identifier-reference).
+See [Entity Identifier Reference](../../20_References/entity-identifier-reference.md).
 
 ### Description
 
@@ -46,7 +48,7 @@ Text string.
 
 ### Tags
 
-See [Tags Reference](/article/i8t053o0sq-tags-reference).
+See [Tags Reference](../../20_References/tags-reference.md).
 
 ### Docker Registry URL
 
@@ -72,5 +74,5 @@ You can authenticate using username and password, or select anonymous.
 
 The username and password for the Docker registry account.
 
-The password uses a [Harness Encrypted Text secret](/article/osfw70e59c-add-text-secrets).
+The password uses a [Harness Encrypted Text secret](../../6_Security/add-use-text-secrets.md).
 

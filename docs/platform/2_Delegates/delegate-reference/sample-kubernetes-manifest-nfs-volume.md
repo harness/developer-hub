@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This Kubernetes manifest creates an NFS volume. For a sample manifest for an NFS server, see [Sample: Create a Permanent Volume - NFS Server](https://docs.harness.io/article/3onmos2n3v).
+This Kubernetes manifest creates an NFS volume. For a sample manifest for an NFS server, see [Sample: Create a Permanent Volume - NFS Server](sample-create-a-permanent-volume-nfs-server.md).
 
 
 ```

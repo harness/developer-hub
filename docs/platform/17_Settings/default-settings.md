@@ -34,9 +34,9 @@ You can group a set of parameters into settings.
 
 This topic explains how to view and edit Default Settings at the Account scope.
 
-1. In your Harness Account, go to Account Resources.![](https://files.helpdocs.io/kw8ldg1itf/articles/k6ib32mh82/1660730611104/screenshot-2022-08-17-at-3-32-38-pm.png)
+1. In your Harness Account, go to Account Resources.![](./static/default-settings-00.png)
 2. Click **Default Settings**. The **Account Default Settings** appear.  
-Harness onboards the module-specific settings in **Account Default Settings**.![](https://files.helpdocs.io/kw8ldg1itf/articles/k6ib32mh82/1667560333296/screenshot-2022-11-04-at-4-41-49-pm.png)
+Harness onboards the module-specific settings in **Account Default Settings**.![](./static/default-settings-01.png)
 
 #### Allow Override
 

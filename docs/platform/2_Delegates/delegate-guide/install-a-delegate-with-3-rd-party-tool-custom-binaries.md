@@ -47,7 +47,9 @@ In the delegate container `spec`, use the `INIT_SCRIPT` environment variable to 
 
 The SDKs you need to add depend on what type of deployment you are doing with Harness.
 
-For more information on how to use the `INIT_SCRIPT` environment variable, see [Run Initialization Scripts on Delegates](/article/yte6x6cyhn-run-scripts-on-delegates).#### Table: Certified SDK versions for deployment types
+For more information on how to use the `INIT_SCRIPT` environment variable, see [Run Initialization Scripts on Delegates](run-scripts-on-delegates.md).
+
+#### Table: Certified SDK versions for deployment types
 
 The following table lists each of the certified SDKs for each deployment type.
 
@@ -169,7 +171,9 @@ curl -L https://app.harness.io/public/shared/tools/scm/release/36d92fd8/bin/linu
 chmod +x ./scm  
 mv scm /opt/harness-delegate/client-tools/scm/36d92fd8/scm
 ```
-Contact [Harness Support](mailto:support@harness.io) to enable the feature.#### Example of Kubernetes delegate manifest with required SDK downloads
+Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+#### Example of Kubernetes delegate manifest with required SDK downloads
 
 The following delegate YAML contains examples of downloads for all Harness SDKs.
 
@@ -267,7 +271,7 @@ You can set up custom paths to certain third-party binaries using environment va
 | --- | --- |
 | **Tool** | **Environment Variable Name** |
 | Helm v3 | HELM3\_PATH |
-| Helm v2 | HELM\_PATHIf you are performing a [Native Helm deployment](/article/lbhf2h71at-native-helm-quickstart), do not use `HELM_PATH` for the Helm 2 binary. Harness requires the Helm 2 binary on the delegate in its standard path, for example: `/usr/local/bin/helm`. |
+| Helm v2 | HELM\_PATHIf you are performing a [Native Helm deployment](https://docs.harness.io/article/lbhf2h71at-native-helm-quickstart), do not use `HELM_PATH` for the Helm 2 binary. Harness requires the Helm 2 binary on the delegate in its standard path, for example: `/usr/local/bin/helm`. |
 | Kustomize | KUSTOMIZE\_PATH |
 | Kubectl | KUBECTL\_PATH |
 | OpenShift (OC) | OC\_PATH |
@@ -300,7 +304,7 @@ In the delegate container `spec`, edit the image to use the `ubi-no-tools` tag.
         imagePullPolicy: Always  
 ...
 ```
-### See Also
+### See also
 
-* [Common Delegate Initialization Scripts](/article/auveebqv37-common-delegate-profile-scripts)
+* [Common Delegate Initialization Scripts](../delegate-reference/common-delegate-profile-scripts.md)
 

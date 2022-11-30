@@ -14,7 +14,7 @@ Harness Terraform Provider is a library that you can use to create Harness Infra
 
 This quickstart shows you how to write your configurations in Terraform and provision your Harness resources using the Harness Terraform Provider.
 
-### Before You begin
+### Before you begin
 
 * [Introduction to Terraform](https://www.terraform.io/intro)
 * [Terraform Registry](https://www.terraform.io/registry)
@@ -25,7 +25,7 @@ This quickstart shows you how to write your configurations in Terraform and prov
 * You must have a Harness Account.
 * You must have an admin setup for your Harness Account.
 * You must have a Personal Access Token (PAT).  
-For detailed steps on how to generate a PAT, see [Create a Personal Access Token](/article/tdoad7xrh9-add-and-manage-api-keys#create_personal_access_token).
+For detailed steps on how to generate a PAT, see [Create a Personal Access Token](../4_Role-Based Access Control/add-and-manage-api-keys.md#create-personal-access-token).
 
 ### Important
 
@@ -37,7 +37,7 @@ For detailed steps on how to generate a PAT, see [Create a Personal Access Token
 	+ Secrets
 	+ Pipelines
 * You cannot provision users using Harness Terraform Provider.  
-You can provision users through SCIM using [Okta](/article/umv2xdnofv-provision-users-with-okta-scim), [OneLogin](/article/y402mpkrxq-provision-users-and-groups-with-one-login-scim) or [Azure AD](/article/6r8hin2z20-provision-users-and-groups-using-azure-ad-scim).
+You can provision users through SCIM using [Okta](../3_Authentication/provision-users-with-okta-scim.md), [OneLogin](../3_Authentication/provision-users-and-groups-with-one-login-scim.md) or [Azure AD](../3_Authentication/provision-users-and-groups-using-azure-ad-scim.md).
 * You cannot run or monitor your Pipelines using Harness Terraform Provider.
 
 ### Why use Harness Terraform Provider?
@@ -58,7 +58,7 @@ For more details, see [Configuration Language](https://www.terraform.io/language
 	+ `Terraform plan`
 	+ `Terraform apply`
 * Once you confirm Terraform apply, a state file .statetf is generated.
-* Your resources are provisioned successfully.![](https://files.helpdocs.io/kw8ldg1itf/articles/7cude5tvzh/1661408655691/screenshot-2022-08-25-at-11-35-51-am.png)
+* Your resources are provisioned successfully.![](./static/harness-terraform-provider-00.png)
 
 ### Install Harness Terraform Provider
 
@@ -72,7 +72,7 @@ The account Id is in every URL when using Harness:
 
 Enter your Personal Access Token (PAT) in `platform_api_key`.
 
-For detailed steps on how to generate a PAT, see [Create a Personal Access Token](/article/tdoad7xrh9-add-and-manage-api-keys#create_personal_access_token).​
+For detailed steps on how to generate a PAT, see [Create a Personal Access Token](../4_Role-Based Access Control/add-and-manage-api-keys.md#create-personal-access-token).​
 
 
 ```
@@ -114,7 +114,8 @@ resource "harness_platform_organization" "org" {​
 ```
 Your Organization now appears in the list of Organizations within the scope of your Harness Account.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/7cude5tvzh/1661498703407/terraform-or.png)To try it out, see [Harness Organization](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_organization).
+![](./static/harness-terraform-provider-01.png)
+To try it out, see [Harness Organization](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_organization).
 
 #### Add Project details
 
@@ -128,7 +129,8 @@ resource "harness_platform_project" "project" {
 ```
 Your Project now appears in the list of Projects within the scope of your Organization.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/7cude5tvzh/1661498760510/terraform-project.png)To try it out, see [Harness Project](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_project).
+![](./static/harness-terraform-provider-02.png)
+To try it out, see [Harness Project](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_project).
 
 #### Add Encrypted Text Secret details
 
@@ -154,9 +156,12 @@ resource "harness_platform_secret_text" "textsecret" {​
 ```
 Your Text Secret now appears in the list of Secrets within the scope of your Project.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/7cude5tvzh/1661498847758/terraform-secret.png)To try it out, see [Harness Text Secret](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_secret_text).
+![](./static/harness-terraform-provider-03.png)
+To try it out, see [Harness Text Secret](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_secret_text).
 
-If you do not provide the `org_id` and the `project_id` in the configuration, the Secret is created at the Account scope.#### Add Pipeline details
+If you do not provide the `org_id` and the `project_id` in the configuration, the Secret is created at the Account scope.
+
+#### Add Pipeline details
 
 
 ```
@@ -204,7 +209,8 @@ PIPETEXT
 ```
 Your Pipeline now appears in the list of Pipelines within the scope of your Project.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/7cude5tvzh/1661498920030/terraform-pipeline-1.png)To try it out, see [Harness Pipeline](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_pipeline).
+![](./static/harness-terraform-provider-04.png)
+To try it out, see [Harness Pipeline](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_pipeline).
 
 ### Provision Harness infrastructure
 

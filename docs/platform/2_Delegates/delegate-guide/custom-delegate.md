@@ -8,24 +8,17 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-[Harness Delegates](/article/2k7lnc7lvl-delegates-overview) are installed from the Harness Manager and typically contain the binaries you need for your CI/CD Pipelines.
+[Harness Delegates](../delegates-overview.md) are installed from the Harness Manager and typically contain the binaries you need for your CI/CD Pipelines.
 
 In some cases, you might want to add more tools or even create your own custom Delegate and include the tools needed for your builds and deployments.
 
 This topic explains the different ways to create a custom Delegate.
 
-In this topic:
-
-* [Before You Begin](https://ngdocs.harness.io/article/nbi9uj9wm4-custom-delegate#before_you_begin)
-* [Option: Use INIT\_SCRIPT Environment Variable](https://ngdocs.harness.io/article/nbi9uj9wm4-custom-delegate#option_use_init_script_environment_variable)
-* [Option: Add a Delegate Image](https://ngdocs.harness.io/article/nbi9uj9wm4-custom-delegate#option_add_a_delegate_image)
-* [See Also](https://ngdocs.harness.io/article/nbi9uj9wm4-custom-delegate#see_also)
-
 ### Before you begin
 
-* [Delegates Overview](/article/2k7lnc7lvl-delegates-overview)
-* [Supported Platforms and Technologies](/article/1e536z41av-supported-platforms-and-technologies)
-* [Delegate Installation Overview](/article/re8kk0ex4k-delegate-installation-overview)
+* [Delegates Overview](../delegates-overview.md)
+* [Supported Platforms and Technologies](https://docs.harness.io/article/1e536z41av-supported-platforms-and-technologies)
+* [Delegate Installation Overview](https://docs.harness.io/article/re8kk0ex4k-delegate-installation-overview)
 
 ### Option: Use the INIT\_SCRIPT environment variable
 
@@ -54,12 +47,12 @@ spec:
 ```
 In `value`, enter your script. For a list of common scripts, see [Common Delegate Initialization Scripts](https://newdocs.helpdocs.io/article/auveebqv37-common-delegate-profile-scripts).
 
-For steps on using the `INIT_SCRIPT` environment variable, see [Run Scripts on Delegates](/article/yte6x6cyhn-run-scripts-on-delegates).
+For steps on using the `INIT_SCRIPT` environment variable, see [Run Scripts on Delegates](run-scripts-on-delegates.md).
 
 You can see all of the environment variables for the Delegates in the following topics:
 
-* [Install a Kubernetes Delegate](/article/f9bd10b3nj-install-a-kubernetes-delegate)
-* [Install a Docker Delegate](/article/cya29w2b99-install-a-docker-delegate)
+* [Install a Kubernetes Delegate](install-a-kubernetes-delegate.md)
+* [Install a Docker Delegate](../delegate-install-docker/install-a-docker-delegate.md)
 
 ### Option: Add a delegate image
 
@@ -85,10 +78,10 @@ ENV key=value
 ```
 You can see all of the environment variables for the Delegates in the following topics:
 
-* [Install a Kubernetes Delegate](/article/f9bd10b3nj-install-a-kubernetes-delegate)
-* [Install a Docker Delegate](/article/cya29w2b99-install-a-docker-delegate)
+* [Install a Kubernetes Delegate](install-a-kubernetes-delegate.md)
+* [Install a Docker Delegate](../delegate-install-docker/install-a-docker-delegate.md)
 
 ### See also
 
-* [Delegate How-tos](/category/9i5thr0ot2-delegates).
+* [Delegate How-tos](https://docs.harness.io/category/9i5thr0ot2-delegates).
 

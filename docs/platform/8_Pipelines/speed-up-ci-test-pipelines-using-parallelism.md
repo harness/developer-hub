@@ -10,9 +10,9 @@ helpdocs_is_published: true
 
 Currently, this feature is behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.The more tests you run, the longer it takes for them to complete if run sequentially. To reduce test cycle time, you can split your tests and run them across multiple groups at the same time. 
 
-*P**arallelism* is one of the [looping strategies](https://docs.harness.io/article/eh4azj73m4) available in Harness pipelines. Parallelism is useful whenever you can split a step or stage into multiple groups and run them at the same time. 
+*P**arallelism* is one of the [looping strategies](looping-strategies-matrix-repeat-and-parallelism.md) available in Harness pipelines. Parallelism is useful whenever you can split a step or stage into multiple groups and run them at the same time. 
 
-Parallelism is one of the [available methods](https://docs.harness.io/article/g3m7pjq79y) you can use to speed up your CI builds.
+Parallelism is one of the [available methods](../../continuous-integration/troubleshoot/optimizing-ci-build-times.md) you can use to speed up your CI builds.
 
 ### Key concepts: parallelism and test splitting
 
@@ -25,7 +25,8 @@ The following figure illustrates how parallelism can speed up your CI pipelines.
 
 **Figure 1: Parallelism and Test Times**
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/f2qxm48wuh/1660489424898/parallelism-final.png)### YAML stage with parallelism
+![](./static/speed-up-ci-test-pipelines-using-parallelism-50.png)
+### YAML stage with parallelism
 
 Parallelism can be set on both steps and stages. 
 
@@ -70,7 +71,7 @@ The following snippet shows a YAML definition of a Run step that uses [pytest](h
 ```
 ### Important notes
 
-* Please consider any resource constraints in your build infrastructure when using parallelism. To learn more, go to [Best Practices for Looping Strategies](https://docs.harness.io/article/q7i0saqgw4).
+* Please consider any resource constraints in your build infrastructure when using parallelism. To learn more, go to [Best Practices for Looping Strategies](best-practices-for-looping-strategies.md).
 * You can implement a parallelism strategy for an entire stage or for individual steps within a stage.
 * If you are implementing parallelism in a step rather than a stage, you need to make sure that each test-group step generates a report with a unique filename to avoid conflicts.  
 You can do this using the `<+strategy.iteration>` variable, which is the index of the current test group run. This index is in the range of `0` to `parallelism- 1`.
@@ -104,9 +105,9 @@ To define these attributes in the Pipeline Studio, go to the step that implement
 3. Set up the split\_tests command with the splitting criteria based on file size (`--split-by file_size`). Go to [Define test splitting](#define-test-splitting).
 4. Define your test reports. Your reports must be in JUnit format. Go to [Publish test reports](#publish-test-results).
 5. Run your Pipeline to make sure all your Steps complete successfully. You can see the parallel copies of your Step running in the Build UI.  
-**Figure 2: Parallel steps in a build**![](https://files.helpdocs.io/kw8ldg1itf/articles/smx0bijd90/1660250471764/first-run-build.png)
+**Figure 2: Parallel steps in a build**![](./static/speed-up-ci-test-pipelines-using-parallelism-51.png)
 6. When the build finishes, go to the Tests tab and view your results. You can view results for each parallel run using the pull-down.  
-**Figure 3: View results for individual runs**![](https://files.helpdocs.io/kw8ldg1itf/articles/smx0bijd90/1660250515845/first-run-test-results.png)
+**Figure 3: View results for individual runs**![](./static/speed-up-ci-test-pipelines-using-parallelism-52.png)
 7. Now that Harness has collected timing data, you can split your tests by time and reduce your build times further. Go to [Define test splitting](#define-test-splitting).
 
 ### Define the parallelism strategy
@@ -126,7 +127,7 @@ You can configure parallelism in the Pipeline Studio as well:
 
 1. In the Pipeline Studio, open the Step or Stage where you run your Tests and click the **Advanced** tab.
 2. Under **Looping Strategies**, select **Parallelism** and define your strategy.  
-**Figure 4: Define parallelism in a Run step**![](https://files.helpdocs.io/kw8ldg1itf/articles/kce8mgionj/1660574108914/parallelism-in-run-step-ui.png)
+**Figure 4: Define parallelism in a Run step**![](./static/speed-up-ci-test-pipelines-using-parallelism-53.png)
 
 [Parallelism Workflow](#workflow-description)
 
@@ -158,7 +159,7 @@ The `split_tests` command creates a new set of test files that is ordered based 
 
 #### Test splitting strategies
 
-The `split_tests` command allows you to define the criteria for splitting tests. The pipeline uses [Test Intelligence](https://docs.harness.io/article/vtu9k1dsfa) to eliminate tests that don’t need to be rerun; then it splits the remaining tests based on the splitting strategy.
+The `split_tests` command allows you to define the criteria for splitting tests. The pipeline uses [Test Intelligence](../../continuous-integration/ci-quickstarts/test-intelligence-concepts.md) to eliminate tests that don’t need to be rerun; then it splits the remaining tests based on the splitting strategy.
 
 Harness supports the following strategies:
 
@@ -230,7 +231,8 @@ You can configure your test reporting options in the pipeline YAML, as shown abo
 
 **Figure 6: Define Report Paths in a Run Step**
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/kce8mgionj/1658587230180/report-paths-field.png)[Parallelism Workflow](#workflow-description)
+![](./static/speed-up-ci-test-pipelines-using-parallelism-54.png)
+[Parallelism Workflow](#workflow-description)
 
 ### YAML pipeline example with parallelism
 
@@ -295,10 +297,10 @@ pipeline:
                                                 - "**/result_${HARNESS_NODE_INDEX}.xml"  
                                 failureStrategies: []
 ```
-### See Also
+### See also
 
 * [Optimizing CI Build Times](https://harness.helpdocs.io/article/g3m7pjq79y)
 * [Looping Strategies Overview: Matrix, For Loop, and Parallelism](https://harness.helpdocs.io/article/eh4azj73m4)
-* [Best Practices for Looping Strategies](https://docs.harness.io/article/q7i0saqgw4)
-* [Run a Stage or Step Multiple Times using a Matrix](https://docs.harness.io/article/kay7z1bi01)
+* [Best Practices for Looping Strategies](best-practices-for-looping-strategies.md)
+* [Run a Stage or Step Multiple Times using a Matrix](run-a-stage-or-step-multiple-times-using-a-matrix.md)
 

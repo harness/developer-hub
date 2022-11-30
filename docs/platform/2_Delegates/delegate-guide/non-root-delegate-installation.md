@@ -12,25 +12,15 @@ By default, Harness Delegates use root access. You can install a different Docke
 
 Harness Delegate images are publicly hosted on [Docker Hub](https://hub.docker.com/r/harness/delegate/tags).This topic described how to install and run a Delegate as non-root.
 
-In this topic:
+### Before you begin
 
-* [Before You Begin](https://ngdocs.harness.io/article/h2kydm6qme-non-root-delegate-installation#before_you_begin)
-* [Limitations](https://ngdocs.harness.io/article/h2kydm6qme-non-root-delegate-installation#limitations)
-* [Step 1: Download the Delegate Config File](https://ngdocs.harness.io/article/h2kydm6qme-non-root-delegate-installation#step_1_download_the_delegate_config_file)
-* [Option: Pick a Non-Root Type](https://ngdocs.harness.io/article/h2kydm6qme-non-root-delegate-installation#option_pick_a_non_root_type)
-* [Step 2: Update the Delegate Image](https://ngdocs.harness.io/article/h2kydm6qme-non-root-delegate-installation#step_2_update_the_delegate_image)
-* [Step 3: Install the Delegate](https://ngdocs.harness.io/article/h2kydm6qme-non-root-delegate-installation#step_3_install_the_delegate)
-* [See Also](https://ngdocs.harness.io/article/h2kydm6qme-non-root-delegate-installation#see_also)
-
-### Before You Begin
-
-* [Delegate Requirements and Limitations](/article/k7sbhe419w-delegate-requirements-and-limitations)
-* [Delegate Installation Overview](/article/re8kk0ex4k-delegate-installation-overview)
+* [Delegate Requirements and Limitations](../delegate-reference/delegate-requirements-and-limitations.md)
+* [Delegate Installation Overview](https://docs.harness.io/article/re8kk0ex4k-delegate-installation-overview)
 
 ### Limitations
 
 * The Harness Delegate does NOT require root account access. Kubernetes and Docker Delegates run as root by default.
-* If you do not run the Delegate as root, be aware that you cannot install any software using a [Delegate Initialization Script](https://ngdocs.harness.io/article/auveebqv37-common-delegate-profile-scripts).
+* If you do not run the Delegate as root, be aware that you cannot install any software using a [Delegate Initialization Script](../delegate-reference/common-delegate-profile-scripts.md).
 
 ### Step 1: Download the Delegate Config File
 
@@ -38,14 +28,15 @@ Download the Delegate config file as part of its installation.
 
 For examples, see:
 
-* [Install a Docker Delegate](/article/cya29w2b99-install-a-docker-delegate)
-* [Install a Kubernetes Delegate](/article/f9bd10b3nj-install-a-kubernetes-delegate)
+* [Install a Docker Delegate](../delegate-install-docker/install-a-docker-delegate.md)
+* [Install a Kubernetes Delegate](install-a-kubernetes-delegate.md)
 
 ### Option: Pick a Non-Root Type
 
 Harness Delegate images are publicly hosted on [Docker Hub](https://hub.docker.com/r/harness/delegate/tags) and Harness has non-root options for different platforms:
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/h2kydm6qme/1646958490103/clean-shot-2022-03-10-at-16-27-28-2-x.png)Unless you are using OpenShift or a Universal Base Image (UBI), you will want to use to use `delegate:non-root`.
+![](./static/non-root-delegate-installation-27.png)
+Unless you are using OpenShift or a Universal Base Image (UBI), you will want to use to use `delegate:non-root`.
 
 ### Step 2: Update the Delegate Image
 
@@ -111,10 +102,10 @@ spec:
 
 Install the Delegate as described in topics such as the following:
 
-* [Install a Docker Delegate](/article/cya29w2b99-install-a-docker-delegate)
-* [Install a Kubernetes Delegate](/article/f9bd10b3nj-install-a-kubernetes-delegate)
+* [Install a Docker Delegate](../delegate-install-docker/install-a-docker-delegate.md)
+* [Install a Kubernetes Delegate](install-a-kubernetes-delegate.md)
 
-### See Also
+### See also
 
-* [Automate Delegate Installation](/article/9deaame3qz-automate-delegate-installation)
+* [Automate Delegate Installation](automate-delegate-installation.md)
 

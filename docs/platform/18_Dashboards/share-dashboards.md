@@ -10,21 +10,9 @@ helpdocs_is_published: true
 
 A Dashboard lets you schedule immediate or recurring delivery of dashboards. This topic describes how to schedule and share dashboards.
 
-In this topic:
+### Before you begin
 
-* [Before You Begin](https://ngdocs.harness.io/article/35gfke0rl8-share-dashboards#before_you_begin)
-* [Visual Summary](https://ngdocs.harness.io/article/35gfke0rl8-share-dashboards#visual_summary)
-* [Step: Schedule a Delivery](https://ngdocs.harness.io/article/35gfke0rl8-share-dashboards#step_schedule_a_delivery)
-* [Settings](https://ngdocs.harness.io/article/35gfke0rl8-share-dashboards#settings)
-* [Filters](https://ngdocs.harness.io/article/35gfke0rl8-share-dashboards#filters)
-* [Advanced Options](https://ngdocs.harness.io/article/35gfke0rl8-share-dashboards#advanced_options)
-* [Save a Schedule Delivery](https://ngdocs.harness.io/article/35gfke0rl8-share-dashboards#save_a_schedule_delivery)
-* [Edit a Schedule](https://ngdocs.harness.io/article/35gfke0rl8-share-dashboards#edit_a_schedule)
-* [Duplicate a Schedule](https://ngdocs.harness.io/article/35gfke0rl8-share-dashboards#duplicate_a_schedule)
-
-### Before You Begin
-
-* [Create Dashboards](/article/ardf4nbvcy-create-dashboards)
+* [Create Dashboards](create-dashboards.md)
 * Make sure the dashboard is not in edit mode.
 
 ### Visual Summary
@@ -35,8 +23,8 @@ The following video explains how to create a Dashboard:
 
 Perform the following steps to schedule a delivery:
 
-1. Click the three-dot menu in the upper right of the dashboard and select **Schedule delivery**.![](https://files.helpdocs.io/i5nl071jo5/articles/35gfke0rl8/1626977931666/screenshot-2021-07-22-at-11-48-39-pm.png)
-2. In Schedule, the top of the schedule window shows the name automatically given to the delivery. The name defaults to the dashboard’s name. To edit the delivery’s name, click the name (indicated by the dotted underscore), and make your edits.![](https://files.helpdocs.io/i5nl071jo5/articles/35gfke0rl8/1626978236113/screenshot-2021-07-22-at-11-53-40-pm.png)
+1. Click the three-dot menu in the upper right of the dashboard and select **Schedule delivery**.![](./static/share-dashboards-00.png)
+2. In Schedule, the top of the schedule window shows the name automatically given to the delivery. The name defaults to the dashboard’s name. To edit the delivery’s name, click the name (indicated by the dotted underscore), and make your edits.![](./static/share-dashboards-01.png)
 3. In **Schedule**, the following options are available:
 	* Settings
 	* Filters
@@ -68,9 +56,11 @@ Select one of the following options from the **Recurrence** drop-down menu:
 
 The timing options change depending on the option you’ve chosen. For example, here are the setting options when you select **Specific months**:
 
-![](https://docs.looker.com/assets/images/specific-months-dash-beta-2100.png)Here are the settings when you select **Hourly**:
+![](https://docs.looker.com/assets/images/specific-months-dash-beta-2100.png)
+Here are the settings when you select **Hourly**:
 
-![](https://docs.looker.com/assets/images/hourly-dash-beta-2100.png)The **Time**, **Start**, and **End** fields use a 24-hour clock. If the time you want is not available in the drop-down menu, click within the field and manually enter your desired time, such as 9:15, 15:37, and so on.
+![](https://docs.looker.com/assets/images/hourly-dash-beta-2100.png)
+The **Time**, **Start**, and **End** fields use a 24-hour clock. If the time you want is not available in the drop-down menu, click within the field and manually enter your desired time, such as 9:15, 15:37, and so on.
 
 **Hourly** and **Minutes** schedules repeat daily within the **Start** and **End** timeframe you set. The end time for **Hourly** and **Minutes** intervals is not inclusive. The last delivery will be sent at the last selected interval prior to the specified end time. For example, if a dashboard is scheduled **Hourly** between 12:00 a.m. and 11:00 p.m., it will be sent on the hour, every hour, from 12:00 a.m. to 10:00 p.m. Or, if a recurrence is every 30 minutes between 12:00 a.m. and 11:00 p.m., the last delivery will be sent at 10:30 p.m.
 
@@ -85,7 +75,7 @@ The **Format** field contains a drop-down menu of available formats:
 * **CSV zip file**: The unformatted data from the dashboard delivered as a collection of comma-separated values (CSV) files in a zipped directory. For deliveries to email, the ZIP file is delivered as an email attachment.
 * **PDF**: An image of the dashboard as a single PDF file. The default layout displays tiles as they are arranged in the dashboard, but other layout and sizing options are available under **Advanced options**. For deliveries to email, the file is delivered as an email attachment.
 * **PNG visualization**: An image of the dashboard as a single PNG file. The default layout displays tiles as they are arranged in the dashboard, but other layout options are available under **Advanced options**. For deliveries to email, the image appears inline within the body of the email.  
-![](https://files.helpdocs.io/i5nl071jo5/articles/35gfke0rl8/1626980004934/screenshot-2021-07-23-at-12-23-10-am.png)
+![](./static/share-dashboards-02.png)
 
 ### Filters
 
@@ -93,7 +83,8 @@ The Filters tab in the schedule and send window shows any filters applied to the
 
 In this tab, you can edit the values for any existing filters applied to the dashboard and the new values will be applied to the delivery. The dashboard itself will not be affected.
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/35gfke0rl8/1626979945491/screenshot-2021-07-23-at-12-22-06-am.png)### Advanced Options
+![](./static/share-dashboards-03.png)
+### Advanced Options
 
 The **Advanced options** tab provides additional customization for your delivery. The options available depend on the selected format of your delivery.
 
@@ -151,7 +142,8 @@ By default, dashboard uses the time zone associated with your account to determi
 
 If you want to specify a different time zone, select the time zone from the drop-down menu. The time zone you select does not affect the data in your dashboard, just the timing of the delivery.
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/35gfke0rl8/1626980138702/screenshot-2021-07-23-at-12-24-37-am.png)### Save a Schedule Delivery
+![](./static/share-dashboards-04.png)
+### Save a Schedule Delivery
 
 * If you set the **Recurrence** field to **Send now**, click the **Send now** button at the bottom of the window for a one-time delivery to the listed destination.
 * If you set the Recurrence field to anything other than **Send now**, click the **Save** button to save your schedule.
@@ -163,7 +155,7 @@ You can edit only the schedules you have created. To edit a schedule:
 1. Click the three-dot menu at the top right of the dashboard.
 2. Select **Schedule delivery** from the drop-down menu.
 3. In **Schedules**, click the three-dot menu that applies to the schedule you would like to edit.
-4. Choose **Edit** from the drop-down menu.![](https://files.helpdocs.io/i5nl071jo5/articles/35gfke0rl8/1626980574381/screenshot-2021-07-23-at-12-32-38-am.png)
+4. Choose **Edit** from the drop-down menu.![](./static/share-dashboards-05.png)
 5. Make your edits and click **Save**.
 
 ### Duplicate a Schedule

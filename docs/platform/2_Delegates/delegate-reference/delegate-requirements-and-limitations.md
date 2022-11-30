@@ -1,6 +1,6 @@
 ---
 title: Delegate Requirements and Limitations
-description: This topic lists the limitations and requirements of the Harness Delegate. Before You Begin. Delegates Overview. Delegate Limitations. Deployment limits --  Deployment limits are set by account type.. Y…
+description: This topic lists the limitations and requirements of the Harness Delegate. Before you begin. Delegates Overview. Delegate Limitations. Deployment limits --  Deployment limits are set by account type.. Y…
 # sidebar_position: 2
 helpdocs_topic_id: k7sbhe419w
 helpdocs_category_id: vm60533pvt
@@ -10,9 +10,9 @@ helpdocs_is_published: true
 
 This topic lists the limitations and requirements of the Harness Delegate.
 
-### Before You Begin
+### Before you begin
 
-* [Delegates Overview](/article/2k7lnc7lvl-delegates-overview)
+* [Delegates Overview](../delegates-overview.md)
 
 ### Delegate Limitations
 
@@ -27,7 +27,8 @@ The Delegate is installed in your network and connects to the Harness Manager.
 
 One Delegate size does not fit all use cases, so Harness let's you pick from several options:
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/2k7lnc7lvl/1625084105662/clean-shot-2021-06-30-at-13-14-58.png)Remember that the memory and CPU requirements are for the Delegate only. You Delegate host/pod/container will need more computing resources for its operations systems and other services such as Docker or Kubernetes.
+![](./static/delegate-requirements-and-limitations-00
+Remember that the memory and CPU requirements are for the Delegate only. You Delegate host/pod/container will need more computing resources for its operations systems and other services such as Docker or Kubernetes.
 
 The Delegate runs on a Linux/UNIX server or container.
 
@@ -37,11 +38,12 @@ The ​Shell Script Delegate requires cURL 7.64.1 or later.
 
 Access to artifact servers, deployment environments, and cloud providers. As shown in the following illustration:
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/k7sbhe419w/1625096729943/image.png)### Allowlist Harness Domains and IPs
+![](./static/delegate-requirements-and-limitations-01.png)
+### Allowlist Harness Domains and IPs
 
 Harness SaaS Delegates only need outbound access to the Harness domain name (most commonly, **app.harness.io)** and, optionally, to **logging.googleapis.com**. The URL logging.googleapis.com is used to provide logs to Harness support.
 
-See [Allowlist Harness Domains and IPs](/article/ooelo06uy5-whitelist-harness-domains-and-ips).
+See [Allowlist Harness Domains and IPs](../../20_References/whitelist-harness-domains-and-ips.md).
 
 ### Network Requirements
 
@@ -61,20 +63,20 @@ All network connections from your local network to Harness SaaS are outbound-onl
 
 If you do not enable gRPC connections, the following limitations apply:
 
-* [Cloud Cost Management (CCM)](/category/exgoemqhji-ccm) will not collect events.
+* [Cloud Cost Management (CCM)](https://docs.harness.io/category/exgoemqhji-ccm) will not collect events.
 * If the `ARTIFACT_PERPETUAL_TASK` feature flag is enabled in your account, Harness performs perpetual artifact collection. If you do not enable gRPC connections, this will not work.
 
 Contact [Harness Support](mailto:support@harness.io) to enable or disable feature flags.### Permissions and Ports
 
-See [Permissions and Ports for Harness Connections](/article/ga1155j91x-permissions-and-ports-for-harness-connections).
+See [Permissions and Ports for Harness Connections](../../20_References/permissions-and-ports-for-harness-connections.md).
 
 ### Add Certificates and Other Software to Delegate
 
-For steps on adding certs or other software to the Delegate, see [Common Delegate Initialization Scripts](/article/auveebqv37-common-delegate-profile-scripts).
+For steps on adding certs or other software to the Delegate, see [Common Delegate Initialization Scripts](common-delegate-profile-scripts.md).
 
 ### Delegate Access Requirements
 
 * The Harness Delegate does NOT require root account access, but the Kubernetes and Docker Delegates run as root by default. If you do not need to install applications using Delegate Profiles, then you can use a non-root account or install the application without the Delegate.  
-See [Non-Root Delegate Installation](/article/h2kydm6qme-non-root-delegate-installation).
-* If you do not run the Delegate as root, be aware that you cannot install any software using a [Delegate Initialization Script](/article/auveebqv37-common-delegate-profile-scripts).
+See [Non-Root Delegate Installation](../delegate-guide/non-root-delegate-installation.md).
+* If you do not run the Delegate as root, be aware that you cannot install any software using a [Delegate Initialization Script](common-delegate-profile-scripts.md).
 

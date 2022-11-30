@@ -20,18 +20,11 @@ You can apply a failure strategy to the following:
 * Step Group
 * Stage
 
-For details on strategy options and how strategies work, see [Step and Stage Failure Strategy Settings](/article/htrur23poj-step-failure-strategy-settings).In this topic:
+For details on strategy options and how strategies work, see [Step and Stage Failure Strategy Settings](w_pipeline-steps-reference/step-failure-strategy-settings.md).
 
-* [Before You Begin](https://ngdocs.harness.io/article/0zvnn5s1ph-define-a-failure-strategy-on-stages-and-steps#before_you_begin)
-* [Visual Summary](https://ngdocs.harness.io/article/0zvnn5s1ph-define-a-failure-strategy-on-stages-and-steps#visual_summary)
-* [Review: Failure Strategy takes Precedence over Conditional Execution](#review_failure_strategy_takes_precedence_over_conditional_execution)
-* [Step: Add a Stage Failure Strategy](https://ngdocs.harness.io/article/0zvnn5s1ph-define-a-failure-strategy-on-stages-and-steps#step_add_a_stage_failure_strategy)
-* [Step: Add a Step Failure Strategy](https://ngdocs.harness.io/article/0zvnn5s1ph-define-a-failure-strategy-on-stages-and-steps#step_add_a_step_failure_strategy)
-* [See Also](https://ngdocs.harness.io/article/0zvnn5s1ph-define-a-failure-strategy-on-stages-and-steps#see_also)
+### Before you begin
 
-### Before You Begin
-
-* [Add a Stage](/article/2chyf1acil-add-a-stage)
+* [Add a Stage](add-a-stage.md)
 
 ### Visual Summary
 
@@ -39,13 +32,15 @@ Here's a quick video of how to set up failure strategies:
 
 Here is what a Manual Intervention action looks like when a failure occurs:
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/0zvnn5s1ph/1622583869478/image.png)You can select an option or, if the Manual Intervention exceeds its Timeout setting, select the Post Timeout Action that will happen automatically.
+![](./static/define-a-failure-strategy-on-stages-and-steps-11.png)
+You can select an option or, if the Manual Intervention exceeds its Timeout setting, select the Post Timeout Action that will happen automatically.
 
 ### Review: Failure Strategy takes Precedence over Conditional Execution
 
 Harness Pipeline stages and steps both include **Conditional Execution** and **Failure Strategy** settings:
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/i36ibenkq2/1642460921687/clean-shot-2022-01-17-at-15-08-32.png)Using these settings together in multiple stages requires some consideration.
+![](./static/define-a-failure-strategy-on-stages-and-steps-12.png)
+Using these settings together in multiple stages requires some consideration.
 
 Let's say you have a Pipeline with two stages: **stage 1** followed by **stage 2**. 
 
@@ -73,9 +68,9 @@ To add an additional stage failure strategy, click **Add**.
 
 Select the following:
 
-* **On failure of type:** select one or more of the error types. See [Step and Stage Failure Strategy Settings](/article/htrur23poj-step-failure-strategy-settings).
+* **On failure of type:** select one or more of the error types. See [Step and Stage Failure Strategy Settings](w_pipeline-steps-reference/step-failure-strategy-settings.md).
 
-Currently, only **All Errors** is supported.* **Action:** select one of the available actions. See [Step and Stage Failure Strategy Settings](/article/htrur23poj-step-failure-strategy-settings).
+Currently, only **All Errors** is supported.* **Action:** select one of the available actions. See [Step and Stage Failure Strategy Settings](w_pipeline-steps-reference/step-failure-strategy-settings.md).
 * **Timeout** and **Post timeout action:** these are available if you selected **Manual Intervention** in Action. Enter the timeout for the failure strategy and the subsequent action to perform.
 * **Retry Count** and **Retry Intervals:** these are available if you selected **Retry** in Action. Enter the number of times to retry the step, and the retries intervals.
 
@@ -91,14 +86,14 @@ Click **Failure Strategy** and click **Add**.
 
 Select the following:
 
-* **On failure of type:** select one or more of the error types. See [Step and Stage Failure Strategy Settings](/article/htrur23poj-step-failure-strategy-settings).
+* **On failure of type:** select one or more of the error types. See [Step and Stage Failure Strategy Settings](w_pipeline-steps-reference/step-failure-strategy-settings.md).
 
-Currently, only **All Errors** is supported.* **Action:** select one of the available actions. See [Step and Stage Failure Strategy Settings](/article/htrur23poj-step-failure-strategy-settings).
+Currently, only **All Errors** is supported.* **Action:** select one of the available actions. See [Step and Stage Failure Strategy Settings](w_pipeline-steps-reference/step-failure-strategy-settings.md).
 * **Timeout** and **Post timeout action:** these are available if you selected **Manual Intervention** in Action. Enter the timeout for the failure strategy and the subsequent action to perform.
 * **Retry Count** and **Retry Intervals:** these are available if you selected **Retry** in Action. Enter the number of times to retry the step, and the retries intervals.
 
-### See Also
+### See also
 
-* [Step and Stage Failure Strategy Settings](/article/htrur23poj-step-failure-strategy-settings)
-* [Stage and Step Execution Condition Settings](/article/i36ibenkq2-step-skip-condition-settings)
+* [Step and Stage Failure Strategy Settings](w_pipeline-steps-reference/step-failure-strategy-settings.md)
+* [Stage and Step Execution Condition Settings](w_pipeline-steps-reference/step-skip-condition-settings.md)
 

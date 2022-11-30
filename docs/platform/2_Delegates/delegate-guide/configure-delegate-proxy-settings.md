@@ -10,7 +10,9 @@ helpdocs_is_published: true
 
 All of the Delegates include proxy settings you can use to change how the Delegate connects to the Harness Manager.
 
-By default, the Harness Delegate uses HTTP and HTTPS in its Proxy Scheme settings.### Kubernetes Proxy Settings
+By default, the Harness Delegate uses HTTP and HTTPS in its Proxy Scheme settings.
+
+### Kubernetes Proxy Settings
 
 The proxy settings are in the **harness-delegate.yaml** file:
 

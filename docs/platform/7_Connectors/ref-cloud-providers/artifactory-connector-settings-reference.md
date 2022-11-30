@@ -40,7 +40,9 @@ Legend:
 | **Sources** | **Docker Image**(Kubernetes) | **Terraform** | **Helm Chart** | **AWS** **AMI** | **AWS CodeDeploy** | **AWS Lambda** | **JAR** | **RPM** | **TAR** | **WAR** | **ZIP** | **Tanzu** (**PCF)** | **IIS** |
 | Artifactory | M |  | F |  |  |  |  |  |  |  | **F** |  |  |
 
-If you are new to using Artifactory as a Docker repo, see [Getting Started with Artifactory as a Docker Registry](https://www.jfrog.com/confluence/display/RTF6X/Getting+Started+with+Artifactory+as+a+Docker+Registry) from JFrog.### Artifactory Artifact Server
+If you are new to using Artifactory as a Docker repo, see [Getting Started with Artifactory as a Docker Registry](https://www.jfrog.com/confluence/display/RTF6X/Getting+Started+with+Artifactory+as+a+Docker+Registry) from JFrog.
+
+### Artifactory Artifact Server
 
 The Harness Artifactory Artifact server connects your Harness account to your Artifactory artifact resources. It has the following settings.
 
@@ -50,7 +52,7 @@ The unique name for this Connector.
 
 #### ID
 
-See [Entity Identifier Reference](/article/li0my8tcz3-entity-identifier-reference).
+See [Entity Identifier Reference](../../20_References/entity-identifier-reference.md).
 
 #### Description
 
@@ -58,7 +60,7 @@ Text string.
 
 #### Tags
 
-See [Tags Reference](/article/i8t053o0sq-tags-reference).
+See [Tags Reference](../../20_References/tags-reference.md).
 
 #### Artifactory Repository URL
 
@@ -72,7 +74,8 @@ The URL really depends on how you have set up Artifactory, and whether it is loc
 
 To ensure you use the correct URL, copy it from your Artifactory settings.
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/euueiiai4m/1626391156408/clean-shot-2021-07-15-at-16-18-36.png)See [Repository Management](https://www.jfrog.com/confluence/display/JFROG/Repository+Management) from JFrog.
+![](./static/artifactory-connector-settings-reference-08.png)
+See [Repository Management](https://www.jfrog.com/confluence/display/JFROG/Repository+Management) from JFrog.
 
 #### Username
 
@@ -80,7 +83,7 @@ Username for the Artifactory account user.
 
 #### Password
 
-Select or create a new [Harness Encrypted Text secret](/article/osfw70e59c-add-text-secrets).
+Select or create a new [Harness Encrypted Text secret](../../6_Security/add-use-text-secrets.md).
 
 ### Artifact Details
 
@@ -92,7 +95,9 @@ Select your repository via the JFrog site. Select **Set Me Up**. The **Set Me Up
 
 Copy the name of the server from the `docker login` command and enter it in **Repository URL**.
 
-[![](https://files.helpdocs.io/kw8ldg1itf/articles/gxv9gj6khz/1576783783511/image.png)](https://files.helpdocs.io/kw8ldg1itf/articles/gxv9gj6khz/1576783783511/image.png)See [Configuring Docker Repositories](https://www.jfrog.com/confluence/display/RTF/Docker+Registry#DockerRegistry-ConfiguringDockerRepositories) from JFrog for more information. It describes the URLs for local, remote, and virtual repositories.
+![](./static/artifactory-connector-settings-reference-09.png)
+(./static/artifactory-connector-settings-reference-09.png)
+See [Configuring Docker Repositories](https://www.jfrog.com/confluence/display/RTF/Docker+Registry#DockerRegistry-ConfiguringDockerRepositories) from JFrog for more information. It describes the URLs for local, remote, and virtual repositories.
 
 #### Repository
 
@@ -104,8 +109,10 @@ Harness supports only the Docker repository format as the artifact source.
 
 Enter the name of the artifact you want to deploy.
 
-The repository and artifact path must not begin or end with `/`.#### Tag
+The repository and artifact path must not begin or end with `/`.
+
+#### Tag
 
 Select a Tag from the list.
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/euueiiai4m/1651761475904/screenshot-2022-05-05-at-8-07-18-pm.png)
+![](./static/artifactory-connector-settings-reference-11.png)
