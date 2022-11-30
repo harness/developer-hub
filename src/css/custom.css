@@ -262,6 +262,34 @@
   width: 36px;
   height: auto;
 }
+.theme-doc-markdown h3 {
+  display: flex;
+}
+.theme-doc-markdown h3 > img {
+  margin-right: 0.2em;
+}
+
+.color-ci {
+  color: var(--mod-ci-200);
+}
+.color-cd {
+  color: var(--mod-cd-200);
+}
+.color-ff {
+  color: var(--mod-ff-200);
+}
+.color-ccm {
+  color: var(--mod-ccm-200);
+}
+.color-srm {
+  color: var(--mod-srm-200);
+}
+.color-sto {
+  color: var(--mod-sto-200);
+}
+.color-ce {
+  color: var(--mod-ce-200);
+}
 
 /* hide the algolia logo */
 .DocSearch-Logo,

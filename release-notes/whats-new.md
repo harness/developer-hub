@@ -5,36 +5,49 @@ sidebar_position: 1
 
 # What's new
 
-## October 21, 2022
+Learn about the new features that are generally available in all Harness modules.
+For information about new features prior to July 2022, refer to [**Harness SaaS Release Notes**](https://docs.harness.io/article/7zkchy5lhj-harness-saa-s-release-notes-2022).
 
-This release does not include new features.
+## November 30, 2022
 
-## Fixed issues
+### ![](../static/img/icon_ci_s.svg) <span class="color-ci">Continuous Integration</span>
 
-The environment name doesn't resolve if all clusters are selected in a pipeline. (CDS-45156)
-This issue has been resolved.
-The items on the Template > Step Template page are overlapping. (CDS-45003)
-This issue has been resolved.
-The Nexus fields do not render when the Nexus artifact source is selected as the primary artifact. (CDS-44950)
-This issue has been resolved.
-A new artifact trigger cannot be created because an input set is required. (CDS-44883)
-To resolve this issue, the Git Sync condition was updated to the new URL-based parameter along with the backward-compatible condition.
-When using multiple GitOps clusters, variables are not being populated for all of the clusters. (CDS-44834)
-This issue has been resolved.
-When creating an S3 artifact, a Null Pointer Exception shows if both the bucket name and the file path are empty. (CDS-44660)
-An appropriate error now appears in this situation.
-When editing a secret, the Verify Connection screen closes prematurely. (CDS-43874)
-This issue has been fixed.
-The artifact.metadata.url is null for the Nexus3 artifact Docker repository format. (CDS-43863)
-The URL was added to the metadata so it can now be accessed using artifact.metadata.url.
-A drop-down selector for the image path in an ECR artifact source is not available. (CDS-43673)
-A drop-down selector is available now.
-Pipeline variables are not being translated in HTTP step assertions and output variables. (CDS-43200)
-Previously, only HTTP response expressions could be used in an HTTP step assertion. Now, users can use pipeline and other expressions in assertions and use them with HTTP response expressions.
-Instance sync does not work with Jenkins artifacts when a service is updated. (CDS-43144)
-Previously, from the delegate task, the last successful build was fetched, but the build was not verified. The build is now verified, which resolves this issue.
-The UI crashes when the artifact name is null. (CDS-44598)
-The validation of the artifact name was missing, which allowed the user to submit the artifact without a name. This caused the null checks to fail and the UI to crash.
-Validations for the artifact name and an extra null check were added to prevent this issue.
-The ECS Harness file store console view does not show fetch manifests. (CDS-44196)
-This issue has been fixed.
+- Fetch Helm Chart Versions from Source on Run Pipeline UI (CDS-40390)
+  Now you can set Helm Chart version using a runtime input (when using HTTP Helm, S3, and GCS stores), view the list of chart versions available at runtime, and select the required one.
+- Copy of Service and Environment variables (CDS-38870, ZD-37291)
+  You can now copy the FQNs for Service and Environment variables. The Service variables use the format <+serviceVariables.[variable name]> and Environment variables use the format <env.variables.[variable name]>.
+
+### ![](../static/img/icon_cd_s.svg) <span class="color-cd">Continuous Delivery</span>
+
+- Fetch Helm Chart Versions from Source on Run Pipeline UI (CDS-40390)
+  Now you can set Helm Chart version using a runtime input (when using HTTP Helm, S3, and GCS stores), view the list of chart versions available at runtime, and select the required one.
+- Copy of Service and Environment variables (CDS-38870, ZD-37291)
+  You can now copy the FQNs for Service and Environment variables. The Service variables use the format <+serviceVariables.[variable name]> and Environment variables use the format <env.variables.[variable name]>.
+
+### ![](../static/img/icon_ff_s.svg) <span class="color-ff">Feature Flags</span>
+
+- A new React Client SDK has been released for Feature Flags as version 1.0.0. For more information about this SDK and how to integrate with it, go to the React Client Reference Guide and the React Client GitHub repository.
+
+### ![](../static/img/icon_ccm_s.svg) <span class="color-ccm">Cloud Cost Management</span>
+
+- A new React Client SDK has been released for Feature Flags as version 1.0.0. For more information about this SDK and how to integrate with it, go to the React Client Reference Guide and the React Client GitHub repository.
+
+### ![](../static/img/icon_ff_s.svg) <span class="color-ff">Feature Flags</span>
+
+- A new React Client SDK has been released for Feature Flags as version 1.0.0. For more information about this SDK and how to integrate with it, go to the React Client Reference Guide and the React Client GitHub repository.
+
+### ![](../static/img/icon_srm_s.svg) <span class="color-srm">Service Reliability Management</span>
+
+- A new React Client SDK has been released for Feature Flags as version 1.0.0. For more information about this SDK and how to integrate with it, go to the React Client Reference Guide and the React Client GitHub repository.
+
+### ![](../static/img/icon_sto_s.svg) <span class="color-sto">Security Testing Orchestration</span>
+
+- A new React Client SDK has been released for Feature Flags as version 1.0.0. For more information about this SDK and how to integrate with it, go to the React Client Reference Guide and the React Client GitHub repository.
+
+### ![](../static/img/icon_ce_s.svg) <span class="color-ce">Chaos Engineering</span>
+
+- A new React Client SDK has been released for Feature Flags as version 1.0.0. For more information about this SDK and how to integrate with it, go to the React Client Reference Guide and the React Client GitHub repository.
+
+### ![](../static/img/icon_harness_s.svg) Harness Platform
+
+- A new React Client SDK has been released for Feature Flags as version 1.0.0. For more information about this SDK and how to integrate with it, go to the React Client Reference Guide and the React Client GitHub repository.

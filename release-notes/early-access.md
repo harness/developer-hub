@@ -5,7 +5,7 @@ sidebar_position: 2
 
 # Early Access
 
-## October 21, 2022
+## November 29, 2022
 
 This release does not include new features.
 

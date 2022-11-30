@@ -438,6 +438,7 @@ const config = {
         routeBasePath: "tutorials",
         exclude: ["**/shared/**", "**/static/**"],
         sidebarPath: require.resolve("./sidebars-tutorials.js"),
+        editUrl: "https://github.com/harness/developer-hub/tree/main",
         // ... other options
       },
     ],
@@ -449,6 +450,7 @@ const config = {
         routeBasePath: "release-notes",
         exclude: ["**/shared/**", "**/static/**"],
         sidebarPath: require.resolve("./sidebars-release-notes.js"),
+        editUrl: "https://github.com/harness/developer-hub/tree/main",
         // ... other options
       },
     ],

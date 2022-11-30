@@ -9,7 +9,9 @@ const sidebars = {
       type: "category",
       label: "Release Notes",
       link: {
-        type: "generated-index",
+        // type: "generated-index",
+        type: "doc",
+        id: "whats-new",
       },
       collapsed: true,
       items: [
