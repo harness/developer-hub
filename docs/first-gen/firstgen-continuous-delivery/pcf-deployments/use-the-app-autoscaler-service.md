@@ -161,7 +161,9 @@ The `--no-push` parameter creates the services but does not push the app. The ap
 
 The **App Setup** command in a Workflow includes a **Use App Autoscaler Plugin** setting so you can enable and disable autoscaling as needed.
 
-![](./static/use-the-app-autoscaler-service-51.png)Select **Use App Autoscalar Plugin** to enable the App Autoscaler service bound to your app.
+![](./static/use-the-app-autoscaler-service-51.png)
+
+Select **Use App Autoscalar Plugin** to enable the App Autoscaler service bound to your app.
 
 When you deploy your Workflow, the App Autoscalar service is created using the command `create-service app-autoscaler standard myautoscaler`:
 

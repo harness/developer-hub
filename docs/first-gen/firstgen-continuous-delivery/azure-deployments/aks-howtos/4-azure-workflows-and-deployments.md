@@ -33,9 +33,13 @@ For information on other Workflow types, see [Kubernetes Deployments](/category/
 6. In Infrastructure Definition, select the Infrastructure Definition you created earlier. If the Infrastructure Definition does not appear, ensure that you added the Service to the Infrastructure Definition **Scope to specific Services** setting.![](./static/4-azure-workflows-and-deployments-00.png)
 7. Click **SUBMIT**. The new Rolling Workflow is pre-configured.
 
-![](./static/4-azure-workflows-and-deployments-01.png)As you can see, there is a Rollout Deployment step set up automatically. That's all the Workflow setup required. The Workflow is ready to deploy. When it is deployed, it will look like this:
+![](./static/4-azure-workflows-and-deployments-01.png)
 
-![](./static/4-azure-workflows-and-deployments-02.png)You can see each section of the Rollout Deployment listed on the right. To see what that Rollout Deployment step does at runtime, let's look at the logs for each section.
+As you can see, there is a Rollout Deployment step set up automatically. That's all the Workflow setup required. The Workflow is ready to deploy. When it is deployed, it will look like this:
+
+![](./static/4-azure-workflows-and-deployments-02.png)
+
+You can see each section of the Rollout Deployment listed on the right. To see what that Rollout Deployment step does at runtime, let's look at the logs for each section.
 
 #### Initialize
 
@@ -239,17 +243,29 @@ Done.
 
 Now that the setup is complete, you can click **Deploy** in the Workflow to deploy the artifact to your cluster.
 
-![](./static/4-azure-workflows-and-deployments-03.png)Next, select the artifact build version and click **SUBMIT**.
+![](./static/4-azure-workflows-and-deployments-03.png)
 
-![](./static/4-azure-workflows-and-deployments-04.png)The Workflow is deployed.
+Next, select the artifact build version and click **SUBMIT**.
 
-![](./static/4-azure-workflows-and-deployments-05.png)To see the completed deployment, log into your Azure AKS cluster, click **Insights**, and then click **Controllers**.
+![](./static/4-azure-workflows-and-deployments-04.png)
 
-![](./static/4-azure-workflows-and-deployments-06.png)If you are using a older AKS cluster, you might have to enable Insights.The container details show the Docker image deployed:
+The Workflow is deployed.
 
-![](./static/4-azure-workflows-and-deployments-07.png)You can also launch the Kubernetes dashboard to see the results:
+![](./static/4-azure-workflows-and-deployments-05.png)
 
-![](./static/4-azure-workflows-and-deployments-08.png)To view the Kubernetes dashboard, in your AKS cluster, click **Overview**, click **Kubernetes Dashboard**, and then follow the CLI steps.
+To see the completed deployment, log into your Azure AKS cluster, click **Insights**, and then click **Controllers**.
+
+![](./static/4-azure-workflows-and-deployments-06.png)
+
+If you are using a older AKS cluster, you might have to enable Insights.The container details show the Docker image deployed:
+
+![](./static/4-azure-workflows-and-deployments-07.png)
+
+You can also launch the Kubernetes dashboard to see the results:
+
+![](./static/4-azure-workflows-and-deployments-08.png)
+
+To view the Kubernetes dashboard, in your AKS cluster, click **Overview**, click **Kubernetes Dashboard**, and then follow the CLI steps.
 
 ### Next Step
 

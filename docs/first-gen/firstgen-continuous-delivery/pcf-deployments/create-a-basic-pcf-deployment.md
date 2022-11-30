@@ -14,7 +14,9 @@ Once the TAS app is set up in the Workflow using the **App Setup** command, you 
 
 Here is an example of a successful TAS Basic deployment:
 
-![](./static/create-a-basic-pcf-deployment-24.png)In this topic:
+![](./static/create-a-basic-pcf-deployment-24.png)
+
+In this topic:
 
 * [Before You Begin](https://docs.harness.io/article/c92izkztka-create-a-basic-pcf-deployment#before_you_begin)
 * [Step 1: Set Up a TAS Basic Deployment](https://docs.harness.io/article/c92izkztka-create-a-basic-pcf-deployment#step_1_set_up_a_tas_basic_deployment)
@@ -47,13 +49,17 @@ To set up a TAS Basic deployment, do the following:
 
 When you are done, the dialog will look something like this:
 
-![](./static/create-a-basic-pcf-deployment-25.png)Click **Submit**. The TAS Basic Workflow is created.
+![](./static/create-a-basic-pcf-deployment-25.png)
+
+Click **Submit**. The TAS Basic Workflow is created.
 
 ### Step 2: App Setup
 
 The App Setup command uses the manifest.yml in your Harness TAS Service to set up your app.
 
-![](./static/create-a-basic-pcf-deployment-26.png)The **Match running instances** setting can be used after your first deployment to override the `instances` setting in the manifest.yml.
+![](./static/create-a-basic-pcf-deployment-26.png)
+
+The **Match running instances** setting can be used after your first deployment to override the `instances` setting in the manifest.yml.
 
 To add routes in addition to the routes defined in the Service manifest, select routes in **Additional Routes**.
 
@@ -81,7 +87,9 @@ Currently, this feature is behind the Feature Flag `CF_APP_NON_VERSIONING_INACTI
 
 When you first create your TAS Workflow, the App Resize command is displayed as incomplete. Harness simply needs you to confirm or change the default number of desired instances, **100 Percent**.
 
-![](./static/create-a-basic-pcf-deployment-27.png)You can select to use a percentage of the number specified in your manifest.yml, or if you used the App Setup **Match desired count with current running instances** setting, the current number of running instances. You can also use a count to explicitly set the number of desired instances.
+![](./static/create-a-basic-pcf-deployment-27.png)
+
+You can select to use a percentage of the number specified in your manifest.yml, or if you used the App Setup **Match desired count with current running instances** setting, the current number of running instances. You can also use a count to explicitly set the number of desired instances.
 
 Click **Advanced** to see **Desired Instances - Old Version**. Here you can set the number of instances for the previous version of the app. By default, the app will downsize to the same number as the number of new app instances.
 
@@ -100,13 +108,17 @@ See [New features added to Harness](https://changelog.harness.io/?categories=fix
 
 In **Rollback Steps**, you can see the **App Rollback** command.
 
-![](./static/create-a-basic-pcf-deployment-28.png)There is nothing to set in this command. It is simply the command to rollback to the old version of the app in case of a deployment failure.
+![](./static/create-a-basic-pcf-deployment-28.png)
+
+There is nothing to set in this command. It is simply the command to rollback to the old version of the app in case of a deployment failure.
 
 ##### Deploy a TAS Basic Workflow
 
 To deploy your TAS Basic Workflow, click **Deploy**.
 
-![](./static/create-a-basic-pcf-deployment-29.png)Select the artifact for your new app and click **Submit**. The Workflow is deployed.
+![](./static/create-a-basic-pcf-deployment-29.png)
+
+Select the artifact for your new app and click **Submit**. The Workflow is deployed.
 
 The **App Setup** command output shows your app was created successfully:
 

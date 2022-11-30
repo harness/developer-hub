@@ -24,7 +24,9 @@ Kustomize is supported in Harness Kubernetes v2 Services only. This is the defau
 
 The following diagram shows a very simple topology for implementing Kustomize.
 
-![](./static/use-kustomize-for-kubernetes-deployments-75.png)The Harness Kubernetes Delegate runs in the target cluster with Kustomize pre-installed. The Delegate obtains kustomization.yaml and resource files from a Git repo. The Delegate deploys the Kubernetes objects declared using Kustomize in the target pods.
+![](./static/use-kustomize-for-kubernetes-deployments-75.png)
+
+The Harness Kubernetes Delegate runs in the target cluster with Kustomize pre-installed. The Delegate obtains kustomization.yaml and resource files from a Git repo. The Delegate deploys the Kubernetes objects declared using Kustomize in the target pods.
 
 In this diagram we use Google GCP, but Harness deploys to any Kubernetes cluster vendor.
 
@@ -110,7 +112,9 @@ spec:
 
 1. In your Harness Service, in **Manifests**, click **Link Remote Manifests**.
 
-![](./static/use-kustomize-for-kubernetes-deployments-76.png)1. In **Remote Manifests**, in **Manifest Format**, click **Kustomization Configuration**.
+![](./static/use-kustomize-for-kubernetes-deployments-76.png)
+
+1. In **Remote Manifests**, in **Manifest Format**, click **Kustomization Configuration**.
 2. Enter the following settings and click **Submit**.
 
 
@@ -131,7 +135,9 @@ Once you have set up **Kustomization Configuration**, you can use the Service in
 
 You can manually enter the file path to your [kustomization root](https://kubectl.docs.kubernetes.io/references/kustomize/glossary/#kustomization-root): The directory that contains a kustomization.yaml file in your repo. You do not need to enter the filename.
 
-![](./static/use-kustomize-for-kubernetes-deployments-77.png)If you are using overlays, enter the path to the overlay kustomization.yaml.
+![](./static/use-kustomize-for-kubernetes-deployments-77.png)
+
+If you are using overlays, enter the path to the overlay kustomization.yaml.
 
 As explained below, you can use Harness variable expressions in **Path to kustomization directory** to dynamically select bases for overlays.
 
@@ -207,13 +213,17 @@ As you can see, it patches a new environment variable `name: ENVIRONMENT`.
 
 Here's what the patching looks like side-by-side:
 
-![](./static/use-kustomize-for-kubernetes-deployments-78.png)When the kustomization.yaml is deployed, the patch is rendered and the environment variable is added to the deployment.yaml that is deployed.
+![](./static/use-kustomize-for-kubernetes-deployments-78.png)
+
+When the kustomization.yaml is deployed, the patch is rendered and the environment variable is added to the deployment.yaml that is deployed.
 
 #### Adding Kustomize Patches
 
 You cannot use Harness variables in the base manifest or kustomization.yaml. You can only use Harness variables in kustomize patches you add in **Kustomize Patches**.In **Service**, in **Configuration**, in **Kustomize Patches**, click **Add Patches**.
 
-![](./static/use-kustomize-for-kubernetes-deployments-79.png)You can add multiple files by using **Add Patches** multiple times.In **Store Type**, select **Inline** or **Remote**.
+![](./static/use-kustomize-for-kubernetes-deployments-79.png)
+
+You can add multiple files by using **Add Patches** multiple times.In **Store Type**, select **Inline** or **Remote**.
 
 For **Inline**, enter the patch YAML, and click **Submit**.
 
@@ -283,7 +293,9 @@ We're going to use variables for `replicas` and `image`.
 
 Let's look at the Harness variables in our Service. Here are two Service [Config Variables](/article/q78p7rpx9u-add-service-level-config-variables):
 
-![](./static/use-kustomize-for-kubernetes-deployments-80.png)One variable is for the `image` and another for the `replicas` count.
+![](./static/use-kustomize-for-kubernetes-deployments-80.png)
+
+One variable is for the `image` and another for the `replicas` count.
 
 A patch using these variables will look like this:
 
@@ -322,7 +334,9 @@ You can also use [Harness secrets](/article/ygyvp998mu-use-encrypted-text-secret
 
 For example, let's say we have two secrets, one for `image` and one for `app`:
 
-![](./static/use-kustomize-for-kubernetes-deployments-81.png)The following patch uses these secrets for `image` and `app`, referencing them using the expression `${secrets.getValue("[secret name]")}`.
+![](./static/use-kustomize-for-kubernetes-deployments-81.png)
+
+The following patch uses these secrets for `image` and `app`, referencing them using the expression `${secrets.getValue("[secret name]")}`.
 
 
 ```
@@ -360,7 +374,9 @@ In **Service**, select the Service for your kustomization that has **Kustomize P
 
 In **Override Type**, click **Kustomize Patches**.
 
-![](./static/use-kustomize-for-kubernetes-deployments-82.png)In **Store Type**, select **Inline** or **Remote**.
+![](./static/use-kustomize-for-kubernetes-deployments-82.png)
+
+In **Store Type**, select **Inline** or **Remote**.
 
 For **Inline**, enter the patch YAML, and click **Submit**.
 
@@ -390,7 +406,9 @@ kubectl apply -f $DEMO_HOME/overlays/staging
 ```
 To deploy each overlay in Harness, you could create a Service for each overlay and configure the **Path to kustomization directory** setting in **Remote Manifests** to point to the overlay root:
 
-![](./static/use-kustomize-for-kubernetes-deployments-83.png)A better method is to use a single Service for all bases and manually or dynamically identify which base to use at deployment runtime.
+![](./static/use-kustomize-for-kubernetes-deployments-83.png)
+
+A better method is to use a single Service for all bases and manually or dynamically identify which base to use at deployment runtime.
 
 You can accomplish this using Harness Variable Expressions in **Path to kustomization directory**
 
@@ -402,7 +420,9 @@ Using Environment name variables is the simplest method of using one Service and
 
 First, in your repo, create separate folders for each environment's kustomization.yaml. Here we have folders for **dev**, **production**, and **staging**:
 
-![](./static/use-kustomize-for-kubernetes-deployments-85.png)The kustomization.yaml file in the root will reference these folders of course:
+![](./static/use-kustomize-for-kubernetes-deployments-85.png)
+
+The kustomization.yaml file in the root will reference these folders of course:
 
 
 ```
@@ -415,21 +435,31 @@ We are only concerned with staging and production in this example.
 
 Next, mirror the repo folder names in Harness Environment names. Here we have two Environments named **production** and **staging** for the corresponding repo folders named **production** and **staging**.
 
-![](./static/use-kustomize-for-kubernetes-deployments-86.png)Next, use the built-in Harness variable expression `${env.name}` in **Path to kustomization directory** to use the Environment names. The `${env.name}` expression resolves to the name of the Harness Environment used by a Workflow.
+![](./static/use-kustomize-for-kubernetes-deployments-86.png)
+
+Next, use the built-in Harness variable expression `${env.name}` in **Path to kustomization directory** to use the Environment names. The `${env.name}` expression resolves to the name of the Harness Environment used by a Workflow.
 
 For example, if you have two Environments named **production** and **staging**, at deployment runtime the `${env.name}` expression resolves to whichever Environment is used by the Workflow.
 
-![](./static/use-kustomize-for-kubernetes-deployments-87.png)Now, to use the `${env.name}` expression in **Path to kustomization directory**, and reference the Environments and corresponding folders, you would enter `kustomize/multibases/${env.name}`.
+![](./static/use-kustomize-for-kubernetes-deployments-87.png)
 
-![](./static/use-kustomize-for-kubernetes-deployments-88.png)Each time a Workflow runs, it will replace the `${env.name}` expression with the name of the Environment selected for the Workflow.
+Now, to use the `${env.name}` expression in **Path to kustomization directory**, and reference the Environments and corresponding folders, you would enter `kustomize/multibases/${env.name}`.
+
+![](./static/use-kustomize-for-kubernetes-deployments-88.png)
+
+Each time a Workflow runs, it will replace the `${env.name}` expression with the name of the Environment selected for the Workflow.
 
 For example, if the Workflow uses the Environment **production**, the **Path to kustomization directory** setting will become `kustomize/multibases/production`. Now Harness looks in the **production** folder in your repo for the kustomization.yaml file.
 
 Once you have created a Workflow, you can templatize its Service setting so that you can select the Environment and its corresponding repo folder:
 
-![](./static/use-kustomize-for-kubernetes-deployments-89.png)You can also select the Environment in a Trigger than executes the Workflow:
+![](./static/use-kustomize-for-kubernetes-deployments-89.png)
 
-![](./static/use-kustomize-for-kubernetes-deployments-90.png)For more information, see [Triggers](/article/xerirloz9a-add-a-trigger-2) and [Passing Variables into Workflows and Pipelines from Triggers](/article/revc37vl0f-passing-variable-into-workflows).
+You can also select the Environment in a Trigger than executes the Workflow:
+
+![](./static/use-kustomize-for-kubernetes-deployments-90.png)
+
+For more information, see [Triggers](/article/xerirloz9a-add-a-trigger-2) and [Passing Variables into Workflows and Pipelines from Triggers](/article/revc37vl0f-passing-variable-into-workflows).
 
 ##### Service Variables
 
@@ -437,7 +467,9 @@ You can also use Service variables in **Path to kustomization directory**. This 
 
 Here is an example of using a Service variable in **Path to kustomization directory**:
 
-![](./static/use-kustomize-for-kubernetes-deployments-91.png)If you have Service **Config Variables** set up, you will see the variable expressions displayed when you enter `$`. For details on Service variables, see [Services](/article/eb3kfl8uls-service-configuration).
+![](./static/use-kustomize-for-kubernetes-deployments-91.png)
+
+If you have Service **Config Variables** set up, you will see the variable expressions displayed when you enter `$`. For details on Service variables, see [Services](/article/eb3kfl8uls-service-configuration).
 
 Service variables can be overwritten at the Harness Environment level. This allows you to use a variable for the **Path to kustomization directory** setting and then override it for each Harness Environment you use with this Service.
 
@@ -451,9 +483,13 @@ For Workflow variables, you need to create the variable in the Workflow and then
 
 Here is an example of using a Workflow variable for **Path to kustomization directory**:
 
-![](./static/use-kustomize-for-kubernetes-deployments-92.png)If you use Workflow variables for **Path to kustomization directory**, you can provide a value for **Path to kustomization directory** when you deploy the Workflow (standalone or as part of a Pipeline).
+![](./static/use-kustomize-for-kubernetes-deployments-92.png)
 
-![](./static/use-kustomize-for-kubernetes-deployments-93.png)Typically, when you deploy a Workflow, you are prompted to select an artifact for deployment. If a Workflow is deploying a Service that uses a remote **Kustomization Configuration**, you are not prompted to provide an artifact for deployment.See [Workflows](/article/m220i1tnia-workflow-configuration) and [Kubernetes Workflow Variable Expressions](/article/9dvxcegm90-variables).
+If you use Workflow variables for **Path to kustomization directory**, you can provide a value for **Path to kustomization directory** when you deploy the Workflow (standalone or as part of a Pipeline).
+
+![](./static/use-kustomize-for-kubernetes-deployments-93.png)
+
+Typically, when you deploy a Workflow, you are prompted to select an artifact for deployment. If a Workflow is deploying a Service that uses a remote **Kustomization Configuration**, you are not prompted to provide an artifact for deployment.See [Workflows](/article/m220i1tnia-workflow-configuration) and [Kubernetes Workflow Variable Expressions](/article/9dvxcegm90-variables).
 
 ### Option: Use Plugins in Deployments
 
@@ -518,7 +554,9 @@ Plugins can only be applied to Harness Kubernetes Delegates.Next, apply the Prof
 
 1. Click the Profile menu in the Delegate lists and choose your Profile.
 
-![](./static/use-kustomize-for-kubernetes-deployments-94.png)1. Click **Confirm**.
+![](./static/use-kustomize-for-kubernetes-deployments-94.png)
+
+1. Click **Confirm**.
 
 Wait a few minutes for the Profile to install the plugin. Next click **View Logs** to see the output of the Profile.
 
@@ -526,7 +564,9 @@ Wait a few minutes for the Profile to install the plugin. Next click **View Logs
 
 Once the plugin is added to the Delegate(s), you can reference it in the Remote Manifests **Path to Kustomize plugin on Delegate** setting in the Harness Service. You will indicate the same location where your Delegate Profile script installed the plugin:
 
-![](./static/use-kustomize-for-kubernetes-deployments-95.png)Click **Submit**. Harness is now configured to use the plugin when it deploys using kustomize.
+![](./static/use-kustomize-for-kubernetes-deployments-95.png)
+
+Click **Submit**. Harness is now configured to use the plugin when it deploys using kustomize.
 
 ### Example 1: Multibase Rolling Deployment
 
@@ -540,21 +580,31 @@ When we deploy, the Workflow will use the name of the Environment in **Path to k
 
 Here is what the repo looks like:
 
-![](./static/use-kustomize-for-kubernetes-deployments-96.png)Here are the Harness Environments whose names correspond to the dev, stage, and production repo folders:
+![](./static/use-kustomize-for-kubernetes-deployments-96.png)
 
-![](./static/use-kustomize-for-kubernetes-deployments-97.png)Here is the Harness Service **Remote Manifests** settings. The **Path to kustomization directory** setting uses the `${env.name}` expression that will be replaced with a Harness Environment name at deployment runtime.
+Here are the Harness Environments whose names correspond to the dev, stage, and production repo folders:
 
-![](./static/use-kustomize-for-kubernetes-deployments-98.png)Next we'll create a Workflow using the Rolling Deployment strategy. Here we select the Service we set up.
+![](./static/use-kustomize-for-kubernetes-deployments-97.png)
+
+Here is the Harness Service **Remote Manifests** settings. The **Path to kustomization directory** setting uses the `${env.name}` expression that will be replaced with a Harness Environment name at deployment runtime.
+
+![](./static/use-kustomize-for-kubernetes-deployments-98.png)
+
+Next we'll create a Workflow using the Rolling Deployment strategy. Here we select the Service we set up.
 
 When you first create the Workflow you cannot set the **Environment** setting as a variable expression. Create the Workflow using any of the Environments, and then edit the Workflow settings and turn the **Environment** and **Infrastructure Definition** settings to variable expressions by clicking their **[T]** icons.
 
 When you are done, the Workflow settings will look like this:
 
-![](./static/use-kustomize-for-kubernetes-deployments-99.png)There is nothing to set up in the Workflow. Harness automatically adds the Rollout Deployment step that performs the Kubernetes Rolling Update.
+![](./static/use-kustomize-for-kubernetes-deployments-99.png)
+
+There is nothing to set up in the Workflow. Harness automatically adds the Rollout Deployment step that performs the Kubernetes Rolling Update.
 
 In the Workflow, click **Deploy**. In **Start New Deployment**, select the name of the Environment that corresponds to the repo folder containing the base you want to use:
 
-![](./static/use-kustomize-for-kubernetes-deployments-100.png)In this example, we select the **stage** Environment. Once deployment is complete you can see the stage repo folder's base used and the `staging-myapp-pod` created:
+![](./static/use-kustomize-for-kubernetes-deployments-100.png)
+
+In this example, we select the **stage** Environment. Once deployment is complete you can see the stage repo folder's base used and the `staging-myapp-pod` created:
 
 ![](./static/use-kustomize-for-kubernetes-deployments-101.png)
 

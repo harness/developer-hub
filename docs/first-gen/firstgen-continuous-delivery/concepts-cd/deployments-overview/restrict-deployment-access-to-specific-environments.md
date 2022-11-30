@@ -26,7 +26,9 @@ Ensure you are familiar with the following Harness features:
 
 In the following image, you can see that the Application Permissions for a Harness User Group are set for a specific Application and three of its Environments:
 
-![](./static/restrict-deployment-access-to-specific-environments-14.png)Members of this User Group will have permission to execute Workflow and Pipeline deployments for those target Environments only.
+![](./static/restrict-deployment-access-to-specific-environments-14.png)
+
+Members of this User Group will have permission to execute Workflow and Pipeline deployments for those target Environments only.
 
 ### Option: Create or Edit a User Group
 
@@ -40,9 +42,13 @@ For steps on setting up a User Group, see [Managing Users and Groups (RBAC)](/ar
 
 By default, all Harness User Groups members have full permissions on all Applications.
 
-![](./static/restrict-deployment-access-to-specific-environments-15.png)In **Application Permissions**, click the pencil icon to edit the default permissions.
+![](./static/restrict-deployment-access-to-specific-environments-15.png)
 
-![](./static/restrict-deployment-access-to-specific-environments-16.png)The Application Permission settings appear. Configure the following settings:
+In **Application Permissions**, click the pencil icon to edit the default permissions.
+
+![](./static/restrict-deployment-access-to-specific-environments-16.png)
+
+The Application Permission settings appear. Configure the following settings:
 
 1. In **Permission Type**, enable **Deployments** or any other permissions other than **All Permission Types**.
 2. In **Application**, select the Application(s) you want to grant deployment permissions for. Use the search feature if needed.
@@ -51,7 +57,9 @@ By default, all Harness User Groups members have full permissions on all Applica
 
 When you're done, the Application Permission will look something like this:
 
-![](./static/restrict-deployment-access-to-specific-environments-17.png)Now this User Group's members can only deploy to the Environments you selected.
+![](./static/restrict-deployment-access-to-specific-environments-17.png)
+
+Now this User Group's members can only deploy to the Environments you selected.
 
 Add and remove members as needed.
 

@@ -56,8 +56,12 @@ Application Load Balancer (ALB) and Network Load Balancer (NLB) are supported.
 
 There are three places where ports are configured in this deployment:
 
-* Harness ECS Service **Container Specification** - You will specify ports in the **Port Mappings** in the Container Specification.![](./static/ecs-blue-green-workflows-50.png)The port number used here must also be used in the ELB Target Groups you use for Blue/Green.
-* **Target Group** - You will create two target groups, and Harness will swap them to perform Blue/Green. When you create a target group, you will specify the same port number as the **Port Mappings** in the Container Specification in Service:![](./static/ecs-blue-green-workflows-51.png)Both target groups must use the same port number, which is also the same number as the **Port Mappings** in the Container Specification in Service.
+* Harness ECS Service **Container Specification** - You will specify ports in the **Port Mappings** in the Container Specification.![](./static/ecs-blue-green-workflows-50.png)
+
+The port number used here must also be used in the ELB Target Groups you use for Blue/Green.
+* **Target Group** - You will create two target groups, and Harness will swap them to perform Blue/Green. When you create a target group, you will specify the same port number as the **Port Mappings** in the Container Specification in Service:![](./static/ecs-blue-green-workflows-51.png)
+
+Both target groups must use the same port number, which is also the same number as the **Port Mappings** in the Container Specification in Service.
 * **ELB Listener** - In your ELB, you create a listener for each target group. Listeners also use port numbers, but these are simply entry points for the ELB. For example, one listener uses port 80, and the other listener uses 8080.
 
 If the port number used in the **Port Mappings** in the Container Specification in Service does not match the port number used in the target groups, you will see this error:
@@ -82,25 +86,35 @@ To set up AWS for Blue/Green using ELB and Harness, do the following:
 
 It is important that you use the same port numbers for both target groups.When you are done, the target configuration will look something like this:
 
-![](./static/ecs-blue-green-workflows-53.png)Now that your targets are created, you can create the load balancer that will switch between the targets.
+![](./static/ecs-blue-green-workflows-53.png)
+
+Now that your targets are created, you can create the load balancer that will switch between the targets.
 
 1. Create a Application Load Balancer. In the EC2 Console, click **Load Balancers**.![](./static/ecs-blue-green-workflows-54.png)
 2. Click **Create Load Balancer**, and then under **Application Load Balancer**, click **Create**.
 
-![](./static/ecs-blue-green-workflows-55.png)You do not need to add listeners at this point. We will do that after the load balancer is created.
+![](./static/ecs-blue-green-workflows-55.png)
+
+You do not need to add listeners at this point. We will do that after the load balancer is created.
 
 Ensure that the VPC you select for the load balancer has two subnets, each in a separate availability zone, like the following:
 
-![](./static/ecs-blue-green-workflows-56.png)Once your load balancer is created, you can add its Prod and Stage listeners.
+![](./static/ecs-blue-green-workflows-56.png)
 
-1. In your load balancer, click its **Listeners** tab to add the targets you created as listeners.![](./static/ecs-blue-green-workflows-57.png)
+Once your load balancer is created, you can add its Prod and Stage listeners.
+
+1. In your load balancer, click its **Listeners** tab to add the targets you created as listeners.
+   ![](./static/ecs-blue-green-workflows-57.png)
 2. Click **Add Listener**.
 3. In the **Protocol : port** section, enter the port number for your first target, port **80**. Listeners do not need to use the same port numbers as their target groups.
-4. In **Default action**, click **Add action**, and select **Forward to**, and then select your target.![](./static/ecs-blue-green-workflows-58.png)
+4. In **Default action**, click **Add action**, and select **Forward to**, and then select your target.
+   ![](./static/ecs-blue-green-workflows-58.png)
 5. Click **Save**.
 6. Repeat this process to add a listener using the other target you created, using a port number such as **8080**. When you are done you will have two listeners:
 
-![](./static/ecs-blue-green-workflows-59.png)You AWS ELB setup is complete. Now you can set up you Harness Workflow.
+![](./static/ecs-blue-green-workflows-59.png)
+
+You AWS ELB setup is complete. Now you can set up you Harness Workflow.
 
 #### Blue/Green Workflow with ELB
 
@@ -118,7 +132,9 @@ To set up a Blue/Green deploy using ELB in Harness, do the following:
 2. In **Blue Green Switch**, select **Elastic Load Balancer (ELB)**. When you are done the dialog will look something like this:![](./static/ecs-blue-green-workflows-60.png)
 3. Click **SUBMIT**. The ECS Blue Green Workflow appears. The following image shows the default steps.
 
-![](./static/ecs-blue-green-workflows-61.png)The following section describes how to configure the default steps.
+![](./static/ecs-blue-green-workflows-61.png)
+
+The following section describes how to configure the default steps.
 
 #### ECS Blue Green Load Balancer Setup
 
@@ -138,7 +154,9 @@ Click **ECS Blue Green Load Balancer Setup** top open it. ECS Blue Green Load Ba
 
 The following image shows how the AWS load balancer and listeners map to the ECS Blue Green Load Balancer Setup settings:
 
-![](./static/ecs-blue-green-workflows-62.png)* **IAM Role** - You can leave this field blank as this setting isn't often necessary with Blue/Green ECS deployments. You can select the IAM role to use when using the ELB. The role must have the [AmazonEC2ContainerServiceRole](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service_IAM_role.html) policy.
+![](./static/ecs-blue-green-workflows-62.png)
+
+* **IAM Role** - You can leave this field blank as this setting isn't often necessary with Blue/Green ECS deployments. You can select the IAM role to use when using the ELB. The role must have the [AmazonEC2ContainerServiceRole](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service_IAM_role.html) policy.
 * **Target Container Name** and **Target Port** - You can leave these fields blank. They are used if the container specification has multiple container definitions, which is not common. When you deploy your ECS service with Harness, Harness uses the container name and port from the **Service Specification** in the Harness Service. If you choose to use these fields, note that as an ECS requirement Target Container cannot be empty if Target Port is defined.
 * **Service Steady State Wait Timeout** - Enter how many minutes Harness should wait for the ECS service to reach steady state. You cannot use Harness variable expressions in this setting. They are supported in Basic and Canary Workflow types, when using Replica Scheduling.
 * **AWS Auto Scalar Configuration** - For more information, see [AWS Auto Scaling with ECS](/article/oinivtywnl-ecs-workflows#aws_auto_scaling_with_ecs).
@@ -147,7 +165,9 @@ When you are finished, click **SUBMIT**. You now have defined the load balancer 
 
 Here's what the **ECS Blue Green Load Balancer Setup** step looks like in a Deployment of the Workflow.
 
-![](./static/ecs-blue-green-workflows-63.png)Here's the output from the step, where the old version of the service is deleted, and the load balancer is set up to use the new version via target group **target1**:
+![](./static/ecs-blue-green-workflows-63.png)
+
+Here's the output from the step, where the old version of the service is deleted, and the load balancer is set up to use the new version via target group **target1**:
 
 
 ```
@@ -168,13 +188,17 @@ Target Group ARN: arn:aws:elasticloadbalancing:us-west-1:44xxxxxxx17:targetgroup
 
 The Upgrade Containers step adds new ECS service instances.
 
-![](./static/ecs-blue-green-workflows-64.png)In **Desired Instances**, set the number or percentage of ECS service instances to use for this stage.
+![](./static/ecs-blue-green-workflows-64.png)
+
+In **Desired Instances**, set the number or percentage of ECS service instances to use for this stage.
 
 The value in **Desired Instances** relates to the number of ECS service instances set in the **Setup Load Balancer** dialog. For example, if you entered 2 as the **Desired Instance Count** in **Setup Load Balancer** and then enter 50 Percent in **Upgrade Containers**, that means Harness will deploy 1 ECS service instance.
 
 **Use Expressions:** You can use [Harness Service, Environment Override, and Workflow](/article/9dvxcegm90-variables) variable expressions in **Desired Instances** by selecting **Use Expression** and then entering the expression, like `${workflow.variables.DesiredInstances}`. When you run the Workflow, you can provide a value for the variable.Here's what the **Upgrade Containers** step looks like in a Deployment of the Workflow.
 
-![](./static/ecs-blue-green-workflows-65.png)Here's the output from the step, where the desired count is updated to 2, and 2 targets are registered in **target1**.
+![](./static/ecs-blue-green-workflows-65.png)
+
+Here's the output from the step, where the desired count is updated to 2, and 2 targets are registered in **target1**.
 
 
 ```
@@ -211,7 +235,9 @@ Completed operation
 
 In order for rollback to add ECS Auto Scaling to the previous, successful service, you must have both the **Upgrade Containers** and **Rollback Containers** steps in the same Phase.
 
-![](./static/ecs-blue-green-workflows-66.png)Since ECS Auto Scaling is added by the **Upgrade Containers** step, if you delete **Upgrade Containers**, then **Rollback Containers** has no ECS Auto Scaling to roll back to.
+![](./static/ecs-blue-green-workflows-66.png)
+
+Since ECS Auto Scaling is added by the **Upgrade Containers** step, if you delete **Upgrade Containers**, then **Rollback Containers** has no ECS Auto Scaling to roll back to.
 
 If you want to remove ECS Auto Scaling from a Phase, delete both the **Upgrade Containers** and **Rollback Containers** steps. The Phase will no longer perform ECS Auto Scaling during deployment or rollback.
 
@@ -219,11 +245,15 @@ If you want to remove ECS Auto Scaling from a Phase, delete both the **Upgrade C
 
 The **Swap Target Groups** step performs the Blue/Green route swap once the deployment is verified. That is why **Swap Target Groups** comes after the **Verify Service** section in the Workflow.
 
-![](./static/ecs-blue-green-workflows-67.png)When you deploy, Harness will use the target group for the **Stage Listener** in the **Setup Load Balancer** step for deployment. After verifying the success of the deployment, the **Swap Target Groups** step simply swaps the target groups between the listeners. Now, the target group with the latest version receives production traffic. The target group with the old version receives the stage traffic.
+![](./static/ecs-blue-green-workflows-67.png)
+
+When you deploy, Harness will use the target group for the **Stage Listener** in the **Setup Load Balancer** step for deployment. After verifying the success of the deployment, the **Swap Target Groups** step simply swaps the target groups between the listeners. Now, the target group with the latest version receives production traffic. The target group with the old version receives the stage traffic.
 
 The following image shows two ECS deployments. In the first deployment, the service uses the **target1** target group, and in the second deployment, the service uses the **target2** target group.
 
-![](./static/ecs-blue-green-workflows-68.png)**Downsize Older Service:** choose whether to downsize the older, previous version of the service.
+![](./static/ecs-blue-green-workflows-68.png)
+
+**Downsize Older Service:** choose whether to downsize the older, previous version of the service.
 
 If you enable this option, the previous service is downsized to 0. The service is downsized, but not deleted. If the older service needs to be brought back up again, it is still available.
 
@@ -233,7 +263,9 @@ Currently, the **Delay** feature is behind a Feature Flag. Contact [Harness Supp
   
 See [New features added to Harness](https://changelog.harness.io/?categories=fix,improvement,new) and [Features behind Feature Flags](https://changelog.harness.io/?categories=early-access) (Early Access) for Feature Flag information.Here's what the **Swap Target Groups** step looks like in a Deployment of the Workflow.
 
-![](./static/ecs-blue-green-workflows-69.png)Here's the output from the step, where the Prod listener is now pointed to **target1** and the Stage listener is pointed to **target2**.
+![](./static/ecs-blue-green-workflows-69.png)
+
+Here's the output from the step, where the Prod listener is now pointed to **target1** and the Stage listener is pointed to **target2**.
 
 
 ```
@@ -255,7 +287,9 @@ You can also see the service count for the old version downsized to 0.
 
 If you look at the service in the AWS ECS console, you can see the `BLUE` and `GREEN` tags added to them to indicate their status using the `BG_VERSION` key:
 
-![](./static/ecs-blue-green-workflows-70.png)### ECS Blue/Green Using DNS
+![](./static/ecs-blue-green-workflows-70.png)
+
+### ECS Blue/Green Using DNS
 
 Using AWS Route 53 DNS, you can swap production traffic from an older version of a service to the newer version of the service. In this architecture, both services (Blue and Green) have a Service Discovery Service associated with them. This associates the services with URLs in a hosted DNS zone that was created when the namespace of the Service Discovery Services was created.
 
@@ -268,13 +302,21 @@ Harness will register the CNAME records in the zone when you first deploy your W
 
 Let's look at an example AWS setup. Here is the namespace **bg-namespace** created in AWS Cloud Map:
 
-![](./static/ecs-blue-green-workflows-71.png)When you create the namespace, AWS created a Route 53 DNS zone for the namespace automatically, containing the NS and SOA record for the namespace. In our example, the namespace is **bg-namespace**:
+![](./static/ecs-blue-green-workflows-71.png)
 
-![](./static/ecs-blue-green-workflows-72.png)Harness is not able to modify this zone due to AWS restrictions, and so you need to add another zone where Harness can register CNAME records, and manage their weights for routing. In our example, we will create another namespace name **bg-namespace\_upper**:
+When you create the namespace, AWS created a Route 53 DNS zone for the namespace automatically, containing the NS and SOA record for the namespace. In our example, the namespace is **bg-namespace**:
 
-![](./static/ecs-blue-green-workflows-73.png)When you are done, Route 53 will have two zones: the zone automatically created by AWS Cloud Map (**bg-namespace**) and the zone you created manually (**bg-namespace\_upper**):
+![](./static/ecs-blue-green-workflows-72.png)
 
-![](./static/ecs-blue-green-workflows-74.png)Next, you need to create the two services in the namespace. You can do this via AWS CLI or the AWS Cloud Map console. Below are examples using the AWS Cloud Map console.
+Harness is not able to modify this zone due to AWS restrictions, and so you need to add another zone where Harness can register CNAME records, and manage their weights for routing. In our example, we will create another namespace name **bg-namespace\_upper**:
+
+![](./static/ecs-blue-green-workflows-73.png)
+
+When you are done, Route 53 will have two zones: the zone automatically created by AWS Cloud Map (**bg-namespace**) and the zone you created manually (**bg-namespace\_upper**):
+
+![](./static/ecs-blue-green-workflows-74.png)
+
+Next, you need to create the two services in the namespace. You can do this via AWS CLI or the AWS Cloud Map console. Below are examples using the AWS Cloud Map console.
 
 #### Set up AWS for Blue/Green Using DNS
 
@@ -285,7 +327,9 @@ To create the two new services, in AWS Cloud Map, in your namespace, click **Cre
 3. Click **Create service**. The new service is added to the namespace.
 4. Repeat these steps to add a second service, **service2**. When you are finished, the AWS Cloud Map page for the namespace will look something like this:
 
-![](./static/ecs-blue-green-workflows-75.png)Now that you AWS setup is complete, you can create your Blue/Green Deployment Workflow in Harness.
+![](./static/ecs-blue-green-workflows-75.png)
+
+Now that you AWS setup is complete, you can create your Blue/Green Deployment Workflow in Harness.
 
 #### Blue/Green Workflow with DNS
 
@@ -303,13 +347,17 @@ To set up a Blue/Green using DNS in Harness, do the following:
 2. In **Blue Green Switch**, select **Domain Name System (DNS)**. When you are done the dialog will look something like this:![](./static/ecs-blue-green-workflows-76.png)
 3. Click **SUBMIT**. The ECS Blue Green Workflow appears. The following image shows the default steps.
 
-![](./static/ecs-blue-green-workflows-77.png)The following section describe the default steps.
+![](./static/ecs-blue-green-workflows-77.png)
+
+The following section describe the default steps.
 
 #### ECS Blue Green Route 53 Setup
 
 The ECS Blue Green Route 53 Setup step is where you will specify the namespace, services, and hosted zone information needed by Harness to register the CNAME records for your services.
 
-![](./static/ecs-blue-green-workflows-78.png)The **ECS Blue Green Route 53 Setup** step has the following settings.
+![](./static/ecs-blue-green-workflows-78.png)
+
+The **ECS Blue Green Route 53 Setup** step has the following settings.
 
 * **ECS Service Name** - Enter a name for the ECS Service that will be deployed AWS, or use the default values provided by Harness.
 * **Desired Instance Count** - Specify the number of service instances to deploy, using **Same as already running instances** or **Fixed**.
@@ -328,20 +376,28 @@ You can use `containerPort` or `port`.
 
 To obtain the `registryArn`, look at the **Service ID** in AWS Cloud Map:
 
-![](./static/ecs-blue-green-workflows-79.png)Copy the **Service ID** for each service and enter them into the JSON for **Specification - 1** and **Specification - 2**, like this:
+![](./static/ecs-blue-green-workflows-79.png)
 
-![](./static/ecs-blue-green-workflows-80.png)* **Alias (canonical) Name** - The name for the alias that you want redirected using the CNAME records. Typically, this is your app name, like **myapp**. You must include the zone name also. In our example, we are using **bg-namespace\_upper** as the zone name, and so, in **Alias (canonical) Name**, we enter `myapp.bg-namespace_upper.`. Note the dot at the end of the name entered.
+Copy the **Service ID** for each service and enter them into the JSON for **Specification - 1** and **Specification - 2**, like this:
+
+![](./static/ecs-blue-green-workflows-80.png)
+
+* **Alias (canonical) Name** - The name for the alias that you want redirected using the CNAME records. Typically, this is your app name, like **myapp**. You must include the zone name also. In our example, we are using **bg-namespace\_upper** as the zone name, and so, in **Alias (canonical) Name**, we enter `myapp.bg-namespace_upper.`. Note the dot at the end of the name entered.
 * **Zone Hosting Alias** - The name of the zone hosting the CNAME record.
 
 The following image shows the **Alias (canonical) Name** and **Zone Hosting Alias** settings and their corresponding DNS records. In this example, the CNAME records are already registered, but when you first deploy this will not be the case and Harness will register the records.
 
-![](./static/ecs-blue-green-workflows-81.png)* **IAM Role** - You can leave this field blank as this setting isn't often necessary with Blue/Green ECS deployments. You can select the IAM role to use when using the ELB. The role must have the [AmazonEC2ContainerServiceRole](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service_IAM_role.html) policy.
+![](./static/ecs-blue-green-workflows-81.png)
+
+* **IAM Role** - You can leave this field blank as this setting isn't often necessary with Blue/Green ECS deployments. You can select the IAM role to use when using the ELB. The role must have the [AmazonEC2ContainerServiceRole](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service_IAM_role.html) policy.
 * **Target Container Name** and **Target Port** - You can leave these fields blank. They are used if the container specification has multiple container definitions, which is not common. When you deploy your ECS service with Harness, Harness uses the container name and port from the **Service Specification** in the Harness Service. If you choose to use these fields, note that as an ECS requirement Target Container cannot be empty if Target Port is defined.
 * **AWS Auto Scalar Configuration** - For more information, see [AWS Auto Scaling with ECS](/article/oinivtywnl-ecs-workflows#aws_auto_scaling_with_ecs).
 
 Here's what the **Setup Route 53** step looks like in a Deployment of the Workflow.
 
-![](./static/ecs-blue-green-workflows-82.png)Here's the output from the step, where the current service ID is listed, and the service ID you provided in the **Specification - 1** field is used to create the new service.
+![](./static/ecs-blue-green-workflows-82.png)
+
+Here's the output from the step, where the current service ID is listed, and the service ID you provided in the **Specification - 1** field is used to create the new service.
 
 
 ```
@@ -359,13 +415,17 @@ No Auto-scalar config found for existing services
 
 The Upgrade Containers step adds new ECS service instances.
 
-![](./static/ecs-blue-green-workflows-83.png)In **Desired Instances**, set the number or percentage of ECS service instances to use for this stage.
+![](./static/ecs-blue-green-workflows-83.png)
+
+In **Desired Instances**, set the number or percentage of ECS service instances to use for this stage.
 
 The value in **Desired Instances** relates to the number of ECS service instances set in the **Setup Route 53** dialog. For example, if you entered 2 as the **Desired Instance Count** in **Setup Route 53** and then enter 50 Percent in **Upgrade Containers**, that means, Harness will deploy 1 ECS service instance.
 
 Here's what the **Upgrade Containers** step looks like in a Deployment of the Workflow.
 
-![](./static/ecs-blue-green-workflows-84.png)Here's the output from the step, where the service count is increased to 2.
+![](./static/ecs-blue-green-workflows-84.png)
+
+Here's the output from the step, where the service count is increased to 2.
 
 
 ```
@@ -400,7 +460,9 @@ Completed operation
 
 In order for rollback to add ECS Auto Scaling to the previous, successful service, you must have both the **Upgrade Containers** and **Rollback Containers** steps in the same Phase.
 
-![](./static/ecs-blue-green-workflows-85.png)Since ECS Auto Scaling is added by the **Upgrade Containers** step, if you delete **Upgrade Containers**, then **Rollback Containers** has no ECS Auto Scaling to roll back to.
+![](./static/ecs-blue-green-workflows-85.png)
+
+Since ECS Auto Scaling is added by the **Upgrade Containers** step, if you delete **Upgrade Containers**, then **Rollback Containers** has no ECS Auto Scaling to roll back to.
 
 If you want to remove ECS Auto Scaling from a Phase, delete both the **Upgrade Containers** and **Rollback Containers** steps. The Phase will no longer perform ECS Auto Scaling during deployment or rollback.
 
@@ -410,9 +472,13 @@ A weight value determines the proportion of DNS queries that Route 53 responds t
 
 By default, the weights are **100** for the new service and **0** for the old service. A weight of **0** disables routing to a resource using this CNAME record. This performs a complete redirect to the new service each time a new service is deployed.
 
-![](./static/ecs-blue-green-workflows-86.png)Here's what the Change Route 53 Weights step looks like in a Deployment of the Workflow.
+![](./static/ecs-blue-green-workflows-86.png)
 
-![](./static/ecs-blue-green-workflows-87.png)The Details section displays the service names and weights.
+Here's what the Change Route 53 Weights step looks like in a Deployment of the Workflow.
+
+![](./static/ecs-blue-green-workflows-87.png)
+
+The Details section displays the service names and weights.
 
 Here's the output from the step, where the CNAME records are registered with the zone you added, and the weights are applied. Tags for the ECS services are also added to identify that they are BLUE or GREEN. The service for the old version is downsized to 0 but not deleted.
 
@@ -432,7 +498,9 @@ Waiting: [30] seconds for the downsize to complete ECS services to synchronize
 ```
 In the Route 53 console, you can see the result of the CNAME weights in the zone you created, in the **Weight** column. Note that the **Set ID** column also lists **Harness-Green** or **Harness-Blue**.
 
-![](./static/ecs-blue-green-workflows-88.png)You can also see the Blue/Green tag in the ECS console, in the **Tags** tab for the service:
+![](./static/ecs-blue-green-workflows-88.png)
+
+You can also see the Blue/Green tag in the ECS console, in the **Tags** tab for the service:
 
 ![](./static/ecs-blue-green-workflows-89.png)
 

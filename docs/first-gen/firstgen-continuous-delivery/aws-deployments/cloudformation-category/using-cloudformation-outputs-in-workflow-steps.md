@@ -37,7 +37,9 @@ In the following example, we show:
 * The outputs used for the optional Target Group and Application Load Balancer.
 * The stage Target Group and Application Load Balancer used for Blue/Green deployments.
 
-![](./static/using-cloudformation-outputs-in-workflow-steps-04.png)As you can see, you map the CloudFormation template outputs using this syntax, where `exact_name` is the name of the output:
+![](./static/using-cloudformation-outputs-in-workflow-steps-04.png)
+
+As you can see, you map the CloudFormation template outputs using this syntax, where `exact_name` is the name of the output:
 
 
 ```

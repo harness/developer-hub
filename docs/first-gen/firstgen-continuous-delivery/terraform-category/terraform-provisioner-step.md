@@ -64,11 +64,15 @@ You can also run Harness Terraform Infrastructure Provisioner using the Terrafor
 
 This topic describes steps 3 through 6 in the Harness Terraform Provisioning implementation process:
 
-![](./static/terraform-provisioner-step-10.png)For step 1, see [Add Terraform Scripts](/article/ux2enus2ku-add-terraform-scripts). For step 2, see [Map Dynamically Provisioned Infrastructure using Terraform](/article/a2f2bh35el-mapgcp-kube-terraform-infra).
+![](./static/terraform-provisioner-step-10\.png)
+
+For step 1, see [Add Terraform Scripts](/article/ux2enus2ku-add-terraform-scripts). For step 2, see [Map Dynamically Provisioned Infrastructure using Terraform](/article/a2f2bh35el-mapgcp-kube-terraform-infra).
 
 Here is illustration using a deployment:
 
-![](./static/terraform-provisioner-step-11.png)1. The **Terraform Provision** step executes pre-deployment to build the infrastructure.
+![](./static/terraform-provisioner-step-11\.png)
+
+)1. The **Terraform Provision** step executes pre-deployment to build the infrastructure.
 2. The **Infrastructure Definition** is used to select the provisioned nodes.
 3. The app is **installed** on the provisioned node.
 
@@ -94,11 +98,15 @@ In **Environment**, select the Environment that has the Terraform Provisioner se
 
 You Workflow settings will look something like this:
 
-![](./static/terraform-provisioner-step-12.png)Click **SUBMIT**. The new Workflow is created.
+![](./static/terraform-provisioner-step-12\.png)
+
+Click **SUBMIT**. The new Workflow is created.
 
 By default, the Workflow includes a **Pre-deployment Steps** section. This is where you will add a step that uses your Terraform Provisioner.
 
-![](./static/terraform-provisioner-step-13.png)Infrastructure Definitions are added in Canary Workflow *Phases*, in the **Deployment Phases** section. You will add the Infrastructure Definition that uses your Terraform Infrastructure Provisioner when you add the Canary Phases, later in this topic.
+![](./static/terraform-provisioner-step-13\.png)
+
+Infrastructure Definitions are added in Canary Workflow *Phases*, in the **Deployment Phases** section. You will add the Infrastructure Definition that uses your Terraform Infrastructure Provisioner when you add the Canary Phases, later in this topic.
 
 ### Step 2: Add Terraform Step to Pre-deployment Steps
 
@@ -108,7 +116,9 @@ In your Workflow, in **Pre-deployment Steps**, click **Add Step**.
 
 Select **Terraform Provision**. The **Terraform Provision** settings appear.
 
-![](./static/terraform-provisioner-step-14.png)In **Name**, enter a name for the step. Use a name that describes the infrastructure the step will provision.
+![](./static/terraform-provisioner-step-14\.png)
+
+In **Name**, enter a name for the step. Use a name that describes the infrastructure the step will provision.
 
 In **Provisioner**, select the Harness Terraform Infrastructure Provisioner you set up for provisioning your target infrastructure. Terraform Infrastructure Provisioner setup is covered in [Add Terraform Scripts](/article/ux2enus2ku-add-terraform-scripts).
 
@@ -174,11 +184,15 @@ Provide values for any input values in your the Terraform script set up in the T
 
 Click **Populate Variables** and Harness will pull all of the input variables from the Terraform script you added to the Terraform Infrastructure Provisioner you selected.
 
-![](./static/terraform-provisioner-step-15.png)It can table a moment to populate the variables.
+![](./static/terraform-provisioner-step-15\.png)
+
+It can table a moment to populate the variables.
 
 Enter a value for each variable in **Input Values**. For encrypted text values, select an Encrypted Text secret from Harness Secrets Management.
 
-![](./static/terraform-provisioner-step-16.png)For more information, see [Secrets Management](/article/au38zpufhr-secret-management).
+![](./static/terraform-provisioner-step-16\.png)
+
+For more information, see [Secrets Management](/article/au38zpufhr-secret-management).
 
 #### Use tfvar Files
 
@@ -190,7 +204,9 @@ You can use inline or remote tfvar files.
 
 The path to the variable definitions file is relative to the root of the Git repo specified in the Terraform Provisioner setting. For example, in the following image, the **testing.tfvars** file is located in the repo at `terraform/ec2/testing/testing.tfvars`:
 
-![](./static/terraform-provisioner-step-17.png)If **Use tfvar files** is selected and there are also **Inline Values**, when Harness loads the variables from the **tfvars** file, the **Inline Values** variables override the variables from the tfvars file.
+![](./static/terraform-provisioner-step-17\.png)
+
+If **Use tfvar files** is selected and there are also **Inline Values**, when Harness loads the variables from the **tfvars** file, the **Inline Values** variables override the variables from the tfvars file.
 
 If you only want to use the tfvars file, make sure to delete the Inline Values.
 
@@ -232,7 +248,9 @@ variable "list_test" {
 ```
 In **Inline Values**, you would enter these as text values `map_test` and `list_test` with their defaults in **Value**:
 
-![](./static/terraform-provisioner-step-18.png)When the Workflow is deployed, the `map_test` and `list_test` variables and values are added using the `terraform plan -var` option to set a variable in the Terraform configuration (see [Usage](https://www.terraform.io/docs/commands/plan.html#usage) from Terraform):
+![](./static/terraform-provisioner-step-18\.png)
+
+When the Workflow is deployed, the `map_test` and `list_test` variables and values are added using the `terraform plan -var` option to set a variable in the Terraform configuration (see [Usage](https://www.terraform.io/docs/commands/plan.html#usage) from Terraform):
 
 
 ```
@@ -276,9 +294,13 @@ In **Additional Settings**, you can use the **Target** setting to target one or 
 
 For example, in the following image you can see the Terraform script has one resource and two modules and the **Targets** setting displays them as potential targets.
 
-![](./static/terraform-provisioner-step-19.png)If you have multiple modules in your script and you do not select one in **Targets**, all modules are used.You can also use Workflow variables as your targets. For example, you can create a Workflow variable named **module** and then enter the variable `${workflow.variables.module}` in the **Targets** field. When you deploy the Workflow, you are prompted to provide a value for the variable:
+![](./static/terraform-provisioner-step-19\.png)
 
-![](./static/terraform-provisioner-step-20.png)See [Set Workflow Variables](/article/766iheu1bk-add-workflow-variables-new-template).
+If you have multiple modules in your script and you do not select one in **Targets**, all modules are used.You can also use Workflow variables as your targets. For example, you can create a Workflow variable named **module** and then enter the variable `${workflow.variables.module}` in the **Targets** field. When you deploy the Workflow, you are prompted to provide a value for the variable:
+
+![](./static/terraform-provisioner-step-20\.png)
+
+See [Set Workflow Variables](/article/766iheu1bk-add-workflow-variables-new-template).
 
 ### Option: Workspaces
 
@@ -314,11 +336,15 @@ Harness will pass the workspace name you provide to the `terraform.workspace` va
 
 In the **Workspace** setting, you can simply select the name of the workspace to use.
 
-![](./static/terraform-provisioner-step-21.png)You can also use a Workflow variable to enter the name in **Workspace**.
+![](./static/terraform-provisioner-step-21\.png)
+
+You can also use a Workflow variable to enter the name in **Workspace**.
 
 Later, when the Workflow is deployed, you can specify the name for the Workflow variable:
 
-![](./static/terraform-provisioner-step-22.png)This allows you to specify a different workspace name each time the Workflow is run.
+![](./static/terraform-provisioner-step-22\.png)
+
+This allows you to specify a different workspace name each time the Workflow is run.
 
 You can even set a Harness Trigger where you can set the workspace name used by the Workflow.
 
@@ -334,7 +360,9 @@ For more information on Delegate Selectors, see [Select Delegates with Selectors
 
 You can even add a Workflow variable for the Delegate Selector and the use an expression in the **Delegate Selectors** field. When you deploy the Workflow, you will provide the name of the Delegate Selector.
 
-![](./static/terraform-provisioner-step-23.png)For more information, see [Add Workflow Variables](https://docs.harness.io/article/m220i1tnia-workflow-configuration#add_workflow_variables) and [Passing Variables into Workflows and Pipelines from Triggers](/article/revc37vl0f-passing-variable-into-workflows).
+![](./static/terraform-provisioner-step-23\.png)
+
+For more information, see [Add Workflow Variables](https://docs.harness.io/article/m220i1tnia-workflow-configuration#add_workflow_variables) and [Passing Variables into Workflows and Pipelines from Triggers](/article/revc37vl0f-passing-variable-into-workflows).
 
 ### Option: Add Environment Variables
 
@@ -363,7 +391,8 @@ For Canary Workflows, Infrastructure Definitions are added in Phases, in the **D
 For AMI deployments, Terraform Infrastructure Provisioners are also supported in Blue/Green Workflows. If you are creating a Blue/Green Workflow for AMI, you can select the Environment and Infrastructure Definition in the Workflow setup settings.1. In the **Deployment Phases** section, click **Add Phase**. The Workflow Phase settings appear.
 2. In **Service**, select the Harness Service to deploy.
 3. In **Infrastructure Definition**, select the target Infrastructure Definition where the Workflow will deploy. This is the same Infrastructure Definition where you mapped your Terraform Infrastructure Provisioner outputs, as described in [Map Dynamically Provisioned Infrastructure using Terraform](/article/a2f2bh35el-mapgcp-kube-terraform-infra).  
-Here is an example:![](./static/terraform-provisioner-step-24.png)
+Here is an example:
+   ![](./static/terraform-provisioner-step-24.png)
 4. Click **Submit**. Use the same Infrastructure Definition for the remaining phases in your Canary Workflow.
 
 Once you are done, your Workflow is ready to deploy. Let's look at an example below.
@@ -372,17 +401,27 @@ Once you are done, your Workflow is ready to deploy. Let's look at an example be
 
 This section describes the deployment steps for a Workflow using the Terraform Provisioner step and deploying to a provisioned AMI.
 
-![](./static/terraform-provisioner-step-25.png)This is a Canary deployment Workflow, but we are only interested in **Phase 1** where the Terraform provisioning occurs, and the artifact is installed in the provisioned AMI. Phase 2 of the Canary deployment is omitted.In the **Pre-Deployment** section, the **Terraform Provision** step is executed. When you click the step you can see the Terraform command executed in **Details**.
+![](./static/terraform-provisioner-step-25\.png)
 
-![](./static/terraform-provisioner-step-26.png)Note the DNS name of the AMI in the `dns` output:
+This is a Canary deployment Workflow, but we are only interested in **Phase 1** where the Terraform provisioning occurs, and the artifact is installed in the provisioned AMI. Phase 2 of the Canary deployment is omitted.In the **Pre-Deployment** section, the **Terraform Provision** step is executed. When you click the step you can see the Terraform command executed in **Details**.
 
-![](./static/terraform-provisioner-step-27.png)You will see this name used next.
+![](./static/terraform-provisioner-step-26\.png)
+
+Note the DNS name of the AMI in the `dns` output:
+
+![](./static/terraform-provisioner-step-27\.png)
+
+You will see this name used next.
 
 In **Phase 1** of the Canary deployment, click **Select Nodes** to see that Harness has selected the provisioned AMI as the deployment target host. See that it used the same DNS name as the the output in the **Terraform Provision** step:
 
-![](./static/terraform-provisioner-step-28.png)Lastly, expand the **Deploy Service** step, and then click **Install**. You will see that the DNS name is shown on the arrow leading to install, and that the **Details** section displays the internal Delegate and provisioned target host addresses.
+![](./static/terraform-provisioner-step-28\.png)
 
-![](./static/terraform-provisioner-step-29.png)As you can see, the artifact was copied to the provisioned host. Deployment was a success.
+Lastly, expand the **Deploy Service** step, and then click **Install**. You will see that the DNS name is shown on the arrow leading to install, and that the **Details** section displays the internal Delegate and provisioned target host addresses.
+
+![](./static/terraform-provisioner-step-29\.png)
+
+As you can see, the artifact was copied to the provisioned host. Deployment was a success.
 
 ### Notes
 

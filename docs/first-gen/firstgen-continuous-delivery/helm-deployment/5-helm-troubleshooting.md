@@ -27,7 +27,9 @@ Make sure that the Helm client and Tiller are installed. Do the following:
 
 Likely, there is an incompatible Helm client or Tiller. The Helm client needs to be lesser or equal to the Tiller version:
 
-![](./static/5-helm-troubleshooting-00.png)To fix this, upgrade Tiller:
+![](./static/5-helm-troubleshooting-00.png)
+
+To fix this, upgrade Tiller:
 
 `helm init --upgrade`
 

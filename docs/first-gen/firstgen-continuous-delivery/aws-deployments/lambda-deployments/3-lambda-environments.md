@@ -48,10 +48,13 @@ A Harness Infrastructure Definition defines the AWS VPC, subnets, and security g
 
 To add the Infrastructure Definition:
 
-1. In the Harness Environment, click **Add Infrastructure Definition**. The **Infrastructure Definition** dialog appears.![](./static/3-lambda-environments-24.png)The **Infrastructure Definition** dialog appears.![](./static/3-lambda-environments-25.png)
+1. In the Harness Environment, click **Add Infrastructure Definition**. The **Infrastructure Definition** dialog appears.
+   ![](./static/3-lambda-environments-24.png)
+   The **Infrastructure Definition** dialog appears.![](./static/3-lambda-environments-25.png)
 2. Enter a **Name** that will identify this Infrastructure Definition when you [add it to a Workflow](/article/491a6etr7a-4-lambda-workflows-and-deployments).
 3. In **Cloud Provider Type**, select **Amazon Web Services**.
-4. In **Deployment Type**, select **AWS Lambda**. This expands the **Infrastructure Definition** dialog to look something like this:![](./static/3-lambda-environments-26.png)
+4. In **Deployment Type**, select **AWS Lambda**. This expands the **Infrastructure Definition** dialog to look something like this:
+   ![](./static/3-lambda-environments-26.png)
 5. Select **Use** **Already Provisioned Infrastructure**, and follow the [Define a Provisioned Infrastructure](#define_provisioned_infrastructure) steps below.
 
 If you are using a configured Harness [Infrastructure Provisioner](/article/o22jx8amxb-add-an-infra-provisioner), instead select **Map Dynamically Provisioned Infrastructure**, and then select the provisioner. The settings below are for **Use Already Provisioned Infrastructure**.
@@ -81,7 +84,9 @@ Lambda runs your function code securely within a VPC by default. However, to ena
 
 Scoping is a recommended step, to make this Infrastructure Definition available to any Workflow or Phase that uses your Lambda Service.When you are done, the dialog will look something like this:
 
-![](./static/3-lambda-environments-27.png)1. Click **Submit**. The new Infrastructure Definition is added to the Harness environment.
+![](./static/3-lambda-environments-27.png)
+
+1. Click **Submit**. The new Infrastructure Definition is added to the Harness environment.
 
 ### Option: Provision the Lambda Infrastructure
 

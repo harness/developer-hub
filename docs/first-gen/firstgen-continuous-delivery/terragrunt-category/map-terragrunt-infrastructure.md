@@ -10,7 +10,9 @@ helpdocs_is_published: true
 
 This topic describes how to use a Harness Terragrunt Infrastructure Provisioner to create a Harness Infrastructure Definition. When you select the **Map Dynamically Provisioned Infrastructure** option in an Infrastructure Definition, you select an Infrastructure Provisioner and then map its outputs to required settings.
 
-![](./static/map-terragrunt-infrastructure-17.png)Once you map the outputs, you add the Infrastructure Definition to a Workflow as its deployment target.
+![](./static/map-terragrunt-infrastructure-17\.png)
+
+Once you map the outputs, you add the Infrastructure Definition to a Workflow as its deployment target.
 
 Finally, you add a Terraform Provision step to that Workflow's Pre-deployment section to provision that target infrastructure.
 
@@ -121,7 +123,9 @@ See [Types of clusters](https://cloud.google.com/kubernetes-engine/docs/concept
 
 AMI deployments are the only type that supports Terraform and CloudFormation Infrastructure Provisioners in Blue/Green deployments.The AWS AutoScaling Group deployment type requires the Region and Base Auto Scaling Group fields. The following example shows the Terraform script outputs used for all of the fields:
 
-![](./static/map-terragrunt-infrastructure-21.png)For detailed information on AMI deployments, see [AMI Basic Deployment](https://docs.harness.io/article/rd6ghl00va-ami-deployment). Here is what each of the output values are:
+![](./static/map-terragrunt-infrastructure-21\.png)
+
+For detailed information on AMI deployments, see [AMI Basic Deployment](https://docs.harness.io/article/rd6ghl00va-ami-deployment). Here is what each of the output values are:
 
 * **Region** - The target AWS region for the AMI deployment.
 * **Base Auto Scaling Group** - An existing Auto Scale Group that Harness will copy to create a new Auto Scaling Group for deployment by an AMI Workflow. The new Auto Scaling Group deployed by the AMI Workflow will have unique max and min instances and desired count.
@@ -135,19 +139,25 @@ Harness recommends you use Launch Templates instead of Launch Configurations. Wi
 
 The ECS deployment type requires the **Region** and **Cluster** fields. The following example shows the Terraform script outputs used for the mandatory ECS deployment type fields:
 
-![](./static/map-terragrunt-infrastructure-22.png)For information on ECS deployments, see [AWS ECS Deployments Overview](https://docs.harness.io/article/5z2kw34d7x-aws-ecs-deployments-overview).
+![](./static/map-terragrunt-infrastructure-22\.png)
+
+For information on ECS deployments, see [AWS ECS Deployments Overview](https://docs.harness.io/article/5z2kw34d7x-aws-ecs-deployments-overview).
 
 ### Option 5: ​Map an AWS Lambda Infrastructure​
 
 The Lambda deployment type requires the IAM Role and Region fields. The following example shows the Terraform script outputs used for the mandatory and optional Lambda deployment type fields:
 
-![](./static/map-terragrunt-infrastructure-23.png)See [AWS Lambda Quickstart](/article/wy1rjh19ej-aws-lambda-deployments).
+![](./static/map-terragrunt-infrastructure-23\.png)
+
+See [AWS Lambda Quickstart](/article/wy1rjh19ej-aws-lambda-deployments).
 
 ### Option 6: ​Map a Secure Shell (SSH) Infrastructure
 
 The Secure Shell (SSH) deployment type requires the **Region** and **Tags** fields. The following example shows the Terraform script outputs used for the mandatory SSH deployment type fields:
 
-![](./static/map-terragrunt-infrastructure-24.png)See [Traditional (SSH) Quickstart](/article/keodlyvsg5-traditional-ssh-quickstart).
+![](./static/map-terragrunt-infrastructure-24\.png)
+
+See [Traditional (SSH) Quickstart](/article/keodlyvsg5-traditional-ssh-quickstart).
 
 ### Option 7: Map an Azure Web App
 
@@ -157,7 +167,9 @@ The Web App name and Deployment Slots are mapped in the Deployment Slot Workflow
 
 In the following example, `${terragrunt.webApp}` is used for both the Web App name and Target Slot.
 
-![](./static/map-terragrunt-infrastructure-25.png)See [Azure Web App Deployments Overview](/article/lluikqw7q7-azure-web-app-deployments-overview).
+![](./static/map-terragrunt-infrastructure-25\.png)
+
+See [Azure Web App Deployments Overview](/article/lluikqw7q7-azure-web-app-deployments-overview).
 
 ### Next Steps
 

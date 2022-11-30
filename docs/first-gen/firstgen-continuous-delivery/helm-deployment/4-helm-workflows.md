@@ -20,8 +20,10 @@ For more information about workflows, see [Add a Workflow](/article/m220i1tnia-w
 
 To add the workflow, do the following:
 
-1. In your Harness application, click **Workflows**.![](./static/4-helm-workflows-18.png)
-2. On the **Workflows** page, click **Add Workflow**. The **Workflow** dialog appears.![](./static/4-helm-workflows-19.png)
+1. In your Harness application, click **Workflows**.
+   ![](./static/4-helm-workflows-18.png)
+2. On the **Workflows** page, click **Add Workflow**. The **Workflow** dialog appears.
+   ![](./static/4-helm-workflows-19.png)
 3. In **Name**, give your workflow a name that describes its purpose, such as **NGINX-K8s-Helm**.
 4. In **Workflow Type**, select **Basic Deployment**. Helm deployments are Basic deployments, unlike Canary or Blue/Green. They are single-phase deployments where each deployment is installed or upgraded. You can create multiple Helm deployments and add them to a Harness pipeline. For more information, see [Add a Pipeline](/article/zc1u96u6uj-pipeline-configuration).
 5. In **Environment**, select the environment you created earlier in this guide.
@@ -29,11 +31,15 @@ To add the workflow, do the following:
 7. In Infrastructure Definition, select the Infrastructure Definition you created earlier in this guide. When you are done, the dialog will look something like this:![](./static/4-helm-workflows-20.png)
 8. Click **SUBMIT**. The workflow is displayed.
 
-![](./static/4-helm-workflows-21.png)Harness creates all the steps needed to deploy the service to the target infrastructure.
+![](./static/4-helm-workflows-21.png)
+
+Harness creates all the steps needed to deploy the service to the target infrastructure.
 
 You can see that one workflow step, **Helm Deploy**, is incomplete.
 
-![](./static/4-helm-workflows-22.png)Steps are marked incomplete if they need additional input from you. To complete this step, see the following section.
+![](./static/4-helm-workflows-22.png)
+
+Steps are marked incomplete if they need additional input from you. To complete this step, see the following section.
 
 #### Helm Deploy Step
 
@@ -51,7 +57,9 @@ You can also templatize **Git Connector**,**Branch Name** and **File Path** sett
 
 Harness requires that the `release: {{ .Release.Name }}` label be used in every Kubernetes spec to ensure that Harness can identify a release, check its steady state, and perform verification on it. For details, see [Spec Requirements for Steady State Check and Verification](/article/svso08ogpb-2-helm-services#spec_requirements_for_steady_state_check_and_verification).In the **Helm Deploy Step**, you need to add a Helm release name. During deployment, this release name replaces the value of the `release: {{ .Release.Name }}` label in the Kubernetes spec:
 
-![](./static/4-helm-workflows-23.png)What is a release name? From the [Helm docs](https://docs.helm.sh/using_helm/#using-helm):
+![](./static/4-helm-workflows-23.png)
+
+What is a release name? From the [Helm docs](https://docs.helm.sh/using_helm/#using-helm):
 
 
 > A Release is an instance of a chart running in a Kubernetes cluster. One chart can often be installed many times into the same cluster. And each time it is installed, a new release is created. Consider a MySQL chart. If you want two databases running in your cluster, you can install that chart twice. Each one will have its own release, which will in turn have its own release name.
@@ -106,7 +114,9 @@ Here's an example of what the Git connector might look like:
 
 When you are done, the typical **Helm Deploy** dialog will look something like this:
 
-![](./static/4-helm-workflows-25.png)Only the **Release Name** is required.
+![](./static/4-helm-workflows-25.png)
+
+Only the **Release Name** is required.
 
 Click **SUBMIT** and **your workflow is complete.** You can look or modify the default rollback steps and other deployment strategies in the workflow (for more information, see [Add a Workflow](/article/m220i1tnia-workflow-configuration)), but for this guide, the workflow is complete and you can now deploy it. See the next section for deployment steps.
 
@@ -120,11 +130,15 @@ Before deploying the workflow, ensure all Harness delegates that can reach the r
 2. In **Notes**, enter information about the deployment that others should know. Harness records all the important details, and maintains the records of each deployment, but you might need to share some information about your deployment.
 3. Click **SUBMIT**. The **Deployments** page appears, and displays the deployment in real time.
 
-![](./static/4-helm-workflows-28.png)**The deployment was successful!** Now let's look further at the Helm deployment.
+![](./static/4-helm-workflows-28.png)
+
+**The deployment was successful!** Now let's look further at the Helm deployment.
 
 Click **Phase 1**. You will the details of the phase, including the workflow entities, listed.
 
-![](./static/4-helm-workflows-29.png)Click **Phase 1** to expand it and see **Deploy Containers**. Expand **Deploy Containers** and click the **Helm Deploy** step you set up in the workflow. The details for the step are displayed, along with the command output:
+![](./static/4-helm-workflows-29.png)
+
+Click **Phase 1** to expand it and see **Deploy Containers**. Expand **Deploy Containers** and click the **Helm Deploy** step you set up in the workflow. The details for the step are displayed, along with the command output:
 
 ![](./static/4-helm-workflows-30.png)
 
@@ -216,9 +230,13 @@ The **REVISION** column lists the revision number. Note the revision number **3*
 
 Here is an example where a failure has been initiated using an erroneous HTTP call (Response Code 500) to demonstrate the rollback behavior:
 
-![](./static/4-helm-workflows-31.png)To experiment with rollbacks, you can simply add a step to your workflow that will fail.The failed deployment section is red, but the **Rollback Phase 1** step is green, indicating that rollback has been successful. If we expand **Rollback Phase 1**, we can see the rollback information in the **Helm Rollback** step details:
+![](./static/4-helm-workflows-31.png)
 
-![](./static/4-helm-workflows-32.png)The failed version is **Release Old Version** **4** and the **Release rollback Version** is revision **3**, the last successful version. The rollback version now becomes the new version, **Release New Version 5**.
+To experiment with rollbacks, you can simply add a step to your workflow that will fail.The failed deployment section is red, but the **Rollback Phase 1** step is green, indicating that rollback has been successful. If we expand **Rollback Phase 1**, we can see the rollback information in the **Helm Rollback** step details:
+
+![](./static/4-helm-workflows-32.png)
+
+The failed version is **Release Old Version** **4** and the **Release rollback Version** is revision **3**, the last successful version. The rollback version now becomes the new version, **Release New Version 5**.
 
 Let's look at the log of the rollback to see Harness rolling back successfully.
 
@@ -256,7 +274,9 @@ The **Description** for the last release, **Revision 5**, states that it was a *
 
 You can add a **Helm Rollback** step to your Workflow to perform the aforementioned rollback sequence at a specific point in your deployment.
 
-![](./static/4-helm-workflows-33.png)The **Helm Rollback** step rolls back all the deployed objects to the previous version.
+![](./static/4-helm-workflows-33.png)
+
+The **Helm Rollback** step rolls back all the deployed objects to the previous version.
 
 ### Upgrading Deployments
 
@@ -325,9 +345,13 @@ In case of conflicts, values will be overridden. Here is how values are overridd
 
 All of the Harness configuration steps in this guide can be performed using code instead of the Harness user interface. You can view or edit the YAML for any Harness configuration by clicking the **YAML** button on any page.
 
-![](./static/4-helm-workflows-34.png)When you click the button, the Harness code editor appears:
+![](./static/4-helm-workflows-34.png)
 
-![](./static/4-helm-workflows-35.png)You can edit YAML and click **Save** to change the configuration.
+When you click the button, the Harness code editor appears:
+
+![](./static/4-helm-workflows-35.png)
+
+You can edit YAML and click **Save** to change the configuration.
 
 For example, here is the YAML for the workflow we set up in this guide.
 

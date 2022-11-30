@@ -80,11 +80,15 @@ Container Settings is deprecated and will be removed in March of 2021. The Deplo
 
 Here's the Harness [Docker Registry Artifact Server](/article/tdj2ghkqb0-add-docker-registry-artifact-servers):
 
-![](./static/connect-to-azure-for-web-app-deployments-22.png)The above example uses a public repo, and it requires no username or password.
+![](./static/connect-to-azure-for-web-app-deployments-22.png)
+
+The above example uses a public repo, and it requires no username or password.
 
 Later, in the Harness Service, you'll add an Artifact Source that uses this Artifact Server and points to the Docker Image Name:
 
-![](./static/connect-to-azure-for-web-app-deployments-23.png)The above example uses a [publicly available Docker image from Harness](https://hub.docker.com/r/harness/todolist-sample/tags?page=1&ordering=last_updated). You might want to use that the first time you set up an Azure Web App deployment.### Next Steps
+![](./static/connect-to-azure-for-web-app-deployments-23.png)
+
+The above example uses a [publicly available Docker image from Harness](https://hub.docker.com/r/harness/todolist-sample/tags?page=1&ordering=last_updated). You might want to use that the first time you set up an Azure Web App deployment.### Next Steps
 
 * [Add Your Docker Image for Azure Web App Deployment](/article/8s766bhiec-add-your-docker-image-for-azure-web-app-deployment)
 * [Add Non-Containerized Artifacts for Azure Web App Deployment](/article/rflkjqxod2-add-a-non-containerized-artifacts-for-azure-web-app-deployment)

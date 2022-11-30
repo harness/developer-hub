@@ -59,11 +59,17 @@ To resume a Pipeline, a Harness User must belong to a User Group that has the fo
 
 1. From the **Continuous Deployment**, go to your **Deployments**.
 
-![](./static/resume-a-pipeline-deployment-00.png)1. Click on the failed deployment that you would want to resume and click on the **Resume Pipeline** icon.
+![](./static/resume-a-pipeline-deployment-00.png)
 
-![](./static/resume-a-pipeline-deployment-01.png)1. In **Resume Pipeline**, select the stage from where you want to resume your Pipeline deployment and click **Resume**.
+1. Click on the failed deployment that you would want to resume and click on the **Resume Pipeline** icon.
 
-![](./static/resume-a-pipeline-deployment-02.png)Harness will execute the stage you choose and all the subsequent stages.
+![](./static/resume-a-pipeline-deployment-01.png)
+
+1. In **Resume Pipeline**, select the stage from where you want to resume your Pipeline deployment and click **Resume**.
+
+![](./static/resume-a-pipeline-deployment-02.png)
+
+Harness will execute the stage you choose and all the subsequent stages.
 
 #### Multiple Workflow Sets Running in Parallel
 

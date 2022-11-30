@@ -23,7 +23,9 @@ This topic will walk you through the process.
 
 The following illustration shows you how to view Delegate selection for each deployment task:
 
-![](./static/view-the-delegates-used-in-a-deployment-29.png)1. Select a command in the deployment graph.
+![](./static/view-the-delegates-used-in-a-deployment-29.png)
+
+1. Select a command in the deployment graph.
 2. Click the *more options* button (**︙**) in the command's details
 3. Select **View Delegate Selection**.
 4. Click the Delegate name to see the Delegate on the **Harness Delegates** page.
@@ -59,7 +61,9 @@ In the details pane for the command, click the more options button (**︙**) and
 
 The Delegate selection information contains the Delegate(s) used for the command, their assessment (Selected, etc), details about how the Delegate was used, and the timestamp of the log entry.
 
-![](./static/view-the-delegates-used-in-a-deployment-32.png)The **Assessment** and **Details** sections explain why a Delegate was or wasn't selected.
+![](./static/view-the-delegates-used-in-a-deployment-32.png)
+
+The **Assessment** and **Details** sections explain why a Delegate was or wasn't selected.
 
 #### Delegate selection logs do not apply
 
@@ -79,5 +83,7 @@ Full support for all Workflow steps will be added soon. A tooltip in **View Dele
 
 For deployments that occurred before the View Delegate Selection feature was enabled, you will see the message `There are no records available`:
 
-![](./static/view-the-delegates-used-in-a-deployment-34.png)After View Delegate Selection is enabled (the Feature Flag is removed), only subsequent deployments will display Delegate selection records for supported steps.
+![](./static/view-the-delegates-used-in-a-deployment-34.png)
+
+After View Delegate Selection is enabled (the Feature Flag is removed), only subsequent deployments will display Delegate selection records for supported steps.
 

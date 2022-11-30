@@ -49,9 +49,13 @@ Harness will be adding more events soon.
 
 In your Application, in **Event Rules**, click **Add**.
 
-![](./static/publish-workflow-events-to-an-http-endpoint-35.png)The **Rule Configuration** settings appear.
+![](./static/publish-workflow-events-to-an-http-endpoint-35.png)
 
-![](./static/publish-workflow-events-to-an-http-endpoint-36.png)Enter a name for the event rule.
+The **Rule Configuration** settings appear.
+
+![](./static/publish-workflow-events-to-an-http-endpoint-36.png)
+
+Enter a name for the event rule.
 
 #### Option: Send Me Everything
 

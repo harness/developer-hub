@@ -63,7 +63,9 @@ To add an Artifact Source to this Service, do the following:
 
 When you are finished, the Artifact Source dialog will look something like this:
 
-![](./static/2-service-and-artifact-source-13.png)You can add multiple Artifact Sources to a Service and view the build history for each one by clicking **Artifact History**.
+![](./static/2-service-and-artifact-source-13.png)
+
+You can add multiple Artifact Sources to a Service and view the build history for each one by clicking **Artifact History**.
 
 ![](./static/2-service-and-artifact-source-14.png)
 

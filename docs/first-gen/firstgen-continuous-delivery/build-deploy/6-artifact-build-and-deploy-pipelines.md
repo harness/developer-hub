@@ -43,16 +43,29 @@ To create the Artifact Build and Deploy Pipeline, do the following:
 
 Add the Build Workflow as the first stage in the Pipeline:
 
-1. In **Pipeline Stages**, click the **plus** button. The **Pipeline Stage** settings appear.![](./static/6-artifact-build-and-deploy-pipelines-15.png)
+1. In **Pipeline Stages**, click the **plus** button. The **Pipeline Stage** settings appear.
+   ![](./static/6-artifact-build-and-deploy-pipelines-15.png)
 2. In **Step Name**, enter a name for the Build Stage, such as **Build Artifact**.
-3. In **Execute Workflow**, select the Build Workflow you created. When you are done, it will look something like this:![](./static/6-artifact-build-and-deploy-pipelines-16.png)
+3. In **Execute Workflow**, select the Build Workflow you created. When you are done, it will look something like this:
+   ![](./static/6-artifact-build-and-deploy-pipelines-16.png)
 4. Click **Submit**. The stage is added to the Pipeline.
-5. Use the same steps to add the Deploy Workflow to the Pipeline. When you are done, it will look something like this.![](./static/6-artifact-build-and-deploy-pipelines-17.png)
+5. Use the same steps to add the Deploy Workflow to the Pipeline. When you are done, it will look something like this.
+   ![](./static/6-artifact-build-and-deploy-pipelines-17.png)
 6. Click **Deploy** to run the Pipeline. Note that you do not need to select an artifact build number as the Deploy Workflow will obtain the latest build.
 7. Click **Submit**.  
   
-The Workflows are run in succession. First, the Build Workflow is run. Click the **Artifact Collection** step to see the metadata collected by Harness, including the build number.![](./static/6-artifact-build-and-deploy-pipelines-18.png)You can see the same build number in Jenkins.  
-In this document, Jenkins job artifact is used as an example but Harness supports all the common [artifact source](/article/7dghbx1dbl-configuring-artifact-server) and [custom sources](/article/jizsp5tsms-custom-artifact-source).![](./static/6-artifact-build-and-deploy-pipelines-19.png)Next, the Deploy Workflow is run. Click the **Artifact Check** step to see the same build number that was collected by the **Artifact Collection** step. You can also see the build number next to the **Artifacts** heading.![](./static/6-artifact-build-and-deploy-pipelines-20.png)The Pipeline has run successfully. You can now build and deploy artifacts by running a single Pipeline.
+The Workflows are run in succession. First, the Build Workflow is run. Click the **Artifact Collection** step to see the metadata collected by Harness, including the build number.
+![](./static/6-artifact-build-and-deploy-pipelines-18.png)
+You can see the same build number in Jenkins.  
+In this document, Jenkins job artifact is used as an example but Harness supports all the common [artifact source](/article/7dghbx1dbl-configuring-artifact-server) and [custom sources](/article/jizsp5tsms-custom-artifact-source).
+
+![](./static/6-artifact-build-and-deploy-pipelines-19.png)
+
+Next, the Deploy Workflow is run. Click the **Artifact Check** step to see the same build number that was collected by the **Artifact Collection** step. You can also see the build number next to the **Artifacts** heading.
+
+![](./static/6-artifact-build-and-deploy-pipelines-20.png)
+
+The Pipeline has run successfully. You can now build and deploy artifacts by running a single Pipeline.
 
 ### See Also
 

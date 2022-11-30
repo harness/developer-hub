@@ -41,7 +41,9 @@ In the following step, we use the Docker Registry Artifact Server.
 2. Enter a name for the Application and click **Submit**.
 3. Click **Services**, and then click **Add Service**. The **Add Service** settings appear.
 
-![](./static/add-container-images-for-kubernetes-deployments-137.png)1. In **Name**, enter a name for the Service.
+![](./static/add-container-images-for-kubernetes-deployments-137.png)
+
+1. In **Name**, enter a name for the Service.
 2. In **Deployment Type**, select **Kubernetes**, and then ensure **Enable Kubernetes V2** is selected.
 3. Click **Submit**. The new Harness Kubernetes Service is created.
 
@@ -59,7 +61,9 @@ For the settings for all Artifact Sources, see [Add Artifact Servers](/article/7
 
 **Recommended** — View the build history for the artifact by clicking **Artifact History**, and then using **Manually Pull Artifact** to pull the artifact.
 
-[![](./static/add-container-images-for-kubernetes-deployments-138.png)](./static/add-container-images-for-kubernetes-deployments-138.png)In addition to artifact sources taken from Artifact Servers, you can use a Shell Script to query a custom artifact repository. See [Custom Artifact Source](/article/jizsp5tsms-custom-artifact-source).
+[![](./static/add-container-images-for-kubernetes-deployments-138.png)](./static/add-container-images-for-kubernetes-deployments-138.png)
+
+In addition to artifact sources taken from Artifact Servers, you can use a Shell Script to query a custom artifact repository. See [Custom Artifact Source](/article/jizsp5tsms-custom-artifact-source).
 
 ### Next Steps
 

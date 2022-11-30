@@ -46,7 +46,9 @@ In the Azure portal, click your Web App, and then click **Deployment slots**. Yo
 
 Click **Swap**. You can see the Source and Target slots.
 
-![](./static/create-an-azure-web-app-blue-green-deployment-06.png)You'll use these slot names in your Harness Workflow.
+![](./static/create-an-azure-web-app-blue-green-deployment-06.png)
+
+You'll use these slot names in your Harness Workflow.
 
 Don't click the **Swap** button. Click **Close**.
 
@@ -152,7 +154,9 @@ Click **Deploy**, select an artifact, and then click **Submit**.
 
 The Workflow deploys:
 
-![](./static/create-an-azure-web-app-blue-green-deployment-08.png)You can see the swap succeeded in the logs:
+![](./static/create-an-azure-web-app-blue-green-deployment-08.png)
+
+You can see the swap succeeded in the logs:
 
 
 ```

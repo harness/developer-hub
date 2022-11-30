@@ -42,7 +42,9 @@ For this explanation, we'll create a variable that indicates the database to use
 1. In **Config Variables**, click **Add Variable**.
 2. In **Config Variable**, add a variable named `database` with the value `mongodb`.
 
-![](./static/using-harness-config-variables-in-manifests-211.png)1. Click **Submit**. The variable is added to the **Config Variables** section.
+![](./static/using-harness-config-variables-in-manifests-211.png)
+
+1. Click **Submit**. The variable is added to the **Config Variables** section.
 
 ![](./static/using-harness-config-variables-in-manifests-212.png)
 
@@ -56,7 +58,9 @@ For this explanation, we'll create a variable that indicates the database to use
 
 1. In the manifest file containing you object (in this example, ConfigMap), reference the values.yaml variable in the ConfigMap `data` section.
 
-![](./static/using-harness-config-variables-in-manifests-214.png)When the Service is deployed, the Service variable will be used to provide the value `mongodb` to the `data` label in ConfigMap.
+![](./static/using-harness-config-variables-in-manifests-214.png)
+
+When the Service is deployed, the Service variable will be used to provide the value `mongodb` to the `data` label in ConfigMap.
 
 ### Notes
 

@@ -66,7 +66,9 @@ Any workload deployed with the **Apply** step is not rolled back by Harness.
 
 For this topic, we will create a Service named **Countdown** of the Kubernetes Deployment Type.
 
-![](./static/run-kubernetes-jobs-62.png)The Job manifest is added to the Harness Service **Manifests** section.
+![](./static/run-kubernetes-jobs-62.png)
+
+The Job manifest is added to the Harness Service **Manifests** section.
 
 Here is a Job that will countdown from 15 to 1 and print out the countdown when complete:
 
@@ -96,9 +98,13 @@ In your Harness Service, in **Manifests**, you simply add the Job in a manifest 
 
 First, we add a [CentOS Docker Image](https://hub.docker.com/_/centos) as the [Docker Registry Artifact Source](/article/gxv9gj6khz-add-a-docker-image-service) for the Service.
 
-![](./static/run-kubernetes-jobs-63.png)Next, we create the **countdown.yaml** file in a **templates** folder. It contains the exact same countdown Job example listed above:
+![](./static/run-kubernetes-jobs-63.png)
 
-![](./static/run-kubernetes-jobs-64.png)Next, edit **values.yaml** to contain the name and image labels only:
+Next, we create the **countdown.yaml** file in a **templates** folder. It contains the exact same countdown Job example listed above:
+
+![](./static/run-kubernetes-jobs-64.png)
+
+Next, edit **values.yaml** to contain the name and image labels only:
 
 
 ```
@@ -117,11 +123,15 @@ For steps on setting up the target cluster, see [Define Your Kubernetes Target I
 
 For this topic, we will create a Harness Rolling Workflow for our Service, named **Countdown**.
 
-![](./static/run-kubernetes-jobs-65.png)1. In the Workflow **Deploy** section, delete the **Rollout Deployment** step. We don't need the Rollout Deployment step because we will simply deploy the Job using the **Apply** step.
+![](./static/run-kubernetes-jobs-65.png)
+
+1. In the Workflow **Deploy** section, delete the **Rollout Deployment** step. We don't need the Rollout Deployment step because we will simply deploy the Job using the **Apply** step.
 2. In the Workflow **Deploy** section, click **Add Step**, and then select the **Apply** step.
 3. Set up the Apply step to use the Job manifest in the Service **Manifests**: `templates/countdown.yaml`.
 
-![](./static/run-kubernetes-jobs-66.png)That's all you have to do to add the Job to your Workflow. Next, we'll add some test and clean up steps.
+![](./static/run-kubernetes-jobs-66.png)
+
+That's all you have to do to add the Job to your Workflow. Next, we'll add some test and clean up steps.
 
 ### Option: Delegate Selector
 
@@ -149,7 +159,8 @@ If you select this option, Harness will not check that the workload (Job) has re
 
 ### Option: Add Test and Clean Up Steps
 
-1. In **Workflow Variables**, add a new variable named **JobName** and give it the value `countdown`. We will use this variable in a Shell Script step to check if the Job is complete.![](./static/run-kubernetes-jobs-67.png)
+1. In **Workflow Variables**, add a new variable named **JobName** and give it the value `countdown`. We will use this variable in a Shell Script step to check if the Job is complete.
+   ![](./static/run-kubernetes-jobs-67.png)
 2. In the **Verify** section of the Workflow, click **Add Step**, and then select the **Shell Script** step.
 3. In the Shell Script step, in **Script**, add the following script to check if the Job completed:
 
@@ -172,7 +183,9 @@ Finally, let's add a **Delete** step to remove the Job.
 1. In the **Wrap Up** section of the Workflow, after the Shell Script step, click **Add Step**. Select the **Delete** step.
 2. In **Resources**, enter the type and name of the resource, `Job/countdown`.
 
-![](./static/run-kubernetes-jobs-68.png)See [Delete Kubernetes Resources](/article/78oginrhsh-delete-kubernetes-resources) for more information on how to reference resources.
+![](./static/run-kubernetes-jobs-68.png)
+
+See [Delete Kubernetes Resources](/article/78oginrhsh-delete-kubernetes-resources) for more information on how to reference resources.
 
 Now that our Job deployment is set up, we can run it.
 
@@ -181,7 +194,9 @@ Now that our Job deployment is set up, we can run it.
 1. In the Workflow, click **Deploy**.
 2. In **Start New Deployment**, we enter `countdown` for the **JobName** Workflow variable, select a **Build/Version** for our CentOS artifact, and click **Submit**.
 
-![](./static/run-kubernetes-jobs-69.png)Let's look at the results of each step.
+![](./static/run-kubernetes-jobs-69.png)
+
+Let's look at the results of each step.
 
 In the **Apply** step, in **Wrap Up**, you can see that the Job is run:
 
@@ -232,9 +247,13 @@ Done.
 ```
 In the Shell Script step in **Verify**, we can see that our Job completed:
 
-![](./static/run-kubernetes-jobs-70.png)In the Shell Script step in **Wrap Up**, we can see the log for the Job pod:
+![](./static/run-kubernetes-jobs-70.png)
 
-![](./static/run-kubernetes-jobs-71.png)Finally, in the **Delete** step, you can see the countdown Job deleted.
+In the Shell Script step in **Wrap Up**, we can see the log for the Job pod:
+
+![](./static/run-kubernetes-jobs-71.png)
+
+Finally, in the **Delete** step, you can see the countdown Job deleted.
 
 ![](./static/run-kubernetes-jobs-72.png)
 
@@ -266,9 +285,13 @@ As we demonstrated, you can get the status of the Job using a simple script. In 
 
 For example, let's change the Shell Script that checks the success of the Job. We will add the output to a variable and then publish that variable:
 
-![](./static/run-kubernetes-jobs-73.png)Now you can obtain the output via the variable expression `${context.checkjob.jobstatus}`. Here's an Email step using the published variable:
+![](./static/run-kubernetes-jobs-73.png)
 
-![](./static/run-kubernetes-jobs-74.png)For information on these collaboration tools, see:
+Now you can obtain the output via the variable expression `${context.checkjob.jobstatus}`. Here's an Email step using the published variable:
+
+![](./static/run-kubernetes-jobs-74.png)
+
+For information on these collaboration tools, see:
 
 * [Jira Integration](/article/077hwokrpr-jira-integration)
 * [ServiceNow Integration](/article/7vsqnt0gch-service-now-integration)

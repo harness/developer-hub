@@ -93,7 +93,9 @@ In **Config Variable**, enter a name, such as **task\_path**, and enter a path i
 
 In **ECS Task Definitions**, in **File Folder Path to Task Definition**, enter the variable expression, such as `${serviceVariable.task_path}`:
 
-![](./static/use-ecs-task-and-service-definitions-in-git-repos-33.png)You can also use Config Variables for values in your remote definitions, but this can be more complicated to manage.
+![](./static/use-ecs-task-and-service-definitions-in-git-repos-33.png)
+
+You can also use Config Variables for values in your remote definitions, but this can be more complicated to manage.
 
 ### Option 2: Override Remote Paths in Environments
 

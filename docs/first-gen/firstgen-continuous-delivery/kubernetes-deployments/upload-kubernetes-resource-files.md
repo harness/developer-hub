@@ -31,7 +31,8 @@ In this topic:
 
 ### Step 2: Upload Resource Files
 
-1. Click the more options button (**︙**) again, and then click **Upload Inline Manifest Files**. The **Upload Inline Manifest Files** settings appear.![](./static/upload-kubernetes-resource-files-165.png)
+1. Click the more options button (**︙**) again, and then click **Upload Inline Manifest Files**. The **Upload Inline Manifest Files** settings appear.
+   ![](./static/upload-kubernetes-resource-files-165.png)
 2. Click **Choose** and select folders and files or drag and drop files into the dialog. If you select a folder, all subordinate folders and files are copied.
 3. Click **SUBMIT**. Your files are added to the **Manifests** section of the Service.
 
@@ -54,7 +55,9 @@ spec:
 ```
 You can remove existing `namespace` settings in the files you upload into Manifests by selecting the **Remove hard-coded namespaces from resource metadata** option in the **Upload Inline Manifest Files** dialog.
 
-[![](./static/upload-kubernetes-resource-files-166.png)](./static/upload-kubernetes-resource-files-166.png)The uploaded files will have their `namespace` key and value removed. Using our Service example, you can see `namespace: prod` is gone:
+[![](./static/upload-kubernetes-resource-files-166.png)](./static/upload-kubernetes-resource-files-166.png)
+
+The uploaded files will have their `namespace` key and value removed. Using our Service example, you can see `namespace: prod` is gone:
 
 
 ```
@@ -70,9 +73,13 @@ Harness will use the namespace you enter in the Infrastructure Definition **Nam
 
 Here is an Infrastructure Definition with its **Namespace** field:
 
-![](./static/upload-kubernetes-resource-files-168.png)You can also use the expression `namespace: ${infra.kubernetes.namespace}` in your manifest files and Harness will use the namespace you enter in the Infrastructure Definition **Namespace** field as the namespace for these manifests.
+![](./static/upload-kubernetes-resource-files-168.png)
 
-![](./static/upload-kubernetes-resource-files-169.png)Another option is to add `namespace: ${infra.kubernetes.namespace}` in the **values.yaml** file and refer it in your manifest with `namespace: {{ .Values.namespace }}`.
+You can also use the expression `namespace: ${infra.kubernetes.namespace}` in your manifest files and Harness will use the namespace you enter in the Infrastructure Definition **Namespace** field as the namespace for these manifests.
+
+![](./static/upload-kubernetes-resource-files-169.png)
+
+Another option is to add `namespace: ${infra.kubernetes.namespace}` in the **values.yaml** file and refer it in your manifest with `namespace: {{ .Values.namespace }}`.
 
 ### Next Steps
 

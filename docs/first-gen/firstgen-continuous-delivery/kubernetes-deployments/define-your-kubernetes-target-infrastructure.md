@@ -81,9 +81,13 @@ The `${infra.kubernetes.infraId}` expression is a unique identifier that identif
 
 In the Infrastructure Definition **Service Infrastructure Mapping** below each listing has a unique identifier that can be referenced using `${infra.kubernetes.infraId}`:
 
-![](./static/define-your-kubernetes-target-infrastructure-171.png)Use `release-${infra.kubernetes.infraId}` for the **Release Name** instead of just `${infra.kubernetes.infraId}`. Kubernetes service and pod names follow RFC-1035 and must consist of lowercase alphanumeric characters or '-', start with an alphabetic character, and end with an alphanumeric character. Using `release-` as a prefix will prevent any issues.Here is an example of how `${infra.kubernetes.infraId}` is used and how the ID is output as the **Release Name**:
+![](./static/define-your-kubernetes-target-infrastructure-171.png)
 
-![](./static/define-your-kubernetes-target-infrastructure-172.png)See [Built-in Variables List](/article/aza65y4af6-built-in-variables-list) for more expressions.
+Use `release-${infra.kubernetes.infraId}` for the **Release Name** instead of just `${infra.kubernetes.infraId}`. Kubernetes service and pod names follow RFC-1035 and must consist of lowercase alphanumeric characters or '-', start with an alphabetic character, and end with an alphanumeric character. Using `release-` as a prefix will prevent any issues.Here is an example of how `${infra.kubernetes.infraId}` is used and how the ID is output as the **Release Name**:
+
+![](./static/define-your-kubernetes-target-infrastructure-172.png)
+
+See [Built-in Variables List](/article/aza65y4af6-built-in-variables-list) for more expressions.
 
 The release name is not incremented with each release. It identifies releases so that Harness knows which release is being replaced with a new version.
 
@@ -157,7 +161,9 @@ Select the resource group where your VM is located.
 
 Select the cluster you created for this deployment.
 
-![](./static/define-your-kubernetes-target-infrastructure-174.png)If the cluster name is taking a long time to load, check the connectivity of the host running the Harness Delegate.
+![](./static/define-your-kubernetes-target-infrastructure-174.png)
+
+If the cluster name is taking a long time to load, check the connectivity of the host running the Harness Delegate.
 
 #### Namespace
 
@@ -187,7 +193,9 @@ If you leave this setting empty, the Infrastructure Definition is available to a
 
 Here is an example of a cluster targeted using a Google Cloud Platform Cloud Provider:
 
-![](./static/define-your-kubernetes-target-infrastructure-175.png)Here is an example of a cluster targeted using a Azure Cloud Provider:
+![](./static/define-your-kubernetes-target-infrastructure-175.png)
+
+Here is an example of a cluster targeted using a Azure Cloud Provider:
 
 ![](./static/define-your-kubernetes-target-infrastructure-176.png)
 

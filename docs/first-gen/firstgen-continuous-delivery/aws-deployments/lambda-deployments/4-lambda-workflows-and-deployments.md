@@ -33,7 +33,8 @@ In this topic:
 To create a Basic Workflow for Lambda, do the following:
 
 1. In your Application, click **Workflows**.
-2. Click **Add Workflow**. The **Workflow** dialog appears.![](./static/4-lambda-workflows-and-deployments-02.png)
+2. Click **Add Workflow**. The **Workflow** dialog appears.
+   ![](./static/4-lambda-workflows-and-deployments-02.png)
 3. In **Name**, enter a name for your Workflow, such as **Lambda Basic**.
 4. In **Workflow Type**, select **Basic Deployment**.
 5. In **Environment**, select the Environment you created for your Lambda deployment in [Define Your Lambda Target Infrastructure](/article/45dm9z3m2h-3-lambda-environments).
@@ -49,7 +50,9 @@ The next time you run the Workflow, manually or as the result of a [Trigger](/ar
 
 In the Workflow, click the **AWS Lambda** step. The **AWS Lambda** dialog appears.
 
-![](./static/4-lambda-workflows-and-deployments-03.png)The dialog provides settings for Lambda Aliases and Tags.
+![](./static/4-lambda-workflows-and-deployments-03.png)
+
+The dialog provides settings for Lambda Aliases and Tags.
 
 #### Versioning with Aliases
 
@@ -63,11 +66,17 @@ Harness handles the burden of managing the code and configuration in order to pr
 
 The AWS Lambda step in the Workflow applies the alias just like you would using the AWS Lambda console:
 
-![](./static/4-lambda-workflows-and-deployments-04.png)By default, Harness names the alias with the name of the Environment by using the built-in Harness variable **${env.name}**. You can replace this with whatever alias you want, or use other built-in Harness variables by entering **$** and seeing what variables are available.
+![](./static/4-lambda-workflows-and-deployments-04.png)
 
-![](./static/4-lambda-workflows-and-deployments-05.png)Once the Workflow is deployed and a Lambda function has been versioned using the alias in the **AWS Lambda** step, you can see the versioning in the AWS Lambda console:
+By default, Harness names the alias with the name of the Environment by using the built-in Harness variable **${env.name}**. You can replace this with whatever alias you want, or use other built-in Harness variables by entering **$** and seeing what variables are available.
+
+![](./static/4-lambda-workflows-and-deployments-05.png)
+
+Once the Workflow is deployed and a Lambda function has been versioned using the alias in the **AWS Lambda** step, you can see the versioning in the AWS Lambda console:
 
 ![](./static/4-lambda-workflows-and-deployments-06.png)
+
+
 
 #### Tags
 
@@ -85,9 +94,13 @@ When you deploy a new version of your function, Harness replaces any existing ta
 
 In the Basic Workflow you can see the **Rollback AWS Lambda** step.
 
-![](./static/4-lambda-workflows-and-deployments-08.png)This step initiates rollback if the AWS Lambda step fails, or if a step elsewhere in the Workflow fails.
+![](./static/4-lambda-workflows-and-deployments-08.png)
 
-![](./static/4-lambda-workflows-and-deployments-09.png)The best way to see what the Rollback AWS Lambda step does is to look at a log for a rollback.
+This step initiates rollback if the AWS Lambda step fails, or if a step elsewhere in the Workflow fails.
+
+![](./static/4-lambda-workflows-and-deployments-09.png)
+
+The best way to see what the Rollback AWS Lambda step does is to look at a log for a rollback.
 
 **Lambda rollbacks are a little unusual:** instead of rolling back to a previous, successful version, Harness takes that previous, successful version and creates a new version. The new version is deployed as the "rollback". Let's look at an example. Both the previous, successful version and the new version will have the same Sha256.
 
@@ -148,13 +161,21 @@ As you can see, the rollback succeeded and version 4 is published.
 
 Now that the Basic Workflow for Lambda is set up, you can click **Deploy** in the Workflow to deploy the Lambda functions in the Harness Service to your AWS Lambda environment.
 
-![](./static/4-lambda-workflows-and-deployments-10.png)In **Start New Deployment**, in **Build / Version**, select the zip file in the S3 bucket you set up as an Artifact Source for your Harness Lambda Service:
+![](./static/4-lambda-workflows-and-deployments-10.png)
 
-![](./static/4-lambda-workflows-and-deployments-11.png)Click **SUBMIT**. The Workflow is deployed.
+In **Start New Deployment**, in **Build / Version**, select the zip file in the S3 bucket you set up as an Artifact Source for your Harness Lambda Service:
 
-![](./static/4-lambda-workflows-and-deployments-12.png)To see the completed deployment, log into your AWS Lambda console. The Lambda function is listed:
+![](./static/4-lambda-workflows-and-deployments-11.png)
 
-![](./static/4-lambda-workflows-and-deployments-13.png)You can also log into AWS and use the [aws lambda get-function](https://docs.aws.amazon.com/cli/latest/reference/lambda/get-function.html) command to view the function:
+Click **SUBMIT**. The Workflow is deployed.
+
+![](./static/4-lambda-workflows-and-deployments-12.png)
+
+To see the completed deployment, log into your AWS Lambda console. The Lambda function is listed:
+
+![](./static/4-lambda-workflows-and-deployments-13.png)
+
+You can also log into AWS and use the [aws lambda get-function](https://docs.aws.amazon.com/cli/latest/reference/lambda/get-function.html) command to view the function:
 
 
 ```

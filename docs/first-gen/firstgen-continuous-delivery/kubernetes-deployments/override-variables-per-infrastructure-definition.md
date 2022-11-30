@@ -135,7 +135,9 @@ To override, first you need the Environment variables. Then, you need to enable 
 
 The Environment variables are the access points for the override variables to be assigned. Ensure that you have multiple Infrastructure Definitions mapped to your Environment. Once the mappings are configured, add Service Configuration Override variables to the Environment.
 
-![](./static/override-variables-per-infrastructure-definition-131.png)1. Provide an override variable for your Environment.  
+![](./static/override-variables-per-infrastructure-definition-131.png)
+
+1. Provide an override variable for your Environment.  
 You can associate the Infrastructure Definition name with the variable. This helps to identify the overriding variable applied in your Environment.
 2. Configure `values.yaml` file override.
 3. Create a new key-value pair where the key is the variable value that is overridden at the Infrastructure Definition level, and the value is a Workflow variable (it is set up later) called `$``{``override.keyNameHere``}`.  

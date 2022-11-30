@@ -55,7 +55,9 @@ To add the Infrastructure Definition, do the following:
 The Infrastructure Definition will look something like this:![](./static/3-helm-environments-11.png)
 10. Click **Submit**. The new Infrastructure Definition is added to the Harness Environment.
 
-![](./static/3-helm-environments-12.png)That is all you have to do to set up the deployment Environment in Harness.
+![](./static/3-helm-environments-12.png)
+
+That is all you have to do to set up the deployment Environment in Harness.
 
 Now that you have the Service and Environment set up. Now you can create the deployment Workflow in Harness.
 

@@ -81,9 +81,13 @@ You can also use expressions in the **Git Repository Branch** and **Path to T
 
 For example, a Workflow can have variables for **branch** and **path**:
 
-![](./static/add-terragrunt-configuration-files-29.png)In **Script Repository**, you can enter variables as `${workflow.variables.branch}` and `${workflow.variables.path}`:
+![](./static/add-terragrunt-configuration-files-29\.png)
 
-![](./static/add-terragrunt-configuration-files-30.png)When the Workflow is deployed, you are prompted to provide values for the Workflow variables, which are then applied to the **Script Repository** settings.
+In **Script Repository**, you can enter variables as `${workflow.variables.branch}` and `${workflow.variables.path}`:
+
+![](./static/add-terragrunt-configuration-files-30\.png)
+
+When the Workflow is deployed, you are prompted to provide values for the Workflow variables, which are then applied to the **Script Repository** settings.
 
 This allows the same Terragrunt Provisioner to be used by multiple Workflows, where each Workflow can use a different branch and path for the **Script Repository**.
 
@@ -127,7 +131,9 @@ This setting is available because a Terraform refresh is not always an idempoten
 
 When you are done, the **Terragrunt** **Provisioner** will look something like this:
 
-![](./static/add-terragrunt-configuration-files-31.png)Now you can use this provisioner in both Infrastructure Definitions and Workflows.
+![](./static/add-terragrunt-configuration-files-31\.png)
+
+Now you can use this provisioner in both Infrastructure Definitions and Workflows.
 
 ### Next Steps
 

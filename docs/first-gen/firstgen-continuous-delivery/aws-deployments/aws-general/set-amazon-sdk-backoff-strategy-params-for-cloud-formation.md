@@ -70,9 +70,13 @@ In your Harness account, click **Setup**.
 
 In **Account**, click more options (︙), and then click **Account Defaults**.
 
-![](./static/set-amazon-sdk-backoff-strategy-params-for-cloud-formation-00.png)The **Account Defaults** appear.
+![](./static/set-amazon-sdk-backoff-strategy-params-for-cloud-formation-00.png)
 
-![](./static/set-amazon-sdk-backoff-strategy-params-for-cloud-formation-01.png)To add a parameter, click **Add Row**.
+The **Account Defaults** appear.
+
+![](./static/set-amazon-sdk-backoff-strategy-params-for-cloud-formation-01.png)
+
+To add a parameter, click **Add Row**.
 
 Here's the list of supported Amazon default SDK backoff strategy parameters:
 

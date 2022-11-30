@@ -26,7 +26,9 @@ Only members of a Harness User Group with the **Manage Template Library** permis
 
 The Shared Template Library is available from **Setup** and the Application Template Library is available in each Application.
 
-![](./static/use-templates-17.png)Using templates from either source works the same way, and both options are available in Harness components, but Application templates may be used within their Application only.
+![](./static/use-templates-17.png)
+
+Using templates from either source works the same way, and both options are available in Harness components, but Application templates may be used within their Application only.
 
 For example, when you click **Add Command** in the Service, you see the option to select a template from the Application or Shared Template Library.
 

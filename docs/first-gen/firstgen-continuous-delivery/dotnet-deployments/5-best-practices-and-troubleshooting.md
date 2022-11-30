@@ -42,9 +42,13 @@ Start /w pkgmgr /iu:IIS-WebServerRole;IIS-WebServer;IIS-CommonHttpFeatures;IIS-S
 ```
 You will see IIS installed in the Server Manager.
 
-![](./static/5-best-practices-and-troubleshooting-27.png)In the IIS listing, in ROLES and FEATURES, you can see the Web Server Role:
+![](./static/5-best-practices-and-troubleshooting-27.png)
 
-![](./static/5-best-practices-and-troubleshooting-28.png)For more information, see [Installing IIS 7.0 from the Command Line](https://docs.microsoft.com/en-us/iis/install/installing-iis-7/installing-iis-from-the-command-line) from Microsoft.
+In the IIS listing, in ROLES and FEATURES, you can see the Web Server Role:
+
+![](./static/5-best-practices-and-troubleshooting-28.png)
+
+For more information, see [Installing IIS 7.0 from the Command Line](https://docs.microsoft.com/en-us/iis/install/installing-iis-7/installing-iis-from-the-command-line) from Microsoft.
 
 ### Troubleshooting
 
@@ -66,7 +70,9 @@ You receive this error when deploying your workflow.
 
 Do not target the same port as another website. In the Harness **Service**, in **Variables**, ensure **${SitePort}** points to a port that isn't in use. In the following example, the port was changed to **8080** to avoid the error:
 
-![](./static/5-best-practices-and-troubleshooting-30.png)You can keep the same port and use host header names to host multiple IIS sites using the same port. For more information, search the Web for `use same port and use host header names to host multiple IIS sites`. There are multiple examples. 
+![](./static/5-best-practices-and-troubleshooting-30.png)
+
+You can keep the same port and use host header names to host multiple IIS sites using the same port. For more information, search the Web for `use same port and use host header names to host multiple IIS sites`. There are multiple examples. 
 
 ### Next Steps
 

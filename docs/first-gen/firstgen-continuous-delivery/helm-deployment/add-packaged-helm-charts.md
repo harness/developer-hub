@@ -132,11 +132,15 @@ Once you have a script that fetches your files and, if needed, extracts your pac
 
 You can enter a path to the chart folder or to the chart file. For example, here is a repo with the chart and related files and how it is referenced in Harness:
 
-![](./static/add-packaged-helm-charts-13.png)You can use Harness Service, Workflow, and built-in variables in the path.
+![](./static/add-packaged-helm-charts-13.png)
+
+You can use Harness Service, Workflow, and built-in variables in the path.
 
 For example, here is the same script using a Service Config Variable:
 
-![](./static/add-packaged-helm-charts-14.png)As you can see, there are also Service Config Variables for values.yaml overrides. You can reference these in Harness Environments **Service Configuration Overrides**. This is discussed later in this topic.
+![](./static/add-packaged-helm-charts-14.png)
+
+As you can see, there are also Service Config Variables for values.yaml overrides. You can reference these in Harness Environments **Service Configuration Overrides**. This is discussed later in this topic.
 
 ### Option: Delegate Selector
 

@@ -100,7 +100,9 @@ For steps on installing a Delegate in your VPC, see [Delegate Installation and M
 
 To ensure the IAM role applied to the Delegate you installed in the AWS VPC is used by your AWS Cloud Provider, you add Selectors to the Delegate and reference the Selector in the AWS Cloud Provider.
 
-![](./static/1-delegate-and-connectors-for-lambda-00.png)For steps on adding Selectors, see [Delegate Installation and Management](/article/h9tkwmkrm7-delegate-installation).
+![](./static/1-delegate-and-connectors-for-lambda-00.png)
+
+For steps on adding Selectors, see [Delegate Installation and Management](/article/h9tkwmkrm7-delegate-installation).
 
 ### Step 3: Add an AWS Cloud Provider
 

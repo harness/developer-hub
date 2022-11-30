@@ -22,7 +22,9 @@ This topic discusses the concept of a Harness CI/CD process using the Build Work
 
 Without a Build Workflow, when you trigger a Harness Pipeline (manually or through an automated Trigger), you must provide the build/version number of the artifact to be deployed.
 
-![](./static/ci-cd-with-the-build-workflow-26.png)This flow works on the assumption that the artifact version already exists in the artifact repository attached to the Harness Service being deployed.
+![](./static/ci-cd-with-the-build-workflow-26.png)
+
+This flow works on the assumption that the artifact version already exists in the artifact repository attached to the Harness Service being deployed.
 
 ### Coupling CI and CD with the Build Workflow
 
@@ -42,21 +44,31 @@ The [CI/CD: Artifact Build and Deploy Pipelines](/category/j1q21aler1-build-depl
 
 Here is a simple Harness CI/CD Pipeline:
 
-![](./static/ci-cd-with-the-build-workflow-27.png)Let’s Deploy this Pipeline.
+![](./static/ci-cd-with-the-build-workflow-27.png)
+
+Let’s Deploy this Pipeline.
 
 The first thing you will notice it that we are not prompted for a build/version number to deploy.
 
 If you use a Build Workflow in a Pipeline, you cannot select an artifact when you deploy the Pipeline. A Build Workflow tells Harness you will be building the artifact for deployment as part of the Pipeline. Harness will use that artifact for the Pipeline deployment.
 
-![](./static/ci-cd-with-the-build-workflow-28.png)Here's the output of the Build Workflow **Jenkins** step. The Jenkins step triggered a Jenkins job and it was successful.
+![](./static/ci-cd-with-the-build-workflow-28.png)
 
-![](./static/ci-cd-with-the-build-workflow-29.png)The deployment shows the new build number (**25**) and also a URL back to the Jenkins Job.
+Here's the output of the Build Workflow **Jenkins** step. The Jenkins step triggered a Jenkins job and it was successful.
+
+![](./static/ci-cd-with-the-build-workflow-29.png)
+
+The deployment shows the new build number (**25**) and also a URL back to the Jenkins Job.
 
 The **Jenkins output** step in the Workflow is echoing the value of the new build number:
 
-![](./static/ci-cd-with-the-build-workflow-30.png)The **Artifact Collection** step then collects that artifact and makes it available for deployment in Harness.
+![](./static/ci-cd-with-the-build-workflow-30.png)
 
-![](./static/ci-cd-with-the-build-workflow-31.png)Now that the Build Workflow is done, the Pipeline moves onto the deployment Workflows: Dev, QA, and Prod.
+The **Artifact Collection** step then collects that artifact and makes it available for deployment in Harness.
+
+![](./static/ci-cd-with-the-build-workflow-31.png)
+
+Now that the Build Workflow is done, the Pipeline moves onto the deployment Workflows: Dev, QA, and Prod.
 
 You can see below that the deployment Workflows automatically pick up the new Build/Version number (**25**) for deployment:
 

@@ -68,7 +68,9 @@ echo "description: " ${Jenkins.description}
 
 The `${Jenkins.description}` parameter requires [Descriptor Setter](https://wiki.jenkins.io/display/JENKINS/Description+Setter+Plugin) plugin in Jenkins.When you deploy the Workflow, the Shell Script command will output all the parameters (`${Jenkins.description}` is not shown):
 
-![](./static/3-build-workflow-03.png)Next, we will add the **Artifact Collection** step and use the `${Jenkins.buildNumber}` parameter to obtain the latest build number.
+![](./static/3-build-workflow-03.png)
+
+Next, we will add the **Artifact Collection** step and use the `${Jenkins.buildNumber}` parameter to obtain the latest build number.
 
 To learn more about the Shell Script command, see [Using the Shell Script Command](/article/1fjrjbau7x-capture-shell-script-step-output).
 
@@ -84,7 +86,9 @@ The Artifact Collection step was added automatically when you created the Build 
 
 1. In your Build Workflow, click **Artifact Collection**. The **Artifact Collection** dialog appears.
 2. Enter a name for your Artifact Collection.
-3. Select **Artifact** as the **Source Type** for the Artifact collection.![](./static/3-build-workflow-04.png)Pick the Artifact Source you created in your Service under **Artifact Source**.  
+3. Select **Artifact** as the **Source Type** for the Artifact collection.
+   ![](./static/3-build-workflow-04.png)
+   Pick the Artifact Source you created in your Service under **Artifact Source**.  
 You can template the **Artifact Source** setting by clicking the **[T]** button. This will create a [Workflow variable](/article/766iheu1bk-add-workflow-variables-new-template). When you deploy the Workflow, you can provide a value for the variable.
 
 ![](./static/3-build-workflow-05.png)1. In **Build / Tag**, enter the Jenkins step output variable `${Jenkins.buildNumber}` parameter to provide this step with the build number of the artifact built in the Jenkins step.  

@@ -36,7 +36,9 @@ The **Aborting** status filter is in progress and does not work presently.
 
 Here is what the Deployments page filter options looks like:
 
-![](./static/filtering-deployments-05.png)As you can see, you can filter according to multiple criteria. Next, you can give your filter a name and save it.
+![](./static/filtering-deployments-05.png)
+
+As you can see, you can filter according to multiple criteria. Next, you can give your filter a name and save it.
 
 ### Option 1: Filter by Deployment Tag
 
@@ -66,6 +68,8 @@ In **Filter by Time**, select a date range for the filter.
 
 In **Filter Name**, enter a name for the filter and click **Save**.
 
-![](./static/filtering-deployments-06.png)The filter is now available from the **Load Saved Filter**:
+![](./static/filtering-deployments-06.png)
+
+The filter is now available from the **Load Saved Filter**:
 
 ![](./static/filtering-deployments-07.png)

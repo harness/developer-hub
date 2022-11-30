@@ -56,7 +56,9 @@ In **Application Stack**, select the app stack you want to use to as a runtime 
 
 When the Service is created, it contains the scripts need to install the application stack.
 
-![](./static/add-artifacts-for-ssh-deployments-00.png)If you are deploying to an existing instance that already has an app stack installed, you can leave **Application Stack** empty. For more information, see  [Add Application Stacks](/article/g26sp2ay68-catalog).
+![](./static/add-artifacts-for-ssh-deployments-00\.png)
+
+If you are deploying to an existing instance that already has an app stack installed, you can leave **Application Stack** empty. For more information, see  [Add Application Stacks](/article/g26sp2ay68-catalog).
 
 ### Review: Secure Shell Service Sections
 

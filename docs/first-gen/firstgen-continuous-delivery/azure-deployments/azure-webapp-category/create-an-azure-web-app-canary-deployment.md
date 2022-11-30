@@ -47,7 +47,9 @@ In the Azure portal, click your Web App, and then click **Deployment slots**. Yo
 
 Click **Swap**. You can see the Source and Target slots.
 
-![](./static/create-an-azure-web-app-canary-deployment-17.png)You'll use these slot names in your Harness Workflow.
+![](./static/create-an-azure-web-app-canary-deployment-17.png)
+
+You'll use these slot names in your Harness Workflow.
 
 Don't click the **Swap** button. Click **Close**.
 
@@ -124,7 +126,9 @@ Click **Submit**.
 
 You can use multiple **Traffic %** steps to incrementally increase traffic. In-between each Traffic % step, you can add a health check and/or Approval step. Here is an example:
 
-![](./static/create-an-azure-web-app-canary-deployment-19.png)The Script in this example is:
+![](./static/create-an-azure-web-app-canary-deployment-19.png)
+
+The Script in this example is:
 
 
 ```
@@ -191,7 +195,9 @@ Click **Deploy**, select an artifact, and then click **Submit**.
 
 The Workflow deploys:
 
-![](./static/create-an-azure-web-app-canary-deployment-20.png)You can see the swap succeeded in the logs:
+![](./static/create-an-azure-web-app-canary-deployment-20.png)
+
+You can see the swap succeeded in the logs:
 
 
 ```

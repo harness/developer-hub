@@ -29,7 +29,9 @@ The use of PCF in the default manifest.yml and vars.yml file is because TAS was 
 
 Here is an example showing how the variables in **manifest.yml** are given values in **vars.yml**:
 
-![](./static/adding-and-editing-inline-pcf-manifest-files-71.png)You can also use variables for partial values. For example, you can specify `host` in your vars.yml file and `- route: ((host)).env.com` in your manifest.yml file.TAS Manifest deployments are a common TAS strategy. You can learn more about it in [Deploying with App Manifests](https://docs.pivotal.io/platform/application-service/2-7/devguide/deploy-apps/manifest.html) from TAS.
+![](./static/adding-and-editing-inline-pcf-manifest-files-71.png)
+
+You can also use variables for partial values. For example, you can specify `host` in your vars.yml file and `- route: ((host)).env.com` in your manifest.yml file.TAS Manifest deployments are a common TAS strategy. You can learn more about it in [Deploying with App Manifests](https://docs.pivotal.io/platform/application-service/2-7/devguide/deploy-apps/manifest.html) from TAS.
 
 Harness supports all of the typical features of TAS manifests, as described in [Deploying with App Manifests](https://docs.pivotal.io/platform/application-service/2-7/devguide/deploy-apps/manifest.html) from TAS, but to deploy multiple apps, you will need to use multiple Harness Services.
 

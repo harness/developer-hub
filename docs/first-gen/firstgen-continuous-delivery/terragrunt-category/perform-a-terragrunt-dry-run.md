@@ -40,7 +40,9 @@ This topic assumes you have read the following:
 
 The following graphic shows a common use of a Terragrunt dry run in deployments.
 
-![](./static/perform-a-terragrunt-dry-run-02.png)1. The dry run is used to verify the provisioning.
+![](./static/perform-a-terragrunt-dry-run-02\.png)
+
+1. The dry run is used to verify the provisioning.
 2. An Approval step to ensure that the Terragrunt plan is working correctly.
 3. The plan is run and the infrastructure is provisioned.
 4. The app is deployed to the provisioned infrastructure.
@@ -63,7 +65,9 @@ This step assumes you are familiar with adding the Terragrunt Provision step. Se
 
 To perform a dry run of your Terragrunt Provision step, you simply select the **Set as Terragrunt Plan** option.
 
-![](./static/perform-a-terragrunt-dry-run-04.png)That's it. Now this Terragrunt Provision step will run like a `terragrunt plan` command.
+![](./static/perform-a-terragrunt-dry-run-04\.png)
+
+That's it. Now this Terragrunt Provision step will run like a `terragrunt plan` command.
 
 The dry run will refresh the state file and generate a plan but it is not applied. You can then set up an Approval step to follow the dry run, followed by a Terragrunt Provision step to apply the plan.
 
@@ -113,7 +117,9 @@ In **Provisioner**, select the Harness Terragrunt Infrastructure Provisioner you
 
 Select the **Inherit configurations from previous Terragrunt Provision step** option.
 
-![](./static/perform-a-terragrunt-dry-run-06.png)Click **Submit**.
+![](./static/perform-a-terragrunt-dry-run-06\.png)
+
+Click **Submit**.
 
 You do not need to enter any more settings. The Terragrunt Provision step inherits the settings of the Terragrunt Provision step that preceded it.
 

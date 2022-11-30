@@ -73,7 +73,9 @@ spec:
 
 When you edit manifests in the Harness Service, you can enter expressions by entering `{{.` and Harness will fetch the values available in the values.yaml file.
 
-![](./static/use-go-templating-in-kubernetes-manifests-206.png)This expression builder helps to ensure that you do not accidentally enter an incorrect value in your manifests.
+![](./static/use-go-templating-in-kubernetes-manifests-206.png)
+
+This expression builder helps to ensure that you do not accidentally enter an incorrect value in your manifests.
 
 ### Example 1: Use a Harness Variable in a Manifest
 

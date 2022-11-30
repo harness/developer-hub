@@ -82,7 +82,9 @@ These are variables that you can use in the following places:
 2. Add the variables you will need to identify the target host(s) in your Harness Infrastructure Definition.  
 For example, if you will be targeting a cluster, add the variable `cluster`, and then you can provide a value for the variable in the Infrastructure Definition.
 
-![](./static/create-a-custom-deployment-01.png)If you want to make the URL that obtains the target host information a variable that can be configured in an Infrastructure Definition, be sure to include it in **Infrastructure Variables**.
+![](./static/create-a-custom-deployment-01.png)
+
+If you want to make the URL that obtains the target host information a variable that can be configured in an Infrastructure Definition, be sure to include it in **Infrastructure Variables**.
 
 Often, you will add variables for username and password so that they can be provided in the Infrastructure Definition.
 
@@ -232,7 +234,9 @@ You can reference the host in your Workflow using the expression `${instance.hos
 
 For example, to reference the Host Attribute hostname below you would use `${instance.host.properties.hostname}`.
 
-![](./static/create-a-custom-deployment-03.png)You can also use any of the default Harness expressions that are host-related. See [What is a Harness Variable Expression?](/article/9dvxcegm90-variables).
+![](./static/create-a-custom-deployment-03.png)
+
+You can also use any of the default Harness expressions that are host-related. See [What is a Harness Variable Expression?](/article/9dvxcegm90-variables).
 
 #### Artifact Build Number and Different Artifact Versions
 
@@ -271,7 +275,9 @@ For example, here's a script output where `artifactBuildNo` includes the build n
 ```
 In **Host Attributes**, you map `artifactBuildNumber` to `artifactBuildNo`:
 
-![](./static/create-a-custom-deployment-04.png)In the Services Dashboard, you will see different artifact versions and the number of hosts where they were deployed:
+![](./static/create-a-custom-deployment-04.png)
+
+In the Services Dashboard, you will see different artifact versions and the number of hosts where they were deployed:
 
 ![](./static/create-a-custom-deployment-05.png)
 
@@ -281,7 +287,9 @@ Create your Harness Service as described in [Add Specs and Artifacts using a Har
 
 In **Deployment Type**, select your Deployment Template.
 
-![](./static/create-a-custom-deployment-06.png)In the new Service, add your Artifact Source just as you would with any other Harness Service deployment type. All supported artifact sources are available, as is the custom artifact source.
+![](./static/create-a-custom-deployment-06.png)
+
+In the new Service, add your Artifact Source just as you would with any other Harness Service deployment type. All supported artifact sources are available, as is the custom artifact source.
 
 You must reference the artifact source somewhere in your Harness entities, such as a Shell Script Workflow step. If you do not reference the artifact source, Harness does not prompt you to select an artifact version when you deploy your Workflow. See [Option: Reference Artifact Sources](#option_reference_artifact_sources).See
 
@@ -306,7 +314,9 @@ Next you create an Infrastructure Definition that uses the Deployment Template's
 
 Here is an example targeting a cluster:
 
-![](./static/create-a-custom-deployment-07.png)In the Infrastructure Definition, you can edit the variable values from the Deployment Template. You can use Harness variable expressions and secrets. See [What is a Harness Variable Expression?](/article/9dvxcegm90-variables) and [Managing Harness Secrets](/article/8bldcebkkf-managing-harness-secrets).
+![](./static/create-a-custom-deployment-07.png)
+
+In the Infrastructure Definition, you can edit the variable values from the Deployment Template. You can use Harness variable expressions and secrets. See [What is a Harness Variable Expression?](/article/9dvxcegm90-variables) and [Managing Harness Secrets](/article/8bldcebkkf-managing-harness-secrets).
 
 **If you do not change the defaults**, and the variables are changed in the Deployment Template, or new ones are added, the variables in the Infrastructure Definition are updated with the new defaults from the Deployment Template automatically.
 
@@ -324,7 +334,9 @@ Once you have the created the Harness Service and Infrastructure Definition usin
 
 In the Workflow, you add a **Fetch Instances** step where you want the script in **Fetch Instances Command Script** to execute. You can also reference any variable from the Deployment Template's **Infrastructure Variables** section, such as in a **Shell Script** step.
 
-![](./static/create-a-custom-deployment-08.png)Deployment Templates are supported in the following Workflow Deployment Types:
+![](./static/create-a-custom-deployment-08.png)
+
+Deployment Templates are supported in the following Workflow Deployment Types:
 
 * Basic
 * Canary
@@ -346,7 +358,9 @@ The Workflow is fully customizable. You can add sections, phases, Rollback Steps
 
 As this a custom deployment Workflow, the number of available steps is limited:
 
-![](./static/create-a-custom-deployment-09.png)The only required step for custom deployment Workflows is **Fetch Instances**.
+![](./static/create-a-custom-deployment-09.png)
+
+The only required step for custom deployment Workflows is **Fetch Instances**.
 
 ### Option: Reference Artifact Sources
 
@@ -356,7 +370,9 @@ If you do not reference the artifact source, Harness does not prompt you for an 
 
 For example, let's say you added an artifact source for a WAR file in the Service's Artifact Source:
 
-![](./static/create-a-custom-deployment-10.png)In your Workflow, add a [Shell Script step](/article/1fjrjbau7x-capture-shell-script-step-output) that echos the `${artifact.buildNo}` or other [artifact built-in variables](/article/aza65y4af6-built-in-variables-list#artifact).
+![](./static/create-a-custom-deployment-10.png)
+
+In your Workflow, add a [Shell Script step](/article/1fjrjbau7x-capture-shell-script-step-output) that echos the `${artifact.buildNo}` or other [artifact built-in variables](/article/aza65y4af6-built-in-variables-list#artifact).
 
 Now when you deploy this Workflow, you will be prompted to select an artifact version.
 
@@ -368,7 +384,9 @@ See [Run Shell Scripts in Workflows](/article/1fjrjbau7x-capture-shell-script-st
 
 The **Fetch Instances** step runs the script in your Deployment Template's **Fetch Instances Command Script** setting:
 
-![](./static/create-a-custom-deployment-11.png)1. Add Fetch Instances to any point in the Workflow where you want to run your script.
+![](./static/create-a-custom-deployment-11.png)
+
+1. Add Fetch Instances to any point in the Workflow where you want to run your script.
 2. In **Delegate Selector**, select the Delegate you want to use to run this step. See [Select Delegates with Selectors](/article/c3fvixpgsl-select-delegates-for-specific-tasks-with-selectors).
 
 ### Option: Deployment Template Variable Expressions

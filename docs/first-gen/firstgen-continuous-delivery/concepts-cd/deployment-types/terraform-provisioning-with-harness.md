@@ -23,12 +23,16 @@ Looking for How-tos? See [Terraform How-tos](/article/9pvvgcdbjh-terrform-provis
 
 Here is a visual summary of how you use your Terraform scripts in Harness to provision infra and then deploy to it:
 
-![](./static/terraform-provisioning-with-harness-21.png)You set up a Terraform Infrastructure Provisioner in the following order:
+![](./static/terraform-provisioning-with-harness-21.png)
+
+You set up a Terraform Infrastructure Provisioner in the following order:
 
 1. **Terraform Infrastructure Provisioner** — Add your Terraform scripts as a Harness Terraform Provisioner. You add the provisioner script by connecting to a Git repo where the scripts are kept and setting up any inputs.
 2. **​Infrastructure Definition** — Select the Terraform Provisioner you set up. Now it can be used in any Workflow where you want to target the provisioned infrastructure. You simply map your script outputs to the required Harness settings:
 
-[![](./static/terraform-provisioning-with-harness-22.png)](./static/terraform-provisioning-with-harness-22.png)1. **Workflow Setup** — When you create your Workflow, you select the Infrastructure Definition that maps to your script outputs.
+[![](./static/terraform-provisioning-with-harness-22.png)](./static/terraform-provisioning-with-harness-22.png)
+
+1. **Workflow Setup** — When you create your Workflow, you select the Infrastructure Definition that maps to your script outputs.
 2. **Workflow Provisioner Step** — In the Workflow, you add a **Terraform Provisioner** step. The Workflow will build the infrastructure according to your Terraform script.
 3. **Pre-deployment** — The pre-deployment steps are executed and provision the infrastructure using the **Terraform Provisioner** step.
 4. **Deployment** — The Workflow deploys to the provisioned infrastructure defined in its Infrastructure Definition.

@@ -67,7 +67,9 @@ spec:
 ```
 In Harness, you can use a simple DestinationRule and a VirtualService without route rules, and then specify the routing in the Workflow that uses the VirtualService, via the Traffic Split step:
 
-![](./static/set-up-kubernetes-traffic-splitting-182.png)Setting up Traffic Splitting involves adding a standard traffic management manifest to your Harness Service, and then using the Traffic Split step in your Workflow.
+![](./static/set-up-kubernetes-traffic-splitting-182.png)
+
+Setting up Traffic Splitting involves adding a standard traffic management manifest to your Harness Service, and then using the Traffic Split step in your Workflow.
 
 ### Step 2: Add DestinationRule Manifest
 
@@ -200,7 +202,9 @@ By default, the Traffic Split step includes Harness variables to refer the Virtu
 
 In **Virtual Service Name**, Traffic Split takes the name of the VirtualService set up in the Service:
 
-![](./static/set-up-kubernetes-traffic-splitting-184.png)The variable `${k8s.virtualServiceName}` refers to the value of the name label in your VirtualService manifest in the Harness Service.
+![](./static/set-up-kubernetes-traffic-splitting-184.png)
+
+The variable `${k8s.virtualServiceName}` refers to the value of the name label in your VirtualService manifest in the Harness Service.
 
 If you have multiple VirtualService manifests in your Harness Service **Manifests**, you can enter the name of the VirtualService you want to use manually.
 
@@ -233,13 +237,17 @@ Harness will use these variables to initialize destinations and then apply the t
 
 Here is an example of a Traffic Split step and the logs from its deployment showing how the destinations are initialized and then applied by Traffic Split:
 
-![](./static/set-up-kubernetes-traffic-splitting-185.png)That's all that is needed to set up Traffic Splitting.
+![](./static/set-up-kubernetes-traffic-splitting-185.png)
+
+That's all that is needed to set up Traffic Splitting.
 
 ### Option 1: Use Subsets
 
 In cases where you are using multiple subsets in destination rules and you want to assign different values to them, you can use your own subsets in Traffic Split as well. Here is a simple example:
 
-![](./static/set-up-kubernetes-traffic-splitting-186.png)The only requirement of Destination field values is that they contain a host, subset and are valid YAML. See  [Destination](https://istio.io/docs/reference/config/networking/v1alpha3/virtual-service/#Destination) from Istio for details.
+![](./static/set-up-kubernetes-traffic-splitting-186.png)
+
+The only requirement of Destination field values is that they contain a host, subset and are valid YAML. See  [Destination](https://istio.io/docs/reference/config/networking/v1alpha3/virtual-service/#Destination) from Istio for details.
 
 ### Option 2: Use Multiple Traffic Split Steps
 

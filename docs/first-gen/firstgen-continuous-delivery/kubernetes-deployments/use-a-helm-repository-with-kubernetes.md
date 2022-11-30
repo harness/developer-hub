@@ -112,7 +112,9 @@ Multiple files can be used. When you enter the file paths, separate the paths us
 
 The latter paths are given higher priority.
 
-![](./static/use-a-helm-repository-with-kubernetes-154.png)See [Override Values YAML Files](/article/p453sikbqt-override-values-yaml-files).
+![](./static/use-a-helm-repository-with-kubernetes-154.png)
+
+See [Override Values YAML Files](/article/p453sikbqt-override-values-yaml-files).
 
 ### Example 1: Google GCS and AWS S3
 
@@ -122,15 +124,21 @@ The latter paths are given higher priority.
 
 Here is an example using a Workflow variable expression. You can see the variable created in the Workflow's **Workflow Variables** section, referenced using an expression in **Remote Manifests**, and then a value provided for the variable in the deployment dialog that matches the chart folder's name.
 
-![](./static/use-a-helm-repository-with-kubernetes-156.png)Click **Submit**. The Helm repo is added to **Manifests**.
+![](./static/use-a-helm-repository-with-kubernetes-156.png)
+
+Click **Submit**. The Helm repo is added to **Manifests**.
 
 ### Example 3: Deploying Kubernetes Service Linked to a Helm Repository
 
 When you deploy a Workflow using a Harness Kubernetes Service set up with a Helm Repository, you will see Harness fetch the chart:
 
-[![](./static/use-a-helm-repository-with-kubernetes-157.png)](./static/use-a-helm-repository-with-kubernetes-157.png)Next, you will see Harness initialize using the chart:
+[![](./static/use-a-helm-repository-with-kubernetes-157.png)](./static/use-a-helm-repository-with-kubernetes-157.png)
 
-[![](./static/use-a-helm-repository-with-kubernetes-159.png)](./static/use-a-helm-repository-with-kubernetes-159.png)Harness does not support the following objects when using Helm charts in Harness Kubernetes deployments: ClusterRoleBindingList, RoleBindingList, RoleList.  
+Next, you will see Harness initialize using the chart:
+
+[![](./static/use-a-helm-repository-with-kubernetes-159.png)](./static/use-a-helm-repository-with-kubernetes-159.png)
+
+Harness does not support the following objects when using Helm charts in Harness Kubernetes deployments: ClusterRoleBindingList, RoleBindingList, RoleList.  
 If you use these objects in your chart, Harness will consider the chart invalid and fail the deployment.  
 See the Kubernetes API docs for information on these deployments.The Helm version info is displayed in the Service dashboard:
 

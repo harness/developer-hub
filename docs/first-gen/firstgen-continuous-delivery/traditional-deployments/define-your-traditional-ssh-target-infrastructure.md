@@ -49,7 +49,9 @@ To set MaxSessions, do the following:
 
 For example, here is an Infrastructure Definition using an AWS Cloud Provider, and specifies the AWS infrastructure settings for the target AWS VPC and host.
 
-![](./static/define-your-traditional-ssh-target-infrastructure-08.png)Later, when you create a Workflow, you will select the Service and this Infrastructure Definition.
+![](./static/define-your-traditional-ssh-target-infrastructure-08\.png)
+
+Later, when you create a Workflow, you will select the Service and this Infrastructure Definition.
 
 ### Review: Software Required by Commands
 

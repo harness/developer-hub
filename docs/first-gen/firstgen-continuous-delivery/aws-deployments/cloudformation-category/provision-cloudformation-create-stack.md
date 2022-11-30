@@ -55,11 +55,15 @@ To delete the ad hoc provisioned infrastructure in the case of a Workflow failur
 
 This topic describes steps 4 through 6 in the Harness CloudFormation Provisioning implementation process:
 
-![](./static/provision-cloudformation-create-stack-12.png)For step 1, see [Add CloudFormation Templates](/article/wtper654tn-add-cloud-formation-templates). For step 2, see [Map CloudFormation Infrastructure](/article/4xtxj2f88b-map-cloud-formation-infrastructure).
+![](./static/provision-cloudformation-create-stack-12.png)
+
+For step 1, see [Add CloudFormation Templates](/article/wtper654tn-add-cloud-formation-templates). For step 2, see [Map CloudFormation Infrastructure](/article/4xtxj2f88b-map-cloud-formation-infrastructure).
 
 Here is an illustration using a deployment:
 
-![](./static/provision-cloudformation-create-stack-13.png)1. The **CloudFormation Create Stack** step executes pre-deployment to build the infrastructure.
+![](./static/provision-cloudformation-create-stack-13.png)
+
+1. The **CloudFormation Create Stack** step executes pre-deployment to build the infrastructure.
 2. The **Infrastructure Definition** is used to select the provisioned nodes.
 3. The app is **installed** on the provisioned node.
 
@@ -124,7 +128,8 @@ Enter the tags in JSON format only (lowercase is required):
 The tags you add here are applied to all of the resources in the stack. AWS has a limit of 50 unique tags for each stack.  
   
 You can use Harness variable expressions in the keys and values. See [Built-in Variables List](/article/aza65y4af6-built-in-variables-list) and [Set Workflow Variables](/article/766iheu1bk-add-workflow-variables-new-template).
-6. In **Skip based on Stack Status**, you can add the stack states that will not prevent provisioning.Harness checks if the stack is in ROLLBACK\_COMPLETE state before the deployment. If present, Harness deletes the stack and then triggers the deployment.![](./static/provision-cloudformation-create-stack-14.png)
+6. In **Skip based on Stack Status**, you can add the stack states that will not prevent provisioning.Harness checks if the stack is in ROLLBACK\_COMPLETE state before the deployment. If present, Harness deletes the stack and then triggers the deployment.
+   ![](./static/provision-cloudformation-create-stack-14.png)
 7. In **Timeout**, enter how long Harness should wait for the successful CloudFormation Provisioner set up before failing the Workflow.
 8. Click **Next**. The **Input Values** settings appear.
 
@@ -192,7 +197,9 @@ https://my-bucket.s3.amazonaws.com/parameters1.json,https://my-bucket.s3.amazona
 
 You can use Harness Workflow variables in **Path to Parameters.json**.
 
-![](./static/provision-cloudformation-create-stack-16.png)When the Workflow is deployed, by itself, in a Pipeline, or in a Trigger, you will provide values for the Workflow variables. This allows you to templatize the path.
+![](./static/provision-cloudformation-create-stack-16.png)
+
+When the Workflow is deployed, by itself, in a Pipeline, or in a Trigger, you will provide values for the Workflow variables. This allows you to templatize the path.
 
 See [Set Workflow Variables](/article/766iheu1bk-add-workflow-variables-new-template) and [Templatize a Workflow](/article/bov41f5b7o-templatize-a-workflow-new-template).
 
@@ -225,11 +232,15 @@ The Input Values are automatically populated with the same variables from the Cl
 
 Enter or select a value for each variable in **Input Values**. For encrypted text values, select an Encrypted Text secret from Harness Secrets Management.
 
-![](./static/provision-cloudformation-create-stack-17.png)For more information, see [Use Encrypted Text Secrets](/article/ygyvp998mu-use-encrypted-text-secrets).
+![](./static/provision-cloudformation-create-stack-17.png)
+
+For more information, see [Use Encrypted Text Secrets](/article/ygyvp998mu-use-encrypted-text-secrets).
 
 Click **Submit**. The **CloudFormation Create Stack** step is added to your Workflow.
 
-![](./static/provision-cloudformation-create-stack-18.png)Now your Workflow is set up to provision an infrastructure using your CloudFormation template in the CloudFormation Infrastructure Provisioner, and then deploy to the provisioned infrastructure.
+![](./static/provision-cloudformation-create-stack-18.png)
+
+Now your Workflow is set up to provision an infrastructure using your CloudFormation template in the CloudFormation Infrastructure Provisioner, and then deploy to the provisioned infrastructure.
 
 ### Step 3: Add Infrastructure Definition to Phases
 

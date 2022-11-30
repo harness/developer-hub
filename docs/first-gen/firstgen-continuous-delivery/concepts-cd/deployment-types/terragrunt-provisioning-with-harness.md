@@ -61,7 +61,9 @@ In this use case, you simply add the Terragrunt Provision step to your Workflow 
 
 You do not need to deploy artifacts via Harness Services to use Terragrunt provisioning in a Workflow. You can simply set up a Terragrunt Provisioner and use it in a Workflow to provision infrastructure without deploying any artifact.
 
-![](./static/terragrunt-provisioning-with-harness-37.png)See [Provision using the Terragrunt Provision Step](/article/jbzxpljhlo-provision-using-the-terragrunt-provision-step).
+![](./static/terragrunt-provisioning-with-harness-37.png)
+
+See [Provision using the Terragrunt Provision Step](/article/jbzxpljhlo-provision-using-the-terragrunt-provision-step).
 
 ### Limitations
 

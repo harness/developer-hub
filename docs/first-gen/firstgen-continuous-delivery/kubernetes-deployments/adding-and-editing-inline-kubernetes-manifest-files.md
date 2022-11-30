@@ -25,7 +25,12 @@ In this topic:
 
 ### Step 1: Manually Add Configuration Files
 
-For information on uploading files, see [Upload Kubernetes Resource Files](/article/2vcxg26xiu-upload-kubernetes-resource-files). Once the files are uploaded into Harness, you can create more files inline, as described below.1. In your Harness Kubernetes Service, click the more options button (**︙**) next to any existing file or folder.[![](./static/adding-and-editing-inline-kubernetes-manifest-files-55.png)](./static/adding-and-editing-inline-kubernetes-manifest-files-55.png)The **Add File** dialog appears.[![](./static/adding-and-editing-inline-kubernetes-manifest-files-57.png)](./static/adding-and-editing-inline-kubernetes-manifest-files-57.png)
+For information on uploading files, see [Upload Kubernetes Resource Files](/article/2vcxg26xiu-upload-kubernetes-resource-files). Once the files are uploaded into Harness, you can create more files inline, as described below.
+
+1. In your Harness Kubernetes Service, click the more options button (**︙**) next to any existing file or folder.
+   [![](./static/adding-and-editing-inline-kubernetes-manifest-files-55.png)](./static/adding-and-editing-inline-kubernetes-manifest-files-55.png)
+   The **Add File** dialog appears.
+   [![](./static/adding-and-editing-inline-kubernetes-manifest-files-57.png)](./static/adding-and-editing-inline-kubernetes-manifest-files-57.png)
 2. Enter a file name and click **Submit**. To add a folder at the same time, enter the folder name followed by the file name, such **myfolder/service.yaml**.
 
 Now you can edit the file and paste in your manifest.
@@ -43,7 +48,8 @@ The inline values.yaml file used in a Harness Service does not support Helm temp
 
 ### Step 3: Create and Manage Folders
 
-1. Click the more options button (︙) and click **Rename File**. The **Rename File** dialog opens.[![](./static/adding-and-editing-inline-kubernetes-manifest-files-59.png)](./static/adding-and-editing-inline-kubernetes-manifest-files-59.png)
+1. Click the more options button (︙) and click **Rename File**. The **Rename File** dialog opens.
+   [![](./static/adding-and-editing-inline-kubernetes-manifest-files-59.png)](./static/adding-and-editing-inline-kubernetes-manifest-files-59.png)
 2. Enter a folder name before the file name, including a forward slash, such as **myfolder/**.
 3. Click **SUBMIT**. The folder is created and the file is added to it.
 

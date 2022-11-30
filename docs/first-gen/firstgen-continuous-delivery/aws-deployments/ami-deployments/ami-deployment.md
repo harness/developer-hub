@@ -118,7 +118,9 @@ You can see the results of your Artifact Source settings clicking **Artifact Hi
 
 In the Service's **Deployment Specification** section, you can select the **User Data** link to enter configuration scripts and directives that your AWS instance will run upon launch.
 
-![](./static/ami-deployment-16.png)The resulting **User Data** container corresponds to the AWS Launch Instance wizard's **Advanced Details** > **User data** container.
+![](./static/ami-deployment-16.png)
+
+The resulting **User Data** container corresponds to the AWS Launch Instance wizard's **Advanced Details** > **User data** container.
 
 ![](./static/ami-deployment-17.png)
 
@@ -214,7 +216,9 @@ When the Freemium Workflow deploys, you want it to select the base ASG that mana
 
 To accomplish this, each Workflow uses an Infrastructure Provisioner to supply the right base ASG name to the Infrastructure Definition:
 
-![](./static/ami-deployment-25.png)For Infrastructure Provisioner details, see our AMI [CloudFormation](/article/vw71c7rxhp-ami-blue-green#infrastructure_provisioners) and [Terraform](/article/9pvvgcdbjh-terrform-provisioner#ami_and_auto_scaling_group_2) examples.Since you are using the same Infrastructure Definition with multiple base ASGs, you will likely want to reset the revision numbers applied to the new ASGs that are created each time a new base ASG is used. Otherwise, the revision numbers will be applied to all new ASGs, in sequence.
+![](./static/ami-deployment-25.png)
+
+For Infrastructure Provisioner details, see our AMI [CloudFormation](/article/vw71c7rxhp-ami-blue-green#infrastructure_provisioners) and [Terraform](/article/9pvvgcdbjh-terrform-provisioner#ami_and_auto_scaling_group_2) examples.Since you are using the same Infrastructure Definition with multiple base ASGs, you will likely want to reset the revision numbers applied to the new ASGs that are created each time a new base ASG is used. Otherwise, the revision numbers will be applied to all new ASGs, in sequence.
 
 You direct Harness to start a new ASG numbering series each time you select a new base ASG by enabling **Reset ASG revision numbers each time a new base ASG is selected**.
 
@@ -224,7 +228,9 @@ If you select the **Map Dynamically Provisioned Infrastructure** option along w
 
 Once you **Submit** an Infrastructure Definition, the check box is locked. You will not be able to enable or disable this option later within the same Infrastructure Definition.In addition, the new ASGs you create from different base ASGs should have unique names. You can achieve this by using the Infrastructure Provisioner output expression in the **AWS Auto Scaling Group Setup** Workflow step:
 
-![](./static/ami-deployment-26.png)If you select the **Use Already Provisioned Infrastructure** option along with the **Reset ASG revision numbers...** option, Harness will start a new ASG numbering series each time you manually select a new base ASG in the **Auto Scaling Group** drop-down.
+![](./static/ami-deployment-26.png)
+
+If you select the **Use Already Provisioned Infrastructure** option along with the **Reset ASG revision numbers...** option, Harness will start a new ASG numbering series each time you manually select a new base ASG in the **Auto Scaling Group** drop-down.
 
 
 #### Launch Configuration and Launch Template Support
@@ -245,7 +251,9 @@ Harness creates a new Launch Template *version* when it creates the new ASG. Thi
 
 Optionally, your Environment can override Config Variables and Config Files set in [Services](#service) that use the Environment. This enables you to maintain each Service's stored settings, but change them when using the Service with this Environment.
 
-![](./static/ami-deployment-27.png)As an example, you might use a single Service across separate Environments for QA versus Production, and vary Service path variables depending on the Environment. For details, see [Override a Service Configuration](/article/n39w05njjv-environment-configuration#override_a_service_configuration).
+![](./static/ami-deployment-27.png)
+
+As an example, you might use a single Service across separate Environments for QA versus Production, and vary Service path variables depending on the Environment. For details, see [Override a Service Configuration](/article/n39w05njjv-environment-configuration#override_a_service_configuration).
 
 You can also overwrite Service variables at the Phase level of a multiple-Phase Workflow, such as Canary.
 ### Basic Workflow and Deployment
@@ -276,9 +284,10 @@ If you are using Infrastructure Definitions, the **Workflow** dialog will look l
 6. Select the **Environment** you created for your AMI Basic deployment.
 7. Select the **Service** you created for your AMI Basic deployment.
 8. Select the Infrastructure Definition you created for your AMI Basic deployment.  
-  
-The dialog will now look something like this:![](./static/ami-deployment-29.png)
-9. Click **Submit**. The new Basic Workflow for AMI is preconfigured.![](./static/ami-deployment-30.png)
+   The dialog will now look something like this:
+	 ![](./static/ami-deployment-29.png)
+9. Click **Submit**. The new Basic Workflow for AMI is preconfigured.
+   ![](./static/ami-deployment-30.png)
 
 Next, we will examine options for configuring the Basic deployment's first two steps.
 
@@ -287,7 +296,9 @@ Next, we will examine options for configuring the Basic deployment's first two s
 
 In Step 1, select **AWS AutoScaling Group Setup** to open a dialog where you can fine-tune the Auto Scaling Group (ASG) that Harness creates for the AMI Service you are deploying.
 
-![](./static/ami-deployment-31.png)Many of the ASG's settings are mirrored from the ASG selected in the Workflow's Infrastructure Definition. (This ASG is also called the *base Auto Scaling Group.*) However, this setup dialog enables you to provide the remaining settings, using the following options:
+![](./static/ami-deployment-31.png)
+
+Many of the ASG's settings are mirrored from the ASG selected in the Workflow's Infrastructure Definition. (This ASG is also called the *base Auto Scaling Group.*) However, this setup dialog enables you to provide the remaining settings, using the following options:
 
 
 
@@ -309,7 +320,9 @@ The **Instances** settings support [Harness variable expressions](/article/9dvxc
 
 Let's look at an example where the AWS AutoScaling Group Setup—configured as shown above—is deployed. Here is the step in the Harness Deployments page:
 
-![](./static/ami-deployment-33.png)Here's the output, showing a successful setup:
+![](./static/ami-deployment-33.png)
+
+Here's the output, showing a successful setup:
 
 
 ```
@@ -331,7 +344,9 @@ AutoScalingGroup [Harness__Verification_AMI__Service__test__Quality__Assurance__
 
 In Step 2, select **Upgrade AutoScaling Group** to define how many instances to deploy in the Auto Scaling Group, as either a count or a percentage.
 
-Every new AMI/ASG deployment creates a new ASG. The instances in ASGs used by previous deployments are downsized to a max count of 3. Additional instances are detached.![](./static/ami-deployment-34.png)This dialog provides the following options:
+Every new AMI/ASG deployment creates a new ASG. The instances in ASGs used by previous deployments are downsized to a max count of 3. Additional instances are detached.![](./static/ami-deployment-34.png)
+
+This dialog provides the following options:
 
 
 
@@ -352,7 +367,9 @@ This diagram illustrates the relationship among Upgrade settings:
 
 Using the **Upgrade AutoScaling Group** configuration shown above—requesting a modest **Desired Instances** count of **1**—here is the **Deploy Service** step in the Harness Deployments page:
 
-![](./static/ami-deployment-36.png)Here is partial output, showing a successful resizing and deployment:
+![](./static/ami-deployment-36.png)
+
+Here is partial output, showing a successful resizing and deployment:
 
 
 ```
@@ -376,25 +393,35 @@ INFO   2019-06-04T19:06:13.937+0000   AutoScaling Group resize operation complet
 
 Now that the setup is complete, you can click **Deploy** in the Workflow to deploy the artifact to your Auto Scaling Group.
 
-![](./static/ami-deployment-37.png)Next, select the AMI you want to deploy. (Harness populates this list from the Artifact Source settings in the AMI Service you created.) Then click **SUBMIT**.
+![](./static/ami-deployment-37.png)
 
-![](./static/ami-deployment-38.png)The Workflow deploys. Note that the Deployments page displays details about the deployed instances.
+Next, select the AMI you want to deploy. (Harness populates this list from the Artifact Source settings in the AMI Service you created.) Then click **SUBMIT**.
 
-![](./static/ami-deployment-39.png)To verify the completed deployment, log into your AWS Console and locate the newly deployed instance(s).
+![](./static/ami-deployment-38.png)
+
+The Workflow deploys. Note that the Deployments page displays details about the deployed instances.
+
+![](./static/ami-deployment-39.png)
+
+To verify the completed deployment, log into your AWS Console and locate the newly deployed instance(s).
 
 ![](./static/ami-deployment-40.png)
 ### Rollback Steps
 
 When you create an AMI Workflow, its **Rollback Steps** section automatically includes a **Rollback Service** step. This step will execute when Harness needs to roll back your deployment and restore the previous working version.
 
-![](./static/ami-deployment-41.png)The configuration options available here depend on the deployment type. For general information about Rollback options, see [Workflows](/article/m220i1tnia-workflow-configuration#rollback_steps).
+![](./static/ami-deployment-41.png)
+
+The configuration options available here depend on the deployment type. For general information about Rollback options, see [Workflows](/article/m220i1tnia-workflow-configuration#rollback_steps).
 
 
 #### Multi-Service Rollback
 
 In an AMI Multi-Service Workflow's **Rollback Service** step, click **Rollback AutoScaling Group** to open the dialog shown below:
 
-![](./static/ami-deployment-42.png)Enable the single option here, **Rollback all phases at once**, if you want to simultaneously roll back all of the AMI Workflow's Phases, up to the Phase where deployment failed.
+![](./static/ami-deployment-42.png)
+
+Enable the single option here, **Rollback all phases at once**, if you want to simultaneously roll back all of the AMI Workflow's Phases, up to the Phase where deployment failed.
 
 For example, if a Workflow's Phase 2 fails to deploy, both Phase 2 and Phase 1 will be rolled back simultaneously. (Harness will ignore any Phase 1 rollback strategy settings.)
 

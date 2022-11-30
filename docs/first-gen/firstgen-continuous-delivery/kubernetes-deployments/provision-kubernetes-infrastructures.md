@@ -51,7 +51,9 @@ See [Add Cloud Providers](/article/whwnovprrb-cloud-providers).
 
 The Terraform script you use with Harness must be available in a Git repo. You connect Harness to the repo using a Harness Source Repro Provider.
 
-![](./static/provision-kubernetes-infrastructures-28.png)Set up a Harness Source Repro Provider that connects to the Git repo hosting your Terraform script. See [Add Source Repo Providers](/article/ay9hlwbgwa-add-source-repo-providers).
+![](./static/provision-kubernetes-infrastructures-28.png)
+
+Set up a Harness Source Repro Provider that connects to the Git repo hosting your Terraform script. See [Add Source Repo Providers](/article/ay9hlwbgwa-add-source-repo-providers).
 
 ### Step 4: Set Up a Terraform Infrastructure Provisioner
 
@@ -72,14 +74,20 @@ Harness supports first class Terraform Kubernetes provisioning for Google Kubern
 1. In your Harness Application, click **Infrastructure Provisioners**.
 2. Click **Add Infrastructure Provisioner**, and then click **Terraform**. The **Add Terraform Provisioner** dialog appears.
 
-![](./static/provision-kubernetes-infrastructures-29.png)1. In **Display Name**, enter the name for this provisioner. You will use this name to select this provisioner in Harness Environments and Workflows.
+![](./static/provision-kubernetes-infrastructures-29.png)
+
+1. In **Display Name**, enter the name for this provisioner. You will use this name to select this provisioner in Harness Environments and Workflows.
 2. Click **NEXT**. The **Script Repository** section appears. This is where you provide the location of your Terraform script in your Git repo.
 3. In **Script Repository**, in **Git Repository**, select the [Source Repo Provider](/article/ay9hlwbgwa-add-source-repo-providers) you added for the Git repo where your script is located.
 4. In **Git Repository Branch**, enter the repo branch to use. For example, **master**. For master, you can also use a dot (`.`).
 5. In **Terraform Configuration Root Directory**, enter the folder where the script is located. Here is an example showing the Git repo on GitHub and the **Script Repository** settings:
 
-![](./static/provision-kubernetes-infrastructures-30.png)1. Click **NEXT**. The **Variables** section is displayed. This is where you will add the script input variables that must be given values when the script is run.
-2. In **Variables**, click **Populate Variables**. The **Populate from Example** dialog appears. Click **SUBMIT** to have the Harness Delegate use the Source Repo Provider you added to pull the variables from your script and populate the **Variables** section.![](./static/provision-kubernetes-infrastructures-31.png)If Harness cannot pull the variables from your script, check your settings and try again. Ensure that your Source Repo Provisioner is working by clicking its **TEST** button.  
+![](./static/provision-kubernetes-infrastructures-30.png)
+
+1. Click **NEXT**. The **Variables** section is displayed. This is where you will add the script input variables that must be given values when the script is run.
+2. In **Variables**, click **Populate Variables**. The **Populate from Example** dialog appears. Click **SUBMIT** to have the Harness Delegate use the Source Repo Provider you added to pull the variables from your script and populate the **Variables** section.
+   ![](./static/provision-kubernetes-infrastructures-31.png)
+   If Harness cannot pull the variables from your script, check your settings and try again. Ensure that your Source Repo Provisioner is working by clicking its **TEST** button.  
 Once Harness pulls in the variables from the script, it populates the **Variables** section.
 3. In the **Type** column for each variable, specify **Text** or **Encrypted Text**.  
 When you add the provisioner to a Workflow, you will have to provide text values for **Text** variables, and select Harness Encrypted Text variables for **Encrypted Text** variables. See [Secrets Management](/article/au38zpufhr-secret-management).
@@ -89,7 +97,9 @@ By default, Terraform uses the local backend to manage state, in a local [Terraf
 5. In **Backend Configuration (Remote state)**, enter the backend configs from your script.
 6. Click **Next** and then **Submit**. The Terraform Provisioner is created.
 
-![](./static/provision-kubernetes-infrastructures-32.png)Now you can use the Terraform Provisioner in Infrastructure Definitions and Workflows.
+![](./static/provision-kubernetes-infrastructures-32.png)
+
+Now you can use the Terraform Provisioner in Infrastructure Definitions and Workflows.
 
 ### Step 5: Map Outputs in Infrastructure Definition
 
@@ -119,11 +129,15 @@ When you map a Terraform script output to a Harness field as part of a Service M
 
 The following example shows the Terraform script outputs used for the Kubernetes deployment type fields:
 
-![](./static/provision-kubernetes-infrastructures-33.png)For information on Kubernetes deployments, see [Kubernetes Deployments Overview](/article/wnr5n847b1-kubernetes-overview).
+![](./static/provision-kubernetes-infrastructures-33.png)
+
+For information on Kubernetes deployments, see [Kubernetes Deployments Overview](/article/wnr5n847b1-kubernetes-overview).
 
 Click **Submit**. The Infrastructure Definition is created.
 
-![](./static/provision-kubernetes-infrastructures-34.png)Now that the Infrastructure Definition is created, you must add a **Terraform Provision** step to the Workflows that will use this Infrastructure Definition.
+![](./static/provision-kubernetes-infrastructures-34.png)
+
+Now that the Infrastructure Definition is created, you must add a **Terraform Provision** step to the Workflows that will use this Infrastructure Definition.
 
 ### Step 6: Add Terraform Provisioner to Workflow
 
@@ -133,7 +147,9 @@ The Terraform Provision step lets you customize the Infrastructure Provisioner f
 2. In **Pre-deployment Steps**, click **Add Step**.
 3. Select **Terraform Provision**. The **Terraform Provision** dialog appears.
 
-![](./static/provision-kubernetes-infrastructures-35.png)1. In **Provisioner**, select a Kubernetes Terraform Provisioner.
+![](./static/provision-kubernetes-infrastructures-35.png)
+
+1. In **Provisioner**, select a Kubernetes Terraform Provisioner.
 2. In **Timeout**, enter how long Harness should wait to apply the Terraform Provisioner before failing the Workflow.
 
 The **Inherit following configurations from dry run** setting is described in .1. Click **NEXT**. The remaining settings appear.

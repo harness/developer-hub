@@ -18,7 +18,9 @@ To add an environment for your IIS Website, do the following:
 
 1. In your application, click **Environments**. The Environments page for the applications appears.
 2. Click **Add Environment**. The **Environment** dialog appears.
-3. Enter a name for your deployment environment, such as **IIS-EC2**, and then, in **Environment Type**, click **Non-Production** or **Production**. When you are finished, click **SUBMIT**. The Environment page appears.![](./static/iis-environments-13.png)Next, you will add an Infrastructure Definition using the Cloud Provider you added to define where your IIS Website will be deployed.
+3. Enter a name for your deployment environment, such as **IIS-EC2**, and then, in **Environment Type**, click **Non-Production** or **Production**. When you are finished, click **SUBMIT**. The Environment page appears.![](./static/iis-environments-13.png)
+
+Next, you will add an Infrastructure Definition using the Cloud Provider you added to define where your IIS Website will be deployed.
 
 ### Add an Infrastructure Definition
 
@@ -72,7 +74,9 @@ This following table describes the fields for an AWS EC2 Infrastructure Definiti
 
 You can locate most of the Azure information on the VM overview page:
 
-![](./static/iis-environments-17.png)This following table describes the fields for an Azure Infrastructure Definition.
+![](./static/iis-environments-17.png)
+
+This following table describes the fields for an Azure Infrastructure Definition.
 
 
 
@@ -93,7 +97,9 @@ You can locate most of the Azure information on the VM overview page:
 
 Currently, support for Config Files override is behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature. Feature Flags can only be removed for Harness Professional and Essentials editions. Once the feature is released to a general audience, it's available for Trial and Community Editions.You can configure your Environment to override the **Config Variables** and **Config Files** in the IIS Services that use the Environment.
 
-![](./static/iis-environments-18.png)For more information, see [Override a Service Configuration in an Environment](https://docs.harness.io/article/4m2kst307m-override-service-files-and-variables-in-environments).
+![](./static/iis-environments-18.png)
+
+For more information, see [Override a Service Configuration in an Environment](https://docs.harness.io/article/4m2kst307m-override-service-files-and-variables-in-environments).
 
 ### Next Step
 

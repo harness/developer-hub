@@ -51,7 +51,9 @@ To use a remote Git repo for your resource files or Helm charts, you must set up
 
 In your Harness Kubernetes Service, in **Manifests**, click the vertical ellipsis and click **Link Remote Manifests**.
 
-![](./static/link-resource-files-or-helm-charts-in-git-repos-203.png)The **Remote Manifests** dialog appears.
+![](./static/link-resource-files-or-helm-charts-in-git-repos-203.png)
+
+The **Remote Manifests** dialog appears.
 
 ![](./static/link-resource-files-or-helm-charts-in-git-repos-204.png)
 
@@ -90,7 +92,9 @@ In some cases, such as when using public manifests or Helm charts, you cannot ad
 
 Instead, enable the **Skip Versioning for Service** option in **Remote Manifests**.
 
-![](./static/link-resource-files-or-helm-charts-in-git-repos-205.png)When you enable **Skip Versioning for Service**, Harness will not perform versioning of ConfigMaps and Secrets for the Service.
+![](./static/link-resource-files-or-helm-charts-in-git-repos-205.png)
+
+When you enable **Skip Versioning for Service**, Harness will not perform versioning of ConfigMaps and Secrets for the Service.
 
 If you have enabled **Skip Versioning for Service** for a few deployments and then disable it, Harness will start versioning ConfigMaps and Secrets.
 

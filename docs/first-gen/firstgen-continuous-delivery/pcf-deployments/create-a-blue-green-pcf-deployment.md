@@ -81,7 +81,9 @@ The new Blue/Green Workflow is displayed, along with the preconfigured steps:
 
 Click **App Setup** to see the default, preconfigured command:
 
-![](./static/create-a-blue-green-pcf-deployment-55.png)None of the settings in this dialog are mandatory, but for Blue/Green Workflows, the **Match running instances**, **Additional Routes**, and **Temporary Routes** settings are important.
+![](./static/create-a-blue-green-pcf-deployment-55.png)
+
+None of the settings in this dialog are mandatory, but for Blue/Green Workflows, the **Match running instances**, **Additional Routes**, and **Temporary Routes** settings are important.
 
 If you select **Match running instances**, Harness will ignore the number of instances set in the Service's manifest.yml `instances` property and use the number of currently running instances as the desired instance count during deployment.
 
@@ -122,7 +124,9 @@ Currently, this feature is behind the Feature Flag `CF_APP_NON_VERSIONING_INACTI
 
 Click **App Resize** to see the default settings.
 
-![](./static/create-a-blue-green-pcf-deployment-56.png)For Blue/Green deployments, the **App Resize** step is always 100% because it does not change the number of instances as it did in the Canary deployment. In Blue/Green, you are simply deploying the new app to the number of instances set in the **App Setup** step and keeping the old app at the same number of instances.
+![](./static/create-a-blue-green-pcf-deployment-56.png)
+
+For Blue/Green deployments, the **App Resize** step is always 100% because it does not change the number of instances as it did in the Canary deployment. In Blue/Green, you are simply deploying the new app to the number of instances set in the **App Setup** step and keeping the old app at the same number of instances.
 
 #### App Resize V2 or Default App Resize
 
@@ -143,7 +147,9 @@ Later, when you are developing Blue/Green Workflows, add verification steps to v
 
 The final step in the TAS Blue/Green Workflow is the **Swap Routes** command.
 
-![](./static/create-a-blue-green-pcf-deployment-57.png)This command will swap the route(s) used by the deployed app from the temporary route(s) to the route(s) specified in the manifest.yml in your Service.
+![](./static/create-a-blue-green-pcf-deployment-57.png)
+
+This command will swap the route(s) used by the deployed app from the temporary route(s) to the route(s) specified in the manifest.yml in your Service.
 
 **Previous app renamed.** During the **Swap Route** step, the previous app version is renamed according to the option you selected in **Version Management** in the **App Setup** step. The previous app version is not renamed until the **Swap Route** step in order to avoid errors with any monitoring tools you have pointed at the app version receiving production traffic.For detail on **Swap Routes** is a Workflow's **Rollback Steps**, see [Blue/Green Rollback](#blue_green_rollback).### Step 7: Deploy a TAS Blue/Green Workflow
 
@@ -158,7 +164,9 @@ The TAS Blue/Green Workflow deploys.
 
 Here you can see the **App Step** command deployed:
 
-![](./static/create-a-blue-green-pcf-deployment-58.png)When this step is deployed, the output will look something like this:
+![](./static/create-a-blue-green-pcf-deployment-58.png)
+
+When this step is deployed, the output will look something like this:
 
 
 ```
@@ -213,11 +221,15 @@ ROUTES: [examplefordocpcfbluegreenstaging3-insightful-cat.cfapps.io]
 ```
 The route specified in the Service manifest.yml is `docs.cfapps.io`:
 
-![](./static/create-a-blue-green-pcf-deployment-59.png)Note that in the **App Setup** step, a temporary route has been used: `examplefordocpcfbluegreenstaging3-insightful-cat.cfapps.io`.
+![](./static/create-a-blue-green-pcf-deployment-59.png)
+
+Note that in the **App Setup** step, a temporary route has been used: `examplefordocpcfbluegreenstaging3-insightful-cat.cfapps.io`.
 
 Here you can see the **App Resize** command deployed:
 
-![](./static/create-a-blue-green-pcf-deployment-60.png)When this step is deployed, the output will look something like this:
+![](./static/create-a-blue-green-pcf-deployment-60.png)
+
+When this step is deployed, the output will look something like this:
 
 
 ```
@@ -278,7 +290,9 @@ Note that 100% of the instances specified in the Service manifest.yml have been 
 
 Here you can see the **Swap Routes** command deployed:
 
-![](./static/create-a-blue-green-pcf-deployment-61.png)When this step is deployed, the output will look something like this:
+![](./static/create-a-blue-green-pcf-deployment-61.png)
+
+When this step is deployed, the output will look something like this:
 
 
 ```

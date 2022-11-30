@@ -123,7 +123,9 @@ For example, here is a task definition from the [AWS sample repo](https://github
 ```
 If you have an existing Task Definition, you can paste it into the JSON. You can obtain the Task Definition from the ECS console:
 
-![](./static/run-an-ecs-task-36.png)You can also obtain the Task Definition using the AWS CLI ( [describe-task-definition](https://docs.aws.amazon.com/cli/latest/reference/ecs/describe-task-definition.html)):
+![](./static/run-an-ecs-task-36.png)
+
+You can also obtain the Task Definition using the AWS CLI ( [describe-task-definition](https://docs.aws.amazon.com/cli/latest/reference/ecs/describe-task-definition.html)):
 
 `aws ecs describe-task-definition --task-definition ecsTaskDefinitionName`
 
@@ -182,7 +184,9 @@ You cannot use Harness variable expressions in this setting. They are supported 
 
 When you deploy the Workflow, the ECS Task Run steps shows a successful deployment:
 
-![](./static/run-an-ecs-task-37.png)Here is an example of the output from a deployed ECS Run Task step:
+![](./static/run-an-ecs-task-37.png)
+
+Here is an example of the output from a deployed ECS Run Task step:
 
 
 ```

@@ -47,7 +47,9 @@ A values.yaml file can use [flat or nested values](https://helm.sh/docs/chart_be
 2. Enter a name for the Application and click **Submit**.
 3. Click **Services**, and then click **Add Service**. The **Add Service** settings appear.
 
-![](./static/define-kubernetes-manifests-180.png)1. In **Name**, enter a name for the Service.
+![](./static/define-kubernetes-manifests-180.png)
+
+1. In **Name**, enter a name for the Service.
 2. In **Deployment Type**, select **Kubernetes**, and then ensure **Enable Kubernetes V2** is selected.
 3. Click **Submit**. The new Harness Kubernetes Service is created.
 
@@ -84,7 +86,9 @@ The inline values.yaml file used in a Harness Service does not support Helm temp
 
 When you edit manifests in the Harness Service, you can enter expressions by entering `{{.` and Harness will fetch the values available in the values.yaml file.
 
-![](./static/define-kubernetes-manifests-181.png)This expression builder helps to ensure that you do not accidentally enter an incorrect value in your manifests.
+![](./static/define-kubernetes-manifests-181.png)
+
+This expression builder helps to ensure that you do not accidentally enter an incorrect value in your manifests.
 
 ### Option: Use Remote Manifests and Charts
 

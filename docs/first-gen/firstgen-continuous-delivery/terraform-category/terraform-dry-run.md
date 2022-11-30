@@ -30,7 +30,9 @@ This topic assumes you have read the following:
 
 The following graphic shows a common use of a Terraform dry run in deployments.
 
-![](./static/terraform-dry-run-30.png)1. The dry run is used to verify the provisioning.
+![](./static/terraform-dry-run-30\.png)
+
+1. The dry run is used to verify the provisioning.
 2. An Approval step to ensure that the Terraform plan is working correctly.
 3. The plan is run and the infrastructure is provisioned.
 4. The app is deployed to the provisioned infrastructure.
@@ -97,7 +99,8 @@ When you select this option, the Terraform Provision or Terraform Apply step inh
 2. Select a **Terraform Provision** or **Terraform Apply** step.
 3. In **Name**, enter a name for the step to indicate that it will perform the provisioning. For example, **Apply Provisioning**.
 4. In **Provisioner**, select the Harness Terraform Infrastructure Provisioner you want to run. This is the same Terraform Infrastructure Provisioner you selected in the previous Terraform Provision or Terraform Apply step.
-5. Select the **Inherit following configurations from Terraform Plan** option.![](./static/terraform-dry-run-33.png)
+5. Select the **Inherit following configurations from Terraform Plan** option.
+   ![](./static/terraform-dry-run-33.png)
 6. Click **Submit**.
 
 You do not need to enter any more settings. The Terraform Provision or Terraform Apply step inherits the settings of the Terraform Provision or Terraform Apply step that preceded it.

@@ -31,15 +31,23 @@ Harness allows one manifest file and one or more variable files. At runtime, Har
 
 From the options menu, click **Upload Local Manifest Files**.
 
-![](./static/upload-local-and-remote-pcf-resource-files-62.png)The **Upload Local Manifest Files** dialog appears.
+![](./static/upload-local-and-remote-pcf-resource-files-62.png)
 
-![](./static/upload-local-and-remote-pcf-resource-files-63.png)Choose the local folder or files using your file explorer or drag and drop the files into the dialog. The selected files are listed.
+The **Upload Local Manifest Files** dialog appears.
 
-![](./static/upload-local-and-remote-pcf-resource-files-64.png)Click **Submit** to add the files.
+![](./static/upload-local-and-remote-pcf-resource-files-63.png)
+
+Choose the local folder or files using your file explorer or drag and drop the files into the dialog. The selected files are listed.
+
+![](./static/upload-local-and-remote-pcf-resource-files-64.png)
+
+Click **Submit** to add the files.
 
 If you are uploading a manifest.yml or vars.yml file into the same folder with the default manifest.yml and vars.yml files, you will see the following warning.
 
-![](./static/upload-local-and-remote-pcf-resource-files-65.png)Simply click **Overwrite All** and then **Submit** to replace the default files.
+![](./static/upload-local-and-remote-pcf-resource-files-65.png)
+
+Simply click **Overwrite All** and then **Submit** to replace the default files.
 
 ### Step 2: Upload Remote Manifest and Variable Files
 
@@ -48,9 +56,12 @@ Harness checks out manifest files from your repo at deployment runtime. If any f
 To use remote files, do the following:
 
 1. Create a [Harness Source Repro Provider](/article/ay9hlwbgwa-add-source-repo-providers) that connects to the branch where your remote files are located.  
-  
-When you set up the Source Repro Provider, you specify the repo URL and branch name:![](./static/upload-local-and-remote-pcf-resource-files-66.png)
-2. In the TAS Service, in **Manifests**, click the options button, and then click **Link Remote Manifests**.![](./static/upload-local-and-remote-pcf-resource-files-67.png)The **Remote Manifests** dialog appears.![](./static/upload-local-and-remote-pcf-resource-files-68.png)
+   When you set up the Source Repro Provider, you specify the repo URL and branch name:
+   ![](./static/upload-local-and-remote-pcf-resource-files-66.png)
+2. In the TAS Service, in **Manifests**, click the options button, and then click **Link Remote Manifests**.
+   ![](./static/upload-local-and-remote-pcf-resource-files-67.png)
+   The **Remote Manifests** dialog appears.
+   ![](./static/upload-local-and-remote-pcf-resource-files-68.png)
 3. In **Source Repository**, select the Source Repo Provider you set up, and that points to the remote Git repo containing your manifest files.
 4. In **Commit ID**, select **Latest from Branch** or **Specific Commit ID**.  
   
@@ -71,7 +82,9 @@ Currently, this feature is behind the feature flag `SINGLE_MANIFEST_SUPPORT`. Co
 
 Harness requires the path to the manifest or vars file you are using. 
 
-![](./static/upload-local-and-remote-pcf-resource-files-70.png)If you enter a folder path and **no file**, deployment will fail.
+![](./static/upload-local-and-remote-pcf-resource-files-70.png)
+
+If you enter a folder path and **no file**, deployment will fail.
 
 ### Next Steps
 

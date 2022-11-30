@@ -21,7 +21,9 @@ Remove any deployed Kubernetes resources with the Delete step.
 
 In your Harness Workflow, click **Add Step**, and select **Delete**. The Delete settings appear:
 
-![](./static/delete-kubernetes-resources-113.png)You can add a Delete step anywhere in your Workflow, but typically it is added in the **Wrap Up** section.
+![](./static/delete-kubernetes-resources-113.png)
+
+You can add a Delete step anywhere in your Workflow, but typically it is added in the **Wrap Up** section.
 
 Wherever you add a Delete step, the resource you want to delete must already exist in the cluster. For example, if the resource is added in Phase 2 of a Canary Workflow, the Delete step should not be placed in Phase 1.
 
@@ -61,13 +63,17 @@ Using a comma-separated list to delete multiple resources. For example:
 
 Enter an asterisk (\*) in **Resources**.
 
-You cannot use the asterisk as a wildcard to match arbitrary resources. It is simply used to indicate all resources.![](./static/delete-kubernetes-resources-114.png)Using an asterisk (\*) deletes all of the releases specified in the Infrastructure Definition **Release Name** setting used by the Workflow. The namespace is not deleted.
+You cannot use the asterisk as a wildcard to match arbitrary resources. It is simply used to indicate all resources.![](./static/delete-kubernetes-resources-114.png)
+
+Using an asterisk (\*) deletes all of the releases specified in the Infrastructure Definition **Release Name** setting used by the Workflow. The namespace is not deleted.
 
 ##### Delete Namespaces
 
 If you want to delete the namespace(s) defined in the **Manifests** section of the Harness Service used in this deployment, click the **Delete all namespaces defined in the Manifests section of the Harness Service used in this deployment** checkbox.
 
-[![](./static/delete-kubernetes-resources-115.png)](./static/delete-kubernetes-resources-115.png)Ensure that you are not deleting a namespace that is used by other deployments.
+[![](./static/delete-kubernetes-resources-115.png)](./static/delete-kubernetes-resources-115.png)
+
+Ensure that you are not deleting a namespace that is used by other deployments.
 
 ### Option: Enter the Path and Name of the Manifest
 
@@ -83,7 +89,9 @@ You must provide the path and name of the file in **File Paths**, and Harness w
 
 For resources in the Service **Manifests** section, enter the folder name and the file name of the manifest in the Harness Service deployed by this Workflow. For example, **templates/jobs.yaml**.
 
-![](./static/delete-kubernetes-resources-117.png)You can include multiple resource files by separating them with commas, for example:
+![](./static/delete-kubernetes-resources-117.png)
+
+You can include multiple resource files by separating them with commas, for example:
 
 **templates/jobs.yaml, templates/statefulSet.yaml**.
 

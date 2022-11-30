@@ -37,9 +37,13 @@ Here is an example of the default scripts and commands Harness generates when yo
 
 When you look at the default commands in a file-based Service, their order of execution might be confusing. For example, it looks like they are executed like this: 
 
-![](./static/add-deployment-specs-for-traditional-ssh-deployments-03.png)But they are actually executed like this: 
+![](./static/add-deployment-specs-for-traditional-ssh-deployments-03\.png)
 
-![](./static/add-deployment-specs-for-traditional-ssh-deployments-04.png)The order is clearer when you see the deployment in the **Deployments** page:
+But they are actually executed like this: 
+
+![](./static/add-deployment-specs-for-traditional-ssh-deployments-04\.png)
+
+The order is clearer when you see the deployment in the **Deployments** page:
 
 ![](./static/add-deployment-specs-for-traditional-ssh-deployments-05.png)
 
@@ -49,7 +53,9 @@ The default scripts Harness generates will deploy the artifact and app package y
 
 If you like, you can add commands and scripts using the **Add Command** settings, and by clicking the plus icon in the commands.
 
-![](./static/add-deployment-specs-for-traditional-ssh-deployments-06.png)All of the scripts include tooltips to explain how to use them:
+![](./static/add-deployment-specs-for-traditional-ssh-deployments-06\.png)
+
+All of the scripts include tooltips to explain how to use them:
 
 ![](./static/add-deployment-specs-for-traditional-ssh-deployments-07.png)
 

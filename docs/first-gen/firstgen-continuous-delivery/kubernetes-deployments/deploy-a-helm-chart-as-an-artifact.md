@@ -66,7 +66,9 @@ When Harness fetches the chart, it runs the `helm pull` command and fetches and 
 
 Harness then compares the chart version from the Chart.yaml file (present in specified chart directory) with the version you specify in **Remote Manifests** > **Manifest Format** > **Helm Chart from Helm Repository** > **Version**.
 
-![](./static/deploy-a-helm-chart-as-an-artifact-36.png)If an incorrect or non-existing chart version is provided, Helm (and, consequently, Harness) fetches a random chart.
+![](./static/deploy-a-helm-chart-as-an-artifact-36.png)
+
+If an incorrect or non-existing chart version is provided, Helm (and, consequently, Harness) fetches a random chart.
 
 For example, suppose we have a repo with the following chart versions:                                
 
@@ -87,7 +89,9 @@ When Harness fetches the chart, it runs the `helm pull` command and fetches and 
 
 Harness then compares the chart version from the Chart.yaml file (present in specified chart directory) with the version you specify in **Remote Manifests** > **Manifest Format** > **Helm Chart from Helm Repository** > **Version**.
 
-![](./static/deploy-a-helm-chart-as-an-artifact-37.png)If the version you entered does not match the chart Harness pulls, Harness will fail deployment.
+![](./static/deploy-a-helm-chart-as-an-artifact-37.png)
+
+If the version you entered does not match the chart Harness pulls, Harness will fail deployment.
 
 If no version is entered, Harness does not check for a match.
 
@@ -109,7 +113,9 @@ In **Deployment Type**, select either **Kubernetes** or **Native Helm**. If you 
 
 Enable the **Artifact from Manifest** setting. This setting tells Harness that you will use the **Manifest Source** in the Service to link to your remove chart.
 
-![](./static/deploy-a-helm-chart-as-an-artifact-38.png)Click **Submit**. The new Service is created.
+![](./static/deploy-a-helm-chart-as-an-artifact-38.png)
+
+Click **Submit**. The new Service is created.
 
 Normally, there would be a **Manifests** section in your Kubernetes Service or a **Chart Specification** section in your Native Helm Service; however, since you are using the **Manifest Source** for the chart, those sections are omitted.
 
@@ -127,7 +133,9 @@ The steps are the same for Kubernetes and Native Helm. The only difference is th
 
 Here's the Remote Manifests settings from the Kubernetes Service **Manifest Source**:
 
-![](./static/deploy-a-helm-chart-as-an-artifact-40.png)Do the following:
+![](./static/deploy-a-helm-chart-as-an-artifact-40.png)
+
+Do the following:
 
 In **Manifest Format**, select **Helm Chart from Helm Repository**.
 
@@ -141,7 +149,9 @@ Enable the **Skip Versioning for Service** option to skip versioning of ConfigMa
 
 When you are done, it will look something like this:
 
-![](./static/deploy-a-helm-chart-as-an-artifact-41.png)Click **Submit**.
+![](./static/deploy-a-helm-chart-as-an-artifact-41.png)
+
+Click **Submit**.
 
 The remote Helm chart repository and chart is listed as a **Manifest Source**.
 
@@ -151,7 +161,9 @@ The remote Helm chart repository and chart is listed as a **Manifest Source**.
 
 You can add multiple charts by adding multiple Manifest Sources.
 
-![](./static/deploy-a-helm-chart-as-an-artifact-43.png)When you deploy the Service, you can specify which chart to use.
+![](./static/deploy-a-helm-chart-as-an-artifact-43.png)
+
+When you deploy the Service, you can specify which chart to use.
 
 ### Option: Pull a Specific Chart Version
 
@@ -160,7 +172,8 @@ When you add a Helm chart as a Manifest Source to the Service, Harness will pull
 To view the manifest history,  do the following:
 
 1. Click **Manifest History**. This assistant lists the chart names and versions Harness has pulled.
-2. In the **Manifest History** assistant, click **Manually pull Manifest**. The **Manually Select A Manifest** dialog appears.![](./static/deploy-a-helm-chart-as-an-artifact-44.png)
+2. In the **Manifest History** assistant, click **Manually pull Manifest**. The **Manually Select A Manifest** dialog appears.
+   ![](./static/deploy-a-helm-chart-as-an-artifact-44.png)
 3. In **Manifest Source**, click the Manifest Source you added to the Service.
 4. In **Manifest**, select a manifest version, and then click **SUBMIT**.
 5. Click **Manifest History** to view the history.

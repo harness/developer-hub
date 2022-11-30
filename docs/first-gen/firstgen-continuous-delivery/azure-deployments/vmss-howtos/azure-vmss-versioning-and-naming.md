@@ -38,7 +38,9 @@ Each subsequent deployment using the same Harness Infrastructure Definition will
 
 For example, here are three VMSS deployments:
 
-![](./static/azure-vmss-versioning-and-naming-13.png)The first two `doc__basic` deployments are Basic Workflows and the `doc__canary` VMSS is a Canary Workflow. The `doc__canary` VMSS has the suffix `__3` because it used the same Infrastructure Definition as the `doc__basic` Workflows.
+![](./static/azure-vmss-versioning-and-naming-13.png)
+
+The first two `doc__basic` deployments are Basic Workflows and the `doc__canary` VMSS is a Canary Workflow. The `doc__canary` VMSS has the suffix `__3` because it used the same Infrastructure Definition as the `doc__basic` Workflows.
 
 ### Harness Revision Tags
 
@@ -46,7 +48,9 @@ Harness adds three Azure tags to each VMSS it deploys. These tags are used for r
 
 Do not delete these tags.You can see the tags on the VMSS:
 
-![](./static/azure-vmss-versioning-and-naming-14.png)The tags are:
+![](./static/azure-vmss-versioning-and-naming-14.png)
+
+The tags are:
 
 * `HARNESS_REVISION` — The unique revision number of the VMSS, with an incremental suffix.
 * `Name` — The name of the VMSS, with an incremental suffix.

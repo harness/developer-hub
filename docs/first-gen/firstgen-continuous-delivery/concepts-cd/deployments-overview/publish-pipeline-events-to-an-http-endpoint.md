@@ -51,9 +51,13 @@ Harness will be adding more events soon.
 
 In your Application, in **Event Rules**, click **Add**.
 
-![](./static/publish-pipeline-events-to-an-http-endpoint-40.png)The **Event Rule Configuration** settings appear.
+![](./static/publish-pipeline-events-to-an-http-endpoint-40.png)
 
-![](./static/publish-pipeline-events-to-an-http-endpoint-41.png)Enter a name for the event rule.
+The **Event Rule Configuration** settings appear.
+
+![](./static/publish-pipeline-events-to-an-http-endpoint-41.png)
+
+Enter a name for the event rule.
 
 ### Option: Pipeline or Send Me Everything
 

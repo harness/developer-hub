@@ -119,7 +119,9 @@ For this guide, we will use the **Kubernetes Cluster** Cloud Provider. If you us
 
 The specs for the Kubernetes cluster you create will depend on the microservices or apps you will deploy to it. To give you guidance on the node specs for the Kubernetes Cluster used in this guide, here is a node pool created for a Kubernetes cluster in GCP:
 
-![](./static/2-connectors-providers-and-helm-setup-05.png)For Harness deployments, a Kubernetes cluster requires the following:
+![](./static/2-connectors-providers-and-helm-setup-05.png)
+
+For Harness deployments, a Kubernetes cluster requires the following:
 
 * Credentials for the Kubernetes cluster in order to add it as a Cloud Provider. If you set up GCP as a cloud provider using a GCP user account, that account should also be able to configure the Kubernetes cluster on the cloud provider.
 * The kubectl command-line tool must be configured to communicate with your cluster.
@@ -317,7 +319,9 @@ A Helm chart repository is an HTTP server that houses an **index.yaml** file a
 
 You can add a Helm Chart Repository as a Harness Artifact Server and then use it in Harness Kubernetes and Helm Services.
 
-![](./static/2-connectors-providers-and-helm-setup-07.png)For steps on adding a Helm Chart Repository as a Harness Artifact Server, see [Helm Repository](/article/7dghbx1dbl-configuring-artifact-server#helm_repository).
+![](./static/2-connectors-providers-and-helm-setup-07.png)
+
+For steps on adding a Helm Chart Repository as a Harness Artifact Server, see [Helm Repository](/article/7dghbx1dbl-configuring-artifact-server#helm_repository).
 
 ### Helm and the Kubernetes Delegate
 

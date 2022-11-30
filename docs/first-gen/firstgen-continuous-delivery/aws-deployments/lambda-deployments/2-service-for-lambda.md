@@ -39,7 +39,8 @@ Harness supports the following artifact sources with Lambda:
 To add the Lambda Service, do the following:
 
 1. In your new Application, click **Services**. The **Services** page appears.
-2. In the **Services** page, click **Add Service**. The **Service** dialog appears.![](./static/2-service-for-lambda-16.png)
+2. In the **Services** page, click **Add Service**. The **Service** dialog appears.
+   ![](./static/2-service-for-lambda-16.png)
 3. In **Name**, enter a name for your Service, such as **aws-lambda**. You will use this name to select this Service when you set up a Harness Environment and Workflow.
 4. In **Description**, enter a description for your Service.
 5. In **Deployment Type**, select **AWS Lambda**.
@@ -58,11 +59,15 @@ To add an Artifact Source to this Service, do the following:
 3. In **Bucket**, select the S3 bucket containing the Lambda function zip file you want.
 4. In **Artifact Path**, select the Lambda function zip file containing your functions. Here is how your S3 bucket and file relate to the Artifact Source dialog:
 
-![](./static/2-service-for-lambda-19.png)The **Meta-data Only** option is selected by default. Harness will not copy the actual zip file. During runtime, Harness passes the metadata to Lambda where it is used to obtain the file.
+![](./static/2-service-for-lambda-19.png)
+
+The **Meta-data Only** option is selected by default. Harness will not copy the actual zip file. During runtime, Harness passes the metadata to Lambda where it is used to obtain the file.
 
 1. Click **SUBMIT**. The Lambda function file is added as an Artifact Source.
 
 ![](./static/2-service-for-lambda-20.png)
+
+
 
 ### Step 3: Lambda Function Specification
 
@@ -72,7 +77,9 @@ Click **Lambda Function Specification**. The **AWS Lambda Function Specification
 
 The details you provide are very similar to the options in the AWS CLI `aws lambda create-function` command. For more information, see [create-function](https://docs.aws.amazon.com/cli/latest/reference/lambda/create-function.html) from AWS.
 
-![](./static/2-service-for-lambda-21.png)Some of the options are specified in Harness Environments and Workflows to help you reuse the Service with multiple Environments and Workflows.
+![](./static/2-service-for-lambda-21.png)
+
+Some of the options are specified in Harness Environments and Workflows to help you reuse the Service with multiple Environments and Workflows.
 
 By default, the **AWS Lambda Function Specifications** dialog displays a function. If you have multiple Lambda functions in the zip file in Artifact Source, click **Add Function** and provide details for each function.
 
@@ -99,7 +106,9 @@ The value of the **Handler** setting is the file name (**index**) and the name o
 
 When you are done, the **AWS Lambda Function Specifications** dialog will look something like this:
 
-![](./static/2-service-for-lambda-22.png)When you are done, click **Submit**. Your function is added to the Service.
+![](./static/2-service-for-lambda-22.png)
+
+When you are done, click **Submit**. Your function is added to the Service.
 
 ### Option: Lambda Environment Variables using Service Config Variables
 

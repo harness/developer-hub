@@ -80,7 +80,9 @@ Next, you set when the Job is to be executed using the **Apply** step in your Wo
 
 Here is an example of a Phase in a Harness Canary Workflow showing where all of the Helm chart hooks can be applied using Apply steps:
 
-![](./static/use-helm-chart-hooks-in-kubernetes-deployments-47.png)Using the example Job above, the Hook annotations are removed and the Kubernetes Job is set as a separate yaml file. In your Harness Service **Manifests** section, the Job manifest should look something like this:
+![](./static/use-helm-chart-hooks-in-kubernetes-deployments-47.png)
+
+Using the example Job above, the Hook annotations are removed and the Kubernetes Job is set as a separate yaml file. In your Harness Service **Manifests** section, the Job manifest should look something like this:
 
 
 ```
@@ -107,9 +109,13 @@ spec:
 ```
 To apply the Job in a Workflow, you add the [Apply](/article/4vjgmjcj6z-deploy-manifests-separately-using-apply-step) step to your Workflow and reference the job.yaml in Service **Manifests**:
 
-![](./static/use-helm-chart-hooks-in-kubernetes-deployments-48.png)Since the original Helm chart hook was a `post-install`, you simply place the **Apply** step after the **Canary Deployment** step in your Workflow.
+![](./static/use-helm-chart-hooks-in-kubernetes-deployments-48.png)
 
-![](./static/use-helm-chart-hooks-in-kubernetes-deployments-49.png)You can see the flexibility available for deploying your manifests in any order you want.
+Since the original Helm chart hook was a `post-install`, you simply place the **Apply** step after the **Canary Deployment** step in your Workflow.
+
+![](./static/use-helm-chart-hooks-in-kubernetes-deployments-49.png)
+
+You can see the flexibility available for deploying your manifests in any order you want.
 
 For example, if there is a `pre-install` Helm chart hook, you can use Apply to place this job.yaml *before* the Canary Deployment step.
 
@@ -123,9 +129,13 @@ As noted, you cannot use Canary deployment or Blue/Green deployments. Native Hel
 
 For a Harness native Helm implementation, you simply link to your remote Helm chart in your Harness Service.
 
-![](./static/use-helm-chart-hooks-in-kubernetes-deployments-50.png)And then deploy the chart using a Harness Basic Workflow:
+![](./static/use-helm-chart-hooks-in-kubernetes-deployments-50.png)
 
-![](./static/use-helm-chart-hooks-in-kubernetes-deployments-51.png)You Helm chart hooks are implement by Helm and Tiller in your target cluster.
+And then deploy the chart using a Harness Basic Workflow:
+
+![](./static/use-helm-chart-hooks-in-kubernetes-deployments-51.png)
+
+You Helm chart hooks are implement by Helm and Tiller in your target cluster.
 
 ### Option: Delegate Selector
 

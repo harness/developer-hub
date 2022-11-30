@@ -58,7 +58,9 @@ To overwrite any property in an inline or remote manifest, the manifest.yml must
 
 For example, here are inline manifest.yml and vars.yml files using variables for routes. These variables are then overwritten in **Service Configuration Overrides**:
 
-![](./static/override-pcf-manifests-and-config-variables-and-files-77.png)You can only perform one overwrite of a single Service. If you attempt to add a second overwrite of the same Service, you will receive this error: `Can’t add, this override already exists. Please use the edit button to update.`
+![](./static/override-pcf-manifests-and-config-variables-and-files-77.png)
+
+You can only perform one overwrite of a single Service. If you attempt to add a second overwrite of the same Service, you will receive this error: `Can’t add, this override already exists. Please use the edit button to update.`
 
 To overwrite a TAS manifest, do the following:
 
@@ -85,7 +87,9 @@ To overwrite manifest property values using remote files, you simply point to a 
 
 For example, here is a Service with an inline manifest.yml and vars.yml, and it uses the remote Git repo folder **pcf-dev/vars.yml** file to overwrite the vars.yml values:
 
-![](./static/override-pcf-manifests-and-config-variables-and-files-79.png)The remote vars.yml file does not need to supply all of the variables for the vars.yml file it is overwriting. You can simply overwrite the variables you want.
+![](./static/override-pcf-manifests-and-config-variables-and-files-79.png)
+
+The remote vars.yml file does not need to supply all of the variables for the vars.yml file it is overwriting. You can simply overwrite the variables you want.
 
 As you can see in the above example, the remote vars.yml file only overwrites the **routes** in the inline vars.yml file.
 

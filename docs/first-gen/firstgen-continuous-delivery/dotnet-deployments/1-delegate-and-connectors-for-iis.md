@@ -102,13 +102,19 @@ Listener
 ```
 You can also see WinRM running in Server Manager:
 
-![](./static/1-delegate-and-connectors-for-iis-19.png)You can also test if the WinRM service is running on a local or remote computer using the Test-WSMan PowerShell command. For more information, see [Test-WSMan](https://docs.microsoft.com/en-us/powershell/module/microsoft.wsman.management/test-wsman?view=powershell-6) from Microsoft.
+![](./static/1-delegate-and-connectors-for-iis-19.png)
+
+You can also test if the WinRM service is running on a local or remote computer using the Test-WSMan PowerShell command. For more information, see [Test-WSMan](https://docs.microsoft.com/en-us/powershell/module/microsoft.wsman.management/test-wsman?view=powershell-6) from Microsoft.
 
 Ensure that the ports you need for the WinRM connection are open on your network security group and VM. For more information, see [How to open ports to a virtual machine with the Azure portal](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/nsg-quickstart-portal) to open the WinRM Inbound security rule.**Network Security Group:**
 
-![](./static/1-delegate-and-connectors-for-iis-20.png)**VM Inbound Port Rules:**
+![](./static/1-delegate-and-connectors-for-iis-20.png)
 
-![](./static/1-delegate-and-connectors-for-iis-21.png)For more information about Azure and WinRM, see the following:
+**VM Inbound Port Rules:**
+
+![](./static/1-delegate-and-connectors-for-iis-21.png)
+
+For more information about Azure and WinRM, see the following:
 
 * [Setting up WinRM access for Virtual Machines in Azure Resource Manager](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/winrm)
 * [Deploy a Windows VM and configures WinRM https listener](https://azure.microsoft.com/en-au/resources/templates/vm-winrm-windows/) (Azure Template)
@@ -129,7 +135,9 @@ In AWS EC2, you can enter the command as User data when creating the instance:
 Invoke-Expression ((New-Object System.Net.Webclient).DownloadString('https://raw.githubusercontent.com/ansible/ansible/devel/examples/scripts/ConfigureRemotingForAnsible.ps1'))   
 </powershell>
 ```
-![](./static/1-delegate-and-connectors-for-iis-22.png)If you launch more than one instance at a time, the user data is available to all the instances in that reservation.
+![](./static/1-delegate-and-connectors-for-iis-22.png)
+
+If you launch more than one instance at a time, the user data is available to all the instances in that reservation.
 
 You can also remote into the EC2 instance, open a PowerShell session, and run the `Invoke-Expression`.
 
@@ -166,7 +174,9 @@ Listener
 ```
 Here's an example:
 
-![](./static/1-delegate-and-connectors-for-iis-23.png)For more information about EC2 and WinRM, see the following:
+![](./static/1-delegate-and-connectors-for-iis-23.png)
+
+For more information about EC2 and WinRM, see the following:
 
 * [WinRM (Windows Remote Management) Troubleshooting](https://blogs.technet.microsoft.com/jonjor/2009/01/09/winrm-windows-remote-management-troubleshooting/)
 * [Running Commands on Your Windows Instance at Launch](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-user-data.html)
@@ -180,7 +190,8 @@ If the default methods for setting up WinRM in your Windows instances is not wor
 Add a WinRM connection in Harness to execute deployment steps on the remote Windows servers.
 
 1. Mouseover **Continuous Security**, and then click **Secrets Management**. The Secrets Management page appears.
-2. Under **Executions Credentials**, click **WinRM Connection**. The **WinRM Connection Attributes** dialog appears.![](./static/1-delegate-and-connectors-for-iis-24.png)
+2. Under **Executions Credentials**, click **WinRM Connection**. The **WinRM Connection Attributes** dialog appears.
+   ![](./static/1-delegate-and-connectors-for-iis-24.png)
 3. Fill out the **WinRM Connection Attributes** dialog and click **SUBMIT**. The **WinRM Connection Attributes** dialog has the following fields.
 
 

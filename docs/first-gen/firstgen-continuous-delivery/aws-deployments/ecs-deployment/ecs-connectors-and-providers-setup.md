@@ -23,7 +23,9 @@ Add an Artifact Server for your artifact repository to your Harness account as d
 
 Later, when you set up a Harness Service, you will use the Artifact Server to select the artifact you want to deploy:
 
-![](./static/ecs-connectors-and-providers-setup-00.png)If you are using Amazon Elastic Container Registry (ECR) for your artifacts, you can simply add an AWS Cloud Provider to manage your artifact and AWS deployment environment connections. Setting up an AWS Cloud Provider is described below.### Add an AWS Cloud Provider
+![](./static/ecs-connectors-and-providers-setup-00.png)
+
+If you are using Amazon Elastic Container Registry (ECR) for your artifacts, you can simply add an AWS Cloud Provider to manage your artifact and AWS deployment environment connections. Setting up an AWS Cloud Provider is described below.### Add an AWS Cloud Provider
 
 Harness Cloud Providers represent the infrastructure of your applications, such as your ECS cluster. In this section, we will cover how to add an AWS Cloud Provider that uses the IAM role of the Harness ECS Delegate by using the Delegate Selectors.
 

@@ -81,7 +81,9 @@ In particular, you specify the min, max, and desired number of instances for the
 
 These correspond to the **Instance limits** settings in **Auto created scale condition** in VMSS:
 
-![](./static/create-an-azure-vmss-basic-deployment-16.png)Later, in the **Upgrade Virtual Machine Scale Set** step, you will upgrade the number of instances by a percentage or count of the desired instances.
+![](./static/create-an-azure-vmss-basic-deployment-16.png)
+
+Later, in the **Upgrade Virtual Machine Scale Set** step, you will upgrade the number of instances by a percentage or count of the desired instances.
 
 #### Name
 

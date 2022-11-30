@@ -40,7 +40,9 @@ To have a Workflow ignore a resource file in a Service **Manifests** section, 
 
 For more information on `harness.io/skip-file-for-deploy`, see [Kubernetes Versioning and Annotations](/article/ttn8acijrz-versioning-and-annotations).For example, here is a ConfigMap file using the comment:
 
-![](./static/ignore-a-manifest-file-during-deployment-163.png)Now, when this Service is deployed by a Workflow, this ConfigMap resource will not be applied.
+![](./static/ignore-a-manifest-file-during-deployment-163.png)
+
+Now, when this Service is deployed by a Workflow, this ConfigMap resource will not be applied.
 
 The comment `# harness.io/skip-file-for-deploy` must be at the **top** of the file. If it is on the second line it will not work and the resource will be deployed as part of the main Workflow rollout.
 
@@ -52,7 +54,9 @@ For details on the Apply Step, see [Deploy Manifests Separately using Apply Step
 
 For example, the following image shows a Jobs resource in a Service **Manifest** section that uses the ignore comment `# harness.io/skip-file-for-deploy` so that the Workflow does not apply it as part of its main **Deploy** steps, and the **Apply** step that specifies the same Jobs resource:
 
-![](./static/ignore-a-manifest-file-during-deployment-164.png)The **File paths** field in the Apply step must include the folder name and the file name. In the above example, the folder **templates** is included with the file name **jobs.yaml**: `templates/jobs.yaml`.
+![](./static/ignore-a-manifest-file-during-deployment-164.png)
+
+The **File paths** field in the Apply step must include the folder name and the file name. In the above example, the folder **templates** is included with the file name **jobs.yaml**: `templates/jobs.yaml`.
 
 You can include multiple resource files in the Apply step **File paths** field by separating them with commas, for example: `templates/jobs.yaml, templates/statefulSet.yaml`.
 

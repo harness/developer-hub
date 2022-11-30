@@ -42,9 +42,13 @@ For other deployment strategies, see [Create an Azure VMSS Basic Deployment](/ar
 
 Here is the Azure load balancer with two pools set up:
 
-![](./static/create-an-azure-vmss-blue-green-deployment-00.png)Here is a successful Blue/Green VMSS deployment, showing the swap from the stage to prod pool:
+![](./static/create-an-azure-vmss-blue-green-deployment-00.png)
 
-![](./static/create-an-azure-vmss-blue-green-deployment-01.png)Here is the final, deployed VMSS with its prod pool:
+Here is a successful Blue/Green VMSS deployment, showing the swap from the stage to prod pool:
+
+![](./static/create-an-azure-vmss-blue-green-deployment-01.png)
+
+Here is the final, deployed VMSS with its prod pool:
 
 ![](./static/create-an-azure-vmss-blue-green-deployment-02.png)
 
@@ -56,7 +60,9 @@ See [Supported Platforms and Technologies](/article/220d0ojx5y-supported-platfor
 
 A Harness Blue/Green VMSS deployment requires an Azure load balancer with two backend pools.
 
-![](./static/create-an-azure-vmss-blue-green-deployment-03.png)The load balancer distributes inbound flows that arrive at the load balancer's front end to the stage and production backend pool instances.
+![](./static/create-an-azure-vmss-blue-green-deployment-03.png)
+
+The load balancer distributes inbound flows that arrive at the load balancer's front end to the stage and production backend pool instances.
 
 The backend pool instances are instances in the virtual machine scale set Harness creates in the deployment.
 
@@ -106,7 +112,9 @@ You will define the new VMSS by specifying the min, max, and desired number of i
 
 These correspond to the **Instance limits** settings in **Auto created scale condition** in VMSS:
 
-![](./static/create-an-azure-vmss-blue-green-deployment-04.png)Later, in the **Upgrade Virtual Machine Scale Set** step, you will upgrade the number of instances by a percentage or count of the desired instances.
+![](./static/create-an-azure-vmss-blue-green-deployment-04.png)
+
+Later, in the **Upgrade Virtual Machine Scale Set** step, you will upgrade the number of instances by a percentage or count of the desired instances.
 
 #### Name
 
@@ -241,7 +249,9 @@ In **Upgrade Virtual Machine Scale Set**, you can see the new VMSS upscaled to i
 
 In **Swap Virtual Machine Scale Set Route**, you can see Harness detach the stage pool from the new VMSS and attached the production pool to it.
 
-![](./static/create-an-azure-vmss-blue-green-deployment-08.png)You can see the swap in the logs:
+![](./static/create-an-azure-vmss-blue-green-deployment-08.png)
+
+You can see the swap in the logs:
 
 
 ```
@@ -264,7 +274,9 @@ Azure tags are used for versioning by Harness, as described in [Azure VMSS Versi
 
 For Blue/Green deployments, the an additional tag named is `BG_VERSION` added.
 
-![](./static/create-an-azure-vmss-blue-green-deployment-09.png)The value for the tag is either BLUE or GREEN. The value alternates with each deployment.
+![](./static/create-an-azure-vmss-blue-green-deployment-09.png)
+
+The value for the tag is either BLUE or GREEN. The value alternates with each deployment.
 
 In the following example, the new deployment of `doc__blue__green` (`doc__blue__green__2`) is tagged with `BLUE` and the previous version `doc__blue__green__1` is tagged with `GREEN`.
 

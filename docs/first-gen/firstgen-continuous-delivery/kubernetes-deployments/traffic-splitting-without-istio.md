@@ -218,7 +218,9 @@ Copy and paste the following three Ingress manifests into three new files in **t
 
 1. For each new file, click the **templates** folder, and then click **Add File**:
 
-![](./static/traffic-splitting-without-istio-123.png)Add the following three files:
+![](./static/traffic-splitting-without-istio-123.png)
+
+Add the following three files:
 
 #### ingress-traffic-split0.yaml
 
@@ -333,11 +335,15 @@ Workflow sections help you organize your steps. We'll add one section before the
 
 To add a section, click the options button (**︙**) next to any section and then click **Add Section**.
 
-![](./static/traffic-splitting-without-istio-125.png)Enter the name **Shift 50% Traffic Before Switch** and click **Submit**.
+![](./static/traffic-splitting-without-istio-125.png)
+
+Enter the name **Shift 50% Traffic Before Switch** and click **Submit**.
 
 The new section is added to the bottom of the Workflow. Use the Reorder option to move the section to right above **Verify**.
 
-![](./static/traffic-splitting-without-istio-126.png)Add another section named **Shift Remaining Traffic After Switch** and move it to right before the **Wrap Up** step.
+![](./static/traffic-splitting-without-istio-126.png)
+
+Add another section named **Shift Remaining Traffic After Switch** and move it to right before the **Wrap Up** step.
 
 When you're done, the Workflow will look like this:
 

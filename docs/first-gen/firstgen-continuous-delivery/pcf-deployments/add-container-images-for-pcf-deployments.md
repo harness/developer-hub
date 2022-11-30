@@ -72,7 +72,9 @@ Enter a name for the Service. For details on how Harness manages Tanzu app names
 
 For the Service **Deployment Type**, select **Tanzu Application Services**.
 
-![](./static/add-container-images-for-pcf-deployments-00.png)Click **Submit**.
+![](./static/add-container-images-for-pcf-deployments-00.png)
+
+Click **Submit**.
 
 The new Service is created. Now you can add your container images as an artifact source.
 
@@ -133,7 +135,9 @@ The following Harness Artifact Sources support Docker:
 
 For Artifactory, ensure you select the Use Docker Format option:
 
-![](./static/add-container-images-for-pcf-deployments-01.png)TAS treats Artifactory as private registry. Harness supports no authentication and Basic authentication. You can use either in your Artifactory repos.
+![](./static/add-container-images-for-pcf-deployments-01.png)
+
+TAS treats Artifactory as private registry. Harness supports no authentication and Basic authentication. You can use either in your Artifactory repos.
 
 For more information on how TAS supports Docker, see [Push a Docker Image from a Registry](https://docs.cloudfoundry.org/devguide/deploy-apps/push-docker.html#registry) from TAS.
 

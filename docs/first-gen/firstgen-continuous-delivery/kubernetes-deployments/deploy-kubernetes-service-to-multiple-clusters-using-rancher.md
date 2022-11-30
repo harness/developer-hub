@@ -69,7 +69,9 @@ Harness targets Rancher clusters using cluster labels. When you set up a Rancher
 
 Here's an example where the labels from two clusters are added to **Cluster Selection Criteria**.
 
-![](./static/deploy-kubernetes-service-to-multiple-clusters-using-rancher-196.png)Harness uses labels in the following way:
+![](./static/deploy-kubernetes-service-to-multiple-clusters-using-rancher-196.png)
+
+Harness uses labels in the following way:
 
 * Harness will only target clusters that match the name:value pair you add in the Infrastructure Definition.
 * If you add multiple name:value pairs, Harness treats those as AND conditions. Clusters must have all of the name:value pairs as labels to be selected.
@@ -79,13 +81,19 @@ Here's an example where the labels from two clusters are added to **Cluster Sele
 
 You can use existing cluster labels or add new ones for Harness deployments.
 
-![](./static/deploy-kubernetes-service-to-multiple-clusters-using-rancher-197.png)In Rancher, add labels to the clusters to identify them for the Harness deployment.
+![](./static/deploy-kubernetes-service-to-multiple-clusters-using-rancher-197.png)
+
+In Rancher, add labels to the clusters to identify them for the Harness deployment.
 
 To add labels to an existing cluster in Rancher, select the cluster, click more options (**︙**), and then click **Edit Config**.
 
-![](./static/deploy-kubernetes-service-to-multiple-clusters-using-rancher-198.png)Click **Add Label** to add new labels.
+![](./static/deploy-kubernetes-service-to-multiple-clusters-using-rancher-198.png)
 
-![](./static/deploy-kubernetes-service-to-multiple-clusters-using-rancher-199.png)Now that the cluster has labels, you can identify it in Harness as a target cluster.
+Click **Add Label** to add new labels.
+
+![](./static/deploy-kubernetes-service-to-multiple-clusters-using-rancher-199.png)
+
+Now that the cluster has labels, you can identify it in Harness as a target cluster.
 
 ### Step 2: Add a Harness Rancher Cloud Provider
 
@@ -119,7 +127,9 @@ Click **Add**, and then enter the label name and value(s).
 
 See [Review: Cluster Labels and Harness Infrastructure Definitions](https://harness.helpdocs.io/article/hsc50ny57g#review_cluster_labels_and_harness_infrastructure_definitions) above.
 
-![](./static/deploy-kubernetes-service-to-multiple-clusters-using-rancher-200.png)Click **Submit**. The Infrastructure Definition is added to the Environment. You can now select it in your Harness Workflows.
+![](./static/deploy-kubernetes-service-to-multiple-clusters-using-rancher-200.png)
+
+Click **Submit**. The Infrastructure Definition is added to the Environment. You can now select it in your Harness Workflows.
 
 ### Option: Harness Variables in Infrastructure Definition
 
@@ -154,7 +164,9 @@ INFO   2022-02-16 12:46:39    Eligible clusters list after applying label filter
 * **Rancher Rollout Deployment:** performs a new Kubernetes rollout deployment for each cluster matching the criteria in **Cluster Selection Criteria**.
 * **Rancher Rollback Deployment:** in the case of failures, rolls back each cluster to its previous app version.
 
-![](./static/deploy-kubernetes-service-to-multiple-clusters-using-rancher-201.png)Here's what a successful deployment looks like. You can see that two matching clusters were targeted.
+![](./static/deploy-kubernetes-service-to-multiple-clusters-using-rancher-201.png)
+
+Here's what a successful deployment looks like. You can see that two matching clusters were targeted.
 
 ![](./static/deploy-kubernetes-service-to-multiple-clusters-using-rancher-202.png)
 

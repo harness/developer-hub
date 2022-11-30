@@ -47,7 +47,9 @@ Open you Shared Image Gallery and note the following information:
 
 You can see this information in the Shared Image Gallery:
 
-![](./static/add-your-azure-vm-image-for-deployment-18.png)You can also see this information in the gallery **Properties**.
+![](./static/add-your-azure-vm-image-for-deployment-18.png)
+
+You can also see this information in the gallery **Properties**.
 
 ### Step 2: Create the Harness VMSS Service
 

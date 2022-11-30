@@ -77,7 +77,9 @@ Select the resource group used by your Web App.
 
 The resource group is located in the Web App **Overview** section of the Azure portal.
 
-![](./static/define-your-azure-web-app-infrastructure-05.png)Within the same resource group, you can't mix Windows and Linux apps in the same region. See [Limitations](https://docs.microsoft.com/en-us/azure/app-service/overview#limitations) from Azure.
+![](./static/define-your-azure-web-app-infrastructure-05.png)
+
+Within the same resource group, you can't mix Windows and Linux apps in the same region. See [Limitations](https://docs.microsoft.com/en-us/azure/app-service/overview#limitations) from Azure.
 
 ### Option 1: Scope to Specific Services
 

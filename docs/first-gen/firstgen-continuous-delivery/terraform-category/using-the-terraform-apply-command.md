@@ -143,7 +143,9 @@ Let's look at an example where the Terraform Apply step is added as an independe
 
 The Workflow will deploy the application package as intended, and it will also execute the Terraform Apply step to create a separate EC2 instance.
 
-![](./static/using-the-terraform-apply-command-47.png)The steps for installing the application package are described in the [Traditional Deployments](/article/6pwni5f9el) guide. Let's look at the Terraform Apply Step.
+![](./static/using-the-terraform-apply-command-47\.png)
+
+The steps for installing the application package are described in the [Traditional Deployments](/article/6pwni5f9el) guide. Let's look at the Terraform Apply Step.
 
 The Terraform script listed earlier will create an EC2 instance. This script is used by the Terraform Infrastructure Provisioner that the Terraform Apply step will use.
 
@@ -151,13 +153,17 @@ In the Terraform Apply step you supply the values for the input variables in the
 
 Click **Populate Variables** and Harness will pull all of the input variables from the Terraform script you added to the Terraform Infrastructure Provisioner you selected.
 
-![](./static/using-the-terraform-apply-command-48.png)It can table a moment to populate the variables.
+![](./static/using-the-terraform-apply-command-48\.png)
+
+It can table a moment to populate the variables.
 
 You can see that the AWS access and secret keys are inputs in this configuration. You can use [Harness Secrets Management](https://docs.harness.io/article/au38zpufhr-secret-management) to provide encrypted text secrets in the Terraform Apply step.
 
 When the Workflow is deployed, you can see the traditional deployment of the application package succeed and the Terraform Apply step executed successfully.
 
-![](./static/using-the-terraform-apply-command-49.png)Here is the Terraform Apply step output (with some lines omitted):
+![](./static/using-the-terraform-apply-command-49\.png)
+
+Here is the Terraform Apply step output (with some lines omitted):
 
 
 ```
@@ -259,7 +265,9 @@ To use the same remote state file, Terraform Apply steps must use the **Backend 
 
 You add the backend configs (remote state variables) for remote state in the **Backend Configuration (Remote state)** settings.
 
-![](./static/using-the-terraform-apply-command-50.png)If you have two Terraform Apply steps that use the same Terraform Infrastructure Provisioner and the same workspace, then they are both using the same remote state file. 
+![](./static/using-the-terraform-apply-command-50\.png)
+
+If you have two Terraform Apply steps that use the same Terraform Infrastructure Provisioner and the same workspace, then they are both using the same remote state file. 
 
 A workspace is really a different state file. If you have two Terraform Apply steps that use the same Terraform Infrastructure Provisioner but different workspaces, then they are using separate state files.
 

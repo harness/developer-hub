@@ -78,11 +78,15 @@ Container Settings is deprecated and will be removed in March of 2021. The Deplo
 
 Here's the Harness [Docker Registry Artifact Server](/article/tdj2ghkqb0-add-docker-registry-artifact-servers):
 
-![](./static/add-your-docker-image-for-azure-web-app-deployment-12.png)The above example uses a public repo, and it requires no username or password.
+![](./static/add-your-docker-image-for-azure-web-app-deployment-12.png)
+
+The above example uses a public repo, and it requires no username or password.
 
 In the Harness Service, the Artifact Source uses this Artifact Server and points to the Docker Image Name:
 
-![](./static/add-your-docker-image-for-azure-web-app-deployment-13.png)The above example uses a [publicly available Docker image from Harness](https://hub.docker.com/r/harness/todolist-sample/tags?page=1&ordering=last_updated). You might want to use that the first time you set up an Azure Web App deployment.When are done, click **Submit**.
+![](./static/add-your-docker-image-for-azure-web-app-deployment-13.png)
+
+The above example uses a [publicly available Docker image from Harness](https://hub.docker.com/r/harness/todolist-sample/tags?page=1&ordering=last_updated). You might want to use that the first time you set up an Azure Web App deployment.When are done, click **Submit**.
 
 Next, click **Artifact History** to see the artifacts and builds Harness pulls from the repo.
 
@@ -106,11 +110,15 @@ az webapp config appsettings set --resource-group <group-name> --name <app-name>
 ```
 Or via the portal:
 
-![](./static/add-your-docker-image-for-azure-web-app-deployment-14.png)You can also set **Application settings** and **Connection strings** in the Harness Service.
+![](./static/add-your-docker-image-for-azure-web-app-deployment-14.png)
+
+You can also set **Application settings** and **Connection strings** in the Harness Service.
 
 Here's an example of setting **Application settings** in the Harness Service:
 
-![](./static/add-your-docker-image-for-azure-web-app-deployment-15.png)This is the same as setting them in the Azure portal **Advanced edit**.
+![](./static/add-your-docker-image-for-azure-web-app-deployment-15.png)
+
+This is the same as setting them in the Azure portal **Advanced edit**.
 
 ![](./static/add-your-docker-image-for-azure-web-app-deployment-16.png)
 

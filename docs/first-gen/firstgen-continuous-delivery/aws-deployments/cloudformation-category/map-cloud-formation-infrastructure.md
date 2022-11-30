@@ -46,7 +46,9 @@ Ensure you have read the following topics before you map the CloudFormation Prov
 
 This topic describes step 2 in the Harness CloudFormation Provisioning implementation process:
 
-![](./static/map-cloud-formation-infrastructure-05.png)Once you have completed this topic, you can move onto the next step: [Provision using CloudFormation Create Stack](/article/5wdb3r765g-provision-cloudformation-create-stack).
+![](./static/map-cloud-formation-infrastructure-05.png)
+
+Once you have completed this topic, you can move onto the next step: [Provision using CloudFormation Create Stack](/article/5wdb3r765g-provision-cloudformation-create-stack).
 
 ### Step: Create an Infrastructure Definition
 
@@ -94,9 +96,13 @@ The ECS deployment type has two **Launch Type** options:
 
 * **EC2 Instances** - Region and Cluster are required. Here is an example mapping Region and Cluster and the remaining fields:
 
-![](./static/map-cloud-formation-infrastructure-07.png)* **Fargate Launch Type** - Region, Cluster, Task Execution Role, VPC, Subnets, Security Group are required. Here is an example mapping all of these:
+![](./static/map-cloud-formation-infrastructure-07.png)
 
-![](./static/map-cloud-formation-infrastructure-08.png)See [AWS ECS Deployments Overview](/article/5z2kw34d7x-aws-ecs-deployments-overview) and [AWS ECS Quickstart](/article/j39azkrevm-aws-ecs-deployments).
+* **Fargate Launch Type** - Region, Cluster, Task Execution Role, VPC, Subnets, Security Group are required. Here is an example mapping all of these:
+
+![](./static/map-cloud-formation-infrastructure-08.png)
+
+See [AWS ECS Deployments Overview](/article/5z2kw34d7x-aws-ecs-deployments-overview) and [AWS ECS Quickstart](/article/j39azkrevm-aws-ecs-deployments).
 
 ### Option 3: Map an AWS Lambda Infrastructure
 
@@ -104,7 +110,9 @@ The Lambda deployment type supports AWS Instance and AWS Auto Scaling Groups. Bo
 
 Here is an Infrastructure Definition example for Lambda.
 
-![](./static/map-cloud-formation-infrastructure-09.png)See [Lambda Deployment Overview](/article/z24n8ut61d-lambda-deployment-overview) and [AWS Lambda Quickstart](/article/wy1rjh19ej-aws-lambda-deployments).
+![](./static/map-cloud-formation-infrastructure-09.png)
+
+See [Lambda Deployment Overview](/article/z24n8ut61d-lambda-deployment-overview) and [AWS Lambda Quickstart](/article/wy1rjh19ej-aws-lambda-deployments).
 
 ### Option 4: Map a Secure Shell (SSH) Infrastructure on AWS
 
@@ -112,11 +120,15 @@ The Secure Shell (SSH) deployment type is supported with CloudFormation on AWS o
 
 For the **AWS Instance**, only AWS tags are required. Here is an example mapping both VPCs and AWS tags:
 
-![](./static/map-cloud-formation-infrastructure-10.png)The remaining settings can also use output variables or be hardcoded.
+![](./static/map-cloud-formation-infrastructure-10.png)
+
+The remaining settings can also use output variables or be hardcoded.
 
 For AWS **Auto Scaling Group**, only an Auto Scaling Group is required:
 
-![](./static/map-cloud-formation-infrastructure-11.png)See [Traditional Deployments Overview](/article/6pwni5f9el-traditional-deployments-overview).
+![](./static/map-cloud-formation-infrastructure-11.png)
+
+See [Traditional Deployments Overview](/article/6pwni5f9el-traditional-deployments-overview).
 
 ### Next Steps
 

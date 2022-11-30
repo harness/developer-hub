@@ -80,8 +80,12 @@ You can specify it inline, as described below, or using remote Git files, as des
 To specify the ECS Task Definition, do the following:
 
 1. In the Harness Service, in **Deployment Specification**, expand **ECS** (if necessary). The **Task Definition** appears.
-2. Click **Task Definition**. The **ECS Container Command Definition** settings appear.![](./static/ecs-services-41.png)The simplified ECS Container Command Definition settings are for EC2 ECS clusters only. For **Fargate** (or advanced EC2) clusters, click **Advanced Settings** and use the JSON, as described below.  
-Advanced Settings is required for Fargate because you must use the `${EXECUTION_ROLE}` placeholder, described below.You can specify the Task Definition using the fields in the dialog or click **Advanced Settings** to add or edit the JSON.![](./static/ecs-services-42.png)
+2. Click **Task Definition**. The **ECS Container Command Definition** settings appear.
+   ![](./static/ecs-services-41.png)
+   The simplified ECS Container Command Definition settings are for EC2 ECS clusters only. For **Fargate** (or advanced EC2) clusters, click **Advanced Settings** and use the JSON, as described below.  
+Advanced Settings is required for Fargate because you must use the `${EXECUTION_ROLE}` placeholder, described below.You can specify the Task Definition using the fields in the dialog or click **Advanced Settings** to add or edit the JSON.
+
+   ![](./static/ecs-services-42.png)
 
 For a description of all available Task Definition parameters, see [Task Definition Parameters](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_RegisterTaskDefinition.html) from AWS.
 
@@ -98,7 +102,9 @@ The Task Definition JSON uses the following placeholders.
 
 If you have an existing Task Definition, you can paste it into the JSON. You can obtain the Task Definition from the ECS console:
 
-![](./static/ecs-services-43.png)You can also obtain the Task Definition using the AWS CLI ([describe-task-definition](https://docs.aws.amazon.com/cli/latest/reference/ecs/describe-task-definition.html)):
+![](./static/ecs-services-43.png)
+
+You can also obtain the Task Definition using the AWS CLI ([describe-task-definition](https://docs.aws.amazon.com/cli/latest/reference/ecs/describe-task-definition.html)):
 
 `aws ecs describe-task-definition --task-definition ecsTaskDefinitionName`
 
@@ -162,7 +168,9 @@ For example, the Fargate launch type Task Definition supports CPU and Memory set
 ```
 When you select the Infrastructure Definition, you must also select **Fargate Launch Type** for the **Launch Type**. 
 
-![](./static/ecs-services-44.png)If you select EC2, Harness will ignore the CPU and Memory settings in your Task Definition.
+![](./static/ecs-services-44.png)
+
+If you select EC2, Harness will ignore the CPU and Memory settings in your Task Definition.
 
 If you are not very familiar with task and service definitions, see these examples from AWS: [Task Definitions for Amazon ECS](https://github.com/aws-samples/aws-containers-task-definitions), [Example Task Definitions](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/example_task_definitions.html).
 
@@ -202,7 +210,9 @@ For example:
 ```
 When the Harness Service is deployed and the ECS task definition is registered, you will see the tags in AWS:
 
-![](./static/ecs-services-45.png)Tags must meet the ECS requirements. See [Tag restrictions](https://docs.aws.amazon.com/AmazonECS/latest/userguide/ecs-using-tags.html#tag-restrictions) from AWS.
+![](./static/ecs-services-45.png)
+
+Tags must meet the ECS requirements. See [Tag restrictions](https://docs.aws.amazon.com/AmazonECS/latest/userguide/ecs-using-tags.html#tag-restrictions) from AWS.
 
 #### awsvpc Network Mode
 
@@ -290,7 +300,9 @@ For example:
 ```
 When the Harness Service is deployed and the ECS service is registered, you will see the tags in AWS:
 
-![](./static/ecs-services-46.png)Tags must meet the ECS requirements. See [Tag restrictions](https://docs.aws.amazon.com/AmazonECS/latest/userguide/ecs-using-tags.html#tag-restrictions) from AWS.
+![](./static/ecs-services-46.png)
+
+Tags must meet the ECS requirements. See [Tag restrictions](https://docs.aws.amazon.com/AmazonECS/latest/userguide/ecs-using-tags.html#tag-restrictions) from AWS.
 
 ##### Capacity Provider Strategy Support
 
@@ -357,7 +369,9 @@ For a detailed description of Service Discovery concepts, see [Service Discovery
 
 Here is what the ECS Service Discovery configuration looks like in AWS:
 
-![](./static/ecs-services-47.png)When you create the Service Discovery Service in ECS, you will specify a namespace and ECS will generate the DNS records (SRV and A records) for the ECS namespace in AWS Route 53. DNS Queries for the namespace are resolved by Route 53 and traffic is routed to the instances supporting the ECS cluster.
+![](./static/ecs-services-47.png)
+
+When you create the Service Discovery Service in ECS, you will specify a namespace and ECS will generate the DNS records (SRV and A records) for the ECS namespace in AWS Route 53. DNS Queries for the namespace are resolved by Route 53 and traffic is routed to the instances supporting the ECS cluster.
 
 To specify the Service Discovery Service in the Harness **Service Definition**, add the `serviceRegistries` parameter to the Harness **Service Definition**. The `serviceRegistries` parameter is defined like this:
 

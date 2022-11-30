@@ -40,7 +40,9 @@ In this topic:
 
 First, the Workflow Infrastructure Definition setting is templated with the `${infrastructure}` expression and then, when deployed, the `infrastructure` Workflow multi-select variable is given multiple infrastructures.
 
-![](./static/deploy-to-multiple-infrastructures-08.png)Here is an example of a Pipeline deployment Stage using the Workflow that deploys to two Infrastructure Definitions:
+![](./static/deploy-to-multiple-infrastructures-08.png)
+
+Here is an example of a Pipeline deployment Stage using the Workflow that deploys to two Infrastructure Definitions:
 
 ![](./static/deploy-to-multiple-infrastructures-09.png)
 
@@ -93,7 +95,9 @@ In **Workflow Variables**, find the Workflow variable created for the templated 
 
 In **Value**, select the multiple infrastructures where you want to deploy. Click the checkbox next to each Infrastructure Definition.
 
-![](./static/deploy-to-multiple-infrastructures-11.png)Click **Submit**.
+![](./static/deploy-to-multiple-infrastructures-11.png)
+
+Click **Submit**.
 
 The Workflows that use multiple Infrastructure Definitions are displayed in parentheses to indicate that they are executing in parallel.
 
@@ -105,7 +109,9 @@ Click each Workflow and look in the **Infrastructure** displayed. It will show a
 
 When you create a Trigger for the Pipeline, you must select the multiple Infrastructure Definitions for the Workflow(s) it contains:
 
-![](./static/deploy-to-multiple-infrastructures-13.png)The Trigger will execute the Pipeline and deploy to both infrastructures just as it did when you deployed the Pipeline on its own.
+![](./static/deploy-to-multiple-infrastructures-13.png)
+
+The Trigger will execute the Pipeline and deploy to both infrastructures just as it did when you deployed the Pipeline on its own.
 
 See [Trigger Workflows and Pipelines](/article/xerirloz9a-add-a-trigger-2).
 

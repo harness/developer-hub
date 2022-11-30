@@ -75,7 +75,11 @@ The Main Container task spec must have a container definition using the placehol
 
 ECS container specs are added in Harness Services. The **Deployment Type** for the Services must be **Amazon ECS Container Service (ECS)**:
 
-![](./static/deploy-multiple-containers-in-a-single-ecs-workflow-01.png)1. In the Harness ECS Service, in **Deployment Specification**, click **Container Specification**. The **ECS - Container Command Definition** settings appear.![](./static/deploy-multiple-containers-in-a-single-ecs-workflow-02.png)The simple interface is for adding a single, EC2 container spec. For Fargate, sidecar containers, or granular settings, use **Advanced Settings**.
+![](./static/deploy-multiple-containers-in-a-single-ecs-workflow-01.png)
+
+1. In the Harness ECS Service, in **Deployment Specification**, click **Container Specification**. The **ECS - Container Command Definition** settings appear.
+   ![](./static/deploy-multiple-containers-in-a-single-ecs-workflow-02.png)
+   The simple interface is for adding a single, EC2 container spec. For Fargate, sidecar containers, or granular settings, use **Advanced Settings**.
 2. Click **Advanced Settings**.
 
 Here is where you will enter the sidecar container task definitions.
@@ -207,7 +211,9 @@ Here is what the full specs look like:
 
 Using `${CONTAINER_NAME}_Sidecar` isn't something you would do in production. It's just a simple way to try out the feature yourself. We include an advanced example later in this topic. Once the Service is deployed, you will see both containers in the ECS console:
 
-![](./static/deploy-multiple-containers-in-a-single-ecs-workflow-03.png)You can use specs that deploy the Main Container and sidecars.
+![](./static/deploy-multiple-containers-in-a-single-ecs-workflow-03.png)
+
+You can use specs that deploy the Main Container and sidecars.
 
 
 Here's an advanced example that deploys the Main Container, Nginx, and Tomcat:
@@ -334,7 +340,9 @@ You can see that this example uses the [default public Docker Hub setting for th
 
 Harness does not pull these images. They are pulled by ECS.You can see all three container in the ECS console:
 
-![](./static/deploy-multiple-containers-in-a-single-ecs-workflow-04.png)That's all you have to do to deploy sidecar containers. Use the Harness Service with a Harness Basic, Canary, or Blue/Green ECS Workflow and all of the containers are deployed.
+![](./static/deploy-multiple-containers-in-a-single-ecs-workflow-04.png)
+
+That's all you have to do to deploy sidecar containers. Use the Harness Service with a Harness Basic, Canary, or Blue/Green ECS Workflow and all of the containers are deployed.
 
 ### Step 2: Identify Main Container by Tag in ECS Console
 
@@ -352,11 +360,17 @@ You can see this tag in the ECS console.
 
 Locate the ECS service you deployed, and then click its **Task definition**.
 
-![](./static/deploy-multiple-containers-in-a-single-ecs-workflow-05.png)In the task definition, in the **Builder** tab, in **Container Definitions**, you can see the containers that were deployed:
+![](./static/deploy-multiple-containers-in-a-single-ecs-workflow-05.png)
 
-![](./static/deploy-multiple-containers-in-a-single-ecs-workflow-06.png)In the task definition **Tags** tab, you can see the Main Container tag that displays the name of the Main Container:
+In the task definition, in the **Builder** tab, in **Container Definitions**, you can see the containers that were deployed:
 
-![](./static/deploy-multiple-containers-in-a-single-ecs-workflow-07.png)Do not edit or remove this tag.You will see the same Main Container tag when you deploy multiple sidecar containers also:
+![](./static/deploy-multiple-containers-in-a-single-ecs-workflow-06.png)
+
+In the task definition **Tags** tab, you can see the Main Container tag that displays the name of the Main Container:
+
+![](./static/deploy-multiple-containers-in-a-single-ecs-workflow-07.png)
+
+Do not edit or remove this tag.You will see the same Main Container tag when you deploy multiple sidecar containers also:
 
 ![](./static/deploy-multiple-containers-in-a-single-ecs-workflow-08.png)
 
@@ -372,7 +386,9 @@ This is one way to template the ECS sidecar container specs.
 
 Let's look at a Harness ECS Workflow with Workflow variables for two sidecar containers:
 
-![](./static/deploy-multiple-containers-in-a-single-ecs-workflow-09.png)Now let's look at how these are used in the sidecar container specs in a Harness Service:
+![](./static/deploy-multiple-containers-in-a-single-ecs-workflow-09.png)
+
+Now let's look at how these are used in the sidecar container specs in a Harness Service:
 
 
 ```
@@ -406,7 +422,9 @@ Let's look at a Harness ECS Workflow with Workflow variables for two sidecar con
 ```
 When the Workflow is deployed, you are prompted to provide values for the Workflow variables used in the Service's container specs:
 
-![](./static/deploy-multiple-containers-in-a-single-ecs-workflow-10.png)During deployment, the values you provided for the Workflow variables replace the Workflow variable expressions in the Service's container specs.
+![](./static/deploy-multiple-containers-in-a-single-ecs-workflow-10.png)
+
+During deployment, the values you provided for the Workflow variables replace the Workflow variable expressions in the Service's container specs.
 
 ### Notes
 

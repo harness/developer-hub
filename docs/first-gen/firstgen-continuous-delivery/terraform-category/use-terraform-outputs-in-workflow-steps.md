@@ -56,9 +56,13 @@ For example, let's say you have an output for a Kubernetes cluster name. You can
 
 You can see the Terraform log display the output `clusterName = us-central1-a/harness-test` in the following Terraform Provision step:
 
-![](./static/use-terraform-outputs-in-workflow-steps-35.png)Next, you could add a Shell Script step that uses the Terraform output variable `${terraform.clusterName}`:
+![](./static/use-terraform-outputs-in-workflow-steps-35\.png)
 
-![](./static/use-terraform-outputs-in-workflow-steps-36.png)In the Shell Script step in the deployment, you can see the value `us-central1-a/harness-test` printed:
+Next, you could add a Shell Script step that uses the Terraform output variable `${terraform.clusterName}`:
+
+![](./static/use-terraform-outputs-in-workflow-steps-36\.png)
+
+In the Shell Script step in the deployment, you can see the value `us-central1-a/harness-test` printed:
 
 ![](./static/use-terraform-outputs-in-workflow-steps-37.png)
 

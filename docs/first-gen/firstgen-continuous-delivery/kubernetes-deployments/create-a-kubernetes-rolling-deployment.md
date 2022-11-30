@@ -31,7 +31,9 @@ For Canary and Blue/Green Workflow deployments, only one managed object may be d
 
 You can specify the multiple workload objects in a single manifest or in individual manifests, or any other arrangement.For example, here is a Service **Manifests** section with two Deployment objects, each in their own manifest:
 
-![](./static/create-a-kubernetes-rolling-deployment-104.png)Here is the log from the deployment, where you can see both Deployment objects deployed:
+![](./static/create-a-kubernetes-rolling-deployment-104.png)
+
+Here is the log from the deployment, where you can see both Deployment objects deployed:
 
 
 ```
@@ -252,9 +254,13 @@ Done.
 
 Now that the setup is complete, you can click **Deploy** in the Workflow to deploy the artifact to your cluster.
 
-[![](./static/create-a-kubernetes-rolling-deployment-108.png)](./static/create-a-kubernetes-rolling-deployment-108.png)Next, select the artifact build version and click **SUBMIT**.
+[![](./static/create-a-kubernetes-rolling-deployment-108.png)](./static/create-a-kubernetes-rolling-deployment-108.png)
 
-[![](./static/create-a-kubernetes-rolling-deployment-110.png)](./static/create-a-kubernetes-rolling-deployment-110.png)The Workflow is deployed.
+Next, select the artifact build version and click **SUBMIT**.
+
+[![](./static/create-a-kubernetes-rolling-deployment-110.png)](./static/create-a-kubernetes-rolling-deployment-110.png)
+
+The Workflow is deployed.
 
 To see the completed deployment, log into your cluster and run `kubectl get all`. The output lists the new Deployment:
 

@@ -109,14 +109,22 @@ If you are using Google Cloud Storage for your Helm repo, you will see a **Base 
 
 Here are a couple of examples using GCS and S3:
 
-![](./static/2-helm-services-41.png)Here is an example using a Workflow variable expression. You can see the variable created in the Workflow's **Workflow Variables** section, referenced using an expression in **Chart Specification**, and then a value provided for the variable in the deployment dialog that matches the chart folder's name.
+![](./static/2-helm-services-41.png)
 
-![](./static/2-helm-services-42.png)1. To use Helm command flags, click **Enable Command Flags**, and then enter the command to use.
+Here is an example using a Workflow variable expression. You can see the variable created in the Workflow's **Workflow Variables** section, referenced using an expression in **Chart Specification**, and then a value provided for the variable in the deployment dialog that matches the chart folder's name.
+
+![](./static/2-helm-services-42.png)
+
+1. To use Helm command flags, click **Enable Command Flags**, and then enter the command to use.
 2. Click **SUBMIT**. The chart specification is added to the service.
 
-![](./static/2-helm-services-43.png)When you deploy a Workflow using a Harness Kubernetes Service set up with a Helm Repository, you will see Harness fetch the chart:
+![](./static/2-helm-services-43.png)
 
-[![](./static/2-helm-services-44.png)](./static/2-helm-services-44.png)Next, you will see Harness initialize using the chart:
+When you deploy a Workflow using a Harness Kubernetes Service set up with a Helm Repository, you will see Harness fetch the chart:
+
+[![](./static/2-helm-services-44.png)](./static/2-helm-services-44.png)
+
+Next, you will see Harness initialize using the chart:
 
 [![](./static/2-helm-services-46.png)](./static/2-helm-services-46.png)
 
@@ -185,7 +193,9 @@ metadata:
 ```
 You will provide a name to be used in place of `{{ .Release.Name }}` in the Helm Workflow you create in Harness. The Workflow contains the **Helm Deploy** step, where you can enter in a release name to replace `{{ .Release.Name }}` at runtime:
 
-![](./static/2-helm-services-48.png)For information on the Helm Deploy step, see [Helm Deploy](/article/m8ra49bqd5-4-helm-workflows).
+![](./static/2-helm-services-48.png)
+
+For information on the Helm Deploy step, see [Helm Deploy](/article/m8ra49bqd5-4-helm-workflows).
 
 ### Values YAML Override
 

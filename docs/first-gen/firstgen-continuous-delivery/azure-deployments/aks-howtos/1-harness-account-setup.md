@@ -140,7 +140,9 @@ To access resources in your Azure subscription, you must assign the Azure App re
 9. When you are finished the Azure Cloud Provider dialog will look something like this:![](./static/1-harness-account-setup-23.png)
 10. Click **TEST** to verify the settings, and then click **SUBMIT**. The Azure Cloud Provider is added.
 
-![](./static/1-harness-account-setup-24.png)You're all connected! Now you can start using Harness to set up CD.
+![](./static/1-harness-account-setup-24.png)
+
+You're all connected! Now you can start using Harness to set up CD.
 
 ### Next Step
 

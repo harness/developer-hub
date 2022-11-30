@@ -59,22 +59,28 @@ Next, you check email or Slack to get the download link.
 
 In the Harness Manager, filter the deployment logs before exporting. This ensures that you have exactly the deployment logs you want.
 
-1. In **Deployments**, click the filter button to show the filter settings.![](./static/export-deployment-logs-21.png)
+1. In **Deployments**, click the filter button to show the filter settings.
+   ![](./static/export-deployment-logs-21.png)
 2. Use the filter settings to get the exact logs you want to export. Be sure to use the **Filter by** and **Filter by Time** settings to control which deployments you download and their date range.
 
 Once you have the deployments you want to export, you can begin the export process.
 
 #### Export Deployment Logs
 
-1. In the **Deployments** page, click the options button and click **Export Deployment Logs**.![](./static/export-deployment-logs-22.png)
-2. In **Export Deployment Logs**, specify the Harness User Groups to notify when the log file is ready.![](./static/export-deployment-logs-23.png)The User Groups are notified using their email and/or Slack settings, as described in [Manage User Notifications](/article/kf828e347t-notification-groups).
+1. In the **Deployments** page, click the options button and click **Export Deployment Logs**.
+   ![](./static/export-deployment-logs-22.png)
+2. In **Export Deployment Logs**, specify the Harness User Groups to notify when the log file is ready.
+   ![](./static/export-deployment-logs-23.png)
+   The User Groups are notified using their email and/or Slack settings, as described in [Manage User Notifications](/article/kf828e347t-notification-groups).
 3. Click **Submit**.
 
 #### Download Log File
 
 Check the User Group's email or Slack channels (or other notification tools) for the Export Execution Logs message:
 
-![](./static/export-deployment-logs-24.png)As you can see, the message has a **Download link**. Click that link to download the log archive.
+![](./static/export-deployment-logs-24.png)
+
+As you can see, the message has a **Download link**. Click that link to download the log archive.
 
 ### Option 2: Export Using the Harness API
 
@@ -144,7 +150,9 @@ Here is the example response:
 ```
 Here is a screenshot showing them together:
 
-![](./static/export-deployment-logs-25.png)The `downloadLink` field contains the link to your export log archive.
+![](./static/export-deployment-logs-25.png)
+
+The `downloadLink` field contains the link to your export log archive.
 
 Look for the `status` code in the results. It will show `"status": "QUEUED"` until the export is ready.
 
@@ -165,15 +173,21 @@ Once you have downloaded and extracted the log archive, you will have the folder
 
 Inside, you will see separate folders for each deployment:
 
-![](./static/export-deployment-logs-26.png)The folder name shows the deployment timestamp and unique ID.
+![](./static/export-deployment-logs-26.png)
+
+The folder name shows the deployment timestamp and unique ID.
 
 Open a folder and you will see that each deployment step has a different log file.
 
-![](./static/export-deployment-logs-27.png)These correspond to the deployment steps and subcommands displayed in the Harness **Deployments** page.
+![](./static/export-deployment-logs-27.png)
+
+These correspond to the deployment steps and subcommands displayed in the Harness **Deployments** page.
 
 The README file contains a summary of all log files.
 
-![](./static/export-deployment-logs-28.png)Open a log file and you will see the deployment information for the step subcommands.
+![](./static/export-deployment-logs-28.png)
+
+Open a log file and you will see the deployment information for the step subcommands.
 
 ### Step 2: Use the JSON Export File
 

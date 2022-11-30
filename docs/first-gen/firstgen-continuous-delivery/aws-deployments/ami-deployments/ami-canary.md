@@ -95,7 +95,9 @@ As you can see, a Harness AMI Canary Workflow's default structure is very simple
 
 In this guide's remaining sections, we will expand only the Workflow's **Deployment Phases**—adding multiple phases, each deploying a portion of the instance count specified in the first phase. We will demonstrate how to build the following structure:
 
-![](./static/ami-canary-159.png)Here are the phases and steps we'll build:
+![](./static/ami-canary-159.png)
+
+Here are the phases and steps we'll build:
 
 1. [Phase 1: Canary](#phase_1)
 * [Set Up AutoScaling Group](#setup_asg): Specify how many EC2 instances to launch in the ASG that Harness deploys at the end of the Workflow. This step also specifies their resizing order and their steady state timeout.
@@ -116,29 +118,36 @@ Ready to deploy? Let's examine the configuration and execution of each of the Wo
 This example Workflow's first phase defines your Auto Scaling Group, upgrades it to a 25% Canary deployment, and evaluates this partial deployment using (in this example) [CloudWatch](/article/q6ti811nck-cloud-watch-verification-overview) verification.
 
 To add a Canary Phase:
-
-1. In **Deployment Phases**, click **Add Phase**. The **Workflow Phase** dialog appears.![](./static/ami-canary-160.png)
+ 
+1. In **Deployment Phases**, click **Add Phase**. The **Workflow Phase** dialog appears.
+   ![](./static/ami-canary-160.png)
 2. In **Service**, select the Service you previously [set up](/article/rd6ghl00va-ami-deployment#service) for this AMI.
 3. Select the Infrastructure Definition that specifies your base Auto Scaling Group
 4. In **Service Variable Overrides**, you can add values to overwrite any variables in the Service you selected. Click **Add**, then enter the **Name** of the variable to override, and the override **Value**. (For details, see [Workflow Phases](/article/m220i1tnia-workflow-configuration#workflow_phases).)
 5. Click **SUBMIT**. The new Phase is created.![](./static/ami-canary-161.png)
 6. Click **Phase 1** to define this Phase's Steps.  
   
-On the resulting page, we'll fill in the predefined structure for Steps 1 and 2, and add a Verification provider in Step 3.![](./static/ami-canary-162.png)You can give each Phase a descriptive name by clicking the pencil icon at the top right.
+On the resulting page, we'll fill in the predefined structure for Steps 1 and 2, and add a Verification provider in Step 3.![](./static/ami-canary-162.png)
+
+You can give each Phase a descriptive name by clicking the pencil icon at the top right.
 
 
 #### Step 1: Setup AutoScaling Group
 
 In Step 1, select **AWS AutoScaling Group Setup** to open a dialog where you define major settings of the Auto Scaling Groups (ASGs) that Harness will create to deploy your AMI instances:
 
-![](./static/ami-canary-163.png)The **Instances** settings support [Harness variable expressions](/article/9dvxcegm90-variables), such as [Workflow variable expressions](/article/766iheu1bk-add-workflow-variables-new-template).For details about this dialog's fields, see the corresponding [AMI Basic Workflow instructions](/article/rd6ghl00va-ami-deployment#basic_setup_asg). For this Workflow, we've selected **Fixed Instances**, and have set **Max Instances** to **10** and **Desired Instances** to **4**.
+![](./static/ami-canary-163.png)
+
+The **Instances** settings support [Harness variable expressions](/article/9dvxcegm90-variables), such as [Workflow variable expressions](/article/766iheu1bk-add-workflow-variables-new-template).For details about this dialog's fields, see the corresponding [AMI Basic Workflow instructions](/article/rd6ghl00va-ami-deployment#basic_setup_asg). For this Workflow, we've selected **Fixed Instances**, and have set **Max Instances** to **10** and **Desired Instances** to **4**.
 
 All Canary counts or percentages specified later in the Workflow are based on the **Desired Instances** setting. So, when we later deploy **25%** in this phase's [Upgrade Autoscaling Group](#upgrade_asg_1) step, that will be 25% of this **Desired Instances** setting.
 ##### Setup AutoScaling Group in Deployment
 
 Let's look at an example of deploying the AWS AutoScaling Group Setup we configured above. Here's the step in the Harness Deployments page:
 
-![](./static/ami-canary-164.png)Here's partial output, showing a successful setup:
+![](./static/ami-canary-164.png)
+
+Here's partial output, showing a successful setup:
 
 
 ```
@@ -165,14 +174,18 @@ If your base Auto Scaling Group is configured in AWS with [scaling policies](htt
 
 In Step 2, select **Upgrade AutoScaling Group** to open a dialog where you can define how many (by **Count** or **Percent**) of the ASG's instances to deploy:
 
-![](./static/ami-canary-165.png)In this example, we've selected **Percent** units, and **25** percent of the **Desired Instances** we set in the [previous step](#setup_asg)'s **AWS AutoScaling Group Setup**.
+![](./static/ami-canary-165.png)
+
+In this example, we've selected **Percent** units, and **25** percent of the **Desired Instances** we set in the [previous step](#setup_asg)'s **AWS AutoScaling Group Setup**.
 
 For general information on customizing this dialog's settings, and on how they correspond to AWS parameters, see the corresponding [AMI Basic Workflow section](/article/rd6ghl00va-ami-deployment#upgrade_asg).
 ##### Deploy Service Step in Deployment
 
 Using the **Upgrade AutoScaling Group** configuration shown above, here is the **Deploy Service** step in the Harness Deployments page:
 
-![](./static/ami-canary-166.png)Here is partial output, showing the new Auto Scaling Group successfully resized and at steady state. We requested **25 Percent** of **4 Desired Instances**, and indeed, the log shows that AWS has set the `desired capacity to [1]`:
+![](./static/ami-canary-166.png)
+
+Here is partial output, showing the new Auto Scaling Group successfully resized and at steady state. We requested **25 Percent** of **4 Desired Instances**, and indeed, the log shows that AWS has set the `desired capacity to [1]`:
 
 
 ```
@@ -198,7 +211,9 @@ In Step 3, select **Add Verification** to open a dialog where you can add Harnes
 
 In this example, we've selected [CloudWatch](/article/q6ti811nck-cloud-watch-verification-overview) verification, with monitoring for a single EC2 metric:
 
-![](./static/ami-canary-167.png)Within a Canary Workflow, Canary phases are the ideal places to add verification steps, using the [Canary Analysis strategy](/article/0avzb5255b-cv-strategies-and-best-practices#canary_analysis). It's pointless to defer verification until the Primary (final) phase—because if the Canary phases are verified, you can assume that the Primary phase will proceed successfully.
+![](./static/ami-canary-167.png)
+
+Within a Canary Workflow, Canary phases are the ideal places to add verification steps, using the [Canary Analysis strategy](/article/0avzb5255b-cv-strategies-and-best-practices#canary_analysis). It's pointless to defer verification until the Primary (final) phase—because if the Canary phases are verified, you can assume that the Primary phase will proceed successfully.
 ##### Verify Service Step in Deployment
 
 Using the configuration shown above, here is the **Verify Service** step in the Harness Deployments page:
@@ -224,9 +239,13 @@ By default, each AMI Canary phase includes a **Rollback Steps** section, contain
 
 For details about this step's **Rollback all phases at once** option, see the corresponding [AMI Basic Deployment](/article/rd6ghl00va-ami-deployment#rollback_steps) section:
 
-![](./static/ami-canary-169.png)The Rollback step's default presence here is unlike the default for other Harness Canary Workflows, such as [Kubernetes Canary](/article/wkvsglxmzy-kubernetes-canary-workflows). If an AMI Canary phase fails to deploy, its Rollback step will roll back the whole Workflow to its state prior to this deployment. This will delete its newly created instances, conserving AWS resources and costs.
+![](./static/ami-canary-169.png)
 
-![](./static/ami-canary-170.png)Here is partial output, showing the shutdown and deletion of this failed phase's ASG:
+The Rollback step's default presence here is unlike the default for other Harness Canary Workflows, such as [Kubernetes Canary](/article/wkvsglxmzy-kubernetes-canary-workflows). If an AMI Canary phase fails to deploy, its Rollback step will roll back the whole Workflow to its state prior to this deployment. This will delete its newly created instances, conserving AWS resources and costs.
+
+![](./static/ami-canary-170.png)
+
+Here is partial output, showing the shutdown and deletion of this failed phase's ASG:
 
 
 ```
@@ -256,14 +275,20 @@ Since we already [set up the ASG](#setup_asg) in Phase 1, this new phase's Step 
 
 Click the **Upgrade AutoScaling Group** link to open this dialog, where we're again using **Percent** scaling, but doubling the percentage to **50****Percent** of the ASG's **Desired Instances** before clicking **SUBMIT**:
 
-![](./static/ami-canary-172.png)To review: This means we're requesting 50 percent of the **4** Desired Instances that we specified in Phase 1's [Setup AutoScaling Group](#setup_asg) step.
+![](./static/ami-canary-172.png)
+
+To review: This means we're requesting 50 percent of the **4** Desired Instances that we specified in Phase 1's [Setup AutoScaling Group](#setup_asg) step.
 
 ![](./static/ami-canary-173.png)
+
+
 ##### Deploy Service Step in Deployment
 
 Using the **Upgrade AutoScaling Group** configuration shown above, here is the **Deploy Service** step in the Harness Deployments page:
 
-![](./static/ami-canary-174.png)Here is partial output, showing the Auto Scaling Group successfully resized and at steady state. The upgrade of the `desired capacity to [2]` corresponds to our request for **50 Percent** of **4 Desired Instances**:
+![](./static/ami-canary-174.png)
+
+Here is partial output, showing the Auto Scaling Group successfully resized and at steady state. The upgrade of the `desired capacity to [2]` corresponds to our request for **50 Percent** of **4 Desired Instances**:
 
 
 ```
@@ -295,7 +320,9 @@ In Workflows that you build, you could select other Harness [Continuous Verifi
 
 Using the configuration shown above, here is the **Verify Service** step in the Harness Deployments page:
 
-![](./static/ami-canary-175.png)If the 50% deployment is as healthy as the 25% deployment, the **Details** panel's output should resemble the display in [Phase 1's Verification step](#verify_step_1_log).
+![](./static/ami-canary-175.png)
+
+If the 50% deployment is as healthy as the 25% deployment, the **Details** panel's output should resemble the display in [Phase 1's Verification step](#verify_step_1_log).
 
 
 ### Phase 3: Primary
@@ -324,7 +351,9 @@ To define this phase's scaling:
 
 Using the **Upgrade AutoScaling Group** configuration shown above, here is this final **Deploy Service** step in the Harness Deployments page:
 
-![](./static/ami-canary-180.png)Here is partial output, showing the Auto Scaling Group fully increasing its `desired capacity to [4]`. Note that AWS retains the two instances that it created in prior phases:
+![](./static/ami-canary-180.png)
+
+Here is partial output, showing the Auto Scaling Group fully increasing its `desired capacity to [4]`. Note that AWS retains the two instances that it created in prior phases:
 
 
 ```
@@ -355,13 +384,19 @@ And here...our AMI is fully deployed.
 
 As with the [AMI Basic deployment](/article/rd6ghl00va-ami-deployment#deployment_basic), once your setup is complete, you can click the Workflow's **Deploy** button to start the Canary deployment.
 
-![](./static/ami-canary-181.png)In the resulting **Start New Deployment** dialog, select the AMI to deploy, and click **SUBMIT**.
+![](./static/ami-canary-181.png)
+
+In the resulting **Start New Deployment** dialog, select the AMI to deploy, and click **SUBMIT**.
 
 The Workflow deploys. The Deployments page displays details about the deployed instances.
 
-![](./static/ami-canary-182.png)To verify the completed deployment, log into your AWS Console and locate the newly deployed instance(s).
+![](./static/ami-canary-182.png)
 
-![](./static/ami-canary-183.png)### Support for Scheduled Scaling
+To verify the completed deployment, log into your AWS Console and locate the newly deployed instance(s).
+
+![](./static/ami-canary-183.png)
+
+### Support for Scheduled Scaling
 
 Currently, this feature is behind the Feature Flag `AMI_ASG_CONFIG_COPY`.The Base ASG you provide to Harness for creating the new ASG can use [AWS Scheduled Scaling](https://docs.aws.amazon.com/autoscaling/ec2/userguide/schedule_time.html) (scheduled scaling with scheduled actions).
 
