@@ -42,26 +42,26 @@ const config = {
           exclude: ["**/shared/**", "**/static/**"],
           routeBasePath: "docs", //CHANGE HERE
         },
-        blog: {
-          //   showReadingTime: true,
-          editUrl: "https://github.com/harness/developer-hub/tree/main",
-          blogTitle: "Release Notes",
-          blogDescription: "Harness Platform Release Notes",
-          postsPerPage: "ALL",
-          blogSidebarTitle: "All Release Notes",
-          blogSidebarCount: "ALL",
-          feedOptions: {
-            type: "all",
-            copyright: `Copyright © ${new Date().getFullYear()} Harness, Inc.`,
-          },
-          // URL route for the blog section of your site.
-          // *DO NOT* include a trailing slash.
-          routeBasePath: "release-notes",
-          // Path to data on filesystem relative to site dir.
-          path: "release-notes",
-          include: ["**/*.{md,mdx}"],
-          exclude: ["**/shared/**", "**/static/**"],
-        },
+        // blog: {
+        //   //   showReadingTime: true,
+        //   editUrl: "https://github.com/harness/developer-hub/tree/main",
+        //   blogTitle: "Release Notes",
+        //   blogDescription: "Harness Platform Release Notes",
+        //   postsPerPage: "ALL",
+        //   blogSidebarTitle: "All Release Notes",
+        //   blogSidebarCount: "ALL",
+        //   feedOptions: {
+        //     type: "all",
+        //     copyright: `Copyright © ${new Date().getFullYear()} Harness, Inc.`,
+        //   },
+        //   // URL route for the blog section of your site.
+        //   // *DO NOT* include a trailing slash.
+        //   routeBasePath: "release-notes",
+        //   // Path to data on filesystem relative to site dir.
+        //   path: "release-notes",
+        //   include: ["**/*.{md,mdx}"],
+        //   exclude: ["**/shared/**", "**/static/**"],
+        // },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
         },
@@ -213,7 +213,58 @@ const config = {
               },
             ],
           },
-          { to: "release-notes", label: "Release Notes", position: "right" },
+          {
+            // to: "release-notes",
+            label: "Release Notes",
+            position: "right",
+            type: "dropdown",
+            items: [
+              {
+                label: "What's New",
+                to: "release-notes/whats-new",
+              },
+              {
+                label: "Early Access",
+                to: "release-notes/early-access",
+              },
+              {
+                label: "Continuous Integration",
+                to: "release-notes/continuous-integration",
+              },
+              {
+                label: "Continuous Delivery",
+                to: "release-notes/continuous-delivery",
+              },
+              {
+                label: "Feature Flags",
+                to: "release-notes/feature-flags",
+              },
+              {
+                label: "Cloud Cost Management",
+                to: "release-notes/cloud-cost-management",
+              },
+              {
+                label: "Service Reliability Management",
+                to: "release-notes/service-reliability-management",
+              },
+              {
+                label: "Service Reliability Management",
+                to: "release-notes/security-testing-orchestration",
+              },
+              {
+                label: "Chaos Engineering",
+                to: "release-notes/chaos-engineering",
+              },
+              {
+                label: "Harness Platform",
+                to: "release-notes/platform",
+              },
+              {
+                label: "Harness FirstGen",
+                to: "release-notes/first-gen",
+              },
+            ],
+          },
           {
             position: "right",
             href: "https://join.slack.com/t/harnesscommunity/shared_invite/zt-y4hdqh7p-RVuEQyIl5Hcx4Ck8VCvzBw",
@@ -387,6 +438,17 @@ const config = {
         routeBasePath: "tutorials",
         exclude: ["**/shared/**", "**/static/**"],
         sidebarPath: require.resolve("./sidebars-tutorials.js"),
+        // ... other options
+      },
+    ],
+    [
+      "@docusaurus/plugin-content-docs",
+      {
+        id: "release-notes",
+        path: "release-notes",
+        routeBasePath: "release-notes",
+        exclude: ["**/shared/**", "**/static/**"],
+        sidebarPath: require.resolve("./sidebars-release-notes.js"),
         // ... other options
       },
     ],

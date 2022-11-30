@@ -1,12 +1,11 @@
 ---
-title: October 21, 2022, version 77221
-date: 2020-10-21T10:00
-tags: [FirstGen, "continuous delivery"]
+title: What's new
+sidebar_position: 1
 ---
 
-# October 21, 2022, version 77221
+# What's new
 
-## What's new
+## October 21, 2022
 
 This release does not include new features.
 

@@ -1,12 +1,11 @@
 ---
-title: October 21, 2022, version 77221
-date: 2020-10-21T10:00
-tags: [FirstGen, "continuous delivery"]
+title: Early Access
+sidebar_position: 2
 ---
 
-# October 21, 2022, version 77221
+# Early Access
 
-## What's new
+## October 21, 2022
 
 This release does not include new features.
 

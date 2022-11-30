@@ -344,7 +344,7 @@ aside nav.menu > ul > li > ul > li ul > li > a {
 @media screen and (min-width: 1200px) {
   /* style for the search bar in higher resolution */
   .searchBar {
-    width: calc(100vw - 1033px); /* - 925px */
+    width: calc(100vw - 1040px); /* - 925px */
   }
   .searchBar .DocSearch-Button {
     width: 100%;
