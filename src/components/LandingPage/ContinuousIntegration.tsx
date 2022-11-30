@@ -78,7 +78,7 @@ const CIList: FeatureItem[] = [{
   ribbon: true,
   type: [docType.Documentation],
   time: '15 min',
-  link: '/tutorials/build-code/ci-localstack-service-dependency',
+  link: '/tutorials/build-code/ci-localstack-background-step',
 },
 ];
 
