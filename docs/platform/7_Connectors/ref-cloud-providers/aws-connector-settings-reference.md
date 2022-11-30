@@ -583,7 +583,7 @@ Typically, the Delegate(s) is running in the target infrastructure.
 
 The access key and your secret key of the IAM Role to use for the AWS account.
 
-You can use Harness secrets for both. See [Add Text Secrets](../../6_Security/add-use-text-secrets.md).
+You can use Harness secrets for both. See [Add Text Secrets](../../6_Security/2-add-use-text-secrets.md).
 
 #### Access and Secret Keys
 

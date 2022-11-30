@@ -81,7 +81,7 @@ Your personal GitHub account username.
 
 ### Personal Access Token
 
-A [Harness Encrypted Text secret](../../6_Security/add-use-text-secrets.md) for the credentials of your GitHub user account.
+A [Harness Encrypted Text secret](../../6_Security/2-add-use-text-secrets.md) for the credentials of your GitHub user account.
 
 A Personal Access Token (PAT) is required if your GitHub authentication uses 2FA.
 
@@ -99,7 +99,7 @@ To use a personal access token with a GitHub organization that uses SAML single 
 ![](./static/git-hub-connector-settings-reference-01.png)
 ### SSH Key
 
-If you selected **SSH** as the connection protocol, you must add the **SSH Key** to use with the connection as a [Harness Encrypted Text secret](../../6_Security/add-use-text-secrets.md). For detailed steps to create an SSH Key, see [Add new SSH Key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account).
+If you selected **SSH** as the connection protocol, you must add the **SSH Key** to use with the connection as a [Harness Encrypted Text secret](../../6_Security/2-add-use-text-secrets.md). For detailed steps to create an SSH Key, see [Add new SSH Key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account).
 
 Harness also supports [GitHub deploy keys](https://docs.github.com/en/developers/overview/managing-deploy-keys#deploy-keys). Deploy keys grant access to a single repo. Using a deploy key ensures that the Connector only works with the specific repo you selected in **URL Type**.
 

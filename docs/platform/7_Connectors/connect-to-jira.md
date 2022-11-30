@@ -42,7 +42,7 @@ In **URL**, enter the base URL by which your users access your Jira applications
 
 In Jira, the base URL is set to the same URL that Web browsers use to view your Jira instance. For details, see [Configuring the Base URL](https://confluence.atlassian.com/adminjiraserver071/configuring-the-base-url-802593107.html) from Atlassian.If you are using on-premises Jira server with HTTPS redirects enabled, use the HTTPS URL to ensure the [JIRA client follows redirects](https://confluence.atlassian.com/adminjiraserver/running-jira-applications-over-ssl-or-https-938847764.html#:~:text=If%20you%20want%20to%20only,to%20the%20corresponding%20HTTPS%20URLs.).Enter your credentials. For username, use the **full email address** you use to log into Jira.
 
-For **API Key**, use a Harness [Text Secret](../6_Security/add-use-text-secrets.md). See [Manage API tokens for your Atlassian account](https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/) from Atlassian.
+For **API Key**, use a Harness [Text Secret](../6_Security/2-add-use-text-secrets.md). See [Manage API tokens for your Atlassian account](https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/) from Atlassian.
 
 Click **Continue**.
 

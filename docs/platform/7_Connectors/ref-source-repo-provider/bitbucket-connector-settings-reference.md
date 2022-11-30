@@ -71,13 +71,13 @@ The username for the account.
 
 #### Password
 
-A [Harness Encrypted Text secret](../../6_Security/add-use-text-secrets.md) for the credentials of your Bitbucket user account.
+A [Harness Encrypted Text secret](../../6_Security/2-add-use-text-secrets.md) for the credentials of your Bitbucket user account.
 
 If you have set up Two-Factor Authentication in your Bitbucket account, you need to generate a personal access token in your repo and enter that token in the **Password/Token** field.
 
 #### SSH Key
 
-If you selected **SSH** as the connection protocol, you must add the **SSH Key** for use with the connection as a [Harness Encrypted File secret](../../6_Security/add-file-secrets.md). For steps to create an SSH Key, see [Add new SSH Key](https://support.atlassian.com/bitbucket-cloud/docs/set-up-an-ssh-key/).
+If you selected **SSH** as the connection protocol, you must add the **SSH Key** for use with the connection as a [Harness Encrypted File secret](../../6_Security/3-add-file-secrets.md). For steps to create an SSH Key, see [Add new SSH Key](https://support.atlassian.com/bitbucket-cloud/docs/set-up-an-ssh-key/).
 
 #### Enable API access
 
@@ -93,6 +93,6 @@ You must enter a plain-text username or a username secret for *both* Authenticat
 
 #### Personal Access Token
 
-A [Harness Encrypted Text secret](../../6_Security/add-use-text-secrets.md) for the App password of your Bitbucket user account.
+A [Harness Encrypted Text secret](../../6_Security/2-add-use-text-secrets.md) for the App password of your Bitbucket user account.
 
 ![](./static/bitbucket-connector-settings-reference-05.png)

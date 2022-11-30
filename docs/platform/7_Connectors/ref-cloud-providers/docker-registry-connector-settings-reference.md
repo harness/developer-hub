@@ -74,5 +74,5 @@ You can authenticate using username and password, or select anonymous.
 
 The username and password for the Docker registry account.
 
-The password uses a [Harness Encrypted Text secret](../../6_Security/add-use-text-secrets.md).
+The password uses a [Harness Encrypted Text secret](../../6_Security/2-add-use-text-secrets.md).
 

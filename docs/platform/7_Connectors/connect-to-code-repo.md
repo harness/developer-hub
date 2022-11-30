@@ -42,7 +42,7 @@ For more details on the settings to create this connector, see [Git Connector Se
 8. If you selected **Account**, in **Test Repository**, enter a repository name to test the connection.
 9. Click **Continue**.
 10. In **Credentials,** Enter your **Username**.
-11. In **Secret Key** you can either create a new [Encrypted Text](../6_Security/add-use-text-secrets.md) or use an existing one.
+11. In **Secret Key** you can either create a new [Encrypted Text](../6_Security/2-add-use-text-secrets.md) or use an existing one.
 12. Click **Continue**.
 13. In **Setup Delegates**, you can choose **Connect via any delegate** or **Connect only via delegates which has all of the following tags**.
 14. Click **Save and Continue**.
@@ -67,7 +67,7 @@ For steps on setting up the IAM user for CodeCommit connections, go to [Setup fo
 You can get this URL from your CodeCommit repo by using its **Clone URL** menu and selecting **Clone HTTPS**.
 2. Click **Save and Continue**.
 3. Enter IAM user's access key in **Access Key**.
-4. Enter the corresponding secret key in **Secret Key**. You can either create a new [Encrypted Text](../6_Security/add-use-text-secrets.md) or use an existing one.
+4. Enter the corresponding secret key in **Secret Key**. You can either create a new [Encrypted Text](../6_Security/2-add-use-text-secrets.md) or use an existing one.
 5. Click **Save and Continue**.
 6. Once the Test Connection succeeds, click **Finish**. The Connector is listed in Connectors.
 
@@ -92,7 +92,7 @@ In the IAM User you want to use, click **Security credentials**, and then genera
 
 In the Harness CodeCommit Connector, in **Access Key**, enter the **User name** from the IAM user credentials you generated.
 
-In **Secret Key**, use a [Harness Encrypted Text secret](../6_Security/add-use-text-secrets.md) for the **Password** of the IAM user account.
+In **Secret Key**, use a [Harness Encrypted Text secret](../6_Security/2-add-use-text-secrets.md) for the **Password** of the IAM user account.
 
 ![](./static/connect-to-code-repo-09.png)
 ### Add a Bitbucket Repo
@@ -108,7 +108,7 @@ For **HTTP**, the format for the URL should be `https://bitbucket.org/<userName>
 8. In **Test Repository**, enter your repository name to test the connection.
 9. Click **Save and Continue**.
 10. Enter your **Username**.
-11. In **Secret Key** you can either create a new [Encrypted Text](../6_Security/add-use-text-secrets.md) or use an existing one.
+11. In **Secret Key** you can either create a new [Encrypted Text](../6_Security/2-add-use-text-secrets.md) or use an existing one.
 12. Click **Continue**.
 13. In **Setup Delegates**, you can choose **Connect via any delegate** or **Connect only via delegates which has all of the following tags**.
 14. Click **Save and Continue**.
@@ -126,7 +126,7 @@ For more details on the settings to create this connector, see [GitLab Connector
 8. In **Test Repository**, enter your repository name to test the connection.
 9. Click **Continue**.
 10. In **Credentials,** Enter your **Username**.
-11. In **Secret Key** you can either create a new [Encrypted Text](../6_Security/add-use-text-secrets.md) or use an existing one.
+11. In **Secret Key** you can either create a new [Encrypted Text](../6_Security/2-add-use-text-secrets.md) or use an existing one.
 12. Click **Continue**.
 13. In **Setup Delegates**, you can choose **Connect via any delegate** or **Connect only via delegates which has all of the following tags**.
 14. Click **Save and Continue**.

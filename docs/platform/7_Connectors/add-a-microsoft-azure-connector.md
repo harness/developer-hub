@@ -335,9 +335,9 @@ This is the authentication key for your application. This is found in **Azure Ac
 (./static/add-a-microsoft-azure-connector-69.png)
 You cannot view existing secret values, but you can create a new key. For more information, see [Create a new application secret](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-a-new-application-secret) from Azure.
 
-If you select **Secret**, create or use an existing [Harness Text Secret](../6_Security/add-use-text-secrets.md).
+If you select **Secret**, create or use an existing [Harness Text Secret](../6_Security/2-add-use-text-secrets.md).
 
-If you select **Certificate**, create or use an existing [Harness File Secret](../6_Security/add-file-secrets.md).
+If you select **Certificate**, create or use an existing [Harness File Secret](../6_Security/3-add-file-secrets.md).
 
 ### Step 7: Delegates Setup
 

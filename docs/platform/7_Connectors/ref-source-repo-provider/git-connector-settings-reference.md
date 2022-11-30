@@ -72,11 +72,11 @@ The username for the account.
 
 ### Password
 
-A [Harness Encrypted Text](../../6_Security/add-use-text-secrets.md) secret for the credentials of your Git user account.
+A [Harness Encrypted Text](../../6_Security/2-add-use-text-secrets.md) secret for the credentials of your Git user account.
 
 ### SSH Key
 
-If you selected **SSH** as the connection protocol, you must add the **Username** as `git` and an **SSH Key** for use with the connection as a [Harness Encrypted Text secret](../../6_Security/add-use-text-secrets.md).
+If you selected **SSH** as the connection protocol, you must add the **Username** as `git` and an **SSH Key** for use with the connection as a [Harness Encrypted Text secret](../../6_Security/2-add-use-text-secrets.md).
 
 ### Setup Delegates
 

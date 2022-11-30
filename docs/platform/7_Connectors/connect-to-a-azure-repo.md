@@ -79,12 +79,12 @@ This option is required for using Git-based triggers, Webhooks management, and u
 
 This is a common option for code repos.
 
-In **Personal Access Token**, either create a new [Encrypted Text](../6_Security/add-use-text-secrets.md) or use an existing one that has your Azure Personal Access Token.​ Harness requires the token for API access. Generate the token in your Azure account and add it to Harness as a Secret.
+In **Personal Access Token**, either create a new [Encrypted Text](../6_Security/2-add-use-text-secrets.md) or use an existing one that has your Azure Personal Access Token.​ Harness requires the token for API access. Generate the token in your Azure account and add it to Harness as a Secret.
 
 To create a Personal Acces Token in Azure, see [Create a PAT](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=azure-devops&tabs=Windows#create-a-pat).
 
 ![](./static/connect-to-a-azure-repo-05.png)
-If you selected **SSH** as the **Connection Type**, you must add your SSH Private key to use with the connection as a [Harness Encrypted Text](../6_Security/add-use-text-secrets.md).
+If you selected **SSH** as the **Connection Type**, you must add your SSH Private key to use with the connection as a [Harness Encrypted Text](../6_Security/2-add-use-text-secrets.md).
 
 To create a private SSH Key, enter the following command in your terminal window:
 

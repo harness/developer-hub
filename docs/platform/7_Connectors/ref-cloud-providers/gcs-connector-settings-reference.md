@@ -78,7 +78,7 @@ See [Tags Reference](../../20_References/tags-reference.md).
 
 #### Service Account Key
 
-Select or create a new [Harness Encrypted Text secret](../../6_Security/add-use-text-secrets.md) that contains the Google Cloud's Account Service Key File.
+Select or create a new [Harness Encrypted Text secret](../../6_Security/2-add-use-text-secrets.md) that contains the Google Cloud's Account Service Key File.
 
 To obtain the Google Cloud's Account Service Key File, see [Creating and managing service account keys](https://cloud.google.com/iam/docs/creating-managing-service-account-keys) from Google (JSON is recommended).
 

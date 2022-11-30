@@ -45,7 +45,7 @@ Enter your **Username**.
 
 In **URL**, enter the base URL by which your users will access ServiceNow. For example: `https://example.service-now.com`**.**
 
-Enter your credentials. For **API Key**, use a Harness [Text Secret](../6_Security/add-use-text-secrets.md). 
+Enter your credentials. For **API Key**, use a Harness [Text Secret](../6_Security/2-add-use-text-secrets.md). 
 
 Click **Continue**.
 

@@ -88,7 +88,7 @@ The `helm init` command is used with Helm 2 to install Tiller into a Kubernetes 
 ```
 kubectl config current-context cluster_name
 ```
-If you are using TLS for communication between Helm and Tiller, ensure that you use the `--tls` parameter with your commands. For more information, see [Using SSL Between Helm and Tiller](https://docs.helm.sh/using_helm/#using-ssl-between-helm-and-tiller) from Helm, and the section **Securing your Helm Installation** in that document.The following example shows how to add a Helm chart from a private repository using the secrets `repoUsername` and `repoPassword` from Harness [Text Secrets](../../6_Security/add-use-text-secrets.md). 
+If you are using TLS for communication between Helm and Tiller, ensure that you use the `--tls` parameter with your commands. For more information, see [Using SSL Between Helm and Tiller](https://docs.helm.sh/using_helm/#using-ssl-between-helm-and-tiller) from Helm, and the section **Securing your Helm Installation** in that document.The following example shows how to add a Helm chart from a private repository using the secrets `repoUsername` and `repoPassword` from Harness [Text Secrets](../../6_Security/2-add-use-text-secrets.md). 
 
 
 ```

@@ -56,16 +56,16 @@ For SSH, ensure that the key is not OpenSSH, but rather PEM format. To generate 
 
 In **Credentials,** enter your **Username**.
 
-You can either create a new [Encrypted Text](../6_Security/add-use-text-secrets.md) or use an existing one.
+You can either create a new [Encrypted Text](../6_Security/2-add-use-text-secrets.md) or use an existing one.
 
 ![](./static/add-a-git-hub-connector-36.png)
-In **Personal Access Token**, either create a new [Encrypted Text](../6_Security/add-use-text-secrets.md) or use an existing one that has your Git token. Harness requires the token for API access. Generate the token in your account on the Git provider and add it to Harness as a Secret.
+In **Personal Access Token**, either create a new [Encrypted Text](../6_Security/2-add-use-text-secrets.md) or use an existing one that has your Git token. Harness requires the token for API access. Generate the token in your account on the Git provider and add it to Harness as a Secret.
 
 To use a personal access token with a GitHub organization that uses SAML single sign-on (SSO), you must first authorize the token. See [Authorizing a personal access token for use with SAML single sign-on](https://docs.github.com/en/enterprise-cloud@latest/authentication/authenticating-with-saml-single-sign-on/authorizing-a-personal-access-token-for-use-with-saml-single-sign-on) from GitHub.* The GitHub user account used to create the Personal Access Token must have admin permissions on the repo.
 * GitHub doesn't provide a way of scoping a PAT for read-only access to repos. You must select the following permissions:
 
 ![](./static/add-a-git-hub-connector-37.png)
-If you selected **SSH** as the connection protocol, you must add the **SSH Key** to use with the connection as a [Harness Encrypted Text secret](../6_Security/add-use-text-secrets.md). For detailed steps to create an SSH Key, see [Add new SSH Key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account) from GitHub.
+If you selected **SSH** as the connection protocol, you must add the **SSH Key** to use with the connection as a [Harness Encrypted Text secret](../6_Security/2-add-use-text-secrets.md). For detailed steps to create an SSH Key, see [Add new SSH Key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account) from GitHub.
 
 Make sure the **Username** for your **SSH Credential** is `git` for the Test Connection to be successful.  
 

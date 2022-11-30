@@ -75,7 +75,7 @@ Enter the username **git**. Do not enter any other value.
 
 ### Password/Personal Access Token
 
-Enter a [Harness Encrypted Text secret](../../6_Security/add-use-text-secrets.md) for the credentials of your GitLab user account.
+Enter a [Harness Encrypted Text secret](../../6_Security/2-add-use-text-secrets.md) for the credentials of your GitLab user account.
 
 Typically, a Personal Access Token is used. See [Personal Access Tokens](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html) from GitLab.
 
@@ -84,7 +84,7 @@ The Personal Access Token requirements for Harness are: `api`, `read_repository
 ![](./static/git-lab-connector-settings-reference-04.png)
 ### SSH Key
 
-If you selected **SSH** as the connection protocol, you must add the **SSH Key** for use with the connection as a [Harness Encrypted Text secret](../../6_Security/add-use-text-secrets.md).
+If you selected **SSH** as the connection protocol, you must add the **SSH Key** for use with the connection as a [Harness Encrypted Text secret](../../6_Security/2-add-use-text-secrets.md).
 
 See [Use SSH keys to communicate with GitLab](https://docs.gitlab.com/ee/user/ssh.html) from GitLab.
 
