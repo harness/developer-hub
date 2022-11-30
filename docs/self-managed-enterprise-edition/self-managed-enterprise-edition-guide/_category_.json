@@ -1,0 +1,14 @@
+{
+    "label":"Guide",
+    "position": 50,
+    "collapsible":"true",
+    "collapsed":"true",
+    "className":"red",
+    "link":{
+       "type":"generated-index",
+       "title":"Guide"
+    },
+    "customProps":{
+       "helpdocs_category_id":"75ydek1suj"
+    }
+ }
