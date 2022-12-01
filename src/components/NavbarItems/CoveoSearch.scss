@@ -4,20 +4,38 @@
     width: calc(100vw - 903px);
 }
 #searchResultsCoveo {
+	#coveo-search-mask{
+		position: fixed;
+		background-color: var(--black);
+		opacity: 0.7;
+		width: 100vw;
+		height: 100vh;
+		left: 0px;
+		top: 68px;
+	}
+	#coveo-search {
+		background-color: var(--white);
+        // box-shadow: 0px 0px 1px rgba(40, 41, 61, 0.04), 0px 2px 4px rgba(96, 97, 112, 0.16);
+	}
     .coveo-search-results {
         // width: 1000px;
         // width: calc(100vw - 890px);
         // height: calc(100vh - 70px);
-    width: calc(100vw - 30px);
-    height: calc(100vh - 95px);
+		// width: calc(100vw - 30px);
+		height: calc(100vh - 95px);
         position: absolute;
 
-    left: 15px;
-    top: 80px;
+		// left: 15px;
+		top: 80px;
         background-color: var(--white);
         overflow-y: auto;
-        box-shadow: 0px 0px 1px rgba(40, 41, 61, 0.04), 0px 2px 4px rgba(96, 97, 112, 0.16);
+        box-shadow: 0px 0px 1px rgba(40, 41, 61, 0.14), 0px 2px 4px rgba(96, 97, 112, 0.26);
+		margin-right: 12px;
+		border-radius: 5px;
     }
+	.coveo-main-section {
+		display: none;
+	}
 }
 
 

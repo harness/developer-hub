@@ -1,13 +1,30 @@
 /* eslint-disable no-undef */
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Head from "@docusaurus/Head";
 import "./CoveoSearch.scss";
+
+// Space => keyCode: 32
 
 const CoveoSearch = () => {
   const searchBoxEl = useRef(null);
   const searchResultsEl = useRef(null);
+  const [isCoveoLoaded, setIsCoveoLoaded] = useState(false);
+  const checkCoveo = () => {
+    const coveoJustLoaded = !isCoveoLoaded && !!window.Coveo;
+    if (coveoJustLoaded) {
+      setIsCoveoLoaded(true);
+    } else {
+      setTimeout(checkCoveo, 100);
+    }
+  };
+
   useEffect(() => {
-    setTimeout(() => {
+    checkCoveo();
+  }, []);
+
+  useEffect(() => {
+    if (window.Coveo) {
+      // setTimeout(() => {
       // document.addEventListener("DOMContentLoaded", () => {
       (async () => {
         const resToken = await fetch(
@@ -32,12 +49,13 @@ const CoveoSearch = () => {
             </div>
         `;
         searchRoot.innerHTML = `
+            <div id="coveo-search-mask"></div>
             <div id="coveo-search" class="CoveoSearchInterface" data-enable-history="false">
                 <div class="CoveoPromotedResultsBadge" data-caption-for-recommended="Recommended" data-caption-for-featured="Recommended" data-color-for-featured-results="unset" data-color-for-recommended-results="unset"></div>
                 <div class="CoveoFolding"></div>
                 <div class="CoveoAnalytics" data-search-hub="WebsiteSearch"></div>
                 <div class="coveo-main-section">
-                    <div class="coveo-facet-column">
+                    <!div class="coveo-facet-column">
                         <div class="CoveoDynamicFacet" data-title="Source" data-field="@commonsource" data-tab="All" data-enable-facet-search="false" data-number-of-values="10" data-custom-sort="Harness Hub"></div>
                         <div class="CoveoDynamicFacet" data-title="Category" data-field="@categoryname" data-tab="All" data-enable-facet-search="false" data-number-of-values="15"></div>
                         <div class="CoveoDynamicFacet" data-title="Module" data-field="@commonmodule" data-tab="All" data-enable-facet-search="false" data-number-of-values="10"></div>
@@ -80,14 +98,14 @@ const CoveoSearch = () => {
           let q = args.queryBuilder.expression.build();
           if (q) {
             searchRoot.style.display = "block";
-            if (elmContent) {
-              elmContent.style.display = "none";
-            }
+            // if (elmContent) {
+            //   elmContent.style.display = "none";
+            // }
           } else {
             searchRoot.style.display = "none";
-            if (elmContent) {
-              elmContent.style.display = "block";
-            }
+            // if (elmContent) {
+            //   elmContent.style.display = "block";
+            // }
           }
         });
         Coveo.$$(coveoRoot).on("afterInitialization", function (e, args) {
@@ -95,14 +113,60 @@ const CoveoSearch = () => {
           document
             .querySelector(".CoveoSearchbox .magic-box-input input")
             .focus();
+
+          // hacked into Coveo searchbox
+          const elemSearchbox = searchboxRoot.getElementsByTagName("input")[0];
+          if (elemSearchbox) {
+            const handleKeyUp = (key) => {
+              if (key.keyCode === 32) {
+                const elemSearchButton =
+                  searchboxRoot.getElementsByClassName("CoveoSearchButton")[0];
+                if (elemSearchButton) {
+                  // elemSearchbox.blur();
+                  elemSearchButton.click();
+                  // elemSearchbox.focus();
+                } else {
+                  console.warn("elemSearchButton not found!");
+                }
+              }
+            };
+            if (elemSearchbox.addEventListener) {
+              elemSearchbox.addEventListener("keyup", handleKeyUp);
+            } else if (button.attachEvent) {
+              elemSearchbox.attachEvent("onkeyup", handleKeyUp);
+            }
+          } else {
+            console.warn("elemSearchbox not found!");
+          }
+
+          const elemSearchMask = document.getElementById("coveo-search-mask");
+          if (elemSearchMask) {
+            const handleCloseSearchResult = () => {
+              const elemClearSearchButton =
+                searchboxRoot.getElementsByClassName("magic-box-clear")[0];
+              if (elemClearSearchButton) {
+                elemClearSearchButton.click();
+              } else {
+                console.warn("elemClearSearchButton not found!");
+              }
+            };
+            if (elemSearchMask.addEventListener) {
+              elemSearchMask.addEventListener("click", handleCloseSearchResult);
+            } else if (button.attachEvent) {
+              elemSearchMask.attachEvent("onclick", handleCloseSearchResult);
+            }
+          } else {
+            console.warn("elemSearchMask not found!");
+          }
         });
         Coveo.init(coveoRoot, {
           externalComponents: [searchboxRoot],
         });
       })();
-    }, 900);
-    // }, false);
-  }, []);
+      // }, 900);
+      // }, false);
+    }
+  }, [isCoveoLoaded]);
   return (
     <div>
       <Head>
@@ -114,8 +178,13 @@ const CoveoSearch = () => {
           className="coveo-script"
           src="https://static.cloud.coveo.com/searchui/v2.10094/js/CoveoJsSearch.min.js"
         ></script>
-        <script src="https://cdn.jsdelivr.net/gh/wei-harness/cdn/js/coveo_template.js"></script>
+        {/* <script src="https://cdn.jsdelivr.net/gh/wei-harness/cdn/js/coveo_template.js"></script> */}
       </Head>
+      {isCoveoLoaded && (
+        <Head>
+          <script src="https://cdn.jsdelivr.net/gh/wei-harness/cdn/js/coveo_template.js"></script>
+        </Head>
+      )}
       <div id="searchBoxCoveo" ref={searchBoxEl}></div>
       <div id="searchResultsCoveo" ref={searchResultsEl}></div>
     </div>
