@@ -5,7 +5,7 @@ title: RDS Instance Delete
 
 ## Introduction
 
-- RDS Instance delete can induce an RDS instance delete chaos on AWS RDS cluster. It derives the instance under chaos from RDS cluster.
+- RDS Instance delete induces an RDS instance delete chaos on the AWS RDS cluster. It derives the instance under chaos from the RDS cluster.
 
 
 :::tip Fault execution flow chart
@@ -21,9 +21,9 @@ title: RDS Instance Delete
 
 **AWS RDS Access Requirement:**
 
-- Ensure that you have sufficient AWS access to delete RDS instances.
+- AWS access to delete RDS instances.
 
-- Ensure to create a Kubernetes secret having the AWS access configuration(key) in the `CHAOS_NAMESPACE`. A sample secret file looks like:
+- Kubernetes secret that has the AWS access configuration(key) in the `CHAOS_NAMESPACE`. A sample secret file looks like:
 
 ```yaml
 apiVersion: v1
@@ -39,13 +39,13 @@ stringData:
     aws_secret_access_key = XXXXXXXXXXXXXXX
 ```
 
-- If you change the secret key name (from `cloud_config.yml`) please also update the `AWS_SHARED_CREDENTIALS_FILE` ENV value in the ChaosExperiment CR with the same name.
+- If you change the secret key name (from `cloud_config.yml`), update the `AWS_SHARED_CREDENTIALS_FILE` environment variable value in the ChaosExperiment CR with the same name.
 
 ## Default Validations
 
 :::info
 
-- RDS instance should be in healthy state.
+- The RDS instance should be in a healthy state.
 
 :::
 
@@ -115,13 +115,13 @@ stringData:
 
 ### Common and AWS specific tunables
 
-Refer the [common attributes](../common-tunables-for-all-experiments) and [AWS specific tunable](./aws-experiments-tunables) to tune the common tunables for all faults and aws specific tunables.
+Refer to the [common attributes](../common-tunables-for-all-experiments) and [AWS specific tunable](./aws-experiments-tunables) to tune the common tunables for all faults and aws specific tunables.
 
 ### RDS_CLUSTER_NAME
 
-It defines the cluster name of the target RDS cluster. We can also provide the `RDS_CLUSTER_NAME` using `CLUSTER_NAME` ENVs. If not provided, the fault will select the Instance Identifier provided.
+It defines the cluster name of the target RDS cluster. You can provide the `RDS_CLUSTER_NAME` using `CLUSTER_NAME` environment variable. If it hasn't been provided, the fault selects the Instance Identifier provided.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/rds-instance-delete/instance-delete-cluster.yaml yaml)
 ```yaml
@@ -149,9 +149,9 @@ spec:
 ```
 ### RDS_INSTANCE_IDENTIFIER 
  
-It defines the RDS instance name. We can provide the RDS_INSTANCE_IDENTIFIER using `RDS_INSTANCE_IDENTIFIER` ENVs.
+It defines the RDS instance name. You can provide the RDS_INSTANCE_IDENTIFIER using `RDS_INSTANCE_IDENTIFIER` environment variable.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/rds-instance-delete/instance-delete-instance.yaml yaml)
 ```yaml
