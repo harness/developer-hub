@@ -312,6 +312,18 @@ const CEList: FeatureItem[] = [
     time: "5min",
     link: "/tutorials/run-chaos-experiments/chaos-experiment-from-blank-canvas",
   },
+  {
+    title: 'Integration with Harness CD',
+    module: 'ce',
+    Svg: "/img/icon_ce.svg",
+    description: (
+      <>Execute a chaos experiment as part of a Harness CD pipeline for continuous resilience.</>
+    ),
+    ribbon: false,
+    type: [docType.Documentation],
+    time: '15min',
+    link: '/tutorials/run-chaos-experiments/integration-with-harness-cd'
+  },
 ];
 
 const PlatformList: FeatureItem[] = [
