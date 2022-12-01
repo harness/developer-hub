@@ -129,7 +129,7 @@ stringData:
 
 ### Common Fault Tunables
 
-Refer the [common attributes](../common-tunables-for-all-experiments) to tune the common tunables for all the experiments.
+Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the experiments.
 
 ### Web App Access Restrict By Name
 
