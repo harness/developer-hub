@@ -4,8 +4,8 @@ title: ELB AZ Down
 ---
 
 ## Introduction
-- It causes AZ down chaos on a target ELB for a specified duration. It can cause access restrictions for certain availability zones.
-- Tests application sanity, availability, and recovery workflows of the application pod attached to the load balancer.
+- It takes AZ down chaos on a target ELB for a specified duration. It causes access restrictions for certain availability zones.
+- It tests application sanity, availability, and recovery workflows of the application pod attached to the load balancer.
 
 :::tip Fault execution flow chart
 ![ELB AZ Down](./static/images/elb-az-down.png)
@@ -26,10 +26,10 @@ Detaching the AZ from the load balancer will disrupt an application's performanc
 ## Prerequisites
 
 :::info
-- Ensure that Kubernetes Version > 1.17
-- Ensure that you have sufficient AWS access to attach or detach an AZ from ELB.
-- Ensure the minimum number of AZ is attached to the ELB otherwise the fault will fail to detach the given AZ.
-- Ensure to create a Kubernetes secret having the AWS access configuration(key) in the `CHAOS_NAMESPACE`. A sample secret file looks like:
+- Kubernetes > 1.17
+- AWS access to attach or detach an AZ from ELB.
+- Minimum number of AZ is attached to the ELB, else the fault fails to detach the given AZ.
+- Kubernetes secret that has the AWS access configuration(key) in the `CHAOS_NAMESPACE`. A sample secret file looks like:
 ```yaml
 apiVersion: v1
 kind: Secret
@@ -43,13 +43,13 @@ stringData:
     aws_access_key_id = XXXXXXXXXXXXXXXXXXX
     aws_secret_access_key = XXXXXXXXXXXXXXX
 ```
-- If you change the secret key name (from `cloud_config.yml`) please also update the `AWS_SHARED_CREDENTIALS_FILE` ENV value on `fault.yaml`with the same name.
+- If you change the secret key name (from `cloud_config.yml`), update the `AWS_SHARED_CREDENTIALS_FILE` environment variable value on `fault.yaml`with the same name.
 :::
 
 ## Default Validations
 
 :::info
-- ELB is attached to the given availability zones.
+- The ELB is attached to the given availability zones.
 :::
 
 ## Fault tunables
@@ -113,13 +113,13 @@ stringData:
 
 ### Common and AWS specific tunables
 
-Refer the [common attributes](../common-tunables-for-all-experiments) and [AWS specific tunable](./aws-experiments-tunables) to tune the common tunables for all faults and aws specific tunables.
+Refer to the [common attributes](../common-tunables-for-all-experiments) and [AWS specific tunable](./aws-experiments-tunables) to tune the common tunables for all faults and aws specific tunables.
 
 ### Target Zones
 
-It contains comma separated list of target zones. It can be tuned via `ZONES` ENV.
+It contains comma separated list of target zones. It can be tuned via `ZONES` environment variable.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/elb-az-down/target-zones.yaml yaml)
 ```yaml
