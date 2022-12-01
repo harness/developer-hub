@@ -23,7 +23,7 @@ To go through this workflow, you need the following:
 
 * A familiarity with basic Harness CI concepts:
 	+ [CI Pipeline Quickstart](../../ci-quickstarts/ci-pipeline-quickstart.md)
-	+ [Learn Harness' Key Concepts](https://ngdocs.harness.io/article/hv2758ro4e-learn-harness-key-concepts)
+	+ [Learn Harness' Key Concepts](../../../getting-started/learn-harness-key-concepts.md)
 * A familiarity with Build Stage settings:
 	+ [CI Build Stage Settings](../../ci-technical-reference/ci-stage-settings.md)
 

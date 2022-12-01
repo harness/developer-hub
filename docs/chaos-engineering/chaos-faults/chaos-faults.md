@@ -296,14 +296,14 @@ Following Platform Chaos faults are available:
     <td><a href="/docs/chaos-engineering/chaos-faults/aws/ecs-instance-stop">ecs-instance-stop</a></td>
   </tr>
   <tr>
-    <td>Lambda Delete Event Source Mapping</td>
-    <td>Injects AWS delete event source mapping chaos</td>
-    <td><a href="/docs/chaos-engineering/chaos-faults/aws/lambda-delete-event-source-mapping">lambda-delete-event-source-mapping</a></td>
+    <td>RDS Instance Delete</td>
+    <td>Injects RDS instance delete chaos on target RDS instance/cluster</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/aws/rds-instance-delete">rds-instance-delete</a></td>
   </tr>
   <tr>
-    <td>Lambda Toggle Event Mapping State</td>
-    <td>Injects AWS toggle event mapping state chaos</td>
-    <td><a href="/docs/chaos-engineering/chaos-faults/aws/lambda-toggle-event-mapping-state">lambda-toggle-event-mapping-state</a></td>
+    <td>RDS Instance Reboot</td>
+    <td>Injects RDS instance reboot chaos on target RDS instance/cluster</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/aws/rds-instance-reboot">rds-instance-reboot</a></td>
   </tr>
 </table>
 

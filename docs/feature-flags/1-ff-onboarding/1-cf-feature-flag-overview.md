@@ -21,7 +21,7 @@ if(HarnessFeatureFlag["newamazingfeature"] == true) {
 A Feature Flag is a decision point in your code that can change the behavior of your software. It can help you plan the following strategies:
 
 * Who gets access to the feature first
-* Who can beta test the changes
+* Who can test the changes
 * Progressive rollouts of the feature
 * Turn on a feature on a specific date
 
@@ -53,5 +53,5 @@ In a percentage-based rollout, small numbers of users are selected to test the n
 
 ### User feedback
 
-The ability to release changes to a limited set of users makes it much easier to gather feedback about the product. You can create a beta group of users and target feature flags specifically to that group. Testing new features with a subset of users allows developers to find and address the bugs before the major release.
+The ability to release changes to a limited set of users makes it much easier to gather feedback about the product. You can create a group of users and target feature flags specifically to that group. Testing new features with a subset of users allows developers to find and address the bugs before the major release.
 
