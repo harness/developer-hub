@@ -141,7 +141,7 @@ const config = {
             items: [
               {
                 label: "Get Started",
-                to: "tutorials/get-started",
+                to: "docs/getting-started",
               },
               {
                 label: "Continuous Integration",

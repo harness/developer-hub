@@ -49,6 +49,13 @@ If you are also running the Kubernetes embedded in the same Docker Desktop, then
 - 3+ CPUs
 - 5GB+ of free memory
 
+Finally, since you will be installing delegates at locations different than the machine hosting CDCE Docker app, you will need to make sure that your CDCE Docker app can correctly generate URLs for these remote delegates to talk to. You can do so by setting an environment variable `HARNESS_HOST` with public IP of the laptop/VM where CDCE Docker cluster is installed. For example:
+```
+export HARNESS_HOST="192.168.0.1"
+```
+
+If this variable is not set, then the default value of `host.docker.internal` is used.
+
 <h3> Install CDCE on Docker </h3>
 
 Now you can install the CDCE by executing the following commands.
@@ -73,7 +80,7 @@ Now we can see that all the various microservices are up and runnning.
 docker compose ps
 ```
 
-Open [http://localhost/#/signup](http://localhost/#/signup) and complete the registration form. Now your Harness CDCE account along with the first (admin) user is created. If you have already completed this step, then login to CDCE at [http://localhost/#/signin](http://localhost/#/signin).
+Open [http://localhost/#/signup](http://localhost/#/signup) (if your browser is running inside the host VM) or [http://HARNESS_HOST/#/signup](http://HARNESS_HOST/#/signup) (if your browser is running outside the host VM) and complete the registration form. Now your Harness CDCE account along with the first (admin) user is created. If you have already completed this step, then login to CDCE at [http://localhost/#/signin](http://localhost/#/signin) or [http://HARNESS_HOST/#/signin](http://HARNESS_HOST/#/signin).
 
 Note that you can temporarily shut down CDCE if needed and bring it back up using the previous `up` command.
 ```bash
@@ -86,7 +93,7 @@ docker compose down
 ```
 <h3> Prerequisite </h3>
 
-Ensure that you access to a Kubernetes cluster. For the purposes of this tutorial, we will use `minikube`.
+The CDCE helm chart is currently designed to run only on a single-node Kubernetes. For the purposes of this tutorial, we will use `minikube`.
 
 <h4> Install  minikube </h4>
 
@@ -110,9 +117,11 @@ Validate that you have kubectl access to your cluster.
 kubectl get pods -A
 ```
 
-<h3> Install CDCE Helm Chart </h3>
+<h4> Install helm </h4>
 
-As a prerequisite, you should have [Helm v3](https://helm.sh/docs/intro/install/) installed on the machine from which you connect to your Kubernetes cluster. 
+You should have [Helm v3](https://helm.sh/docs/intro/install/) installed on the machine from which you connect to your Kubernetes cluster. 
+
+<h3> Install CDCE Helm Chart </h3>
 
 You can now install the CDCE using a Helm Chart. First step is to clone the git repo.
 
@@ -120,7 +129,10 @@ You can now install the CDCE using a Helm Chart. First step is to clone the git 
 git clone https://github.com/harness/harness-cd-community.git
 cd harness-cd-community/docker-compose/harness
 ```
-Now you can install the helm chart.
+
+Since you will be installing delegates at locations different than the Kubernetes node hosting CDCE Helm app, you will need to make sure that your CDCE Kubernetes app can correctly generate URLs for these remote delegates to talk to. You can do so by setting the variable `HARNESS_HOST` with public IP of the Kubernetes node in the `values.yaml` of the helm chart prior to install. Note that the default listen_port is set to `7143`. 
+
+Now you are ready to install the helm chart.
 ```
 helm install harness ./harness --create-namespace --namespace harness
 ```
@@ -139,7 +151,7 @@ We need to forward the Kubernetes port to localhost to allow access from outside
 kubectl port-forward --namespace harness --address localhost svc/proxy 7143:80 9879:9879
 ```
 
-Open [http://localhost:7143/#/signup](http://localhost:7143/#/signup) and complete the registration form. Now your Harness CDCE account along with the first (admin) user is created. If you have already completed this step, then login to CDCE at [http://localhost:7143/#/signin](http://localhost:7143/#/signin).
+Open [http://localhost:7143/#/signup](http://localhost:7143/#/signup) (if your browser is running inside the host VM) or [http://HARNESS_HOST:7143/#/signup](http://HARNESS_HOST:7143/#/signup) (if your browser is running outside the host VM) and complete the registration form. Now your Harness CDCE account along with the first (admin) user is created. If you have already completed this step, then login to CDCE at [http://localhost/#/signin](http://localhost:7143/#/signin) or [http://HARNESS_HOST:7143/#/signin](http://HARNESS_HOST:7143/#/signin).
 
 ```mdx-code-block
 </TabItem>

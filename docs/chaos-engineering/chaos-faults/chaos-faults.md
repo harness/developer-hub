@@ -296,9 +296,14 @@ Following Platform Chaos faults are available:
     <td><a href="/docs/chaos-engineering/chaos-faults/aws/ecs-instance-stop">ecs-instance-stop</a></td>
   </tr>
   <tr>
-    <td>ELB AZ Down</td>
-    <td>Injects AZ down chaos from AWS ELB</td>
-    <td><a href="/docs/chaos-engineering/chaos-faults/aws/elb-az-down">elb-az-down</a></td>
+    <td>RDS Instance Delete</td>
+    <td>Injects RDS instance delete chaos on target RDS instance/cluster</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/aws/rds-instance-delete">rds-instance-delete</a></td>
+  </tr>
+  <tr>
+    <td>RDS Instance Reboot</td>
+    <td>Injects RDS instance reboot chaos on target RDS instance/cluster</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/aws/rds-instance-reboot">rds-instance-reboot</a></td>
   </tr>
 </table>
 
