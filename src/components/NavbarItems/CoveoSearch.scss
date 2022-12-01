@@ -1,7 +1,7 @@
 /* --- Coveo style overwritten ---- */
 #searchBoxCoveo {
     // width: 400px;
-    width: calc(100vw - 903px);
+    width: calc(100vw - 925px);
 }
 #searchResultsCoveo {
 	#coveo-search-mask{
@@ -16,6 +16,7 @@
 	#coveo-search {
 		background-color: var(--white);
         // box-shadow: 0px 0px 1px rgba(40, 41, 61, 0.04), 0px 2px 4px rgba(96, 97, 112, 0.16);
+		min-width: 635px;
 	}
     .coveo-search-results {
         // width: 1000px;
@@ -588,6 +589,8 @@
 
 @media screen and (max-width: 1058px) {
     #searchBoxCoveo {
+
+		width: calc(100vw - 880px);
         .CoveoSearchButton {
             display: none;
         }
@@ -601,6 +604,13 @@
     #searchBoxCoveo {
         width: 300px;
     }
+	#searchResultsCoveo .coveo-search-results {
+		left: 15px;
+		width: calc(100vw - 30px);
+	}
+	#coveo-search {
+		min-width: unset;
+	}
 }
 
 @media screen and (max-width: 834px) {
@@ -612,5 +622,6 @@
 @media screen and (max-width: 678px) {
     #searchBoxCoveo {
         width: 300px;
+		display: none;
     }
 }
