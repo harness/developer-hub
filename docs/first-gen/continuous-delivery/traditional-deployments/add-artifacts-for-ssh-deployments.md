@@ -12,20 +12,6 @@ The Harness Secure Shell (SSH) Service contains the application package artifact
 
 In this topic, we will show you how to create the Service for your application package artifact, add additional scripts, and add an application stack.
 
-In this topic:
-
-* [Before You Begin](#before_you_begin)
-* [Step 1: Create a Harness SSH Service](#step_1_create_a_harness_ssh_service)
-* [Step 2: Select an Artifact Type](#step_2_select_an_artifact_type)
-	+ [Supported Packaging Formats](#supported_packaging_formats)
-* [Option: Select an Application Stack](#option_select_an_application_stack)
-* [Review: Secure Shell Service Sections](#review_secure_shell_service_sections)
-* [Review: Software Required by Commands](#review_software_required_by_commands)
-* [Step 3: Add Your Artifact Source](#step_3_add_your_artifact_source)
-* [Option: View Artifact History](#option_view_artifact_history)
-* [See Also](#see_also)
-* [Configure As Code](#configure_as_code)
-
 ### Before You Begin
 
 * [Connect to Your Repos and Target SSH Platforms](connect-to-your-target-ssh-platform.md)

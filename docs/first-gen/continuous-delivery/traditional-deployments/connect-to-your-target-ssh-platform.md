@@ -12,15 +12,6 @@ Traditional (SSH) deployments typically pull application packages from artifact 
 
 This topic covers the steps needed to connect Harness to your artifact servers and target environments.
 
-In this topic:
-
-* [Before You Begin](#before_you_begin)
-* [Visual Summary](#visual_summary)
-* [Step 1: Title](#simple_slug)
-* [Step 2: Title](#another_slug)
-* [Limitations](#limitations)
-* [Next Steps](#next_steps)
-
 ### Before You Begin
 
 * [Traditional Deployments (SSH) Overview](../concepts-cd/deployment-types/traditional-deployments-ssh-overview.md)

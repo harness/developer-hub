@@ -19,21 +19,6 @@ In this topic, we will use the Basic Workflow to demonstrate a simple Traditiona
 
 For a Build and Deploy Pipeline using a Traditional deployment, see
  [Artifact Build and Deploy Pipelines Overview](../concepts-cd/deployment-types/artifact-build-and-deploy-pipelines-overview.md).
-In this topic:
-
-
-* [Before You Begin](#before_you_begin)
-* [Supported Platforms and Technologies](#supported_platforms_and_technologies)
-* [Review: Basic Workflows](#review_basic_workflows)
-* [Step 1: Create the Workflow](#step_1_create_the_workflow)
-* [Step 2: Select Target Nodes](#step_2_select_target_nodes)
-* [Step 3: Install and Run the Application and Stacks](#step_3_install_and_run_the_application_and_stacks)
-* [Review: Rollbacks](#review_rollbacks)
-* [Example: Basic Workflow Deployment](#example_basic_workflow_deployment)
-* [See Also](#see_also)
-* [Configure As Code](#configure_as_code)
-
-
 
 ### Before You Begin
 

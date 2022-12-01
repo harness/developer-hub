@@ -20,7 +20,7 @@ Before learning about Harness IIS (.NET) deployments, you should have an underst
 
 ### Video Summary
 
-Here is a quick primer on deploying Microsoft IIS .NET applications and Microsoft .NET Core container applications using Harness Continuous Deployment.
+Here is a quick primer on deploying Microsoft IIS .NET applications and Microsoft .NET Core container applications using Harness Continuous Delivery.
 
 <!-- Video:
 https://harness-1.wistia.com/medias/rpv5vwzpxz-->

@@ -12,23 +12,6 @@ You can add a **Terragrunt** **Destroy** Workflow step to remove any provisioned
 
 The Terragrunt **Destroy** step is independent of any other Terragrunt provisioning step in a Workflow. It is not restricted to removing the infrastructure deployed in its Workflow. It can remove any infrastructure you have provisioned using a Terragrunt Infrastructure Provisioner.
 
-In this topic:
-
-* [Before You Begin](#before_you_begin)
-* [Review: What Gets Destroyed?](#review_what_gets_destroyed)
-	+ [Inherit configurations from previous Terragrunt Provision step](#inherit_configurations_from_previous_terragrunt_provision_step)
-	+ [Specify Backend Configuration (Remote State)](#specify_backend_configuration_remote_state)
-* [Step 1: Add Terragrunt Destroy Step](#step_1_add_terragrunt_destroy_step)
-* [Step 2: Select Provisioner and Workspace](#step_2_select_provisioner_and_workspace)
-* [Option: Select Delegate](#option_select_delegate)
-* [Option: Inherit configurations from previous Terragrunt Provision Step](#option_inherit_configurations_from_previous_terragrunt_provision_step)
-* [Option: Set as Terragrunt Destroy Plan and Export](#option_set_as_terragrunt_destroy_plan_and_export)
-	+ [Terragrunt Plan Size Limit](#terragrunt_plan_size_limit)
-	+ [Terragrunt Destroy Plan Output Variable](#terragrunt_destroy_plan_output_variable)
-* [Option: Inherit following configurations from Terragrunt Destroy Plan](#option_inherit_following_configurations_from_terragrunt_destroy_plan)
-* [Step 3: Input Values](#step_3_input_values)
-* [Step 4: Backend Configuration](#step_4_backend_configuration)
-* [Option: Terragrunt Environment Variables](#option_terragrunt_environment_variables)
 
 ### Before You Begin
 

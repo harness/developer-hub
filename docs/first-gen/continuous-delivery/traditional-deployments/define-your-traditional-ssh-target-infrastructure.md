@@ -12,18 +12,6 @@ Harness [Infrastructure Definitions](https://docs.harness.io/article/v3l3wqovbe-
 
 In this topic, we describe how to add an Infrastructure Definition for your Traditional (SSH) deployment.
 
-In this topic:
-
-* [Before You Begin](#before_you_begin)
-* [Review: Target Host Requirements](#review_target_host_requirements)
-* [Visual Summary](#visual_summary)
-* [Review: Software Required by Commands](#review_software_required_by_commands)
-* [Step 1: Create an Environment](#step_1_create_an_environment)
-* [Step 2: Define Target Infrastructure](#step_2_define_target_infrastructure)
-* [Option: Scope to Specific Service](#option_scope_to_specific_service)
-* [Review: SSH Key for Connection Attributes](#review_ssh_key_for_connection_attributes)
-* [See Also](#see_also)
-* [Configure As Code](#configure_as_code)
 
 ### Before You Begin
 

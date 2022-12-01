@@ -14,13 +14,6 @@ You reference an output with a Harness variable expression in the format `${terr
 
 You can reference the output regardless of whether the Terragrunt Infrastructure Provisioner is used in the Infrastructure Definition in the Workflow settings.This topic demonstrates how to use these expressions in other Workflow steps.
 
-In this topic:
-
-* [Before You Begin](#before_you_begin)
-* [Limitations](#limitations)
-* [Step 1: Add a Workflow Step](#step_1_add_a_workflow_step)
-* [Step 2: Enter the Output Variable Expression](#step_2_enter_the_output_variable_expression)
-* [Notes](#notes)
 
 ### Before You Begin
 

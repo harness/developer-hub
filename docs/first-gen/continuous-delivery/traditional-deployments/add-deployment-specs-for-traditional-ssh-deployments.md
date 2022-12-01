@@ -10,16 +10,6 @@ helpdocs_is_published: true
 
 When you create the Harness Secure Shell (SSH) Service, Harness automatically generates the commands and scripts needed to install the app and stack on the target host, copy the file(s) to the correct folder, and start the app.
 
-In this topic, we will discuss the default commands and scripts, their processing order, and how to add additional scripts:
-
-* [Before You Begin](#before_you_begin)
-* [Visual Summary](#visual_summary)
-* [Review: Script Execution Order](#review_script_execution_order)
-* [Step 1: Add Commands and Scripts](#step_1_add_commands_and_scripts)
-* [Review: Download Artifact and Exec Scripts](#undefined)
-* [Review: Harness and Custom Variables](#undefined)
-* [See Also](#see_also)
-* [Configure As Code](#configure_as_code)
 
 ### Before You Begin
 

@@ -14,18 +14,6 @@ The dry run will refresh the state file and generate a plan, but not apply the p
 
 This topic covers using the Terragrunt Provision step for dry runs only. For steps on applying plans without a dry run, see [Provision using the Terragrunt Provision Step](provision-using-the-terragrunt-provision-step.md).
 
-In this topic:
-
-* [Before You Begin](#before_you_begin)
-* [Visual Summary](#visual_summary)
-* [Limitations](#limitations)
-* [Step 1: Set Terragrunt Step as Plan](#step_1_set_terragrunt_step_as_plan)
-* [Option: Export Terragrunt Plan to next Terragrunt Provision step](#option_export_terragrunt_plan_to_next_terragrunt_provision_step)
-* [Step 2: Add Approval Step](#step_2_add_approval_step)
-* [Step 3: Add Terragrunt Step to Apply Plan](#step_3_add_terragrunt_step_to_apply_plan)
-* [Step 4: Deploy](#step_4_deploy)
-* [Next Steps](#next_steps)
-
 ### Before You Begin
 
 This topic assumes you have read the following:

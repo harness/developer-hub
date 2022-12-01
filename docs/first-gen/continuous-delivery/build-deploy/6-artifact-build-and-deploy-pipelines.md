@@ -1,7 +1,7 @@
 ---
 title: Create the Build and Deploy Pipeline
 description: Create a Pipeline to run your Build and Deploy Workflows.
-# sidebar_position: 2
+sidebar_position: 70
 helpdocs_topic_id: slkhuejdkw
 helpdocs_category_id: j1q21aler1
 helpdocs_is_private: false

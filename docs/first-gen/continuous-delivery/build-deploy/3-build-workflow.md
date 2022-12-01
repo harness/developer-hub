@@ -1,7 +1,7 @@
 ---
 title: Create the Build Workflow for Build and Deploy Pipelines
 description: Create the Build Workflow to build the artifact.
-# sidebar_position: 2
+sidebar_position: 40
 helpdocs_topic_id: obqhjaabnl
 helpdocs_category_id: j1q21aler1
 helpdocs_is_private: false

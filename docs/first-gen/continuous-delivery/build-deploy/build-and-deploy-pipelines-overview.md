@@ -1,7 +1,7 @@
 ---
 title: Build and Deploy Pipeline How-tos
 description: Overview of how an Artifact Build and Deploy Pipeline builds and deploys a build to a deployment environment.
-# sidebar_position: 2
+sidebar_position: 10
 helpdocs_topic_id: 181zspq0b6
 helpdocs_category_id: j1q21aler1
 helpdocs_is_private: false

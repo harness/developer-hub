@@ -1,6 +1,6 @@
 ---
 title: Create a Custom Deployment using Deployment Templates
-description: Harness provides deployment support for all of the major platforms, listed in the ​Continuous Deployments category. In some cases, you might be using a platform that does not have first class support…
+description: Harness provides deployment support for all of the major platforms, listed in the ​Continuous Delivery category. In some cases, you might be using a platform that does not have first class support…
 # sidebar_position: 2
 helpdocs_topic_id: g7m5a380kl
 helpdocs_category_id: 29o4taom9v
@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Harness provides deployment support for all of the major platforms, listed in the[​Continuous Deployments](https://docs.harness.io/category/continuous-delivery) category.
+Harness provides deployment support for all of the major platforms, listed in the[​Continuous Delivery](https://docs.harness.io/category/continuous-delivery) category.
 
 In some cases, you might be using a platform that does not have first class support in Harness, such as WebLogic, WebSphere, or [Google Cloud functions](https://community.harness.io/t/google-cloud-functions-with-harness-deployment-template/598). For these situations, Harness provides a custom deployment option using Deployment Templates.
 

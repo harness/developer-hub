@@ -14,18 +14,6 @@ This topic describes how to set up these components for Terragrunt.
 
 Once your account is set up, you can begin integrating your Terragrunt files. See [Add Terragrunt Configuration Files](add-terragrunt-configuration-files.md).
 
-In this topic:
-
-* [Before You Begin](set-up-your-harness-account-for-terragrunt.md#before-you-begin)
-* [Visual Summary](set-up-your-harness-account-for-terragrunt.md#visual-summary)
-* [Step 1: Set Up Harness Delegates](set-up-your-harness-account-for-terragrunt.md#step-1-set-up-harness-delegates)
-	+ [Delegate Selectors](set-up-your-harness-account-for-terragrunt.md#delegate-selectors)
-	+ [Permissions](set-up-your-harness-account-for-terragrunt.md#permissions)
-* [Step 2: Install Terragrunt and Terraform on Delegates using Delegate Profiles](set-up-your-harness-account-for-terragrunt.md#step-2-install-terragrunt-and-terraform-on-delegates-using-delegate-profiles)
-* [Step 3: Set Up the Cloud Provider](set-up-your-harness-account-for-terragrunt.md#step-3-set-up-the-cloud-provider)
-* [Step 4: Connect Harness to Your Script Repo](set-up-your-harness-account-for-terragrunt.md#step-4-connect-harness-to-your-script-repo)
-* [Next Steps](set-up-your-harness-account-for-terragrunt.md#next-steps)
-
 ### Before You Begin
 
 * [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts)

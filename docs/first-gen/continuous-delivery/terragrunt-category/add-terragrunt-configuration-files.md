@@ -16,17 +16,6 @@ Once the Harness Infrastructure Provisioner is set up, you can use it in two way
 * Provision non-target infrastructure. You can also simply add the Terragrunt Provision step to a Workflow to provision non-target resources.  
 In this topic, we will cover provisioning the target infrastructure for a deployment, but the steps to provision other resources are similar.
 
-In this topic:
-
-* [Before You Begin](add-terragrunt-configuration-files.md#before-you-begin)
-* [Visual Summary](add-terragrunt-configuration-files.md#visual-summary)
-* [Step 1: Add a Terragrunt Provisioner](add-terragrunt-configuration-files.md#step-1-add-a-terragrunt-provisioner)
-* [Step 2: Select Your Terragrunt Script Repo](add-terragrunt-configuration-files.md#step-2-select-your-terragrunt-script-repo)
-* [Option: Use Expressions for Script Repository](add-terragrunt-configuration-files.md#option-use-expressions-for-script-repository)
-* [Step 3: Select Secret Manager for Terragrunt Plan](add-terragrunt-configuration-files.md#step-3-select-secret-manager-for-terragrunt-plan)
-* [Option: Skip Terragrunt Refresh When Inheriting Terraform Plan](add-terragrunt-configuration-files.md#option-skip-terragrunt-refresh-when-inheriting-terraform-plan)
-* [Step 4: Complete the Terragrunt Provisioner](add-terragrunt-configuration-files.md#step-4-complete-the-terragrunt-provisioner)
-* [Next Steps](add-terragrunt-configuration-files.md#next-steps)
 
 ### Before You Begin
 

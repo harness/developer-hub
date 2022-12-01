@@ -18,20 +18,6 @@ When the Workflow runs, it provisions the infrastructure using the Terraform Pro
 
 This topic describes how to map Terraform script outputs for all of the supported platforms.
 
-In this topic:
-
-* [Before You Begin](#before_you_begin)
-* [Visual Summary](#visual_summary)
-* [Limitations](#limitations)
-* [Step: Add the Infrastructure Definition](#step_add_the_infrastructure_definition)
-* [Option 1: Map an Agnostic Kubernetes Cluster](#option_1_map_an_agnostic_kubernetes_cluster)
-* [Option 2: ​Map a GCP Kubernetes Infrastructure​](#option_2_map_a_gcp_kubernetes_infrastructure)
-* [Option 3: ​Map an AWS AMI Infrastructure​](#option_3_map_an_aws_ami_infrastructure)
-* [Option 4: ​Map an AWS ECS Infrastructure​](#option_4_map_an_aws_ecs_infrastructure)
-* [Option 5: ​Map an AWS Lambda Infrastructure​](#option_5_map_an_aws_lambda_infrastructure)
-* [Option 6: ​Map a Secure Shell (SSH) Infrastructure](#option_6_map_a_secure_shell_ssh_infrastructure)
-* [Option 7: Map an Azure Web App](#option_7_map_an_azure_web_app)
-* [Next Steps](#next_steps)
 
 ### Before You Begin
 

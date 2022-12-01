@@ -1,7 +1,7 @@
 ---
 title: Create the Deploy Workflow for Build and Deploy Pipelines
 description: Create the Deploy Workflow to deploy the artifact built by the Build Workflow.
-# sidebar_position: 2
+sidebar_position: 60
 helpdocs_topic_id: q6rtl33634
 helpdocs_category_id: j1q21aler1
 helpdocs_is_private: false

@@ -1,7 +1,7 @@
 ---
 title: Define Your Build and Deploy Pipeline Target Infrastructure
 description: Define the target deployment Environment for your artifacts.
-# sidebar_position: 2
+sidebar_position: 50
 helpdocs_topic_id: fav3v3jx3d
 helpdocs_category_id: j1q21aler1
 helpdocs_is_private: false

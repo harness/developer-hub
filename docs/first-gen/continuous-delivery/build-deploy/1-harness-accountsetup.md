@@ -1,7 +1,7 @@
 ---
 title: Connect to Your Artifact Build and Deploy Pipeline Platforms
 description: Set up the Harness Delegate, Artifact Server, and Cloud Provider for the Pipeline.
-# sidebar_position: 2
+sidebar_position: 20
 helpdocs_topic_id: xiys9djs0h
 helpdocs_category_id: j1q21aler1
 helpdocs_is_private: false

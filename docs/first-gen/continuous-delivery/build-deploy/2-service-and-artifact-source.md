@@ -1,7 +1,7 @@
 ---
 title: Add Your Build and Deploy Pipeline Artifacts
 description: Add a Harness Service and Artifact Source to identify the artifacts you want to build.
-# sidebar_position: 2
+sidebar_position: 30
 helpdocs_topic_id: xhh8oi4bkh
 helpdocs_category_id: j1q21aler1
 helpdocs_is_private: false
