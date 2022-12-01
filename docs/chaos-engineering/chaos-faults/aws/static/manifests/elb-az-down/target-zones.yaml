@@ -1,0 +1,22 @@
+# contains elb az down for given zones
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: elb-az-down
+    spec:
+      components:
+        env:
+        # load balancer name for chaos
+        - name: LOAD_BALANCER_NAME
+          value: 'test-elb'
+        # target zones for the chaos
+        - name: ZONES
+          value: 'us-east-1a,us-east-1b'
+        # region for chaos
+        - name: REGION
+          value: 'us-east-1'
