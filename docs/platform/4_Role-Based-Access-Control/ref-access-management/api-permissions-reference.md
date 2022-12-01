@@ -12,7 +12,7 @@ This topic gives you details of the Permissions available in the Harness system 
 
 ### Service Account
 
-The following table lists permissions for Service Account. To know more about Service Accounts, see [Add and Manage Service Accounts](/article/e5p4hdq6bd).
+The following table lists permissions for Service Account. To know more about Service Accounts, see [Add and Manage Service Accounts](../6-add-and-manage-service-account.md).
 
 
 
@@ -23,7 +23,7 @@ The following table lists permissions for Service Account. To know more about Se
 
 ### API Key
 
-The following table lists the permissions for Service Account. To know more about Service Accounts, see [Add and Manage API Keys](/article/tdoad7xrh9).
+The following table lists the permissions for Service Account. To know more about Service Accounts, see [Add and Manage API Keys](../7-add-and-manage-api-keys.md).
 
 
 

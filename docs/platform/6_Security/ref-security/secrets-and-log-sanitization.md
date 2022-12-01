@@ -16,11 +16,11 @@ First, let's review secrets in Harness, and then look at how Harness sanitizes l
 
 You can create secrets in Harness as described in:
 
-* [Add and Reference Text Secrets](../add-use-text-secrets.md)
-* [Add and Reference File Secrets](../add-file-secrets.md)
-* [Add SSH Secrets](../add-use-ssh-secrets.md)
+* [Add and Reference Text Secrets](../2-add-use-text-secrets.md)
+* [Add and Reference File Secrets](../3-add-file-secrets.md)
+* [Add SSH Secrets](../4-add-use-ssh-secrets.md)
 
-For text and file secrets, the secrets are stored in the Secrets Manager. For steps to add a Secret Manager, see [Add a Secret Manager](../add-secrets-manager.md).
+For text and file secrets, the secrets are stored in the Secrets Manager. For steps to add a Secret Manager, see [Add a Secret Manager](../5-add-secrets-manager.md).
 
 Once a secret is added, you can use other Harness entities instead of settings.
 

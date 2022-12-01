@@ -123,7 +123,7 @@ Click **Project Setup**, and then click **Secrets**.
 
 Click **New Secret**, and then click **File**.
 
-In **Secrets Manager**, select a Secrets Manager. See [Harness Secrets Manager Overview](../6_Security/harness-secret-manager-overview.md).
+In **Secrets Manager**, select a Secrets Manager. See [Harness Secrets Manager Overview](../6_Security/1-harness-secret-manager-overview.md).
 
 In **Secret Name**, enter a name for the secret. You'll use this name to select the secret in Harness Connectors and other settings.
 

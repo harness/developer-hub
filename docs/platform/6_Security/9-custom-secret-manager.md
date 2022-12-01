@@ -16,7 +16,7 @@ This topic explains how to add and use a Custom Secret Manager in Harness.
 
 ### Before you begin
 
-* [Harness Secret Manager Overview](harness-secret-manager-overview.md)
+* [Harness Secret Manager Overview](../6_Security/1-harness-secret-manager-overview.md)
 
 ### Permissions
 
@@ -89,7 +89,7 @@ Click **Use Template**.
 
 Create an Encrypted Text using the Custom Secrets Manager you created earlier. Enter the name and values of all the Input Variables defined while creating the Shell Script Template. 
 
-For more information on creating Encrypted Text Secret, see [Add Encrypted Text](add-use-text-secrets.md).
+For more information on creating Encrypted Text Secret, see [Add Encrypted Text](./2-add-use-text-secrets.md).
 
 If you want to create a secret on a Target Host Custom Secrets Manager, you must also select the Connection Attribute.
 

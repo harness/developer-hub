@@ -13,7 +13,7 @@ To store and use encrypted secrets (such as access keys), you can add a HashiCor
 ### Before you begin
 
 * [Learn Harness' Key Concepts](https://ngdocs.harness.io/article/hv2758ro4e-learn-harness-key-concepts)
-* [Harness Secret Manager Overview](harness-secret-manager-overview.md)
+* [Harness Secret Manager Overview](../6_Security/1-harness-secret-manager-overview.md)
 * Make sure that the Harness Delegate can connect to the Vault URL.
 * Make sure you have View and Create/Edit permissions for secrets.​
 
@@ -55,7 +55,7 @@ The App Role option enables the Harness Vault Secret Manager to authenticate wit
 
 The Vault AppRole method allows you to define multiple roles corresponding to different applications, each with different levels of access. The application's **App Role ID** and **Secret ID** are used for authentication with Vault. You need these to log in and fetch a Vault token.
 
-To assign a **Secret ID**, you can create a new [**Secret**](add-use-text-secrets.md) or choose an existing one.
+To assign a **Secret ID**, you can create a new [**Secret**](./2-add-use-text-secrets.md) or choose an existing one.
 
 The Secret should not expire and it should be valid until you manually revoke it. You would need this Secret to generate new tokens when the older tokens expire.Harness will use the App Role ID and Secret ID that you supply, to fetch a Vault Auth Token dynamically at configured intervals. This interval is set in Renewal Interval.
 
@@ -107,9 +107,9 @@ vault token create -policy=harness -period=768h
 Next, use the new token with Harness. To do this, perform the below steps:
 
 * Click **Create or Select a Secret**.![](./static/add-hashicorp-vault-21.png)
-* The secret settings page appears. Here you can either **Create a new** [**Secret**](add-use-text-secrets.md) or **Select an existing secret**. If creating a new Secret, enter the token which you created in the **Secret Value** field.![](./static/add-hashicorp-vault-22.png)
+* The secret settings page appears. Here you can either **Create a new** [**Secret**](./2-add-use-text-secrets.md) or **Select an existing secret**. If creating a new Secret, enter the token which you created in the **Secret Value** field.![](./static/add-hashicorp-vault-22.png)
 
-For detailed steps on creating a secret, see [Add Text Secrets](add-use-text-secrets.md).
+For detailed steps on creating a secret, see [Add Text Secrets](./2-add-use-text-secrets.md).
 
 If you have already added a Secret with your token, you can choose the same as shown below:
 
@@ -144,7 +144,7 @@ Harness recommends using the IAM technique for authentication since it is more v
 
 To authenticate with AWS Auth, make sure you have configured the vault with entries for **Header**, **Role**, and **Region**. For more information, see [AWS Auth Method](https://www.vaultproject.io/docs/auth/aws#iam-auth-method).
 
-You must add the **Server ID Header** from Vault as a [Harness Encrypted Text Secret](add-use-text-secrets.md) and select it for **Server Id Header** in Harness.
+You must add the **Server ID Header** from Vault as a [Harness Encrypted Text Secret](./2-add-use-text-secrets.md) and select it for **Server Id Header** in Harness.
 
 ![](./static/add-hashicorp-vault-25.png)
 In **Role**, enter the role you have configured in the Vault.

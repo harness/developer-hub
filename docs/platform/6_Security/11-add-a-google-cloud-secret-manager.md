@@ -12,12 +12,12 @@ Currently, this feature is behind the feature flag `PL_ENABLE_GOOGLE_SECRET_MANA
 
 You can link your Google Cloud Secret Manager to Harness and use it to store any sensitive data you use in Harness, including secrets.
 
-Harness also supports [Google KMS as a secrets manager](add-google-kms-secrets-manager.md).This topic explains how to add a GCP Secrets Manager in Harness.
+Harness also supports [Google KMS as a secrets manager](../6_Security/10-add-google-kms-secrets-manager.md).This topic explains how to add a GCP Secrets Manager in Harness.
 
 ### Before you begin
 
 * See [Harness Key Concepts](https://docs.harness.io/article/hv2758ro4e)
-* See [Secrets Management Overview](harness-secret-manager-overview.md)
+* See [Secrets Management Overview](../6_Security/1-harness-secret-manager-overview.md)
 
 ### Limitations
 
@@ -68,7 +68,7 @@ The GCP Secrets Manager settings appear.![](./static/add-a-google-cloud-secret-m
 
 ### Step 3: Attach a Google Secret Manager credentials file
 
-You must export your Google Cloud service account key and add it as an [Encrypted File Secret](add-file-secrets.md) in Harness.
+You must export your Google Cloud service account key and add it as an [Encrypted File Secret](./3-add-file-secrets.md) in Harness.
 
 1. In the Google Cloud console, select **IAM & admin** > **Service account**.
 2. Scroll to the service account you want to use. If no service account is present, create one.
@@ -79,7 +79,7 @@ See [Managing secrets](https://cloud.google.com/secret-manager/docs/access-cont
 5. In the resulting **Create private key** dialog, select the **JSON** option, create the key, and download it to your computer.
 6. Go back to Harness.
 7. In **Google Secrets Manager Credentials File**, select the encrypted file you just added in Harness.![](./static/add-a-google-cloud-secret-manager-40.png)
-You can also create a new [File Secret](add-file-secrets.md) here and add the Google Cloud service account key that you downloaded.
+You can also create a new [File Secret](./3-add-file-secrets.md) here and add the Google Cloud service account key that you downloaded.
 8. Click **Continue**.
 
 ### Step 4: Setup delegates
@@ -138,9 +138,9 @@ The **Add new Encrypted File** settings appear.
 
 ### See also
 
-* [Add Google KMS as a Harness Secret Manager](add-google-kms-secrets-manager.md)
-* [Add an AWS KMS Secret Manager](add-an-aws-kms-secrets-manager.md)
-* [Add an AWS Secret Manager](add-an-aws-secret-manager.md)
-* [Add an Azure Key Vault Secret Manager](azure-key-vault.md)
-* [Add a HashiCorp Vault Secret Manager](/s65mzbyags-add-hashicorp-vault)
+* [Add Google KMS as a Harness Secret Manager](../6_Security/10-add-google-kms-secrets-manager.md)
+* [Add an AWS KMS Secret Manager](../6_Security/7-add-an-aws-kms-secrets-manager.md)
+* [Add an AWS Secret Manager](../6_Security/6-add-an-aws-secret-manager.md)
+* [Add an Azure Key Vault Secret Manager](../6_Security/8-azure-key-vault.md)
+* [Add a HashiCorp Vault Secret Manager](../6_Security/12-add-hashicorp-vault.md)
 

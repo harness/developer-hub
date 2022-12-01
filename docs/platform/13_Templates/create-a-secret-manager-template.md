@@ -26,7 +26,7 @@ You will learn how to:
 ### Before you begin
 
 * [Templates Overview](template.md)
-* [Harness Secrets Management Overview](../6_Security/harness-secret-manager-overview.md)
+* [Harness Secrets Management Overview](../6_Security/1-harness-secret-manager-overview.md)
 
 ### Required permissions
 
@@ -95,7 +95,7 @@ To do this, perform the following steps:
 Harness allows you to use [Fixed Values and Runtime Inputs](../20_References/runtime-inputs.md).![The image shows the configuration tab for creating a secrets manager template. The user has specified three variables whose data type is string and whose values are to be specified at run time](./static/create-a-secret-manager-template-32.png)
 3. Select **Execution Target**. This is where you want to execute the script that you just added.  
 If you want to run the Shell Script on a target host and not on the Harness Delegate, you must first create the required connection attributes.  
-To access an SSH-based Custom Secrets Manager, create an SSH credential first. See [Add SSH Keys](../6_Security/add-use-ssh-secrets.md) for the procedure to create SSH credentials.  
+To access an SSH-based Custom Secrets Manager, create an SSH credential first. See [Add SSH Keys](../6_Security/4-add-use-ssh-secrets.md) for the procedure to create SSH credentials.  
 This does not apply if you want to run the Custom Secrets Manager on the Harness Delegate.
 	1. Select **Specify Host** to execute the script on a specific host.![](./static/create-a-secret-manager-template-33.png)In **Target Host**, enter the host address.  
 	In **SSH Connection Attribute**, create or select an existing secret that has the SSh credential as its value.  
@@ -105,5 +105,5 @@ This does not apply if you want to run the Custom Secrets Manager on the Harness
 
 ### See also
 
-* [Add a Custom Secret Manager](../6_Security/custom-secret-manager.md)
+* [Add a Custom Secret Manager](../6_Security/9-custom-secret-manager.md)
 

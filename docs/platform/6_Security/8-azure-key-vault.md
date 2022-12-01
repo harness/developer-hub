@@ -12,7 +12,7 @@ To store and use encrypted secrets (such as access keys) and files, you can add 
 
 ### Before you begin
 
-* See Harness [Secret Manager Overview](harness-secret-manager-overview.md).
+* See Harness [Secret Manager Overview](../6_Security/1-harness-secret-manager-overview.md).
 * See [About Azure Key Vault](https://docs.microsoft.com/en-us/azure/key-vault/general/overview) by Microsoft.
 * See [Azure Key Vault Basic Concepts](https://docs.microsoft.com/en-us/azure/key-vault/general/basic-concepts).
 * Make sure you have set up an Azure account.
@@ -20,7 +20,7 @@ To store and use encrypted secrets (such as access keys) and files, you can add 
 
 ### Review: Secret Manager Overview
 
-For a full overview of how your secrets are used with the Secrets Managers you configure in Harness, please see [Harness Secrets Management Overview](harness-secret-manager-overview.md) and [Harness Security FAQs](https://docs.harness.io/article/320domdle1-harness-security-faqs).
+For a full overview of how your secrets are used with the Secrets Managers you configure in Harness, please see [Harness Secrets Management Overview](../6_Security/1-harness-secret-manager-overview.md) and [Harness Security FAQs](https://docs.harness.io/article/320domdle1-harness-security-faqs).
 
 Here's a visual summary:
 
@@ -111,10 +111,10 @@ To provide these values:
 * Copy the **Directory (tenant) ID** of the Azure Active Directory (AAD) where you created your application, and paste it into the Harness dialog's **Tenant ID** field. (For details, see Microsoft Azure's [Get values for signing in](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) topic.)
 * In the **Subscription** field, you can optionally enter your Azure Subscription ID (GUID).
 
-To find this ID, navigate to Azure's **Subscriptions** page, as outlined above in [Step 1: Create Azure Reader Role](azure-key-vault.md#create-azure-reader-role). From the resulting list of subscriptions, copy the **Subscription ID** beside the subscription that contains your vaults.
+To find this ID, navigate to Azure's **Subscriptions** page, as outlined above in [Step 1: Create Azure Reader Role](../6_Security/8-azure-key-vault.md#step-1-create-azure-reader-role). From the resulting list of subscriptions, copy the **Subscription ID** beside the subscription that contains your vaults.
 
 ![](./static/azure-key-vault-11.png)
-If you do not enter a GUID, Harness uses the default subscription for the [Client ID](#step_4) you've provided above.Click **Create or Select a Secret** in the **Key** field. For detailed steps on creating a new secret, see [Add Text Secrets](add-use-text-secrets.md).
+If you do not enter a GUID, Harness uses the default subscription for the [Client ID](#step_4) you've provided above.Click **Create or Select a Secret** in the **Key** field. For detailed steps on creating a new secret, see [Add Text Secrets](./2-add-use-text-secrets.md).
 
 ![](./static/azure-key-vault-12.png)
 The secret that you reference here should have the Azure authentication key as the **Secret Value**. The below image shows the creation of a secret with Azure authentication key as its value:

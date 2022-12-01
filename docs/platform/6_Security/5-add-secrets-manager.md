@@ -12,16 +12,16 @@ Harness includes a built-in Secret Management feature that enables you to store 
 
 Looking for specific secret managers? See:
 
-* [Add an AWS KMS Secret Manager](add-an-aws-kms-secrets-manager.md)
-* [Add a HashiCorp Vault Secret Manager](add-hashicorp-vault.md)
-* [Add an Azure Key Vault Secret Manager](azure-key-vault.md)
-* [Add Google KMS as a Harness Secret Manager](add-google-kms-secrets-manager.md)
-* [Add an AWS Secrets Manager](add-an-aws-secret-manager.md)
+* [Add an AWS KMS Secret Manager](../6_Security/7-add-an-aws-kms-secrets-manager.md)
+* [Add a HashiCorp Vault Secret Manager](../6_Security/12-add-hashicorp-vault.md)
+* [Add an Azure Key Vault Secret Manager](../6_Security/8-azure-key-vault.md)
+* [Add Google KMS as a Harness Secret Manager](../6_Security/10-add-google-kms-secrets-manager.md)
+* [Add an AWS Secrets Manager](../6_Security/6-add-an-aws-secret-manager.md)
 
 ### Before you begin
 
 * [Learn Harness' Key Concepts](https://docs.harness.io/article/hv2758ro4e-learn-harness-key-concepts)
-* [Harness Secret Management Overview](harness-secret-manager-overview.md)
+* [Harness Secret Management Overview](../6_Security/1-harness-secret-manager-overview.md)
 
 ### Step 1: Configure Secret Manager
 

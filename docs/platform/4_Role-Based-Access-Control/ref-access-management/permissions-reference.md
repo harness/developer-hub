@@ -12,9 +12,9 @@ This topic gives you details of the Harness Permissions and Default Roles and Re
 
 ### Default Roles
 
-Each Harness Account, Organization and Project includes default Roles to help you with [RBAC](https://newdocs.helpdocs.io/category/w4rzhnf27d-rbac).
+Each Harness Account, Organization and Project includes default Roles to help you with [RBAC](../1-rbac-in-harness.md).
 
-The following table lists permissions corresponding to the default roles at the Account [scope](/article/vz5cq0nfg2-rbac-in-harness#rbac_scope):
+The following table lists permissions corresponding to the default roles at the Account [scope](../1-rbac-in-harness.md#rbac-scope):
 
 
 

@@ -22,7 +22,7 @@ You'll learn how to:
 
 ### Before you begin
 
-You'll need a Git repo with at least one branch and a Personal Access Token (PAT) for your account. Harness needs the PAT to use the Git platform APIs. The PAT is encrypted using a [Harness Secret Manager](../6_Security/harness-secret-manager-overview.md). Your Git Personal Access Token is stored in your Harness secret and is a private key to which only you have access. This secret cannot be accessed or referenced by any other user.
+You'll need a Git repo with at least one branch and a Personal Access Token (PAT) for your account. Harness needs the PAT to use the Git platform APIs. The PAT is encrypted using a [Harness Secret Manager](../6_Security/1-harness-secret-manager-overview.md). Your Git Personal Access Token is stored in your Harness secret and is a private key to which only you have access. This secret cannot be accessed or referenced by any other user.
 
 Make sure your repo has at least one branch, such as main or master. For most Git providers, you simply add a README file to the repo and the branch in created.### Step 1: Add a Source Code Manager
 

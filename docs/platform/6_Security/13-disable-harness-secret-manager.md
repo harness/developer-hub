@@ -10,14 +10,14 @@ helpdocs_is_published: true
 
 Currently, this feature is behind the Feature Flag `DISABLE_HARNESS_SM`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.Harness includes a built-in Secret Management feature that enables you to store encrypted secrets, such as access keys, and use them in your Harness Accounts, Organizations, or Projects.
 
-You can choose to disable the Harness built-in Secret Manager at any point and use any other [Secret Manager](add-secrets-manager.md) to store secrets.
+You can choose to disable the Harness built-in Secret Manager at any point and use any other [Secret Manager](./5-add-secrets-manager.md) to store secrets.
 
 This topic explains how to disable the built-in Harness Secret Manager.
 
 ### Before you begin
 
-* [Harness Secret Management Overview](harness-secret-manager-overview.md)
-* [Add a Secret Manager](add-secrets-manager.md)
+* [Harness Secret Management Overview](../6_Security/1-harness-secret-manager-overview.md)
+* [Add a Secret Manager](../6_Security/5-add-secrets-manager.md)
 * Make sure you have Account Admin permissions to disable the built-in Secret Manager.  
 For more information, see [API Permissions Reference](../4_Role-Based Access Control/ref-access-management/api-permissions-reference.md).
 
@@ -58,9 +58,9 @@ You must have another Secret Manager created at the Account scope with its crede
 
 ### See also
 
-* [Add Google KMS as a Harness Secret Manager](add-google-kms-secrets-manager.md)
-* [Add an AWS KMS Secret Manager](add-an-aws-kms-secrets-manager.md)
-* [Add an AWS Secret Manager](add-an-aws-secret-manager.md)
-* [Add an Azure Key Vault Secret Manager](azure-key-vault.md)
-* [Add a HashiCorp Vault Secret Manager](add-hashicorp-vault.md)
+* [Add Google KMS as a Harness Secret Manager](../6_Security/10-add-google-kms-secrets-manager.md)
+* [Add an AWS KMS Secret Manager](../6_Security/7-add-an-aws-kms-secrets-manager.md)
+* [Add an AWS Secret Manager](../6_Security/6-add-an-aws-secret-manager.md)
+* [Add an Azure Key Vault Secret Manager](../6_Security/8-azure-key-vault.md)
+* [Add a HashiCorp Vault Secret Manager](../6_Security/12-add-hashicorp-vault.md)
 
