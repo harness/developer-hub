@@ -10,16 +10,12 @@ const CoveoSearch = () => {
     setTimeout(() => {
       // document.addEventListener("DOMContentLoaded", () => {
       (async () => {
-        /*
         const resToken = await fetch(
-          "/api/gettoken-docs/" // https://next.harness.io/api/gettoken-docs/
+          "https://next.harness.io/api/gettoken-all/"
         );
         const dataToken = await resToken.json();
-        */
-        const orgId = "harnessproductionp9tivsqy"; // production // dataToken?.orgId;
-        // const orgId = "harnessnonproduction1lrjymmsx"; // staging
-        const apiToken = "xx2eef595e-79f4-43e6-ab05-be1e1786d775"; // production // dataToken?.apiKey;
-        // const apiToken = "xx4a2f7d68-2128-4979-9d9d-aa804a3200b1"; // staging
+        const orgId = dataToken?.orgId;
+        const apiToken = dataToken?.apiKey;
 
         let searchboxRoot = searchBoxEl.current; // document.getElementById("instant-search");
         let searchRoot = document.createElement("div");
