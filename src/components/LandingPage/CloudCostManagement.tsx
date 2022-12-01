@@ -24,6 +24,7 @@ type FeatureItem = {
 const FeaturedList: FeatureItem[] = [{
   title: 'Optimizing Kubernetes Cloud Costs 101',
   module: 'ccm',
+  Svg: "/img/icon_ccm.svg",
   description: (
     <>
       This guide will walk through how start to optimize your Kubernetes Costs on a public cloud provider.
@@ -38,6 +39,7 @@ const FeaturedList: FeatureItem[] = [{
 const CCMList: FeatureItem[] = [{
   title: 'Optimizing Kubernetes Cloud Costs 101',
   module: 'ccm',
+  Svg: "/img/icon_ccm.svg",
   description: (
     <>
       This guide will walk through how start to optimize your Kubernetes Costs on a public cloud provider.
@@ -63,10 +65,10 @@ export default function CCM() {
           <div className={styles.spaceBetween}>
             <div className={styles.moduleTitle}>
               <img src="/img/icon_ccm.svg"/>
-              <h1>Cloud Costs Managment</h1>
+              <h1>Cloud Cost Management</h1>
             </div>
             <div>
-              <Link href="https://docs.harness.io/category/exgoemqhji-ccm">
+              <Link href="/docs/cloud-cost-management">
               <button className={clsx('button button--lg', styles.btn, styles.btnLight)}><img src="/img/icon_document.png"/> Documentation</button>
               </Link>
             </div>       
@@ -103,7 +105,7 @@ export default function CCM() {
         </div>
         <div className={styles.subSection}>
           <h3 id="all-tutorials">
-            All Cloud Cost Tutorials 
+            All CCM Tutorials 
           </h3>
             <ModuleCard FeatureList={CCMList}/>
         </div>

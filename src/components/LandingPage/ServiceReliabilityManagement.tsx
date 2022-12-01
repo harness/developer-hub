@@ -23,7 +23,8 @@ type FeatureItem = {
  
 const FeaturedList: FeatureItem[] = [{
   title: 'Introduction to SLO Management with Prometheus',
-  module: 'ccm',
+  module: 'srm',
+  Svg: "/img/icon_srm.svg",
   description: (
     <>
       Introducing SLOs and how to measure and manage your SLOs leveraging Prometheus.
@@ -37,7 +38,8 @@ const FeaturedList: FeatureItem[] = [{
 
 const SRMList: FeatureItem[] = [{
   title: 'Introduction to SLO Management with Prometheus',
-  module: 'ccm',
+  module: 'srm',
+  Svg: "/img/icon_srm.svg",
   description: (
     <>
       Introducing SLOs and how to measure and manage your SLOs leveraging Prometheus.
@@ -47,7 +49,21 @@ const SRMList: FeatureItem[] = [{
   type: [docType.Documentation],
   time: '15min',
   link: '/tutorials/manage-service-reliability/intro-to-srm'
-}];
+},
+{
+  title: 'Introduction to Java Exception Management',
+  module: 'srm',
+  Svg: "/img/icon_srm.svg",
+  description: (
+    <>
+      Finding and fixing caught, uncaught, and swallowed Java exceptions. Learn the process and find the right tooling.
+    </>
+  ),
+  ribbon: false,
+  type: [docType.Interactive, docType.Video],
+  time: '10min',
+  link: '/tutorials/manage-service-reliability/intro-java-exception-management'
+},];
 
 export default function SRM() {
   return (
@@ -62,7 +78,7 @@ export default function SRM() {
             </div>
             <div>
               <Link
-                href="https://docs.harness.io/category/ko19u4brsv-howtos-service-reliability-management">
+                href="/docs/service-reliability-management">
                 <button className={clsx('button button--lg', styles.btn, styles.btnLight)}><img src="/img/icon_document.png"/> Documentation</button>
               </Link>
             </div>       

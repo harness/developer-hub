@@ -1,0 +1,15 @@
+{
+   "label":"Troubleshoot CI",
+   "position": 40,
+   "collapsible":"true",
+   "collapsed":"true",
+   "className":"red",
+   "link":{
+      "type":"generated-index",
+      "title":"Troubleshoot CI"
+   },
+   "customProps":{
+      
+      "helpdocs_category_id":"99m8m1s55y"
+   }
+}

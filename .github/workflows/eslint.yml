@@ -34,4 +34,4 @@ jobs:
         cache: 'yarn'
     - run: yarn
     # - run: npm run build --if-present
-    - run: yarn lint:ci
+    - run: yarn lint:eslint

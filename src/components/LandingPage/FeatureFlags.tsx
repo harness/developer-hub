@@ -24,7 +24,7 @@ type FeatureItem = {
 const FeaturedList: FeatureItem[] = [{
   title: 'TypeScript and React Feature Flags',
   module: 'ff',
-  // Svg: '/img/icon_ff.svg',
+  Svg: '/img/icon_ff.svg',
   description: (
     <>
       Walks you through adding JavaScript Feature Flags to a TypeScript and React Application.
@@ -40,7 +40,7 @@ const FeaturedList: FeatureItem[] = [{
 const FFList: FeatureItem[] = [{
   title: 'TypeScript and React Feature Flags',
   module: 'ff',
-  // Svg: '/img/icon_ci.svg',
+  Svg: '/img/icon_ff.svg',
   description: (
     <>
       Walks you through adding JavaScript Feature Flags to a TypeScript and React Application.
@@ -70,7 +70,7 @@ export default function FF() {
               <h1>Feature Flags</h1>
             </div>
             <div>
-              <Link href="https://docs.harness.io/category/vjolt35atg-feature-flags">
+              <Link href="/docs/feature-flags">
               <button className={clsx('button button--lg', styles.btn, styles.btnLight)}><img src="/img/icon_document.png"/> Documentation</button>
               </Link>
             </div>       
@@ -101,7 +101,7 @@ export default function FF() {
         </div>
         <div className={styles.subSection}>
           <h3 id="all-tutorials">
-            All Feature Flag Tutorials 
+            All FF Tutorials 
           </h3>
             <ModuleCard FeatureList={FFList}/>
         </div>

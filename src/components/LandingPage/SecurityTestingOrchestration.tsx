@@ -23,7 +23,8 @@ type FeatureItem = {
  
 const FeaturedList: FeatureItem[] = [{
   title: 'Scanning a NodeJS Application',
-  module: 'srm',
+  module: 'sto',
+  Svg: "/img/icon_sto.svg",
   description: (
     <>
       Scanning a NodeJS Application and prioritizing scan results. 
@@ -37,7 +38,8 @@ const FeaturedList: FeatureItem[] = [{
 
 const STOList: FeatureItem[] = [{
   title: 'Scanning a NodeJS Application',
-  module: 'srm',
+  module: 'sto',
+  Svg: "/img/icon_sto.svg",
   description: (
     <>
        Scanning a NodeJS Application and prioritizing scan results. 
@@ -66,7 +68,7 @@ export default function STO() {
               <h1>Security Testing Orchestration</h1>
             </div>
             <div>
-              <Link href="https://docs.harness.io/category/txlccquh5c-sto-category">
+              <Link href="/docs/security-testing-orchestration">
               <button className={clsx('button button--lg', styles.btn, styles.btnLight)}><img src="/img/icon_document.png"/> Documentation</button>
               </Link>
             </div>       
@@ -99,7 +101,7 @@ export default function STO() {
         </div>
         <div className={styles.subSection}>
           <h3 id="all-tutorials">
-            All Security Testing Tutorials 
+            All STO Tutorials 
           </h3>
             <ModuleCard FeatureList={STOList}/>
         </div>

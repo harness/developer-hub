@@ -1,0 +1,9 @@
+{
+  "position": 5,
+  "label": "VMware",
+  "collapsible": true,
+  "collapsed": true,
+  "customProps": {
+    "description": "VMware faults documentation"
+  }
+}

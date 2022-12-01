@@ -1,0 +1,22 @@
+# defines pod template cm and its mount path
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: kubelet-density
+    spec:
+      components:
+        env:
+        # name of the pod template cm
+        - name: POD_TEMPLATE_CM
+          value: 'pod-template-cm'
+         # mount path of the cm
+        - name: POD_TEMPLATE_PATH
+          VALUE: '/templates/pod.yml'
+        - name: TARGET_NODE
+          value: 'node1'

@@ -86,9 +86,14 @@ const config = {
             type: "dropdown",
             label: "Tutorials",
             items: [
+               {
+                // type: "doc",
+                label: "All Tutorials",
+                to: "tutorials/get-started",
+              },
               {
                 // type: "doc",
-                label: "Build Code",
+                label: "Build & Test Code",
                 to: "tutorials/build-code",
                 // docId: "build-code",
                 // activeBasePath: "to",
@@ -126,8 +131,8 @@ const config = {
               },
               {
                 // type: "doc",
-                label: "Install Delegate",
-                to: "tutorials/platform/install-delegate",
+                label: "Administer Harness Platform",
+                to: "tutorials/platform",
               },
             ],
           },
@@ -137,28 +142,32 @@ const config = {
             label: "Documentation",
             items: [
               {
+                label: "Get Started",
+                to: "docs/getting-started",
+              },
+              {
                 label: "Continuous Integration",
                 to: "docs/continuous-integration",
               },
               {
-                label: "Continuous Delivery",
-                href: "https://docs.harness.io/category/pfzgb4tg05-howto-cd",
+                label: "Continuous Delivery & GitOps",
+                to: "docs/continuous-delivery",
               },
               {
                 label: "Feature Flags",
-                href: "https://docs.harness.io/category/vjolt35atg-feature-flags",
+                to: "docs/feature-flags",
               },
               {
                 label: "Cloud Cost Management",
-                href: "https://docs.harness.io/category/exgoemqhji-ccm",
+                to: "docs/cloud-cost-management",
               },
               {
                 label: "Service Reliability Management",
-                href: "https://docs.harness.io/category/ko19u4brsv-howtos-service-reliability-management",
+                to: "docs/service-reliability-management",
               },
               {
                 label: "Security Testing Orchestration",
-                href: "https://docs.harness.io/category/txlccquh5c-sto-category",
+                to: "docs/security-testing-orchestration",
               },
               {
                 label: "Chaos Engineering",
@@ -166,7 +175,23 @@ const config = {
               },
               {
                 label: "Harness Platform",
-                href: "https://docs.harness.io/category/3fso53aw1u-howto-general",
+                to: "docs/platform",
+              },
+              {
+                label: "Self-Managed Enterprise Edition",
+                to: "docs/self-managed-enterprise-edition",
+              },
+              {
+                label: "Harness FirstGen",
+                to: "docs/first-gen",
+              },
+              {
+                label: "FAQs",
+                to: "docs/frequently-asked-questions",
+              },
+              {
+                label: "Troubleshooting",
+                to: "docs/troubleshooting",
               },
               {
                 label: "API Reference",
@@ -256,6 +281,10 @@ const config = {
               {
                 label: "University",
                 href: "https://university.harness.io",
+              },
+              {
+                label: "Open Source",
+                href: "https://harness-community.github.io/",
               },
               {
                 label: "YouTube",
