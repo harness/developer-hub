@@ -12,17 +12,6 @@ When you deploy a Kubernetes workload using Harness, you set the number of pods 
 
 With the Scale step, you can scale this number of running pods up or down, by count or percentage.
 
-In this topic:
-
-* [Before You Begin](#before_you_begin)
-* [Step 1: Add Scale Step](#step_1_add_scale_step)
-* [Step 2: Pick Count or Percentage](#step_2_pick_count_or_percentage)
-* [Step 3: Set the Number of Pods](#step_3_set_the_number_of_pods)
-* [Step 4: Specify Resources to Scale](#step_4_specify_resources_to_scale)
-* [Option: Delegate Selector](#option_delegate_selector)
-* [Option: Skip Steady State Check](#option_skip_steady_state_check)
-* [Notes](#notes)
-* [Next Steps](#next_steps)
 
 ### Before You Begin
 

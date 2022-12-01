@@ -8,20 +8,16 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/category/qfj6m1k2c4).To connect Harness to your target Kubernetes cluster, you must first install a Harness Delegate in your target platform or target Kubernetes cluster.
+This content is for Harness [FirstGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/category/qfj6m1k2c4).
+
+
+
+To connect Harness to your target Kubernetes cluster, you must first install a Harness Delegate in your target platform or target Kubernetes cluster.
 
 Next, use the vendor-agnostic Harness Kubernetes Cluster Cloud Provider to connect Harness to your cluster (recommend). You can also use a platform-specific Cloud Provider, such as the AWS, GCP, or Azure Cloud Providers.
 
-The simplest method is to install the Harness Delegate in your Kubernetes cluster and then set up the Harness Kubernetes Cluster Cloud Provider to use the same credentials as the Delegate.In this topic:
+The simplest method is to install the Harness Delegate in your Kubernetes cluster and then set up the Harness Kubernetes Cluster Cloud Provider to use the same credentials as the Delegate.
 
-* [Before You Begin](#before_you_begin)
-* [Review: Cluster Connection Options](#review_cluster_connection_options)
-* [Step 1: Install the Harness Kubernetes Delegate in Your Target Cluster](#step_1_install_the_harness_kubernetes_delegate_in_your_target_cluster)
-* [Step 2: Choose a Kubernetes Cluster Cloud Provider or Platform Cloud Provider](#kubernetes_cluster_cloud_provider_vs_platform_cloud_providers)
-* [Option 1: Add a Kubernetes Cluster Cloud Provider](#option_1_add_a_kubernetes_cluster_cloud_provider)
-* [Option 2: Add a Platform-Specific Cloud Provider](#option_2_add_a_platform_specific_cloud_provider)
-* [Notes](#notes)
-* [Next Steps](#next_steps)
 
 ### Before You Begin
 
@@ -136,13 +132,13 @@ The following steps describe how to use the credentials of the Harness Kubernete
 1. In **Harness Manager**, click **Setup**.
 2. Click **Cloud Providers**. On the **Cloud Providers** page, click **Add Cloud Provider**. The Cloud Provider appears.
 3. Enter the following settings:
-* **Type:** Select Kubernetes Cluster.
-* **Display Name:** Enter a name. You will use this name later to select this Cloud Provider when you create a Harness Infrastructure Definition.
-* **Inherit from selected Delegate:** Enable this option. Since the Delegate is already installed in the target cluster, you can use the Delegate's credentials for this Cloud Provider. This is the recommended configuration.
-* **Delegate Name:** Select the name of the Delegate you installed in your cluster.
-* **Select Skip Validation:** Enable this option for the setup of this Cloud Provider. Later, when you create an Infrastructure Definition, Harness will need to validate, so you can disable this setting then.
-* **Usage Scope:** Use this setting to limit the use of the Cloud Provider to specific Harness Applications and Environments.
-1. Click **Test**. Verify that the `The test was successful message` appears, and then click **Submit**.
+	* **Type:** Select Kubernetes Cluster.
+	* **Display Name:** Enter a name. You will use this name later to select this Cloud Provider when you create a Harness Infrastructure Definition.
+	* **Inherit from selected Delegate:** Enable this option. Since the Delegate is already installed in the target cluster, you can use the Delegate's credentials for this Cloud Provider. This is the recommended configuration.
+	* **Delegate Name:** Select the name of the Delegate you installed in your cluster.
+	* **Select Skip Validation:** Enable this option for the setup of this Cloud Provider. Later, when you create an Infrastructure Definition, Harness will need to validate, so you can disable this setting then.
+	* **Usage Scope:** Use this setting to limit the use of the Cloud Provider to specific Harness Applications and Environments.
+4. Click **Test**. Verify that the `The test was successful message` appears, and then click **Submit**.
 
 Your Kubernetes Cloud Provider is set up. Now Harness can use the Cloud Provider to perform operations in your cluster.
 

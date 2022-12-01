@@ -20,55 +20,57 @@ Ensue you are familiar with the following:
 
 ### Step 1: Review the Default Values File
 
-Harness [variable expressions](https://docs.harness.io/article/9dvxcegm90-variables) may be added to values.yaml, not the manifests themselves. This provides more flexibility.1. Look at the default values.yaml file to see the variables used in the default configuration files:
+Harness [variable expressions](https://docs.harness.io/article/9dvxcegm90-variables) may be added to values.yaml, not the manifests themselves. This provides more flexibility.
 
+1. Look at the default values.yaml file to see the variables used in the default configuration files:
 
-```
-# This will be used as {{.Values.name}}  
-name: harness-example  
-  
-# This will be used as {{int .Values.replicas}}  
-replicas: 1  
-  
-# This will be used as {{.Values.image}}  
-image: ${artifact.metadata.image}
-```
-The variable `${artifact.metadata.image}` is a Harness variable for referencing the metadata of the Artifact Source. For more information about Harness variables, see [Variables and Expressions in Harness](https://docs.harness.io/article/9dvxcegm90-variables).
+  ```
+  # This will be used as {{.Values.name}}  
+  name: harness-example  
+    
+  # This will be used as {{int .Values.replicas}}  
+  replicas: 1  
+    
+  # This will be used as {{.Values.image}}  
+  image: ${artifact.metadata.image}
+  ```
+  The variable `${artifact.metadata.image}` is a Harness variable for referencing the metadata of the Artifact Source. For more information about Harness variables, see [Variables and Expressions in Harness](https://docs.harness.io/article/9dvxcegm90-variables).
 
-1. Look at the default object descriptions to understand how easy it is to use Kubernetes in Harness.
+2. Look at the default object descriptions to understand how easy it is to use Kubernetes in Harness.
 
-
-```
-apiVersion: v1 # for versions before 1.9.0 use apps/v1beta2  
-kind: ConfigMap # store non-confidential data in key-value pairs   
-metadata:  
-  name: {{.Values.name}}-config # name is taken from values.yaml  
-data:  
-  key: value # example key-value pair  
----  
-apiVersion: apps/v1  
-kind: Deployment # describe the desired state of the cluster  
-metadata:  
-  name: {{.Values.name}}-deployment # name is taken from values.yaml  
-spec:  
-  replicas: {{int .Values.replicas}} # tells deployment to run pods matching the template  
-  selector:  
-    matchLabels:  
-      app: {{.Values.name}} # name is taken from values.yaml  
-  template:  
-    metadata:  
-      labels:  
+  ```
+  apiVersion: v1 # for versions before 1.9.0 use apps/v1beta2  
+  kind: ConfigMap # store non-confidential data in key-value pairs   
+  metadata:  
+    name: {{.Values.name}}-config # name is taken from values.yaml  
+  data:  
+    key: value # example key-value pair  
+  ---  
+  apiVersion: apps/v1  
+  kind: Deployment # describe the desired state of the cluster  
+  metadata:  
+    name: {{.Values.name}}-deployment # name is taken from values.yaml  
+  spec:  
+    replicas: {{int .Values.replicas}} # tells deployment to run pods matching the template  
+    selector:  
+      matchLabels:  
         app: {{.Values.name}} # name is taken from values.yaml  
-    spec:  
-      containers:  
-      - name: {{.Values.name}} # name is taken from values.yaml  
-        image: {{.Values.image}} # image is taken from values.yaml  
-        envFrom:  
-        - configMapRef:  
-            name: {{.Values.name}}-config # name is taken from values.yaml  
-        ports:  
-        - containerPort: 80
-```
+    template:  
+      metadata:  
+        labels:  
+          app: {{.Values.name}} # name is taken from values.yaml  
+      spec:  
+        containers:  
+        - name: {{.Values.name}} # name is taken from values.yaml  
+          image: {{.Values.image}} # image is taken from values.yaml  
+          envFrom:  
+          - configMapRef:  
+              name: {{.Values.name}}-config # name is taken from values.yaml  
+          ports:  
+          - containerPort: 80
+  ```
+  
+  
 ### Step 2: Use Expression Builder
 
 When you edit manifests in the Harness Service, you can enter expressions by entering `{{.` and Harness will fetch the values available in the values.yaml file.

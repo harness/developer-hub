@@ -1,7 +1,7 @@
 ---
 title: ECS Deployments Overview
 description: An overview of ECS components and deployment steps.
-# sidebar_position: 2
+sidebar_position: 100
 helpdocs_topic_id: 08whoizbps
 helpdocs_category_id: df9vj316ec
 helpdocs_is_private: false

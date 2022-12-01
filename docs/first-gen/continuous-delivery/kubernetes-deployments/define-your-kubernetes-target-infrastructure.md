@@ -12,12 +12,8 @@ Harness Infrastructure Definitions specify the target deployment infrastructure 
 
 Specify the Kubernetes cluster you want to target for deployment as a Harness Infrastructure Definition.
 
-For Amazon Elastic Kubernetes Service (Amazon EKS) and OpenShift, use [Option 1: Specify a Vendor Agnostic Kubernetes Cluster](#option_1_specify_a_vendor_agnostic_kubernetes_cluster).In this topic:
+For Amazon Elastic Kubernetes Service (Amazon EKS) and OpenShift, use [Option 1: Specify a Vendor Agnostic Kubernetes Cluster](#option_1_specify_a_vendor_agnostic_kubernetes_cluster).
 
-* [Before You Begin](#before_you_begin)
-* [Step 1: Create an Environment](#step_1_create_an_environment)
-* [Option 1: Specify a Vendor Agnostic Kubernetes Cluster](#option_1_specify_a_vendor_agnostic_kubernetes_cluster)
-* [Option 2: Specify a GCP or Azure Kubernetes Cluster](#option_2_specify_a_gcp_or_azure_kubernetes_cluster)
 
 ### Before You Begin
 

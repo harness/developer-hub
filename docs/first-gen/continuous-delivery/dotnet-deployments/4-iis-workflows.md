@@ -60,7 +60,8 @@ The **Node Select** dialog has the following fields.
 | **Desired** **Instances** | Enter the number of instances you want deployed.You can also enter a variable expression in this setting, such as a Workflow variable:This turns the setting into a deployment parameter. When the Workflow is deployed (manually or by [Trigger](https://docs.harness.io/article/xerirloz9a-add-a-trigger-2)) you can provide a value for the parameter.See [Set Workflow Variables](https://docs.harness.io/article/766iheu1bk-add-workflow-variables-new-template) and [Variables and Expressions in Harness](https://docs.harness.io/article/9dvxcegm90-variables). |
 | **Instance Unit Type** | Identify if the number in **Instances** is a count or percentage.For example, if you select **10** in **Instances**, you can select **Count** and the artifact is deployed to **10** instances. Or you can enter 100 in **Instances** and select **Percent** and the artifact is deployed to **100%** of the instances in the Infrastructure Definition. |
 
-When you finished, click **SUBMIT**.
+When you're finished, click **SUBMIT**.
+
 2. Under **Deploy Service**, click **Install**. The **Install** dialog appears.![](./static/4-iis-workflows-03.png)
    You can set how long the installation may take before it's timed out. The default is 60000ms or 10 minutes. When you are finished, click **SUBMIT**.
 
@@ -87,8 +88,14 @@ Each workflow step is displayed. Click through each deployment step to see the l
 
 Now that the deployment was successful, confirm the website was added to the Windows instance(s):
 
-1. In your workflow Deployment page, click the **Install** step.![](./static/4-iis-workflows-07.png)
-2. Expand the **Create Website** section.![](./static/4-iis-workflows-08.png)
+1. In your workflow Deployment page, click the **Install** step.
+   
+	 ![](./static/4-iis-workflows-07.png)
+	 
+2. Expand the **Create Website** section.
+
+   ![](./static/4-iis-workflows-08.png)
+
 3. In the log, note the location where the website was created:  
   
 

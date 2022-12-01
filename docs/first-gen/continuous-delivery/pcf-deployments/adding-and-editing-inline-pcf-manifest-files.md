@@ -10,14 +10,8 @@ helpdocs_is_published: true
 
 Manifests provide consistency and reproducibility, and help automate in deploying apps. For more information about manifest files, see [Deploying with Application Manifest](https://docs.pivotal.io/pivotalcf/2-4/devguide/deploy-apps/manifest.html) from Tanzu.When you create the Tanzu Application Service (TAS, formerly PCF) Service in Harness, the **Manifests** section is created and the default manifest.yml and vars.yml files are added.
 
-The use of PCF in the default manifest.yml and vars.yml file is because TAS was formerly PCF.In this topic:
+The use of PCF in the default manifest.yml and vars.yml file is because TAS was formerly PCF.
 
-* [Before You Begin](adding-and-editing-inline-pcf-manifest-files.md#before-you-begin)
-* [Visual Summary](adding-and-editing-inline-pcf-manifest-files.md#visual-summary)
-* [Step 1: Edit vars.yaml file](adding-and-editing-inline-pcf-manifest-files.md#step-1-edit-vars-yaml-file)
-	+ [Change the TAS App Name](adding-and-editing-inline-pcf-manifest-files.md#change-the-tas-app-name)
-* [Step 2: Edit manifest.yml file](adding-and-editing-inline-pcf-manifest-files.md#step-2-edit-manifest-yml-file)
-* [Next Steps](adding-and-editing-inline-pcf-manifest-files.md#next-steps)
 
 ### Before You Begin
 

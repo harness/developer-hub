@@ -8,7 +8,9 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/category/qfj6m1k2c4).You can use your Git repo for the configuration files in **Manifests** and Harness will use them at runtime. You have two options for remote files:
+This content is for Harness [FirstGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/category/qfj6m1k2c4).
+
+You can use your Git repo for the configuration files in **Manifests** and Harness will use them at runtime. You have two options for remote files:
 
 * **Standard Kubernetes Resources in YAML** - These files are simply the YAML manifest files stored on a remote Git repo.
 * **Helm Chart from Source Repository** - These are Helm chart files stored in standard Helm syntax in YAML on a remote Git repo.
@@ -20,17 +22,6 @@ For steps on other options, see:
 * **Kustomization Configuration** — See [Use Kustomize for Kubernetes Deployments](use-kustomize-for-kubernetes-deployments.md).
 * **OpenShift Template** — See [Using OpenShift with Harness Kubernetes](using-open-shift-with-harness-kubernetes.md).
 
-In this topic:
-
-* [Before You Begin](#before_you_begin)
-* [Step 1: Add a Source Repo Provider](#step_1_add_a_source_repo_provider)
-* [Step 2: Link Remote Manifests](#step_2_link_remote_manifests)
-* [Step 3: Select a Manifest Format](#step_3_select_a_manifest_format)
-* [Step 4: Configure the Repo Settings](#step_4_configure_the_repo_settings)
-* [Option: Skip Versioning for Service](link-resource-files-or-helm-charts-in-git-repos.md#option-skip-versioning-for-service)
-* [Option: Helm Command Flags](#option_helm_command_flags)
-* [How Does Harness Use the Remote Files?](#how_does_harness_use_the_remote_files)
-* [Next Steps](#next_steps)
 
 ### Before You Begin
 

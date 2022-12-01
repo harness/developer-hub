@@ -14,20 +14,7 @@ When you deploy the Blue/Green Workflow, it sets up a new VMSS using the image y
 
 At first, the Workflow uses the stage pool. Once the deployment using the stage pool is successful, the Workflow detaches the stage pool and attaches (swaps) the production pool to the new VMSS.
 
-For other deployment strategies, see [Create an Azure VMSS Basic Deployment](create-an-azure-vmss-basic-deployment.md), and [Create an Azure VMSS Canary Deployment](create-an-azure-vmss-canary-deployment.md).In this topic:
-
-* [Before You Begin](#before_you_begin)
-* [Visual Summary](#visual_summary)
-* [Supported Platforms and Technologies](#undefined)
-* [Review: Load Balancer Requirements](#review_load_balancer_requirements)
-* [Step 1: Create the Blue/Green Workflow](#step_1_create_the_blue_green_workflow)
-* [Step 2: Azure Virtual Machine Scale Set Setup](#step_2_azure_virtual_machine_scale_set_setup)
-* [Option: Use Variable Expressions in Settings](#option_use_variable_expressions_in_settings)
-* [Step 3: Upgrade Virtual Machine Scale Set](#step_3_upgrade_virtual_machine_scale_set)
-* [Step 4: Swap Virtual Machine Scale Set Route](#step_4_swap_virtual_machine_scale_set_route)
-* [Step 5: Deploy](#step_5_deploy)
-* [Review: Blue/Green VMSS Tags](#review_blue_green_vmss_tags)
-* [Configure As Code](#configure_as_code)
+For other deployment strategies, see [Create an Azure VMSS Basic Deployment](create-an-azure-vmss-basic-deployment.md), and [Create an Azure VMSS Canary Deployment](create-an-azure-vmss-canary-deployment.md).
 
 ### Before You Begin
 

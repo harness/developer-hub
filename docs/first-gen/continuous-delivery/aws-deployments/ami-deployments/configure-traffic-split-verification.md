@@ -10,13 +10,9 @@ helpdocs_is_published: true
 
 You can configure performance monitoring and log analysis verification of Spotinst traffic shifting. 
 
-Currently, this feature is only supported for SpotInst Blue/Green deployments.In this topic:
+Currently, this feature is only supported for SpotInst Blue/Green deployments.
 
-* [Before You Begin](#before_you_begin)
-* [Step 1: Add the Workflow with Traffic Shift Strategy](#step_1_add_the_workflow_with_traffic_shift_strategy)
-* [Step 2: Add Traffic Split Step](#step_2_add_traffic_split_step)
-* [Step 3: Add Verification Step](#step_3_add_verification_step)
-* [Step 4: View Verification Results](#step_4_view_verification_results)
+
 
 ### Before You Begin
 

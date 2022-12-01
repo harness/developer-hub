@@ -16,33 +16,8 @@ During deployment, the Terraform Provisioner step provisions the target deployme
 
 To provision non-target deployment infrastructure, use the Terraform Apply Workflow step. See [Using the Terraform Apply Command](using-the-terraform-apply-command.md).
 
-The Harness Terraform Infrastructure Provisioner is supported in Canary and Multi-Service Workflows only. For AMI/ASG and ECS deployments, the Terraform Infrastructure Provisioner is also supported in Blue/Green Workflows.In this topic:
+The Harness Terraform Infrastructure Provisioner is supported in Canary and Multi-Service Workflows only. For AMI/ASG and ECS deployments, the Terraform Infrastructure Provisioner is also supported in Blue/Green Workflows.
 
-* [Before You Begin](terraform-provisioner-step.md#before-you-begin)
-* [Visual Summary](terraform-provisioner-step.md#visual-summary)
-* [Step 1: Add Environment to Workflow](terraform-provisioner-step.md#step-1-add-environment-to-workflow)
-* [Step 2: Add Terraform Step to Pre-deployment Steps](terraform-provisioner-step.md#step-2-add-terraform-step-to-pre-deployment-steps)
-* [Option: AWS Cloud Provider, Region, Role ARN](#option_aws_cloud_provider_region_role_arn)
-* [Option: Terraform Plan Settings](terraform-provisioner-step.md#option-terraform-plan-settings)
-	+ [Inherit following configurations from Terraform Plan](terraform-provisioner-step.md#inherit-following-configurations-from-terraform-plan)
-	+ [Set as Terraform Plan](terraform-provisioner-step.md#set-as-terraform-plan)
-	+ [Export Terraform Plan to Apply Step](terraform-provisioner-step.md#export-terraform-plan-to-apply-step)
-* [Option: Enter Input Values](terraform-provisioner-step.md#option-enter-input-values)
-	+ [Use tfvar Files](terraform-provisioner-step.md#use-tfvar-files)
-		- [Inline tfvar Files](terraform-provisioner-step.md#inline-tfvar-files)
-		- [Remote tfvar Files](terraform-provisioner-step.md#remote-tfvar-files)
-	+ [Map and List Variable Type Support](terraform-provisioner-step.md#map-and-list-variable-type-support)
-* [Option: Backend Configuration (Remote state)](terraform-provisioner-step.md#option-backend-configuration-remote-state)
-* [Option: Resource Targeting](terraform-provisioner-step.md#option-resource-targeting)
-* [Option: Workspaces](terraform-provisioner-step.md#option-workspaces)
-* [Option: Select Delegate](terraform-provisioner-step.md#option-select-delegate)
-* [Option: Add Environment Variables](terraform-provisioner-step.md#option-add-environment-variables)
-* [Step 3: Add Infrastructure Definition to Phases](terraform-provisioner-step.md#step-3-add-infrastructure-definition-to-phases)
-* [Example: Terraform Deployment](terraform-provisioner-step.md#example-terraform-deployment)
-* [Notes](terraform-provisioner-step.md#notes)
-	+ [Deployment Rollback](terraform-provisioner-step.md#deployment-rollback)
-	+ [Rollback Limitations](terraform-provisioner-step.md#rollback-limitations)
-* [Next Steps](terraform-provisioner-step.md#next-steps)
 
 ### Before You Begin
 

@@ -10,15 +10,8 @@ helpdocs_is_published: true
 
 This content is for Harness [FirstGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/article/lbhf2h71at).This topic describes how to create a Harness Application and adds a Service that uses a Docker image and Helm chart for a Kubernetes deployment.
 
-Harness includes both Kubernetes and Helm deployments, and you can use Helm charts in both. Harness [Kubernetes Deployments](../kubernetes-deployments/kubernetes-deployments-overview.md) allow you to use your own Helm chart (remote or local), and Harness executes the Kubernetes API calls to build everything without Helm and Tiller needing to be installed in the target cluster. See [Helm Charts](https://docs.harness.io/article/t6zrgqq0ny-kubernetes-services#helm_charts).* [Release Name Required](#release_name_required)
-* [Create the Harness Application](2-helm-services.md#create-the-harness-application)
-* [Add the Helm Service to the Application](2-helm-services.md#add-the-helm-service-to-the-application)
-* [Add the Docker Artifact Source](2-helm-services.md#add-the-docker-artifact-source)
-* [Add the Helm Chart](2-helm-services.md#add-the-helm-chart)
-* [Option: Helm Command Flags](#option_helm_command_flags)
-* [Spec Requirements for Steady State Check and Verification](2-helm-services.md#spec-requirements-for-steady-state-check-and-verification)
-* [Values YAML Override](2-helm-services.md#values-yaml-override)
-* [Next Step](2-helm-services.md#next-step)
+Harness includes both Kubernetes and Helm deployments, and you can use Helm charts in both. Harness [Kubernetes Deployments](../kubernetes-deployments/kubernetes-deployments-overview.md) allow you to use your own Helm chart (remote or local), and Harness executes the Kubernetes API calls to build everything without Helm and Tiller needing to be installed in the target cluster. See [Helm Charts](https://docs.harness.io/article/t6zrgqq0ny-kubernetes-services#helm_charts).
+
 
 ### Release Name Required
 
@@ -74,7 +67,9 @@ harness:  helm:    chart:      name: nginx      version: 1.0.1  �
 
 ### Add the Docker Artifact Source
 
-1. In the new service, click **Add****Artifact Source**, and select **Docker Registry**. There are a number of artifact sources you can use. For more information, see [Add a Docker Image Server](https://docs.harness.io/article/gxv9gj6khz-add-a-docker-image-service#add_a_docker_image_service). The **Docker Registry** dialog appears.![](./static/2-helm-services-39.png)
+1. In the new service, click **Add****Artifact Source**, and select **Docker Registry**. There are a number of artifact sources you can use. For more information, see [Add a Docker Image Server](https://docs.harness.io/article/gxv9gj6khz-add-a-docker-image-service#add_a_docker_image_service). The **Docker Registry** dialog appears.
+
+   ![](./static/2-helm-services-39.png)
 2. In **Name**, let Harness generate a name for the source.
 3. In **Source Server**, select the Artifact Server you added earlier in this guide. We are using **Docker Hub** in this guide.
 4. In **Docker Image Name**, enter the image name. Official images in public repos such as Docker Hub need the label **library**. For example, **library/nginx**. For this guide, we will use Docker Hub and the publicly available NGINX at **library/nginx**.
@@ -100,7 +95,7 @@ Helm [chart dependencies](https://helm.sh/docs/topics/charts/) are not supported
 
 1. In **Helm Repository**, select the Helm Chart Repository you added as a Harness Artifact Server. For more information, see [Helm Repository](https://docs.harness.io/article/7dghbx1dbl-configuring-artifact-server#helm_repository).
 
-If you are using Google Cloud Storage for your Helm repo, you will see a **Base Path** setting for the bucket. See [Google Cloud Storage (GCS)](https://harness.helpdocs.io/article/whwnovprrb-cloud-providers#google_cloud_storage_gcs) for details on the policies required.1. In **Base Path**, enter the path to the charts' bucket folder or a Workflow variable expression.
+  If you are using Google Cloud Storage for your Helm repo, you will see a **Base Path** setting for the bucket. See [Google Cloud Storage (GCS)](https://harness.helpdocs.io/article/whwnovprrb-cloud-providers#google_cloud_storage_gcs) for details on the policies required.1. In **Base Path**, enter the path to the charts' bucket folder or a Workflow variable expression.
 	1. If you use a charts' bucket folder, simply enter the name of the folder. Whether you need to specify a single folder (e.g. `charts`) a folder path (e.g. `helm/charts`) depends on the Helm Chart Repository you added as a Harness Artifact Server.
 	2. If you use a Workflow variable expression, you can enter in the expression as part of the path. For example, `/Myservice/Chart/${workflow.variables.branchName}/` or simply `${workflow.variables.chartFolder}`.For more information, see [Variables and Expressions in Harness](https://docs.harness.io/article/9dvxcegm90-variables) and [Add Workflow Variables](https://docs.harness.io/article/m220i1tnia-workflow-configuration#add_workflow_variables).
 	1. If the chart is in the **root** folder of the repository location set in the Helm Chart Repository you added as a Harness Artifact Server, leave **Base Path** empty.

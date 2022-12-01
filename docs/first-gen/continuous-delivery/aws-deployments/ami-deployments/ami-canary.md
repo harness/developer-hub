@@ -10,17 +10,6 @@ helpdocs_is_published: true
 
 This guide will walk you through configuring and executing an AMI (Amazon Machine Image) Canary deployment in Harness. You will create a multi-phase Workflow that progressively deploy your new instances to a new Auto Scaling Group incrementally.
 
-In this topic:
-
-* [Overview](#overview)
-* [Prerequisites](#prerequisites)
-* [Limitations](#limitations)
-* [Create a Canary Workflow](#workflow)
-* [Phase 1: Canary](#phase_1)
-* [Phase 2: Canary](#phase_2)
-* [Phase 3: Primary](#phase_3)
-* [Deploy the Workflow](#deployment)
-* [Support for Scheduled Scaling](#support_for_scheduled_scaling)
 
 
 ### Before You Begin

@@ -10,16 +10,6 @@ helpdocs_is_published: true
 
 This topic sets up the Harness Delegate, WinRM Connection, Artifact Server, and Cloud Provider for your IIS Deployment. You can use these connections globally for all the IIS services and environments you add in Harness, or restrict them to specific applications and environments.
 
-In this topic:
-
-* [Harness Delegate Connections for Azure](1-delegate-and-connectors-for-iis.md#harness-delegate-connections-for-azure)
-* [Set Up WinRM on Instances and Network](1-delegate-and-connectors-for-iis.md#set-up-win-rm-on-instances-and-network)
-	+ [Set Up WinRM in Azure](1-delegate-and-connectors-for-iis.md#set-up-win-rm-in-azure)
-	+ [Set Up WinRM in AWS](1-delegate-and-connectors-for-iis.md#set-up-win-rm-in-aws)
-	+ [Set Up the WinRM Connection in Harness](1-delegate-and-connectors-for-iis.md#set-up-the-win-rm-connection-in-harness)
-* [Cloud Provider Setup](1-delegate-and-connectors-for-iis.md#cloud-provider-setup)
-* [Artifact Server Setup](1-delegate-and-connectors-for-iis.md#artifact-server-setup)
-* [Next Step](1-delegate-and-connectors-for-iis.md#next-step)
 
 ### Harness Delegate Connections for Azure
 
@@ -191,7 +181,9 @@ Add a WinRM connection in Harness to execute deployment steps on the remote Wind
 
 1. Mouseover **Continuous Security**, and then click **Secrets Management**. The Secrets Management page appears.
 2. Under **Executions Credentials**, click **WinRM Connection**. The **WinRM Connection Attributes** dialog appears.
+
    ![](./static/1-delegate-and-connectors-for-iis-24.png)
+	 
 3. Fill out the **WinRM Connection Attributes** dialog and click **SUBMIT**. The **WinRM Connection Attributes** dialog has the following fields.
 
 
@@ -223,7 +215,9 @@ For certain Cloud Providers, such as AWS, instead of using account information t
 
 Add a connection to the Artifact Server where Harness can pull the IIS website, application, or virtual directory artifact.
 
-If you are using the same Cloud Provider as artifact server, then you can skip this step. For example, if you added AWS EC2 as a Cloud Provider and you are using AWS S3 as an artifact server, you do not need to add AWS S3 as an artifact server. You can simply use the same AWS connection.1. Click **Setup**, and then click **Connectors**. The **Connectors** page appears.
+If you are using the same Cloud Provider as artifact server, then you can skip this step. For example, if you added AWS EC2 as a Cloud Provider and you are using AWS S3 as an artifact server, you do not need to add AWS S3 as an artifact server. You can simply use the same AWS connection.
+
+1. Click **Setup**, and then click **Connectors**. The **Connectors** page appears.
 2. Click **Artifact Server**, and then click **Add Artifact Server**. The artifact server dialog appears.![](./static/1-delegate-and-connectors-for-iis-26.png)
 3. In **Type**, click the artifact source you want to use. The dialog settings will change for each server.
 4. Enter the artifact server information and click **SUBMIT**. For account details and Harness permission requirements for the different servers, such as SMB and SFTP, see [Add Artifact Servers](https://docs.harness.io/article/7dghbx1dbl-configuring-artifact-server).  

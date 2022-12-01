@@ -21,24 +21,7 @@ Harness also supports less common use cases:
 
 For these less common use cases, you can use the **Custom Remote Manifests** setting in a Harness Native Helm Service. You add a script to the Service that pulls the package and extracts its contents or performs whatever processing you require. Next, you simply supply the path to the Helm chart to Harness.
 
-**Looking for other methods?** See [Define Kubernetes Manifests](../kubernetes-deployments/define-kubernetes-manifests.md) and [Add Packaged Kubernetes Manifests](../kubernetes-deployments/deploy-kubernetes-manifests-packaged-with-artifacts.md).In this topic:
-
-* [Before You Begin](add-packaged-helm-charts.md#before-you-begin)
-* [Supported Platforms and Technologies](add-packaged-helm-charts.md#supported-platforms-and-technologies)
-* [Limitations](add-packaged-helm-charts.md#limitations)
-* [Review: What Workloads Can I Deploy?](add-packaged-helm-charts.md#review-what-workloads-can-i-deploy)
-* [Option: Add Secrets for Script](add-packaged-helm-charts.md#option-add-secrets-for-script)
-* [Step 1: Create a Harness Native Helm Service](add-packaged-helm-charts.md#step-1-create-a-harness-native-helm-service)
-* [Step 2: Use Custom Remote Manifests](add-packaged-helm-charts.md#step-2-use-custom-remote-manifests)
-* [Step 3: Add Script for Chart File](add-packaged-helm-charts.md#step-3-add-script-for-chart-file)
-* [Step 4: Add Path to Helm Charts](add-packaged-helm-charts.md#step-4-add-path-to-helm-charts)
-* [Option: Delegate Selector](add-packaged-helm-charts.md#option-delegate-selector)
-* [Option: Override Values.yaml in Service](add-packaged-helm-charts.md#option-override-values-yaml-in-service)
-	+ [Inherit Script from Service](add-packaged-helm-charts.md#inherit-script-from-service)
-	+ [Define new Script](add-packaged-helm-charts.md#define-new-script)
-* [Option: Override Values.yaml in Environment](add-packaged-helm-charts.md#option-override-values-yaml-in-environment)
-* [Option: Use a Harness Artifact Source](add-packaged-helm-charts.md#option-use-a-harness-artifact-source)
-* [See Also](add-packaged-helm-charts.md#see-also)
+**Looking for other methods?** See [Define Kubernetes Manifests](../kubernetes-deployments/define-kubernetes-manifests.md) and [Add Packaged Kubernetes Manifests](../kubernetes-deployments/deploy-kubernetes-manifests-packaged-with-artifacts.md).
 
 ### Before You Begin
 

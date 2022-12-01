@@ -17,18 +17,8 @@ Once the Harness Infrastructure Provisioner is set up, you can use it to do the 
 
 Harness supports first class Terraform provisioning for AWS-based infrastructures (SSH, ASG, ECS, Lambda), Google Kubernetes (GKE), Azure WebApps, and physical data centers via shell scripts.  
   
-Harness Terraform Infrastructure Provisioner are only supported in Canary and Multi-Service Workflows. For AMI/ASG and ECS deployments, Terraform Infrastructure Provisioners are also supported in Blue/Green Workflows.In this topic:
+Harness Terraform Infrastructure Provisioner are only supported in Canary and Multi-Service Workflows. For AMI/ASG and ECS deployments, Terraform Infrastructure Provisioners are also supported in Blue/Green Workflows.
 
-* [Before You Begin](#before_you_begin)
-* [Review: Terraform Syntax Support](#review_terraform_syntax_support)
-* [Visual Summary](#visual_summary)
-* [Step 1: Add a Terraform Provisioner](#step_1_add_a_terraform_provisioner)
-* [Step 2: Select Your Terraform Script Repo](#step_2_select_your_terraform_script_repo)
-* [Option: Use Expressions for Script Repository](#option_use_expressions_for_script_repository)
-* [Step 3: Select Secret Manager for Terraform Plan](#step_3_select_secret_manager_for_terraform_plan)
-* [Option: Skip Terraform Refresh When Inheriting Terraform Plan](#option_skip_terraform_refresh_when_inheriting_terraform_plan)
-* [Step 4: Complete the Terraform Provisioner](#step_4_complete_the_terraform_provisioner)
-* [Next Steps](#next_steps)
 
 ### Before You Begin
 

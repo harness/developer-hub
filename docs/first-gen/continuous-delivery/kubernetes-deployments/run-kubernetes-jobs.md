@@ -14,21 +14,7 @@ In Harness Kubernetes deployments, you define Jobs in the Harness Service **Mani
 
 In this topic, we will show you how to execute a Job in a Harness Kubernetes deployment as part of the main deployment.
 
-Typically, Jobs are not part of the main deployment. You can exclude them from the main deployment and simply call them at any point in the Workflow using the Apply step. For steps on ignoring the Job as part of the main deployment and executing it separately, see [Deploy Manifests Separately using Apply Step](deploy-manifests-separately-using-apply-step.md).In this topic:
-
-* [Before You Begin](#before_you_begin)
-* [Visual Summary](#visual_summary)
-* [Review: Apply Step](#review_apply_step)
-* [Step 1: Add Job Manifest](#step_1_add_job_manifest)
-* [Step 2: Define Target Cluster](#step_2_define_target_cluster)
-* [Step 3: Add the Job to the Workflow](#step_3_add_the_job_to_the_workflow)
-* [Option: Delegate Selector](#option_delegate_selector)
-* [Option: Skip Steady State Check](#option_skip_steady_state_check)
-* [Option: Add Test and Clean Up Steps](#option_add_test_and_clean_up_steps)
-* [Step 4: Deploy the Job](#step_4_deploy_the_job)
-* [Option: Showing Job Output](#option_showing_job_output)
-* [Summary](#summary)
-* [One More Thing to Try](#one_more_thing_to_try)
+Typically, Jobs are not part of the main deployment. You can exclude them from the main deployment and simply call them at any point in the Workflow using the Apply step. For steps on ignoring the Job as part of the main deployment and executing it separately, see [Deploy Manifests Separately using Apply Step](deploy-manifests-separately-using-apply-step.md).
 
 ### Before You Begin
 

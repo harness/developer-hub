@@ -10,12 +10,6 @@ helpdocs_is_published: true
 
 Service Configuration variables and files enable you to specify information in the Harness Service that can be referenced in other parts of the Harness Application. In this topic we'll cover using these Service Configuration variables and files for Tanzu Application Service (TAS, formerly PCF).
 
-In this topic:
-
-* [Before You Begin](#before_you_begin)
-* [Review: Configuration Variables and Files](#review_configuration_variables_and_files)
-* [Step: Using Config Variables in Manifests](#step_using_config_variables_in_manifests)
-* [Next Steps](#next_steps)
 
 ### Before You Begin
 

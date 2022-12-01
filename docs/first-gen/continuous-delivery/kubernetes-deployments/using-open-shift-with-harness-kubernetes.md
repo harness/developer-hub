@@ -10,17 +10,6 @@ helpdocs_is_published: true
 
 Harness supports OpenShift for Kubernetes deployments. This topic reviews OpenShift support in the Harness Delegate and Workflows.
 
-In this topic:
-
-* [Before You Begin](using-open-shift-with-harness-kubernetes.md#before-you-begin)
-* [Review: Kubernetes Delegate and OpenShift](using-open-shift-with-harness-kubernetes.md#review-kubernetes-delegate-and-open-shift)
-* [Review: Deployment Strategy Support](using-open-shift-with-harness-kubernetes.md#review-deployment-strategy-support)
-* [Step: Add Manifests and OpenShift Template](using-open-shift-with-harness-kubernetes.md#step-add-manifests-and-open-shift-template)
-* [Option: Define Service Variables](using-open-shift-with-harness-kubernetes.md#option-define-service-variables)
-* [Option: Skip Versioning for Service](#option_skip_versioning_for_service)
-* [Notes](using-open-shift-with-harness-kubernetes.md#notes)
-* [Next Steps](using-open-shift-with-harness-kubernetes.md#next-steps)
-
 ### Before You Begin
 
 * [Connect to Your Target Kubernetes Platform](connect-to-your-target-kubernetes-platform.md)

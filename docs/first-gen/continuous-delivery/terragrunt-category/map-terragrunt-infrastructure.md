@@ -20,22 +20,8 @@ When the Workflow runs, it provisions the infrastructure and then deploys to it.
 
 This topic describes how to map Terraform script outputs for all of the supported platforms.
 
-If you just want to provision non-target infrastructure you don't need to map outputs in the Infrastructure Definition. See [Terragrunt Provisioning with Harness](../concepts-cd/deployment-types/terragrunt-provisioning-with-harness.md) and [Provision using the Terragrunt Provision Step](provision-using-the-terragrunt-provision-step.md).In this topic:
+If you just want to provision non-target infrastructure you don't need to map outputs in the Infrastructure Definition. See [Terragrunt Provisioning with Harness](../concepts-cd/deployment-types/terragrunt-provisioning-with-harness.md) and [Provision using the Terragrunt Provision Step](provision-using-the-terragrunt-provision-step.md).
 
-* [Before You Begin](map-terragrunt-infrastructure.md#before-you-begin)
-* [Visual Summary](map-terragrunt-infrastructure.md#visual-summary)
-* [Limitations](map-terragrunt-infrastructure.md#limitations)
-* [Step 1: Add Terragrunt Configuration Files](map-terragrunt-infrastructure.md#step-1-add-terragrunt-configuration-files)
-* [Step 2: Add the Infrastructure Definition](map-terragrunt-infrastructure.md#step-2-add-the-infrastructure-definition)
-* [Option 1: Map a Platform Agnostic Kubernetes Cluster](map-terragrunt-infrastructure.md#option-1-map-a-platform-agnostic-kubernetes-cluster)
-* [Option 2: ​Map a GCP Kubernetes Infrastructure​](map-terragrunt-infrastructure.md#option-2-map-a-gcp-kubernetes-infrastructure)
-	+ [Cluster Name Format](map-terragrunt-infrastructure.md#cluster-name-format)
-* [Option 3: ​Map an AWS AMI Infrastructure​](map-terragrunt-infrastructure.md#option-3-map-an-aws-ami-infrastructure)
-* [Option 4: ​Map an AWS ECS Infrastructure​](map-terragrunt-infrastructure.md#option-4-map-an-aws-ecs-infrastructure)
-* [Option 5: ​Map an AWS Lambda Infrastructure​](map-terragrunt-infrastructure.md#option-5-map-an-aws-lambda-infrastructure)
-* [Option 6: ​Map a Secure Shell (SSH) Infrastructure](map-terragrunt-infrastructure.md#option-6-map-a-secure-shell-ssh-infrastructure)
-* [Option 7: Map an Azure Web App](map-terragrunt-infrastructure.md#option-7-map-an-azure-web-app)
-* [Next Steps](map-terragrunt-infrastructure.md#next-steps)
 
 ### Before You Begin
 

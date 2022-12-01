@@ -385,10 +385,10 @@ You can create a Trigger for any Workflow or Pipeline to run when a new version 
 6. In **Services**, select the Service using the Helm chart in **Manifest Source**. You can use regex to filter names if needed.
 7. Click **Next**.
 8. In **Actions**, there are three main settings:
-* **From Triggering Manifest:** Select this option to use the chart identified in Service you selected in **Condition**.
-* **Last Collected:** Select this option to use the last version collected by Harness in the Harness Service. Chart versions are collected automatically by Harness every minute.
-* **Last Successfully Deployed:** The last chart that was deployed by the Workflow/Pipeline you selected. In **Workflow**/**Pipeline**, select the Workflow/Pipeline to run.
-1. Click **Submit**. The Trigger is created.
+    * **From Triggering Manifest:** Select this option to use the chart identified in Service you selected in **Condition**.
+    * **Last Collected:** Select this option to use the last version collected by Harness in the Harness Service. Chart versions are collected automatically by Harness every minute.
+    * **Last Successfully Deployed:** The last chart that was deployed by the Workflow/Pipeline you selected. In **Workflow**/**Pipeline**, select the Workflow/Pipeline to run.
+9. Click **Submit**. The Trigger is created.
 
 ### Configure As Code
 

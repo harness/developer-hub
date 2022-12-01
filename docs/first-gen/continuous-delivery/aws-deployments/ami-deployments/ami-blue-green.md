@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This guide outlines a typical configuration and execution of an AMI (Amazon Machine Image) Blue/Green deployment, in the following sections:
+This guide outlines a typical configuration and execution of an AMI (Amazon Machine Image) Blue/Green deployment, in the following sections.
 
 * [Before You Begin](#before_you_begin)
 * [Overview](#overview)
@@ -27,7 +27,7 @@ This guide outlines a typical configuration and execution of an AMI (Amazon Mach
 
 ### Before You Begin
 
-* [AMI Basic Deployment](/article/rd6ghl00va-ami-deployment)
+* [AMI Basic Deployment](ami-deployment.md)
 
 ### Overview
 
@@ -90,18 +90,18 @@ An AMI Blue/Green deployment requires you to set up the following resources up w
 * A pair of [Target Groups](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html)—typically staging (Stage) and production (Prod)—both with the **instance** target type.
 * An [Application Load Balancer](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-application-load-balancer.html) (ALB), with listeners for both your Target Groups' ports.
 
-Within Harness, you'll need to set up the following resources (some of which you might have already created for an AMI [Basic deployment](/article/rd6ghl00va-ami-deployment#basic_deploy)):
+Within Harness, you'll need to set up the following resources (some of which you might have already created for an AMI [Basic deployment](ami-deployment.md#basic-deploy)):
 
-* A Delegate [installed and running](/article/rd6ghl00va-ami-deployment#install_and_run_the_harness_delegate) in an AWS instance.
-* An AWS [Cloud Provider](/article/rd6ghl00va-ami-deployment#cloud_provider) configured to assume the Delegate's IAM role for the connection to AWS.
-* An AMI-based Service (which can be any Service you've already set up for an [AMI Basic deployment](/article/rd6ghl00va-ami-deployment#basic_deploy)).
+* A Delegate [installed and running](ami-deployment.md#install-and-run-the-harness-delegate) in an AWS instance.
+* An AWS [Cloud Provider](ami-deployment.md#cloud-provider) configured to assume the Delegate's IAM role for the connection to AWS.
+* An AMI-based Service (which can be any Service you've already set up for an [AMI Basic deployment](ami-deployment.md#basic-deploy)).
 * An Environment with an Infrastructure Definition that specifies your ASG and your Stage and Prod Target Groups.
 
 You do not need to register instances for your Target Groups. Harness will perform that step during deployment.
 
 #### Cloud Provider Requirements for Blue/Green Deployments
 
-Ensure that the IAM role applied to the AWS access key user or Harness Delegate host has the policies described in [Policies Required: AWS AMI/ASG Deployments](/article/wt1gnigme7-add-amazon-web-services-cloud-provider#policies_required_aws_ami_asg_deployments).
+Ensure that the IAM role applied to the AWS access key user or Harness Delegate host has the policies described in [Policies Required: AWS AMI/ASG Deployments](https://docs.harness.io/article/wt1gnigme7-add-amazon-web-services-cloud-provider#policies_required_aws_ami_asg_deployments).
 
 ### AWS Setup (Example)
 
@@ -171,18 +171,18 @@ It has two listeners, forwarding to the two Target Groups: one for production tr
 
 ### Define the Blue/Green Infrastructure
 
-1. Within your Harness Application, select an existing [Environment](/article/rd6ghl00va-ami-deployment#create_environment), or create a new one.
+1. Within your Harness Application, select an existing [Environment](ami-deployment.md#create-environment), or create a new one.
 2. In the Environment's **Infrastructure Definition** section, click **Add Infrastructure Definition**.
 3. In the resulting **Infrastructure Definition** dialog, enter a **Name** that will identify this Infrastructure Definition when you [add it to a Workflow](#workflow_bg).
 4. In **Cloud Provider Type**, select **Amazon Web Services**.
 5. In **Deployment Type**, select **Amazon Machine Image**. This expands the **Infrastructure Definition** dialog to look something like this:
    ![](./static/ami-blue-green-53.png)
-6. Select a **Cloud Provider** that references your Delegate by Tag, as [outlined earlier](/article/rd6ghl00va-ami-deployment#cloud_provider) for Basic deployment.
+6. Select a **Cloud Provider** that references your Delegate by Tag, as [outlined earlier](ami-deployment.md#cloud-provider) for Basic deployment.
 7. Select the **Region** and base **Auto Scaling Group** that you [configured in AWS](#asg_bg) for Blue/Green.
 8. If you want this Infrastructure Definition to create a new ASG numbering series based on each new selection in the above **Auto Scaling Groups** drop-down, enable the check box labeled **Reset ASG revision numbers each time a new base ASG is selected**. For details on this option, see [Reset ASG Revision Numbers](#reset_asg_rev).
 9. In the upper **Target Groups (for ALB)** field, select the Target Group that you [configured in AWS](#target_groups_bg) as your production group.
 10. In the lower **Temporary Routes** > **Target Groups** field, select the Target Group that you configured in AWS as your staging group. (Harness uses this Target Group for initial deployment of your service. Upon successful deployment, it swaps this group's route with the production Target Group's route.)
-11. Enable **Scope to Specific Services**, and use the adjacent drop-down to select the appropriate Harness Service. This can be any Service you've already set up for an [AMI Basic deployment](/article/rd6ghl00va-ami-deployment#basic_deploy).  
+11. Enable **Scope to Specific Services**, and use the adjacent drop-down to select the appropriate Harness Service. This can be any Service you've already set up for an [AMI Basic deployment](ami-deployment.md#basic-deploy).  
   
 (This scoping will make this Infrastructure Definition available whenever a Workflow, or Phase, is set up for this Service.)  
   
@@ -206,7 +206,7 @@ When you deploy, this option resets ASG numbering even for the same combination 
 * A separate franchisee.
 * A separate level of your SaaS product offering, each with its own configuration, permissions, and pricing.
 
-Deploying the new ASG with a new numbering series prevents existing, unrelated ASGs from being downscaled. You achieve this independence without having to create duplicate Infrastructure Definitions. Within Harness, each combination of a Service with a new base ASG creates a new  [Service Infrastructure Mapping](/article/v3l3wqovbe-infrastructure-definitions#service_infrastructure_mapping).
+Deploying the new ASG with a new numbering series prevents existing, unrelated ASGs from being downscaled. You achieve this independence without having to create duplicate Infrastructure Definitions. Within Harness, each combination of a Service with a new base ASG creates a new  [Service Infrastructure Mapping](https://docs.harness.io/article/v3l3wqovbe-infrastructure-definitions#service_infrastructure_mapping).
 
 If you select the **Use Already Provisioned Infrastructure** option along with the **Reset ASG revision numbers...** option, Harness will start a new ASG numbering series each time you manually select a new base ASG in the **Auto Scaling Group** drop-down.
 
@@ -265,7 +265,7 @@ The weight for the **other** TG is automatically set to the remaining percenta
 
 You keep adding **Shift Traffic Weight** steps until the weight of the TG for the new ASG is 100.
 
-You can manipulate traffic shifting using as many **Shift Traffic Weight** steps as you like.Typically, you add  [Approval](/article/0ajz35u2hy-approvals) steps between each **Shift Traffic Weight** step to ensure that everything is running smoothly. For example, you can test the new feature(s) of your app before approving. This is a simple way to incorporate A/B testing into your Workflow.
+You can manipulate traffic shifting using as many **Shift Traffic Weight** steps as you like.Typically, you add  [Approval](https://docs.harness.io/article/0ajz35u2hy-approvals) steps between each **Shift Traffic Weight** step to ensure that everything is running smoothly. For example, you can test the new feature(s) of your app before approving. This is a simple way to incorporate A/B testing into your Workflow.
 
 Approval steps are very useful because they enable you to cancel a deployment and return to the pre-deployment traffic weighting with a single step.The Workflow looks something like the following. Here the names of the **Shift Traffic Weight** steps have been changed to describe the weights they are assigning (10%, 100%):
 
@@ -301,7 +301,7 @@ This step creates the new ASG. In this step, you name the new ASG, specify how i
 4. In **Production Listener Rule ARN**, select the ARN for the rule to use. You can find the ARN by its number in the AWS console.
 5. Click **Submit**.
 
-Most of the settings support  [Workflow variable expressions](/article/766iheu1bk-add-workflow-variables-new-template). You can use these to template this step and then allow its values to be specified at deployment runtime. You can even pass in the values using a Harness  [Trigger](/article/revc37vl0f-passing-variable-into-workflows).When you deploy this Workflow, the output for the step will show the ASG creation and load balancer assignments.
+Most of the settings support  [Workflow variable expressions](https://docs.harness.io/article/766iheu1bk-add-workflow-variables-new-template). You can use these to template this step and then allow its values to be specified at deployment runtime. You can even pass in the values using a Harness  [Trigger](https://docs.harness.io/article/revc37vl0f-passing-variable-into-workflows).When you deploy this Workflow, the output for the step will show the ASG creation and load balancer assignments.
 
 
 ```
@@ -350,7 +350,7 @@ This is the step where you shift traffic from the TG for the previous ASG to the
 1. In **Name**, it can helpful to name the step after the traffic shift percentage it will apply, such as **10%**. You might also choose to name it according to its position, like **Shift Step 1**.
 2. In **New Autoscaling Group Weight**, enter the percentage of traffic you want shifted from the previous ASG to the new ASG you are deploying.
 
-Most of the settings support  [Workflow variable expressions](/article/766iheu1bk-add-workflow-variables-new-template). You can use these to template this step and then allow its values to be specified at deployment runtime. You can even pass in the values using a Harness  [Trigger](/article/revc37vl0f-passing-variable-into-workflows).Here is an example of what this step looks like when it shifts traffic 10% during deployment.
+Most of the settings support  [Workflow variable expressions](https://docs.harness.io/article/766iheu1bk-add-workflow-variables-new-template). You can use these to template this step and then allow its values to be specified at deployment runtime. You can even pass in the values using a Harness  [Trigger](https://docs.harness.io/article/revc37vl0f-passing-variable-into-workflows).Here is an example of what this step looks like when it shifts traffic 10% during deployment.
 
 
 ```
@@ -363,7 +363,7 @@ Traffic shift route updated successfully
 ```
 You can see that the New AutoScaling Group is receiving 10% of traffic and the Old AutoScaling Group is receiving 90%.
 
-Next, you will likely want to follow the Shift Traffic Weight step with an  [Approval step](/article/0ajz35u2hy-approvals). This way you can test the new ASG before shifting more traffic to it.
+Next, you will likely want to follow the Shift Traffic Weight step with an  [Approval step](https://docs.harness.io/article/0ajz35u2hy-approvals). This way you can test the new ASG before shifting more traffic to it.
 
 Add more **Shift Traffic Weight** and **Approval** steps until you shift traffic to 100.
 
@@ -403,7 +403,7 @@ By default, Harness AMI Blue/Green Workflows have five steps:
 
 Harness pre-configures the **Setup**, **Deploy**, and **Swap Routes** steps. Below, we outline those steps' defaults and options, with examples of the deployment logs' contents at each step.
 
-The **Verify Staging** and **Wrap Up** steps are placeholders, to which you can add integrations and commands. For details on adding **Verify Staging** integrations, see [Continuous Verification](/article/myw4h9u05l-verification-providers-list).
+The **Verify Staging** and **Wrap Up** steps are placeholders, to which you can add integrations and commands. For details on adding **Verify Staging** integrations, see [Continuous Verification](https://docs.harness.io/article/myw4h9u05l-verification-providers-list).
 
 #### Create the Blue/Green Workflow
 
@@ -425,7 +425,7 @@ In Step 1, select **AWS AutoScaling Group Setup** to open a dialog where you can
 
 ![](./static/ami-blue-green-67.png)
 
-The **Instances** settings support [Harness variable expressions](/article/9dvxcegm90-variables), such as [Workflow variable expressions](/article/766iheu1bk-add-workflow-variables-new-template).For most settings here, see the corresponding [AMI Basic Workflow instructions](/article/rd6ghl00va-ami-deployment#basic_setup_asg). However:
+The **Instances** settings support [Harness variable expressions](https://docs.harness.io/article/9dvxcegm90-variables), such as [Workflow variable expressions](https://docs.harness.io/article/766iheu1bk-add-workflow-variables-new-template).For most settings here, see the corresponding [AMI Basic Workflow instructions](ami-deployment.md#basic-setup-asg). However:
 
 Harness recommends setting the **Auto Scaling Steady State Timeout (mins)** field to at least **20** minutes, as shown above. This is a safe interval to prevent failed deployments while the [Swap Routes](#swap_routes_bg) step's Blue/Green switchover completes.
 
@@ -454,7 +454,7 @@ Completed AWS AMI Setup with new autoScalingGroupName [AMI__Blue__Green__Applica
 
 In Step 2, select **Upgrade AutoScaling Group** to open a dialog where you can define how many instances to deploy in the Auto Scaling Group, as either a count or a percentage.
 
-For general information on customizing this dialog's settings, and on how they correspond to AWS parameters, see the corresponding [AMI Basic Workflow section](/article/rd6ghl00va-ami-deployment#upgrade_asg). This deployment example uses percentage scaling, with a desired target of 100%.
+For general information on customizing this dialog's settings, and on how they correspond to AWS parameters, see the corresponding [AMI Basic Workflow section](ami-deployment.md#upgrade-asg). This deployment example uses percentage scaling, with a desired target of 100%.
 
 If your base Auto Scaling Group is configured in AWS with [scaling policies](#scaling_policies), Harness will apply those policies in your Workflow's final **Upgrade AutoScaling Group** step.
 
@@ -566,7 +566,7 @@ Completed switch routes
 ```
 #### Blue/Green Workflow Deployment
 
-As with the [AMI Basic deployment](/article/rd6ghl00va-ami-deployment#deployment_basic), once your setup is complete, you can click the Workflow's **Deploy** button to start the Blue/Green deployment.
+As with the [AMI Basic deployment](ami-deployment.md#deployment-basic), once your setup is complete, you can click the Workflow's **Deploy** button to start the Blue/Green deployment.
 
 ![](./static/ami-blue-green-75.png)
 
@@ -582,7 +582,7 @@ To verify the completed deployment, log into your AWS Console and locate the new
 
 ### Rollbacks and Downsizing Old ASGs
 
-For details on how previous ASGs are downsized and what happens during rollback, see [How Does Harness Downsize Old ASGs?](/article/aedsdsw9cm-aws-ami-deployments-overview#how_does_harness_downsize_old_as_gs)
+For details on how previous ASGs are downsized and what happens during rollback, see [How Does Harness Downsize Old ASGs?](../../concepts-cd/deployment-types/aws-ami-deployments-overview.md#how-does-harness-downsize-old-as-gs)
 
 ### Support for Scheduled Scaling
 
@@ -613,6 +613,6 @@ For example, if there were multiple ASGs of the series having active instances b
 
 ### Next Steps
 
-* Add monitoring to your AMI deployment and running instances: see [Continuous Verification](/article/myw4h9u05l-verification-providers-list) and [24/7 Service Guard Overview](/article/dajt54pyxd-24-7-service-guard-overview).
-* [AMI Canary Deployment](/article/agv5t7d156-ami-canary).
+* Add monitoring to your AMI deployment and running instances: see [Continuous Verification](https://docs.harness.io/article/myw4h9u05l-verification-providers-list) and [24/7 Service Guard Overview](https://docs.harness.io/article/dajt54pyxd-24-7-service-guard-overview).
+* [AMI Canary Deployment](ami-canary.md).
 

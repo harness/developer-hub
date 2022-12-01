@@ -86,15 +86,17 @@ Here's an example of what your BlueGreen deployment will look like:
 
 ### Step 1: Create the Harness Kubernetes Service
 
-A Harness Service is different from a Kubernetes service. A Harness Service includes the manifests and container used for deployment. A Kubernetes service enables applications running in a Kubernetes cluster to find and communicate with each other, and the outside world. To avoid confusion, a Harness Service is always capitalized in Harness documentation. A Kubernetes service is not.1. In Harness, click **Setup**, and then click **Add Application**.
+A Harness Service is different from a Kubernetes service. A Harness Service includes the manifests and container used for deployment. A Kubernetes service enables applications running in a Kubernetes cluster to find and communicate with each other, and the outside world. To avoid confusion, a Harness Service is always capitalized in Harness documentation. A Kubernetes service is not.
+
+1. In Harness, click **Setup**, and then click **Add Application**.
 2. Enter a name for the Application and click **Submit**.
 3. Click **Services**, and then click **Add Service**. The **Add Service** settings appear.
 
-[![](./static/create-a-kubernetes-blue-green-deployment-218.png)](./static/create-a-kubernetes-blue-green-deployment-218.png)
+  [![](./static/create-a-kubernetes-blue-green-deployment-218.png)](./static/create-a-kubernetes-blue-green-deployment-218.png)
 
-1. In **Name**, enter a name for the Service.
-2. In **Deployment Type**, select **Kubernetes**, and then ensure **Enable Kubernetes V2** is selected.
-3. Click **Submit**. The new Harness Kubernetes Service is created.
+4. In **Name**, enter a name for the Service.
+5. In **Deployment Type**, select **Kubernetes**, and then ensure **Enable Kubernetes V2** is selected.
+6. Click **Submit**. The new Harness Kubernetes Service is created.
 
 ### Step 2: Provide Manifests
 

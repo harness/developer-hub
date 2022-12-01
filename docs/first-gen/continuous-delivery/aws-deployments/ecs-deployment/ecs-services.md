@@ -1,7 +1,7 @@
 ---
 title: 3 - ECS Services
 description: Create a Harness Service for your artifacts and ECS container and service specifications.
-# sidebar_position: 2
+sidebar_position: 400
 helpdocs_topic_id: riu73ehy2m
 helpdocs_category_id: df9vj316ec
 helpdocs_is_private: false

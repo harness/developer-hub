@@ -16,16 +16,7 @@ You can also simply provision non-target infrastructure without deploying to it.
 
 If you want to use Terraform without Terragrunt, Harness supports that, too. See [Terraform Provisioning with Harness](terraform-provisioning-with-harness.md) and [Terraform How-tos](../../terraform-category/terrform-provisioner.md).
 
-Looking for How-tos? See [Terragrunt How-tos](../../terragrunt-category/terragrunt-how-tos.md).In this topic:
-
-* [Terragrunt Target Infrastructure Provisioning](terragrunt-provisioning-with-harness.md#terragrunt-target-infrastructure-provisioning)
-* [Use Terragrunt for Non-target Provisioning](terragrunt-provisioning-with-harness.md#use-terragrunt-for-non-target-provisioning)
-* [Limitations](terragrunt-provisioning-with-harness.md#limitations)
-* [Permissions](terragrunt-provisioning-with-harness.md#permissions)
-* [Supported Terraform Versions with Terragrunt](terragrunt-provisioning-with-harness.md#supported-terraform-versions-with-terragrunt)
-* [No Artifact Required](terragrunt-provisioning-with-harness.md#no-artifact-required)
-* [Service Instances (SIs) Consumption](terragrunt-provisioning-with-harness.md#service-instances-s-is-consumption)
-* [Next Steps](terragrunt-provisioning-with-harness.md#next-steps)
+Looking for How-tos? See [Terragrunt How-tos](../../terragrunt-category/terragrunt-how-tos.md).
 
 ### Terragrunt Target Infrastructure Provisioning
 

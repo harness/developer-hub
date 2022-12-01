@@ -12,18 +12,8 @@ Harness supports all Kubernetes default resources, such as Pods, Deployments, St
 
 In addition, Harness provides many of the same features for Kubernetes [custom resource](https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/) deployments using Custom Resource Definitions (CRDs). CRDs are resources you create that extend the Kubernetes API to support your application.
 
-Harness supports CRDs for both Kubernetes and OpenShift. There is no difference in their custom resource implementation.In this topic:
+Harness supports CRDs for both Kubernetes and OpenShift. There is no difference in their custom resource implementation.
 
-* [Before You Begin](#before_you_begin)
-* [Limitations](#limitations)
-* [Review: Required Custom Resource Annotations and Labels](#review_required_custom_resource_annotations_and_labels)
-* [Step 1: Prepare Target Cluster](#step_1_prepare_target_cluster)
-* [Step 2: Define Custom Resource in Harness](#step_2_define_custom_resource_in_harness)
-* [Step 3: Define Target Cluster](#step_3_define_target_cluster)
-* [Step 4: Create Workflow for Custom Resource Deployment](#step_4_create_workflow_for_custom_resource_deployment)
-* [Step 5: Deploy Custom Resource](#step_5_deploy_custom_resource)
-* [See Also](#see_also)
-* [Configure As Code](#configure_as_code)
 
 ### Before You Begin
 

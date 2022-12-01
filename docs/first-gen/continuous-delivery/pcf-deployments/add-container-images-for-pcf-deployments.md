@@ -12,18 +12,8 @@ Harness integrates with many different types of repositories and artifact provid
 
 Once you set up an Artifact Server, Harness can pull artifacts and add them to the Harness Service you will deploy to Tanzu Application Service (TAS, formerly PCF).
 
-In this topic:
 
-* [Before You Begin](#before_you_begin)
-* [Step 1: Add an Artifactory Artifact Server](#step_1_add_an_artifactory_artifact_server)
-* [Step 2: Type](#step_2_type)
-* [Step 3: Display Name](#step_3_display_name)
-* [Step 4: Artifactory URL](#step_4_artifactory_url)
-* [Step 5: Test and Submit](#step_5_test_and_submit)
-* [Step 6: Create the Harness Service](add-container-images-for-pcf-deployments.md#step-6-create-the-harness-service)
-* [Step 7: Add the Artifact Source to the Harness Service](add-container-images-for-pcf-deployments.md#step-7-add-the-artifact-source-to-the-harness-service)
-* [Review: Docker Support in Artifact Sources](add-container-images-for-pcf-deployments.md#review-docker-support-in-artifact-sources)
-* [Next Steps](#next_steps)
+
 
 ### Before You Begin
 

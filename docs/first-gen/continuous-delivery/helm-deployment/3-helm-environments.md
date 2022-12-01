@@ -10,12 +10,7 @@ helpdocs_is_published: true
 
 This content is for Harness [FirstGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/article/lbhf2h71at).After you have set up the Harness [Service](2-helm-services.md) for your Helm deployment, you can add a Harness Environment that lists the Cloud Provider and Kubernetes cluster where Harness will deploy your Docker image.
 
-Harness includes both Kubernetes and Helm deployments, and you can Helm charts in both. Harness [Kubernetes Deployments](../kubernetes-deployments/kubernetes-deployments-overview.md) allow you to use your own Helm chart (remote or local), and Harness executes the Kubernetes API calls to build everything without Helm and Tiller needing to be installed in the target cluster. See [Helm Charts](https://docs.harness.io/article/t6zrgqq0ny-kubernetes-services#helm_charts).In this topic:
-
-* [Create a New Harness Environment](3-helm-environments.md#create-a-new-harness-environment)
-* [Add an Infrastructure Definition](3-helm-environments.md#add-an-infrastructure-definition)
-* [Override Service Helm Values](3-helm-environments.md#override-service-helm-values)
-* [Next Step](3-helm-environments.md#next-step)
+Harness includes both Kubernetes and Helm deployments, and you can Helm charts in both. Harness [Kubernetes Deployments](../kubernetes-deployments/kubernetes-deployments-overview.md) allow you to use your own Helm chart (remote or local), and Harness executes the Kubernetes API calls to build everything without Helm and Tiller needing to be installed in the target cluster. See [Helm Charts](https://docs.harness.io/article/t6zrgqq0ny-kubernetes-services#helm_charts).
 
 ### Create a New Harness Environment
 

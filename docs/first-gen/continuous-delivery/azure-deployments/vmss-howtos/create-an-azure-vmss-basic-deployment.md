@@ -12,17 +12,8 @@ Currently, this feature is behind the Feature Flag `AZURE_VMSS`. Contact [Harne
 
 You specify the range of instances you want for the new VMSS and then the percentage or count for the actual deployment.
 
-For other deployment strategies, see [Create an Azure VMSS Canary Deployment](create-an-azure-vmss-canary-deployment.md), and [Create an Azure VMSS Blue/Green Deployment](create-an-azure-vmss-blue-green-deployment.md).In this topic:
+For other deployment strategies, see [Create an Azure VMSS Canary Deployment](create-an-azure-vmss-canary-deployment.md), and [Create an Azure VMSS Blue/Green Deployment](create-an-azure-vmss-blue-green-deployment.md).
 
-* [Before You Begin](create-an-azure-vmss-basic-deployment.md#before-you-begin)
-* [Supported Platforms and Technologies](create-an-azure-vmss-basic-deployment.md#undefined)
-* [Step 1: Create the Basic Workflow](create-an-azure-vmss-basic-deployment.md#step-1-create-the-basic-workflow)
-* [Step 2: Azure Virtual Machine Scale Set Setup](create-an-azure-vmss-basic-deployment.md#step-2-azure-virtual-machine-scale-set-setup)
-* [Option: Use Variable Expressions in Settings](create-an-azure-vmss-basic-deployment.md#option-use-variable-expressions-in-settings)
-* [Step 3: Upgrade Virtual Machine Scale Set](create-an-azure-vmss-basic-deployment.md#step-3-upgrade-virtual-machine-scale-set)
-* [Step 4: Deploy](create-an-azure-vmss-basic-deployment.md#step-4-deploy)
-* [Review: Harness Revision Tags](create-an-azure-vmss-basic-deployment.md#review-harness-revision-tags)
-* [Option: Templatize the Workflow](create-an-azure-vmss-basic-deployment.md#option-templatize-the-workflow)
 
 ### Before You Begin
 

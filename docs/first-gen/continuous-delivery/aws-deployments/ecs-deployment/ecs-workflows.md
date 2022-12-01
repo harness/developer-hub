@@ -1,7 +1,7 @@
 ---
 title: 5 - ECS Basic and Canary Workflows
 description: Create a Workflow to deploy your ECS services.
-# sidebar_position: 2
+sidebar_position: 600
 helpdocs_topic_id: oinivtywnl
 helpdocs_category_id: df9vj316ec
 helpdocs_is_private: false

@@ -65,7 +65,9 @@ If you create your own role, ensure that it includes these permissions.
 
 ### Step 2: Add Google Cloud Build Step
 
-You can add the Google Cloud Build step to any Workflow type and Workflow section.1. In your Harness Workflow, in any section, click **Add Step**.
+You can add the Google Cloud Build step to any Workflow type and Workflow section.
+
+1. In your Harness Workflow, in any section, click **Add Step**.
 2. Select **Google Cloud Build**, and click **Next**.
 3. In **Google Cloud Provider**, select the Harness Google Cloud Provider you set up earlier. See [Add Google Cloud Platform Cloud Provider](https://docs.harness.io/article/6x52zvqsta-add-google-cloud-platform-cloud-provider).You can turn this setting into a deployment runtime parameter by clicking the template button **[T]**. This will create a [Workflow variable](https://docs.harness.io/article/766iheu1bk-add-workflow-variables-new-template) for the setting. When you deploy this Workflow, you can enter the option for the setting.
 4. Complete the step using the following settings.

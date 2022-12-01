@@ -1,7 +1,7 @@
 ---
 title: CloudFormation How-tos (FirstGen)
 description: Harness has first-class support for AWS CloudFormation as an infrastructure provisioner.
-# sidebar_position: 2
+sidebar_position: 100
 helpdocs_topic_id: 78g32khjcu
 helpdocs_category_id: hupik7gwhc
 helpdocs_is_private: false

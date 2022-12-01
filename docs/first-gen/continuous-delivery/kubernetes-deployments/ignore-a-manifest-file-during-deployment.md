@@ -14,13 +14,6 @@ Instead, you tell Harness to ignore these files and then apply them separately u
 
 Or you can simply ignore them until you wish to deploy them as part of the main deployment.
 
-In this topic:
-
-* [Before You Begin](#before_you_begin)
-* [Visual Summary](#visual_summary)
-* [Step 1: Ignore a Manifest](#step_1_ignore_a_manifest)
-* [Option 1: Apply Ignored Resource](#option_1_apply_ignored_resource)
-* [Next Steps](#next_steps)
 
 ### Before You Begin
 

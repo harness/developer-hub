@@ -14,15 +14,6 @@ Harness also includes first-class support for the [App Autoscaler plugin](https:
 
 ![](./static/use-cli-plugins-in-harness-pcf-deployments-02.png)
 
-In this topic:
-
-* [Before You Begin](#before_you_begin)
-* [Visual Summary](#visual_summary)
-* [Review: Requirements for Running Plugins](#review_requirements_for_running_plugins)
-* [Step 1: Running CF Plugins Using the CF Command](#step_1_running_cf_plugins_using_the_cf_command)
-* [Step 2: Script](#step_2_script)
-* [Step 3: Delegate Selectors](#step_3_delegate_selectors)
-* [Review: Plugin Directory](#review_plugin_directory)
 
 ### Before You Begin
 

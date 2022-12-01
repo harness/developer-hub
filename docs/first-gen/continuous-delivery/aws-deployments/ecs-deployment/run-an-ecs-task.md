@@ -1,7 +1,7 @@
 ---
 title: Run an ECS Task
 description: In addition to deploying tasks as part of your standard ECS deployment , you can use the ECS Run Task step to run individual tasks separately as a step in your ECS Workflow. The ECS Run Task step is…
-# sidebar_position: 2
+sidebar_position: 1100
 helpdocs_topic_id: jr8rhn5bk5
 helpdocs_category_id: df9vj316ec
 helpdocs_is_private: false

@@ -8,15 +8,10 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/category/qfj6m1k2c4).Harness provides full file management for your Kubernetes configuration files. You can add, edit, and manage all of the files in your Harness Kubernetes Service.
+This content is for Harness [FirstGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/category/qfj6m1k2c4).
 
-In this topic:
+Harness provides full file management for your Kubernetes configuration files. You can add, edit, and manage all of the files in your Harness Kubernetes Service.
 
-* [Before You Begin](#before_you_begin)
-* [Step 1: Manually Add Configuration Files](#step_1_manually_add_configuration_files)
-* [Step 2: Edit Resource Files](#step_2_edit_resource_files)
-* [Step 3: Create and Manage Folders](#step_3_create_and_manage_folders)
-* [Next Steps](#next_steps)
 
 ### Before You Begin
 

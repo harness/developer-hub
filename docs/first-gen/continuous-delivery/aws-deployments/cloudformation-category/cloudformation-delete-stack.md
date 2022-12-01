@@ -10,15 +10,6 @@ helpdocs_is_published: true
 
 This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/article/vynj4hxt98).You can add a CloudFormation Delete Stack Workflow step to remove any provisioned infrastructure, just like running the `cloudformation delete-stack` command. See [delete-stack](https://docs.aws.amazon.com/cli/latest/reference/cloudformation/delete-stack.html) from AWS.
 
-In this topic:
-
-* [Before You Begin](#before_you_begin)
-* [Review: What Gets Deleted?](#review_what_gets_deleted)
-	+ [Delete Using Default Steps](#delete_using_default_steps)
-	+ [Delete Using Stack Name](#delete_using_stack_name)
-* [Step 1: Add CloudFormation Delete Stack](#step_1_add_cloud_formation_delete_stack)
-* [Option 1: Delete Stack by Name](#option_1_delete_stack_by_name)
-* [Option 2: Delete Stack Using Defaults](#option_2_delete_stack_using_defaults)
 
 ### Before You Begin
 

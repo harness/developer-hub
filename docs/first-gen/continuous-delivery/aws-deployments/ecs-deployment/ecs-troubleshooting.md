@@ -1,7 +1,7 @@
 ---
 title: 8 - ECS Troubleshooting
 description: General troubleshooting steps for ECS deployments.
-# sidebar_position: 2
+sidebar_position: 900
 helpdocs_topic_id: rdk1j5s32z
 helpdocs_category_id: df9vj316ec
 helpdocs_is_private: false

@@ -14,14 +14,6 @@ Harness provides a few ways to integrate your Helm chart hooks into your Harness
 
 This topic describes the available options.
 
-In this topic:
-
-* [Before You Begin](#before_you_begin)
-* [Option 1: Kubernetes and the Apply Step](#option_1_kubernetes_and_the_apply_step)
-* [Option 2: Use Native Helm](#option_2_use_native_helm)
-* [Option: Delegate Selector](#option_delegate_selector)
-* [Related](#related)
-
 ### Before You Begin
 
 * **Helm chart hooks** — We assume you are familiar with Helm chart hooks (sometimes called *lifecycle hooks*). If you are new to them, review Helm's [docs](https://helm.sh/docs/topics/charts_hooks/).

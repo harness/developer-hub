@@ -14,23 +14,6 @@ Harness supports Istio 1.2 and above.
 
 Not using Istio? No problem. See [Traffic Splitting Without Istio](traffic-splitting-without-istio.md).In a [Kubernetes Canary](create-a-kubernetes-canary-deployment.md) or [Blue/Green](create-a-kubernetes-blue-green-deployment.md) deployment, as the new application is verified, you can shift traffic from the previous version to a new version.
 
-In this topic:
-
-* [Before You Begin](#before_you_begin)
-* [Limitations](#limitations)
-* [Step 1: Review Istio](#step_1_review_istio)
-* [Step 2: Add DestinationRule Manifest](#step_2_add_destination_rule_manifest)
-* [Step 3: Add VirtualService Manifest](#step_3_add_virtual_service_manifest)
-* [Step 4: Review Weighting](#step_4_review_weighting)
-* [Step 5: Add Gateway Manifest](#step_5_add_gateway_manifest)
-* [Step 6: Add Traffic Split Step](#step_6_add_traffic_split_step)
-* [Step 7: Define Virtual Service Name](#step_7_define_virtual_service_name)
-* [Option: Delegate Selector](#option_delegate_selector)
-* [Step 8: Set Destinations and Weights](#step_8_set_destinations_and_weights)
-* [Option 1: Use Subsets](#option_1_use_subsets)
-* [Option 2: Use Multiple Traffic Split Steps](#option_2_use_multiple_traffic_split_steps)
-* [Notes](#notes)
-* [Next Steps](#next_steps)
 
 ### Before You Begin
 

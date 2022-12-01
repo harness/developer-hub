@@ -12,21 +12,7 @@ Currently, this feature is behind the Feature Flag `AZURE_VMSS`. Contact [Harne
 
 The Canary Workflow deploys in two phases. The first phase creates the new VMSS and deploys a number/percentage of the desired instances. Once deployment is successful, the second phase deploys 100% of the desired instances.
 
-For other deployment strategies, see [Create an Azure VMSS Basic Deployment](create-an-azure-vmss-basic-deployment.md), and [Create an Azure VMSS Blue/Green Deployment](create-an-azure-vmss-blue-green-deployment.md).In this topic:
-
-* [Before You Begin](#before_you_begin)
-* [Visual Summary](#undefined)
-* [Supported Platforms and Technologies](#undefined)
-* [Step 1: Create the Canary Workflow](#step_1_create_the_canary_workflow)
-* [Step 2: Create Phase 1](#step_2_create_phase_1)
-* [Step 3: Azure Virtual Machine Scale Set Setup](#step_3_azure_virtual_machine_scale_set_setup)
-* [Option: Use Variable Expressions in Settings](#option_use_variable_expressions_in_settings)
-* [Step 4: Upgrade Virtual Machine Scale Set](#step_4_upgrade_virtual_machine_scale_set)
-* [Step 5: Create Phase 2](#step_5_create_phase_2)
-* [Step 6: Upgrade Virtual Machine Scale Set](#step_6_upgrade_virtual_machine_scale_set)
-* [Step 7: Deploy](#step_7_deploy)
-* [Option: Templatize the Workflow](#option_templatize_the_workflow)
-* [Configure As Code](#configure_as_code)
+For other deployment strategies, see [Create an Azure VMSS Basic Deployment](create-an-azure-vmss-basic-deployment.md), and [Create an Azure VMSS Blue/Green Deployment](create-an-azure-vmss-blue-green-deployment.md).
 
 ### Before You Begin
 

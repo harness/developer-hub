@@ -16,20 +16,6 @@ For Blue/Green deployments, the **App Resize** step is always 100% because it do
 
 Once that deployment is successful, the Workflow **Swap Routes** command switches the networking routing, directing production traffic (Green) to the new app and stage traffic (Blue) to the old app.
 
-In this topic:
-
-* [Before You Begin](create-a-blue-green-pcf-deployment.md#before-you-begin)
-* [Visual Summary](create-a-blue-green-pcf-deployment.md#visual-summary)
-* [Step 1: Specify the TAS Service Routes](create-a-blue-green-pcf-deployment.md#step-1-specify-the-tas-service-routes)
-* [Step 2: Set Up a TAS Blue/Green Workflow](create-a-blue-green-pcf-deployment.md#step-2-set-up-a-tas-blue-green-workflow)
-* [Step 3: App Setup](create-a-blue-green-pcf-deployment.md#step-3-app-setup)
-* [Step 4: App Resize](create-a-blue-green-pcf-deployment.md#step-4-app-resize)
-* [Step 5: Verify Staging](create-a-blue-green-pcf-deployment.md#step-5-verify-staging)
-* [Step 6: Swap Routes](create-a-blue-green-pcf-deployment.md#step-6-swap-routes)
-* [Step 7: Deploy a TAS Blue/Green Workflow](create-a-blue-green-pcf-deployment.md#step-7-deploy-a-tas-blue-green-workflow)
-* [App Versioning without Numbering](create-a-blue-green-pcf-deployment.md#app-versioning-without-numbering)
-* [App Name Variables and Blue Green Deployments](create-a-blue-green-pcf-deployment.md#app-name-variables-and-blue-green-deployments)
-* [Next Steps](create-a-blue-green-pcf-deployment.md#next-steps)
 
 ### Before You Begin
 

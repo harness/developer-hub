@@ -10,21 +10,6 @@ helpdocs_is_published: true
 
 Tanzu Application Service (formerly PCF) Canary deployments contain two or more phases that deploy app instances gradually, ensuring the stability of a small percentage of instances before rolling out to your desired instance count.
 
-In this topic:
-
-* [Before You Begin](#before_you_begin)
-* [Visual Summary](#visual_summary)
-* [Review: App Resizing in Canary Deployments](#review_app_resizing_in_canary_deployments)
-* [Review: Canary Workflow Phases](#review_canary_workflow_phases)
-* [Step 1: Add the Canary Workflow](#step_1_add_the_canary_workflow)
-* [Step 2: Configure Canary Phase 1](#step_2_configure_canary_phase_1)
-* [Step 3: Configure App Setup for Phase 1](#step_3_configure_app_setup_for_phase_1)
-* [Step 4: Configure App Resize for Phase 1](#step_4_configure_app_resize_for_phase_1)
-* [Step 5: Configure Canary Phase 2](#step_5_configure_canary_phase_2)
-* [Step 6: Configure App Resize for Phase 2](#step_6_configure_app_resize_for_phase_2)
-* [Step 7: Deploy a Canary PCF Workflow](#step_7_deploy_a_canary_pcf_workflow)
-* [App Versioning without Numbering](create-a-canary-pcf-deployment.md#app-versioning-without-numbering)
-* [Next Steps](#next_steps)
 
 ### Before You Begin
 
@@ -126,25 +111,23 @@ Now we configure this phase to deploy 50% of the TAS app instances we have set i
 
 1. Click **App Setup**. The **App Setup** dialog appears.
 
-![](./static/create-a-canary-pcf-deployment-86.png)
+  ![](./static/create-a-canary-pcf-deployment-86.png)
 
-You don't need to change any settings in App Setup, but let's review the default settings:
+  You don't need to change any settings in App Setup, but let's review the default settings:
 
+  |  |  |
+  | --- | --- |
+  | **Setting** | **Description** |
+  | **Match running instances** | The first time you deploy this Workflow, this setting isn't used because we have no running instances.In future deployments, you might wish to select this setting. For Canary Workflows, it isn't relevant because you will be setting the desired instance count for the phase. |
+  | **Resize Strategy** | Specify the order in which you want Harness to downsize and add old and new instances.The first time you deploy this Workflow, this setting isn't used because we have no running instances. |
+  | **Active Versions To Keep** | Enter the number of previous app versions to downsize and keep. You can upsize these versions later if needed. The most recent app version will not be downsized. |
+  | **Additional Routes** | Select any routes that you want to map to your app, in addition to the routes specified in the manifest in your Harness Service. |
+  | **Delegate Selectors** | Select the Selector for the Delegate(s) you want to use. You add Selectors to Delegates to make sure that they're used to execute the command. For more information, see [Select Delegates with Selectors](https://docs.harness.io/article/c3fvixpgsl-select-delegates-for-specific-tasks-with-selectors).Harness will use Delegates matching the Selectors you add.If you use one Selector, Harness will use any Delegate that has that Selector.If you select two Selectors, a Delegate must have both Selectors to be selected. That Delegate might also have other Selectors, but it must have the two you selected.You can use expressions for Harness built-in variables or Account Default variables in **Delegate Selectors**. When the variable expression is resolved at deployment runtime, it must match an existing Delegate Selector.For example, if you have a Delegate Selector **prod** and the Workflow is using an Environment also named **prod**, the Delegate Selector can be `${env.name}`. This is very useful when you match Delegate Selectors to Application component names such as Environments, Services, etc. It's also a way to template the Delegate Selector setting. |
+  | **Use App Autoscaler Plugin** | Enable this setting if you have the [App Autoscaler](https://docs.pivotal.io/application-service/2-7/appsman-services/autoscaler/using-autoscaler-cli.html) service running in your target Pivotal space and bound to the app you are deploying.For more information on using the plugin with Harness, see [App Autoscaler CLI Plugin](use-the-app-autoscaler-service.md). |
+  | **Timeout** | Set how long you want the Harness Delegate to wait for the TAS cloud to respond to API requests before timing out. |
+  | **Version Management** | For details on how Harness manages Tanzu app names and how this feature impacts naming, see [Tanzu App Naming](tanzu-app-naming-with-harness.md). |
 
-
-|  |  |
-| --- | --- |
-| **Setting** | **Description** |
-| **Match running instances** | The first time you deploy this Workflow, this setting isn't used because we have no running instances.In future deployments, you might wish to select this setting. For Canary Workflows, it isn't relevant because you will be setting the desired instance count for the phase. |
-| **Resize Strategy** | Specify the order in which you want Harness to downsize and add old and new instances.The first time you deploy this Workflow, this setting isn't used because we have no running instances. |
-| **Active Versions To Keep** | Enter the number of previous app versions to downsize and keep. You can upsize these versions later if needed. The most recent app version will not be downsized. |
-| **Additional Routes** | Select any routes that you want to map to your app, in addition to the routes specified in the manifest in your Harness Service. |
-| **Delegate Selectors** | Select the Selector for the Delegate(s) you want to use. You add Selectors to Delegates to make sure that they're used to execute the command. For more information, see [Select Delegates with Selectors](https://docs.harness.io/article/c3fvixpgsl-select-delegates-for-specific-tasks-with-selectors).Harness will use Delegates matching the Selectors you add.If you use one Selector, Harness will use any Delegate that has that Selector.If you select two Selectors, a Delegate must have both Selectors to be selected. That Delegate might also have other Selectors, but it must have the two you selected.You can use expressions for Harness built-in variables or Account Default variables in **Delegate Selectors**. When the variable expression is resolved at deployment runtime, it must match an existing Delegate Selector.For example, if you have a Delegate Selector **prod** and the Workflow is using an Environment also named **prod**, the Delegate Selector can be `${env.name}`. This is very useful when you match Delegate Selectors to Application component names such as Environments, Services, etc. It's also a way to template the Delegate Selector setting. |
-| **Use App Autoscaler Plugin** | Enable this setting if you have the [App Autoscaler](https://docs.pivotal.io/application-service/2-7/appsman-services/autoscaler/using-autoscaler-cli.html) service running in your target Pivotal space and bound to the app you are deploying.For more information on using the plugin with Harness, see [App Autoscaler CLI Plugin](use-the-app-autoscaler-service.md). |
-| **Timeout** | Set how long you want the Harness Delegate to wait for the TAS cloud to respond to API requests before timing out. |
-| **Version Management** | For details on how Harness manages Tanzu app names and how this feature impacts naming, see [Tanzu App Naming](tanzu-app-naming-with-harness.md). |
-
-1. Click **Submit** or close the dialog.
+2. Click **Submit** or close the dialog.
 
 Next, we will resize the number of instances to 50% of the instance count set in your Service manifest.yml.
 
@@ -175,7 +158,7 @@ The **Phase 2** steps appear.
 
 ![](./static/create-a-canary-pcf-deployment-87.png)
 
-These step will be executed when the Phase 1 steps are successful.
+These steps will be executed when the Phase 1 steps are successful.
 
 ### Step 6: Configure App Resize for Phase 2
 
@@ -203,9 +186,9 @@ You can now deploy the Canary Workflow.
 1. Click **Deploy**.
 2. In **Start New Deployment**, select an artifact to deploy.
 
-![](./static/create-a-canary-pcf-deployment-90.png)
+  ![](./static/create-a-canary-pcf-deployment-90.png)
 
-1. Click **Submit** to deploy your app.
+3. Click **Submit** to deploy your app.
 
 Here you can see the **App Setup** step in Phase 1:
 

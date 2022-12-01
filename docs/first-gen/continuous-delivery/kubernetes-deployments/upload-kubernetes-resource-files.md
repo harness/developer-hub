@@ -8,17 +8,11 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/category/qfj6m1k2c4).Harness includes default Kubernetes resource files you can edit and add to, and the ability to [link to remote Git and Helm repo files](link-resource-files-or-helm-charts-in-git-repos.md), but you might also have resource files you want to upload into Harness.
+This content is for Harness [FirstGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/category/qfj6m1k2c4).
+
+Harness includes default Kubernetes resource files you can edit and add to, and the ability to [link to remote Git and Helm repo files](link-resource-files-or-helm-charts-in-git-repos.md), but you might also have resource files you want to upload into Harness.
 
 Harness enables you to upload files and folders and manage them in the Service **Manifests** section.
-
-In this topic:
-
-* [Before You Begin](#before_you_begin)
-* [Step 1: Delete the Default Files](#step_1_delete_the_default_files)
-* [Step 2: Upload Resource Files](#step_2_upload_resource_files)
-* [Option 1: Use Namespace Alternatives](#option_1_use_namespace_alternatives)
-* [Next Steps](#next_steps)
 
 ### Before You Begin
 

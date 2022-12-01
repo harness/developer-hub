@@ -91,7 +91,9 @@ The Artifact Collection step was added automatically when you created the Build 
    Pick the Artifact Source you created in your Service under **Artifact Source**.  
 You can template the **Artifact Source** setting by clicking the **[T]** button. This will create a [Workflow variable](https://docs.harness.io/article/766iheu1bk-add-workflow-variables-new-template). When you deploy the Workflow, you can provide a value for the variable.
 
-![](./static/3-build-workflow-05.png)1. In **Build / Tag**, enter the Jenkins step output variable `${Jenkins.buildNumber}` parameter to provide this step with the build number of the artifact built in the Jenkins step.  
+![](./static/3-build-workflow-05.png)
+
+1. In **Build / Tag**, enter the Jenkins step output variable `${Jenkins.buildNumber}` parameter to provide this step with the build number of the artifact built in the Jenkins step.  
 When you are done, the Artifact Collection dialog will look something like this.![](./static/3-build-workflow-06.png)
 2. Click **Submit**. The Artifact Collection step is configured.
 

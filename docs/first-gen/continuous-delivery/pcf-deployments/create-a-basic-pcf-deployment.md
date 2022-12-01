@@ -16,17 +16,6 @@ Here is an example of a successful TAS Basic deployment:
 
 ![](./static/create-a-basic-pcf-deployment-24.png)
 
-In this topic:
-
-* [Before You Begin](create-a-basic-pcf-deployment.md#before-you-begin)
-* [Step 1: Set Up a TAS Basic Deployment](create-a-basic-pcf-deployment.md#step-1-set-up-a-tas-basic-deployment)
-* [Step 2: App Setup](create-a-basic-pcf-deployment.md#step-2-app-setup)
-* [Step 3: App Resize](create-a-basic-pcf-deployment.md#step-3-app-resize)
-* [Step 4: App Rollback](create-a-basic-pcf-deployment.md#step-4-app-rollback)
-	+ [Deploy a TAS Basic Workflow](create-a-basic-pcf-deployment.md#deploy-a-tas-basic-workflow)
-	+ [TAS Versioning and Rollback](create-a-basic-pcf-deployment.md#pcf-versioning-and-rollback)
-* [App Versioning without Numbering](create-a-basic-pcf-deployment.md#app-versioning-without-numbering)
-* [Next Steps](create-a-basic-pcf-deployment.md#next-steps)
 
 ### Before You Begin
 

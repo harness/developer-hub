@@ -8,19 +8,14 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/article/lbhf2h71at).For Kubernetes deployments that use Helm charts, see [Upgrade to Helm 3 Charts in Kubernetes Services](../kubernetes-deployments/upgrade-to-helm-3-charts-in-kubernetes-services.md).When you create your native [Helm deployments](helm-deployments-overview.md) in Harness, you can choose to use Helm 2 or [Helm 3](https://helm.sh/blog/helm-3-released/).
+This content is for Harness [FirstGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/article/lbhf2h71at).
+
+For Kubernetes deployments that use Helm charts, see [Upgrade to Helm 3 Charts in Kubernetes Services](../kubernetes-deployments/upgrade-to-helm-3-charts-in-kubernetes-services.md).When you create your native [Helm deployments](helm-deployments-overview.md) in Harness, you can choose to use Helm 2 or [Helm 3](https://helm.sh/blog/helm-3-released/).
 
 If you have already created native Helm 2 deployments, you can upgrade your deployments to Helm 3 by following the steps in this topic.
 
-**What's a native Helm deployment in Harness?** Harness provides Kubernetes deployments that use Helm charts without requiring Helm or Tiller be installed in your target environment. These are called Harness Kubernetes deployments. This is the recommended method. If you want to deploy to a Kubernetes cluster using Helm explicitly, you can use native Helm deployments. You simply choose **Helm** as the **Deployment Type** when you create a Harness Service.In this topic:
+**What's a native Helm deployment in Harness?** Harness provides Kubernetes deployments that use Helm charts without requiring Helm or Tiller be installed in your target environment. These are called Harness Kubernetes deployments. This is the recommended method. If you want to deploy to a Kubernetes cluster using Helm explicitly, you can use native Helm deployments. You simply choose **Helm** as the **Deployment Type** when you create a Harness Service.
 
-* [Before You Begin](upgrade-native-helm-2-deployments-to-helm-3.md#before-you-begin)
-* [Blog Post](#blog_post)
-* [Optional: Migrate Your Release History From Tiller](upgrade-native-helm-2-deployments-to-helm-3.md#optional-migrate-your-release-history-from-tiller)
-* [Step 1: Add a new Delegate with Helm 3 Installed](upgrade-native-helm-2-deployments-to-helm-3.md#step-1-add-a-new-delegate-with-helm-3-installed)
-* [Step 2: Enable Helm 3 on Harness Services](upgrade-native-helm-2-deployments-to-helm-3.md#step-2-enable-helm-3-on-harness-services)
-* [Notes](#notes)
-* [Troubleshooting](upgrade-native-helm-2-deployments-to-helm-3.md#troubleshooting)
 
 ### Before You Begin
 

@@ -20,19 +20,6 @@ You can override using multiple values.yaml files. This is a common scenario whe
 
 This topic will explain how to override using single and multiple values.yaml files at the Harness Service and Environment levels, including the use of Workflow variables, and explain the override hierarchy so that you understand how values.yaml files override each other.
 
-In this topic:
-
-* [Before You Begin](#before_you_begin)
-* [Review: values.yaml Support](#review_values_yaml_support)
-* [Step 1: Pick a Store Type](#step_1_pick_a_store_type)
-
-* [Option: Use an Inline Override](override-values-yaml-files.md#option-use-an-inline-override)
-* [Option: Use a Single Remote Override](override-values-yaml-files.md#option-use-a-single-remote-override)
-* [Option: Use Multiple Override Files at the Service Level](override-values-yaml-files.md#option-use-multiple-override-files-at-the-service-level)
-* [Option: Use Values YAML from inside the Chart](override-values-yaml-files.md#option-use-values-yaml-from-inside-the-chart)
-* [Option: Override Files at the Environment Level](override-values-yaml-files.md#option-override-files-at-the-environment-level)
-* [Option: Use Variable Expressions in Override File Settings](override-values-yaml-files.md#option-use-variable-expressions-in-override-file-settings)
-* [Next Steps](#next_steps)
 
 ### Before You Begin
 
@@ -45,11 +32,11 @@ Harness Kubernetes Services use values.yaml files in the following scenarios:
 
 1. **Inline**, as part of Harness native manifest editor.
 
-![](./static/override-values-yaml-files-140.png)
+  ![](./static/override-values-yaml-files-140.png)
 
-1. **Remotely**, as part of a Kubernetes spec in a Git repo or a Helm Chart in a Helm repository or Git repo:
+2. **Remotely**, as part of a Kubernetes spec in a Git repo or a Helm Chart in a Helm repository or Git repo:
 
-![](./static/override-values-yaml-files-141.png)
+  ![](./static/override-values-yaml-files-141.png)
 
 You can override values.yaml files from any of these sources in the Harness Service or in any Harness Environment in the same Harness Application.
 
@@ -81,15 +68,15 @@ The overwriting is granular. So if your first values.yaml file has a `key:value`
 1. In the **Values YAML Override** section of a Harness Kubernetes Service, click **Add Values**.
 2. In **Store Type**, select **Local** or **Remote**.
 
-![](./static/override-values-yaml-files-144.png)
+  ![](./static/override-values-yaml-files-144.png)
 
 ### Option: Use an Inline Override
 
 1. Enter the YAML you want to use to override the Values YAML file (values.yaml).
 
-![](./static/override-values-yaml-files-145.png)
+  ![](./static/override-values-yaml-files-145.png)
 
-1. Enter any new values and click **Submit**. The override is added to **Values YAML Override**.
+2. Enter any new values and click **Submit**. The override is added to **Values YAML Override**.
 
 ### Option: Use a Single Remote Override
 

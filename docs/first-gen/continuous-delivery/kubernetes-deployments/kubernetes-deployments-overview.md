@@ -8,7 +8,9 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/category/qfj6m1k2c4).The following How-tos guide you through some common Kubernetes tasks.
+This content is for Harness [FirstGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/category/qfj6m1k2c4).
+
+The following How-tos guide you through some common Kubernetes tasks.
 
 * [Connect to Your Target Kubernetes Platform](connect-to-your-target-kubernetes-platform.md)
 * [Add Container Images for Kubernetes Deployments](add-container-images-for-kubernetes-deployments.md)

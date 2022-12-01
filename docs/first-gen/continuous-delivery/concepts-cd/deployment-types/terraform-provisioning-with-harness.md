@@ -10,14 +10,7 @@ helpdocs_is_published: true
 
 This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/article/w6i5f7cpc9).Harness lets you use Terraform to provision infrastructure as part of your deployment process. Harness can provision any resource that is supported by a Terraform  [provider or plugin](https://www.terraform.io/docs/configuration/providers.html).
 
-Looking for How-tos? See [Terraform How-tos](../../terraform-category/terrform-provisioner.md).In this topic:
-
-* [Terraform Implementation Summary](#terraform_implementation_summary)
-* [Use Terraform for Non-deployment Provisioning](#use_terraform_for_non_deployment_provisioning)
-* [Limitations](#limitations)
-* [Permissions](#permissions)
-* [No Artifact Required](#no_artifact_required)
-* [Service Instances (SIs) Consumption](#service_instances_s_is_consumption)
+Looking for How-tos? See [Terraform How-tos](../../terraform-category/terrform-provisioner.md).
 
 ### Terraform Implementation Summary
 

@@ -10,13 +10,6 @@ helpdocs_is_published: true
 
 Route traffic using the Ingress rules defined in your Harness Kubernetes Service.
 
-In this topic:
-
-* [Before You Begin](#before_you_begin)
-* [Step 1: Add a Service Manifest](#step_1_add_a_service_manifest)
-* [Step 2: Add an Ingress Manifest](#step_2_add_an_ingress_manifest)
-* [Notes](#notes)
-
 ### Before You Begin
 
 * [Set Up Kubernetes Traffic Splitting](set-up-kubernetes-traffic-splitting.md)

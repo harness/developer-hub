@@ -1,7 +1,7 @@
 ---
 title: 4 - ECS Environments
 description: Create a Harness Environment to identify the target AWS VPC for your ECS deployment.
-# sidebar_position: 2
+sidebar_position: 500
 helpdocs_topic_id: yasp1dt3h5
 helpdocs_category_id: df9vj316ec
 helpdocs_is_private: false

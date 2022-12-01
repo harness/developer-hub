@@ -1,7 +1,7 @@
 ---
 title: 2 - ECS Connectors and Providers Setup
 description: Describes how to connect Harness to your artifact repository and to your target AWS ECS cluster.
-# sidebar_position: 2
+sidebar_position: 300
 helpdocs_topic_id: gpu36fl1y0
 helpdocs_category_id: df9vj316ec
 helpdocs_is_private: false

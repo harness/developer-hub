@@ -12,12 +12,7 @@ Pipelines define your release process using multiple Workflows and approvals in 
 
 An Artifact Build and Deploy Pipeline simply runs your Build Workflow followed by your Deploy Workflow. The Deploy Workflow uses the Harness Service you set up to get the new build number.
 
-![](./static/6-artifact-build-and-deploy-pipelines-14.png)In this topic:
-
-* [Review: Use Build Workflows in a Pipeline](6-artifact-build-and-deploy-pipelines.md#review-use-build-workflows-in-a-pipeline)
-* [Step: Create the Build and Deploy Pipeline](6-artifact-build-and-deploy-pipelines.md#step-create-the-build-and-deploy-pipeline)
-* [Step: Add the Build Workflow](6-artifact-build-and-deploy-pipelines.md#step-add-the-build-workflow)
-* [See Also](6-artifact-build-and-deploy-pipelines.md#see-also)
+![](./static/6-artifact-build-and-deploy-pipelines-14.png)
 
 ### Before You Begin
 

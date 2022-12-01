@@ -14,19 +14,6 @@ This topic describes how to set up these components for CloudFormation.
 
 Once your account is set up, you can begin integrating your CloudFormation templates. See  [Add CloudFormation Templates](add-cloud-formation-templates.md).
 
-In this topic:
-
-* [Before You Begin](#before_you_begin)
-* [Visual Summary](#visual_summary)
-* [Review: Limitations](#review_limitations)
-* [Step 1: Set Up Harness Delegates](#step_1_set_up_harness_delegates)
-	+ [Permissions](#permissions)
-* [Step 2: Set Up the AWS Cloud Provider](#step_2_set_up_the_aws_cloud_provider)
-	+ [Permissions](#permissions_2)
-* [Step 3: Add Template Resource](#step_3_add_template_resource)
-	+ [Option 1: Use AWS S3](#option_1_use_aws_s3)
-	+ [Option 2: Use Your Git Repo](#option_2_use_your_git_repo)
-* [Next Steps](#next_steps)
 
 ### Before You Begin
 

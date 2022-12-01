@@ -10,21 +10,9 @@ helpdocs_is_published: true
 
 This content is for Harness [FirstGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/article/lbhf2h71at).This topic describes how to set up the Harness Delegate, Connectors, and Cloud Providers for Helm, and provides some basic Helm setup information.
 
-Harness includes both Kubernetes and Helm deployments, and you can Helm charts in both. Harness [Kubernetes Deployments](../kubernetes-deployments/kubernetes-deployments-overview.md) allow you to use your own Helm chart (remote or local), and Harness executes the Kubernetes API calls to build everything without Helm and Tiller needing to be installed in the target cluster. See [Helm Charts](https://docs.harness.io/article/t6zrgqq0ny-kubernetes-services#helm_charts).In this topic:
+Harness includes both Kubernetes and Helm deployments, and you can Helm charts in both. Harness [Kubernetes Deployments](../kubernetes-deployments/kubernetes-deployments-overview.md) allow you to use your own Helm chart (remote or local), and Harness executes the Kubernetes API calls to build everything without Helm and Tiller needing to be installed in the target cluster. See [Helm Charts](https://docs.harness.io/article/t6zrgqq0ny-kubernetes-services#helm_charts).
 
-* [Permissions for Connections and Providers](2-connectors-providers-and-helm-setup.md#permissions-for-connections-and-providers)
-* [Harness Kubernetes Delegate](2-connectors-providers-and-helm-setup.md#harness-kubernetes-delegate)
-* [Connections and Providers Setup](2-connectors-providers-and-helm-setup.md#connections-and-providers-setup)
-	+ [Docker Artifact Server](2-connectors-providers-and-helm-setup.md#docker-artifact-server)
-		- [Single GCR Docker Registry across Multiple Projects](2-connectors-providers-and-helm-setup.md#single-gcr-docker-registry-across-multiple-projects)
-	+ [Kubernetes Cluster](2-connectors-providers-and-helm-setup.md#kubernetes-cluster)
-		- [Set Up a Kubernetes Cluster Cloud Provider](2-connectors-providers-and-helm-setup.md#set-up-a-kubernetes-cluster-cloud-provider)
-	+ [Helm Setup](2-connectors-providers-and-helm-setup.md#helm-setup)
-		- [Set Up Helm on a Kubernetes Cluster](2-connectors-providers-and-helm-setup.md#set-up-helm-on-a-kubernetes-cluster)
-		- [Helm Chart Example](2-connectors-providers-and-helm-setup.md#helm-chart-example)
-		- [Helm Chart Repository](2-connectors-providers-and-helm-setup.md#helm-chart-repository)
-* [Helm and the Kubernetes Delegate](2-connectors-providers-and-helm-setup.md#helm-and-the-kubernetes-delegate)
-* [Next Step](2-connectors-providers-and-helm-setup.md#next-step)
+
 
 ### Permissions for Connections and Providers
 

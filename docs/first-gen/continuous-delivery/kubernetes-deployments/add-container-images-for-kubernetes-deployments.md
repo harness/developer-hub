@@ -8,17 +8,12 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/category/qfj6m1k2c4).To add container images to Harness for your Kubernetes deployments, you add a Harness **Artifact Server**. The Artifact Server uses your container registry account to connect to your container registry (Docker registry, AWS ECR, Google GCR, Azure Container Registry, etc).
+This content is for Harness [FirstGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/category/qfj6m1k2c4).
+
+To add container images to Harness for your Kubernetes deployments, you add a Harness **Artifact Server**. The Artifact Server uses your container registry account to connect to your container registry (Docker registry, AWS ECR, Google GCR, Azure Container Registry, etc).
 
 Once you have the Artifact Server set up, you add the container image artifact using a Harness Service **Artifact Source**.
 
-In this topic:
-
-* [Before You Begin](#before_you_begin)
-* [Step 1: Add the Artifact Server](#step_1_add_the_artifact_server)
-* [Step 2: Create the Harness Kubernetes Service](#step_2_create_the_harness_kubernetes_service)
-* [Step 3: Add the Artifact Source](#step_3_add_the_artifact_source)
-* [Next Steps](#next_steps)
 
 ### Before You Begin
 
@@ -54,10 +49,10 @@ To demonstrate how to add the Artifact Source, we use a Docker Registry Artifact
 For the settings for all Artifact Sources, see [Add Artifact Servers](https://docs.harness.io/article/7dghbx1dbl-configuring-artifact-server).
 
 1. In the Harness Kubernetes Service, click **Add** **Artifact Source**, and select **Docker Registry**. The **Docker Registry** settings appear. Enter the following settings:
-* In **Name**, let Harness generate a name for the source or enter a custom name.
-* In **Source Server**, select the Artifact Server. In this example, we are using a Docker Registry with a connection to Docker Hub.
-* In **Docker Image Name**, enter the image name. Official images in public repos such as Docker Hub need the label **library**. For example, **library/nginx**.
-1. Click **SUBMIT**. The Artifact Source is added.
+  * In **Name**, let Harness generate a name for the source or enter a custom name.
+  * In **Source Server**, select the Artifact Server. In this example, we are using a Docker Registry with a connection to Docker Hub.
+  * In **Docker Image Name**, enter the image name. Official images in public repos such as Docker Hub need the label **library**. For example, **library/nginx**.
+2. Click **SUBMIT**. The Artifact Source is added.
 
 **Recommended** — View the build history for the artifact by clicking **Artifact History**, and then using **Manually Pull Artifact** to pull the artifact.
 

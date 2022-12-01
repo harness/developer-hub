@@ -8,18 +8,10 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/category/qfj6m1k2c4).You can use files added to the **Config Files** section in your Kubernetes Service in your manifests, such as in a ConfigMap. You can reference unencrypted and encrypted files, and they can be single or multiline.
+This content is for Harness [FirstGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/category/qfj6m1k2c4).
 
-In this topic:
+You can use files added to the **Config Files** section in your Kubernetes Service in your manifests, such as in a ConfigMap. You can reference unencrypted and encrypted files, and they can be single or multiline.
 
-* [Before You Begin](#before_you_begin)
-* [Review: Config File Reference Scope](#review_config_file_reference_scope)
-* [Review: Config Files Encoding and References](#review_config_files_encoding_and_references)
-* [Review: Use Base64 to Avoid New Lines](using-harness-config-files-in-manifests.md#review-use-base64-to-avoid-new-lines)
-* [Step 1: Add the File to Config Files](#step_1_add_the_file_to_config_files)
-* [Step 2: Reference Config File](#step_2_reference_config_file)
-* [Step 3: Decode the File](#step_3_decode_the_file)
-* [Limitations](using-harness-config-files-in-manifests.md#limitations)
 
 ### Before You Begin
 
@@ -53,9 +45,9 @@ In this example, we will use a file in a ConfigMap object.
 
 1. Add the unencrypted file to **Config Files**. In this example, the file is a base64 encoded file named `myFile`.
 
-Make sure you have the **update** permission on the Service or the Environment before you try to add the Service Config File. See [Managing Users and Groups (RBAC)](https://docs.harness.io/article/ven0bvulsj-users-and-permissions) for more information about assigning permissions.
+  Make sure you have the **update** permission on the Service or the Environment before you try to add the Service Config File. See [Managing Users and Groups (RBAC)](https://docs.harness.io/article/ven0bvulsj-users-and-permissions) for more information about assigning permissions.
 
-![](./static/using-harness-config-files-in-manifests-102.png)
+  ![](./static/using-harness-config-files-in-manifests-102.png)
 
 The base64 encoded file will be decoded when added to the manifest, as shown below.
 
@@ -63,18 +55,18 @@ The base64 encoded file will be decoded when added to the manifest, as shown bel
 
 1. In the **values.yaml** in the Harness Service **Manifests** section, reference the Config File using `my_file: ${configFile.getAsBase64("myFile")}`.
 
-![](./static/using-harness-config-files-in-manifests-103.png)
+  ![](./static/using-harness-config-files-in-manifests-103.png)
 
 ### Step 3: Decode the File
 
 1. In the manifest (in our example, a ConfigMap), decode the base64 Config File and indent it for the YAML syntax:
 
-
-```
-data:  
-  keyname: |  
-{{.Values.my_file | b64dec | indent 4}}
-```
+  ```
+  data:  
+    keyname: |  
+  {{.Values.my_file | b64dec | indent 4}}
+  ```
+  
 At runtime, the Config File is decoded and used as plaintext.
 
 ### Limitations

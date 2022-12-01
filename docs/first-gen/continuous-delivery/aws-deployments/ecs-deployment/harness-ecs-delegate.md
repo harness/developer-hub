@@ -1,7 +1,7 @@
 ---
 title: 1 - Harness ECS Delegate
 description: Set up a Harness Delegate for ECS deployments.
-# sidebar_position: 2
+sidebar_position: 200
 helpdocs_topic_id: wrm6hpyrjl
 helpdocs_category_id: df9vj316ec
 helpdocs_is_private: false
@@ -11,19 +11,8 @@ helpdocs_is_published: true
 The Harness ECS Delegate is software you install in your environment that connects to Harness Manager and performs Continuous Delivery tasks.
 
 
-This topic shows you how to install the Harness ECS Delegate in a ECS cluster as an ECS service to enable the Delegate to connect to your AWS resources:
+This topic shows you how to install the Harness ECS Delegate in a ECS cluster as an ECS service to enable the Delegate to connect to your AWS resources.
 
-
-* [Set up an ECS Delegate](#set_up_an_ecs_delegate)
-* [Requirements for ECS Delegate](#requirements_for_ecs_delegate)
-* [Set up ECS Delegate in AWS](#set_up_ecs_delegate_in_aws)
-* [Multiple ECS Delegates](#multiple_ecs_delegates)
-* [ECS Delegate Options](#ecs_delegate_options)
-* [Network Modes](#network_modes)
-* [Change ECS Delegate Defaults](#change_ecs_delegate_defaults)
-* [Trust Relationships and Roles](#trust_relationships_and_roles)
-* [Add a Delegate Selector](#add_a_delegate_selector)
-* [Next Step](#next_step)
 
 
 ### Set up an ECS Delegate

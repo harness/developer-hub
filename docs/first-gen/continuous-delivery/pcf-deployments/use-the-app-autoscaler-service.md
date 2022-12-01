@@ -10,17 +10,6 @@ helpdocs_is_published: true
 
 Harness supports Cloud Foundry CLI version 6 and 7. Support for version 7 is behind a Feature Flag. You can read about it in [Add Container Images for Tanzu Deployments](add-container-images-for-pcf-deployments.md).Harness supports [App Autoscaler Plugin release 2.0.233](https://network.pivotal.io/products/pcf-app-autoscaler#/releases/491414).The [App Autoscaler plugin](https://docs.pivotal.io/application-service/2-7/appsman-services/autoscaler/using-autoscaler-cli.html) has first-class support in Harness, enabling you to ensure app performance and control the cost of running apps.
 
-In this topic:
-
-* [Before You Begin](#before_you_begin)
-* [Visual Summary](#visual_summary)
-* [Review: Requirements for App Autoscaler](#review_requirements_for_app_autoscaler)
-* [Step 1: Define the App Autoscaler Service in Your Manifest File](#step_1_define_the_app_autoscaler_service_in_your_manifest_file)
-* [Step 2: Bind the App Autoscaler Service to Your App](#step_2_bind_the_app_autoscaler_service_to_your_app)
-* [Step 3: Add Your App Autoscaler Manifest File](#step_3_add_your_app_autoscaler_manifest_file)
-* [Step 4: Create the App Autoscaler Service Using CF Command](#step_4_create_the_app_autoscaler_service_using_cf_command)
-* [Step 5: Enable App Autoscaler in the App Setup Step](#step_5_enable_app_autoscaler_in_the_app_setup_step)
-* [Option: Use an Existing App Autoscaler Service](#option_use_an_existing_app_autoscaler_service)
 
 ### Before You Begin
 
@@ -66,39 +55,36 @@ You can also choose to install the plugin manually on each Delegate using the st
 
 1. In your Harness TAS Service, select your manifest.yml file and click **Edit**.![](./static/use-the-app-autoscaler-service-48.png)
 2. Add a `create-services` block that describes the App Autoscaler service you want to create:  
-  
+    
+        create-services:  
+        - name:   "myautoscaler"  
+          broker: "app-autoscaler"  
+          plan:   "standard" 
+          ...    
 
-```
-...  
-create-services:  
-- name:   "myautoscaler"  
-  broker: "app-autoscaler"  
-  plan:   "standard"     
-...
-```
+  
 Now that the App Autoscaler service is defined in your manifest.yml, you can bind it to the app.
 
 ### Step 2: Bind the App Autoscaler Service to Your App
 
 1. In `applications`, add a `services` block with the name of the App Autoscaler service:
 
+      ```
+      ...  
+        services:  
+        - myautoscaler  
+        
+      create-services:  
+      - name:   "myautoscaler"  
+        broker: "app-autoscaler"  
+        plan:   "standard"  
+      ...
+      ```
+    For more information on services, see the [Pivotal documentation](https://docs.cloudfoundry.org/devguide/deploy-apps/manifest-attributes.html#services-block).
 
-```
-...  
-  services:  
-  - myautoscaler  
-  
-create-services:  
-- name:   "myautoscaler"  
-  broker: "app-autoscaler"  
-  plan:   "standard"  
-...
-```
-For more information on services, see the [Pivotal documentation](https://docs.cloudfoundry.org/devguide/deploy-apps/manifest-attributes.html#services-block).
+    Now that the App Autoscaler service is defined and bound to your app, you can add an App Autoscaler manifest file that configures the settings for the service.
 
-Now that the App Autoscaler service is defined and bound to your app, you can add an App Autoscaler manifest file that configures the settings for the service.
-
-1. Click **Save** to save your manifest.yml file.
+2. Click **Save** to save your manifest.yml file.
 
 ### Step 3: Add Your App Autoscaler Manifest File
 
@@ -110,24 +96,24 @@ You can use any name for the App Autoscaler manifest file. Harness will determin
 3. Select the App Autoscaler manifest file and click **Edit**.
 4. Configure your rules, add instance limits, and set scheduled limit changes for the service. Here is an example:  
 
-```
- ---  
-  instance_limits:  
-    min: 1  
-    max: 2  
-  rules:  
-    - rule_type: "http_latency"  
-      rule_sub_type: "avg_99th"  
-      threshold:  
-        min: 10  
-        max: 20  
-  scheduled_limit_changes:  
-    - recurrence: 10  
-      executes_at: "2032-01-01T00:00:00Z"  
-      instance_limits:  
-        min: 10  
-        max: 20
-```
+  ```
+   ---  
+    instance_limits:  
+      min: 1  
+      max: 2  
+    rules:  
+      - rule_type: "http_latency"  
+        rule_sub_type: "avg_99th"  
+        threshold:  
+          min: 10  
+          max: 20  
+    scheduled_limit_changes:  
+      - recurrence: 10  
+        executes_at: "2032-01-01T00:00:00Z"  
+        instance_limits:  
+          min: 10  
+          max: 20
+  ```
 5. Click **Save**. The App Autoscaler manifest file is complete.![](./static/use-the-app-autoscaler-service-50.png)
 
 ### Step 4: Create the App Autoscaler Service Using CF Command

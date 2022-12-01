@@ -8,25 +8,11 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/category/qfj6m1k2c4).Harness provides a simple and flexible way to use Kubernetes manifests. You can add new files or upload existing manifests. You can work on your manifest inline, using the Go templating and Expression Builder features of Harness, or simply link to remote manifests in a Git repo.
+This content is for Harness [FirstGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/category/qfj6m1k2c4).
+
+Harness provides a simple and flexible way to use Kubernetes manifests. You can add new files or upload existing manifests. You can work on your manifest inline, using the Go templating and Expression Builder features of Harness, or simply link to remote manifests in a Git repo.
 
 This topics provides a quick overview or some options and steps when using Kubernetes manifest, with links to more details.
-
-In this topic:
-
-* [Before You Begin](define-kubernetes-manifests.md#before-you-begin)
-* [Review: What Workloads Can I Deploy?](define-kubernetes-manifests.md#review-what-workloads-can-i-deploy)
-* [Limitations](#limitations)
-* [Step 1: Create the Harness Kubernetes Service](define-kubernetes-manifests.md#step-1-create-the-harness-kubernetes-service)
-* [Option: Edit Inline Manifest Files](define-kubernetes-manifests.md#option-edit-inline-manifest-files)
-* [Option: Add or Upload Local Manifest Files](define-kubernetes-manifests.md#option-add-or-upload-local-manifest-files)
-* [Step 2: Use Go Templating and Harness Variables](define-kubernetes-manifests.md#step-2-use-go-templating-and-harness-variables)
-* [Step 3: Expression Builder](define-kubernetes-manifests.md#step-3-expression-builder)
-* [Option: Use Remote Manifests and Charts](define-kubernetes-manifests.md#option-use-remote-manifests-and-charts)
-* [Option: Deploy Helm Charts](define-kubernetes-manifests.md#option-deploy-helm-charts)
-* [Best Practice: Use Readiness Probes](define-kubernetes-manifests.md#best-practice-use-readiness-probes)
-* [Secrets in values.yaml](define-kubernetes-manifests.md#secrets-in-values-yaml)
-* [Next Steps](define-kubernetes-manifests.md#next-steps)
 
 ### Before You Begin
 
@@ -35,7 +21,7 @@ In this topic:
 
 ### Review: What Workloads Can I Deploy?
 
-See [What Can I Deploy in Kubernetes?](https://docs.harness.io/article/6ujb3c70fh).
+See [What Can I Deploy in Kubernetes?](https://docs.harness.io/article/6ujb3c70fh)
 
 ### Limitations
 
@@ -47,11 +33,11 @@ A values.yaml file can use [flat or nested values](https://helm.sh/docs/chart_be
 2. Enter a name for the Application and click **Submit**.
 3. Click **Services**, and then click **Add Service**. The **Add Service** settings appear.
 
-![](./static/define-kubernetes-manifests-180.png)
+  ![](./static/define-kubernetes-manifests-180.png)
 
-1. In **Name**, enter a name for the Service.
-2. In **Deployment Type**, select **Kubernetes**, and then ensure **Enable Kubernetes V2** is selected.
-3. Click **Submit**. The new Harness Kubernetes Service is created.
+5. In **Name**, enter a name for the Service.
+6. In **Deployment Type**, select **Kubernetes**, and then ensure **Enable Kubernetes V2** is selected.
+7. Click **Submit**. The new Harness Kubernetes Service is created.
 
 ### Option: Edit Inline Manifest Files
 

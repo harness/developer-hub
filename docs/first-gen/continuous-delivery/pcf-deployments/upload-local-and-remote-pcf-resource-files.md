@@ -10,13 +10,6 @@ helpdocs_is_published: true
 
 You can upload local and remote Tanzu Application Service (TAS, formerly PCF) Manifest and Variable files to your Harness TAS Service.
 
-In this topic:
-
-* [Before You Begin](#before_you_begin)
-* [Step 1: Upload Local Manifest and Variable Files](#step_1_upload_local_manifest_and_variable_files)
-* [Step 2: Upload Remote Manifest and Variable Files](#step_2_upload_remote_manifest_and_variable_files)
-* [Next Steps](#next_steps)
-
 ### Before You Begin
 
 * See [Connect to Your Target Tanzu Account](connect-to-your-target-pcf-account.md).

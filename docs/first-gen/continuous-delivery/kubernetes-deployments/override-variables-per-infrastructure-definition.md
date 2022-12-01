@@ -150,39 +150,49 @@ You need to configure a shell script to handle the assignment of these variables
 
 1. In Workflow, write a script to assign variables based on the infra name.  
   
-Here is a sample shell script:  
-  
+    Here is a sample shell script:  
+      
+    ```
+    echo  
+    echo Using infrastructure definition [${infra.name}]  
+    echo  
+      
+    appEnv1=${serviceVariable.appEnv1}  
+    appEnv2=${serviceVariable.appEnv2}  
+      
+    if [[ "${infra.name}" == infra2 ]]; then  
+      
+      appEnv2=${serviceVariable.infra2_appEnv2}  
+      
+    elif [[ "${infra.name}" == infra3 ]]; then  
+      
+      appEnv1=${serviceVariable.infra3_appEnv1}  
+      appEnv2=${serviceVariable.infra3_appEnv2}  
+      
+    fi  
+      
+    echo Setting appEnv1 to [$appEnv1]  
+    echo Setting appEnv2 to [$appEnv2]  
+    echo
+    ```
 
-```
-echo  
-echo Using infrastructure definition [${infra.name}]  
-echo  
-  
-appEnv1=${serviceVariable.appEnv1}  
-appEnv2=${serviceVariable.appEnv2}  
-  
-if [[ "${infra.name}" == infra2 ]]; then  
-  
-  appEnv2=${serviceVariable.infra2_appEnv2}  
-  
-elif [[ "${infra.name}" == infra3 ]]; then  
-  
-  appEnv1=${serviceVariable.infra3_appEnv1}  
-  appEnv2=${serviceVariable.infra3_appEnv2}  
-  
-fi  
-  
-echo Setting appEnv1 to [$appEnv1]  
-echo Setting appEnv2 to [$appEnv2]  
-echo
-```
 2. Export the variables into the context. This variable is used in the override configured [earlier](override-variables-per-infrastructure-definition.md#step-1-configure-the-service). The `$``{``override.appEnv1``}` references a value based on this shell script.
 3. In **Publish Variable Name**, enter **override**, which is referenced in the `values.yaml` configuration override.  
   
-When you are done, it will look something like this:![](./static/override-variables-per-infrastructure-definition-133.png)
-4. Add the shell script to the **Deploy** steps before the Rollout Deployment.![](./static/override-variables-per-infrastructure-definition-134.png)
-5. Deploy the Workflow. Based on the Infrastructure Definition, certain variables are overridden. For InfraDef1, the values were assigned based on the Service configuration variables provided in the Environment. InfraDef1 did not override the Environment level values.![](./static/override-variables-per-infrastructure-definition-135.png)
-6. Run this deployment again in InfraDef2. Now the Environment level value is taken for `appEnv1`, but `appEnv2` is overridden with the value specific to InfraDef2.![](./static/override-variables-per-infrastructure-definition-136.png)
+  When you are done, it will look something like this:![](./static/override-variables-per-infrastructure-definition-133.png)
+  
+4. Add the shell script to the **Deploy** steps before the Rollout Deployment.
+
+  ![](./static/override-variables-per-infrastructure-definition-134.png)
+
+5. Deploy the Workflow. Based on the Infrastructure Definition, certain variables are overridden. For InfraDef1, the values were assigned based on the Service configuration variables provided in the Environment. InfraDef1 did not override the Environment level values.
+
+  ![](./static/override-variables-per-infrastructure-definition-135.png)
+
+6. Run this deployment again in InfraDef2. Now the Environment level value is taken for `appEnv1`, but `appEnv2` is overridden with the value specific to InfraDef2.
+
+  ![](./static/override-variables-per-infrastructure-definition-136.png)
+
 7. Deploy the third Infrastructure Definition. This time both the variables are overridden with values specific to InfraDef3.
 
 ### Next Steps

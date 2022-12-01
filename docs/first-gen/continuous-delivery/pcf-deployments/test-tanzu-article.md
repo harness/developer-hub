@@ -14,21 +14,6 @@ A Harness TAS Service and Environment are used together when you set up a Harnes
 
 This topic describes how to pull packaged archives, reference their manifest, and override the references at the Environment level.
 
-In this topic:
-
-* [Before You Begin](test-tanzu-article.md#before-you-begin)
-* [Supported Platforms and Technologies](test-tanzu-article.md#supported-platforms-and-technologies)
-* [Option: Application Manifest API Developed in Custom Manifest](test-tanzu-article.md#option-application-manifest-api-developed-in-custom-manifest)
-* [Step 1: Create a Harness Tanzu Service](test-tanzu-article.md#step-1-create-a-harness-tanzu-service)
-* [Step 2: Use Custom Remote Manifests](test-tanzu-article.md#step-2-use-custom-remote-manifests)
-* [Step 3: Add Script for Remote Package](test-tanzu-article.md#step-3-add-script-for-remote-package)
-* [Step 4: Add Path to Manifests](test-tanzu-article.md#step-4-add-path-to-manifests)
-* [Step 5: Add Delegate Selector](test-tanzu-article.md#step-5-add-delegate-selector)
-* [Option: Override Manifests in Environment](test-tanzu-article.md#option-override-manifests-in-environment)
-* [Option: Use a Harness Artifact Source](test-tanzu-article.md#option-use-a-harness-artifact-source)
-* [Option: Use Local Script](test-tanzu-article.md#undefined)
-* [Notes](test-tanzu-article.md#undefined)
-* [See Also](test-tanzu-article.md#see-also)
 
 ### Before You Begin
 

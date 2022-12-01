@@ -1,7 +1,7 @@
 ---
 title: 7 - ECS Setup in YAML
 description: Learn how to set up and manage Harness ECS deployments using YAML.
-# sidebar_position: 2
+sidebar_position: 800
 helpdocs_topic_id: 5229btw1mq
 helpdocs_category_id: df9vj316ec
 helpdocs_is_private: false

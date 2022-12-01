@@ -14,31 +14,7 @@ In some cases, your manifests, templates, etc are in a packaged archive and you 
 
 You can use a packaged archive with the **Custom Remote Manifests** setting in a Harness Kubernetes Service. You add a script to the Service that pulls the package and extracts its contents. Next, you supply the path to the manifest, template, etc.
 
-Looking for other methods? See [Define Kubernetes Manifests](define-kubernetes-manifests.md).In this topic:
-
-* [Before You Begin](deploy-kubernetes-manifests-packaged-with-artifacts.md#before-you-begin)
-* [Supported Platforms and Technologies](deploy-kubernetes-manifests-packaged-with-artifacts.md#undefined)
-* [Limitations](deploy-kubernetes-manifests-packaged-with-artifacts.md#limitations)
-* [Review: What Workloads Can I Deploy?](deploy-kubernetes-manifests-packaged-with-artifacts.md#undefined)
-* [Option: Add Secrets for Script](deploy-kubernetes-manifests-packaged-with-artifacts.md#option-add-secrets-for-script)
-* [Step 1: Create a Harness Kubernetes Service](deploy-kubernetes-manifests-packaged-with-artifacts.md#step-1-create-a-harness-kubernetes-service)
-* [Option: Add Secret for Script](deploy-kubernetes-manifests-packaged-with-artifacts.md#option-add-secret-for-script)
-* [Step 2: Use Custom Remote Manifests](deploy-kubernetes-manifests-packaged-with-artifacts.md#step-2-use-custom-remote-manifests)
-* [Step 3: Add Script for Remote Package](deploy-kubernetes-manifests-packaged-with-artifacts.md#step-3-add-script-for-remote-package)
-* [Step 4: Add Path to Manifests](deploy-kubernetes-manifests-packaged-with-artifacts.md#step-4-add-path-to-manifests)
-	+ [Kubernetes YAML](deploy-kubernetes-manifests-packaged-with-artifacts.md#kubernetes-yaml)
-	+ [OpenShift Manifest](deploy-kubernetes-manifests-packaged-with-artifacts.md#open-shift-manifest)
-* [Option: Delegate Selector](deploy-kubernetes-manifests-packaged-with-artifacts.md#option-delegate-selector)
-* [Option: Override Manifest in Service](deploy-kubernetes-manifests-packaged-with-artifacts.md#option-override-manifest-in-service)
-	+ [Inherit Script from Service](deploy-kubernetes-manifests-packaged-with-artifacts.md#inherit-script-from-service)
-		- [Kubernetes](deploy-kubernetes-manifests-packaged-with-artifacts.md#kubernetes)
-		- [OpenShift](deploy-kubernetes-manifests-packaged-with-artifacts.md#open-shift)
-	+ [Define new Script](deploy-kubernetes-manifests-packaged-with-artifacts.md#define-new-script)
-* [Option: Override Manifests in Environment](deploy-kubernetes-manifests-packaged-with-artifacts.md#option-override-manifests-in-environment)
-* [Option: Use a Harness Artifact Source](deploy-kubernetes-manifests-packaged-with-artifacts.md#option-use-a-harness-artifact-source)
-* [Option: Use Local Script](deploy-kubernetes-manifests-packaged-with-artifacts.md#option-use-local-script)
-* [Notes](deploy-kubernetes-manifests-packaged-with-artifacts.md#notes)
-* [Configure As Code](deploy-kubernetes-manifests-packaged-with-artifacts.md#configure-as-code)
+Looking for other methods? See [Define Kubernetes Manifests](define-kubernetes-manifests.md).
 
 ### Before You Begin
 

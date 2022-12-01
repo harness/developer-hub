@@ -1,7 +1,7 @@
 ---
 title: Use Remote ECS Task and Service Definitions in Git Repos
 description: As an alternative to entering your ECS task and/or service definitions inline , you can use your Git repo for task and/or service definition JSON files. At deployment runtime, Harness will pull these…
-# sidebar_position: 2
+sidebar_position: 1200
 helpdocs_topic_id: oy6sxbgqvc
 helpdocs_category_id: df9vj316ec
 helpdocs_is_private: false
@@ -12,18 +12,7 @@ As an alternative to entering your [ECS task and/or service definitions inline](
 
 This remote definition support enables you to leverage the build tooling and scripts you use currently for updating the definitions in your repos.
 
-You can also use a Git repo for your entire Harness Application, and sync it unidirectionally or bidirectionally. For more information, see  [Configuration as Code](https://docs.harness.io/article/htvzryeqjw-configuration-as-code). There is no conflict between the Git repo used for remote definition files and the Git repo used for the entire Harness Application.In this topic:
-
-* [Before You Begin](#before_you_begin)
-* [Limitations](#limitations)
-* [Supported Platforms and Technologies](#undefined)
-* [Step 1: Link Harness to Your Repo](#step_1_link_harness_to_your_repo)
-* [Step 2: Link Remote Definitions](#step_2_link_remote_definitions)
-* [Review: Task Definition Placeholders](#review_task_definition_placeholders)
-* [Option 1: Using Variables for Remote Definition Paths](#option_1_using_variables_for_remote_definition_paths)
-* [Option 2: Override Remote Paths in Environments](#option_2_override_remote_paths_in_environments)
-* [Option 3: Override Remote Paths in Workflows](use-ecs-task-and-service-definitions-in-git-repos.md#option-3-override-remote-paths-in-workflows)
-* [Configure As Code](#configure_as_code)
+You can also use a Git repo for your entire Harness Application, and sync it unidirectionally or bidirectionally. For more information, see  [Configuration as Code](https://docs.harness.io/article/htvzryeqjw-configuration-as-code). There is no conflict between the Git repo used for remote definition files and the Git repo used for the entire Harness Application.
 
 ### Before You Begin
 

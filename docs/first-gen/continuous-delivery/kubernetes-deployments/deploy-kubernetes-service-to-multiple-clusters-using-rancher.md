@@ -12,23 +12,6 @@ Currently, this feature is behind the feature flag `RANCHER_SUPPORT`. Contact [H
 
 **What's Rancher?** Rancher is a centralized control plane for all the Kubernetes clusters running across your company. Rancher centralizes operations like cluster provisioning, upgrades, user management, and policy management. See [Rancher product docs](https://rancher.com/docs/rancher/v2.6/en/).This topic describes how to set up a multiple cluster Infrastructure Definition in Harness for Rancher clusters and then deploy to those clusters using Harness Workflows.
 
-In this topic:
-
-* [Before You Begin](https://harness.helpdocs.io/article/hsc50ny57g#before_you_begin)
-* [Visual Summary](https://harness.helpdocs.io/article/hsc50ny57g#visual_summary)
-* [Limitations](https://harness.helpdocs.io/article/hsc50ny57g#limitations)
-* [Review: Harness Delegates and Rancher Clusters](https://harness.helpdocs.io/article/hsc50ny57g#review_harness_delegates_and_rancher_clusters)
-* [Review: Cluster Labels and Harness Infrastructure Definitions](https://harness.helpdocs.io/article/hsc50ny57g#review_cluster_labels_and_harness_infrastructure_definitions)
-* [Step 1: Add Labels to Rancher Clusters](https://harness.helpdocs.io/article/hsc50ny57g#step_1_add_labels_to_rancher_clusters)
-* [Step 2: Add a Harness Rancher Cloud Provider](https://harness.helpdocs.io/article/hsc50ny57g#step_2_add_a_harness_rancher_cloud_provider)
-* [Step 3: Add a Rancher Infrastructure Definition](https://harness.helpdocs.io/article/hsc50ny57g#step_3_add_a_rancher_infrastructure_definition)
-* [Option: Harness Variables in Infrastructure Definition](https://harness.helpdocs.io/article/hsc50ny57g#option_harness_variables_in_infrastructure_definition)
-* [Step 4: Create a Workflow](https://harness.helpdocs.io/article/hsc50ny57g#step_4_create_a_workflow)
-	+ [Rolling](https://harness.helpdocs.io/article/hsc50ny57g#rolling)
-	+ [Canary](https://harness.helpdocs.io/article/hsc50ny57g#canary)
-	+ [Blue Green](https://harness.helpdocs.io/article/hsc50ny57g#blue_green)
-* [Review: Rancher Expressions](https://harness.helpdocs.io/article/hsc50ny57g#review_rancher_expressions)
-* [See Also](https://harness.helpdocs.io/article/hsc50ny57g#see_also)
 
 You can also deploy to multiple infrastructures without using Rancher. See [Deploy a Workflow to Multiple Infrastructures Simultaneously](../concepts-cd/deployments-overview/deploy-to-multiple-infrastructures.md).
 

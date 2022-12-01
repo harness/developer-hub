@@ -8,17 +8,10 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/category/qfj6m1k2c4).You can create a variable in the Harness Kubernetes Service **Config Variables** section and then use it in your **Manifests** files, such as in the ConfigMap definition.
+This content is for Harness [FirstGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/category/qfj6m1k2c4).
 
-In this topic:
+You can create a variable in the Harness Kubernetes Service **Config Variables** section and then use it in your **Manifests** files, such as in the ConfigMap definition.
 
-* [Before You Begin](#before_you_begin)
-* [Review: Config Variable Reference Scope](#review_config_variable_reference_scope)
-* [Step 1: Create the Service Variable in Config Variables](#step_1_create_the_service_variable_in_config_variables)
-* [Step 2: Reference the Service Variable in values.yaml](#step_2_reference_the_service_variable_in_values_yaml)
-* [Step 3: Reference the Variable in the Manifest](#step_3_reference_the_variable_in_the_manifest)
-* [Notes](#notes)
-* [Next Steps](#next_steps)
 
 ### Before You Begin
 
@@ -42,23 +35,23 @@ For this explanation, we'll create a variable that indicates the database to use
 1. In **Config Variables**, click **Add Variable**.
 2. In **Config Variable**, add a variable named `database` with the value `mongodb`.
 
-![](./static/using-harness-config-variables-in-manifests-211.png)
+   ![](./static/using-harness-config-variables-in-manifests-211.png)
 
-1. Click **Submit**. The variable is added to the **Config Variables** section.
+3. Click **Submit**. The variable is added to the **Config Variables** section.
 
-![](./static/using-harness-config-variables-in-manifests-212.png)
+  ![](./static/using-harness-config-variables-in-manifests-212.png)
 
 ### Step 2: Reference the Service Variable in values.yaml
 
 1. In **values.yaml**, create a new variable named `databaseType` that references the Service variable `database`:
 
-![](./static/using-harness-config-variables-in-manifests-213.png)
+   ![](./static/using-harness-config-variables-in-manifests-213.png)
 
 ### Step 3: Reference the Variable in the Manifest
 
 1. In the manifest file containing you object (in this example, ConfigMap), reference the values.yaml variable in the ConfigMap `data` section.
 
-![](./static/using-harness-config-variables-in-manifests-214.png)
+   ![](./static/using-harness-config-variables-in-manifests-214.png)
 
 When the Service is deployed, the Service variable will be used to provide the value `mongodb` to the `data` label in ConfigMap.
 

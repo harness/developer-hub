@@ -21,14 +21,19 @@ For more information about workflows, see [Add a Workflow](https://docs.harness.
 To add the workflow, do the following:
 
 1. In your Harness application, click **Workflows**.
+
    ![](./static/4-helm-workflows-18.png)
+   
 2. On the **Workflows** page, click **Add Workflow**. The **Workflow** dialog appears.
    ![](./static/4-helm-workflows-19.png)
 3. In **Name**, give your workflow a name that describes its purpose, such as **NGINX-K8s-Helm**.
 4. In **Workflow Type**, select **Basic Deployment**. Helm deployments are Basic deployments, unlike Canary or Blue/Green. They are single-phase deployments where each deployment is installed or upgraded. You can create multiple Helm deployments and add them to a Harness pipeline. For more information, see [Add a Pipeline](https://docs.harness.io/article/zc1u96u6uj-pipeline-configuration).
 5. In **Environment**, select the environment you created earlier in this guide.
 6. In **Service**, select the service you added earlier in this guide.
-7. In Infrastructure Definition, select the Infrastructure Definition you created earlier in this guide. When you are done, the dialog will look something like this:![](./static/4-helm-workflows-20.png)
+7. In Infrastructure Definition, select the Infrastructure Definition you created earlier in this guide. When you are done, the dialog will look something like this:
+
+    ![](./static/4-helm-workflows-20.png)
+
 8. Click **SUBMIT**. The workflow is displayed.
 
 ![](./static/4-helm-workflows-21.png)

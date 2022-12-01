@@ -16,20 +16,6 @@ In the Environment, you create [Infrastructure Definitions](https://docs.harness
 * The target TAS space that the app you are deploying is scoped to.
 * Any specific Harness Services that you want to scope the Infrastructure Definition to. If you choose not to scope to specific Services, the Infrastructure Definition may be used with any TAS Service.
 
-In this topic:
-
-* [Before You Begin](#before_you_begin)
-* [Step 1: Add Infrastructure Definition](define-your-pcf-target-infrastructure.md#step-1-add-infrastructure-definition)
-* [Step 2: Name](#step_2_name)
-* [Step 3: Cloud Provider Type](#step_3_cloud_provider_type)
-* [Step 4: Deployment Type](#step_4_deployment_type)
-* [Step 5: Cloud Provider](#step_5_cloud_provider)
-* [Step 6: Organization](#step_6_organization)
-* [Step 7: Space](#step_7_space)
-* [Step 8: Scope to Specific Services](#step_8_scope_to_specific_services)
-* [Option: Use Variables in the Infrastructure Definition](#option_use_variables_in_the_infrastructure_definition)
-* [Next Steps](#next_steps)
-
 ### Before You Begin
 
 * See [Connect to Your Target Tanzu Account](connect-to-your-target-pcf-account.md).

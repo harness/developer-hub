@@ -1,7 +1,7 @@
 ---
 title: Deploy Multiple ECS Sidecar Containers
 description: Deploy multiple containers and images using a single Harness ECS Service and Workflow.
-# sidebar_position: 2
+sidebar_position: 1000
 helpdocs_topic_id: 2eyw6epug0
 helpdocs_category_id: df9vj316ec
 helpdocs_is_private: false
@@ -14,17 +14,6 @@ In the Harness Service for ECS, in addition to the spec for the Main Container u
 
 Harness deploys all containers and images as defined in the specs.
 
-In this topic:
-
-* [Before You Begin](#before_you_begin)
-* [Review: ECS Sidecar Containers](#review_ecs_sidecar_containers)
-* [Review: New ARN and Resource ID Format Must be Enabled](#review_new_arn_and_resource_id_format_must_be_enabled)
-* [Review: Main Container for ECS Deployments](#review_main_container_for_ecs_deployments)
-* [Step 1: Add Sidecar Container Specs](#step_1_add_sidecar_container_specs)
-* [Step 2: Identify Main Container by Tag in ECS Console](#step_2_identify_main_container_by_tag_in_ecs_console)
-* [Option: Using Workflow Variables in Container Specs](#option_using_workflow_variables_in_container_specs)
-* [Notes](#notes)
-* [Next Steps](#next_steps)
 
 ### Before You Begin
 

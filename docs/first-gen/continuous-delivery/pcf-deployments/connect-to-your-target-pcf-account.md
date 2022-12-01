@@ -10,14 +10,6 @@ helpdocs_is_published: true
 
 This topic sets up the Harness Delegate in your Tanzu Application Service (TAS, formerly PCF) environment and adds the Cloud Provider used to connect to your Tanzu cloud for deployment.
 
-In this topic:
-
-* [Before You Begin](#before_you_begin)
-* [Step 1: Set Up the Harness Delegate](#step_1_set_up_the_harness_delegate)
-* [Step 2: Add the Cloud Foundry CLI](#step_2_add_the_cloud_foundry_cli)
-* [Step 3: Add the Harness PCF Cloud Provider](#step_3_add_the_harness_pcf_cloud_provider)
-* [Review: PCF Permissions](#review_pcf_permissions)
-* [Next Steps](#next_steps)
 
 ### Before You Begin
 

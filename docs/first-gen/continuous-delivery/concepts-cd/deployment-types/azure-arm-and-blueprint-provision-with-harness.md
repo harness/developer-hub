@@ -16,17 +16,7 @@ You can use Blueprints to provision Azure resources that adhere to your organiza
 
 This topic provides a high-level summary of how to use Harness to provision a target environment using ARM, or to simply provision resources using ARM or Blueprint.
 
-Looking for How-tos? See [Azure Resource Management (ARM) How-tos](https://docs.harness.io/article/qhnnq1mks3-azure-arm-and-blueprint-how-tos).In this topic:
-
-* [Provision and Deploy to the Same Infrastructure using ARM](azure-arm-and-blueprint-provision-with-harness.md#provision-and-deploy-to-the-same-infrastructure-using-arm)
-* [General Provisioning using ARM and Blueprint](azure-arm-and-blueprint-provision-with-harness.md#general-provisioning-using-arm-and-blueprint)
-* [Limitations](azure-arm-and-blueprint-provision-with-harness.md#limitations)
-* [Azure Roles Required](azure-arm-and-blueprint-provision-with-harness.md#azure-roles-required)
-* [Permissions Summary](azure-arm-and-blueprint-provision-with-harness.md#permissions-summary)
-	+ [Harness User Group Permissions Required](azure-arm-and-blueprint-provision-with-harness.md#harness-user-group-permissions-required)
-* [No Artifact Required](azure-arm-and-blueprint-provision-with-harness.md#no-artifact-required)
-* [Service Instances (SIs) Consumption](azure-arm-and-blueprint-provision-with-harness.md#service-instances-s-is-consumption)
-* [Next Steps](azure-arm-and-blueprint-provision-with-harness.md#next-steps)
+Looking for How-tos? See [Azure Resource Management (ARM) How-tos](https://docs.harness.io/article/qhnnq1mks3-azure-arm-and-blueprint-how-tos).
 
 ### Provision and Deploy to the Same Infrastructure using ARM
 

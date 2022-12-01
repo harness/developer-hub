@@ -16,19 +16,6 @@ Once you add the Infrastructure Definition to a Workflow, you add a CloudFormati
 
 This topic walks you through a detailed setup of a Harness CloudFormation Provisioner.
 
-In this topic:
-
-* [Before You Begin](add-cloud-formation-templates.md#before-you-begin)
-* [Limitations](add-cloud-formation-templates.md#limitations)
-* [Visual Summary](add-cloud-formation-templates.md#visual-summary)
-* [Step 1: Add a CloudFormation Provisioner](add-cloud-formation-templates.md#step-1-add-a-cloud-formation-provisioner)
-* [Step 2: Add Your CloudFormation Template](add-cloud-formation-templates.md#step-2-add-your-cloud-formation-template)
-	+ [Template Body](add-cloud-formation-templates.md#template-body)
-	+ [Git Repository](add-cloud-formation-templates.md#git-repository)
-	+ [Amazon S3](add-cloud-formation-templates.md#amazon-s3)
-* [Step 3: Add Input Variables](add-cloud-formation-templates.md#step-3-add-input-variables)
-* [Step 4: Complete the CloudFormation Provisioner](add-cloud-formation-templates.md#step-4-complete-the-cloud-formation-provisioner)
-* [Next Steps](add-cloud-formation-templates.md#next-steps)
 
 ### Before You Begin
 

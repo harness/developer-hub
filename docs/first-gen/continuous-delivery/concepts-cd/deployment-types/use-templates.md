@@ -10,12 +10,8 @@ helpdocs_is_published: true
 
 This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/article/1re7pz9bj8).Harness includes an account-wide Template Library, called the Shared Template Library, and an Application-wide Template Library.
 
-Only members of a Harness User Group with the **Manage Template Library** permission may create, edit, and delete Account and Application-level templates. Members of a User Group with this permission disabled can view and link to templates only.In this topic:
+Only members of a Harness User Group with the **Manage Template Library** permission may create, edit, and delete Account and Application-level templates. Members of a User Group with this permission disabled can view and link to templates only.
 
-* [Before You Begin](https://docs.harness.io/article/dv7ajeroou-account-and-application-templates#undefined)
-* [Shared Template Library and Application Template Library](https://docs.harness.io/article/dv7ajeroou-account-and-application-templates#shared_template_library_and_application_template_library)
-* [Template YAML](https://docs.harness.io/article/dv7ajeroou-account-and-application-templates#template_yaml)
-* [Next Steps](https://docs.harness.io/article/dv7ajeroou-account-and-application-templates#next_steps)
 
 ### Before You Begin
 

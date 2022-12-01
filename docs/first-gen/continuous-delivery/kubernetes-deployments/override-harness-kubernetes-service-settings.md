@@ -26,8 +26,11 @@ You can also overwrite Service variables at the Phase-level of a multiple Phase 
 
 1. In the Harness Environment, in the **Service Configuration Overrides** section, click **Add Configuration Overrides**. The **Service Configuration Override** settings appear.
 
-![](./static/override-harness-kubernetes-service-settings-22.png)1. In **Service**, select the Service you are using for your Kubernetes deployment.
-2. Select one of the **Override Type** options.
+  ![](./static/override-harness-kubernetes-service-settings-22.png)
+  
+2. In **Service**, select the Service you are using for your Kubernetes deployment.
+
+3. Select one of the **Override Type** options.
 
 ### Option: Variable Override
 

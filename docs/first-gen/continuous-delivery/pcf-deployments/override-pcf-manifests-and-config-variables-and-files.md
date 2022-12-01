@@ -12,16 +12,6 @@ A Tanzu Application Service (formerly PCF) Service and Environment are used toge
 
 For example, a TAS Service uses a manifest.yml file that specifies specific routes, but an Environment might need to change the routes because it is deploying the app in the manifest to a QA space.
 
-In this topic:
-
-* [Before You Begin](override-pcf-manifests-and-config-variables-and-files.md#before-you-begin)
-* [Option 1: Variable Override](override-pcf-manifests-and-config-variables-and-files.md#option-1-variable-override)
-* [Option 2: TAS Manifests Override](override-pcf-manifests-and-config-variables-and-files.md#option-2-tas-manifests-override)
-	+ [Overwrite using Local Values](override-pcf-manifests-and-config-variables-and-files.md#overwrite-using-local-values)
-	+ [Overwrite using Remote Values](override-pcf-manifests-and-config-variables-and-files.md#overwrite-using-remote-values)
-* [Review: Multiple Manifests at the Highest Level will Fail Deployment](override-pcf-manifests-and-config-variables-and-files.md#review-multiple-manifests-at-the-highest-level-will-fail-deployment)
-* [Review: Variable Precedence](override-pcf-manifests-and-config-variables-and-files.md#review-variable-precedence)
-* [Next Steps](override-pcf-manifests-and-config-variables-and-files.md#next-steps)
 
 ### Before You Begin
 
@@ -37,18 +27,23 @@ To overwrite a Service variable, do the following:
 1. In the Harness Service, note the name of the Service variable in **Config Variables**.![](./static/override-pcf-manifests-and-config-variables-and-files-72.png)
 2. In the Harness Environment, click **Service Configuration Override**. The **Service Configuration Override** dialog appears.![](./static/override-pcf-manifests-and-config-variables-and-files-73.png)
 3. In **Service**, select the Harness Service that contains the variable you want to overwrite. If you select **All Services**, you will have to manually enter the name of the variable you want to overwrite. The following steps use a single Service.  
-  
-When you have selected a Service, the **Override Type** options appear.![](./static/override-pcf-manifests-and-config-variables-and-files-74.png)
+	  
+	When you have selected a Service, the **Override Type** options appear.
+	![](./static/override-pcf-manifests-and-config-variables-and-files-74.png)	
+	
 4. Click **Variable Override**.
 5. In **Configuration Variable**, select the variable you want to overwrite.
 6. In **Override Scope**, the only option is **Entire Environment**, currently.
 7. In **Type**, select **Text** or **Encrypted Text**.
 8. In **Override Value**, if you selected **Text** in **Type**, enter a new value. If you selected **Encrypted Text**, select an existing Encrypted Text secret. Encrypted Text secrets are set up in Harness [Secrets Management](https://docs.harness.io/article/au38zpufhr-secret-management).  
   
-When you are done, the dialog will look something like this:![](./static/override-pcf-manifests-and-config-variables-and-files-75.png)
+	When you are done, the dialog will look something like this:
+
+	![](./static/override-pcf-manifests-and-config-variables-and-files-75.png)
+
 9. Click **Submit**. The override is added to the Environment:
 
-![](./static/override-pcf-manifests-and-config-variables-and-files-76.png)
+	![](./static/override-pcf-manifests-and-config-variables-and-files-76.png)
 
 ### Option 2: TAS Manifests Override
 

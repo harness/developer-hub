@@ -10,16 +10,6 @@ helpdocs_is_published: true
 
 In this topic will we cover some of the Best Practices for IIS deployments using Harness, and some of the steps you can take to troubleshoot issues.
 
-* [Best Practices](5-best-practices-and-troubleshooting.md#best-practices)
-	+ [Testing Scripts](5-best-practices-and-troubleshooting.md#testing-scripts)
-	+ [Using Tags for Instances](5-best-practices-and-troubleshooting.md#using-tags-for-instances)
-	+ [Installing IIS from the Command Line](5-best-practices-and-troubleshooting.md#installing-iis-from-the-command-line)
-* [Troubleshooting](5-best-practices-and-troubleshooting.md#troubleshooting)
-	+ [Error: No delegates could reach the resource](5-best-practices-and-troubleshooting.md#error-no-delegates-could-reach-the-resource)
-		- [Solutions](5-best-practices-and-troubleshooting.md#solutions)
-	+ [Port Conflicts](5-best-practices-and-troubleshooting.md#port-conflicts)
-* [Next Steps](5-best-practices-and-troubleshooting.md#next-steps)
-
 ### Best Practices
 
 #### Testing Scripts

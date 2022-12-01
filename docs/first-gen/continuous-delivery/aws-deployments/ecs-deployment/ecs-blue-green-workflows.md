@@ -1,7 +1,7 @@
 ---
 title: 6 - ECS Blue/Green Workflows
 description: Learn different ways to create Blue/Green ECS deployments.
-# sidebar_position: 2
+sidebar_position: 700
 helpdocs_topic_id: 7qtpb12dv1
 helpdocs_category_id: df9vj316ec
 helpdocs_is_private: false

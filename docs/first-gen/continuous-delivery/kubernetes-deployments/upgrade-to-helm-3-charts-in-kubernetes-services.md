@@ -12,15 +12,8 @@ This topic describes how to upgrade your Harness Kubernetes Service to use Helm 
 
 You can use Helm 3 charts in both Kubernetes and native Helm Services. For information on upgrading native Helm Services, see [Upgrade Native Helm 2 Deployments to Helm 3](../helm-deployment/upgrade-native-helm-2-deployments-to-helm-3.md).
 
-**What's a native Helm deployment in Harness?** Harness provides Kubernetes deployments that use Helm charts without requiring Helm or Tiller be installed in your target environment. These are called Harness Kubernetes deployments. This is the recommended method. If you want to deploy to a Kubernetes cluster using Helm explicitly, you can use native Helm deployments. You simply choose **Helm** as the **Deployment Type** when you create a Harness Service.In this topic:
+**What's a native Helm deployment in Harness?** Harness provides Kubernetes deployments that use Helm charts without requiring Helm or Tiller be installed in your target environment. These are called Harness Kubernetes deployments. This is the recommended method. If you want to deploy to a Kubernetes cluster using Helm explicitly, you can use native Helm deployments. You simply choose **Helm** as the **Deployment Type** when you create a Harness Service.I
 
-* [Review: Custom Helm Binaries](#review_custom_helm_binaries)
-* [Option 1: Upgrade Helm Version Number in the Harness UI](#option_1_upgrade_helm_version_number_in_the_harness_ui)
-* [Option 2: Upgrade Helm Version Number in YAML](#option_2_upgrade_helm_version_number_in_yaml)
-* [Option 3: Use Helm v3.8.0 Binary](upgrade-to-helm-3-charts-in-kubernetes-services.md#option-3-use-helm-v3-8-0-binary)
-* [Step 2: Add Your Helm 3 Charts](#step_2_add_your_helm_3_charts)
-* [Notes](#notes)
-* [Next Steps](#next_steps)
 
 ### Review: Custom Helm Binaries
 
@@ -49,9 +42,9 @@ You can now use Helm 3 charts.
 2. In your Harness Kubernetes Service, click the **Configure As Code** button. The index.yaml for your Service contains the current Helm version used as `helmVersion: V2`:![](./static/upgrade-to-helm-3-charts-in-kubernetes-services-121.png)If `helmVersion` is not listed, do not worry. You can add it.
 3. Click **Edit**.
 4. Do one of the following:
-* Change `helmVersion: V2` to `helmVersion: V3`.
-* Add `helmVersion: V3`.
-1. Click **Save**.
+	* Change `helmVersion: V2` to `helmVersion: V3`.
+	* Add `helmVersion: V3`.
+5. Click **Save**.
 
 You can now use Helm 3 charts.
 

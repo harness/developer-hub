@@ -14,15 +14,6 @@ You can pass in a Kubernetes namespace as part of a Workflow deployment by using
 
 A value for the namespace Workflow variable can be provided manually or in response to an event using a Trigger.
 
-In this topic:
-
-* [Before You Begin](#before_you_begin)
-* [Step 1: Create the Workflow Variable](#step_1_create_the_workflow_variable)
-* [Step 2: Use the Variable in the Infrastructure Definition](#step_2_use_the_variable_in_the_infrastructure_definition)
-* [Option 1: Enter a Namespace Manually](#option_1_enter_a_namespace_manually)
-* [Option 2: Enter a Namespace with a Trigger](#option_2_enter_a_namespace_with_a_trigger)
-* [Notes](#notes)
-* [Next Steps](#next_steps)
 
 ### Before You Begin
 
@@ -55,20 +46,20 @@ To reference the variable we created, we use the expression `${workflow.variable
 1. In your Workflow, click **Deploy**.
 2. For **namespace**, select one of the variable's allowed values.
 
-![](./static/create-kubernetes-namespaces-with-workflow-variables-209.png)
+  ![](./static/create-kubernetes-namespaces-with-workflow-variables-209.png)
 
-1. Click **Submit**. The Workflow deploys to the namespace you selected.
+3. Click **Submit**. The Workflow deploys to the namespace you selected.
 
 ### Option 2: Enter a Namespace with a Trigger
 
 1. Create a Trigger for the Workflow.
 2. In the Actions section, select the Workflow with the namespace variable. The namespace variable appears.
 
-![](./static/create-kubernetes-namespaces-with-workflow-variables-210.png)
+  ![](./static/create-kubernetes-namespaces-with-workflow-variables-210.png)
 
-1. For **namespace**, select one of the variable's allowed values.  
+3. For **namespace**, select one of the variable's allowed values.  
 If your Workflow variable is not limited to allowed values, you can enter custom values. For more information, see [Passing Variables into Workflows and Pipelines from Triggers](https://docs.harness.io/article/revc37vl0f-passing-variable-into-workflows).
-2. Click **Submit**. When the Trigger condition is met, the Workflow deploys to the namespace you selected.
+4. Click **Submit**. When the Trigger condition is met, the Workflow deploys to the namespace you selected.
 
 ### Example: Trigger Parallel Workflow Executions
 

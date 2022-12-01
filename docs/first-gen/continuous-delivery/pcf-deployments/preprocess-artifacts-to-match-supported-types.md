@@ -12,16 +12,6 @@ Currently, this feature is behind the Feature Flag `CF_CUSTOM_EXTRACTION`. Conta
 
 If your artifact doesn't match the supported types, you can run a script to preprocess the artifact (unzip, untar, etc). Preprocessing occurs when setting up the app during deployment.
 
-In this topic:
-
-* [Before You Begin](#before_you_begin)
-* [Limitations](#limitations)
-* [Review: Supported Artifact Types](#review_supported_artifact_types)
-* [Step 1: Select Preprocessing in App Setup Step](#step_1_select_preprocessing_in_app_setup_step)
-* [Step 2: Add Preprocessing Script](#step_2_add_preprocessing_script)
-* [Step 3: View the Preprocessing in the Deployment Logs](#step_3_view_the_preprocessing_in_the_deployment_logs)
-* [See Also](#see_also)
-
 ### Before You Begin
 
 * [Add Container Images for Tanzu Deployments](add-container-images-for-pcf-deployments.md)

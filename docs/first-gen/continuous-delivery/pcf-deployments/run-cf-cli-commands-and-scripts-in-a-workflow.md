@@ -10,16 +10,6 @@ helpdocs_is_published: true
 
 Harness supports Cloud Foundry CLI version 6 and 7. Support for version 7 is behind the Feature Flag `CF_CLI7`. You can read about it in [Add Container Images for Tanzu Deployments](add-container-images-for-pcf-deployments.md).You can use the CF Command to run any [CF CLI command](https://docs.cloudfoundry.org/cf-cli/cf-help.html) or script at any point in your Harness Tanzu (formerly PCF) Workflows.
 
-In this topic:
-
-* [Before You Begin](#before_you_begin)
-* [Step: Run CF CLI Command](#step_run_cf_cli_command)
-* [Option: Scripts and Variables](#option_scripts_and_variables)
-* [Option: Delegate Selectors](#option_delegate_selectors)
-* [Option: Timeout](#option_timeout)
-* [Option: Create and Add CF Command Templates](#option_create_and_add_cf_command_templates)
-* [Next Steps](#next_steps)
-
 ### Before You Begin
 
 * See [Connect to Your Target Tanzu Account](connect-to-your-target-pcf-account.md).
@@ -30,8 +20,6 @@ In this topic:
 Ensure that the Harness Delegate(s) used for your deployment have the correct version of the CF CLI installed. See [Install Cloud Foundry CLI Versions on the Harness Delegate](install-cloud-foundry-cli-6-and-7-on-harness-delegates.md).Here's an overview of the Configure CF Command settings.
 
 ![](./static/run-cf-cli-commands-and-scripts-in-a-workflow-34.png)
-
-
 
 You can also use the CF Command to create the service for the [App Autoscaler plugin](https://docs.pivotal.io/application-service/2-7/appsman-services/autoscaler/using-autoscaler-cli.html), as described in [Use CLI Plugins in Harness Tanzu Deployments](use-cli-plugins-in-harness-pcf-deployments.md). The CF Command script does not require `cf login`. Harness performs logins using the credentials in the TAS Cloud Provider set up in the Infrastructure Definition for the Workflow executing the CF Command.
 
@@ -98,15 +86,22 @@ Here are the steps for creating and adding a CF Command template:
 
 1. Decide on whether you want to use Application or Account templates.  
   
-Application templates can be used by any Workflow in the Application, and Account templates can be used by any Workflow in any Application. For an overview of template, see [Use Templates](../concepts-cd/deployment-types/use-templates.md).  
-For this example, we will create an Application template.
+  Application templates can be used by any Workflow in the Application, and Account templates can be used by any Workflow in any Application. For an overview of template, see [Use Templates](../concepts-cd/deployment-types/use-templates.md).  
+  For this example, we will create an Application template.
+
 2. In your Application, in **Application Resources**, click **Template Library**.
 3. Click **Add Template**, and then click **CF Command**. The CF Command settings appear:![](./static/run-cf-cli-commands-and-scripts-in-a-workflow-40.png)
 4. Configure the template the same way you would configure the CF Command in a Workflow.
 5. In **Variables**, enter the variable names and default values you want to use in the template. When a user adds or links this template to a Workflow, the user will provide the values for the variables.  
-You can also type the variables in the **Script** field and Harness will prompt you to create them:![](./static/run-cf-cli-commands-and-scripts-in-a-workflow-41.png)
 
-Here's an example showing variables used in the command script:![](./static/run-cf-cli-commands-and-scripts-in-a-workflow-42.png)
+  You can also type the variables in the **Script** field and Harness will prompt you to create them:
+  
+  ![](./static/run-cf-cli-commands-and-scripts-in-a-workflow-41.png)
+
+  Here's an example showing variables used in the command script:
+  
+  ![](./static/run-cf-cli-commands-and-scripts-in-a-workflow-42.png)
+  
 6. When you are done, click **Submit**.
 7. Navigate to a Workflow for a TAS Service.
 8. In the **Setup** section on the Workflow steps, click **Add Command**.
