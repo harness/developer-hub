@@ -5,8 +5,8 @@ title: Lambda Toggle Event Mapping State
 
 ## Introduction
 
-- It causes the toggle of event source mapping state to <code>disable</code> for a lambda function for a certain chaos duration.
-- It checks the performance of the application/service running when the event-source-mapping is not enabled, it can cause missing entries on DB for example.
+- It toggles the event source mapping state to <code>disable</code> for a lambda function during a certain chaos duration.
+- It checks the performance of the running application/service when the event source mapping is not enabled which can cause, for example, missing entries on a database.
 
 :::tip Fault execution flow chart
 ![Lambda Toggle Event Mapping State](./static/images/lambda-toggle-event-mapping-state.png)
@@ -17,9 +17,9 @@ title: Lambda Toggle Event Mapping State
 <details>
 <summary>View the uses of the fault</summary>
 <div>
- Toggling state of event source mapping from a lambda function can be very critical, it can lead to scenarios like failing to update DB when an event trigger this can break the service and impacts their delivery. Such scenarios can still occur despite whatever availability aids AWS provides or we determine.
+ Toggling between different states of event source mapping from a lambda function is critical. It can lead to scenarios such as failure to update the database on an event trigger which can break the service and impact their delivery. Such scenarios can occur despite  availability aids provided by AWS or determined by you.
 
-It will help us know if we have proper error handling or auto recovery configured for such scenarios. So this category of chaos fault helps you build the immunity of the application undergoing such scenarios.
+It helps understand if you have proper error handling or auto recovery configured for such cases. Hence, this category of chaos fault helps build the immunity of the application.
 </div>
 </details>
 
@@ -28,7 +28,7 @@ It will help us know if we have proper error handling or auto recovery configure
 :::info
 
 - Kubernetes >= 1.17
-- AWS Lambda event source mapping is attached to the lambda function.
+- AWS Lambda event source mapping attached to the lambda function.
 - Kubernetes secret that has AWS access configuration(key) in the `CHAOS_NAMESPACE`. A secret file looks like this:
 
 ```yaml
@@ -51,7 +51,7 @@ stringData:
 
 :::info
 
-- AWS Lambda event source mapping is healthy and attached to the lambda function.
+- The AWS Lambda event source mapping is healthy and attached to the lambda function.
 
 :::
 
@@ -111,13 +111,13 @@ stringData:
 
 ### Common and AWS specific tunables
 
-Refer the [common attributes](../common-tunables-for-all-experiments) and [AWS specific tunable](./aws-experiments-tunables) to tune the common tunables for all faults and aws specific tunables.
+Refer to the [common attributes](../common-tunables-for-all-experiments) and [AWS specific tunable](./aws-experiments-tunables) to tune the common tunables for all faults and aws specific tunables.
 
 ### Multiple Event Source Mapping
 
-It can toggle multiple event source mapping for a certain chaos duration using `EVENT_UUIDS` ENV that takes the UUID of the events as a comma separated value.
+It toggles between multiple event source mapping for a certain chaos duration using `EVENT_UUIDS` environment variable that takes the UUID of the events as a comma separated value (CSV file).
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/lambda-toggle-event-mapping-state/multiple-events.yaml yaml)
 ```yaml
