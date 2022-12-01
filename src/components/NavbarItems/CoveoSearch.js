@@ -14,7 +14,7 @@ const CoveoSearch = () => {
     if (coveoJustLoaded) {
       setIsCoveoLoaded(true);
     } else {
-      setTimeout(checkCoveo, 100);
+      setTimeout(checkCoveo, 200);
     }
   };
 
@@ -23,7 +23,11 @@ const CoveoSearch = () => {
   }, []);
 
   useEffect(() => {
-    if (window.Coveo) {
+    let searchboxRoot = searchBoxEl.current;
+    if (
+      window.Coveo &&
+      searchboxRoot.getElementsByClassName("coveo-search-results").length < 1
+    ) {
       // setTimeout(() => {
       // document.addEventListener("DOMContentLoaded", () => {
       (async () => {
@@ -34,7 +38,7 @@ const CoveoSearch = () => {
         const orgId = dataToken?.orgId;
         const apiToken = dataToken?.apiKey;
 
-        let searchboxRoot = searchBoxEl.current; // document.getElementById("instant-search");
+        // let searchboxRoot = searchBoxEl.current; // document.getElementById("instant-search");
         let searchRoot = document.createElement("div");
         searchRoot.setAttribute("class", "coveo-search-results");
         const elemSearchResultConainer = searchResultsEl.current;
