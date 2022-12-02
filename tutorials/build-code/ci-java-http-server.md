@@ -14,7 +14,7 @@ For a comprehensive guide on application testing, Harness provides O'Reilly's **
 
 :::
 
-## Create Your Pipeline
+## Create your pipeline
 
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
