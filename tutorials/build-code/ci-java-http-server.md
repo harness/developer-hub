@@ -25,7 +25,7 @@ import TabItem from '@theme/TabItem';
 2. Follow the **Get Started** wizard in Harness CI.
    ```mdx-code-block
    <Tabs>
-     <TabItem value="newaccount" label="New Account" default>
+     <TabItem value="newaccount" label="New account" default>
        If are signing in to Harness for the first time, select the <strong>Continuous Integration</strong> module after your initial login. This will bring you into the <strong>Get Started</strong> wizard.
      </TabItem>
      <TabItem value="existingaccount" label="Existing Account">
