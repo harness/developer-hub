@@ -3,20 +3,23 @@
     // width: 400px;
     width: calc(100vw - 925px);
 }
+
+#coveo-search-mask{
+	position: fixed;
+	background-color: var(--black);
+	opacity: 0.7;
+	width: 100vw;
+	height: 100vh;
+	left: 0;
+	top: 0;
+	z-index: 97;
+}
 #searchResultsCoveo {
-	#coveo-search-mask{
-		position: fixed;
-		background-color: var(--black);
-		opacity: 0.7;
-		width: 100vw;
-		height: 100vh;
-		left: 0px;
-		top: 68px;
-	}
 	#coveo-search {
 		background-color: var(--white);
         // box-shadow: 0px 0px 1px rgba(40, 41, 61, 0.04), 0px 2px 4px rgba(96, 97, 112, 0.16);
 		min-width: 635px;
+		// z-index: 98;
 	}
     .coveo-search-results {
         // width: 1000px;
@@ -41,8 +44,8 @@
 
 
 .CoveoSearchbox .magic-box {
-    border: none;
-    border-radius: 4px !important;
+    // border: none;
+    // border-radius: 4px !important;
 }
 .CoveoSearchbox .magic-box .magic-box-input>input {
     height: 36px;
@@ -79,8 +82,8 @@
     width: 36px;
 }
 .CoveoSearchbox .CoveoSearchButton:hover .coveo-search-button-svg {
-    color: #E2AF3C;
-    fill: #E2AF3C;
+    color: var(--primary-6);
+    fill: var(--primary-6);
 }
 #header #search-container.search-responsive span, #header #search-container span {
     margin-right: unset;
@@ -92,9 +95,13 @@
     margin-right: unset;
 }
 .coveo-search-button-svg {
-    width: 24px;
-    height: 24px;
-    color: #fff;
+    // width: 24px;
+    // height: 24px;
+    // color: #fff;
+}
+
+.navbar{
+	z-index: 99;
 }
     
 /*** styles for coveo search UI ***/

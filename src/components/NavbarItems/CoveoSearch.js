@@ -23,25 +23,20 @@ const CoveoSearch = () => {
   }, []);
 
   useEffect(() => {
-    let searchboxRoot = searchBoxEl.current;
+    const elemSearchResultConainer = searchResultsEl.current;
     if (
       window.Coveo &&
-      searchboxRoot.getElementsByClassName("coveo-search-results").length < 1
+      elemSearchResultConainer.getElementsByClassName("coveo-search-results")
+        .length < 1
     ) {
       // setTimeout(() => {
       // document.addEventListener("DOMContentLoaded", () => {
       (async () => {
-        const resToken = await fetch(
-          "https://next.harness.io/api/gettoken-all/"
-        );
-        const dataToken = await resToken.json();
-        const orgId = dataToken?.orgId;
-        const apiToken = dataToken?.apiKey;
-
-        // let searchboxRoot = searchBoxEl.current; // document.getElementById("instant-search");
+        let searchboxRoot = searchBoxEl.current; // document.getElementById("instant-search");
         let searchRoot = document.createElement("div");
         searchRoot.setAttribute("class", "coveo-search-results");
-        const elemSearchResultConainer = searchResultsEl.current;
+        searchRoot.setAttribute("style", "display: none;");
+        // const elemSearchResultConainer = searchResultsEl.current;
 
         if (elemSearchResultConainer) {
           elemSearchResultConainer.appendChild(searchRoot);
@@ -53,7 +48,6 @@ const CoveoSearch = () => {
             </div>
         `;
         searchRoot.innerHTML = `
-            <div id="coveo-search-mask"></div>
             <div id="coveo-search" class="CoveoSearchInterface" data-enable-history="false">
                 <div class="CoveoPromotedResultsBadge" data-caption-for-recommended="Recommended" data-caption-for-featured="Recommended" data-color-for-featured-results="unset" data-color-for-recommended-results="unset"></div>
                 <div class="CoveoFolding"></div>
@@ -97,16 +91,33 @@ const CoveoSearch = () => {
                 </div>
             </div>`;
         let coveoRoot = document.getElementById("coveo-search");
+
+        const resToken = await fetch(
+          "https://next.harness.io/api/gettoken-all/"
+        );
+        const dataToken = await resToken.json();
+        const orgId = dataToken?.orgId;
+        const apiToken = dataToken?.apiKey;
         Coveo.SearchEndpoint.configureCloudV2Endpoint(orgId, apiToken);
+
+        const elemDocusaurusRoot = document.getElementById("__docusaurus");
+        const searchMask = document.createElement("div");
+        searchMask.setAttribute("id", "coveo-search-mask");
+        searchMask.setAttribute("style", "display: none;");
+        if (elemDocusaurusRoot) {
+          elemDocusaurusRoot.appendChild(searchMask);
+        }
         Coveo.$$(coveoRoot).on("doneBuildingQuery", function (e, args) {
           let q = args.queryBuilder.expression.build();
           if (q) {
             searchRoot.style.display = "block";
+            searchMask.style.display = "block";
             // if (elmContent) {
             //   elmContent.style.display = "none";
             // }
           } else {
             searchRoot.style.display = "none";
+            searchMask.style.display = "none";
             // if (elmContent) {
             //   elmContent.style.display = "block";
             // }
@@ -163,6 +174,14 @@ const CoveoSearch = () => {
             console.warn("elemSearchMask not found!");
           }
         });
+
+        // Coveo.$$(coveoRoot).on("newQuery", function (e, args) {
+        //   console.log("...1.newQuery..", e, args);
+        // });
+        // Coveo.$$(coveoRoot).on("duringQuery", function (e, args) {
+        //   console.log("...2.duringQuery..", e, args);
+        // });
+
         Coveo.init(coveoRoot, {
           externalComponents: [searchboxRoot],
         });
