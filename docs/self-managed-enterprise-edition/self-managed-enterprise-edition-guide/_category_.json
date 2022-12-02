@@ -1,0 +1,14 @@
+{
+    "label":"Self-Managed Enterprise Edition Guide",
+    "position": 50,
+    "collapsible":"true",
+    "collapsed":"true",
+    "className":"red",
+    "link":{
+       "type":"generated-index",
+       "title":"Self-Managed Enterprise Edition Guide"
+    },
+    "customProps":{
+       "helpdocs_category_id":"75ydek1suj"
+    }
+ }
