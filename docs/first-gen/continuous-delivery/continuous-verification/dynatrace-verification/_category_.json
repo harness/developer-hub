@@ -1,0 +1,14 @@
+{
+  "label": "Dynatrace Verification",
+  "position": 70,
+  "collapsible": "true",
+  "collapsed": "true",
+  "className": "red",
+  "link": {
+    "type": "generated-index",
+    "title": "Dynatrace Verification"
+  },
+  "customProps": {
+    "helpdocs_category_id": "f42d7rayvs"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "label": "Logz.io Verification",
+  "position": 90,
+  "collapsible": "true",
+  "collapsed": "true",
+  "className": "red",
+  "link": {
+    "type": "generated-index",
+    "title": "Logz.io Verification"
+  },
+  "customProps": {
+    "helpdocs_category_id": "j3m3gbxk88"
+  }
+}
