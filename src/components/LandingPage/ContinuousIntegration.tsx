@@ -86,7 +86,8 @@ const CIList: FeatureItem[] = [{
   Svg: "/img/icon_ci.svg",
   description: (
     <>
-      Build, test and publish a Docker image for a Java HTTP server application
+      Build, test, and publish a Docker image for a Java HTTP server application
+
     </>
   ),
   ribbon: true,
