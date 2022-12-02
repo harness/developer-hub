@@ -6,7 +6,7 @@ keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial]
 
 # Build, test, and publish a Docker Image for a Java HTTP server application
 
-In this tutorial, you will build, test and publish a Docker image for a Java HTTP server application, then run a connectivity test using the published image.
+In this tutorial, you will build, test, and publish a Docker image for a Java HTTP server application, and then run a connectivity test using the published image.
 
 :::tip
 
