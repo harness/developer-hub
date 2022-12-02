@@ -251,7 +251,7 @@ pipeline:
 </p>
 </details>
 
-## Run Your Pipeline
+## Run your pipeline
 
 1. In the **Pipeline Studio** click **Run**, the **Run Pipeline** dialogue window will open.
 2. Select **Git Branch** as the **Build Type**, and enter `main` in the **Branch Name** field.
