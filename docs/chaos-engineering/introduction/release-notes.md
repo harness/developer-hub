@@ -3,11 +3,43 @@ sidebar_position: 1
 title: HCE Release Notes
 ---
 
-# November 14, 2022
-
 Harness Chaos Engineering is updated regularly. Review the notes below for details about recent changes. 
 
-**Note:** Harness deploys updates progressively to different Harness cluster hosting accounts. The features and fixes in the release notes may not be available in your cluster immediately.
+:::note
+Harness deploys updates progressively to different Harness cluster hosting accounts. The features and fixes in the release notes may not be available in your cluster immediately.
+:::
+
+# December 2, 2022, 0.4.2
+
+## What’s New
+
+1. Update feature for ChaosHub enabling users to update details like Git Connector, Repository Name, Branch name & Name for an already connected ChaosHub.
+2. Adds CDN Support for Chaos Module Static Artifacts making UI load faster on client's devices.
+3. Added version Info in ChaosDriver & ChaosManager. Now, the versions will be available over provided endpoints `/chaos/driver/api/version` & `/chaos/manager/api/version` for ChaosDriver & ChaosManager respectively.
+4. Adds a range filter dropdown in the Experiment Runs Bar graph under Experiment overview allowing users to set the range on the last runs to be shown in the graph.
+5. Adds support for all faults statuses in the Experiment Runs graph. Previously only `Failed` & `Passed` faults were getting shown, now faults in `Awaited`, `Stopped` & `N/A` states will also be available under the Experiment Runs Graph.
+6. Adds manifest download button in UI for Chaos Infrastructures enabling users to have seamless upgrade.
+7. Adds consistent loaders for all components & screens in UI.
+
+## Early access features
+
+No early access features are available in this release.
+
+## Fixed Issues
+
+1. Fixes Enterprise ChaosHub shown irrespective of searched terms by the users.
+2. Fixes httpProbe schema in UI to add support for new response timeout changes for HTTP probe. Now, probeTimeout for HTTP probes will be treated as response timeout & should be provided in seconds.
+3. Fixes the issue when the details of previously connected chaos infrastructure were getting pre-filled while connecting new chaos infrastructure.
+4. Fixes the Run button returning an error even when the Experiment run is already completed.
+5. Fixes calendar on the Experiments & Experiment Runs page having a default selection of 1 week. Now, all experiments & runs will be shown by default.
+6. Fixes panic error for k8sObjects and k8sLogs go-routines resulting in closed channel error.
+7. Fixes cancel(X) button & Back Button missing in Enable Chaos Infrastructure screen
+8. Fixes repeated error logs for ChaosHub in Chaos-Manager when it was not available to find some of the icons.
+9. Fixes the Expected Resilience Score changing to NaN when trying to override the same completely.
+10. Fixes resource-type not coming for aborting a Chaos Experiment in audit-trail
+11. Fixes Minor UI/UX Issues making the UI more user-friendly & more accessible.
+
+# November 14, 2022
 
 ## Early access features
 
