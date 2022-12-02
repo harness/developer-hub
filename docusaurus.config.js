@@ -78,6 +78,7 @@ const config = {
             // type: "search",
             // position: "right",
             // className: "searchBar",
+            // use customized coveo search on sidebar
             type: "custom-coveo-search",
             position: "right",
           },
@@ -86,7 +87,7 @@ const config = {
             type: "dropdown",
             label: "Tutorials",
             items: [
-               {
+              {
                 // type: "doc",
                 label: "All Tutorials",
                 to: "tutorials/get-started",
