@@ -12,27 +12,7 @@ The following procedure describes how to add a custom Logs verification step in 
 
 Once you run a deployment and your custom logs provider obtains its data, Harness machine-learning verification analysis will assess the risk level of the deployment using the data from the provider.
 
-In order to obtain the names of the host(s), pod(s), or container(s) where your service is deployed, the verification provider should be added to your Workflow *after* you have run at least one successful deployment.In this topic:
-
-* [Before You Begin](#before_you_begin)
-* [Step 1: Set Up the Deployment Verification](#step_1_set_up_the_deployment_verification)
-* [Step 2: Request Method](#step_2_request_method)
-* [Step 3: Search URL](#step_3_search_url)
-* [Step 4: Search Body](#step_4_search_body)
-* [Step 5: Response Type](#step_5_response_type)
-* [Step 6: Log Message JSON Path](#step_6_log_message_json_path)
-* [Step 7: Hostname JSON Path](#step_7_hostname_json_path)
-* [Step 8: Regex to Transform Host Name](#step_8_regex_to_transform_host_name)
-* [Step 9: Timestamp JSON Path](#step_9_timestamp_json_path)
-* [Step 10: Timestamp Format](#step_10_timestamp_format)
-* [Step 11: Expression for Host/Container](#step_11_expression_for_host_container)
-* [Step 12: Analysis Time Duration](#step_12_analysis_time_duration)
-* [Step 13: Data Collection Interval](#step_13_data_collection_interval)
-* [Step 14: Baseline for Risk Analysis](#step_14_baseline_for_risk_analysis)
-* [Step 15: Execute with previous steps](verify-deployments-with-custom-logs.md#step-15-execute-with-previous-steps)
-* [Step 16: Include instances from previous phases](verify-deployments-with-custom-logs.md#step-16-include-instances-from-previous-phases)
-* [Step 17: Wait interval before execution](verify-deployments-with-custom-logs.md#step-17-wait-interval-before-execution)
-* [Review: Additional Notes](#review_additional_notes)
+In order to obtain the names of the host(s), pod(s), or container(s) where your service is deployed, the verification provider should be added to your Workflow *after* you have run at least one successful deployment.
 
 ### Before You Begin
 

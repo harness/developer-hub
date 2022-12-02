@@ -1,7 +1,7 @@
 ---
 title: Verify Deployments with Stackdriver Logging
 description: Harness can analyze Stackdriver data to verify, rollback, and improve deployments.
-# sidebar_position: 2
+sidebar_position: 40
 helpdocs_topic_id: 4ohedfzz1c
 helpdocs_category_id: 5mu8983wa0
 helpdocs_is_private: false

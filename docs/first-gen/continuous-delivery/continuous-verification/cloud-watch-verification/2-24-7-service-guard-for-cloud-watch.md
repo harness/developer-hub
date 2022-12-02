@@ -1,7 +1,7 @@
 ---
 title: Monitor Applications 24/7 with CloudWatch
 description: Combined with AWS CloudWatch, Harness 24/7 Service Guard monitors your live applications, catching problems that surface minutes or hours following deployment.
-# sidebar_position: 2
+sidebar_position: 30
 helpdocs_topic_id: ngeq6xckpg
 helpdocs_category_id: wyuv3zocfk
 helpdocs_is_private: false
@@ -12,23 +12,7 @@ Harness 24/7 Service Guard monitors your live applications, catching problems th
 
 You can add your CloudWatch monitoring to Harness 24/7 Service Guard in your Harness Application Environment. For a setup overview, see [Connect to CloudWatch](cloud-watch-connection-setup.md).
 
-This section assumes you have a Harness Application set up and containing a Service and Environment. For steps on setting up a Harness Application, see [Application Checklist](https://docs.harness.io/article/bucothemly-application-configuration).You cannot configure CloudWatch 24/7 Service Guard for AWS ALB and AWS EKS.
-In this topic:
-
-* [Before You Begin](#before_you_begin)
-* [Visual Summary](#visual_summary)
-* [Step 1: Set up 24/7 Service Guard for CloudWatch](#setup_service_guard)
-* [Step 2: Display Name](#display_name)
-* [Step 3: Service](#service)
-* [Step 4: CloudWatch Server](#cloudwatch_server)
-* [Step 5: Region](#region)
-* [Step 6: ELB Metrics](#elb_metrics)
-* [Step 7: ECS Metrics](#ecs_metrics)
-* [Step 8: Lambda](#lambda)
-* [Step 9: Algorithm Sensitivity](#algorithm_sensitivity)
-* [Step 10: Enable 24/7 Service Guard](#enable_24/7_service_guard)
-* [Step 11: Verify Your Settings](#verify_settings)
-* [Next Steps](#next_steps)
+This section assumes you have a Harness Application set up and containing a Service and Environment. For steps on setting up a Harness Application, see [Application Checklist](https://docs.harness.io/article/bucothemly-application-configuration). You cannot configure CloudWatch 24/7 Service Guard for AWS ALB and AWS EKS.
 
 
 ### Before You Begin

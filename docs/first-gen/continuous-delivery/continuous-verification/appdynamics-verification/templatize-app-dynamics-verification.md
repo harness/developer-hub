@@ -1,22 +1,14 @@
 ---
 title: Templatize AppDynamics Verification
 description: Templatize settings within an AppDynamics verification step, to provide values at your Workflow's or Pipelines' runtime.
-# sidebar_position: 2
+sidebar_position: 40
 helpdocs_topic_id: yyi1c69jeq
 helpdocs_category_id: bpoqe48x7r
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-By templatizing certain settings in an AppDynamics verification step, you can use that verification step in a Workflow (and in multiple Pipelines) without having to provide settings until runtime. This topic covers:
-
-* [Before You Begin](#before_you_begin)
-* [Step 1: Templatize Settings](#templatize)
-* [Step 2: Deploy a Templatized Workflow](#deploy)
-* [Option: Trigger Variables](#trigger_variables)
-* [Limitations](#limitations)
-* [Next Steps](#next_steps)
-
+By templatizing certain settings in an AppDynamics verification step, you can use that verification step in a Workflow (and in multiple Pipelines) without having to provide settings until runtime.
 
 ### Before You Begin
 

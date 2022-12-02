@@ -1,7 +1,7 @@
 ---
 title: Connect to Splunk
 description: Connect Harness to Splunk and verify the success of your deployments and live microservices.
-# sidebar_position: 2
+sidebar_position: 10
 helpdocs_topic_id: 1ruyqq4q4p
 helpdocs_category_id: wnxi7xc4a4
 helpdocs_is_private: false
@@ -11,19 +11,6 @@ helpdocs_is_published: true
 The first step in using Splunk with Harness is to set up an Splunk Verification Provider in Harness.
 
 A Harness Verification Provider is a connection to monitoring tools such as Bugsnag. Once Harness is connected, you can use Harness 24/7 Service Guard and Deployment Verification with your Splunk data and analysis.
-
-In this topic:
-
-* [Before You Begin](#before_you_begin)
-* [Visual Summary](#visual_summary)
-* [Step 1: Assign Permissions for API Connection](#step_1_assign_permissions_for_api_connection)
-* [Step 2: Add Splunk Verification Provider](#step_2_add_splunk_verification_provider)
-* [Step 3: URL](#step_3_url)
-* [Step 4: Username and Encrypted Password](#step_4_username_and_encrypted_password)
-* [Step 5: Display Name](#step_5_display_name)
-* [Step 6: Usage Scope](#step_6_usage_scope)
-* [Step 7: Test Delegate Connection to Splunk Server](#step_7_test_delegate_connection_to_splunk_server)
-* [Next Steps](#next_steps)
 
 ### Before You Begin
 

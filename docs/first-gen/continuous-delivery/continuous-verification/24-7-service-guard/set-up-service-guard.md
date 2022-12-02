@@ -8,17 +8,6 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic summarizes how to set up 24/7 Service Guard for your production environments.
-
-* [Limitations](#limitations)
-* [Scope Harness Delegates for 24/7 Service Guard](#scope_harness_delegates_for_24_7_service_guard)
-* [24/7 Service Guard is for Production Environments](#24_7_service_guard_is_for_production_environments)
-* [Setup Overview](set-up-service-guard.md#setup-overview)
-* [Alert Notifications](set-up-service-guard.md#alert-notifications)
-	+ [Suspending (Snoozing) Alerts](set-up-service-guard.md#suspending-snoozing-alerts)
-* [Harness Variables and 24/7 Service Guard](set-up-service-guard.md#harness-variables-and-24-7-service-guard)
-* [Add Workflow Steps](set-up-service-guard.md#add-workflow-steps)
-
 To go to the 24/7 Service Guard setup for a specific tool, see its listing in [Continuous Verification](https://docs.harness.io/category/continuous-verification).
 
 To see the list of all the APM and logging tools Harness supports, see [CV Summary and Provider Support](https://docs.harness.io/article/myw4h9u05l-verification-providers-list).
@@ -121,15 +110,15 @@ For example, the following Canary Deployment Workflow uses an Environment with 2
 1. Under **Verify Service**, click **Add Verification**.
 2. In the **Add Command** dialog, under **Verifications**, select a Verification Provider that is also used in the 24/7 Service Guard of the Environment used by this Workflow. For example, **AppDynamics**.
 
- ![](./static/set-up-service-guard-12.png)
+  ![](./static/set-up-service-guard-12.png)
 
-The **AppDynamics** dialog appears.
+  The **AppDynamics** dialog appears.
 
- ![](./static/set-up-service-guard-13.png)
+  ![](./static/set-up-service-guard-13.png)
 
-1. At the top of the dialog, click **Populate from Service Verification**, and then click the name of the 24/7 Service Guard configuration you want to use.
+3. At the top of the dialog, click **Populate from Service Verification**, and then click the name of the 24/7 Service Guard configuration you want to use.
 
- ![](./static/set-up-service-guard-14.png)
+   ![](./static/set-up-service-guard-14.png)
 
 The dialog is automatically configured with the same settings as the 24/7 Service Guard configuration you selected.
 

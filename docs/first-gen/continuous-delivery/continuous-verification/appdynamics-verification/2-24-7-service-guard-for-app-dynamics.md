@@ -1,29 +1,14 @@
 ---
 title: Monitor Applications 24/7 with AppDynamics
 description: Combined with AppDynamics, Harness 24/7 Service Guard monitors your live applications, catching problems that surface minutes or hours following deployment.
-# sidebar_position: 2
+sidebar_position: 20
 helpdocs_topic_id: i6f2irsz9v
 helpdocs_category_id: bpoqe48x7r
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Enabling AppDynamics in Harness 24/7 Service Guard helps Harness monitor your live applications, catching problems that surface minutes or hours following deployment. This topic covers:
-
-* [Before You Begin](#before_you_begin)
-* [Step 1: Add AppDynamics Verification](#add_verification)
-* [Step 2: Display Name](#display_name)
-* [Step 3: Service](#service)
-* [Step 4: AppDynamics Server](#appdynamics_server)
-* [Step 5: Application Name](#application_name)
-* [Step 6: Tier Name](#tier_name)
-* [Step 7: Algorithm Sensitivity](#sensitivity)
-* [Step 8: Enable 24/7 Service Guard](#enable)
-* [Step 9: Test and Save](#test_save)
-* [Step 10: Check Verification Results](#results)
-* [Limitations](#limitations)
-* [Next Step](#next_steps)
-
+Enabling AppDynamics in Harness 24/7 Service Guard helps Harness monitor your live applications, catching problems that surface minutes or hours following deployment. 
 
 ### Before You Begin
 
@@ -63,6 +48,7 @@ Select the [AppDynamics Verification Provider](1-app-dynamics-connection-setup.m
 Select the Application Name used by the monitoring tool. In **AppDynamics**, the applications are listed in the **Applications** tab.
 
 ![](./static/2-24-7-service-guard-for-app-dynamics-04.png)
+
 ### Step 6: Tier Name
 
 The **Tier Name** drop-down is populated with tiers from the application you selected. Pick the tier from which you want usage metrics, code exceptions, error conditions, and exit calls. In **AppDynamics**, the tiers are displayed in the **Tiers & Nodes** page.

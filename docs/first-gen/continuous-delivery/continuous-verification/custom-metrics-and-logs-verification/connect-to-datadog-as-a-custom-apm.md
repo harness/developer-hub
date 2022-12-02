@@ -1,7 +1,7 @@
 ---
 title: Connect to Datadog as a Custom APM
 description: Currently, Datadog-Harness integration is for Kubernetes deployments only. To use Datadog with other deployment types, such as ECS, use the following example of how to use the Custom Metrics Provider…
-# sidebar_position: 2
+sidebar_position: 65
 helpdocs_topic_id: nh868x8jim
 helpdocs_category_id: ep5nt3dyrb
 helpdocs_is_private: false
@@ -9,16 +9,6 @@ helpdocs_is_published: true
 ---
 
 Currently, Datadog-Harness integration is for Kubernetes deployments only. To use Datadog with other deployment types, such as ECS, use the following example of how to use the Custom Metrics Provider with Datadog.
-
-In this topic:
-
-* [Before You Begin](#before_you_begin)
-* [Step 1: Add Datadog as a Custom Verification Provider](#step_1_add_datadog_as_a_custom_verification_provider)
-* [Step 2: Display Name](#step_2_display_name)
-* [Step 3: Base URL](#step_3_base_url)
-* [Step 4: Parameters](#step_4_parameters)
-* [Step 5: Validation Path](#step_5_validation_path)
-* [See Also](#see_also)
 
 ### Before You Begin
 

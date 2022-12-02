@@ -1,7 +1,7 @@
 ---
 title: Connect to CloudWatch
 description: Connect Harness to AWS CloudWatch and verify the success of your deployments and live microservices.
-# sidebar_position: 2
+sidebar_position: 20
 helpdocs_topic_id: huoann4npq
 helpdocs_category_id: wyuv3zocfk
 helpdocs_is_private: false
@@ -9,14 +9,6 @@ helpdocs_is_published: true
 ---
 
 A Harness Cloud Provider is a connection to AWS and its monitoring tools, such as CloudWatch. Once Harness is connected, you can use Harness 24/7 Service Guard and Deployment Verification with your CloudWatch data and analysis.
-
-In this topic:
-
-* [Before You Begin](#before_you_begin)
-* [Step 1: Assign the Required AWS Permissions](#assign_permissions)
-* [Step 2: Add AWS Cloud Provider for CloudWatch](#add_aws_cp)
-* [Next Steps](#next_steps)
-
 
 ### Before You Begin
 

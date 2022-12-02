@@ -1,7 +1,7 @@
 ---
 title: Connect to Prometheus
 description: Connect Harness to Prometheus and verify the success of your deployments and live microservices.
-# sidebar_position: 2
+sidebar_position: 10
 helpdocs_topic_id: da3je0ck3a
 helpdocs_category_id: 177rlmujlu
 helpdocs_is_private: false
@@ -11,15 +11,6 @@ helpdocs_is_published: true
 The first step in using Prometheus with Harness is to set up a Prometheus Verification Provider in Harness.
 
 A Harness Verification Provider is a connection to monitoring tools such as Prometheus. Once Harness is connected, you can use Harness 24/7 Service Guard and Deployment Verification with your Prometheus data and analysis.
-
-In this topic:
-
-* [Before You Begin](#before_you_begin)
-* [Step 1: Add Prometheus Verification Provider](#step_1_add_prometheus_verification_provider)
-* [Step 2: URL](#step_2_url)
-* [Step 3: Display Name](#step_3_display_name)
-* [Step 4: Usage Scope](#step_4_usage_scope)
-* [Next Steps](#next_steps)
 
 ### Before You Begin
 

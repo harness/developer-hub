@@ -1,7 +1,7 @@
 ---
 title: Verify Deployments with New Relic
 description: Harness can analyze New Relic data to verify, rollback, and improve deployments.
-# sidebar_position: 2
+sidebar_position: 40
 helpdocs_topic_id: 9rc6pryw97
 helpdocs_category_id: 1nci5420c8
 helpdocs_is_private: false
@@ -220,7 +220,7 @@ To learn about the verification analysis features, see the following sections.
 
 |  |  |
 | --- | --- |
-| **Execution details**See the details of verification execution. Total is the total time the verification step took, and Analysis duration is how long the analysis took.**Risk level analysis**Get an overall risk level and view the cluster chart to see events.**Transaction-level summary**See a summary of each transaction with the query string, error values comparison, and a risk analysis summary. |  |
+| **Execution details**See the details of verification execution. Total is the total time the verification step took, and Analysis duration is how long the analysis took.**Risk level analysis**Get an overall risk level and view the cluster chart to see events.**Transaction-level summary**See a summary of each transaction with the query string, error values comparison, and a risk analysis summary. | ![](./static/_nr-00-trx-anal.png) |
 
 #### Execution Analysis
 
@@ -228,7 +228,7 @@ To learn about the verification analysis features, see the following sections.
 
 |  |  |
 | --- | --- |
-|  | **Event type**Filter cluster chart events by Unknown Event, Unexpected Frequency, Anticipated Event, Baseline Event, and Ignore Event.**Cluster chart**View the chart to see how the selected event contrast. Click each event to see its log details. |
+| ![](./static/_nr-01-ex-anal.png)  | **Event type**Filter cluster chart events by Unknown Event, Unexpected Frequency, Anticipated Event, Baseline Event, and Ignore Event.**Cluster chart**View the chart to see how the selected event contrast. Click each event to see its log details. |
 
 #### Event Management
 
@@ -236,7 +236,7 @@ To learn about the verification analysis features, see the following sections.
 
 |  |  |
 | --- | --- |
-| **Event-level analysis**See the threat level for each event captured.**Tune event capture**Remove events from analysis at the service, workflow, execution, or overall level.**Event distribution**Click the chart icon to see an event distribution including the measured data, baseline data, and event frequency. |  |
+| **Event-level analysis**See the threat level for each event captured.**Tune event capture**Remove events from analysis at the service, workflow, execution, or overall level.**Event distribution**Click the chart icon to see an event distribution including the measured data, baseline data, and event frequency. | ![](./static/_nr-02-ev-mgmnt.png) |
 
 ### Next Steps
 

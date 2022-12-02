@@ -1,7 +1,7 @@
 ---
 title: Troubleshooting New Relic
 description: Resolutions to common configuration problems with New Relic.
-# sidebar_position: 2
+sidebar_position: 50
 helpdocs_topic_id: 3d5sv5p9pf
 helpdocs_category_id: 1nci5420c8
 helpdocs_is_private: false

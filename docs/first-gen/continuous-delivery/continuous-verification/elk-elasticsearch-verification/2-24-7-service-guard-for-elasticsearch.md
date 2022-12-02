@@ -1,7 +1,7 @@
 ---
 title: Monitor Applications 24/7 with Elasticsearch
 description: Harness 24/7 Service Guard monitors your live applications, catching problems that surface minutes or hours following deployment.
-# sidebar_position: 2
+sidebar_position: 20
 helpdocs_topic_id: 564doloeuq
 helpdocs_category_id: ytuafly1jg
 helpdocs_is_private: false
@@ -12,24 +12,8 @@ Harness 24/7 Service Guard monitors your live applications, catching problems th
 
 You can add your Elasticsearch monitoring to Harness 24/7 Service Guard in your Harness Application Environment. For a setup overview, see [Connect to Elasticsearch](1-elasticsearch-connection-setup.md).
 
-This section assumes you have set up a Harness Application, containing a Service and Environment. For steps on setting up a Harness Application, see [Application Components](https://docs.harness.io/article/bucothemly-application-configuration).In this topic:
+This section assumes you have set up a Harness Application, containing a Service and Environment. For steps on setting up a Harness Application, see [Application Components](https://docs.harness.io/article/bucothemly-application-configuration).
 
-* [Before You Begin](#before_you_begin)
-* [Visual Summary](#visual_summary)
-* [Step 1: Set Up 24/7 Service Guard for Elasticsearch](#step_1_set_up_24_7_service_guard_for_elasticsearch)
-* [Step 2: Display Name](#step_2_display_name)
-* [Step 3: Service](#step_3_service)
-* [Step 4: ELK Server](#step_4_elk_server)
-* [Step 5: Search Keywords](#step_5_search_keywords)
-* [Step 6: Index](#step_6_index)
-* [Step 7: Host Name Field](#step_7_host_name_field)
-* [Step 8: Message Field](#step_8_message_field)
-* [Step 9: Timestamp Field](#step_9_timestamp_field)
-* [Step 10: Timestamp Format](#step_10_timestamp_format)
-* [Step 11: Enable 24/7 Service Guard](#step_11_enable_24_7_service_guard)
-* [Step 12: Baseline](#step_12_baseline)
-* [Step 13: Verify Your Settings](#step_13_verify_your_settings)
-* [Next Steps](#next_steps)
 
 ### Before You Begin
 
@@ -135,7 +119,7 @@ Select the baseline time unit for monitoring. For example, if you select **For 4
 1. Click **Test**. Harness verifies the settings you entered.
 2. Click **Submit**. The ELK 24/7 Service Guard is configured.
 
-![](./static/2-24-7-service-guard-for-elasticsearch-23.png)
+   ![](./static/2-24-7-service-guard-for-elasticsearch-23.png)
 
 To see the running 24/7 Service Guard analysis, click **Continuous Verification**.
 

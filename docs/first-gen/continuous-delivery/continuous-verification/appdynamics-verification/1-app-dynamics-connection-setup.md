@@ -1,25 +1,14 @@
 ---
 title: Add AppDynamics as a Verification Provider
 description: Connect Harness to AppDynamics, and verify the success of your deployments and live microservices.
-# sidebar_position: 2
+sidebar_position: 10
 helpdocs_topic_id: cqy0jmm71h
 helpdocs_category_id: bpoqe48x7r
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-To set up AppDynamics to work with Harness' Continuous Verification features, you must add AppDynamics as Harness Verification Provider. This topic covers:
-
-* [Before You Begin](#before_you_begin)
-* [Limitations](#limitations)
-* [Step 1: Add Verification Provider](#add_provider)
-* [Step 2: Display Name](#display_name)
-* [Step 3: Account Name](#account_name)
-* [Step 4: Controller URL](#controller_url)
-* [Step 5: User Name and Password](#credentials)
-* [Step 6: Usage Scope](#usage_scope)
-* [Step 7: Test and Save](#test_save)
-* [Next Step](#next_step)
+To set up AppDynamics to work with Harness' Continuous Verification features, you must add AppDynamics as Harness Verification Provider. 
 
 
 ### Before You Begin
@@ -45,7 +34,8 @@ To begin adding AppDynamics as a Harness Verification Provider,:
 2. Click **Connectors**, and then click **Verification Providers**.
 3. Click **Add Verification Provider**, and select **AppDynamics**. The **Add AppDynamic Verification Provider** dialog appears.
 
-![](./static/1-app-dynamics-connection-setup-13.png)
+   ![](./static/1-app-dynamics-connection-setup-13.png)
+   
 ### Step 2: Display Name
 
 Enter a name for this connection. You will use this name when selecting the Verification Provider in Harness Environments and Workflows.

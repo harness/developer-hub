@@ -1,7 +1,7 @@
 ---
 title: Connect to Datadog
 description: Connect Harness to Datadog and verify the success of your deployments and live microservices.
-# sidebar_position: 2
+sidebar_position: 10
 helpdocs_topic_id: yqris5svub
 helpdocs_category_id: x9hs9wviib
 helpdocs_is_private: false
@@ -12,21 +12,10 @@ The first step in using Datadog with Harness is to set up a Datadog Verification
 
 A Harness Verification Provider is a connection to monitoring tools such as Datadog. Once Harness is connected, you can use Harness 24/7 Service Guard and Deployment Verification with your Datadog data and analysis.
 
-In this topic:
-
-* [Before You Begin](#before_you_begin)
-* [Step 1: Add Datadog Verification Provider](#step_1_add_datadog_verification_provider)
-* [Step 2: Display Name](#step_2_display_name)
-* [Step 3: URL](#step_3_url)
-* [Step 4: Encrypted API Key](#step_4_encrypted_api_key)
-* [Step 5: Encrypted Application Key](#step_5_encrypted_application_key)
-* [Step 6: Usage Scope](#step_6_usage_scope)
-* [Next Steps](#next_steps)
-
 ### Before You Begin
 
-* Set up a Harness Application, containing a Service and Environment. See  [Create an Application](https://docs.harness.io/article/bucothemly-application-configuration).
-* See the  [Datadog Verification Overview](../continuous-verification-overview/concepts-cv/datadog-verification-overview.md).
+* Set up a Harness Application, containing a Service and Environment. See [Create an Application](https://docs.harness.io/article/bucothemly-application-configuration).
+* See the [Datadog Verification Overview](../continuous-verification-overview/concepts-cv/datadog-verification-overview.md).
 
 ### Step 1: Add Datadog Verification Provider
 
@@ -34,7 +23,10 @@ To add Datadog as a verification provider:
 
 1. Click **Setup**.
 2. Click **Connectors**, and then click **Verification Providers**.
-3. Click **Add Verification Provider**, and select **Datadog**. The **Datadog** dialog for your provider appears.![](./static/1-datadog-connection-setup-17.png)
+3. Click **Add Verification Provider**, and select **Datadog**. The **Datadog** dialog for your provider appears.
+
+   ![](./static/1-datadog-connection-setup-17.png)
+   
 4. Complete the following fields of the **Add Datadog Verification Provider** dialog.
 
 You need Datadog Admin access to create the API key needed to connect Harness to Datadog.
@@ -59,7 +51,14 @@ For secrets and other sensitive settings, select or create a new [Harness Encryp
 
 To create an API key in Datadog, do the following:
 
-1. In **Datadog**, mouseover **Integrations**, and then click **APIs**.[![](./static/1-datadog-connection-setup-18.png)](./static/1-datadog-connection-setup-18.png) The **APIs** page appears.[![](./static/1-datadog-connection-setup-20.png)](./static/1-datadog-connection-setup-20.png)
+1. In **Datadog**, mouseover **Integrations**, and then click **APIs**.
+   
+   [![](./static/1-datadog-connection-setup-18.png)](./static/1-datadog-connection-setup-18.png) 
+   
+   The **APIs** page appears.
+   
+   [![](./static/1-datadog-connection-setup-20.png)](./static/1-datadog-connection-setup-20.png)
+   
 2. In **API Keys**, in **New API key**, enter the name for the new API key, such as **Harness**, and then click **Create API key**.
 3. Copy the API key and, in **Harness**, paste it into the **API Key** field.
 

@@ -1,7 +1,7 @@
 ---
 title: Monitor Applications 24/7 with Splunk
 description: Combined with Splunk, Harness 24/7 Service Guard monitors your live applications, catching problems that surface minutes or hours following deployment.
-# sidebar_position: 2
+sidebar_position: 20
 helpdocs_topic_id: feiv05dmnk
 helpdocs_category_id: wnxi7xc4a4
 helpdocs_is_private: false
@@ -12,20 +12,6 @@ Harness 24/7 Service Guard monitors your live applications, catching problems th
 
 You can add your Splunk monitoring to Harness 24/7 Service Guard in your Harness Application Environment. For a setup overview, see  [Connect to Splunk](1-splunk-connection-setup.md).
 
-In this topic:
-
-* [Before You Begin](#before_you_begin)
-* [Visual Summary](#visual_summary)
-* [Step 1: Set Up 24/7 Service Guard for Splunk](#simple_slug)
-* [Step 2: Display Name](#step_2_display_name)
-* [Step 3: Service](#step_3_service)
-* [Step 4: Splunk Server](#step_4_splunk_server)
-* [Step 5: Search Keywords](#step_5_search_keywords)
-* [Step 6: Field name for Host/Container](#step_6_field_name_for_host_container)
-* [Step 7: Baseline](#step_7_baseline)
-* [Step 8: Execute with previous steps](#step_8_execute_with_previous_steps)
-* [Troubleshoot: Splunk Connectivity and Service Guard Configuration](#troubleshoot_splunk_connectivity_and_service_guard_configuration)
-* [Next Steps](#next_steps)
 
 ### Before You Begin
 

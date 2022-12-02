@@ -1,7 +1,7 @@
 ---
 title: Verify Deployments with Dynatrace
 description: Harness can analyze Dynatrace data to verify, rollback, and improve deployments.
-# sidebar_position: 2
+sidebar_position: 30
 helpdocs_topic_id: q6bk0oy1ta
 helpdocs_category_id: f42d7rayvs
 helpdocs_is_private: false
@@ -12,20 +12,8 @@ The following procedure describes how to add Dynatrace as a verification step in
 
 Once you run a deployment and Dynatrace preforms verification, Harness' machine-learning verification analysis will assess the risk level of the deployment.
 
-Harness does not perform host level analysis using Dynatrace as Dynatrace API does not support host level analysis. Harness performs analysis at the service level for a time duration of the last seven days.In this topic:
+Harness does not perform host level analysis using Dynatrace as Dynatrace API does not support host level analysis. Harness performs analysis at the service level for a time duration of the last seven days.
 
-* [Before You Begin](#before_you_begin)
-* [Visual Summary](#visual_summary)
-* [Step 1: Set up the Deployment Verification](#step_1_set_up_the_deployment_verification)
-* [Step 2: Dynatrace Server](#step_2_dynatrace_server)
-* [Step 3: Dynatrace Service](#step_3_dynatrace_service)
-* [Step 4: Analysis Time duration](#step_4_analysis_time_duration)
-* [Step 5: Baseline for Risk Analysis](#step_5_baseline_for_risk_analysis)
-* [Step 6: Algorithm Sensitiivty](#step_6_algorithm_sensitiivty)
-* [Step 7: Verify Your Configuration](#step_7_verify_your_configuration)
-* [Review: Harness Expression Support in CV Settings](#review_harness_expression_support_in_cv_settings)
-* [Step 8: View Verification Results](#step_8_view_verification_results)
-* [Next Steps](#next_steps)
 
 ### Before You Begin
 
@@ -134,28 +122,32 @@ You can also see the evaluation in the **Continuous Verification** dashboard. Th
 To learn about the verification analysis features, see the following sections.
 
 ##### Transaction Analysis
-
-
-
-|  |  |
-| --- | --- |
-| **Execution details:** See the details of verification execution. Total is the total time the verification step took, and Analysis duration is how long the analysis took.**Risk level analysis:** Get an overall risk level and view the cluster chart to see events.**Transaction-level summary:** See a summary of each transaction with the query string, error values comparison, and a risk analysis summary. |  |
+ 
+ **Execution details:** See the details of verification execution. Total is the total time the verification step took, and Analysis duration is how long the analysis took.
+ 
+ **Risk level analysis:** Get an overall risk level and view the cluster chart to see events.
+ 
+ **Transaction-level summary:** See a summary of each transaction with the query string, error values comparison, and a risk analysis summary. 
+ 
+ ![](./static/_dyn-00-trx-anal.png)
 
 ##### Execution Analysis
 
+**Event type:** Filter cluster chart events by Unknown Event, Unexpected Frequency, Anticipated Event, Baseline Event, and Ignore Event.
 
+**Cluster chart:** View the chart to see how the selected event contrast. Click each event to see its log details. 
 
-|  |  |
-| --- | --- |
-|  | **Event type:** Filter cluster chart events by Unknown Event, Unexpected Frequency, Anticipated Event, Baseline Event, and Ignore Event.**Cluster chart:** View the chart to see how the selected event contrast. Click each event to see its log details. |
-
+ ![](./static/_dyn-01-ev-anal.png)
+ 
 ##### Event Management
 
+**Event-level analysis:** See the threat level for each event captured.
 
+**Tune event capture:** Remove events from analysis at the service, workflow, execution, or overall level.
 
-|  |  |
-| --- | --- |
-| **Event-level analysis:** See the threat level for each event captured.**Tune event capture:** Remove events from analysis at the service, workflow, execution, or overall level.**Event distribution:** Click the chart icon to see an event distribution including the measured data, baseline data, and event frequency. |  |
+**Event distribution:** Click the chart icon to see an event distribution including the measured data, baseline data, and event frequency. 
+
+ ![](./static/_dyn-02-ev-mgmnt.png)
 
 ### Next Steps
 

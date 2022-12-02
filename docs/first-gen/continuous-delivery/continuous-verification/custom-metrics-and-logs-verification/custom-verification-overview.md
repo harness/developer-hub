@@ -1,7 +1,7 @@
 ---
 title: Custom Verification Overview
 description: Overview of Harness' integration with custom APM (metrics) and log providers.
-# sidebar_position: 2
+sidebar_position: 10
 helpdocs_topic_id: e87u8c63z4
 helpdocs_category_id: ep5nt3dyrb
 helpdocs_is_private: false

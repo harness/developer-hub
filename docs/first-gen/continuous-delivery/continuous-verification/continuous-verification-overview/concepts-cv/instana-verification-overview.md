@@ -30,7 +30,7 @@ Harness Continuous Verification integrates with Instana to verify your deploymen
 |  |  |
 | --- | --- |
 | **Instana 24/7 Service Guard** |  **Instana Workflow Verification** |
-|  |  |
+| ![](./static/instana-left.png) | ![](./static/instana-right.png) |
 
 This guide describes how to set up and use these Harness Continuous Verification monitoring features.
 
@@ -39,7 +39,7 @@ This guide describes how to set up and use these Harness Continuous Verification
 |  |  |
 | --- | --- |
 | **Analysis with Instana** | **Harness Analysis** |
-|  |  |
+| ![](./static/instana2-left.png) | ![](./static/instana2-right.png) |
 
 ### Setup Preview
 

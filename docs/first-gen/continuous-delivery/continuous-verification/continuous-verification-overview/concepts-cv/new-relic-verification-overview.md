@@ -10,11 +10,6 @@ helpdocs_is_published: true
 
 This topic describes how to set up Harness' Continuous Verification features, and monitor your deployments and production applications using its unsupervised machine-learning functionality, on New Relic.
 
-In this topic:
-
-* [Visual Summary](#visual_summary)
-* [Integration Process Summary](#integration_process_summary)
-* [Next Steps](#next_steps)
 
 ### Visual Summary
 
@@ -32,7 +27,7 @@ Verification analysis is limited to **Web** **Transactions** only. In **New Reli
 |  |  |
 | --- | --- |
 | **Web Transactions in New Relic** | **Web Transactions analyzed in Harness** |
-|  |  |
+| ![](./static/newrelic-left.png) | ![](./static/newrelic-right.png) |
 
 ### Integration Process Summary
 

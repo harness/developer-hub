@@ -1,7 +1,7 @@
 ---
 title: Connect to Stackdriver
 description: Connect Harness to Stackdriver and verify the success of your deployments and live microservices.
-# sidebar_position: 2
+sidebar_position: 10
 helpdocs_topic_id: dysdvm3vo7
 helpdocs_category_id: 5mu8983wa0
 helpdocs_is_private: false
@@ -11,15 +11,6 @@ helpdocs_is_published: true
 Connect Harness to Stackdriver to have Harness verify the success of your deployments and monitor live microservices. Harness will use your tools for verification and monitoring and use its machine learning features to identify sources of failures.
 
 Most APM and logging tools are added to Harness as Verification Providers. For Stackdriver, you use the Google Cloud Platform account set up as a Harness Cloud Provider.
-
-In this topic:
-
-* [Before You Begin](#before_you_begin)
-* [Visual Summary](#visual_summary)
-* [Step 1: Assign Roles and Permissions](#assign_roles)
-* [Step 2: Add Stackdriver as a Cloud Provider](#add_stackdriver)
-* [Step 3: Obtain Google Cloud Provider Account Name](#obtain_gcp_account)
-* [Next Steps](#next_steps)
 
 
 ### Before You Begin
@@ -45,7 +36,8 @@ To add Stackdriver as a Cloud Provider, follow the steps for adding a [Google Cl
 1. In Harness, click **Setup**, and then click **Cloud Providers**.
 2. Click **Add Cloud Provider** and select **Google Cloud Platform**.
 
-![](./static/stackdriver-connection-setup-29.png)
+   ![](./static/stackdriver-connection-setup-29.png)
+   
 ### Step 3: Provide Google Cloud's Account Service Key File
 
 In **Select Encrypted Key**, select or create a new [Harness Encrypted Text secret](https://docs.harness.io/article/ygyvp998mu-use-encrypted-text-secrets) that contains the Google Cloud's Account Service Key File.

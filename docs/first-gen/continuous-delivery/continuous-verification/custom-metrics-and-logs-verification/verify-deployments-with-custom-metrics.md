@@ -1,7 +1,7 @@
 ---
 title: Verify Deployments with Custom Metrics
 description: This topic describes how to add a custom APM (metrics) verification step in a Harness Workflow. For more information about Workflows, see Add a Workflow. Once you run a deployment and your custom met…
-# sidebar_position: 2
+sidebar_position: 60
 helpdocs_topic_id: 5h6e4zudr2
 helpdocs_category_id: ep5nt3dyrb
 helpdocs_is_private: false
@@ -12,32 +12,8 @@ This topic describes how to add a custom APM (metrics) verification step in a Ha
 
 Once you run a deployment and your custom metrics provider obtains its data, Harness machine-learning verification analysis will assess the risk level of the deployment using the data from the provider.
 
-In order to obtain the names of the host(s), pod(s), or container(s) where your service is deployed, the verification provider should be added to your Workflow *after* you have run at least one successful deployment.In this topic:
+In order to obtain the names of the host(s), pod(s), or container(s) where your service is deployed, the verification provider should be added to your Workflow *after* you have run at least one successful deployment.
 
-* [Before You Begin](#before_you_begin)
-* [Step 1: Set Up the Deployment Verification](#step_1_set_up_the_deployment_verification)
-* [Step 2: Metrics Name](#step_2_metrics_name)
-* [Step 3: Metrics Type](#step_3_metrics_type)
-* [Step 4: Metrics Collection URL](#step_4_metrics_collection_url)
-* [Step 5: Metrics Method](#step_5_metrics_method)
-* [Step 6: Response Mapping Transaction Name](#step_6_response_mapping_transaction_name)
-* [Step 7: Name](#step_7_name)
-* [Step 8: Transaction Name Path](#step_8_transaction_name_path)
-* [Step 9: Regex to transform Transaction Name](#step_9_regex_to_transform_transaction_name)
-* [Step 10: Metrics Value](#step_10_metrics_value)
-* [Step 11: Hostname JSON path](#step_11_hostname_json_path)
-* [Step 12: Timestamp](#step_12_timestamp)
-* [Step 13: Timestamp Format](#step_13_timestamp_format)
-* [Step 14: Custom Thresholds](#step_14_custom_thresholds)
-* [Step 15: Expression for Host/Container](#step_15_expression_for_host_container)
-* [Step 16: Analysis Time Duration](#step_16_analysis_time_duration)
-* [Step 17: Data Collection Interval](#step_17_data_collection_interval)
-* [Step 18: Baseline for Risk Analysis](#step_18_baseline_for_risk_analysis)
-* [Step 19: Execute with previous steps](#step_19_execute_with_previous_steps)
-* [Step 20: Failure Criteria](#step_20_failure_criteria)
-* [Step 21: Include instances from previous phases](#step_21_include_instances_from_previous_phases)
-* [Step 22: Wait interval before execution](#step_22_wait_interval_before_execution)
-* [Review: Additional Notes](#review_additional_notes)
 
 ### Before You Begin
 

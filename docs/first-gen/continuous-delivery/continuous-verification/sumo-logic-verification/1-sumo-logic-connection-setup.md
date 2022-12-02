@@ -1,7 +1,7 @@
 ---
 title: Connect to Sumo Logic
 description: Connect Harness to Sumo Logic and verify the success of your deployments and live microservices.
-# sidebar_position: 2
+sidebar_position: 10
 helpdocs_topic_id: 38qrwi7wu2
 helpdocs_category_id: ux6clfhfhz
 helpdocs_is_private: false
@@ -12,18 +12,8 @@ The first step in using Sumo Logic with Harness is to set up a Sumo Logic Verifi
 
 A Harness Verification Provider is a connection to monitoring tools such as Sumo Logic. Once Harness is connected, you can use Harness 24/7 Service Guard and Deployment Verification with your Sumo Logic data and analysis.
 
-The Sumo Logic API is available to Sumo Logic Enterprise Accounts only. For more information, see [About the Search Job API](https://help.sumologic.com/APIs/Search-Job-API/About-the-Search-Job-API) from Sumo Logic.In this topic:
+The Sumo Logic API is available to Sumo Logic Enterprise Accounts only. For more information, see [About the Search Job API](https://help.sumologic.com/APIs/Search-Job-API/About-the-Search-Job-API) from Sumo Logic.
 
-* [Before You Begin](#before_you_begin)
-* [Visual Summary](#visual_summary)
-* [Step 1: Add Sumo Logic Verification Provider](#step_1_add_sumo_logic_verification_provider)
-* [Step 2: Display Name](#step_2_display_name)
-* [Step 3: Sumo Logic API Server URL](#step_3_sumo_logic_api_server_url)
-* [Step 4: Encrypted Access ID](#step_4_encrypted_access_id)
-* [Step 5: Encrypted Access Key](#step_5_encrypted_access_key)
-* [Step 6: Usage Scope](#step_6_usage_scope)
-* [Step 7: Test and Submit](#step_7_test_and_submit)
-* [Next Steps](#next_steps)
 
 ### Before You Begin
 

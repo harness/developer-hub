@@ -1,7 +1,7 @@
 ---
 title: Connect to Custom Verification for Custom Logs
 description: Connect Harness to a Custom Logs Provider to have Harness verify the success of your deployments.
-# sidebar_position: 2
+sidebar_position: 20
 helpdocs_topic_id: wya9qgjlrr
 helpdocs_category_id: ep5nt3dyrb
 helpdocs_is_private: false
@@ -9,18 +9,6 @@ helpdocs_is_published: true
 ---
 
 Connect Harness to a Custom Logs Provider to have Harness verify the success of your deployments. Harness will use your tools to verify deployments and use its machine learning features to identify sources of failures.
-
-In this topic:
-
-* [Before You Begin](#before_you_begin)
-* [Step 1: Add Custom Verification Provider](#step_1_add_custom_verification_provider)
-* [Step 2: Display Name](#step_2_display_name)
-* [Step 3: Base URL](#step_3_base_url)
-* [Step 4: Parameters](#step_4_parameters)
-* [Step 5: Validation Path](#step_5_validation_path)
-* [Step 6: Encrypted Text Secrets in Body](#step_6_encrypted_text_secrets_in_body)
-* [Step 7: Test and Submit](#step_7_test_and_submit)
-* [See Also](#see_also)
 
 ### Before You Begin
 

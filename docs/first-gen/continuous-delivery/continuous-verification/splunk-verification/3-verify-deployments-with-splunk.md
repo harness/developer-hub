@@ -1,7 +1,7 @@
 ---
 title: Verify Deployments with Splunk
 description: Harness can analyze Splunk data to verify, rollback, and improve deployments.
-# sidebar_position: 2
+sidebar_position: 30
 helpdocs_topic_id: zi7doy7zn8
 helpdocs_category_id: wnxi7xc4a4
 helpdocs_is_private: false
@@ -12,23 +12,8 @@ The following procedure describes how to add Splunk as a verification step in a 
 
 Once you run a deployment and Splunk preforms verification, Harness' machine-learning verification analysis will assess the risk level of the deployment.
 
-In order to obtain the names of the host(s), pod(s), or container(s) where your service is deployed, the verification provider should be added to your workflow **after** you have run at least one successful deployment.In this topic:
+In order to obtain the names of the host(s), pod(s), or container(s) where your service is deployed, the verification provider should be added to your workflow **after** you have run at least one successful deployment.
 
-* [Before You Begin](#before_you_begin)
-* [Visual Summary](#visual_summary)
-* [Step 1: Set Up the Deployment Verification](#step_1_set_up_the_deployment_verification)
-* [Step 2: Splunk Server](#step_2_splunk_server)
-* [Step 3: Search Keywords](#step_3_search_keywords)
-* [Step 4: Field name for Host/Container](#step_4_field_name_for_host_container)
-* [Step 5: Expression for Host/Container name](#step_5_expression_for_host_container_name)
-* [Step 6: Analysis Time duration](#step_6_analysis_time_duration)
-* [Step 7: Baseline for Risk Analysis](#step_7_baseline_for_risk_analysis)
-* [Step 8: Execute with previous steps](#step_8_execute_with_previous_steps)
-* [Option: Use Guide from Example - Host field](#option_use_guide_from_example_host_field)
-* [Option: Use Guide from Example - Kubernetes](#option_use_guide_from_example_kubernetes)
-* [Review: Harness Expression Support in CV Settings](#review_harness_expression_support_in_cv_settings)
-* [Step 9: View Verification Results](#step_9_view_verification_results)
-* [Next Steps](#next_steps)
 
 ### Before You Begin
 
@@ -235,27 +220,30 @@ To learn about the verification analysis features, see the following sections.
 
 ##### Transaction Analysis
 
+**Execution details:** See the details of verification execution. Total is the total time the verification step took, and Analysis duration is how long the analysis took.
 
+**Risk level analysis:** Get an overall risk level and view the cluster chart to see events.
 
-|  |  |
-| --- | --- |
-| **Execution details:** See the details of verification execution. Total is the total time the verification step took, and Analysis duration is how long the analysis took.**Risk level analysis:** Get an overall risk level and view the cluster chart to see events.**Transaction-level summary:** See a summary of each transaction with the query string, error values comparison, and a risk analysis summary. |  |
+**Transaction-level summary:** See a summary of each transaction with the query string, error values comparison, and a risk analysis summary.  
+
+![](./static/_splunk-00-trx-anal.png)
+
 
 ##### Execution Analysis
 
+**Event type:** Filter cluster chart events by Unknown Event, Unexpected Frequency, Anticipated Event, Baseline Event, and Ignore Event.
 
+**Cluster chart:** View the chart to see how the selected event contrast. Click each event to see its log details.
 
-|  |  |
-| --- | --- |
-|  | **Event type:** Filter cluster chart events by Unknown Event, Unexpected Frequency, Anticipated Event, Baseline Event, and Ignore Event.**Cluster chart:** View the chart to see how the selected event contrast. Click each event to see its log details. |
+![](./static/_splunk-01-ex-anal.png) 
 
 ##### Event Management
 
+**Event-level analysis:** See the threat level for each event captured.
 
+**Tune event capture:** Remove events from analysis at the service, workflow, execution, or overall level.
 
-|  |
-| --- |
-| **Event-level analysis:** See the threat level for each event captured.**Tune event capture:** Remove events from analysis at the service, workflow, execution, or overall level.**Event distribution:** Click the chart icon to see an event distribution including the measured data, baseline data, and event frequency. |
+**Event distribution:** Click the chart icon to see an event distribution including the measured data, baseline data, and event frequency. 
 
 ### Next Steps
 

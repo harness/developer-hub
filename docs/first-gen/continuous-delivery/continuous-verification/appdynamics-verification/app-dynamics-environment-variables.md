@@ -1,21 +1,14 @@
 ---
 title: Set AppDynamics Environment Variables
 description: Set environment variables in the Docker Image you deploy, or in the Harness Service that uses this image.
-# sidebar_position: 2
+sidebar_position: 50
 helpdocs_topic_id: e1qar9w373
 helpdocs_category_id: bpoqe48x7r
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic covers how to set required environment variables to monitor Java applications in the AppDynamics Controller. It includes these sections:
-
-* [Before You Begin](#before_you_begin)
-* [Step 1: Install the Java Agent](#java_agent)
-* [Option: Set Variables in Artifact](#artifact)
-* [Option: Set Variables in Service](#service)
-* [Limitations](#limitations)
-* [Next Steps](#next_steps)
+This topic covers how to set required environment variables to monitor Java applications in the AppDynamics Controller. 
 
 
 ### Before You Begin

@@ -1,7 +1,7 @@
 ---
 title: Monitor Applications 24/7 with Custom Logs
 description: Harness 24/7 Service Guard monitors your live applications, catching problems that surface minutes or hours following deployment. For more information, see 24/7 Service Guard Overview. While Harness…
-# sidebar_position: 2
+sidebar_position: 40
 helpdocs_topic_id: dse21dgveu
 helpdocs_category_id: ep5nt3dyrb
 helpdocs_is_private: false
@@ -12,25 +12,7 @@ Harness 24/7 Service Guard monitors your live applications, catching problems th
 
 While Harness supports [all of the common logging tools](https://docs.harness.io/category/continuous-verification), you can add your Custom logging to Harness 24/7 Service Guard in your Harness Application Environment. For a setup overview, see  [Connect to Custom Verification for Custom Logs](connect-to-custom-verification-for-custom-logs.md).
 
-This section assumes you have a Harness Application set up, containing a Service and Environment. For steps on setting up a Harness Application, see  [Application Components](https://docs.harness.io/article/bucothemly-application-configuration).In this topic:
-
-* [Before You Begin](#before_you_begin)
-* [Step 1: Set up 24/7 Service Guard for Custom Logs](#step_1_set_up_24_7_service_guard_for_custom_logs)
-* [Step 2: Display Name](#step_2_display_name)
-* [Step 3: Service](#step_3_service)
-* [Step 4: Log Data Provider](#step_4_log_data_provider)
-* [Step 5: Log Collection](#step_5_log_collection)
-* [Step 6: Request Method](#step_6_request_method)
-* [Step 7: Search URL](#step_7_search_url)
-* [Step 8: Search Body](#step_8_search_body)
-* [Step 9: Response Type](#step_9_response_type)
-* [Step 10: Log Message JSON Path](#step_10_log_message_json_path)
-* [Step 11: Service Instance JSON Path](#step_11_service_instance_json_path)
-* [Step 12: Regex to Transform Hostname](#step_12_regex_to_transform_hostname)
-* [Step 13: Timestamp JSON Path](#step_13_timestamp_json_path)
-* [Step 14: Timestamp Format](#step_14_timestamp_format)
-* [Step 15: Enable 24/7 Service Guard](#step_15_enable_24_7_service_guard)
-* [Step 16: Baseline](#step_16_baseline)
+This section assumes you have a Harness Application set up, containing a Service and Environment. For steps on setting up a Harness Application, see  [Application Components](https://docs.harness.io/article/bucothemly-application-configuration).
 
 ### Before You Begin
 
@@ -47,9 +29,13 @@ To set up 24/7 Service Guard for custom logs, do the following:
 4. In **Environments**, ensure that you have added an Environment for the Service you added. For steps on adding an Environment, see  [Environments](https://docs.harness.io/article/n39w05njjv-environment-configuration).
 5. Click the Environment for your Service. Typically, the **Environment Type** is **Production**.
 6. In the **Environment** page, locate **24/7 Service Guard**.[![](./static/monitor-applications-24-7-with-custom-logs-94.png)](./static/monitor-applications-24-7-with-custom-logs-94.png)
-7. In **24/7 Service Guard**, click **Add Service Verification**, and then click **Custom Log Verification**.![](./static/monitor-applications-24-7-with-custom-logs-96.png)The **Custom Log Verification** dialog appears.
+7. In **24/7 Service Guard**, click **Add Service Verification**, and then click **Custom Log Verification**.![](./static/monitor-applications-24-7-with-custom-logs-96.png)
 
-![](./static/monitor-applications-24-7-with-custom-logs-97.png)Fill out the dialog. The dialog has the following fields.
+   The **Custom Log Verification** dialog appears.
+
+   ![](./static/monitor-applications-24-7-with-custom-logs-97.png)
+   
+   Fill out the dialog. The dialog has the following fields.
 
 For 24/7 Service Guard, the queries you define to collect logs are specific to the application or service you want monitored. Verification is application/service level. This is unlike Workflows, where verification is performed at the host/node/pod level.
 

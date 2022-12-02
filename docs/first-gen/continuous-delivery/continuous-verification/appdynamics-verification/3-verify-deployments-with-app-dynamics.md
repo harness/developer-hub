@@ -1,32 +1,14 @@
 ---
 title: Verify Deployments with AppDynamics
 description: Harness can analyze AppDynamics data to verify, rollback, and improve deployments.
-# sidebar_position: 2
+sidebar_position: 30
 helpdocs_topic_id: ehezyvz163
 helpdocs_category_id: bpoqe48x7r
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Harness can analyze AppDynamics data to verify, rollback, and improve your deployments. To enable this analysis, you must configure AppDynamics as a verification step in a Harness Workflow. This topic covers:
-
-* [Before You Begin](#before_you_begin)
-* [Limitations](#limitations)
-* [Step 1: Add Verification Step](#add_step)
-* [Step 2: AppDynamics Server](#appdynamics_server)
-* [Step 3: Application Name](#application_name)
-* [Step 4: Tier Name](#tier_name)
-* [Step 5: Expression for Host/Container Name](#host_name)
-* [Step 6: Analysis Time Duration](#time_duration)
-* [Step 7: Baseline for Risk Analysis](#baseline)
-* [Step 8: Algorithm Sensitivity](#sensitivity)
-* [Step 9: Include Instances from Previous Phases](#previous_phases)
-* [Step 10: Execute with Previous Steps](#execute_previous)
-* [Step 11: Test and Save](#test_save)
-* [Step 12: View Verification Results](#view_results)
-* [Harness Expression Support in CV Settings](#harness_expression_support_in_cv_settings)
-* [Next Steps](3-verify-deployments-with-app-dynamics.md#next-steps)
-
+Harness can analyze AppDynamics data to verify, rollback, and improve your deployments. To enable this analysis, you must configure AppDynamics as a verification step in a Harness Workflow. 
 
 ### Before You Begin
 
@@ -45,12 +27,13 @@ See [general limitations](https://docs.harness.io/article/9dvxcegm90-variables#l
 To add an AppDynamics verification step to your Workflow:
 
 1. In your Workflow, under **Verify Service**, click **Add Verification**.
-2. In the resulting **Add Step** settings, select **Performance Monitoring** > **AppDynamics**.![](./static/3-verify-deployments-with-app-dynamics-14.png)
+2. In the resulting **Add Step** settings, select **Performance Monitoring** > **AppDynamics**.
 
+   ![](./static/3-verify-deployments-with-app-dynamics-14.png)
 
-3. Click **Next**. The **Configure** **AppDynamics** settings appear, ready for you to configure in the steps below.![](./static/3-verify-deployments-with-app-dynamics-15.png)
+3. Click **Next**. The **Configure** **AppDynamics** settings appear, ready for you to configure in the steps below.
 
-
+   ![](./static/3-verify-deployments-with-app-dynamics-15.png)
 
 
 ### Step 2: AppDynamics Server
@@ -130,7 +113,7 @@ You can the Harness expression `${aws.tags.find(host.ec2Instance.tags, '[tag_nam
 
 For example, `${aws.tags.find(host.ec2Instance.tags, 'Project')}`:
 
-![](./static/3-verify-deployments-with-app-dynamics-23.png
+![](./static/3-verify-deployments-with-app-dynamics-23.png)
 
 #### Expressions for Tanzu Application Service (formerly PCF) Hosts
 
@@ -142,7 +125,7 @@ ${host.pcfElement.displayName}_${host.pcfElement.instanceIndex}
 ```
 ...which could yield something like: `harness_example-1`, where the `displayName` is `harness-example` and `instanceIndex` is `1`.
 
-![](./static/3-verify-deployments-with-app-dynamics-24.png
+![](./static/3-verify-deployments-with-app-dynamics-24.png)
 
 See [PCF Built-in Variables](https://docs.harness.io/article/ojd73hseby-pcf-built-in-variables).
 
@@ -182,6 +165,8 @@ To finish configuring this AppDynamics verification step:
 2. When testing is successful, click **Submit**. This AppDynamics verification step is now configured.
 
 The **Test** button will be disabled if any of the **AppDynamics Server**, **Application Name**, and/or **Tier Name** fields contain [templatized values](templatize-app-dynamics-verification.md) or variable expressions. This is because Harness can't test the abstract values. As a workaround, you can fill these fields with static values from their drop-down lists, then click **Test** to verify all the static values, and then swap in your intended variable expressions before clicking **Submit**.
+
+
 ### Step 12: View Verification Results
 
 Once you have executed the Workflow, Harness performs the verification you configured and displays the results in the **Deployments** and **Continuous Verification** pages. Verification is executed in real time, quantifying the business impact of every production deployment.
@@ -194,7 +179,7 @@ You can use expressions (`${...}`) for [Harness built-in variables](https://docs
 
 Here is an example using Dynatrace, but it applies to all providers.
 
-![](./static/3-verify-deployments-with-app-dynamics-25.png
+![](./static/3-verify-deployments-with-app-dynamics-25.png)
 
 Expression support lets you template your Workflow verification steps. You can add custom expressions for settings, and then provide values for those settings at deployment runtime. Or you can use Harness built-in variable expressions and Harness will provide values at deployment runtime automatically.
 

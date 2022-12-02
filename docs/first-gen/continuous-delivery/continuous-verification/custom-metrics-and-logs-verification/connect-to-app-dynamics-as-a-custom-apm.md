@@ -1,7 +1,7 @@
 ---
 title: Connect to AppDynamics as a Custom APM
 description: As an alternative to Harness' standard AppDynamics integration , you can use this guide to add AppDynamics to Harness as a custom APM. This approach enables you to expand monitoring beyond Business T…
-# sidebar_position: 2
+sidebar_position: 80
 helpdocs_topic_id: w7tcb2frp9
 helpdocs_category_id: ep5nt3dyrb
 helpdocs_is_private: false
@@ -10,16 +10,6 @@ helpdocs_is_published: true
 
 As an alternative to Harness' [standard AppDynamics integration](../continuous-verification-overview/concepts-cv/app-dynamics-verification-overview.md), you can use this guide to add AppDynamics to Harness as a custom APM. This approach enables you to expand monitoring beyond Business Transactions, to cover specific metrics of interest (for example, JVM data).
 
-In this topic:
-
-* [Before You Begin](#before_you_begin)
-* [Step 1: Add AppDynamics as a Custom Verification Provider](#step_1_add_app_dynamics_as_a_custom_verification_provider)
-* [Step 2: Display Name](#step_2_display_name)
-* [Step 3: Base URL](#step_3_base_url)
-* [Step 4: Headers](#step_4_headers)
-* [Step 5: Validation Path](#step_5_validation_path)
-* [Step 6: Test and Submit](#step_6_test_and_submit)
-* [See Also](#see_also)
 
 ### Before You Begin
 

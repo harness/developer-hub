@@ -1,7 +1,7 @@
 ---
 title: Connect to New Relic
 description: Connect Harness to New Relic and verify the success of your deployments and live microservices.
-# sidebar_position: 2
+sidebar_position: 10
 helpdocs_topic_id: iz45kpa10u
 helpdocs_category_id: 1nci5420c8
 helpdocs_is_private: false
@@ -11,16 +11,6 @@ helpdocs_is_published: true
 The first step in using New Relic with Harness is to set up an New Relic Verification Provider in Harness.
 
 A Harness Verification Provider is a connection to monitoring tools such as New Relic. Once Harness is connected, you can use Harness 24/7 Service Guard and Deployment Verification with your New Relic data and analysis.
-
-In this topic:
-
-* [Before You Begin](#before_you_begin)
-* [Step 1: Add New Relic Verification Provider](#step_1_add_new_relic_verification_provider)
-* [Step 2: Encrypted API Key](#step_2_encrypted_api_key)
-* [Step 3: Account ID](#step_3_account_id)
-* [Step 4: Display Name](#step_4_display_name)
-* [Step 5: Usage Scope](#step_5_usage_scope)
-* [Next Steps](#next_steps)
 
 ### Before You Begin
 
@@ -32,7 +22,10 @@ To connect a verification provider, do the following:
 
 1. Click **Setup**.
 2. Click **Connectors**, and then click **Verification Providers**.
-3. Click **Add Verification Provider**, and select **New Relic**. The **Add New Relic Verification Provider** dialog appears.![](./static/1-new-relic-connection-setup-24.png)
+3. Click **Add Verification Provider**, and select **New Relic**. The **Add New Relic Verification Provider** dialog appears.
+
+   ![](./static/1-new-relic-connection-setup-24.png)
+   
 4. Complete the following fields of the **Add New Relic Verification Provider** dialog.
 
 ### Step 2: Encrypted API Key
@@ -40,7 +33,10 @@ To connect a verification provider, do the following:
 For secrets and other sensitive settings, select or create a new [Harness Encrypted Text secret](https://docs.harness.io/article/ygyvp998mu-use-encrypted-text-secrets).Enter the API key needed to connect with the server. For information on API keys, see [Access to REST API keys](https://docs.newrelic.com/docs/apis/getting-started/intro-apis/access-rest-api-keys) from New Relic.
 
 1. Log into New Relic.
-2. On the home page, click your account name, and then click **Account Settings**.[![](./static/1-new-relic-connection-setup-25.png)](./static/1-new-relic-connection-setup-25.png)
+2. On the home page, click your account name, and then click **Account Settings**.
+
+   [![](./static/1-new-relic-connection-setup-25.png)](./static/1-new-relic-connection-setup-25.png)
+   
 3. Click the left menu, under **Integrations**, click **API keys**.
 
    [![](./static/1-new-relic-connection-setup-27.png)](./static/1-new-relic-connection-setup-27.png)

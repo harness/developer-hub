@@ -1,7 +1,7 @@
 ---
 title: Monitor Applications 24/7 with Custom Metrics
 description: Harness 24/7 Service Guard monitors your live applications, catching problems that surface minutes or hours following deployment. For more information, see 24/7 Service Guard Overview. While Harness…
-# sidebar_position: 2
+sidebar_position: 50
 helpdocs_topic_id: 15nvnoy8o8
 helpdocs_category_id: ep5nt3dyrb
 helpdocs_is_private: false
@@ -12,33 +12,8 @@ Harness 24/7 Service Guard monitors your live applications, catching problems th
 
 While Harness supports  [all of the common metrics tools](https://docs.harness.io/category/continuous-verification), you can add your Custom metrics to Harness 24/7 Service Guard in your Harness Application Environment. For a setup overview, see  [Connect to Custom Verification for Custom Metrics](connect-to-custom-verification-for-custom-metrics.md).
 
-This section assumes you have a Harness Application set up, containing a Service and Environment. For steps on setting up a Harness Application, see  [Application Components](https://docs.harness.io/article/bucothemly-application-configuration).In this topic:
+This section assumes you have a Harness Application set up, containing a Service and Environment. For steps on setting up a Harness Application, see  [Application Components](https://docs.harness.io/article/bucothemly-application-configuration).
 
-* [Before You Begin](#before_you_begin)
-* [Step 1: Set up 24/7 Service Guard for Custom Metrics](#step_1_set_up_24_7_service_guard_for_custom_metrics)
-* [Step 2: Display Name](#step_2_display_name)
-* [Step 3: Service](#step_3_service)
-* [Step 4: Metrics Data Server](#step_4_metrics_data_server)
-* [Step 5: Metric Type](#step_5_metric_type)
-* [Step 6: Metric Collections](#step_6_metric_collections)
-* [Step 7: Metrics Name](#step_7_metrics_name)
-* [Step 8: Metrics Type](#step_8_metrics_type)
-* [Step 9: Metrics Collection URL](#step_9_metrics_collection_url)
-* [Step 10: Metrics Method](#step_10_metrics_method)
-* [Step 11: Response Mapping](#step_11_response_mapping)
-* [Step 12: Transaction Name](#step_12_transaction_name)
-* [Step 13: Name (Fixed)](#step_13_name_(fixed))
-* [Step 14: Transaction Name Path (Dynamic)](#step_14_transaction_name_path_(dynamic))
-* [Step 15: Regex to transform Transaction Name (Dynamic)](#step_15_regex_to_transform_transaction_name_(dynamic))
-* [Step 16: Metrics Value](#step_16_metrics_value)
-* [Step 17: Timestamp](#step_17_timestamp)
-* [Step 18: Timestamp Format](#step_18_timestamp_format)
-* [Step 19: Test the Settings](#step_19_test_the_settings)
-* [Review: Custom Thresholds](#review_custom_thresholds)
-* [Step 20: Algorithm Sensitivity](#step_20_algorithm_sensitivity)
-* [Step 21: Enable 24/7 Service Guard](#step_21_enable_24_7_service_guard)
-* [Review: Verification Results](#review_verification_results)
-* [See Also](#see_also)
 
 ### Before You Begin
 

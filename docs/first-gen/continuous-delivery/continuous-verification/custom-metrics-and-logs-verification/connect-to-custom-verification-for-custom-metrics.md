@@ -1,7 +1,7 @@
 ---
 title: Connect to Custom Verification for Custom Metrics
 description: Connect Harness to a Custom Metrics Data Provider to have Harness verify the success of your deployments.
-# sidebar_position: 2
+sidebar_position: 30
 helpdocs_topic_id: iocufp9eb2
 helpdocs_category_id: ep5nt3dyrb
 helpdocs_is_private: false
@@ -10,17 +10,6 @@ helpdocs_is_published: true
 
 Connect Harness to a Custom Metrics Data Provider to have Harness verify the success of your deployments. Harness will use your tools to verify deployments and use its machine learning features to identify sources of failures.
 
-In this topic:
-
-* [Before You Begin](#before_you_begin)
-* [Step 1: Add Custom Verification Provider](#simple_slug)
-* [Step 2: Type](#step_2_type)
-* [Step 3: Display Name](#step_3_display_name)
-* [Step 4: Base URL](#step_4_base_url)
-* [Step 5: Headers](#step_5_headers)
-* [Step 6: Parameters](#step_6_parameters)
-* [Step 7: Validation Path](#step_7_validation_path)
-* [See Also](#see_also)
 
 ### Before You Begin
 

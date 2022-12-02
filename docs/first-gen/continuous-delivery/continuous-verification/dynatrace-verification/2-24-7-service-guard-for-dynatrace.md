@@ -1,7 +1,7 @@
 ---
 title: Monitor Applications 24/7 with Dynatrace
 description: Combined with Dynatrace, Harness 24/7 Service Guard monitors your live applications, catching problems that surface minutes or hours following deployment.
-# sidebar_position: 2
+sidebar_position: 20
 helpdocs_topic_id: 2frnj2gqiu
 helpdocs_category_id: f42d7rayvs
 helpdocs_is_private: false
@@ -12,18 +12,8 @@ Harness 24/7 Service Guard monitors your live applications, catching problems th
 
 You can add your Dynatrace monitoring to Harness 24/7 Service Guard in your Harness Application Environment. For a setup overview, see [Connect to Dynatrace](1-dynatrace-connection-setup.md).
 
-This section assumes you have a Harness Application set up and containing a Service and Environment. For steps on setting up a Harness Application, see [Application Checklist](https://docs.harness.io/article/bucothemly-application-configuration).In this topic:
+This section assumes you have a Harness Application set up and containing a Service and Environment. For steps on setting up a Harness Application, see [Application Checklist](https://docs.harness.io/article/bucothemly-application-configuration).
 
-* [Before You Begin](#before_you_begin)
-* [Step 1: Set up 24/7 Service Guard for Dynatrace](#step_1_set_up_24_7_service_guard_for_cloud_watch)
-* [Step 2: Display Name](#step_2_display_name)
-* [Step 3: Service](#step_3_service)
-* [Step 4: Dynatrace Server](#step_4_dynatrace_server)
-* [Step 5: Dynatrace Service](#step_5_dynatrace_service)
-* [Step 6: Algorithm Sensitiivty](#step_6_algorithm_sensitiivty)
-* [Step 7: Enable 24/7 Service Guard](#step_7_enable_24_7_service_guard)
-* [Step 8: Verify Your Settings](#step_8_verify_your_settings)
-* [Next Steps](#next_steps)
 
 ### Before You Begin
 

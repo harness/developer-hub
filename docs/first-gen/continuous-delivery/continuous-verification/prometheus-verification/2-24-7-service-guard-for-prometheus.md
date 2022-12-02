@@ -1,7 +1,7 @@
 ---
 title: Monitor Applications 24/7 with Prometheus
 description: Combined with Prometheus, Harness 24/7 Service Guard monitors your live applications, catching problems that surface minutes or hours following deployment.
-# sidebar_position: 2
+sidebar_position: 20
 helpdocs_topic_id: i9d01kf32g
 helpdocs_category_id: 177rlmujlu
 helpdocs_is_private: false

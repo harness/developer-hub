@@ -1,7 +1,7 @@
 ---
 title: Monitor Applications 24/7 with Stackdriver Logging
 description: Combined with Stackdriver Logging, Harness 24/7 Service Guard monitors your live applications, catching problems that surface minutes or hours following deployment.
-# sidebar_position: 2
+sidebar_position: 20
 helpdocs_topic_id: 485lq1k7mo
 helpdocs_category_id: 5mu8983wa0
 helpdocs_is_private: false
@@ -11,21 +11,6 @@ helpdocs_is_published: true
 Harness 24/7 Service Guard monitors your live applications, catching problems that surface minutes or hours following deployment.
 
 Once you have set up a Stackdriver Verification Provider in Harness, as described in [Connect to Stackdriver](stackdriver-connection-setup.md), you can add your Stackdriver **Logs** monitoring to Harness 24/7 Service Guard in your Harness Application Environment.
-
-In this topic:
-
-* [Before You Begin](#before_you_begin)
-* [Visual Summary](#visual_summary)
-* [Step 1: Set up 24/7 Service Guard](#simple_slug)
-* [Step 2: Display Name](#another_slug)
-* [Step 3: Service](#the_service)
-* [Step 4: GCP Cloud Provider](#gcp_cloud_provider)
-* [Step 5: Search Keywords](#search_keywords)
-* [Step 6: Host Name Field](#host_name_field)
-* [Step 7: Enable 24/7 Service Guard](#enable_service_guard)
-* [Step 8: Baseline](#baseline)
-* [Step 9: Verify Your Settings](#verify_settings)
-* [Next Steps](#next_steps)
 
 
 ### Before You Begin

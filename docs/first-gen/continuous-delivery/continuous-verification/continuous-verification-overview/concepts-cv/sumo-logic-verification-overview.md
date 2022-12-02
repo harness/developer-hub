@@ -10,11 +10,6 @@ helpdocs_is_published: true
 
 This topic describes how to set up Harness Continuous Verification features and monitor your deployments and production applications using its unsupervised machine-learning functionality on Sumo Logic.
 
-In this topic:
-
-* [Visual Summary](#visual_summary)
-* [Integration Process Summary](#integration_process_summary)
-* [Next Steps](#next_steps)
 
 ### Visual Summary
 
@@ -32,13 +27,15 @@ This document describes how to set up these Harness Continuous Verification feat
 |  |  |
 | --- | --- |
 | **Search with Sumo Logic** | **Harness Analysis** |
-|  |  |
+| ![](./static/sumo-left.png) | ![](./static/sumo-right.png) |
 
 ### Integration Process Summary
 
 You set up Sumo Logic and Harness in the following way.
 
-![](./static/sumo-logic-verification-overview-63.png)1. **Sumo Logic** – Monitor your application using Sumo Logic. In this article, we assume that you are using Sumo Logic to monitor your application already.
+![](./static/sumo-logic-verification-overview-63.png)
+
+1. **Sumo Logic** – Monitor your application using Sumo Logic. In this article, we assume that you are using Sumo Logic to monitor your application already.
 2. **​Verification Provider Setup** – In Harness, you connect Harness to your Sumo Logic account, adding Sumo Logic as a **Harness Verification Provider**.
 3. **Harness Application** – Create a Harness Application with a Service and an Environment. We do not cover Application setup in this sequence. See [Application Checklist](https://docs.harness.io/article/bucothemly-application-configuration).
 4. **​24/7 Service Guard Setup****–** In the Environment, set up 24/7 Service Guard to monitor your live, production application.

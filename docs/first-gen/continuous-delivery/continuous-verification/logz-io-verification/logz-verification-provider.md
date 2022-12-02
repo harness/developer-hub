@@ -1,30 +1,18 @@
 ---
 title: Connect to Logz.io
 description: Connect Logz.io as a Harness Verification Provider, enabling Harness to ensure the success of your deployments.
-# sidebar_position: 2
+sidebar_position: 10
 helpdocs_topic_id: 1hw6xxh73c
 helpdocs_category_id: j3m3gbxk88
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-To set up Logz.io to work with Harness' Continuous Verification features, you must add Logz.io as Harness Verification Provider. This topic covers:
-
-* [Before You Begin](#before_you_begin)
-* [Limitations](#limitations)
-* [Step 1: Add Verification Provider](#add_provider)
-* [Step 2: Display Name](#display_name)
-* [Step 3: Logz.io URL](#url)
-* [Step 4: Token](#token)
-* [Step 5: Usage Scope](#usage_scope)
-* [Step 6: Test and Save](#test_save)
-* [Next Step](#next_step)
-
+To set up Logz.io to work with Harness' Continuous Verification features, you must add Logz.io as Harness Verification Provider. 
 
 ### Before You Begin
 
 * [What Is Continuous Verification (CV)?](../continuous-verification-overview/concepts-cv/what-is-cv.md)
-
 
 ### Limitations
 
@@ -37,7 +25,8 @@ To begin adding Logz.io as a Harness Verification Provider,:
 2. Click **Connectors**, and then click **Verification Providers**.
 3. Click **Add Verification Provider**, and select Logz.io. The **Add Logz Verification Provider** dialog appears.
 
-![](./static/logz-verification-provider-00.png)
+   ![](./static/logz-verification-provider-00.png)   
+   
 ### Step 2: Display Name
 
 Enter a name for this connection. You will use this name when selecting the Verification Provider in Harness Environments and Workflows.

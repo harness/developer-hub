@@ -10,11 +10,6 @@ helpdocs_is_published: true
 
 Google Operations (formerly Stackdriver) aggregates metrics, logs, and events from infrastructure, giving developers and operators a rich set of observable signals that speed root-cause analysis and reduce mean time to resolution (MTTR).
 
-In this topic:
-
-* [Visual Summary](#visual_summary)
-* [Integration Process Summary](#integrate_stackdriver)
-* [Next Steps](#next_steps)
 
 
 ### Visual Summary
@@ -24,12 +19,10 @@ Harness Continuous Verification integrates with Google Operations to verify your
 * **24/7 Service Guard** – Monitors your live, production applications.
 * **Deployment Verification** – Monitors your application deployments, and performs automatic rollback according to your criteria.
 
-
-
 |  |  |
 | --- | --- |
 | **Verification with Stackdriver** | **Harness Analysis** |
-|  |  |
+| ![](./static/stackdriver-left.png) | ![](./static/stackdriver-right.png) |
 
 You can read more about Harness and Google Operations integration on the [Harness Blog](http://www.harness.io/blog/stackdriver-automated-canary-deployments).
 

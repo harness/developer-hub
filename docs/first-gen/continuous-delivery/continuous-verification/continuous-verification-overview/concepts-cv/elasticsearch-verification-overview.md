@@ -30,7 +30,7 @@ This topic describes how to set up these Harness Continuous Verification feature
 |  |  |
 | --- | --- |
 | **Exceptions with Elasticsearch via Kibana** | **Harness Analysis of Elasticsearch Verification** |
-|  |  |
+| ![](./static/elastic-left.png) | ![](./static/elastic-right.png) |
 
 ### Integration Process Summary
 

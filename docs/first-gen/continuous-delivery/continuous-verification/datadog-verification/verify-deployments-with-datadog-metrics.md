@@ -1,7 +1,7 @@
 ---
 title: Verify Deployments with Datadog Metrics
 description: Harness can analyze Datadog metrics to verify, rollback, and improve deployments.
-# sidebar_position: 2
+sidebar_position: 40
 helpdocs_topic_id: o9pl8tfvix
 helpdocs_category_id: x9hs9wviib
 helpdocs_is_private: false
@@ -12,26 +12,8 @@ Harness can analyze Datadog metrics to verify, rollback, and improve deployments
 
 Once you run a deployment, and Datadog preforms verification, Harness' machine-learning verification analysis will assess the risk level of the deployment.
 
-In order to obtain the names of the host(s), pod(s), or container(s) where your service is deployed, the verification provider should be added to your workflow *after* you have run at least one successful deployment.In this topic:
+In order to obtain the names of the host(s), pod(s), or container(s) where your service is deployed, the verification provider should be added to your workflow *after* you have run at least one successful deployment.
 
-* [Before You Begin](#before_you_begin)
-* [Limitations](#limitations)
-* [Visual Summary](#visual_summary)
-* [Step 1: Set Up the Deployment Verification](#step_1_set_up_the_deployment_verification)
-* [Step 2: Datadog Metrics Server](#step_2_datadog_metrics_server)
-* [Step 3: Datadog Monitoring](#step_3_datadog_monitoring)
-* [Step 4: Infrastructure Metrics](#step_4_infrastructure_metrics)
-* [Step 5: Datadog Custom Metrics](#step_5_datadog_custom_metrics)
-* [Step 6: Expression for Host/Container name](#step_6_expression_for_host_container_name)
-* [Step 7: Analysis Time duration](#step_7_analysis_time_duration)
-* [Step 8: Baseline for Risk Analysis](#step_8_baseline_for_risk_analysis)
-* [Step 9: Algorithm Sensitivity](#step_9_algorithm_sensitivity)
-* [Step 10: Execute with previous steps](#step_10_execute_with_previous_steps)
-* [Step 11: Verify your Settings](#step_11_verify_your_settings)
-* [Review: Datadog and ECS](#review_datadog_and_ecs)
-* [Review: Harness Expression Support in CV Settings](#review_harness_expression_support_in_cv_settings)
-* [Step 12: View Verification Results](#step_12_view_verification_results)
-* [Next Steps](#next_steps)
 
 ### Before You Begin
 
@@ -152,49 +134,55 @@ Expression support lets you template your Workflow verification steps. You can a
 
 Once you have deployed your workflow (or pipeline) using the Datadog verification step, you can automatically verify cloud application and infrastructure performance across your deployment. For more information, see [Add a Workflow](https://docs.harness.io/article/m220i1tnia-workflow-configuration) and [Add a Pipeline](https://docs.harness.io/article/zc1u96u6uj-pipeline-configuration).
 
-#### Workflow Verification
+### Workflow Verification
 
 To see the results of Harness machine-learning evaluation of your Datadog verification, in your workflow or pipeline deployment you can expand the **Verify Service** step and then click the **Datadog** step.
 
 ![](./static/verify-deployments-with-datadog-metrics-11.png)
 
-#### Continuous Verification
+### Continuous Verification
 
 You can also see the evaluation in the **Continuous Verification** dashboard. The workflow verification view is for the DevOps user who developed the workflow. The **Continuous Verification** dashboard is where all future deployments are displayed for developers and others interested in deployment analysis.
 
 To learn about the verification analysis features, see the following sections.
 
-##### Deployments
+#### Deployments
 
+**Deployment info:** See the verification analysis for each deployment, with information on its service, environment, pipeline, and workflows.
 
+**Verification phases and providers:** See the vertfication phases for each vertfication provider. Click each provider for logs and analysis.
 
-|  |  |
-| --- | --- |
-|  | **Deployment info:** See the verification analysis for each deployment, with information on its service, environment, pipeline, and workflows.**Verification phases and providers:** See the vertfication phases for each vertfication provider. Click each provider for logs and analysis.**Verification timeline:** See when each deployment and verification was performed. |
+**Verification timeline:** See when each deployment and verification was performed. |
 
-##### Transaction Analysis
+![](./static/_dd_00_deployments.png) 
 
+#### Transaction Analysis
 
+**Execution details:** See the details of verification execution. Total is the total time the verification step took, and Analysis duration is how long the analysis took.
 
-|  |  |
-| --- | --- |
-| **Execution details:** See the details of verification execution. Total is the total time the verification step took, and Analysis duration is how long the analysis took.**Risk level analysis:** Get an overall risk level and view the cluster chart to see events.**Transaction-level summary:** See a summary of each transaction with the query string, error values comparison, and a risk analysis summary. |  |
+**Risk level analysis:** Get an overall risk level and view the cluster chart to see events.
 
-##### Execution Analysis
+**Transaction-level summary:** See a summary of each transaction with the query string, error values comparison, and a risk analysis summary. 
 
+![](./static/_dd_01_trx-analysis.png) |
 
+#### Execution Analysis
 
-|  |  |
-| --- | --- |
-|  | **Event type:** Filter cluster chart events by Unknown Event, Unexpected Frequency, Anticipated Event, Baseline Event, and Ignore Event.**Cluster chart:** View the chart to see how the selected event contrast. Click each event to see its log details. |
+**Event type:** Filter cluster chart events by Unknown Event, Unexpected Frequency, Anticipated Event, Baseline Event, and Ignore Event.
 
-##### Event Management
+**Cluster chart:** View the chart to see how the selected event contrast. Click each event to see its log details. |
 
+![](./static/_dd_02_ex-analysis.png) 
 
+#### Event Management
 
-|  |  |
-| --- | --- |
-| **Event-level analysis:** See the threat level for each event captured.**Tune event capture:** Remove events from analysis at the service, workflow, execution, or overall level.**Event distribution:** Click the chart icon to see an event distribution including the measured data, baseline data, and event frequency. |  |
+**Event-level analysis:** See the threat level for each event captured.
+
+**Tune event capture:** Remove events from analysis at the service, workflow, execution, or overall level.
+
+**Event distribution:** Click the chart icon to see an event distribution including the measured data, baseline data, and event frequency.
+
+![](./static/_dd_03_ev-mg.png) |
 
 ### Next Steps
 

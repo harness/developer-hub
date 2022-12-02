@@ -1,7 +1,7 @@
 ---
 title: Monitor Applications 24/7 with Stackdriver Metrics
 description: Combined with Stackdriver Metrics, Harness 24/7 Service Guard monitors your live applications, catching problems that surface minutes or hours following deployment.
-# sidebar_position: 2
+sidebar_position: 30
 helpdocs_topic_id: nxy3mcw053
 helpdocs_category_id: 5mu8983wa0
 helpdocs_is_private: false
@@ -11,22 +11,6 @@ helpdocs_is_published: true
 Harness 24/7 Service Guard monitors your live applications, catching problems that surface minutes or hours following deployment.
 
 Once you have set up the Stackdriver Verification Provider in Harness, as described in [Connect to Stackdriver](stackdriver-connection-setup.md), you can add your Stackdriver **Metrics** monitoring to Harness 24/7 Service Guard in your Harness Application Environment.
-
-In this topic:
-
-* [Before You Begin](#before_you_begin)
-* [Visual Summary](#visual_summary)
-* [Step 1: Set up 24/7 Service Guard](#setup_service_guard)
-* [Step 2: Display Name](#display_name)
-* [Step 3: Service](#the_service)
-* [Step 4: GCP Cloud Provider](#gcp_cloud_provider)
-* [Step 5: Metrics to Monitor](#metrics_monitor)
-* [Step 6: Metric Name, Metric Type, and Group Name](#metric_name)
-* [Step 7: JSON Query](#metric_name)
-* [Step 8: Algorithm Sensitivity](#algorithm_sensitivity)
-* [Step 9: Enable 24/7 Service Guard](#enable_service_guard)
-* [Step 10: Verify Your Settings](#verify_settings)
-* [Next Steps](#next_steps)
 
 
 ### Before You Begin

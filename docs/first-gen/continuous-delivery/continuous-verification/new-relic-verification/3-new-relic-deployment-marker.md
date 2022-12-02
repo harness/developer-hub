@@ -1,7 +1,7 @@
 ---
 title: New Relic Deployment Marker
 description: Use the New Relic REST API v2 to record Harness deployments and then view them in the New Relic APM Deployments page.
-# sidebar_position: 2
+sidebar_position: 30
 helpdocs_topic_id: 5zh0ijlupr
 helpdocs_category_id: 1nci5420c8
 helpdocs_is_private: false
@@ -11,25 +11,10 @@ helpdocs_is_published: true
 You can use the New Relic REST API v2 to record Harness deployments and then view them in the New Relic APM **Deployments** page and in the **Event** log list on the **Overview** page. For more information, see
  [REST API Procedures](https://docs.newrelic.com/docs/apm/new-relic-apm/maintenance/record-deployments#api) from New Relic.
 
-
-In this topic:
-
-
-* [Review: New Relic Deployment Markers](#review_new_relic_deployment_markers)
-* [Step 1: Add a New Relic Verification Provider](#step_1_add_a_new_relic_verification_provider)
-* [Step 2: Add New Relic Deployment Marker](#step_2_add_new_relic_deployment_marker)
-* [YAML Example](#yaml_example)
-* [See Also](#see_also)
-
-
 ### Review: New Relic Deployment Markers
 
 
 In a Harness Workflow, you can add a **New Relic Deployment Marker** to perform the POST as part of your Workflow:
-
-
-
-
 
 ![](./static/3-new-relic-deployment-marker-34.png)
 

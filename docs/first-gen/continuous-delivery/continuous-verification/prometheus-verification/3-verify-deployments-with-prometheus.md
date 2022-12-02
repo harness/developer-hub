@@ -1,7 +1,7 @@
 ---
 title: Verify Deployments with Prometheus
 description: Harness can analyze Prometheus data to verify, rollback, and improve deployments.
-# sidebar_position: 2
+sidebar_position: 30
 helpdocs_topic_id: qkcn11esgb
 helpdocs_category_id: 177rlmujlu
 helpdocs_is_private: false
@@ -12,23 +12,6 @@ When Harness deploys a new application or service to the target environment defi
 
 Next, Harness compares this model with previous deployment models to identify anomalies or regressions. If necessary, Harness rolls back to the previous working version automatically. For more information, see [Rollback Steps](https://docs.harness.io/article/m220i1tnia-workflow-configuration#rollback_steps).
 
-In this topic:
-
-* [Before You Begin](#before_you_begin)
-* [Visual Summary](#visual_summary)
-* [Step 1: Set Up the Deployment Verification](#step_1_set_up_the_deployment_verification)
-* [Step 2: Prometheus Server](#step_2_prometheus_server)
-* [Step 3: Metrics to Monitor](#step_3_metrics_to_monitor)
-* [Step 4: Custom Thresholds](#step_4_custom_thresholds)
-* [Step 5: Analysis Time Duration](#step_5_analysis_time_duration)
-* [Step 6: Baseline for Risk Analysis](#step_6_baseline_for_risk_analysis)
-* [Step 7: Algorithm Sensitivity](#step_7_algorithm_sensitivity)
-* [Step 8: Include instances from previous phases](#step_8_include_instances_from_previous_phases)
-* [Step 9: Execute with previous steps](#step_9_execute_with_previous_steps)
-* [Step 10: Test Configuration](#step_10_test_configuration)
-* [Review: Harness Expression Support in CV Settings](#review_harness_expression_support_in_cv_settings)
-* [Step 11: View Verification Results](#step_11_view_verification_results)
-* [Next Steps](#next_steps)
 
 ### Before You Begin
 

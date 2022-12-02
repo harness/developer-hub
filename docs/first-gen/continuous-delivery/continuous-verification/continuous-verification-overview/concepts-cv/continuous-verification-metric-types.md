@@ -12,16 +12,6 @@ While adding a service verification step in your Workflow, you can select the me
 
 You can also add your Custom metrics to Harness 24/7 Service Guard in your Harness Application Environment.
 
-In this topic:
-
-* [Before You Begin](#before_you_begin)
-* [Identifying the Anomalies](#identifying_the_anomalies)
-* [Error Rate](#error_rate)
-* [Response Time](#response_time)
-* [Throughput](#throughput)
-* [Infra/Infrastructure](#infra_infrastructure)
-* [Apdex](#apdex)
-
 ### Before You Begin
 
 * See  [Continuous Verification Overview](https://www.google.com/url?q=https://docs.harness.io/article/ina58fap5y-what-is-cv&sa=D&ust=1596624436180000&usg=AOvVaw2-B986HwZG0UmYlOCU41s7).

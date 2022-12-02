@@ -34,7 +34,7 @@ For example, once you have integrated Splunk with your microservice or app, you 
 |  |  |
 | --- | --- |
 | **Verification with Splunk Enterprise** | **Harness Analysis** |
-|  |  |
+| ![](./static/splunk-left.png) | ![](./static/splunk-right.png) |
 
 ### Integration Process Summary
 

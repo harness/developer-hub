@@ -1,7 +1,7 @@
 ---
 title: Verify Deployments with CloudWatch
 description: Harness can analyze CloudWatch data to verify, rollback, and improve deployments.
-# sidebar_position: 2
+sidebar_position: 10
 helpdocs_topic_id: awerepjwlc
 helpdocs_category_id: wyuv3zocfk
 helpdocs_is_private: false
@@ -13,28 +13,6 @@ The following procedure describes how to add CloudWatch as a verification step i
 Once you run a deployment and CloudWatch preforms verification, Harness' machine-learning verification analysis will assess the risk level of the deployment.
 
 In order to obtain the names of the host(s), pod(s), or container(s) where your service is deployed, the verification provider should be added to your workflow **after** you have run at least one successful deployment.You cannot configure CloudWatch Deployment Verification for AWS ALB and AWS EKS.
-### In this topic:
-
-* [Before You Begin](#before_you_begin)
-* [Visual Summary](#visual_summary)
-* [Step 1: Set up the Deployment Verification](#setup_verification)
-* [Step 2: CloudWatch Server](#cloudwatch_server)
-* [Step 3: Region](#region)
-* [Step 4: Lambda](#lambda)
-* [Step 5: EC2 Metrics](#ec2_metrics)
-* [Step 6: ECS Metrics](#ecs_metrics)
-* [Step 7: ELB Metrics](#elb_metrics)
-* [Step 8: Load Balancers](#load_balancers)
-* [Step 9: Metrics Name](#metrics_name)
-* [Step 10: Expression for Host/Container name](#expression_for_host/container_name)
-* [Step 11: Analysis Time Duration](#analysis_time_duration)
-* [Step 12: Baseline for Risk Analysis](#baseline_for_risk_analysis)
-* [Step 13: Execute with previous steps](#execute_with_previous_steps)
-* [Step 14: Verify Your Configuration](#verify_configuration)
-* [Step 15: View Verification Results](#view_results)
-* [Harness Expression Support in CV Settings](#harness_expression_support_in_cv_settings)
-* [Next Steps](#next_steps)
-
 
 ### Before You Begin
 

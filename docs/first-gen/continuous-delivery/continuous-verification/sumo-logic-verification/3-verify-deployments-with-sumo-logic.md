@@ -1,7 +1,7 @@
 ---
 title: Verify Deployments with Sumo Logic
 description: Harness can analyze Sumo Logic metrics to verify, rollback, and improve deployments.
-# sidebar_position: 2
+sidebar_position: 30
 helpdocs_topic_id: jwfw9qy5it
 helpdocs_category_id: ux6clfhfhz
 helpdocs_is_private: false
@@ -10,25 +10,8 @@ helpdocs_is_published: true
 
 Harness can analyze Sumo Logic data to verify, rollback, and improve deployments. To apply this analysis to your deployments, you set up Sumo Logic as a verification step in a Harness Workflow. This section covers how to do so, and provides a summary of Harness verification results.
 
-In order to obtain the names of the host(s), pod(s), or container(s) where your service is deployed, the verification provider should be added to your Workflow *after* you have run at least one successful deployment.In this topic:
+In order to obtain the names of the host(s), pod(s), or container(s) where your service is deployed, the verification provider should be added to your Workflow *after* you have run at least one successful deployment.
 
-* [Before You Begin](#before_you_begin)
-* [Visual Summary](#visual_summary)
-* [Step 1: Set Up the Deployment Verification](#step_1_set_up_the_deployment_verification)
-* [Step 2: Sumo Logic Server](#step_2_sumo_logic_server)
-* [Step 3: Search Keywords](#step_3_search_keywords)
-* [Step 4: Field name for Host/Container](#step_4_field_name_for_host_container)
-* [Step 5: Expression for Host/Container name](#step_5_expression_for_host_container_name)
-* [Step 6: Analysis Time duration](#step_6_analysis_time_duration)
-* [Step 7: Baseline for Risk Analysis](#step_7_baseline_for_risk_analysis)
-* [Step 8: Baseline for Predictive Analysis](#step_8_baseline_for_predictive_analysis)
-* [Step 9: Algorithm Sensitivity](#step_9_algorithm_sensitivity)
-* [Step 10: Execute with previous steps](#step_10_execute_with_previous_steps)
-* [Step 11: Include instances from previous phases](#step_11_include_instances_from_previous_phases)
-* [Step 12: Verify your Settings](#step_12_verify_your_settings)
-* [Review: Harness Expression Support in CV Settings](#review_harness_expression_support_in_cv_settings)
-* [Step 13: View Verification Results](#step_13_view_verification_results)
-* [Next Steps](#next_steps)
 
 ### Before You Begin
 

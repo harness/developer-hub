@@ -10,12 +10,6 @@ helpdocs_is_published: true
 
 This topic describes how to set up Harness' Continuous Verification features, and monitor your deployments and production applications using its unsupervised machine-learning functionality, on Prometheus.
 
-In this topic:
-
-* [Visual Summary](#visual_summary)
-* [Integration Process Summary](#integration_process_summary)
-* [Next Steps](#next_steps)
-
 ### Visual Summary
 
 Prometheus uses a multi-dimensional data model with time-series data and key/value pairs, along with a flexible query language to leverage this dimensionality. Prometheus records any numeric time series, such as machine-centric monitoring and the monitoring of highly dynamic service-oriented architectures. For microservices, Prometheus support for multi-dimensional data collection and querying is very useful.

@@ -1,7 +1,7 @@
 ---
 title: Monitor Applications 24/7 with Sumo Logic
 description: Combined with Sumo Logic, Harness 24/7 Service Guard monitors your live applications, catching problems that surface minutes or hours following deployment.
-# sidebar_position: 2
+sidebar_position: 20
 helpdocs_topic_id: cj2a2sb65g
 helpdocs_category_id: ux6clfhfhz
 helpdocs_is_private: false
@@ -12,18 +12,7 @@ Harness 24/7 Service Guard monitors your live applications, catching problems th
 
 You can add your Sumo Logic monitoring to Harness 24/7 Service Guard in your Harness Application Environment. For a setup overview, see  [Connect to Sumo Logic](1-sumo-logic-connection-setup.md).
 
-For more information on 24/7 Service Guard, see [24/7 Service Guard](https://docs.harness.io/article/l5ky4p140j-24-x-7-service-guard).In this topic:
-
-* [Before You Begin](#before_you_begin)
-* [Visual Summary](#visual_summary)
-* [Step 1: Title](#simple_slug)
-* [Step 2: Display Name](#step_2_display_name)
-* [Step 3: Service](#step_3_service)
-* [Step 4: Sumo Server](#step_4_sumo_server)
-* [Step 5: Search Keywords](#step_5_search_keywords)
-* [Step 6: Enable 24/7 Service Guard](#step_6_enable_24_7_service_guard)
-* [Step 7: Verify Your Settings](#step_7_verify_your_settings)
-* [Next Steps](#next_steps)
+For more information on 24/7 Service Guard, see [24/7 Service Guard](https://docs.harness.io/article/l5ky4p140j-24-x-7-service-guard).
 
 ### Before You Begin
 

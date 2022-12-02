@@ -1,7 +1,7 @@
 ---
 title: Verify Deployments with AppDynamics as a Custom APM
 description: After adding AppDynamics as a Custom Verification Provider, you can use it as a verification step in a Workflow.
-# sidebar_position: 2
+sidebar_position: 90
 helpdocs_topic_id: 0qvier4m49
 helpdocs_category_id: ep5nt3dyrb
 helpdocs_is_private: false
@@ -10,29 +10,6 @@ helpdocs_is_published: true
 
 After adding AppDynamics as a Custom Verification Provider, you can use it as a verification step in a Workflow. The following sections outline how to select the AppDynamics metrics you need.
 
-In this topic:
-
-* [Before You Begin](#before_you_begin)
-* [Step 1: Set Up the Deployment Verification](#step_1_set_up_the_deployment_verification)
-* [Step 2: Metrics Data Server](#step_2_metrics_data_server)
-* [Step 3: Metric Type](#step_3_metric_type)
-* [Step 4: Metric Collections](#step_4_metric_collections)
-* [Step 5: Metrics Name](#step_5_metrics_name)
-* [Step 6: Metrics Type](#step_6_metrics_type)
-* [Step 7: Metrics Collection URL](#step_7_metrics_collection_url)
-* [Step 8: Metrics Method](#metrics_method_settings)
-* [Step 9: Transaction Name](#step_9_transaction_name)
-* [Step 10: Name](#step_10_name)
-* [Step 11: Metrics Value](#step_11_metrics_value)
-* [Step 12: Timestamp](#step_12_timestamp)
-* [Step 13: Timestamp Format](#step_13_timestamp_format)
-* [Step 14: Expression for Host/Container Name](#step_14_expression_for_host_container_name)
-* [Step 15: Analysis Time Duration](#step_15_analysis_time_duration)
-* [Step 16: Data Collection Interval](#step_16_data_collection_interval)
-* [Step 17: Baseline for Risk Analysis](#step_17_baseline_for_risk_analysis)
-* [Step 18: Algorithm for Sensitivity](#step_18_algorithm_for_sensitivity)
-* [Step 19: Include instances from previous phases](#step_19_include_instances_from_previous_phases)
-* [Step 20: Execute with previous steps](#step_20_execute_with_previous_steps)
 
 ### Before You Begin
 

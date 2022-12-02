@@ -1,7 +1,7 @@
 ---
 title: Connect to Elasticsearch (ELK)
 description: Connect Harness to Elasticsearch and verify the success of your deployments and live microservices.
-# sidebar_position: 2
+sidebar_position: 10
 helpdocs_topic_id: dagmgqw5ag
 helpdocs_category_id: ytuafly1jg
 helpdocs_is_private: false
@@ -12,16 +12,6 @@ The first step in using Elasticsearch (ELK) with Harness is to set up an Elastic
 
 A Harness Verification Provider is a connection to monitoring tools, such as Elasticsearch. Once Harness is connected, you can use Harness 24/7 Service Guard and Deployment Verification with your Elasticsearch data and analysis.
 
-In this topic:
-
-* [Before You Begin](#before_you_begin)
-* [Step 1: Add Elasticsearch (ELK) Verification Provider](#step_1_add_elasticsearch_elk_verification_provider)
-* [Step 2: Display Name](#step_2_display_name)
-* [Step 3: URL](#step_3_url)
-* [Step 4: Username and Encrypted Password](#step_4_username_and_encrypted_password)
-* [Step 5: Token](#step_5_token)
-* [Step 6: Usage Scope](#step_6_usage_scope)
-* [Next Steps](#next_steps)
 
 ### Before You Begin
 
@@ -33,7 +23,9 @@ To add Elasticsearch as a Harness Verification Provider, do the following:
 
 1. In Harness, click **Setup**.
 2. Click **Connectors**, and then click **Verification Providers**.
-3. Click **Add Verification Provider**, and select **ELK**. The **Add ELK Verification Provider** dialog for your provider appears.![](./static/1-elasticsearch-connection-setup-03.png)
+3. Click **Add Verification Provider**, and select **ELK**. The **Add ELK Verification Provider** dialog for your provider appears.
+
+   ![](./static/1-elasticsearch-connection-setup-03.png)
 
 ### Step 2: Display Name
 

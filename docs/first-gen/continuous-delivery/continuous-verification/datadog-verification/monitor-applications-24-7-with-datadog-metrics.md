@@ -1,7 +1,7 @@
 ---
 title: Monitor Applications 24/7 with Datadog Metrics
 description: Combined with DataDog, Harness 24/7 Service Guard monitors your live applications, catching problems that surface minutes or hours following deployment.
-# sidebar_position: 2
+sidebar_position: 30
 helpdocs_topic_id: 16lntd8abz
 helpdocs_category_id: x9hs9wviib
 helpdocs_is_private: false
@@ -67,13 +67,13 @@ Select the Docker container infrastructure metrics to monitor.
 
 1. In **Datadog Tags**, enter any tags that have been applied to your metrics in Datadog. These are the same tags used in Datadog Events, Metrics Explorer, etc.
 
-[![](./static/monitor-applications-24-7-with-datadog-metrics-33.png)](./static/monitor-applications-24-7-with-datadog-metrics-33.png)
+   [![](./static/monitor-applications-24-7-with-datadog-metrics-33.png)](./static/monitor-applications-24-7-with-datadog-metrics-33.png)
 
-[![](./static/monitor-applications-24-7-with-datadog-metrics-35.png)](./static/monitor-applications-24-7-with-datadog-metrics-35.png)
+   [![](./static/monitor-applications-24-7-with-datadog-metrics-35.png)](./static/monitor-applications-24-7-with-datadog-metrics-35.png)
 
-Use the Datadog tag format, such as `cluster-name:harness-test`.
+   Use the Datadog tag format, such as `cluster-name:harness-test`.
 
-1. In **Metrics**, select the Docker metrics to use.
+2. In **Metrics**, select the Docker metrics to use.
 
 ### Step 8: ECS Metrics
 

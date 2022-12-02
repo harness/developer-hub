@@ -8,21 +8,16 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Use Custom Thresholds to define **Ignore Hints** rules that instruct Harness to remove certain metrics/value combinations from 24/7 Service Guard analysis. This topic covers:
-
-* [Before You Begin](#before_you_begin)
-* [Step 1: Invoke Custom Thresholds](#invoke)
-* [Step 2: Define a Rule](#define_rule)
-* [Step 3: Select Criteria](#select_criteria)
-* [Step 4: Add Rules and Save](#repeat_save)
-* [Next Steps](#next_steps)
-
+Use Custom Thresholds to define **Ignore Hints** rules that instruct Harness to remove certain metrics/value combinations from 24/7 Service Guard analysis. 
 
 ### Before You Begin
 
 * See [24/7 Service Guard Overview](set-up-service-guard.md).
 * In your Application's Environment, select **24/7 Service Guard** > **Add Service Verification**.
-* Select a verification provider compatible with Custom Thresholds.Harness currently supports Custom Thresholds with [Prometheus](../prometheus-verification/2-24-7-service-guard-for-prometheus.md) and [Custom APMs](../custom-metrics-and-logs-verification/custom-verification-overview.md).![](./static/custom-thresholds-24-7-00.png)
+* Select a verification provider compatible with Custom Thresholds.Harness currently supports Custom Thresholds with [Prometheus](../prometheus-verification/2-24-7-service-guard-for-prometheus.md) and [Custom APMs](../custom-metrics-and-logs-verification/custom-verification-overview.md).
+
+  ![](./static/custom-thresholds-24-7-00.png)
+  
 * Configure at least one Metrics Collection for this verification provider.
 
 
@@ -30,8 +25,13 @@ Use Custom Thresholds to define **Ignore Hints** rules that instruct Harness to 
 
 To begin defining one or more Ignore Hints:
 
-1. In the configuration dialog for your selected 24/7 Service Guard verification provider, click the pencil icon shown below.![](./static/custom-thresholds-24-7-01.png)
-2. In the resulting dialog, click **Add Threshold** to begin defining a rule, as shown below.![](./static/custom-thresholds-24-7-02.png)
+1. In the configuration dialog for your selected 24/7 Service Guard verification provider, click the pencil icon shown below.
+
+   ![](./static/custom-thresholds-24-7-01.png)
+   
+2. In the resulting dialog, click **Add Threshold** to begin defining a rule, as shown below.
+
+   ![](./static/custom-thresholds-24-7-02.png)
 
 
 ### Step 2: Define a Rule

@@ -1,7 +1,7 @@
 ---
 title: Monitor Applications 24/7 with New Relic
 description: Combined with New Relic, Harness 24/7 Service Guard monitors your live applications, catching problems that surface minutes or hours following deployment.
-# sidebar_position: 2
+sidebar_position: 20
 helpdocs_topic_id: eke3rf093v
 helpdocs_category_id: 1nci5420c8
 helpdocs_is_private: false
@@ -12,20 +12,8 @@ Harness 24/7 Service Guard monitors your live applications, catching problems th
 
 You can add your New Relic monitoring to Harness 24/7 Service Guard in your Harness Application Environment. For a setup overview, see [Connect to New Relic](1-new-relic-connection-setup.md).
 
-This section assumes you have a Harness Application set up and containing a Service and Environment. For steps on setting up a Harness Application, see [Application Components](https://docs.harness.io/article/bucothemly-application-configuration).In this topic:
+This section assumes you have a Harness Application set up and containing a Service and Environment. For steps on setting up a Harness Application, see [Application Components](https://docs.harness.io/article/bucothemly-application-configuration).
 
-* [Before You Begin](#before_you_begin)
-* [Visual Summary](#visual_summary)
-* [Step 1: Set Up 24/7 Service Guard for New Relic](#step_1_set_up_24_7_service_guard_for_new_relic)
-* [Step 2: Display Name](#step_2_display_name)
-* [Step 3: Service](#step_3_service)
-* [Step 4: New Relic Server](#step_4_new_relic_server)
-* [Step 5: Application Name](#step_5_application_name)
-* [Step 6: Custom Thresholds](#step_6_custom_thresholds)
-* [Step 7: Algorithm Sensitivity](#step_7_algorithm_sensitivity)
-* [Step 8: Enable 24/7 Service Guard](#step_8_enable_24_7_service_guard)
-* [Step 9: Verify Settings](#step_9_verify_settings)
-* [Next Steps](#next_steps)
 
 ### Before You Begin
 
@@ -107,7 +95,7 @@ When you are finished, the dialog will look something like this:
 1. Click **Test**. Harness verifies the settings you entered.
 2. Click **Submit**. New Relic is configured now configured for 24/7 Service Guard monitoring.
 
-![](./static/2-24-7-service-guard-for-new-relic-43.png)
+   ![](./static/2-24-7-service-guard-for-new-relic-43.png)
 
 To see the running 24/7 Service Guard analysis, click **Continuous Verification**.
 

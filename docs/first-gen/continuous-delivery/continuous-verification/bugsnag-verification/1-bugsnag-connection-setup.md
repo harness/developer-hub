@@ -1,7 +1,7 @@
 ---
 title: Connect to Bugsnag
 description: Connect Harness to Bugsnag and verify the success of your deployments and live microservices.
-# sidebar_position: 2
+sidebar_position: 10
 helpdocs_topic_id: dml2vk0ec3
 helpdocs_category_id: zfre1xei7u
 helpdocs_is_private: false
@@ -11,16 +11,6 @@ helpdocs_is_published: true
 The first step in using Bugsnag with Harness is to set up an Bugsnag Verification Provider in Harness.
 
 A Harness Verification Provider is a connection to monitoring tools such as Bugsnag. Once Harness is connected, you can use Harness 24/7 Service Guard and Deployment Verification with your Bugsnag data and analysis.
-
-In this topic:
-
-* [Before You Begin](#before_you_begin)
-* [Step 1: Add Bugsnag Verification Provider](#step_1_add_bugsnag_verification_provider)
-* [Step 2: Bugsnag URL](#step_2_bugsnag_url)
-* [Step 3: Encrypted Auth Token](#step_3_encrypted_auth_token)
-* [Step 4: Display Name](#step_4_display_name)
-* [Step 5: Usage Scope](#step_5_usage_scope)
-* [Next Steps](#next_steps)
 
 ### Before You Begin
 
@@ -34,7 +24,9 @@ To add Bugsnag as a verification provider, do the following:
 2. Click **Connectors**, and then click **Verification Providers**.
 3. Click **Add Verification Provider**, and select **Bugsnag**. The **Add Bugsnag Verification Provider** dialog for your provider appears.
 
-![](./static/1-bugsnag-connection-setup-00.png)The **Add Bugsnag Verification Provider** dialog has the following fields.
+   ![](./static/1-bugsnag-connection-setup-00.png)
+
+The **Add Bugsnag Verification Provider** dialog has the following fields.
 
 ### Step 2: Bugsnag URL
 

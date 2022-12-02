@@ -1,7 +1,7 @@
 ---
 title: Verify Deployments with Stackdriver Metrics
 description: Harness can analyze Stackdriver data and analysis to verify, rollback, and improve deployments. Set up Stackdriver as a verification step in a Harness…
-# sidebar_position: 2
+sidebar_position: 50
 helpdocs_topic_id: m0j49kz112
 helpdocs_category_id: 5mu8983wa0
 helpdocs_is_private: false
@@ -13,22 +13,6 @@ Harness can analyze Stackdriver data and analysis to verify, rollback, and impro
 This topic covers the process to set up Stackdriver Metrics in a Harness Workflow, and provides a summary of Harness verification results.
 
 In order to obtain the names of the host(s), pod(s), or container(s) where your service is deployed, the verification provider should be added to your workflow *after* you have run at least one successful deployment.
-
-### In this topic:
-
-* [Before You Begin](#before_you_begin)
-* [Visual Summary](#visual_summary)
-* [Step 1: Set up the Deployment Verification](#step_1_set_up_the_deployment_verification)
-* [Step 2: Metrics to Monitor](#step_2_metrics_to_monitor)
-* [Step 3: Metric Name, Metric Type, and Group Name](#step_3_metric_name_metric_type_and_group_name)
-* [Step 4: JSON Query](#step_4_json_query)
-* [Step 5: Analysis Time Duration](#step_5_analysis_time_duration)
-* [Step 6: Baseline for Risk Analysis](#step_6_baseline_for_risk_analysis)
-* [Step 7: Execute with Previous Steps](#step_7_execute_with_previous_steps)
-* [Step 8: Verify Your Settings](#step_8_verify_your_settings)
-* [Review: Harness Expression Support in CV Settings](#review_harness_expression_support_in_cv_settings)
-* [Step 9: View Verification Results](#step_9_view_verification_results)
-* [Next Steps](#next_steps)
 
 ### Before You Begin
 

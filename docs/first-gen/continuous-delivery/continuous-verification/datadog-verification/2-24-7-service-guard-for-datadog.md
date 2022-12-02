@@ -1,7 +1,7 @@
 ---
 title: Monitor Applications 24/7 with Datadog Logging
 description: Combined with DataDog, Harness 24/7 Service Guard monitors your live applications, catching problems that surface minutes or hours following deployment.
-# sidebar_position: 2
+sidebar_position: 20
 helpdocs_topic_id: j1b1fhh592
 helpdocs_category_id: x9hs9wviib
 helpdocs_is_private: false
@@ -12,20 +12,7 @@ Harness 24/7 Service Guard monitors your live applications, catching problems th
 
 You can add your Datadog monitoring to Harness 24/7 Service Guard in your Harness Application Environment. For a setup overview, see [Connect to Datadog](1-datadog-connection-setup.md).
 
-This section assumes you have a Harness Application set up and containing a Service and Environment. For steps on setting up a Harness Application, see [Application Checklist](https://docs.harness.io/article/bucothemly-application-configuration).In this topic:
-
-* [Before You Begin](#before_you_begin)
-* [Visual Summary](#visual_summary)
-* [Step 1: Set Up 24/7 Service Guard](#step_1_set_up_24_7_service_guard)
-* [Step 2: Display Name](#step_2_display_name)
-* [Step 3: Service](#step_3_service)
-* [Step 4: Datadog Server](#step_4_datadog_server)
-* [Step 5: Log Verification](#step_5_log_verification)
-* [Step 6: Search Keywords](#step_6_search_keywords)
-* [Step 7: Field Name for Host/Containers](#step_7_field_name_for_host_containers)
-* [Step 8: Enable 24/7 Service Guard](#step_8_enable_24_7_service_guard)
-* [Step 9: Verify your Settings](#step_9_verify_your_settings)
-* [Next Steps](#next_steps)
+This section assumes you have a Harness Application set up and containing a Service and Environment. For steps on setting up a Harness Application, see [Application Checklist](https://docs.harness.io/article/bucothemly-application-configuration).
 
 ### Before You Begin
 
@@ -89,7 +76,7 @@ Enable this setting to turn on 24/7 Service Guard. If you simply want to set up 
 1. Click **Test**. Harness verifies the settings you entered.![](./static/2-24-7-service-guard-for-datadog-14.png)
 2. Click **Submit**. The Datadog 24/7 Service Guard is added.
 
-![](./static/2-24-7-service-guard-for-datadog-15.png)To see the running 24/7 Service Guard analysis, click **Continuous Verification**.
+   ![](./static/2-24-7-service-guard-for-datadog-15.png)To see the running 24/7 Service Guard analysis, click **Continuous Verification**.
 
 The 24/7 Service Guard dashboard displays the production verification results.
 

@@ -1,7 +1,7 @@
 ---
 title: Monitor Applications 24/7 with Bugsnag
 description: Combined with Bugsnag, Harness 24/7 Service Guard monitors your live applications, catching problems that surface minutes or hours following deployment.
-# sidebar_position: 2
+sidebar_position: 20
 helpdocs_topic_id: 4usahbjhp6
 helpdocs_category_id: zfre1xei7u
 helpdocs_is_private: false
@@ -12,20 +12,7 @@ Harness 24/7 Service Guard monitors your live applications, catching problems th
 
 You can add your Bugsnag monitoring to Harness 24/7 Service Guard in your Harness Application Environment. For a setup overview, see .
 
-This section assumes you have a Harness Application set up and containing a Service and Environment. For steps on setting up a Harness Application, see [Application Checklist](https://docs.harness.io/article/bucothemly-application-configuration).In this topic:
-
-* [Before You Begin](#before_you_begin)
-* [Step 1: Set Up 24/7 Service Guard for Bugsnag](#step_1_set_up_24_7_service_guard_for_bugsnag)
-* [Step 1: Display Name](#step_2_display_name)
-* [Step 2: Service](#step_3_service)
-* [Step 3: Bugsnag Server](#step_4_bugsnag_server)
-* [Step 4: Organization ID](#step_5_organization_id)
-* [Step 5: Project ID](#step_6_project_id)
-* [Step 6: Release Stage](#step_7_release_stage)
-* [Step 7: Search Keywords](#step_8_search_keywords)
-* [Step 8: Browser Application](#step_9_browser_application)
-* [Step 9: Baseline](#step_10_baseline)
-* [Next Steps](#next_steps)
+This section assumes you have a Harness Application set up and containing a Service and Environment. For steps on setting up a Harness Application, see [Application Checklist](https://docs.harness.io/article/bucothemly-application-configuration).
 
 ### Before You Begin
 
@@ -43,14 +30,14 @@ To set up 24/7 Service Guard for Bugsnag, do the following:
 5. Click the Environment for your Service. Typically, the **Environment Type** is **Production**.
 6. In the **Environment** page, locate **24/7 Service Guard**.
 
-[![](./static/2-24-7-service-guard-for-bugsnag-23.png)](./static/2-24-7-service-guard-for-bugsnag-23.png)
+   [![](./static/2-24-7-service-guard-for-bugsnag-23.png)](./static/2-24-7-service-guard-for-bugsnag-23.png)
 
 
 7. In **24/7 Service Guard**, click **Add Service Verification**, and then click **Bugsnag**.![](./static/2-24-7-service-guard-for-bugsnag-25
 
   The **Bugsnag** dialog appears.
 
-![](./static/2-24-7-service-guard-for-bugsnag-26.png)
+  ![](./static/2-24-7-service-guard-for-bugsnag-26.png)
 
 Fill out the dialog. The **Bugsnag** dialog has the following fields.
 

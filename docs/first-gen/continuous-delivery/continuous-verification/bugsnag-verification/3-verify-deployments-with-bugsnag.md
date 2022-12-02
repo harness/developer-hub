@@ -1,7 +1,7 @@
 ---
 title: Verify Deployments with Bugsnag
 description: Harness can analyze Bugsnag data and analysis to verify, rollback, and improve deployments.
-# sidebar_position: 2
+sidebar_position: 30
 helpdocs_topic_id: 2tfwoxl1dj
 helpdocs_category_id: zfre1xei7u
 helpdocs_is_private: false
@@ -66,13 +66,13 @@ Select the Bugsnag verification provider you added to Harness, as described abov
 
 Select the **Organization ID** for your Bugsnag account. In Bugsnag, this is the **Organization name** in the account's **Organization** page:
 
-[![](./static/3-verify-deployments-with-bugsnag-14.png)](./static/3-verify-deployments-with-bugsnag-14png)
+[![](./static/3-verify-deployments-with-bugsnag-14.png)](./static/3-verify-deployments-with-bugsnag-14.png)
 
 ### Step 4: Project ID
 
 Select the Project ID for the Bugsnag project you want to use. In Bugsnag, this is the **Project Name** in the **Projects** page:
 
-[![](./static/3-verify-deployments-with-bugsnag-16.png)](./static/3-verify-deployments-with-bugsnag-16png)
+[![](./static/3-verify-deployments-with-bugsnag-16.png)](./static/3-verify-deployments-with-bugsnag-16.png)
 
 ### Step 5: Release Stage
 
@@ -86,7 +86,7 @@ Click the checkbox to have Harness ignore host/node deployment events and focus 
 
 If you do not enable the **Browser Application** checkbox, Harness will use the host/node/container event data Bugsnag captures. Add a variable that evaluates to the hostname value in the **host** field of event messages. For example, in a Bugsnag message in a Harness deployment verification, if you look at a event message, you will see a **hosts** field:
 
-[![](./static/3-verify-deployments-with-bugsnag-18.png)](./static/3-verify-deployments-with-bugsnag-18png)
+[![](./static/3-verify-deployments-with-bugsnag-18.png)](./static/3-verify-deployments-with-bugsnag-18.png)
 
 Next, look in the JSON for the host/container/pod in the deployment environment and identify the label containing the same hostname. The path to that label is what the expression should be in **Expression for Host/Container name**. The default variable is **${instance.host.hostName}**. In most cases, this expression will work.
 

@@ -29,7 +29,7 @@ Harness applies unsupervised machine learning (Hidden Markov models and Symbolic
 |  |  |
 | --- | --- |
 | **Analysis with Dynatrace** | **Harness Analysis** |
-|  |  |
+| ![](./static/dynatrace-left.png) | ![](./static/dynatrace-right.png) |
 
 ### Integration Process Summary
 

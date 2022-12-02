@@ -1,7 +1,7 @@
 ---
 title: Verify Deployments with Datadog as a Custom APM
 description: To solve [problem], [solution] [benefit of feature]. In this topic --  Before You Begin. Step 1 --  Set Up the Deployment Verification. Step 2 --  Metric Collections. Step 3 --  Metrics Name. Step 4 --  Metrics Typ…
-# sidebar_position: 2
+sidebar_position: 70
 helpdocs_topic_id: h2crh8rvbr
 helpdocs_category_id: ep5nt3dyrb
 helpdocs_is_private: false
@@ -10,26 +10,6 @@ helpdocs_is_published: true
 
 To solve [problem], [solution] [benefit of feature].
 
-In this topic:
-
-* [Before You Begin](#before_you_begin)
-* [Step 1: Set Up the Deployment Verification](#step_1_set_up_the_deployment_verification)
-* [Step 2: Metric Collections](#step_2_metric_collections)
-* [Step 3: Metrics Name](#step_3_metrics_name)
-* [Step 4: Metrics Type](#step_4_metrics_type)
-* [Step 5: Metrics Collection URL](#step_5_metrics_collection_url)
-* [Step 6: Metrics Method](#step_6_metrics_method)
-* [Step 7: Response Mapping](#step_7_response_mapping)
-* [Step 8: Transaction Name](#step_8_transaction_name)
-* [Step 9: Name](#step_9_name)
-* [Step 10: Metrics Value](#step_10_metrics_value)
-* [Step 11: Timestamp](#step_11_timestamp)
-* [Step 12: Timestamp Format](#step_12_timestamp_format)
-* [Step 13: Canary Analysis](#step_13_canary_analysis)
-* [Step 14: Previous Analysis](#step_14_previous_analysis)
-* [Step 15: Failure Criteria](#step_15_failure_criteria)
-* [Step 16: Data Collection Interval](#step_16_data_collection_interval)
-* [Review: Verification Results](#review_verification_results)
 
 ### Before You Begin
 
@@ -175,23 +155,25 @@ You can also see the evaluation in the **Continuous Verification** dashboard. Th
 
 To learn about the verification analysis features, see the following sections.
 
-##### Transaction Analysis
+#### Transaction Analysis
 
+**Execution details:** See the details of verification execution. Total is the total time the verification step took, and Analysis duration is how long the analysis took.
 
+**Risk level analysis:** Get an overall risk level and view the cluster chart to see events.
 
-|  |  |
-| --- | --- |
-| **Execution details:** See the details of verification execution. Total is the total time the verification step took, and Analysis duration is how long the analysis took.**Risk level analysis:** Get an overall risk level and view the cluster chart to see events.**Transaction-level summary:** See a summary of each transaction with the query string, error values comparison, and a risk analysis summary. |  |
+**Transaction-level summary:** See a summary of each transaction with the query string, error values comparison, and a risk analysis summary. 
 
-##### Execution Analysis
+![](./static/_verify-ddog-00-trx-anal.png)
 
+#### Execution Analysis
 
+**Event type:** Filter cluster chart events by Unknown Event, Unexpected Frequency, Anticipated Event, Baseline Event, and Ignore Event.
 
-|  |  |
-| --- | --- |
-|  | **Event type:** Filter cluster chart events by Unknown Event, Unexpected Frequency, Anticipated Event, Baseline Event, and Ignore Event.**Cluster chart:** View the chart to see how the selected event contrasts with anticipated events. Click each event to see its log details. |
+**Cluster chart:** View the chart to see how the selected event contrasts with anticipated events. Click each event to see its log details.
 
-##### Event Management
+![](./static/_verify-ddog-01-ex-anal.png)
+
+#### Event Management
 
 
 

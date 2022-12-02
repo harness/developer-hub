@@ -1,7 +1,7 @@
 ---
 title: Verify Deployments with Logz.io
 description: Verify, rollback, and improve deployments with Harness and Logz.io.
-# sidebar_position: 2
+sidebar_position: 20
 helpdocs_topic_id: vbl1xlad1e
 helpdocs_category_id: j3m3gbxk88
 helpdocs_is_private: false
@@ -12,21 +12,7 @@ Harness can analyze Logz.io data and analysis to verify, rollback, and improve d
 
 This topic covers the process to set up Logz.io in a Harness Workflow, and provides a summary of Harness verification results.
 
-In order to obtain the names of the host(s), pod(s), or container(s) where your service is deployed, the verification provider should be added to your Workflow *after* you have run at least one successful deployment.In this topic:
-
-* [Before You Begin](verify-deployments-with-logz-io.md#before-you-begin)
-* [Limitations](verify-deployments-with-logz-io.md#limitations)
-* [Step 1: Set up Deployment Verification](verify-deployments-with-logz-io.md#step-1-set-up-deployment-verification)
-* [Step 2: Select Logz Server](verify-deployments-with-logz-io.md#step-2-select-logz-server)
-* [Step 3: Query](verify-deployments-with-logz-io.md#step-3-query)
-* [Step 4: Query Type](verify-deployments-with-logz-io.md#step-4-query-type)
-* [Step 5: Hostname Field](verify-deployments-with-logz-io.md#step-5-hostname-field)
-* [Step 6: Message](verify-deployments-with-logz-io.md#step-6-message)
-* [Step 7: Timestamp Format](verify-deployments-with-logz-io.md#step-7-timestamp-format)
-* [Step 8: Expression for Host/Container name](verify-deployments-with-logz-io.md#step-8-expression-for-host-container-name)
-* [Step 9: Analysis Time Duration](verify-deployments-with-logz-io.md#step-9-analysis-time-duration)
-* [Step 10: Baseline for Risk Analysis](verify-deployments-with-logz-io.md#step-5-baseline-for-risk-analysis)
-* [Harness Expression Support in CV Settings](verify-deployments-with-logz-io.md#harness-expression-support-in-cv-settings)
+In order to obtain the names of the host(s), pod(s), or container(s) where your service is deployed, the verification provider should be added to your Workflow *after* you have run at least one successful deployment.
 
 ### Before You Begin
 
