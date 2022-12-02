@@ -256,4 +256,4 @@ pipeline:
 1. In the **Pipeline Studio**, select **Run**.
 2. Select **Git Branch** as the **Build Type**, and then enter `main` in the **Branch Name** field.
 3. Select **Run Pipeline**.
-4. Observe each step of the pipeline execution. When the first stage completes, test results will appear in the **Tests** tab. When the second stage completes, you should see the successful `curl` command in the final step.
+4. Observe each step of the pipeline execution. When the first stage completes, test results appear in the **Tests** tab. When the second stage completes, you should see the successful `curl` command in the final step.
