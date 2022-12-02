@@ -9,7 +9,7 @@ Harness Chaos Engineering is updated regularly. Review the notes below for detai
 Harness deploys updates progressively to different Harness cluster hosting accounts. The features and fixes in the release notes may not be available in your cluster immediately.
 :::
 
-# December 2, 2022, 0.4.2
+# December 2, 2022, version 0.4.2
 
 ## What’s New
 
