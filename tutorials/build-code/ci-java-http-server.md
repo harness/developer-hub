@@ -4,7 +4,7 @@ description: This build automation guide walks you through building and testing 
 keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial]
 ---
 
-# Build, Test and Publish Java HTTP Server Application
+# Build, test, and publish a Docker Image for a Java HTTP server application
 
 In this tutorial, you will build, test and publish a Docker image for a Java HTTP server application, then run a connectivity test using the published image.
 
