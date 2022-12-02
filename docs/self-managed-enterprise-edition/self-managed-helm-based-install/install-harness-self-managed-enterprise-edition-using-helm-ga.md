@@ -28,7 +28,7 @@ Use the following procedure to add a load balancer.
 
 **To add the URL for a load balancer**
 
-1. In the values.yaml file, set the global.loadbalancerURL field to the URL of your load balancer. This is the URL you use for Harness.
+1. In the values.yaml file, set the `global.loadbalancerURL` field to the URL of your load balancer. This is the URL you use for Harness.
 
    ```
    global:  
@@ -43,7 +43,7 @@ Use the following procedure to add a load balancer.
 
 ### Deploy Harness modules
 
-Harness Helm chart includes Harness Platform components.You can add modules by editing the override.yaml file.
+Harness Helm chart includes Harness Platform components. You can add modules by editing the override.yaml file.
 
 The following components are enabled by default:
 
@@ -51,7 +51,7 @@ The following components are enabled by default:
 * Harness CI
 * Harness Security Testing Orchestration (STO)
 
-You can conditionally disable or enable the CI and STO modules by specifying a boolean value in the enabled field of the YAML:
+You can conditionally disable or enable the CI and STO modules by specifying a boolean value in the `enabled` field of the YAML:
 
 #### CI module
 
@@ -63,7 +63,7 @@ enabled: true
 
 #### STO module
 
- ```
+```
 sto:
 # -- Enable to deploy STO to your cluster
 enabled: true
@@ -121,6 +121,7 @@ Use the following instructions to upgrade the chart to a new release. 
 **To upgrade the chart**
 
 1. Use the following command to obtain the release name for the earlier release. 
+
    ``` 
    $ helm ls -n <namespace>
    ```

@@ -23,112 +23,131 @@ Harness Delegate makes outbound connections to the resources you specify—for e
 
 1. Generate a self-signed certificate.
 2. Save it to a file named DigiCertGlobalRootCA.pem:
-```
-keytool -import -file DigiCertGlobalRootCA.pem -alias DigiCertRootCA -keystore trustStore.jks
-```
+
+   ```
+   keytool -import -file DigiCertGlobalRootCA.pem -alias DigiCertRootCA -keystore trustStore.jks
+   ```
+
 3. Add the DigiCertGlobalRootCA.pem trusted certificate to the trustStore.jks truststore:
-```
-kubectl create secret -n harness-delegate-ng generic mysecret --from-file harness_trustStore.jks=trustStore.jks
-```
+
+   ```
+   kubectl create secret -n harness-delegate-ng generic mysecret --from-file harness_trustStore.jks=trustStore.jks
+   ```
 
 Repeat this command for each certificate you want to include in the truststore.
 
 ### Create the secret
 
 1. Copy the following YAML to your editor.
-```
-apiVersion: v1  
-kind: Secret  
-metadata:  
-  name: addcerts  
-  namespace: harness-delegate-ng  
-type: Opaque  
-stringData:                             
-  ca.bundle: |  
-    -----BEGIN CERTIFICATE-----  
-    XXXXXXXXXXXXXXXXXXXXXXXXXXX  
-    -----END CERTIFICATE-------  
-    -----BEGIN CERTIFICATE-----  
-    XXXXXXXXXXXXXXXXXXXXXXXXXXX  
-    -----END CERTIFICATE-------
-```
 
-1. Add your certificates to the `ca.bundle` field.  
-The XXXXXXXXXXXXXXXXXXXXXXXXXXX placeholder indicates the position for the certificate body. Enclose each certificate in BEGIN CERTIFICATE and END CERTIFICATE comments.
-2. Save the file as addcerts.yaml. Apply the manifest to your cluster.
-```
-kubectl apply -f addcerts.yaml
-```
+   ```
+   apiVersion: v1  
+   kind: Secret  
+   metadata:  
+     name: addcerts  
+     namespace: harness-delegate-ng  
+   type: Opaque  
+   stringData:                             
+     ca.bundle: |  
+       -----BEGIN CERTIFICATE-----  
+       XXXXXXXXXXXXXXXXXXXXXXXXXXX  
+       -----END CERTIFICATE-------  
+       -----BEGIN CERTIFICATE-----  
+       XXXXXXXXXXXXXXXXXXXXXXXXXXX  
+       -----END CERTIFICATE-------
+   ```
+
+2. Add your certificates to the `ca.bundle` field.  
+
+The `XXXXXXXXXXXXXXXXXXXXXXXXXXX` placeholder indicates the position for the certificate body. Enclose each certificate in `BEGIN CERTIFICATE` and `END CERTIFICATE` comments.
+
+3. Save the file as addcerts.yaml. Apply the manifest to your cluster.
+
+   ```
+   kubectl apply -f addcerts.yaml
+   ```
 
 ### Modify the delegate YAML
 
 1. Open the harness-delegate.yml file in your editor.
 2. In the `template.spec` section, add the following security context:
-```
-securityContext:  
-  fsGroup: 1001
-```
+
+   ```
+   securityContext:  
+     fsGroup: 1001
+   ```
+
 3. Locate the `JAVA_OPTS` environment variable. Set `value` as follows.
-```
-value: "-Xms64M -Djavax.net.ssl.trustStore=/cacerts/harness_trustStore.jks  -Djavax.net.ssl.trustStorePassword=*password*"
-```
+
+   ```
+   value: "-Xms64M -Djavax.net.ssl.trustStore=/cacerts/harness_trustStore.jks  -Djavax.net.ssl.trustStorePassword=*password*"
+   ```
+
 4. Replace *password* with the password you created for the truststore.
 
-**For delegates running with Harness CI or STO**
+   **Skip step 5 if your delegates do not run with Harness CI or STO**
 
-1. CI builds require the addition of the following environment variables to the  `env` field:
-```
-- name: CI_MOUNT_VOLUMES  
-  value: /tmp/ca.bundle:/tmp/ca.bundle,/tmp/ca.bundle:/some/other/path/a.crt,/tmp/ca.bundle:/other/path/b.crt,/tmp/ca.bundle:/path/to/ca.bundle  
-- name: ADDITIONAL_CERTS_PATH  
-   value: /tmp/ca.bundle
-```
+5. CI builds require the addition of the following environment variables to the  `env` field:
 
-1. Locate the template container `spec`. Add the following volume mounts to the `spec.containers` field.
-```
-volumeMounts:  
-- mountPath: /cacerts  
-  name: custom-truststore  
-  readOnly: true  
-- name: certvol  
-  mountPath: /tmp/ca.bundle  
-  subPath: ca.bundle
-```
+   ```
+   - name: CI_MOUNT_VOLUMES  
+     value: /tmp/ca.bundle:/tmp/ca.bundle,/tmp/ca.bundle:/some/other/path/a.crt,/tmp/ca.bundle:/other/path/b.crt,/tmp/ca.bundle:/path/to/ca.bundle  
+   - name: ADDITIONAL_CERTS_PATH  
+      value: /tmp/ca.bundle
+   ```
 
-1. Locate the template `spec` and add the following volumes:
-```
-volumes:  
-- name: custom-truststore  
-  secret:  
-    secretName: mysecret  
-    defaultMode: 400  
-- name: certvol  
-  secret:  
-    secretName: addcerts  
-    items:  
-    - key: ca.bundle  
-      path: ca.bundle  
+6. Locate the template container `spec`. Add the following volume mounts to the `spec.containers` field.
 
-```
+   ```
+   volumeMounts:  
+   - mountPath: /cacerts  
+     name: custom-truststore  
+     readOnly: true  
+   - name: certvol  
+     mountPath: /tmp/ca.bundle  
+     subPath: ca.bundle
+   ```
 
-**For delegates running with the Istio service mesh**
+7. Locate the template `spec` and add the following volumes:
 
-1. In the `env` list of environment variables, locate and set the `POLL_FOR_TASKS` value to `true`.
-```
-- name: POLL_FOR_TASKS  
-  value: "true"
-```
+   ```
+   volumes:  
+   - name: custom-truststore  
+     secret:  
+       secretName: mysecret  
+       defaultMode: 400  
+   - name: certvol  
+     secret:  
+       secretName: addcerts  
+       items:  
+       - key: ca.bundle  
+         path: ca.bundle  
+
+   ```
+
+**Skip step 8 if your delegates do not run with Istio service mesh**
+
+8. In the `env` list of environment variables, locate and set the `POLL_FOR_TASKS` value to `true`.
+
+   ```
+   - name: POLL_FOR_TASKS  
+     value: "true"
+   ```
+
 This value enables polling for tasks.
-2. Save and apply the modified manifest:
-```
-kubectl apply -f harness-delegate.yml
-```
+
+9. Save and apply the modified manifest:
+
+   ```
+   kubectl apply -f harness-delegate.yml
+   ```
 
 ### Example: Modified harness-delegate.yml with truststore
 
 The following Kubernetes manifest provides an example of a delegate truststore modified for the generation of self-signed certificates:
 
 Example harness-delegate.yml
+
 ```
 apiVersion: v1  
 kind: Namespace  

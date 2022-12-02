@@ -42,7 +42,9 @@ Automated backup and recovery is supported in the following Self-Managed Enterpr
 
 Snapshots are stored in an AWS S3 bucket or AWS S3-compatible storage (Harness recommends either), or in Internal Storage.
 
-![](./static/virtual-machine-on-prem-backup-and-recovery-00.png)You will select and set up the storage option before creating a snapshot. This setup is described below.
+![](./static/virtual-machine-on-prem-backup-and-recovery-00.png)
+
+You will select and set up the storage option before creating a snapshot. This setup is described below.
 
 #### Velero is already installed
 
@@ -95,7 +97,7 @@ The retention policy is described by KOTS:
 
 > The default retention period for snapshots is 1 month. Setting the retention only affects snapshots created after the time of the change. For example, if an existing snapshot had a retention of 1 year and is already 6 months old, and a user then uses the UI to change the retention to 1 month, the existing snapshot will still be around for another 6 months.
 
-1. Click **Update schedule**. The schedule is updated. To disable it, deselect **Enable automatic scheduled snapshots**.
+6. Click **Update schedule**. The schedule is updated. To disable it, deselect **Enable automatic scheduled snapshots**.
 
 ### Option: Restore from a full snapshot
 
@@ -105,11 +107,11 @@ You can perform a full or partial restore from a Full Snapshot. This is why KOTS
 2. Click the restore button.![](./static/virtual-machine-on-prem-backup-and-recovery-04.png)**Restore from backup** appears.![](./static/virtual-machine-on-prem-backup-and-recovery-05.png)
 3. Select **Full restore** or **Partial restore**.
 4. For **Full restore**, do the following:
-	1. Copy the provided command and run it on any master node. You might need to log into the admin tool again after the restore.
-	2. Click **Ok, got it**.
+	a. Copy the provided command and run it on any master node. You might need to log into the admin tool again after the restore.
+	b. Click **Ok, got it**.
 5. For **Partial restore**, do the following:
-	1. Enter the slug **harness**.
-	2. Click **Confirm and restore**. You might need to log into the admin tool again after the restore.
+	a. Enter the slug **harness**.
+	b. Click **Confirm and restore**. You might need to log into the admin tool again after the restore.
 
 ### Option: Restore from a partial snapshot
 

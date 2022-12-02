@@ -10,9 +10,11 @@ helpdocs_is_published: true
 
 
 
-|  |  |
-| --- | --- |
-| This topic covers installing Harness Self-Managed Enterprise Edition - Virtual Machine **NextGen** as a Kubernetes cluster embedded on your target VMs.To install Harness Self-Managed Enterprise Edition Virtual Machine **NextGen**, first you install Harness Self-Managed Enterprise Edition Virtual Machine **FirstGen** and then you install NextGen as an application.Installing Harness Self-Managed Enterprise Edition into an embedded Kubernetes cluster is a simple process where you prepare your VMs and network, and use the Kubernetes installer kURL and the KOTS plugin to complete the installation and deploy Harness.Once you have set up Harness on a VM, you can add additional worker nodes by simply running a command.Harness Self-Managed Enterprise Edition uses the open source Kubernetes installer kURL and the KOTS plugin for installation. See [Install with kURL](https://kurl.sh/docs/install-with-kurl/) from kURL and [Installing an Embedded Cluster](https://kots.io/kotsadm/installing/installing-embedded-cluster/) from KOTS. |  |
+This topic covers installing Harness Self-Managed Enterprise Edition - Virtual Machine **NextGen** as a Kubernetes cluster embedded on your target VMs. 
+
+To install Harness Self-Managed Enterprise Edition Virtual Machine **NextGen**, you install Harness Self-Managed Enterprise Edition Virtual Machine **FirstGen**, and then you install NextGen as an application. Installing Harness Self-Managed Enterprise Edition into an embedded Kubernetes cluster is a simple process where you prepare your VMs and network, and use the Kubernetes installer kURL and the KOTS plugin to complete the installation and deploy Harness. 
+
+After you set up Harness on a VM, you can add additional worker nodes by simply running a command. Harness Self-Managed Enterprise Edition uses the open source Kubernetes installer kURL and the KOTS plugin for installation. See [Install with kURL](https://kurl.sh/docs/install-with-kurl/) from kURL and [Installing an Embedded Cluster](https://kots.io/kotsadm/installing/installing-embedded-cluster/) from KOTS.
 
 ### Harness Self-Managed Enterprise Edition NextGen installation options
 
@@ -29,7 +31,7 @@ You simply add Harness Self-Managed Enterprise Edition NextGen as a new applicat
 3. Upload the NextGen license file.
 4. Use the exact same FirstGen configuration values for the NextGen configuration.
 
-If you are using this option, skip to [Install NextGen on Existing FirstGen](#install_next_gen_on_existing_first_gen).
+If you are using this option, skip to [Install NextGen on Existing FirstGen](#install-next-gen-on-existing-first-gen).
 
 #### NextGen on new FirstGen VMs
 
@@ -43,8 +45,8 @@ In this scenario, you want to install FirstGen and NextGen on new VMs.
 
 If you are using this option, do the following:
 
-1. Follow all of the FirstGen installation instructions beginning with [Step 1: Set up VM Requirements](#step_1_set_up_vm_requirements).
-2. Follow the NextGen installation instructions in [Install NextGen on Existing FirstGen](#install_next_gen_on_existing_first_gen).
+1. Follow all of the FirstGen installation instructions beginning with [Step 1: Set up VM Requirements](#step-1-set-up-vm-requirements).
+2. Follow the NextGen installation instructions in [Install NextGen on Existing FirstGen](#install-next-gen-on-existing-first-gen).
 
 #### Legacy FirstGen not using KOTS
 
@@ -61,9 +63,9 @@ This process will involve migrating your legacy FirstGen data to a new KOTS-base
 
 If you are using this option, do the following:
 
-1. Follow all of the FirstGen installation instructions beginning with [Step 1: Set up VM Requirements](#step_1_set_up_vm_requirements).
+1. Follow all of the FirstGen installation instructions beginning with [Step 1: Set up VM Requirements](#step-1-set-up-vm-requirements).
 2. Migrate data to new FirstGen using a script from Harness Support.
-3. Follow the NextGen installation instructions in [Install NextGen on Existing FirstGen](#install_next_gen_on_existing_first_gen).
+3. Follow the NextGen installation instructions in [Install NextGen on Existing FirstGen](#install-next-gen-on-existing-first-gen).
 
 ### Step 1: Set up VM requirements
 
@@ -209,11 +211,15 @@ Obtain the Harness license file from your Harness Customer Success contact or em
 
 Drag your license YAML file into the KOTS admin tool:
 
-![](./static/virtual-machine-on-prem-installation-guide-04.png)Next, upload the license file:
+![](./static/virtual-machine-on-prem-installation-guide-04.png)
 
-![](./static/virtual-machine-on-prem-installation-guide-05.png)Now that license file is uploaded, you can install Harness.
+Next, upload the license file:
 
-Go to [Step 3: Configure Harness](#step_3_configure_harness).
+![](./static/virtual-machine-on-prem-installation-guide-05.png)
+
+Now that license file is uploaded, you can install Harness.
+
+Go to [Step 3: Configure Harness](#step-3-configure-harness).
 
 ### Option 2: Connected installation
 
@@ -601,7 +607,7 @@ If your license has expired, you will see something like the following:
 
 ### Install NextGen on existing FirstGen
 
-This section assumes you have a Self-Managed Enterprise Edition FirstGen installation set up and running following the step earlier in this guide (beginning with [Step 1: Set up VM Requirements](#step_1_set_up_vm_requirements)).
+This section assumes you have a Self-Managed Enterprise Edition FirstGen installation set up and running following the step earlier in this guide (beginning with [Step 1: Set up VM Requirements](#step-1-set-up-vm-requirements)).
 
 Now you can add Self-Managed Enterprise Edition NextGen as a new application to your FirstGen installation.
 
@@ -618,8 +624,8 @@ If you want to change settings, change them and then record them so you can use 
 ![](./static/virtual-machine-on-prem-installation-guide-27.png)
 
 6. Depending on whether your Self-Managed Enterprise Edition FirstGen installation is Disconnected or Connected, follow the installation steps described here:
-	* [Option 1: Disconnected Installation](#option_1_disconnected_installation)
-	* [Option 2: Connected Installation](#option_2_connected_installation)When you are done, you'll be on the **Configure HarnessNG** page. This is the standard configuration page you followed when you set up Self-Managed Enterprise Edition FirstGen in [Step 3: Configure Harness](#step_3_configure_harness).
+	* [Option 1: Disconnected Installation](#option-1-disconnected-installation)
+	* [Option 2: Connected Installation](#option-2-connected-installation)When you are done, you'll be on the **Configure HarnessNG** page. This is the standard configuration page you followed when you set up Self-Managed Enterprise Edition FirstGen in [Step 3: Configure Harness](#step-3-configure-harness).
 7. Enter the exact same configuration options as your FirstGen installation.  
    Please ensure you include your **Advanced Configuration** settings.  
    Ensure you use the exact same **Scheme** you used in FirstGen (HTTP or HTTPS).  

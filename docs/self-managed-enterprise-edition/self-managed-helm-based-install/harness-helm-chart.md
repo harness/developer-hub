@@ -71,7 +71,7 @@ Harness Helm chart includes the following components.
 **Table 1. Platform components for Continuous Delivery**
 
 | **Component** | **Description** |
-| --- | --- |
+| :-- | :-- |
 | **Access control** | Provides pipelines with access controls including Kubernetes Role-Based Access Control (RBAC). |
 | **Data capture** | Responsible for the capture of data related to the operation of Harness Pipelines, including but not limited to events, tasks, metrics, and logs. |
 | **CV Nextgen** | Provides continuous verification (CV) services to Pipeline components including deployments, services, and logs. Aggregates data from multiple providers, including performance metrics, from monitoring activities for dashboard presentation. |
@@ -99,7 +99,7 @@ Harness Helm chart includes the following components.
 The following components are included in addition to the Harness Platform components.
 
 | **Component** | **Module** |
-| --- | --- |
+| :-- | :-- |
 | **Ci-manager** | Continuous Integration |
 | **Sto-core** | Enables the creation and management of Harness Security Testing Orchestration |
 | **Sto-manager** | Provides core services for Harness Security Testing Orchestration |
@@ -108,7 +108,7 @@ The following components are included in addition to the Harness Platform compon
 **Table 3. Optional dependencies**
 
 | **Dependency** | **Description** |
-| --- | --- |
+| :-- | :-- |
 | **Ingress Controller** | [Istio](https://istio.io/latest/about/service-mesh/) is an open-source service mesh that supports the Kubernetes Ingress Controller. |
 | **Istio** | Supported by default. |
 
