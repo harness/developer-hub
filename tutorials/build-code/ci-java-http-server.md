@@ -26,10 +26,10 @@ import TabItem from '@theme/TabItem';
    ```mdx-code-block
    <Tabs>
      <TabItem value="newaccount" label="New account" default>
-       If you are signing in to Harness for the first time, select the **Continuous Integration** module after your initial sign in. This brings you to the **Get Started** wizard.
+       If you are signing in to Harness for the first time, select the <strong>Continuous Integration</strong> module after your initial sign in. This brings you to the <strong>Get Started</strong> wizard.
      </TabItem>
      <TabItem value="existingaccount" label="Existing account">
-       If you have an existing Harness account, either create a new project or select an existing project, and then select the **Continuous Integration** module. In the **Project** pane, expand the **Project Setup** menu, and then select **Get Started**.
+       If you have an existing Harness account, either create a new project or select an existing project, and then select the <strong>Continuous Integration</strong> module. In the <strong>Project</strong> pane, expand the <strong>Project Setup</strong> menu, and then select <strong>Get Started</strong>.
      </TabItem>
    </Tabs>
    ```
