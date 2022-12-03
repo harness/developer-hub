@@ -12,7 +12,7 @@ Harness 24/7 Service Guard monitors your live applications, catching problems th
 
 You can add your Dynatrace monitoring to Harness 24/7 Service Guard in your Harness Application Environment. For a setup overview, see [Connect to Dynatrace](1-dynatrace-connection-setup.md).
 
-This section assumes you have a Harness Application set up and containing a Service and Environment. For steps on setting up a Harness Application, see [Application Checklist](https://docs.harness.io/article/bucothemly-application-configuration).
+This section assumes you have a Harness Application set up and containing a Service and Environment. For steps on setting up a Harness Application, see [Application Checklist](../../model-cd-pipeline/applications/application-configuration.md).
 
 
 ### Before You Begin
@@ -25,9 +25,9 @@ This section assumes you have a Harness Application set up and containing a Serv
 To set up 24/7 Service Guard for Dynatrace, do the following:
 
 1. Ensure that you have added Dynatrace as a Harness Verification Provider, as described in [Verification Provider Setup](1-dynatrace-connection-setup.md#dynatrace-verification-provider-setup).
-2. In your Harness Application, ensure that you have added a Service, as described in [Services](https://docs.harness.io/article/eb3kfl8uls-service-configuration). For 24/7 Service Guard, you do not need to add an Artifact Source to the Service, or configure its settings. You simply need to create a Service and name it. It will represent your application for 24/7 Service Guard.
+2. In your Harness Application, ensure that you have added a Service, as described in [Services](../../model-cd-pipeline/setup-services/service-configuration.md). For 24/7 Service Guard, you do not need to add an Artifact Source to the Service, or configure its settings. You simply need to create a Service and name it. It will represent your application for 24/7 Service Guard.
 3. In your Harness Application, click **Environments**.
-4. In **Environments**, ensure that you have added an Environment for the Service you added. For steps on adding an Environment, see [Environments](https://docs.harness.io/article/n39w05njjv-environment-configuration).
+4. In **Environments**, ensure that you have added an Environment for the Service you added. For steps on adding an Environment, see [Environments](../../model-cd-pipeline/environments/environment-configuration.md).
 5. Click the Environment for your Service. Typically, the **Environment Type** is **Production**.
 6. In the **Environment** page, locate **24/7 Service Guard**.
    ![](./static/2-24-7-service-guard-for-dynatrace-17.png)
@@ -59,7 +59,7 @@ Once you select a Dynatrace server in **Dynatrace Server**, Harness goes and fet
 
 Select the Dynatrace service to monitor. Dynatrace analytics are performed at Dynatrace's service level.
 
-You can also enter a built-in [Harness variable expression](https://docs.harness.io/article/9dvxcegm90-variables) or custom variable, such as a [Service](https://docs.harness.io/article/eb3kfl8uls-service-configuration) or [Workflow variable](https://docs.harness.io/article/766iheu1bk-add-workflow-variables-new-template):
+You can also enter a built-in [Harness variable expression](https://docs.harness.io/article/9dvxcegm90-variables) or custom variable, such as a [Service](../../model-cd-pipeline/setup-services/service-configuration.md) or [Workflow variable](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md):
 
 [![](./static/2-24-7-service-guard-for-dynatrace-19.png)](./static/2-24-7-service-guard-for-dynatrace-19.png)
 

@@ -43,7 +43,7 @@ https://harness-1.wistia.com/medias/rpv5vwzpxz-->
 
 ### 24/7 Service Guard
 
-Harness' 24/7 Service Guard feature verifies your live, production application continuously. You set up 24/7 Service Guard verification in a Harness [Environment](https://docs.harness.io/article/n39w05njjv-environment-configuration).
+Harness' 24/7 Service Guard feature verifies your live, production application continuously. You set up 24/7 Service Guard verification in a Harness [Environment](../../../model-cd-pipeline/environments/environment-configuration.md).
 
 #### Video Summary
 

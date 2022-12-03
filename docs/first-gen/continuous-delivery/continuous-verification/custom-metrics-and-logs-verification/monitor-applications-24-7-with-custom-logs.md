@@ -12,7 +12,7 @@ Harness 24/7 Service Guard monitors your live applications, catching problems th
 
 While Harness supports [all of the common logging tools](https://docs.harness.io/category/continuous-verification), you can add your Custom logging to Harness 24/7 Service Guard in your Harness Application Environment. For a setup overview, see  [Connect to Custom Verification for Custom Logs](connect-to-custom-verification-for-custom-logs.md).
 
-This section assumes you have a Harness Application set up, containing a Service and Environment. For steps on setting up a Harness Application, see  [Application Components](https://docs.harness.io/article/bucothemly-application-configuration).
+This section assumes you have a Harness Application set up, containing a Service and Environment. For steps on setting up a Harness Application, see  [Application Components](../../model-cd-pipeline/applications/application-configuration.md).
 
 ### Before You Begin
 
@@ -24,9 +24,9 @@ This section assumes you have a Harness Application set up, containing a Service
 To set up 24/7 Service Guard for custom logs, do the following:
 
 1. Ensure that you have added your Custom Verification provider as a Harness Verification Provider, as described in  [Verification Provider Setup](../appdynamics-verification/2-24-7-service-guard-for-app-dynamics.md#verification-provider-setup).
-2. In your Harness Application, ensure that you have added a Service, as described in  [Services](https://docs.harness.io/article/eb3kfl8uls-service-configuration). For 24/7 Service Guard, you do not need to add an Artifact Source to the Service, or configure its settings. You simply need to create a Service and name it. It will represent your application for 24/7 Service Guard.
+2. In your Harness Application, ensure that you have added a Service, as described in  [Services](../../model-cd-pipeline/setup-services/service-configuration.md). For 24/7 Service Guard, you do not need to add an Artifact Source to the Service, or configure its settings. You simply need to create a Service and name it. It will represent your application for 24/7 Service Guard.
 3. In your Harness Application, click **Environments**.
-4. In **Environments**, ensure that you have added an Environment for the Service you added. For steps on adding an Environment, see  [Environments](https://docs.harness.io/article/n39w05njjv-environment-configuration).
+4. In **Environments**, ensure that you have added an Environment for the Service you added. For steps on adding an Environment, see  [Environments](../../model-cd-pipeline/environments/environment-configuration.md).
 5. Click the Environment for your Service. Typically, the **Environment Type** is **Production**.
 6. In the **Environment** page, locate **24/7 Service Guard**.[![](./static/monitor-applications-24-7-with-custom-logs-94.png)](./static/monitor-applications-24-7-with-custom-logs-94.png)
 7. In **24/7 Service Guard**, click **Add Service Verification**, and then click **Custom Log Verification**.![](./static/monitor-applications-24-7-with-custom-logs-96.png)

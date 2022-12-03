@@ -132,7 +132,7 @@ For **applicationId**, you can use a Harness built-in variable expression such a
 For more information about variables and expressions, see the following topics:
 
 
-* [Add Service Config Variables](https://docs.harness.io/article/q78p7rpx9u-add-service-level-config-variables)
+* [Add Service Config Variables](../../model-cd-pipeline/setup-services/add-service-level-config-variables.md)
 * [What is a Harness Variable Expression?](https://docs.harness.io/article/9dvxcegm90-variables)
 
 

@@ -47,7 +47,7 @@ If you require more flexibility than the standard integration outlined here, you
 You set up AppDynamics and Harness as follows:
 
 1. **AppDynamics** – These instructions assume that you are already using AppDynamics to monitor your application.
-2. **Harness Application** – Create a Harness Application with a Service and an Environment. We do not cover Application setup in this sequence. See [Create an Application](https://docs.harness.io/article/bucothemly-application-configuration).
+2. **Harness Application** – Create a Harness Application with a Service and an Environment. We do not cover Application setup in this sequence. See [Create an Application](../../../model-cd-pipeline/applications/application-configuration.md).
 3. **​Verification Provider Setup** – In Harness, you connect Harness to your AppDynamics account, adding AppDynamics as a [Harness Verification Provider](../../appdynamics-verification/1-app-dynamics-connection-setup.md).  
   
 A Verification Provider is a connection to monitoring tools such as AppDynamics. Once Harness is connected, you can use Harness 24/7 Service Guard and Deployment Verification with your AppDynamics data and analysis.

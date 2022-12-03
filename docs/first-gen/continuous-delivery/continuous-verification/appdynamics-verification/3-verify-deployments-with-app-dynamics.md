@@ -132,7 +132,7 @@ See [PCF Built-in Variables](https://docs.harness.io/article/ojd73hseby-pcf-buil
 When you are setting up the Workflow for the first time, Harness will *not* be able to help you create an expression, because there has not been a host/container deployed yet. This is another reason why Harness recommends adding the **Verify Step** *after* you have done one successful deployment.
 ### Step 6: Analysis Time Duration
 
-Use the **Analysis Time Duration** field to set the duration for the verification step. If a verification step exceeds the value, the Workflow's [Failure Strategy](https://docs.harness.io/article/m220i1tnia-workflow-configuration#failure_strategy) is triggered.
+Use the **Analysis Time Duration** field to set the duration for the verification step. If a verification step exceeds the value, the Workflow's [Failure Strategy](../../model-cd-pipeline/workflows/workflow-configuration.md#failure-strategy) is triggered.
 
 For example, if the Failure Strategy is **Ignore**, then the verification state is marked **Failed**, but the Workflow execution continues. For details, see [CV Strategies, Tuning, and Best Practices](../continuous-verification-overview/concepts-cv/cv-strategies-and-best-practices.md).
 
@@ -175,7 +175,7 @@ For a quick overview of the verification UI elements, see [Continuous Verificati
 
 ### Harness Expression Support in CV Settings
 
-You can use expressions (`${...}`) for [Harness built-in variables](https://docs.harness.io/article/7bpdtvhq92-workflow-variables-expressions) and custom [Service](https://docs.harness.io/article/eb3kfl8uls-service-configuration) and [Workflow](https://docs.harness.io/article/766iheu1bk-add-workflow-variables-new-template) variables in the settings of Harness Verification Providers.
+You can use expressions (`${...}`) for [Harness built-in variables](https://docs.harness.io/article/7bpdtvhq92-workflow-variables-expressions) and custom [Service](../../model-cd-pipeline/setup-services/service-configuration.md) and [Workflow](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md) variables in the settings of Harness Verification Providers.
 
 Here is an example using Dynatrace, but it applies to all providers.
 

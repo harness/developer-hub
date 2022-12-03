@@ -30,9 +30,9 @@ Here's an example configuration of 24/7 Service Guard for Sumo Logic.
 To set up 24/7 Service Guard for Sumo Logic, do the following:
 
 1. Ensure that you have added Sumo Logic as a Harness Verification Provider, as described in [Verification Provider Setup](#verification_provider_setup).
-2. In your Harness Application, ensure that you have added a Service, as described in [Services](https://docs.harness.io/article/eb3kfl8uls-service-configuration). For 24/7 Service Guard, you do not need to add an Artifact Source to the Service, or configure its settings. You simply need to create a Service and name it. It will represent your application for 24/7 Service Guard.
+2. In your Harness Application, ensure that you have added a Service, as described in [Services](../../model-cd-pipeline/setup-services/service-configuration.md). For 24/7 Service Guard, you do not need to add an Artifact Source to the Service, or configure its settings. You simply need to create a Service and name it. It will represent your application for 24/7 Service Guard.
 3. In your Harness Application, click **Environments**.
-4. In **Environments**, ensure that you have added an Environment for the Service you added. For steps on adding an Environment, see [Environments](https://docs.harness.io/article/n39w05njjv-environment-configuration).
+4. In **Environments**, ensure that you have added an Environment for the Service you added. For steps on adding an Environment, see [Environments](../../model-cd-pipeline/environments/environment-configuration.md).
 5. Click the Environment for your Service. Typically, the **Environment Type** is **Production**.
 6. In the **Environment** page, locate **24/7 Service Guard**.
 7. In **24/7 Service Guard**, click **Add Service Verification**, and then click **Sumo Logic**. The **Sumo Logic** dialog appears.

@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-The following procedure describes how to add Dynatrace as a verification step in a Harness workflow. For more information about workflows, see [Add a Workflow](https://docs.harness.io/article/m220i1tnia-workflow-configuration).
+The following procedure describes how to add Dynatrace as a verification step in a Harness workflow. For more information about workflows, see [Add a Workflow](../../model-cd-pipeline/workflows/workflow-configuration.md).
 
 Once you run a deployment and Dynatrace preforms verification, Harness' machine-learning verification analysis will assess the risk level of the deployment.
 
@@ -17,7 +17,7 @@ Harness does not perform host level analysis using Dynatrace as Dynatrace API do
 
 ### Before You Begin
 
-* Set up a Harness Application, containing a Service and Environment. See  [Create an Application](https://docs.harness.io/article/bucothemly-application-configuration).
+* Set up a Harness Application, containing a Service and Environment. See  [Create an Application](../../model-cd-pipeline/applications/application-configuration.md).
 * See the [Dynatrace Verification Overview](../continuous-verification-overview/concepts-cv/dynatrace-verification-overview.md).
 * See [Connect to Dynatrace](1-dynatrace-connection-setup.md).
 
@@ -55,7 +55,7 @@ You can find the Dynatrace service in Dynatrace search:
 
 [![](./static/3-verify-deployments-with-dynatrace-03.png)](./static/3-verify-deployments-with-dynatrace-03.png)
 
-You can also enter a built-in [Harness variable expression](https://docs.harness.io/article/9dvxcegm90-variables) or custom variable, such as a [Service](https://docs.harness.io/article/eb3kfl8uls-service-configuration) or [Workflow variable](https://docs.harness.io/article/766iheu1bk-add-workflow-variables-new-template):
+You can also enter a built-in [Harness variable expression](https://docs.harness.io/article/9dvxcegm90-variables) or custom variable, such as a [Service](../../model-cd-pipeline/setup-services/service-configuration.md) or [Workflow variable](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md):
 
 [![](./static/3-verify-deployments-with-dynatrace-05.png)](./static/3-verify-deployments-with-dynatrace-05.png)
 
@@ -75,7 +75,7 @@ If you need to select a specific service, use the ID in the URL to match the ser
 
 ### Step 4: Analysis Time duration
 
-Set the duration for the verification step. If a verification step exceeds the value, the workflow [Failure Strategy](https://docs.harness.io/article/m220i1tnia-workflow-configuration#failure_strategy) is triggered. For example, if the Failure Strategy is **Ignore**, then the verification state is marked **Failed** but the workflow execution continues.
+Set the duration for the verification step. If a verification step exceeds the value, the workflow [Failure Strategy](../../model-cd-pipeline/workflows/workflow-configuration.md#failure-strategy) is triggered. For example, if the Failure Strategy is **Ignore**, then the verification state is marked **Failed** but the workflow execution continues.
 
 See [CV Strategies, Tuning, and Best Practices](../continuous-verification-overview/concepts-cv/cv-strategies-and-best-practices.md).
 
@@ -99,7 +99,7 @@ Once your configuration tests successfully, click **Submit**. The **Dynatrace** 
 
 ### Review: Harness Expression Support in CV Settings
 
-You can use expressions (`${...}`) for [Harness built-in variables](https://docs.harness.io/article/7bpdtvhq92-workflow-variables-expressions) and custom [Service](https://docs.harness.io/article/eb3kfl8uls-service-configuration) and [Workflow](https://docs.harness.io/article/766iheu1bk-add-workflow-variables-new-template) variables in the settings of Harness Verification Providers.
+You can use expressions (`${...}`) for [Harness built-in variables](https://docs.harness.io/article/7bpdtvhq92-workflow-variables-expressions) and custom [Service](../../model-cd-pipeline/setup-services/service-configuration.md) and [Workflow](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md) variables in the settings of Harness Verification Providers.
 
 ![](./static/3-verify-deployments-with-dynatrace-12.png)
 
@@ -107,7 +107,7 @@ Expression support lets you template your Workflow verification steps. You can a
 
 ### Step 8: View Verification Results
 
-Once you have deployed your workflow (or pipeline) using the Dynatrace verification step, you can automatically verify cloud application and infrastructure performance across your deployment. For more information, see [Add a Workflow](https://docs.harness.io/article/m220i1tnia-workflow-configuration) and [Add a Pipeline](https://docs.harness.io/article/zc1u96u6uj-pipeline-configuration).
+Once you have deployed your workflow (or pipeline) using the Dynatrace verification step, you can automatically verify cloud application and infrastructure performance across your deployment. For more information, see [Add a Workflow](../../model-cd-pipeline/workflows/workflow-configuration.md) and [Add a Pipeline](../../model-cd-pipeline/pipelines/pipeline-configuration.md).
 
 #### Workflow Verification
 

@@ -18,7 +18,9 @@ This topic describes how to use the Harness Feature Flags Android SDK for your A
 
 For getting started quickly, you can use our [sample code from the SDK README](https://github.com/harness/ff-android-client-sdk/blob/main/README.md). You can also [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) and run a sample application from the [Android SDK GitHub Repository.](https://github.com/harness/ff-android-client-sdk)
 
-The SDK caches your Feature Flags. If the cache can't be accessed, the `defaultValue` is used.### Before you begin
+The SDK caches your Feature Flags. If the cache can't be accessed, the `defaultValue` is used.
+
+### Before you begin
 
 Make sure you read and understand:
 
@@ -314,7 +316,9 @@ Alternatively, to use the Android [log class](https://developer.android.com/ref
 ```
 CfLog.runtimeModeOn()
 ```
-Standard Android logging is the default logging strategy, so turning on runtime mode is not required.#### Use our public API methods
+Standard Android logging is the default logging strategy, so turning on runtime mode is not required.
+
+#### Use our public API methods
 
 Our public API exposes the following methods that you can use:
 

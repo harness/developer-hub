@@ -13,7 +13,7 @@ To set up AppDynamics to work with Harness' Continuous Verification features, yo
 
 ### Before You Begin
 
-* Set up a Harness Application, containing a Service and Environment. See [Create an Application](https://docs.harness.io/article/bucothemly-application-configuration).
+* Set up a Harness Application, containing a Service and Environment. See [Create an Application](../../model-cd-pipeline/applications/application-configuration.md).
 * See the [AppDynamics Verification Overview](../continuous-verification-overview/concepts-cv/app-dynamics-verification-overview.md).
 * The AppDynamics account that you use to connect Harness to AppDynamics must have the following [General Permission](https://docs.appdynamics.com/21.9/en/appdynamics-essentials/account-management/tenant-user-management/create-and-manage-custom-roles/application-permissions#ApplicationPermissions-GeneralPermissions): `View`.
 

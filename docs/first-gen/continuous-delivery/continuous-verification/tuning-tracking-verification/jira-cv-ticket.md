@@ -116,7 +116,7 @@ Click the Jira issue link to open Jira and see the issue. The issue contains the
 
 ![](./static/jira-cv-ticket-07.png)
 
-You can update this ticket using the Jira command in Workflows. For more information, see [Jira Integration](https://docs.harness.io/article/077hwokrpr-jira-integration).
+You can update this ticket using the Jira command in Workflows. For more information, see [Jira Integration](../../model-cd-pipeline/workflows/jira-integration.md).
 
 Back in Harness, you can view all of the feedback for your event by clicking the **View Feedback** option:
 

@@ -177,7 +177,7 @@ The expression entered here should resolve to a host/container name in your depl
 
 ### Step 15: Analysis Time Duration
 
-Set the duration for the verification step. If a verification step exceeds this value, the Workflow's [Failure Strategy](https://docs.harness.io/article/m220i1tnia-workflow-configuration#failure_strategy) is triggered. For example, if the Failure Strategy is **Ignore**, then the verification state is marked **Failed**, but the Workflow execution continues.
+Set the duration for the verification step. If a verification step exceeds this value, the Workflow's [Failure Strategy](../../model-cd-pipeline/workflows/workflow-configuration.md#failure-strategy) is triggered. For example, if the Failure Strategy is **Ignore**, then the verification state is marked **Failed**, but the Workflow execution continues.
 
 ### Step 16: Data Collection Interval
 

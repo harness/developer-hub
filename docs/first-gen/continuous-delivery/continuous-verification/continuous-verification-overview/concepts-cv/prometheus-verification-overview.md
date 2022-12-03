@@ -30,10 +30,10 @@ You set up Prometheus and Harness in the following way:
 
 1. **Prometheus**- Monitor your application using Prometheus. In this article, we assume that you are using Prometheus to monitor your application already.
 2. **​Verification Provider Setup**- In Harness, you connect Harness to your Prometheus account, adding Prometheus as a **Harness Verification Provider**.
-3. **Harness Application**- Create a Harness Application with a Service and an Environment. We do not cover Application setup in this sequence. See [Application Checklist](https://docs.harness.io/article/bucothemly-application-configuration).
+3. **Harness Application**- Create a Harness Application with a Service and an Environment. We do not cover Application setup in this sequence. See [Application Checklist](../../../model-cd-pipeline/applications/application-configuration.md).
 4. **​24/7 Service Guard Setup****-**In the Environment, set up 24/7 Service Guard to monitor your live, production application.
 5. ​**Verify Deployments**:
-	1. Add a Workflow to your Harness Application and deploy your microservice or application to the service infrastructure/[Infrastructure Definition](https://docs.harness.io/article/n39w05njjv-environment-configuration#add_an_infrastructure_definition) in your Environment.
+	1. Add a Workflow to your Harness Application and deploy your microservice or application to the service infrastructure/[Infrastructure Definition](../../../model-cd-pipeline/environments/environment-configuration.md#add-an-infrastructure-definition) in your Environment.
 	2. After you have run a successful deployment, you then add verification steps to the Workflow using your Verification Provider.
 	3. Harness uses unsupervised machine-learning and Prometheus analytics to analyze your future deployments, discovering events that might be causing your deployments to fail. Then you can use this information to set rollback criteria and improve your deployments.
 

@@ -68,13 +68,13 @@ Add an expression that evaluates to the hostname value for the **Message** field
 
 [![](./static/3-verify-deployments-with-sumo-logic-12.png)](./static/3-verify-deployments-with-sumo-logic-12.png)
 
-In the service infrastructure where your Workflow deployed your artifact (see [Add a Service Infrastructure](https://docs.harness.io/article/n39w05njjv-environment-configuration#add_a_service_infrastructure)), the hostname is listed in a JSON **name** label under a **host** label.Locate the **name** label that displays the same value as the **Host** field in your Sumo Logic **Message**. Locate the path to that **name** label and use it as the expression in **Expression for Host/Container name**.The default expression is **${instance.host.hostName}**.
+In the service infrastructure where your Workflow deployed your artifact (see [Add a Service Infrastructure](../../model-cd-pipeline/environments/environment-configuration.md#add-a-service-infrastructure)), the hostname is listed in a JSON **name** label under a **host** label.Locate the **name** label that displays the same value as the **Host** field in your Sumo Logic **Message**. Locate the path to that **name** label and use it as the expression in **Expression for Host/Container name**.The default expression is **${instance.host.hostName}**.
 
 For AWS EC2 hostnames, use the expression `${instance.hostName`}.
 
 ### Step 6: Analysis Time duration
 
-Set the duration for the verification step. If a verification step exceeds the value, the Workflow's [Failure Strategy](https://docs.harness.io/article/m220i1tnia-workflow-configuration#failure_strategy) is triggered. For example, if the Failure Strategy is **Ignore**, then the verification state is marked **Failed** but the Workflow execution continues.
+Set the duration for the verification step. If a verification step exceeds the value, the Workflow's [Failure Strategy](../../model-cd-pipeline/workflows/workflow-configuration.md#failure-strategy) is triggered. For example, if the Failure Strategy is **Ignore**, then the verification state is marked **Failed** but the Workflow execution continues.
 
 See [CV Strategies, Tuning, and Best Practices](../continuous-verification-overview/concepts-cv/cv-strategies-and-best-practices.md#analysis-time-duration).
 
@@ -117,7 +117,7 @@ If you select **Predictive Analysis** in **Baseline for Risk Analysis**, the tim
 
 ### Review: Harness Expression Support in CV Settings
 
-You can use expressions (`${...}`) for [Harness built-in variables](https://docs.harness.io/article/7bpdtvhq92-workflow-variables-expressions) and custom [Service](https://docs.harness.io/article/eb3kfl8uls-service-configuration) and [Workflow](https://docs.harness.io/article/766iheu1bk-add-workflow-variables-new-template) variables in the settings of Harness Verification Providers.
+You can use expressions (`${...}`) for [Harness built-in variables](https://docs.harness.io/article/7bpdtvhq92-workflow-variables-expressions) and custom [Service](../../model-cd-pipeline/setup-services/service-configuration.md) and [Workflow](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md) variables in the settings of Harness Verification Providers.
 
 ![](./static/3-verify-deployments-with-sumo-logic-16.png)
 
@@ -125,7 +125,7 @@ Expression support lets you template your Workflow verification steps. You can a
 
 ### Step 13: View Verification Results
 
-Once you have deployed your Workflow (or Pipeline) using the Sumo Logic verification step, you can automatically verify cloud application and infrastructure performance across your deployment. For more information, see [Add a Workflow](https://docs.harness.io/article/m220i1tnia-workflow-configuration#deploy_a_workflow) and [Add a Pipeline](https://docs.harness.io/article/zc1u96u6uj-pipeline-configuration#deploy_a_pipeline).
+Once you have deployed your Workflow (or Pipeline) using the Sumo Logic verification step, you can automatically verify cloud application and infrastructure performance across your deployment. For more information, see [Add a Workflow](../../model-cd-pipeline/workflows/workflow-configuration.md#deploy-a-workflow) and [Add a Pipeline](../../model-cd-pipeline/pipelines/pipeline-configuration.md#deploy-a-pipeline).
 
 #### Workflow Verification
 

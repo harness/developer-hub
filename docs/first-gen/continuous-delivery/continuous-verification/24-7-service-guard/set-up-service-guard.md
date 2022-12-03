@@ -52,7 +52,7 @@ Here are the high-level steps for setting up 24/7 Service Guard using one or mor
 
 For information on setting up a Verification Provider, see [Add Verification Providers](https://docs.harness.io/article/r6ut6tldy0-verification-providers).1. Create a Harness Application. The Application will identify the application you want to monitor, will identify the production environment where the application is running, and will allow you to use Harness RBAC to control who can set up 24/7 Service Guard.
 
-For more information on setting up a Harness Application, see [Application Checklist](https://docs.harness.io/article/bucothemly-application-configuration).1. Add a Harness Service to your Application. The Service is a logical representation of your production application. You will add a Service for each application you want to monitor with 24/7 Service Guard.
+For more information on setting up a Harness Application, see [Application Checklist](../../model-cd-pipeline/applications/application-configuration.md).1. Add a Harness Service to your Application. The Service is a logical representation of your production application. You will add a Service for each application you want to monitor with 24/7 Service Guard.
 2. Add a Harness Environment to your Application. The Environment represents the production environments for one or more applications.
 3. Add a 24/7 Service Guard configuration for each Service in the Environment using a Verification Provider.
 

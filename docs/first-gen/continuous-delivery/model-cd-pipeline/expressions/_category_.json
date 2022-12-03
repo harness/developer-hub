@@ -1,0 +1,14 @@
+{
+  "label": "Use Variable Expressions",
+  "position": 90,
+  "collapsible": "true",
+  "collapsed": "true",
+  "className": "red",
+  "link": {
+    "type": "generated-index",
+    "title": "Use Variable Expressions"
+  },
+  "customProps": {
+    "helpdocs_category_id": "w98t8pl547"
+  }
+}

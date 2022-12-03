@@ -37,7 +37,7 @@ You can also set these variables in the Harness Service that is using the Docker
 
 For a list of the required environment variables, see [Use Environment Variables for Java Agent Settings](https://docs.appdynamics.com/display/PRO42/Use+Environment+Variables+for+Java+Agent+Settings) from AppDynamics. You might also include the `JAVA_OPTS` variable to add the Java Agent path to `JAVA_OPTS`.
 
-The Config Variables in the Harness Service can be overwritten by the Harness Environment [Service Overrides](https://docs.harness.io/article/n39w05njjv-environment-configuration#override_a_service_configuration).
+The Config Variables in the Harness Service can be overwritten by the Harness Environment [Service Overrides](../../model-cd-pipeline/environments/environment-configuration.md#override-a-service-configuration).
 ### Limitations
 
 Do not hard-code the node name (`APPDYNAMICS_AGENT_NODE_NAME`) in any environment variables. Doing so will prevent certain deployment features—such as Canary and Blue/Green strategies, and rollback—from executing.

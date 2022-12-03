@@ -13,7 +13,7 @@ Enabling AppDynamics in Harness 24/7 Service Guard helps Harness monitor your li
 ### Before You Begin
 
 * See the [24/7 Service Guard Overview](../continuous-verification-overview/concepts-cv/24-7-service-guard-overview.md).
-* Set up a Harness Application, containing a Service and Environment. See [Create an Application](https://docs.harness.io/article/bucothemly-application-configuration).For 24/7 Service Guard, you do not need to add an Artifact Source to the Service, nor configure its settings. You simply need to create a Service and name it. It will represent your application for 24/7 Service Guard.
+* Set up a Harness Application, containing a Service and Environment. See [Create an Application](../../model-cd-pipeline/applications/application-configuration.md).For 24/7 Service Guard, you do not need to add an Artifact Source to the Service, nor configure its settings. You simply need to create a Service and name it. It will represent your application for 24/7 Service Guard.
 * Add AppDynamics monitoring to Harness 24/7 Service Guard in your Environment. See [Add AppDynamics as a Verification Provider](1-app-dynamics-connection-setup.md).
 
 
@@ -22,7 +22,7 @@ Enabling AppDynamics in Harness 24/7 Service Guard helps Harness monitor your li
 To set up 24/7 Service Guard for AppDynamics, do the following:
 
 1. In your Harness Application, click **Environments**.
-2. In **Environments**, ensure that you have added an Environment for the Service you added. For steps on adding an Environment, see [Environments](https://docs.harness.io/article/n39w05njjv-environment-configuration).
+2. In **Environments**, ensure that you have added an Environment for the Service you added. For steps on adding an Environment, see [Environments](../../model-cd-pipeline/environments/environment-configuration.md).
 3. Click the Environment for your Service. Typically, the **Environment Type** is **Production**.
 4. In the **Environment** page, locate **24/7 Service Guard**.![](./static/2-24-7-service-guard-for-app-dynamics-01.png)
 5. In **24/7 Service Guard**, click **Add Service Verification**, and then click **AppDynamics**.![](./static/2-24-7-service-guard-for-app-dynamics-02.png)The **AppDynamics** dialog appears.![](./static/2-24-7-service-guard-for-app-dynamics-03.png)

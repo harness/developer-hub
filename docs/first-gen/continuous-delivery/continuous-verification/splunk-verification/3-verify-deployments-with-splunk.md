@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-The following procedure describes how to add Splunk as a verification step in a Harness workflow. For more information about workflows, see [Add a Workflow](https://docs.harness.io/article/m220i1tnia-workflow-configuration).
+The following procedure describes how to add Splunk as a verification step in a Harness workflow. For more information about workflows, see [Add a Workflow](../../model-cd-pipeline/workflows/workflow-configuration.md).
 
 Once you run a deployment and Splunk preforms verification, Harness' machine-learning verification analysis will assess the risk level of the deployment.
 
@@ -48,7 +48,7 @@ Select the Harness Verification Provider you configured using your Splunk accoun
 
 You can templatize the **Splunk Server** setting by clicking the **[T]** button. This puts the expression `${Splunk_Server}` in the **Splunk Server** setting. You can change the variable name in the expression.
 
-When you templatize the **Splunk Server** setting, it creates a [Workflow variable](https://docs.harness.io/article/m220i1tnia-workflow-configuration#add_workflow_variables), which is a parameter that must be given a value when the Workflow is deployed.
+When you templatize the **Splunk Server** setting, it creates a [Workflow variable](../../model-cd-pipeline/workflows/workflow-configuration.md#add-workflow-variables), which is a parameter that must be given a value when the Workflow is deployed.
 
 The following diagram shows the templatized **Splunk Server** setting, the Workflow variable it creates, and how you can provide a value when you deploy the Workflow.
 
@@ -83,7 +83,7 @@ See [Guide From Example](#guide_from_example).
 
 ### Step 6: Analysis Time duration
 
-Set the duration for the verification step. If a verification step exceeds the value, the workflow [Failure Strategy](https://docs.harness.io/article/m220i1tnia-workflow-configuration#failure_strategy) is triggered. For example, if the Failure Strategy is **Ignore**, then the verification state is marked **Failed** but the workflow execution continues.
+Set the duration for the verification step. If a verification step exceeds the value, the workflow [Failure Strategy](../../model-cd-pipeline/workflows/workflow-configuration.md#failure-strategy) is triggered. For example, if the Failure Strategy is **Ignore**, then the verification state is marked **Failed** but the workflow execution continues.
 
 See [CV Strategies, Tuning, and Best Practices](../continuous-verification-overview/concepts-cv/cv-strategies-and-best-practices.md#analysis-time-duration).
 
@@ -192,7 +192,7 @@ Ensure that your Kubernetes deployment is set up to log what you need. See [Logg
 
 ### Review: Harness Expression Support in CV Settings
 
-You can use expressions (`${...}`) for [Harness built-in variables](https://docs.harness.io/article/7bpdtvhq92-workflow-variables-expressions) and custom [Service](https://docs.harness.io/article/eb3kfl8uls-service-configuration) and [Workflow](https://docs.harness.io/article/766iheu1bk-add-workflow-variables-new-template) variables in the settings of Harness Verification Providers.
+You can use expressions (`${...}`) for [Harness built-in variables](https://docs.harness.io/article/7bpdtvhq92-workflow-variables-expressions) and custom [Service](../../model-cd-pipeline/setup-services/service-configuration.md) and [Workflow](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md) variables in the settings of Harness Verification Providers.
 
 ![](./static/3-verify-deployments-with-splunk-27.png)
 
@@ -200,7 +200,7 @@ Expression support lets you template your Workflow verification steps. You can a
 
 ### Step 9: View Verification Results
 
-Once you have deployed your workflow (or pipeline) using the Splunk verification step, you can automatically verify app performance across your deployment. For more information, see [Add a Workflow](https://docs.harness.io/article/m220i1tnia-workflow-configuration) and [Add a Pipeline](https://docs.harness.io/article/zc1u96u6uj-pipeline-configuration).
+Once you have deployed your workflow (or pipeline) using the Splunk verification step, you can automatically verify app performance across your deployment. For more information, see [Add a Workflow](../../model-cd-pipeline/workflows/workflow-configuration.md) and [Add a Pipeline](../../model-cd-pipeline/pipelines/pipeline-configuration.md).
 
 #### Workflow Verification
 

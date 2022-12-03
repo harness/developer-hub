@@ -14,11 +14,11 @@ Harness 24/7 Service Guard differs from Deployment Verification in that it monit
 
 You can add your Prometheus monitoring to Harness 24/7 Service Guard in your Harness Application Environment. See [Connect to Prometheus](1-prometheus-connection-setup.md).
 
-This section assumes you have a Harness Application set up and containing a Service and Environment. For steps on setting up a Harness Application, see [Application Checklist](https://docs.harness.io/article/bucothemly-application-configuration).
+This section assumes you have a Harness Application set up and containing a Service and Environment. For steps on setting up a Harness Application, see [Application Checklist](../../model-cd-pipeline/applications/application-configuration.md).
 
 ### Before You Begin
 
-* Set up a Harness Application, containing a Service and Environment. See [Create an Application](https://docs.harness.io/article/bucothemly-application-configuration).
+* Set up a Harness Application, containing a Service and Environment. See [Create an Application](../../model-cd-pipeline/applications/application-configuration.md).
 * See the [Prometheus Verification Overview](../continuous-verification-overview/concepts-cv/prometheus-verification-overview.md).
 
 ### Visual Summary
@@ -32,9 +32,9 @@ Here's an example of a 24/7 Service Guard configuration for Prometheus.
 To set up 24/7 Service Guard for Prometheus, do the following:
 
 1. Ensure that you have added Prometheus as a Harness Verification Provider, as described in [Connect to Prometheus](1-prometheus-connection-setup.md).
-2. In your Harness Application, ensure that you have added a Service, as described in [Services](https://docs.harness.io/article/eb3kfl8uls-service-configuration). For 24/7 Service Guard, you do not need to add an Artifact Source to the Service, or configure its settings. You simply need to create a Service and name it. It will represent your application for 24/7 Service Guard.
+2. In your Harness Application, ensure that you have added a Service, as described in [Services](../../model-cd-pipeline/setup-services/service-configuration.md). For 24/7 Service Guard, you do not need to add an Artifact Source to the Service, or configure its settings. You simply need to create a Service and name it. It will represent your application for 24/7 Service Guard.
 3. In your Harness Application, click **Environments**.
-4. In **Environments**, ensure that you have added an Environment for the Service you added. For steps on adding an Environment, see [Environments](https://docs.harness.io/article/n39w05njjv-environment-configuration).
+4. In **Environments**, ensure that you have added an Environment for the Service you added. For steps on adding an Environment, see [Environments](../../model-cd-pipeline/environments/environment-configuration.md).
 5. Click the Environment for your Service. Typically, the **Environment Type** is **Production**.
 6. In the **Environment** page, locate **24/7 Service Guard**.
 

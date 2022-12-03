@@ -14,7 +14,7 @@ A Harness Verification Provider is a connection to monitoring tools such as Data
 
 ### Before You Begin
 
-* Set up a Harness Application, containing a Service and Environment. See [Create an Application](https://docs.harness.io/article/bucothemly-application-configuration).
+* Set up a Harness Application, containing a Service and Environment. See [Create an Application](../../model-cd-pipeline/applications/application-configuration.md).
 * See the [Datadog Verification Overview](../continuous-verification-overview/concepts-cv/datadog-verification-overview.md).
 
 ### Step 1: Add Datadog Verification Provider

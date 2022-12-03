@@ -22,7 +22,7 @@ You templatize settings by click the **[T]** icon next to the setting.
 
 ![](./static/templatize-app-dynamics-verification-09.png)
 
-The settings are replaced by [Workflow variables](https://docs.harness.io/article/m220i1tnia-workflow-configuration#add_workflow_variables):
+The settings are replaced by [Workflow variables](../../model-cd-pipeline/workflows/workflow-configuration.md#add-workflow-variables):
 
 ![](./static/templatize-app-dynamics-verification-10.png)
 
@@ -40,7 +40,7 @@ You can select the necessary settings and deploy the Workflow.
 
 ### Option: Trigger Variables
 
-You can also use a Trigger to pass variables and set Workflow values. For details, see [Passing Variables into Workflows and Pipelines from Triggers](https://docs.harness.io/article/revc37vl0f-passing-variable-into-workflows).
+You can also use a Trigger to pass variables and set Workflow values. For details, see [Passing Variables into Workflows and Pipelines from Triggers](../../model-cd-pipeline/expressions/passing-variable-into-workflows.md).
 
 
 ### Limitations
