@@ -1,7 +1,7 @@
 ---
 title: Pass Variables between Workflows
 description: Harness variables can be used as parameters in many settings, and you can create and output variables using different Workflow steps. Once created, you can reference variables using expressions in st…
-# sidebar_position: 2
+sidebar_position: 20
 helpdocs_topic_id: gkmgrz9shh
 helpdocs_category_id: w98t8pl547
 helpdocs_is_private: false
@@ -15,14 +15,6 @@ Let's look at some examples:
 * Passing Jenkins environment variables from a Build Workflow to populate configuration values in a subsequent Harness Workflow.
 * Pass AWS resource attributes such as ARNs into a CloudFormation template.
 * Pass the outputs of a Terraform provisioning Workflow into a JIRA ticket, and update the ticket throughout deployment stages.
-
-In this topic:
-
-* [Before You Begin](#before_you_begin)
-* [Step 1: Publish Outputs](#step_1_publish_outputs)
-* [Step 2: Echo Variables](#step_2_echo_variables)
-* [Step 3: Pass the Variables in a Pipeline](#step_3_pass_the_variables_in_a_pipeline)
-* [Review: Passing Variables between Workflows](#review_passing_variables_between_workflows)
 
 ### Before You Begin
 
@@ -54,10 +46,10 @@ To demonstrate publishing outputs, we'll create a Workflow and use the [Shell Sc
 3. In the **Script** section, declare some variables. For example:  
 
 ```
-name=rohan  
+name=nora  
 export name  
   
-last=gupta  
+last=smith  
 export last
 ```
 4. In **Script Output**, list out all the environment variables that you want to reference later on. We'll use the variable names `name, last`.
@@ -80,14 +72,16 @@ Next, we'll create another Workflow that echos the variables you published in th
 
 1. Create a second Workflow and add a Shell Script step.
 2. In **Script**, reference the outputs from the first Workflow Shell Script step by entering the following:  
+
+      ```
+      echo {context.info.name} echo {context.info.last}
+      ```
+    
+  We use the `context` variable to reference variables in context. `context` is a built-in Harness variable. The `info` variable is what you have assigned to reference the env variables `name` and `last`.  
+    
+  The Shell Script step will look something like this:
   
-
-```
-echo {context.info.name} echo {context.info.last}
-```
-We use the `context` variable to reference variables in context. `context` is a built-in Harness variable. The `info` variable is what you have assigned to reference the env variables `name` and `last`.  
-The Shell Script step will look something like this:![](./static/how-to-pass-variables-between-workflows-02.png)
-
+  ![](./static/how-to-pass-variables-between-workflows-02.png)
 
 3. Click **Submit**.
 
@@ -109,11 +103,11 @@ Now that we have a Workflow pushing variables and a Workflow echoing them, we ca
    
 4. Deploy the Pipeline and review the execution logs. You'll see the Shell Script step in the first Workflow publish the variables:
 
-![](./static/how-to-pass-variables-between-workflows-05.png)
+   ![](./static/how-to-pass-variables-between-workflows-05.png)
 
-Next, in stage 2 of the Pipeline, you'll see the Shell Script step in the second Workflow echo the variables.
+  Next, in stage 2 of the Pipeline, you'll see the Shell Script step in the second Workflow echo the variables.
 
-![](./static/how-to-pass-variables-between-workflows-06.png)
+  ![](./static/how-to-pass-variables-between-workflows-06.png)
 
 ### Review: Passing Variables between Workflows
 

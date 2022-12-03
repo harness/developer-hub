@@ -1,7 +1,7 @@
 ---
 title: Create Pipeline Templates
 description: Create Pipeline templates for multiple Services, Environments, and Infrastructure Definitions.
-# sidebar_position: 2
+sidebar_position: 20
 helpdocs_topic_id: 60j7391eyy
 helpdocs_category_id: aa3bkrzgqi
 helpdocs_is_private: false
@@ -11,18 +11,6 @@ helpdocs_is_published: true
 Pipeline templates allow you to use one Pipeline with multiple Services and Infrastructure Definitions and a single Environment.
 
 You template a Pipeline by replacing these settings with variable expressions. Each time you run the Pipeline, you provide values for these expressions.
-
-In this topic:
-
-* [Before You Begin](#before_you_begin)
-* [Visual Summary](#visual_summary)
-* [Limitations](#limitations)
-* [Step 1: Review Workflow Variables in Deployment](#step_1_review_workflow_variables_in_deployment)
-* [Step 2: Template the Workflows](#step_2_template_the_workflows)
-* [Step 3: Template the Pipeline](#step_3_template_the_pipeline)
-* [Step 4: Deploy the Pipeline](#step_4_deploy_the_pipeline)
-* [Limitations](#limitations)
-* [Next Steps](#next_steps)
 
 ### Before You Begin
 
@@ -77,11 +65,11 @@ To template a Workflow, do the following:
 1. Once you create the Workflow, open the Workflow settings.
 2. Click the **[T]** button next to the **Service**, **Environment**, and **Infrastructure Definition** settings.
 
-![](./static/templatize-pipelines-16.png)
+  ![](./static/templatize-pipelines-16.png)
 
-If you are running a Canary Workflow, you can template the **Environment** setting in the Workflow settings and the **Service** and **Infrastructure Definition** settings in the Phases of the Workflow.
+   If you are running a Canary Workflow, you can template the **Environment** setting in the Workflow settings and the **Service** and **Infrastructure Definition** settings in the Phases of the Workflow.
 
-![](./static/templatize-pipelines-17.png)
+   ![](./static/templatize-pipelines-17.png)
 
 If your Workflow contains Continuous Verification steps, you can template several of their settings also.
 

@@ -1,7 +1,7 @@
 ---
 title: Jira Approvals
 description: Describes how to add Jira based approvals for a Pipeline or a Workflow.
-# sidebar_position: 2
+sidebar_position: 20
 helpdocs_topic_id: qxki6o7y31
 helpdocs_category_id: 4edbfn50l8
 helpdocs_is_private: false
@@ -55,7 +55,7 @@ The other approval mechanisms are:
 
 You can click on the **Issue URL** link to see the Jira issue in Jira's UI and select set approval or rejection criteria. In this example, the status **Done** fulfills the Approval Criteria.
 
-![](./static/jira-based-approvals-18.png
+![](./static/jira-based-approvals-18.png)
 
 Once the Jira issue is approved, the Approval stage turns green in **Deployments**, and the deployment continues.
 

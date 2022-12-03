@@ -1,7 +1,7 @@
 ---
 title: Custom Shell Script Approvals
 description: Describes how to add custom shell script based approvals for a Pipeline or a Workflow.
-# sidebar_position: 2
+sidebar_position: 30
 helpdocs_topic_id: lf79ixw2ge
 helpdocs_category_id: 4edbfn50l8
 helpdocs_is_private: false

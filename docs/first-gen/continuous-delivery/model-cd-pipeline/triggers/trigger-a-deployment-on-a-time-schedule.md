@@ -1,7 +1,7 @@
 ---
 title: Schedule Deployments using Triggers
 description: You can trigger Harness Workflow and Pipeline deployments on a time schedule. You can select how often to execute the Trigger by hour, days, etc. All the cron jobs are executed in Universal Time Coor…
-# sidebar_position: 2
+sidebar_position: 40
 helpdocs_topic_id: tb66fmh4iz
 helpdocs_category_id: weyg86m5qp
 helpdocs_is_private: false
@@ -12,34 +12,20 @@ You can trigger Harness Workflow and Pipeline deployments on a time schedule. Yo
 
 All the cron jobs are executed in Universal Time Coordinated (UTC). You can also apply the time condition to new artifacts only.
 
-In this topic:
-
-* [Before You Begin](#before_you_begin)
-* [Limitations](#limitations)
-* [Step 1: Add a Trigger](#step_1_add_a_trigger)
-* [Step 2: Schedule Trigger Execution](#step_2_schedule_trigger_execution)
-* [Option: On New Artifact Only](#option_on_new_artifact_only)
-* [Step 3: Select the Workflow or Pipeline to Deploy](#step_3_select_the_workflow_or_pipeline_to_deploy)
-* [Step 4: Provide Values for Workflow Variables](#step_4_provide_values_for_workflow_variables)
-* [Step 5: Select the Artifact to Deploy](#step_5_select_the_artifact_to_deploy)
-	+ [Last Collected](#last_collected)
-	+ [Last Successfully Deployed](#last_successfully_deployed)
-* [Configure As Code](#configure_as_code)
-* [Related Topics](#related_topics)
-
-### Before You Begin
+## Before You Begin
 
 * [Add a Service](../setup-services/service-configuration.md)
 * [Workflows](../workflows/workflow-configuration.md)
 * [Add Environment](../environments/environment-configuration.md)
 * [Create a Pipeline](../pipelines/pipeline-configuration.md)
 
-### Limitations
 
-* On Time Schedule Triggers must be equal to or greater than 5 minutes. This includes CRON expressions. If the CRON expression uses a schedule less than 5 minutes, you will see a warning such as:  
+:::note 
+On Time Schedule Triggers must be equal to or greater than 5 minutes. This includes CRON expressions. If the CRON expression uses a schedule less than 5 minutes, you will see a warning such as:  
 `Deployments must be triggered at intervals greater than or equal to 5 minutes.`
+:::
 
-### Step 1: Add a Trigger
+## Step 1: Add a Trigger
 
 Typically, Triggers are set up after you have successfully deployed and tested a Workflow or Pipeline.
 
@@ -51,7 +37,7 @@ To add a trigger, do the following:
 4. In **Name**, enter a name for the Trigger. This name will appear in the **Deployments** page to indicate the Trigger that initiated a deployment.
 5. Click **Next**.
 
-### Step 2: Schedule Trigger Execution
+## Step 2: Schedule Trigger Execution
 
 You set the schedule for the Trigger using a quartz expression. The Harness Manager uses the schedule you set to execute the Trigger. The Universal Time Coordinated (UTC) time zone is used.
 
@@ -83,36 +69,36 @@ Artifact metadata is collected automatically every minute by Harness.
 
 You can also manually collect artifact metadata using the Service's **Manually pull artifact** feature.
 
-### Step 3: Select the Workflow or Pipeline to Deploy
+## Step 3: Select the Workflow or Pipeline to Deploy
 
 1. In **Execution Type**, select **Workflow** or **Pipeline**.
 2. In **Execute Workflow**/**Pipeline**, select the Workflow or Pipeline to deploy.
 
-### Step 4: Provide Values for Workflow Variables
+## Step 4: Provide Values for Workflow Variables
 
 If the Workflow or Pipeline you selected to deploy uses Workflow variables, you will need to provide values for these variables.
 
 You can also use variable expressions for these values. See [Passing Variables into Workflows from Triggers](../expressions/passing-variable-into-workflows.md).
 
-### Step 5: Select the Artifact to Deploy
+## Step 5: Select the Artifact to Deploy
 
 Since Workflows deploy Harness Services, you are also prompted to provide the Artifact Source for the Service(s) the Workflow(s) will deploy.
 
-#### Last Collected
+### Last Collected
 
 Select this option to use the last artifact collected by Harness in the Harness Service. Artifact metadata is collected automatically every minute by Harness.
 
 You can also manually collect artifact metadata using the Service's **Manually pull artifact** feature.
 
-#### Last Successfully Deployed
+### Last Successfully Deployed
 
 The last artifact that was deployed by the Workflow you select.
 
-### Configure As Code
+## Configure As Code
 
 To see how to configure the settings in this topic using YAML, configure the settings in the UI first, and then click the **YAML** editor button.
 
-### Related Topics
+## Related Topics
 
 * [Passing Variables into Workflows from Triggers](../expressions/passing-variable-into-workflows.md)
 * For information on using Triggers as part of Harness Git integration, see [Onboard Teams Using Git](../../harness-git-based/onboard-teams-using-git-ops.md).

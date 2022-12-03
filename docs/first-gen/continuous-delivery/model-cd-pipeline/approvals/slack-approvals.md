@@ -1,7 +1,7 @@
 ---
 title: Slack Approvals in Workflows and Pipelines
 description: Approve or reject Workflows and Pipelines directly from Slack.
-# sidebar_position: 2
+sidebar_position: 60
 helpdocs_topic_id: mtr398a9cl
 helpdocs_category_id: 4edbfn50l8
 helpdocs_is_private: false
@@ -9,15 +9,6 @@ helpdocs_is_published: true
 ---
 
 Currently, this feature is behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature. Feature Flags can only be removed for Harness Professional and Essentials editions. Once the feature is released to a general audience, it's available for Trial and Community Editions.Harness users can approve or reject Workflows and Pipelines directly from Slack.
-
-In this topic:
-
-* [Step 1: Create Slack App](slack-approvals.md#step-1-create-slack-app)
-* [Step 2: Configure Harness API Endpoint in Slack](slack-approvals.md#step-2-configure-harness-api-endpoint-in-slack)
-* [Step 3: Configure Harness User Notifications for Slack](slack-approvals.md#step-3-configure-harness-user-notifications-for-slack)
-* [Option: Approve ​Workflows via Slack](slack-approvals.md#option-approve-workflows-via-slack)
-* [Option: Approve Pipelines via Slack](slack-approvals.md#option-approve-pipelines-via-slack)
-* [See Also](slack-approvals.md#see-also)
 
 To configure Harness notifications to Slack *without* enabling deployment approvals from Slack, see [Send Notifications Using Slack](https://docs.harness.io/article/4blpfqwfdc-send-notification-using-slack) and [Send Slack Messages from Workflows](https://docs.harness.io/article/4zd81qhhiu-slack-notifications).
 
@@ -29,26 +20,38 @@ For details on these steps, see Slack's [Incoming Webhooks](https://api.slack.
 
 When you create the app, do the following:
 
-1. Name your app, assign it to a Workspace, and select **Create App**.![](./static/slack-approvals-02.png)
+1. Name your app, assign it to a Workspace, and select **Create App**.
+
+   ![](./static/slack-approvals-02.png)
+   
 2. Select **Incoming Webhooks**.
-3. Enable the **Activate Incoming Webhooks** slider:![](./static/slack-approvals-03.png)
+3. Enable the **Activate Incoming Webhooks** slider:
+
+   ![](./static/slack-approvals-03.png)
+   
 4. Click **Add New Webhook to Workspace**.
-5. At the **Confirm your identity** challenge, select the Slack channel to receive approval notifications. (To select an appropriate channel, see [Configure Harness User Notifications](#configure_notifications) below.)![](./static/slack-approvals-04.png)
+5. At the **Confirm your identity** challenge, select the Slack channel to receive approval notifications. (To select an appropriate channel, see [Configure Harness User Notifications](#configure_notifications) below.)
+
+   ![](./static/slack-approvals-04.png)
+   
 6. Click **Install** (or **Authorize**) to confirm this setup.
 
 ### Step 2: Configure Harness API Endpoint in Slack
 
 Configure the API endpoint from Harness for interactivity.
 
-For details, see Slack's [Making Messages Interactive](https://api.slack.com/interactive-messages) documentation.1. In Slack, select **Interactive Components**.
+For details, see Slack's [Making Messages Interactive](https://api.slack.com/interactive-messages) documentation.
+
+1. In Slack, select **Interactive Components**.
 2. Enable the **Interactivity** slider:![](./static/slack-approvals-05.png)
 3. Enter the **Request URL**, as either `http` or `https`. The **Request URL** is independent of the approval channel that we'll configure [below](#configure_notifications).  
   
-Harness SaaS users should enter a URL of the form shown above:  
-`https://app.harness.io/gateway/api/slack/approval?accountId=<accountID>`  
-  
-On-prem users will instead have a URL of the form:  
-`https://<your-domain-name>.harness.io/gateway/api/slack/approval?accountId=<accountID>`
+    Harness SaaS users should enter a URL of the form shown above:  
+    `https://app.harness.io/gateway/api/slack/approval?accountId=<accountID>`  
+      
+    On-prem users will instead have a URL of the form:  
+    `https://<your-domain-name>.harness.io/gateway/api/slack/approval?accountId=<accountID>`
+
 4. Click **Save**.
 5. Return to the Slack app's **Incoming Webhooks** tab.
 6. From the resulting app settings, copy the **Webhook URL** to your clipboard.![](./static/slack-approvals-06.png)

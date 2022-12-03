@@ -107,22 +107,21 @@ To set up your Delegate and Cloud Provider, do the following:
 	2. Click **Download Delegate** and select the Delegate type.![](./static/shell-script-provisioner-01.png)
 	3. There are different installation steps depending on which Delegate type you select. For details on setting up each type, see [Delegate Installation and Management](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation).
 	4. Once the Delegate is installed, open a terminal on its host and test the shell script you plan to use to pull the provisioner JSON collection. For example, the following script obtains the JSON for AWS EC2 instances:
-```
-apt-get -y install awscli  
-aws configure set aws_access_key_id $access_key  
-aws configure set aws_secret_access_key $secret_key  
-aws configure set region us-east-1  
-aws ec2 describe-instances --filters Name=tag:Name,Values=harness-provisioner
-```
-
-	1. Verify that the script returns the JSON collection. If it does, then the Delegate will be successful when executing the script at runtime. If the script fails, troubleshoot the network connection between the Delegate host and the provisioner host or service.
+      ```
+      apt-get -y install awscli  
+      aws configure set aws_access_key_id $access_key  
+      aws configure set aws_secret_access_key $secret_key  
+      aws configure set region us-east-1  
+      aws ec2 describe-instances --filters Name=tag:Name,Values=harness-provisioner
+      ```
+	5. Verify that the script returns the JSON collection. If it does, then the Delegate will be successful when executing the script at runtime. If the script fails, troubleshoot the network connection between the Delegate host and the provisioner host or service.
+  
 2. Add the Cloud Provider.
 	1. In Harness, click **Setup**, and then click **Cloud Providers**.
 	2. Click **Add Cloud Provider**. The **Cloud Provider** dialog appears.
 	3. Select the Cloud Provider type you want to use.
 	4. In **Display Name**, enter the name to identify the Cloud Provider when you select it in your Harness Environment later.  
-	  
-	For a Physical Data Center Cloud Provider, no credentials are required here. Instead, you add an SSH secret in Harness Secrets Management, and select that later in your Harness Environment in **Connection Attributes**. For more information, see [Secrets Management](https://docs.harness.io/article/au38zpufhr-secret-management).
+	   For a Physical Data Center Cloud Provider, no credentials are required here. Instead, you add an SSH secret in Harness Secrets Management, and select that later in your Harness Environment in **Connection Attributes**. For more information, see [Secrets Management](https://docs.harness.io/article/au38zpufhr-secret-management).
 	5. Click **SUBMIT** when you are done.
 
 ##### SSH Connection Credentials
@@ -277,90 +276,92 @@ To set up a Service Mapping for a Physical Data Center Cloud Provider, do the fo
 8. In **Host Connection Attributes**, select the SSH credentials you set up in [SSH Connection Credentials](shell-script-provisioner.md#ssh-connection-credentials).
 9. In **Host Object Array Path**, enter the JSON path to the JSON array object for the host.
 
-For example, the following JSON object contains an Instances array with two items (the JSON is abbreviated):
+    For example, the following JSON object contains an Instances array with two items (the JSON is abbreviated):
 
 
-```
-{  
-  "Instances": [  
-    {  
-      "StackId": "71c7ca72-55ae-4b6a-8ee1-a8dcded3fa0f",  
-      ...  
-      "InfrastructureClass": "ec2",  
-      "RootDeviceVolumeId": "vol-d08ec6c1",  
-      "SubnetId": "subnet-b8de0ddd",  
-      "InstanceType": "t1.micro",  
-      "CreatedAt": "2015-02-24T20:52:49+00:00",  
-      "AmiId": "ami-35501205",  
-      "Hostname": "ip-192-0-2-0",  
-      "Ec2InstanceId": "i-5cd23551",  
-      "PublicDns": "ec2-192-0-2-0.us-west-2.compute.amazonaws.com",  
-      "SecurityGroupIds": [  
-        "sg-c4d3f0a1"  
-      ],  
-      ...  
-    },  
-    {  
-      "StackId": "71c7ca72-55ae-4b6a-8ee1-a8dcded3fa0f",  
-      ...  
-      "InfrastructureClass": "ec2",  
-      "RootDeviceVolumeId": "vol-e09dd5f1",  
-      "SubnetId": "subnet-b8de0ddd",  
-      "InstanceProfileArn": "arn:aws:iam::123456789102:instance-profile/aws-opsworks-ec2-role",  
-      "InstanceType": "c3.large",  
-      "CreatedAt": "2015-02-24T21:29:33+00:00",  
-      "AmiId": "ami-9fc29baf",  
-      "SshHostDsaKeyFingerprint": "fc:87:95:c3:f5:e1:3b:9f:d2:06:6e:62:9a:35:27:e8",  
-      "Ec2InstanceId": "i-8d2dca80",  
-      "PublicDns": "ec2-192-0-2-1.us-west-2.compute.amazonaws.com",  
-      "SecurityGroupIds": [  
-        "sg-b022add5",  
-        "sg-b122add4"  
-      ],  
-      ...  
-    }  
-  ]  
-}
-```
-We want to point to the first item in the JSON file using its index, and so we use `Instances`.
+        ```
+        {  
+          "Instances": [  
+            {  
+              "StackId": "71c7ca72-55ae-4b6a-8ee1-a8dcded3fa0f",  
+              ...  
+              "InfrastructureClass": "ec2",  
+              "RootDeviceVolumeId": "vol-d08ec6c1",  
+              "SubnetId": "subnet-b8de0ddd",  
+              "InstanceType": "t1.micro",  
+              "CreatedAt": "2015-02-24T20:52:49+00:00",  
+              "AmiId": "ami-35501205",  
+              "Hostname": "ip-192-0-2-0",  
+              "Ec2InstanceId": "i-5cd23551",  
+              "PublicDns": "ec2-192-0-2-0.us-west-2.compute.amazonaws.com",  
+              "SecurityGroupIds": [  
+                "sg-c4d3f0a1"  
+              ],  
+              ...  
+            },  
+            {  
+              "StackId": "71c7ca72-55ae-4b6a-8ee1-a8dcded3fa0f",  
+              ...  
+              "InfrastructureClass": "ec2",  
+              "RootDeviceVolumeId": "vol-e09dd5f1",  
+              "SubnetId": "subnet-b8de0ddd",  
+              "InstanceProfileArn": "arn:aws:iam::123456789102:instance-profile/aws-opsworks-ec2-role",  
+              "InstanceType": "c3.large",  
+              "CreatedAt": "2015-02-24T21:29:33+00:00",  
+              "AmiId": "ami-9fc29baf",  
+              "SshHostDsaKeyFingerprint": "fc:87:95:c3:f5:e1:3b:9f:d2:06:6e:62:9a:35:27:e8",  
+              "Ec2InstanceId": "i-8d2dca80",  
+              "PublicDns": "ec2-192-0-2-1.us-west-2.compute.amazonaws.com",  
+              "SecurityGroupIds": [  
+                "sg-b022add5",  
+                "sg-b122add4"  
+              ],  
+              ...  
+            }  
+          ]  
+        }
+        ```
+   We want to point to the first item in the JSON file using its index, and so we use `Instances`.
 
-To ensure that you referring to the correct item in your array, test your **Host Object Array Path** using your JSON collection and an online validator such as [JSON Editor Online](https://jsoneditoronline.org/).In **Host Object Array Path**, the path will look like this:
+   To ensure that you referring to the correct item in your array, test your **Host Object Array Path** using your JSON collection and an online validator such as [JSON Editor Online](https://jsoneditoronline.org/).In **Host Object Array Path**, the path will look like this:
 
-![](./static/shell-script-provisioner-11.png)
+   ![](./static/shell-script-provisioner-11.png)
 
-Now that you have provided a path to the host object, you can map its JSON keys in **Host Attributes**. For Physical Data Center, only the **Hostname** field is mandatory.
+   Now that you have provided a path to the host object, you can map its JSON keys in **Host Attributes**. For Physical Data Center, only the **Hostname** field is mandatory.
 
-![](./static/shell-script-provisioner-12.png)
+   ![](./static/shell-script-provisioner-12.png)
 
-1. In the row for **Hostname**, click **Enter JSON Path**, and enter the name of the key in the JSON array that lists the hostname you want to use. For example, you could use key name **PublicDnsName** from the earlier example:
+10. In the row for **Hostname**, click **Enter JSON Path**, and enter the name of the key in the JSON array that lists the hostname you want to use. For example, you could use key name **PublicDnsName** from the earlier example:
 
+    ```
+     {  
+      "Instances": [  
+        {  
+          "StackId": "71c7ca72-55ae-4b6a-8ee1-a8dcded3fa0f",  
+          ...  
+          "SubnetId": "subnet-b8de0ddd",  
+          "InstanceType": "t1.micro",  
+          "CreatedAt": "2015-02-24T20:52:49+00:00",  
+          "AmiId": "ami-35501205",  
+          "Hostname": "ip-192-0-2-0",  
+          "Ec2InstanceId": "i-5cd23551",  
+          "**PublicDnsName**": "ec2-192-0-2-0.us-west-2.compute.amazonaws.com",  
+          "SecurityGroupIds": [  
+            "sg-c4d3f0a1"  
+          ],  
+          ...  
+        },
+    ```
 
-```
- {  
-  "Instances": [  
-    {  
-      "StackId": "71c7ca72-55ae-4b6a-8ee1-a8dcded3fa0f",  
-      ...  
-      "SubnetId": "subnet-b8de0ddd",  
-      "InstanceType": "t1.micro",  
-      "CreatedAt": "2015-02-24T20:52:49+00:00",  
-      "AmiId": "ami-35501205",  
-      "Hostname": "ip-192-0-2-0",  
-      "Ec2InstanceId": "i-5cd23551",  
-      "**PublicDnsName**": "ec2-192-0-2-0.us-west-2.compute.amazonaws.com",  
-      "SecurityGroupIds": [  
-        "sg-c4d3f0a1"  
-      ],  
-      ...  
-    },
-```
-1. Map any other key names you want to use when creating the host(s) in the infrastructure. The following image shows how you can map multiple keys to **Host Attributes**.
+11. Map any other key names you want to use when creating the host(s) in the infrastructure. The following image shows how you can map multiple keys to **Host Attributes**.
 
-![](./static/shell-script-provisioner-13.png)
+   ![](./static/shell-script-provisioner-13.png)
 
-You can reference any mapped Field Name after the **Select Nodes** step in your Workflow using the expression `${host.properties.<name>}`, such as `${host.properties.SubnetId}`. For example, you could add a Shell Script step to a Workflow that outputs the values for all the mapped Fields.1. Click **NEXT**, and then click **SUBMIT**. The Infrastructure Definition and its Service mapping is listed:
+   You can reference any mapped Field Name after the **Select Nodes** step in your Workflow using the expression `${host.properties.<name>}`, such as `${host.properties.SubnetId}`. For example, you could add a Shell Script step to a Workflow that outputs the values for all the mapped Fields.
+   
+12. Click **NEXT**, and then click **SUBMIT**. The Infrastructure Definition and its Service mapping is listed:
 
-![](./static/shell-script-provisioner-14.png)
+   ![](./static/shell-script-provisioner-14.png)
 
 Now that the Infrastructure Provisioner and an Infrastructure Definition with a Service mapping are created, you can use it in the Environment and Workflow of your Harness Application.
 

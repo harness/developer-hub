@@ -1,7 +1,7 @@
 ---
 title: Pipeline Skip Conditions
 description: Skip Pipeline stages based on conditions and variable expressions.
-# sidebar_position: 2
+sidebar_position: 30
 helpdocs_topic_id: 6kefu7s7ne
 helpdocs_category_id: aa3bkrzgqi
 helpdocs_is_private: false
@@ -12,19 +12,6 @@ You might want to skip the execution of specific Pipeline Stages based on differ
 
 You can use skip conditions to control how Pipeline stages execute. For example, you could evaluate a branch name to determine which Stage to run. If the branch name is not **master**, you could skip a Workflow that deploys from the master branch.
 
-This topic covers:
-
-* [Before You Begin](#before_you_begin)
-* [Limitations](#limitations)
-* [Review: Skip Conditions](#review_skip_conditions)
-	+ [Skip Always and Workflow Variables](#skip_always_and_workflow_variables)
-* [Skip Based on Assertion Expression](#skip_based_on_assertion_expression)
-	+ [Step 1: Create Input Variable](#step_1_create_input_variable)
-	+ [Step 2: Modify Value During Deployment](#step_2_modify_value_during_deployment)
-	+ [Step 3: Evaluate Assertion Expression](#step_3_evaluate_assertion_expression)
-* [Review: Skip Condition Info In Deployments Page](#review_skip_condition_info_in_deployments_page)
-* [Notes](#notes)
-* [See Also](#see_also)
 
 You can also apply skip conditions to steps in a Workflow. See [Skip Workflow Steps](../workflows/skip-workflow-steps.md).
 
@@ -102,15 +89,19 @@ In an [Approval](../approvals/approvals.md) stage within a Pipeline, you define 
 2. In **Additional Input Variables**, click **Add**.
 3. Give your new variable a **Name** and **Default Value**. You will use the name to reference the variable in one or more subsequent Execution or Approval Stages in the Pipeline. You will use the value in an expression to determine whether the Stage should execute.
 
-![](./static/skip-conditions-30.png)
+   ![](./static/skip-conditions-30.png)
 
-1. In **Publish Variable Name**, enter a parent name for the **Additional Input Variables**. The parent name helps to avoid conflicts when referencing variables of the same name within the same Pipeline.  
+4. In **Publish Variable Name**, enter a parent name for the **Additional Input Variables**. The parent name helps to avoid conflicts when referencing variables of the same name within the same Pipeline.  
   
-In this example, the parent name is set to `releaseInfo`, and the input variable's name is `releaseTarget`. So, in subsequent Pipeline Stages, you can reference this variable as `releaseInfo.releaseTarget`. Its default value is set as `PROD`.![](./static/skip-conditions-31.png)
+   In this example, the parent name is set to `releaseInfo`, and the input variable's name is `releaseTarget`. So, in subsequent Pipeline Stages, you can reference this variable as `releaseInfo.releaseTarget`. Its default value is set as `PROD`.![](./static/skip-conditions-31.png)
 
-If you use multiple Approval Steps, ensure that the names entered in **Publish Variable Name** are unique in each Approval Step. If you use the same name in **Publish Variable Name** in multiple Approval Steps, and error will occur and the step will fail.1. To add more input variables, click **Add Variable**.  
-All variables defined in this Stage share the same parent name, prepended from the **Publish Variable Name** field.
-2. Click **Submit** to save this Stage, along with its variables. Now you can use these variables in assertion expressions within Execution and Approval stages, or modify the variables, as described below.
+ :::note 
+ If you use multiple Approval Steps, ensure that the names entered in **Publish Variable Name** are unique in each Approval Step. If you use the same name in **Publish Variable Name** in multiple Approval Steps, and error will occur and the step will fail.
+ :::
+	 
+5. To add more input variables, click **Add Variable**.  
+   All variables defined in this Stage share the same parent name, prepended from the **Publish Variable Name** field.
+6. Click **Submit** to save this Stage, along with its variables. Now you can use these variables in assertion expressions within Execution and Approval stages, or modify the variables, as described below.
 
 #### Step 2: Modify Value During Deployment
 

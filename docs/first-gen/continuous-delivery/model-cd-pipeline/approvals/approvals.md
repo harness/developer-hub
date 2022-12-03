@@ -1,7 +1,7 @@
 ---
 title: Harness UI Approvals
 description: Add Approval steps to Workflows or Pipelines, so that deployments must receive approval before they can proceed.
-# sidebar_position: 2
+sidebar_position: 10
 helpdocs_topic_id: 0ajz35u2hy
 helpdocs_category_id: 4edbfn50l8
 helpdocs_is_private: false
@@ -62,7 +62,9 @@ When you deploy the Pipeline or Workflow, you are prompted to select a User Grou
 
 You cannot pass in a value for this templated setting from another Workflow.
 
-Ensure that the User Groups you select have **Action:** **read**, **Permission Type: Deployments**, and **Application:** the current Application or **All Applications**.![](./static/approvals-12.png)
+Ensure that the User Groups you select have **Action:** **read**, **Permission Type: Deployments**, and **Application:** the current Application or **All Applications**.
+
+![](./static/approvals-12.png)
 
 Enter the time duration that Harness should wait for the approval or rejection before killing the deployment process. You can use `**w**`  for week, `**d**`  for day, `**h**`  for hour, `**m**`  for minutes, `**s**`  for seconds and `**ms**` for milliseconds. For example, 1d for one day.
 

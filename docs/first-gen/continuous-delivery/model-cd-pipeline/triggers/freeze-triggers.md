@@ -1,7 +1,7 @@
 ---
 title: Pause All Triggers using Deployment Freeze
 description: You can stop all of your Harness Triggers from executing deployments using Harness Deployment Freeze. Deployment Freeze is a Harness Governance feature that stops all Harness deployments, including t…
-# sidebar_position: 2
+sidebar_position: 100
 helpdocs_topic_id: 6vlut5qvlf
 helpdocs_category_id: weyg86m5qp
 helpdocs_is_private: false

@@ -1,7 +1,7 @@
 ---
 title: Trigger Deployments When a New Artifact is Added to a Repo
 description: You can trigger Harness Workflow and Pipeline deployments in response to a new artifact being added to a repository. For example, every time a new Docker image is uploaded to your Docker hub account,…
-# sidebar_position: 2
+sidebar_position: 20
 helpdocs_topic_id: s2m2ksxn6a
 helpdocs_category_id: weyg86m5qp
 helpdocs_is_private: false
@@ -20,7 +20,7 @@ For example, every time a new Docker image is uploaded to your Docker hub accoun
 * [Create a Pipeline](../pipelines/pipeline-configuration.md)
 * [Add Artifact Servers](https://docs.harness.io/article/7dghbx1dbl-configuring-artifact-server)
 
-### Limitations
+### Important Notes
 
 #### One Artifact Triggers Deployment
 
@@ -64,7 +64,11 @@ The simplest way to see the build names for your artifacts, is to use **Artifact
 
 Here you can see the build names.
 
-Selecting the **Manually pull artifact** option in a Harness Service does not initiate a Trigger set up with **On New Artifact**.To specify the triggering artifact source, do the following:
+:::note
+Selecting the **Manually pull artifact** option in a Harness Service does not initiate a Trigger set up with **On New Artifact**.
+:::
+
+To specify the triggering artifact source, do the following:
 
 1. In your Trigger, in **Condition**, in **Type**, click **On New Artifact**. The **Artifact Source** and **Build/Tag Filter** settings appear.
 2. In **Artifact Source**, select the Harness Service Artifact Source that points to your Artifact repo. The names are listed with Artifact Source name (Service name).The Trigger is executed based on **file names** and not metadata changes.For example, the Artifact Source `library_nginx (k8sv2)` references a Service's Artifact Source like this:

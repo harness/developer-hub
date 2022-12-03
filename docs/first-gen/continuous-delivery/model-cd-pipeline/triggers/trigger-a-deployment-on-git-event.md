@@ -1,7 +1,7 @@
 ---
 title: Trigger Deployments using Git Events (FirstGen)
 description: For GitHub, GitLab, and Bitbucket, you can trigger Build Workflows or a Build and Deploy Pipeline in response to a Git event using Webhooks using a Harness On Webhook Event Trigger. For example, the…
-# sidebar_position: 2
+sidebar_position: 50
 helpdocs_topic_id: ys3cvwm5gc
 helpdocs_category_id: weyg86m5qp
 helpdocs_is_private: false
@@ -14,23 +14,10 @@ For example, the first stage of the Build and Deploy Pipeline is a Build Workflo
 
 For Custom Git providers, you can trigger any type of Harness Workflow using a Harness On Webhook Event Trigger.
 
-For GitHub, GitLab, and Bitbucket, this option is used to execute a Build Workflow or a Build Pipeline only. GitHub, GitLab, and Bitbucket Webhook-based Triggers are not intended for Workflows and Pipelines that **deploy** artifacts. They are designed for Build Workflows and Pipelines that build artifacts in response to Gt events.In this topic:
+For GitHub, GitLab, and Bitbucket, this option is used to execute a Build Workflow or a Build Pipeline only. GitHub, GitLab, and Bitbucket Webhook-based Triggers are not intended for Workflows and Pipelines that **deploy** artifacts. They are designed for Build Workflows and Pipelines that build artifacts in response to Gt events.
 
-* [Before You Begin](#before_you_begin)
-* [Limitations](#limitations)
-* [Review: Git Webhook Triggers](#review_git_webhook_triggers)
-* [Step 1: Add a Trigger](#step_1_add_a_trigger)
-* [Step 2: Select Repo and Event Type](#step_2_select_repo_and_event_type)
-* [Review: Payload and Event Type Matrix](#review_payload_and_event_type_matrix)
-* [Option: Authenticate the Webhook](trigger-a-deployment-on-git-event.md#option-authenticate-the-webhook)
-* [Step 3: Select the Workflow or Pipeline to Deploy](#step_3_select_the_workflow_or_pipeline_to_deploy)
-* [Step 4: Provide Values for Workflow Variables](#step_4_provide_values_for_workflow_variables)
-* [Option: Manual Triggers](#option_manual_triggers)
-* [Step 5: Set Up the Github Webhook](trigger-a-deployment-on-git-event.md#step-5-set-up-the-github-webhook)
-* [Configure As Code](#configure_as_code)
-* [Related Topics](#related_topics)
 
-### Before You Begin
+## Before You Begin
 
 * [Build Workflows](https://docs.harness.io/article/wqytbv2bfd-ci-cd-with-the-build-workflow)
 * [Build and Deploy Pipeline](https://docs.harness.io/article/0tphhkfqx8-artifact-build-and-deploy-pipelines-overview)
@@ -39,7 +26,7 @@ For GitHub, GitLab, and Bitbucket, this option is used to execute a Build Workf
 * [Add Environment](../environments/environment-configuration.md)
 * [Create a Pipeline](../pipelines/pipeline-configuration.md)
 
-### Limitations
+## Important Notes
 
 * In the **Actions** section of the Trigger, the **Deploy only if files have changed** option is available for Workflows deploying Kubernetes or Native Helm Services only.
 * Data retention for Webhook event details is 3 days.   
@@ -50,7 +37,7 @@ curl -i -X GET \
   -H 'x-api-key: <Harness API key>'
 ```
 
-### Review: Git Webhook Triggers
+## Review: Git Webhook Triggers
 
 You can create Harness Triggers that respond to certain Git events, and then add the Harness Trigger Git Webhook to your repo. When the specified event happens in your repo, the Harness Trigger is run.
 
@@ -72,7 +59,7 @@ The first stage of the Pipeline is a Build Workflow that builds and collects the
 
 For details on the payloads of the different repo Webhooks, see GitHub [Event Types & Payloads](https://developer.github.com/v3/activity/events/types/), Bitbucket [Event Payloads](https://confluence.atlassian.com/bitbucket/event-payloads-740262817.html), and Gitlab [Events](https://docs.gitlab.com/ee/user/project/integrations/webhooks.html#events).
 
-### Step 1: Add a Trigger
+## Step 1: Add a Trigger
 
 Typically, Triggers are set up after you have successfully deployed and tested a Workflow or Pipeline.
 
@@ -84,7 +71,7 @@ To add a trigger, do the following:
 4. In **Name**, enter a name for the Trigger. This name will appear in the **Deployments** page to indicate the Trigger that initiated a deployment.
 5. Click **Next**.
 
-### Step 2: Select Repo and Event Type
+## Step 2: Select Repo and Event Type
 
 A Git event that merges code initiates the Trigger for the Build and Deploy Pipeline.
 
@@ -112,22 +99,12 @@ This option is used to execute a  [Build Workflow](https://docs.harness.io/arti
 |  |  |
 | --- | --- |
 | **Payload Type** | **Event Type** |
-| BitBucket | On Pull Request
-On Repository
-On Issue |
-| GitHub | On Pull Request
-On Push
-On Delete
-On Release
-On Package |
-| GitLab | On Pull Request
-On Push |
-| Custom or no selection.
-This option is for repos other than the default Git providers.
-For example, Bamboo or Jenkins. | On Pull Request
-On Push |
+| BitBucket | On Pull Request<br />On Repository<br />On Issue |
+| GitHub | On Pull Request<br />On Push <br />On Delete <br />On Release <br />On Package |
+| GitLab | On Pull Request <br />  <br /> On Push |
+| Custom or no selection. <br /> This option is for repos other than the default Git providers. <br />  For example, Bamboo or Jenkins. | On Pull Request <br /> On Push |
 
-### Option: Authenticate the Webhook
+## Option: Authenticate the Webhook
 
 Currently, this feature is behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature. Feature Flags can only be removed for Harness Professional and Essentials editions. Once the feature is released to a general audience, it's available for Trial and Community Editions.  
   
@@ -153,7 +130,7 @@ For more information on Webhook secrets, see the following Git provider docs:
 
 For details on using the Harness API to set up Trigger authentication, see [Use Trigger APIs](https://docs.harness.io/article/u21rkuzfod-use-trigger-apis).
 
-#### Authentication and Delegate Scoping
+### Authentication and Delegate Scoping
 
 When Harness authenticates the Trigger, the Harness Delegate you have installed in your environment connects to the Secrets Manager you have set up in Harness.
 
@@ -163,7 +140,7 @@ Either remove the limitation (remove all scopes) or map the **Key Management Ser
 
 The **Task Category Map** feature replaces the **Command** setting in Delegate Scopes, which is deprecated and will be removed soon.
 
-### Step 3: Select the Workflow or Pipeline to Deploy
+## Step 3: Select the Workflow or Pipeline to Deploy
 
 For GitHub, GitLab, and Bitbucket, you can trigger [Build Workflows](https://docs.harness.io/article/wqytbv2bfd-ci-cd-with-the-build-workflow) or a [Build and Deploy Pipeline](https://docs.harness.io/article/0tphhkfqx8-artifact-build-and-deploy-pipelines-overview) in response to a Git event using Webhooks using a Harness On Webhook Event Trigger.
 
@@ -172,13 +149,13 @@ For Custom Git providers, you can trigger any type of Workflow using a Harness 
 1. In **Execution Type**, select **Workflow** or **Pipeline**.
 2. In **Execute Workflow**/**Pipeline**, select the Workflow or Pipeline to deploy.
 
-### Step 4: Provide Values for Workflow Variables
+## Step 4: Provide Values for Workflow Variables
 
 If the Workflow or Pipeline you selected to deploy uses Workflow variables, you will need to provide values for these variables.
 
 You can also use variable expressions for these values. See [Passing Variables into Workflows from Triggers](../expressions/passing-variable-into-workflows.md).
 
-### Option: Manual Triggers
+## Option: Manual Triggers
 
 You can manually deploy a Harness Workflow or Pipeline using a Manual Trigger. You can run a Trigger manually in the following ways:
 
@@ -191,7 +168,7 @@ See the following:
 * [Get Deployment Status using REST](get-deployment-status-using-rest.md)
 * [Trigger a Deployment using cURL](trigger-a-deployment-using-c-url.md)
 
-### Step 5: Set Up the Github Webhook
+## Step 5: Set Up the Github Webhook
 
 Once your On Webhook Event Trigger is completed, the next step is to integrate it into your Git repo so that the Trigger is executed in response to the Git event.
 
@@ -211,13 +188,15 @@ When you set up the Webhook in GitHub, modify the **Content type** to **applicat
 |  |  |
 | --- | --- |
 | **Just the Push Event** | **Pushes and Pull Requests** |
-|  |  |
+| ![](./static/_push-event-left.png) | ![](./static/_push-pull-request-right.png) |
 
-Harness will examine any incoming payload to ensure that it meets the **Action** you set. You do not need to use the repo's Webhook event settings to match the **Action**. Simply use the Harness Webhook URL in the repo Webhook URL field.### Configure As Code
+Harness will examine any incoming payload to ensure that it meets the **Action** you set. You do not need to use the repo's Webhook event settings to match the **Action**. Simply use the Harness Webhook URL in the repo Webhook URL field.
+
+## Configure As Code
 
 To see how to configure the settings in this topic using YAML, configure the settings in the UI first, and then click the **YAML** editor button.
 
-### Related Topics
+## Related Topics
 
 * [Use Trigger APIs](https://docs.harness.io/article/u21rkuzfod-use-trigger-apis)
 * [Passing Variables into Workflows from Triggers](../expressions/passing-variable-into-workflows.md)

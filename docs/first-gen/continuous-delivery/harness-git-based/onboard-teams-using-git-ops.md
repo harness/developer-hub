@@ -1,7 +1,7 @@
 ---
 title: Onboard Teams Using Git
 description: Create an Application template you can sync and clone in Git for onboarding new teams.
-# sidebar_position: 2
+sidebar_position: 20
 helpdocs_topic_id: 3av5pc4goc
 helpdocs_category_id: goyudf2aoh
 helpdocs_is_private: false
@@ -13,17 +13,6 @@ This topic shows you how to create a Harness Application template you can sync a
 Often, teams create an Application template for engineering leads or DevOps engineers. Each team then gets a clone of the Application in Git that they can modify for their purposes.
 
 Development teams can then deploy consistently without using the Harness UI to create their Applications from scratch. They simply change a few lines of YAML vis scripts and deploy their application.
-
-In this topic:
-
-* [Before You Begin](onboard-teams-using-git-ops.md#before-you-begin)
-* [Review: Why Git-based Onboarding?](onboard-teams-using-git-ops.md#review-why-git-based-onboarding)
-* [Step 1: Set Up Git Connector](onboard-teams-using-git-ops.md#step-1-set-up-git-connector)
-* [Step 2: Create Application Template](onboard-teams-using-git-ops.md#step-2-create-application-template)
-* [Step 3: Clone and Change the Application](onboard-teams-using-git-ops.md#step-3-clone-and-change-the-application)
-* [Step 4: Commit and Sync New Application](onboard-teams-using-git-ops.md#step-4-commit-and-sync-new-application)
-* [Step 5: Automating New Application Creation](onboard-teams-using-git-ops.md#step-5-automating-new-application-creation)
-* [Conclusion](onboard-teams-using-git-ops.md#conclusion)
 
 ### Before You Begin
 
@@ -46,7 +35,9 @@ Set up a Source Repo Provider connection in Harness that connects to the Git rep
 
 For example, here is a new GitHub repo named **Golden Template Application** and its corresponding set up in Harness as a Source Repo Provider:
 
-![](./static/onboard-teams-using-git-ops-00.png)Remember the following important settings:
+![](./static/onboard-teams-using-git-ops-00.png)
+
+Remember the following important settings:
 
 * **Repo URL** — The HTTPS repo URL is pasted into the Harness Source Repo Provider **URL**. The HTTPS setting is selected for both.
 * **Harness Webhook URL** — The **Generate Webhook URL** setting was enabled when the Source Repro Provider was created, and the Webhook URL was pasted into the repo's Webhook **Payload URL**.
@@ -89,13 +80,23 @@ Next, we'll configure the SampleK8s **Manifests** section to use remote manifest
 
 If you use remote manifest, you typically need to add another Source Repro Provider for the repo where they are stored. Here is how it is mapped in our example:
 
-![](./static/onboard-teams-using-git-ops-05.png)Once you have set up the remote manifests, the default manifest files that were synched when you created the Service will be ignored. You can delete them if you like.Once this template Application is cloned and used by other teams, we want them to have a simple way to change the target namespace for the deployment. There are different options (see [Create Kubernetes Namespaces based on InfraMapping](https://docs.harness.io/article/5xm4z4q3d8-create-kubernetes-namespaces-based-on-infra-mapping), [Create Kubernetes Namespaces with Workflow Variables](https://docs.harness.io/article/nhlzsni30x-create-kubernetes-namespaces-with-workflow-variables)), but for this example, we will use a Service variable.
+![](./static/onboard-teams-using-git-ops-05.png)
+
+:::note
+Once you have set up the remote manifests, the default manifest files that were synched when you created the Service will be ignored. You can delete them if you like.
+:::
+
+Once this template Application is cloned and used by other teams, we want them to have a simple way to change the target namespace for the deployment. There are different options (see [Create Kubernetes Namespaces based on InfraMapping](https://docs.harness.io/article/5xm4z4q3d8-create-kubernetes-namespaces-based-on-infra-mapping), [Create Kubernetes Namespaces with Workflow Variables](https://docs.harness.io/article/nhlzsni30x-create-kubernetes-namespaces-with-workflow-variables)), but for this example, we will use a Service variable.
 
 Create a Service variable and then reference it in the values.yaml file in your remote manifests repo. Here's an example using a Service variable named **namespace**:
 
 ![](./static/onboard-teams-using-git-ops-06.png)The value of the namespace Service variable is `${env.name}`. The `${env.name}` expression references the name of the Environment used by the Workflow that deploys this Service. This is a useful default value because Environments are often named after the namespaces teams use, such as **dev** and **prod**.
 
-We use lowercase names for Environments because the names will be used for namespaces and Kubernetes requires lowercase names for namespaces.The Service template is complete. Next, we'll create the Environment and Infrastructure Definition templates.
+:::note 
+We use lowercase names for Environments because the names will be used for namespaces and Kubernetes requires lowercase names for namespaces.
+:::
+
+The Service template is complete. Next, we'll create the Environment and Infrastructure Definition templates.
 
 #### Environment and Infrastructure Definition Templates
 
@@ -103,15 +104,21 @@ We'll add two Environments: one Environment for prod and one for dev.
 
 ##### Prod Environment and Infrastructure Definition
 
-![](./static/onboard-teams-using-git-ops-07.png)Note how the `${serviceVariable.namespace}` we created is used in the **Namespace** setting.
+![](./static/onboard-teams-using-git-ops-07.png)
+
+Note how the `${serviceVariable.namespace}` we created is used in the **Namespace** setting.
 
 ##### Dev Environment and Infrastructure Definition
 
-![](./static/onboard-teams-using-git-ops-08.png)Note how the `${serviceVariable.namespace}` we created is used in the **Namespace** setting.
+![](./static/onboard-teams-using-git-ops-08.png)
+
+Note how the `${serviceVariable.namespace}` we created is used in the **Namespace** setting.
 
 When the Environments and Infrastructure Definitions are created they are synced with Git automatically:
 
-![](./static/onboard-teams-using-git-ops-09.png)If you want to overwrite the namespace value used in the **Namespace** setting for the prod or dev Infrastructure Definitions, you can use a **Service Configuration Override** in the Environment.
+![](./static/onboard-teams-using-git-ops-09.png)
+
+If you want to overwrite the namespace value used in the **Namespace** setting for the prod or dev Infrastructure Definitions, you can use a **Service Configuration Override** in the Environment.
 
 ![](./static/onboard-teams-using-git-ops-10.png)
 
@@ -125,9 +132,13 @@ Create the Workflow by selecting the Environment, Service, and Infrastructure De
 
 Next, open the settings again and click the **[T]** button for all of the settings. This will replace the settings with Workflow variables, thereby templating the Workflow.
 
-![](./static/onboard-teams-using-git-ops-11.png)Now that the Workflow is templated, you will see the Workflow variables in the repo Workflow YAML and the `templatized: true` key.
+![](./static/onboard-teams-using-git-ops-11.png)
 
-![](./static/onboard-teams-using-git-ops-12.png)Now the templated Workflow can be used by any Service, Environment, and Infrastructure Definition.
+Now that the Workflow is templated, you will see the Workflow variables in the repo Workflow YAML and the `templatized: true` key.
+
+![](./static/onboard-teams-using-git-ops-12.png)
+
+Now the templated Workflow can be used by any Service, Environment, and Infrastructure Definition.
 
 Next, we'll create a Pipeline for the deployment.
 
@@ -143,35 +154,59 @@ This Pipeline is a common use case and can be augmented as needed. For more deta
 
 First, create the Pipeline.
 
-![](./static/onboard-teams-using-git-ops-13.png)Next, create Stage 1 using the **dev** Environment and **Dev** Infrastructure Definition:
+![](./static/onboard-teams-using-git-ops-13.png)
 
-![](./static/onboard-teams-using-git-ops-14.png)Next, create the Approval step for Stage 2:
+Next, create Stage 1 using the **dev** Environment and **Dev** Infrastructure Definition:
 
-![](./static/onboard-teams-using-git-ops-15.png)Finally, create Stage 3 using the **prod** Environment and **Prod** Infrastructure Definition:
+![](./static/onboard-teams-using-git-ops-14.png)
 
-![](./static/onboard-teams-using-git-ops-16.png)When you are done, the Pipeline will look like this:
+Next, create the Approval step for Stage 2:
 
-![](./static/onboard-teams-using-git-ops-17.png)The Pipeline is synched with Git:
+![](./static/onboard-teams-using-git-ops-15.png)
 
-![](./static/onboard-teams-using-git-ops-18.png)The Golden Template Application is complete. Now your teams can clone and modify it as needed.
+Finally, create Stage 3 using the **prod** Environment and **Prod** Infrastructure Definition:
+
+![](./static/onboard-teams-using-git-ops-16.png)
+
+When you are done, the Pipeline will look like this:
+
+![](./static/onboard-teams-using-git-ops-17.png)
+
+The Pipeline is synched with Git:
+
+![](./static/onboard-teams-using-git-ops-18.png)
+
+The Golden Template Application is complete. Now your teams can clone and modify it as needed.
 
 ### Step 3: Clone and Change the Application
 
 Clone the Golden Template Application using whatever Git tool you want. Here's an example using GitHub Desktop:
 
-![](./static/onboard-teams-using-git-ops-19.png)Next, copy the Application and paste the copy as a peer of **Golden Template Application** in the **Applications** folder:
+![](./static/onboard-teams-using-git-ops-19.png)
 
-![](./static/onboard-teams-using-git-ops-20.png)Name the new Application folder **Development**:
+Next, copy the Application and paste the copy as a peer of **Golden Template Application** in the **Applications** folder:
 
-![](./static/onboard-teams-using-git-ops-21.png)Change the new Application description in its index.yaml file:
+![](./static/onboard-teams-using-git-ops-20.png)
 
-![](./static/onboard-teams-using-git-ops-22.png)Rename the Service:
+Name the new Application folder **Development**:
 
-![](./static/onboard-teams-using-git-ops-23.png)You do not need to update the Workflow with the new Service name because the Workflow is templated.
+![](./static/onboard-teams-using-git-ops-21.png)
+
+Change the new Application description in its index.yaml file:
+
+![](./static/onboard-teams-using-git-ops-22.png)
+
+Rename the Service:
+
+![](./static/onboard-teams-using-git-ops-23.png)
+
+You do not need to update the Workflow with the new Service name because the Workflow is templated.
 
 Update the Pipeline with the new Service name.
 
-![](./static/onboard-teams-using-git-ops-24.png)Update the following Service settings to customize this Application for a new team:
+![](./static/onboard-teams-using-git-ops-24.png)
+
+Update the following Service settings to customize this Application for a new team:
 
 * **Artifact Source placeholder** — Replace the Nginx Docker image from Docker Hub.
 * **Remote manifests** — Update the link to point to their own manifests.
@@ -181,13 +216,17 @@ Update the Pipeline with the new Service name.
 
 When you are done making changes to the new Application, you can commit and push the changes.
 
-![](./static/onboard-teams-using-git-ops-25.png)The new Application is in Git:
+![](./static/onboard-teams-using-git-ops-25.png)
 
-![](./static/onboard-teams-using-git-ops-26.png)And the new Application is automatically synced and added to Harness:
+The new Application is in Git:
+
+![](./static/onboard-teams-using-git-ops-26.png)
+
+And the new Application is automatically synced and added to Harness:
 
 ![](./static/onboard-teams-using-git-ops-27.png)
 
-#### Troubleshooting
+### Troubleshooting
 
 **Something not working?** If some Application component does not appear in Harness it is likely because of a conflict between the YAML file and some settings in Harness.
 

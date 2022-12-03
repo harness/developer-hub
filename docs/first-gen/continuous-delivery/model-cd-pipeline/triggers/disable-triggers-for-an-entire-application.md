@@ -1,7 +1,7 @@
 ---
 title: Disable Triggers for an entire Application
 description: Disable Triggers across the entire Application to ensure that none of its Workflow or Pipelines are run.
-# sidebar_position: 2
+sidebar_position: 110
 helpdocs_topic_id: 73vuic0j0l
 helpdocs_category_id: weyg86m5qp
 helpdocs_is_private: false
@@ -19,7 +19,10 @@ This topic describes how to disable all Triggers for an Application.
 To disable all Triggers, you simply enable the **Disable Triggers** setting in the Application settings:
 
 1. In your Application, click more options (⋮).
-2. Select **Disable Triggers**.![](./static/disable-triggers-for-an-entire-application-10.png)
+2. Select **Disable Triggers**.
+
+   ![](./static/disable-triggers-for-an-entire-application-10.png)
+   
 3. Click **Submit**.
 
 The Triggers section of the Application is now hidden.

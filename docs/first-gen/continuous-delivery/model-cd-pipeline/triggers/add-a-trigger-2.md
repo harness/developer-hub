@@ -1,7 +1,7 @@
 ---
 title: Trigger Workflows and Pipelines (FirstGen)
 description: Triggers automate deployments using conditions like Git events, new artifacts, schedules, or the success of other Pipelines.
-# sidebar_position: 2
+sidebar_position: 10
 helpdocs_topic_id: xerirloz9a
 helpdocs_category_id: weyg86m5qp
 helpdocs_is_private: false
@@ -10,7 +10,13 @@ helpdocs_is_published: true
 
 Triggers automate deployments using a variety of conditions, such as Git events, new artifacts, schedules, and the success of other Pipelines.
 
-To trigger Workflows and Pipeline using the Harness GraphQL API, see [Trigger Workflows or Pipelines Using GraphQL API](https://docs.harness.io/article/s3leksekny-trigger-workflow-or-a-pipeline-using-api).Currently, [YAML-based Triggers](https://docs.harness.io/article/21kgaw4h86-harness-yaml-code-reference#triggers) are behind the feature flag `TRIGGER_YAML`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.You can always execute a Workflow or Pipeline manually, and a Trigger does not change any approval requirements in a Workflow or Pipeline.
+### Important Notes
+
+* To trigger Workflows and Pipeline using the Harness GraphQL API, see [Trigger Workflows or Pipelines Using GraphQL API](https://docs.harness.io/article/s3leksekny-trigger-workflow-or-a-pipeline-using-api).
+* Currently, [YAML-based Triggers](https://docs.harness.io/article/21kgaw4h86-harness-yaml-code-reference#triggers) are behind the feature flag `TRIGGER_YAML`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+
+You can always execute a Workflow or Pipeline manually, and a Trigger does not change any approval requirements in a Workflow or Pipeline.
 
 When you configure a Trigger, you set the condition that executes the Trigger, whether to execute a Workflow or Pipeline, and then the specific actions of the Trigger, such as what artifact source to use.
 

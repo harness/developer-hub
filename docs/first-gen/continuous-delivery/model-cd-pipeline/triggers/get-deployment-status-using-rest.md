@@ -1,7 +1,7 @@
 ---
 title: Get Deployment Status using REST (FirstGen)
 description: For Build Workflows or a Build and Deploy Pipeline , you can trigger deployments in response to a Git event using Webhooks. This is described in Trigger Deployments using Git Events. Once you have cr…
-# sidebar_position: 2
+sidebar_position: 70
 helpdocs_topic_id: uccck6kq5m
 helpdocs_category_id: weyg86m5qp
 helpdocs_is_private: false

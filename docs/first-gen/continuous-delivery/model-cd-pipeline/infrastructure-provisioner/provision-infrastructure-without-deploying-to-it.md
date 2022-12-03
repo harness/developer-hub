@@ -1,14 +1,14 @@
 ---
 title: Provision Infrastructure Without Deploying to It
 description: Typically, when you provision infrastructure using Harness, you do it as part of a deployment, as described in Terraform How-tos , CloudFormation How-tos , and Shell Script Provisioner. Here's an ill…
-# sidebar_position: 2
+sidebar_position: 30
 helpdocs_topic_id: 2nu5fwob4b
 helpdocs_category_id: nj9oa7ljyy
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Typically, when you provision infrastructure using Harness, you do it as part of a deployment, as described in [Terraform How-tos](https://docs.harness.io/article/9pvvgcdbjh-terrform-provisioner), [CloudFormation How-tos](https://docs.harness.io/article/78g32khjcu-cloud-formation-provisioner), and [Shell Script Provisioner](../ssh-provisioner-category/shell-script-provisioner.md).
+Typically, when you provision infrastructure using Harness, you do it as part of a deployment, as described in [Terraform How-tos](https://docs.harness.io/article/9pvvgcdbjh-terrform-provisioner), [CloudFormation How-tos](https://docs.harness.io/article/78g32khjcu-cloud-formation-provisioner), and [Shell Script Provisioner](../infrastructure-provisionar/ssh-provisioner-category/shell-script-provisioner.md).
 
 Here's an illustration using Terraform:
 
@@ -20,24 +20,12 @@ A common example is when an infra team manages the Terraform and CloudFormation 
 
 This topic explains how to perform Terraform provisioning without deploying any services to the provisioned infrastructure. The same steps can be applied using CloudFormation or Shell Script provisioners.
 
-In this topic:
-
-* [Before You Begin](#before_you_begin)
-* [Review: Harness Infrastructure Provisioning](#review_harness_infrastructure_provisioning)
-* [Step 1: Set Up Pre-deployment Steps](#step_1_set_up_pre_deployment_steps)
-* [Step 2: Remove Infra Using Variables](#step_2_remove_infra_using_variables)
-* [Step 3: Set Up Post-deployment Steps](#step_3_set_up_post_deployment_steps)
-* [Option: Git-based Terraform Setup](#option_git_based_terraform_setup)
-* [Step 4: Configure Overrides](#step_4_configure_overrides)
-* [Step 5: Run the Workflow and View Outputs](#step_5_run_the_workflow_and_view_outputs)
-* [Next Steps](#next_steps)
-
 ### Before You Begin
 
 If you want to reproduce the steps in this topic, ensure you have the following:
 
 * You must have a working Terraform of CloudFormation setup (scripts, templates, etc).
-* Configure a Harness [Terraform](https://docs.harness.io/article/9pvvgcdbjh-terrform-provisioner). [CloudFormation](https://docs.harness.io/article/78g32khjcu-cloud-formation-provisioner), or [Shell Script](../ssh-provisioner-category/shell-script-provisioner.md) Infrastructure Provisioner.
+* Configure a Harness [Terraform](https://docs.harness.io/article/9pvvgcdbjh-terrform-provisioner). [CloudFormation](https://docs.harness.io/article/78g32khjcu-cloud-formation-provisioner), or [Shell Script](../infrastructure-provisionar/ssh-provisioner-category/shell-script-provisioner.md) Infrastructure Provisioner.
 * Harness Application.
 
 ### Review: Harness Infrastructure Provisioning

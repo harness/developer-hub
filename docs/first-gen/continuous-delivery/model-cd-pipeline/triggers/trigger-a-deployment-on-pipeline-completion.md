@@ -1,7 +1,7 @@
 ---
 title: Trigger Deployments when Pipelines Complete
 description: You can trigger Harness Workflow and Pipeline deployments when specific Harness Pipelines complete their deployments. For example, you might create a Pipeline to test a deployment in one environment.…
-# sidebar_position: 2
+sidebar_position: 30
 helpdocs_topic_id: nihs2y2z61
 helpdocs_category_id: weyg86m5qp
 helpdocs_is_private: false
@@ -11,21 +11,6 @@ helpdocs_is_published: true
 You can trigger Harness Workflow and Pipeline deployments when specific Harness Pipelines complete their deployments.
 
 For example, you might create a Pipeline to test a deployment in one environment. When it completes its deployment, a Trigger executes a second Pipeline to deploy to your stage environment.
-
-In this topic:
-
-* [Before You Begin](#before_you_begin)
-* [Supported Platforms and Technologies](#undefined)
-* [Step 1: Add a Trigger](#step_1_add_a_trigger)
-* [Step 2: Select the Pipeline the Initiates this Trigger](#step_2_select_the_pipeline_the_initiates_this_trigger)
-* [Step 3: Select the Workflow or Pipeline to Deploy](#step_3_select_the_workflow_or_pipeline_to_deploy)
-* [Step 4: Provide Values for Workflow Variables](#step_4_provide_values_for_workflow_variables)
-* [Step 5: Select the Artifact to Deploy](#step_5_select_the_artifact_to_deploy)
-	+ [From Triggering Artifact Source](#from_triggering_artifact_source)
-	+ [Last Collected](#last_collected)
-	+ [Last Successfully Deployed](#last_successfully_deployed)
-* [Configure As Code](#configure_as_code)
-* [Related Topics](#related_topics)
 
 ### Before You Begin
 

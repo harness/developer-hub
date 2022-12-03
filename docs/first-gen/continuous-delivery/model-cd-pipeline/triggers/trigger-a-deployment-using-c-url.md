@@ -1,7 +1,7 @@
 ---
 title: Trigger a Deployment using cURL (FirstGen)
 description: Once you have On Webhook Event Trigger you can use a Manual Trigger to start a deployment using a cURL command.
-# sidebar_position: 2
+sidebar_position: 60
 helpdocs_topic_id: mc2lxsas4c
 helpdocs_category_id: weyg86m5qp
 helpdocs_is_private: false
@@ -22,7 +22,9 @@ You can do the following with a Manual Trigger:
 
 This topic describes how to obtain and use the cURL command.
 
+:::note
 For GitHub, GitLab, and Bitbucket, this option is used to execute a Build Workflow or a Build Pipeline only.
+:::
 
 ### Before You Begin
 
@@ -33,9 +35,9 @@ For GitHub, GitLab, and Bitbucket, this option is used to execute a Build Workf
 * [Add Environment](../environments/environment-configuration.md)
 * [Create a Pipeline](../pipelines/pipeline-configuration.md)
 
-### Limitations
-
-* In the **Actions** section of the Trigger, the **Deploy only if files have changed** option is available for Workflows deploying Kubernetes or Native Helm Services only.
+:::note
+In the **Actions** section of the Trigger, the **Deploy only if files have changed** option is available for Workflows deploying Kubernetes or Native Helm Services only.
+:::
 
 #### Data retention
 
@@ -44,7 +46,6 @@ Data retention for Webhook event details is 3 days.
 #### Trigger Processing Details
 
 To see the event details, in the response of a Webhook request the `data` field contains the Id of the registered WebHook event. You can use the following API and the `eventId` to get the details of the WebHook Event:
-
 
 ```
 curl -i -X GET \  

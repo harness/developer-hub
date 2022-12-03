@@ -1,7 +1,7 @@
 ---
 title: ServiceNow Approvals
 description: Describes how to add ServiceNow based approvals for a Pipeline or a Workflow.
-# sidebar_position: 2
+sidebar_position: 40
 helpdocs_topic_id: 9nkuhm8moo
 helpdocs_category_id: 4edbfn50l8
 helpdocs_is_private: false
@@ -28,7 +28,9 @@ The display values in the Harness UI depend on ServiceNow timezone settings.
 
 ### Step: Add an Approval Step
 
-The following steps are for a Pipeline Approval stage, but the same same settings apply to Workflow Approval steps.1. In your Pipeline, in **Pipeline Stages**, click **+**. The following settings appear.
+The following steps are for a Pipeline Approval stage, but the same same settings apply to Workflow Approval steps.
+
+1. In your Pipeline, in **Pipeline Stages**, click **+**. The following settings appear.
 2. Select **Approval Step**.
 3. Select **ServiceNow** in the **Ticketing System**.
 4. Select the ServiceNow account in **ServiceNow Connector** that you want to use by selecting the Collaboration Provider you added for the account, as described in [Add ServiceNow as a Collaboration Provider](../workflows/service-now-integration.md#add-service-now-as-a-collaboration-provider). Use the same provider you used to create the ticket in the Workflow.
@@ -59,13 +61,13 @@ The following steps are for a Pipeline Approval stage, but the same same setting
 * **Current Value**: Current status of ServiceNow ticket.
 * **Rejection Criteria:** Criterion set for rejecting the request.
 
-![](./static/service-now-ticketing-system-21.png
+![](./static/service-now-ticketing-system-21.png)
 
 ### Option: State Model and Transitions
 
 If you select **Change** in **Ticket Type**, you enable ServiceNow's state model to move and track change requests through several states.
 
-![](./static/service-now-ticketing-system-22.png
+![](./static/service-now-ticketing-system-22.png)
 
 After the change request is authorized by all the approvers, it transitions into Scheduled state by default.
 

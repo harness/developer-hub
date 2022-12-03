@@ -1,7 +1,7 @@
 ---
 title: Trigger a Deployment when a File Changes
 description: File-based repo Triggers are currently supported only for Native Helm and Helm-based Kubernetes deployments. For more information, see Kubernetes or Helm?. For Build Workflows or a Build and Deploy P…
-# sidebar_position: 2
+sidebar_position: 80
 helpdocs_topic_id: zr4tgwrzlb
 helpdocs_category_id: weyg86m5qp
 helpdocs_is_private: false
@@ -16,14 +16,6 @@ For example, if you have a Trigger that executes a Helm Deployment workflow, and
 
 This topic describes how to set up and run a file-based Trigger.
 
-In this topic:
-
-* [Before You Begin](#before_you_begin)
-* [Limitations](#limitations)
-* [Step 1: Create the Git Webhook Trigger](#step_1_create_the_git_webhook_trigger)
-* [Step 2: Select the Files to Watch](#step_2_select_the_files_to_watch)
-* [Review: Branch Regex Push and Pull](#review_branch_regex_push_and_pull)
-* [Related Topics](#related_topics)
 
 ### Before You Begin
 
@@ -62,7 +54,14 @@ The file-based, repo-related settings appear.
 1. In **Git Connector**, select which of the SourceRepro Providers set up in Harness to use. These are the connections between Harness and your Git repos. For more information, see [Add SourceRepo Providers](https://docs.harness.io/article/ay9hlwbgwa-add-source-repo-providers).
 2. In **Branch Name**, enter the name of the branch to use.
 3. In **File Path**, enter the file name for the file that, when changed and Pushed, will execute this Trigger.  
-For multiple file paths, use commas or line breaks as separators. For example, `sample-manifests/values.yaml, index.yaml`.Wildcards are not supported for **Branch Name** or **File Path**.When you are done, the **Skip deployment if file(s) not changed** section will look something like this:![](./static/trigger-a-deployment-when-a-file-changes-00.png)
+
+   For multiple file paths, use commas or line breaks as separators. For example, `sample-manifests/values.yaml, index.yaml`.
+	 
+ :::note
+ Wildcards are not supported for **Branch Name** or **File Path**.
+ :::
+	 
+	 When you are done, the **Skip deployment if file(s) not changed** section will look something like this:![](./static/trigger-a-deployment-when-a-file-changes-00.png)
 4. Click **Next** and then **Submit**.
 
 Now you can add the Webhook for that Trigger to the repo you selected, as described in [Trigger Deployments using Git Events](trigger-a-deployment-on-git-event.md).

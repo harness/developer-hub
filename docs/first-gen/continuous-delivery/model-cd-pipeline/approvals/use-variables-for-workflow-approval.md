@@ -1,7 +1,7 @@
 ---
 title: Using Variables in Workflow Approvals
 description: Describes how to use variables in a Workflow approval step.
-# sidebar_position: 2
+sidebar_position: 50
 helpdocs_topic_id: 5pspec1apl
 helpdocs_category_id: 4edbfn50l8
 helpdocs_is_private: false
@@ -17,14 +17,6 @@ The available approval mechanisms are:
 * [Harness UI Approvals](approvals.md)
 * [Custom Shell Script Approvals](shell-script-ticketing-system.md)
 
-In this topic:
-
-* [Before You Begin](#before_you_begin)
-* [Step 1: Add an Approval Step in a Workflow](#step_1_add_an_approval_step_in_a_workflow)
-* [Step 2: Approve Workflows](#step_2_approve_workflows)
-* [Option: Use Approval Variables in Other Workflow Steps](#option_use_approval_variables_in_other_workflow_steps)
-* [See Also](#see_also)
-
 ### Before You Begin
 
 * [Workflows](../workflows/workflow-configuration.md)
@@ -35,8 +27,7 @@ In this topic:
 
 1. In your Workflow, click **Add Step**.
 
-   ![](./static/use-variables-for-workflow-approval-23.png)
-   
+   ![](./static/use-variables-for-workflow-approval-23.png) 
    
 2. Select **Approval**. You can search or click **Flow Control** and select **Approval**.
 3. Click **Next**.  
@@ -62,16 +53,19 @@ In this topic:
 
 Workflow uses the Approval variables as defined in the **Add an Approval Step in a Workflow** option, when it deploys. Deployment pauses at the Approval step.
 
-![](./static/use-variables-for-workflow-approval-26.png
+![](./static/use-variables-for-workflow-approval-26.png)
 
 1. Click **Approval** step.  
+   
    A user (in one of the User Groups configured as approvers) can click the Approval step. The **Needs Approval** settings appear.
+   
    ![](./static/use-variables-for-workflow-approval-27.png)
+
 2. Enter your comments, and click **Approve.**
 
 Once this step is approved, the Workflow can continue deployment.
 
-![](./static/use-variables-for-workflow-approval-28.png
+![](./static/use-variables-for-workflow-approval-28.png)
 
 ### Option: Use Approval Variables in Other Workflow Steps
 

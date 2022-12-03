@@ -1,7 +1,7 @@
 ---
 title: Passing Variables into Workflows and Pipelines from Triggers
 description: Use a Harness Trigger to pass variables into a Harness Workflow or Pipeline, for use in configuration or during Workflow execution.
-# sidebar_position: 2
+sidebar_position: 10
 helpdocs_topic_id: revc37vl0f
 helpdocs_category_id: w98t8pl547
 helpdocs_is_private: false
@@ -53,21 +53,19 @@ To set up Workflow variables, do the following:
 
 1. In a Workflow, click the pencil icon next to **Workflow Variables.** **Workflow Variables** appear.
 
-![](./static/passing-variable-into-workflows-07.png)
+    ![](./static/passing-variable-into-workflows-07.png)
 
-**Workflow Variables** have the following settings.
+    **Workflow Variables** have the following settings.
 
-
-
-|  |  |
-| --- | --- |
-| **Field** | **Description** |
-| **Variable Name** | Enter a name for the variable. When the variable is used in a Trigger or elsewhere in the Harness Application, the variable name is used.The syntax for variable names is `${workflow.variables.`*`name`*`}`. For example, if you created a variable named **Url**, the variable name is `${workflow.variables.Url}`. |
-| **Type** | Select **Text**. |
-| **Default Value** | Enter a value for the variable. A value is not mandatory. If you will be placing a value in the variable via a Trigger, you will typically leave **Default Value** empty. |
-| **Required** | Select this option to enforce that a value for the variable is provided before the Workflow is executed. |
-| **Fixed** | Select this option if the value of the variable specified here must not be changed. If you will be placing a value in the variable via a Trigger, you will not enable **Fixed**. |
-| **Description** | Provide a description of the variable that lets others know its purpose and requirements. |
+    |  |  |
+    | --- | --- |
+    | **Field** | **Description** |
+    | **Variable Name** | Enter a name for the variable. When the variable is used in a Trigger or elsewhere in the Harness Application, the variable name is used.The syntax for variable names is `${workflow.variables.`*`name`*`}`. For example, if you created a variable named **Url**, the variable name is `${workflow.variables.Url}`. |
+    | **Type** | Select **Text**. |
+    | **Default Value** | Enter a value for the variable. A value is not mandatory. If you will be placing a value in the variable via a Trigger, you will typically leave **Default Value** empty. |
+    | **Required** | Select this option to enforce that a value for the variable is provided before the Workflow is executed. |
+    | **Fixed** | Select this option if the value of the variable specified here must not be changed. If you will be placing a value in the variable via a Trigger, you will not enable **Fixed**. |
+    | **Description** | Provide a description of the variable that lets others know its purpose and requirements. |
 
 1. When you have added your variables, click **SUBMIT**. The **Workflow Variables** section of the Workflow displays the new variables.
 2. Use the variables in your Workflow.
