@@ -12,7 +12,7 @@ This article provides a general overview of Harness support for Infrastructure P
 
 * [Terrform Provisioner](https://docs.harness.io/article/9pvvgcdbjh-terrform-provisioner)
 * [Using the Terraform Apply Command](https://docs.harness.io/article/jaxppd8w9j-using-the-terraform-apply-command)
-* [Shell Script Provisioner](../infrastructure-provisionar/ssh-provisioner-category/shell-script-provisioner.md)
+* [Shell Script Provisioner](../infrastructure-provisioner/ssh-provisioner-category/shell-script-provisioner.md)
 * [CloudFormation Provisioner](https://docs.harness.io/article/78g32khjcu-cloud-formation-provisioner)
 
 You can create any resource using Terraform, and output values can be published for use in Harness Workflows and Pipelines. Harness supports first-class [Service Mapping](#service_mappings) for AWS-based infrastructures (SSH, ASG, ECS, Lambda) and Google Kubernetes (GKE). Google Kubernetes is not supported for CloudFormation, as CloudFormation is used for provisioning infrastructure on AWS only.
@@ -68,7 +68,7 @@ For all information on using Harness Terraform Infrastructure Provisioner, see [
 
 ### Shell Script
 
-Harness has first-class support for Terraform and AWS CloudFormation provisioners, but to support different provisioners, or your existing shell script implementations, Harness includes the [Shell Script Infrastructure Provisioner](../infrastructure-provisionar/ssh-provisioner-category/shell-script-provisioner.md).
+Harness has first-class support for Terraform and AWS CloudFormation provisioners, but to support different provisioners, or your existing shell script implementations, Harness includes the [Shell Script Infrastructure Provisioner](../infrastructure-provisioner/ssh-provisioner-category/shell-script-provisioner.md).
 
 ### Output Mappings
 
@@ -78,7 +78,7 @@ You can create any resource using Terraform and output values can be published f
 
 If you have been running your deployments manually, you might not have outputs configured in your template files. To configure Service Mappings, you will need to add these output variables to your template.When you use Terraform or CloudFormation with Harness, you can map the template outputs with Harness settings so that a single Infrastructure Provisioner can be used by many of the deployments you have configured in Harness.
 
-For more information, see Terraform [Service Mappings](https://docs.harness.io/article/9pvvgcdbjh-terrform-provisioner#service_mappings) and [Infrastructure Definition](https://docs.harness.io/article/9pvvgcdbjh-terrform-provisioner#infrastructure_definition), CloudFormation [Service Mappings](https://docs.harness.io/article/78g32khjcu-cloud-formation-provisioner#service_mappings) and [Infrastructure Definition Mappings](https://docs.harness.io/article/78g32khjcu-cloud-formation-provisioner#infrastructure_definition_service_mappings), or Shell Script Provisioner [Service Mappings](../infrastructure-provisionar/ssh-provisioner-category/shell-script-provisioner.md#service-mappings) and [Environment Setup and Infrastructure Definitions](../infrastructure-provisionar/ssh-provisioner-category/shell-script-provisioner.md#environment-setup-and-infrastructure-definitions).
+For more information, see Terraform [Service Mappings](https://docs.harness.io/article/9pvvgcdbjh-terrform-provisioner#service_mappings) and [Infrastructure Definition](https://docs.harness.io/article/9pvvgcdbjh-terrform-provisioner#infrastructure_definition), CloudFormation [Service Mappings](https://docs.harness.io/article/78g32khjcu-cloud-formation-provisioner#service_mappings) and [Infrastructure Definition Mappings](https://docs.harness.io/article/78g32khjcu-cloud-formation-provisioner#infrastructure_definition_service_mappings), or Shell Script Provisioner [Service Mappings](../infrastructure-provisioner/ssh-provisioner-category/shell-script-provisioner.md#service-mappings) and [Environment Setup and Infrastructure Definitions](../infrastructure-provisioner/ssh-provisioner-category/shell-script-provisioner.md#environment-setup-and-infrastructure-definitions).
 
 ### Rollback
 

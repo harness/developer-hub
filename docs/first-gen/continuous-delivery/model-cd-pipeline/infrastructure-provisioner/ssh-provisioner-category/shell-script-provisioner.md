@@ -136,8 +136,8 @@ For steps on adding SSH credentials, see [Secrets Management](https://docs.harne
 
 Any Harness Application and Service setup can be used with a Harness Infrastructure Provisioner. If you do not already have an Application and Service set up, use the following articles:
 
-* [Application Checklist](../applications/application-configuration.md)
-* [Services](../setup-services/service-configuration.md)
+* [Application Checklist](../../applications/application-configuration.md)
+* [Services](../../setup-services/service-configuration.md)
 
 ### Shell Script Provisioner Setup
 
@@ -432,7 +432,7 @@ For example, the following image shows a Shell Script Provisioner with two varia
 
 14. For each variable, click in the **Value** column and add or select a value. If the variable is just text, enter a value. If the variable is encrypted text, the available values in the dropdown are taken from the Encrypted Text entries in Harness Secrets Management. For more information, see [Secrets Management](https://docs.harness.io/article/au38zpufhr-secret-management). When you are finished, the Variables section will look something like this:![](./static/shell-script-provisioner-24.png)
 
-You can use Workflow variables in the **Value** settings. See [Set Workflow Variables](../workflows/add-workflow-variables-new-template.md).1. Click **NEXT**, and then click **SUBMIT**. The Shell Script Provisioner step is added to the Workflow.![](./static/shell-script-provisioner-25.png)
+You can use Workflow variables in the **Value** settings. See [Set Workflow Variables](../../workflows/add-workflow-variables-new-template.md).1. Click **NEXT**, and then click **SUBMIT**. The Shell Script Provisioner step is added to the Workflow.![](./static/shell-script-provisioner-25.png)
 
 The Shell Script Provisioner is now added as a step in the Workflow.
 
@@ -468,13 +468,13 @@ In this example, the **Shell Script Provision** step setting, **Output in the Co
 
 ![](./static/shell-script-provisioner-30.png)
 
-Next, in **Phase 1** of the Canary Workflow, we can see in the result of the **Service Mapping** from our Shell Script Provisioner (or [Infrastructure Definition](../environments/environment-configuration.md#add-an-infrastructure-definition)) in the **Select Nodes** step. The following images show how the JSON key `PublicDnsName` was mapped to the Harness field `Hostname`, which is then used to select the node for deployment.
+Next, in **Phase 1** of the Canary Workflow, we can see in the result of the **Service Mapping** from our Shell Script Provisioner (or [Infrastructure Definition](../../environments/environment-configuration.md#add-an-infrastructure-definition)) in the **Select Nodes** step. The following images show how the JSON key `PublicDnsName` was mapped to the Harness field `Hostname`, which is then used to select the node for deployment.
 
 Here is an example using Service Mapping in the Infrastructure Provisioner:
 
 ![](./static/shell-script-provisioner-31.png)
 
-Here is an example using the [Infrastructure Definition](../environments/environment-configuration.md#add-an-infrastructure-definition) Service mapping:
+Here is an example using the [Infrastructure Definition](../../environments/environment-configuration.md#add-an-infrastructure-definition) Service mapping:
 
 ![](./static/shell-script-provisioner-32.png)
 

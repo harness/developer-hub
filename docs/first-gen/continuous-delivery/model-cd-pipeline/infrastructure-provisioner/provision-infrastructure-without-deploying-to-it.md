@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Typically, when you provision infrastructure using Harness, you do it as part of a deployment, as described in [Terraform How-tos](https://docs.harness.io/article/9pvvgcdbjh-terrform-provisioner), [CloudFormation How-tos](https://docs.harness.io/article/78g32khjcu-cloud-formation-provisioner), and [Shell Script Provisioner](../infrastructure-provisionar/ssh-provisioner-category/shell-script-provisioner.md).
+Typically, when you provision infrastructure using Harness, you do it as part of a deployment, as described in [Terraform How-tos](https://docs.harness.io/article/9pvvgcdbjh-terrform-provisioner), [CloudFormation How-tos](https://docs.harness.io/article/78g32khjcu-cloud-formation-provisioner), and [Shell Script Provisioner](../infrastructure-provisioner/ssh-provisioner-category/shell-script-provisioner.md).
 
 Here's an illustration using Terraform:
 
@@ -25,7 +25,7 @@ This topic explains how to perform Terraform provisioning without deploying any 
 If you want to reproduce the steps in this topic, ensure you have the following:
 
 * You must have a working Terraform of CloudFormation setup (scripts, templates, etc).
-* Configure a Harness [Terraform](https://docs.harness.io/article/9pvvgcdbjh-terrform-provisioner). [CloudFormation](https://docs.harness.io/article/78g32khjcu-cloud-formation-provisioner), or [Shell Script](../infrastructure-provisionar/ssh-provisioner-category/shell-script-provisioner.md) Infrastructure Provisioner.
+* Configure a Harness [Terraform](https://docs.harness.io/article/9pvvgcdbjh-terrform-provisioner). [CloudFormation](https://docs.harness.io/article/78g32khjcu-cloud-formation-provisioner), or [Shell Script](../infrastructure-provisioner/ssh-provisioner-category/shell-script-provisioner.md) Infrastructure Provisioner.
 * Harness Application.
 
 ### Review: Harness Infrastructure Provisioning
