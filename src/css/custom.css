@@ -268,6 +268,62 @@
   width: 36px;
   height: auto;
 }
+.theme-doc-markdown h3 {
+  display: flex;
+}
+.theme-doc-markdown h3 > img {
+  margin-right: 0.2em;
+}
+
+.color-ci {
+  color: var(--mod-ci-200);
+}
+.color-cd {
+  color: var(--mod-cd-200);
+}
+.color-ff {
+  color: var(--mod-ff-200);
+}
+.color-ccm {
+  color: var(--mod-ccm-200);
+}
+.color-srm {
+  color: var(--mod-srm-200);
+}
+.color-sto {
+  color: var(--mod-sto-200);
+}
+.color-ce {
+  color: var(--mod-ce-200);
+}
+.theme-doc-markdown h3 {
+  display: flex;
+}
+.theme-doc-markdown h3 > img {
+  margin-right: 0.2em;
+}
+
+.color-ci {
+  color: var(--mod-ci-200);
+}
+.color-cd {
+  color: var(--mod-cd-200);
+}
+.color-ff {
+  color: var(--mod-ff-200);
+}
+.color-ccm {
+  color: var(--mod-ccm-200);
+}
+.color-srm {
+  color: var(--mod-srm-200);
+}
+.color-sto {
+  color: var(--mod-sto-200);
+}
+.color-ce {
+  color: var(--mod-ce-200);
+}
 
 /* hide the algolia logo */
 .DocSearch-Logo,
@@ -347,19 +403,22 @@ aside nav.menu > ul > li > ul > li ul > li > a {
   background-size: 1.25rem 1.25rem;
 }
 
-@media screen and (min-width: 1080px) {
+@media screen and (min-width: 1200px) {
   /* style for the search bar in higher resolution */
   .searchBar {
-    width: calc(100vw - 925px);
+    width: calc(100vw - 1040px); /* - 925px */
   }
   .searchBar .DocSearch-Button {
     width: 100%;
   }
 }
 
-@media screen and (max-width: 1079px) {
+@media screen and (max-width: 1199px) {
   /* for tablet */
   .navbar__item img[alt="BETA"] {
+    display: none;
+  }
+  .searchBar {
     display: none;
   }
 }
