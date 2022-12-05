@@ -1,7 +1,7 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
-const lightCodeTheme = require("prism-react-renderer/themes/github");
+// const lightCodeTheme = require("prism-react-renderer/themes/github");
 const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 const path = require("path");
 
@@ -428,6 +428,12 @@ const config = {
       oneTrust: {
         dataDomainScript: "59633b83-e34c-443c-a807-63232ce145e5",
       },
+      rss: {
+        rssPath: "release-notes/rss.xml",
+        rssTitle: "Harness Release Notes",
+        copyright: "Harness Inc.",
+        rssDescription: "Harness Release Notes",
+      },
     }),
   plugins: [
     [
@@ -443,7 +449,7 @@ const config = {
       },
     ],
     [
-      "@docusaurus/plugin-content-docs",
+      path.resolve(__dirname, "./plugins/rss-plugin"),
       {
         id: "release-notes",
         path: "release-notes",
@@ -451,7 +457,6 @@ const config = {
         exclude: ["**/shared/**", "**/static/**"],
         sidebarPath: require.resolve("./sidebars-release-notes.js"),
         editUrl: "https://github.com/harness/developer-hub/tree/main",
-        // ... other options
       },
     ],
     "docusaurus-plugin-sass",
