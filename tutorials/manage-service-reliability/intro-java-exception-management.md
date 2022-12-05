@@ -18,7 +18,7 @@ According to [Oracle Java Documentation](https://docs.oracle.com/javase/tutorial
 
 Following are the types of Java exceptions:
 
-- **Uncaghut exceptiions** - Exceptions that the compiler does not catch. Instead, they are caught automatically and handled by the built-in exception handler in Java.
+- **Uncaught exception** - Exceptions that the compiler does not catch. Instead, the built-in exception handler in Java automatically catches and handles them.
 
 - **Caught exceptions** - Exceptions that are handled in code via the `try` and `catch` keywords.
 
@@ -38,7 +38,7 @@ Following are the types of Java exceptions:
 
 ## Dealing with exceptions – a repeatable process
 
-Even though it is difficult to remove all the exceptions, it is important to identify the problematic exceptions and prevent them from escaping into production as they can negatively impact the users. Here is a three step Identify, Resolve, and Prevent (IRP) process that can help you minimize the bad exceptions.
+Even though it is difficult to remove all the exceptions, it is important to identify the problematic exceptions and prevent them from escaping into production as they can negatively impact the users. You can use a three-step process to identify, resolve, and prevent to minimize the bad exceptions.
 
 
 ### Identify critical issues
@@ -68,7 +68,7 @@ It is critical to have the right Java Exception Tracker so that the exceptions d
 The Java Exception Tracker should have the ability to analyze the code loaded into your Java Virtual Machine (JVM) during runtime and assign a unique fingerprint to each line in the code. At runtime, the tracker should correlate each error, drill down to its unique signature, identify anomalies, and capture the complete state.
 
 
-### Source code and wariables
+### Source code and variables
 
 The tracker should have the ability to analyze and index the code structure. This helps you collect data on the most relevant variable state from the running JVM when an event occurs. The tracker should capture data across the call stack up to 10 levels into heap.
 
@@ -95,7 +95,7 @@ The tracker should have the ability to privately encrypt all the source code and
 
 ### Personally Identifiable Information (PII) redaction​
 
-You must secure sensitive data at all times. The Java Exception Tracker should provide you the ability to redact the PII variable data before it leaves the user environment. You should ensure that the variable state is redacted based on the configurable variable value patterns and code symbology, such as variable, field, and class names.
+You must always secure sensitive data at all times. The Java Exception Tracker should provide you the ability to redact the PII variable data before it leaves the user environment. You should ensure that the variable state is redacted based on the configurable variable value patterns and code symbology, such as variable, field, and class names.
 
 
 ## Demo - IRP Java exceptions
