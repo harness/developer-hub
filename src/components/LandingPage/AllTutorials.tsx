@@ -115,7 +115,7 @@ const CIList: FeatureItem[] = [
     link: "/tutorials/build-code/ci-localstack-background-step",
   },
   {
-    title: "Build and Publish a Java HTTP Server",
+    title: "Build and publish a Java HTTP Server",
     module: "ci",
     Svg: "/img/icon_ci.svg",
     description: (
