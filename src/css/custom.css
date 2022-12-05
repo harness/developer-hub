@@ -196,14 +196,20 @@
   /* Module Colors/Feature Flags/100 */
   --mod-ff-100: #fcf4e3;
 
+  --mod-sto-300: #1947ec;
   /* Module Colors/STO/200 */
   --mod-sto-200: #2660ff;
+  --mod-sto-100: #ebefff;
 
+  --mod-srm-300: #6938c0;
   /* Module Colors/SRM/200 */
   --mod-srm-200: #8b73ce;
+  --mod-srm-100: #f6f1ff;
 
+  --mod-ce-300: #cd0056;
   /* Module Colors/Chaos Engineering/200 */
-  --mod-ce-200: #cd0056;
+  --mod-ce-200: #ff006a;
+  --mod-ce-100: #fff1f7;
 
   /* ----- */
   --ifm-link-decoration: none;
@@ -261,6 +267,34 @@
   margin-top: 10px;
   width: 36px;
   height: auto;
+}
+.theme-doc-markdown h3 {
+  display: flex;
+}
+.theme-doc-markdown h3 > img {
+  margin-right: 0.2em;
+}
+
+.color-ci {
+  color: var(--mod-ci-200);
+}
+.color-cd {
+  color: var(--mod-cd-200);
+}
+.color-ff {
+  color: var(--mod-ff-200);
+}
+.color-ccm {
+  color: var(--mod-ccm-200);
+}
+.color-srm {
+  color: var(--mod-srm-200);
+}
+.color-sto {
+  color: var(--mod-sto-200);
+}
+.color-ce {
+  color: var(--mod-ce-200);
 }
 .theme-doc-markdown h3 {
   display: flex;
