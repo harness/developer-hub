@@ -29,7 +29,7 @@ This topic assumes you're familiar with the following:
 * [CI Pipeline Quickstart](../../ci-quickstarts/ci-pipeline-quickstart.md)
 * [Delegates Overview](https://docs.harness.io/article/2k7lnc7lvl-delegates-overview)
 * [CI Stage Settings](../../ci-technical-reference/ci-stage-settings.md)
-* [Learn Harness' Key Concepts](https://ngdocs.harness.io/article/hv2758ro4e-learn-harness-key-concepts)
+* [Learn Harness' Key Concepts](../../../getting-started/learn-harness-key-concepts.md)
 * [VM Runner](https://docs.drone.io/runner/vm/overview/)
 
 ### Step 1: Set up the MacOS EC2 Instance

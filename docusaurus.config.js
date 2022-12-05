@@ -91,9 +91,12 @@ const config = {
             href: "#",
           },
           {
-            type: "search",
+            // type: "search",
+            // position: "right",
+            // className: "searchBar",
+            // use customized coveo search on sidebar
+            type: "custom-coveo-search",
             position: "right",
-            className: "searchBar",
           },
           {
             position: "right",
@@ -157,7 +160,7 @@ const config = {
             items: [
               {
                 label: "Get Started",
-                to: "tutorials/get-started",
+                to: "docs/getting-started",
               },
               {
                 label: "Continuous Integration",
@@ -386,6 +389,7 @@ const config = {
         theme: darkCodeTheme, // lightCodeTheme,
         darkTheme: darkCodeTheme,
       },
+      /*
       algolia: {
         // The application ID provided by Algolia
         appId: "HPP2NHSWS8",
@@ -409,6 +413,7 @@ const config = {
 
         //... other Algolia params
       },
+      */
       colorMode: {
         defaultMode: "light",
         disableSwitch: true,

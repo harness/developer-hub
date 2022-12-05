@@ -81,7 +81,7 @@ Autopilot might be cheaper than standard Kubernetes if you only run builds occas
 * [CI Pipeline Quickstart](../../ci-quickstarts/ci-pipeline-quickstart.md)
 * [Delegates Overview](https://docs.harness.io/article/2k7lnc7lvl-delegates-overview)
 * [CI Stage Settings](../../ci-technical-reference/ci-stage-settings.md)
-* [Learn Harness' Key Concepts](https://docs.harness.io/article/hv2758ro4e-learn-harness-key-concepts)
+* [Learn Harness' Key Concepts](../../../getting-started/learn-harness-key-concepts.md)
 
 ### Visual Summary
 
