@@ -1,7 +1,7 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
-const lightCodeTheme = require("prism-react-renderer/themes/github");
+// const lightCodeTheme = require("prism-react-renderer/themes/github");
 const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 const path = require("path");
 
@@ -35,16 +35,32 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          path: ".",
+          path: "docs",
           sidebarPath: require.resolve("./sidebars.js"),
           editUrl: "https://github.com/harness/developer-hub/tree/main", // /tree/main/packages/create-docusaurus/templates/shared/
-          include: ["tutorials/**/*.{md, mdx}", "docs/**/*.{md, mdx}"],
+          // include: ["tutorials/**/*.{md, mdx}", "docs/**/*.{md, mdx}"],
           exclude: ["**/shared/**", "**/static/**"],
-          routeBasePath: "/", //CHANGE HERE
+          routeBasePath: "docs", //CHANGE HERE
         },
         // blog: {
-        //   showReadingTime: true,
-        //   editUrl: "https://github.com/harness/developer-hub/tree/main", // /tree/main/packages/create-docusaurus/templates/shared/
+        //   //   showReadingTime: true,
+        //   editUrl: "https://github.com/harness/developer-hub/tree/main",
+        //   blogTitle: "Release Notes",
+        //   blogDescription: "Harness Platform Release Notes",
+        //   postsPerPage: "ALL",
+        //   blogSidebarTitle: "All Release Notes",
+        //   blogSidebarCount: "ALL",
+        //   feedOptions: {
+        //     type: "all",
+        //     copyright: `Copyright © ${new Date().getFullYear()} Harness, Inc.`,
+        //   },
+        //   // URL route for the blog section of your site.
+        //   // *DO NOT* include a trailing slash.
+        //   routeBasePath: "release-notes",
+        //   // Path to data on filesystem relative to site dir.
+        //   path: "release-notes",
+        //   include: ["**/*.{md,mdx}"],
+        //   exclude: ["**/shared/**", "**/static/**"],
         // },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
@@ -75,16 +91,19 @@ const config = {
             href: "#",
           },
           {
-            type: "search",
+            // type: "search",
+            // position: "right",
+            // className: "searchBar",
+            // use customized coveo search on sidebar
+            type: "custom-coveo-search",
             position: "right",
-            className: "searchBar",
           },
           {
             position: "right",
             type: "dropdown",
             label: "Tutorials",
             items: [
-               {
+              {
                 // type: "doc",
                 label: "All Tutorials",
                 to: "tutorials/get-started",
@@ -194,6 +213,58 @@ const config = {
               {
                 label: "API Reference",
                 href: "https://apidocs.harness.io/",
+              },
+            ],
+          },
+          {
+            // to: "release-notes",
+            label: "Release Notes",
+            position: "right",
+            type: "dropdown",
+            items: [
+              {
+                label: "What's New",
+                to: "release-notes/whats-new",
+              },
+              {
+                label: "Early Access",
+                to: "release-notes/early-access",
+              },
+              {
+                label: "Continuous Integration",
+                to: "release-notes/continuous-integration",
+              },
+              {
+                label: "Continuous Delivery",
+                to: "release-notes/continuous-delivery",
+              },
+              {
+                label: "Feature Flags",
+                to: "release-notes/feature-flags",
+              },
+              {
+                label: "Cloud Cost Management",
+                to: "release-notes/cloud-cost-management",
+              },
+              {
+                label: "Service Reliability Management",
+                to: "release-notes/service-reliability-management",
+              },
+              {
+                label: "Service Reliability Management",
+                to: "release-notes/security-testing-orchestration",
+              },
+              {
+                label: "Chaos Engineering",
+                to: "release-notes/chaos-engineering",
+              },
+              {
+                label: "Harness Platform",
+                to: "release-notes/platform",
+              },
+              {
+                label: "Harness FirstGen",
+                to: "release-notes/first-gen",
               },
             ],
           },
@@ -318,6 +389,7 @@ const config = {
         theme: darkCodeTheme, // lightCodeTheme,
         darkTheme: darkCodeTheme,
       },
+      /*
       algolia: {
         // The application ID provided by Algolia
         appId: "HPP2NHSWS8",
@@ -341,6 +413,7 @@ const config = {
 
         //... other Algolia params
       },
+      */
       colorMode: {
         defaultMode: "light",
         disableSwitch: true,
@@ -360,8 +433,67 @@ const config = {
       oneTrust: {
         dataDomainScript: "59633b83-e34c-443c-a807-63232ce145e5",
       },
+      rss: {
+        rssPath: "release-notes/rss.xml",
+        rssTitle: "Harness Release Notes",
+        copyright: "Harness Inc.",
+        rssDescription: "Harness Release Notes",
+      },
     }),
   plugins: [
+    [
+      "@docusaurus/plugin-client-redirects",
+      {
+        // fromExtensions: ['html', 'htm'], // /myPage.html -> /myPage
+        // toExtensions: ['exe', 'zip'], // /myAsset -> /myAsset.zip (if latter exists)
+        redirects: [
+          {
+            from: "/release-notes",
+            to: "/release-notes/whats-new",
+          },
+          /* // Redirect from multiple old paths to the new path
+          {
+            to: '/docs/newDoc2',
+            from: ['/docs/oldDocFrom2019', '/docs/legacyDocFrom2016'],
+          }, */
+        ],
+        /*
+        createRedirects(existingPath) {
+          if (existingPath.includes('/community')) {
+            // Redirect from /docs/team/X to /community/X and /docs/support/X to /community/X
+            return [
+              existingPath.replace('/community', '/docs/team'),
+              existingPath.replace('/community', '/docs/support'),
+            ];
+          }
+          return undefined; // Return a falsy value: no redirect created
+        },
+        */
+      },
+    ],
+    [
+      "@docusaurus/plugin-content-docs",
+      {
+        id: "tutorials",
+        path: "tutorials",
+        routeBasePath: "tutorials",
+        exclude: ["**/shared/**", "**/static/**"],
+        sidebarPath: require.resolve("./sidebars-tutorials.js"),
+        editUrl: "https://github.com/harness/developer-hub/tree/main",
+        // ... other options
+      },
+    ],
+    [
+      path.resolve(__dirname, "./plugins/docs-rss-plugin"),
+      {
+        id: "release-notes",
+        path: "release-notes",
+        routeBasePath: "release-notes",
+        exclude: ["**/shared/**", "**/static/**"],
+        sidebarPath: require.resolve("./sidebars-release-notes.js"),
+        editUrl: "https://github.com/harness/developer-hub/tree/main",
+      },
+    ],
     "docusaurus-plugin-sass",
     path.join(__dirname, "/plugins/hotjar-plugin"),
     path.join(__dirname, "/plugins/onetrust-plugin"),

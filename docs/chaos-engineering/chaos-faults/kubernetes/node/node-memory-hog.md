@@ -15,7 +15,7 @@ title: Node Memory Hog
 
 ## Uses
 <details>
-<summary>View the uses of the experiment</summary>
+<summary>View the uses of the fault</summary>
 <div>
 Coming soon.
 </div>
@@ -28,7 +28,7 @@ The target nodes should be in ready state before and after chaos injection.
 
 ## Experiment tunables
 <details>
-    <summary>Check the Experiment Tunables</summary>
+    <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>
     <table>
       <tr>
@@ -102,7 +102,7 @@ The target nodes should be in ready state before and after chaos injection.
     </table>
 </details>
 
-## Experiment Examples
+## Fault Examples
 ### Common and Node specific tunables
 Refer the [common attributes](../../common-tunables-for-all-experiments) and [Node specific tunable](./common-tunables-for-node-experiments) to tune the common tunables for all experiments and node specific tunables.  
 

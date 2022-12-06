@@ -14,7 +14,7 @@ title: Pod Delete
 
 ## Uses
 <details>
-<summary>View the uses of the experiment</summary>
+<summary>View the uses of the fault</summary>
 <div>
 In the distributed system like kubernetes it is very likely that your application replicas may not be sufficient to manage the traffic (indicated by SLIs) when some of the replicas are unavailable due to any failure (can be system or application) the application needs to meet the SLO(service level objectives) for this, we need to make sure that the applications have minimum number of available replicas. One of the common application failures is when the pressure on other replicas increases then to how the horizontal pod autoscaler scales based on observed resource utilization and also how much PV mount takes time upon rescheduling. The other important aspects to test are the MTTR for the application replica, re-elections of leader or follower like in kafka application the selection of broker leader,  validating minimum quorum to run the application for example in applications like percona, resync/redistribution of data.
 <br/><br/>
@@ -34,7 +34,7 @@ The application pods should be in running state before and after chaos injection
 
 ## Experiment tunables
 <details>
-    <summary>Check the Experiment Tunables</summary>
+    <summary>Check the Fault Tunables</summary>
     <h2>Optional Fields</h2>
     <table>
       <tr>
@@ -85,7 +85,7 @@ The application pods should be in running state before and after chaos injection
     </table>
 </details>
 
-## Experiment Examples
+## Fault Examples
 
 ### Common and Pod specific tunables
 Refer the [common attributes](../../common-tunables-for-all-experiments) and [Pod specific tunable](./common-tunables-for-pod-experiments) to tune the common tunables for all experiments and pod specific tunables.

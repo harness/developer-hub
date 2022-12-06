@@ -80,6 +80,21 @@ const CIList: FeatureItem[] = [{
   time: '15 min',
   link: '/tutorials/build-code/ci-localstack-background-step',
 },
+{
+  title: "Build and publish a Java HTTP Server",
+  module: "ci",
+  Svg: "/img/icon_ci.svg",
+  description: (
+    <>
+      Build, test, and publish a Docker image for a Java HTTP server application
+
+    </>
+  ),
+  ribbon: true,
+  type: [docType.Documentation],
+  time: "20 min",
+  link: "/tutorials/build-code/ci-java-http-server",
+},
 ];
 
 export default function CI() {

@@ -40,7 +40,7 @@ stringData:
 
 ## Experiment tunables
 <details>
-    <summary>Check the Experiment Tunables</summary>
+    <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>
     <table>
       <tr>
@@ -89,7 +89,7 @@ stringData:
     </table>
 </details>
 
-## Experiment Examples
+## Fault Examples
 
 ### Common Experiment Tunables
 Refer the [common attributes](../common-tunables-for-all-experiments) to tune the common tunables for all the experiments.
