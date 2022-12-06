@@ -4,7 +4,7 @@ hide_title: true
 title: Terms of Use
 editCurrentVersion: false
 custom_edit_url: null
-slug: /legal/terms-of-use/
+# slug: /legal/terms-of-use/
 ---
 
 # Terms of Use

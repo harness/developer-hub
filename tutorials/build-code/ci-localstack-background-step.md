@@ -6,7 +6,7 @@ keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial]
 
 # Run LocalStack as a Background Step
 
-[Background steps](../../docs/continuous-integration/ci-technical-reference/background-step-settings.md) are useful for running services that need to run for the entire lifetime of a Build stage. This tutorial shows how to run [LocalStack](https://localstack.cloud/) as a Background step in a Harness CI pipeline. LocalStack is software that emulates cloud services (such as AWS) when developing locally, or for testing in continuous integration pipelines.
+[Background steps](/docs/continuous-integration/ci-technical-reference/background-step-settings) are useful for running services that need to run for the entire lifetime of a Build stage. This tutorial shows how to run [LocalStack](https://localstack.cloud/) as a Background step in a Harness CI pipeline. LocalStack is software that emulates cloud services (such as AWS) when developing locally, or for testing in continuous integration pipelines.
 
 ## Create Your Pipeline
 
@@ -48,6 +48,7 @@ Notice that the `curl` command is able to reach the LocalStack service at `local
 ## Optional YAML Configuration
 
 If you switch from **Visual** to **YAML** in the Pipeline Studio, your pipeline should look similar to this:
+
 ```yaml
 pipeline:
   name: my_pipeline
@@ -90,7 +91,6 @@ pipeline:
                     image: curlimages/curl:7.83.1
                     shell: Sh
                     command: until curl --fail --silent --max-time 1 http://localstack:4566/health; do sleep 2; done
-
 ```
 
 ## Run Your Pipeline

@@ -33,9 +33,9 @@ import TabItem from '@theme/TabItem';
      </TabItem>
    </Tabs>
    ```
-3. When you are prompted to select a repository, search for **jhttp**, select the repository that you forked in the earlier step, and then select **Configure Pipeline**. 
+3. When you are prompted to select a repository, search for **jhttp**, select the repository that you forked in the earlier step, and then select **Configure Pipeline**.
 4. Select **Starter Pipeline**, and then select **Create Pipeline**.
-You should now see the **Execution** tab for your pipeline.
+   You should now see the **Execution** tab for your pipeline.
 
 ### Add a run tests step
 
@@ -47,7 +47,7 @@ This step runs the application's unit tests.
 4. In the **Build Arguments** field, enter `test`.
 5. In the **Packages** field, enter `io.harness.`.
 6. Under **Test Report Paths**, select **+ Add**, and then enter `**/*.xml` in the provided field.
-   
+
    :::info
 
    `**/*.xml` finds all JUnit XML formatted files that the tests generate.
@@ -73,11 +73,11 @@ This step packages the application as a Docker image and publishes the image to 
    Since your pipeline will publish the image to your Docker Hub account, your connector needs an access token with **Read, Write, Delete** permissions.
 
    :::
+
 3. In the **Docker Repository** field, enter `your_user/jhttp`. Replace `your_user` with your Docker Hub username.
-4.  Under **Tags**, select **+ Add**. A new field appears. 
+4. Under **Tags**, select **+ Add**. A new field appears.
 
 5. Select the icon on the right side of the field, and then select **Expression**.
-   
 6. Start to type `<+pipeline.` in the field to see suggestions for all available expressions. Select `sequenceId`. The field should now contain `<+pipeline.sequenceId>`.
 
    :::info
@@ -87,21 +87,22 @@ This step packages the application as a Docker image and publishes the image to 
    This ensures that the resulting Docker image always has a unique tag.
 
    :::
+
 7. Select **Apply Changes**.
 
 ### Add an integration tests stage
 
-This separate pipeline stage pulls the Docker image that was published in the previous step, runs it as a [Background step](../../docs/continuous-integration/ci-technical-reference/background-step-settings.md), and verifies that the container started successfully.
+This separate pipeline stage pulls the Docker image that was published in the previous step, runs it as a [Background step](/docs/continuous-integration/ci-technical-reference/background-step-settings), and verifies that the container started successfully.
 
 1. In the **Pipeline Studio**, select **Add Stage**, and then select **Build**.
 
- 2. In the **Stage Name** field, enter `Run Connectivity Test`, and then select **Set Up Stage**.
+2. In the **Stage Name** field, enter `Run Connectivity Test`, and then select **Set Up Stage**.
 
-   :::tip performance tip
+:::tip performance tip
 
-   The steps in this stage do not require code from the Git repository. To save time in each pipeline execution, disable **Clone Codebase**.
+The steps in this stage do not require code from the Git repository. To save time in each pipeline execution, disable **Clone Codebase**.
 
-   :::
+:::
 
 3. On the **Infrastructure** tab, select **Propagate from an existing stage**, select the previous stage from the drop-down menu, and then select **Continue**.
 
@@ -130,11 +131,13 @@ This step runs a connection test from the host operating system to verify that t
 1. Select **Add Step**. On the **Step Library** dialog, select **Run** from the list.
 2. In the **Name** field, enter `Test Connection to Java HTTP Server` .
 3. In the **Command** field, enter the following command:
+
    ```
    until curl --max-time 1 http://localhost:8888; do
      sleep 2;
    done
    ```
+
    :::info
 
    This simple connectivity test attempts to reach the service every two seconds until it is successful.
