@@ -31,7 +31,7 @@ For a Docker Image artifact, you can include the Java Agent in the Docker Image 
 
 You can also set these variables in the Harness Service that is using the Docker Image. Here is an example of a Harness Service containing the environment variables as Config Variables.
 
-![](./static/app-dynamics-environment-variables-00.png
+![](./static/app-dynamics-environment-variables-00.png)
 
 #### Identifying Environment Variables
 

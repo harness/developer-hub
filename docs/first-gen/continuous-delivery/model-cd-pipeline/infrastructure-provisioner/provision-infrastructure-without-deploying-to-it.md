@@ -48,15 +48,21 @@ All of the following Workflow steps are added to the **Pre-deployment Steps** se
 
 1. Create a Canary Workflow in your Harness Application. You don't need to have a Harness Service to create a Canary Workflow, so this Workflow can be leveraged freely.
 
-**Deployment Strategies Supported** — For most deployments, Harness Infrastructure Provisioners are only supported in Canary and Multi-Service types. For AMI/ASG and ECS deployments, Infrastructure Provisioners are also supported in Blue/Green deployments.1. Add the [Terraform Provision Step](https://docs.harness.io/article/uxwih21ps1-terraform-provisioner-step) to the **Pre-deployment Steps** section.
-2. Set the Terraform Provision step as the Terraform plan using the **Set as Terraform Plan** option. See [Perform a Terraform Dry Run](https://docs.harness.io/article/xthfj92dys-terraform-dry-run).
+:::note
+**Deployment Strategies Supported** — For most deployments, Harness Infrastructure Provisioners are only supported in Canary and Multi-Service types. For AMI/ASG and ECS deployments, Infrastructure Provisioners are also supported in Blue/Green deployments.
+:::
 
-When you're done, the step will look something like this:
+2. Add the [Terraform Provision Step](https://docs.harness.io/article/uxwih21ps1-terraform-provisioner-step) to the **Pre-deployment Steps** section.
 
-![](./static/provision-infrastructure-without-deploying-to-it-02.png)
+3. Set the Terraform Provision step as the Terraform plan using the **Set as Terraform Plan** option. See [Perform a Terraform Dry Run](https://docs.harness.io/article/xthfj92dys-terraform-dry-run).
 
-1. Add an Approval step after the Terraform plan step. See [Jira Approvals](../approvals/jira-based-approvals.md), [ServiceNow Approvals](../approvals/service-now-ticketing-system.md), and [Harness UI Approvals](../approvals/approvals.md). When the Workflow is deployed, a user will need to verify that the Terraform plan is correct before applying the new resources via a Terraform Apply step.
-2. Add the [Terraform Apply Step](https://docs.harness.io/article/jaxppd8w9j-using-the-terraform-apply-command) after the Approval step to provision the infrastructure. Ensure the **Inherit following configurations from Terraform Plan** option is selected.
+  When you're done, the step will look something like this:
+
+  ![](./static/provision-infrastructure-without-deploying-to-it-02.png)
+
+4. Add an Approval step after the Terraform plan step. See [Jira Approvals](../approvals/jira-based-approvals.md), [ServiceNow Approvals](../approvals/service-now-ticketing-system.md), and [Harness UI Approvals](../approvals/approvals.md). When the Workflow is deployed, a user will need to verify that the Terraform plan is correct before applying the new resources via a Terraform Apply step.
+
+5. Add the [Terraform Apply Step](https://docs.harness.io/article/jaxppd8w9j-using-the-terraform-apply-command) after the Approval step to provision the infrastructure. Ensure the **Inherit following configurations from Terraform Plan** option is selected.
 
 Your Workflow should now look something like this:
 

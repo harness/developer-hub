@@ -8,28 +8,11 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic introduces you to Harness' Continuous Verification features, in the following sections:
-
-[Next »](why-cv.md)
-* [Visual Overview](#visual_overview)
-* [Verifying Services](#verifying_services)
-* [APM/Time-Series Data](#apm_time_series_data)
-* [Log Data](#log_data)
-	+ [Queries and Limitations](#queries_and_limitations)
-* [Data Storage](#data_storage)
-* [Getting Alerts](#getting_alerts)
-* [Next Up](#next_up)
+This topic describes Harness' Continuous Verification features.
 
 ### Visual Overview
 
-In a hurry? Here's a one-minute video summary of how Harness helps you monitor the health of your deployments through a streamlined, comprehensive interface:
-
-
-
-
-
-
-![](./static/what-is-cv-36.jpeg)
+In a hurry? Here's a [one-minute video summary](https://fast.wistia.com/embed/medias/5sglzgol3u) of how Harness helps you monitor the health of your deployments through a streamlined, comprehensive interface.
 
 
 ### Verifying Services

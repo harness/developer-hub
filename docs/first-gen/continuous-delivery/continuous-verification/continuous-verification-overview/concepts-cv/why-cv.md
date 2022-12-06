@@ -10,16 +10,6 @@ helpdocs_is_published: true
 
 This topic covers the rationale for Harness' Continuous Verification approach, and the benefits of adopting it.
 
- [« Previous](what-is-cv.md) [Next »](when-verify.md)Sections in this topic:
-
-* [Visual Introduction](#visual_summary)
-* [Static Rules Versus Dynamic Data](#static)
-* [Let the Machine Learn](#learning)
-* [Benefits of Harness' Learning Approach](#dynamic)
-* [Rich Ecosystem](#ecosystem)
-* [Next Up](#next_steps)
-
-
 ### Visual Introduction
 
 Harness Continuous Verification watches your applications over time—learning normal behavior, and alerting you to anomalies. Rather than writing static (and brittle) rules, you focus your effort on correcting and tuning this ongoing learning, which improves its anomaly detection.

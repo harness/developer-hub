@@ -24,37 +24,105 @@ You can use the HTTP step to run HTTP methods containing URLs, methods, headers,
   
 The **HTTP** settings appear.
 
-The following table describes the HTTP command options.
+Harness CV supports the following HTTP command options.
 
+#### Name 
 
+Enter the name for the HTTP command.
 
-|  |  |
-| --- | --- |
-| **Field** | **Description** |
-| **Name** | Enter the name for the HTTP command. |
-| **URL** | Enter the URL for the HTTP call. |
-| **Method** | Select the [HTTP method](https://restfulapi.net/http-methods/#summary). |
-| **Headers** | Enter the media type for the message. For example, if you are using the GET method, the headers are used to specify the GET response body message type Harness will check for.1. In **Headers**, click **Add**.
+#### URL 
+
+Enter the URL for the HTTP call. 
+
+#### Method 
+
+Select the [HTTP method](https://restfulapi.net/http-methods/#summary). 
+
+#### Headers 
+
+Enter the media type for the message. For example, if you are using the GET method, the headers are used to specify the GET response body message type Harness will check for.
+1. In **Headers**, click **Add**.
 2. In **Key**, enter the key. For example, `Token, Variable:`.
 3. In **Value**, enter the value. For example, `${secrets.getValue("aws-playground_AWS_secret_key")}`, `var1,var2:var3`.
 
-You can enter multiple header entries. Click **Add** to add **Key** and **Value** fields. |
-| **Body** | Enter the message body (if any) of the HTTP message. |
-| **Assertion** | The assertion is used to validate the incoming response. For example, if you wanted to check the health of an HTTP connection, you could use the assertion **${httpResponseCode}==200**.To see the available expressions, simply enter `${` in the Assertions field. The HTTP expressions are described in the [HTTP](https://docs.harness.io/article/9dvxcegm90-variables#http) section of [Variables and Expressions in Harness](https://docs.harness.io/article/9dvxcegm90-variables).You can also use JSON and XML functors as described in [JSON and XML Functors](https://docs.harness.io/article/wfvecw3yod-json-and-xml-functors). For example:`json.select("status", ${httpResponseBody}) == "success"` |
-| **Timeout** | Enter a value, in seconds, for how long Harness should wait for a response from the server you specified in **URL**. |
-| **Process Additional Variables** | Create variables using built-in Harness expressions.You can then publish these are output variables using the **Publish output in the context** settings. Whatever is configured in **Process Additional Variables** can be made available in the context defined in **Publish output in the context**.In **Name**, enter a name for the variable. In **Expression**, enter an expression that obtains some value. Harness supports these functors and methods:* JSON Path:
+You can enter multiple header entries. Click **Add** to add **Key** and **Value** fields.
+
+![](./static/_http-headers.png)
+
+#### Body 
+
+Enter the message body (if any) of the HTTP message. |
+
+####  Assertion
+
+The assertion is used to validate the incoming response. For example, if you wanted to check the health of an HTTP connection, you could use the assertion **${httpResponseCode}==200**.
+
+To see the available expressions, simply enter `${` in the Assertions field. The HTTP expressions are described in the [HTTP](https://docs.harness.io/article/9dvxcegm90-variables#http) section of [Variables and Expressions in Harness](https://docs.harness.io/article/9dvxcegm90-variables).
+  
+You can also use JSON and XML functors as described in [JSON and XML Functors](https://docs.harness.io/article/wfvecw3yod-json-and-xml-functors). For example:
+
+`json.select("status", ${httpResponseBody}) == "success"` 
+
+####  Timeout 
+
+Enter a value, in seconds, for how long Harness should wait for a response from the server you specified in **URL**. 
+
+####  Process Additional Variables 
+
+Create variables using built-in Harness expressions.You can then publish these are output variables using the **Publish output in the context** settings. Whatever is configured in **Process Additional Variables** can be made available in the context defined in **Publish output in the context**.In **Name**, enter a name for the variable. In **Expression**, enter an expression that obtains some value. Harness supports these functors and methods:
+
+* JSON Path:
 	+ `select()`. Example: `${json.select("path-in-response", httpResponseBody)}`
 	+ `object()`. Example: `${json.object(httpResponseBody).item}`
 	+ `list()`. Example: `{json.list(\"store.book\", httpResponseBody).get(2).isbn}`
+
 * XPath:
 	+ `select()`. Example: `${xml.select("/bookstore/book[1]/title", httpResponseBody)}`
 
-For details, see [JSON and XML Functors](https://docs.harness.io/article/wfvecw3yod-json-and-xml-functors).See [Variable Expression Name Restrictions](https://docs.harness.io/article/9dvxcegm90-variables#variable_expression_name_restrictions). |
-| **Publish output in the context** | Select this option to create a variable containing the content of a variable specified in **Process Additional Variables**.in **Publish Variable Name**, enter a unique name to define the output context. You will use this name to reference the variable elsewhere.For example, if the name of a variable in **Process Additional Variables** is `name` the **Publish** **Variable Name** is `httpoutput`, you would reference it with `${context.httpoutput.name}`.Here is the HTTP step:And here is a Shell Script step referencing the published variable using `${context.httpoutput.name}`:In **Scope**, select **Pipeline**, **Workflow**, or **Phase**. The output variable are available within the scope you set here.The scope you select is useful for preventing variable name conflicts. You might use a Workflow with published variables in multiple pipelines, so scoping the variable to **Workflow** will prevent conflicts with other Workflows in the Pipeline. |
-| **Delegate Selectors** | You can use Selectors to select which Harness Delegates to use when executing the HTTP step. Enter the Selectors of the Delegates you want to use.You can also use [Harness variable expressions](https://docs.harness.io/article/9dvxcegm90-variables). For example, if you have a Workflow variables named delegate, you can enter `$(workflow.variables.delegate)`. When you deploy the Workflow, you can provide a value for the variable that matches a Delegate Selector.Harness will use Delegates matching the Selectors you select.If you use one Selector, Harness will use any Delegate that has that Selector.If you select two Selectors, a Delegate must have both Selectors to be selected. That Delegate might also have other Selectors, but it must have the two you selected.If your Workflow Infrastructure Definition's Cloud Provider is a Harness [Kubernetes Cluster Cloud Provider](https://docs.harness.io/article/l68rujg6mp-add-kubernetes-cluster-cloud-provider) or [AWS Cloud Provider](https://docs.harness.io/article/wt1gnigme7-add-amazon-web-services-cloud-provider) that uses Delegate Selectors, do not add a Selector to the Workflow step. The Workflow is already targeted to a specific Delegate. |
-| **Use Delegate Proxy** | Select this option to explicitly use the delegate proxy settings. For details, see [Delegate Proxy Settings](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation#delegate_proxy_settings).* If the Delegate is not using any proxy, selecting this option does not enable the proxy settings.
+For details, see [JSON and XML Functors](https://docs.harness.io/article/wfvecw3yod-json-and-xml-functors).
+
+See [Variable Expression Name Restrictions](https://docs.harness.io/article/9dvxcegm90-variables#variable_expression_name_restrictions). |
+
+####  **Publish output in the context**
+
+Select this option to create a variable containing the content of a variable specified in **Process Additional Variables**.
+
+in **Publish Variable Name**, enter a unique name to define the output context. You will use this name to reference the variable elsewhere.
+
+For example, if the name of a variable in **Process Additional Variables** is `name` the **Publish** **Variable Name** is `httpoutput`, you would reference it with `${context.httpoutput.name}`.
+
+Here is the HTTP step:
+
+![](./static/_http-step.png)
+
+And here is a Shell Script step referencing the published variable using `${context.httpoutput.name}`:
+
+![](./static/_http-shell-script.png)
+
+In **Scope**, select **Pipeline**, **Workflow**, or **Phase**. The output variable are available within the scope you set here.
+
+The scope you select is useful for preventing variable name conflicts. You might use a Workflow with published variables in multiple pipelines, so scoping the variable to **Workflow** will prevent conflicts with other Workflows in the Pipeline. |
+
+####  Delegate Selectors
+
+You can use Selectors to select which Harness Delegates to use when executing the HTTP step. Enter the Selectors of the Delegates you want to use.
+
+You can also use [Harness variable expressions](https://docs.harness.io/article/9dvxcegm90-variables). For example, if you have a Workflow variables named delegate, you can enter `$(workflow.variables.delegate)`. When you deploy the Workflow, you can provide a value for the variable that matches a Delegate Selector.
+
+Harness will use Delegates matching the Selectors you select.
+
+If you use one Selector, Harness will use any Delegate that has that Selector.If you select two Selectors, a Delegate must have both Selectors to be selected. That Delegate might also have other Selectors, but it must have the two you selected.
+
+:::danger
+If your Workflow Infrastructure Definition's Cloud Provider is a Harness [Kubernetes Cluster Cloud Provider](https://docs.harness.io/article/l68rujg6mp-add-kubernetes-cluster-cloud-provider) or [AWS Cloud Provider](https://docs.harness.io/article/wt1gnigme7-add-amazon-web-services-cloud-provider) that uses Delegate Selectors, do not add a Selector to the Workflow step. The Workflow is already targeted to a specific Delegate. 
+:::
+
+####  Use Delegate Proxy 
+
+Select this option to explicitly use the delegate proxy settings. For details, see [Delegate Proxy Settings](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation#delegate_proxy_settings).
+* If the Delegate is not using any proxy, selecting this option does not enable the proxy settings.
 * If you have specified an URL that is set up to bypass proxy settings on the Delegate, then it throws an error.
- |
+
 
 ### Header Capability Check
 

@@ -44,18 +44,18 @@ To change the priority of an event in a Deployment, do the following:
 2. Click the name of the Workflow deployment (or Pipeline containing the Workflow) that deployed the Service you are interested in reviewing.
 3. In the deployment, click the verification step you want to refine to view its **Analysis**.
 
-![](./static/refine-deployment-verification-analysis-16.png)
+   ![](./static/refine-deployment-verification-analysis-16.png)
 
-1. Review the **Analysis** to determine if the priority of any events need to be changed.
-2. To change the risk assessment for an event, click the risk assessment icon:
+4. Review the **Analysis** to determine if the priority of any events need to be changed.
+5. To change the risk assessment for an event, click the risk assessment icon:
 
-![](./static/refine-deployment-verification-analysis-17.png)
+  ![](./static/refine-deployment-verification-analysis-17.png)
 
-The event details dialog appears:
+   The event details dialog appears:
 
-![](./static/refine-deployment-verification-analysis-18.png)
+   ![](./static/refine-deployment-verification-analysis-18.png)
 
-1. Select a different priority setting. For details on the different verification settings, see [Verification Event Classifications](https://docs.harness.io/article/339hy0kbnu-verification-event-classifications).
+6. Select a different priority setting. For details on the different verification settings, see [Verification Event Classifications](https://docs.harness.io/article/339hy0kbnu-verification-event-classifications).
 
 The options in the dialog are described below.
 
@@ -110,18 +110,18 @@ To review the Continuous Verification feedback, do the following:
 2. Click a deployment's name to open it, and then expand the deployment steps until you find the verification you want to review. Click the verification step to display its **Analysis**.
 3. Click the more options menu (**︙**) and then click **View Feedback**.
 
-![](./static/refine-deployment-verification-analysis-26.png)
+   ![](./static/refine-deployment-verification-analysis-26.png)
 
-The **Continuous Verification Feedback** dialog appears.
+   The **Continuous Verification Feedback** dialog appears.
 
-![](./static/refine-deployment-verification-analysis-27.png)
+   ![](./static/refine-deployment-verification-analysis-27.png)
 
-1. Review the Execution Analysis to determine if any events need to be changed.
-2. To change the risk assessment for an event, click feedback icon.
+4. Review the Execution Analysis to determine if any events need to be changed.
+5. To change the risk assessment for an event, click feedback icon.
 
-![](./static/refine-deployment-verification-analysis-28.png)
+   ![](./static/refine-deployment-verification-analysis-28.png)
 
-The event title will change to indicate who updated it by adding your name to **Updated priority by &lt;User name&gt;**.
+   The event title will change to indicate who updated it by adding your name to **Updated priority by &lt;User name&gt;**.
 
 All future verifications will use the new priority setting for similar events (similar by text similarity).
 

@@ -49,7 +49,9 @@ To add Dynatrace as a verification provider, do the following:
 
 ### Step 3: URL
 
-The URL of your Dynatrace account. The URL has the following syntax: **https://*****your\_environment\_ID*****.live.dynatrace.com**
+The URL of your Dynatrace account. The URL has the following syntax:
+
+`https://your_environment_ID.live.dynatrace.com`
 
 HTTPS is mandatory for Dynatrace connections.
 

@@ -14,21 +14,6 @@ Once you run a deployment, and Datadog preforms verification, Harness' machine-l
 
 In order to obtain the names of the host(s), pod(s), or container(s) where your service is deployed, the verification provider should be added to your workflow *after* you have run at least one successful deployment.In this topic:
 
-* [Before You Begin](#before_you_begin)
-* [Visual Summary](#visual_summary)
-* [Step 1: Set Up the Deployment Verification](#step_1_set_up_the_deployment_verification)
-* [Step 2: Datadog Log Server](#step_1_datadog_log_server)
-* [Step 3: Search Keywords](#step_3_search_keywords)
-* [Step 4: Field Name for Host/Container](#step_7_field_name_for_host_containers)
-* [Step 5: Expression for Host/Container name](#step_5_expression_for_host_container_name)
-* [Step 6: Analysis Time duration](#step_6_analysis_time_duration)
-* [Step 7: Baseline for Risk Analysis](#step_7_baseline_for_risk_analysis)
-* [Step 8: Algorithm Sensitivity](#step_8_algorithm_sensitivity)
-* [Step 9: Execute with previous steps](#step_9_execute_with_previous_steps)
-* [Review: Datadog and ECS](#review_datadog_and_ecs)
-* [Review: Harness Expression Support in CV Settings](#review_harness_expression_support_in_cv_settings)
-* [Step 9: View Verification Results](#step_9_view_verification_results)
-* [Next Steps](#next_steps)
 
 ### Before You Begin
 
@@ -126,7 +111,7 @@ You can use expressions (`${...}`) for [Harness built-in variables](https://docs
 
 Expression support lets you template your Workflow verification steps. You can add custom expressions for settings, and then provide values for those settings at deployment runtime. Or you can use Harness built-in variable expressions and Harness will provide values at deployment runtime automatically.
 
-### Step 9: View Verification Results
+### Step 10: View Verification Results
 
 Once you have deployed your workflow (or pipeline) using the Datadog verification step, you can automatically verify cloud application and infrastructure performance across your deployment. For more information, see [Add a Workflow](../../model-cd-pipeline/workflows/workflow-configuration.md) and [Add a Pipeline](../../model-cd-pipeline/pipelines/pipeline-configuration.md).
 

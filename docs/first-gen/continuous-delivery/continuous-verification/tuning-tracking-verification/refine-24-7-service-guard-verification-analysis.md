@@ -50,11 +50,11 @@ To change the priority of an event in 24/7 Service Guard, do the following:
 
   ![](./static/refine-24-7-service-guard-verification-analysis-31.png)
 
-The priority adjustment dialog appears:
+  The priority adjustment dialog appears:
 
-![](./static/refine-24-7-service-guard-verification-analysis-32.png)
+  ![](./static/refine-24-7-service-guard-verification-analysis-32.png)
 
-1. Select a different priority setting. The options in the dialog are described below.
+5. Select a different priority setting. The options in the dialog are described below.
 
 Once you have assigned a priority to an event (P0-P5), you can create a Jira issue using the event. See [File Jira Tickets on Verification Events](jira-cv-ticket.md).
 

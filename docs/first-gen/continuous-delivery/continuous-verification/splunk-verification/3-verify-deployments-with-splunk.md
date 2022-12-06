@@ -36,7 +36,7 @@ To verify your deployment with Splunk, do the following:
 
    ![](./static/3-verify-deployments-with-splunk-08.png)
    
-4. Click **Next**. The **Configure****Splunk** settings appear.
+4. Click **Next**. The **Configure Splunk** settings appear.
 
   ![](./static/3-verify-deployments-with-splunk-09.png)
 
@@ -125,19 +125,19 @@ To use **Guide From Example** for a host or container name expression, do the fo
    
    The name of the host can be seen in the event message, next to **host =**. The expression that you provide in the **Expression for Host/Container Name** field in the Harness **Splunk** dialog should evaluate to the name here.
 
-You might have a different label than **host**, such as **pod\_name**. You simply use the label that identifies the host or container.![](./static/3-verify-deployments-with-splunk-18.png)
+    You might have a different label than **host**, such as **pod\_name**. You simply use the label that identifies the host or container.![](./static/3-verify-deployments-with-splunk-18.png)
 
-1. In your Harness workflow **Splunk** dialog, click **Guide From Example**. The **Expression for Host Name** popover appears.
+4. In your Harness workflow **Splunk** dialog, click **Guide From Example**. The **Expression for Host Name** popover appears.
 
    ![](./static/3-verify-deployments-with-splunk-19.png)
    
    The dialog shows the service, environment, and service infrastructure used for this workflow.
    
-2. In **Host**, click the name of the host to use when testing verification. Match the hostname from the Splunk Search to the hostname in the **Expression for Host Name** popover:
+5. In **Host**, click the name of the host to use when testing verification. Match the hostname from the Splunk Search to the hostname in the **Expression for Host Name** popover:
 
    ![](./static/3-verify-deployments-with-splunk-20.png)
 
-3. Click **SUBMIT**. The YAML for the host appears. Look for the **host** section.
+6. Click **SUBMIT**. The YAML for the host appears. Look for the **host** section.
 
    ![](./static/3-verify-deployments-with-splunk-21.png)
 
@@ -145,19 +145,19 @@ You might have a different label than **host**, such as **pod\_name**. You simpl
   
    ![](./static/3-verify-deployments-with-splunk-22.png)
 
-4. Click the **hostName** label. The variable name is added to the **Expression for Host/Container name** field.
+7. Click the **hostName** label. The variable name is added to the **Expression for Host/Container name** field.
 
    ![](./static/3-verify-deployments-with-splunk-23.png)
 
-5. At the bottom of the Splunk dialog, click **TEST**. A new **Expression for Host Name** popover appears.
+8. At the bottom of the Splunk dialog, click **TEST**. A new **Expression for Host Name** popover appears.
 
   ![](./static/3-verify-deployments-with-splunk-24.png)
 
-6. In **Host**, select the same host you selected last time, and then click **RUN**. Verification information for the host is found. In there is no verification data for the selected node, the test will display connection information only.
+9. In **Host**, select the same host you selected last time, and then click **RUN**. Verification information for the host is found. In there is no verification data for the selected node, the test will display connection information only.
 
    ![](./static/3-verify-deployments-with-splunk-25.png)
 
-7. Click back in the **Splunk** dialog and click **SUBMIT**. The Splunk verification step is added to your workflow.
+10. Click back in the **Splunk** dialog and click **SUBMIT**. The Splunk verification step is added to your workflow.
 
    ![](./static/3-verify-deployments-with-splunk-26.png)
 
