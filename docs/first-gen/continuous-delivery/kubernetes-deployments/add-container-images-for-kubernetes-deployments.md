@@ -36,11 +36,11 @@ In the following step, we use the Docker Registry Artifact Server.
 2. Enter a name for the Application and click **Submit**.
 3. Click **Services**, and then click **Add Service**. The **Add Service** settings appear.
 
-![](./static/add-container-images-for-kubernetes-deployments-137.png)
+   ![](./static/add-container-images-for-kubernetes-deployments-137.png)
 
-1. In **Name**, enter a name for the Service.
-2. In **Deployment Type**, select **Kubernetes**, and then ensure **Enable Kubernetes V2** is selected.
-3. Click **Submit**. The new Harness Kubernetes Service is created.
+4. In **Name**, enter a name for the Service.
+5. In **Deployment Type**, select **Kubernetes**, and then ensure **Enable Kubernetes V2** is selected.
+6. Click **Submit**. The new Harness Kubernetes Service is created.
 
 ### Step 3: Add the Artifact Source
 

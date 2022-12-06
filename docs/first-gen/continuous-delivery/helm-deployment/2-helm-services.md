@@ -39,7 +39,7 @@ To add the Harness Application and service, do the following:
 4. Click **SUBMIT**. The new application is added.
 5. Click the application name to open the application. The application entities are displayed.
 
-![](./static/2-helm-services-36.png)
+    ![](./static/2-helm-services-36.png)
 
 ### Add the Helm Service to the Application
 
@@ -50,7 +50,9 @@ To add the Harness Application and service, do the following:
 5. Select **Enable Helm V3**. This ensures that you are using the latest Helm settings.
 6. Click **SUBMIT**. The new service is added. Let's look at where Docker and Helm are configured in the Service page:
 
-![](./static/2-helm-services-38.png)The following table describes the different sections.
+![](./static/2-helm-services-38.png)
+
+The following table describes the different sections.
 
 
 

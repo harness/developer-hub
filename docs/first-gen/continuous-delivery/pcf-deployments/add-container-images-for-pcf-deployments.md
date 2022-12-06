@@ -12,9 +12,6 @@ Harness integrates with many different types of repositories and artifact provid
 
 Once you set up an Artifact Server, Harness can pull artifacts and add them to the Harness Service you will deploy to Tanzu Application Service (TAS, formerly PCF).
 
-
-
-
 ### Before You Begin
 
 * See [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts).
@@ -106,11 +103,11 @@ Harness supports any single file (non-folder) deployed using `cf push`. TAR, WAR
 1. In your Service, click **Add Artifact Source**, and select the artifact source.
 2. Configure the settings for the Artifact Source.
 
-Harness uses artifact metadata only. During deployment runtime, Harness passes the metadata to the target host(s) where it is used to obtain the artifact.
+    Harness uses artifact metadata only. During deployment runtime, Harness passes the metadata to the target host(s) where it is used to obtain the artifact.
 
-Ensure that the target host has network connectivity to the Artifact Server. For more information, see [Service Types and Artifact Sources](https://docs.harness.io/article/qluiky79j8-service-types-and-artifact-sources).
+    Ensure that the target host has network connectivity to the Artifact Server. For more information, see [Service Types and Artifact Sources](https://docs.harness.io/article/qluiky79j8-service-types-and-artifact-sources).
 
-1. Click **Submit**. The artifact is added to the Service.
+3. Click **Submit**. The artifact is added to the Service.
 
 Next we will describe our application and TAS routes using the Service **Manifests** section.
 

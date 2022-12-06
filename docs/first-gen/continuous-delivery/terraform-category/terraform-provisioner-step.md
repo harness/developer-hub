@@ -363,10 +363,13 @@ This is the same Infrastructure Definition where you mapped your Terraform Infra
 
 For Canary Workflows, Infrastructure Definitions are added in Phases, in the **Deployment Phases** section.
 
-For AMI deployments, Terraform Infrastructure Provisioners are also supported in Blue/Green Workflows. If you are creating a Blue/Green Workflow for AMI, you can select the Environment and Infrastructure Definition in the Workflow setup settings.1. In the **Deployment Phases** section, click **Add Phase**. The Workflow Phase settings appear.
+For AMI deployments, Terraform Infrastructure Provisioners are also supported in Blue/Green Workflows. If you are creating a Blue/Green Workflow for AMI, you can select the Environment and Infrastructure Definition in the Workflow setup settings.
+
+1. In the **Deployment Phases** section, click **Add Phase**. The Workflow Phase settings appear.
 2. In **Service**, select the Harness Service to deploy.
-3. In **Infrastructure Definition**, select the target Infrastructure Definition where the Workflow will deploy. This is the same Infrastructure Definition where you mapped your Terraform Infrastructure Provisioner outputs, as described in [Map Dynamically Provisioned Infrastructure using Terraform](mapgcp-kube-terraform-infra.md).  
-Here is an example:
+3. In **Infrastructure Definition**, select the target Infrastructure Definition where the Workflow will deploy. 
+   This is the same Infrastructure Definition where you mapped your Terraform Infrastructure Provisioner outputs, as described in [Map Dynamically Provisioned Infrastructure using Terraform](mapgcp-kube-terraform-infra.md).  
+   Here is an example:
    ![](./static/terraform-provisioner-step-24.png)
 4. Click **Submit**. Use the same Infrastructure Definition for the remaining phases in your Canary Workflow.
 

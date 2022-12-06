@@ -111,11 +111,15 @@ To add the Infrastructure Provisioner to the Infrastructure Definition, do the f
 2. In **Name**, enter the name for the Infrastructure Definition. You will use this name to select the Infrastructure Definition when you set up Workflows and Workflow Phases.
 3. In **Cloud Provider Type**, select **Google Cloud Platform**.
 
-Harness supports first class Terraform Kubernetes provisioning for Google Kubernetes Engine (GKE).1. In **Deployment Type**, select **Kubernetes**.
-2. Click **Map Dynamically Provisioned Infrastructure**.
-3. In **Provisioner**, select your Terraform Infrastructure Provisioner.
-4. In **Cloud Provider**, select the Cloud Provider that you use to connect Harness with GCP.
-5. In **Cluster Name** and **Namespace**, map the required fields to your Terraform script outputs.
+:::note 
+Harness supports first class Terraform Kubernetes provisioning for Google Kubernetes Engine (GKE).
+:::
+
+4. In **Deployment Type**, select **Kubernetes**.
+5. Click **Map Dynamically Provisioned Infrastructure**.
+6. In **Provisioner**, select your Terraform Infrastructure Provisioner.
+7. In **Cloud Provider**, select the Cloud Provider that you use to connect Harness with GCP.
+8. In **Cluster Name** and **Namespace**, map the required fields to your Terraform script outputs.
 
 You map the Terraform script outputs using this syntax, where `exact_name` is the name of the output:
 
@@ -123,7 +127,11 @@ You map the Terraform script outputs using this syntax, where `exact_name` is th
 ```
 ${terrafrom.*exact\_name*}
 ```
-When you map a Terraform script output to a Harness field as part of a Service Mapping, the variable for the output, `${terrafrom.exact_name​}`, can be used anywhere in the Workflow that uses that Terraform Provisioner.The Kubernetes deployment type requires that you map an output to **Cluster Name**. You can map an output to **Namespace** as an option.
+:::note
+When you map a Terraform script output to a Harness field as part of a Service Mapping, the variable for the output, `${terrafrom.exact_name​}`, can be used anywhere in the Workflow that uses that Terraform Provisioner.
+:::
+
+The Kubernetes deployment type requires that you map an output to **Cluster Name**. You can map an output to **Namespace** as an option.
 
 The following example shows the Terraform script outputs used for the Kubernetes deployment type fields:
 

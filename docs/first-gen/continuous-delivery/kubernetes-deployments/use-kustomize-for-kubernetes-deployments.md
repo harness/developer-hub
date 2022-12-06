@@ -554,9 +554,9 @@ Plugins can only be applied to Harness Kubernetes Delegates.Next, apply the Prof
 
 1. Click the Profile menu in the Delegate lists and choose your Profile.
 
-![](./static/use-kustomize-for-kubernetes-deployments-94.png)
+   ![](./static/use-kustomize-for-kubernetes-deployments-94.png)
 
-1. Click **Confirm**.
+2. Click **Confirm**.
 
 Wait a few minutes for the Profile to install the plugin. Next click **View Logs** to see the output of the Profile.
 

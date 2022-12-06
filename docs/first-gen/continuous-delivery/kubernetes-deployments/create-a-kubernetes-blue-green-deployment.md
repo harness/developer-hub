@@ -60,7 +60,8 @@ spec:
 ```
 Note that there are no annotations to indicate that it is the primary service. Harness will add this later.
 
-If you have more than one service, Harness does not automatically know which is the primary service unless you add the annotations described below. If you use two services, please annotate them as described below.1. **First deployment:**
+If you have more than one service, Harness does not automatically know which is the primary service unless you add the annotations described below. If you use two services, please annotate them as described below.
+1. **First deployment:**
 	1. Harness creates two services (primary and stage) and one pod set for the app.
 	2. The primary service is given this annotation:  
 	`annotations: harness.io/primary-service: "true"`

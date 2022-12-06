@@ -293,16 +293,12 @@ Ensure that the Kubernetes cluster includes an Ingress controller that supports 
 
 1. In your Application, click **Workflows**, and then click **Add Workflow**. The Workflow settings appear. Enter the following settings:
 
-
-
-|  |  |
-| --- | --- |
-|  | * **Name:** Enter a name for your Workflow.
+* **Name:** Enter a name for your Workflow.
 * **Workflow Type:** Select **Blue/Green Deployment**.
 * **Environment:** Select the Environment that contains your target Infrastructure Definition.
 * **Service:** Select the Service containing your Ingress and service manifests.
 * **Infrastructure Definition:** Select the Infrastructure Definition for your target Kubernetes cluster.
- |
+
 
 The Workflow is created with the default Blue/Green steps.
 
@@ -342,37 +338,36 @@ Next we'll add the Apply steps for the Ingress objects to defined in your Harnes
     * **Delegate Selector:** see [Option: Delegate Selector Setting](#option_delegate_selector_setting).
     * For the rest of the settings, you can leave the defaults.
 
+    This step will increase the traffic routed to the stage service and the new app version by 25%.
 
-This step will increase the traffic routed to the stage service and the new app version by 25%.
+    Next, you will add a step to increase the traffic routed to the stage service and the new app version by 50%.
 
-Next, you will add a step to increase the traffic routed to the stage service and the new app version by 50%.
-
-1. Below this step, add another Apply step to apply the `ingress-traffic-split50.yaml` file from the Harness Service and click **Submit:**
+3. Below this step, add another Apply step to apply the `ingress-traffic-split50.yaml` file from the Harness Service and click **Submit:**
 
     * **Name:** Enter Configure **Stage 50%**.
     * **File Paths:** Enter `templates/ingress-traffic-split50.yaml`.
     * **Delegate Selector:** see [Option: Delegate Selector Setting](#option_delegate_selector_setting).
     * For the rest of the settings, you can leave the defaults.
 
-Now you can add the steps for decreasing the traffic routed to the stage service and the old version of the app. The first step decreases the traffic to 25%:
+    Now you can add the steps for decreasing the traffic routed to the stage service and the old version of the app. The first step decreases the traffic to 25%:
 
-1. In the **Shift Remaining Traffic After Switch** section, add an Apply step for the `templates/ingress-traffic-split25.yaml` file from the Harness Service and click **Submit:**
+4. In the **Shift Remaining Traffic After Switch** section, add an Apply step for the `templates/ingress-traffic-split25.yaml` file from the Harness Service and click **Submit:**
 
-* **Name:** Enter Configure **Stage 25%**.
-* **File Paths:** Enter `templates/ingress-traffic-split25.yaml`.
-* **Delegate Selector:** see [Option: Delegate Selector Setting](#option_delegate_selector_setting).
-* For the rest of the settings, you can leave the defaults.
+    * **Name:** Enter Configure **Stage 25%**.
+    * **File Paths:** Enter `templates/ingress-traffic-split25.yaml`.
+    * **Delegate Selector:** see [Option: Delegate Selector Setting](#option_delegate_selector_setting).
+    * For the rest of the settings, you can leave the defaults.
 
-Finally, you add a step to decrease the traffic routed to the stage service and the old app version to 0%:
+    Finally, you add a step to decrease the traffic routed to the stage service and the old app version to 0%:
 
-1. Below this step, add another Apply step to apply the `ingress-traffic-split0.yaml` file from the Harness Service and click **Submit:**
+5. Below this step, add another Apply step to apply the `ingress-traffic-split0.yaml` file from the Harness Service and click **Submit:**
 
-* **Name:** Enter Configure **Stage 0%**.
-* **File Paths:** Enter `templates/ingress-traffic-split0.yaml`.
-* **Delegate Selector:** see [Option: Delegate Selector Setting](#option_delegate_selector_setting).
-* For the rest of the settings, you can leave the defaults.
+    * **Name:** Enter Configure **Stage 0%**.
+    * **File Paths:** Enter `templates/ingress-traffic-split0.yaml`.
+    * **Delegate Selector:** see [Option: Delegate Selector Setting](#option_delegate_selector_setting).
+    * For the rest of the settings, you can leave the defaults.
 
-You can actually run the deployment now. The following step add Approval steps between each traffic increase and decrease so you can approve of the changes.
+You can run the deployment now. The following step add Approval steps between each traffic increase and decrease so you can approve of the changes.
 
 ### Option 1: Add Approval Steps
 

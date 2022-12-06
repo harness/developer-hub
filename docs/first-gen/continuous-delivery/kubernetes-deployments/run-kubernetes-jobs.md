@@ -150,24 +150,23 @@ If you select this option, Harness will not check that the workload (Job) has re
 2. In the **Verify** section of the Workflow, click **Add Step**, and then select the **Shell Script** step.
 3. In the Shell Script step, in **Script**, add the following script to check if the Job completed:
 
+    ```
+    kubectl wait --for=condition=complete --timeout=30s jobs/${workflow.variables.JobName} -n ${infra.kubernetes.namespace}
+    ```
+    You can see the script uses the Workflow variable expression `${workflow.variables.JobName}` to get the name of the Job, **countdown**.
 
-```
-kubectl wait --for=condition=complete --timeout=30s jobs/${workflow.variables.JobName} -n ${infra.kubernetes.namespace}
-```
-You can see the script uses the Workflow variable expression `${workflow.variables.JobName}` to get the name of the Job, **countdown**.
+    Next, we'll add a Shell Script step to output the log for the Job. When we deploy, the log will display the countdown from 15 to 1 performed by the Job.
 
-Next, we'll add a Shell Script step to output the log for the Job. When we deploy, the log will display the countdown from 15 to 1 performed by the Job.
+4. In the **Wrap Up** section of the Workflow, add another Shell Script step. In **Script**, enter the following script:
 
-1. In the **Wrap Up** section of the Workflow, add another Shell Script step. In **Script**, enter the following script:
+  ```
+  kubectl logs -n ${infra.kubernetes.namespace} $(kubectl get pods -n ${infra.kubernetes.namespace} -l job-name=${workflow.variables.JobName} -o jsonpath='{.items[*].metadata.name}')
+  ```
+  Finally, let's add a **Delete** step to remove the Job.
 
+5. In the **Wrap Up** section of the Workflow, after the Shell Script step, click **Add Step**. Select the **Delete** step.
 
-```
-kubectl logs -n ${infra.kubernetes.namespace} $(kubectl get pods -n ${infra.kubernetes.namespace} -l job-name=${workflow.variables.JobName} -o jsonpath='{.items[*].metadata.name}')
-```
-Finally, let's add a **Delete** step to remove the Job.
-
-1. In the **Wrap Up** section of the Workflow, after the Shell Script step, click **Add Step**. Select the **Delete** step.
-2. In **Resources**, enter the type and name of the resource, `Job/countdown`.
+6. In **Resources**, enter the type and name of the resource, `Job/countdown`.
 
 ![](./static/run-kubernetes-jobs-68.png)
 

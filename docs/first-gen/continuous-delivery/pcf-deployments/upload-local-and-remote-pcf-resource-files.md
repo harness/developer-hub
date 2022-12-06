@@ -64,7 +64,9 @@ To use remote files, do the following:
 
 The file path you enter in **File/Folder Path** will be used as the manifest for this Service.
 
-**Avoid listing a folder only:** If you enter a folder path only, Harness does not know which file in the folder to use, so Harness will list the files using Git and then select the last file listed. If the last file is invalid, Harness will select the second to last file, and so on. The order in which files are returned from Git is not constant, and so selecting the correct file is not always possible. Instead, provide the full path to the file.1. If you selected **Latest from Branch**, specify the **Branch** and **File/Folder** path to the remote manifest file (typically, a vars.yml file).![](./static/upload-local-and-remote-pcf-resource-files-69.png)
+**Avoid listing a folder only:** If you enter a folder path only, Harness does not know which file in the folder to use, so Harness will list the files using Git and then select the last file listed. If the last file is invalid, Harness will select the second to last file, and so on. The order in which files are returned from Git is not constant, and so selecting the correct file is not always possible. Instead, provide the full path to the file.
+
+1. If you selected **Latest from Branch**, specify the **Branch** and **File/Folder** path to the remote manifest file (typically, a vars.yml file).![](./static/upload-local-and-remote-pcf-resource-files-69.png)
 2. If you selected **Specific Commit ID**, specify the **Commit ID** and **File/Folder** path to the remote manifest files.
 
 Click **Submit**. Your remote git repo is added as the source for **Manifests**.

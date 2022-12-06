@@ -67,16 +67,19 @@ If you run `kubectl api-resources` you should see a list of resources, and `kube
 
 1. In your Harness Service, in **Manifests**, click **Link Remote Manifests**.
 
-![](./static/using-open-shift-with-harness-kubernetes-00.png)
+   ![](./static/using-open-shift-with-harness-kubernetes-00.png)
 
-1. In **Remote Manifests**, in **Manifest Format**, click **OpenShift Template**.
-2. Enter the following settings and click **Submit**.
+2. In **Remote Manifests**, in **Manifest Format**, click **OpenShift Template**.
 
+3. Enter the following settings and click **Submit**.
 
+* **Source Repository:** Select the Source Repo Provider connection to your repo.
+* **Commit ID:** Select **Latest from Branch** or **Specific Commit ID**. Do one of the following:
+  * **Branch:** Enter the branch name, such as **master**.
+	* **Commit ID:** Enter the Git commit ID.
+* **Template File** **Path:** Enter the Openshift Template File Path. 
 
-|  |  |
-| --- | --- |
-| ![](./static/_openshift.png) | <br />&bull;&nbsp; **Source Repository:** Select the Source Repo Provider connection to your repo. <br /><br />&bull;&nbsp; **Commit ID:** Select **Latest from Branch** or **Specific Commit ID**. Do one of the following: <br /><br />&bull;&nbsp; **Branch:** Enter the branch name, such as **master**.<br /><br />&bull;&nbsp; + **Commit ID:** Enter the Git commit ID. <br />&bull;&nbsp; **Template File** **Path:** Enter the Openshift Template File Path. |
+  ![](./static/_openshift.png)
 
 ### Option: Define Service Variables
 
