@@ -56,7 +56,9 @@ Click on ‘Next’ and download the YAML file that contains information to crea
 Execute the command you just copied on your terminal. Ensure you are in the folder where this YAML file is present or specify the location of the YAML file. This YAML file creates the necessary configuration and environment required to set up your application and chaos access pods.
 ```
 ❯ kubectl apply -f <yaml-file-name.yaml>
+```
 
+```
 namespace/hce created
 serviceaccount/hce created
 deployment.apps/chaos-operator-ce created
@@ -103,7 +105,9 @@ Congratulations again. You have completed the second major step in running your 
 To configure an application, create a new namespace by executing the below command:
 ```
 ❯ kubectl create ns <namespace_name>
+```
 
+```
 NAME                           TYPE           CLUSTER-IP    EXTERNAL-IP     PORT(S)          AGE
 adservice                      ClusterIP      10.8.23.48    <none>          9555/TCP         92s
 cartservice                    ClusterIP      10.8.20.159   <none>          7070/TCP         103s
@@ -125,7 +129,9 @@ shippingservice                ClusterIP      10.8.28.118   <none>          5005
 Execute the following commands to set up your application inside this namespace. 
 ```
 ❯ kubectl apply -f https://raw.githubusercontent.com/Adarshkumar14/boutique-app-monitoring/main/manifest/app.yaml -n <namespace_name>
+```
 
+```
 NAME                                            READY   STATUS    RESTARTS   AGE
 adservice-56799c4499-pkvv9                      1/1     Running   0          4m25s
 cartservice-ccdf9995f-h4smn                     1/1     Running   0          4m37s
@@ -148,7 +154,9 @@ and
 
 ```
 ❯ kubectl apply -f https://raw.githubusercontent.com/Adarshkumar14/boutique-app-monitoring/main/manifest/monitoring.yaml -n <namespace_name>
+```
 
+```
 namespace/monitoring created
 serviceaccount/monitoring created
 deployment.apps/chaos-operator-ce created
@@ -192,7 +200,9 @@ You can check the services created in this specific namespace using the command:
 
 ```
 ❯ kubectl get svc -n <namespace_name>
+```
 
+```
 NAME                           TYPE           CLUSTER-IP    EXTERNAL-IP     PORT(S)          AGE
 adservice                      ClusterIP      10.8.23.48    <none>          9555/TCP         92s
 cartservice                    ClusterIP      10.8.20.159   <none>          7070/TCP         103s
@@ -215,7 +225,9 @@ You can check the pods created in this specific namespace using the command:
 
 ```
 ❯ kubectl get pods -n namespace
+```
 
+```
 NAME                                            READY   STATUS    RESTARTS   AGE
 adservice-56799c4499-pkvv9                      1/1     Running   0          4m25s
 cartservice-ccdf9995f-h4smn                     1/1     Running   0          4m37s
