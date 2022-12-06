@@ -6,13 +6,40 @@ keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial]
 
 # Build, test, and publish a Docker Image for a Java HTTP server application
 
-In this tutorial, you will build, test, and publish a Docker image for a Java HTTP server application, and then run a connectivity test using the published image.
+In this tutorial, you will create a Harness CI pipeline for a Java HTTP server application that will:
+1. Build and test the application.
+2. Publish a Docker image.
+3. Pull the published Docker image and run it as a [Background step](../../docs/continuous-integration/ci-technical-reference/background-step-settings.md).
+4. Run a connectivity test against the running application.
 
 :::tip
 
 For a comprehensive guide on application testing, Harness provides O'Reilly's **Full Stack Testing** book for free at https://harness.io/resources/oreilly-full-stack-testing.
 
 :::
+
+## Prerequisites
+
+### Docker Hub connector
+
+You will need a [Docker Hub](https://hub.docker.com/) connector. This connector will be used to publish the Java HTTP server image to your Docker Hub account, along with pulling Docker images used in pipeline steps.
+
+:::info
+
+Your connector needs an access token with **Read, Write, Delete** permissions.
+
+:::
+
+1. Expand the **Project Setup** menu on the left, then select **Connectors**.
+2. Click **+ New Connector**, and then select **Docker Registry**.
+3. In the **Name** field, enter `Docker Hub`, and then select **Continue**.
+4. In the **Docker Registry URL** field, enter `https://index.docker.io/v2/`.
+5. For **Provider Type**, select **DockerHub**.
+6. In the **Username** field, enter your Docker Hub username.
+7. In the **Password** field, select **Create or Select a Secret**. Follow the prompts to add your Docker Hub access token, then click **Continue**.
+8. At the next screen, select **Connect through Harness Platform**, then select **Save and Continue**.
+9. Harness will perform a validation test, then click **Finish**.
+10. In your list of connectors, note the ID of the connector that you just created. If you named the connecotr `Docker Hub`, the ID should be `Docker_Hub`.
 
 ## Create your pipeline
 
@@ -35,133 +62,58 @@ import TabItem from '@theme/TabItem';
    ```
 3. When you are prompted to select a repository, search for **jhttp**, select the repository that you forked in the earlier step, and then select **Configure Pipeline**. 
 4. Select **Starter Pipeline**, and then select **Create Pipeline**.
-You should now see the **Execution** tab for your pipeline.
 
-### Add a run tests step
+### Modify
 
-This step runs the application's unit tests.
+Switch from the **Visual** view to the **YAML** view, and then select **Edit YAML**.
 
-1. Select **Add Step**. The **Step Library** dialog appears. Select **Run Tests** from the list.
-2. From the **Language** menu, select **Java**.
-3. From the **Build Tool** menu, select **Maven**.
-4. In the **Build Arguments** field, enter `test`.
-5. In the **Packages** field, enter `io.harness.`.
-6. Under **Test Report Paths**, select **+ Add**, and then enter `**/*.xml` in the provided field.
-   
-   :::info
-
-   `**/*.xml` finds all JUnit XML formatted files that the tests generate.
-
-   :::
-
-7. In the **Post-Command** field, enter `mvn package -DskipTests`.
-8. Expand the **Additional Configuration** section, select the **Container Registry** field, and then either select an existing [Docker Hub](https://hub.docker.com/) connector or create one.
-9. In the **Image** field, enter`maven:3.5.2-jdk-8-alpine`.
-10. Ensure that **Run only selected tests** is selected.
-11. In the **Timeout** field, enter `30m`.
-12. Select **Apply Changes**.
-
-### Add a Docker build and publish step
-
-This step packages the application as a Docker image and publishes the image to Docker Hub.
-
-1. Select **Add Step**. In the **Step Library** dialog, select **Build and Push an image to Docker Registry** from the list.
-2. Select the **Docker Connector** field, and then either select an existing [Docker Hub](https://hub.docker.com/) connector or create one.
-
-   :::tip
-
-   Since your pipeline will publish the image to your Docker Hub account, your connector needs an access token with **Read, Write, Delete** permissions.
-
-   :::
-3. In the **Docker Repository** field, enter `your_user/jhttp`. Replace `your_user` with your Docker Hub username.
-4.  Under **Tags**, select **+ Add**. A new field appears. 
-
-5. Select the icon on the right side of the field, and then select **Expression**.
-   
-6. Start to type `<+pipeline.` in the field to see suggestions for all available expressions. Select `sequenceId`. The field should now contain `<+pipeline.sequenceId>`.
-
-   :::info
-
-   `<+pipeline.sequenceId>` is a value provided at pipeline execution time. This value matches the pipeline sequence number, which is unique to each pipeline execution.
-
-   This ensures that the resulting Docker image always has a unique tag.
-
-   :::
-7. Select **Apply Changes**.
-
-### Add an integration tests stage
-
-This separate pipeline stage pulls the Docker image that was published in the previous step, runs it as a [Background step](../../docs/continuous-integration/ci-technical-reference/background-step-settings.md), and verifies that the container started successfully.
-
-1. In the **Pipeline Studio**, select **Add Stage**, and then select **Build**.
-
- 2. In the **Stage Name** field, enter `Run Connectivity Test`, and then select **Set Up Stage**.
-
-   :::tip performance tip
-
-   The steps in this stage do not require code from the Git repository. To save time in each pipeline execution, disable **Clone Codebase**.
-
-   :::
-
-3. On the **Infrastructure** tab, select **Propagate from an existing stage**, select the previous stage from the drop-down menu, and then select **Continue**.
-
-### Add a background step
-
-This background step runs the Docker image that was published in the previous stage.
-
-1. Select **Add Step**. In the **Step Library** dialog, select **Background** from the list.
-2. In the **Name** field, enter `Run Java HTTP Server`.
-3. Expand the **Additional Configuration** section, select the **Container Registry** field, and then select your Docker Hub connector.
-4. In the **Image** field, etner `your_user/jhttp:<+pipeline.sequenceId>`. Replace `your_user` with your Docker Hub username.
-5. Under **Port Bindings**, select **+ Add**, and then enter `8888` in the **Host Port** and **Container Port** fields.
-
-   :::info
-
-   This exposes port `8888` from the running container to the host operating system. This allows the connection test step to reach the application at `localhost:8888`.
-
-   :::
-
-6. Select **Apply Changes**.
-
-### Add a connection test step
-
-This step runs a connection test from the host operating system to verify that the application started successfully.
-
-1. Select **Add Step**. On the **Step Library** dialog, select **Run** from the list.
-2. In the **Name** field, enter `Test Connection to Java HTTP Server` .
-3. In the **Command** field, enter the following command:
-   ```
-   until curl --max-time 1 http://localhost:8888; do
-     sleep 2;
-   done
-   ```
-   :::info
-
-   This simple connectivity test attempts to reach the service every two seconds until it is successful.
-
-   :::
-
-4. Select **Apply Changes**, and then select **Save**.
-
-   :::tip
-
-   With the application up and running, many types of tests are possible: integration, security, performance, and more.
-
-   :::
-
-### Optional YAML configuration
-
-If you switch from **Visual** to **YAML** in the Pipeline Studio, your pipeline should look similar to this:
-
-<details><summary>Click to expand</summary>
-<p>
+You will see your starter pipeilne was created with a single stage, it should look similar to this:
 
 ```yaml
 pipeline:
   name: Build jhttp
-  identifier: Build_jhttp_XYZ123
-  projectIdentifier: Default_Project_XYZ123
+  identifier: Build_jhttp
   orgIdentifier: default
+  // highlight-start
+  stages:
+    - stage:
+        name: Build
+        identifier: Build
+        type: CI
+        spec:
+          cloneCodebase: true
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Echo Welcome Message
+                  identifier: Run
+                  spec:
+                    shell: Sh
+                    command: echo "Welcome to Harness CI"
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+  // highlight-end
+  properties:
+    ci:
+      codebase:
+        connectorRef: account.Github_OAuth
+        repoName: your_user/jhttp
+        build: <+input>
+```
+
+Replace the sample `stages` section with the following `variables` and `stages` sections:
+
+```yaml
+  variables:
+    - name: DOCKERHUB_USERNAME
+      type: String
+      description: Your Docker Hub username
+      value: <+input>
   stages:
     - stage:
         name: Build
@@ -176,7 +128,7 @@ pipeline:
                   name: Run Tests
                   identifier: RunTests
                   spec:
-                    connectorRef: docker_hub
+                    connectorRef: Docker_Hub
                     image: maven:3.5.2-jdk-8-alpine
                     language: Java
                     buildTool: Maven
@@ -195,8 +147,8 @@ pipeline:
                   name: Build and Push an image to Docker Registry
                   identifier: BuildandPushanimagetoDockerRegistry
                   spec:
-                    connectorRef: docker_hub
-                    repo: your_user/jhttp
+                    connectorRef: Docker_Hub
+                    repo: <+pipeline.variables.DOCKERHUB_USERNAME>/jhttp
                     tags:
                       - <+pipeline.sequenceId>
           platform:
@@ -225,8 +177,8 @@ pipeline:
                   name: Run Java HTTP Server
                   identifier: Run_Java_HTTP_Server
                   spec:
-                    connectorRef: docker_hub
-                    image: your_user/jhttp:<+pipeline.sequenceId>
+                    connectorRef: Docker_Hub
+                    image: <+pipeline.variables.DOCKERHUB_USERNAME>/jhttp:<+pipeline.sequenceId>
                     shell: Sh
                     portBindings:
                       "8888": "8888"
@@ -240,20 +192,16 @@ pipeline:
                       until curl --max-time 1 http://localhost:8888; do
                         sleep 2;
                       done
-  properties:
-    ci:
-      codebase:
-        connectorRef: account.Github_OAuth_XYZ123
-        repoName: your_user/jhttp
-        build: <+input>
 ```
 
-</p>
-</details>
+Click the **Save** button in the YAML editor.
 
 ## Run your pipeline
 
 1. In the **Pipeline Studio**, select **Run**.
+2. Enter your Docker Hub username in the `DOCKERHUB_USERNAME` field.
 2. Select **Git Branch** as the **Build Type**, and then enter `main` in the **Branch Name** field.
 3. Select **Run Pipeline**.
-4. Observe each step of the pipeline execution. When the first stage completes, test results appear in the **Tests** tab. When the second stage completes, you should see the successful `curl` command in the final step.
+4. Observe each step of the pipeline execution. When the first stage completes, test results appear in the **Tests** tab.
+
+   When the second stage completes, you should see the successful `curl` command in the **Test Connection to Java HTTP Server** step.
