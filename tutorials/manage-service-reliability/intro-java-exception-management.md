@@ -18,7 +18,7 @@ According to [Oracle Java Documentation](https://docs.oracle.com/javase/tutorial
 
 Following are the types of Java exceptions:
 
-- **Uncaught exception** - Exceptions that the compiler does not catch. Instead, the built-in exception handler in Java automatically catches and handles them.
+- **Uncaught exceptions** - Exceptions that the compiler does not catch. Instead, the built-in exception handler in Java automatically catches and handles them.
 
 - **Caught exceptions** - Exceptions that are handled in code via the `try` and `catch` keywords.
 
