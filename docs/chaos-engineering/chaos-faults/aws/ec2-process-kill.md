@@ -13,7 +13,7 @@ title: EC2 Process Kill
 
 ## Uses
 <details>
-<summary>View the uses of the experiment</summary>
+<summary>View the uses of the fault</summary>
 <div>
 Disrupt the application critical processes such as databases or message queues running in the ec2 instance by killing their underlying processes or threads.
 </div>
@@ -57,7 +57,7 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
 
 ## Experiment tunables
 <details>
-    <summary>Check the Experiment Tunables</summary>
+    <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>
     <table>
       <tr>
@@ -101,7 +101,7 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
     </table>
 </details>
 
-## Experiment Examples
+## Fault Examples
 
 ### Common Experiment Tunables
 Refer the [common attributes](../common-tunables-for-all-experiments) to tune the common tunables for all the experiments.

@@ -13,7 +13,7 @@ title: VMware Network Latency
 
 ## Uses
 <details>
-<summary>View the uses of the experiment</summary>
+<summary>View the uses of the fault</summary>
 <div>
 The experiment causes network degradation without the VM being marked unhealthy/unworthy of traffic. The idea of this experiment is to simulate issues within your vm network OR microservice communication across services in different hosts etc.
 
@@ -53,7 +53,7 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
 
 ## Experiment Tunables
 <details>
-    <summary>Check the Experiment Tunables</summary>
+    <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>
     <table>
       <tr>
@@ -155,7 +155,7 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
      </table>
 </details>
 
-## Experiment Examples
+## Fault Examples
 
 ### Common Experiment Tunables
 Refer the [common attributes](../common-tunables-for-all-experiments) to tune the common tunables for all the experiments.
