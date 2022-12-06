@@ -11,14 +11,15 @@ helpdocs_is_published: true
 This guide outlines how to configure and execute AMI (Amazon Machine Image) deployments—using Blue/Green and Canary strategies—via the Spotinst Elastigroup management platform. 
 
 Currently, Harness integrates with Spotinst only for deployments to AWS (Amazon Web Services) via Elastigroups.
-### Before You Begin
+
+## Before You Begin
 
 * [AMI Basic Deployment](ami-deployment.md)
 * [AMI Blue/Green Deployment](ami-blue-green.md)
 * [AMI Canary Deployment](ami-canary.md)
 
 
-### Overview
+## Overview
 
 Harness can integrate AMI deployments with Spotinst's [Elastigroup](https://spotinst.com/products/elastigroup/) cloud-cost optimization platform. Elastigroup predicts the availability of AWS' discounted excess capacity (Spot Instances), and automatically reserves new capacity to maintain your applications' availability at reduced cost.
 
@@ -31,12 +32,12 @@ The deployed instances in your corresponding Elastigroup will appear in the Spot
 ![](./static/ami-elastigroup-79.png)
 
 
-### Prerequisites: AWS, Spotinst, and Harness Resources
+## Prerequisites: AWS, Spotinst, and Harness Resources
 
 Before creating your Harness [Infrastructure Definition](#infrastructure_definition) and [Blue/Green](#blue_green) or [Canary Workflows](#canary), you will need to set up the following resources.
 
 Several of these resources are also prerequisites for Harness AMI [Basic](ami-deployment.md), [Blue/Green](ami-blue-green.md), or [Canary](ami-canary.md) deployments that do not rely on Elastigroups. To minimize duplication, we link out to the corresponding deployment guides for some details.
-#### AWS Prerequisites
+### AWS Prerequisites
 
 For an AMI Canary deployment, you must set up the following resources up within Amazon Web Services:
 
@@ -49,7 +50,7 @@ An AMI Blue/Green deployment has these further requirements:
 * A Load Balancer with listeners for both your Target Groups' ports.
 
 
-#### Spotinst Prerequisites
+### Spotinst Prerequisites
 
 Within Spotinst, you must configure at least one Elastigroup cluster that matches your AWS configuration's AMI, VPC (virtual private cloud), Load Balancer(s), security groups, availability zones, and allowed instance types.
 
@@ -58,7 +59,7 @@ Within Spotinst, you must configure at least one Elastigroup cluster that matche
 For details, see [Spotinst tutorials](https://docs.spot.io/elastigroup/tutorials/).
 
 
-#### Harness Prerequisites
+### Harness Prerequisites
 
 Within Harness, you'll need to set up the following resources. (Some of these are covered in detail in Harness' [AMI Basic Deployment](ami-deployment.md#basic-deploy) Guide. Spotinst-specific setup is covered in the sections below.)
 
@@ -72,7 +73,7 @@ Within Harness, you'll need to set up the following resources. (Some of these ar
 For Blue/Green Deployments, the Infrastructure Definition will also specify Stage and Prod Target Groups. You import this configuration from your Elastigroup, as outlined below in [Define the Infrastructure](#infrastructure_definition).At deploy time, Harness will override much of the above base configuration with the instance and capacity targets that you specify in your Workflow.
 
 
-##### Harness Service
+#### Harness Service
 
 Set up your Harness Service as we document for a Harness AMI Basic Deployment in [AMI Service Setup](ami-deployment.md#ami-service-setup).
 
@@ -81,12 +82,12 @@ After you create your Service, you have the option of using the [User Data](ami-
 You can also specify [Config Variables](https://docs.harness.io/article/eb3kfl8uls-service-configuration#config_variables), and then reference them in your [Infrastructure Definitions](#infrastructure_definition).
 
 
-### Set Up Cloud Providers
+## Set Up Cloud Providers
 
 Although most Harness deployments rely on a single Cloud Provider, Elastigroup deployments require both a Spotinst Cloud Provider and an AWS Cloud Provider. (You will need to reference both when you create your [Infrastructure Definition](#infrastructure_definition).)
 
 
-#### AWS Cloud Provider
+### AWS Cloud Provider
 
 Follow the instructions in [AWS Cloud Provider Setup](ami-deployment.md#aws-cloud-provider-setup) to create a Cloud Provider that references the Delegate you created to manage your AWS credentials. In this example, select the **Assume IAM Role on Delegate** option, and reference your Delegate via **Delegate Tag**.
 
@@ -95,7 +96,7 @@ The Delegate must be in the same AWS VPC and subnet that you plan to use for you
 ![](./static/ami-elastigroup-81.png)
 
 
-#### Spotinst Cloud Provider
+### Spotinst Cloud Provider
 
 To set up the Spotinst Cloud Provider, follow the steps in [Spotinst Cloud Provider](https://docs.harness.io/article/whwnovprrb-cloud-providers).
 
@@ -107,7 +108,7 @@ Keep the Spotinst Console open to [copy its configuration](#add_elastigroup_conf
 The [Infrastructure Definition](https://docs.harness.io/article/v3l3wqovbe-infrastructure-definitions) is where you specify the target infrastructure for your deployments. You'll configure your Infrastructure Definition for Elastigroup in this section (working in both Harness Manager and the Spotinst Console). You'll then select this Infrastructure Definition as your target deployment environment when you later create a [Blue/Green](#blue_green) or [Canary](#canary) Workflow.
 
 
-#### Add the Infrastructure Definition
+### Add the Infrastructure Definition
 
 1. Within your Harness Application, select an existing **Environment**, or create a new one.
 2. In the Environment's **Infrastructure Definition** section, click **Add Infrastructure Definition**.
@@ -124,7 +125,7 @@ If you have configured an [Infrastructure Provisioner](https://docs.harness.io/a
 Next, you'll complete the Infrastructure Definition by copying your Elastigroup configuration from Spotinst and pasting it into this dialog.
 
 
-#### Add Elastigroup Configuration
+### Add Elastigroup Configuration
 
 To populate the **Elastigroup Configuration** field with your configuration JSON from Spotinst:
 
@@ -144,14 +145,14 @@ To populate the **Elastigroup Configuration** field with your configuration JSON
 
 You can now proceed to create a [Blue/Green](#blue_green) or [Canary](#canary) Workflow. The next few sections cover additional Infrastructure Definition details and options.
 
-#### Elastigroup Configuration Overrides
+### Elastigroup Configuration Overrides
 
 When you deploy your Workflows, Harness will override much of the Elastigroup Configuration JSON that you imported. Harness will replace the configured `imageId` element with the actual AMI artifact you choose to deploy in the Workflow.
 
 In Blue/Green deployments, Harness will also override the `loadBalancers` element, substituting the Load Balancers that you specify in the Workflow. Even if the `loadBalancers` element were absent from the **Elastigroup Configuration** field, you could still deploy a properly configured Workflow using this Infrastructure Definition.
 
 
-#### Service Variables in Elastigroup Configuration
+### Service Variables in Elastigroup Configuration
 
 You also have the option to use Harness variables within your Infrastructure Definition's **Elastigroup Configuration** field.
 
@@ -160,7 +161,7 @@ Infrastructure Definitions do not currently support auto-fill for expressions. S
 Then insert them in the **Elastigroup Configuration** JSON using the format above. For further details, see [Add Service Config Variables](https://docs.harness.io/article/q78p7rpx9u-add-service-level-config-variables).
 
 
-### Basic Workflow and Deployment
+## Basic Workflow and Deployment
 
 Assuming that you've set up all [prerequisites](#prerequisites), the following sections outline how to create a Basic Workflow and deploy your AMI. To avoid duplication, they focus on Elastigroup-specific configuration and deployment. For background and details, please refer to the following [AMI Basic Deployment Guide](ami-deployment.md#basic-deploy) sections:
 
@@ -179,7 +180,8 @@ Harness preconfigures only the first two steps. Below, we outline those steps' d
 The remaining two steps are placeholders, to which you can add integrations and commands. For details on adding **Verify Staging** integrations, see [Continuous Verification](https://docs.harness.io/article/myw4h9u05l-verification-providers-list).
 
 Your Workflows can use Harness' built-in `${artifact.metadata.tag}` variable to refer to tagged AMIs. For example, if an AMI has an AWS tag named `harness`, you can refer to that AMI within Harness as `${artifact.metadata.harness}`. For details about this convention, see [Variables and Expressions in Harness](https://docs.harness.io/article/9dvxcegm90-variables#variables_list). This can be useful in [triggering Workflows and Pipelines](https://docs.harness.io/article/xerirloz9a-add-a-trigger-2#add_a_trigger).
-#### Create a Basic Workflow
+
+### Create a Basic Workflow
 
 To create a Basic Workflow for AMI Elastigroup deployment:
 
@@ -195,7 +197,7 @@ To create a Basic Workflow for AMI Elastigroup deployment:
 Next, we will examine options for configuring the Basic deployment's first two steps.
 
 
-#### Step 1: Elastigroup Setup
+### Step 1: Elastigroup Setup
 
 In Step 1, select **Elastigroup Setup** to open a dialog where you can configure the Elastigroup that Harness will create for the AMI you are deploying.
 
@@ -227,7 +229,7 @@ This dialog's instance settings correspond directly to the resulting Elastigroup
 ![](./static/ami-elastigroup-94.png)
 
 
-##### Elastigroup Setup in Deployment
+#### Elastigroup Setup in Deployment
 
 Let's look at an example where the Elastigroup Setup—configured as shown above—is deployed. Here is the step in the Harness Deployments page:
 
@@ -243,7 +245,7 @@ Created Elastigroup with ID: [sig-1da775dc]
 Completed setup for Spotinst
 ```
 
-#### Step 2: Elastigroup Deploy
+### Step 2: Elastigroup Deploy
 
 In Step 2, select **Elastigroup Deploy** to open a dialog where you can define how many instances to deploy in the Elastigroup, as either a count or a percentage:
 
@@ -258,7 +260,7 @@ For this example, we'll use a **Count** of **2**:
 
 ![](./static/ami-elastigroup-97.png)
 
-##### Elastigroup Deploy Step in Deployment
+#### Elastigroup Deploy Step in Deployment
 
 Using the **Elastigroup Deploy** configuration shown above—requesting a modest **Desired Instances** count of **2**—here is the **Deploy Service** step in the Harness Deployments page:
 
@@ -279,16 +281,16 @@ Desired instances: [2], Total instances: [2], Healthy instances: [2] for Elastig
 Elastigroup: [sig-1da775dc] reached steady state
 ```
 
-#### Elastigroup Rollback Steps
+### Elastigroup Rollback Steps
 
-By default, each Elastigroup Basic Workflow includes a **Rollback Steps** section, containing an **Elastigroup****Rollback** step. There's nothing to configure in this step.
+By default, each Elastigroup Basic Workflow includes a **Rollback Steps** section, containing an **Elastigroup Rollback** step. There's nothing to configure in this step.
 
 ![](./static/ami-elastigroup-99.png)
 
 To see how the default behavior works, see the [Canary > Rollback Steps](#rollback_1) section.
 
 
-#### Basic Workflow Deployment
+### Basic Workflow Deployment
 
 Now that the setup is complete, you can click **Deploy** in the Workflow to deploy the artifact to your Elastigroup.
 
@@ -523,7 +525,7 @@ In your Application, click **Workflows** > **Add Workflow**. The **Workflow** di
 4. Select the **Infrastructure Definition** you [configured earlier](#add_infra_def) for AMI Elastigroup deployments. The dialog will now look something like this:![](./static/ami-elastigroup-119.png)
 5. Click **Submit**. The new Blue/Green Workflow is preconfigured.![](./static/ami-elastigroup-120.png)
 
-Next, we will examine options for configuring the Blue/Green deployment's **Elastigroup****Setup**, **Deploy Elastigroup**, and **Route Update** steps.
+Next, we will examine options for configuring the Blue/Green deployment's **Elastigroup Setup**, **Deploy Elastigroup**, and **Route Update** steps.
 
 
 #### Step 1: Elastigroup Setup
@@ -588,7 +590,7 @@ At this point, Harness deploys the new Elastigroup—containing instances create
 
 ![](./static/ami-elastigroup-126.png)
 
-Using the 100% **Desired Instances** configuration shown above, here is the **Elastigroup****Deploy** step in the Harness Deployments page:
+Using the 100% **Desired Instances** configuration shown above, here is the **Elastigroup Deploy** step in the Harness Deployments page:
 
 ![](./static/ami-elastigroup-127.png)
 
@@ -732,15 +734,15 @@ In this guide's remaining sections, we will expand only the Workflow's **Deploym
 Here are the phases and steps we'll build:
 
 1. [Phase 1: Canary](#phase_1)
-* [Elastigroup Setup](#setup_asg): Specify how many EC2 instances to launch in the Elastigroup that Harness deploys at the end of the Workflow. This step also specifies the steady state timeout.
-* [Deploy Service](#upgrade_asg_1): Specify the percentage of instances to deploy in this phase. When you add additional phases, each phase automatically includes a Deploy Service step, which you must configure with the count or percentage of instances you want deployed in that phase.
-* [Verify Staging](#verify_service_1): This is a stub, while Harness adds support for [Verification Providers](https://docs.harness.io/article/myw4h9u05l-verification-providers-list) in Elastigroup Canary deployments.
-* [Rollback Steps](#rollback_1): Roll back the ASG if deployment fails. (Rollback steps are automatically added here, and to each of the remaining phases. This guide covers them only in this first phase.)
-1. [Phase 2: Canary](#phase_2)
-* [Deploy Service](#upgrade_asg_2): Upgrade the Elastigroup to a higher percentage of instances.
-* [Verify Staging](#verify_service_2): This example uses a second round of CloudWatch tests.
-1. [Phase 3: Primary](#phase_3)
-* [Deploy Service](#upgrade_asg_3): Upgrade the Elastigroup to its full target capacity.
+   * [Elastigroup Setup](#setup_asg): Specify how many EC2 instances to launch in the Elastigroup that Harness deploys at the end of the Workflow. This step also specifies the steady state timeout.
+   * [Deploy Service](#upgrade_asg_1): Specify the percentage of instances to deploy in this phase. When you add additional phases, each phase automatically includes a Deploy Service step, which you must configure with the count or percentage of instances you want deployed in that phase.
+   * [Verify Staging](#verify_service_1): This is a stub, while Harness adds support for [Verification Providers](https://docs.harness.io/article/myw4h9u05l-verification-providers-list) in Elastigroup Canary deployments.
+   * [Rollback Steps](#rollback_1): Roll back the ASG if deployment fails. (Rollback steps are automatically added here, and to each of the remaining phases. This guide covers them only in this first phase.)
+2. [Phase 2: Canary](#phase_2)
+   * [Deploy Service](#upgrade_asg_2): Upgrade the Elastigroup to a higher percentage of instances.
+   * [Verify Staging](#verify_service_2): This example uses a second round of CloudWatch tests.
+3. [Phase 3: Primary](#phase_3)
+   * [Deploy Service](#upgrade_asg_3): Upgrade the Elastigroup to its full target capacity.
 
 Ready to deploy? Let's configure and execute this sample Workflow's three Deployment Phases.
 
@@ -803,7 +805,7 @@ In this example, we've selected **Percent** units, and **25** percent of the **
 For general information on customizing this dialog's settings, and on how they correspond to AWS parameters, see the corresponding [AMI Basic Workflow section](ami-deployment.md#upgrade-asg).
 ##### Elastigroup Deploy Step in Deployment
 
-Using the **Elastigroup Setup** configuration shown above, here is the **Elastigroup****Deploy** step in the Harness Deployments page:
+Using the **Elastigroup Setup** configuration shown above, here is the **Elastigroup Deploy** step in the Harness Deployments page:
 
 ![](./static/ami-elastigroup-144.png)
 
@@ -837,7 +839,7 @@ For an example of how a **Verify Staging** step appears in the Harness Deploymen
 
 #### Rollback Steps
 
-By default, each Elastigroup Canary phase includes a **Rollback Steps** section, containing an **Elastigroup****Rollback** step. There's nothing to configure in this step.
+By default, each Elastigroup Canary phase includes a **Rollback Steps** section, containing an **Elastigroup Rollback** step. There's nothing to configure in this step.
 
 ![](./static/ami-elastigroup-145.png)
 
@@ -895,9 +897,9 @@ In this example Workflow, we'll add a second Canary phase, in which we'll define
 
 #### Step 1: Deploy Service
 
-Since we already [set up the Elastigroup](#setup_asg) in Phase 1, this new phase's Step 1 defaults directly to **Elastigroup****Deploy**.
+Since we already [set up the Elastigroup](#setup_asg) in Phase 1, this new phase's Step 1 defaults directly to **Elastigroup Deploy**.
 
-Click the **Elastigroup Deploy** link to open this dialog, where we're again using **Percent** scaling, but doubling the percentage to **50****Percent** of the Elastigroup's **Target Instances**, before clicking **Submit**:
+Click the **Elastigroup Deploy** link to open this dialog, where we're again using **Percent** scaling, but doubling the percentage to **50 Percent** of the Elastigroup's **Target Instances**, before clicking **Submit**:
 
 ![](./static/ami-elastigroup-148.png)
 

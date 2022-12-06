@@ -74,19 +74,33 @@ To fill out the **Infrastructure Definition** dialog's lower section:
 
 1. In **Cloud Provider**, select the AWS Cloud Provider you added in [Connect to AWS for Lambda Deployments](1-delegate-and-connectors-for-lambda.md).
 
-After your **Cloud Provider** selection, the remaining drop-down lists take a few seconds to populate. Later, some fields will again take a few seconds to repopulate based on your selections in other fields.1. In **IAM Role**, select [IAM role](https://docs.aws.amazon.com/lambda/latest/dg/lambda-intro-execution-role.html) that AWS Lambda assumes when it executes your function.
-2. In **Region**, select the AWS region where your function will be used.
-3. In **VPC**, to connect your function to a VPC to access private resources during execution, select the VPC. If you do not select a VPC, then the function executes in "*non-VPC*" mode.
+:::note
+After your **Cloud Provider** selection, the remaining drop-down lists take a few seconds to populate. Later, some fields will again take a few seconds to repopulate based on your selections in other fields.
+:::
+   
+2. In **IAM Role**, select [IAM role](https://docs.aws.amazon.com/lambda/latest/dg/lambda-intro-execution-role.html) that AWS Lambda assumes when it executes your function.
+3. In **Region**, select the AWS region where your function will be used.
+4. In **VPC**, to connect your function to a VPC to access private resources during execution, select the VPC. If you do not select a VPC, then the function executes in "*non-VPC*" mode.
 
-Lambda runs your function code securely within a VPC by default. However, to enable your Lambda function to access resources inside your private VPC, you must provide additional, VPC-specific configuration information that includes private subnet IDs and security group IDs. AWS Lambda uses this information to set up elastic network interfaces (ENIs) that enable your function to connect securely to other resources within your private VPC. For more information and guidelines, see [Configuring a Lambda Function to Access Resources in an Amazon VPC](https://docs.aws.amazon.com/lambda/latest/dg/vpc.html) or [Configuring a Lambda function to access resources in a VPC](https://docs.aws.amazon.com/lambda/latest/dg/configuration-vpc.html) from AWS.1. In **Subnets**, select the subnet IDs for the subnets (within the VPC) where the Lambda function will access resources. AWS recommends that you choose at least two subnets for Lambda to run your functions in high availability mode.
-2. In **Security Groups**, select the security group ID(s) for the Lambda function. When you set a VPC for your function to access, your Lambda function loses default Internet access. If you require external Internet access for your function, make sure that your security group allows outbound connections, and that your VPC has a NAT gateway.
-3. Enable **Scope to Specific Services**, and use the adjacent drop-down to select the Harness Lambda Service you created in [Add Lambda Functions](2-service-for-lambda.md).
+:::note
+Lambda runs your function code securely within a VPC by default. However, to enable your Lambda function to access resources inside your private VPC, you must provide additional, VPC-specific configuration information that includes private subnet IDs and security group IDs. AWS Lambda uses this information to set up elastic network interfaces (ENIs) that enable your function to connect securely to other resources within your private VPC. 
 
-Scoping is a recommended step, to make this Infrastructure Definition available to any Workflow or Phase that uses your Lambda Service.When you are done, the dialog will look something like this:
+For more information and guidelines, see [Configuring a Lambda Function to Access Resources in an Amazon VPC](https://docs.aws.amazon.com/lambda/latest/dg/vpc.html) or [Configuring a Lambda function to access resources in a VPC](https://docs.aws.amazon.com/lambda/latest/dg/configuration-vpc.html) from AWS.
+:::
+   
+5. In **Subnets**, select the subnet IDs for the subnets (within the VPC) where the Lambda function will access resources. AWS recommends that you choose at least two subnets for Lambda to run your functions in high availability mode.
+6. In **Security Groups**, select the security group ID(s) for the Lambda function. When you set a VPC for your function to access, your Lambda function loses default Internet access. If you require external Internet access for your function, make sure that your security group allows outbound connections, and that your VPC has a NAT gateway.
+7. Enable **Scope to Specific Services**, and use the adjacent drop-down to select the Harness Lambda Service you created in [Add Lambda Functions](2-service-for-lambda.md).
 
-![](./static/3-lambda-environments-27.png)
+:::note
+Scoping is a recommended step, to make this Infrastructure Definition available to any Workflow or Phase that uses your Lambda Service.
+:::
 
-1. Click **Submit**. The new Infrastructure Definition is added to the Harness environment.
+   When you are done, the dialog will look something like this:
+
+   ![](./static/3-lambda-environments-27.png)
+
+8. Click **Submit**. The new Infrastructure Definition is added to the Harness environment.
 
 ### Option: Provision the Lambda Infrastructure
 

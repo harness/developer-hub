@@ -41,11 +41,8 @@ The following table lists the ECS components and where they are set up in Harnes
 | ECS Task | Instance of a Task Definition. Multiple Tasks can be created by one Task Definition, as demand requires. |  |
 | ECS Service | Defines the minimum and maximum Tasks from one Task Definition to run at any given time, autoscaling, and load balancing. | This is specified in the Harness Service, in Service Specification. |
 | ECS Cluster | A Cluster is a group of ECS Container Instances where you run your service tasks in order for them to be accessible. The container management service handles the cluster across one or more ECS Container Instance(s), including the scheduling, maintaining, and scaling requests to these instances. | ECS Clusters are selected in two Harness components:* The AWS Cloud Provider, via the IAM role for Delegate option.
-* Harness application Environment, where you select the AWS Cloud provider, and your ECS cluster name.
- |
-| Launch Types | There are two types:* Fargate - Run containers without having to manage servers or clusters of Amazon EC2 instances.
-* EC2 - Run containers on a cluster of Amazon EC2 instances that you manage.
- | You specify the launch type to use when adding a Service Infrastructure to a Harness Environment. |
+* Harness application Environment, where you select the AWS Cloud provider, and your ECS cluster name. |
+| Launch Types | There are two types: <br /><br />&bull;&nbsp; Fargate - Run containers without having to manage servers or clusters of Amazon EC2 instances.<br /> <br />&bull;&nbsp; EC2 - Run containers on a cluster of Amazon EC2 instances that you manage. | You specify the launch type to use when adding a Service Infrastructure to a Harness Environment. |
 | Replica Scheduling Strategy | Places and maintains the desired number of tasks across your cluster. | This is specified in the Harness Service, in Service Specification. |
 | Daemon Scheduling Strategy | As of July 2018, ECS has a daemon scheduling strategy that deploys exactly one task on each active container instance that meets all of the task placement constraints that you specify in your cluster.With a daemon strategy, a task is deployed onto each instance in a cluster to provide common supporting functionality. | This is specified in the Harness Service, in Service Specification. |
 | awsvpc Network Mode | Provides each task with its own elastic network interface. Fargate task definitions require the awsvpc network mode. |  |
@@ -74,10 +71,10 @@ This guide takes you through setting up ECS Deployment using the following steps
 	4. Service Discovery.
 5. Add an Environment and ECS Service Infrastructure.
 6. Add a Workflow:
-* Canary Deployment with Replica Scheduling.
-* Basic Deployment with Daemon Scheduling.
-* Blue/Green Workflow.
-1. Deploy an ECS Workflow.
+   * Canary Deployment with Replica Scheduling.
+   * Basic Deployment with Daemon Scheduling.
+   * Blue/Green Workflow.
+7. Deploy an ECS Workflow.
 
 ### Rollbacks
 

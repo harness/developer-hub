@@ -57,8 +57,7 @@ aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE
 If you want to specify the name of a specific stack, do the following:
 
 1. In **AWS Cloud Provider**, select the AWS Cloud Provider with credentials to delete stacks. Typically, this is the same AWS Cloud Provider you selected in the **CloudFormation Create Stack** step that created the stack you want to delete.  
-  
-For details on permissions, see [Set Up Your Harness Account for CloudFormation](cloud-formation-account-setup.md).
+   For details on permissions, see [Set Up Your Harness Account for CloudFormation](cloud-formation-account-setup.md).
 2. In **Region**, select the same region you selected in the **CloudFormation Create Stack** step that created the stack you want to delete.
 3. Select **Use Custom Stack Name** and enter the name of the stack to delete in **Custom Stack Name**.
 4. Click **Submit**.

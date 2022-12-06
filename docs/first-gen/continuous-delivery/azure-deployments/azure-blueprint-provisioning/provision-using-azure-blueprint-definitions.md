@@ -12,16 +12,6 @@ You can provision Azure resources using Blueprint definitions in your Harness Wo
 
 Harness takes a Blueprint definition [you set up as a Harness Infrastructure Provisioner](add-azure-blueprints-to-harness.md), publishes it using the version specified in assign.json file and creates the assignment.
 
-In this topic:
-
-* [Before You Begin](provision-using-azure-blueprint-definitions.md#before-you-begin)
-* [Visual Summary](provision-using-azure-blueprint-definitions.md#visual-summary)
-* [Limitations](provision-using-azure-blueprint-definitions.md#limitations)
-* [Step 1: Add the Infrastructure Provisioner](provision-using-azure-blueprint-definitions.md#step-1-add-the-infrastructure-provisioner)
-* [Step 2: Add ARM/Blueprint Create Resource Step to Workflow](provision-using-azure-blueprint-definitions.md#step-2-add-arm-blueprint-create-resource-step-to-workflow)
-* [Step 3: Deploy the Workflow](provision-using-azure-blueprint-definitions.md#step-3-deploy-the-workflow)
-* [Configure As Code](provision-using-azure-blueprint-definitions.md#configure-as-code)
-
 ### Before You Begin
 
 * [Set Up Your Harness Account for Azure Blueprint](set-up-harness-for-azure-blueprint.md)
@@ -32,6 +22,11 @@ In this topic:
 
 Here's a short video showing how to provision Azure infrastructure using Blueprint definitions and Harness:
 
+<!-- Video:
+https://harness-1.wistia.com/medias/rpv5vwzpxz-->
+<docvideo src="https://www.youtube.com/embed/cGjZCoz3HrY?feature=oembed" />
+
+
 You can use Azure Blueprint definitions in Harness to provision any resources.
 
 1. **ARM Infrastructure Provisioner**: add your Azure Blueprint definition as a Harness Infrastructure Provisioner.
@@ -40,7 +35,9 @@ You can use Azure Blueprint definitions in Harness to provision any resources.
 
 When you run the Workflow, it can provision the resources without deploying anything else.
 
-![](./static/provision-using-azure-blueprint-definitions-00.png)### Limitations
+![](./static/provision-using-azure-blueprint-definitions-00.png)
+
+### Limitations
 
 * See [Azure Resource Management (ARM) How-tos](../azure-arm/azure-arm-and-blueprint-how-tos.md).
 * Unlike other provisioners supported by Harness, Azure Blueprint definitions cannot be added to Infrastructure Definitions. Blueprint definitions cannot be used as deployment targets in Harness Workflows. You can simply use them in a Workflow to provision resources.  

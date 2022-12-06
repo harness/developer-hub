@@ -71,13 +71,6 @@ The Harness Azure Web Application Service type supports the following repos:
 
 For example, here are the Docker Hub settings in an Azure Web App:
 
-Container Settings is deprecated and will be removed in March of 2021. The Deployment Center replaces it. Both options are below.
-
-|  |  |
-| --- | --- |
-| **Container Settings** | **Deployment Center** |
-|  |  |
-
 Here's the Harness [Docker Registry Artifact Server](https://docs.harness.io/article/tdj2ghkqb0-add-docker-registry-artifact-servers):
 
 ![](./static/connect-to-azure-for-web-app-deployments-22.png)

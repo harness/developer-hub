@@ -47,28 +47,49 @@ The ECS Task Definitions settings appear.
 3. In **Commit ID** , select **Latest from Branch** or **Specific Commit ID**.
 4. In **Branch/Commit ID** (required), enter the branch or commit ID for the remote repo.
 5. In **File Folder Path to Task Definition**, enter the repo folder path to the task definition.  
-  
-For example, if the repo you set up in your Source Repo Provider is **https://github.com/aws-samples/aws-containers-task-definitions**, and the folder containing your task definition is **nginx**, you would enter **nginx**.
+   For example, if the repo you set up in your Source Repo Provider is **https://github.com/aws-samples/aws-containers-task-definitions**, and the folder containing your task definition is **nginx**, you would enter **nginx**.
 6. If you want to enter an inline service definition, select **Use Inline Service Definition**.
 7. To link to a remote service definition in the repo configured in your **Source Repository**, in **File Folder Path to Service Definition**, enter the repo folder path to the service definition.
-8. Clic **Submit**.
+8. Click **Submit**.
 
 ### Review: Task Definition Placeholders
 
 The ECS task definition JSON uses the following placeholders.
 
+* [`${DOCKER_IMAGE_NAME}`](#docker_image_name)
+* [`${CONTAINER_NAME}`](#container_name)
+* [`${EXECUTION_ROLE}`](#execution_role)
+
 Ensure that the required placeholders `${DOCKER_IMAGE_NAME}` and `${EXECUTION_ROLE}` (for Fargate) are used.
 
-|  |  |
-| --- | --- |
-| **Placeholder** | **Description** |
-| `${DOCKER_IMAGE_NAME}` | **Required.** This placeholder is used with the image label in the JSON:`"image" : "${DOCKER_IMAGE_NAME}"`The placeholder is replaced with the Docker image name and tag at runtime.
+#### `${DOCKER_IMAGE_NAME}` 
+
+**Required.** This placeholder is used with the image label in the JSON:`"image" : "${DOCKER_IMAGE_NAME}"`The placeholder is replaced with the Docker image name and tag at runtime.
+
 ```
 ...     "volumesFrom": [],      "image": "registry.hub.docker.com/library/nginx:stable-perl",      ...      "name": "library_nginx_stable-perl"    }
 ```
- |
-| `${CONTAINER_NAME}` | This placeholder is used with the name label in the JSON:`"name" : "${CONTAINER_NAME}"`The placeholder is replaced with a container name based on the Docker image name at runtime. |
-| `${EXECUTION_ROLE}` | **Required for Fargate.** This placeholder is used with the `executionRoleArn` label in the JSON.`"executionRoleArn" : "${EXECUTION_ROLE}"`At deployment runtime, the `${EXECUTION_ROLE}` placeholder is replaced with the ARN of the **Target Execution Role** used by the Infrastructure Definition of the Workflow deploying this Harness Service.You can also replace the `${EXECUTION_ROLE}` placeholder with another ARN manually in the Container Definition in the Service. This will override the **Target Execution Role** used by the Infrastructure Definition.Replacing the `${EXECUTION_ROLE}` placeholder manually is usually only done when using a private repo.In most cases, you can simply leave the placeholder as is.For more information, see  [Amazon ECS Task Execution IAM Role](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_execution_IAM_role.html) from AWS. |
+
+#### `${CONTAINER_NAME}` 
+
+This placeholder is used with the name label in the JSON:`"name" : "${CONTAINER_NAME}"`The placeholder is replaced with a container name based on the Docker image name at runtime. 
+
+
+#### `${EXECUTION_ROLE}` 
+
+**Required for Fargate.** This placeholder is used with the `executionRoleArn` label in the JSON.
+
+`"executionRoleArn" : "${EXECUTION_ROLE}"`
+
+At deployment runtime, the `${EXECUTION_ROLE}` placeholder is replaced with the ARN of the **Target Execution Role** used by the Infrastructure Definition of the Workflow deploying this Harness Service.
+
+![](./static/_fargate.png)
+
+You can also replace the `${EXECUTION_ROLE}` placeholder with another ARN manually in the Container Definition in the Service. This will override the **Target Execution Role** used by the Infrastructure Definition.
+
+Replacing the `${EXECUTION_ROLE}` placeholder manually is usually only done when using a private repo.
+
+In most cases, you can simply leave the placeholder as is.For more information, see  [Amazon ECS Task Execution IAM Role](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_execution_IAM_role.html) from AWS. |
 
 ### Option 1: Using Variables for Remote Definition Paths
 

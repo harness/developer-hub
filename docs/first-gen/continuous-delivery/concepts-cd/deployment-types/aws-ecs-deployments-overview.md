@@ -45,17 +45,10 @@ The following list describes the major steps of a Harness ECS deployment:
 | 2 | Add a Harness **Artifact Server**. | Add a Harness **Artifact Server**. For example, a Docker Registry Artifact Server that connects to the Docker registry where your Docker images are located, or the public Docker Hub. |
 | 3 | Add an **AWS** **Cloud Provider**. | An AWS Cloud Provider is a connection to your AWS account.The AWS Cloud Provider is used to deploy the ECS services to the ECS cluster. |
 | 4 | Create the Harness **Application** for your Kubernetes CD Pipeline. | The Harness Application represents a group of microservices, their deployment pipelines, and all the building blocks for those pipelines. Harness represents your release process using a logical group of one or more entities: Services, Environments, Workflows, Pipelines, Triggers, and Infrastructure Provisioners. Applications organize all of the entities and configurations in Harness CD. |
-| 5 | Create the Harness **Service** using the Amazon EC2 Container Services (ECS) Deployment Type. | Add your ECS specs and any config variables and files.You can define specs for the following:* Replica Strategy
-* Daemon Strategy
-* awsvpc Network Mode
-* Service Discovery
- |
+| 5 | Create the Harness **Service** using the Amazon EC2 Container Services (ECS) Deployment Type. | Add your ECS specs and any config variables and files.You can define specs for the following: <br />&bull;&nbsp; Replica Strategy   <br />&bull;&nbsp; Daemon Strategy   <br />&bull;&nbsp; awsvpc Network Mode   <br />&bull;&nbsp; Service Discovery |
 | 6 | Create the Harness **Environment** and Infrastructure Definition for your target Kubernetes clusters), and any overrides. | Using the Harness Cloud Provider you set up, you can select the target Kubernetes cluster and namespace for your deployment.You can also override any Service settings, such as manifest values. This enables you to use a single Service with multiple Harness Environments. |
 | 7 | Create the Canary, Blue/Green, or Rollout deployment Harness **Workflow**. | The Workflow deploys the artifact(s) and Kubernetes workloads defined in the Harness Service to the cluster and namespace in the Harness Infrastructure Definition. |
-| 8 | Deploy the Workflow. | Once you've deployed a Workflow, learn how to improve your Kubernetes CD:* [Workflows](https://docs.harness.io/article/m220i1tnia-workflow-configuration)
-* [Triggers](https://docs.harness.io/article/xerirloz9a-add-a-trigger-2)
-* [Infrastructure Definitions](https://docs.harness.io/article/v3l3wqovbe-infrastructure-definitions)
- |
+| 8 | Deploy the Workflow. | Once you've deployed a Workflow, learn how to improve your Kubernetes CD: <br />&bull;&nbsp; [Workflows](https://docs.harness.io/article/m220i1tnia-workflow-configuration) <br />&bull;&nbsp; [Triggers](https://docs.harness.io/article/xerirloz9a-add-a-trigger-2) <br />&bull;&nbsp; [Infrastructure Definitions](https://docs.harness.io/article/v3l3wqovbe-infrastructure-definitions) |
 
 ### Component Overview
 
@@ -71,12 +64,8 @@ The following table lists the ECS components and where they are set up in Harnes
 | ECS Task Definition | Describes the Docker containers to run (CPU, memory, environment variables, ports, etc) and represents your application. | Specified in the Harness Service, in Container Specification. |
 | ECS Task | Instance of a Task Definition. Multiple Tasks can be created by one Task Definition, as demand requires. |  |
 | ECS Service | Defines the minimum and maximum Tasks from one Task Definition to run at any given time, autoscaling, and load balancing. | This is specified in the Harness Service, in Service Specification. |
-| ECS Cluster | A Cluster is a group of ECS Container Instances where you run your service tasks in order for them to be accessible. The container management service handles the cluster across one or more ECS Container Instance(s), including the scheduling, maintaining, and scaling requests to these instances. | ECS Clusters are selected in two Harness components:* The AWS Cloud Provider, via the IAM role for Delegate option.
-* Harness application Environment, where you select the AWS Cloud provider, and your ECS cluster name.
- |
-| Launch Types | There are two types:* Fargate - Run containers without having to manage servers or clusters of Amazon EC2 instances.
-* EC2 - Run containers on a cluster of Amazon EC2 instances that you manage.
- | You specify the launch type to use when adding a Service Infrastructure to a Harness Environment. |
+| ECS Cluster | A Cluster is a group of ECS Container Instances where you run your service tasks in order for them to be accessible. The container management service handles the cluster across one or more ECS Container Instance(s), including the scheduling, maintaining, and scaling requests to these instances. | ECS Clusters are selected in two Harness components: <br /><br />&bull;&nbsp; The AWS Cloud Provider, via the IAM role for Delegate option. <br /><br />&bull;&nbsp; Harness application Environment, where you select the AWS Cloud provider, and your ECS cluster name. |
+| Launch Types | There are two types: <br /><br />&bull;&nbsp; Fargate - Run containers without having to manage servers or clusters of Amazon EC2 instances. <br /><br />&bull;&nbsp; EC2 - Run containers on a cluster of Amazon EC2 instances that you manage. | You specify the launch type to use when adding a Service Infrastructure to a Harness Environment. |
 | Replica Scheduling Strategy | Places and maintains the desired number of tasks across your cluster. | This is specified in the Harness Service, in Service Specification. |
 | Daemon Scheduling Strategy | As of July 2018, ECS has a daemon scheduling strategy that deploys exactly one task on each active container instance that meets all of the task placement constraints that you specify in your cluster.With a daemon strategy, a task is deployed onto each instance in a cluster to provide common supporting functionality. | This is specified in the Harness Service, in Service Specification. |
 | awsvpc Network Mode | Provides each task with its own elastic network interface. Fargate task definitions require the awsvpc network mode. |  |

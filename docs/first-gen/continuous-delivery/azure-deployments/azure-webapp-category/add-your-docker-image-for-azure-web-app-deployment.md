@@ -21,6 +21,11 @@ This topic covers adding a Docker image. For steps on adding a non-containerized
 
 ### Visual Summary
 
+<!-- Video:
+https://harness-1.wistia.com/medias/rpv5vwzpxz-->
+<docvideo src="https://www.youtube.com/embed/psYt_mYKPFY?feature=oembed" />
+
+
 ### Supported Platforms and Technologies
 
 See [Supported Platforms and Technologies](https://docs.harness.io/article/220d0ojx5y-supported-platforms).
@@ -66,15 +71,6 @@ Fill out the Artifact Source settings.
 For details on configuring the supported Artifact Source types, see [Add a Docker Image](https://docs.harness.io/article/gxv9gj6khz-add-a-docker-image-service).
 
 The settings for the Harness Artifact Server and Artifact Source are a combination of the container settings in your Azure Web App.
-
-For example, here are the Docker Hub settings in an Azure Web App:
-
-Container Settings is deprecated and will be removed in March of 2021. The Deployment Center replaces it. Both options are below.
-
-|  |  |
-| --- | --- |
-| **Container Settings** | **Deployment Center** |
-|  |  |
 
 Here's the Harness [Docker Registry Artifact Server](https://docs.harness.io/article/tdj2ghkqb0-add-docker-registry-artifact-servers):
 

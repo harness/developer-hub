@@ -61,8 +61,5 @@ The following list describes the major steps of a Harness VMSS deployment:
 | 1 | Install a Harness Delegate on a VM in your target Azure subnet. | [Connect to Azure for VMSS Deployments](connect-to-your-azure-vmss.md) |
 | 2 | Add the VM instance image Harness will use for creating new instances in the new VMSS. | [Add Your Azure VM Image for Deployment](add-your-azure-vm-image-for-deployment.md) |
 | 3 | Select an existing VMSS to use as template when Harness creates a new VMSS. | [Define Your Azure VMSS Target Infrastructure](define-your-azure-vmss-target-infrastructure.md) |
-| 4 | Create a Harness Workflow to perform deployment. | Select the [deployment strategy](../../concepts-cd/deployment-types/deployment-concepts-and-strategies.md) you want to perform:* [Create an Azure VMSS Basic Deployment](create-an-azure-vmss-basic-deployment.md)
-* [Create an Azure VMSS Canary Deployment](create-an-azure-vmss-canary-deployment.md)
-* [Create an Azure VMSS Blue/Green Deployment](create-an-azure-vmss-blue-green-deployment.md)
- |
+| 4 | Create a Harness Workflow to perform deployment. | Select the [deployment strategy](../../concepts-cd/deployment-types/deployment-concepts-and-strategies.md) you want to perform: <br /><br />&bull;&nbsp; [Create an Azure VMSS Basic Deployment](create-an-azure-vmss-basic-deployment.md) <br /><br />&bull;&nbsp; [Create an Azure VMSS Canary Deployment](create-an-azure-vmss-canary-deployment.md) <br /><br />&bull;&nbsp; [Create an Azure VMSS Blue/Green Deployment](create-an-azure-vmss-blue-green-deployment.md) |
 

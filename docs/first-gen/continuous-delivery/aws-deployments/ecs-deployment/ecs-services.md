@@ -81,7 +81,9 @@ To specify the ECS Task Definition, do the following:
 
 1. In the Harness Service, in **Deployment Specification**, expand **ECS** (if necessary). The **Task Definition** appears.
 2. Click **Task Definition**. The **ECS Container Command Definition** settings appear.
-   ![](./static/ecs-services-41.png)
+   
+	 ![](./static/ecs-services-41.png)
+	 
    The simplified ECS Container Command Definition settings are for EC2 ECS clusters only. For **Fargate** (or advanced EC2) clusters, click **Advanced Settings** and use the JSON, as described below.  
 Advanced Settings is required for Fargate because you must use the `${EXECUTION_ROLE}` placeholder, described below.You can specify the Task Definition using the fields in the dialog or click **Advanced Settings** to add or edit the JSON.
 
@@ -464,49 +466,50 @@ This process has the following steps:
 1. Add the `secretsmanager:GetSecretValue` policy to the ECS task execution role. Here is the policy:
 
 
-```
-{  
-  "Version": "2012-10-17",  
-  "Statement": [  
-    {  
-      "Effect": "Allow",  
-      "Action": [  
-        "kms:Decrypt",  
-        "secretsmanager:GetSecretValue"  
-      ],  
-      "Resource": [  
-        "arn:aws:secretsmanager:region:aws_account_id:secret:secret_name",  
-        "arn:aws:kms:region:aws_account_id:key:key_id"       
-      ]  
-    }  
-  ]  
-}
-```
-The action `kms:Decrypt` is required only if your key uses a custom KMS key and not the default key. The ARN for your custom key should be added as a resource. For more information, and details about ECS platform versions that support this feature, see [Private Registry Authentication for Tasks](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/private-auth.html) from AWS.1. Add the [RepositoryCredentials](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-taskdefinition-repositorycredentials.html) property type to the Harness Service as a part of the Task Definition in **Task Definition** like this:
+			```
+			{  
+			  "Version": "2012-10-17",  
+			  "Statement": [  
+			    {  
+			      "Effect": "Allow",  
+			      "Action": [  
+			        "kms:Decrypt",  
+			        "secretsmanager:GetSecretValue"  
+			      ],  
+			      "Resource": [  
+			        "arn:aws:secretsmanager:region:aws_account_id:secret:secret_name",  
+			        "arn:aws:kms:region:aws_account_id:key:key_id"       
+			      ]  
+			    }  
+			  ]  
+			}
+			```
+			The action `kms:Decrypt` is required only if your key uses a custom KMS key and not the default key. The ARN for your custom key should be added as a resource. For more information, and details about ECS platform versions that support this feature, see [Private Registry Authentication for Tasks](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/private-auth.html) from AWS.1. Add the [RepositoryCredentials](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-taskdefinition-repositorycredentials.html) property type to the Harness Service as a part of the Task Definition in **Task Definition** like this:
 
 
-```
-"containerDefinitions": [  
-  
-  {  
-  
-    "name" : "${CONTAINER_NAME}",  
-  
-    "image" : "${DOCKER_IMAGE_NAME}",...  
-  
-    "repositoryCredentials": {  
-  
-      "credentialsParameter": "arn:aws:secretsmanager:region:aws_account_id:secret:secret_name"  
-  
-    }  
-  
-  ...  
-  
-  }  
-  
-]
-```
-1. In addition to specifying the `repositoryCredentials`, you must also specify the Task execution role in the Service **Task Definition** for the Task Definition using the property `executionRoleArn`. This role authorizes Amazon ECS to pull private images for your task. For more information, see [Private Registry Authentication Required IAM Permissions](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/private-auth.html#private-auth-iam). For example:
+			```
+			"containerDefinitions": [  
+			  
+			  {  
+			  
+			    "name" : "${CONTAINER_NAME}",  
+			  
+			    "image" : "${DOCKER_IMAGE_NAME}",...  
+			  
+			    "repositoryCredentials": {  
+			  
+			      "credentialsParameter": "arn:aws:secretsmanager:region:aws_account_id:secret:secret_name"  
+			  
+			    }  
+			  
+			  ...  
+			  
+			  }  
+			  
+			]
+			```
+
+2. In addition to specifying the `repositoryCredentials`, you must also specify the Task execution role in the Service **Task Definition** for the Task Definition using the property `executionRoleArn`. This role authorizes Amazon ECS to pull private images for your task. For more information, see [Private Registry Authentication Required IAM Permissions](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/private-auth.html#private-auth-iam). For example:
 
 `"executionRoleArn" : "arn:aws:iam::448000000317:role/ecsTaskExecutionRole",`
 

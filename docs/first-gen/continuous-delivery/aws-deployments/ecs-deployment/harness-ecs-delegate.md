@@ -90,12 +90,9 @@ The following procedure describes how to set up the ECS Delegate for the common 
 1. Download the ECS Delegate Task Spec.
 	1. In **Harness Manager**, click **Setup**, and then click **Harness Delegates**.
 	2. Click **Download Delegate**, and click the copy icon next to **ECS Task Spec**. The **Delegate Setup** dialog appears.
-	   
-	
-	  
-	
-	
-	![](./static/harness-ecs-delegate-12.png)
+  
+	   ![](./static/harness-ecs-delegate-12.png)
+     
 	3. In **Delegate Group Name**, enter the name for your Delegate. When you add more ECS Delegates in the future, you can add to this group. All Delegates in this group use the same Task Definition, and share the same Delegate settings,
 	 including Selectors. When you change a Selector, it will apply to all Delegates running under that Group.
 	4. In **Profile**, select a Profile for the Delegate. The default is named **Primary**. For more information, see
@@ -107,107 +104,88 @@ The following procedure describes how to set up the ECS Delegate for the common 
 2. Register the ECS Task Spec in AWS.
 	1. Open a Terminal and navigate to the folder where you downloaded the ECS Task Spec.`$ cd /Users/johnsmith/Desktop/delegates/ECS`
 	1. Extract the ECS Task Spec download.
-	   
-	
-	  
-	`$ tar -zxvf harness-delegate-ecs.tar.gz`
+	   `$ tar -zxvf harness-delegate-ecs.tar.gz`
 	2. Navigate to the extracted folder: `cd harness-delegate-ecs`.
 	3. Log into AWS using your AWS Access Key ID and AWS Secret Key ID.
-	   
-	
+
+    	`$ aws configure`
+    	  
+    	`AWS Access Key ID [****************LPAA]: XXXXXXX`
+    	  
+    	`AWS Secret Access Key [****************4z52]: XXXXXXX`
+
+   4. Register the ECS task definition using the Harness ECS Task Spec.
 	  
-	`$ aws configure`
-	  
-	`AWS Access Key ID [****************LPAA]: XXXXXXX`
-	  
-	`AWS Secret Access Key [****************4z52]: XXXXXXX`
-	4. Register the ECS task definition using the Harness ECS Task Spec.
-	   
-	
-	  
-	`$ aws ecs register-task-definition --cli-input-json file://ecs-task-spec.json`
-	  
-	
-	  
-	The JSON for the task is output.
+  	   `$ aws ecs register-task-definition --cli-input-json file://ecs-task-spec.json`
+       
+  	    The JSON for the task is output.
+      
 	5. View the completed task.
-	   
-	
-	  
-	`$ aws ecs list-task-definitions`
-	  
-	
-	  
-	The `taskDefinitionArns` is output.
+    
+      `$ aws ecs list-task-definitions`
+      
+     	The `taskDefinitionArns` is output.
+    
 3. Obtain the name of the ECS cluster where you want to create the ECS service. The cluster must have a minimum of 8GB of memory (m5ad.xlarge minimum).
+
 4. Create the ECS service for ECS Delegate.
+
 	1. Create the ECS service using the task definition, providing the service name in `--service-name`, cluster name in `--cluster`, and the desired number of tasks in `--desired-count`. The cluster will need a minimum
 	 of 8GB of memory per task.
-	   
-	
+
+	  `$ aws ecs create-service --service-name ecs-example --task-definition harness-delegate-task-spec --cluster default --desired-count 1`
 	  
-	`$ aws ecs create-service --service-name ecs-example --task-definition harness-delegate-task-spec --cluster default --desired-count 1`
+	  The output will display the JSON for the new service.
 	  
-	
-	  
-	The output will display the JSON for the new service.
-	   
-	
-	  
-	`{`
-	  
-	`"service": {`
-	  
-	`"status": "ACTIVE",`
-	  
-	`"serviceRegistries": [],`
-	  
-	`"pendingCount": 0,`
-	  
-	`"launchType": "EC2",`
-	  
-	`"schedulingStrategy": "REPLICA",`
-	  
-	`"loadBalancers": [],`
-	  
-	`"placementConstraints": [],`
-	  
-	`"createdAt": 1551222417.28,`
-	  
-	`"desiredCount": 1,`
-	  
-	`"serviceName": "ecs-delegate",...`
+    	`{`
+    	  
+    	`"service": {`
+    	  
+    	`"status": "ACTIVE",`
+    	  
+    	`"serviceRegistries": [],`
+    	  
+    	`"pendingCount": 0,`
+    	  
+    	`"launchType": "EC2",`
+    	  
+    	`"schedulingStrategy": "REPLICA",`
+    	  
+    	`"loadBalancers": [],`
+    	  
+    	`"placementConstraints": [],`
+    	  
+    	`"createdAt": 1551222417.28,`
+    	  
+    	`"desiredCount": 1,`
+    	  
+    	`"serviceName": "ecs-delegate",...`
+  
 	2. View the new service.
-	   
-	
-	  
-	`$ aws ecs list-services --cluster default`
-	  
-	
-	  
-	The output will display the new service:
-	   
-	
-	  
-	`{`
-	  
-	`"serviceArns": [`
-	  
-	`"arn:aws:ecs:us-west-1:023826572170:service/ecs-delegate",`
-	  
-	`...`
-	  
-	`}`
+
+    	`$ aws ecs list-services --cluster default`
+  	  
+    	The output will display the new service:
+  	  
+    	`{`
+    	  
+    	`"serviceArns": [`
+    	  
+    	`"arn:aws:ecs:us-west-1:023826572170:service/ecs-delegate",`
+    	  
+    	`...`
+    	  
+    	`}`
+  
 	3. Wait 5 to 10 minutes for ECS to allocate resources for the service.
 5. View the new ECS Delegate in Harness Manager.
 	1. In **Harness Manager**, in the **Installations** page. When the ECS Delegate connects to the Harness Manager, it is listed with a status of **Connected**:
 	 
-	![](./static/harness-ecs-delegate-13.png)
-	Congratulations! You are done installing and running the ECS Delegate.
-	   
-	
-	  
-	The following steps simply show you how to use a Selector name to identify this Delegate when making a connection to AWS. You simply instruct Harness to connect to AWS using the same IAM role as the Delegate via its Selector name.
+	  ![](./static/harness-ecs-delegate-13.png)
+  
+  	Congratulations! You are done installing and running the ECS Delegate.
+	  The following steps simply show you how to use a Selector name to identify this Delegate when making a connection to AWS. You simply instruct Harness to connect to AWS using the same IAM role as the Delegate via its Selector name.
+    
 6. Once the Delegate is listed in Harness Manager, assign a Selector to the Delegate.
 	1. Next to the **Selectors** label in the Delegate listing, click **Edit**.
 	2. In the **Edit Selector** dialog, enter a Selector name, for example, **ecs-delegate**, and press **Enter**. Click **SUBMIT**. The Selector is listed.
@@ -220,7 +198,6 @@ The following procedure describes how to set up the ECS Delegate for the common 
 	6. Enable the **Assume IAM Role on Delegate** option.
 	7. In **Delegate Selector**, click to select the Selector you gave the Delegate.
 	8. Click **SUBMIT**. The Cloud Provider is added.
-
 
 Later, when you create a Harness Service or an Infrastructure Definition in a Harness Environment, you will select this Cloud Provider and Harness will use the connection to obtain ECS cluster and networking information.
 

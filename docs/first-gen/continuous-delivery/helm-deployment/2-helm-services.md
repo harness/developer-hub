@@ -58,12 +58,20 @@ To add the Harness Application and service, do the following:
 | --- | --- | --- |
 | **Component** | **Section in Service** | **Description** |
 | Docker | **Artifact Source** | You add a pointer to the Docker image location you want to deploy. |
-| Helm | **Chart Specification** | You enter the Helm chart repo and chart to use.Typically, this is the only Helm configuration needed in a Harness service.This is the easiest way to point to your chart, but you can add the chart info in **Values YAML Override** instead. |
-| Helm | **Values YAML Override** | You can enter the contents of a Helm values.yaml file here. This file contains the default values for a chart.Values entered here will overwrite values in the values.yaml entered in **Chart Specification**.If you want to point to your Helm chart here, you can simply add the YAML:
+| Helm | **Chart Specification** | You enter the Helm chart repo and chart to use.<br />Typically, this is the only Helm configuration needed in a Harness service.<br />This is the easiest way to point to your chart, but you can add the chart info in **Values YAML Override** instead. |
+| Helm | **Values YAML Override** | You can enter the contents of a Helm values.yaml file here. This file contains the default values for a chart.<br />Values entered here will overwrite values in the values.yaml entered in **Chart Specification**.<br />If you want to point to your Helm chart here, you can simply add the YAML as shown in the following example. |
+
+#### YAML Example
+
 ```
-harness:  helm:    chart:      name: nginx      version: 1.0.1      url: https://charts.bitnami.com/bitnami
+harness:  
+   helm:    
+      chart:      
+         name: nginx
+         version: 1.0.1      
+         url: https://charts.bitnami.com/bitnami
 ```
- |
+
 
 ### Add the Docker Artifact Source
 

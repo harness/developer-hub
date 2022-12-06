@@ -89,29 +89,26 @@ To pull the image from the private ACR registry, Harness accesses that registry 
 
 1. n your Harness Kubernetes Service, in **Manifests**, click **values.yaml**.
 2. Verify that `dockercfg` key exists, and uses the `${artifact.source.dockerconfig}` expression to obtain the credentials:
+  ```
+  dockercfg: ${artifact.source.dockerconfig}
+  ```
+3. Click the **deployment.yaml** file.
+4. Verify that the Secret object is inside an `if` argument using `dockercfg` and the `{{.Values.dockercfg}}` value:
 
-
-```
-dockercfg: ${artifact.source.dockerconfig}
-```
-1. Click the **deployment.yaml** file.
-2. Verify that the Secret object is inside an `if` argument using `dockercfg` and the `{{.Values.dockercfg}}` value:
-
-
-```
-{{- if .Values.dockercfg}}  
-apiVersion: v1  
-kind: Secret  
-metadata:  
-  name: {{.Values.name}}-dockercfg  
-  annotations:  
-    harness.io/skip-versioning: "true"  
-data:  
-  .dockercfg: {{.Values.dockercfg}}  
-type: kubernetes.io/dockercfg  
----  
-{{- end}}
-```
+  ```
+  {{- if .Values.dockercfg}}  
+  apiVersion: v1  
+  kind: Secret  
+  metadata:  
+    name: {{.Values.name}}-dockercfg  
+    annotations:  
+      harness.io/skip-versioning: "true"  
+  data:  
+    .dockercfg: {{.Values.dockercfg}}  
+  type: kubernetes.io/dockercfg  
+  ---  
+  {{- end}}
+  ```
 With these requirements met, the cluster import the credentials from the Docker credentials file in the artifact.
 
 That's it. In your AKS cluster at deployment runtime, Kubernetes will use the dockercfg credentials to obtain the Docker image from ACR.

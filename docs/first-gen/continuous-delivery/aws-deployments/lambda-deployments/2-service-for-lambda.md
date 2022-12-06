@@ -54,20 +54,23 @@ An Artifact Source in a Lambda Service is the Lambda function file you want to d
 
 To add an Artifact Source to this Service, do the following:
 
-1. In your Lambda Service, click **Add Artifact Source**, and then click **Amazon S3**. For information on using a Custom Artifact Source, see [Custom Artifact Source](https://docs.harness.io/article/jizsp5tsms-custom-artifact-source). The **Amazon S3 Artifact Source** dialog appears.![](./static/2-service-for-lambda-18.png)
+1. In your Lambda Service, click **Add Artifact Source**, and then click **Amazon S3**. For information on using a Custom Artifact Source, see [Custom Artifact Source](https://docs.harness.io/article/jizsp5tsms-custom-artifact-source). 
+
+   The **Amazon S3 Artifact Source** dialog appears.
+
+   ![](./static/2-service-for-lambda-18.png)
+   
 2. In **Cloud Provider**, select the AWS Cloud Provider you set up in [Delegate and Connectors for Lambda](1-delegate-and-connectors-for-lambda.md).
 3. In **Bucket**, select the S3 bucket containing the Lambda function zip file you want.
 4. In **Artifact Path**, select the Lambda function zip file containing your functions. Here is how your S3 bucket and file relate to the Artifact Source dialog:
 
-![](./static/2-service-for-lambda-19.png)
+   ![](./static/2-service-for-lambda-19.png)
 
-The **Meta-data Only** option is selected by default. Harness will not copy the actual zip file. During runtime, Harness passes the metadata to Lambda where it is used to obtain the file.
+   The **Meta-data Only** option is selected by default. Harness will not copy the actual zip file. During runtime, Harness passes the metadata to Lambda where it is used to obtain the file.
 
-1. Click **SUBMIT**. The Lambda function file is added as an Artifact Source.
+5. Click **SUBMIT**. The Lambda function file is added as an Artifact Source.
 
-![](./static/2-service-for-lambda-20.png)
-
-
+   ![](./static/2-service-for-lambda-20.png)
 
 ### Step 3: Lambda Function Specification
 

@@ -41,7 +41,10 @@ To learn more about the Jenkins command, see [Using the Jenkins Command](https:/
 6. In **Variable Name**, enter the name of the output variable. For example, **Jenkins**.
 7. In **Scope**, select **Workflow**. Selecting **Workflow** ensures that there are no conflicts with any variables that share this name outside of the Workflow, such as another Workflow in the Pipeline.  
   
-When you are done, the dialog will look something like this.![](./static/3-build-workflow-02.png)
+   When you are done, the dialog will look something like this.
+   
+   ![](./static/3-build-workflow-02.png)
+   
 8. Click **Submit**. The Jenkins step is added to the Workflow.
 
 ### Step: Configure Shell Script
@@ -87,15 +90,22 @@ The Artifact Collection step was added automatically when you created the Build 
 1. In your Build Workflow, click **Artifact Collection**. The **Artifact Collection** dialog appears.
 2. Enter a name for your Artifact Collection.
 3. Select **Artifact** as the **Source Type** for the Artifact collection.
+   
    ![](./static/3-build-workflow-04.png)
+   
    Pick the Artifact Source you created in your Service under **Artifact Source**.  
-You can template the **Artifact Source** setting by clicking the **[T]** button. This will create a [Workflow variable](https://docs.harness.io/article/766iheu1bk-add-workflow-variables-new-template). When you deploy the Workflow, you can provide a value for the variable.
+   
+   You can template the **Artifact Source** setting by clicking the **[T]** button. This will create a [Workflow variable](https://docs.harness.io/article/766iheu1bk-add-workflow-variables-new-template). When you deploy the Workflow, you can provide a value for the variable.
 
-![](./static/3-build-workflow-05.png)
+   ![](./static/3-build-workflow-05.png)
 
-1. In **Build / Tag**, enter the Jenkins step output variable `${Jenkins.buildNumber}` parameter to provide this step with the build number of the artifact built in the Jenkins step.  
-When you are done, the Artifact Collection dialog will look something like this.![](./static/3-build-workflow-06.png)
-2. Click **Submit**. The Artifact Collection step is configured.
+4. In **Build / Tag**, enter the Jenkins step output variable `${Jenkins.buildNumber}` parameter to provide this step with the build number of the artifact built in the Jenkins step. 
+ 
+  When you are done, the Artifact Collection dialog will look something like this.
+  
+  ![](./static/3-build-workflow-06.png)
+  
+5. Click **Submit**. The Artifact Collection step is configured.
 
 #### Option: Build a Helm Chart
 

@@ -29,7 +29,9 @@ If you are using Amazon Elastic Container Registry (ECR) for your artifacts, you
 
 Harness Cloud Providers represent the infrastructure of your applications, such as your ECS cluster. In this section, we will cover how to add an AWS Cloud Provider that uses the IAM role of the Harness ECS Delegate by using the Delegate Selectors.
 
-Adding a Delegate Selector to your Delegate was discussed earlier in [Harness ECS Delegate](harness-ecs-delegate.md).1. In **Harness**, click **Setup**.
+Adding a Delegate Selector to your Delegate was discussed earlier in [Harness ECS Delegate](harness-ecs-delegate.md).
+
+1. In **Harness**, click **Setup**.
 2. Click **Cloud Providers**. The **Cloud Providers** page appears.
 3. Click **Add Cloud Provider**. The **Cloud Provider** dialog appears.
 4. In **Type**, select **Amazon Web Services**.

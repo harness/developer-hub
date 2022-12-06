@@ -178,26 +178,40 @@ For AMI deployments, you build your Infrastructure Definition using an AWS Auto�
 3. In **Cloud Provider Type**, select **Amazon Web Services**.
 4. In **Deployment Type**, select **Amazon Machine Image**. This expands the **Infrastructure Definition** dialog to look something like this:![](./static/ami-deployment-23.png)
 5. For this example, accept the default **Use Already Provisioned Infrastructure** option.
-
-(If you have configured an [Infrastructure Provisioner](https://docs.harness.io/article/o22jx8amxb-add-an-infra-provisioner) in Harness, you can use that configuration by instead selecting the **Map** **Dynamically Provisioned Infrastructure** option. For details, see our AMI [CloudFormation](ami-blue-green.md#infrastructure-provisioners) and [Terraform](../../terraform-category/terrform-provisioner.md#ami-and-auto-scaling-group-2) examples.)1. In **Cloud Provider**, select the Cloud Provider you added earlier in [AWS Cloud Provider Setup](#cloud_provider).
-2. Select the **Region** where your Auto Scaling Group (ASG) is located.
-
-After you select your **Cloud Provider** and **Region**, the dialog's remaining drop-down lists take a few seconds to populate.1. In the **Auto Scaling Groups** drop-down, select an existing ASG in your EC2 setup that Harness will clone as it creates a new ASG to use for the deployment.  
+:::note 
+(If you have configured an [Infrastructure Provisioner](https://docs.harness.io/article/o22jx8amxb-add-an-infra-provisioner) in Harness, you can use that configuration by instead selecting the **Map** **Dynamically Provisioned Infrastructure** option. For details, see our AMI [CloudFormation](ami-blue-green.md#infrastructure-provisioners) and [Terraform](../../terraform-category/terrform-provisioner.md#ami-and-auto-scaling-group-2) examples.)
+:::
+6. In **Cloud Provider**, select the Cloud Provider you added earlier in [AWS Cloud Provider Setup](#cloud_provider).
+7. Select the **Region** where your Auto Scaling Group (ASG) is located.
+:::note
+After you select your **Cloud Provider** and **Region**, the dialog's remaining drop-down lists take a few seconds to populate.
+:::
+8. In the **Auto Scaling Groups** drop-down, select an existing ASG in your EC2 setup that Harness will clone as it creates a new ASG to use for the deployment.  
 We typically call the ASG you select the *base ASG*. It is not used in the deployment. It is simply cloned in order for Harness to create a new ASG. Harness will use the existing ASG as a template, but it will not resize it all.  
 The newly created ASG will have unique name, Min and Max instances, and Desired Capacity.
-2. **Reset ASG revision numbers each time a new base ASG is selected:** If you want to create a new ASG numbering series when you select a new base ASG in **Auto Scaling Groups**, select **Reset ASG revision numbers each time a new base ASG is selected**. For details on this option, see [Reset ASG Revision Numbers](#reset_asg_rev).
-3. If you want to use Application Load Balancers, use **Target Groups (for ALB)** to select one or more [Target Groups](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html) that will route requests to the ASG you will deploy.
-4. If you want to use Classic Load Balancers, use **Classic Load Balancers** to select one or more [Classic Load Balancers](https://docs.aws.amazon.com/autoscaling/ec2/userguide/attach-load-balancer-asg.html) for the ASG you will deploy.
-5. Enable **Scope to Specific Services**, and use the adjacent drop-down to select the Harness Service you created in [AMI Service Setup](#service).  
+9. **Reset ASG revision numbers each time a new base ASG is selected:** If you want to create a new ASG numbering series when you select a new base ASG in **Auto Scaling Groups**, select **Reset ASG revision numbers each time a new base ASG is selected**. For details on this option, see [Reset ASG Revision Numbers](#reset_asg_rev).
+10. If you want to use Application Load Balancers, use **Target Groups (for ALB)** to select one or more [Target Groups](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html) that will route requests to the ASG you will deploy.
+11. If you want to use Classic Load Balancers, use **Classic Load Balancers** to select one or more [Classic Load Balancers](https://docs.aws.amazon.com/autoscaling/ec2/userguide/attach-load-balancer-asg.html) for the ASG you will deploy.
+12. Enable **Scope to Specific Services**, and use the adjacent drop-down to select the Harness Service you created in [AMI Service Setup](#service).  
   
-(This scoping will make this Infrastructure Definition available whenever a Workflow, or Phase, is set up for this Service. You can also select additional Services in this field—and you can do that later, by editing the Infrastructure Definition to match newly added Services.)  
+   (This scoping will make this Infrastructure Definition available whenever a Workflow, or Phase, is set up for this Service. You can also select additional Services in this field—and you can do that later, by editing the Infrastructure Definition to match newly added Services.)  
   
-When you are done, the dialog's **Configuration** section will look something like this:![](./static/ami-deployment-24.png)
-6. Click **Submit**. The new Infrastructure Definition is added to your Harness Environment.
+   When you are done, the dialog's **Configuration** section will look something like this:
+	 
+	 ![](./static/ami-deployment-24.png)
 
-Harness will register the ASGs it creates with whatever Target Groups and Classic Load Balancers you enter. If you delete the ASG that you've specified here, Workflows using this Infrastructure Definition will fail to deploy.This is the last required step to set up the deployment Environment in Harness. With both the Service and Environment set up, you can now proceed to [creating a deployment Workflow](#basic_deploy).
+13. Click **Submit**. The new Infrastructure Definition is added to your Harness Environment.
 
+:::note 
+Harness will register the ASGs it creates with whatever Target Groups and Classic Load Balancers you enter. If you delete the ASG that you've specified here, Workflows using this Infrastructure Definition will fail to deploy.
+:::
+
+This is the last required step to set up the deployment Environment in Harness. With both the Service and Environment set up, you can now proceed to [creating a deployment Workflow](#basic_deploy).
+
+:::note 
 Harness specifically supports AWS *target* tracking scaling policies. For details, see AWS' [Dynamic Scaling for Amazon EC2 Auto Scaling](https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-scale-based-on-demand.html#as-scaling-types) topic.
+:::
+
 #### Reset ASG Revision Numbers
 
 Harness enables you to use ASGs to uniquely identify and track independent releases. Each ASG might represent: 

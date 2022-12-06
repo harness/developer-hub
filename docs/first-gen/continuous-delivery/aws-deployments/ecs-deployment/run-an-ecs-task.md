@@ -133,12 +133,14 @@ The task definitions support Harness [Workflow variables](https://docs.harness.i
 
 ### Option 2: Add Remote Task Definition
 
-The Task Definition must follow the syntax described by AWS in [RegisterTaskDefinition](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_RegisterTaskDefinition.html).1. In **Add Task Definition**, click **Remote**.
+The Task Definition must follow the syntax described by AWS in [RegisterTaskDefinition](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_RegisterTaskDefinition.html).
+
+1. In **Add Task Definition**, click **Remote**.
 2. In **Source Repository**, select the Harness Source Repo Provider you added. See [Add Source Repo Providers](https://docs.harness.io/article/ay9hlwbgwa-add-source-repo-providers).
 3. In **Commit ID** , select **Latest from Branch** or **Specific Commit ID**.
 4. In **Branch/Commit ID** (required), enter the branch or commit ID for the remote repo.
 5. In **File Path**, enter the repo path to the task definition file.  
-For example, if the repo you set up in your Source Repo Provider is **https://github.com/aws-samples/aws-containers-task-definitions**, and the file containing your task definition is at the path **aws-samples/****aws-containers-task-definitions/nginx/nginx\_ec2.json**, you would enter **nginx/nginx\_ec2.json**.
+For example, if the repo you set up in your Source Repo Provider is **https://github.com/aws-samples/aws-containers-task-definitions**, and the file containing your task definition is at the path **aws-samples/aws-containers-task-definitions/nginx/nginx\_ec2.json**, you would enter **nginx/nginx\_ec2.json**.
 
 When you deploy the Workflow, the output of the ECS Run Task step shows the git fetch:
 

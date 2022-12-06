@@ -76,12 +76,7 @@ If you run `kubectl api-resources` you should see a list of resources, and `kube
 
 |  |  |
 | --- | --- |
-|  | * **Source Repository:** Select the Source Repo Provider connection to your repo.
-* **Commit ID:** Select **Latest from Branch** or **Specific Commit ID**. Do one of the following:
-	+ **Branch:** Enter the branch name, such as **master**.
-	+ **Commit ID:** Enter the Git commit ID.
-* **Template File** **Path:** Enter the Openshift Template File Path.
- |
+| ![](./static/_openshift.png) | <br />&bull;&nbsp; **Source Repository:** Select the Source Repo Provider connection to your repo. <br /><br />&bull;&nbsp; **Commit ID:** Select **Latest from Branch** or **Specific Commit ID**. Do one of the following: <br /><br />&bull;&nbsp; **Branch:** Enter the branch name, such as **master**.<br /><br />&bull;&nbsp; + **Commit ID:** Enter the Git commit ID. <br />&bull;&nbsp; **Template File** **Path:** Enter the Openshift Template File Path. |
 
 ### Option: Define Service Variables
 

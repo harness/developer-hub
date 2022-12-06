@@ -12,25 +12,6 @@ You can use Azure ARM templates to provision the target infrastructure for some 
 
 Currently, on [Azure Web App deployments](../azure-webapp-category/azure-web-app-deployments-overview.md) are supported for target infrastructure provisioning.For steps on using ARM templates to provision non-target infrastructure and resources, see [Provision Resources using a Harness ARM Infrastructure Provisioner](provision-using-the-arm-blueprint-create-resource-step.md).
 
-In this topic:
-
-* [Before You Begin](#before_you_begin)
-* [Limitations](#limitations)
-* [Visual Summary](#visual_summary)
-* [Supported Platforms and Technologies](#undefined)
-* [Step 1: Add the Infrastructure Provisioner](#step_1_add_the_infrastructure_provisioner)
-* [Step 2: Create Infrastructure Definition](#step_2_create_infrastructure_definition)
-* [Step 3: Select the Infrastructure Provisioner](#step_3_select_the_infrastructure_provisioner)
-* [Step 4: Select the Cloud Provider and Subscription](#step_4_select_the_cloud_provider_and_subscription)
-* [Step 5: Map ARM Outputs in Infrastructure Definition](#step_5_map_arm_outputs_in_infrastructure_definition)
-* [Step 6: Select Infrastructure Definition in Workflow](#step_6_select_infrastructure_definition_in_workflow)
-* [Step 7: Add ARM/Blueprint Create Resource Step to Workflow](#step_7_add_arm_blueprint_create_resource_step_to_workflow)
-* [Step 8: Specify Template Parameters](#step_8_specify_template_parameters)
-	+ [Review: Parameters JSON Format](#review_parameters_json_format)
-* [Step 9: Use Template Outputs in Workflow Steps](#step_9_use_template_outputs_in_workflow_steps)
-* [Step 10: Deploy the Workflow](#step_10_deploy_the_workflow)
-* [Sample ARM Template and Parameters](#sample_arm_template_and_parameters)
-* [Configure As Code](#configure_as_code)
 
 ### Before You Begin
 
@@ -46,9 +27,16 @@ In this topic:
 
 Here's a short video showing how to provision and deploy to the same Azure infrastructure using ARM and Harness:
 
+<!-- Video:
+https://harness-1.wistia.com/medias/rpv5vwzpxz-->
+<docvideo src="https://www.youtube.com/embed/WfPE9wk4tM0?feature=oembed" />
+
+
 Here's a diagram of how you use your Azure ARM templates in Harness to provision infra and then deploy to it:
 
-![](./static/target-azure-arm-or-blueprint-provisioned-infrastructure-06.png)1. **ARM Infrastructure Provisioner**: add your Azure ARM template as a Harness Infrastructure Provisioner. You add it by connecting to the Git repo for the ARM template. You also set the scope (Tenant, etc). You can also enter the ARM template inline without connecting to a Git repo.
+![](./static/target-azure-arm-or-blueprint-provisioned-infrastructure-06.png)
+
+1. **ARM Infrastructure Provisioner**: add your Azure ARM template as a Harness Infrastructure Provisioner. You add it by connecting to the Git repo for the ARM template. You also set the scope (Tenant, etc). You can also enter the ARM template inline without connecting to a Git repo.
 2. **​Infrastructure Definition**: define a Harness Infrastructure Definition that maps your ARM outputs to the required Harness settings (Resource Group).
 3. **Workflow Setup:** when you create your Workflow, you select the Infrastructure Definition you created, identifying it as the target infrastructure for the deployment.
 4. **Workflow Provisioner Step:** in the Workflow, you add an **ARM/Blueprint Create Resource** step that uses the ARM Infrastructure Provisioner you set up. The Workflow will build the infrastructure according to your ARM template. You can also add ARM template parameter values here.
@@ -142,9 +130,13 @@ When you create the Harness Workflow that will deploy to the infrastructure in y
 
 In a Canary or Multi-Service Workflow, you add the Infrastructure Definition in the Phase settings.
 
-![](./static/target-azure-arm-or-blueprint-provisioned-infrastructure-07.png)In a Blue/Green Workflow, you add the Infrastructure Definition in the Workflow settings.
+![](./static/target-azure-arm-or-blueprint-provisioned-infrastructure-07.png)
 
-![](./static/target-azure-arm-or-blueprint-provisioned-infrastructure-08.png)Now that the Infrastructure Definition is set up as the target infrastructure for the Workflow, you can add a step to the Workflow to run the Infrastructure Provisioner and create that target infrastructure.
+In a Blue/Green Workflow, you add the Infrastructure Definition in the Workflow settings.
+
+![](./static/target-azure-arm-or-blueprint-provisioned-infrastructure-08.png)
+
+Now that the Infrastructure Definition is set up as the target infrastructure for the Workflow, you can add a step to the Workflow to run the Infrastructure Provisioner and create that target infrastructure.
 
 ### Step 7: Add ARM/Blueprint Create Resource Step to Workflow
 
@@ -246,11 +238,17 @@ Let's look at an example of the **Slot Setup** in a Web App [Blue/Green Workflow
 
 Normally, you would select or enter the App Service, Deployment, and Target Slots for the Web App deployment.
 
-![](./static/target-azure-arm-or-blueprint-provisioned-infrastructure-10.png)When provisioning, you enter the `${arm.<output_name>}` expression for each setting, mapping the outputs to the steps settings:
+![](./static/target-azure-arm-or-blueprint-provisioned-infrastructure-10.png)
 
-![](./static/target-azure-arm-or-blueprint-provisioned-infrastructure-11.png)At runtime, Harness will substitute the output values, which in this case are taken from a parameters file, and use them for the **Slot Setup** step.
+When provisioning, you enter the `${arm.<output_name>}` expression for each setting, mapping the outputs to the steps settings:
 
-If the Azure Web App Workflow uses an Infrastructure Definition that uses an Infrastructure Provisioner (such as ARM Infrastructure Provisioner) then the **Slot Setup** step must use template outputs in its settings. The **Slot Setup** step uses the Infrastructure Definition settings to pull App Service and slot information from Azure. If the Infrastructure Definition uses an Infrastructure Provisioner, then Harness cannot obtain this information until runtime.### Step 10: Deploy the Workflow
+![](./static/target-azure-arm-or-blueprint-provisioned-infrastructure-11.png)
+
+At runtime, Harness will substitute the output values, which in this case are taken from a parameters file, and use them for the **Slot Setup** step.
+
+If the Azure Web App Workflow uses an Infrastructure Definition that uses an Infrastructure Provisioner (such as ARM Infrastructure Provisioner) then the **Slot Setup** step must use template outputs in its settings. The **Slot Setup** step uses the Infrastructure Definition settings to pull App Service and slot information from Azure. If the Infrastructure Definition uses an Infrastructure Provisioner, then Harness cannot obtain this information until runtime.
+
+### Step 10: Deploy the Workflow
 
 Here is an example of a Blue/Green Azure Web App Workflow deployment that uses the Infrastructure Provisioner in its Infrastructure Definition and **ARM/Blueprint Create Resource** step:
 

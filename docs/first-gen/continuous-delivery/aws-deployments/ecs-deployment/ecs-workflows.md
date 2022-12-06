@@ -54,7 +54,9 @@ To create a Workflow using a Service configured with a Replica Scheduling Strate
 	3. **Workflow Type** - Select **Canary Deployment**.
 	4. **Environment** - Select the Environment you created for ECS. This is the Environment containing an [Infrastructure Definition](https://docs.harness.io/article/v3l3wqovbe-infrastructure-definitions) for the Harness Service you are deploying with this Workflow. You will select the Service and the Infrastructure Definition when you set up the Canary deployment's stages.
 	5. Click **SUBMIT**. The new Workflow is displayed.
-	   ![](./static/ecs-workflows-15.png)
+	   
+		 ![](./static/ecs-workflows-15.png)
+		 
 		 Next, you will add two phases for the Canary deployment. The first phase will set up your ECS service and then upgrade ECS service instances to 50% of the available ECS service instances.
 4. In the Workflow, in **Deployment Phases**, click **Add Phase**. The **Workflow Phase** dialog appears.  
   
@@ -64,7 +66,10 @@ If you are using Infrastructure Definitions, the dialog will look like this:![](
 	2. **Infrastructure Definition** — This list is populated using the Environment you selected when creating the Workflow. Select the Infrastructure Definition that describes the cluster where you will deploy the Amazon ECS service defined in the Harness Service.
 	3. **Service Variable Overrides** — If the Harness Service uses variables that you want to override for this Workflow phase, such as those described in [Service Discovery](ecs-services.md#service-discovery), you can override the variable values here.
 6. Click **SUBMIT**. The new **Phase 1** page appears.![](./static/ecs-workflows-17.png)
-7. Click **ECS Service Setup**. The **ECS Service Setup** dialog appears.![](./static/ecs-workflows-18.png)
+7. Click **ECS Service Setup**. The **ECS Service Setup** dialog appears.
+
+   ![](./static/ecs-workflows-18.png)
+	 
 8. Complete the following fields.
 	1. **ECS Service Name** - By default, the ECS service will be named using a concatenation of the Harness Application, Service, and Environment names. You can change the name here using text or a variable. Enter **${** in the field to see a list of all of the variables available.![](./static/ecs-workflows-19.png)
 	2. **Same as already running instances** - This field displays the number of desired *ECS service instances* for this stage. By default, the ECS service will be set up using 2 ECS service instances even if the field contains **0**.During deployment, only one old version of the application will be kept. If there are more than one, Harness will reduce their instances to 0.
@@ -75,20 +80,32 @@ If you are using Infrastructure Definitions, the dialog will look like this:![](
 	7. **Use Load Balancer** - See [Using ELB Load Balancers During Deployment](#using_elb_load_balancers_during_deployment).
 	8. Close or Submit the **ECS Service Setup** dialog to return to the **Phase 1** page.
 
-To obtain the name of the ECS service deployed currently (from the **ECS Service Setup** step), you can use the Harness variable `${ECS__Service__Setup.serviceName}`. You might want to use the name in additional Workflow steps.1. Click **Upgrade Containers**. The **Upgrade Containers** dialog appears.
+:::note 
+To obtain the name of the ECS service deployed currently (from the **ECS Service Setup** step), you can use the Harness variable `${ECS__Service__Setup.serviceName}`. You might want to use the name in additional Workflow steps.
+:::
+
+9. Click **Upgrade Containers**. The **Upgrade Containers** dialog appears.
 2. In **Desired Instances**, set the number or percentage of ECS service instances to use for this stage. As this is Phase 1 of a Canary deployment, enter **50 Percent**.  
+
    ![](./static/ecs-workflows-20.png)
+	 
 	 The value in **Desired Instances** relates to the number of ECS service instances set in the **ECS Service Setup** dialog. For example, if you entered **2** as the **Fixed Instances Count** in **ECS Service Setup** and then enter **50 Percent** in **Upgrade Containers**, that means, for this phase, Harness will deploy **1** ECS service instance.The timeout for the **Upgrade Containers** step is inherited from the preceding **ECS Service Setup** step.**Use Expressions:** You can use [Harness Service, Environment Override, and Workflow](https://docs.harness.io/article/9dvxcegm90-variables) variable expressions in **Desired Instances** by selecting **Use Expression** and then entering the expression, like `${workflow.variables.DesiredInstances}`. When you run the Workflow, you can provide a value for the variable.
+	 
+	 
 3. Click **SUBMIT**.
 4. Click the name of the Workflow in the breadcrumb links to return to the **Workflow** page and add the second Phase of this Canary deployment.
+
    ![](./static/ecs-workflows-21.png)
+	 
 5. To add **Phase 2**, click **Add Phase**.
 6. In the **Workflow Phase** dialog, complete the following fields.
 	1. **Service** - Select the same Harness Service that uses the Replica Strategy.
 	2. **Infrastructure Definition** — Select the Infrastructure Definition that describes the cluster where you will deploy the Amazon ECS service defined in the Harness Service.
 	3. **Service Variable Overrides** - If the Harness Service uses variables that you want to override for this Workflow phase, such as those described in [Service Discovery](#service_discovery), you can override the variable values here.
 7. Click **SUBMIT**. The **Phase 2** page appears.
+
    ![](./static/ecs-workflows-22.png)
+	 
 	 As this is the second phase in the Canary deployment, it will only run if Phase 1 deployed successfully. Let's upgrade the number of containers to 100%.
 8. Click **Upgrade Containers**. The **Upgrade Containers** dialog appears.![](./static/ecs-workflows-23.png)
 9. In **Desired Instances**, enter **100**, choose **Percent**, and click **SUBMIT**. This will deploy the full count of ECS service instances.
@@ -103,21 +120,16 @@ To deploy a Harness Service configured with a Daemon Scheduling Strategy, do the
 
 1. In your Harness Application, click **Workflows**. The **Workflows** page appears.
 2. Click **Add Workflow**. The **Workflow** dialog appears, in one of the following formats.  
-  
-
-
-|  |
-| --- |
-|  |
-
-We will be creating a Basic Deployment Workflow using the Harness Service configured with a Daemon Scheduling Strategy.
+   We will be creating a Basic Deployment Workflow using the Harness Service configured with a Daemon Scheduling Strategy.
 3. Complete the following fields.
 	1. **Name** - Give the Workflow a name that describes its deployment goals, such as **ECS Daemon Strategy**.
 	2. **Description** - Provide details about the Workflow so other users understand its deployment goals.
 	3. **Workflow Type** - Select **Basic Deployment**.
 	4. **Environment** - Select the Environment you created for ECS. This is the Environment containing an [Infrastructure Definition](https://docs.harness.io/article/v3l3wqovbe-infrastructure-definitions) for the Harness Service you are deploying with this Workflow. You will select the Service and Infrastructure Definition when you set up the Basic deployment.
 4. Click **SUBMIT**. The new Workflow is displayed.
+
    ![](./static/ecs-workflows-24.png)
+	 
 	 This Workflow will simply set up the ECS service using a Daemon strategy.
 5. Click the **ECS Daemon Service Setup** step. The **ECS Daemon Service Setup** dialog appears.
    ![](./static/ecs-workflows-25.png)
@@ -199,56 +211,60 @@ To create the Scalable Target and Scalable Policy resources, see the [register-s
 1. In a Workflow with the **ECS Service Setup** step, open the **ECS Service Setup** step.
 2. In **Auto Scaler Configurations**, the Auto Scaling property fields appear.
    ![](./static/ecs-workflows-28.png)
-3. In **Scalable Target**, paste the JSON for the property.This should follow the [AWS ScalableTarget JSON format](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-applicationautoscaling-scalabletarget.html).For example:
+3. In **Scalable Target**, paste the JSON for the property.This should follow the [AWS ScalableTarget JSON format](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-applicationautoscaling-scalabletarget.html). 
 
+   For example:
 
-```
-{  
-  
-  "ServiceNamespace": "ecs",  
-  
-  "ScalableDimension": "ecs:service:DesiredCount",  
-  
-  "MinCapacity": 2,  
-  
-  "MaxCapacity": 5,  
-  
-  "RoleARN": "arn:aws:iam::448XXXXXXX7:role/aws-service-role/ecs.application-autoscaling.amazonaws.com/AWSServiceRoleForApplicationAutoScaling_ECSService"  
-  
-}
-```
-1. In **Scaling Policy**, paste the JSON for the property.This should follow the [AWS ScalingPolicy JSON format](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-applicationautoscaling-scalingpolicy.html).For example:
+		```
+		{  
+		  
+		  "ServiceNamespace": "ecs",  
+		  
+		  "ScalableDimension": "ecs:service:DesiredCount",  
+		  
+		  "MinCapacity": 2,  
+		  
+		  "MaxCapacity": 5,  
+		  
+		  "RoleARN": "arn:aws:iam::448XXXXXXX7:role/aws-service-role/ecs.application-autoscaling.amazonaws.com/AWSServiceRoleForApplicationAutoScaling_ECSService"  
+		  
+		}
+		```
+		
+4. In **Scaling Policy**, paste the JSON for the property.This should follow the [AWS ScalingPolicy JSON format](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-applicationautoscaling-scalingpolicy.html).
 
+   For example:
 
-```
-{  
-  
-  "ScalableDimension": "ecs:service:DesiredCount",  
-  
-  "ServiceNamespace": "ecs",  
-  
-  "PolicyName": "P1",  
-  
-  "PolicyType": "TargetTrackingScaling",  
-  
-  "TargetTrackingScalingPolicyConfiguration": {  
-  
-    "TargetValue": 60.0,  
-  
-    "PredefinedMetricSpecification": {  
-  
-      "PredefinedMetricType": "ECSServiceAverageCPUUtilization"  
-  
-    },  
-  
-    "ScaleOutCooldown": 300,  
-  
-    "ScaleInCooldown": 300  
-  
-  }  
-  
-}
-```
+		```
+		{  
+		  
+		  "ScalableDimension": "ecs:service:DesiredCount",  
+		  
+		  "ServiceNamespace": "ecs",  
+		  
+		  "PolicyName": "P1",  
+		  
+		  "PolicyType": "TargetTrackingScaling",  
+		  
+		  "TargetTrackingScalingPolicyConfiguration": {  
+		  
+		    "TargetValue": 60.0,  
+		  
+		    "PredefinedMetricSpecification": {  
+		  
+		      "PredefinedMetricType": "ECSServiceAverageCPUUtilization"  
+		  
+		    },  
+		  
+		    "ScaleOutCooldown": 300,  
+		  
+		    "ScaleInCooldown": 300  
+		  
+		  }  
+		  
+		}
+		```
+		
 When Harness deploys your ECS service, it will register the service with an AWS Auto Scaling Group to apply the scaling policy, scaling out (and in) using CloudWatch target tracking.
 
 To obtain the name of the Auto Scaling Group created by Harness, use the Harness variable `${ami.newAsgName}`. For example, you could add a Shell Script command to your Workflow that contains the command `echo ${ami.newAsgName}`.

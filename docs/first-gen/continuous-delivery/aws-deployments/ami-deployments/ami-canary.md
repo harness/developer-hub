@@ -89,15 +89,15 @@ In this guide's remaining sections, we will expand only the Workflow's **Deploym
 Here are the phases and steps we'll build:
 
 1. [Phase 1: Canary](#phase_1)
-* [Set Up AutoScaling Group](#setup_asg): Specify how many EC2 instances to launch in the ASG that Harness deploys at the end of the Workflow. This step also specifies their resizing order and their steady state timeout.
-* [Deploy Service](#upgrade_asg_1): Specify the percentage of instances to deploy in this phase. When you add additional phases, each phase automatically includes a Deploy Service step, which you must configure with the count or percentage of instances you want deployed in that phase.
-* [Verify Service](#verify_service_1): This example uses CloudWatch verification. (You can add any [Verification Provider](https://docs.harness.io/article/myw4h9u05l-verification-providers-list) that Harness supports.)
-* [Rollback Steps](#rollback_1): Roll back the ASG if deployment fails. (Rollback steps are automatically added here, and to each of the remaining phases. This guide covers them only in this first phase.)
-1. [Phase 2: Canary](#phase_2)
-* [Deploy Service](#upgrade_asg_2): Upgrade the ASG to a higher percentage of instances.
-* [Verify Service](#verify_service_2): This example uses a second round of CloudWatch tests.
-1. [Phase 3: Primary](#phase_3)
-* [Deploy Service](#upgrade_asg_3): Upgrade the ASG to its full target capacity.
+   * [Set Up AutoScaling Group](#setup_asg): Specify how many EC2 instances to launch in the ASG that Harness deploys at the end of the Workflow. This step also specifies their resizing order and their steady state timeout.
+   * [Deploy Service](#upgrade_asg_1): Specify the percentage of instances to deploy in this phase. When you add additional phases, each phase automatically includes a Deploy Service step, which you must configure with the count or percentage of instances you want deployed in that phase.
+   * [Verify Service](#verify_service_1): This example uses CloudWatch verification. (You can add any [Verification Provider](https://docs.harness.io/article/myw4h9u05l-verification-providers-list) that Harness supports.)
+   * [Rollback Steps](#rollback_1): Roll back the ASG if deployment fails. (Rollback steps are automatically added here, and to each of the remaining phases. This guide covers them only in this first phase.)
+2. [Phase 2: Canary](#phase_2)
+   * [Deploy Service](#upgrade_asg_2): Upgrade the ASG to a higher percentage of instances.
+   * [Verify Service](#verify_service_2): This example uses a second round of CloudWatch tests.
+3. [Phase 3: Primary](#phase_3)
+   * [Deploy Service](#upgrade_asg_3): Upgrade the ASG to its full target capacity.
 
 Ready to deploy? Let's examine the configuration and execution of each of the Workflow's three phases.
 
@@ -113,7 +113,10 @@ To add a Canary Phase:
 2. In **Service**, select the Service you previously [set up](ami-deployment.md#service) for this AMI.
 3. Select the Infrastructure Definition that specifies your base Auto Scaling Group
 4. In **Service Variable Overrides**, you can add values to overwrite any variables in the Service you selected. Click **Add**, then enter the **Name** of the variable to override, and the override **Value**. (For details, see [Workflow Phases](https://docs.harness.io/article/m220i1tnia-workflow-configuration#workflow_phases).)
-5. Click **SUBMIT**. The new Phase is created.![](./static/ami-canary-161.png)
+5. Click **SUBMIT**. The new Phase is created.
+
+   ![](./static/ami-canary-161.png)
+	 
 6. Click **Phase 1** to define this Phase's Steps.  
   
 On the resulting page, we'll fill in the predefined structure for Steps 1 and 2, and add a Verification provider in Step 3.![](./static/ami-canary-162.png)

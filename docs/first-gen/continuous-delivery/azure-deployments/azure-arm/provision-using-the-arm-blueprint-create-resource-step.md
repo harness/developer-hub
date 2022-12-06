@@ -25,6 +25,11 @@ Currently, on [Azure Web App deployments](../azure-webapp-category/azure-web-app
 
 Here's a short video showing how to provision Azure infrastructure using ARM and Harness:
 
+<!-- Video:
+https://harness-1.wistia.com/medias/rpv5vwzpxz-->
+<docvideo src="https://www.youtube.com/embed/_thro1sA6ek?feature=oembed" />
+
+
 You can use Azure ARM templates in Harness to provision any resources.
 
 1. **ARM Infrastructure Provisioner**: add your Azure ARM template as a Harness Infrastructure Provisioner.
@@ -35,7 +40,9 @@ You can use Azure ARM templates in Harness to provision any resources.
 
 When you run the Workflow, it can provision the resources without deploying anything else.
 
-![](./static/provision-using-the-arm-blueprint-create-resource-step-02.png)### Limitations
+![](./static/provision-using-the-arm-blueprint-create-resource-step-02.png)
+
+### Limitations
 
 * See [Azure Resource Management (ARM) How-tos](azure-arm-and-blueprint-how-tos.md).
 

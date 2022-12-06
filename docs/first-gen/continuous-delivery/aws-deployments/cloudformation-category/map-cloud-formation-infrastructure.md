@@ -72,7 +72,9 @@ You map the CloudFormation template outputs using this syntax, where `exact_nam
 ```
 ${cloudformation.*exact\_name*}
 ```
-When you map a CloudFormation template output to a Harness Infrastructure Definition setting, the expression for the output, `${cloudformation.exact_name​}`, can be used anywhere in the Workflow that uses that CloudFormation Provisioner. This can be useful if you want to echo the outputs in a [Shell Script step](https://docs.harness.io/article/1fjrjbau7x-capture-shell-script-step-output) for example.### Option 1: Map an AWS AMI/ASG Infrastructure
+When you map a CloudFormation template output to a Harness Infrastructure Definition setting, the expression for the output, `${cloudformation.exact_name​}`, can be used anywhere in the Workflow that uses that CloudFormation Provisioner. This can be useful if you want to echo the outputs in a [Shell Script step](https://docs.harness.io/article/1fjrjbau7x-capture-shell-script-step-output) for example.
+
+### Option 1: Map an AWS AMI/ASG Infrastructure
 
 AMI/ASG and ECS deployments are the only type that supports Terraform and CloudFormation Infrastructure Provisioners in Blue/Green deployments.The AMI deployment type uses an AWS Auto Scaling Group and only requires that you provide a region and Auto Scaling Group.
 

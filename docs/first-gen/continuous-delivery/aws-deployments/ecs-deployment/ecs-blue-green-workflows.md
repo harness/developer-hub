@@ -84,16 +84,19 @@ To set up AWS for Blue/Green using ELB and Harness, do the following:
 5. Select the VPC where your ECS cluster instances will be hosted, and click **Create**.
 6. Create a second target group using a new name, such as **target2**, use the same port number, **8080**, and the same VPC as the first target.
 
-It is important that you use the same port numbers for both target groups.When you are done, the target configuration will look something like this:
+   It is important that you use the same port numbers for both target groups.When you are done, the target configuration will look something like this:
 
-![](./static/ecs-blue-green-workflows-53.png)
+   ![](./static/ecs-blue-green-workflows-53.png)
 
-Now that your targets are created, you can create the load balancer that will switch between the targets.
+   Now that your targets are created, you can create the load balancer that will switch between the targets.
 
-1. Create a Application Load Balancer. In the EC2 Console, click **Load Balancers**.![](./static/ecs-blue-green-workflows-54.png)
+7. Create a Application Load Balancer. In the EC2 Console, click **Load Balancers**.
+
+   ![](./static/ecs-blue-green-workflows-54.png)
+   
 2. Click **Create Load Balancer**, and then under **Application Load Balancer**, click **Create**.
 
-![](./static/ecs-blue-green-workflows-55.png)
+   ![](./static/ecs-blue-green-workflows-55.png)
 
 You do not need to add listeners at this point. We will do that after the load balancer is created.
 
@@ -122,15 +125,15 @@ To set up a Blue/Green deploy using ELB in Harness, do the following:
 
 1. In Harness, in your Application, click **Workflows**, and then click **Add Workflow**. The **Workflow** dialog appears.
 2. Enter the following options to select a Blue/Green Deployment using DNS:
-* **Name** - Enter the name of the Workflow, such as **ECS BG ELB**.
-* **Description** - Enter a description to provide context for the Workflow.
-* **Workflow Type** - Select **Blue/Green Deployment**.
-* **Environment** - Select the Environment where the ECS Service Infrastructure you want to use is configured.
-* **Service** - Select the ECS Service you created for your Application.
-* **Infrastructure Definition** - Select the Infrastructure Definition where you want to deploy your ECS Service.
-1. When you select the Infrastructure Definition, the **Blue Green Switch** field appears.
-2. In **Blue Green Switch**, select **Elastic Load Balancer (ELB)**. When you are done the dialog will look something like this:![](./static/ecs-blue-green-workflows-60.png)
-3. Click **SUBMIT**. The ECS Blue Green Workflow appears. The following image shows the default steps.
+   * **Name** - Enter the name of the Workflow, such as **ECS BG ELB**.
+   * **Description** - Enter a description to provide context for the Workflow.
+   * **Workflow Type** - Select **Blue/Green Deployment**.
+   * **Environment** - Select the Environment where the ECS Service Infrastructure you want to use is configured.
+   * **Service** - Select the ECS Service you created for your Application.
+   * **Infrastructure Definition** - Select the Infrastructure Definition where you want to deploy your ECS Service.
+3. When you select the Infrastructure Definition, the **Blue Green Switch** field appears.
+4. In **Blue Green Switch**, select **Elastic Load Balancer (ELB)**. When you are done the dialog will look something like this:![](./static/ecs-blue-green-workflows-60.png)
+5. Click **SUBMIT**. The ECS Blue Green Workflow appears. The following image shows the default steps.
 
 ![](./static/ecs-blue-green-workflows-61.png)
 
@@ -337,13 +340,13 @@ To set up a Blue/Green using DNS in Harness, do the following:
 
 1. In Harness, in your Application, click **Workflows**, and then click **Add Workflow**. The **Workflow** dialog appears.
 2. Enter the following options to select a Blue/Green Deployment using DNS:
-* **Name** - Enter the name of the Workflow, such as **ECS BG DNS**.
-* **Description** - Enter a description to provide context for the Workflow.
-* **Workflow Type** - Select **Blue/Green Deployment**.
-* **Environment** - Select the Environment where the ECS Service Infrastructure you want to use is configured.
-* **Service** - Select the ECS Service you created for your Application.
-* **Infrastructure Definition** - Select the Infrastructure Definition where you want to deploy your ECS Service.
-1. When you select the Infrastructure Definition, the **Blue Green Switch** field appears.
+   * **Name** - Enter the name of the Workflow, such as **ECS BG DNS**.
+   * **Description** - Enter a description to provide context for the Workflow.
+   * **Workflow Type** - Select **Blue/Green Deployment**.
+   * **Environment** - Select the Environment where the ECS Service Infrastructure you want to use is configured.
+   * **Service** - Select the ECS Service you created for your Application.
+   * **Infrastructure Definition** - Select the Infrastructure Definition where you want to deploy your ECS Service.
+3. When you select the Infrastructure Definition, the **Blue Green Switch** field appears.
 2. In **Blue Green Switch**, select **Domain Name System (DNS)**. When you are done the dialog will look something like this:![](./static/ecs-blue-green-workflows-76.png)
 3. Click **SUBMIT**. The ECS Blue Green Workflow appears. The following image shows the default steps.
 
