@@ -8,9 +8,11 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-When you view a [CCM Perspective](/article/dvspc6ub0v-create-cost-perspectives), you can adjust the date ranges of the Perspective:
+When you view a [CCM Perspective](../2-ccm-perspectives/1-create-cost-perspectives.md), you can adjust the date ranges of the Perspective:
 
-![](./static/understanding-ccm-perspective-date-ranges-00.png)It's important to understand how selecting different date ranges impacts the **Forecasted Cost**.
+![](./static/understanding-ccm-perspective-date-ranges-00.png)
+
+It's important to understand how selecting different date ranges impacts the **Forecasted Cost**.
 
 Let's look at an example where the current day is June 9th:
 

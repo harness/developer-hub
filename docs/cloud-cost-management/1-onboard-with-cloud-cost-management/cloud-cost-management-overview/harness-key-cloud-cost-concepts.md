@@ -24,7 +24,7 @@ Node cost is calculated based on the public pricing API of the cloud platform.
 ![](./static/harness-key-cloud-cost-concepts-00.png)
 
 
-|  |  
+|     |     |
 | --- | --- | 
 | **Operating system** | Linux |
 | **Region** | us-central1 |

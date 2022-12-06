@@ -17,19 +17,20 @@ You can also tune recommendations by changing the percentage of cpu/memory reque
 This topic describes how CCM computes ECS service recommendations and how you can use them to potentially reduce monthly costs.
 
 Before using recommendations in your ECS cluster environment, ensure that you evaluate their impact thoroughly. The person reviewing the recommendations should be able to understand the impacts identified in the recommendations, as well as the impact on the infrastructure and business.  
-Using recommendations without proper assessment could result in unexpected changes, such as issues with system performance or poor reliability.### Before You Begin
+Using recommendations without proper assessment could result in unexpected changes, such as issues with system performance or poor reliability.
 
-* [CCM Perspectives](/category/e7k0qds7tw-ccm-perspectives)
+## Before You Begin
+
+* [CCM Perspectives](../2-ccm-perspectives/1-create-cost-perspectives.md)
 
 ### Prerequisites
 
 To obtain ECS recommendations, configure an AWS CCM Connector with the Inventory Management feature enabled.
 
 No Delegate setup is required. All utilization metrics are obtained using a cross account IAM role.
+See [Set Up Cloud Cost Management for AWS](../../1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md).
 
-See [Set Up Cloud Cost Management for AWS](/article/80vbt5jv0q-set-up-cost-visibility-for-aws).
-
-### Review: How are Recommendations Computed?
+## How are Recommendations Computed?
 
 The recommendations are computed by analyzing the past utilization of CPU and memory of your service. ECS workloads are called services.
 
@@ -39,7 +40,7 @@ The implementation uses a histogram method to compute the recommendations.
 
 The computation adds a 15% buffer to the recommended resources by default. CCM also allows you to add any additional buffer using the **Tune recommendations** option.
 
-When you enable [Cost Visibility](https://ngdocs.harness.io/article/ltt65r6k39-set-up-cost-visibility-for-kubernetes) for your ECS cluster, Harness starts collecting CPU and memory resource utilization metrics for every service present in the cluster every minute.
+When you enable [Cost Visibility](../../1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-kubernetes.md) for your ECS cluster, Harness starts collecting CPU and memory resource utilization metrics for every service present in the cluster every minute.
 
 The utilization data collected every minute is then aggregated in the Delegate for a 20-minute window. The 20-minute aggregated data is then sent to Harness:
 
@@ -54,7 +55,7 @@ You can also tune recommendations by changing the percentage of recommended CPU 
 
 The task definitions for AWS Fargate can only be set to predefined values. For more information, go to [AWS Fargate Task Definitions](https://docs.aws.amazon.com/AmazonECS/latest/userguide/fargate-task-defs.html). Therefore, the recommendations are rounded off to the nearest configuration available on ECS Fargate.
 
-#### Why Histogram?
+### Why Histogram?
 
 A histogram is used to account for the seasonality of high resource utilization on certain days of the week. Assume your application receives a lot of traffic (and thus a lot of resource utilization) on weekends and we're using a decaying histogram. In that case:
 
@@ -63,14 +64,14 @@ A histogram is used to account for the seasonality of high resource utilization 
 
 To avoid this, we use the histogram method and give equal weight to all previous days.
 
-### Review: Types of Service Recommendations
+## Types of Service Recommendations
 
 The recommendations are categorized as the following:
 
 * Cost Optimized
 * Performance Optimized
 
-#### Cost Optimized
+### Cost Optimized
 
 The cost-optimized recommendations are computed as the following:
 
@@ -81,13 +82,13 @@ The cost-optimized recommendations are computed as the following:
 
 Since the recommendations are computed using the 50th percentile of the CPU samples and memory peaks, this may potentially lead to system performance issues. Before using cost-optimized recommendations, ensure that you evaluate the recommendation's impact thoroughly.
 
-#### Performance Optimized
+### Performance Optimized
 
 The performance-optimized recommendations are computed using the 95th percentile of CPU samples and memory peaks. Because of this, the probability of having any effect on the performance is minimum. However, the cost may go high for the resources that are optimized using this method.
 
 The potential monthly spend and savings are calculated based on the 90th percentiles of CPU samples and memory peaks.
 
-### Step: View Recommendations
+## View Recommendations
 
 Once you enable CCM, it may take up to 48 hours for the recommendations to appear in Cloud Costs. It depends on the time at which CCM receives the utilization data for the service.In **Cloud Costs**, click **Recommendations**.
 
@@ -129,7 +130,7 @@ Within a recommendation, select the number of days to compute recommendations ba
 
 You can use this information to optimize your resources to potentially reduce your monthly cloud costs.
 
-### Step: Tune and Share Recommendations
+## Tune and Share Recommendations
 
 You can tune your recommendations by adding a buffer to the resource preferences.
 
@@ -137,7 +138,7 @@ In **% Buffer to be considered for CPU/Memory values**, drag the slider to incr
 
 The resource recommendations are based on the percentage of the buffer you set.
 
-#### Sharing Recommendations
+### Sharing Recommendations
 
 When you tune a recommendation, the URL for the recommendation captures your changes.
 

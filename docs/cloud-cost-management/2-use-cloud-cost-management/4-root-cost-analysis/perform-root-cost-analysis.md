@@ -20,11 +20,17 @@ Perspectives provide deep insights into your total, idle, utilized, and unalloca
 
 Each of the cluster's components is exposed, along with its costs.
 
-[![](./static/perform-root-cost-analysis-22.png)](./static/perform-root-cost-analysis-22.png)The following steps take you through the process.
+  ![](./static/perform-root-cost-analysis-22.png)]
+
+The following steps take you through the process.
 
 1. Navigate to **Cloud Cost Management** module and click **Perspectives.**
-2. Click the Perspective with your clusters as Data Sources, for which you want to analyze the cost**.** Perspectives provide a single-pane view of the costs for different products, for example, clusters, applications, AWS, GCP, and Azure. See [Create Cost Perspectives](/article/dvspc6ub0v-create-cost-perspectives).![](./static/perform-root-cost-analysis-24.png)
-3. Select the **date range** for the costs you want to analyze. You can either click **Select custom range** to customize the date range or select an option from the pre-defined list.![](./static/perform-root-cost-analysis-25.png)
+2. Click the Perspective with your clusters as Data Sources, for which you want to analyze the cost**.** Perspectives provide a single-pane view of the costs for different products, for example, clusters, applications, AWS, GCP, and Azure. See [Create Cost Perspectives](../2-ccm-perspectives/1-create-cost-perspectives.md).
+   
+     ![](./static/perform-root-cost-analysis-24.png)
+3. Select the **date range** for the costs you want to analyze. You can either click **Select custom range** to customize the date range or select an option from the pre-defined list.
+   
+     ![](./static/perform-root-cost-analysis-25.png)
 4. In **Group by**, select one of the following options to view the costs:
 	* **Cluster Name**: Total cost, Cost trend, Idle cost, Unallocated cost, and efficiency score for each cluster name.
 	* **Namespace**: The cost of each Kubernetes namespace in the cluster. This does not apply to ECS clusters.
@@ -43,8 +49,12 @@ Each of the cluster's components is exposed, along with its costs.
 		+ EC2 - Run containers on a cluster of Amazon EC2 instances that you manage.
 	* **Region**: Each Cluster region you are currently running services in.
 	* **Product**: Each of your active products with its cloud costs.
-	* **Label**: Each label that you assign to your Cluster resources. You can select a label name to get further granular details of your label.![](./static/perform-root-cost-analysis-26.png)
-5. Select all the checkboxes in the column selector to display all the cluster costs. You can uncheck the checkbox for which you do not want to view the cost.![](./static/perform-root-cost-analysis-27.png)
+	* **Label**: Each label that you assign to your Cluster resources. You can select a label name to get further granular details of your label.
+  
+    ![](./static/perform-root-cost-analysis-26.png)
+5. Select all the checkboxes in the column selector to display all the cluster costs. You can uncheck the checkbox for which you do not want to view the cost.
+   
+     ![](./static/perform-root-cost-analysis-27.png)
 
 ### Option: Root Cost Analysis for Namespace
 
@@ -53,10 +63,18 @@ The cost of each Kubernetes namespace in the cluster.
 The following steps take you through the process.
 
 1. Navigate to **Cloud Cost Management** module and click **Perspectives.**
-2. Click the Perspective with your clusters as Data Sources, for which you want to analyze the cost**.** Perspectives provide a single-pane view of the costs for different products, for example, clusters, applications, AWS, GCP, and Azure. See [Create Cost Perspectives](/article/dvspc6ub0v-create-cost-perspectives).![](./static/perform-root-cost-analysis-28.png)
-3. Select the **date range** for the costs you want to analyze. You can either click **Select custom range** to customize the date range or select an option from the pre-defined list.![](./static/perform-root-cost-analysis-29.png)
-4. In **Group by**, select **Namespace** to list all the namespaces.![](./static/perform-root-cost-analysis-30.png)
-5. Select all the checkboxes in the column selector to display all the namespace costs. You can uncheck the checkbox for which you do not want to view the cost.![](./static/perform-root-cost-analysis-31.png)
+2. Click the Perspective with your clusters as Data Sources, for which you want to analyze the cost**.** Perspectives provide a single-pane view of the costs for different products, for example, clusters, applications, AWS, GCP, and Azure. See [Create Cost Perspectives](../2-ccm-perspectives/1-create-cost-perspectives.md).
+   
+     ![](./static/perform-root-cost-analysis-28.png)
+3. Select the **date range** for the costs you want to analyze. You can either click **Select custom range** to customize the date range or select an option from the pre-defined list.
+   
+     ![](./static/perform-root-cost-analysis-29.png)
+4. In **Group by**, select **Namespace** to list all the namespaces.
+
+     ![](./static/perform-root-cost-analysis-30.png)
+5. Select all the checkboxes in the column selector to display all the namespace costs. You can uncheck the checkbox for which you do not want to view the cost.
+   
+     ![](./static/perform-root-cost-analysis-31.png)
 
 ### Option: Root Cost Analysis for Workload
 
@@ -65,10 +83,18 @@ The cost of each Kubernetes workload or ECS service. You can see the workload ty
 The following steps take you through the process.
 
 1. Navigate to **Cloud Cost Management** module and click **Perspectives.**
-2. Click the Perspective with your clusters as Data Sources, for which you want to analyze the cost**.** Perspectives provide a single-pane view of the costs for different products, for example, clusters, applications, AWS, GCP, and Azure. See [Create Cost Perspectives](/article/dvspc6ub0v-create-cost-perspectives).![](./static/perform-root-cost-analysis-32.png)
-3. Select the **date range** for the costs you want to analyze. You can either click **Select custom range** to customize the date range or select an option from the pre-defined list.![](./static/perform-root-cost-analysis-33.png)
-4. In **Group by**, select **Workload** to list all the workloads. You can also Group by **Workload Id** to list all the workload IDs.![](./static/perform-root-cost-analysis-34.png)
-5. Select all the checkboxes in the column selector to display all the workload costs. You can uncheck the checkbox for which you do not want to view the cost.![](./static/perform-root-cost-analysis-35.png)
+2. Click the Perspective with your clusters as Data Sources, for which you want to analyze the cost**.** Perspectives provide a single-pane view of the costs for different products, for example, clusters, applications, AWS, GCP, and Azure. See [Create Cost Perspectives](../2-ccm-perspectives/1-create-cost-perspectives.md).
+
+  ![](./static/perform-root-cost-analysis-32.png)
+3. Select the **date range** for the costs you want to analyze. You can either click **Select custom range** to customize the date range or select an option from the pre-defined list.
+   
+     ![](./static/perform-root-cost-analysis-33.png)
+4. In **Group by**, select **Workload** to list all the workloads. You can also Group by **Workload Id** to list all the workload IDs.
+   
+     ![](./static/perform-root-cost-analysis-34.png)
+5. Select all the checkboxes in the column selector to display all the workload costs. You can uncheck the checkbox for which you do not want to view the cost.
+   
+     ![](./static/perform-root-cost-analysis-35.png)
 
 ### Option: Root Cost Analysis for Nodes
 
@@ -82,10 +108,18 @@ The cost details of a node provide:
 The following steps take you through the process.
 
 1. Navigate to **Cloud Cost Management** module and click **Perspectives.**
-2. Click the Perspective with your clusters as Data Sources, for which you want to analyze the cost**.** Perspectives provide a single-pane view of the costs for different products, for example, clusters, applications, AWS, GCP, and Azure. See [Create Cost Perspectives](/article/dvspc6ub0v-create-cost-perspectives).![](./static/perform-root-cost-analysis-36.png)
-3. Select the **date range** for the costs you want to analyze. You can either click **Select custom range** to customize the date range or select an option from the pre-defined list.![](./static/perform-root-cost-analysis-37.png)
-4. In **Group by**, select **Node** to list all the nodes.![](./static/perform-root-cost-analysis-38.png)
-5. Select all the checkboxes in the column selector to display all the node costs. You can uncheck the checkbox for which you do not want to view the cost.![](./static/perform-root-cost-analysis-39.png)
+2. Click the Perspective with your clusters as Data Sources, for which you want to analyze the cost**.** Perspectives provide a single-pane view of the costs for different products, for example, clusters, applications, AWS, GCP, and Azure. See [Create Cost Perspectives](../2-ccm-perspectives/1-create-cost-perspectives.md).
+     
+	  ![](./static/perform-root-cost-analysis-36.png)
+3. Select the **date range** for the costs you want to analyze. You can either click **Select custom range** to customize the date range or select an option from the pre-defined list.
+
+    ![](./static/perform-root-cost-analysis-37.png)
+4. In **Group by**, select **Node** to list all the nodes.
+   
+     ![](./static/perform-root-cost-analysis-38.png)
+5. Select all the checkboxes in the column selector to display all the node costs. You can uncheck the checkbox for which you do not want to view the cost.
+   
+     ![](./static/perform-root-cost-analysis-39.png)
 
 If your Pod and Node are stopped for 30 and 180 days respectively, the following information is purged from the Node Explorer view:  
   
@@ -97,7 +131,10 @@ If your Pod and Node are stopped for 30 and 180 days respectively, the following
 - Namespace  
 - Machine Type  
 - Node Pool  
-- Instance Category### Option: Root Cost Analysis for Harness Applications
+- Instance Category
+  
+
+### Option: Root Cost Analysis for Harness Applications
 
 CCM provides deep insights into your total cloud costs and resources. It helps you to understand the primary cost contributors. You can use this data to manage and optimize your cost and resources.
 
@@ -106,11 +143,19 @@ To perform root cost analysis on Harness Applications and subordinate components
 The following steps take you through the process.
 
 1. Navigate to **Cloud Cost Management** module and click **Perspectives.**
-2. Click the Perspective with your clusters as Data Sources, for which you want to analyze the cost**.** Perspectives provide a single-pane view of the costs for different products, for example, clusters, applications, AWS, GCP, and Azure. See [Create Cost Perspectives](/article/dvspc6ub0v-create-cost-perspectives).![](./static/perform-root-cost-analysis-40.png)
-3. Select the **date range** for the costs you want to analyze. You can either click **Select custom range** to customize the date range or select an option from the pre-defined list.![](./static/perform-root-cost-analysis-41.png)
-4. In **Group by**, select **Application** to list all the applications.![](./static/perform-root-cost-analysis-42.png)
+2. Click the Perspective with your clusters as Data Sources, for which you want to analyze the cost**.** Perspectives provide a single-pane view of the costs for different products, for example, clusters, applications, AWS, GCP, and Azure. See [Create Cost Perspectives](../2-ccm-perspectives/1-create-cost-perspectives.md).
+   
+     ![](./static/perform-root-cost-analysis-40.png)
+3. Select the **date range** for the costs you want to analyze. You can either click **Select custom range** to customize the date range or select an option from the pre-defined list.
+   
+     ![](./static/perform-root-cost-analysis-41.png)
+4. In **Group by**, select **Application** to list all the applications.
+   
+     ![](./static/perform-root-cost-analysis-42.png)
 
-In order for an Application to appear, a Workflow in the Application must be deployed by Harness.1. Select all the checkboxes in the column selector to display all the application costs. You can uncheck the checkbox for which you do not want to view the cost.![](./static/perform-root-cost-analysis-43.png)
+In order for an Application to appear, a Workflow in the Application must be deployed by Harness.1. Select all the checkboxes in the column selector to display all the application costs. You can uncheck the checkbox for which you do not want to view the cost.
+
+  ![](./static/perform-root-cost-analysis-43.png)
 
 ### Option: Root Cost Analysis for Service
 
@@ -119,10 +164,18 @@ Services represent your microservices and applications. These are your microserv
 The following steps take you through the process.
 
 1. Navigate to **Cloud Cost Management** module and click **Perspectives.**
-2. Click the Perspective with your clusters as Data Sources, for which you want to analyze the cost**.** Perspectives provide a single-pane view of the costs for different products, for example, clusters, applications, AWS, GCP, and Azure. See [Create Cost Perspectives](/article/dvspc6ub0v-create-cost-perspectives).![](./static/perform-root-cost-analysis-44.png)
-3. Select the **date range** for the costs you want to analyze. You can either click **Select custom range** to customize the date range or select an option from the pre-defined list.![](./static/perform-root-cost-analysis-45.png)
-4. In **Group by**, select **Service** to list all the services.![](./static/perform-root-cost-analysis-46.png)
-5. Select all the checkboxes in the column selector to display all the service costs. You can uncheck the checkbox for which you do not want to view the cost.![](./static/perform-root-cost-analysis-47.png)
+2. Click the Perspective with your clusters as Data Sources, for which you want to analyze the cost**.** Perspectives provide a single-pane view of the costs for different products, for example, clusters, applications, AWS, GCP, and Azure. See [Create Cost Perspectives](../2-ccm-perspectives/1-create-cost-perspectives.md).
+   
+     ![](./static/perform-root-cost-analysis-44.png)
+3. Select the **date range** for the costs you want to analyze. You can either click **Select custom range** to customize the date range or select an option from the pre-defined list.
+   
+     ![](./static/perform-root-cost-analysis-45.png)
+4. In **Group by**, select **Service** to list all the services.
+   
+     ![](./static/perform-root-cost-analysis-46.png)
+5. Select all the checkboxes in the column selector to display all the service costs. You can uncheck the checkbox for which you do not want to view the cost.
+   
+     ![](./static/perform-root-cost-analysis-47.png)
 
 ### Option: Root Cost Analysis for Environment
 
@@ -131,10 +184,18 @@ Environments organize and name the deployment infrastructures in your cloud plat
 The following steps take you through the process.
 
 1. Navigate to **Cloud Cost Management** module and click **Perspectives.**
-2. Click the Perspective with your clusters as Data Sources, for which you want to analyze the cost**.** Perspectives provide a single-pane view of the costs for different products, for example, clusters, applications, AWS, GCP, and Azure. See [Create Cost Perspectives](/article/dvspc6ub0v-create-cost-perspectives).![](./static/perform-root-cost-analysis-48.png)
-3. Select the **date range** for the costs you want to analyze. You can either click **Select custom range** to customize the date range or select an option from the pre-defined list.![](./static/perform-root-cost-analysis-49.png)
-4. In **Group by**, select **Environment** to list all the environments.![](./static/perform-root-cost-analysis-50.png)
-5. Select all the checkboxes in the column selector to display all the environment costs. You can uncheck the checkbox for which you do not want to view the cost.![](./static/perform-root-cost-analysis-51.png)
+2. Click the Perspective with your clusters as Data Sources, for which you want to analyze the cost**.** Perspectives provide a single-pane view of the costs for different products, for example, clusters, applications, AWS, GCP, and Azure. See [Create Cost Perspectives](../2-ccm-perspectives/1-create-cost-perspectives.md).
+   
+     ![](./static/perform-root-cost-analysis-48.png)
+3. Select the **date range** for the costs you want to analyze. You can either click **Select custom range** to customize the date range or select an option from the pre-defined list.
+   
+     ![](./static/perform-root-cost-analysis-49.png)
+4. In **Group by**, select **Environment** to list all the environments.
+   
+     ![](./static/perform-root-cost-analysis-50.png)
+5. Select all the checkboxes in the column selector to display all the environment costs. You can uncheck the checkbox for which you do not want to view the cost.
+   
+     ![](./static/perform-root-cost-analysis-51.png)
 
 ### Option: Root Cost Analysis for Storage
 
@@ -143,10 +204,19 @@ Storage represents the cost of the persistent volumes present in your Kubernetes
 The following steps take you through the process.
 
 1. Navigate to **Cloud Cost Management** module and click **Perspectives.**
-2. Click the Perspective with your clusters as Data Sources, for which you want to analyze the cost**.** Perspectives provide a single-pane view of the costs for different products, for example, clusters, applications, AWS, GCP, and Azure. See [Create Cost Perspectives](/article/dvspc6ub0v-create-cost-perspectives).![](./static/perform-root-cost-analysis-52.png)
-3. Select the **date range** for the costs you want to analyze. You can either click **Select custom range** to customize the date range or select an option from the pre-defined list.![](./static/perform-root-cost-analysis-53.png)
-4. In **Group by**, select **Storage** to list all the storage.![](./static/perform-root-cost-analysis-54.png)
-5. Select all the checkboxes in the column selector to display all the storage costs. You can uncheck the checkbox for which you do not want to view the cost.![](./static/perform-root-cost-analysis-55.png)
+2. Click the Perspective with your clusters as Data Sources, for which you want to analyze the cost**.** Perspectives provide a single-pane view of the costs for different products, for example, clusters, applications, AWS, GCP, and Azure. See [Create Cost Perspectives](../2-ccm-perspectives/1-create-cost-perspectives.md).
+   
+   
+   ![](./static/perform-root-cost-analysis-52.png)
+3. Select the **date range** for the costs you want to analyze. You can either click **Select custom range** to customize the date range or select an option from the pre-defined list.
+   
+     ![](./static/perform-root-cost-analysis-53.png)
+4. In **Group by**, select **Storage** to list all the storage.
+   
+     ![](./static/perform-root-cost-analysis-54.png)
+5. Select all the checkboxes in the column selector to display all the storage costs. You can uncheck the checkbox for which you do not want to view the cost.
+   
+     ![](./static/perform-root-cost-analysis-55.png)
 
 The storage costs are displayed:
 
@@ -174,10 +244,18 @@ The storage costs are displayed:
 The following steps take you through the process.
 
 1. Navigate to **Cloud Cost Management** module and click **Perspectives.**
-2. Click the Perspective with your clusters as Data Sources, for which you want to analyze the cost**.** Perspectives provide a single-pane view of the costs for different products, for example, clusters, applications, AWS, GCP, and Azure. See [Create Cost Perspectives](/article/dvspc6ub0v-create-cost-perspectives).![](./static/perform-root-cost-analysis-56.png)
-3. Select the **date range** for the costs you want to analyze. You can either click **Select custom range** to customize the date range or select an option from the pre-defined list.![](./static/perform-root-cost-analysis-57.png)
-4. In **Group by**, select **Region** to list all the regions.![](./static/perform-root-cost-analysis-58.png)
-5. Select all the checkboxes in the column selector to display all the regions costs. You can uncheck the checkbox for which you do not want to view the cost.![](./static/perform-root-cost-analysis-59.png)
+2. Click the Perspective with your clusters as Data Sources, for which you want to analyze the cost**.** Perspectives provide a single-pane view of the costs for different products, for example, clusters, applications, AWS, GCP, and Azure. See [Create Cost Perspectives](../2-ccm-perspectives/1-create-cost-perspectives.md).
+   
+     ![](./static/perform-root-cost-analysis-56.png)
+3. Select the **date range** for the costs you want to analyze. You can either click **Select custom range** to customize the date range or select an option from the pre-defined list.
+   
+     ![](./static/perform-root-cost-analysis-57.png)
+4. In **Group by**, select **Region** to list all the regions.
+   
+     ![](./static/perform-root-cost-analysis-58.png)
+5. Select all the checkboxes in the column selector to display all the regions costs. You can uncheck the checkbox for which you do not want to view the cost.
+   
+     ![](./static/perform-root-cost-analysis-59.png)
 
 ### Option: Root Cost Analysis for Product
 
@@ -186,10 +264,18 @@ The cost of each product in the cluster.
 The following steps take you through the process.
 
 1. Navigate to **Cloud Cost Management** module and click **Perspectives.**
-2. Click the Perspective with your clusters as Data Sources, for which you want to analyze the cost**.** Perspectives provide a single-pane view of the costs for different products, for example, clusters, applications, AWS, GCP, and Azure. See [Create Cost Perspectives](/article/dvspc6ub0v-create-cost-perspectives).![](./static/perform-root-cost-analysis-60.png)
-3. Select the **date range** for the costs you want to analyze. You can either click **Select custom range** to customize the date range or select an option from the pre-defined list.![](./static/perform-root-cost-analysis-61.png)
-4. In **Group by**, select **Product** to list all the products.![](./static/perform-root-cost-analysis-62.png)
-5. Select all the checkboxes in the column selector to display all the product costs. You can uncheck the checkbox for which you do not want to view the cost.![](./static/perform-root-cost-analysis-63.png)
+2. Click the Perspective with your clusters as Data Sources, for which you want to analyze the cost**.** Perspectives provide a single-pane view of the costs for different products, for example, clusters, applications, AWS, GCP, and Azure. See [Create Cost Perspectives](../2-ccm-perspectives/1-create-cost-perspectives.md).
+   
+     ![](./static/perform-root-cost-analysis-60.png)
+3. Select the **date range** for the costs you want to analyze. You can either click **Select custom range** to customize the date range or select an option from the pre-defined list.
+   
+     ![](./static/perform-root-cost-analysis-61.png)
+4. In **Group by**, select **Product** to list all the products.
+   
+     ![](./static/perform-root-cost-analysis-62.png)
+5. Select all the checkboxes in the column selector to display all the product costs. You can uncheck the checkbox for which you do not want to view the cost.
+   
+     ![](./static/perform-root-cost-analysis-63.png)
 
 ### Option: Root Cost Analysis for Label
 
@@ -198,8 +284,16 @@ The cost of each Kubernetes label.
 The following steps take you through the process.
 
 1. Navigate to **Cloud Cost Management** module and click **Perspectives.**
-2. Click the Perspective with your clusters as Data Sources, for which you want to analyze the cost**.** Perspectives provide a single-pane view of the costs for different products, for example, clusters, applications, AWS, GCP, and Azure. See [Create Cost Perspectives](/article/dvspc6ub0v-create-cost-perspectives).![](./static/perform-root-cost-analysis-64.png)
-3. Select the **date range** for the costs you want to analyze. You can either click **Select custom range** to customize the date range or select an option from the pre-defined list.![](./static/perform-root-cost-analysis-65.png)
-4. In **Group by**, select **Label** to list all the labels.![](./static/perform-root-cost-analysis-66.png)
-5. Select all the checkboxes in the column selector to display all the label costs. You can uncheck the checkbox for which you do not want to view the cost.![](./static/perform-root-cost-analysis-67.png)
+2. Click the Perspective with your clusters as Data Sources, for which you want to analyze the cost**.** Perspectives provide a single-pane view of the costs for different products, for example, clusters, applications, AWS, GCP, and Azure. See [Create Cost Perspectives](/article/dvspc6ub0v-create-cost-perspectives).
+   
+     ![](./static/perform-root-cost-analysis-64.png)
+3. Select the **date range** for the costs you want to analyze. You can either click **Select custom range** to customize the date range or select an option from the pre-defined list.
+   
+     ![](./static/perform-root-cost-analysis-65.png)
+4. In **Group by**, select **Label** to list all the labels.
+   
+     ![](./static/perform-root-cost-analysis-66.png)
+5. Select all the checkboxes in the column selector to display all the label costs. You can uncheck the checkbox for which you do not want to view the cost.
+   
+     ![](./static/perform-root-cost-analysis-67.png)
 

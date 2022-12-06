@@ -13,18 +13,26 @@ Harness Cloud Cost Management (CCM) allows you to view your Google Cloud Platfor
 * GCP cloud cost spending trends
 * The GCP products costing the most in a selected time range. For example, how much Compute Engine cost last week
 * Primary cost contributors, such as product, project, SKUs, or region
-* GCP spendings by region, such as us-west1 or us-east4![](./static/analyze-cost-for-gcp-using-perspectives-12.png)
+* GCP spendings by region, such as us-west1 or us-east4
+  
+    ![](./static/analyze-cost-for-gcp-using-perspectives-12.png)
 
-Time periods in the GCP Cloud Billing report use the Pacific Time Zone (PST) and observe daylight saving time shifts. However, Harness CCM explorer uses the UTC time zone. You may notice some cloud cost differences between Harness CCM explorer and the GCP Cloud Billing report due to the time zone difference.### Before You Begin
+Time periods in the GCP Cloud Billing report use the Pacific Time Zone (PST) and observe daylight saving time shifts. However, Harness CCM explorer uses the UTC time zone. You may notice some cloud cost differences between Harness CCM explorer and the GCP Cloud Billing report due to the time zone difference.
 
-* [Set Up Cloud Cost Management for GCP](/article/kxnsritjls-set-up-cost-visibility-for-gcp)
+### Before You Begin
+
+* [Set Up Cloud Cost Management for GCP](../../1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-gcp.md)
 
 ### Step: Analyze GCP Cost
 
 The Perspectives provides deep insights into your GCP costs. The cost includes all the applicable credits and discounts.
 
-1. In **Cloud Costs**, click **Perspectives**,and then click **GCP**. The GCP products are displayed.![](./static/analyze-cost-for-gcp-using-perspectives-13.png)
-2. Select the **date range** for the costs you want to analyze.![](./static/analyze-cost-for-gcp-using-perspectives-14.png)
+1. In **Cloud Costs**, click **Perspectives**,and then click **GCP**. The GCP products are displayed.
+   
+     ![](./static/analyze-cost-for-gcp-using-perspectives-13.png)
+2. Select the **date range** for the costs you want to analyze.
+   
+     ![](./static/analyze-cost-for-gcp-using-perspectives-14.png)
 3. You can use the following options to Group By:
 	* **GCP**: Under AWS, you can Group by:
 		+ **Products**: Each of your active products with their cloud costs is displayed.
@@ -39,14 +47,19 @@ The Perspectives provides deep insights into your GCP costs. The cost includes a
 Perform the following steps to add filters.
 
 1. In **Cloud Costs**, click **Perspectives**,and then click **GCP**.
-2. Click **add filter**.![](./static/analyze-cost-for-gcp-using-perspectives-15.png)
+2. Click **add filter**.
+   
+     ![](./static/analyze-cost-for-gcp-using-perspectives-15.png)
+
 3. Select GCP, Region, Product, or Label.
 4. Select the operator. The supported operators are:
 	* **IN: The exact match operation is used to filter for the value specified.**
 	* **NOT IN: The exact match operation is used to filter for the value that is not specified.**
-5. Select value for your filter. You can select multiple values. You can also filter and customize your result using the search option.![](./static/analyze-cost-for-gcp-using-perspectives-16.png)
+5. Select value for your filter. You can select multiple values. You can also filter and customize your result using the search option.
+   
+     ![](./static/analyze-cost-for-gcp-using-perspectives-16.png)
 
 ### Next Steps
 
-* [Create Cost Perspectives](/article/dvspc6ub0v-create-cost-perspectives)
+* [Create Cost Perspectives](../2-ccm-perspectives/1-create-cost-perspectives.md)
 

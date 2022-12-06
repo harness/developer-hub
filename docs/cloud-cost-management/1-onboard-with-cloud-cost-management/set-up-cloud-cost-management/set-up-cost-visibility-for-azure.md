@@ -10,8 +10,9 @@ helpdocs_is_published: true
 
 
 ```mdx-code-block
-import export_list from './static/set-up-cost-visibility-for-gcp-08.png'
-
+import select_azure from './static/set-up-cost-visibility-for-azure-02.png'
+import tenant_info from './static/set-up-cost-visibility-for-azure-03.png'
+import run_now from './static/set-up-cost-visibility-for-azure-09.png'
 ```
 
 Harness Cloud Cost Management (CCM) monitors the cloud costs of your Azure services. Connect your Azure account and set up Billing Export to get insights into your cloud infrastructure and Azure services such as Storage accounts, Virtual machines, Containers, and so on. CCM also allows you to optimize your instances and AKS clusters using intelligent cloud [AutoStopping rules](../../2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/1-add-connectors/1-auto-stopping-rules.md).
@@ -24,7 +25,7 @@ Harness Cloud Cost Management (CCM) monitors the cloud costs of your Azure servi
 * The same connector cannot be used in NextGen and FirstGen. For information on creating an Azure connector in the FirstGen see [Set Up Cost Visibility for Azure](https://docs.harness.io/article/7idbmchsim-set-up-cost-visibility-for-azure).
 * For CCM, Azure connectors are available only at the Account level in Harness.
 * You can create multiple Azure connectors for each Harness Account.
-* You can create multiple Azure connectors per Azure Tenant with unique subscription IDs.
+* You can create multiple Azure connectors per Azure Tenant with unique subscription IDs. You have to create separate connectors for subscriptions that 
 * If you have separate billing exports for each of your subscriptions in your Azure account, set up separate connectors in Harness to view the cloud cost of all the subscriptions in CCM.
 
 ## Prerequisites
@@ -46,17 +47,20 @@ Perform the following steps to connect to your Azure account:
 
   ![](static/set-up-cost-visibility-for-azure-01.png)
 2. Click **+ New Connector**.
-3. Under **Cloud Costs**, click **Azure**.![](static/set-up-cost-visibility-for-azure-02.png)
+3. Under **Cloud Costs**, click **Azure**.
+   ```mdx-code-block
+<img src={select_azure} alt="A screenshot that illstrates how and where to select the cloud provider." height="500" width="600" />
+	 
 4. In the **Azure Connector** wizard, in the **Overview** section, enter the following details:
 	1. **Connector name**: Enter a name for the connector
 	2. **Azure Tenant ID**: Enter the Tenant ID of your Azure AD account. A tenant represents an organization. It's a dedicated instance of Azure AD that an organization or app developer receives at the beginning of a relationship with Microsoft. Each Azure AD tenant is distinct and separate from other Azure AD tenants. To find your tenant ID, do the following:
 		1. Launch Azure Active Directory.
 		2. Copy the tenant ID from the Tenant information.
-    
-     ![](static/set-up-cost-visibility-for-azure-03.png)
+		
+    	
+	<img src={tenant_info} alt="A screenshot." height="500" width="500" />
 
-	 
-	   If you don't find the tenant ID in the Azure console, run the `az account show` command using the Azure CLI.
+	 If you don't find the tenant ID in the Azure console, run the `az account show` command using the Azure CLI.
 
 	3. **Azure Subscription ID**: Enter the Azure subscription ID. To find your Subscription ID, do the following:
    
@@ -67,8 +71,8 @@ Perform the following steps to connect to your Azure account:
      ![](static/set-up-cost-visibility-for-azure-04.png)
 	 
 	 If you don't find the Subscription ID in the Azure console, you can use Azure CLI. See [List your Azure subscriptions with CLI](https://docs.microsoft.com/en-us/azure/media-services/latest/setup-azure-subscription-how-to?tabs=cli).
-	2. **Description** (optional): Enter a brief description that conveys the purpose of this connector.
-	3. **Tag** (optional): Enter text to create a tag for this connector.
+	4. **Description** (optional): Enter a brief description that conveys the purpose of this connector.
+	5. **Tag** (optional): Enter text to create a tag for this connector.
 5. Click **Continue**.
 
 ### Azure Billing Exports
@@ -110,18 +114,19 @@ Billing export is used to get insights into your cloud infrastructure and Azure 
 
 5. Select the export that you created in the previous step and click **Run now**.
    
-     ![](static/set-up-cost-visibility-for-azure-09.png)
-6. In the Azure **Cost Management** portal, click the billing export that you created in the enable export billing step.
+<img src={run_now} alt="A screenshot" height="500" width="500" />
+
+1. In the Azure **Cost Management** portal, click the billing export that you created in the enable export billing step.
    
      ![](static/set-up-cost-visibility-for-azure-10.png)
-7. Enter the following details in Harness:
+2. Enter the following details in Harness:
 	1. In the **Storage account name**, enter the account name.
 	2. In **Storage Container**, enter the container name.
 	3. In **Storage Directory**, enter the directory name.
 	4. In **Report Name**, enter the report name.
    
      ![](static/set-up-cost-visibility-for-azure-11.png)
-8. Click **Continue**.
+3. Click **Continue**.
 
 ### Choose Requirements
 

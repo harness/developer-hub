@@ -17,18 +17,20 @@ You can also tune recommendations by changing the Quality of Service (QoS) and t
 This topic describes how CCM computes workload recommendations and how you can use them to potentially reduce monthly costs.
 
 Before using recommendations in your cluster environment, ensure that you evaluate their impact thoroughly. The person reviewing the recommendations should be able to understand the impacts identified in the recommendations, as well as the impact on the infrastructure and business.  
-Using recommendations without proper assessment could result in unexpected changes, such as issues with system performance or poor reliability.### Before You Begin
+Using recommendations without proper assessment could result in unexpected changes, such as issues with system performance or poor reliability.
 
-* [Set Up Cloud Cost Management for Kubernetes](/article/ltt65r6k39-set-up-cost-visibility-for-kubernetes)
-* [CCM Perspectives](/category/e7k0qds7tw-ccm-perspectives)
+## Before You Begin
 
-### Review: How are Workload Recommendations Computed?
+* [Set Up Cloud Cost Management for Kubernetes](../../1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-kubernetes.md)
+* [CCM Perspectives](../2-ccm-perspectives/1-create-cost-perspectives.md)
+
+## How are Workload Recommendations Computed?
 
 In Harness CCM, the workload recommendations are computed by analyzing the past utilization of CPU and memory of your workload. The implementation uses a histogram method to compute the recommendations.
 
 The computation adds a 15% buffer to the recommended resources by default. CCM also allows you to add any additional buffer using the Tune recommendations option.
 
-When you enable [Cost Visibility](https://ngdocs.harness.io/article/ltt65r6k39-set-up-cost-visibility-for-kubernetes) for your [Kubernetes Cluster](https://ngdocs.harness.io/article/1gaud2efd4-add-a-kubernetes-cluster-connector), the [Delegate](https://ngdocs.harness.io/article/2k7lnc7lvl-delegates-overview) associated with your Connector starts collecting CPU and memory resource utilization metrics for every node and pod (including individual containers) present in the cluster every minute using a metrics server.  CCM relies on the Metrics Server and initializes recommendations after an initial data collection of 24-48 hours. The Metrics Server is queried by the controller every minute for utilization data.
+When you enable [Cost Visibility](../../1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-kubernetes.md) for your [Kubernetes Cluster](https://ngdocs.harness.io/article/1gaud2efd4-add-a-kubernetes-cluster-connector), the [Delegate](https://ngdocs.harness.io/article/2k7lnc7lvl-delegates-overview) associated with your Connector starts collecting CPU and memory resource utilization metrics for every node and pod (including individual containers) present in the cluster every minute using a metrics server.  CCM relies on the Metrics Server and initializes recommendations after an initial data collection of 24-48 hours. The Metrics Server is queried by the controller every minute for utilization data.
 
 The utilization data collected every minute is then aggregated in the Delegate for a 20-minute window. The 20-minute aggregated data is then sent to Harness:
 
@@ -39,11 +41,13 @@ We use this data for further processing and to compute the complete histogram di
 
 Each of these daily histograms has an equal weightage for a given workload. As a result, if you select the last 30 days of data to aggregate, we will assign equal weightage to each of the 30 days.
 
-![](./static/workload-recommendations-00.png)You can choose to tune the recommendations by changing the Quality of Service (QoS) and the percentage of recommended CPU and memory requests/limits buffer. See Tune Recommendations.
+![](./static/workload-recommendations-00.png)
+
+You can choose to tune the recommendations by changing the Quality of Service (QoS) and the percentage of recommended CPU and memory requests/limits buffer. See Tune Recommendations.
 
 You can also customize your recommendations by increasing or decreasing the request and limit coverage of the CPU and memory samples. Simply drag the slider of the number of samples to adjust the percentile. The slider indicates the percentile of all the CPU and memory samples that are covered to compute the resource recommendations. Based on your selection, the recommendations for your workload are made.
 
-#### Why Histogram?
+## Why Histogram?
 
 A histogram is used to account for the seasonality of high resource utilization on certain days of the week. Assume your application receives a lot of traffic (and thus a lot of resource utilization) on weekends and we're using a decaying histogram. In that case:
 
@@ -52,14 +56,14 @@ A histogram is used to account for the seasonality of high resource utilization 
 
 To avoid this, we use the histogram method and give equal weight to all previous days.
 
-### Review: Types of Workload Recommendations
+##  Types of Workload Recommendations
 
 The recommendations are categorized as the following:
 
 * Cost Optimized
 * Performance Optimized
 
-#### Cost Optimized
+### Cost Optimized
 
 The cost-optimized recommendations are computed as the following:
 
@@ -70,13 +74,17 @@ The cost-optimized recommendations are computed as the following:
 
 Since the recommendations are computed using the 50th percentile of the CPU samples and memory peaks, this may potentially lead to system performance issues. Before using cost-optimized recommendations, ensure that you evaluate the recommendation's impact thoroughly.
 
-![](./static/workload-recommendations-01.png)#### Performance Optimized
+![](./static/workload-recommendations-01.png)
+
+### Performance Optimized
 
 The performance-optimized recommendations are computed using the 95th percentile of CPU samples and memory peaks. Because of this, the probability of having any effect on the performance is minimum. However, the cost may go high for the resources that are optimized using this method.
 
 The potential monthly spend and savings are calculated based on the 90th percentiles of CPU samples and memory peaks.
 
-![](./static/workload-recommendations-02.png)##### Example
+![](./static/workload-recommendations-02.png)
+
+#### Example
 
 Let's try to understand how the recommendations are computed using the following example. The following example illustrates how the resources can be optimized using the cost-optimized recommendations:
 
@@ -101,7 +109,7 @@ requests:
 ```
 The current resources are provisioned using `8Gi memory` and `1 CPU`, the recommended resources require only `3.5Gi memory` and `1.1m CPU` for limits and requests both.
 
-### Step: View Recommendations
+## View Recommendations
 
 Once you enable CCM, it may take up to 48 hours for the recommendations to appear in Cloud Costs. It depends on the time at which CCM receives the utilization data for the workload.In **Cloud Costs**, click **Recommendations**.
 
@@ -143,15 +151,15 @@ Within a recommendation, select the number of days to compute recommendations ba
 
 You can use this information to optimize your resources to potentially reduce your monthly cloud costs.
 
-### Step: Tune and Share Recommendations
+## Step: Tune and Share Recommendations
 
 Tune the recommendations by changing the Quality of Service (QoS) and the percentage of recommended CPU and memory requests/limits buffer.
 
-#### Quality Of Service(QoS) for Workloads
+### Quality Of Service(QoS) for Workloads
 
 You can set burstable or guaranteed QoS for recommended requests/limits. For more information on QoS, see [Configure Quality of Service for Pods](https://kubernetes.io/docs/tasks/configure-pod-container/quality-service-pod/).
 
-##### Burstable
+#### Burstable
 
 A pod is assigned to a QoS class of burstable if:
 
@@ -162,7 +170,7 @@ In this QoS class, resources can go beyond requests up to the limits. This recom
 
 We do not recommend CPU limits in the case of burstable QoS.
 
-##### Guaranteed
+#### Guaranteed
 
 In this Quality of Service (QoS) class, resource requests and limits are set to the same values. Setting them to the same values guarantees that the resources requested by the container will be available to it when it is scheduled. This is considered as the ideal QoS class for the most stable Kubernetes clusters.
 
@@ -176,9 +184,13 @@ For more information, see the [QoS class of Guaranteed](https://kubernetes.io/do
 To change the QoS, do the following:
 
 1. In the Recommendations details page, go to the **Tune** **Recommendations** section.
-2. In **Quality Of Service (QoS)**, select **Burstable** or **Guaranteed**.![](./static/workload-recommendations-04.png)Based on your selection, the recommendations for your resources are made.
+2. In **Quality Of Service (QoS)**, select **Burstable** or **Guaranteed**.
+   
+     ![](./static/workload-recommendations-04.png)
+   
+   Based on your selection, the recommendations for your resources are made.
 
-#### Buffer for Workloads
+### Buffer for Workloads
 
 You can set the percentage of buffer for recommended requests/limits.
 
@@ -188,11 +200,11 @@ In **% Buffer to be considered for CPU/Memory values**, drag the slider to incre
 
 The resource recommendations are based on the percentage of the buffer you set.
 
-#### Set CPU/Memory/Node count/Instance preferences
+### Set CPU/Memory/Node count/Instance preferences
 
-See [Optimize Kubernetes Costs with Node Pool Recommendations](/article/x75xp0xime-node-pool-recommendations).
+See [Optimize Kubernetes Costs with Node Pool Recommendations](node-pool-recommendations.md).
 
-#### Sharing Recommendations
+### Sharing Recommendations
 
 When you tune a recommendation, the URL for the recommendation captures your changes.
 
@@ -200,7 +212,7 @@ You can see the changes following `details?` in the URL. For example, `details?b
 
 Capturing your changes in the URL enables you to share your tuned recommendation and ensure others can see you tuning. Simply tune the recommendation and then share the URL.
 
-### Step: View Workload Details
+## View Workload Details
 
 You can also view the following information:
 
@@ -209,7 +221,9 @@ You can also view the following information:
 
 In the Recommendations details page, in **Workload Details**, click **View more details**.
 
-![](./static/workload-recommendations-05.png)The following details are displayed:
+![](./static/workload-recommendations-05.png)
+
+The following details are displayed:
 
 * **Workload details**: The following information is displayed:
 	+ Workload
@@ -218,15 +232,17 @@ In the Recommendations details page, in **Workload Details**, click **View more 
 	+ Cluster
 * **Cost details**: The following cost details are displayed:
 	+ **Total Cost**: For Kubernetes clusters, the total cost is the sum of all the node costs. For ECS clusters, the sum of all container instances.
-	+ **Idle Cost**: Idle cost is the cost of idle resources (CPU and memory) allocated to a Kubernetes pod or an Amazon ECS task but is not utilized. For more information, see [Idle Cost](/article/hs7cyi1nix-harness-key-cloud-cost-concepts#idle_cost).
+	+ **Idle Cost**: Idle cost is the cost of idle resources (CPU and memory) allocated to a Kubernetes pod or an Amazon ECS task but is not utilized. For more information, see [Idle Cost](../../1-onboard-with-cloud-cost-management/cloud-cost-management-overview/harness-key-cloud-cost-concepts.md).
 	+ **Utilized Cost**: Utilized cost is the cost estimate for the utilized node or pod resources.
 * **Aggregation**: The aggregated CPU and memory utilization value of your workload. The values are displayed as the following:
-	+ **Time-weighted**: This considers the active duration of pods when calculating the CPU and memory utilization.![](./static/workload-recommendations-06.png)
+	+ **Time-weighted**: This considers the active duration of pods when calculating the CPU and memory utilization.
+  
+      ![](./static/workload-recommendations-06.png)
 	+ **Absolute**: This simply aggregates the CPU and memory utilization values.![](./static/workload-recommendations-07.png)
 
 Let's try to understand how **time-weighted** and **absolute** values are calculated using the following examples:
 
-##### Example 1
+#### Example 1
 
 Let's assume you want to check the CPU requests of your workload between 3 a.m. and 4 a.m. Imagine there were two pods during that duration:
 
@@ -246,7 +262,7 @@ In the case of **absolute**, the utilization value is calculated as the followin
 
 which is equal to `0.4 + 0.4 = 0.8`
 
-##### Example 2
+#### Example 2
 
 Let's assume you want to check the CPU requests of three workloads in your cluster:
 
@@ -269,8 +285,8 @@ which is equal to `0.4 + 0.4 + 0.4 = 1.2`
 
 ### Next Steps
 
-* [Optimize Kubernetes Costs with Node Pool Recommendations](/article/x75xp0xime-node-pool-recommendations)
-* [Analyze Cost for Kubernetes Using Perspectives](/article/b8sdsxlfee-analyze-cost-for-kubernetes-using-perspectives)
+* [Optimize Kubernetes Costs with Node Pool Recommendations](node-pool-recommendations.md)
+* [Analyze Cost for Kubernetes Using Perspectives](../4-root-cost-analysis/analyze-cost-for-k8s-ecs-using-perspectives.md)
 
 ### See Also
 

@@ -16,16 +16,22 @@ Harness Cloud Cost Management (CCM) allows you to view your Azure costs at a gla
 * Resources that cost the most in the selected time range
 * Azure spending by region, for example, US East or US West
 
-![](./static/analyze-cost-for-azure-17.png)### Before You Begin
+![](./static/analyze-cost-for-azure-17.png)
 
-* [Set Up Cloud Cost Management for Azure](/article/v682mz6qfd-set-up-cost-visibility-for-azure)
+### Before You Begin
+
+* [Set Up Cloud Cost Management for Azure](../../1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-azure.md)
 
 ### Step: Analyze Azure Cost
 
 The Perspectives provides deep insights into your Azure costs. The cost includes all the applicable credits and discounts.
 
-1. In **Cloud Costs**, click **Perspectives**,and then click **Azure**. The Azure services are displayed.![](./static/analyze-cost-for-azure-18.png)
-2. Select the **date range** for the costs you want to analyze.![](./static/analyze-cost-for-azure-19.png)
+1. In **Cloud Costs**, click **Perspectives**,and then click **Azure**. The Azure services are displayed.
+   
+     ![](./static/analyze-cost-for-azure-18.png)
+2. Select the **date range** for the costs you want to analyze.
+     ![](./static/analyze-cost-for-azure-19.png)
+
 3. You can use the following options to **Group By**:
 	* **Azure**: Under Azure, you can Group by:
 		+ **Resource group name**: Resource group is a container that holds related resources that you want to manage as a group. Grouping by resource group name shows the cost of various resource groups present in your account.
@@ -52,14 +58,18 @@ The Perspectives provides deep insights into your Azure costs. The cost includes
 Perform the following steps to add filters.
 
 1. In **Cloud Costs**, click **Perspectives**,and then click **Azure**.
-2. Click **add filter**.![](./static/analyze-cost-for-azure-20.png)
+2. Click **add filter**.
+   
+     ![](./static/analyze-cost-for-azure-20.png)
 3. Select Azure, Region, Product, or Label.
 4. Select the operator. The supported operators are:
 	* **IN: The exact match operation is used to filter for the value specified.**
 	* **NOT IN: The exact match operation is used to filter for the value that is not specified.**
-5. Select value for your filter. You can select multiple values. You can also filter and customize your result using the search option.![](./static/analyze-cost-for-azure-21.png)
+5. Select value for your filter. You can select multiple values. You can also filter and customize your result using the search option.
+   
+     ![](./static/analyze-cost-for-azure-21.png)
 
 ### Next Steps
 
-* [Create Cost Perspectives](/article/dvspc6ub0v-create-cost-perspectives)
+* [Create Cost Perspectives](../2-ccm-perspectives/1-create-cost-perspectives.md)
 

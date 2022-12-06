@@ -18,22 +18,27 @@ Harness Cloud Cost Management (CCM) allows you to view your cloud costs at a gla
 * Cost of resources by label
 * Primary cost contributors, for example, Harness Service (microservices), Environment (infrastructure), or Tags (components tagged using Harness Tags)
 
-In this topic:
-
-* [Before You Begin](https://ngdocs.harness.io/article/b8sdsxlfee-analyze-cost-for-kubernetes-using-perspectives#undefined)
-* [Step: Analyze Kubernetes Cost](https://ngdocs.harness.io/article/b8sdsxlfee-analyze-cost-for-kubernetes-using-perspectives#step_analyze_kubernetes_cost)
-* [Option: Add Filter](https://ngdocs.harness.io/article/b8sdsxlfee-analyze-cost-for-kubernetes-using-perspectives#option_add_filter)
 
 ### Before You Begin
 
-* [Set up Cloud Cost Management for Kubernetes](/article/ltt65r6k39-set-up-cost-visibility-for-kubernetes)
+* [Set up Cloud Cost Management for Kubernetes](../../1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-kubernetes.md)
 
 ### Step: Analyze Kubernetes Cost
 
 The Perspectives provides deep insights into your Kubernetes Cluster costs. The cost includes all the applicable credits and discounts.
 
-1. In **Cloud Costs**, click **Perspectives**,and then click **Cluster**.![](./static/analyze-cost-for-k8s-ecs-using-perspectives-01.png)The Cluster services are displayed.![](./static/analyze-cost-for-k8s-ecs-using-perspectives-02.png)
-2. Select the date range, by clicking the calendar icon available at the top-right corner, for the costs you want to analyze. **Last 7 Days** is selected by default. You can choose **Select custom range** to customize it as per your preference.![](./static/analyze-cost-for-k8s-ecs-using-perspectives-03.png)
+1. In **Cloud Costs**, click **Perspectives**, and then click **Cluster**.
+   
+     ![](./static/analyze-cost-for-k8s-ecs-using-perspectives-01.png)
+   
+   The Cluster services are displayed.
+   
+     ![](./static/analyze-cost-for-k8s-ecs-using-perspectives-02.png)
+
+2. Select the date range, by clicking the calendar icon available at the top-right corner, for the costs you want to analyze. **Last 7 Days** is selected by default. You can choose **Select custom range** to customize it as per your preference.
+   
+     ![](./static/analyze-cost-for-k8s-ecs-using-perspectives-03.png)
+
 3. Selecting options under **Group By** offers you a unified view of your cloud cost data. You can use the following to group and filter your cloud cost data.
 * **Cluster**: Under Cluster, you can **Group By**:
 	+ **Cluster Name**: Total cost, Cost trend, Idle cost, Unallocated cost, and efficiency score for each cluster name.
@@ -61,10 +66,15 @@ The Perspectives provides deep insights into your Kubernetes Cluster costs. The 
 Perform the following steps to add filters.
 
 1. In **Cloud Costs**, click **Perspectives**,and then click **Cluster**.
-2. Click **add filter**.![](./static/analyze-cost-for-k8s-ecs-using-perspectives-04.png)
+2. Click **add filter**.
+   
+     ![](./static/analyze-cost-for-k8s-ecs-using-perspectives-04.png)
+
 3. Select Cluster, Region, Product, or Label.
 4. Select the operator. The supported operators are:
 	* **IN:** The exact match operation is used to filter for the value specified.
 	* **NOT IN:** The exact match operation is used to filter for the value that is not specified.
-5. Select value for your filter. You can select multiple values. You can also filter and customize your result using the search option.![](./static/analyze-cost-for-k8s-ecs-using-perspectives-05.png)
+5. Select value for your filter. You can select multiple values. You can also filter and customize your result using the search option.
+   
+     ![](./static/analyze-cost-for-k8s-ecs-using-perspectives-05.png)
 

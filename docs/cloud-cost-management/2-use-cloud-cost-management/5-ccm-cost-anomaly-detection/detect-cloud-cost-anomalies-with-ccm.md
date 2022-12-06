@@ -23,9 +23,9 @@ Cost anomaly detection points you to what you should be paying attention to keep
 
 CCM cost anomalies compare the previous cloud cost spends with the current spending to detect cost anomalies. If the actual cost incurred deviates substantially from the expected cost, then it can be a potential cost anomaly.
 
-### How Does Cost Anomaly Detection Work?
+## How Does Cost Anomaly Detection Work?
 
-CCM uses [statistical anomaly detection techniques](https://docs.harness.io/article/x0z3r0bv99-detect-cloud-cost-anomalies-with-ccm#anomaly_detection_techniques) and [Forecasting at scale](https://peerj.com/preprints/3190/) to determine cost anomalies. These methods can detect various types of anomalies, such as a one-time cost spike, gradual, or consistent cost increases.
+CCM uses statistical anomaly detection techniques and [Forecasting at scale](https://peerj.com/preprints/3190/) to determine cost anomalies. These methods can detect various types of anomalies, such as a one-time cost spike, gradual, or consistent cost increases.
 
 CCM analyzes 15 to 60 days of data to predict the cost. If the predicted cost and the actual cost incurred deviate beyond the fixed parameters (as described in the anomaly detection techniques), it is marked as a cost anomaly.
 
@@ -35,7 +35,7 @@ The anomaly detection techniques are run every 24 hours and the alert is trigger
 
 One of the challenges of anomaly detection is reducing the number of false positives and noisy alerts. To avoid this, CE uses the following prediction techniques to detect cost anomalies:
 
-##### Absolute Difference Method
+### Absolute Difference Method
 
 This method takes the absolute difference between the two variables in the dataset. CCM considers the actual and predicted cost as two variables. If the difference between the actual and predicted costs exceeds $75, then the cost is considered a potential anomaly.
 
@@ -47,7 +47,7 @@ The difference between the actual and predicted is $120 - $21 = $99 which is gre
 
 Hence, it is a potential cost anomaly.
 
-##### Relative Method
+### Relative Method
 
 In this method, if the actual cost is a minimum of 1.25 times higher than the predicted cost, then it is a potential cost anomaly.
 
@@ -57,13 +57,13 @@ For example, the difference between the actual and predicted is 120 / 21 = 5.71 
 
 Hence, it is a potential cost anomaly.
 
-##### Probability Method
+### Probability Method
 
 In this method, the algorithm uses a probability of 99% within a range to predict the cost.
 
 For example, the actual cost is predicted to be in the range of 10–14$ with a 99% probability. Anything that deviates from this range is a potential cost anomaly.
 
-### View Cost Anomalies
+## View Cost Anomalies
 
 You can view cost anomalies for the following:
 
@@ -76,15 +76,15 @@ Perform the following steps to view cost anomalies:
 
 1. In **Cloud Costs**, click **Anomalies**. The **Anomalies** page is displayed.  
 (Optional) You can create a filter to view details for the selected resources and spend amount. To create a filter:
-	1. Click the filter icon.
-	2. Enter a filter name and click **Save**.
-	3. To filter based on the spend amount, enter the minimum amount in the **Actual Spend** and **Anomalous Spend** fields.
-	4. Select the required cloud resources and/or clusters from the drop-down.
-	5. Click **Apply**.![](./static/detect-cloud-cost-anomalies-with-ccm-00.png)
+   1. Click the filter icon.
+   2. Enter a filter name and click **Save**.
+   3. To filter based on the spend amount, enter the minimum amount in the **Actual Spend** and **Anomalous Spend** fields.
+   4. Select the required cloud resources and/or clusters from the drop-down.
+   5. Click **Apply**.
+   
+     ![](./static/detect-cloud-cost-anomalies-with-ccm-00.png)
 
 The Anomalies page displays the following information based on the selected filter:
-
-
 
 |  |  |
 | --- | --- |
@@ -97,21 +97,32 @@ The Anomalies page displays the following information based on the selected filt
 | Variance | The percentage variation between the actual spend and the predicted spend. |
 | Resource | Detail of the resource on which the anomalous cost was detected. |
 
-1. From the **Resource**, click the anomaly for which you want to view the details.![](./static/detect-cloud-cost-anomalies-with-ccm-01.png)
-2. Click the three-dot and then click **This is false anomaly** to determine if this is a false anomalous event. This feature helps CCM [cost anomaly detection models](/article/x0z3r0bv99-detect-cloud-cost-anomalies-with-ccm#anomaly_detection_techniques) to learn and improve the algorithm to be more tailored to your assessments.![](./static/detect-cloud-cost-anomalies-with-ccm-02.png)
+2. From the **Resource**, click the anomaly for which you want to view the details.
+   
+3. Click the more actions menu (three-dot) and then click **This is false anomaly** to determine if this is a false anomalous event. This feature helps CCM cost anomaly detection models to learn and improve the algorithm to be more tailored to your assessments.
+   
+     ![](./static/detect-cloud-cost-anomalies-with-ccm-02.png)
 
 ### Create an anomaly alert for your Perspective
 
 You can create alerts to receive notifications when an anomaly is detected. To create an alert, perform the following steps:
 
 1. On the **Anomalies** page, click **Settings**.
-2. In **Alerts and notifications**, click **Create New Alert**.![](./static/detect-cloud-cost-anomalies-with-ccm-03.png)
+2. In **Alerts and notifications**, click **Create New Alert**.
+   
+     ![](./static/detect-cloud-cost-anomalies-with-ccm-03.png)
 3. Select the **Perspective** for which you want to create an alert.
 4. Click **add channel** to add anomaly alert channels.
 5. Select **Slack Webhook URL** or **Email** and enter the details to receive notifications. To learn how to create a Slack webhook URL, see [Send Notifications Using Slack](https://docs.harness.io/article/h5n2oj8y5y-send-notifications-using-slack#step_1_create_a_slack_app_and_webhook_for_your_channel).
 6. Click **Save and Continue**.  
-An anomaly alert is created. Click the alert to view the anomalies on the **Perspectives** page.![](./static/detect-cloud-cost-anomalies-with-ccm-04.png)
-7. Hover over the number of anomalies on the graph to apply anomaly filters and view anomalies as shown below:![](./static/detect-cloud-cost-anomalies-with-ccm-05.gif)
+   An anomaly alert is created. Click the alert to view the anomalies on the **Perspectives** page.
+
+   ![](./static/detect-cloud-cost-anomalies-with-ccm-04.png)
+   	  
+
+7. Hover over the number of anomalies on the graph to apply anomaly filters and view anomalies as shown below:
+   
+     ![](./static/detect-cloud-cost-anomalies-with-ccm-05.gif)
 
 For example, when you click the GCP perspective, it displays the data for the entire GCP ecosystem. There are multiple anomalies in the given example. Hovering over the graph displays two links:
 

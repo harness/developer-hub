@@ -10,8 +10,10 @@ helpdocs_is_published: true
 
 
 ```mdx-code-block
+import select_gcp from './static/set-up-cost-visibility-for-gcp-01.png'
 import create_dataset from './static/set-up-cost-visibility-for-gcp-02.png'
 import dataset_name from './static/set-up-cost-visibility-for-gcp-03.png'
+import dataset_permissions from './static/set-up-cost-visibility-for-gcp-09.png'
 ```
 
 Harness Cloud Cost Management (CCM) monitors the cloud costs of your GCP products, projects, SKUs, and location. As a first step, you need to connect Harness to your GCP account to get insights into your cloud infrastructure, and GCP services, Compute Engine, Cloud Storage, BigQuery, etc. CCM offers a wide range of features to track and control costs associated with your cloud resources.
@@ -39,8 +41,10 @@ Connect Harness to your GCP account to gain access your GCP services, Compute En
     ![](./static/set-up-cost-visibility-for-gcp-00.png)
 2. In **Connectors**, click **+ Connector**.
 3. In **Cloud Costs**, click **GCP**.
+   
+   ```mdx-code-block
+<img src={select_gcp} alt="A screenshot that illstrates how and where to select the cloud provider." height="500" width="600" />
 
-    ![](./static/set-up-cost-visibility-for-gcp-01.png)
 ### Overview
 4. In **Overview**, in **Connector Name**, enter a name that describes this account.
 5. In **Specify Project ID**, enter the project ID and click **Continue**. For more information on how to get a project ID, see [Create a BigQuery dataset](https://cloud.google.com/billing/docs/how-to/export-data-bigquery-setup#create-bq-dataset).
@@ -55,7 +59,7 @@ Cloud Billing export to BigQuery enables you to export detailed Google Cloud bil
   
   
   ```mdx-code-block
-<img src={create_dataset} alt="A screenshot that illstrates how and where to create a dataset in your GCP console." height="500" width="700" />
+<img src={create_dataset} alt="A screenshot that illstrates how and where to create a dataset in your GCP console." height="500" width="600" />
 
 4. Enter a **Dataset Name**.  
 You need to enter Dataset Name in Harness.
@@ -68,8 +72,11 @@ You need to enter Dataset Name in Harness.
   ```mdx-code-block
 <img src={dataset_name} alt="A screenshot that illstrates how and where to enter the dataset name." height="500" width="600" />
 
-10. Next, you need to enter the table name in Harness. From the GCP console, copy the table name where the billing export is available. In your BigQuery dataset, the table is named `gcp_billing_export_v1_<BILLING_ACCOUNT_ID>`.![](./static/set-up-cost-visibility-for-gcp-04.png)Enter the **Table Name** in Harness.
-11. Click **Continue**. When you are done it will look something like this:
+10. Next, you need to enter the table name in Harness. From the GCP console, copy the table name where the billing export is available. In your BigQuery dataset, the table is named `gcp_billing_export_v1_<BILLING_ACCOUNT_ID>`.
+  
+    ![](./static/set-up-cost-visibility-for-gcp-04.png)
+11. Enter the **Table Name** in Harness.
+12. Click **Continue**. When you are done it will look something like this:
   
   ![](./static/set-up-cost-visibility-for-gcp-05.png)
 
@@ -77,7 +84,9 @@ You need to enter Dataset Name in Harness.
 
 Select the Cloud Cost Management features that you would like to use on your GCP account.
 
-![](./static/set-up-cost-visibility-for-gcp-06.png)CCM offers the following features:
+![](./static/set-up-cost-visibility-for-gcp-06.png)
+
+CCM offers the following features:
 
 | **Features**  | **Capabilities** | 
 | --- | --- | 
@@ -97,16 +106,19 @@ Cloud Billing Export to BigQuery helps you export detailed Google Cloud billing
 3. Select your project in the left panel.
 4. Select your dataset. For more information on creating a dataset, see [Creating datasets](https://cloud.google.com/bigquery/docs/datasets).
 
-  [![](./static/set-up-cost-visibility-for-gcp-07.png)](./static/set-up-cost-visibility-for-gcp-07.png)
+  ![](./static/set-up-cost-visibility-for-gcp-07.png)
 5. Click **SHARE DATASET**.
 6. In **Dataset permissions**, in **Add members**, enter the Harness service account as a member.  
     Copy the service account detail from Harness. The service account is generated dynamically for your account.
 7. In **Select a** **role**, select **BigQuery Data Viewer**, and then click **Add**.
 8. Click **Done**.  
-When you are done, the following screen is displayed:
-  [![](./static/set-up-cost-visibility-for-gcp-09.png)](./static/set-up-cost-visibility-for-gcp-09.png)
-    
-  To enable AutoStopping rules, you need to add more permissions. For more information, see [Create a GCP Connector for AutoStopping Rules](../o2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/1-add-connectors/create-a-gcp-connector-for-auto-stopping-rules.md).
+    When you are done, the following screen is displayed:
+  
+  ```mdx-code-block
+<img src={dataset_permissions} alt="A screenshot that illstrates how and where to enter the dataset name." height="500" width="600" />
+
+
+To enable AutoStopping rules, you need to add more permissions. For more information, see [Create a GCP Connector for AutoStopping Rules](../o2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/1-add-connectors/create-a-gcp-connector-for-auto-stopping-rules.md).
 9. Click **Continue** in Harness.
 
 
@@ -114,7 +126,9 @@ When you are done, the following screen is displayed:
 
 The connection is validated and verified in this step. After successfully testing the connection, click **Finish**.
 
-![](./static/set-up-cost-visibility-for-gcp-12.png)Your connector is now listed in the **Connectors**.
+![](./static/set-up-cost-visibility-for-gcp-12.png)
+
+Your connector is now listed in the **Connectors**.
 
 ![](./static/set-up-cost-visibility-for-gcp-13.png)
 

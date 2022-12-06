@@ -14,37 +14,31 @@ Recommendations are produced by analyzing your historical utilization metrics. C
 
 This topic describes how CCM computes node pool recommendations and how you can use them to potentially reduce monthly costs.
 
+
+:::note
 Before using recommendations in your cluster environment, ensure that you evaluate their impact thoroughly. The person reviewing the recommendations should be able to understand the impacts identified in the recommendations, as well as the impact on the infrastructure and business.  
   
-Using recommendations without proper assessment could result in unexpected changes, such as issues with system performance or poor reliability.### Before You Begin
+Using recommendations without proper assessment could result in unexpected changes, such as issues with system performance or poor reliability.
+:::
 
-* [Set Up Cloud Cost Management for Kubernetes](/article/ltt65r6k39-set-up-cost-visibility-for-kubernetes)
-* [CCM Perspectives](/category/e7k0qds7tw-ccm-perspectives)
+## Before You Begin
 
-### Prerequisites
+* [Set Up Cloud Cost Management for Kubernetes](../../1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-kubernetes.md)
+* [CCM Perspectives](../2-ccm-perspectives/1-create-cost-perspectives.md)
+
+## Prerequisites
 
 Harness CCM uses labels to process node pool recommendations. Make sure to add one of the labels listed in the following table for the respective cloud providers:
 
 
 
-|  |  |
+|  **Cloud provider**| **Labels** |
 | --- | --- |
-| **Cloud provider** | **Labels** |
-| Amazon Web Services (AWS) | * `eks.amazonaws.com/nodegroup​`
-* `alpha.eksctl.io/nodegroup-name​`
-* `node-pool-name​`
-* `kops.k8s.io/instancegroup`
- |
-| Google Cloud Platform (GCP) | * `cloud.google.com/gke-nodepool`
-* `node-pool-name​`
-* `kops.k8s.io/instancegroup`
- |
-| Microsoft Azure | * `Agentpool​`
-* `node-pool-name​`
-* `kops.k8s.io/instancegroup`
- |
+| Amazon Web Services (AWS) |<ul><li>`eks.amazonaws.com/nodegroup​`</li> <li>`alpha.eksctl.io/nodegroup-name​`</li><li> `node-pool-name​`</li><li> `kops.k8s.io/instancegroup`</li></ul>|
+| Google Cloud Platform (GCP) |  <ul><li>`cloud.google.com/gke-nodepool`</li><li> `node-pool-name​`</li><li> `kops.k8s.io/instancegroup`</li></ul>|
+| Microsoft Azure | <ul><li> `Agentpool​`</li><li> `node-pool-name​` </li><li>`kops.k8s.io/instancegroup`</li></ul>|
 
-### Review: How are Node Pool Recommendations Computed?
+## How are Node Pool Recommendations Computed?
 
 The node pool recommendations are computed by analyzing historical utilization data and requests metrics of Pods. CCM recommends the optimal resource configurations for the Spot and On-demand instances. It uses the following parameters to determine the maximum node counts:
 
@@ -102,9 +96,12 @@ Similarly, for memory, nodes will be the max number of nodes in the observation 
 
 Node pool recommendations also offer the flexibility of tuning the recommendations by setting the resource configuration preferences. See [Tune Recommendations](/article/x75xp0xime-node-pool-recommendations#step_tune_recommendations).
 
-### Step: View Recommendations
+## View Recommendations
 
-Once you enable CCM, it may take up to 48 hours for the recommendations to appear in Cloud Costs. It depends on the time at which CCM receives the utilization data for the workload.In **Cloud Costs**, click **Recommendations**.
+
+:::note
+After enabling CCM, it may take up to 48 hours for the recommendations to appear in Cloud Costs. It depends on the time at which CCM receives the utilization data for the workload.In **Cloud Costs**, click **Recommendations**.
+:::
 
 The recommendations page displays the following information:
 
@@ -127,7 +124,9 @@ The **Recommendation Breakdown** displays the following information:
 
 You can use a filter to select the resource or recommendation for which you want to view the details.
 
-![](./static/node-pool-recommendations-08.png)You can create and use filters to select resources and recommendations.
+![](./static/node-pool-recommendations-08.png)
+
+You can create and use filters to select resources and recommendations.
 
 You can filter by:
 
@@ -161,23 +160,31 @@ To tune your recommendations, set your preferences for the following resources:
 
 #### Option: Preferred Resource Needs
 
-The value for CPU and memory is auto-populated by aggregating the resource utilization and request across all pods running across nodes in the node pool. See [How are Node Pool Recommendations Computed?](/article/x75xp0xime-node-pool-recommendations#review_how_are_node_pool_recommendations_computed).
+The value for CPU and memory is auto-populated by aggregating the resource utilization and request across all pods running across nodes in the node pool. 
 
 * **CPU (vCPU)**: Set preferences for the CPU.
 * **RAM (GiB)**: Set preferences for memory.
 * **Buffer**: This section allows you to add an additional buffer to the resources for calculating the recommendations.
 
-By default, the recommendation computation adds a 15% buffer to the recommended resources. This option allows you to add an additional buffer to your resources.![](./static/node-pool-recommendations-09.png)Once you apply the preferences, modified values are used for calculating the recommendations.
+By default, the recommendation computation adds a 15% buffer to the recommended resources. This option allows you to add an additional buffer to your resources.
+
+![](./static/node-pool-recommendations-09.png)
+
+Once you apply the preferences, modified values are used for calculating the recommendations.
 
 #### Option: Largest Workload Requirements
 
 The maximum workload that is observed based on the historical utilization that is scheduled on the nodes is used to calculate the value for this field. You can customize your CPU (vCPU) and RAM options (GiB).
 
-![](./static/node-pool-recommendations-10.png)#### Option: Preferred Minimum Node Count
+![](./static/node-pool-recommendations-10.png)
+
+#### Option: Preferred Minimum Node Count
 
 This option allows you to set the number of minimum nodes that are used for the recommendation. Use the **+** button to increase the node count and click **-** to decrease the node count.
 
-![](./static/node-pool-recommendations-11.png)#### Option: Preferred Instance families
+![](./static/node-pool-recommendations-11.png)
+
+#### Option: Preferred Instance families
 
 You can use this option to limit the recommendations to a certain machine type/instance family. For example, you have RIs/commitments on a specific machine type and only want to use that instance family.
 
@@ -185,9 +192,13 @@ In **Preferred Instance families**, click **add preferred instance families**.
 
 Select your preferences and click **Save Preferences**. The category of the instance families will depend on the cloud provider type. The following example shows the GKE.
 
-![](./static/node-pool-recommendations-12.png)Once, you've made all the changes, click **Apply Preferences** or click **Reset to default**.
+![](./static/node-pool-recommendations-12.png)
 
-![](./static/node-pool-recommendations-13.png)#### Sharing Recommendations
+Once, you've made all the changes, click **Apply Preferences** or click **Reset to default**.
+
+![](./static/node-pool-recommendations-13.png)
+
+#### Sharing Recommendations
 
 When you tune a recommendation, the URL for the recommendation captures your changes.
 
@@ -197,5 +208,5 @@ Capturing your changes in the URL enables you to share your tuned recommendation
 
 ### Next Steps
 
-* [Optimize Kubernetes Costs with Workload Recommendations](/article/o75arkcg8i-workload-recommendations)
+* [Optimize Kubernetes Costs with Workload Recommendations](workload-recommendations.md)
 
