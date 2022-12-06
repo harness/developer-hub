@@ -38,7 +38,7 @@ This topic provides an overview of how Harness Policy Engine works with Feature 
 
 Before using Harness Policy Engine, you should understand the following:
 
-* [Harness' Key Concepts](https://docs.harness.io/article/hv2758ro4e-learn-harness-key-concepts)
+* [Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md)
 * [How to Write](https://www.openpolicyagent.org/docs/latest/policy-language/) [Rego for OPA](https://www.openpolicyagent.org/docs/latest/policy-language/)
 
 New to Rego? Use the following resources to learn it:

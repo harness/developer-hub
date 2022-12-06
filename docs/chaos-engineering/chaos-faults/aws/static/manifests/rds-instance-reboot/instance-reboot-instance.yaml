@@ -1,0 +1,23 @@
+# reboot the RDS instances
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: rds-instance-reboot
+    spec:
+      components:
+        env:
+        # provide the RDS instance identifier
+        - name: RDS_INSTANCE_IDENTIFIER
+          value: 'rds-demo-instance-1,rds-demo-instance-2'
+        - name: INSTANCE_AFFECTED_PERC
+          value: '100'
+        - name: REGION
+          value: 'us-east-2'
+        - name: TOTAL_CHAOS_DURATION
+          value: '60'

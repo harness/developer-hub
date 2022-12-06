@@ -1,0 +1,14 @@
+{
+    "label":"Install on Virtual Machine",
+    "position": 40,
+    "collapsible":"true",
+    "collapsed":"true",
+    "className":"red",
+    "link":{
+       "type":"generated-index",
+       "title":"Install on Virtual Machine"
+    },
+    "customProps":{
+       "helpdocs_category_id":"ubhcaw8n0l"
+    }
+ }

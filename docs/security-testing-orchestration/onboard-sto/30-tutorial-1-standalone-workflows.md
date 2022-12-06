@@ -45,7 +45,7 @@ This workflow is supported for scanners that provide methods for transferring da
 
 ### Review: Scanner Coverage
 
-See **Security Testing Orchestration** in [Supported Platforms and Technologies](https://docs.harness.io/article/1e536z41av-supported-platforms-and-technologies).
+See **Security Testing Orchestration** in [Supported Platforms and Technologies](../../getting-started/supported-platforms-and-technologies.md).
 
 ### Stand-Alone STO Workflows
 

@@ -296,14 +296,14 @@ Following Platform Chaos faults are available:
     <td><a href="/docs/chaos-engineering/chaos-faults/aws/ecs-instance-stop">ecs-instance-stop</a></td>
   </tr>
   <tr>
-    <td>Lambda Update Function Timeout</td>
-    <td>Injects AWS update function timeout chaos</td>
-    <td><a href="/docs/chaos-engineering/chaos-faults/aws/lambda-update-function-timeout">lambda-update-function-timeout</a></td>
+    <td>RDS Instance Delete</td>
+    <td>Injects RDS instance delete chaos on target RDS instance/cluster</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/aws/rds-instance-delete">rds-instance-delete</a></td>
   </tr>
   <tr>
-    <td>Lambda Update Function Memory</td>
-    <td>Injects AWS update function memory limit chaos</td>
-    <td><a href="/docs/chaos-engineering/chaos-faults/aws/lambda-update-function-memory">lambda-update-function-memory</a></td>
+    <td>RDS Instance Reboot</td>
+    <td>Injects RDS instance reboot chaos on target RDS instance/cluster</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/aws/rds-instance-reboot">rds-instance-reboot</a></td>
   </tr>
 </table>
 
