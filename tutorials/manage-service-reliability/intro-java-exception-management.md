@@ -38,7 +38,7 @@ Following are the types of Java exceptions:
 
 ## Dealing with exceptions – a repeatable process
 
-Even though it is difficult to remove all the exceptions, it is important to identify the problematic exceptions and prevent them from escaping into production as they can negatively impact the users. You can use a three-step process to identify, resolve, and prevent to minimize the bad exceptions.
+Even though it is difficult to remove all the exceptions, it is important to identify the problematic exceptions and prevent them from escaping into production as they can negatively impact the users. You can use a three-step process to identify, resolve, and prevent bad exceptions.
 
 
 ### Identify critical issues
@@ -49,7 +49,7 @@ Proactively identify runtime exceptions and slowdowns in every release including
 
 Reproduce any exception or slowdown with the complete source code, variables, DEBUG logs, and environment state. You need purpose-built tools such as Harness Java Exception Tracker to do this. After you get the context, fix all the exceptions, even if they are not logged.
 
-### Prevent using a Java Exception Tracker
+### Prevent exceptions using a Java Exception Tracker
 
 You need to identify the exceptions every time the code is checked in and collect the logs required to fix the exceptions. However, static analysis and testing do not detect all the issues. You can use a Java Exception Tracker to perform runtime code analysis that identifies unknown issues and prevents them from being deployed.
 
