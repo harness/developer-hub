@@ -54,7 +54,45 @@ Click on ‘Next’ and download the YAML file that contains information to crea
 ![Download YAML](./static/chaos-exp-with-kube-cluster/download-yaml.png)
 
 Execute the command you just copied on your terminal. Ensure you are in the folder where this YAML file is present or specify the location of the YAML file. This YAML file creates the necessary configuration and environment required to set up your application and chaos access pods.
-![Execute command](./static/chaos-exp-with-kube-cluster/execute-command.png)
+```
+❯ kubectl apply -f <yaml-file-name.yaml>
+
+namespace/hce created
+serviceaccount/hce created
+deployment.apps/chaos-operator-ce created
+deployment.apps/chaos-exporter created
+service/chaos-exporter created
+customresourcedefinition.apiextensions.k8s.io/clusterworkflowtemplates.argoproj.io created
+customresourcedefinition.apiextensions.k8s.io/cronworkflows.argoproj.io created
+customresourcedefinition.apiextensions.k8s.io/workflows.argoproj.io created
+customresourcedefinition.apiextensions.k8s.io/workflowtemplates.argoproj.io created
+customresourcedefinition.apiextensions.k8s.io/workflowtasksets.argoproj.io created
+customresourcedefinition.apiextensions.k8s.io/workflowtaskresults.argoproj.io created
+customresourcedefinition.apiextensions.k8s.io/chaosengines.litmuschaos.io created
+customresourcedefinition.apiextensions.k8s.io/chaosexperiments.litmuschaos.io created
+customresourcedefinition.apiextensions.k8s.io/chaosresults.litmuschaos.io created
+configmap/workflow-controller-configmap created
+service/workflow-controller-metrics created
+deployment.apps/workflow-controller created
+configmap/subscriber-config created
+secret/subscriber-secret created
+deployment.apps/subscriber created
+serviceaccount/litmus-cluster-scope created
+clusterrole.rbac.authorization.k8s.io/litmus-cluster-scope created
+clusterrolebinding.rbac.authorization.k8s.io/litmus-cluster-scope created
+serviceaccount/litmus-admin created
+clusterrole.rbac.authorization.k8s.io/litmus-admin created
+clusterrolebinding.rbac.authorization.k8s.io/litmus-admin created
+serviceaccount/argo-chaos created
+clusterrole.rbac.authorization.k8s.io/chaos-cluster-role created
+clusterrolebinding.rbac.authorization.k8s.io/chaos-cluster-role-binding created
+clusterrole.rbac.authorization.k8s.io/subscriber-cluster-role created
+clusterrolebinding.rbac.authorization.k8s.io/subscriber-cluster-role-binding created
+serviceaccount/argo created
+clusterrole.rbac.authorization.k8s.io/argo-cluster-role created
+clusterrolebinding.rbac.authorization.k8s.io/argo-binding created
+```
+
 
 Once all the resources have been created, your chaos infrastructure shows ‘Connected’. This indicates that your cluster has successfully connected to your chaos infrastructure. This may take about 2 to 4 minutes to connect.
 ![Enable Chaos](./static/chaos-exp-with-kube-cluster/enable-chaos.png)
