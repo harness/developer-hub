@@ -49,7 +49,7 @@ You can pass the VM credentials as secrets or as an chaosengine ENV variable.
 ## Experiment tunables
 
 <details>
-    <summary>Check the Experiment Tunables</summary>
+    <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>
     <table>
         <tr>
@@ -133,7 +133,7 @@ You can pass the VM credentials as secrets or as an chaosengine ENV variable.
     </table>
 </details>
 
-## Experiment Examples
+## Fault Examples
 
 ### Common Experiment Tunables
 
