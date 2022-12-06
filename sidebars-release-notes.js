@@ -175,6 +175,12 @@ const sidebars = {
         },
       ],
     },
+    {
+      type: "link",
+      label: "Subscribe RSS feed",
+      href: "/release-notes/rss.xml",
+      className: "sidebar-item-rss",
+    },
 
     //Additional Items in this parent can go here.
   ],

@@ -296,6 +296,9 @@
 .color-ce {
   color: var(--mod-ce-200);
 }
+.table-of-contents ul li span[class*="color-"] {
+  color: unset;
+}
 .theme-doc-markdown h3 {
   display: flex;
 }
@@ -376,6 +379,15 @@ button[title="Copy"] {
 body.DocSearch--active #__docusaurus > div[class*="announcementBar"] {
   /* hide the announcement bar while the search bar called out */
   display: none;
+}
+
+.theme-doc-sidebar-container .sidebar-item-rss > a {
+  display: flex;
+  align-items: center;
+}
+.theme-doc-sidebar-container .sidebar-item-rss > a::after {
+  content: url(/img/icon_rss.svg);
+  margin-left: 0.3em;
 }
 
 /* customize LHS menu items */
