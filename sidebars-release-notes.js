@@ -178,8 +178,11 @@ const sidebars = {
     {
       type: "link",
       label: "Subscribe RSS feed",
-      href: "/release-notes/rss.xml",
+      href: "pathname:///release-notes/rss.xml",
       className: "sidebar-item-rss",
+      customProps: {
+        target: "_blank",
+      },
     },
 
     //Additional Items in this parent can go here.

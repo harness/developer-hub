@@ -385,6 +385,9 @@ body.DocSearch--active #__docusaurus > div[class*="announcementBar"] {
   display: flex;
   align-items: center;
 }
+.theme-doc-sidebar-container .sidebar-item-rss > a > svg {
+  display: none;
+}
 .theme-doc-sidebar-container .sidebar-item-rss > a::after {
   content: url(/img/icon_rss.svg);
   margin-left: 0.3em;
