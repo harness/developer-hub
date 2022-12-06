@@ -1,0 +1,14 @@
+{
+  "label": "24/7 Service Guard",
+  "position": 15,
+  "collapsible": "true",
+  "collapsed": "true",
+  "className": "red",
+  "link": {
+    "type": "generated-index",
+    "title": "24/7 Service Guard"
+  },
+  "customProps": {
+    "helpdocs_category_id": "kam4aj3pd4"
+  }
+}

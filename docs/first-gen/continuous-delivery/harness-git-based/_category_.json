@@ -1,0 +1,14 @@
+{
+  "label": "Harness Git-based How-tos",
+  "position": 600,
+  "collapsible": "true",
+  "collapsed": "true",
+  "className": "red",
+  "link": {
+    "type": "generated-index",
+    "title": "Harness Git-based How-tos"
+  },
+  "customProps": {
+    "helpdocs_category_id": "goyudf2aoh"
+  }
+}

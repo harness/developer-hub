@@ -1,0 +1,14 @@
+{
+  "label": "Add Pipelines",
+  "position": 50,
+  "collapsible": "true",
+  "collapsed": "true",
+  "className": "red",
+  "link": {
+    "type": "generated-index",
+    "title": "Add Pipelines"
+  },
+  "customProps": {
+    "helpdocs_category_id": "aa3bkrzgqi"
+  }
+}

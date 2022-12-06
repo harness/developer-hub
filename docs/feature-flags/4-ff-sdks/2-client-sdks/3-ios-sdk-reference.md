@@ -17,7 +17,9 @@ This topic describes how to use the Harness Feature Flags iOS SDK for your iOS a
 
 For getting started quickly, you can use our [sample code from the SDK README](https://github.com/harness/ff-ios-client-sdk/blob/main/README.md). You can also [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) and run a sample application from the [iOS SDK GitHub Repository.](https://github.com/harness/ff-ios-client-sdk)
 
-The SDK caches your Feature Flags. If the cache can't be accessed, the `defaultValue` is used.### Before you begin
+The SDK caches your Feature Flags. If the cache can't be accessed, the `defaultValue` is used.
+
+### Before you begin
 
 Make sure you read and understand:
 
@@ -271,7 +273,9 @@ There are different methods for the different Variation types and for each metho
 * Identifier of the Flag you want to evaluate
 * The default Variation
 
-The Flag is evaluated against the Target you pass in when initializing the SDK.#### Evaluate a string Variation
+The Flag is evaluated against the Target you pass in when initializing the SDK.
+
+#### Evaluate a string Variation
 
 
 ```

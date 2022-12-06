@@ -1,0 +1,14 @@
+{
+  "label": "AppDynamics Verification",
+  "position": 30,
+  "collapsible": "true",
+  "collapsed": "true",
+  "className": "red",
+  "link": {
+    "type": "generated-index",
+    "title": "AppDynamics Verification"
+  },
+  "customProps": {
+    "helpdocs_category_id": "bpoqe48x7r"
+  }
+}

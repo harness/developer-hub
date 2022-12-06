@@ -1,0 +1,14 @@
+{
+  "label": "ELK Elasticsearch Verification",
+  "position": 80,
+  "collapsible": "true",
+  "collapsed": "true",
+  "className": "red",
+  "link": {
+    "type": "generated-index",
+    "title": "ELK Elasticsearch Verification"
+  },
+  "customProps": {
+    "helpdocs_category_id": "ytuafly1jg"
+  }
+}

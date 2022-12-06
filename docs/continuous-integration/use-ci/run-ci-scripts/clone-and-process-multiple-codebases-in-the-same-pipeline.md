@@ -98,7 +98,9 @@ Now the Dockerfile is in the correct location to build the image:
 
 Now that the files from your repos are in one common workspace, you can add a Build Step (in this case, Build and Push an Image to Docker Registry) to your Stage.
 
-![](./static/clone-and-process-multiple-codebases-in-the-same-pipeline-03.png)### Step 5: Run the Pipeline
+![](./static/clone-and-process-multiple-codebases-in-the-same-pipeline-03.png)
+
+### Step 5: Run the Pipeline
 
 Now you can run your Pipeline.
 

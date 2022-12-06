@@ -87,7 +87,9 @@ Pipelines are a collection of one or more stages. They manage and automate build
 * Click **Pipelines** and then **Create a Pipeline**.
 * Enter the name **CI Pipeline** and click **Start**.
 
-As you enter a name for the Pipeline, the ID for the Pipeline is created. A Pipeline name can change, but an ID is permanent. The ID is how you can reference subordinate elements of a Pipeline, such as the names of variables within the Pipeline.### Step 2: Set Up the Build Stage
+As you enter a name for the Pipeline, the ID for the Pipeline is created. A Pipeline name can change, but an ID is permanent. The ID is how you can reference subordinate elements of a Pipeline, such as the names of variables within the Pipeline.
+
+### Step 2: Set Up the Build Stage
 
 The "work horse" of most CI Pipelines is the Build Stage. This is where you specify the end-to-end workflow for your build: the codebase to build, the infrastructure to build it, where to post the finished artifact, and any additional tasks (such as automated tests or validations) you want the build to run.
 
