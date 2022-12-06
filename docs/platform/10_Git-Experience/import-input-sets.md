@@ -34,8 +34,14 @@ This topic shows you how to import an Input Set to the CD module.
 
 1. In Harness, click **Deployments**.
 2. Select your Project and click on **Pipelines** and click on **Input Sets**.
-3. Click **New Input Set** and select **Import From Git**.![](./static/import-input-sets-00.png)
-The **Import Input Set From Git** settings appear.![](./static/import-input-sets-01.png)
+3. Click **New Input Set** and select **Import From Git**.
+   
+   ![](./static/import-input-sets-00.png)
+   
+   The **Import Input Set From Git** settings appear.
+   
+   ![](./static/import-input-sets-01.png)
+
 4. Enter a **Name** for your Input Set.
 5. Harness fetches the following details and auto-fills them:
 	1. **Git Connector**

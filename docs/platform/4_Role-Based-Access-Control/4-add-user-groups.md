@@ -22,11 +22,11 @@ This topic assumes you have a Harness Project set up. If not, see [Create Organ
 
 You can add a User Group in Project/Organization/Account scope. To do this, go to Project SETUP, Organization, or Account Resources.
 
-In your **Project/Org/****Account**, and click **Project/Org/Account SETUP**.
+In your **Project/Org/Account**, and click **Project/Org/Account SETUP**.
 
 Click **Access Control**.
 
-In **User Groups** click **New User** **Group****.** The New User Group settings appear.
+In **User Groups** click **New User Group**. The New User Group settings appear.
 
 ![](./static/add-user-groups-49.png)
 Enter a **Name** for your **User Group**.

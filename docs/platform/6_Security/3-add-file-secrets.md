@@ -15,7 +15,7 @@ This topic describes how to add an encrypted file in Harness.
 
 ### Step 1: Add Encrypted File
 
-This topic assumes you have a Harness Project set up. If not, see [Create Organizations and Projects](../1_Organizations and Projects/create-an-organization.md).
+This topic assumes you have a Harness Project set up. If not, see [Create Organizations and Projects](../1_Organizations-and-Projects/2-create-an-organization.md).
 
 You can add an encrypted file at Project/Organization/Account scope. To do this, go to Project setup, Organization, or Account Resources.
 

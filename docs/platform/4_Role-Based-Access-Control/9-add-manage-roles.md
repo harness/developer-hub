@@ -23,11 +23,11 @@ The **Account Admin** Role has permissions for all the resources within the Acco
 ![](./static/add-manage-roles-17.png)
 ### Step: Add a New Role
 
-This topic assumes you have a Harness Project set up. If not, see [Create Organizations and Projects](../1_Organizations and Projects/create-an-organization.md).
+This topic assumes you have a Harness Project set up. If not, see [Create Organizations and Projects](../1_Organizations-and-Projects/2-create-an-organization.md).
 
 You can add a Role in Project/Organization/Account scope. To do this, go to Project SETUP, Organization, or Account Settings. This topic explains how to create a role in the Account scope.
 
-Select your **Project/Org/****Account**, and click **Access Control**.
+Select your **Project/Org/Account**, and click **Access Control**.
 
 Click **Roles**.
 

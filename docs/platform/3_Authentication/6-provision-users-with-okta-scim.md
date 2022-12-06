@@ -18,9 +18,9 @@ This topic describes how to build a SCIM endpoint using OKTA and integrate it wi
 
 * This topic assumes you understand System for Cross-domain Identity Management (SCIM). For an overview, see the article [Introduction to System for Cross-domain Identity Management (SCIM)](https://medium.com/@pamodaaw/system-for-cross-domain-identity-management-scim-def45ea83ae7).
 * [Learn Harness' Key Concepts](https://docs.harness.io/article/hv2758ro4e-learn-harness-key-concepts)
-* [Access Management (RBAC) Overview](../4_Role-Based Access Control/rbac-in-harness.md)
+* [Access Management (RBAC) Overview](../4_Role-Based-Access-Control/1-rbac-in-harness.md)
 * Make sure you are an Administrator in your Okta account and have the **Account Admin** permissions in Harness.
-* Make sure you have a Harness [API Key](../4_Role-Based Access Control/add-and-manage-api-keys.md) and a valid Token under it. The API Key must have all permissions on the Users and User Groups.
+* Make sure you have a Harness [API Key](../4_Role-Based-Access-Control/7-add-and-manage-api-keys.md) and a valid Token under it. The API Key must have all permissions on the Users and User Groups.
 
 ### Review: Harness Okta SCIM Integration
 
@@ -66,11 +66,12 @@ Log in to your Okta administrator account and click **Applications**.
 
 Click **Create App Integration**.
 
-![](./static/provision-users-with-okta-scim-05
+![](./static/provision-users-with-okta-scim-05.png)
+
 The **Create a new app integration** dialogue appears. Select **SAML 2.0** and click **Next**.
 
 ![](./static/provision-users-with-okta-scim-06.png)
-(./static/provision-users-with-okta-scim-06
+
 In **General Settings**, enter a name in the **Application label** field, and click **Next**.
 
 The SAML settings appear.
@@ -115,7 +116,7 @@ Enter `userName` in **Unique identifier field for users** and select **Supported
 
 Select **Authentication Mode** as HTTP Header and enter your API Token in **Bearer**.
 
-For information on how to create an API Token in Harness, see [Add and Manage API Keys](../4_Role-Based Access Control/add-and-manage-api-keys.md).
+For information on how to create an API Token in Harness, see [Add and Manage API Keys](../4_Role-Based-Access-Control/7-add-and-manage-api-keys.md).
 
 ![](./static/provision-users-with-okta-scim-10.png)
 Click **Test Connection** and then **Save** after the test is successful.
@@ -239,7 +240,7 @@ Harness authenticates users using either the FirstGen App Integration or the Nex
 
 Permissions can be assigned manually or via the Harness API:
 
-* [Add and Manage Roles](../4_Role-Based Access Control/add-manage-roles.md)
-* [Add and Manage Resource Groups](../4_Role-Based Access Control/add-resource-groups.md)
-* [Permissions Reference](../4_Role-Based Access Control/ref-access-management/permissions-reference.md)
+* [Add and Manage Roles](../4_Role-Based-Access-Control/9-add-manage-roles.md)
+* [Add and Manage Resource Groups](../4_Role-Based-Access-Control/8-add-resource-groups.md)
+* [Permissions Reference](../4_Role-Based-Access-Control/ref-access-management/permissions-reference.md)
 

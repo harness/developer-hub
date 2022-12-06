@@ -51,17 +51,21 @@ For basic information on Harness Delegate, see [Delegate Requirements and Limita
 
 #### Configure the Deployment
 
-1. Select the **Kubernetes** option.![](./static/install-harness-delegate-using-helm-00.png)
+1. Select the **Kubernetes** option.
+   
+   ![](./static/install-harness-delegate-using-helm-00.png)
 
-1. Review **Kubernetes Prerequisites** to ensure that your cluster can support the deployment. Click **Continue**.![](./static/install-harness-delegate-using-helm-01.png)
-2. In **Delegate Name**, give your Delegate a name. The Delegate name is populated into the **ID** field.  
-A valid Delegate name is a lowercase character string that does not begin or end with a number. You can use the dash mark (“-”) to separate segments of the string; other special characters are not permitted. Delegate names must be unique in the cluster.
-3. (Optional) Click the pencil icon to change the identifier of the Delegate resource.
-4. (Optional) Click **+ Description** to create a description to be associated with the Delegate.
-5. (Optional) Click **+ Tags** to label the Delegate resource with tags. This increases searchability.
-6. Select the size of the deployment.  
-The size of the deployment determines the CPU and memory resources allocated to running the Delegate. The following table summarizes the options.
+2. Review **Kubernetes Prerequisites** to ensure that your cluster can support the deployment. Click **Continue**.
+   
+   ![](./static/install-harness-delegate-using-helm-01.png)
 
+3. In **Delegate Name**, give your Delegate a name. The Delegate name is populated into the **ID** field.<br/>
+   A valid Delegate name is a lowercase character string that does not begin or end with a number. You can use the dash mark (“-”) to separate segments of the string; other special characters are not permitted. Delegate names must be unique in the cluster.
+4. (Optional) Click the pencil icon to change the identifier of the Delegate resource.
+5. (Optional) Click **+ Description** to create a description to be associated with the Delegate.
+6. (Optional) Click **+ Tags** to label the Delegate resource with tags. This increases searchability.
+7. Select the size of the deployment.<br/>
+   The size of the deployment determines the CPU and memory resources allocated to running the Delegate. The following table summarizes the options
 
 
 |  |  |  |  |
@@ -72,10 +76,12 @@ The size of the deployment determines the CPU and memory resources allocated to 
 | **Medium** | 4 | 2.0/8.0 GB | Run up to 20 parallel deployments or builds.For medium-scale production workloads. |
 | **Large** | 8 | 4.0/16.0 GB | Run up to 40 parallel deployments or builds.For large-scale production workloads. |
 
-1. Select the **Helm Chart** installer option. Harness Delegate for Helm is installed using a Helm chart.![](./static/install-harness-delegate-using-helm-02.png)
+8. Select the **Helm Chart** installer option. Harness Delegate for Helm is installed using a Helm chart.
+   
+   ![](./static/install-harness-delegate-using-helm-02.png)
 
-1. In **Delegate Tokens**, specify the one or more token names to be associated with the Delegate. In the example above, `default_token` is specified.
-2. In **Delegate Permissions**, select the permissions you want to grant the Delegate.
+9.  In **Delegate Tokens**, specify the one or more token names to be associated with the Delegate. In the example above, `default_token` is specified.
+10. In **Delegate Permissions**, select the permissions you want to grant the Delegate.
 
 
 
@@ -123,9 +129,11 @@ For in-cluster Delegates with configured proxies, the `noProxy` value must be th
 
 1. Click **Download YAML File**.
 2. Navigate to the download location and open the `harness-helm-values.yaml` file.
-3. Modify the proxy settings and save the file.![](./static/install-harness-delegate-using-helm-04.png)
+3. Modify the proxy settings and save the file.
+   
+   ![](./static/install-harness-delegate-using-helm-04.png)
 
-For information on using proxy settings with Helm Delegate, see [Configure Delegate Proxy Settings](../delegate-guide/configure-delegate-proxy-settings.md).
+   For information on using proxy settings with Helm Delegate, see [Configure Delegate Proxy Settings](../delegate-guide/configure-delegate-proxy-settings.md).
 
 #### Deploy and Verify
 
@@ -133,17 +141,23 @@ Deploy the configured Harness Delegate using the `helm` CLI from a machine confi
 
 **To deploy Harness Delegate**
 
-1. Copy and run the provided commands.![](./static/install-harness-delegate-using-helm-05.png)
+1. Copy and run the provided commands.
+   
+   ![](./static/install-harness-delegate-using-helm-05.png)
 
-Harness Manager waits for a heartbeat to confirm that Harness Delegate is installed and running.
+   Harness Manager waits for a heartbeat to confirm that Harness Delegate is installed and running.
 
-![](./static/install-harness-delegate-using-helm-06.png)
-Installation could take several minutes.
+   ![](./static/install-harness-delegate-using-helm-06.png)
 
-1. If Harness Delegate was successfully installed, click **Done**.  
-If Harness Delegate cannot be installed, the following message appears:![](./static/install-harness-delegate-using-helm-07.png)
+   Installation could take several minutes.
 
-If the Delegate cannot be installed, see the following section for information on common problems.
+2. If Harness Delegate was successfully installed, click **Done**.  
+   
+   If Harness Delegate cannot be installed, the following message appears:
+   
+   ![](./static/install-harness-delegate-using-helm-07.png)
+
+  If the Delegate cannot be installed, see the following section for information on common problems.
 
 ### Troubleshooting
 
@@ -162,6 +176,7 @@ You can retrieve the information required to triage and resolve most failure con
 When the issue is resolved, apply the Delegate YAML a second time.
 
 ![](./static/install-harness-delegate-using-helm-08.png)
+
 From **Apply YAML and verify connection**, copy the instructions to the command line.
 
 For further information on troubleshooting, see [Troubleshooting Harness](https://docs.harness.io/article/jzklic4y2j-troubleshooting).

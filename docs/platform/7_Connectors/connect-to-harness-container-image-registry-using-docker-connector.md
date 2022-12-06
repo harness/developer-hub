@@ -23,7 +23,11 @@ You can override the default behavior at the Account level and the Stage level:
 
 Since you and the Harness Delegate are already connected to Harness securely, there are no additional connections to worry about.
 
+
+:::note
 If you choose to override the `harnessImageConnector`, you may also avoid triggering any rate limiting or throttling.This topic explains how to set up the Docker Connector to connect to the Harness Container Image Registry.
+
+:::
 
 ### Before you begin
 
@@ -37,18 +41,37 @@ Since you and the Harness Delegate are already connected to Harness securely, ap
 
 In the case that app.harness.io is not allowlisted, please allowlist it before proceeding.
 
+
+:::note
 In general, and as a Best Practice, you should allowlist Harness Domains and IPs. See **Allowlist Harness Domains and IPs** in [Delegate Requirements and Limitations](../2_Delegates/delegate-reference/delegate-requirements-and-limitations.md).
+
+:::
 
 ### Step 1: Create a Docker Connector in Harness
 
-You must create the Harness Docker Connector at the Account level. Make sure that you have the **Account** > **Connectors** > **Create/Edit/View** permission for Harness Platform. See [Permission Reference](../4_Role-Based Access Control/ref-access-management/permissions-reference.md#platform) for details on the list of permissions.1. In **Account Settings**, **Account Resources**, click **Connectors**.![](./static/connect-to-harness-container-image-registry-using-docker-connector-45.png)
 
-1. Click **New Connector**, and under **Artifact Repositories** click **Docker Registry**. ![](./static/connect-to-harness-container-image-registry-using-docker-connector-46.png)The Docker Registry Connector settings appear.![](./static/connect-to-harness-container-image-registry-using-docker-connector-47.png)
-2. In **Name**, enter a name for this connector.  
-Harness automatically generates the corresponding ID ([entity identifier](../20_References/entity-identifier-reference.md)).  
-If you want to override the Account-level Connector, modify the ID and set it to `harnessImage`. You must use the Id `harnessImage`.  
-Harness gives precedence to the Connector with the `harnessImage` identifier, and uses it to pull from the Harness Container Image Registry, as opposed to pulling from DockerHub directly.
-3. Click **Continue**.
+:::note
+You must create the Harness Docker Connector at the Account level. Make sure that you have the **Account** > **Connectors** > **Create/Edit/View** permission for Harness Platform. See [Permission Reference](../4_Role-Based-Access-Control/ref-access-management/permissions-reference.md) for details on the list of permissions.
+
+:::
+
+1. In **Account Settings**, **Account Resources**, click **Connectors**.
+   
+   ![](./static/connect-to-harness-container-image-registry-using-docker-connector-45.png)
+
+2. Click **New Connector**, and under **Artifact Repositories** click **Docker Registry**. 
+   
+   ![](./static/connect-to-harness-container-image-registry-using-docker-connector-46.png)
+   
+   The Docker Registry Connector settings appear.
+   
+   ![](./static/connect-to-harness-container-image-registry-using-docker-connector-47.png)
+
+3. In **Name**, enter a name for this connector.  
+   Harness automatically generates the corresponding ID ([entity identifier](../20_References/entity-identifier-reference.md)).  
+   If you want to override the Account-level Connector, modify the ID and set it to `harnessImage`. You must use the Id `harnessImage`.  
+   Harness gives precedence to the Connector with the `harnessImage` identifier, and uses it to pull from the Harness Container Image Registry, as opposed to pulling from DockerHub directly.
+4. Click **Continue**.
 
 ### Step 2: Enter Credentials
 
@@ -98,7 +121,7 @@ If a connector with`harnessImage` identifier already exists on your **Account**
 
 ### See also
 
-* [Permission Reference](../4_Role-Based Access Control/ref-access-management/permissions-reference.md#continuous-integration-ci)
+* [Permission Reference](../4_Role-Based-Access-Control/ref-access-management/permissions-reference.md)
 * [Harness CI Image List](../../continuous-integration/ci-technical-reference/harness-ci.md)
 * [CI Build Image Updates](../../continuous-integration/ci-technical-reference/ci-build-image-updates.md)
 

@@ -34,7 +34,7 @@ You can build on either of the following Harness-provided images.
 
 You can use the `latest` version minimal image from the Docker repository.
 
-![](./static/build-custom-delegate-images-with-third-party-tools-07
+![](./static/build-custom-delegate-images-with-third-party-tools-07.png)
 ### Build the delegate image
 
 When you build a custom delegate image, you modify the image you select with user privileges and binaries. This section explains the build script used for the process. In this example, the script builds a custom image for deployment by Kubernetes and by Terraform.
@@ -409,6 +409,7 @@ spec:
 You can deploy the delegate from Harness Manager or by applying the modified delegate manifest file to your cluster.
 
 ![](./static/build-custom-delegate-images-with-third-party-tools-08.png)
+
 You can confirm the successful deployment and registration of the delegate in Harness Manager. Check the delegate information to ensure that auto-upgrade is not enabled.
 
 ### Create pipelines
@@ -418,5 +419,6 @@ You can use your registered delegate to run Kubernetes and Terraform pipelines.
 For information about creating a Kubernetes pipeline, see [Kubernetes deployment tutorial](https://docs.harness.io/article/knunou9j30).
 
 ![](./static/build-custom-delegate-images-with-third-party-tools-09.png)
+
 For information about creating a Terraform Plan, see [Provision with the Terraform Apply Step](https://docs.harness.io/article/hdclyshiho).
 

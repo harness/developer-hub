@@ -19,7 +19,7 @@ To store and use encrypted secrets (such as access keys), you can add a HashiCor
 
 ### Step 1: Add a Secret Manager
 
-This topic assumes you have a Harness Project set up. If not, see [Create Organizations and Projects](../1_Organizations and Projects/create-an-organization.md).
+This topic assumes you have a Harness Project set up. If not, see [Create Organizations and Projects](../1_Organizations-and-Projects/2-create-an-organization.md).
 
 You can add a Connector at Project/Organization/Account scope. To do this, go to Project setup, Organization, or Account Resources.
 
@@ -230,7 +230,7 @@ The secret can fail because of various reasons.
             capabilities = ["read"]  
             }    
 ```
-1. 3. The policy attached to the Token/AppRole does not provide the **write**permission in the specified path. Make sure you update the policies and permissions.
+3. The policy attached to the Token/AppRole does not provide the **write**permission in the specified path. Make sure you update the policies and permissions.
 
 ### Step 4: Read-only Vault
 

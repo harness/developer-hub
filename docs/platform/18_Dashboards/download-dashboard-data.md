@@ -29,22 +29,34 @@ Perform the following steps to download data from a Dashboard.
 
 You can download your entire dashboard as a PDF. The PDF contains the dashboard title, any dashboard filters, all the dashboard tiles, and the time zone the dashboard was run in. The PDF also includes a timestamp showing when the dashboard was downloaded.
 
-1. In **Download AWS Cost Dashboard**, in **Format**, select **PDF**.![](./static/download-dashboard-data-21.png)
+1. In **Download AWS Cost Dashboard**, in **Format**, select **PDF**.
+   
+   ![](./static/download-dashboard-data-21.png)
+   
 2. Select an option from the **Paper Size** drop-down menu. The **Fit Page to Dashboard** option is the default; it sizes the PDF to match the layout of the dashboard on the screen. Other paper size options size the PDF to match a standard paper size and fit the dashboard within it.  
   
-Depending on the layout of the dashboard, large visualizations or groups of overlapping tiles may need to be resized to fit on given page size.![](./static/download-dashboard-data-22.png)
+   Depending on the layout of the dashboard, large visualizations or groups of overlapping tiles may need to be resized to fit on given page size.
+
+   ![](./static/download-dashboard-data-22.png)
+
 3. If you select something other than **Fit Page to Dashboard** in the **Paper Size** drop-down, an **Orientation** option appears. You can choose to orient the dashboard in portrait or landscape position.
 4. Do not select **Expand tables to show all rows**. This option is relevant only for the table visualizations. If selected, the PDF will show all the rows available in the table visualization, not just the rows displayed in the dashboard tile thumbnail.
 5. Select or leave unselected **Arrange dashboard tiles in a single column**. If you select this option, the PDF displays dashboard tiles in a single vertical column. If you do not select this option, the dashboard tiles appear as they are arranged in the dashboard.
 6. Click **Open in Browser** to see an image of the PDF in a new tab of your browser. This also downloads a PDF in the Download folder.
 7. Click **Cancel** if you no longer want to download the dashboard.
-8. Click **Download** to initiate the download. A new tab in your browser will open, showing the status of your download.![](./static/download-dashboard-data-23.png)
+8. Click **Download** to initiate the download. A new tab in your browser will open, showing the status of your download.!
+   
+    [](./static/download-dashboard-data-23.png)
+    
 
 #### Download a Dashboard as CSVs
 
 You can download all the tiles from your dashboard as a zipped collection of CSV files. 
 
-1. In **Download AWS Cost Dashboard**, in **Format**, select **CSV** from the **Format** drop-down menu.![](./static/download-dashboard-data-24.png)
+1. In **Download AWS Cost Dashboard**, in **Format**, select **CSV** from the **Format** drop-down menu.
+   
+   ![](./static/download-dashboard-data-24.png)
+   
 2. Click **Cancel** if you no longer want to download the dashboard.
 3. Click **Download** to initiate the download your zipped CSV collection.
 
@@ -60,7 +72,10 @@ Perform the following steps to download the data from a dashboard tile:
 	* JSON
 	* HTML
 	* Markdown
-	* PNG (image of visualization)Depending on the format you select, some options in the **Advanced data options** menu may not be available.![](./static/download-dashboard-data-26.png)
+	* PNG (image of visualization)Depending on the format you select, some options in the **Advanced data options** menu may not be available.
+  
+      ![](./static/download-dashboard-data-26.png)
+  
 3. (Optional) For more options, click the arrow next to **Advanced data options**.
 	1. In **Results**, select **As displayed in the data table**.
 	2. In **Data** **Values**, choose how you want the downloaded query results to appear:  

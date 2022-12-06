@@ -46,11 +46,11 @@ See [Managing secrets](https://cloud.google.com/secret-manager/docs/access-cont
 
 ### Step 1: Add a secret manager
 
-This topic assumes you have a Harness Project set up. If not, see [Create Organizations and Projects](../1_Organizations and Projects/create-an-organization.md).
+This topic assumes you have a Harness Project set up. If not, see [Create Organizations and Projects](../1_Organizations-and-Projects/2-create-an-organization.md).
 
 You can add a connector from any module in your project, in the Project setup, or in your organization or account resources.
 
-This topic explains the steps to add a Google Cloud Secrets Manager to the account [scope](../4_Role-Based Access Control/rbac-in-harness.md#rbac-scope).
+This topic explains the steps to add a Google Cloud Secrets Manager to the account [scope](../4_Role-Based-Access-Control/1-rbac-in-harness.md#rbac-scope).
 
 1. In your Harness Account, click **Account Settings**.
 2. Click **Account Resources**.
@@ -79,12 +79,13 @@ See [Managing secrets](https://cloud.google.com/secret-manager/docs/access-cont
 5. In the resulting **Create private key** dialog, select the **JSON** option, create the key, and download it to your computer.
 6. Go back to Harness.
 7. In **Google Secrets Manager Credentials File**, select the encrypted file you just added in Harness.![](./static/add-a-google-cloud-secret-manager-40.png)
+   
 You can also create a new [File Secret](./3-add-file-secrets.md) here and add the Google Cloud service account key that you downloaded.
-8. Click **Continue**.
+1. Click **Continue**.
 
 ### Step 4: Setup delegates
 
-1. In **Delegates** **Setup****,** enter [**Selectors**](../2_Delegates/delegate-guide/select-delegates-with-selectors.md#option-select-a-delegate-for-a-connector-using-tags) for specific delegates that you want to allow to connect to this connector.
+1. In **Delegates** **Setup**, enter [**Selectors**](../2_Delegates/delegate-guide/select-delegates-with-selectors.md#option-select-a-delegate-for-a-connector-using-tags) for specific delegates that you want to allow to connect to this connector.
 2. Click **Save and** **Continue**.
 
 ### Step 5: Test connection

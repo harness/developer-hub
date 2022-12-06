@@ -32,7 +32,7 @@ You'll learn how to: 
 
 ### Review: Templates
 
-* You can add Templates to Template Libraries at any [scope](../4_Role-Based Access Control/rbac-in-harness.md#scope).
+* You can add Templates to Template Libraries at any [scope](../4_Role-Based-Access-Control/1-rbac-in-harness.md#rbac-scope).
 * [Tags](../20_References/tags-reference.md) can be used to group Templates. You can search or filter Templates using these tags.
 * You can have nested Templates. You can refer to a stage Template from your Pipeline Template.
 
@@ -43,6 +43,7 @@ First, we'll create a Project-level Template in the **Deployments** module. Yo
 Navigate to the **Deployments** module and in **Projects** select the desired project.
 
 ![](./static/add-a-stage-template-48.png)
+
 Next select **Templates** under Project Setup.
 
 Click **New Template**.
@@ -50,9 +51,11 @@ Click **New Template**.
 Select **Stage** to create a Stage Template**.**
 
 ![](./static/add-a-stage-template-49.png)
+
 The **Create New Stage Template** settings appear.
 
 ![](./static/add-a-stage-template-50.png)
+
 In **Name**, enter a name for the stage. You can enter **Quickstart**.
 
 In **Version Label**, enter the version of the stage. You can enter **v1**.
@@ -64,11 +67,13 @@ In **Version Label**, enter the version of the stage. You can enter **v1**.
  **Select Stage Type** settings appear.
 
 ![](./static/add-a-stage-template-51.png)
+
 Select **Deploy**. The Deploy stage type is a CD Stage that enables you to deploy any Service to your target environment. Other options include Build for CI, and Approval for Manual and Jira Approval Stages. More options will be added soon.
 
 The **About Your Stage** settings appear, select the type of deployment this Stage must perform. Service is selected by default. A Stage can deploy Services, and other workloads.
 
 ![](./static/add-a-stage-template-52.png)
+
 Click **Set Up Stage**. The Template Studio page appears.
 
 In **Specify Service**, select **Runtime input**.
@@ -89,6 +94,7 @@ Under **Cluster Details**, select **Runtime input** in both **Connector** and **
 Click **Next**. The Execution Strategies dialog box appears.
 
 ![](./static/add-a-stage-template-54.png)
+
 Select **Rolling** and click **Use Strategy**.
 
 In **Execution**, you can see the **Rollout Deployment** step is added automatically.
@@ -104,6 +110,7 @@ The Template is published successfully.
 You can add variables to your Template as needed.
 
 ![](./static/add-a-stage-template-55.png)
+
 You can add the following types of values to your variables:
 
 * **Fixed values** - These cannot be overridden.
@@ -120,16 +127,19 @@ To add a Stage Template to a Pipeline, open the Pipeline, and then click **Add 
 The **Select Stage Type** settings appear.
 
 ![](./static/add-a-stage-template-56.png)
+
 Click **Use Template**. The next page lists all the Project-level Templates.
 
 Select the Quickstart Template that you created.
 
 ![](./static/add-a-stage-template-57.png)
+
 Click the **Activity Log** to track all Template events. It shows you details like who created the Template and Template version changes.
 
 In **Details**, click **Version Label** and select **Always use the** **Stable** **version** of the Template.
 
 ![](./static/add-a-stage-template-58.png)
+
 Selecting this option makes sure that any changes that you make to this version are propagated automatically to the Pipelines using this Template.
 
 Click **Use Template.**
@@ -137,16 +147,19 @@ Click **Use Template.**
 The **About your stage** dialog appears. Enter **Quickstart** and click **Set Up Stage**.
 
 ![](./static/add-a-stage-template-59.png)
+
 The Template Stage is added to your Pipeline.
 
 The stage is added and not copied by the Template icon in the stage.
 
 ![](./static/add-a-stage-template-60.png)
+
 If you had used **Copy to Pipeline**, this icon would not be there and you could change settings in the stage.
 
 You can now enter all the Runtime Inputs for this Pipeline execution.
 
 ![](./static/add-a-stage-template-61.png)
+
 Click **Save**.
 
 You'll notice that you can Change and Remove the Template as needed.
@@ -160,14 +173,17 @@ To copy a Template, go to your Pipeline. Click **Add Stage**.
 The **Select Stage Type** settings appear.
 
 ![](./static/add-a-stage-template-62.png)
+
 Click **Use Template**. Select the Template you want to copy.
 
 ![](./static/add-a-stage-template-63.png)
+
 Click **Copy to Pipeline**.
 
 Enter a name for your stage. Click **Set Up Stage**.
 
 ![](./static/add-a-stage-template-64.png)
+
 The Template contents are now copied to your Pipeline stage.
 
 You can change any settings in the stage that you have copied from a Template.

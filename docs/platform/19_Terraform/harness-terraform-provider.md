@@ -25,7 +25,7 @@ This quickstart shows you how to write your configurations in Terraform and prov
 * You must have a Harness Account.
 * You must have an admin setup for your Harness Account.
 * You must have a Personal Access Token (PAT).  
-For detailed steps on how to generate a PAT, see [Create a Personal Access Token](../4_Role-Based Access Control/add-and-manage-api-keys.md#create-personal-access-token).
+For detailed steps on how to generate a PAT, see [Create a Personal Access Token](../4_Role-Based-Access-Control/7-add-and-manage-api-keys.md#create-personal-access-token).
 
 ### Important
 
@@ -72,7 +72,7 @@ The account Id is in every URL when using Harness:
 
 Enter your Personal Access Token (PAT) in `platform_api_key`.
 
-For detailed steps on how to generate a PAT, see [Create a Personal Access Token](../4_Role-Based Access Control/add-and-manage-api-keys.md#create-personal-access-token).​
+For detailed steps on how to generate a PAT, see [Create a Personal Access Token](../4_Role-Based-Access-Control/7-add-and-manage-api-keys.md#create-personal-access-token).​
 
 
 ```

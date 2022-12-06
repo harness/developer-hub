@@ -8,7 +8,13 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Currently, this feature is behind the feature flags `NG_SVC_ENV_REDESIGN` and `CD_TRIGGERS_REFACTOR`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.You can trigger Harness Pipelines in response to a new artifact version being added to a registry.
+
+:::note
+Currently, this feature is behind the feature flags `NG_SVC_ENV_REDESIGN` and `CD_TRIGGERS_REFACTOR`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+You can trigger Harness Pipelines in response to a new artifact version being added to a registry.
 
 For example, every time a new Docker image is pushed to your Docker Hub account, it triggers a CD Pipeline that deploys it automatically.
 
@@ -44,46 +50,58 @@ Polling is immediate because Harness uses a perpetual task framework that consta
 When you add a Harness Service to the CD stage, you can set the artifact tag to use in **Artifacts Details**.
 
 ![](./static/trigger-on-a-new-artifact-22.png)
+
 If you use a [Fixed Value](../20_References/runtime-inputs.md) for the artifact **Tag** (for example, **2**), when the Trigger executes the Pipeline, Harness will deploy the artifact with that tag (**2**).
 
 If you want the Pipeline to deploy the artifact version that initiated the Trigger, use the expression `<+trigger.artifact.build>`.
 
 ![](./static/trigger-on-a-new-artifact-23.png)
-You can also set Tag as a Runtime Input and then use `<+trigger.artifact.build>` in the Trigger's [Pipeline Input](#step_3_select_pipeline_inputs) settings.
+
+You can also set Tag as a Runtime Input and then use `<+trigger.artifact.build>` in the Trigger's [Pipeline Input](#step-3-select-pipeline-inputs) settings.
 
 ### Create an artifact trigger
 
 1. Select a Harness Pipeline that includes an artifact in the Stage's **Service Definition**.
 
-![](./static/trigger-on-a-new-artifact-24.png)
-You reference an artifact in the Stage's Service Definition in your manifests using the expression `<+artifact.image>`. See [Add Container Images as Artifacts for Kubernetes Deployments](https://docs.harness.io/article/4ifq51cp0i-add-artifacts-for-kubernetes-deployments).
+   ![](./static/trigger-on-a-new-artifact-24.png)
 
-1. Click **Triggers**.
-2. Click **New Trigger**.
-3. The On New Artifact Trigger options are listed under **Artifact**. Each of the **Artifact** options are described below.
-4. Select the artifact registry where your artifact is hosted. If you artifact is hosted on Docker Hub and you select GCR, you won't be able to set up your Trigger.
+   You reference an artifact in the Stage's Service Definition in your manifests using the expression `<+artifact.image>`. See [Add Container Images as Artifacts for Kubernetes Deployments](https://docs.harness.io/article/4ifq51cp0i-add-artifacts-for-kubernetes-deployments).
+
+2. Click **Triggers**.
+3. Click **New Trigger**.
+4. The On New Artifact Trigger options are listed under **Artifact**. Each of the **Artifact** options are described below.
+5. Select the artifact registry where your artifact is hosted. If you artifact is hosted on Docker Hub and you select GCR, you won't be able to set up your Trigger.
 
 ### Option: Docker Registry Artifacts
 
 1. In **Configuration**, in **Name**, enter a name for the Trigger.
 2. In **Listen on New Artifact**, click **Define Artifact Source**. This is where you tell Harness what artifact repository to poll for changes.
 3. Create or select the Connector to connect Harness to the repository, and then click **Continue**. For steps on Docker Registry Connectors, go to [Add Docker Registry Artifact Servers](https://docs.harness.io/article/tdj2ghkqb0-add-docker-registry-artifact-servers).
-4. In **Artifact Details**, enter the artifact for this Trigger to listen for and click **Submit**. For example, in Docker Hub, you might enter `library/nginx`. The artifact is now listed in Trigger.![](./static/trigger-on-a-new-artifact-25.png)
+4. In **Artifact Details**, enter the artifact for this Trigger to listen for and click **Submit**. For example, in Docker Hub, you might enter `library/nginx`. The artifact is now listed in Trigger.
+   
+   ![](./static/trigger-on-a-new-artifact-25.png)
+   
 5. Click **Continue**.
 
-Jump to [Step 2: Set Conditions](#step_2_set_conditions).
+Jump to [Step 2: Set Conditions](#step-2-set-conditions).
 
 In your Docker Registry Connector, to connect to a public Docker registry like Docker Hub, use `https://registry.hub.docker.com/v2/`. To connect to a private Docker registry, use `https://index.docker.io/v2/`.### Option: GCR Artifacts
 
 1. In **Configuration**, in **Name**, enter a name for the Trigger.
 2. In **Listen on New Artifact**, click **Define Artifact Source**.
 3. Create or select the GCP Connector to connect Harness to GCR, and then click **Continue**. For steps on GCP Connectors, go to [Add a Google Cloud Platform (GCP) Connector](../7_Connectors/connect-to-google-cloud-platform-gcp.md).
-4. In **Artifact Details**, in GCR Registry URL, select the location of the registry, listed as **Hostname** in GCR.![](./static/trigger-on-a-new-artifact-26.png)
-5. In **Image Path**, enter the artifact for this Trigger to listen for. You can click the copy button in GCR and then paste the path into Harness.![](./static/trigger-on-a-new-artifact-27.png)
-6. Click **Submit**.
-7. Click **Continue**.
+4. In **Artifact Details**, in GCR Registry URL, select the location of the registry, listed as **Hostname** in GCR.
+   
+5. ![](./static/trigger-on-a-new-artifact-26.png)
+   
+6. In **Image Path**, enter the artifact for this Trigger to listen for. You can click the copy button in GCR and then paste the path into Harness.
+   
+7. ![](./static/trigger-on-a-new-artifact-27.png)
+   
+8.  Click **Submit**.
+9.  Click **Continue**.
 
-Jump to [Step 2: Set Conditions](#step_2_set_conditions).
+Jump to [Step 2: Set Conditions](#step-2-set-conditions).
 
 ### Option: ECR Artifacts
 
@@ -161,11 +179,13 @@ If your Pipeline uses [Input Sets](../8_Pipelines/input-sets.md), you can select
 You can enable or disable Triggers using the Enabled toggle:
 
 ![](./static/trigger-on-a-new-artifact-28.png)
+
 ### Option: Reuse Trigger YAML to Create New Triggers
 
 You can reuse Triggers by copying and pasting Trigger YAML. This can be helpful when you have advanced Conditions you don't want to set up each time.
 
 ![](./static/trigger-on-a-new-artifact-29.png)
+
 ### See also
 
 * [Schedule Pipelines using Triggers](schedule-pipelines-using-cron-triggers.md)

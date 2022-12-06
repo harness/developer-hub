@@ -96,7 +96,7 @@ Select your repository via the JFrog site. Select **Set Me Up**. The **Set Me Up
 Copy the name of the server from the `docker login` command and enter it in **Repository URL**.
 
 ![](./static/artifactory-connector-settings-reference-09.png)
-(./static/artifactory-connector-settings-reference-09.png)
+
 See [Configuring Docker Repositories](https://www.jfrog.com/confluence/display/RTF/Docker+Registry#DockerRegistry-ConfiguringDockerRepositories) from JFrog for more information. It describes the URLs for local, remote, and virtual repositories.
 
 #### Repository

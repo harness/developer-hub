@@ -8,11 +8,17 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Currently, this feature is in Beta and behind a Feature Flag. Contact [Harness Support](https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=support@harness.io) to enable the feature. Feature Flags can only be removed for Harness Professional and Essentials editions. Once the feature is released to a general audience, it is available for Trial and Community Editions.This topic describes the settings in **My Source Code Manager**. It's a reference you can use when you are trying to find the requirements and options for a specific **My Source Code Manager** setting.
+
+:::note
+Currently, this feature is in Beta and behind a Feature Flag. Contact [Harness Support](https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=support@harness.io) to enable the feature. Feature Flags can only be removed for Harness Professional and Essentials editions. Once the feature is released to a general audience, it is available for Trial and Community Editions.
+
+:::
+
+This topic describes the settings in **My Source Code Manager**. It's a reference you can use when you are trying to find the requirements and options for a specific **My Source Code Manager** setting.
 
 For instructions on setting up and using My Source Code Manager, see [Add Source Code Managers](https://docs.harness.io/article/p92awqts2x-add-source-code-managers).
 
-**My Source Code Manager** is required for Harness Git Experience. For details on Harness Git Experience, see [Harness Git Experience Overview](../../10_Git Experience/harness-git-experience-overview.md).
+**My Source Code Manager** is required for Harness Git Experience. For details on Harness Git Experience, see [Harness Git Experience Overview](../../10_Git-Experience/git-experience-overview.md).
 
 
 ### Source Code Manager Overview

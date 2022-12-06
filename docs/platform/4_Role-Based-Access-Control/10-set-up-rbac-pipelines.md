@@ -26,7 +26,7 @@ You will learn how to:
 ### Before you begin
 
 * [Learn Harness' Key Concepts](https://ngdocs.harness.io/article/hv2758ro4e-learn-harness-key-concepts)
-* [Create Organizations and Projects](../1_Organizations and Projects/create-an-organization.md)
+* [Create Organizations and Projects](../1_Organizations-and-Projects/2-create-an-organization.md)
 * For information on creating a Pipeline and adding a Stage, see [Add a Stage](../8_Pipelines/add-a-stage.md#step-1-create-a-pipeline).
 * Make sure you have **Admin** rights for the Account/Org/Project where you want to configure Access Management.
 
@@ -36,7 +36,7 @@ You will learn how to:
 * You must have **View** and **Manage** permissions for **User Groups**.
 * You must have **View**, **Create/Edit**, and **Delete** permissions for **Resource Groups**.
 * You must have **View**, **Create/Edit**, and **Delete** permissions for **Roles**.
-* You must have created your Organizations and Projects. See [Create Organizations and Projects](../1_Organizations and Projects/create-an-organization.md).
+* You must have created your Organizations and Projects. See [Create Organizations and Projects](../1_Organizations-and-Projects/2-create-an-organization.md).
 
 ### RBAC Components
 
@@ -70,28 +70,14 @@ The following table shows the Role Assignment for a Pipeline Owner:
 
 |  |  |  |  |  |
 | --- | --- | --- | --- | --- |
-| **Custom Role Name** | **Custom Resource Group Name** | **Resource Scope** | **Resources** | **Permissions** |
-| **Pipeline Admin** | **All Pipeline Resources** | **All (including all Organizations and Projects)** | * Pipelines
-* Secrets
-* Connectors
-* Delegates
-* Environments
-* Templates
-* Variables
- | * View, Create/Edit, Delete, Execute Pipelines
-* View, Create/Edit, Access Secrets
-* View, Create/Edit, Delete, Access Connectors
-* View, Create/Edit Delegates
-* View, Create/Edit, Access Environments
-* View, Create/Edit, Access Templates
-* View, Create/Edit Variables
- |
+| **Custom Role Name** | **Custom Resource Group Name** | **Resource Scope** | **Resources**  | **Permissions** |
+| **Pipeline Admin** | **All Pipeline Resources** | **All (including all Organizations and Projects)** | <li> Pipelines</li><li> Secrets</li><li>Connectors</li><li>Delegates</li><li> Environments &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>Templates</li><li>Variables</li>| <li> View, Create/Edit, Delete, Execute Pipelines</li><li>View, Create/Edit, Access Secrets</li><li>View, Create/Edit, Delete, Access Connectors</li><li>View, Create/Edit Delegates</li><li>View, Create/Edit, Access Environments</li><li>View, Create/Edit, Access Templates</li><li>View, Create/Edit Variables</li>|
 
 #### Step 1: Create a User Group
 
 1. In your Harness Account, click **Account Settings**.
 2. Click **Access Control**.
-3. In **User Groups,** click **New User** **Group****.** The New User Group settings appear.
+3. In **User Groups,** click **New User** **Group**. The New User Group settings appear.
 4. Enter a **Name** for your **User Group**. In this case, enter Pipeline Owners.
 5. Enter **Description** and [**Tags**](../20_References/tags-reference.md) for your **User Group**.
 6. Select Users under **Add Users**.
@@ -103,7 +89,7 @@ Your User Group is now listed under User Groups.
 
 1. In your Harness Account, click **Account Settings**.
 2. Click **Access Control**.
-3. In **Resource Groups**, click **New Resource** **Group****.** The New Resource Group settings appear.
+3. In **Resource Groups**, click **New Resource** **Group**. The New Resource Group settings appear.
 4. Enter a **Name** for your **Resource Group**. In this case, enter **All Pipeline Resources**.
 5. Enter **Description** and **Tags** for your **Resource Group**.
 6. Click **Save**.

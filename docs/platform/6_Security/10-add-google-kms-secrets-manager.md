@@ -21,7 +21,7 @@ This topic describes how to add a Google KMS Secret Manager in Harness.
 
 ### Add a Secret Manager
 
-This topic assumes you have a Harness Project set up. If not, see [Create Organizations and Projects](../1_Organizations and Projects/create-an-organization.md).
+This topic assumes you have a Harness Project set up. If not, see [Create Organizations and Projects](../1_Organizations-and-Projects/2-create-an-organization.md).
 
 You can add a Connector from any module in your Project in Project setup, or in your Organization or Account Resources.
 
@@ -54,11 +54,13 @@ Select/create a key ring. Select/create a key in the key ring.
 To create resources in this or the next step, see Google Cloud's [Creating Symmetric Keys](https://cloud.google.com/kms/docs/creating-keys) topic.Open the Actions menu (⋮), then click **Copy Resource Name**.
 
 ![](./static/add-google-kms-secrets-manager-65.png)
+
 A reference to the key is now on your clipboard.
 
 Paste the reference into an editor. You can now copy and paste its substrings into each of the Harness Secret Manager’s **Details** settings as shown below.
 
 ![](./static/add-google-kms-secrets-manager-66.png)
+
 ### Attach Service Account Key (Credentials) File
 
 Next, you will export your Google Cloud service account key and attach it to the **Details** page in Harness.
@@ -72,6 +74,7 @@ Locate the Principal you want to use, and click Edit.
 In Edit permissions, add the Cloud KMS CryptoKey Encrypter/Decrypter role and click Save.
 
 ![](./static/add-google-kms-secrets-manager-67.png)
+
 See Google [Permissions and roles](https://cloud.google.com/kms/docs/reference/permissions-and-roles) and Cloud's Using Cloud IAM with KMSCloud's Using Cloud IAM with KMS topics.
 
 Next, you'll select the Service Account for that Principal and export its Key file.
@@ -85,6 +88,7 @@ Open your service account's Actions ⋮ menu, then select **Manage keys**.
 Select **ADD KEY** > **Create new key**.
 
 ![](./static/add-google-kms-secrets-manager-68.png)
+
 In the resulting Create private key dialog, select JSON, create the key, and download it to your computer.
 
 Return to the Secret Manager's Details page in Harness.
@@ -92,11 +96,12 @@ Return to the Secret Manager's Details page in Harness.
 Under GCP KMS Credentials File, click **Create or Select a Secret**. You can create a new [File Secret](./3-add-file-secrets.md)  and upload the key file you just exported from Google Cloud.
 
 ![](./static/add-google-kms-secrets-manager-69.png)
+
 Click **Save** and then **Continue**.
 
 ### Setup Delegates
 
-In **Delegates** **Setup****,** use [**Selectors**](../2_Delegates/delegate-guide/select-delegates-with-selectors.md#option-select-a-delegate-for-a-connector-using-tags) to select any specific **Delegates** that you want this Connector to use. Click **Save and Continue.**
+In **Delegates** **Setup**, use [**Selectors**](../2_Delegates/delegate-guide/select-delegates-with-selectors.md#option-select-a-delegate-for-a-connector-using-tags) to select any specific **Delegates** that you want this Connector to use. Click **Save and Continue.**
 
 ### Test Connection
 

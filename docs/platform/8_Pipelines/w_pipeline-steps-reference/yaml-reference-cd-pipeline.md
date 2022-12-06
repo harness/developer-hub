@@ -61,10 +61,11 @@ For example, here is a Connector with the name `GCP Example` and Id `GCP_Example
 
 
 
-|  |  |
-| --- | --- |
-| **Connector** | **YAML** |
-|  | 
+|                                               |                                      |
+| --------------------------------------------- | ------------------------------------ |
+| **Connector**                                 | **YAML**                             |
+| ![](.static/../static/yamlrefcdpipeline1.png) | ![](./static/yamlrefcdpipeline2.png) |
+
 ```
 ...type: Gcrspec:    connectorRef: GCP_Example    imagePath: library/bar    registryHostname: gcr.io    tag: <+input>identifier: foo...
 ```
@@ -915,7 +916,4 @@ infrastructureDefinition:
         releaseName: release-<+INFRA_KEY>  
 ...
 ```
-See also:
-
-* [Connectors](https://docs.harness.io/category/connectors)
 

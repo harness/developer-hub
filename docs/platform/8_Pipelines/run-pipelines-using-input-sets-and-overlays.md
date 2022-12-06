@@ -31,7 +31,10 @@ You can create an Input Set in two ways:
 * From the **Run Pipeline** page:
 1. Configure your Pipeline and click **Run**.
 2. Enter values for the required runtime inputs.
-3. Click **Save as Input Set**. The Input Set setup appears.![](./static/run-pipelines-using-input-sets-and-overlays-08.png)
+3. Click **Save as Input Set**. The Input Set setup appears.
+   
+   ![](./static/run-pipelines-using-input-sets-and-overlays-08.png)
+   
 4. Enter a name, description, and tags for the new Input Set, and then click **Save**.
 * By simply creating an Input Set:
 1. In **Pipeline Studio**, click **Input Sets**.
@@ -94,7 +97,10 @@ You can select Input Sets and Overlays in two ways:
 
 * From the **Run Pipeline** page:
 1. In **Pipeline Studio**, click **Run**.
-2. In the **Run Pipeline** page, click the Input Sets option.![](./static/run-pipelines-using-input-sets-and-overlays-09.png)
+2. In the **Run Pipeline** page, click the Input Sets option.
+   
+   ![](./static/run-pipelines-using-input-sets-and-overlays-09.png)
+   
 3. Click an Input Set(s) or Overlay(s) to apply their settings.
 4. Click **Run Pipeline**.
 * From the **Input Sets** list:
@@ -112,5 +118,6 @@ Only runtime inputs are available in Input Sets. Most, but not all, Pipeline and
 You can use any setting that offers the **Runtime input** option:
 
 ![](./static/run-pipelines-using-input-sets-and-overlays-10.png)
+
 ### 
 

@@ -12,11 +12,9 @@ Harness Input Sets are collections of runtime inputs for a Pipeline provided bef
 
 All Pipeline settings can be set as runtime inputs in Pipeline Studio **Visual** and **YAML** editors:
 
+| ![](./static/InputsetsOverlays1.png) | ![](./static/InputsetsOverlays2.png) |
+| ------------------------------------ | ------------------------------------ |
 
-
-|  |  |
-| --- | --- |
-|  |  |
 
 An Input Set includes all the runtime inputs that are not permanent in the Pipeline. Runtime inputs contain the values that you would be prompted to provide when you executed the Pipeline.
 

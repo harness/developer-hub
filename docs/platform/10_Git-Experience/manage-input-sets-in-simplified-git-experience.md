@@ -29,6 +29,7 @@ You'll need the following:
 When you edit your Pipeline in the Harness UI, you are editing a branched version of that Pipeline. Make sure that you are editing in the correct branch. You can switch branches using the branch picker in the top left.
 
 ![](./static/manage-input-sets-in-simplified-git-experience-06.png)
+
 #### Step 2: Create an input set
 
 With Git Experience enabled, any Input Sets you create get stored in the same repo and branch as the Pipeline definition. In this step, you will create a simple Input Set and save it with your Pipeline.
@@ -40,14 +41,17 @@ Under Build Type, select Git Branch.
 For the Branch Name, select **Expression** and enter `<+trigger.targetBranch>` as a runtime expression.
 
 ![](./static/manage-input-sets-in-simplified-git-experience-07.png)
+
 Click **Save as Input Set**. In the popup that appears, enter the name of the Input Set. (Note that the Yaml Path field auto-populates with the path (.harness/) and filename based on the name you enter.)
 
 ![](./static/manage-input-sets-in-simplified-git-experience-08.png)
+
 Click **Save**. The Save Input Sets to Git screen appears.
 
 Select **Commit to an existing branch** and click **Save**. The Input Set is now saved with your Pipeline under `.harness` in your repo and branch.
 
 ![](./static/manage-input-sets-in-simplified-git-experience-09.png)
+
 In the Run Pipeline screen, click **Cancel**.
 
 #### Step 3: Create a trigger for the pipeline
@@ -59,6 +63,7 @@ In the Pipeline Studio, create a new Trigger as described in [Trigger Pipelines 
 In the Pipeline Input tab, select the Input Set you just created and click **Create Trigger**.
 
 ![](./static/manage-input-sets-in-simplified-git-experience-10.png)
+
 You now have a Pipeline, Input Set, and Trigger that you can use in new branches that you create from the default branch. When a webhook payload arrives, the Trigger selects the branch to use based on the Pipeline Reference Branch field (`<+trigger.branch>`) and the Git Branch field in the Input Set (`<+trigger.branch>`).
 
 ### Example workflow: Create a custom pipeline in a new branch
@@ -78,6 +83,7 @@ If you created the new branch from `main` *before* you did the initial setup, co
 In the Pipeline Studio, check the branch pull-down to make sure you're in the correct branch. (You might need to refresh the page to see the new branch.)
 
 ![](./static/manage-input-sets-in-simplified-git-experience-11.png)
+
 Update the Pipeline with the branch-specific behavior you want the Pipeline to perform. (In this example workflow, you would add some Run Test Steps to your Build Stage.)
 
 When you finish updating, click **Save** and save the Pipeline in your new branch.
@@ -88,8 +94,13 @@ In this step, you will create a Trigger specifically for the new branch. Do the 
 
 * In the Configuration tab, include the branch in the trigger name. For example, **build-on-push-to-my-new-feature-branch**.
 * In the Conditions tab, set the Condition to trigger on the specified branch only. If you want to trigger on a Pull Request, for example, set the Target Branch field to `my-new-feature-branch`.  
-You might also want to set the Changed Files field to exclude the .harness folder. This will ensure that updates to your Harness configs don't trigger unwanted builds.![](./static/manage-input-sets-in-simplified-git-experience-12.png)
-* In the Pipeline Input tab, specify the branch name in the **Pipeline Reference Branch** field.![](./static/manage-input-sets-in-simplified-git-experience-13.png)
+You might also want to set the Changed Files field to exclude the .harness folder. This will ensure that updates to your Harness configs don't trigger unwanted builds.
+
+  ![](./static/manage-input-sets-in-simplified-git-experience-12.png)
+
+* In the Pipeline Input tab, specify the branch name in the **Pipeline Reference Branch** field.
+  
+  ![](./static/manage-input-sets-in-simplified-git-experience-13.png)
 
 ### Notes
 

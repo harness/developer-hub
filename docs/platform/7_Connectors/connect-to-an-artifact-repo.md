@@ -34,7 +34,9 @@ Steps on adding the Artifact Repository Connector inline when developing a Pipel
 
 ### Step: Add an Artifactory Repository
 
-For details on settings and permissions, see [Artifactory Connector Settings Reference](ref-cloud-providers/artifactory-connector-settings-reference.md).1. Open a Harness Project.
+For details on settings and permissions, see [Artifactory Connector Settings Reference](ref-cloud-providers/artifactory-connector-settings-reference.md).
+
+1. Open a Harness Project.
 2. In **Project Setup**, click **Connectors**.
 3. Click **New Connector**, and click **Artifactory** in **Artifact Repositories**. The Artifactory Repository settings appear.
 4. In **Name**, enter a name for this connector.
@@ -50,7 +52,9 @@ For details on settings and permissions, see [Artifactory Connector Settings Ref
 
 ### Step: Add a Docker Registry
 
-For details on settings and permissions, see [Docker Connector Settings Reference](ref-cloud-providers/docker-registry-connector-settings-reference.md).The Docker Connector is platform-agnostic and can be used to connect to any Docker container registry, but Harness provides first class support for registries in AWS and GCR. See [Add an AWS Connector](add-aws-connector.md), [Google Cloud Platform (GCP) Connector Settings Reference](connect-to-google-cloud-platform-gcp.md).1. Open a Harness Project.
+For details on settings and permissions, see [Docker Connector Settings Reference](ref-cloud-providers/docker-registry-connector-settings-reference.md).The Docker Connector is platform-agnostic and can be used to connect to any Docker container registry, but Harness provides first class support for registries in AWS and GCR. See [Add an AWS Connector](add-aws-connector.md), [Google Cloud Platform (GCP) Connector Settings Reference](connect-to-google-cloud-platform-gcp.md).
+
+1. Open a Harness Project.
 2. In **Project Setup**, click **Connectors**.
 3. Click **New Connector**, and click **Docker Registry** in **Artifact Repositories**. The Docker Registry settings appear.
 4. In **Name**, enter a name for this connector.
@@ -61,7 +65,7 @@ For details on settings and permissions, see [Docker Connector Settings Referenc
 	1. **Username and Password** - Once you choose this option, you need to enter the **Username** and **Password**. For Password you can either create a new Secret or use an existing one.
 	2. **Anonymous (no credentials required)**.
 9. Click **Continue**.
-10. In **Delegates Setup****,**use any Delegate or enter [Tags](../2_Delegates/delegate-guide/select-delegates-with-selectors.md) for specific Delegates that you want to allow to connect to his Connector.
+10. In **Delegates Setup**, use any Delegate or enter [Tags](../2_Delegates/delegate-guide/select-delegates-with-selectors.md) for specific Delegates that you want to allow to connect to his Connector.
 11. Click **Save and Continue**.
 12. Once the Test Connection succeeds, click **Finish**. The Connector is listed in Connectors.
 
@@ -71,7 +75,9 @@ You can add Helm Charts from an HTTP Helm Repo. Once you set up the Connector, y
 
 Since Harness lets you use the `<+artifact.image>` expression in your Helm Chart Values YAML files, Helm Charts are added a Stage Service in **Manifests** and not **Artifacts**. If you use the `<+artifact.image>` expression in your Helm Chart Values YAML files, then Harness will pull the image you add to **Artifacts**. See [Deploy Helm Charts](https://docs.harness.io/article/7owpxsaqar-deploy-helm-charts).
 
-For details on settings and permissions, see [HTTP Helm Repo Connector Settings Reference](ref-source-repo-provider/http-helm-repo-connector-settings-reference.md).1. Open a Harness Project.
+For details on settings and permissions, see [HTTP Helm Repo Connector Settings Reference](ref-source-repo-provider/http-helm-repo-connector-settings-reference.md).
+
+1. Open a Harness Project.
 2. In **Project Setup**, click **Connectors**.
 3. Click **New Connector**, and click **HTTP Helm** in **Artifact Repositories**. The HTTP Helm Repo settings appear.
 4. In **Name**, enter a name for this connector.

@@ -58,17 +58,8 @@ The following table shows the attributes you can select for Harness ABAC:
 |  |  |
 | --- | --- |
 | **Resource** | **Attributes** |
-| **Connectors** | * Cloud Providers
-* Secret Managers
-* Cloud Costs
-* Artifact Repositories
-* Code Repositories
-* Monitoring and Logging Systems
-* Ticketing Systems
- |
-| **Environments** | * Production
-* Non-Production
- |
+| **Connectors** | <li> Cloud Providers</li><li>Secret Managers</li><li>Cloud Costs</li><li>Artifact Repositories</li><li>Code Repositories</li><li>Monitoring and Logging Systems</li><li>Ticketing Systems</li>|
+| **Environments** | <li> Production</li><li>Non-Production</li>|
 
 ### Step 1: Add a new Resource Group
 

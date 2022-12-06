@@ -12,25 +12,43 @@ Everything you can create in the Harness Manager you can create using our REST A
 
 This quickstart shows how to onboard Harness resources using the APIs. We'll add a new Project, Connector, and Pipeline using curl and the APIs.
 
-**Looking for the API reference docs?** See [Harness API Reference Docs](https://harness.io/docs/api/).### Objectives
+
+:::note
+**Looking for the API reference docs?** See [Harness API Reference Docs](https://harness.io/docs/api/).
+
+:::
+
+### Objectives
 
 You'll learn how to:
 
 * Authenticate with Harness via API using API keys.
 * Onboard Harness Projects, Connectors, and Pipelines using the Harness API.
 
-The API requests in this topic use curl, but Harness supports multiple languages, such as Go, Java, and Node.js. The [Harness API Reference Docs](https://harness.io/docs/api/) provides examples for all supported languages.### Before you begin
+
+:::note
+The API requests in this topic use curl, but Harness supports multiple languages, such as Go, Java, and Node.js. The [Harness API Reference Docs](https://harness.io/docs/api/) provides examples for all supported languages.
+
+:::
+
+### Before you begin
 
 * [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts)
-* [Access Management(RBAC) Overview](../4_Role-Based Access Control/rbac-in-harness.md)
-* This quickstart walks you through adding the Harness API keys needed to authenticate with the API. To review Harness API keys, see [Add and Manage API Keys](../4_Role-Based Access Control/add-and-manage-api-keys.md).
-* Make sure your Harness account has the required permissions to Create, Edit, Delete, and View the Harness resources you are creating via API. Any of the following default roles are sufficient: Account Administrator, Organization Admin, Project Admin. For more, see [Permissions Reference](../4_Role-Based Access Control/ref-access-management/permissions-reference.md).
+* [Access Management(RBAC) Overview](../4_Role-Based-Access-Control/1-rbac-in-harness.md)
+* This quickstart walks you through adding the Harness API keys needed to authenticate with the API. To review Harness API keys, see [Add and Manage API Keys](../4_Role-Based-Access-Control/7-add-and-manage-api-keys.md).
+* Make sure your Harness account has the required permissions to Create, Edit, Delete, and View the Harness resources you are creating via API. Any of the following default roles are sufficient: Account Administrator, Organization Admin, Project Admin. For more, see [Permissions Reference](../4_Role-Based-Access-Control/ref-access-management/permissions-reference.md).
 
 ### Step 1: Create a Harness API Key and PAT
 
 The Harness API uses API keys to authenticate requests. You create the API key in your Harness Manager User Profile, add a Personal Access Token (PAT) to the key, and then use the PAT in your API requests.
 
-For an overview of Harness API keys, see [Add and Manage API Keys](../4_Role-Based Access Control/add-and-manage-api-keys.md).Let's create the API key and its Personal Access Token.
+
+:::note
+For an overview of Harness API keys, see [Add and Manage API Keys](../4_Role-Based-Access-Control/7-add-and-manage-api-keys.md).
+
+:::
+
+Let's create the API key and its Personal Access Token.
 
 Here's a quick visual summary:
 
@@ -41,9 +59,11 @@ Here's a quick visual summary:
 In Harness, navigate to your **Profile**.
 
 ![](./static/api-quickstart-01.png)
+
 In **My API Keys**, Click **API Key**. The API Key settings appear.
 
 ![](./static/api-quickstart-02.png)
+
 Enter **Name, Description,** and **Tags** for your API.
 
 Click **Save**. The new API Key is created.
@@ -55,6 +75,7 @@ Next, we'll add the Personal Access Token (PAT) that you will use when you make 
 Click **Token** below the API Key you just created.
 
 ![](./static/api-quickstart-03.png)
+
 In the **New Token** settings, enter a Name, Description, and Tags.
 
 To set an expiration date for this token, select **Set Expiration Date** and enter the date in **Expiration Date (mm/dd/yyyy)**.
@@ -64,13 +85,18 @@ Click **Generate Token**.
 Your new token is generated.
 
 ![](./static/api-quickstart-04.png)
+
+
+:::warning
 Please copy and store your token value somewhere safe. You won't be able to see it again.  
   
-Your API keys carry many privileges, so be sure not to share them in publicly accessible areas. Make sure you always use the updated API Key value after you rotate the token. For more details, see [Rotate Token](../4_Role-Based Access Control/add-and-manage-api-keys.md#rotate-token).
+Your API keys carry many privileges, so be sure not to share them in publicly accessible areas. Make sure you always use the updated API Key value after you rotate the token. For more details, see [Rotate Token](../4_Role-Based-Access-Control/7-add-and-manage-api-keys.md#rotate-token).
+:::
+
 
 #### Service Account Tokens
 
-You can also use a Service Account Tokens instead of PAT. See [Add and Manage Service Accounts](../4_Role-Based Access Control/add-and-manage-service-account.md).
+You can also use a Service Account Tokens instead of PAT. See [Add and Manage Service Accounts](../4_Role-Based-Access-Control/6-add-and-manage-service-account.md).
 
 ### Step 2: Create a Project via API
 
@@ -117,6 +143,7 @@ The successful response will be something like this:
 Open Harness to see your new Project (you might need to refresh the Project page):
 
 ![](./static/api-quickstart-05.png)
+
 ### Step 3: Create a Connector via API
 
 A Harness Connector contains the information necessary to integrate and work with 3rd party tools.

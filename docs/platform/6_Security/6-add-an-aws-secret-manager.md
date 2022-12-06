@@ -71,7 +71,7 @@ To test use the AWS account when running [aws secretsmanager list-secrets](https
 
 ### Step 1: Add a Secret Manager
 
-This topic assumes you have a Harness Project set up. If not, see [Create Organizations and Projects](../1_Organizations and Projects/create-an-organization.md).
+This topic assumes you have a Harness Project set up. If not, see [Create Organizations and Projects](../1_Organizations-and-Projects/2-create-an-organization.md).
 
 You can add a Connector from any module in your Project in Project SETUP, or in your Organization, or Account Resources.
 
@@ -79,7 +79,11 @@ In **Connectors**, click **Connector**.
 
 In **Secret Managers**, click **AWS Secrets Manager**. The AWS Secrets Manager settings appear.
 
+
+:::note
 For information on restrictions on names and maximum quotas, see [Quotas for AWS Secrets Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_limits.html).
+:::
+
 
 ### Step 2: Overview
 
@@ -165,5 +169,8 @@ In **Setup Delegates,** enter [**Selectors**](../2_Delegates/delegate-guide/s
 
 Once the Test Connection succeeds, click Finish. You can now see the Connector in Connectors.​
 
+
+:::note
 Important: Test Connection failsHarness tests connections by creating a dummy secret in the Secret Manager or Vault. For the **Test Connection** to function successfully, make sure you have **Create** permission for secrets.  
 The Test Connection fails if you do not have Create permission. However, Harness still creates the Connector for you. You may use this Connector to read secrets, if you have **View** permissions.
+:::

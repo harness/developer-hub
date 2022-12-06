@@ -16,10 +16,18 @@ With Account-level, Org-level, and Project-level Variables, Harness lets you sto
 
 This topic explains how to add Variables as an Account-level and Org-level Resource in Harness.
 
-For details on Harness built-in variables, see [Built-in Harness Variables Reference](harness-variables.md).### Before you begin
+
+:::note
+For details on Harness built-in variables, see [Built-in Harness Variables Reference](harness-variables.md).
+
+:::
+
+### Before you begin
 
 * [Learn Harness' Key Concepts](https://ngdocs.harness.io/article/hv2758ro4e-learn-harness-key-concepts).
-* Make sure you have [all permissions](../4_Role-Based Access Control/add-manage-roles.md) on Variables to add and manage Variables.![](./static/add-a-variable-00.png)
+* Make sure you have [all permissions](../4_Role-Based-Access-Control/9-add-manage-roles.md) on Variables to add and manage Variables.
+  
+  ![](./static/add-a-variable-00.png)
 
 ### Limitations
 
@@ -30,9 +38,11 @@ For details on Harness built-in variables, see [Built-in Harness Variables Refer
 
 Here is a quick overview of how Variables can be shared across Pipelines.
 
-![](./static/add-a-variable-01.png)### Step 1: Add Account, Org, and Project Variables
+![](./static/add-a-variable-01.png)
 
-You can add a Variable to the Account, Organization, or Project [scope](../4_Role-Based Access Control/rbac-in-harness.md#rbac-scope).
+### Step 1: Add Account, Org, and Project Variables
+
+You can add a Variable to the Account, Organization, or Project [scope](../4_Role-Based-Access-Control/1-rbac-in-harness.md#rbac-scope).
 
 #### Account
 
@@ -41,9 +51,11 @@ In Harness, click **Account Settings**.
 Click **Account Resources** and then click **Variables**.
 
 ![](./static/add-a-variable-02.png)
+
 Click **New Variable**. The **Add Variable** settings appear.
 
 ![](./static/add-a-variable-03.png)
+
 Enter a **Name** for your Variable.
 
 In **Fixed Value**, enter a value for your Variable.
@@ -51,6 +63,7 @@ In **Fixed Value**, enter a value for your Variable.
 Click **Save**.
 
 ![](./static/add-a-variable-04.png)
+
 #### Org
 
 Click **Account Settings**.
@@ -62,6 +75,7 @@ Select an Org.
 In **Organization Resources**, click **Variables**.
 
 ![](./static/add-a-variable-05.png)
+
 Click **New Variable**.
 
 Enter a name, select the variable type (for example, **String**), and enter a value.
@@ -69,6 +83,7 @@ Enter a name, select the variable type (for example, **String**), and enter a va
 For example, here's a variable named **organiz\_var**.
 
 ![](./static/add-a-variable-06.png)
+
 Note the Id. That Id is used to reference the variable.
 
 Click **Save**.
@@ -84,6 +99,7 @@ Enter a name, select the variable type (for example, **String**), and enter a va
 For example, here's a variable named **proj\_var**.
 
 ![](./static/add-a-variable-07.png)
+
 Note the Id. That Id is used to reference the variable.
 
 Click **Save**.
@@ -98,7 +114,13 @@ To reference an Account and Org-level Variable, you must use the following expre
 * Org-level reference: `<+variable.org.[var Id]>`
 * Project-level reference: `<+variable.[var Id]>`
 
-The expression to reference **Project** scope Variables is `<+variable.Example>`. You do not need to specify `scope` to reference Project Variables.For example, to reference the Variable you just created, the expression will be:
+
+:::note
+The expression to reference **Project** scope Variables is `<+variable.Example>`. You do not need to specify `scope` to reference Project Variables.
+
+:::
+
+For example, to reference the Variable you just created, the expression will be:
 
 `<+variable.account.Example>`
 
@@ -117,11 +139,13 @@ echo "project var: " <+variable.proj_var>
 When you run the Pipeline, the variable references are resolved and output:
 
 ![](./static/add-a-variable-08.png)
+
 ### Review: Using an Account, Org, or Project Variable in a Service Variable
 
 In **Service**, in **Advanced**, click **Add Variable**.
 
 ![](./static/add-a-variable-09.png)
+
 The **Add Variable** settings appear.
 
 In **Variable** **Name**, enter a name for your Variable.
@@ -133,18 +157,22 @@ Your Variable is now listed under **Variables**.
 In **VALUE**, select **Expression** and enter `<+variable.account.acct_var>`.
 
 ![](./static/add-a-variable-10.png)
+
 Now, when you run your Pipeline the referenced value is evaluated at runtime.
 
 Copy the Service variable from **Variables**:
 
 ![](./static/add-a-variable-11.png)
+
 In your Shell Script step, reference the Service variable with `<+stage.spec.serviceConfig.serviceDefinition.spec.variables.serv_var>`.
 
 Run the Pipeline and see that the value for the Account Variable is passed into the Service Variable:
 
 ![](./static/add-a-variable-12.png)
+
 You can refer to a Variable in most settings. For example, if you an Account Variable storing a Service named **Example**, you can refer to it inline using the same expression.
 
 ![](./static/add-a-variable-13.png)
+
 Now, when you run your Pipeline the referenced value is evaluated at runtime.
 

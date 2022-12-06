@@ -59,13 +59,7 @@ These actions can be applied to the failure strategy as the primary action and a
 |  |  |  |  |
 | --- | --- | --- | --- |
 | **Action** | **Step** | **Step Group** | **Stage** |
-| **Manual Intervention** | A Harness User will perform a manual intervention when the error type occurs.There are several options to select from:* Mark as Success
-* Ignore Failure
-* Retry
-* Abort
-* Rollback Stage
-
-Harness pauses the pipeline execution while waiting for manual intervention. The state of the Pipeline execution is displayed as **Paused**. | Same as step. | Same as step, but applies to all steps. |
+| **Manual Intervention** | A Harness User will perform a manual intervention when the error type occurs.There are several options to select from: <li> Mark as Success</li><li>Ignore Failure</li><li>Retry</li><li>Abort</li><li>Rollback Stage</li>Harness pauses the pipeline execution while waiting for manual intervention. The state of the Pipeline execution is displayed as **Paused**. | Same as step. | Same as step, but applies to all steps. |
 | **Mark as Success** | The step is marked as **Successful** and the stage execution continues. | Same as step. | The step that failed is marked as **Successful** and the Pipeline execution continues. |
 | **Ignore Failure** | The stage execution continues. The step is marked as **Failed**, but no rollback is triggered. | Same as step. | Same as step. |
 | **Retry** | Harness will retry the execution of the failed step automatically.You can set **Retry Count** and **Retry Intervals**. | Same as step. | Same as step. |

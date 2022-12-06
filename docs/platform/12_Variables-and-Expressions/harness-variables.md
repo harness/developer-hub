@@ -57,6 +57,7 @@ Everything in Harness can be referenced by a Fully Qualified Name (FQN) expressi
 The FQN is the path to a setting in the YAML of your Pipeline:
 
 ![](./static/harness-variables-14.png)
+
 You can select the expression for a setting or value in the Pipeline editor or execution.
 
 You don't need to build the expression yourself. Harness provides multiple places where you can copy the variable expression.
@@ -64,9 +65,11 @@ You don't need to build the expression yourself. Harness provides multiple place
 For example, you can click the copy button in a Pipeline execution to get the expressions of settings and values.
 
 ![](./static/harness-variables-15.png)
+
 When building a Pipeline in Pipeline Studio, you can copy the FQN of a setting using **Variables**.
 
 ![](./static/harness-variables-16.png)
+
 #### Stage-level and Pipeline-level Expressions
 
 Every section and step in a stage contains input information you can reference as expressions.
@@ -74,6 +77,7 @@ Every section and step in a stage contains input information you can reference a
 Click **Variables** in the Pipeline to view all the inputs and copy their expressions.
 
 ![](./static/harness-variables-17.png)
+
 There are two expressions for each input:
 
 * **Stage-level:** use this option to reference the input anywhere in its Stage.
@@ -153,6 +157,7 @@ You can reference the inputs and outputs of any part of your Pipeline.
 You can reference inputs in Pipeline **Variables**:
 
 ![](./static/harness-variables-18.png)
+
 ##### Input and Output Variable Expressions in Executions
 
 Inputs and outputs are displayed for every part of the Pipeline execution.
@@ -164,7 +169,7 @@ Here's the inputs and outputs for a Kubernetes Rollout Deployment step:
 |  |  |
 | --- | --- |
 | **Inputs** | **Outputs** |
-|  |  |
+| ![](./static/rolloutdeployment1.png) | ![](./static/rolloutdeployment2.png) |
 
 You can copy the expressions for the names or values of any input or output.
 
@@ -173,7 +178,7 @@ You can copy the expressions for the names or values of any input or output.
 |  |  |
 | --- | --- |
 | **Name** | **Value** |
-|  |  |
+|  ![](./static/name.png)|![](./static/value.png)  |
 
 Here are the **Name** and **Value** expressions for the `podIP` setting:
 
@@ -190,6 +195,7 @@ You can use Harness variable expressions in most settings.
 When you select **Expression** in a setting, you type `<+` and a value and the list of available variables appears:
 
 ![](./static/harness-variables-19.png)
+
 Simply click a variable expression name to use it as the value for this setting.
 
 At runtime, Harness will replace the variable with the runtime value.
@@ -205,6 +211,7 @@ When Harness encounters an expression during Pipeline execution, it tries to res
 In this illustration, you can see how the information in each section of the Stage are referenced:
 
 ![](./static/harness-variables-20.png)
+
 Here's how you reference the information in each of these sections:
 
 * **Service expressions** can only be used after Harness has progressed through the **Service** section of the Pipeline.
@@ -214,6 +221,7 @@ Here's how you reference the information in each of these sections:
 	+ Since **Execution** follows **Infrastructure**, you can reference **Infrastructure** expressions in **Execution**.
 * **Execution expressions** apply to steps in **Execution**.
 	+ Each step's **Execution** expressions can only be used after Harness has progressed through that step in the **Execution** section:![](./static/harness-variables-21.png)
+  
 
 ##### Variable Expressions in Conditional Execution Settings
 
@@ -346,6 +354,7 @@ See [Built-in CIE Codebase Variables Reference](../../continuous-integration/ci-
 The entity [identifier](../20_References/entity-identifier-reference.md) of the Harness account.
 
 ![](./static/harness-variables-22.png)
+
 #### <+account.name>
 
 Harness account name.
@@ -365,6 +374,7 @@ See [Add Account, Org, and Project-level Variables](add-a-variable.md).
 The entity [identifier](../20_References/entity-identifier-reference.md) of an organization.
 
 ![](./static/harness-variables-23.png)
+
 #### <+org.name>
 
 The name of the Org.
@@ -410,6 +420,7 @@ Here's a quick video that explains how to create and reference Pipeline, Stage, 
 The [Entity Identifier](../20_References/entity-identifier-reference.md) (Id) for the Pipeline.
 
 ![](./static/harness-variables-24.png)
+
 #### <+pipeline.executionId>
 
 Every execution of a Pipeline is given a universally unique identifier (UUID). The UUID can be referenced anywhere.
@@ -435,6 +446,7 @@ https://app.harness.io/ng/#/account/H5W8iol5TNWc4G9h5A2MXg/cd/orgs/default/proje
 The name of the current Pipeline.
 
 ![](./static/harness-variables-25.png)
+
 #### <+pipeline.sequenceId>
 
 The incremental sequential ID for the execution of a Pipeline. A `<+pipeline.executionId>` does not change, but a `<+pipeline.sequenceId>` is incremented with each run of the Pipeline.
@@ -444,6 +456,7 @@ The first run of a Pipeline receives a sequence ID of 1 and each subsequent exec
 For CD Pipelines the ID is named Execution. For CI Pipelines the ID is named Builds.
 
 ![](./static/harness-variables-26.png)
+
 You can use `<+pipeline.sequenceId>` to tag a CI build when you push it to a repo, and then use `<+pipeline.sequenceId>` to pull the same build and tag in a subsequent stage. See [CI Pipeline Quickstart](../../continuous-integration/ci-quickstarts/ci-pipeline-quickstart.md).
 
 #### <+pipeline.startTs>
@@ -469,6 +482,7 @@ The email of the user who triggered the Pipeline. This returns NULL if the Pipel
 Deployment status values are a Java enum. The list of values can be seen in the Deployments **Status** filter:
 
 ![](./static/harness-variables-27.png)
+
 You can use any status value in a JEXL condition. For example, `<+pipeline.stages.stage1.status> == "FAILED"`.
 
 #### Step status
@@ -486,7 +500,7 @@ Here's a quick video that explains how to create and reference Pipeline, Stage, 
 Once you've created a stage, its settings are in the **Overview** tab. For example, here's the **Overview** tab for a Deploy stage:
 
 ![](./static/harness-variables-28.png)
-(./static/harness-variables-28.png)
+
 In **Advanced**, you can add **Stage Variables**.
 
 Stage variables are custom variables you can add and reference in your stage and Pipeline. They're available across the Pipeline. You can override their values in later stages.
@@ -514,6 +528,7 @@ You reference stage variables **outside their stage** using the expression `<
 The name of the stage where the expression is evaluated.
 
 ![](./static/harness-variables-30.png)
+
 #### <+stage.description>
 
 The description of the stage where the expression is evaluated.
@@ -544,6 +559,7 @@ repeat:
 Here's an example with a Shell Script step:
 
 ![](./static/harness-variables-31.png)
+
 For examples, see the looping strategies used in the [Secure Shell (SSH) deployment tutorial](https://docs.harness.io/article/mpx2y48ovx-ssh-ng).
 
 ### Service
@@ -569,11 +585,13 @@ Here's a quick video that explains how to create and reference Pipeline, Stage, 
 The value of the Service-level variable in `[var_name]`.
 
 ![](./static/harness-variables-32.png)
+
 Use expression anywhere after the Service step in the Pipeline.
 
 To reference the variables, click the copy button:
 
 ![](./static/harness-variables-33.png)
+
 There are two options:
 
 * **Copy variable name:** use this option if you will only be referencing this variable in the current Stage. Expression:
@@ -584,6 +602,7 @@ There are two options:
 You can use these expressions in any setting in your Pipeline. You simply select the Expression option and enter the expression:
 
 ![](./static/harness-variables-34.png)
+
 To override the Service variable in a script, you simply reference its name and use a new value.
 
 #### <+service.name>
@@ -591,6 +610,7 @@ To override the Service variable in a script, you simply reference its name and 
 The name of the Service where the expression is evaluated.
 
 ![](./static/harness-variables-35.png)
+
 #### <+service.description>
 
 The description of the Service where the expression is evaluated.
@@ -610,11 +630,13 @@ The [entity identifier](../20_References/entity-identifier-reference.md) of the 
 Resolves to stage Service type, such as Kubernetes.
 
 ![](./static/harness-variables-36.png)
+
 #### <+service.gitOpsEnabled>
 
 Resolves to a boolean value to indicate whether the GitOps option is enabled (true) or not (false).
 
 ![](./static/harness-variables-37.png)
+
 For details on using the GitOps option, go to [Harness GitOps ApplicationSet and PR Pipeline Tutorial](https://docs.harness.io/article/lf6a27usso-harness-git-ops-application-set-tutorial).
 
 ### Manifest
@@ -749,6 +771,7 @@ You use `<+artifact.image>` or `<+artifact.imagePath>` is your Values YAML file 
 For example, here's the **Artifacts** section with an artifact:
 
 ![](./static/harness-variables-38.png)
+
 Here's the Values YAML file referencing the artifact in **Artifacts**:
 
 
@@ -809,6 +832,7 @@ The type of repository used to add this artifact in the Service **Artifacts**. F
 The [entity identifier](../20_References/entity-identifier-reference.md) for the Connector used to connect to the artifact repo.
 
 ![](./static/harness-variables-39.png)
+
 #### <+artifact.label.get("")>
 
 This expression resolves to the Docker labels of a Docker image.
@@ -834,19 +858,23 @@ echo <+artifact.label.get("multi.key.value")>
 When you run the Pipeline, the expressions will resolve to their respective label values:
 
 ![](./static/harness-variables-40.png)
+
 #### <+artifact.primary.identifier>
 
 The Id of the Primary artifact added in a Service **Artifacts** section.
 
 ![](./static/harness-variables-41.png)
+
 #### Sidecar Artifacts
 
 Sidecar artifact expressions use the **Sidecar Identifier** to reference the sidecar artifact.
 
 ![](./static/harness-variables-42.png)
+
 The sidecar identifier is set when you add the sidecar artifact. It can bee seen in the artifact listing:
 
 ![](./static/harness-variables-43.png)
+
 Here are the sidecar expressions:
 
 * `<+artifacts.sidecars.[sidecar_identifier].imagePath>`
@@ -870,6 +898,7 @@ To reference an Environment-level variable, use the expression `<+env.variables.
 For example, here is an Environment variable named `envvar`.
 
 ![](./static/harness-variables-44.png)
+
 You would reference it as `<+env.variables.envvar>`.
 
 #### <+env.name>
@@ -877,6 +906,7 @@ You would reference it as `<+env.variables.envvar>`.
 The name of the stage Environment.
 
 ![](./static/harness-variables-45.png)
+
 #### <+env.identifier>
 
 The [entity identifier](../20_References/entity-identifier-reference.md) of the stage's Environment.
@@ -896,6 +926,7 @@ The Environment Type, such as Production or Non-Production.
 The name of the Infrastructure Definition used in the Pipeline stage.
 
 ![](./static/harness-variables-46.png)
+
 #### <+infra.connectorRef>
 
 The name of the Connector used in the Infrastructure Definition.
@@ -907,6 +938,7 @@ The infrastructure key. The key is a unique string that identifies a deployment 
 For example, in a Deploy stage's Infrastructure Definition, the `<+INFRA_KEY>` is used in the **Release Name** to give the release a unique name:
 
 ![](./static/harness-variables-47.png)
+
 When you deploy, Harness adds the Release Name as a label. For example, in a Kubernetes deployment you can see `harness.io/release-name=release-2f9eadcc06e2c2225265ab3cbb1160bc5eacfd4f`:
 
 
@@ -945,6 +977,7 @@ repeat:
   items: <+stage.output.hosts>
 ```
 ![](./static/harness-variables-48.png)
+
 For examples, see [Run a script on multiple target instances](https://docs.harness.io/article/c5mcm36cp8-run-a-script-on-multiple-target-instances).
 
 For Microsoft Azure, AWS, or any platform-agnostic Physical Data Center (PDC):
@@ -965,6 +998,7 @@ For [Deployment Templates](https://docs.harness.io/article/6k9t49p6mn-custom-dep
 The `<+instance...>` expressions refer to the **Instance Attributes** in the Deployment Template:
 
 ![](./static/harness-variables-49.png)
+
 The following expressions refer to instance(s) collected by the mandatory **instancename** field:
 
 * `​<+instance.hostName>​`
@@ -1015,6 +1049,7 @@ Resolves to the artifact version (such as a Docker Tag) that initiated an [On Ne
 When you add an On New Artifact Trigger, you select the artifact to listen on and its **Tag** setting is automatically populated with `<+trigger.artifact.build>`.
 
 ![](./static/harness-variables-50.png)
+
 The `<+trigger.artifact.build>` is used for **Tag** to ensure that the new artifact version that executed the Trigger is used for the deployment.
 
 When a new tag is added to the artifact, the Trigger is fired and the Pipeline executes. Harness then resolves `<+trigger.artifact.build>` to the tag that fired the Trigger. This ensures that the new tag is used when pulling the artifact and that version is deployed.

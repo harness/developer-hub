@@ -57,7 +57,7 @@ If you created a Harness trial account, a Delegate is typically provisioned by H
 
 #### Harness Secrets and Harness Git Experience
 
-When you set up [Harness Git Experience](../10_Git Experience/harness-git-experience-overview.md), you select the Connectivity Mode for Git syncing. You have two options:
+When you set up [Harness Git Experience](../10_Git-Experience/git-experience-overview.md), you select the Connectivity Mode for Git syncing. You have two options:
 
 * **Connect Through Manager:** Harness SaaS will connect to your Git repo whenever you make a change and Git and Harness sync.
 * **Connect Through Delegate:** Harness will make all connections using the Harness Delegate. This option is used for Self-Managed Enterprise Edition frequently, but it is also used for Harness SaaS. See [Harness Self-Managed Enterprise Edition Overview](https://docs.harness.io/article/tb4e039h8x-harness-on-premise-overview).

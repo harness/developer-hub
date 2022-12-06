@@ -26,7 +26,7 @@ Looking for specific secret managers? See:
 ### Step 1: Configure Secret Manager
 
 1. Select your **Account** or **Organization** or **Project**.
-2. Select **Connectors** in **Setup****.**
+2. Select **Connectors** in **Setup**.
 3. Create new **Connector.** The **Connectors** page appears**.**
 4. Select a Secret Manager type under **Secret Managers**. See:
 * [Add an AWS KMS Secret Manager](./7-add-an-aws-kms-secrets-manager.md)
@@ -34,9 +34,9 @@ Looking for specific secret managers? See:
 * [Add an Azure Key Vault Secret Manager](./8-azure-key-vault.md)
 * [Add Google KMS as a Harness Secret Manager](./10-add-google-kms-secrets-manager.md)
 * [Add an AWS Secrets Manager](./6-add-an-aws-secret-manager.md)
-1. Provide the account access information for the new secret manager.
-2. If you choose to set this secret manager as the default, select **Use as Default Secret Manager**.
-3. Click **Finish**.
+5. Provide the account access information for the new secret manager.
+6. If you choose to set this secret manager as the default, select **Use as Default Secret Manager**.
+7. Click **Finish**.
 
 When a new Default Secret Manager is set up, only new Cloud Provider and/Connector secret fields are encrypted and stored in the new Default Secret Manager. Cloud Providers and Connectors that were created before the modification, are unaffected. Where is the Secret for the Secret Manager Stored?
 

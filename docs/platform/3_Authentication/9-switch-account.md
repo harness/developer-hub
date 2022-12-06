@@ -31,145 +31,24 @@ Switching Accounts might require re-authentication based on the configured authe
 |  |  |  |
 | --- | --- | --- |
 | **Authentication Setting of Current Account** | **Authentication Setting of the switch Account** | **Need to Re-authenticate** |
-| Username and Password | * Username and Password
-* Username and Password + OAuth
-* OAuth (All Providers)
-* OAuth (Google + GitHub)
-* OAuth (Google)
-* SAML (SSO Settings 1)
-* SAML (SSO Settings 2)
-* LDAP (Settings 1)
-* LDAP (Settings 2)
-* Whitelisted domains
-* 2FA at Account scope + OAuth
- | Yes |
-| Username and Password + OAuth | * Username and Password
-* Username and Password + OAuth
-* OAuth (All Providers)
-* OAuth (Google + GitHub)
-* OAuth (Google)
-* SAML (SSO Settings 1)
-* SAML (SSO Settings 2)
-* LDAP (Settings 1)
-* LDAP (Settings 2)
-* Whitelisted domains
-* 2FA at Account scope + OAuth
- | Yes |
-| OAuth (All providers) | * Username and Password
-* Username and Password + OAuth
-* OAuth (Google + GitHub)
-* OAuth (Google)
-* SAML (SSO Settings 1)
-* SAML (SSO Settings 2)
-* LDAP (Settings 1)
-* LDAP (Settings 2)
-* Whitelisted domains
-* 2FA at Account scope + OAuth
- | Yes |
-| OAuth (All providers) | * OAuth (All Providers)
- | No |
-| OAuth (Google + GitHub) | * Username and Password
-* Username and Password + OAuth
-* OAuth (All Providers)
-* OAuth (Google)
-* SAML (SSO Settings 1)
-* SAML (SSO Settings 2)
-* LDAP (Settings 1)
-* LDAP (Settings 2)
-* Whitelisted domains
-* 2FA at Account scope + OAuth
- | Yes |
-| OAuth (Google + GitHub) | * OAuth (Google + GitHub)
- | No |
-| OAuth (Google) | * Username and Password
-* Username and Password + OAuth
-* OAuth (All Providers)
-* OAuth (Google + GitHub)
-* SAML (SSO Settings 1)
-* SAML (SSO Settings 2)
-* LDAP (Settings 1)
-* LDAP (Settings 2)
-* Whitelisted domains
-* 2FA at Account scope + OAuth
- | Yes |
-| OAuth (Google) | * OAuth (Google)
- | No |
-| SAML (SSO Settings 1) | * Username and Password
-* Username and Password + OAuth
-* OAuth (All Providers)
-* OAuth (Google + GitHub)
-* OAuth (Google)
-* SAML (SSO Settings 2)
-* LDAP (Settings 1)
-* LDAP (Settings 2)
-* Whitelisted domains
-* 2FA at Account scope + OAuth
- | Yes |
-| SAML (SSO Settings 1) | * SAML (SSO Settings 1)
- | No |
-| SAML (SSO Settings 2) | * Username and Password
-* Username and Password + OAuth
-* OAuth (All Providers)
-* OAuth (Google + GitHub)
-* OAuth (Google)
-* SAML (SSO Settings 1)
-* LDAP (Settings 1)
-* LDAP (Settings 2)
-* Whitelisted domains
-* 2FA at Account scope + OAuth
- | Yes |
-| SAML (SSO Settings 2) | * SAML (SSO Settings 2)
- | No |
-| LDAP (Settings 1) | * Username and Password
-* Username and Password + OAuth
-* OAuth (All Providers)
-* OAuth (Google + GitHub)
-* OAuth (Google)
-* SAML (SSO Settings 1)
-* SAML (SSO Settings 2)
-* LDAP (Settings 2)
-* Whitelisted domains
-* 2FA at Account scope + OAuth
- | Yes |
-| LDAP (Settings 1) | * LDAP (Settings 1)
- | No |
-| LDAP (Settings 2) | * Username and Password
-* Username and Password + OAuth
-* OAuth (All Providers)
-* OAuth (Google + GitHub)
-* OAuth (Google)
-* SAML (SSO Settings 1)
-* SAML (SSO Settings 2)
-* LDAP (Settings 1)
-* Whitelisted domains
-* 2FA at Account scope + OAuth
- | Yes |
-| LDAP (Settings 2) | * LDAP (Settings 2)
- | No |
-| Whitelisted domains  | * Username and Password
-* Username and Password + OAuth
-* OAuth (All Providers)
-* OAuth (Google + GitHub)
-* OAuth (Google)
-* SAML (SSO Settings 1)
-* SAML (SSO Settings 2)
-* LDAP (Settings 1)
-* LDAP (Settings 2)
-* 2FA at Account scope + OAuth
- | Yes |
-| Whitelisted domains  | * Whitelisted domains
- | No |
-| 2FA at Account scope + OAuth | * Username and Password
-* Username and Password + OAuth
-* OAuth (All Providers)
-* OAuth (Google + GitHub)
-* OAuth (Google)
-* SAML (SSO Settings 1)
-* SAML (SSO Settings 2)
-* LDAP (Settings 1)
-* LDAP (Settings 2)
-* Whitelisted domains
- | Yes |
-| 2FA at Account scope + OAuth | * 2FA at Account scope + OAuth
- | No |
+| Username and Password | <li> Username and Password </li><li>Username and Password + OAuth</li><li>OAuth (All Providers</li><li>OAuth (Google + GitHub)</li><li>OAuth (Google)</li><li> SAML (SSO Settings 1)</li><li>SAML (SSO Settings 2)</li><li>LDAP (Settings 1)</li><li>LDAP (Settings 2)</li><li>Whitelisted domains</li><li>2FA at Account scope + OAuth</li> | Yes |
+| Username and Password + OAuth | <li> Username and Password</li><li>Username and Password + OAuth</li><li> OAuth (All Providers)</li><li>OAuth (Google + GitHub)</li><li>OAuth (Google)</li><li>SAML (SSO Settings 1)</li><li>SAML (SSO Settings 2)</li><li>LDAP (Settings 1)</li><li>LDAP (Settings 2)</li><li>Whitelisted domains</li><li>2FA at Account scope + OAuth</li>| Yes |
+| OAuth (All providers) | <li> Username and Password </li><li>Username and Password + OAuth</li><li> OAuth (Google + GitHub)</li><li>OAuth (Google)</li><li>SAML (SSO Settings 1)</li><li>SAML (SSO Settings 2)</li><li>LDAP (Settings 1)</li><li>LDAP (Settings 2)</li><li>Whitelisted domains</li><li>2FA at Account scope + OAuth</li>| Yes |
+| OAuth (All providers) | <li> OAuth (All Providers)</li>| No |
+| OAuth (Google + GitHub) | <li> Username and Password</li><li>Username and Password + OAuth</li><li>OAuth (All Providers)</li><li> OAuth (Google)</li><li>SAML (SSO Settings 1)</li><li>SAML (SSO Settings 2)</li><li>LDAP (Settings 1)</li><li>LDAP (Settings 2)</li><li>Whitelisted domains</li><li>2FA at Account scope + OAuth</li>| Yes |
+| OAuth (Google + GitHub) | * OAuth (Google + GitHub)| No |
+| OAuth (Google) | <li> Username and Password</li><li>Username and Password + OAuth</li><li>OAuth (All Providers)</li><li>OAuth (Google + GitHub)</li><li>SAML (SSO Settings 1)</li><li>SAML (SSO Settings 2)</li><li>LDAP (Settings 1)</li><li>LDAP (Settings 2)</li><li>Whitelisted domains</li><li>2FA at Account scope + OAuth</li>| Yes |
+| OAuth (Google) | <li> OAuth (Google)</li>| No |
+| SAML (SSO Settings 1) | <li> Username and Password</li><li>Username and Password + OAuth</li><li>OAuth (All Providers)</li><li>OAuth (Google + GitHub)</li><li>OAuth (Google)</li><li>SAML (SSO Settings 2)</li><li> LDAP (Settings 1)</li><li>LDAP (Settings 2)</li><li>Whitelisted domains</li><li>2FA at Account scope + OAuth</li>| Yes |
+| SAML (SSO Settings 1) | <li> SAML (SSO Settings 1)</li>| No |
+| SAML (SSO Settings 2) | <li> Username and Password</li><li>Username and Password + OAuth</li><li>OAuth (All Providers)</li><li>OAuth (Google + GitHub)</li><li>OAuth (Google)</li><li> SAML (SSO Settings 1)</li><li>LDAP (Settings 1)</li><li>LDAP (Settings 2)</li><li> Whitelisted domains</li><li>2FA at Account scope + OAuth</li>| Yes |
+| SAML (SSO Settings 2) | <li> SAML (SSO Settings 2)</li>| No |
+| LDAP (Settings 1) | <li> Username and Password</li><li> Username and Password + OAuth</li><li> OAuth (All Providers)</li><li>OAuth (Google + GitHub)</li><li>OAuth (Google)</li><li>SAML (SSO Settings 1)</li><li>SAML (SSO Settings 2)</li><li>LDAP (Settings 2)</li><li>Whitelisted domains</li><li>2FA at Account scope + OAuth</li>| Yes |
+| LDAP (Settings 1) | <li> LDAP (Settings 1)</li>| No |
+| LDAP (Settings 2) | <li> Username and Password </li><li>Username and Password + OAuth</li><li>OAuth (All Providers)</li><li>OAuth (Google + GitHub)</li><li> OAuth (Google)</li><li>SAML (SSO Settings 1)</li><li>SAML (SSO Settings 2)</li><li>LDAP (Settings 1)</li><li>Whitelisted domains</li><li>2FA at Account scope + OAuth</li>| Yes |
+| LDAP (Settings 2) | <li> LDAP (Settings 2)</li>| No |
+| Whitelisted domains  | <li>OAuth</li><li>OAuth (All Providers)</li><li>OAuth (Google + GitHub)</li><li>OAuth (Google)</li><li>SAML (SSO Settings 1)</li><li>SAML (SSO Settings 2)</li><li>LDAP (Settings 1)</li><li>LDAP (Settings 2)</li><li>2FA at Account scope + OAuth</li>| Yes |
+| Whitelisted domains  | <li> Whitelisted domains</li>| No |
+| 2FA at Account scope + OAuth | <li> Username and Password</li><li>Username and Password + OAuth</li><li> OAuth (All Providers)</li><li>OAuth (Google + GitHub)</li><li>OAuth (Google)</li><li>SAML (SSO Settings 1)</li><li>SAML (SSO Settings 2)</li><li>LDAP (Settings 1)</li><li>LDAP (Settings 2)</li><li>Whitelisted domains</li>| Yes |
+| 2FA at Account scope + OAuth | <li> 2FA at Account scope + OAuth </li>| No |
 

@@ -32,9 +32,14 @@ A public Git repo does not require a username and password/token. Harness does n
 
 In most cases, you'll want to add a Connector for a popular Git provider like GitHub, described in [Add a GitHub Connector](add-a-git-hub-connector.md). You can also add a platform-agnostic connection to a Git provider using **Git Repo**.
 
-For more details on the settings to create this connector, see [Git Connector Settings Reference](ref-source-repo-provider/git-connector-settings-reference.md).1. In your **Project** select a module such as CD.
+For more details on the settings to create this connector, see [Git Connector Settings Reference](ref-source-repo-provider/git-connector-settings-reference.md).
+
+1. In your **Project** select a module such as CD.
 2. In **Project Setup**, click **Connectors**.
-3. Click **New Connector**, and click **Git** in **Code Repositories**. The Git settings appear.![](./static/connect-to-code-repo-08.png)
+3. Click **New Connector**, and click **Git** in **Code Repositories**. The Git settings appear.
+   
+   ![](./static/connect-to-code-repo-08.png)
+
 4. In **Name**, enter a name for this connector.
 5. Select **Account** (which is an Organization) or **Repository** in **URL Type**.
 6. Select **Connection Type** as **HTTP** or **SSH**. For more information, see [Connection Type](ref-source-repo-provider/git-hub-connector-settings-reference.md#connection-type).
@@ -56,20 +61,27 @@ See [Add a GitHub Connector](add-a-git-hub-connector.md).
 
 For details on settings and permissions, see [AWS CodeCommit Connector Settings Reference](https://docs.harness.io/article/jed9he2i45-aws-code-commit-connector-settings-reference).
 
-For steps on setting up the IAM user for CodeCommit connections, go to [Setup for HTTPS users using Git credentials from AWS](https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-gc.html).1. Open a Harness Project.
+
+:::note
+For steps on setting up the IAM user for CodeCommit connections, go to [Setup for HTTPS users using Git credentials from AWS](https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-gc.html).
+
+:::
+
+1. Open a Harness Project.
 2. In **Project Setup**, click **Connectors**.
 3. Click **New Connector**, and click **AWS CodeCommit** in **Code Repositories**. The AWS CodeCommit settings appear.
 4. In **Name**, enter a name for this connector.
 5. Select **Region** or **Repository**.
-* **Region:** Connect to an entire AWS region. This enables you to use one Connector for all repos in the region. If you select this, you must provide a repository name to test the connection.
-* **Repository:** Connect to one repo.
-1. Enter the repository URL in **AWS CodeCommit Repository URL**. For example, `https://git-codecommit.us-west-2.amazonaws.com/v1/repos/doc-text`.  
-You can get this URL from your CodeCommit repo by using its **Clone URL** menu and selecting **Clone HTTPS**.
-2. Click **Save and Continue**.
-3. Enter IAM user's access key in **Access Key**.
-4. Enter the corresponding secret key in **Secret Key**. You can either create a new [Encrypted Text](../6_Security/2-add-use-text-secrets.md) or use an existing one.
-5. Click **Save and Continue**.
-6. Once the Test Connection succeeds, click **Finish**. The Connector is listed in Connectors.
+   * **Region:** Connect to an entire AWS region. This enables you to use one Connector for all repos in the region. If you select this, you must provide a repository name to test the connection.
+   * **Repository:** Connect to one repo.
+  
+6. Enter the repository URL in **AWS CodeCommit Repository URL**. For example, `https://git-codecommit.us-west-2.amazonaws.com/v1/repos/doc-text`.  
+   You can get this URL from your CodeCommit repo by using its **Clone URL** menu and selecting **Clone HTTPS**.
+7. Click **Save and Continue**.
+8. Enter IAM user's access key in **Access Key**.
+9. Enter the corresponding secret key in **Secret Key**. You can either create a new [Encrypted Text](../6_Security/2-add-use-text-secrets.md) or use an existing one.
+10. Click **Save and Continue**.
+11. Once the Test Connection succeeds, click **Finish**. The Connector is listed in Connectors.
 
 #### Required Credentials
 
@@ -95,9 +107,22 @@ In the Harness CodeCommit Connector, in **Access Key**, enter the **User name** 
 In **Secret Key**, use a [Harness Encrypted Text secret](../6_Security/2-add-use-text-secrets.md) for the **Password** of the IAM user account.
 
 ![](./static/connect-to-code-repo-09.png)
+
 ### Add a Bitbucket Repo
 
-For more details on the settings to create this connector, see [Bitbucket Connector Settings Reference](ref-source-repo-provider/bitbucket-connector-settings-reference.md).Harness supports both Cloud and Data Center (On-Prem) versions of Bitbucket.1. Open a Harness Project.
+
+:::note
+For more details on the settings to create this connector, see [Bitbucket Connector Settings Reference](ref-source-repo-provider/bitbucket-connector-settings-reference.md).
+
+:::
+
+
+:::note
+Harness supports both Cloud and Data Center (On-Prem) versions of Bitbucket.
+
+:::
+
+1. Open a Harness Project.
 2. In **Project Setup**, click **Connectors**.
 3. Click **New Connector**, and click **Bitbucket** in **Code Repositories**. The Bitbucket settings appear.
 4. In **Name**, enter a name for this connector.
@@ -116,7 +141,13 @@ For **HTTP**, the format for the URL should be `https://bitbucket.org/<userName>
 
 ### Add GitLab Repo
 
-For more details on the settings to create this connector, see [GitLab Connector Settings Reference](ref-source-repo-provider/git-lab-connector-settings-reference.md).1. Open a Harness Project.
+
+:::note
+For more details on the settings to create this connector, see [GitLab Connector Settings Reference](ref-source-repo-provider/git-lab-connector-settings-reference.md).
+
+:::
+
+1. Open a Harness Project.
 2. In **Project Setup**, click **Connectors**.
 3. Click **New Connector**, and click **GitLab** in **Code Repositories**. The GitLab Connector settings appear.
 4. In **Name**, enter a name for this connector.

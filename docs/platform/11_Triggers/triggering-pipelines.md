@@ -14,7 +14,13 @@ For example, when a pull request or push event occurs on a Git repo, a CI or CD 
 
 Triggers enable event driven CI/CD and support the practice of every commit building and/or deploying to a target environment.
 
-For general Triggers reference, see [Triggers Reference](../8_Pipelines/w_pipeline-steps-reference/triggers-reference.md).### Before you begin
+
+:::note
+For general Triggers reference, see [Triggers Reference](../8_Pipelines/w_pipeline-steps-reference/triggers-reference.md).
+
+:::
+
+### Before you begin
 
 * [Learn Harness' Key Concepts](https://docs.harness.io/article/hv2758ro4e-learn-harness-key-concepts)
 * [Kubernetes CD Quickstart](https://docs.harness.io/article/knunou9j30-kubernetes-cd-quickstart)
@@ -67,7 +73,13 @@ If the event you select results in the **Actions** settings appearing, select th
 
 For details on these settings, see [Triggers Reference](../8_Pipelines/w_pipeline-steps-reference/triggers-reference.md).
 
-For details on the payloads of the different repo Webhooks, see GitHub [Event Types & Payloads](https://docs.github.com/en/developers/webhooks-and-events/webhooks/webhook-events-and-payloads), Bitbucket [Event Payloads](https://confluence.atlassian.com/bitbucket/event-payloads-740262817.html), and Gitlab [Events](https://docs.gitlab.com/ee/user/project/integrations/webhooks.html#events).### Option: Auto-abort Previous Execution
+
+:::note
+For details on the payloads of the different repo Webhooks, see GitHub [Event Types & Payloads](https://docs.github.com/en/developers/webhooks-and-events/webhooks/webhook-events-and-payloads), Bitbucket [Event Payloads](https://confluence.atlassian.com/bitbucket/event-payloads-740262817.html), and Gitlab [Events](https://docs.gitlab.com/ee/user/project/integrations/webhooks.html#events).
+
+:::
+
+### Option: Auto-abort Previous Execution
 
 Use this option if you want to override active Pipeline executions whenever the branch is updated.
 
@@ -77,7 +89,11 @@ The updated branch will initiate a new Trigger execution.
 
 ### Option: Polling Frequency
 
+
+:::note
 Currently, this feature is behind the feature flag `GIT_WEBHOOK_POLLING`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.By default, Harness Git-based triggers listen to Git events using webhooks. 
+
+:::
 
 Sometimes webhook events can be missed due to a firewall or a network issue and cannot reach Harness.
 
@@ -102,11 +118,18 @@ For example:
 Conditions support Harness built-in expressions for accessing Trigger settings, Git payload data and headers.
 
 ![](./static/triggering-pipelines-15.png)
+
 JEXL expressions are also supported.
 
 For details on these settings, see [Triggers Reference](../8_Pipelines/w_pipeline-steps-reference/triggers-reference.md).
 
-Conditions are ANDed together (boolean AND operation). All Conditions must match an event payload for it to execute the Trigger.### Step 3: Set Pipeline Input
+
+:::note
+Conditions are ANDed together (boolean AND operation). All Conditions must match an event payload for it to execute the Trigger.
+
+:::
+
+### Step 3: Set Pipeline Input
 
 Pipelines often have [Runtime Inputs](../20_References/runtime-inputs.md) like codebase branch names or artifact versions and tags.
 
@@ -123,6 +146,7 @@ When you create or edit the Trigger, Harness registers the webhook in your Git p
 * **Scopes:** select all the **repo**, **user**, and **admin:repo\_hook** options
 
 ![](./static/triggering-pipelines-16.png)
+
 You should also be repo admin.
 
 ### Step 4: Test Trigger
@@ -132,6 +156,7 @@ Make a change on the repo and see if it executes the Trigger. For example, chang
 In your Git provider repo, you can see that the request and response were successful.
 
 ![](./static/triggering-pipelines-17.png)
+
 In Harness, view the Pipeline execution.
 
 In Harness CI, click **Builds**.
@@ -139,11 +164,13 @@ In Harness CI, click **Builds**.
 You can see the source and target branches. You can also see the pull request comment and number.
 
 ![](./static/triggering-pipelines-18.png)
+
 Click the pull request number and it opens the Git provider repo at the pull request.
 
 If you open the Trigger in the Pipeline you will see a status in **Last Activation Details**.
 
 ![](./static/triggering-pipelines-19.png)
+
 Activation means the Trigger was able to request Pipeline execution. It does not mean that the Webhook didn't work.
 
 ### See also

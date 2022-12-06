@@ -25,7 +25,9 @@ For example, in a [Kubernetes Blue Green Deployment](https://docs.harness.io/ar
 You can use ServiceNow Approvals in two ways:
 
 * **ServiceNow Approval step:** you can add a ServiceNow Approval step to any Pipeline or Approval stage.
-* **ServiceNow** **Approval stage:** the ServiceNow Approval stage.![](./static/service-now-approvals-00.png)
+* **ServiceNow** **Approval stage:** the ServiceNow Approval stage.
+  
+  ![](./static/service-now-approvals-00.png)
 
 ### UTC Timezone Only
 
@@ -40,14 +42,17 @@ The display values in the Harness UI depend on ServiceNow timezone settings.
 In your Pipeline, click **Add Stage**.
 
 ![](./static/service-now-approvals-01.png)
+
 Click **Approval**. The Stage settings appear.
 
 ![](./static/service-now-approvals-02.png)
+
 In **Name**, enter a name for your Stage and select **ServiceNow** as approval type. Click **Setup Stage**. The pipeline appears.
 
 In the pipeline, click **ServiceNow Approval.** The **ServiceNow Approval** settings appear.
 
 ![](./static/service-now-approvals-03.png)
+
 In **Timeout**, enter how long you want Harness to try to complete the step before failing (and initiating the stage or step [Failure Strategy](../8_Pipelines/define-a-failure-strategy-on-stages-and-steps.md)).
 
 You can use `**w**`  for week, `**d**`  for day, `**h**`  for hour, `**m**`  for minutes, `**s**`  for seconds and `**ms**` for milliseconds. For example, 1d for one day.
@@ -65,6 +70,7 @@ Enter the ServiceNow **Ticket Number**.
 The **Approval Criteria** in the step determines if the Pipeline or stage is approved or rejected. Define the approval criteria using the ServiceNow status items.
 
 ![](./static/service-now-approvals-04.png)
+
 Whether the Pipeline/stage stops executing depends on the stage or step [Failure Strategy](../8_Pipelines/define-a-failure-strategy-on-stages-and-steps.md).You can specify criteria using **Conditions** and/or **JEXL Expression**. If you use them in combination, they both must evaluate to `True` for the step to be successful.
 
 In **Conditions**, you can use the ServiceNow ticket related fields to define approval criteria.
@@ -82,6 +88,7 @@ If you add rejection criteria, it is used in addition to the settings in **Appr
 In **Approval Change Window**, use **Window Start** and **Window End** values to specify the window in which Harness will proceed with the deployment. Once this step is approved, Harness proceeds with deployment if the current time is within this window. The values that appear depend on the type selected in **Ticket Type**. 
 
 ![](./static/service-now-approvals-05.png)
+
 The start and end times use the time zone set in the ServiceNow account selected in the ServiceNow Connector.
 
 ### Option: Advanced Settings
@@ -101,6 +108,7 @@ Run the Pipeline.
 When the ServiceNow Approval step is reached, you can see its approval and rejection criteria:
 
 ![](./static/service-now-approvals-06.png)
+
 ### Review: Issue Expressions
 
 You can use `<+ticket>` to refer to the value in the **JEXL Expression** setting.
@@ -108,6 +116,7 @@ You can use `<+ticket>` to refer to the value in the **JEXL Expression** set
 For example, `<+ticket.state.displayValue> == "New"` in the Approval Criteria, **JEXL Expression** checks to see if the status of the ticket is **New.**
 
 ![](./static/service-now-approvals-07.png)
+
 `state` is a ticket field. You can use any ticket field.
 
 ### See also

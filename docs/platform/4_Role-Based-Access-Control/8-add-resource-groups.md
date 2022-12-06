@@ -49,9 +49,9 @@ Harness includes the following built-in Resource Groups at the Account, Org, and
 
 ### Step 1: Add a New Resource Group
 
-Select your **Project/Org/****Account**, and click **Access Control**.
+Select your **Project/Org/Account**, and click **Access Control**.
 
-Click **Resource Groups** and then click **New Resource** **Group****.** The New Resource Group settings appear.
+Click **Resource Groups** and then click **New Resource Group**. The New Resource Group settings appear.
 
 Enter a **Name** for your **Resource Group**.
 

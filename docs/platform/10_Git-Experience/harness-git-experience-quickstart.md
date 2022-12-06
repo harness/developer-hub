@@ -57,7 +57,7 @@ You can use multiple repos in the Harness Git Experience for a Project. For exam
 Here's a new GitHub repo named **GitExpDocExample**.
 
 ![](./static/harness-git-experience-quickstart-53.png)
-You do not need all of the resources used by your Pipelines to be synched to your repo. For example, you could use account-level resources such as Delegate or Docker Registry Connectors. These will work fine.In Harness, create a new Project. See [Create Organizations and Projects](../1_Organizations and Projects/create-an-organization.md).
+You do not need all of the resources used by your Pipelines to be synched to your repo. For example, you could use account-level resources such as Delegate or Docker Registry Connectors. These will work fine.In Harness, create a new Project. See [Create Organizations and Projects](../1_Organizations-and-Projects/2-create-an-organization.md).
 
 Here's a new Project named **GitExp Doc Example**.
 

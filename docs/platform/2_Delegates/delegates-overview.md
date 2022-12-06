@@ -1,7 +1,7 @@
 ---
 title: Delegate overview
 description: Harness Delegate is a service you run in your local network or VPC to connect your artifact, infrastructure, collaboration, verification and other providers with Harness Manager.
-# sidebar_position: 2
+sidebar_position: 1
 helpdocs_topic_id: 2k7lnc7lvl
 helpdocs_category_id: sy6sod35zi
 helpdocs_is_private: false
@@ -205,7 +205,7 @@ Harness keeps log files for today and the previous 10 days (up to one 1GB).
 
 ### Delegate permissions
 
-You can set permissions on Delegates using [Harness RBAC](../4_Role-Based Access Control/rbac-in-harness.md).
+You can set permissions on Delegates using [Harness RBAC](../4_Role-Based-Access-Control/1-rbac-in-harness.md).
 
 You create roles and then assign them to Harness Users.
 

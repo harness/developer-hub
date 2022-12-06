@@ -16,7 +16,7 @@ Harness Code Repository Connectors connect your Harness account with your Git pl
 
 ### Step 1: Add a GitHub Code Repo Connector
 
-This topic assumes you have a Harness Project set up. If not, see [Create Organizations and Projects](../1_Organizations and Projects/create-an-organization.md).
+This topic assumes you have a Harness Project set up. If not, see [Create Organizations and Projects](../1_Organizations-and-Projects/2-create-an-organization.md).
 
 You can add a Connector from any module in your Project in Project setup, or in your Organization, or Account Resources.
 

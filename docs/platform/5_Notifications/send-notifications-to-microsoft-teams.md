@@ -16,7 +16,7 @@ Setup is a simple process of generating a Webhook in Microsoft Teams and adding 
 
 ### Before you begin
 
-* See [User Group Notification Preferences](../4_Role-Based Access Control/add-user-groups.md#option-notification-preferences)
+* See [User Group Notification Preferences](../4_Role-Based-Access-Control/4-add-user-groups.md#option-notification-preferences)
 
 ### Review: Requirements
 

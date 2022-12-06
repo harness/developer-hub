@@ -8,7 +8,11 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+
+:::note
 Currently, this feature is behind the feature flag `NG_CUSTOM_STAGE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.This topic describes how to set up a Custom stage.
+
+:::
 
 Harness has pre-defined stages for the most common release operations, such as Build (CI), Deploy (CD), and Approval stages; however, there are times when you need to add a stage to your Pipeline that performs other operations and don't require the pre-defined settings of CI, CD, or Approvals.
 
@@ -64,7 +68,7 @@ You reference stage variables **within their stage** using the expression `<+
 
 You reference stage variables **outside their stage** using the expression `<+pipeline.stages.[stage Id].variables.[variable name]>`.
 
-See [Built-in and Custom Harness Variables Reference](../12_Variables and Expressions/harness-variables.md).
+See [Built-in and Custom Harness Variables Reference](../12_Variables-and-Expressions/harness-variables.md).
 
 ### Step 2: Add Execution Steps
 
@@ -79,7 +83,7 @@ For details on the different steps, see:
 * [Create an HTTP Step Template](../13_Templates/harness-template-library.md)
 * [Approvals](https://ngdocs.harness.io/category/bz4zh3b75p)
 * [Synchronize Deployments using Barriers](https://docs.harness.io/article/dmlf8w2aeh-synchronize-deployments-using-barriers)
-* [Add a Policy Engine Step to a Pipeline](../14_Policy as code/add-a-governance-policy-step-to-a-pipeline.md)
+* [Add a Policy Engine Step to a Pipeline](../14_Policy-as-code/add-a-governance-policy-step-to-a-pipeline.md)
 * [Terraform How-tos](https://docs.harness.io/article/w6i5f7cpc9-terraform-how-tos)
 
 CI and CD-specific steps, like a Rolling Deployment, are not available in the Custom stage.

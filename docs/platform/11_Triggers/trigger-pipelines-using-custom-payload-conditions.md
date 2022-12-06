@@ -67,7 +67,11 @@ Conditions support Harness built-in expressions for accessing Trigger settings, 
 
 You can configure Triggers based on the source branches, target branches, and changed files in a Git merge.
 
-If you want to specify multiple paths, use the Regex operator.![](./static/trigger-pipelines-using-custom-payload-conditions-30.png)#### Option 2: Header Condition
+If you want to specify multiple paths, use the Regex operator.
+
+![](./static/trigger-pipelines-using-custom-payload-conditions-30.png)
+
+#### Option 2: Header Condition
 
 In the Header condition, enter the Git Webhook Header data that matches your value. 
 
@@ -99,7 +103,10 @@ JEXL expressions are also supported. Here are some examples:
 
 For details on Trigger settings, see [Triggers Reference](../8_Pipelines/w_pipeline-steps-reference/triggers-reference.md).
 
-If you select multiple conditions, the conditions are ANDed together (boolean AND operation). All Conditions must match an event payload for it to execute the Trigger. If you select any one condition, Trigger will execute based on the condition you entered.![](./static/trigger-pipelines-using-custom-payload-conditions-31.png)
+If you select multiple conditions, the conditions are ANDed together (boolean AND operation). All Conditions must match an event payload for it to execute the Trigger. If you select any one condition, Trigger will execute based on the condition you entered.
+
+![](./static/trigger-pipelines-using-custom-payload-conditions-31.png)
+
 Click **Continue**.
 
 ### Step 4: Set Pipeline Input
@@ -119,12 +126,16 @@ When you create or edit the custom webhook trigger, you need to copy the webook 
 * Scopes: select all the repo, user, and admin:repo\_hook options
 
 ![](./static/trigger-pipelines-using-custom-payload-conditions-32.png)
+
 You should also be repo admin.
 
 1. In the **Pipeline Studio**, click **Triggers.**
 2. Select your Custom Webhook.
 3. Click on Webhook URL icon.
-4. Click the link button to copy the webhook URL.![](./static/trigger-pipelines-using-custom-payload-conditions-33.png)
+4. Click the link button to copy the webhook URL.
+   
+   ![](./static/trigger-pipelines-using-custom-payload-conditions-33.png)
+   
 5. Log in to your repo in the Git provider and navigate to its Webhook settings.   
 All Webhook URLs in an account have the same format: `https://app.harness.io/gateway/ng/api/webhook?accountIdentifier=ACCOUNT_ID`
 6. Create a new webhook and paste the URL you copied from Harness in Step 4.
@@ -135,6 +146,7 @@ In this example, we select **Just the push event**. It means that this webhook w
 10. Click **Update webhook**.
 
 ![](./static/trigger-pipelines-using-custom-payload-conditions-34.png)
+
 ### Step 6: Test Trigger
 
 Make a change on the repo and push the changes to Github and see if it executes the Trigger. For example, change a file, commit it on the main branch, and make a push event.
@@ -142,6 +154,7 @@ Make a change on the repo and push the changes to Github and see if it executes 
 In your Git provider repo, you can see that the request and response were successful.
 
 ![](./static/trigger-pipelines-using-custom-payload-conditions-35.png)
+
 Note that the webhook conditions specified in [Step 3](trigger-pipelines-using-custom-payload-conditions.md#step-3-set-trigger-conditions) match the Payload data. As a result, the Pipeline was triggered.
 
 In Harness, view the **Pipeline execution**.
@@ -149,16 +162,18 @@ In Harness, view the **Pipeline execution**.
 In Harness CI, click **Builds** (1). You can see the source branch (2), target branch (3), and the push request comment and number (4).
 
 ![](./static/trigger-pipelines-using-custom-payload-conditions-36.png)
+
 Click the push request number and it opens the Git provider repo at the push request.
 
 If you open the Trigger in the Pipeline, you will see a status in **Last Activation Details**.
 
 ![](./static/trigger-pipelines-using-custom-payload-conditions-37.png)
+
 Activation indicates that the Trigger was successful in requesting Pipeline execution.
 
 ### See also
 
 * [Triggers Reference](../8_Pipelines/w_pipeline-steps-reference/triggers-reference.md)
-* [Harness Git Sync Overview](../10_Git Experience/harness-git-experience-overview.md)
+* [Harness Git Sync Overview](../10_Git-Experience/git-experience-overview.md)
 * [Trigger Pipelines Using Git Events](triggering-pipelines.md)
 

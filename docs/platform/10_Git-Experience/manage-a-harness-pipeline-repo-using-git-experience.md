@@ -13,6 +13,7 @@ Git Experience enables you to store and manage your Harness Pipelines and Input 
 This topic describes the second workflow. We start with two code repos in Git, for a front-end service and a back-end service. Then we create Pipelines, Input Sets, and Triggers for the two codebases in a separate Harness repo.
 
 ![](./static/manage-a-harness-pipeline-repo-using-git-experience-14.png)
+
 ### Before you begin
 
 This topic assumes that you are familiar with the following:
@@ -37,11 +38,12 @@ Enter a name that corresponds to the code repo for the Pipeline. In this case we
 
 Select the Git Connector and the Git repo where you want to save the Pipeline. In this case, we select **myHarnessConfigs**.
 
-For the YAML path, enter **.harness/{*****PIPELINE\_SUBFOLDER*****}/{PIPELINE\_NAME}.yml**. The root folder **.harness** is required. The **{*****PIPELINE\_SUBFOLDER*****}** is not required, but it is good practice if you want to store multiple Pipelines in the same repo. This makes it much easier to manage all of your Harness definitions.
+For the YAML path, enter **.harness/{PIPELINE\_SUBFOLDER}/{PIPELINE\_NAME}.yml**. The root folder **.harness** is required. The **{*****PIPELINE\_SUBFOLDER*****}** is not required, but it is good practice if you want to store multiple Pipelines in the same repo. This makes it much easier to manage all of your Harness definitions.
 
 In this case, we save the Pipeline YAML as `./harness/myFrontEndService/myFrontEndService.yaml`.
 
 ![](./static/manage-a-harness-pipeline-repo-using-git-experience-15.png)
+
 Click **Start**. You can now set up your Pipeline.
 
 ### Step 3: Set up your build stage and codebase
@@ -51,11 +53,13 @@ In the Pipeline Studio, click **Add Stage** and select **Build** for the stage t
 In About your Stage, select the Git repo with the codebase that you want the Pipeline to build. Click **Set Up Stage**.
 
 ![](./static/manage-a-harness-pipeline-repo-using-git-experience-16.png)
+
 Set up your Build Stage in the Pipeline Studio: define the build infrastructure and add at least one Step. Click **Save**. The **Save Pipelines to Git** window appears.
 
 Select the branch where you want to save the Pipeline and click **Save**. You generally want to save it to the default branch on the first save. You can then create different branches in the Harness repo if you want to create different versions of your Pipeline.
 
 ![](./static/manage-a-harness-pipeline-repo-using-git-experience-17.png)
+
 ### Step 4: Create an input set
 
 With Git Experience enabled, any Input Sets you create get stored in the same repo and branch as the Pipeline definition. In this step, you will create a simple Input Set and save it with your Pipeline.
@@ -74,7 +78,10 @@ Enter the name and YAML path for the Input Set. For the YAML path, use the same 
 
 Click **Save** and save the Input Set into the default branch in your Harness repo.
 
-Every Input Set is associated with a specific Pipeline, which is specified by the `pipeline : identifier` element in the Input Set YAML.![](./static/manage-a-harness-pipeline-repo-using-git-experience-18.png)
+Every Input Set is associated with a specific Pipeline, which is specified by the `pipeline : identifier` element in the Input Set YAML.
+
+![](./static/manage-a-harness-pipeline-repo-using-git-experience-18.png)
+
 ### Step 5: Create a trigger
 
 Now that you have a Pipeline and Input Set in your default branch, you create a Trigger that uses the Input Set you just created.

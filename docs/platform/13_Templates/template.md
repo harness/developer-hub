@@ -1,7 +1,7 @@
 ---
 title: Templates Overview
 description: Harness enables you to add Templates to create re-usable logic and Harness entities (like Steps, Stages, and Pipelines) in your Pipelines. You can link these Templates in your Pipelines or share them…
-# sidebar_position: 2
+sidebar_position: 10
 helpdocs_topic_id: 6tl8zyxeol
 helpdocs_category_id: sy6sod35zi
 helpdocs_is_private: false
@@ -31,13 +31,14 @@ You can reshare your work with your team and reuse it in your Pipelines.
 You can add Templates to Harness CI and CD modules. All your Templates can be seen in **Templates** based on their scope. We will also call this **Template Library** in this topic.
 
 ![](./static/template-00.png)
+
 You can do the following with Templates in Harness:
 
 * Add multiple versions for a specific Template.
 * Preview, Copy, Edit, and Delete a specific Template.
 * Create nested Templates. For example, you can link a Step Template to a Stage Template and link this Stage Template to a Pipeline template.
 * Keep track of all Template events with the **Activity Log** option. It shows you details like who created the Template and Template version changes.
-* Clone Templates in Git and then sync them with Harness using [Harness Git Experience](../10_Git Experience/harness-git-experience-overview.md).
+* Clone Templates in Git and then sync them with Harness using [Harness Git Experience](../10_Git-Experience/git-experience-overview.md).
 
 ### Why Should You Use Templates?
 
@@ -50,7 +51,7 @@ For example, if you have some tasks or operations that every Pipeline must do, t
 
 ### Templates at Scopes
 
-You can add Templates at any [scope](../4_Role-Based Access Control/rbac-in-harness.md) in Harness.
+You can add Templates at any [scope](../4_Role-Based-Access-Control/1-rbac-in-harness.md) in Harness.
 
 The following table shows what it means to add Templates at different scopes or hierarchies:
 

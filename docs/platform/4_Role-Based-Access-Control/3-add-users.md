@@ -22,7 +22,7 @@ You must first invite Users to your Account/Org/Project to add them to User Grou
 
 Click **Account Settings**, and click **Access Control**.
 
-Click **New User** in **Users****.** The New User settings appear.
+Click **New User** in **Users**. The New User settings appear.
 
 ![](./static/add-users-11.png)
 Enter the email address(es) that the User will use to log into the Harness platform.

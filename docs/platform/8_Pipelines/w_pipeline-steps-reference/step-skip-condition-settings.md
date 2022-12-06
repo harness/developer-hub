@@ -58,7 +58,7 @@ Examples:
 * `<+pipeline.stages.cond.spec.execution.steps.echo.status> == "SUCCEEDED"`
 * `<+environment.name> != “QA”`
 
-See [Built-in Harness Variables Reference](../../12_Variables and Expressions/harness-variables.md).
+See [Built-in Harness Variables Reference](../../12_Variables-and-Expressions/harness-variables.md).
 
 ### Step Conditions
 
@@ -87,7 +87,7 @@ Example:
 * `<+pipeline.stages.cond.spec.execution.steps.echo.status> == "SUCCEEDED"`
 * `<+environment.name> != “QA”`
 
-For more information on variable expressions, go to [Built-in and Custom Harness Variables Reference](../../12_Variables and Expressions/harness-variables.md).
+For more information on variable expressions, go to [Built-in and Custom Harness Variables Reference](../../12_Variables-and-Expressions/harness-variables.md).
 
 ### Variable Expressions in Conditional Execution Settings
 

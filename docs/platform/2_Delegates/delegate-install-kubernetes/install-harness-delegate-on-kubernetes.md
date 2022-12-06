@@ -65,11 +65,13 @@ In this example, **Harness Project** is the target of the deployment.
 4. Enter the name of your delegate.  
 The name is populated into the **ID** field. You can change the name of the delegate after it is deployed; you cannot change the delegate ID.
 5. (Optional) Enter a description and create tags to be associated with your delegate.
-6. In **Delegate Size**, select the size of the deployment.![](./static/install-harness-delegate-on-kubernetes-12.png)
+6. In **Delegate Size**, select the size of the deployment.
+   
+   ![](./static/install-harness-delegate-on-kubernetes-12.png)
+   
+   In this example, the target deployment is of medium size.
 
-In this example, the target deployment is of medium size.
-
-1. In **Delegate Permissions**, select the access level you want to grant the delegate.   
+7. In **Delegate Permissions**, select the access level you want to grant the delegate.   
 In this example, the delegate is granted default access with cluster-wide read/write access.
 
 You can install the delegate using a Helm chart.
@@ -84,12 +86,16 @@ Or you can use a Kubernetes manifest.
 
 Some delegate values are configured in the harness-delegate-values.yml file. You can download the values file to configure a proxy or customize other editable values.
 
-![](./static/install-harness-delegate-on-kubernetes-15
+![](./static/install-harness-delegate-on-kubernetes-15.png)
+
 1. (Optional) To download the harness-delegate-values.yml file, click **Download YAML file**.  
-For detailed information about configuring a proxy for the delegate, see [Configure Delegate Proxy Settings](../delegate-guide/configure-delegate-proxy-settings.md).  
-For information about additional editable fields in the harness-delegate-values.yaml file, see [Delegate Environment Variables](../delegate-reference/delegate-environment-variables.md).
-2. Click **Continue**.![](./static/install-harness-delegate-on-kubernetes-16.png)
-3. Copy the provided commands and apply the chart.
+   
+   For detailed information about configuring a proxy for the delegate, see [Configure Delegate Proxy Settings](../delegate-guide/configure-delegate-proxy-settings.md). 
+
+   For information about additional editable fields in the harness-delegate-values.yaml file, see [Delegate Environment Variables](../delegate-reference/delegate-environment-variables.md).
+
+1. Click **Continue**.![](./static/install-harness-delegate-on-kubernetes-16.png)
+2. Copy the provided commands and apply the chart.
 
 If the deployment is successful, the installer verifies the delegate heartbeat. Otherwise, if there are problems, see [Delegate Issues](https://docs.harness.io/article/jzklic4y2j-troubleshooting#delegate_issues). After the issue is resolved, try the `helm upgrade` command again.
 

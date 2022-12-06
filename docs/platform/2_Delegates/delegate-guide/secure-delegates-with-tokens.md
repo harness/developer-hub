@@ -22,7 +22,8 @@ When you create a new Delegate, you can generate a new token.
 
 In **Delegate Setup**, in **Delegate Tokens**, click **Add**, and then name and apply the new token:
 
-![](./static/secure-delegates-with-tokens-02
+![](./static/secure-delegates-with-tokens-02.png)
+
 The new token is created and its value is copied to your system clipboard. The new token also appears in the list using the name you gave it.
 
 Save the new token value. You cannot retrieve the token value after this.
@@ -41,12 +42,14 @@ Click **New Token**.
 
 Here's an Account Settings example:
 
-![](./static/secure-delegates-with-tokens-03
+![](./static/secure-delegates-with-tokens-03.png)
+
 Enter a name for the new token, and then click **Apply**.
 
 You can copy the token and save it somewhere safe, if needed.
 
 ![](./static/secure-delegates-with-tokens-04.png)
+
 The new token is created and its value is copied to your system clipboard. The new token also appears in the list using the name you gave it.
 
 Save the new token value. You cannot retrieve the token value after this.

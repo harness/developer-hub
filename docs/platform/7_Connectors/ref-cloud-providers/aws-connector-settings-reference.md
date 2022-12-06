@@ -12,11 +12,21 @@ AWS is used as a Harness Connector for activities such as obtaining artifacts, b
 
 This topic provides settings and permissions for the AWS Connector.
 
+
+:::warning
 The [DescribeRegions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRegions.html) action is required for all AWS Connectors regardless of what AWS service you are using for your target or build infrastructures.
+
+:::
 
 ### AWS Permissions
 
-The [DescribeRegions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRegions.html) action is required for all AWS Connectors regardless of what AWS service you are using for your target or build infrastructure.The AWS role policy requirements depend on what AWS services you are using for your artifacts and target infrastructure.
+
+:::note
+The [DescribeRegions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRegions.html) action is required for all AWS Connectors regardless of what AWS service you are using for your target or build infrastructure.
+
+:::
+
+The AWS role policy requirements depend on what AWS services you are using for your artifacts and target infrastructure.
 
 Here are the user and access type requirements that you need to consider.
 
@@ -28,7 +38,13 @@ As described below, `DescribeRegions` is required for all AWS Cloud Provider c
 
 ### All AWS Connectors: DescribeRegions Required
 
-The [DescribeRegions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRegions.html) action is required for all AWS Connectors regardless of what AWS service you are using for your target or build infrastructure.Harness needs a policy with the `DescribeRegions` action so that it can list the available regions for you when you define your target architecture.
+
+:::warning
+The [DescribeRegions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRegions.html) action is required for all AWS Connectors regardless of what AWS service you are using for your target or build infrastructure.
+
+:::
+
+Harness needs a policy with the `DescribeRegions` action so that it can list the available regions for you when you define your target architecture.
 
 Create a [Customer Managed Policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html#customer-managed-policies), add the `DescribeRegions` action to list those regions, and add that to any role used by the Connector.
 
@@ -48,7 +64,11 @@ Create a [Customer Managed Policy](https://docs.aws.amazon.com/IAM/latest/UserGu
 ```
 ### AWS Policies Required
 
+
+:::warning
 The [DescribeRegions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRegions.html) action is required for all AWS Connectors regardless of what AWS service you are using for your target or build infrastructure.
+
+:::
 
 ### AWS S3
 
@@ -59,7 +79,13 @@ There are two policies required:
 * The Managed Policy **AmazonS3ReadOnlyAccess**.
 * The [Customer Managed Policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html#customer-managed-policies) you create using `ec2:DescribeRegions`.
 
-The AWS [IAM Policy Simulator](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_testing-policies.html) is a useful tool for evaluating policies and access.**Policy Name**: `AmazonS3ReadOnlyAccess`.
+
+:::warning
+The AWS [IAM Policy Simulator](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_testing-policies.html) is a useful tool for evaluating policies and access.
+
+:::
+
+**Policy Name**: `AmazonS3ReadOnlyAccess`.
 
 **Policy ARN:** `arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess`.
 
@@ -103,7 +129,11 @@ The AWS [IAM Policy Simulator](https://docs.aws.amazon.com/IAM/latest/UserGuide/
     ]  
 }
 ```
+
+:::note
 If you want to use an S3 bucket that is in a separate account than the account used to set up the AWS Cloud Provider, you can grant cross-account bucket access. For more information, see [Bucket Owner Granting Cross-Account Bucket Permissions](https://docs.aws.amazon.com/AmazonS3/latest/dev/example-walkthroughs-managing-access-example2.html) from AWS.
+
+:::
 
 #### Writing to AWS S3
 
@@ -152,7 +182,11 @@ There are two policies required:
     ]  
 }
 ```
+
+:::note
 If you want to use an S3 bucket that is in a separate account than the account used to set up the AWS Cloud Provider, you can grant cross-account bucket access. For more information, see [Bucket Owner Granting Cross-Account Bucket Permissions](https://docs.aws.amazon.com/AmazonS3/latest/dev/example-walkthroughs-managing-access-example2.html) from AWS.
+
+:::
 
 #### Read and Write to AWS S3
 
@@ -348,15 +382,19 @@ If you want to connect Harness to Elastic Kubernetes Service (Amazon EKS), use t
 
 There are three authentication options for the AWS Connector when used for AWS ECS images for AWS Serverless Lambda deployments:
 
-* [AWS Access Key](#aws_access_key)
-* [Assume IAM Role on Delegate](#assume_iam_role_on_delegate)
-* [Use IRSA](#use_irsa_iam_roles_for_service_accounts)
-* [Enable cross-account access (STS Role)](#enable_cross_account_access_sts_role)
-	+ Requires that the AWS CLI is installed on the Delegate. See [Serverless and ​Enable cross-account access (STS Role)](#serverless_and_enable_cross_account_access_sts_role).
+* [AWS Access Key](#aws-access-key)
+* [Assume IAM Role on Delegate](#assume-iam-role-on-delegate)
+* [Use IRSA](#use-irsa-iam-roles-for-service-accounts)
+* [Enable cross-account access (STS Role)](#enable-cross-account-access-sts-role)
+	+ Requires that the AWS CLI is installed on the Delegate. See [Serverless and ​Enable cross-account access (STS Role)](#serverless-and-​enable-cross-account-access-sts-role).
 
 For steps on Serverless Lambda deployments, see [Serverless Lambda CD Quickstart](https://docs.harness.io/article/5fnx4hgwsa-serverless-lambda-cd-quickstart).
 
+
+:::warning
 The [DescribeRegions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRegions.html) action is required for all AWS Connectors regardless of what AWS service you are using for your target or build infrastructure.
+
+:::
 
 #### Permissions
 
@@ -519,7 +557,11 @@ Replace the value with the follow Serverless installation script.
             echo "Done"  
 ...
 ```
+
+:::note
 In rare cases when the Delegate OS does not support `apt` (like Red Hat Linux), you can can edit this script to install `npm`. The rest of the code should remain the same.Save the YAML file as **harness-delegate.yml**.
+
+:::
 
 You can now apply the Delegate YAML: `kubectl apply -f harness-delegate.yml`.
 
@@ -561,7 +603,19 @@ See [Tags Reference](https://newdocs.helpdocs.io/article/i8t053o0sq-tags-referen
 
 #### Credentials
 
-Ensure that the AWS IAM roles applied to the credentials you use (the Harness Delegate or the access key) includes the policies needed by Harness to deploy to the target AWS service.The [DescribeRegions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRegions.html) action is required for all AWS Connectors regardless of what AWS service you are using for your target infrastructure.Credentials that enable Harness to connect your AWS account.
+
+:::note
+Ensure that the AWS IAM roles applied to the credentials you use (the Harness Delegate or the access key) includes the policies needed by Harness to deploy to the target AWS service.
+
+:::
+
+
+:::warning
+The [DescribeRegions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRegions.html) action is required for all AWS Connectors regardless of what AWS service you are using for your target infrastructure.
+
+:::
+
+Credentials that enable Harness to connect your AWS account.
 
 There are three options:
 
@@ -573,7 +627,13 @@ The settings for each option are described below.
 
 ### Assume IAM Role on Delegate
 
-The [DescribeRegions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRegions.html) action is required for all AWS Connectors regardless of what AWS service you are using for your target infrastructure.This is often the simplest method for connecting Harness to your AWS account and services.
+
+:::warning
+The [DescribeRegions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRegions.html) action is required for all AWS Connectors regardless of what AWS service you are using for your target infrastructure.
+
+:::
+
+This is often the simplest method for connecting Harness to your AWS account and services.
 
 Once you select this option, you can select a Delegate in the next step of the AWS Connector.
 
@@ -595,9 +655,21 @@ Select **Use IRSA** if you want to have the Harness Kubernetes Delegate in AWS E
 
 By default, the Harness Kubernetes Delegate uses a ClusterRoleBinding to the **default** service account. Instead, you can use AWS IAM roles for service accounts (IRSA) to associate a specific IAM role with the service account used by the Harness Kubernetes Delegate.
 
-See [IAM roles for service accounts](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html) from AWS.Setting up this feature requires a few more steps than other methods, but it is a simple process.
 
-The following steps are for a new Delegate installation and new AWS Connector. If you updating an existing Delegate and AWS Connector, you can simply edit the Delegate YAML for your existing Delegate as described below, and select the **Use IRSA** option in your AWS Connector.Create the IAM role with the policies you want the Delegate to use. The policies you select with depend on what AWS resources you are deploying via the Delegate. See the different [AWS Policies Required](#aws_policies_required) sections in this document.
+:::note
+See [IAM roles for service accounts](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html) from AWS.
+
+:::
+
+Setting up this feature requires a few more steps than other methods, but it is a simple process.
+
+
+:::note
+The following steps are for a new Delegate installation and new AWS Connector. If you updating an existing Delegate and AWS Connector, you can simply edit the Delegate YAML for your existing Delegate as described below, and select the **Use IRSA** option in your AWS Connector.
+
+:::
+
+Create the IAM role with the policies you want the Delegate to use. The policies you select with depend on what AWS resources you are deploying via the Delegate. See the different [AWS Policies Required](#aws-policies-required) sections in this document.
 
 In the cluster where the Delegate will be installed, create a service account and attach the IAM role to it.
 
@@ -628,15 +700,7 @@ First, update the `ClusterRoleBinding` by adding replacing the subject name `def
 |  |  |
 | --- | --- |
 | Old `ClusterRoleBinding`: | New `ClusterRoleBinding` (for example, using the name `iamserviceaccount`): |
-| 
-```
----apiVersion: rbac.authorization.k8s.io/v1beta1kind: ClusterRoleBindingmetadata:  name: harness-delegate-cluster-adminsubjects:  - kind: ServiceAccount    name: default    namespace: harness-delegate-ngroleRef:  kind: ClusterRole  name: cluster-admin  apiGroup: rbac.authorization.k8s.io---
-```
- | 
-```
----apiVersion: rbac.authorization.k8s.io/v1beta1kind: ClusterRoleBindingmetadata:  name: harness-delegate-cluster-adminsubjects:  - kind: ServiceAccount    name: iamserviceaccount    namespace: harness-delegate-ngroleRef:  kind: ClusterRole  name: cluster-admin  apiGroup: rbac.authorization.k8s.io---
-```
- |
+| --- <br/> apiVersion: rbac.authorization.k8s.io/v1beta1 <br/> kind: ClusterRoleBinding <br/>metadata:  <br/> &nbsp;name: harness-delegate-cluster-admin <br/>subjects:  <br/> &nbsp;- kind: ServiceAccount    <br/>name: default    <br/>namespace: harness-delegate-ng <br/>roleRef: <br/> &nbsp; kind: ClusterRole  <br/>name: cluster-admin  <br/>apiGroup: rbac.authorization.k8s.io <br/>--- | ---<br/>apiVersion: rbac.authorization.k8s.io/v1beta1 <br/>kind: ClusterRoleBinding <br/>metadata:  <br/>&nbsp;name: harness-delegate-cluster-admin <br/>subjects:  - kind: ServiceAccount    <br/>name: iamserviceaccount   <br/> namespace: harness-delegate-ng<br/>roleRef:  <br/>kind: ClusterRole  <br/>name: cluster-admin  <br/>apiGroup: rbac.authorization.k8s.io <br/>---|
 
 Next, update StatefulSet spec with the new `serviceAccountName`.
 
@@ -659,7 +723,11 @@ Save the Delegate YAML file.
 
 Install the Delegate in your EKS cluster and register the Delegate with Harness. See [Install a Kubernetes Delegate](../../2_Delegates/delegate-guide/install-a-kubernetes-delegate.md).
 
+
+:::note
 When you install the Delegate in the cluster, the serviceAccount you added is used and the environment variables `AWS_ROLE_ARN` and `AWS_WEB_IDENTITY_TOKEN_FILE` are added automatically by EKS.Create a new AWS Connector.
+
+:::
 
 In **Credentials**, select **Use IRSA**.
 
@@ -669,15 +737,37 @@ Click **Save and Continue** to verify the Delegate credentials.
 
 ### Enable cross-account access (STS Role)
 
-Assume STS Role is supported for EC2 and ECS. It is supported for EKS if you use the IRSA option, described above.The [DescribeRegions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRegions.html) action is required for all AWS Connectors regardless of what AWS service you are using for your target infrastructure.If you want to use one AWS account for the connection, but you want to deploy in a different AWS account, use the **Assume STS Role** option.
+
+:::note
+Assume STS Role is supported for EC2 and ECS. It is supported for EKS if you use the IRSA option, described above.
+
+:::
+
+
+:::warning
+The [DescribeRegions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRegions.html) action is required for all AWS Connectors regardless of what AWS service you are using for your target infrastructure.
+
+:::
+
+If you want to use one AWS account for the connection, but you want to deploy in a different AWS account, use the **Assume STS Role** option.
 
 This option uses the [AWS Security Token Service](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html) (STS) feature.
 
 In this scenario, the AWS account used for AWS access in **Credentials** will assume the IAM role you specify in **Role ARN** setting.
 
-The Harness Delegate(s) always runs in the account you specify in **Credentials** via **Access/Secret Key** or **Assume IAM Role on Delegate**.To assume the role in **Role ARN**, the AWS account in **Credentials** must be trusted by the role. The trust relationship is defined in the **Role ARN** role's trust policy when the role is created. That trust policy states which accounts are allowed to give that access to users in the account.
 
+:::note
+The Harness Delegate(s) always runs in the account you specify in **Credentials** via **Access/Secret Key** or **Assume IAM Role on Delegate**.
+
+:::
+
+To assume the role in **Role ARN**, the AWS account in **Credentials** must be trusted by the role. The trust relationship is defined in the **Role ARN** role's trust policy when the role is created. That trust policy states which accounts are allowed to give that access to users in the account.
+
+
+:::note
 You can use **Assume STS Role** to establish trust between roles in the same account, but cross-account trust is more common.
+
+:::
 
 #### Role ARN
 
@@ -691,7 +781,11 @@ If the administrator of the account to which the role belongs provided you with 
 
 For more information, see [How to Use an External ID When Granting Access to Your AWS Resources to a Third Party](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html) from AWS.
 
+
+:::note
 The AWS [IAM Policy Simulator](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_testing-policies.html) is a useful tool for evaluating policies and access.
+
+:::
 
 ### Test Region and AWS GovCloud Support
 
@@ -711,7 +805,11 @@ You cannot access AWS GovCloud with standard AWS credentials. Likewise, you cann
 
 See [Troubleshooting Harness](https://docs.harness.io/article/jzklic4y2j-troubleshooting).
 
+
+:::warning
 The [DescribeRegions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRegions.html) action is required for all AWS Connectors regardless of what AWS service you are using for your target infrastructure.
+
+:::
 
 ### See also
 

@@ -18,7 +18,8 @@ A delegate tag is added to your delegate automatically when you set it up in Har
 
 You can also add more tags in the **Tags** field during the setup process:
 
-![](./static/select-delegates-with-selectors-17
+![](./static/select-delegates-with-selectors-17.png)
+
 For detailed information on how delegates are selected during execution, see [Delegates Overview](../delegates-overview.md).
 
 You can select a delegate based on its tags in the **Delegate Selector** settings of Harness entities like pipelines and connectors.
@@ -50,6 +51,7 @@ Here is a step example:
 Here is a step group example:
 
 ![](./static/select-delegates-with-selectors-20.png)
+
 ### Option: Select a delegate for a connector using tags
 
 When you add a connector you are given the option of connecting to your third part account using any available delegate or specific delegates.

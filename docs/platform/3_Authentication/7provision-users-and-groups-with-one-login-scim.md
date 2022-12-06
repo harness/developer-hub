@@ -18,9 +18,9 @@ This topic describes how to set up OneLogin provisioning for Harness Users and U
 
 * This topic assumes you understand the System for Cross-domain Identity Management (SCIM). For an overview, see the article [Introduction to System for Cross-domain Identity Management (SCIM)](https://medium.com/@pamodaaw/system-for-cross-domain-identity-management-scim-def45ea83ae7).
 * [Learn Harness' Key Concepts](https://ngdocs.harness.io/article/hv2758ro4e-learn-harness-key-concepts)
-* [Access Management (RBAC) Overview](../4_Role-Based Access Control/rbac-in-harness.md)
+* [Access Management (RBAC) Overview](../4_Role-Based-Access-Control/1-rbac-in-harness.md)
 * Make sure you are an Administrator in your OneLogin account and have the **Account Admin** permissions in Harness.
-* Make sure you have a Harness [API Key](../4_Role-Based Access Control/add-and-manage-api-keys.md) and a valid Token under it. The API Key must have all permissions on the Users and User Groups.
+* Make sure you have a Harness [API Key](../4_Role-Based-Access-Control/7-add-and-manage-api-keys.md) and a valid Token under it. The API Key must have all permissions on the Users and User Groups.
 
 ### Limitations
 
@@ -47,13 +47,21 @@ For more information on adding apps, see OneLogin's documentation: [Introductio
 Next, add a special Harness account URL to the OneLogin app's SCIM Base URL.
 
 1. Log into your Harness account.
-2. Copy the Harness account ID from the **Account Overview** of your Harness account.![](./static/provision-users-and-groups-with-one-login-scim-128.png)
+2. Copy the Harness account ID from the **Account Overview** of your Harness account.
+   
+   ![](./static/provision-users-and-groups-with-one-login-scim-128.png)
+
 3. Add your account ID to the end of the following URL: `https://app.harness.io/gateway/ng/api/scim/account/<account_ID>`
 
-For Harness On-Prem, the URL will use your custom domain name and `gateway` is omitted. For example, if your On-Prem domain name is **harness.mycompany.com**: `https://harness.mycompany.com/ng/api/scim/account/<account_ID>`1. Copy the full URL.
-2. In OneLogin, open the Harness OneLogin app.
-3. Click **Configuration**.
-4. In **SCIM Base URL**, paste the Harness URL you copied.
+
+:::note
+For Harness On-Prem, the URL will use your custom domain name and `gateway` is omitted. For example, if your On-Prem domain name is **harness.mycompany.com**: `https://harness.mycompany.com/ng/api/scim/account/<account_ID>`
+:::
+
+4. Copy the full URL.
+5. In OneLogin, open the Harness OneLogin app.
+6. Click **Configuration**.
+7. In **SCIM Base URL**, paste the Harness URL you copied.
 
 Next, we will use a Harness API access key for the **SCIM Bearer Token** setting in your Harness OneLogin app.
 
@@ -61,7 +69,7 @@ Next, we will use a Harness API access key for the **SCIM Bearer Token** setti
 
 The SCIM Bearer Token value is used to authenticate requests and responses sent between the OneLogin SCIM provisioning service and Harness.
 
-1. In Harness Manager, create an API token by following the instructions in [Add and Manage API Keys](../4_Role-Based Access Control/add-and-manage-api-keys.md).
+1. In Harness Manager, create an API token by following the instructions in [Add and Manage API Keys](../4_Role-Based-Access-Control/7-add-and-manage-api-keys.md).
 2. Copy the new API token.
 3. In OneLogin, paste the API token in the **SCIM Bearer Token** setting in your Harness OneLogin app.
 4. Ensure that the API Status is enabled and click **Save**.
@@ -84,7 +92,8 @@ Ensure these settings are set up exactly as shown below.
 When you are done, it will look like this:
 
 ![](./static/provision-users-and-groups-with-one-login-scim-129.png)
-1. Click **Save**.
+
+3. Click **Save**.
 
 ### Option: Provision OneLogin Users to Harness
 
@@ -94,18 +103,24 @@ Next, we will add users to the Harness OneLogin app. Once OneLogin SSO is enable
 2. Click a user.
 3. In **User Info**, ensure that the user has **First name**, **Last name**, and **Email** completed.
 
-Only **First name**, **Last name**, and **Email** are permitted for Harness OneLogin SCIM provisioning. Do not use any additional User Info settings.1. Click **Applications**.
-2. In the **Applications** table, click the add button **(+)**.
-3. In the **Assign new login** settings, select the Harness OneLogin App and click **Continue**.
-4. In **NameID**, enter the email address for the user. This is the same email address in the **NameID** setting.
-5. Click **Save**. The status in the **Applications** table is now **Pending**.
-6. Click **Pending**. The **Create User in Application** settings appear.
-7. Click **Approve**. The Provisioning status will turn to Provisioned.
+
+:::note
+Only **First name**, **Last name**, and **Email** are permitted for Harness OneLogin SCIM provisioning. Do not use any additional User Info settings.
+:::
+
+
+4. Click **Applications**.
+5. In the **Applications** table, click the add button **(+)**.
+6. In the **Assign new login** settings, select the Harness OneLogin App and click **Continue**.
+7. In **NameID**, enter the email address for the user. This is the same email address in the **NameID** setting.
+8. Click **Save**. The status in the **Applications** table is now **Pending**.
+9.  Click **Pending**. The **Create User in Application** settings appear.
+10. Click **Approve**. The Provisioning status will turn to Provisioned.
 
 If provisioning fails, you might see something like the following error:
 
 ![](./static/provision-users-and-groups-with-one-login-scim-130.png)
-(./static/provision-users-and-groups-with-one-login-scim-130.png)
+
 The most common reason is incorrect **SCIM Base URL** or **SCIM Bearer Token** settings in the OneLogin app.
 
 If an error prevents adding, deleting, or updating an individual user to Harness, you must retry provisioning the user in OneLogin later, after resolving the issues. For more information, see **Review and Approve Provisioning Tasks for Your SCIM Test App** in [Test Your SCIM Implementation](https://developers.onelogin.com/scim/test-your-scim).
@@ -233,7 +248,7 @@ Harness authenticates users using either the FirstGen App Integration or the Nex
 
 Permissions can be assigned manually or via the Harness API:
 
-* [Add and Manage Roles](../4_Role-Based Access Control/add-manage-roles.md)
-* [Add and Manage Resource Groups](../4_Role-Based Access Control/add-resource-groups.md)
-* [Permissions Reference](../4_Role-Based Access Control/ref-access-management/permissions-reference.md)
+* [Add and Manage Roles](../4_Role-Based-Access-Control/9-add-manage-roles.md)
+* [Add and Manage Resource Groups](../4_Role-Based-Access-Control/8-add-resource-groups.md)
+* [Permissions Reference](../4_Role-Based-Access-Control/ref-access-management/permissions-reference.md)
 

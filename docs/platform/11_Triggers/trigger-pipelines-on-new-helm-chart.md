@@ -8,7 +8,13 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Currently, this feature is behind the feature flags `NG_SVC_ENV_REDESIGN` and `CD_TRIGGERS_REFACTOR`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.You can trigger Harness Pipelines in response to a new Helm chart version being added to an HTTP Helm repo.
+
+:::note
+Currently, this feature is behind the feature flags `NG_SVC_ENV_REDESIGN` and `CD_TRIGGERS_REFACTOR`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+You can trigger Harness Pipelines in response to a new Helm chart version being added to an HTTP Helm repo.
 
 For example, every time a new Helm chart is pushed to an HTTP Helm repo, it triggers a CD Pipeline that deploys it automatically.
 
@@ -54,7 +60,7 @@ When you add the Helm Chart to Harness as a Manifest, you have different options
 * **Fixed Value:** if you use [Fixed Value](../20_References/runtime-inputs.md) for **Chart Version** (for example, `0.1.4`), Helm Chart Triggers will work, but Harness will not select the latest chart version. Instead, Harness will select the hardcoded chart version in **Chart Version** (`0.1.4`).
 * **Runtime Input:** if you use [Runtime Input](../20_References/runtime-inputs.md) for **Chart Version**, you can enter the version to use in your Trigger as part of the Trigger Pipeline Inputs. See [Select Pipeline Inputs](trigger-pipelines-on-new-helm-chart.md#step-4-select-pipeline-inputs) below.
 * **Expression:** if you use [Expression](../20_References/runtime-inputs.md) for **Chart Version**, you can:
-	+ Use a [Harness variable expression](../12_Variables and Expressions/harness-variables.md), like a Service variable.
+	+ Use a [Harness variable expression](../12_Variables-and-Expressions/harness-variables.md), like a Service variable.
 	+ Use the expression `<+trigger.manifest.version>` to have the new chart version that initiated the Trigger passed in as the version to deploy.
 
 ![](./static/trigger-pipelines-on-new-helm-chart-05.png)
@@ -68,15 +74,16 @@ Typically, you add a Helm Chart Trigger to a Pipeline that deploys a Helm Chart.
 
 1. Select a Harness Pipeline that includes a Helm Chart in the Stage's **Service Definition**.
 
-![](./static/trigger-pipelines-on-new-helm-chart-06.png)
-See [Helm Chart deployment tutorial](https://docs.harness.io/article/cifa2yb19a-helm-cd-quickstart) for details on adding Helm Charts to a Stage's **Service Definition**.
+   ![](./static/trigger-pipelines-on-new-helm-chart-06.png)
+
+   See [Helm Chart deployment tutorial](https://docs.harness.io/article/cifa2yb19a-helm-cd-quickstart) for details on adding Helm Charts to a Stage's **Service Definition**.
 
 Next, let's add the Trigger.
 
-1. Click **Triggers**.
-2. Click **New Trigger**.
-3. Click the **Helm Chart** Trigger listed under **Manifest**. The **On New Manifest** Trigger settings appear.
-4. In **Configuration**, in **Name**, enter a name for the Trigger.
+2. Click **Triggers**.
+3. Click **New Trigger**.
+4. Click the **Helm Chart** Trigger listed under **Manifest**. The **On New Manifest** Trigger settings appear.
+5. In **Configuration**, in **Name**, enter a name for the Trigger.
 
 ### Select the Helm Chart for the Trigger to listen on
 
@@ -92,11 +99,19 @@ Define what Helm Chart you want Harness to listen on for the Trigger.
 5. In **Helm Version**, select the version of Helm your repo uses.
 
 ![](./static/trigger-pipelines-on-new-helm-chart-07.png)
-The required settings are determined by the Helm Chart Store you selected.1. Click **Submit**.
+
+
+:::note
+The required settings are determined by the Helm Chart Store you selected.
+
+:::
+
+6. Click **Submit**.
 
 The Helm Chart is added to the Trigger. Now Harness will poll that Helm Chart for any changes.
 
 ![](./static/trigger-pipelines-on-new-helm-chart-08.png)
+
 ### Set Conditions
 
 In **Conditions**, enter any conditions that must be matched in order for the Trigger to execute. For example, the Helm version number.

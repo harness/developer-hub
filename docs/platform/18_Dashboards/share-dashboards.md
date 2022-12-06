@@ -54,12 +54,16 @@ Select one of the following options from the **Recurrence** drop-down menu:
 * Specific months
 * Specific days
 
-The timing options change depending on the option you’ve chosen. For example, here are the setting options when you select **Specific months**:
+The timing options change depending on the option you’ve chosen. 
 
-![](https://docs.looker.com/assets/images/specific-months-dash-beta-2100.png)
-Here are the settings when you select **Hourly**:
+<!-- For example, here are the setting options when you select **Specific months**: -->
 
-![](https://docs.looker.com/assets/images/hourly-dash-beta-2100.png)
+<!-- ![](https://docs.looker.com/assets/images/specific-months-dash-beta-2100.png) -->
+
+<!-- Here are the settings when you select **Hourly**: -->
+
+<!-- ![](https://docs.looker.com/assets/images/hourly-dash-beta-2100.png) -->
+
 The **Time**, **Start**, and **End** fields use a 24-hour clock. If the time you want is not available in the drop-down menu, click within the field and manually enter your desired time, such as 9:15, 15:37, and so on.
 
 **Hourly** and **Minutes** schedules repeat daily within the **Start** and **End** timeframe you set. The end time for **Hourly** and **Minutes** intervals is not inclusive. The last delivery will be sent at the last selected interval prior to the specified end time. For example, if a dashboard is scheduled **Hourly** between 12:00 a.m. and 11:00 p.m., it will be sent on the hour, every hour, from 12:00 a.m. to 10:00 p.m. Or, if a recurrence is every 30 minutes between 12:00 a.m. and 11:00 p.m., the last delivery will be sent at 10:30 p.m.

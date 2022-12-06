@@ -34,6 +34,7 @@ This section assumes you're familiar with Azure RBAC. For details, [Assign Azure
 This graphic from Azure can be helpful as a reminder of how Azure manages RBAC:
 
 ![](./static/add-a-microsoft-azure-connector-64.png)
+
 For security reasons, Harness uses an application object and service principal rather than a user identity. The process is described in [How to: Use the portal to create an Azure AD application and service principal that can access resources](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal) from Azure.
 
 ### AKS Cluster Setup Requirements

@@ -66,15 +66,22 @@ You can disable Local Login using the feature flag `DISABLE_LOCAL_LOGIN`. Contac
 
 To set up OAuth 2.0 SSO, do the following:
 
-1. Log into Harness using a Harness User account that is a member of the Administrator User Group with Create/Edit, Delete permissions for Authentication Settings. For information on Harness RBAC, see [Access Management (RBAC) Overview](../4_Role-Based Access Control/rbac-in-harness.md).  
+1. Log into Harness using a Harness User account that is a member of the Administrator User Group with Create/Edit, Delete permissions for Authentication Settings. For information on Harness RBAC, see [Access Management (RBAC) Overview](../4_Role-Based-Access-Control/1-rbac-in-harness.md).  
   
-The email address used to log into Harness should also be registered with the OAuth 2.0 providers you intend to enable for Harness SSO.
-2. Click **Home**, and then click **Access Control** under **ACCOUNT SETUP**. The **Access Control** page appears.![](./static/single-sign-on-sso-with-oauth-122.png)
+   The email address used to log into Harness should also be registered with the OAuth 2.0 providers you intend to enable for Harness SSO.
+
+2. Click **Home**, and then click **Access Control** under **ACCOUNT SETUP**. The **Access Control** page appears.
+   
+   ![](./static/single-sign-on-sso-with-oauth-122.png)
+
 3. In the **Users** tab, we can see the list of all the **Active Users** and their **Email**.
 4. Before you set up SSO, confirm that your users' email addresses registered with Harness are the same email addresses they use to log into the OAuth 2.0 provider you're enabling for Harness SSO.
 5. Click **Authentication** under **ACCOUNT SETUP**. The **Authentication: Configuration** page appears.
 6. If it's not already enabled, enable **Use Public OAuth Providers**.
-7. Enable each public OAuth 2.0 provider you want to use for SSO.![](./static/single-sign-on-sso-with-oauth-123.png)
+7. Enable each public OAuth 2.0 provider you want to use for SSO.
+   
+   ![](./static/single-sign-on-sso-with-oauth-123.png)
+   
 
 ### Log In With An OAuth 2.0 Provider
 

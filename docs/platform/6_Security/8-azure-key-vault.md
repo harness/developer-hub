@@ -51,7 +51,12 @@ Navigate to Azure's **Subscriptions** page.
 Under **Subscription name**, select the subscription where your vaults reside.
 
 ![](./static/azure-key-vault-03.png)
-**Tip:** Copy and save the **Subscription ID**. You can paste this value into Harness Manager below at Option: Enter Subscription.Select your **Subscription’s Access control (IAM)** property.
+
+
+:::tip
+Copy and save the **Subscription ID**. You can paste this value into Harness Manager below at Option: Enter Subscription.Select your **Subscription’s Access control (IAM)** property.
+:::
+
 
 ![](./static/azure-key-vault-04.png)
 On the resulting **Access control (IAM)** page, select **Add a role assignment**.
@@ -69,7 +74,12 @@ Click **Save**.
 On the **Access control (IAM)** page, select the **Role assignments** tab. Make sure your new role now appears under the **Reader** group.
 
 ![](./static/azure-key-vault-07.png)
+
+
+:::note
 Microsoft Azure's [Manage subscriptions](https://docs.microsoft.com/en-us/azure/cost-management-billing/manage/add-change-subscription-administrator#to-assign-a-user-as-an-administrator) documentation adds details about the above procedure but focuses on the **Administrator** rather than the **Reader** role.
+:::
+
 
 #### PowerShell Command
 
@@ -114,29 +124,45 @@ To provide these values:
 To find this ID, navigate to Azure's **Subscriptions** page, as outlined above in [Step 1: Create Azure Reader Role](../6_Security/8-azure-key-vault.md#step-1-create-azure-reader-role). From the resulting list of subscriptions, copy the **Subscription ID** beside the subscription that contains your vaults.
 
 ![](./static/azure-key-vault-11.png)
-If you do not enter a GUID, Harness uses the default subscription for the [Client ID](#step_4) you've provided above.Click **Create or Select a Secret** in the **Key** field. For detailed steps on creating a new secret, see [Add Text Secrets](./2-add-use-text-secrets.md).
+
+
+:::note
+If you do not enter a GUID, Harness uses the default subscription for the [Client ID](#step-4-setup-delegates) you've provided above.
+:::
+
+
+Click **Create or Select a Secret** in the **Key** field. For detailed steps on creating a new secret, see [Add Text Secrets](./2-add-use-text-secrets.md).
 
 ![](./static/azure-key-vault-12.png)
+
 The secret that you reference here should have the Azure authentication key as the **Secret Value**. The below image shows the creation of a secret with Azure authentication key as its value:
 
 ![](./static/azure-key-vault-13.png)
+
 To create and exchange the azure authentication key, perform the following steps:
 
 * Navigate to Azure's **Certificates & secrets** page. (For details, see Microsoft Azure's [Create a new application secret](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-application-id-and-authentication-key) documentation.)
 * In the resulting page’s **Client secrets** section, select **New client secret**.
 
 ![](./static/azure-key-vault-14.png)
+
 * Enter a **Description** and expiration option, then click **Add**.
 
 ![](./static/azure-key-vault-15.png)
+
 * Find your new key in the **Client secrets** section, and copy its value to your clipboard.
 
 ![](./static/azure-key-vault-16.png)
+
+    
+:::note
 This is your only chance to view this key's value in Azure. Store the value somewhere secure, and keep it on your clipboard.Click **Continue**.
+:::
+
 
 ### Step 4: Setup Delegates
 
-In **Delegates** **Setup****,** enter [**Selectors**](https://harness.helpdocs.io/article/nnuf8yv13o-select-delegates-with-selectors#option_select_a_delegate_for_a_connector_using_tags) for specific **Delegates** that you want to allow to connect to this Connector. Click **Continue**.
+In **Delegates** **Setup**, enter [**Selectors**](../2_Delegates/delegate-guide/select-delegates-with-selectors.md#option-select-a-delegate-for-a-connector-using-tags) for specific **Delegates** that you want to allow to connect to this Connector. Click **Continue**.
 
 ### Step 5: Setup Vault
 
@@ -150,5 +176,8 @@ Click **Save and Continue**.
 
 Once the Test Connection succeeds, click Finish. You can now see the Connector in Connectors.
 
+
+:::note
 Important: Test Connection failsHarness tests connections by generating a fake secret in the Secret Manager or Vault. For the Test Connection to function successfully, make sure you have the Create permission for secrets.  
 The Test Connection fails if you do not have the Create permission. However, Harness still creates the Connector for you. You may use this Connector to read secrets if you have View permissions.
+:::

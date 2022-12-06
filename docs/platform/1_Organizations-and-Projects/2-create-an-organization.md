@@ -48,13 +48,14 @@ You don't have to add the same members to an Org and its Projects. You can add O
 
 1. In **Invite People to Collaborate**, type a member's name and select it.
 2. In **Role**, select the role the member will have in this Org, such as Organization Admin or Organization Member.![](./static/create-an-organization-02.png)
+
 3. Click **Add**.
+   
+   Members receive invites via their email addresses.
 
-Members receive invites via their email addresses.
+   You can always invite more members from within the Org later.
 
-You can always invite more members from within the Org later.
-
-1. Click **Finish**. The Org is added to the list in Account Settings Organizations.
+4. Click **Finish**. The Org is added to the list in Account Settings Organizations.
 
 ### Step 3: Create a Project
 
@@ -73,7 +74,7 @@ You can create Projects in the Org from the Projects section of Harness, or from
 
 Next, the Harness modules appear.
 
-![](./static/create-an-organization-03
+![](./static/create-an-organization-03.png)
 1. Select the modules you want to use in your Project. You can select more at any time.
 2. Close the modules and open your Project in Projects or in its Organization.
 3. When you open the Project, all of the modules are displayed.

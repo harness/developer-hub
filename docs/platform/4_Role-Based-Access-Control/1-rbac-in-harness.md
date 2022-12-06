@@ -18,10 +18,6 @@ For example, certain users may have permission to execute pipelines, whereas oth
 
 Harness RBAC is an authorization system that provides fine-grained access management of Harness resources.
 
-This video provides a quick overview of how you can manage access to your resources using Harness RBAC.
-
-This video provides a quick overview of how you can manage access to your resources using Harness RBAC.
-
 ### Visual Summary
 
 Here is a quick overview of Harness RBAC:
@@ -40,7 +36,7 @@ Here is a quick overview of Harness RBAC:
 For more information on creating a new User, see [Add and Manage Users](../4_Role-Based-Access-Control/3-add-users.md).
 * **User Groups:** User Groups contain multiple Harness Users. Each User Group has assigned roles. You can create User Groups at Account/Org/Project scope.  
 For more information on creating a new User Group, see [Add and Manage User Groups](../4_Role-Based-Access-Control/4-add-user-groups.md).
-* **Service Account****:** A Service Account is a set of [API Keys](../4_Role-Based-Access-Control/7-add-and-manage-api-keys.md) with a set of permissions assigned to them via role assignment. API Keys are used for authenticating and authorizing remote services attempting to perform operations in Harness via our APIs. API Keys that are part of a Service Account are assigned permissions (equivalent to users) that Service Accounts inherit.  
+* **Service Account:** A Service Account is a set of [API Keys](../4_Role-Based-Access-Control/7-add-and-manage-api-keys.md) with a set of permissions assigned to them via role assignment. API Keys are used for authenticating and authorizing remote services attempting to perform operations in Harness via our APIs. API Keys that are part of a Service Account are assigned permissions (equivalent to users) that Service Accounts inherit.  
 For more information on creating a new Service Account, see [Add and Manage Service Accounts.](../4_Role-Based-Access-Control/6-add-and-manage-service-account.md)
 * **Resource Groups:** A [Resource Group](#resource-group) is a set of Harness resources that a User or User Group can access. You can create Resource Groups at Account/Org/Project scope.  
 For more information on creating a new Resource Group, see [Add and Manage Resource Groups](../4_Role-Based-Access-Control/8-add-resource-groups.md).
@@ -89,7 +85,7 @@ The following table shows what it means to add users and resources at different 
 | **Organization** | To have visibility and control over all of the projects within this Org, add users to the Org scope. | Add resources to the Org scope to allow sharing across projects within this Org while isolating from other organizations. |
 | **Project** | To manage or contribute to this Project, add users to the Project scope. | Add resources to the Project scope to provide total control to the Project teams. |
 
-To know more about Organizations and Projects, see [Create Organizations and Projects](../1_Organizations and Projects/create-an-organization.md).
+To know more about Organizations and Projects, see [Create Organizations and Projects](../1_Organizations-and-Projects/2-create-an-organization.md).
 
 ### Resource Group
 

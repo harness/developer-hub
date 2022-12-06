@@ -31,7 +31,7 @@ A diff of the Pipeline YAML for each execution is displayed:
 ![](./static/view-and-compare-pipeline-executions-14.png)
 ### Option: View Compiled Execution YAML
 
-Compiled execution YAML is the Pipeline YAML used in the execution, including all resolved [Runtime Inputs, Expressions](../20_References/runtime-inputs.md), and [variables](../12_Variables and Expressions/harness-variables.md).
+Compiled execution YAML is the Pipeline YAML used in the execution, including all resolved [Runtime Inputs, Expressions](../20_References/runtime-inputs.md), and [variables](../12_Variables-and-Expressions/harness-variables.md).
 
 In a Pipeline, click **Execution History**.
 

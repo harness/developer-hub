@@ -47,7 +47,7 @@ You can use different methods for authenticating with the Kubernetes cluster, bu
 
 The Role used must have either the `cluster-admin` permission in the target cluster or admin permissions in the target namespace.
 
-For a detailed list of roles and policies, see [Harness Role-Based Access Control Overview](../../4_Role-Based Access Control/rbac-in-harness.md#role).
+For a detailed list of roles and policies, see [Harness Role-Based Access Control Overview](../../4_Role-Based-Access-Control/1-rbac-in-harness.md#role).
 
 #### Harness CI Permission Requirements
 

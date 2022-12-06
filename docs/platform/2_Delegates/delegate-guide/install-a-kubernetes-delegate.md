@@ -18,7 +18,11 @@ Most importantly, the Delegate performs all Harness operations.
 
 There are several types of Delegates. This topic describes how to install the Kubernetes Delegate.
 
+
+:::note
 If you are migrating from Harness FirstGen to Harness NextGen, you must install new Delegates in Harness NextGen. Harness FirstGen Delegates won't work with Harness NextGen.
+:::
+
 
 ### Limitations
 
@@ -73,9 +77,27 @@ Enter a name and description for the Delegate that will let others know what it 
 
 ### Step 3: Add delegate name
 
-**Do not run Delegates with the same name in different clusters.** See [Troubleshooting](https://docs.harness.io/article/jzklic4y2j-troubleshooting).Add a name for the Delegate. The name will be added to the Delegate YAML as the `name` metadata of the StatefulSet.
 
-**Legacy Delegates are deployed as StatefulSet objects. By default, the StatefulSet.serviceName field is empty (“”) and does not need to be specified. Delegates do not require service names.****The combined length of the Delegate name and the service name must not exceed 255 bytes. If the maximum length is exceeded, the Delegate might not appear in the Harness Manager UI. For more information on StatefulSet.serviceName, see** [**StatefulSetSpec**](https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/stateful-set-v1/#StatefulSetSpec) **in** [**Kubernetes API**](https://kubernetes.io/docs/reference/kubernetes-api/)**.**Add Tags to the Delegate. By default, Harness adds a Tag using the name you enter, but you can more. Simply type them in and press Enter.
+:::note
+**Do not run Delegates with the same name in different clusters.** See [Troubleshooting](https://docs.harness.io/article/jzklic4y2j-troubleshooting).
+:::
+
+
+Add a name for the Delegate. The name will be added to the Delegate YAML as the `name` metadata of the StatefulSet.
+
+
+:::note
+**Legacy Delegates are deployed as StatefulSet objects. By default, the StatefulSet.serviceName field is empty (“”) and does not need to be specified. Delegates do not require service names.**
+:::
+
+
+
+:::note
+**The combined length of the Delegate name and the service name must not exceed 255 bytes. If the maximum length is exceeded, the Delegate might not appear in the Harness Manager UI. For more information on StatefulSet.serviceName, see** [**StatefulSetSpec**](https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/stateful-set-v1/#StatefulSetSpec) **in** [**Kubernetes API**](https://kubernetes.io/docs/reference/kubernetes-api/)**.
+:::
+
+
+Add Tags to the Delegate. By default, Harness adds a Tag using the name you enter, but you can more. Simply type them in and press Enter.
 
 These Tags are useful for selecting the Delegate when creating a Connector.
 

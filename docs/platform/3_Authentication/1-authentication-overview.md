@@ -22,7 +22,7 @@ Harness Access control includes:
 * Authorization — This checks what the user can do.
 * Auditing — This logs what the user does.
 
-This topic focuses on Authentication. For more on Authorization, see [Access Management (RBAC) Overview](../4_Role-Based Access Control/rbac-in-harness.md).
+This topic focuses on Authentication. For more on Authorization, see [Access Management (RBAC) Overview](../4_Role-Based-Access-Control/1-rbac-in-harness.md).
 
 Users in Administrator groups can use Authentication Settings to restrict access to an organization's Harness account. The options you choose will apply to all your account's users. These options include:
 
