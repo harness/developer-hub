@@ -98,9 +98,9 @@ The tracker should have the ability to privately encrypt all the source code and
 You must always secure sensitive data at all times. The Java Exception Tracker should provide you the ability to redact the PII variable data before it leaves the user environment. You should ensure that the variable state is redacted based on the configurable variable value patterns and code symbology, such as variable, field, and class names.
 
 
-## Demo - IRP Java exceptions
+## Demo - identify, resolve, and prevent Java exceptions
 
-Here is a demo that shows you how to IRP Java exceptions using the Harness Error Tracking Java Agent.
+Here is a demo that shows you how to identify, resolve, and prevent Java exceptions using the Harness Error Tracking Java Agent.
 
 <!-- Video:
 https://harness-1.wistia.com/medias/rpv5vwzpxz-->
