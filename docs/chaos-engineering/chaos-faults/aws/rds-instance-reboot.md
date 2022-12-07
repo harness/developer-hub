@@ -116,7 +116,7 @@ stringData:
 
 ### Common and AWS specific tunables
 
-Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS specific tunable](./aws-faults-tunables) to tune the common tunables for all faults and aws specific tunables.
+Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS specific tunable](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
 
 ### RDS_CLUSTER_NAME
 
