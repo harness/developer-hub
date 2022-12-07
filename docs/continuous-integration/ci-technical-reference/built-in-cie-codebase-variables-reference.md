@@ -336,7 +336,9 @@ User name of the Git account for the Push webhook event. 
 
 User avatar of the Git account for the Push webhook event.
 
-For Bitbucket PR builds (whether by Trigger, Manual, or PR Number), the variable `<+codebase.commitSha>` returns a short sha. This is due to the Bitbucket webhook payload only sending short sha.### See Also
+For Bitbucket PR builds (whether by Trigger, Manual, or PR Number), the variable `<+codebase.commitSha>` returns a short sha. This is due to the Bitbucket webhook payload only sending short sha.
+
+### See Also
 
 [Built-in Git Trigger Reference](https://docs.harness.io/article/rset0jry8q-triggers-reference#built_in_git_trigger_and_payload_expressions)
 

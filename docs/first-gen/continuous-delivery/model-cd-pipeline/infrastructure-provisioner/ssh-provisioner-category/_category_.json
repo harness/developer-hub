@@ -1,0 +1,14 @@
+{
+  "label": "Shell Script Provisioning",
+  "position": 10,
+  "collapsible": "true",
+  "collapsed": "true",
+  "className": "red",
+  "link": {
+    "type": "generated-index",
+    "title": "Shell Script Provisioning"
+  },
+  "customProps": {
+    "helpdocs_category_id": "72au717ux5"
+  }
+}

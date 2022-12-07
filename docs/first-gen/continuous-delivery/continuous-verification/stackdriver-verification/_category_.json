@@ -1,0 +1,14 @@
+{
+  "label": "Stackdriver Verification",
+  "position": 130,
+  "collapsible": "true",
+  "collapsed": "true",
+  "className": "red",
+  "link": {
+    "type": "generated-index",
+    "title": "Stackdriver Verification"
+  },
+  "customProps": {
+    "helpdocs_category_id": "5mu8983wa0"
+  }
+}

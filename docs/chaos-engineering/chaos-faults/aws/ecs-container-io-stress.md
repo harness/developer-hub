@@ -20,7 +20,7 @@ title: ECS Container IO Hog
 ## Uses
 
 <details>
-<summary>View the uses of the experiment</summary>
+<summary>View the uses of the fault</summary>
 <div>
 Filesystem read and write is another very common and frequent scenario we find with conrainers/applications that can result in the eviction of the application (task container) and impact its delivery. Such scenarios that can still occur despite whatever availability aids docker provides. These problems are generally referred to as "Noisy Neighbour" problems.
 

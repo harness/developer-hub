@@ -285,7 +285,9 @@ To remove all listeners, use:
 ```
 off(Event.READY);
 ```
-If you call `off()` without parameters it will close the client.### Test your app is connected to Harness
+If you call `off()` without parameters it will close the client.
+
+### Test your app is connected to Harness
 
 When you receive a response showing the current status of your Feature Flag, go to the Harness Platform and toggle the Flag on and off. Then, check your app to verify if the Flag Variation displayed is updated with the Variation you toggled.
 

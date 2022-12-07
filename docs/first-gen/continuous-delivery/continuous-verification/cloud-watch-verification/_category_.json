@@ -1,0 +1,14 @@
+{
+  "label": "CloudWatch Verification",
+  "position": 50,
+  "collapsible": "true",
+  "collapsed": "true",
+  "className": "red",
+  "link": {
+    "type": "generated-index",
+    "title": "CloudWatch Verification"
+  },
+  "customProps": {
+    "helpdocs_category_id": "wyuv3zocfk"
+  }
+}

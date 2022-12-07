@@ -60,7 +60,9 @@ You can now run your Maven test as:
 `mvn test -s settings.xml`
 
 If you create `settings.xml` file in the `~/.m2/` folder, Maven can read the secrets from the default location and you don't need to run the test with `-s` flag.  
-For example: If you use `echo '<+secrets.getValue("account.settingsXML")>' >``~/.m2/settings.xml.`You can now run your test as: `mvn test`### See Also
+For example: If you use `echo '<+secrets.getValue("account.settingsXML")>' >``~/.m2/settings.xml.`You can now run your test as: `mvn test`
+
+### See Also
 
 * [Run a Script in a CI Stage](../run-ci-scripts/run-a-script-in-a-ci-stage.md)
 

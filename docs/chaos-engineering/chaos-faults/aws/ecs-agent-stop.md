@@ -16,7 +16,7 @@ title: ECS Agent Stop
 ## Uses
 
 <details>
-<summary>View the uses of the experiment</summary>
+<summary>View the uses of the fault</summary>
 <div>
 Agent chaos stop is another very common and frequent scenario we find with ECS clusters that can break an agent that manages the task container on the ECS cluster and impacts their delivery. Such scenarios can still occur despite whatever availability aids docker provides.
 

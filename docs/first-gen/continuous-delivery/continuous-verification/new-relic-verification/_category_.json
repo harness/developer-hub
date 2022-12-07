@@ -1,0 +1,14 @@
+{
+  "label": "New Relic Verification",
+  "position": 100,
+  "collapsible": "true",
+  "collapsed": "true",
+  "className": "red",
+  "link": {
+    "type": "generated-index",
+    "title": "New Relic Verification"
+  },
+  "customProps": {
+    "helpdocs_category_id": "1nci5420c8"
+  }
+}

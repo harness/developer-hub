@@ -112,7 +112,9 @@ The syntax for referencing output variables between steps in different stages lo
 
 `<+stages.[stageID].execution.steps.[stepID].output.outputVariables.[varName]>`
 
-The subsequent build job fails when exit 0 is present along with output variables.##### Accessing Environment Variables Between Stages
+The subsequent build job fails when exit 0 is present along with output variables.
+
+##### Accessing Environment Variables Between Stages
 
 If you would like to access environment variables between stages, use an expression similar to the example listed below.
 
@@ -122,7 +124,9 @@ You may also output the step variable to the stage/pipeline variable as they are
 
 `<+pipeline.stages.[stage Id].variables.BUILD_NUM>`
 
-Environment variables may also be accessed when selecting the auto-suggest/ auto-complete feature in the Harness UI.#### Image Pull Policy
+Environment variables may also be accessed when selecting the auto-suggest/ auto-complete feature in the Harness UI.
+
+#### Image Pull Policy
 
 Select an option to set the pull policy for the image.
 

@@ -74,7 +74,7 @@ stringData:
 ## Fault Tunables
 
 <details>
-<summary>Check the fault tunables</summary>
+<summary>Check the Fault Tunables</summary>
 
 <h2>Mandatory Fields</h2>
 

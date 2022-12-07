@@ -1,14 +1,14 @@
 ---
 sidebar_position: 1
-title: HCE Beta Release Guide
+title: HCE Release Guide
 ---
 
 # Introduction 
 
-The Beta-1 release of the Harness Chaos Engineering (HCE) module provides a **functional chaos experimentation platform** that helps users simulate a wide variety of real-world failures observed on Kubernetes, AWS and other infrastructure. The module helps carry out end-to-end chaos engineering practices, that includes defining chaos as code, controlling blast radius, validating hypotheses, automating experiments through pipeline integrations and analyzing resilience trends via metrics. 
+The release of the Harness Chaos Engineering (HCE) module provides a **functional chaos experimentation platform** that helps users simulate a wide variety of real-world failures observed on Kubernetes, AWS and other infrastructure. The module helps carry out end-to-end chaos engineering practices, that includes defining chaos as code, controlling blast radius, validating hypotheses, automating experiments through pipeline integrations and analyzing resilience trends via metrics. 
 
 The chaos module is built on the open source CNCF project LitmusChaos, with additional features to enhance the user experience. 
-Below is a list of actions that you (user) can perform as a part of the Beta-1 release (Nov 14th, 2022). 
+Below is a list of actions that you (user) can perform as a part of the release (Nov 14th, 2022). 
 
 ## Managing Access to Chaos Resources
 

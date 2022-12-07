@@ -1,0 +1,14 @@
+{
+  "label": "Add Applications",
+  "position": 10,
+  "collapsible": "true",
+  "collapsed": "true",
+  "className": "red",
+  "link": {
+    "type": "generated-index",
+    "title": "Add Applications"
+  },
+  "customProps": {
+    "helpdocs_category_id": "fwal42867c"
+  }
+}

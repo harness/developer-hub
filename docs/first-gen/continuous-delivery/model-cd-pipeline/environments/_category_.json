@@ -1,0 +1,14 @@
+{
+  "label": "Add Environments",
+  "position": 30,
+  "collapsible": "true",
+  "collapsed": "true",
+  "className": "red",
+  "link": {
+    "type": "generated-index",
+    "title": "Add Environments"
+  },
+  "customProps": {
+    "helpdocs_category_id": "1eqg76ac72"
+  }
+}

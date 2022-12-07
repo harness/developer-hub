@@ -20,7 +20,7 @@ title: ECS Container Network Loss
 ## Uses
 
 <details>
-<summary>View the uses of the experiment</summary>
+<summary>View the uses of the fault</summary>
 <div>
 The fault causes network degradation of the task container without the container being marked unhealthy/unworthy of traffic from outside. The idea of this fault is to simulate issues within your ECS task network OR communication across services in different availability zones/regions etc.
 

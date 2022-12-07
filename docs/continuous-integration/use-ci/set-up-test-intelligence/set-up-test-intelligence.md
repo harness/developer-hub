@@ -23,7 +23,9 @@ In this topic, we'll cover how to set up Test Intelligence in Harness CI Stage.
 
 Test Intelligence is supported for Java and .NET Core codebases only at this time.
 
-Currently, Test Intelligence for .NET is behind the Feature Flag `TI_DOTNET`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.### Step 1: Create the CI Stage
+Currently, Test Intelligence for .NET is behind the Feature Flag `TI_DOTNET`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+### Step 1: Create the CI Stage
 
 In your Harness Pipeline, click **Add Stage**, and then click Build.
 

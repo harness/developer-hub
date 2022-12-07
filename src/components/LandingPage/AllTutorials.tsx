@@ -112,7 +112,22 @@ const CIList: FeatureItem[] = [
     ribbon: true,
     type: [docType.Documentation],
     time: "15 min",
-    link: "/tutorials/build-code/ci-localstack-service-dependency",
+    link: "/tutorials/build-code/ci-localstack-background-step",
+  },
+  {
+    title: "Build and publish a Java HTTP Server",
+    module: "ci",
+    Svg: "/img/icon_ci.svg",
+    description: (
+      <>
+        Build, test, and publish a Docker image for a Java HTTP server application
+
+      </>
+    ),
+    ribbon: true,
+    type: [docType.Documentation],
+    time: "20 min",
+    link: "/tutorials/build-code/ci-java-http-server",
   },
 ];
 
@@ -311,6 +326,18 @@ const CEList: FeatureItem[] = [
     type: [docType.Documentation],
     time: "5min",
     link: "/tutorials/run-chaos-experiments/chaos-experiment-from-blank-canvas",
+  },
+  {
+    title: 'Integration with Harness CD',
+    module: 'ce',
+    Svg: "/img/icon_ce.svg",
+    description: (
+      <>Execute a chaos experiment as part of a Harness CD pipeline for continuous resilience.</>
+    ),
+    ribbon: false,
+    type: [docType.Documentation],
+    time: '15min',
+    link: '/tutorials/run-chaos-experiments/integration-with-harness-cd'
   },
 ];
 
