@@ -15,7 +15,7 @@ Kubernetes faults disrupt the resources running on a Kubernetes cluster. They ca
 
 <table>
   <tr>
-    <th>Experiment Name</th>
+    <th>Fault Name</th>
     <th>Description</th>
     <th>User Guide</th>
   </tr>
@@ -125,7 +125,7 @@ Kubernetes faults disrupt the resources running on a Kubernetes cluster. They ca
 
 <table>
   <tr>
-    <th>Experiment Name</th>
+    <th>Fault Name</th>
     <th>Description</th>
     <th>User Guide</th>
   </tr>
@@ -181,7 +181,7 @@ Following Platform Chaos faults are available:
 
 <table>
   <tr>
-    <th>Experiment Name</th>
+    <th>Fault Name</th>
     <th>Description</th>
     <th>User Guide</th>
   </tr>
@@ -192,7 +192,7 @@ Following Platform Chaos faults are available:
   </tr>
   <tr>
     <td>EC2 Stop By Tag</td>
-    <td>Stop the ec2 instance using the instance tag</td>
+    <td>Stop the EC2 instance using the instance tag</td>
     <td><a href="/docs/chaos-engineering/chaos-faults/aws/ec2-stop-by-tag">ec2-stop-by-tag</a></td>
   </tr>
   <tr>
@@ -247,17 +247,17 @@ Following Platform Chaos faults are available:
   </tr>
   <tr>
     <td>EC2 Network Loss</td>
-    <td>Injects network loss on the target ec2 instance(s)</td>
+    <td>Injects network loss on the target EC2 instance(s)</td>
     <td><a href="/docs/chaos-engineering/chaos-faults/aws/ec2-network-loss">ec2-network-loss</a></td>
   </tr>
   <tr>
     <td>EC2 Network Latency</td>
-    <td>Injects network latency on the target ec2 instance(s)</td>
+    <td>Injects network latency on the target EC2 instance(s)</td>
     <td><a href="/docs/chaos-engineering/chaos-faults/aws/ec2-network-latency">ec2-network-latency</a></td>
   </tr>
   <tr>
     <td>EC2 Dns Chaos</td>
-    <td>Injects dns faults on the target ec2 instance(s)</td>
+    <td>Injects dns faults on the target EC2 instance(s)</td>
     <td><a href="/docs/chaos-engineering/chaos-faults/aws/ec2-dns-chaos">ec2-dns-chaos</a></td>
   </tr>
   <tr>
@@ -311,7 +311,7 @@ Following Platform Chaos faults are available:
 
 <table>
   <tr>
-    <th>Experiment Name</th>
+    <th>Fault Name</th>
     <th>Description</th>
     <th>User Guide</th>
   </tr>
@@ -341,7 +341,7 @@ Following Platform Chaos faults are available:
 
 <table>
   <tr>
-    <th>Experiment Name</th>
+    <th>Fault Name</th>
     <th>Description</th>
     <th>User Guide</th>
   </tr>
@@ -367,7 +367,7 @@ Following Platform Chaos faults are available:
   </tr>
   <tr>
     <td>Azure Disk Loss</td>
-    <td>Detach azure disk from instance</td>
+    <td>Detach Azure disk from instance</td>
     <td><a href="/docs/chaos-engineering/chaos-faults/azure/azure-disk-loss">azure-disk-loss</a></td>
   </tr>
   <tr>
@@ -386,7 +386,7 @@ Following Platform Chaos faults are available:
 
 <table>
   <tr>
-    <th>Experiment Name</th>
+    <th>Fault Name</th>
     <th>Description</th>
     <th>User Guide</th>
   </tr>
@@ -432,27 +432,27 @@ Following Platform Chaos faults are available:
   </tr>
   <tr>
     <td>VMware VM Cpu Hog</td>
-    <td>VMware cpu hog experiment consumes the CPU resources on Linux OS based VMware VM</td>
+    <td>VMware CPU hog fault consumes the CPU resources on Linux OS based VMware VM</td>
     <td><a href="/docs/chaos-engineering/chaos-faults/vmware/vmware-cpu-hog">vmware-cpu-hog</a></td>
   </tr>
   <tr>
     <td>VMware VM Memory Hog</td>
-    <td>VMware memory hog experiment consumes the Memory resources on Linux OS based VMware VM</td>
+    <td>VMware memory hog fault consumes the Memory resources on Linux OS based VMware VM</td>
     <td><a href="/docs/chaos-engineering/chaos-faults/vmware/vmware-memory-hog">vmware-memory-hog</a></td>
   </tr>
   <tr>
     <td>VMware VM IO Stress</td>
-    <td>This experiment causes disk stress on the target VMware VMs.</td>
+    <td>This fault causes disk stress on the target VMware VMs.</td>
     <td><a href="/docs/chaos-engineering/chaos-faults/vmware/vmware-io-stress">vmware-io-stress</a></td>
   </tr>
   <tr>
     <td>VMware VM Service Stop</td>
-    <td>VMware Service Stop experiment stops the target systemd services running on Linux OS based VMware VM</td>
+    <td>VMware Service Stop fault stops the target systemd services running on Linux OS based VMware VM</td>
     <td><a href="/docs/chaos-engineering/chaos-faults/vmware/vmware-service-stop">vmware-service-stop</a></td>
   </tr>
   <tr>
     <td>VMware VM Disk Loss</td>
-    <td>VMware Disk Loss experiment will detach the disks attached to a Linux OS based VMware VM.</td>
+    <td>VMware Disk Loss fault will detach the disks attached to a Linux OS based VMware VM.</td>
     <td><a href="/docs/chaos-engineering/chaos-faults/vmware/vmware-disk-loss">vmware-disk-loss</a></td>
   </tr>
   <tr>
@@ -466,7 +466,7 @@ Following Platform Chaos faults are available:
 
 <table>
   <tr>
-    <th>Experiment Name</th>
+    <th>Fault Name</th>
     <th>Description</th>
     <th>User Guide</th>
   </tr>

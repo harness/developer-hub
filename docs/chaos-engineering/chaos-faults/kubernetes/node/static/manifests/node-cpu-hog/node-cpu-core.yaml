@@ -1,4 +1,4 @@
-# stress the cpu of the targeted nodes
+# stress the CPU of the targeted nodes
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -12,7 +12,7 @@ spec:
     spec:
       components:
         env:
-        # number of cpu cores to be stressed
+        # number of CPU cores to be stressed
         - name: NODE_CPU_CORE
           value: '2'
         - name: TOTAL_CHAOS_DURATION

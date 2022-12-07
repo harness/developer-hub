@@ -46,7 +46,7 @@ You can pass the VM credentials as secrets or as an chaosengine ENV variable.
 
 :::
 
-## Experiment tunables
+## Fault Tunables
 
 <details>
     <summary>Check the Fault Tunables</summary>
@@ -73,7 +73,7 @@ You can pass the VM credentials as secrets or as an chaosengine ENV variable.
             <td> Eg: 1234</td>
         </tr>
         <tr>
-            <td> RESET_TIMEOUT  </td>
+            <td> RESET_TIMEOUT </td>
             <td> Reset Timeout specifies after how much duration to reset the connection</td>
             <td> Defaults to 0 </td>
         </tr>
@@ -112,11 +112,11 @@ You can pass the VM credentials as secrets or as an chaosengine ENV variable.
         </tr>
         <tr>
             <td> INSTALL_DEPENDENCY </td>
-            <td> Whether to install the dependency to run the experiment </td>
+            <td> Whether to install the dependency to run the fault </td>
             <td> If the dependency already exists, you can turn it off. Defaults to True.</td>
         </tr>
         <tr>
-            <td> PROXY_PORT  </td>
+            <td> PROXY_PORT </td>
             <td> Port where the proxy will be listening for requests</td>
             <td> Defaults to 20000 </td>
         </tr>
@@ -126,7 +126,7 @@ You can pass the VM credentials as secrets or as an chaosengine ENV variable.
             <td> Defaults to 100 </td>
         </tr>
         <tr>
-          <td> NETWORK_INTERFACE  </td>
+          <td> NETWORK_INTERFACE </td>
           <td> Network interface to be used for the proxy</td>
           <td> Defaults to `eth0` </td>
         </tr>
@@ -135,9 +135,9 @@ You can pass the VM credentials as secrets or as an chaosengine ENV variable.
 
 ## Fault Examples
 
-### Common Experiment Tunables
+### Common Fault Tunables
 
-Refer the [common attributes](../common-tunables-for-all-experiments) to tune the common tunables for all the experiments.
+Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
 ### Target Service Port
 

@@ -53,7 +53,7 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
 
 :::
 
-## Experiment tunables
+## Fault Tunables
 
 <details>
     <summary>Check the Fault Tunables</summary>
@@ -66,7 +66,7 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
       </tr>
       <tr>
         <td> APP_VM_MOIDS </td>
-        <td> MOIDs of the vmware instance</td>
+        <td> MOIDs of the VMware instance</td>
         <td> Once you open VM in vCenter WebClient, you can find MOID in address field (VirtualMachine:vm-5365). Alternatively you can use the CLI to fetch the MOID. Eg: vm-5365 </td>
       </tr>
     </table>
@@ -102,8 +102,8 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
 
 ## Fault Examples
 
-### Common Experiment Tunables
-Refer the [common attributes](../common-tunables-for-all-experiments) to tune the common tunables for all the experiments.
+### Common Fault Tunables
+Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
 ### Stop/Poweroff VM By MOID
 

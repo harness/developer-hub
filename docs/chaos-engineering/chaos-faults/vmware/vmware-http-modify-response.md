@@ -48,7 +48,7 @@ You can pass the VM credentials as secrets or as an chaosengine ENV variable.
 
 :::
 
-## Experiment tunables
+## Fault Tunables
 
 <details>
     <summary>Check the Fault Tunables</summary>
@@ -151,11 +151,11 @@ You can pass the VM credentials as secrets or as an chaosengine ENV variable.
         </tr>
         <tr>
             <td> INSTALL_DEPENDENCY </td>
-            <td> Whether to install the dependency to run the experiment </td>
+            <td> Whether to install the dependency to run the fault </td>
             <td> If the dependency already exists, you can turn it off. Defaults to True.</td>
         </tr>
         <tr>
-            <td> PROXY_PORT  </td>
+            <td> PROXY_PORT </td>
             <td> Port where the proxy will be listening for requests</td>
             <td> Defaults to 20000 </td>
         </tr>
@@ -165,7 +165,7 @@ You can pass the VM credentials as secrets or as an chaosengine ENV variable.
             <td> Defaults to 100 </td>
         </tr>
         <tr>
-          <td> NETWORK_INTERFACE  </td>
+          <td> NETWORK_INTERFACE </td>
           <td> Network interface to be used for the proxy</td>
           <td> Defaults to `eth0` </td>
         </tr>
@@ -174,9 +174,9 @@ You can pass the VM credentials as secrets or as an chaosengine ENV variable.
 
 ## Fault Examples
 
-### Common Experiment Tunables
+### Common Fault Tunables
 
-Refer the [common attributes](../common-tunables-for-all-experiments) to tune the common tunables for all the experiments.
+Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
 ### Target Service Port
 
@@ -232,7 +232,7 @@ spec:
         # if no value is provided, a random status code from the supported code list will selected
         # if multiple comma separated values are provided, then a random value
         # from the provided list will be selected
-        # if an invalid status code is provided, the experiment will fail
+        # if an invalid status code is provided, the fault will fail
         # supported status code list:
         # [200, 201, 202, 204, 300, 301, 302, 304, 307, 400, 401, 403, 404, 500, 501, 502, 503, 504]
         - name: STATUS_CODE

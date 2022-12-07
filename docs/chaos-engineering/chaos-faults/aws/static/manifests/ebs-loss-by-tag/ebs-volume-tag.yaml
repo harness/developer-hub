@@ -1,4 +1,4 @@
-# contains the tags for the ebs volumes
+# contains the tags for the EBS volumes 
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -11,10 +11,10 @@ spec:
     spec:
       components:
         env:
-        # tag of the ebs volume
+        # tag of the EBS volume
         - name: EBS_VOLUME_TAG
           value: 'key:value'
-        # region for the ebs volume
+        # region for the EBS volume
         - name: REGION
           value: 'us-east-1'
         - name: TOTAL_CHAOS_DURATION

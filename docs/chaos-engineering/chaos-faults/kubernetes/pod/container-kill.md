@@ -30,7 +30,7 @@ Coming soon.
 The application pods should be in running state before and after chaos injection.
 :::
 
-## Experiment tunables
+## Fault Tunables
 <details>
     <summary>Check the Fault Tunables</summary>
     <h2>Optional Fields</h2>
@@ -106,7 +106,7 @@ The application pods should be in running state before and after chaos injection
 ## Fault Examples
 
 ### Common and Pod specific tunables
-Refer the [common attributes](../../common-tunables-for-all-experiments) and [Pod specific tunable](./common-tunables-for-pod-experiments) to tune the common tunables for all experiments and pod specific tunables.
+Refer the [common attributes](../../common-tunables-for-all-faults) and [Pod specific tunable](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
 
 ### Kill Specific Container
 

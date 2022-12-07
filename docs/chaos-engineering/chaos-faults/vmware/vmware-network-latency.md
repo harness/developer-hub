@@ -4,7 +4,7 @@ title: VMware Network Latency
 ---
 
 ## Introduction
-- It causes flaky access to the application/services by injecting network packet latency from vmware vm(s).
+- It causes flaky access to the application/services by injecting network packet latency from VMware vm(s).
 - It helps to check the performance of the application/process running on the VMWare VMs.
 
 :::tip Fault execution flow chart
@@ -15,11 +15,11 @@ title: VMware Network Latency
 <details>
 <summary>View the uses of the fault</summary>
 <div>
-The experiment causes network degradation without the VM being marked unhealthy/unworthy of traffic. The idea of this experiment is to simulate issues within your vm network OR microservice communication across services in different hosts etc.
+The fault causes network degradation without the VM being marked unhealthy/unworthy of traffic. The idea of this fault is to simulate issues within your vm network OR microservice communication across services in different hosts etc.
 
-Mitigation (in this case keep the timeout i.e., network latency low) could be via some middleware that can switch traffic based on some SLOs/perf parameters. If such an arrangement is not available the next best thing would be to verify if such a degradation is highlighted via notification/alerts etc,. so the admin/SRE has the opportunity to investigate and fix things. Another utility of the test would be to see what the extent of impact caused to the end-user OR the last point in the app stack on account of degradation in access to a downstream/dependent microservice. Whether it is acceptable OR breaks the system to an unacceptable degree. The experiment provides DESTINATION_IPS or DESTINATION_HOSTS so that you can control the chaos against specific services within or outside the vm.
+Mitigation (in this case keep the timeout i.e., network latency low) could be via some middleware that can switch traffic based on some SLOs/perf parameters. If such an arrangement is not available the next best thing would be to verify if such a degradation is highlighted via notification/alerts etc,. so the admin/SRE has the opportunity to investigate and fix things. Another utility of the test would be to see what the extent of impact caused to the end-user OR the last point in the app stack on account of degradation in access to a downstream/dependent microservice. Whether it is acceptable OR breaks the system to an unacceptable degree. The fault provides DESTINATION_IPS or DESTINATION_HOSTS so that you can control the chaos against specific services within or outside the vm.
 
-The vm may stall or get corrupted while they wait endlessly for a packet. The experiment limits the impact (blast radius) to only the traffic you want to test by specifying IP addresses or application information. This experiment will help to improve the resilience of your services over time
+The vm may stall or get corrupted while they wait endlessly for a packet. The fault limits the impact (blast radius) to only the traffic you want to test by specifying IP addresses or application information. This fault will help to improve the resilience of your services over time
 </div>
 </details>
 
@@ -51,7 +51,7 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
 - VM should be in healthy state before and after chaos.
 :::
 
-## Experiment Tunables
+## Fault Tunables
 <details>
     <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>
@@ -135,7 +135,7 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
       <tr>
         <td> GOVC_URL </td>
         <td> Provide the VMCenter Server URL</td>
-        <td> It is used to perform the vmware api calls using govc command and is derived from sceret.</td>
+        <td> It is used to perform the VMware API calls using govc command and is derived from secret.</td>
       </tr>
       <tr>
         <td> GOVC_USERNAME </td>
@@ -157,8 +157,8 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
 
 ## Fault Examples
 
-### Common Experiment Tunables
-Refer the [common attributes](../common-tunables-for-all-experiments) to tune the common tunables for all the experiments.
+### Common Fault Tunables
+Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
 ### Network Packet Latency
 
@@ -226,7 +226,7 @@ spec:
 
 ### Run With Destination IPs And Destination Hosts
 
-The network experiments interrupt traffic for all the IPs/hosts by default. The interruption of specific IPs/Hosts can be tuned via `DESTINATION_IPS` and `DESTINATION_HOSTS` ENV.
+The network faults interrupt traffic for all the IPs/hosts by default. The interruption of specific IPs/Hosts can be tuned via `DESTINATION_IPS` and `DESTINATION_HOSTS` ENV.
 
 `DESTINATION_IPS`: It contains the IP addresses of the services or the CIDR blocks(range of IPs), the accessibility to which is impacted.
 `DESTINATION_HOSTS`: It contains the DNS Names of the services, the accessibility to which, is impacted
