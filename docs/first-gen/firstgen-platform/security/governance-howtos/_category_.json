@@ -1,0 +1,14 @@
+{
+  "label": "Governance FirstGen ",
+  "position": 40,
+  "collapsible": "true",
+  "collapsed": "true",
+  "className": "red",
+  "link": {
+    "type": "generated-index",
+    "title": "Governance FirstGen"
+  },
+  "customProps": {
+    "helpdocs_category_id": "934m8pvgnk"
+  }
+}

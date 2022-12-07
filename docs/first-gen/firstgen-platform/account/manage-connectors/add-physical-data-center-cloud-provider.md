@@ -1,0 +1,44 @@
+---
+title: Add Physical Data Center as Cloud Provider
+description: Connect your physical data center as a cloud provider where you will deploy your services using Harness.
+# sidebar_position: 2
+helpdocs_topic_id: stkxmb643f
+helpdocs_category_id: ll7h8ktlwe
+helpdocs_is_private: false
+helpdocs_is_published: true
+---
+
+Connect your physical data center as a cloud provider where you will deploy your services using Harness.
+
+You add cloud providers to your Harness Account and then reference them when defining deployment environments.
+
+In this topic:
+
+* [Before You Begin](#before_you_begin)
+* [Step 1: Add the Cloud Provider](#step_1_add_the_cloud_provider)
+* [Step 2: Display Name](#step_2_display_name)
+* [Artifact Support for Download and Copy](#artifact_support_for_download_and_copy)
+
+### Before You Begin
+
+* See [Harness Key Concepts](/article/4o7oqwih6h-harness-key-concepts).
+
+### Step 1: Add the Cloud Provider
+
+To add a cloud provider to your Harness account, do the following:
+
+1. Click **Setup**, and then click **Cloud Providers**.
+2. Click **Add Cloud Provider** and select **Physical Data Center**.
+
+The **Add Physical Data Center Cloud Provider** panel appears.
+
+### Step 2: Display Name
+
+Enter a unique **Display Name**.
+
+For a Physical Data Center Cloud Provider, no credentials are required. Instead, you add an SSH secret in Harness Secrets Management, and select that later in your Harness Environment in **Connection Attributes**. For more information, see [Secrets Management](/article/au38zpufhr-secret-management).
+
+### Artifact Support for Download and Copy
+
+See [Service Types and Artifact Sources](/article/qluiky79j8-service-types-and-artifact-sources).
+

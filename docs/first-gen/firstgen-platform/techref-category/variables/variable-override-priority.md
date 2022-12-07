@@ -1,0 +1,117 @@
+---
+title: Variable Override Priority
+description: Harness provides builtin and custom variables, as described in What is a Harness Variable Expression?. You can override a lot of variable values in order to templatize and customize deployment settin…
+# sidebar_position: 2
+helpdocs_topic_id: benvea28uq
+helpdocs_category_id: 9lw749jubn
+helpdocs_is_private: false
+helpdocs_is_published: true
+---
+
+Harness provides builtin and custom variables, as described in [What is a Harness Variable Expression?](/article/9dvxcegm90-variables).
+
+You can override a lot of variable values in order to templatize and customize deployment settings.
+
+These overrides have priority. For example, you can override a Service variable in an Environment and a Workflow.
+
+In this topic, we explain how Harness prioritizes variable overrides. Hopefully, this will help you manage your variables more effectively.
+
+In this topic:
+
+* [Before You Begin](#before_you_begin)
+* [Where are Variables Overridden?](#where_are_variables_overridden)
+	+ [Service Configuration Overrides](#service_configuration_overrides)
+	+ [Overriding Service Variables in Workflows](#overriding_service_variables_in_workflows)
+		- [Use Workflow Variables in the Service Settings](#use_workflow_variables_in_the_service_settings)
+		- [Use Service Variable Overrides in a Workflow Phase](#use_service_variable_overrides_in_a_workflow_phase)
+* [Overrides Are at the Key:Value Level Not the File Level](#overrides_are_at_the_key_value_level_not_the_file_level)
+* [In What Order are Variables Overridden?](#in_what_order_are_variables_overridden)
+* [Overriding and Merging Values YAML, Manifests, Charts etc in Environments](#overriding_and_merging_values_yaml_manifests_charts_etc_in_environments)
+* [Other Service Configuration Types](#other_service_configuration_types)
+* [See Also](#see_also)
+
+### Before You Begin
+
+* [What is a Harness Variable Expression?](/article/9dvxcegm90-variables)
+* [Availability and Scope of Harness Variables](/article/d15of30a2i-harness-variable-availability)
+
+### Where are Variables Overridden?
+
+Service variables can be overridden in Environments and Workflows.
+
+When you override a Service variable in an Environment, the Service variable can be still be overridden in a Workflow.
+
+#### Environment Service Configuration Overrides
+
+Service Config variables can be are overridden in an Environment's **Service Configuration Overrides** section.
+
+Service Configuration Overrides can override all Service Config variables, or the Service Config variables in specific Services.
+
+#### Overriding Service Variables in Workflows
+
+There two ways to override Service variables in a Workflow:
+
+##### Use Workflow Variables in the Service Settings
+
+The most effective method for overriding Service settings in a Workflow, is to create a Workflow variable and then use its expression in the Service setting.
+
+When you deploy the Workflow, you are prompted to supply a value for the Workflow variable. The value you provide is then used in the Service setting at deployment runtime.
+
+You can use Workflow variable expressions in a Harness Service, but Harness does not autocomplete Workflow variables in a Service like it does in a Workflow. You will need to manually enter the Workflow variable expression in the Service: `${workflow.variables.name}`.
+
+##### Use Service Variable Overrides in a Workflow Phase
+
+Each Phase of a multi-phase Workflow, such as a Canary Workflow, allows you to override the Service variables for the Service the Workflow Phase deploys:
+
+![](https://files.helpdocs.io/kw8ldg1itf/articles/benvea28uq/1601489349465/image.png)### Overrides Are at the Key:Value Level Not the File Level
+
+Overrides are at the `key:value` level not the file level. You must override each `key:value` pair. 
+
+For example, if you are using a Helm Chart and it has a values.yaml in it and you use **Service Configuration Overrides**, you must override each `key:value` pair from the chart values.yaml that you do not want. 
+
+Harness will merge both the chart values.yaml and the **Service Configuration Overrides** values `key:value` pairs. This is still true even if your override is an entire file.
+
+### In What Order are Variables Overridden?
+
+Here is how Harness prioritizes variables, from highest to least priority:
+
+1. Highest: Workflow variable or Workflow Phase Service Variable Overrides. See [Set Workflow Variables](/article/766iheu1bk-add-workflow-variables-new-template).  
+**Pipelines**—If the Workflow is executed by a Pipeline, the value provided for the Workflow variable in the Pipeline has the highest priority.
+2. Next: Environment Service Configuration Overrides.  
+See [Override a Service Configuration in an Environment](/article/4m2kst307m-override-service-files-and-variables-in-environments).  
+This can be either of the following:
+	1. An override of a single Service Config Variable.
+	2. An override of all Service Config Variables.
+3. Last: Service Config Variables. See [Add Service Config Variables](/article/q78p7rpx9u-add-service-level-config-variables).
+
+Put simply:
+
+![](https://files.helpdocs.io/kw8ldg1itf/articles/benvea28uq/1615508757737/image.png)At the Environment-level, you can override a variable for **All Services** or a specific Service. If you override for All Services but then also override for a specific Service, the override for the specific Service is used for that Service+Environment combination.### Overriding and Merging Values YAML, Manifests, Charts etc in Environments
+
+In addition to overriding Service text and file variables, you can override or merge new values for the Values YAML, manifest files, Helm charts, and OpenShift Params in a Harness Service (Kubernetes, Helm, Tanzu).
+
+Overrides are at the `key:value` level not the file level. You must override each `key:value` pair. For example, if you are using a Helm Chart and it has a values.yaml in it and you use **Service Configuration Overrides**, you must override each `key:value` pair from the chart values.yaml that you do not want. Harness will merge both the chart values.yaml and the **Service Configuration Overrides** values `key:value` pairs. This is still true even if your override is an entire file.You can override or merge new values at the Environment level in **Service Configuration Overrides**.
+
+To override, you simply replace all of the values in the Values YAML, manifest files, Helm charts, and OpenShift Params in the Harness Service.
+
+To merge, you simply add a subset of the values or additional values. Harness will merge these values with the values in the Values YAML, manifest files, Helm charts, and OpenShift Params.
+
+See:
+
+* [Override Harness Kubernetes Service Settings](/article/ycacqs7tlx-override-harness-kubernetes-service-settings) (for Kubernetes, Helm, OpenShift)
+* [Override Tanzu Manifests and Config Variables and Files](/article/r0vp331jnq-override-pcf-manifests-and-config-variables-and-files)
+* [Helm Environments](/article/134kx1k89d-3-helm-environments) (Native Helm)
+
+### Other Service Configuration Types
+
+Some Service types support other Configuration types, such as
+
+* ConfigMap YAML — See [Override Harness Kubernetes Service Settings](/article/ycacqs7tlx-override-harness-kubernetes-service-settings).
+* Values YAML — See [Override Values YAML Files](/article/p453sikbqt-override-values-yaml-files) and [Override Variables at the Infrastructure Definition Level](/article/cc59hfou9c-override-variables-per-infrastructure-definition).
+* Service Configuration Files — See [Override a Service Configuration in an Environment](/article/4m2kst307m-override-service-files-and-variables-in-environments).
+
+### See Also
+
+* [Pass Variables between Workflows](/article/gkmgrz9shh-how-to-pass-variables-between-workflows)
+* [Using Variables in Workflow Approvals](/article/5pspec1apl-use-variables-for-workflow-approval)
+
