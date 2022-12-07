@@ -4,64 +4,71 @@ description: You can specify exemptions (ignore rules) for specific security iss
 sidebar_position: 60
 ---
 
-The `fail_on_severity` setting causes a pipeline build to fail if a Security Scan step detects one or more issues with the specified severity (Critical, High, Medium, etc.). You might want to create "ignore rules" for specific issues to override this behavior and ensure that a build proceeds even if the scan detects that issue. This topic describes the workflow for creating and approving ignore rules. 
+The `fail_on_severity` setting causes a pipeline build to fail if a Security Scan step detects one or more issues with the specified severity (Critical, High, Medium, etc.). Your organization can create "Ignore rules" for specific issues to override this behavior. If an Ignore rule is approved, a build can proceed even if a scan detects that issue.  
 
 :::note 
-Developers and SecOps users can request ignore rules, but only SecOps users can approve them.
+Developers and SecOps users can request Ignore rules, but only SecOps users can approve them.
 ::: 
 
 ## Before You Begin
 
-This topic assumes that you have done the following:
+This topic assumes that you have the following:
 
-* Set up an STO pipeline as described in [Set up Harness for STO](../onboard-sto/20-set-up-harness-for-sto.md).
-* Configured `fail_on_severity` on a Security Scan step.
-* Run at at least one pipeline build and collected a set of detected security issues.  
+* An STO pipeline as described in [Set up Harness for STO](../onboard-sto/20-set-up-harness-for-sto.md).
+* The pipeline has a Security Scan step with a configured `fail_on_severity` setting.
+* At least one successful build with a set of detected security issues.  
 
-## Workflow Description
-
-1. (_Developers or SecOps users_) Create an Ignore Rule request: 
+## Request an Ignore Rule (_Developers or SecOps users_) 
      
-  1. Go to the Security Tests page for the build: In the Pipeline studio, click **Execution History** (top right) and then go to a successful build.  
+1. Go to the Security Tests page for the build: In the Pipeline studio, click **Execution History** (top right) and then go to a successful build.  
 
+2. In the **Security Tests** tab, do the following:
+   1. Click in the row to open the **Issue Details** pane. 
+   2. Click the **Ignore** button.
 
-  2. In the **Security Tests** tab, do the following:
-  	1. Click in the row to open the **Issue Details** pane. 
-    2. If the pane has a Link field, copy the URL into a text editor. 
-       It's good practice to include a link to information about the specific issue in your ignore request. This will help the reviewer decide whether to approve your request. 
-  	2. Click the **Ignore** button.
-    
-       ![](../onboard-sto/static/sto-tutorial-2-integrated-sto-ci-cd-workflows-02.png)
-       
-  3. In the **Request to Ignore an Issue** popup, configure the Ignore request as follows:
-  	1. **Where do you want this issue to be ignored?** (*if available*)
-  	2. **For how long?** (*if available*)
-  	3. **Reason this issue should be exempted**
-    3. **URL Reference** — Paste the link you copied in the previous request, or add a different link that provides information about the specific issue you want the pipeline to ignore. 
-  	4. Click **Create Request**.
-      
-         ![](../onboard-sto/static/sto-tutorial-2-integrated-sto-ci-cd-workflows-03.png)
-         
-  4. Send an email or text to the SecOps reviewer 
-
-
-1. (_SecOps users only_) Review the ignore request: 
-       
-4. Click **Security Tests** (left menu) and then **Security Review** (second-from-left menu).
-5. In the Security Review page, click the "thumbs-up" buttons to approve both exemptions.
-
-   ![](../onboard-sto/static/sto-tutorial-2-integrated-sto-ci-cd-workflows-04.png)
+      ![](./static/exemption-click-ignore-rule.png)
    
-6. Go back to your pipeline and run another build with the **DEMO-001** branch. When the build finishes, go to the **Security Tests** page.
-7. In the issues table (bottom), each section has a set of show/hide buttons for different issue types: Critical, High, Medium. Low, and Info. Note that each section now includes an **Ignored** button. Also note that the ignored issues are hidden by default.
+   3. In the **Request to Ignore an Issue** popup, configure the Ignore request as follows:
+      1. **Where do you want this issue to be ignored?** (*if available*)
+      2. **For how long?** (*if available*)
+      3. **Reason this issue should be exempted**
+      4. **URL Reference** — Paste the link you copied in the previous request, or add a different link that provides information about the specific issue you want the pipeline to ignore. If your repo already addresses the issue, for example, you can include a link to the relevant code. 
+   5. Click **Create Request**. 
+  
+      ![](./static/exemption-click-create-request.png)
+     
+3. Send a notification of your exemption request — via email, Slack, Jira, etc. to your SecOps reviewer. Your notification should include the URL to the Security Tests page with the relevant issue selected.
 
-   ![](../onboard-sto/static/sto-tutorial-2-integrated-sto-ci-cd-workflows-05.png)
 
-8. Click the **Ignored** buttons (right) and the expand/contract buttons (left) so that both ignored issues are visible.
+## Review, Approve, and Reject Ignore Rules (_SecOps users only_)
 
-   ![](../onboard-sto/static/sto-tutorial-2-integrated-sto-ci-cd-workflows-06.png)
+An Ignore rule, if approved, overrides the default behavior for running a pipeline build:
 
-9. Go to **Security Tests** > **Security Review**. Then click **Approved** to show the Ignore rules you created and approved.
-10. Click the Delete (**X**) buttons on the right to delete both rules.
+* If a pipeline includes a Security Tests step, the step scans the specified object and compiles a list of detected issues.
+* Each issue has a specified severity: Critical, Major, Minor, etc.
+* Each Security Test step should have a `fail_on_severity` setting. If the step detects any issue with the specified severity, the build fails. 
+* Each Ignore rule applies to one specific issue. The rule allows the pipeline to proceed even if the scan detects that issue.    
 
-    ![](../onboard-sto/static/sto-tutorial-2-integrated-sto-ci-cd-workflows-07.png)
+### Review an Ignore Rule 
+
+1. You should receive a notification from a developer that includes a URL to the relevant issue. Go to the URL provided.
+ 
+   The notification URL should point to a Security Tests page in Harness with the issue selected in the **Issue Details** pane on the right. If the relevant issue isn't visible, notify the developer. 
+
+2. Review the exemption request. The **Issue Details** pane includes a high-level summary of the issue, links to relevant documentation, and a list of all locations in the scanned object where the issue was detected. 
+
+ :::note 
+ The **Issue Details** pane is comprehensive, but might not include all the information you need. You might want to research the issue further before you approve the request.
+ :::
+
+  ![](./static/exemption-issue-details.png)  
+          
+### Review all Ignore Rules
+
+You can review all Ignore rules in the current project in the **Security Review** page. 
+
+1. Click **Security Tests** (left menu) and then **Security Review** (second-from-left menu).
+
+2. In the Security Review page, click the Approve, Reject, or Delete buttons for individual rules as needed.
+
+   ![](./static/exemption-security-review.png)
