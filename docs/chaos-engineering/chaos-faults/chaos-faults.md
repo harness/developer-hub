@@ -3,13 +3,13 @@ id: chaos-faults
 title: Chaos Faults
 ---
 
-The fault execution is triggered upon creation of the ChaosEngine resource (various examples of which are provided under the respective faults). Typically, these chaosengines are embedded within the 'steps' of a Chaos fault. However, one may also create the ChaosEngines manually, and the chaos-operator reconciles this resource and triggers the fault execution.
+The fault execution is triggered when the chaosengine resource (various examples of which are provided under the respective faults) is created. Typically, these chaosengines are embedded within the 'steps' of a chaos fault. However, you can also create the chaosengine manually, and the chaos-operator reconciles this resource and triggers the fault execution.
 
 Provided below are tables with links to the individual fault docs for easy navigation.
 
 ## Kubernetes Faults
 
-Kubernetes faults disrupt the resources running on a Kubernetes cluster. They can be categorized into Pod-level faults and Node-level faults.
+Kubernetes faults disrupt the resources running on a cluster. They can be categorized into **pod-level** faults and **node-level** faults.
 
 ### Pod Chaos
 
