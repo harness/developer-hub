@@ -12,7 +12,7 @@ spec:
     spec:
       components:
         env:
-        # comma separated names of the azure web app
+        # comma separated names of the Azure web app
         - name: AZURE_WEB_APP_NAMES
           value: 'webApp-01,webApp-02'
         # name of the resource group

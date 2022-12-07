@@ -1,7 +1,7 @@
 ---
-title: Common Tunables for All Experiments
+title: Common Tunables for All Faults
 ---
-Experiment tunables which are common for all the experiments. These tunables can be provided at `.spec.experiment[*].spec.components.env` in chaosengine.
+Fault tunables which are common for all the faults. These tunables can be provided at `.spec.experiment[*].spec.components.env` in chaosengine.
 
 ### Duration of the chaos
 
@@ -35,6 +35,40 @@ spec:
 ```
 
 ### Multiple Iterations Of Chaos
+
+The multiple iterations of chaos can be tuned via setting `CHAOS_INTERVAL` ENV. Which defines the delay between each iteration of chaos.
+
+Use the following example to tune this:
+
+[embedmd]:# (./static/manifest/common/chaos-interval.yaml yaml)
+```yaml
+# defines delay between each successive iteration of the chaos
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  appinfo:
+    appns: "default"
+    applabel: "app=nginx"
+    appkind: "deployment"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: pod-delete
+    spec:
+      components:
+        env:
+        # delay between each iteration of chaos
+        - name: CHAOS_INTERVAL
+          value: '15'
+        # time duration for the chaos execution
+        - name: TOTAL_CHAOS_DURATION
+          VALUE: '60'
+```
+
+### Chaos Interval
 
 The multiple iterations of chaos can be tuned via setting `CHAOS_INTERVAL` ENV. Which defines the delay between each iteration of chaos.
 
@@ -135,37 +169,6 @@ spec:
           value: 'parallel'
 ```
 
-### Name of chaos library
-
-It defines the name of the chaos library used for the chaos injection. You can tune it using the `LIB` environment variable.
-
-Use the following example to tune this:
-
-[embedmd]:# (./static/manifest/common/lib.yaml yaml)
-```yaml
-# lib for the chaos injection
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: pod-delete
-    spec:
-      components:
-        env:
-        # defines the name of the chaoslib used for the experiment
-        - name: LIB
-          value: 'litmus'
-```
-
 ### Instance ID
 
 It defines a user-defined string that holds metadata/info about the current run/instance of chaos. For example: 04-05-2020-9-00. This string is appended as a suffix in the chaosresult CR name. It can be tuned with `INSTANCE_ID` ENV.
@@ -199,16 +202,16 @@ spec:
 
 ### Image used by the helper pod
 
-It defines the image, which is used to launch the helper pod, if applicable. You can tune it using the `LIB_IMAGE` environment variable.
-It is supported by [container-kill, network-experiments, stress-experiments, dns-experiments, disk-fill, kubelet-service-kill, docker-service-kill, node-restart] experiments.
+It defines the image, which is used to launch the helper pod, if applicable. It can be tuned with the `LIB_IMAGE` ENV.
+It is supported by [container-kill, network-faults, stress-faults, dns-faults, disk-fill, kubelet-service-kill, docker-service-kill, node-restart] faults.
 
 Use the following example to tune this:
 
 [embedmd]:# (./static/manifest/common/lib-image.yaml yaml)
 ```yaml
 # it contains the lib image used for the helper pod
-# it support [container-kill, network-experiments, stress-experiments, dns-experiments, disk-fill,
-# kubelet-service-kill, docker-service-kill, node-restart] experiments
+# it support [container-kill, network-faults, stress-faults, dns-faults, disk-fill,
+# kubelet-service-kill, docker-service-kill, node-restart] faults
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:

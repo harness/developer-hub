@@ -37,7 +37,7 @@ Coming soon.
 
 :::
 
-## Experiment tunables
+## Fault Tunables
 
 <details>
     <summary>Check the Fault Tunables</summary>
@@ -106,9 +106,9 @@ Coming soon.
 
 ## Fault Examples
 
-### Common Experiment Tunables
+### Common Fault Tunables
 
-Refer the [common attributes](../common-tunables-for-all-experiments) to tune the common tunables for all the experiments.
+Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
 ### Pod Template provided as CM
 

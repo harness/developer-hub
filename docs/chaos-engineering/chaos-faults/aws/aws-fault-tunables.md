@@ -1,3 +1,16 @@
+---
+title: Common AWS Fault Tunables
+---
+AWS specific fault tunables.
+
+### Managed Nodegroup
+
+It specifies whether or not AWS EC2 instances are part of managed nodeGroups. If instances belong to the managed nodeGroups then provide `MANAGED_NODEGROUP` as `enable` else provide it as `disable`. The default value is `disabled`.
+
+Use the following example to tune this:
+
+[embedmd]:# (./static/manifests/common/managed-nodegroup.yaml yaml)
+```yaml
 # it provided as enable if instances are part of self managed groups
 # it is applicable for [ec2-terminate-by-id, ec2-terminate-by-tag]
 apiVersion: litmuschaos.io/v1alpha1
@@ -24,3 +37,4 @@ spec:
           value: 'key:value'
         - name: TOTAL_CHAOS_DURATION
           VALUE: '60'
+```

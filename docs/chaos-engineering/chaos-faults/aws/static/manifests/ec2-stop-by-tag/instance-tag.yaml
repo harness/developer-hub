@@ -1,4 +1,4 @@
-# target the ec2 instances with matching tag
+# target the EC2 instances with matching tag
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -11,9 +11,9 @@ spec:
     spec:
       components:
         env:
-        # tag of the ec2 instance
+        # tag of the EC2 instance
         - name: INSTANCE_TAG
           value: 'key:value'
-        # region for the ec2 instance
+        # region for the EC2 instance
         - name: REGION
           value: 'us-east-1'

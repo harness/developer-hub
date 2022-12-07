@@ -1,4 +1,4 @@
-# detach multiple azure disks by their names
+# detach multiple Azure disks by their names
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -11,7 +11,7 @@ spec:
     spec:
       components:
         env:
-        # comma separated names of the azure disks attached to VMs
+        # comma separated names of the Azure disks attached to VMs
         - name: VIRTUAL_DISK_NAMES
           value: 'disk-01,disk-02'
         # name of the resource group

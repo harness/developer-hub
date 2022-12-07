@@ -1,7 +1,7 @@
 ---
-title: Common Pod Experiment Tunables
+title: Common Pod Fault Tunables
 ---
-Experiment tunables which are common for all pod-level experiments. These tunables can be provided at `.spec.experiment[*].spec.components.env` in chaosengine.
+Fault tunables which are common for all pod-level faults. These tunables can be provided at `.spec.experiment[*].spec.components.env` in chaosengine.
 
 ### Target Specific Pods
 
@@ -43,7 +43,7 @@ Use the following example to tune this:
 [embedmd]:# (./static/manifests/common/pod-affected-percentage.yaml yaml)
 ```yaml
 ## it contains percentage of application pods to be targeted with matching labels or names in the application namespace
-## supported for all pod-level experiment expect pod-autoscaler
+## supported for all pod-level fault expect pod-autoscaler
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
