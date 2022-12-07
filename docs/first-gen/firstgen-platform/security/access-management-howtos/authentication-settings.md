@@ -53,7 +53,9 @@ The **Allow login using Harness username/password** slider enables Harness' defa
 
 Select **Enforce password strength** to open the dialog shown below. This offers a field where you can specify and enforce minimum password length, and independent controls to require Harness passwords to include at least one uppercase letter, lowercase letter, numeral, and/or non-alphanumeric character.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/zlymcu6bf1/1560918044265/image.png)If you enforce **Have at least 1 special character**, each password must include one (or more) of the following characters: `~!@#$%^&*_-+=`|\(){}[]:;"'<>,.?/`
+![](https://files.helpdocs.io/kw8ldg1itf/articles/zlymcu6bf1/1560918044265/image.png)If you enforce **Have at least 1 special character**, each password must include one (or more) of the following characters: `~!@#$%^&amp;*_-+=`|\(){}[]:;&quot;'&lt;&gt;,.?/`
+
+<!-- `~!@#$%^&*_-+=`|\(){}[]:;"'<>,.?/` -->
 
 
 #### Enforcing Password Expiration

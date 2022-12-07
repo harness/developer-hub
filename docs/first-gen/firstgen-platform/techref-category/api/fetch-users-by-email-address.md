@@ -99,5 +99,5 @@ Queries do not support wildcards in email addresses at this time.
 
 ### Configure As Code
 
-To see how to configure the settings in this topic using YAML, configure the settings in the UI first, and then click the YAML editor button (**</>**).
+To see how to configure the settings in this topic using YAML, configure the settings in the UI first, and then click the **YAML** editor button.
 

@@ -53,8 +53,8 @@ You can't modify any of the below mentioned settings:
 To resume a Pipeline using resumeExecution, a Harness User must belong to a User Group that has the following Application Permissions:
 
 * **Permission Type:** Deployments, **Action:** Execute Pipeline
-* **Permission Type:** Deployments, **Action:** Execute Pipeline, **Application:** <Application>
-* **Permission Type:** Deployments, **Action:** Execute Pipeline, **Environment:** <Environment Type>, **Application:** <Application>, but only to <Environment Type>
+* **Permission Type:** Deployments, **Action:** Execute Pipeline, **Application:**  &lt;Application&gt;
+* **Permission Type:** Deployments, **Action:** Execute Pipeline, **Environment:**&lt;Environment Type&gt;, **Application:** &lt;Application&gt;, but only to &lt;Environment Type&gt;
 
 ### Review: What Can Be Resumed
 
