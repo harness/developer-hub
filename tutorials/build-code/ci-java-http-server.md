@@ -9,7 +9,7 @@ keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial]
 In this tutorial, you will create a Harness CI pipeline for a Java HTTP server application that will:
 1. Build and test the application.
 2. Publish a Docker image.
-3. Pull the published Docker image, then pull and run it as a [Background step](../../docs/continuous-integration/ci-technical-reference/background-step-settings.md).
+3. Pull the published Docker image, then pull and run it as a [Background step](/docs/continuous-integration/ci-technical-reference/background-step-settings).
 4. Run a connectivity test against the running application.
 
 :::tip
