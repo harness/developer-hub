@@ -21,9 +21,9 @@ The experiment causes DNS errors on the target VMs which can result in unavailab
 
 ## Prerequisites
 :::info
-- Ensure that Kubernetes Version > 1.16 
-- Ensure that you have sufficient Vcenter access to stop and start the VM.
-- (Optional) Ensure to create a Kubernetes secret having the Vcenter credentials in the `CHAOS_NAMESPACE`. A sample secret file looks like:
+- Kubernetes > 1.16 
+- Vcenter access to stop and start the VM.
+- (Optional) A Kubernetes secret that has the Vcenter credentials in the `CHAOS_NAMESPACE`. A sample secret file looks like:
 ```yaml
 apiVersion: v1
 kind: Secret
@@ -38,19 +38,19 @@ stringData:
 ```
 
 ### NOTE
-You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
+You can pass the VM credentials as secrets or as a chaosengine environment variable.
 :::
 
     
 ## Default Validations
 :::info
-- VM should be in healthy state before and after chaos.
+- The VM should be in a healthy state before and after chaos.
 :::
 ## Minimal RBAC configuration example (optional)
 
 <details>
 <summary>Minimal RBAC configuration</summary>
-If you are using this experiment as part of a litmus workflow scheduled constructed & executed from chaos-center, then you may be making use of the <a href="https://litmuschaos.github.io/litmus/litmus-admin-rbac.yaml">litmus-admin</a> RBAC, which is pre installed in the cluster as part of the agent setup.
+If you use this experiment as part of a litmus workflow that is scheduled, constructed, and executed from a chaos center, you may be using the <a href="https://litmuschaos.github.io/litmus/litmus-admin-rbac.yaml">litmus-admin</a> RBAC, which is pre-installed in the cluster as part of the agent setup.
 
 ```yaml
 ---
@@ -116,10 +116,10 @@ subjects:
   name: vm-poweroff-sa
   namespace: default
 ```
-Use this sample RBAC manifest to create a chaosServiceAccount in the desired (app) namespace. This example consists of the minimum necessary role permissions to execute the experiment.
+You can use this sample RBAC manifest to create a `chaosServiceAccount` in the desired (app) namespace. This example contains the minimum role permissions necessary to execute the experiment.
 </details>
 
-## Experiment tunables
+## Experiment Tunables
 <details>
     <summary>Check the Experiment Tunables</summary>
     <h2>Mandatory Fields</h2>
@@ -131,18 +131,18 @@ Use this sample RBAC manifest to create a chaosServiceAccount in the desired (ap
       </tr>
       <tr> 
         <td> VM_USER_NAME </td>
-        <td> Provide the username of the target VM(s)</td>
-        <td> Multiple usernames can be provided as comma separated (for more than one VM under chaos). It is used to run the govc command.</td>
+        <td> Provide the username of the target VM(s).</td>
+        <td> You can provide multiple usernames as  comma separated file(for more than one VM under chaos). It is used to run the 'govc' command.</td>
       </tr>
       <tr> 
         <td> VM_PASSWORD </td>
-        <td> Provide the password for the target VM(s)</td>
-        <td> It is used to run the govc command.</td>
+        <td> Provide the password for the target VM(s).</td>
+        <td> It is used to run the 'govc' command.</td>
       </tr>
       <tr>
         <td> PORT </td>
-        <td> Provide the DNS Port</td>
-        <td> Default value is 54 </td>
+        <td> Provide the DNS Port.</td>
+        <td> Default value is 54. </td>
       </tr>
     </table>
     <h2>Optional Fields</h2>
@@ -154,22 +154,22 @@ Use this sample RBAC manifest to create a chaosServiceAccount in the desired (ap
       </tr>
       <tr> 
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The total time duration for chaos insertion (sec) </td>
-        <td> Defaults to 30s </td>
+        <td> The total duration to insert chaos (in seconds). </td>
+        <td> Default value is 30s. </td>
       </tr>
       <tr> 
         <td> CHAOS_INTERVAL </td>
-        <td> The interval (in sec) between successive instance termination </td>
-        <td> Defaults to 30s </td>
+        <td> The interval between successive instance terminations (in seconds) . </td>
+        <td> Default value is 30s. </td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
-        <td> It defines sequence of chaos execution for multiple instance </td>
-        <td> Default value: parallel. Supported: serial, parallel </td>
+        <td> It defines the sequence of the chaos execution for multiple instances. </td>
+        <td> Its default value is 'parallel', and it supports 'serial' value too. </td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
-        <td> Period to wait before and after injection of chaos in sec </td>
+        <td> The period of wait before and after injecting chaos (in seconds). </td>
         <td> </td>
       </tr>
     </table>
@@ -182,23 +182,23 @@ Use this sample RBAC manifest to create a chaosServiceAccount in the desired (ap
       </tr>
       <tr>
         <td> GOVC_URL </td>
-        <td> Provide the VMCenter Server URL</td>
-        <td> It is used to perform the vmware api calls using govc command and is derived from sceret.</td>
+        <td> Provide the VMCenter Server URL.</td>
+        <td> It is used to perform the VMware API calls using 'govc' command which is derived from a secret.</td>
       </tr>
       <tr>
         <td> GOVC_USERNAME </td>
-        <td> Provide the username of VMCenter Server</td>
-        <td> It is used for auth purpose and this ENV is setup using secret.</td>
+        <td> Provide the username of the VMCenter Server</td>
+        <td> This environment variable is used for authentication purpose and is setup using a secret.</td>
       </tr>
       <tr>
         <td> GOVC_PASSWORD </td>
         <td> Provide the password of VMCenter Server</td>
-        <td> It is used for auth purpose and this ENV is setup using secret.</td>
+        <td> This environment variable is used for authentication purposes and is setup using a secret.</td>
       </tr>
       <tr>
         <td> GOVC_INSECURE </td>
         <td> Provide the value as <code>true</code> </td>
-        <td> It is used to run the govc in insecure mode and this ENV is setup using secret.</td>
+        <td> This environment variable is used to run the 'govc' in insecure mode and is setup using a secret.</td>
       </tr>
      </table>   
 </details>
@@ -206,13 +206,13 @@ Use this sample RBAC manifest to create a chaosServiceAccount in the desired (ap
 ## Experiment Examples
 
 ### Common Experiment Tunables
-Refer the [common attributes](../common-tunables-for-all-experiments) to tune the common tunables for all the experiments.
+Refer to the [common attributes](../common-tunables-for-all-experiments) to tune the common tunables for all the experiments.
 
 ### Run DNS Chaos With Port
 
-It contains the DNS port to inject the DNS chaos. The value can be provided using `PORT` Env.
+It contains the DNS port where you can inject the DNS chaos. The value is provided using the `PORT` environment variable.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/vmware-dns-chaos/vmware-dns-port.yaml yaml)
 ```yaml
