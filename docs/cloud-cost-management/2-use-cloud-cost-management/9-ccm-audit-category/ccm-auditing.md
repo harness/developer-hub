@@ -8,9 +8,9 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Currently, this feature is behind the feature flag `AUDIT_TRAIL_WEB_INTERFACE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.Your Harness account [Audit Trail](/article/r5ytrnpcgr-audit-trail) includes events for CCM changes.
+Currently, this feature is behind the feature flag `AUDIT_TRAIL_WEB_INTERFACE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.Your Harness account [Audit Trail](https://docs.harness.io/article/r5ytrnpcgr-audit-trail) includes events for CCM changes.
 
-### CCM Events in Audit Trail
+## CCM Events in Audit Trail
 
 The following CCM events are included in Audit Trail:
 
@@ -21,6 +21,8 @@ The following CCM events are included in Audit Trail:
 
 For example, in Audit Trails, click a Perspective event to see its details:
 
-![](./static/ccm-auditing-00.png)Expand **YAML Difference** to see what was changed: 
+![](./static/ccm-auditing-00.png)
+
+Expand **YAML Difference** to see what was changed: 
 
 ![](./static/ccm-auditing-01.png)

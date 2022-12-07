@@ -10,35 +10,39 @@ helpdocs_is_published: true
 
 Harness RBAC includes Roles and Permissions that enable you to control access to the CCM resources in your Harness account.
 
-### CCM Roles and Permissions are Account Level Only
+## CCM Roles and Permissions are Account Level Only
 
 Most Roles and Permissions can be set at the Project, Org, and Account levels. CCM Roles and Permissions can be set at the Account level only.
 
-In your Harness Account, click **Account Settings >** **Access Control >** **Roles**. Add or open a Role.
+1. In your Harness Account, click **Account Settings >** **Access Control >** **Roles**. 
+2. Add or open a Role.
+3. In the Role, click **Cloud Cost Management**. The CCM Permissions are displayed.
 
-In the Role, click **Cloud Cost Management**. The CCM Permissions are displayed.
+![](./static/ccm-roles-and-permissions-00.png)
 
-![](./static/ccm-roles-and-permissions-00.png)### Default Roles
+## Default Roles
 
 You can configure CCM Permissions for any Role, but there are two default Roles related to CCM that you can assign without having to set anything up.
 
-#### CCM Admin
+### CCM Admin
 
 The default CCM Admin Role has full permissions on all CCM resources.
 
-![](./static/ccm-roles-and-permissions-01.png)#### CCM Viewer
+![](./static/ccm-roles-and-permissions-01.png)
+
+### CCM Viewer
 
 The default CCM Viewer Role has read-only permissions on all CCM resources.
 
-![](./static/ccm-roles-and-permissions-02.png)### Permissions
+![](./static/ccm-roles-and-permissions-02.png)
+
+## Permissions
 
 The following table describes the Permissions enabled in the default Harness Roles, including the two CCM default Roles.
 
 
-
-|  |  |  |  |  |  |  |  |
-| --- | --- | --- | --- | --- | --- | --- | --- |
 | **CCM Resource** | **Permission** | **Account Admin** | **Account Viewer** | **Account Basic** | **CCM Admin** | **CCM Viewer** | **What a User can do?** |
+| --- | --- | --- | --- | --- | --- | --- | --- |
 | Overview Page | Overview | Y | Y | N | Y | Y | View the Overview page |
 | Folders | Folders: View | Y | Y | N | Y | Y | View all the folders |
 | Folders | Folders: Edit | Y | N | N | Y | N | Create a new folder, clone/edit existing folders |

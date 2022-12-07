@@ -127,23 +127,3 @@ Yes. CE provides alerts, reports, and forecasts you can fine-tune.
 
 CE uses the same cost and usage report as your cloud platform.
 
-### Next Steps
-
-* [Set Up Cost Visibility for Kubernetes](/article/hrdw3foy2r-enable-ce-by-adding-a-delegate)
-* [Set Up Cost Visibility for Kubernetes Using an Existing Delegate](/article/kuiuc6x257-enable-continuous-efficiency-for-kubernetes)
-* [Set Up Cost Visibility for AWS](/article/5ql31pdjcm-enable-continuous-efficiency-for-aws)
-* [Set Up Cost Visibility for GCP](/article/x53e2by67m-enable-cloud-efficiency-for-google-cloud-platform-gcp)
-* [Set Up Cost Visibility for Azure](/article/7idbmchsim-set-up-cost-visibility-for-azure)
-* [Cost Explorer Walkthrough](/article/eeekdk75q2-explorer-walkthrough)
-* [Analyze Cost Across Clusters](/article/4rq26sszja-analyze-cost-trends-across-clusters)
-* [Analyze Cost for AWS](/article/244q2uv4or-analyze-cost-trends-for-aws)
-* [Analyze Cost for GCP](/article/oo4vs4exhz-analyze-cost-for-gcp)
-* [Analyze Cost for Azure](/article/wvag8xht5o-analyze-cost-for-azure)
-* [Perform Root Cost Analysis](/article/v7eaaq98vo-perform-root-cause-analysis)
-* [CCM Perspectives](/category/b9vb8vq908-ccm-perspectives)
-* [Optimize Kubernetes Cluster Costs With Resource Recommendations](/article/ikxjmkqi03-recommendations)
-* [Create a Budget](/article/4jgyopljir-create-a-budget)
-* [Cost Report](/category/mphk7h6g8m-cost-report)
-* [CCM APIs](https://docs.harness.io/category/z4lta2vnfk-cost-explorer-ap-is)
-* [Cloud Cost Management FAQs](/article/q8uycdeqvc-continuous-efficiency-faqs)
-

@@ -10,12 +10,12 @@ helpdocs_is_published: true
 
 Cloud Integration allows you to seamlessly set up your Harness CCM with a single click for your existing Kubernetes clusters.
 
-### Prerequisites and Permissions
+## Prerequisites and Permissions
 
 * See [Roles and Policies for the Connector](https://docs.harness.io/article/1gaud2efd4-add-a-kubernetes-cluster-connector#review_roles_and_policies_for_the_connector) to learn about the IAM roles and policies that you need to be assigned to be able to create a connector.
-* See [Prerequisites](https://docs.harness.io/article/ltt65r6k39-set-up-cost-visibility-for-kubernetes#prerequisites) to learn about the tasks that you need to perform before setting up Cloud Costs Management on your Kubernetes cluster.
+* See [Prerequisites in Set up CCM for Kubernetes](../../1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-kubernetes.md) to learn about the tasks that you need to perform before setting up Cloud Costs Management for your Kubernetes cluster.
 
-### Creating the Kubernetes connector manually using the Advanced option
+## Creating the Kubernetes connector manually using the Advanced option
 
 Harness Cloud Cost Management (CCM) monitors the cloud costs of your Kubernetes clusters, namespaces, nodes, workloads, and labels. You need to create a connector to enable Cloud Cost Management. To create the connector using advanced options, perform the following steps:
 
@@ -25,7 +25,7 @@ The **Cloud Integration** page displays the existing connectors for the Kubernet
 3. Click **Advanced**.
 4. See [Add a Kubernetes Cluster Connector](https://docs.harness.io/article/1gaud2efd4-add-a-kubernetes-cluster-connector) for instructions on creating the connector.
 
-### Creating the Kubernetes connector using the Quick Create option
+## Creating the Kubernetes connector using the Quick Create option
 
 The Kubernetes Quick Create option is recommended especially for first-time users and for users who would like to test Harness CCM on their Kubernetes clusters. You can set up Harness CCM on your cluster effortlessly using this option. The following entities are created in this process:
 
@@ -40,7 +40,7 @@ The **Cloud Integration** page displays the existing connectors for the Kubernet
 2. Click **New Cluster/Cloud account.**
 3. Click **Quick Create**.
 4. In the **Kubernetes Connector** wizard, enter a **name** for the connector.
-5. If the cluster does not already have additional permissions, you will apply them in this step. See Delegate Permissions in the [Prerequisites](https://docs.harness.io/article/ltt65r6k39-set-up-cost-visibility-for-kubernetes#prerequisites) for additional details.
+5. If the cluster does not already have additional permissions, you need to apply them now. See Delegate Permissions in the [Prerequisites](../../1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-kubernetes.md) for additional details.
 	1. In **Provide Permissions**, click **Download YAML**.
 	2. Copy the downloaded YAML to a machine where you have `kubectl`installed and have access to your Kubernetes cluster.
 	3. Run the following command to create a Kubernetes Delegate with Cluster Admin Role and a connector referencing the delegate.
@@ -50,21 +50,21 @@ The **Cloud Integration** page displays the existing connectors for the Kubernet
 	4. Click **Continue**.
 	5. In **Create and Test connection**, after the successful creation of delegate and the connectors, and verification of permissions, click **Finish**.The connector is now listed in the Kubernetes clusters table.
 
-### Enabling cloud cost on your cluster
+## Enabling cloud cost on your cluster
 
 To enable cloud cost for your Kubernetes clusters, perform the following steps:
 
-1. In your Harness account, click **Cloud Costs****.** Under **Setup,** click **Cloud Integration**.  
+1. In your Harness account, click **Cloud Costs**. Under **Setup,** click **Cloud Integration**.  
 The **Cloud Integration** page displays the existing connectors for the Kubernetes clusters and the cloud accounts.
 2. To enable cloud costs for a Kubernetes cluster, click **Enable Cloud Costs** for the Kubernetes Connector.  
 The required permissions and components are verified. On successful verification, the cost management features are enabled on the cluster.![](./static/use-cloud-integration-00.gif)
-3. (Optional) To enable the AutoStopping feature, you can click **Enable AutoStopping** before clicking **Finish** and continue to follow the steps in the wizard or you could choose to enable this feature later if required. To learn how to enable AutoStopping, see [Create a secret and provide permissions for AutoStopping](https://docs.harness.io/article/dfwoqnacnw-k8s-connector-autostopping#step_3_create_a_secret).
+1. (Optional) To enable the AutoStopping feature, click **Enable AutoStopping** before clicking **Finish** and continue to follow the steps in the wizard or you could choose to enable this feature later if required. To learn how to enable AutoStopping, see [Create a secret and provide permissions for AutoStopping](../../1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-kubernetes.md).
 
-#### Viewing Cloud Costs
+### Viewing Cloud Costs
 
-To view the cloud spend data for the Kubernetes cluster, click **View costs** for the cluster on the **Cloud Integration** page. The Perspective page displays your cloud costs data along with recommendations to reduce your spend. For more information, see [Cost Perspectives](https://docs.harness.io/article/dvspc6ub0v-create-cost-perspectives).
+To view the cloud spend data for the Kubernetes cluster, click **View costs** for the cluster on the **Cloud Integration** page. The Perspective page displays your cloud costs data along with recommendations to reduce your spend. For more information, see [Cost Perspectives](../2-ccm-perspectives/1-create-cost-perspectives.md).
 
-#### Editing a Kubernetes connector
+### Editing a Kubernetes connector
 
 To edit an existing connector, perform the following steps:
 
@@ -75,7 +75,7 @@ The **Kubernetes cluster** wizard opens.
 3. After updating the required details, click **Save and Continue** to test the connection.
 4. Click **Finish** after successful verification of the connection.
 
-#### Disabling Cost Reporting and AutoStopping on your cluster
+### Disabling Cost Reporting and AutoStopping on your cluster
 
 To disable cost reporting on your Kubernetes cluster, perform the following steps:
 
@@ -86,7 +86,7 @@ The **Enable Cloud Costs** wizard opens.
 3. Click **Disable Cost Reporting**.
 4. If you want to disable AutoStopping, click **Manage AutoStopping** and then, click **Disable AutoStopping**.
 
-#### Deleting a Kubernetes connector
+### Deleting a Kubernetes connector
 
 To delete a connector, perform the following steps:
 

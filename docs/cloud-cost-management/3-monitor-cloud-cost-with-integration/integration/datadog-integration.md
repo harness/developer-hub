@@ -10,13 +10,15 @@ helpdocs_is_published: true
 
 This topic talks about Harness Cloud Cost Management (CCM) integration with Datadog.
 
-![](./static/datadog-integration-00.png)### Blog Post
+![](./static/datadog-integration-00.png)
+
+## Blog Post
 
 The following blog post talks about the inclusion of Harness CCM with Datadog:
 
 * [Datadog & Harness: Bringing Observability & Monitoring To Cloud Costs](https://harness.io/blog/datadog-harness-observability-cloud-costs/)
 
-### Why Integrate?
+## Why Integrate?
 
 Datadog users can get visibility into their cloud spend right in their monitoring tool.
 

@@ -23,12 +23,12 @@ If you are using an EKS connector, the data generation is delayed. AWS ingests d
 
 For CCM, Kubernetes connectors are available only at the Account level in Harness. To set up the CCM K8s Connector, you need to perform the following tasks:
 
-### Create a Cloud Provider Kubernetes Connector
+## Create a Cloud Provider Kubernetes Connector
 You need to have completed the following tasks before creating a CCM connector for your Kubernetes cluster:
 * You need to set up Harness Delegate for each Cloud Provider (K8s cluster) connector. Delegate is installed when adding a Connector. See [Install a Kubernetes Delegate](/article/f9bd10b3nj-install-a-kubernetes-delegate). The Delegate is responsible for collecting metrics from the K8s connector.
 * You need to create a Kubernetes Cloud Provider Connector for each Kubernetes cluster. One connector can access only one cluster. See [Add a Kubernetes Cluster Connector](/article/1gaud2efd4-add-a-kubernetes-cluster-connector).
  
-### Create CCM Connector
+## Create CCM Connector
 For the CCM Kubernetes connector, you need to reference an existing Cloud Provider Kubernetes Connector. Otherwise, you need to create one.
 For each cluster, you need to create a CCM Kubernetes connector.CCM can now connect to the K8s connector and collect CCM metrics for deep cloud cost visibility.
 
@@ -36,7 +36,7 @@ In Harness, the ratio of Delegates to Connectors is 1:2. If you have 20 clusters
   
 Alternatively, if you wish to use a single Delegate to access multiple Kubernetes clusters, you need to specify the Kubernetes master node URL. See [Master URL](/article/1gaud2efd4-add-a-kubernetes-cluster-connector#step_2_enter_credentials).
 
-### Visual Summary
+## Visual Summary
 
 Here's a visual representation of the CCM Kubernetes connector requirements and workflow:
 
@@ -90,11 +90,11 @@ kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/down
 
 ```
 
-### Connect Your Kubernetes Cluster to CCM
+## Connect Your Kubernetes Cluster to CCM
 
 Perform the following steps to connect your Kubernetes cluster to CCM.
 
-#### Overview
+### Overview
 
 1. In Harness, click **Account Settings**.
 2. In **Account Settings**, under **Account Resources**, click **Connectors**.
@@ -109,7 +109,7 @@ If you do not have Cloud Provider Kubernetes Connector already created, click **
    ![](./static/set-up-cost-visibility-for-kubernetes-17.png)
 2. Click **Save and Continue**.
 
-#### Choose Requirements
+### Choose Requirements
 
 In **Choose Requirements**, select the Cloud Cost Management features that you would like to enable for your Kubernetes clusters. Based on your selection Harness requires specific permissions.
 
@@ -129,7 +129,7 @@ For [AWS](set-up-cost-visibility-for-aws.md) and [Azure](set-up-cost-visibility-
 
 Make your selection and click **Continue**.
 
-#### (Optional) Create a Secret
+### (Optional) Create a Secret
 
 The secret creation settings appear only if you have selected **Kubernetes Optimization by AutoStopping** feature in the **Feature Selection** step. In this step, you are providing permissions for intelligent cloud AutoStopping rules. For more information, see [Create AutoStopping Rules for AWS](../../2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/3-create-auto-stopping-rules/create-auto-stopping-rules-for-aws.md).
 
@@ -159,7 +159,7 @@ The secret creation settings appear only if you have selected **Kubernetes Optim
 	```
 3. Click **Continue**.
 
-#### Provide Permissions
+### Provide Permissions
 
 If the cluster does not already have additional permissions, you will apply them in this step. See Delegate Permissions in the Prerequisites section for additional details.
 
@@ -214,7 +214,7 @@ yes
 $ kubectl auth can-i watch podmetrics --as=system:serviceaccount:harness-delegate:default --all-namespaces   
 yes
 ```
-### Next Steps
+## Next Steps
 
 * [Optimize Cloud Costs with AutoStopping Rules](/category/e04ek5vxtx-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules)
 * [Root Cost Analysis](/category/jkwta6oexk-root-cost-analysis)

@@ -325,7 +325,7 @@ Select the Cloud Cost Management features that you would like to use on your AWS
 
 | **Features**  | **Capabilities** | 
 | --- | --- | 
-| **Cost Visibility** (Required)| This feature is available by default and requires access to the CUR report. Provides the following capabilities:<ul><li>Insights into AWS costs by services, accounts, etc. </li><li>Root cost analysis using cost perspectives</li><li>Cost anomaly detection</li><li>Governance using budgets and forecasts</li><li>Alert users using Email and Slack notification</li></ul> This feature will give you cost insights that are derived from the CUR. For deep Kubernetes visibility and rightsizing recommendations based on the historical utilization and usage metrics, set up Kubernetes connectors. See [Set Up Cloud Cost Management for Kubernetes](https://ngdocs.harness.io/article/ltt65r6k39-set-up-cost-visibility-for-kubernetes). |
+| **Cost Visibility** (Required)| This feature is available by default and requires access to the CUR report. Provides the following capabilities:<ul><li>Insights into AWS costs by services, accounts, etc. </li><li>Root cost analysis using cost perspectives</li><li>Cost anomaly detection</li><li>Governance using budgets and forecasts</li><li>Alert users using Email and Slack notification</li></ul> This feature will give you cost insights that are derived from the CUR. For deep Kubernetes visibility and rightsizing recommendations based on the historical utilization and usage metrics, set up Kubernetes connectors. See [Set Up Cloud Cost Management for Kubernetes](set-up-cost-visibility-for-kubernetes.md). |
 | **AWS ECS and Resource Inventory Management** (Optional)| This feature provides visibility into your EC2, EBS volumes, and ECS costs. The insights provided by inventory management can be consumed by Finance teams to understand resource utilization across the board. <ul><li>Breakdown by ECS cluster cost, Service, Task, and Launch Type (EC2, Fargate) </li><li>Insight into EC2 instances and their utilization</li><li>Access to AWS EC2 Inventory Cost and EBS Volumes and Snapshots inventory dashboards. For more information, see View AWS EC2 Inventory Cost Dashboard, Orphaned EBS Volumes and Snapshots Dashboard, and View AWS EC2 Instance Metrics Dashboard.</li></ul> |
 | **AWS resource optimization using AutoStopping rules** (Optional)| This feature allows you to enable Intelligent Cloud AutoStopping for your AWS instances and auto-scaling groups. For more information, see Create AutoStopping Rules for AWS. <ul><li>Orchestrate VMs and ASGs based on idleness</li><li>Run your workloads on fully orchestrated spot instances</li><li>Granular savings visibility</li></ul> |
 
@@ -341,7 +341,7 @@ Harness uses the secure cross-account role to access your AWS account. The role 
 1. In **Create Cross Account Role**, click **Launch Template in AWS console**.
 2. In **Quick create stack**, in **Capabilities**, select the acknowledgment, and click **Create stack**.
   > **☆ NOTE —**It is recommended that you do not modify any value in the **Quick create stack** page.  
-  The value for `BillingEnabled`, `EventsEnabled`, and `OptimizationEnabled` varies depending on the features that you have selected in the [Select Features step](/article/80vbt5jv0q-set-up-cost-visibility-for-aws#step_3_select_features).
+  The value for `BillingEnabled`, `EventsEnabled`, and `OptimizationEnabled` varies depending on the features that you have selected in the **Choose Requirements** step.
   
   
   ![](./static/set-up-cost-visibility-for-aws-35.png)
@@ -473,6 +473,6 @@ curl -i -X POST \
 ```
 ## Next Steps
 
-* [Create Cost Perspectives](../../2-use-cloud-cost-management/2-ccm-perspectives/create-cost-perspective.md)
+* [Create Cost Perspectives](../../2-use-cloud-cost-management/2-ccm-perspectives/1-create-cost-perspectives.md)
 * [Analyze Cost for AWS Using Perspectives](../../2-use-cloud-cost-management/4-root-cost-analysis/analyze-cost-for-aws.md)
 
