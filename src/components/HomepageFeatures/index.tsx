@@ -1,6 +1,7 @@
 import React from "react";
 import clsx from "clsx";
 import Tooltip from "rc-tooltip";
+import Link from "@docusaurus/Link";
 import "rc-tooltip/assets/bootstrap.css";
 import styles from "./styles.module.scss";
 
@@ -133,6 +134,11 @@ export default function HomepageFeatures(): JSX.Element {
         {FeatureList.map((props, idx) => (
           <Feature key={idx} {...props} />
         ))}
+      </div>
+      <div className={styles.btnContainer}>
+        <Link href="/tutorials/get-started">
+          <button className="button button--primary">All Tutorials</button>
+        </Link>
       </div>
     </section>
   );
