@@ -15,7 +15,7 @@ You can use the **resumeExecution** API to resume Pipeline deployment executions
 * Expired
 * Rejected
 
-You cannot resume Successful or Paused executions.This is similar to resuming Pipeline executions in the Harness Manager. See [Resume Pipeline Deployments](/article/4dvyslwbun-resume-a-pipeline-deployment).
+You cannot resume Successful or Paused executions.This is similar to resuming Pipeline executions in the Harness Manager. See [Resume Pipeline Deployments](../../../continuous-delivery/concepts-cd/deployments-overview/resume-a-pipeline-deployment.md).
 
 In this topic:
 
@@ -29,14 +29,14 @@ In this topic:
 
 ### Before You Begin
 
-* [Use Pipelines API](/article/rfqmu6cejy-use-pipelines-api)
-* [Pipelines](/article/zc1u96u6uj-pipeline-configuration)
-* [Create Pipeline Templates](/article/60j7391eyy-templatize-pipelines)
-* [Pipeline Skip Conditions](/article/6kefu7s7ne-skip-conditions)
+* [Use Pipelines API](use-pipelines-api.md)
+* [Pipelines](../../../continuous-delivery/model-cd-pipeline/pipelines/pipeline-configuration.md)
+* [Create Pipeline Templates](../../../continuous-delivery/model-cd-pipeline/pipelines/templatize-pipelines.md)
+* [Pipeline Skip Conditions](../../../continuous-delivery/model-cd-pipeline/pipelines/skip-conditions.md)
 
 ### Supported Platforms and Technologies
 
-See [Supported Platforms and Technologies](/article/220d0ojx5y-supported-platforms).
+See [Supported Platforms and Technologies](https://docs.harness.io/article/220d0ojx5y-supported-platforms).
 
 ### Limitations
 
@@ -67,11 +67,11 @@ You can resume Pipeline executions that meet the following criteria:
 
 You cannot resume Successful or Paused executions.This includes Pipelines with different configurations, such as:
 
-* Pipelines with [runtime inputs](/article/zc1u96u6uj-pipeline-configuration).
-* [Templated Pipelines](/article/60j7391eyy-templatize-pipelines).
-* Pipelines with [Approval stages](/category/4edbfn50l8-approvals) (approved or rejected).
+* Pipelines with [runtime inputs](../../../continuous-delivery/model-cd-pipeline/pipelines/pipeline-configuration.md).
+* [Templated Pipelines](../../../continuous-delivery/model-cd-pipeline/pipelines/templatize-pipelines.md).
+* Pipelines with [Approval stages](https://docs.harness.io/category/add-approvals) (approved or rejected).
 * Pipelines with parallel stage executions. In this case, both stages are resumed.
-* Pipelines with [skip conditions](/article/6kefu7s7ne-skip-conditions).
+* Pipelines with [skip conditions](../../../continuous-delivery/model-cd-pipeline/pipelines/skip-conditions.md).
 
 ### Step: Resume Pipeline
 
@@ -159,5 +159,5 @@ Note that `pipelineExecutionId` is the execution ID for a Pipeline's deploymen
 ```
 ### See Also
 
-* [Resume Pipeline Deployments](/article/4dvyslwbun-resume-a-pipeline-deployment)
+* [Resume Pipeline Deployments](../../../continuous-delivery/concepts-cd/deployments-overview/resume-a-pipeline-deployment.md)
 

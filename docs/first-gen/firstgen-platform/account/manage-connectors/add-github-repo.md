@@ -12,9 +12,11 @@ This topic outlines how to start syncing your Harness account and applications w
 
 ### Before You Begin
 
-* [Add Source Repo Providers](/article/ay9hlwbgwa-add-source-repo-providers)
+* [Add Source Repo Providers](add-source-repo-providers.md)
 
-Ensure your Git repo is initialized (`git init`) before connecting Harness to it.### Limitations
+Ensure your Git repo is initialized (`git init`) before connecting Harness to it.
+
+### Limitations
 
 * One Harness Application cannot be in multiple repos.
 * Before Harness syncs with your Git repo, it will confirm that all Harness' settings are in a valid state. If a connection is not working—for example, a connection to an Artifact Server or Cloud Provider—Harness will not sync with your Git repo.
@@ -38,7 +40,7 @@ To add a source repo, do the following:
 
 ### Step: Display Name
 
-Enter a name for the repo connection. This is the name you will select when you sync your Harness account and applications in [Configuration as Code](/article/htvzryeqjw-configuration-as-code).You could create a Source Repo Provider for the Harness admin account, such as **Admin\_GitHub**. Later, you can create a Source Repo account for each Harness user, such as **J\_User\_GitHub**.
+Enter a name for the repo connection. This is the name you will select when you sync your Harness account and applications in [Configuration as Code](../../config-as-code/configuration-as-code.md).You could create a Source Repo Provider for the Harness admin account, such as **Admin\_GitHub**. Later, you can create a Source Repo account for each Harness user, such as **J\_User\_GitHub**.
 
 ### Step: Provider
 
@@ -65,7 +67,9 @@ Next, follow the prompts to create the PEM key. For more information, see the  
   
 Generating an SSH key in ECDSA looks like this:  
   
-`ssh-keygen -t ecdsa -b 256 -f /home/user/Documents/ECDSA/key -m pem`### Step: URL
+`ssh-keygen -t ecdsa -b 256 -f /home/user/Documents/ECDSA/key -m pem`
+
+### Step: URL
 
 Enter the URL for your Git account or repo, depending on what you selected in **Type**. Ensure that it matches the option you selected in [**HTTPS/SSH**](#https_ssh).
 
@@ -75,19 +79,23 @@ If you selected **Git Account** in **Type**, enter the URL without the repo name
 
 For example, here are the HTTPS and SSH URLs from Github:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/sip9rr6ogy/1627316078324/image.png)### Step: Username and Password/Token
+![](./static/add-github-repo-24.png)
 
-Readonly GitHub repos also require username and password/token.In **Select Encrypted Password/Token**, select or create a new  [Harness Encrypted Text secret](https://docs.harness.io/article/ygyvp998mu-use-encrypted-text-secrets) for the credentials of your Github user account.
+### Step: Username and Password/Token
+
+Readonly GitHub repos also require username and password/token.In **Select Encrypted Password/Token**, select or create a new  [Harness Encrypted Text secret](../../security/secrets-management/use-encrypted-text-secrets.md) for the credentials of your Github user account.
 
 Typically, you can validate your token from the command line before using it in Harness. For example:
 
 `curl -i https://api.github.com -u <username>:<token>`
 
-If you have set up Two-Factor Authentication in your Git repo, then you need to generate a personal access token in your repo and enter that token in the **Password/Token** field. In GitHub, you can set up the personal access token at <https://github.com/settings/tokens/new>.If you enable `OPTIMIZED_GIT_FETCH_FILES`, you must use a **token** for authentication. Passwords are not supported.### Step: SSH Key
+If you have set up Two-Factor Authentication in your Git repo, then you need to generate a personal access token in your repo and enter that token in the **Password/Token** field. In GitHub, you can set up the personal access token at <https://github.com/settings/tokens/new>.If you enable `OPTIMIZED_GIT_FETCH_FILES`, you must use a **token** for authentication. Passwords are not supported.
+
+### Step: SSH Key
 
 If you selected **SSH** as the connection protocol, you must add the **SSH Key** for use with the connection.
 
-If you added a key in Harness Secrets Management, you can select it here. For more information, see [Secrets Management](/article/au38zpufhr-secret-management#ssh).
+If you added a key in Harness Secrets Management, you can select it here. For more information, see [Secrets Management](../../security/secrets-management/secret-management.md#ssh).
 
 To add a new key, click the drop-down and select **Add New SSH Key**. The **SSH Configuration** dialog appears.
 
@@ -99,11 +107,13 @@ In **User Name**, enter **git**. Ensure that it is lowercase.
 
 If you selected **Git Repo** in **Type**, enter the branch name to sync with Harness, such as **master**, **dev**, or **myAppName**. Do not enter the full URL to the branch.
 
-Names may not contain characters from the Emoticons unicode block.### Option: Delegate Selector
+Names may not contain characters from the Emoticons unicode block.
+
+### Option: Delegate Selector
 
 If you want this Connector to use one or more specific Delegates, use a Delegate Selector. If you do not use a Selector, Harness will select a Delegate that has worked in the past for this type of Connector.
 
-In **Delegate Selector**, select the Selector for the Delegate(s) you want this Connector to use. You add Selectors to Delegates to make sure that they're used to execute the command. For more information, see [Select Delegates with Selectors](/article/c3fvixpgsl-select-delegates-for-specific-tasks-with-selectors).
+In **Delegate Selector**, select the Selector for the Delegate(s) you want this Connector to use. You add Selectors to Delegates to make sure that they're used to execute the command. For more information, see [Select Delegates with Selectors](../manage-delegates/select-delegates-for-specific-tasks-with-selectors.md).
 
 Harness will use Delegates matching the Selectors you add.
 
@@ -113,7 +123,7 @@ If you select two Selectors, a Delegate must have both Selectors to be selected.
 
 ### Step: Generate Webhook URL
 
-Enable this checkbox if you want to sync Harness with your repo bidirectionally. Changes made on either end will be synced. If you simply want Harness changes synched unidirectionally with the repo, disable this checkbox. When you use this Source Repo Provider to sync a Harness application to a repo bidirectionally, any account or application that uses this Source Repo provider will be synced bidirectionally. For more information, see [Configuration as Code](/article/htvzryeqjw-configuration-as-code).
+Enable this checkbox if you want to sync Harness with your repo bidirectionally. Changes made on either end will be synced. If you simply want Harness changes synched unidirectionally with the repo, disable this checkbox. When you use this Source Repo Provider to sync a Harness application to a repo bidirectionally, any account or application that uses this Source Repo provider will be synced bidirectionally. For more information, see [Configuration as Code](../../config-as-code/configuration-as-code.md).
 
 ### Step: Customize Commit Attributes (Git Sync Only)
 
@@ -125,7 +135,9 @@ In some cases, you might have strong pre-commit limitations on who may or may no
 
 If you selected the **Generate Webhook URL** option when adding your **Source Repo Provider**, the **Generated Webhook URL** dialog appears. Copy the URL and use it in your repo to enable your repo to sync changes to Harness.
 
-Modify the **Content type** to **application/json** and use the **Just the push event** trigger option.### Step: Test and Save
+Modify the **Content type** to **application/json** and use the **Just the push event** trigger option.
+
+### Step: Test and Save
 
 To finish configuring this Source Repo Provider:
 
@@ -135,7 +147,7 @@ Harness verifies the settings you entered.
 
 ### Next Steps
 
-* Once a Source Repo Provider is set up, you can use it—at the Harness account level and Application level—to sync your account and/or applications with your Git repo. See [Configuration as Code](/article/htvzryeqjw-configuration-as-code).
-* To trigger Harness workflows and pipelines using Git Webhooks, see [Add a Trigger](/article/xerirloz9a-add-a-trigger-2).
-* To sync and clone a Harness Application template in Git, see [Onboard Teams Using GitOps](/article/3av5pc4goc-onboard-teams-using-git-ops).
+* Once a Source Repo Provider is set up, you can use it—at the Harness account level and Application level—to sync your account and/or applications with your Git repo. See [Configuration as Code](../../config-as-code/configuration-as-code.md).
+* To trigger Harness workflows and pipelines using Git Webhooks, see [Add a Trigger](../../../continuous-delivery/model-cd-pipeline/triggers/add-a-trigger-2.md).
+* To sync and clone a Harness Application template in Git, see [Onboard Teams Using GitOps](../../../continuous-delivery/harness-git-based/onboard-teams-using-git-ops.md).
 

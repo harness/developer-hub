@@ -176,7 +176,7 @@ Harness Folders can reside anywhere in Git repos and their subdirectories.
 
 Create the folder in your repo before setting up Git Experience. You will enter the name of the folder in Harness. Harness does not create the folder for you.### How is Harness NextGen Git Support Different from FirstGen?
 
-Not sure if you are using FirstGen or NextGen? See [Harness FirstGen vs Harness NextGen](https://docs.harness.io/article/1fjmm4by22).Harness NextGen Git Experience functionality is different than Harness FirstGen Harness Git Sync. If you used FirstGen Git Sync, you will find the Harness NextGen Git Experience setup and usage different and improved.
+Not sure if you are using FirstGen or NextGen? See [Harness FirstGen vs Harness NextGen](../../getting-started/harness-first-gen-vs-harness-next-gen.md).Harness NextGen Git Experience functionality is different than Harness FirstGen Harness Git Sync. If you used FirstGen Git Sync, you will find the Harness NextGen Git Experience setup and usage different and improved.
 
 If you're a Harness FirstGen user, you're likely familiar with Harness Git Sync. The following table shows the differences between Harness FirstGen Git Sync and NextGen Harness Git Experience:
 

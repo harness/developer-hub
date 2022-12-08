@@ -18,27 +18,27 @@ This topic describes how to use the Harness API to sync and clean up the artifac
 
 In this topic:
 
-* [Before You Begin](https://docs.harness.io/article/7tlyu5jesf-sync-and-clean-up-artifact-stream-using-the-harness-api#before_you_begin)
-* [Supported Platforms and Technologies](https://docs.harness.io/article/7tlyu5jesf-sync-and-clean-up-artifact-stream-using-the-harness-api#undefined)
-* [Limitations](https://docs.harness.io/article/7tlyu5jesf-sync-and-clean-up-artifact-stream-using-the-harness-api#limitations)
-* [Step 1: Obtain Artifact Stream Id](https://docs.harness.io/article/7tlyu5jesf-sync-and-clean-up-artifact-stream-using-the-harness-api#step_1_obtain_artifact_stream_id)
-* [Step 2: Sync the Artifact Stream via API](https://docs.harness.io/article/7tlyu5jesf-sync-and-clean-up-artifact-stream-using-the-harness-api#step_2_sync_the_artifact_stream_via_api)
+* [Before You Begin](sync-and-clean-up-artifact-stream-using-the-harness-api.md#before-you-begin)
+* [Supported Platforms and Technologies](sync-and-clean-up-artifact-stream-using-the-harness-api.md#undefined)
+* [Limitations](sync-and-clean-up-artifact-stream-using-the-harness-api.md#limitations)
+* [Step 1: Obtain Artifact Stream Id](sync-and-clean-up-artifact-stream-using-the-harness-api.md#step-1-obtain-artifact-stream-id)
+* [Step 2: Sync the Artifact Stream via API](sync-and-clean-up-artifact-stream-using-the-harness-api.md#step-2-sync-the-artifact-stream-via-api)
 
 ### Before You Begin
 
-* [​Introduction to Harness GraphQL API](https://docs.harness.io/article/tm0w6rruqv-harness-api)
-* [Harness API Explorer](https://docs.harness.io/article/2rmd5i0e0h-harness-api-explorer)
-* [API Schema and Structure](https://docs.harness.io/article/kn8wsu80n4-api-schema-and-structure)
-* [Fetch Artifact Type Details Using GraphQL APIs](/article/nrl5r5zj94-fetch-artifact-type-using-graph-ql-apis)
-* [Fetch Deployment Artifact Information using GraphQL APIs](/article/dhdq2nqxai-fetch-deployment-artifact-information)
+* [​Introduction to Harness GraphQL API](harness-api.md)
+* [Harness API Explorer](harness-api-explorer.md)
+* [API Schema and Structure](api-schema-and-structure.md)
+* [Fetch Artifact Type Details Using GraphQL APIs](fetch-artifact-type-using-graph-ql-apis.md)
+* [Fetch Deployment Artifact Information using GraphQL APIs](fetch-deployment-artifact-information.md)
 
 ### Supported Platforms and Technologies
 
-See [Supported Platforms and Technologies](/article/220d0ojx5y-supported-platforms).
+See [Supported Platforms and Technologies](https://docs.harness.io/article/220d0ojx5y-supported-platforms).
 
 ### Limitations
 
-The `artifactCleanup()` GraphQL mutation works with the following [Artifact Source](/article/qluiky79j8-service-types-and-artifact-sources) types:
+The `artifactCleanup()` GraphQL mutation works with the following [Artifact Source](../../../continuous-delivery/model-cd-pipeline/setup-services/service-types-and-artifact-sources.md) types:
 
 * ECR
 * GCR
@@ -48,7 +48,7 @@ The `artifactCleanup()` GraphQL mutation works with the following [Artifact Sour
 * Nexus v2 and v3
 * Amazon AMI
 * Azure VMSS
-* [Custom Artifact Sources](/article/jizsp5tsms-custom-artifact-source)
+* [Custom Artifact Sources](../../../continuous-delivery/model-cd-pipeline/setup-services/custom-artifact-source.md)
 
 If you try to use the mutation on any unsupported Artifact Source types, you will see an error like this:
 
@@ -70,7 +70,7 @@ Let's look at how to obtain the UUID.
 
 In Harness, open the Service with the Artifact Source you want to sync with.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/7tlyu5jesf/1625260791835/clean-shot-2021-07-02-at-14-19-42.png)In your browser, open Dev Tools. The following example is for Chrome.
+![](./static/sync-and-clean-up-artifact-stream-using-the-harness-api-15.png)In your browser, open Dev Tools. The following example is for Chrome.
 
 Click **Network**, and select **All**.
 
@@ -78,13 +78,13 @@ In **Filter**, enter **artifactstreams**.
 
 The artifact stream request is displayed.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/7tlyu5jesf/1625261073658/clean-shot-2021-07-02-at-14-23-49.png)Click the **artifactstreams?appId=...** message.
+![](./static/sync-and-clean-up-artifact-stream-using-the-harness-api-16.png)Click the **artifactstreams?appId=...** message.
 
 Click **Preview**, and then expand **resource**.
 
 In response, you will see the UUID (`uuid`) for the Artifact Source.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/7tlyu5jesf/1625261243220/clean-shot-2021-07-02-at-14-26-23.png)Copy and save the UUID value.
+![](./static/sync-and-clean-up-artifact-stream-using-the-harness-api-17.png)Copy and save the UUID value.
 
 ### Step 2: Sync the Artifact Stream via API
 

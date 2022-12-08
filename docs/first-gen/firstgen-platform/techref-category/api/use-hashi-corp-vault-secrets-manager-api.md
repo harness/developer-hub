@@ -14,9 +14,9 @@ This topic describes how to create, read, update, and delete HashiCorp Vault Sec
 
 ### Before You Begin
 
-* Review the [Harness API](https://docs.harness.io/article/tm0w6rruqv-harness-api)
-* Review [Secrets Management Overview](https://docs.harness.io/article/au38zpufhr-secret-management)
-* [Add a HashiCorp Vault Secrets Manager](/article/am3dmoxywy-add-a-hashi-corp-vault-secrets-manager)
+* Review the [Harness API](harness-api.md)
+* Review [Secrets Management Overview](../../security/secrets-management/secret-management.md)
+* [Add a HashiCorp Vault Secrets Manager](../../security/secrets-management/add-a-hashi-corp-vault-secrets-manager.md)
 
 ### Create a Secret Manager Using HashiCorp Vault
 
@@ -40,8 +40,8 @@ mutation CreateSecretManagerMutation($secretManagerInput: CreateSecretManagerInp
 
 The Query Variables follow this syntax, with `secretManagerType` identifying the Secret Manager to create.
 
-* **Authentication**: To get the authentication token, you can use [Token](/article/am3dmoxywy-add-a-hashi-corp-vault-secrets-manager#option_token) or [App Role](/article/am3dmoxywy-add-a-hashi-corp-vault-secrets-manager#option_app_role_method) method.
-* **Secret Engine**: Identify the engine name and version of the Secret Manager in Vault. See [Manually Enter Secret Engine](/article/am3dmoxywy-add-a-hashi-corp-vault-secrets-manager#manually_enter_secret_engine).
+* **Authentication**: To get the authentication token, you can use [Token](../../security/secrets-management/add-a-hashi-corp-vault-secrets-manager.md#option-token) or [App Role](../../security/secrets-management/add-a-hashi-corp-vault-secrets-manager.md#option-app-role-method) method.
+* **Secret Engine**: Identify the engine name and version of the Secret Manager in Vault. See [Manually Enter Secret Engine](../../security/secrets-management/add-a-hashi-corp-vault-secrets-manager.md#manually-enter-secret-engine).
 
 
 ```

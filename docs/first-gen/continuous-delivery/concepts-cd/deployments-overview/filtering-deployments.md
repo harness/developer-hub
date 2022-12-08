@@ -36,7 +36,7 @@ In **Filter by Deployment Tag**, enter one or more Tags in your account's **Tags
 
 You can enter a Tag name, name:value pair, or evaluated expression.
 
-See [Assign Metadata Using Tags](https://docs.harness.io/article/nrxfix3i58-tags), [Use Expressions in Workflow and Pipeline Tags](https://docs.harness.io/article/285bu842gb-use-expressions-in-workflow-and-pipeline-tags), and [Apply Filters Using Tags](https://docs.harness.io/article/nyxf7g8erd-apply-filters-using-tags).
+See [Assign Metadata Using Tags](../../../firstgen-platform/account/tags/tags.md), [Use Expressions in Workflow and Pipeline Tags](../../../firstgen-platform/account/tags/use-expressions-in-workflow-and-pipeline-tags.md), and [Apply Filters Using Tags](../../../firstgen-platform/account/tags/apply-filters-using-tags.md).
 
 ### Option 2: Filter by Applications
 

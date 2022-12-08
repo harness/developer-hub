@@ -16,8 +16,8 @@ For setup instructions, see Microsoft's  [Tutorial: Configure Harness for Autom
 
 Permissions can be assigned manually or via the Harness API:
 
-* [Managing Users and Groups (RBAC)](/article/ven0bvulsj-users-and-permissions)
-* [Use Users and Groups API](/article/p9ssx4cv5t-sample-queries-create-users-user-groups-and-assign-permissions)
+* [Managing Users and Groups (RBAC)](users-and-permissions.md)
+* [Use Users and Groups API](../../techref-category/api/sample-queries-create-users-user-groups-and-assign-permissions.md)
 
 ### Limitations
 

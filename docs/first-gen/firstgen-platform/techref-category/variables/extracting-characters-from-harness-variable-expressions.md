@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 You can return the character at a specified index in a Harness variable expression string.
 
-This can be helpful with [built-in variable expressions](/article/aza65y4af6-built-in-variables-list) such as `${artifact.buildNo}`, `${artifact.revision}`, or [Service](/article/q78p7rpx9u-add-service-level-config-variables) and [Workflow](/article/766iheu1bk-add-workflow-variables-new-template) variables you have created that contain version numbers or other important strings.
+This can be helpful with [built-in variable expressions](built-in-variables-list.md) such as `${artifact.buildNo}`, `${artifact.revision}`, or [Service](../../../continuous-delivery/model-cd-pipeline/setup-services/add-service-level-config-variables.md) and [Workflow](../../../continuous-delivery/model-cd-pipeline/workflows/add-workflow-variables-new-template.md) variables you have created that contain version numbers or other important strings.
 
 To return characters, you can use the `charAt()` method with your variable expression.
 
@@ -26,6 +26,6 @@ The `${version}` references the variable, and the rest of the expression evaluat
 
 * Java [String methods](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html#method.summary)
 * [JEXL reference](https://commons.apache.org/proper/commons-jexl/reference/syntax.html) from Apache.
-* [What is a Harness Variable Expression?](/article/9dvxcegm90-variables)
-* [Built-in Variables List](/article/aza65y4af6-built-in-variables-list)
+* [What is a Harness Variable Expression?](variables.md)
+* [Built-in Variables List](built-in-variables-list.md)
 

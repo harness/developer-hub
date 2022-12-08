@@ -21,7 +21,7 @@ This topics provides a quick overview or some options and steps when using Kuber
 
 ### Review: What Workloads Can I Deploy?
 
-See [What Can I Deploy in Kubernetes?](https://docs.harness.io/article/6ujb3c70fh)
+See [What Can I Deploy in Kubernetes?](../../firstgen-platform/techref-category/cd-ref/platforms-ref/what-can-i-deploy-in-kubernetes.md)
 
 ### Limitations
 
@@ -66,7 +66,7 @@ You can use [Go templating](https://godoc.org/text/template) and Harness built-i
 
 See [Use Go Templating in Kubernetes Manifests](use-go-templating-in-kubernetes-manifests.md).
 
-The inline values.yaml file used in a Harness Service does not support Helm templating, only Go templating. Helm templating is fully supported in the remote Helm charts you add to your Harness Service.Harness [variable expressions](https://docs.harness.io/article/9dvxcegm90-variables) may be added to values.yaml, not the manifests themselves. This provides more flexibility.
+The inline values.yaml file used in a Harness Service does not support Helm templating, only Go templating. Helm templating is fully supported in the remote Helm charts you add to your Harness Service.Harness [variable expressions](../../firstgen-platform/techref-category/variables/variables.md) may be added to values.yaml, not the manifests themselves. This provides more flexibility.
 
 ### Step 3: Expression Builder
 
@@ -136,7 +136,7 @@ In this example. kubelet will not restart the pod when the probe exceeds two sec
 
 ### Secrets in values.yaml
 
-If you use [Harness secrets](https://docs.harness.io/article/au38zpufhr-secret-management) in a values.yaml and the secret cannot be resolved by Harness during deployment, Harness will throw an exception.
+If you use [Harness secrets](../../firstgen-platform/security/secrets-management/secret-management.md) in a values.yaml and the secret cannot be resolved by Harness during deployment, Harness will throw an exception.
 
 An exception is thrown regardless of whether the secret is commented out.
 

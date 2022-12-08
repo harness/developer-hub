@@ -22,13 +22,13 @@ You connect Docker registries and Kubernetes clusters with Harness using the acc
 	+ **Read permissions for the Docker repository** - The Docker registry you use as an Artifact Server in Harness must have Read permissions for the Docker repository.
 	+ **List images and tags, and pull images** - The user account you use to connect the Docker registry must be able to perform the following operations in the registry: List images and tags, and pull images. If you have a **Docker Hub** account, you can access the NGINX Docker image we use in this guide.
 * Kubernetes Cluster:
-	+ For the **Kubernetes Cluster** or other Cloud Providers, please see [Kubernetes Cluster](https://docs.harness.io/article/whwnovprrb-cloud-providers#kubernetes_cluster) and the Harness [Add Cloud Providers](https://docs.harness.io/article/whwnovprrb-cloud-providers) doc.
-	+ For a cluster or provider such as OpenShift, please see [Kubernetes Cluster](https://docs.harness.io/article/whwnovprrb-infrastructure-providers#kubernetes_cluster).
+	+ For the **Kubernetes Cluster** or other Cloud Providers, please see [Kubernetes Cluster](../../firstgen-platform/account/manage-connectors/cloud-providers.md#kubernetes-cluster) and the Harness [Add Cloud Providers](../../firstgen-platform/account/manage-connectors/cloud-providers.md) doc.
+	+ For a cluster or provider such as OpenShift, please see [Kubernetes Cluster](../../firstgen-platform/account/manage-connectors/cloud-providers.md#kubernetes-cluster).
 * Helm:
 	+ **URL for the Helm chart** - For this guide, we use a publicly available Helm chart for NGINX from Bitnami, hosted on their Github account. You do not need a Github account.
 	+ **Helm and Tiller** - Helm and Tiller must be installed and running in your Kubernetes cluster. Steps for setting this up are listed below.
 
-For a list of all of the permissions and network requirements for connecting Harness to providers, see [Delegate Connection Requirements](https://docs.harness.io/article/11hjhpatqz-connectivity-and-permissions-requirements).
+For a list of all of the permissions and network requirements for connecting Harness to providers, see [Delegate Connection Requirements](../../firstgen-platform/account/delegate-ref/connectivity-and-permissions-requirements.md).
 
 ### Harness Kubernetes Delegate
 
@@ -36,7 +36,7 @@ The Harness Kubernetes Delegate runs in your target deployment cluster and execu
 
 You can install and run the Harness Kubernetes Delegate in any Kubernetes environment, but the permissions needed for connecting Harness to that environment will be different for each environment.
 
-The simplest method is to install the Harness Delegate in your Kubernetes cluster and then set up the Harness Cloud Provider to use the same credentials as the Delegate.For information on how to install the Delegate in a Kubernetes cluster, see [Kubernetes Cluster](https://docs.harness.io/article/whwnovprrb-cloud-providers##kubernetes_cluster). For an example installation of the Delegate in a Kubernetes cluster in a Cloud Platform, see [Installation Example: Google Cloud Platform](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation#installation_example_google_cloud_platform).
+The simplest method is to install the Harness Delegate in your Kubernetes cluster and then set up the Harness Cloud Provider to use the same credentials as the Delegate.For information on how to install the Delegate in a Kubernetes cluster, see [Kubernetes Cluster](../../firstgen-platform/account/manage-connectors/cloud-providers.md). For an example installation of the Delegate in a Kubernetes cluster in a Cloud Platform, see [Installation Example: Google Cloud Platform](../../firstgen-platform/account/manage-delegates/delegate-installation.md#installation-example-google-cloud-platform).
 
 Here is a quick summary of the steps for installing the Harness Delegate in your Kubernetes cluster:
 
@@ -164,7 +164,7 @@ helm init --client-only
 # If Tiller is not installed in the cluster  
 # helm init
 ```
-The easiest method for installing Helm on the Delegate cluster is a Delegate Profile. For more information, see [Delegate Profiles](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation#delegate_profiles).Here is an example of a shell session with the commands and the output. This example also adds a namespace for RBAC purposes:
+The easiest method for installing Helm on the Delegate cluster is a Delegate Profile. For more information, see [Delegate Profiles](../../firstgen-platform/account/manage-delegates/delegate-installation.md#delegate-profiles).Here is an example of a shell session with the commands and the output. This example also adds a namespace for RBAC purposes:
 
 
 ```
@@ -309,13 +309,13 @@ You can add a Helm Chart Repository as a Harness Artifact Server and then use it
 
 ![](./static/2-connectors-providers-and-helm-setup-07.png)
 
-For steps on adding a Helm Chart Repository as a Harness Artifact Server, see [Helm Repository](https://docs.harness.io/article/7dghbx1dbl-configuring-artifact-server#helm_repository).
+For steps on adding a Helm Chart Repository as a Harness Artifact Server, see [Helm Repository](../../firstgen-platform/account/manage-connectors/configuring-artifact-server.md#helm-repository).
 
 ### Helm and the Kubernetes Delegate
 
 You can set the Helm version for the Harness Kubernetes Delegate to use.
 
-The Harness Kubernetes Delegate is configured and run using a YAML file that you download from Harness, as described in [Delegate Installation and Management](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation). You can edit the YAML file and set the desired Helm version to use with the **HELM\_DESIRED\_VERSION** parameter.
+The Harness Kubernetes Delegate is configured and run using a YAML file that you download from Harness, as described in [Delegate Installation and Management](../../firstgen-platform/account/manage-delegates/delegate-installation.md). You can edit the YAML file and set the desired Helm version to use with the **HELM\_DESIRED\_VERSION** parameter.
 
 Here is a sample of the Kubernetes delegate YAML file with the **HELM\_DESIRED\_VERSION** parameter in bold:
 

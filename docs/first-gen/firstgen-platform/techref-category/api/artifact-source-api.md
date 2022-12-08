@@ -12,19 +12,19 @@ This topic describes how to fetch Artifact Source details using GraphQL APIs. Th
 
 In this topic:
 
-* [Before You Begin](https://docs.harness.io/article/0z2b5a1x4x-artifact-source-api#before_you_begin)
-* [Step: Fetch Artifact Source from a Service](https://docs.harness.io/article/0z2b5a1x4x-artifact-source-api#step_fetch_artifact_source_from_a_service)
-* [Step : Fetch Artifact Source ID from an Artifact](https://docs.harness.io/article/0z2b5a1x4x-artifact-source-api#step_fetch_artifact_source_id_from_an_artifact)
-* [Step: Fetch the Service ID](https://docs.harness.io/article/0z2b5a1x4x-artifact-source-api#step_fetch_the_service_id)
+* [Before You Begin](artifact-source-api.md#before-you-begin)
+* [Step: Fetch Artifact Source from a Service](artifact-source-api.md#step-fetch-artifact-source-from-a-service)
+* [Step : Fetch Artifact Source ID from an Artifact](artifact-source-api.md#step-fetch-artifact-source-id-from-an-artifact)
+* [Step: Fetch the Service ID](artifact-source-api.md#step-fetch-the-service-id)
 
 ### Before You Begin
 
-* [Harness API](/article/tm0w6rruqv-harness-api)
-* [Service Types and Artifact Sources](/article/qluiky79j8-service-types-and-artifact-sources)
+* [Harness API](harness-api.md)
+* [Service Types and Artifact Sources](../../../continuous-delivery/model-cd-pipeline/setup-services/service-types-and-artifact-sources.md)
 
 ### Step: Fetch Artifact Source from a Service
 
-Use this sample query to get the `Artifact Source` and `Artifact History` from a Harness Service. [Provide a Service ID](https://docs.harness.io/article/0z2b5a1x4x-artifact-source-api#step_fetch_the_service_id) to fetch the details.
+Use this sample query to get the `Artifact Source` and `Artifact History` from a Harness Service. [Provide a Service ID](artifact-source-api.md#step-fetch-the-service-id) to fetch the details.
 
 The Artifact History pulls artifact build and version metadata from the Artifact Source.
 

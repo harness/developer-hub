@@ -90,7 +90,7 @@ See [CV Strategies, Tuning, and Best Practices](../continuous-verification-over
 
 ### Harness Expression Support in CV Settings
 
-You can use expressions (`${...}`) for [Harness built-in variables](https://docs.harness.io/article/7bpdtvhq92-workflow-variables-expressions) and custom [Service](../../model-cd-pipeline/setup-services/service-configuration.md) and [Workflow](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md) variables in the setting of Harness Verification Providers.
+You can use expressions (`${...}`) for [Harness built-in variables](../../kubernetes-deployments/workflow-variables-expressions.md) and custom [Service](../../model-cd-pipeline/setup-services/service-configuration.md) and [Workflow](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md) variables in the setting of Harness Verification Providers.
 
 ![](./static/verify-deployments-with-logz-io-01.png)
 

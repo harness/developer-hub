@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 The following lists describes the default (built-in) Harness expressions, as well as the prefixes used to identify user-created variables. This list will be periodically updated when new expressions are added to Harness.
 
-For information on how Harness uses built-in variable expressions, see [What is a Harness Variable Expression?](/article/9dvxcegm90-variables).
+For information on how Harness uses built-in variable expressions, see [What is a Harness Variable Expression?](variables.md).
 
 ### Application
 
@@ -50,7 +50,7 @@ For deployment information, see [Deployments](#deployments).`${service.name}`
 * For example, you could add a Shell Script command to a Workflow that references the variable `${serviceVariable.productName}`, created in a Service used by the Workflow.
 * For most Service types, Harness uses Service Config Variables to create environment variables on the target hosts at deployment runtime.
 
-See [Add Service Config Variables](/article/q78p7rpx9u-add-service-level-config-variables).
+See [Add Service Config Variables](../../../continuous-delivery/model-cd-pipeline/setup-services/add-service-level-config-variables.md).
 
 ### Environment
 
@@ -69,15 +69,15 @@ For deployment information, see [Deployments](#deployments).`${env.name}`
 `${serviceVariable.override_var_name}`
 
 * References Service configuration overrides at the Environment level.
-	+ See [Override a Service Configuration in an Environment](/article/4m2kst307m-override-service-files-and-variables-in-environments).
+	+ See [Override a Service Configuration in an Environment](../../../continuous-delivery/model-cd-pipeline/environments/override-service-files-and-variables-in-environments.md).
 * You can also create a Harness Environment-level variable that is not set in a Service, but is available in any Workflow using the Environment.
-	+ See [Create Environment-level Variables and Files for All Services](/article/ki525qfbs0-environment-level-variables-for-all-services).
+	+ See [Create Environment-level Variables and Files for All Services](../../../continuous-delivery/model-cd-pipeline/environments/environment-level-variables-for-all-services.md).
 
 `${environmentVariable.variable_name}`
 
 * References a Service Override Variable set in an Environment when **All Services** is selected.  
 To reference the Service Override Variable for a specific Service, use `${serviceVariable.override_var_name}`.
-	+ See [Create Environment-level Variables and Files for All Services](/article/ki525qfbs0-environment-level-variables-for-all-services).
+	+ See [Create Environment-level Variables and Files for All Services](../../../continuous-delivery/model-cd-pipeline/environments/environment-level-variables-for-all-services.md).
 
 `${env.accountId}`
 
@@ -111,7 +111,7 @@ For deployment information, see [Deployments](#deployments).`${infra.name}`
 
 ### Workflow
 
-See [Set Workflow Variables](/article/766iheu1bk-add-workflow-variables-new-template).
+See [Set Workflow Variables](../../../continuous-delivery/model-cd-pipeline/workflows/add-workflow-variables-new-template.md).
 
 For deployment information, see [Deployments](#deployments).`${workflow.displayName}`
 
@@ -141,7 +141,7 @@ For deployment information, see [Deployments](#deployments).`${workflow.displayN
 
 `${workflow.pipelineResumeUuid}`
 
-* Original execution ID of a resumed Pipeline execution. See [Resume Pipeline Deployments](/article/4dvyslwbun-resume-a-pipeline-deployment).
+* Original execution ID of a resumed Pipeline execution. See [Resume Pipeline Deployments](../../../continuous-delivery/concepts-cd/deployments-overview/resume-a-pipeline-deployment.md).
 * This variable expression is used in a Workflow and displays the unique ID of the Pipeline that deploys the Workflow. When the Workflow is run by itself, and not in a Pipeline deployment, this variable expression will output null.
 
 `${workflow.startTs}`
@@ -151,13 +151,13 @@ For deployment information, see [Deployments](#deployments).`${workflow.displayN
 `${workflow.variables.var_name}`
 
 * References to variables created in a Workflow's **Workflow Variables** section.
-* See [Set Workflow Variables](/article/766iheu1bk-add-workflow-variables-new-template) and [Passing Variables into Workflows and Pipelines from Triggers](/article/revc37vl0f-passing-variable-into-workflows).
+* See [Set Workflow Variables](../../../continuous-delivery/model-cd-pipeline/workflows/add-workflow-variables-new-template.md) and [Passing Variables into Workflows and Pipelines from Triggers](../../../continuous-delivery/model-cd-pipeline/expressions/passing-variable-into-workflows.md).
 
 ### Shell Script Workflow Step
 
 `${context.published_name.var_name}`
 
-* The published output variable name created by a Workflow Shell Script step. For more information, see [Using the Shell Script Step](/article/1fjrjbau7x-capture-shell-script-step-output).
+* The published output variable name created by a Workflow Shell Script step. For more information, see [Using the Shell Script Step](../../../continuous-delivery/model-cd-pipeline/workflows/capture-shell-script-step-output.md).
 
 ### Pipelines
 
@@ -192,7 +192,7 @@ For deployment information, see [Deployments](#deployments).* See `${workflow.pi
 
 ### Artifact
 
-If an artifact expression is used in a Workflow step, you will be prompted to select an artifact. This is true even if the Workflow does not deploy an artifact (such as a Build Workflow or a Workflow performing a [kustomize deployment](/article/zrz7nstjha-use-kustomize-for-kubernetes-deployments)). If you want to reference an artifact that isn't the primary deployment artifact without being prompted, you can use an expression with quotes, like `docker pull ${artifact${".metadata.image"}}`.You cannot access artifact metadata in a Build Workflow because Build Workflows do not use a Harness Service. See [CI/CD with the Build Workflow](/article/wqytbv2bfd-ci-cd-with-the-build-workflow).`${artifact.displayName}`
+If an artifact expression is used in a Workflow step, you will be prompted to select an artifact. This is true even if the Workflow does not deploy an artifact (such as a Build Workflow or a Workflow performing a [kustomize deployment](../../../continuous-delivery/kubernetes-deployments/use-kustomize-for-kubernetes-deployments.md)). If you want to reference an artifact that isn't the primary deployment artifact without being prompted, you can use an expression with quotes, like `docker pull ${artifact${".metadata.image"}}`.You cannot access artifact metadata in a Build Workflow because Build Workflows do not use a Harness Service. See [CI/CD with the Build Workflow](../../../continuous-delivery/concepts-cd/deployment-types/ci-cd-with-the-build-workflow.md).`${artifact.displayName}`
 
 * Display name of an artifact used by a Service.
 
@@ -247,11 +247,11 @@ Notes:
 
 `${artifact.metadata.image}`
 
-You cannot access artifact metadata in a Build Workflow because Build Workflows do not use a Harness Service. See [CI/CD with the Build Workflow](/article/wqytbv2bfd-ci-cd-with-the-build-workflow).* Available for Docker images' Artifact Sources in Services. For example, if you used a publicly available Docker Hub NGINX image as the Artifact Source for a Service, then when the Service is deployed, the expression output would be `registry.hub.docker.com/library/nginx:stable-perl` at runtime.
+You cannot access artifact metadata in a Build Workflow because Build Workflows do not use a Harness Service. See [CI/CD with the Build Workflow](../../../continuous-delivery/concepts-cd/deployment-types/ci-cd-with-the-build-workflow.md).* Available for Docker images' Artifact Sources in Services. For example, if you used a publicly available Docker Hub NGINX image as the Artifact Source for a Service, then when the Service is deployed, the expression output would be `registry.hub.docker.com/library/nginx:stable-perl` at runtime.
 
 `${artifact.metadata.tag}`
 
-You cannot access artifact metadata in a Build Workflow because Build Workflows do not use a Harness Service. See [CI/CD with the Build Workflow](/article/wqytbv2bfd-ci-cd-with-the-build-workflow).* Access tags associated with an artifact, such as AMI tags. For example, if an AMI used the tag `harness`, you would use: `${artifact.metadata.harness}`.
+You cannot access artifact metadata in a Build Workflow because Build Workflows do not use a Harness Service. See [CI/CD with the Build Workflow](../../../continuous-delivery/concepts-cd/deployment-types/ci-cd-with-the-build-workflow.md).* Access tags associated with an artifact, such as AMI tags. For example, if an AMI used the tag `harness`, you would use: `${artifact.metadata.harness}`.
 
 `${artifact.metadata.artifactId}`
 
@@ -338,7 +338,7 @@ A few things to remember when using instance variable expressions:
 * Only use instance variable expressions at points in the Workflow where instances are identifiable.  
 For example, in a pre-deployment phase, the target instances are not known. In cases where Harness is creating instances, such as an AWS AMI/ASG deployment, the instances are not known until after they created.
 * If you use an instance variable expression in a script, the script is forked and executed once for each instance.
-* If you select the **Execute on Delegate** option in a Workflow step, such as the [Shell Script](/article/1fjrjbau7x-capture-shell-script-step-output) step, `${instance.<name>}` variables do not work. The Delegate is not a target instance.
+* If you select the **Execute on Delegate** option in a Workflow step, such as the [Shell Script](../../../continuous-delivery/model-cd-pipeline/workflows/capture-shell-script-step-output.md) step, `${instance.<name>}` variables do not work. The Delegate is not a target instance.
 
 #### How is Instance Determined in Different Platforms?
 
@@ -363,12 +363,12 @@ Instances are defined in the Node Select Workflow step by using the filters in t
 `${instance.name}`
 
 * The name of the instance on which the service is deployed.
-* If you use this variable in a Workflow, such as in a [Shell Script](/article/1fjrjbau7x-capture-shell-script-step-output) step, Harness will apply the script to all target instances. You do not have to loop through instances in your script.
+* If you use this variable in a Workflow, such as in a [Shell Script](../../../continuous-delivery/model-cd-pipeline/workflows/capture-shell-script-step-output.md) step, Harness will apply the script to all target instances. You do not have to loop through instances in your script.
 
 `${instance.hostName}`
 
 * The host/container/pod name where the microservice/application is deployed.
-* If you use this variable in a Workflow, such as in a [Shell Script](/article/1fjrjbau7x-capture-shell-script-step-output) step, Harness will apply the script to all target instances. You do not have to loop through instances in your script.
+* If you use this variable in a Workflow, such as in a [Shell Script](../../../continuous-delivery/model-cd-pipeline/workflows/capture-shell-script-step-output.md) step, Harness will apply the script to all target instances. You do not have to loop through instances in your script.
 
 `${instance.host.hostName}`
 
@@ -455,7 +455,7 @@ Host variables are deprecated, but existing usage is supported. All host propert
 
 ### HTTP
 
-The HTTP expressions are typically used in the Workflow [HTTP step](/article/m8ksas9f71-using-the-http-command).
+The HTTP expressions are typically used in the Workflow [HTTP step](../../../continuous-delivery/model-cd-pipeline/workflows/using-the-http-command.md).
 
 `${httpResponseMethod}`
 
@@ -469,11 +469,11 @@ The HTTP expressions are typically used in the Workflow [HTTP step](/article/m8k
 
 * HTTP message excluding headers. An example use might be `${httpResponseBody}.contains("hello")`.
 * You can also use JSON and XML functors that httpResponseBody.
-* For example, `json.select("status", ${httpResponseBody}) == "success"`. See [JSON and XML Functors](/article/wfvecw3yod-json-and-xml-functors).
+* For example, `json.select("status", ${httpResponseBody}) == "success"`. See [JSON and XML Functors](json-and-xml-functors.md).
 
 ### Approval
 
-Approval variables can be defined only within Workflow Approval steps that use the Harness UI. See [Harness UI Approvals](/article/0ajz35u2hy-approvals).
+Approval variables can be defined only within Workflow Approval steps that use the Harness UI. See [Harness UI Approvals](../../../continuous-delivery/model-cd-pipeline/approvals/approvals.md).
 
 `${approvedBy.name}` — (Deprecated)
 
@@ -486,48 +486,48 @@ Approval variables can be defined only within Workflow Approval steps that use t
 `${published_name.approvedBy.name}`
 
 * The name of the Harness user that approved a Workflow approval step.
-* As of December, 2019, this—and the other Approval variables below—must be preceded by a published output variable name (`published_name`). For details about this convention, see [Using Variables in Workflow Approvals](/article/5pspec1apl-use-variables-for-workflow-approval).
+* As of December, 2019, this—and the other Approval variables below—must be preceded by a published output variable name (`published_name`). For details about this convention, see [Using Variables in Workflow Approvals](../../../continuous-delivery/model-cd-pipeline/approvals/use-variables-for-workflow-approval.md).
 
 `${published_name.approvedBy.email}`
 
 * The email address of the Harness user that approved a Workflow approval step.
-* See [Using Variables in Workflow Approvals](/article/5pspec1apl-use-variables-for-workflow-approval).
+* See [Using Variables in Workflow Approvals](../../../continuous-delivery/model-cd-pipeline/approvals/use-variables-for-workflow-approval.md).
 
 `${published_name.approvedOn}`
 
 * The epoch time at which a Workflow approval step was approved.
-* See [Using Variables in Workflow Approvals](/article/5pspec1apl-use-variables-for-workflow-approval).
+* See [Using Variables in Workflow Approvals](../../../continuous-delivery/model-cd-pipeline/approvals/use-variables-for-workflow-approval.md).
 
 `${published_name.comments}`
 
 * Free-text comments that a user entered when approving (or rejecting) a Workflow approval step.
-* See [Using Variables in Workflow Approvals](/article/5pspec1apl-use-variables-for-workflow-approval).
+* See [Using Variables in Workflow Approvals](../../../continuous-delivery/model-cd-pipeline/approvals/use-variables-for-workflow-approval.md).
 
 `${published_name.timeoutMillis}`
 
 * Timeout (in milliseconds) set for this approval step.
-* See [Using Variables in Workflow Approvals](/article/5pspec1apl-use-variables-for-workflow-approval).
+* See [Using Variables in Workflow Approvals](../../../continuous-delivery/model-cd-pipeline/approvals/use-variables-for-workflow-approval.md).
 
 `${published_name.approvalStateType}`
 
 * The ticketing system used for this approval: USER\_GROUP, JIRA, SERVICENOW, and SHELL\_SCRIPT.
-* See [Using Variables in Workflow Approvals](/article/5pspec1apl-use-variables-for-workflow-approval).
+* See [Using Variables in Workflow Approvals](../../../continuous-delivery/model-cd-pipeline/approvals/use-variables-for-workflow-approval.md).
 
 `${published_name.approvalStatus}`
 
 * The approval's outcome. Can take the values SUCCESS or REJECTED.
-* See [Using Variables in Workflow Approvals](/article/5pspec1apl-use-variables-for-workflow-approval).
+* See [Using Variables in Workflow Approvals](../../../continuous-delivery/model-cd-pipeline/approvals/use-variables-for-workflow-approval.md).
 
 `${published_name.userGroups[<index>].name}`
 
 * An array of User Groups that were added in a Workflow's approval step.
 * For example, if two User Groups were added, you can access those groups' names as `${published_name.userGroups[0].name}` and `${published_name.userGroups[1].name}`.
-* See [Using Variables in Workflow Approvals](/article/5pspec1apl-use-variables-for-workflow-approval).
+* See [Using Variables in Workflow Approvals](../../../continuous-delivery/model-cd-pipeline/approvals/use-variables-for-workflow-approval.md).
 
 `${published_name.variables.var_name}`
 
 * Use the `.variables.` prefix when referring to an Additional Input Variable that was defined in a Workflow Approval step.
-* See [Using Variables in Workflow Approvals](/article/5pspec1apl-use-variables-for-workflow-approval).
+* See [Using Variables in Workflow Approvals](../../../continuous-delivery/model-cd-pipeline/approvals/use-variables-for-workflow-approval.md).
 
 ### Email
 
@@ -553,7 +553,7 @@ Approval variables can be defined only within Workflow Approval steps that use t
 
 * Use this expression to obtain the name of the new Auto Scaling Group created by Harness during deployment.
 * For example, you could add a Shell Script step to your Workflow that contains the command echo `${ami.newAsgName}`.
-* For more information, see [AMI Deployments Overview](/article/ox5ewy2sf4-ami-deployments-overview).
+* For more information, see [AMI Deployments Overview](../../../continuous-delivery/aws-deployments/ami-deployments/ami-deployments-overview.md).
 
 `${ami.oldAsgName}`
 
@@ -582,9 +582,9 @@ Approval variables can be defined only within Workflow Approval steps that use t
 
 The ECS service Harness deploys is named using whatever is set in the **ECS Service Setup** Workflow step's **ECS Service Name** setting:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/9dvxcegm90/1598468795326/image.png)By default, the ECS service is named using a concatenation of Harness Application, Service, and Environment names: `${app.name}__${service.name}__${env.name}`.
+![](./static/built-in-variables-list-02.png)By default, the ECS service is named using a concatenation of Harness Application, Service, and Environment names: `${app.name}__${service.name}__${env.name}`.
 
-You can use a [Workflow variable](/article/766iheu1bk-add-workflow-variables-new-template) or built-in Harness expression in the **ECS Service Name** setting. You can then use that variable elsewhere to refer to the deployed service name.
+You can use a [Workflow variable](../../../continuous-delivery/model-cd-pipeline/workflows/add-workflow-variables-new-template.md) or built-in Harness expression in the **ECS Service Name** setting. You can then use that variable elsewhere to refer to the deployed service name.
 
 #### ECS Service Names Create by Harness
 
@@ -606,9 +606,9 @@ The `serviceName` references the **ECS Service Name** setting.
 
 So, in this example, the reference is `${ECS__Service__Setup.serviceName}`.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/aza65y4af6/1619728106029/image.png)You must use double underscores in between any letters or numbers in the step name reference. For example, any spaces must be replaced double underscores.
+![](./static/built-in-variables-list-03.png)You must use double underscores in between any letters or numbers in the step name reference. For example, any spaces must be replaced double underscores.
 
-For example, you can use a [Shell Script](/article/1fjrjbau7x-capture-shell-script-step-output) step after the **ECS Service Setup** step to output the newly created ECS service name, including the version number suffix Harness adds each deployment:
+For example, you can use a [Shell Script](../../../continuous-delivery/model-cd-pipeline/workflows/capture-shell-script-step-output.md) step after the **ECS Service Setup** step to output the newly created ECS service name, including the version number suffix Harness adds each deployment:
 
 
 ```
@@ -627,25 +627,25 @@ ${ECS__Service__Setup.clusterName}
 `${terraform.<output_name>}`
 
 * When you map a Terraform script output to a Harness field, as part of a Service Mapping, the variable for the output can be used anywhere in the Workflow that uses that Terraform Provisioner. For example, `${terraform.clusterName}`.
-* For more information, see [Terraform How-tos](/article/9pvvgcdbjh-terrform-provisioner).
+* For more information, see [Terraform How-tos](../../../continuous-delivery/terraform-category/terrform-provisioner.md).
 
 #### Terraform Plan Output
 
 `${terraformApply.tfplan}`
 
 * Displays the Terraform plan that was executed as a dry run in the Terraform Apply or Terraform Provision step.
-* When you use the Terraform Apply or Terraform Provision step in a Workflow, you can select the **Set as Terraform Plan** option to run the step as a dry run. See [Perform a Terraform Dry Run](/article/xthfj92dys-terraform-dry-run).
+* When you use the Terraform Apply or Terraform Provision step in a Workflow, you can select the **Set as Terraform Plan** option to run the step as a dry run. See [Perform a Terraform Dry Run](../../../continuous-delivery/terraform-category/terraform-dry-run.md).
 
 The `${terraformApply.tfplan}` expression does not support plan files larger than 15MB.`${terraformDestroy.tfplan}`
 
 * Displays the Terraform plan that was executed as a dry run in the Terraform Destroy step.
-* When you use the Terraform Destroy step in a Workflow, you can select the **Set as Terraform Destroy Plan and Export** option to run the step as a dry run. See [Remove Provisioned Infra with Terraform Destroy](/article/4egyxnse9r-terraform-destroy).
+* When you use the Terraform Destroy step in a Workflow, you can select the **Set as Terraform Destroy Plan and Export** option to run the step as a dry run. See [Remove Provisioned Infra with Terraform Destroy](../../../continuous-delivery/terraform-category/terraform-destroy.md).
 
 #### Terraform Plan Output Files
 
 Currently, this feature is behind the Feature Flag `OPTIMIZED_TF_PLAN`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.If you select the **Set as Terraform Plan** option, you can display the path to the output of the plan using the variable expression `${terraformPlan.jsonFilePath()}`.
 
-For example, you can display the plan output in a [Shell Script](/article/1fjrjbau7x-capture-shell-script-step-output) step:
+For example, you can display the plan output in a [Shell Script](../../../continuous-delivery/model-cd-pipeline/workflows/capture-shell-script-step-output.md) step:
 
 
 ```
@@ -660,7 +660,7 @@ If you use the Terraform Destroy step, you can use the expression `${terraformPl
 
 #### Terraform Plan and Terraform Destroy Changes
 
-Currently, this feature is behind the feature flag `ANALYSE_TF_PLAN_SUMMARY`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.You can use the following expressions **after** a [Terraform plan step](/article/xthfj92dys-terraform-dry-run) (Terraform Apply step with **Set as Terraform Plan** enabled). The expressions will list the number of resources added, changed, or destroyed:
+Currently, this feature is behind the feature flag `ANALYSE_TF_PLAN_SUMMARY`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.You can use the following expressions **after** a [Terraform plan step](../../../continuous-delivery/terraform-category/terraform-dry-run.md) (Terraform Apply step with **Set as Terraform Plan** enabled). The expressions will list the number of resources added, changed, or destroyed:
 
 * `${terraformApply.add}`
 * `${terraformApply.change}`
@@ -683,7 +683,9 @@ You can use the following expressions **after** a Terraform Destroy step. The ex
 * `${terraformDestroy.change}`
 * `${terraformDestroy.destroy}`
 
-If Harness detects that a Terraform plan produces no changes then the actual generated Terraform plan file is not be uploaded to the Secret Manager regardless of whether the Terraform Apply step has **Export Terraform Plan to Apply Step** enabled.#### Terraform Plan Human Readable
+If Harness detects that a Terraform plan produces no changes then the actual generated Terraform plan file is not be uploaded to the Secret Manager regardless of whether the Terraform Apply step has **Export Terraform Plan to Apply Step** enabled.
+
+#### Terraform Plan Human Readable
 
 Harness provides expressions to view the plan in a more human readable format:
 
@@ -696,25 +698,25 @@ Harness provides expressions to view the plan in a more human readable format:
 
 * When you map a CloudFormation template output to a Harness field, as part of an Infrastructure Definition, the variable for the output can be used anywhere in the Workflow that uses that CloudFormation Provisioner.
 * For example, `${cloudformation.region}`.
-* For more information, see [CloudFormation Provisioner](/article/78g32khjcu-cloud-formation-provisioner).
+* For more information, see [CloudFormation Provisioner](../../../continuous-delivery/aws-deployments/cloudformation-category/cloud-formation-provisioner.md).
 
 ### Kubernetes
 
 Kubernetes Workflows use various expressions to represent Kubernetes services, Blue/Green and Canary deployment values, and Istio traffic splitting.
 
-For more information, see [Kubernetes How-tos](/article/pc6qglyp5h-kubernetes-deployments-overview) and [Kubernetes Workflow Variable Expressions](/article/7bpdtvhq92-workflow-variables-expressions).
+For more information, see [Kubernetes How-tos](../../../continuous-delivery/kubernetes-deployments/kubernetes-deployments-overview.md) and [Kubernetes Workflow Variable Expressions](../../../continuous-delivery/kubernetes-deployments/workflow-variables-expressions.md).
 
 These variables access infrastructure settings and so they cannot be used in the **Pre-Deployment** Workflow section since Harness does not access the target infrastructure in pre-deployment.`${HARNESS_KUBE_CONFIG_PATH}`
 
 * The path to a Harness-generated kubeconfig file containing the credentials you provided. The credentials can be used by kubectl commands by exporting its value to the KUBECONFIG environment variable.
-* You can use this variable in a Workflow [Shell Script](/article/1fjrjbau7x-capture-shell-script-step-output) to set the environment variable at the beginning of your kubectl script:  
+* You can use this variable in a Workflow [Shell Script](../../../continuous-delivery/model-cd-pipeline/workflows/capture-shell-script-step-output.md) to set the environment variable at the beginning of your kubectl script:  
 `export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH}`
 
 `${infra.kubernetes.infraId}`
 
 * The `${infra.kubernetes.infraId}` expression is a unique identifier that identifies the combination of Service and Infrastructure Definition. In the Infrastructure Definition **Service Infrastructure Mapping** below each listing has a unique identifier that can be referenced using `${infra.kubernetes.infraId}`:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/u3rp89v80h/1624554401882/clean-shot-2021-06-24-at-10-06-02.png)`release-${infra.kubernetes.infraId}` is typically used in the **Release Name** setting for a Harness Kubernetes Infrastructure Definition. Release names must be unique. Harness uses the release name for tracking releases.
+![](./static/built-in-variables-list-04.png)`release-${infra.kubernetes.infraId}` is typically used in the **Release Name** setting for a Harness Kubernetes Infrastructure Definition. Release names must be unique. Harness uses the release name for tracking releases.
 
 Use `release-${infra.kubernetes.infraId}` for the **Release Name** instead of just `${infra.kubernetes.infraId}`.
 
@@ -722,11 +724,11 @@ Kubernetes service and pod names follow DNS-1035 and must consist of lowercase a
 
 Using `release-` as a prefix will prevent any issues.
 
-See [Define Your Kubernetes Target Infrastructure](/article/u3rp89v80h-define-your-kubernetes-target-infrastructure).
+See [Define Your Kubernetes Target Infrastructure](../../../continuous-delivery/kubernetes-deployments/define-your-kubernetes-target-infrastructure.md).
 
 ### Tanzu Application Service (formerly Pivotal)
 
-See [Tanzu Built-in Variables](/article/ojd73hseby-pcf-built-in-variables).
+See [Tanzu Built-in Variables](../../../continuous-delivery/pcf-deployments/pcf-built-in-variables.md).
 
 ### Helm
 
@@ -754,7 +756,7 @@ Harness includes several built-in variable expressions that you can use to outpu
 * `${helmChart.name}` - The `name` in the chart.
 * `${helmChart.version}` - The version of the chart that was deployed.
 
-See [Deploy Helm Charts](/article/p5om530pe0-deploy-a-helm-chart-as-an-artifact).
+See [Deploy Helm Charts](../../../continuous-delivery/kubernetes-deployments/deploy-a-helm-chart-as-an-artifact.md).
 
 ### Constants
 

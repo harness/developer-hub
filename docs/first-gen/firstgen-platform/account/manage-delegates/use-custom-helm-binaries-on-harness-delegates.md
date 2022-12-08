@@ -16,7 +16,9 @@ This document describes how to specify the use of a custom Helm binary based on 
 
 This topic provides usage notes on specific Helm binary versions.
 
-For Helm binary versions with feature flags requirements, contact [Harness Support](mailto:support@harness.io) to enable them.#### Helm Binary v3.5 to v3.7
+For Helm binary versions with feature flags requirements, contact [Harness Support](mailto:support@harness.io) to enable them.
+
+#### Helm Binary v3.5 to v3.7
 
 The use of Helm binaries version 3.5 or later requires the following feature flags to be enabled on your Harness account:
 
@@ -36,7 +38,7 @@ Additionally, in **Remote Manifests**, locate the **Helm Version** option and se
 
 #### Helm v2 Binary for Native Helm Deployments
 
-If you are performing a [Native Helm deployment](/article/583ojfgg49-helm-deployments-overview), do not use `HELM_PATH` for the Helm 2 binary. Harness searches for the Helm 2 binary on the Delegate in its standard path, for example, `/usr/local/bin/helm`.
+If you are performing a [Native Helm deployment](../../../continuous-delivery/concepts-cd/deployment-types/helm-deployments-overview.md), do not use `HELM_PATH` for the Helm 2 binary. Harness searches for the Helm 2 binary on the Delegate in its standard path, for example, `/usr/local/bin/helm`.
 
 ### Step 1: Create a Delegate Profile to Install the Custom Binary
 
@@ -67,15 +69,17 @@ mv linux-amd64/helm $path
 ```
 It will look something like this:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/ymw96mf8wy/1592326198494/image.png)Next, you can add a Delegate Profile to a new or existing Delegate.
+![](./static/use-custom-helm-binaries-on-harness-delegates-31.png)Next, you can add a Delegate Profile to a new or existing Delegate.
 
 ### Step 2: Apply the Profile to a New or Existing Delegate
 
 If you are adding a new Delegate, you select the profile when you download the Delegate.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/ymw96mf8wy/1592261071794/image.png)If you apply the profile to an existing Delegate, you simply select the it in the Delegate's **Profile** setting:
+![](./static/use-custom-helm-binaries-on-harness-delegates-32.png)If you apply the profile to an existing Delegate, you simply select the it in the Delegate's **Profile** setting:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/ymw96mf8wy/1592261343479/image.png)### Step 3: Update the Delegate Config File and Start the Delegate
+![](./static/use-custom-helm-binaries-on-harness-delegates-33.png)
+
+### Step 3: Update the Delegate Config File and Start the Delegate
 
 Each type of Delegate uses a configuration file that specifies the path to the custom binary installed by your Delegate Profile.
 
@@ -99,7 +103,7 @@ The remainder of this topic explains, for each Delegate type, how to modify the 
 	* For a Helm 3 binary, enter the path in `HELM3_PATH`.
 	* For a Helm 2 binary, enter the path in `HELM_PATH`.
 
-If you are performing a [Native Helm deployment](/article/583ojfgg49-helm-deployments-overview), do not use `HELM_PATH` for the Helm 2 binary. Harness searches for the Helm 2 binary on the Delegate in its standard path, for example,`/usr/local/bin/helm`.1. Apply the modified file and restart Harness Delegate:
+If you are performing a [Native Helm deployment](../../../continuous-delivery/concepts-cd/deployment-types/helm-deployments-overview.md), do not use `HELM_PATH` for the Helm 2 binary. Harness searches for the Helm 2 binary on the Delegate in its standard path, for example,`/usr/local/bin/helm`.1. Apply the modified file and restart Harness Delegate:
 
 
 ```
@@ -111,7 +115,7 @@ You can alternately delete the Delegate pod; the **StatefulSet** object will rec
 ```
 kubectl delete pod mydelegate-vutpmk -n harness-delegate
 ```
-For information about the Kubernetes Delegate, see Harness [Kubernetes Quickstart](/article/7in9z2boh6-kubernetes-quickstart#step_1_install_and_launch_the_kubernetes_delegate).
+For information about the Kubernetes Delegate, see Harness [Kubernetes Quickstart](https://docs.harness.io/article/7in9z2boh6-kubernetes-quickstart#step_1_install_and_launch_the_kubernetes_delegate).
 
 #### ECS
 
@@ -135,7 +139,7 @@ If this is an existing ECS Delegate, open the task definition in the AWS console
 1. Specify the path in the `value` field as follows:
 	* For a Helm 3 binary, enter the path in `HELM3_PATH`.
 	* For a Helm 2 binary, enter the path in `HELM_PATH`.
-2. Register the task definition and create the ECS service as described in the Harness [ECS Quickstart](/article/j39azkrevm-aws-ecs-deployments#step_1_install_and_launch_the_ecs_delegate).  
+2. Register the task definition and create the ECS service as described in the Harness [ECS Quickstart](https://docs.harness.io/article/j39azkrevm-aws-ecs-deployments#step_1_install_and_launch_the_ecs_delegate).  
 If this is an existing ECS Delegate, update the ECS Delegate service by following the steps in [Updating a Service](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/update-service.html) from AWS.
 
 #### Shell Script
@@ -152,7 +156,7 @@ For Helm 3:
 `./stop`  
 `./start`
 
-For more information about Shell Script Delegates, see the Harness AWS [AMI Quickstart](/category/kx4hs8bn38-getting-started) documentation.
+For more information about Shell Script Delegates, see the Harness AWS [AMI Quickstart](https://docs.harness.io/category/get-started) documentation.
 
 #### Helm
 
@@ -166,7 +170,7 @@ For more information about Shell Script Delegates, see the Harness AWS [AMI Quic
 ```
 helm install --name helm-delegate-doc harness/harness-delegate -f harness-delegate-values.yaml
 ```
-For more information about Helm Delegates, see [Install the Harness Helm Delegate](/article/6n7fon8rit-using-the-helm-delegate).
+For more information about Helm Delegates, see [Install the Harness Helm Delegate](using-the-helm-delegate.md).
 
 #### Docker
 
@@ -182,6 +186,6 @@ For more information about Helm Delegates, see [Install the Harness Helm Delegat
 ```
 ### See Also
 
-* [Upgrade Native Helm 2 Deployments to Helm 3](/article/cqidzwbzaa-upgrade-native-helm-2-deployments-to-helm-3)
-* [Upgrade to Helm 3 Charts in Kubernetes Services](/article/lk57k7irla-upgrade-to-helm-3-charts-in-kubernetes-services)
+* [Upgrade Native Helm 2 Deployments to Helm 3](../../../continuous-delivery/helm-deployment/upgrade-native-helm-2-deployments-to-helm-3.md)
+* [Upgrade to Helm 3 Charts in Kubernetes Services](../../../continuous-delivery/kubernetes-deployments/upgrade-to-helm-3-charts-in-kubernetes-services.md)
 

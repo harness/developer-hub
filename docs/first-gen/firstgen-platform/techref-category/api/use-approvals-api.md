@@ -23,17 +23,17 @@ In this topic:
 
 ### Before You Begin
 
-* [Harness UI Approvals](/article/0ajz35u2hy-approvals)
-* [Jira Approvals](/article/qxki6o7y31-jira-based-approvals)
-* [ServiceNow Approvals](/article/9nkuhm8moo-service-now-ticketing-system)
+* [Harness UI Approvals](../../../continuous-delivery/model-cd-pipeline/approvals/approvals.md)
+* [Jira Approvals](../../../continuous-delivery/model-cd-pipeline/approvals/jira-based-approvals.md)
+* [ServiceNow Approvals](../../../continuous-delivery/model-cd-pipeline/approvals/service-now-ticketing-system.md)
 
 ### Supported Platforms and Technologies
 
-See [Supported Platforms and Technologies](/article/220d0ojx5y-supported-platforms).
+See [Supported Platforms and Technologies](https://docs.harness.io/article/220d0ojx5y-supported-platforms).
 
 ### Requirements
 
-The `approvalDetails` GraphQL API uses the same RBAC required for the Approval step type. The API can be run using a user session or API key, as described in [Harness API Explorer](/article/2rmd5i0e0h-harness-api-explorer).
+The `approvalDetails` GraphQL API uses the same RBAC required for the Approval step type. The API can be run using a user session or API key, as described in [Harness API Explorer](harness-api-explorer.md).
 
 For example, if the Approval is a Harness UI Approval step, you must be a member of the User Group(s) selected as approvers for that step in order to use the API to accept/reject the step.
 
@@ -51,9 +51,9 @@ approvalDetails(applicationId: "[Application Id]", executionId: "[execution Id]"
 ```
 You can get these Ids using the GraphQL API. See:
 
-* [Use Harness Applications API](/article/0wmvn5dgzn-use-harness-applications-api)
-* [Use Workflows API](/article/ba4vs50071-use-workflows-api)
-* [Use Pipelines API](/article/rfqmu6cejy-use-pipelines-api)
+* [Use Harness Applications API](use-harness-applications-api.md)
+* [Use Workflows API](use-workflows-api.md)
+* [Use Pipelines API](use-pipelines-api.md)
 
 Also, you can see these Ids in the URL of an execution in the Deployments page.
 
@@ -262,4 +262,4 @@ mutation {
 ```
 Whether an Approval step is approved/rejected via the GraphQL API is highlighted in the Deployment details:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/n43s95h2aj/1628628401307/clean-shot-2021-08-10-at-13-45-20.png)
+![](./static/use-approvals-api-40.png)

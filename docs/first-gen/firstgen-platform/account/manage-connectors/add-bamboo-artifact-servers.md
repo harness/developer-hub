@@ -21,7 +21,7 @@ In this topic:
 
 ### Before You Begin
 
-* See [Harness Key Concepts](/article/4o7oqwih6h-harness-key-concepts).
+* See [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts).
 
 ### Review: Build Plan Permissions
 
@@ -54,7 +54,7 @@ Enter the URL of the Bamboo server.
 
 Enter the username and the secret.
 
-For secrets and other sensitive settings, select or create a new [Harness Encrypted Text secret](/article/ygyvp998mu-use-encrypted-text-secrets).
+For secrets and other sensitive settings, select or create a new [Harness Encrypted Text secret](../../security/secrets-management/use-encrypted-text-secrets.md).
 
 Usage Scope is determined by the secret you selected.
 

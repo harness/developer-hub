@@ -145,7 +145,7 @@ echo "App Service Plan:" ${arm.appPlan}
 echo "Web App Name:" ${arm.webApp}  
 echo "Web App Slot:" ${arm.slot}
 ```
-Here is the [Shell Script step](https://docs.harness.io/article/1fjrjbau7x-capture-shell-script-step-output) log from the deployment showing the echo of the outputs:
+Here is the [Shell Script step](../../model-cd-pipeline/workflows/capture-shell-script-step-output.md) log from the deployment showing the echo of the outputs:
 
 
 ```

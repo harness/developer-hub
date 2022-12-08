@@ -28,5 +28,5 @@ To see a summary of the changes in Harness Kubernetes Deployment Version 2, seeÂ
 
 ### Review: What Workloads Can I Deploy?
 
-See [What Can I Deploy in Kubernetes?](https://docs.harness.io/article/6ujb3c70fh).
+See [What Can I Deploy in Kubernetes?](../../firstgen-platform/techref-category/cd-ref/platforms-ref/what-can-i-deploy-in-kubernetes.md).
 

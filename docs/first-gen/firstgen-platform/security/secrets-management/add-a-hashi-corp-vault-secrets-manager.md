@@ -8,12 +8,12 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](https://docs.harness.io/article/1fjmm4by22). Switch to [NextGen](/article/s65mzbyags-add-hashicorp-vault).To store and use encrypted secrets (such as access keys), you can add a HashiCorp Vault Secrets Manager.
+This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../../platform/6_Security/12-add-hashicorp-vault.md).To store and use encrypted secrets (such as access keys), you can add a HashiCorp Vault Secrets Manager.
 
 ### Before You Begin
 
-* See [Harness Key Concepts](/article/4o7oqwih6h-harness-key-concepts).
-* See [Secrets Management Overview](/article/au38zpufhr-secret-management).
+* See [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts).
+* See [Secrets Management Overview](secret-management.md).
 * Make sure that the Harness Delegate is able to connect to the Vault URL.
 
 ### Step 1: Configure Secrets Manager
@@ -25,7 +25,7 @@ This content is for Harness [FirstGen](https://docs.harness.io/article/1fjmm4by
 	1. For HashiCorp Vault, enter the following information — **Display Name,** **Vault URL,** and **Base Secret Path.**  
 	For more information, see [Vault documentation](https://www.vaultproject.io/docs/index.html).
 	2. For **HashiCorp Vault Secrets Engine - SSH**, in **Vault URL**, enter the Vault URL for the Vault server running the Secrets Engine.  
-	See [Add HashiCorp Vault Signed SSH Certificate Keys](/article/8y73f4o4ph-add-hashi-corp-vault-signed-ssh-certificate-keys).
+	See [Add HashiCorp Vault Signed SSH Certificate Keys](add-hashi-corp-vault-signed-ssh-certificate-keys.md).
 5. Select the **Delegate Selector** under Authentication.
 6. Select the Authentication Type — **Token,** **App Role,** **Vault Agent, or** **Kubernetes Auth**.
 
@@ -71,7 +71,9 @@ The SecretId should not expire and it should be valid until it is manually revok
 
 For more information, see [RoleID](https://www.vaultproject.io/docs/auth/approle.html#roleid) and [Authenticating Applications with HashiCorp Vault AppRole](https://www.hashicorp.com/blog/authenticating-applications-with-vault-approle) from HashiCorp.
 
-If you encounter errors, setting [token\_num\_uses](https://www.vaultproject.io/api-docs/auth/approle#token_num_uses) to `0` can often resolve problems.#### Permissions
+If you encounter errors, setting [token\_num\_uses](https://www.vaultproject.io/api-docs/auth/approle#token_num_uses) to `0` can often resolve problems.
+
+#### Permissions
 
 The Vault AppRole ID or the Periodic Token used in either of the authentication options needs to have an ACL policy attached for Harness to use it. Typically, you create the policy first, then create the AppRole or Periodic Token and attach the policy.
 
@@ -111,17 +113,19 @@ To authenticate with Vault Agent, make sure you have configured it on the requir
 
 In the **Sink Path** field, enter any sink path you have in your Vault Agent Configuration. This is the path of the encrypted file with tokens. The specified Delegate reads this file through file protocol (file://).
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/am3dmoxywy/1623304070244/screenshot-2021-06-10-at-9-44-26-am.png)### Option: Kubernetes Auth
+![](./static/add-a-hashi-corp-vault-secrets-manager-62.png)
+
+### Option: Kubernetes Auth
 
 Currently, this feature is behind the Feature Flag `ENABLE_K8S_AUTH_IN_VAULT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.This option uses a Kubernetes Service Account Token to authenticate with Vault. With this method of authentication, you can easily add a Vault token into a Kubernetes Pod.
 
 To authenticate with Kubernetes Auth, make sure you have created a role in the vault inside `auth/kubernetes/role`. This role authorizes the "vault-auth" service account in the default namespace and it gives it the default policy. This is also where you'll find the **service account name** and **namespace** that will be used to access the vault endpoint.
 
-[![](https://files.helpdocs.io/i5nl071jo5/articles/s65mzbyags/1647314472462/screenshot-2022-03-14-at-3-36-28-pm.png)](https://files.helpdocs.io/i5nl071jo5/articles/s65mzbyags/1647314472462/screenshot-2022-03-14-at-3-36-28-pm.png)For more information, see [Kubernetes Auth Method](https://www.vaultproject.io/docs/auth/kubernetes#configuration).
+[![](./static/add-a-hashi-corp-vault-secrets-manager-63.png)](./static/add-a-hashi-corp-vault-secrets-manager-63.png)For more information, see [Kubernetes Auth Method](https://www.vaultproject.io/docs/auth/kubernetes#configuration).
 
 In **Role Name**, enter the role you have configured in the Vault.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/am3dmoxywy/1650550590712/screenshot-2022-04-21-at-7-45-51-pm.png)In **Service Account Token Path**enter the JSON Web Token (JWT) path. This is the path where the JWT token is mounted. The default path of this token is `/var/run/secrets/kubernetes.io/serviceaccount/token`.
+![](./static/add-a-hashi-corp-vault-secrets-manager-65.png)In **Service Account Token Path**enter the JSON Web Token (JWT) path. This is the path where the JWT token is mounted. The default path of this token is `/var/run/secrets/kubernetes.io/serviceaccount/token`.
 
 For more information, see [Service Account Tokens](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#service-account-tokens).
 
@@ -153,15 +157,15 @@ If you don’t want to or cannot add the ACL policy (with read permission for sy
 2. In **Secret Engine Name**, enter the name of the Secret Engine.
 3. In **Version**, select the engine version from the drop down list.
 
-You cannot change the Secret Engine later. Harness blocks editing this setting later because there might be secrets that are created/referenced in this secret engine. Changing the secret engine might break references to those secrets. To migrate secrets, see [Migrate Secrets between Secrets Managers](/article/prjsaaev0c-migrate-secrets-between-secrets-managers).### Step 3: Renewal Interval
+You cannot change the Secret Engine later. Harness blocks editing this setting later because there might be secrets that are created/referenced in this secret engine. Changing the secret engine might break references to those secrets. To migrate secrets, see [Migrate Secrets between Secrets Managers](migrate-secrets-between-secrets-managers.md).### Step 3: Renewal Interval
 
 In **Renew Interval**, you can (optionally) select how often Harness Delegate reloads the Vault access token.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/q7fqo7wt73/1585271766286/image.png)You can expect a delay during the Vault renewal. A periodic job runs to check if there has to be a renewal resulting in a delay of no more than 2 minutes.### Review: Validating Non-Read Only Vault Secrets Managers
+![](./static/add-a-hashi-corp-vault-secrets-manager-66.png)You can expect a delay during the Vault renewal. A periodic job runs to check if there has to be a renewal resulting in a delay of no more than 2 minutes.### Review: Validating Non-Read Only Vault Secrets Managers
 
 To validate a non-read only Vault Secrets Manager, Harness creates a dummy secret in the secret engine.
 
-The event for creating the dummy secret this will show up on [Audit Trail](/article/r5ytrnpcgr-audit-trail) as if the user who initiated the creation of the Vault Secrets Manager created the secret. The path of the secret is as follows:
+The event for creating the dummy secret this will show up on [Audit Trail](../../../../platform/15_Audit-Trail/audit-trail.md) as if the user who initiated the creation of the Vault Secrets Manager created the secret. The path of the secret is as follows:
 
 v2 Secret Engine:
 
@@ -188,7 +192,7 @@ The secret can fail because of various reasons.
 
 If required by your organization's security practices, select the **Read-only Vault** check box. This selection authorizes Harness to read secrets from Vault, but not to create or manage secrets within Vault.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/4vqipye0vz/1580779701677/image.png)Once you have filled out the dialog, click **Submit**.
+![](./static/add-a-hashi-corp-vault-secrets-manager-67.png)Once you have filled out the dialog, click **Submit**.
 
 ##### Read-only Limitations
 
@@ -203,5 +207,5 @@ Also, a read-only Harness Vault Secrets Manager:
 
 ### Step 5: Usage Scope
 
-See [Scope Secret Managers to Applications and Environments](/article/e4ikpd00f6-scope-secret-managers-to-applications-and-environments).
+See [Scope Secret Managers to Applications and Environments](scope-secret-managers-to-applications-and-environments.md).
 

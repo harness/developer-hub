@@ -16,7 +16,7 @@ In this topic:
 
 * [Before You Begin](#before_you_begin)
 * [Visual Summary](#visual_summary)
-* [Review: Using a Delegate Inside or Outside of the Target Cluster](https://docs.harness.io/article/l68rujg6mp-add-kubernetes-cluster-cloud-provider#review_using_a_delegate_inside_or_outside_of_the_target_cluster)
+* [Review: Using a Delegate Inside or Outside of the Target Cluster](add-kubernetes-cluster-cloud-provider.md#review-using-a-delegate-inside-or-outside-of-the-target-cluster)
 * [Review: Kubernetes Cluster Cloud Provider vs Platform Cloud Providers](#review_kubernetes_cluster_cloud_provider_vs_platform_cloud_providers)
 * [Step 1: Add the Cloud Provider](#step_1_add_the_cloud_provider)
 * [Step 2: Cluster Details](#step_2_cluster_details)
@@ -30,13 +30,15 @@ In this topic:
 
 ### Before You Begin
 
-* See  [Harness Key Concepts](/article/4o7oqwih6h-harness-key-concepts).
+* See  [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts).
 
 ### Visual Summary
 
 Here's an overview of the settings required to add a Kubernetes Cluster as Cloud Provider.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/whwnovprrb/1583346679446/image.png)### Review: Using a Delegate Inside or Outside of the Target Cluster
+![](./static/add-kubernetes-cluster-cloud-provider-35.png)
+
+### Review: Using a Delegate Inside or Outside of the Target Cluster
 
 Typically, you install the Harness Kubernetes Delegate inside your target cluster and then add a Kubernetes Cluster Cloud Provider that inherits its credentials from the Delegate.
 
@@ -67,7 +69,7 @@ When you set up a deployment in Harness, you will specify Cloud Providers to use
 
 Which option you choose will depend on how your teams use Harness.
 
-Related topics: [Connect to Your Target Kubernetes Platform](/article/m383u53mp1-connect-to-your-target-kubernetes-platform) and [Target Delegates to Specific Namespaces](/article/p91u0bxtaf-enable-delegate-to-deploy-to-multiple-kubernetes-namespaces).
+Related topics: [Connect to Your Target Kubernetes Platform](../../../continuous-delivery/kubernetes-deployments/connect-to-your-target-kubernetes-platform.md) and [Target Delegates to Specific Namespaces](../manage-delegates/enable-delegate-to-deploy-to-multiple-kubernetes-namespaces.md).
 
 ### Review: Permissions for the Kubernetes Role
 
@@ -116,11 +118,13 @@ When you select this option, the Harness Delegate will inherit the Kubernetes se
 
 The service account associated with the Delegate pod must have the Kubernetes **cluster-admin** role.
 
-You select the Delegate by selecting the Selector(s) of the Delegate. For information on adding Selectors to Delegates, see [Delegate Installation](/article/h9tkwmkrm7-delegate-installation).
+You select the Delegate by selecting the Selector(s) of the Delegate. For information on adding Selectors to Delegates, see [Delegate Installation](../manage-delegates/delegate-installation.md).
 
 Custom Selectors can be applied to multiple Delegates. If you use Custom Selectors in the Cloud Provider, you can select multiple Delegates.
 
-In the case of some Kubernetes providers, such as OpenShift, the Delegate should be installed outside of the cluster.### Option 2: Enter manually
+In the case of some Kubernetes providers, such as OpenShift, the Delegate should be installed outside of the cluster.
+
+### Option 2: Enter manually
 
 If you want to enter specific credentials manually, there are several options.
 
@@ -134,11 +138,13 @@ The Kubernetes master node URL. The easiest method to obtain the master URL is u
 
 Username and password for the Kubernetes cluster. For example, **admin** or **john@example.com**, and a Basic authentication password.
 
-You can use an inline username or a Harness [Encrypted Text secret](/article/ygyvp998mu-use-encrypted-text-secrets).
+You can use an inline username or a Harness [Encrypted Text secret](../../security/secrets-management/use-encrypted-text-secrets.md).
 
 For the password, select or create a new Harness Encrypted Text secret.
 
-This is not used, typically. Some cloud providers have Basic authentication disabled by default. The cluster would need Basic authentication enabled and a specific username and password configured for authentication.For OpenShift or any other platform, this is not the username/password for the platform. It is the username/password for the cluster.#### Service Account Token
+This is not used, typically. Some cloud providers have Basic authentication disabled by default. The cluster would need Basic authentication enabled and a specific username and password configured for authentication.For OpenShift or any other platform, this is not the username/password for the platform. It is the username/password for the cluster.
+
+#### Service Account Token
 
 Add the service account token for the service account. The token must be pasted in decoded in the Encrypted Text secret you create/select.
 
@@ -239,7 +245,7 @@ First let's look at the authorization server-related settings:
 
 For example, in Okta, this is the Issuer URL for the [Authorization Server](https://developer.okta.com/docs/concepts/auth-servers/):
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/whwnovprrb/1583352263225/image.png)Providers use different API versions. If you want to identify the version also, you can obtain it from the token endpoint.
+![](./static/add-kubernetes-cluster-cloud-provider-36.png)Providers use different API versions. If you want to identify the version also, you can obtain it from the token endpoint.
 
 In Okta, in the authentication server **Settings**, click the **Metadata URI**. Locate the **token\_endpoint**. Use the **token\_endpoint** URL except for the **/token** part. For example, you would use `https://dev-00000.okta.com/oauth2/default/v1` from the following endpoint:
 
@@ -249,18 +255,20 @@ In Okta, in the authentication server **Settings**, click the **Metadata URI**. 
 ```
 * **OIDC Scopes:** OIDC scopes are used by an application during authentication to authorize access to a user's details, like name and picture. In Okta, you can find them in the Authorization Server **Scopes** tab:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/whwnovprrb/1583353336258/image.png)If you enter multiple scopes, separate them using spaces.
+![](./static/add-kubernetes-cluster-cloud-provider-37.png)If you enter multiple scopes, separate them using spaces.
 
 The remaining OIDC Token settings are part of the provider app you are using to log in.
 
 * **Username and password:** Login credentials for a user assigned to the provider app.
 * **Client ID:** Public identifier for the client that is required for all OAuth flows. In Okta, this is located in the **Client Credentials** for the app:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/whwnovprrb/1583352850791/image.png)* **Client Secret:** The client secret for the app. For Okta, you can see this in the above picture.
+![](./static/add-kubernetes-cluster-cloud-provider-38.png)* **Client Secret:** The client secret for the app. For Okta, you can see this in the above picture.
 
 Here is an example of OIDC credentials in the Kubernetes Cluster Cloud Provider:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/whwnovprrb/1587754868372/image.png)### Step 3: Skip Validation
+![](./static/add-kubernetes-cluster-cloud-provider-39.png)
+
+### Step 3: Skip Validation
 
 This setting affects credential validation only. Harness will always verify network connectivity.Enable this option during *creation* of the Cloud Provider only.
 
@@ -280,7 +288,7 @@ Later, when you create a Harness Infrastructure Definition using this Cloud Prov
 
 When Harness saves the Infrastructure Definition it performs validation even if **Skip Validation** was checked.
 
-Related topic:  [Target Delegates to Specific Namespaces](https://docs.harness.io/article/p91u0bxtaf-enable-delegate-to-deploy-to-multiple-kubernetes-namespaces).
+Related topic:  [Target Delegates to Specific Namespaces](../manage-delegates/enable-delegate-to-deploy-to-multiple-kubernetes-namespaces.md).
 
 ### Review: Permissions Required
 
@@ -302,13 +310,15 @@ Any other Kubernetes permissions depends on what is in your manifests.
 
 [Kubernetes RBAC](https://kubernetes.io/docs/reference/access-authn-authz/rbac/) is documented by Kubernetes.
 
-The exact API versions depends on the Kubernetes cluster version that evolves over time as entity types get promoted. For example, the [API for v1.20](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.20/).### Option: AWS EKS Support
+The exact API versions depends on the Kubernetes cluster version that evolves over time as entity types get promoted. For example, the [API for v1.20](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.20/).
 
-Harness does not support the STS assume role (`"Action": "sts:AssumeRole"`) for [IAM for Service Accounts](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html) in the Kubernetes Cluster Cloud Provider at the time. You can use the [AWS Cloud Provider](/article/wt1gnigme7-add-amazon-web-services-cloud-provider) for STS assume role.AWS EKS is supported using the **Inherit from selected Delegate** option in the Kubernetes Cluster Cloud Provider settings.
+### Option: AWS EKS Support
+
+Harness does not support the STS assume role (`"Action": "sts:AssumeRole"`) for [IAM for Service Accounts](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html) in the Kubernetes Cluster Cloud Provider at the time. You can use the [AWS Cloud Provider](add-amazon-web-services-cloud-provider.md) for STS assume role.AWS EKS is supported using the **Inherit from selected Delegate** option in the Kubernetes Cluster Cloud Provider settings.
 
 The process is as follows:
 
-1. Install a Harness Kubernetes Delegate in your EKS cluster. Give it a name that you can recognize as an EKS cluster Delegate. For information on installing a Kubernetes Delegate, see [Connect to Your Target Kubernetes Platform](/article/m383u53mp1-connect-to-your-target-kubernetes-platform).
+1. Install a Harness Kubernetes Delegate in your EKS cluster. Give it a name that you can recognize as an EKS cluster Delegate. For information on installing a Kubernetes Delegate, see [Connect to Your Target Kubernetes Platform](../../../continuous-delivery/kubernetes-deployments/connect-to-your-target-kubernetes-platform.md).
 2. Add a Kubernetes Cluster Cloud Provider. In the Cloud Provider settings, do the following:
 	1. In **Type**, click **Kubernetes Cluster**.
 	2. Select **Inherit from selected Delegate**.
@@ -317,7 +327,7 @@ The process is as follows:
 
 When setting up the EKS cluster as a Harness Infrastructure Definition in a Harness Environment, you simply select the Kubernetes Cluster Cloud Provider. For example:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/whwnovprrb/1583348427158/image.png)Using the EKS-based Environment in a Workflow is no different than using any Kubernetes cluster. You simply select the Environment and Infrastructure Provisioner as part of setting up the Workflow.
+![](./static/add-kubernetes-cluster-cloud-provider-40.png)Using the EKS-based Environment in a Workflow is no different than using any Kubernetes cluster. You simply select the Environment and Infrastructure Provisioner as part of setting up the Workflow.
 
 ### Option: OpenShift Support
 
@@ -345,5 +355,5 @@ Once configured, OpenShift is used by Harness as a typical Kubernetes cluster.
 * The Kubernetes containers must be OpenShift-compatible containers. If you are already using OpenShift, then this is already configured. But be aware that OpenShift cannot simply deploy any Kubernetes container. You can get OpenShift images from the following public repos: <https://hub.docker.com/u/openshift> and <https://access.redhat.com/containers>.
 * Useful articles for setting up a local OpenShift cluster for testing: [How To Setup Local OpenShift Origin (OKD) Cluster on CentOS 7](https://computingforgeeks.com/setup-openshift-origin-local-cluster-on-centos/), [OpenShift Console redirects to 127.0.0.1](https://chrisphillips-cminion.github.io/kubernetes/2019/07/08/OpenShift-Redirect.html).
 
-For information on installing the delegate, see [Delegate Installation](/article/h9tkwmkrm7-delegate-installation).
+For information on installing the delegate, see [Delegate Installation](../manage-delegates/delegate-installation.md).
 

@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-GraphQL is the API for Harness FirstGen only. Harness NextGen uses a **REST** API. See [Use the Harness REST API](/article/bn72tvbj6r-harness-rest-api-reference) and [Harness API Quickstart](/article/f0aqiv3td7-api-quickstart).GraphQL is a query language for your API, and a server-side runtime for executing queries by using a type system you define for your data. GraphQL isn't tied to any specific database or storage engine and is instead backed by your existing code and data. For more information, visit [GraphQL.org](https://graphql.org/) and [GitHub GraphQL API v4](https://developer.github.com/v4/).
+GraphQL is the API for Harness FirstGen only. Harness NextGen uses a **REST** API. See [Use the Harness REST API](../../../../platform/16_APIs/harness-rest-api-reference.md) and [Harness API Quickstart](../../../../platform/16_APIs/api-quickstart.md).GraphQL is a query language for your API, and a server-side runtime for executing queries by using a type system you define for your data. GraphQL isn't tied to any specific database or storage engine and is instead backed by your existing code and data. For more information, visit [GraphQL.org](https://graphql.org/) and [GitHub GraphQL API v4](https://developer.github.com/v4/).
 
 Harness exposes its public API in GraphQL format. Virtually all of Harness' meaningful entities are exposed through the API, such as Applications, Services, Artifacts, Cloud Providers, Environments, Workflows, Pipelines, deployed instances, deployment data, etc.
 
@@ -26,7 +26,7 @@ GraphQL offers the following efficiency and reliability features for your consum
 
 ### Harness API Explorer
 
-The Harness API Explorer allows you to construct and perform API queries and see their responses. You can use the Explorer to examine the API's structure, to build and test queries against your data, and to optimize your queries. For more information, see [Harness API Explorer](/article/2rmd5i0e0h-sample-queries-audit-trails).
+The Harness API Explorer allows you to construct and perform API queries and see their responses. You can use the Explorer to examine the API's structure, to build and test queries against your data, and to optimize your queries. For more information, see [Harness API Explorer](harness-api-explorer.md).
 
 ### API Endpoint
 
@@ -36,7 +36,7 @@ The API endpoint for the Harness GraphQL API is:
 ```
 https://app.harness.io/gateway/api/graphql?accountId=<your-harness-account-id>
 ```
-See [Building Applications Using Postman](/article/txrp7awwu8-graph-ql-apis-for-browser-based-automation).
+See [Building Applications Using Postman](graph-ql-apis-for-browser-based-automation.md).
 
 ### Fetch Data With Queries
 
@@ -153,7 +153,7 @@ Harness' schema determines what parameters your queries can specify as arguments
 
 The `!` following the type means that this field is *required*.
 
-The Harness API's schema includes fields representing the following Harness entities. Use the API Explorer's search box to discover the available fields and their usage. For more information, see [API Schema and Structure](/article/kn8wsu80n4-api-schema-and-structure).
+The Harness API's schema includes fields representing the following Harness entities. Use the API Explorer's search box to discover the available fields and their usage. For more information, see [API Schema and Structure](api-schema-and-structure.md).
 
 ### Rate/Data Limiting
 
@@ -187,7 +187,7 @@ If the limit is reached, you will see a 429 status code with the following respo
 ```
 ### Build Applications
 
-You can use [Postman](https://www.getpostman.com/downloads/) (version 7.2 or higher) to run a GraphQL query, to use APIs in a web app, and to automatically regenerate your query in any programming language that Postman supports. For more information, see [Building Applications Using Postman](/article/txrp7awwu8-graph-ql-apis-for-browser-based-automation).
+You can use [Postman](https://www.getpostman.com/downloads/) (version 7.2 or higher) to run a GraphQL query, to use APIs in a web app, and to automatically regenerate your query in any programming language that Postman supports. For more information, see [Building Applications Using Postman](graph-ql-apis-for-browser-based-automation.md).
 
 ### API in Beta
 
@@ -201,8 +201,8 @@ You can send us feedback on our APIs at [api-feedback@harness.io](mailto:api-fee
 
 ### Next Steps
 
-* [Harness API Explorer](/article/2rmd5i0e0h-harness-api-explorer)
-* [API Schema and Structure](/article/kn8wsu80n4-api-schema-and-structure)
-* [Building Applications Using Postman](/article/txrp7awwu8-graph-ql-apis-for-browser-based-automation)
-* [Deprecated API Features](/article/22e87m2sjt-deprecated-apis)
+* [Harness API Explorer](harness-api-explorer.md)
+* [API Schema and Structure](api-schema-and-structure.md)
+* [Building Applications Using Postman](graph-ql-apis-for-browser-based-automation.md)
+* [Deprecated API Features](deprecated-apis.md)
 

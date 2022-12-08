@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Harness provides builtin and custom variables, as described in [What is a Harness Variable Expression?](/article/9dvxcegm90-variables).
+Harness provides builtin and custom variables, as described in [What is a Harness Variable Expression?](variables.md).
 
 You can override a lot of variable values in order to templatize and customize deployment settings.
 
@@ -32,8 +32,8 @@ In this topic:
 
 ### Before You Begin
 
-* [What is a Harness Variable Expression?](/article/9dvxcegm90-variables)
-* [Availability and Scope of Harness Variables](/article/d15of30a2i-harness-variable-availability)
+* [What is a Harness Variable Expression?](variables.md)
+* [Availability and Scope of Harness Variables](harness-variable-availability.md)
 
 ### Where are Variables Overridden?
 
@@ -63,7 +63,9 @@ You can use Workflow variable expressions in a Harness Service, but Harness does
 
 Each Phase of a multi-phase Workflow, such as a Canary Workflow, allows you to override the Service variables for the Service the Workflow Phase deploys:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/benvea28uq/1601489349465/image.png)### Overrides Are at the Key:Value Level Not the File Level
+![](./static/variable-override-priority-00.png)
+
+### Overrides Are at the Key:Value Level Not the File Level
 
 Overrides are at the `key:value` level not the file level. You must override each `key:value` pair. 
 
@@ -75,18 +77,18 @@ Harness will merge both the chart values.yaml and the **Service Configuration Ov
 
 Here is how Harness prioritizes variables, from highest to least priority:
 
-1. Highest: Workflow variable or Workflow Phase Service Variable Overrides. See [Set Workflow Variables](/article/766iheu1bk-add-workflow-variables-new-template).  
+1. Highest: Workflow variable or Workflow Phase Service Variable Overrides. See [Set Workflow Variables](../../../continuous-delivery/model-cd-pipeline/workflows/add-workflow-variables-new-template.md).  
 **Pipelines**—If the Workflow is executed by a Pipeline, the value provided for the Workflow variable in the Pipeline has the highest priority.
 2. Next: Environment Service Configuration Overrides.  
-See [Override a Service Configuration in an Environment](/article/4m2kst307m-override-service-files-and-variables-in-environments).  
+See [Override a Service Configuration in an Environment](../../../continuous-delivery/model-cd-pipeline/environments/override-service-files-and-variables-in-environments.md).  
 This can be either of the following:
 	1. An override of a single Service Config Variable.
 	2. An override of all Service Config Variables.
-3. Last: Service Config Variables. See [Add Service Config Variables](/article/q78p7rpx9u-add-service-level-config-variables).
+3. Last: Service Config Variables. See [Add Service Config Variables](../../../continuous-delivery/model-cd-pipeline/setup-services/add-service-level-config-variables.md).
 
 Put simply:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/benvea28uq/1615508757737/image.png)At the Environment-level, you can override a variable for **All Services** or a specific Service. If you override for All Services but then also override for a specific Service, the override for the specific Service is used for that Service+Environment combination.### Overriding and Merging Values YAML, Manifests, Charts etc in Environments
+![](./static/variable-override-priority-01.png)At the Environment-level, you can override a variable for **All Services** or a specific Service. If you override for All Services but then also override for a specific Service, the override for the specific Service is used for that Service+Environment combination.### Overriding and Merging Values YAML, Manifests, Charts etc in Environments
 
 In addition to overriding Service text and file variables, you can override or merge new values for the Values YAML, manifest files, Helm charts, and OpenShift Params in a Harness Service (Kubernetes, Helm, Tanzu).
 
@@ -98,20 +100,20 @@ To merge, you simply add a subset of the values or additional values. Harness wi
 
 See:
 
-* [Override Harness Kubernetes Service Settings](/article/ycacqs7tlx-override-harness-kubernetes-service-settings) (for Kubernetes, Helm, OpenShift)
-* [Override Tanzu Manifests and Config Variables and Files](/article/r0vp331jnq-override-pcf-manifests-and-config-variables-and-files)
-* [Helm Environments](/article/134kx1k89d-3-helm-environments) (Native Helm)
+* [Override Harness Kubernetes Service Settings](../../../continuous-delivery/kubernetes-deployments/override-harness-kubernetes-service-settings.md) (for Kubernetes, Helm, OpenShift)
+* [Override Tanzu Manifests and Config Variables and Files](../../../continuous-delivery/pcf-deployments/override-pcf-manifests-and-config-variables-and-files.md)
+* [Helm Environments](../../../continuous-delivery/helm-deployment/3-helm-environments.md) (Native Helm)
 
 ### Other Service Configuration Types
 
 Some Service types support other Configuration types, such as
 
-* ConfigMap YAML — See [Override Harness Kubernetes Service Settings](/article/ycacqs7tlx-override-harness-kubernetes-service-settings).
-* Values YAML — See [Override Values YAML Files](/article/p453sikbqt-override-values-yaml-files) and [Override Variables at the Infrastructure Definition Level](/article/cc59hfou9c-override-variables-per-infrastructure-definition).
-* Service Configuration Files — See [Override a Service Configuration in an Environment](/article/4m2kst307m-override-service-files-and-variables-in-environments).
+* ConfigMap YAML — See [Override Harness Kubernetes Service Settings](../../../continuous-delivery/kubernetes-deployments/override-harness-kubernetes-service-settings.md).
+* Values YAML — See [Override Values YAML Files](../../../continuous-delivery/kubernetes-deployments/override-values-yaml-files.md) and [Override Variables at the Infrastructure Definition Level](../../../continuous-delivery/kubernetes-deployments/override-variables-per-infrastructure-definition.md).
+* Service Configuration Files — See [Override a Service Configuration in an Environment](../../../continuous-delivery/model-cd-pipeline/environments/override-service-files-and-variables-in-environments.md).
 
 ### See Also
 
-* [Pass Variables between Workflows](/article/gkmgrz9shh-how-to-pass-variables-between-workflows)
-* [Using Variables in Workflow Approvals](/article/5pspec1apl-use-variables-for-workflow-approval)
+* [Pass Variables between Workflows](../../../continuous-delivery/model-cd-pipeline/expressions/how-to-pass-variables-between-workflows.md)
+* [Using Variables in Workflow Approvals](../../../continuous-delivery/model-cd-pipeline/approvals/use-variables-for-workflow-approval.md)
 

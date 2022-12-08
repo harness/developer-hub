@@ -23,13 +23,13 @@ In this topic:
 
 ### Before You Begin
 
-* See [Harness Key Concepts](/article/4o7oqwih6h-harness-key-concepts).
+* See [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts).
 
 ### Visual Summary
 
 Here's an example configuration of Samba Server Artifact Source.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/7dghbx1dbl/1587762223114/image.png)The SMB dialog has the following fields.
+![](./static/add-smb-artifact-servers-04.png)The SMB dialog has the following fields.
 
 ### Step 1: Select Samba Server
 
@@ -59,7 +59,7 @@ Enter the Windows domain where the host containing the shared folder is located.
 
 Use a user account that has permissions to access the shared folder.
 
-For secrets and other sensitive settings, select or create a new [Harness Encrypted Text secret](/article/ygyvp998mu-use-encrypted-text-secrets).
+For secrets and other sensitive settings, select or create a new [Harness Encrypted Text secret](../../security/secrets-management/use-encrypted-text-secrets.md).
 
 Usage Scope is determined by the secret you selected.
 
@@ -69,7 +69,7 @@ Click **Submit**.
 
 When you use the SMB Artifact Server as an Artifact Source for a Service, you can specify a file or a folder for the artifact. This allows a folder to be copied to the deployment target host by the Harness Delegate. Here is the SMB Artifact Source dialog:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/7dghbx1dbl/1547590216618/image.png)In **Artifact Path**, you can specify a file or folder by name or using wildcards. The following are examples for matching different files and folders:
+![](./static/add-smb-artifact-servers-05.png)In **Artifact Path**, you can specify a file or folder by name or using wildcards. The following are examples for matching different files and folders:
 
 * todo-\*zip - All matching files, such todo-1.0.zip, todo-2.0.zip.
 * test/\*zip - All zip files under **test** folder.

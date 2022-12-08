@@ -15,7 +15,7 @@ This topic explains how to publish Workflow events. For information on how to pu
 
 ### Before You Begin
 
-* [Create a Workflow](https://docs.harness.io/article/o86qyexcab-tags-how-tos)
+* [Create a Workflow](../../model-cd-pipeline/workflows/tags-how-tos.md)
 * [Supported Platforms and Technologies](https://docs.harness.io/article/220d0ojx5y-supported-platforms)
 
 ### Review: Events Published
@@ -77,7 +77,7 @@ By default, Harness will select any available Delegate. You might want to use a 
 
 In **Delegate Selector**, select the Selector for the Delegate(s) you want to use.
 
-You add Selectors to Delegates to make sure that they're used to execute the command. For more information, see [Select Delegates with Selectors](https://docs.harness.io/article/c3fvixpgsl-select-delegates-for-specific-tasks-with-selectors).
+You add Selectors to Delegates to make sure that they're used to execute the command. For more information, see [Select Delegates with Selectors](../../../firstgen-platform/account/manage-delegates/select-delegates-for-specific-tasks-with-selectors.md).
 
 Harness will use Delegates matching the Selectors you add.
 

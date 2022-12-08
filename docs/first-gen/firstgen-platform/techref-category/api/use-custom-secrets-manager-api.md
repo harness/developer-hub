@@ -8,31 +8,31 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Currently, this feature is behind the Feature Flag `CUSTOM_SECRETS_MANAGER`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.Harness provides first-class support and built-in integration for the most common secret managers. If you are using a [secret manager](/article/au38zpufhr) that Harness does provide first-class support for, you can configure and use your secret manager by using the Harness Custom Secrets Manager.
+Currently, this feature is behind the Feature Flag `CUSTOM_SECRETS_MANAGER`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.Harness provides first-class support and built-in integration for the most common secret managers. If you are using a [secret manager](../../security/secrets-management/secret-management.md) that Harness does provide first-class support for, you can configure and use your secret manager by using the Harness Custom Secrets Manager.
 
 This topic describes how to create, update, and delete a Custom Secrets Manager using the Harness API.
 
-For steps on setting up a Custom Secret Manager using the Harness UI, see [Add and Use a Custom Secrets Manager](/article/ejaddm3ddb).
+For steps on setting up a Custom Secret Manager using the Harness UI, see [Add and Use a Custom Secrets Manager](../../security/secrets-management/add-and-use-a-custom-secrets-manager.md).
 
 In this topic:
 
-* [Before You Begin](/article/9grbkf5d1k-use-custom-secrets-manager-api#before_you_begin)
+* [Before You Begin](use-custom-secrets-manager-api.md#before-you-begin)
 * [Review: Read-Only Secret Manager](#review_read_only_secret_manager)
-* [Create a Custom Secrets Manager](/article/9grbkf5d1k-use-custom-secrets-manager-api#create_a_custom_secrets_manager)
-	+ [Request](/article/9grbkf5d1k-use-custom-secrets-manager-api#request)
-	+ [Query Variables](/article/9grbkf5d1k-use-custom-secrets-manager-api#query_variables)
-* [Update a Custom Secrets Manager](/article/9grbkf5d1k-use-custom-secrets-manager-api#update_a_custom_secrets_manager)
-	+ [Request](/article/9grbkf5d1k-use-custom-secrets-manager-api#request_2)
-	+ [Query Variables](/article/9grbkf5d1k-use-custom-secrets-manager-api#query_variables_2)
-* [Delete a Custom Secrets Manager](/article/9grbkf5d1k-use-custom-secrets-manager-api#delete_a_custom_secrets_manager)
-	+ [Request](/article/9grbkf5d1k-use-custom-secrets-manager-api#request_3)
-	+ [Query Variables](/article/9grbkf5d1k-use-custom-secrets-manager-api#query_variables_3)
+* [Create a Custom Secrets Manager](use-custom-secrets-manager-api.md#create-a-custom-secrets-manager)
+	+ [Request](use-custom-secrets-manager-api.md#request)
+	+ [Query Variables](use-custom-secrets-manager-api.md#query-variables)
+* [Update a Custom Secrets Manager](use-custom-secrets-manager-api.md#update-a-custom-secrets-manager)
+	+ [Request](use-custom-secrets-manager-api.md#request-2)
+	+ [Query Variables](use-custom-secrets-manager-api.md#query-variables-2)
+* [Delete a Custom Secrets Manager](use-custom-secrets-manager-api.md#delete-a-custom-secrets-manager)
+	+ [Request](use-custom-secrets-manager-api.md#request-3)
+	+ [Query Variables](use-custom-secrets-manager-api.md#query-variables-3)
 
 ### Before You Begin
 
-* Review the [Harness API](/article/tm0w6rruqv)
-* Review [Secrets Management Overview](/article/au38zpufhr)
-* [Add and Use a Custom Secrets Manager](/article/ejaddm3ddb)
+* Review the [Harness API](harness-api.md)
+* Review [Secrets Management Overview](../../security/secrets-management/secret-management.md)
+* [Add and Use a Custom Secrets Manager](../../security/secrets-management/add-and-use-a-custom-secrets-manager.md)
 
 ### Review: Read-Only Secret Manager
 

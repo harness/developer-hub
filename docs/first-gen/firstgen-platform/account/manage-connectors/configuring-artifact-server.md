@@ -30,7 +30,9 @@ Harness has a limit of a 1GB file upload. However, Harness directly streams from
 
 For artifacts larger than 1GB, use the **Metadata Only** option in the Harness Service **Artifact Source** settings.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/7dghbx1dbl/1642545039479/clean-shot-2022-01-18-at-14-30-26-2-x.png)### Review: Add AWS S3 and Google Cloud Storage Artifact Servers
+![](./static/configuring-artifact-server-00.png)
+
+### Review: Add AWS S3 and Google Cloud Storage Artifact Servers
 
 Amazon AWS and Google Cloud Platform are added to Harness as **Cloud Providers**, but they may also be used as artifact servers in a Harness Service.
 
@@ -38,7 +40,7 @@ You simply add them as Cloud Providers, and then when you are adding an artifact
 
 Here is what the Artifact Source list looks like in a Harness service when AWS S3 and Google Cloud Storage have been as added as Cloud Providers:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/7dghbx1dbl/1538674447613/image.png)For information on how to add AWS and GCP as Cloud Providers, see [Add Cloud Providers](/article/whwnovprrb-infrastructure-providers).
+![](./static/configuring-artifact-server-01.png)For information on how to add AWS and GCP as Cloud Providers, see [Add Cloud Providers](cloud-providers.md).
 
 ### Review: Anonymous Access
 
@@ -50,22 +52,22 @@ The following Artifact Servers support anonymous access for Docker images:
 
 If you are using anonymous access to obtain the artifact for your Service, you should ensure that host running the Harness Delegate has view and read permissions and that the container specification for the deployment platform you are using is set up for anonymous access. For example:
 
-* **Kubernetes** - Ensure that `imagePullSecrets` is removed from the container specification. For more information, see [Pull an Image from a Private Registry for Kubernetes](/article/g3bw9z659p-pull-an-image-from-a-private-registry-for-kubernetes). For Harness version 1 implementation of Kubernetes, `imagePullSecrets` is added by default. For version 2, `imagePullSecrets` is not added by default.
-* **ECS** - By default, ECS uses anonymous access. To use a private registry, you must use the RepositoryCredentials property type in the Container Specification. For more information, see [Using Private Docker Registry Authentication](https://docs.harness.io/article/riu73ehy2m-ecs-services#using_private_docker_registry_authentication).
+* **Kubernetes** - Ensure that `imagePullSecrets` is removed from the container specification. For more information, see [Pull an Image from a Private Registry for Kubernetes](../../../continuous-delivery/kubernetes-deployments/pull-an-image-from-a-private-registry-for-kubernetes.md). For Harness version 1 implementation of Kubernetes, `imagePullSecrets` is added by default. For version 2, `imagePullSecrets` is not added by default.
+* **ECS** - By default, ECS uses anonymous access. To use a private registry, you must use the RepositoryCredentials property type in the Container Specification. For more information, see [Using Private Docker Registry Authentication](../../../continuous-delivery/aws-deployments/ecs-deployment/ecs-services.md#using-private-docker-registry-authentication).
 
 ### Add Platform-Specific Artifact Servers
 
 See the following topics for platform-specific Artifact Servers:
 
-* [Add Azure DevOps Artifact Servers](/article/s4vi1cpfla-add-azure-dev-ops-artifact-servers)
-* [Add Jenkins Artifact Servers](/article/qa7lewndxq-add-jenkins-artifact-servers)
-* [Add Bamboo Artifact Servers](/article/feks6co940-add-bamboo-artifact-servers)
-* [Add Docker Registry Artifact Servers](/article/tdj2ghkqb0-add-docker-registry-artifact-servers)
-* [Add Nexus Artifact Servers](/article/6y6b8pkm12-add-nexus-artifact-servers)
-* [Add Artifactory Artifact Servers](/article/nj3p1t7v3x-add-artifactory-servers)
-* [Add Samba Server Artifact Servers](/article/o1ck4eay7a-add-smb-artifact-servers)
-* [Add SFTP Artifact Servers](/article/3d1awjkw57-add-sftp-artifact-servers)
-* [Add Helm Repository Artifact Servers](/article/0hrzb1zkog-add-helm-repository-servers)
+* [Add Azure DevOps Artifact Servers](add-azure-dev-ops-artifact-servers.md)
+* [Add Jenkins Artifact Servers](add-jenkins-artifact-servers.md)
+* [Add Bamboo Artifact Servers](add-bamboo-artifact-servers.md)
+* [Add Docker Registry Artifact Servers](add-docker-registry-artifact-servers.md)
+* [Add Nexus Artifact Servers](add-nexus-artifact-servers.md)
+* [Add Artifactory Artifact Servers](add-artifactory-servers.md)
+* [Add Samba Server Artifact Servers](add-smb-artifact-servers.md)
+* [Add SFTP Artifact Servers](add-sftp-artifact-servers.md)
+* [Add Helm Repository Artifact Servers](add-helm-repository-servers.md)
 
-You can also use a custom artifact source in a Harness Service that queries your artifact server via its API. See [Using Custom Artifact Sources](/article/jizsp5tsms-custom-artifact-source).
+You can also use a custom artifact source in a Harness Service that queries your artifact server via its API. See [Using Custom Artifact Sources](../../../continuous-delivery/model-cd-pipeline/setup-services/custom-artifact-source.md).
 

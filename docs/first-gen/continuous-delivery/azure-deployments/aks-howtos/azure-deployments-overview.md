@@ -53,11 +53,11 @@ In this guide, we create separate connections for AKS and ACR because, in some i
 7. **Deploy** the Workflow to AKS. The deployment will pull the Docker image from ACR at runtime.
 8. Advanced options not covered in this guide:
 
-	1. Create a Harness **Pipeline** for your deployment, including Workflows and Approval steps. For more information, see [Pipelines](https://docs.harness.io/article/zc1u96u6uj-pipeline-configuration).
+	1. Create a Harness **Pipeline** for your deployment, including Workflows and Approval steps. For more information, see [Pipelines](../../model-cd-pipeline/pipelines/pipeline-configuration.md).
 	
-	2. Create a Harness **Trigger** to automatically deploy your Workflows or Pipeline according to your criteria. For more information, see [Triggers](https://docs.harness.io/article/xerirloz9a-add-a-trigger-2).
+	2. Create a Harness **Trigger** to automatically deploy your Workflows or Pipeline according to your criteria. For more information, see [Triggers](../../model-cd-pipeline/triggers/add-a-trigger-2.md).
 	
-	3. Create Harness **Infrastructure Provisioners** for your deployment environments. For more information, see [Infrastructure Provisioners](https://docs.harness.io/article/o22jx8amxb-add-an-infra-provisioner).
+	3. Create Harness **Infrastructure Provisioners** for your deployment environments. For more information, see [Infrastructure Provisioners](../../model-cd-pipeline/infrastructure-provisioner/add-an-infra-provisioner.md).
 
 #### What Are We Going to Do?
 

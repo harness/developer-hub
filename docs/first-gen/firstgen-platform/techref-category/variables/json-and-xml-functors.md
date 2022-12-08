@@ -44,9 +44,11 @@ We'll use the the expression `${jsonpath('books[0].isbn')} == "9781593275846"` t
 
 Here is the HTTP step configured to compare in the **Assertion** setting:
 
-![](https://files.helpdocs.io/kw8ldg1itf/other/1569980301580/image.png)Here is the Harness deployment result with the successful comparison:
+![](./static/json-and-xml-functors-05.png)Here is the Harness deployment result with the successful comparison:
 
-![](https://files.helpdocs.io/kw8ldg1itf/other/1569980490657/image.png)#### select()
+![](./static/json-and-xml-functors-06.png)
+
+#### select()
 
 * **Syntax:** `select(string, string)`
 * **Description:** Select attribute values using a path.
@@ -79,15 +81,17 @@ The `httpResponseBody` argument is used to indicate that we want to select the p
 
 A common use of `select()` is in an HTTP command in a Workflow. For example, the following HTTP command uses a variable named **FIELD** in **Name** and the `select()` method in **Expression** to obtain the value `0.0.253-feature_NC-6595.8d268cd~nc1.6312a66` from the HTTP response payload at the URL specified in **URL**.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/wfvecw3yod/1558742272307/image.png)The value returned by the expression is stored in the variable **FIELD**.
+![](./static/json-and-xml-functors-07.png)The value returned by the expression is stored in the variable **FIELD**.
 
 In **Publish Variable Name**, the variable **VARS** is used to store the value of **FIELD** (the value obtained by the expression). The value for **FIELD** can now be referenced elsewhere in the Workflow using `${VARS.FIELD}`.
 
 When this HTTP command is deployed, **Deployments** will display the HTTP response:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/wfvecw3yod/1558743011008/image.png)If you echo the `${VARS.FIELD}` output variable in a successive Shell Script command, you will get the output of the `select()` expression stored in `FIELD`:
+![](./static/json-and-xml-functors-08.png)If you echo the `${VARS.FIELD}` output variable in a successive Shell Script command, you will get the output of the `select()` expression stored in `FIELD`:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/wfvecw3yod/1558743166406/image.png)##### Conditional Expressions with Select
+![](./static/json-and-xml-functors-09.png)
+
+##### Conditional Expressions with Select
 
 Using JSON PATH syntax, you can perform conditional expressions such as:
 
@@ -121,7 +125,7 @@ ${json.object(httpResponseBody).item}
 ```
 We can add the `object()` method to an HTTP step and output it using **Publish Variable Name**:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/wfvecw3yod/1559160904207/image.png)Next, we reference the output variable in a Shell Script step:
+![](./static/json-and-xml-functors-10.png)Next, we reference the output variable in a Shell Script step:
 
 
 ```
@@ -197,7 +201,7 @@ ${json.list("books", httpResponseBody).get(2).pages}
 ```
 We can add the `list()` method to an HTTP step and output it using **Publish Variable Name**:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/wfvecw3yod/1559167380354/image.png)Next, we reference the output variable in a Shell Script step:
+![](./static/json-and-xml-functors-11.png)Next, we reference the output variable in a Shell Script step:
 
 
 ```
@@ -219,7 +223,7 @@ JSON list:  460
 
 We add a variable to the HTTP step that contains the `${httpResponseBody}` variable and then pass the response in the output variable named `BODY`.
 
-![](https://files.helpdocs.io/kw8ldg1itf/other/1567114201698/image.png)If we simply render the `${VARS.BODY}` expression variable we get:
+![](./static/json-and-xml-functors-12.png)If we simply render the `${VARS.BODY}` expression variable we get:
 
 
 ```
@@ -302,7 +306,7 @@ ${xml.select("/bookstore/book[1]/title", httpResponseBody)}
 ```
 We can add the `xml.select()` method to an HTTP step and output it using **Publish Variable Name**:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/wfvecw3yod/1559168928099/image.png)Next, we reference the output variable in a Shell Script step:
+![](./static/json-and-xml-functors-13.png)Next, we reference the output variable in a Shell Script step:
 
 
 ```
@@ -316,4 +320,4 @@ XML select:  Everyday Italian
 ```
 You can also see the entire XML file in the deployment **Details** section:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/wfvecw3yod/1559169014702/image.png)
+![](./static/json-and-xml-functors-14.png)

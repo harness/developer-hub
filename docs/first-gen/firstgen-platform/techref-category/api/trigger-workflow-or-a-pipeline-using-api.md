@@ -12,16 +12,18 @@ This topic describes how to trigger a Workflow or a Pipeline using Harness Graph
 
 In this topic:
 
-* [Before You Begin](https://docs.harness.io/article/s3leksekny-trigger-workflow-or-a-pipeline-using-api#before_you_begin)
-* [Step 1: Fetch the Application ID](https://docs.harness.io/article/s3leksekny-trigger-workflow-or-a-pipeline-using-api#step_1_fetch_the_application_id)
-* [Step 2: Fetch the Workflow or Pipeline ID](https://docs.harness.io/article/s3leksekny-trigger-workflow-or-a-pipeline-using-api#step_2_fetch_the_workflow_or_pipeline_id)
-* [Step 3: Fetch the Execution Input](https://docs.harness.io/article/s3leksekny-trigger-workflow-or-a-pipeline-using-api#step_3_fetch_the_execution_input)
-* [Step 4: Start the Execution](https://docs.harness.io/article/s3leksekny-trigger-workflow-or-a-pipeline-using-api#step_4_start_the_execution)
+* [Before You Begin](trigger-workflow-or-a-pipeline-using-api.md#before-you-begin)
+* [Step 1: Fetch the Application ID](trigger-workflow-or-a-pipeline-using-api.md#step-1-fetch-the-application-id)
+* [Step 2: Fetch the Workflow or Pipeline ID](trigger-workflow-or-a-pipeline-using-api.md#step-2-fetch-the-workflow-or-pipeline-id)
+* [Step 3: Fetch the Execution Input](trigger-workflow-or-a-pipeline-using-api.md#step-3-fetch-the-execution-input)
+* [Step 4: Start the Execution](trigger-workflow-or-a-pipeline-using-api.md#step-4-start-the-execution)
 
-You can also deploy Workflow to multiple infrastructures simultaneously. See [Deploy Multiple Services Simultaneously using Barriers](/article/bc65k2imoi-deploy-to-multiple-infrastructures).### Before You Begin
+You can also deploy Workflow to multiple infrastructures simultaneously. See [Deploy Multiple Services Simultaneously using Barriers](../../../continuous-delivery/concepts-cd/deployments-overview/deploy-to-multiple-infrastructures.md).
 
-* [​Introduction to Harness GraphQL API](/article/tm0w6rruqv-harness-api)
-* [Harness API Explorer](/article/2rmd5i0e0h-harness-api-explorer)
+### Before You Begin
+
+* [​Introduction to Harness GraphQL API](harness-api.md)
+* [Harness API Explorer](harness-api-explorer.md)
 
 ### Step 1: Fetch the Application ID
 
@@ -55,7 +57,9 @@ Ensure that you provide details of the correct Environment, for example, Prod, Q
 
 This sample returns Workflow `ID` and `variables`. These details are needed to start the execution.
 
-You can also trigger Pipeline using the same API, but use `pipelineByName` API to fetch the Pipeline ID and Pipeline Variables.##### Request
+You can also trigger Pipeline using the same API, but use `pipelineByName` API to fetch the Pipeline ID and Pipeline Variables.
+
+##### Request
 
 
 ```
@@ -173,9 +177,9 @@ query {
 
 This sample shows how to start executing your Workflow.
 
-The values for `serviceInputs` can be found using the response in [Step 3: Fetch Execution Input](#step_3_fetch_execution_input) and the steps in [Fetch Artifact Source Details Using GraphQL APIs](/article/0z2b5a1x4x-artifact-source-api).
+The values for `serviceInputs` can be found using the response in [Step 3: Fetch Execution Input](#step_3_fetch_execution_input) and the steps in [Fetch Artifact Source Details Using GraphQL APIs](artifact-source-api.md).
 
-You can also see them in the Harness Manager Service using [Manually Select an Artifact](/article/eb3kfl8uls-service-configuration#manually_select_an_artifact).
+You can also see them in the Harness Manager Service using [Manually Select an Artifact](../../../continuous-delivery/model-cd-pipeline/setup-services/service-configuration.md#manually-select-an-artifact).
 
 ##### Request
 
@@ -258,7 +262,7 @@ mutation {
 ```
 ### Notes
 
-If you use the [Artifact Collection](/article/obqhjaabnl) step in a Build Workflow and template the **Artifact Source** setting by clicking the **[T]** button, you create a [Workflow variable](/article/766iheu1bk-add-workflow-variables-new-template). When you deploy the Workflow, you can provide a value for the variable. 
+If you use the [Artifact Collection](../../../continuous-delivery/build-deploy/3-build-workflow.md) step in a Build Workflow and template the **Artifact Source** setting by clicking the **[T]** button, you create a [Workflow variable](../../../continuous-delivery/model-cd-pipeline/workflows/add-workflow-variables-new-template.md). When you deploy the Workflow, you can provide a value for the variable. 
 
 By default, the name of the Workflow variable is `ArtifactStream`:
 

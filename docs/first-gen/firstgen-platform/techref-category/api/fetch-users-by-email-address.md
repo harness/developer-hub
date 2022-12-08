@@ -20,10 +20,10 @@ In this topic:
 
 ### Before You Begin
 
-* [​Introduction to Harness GraphQL API](/article/tm0w6rruqv-harness-api)
-* [Harness API Explorer](/article/2rmd5i0e0h-harness-api-explorer)
-* [Managing Users and Groups (RBAC)](/article/ven0bvulsj-users-and-permissions)
-* [Use Users and Groups API](/article/p9ssx4cv5t-sample-queries-create-users-user-groups-and-assign-permissions)
+* [​Introduction to Harness GraphQL API](harness-api.md)
+* [Harness API Explorer](harness-api-explorer.md)
+* [Managing Users and Groups (RBAC)](../../security/access-management-howtos/users-and-permissions.md)
+* [Use Users and Groups API](sample-queries-create-users-user-groups-and-assign-permissions.md)
 
 ### Step 1: Fetch Users by Email Address
 
@@ -95,7 +95,7 @@ Queries do not support wildcards in email addresses at this time.
 
 ### See Also
 
-* [Use Users and Groups API](/article/p9ssx4cv5t-sample-queries-create-users-user-groups-and-assign-permissions)
+* [Use Users and Groups API](sample-queries-create-users-user-groups-and-assign-permissions.md)
 
 ### Configure As Code
 

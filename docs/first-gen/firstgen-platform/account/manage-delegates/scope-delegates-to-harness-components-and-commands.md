@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-The Command setting in Delegate Scopes is deprecated and will be removed soon. Please use Task Category Map to scope commands to specific Delegates. See [Delegate Task Category Mapping](/article/nzuhppobyg-map-tasks-to-delegates-and-profiles).By default, a Delegate will perform all connections you set up and processes you run. To limit, or scope, a Delegate, you can set specific boundaries and associations for each Delegate you run.
+The Command setting in Delegate Scopes is deprecated and will be removed soon. Please use Task Category Map to scope commands to specific Delegates. See [Delegate Task Category Mapping](map-tasks-to-delegates-and-profiles.md).By default, a Delegate will perform all connections you set up and processes you run. To limit, or scope, a Delegate, you can set specific boundaries and associations for each Delegate you run.
 
 In this topic:
 
@@ -56,7 +56,9 @@ It is better to use **Scope Excluded** to exclude one Delegate from the **Produc
 
 The fields in the Delegate Scope dialog narrow the scope of the Delegate's operations as you move down the dialog. For example, you can pick an operation in Command, and the limit its scope further by picking the Application and Environment.Think of using the Delegate Scope dialog fields as ANDs: Command AND Application AND Environment Type, and so on.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/h9tkwmkrm7/1582920567776/image.png)If you want to OR Delegate Scope settings, you need to make separate Delegate Scopes and apply them to the same Delegate.#### Use a Display Name
+![](./static/scope-delegates-to-harness-components-and-commands-40.png)If you want to OR Delegate Scope settings, you need to make separate Delegate Scopes and apply them to the same Delegate.
+
+#### Use a Display Name
 
 Ensure that you enter a name in **Display Name**. This will help you and others quickly select the scope in the future.
 

@@ -162,7 +162,7 @@ This illustration provides examples of before and after enabling the Special Cha
 If something goes wrong after enabling the Special Characters feature, rollback will not work because the app family names have changed. Even Blue Green will not work as the previous app will belong to different family.
 
 
-Similarly, if you attempt a [Post-Prod Rollback](https://docs.harness.io/article/2f36rsbrve-post-deployment-rollback) after a successful deployment, it will not work.
+Similarly, if you attempt a [Post-Prod Rollback](../model-cd-pipeline/workflows/post-deployment-rollback.md) after a successful deployment, it will not work.
 
 
 Just remember that after enabling the Special Characters feature the next deployment is considered as a new first deployment. 

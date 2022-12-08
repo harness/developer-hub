@@ -12,17 +12,17 @@ You can retrieve, assign, clear, and delete tags associated with Delegates using
 
 ### Before You Begin
 
-* [Harness API](/article/tm0w6rruqv-harness-api)
-* [Using Tags](/article/nrxfix3i58-tags)
-* [Select Delegates with Selectors](/article/c3fvixpgsl-select-delegates-for-specific-tasks-with-selectors)
+* [Harness API](harness-api.md)
+* [Using Tags](../../account/tags/tags.md)
+* [Select Delegates with Selectors](../../account/manage-delegates/select-delegates-for-specific-tasks-with-selectors.md)
 
 ### Prerequisites
 
-* You will need a Harness API Key to send API requests. For more information, see [API Keys](https://docs.harness.io/article/smloyragsm-api-keys).
+* You will need a Harness API Key to send API requests. For more information, see [API Keys](../../security/access-management-howtos/api-keys.md).
 
 ### Fetch the List of Tags for a Given Delegate
 
-To send the API request, you will need your Harness Account Id, Delegate Id and [API Key](/article/smloyragsm-api-keys).
+To send the API request, you will need your Harness Account Id, Delegate Id and [API Key](../../security/access-management-howtos/api-keys.md).
 
 The Account Id can be found in every URL when using Harness following `account`:
 
@@ -56,7 +56,7 @@ curl --location --request GET 'https://app.harness.io/gateway/api/delegate/{your
 ```
 ### Assign a Givet List of Tags to a Specific Delegate
 
-To send the API request, you will need your Harness Account Id, Delegate Id and [API Key](/article/smloyragsm-api-keys).
+To send the API request, you will need your Harness Account Id, Delegate Id and [API Key](../../security/access-management-howtos/api-keys.md).
 
 The Account Id can be found in every URL when using Harness following `account`:
 
@@ -93,7 +93,7 @@ curl --location --request POST 'https://app.harness.io/gateway/api/delegate/{you
 ```
 ### Clear an Existing List of Tags and Assign a New List of Tags to Delegate
 
-To send the API request, you will need your Harness Account Id, Delegate Id and [API Key](/article/smloyragsm-api-keys).
+To send the API request, you will need your Harness Account Id, Delegate Id and [API Key](../../security/access-management-howtos/api-keys.md).
 
 The Account Id can be found in every URL when using Harness following `account`:
 
@@ -129,7 +129,7 @@ curl --location --request PUT 'https://app.harness.io/gateway/api/delegate/{your
 ```
 ### Delete all the Tags from a Given Delegate
 
-To send the API request, you will need your Harness Account Id, Delegate Id and [API Key](/article/smloyragsm-api-keys).
+To send the API request, you will need your Harness Account Id, Delegate Id and [API Key](../../security/access-management-howtos/api-keys.md).
 
 The Account Id can be found in every URL when using Harness following `account`:
 

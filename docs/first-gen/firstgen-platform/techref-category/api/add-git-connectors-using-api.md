@@ -8,21 +8,21 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic describes how to create, read, update, and delete [Git Connectors](/article/ay9hlwbgwa-add-source-repo-providers) using Harness GraphQL APIs.
+This topic describes how to create, read, update, and delete [Git Connectors](../../account/manage-connectors/add-source-repo-providers.md) using Harness GraphQL APIs.
 
-In this document, GitHub Repo is used as an example. But you can use Harness GraphQL APIs for the other supported [Harness Source Repo Providers](/article/ay9hlwbgwa-add-source-repo-providers) as well.
+In this document, GitHub Repo is used as an example. But you can use Harness GraphQL APIs for the other supported [Harness Source Repo Providers](../../account/manage-connectors/add-source-repo-providers.md) as well.
 
 In this topic:
 
-* [Before You Begin](https://docs.harness.io/article/qwkg2khtr7-add-git-connectors-using-api#before_you_begin)
-* [Step: Create a Git Connector](https://docs.harness.io/article/qwkg2khtr7-add-git-connectors-using-api#undefined)
-* [Step: Update a Git Connector](https://docs.harness.io/article/qwkg2khtr7-add-git-connectors-using-api#step_update_a_git_connector)
-* [Step: Delete a Git Connector](https://docs.harness.io/article/qwkg2khtr7-add-git-connectors-using-api#step_delete_a_git_connector)
+* [Before You Begin](add-git-connectors-using-api.md#before-you-begin)
+* [Step: Create a Git Connector](add-git-connectors-using-api.md#undefined)
+* [Step: Update a Git Connector](add-git-connectors-using-api.md#step-update-a-git-connector)
+* [Step: Delete a Git Connector](add-git-connectors-using-api.md#step-delete-a-git-connector)
 
 ### Before You Begin
 
-* [​Introduction to Harness GraphQL API](/article/tm0w6rruqv-harness-api)
-* [Harness API Explorer](/article/2rmd5i0e0h-harness-api-explorer)
+* [​Introduction to Harness GraphQL API](harness-api.md)
+* [Harness API Explorer](harness-api-explorer.md)
 
 ### Step: Create a Git Connector
 
@@ -60,9 +60,9 @@ The Query Variables follow this syntax, with `connectorType` identifying the G
 
 To fetch the `passwordSecretId` or `sshSettingId` use:
 
-* [Encrypted Text API](/article/omnfccj1n0-api-encrypted-text#get_a_secret_by_name)
-* [WinRM Credentials API](/article/2rlo5zw321-api-win-rm-credentials#get_a_secret_by_name)
-* [SSH Credentials API](/article/v65okfwfl2-api-ssh-credentials#get_a_secret_by_name)
+* [Encrypted Text API](api-encrypted-text.md#get-a-secret-by-name)
+* [WinRM Credentials API](api-win-rm-credentials.md#get-a-secret-by-name)
+* [SSH Credentials API](api-ssh-credentials.md#get-a-secret-by-name)
 
 The following sample query variable uses `passwordSecretId` to authenticate to the Git connector.
 
@@ -168,7 +168,7 @@ mutation UpdateConnector($connector: UpdateConnectorInput!) {
 ```
 ##### Query Variables
 
-The Query Variables follow this syntax, with `connectorType` identifying the Git Connector to update. See [Fetch the Connector ID](/article/qwkg2khtr7-add-git-connectors-using-api#fetch_the_connector_id) to get the connector ID details.
+The Query Variables follow this syntax, with `connectorType` identifying the Git Connector to update. See [Fetch the Connector ID](add-git-connectors-using-api.md#fetch-the-connector-id) to get the connector ID details.
 
 
 ```

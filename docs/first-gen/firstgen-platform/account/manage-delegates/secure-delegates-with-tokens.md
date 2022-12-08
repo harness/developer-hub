@@ -16,26 +16,26 @@ You can further secure Delegate to Harness communication by replacing the defaul
 
 In this topic:
 
-* [Before You Begin](https://docs.harness.io/article/r61qs08x2p-secure-delegates-with-tokens#before_you_begin)
-* [Step 1: Generate a New Token](https://docs.harness.io/article/r61qs08x2p-secure-delegates-with-tokens#step_1_generate_a_new_token)
-* [Option: Install a New Delegate with New Token](https://docs.harness.io/article/r61qs08x2p-secure-delegates-with-tokens#option_install_a_new_delegate_with_new_token)
-* [Option: Update and Restart Existing Delegate](https://docs.harness.io/article/r61qs08x2p-secure-delegates-with-tokens#option_update_and_restart_existing_delegate)
-	+ [Kubernetes Delegate](https://docs.harness.io/article/r61qs08x2p-secure-delegates-with-tokens#kubernetes_delegate)
-	+ [Shell Script Delegate](https://docs.harness.io/article/r61qs08x2p-secure-delegates-with-tokens#shell_script_delegate)
-	+ [Docker Delegate](https://docs.harness.io/article/r61qs08x2p-secure-delegates-with-tokens#docker_delegate)
-	+ [ECS Task Delegate](https://docs.harness.io/article/r61qs08x2p-secure-delegates-with-tokens#ecs_task_delegate)
-	+ [Helm Delegate](https://docs.harness.io/article/r61qs08x2p-secure-delegates-with-tokens#helm_delegate)
-* [Option: Revoke Tokens](https://docs.harness.io/article/r61qs08x2p-secure-delegates-with-tokens#option_revoke_tokens)
-* [See Also](https://docs.harness.io/article/r61qs08x2p-secure-delegates-with-tokens#see_also)
+* [Before You Begin](secure-delegates-with-tokens.md#before-you-begin)
+* [Step 1: Generate a New Token](secure-delegates-with-tokens.md#step-1-generate-a-new-token)
+* [Option: Install a New Delegate with New Token](secure-delegates-with-tokens.md#option-install-a-new-delegate-with-new-token)
+* [Option: Update and Restart Existing Delegate](secure-delegates-with-tokens.md#option-update-and-restart-existing-delegate)
+	+ [Kubernetes Delegate](secure-delegates-with-tokens.md#kubernetes-delegate)
+	+ [Shell Script Delegate](secure-delegates-with-tokens.md#shell-script-delegate)
+	+ [Docker Delegate](secure-delegates-with-tokens.md#docker-delegate)
+	+ [ECS Task Delegate](secure-delegates-with-tokens.md#ecs-task-delegate)
+	+ [Helm Delegate](secure-delegates-with-tokens.md#helm-delegate)
+* [Option: Revoke Tokens](secure-delegates-with-tokens.md#option-revoke-tokens)
+* [See Also](secure-delegates-with-tokens.md#see-also)
 
 ### Before You Begin
 
-* [Delegate Installation Overview](/article/igftn7rrtg-delegate-installation-overview)
-* [Install the Harness Kubernetes Delegate](/article/0hn6vdpeqz-install-kubernetes-delegate)
-* [Install the Harness Shell Script Delegate](/article/8o4cwqj1kv-install-shellscript-delegate)
-* [Install the Harness ECS Delegate](/article/oiy5fxawzq-install-ecs-delegate)
-* [Install the Harness Helm Delegate](/article/6n7fon8rit-using-the-helm-delegate)
-* [Install the Harness Docker Delegate](/article/hnvvwbhbdu-install-docker-delegate)
+* [Delegate Installation Overview](delegate-installation-overview.md)
+* [Install the Harness Kubernetes Delegate](install-kubernetes-delegate.md)
+* [Install the Harness Shell Script Delegate](install-shellscript-delegate.md)
+* [Install the Harness ECS Delegate](install-ecs-delegate.md)
+* [Install the Harness Helm Delegate](using-the-helm-delegate.md)
+* [Install the Harness Docker Delegate](install-docker-delegate.md)
 
 ### Step 1: Generate a New Token
 
@@ -47,19 +47,19 @@ Click **Delegate Tokens**.
 
 Here you can see, create, and revoke all Delegate tokens.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/r61qs08x2p/1624043645534/clean-shot-2021-06-18-at-12-13-20.png)Enter a name for the new token, and then click **Generate New Token**.
+![](./static/secure-delegates-with-tokens-20.png)Enter a name for the new token, and then click **Generate New Token**.
 
 The new token is created and its value is copied to your system clipboard. The new token also appears in the list using the name you gave it.
 
 Save the new token value. You cannot retrieve the token value after this.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/r61qs08x2p/1624043698796/clean-shot-2021-06-18-at-12-14-36.png)Now you can update the Delegate(s) with the new token.
+![](./static/secure-delegates-with-tokens-21.png)Now you can update the Delegate(s) with the new token.
 
 ### Option: Install a New Delegate with New Token
 
 When you install a new Delegate, you can select the token to use:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/r61qs08x2p/1624045651857/clean-shot-2021-06-18-at-12-47-19.png)After the new Delegate registers with Harness, you can:
+![](./static/secure-delegates-with-tokens-22.png)After the new Delegate registers with Harness, you can:
 
 * Remove any Delegates that use old tokens
 * Revoke the old tokens
@@ -205,11 +205,11 @@ Click **Delegate Tokens**.
 
 Here you can see, create, and revoke all Delegate tokens.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/r61qs08x2p/1624043645534/clean-shot-2021-06-18-at-12-13-20.png)Select the token you want to revoke, and click **Revoke**.
+![](./static/secure-delegates-with-tokens-23.png)Select the token you want to revoke, and click **Revoke**.
 
 Click **Confirm**. The token is revoked. The Harness Manager will not accept connections from any Delegates using this revoked token.
 
 ### See Also
 
-* [Approve or Reject Harness Delegates](/article/2uhtcqzaio-approve-or-reject-harness-delegates)
+* [Approve or Reject Harness Delegates](approve-or-reject-harness-delegates.md)
 

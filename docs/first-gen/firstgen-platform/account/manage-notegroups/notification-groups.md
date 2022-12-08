@@ -10,24 +10,17 @@ helpdocs_is_published: true
 
 Harness provides granular control of notifications, allowing you to control alert conditions, users, and groups across your account and in individual Workflows. This topic describes the major notification features and explains the procedure to add notification settings for user groups.
 
-In this topic:
-
-* [Before You Begin](#before_you_begin)
-* [Video Summary](#visual_summary)
-* [Review: Major Notification Features](#major_features)
-* [Step: Add Notification Settings for User Groups](#another_slug)
-* [Next Steps](#next_steps)
-
 
 ### Before You Begin
 
-* See [Harness Key Concepts](/article/4o7oqwih6h-harness-key-concepts).
+* See [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts).
 
 
 ### Video Summary
 
 The following video shows how to set up notifications using Harness PagerDuty integration as an example.
 
+<docvideo src="https://www.youtube.com/embed/YDyNj9EYiNk" />
 
 ### Review: Major Notification Features
 
@@ -46,9 +39,9 @@ To add notification settings to Harness User Groups, do the following:
 
 1. In Harness Manager, click **Continuous Security**, and then click **Access Management**.
 2. In **Access Management**, click **User Groups**.
-3. Click the name of an existing User Group, or create a new User Group with the steps in [Managing Users and Groups (RBAC)](/article/ven0bvulsj-users-and-permissions).
-4. Locate the **Notification Settings** section.![](https://files.helpdocs.io/kw8ldg1itf/articles/4hbsywt7nc/1559022310973/image.png)
-5. Click the More Options **⋮** menu, then click **Edit**. The **Notification Settings** dialog appears.![](https://files.helpdocs.io/kw8ldg1itf/articles/kf828e347t/1662040179070/screenshot-2022-09-01-at-7-18-22-pm.png)
+3. Click the name of an existing User Group, or create a new User Group with the steps in [Managing Users and Groups (RBAC)](../../security/access-management-howtos/users-and-permissions.md).
+4. Locate the **Notification Settings** section.![](./static/notification-groups-19.png)
+5. Click the More Options **⋮** menu, then click **Edit**. The **Notification Settings** dialog appears.![](./static/notification-groups-20.png)
 
 1. Configure the following notification settings and click **SUBMIT**.
 * **Use Members' Individual Email Addresses** – Enable this setting to have notifications sent to the individual email addresses of the group's configured Member Users.
@@ -56,14 +49,14 @@ To add notification settings to Harness User Groups, do the following:
 * **Group Email Addresses** – Enter any group email addresses where Harness can send notifications. The **Group Email Addresses** are always used, regardless of whether **Use Members' Individual Email Addresses** is enabled.
 * **Slack Channel Name** – Enter the name of a Slack channel where Harness can post notifications. You do not need to enter the exact name, as the **Slack Webhook URL** will point to the exact channel.
 * **Slack Webhook URL** – Enter the Slack channel Incoming Webhook URL.  
-See [Send Notifications Using Slack](/article/4blpfqwfdc-send-notification-using-slack).  
+See [Send Notifications Using Slack](send-notification-using-slack.md).  
 For steps on obtaining a Slack channel Incoming Webhook, see [Incoming Webhooks](https://api.slack.com/incoming-webhooks) from Slack.
-* **PagerDuty Integration Key** – Enter the key for a PagerDuty Account/Service to which Harness can send notifications. You can copy/paste this key from PagerDuty's **Configuration** > **Services** > **Service Details** dialog > **Integrations** tab, as shown below. (For details, see PagerDuty's documentation on [Creating Integrations](https://support.pagerduty.com/docs/services-and-integrations).)![](https://files.helpdocs.io/kw8ldg1itf/articles/4hbsywt7nc/1559072718198/image.png)
+* **PagerDuty Integration Key** – Enter the key for a PagerDuty Account/Service to which Harness can send notifications. You can copy/paste this key from PagerDuty's **Configuration** > **Services** > **Service Details** dialog > **Integrations** tab, as shown below. (For details, see PagerDuty's documentation on [Creating Integrations](https://support.pagerduty.com/docs/services-and-integrations).)![](./static/notification-groups-21.png)
 
 Once you click **SUBMIT**, the **Notification Settings** appear in the User Group page.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/4hbsywt7nc/1559072849954/image.png)
+![](./static/notification-groups-22.png)
 ### Next Steps
 
-* [Manage Alert Notifications](/article/rt7zvmzlgx-manage-alert-notifications)
+* [Manage Alert Notifications](manage-alert-notifications.md)
 

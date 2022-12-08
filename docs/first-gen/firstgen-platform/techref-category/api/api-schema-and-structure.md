@@ -14,14 +14,14 @@ Following GraphQL conventions, Harness schema is represented in terms of *fields
 
 The `!` following the type means that this field is *required*.In this topic:
 
-* [Before You Begin](https://docs.harness.io/article/kn8wsu80n4-api-schema-and-structure#before_you_begin)
-* [Fields](https://docs.harness.io/article/kn8wsu80n4-api-schema-and-structure#fields)
-* [Next Steps](https://docs.harness.io/article/kn8wsu80n4-api-schema-and-structure#next_steps)
+* [Before You Begin](api-schema-and-structure.md#before-you-begin)
+* [Fields](api-schema-and-structure.md#fields)
+* [Next Steps](api-schema-and-structure.md#next-steps)
 
 ### Before You Begin
 
-* [​Introduction to Harness GraphQL API](/article/tm0w6rruqv-harness-api)
-* [Harness API Explorer](/article/2rmd5i0e0h-harness-api-explorer)
+* [​Introduction to Harness GraphQL API](harness-api.md)
+* [Harness API Explorer](harness-api-explorer.md)
 
 ### Fields
 
@@ -56,16 +56,16 @@ The Harness API's schema includes fields representing the following Harness enti
 
 ### Next Steps
 
-* [Use API to Retrieve IDs by Name](/article/iuswbbvwnm-use-api-to-retrieve-i-ds-by-name)
-* [Use Cloud Providers API](/article/dfx0qi1zf7-use-cloud-providers-api)
-* [Use Audit Trails API](/article/k9d2zjdnw8-use-audit-trails-api)
-* [Use Workflows API](/article/ba4vs50071-use-workflows-api)
-* [Use Users and Groups API](/article/p9ssx4cv5t-sample-queries-create-users-user-groups-and-assign-permissions)
-* [Use Harness Applications API](/article/0wmvn5dgzn-use-harness-applications-api)
-* [Use Pipelines API](/article/rfqmu6cejy-use-pipelines-api)
-* [Use Services API](/article/lbw6cny911-use-services-api)
-* [Encrypted Text API](/article/omnfccj1n0-api-encrypted-text)
-* [Encrypted Files API](/article/jvhzdi1ztj-api-encrypted-files)
-* [SSH Credentials API](/article/v65okfwfl2-api-ssh-credentials)
-* [WinRM Credentials API](/article/2rlo5zw321-api-win-rm-credentials)
+* [Use API to Retrieve IDs by Name](use-api-to-retrieve-i-ds-by-name.md)
+* [Use Cloud Providers API](use-cloud-providers-api.md)
+* [Use Audit Trails API](use-audit-trails-api.md)
+* [Use Workflows API](use-workflows-api.md)
+* [Use Users and Groups API](sample-queries-create-users-user-groups-and-assign-permissions.md)
+* [Use Harness Applications API](use-harness-applications-api.md)
+* [Use Pipelines API](use-pipelines-api.md)
+* [Use Services API](use-services-api.md)
+* [Encrypted Text API](api-encrypted-text.md)
+* [Encrypted Files API](api-encrypted-files.md)
+* [SSH Credentials API](api-ssh-credentials.md)
+* [WinRM Credentials API](api-win-rm-credentials.md)
 

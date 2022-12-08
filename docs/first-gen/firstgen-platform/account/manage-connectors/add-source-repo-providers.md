@@ -12,14 +12,16 @@ Harness Source Repo Providers connect your Harness account with your Git platfor
 
 ### Connect to Your Repo
 
-* [Add a GitHub Repo](/article/sip9rr6ogy-add-github-repo)
-* [Add a Bitbucket Repo](/article/etl0yejzsm-add-bitbucket-repo)
-* [Add a GitLab Repo](/article/od1u7t4vgq-add-a-gitlab-repo)
-* [Add a CodeCommit Repo](/article/o6w4vvzgdg-add-a-code-commit-repo)
-* [Add an Azure DevOps Repo](/article/k89ioqv8fw-add-an-azure-dev-ops-repo)
+* [Add a GitHub Repo](add-github-repo.md)
+* [Add a Bitbucket Repo](add-bitbucket-repo.md)
+* [Add a GitLab Repo](add-a-gitlab-repo.md)
+* [Add a CodeCommit Repo](add-a-code-commit-repo.md)
+* [Add an Azure DevOps Repo](add-an-azure-dev-ops-repo.md)
 
-CodeCommit is supported as a Source Repo only. It cannot be used with [Harness Git Sync](/article/htvzryeqjw-configuration-as-code).Ensure your Git repo is initialized (`git init`) before connecting Harness to it.### See Also
+CodeCommit is supported as a Source Repo only. It cannot be used with [Harness Git Sync](../../config-as-code/configuration-as-code.md).Ensure your Git repo is initialized (`git init`) before connecting Harness to it.
 
-* To use Git repos to sync Harness accounts and Application, see [Configuration as Code](/article/htvzryeqjw-configuration-as-code) and [Onboard Teams Using Git](/article/3av5pc4goc-onboard-teams-using-git-ops).
-* To trigger Harness Workflows and Pipelines using Git Webhooks, see [Add a Trigger](/article/xerirloz9a-add-a-trigger-2).
+### See Also
+
+* To use Git repos to sync Harness accounts and Application, see [Configuration as Code](../../config-as-code/configuration-as-code.md) and [Onboard Teams Using Git](../../../continuous-delivery/harness-git-based/onboard-teams-using-git-ops.md).
+* To trigger Harness Workflows and Pipelines using Git Webhooks, see [Add a Trigger](../../../continuous-delivery/model-cd-pipeline/triggers/add-a-trigger-2.md).
 

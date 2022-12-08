@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Harness provides advanced tagging features for all or your Harness [Application entities](/article/bucothemly-application-configuration) (Services, Environments, Workflows, etc), as described in [Assign Metadata Using Tags](/article/nrxfix3i58-tags) and [Apply Filters Using Tags](/article/nyxf7g8erd-apply-filters-using-tags).
+Harness provides advanced tagging features for all or your Harness [Application entities](../../../continuous-delivery/model-cd-pipeline/applications/application-configuration.md) (Services, Environments, Workflows, etc), as described in [Assign Metadata Using Tags](../../account/tags/tags.md) and [Apply Filters Using Tags](../../account/tags/apply-filters-using-tags.md).
 
 You can use Tags to search for entities, ensuring that you only return the entities tagged with a specific name and value.
 
@@ -20,18 +20,18 @@ In this topic:
 
 ### Before You Begin
 
-* [Manage Tags](/article/mzcpqs3hrl-manage-tags)
-* [Apply Filters Using Tags](/article/nyxf7g8erd-apply-filters-using-tags)
+* [Manage Tags](../../account/tags/manage-tags.md)
+* [Apply Filters Using Tags](../../account/tags/apply-filters-using-tags.md)
 
 ### Step 1: Assign Tags to your Harness Entities
 
 Harness Tags are `name:value` pairs you can add to Harness Application entities.
 
-For instructions, see [Assign Metadata Using Tags](/article/nrxfix3i58-tags) and [Apply Filters Using Tags](/article/nyxf7g8erd-apply-filters-using-tags).
+For instructions, see [Assign Metadata Using Tags](../../account/tags/tags.md) and [Apply Filters Using Tags](../../account/tags/apply-filters-using-tags.md).
 
 To see the available Tags in your Harness account, click **Setup**, and then click **Tags Management**. Each Tag pairs a name with one of more values:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/0fzcxynkv0/1590786931887/image.png)Once you have Tags assigned, you can filter your API queries with them.
+![](./static/filter-api-queries-using-harness-tags-12.png)Once you have Tags assigned, you can filter your API queries with them.
 
 ### Step 2: Use TagFilter
 
@@ -51,7 +51,7 @@ The supported entity types are dependent on what you are querying.
 
 For example, if you are querying services, only APPLICATION is supported, which you can see when building the query:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/0fzcxynkv0/1596562200336/image.png)The entity types that might be available include the following: 
+![](./static/filter-api-queries-using-harness-tags-13.png)The entity types that might be available include the following: 
 
 * APPLICATION
 * ARTIFACT
@@ -99,4 +99,4 @@ Let's look at a query that returns all Applications using the **DocExample** Tag
 ```
 All Applications using that Tag are returned:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/0fzcxynkv0/1590787537502/image.png)
+![](./static/filter-api-queries-using-harness-tags-14.png)

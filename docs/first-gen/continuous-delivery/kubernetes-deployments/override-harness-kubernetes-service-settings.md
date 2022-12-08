@@ -37,7 +37,7 @@ You can also overwrite Service variables at the Phase-level of a multiple Phase 
 1. In **Override Type**, select **Variable Override**. The **Variable Override** options appear.
 2. In **Configuration Variable**, select a variable configured in the Service's **Config Variables** settings.
 3. In **Type**, select **Text** or **Encrypted Text**.
-4. In **Override Value**, enter the value to overwrite the variable value in the Service. If you selected **Encrypted Text** in Type, you can select an Encrypted Text values defined in [Secrets Management](https://docs.harness.io/article/au38zpufhr-secret-management).
+4. In **Override Value**, enter the value to overwrite the variable value in the Service. If you selected **Encrypted Text** in Type, you can select an Encrypted Text values defined in [Secrets Management](../../firstgen-platform/security/secrets-management/secret-management.md).
 
 ### Option: File Override
 
@@ -54,7 +54,7 @@ You can also overwrite Service variables at the Phase-level of a multiple Phase 
 ### Option: Helm Chart for Specific Service
 
 1. In **Override Type**, select **Helm Chart**.
-2. In **Helm Repository**, select a Helm Chart Repo that you have set up as a [Helm Repository Artifact Server](https://docs.harness.io/article/0hrzb1zkog-add-helm-repository-servers). See [Use a Helm Repository with Kubernetes](use-a-helm-repository-with-kubernetes.md).
+2. In **Helm Repository**, select a Helm Chart Repo that you have set up as a [Helm Repository Artifact Server](../../firstgen-platform/account/manage-connectors/add-helm-repository-servers.md). See [Use a Helm Repository with Kubernetes](use-a-helm-repository-with-kubernetes.md).
 
 #### Notes
 

@@ -14,27 +14,27 @@ The REST APIs allow you to perform CRUD operations on Harness YAML entities.
 
 The CRUD REST API is different from Harness GraphQL API. For information on the GraphQL API, see [Harness GraphQL API FAQs](https://docs.harness.io/article/jbjam276xn-harness-graph-ql-api-faqs).In this topic:
 
-* [Before You Begin](https://docs.harness.io/article/bbmhnoqrzw-config-as-code-using-rest-apis#Before-You-Begin)
-* [Harness Permissions Required](https://docs.harness.io/article/bbmhnoqrzw-config-as-code-using-rest-apis#Harness-Permissions-Required)
-* [REST API Summary](https://docs.harness.io/article/bbmhnoqrzw-config-as-code-using-rest-apis#REST-API-Summary)
-* [Create and Update Multiple YAML Entities](https://docs.harness.io/article/bbmhnoqrzw-config-as-code-using-rest-apis#Create-and-Update-Multiple-YAML-Entities)
-* [Delete YAML Entities](https://docs.harness.io/article/bbmhnoqrzw-config-as-code-using-rest-apis#Delete-YAML-Entities)
-* [Create and Update a Single YAML Entity](https://docs.harness.io/article/bbmhnoqrzw-config-as-code-using-rest-apis#Create-and-Update-a-Single-YAML-Entity)
-* [Fetch Config-as-Code Directory Structure](https://docs.harness.io/article/bbmhnoqrzw-config-as-code-using-rest-apis#Fetch-Config-as-Code-Directory-Structure)
-* [Fetch YAML Content for a Single Entity](https://docs.harness.io/article/bbmhnoqrzw-config-as-code-using-rest-apis#Fetch-YAML-Content-for-a-Single-Entity)
-* [Notes](https://docs.harness.io/article/bbmhnoqrzw-config-as-code-using-rest-apis#Notes)
+* [Before You Begin](config-as-code-using-rest-apis.md#Before-You-Begin)
+* [Harness Permissions Required](config-as-code-using-rest-apis.md#Harness-Permissions-Required)
+* [REST API Summary](config-as-code-using-rest-apis.md#REST-API-Summary)
+* [Create and Update Multiple YAML Entities](config-as-code-using-rest-apis.md#Create-and-Update-Multiple-YAML-Entities)
+* [Delete YAML Entities](config-as-code-using-rest-apis.md#Delete-YAML-Entities)
+* [Create and Update a Single YAML Entity](config-as-code-using-rest-apis.md#Create-and-Update-a-Single-YAML-Entity)
+* [Fetch Config-as-Code Directory Structure](config-as-code-using-rest-apis.md#Fetch-Config-as-Code-Directory-Structure)
+* [Fetch YAML Content for a Single Entity](config-as-code-using-rest-apis.md#Fetch-YAML-Content-for-a-Single-Entity)
+* [Notes](config-as-code-using-rest-apis.md#Notes)
 
 ### Before You Begin
 
-* [Configuration as Code Overview](https://docs.harness.io/article/htvzryeqjw-configuration-as-code)
-* [Managing Users and Groups (RBAC)](https://docs.harness.io/article/ven0bvulsj-users-and-permissions)
-* [API Keys](https://docs.harness.io/article/smloyragsm-api-keys)
+* [Configuration as Code Overview](configuration-as-code.md)
+* [Managing Users and Groups (RBAC)](../security/access-management-howtos/users-and-permissions.md)
+* [API Keys](../security/access-management-howtos/api-keys.md)
 
 ### Harness Permissions Required
 
-The Harness User account that executes the API must belong to a User Group with the following [Account Permission](https://docs.harness.io/article/ven0bvulsj-users-and-permissions#account_permissions):
+The Harness User account that executes the API must belong to a User Group with the following [Account Permission](../security/access-management-howtos/users-and-permissions.md#account-permissions):
 
-* **Account Permission:** `Administer Other Account Functions`.![](https://files.helpdocs.io/kw8ldg1itf/articles/bbmhnoqrzw/1642108443556/clean-shot-2022-01-13-at-13-13-16.png)
+* **Account Permission:** `Administer Other Account Functions`.![](./static/config-as-code-using-rest-apis-20.png)
 
 ### Granular Permissions for CRUD
 
@@ -46,7 +46,7 @@ For example, to create a Service within an Application, the User Group must have
 
 Harness provides CRUD APIs that allow you to have full control over your account’s Config-as-Code YAML without having to use the Harness Manager or sync with a Git repo.
 
-Authorization for the APIs is performed using Harness [API keys](https://docs.harness.io/article/smloyragsm-api-keys). Ensure you have Harness API keys before using the commands below.
+Authorization for the APIs is performed using Harness [API keys](../security/access-management-howtos/api-keys.md). Ensure you have Harness API keys before using the commands below.
 
 For each API, you use a CURL command that contains the URL and ID of the Harness account and the type of change to make:
 
@@ -227,7 +227,7 @@ At this time, this API supports bearer token authentication only. It will be upd
 
 For example, here’s the response from a `/api/setup-as-code/yaml/directory` API call:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/bbmhnoqrzw/1627559027665/image.png)For all Application-level entities like Service, Workflow, Pipeline etc., you can use the API to fetch YAML content.
+![](./static/config-as-code-using-rest-apis-21.png)For all Application-level entities like Service, Workflow, Pipeline etc., you can use the API to fetch YAML content.
 
 **URL:** `/api/setup-as-code/yaml/{node.restName}/{node.uuid}?accountId={accountId}&appId={appId}`
 
@@ -259,4 +259,4 @@ Similarly, for all account-level entities like Cloud providers and Connector, th
 
 * To find the bearer token for your session, open Dev Tools in your browser and search for **bearer**:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/bbmhnoqrzw/1627559205650/image.png)
+![](./static/config-as-code-using-rest-apis-22.png)

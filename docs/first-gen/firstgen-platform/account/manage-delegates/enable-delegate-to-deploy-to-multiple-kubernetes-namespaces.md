@@ -27,8 +27,8 @@ In this topic:
 
 ### Before You Begin
 
-* [Harness Delegate Overview](/article/h9tkwmkrm7-delegate-installation)
-* [Install the Harness Kubernetes Delegate](/article/0hn6vdpeqz-install-kubernetes-delegate)
+* [Harness Delegate Overview](delegate-installation.md)
+* [Install the Harness Kubernetes Delegate](install-kubernetes-delegate.md)
 
 ### Visual Summary
 
@@ -40,7 +40,7 @@ By default, the Delegate resides in a namespace in the target cluster with a ser
 
 The is called this the central model. Here is a simple illustration of the central model:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/p91u0bxtaf/1581641324015/image.png)The central model is simple and efficient, but it does not let you restrict teams to deploying into specific namespaces. Any team member can deploy to any namespace.
+![](./static/enable-delegate-to-deploy-to-multiple-kubernetes-namespaces-03.png)The central model is simple and efficient, but it does not let you restrict teams to deploying into specific namespaces. Any team member can deploy to any namespace.
 
 As an alternative, you can use a distributed model.
 
@@ -50,7 +50,7 @@ This model places a Delegate in each namespace in the cluster. It limits each De
 
 Here is the illustration of the distributed model:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/p91u0bxtaf/1581641790397/image.png)In this model, each team uses their own Delegate for their deployments into their own namespace.
+![](./static/enable-delegate-to-deploy-to-multiple-kubernetes-namespaces-04.png)In this model, each team uses their own Delegate for their deployments into their own namespace.
 
 The distributed model is more complex, but it prevents a team member from deploying into the wrong namespace.
 
@@ -93,7 +93,7 @@ There are two ways for the Kubernetes Cluster Could Provider to get credentials:
 * Inherit from selected Delegate
 * Enter manually
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/p91u0bxtaf/1587675160709/image.png)Both methods can use the service account to provide either the central or distributed models.
+![](./static/enable-delegate-to-deploy-to-multiple-kubernetes-namespaces-05.png)Both methods can use the service account to provide either the central or distributed models.
 
 #### Inherit from selected Delegate
 
@@ -210,7 +210,9 @@ echo $TOKEN
 ```
 Next, enter the service account token in the Kubernetes Cluster Cloud Provider:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/p91u0bxtaf/1581645697852/image.png)### Option 2: Add Service Account to Delegate Spec
+![](./static/enable-delegate-to-deploy-to-multiple-kubernetes-namespaces-06.png)
+
+### Option 2: Add Service Account to Delegate Spec
 
 In you are using the **Inherit from selected Delegate** option in the Kubernetes Cloud Provider, add the service account to the Delegate YAML. See `serviceAccountName: mynamespace-delegate-sa` below:
 
@@ -609,7 +611,7 @@ Modify these files in the same way that you modified the Kubernetes Delegate YAM
 
 You will delete **cluster-rolebinding.yaml**. and replace it a new file(s) for the service account, Role, and RoleBinding.
 
-For details on installing the Helm Delegate, see [Install the Harness Helm Delegate](/article/6n7fon8rit-using-the-helm-delegate).
+For details on installing the Helm Delegate, see [Install the Harness Helm Delegate](using-the-helm-delegate.md).
 
 ### Review: Enable Skip Validation in Kubernetes Cluster Cloud Provider
 
@@ -632,5 +634,5 @@ For this method, do the following:
 
 ### Next Steps
 
-* [Add Cloud Providers](/article/whwnovprrb-cloud-providers)
+* [Add Cloud Providers](../manage-connectors/cloud-providers.md)
 

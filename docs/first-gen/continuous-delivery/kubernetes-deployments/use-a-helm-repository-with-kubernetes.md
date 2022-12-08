@@ -19,26 +19,26 @@ You can also use Helm charts in a Git repo. For more information, see [Link Reso
 
 ### Migrating from a Harness Helm Deployment Type?
 
-If you are migrating from a Harness Helm deployment type to the Kubernetes deployment type, be aware that Helm charts in Kubernetes V2 require that you set up a Harness [Helm Artifact Server](https://docs.harness.io/article/7dghbx1dbl-configuring-artifact-server) to connect to your remote Helm chart repo.
+If you are migrating from a Harness Helm deployment type to the Kubernetes deployment type, be aware that Helm charts in Kubernetes V2 require that you set up a Harness [Helm Artifact Server](../../firstgen-platform/account/manage-connectors/configuring-artifact-server.md) to connect to your remote Helm chart repo.
 
 ### Step 1: Helm Repository Artifact Server
 
 Before you can link a Helm Repository to your Harness Kubernetes Service, you create a Harness Artifact Server to connect Harness with a Helm Repository.
 
-See [Add Helm Repository Artifact Servers](https://docs.harness.io/article/0hrzb1zkog-add-helm-repository-servers).
+See [Add Helm Repository Artifact Servers](../../firstgen-platform/account/manage-connectors/add-helm-repository-servers.md).
 
 ### Step 2: Link the Service with a Helm Repository
 
 1. In your Harness Kubernetes Service, in **Manifests**, click **Link Remote Manifests**. The **Remote Manifests** settings appear.
 2. In **Manifest Format**, select **Helm Chart from Helm Repository**.
-3. In **Helm Repository**, select the Helm Chart Repository you added as a Harness Artifact Server. For more information, see [Add Helm Repository Artifact Servers](https://docs.harness.io/article/0hrzb1zkog-add-helm-repository-servers).If you are using GCS or a storage service for your Helm Repository, you will see a **Base Path** setting.
+3. In **Helm Repository**, select the Helm Chart Repository you added as a Harness Artifact Server. For more information, see [Add Helm Repository Artifact Servers](../../firstgen-platform/account/manage-connectors/add-helm-repository-servers.md).If you are using GCS or a storage service for your Helm Repository, you will see a **Base Path** setting.
 4. In **Base Path** (GCS or a storage service only), enter the path to the charts' bucket folder or a Workflow variable expression.
 	1. If you use a charts' bucket folder, simply enter the name of the folder. Whether you need to specify a single folder (e.g. `charts`) a folder path (e.g. `helm/charts`) depends on the Helm Chart Repository you added as a Harness Artifact Server.
-	2. If you use a Workflow variable expression, you can enter in the expression as part of the path. For example, `/Myservice/Chart/${workflow.variables.branchName}/` or simply `${workflow.variables.chartFolder}`.For more information, see [Kubernetes Workflow Variable Expressions](workflow-variables-expressions.md) and [Variables and Expressions in Harness](https://docs.harness.io/article/9dvxcegm90-variables).
+	2. If you use a Workflow variable expression, you can enter in the expression as part of the path. For example, `/Myservice/Chart/${workflow.variables.branchName}/` or simply `${workflow.variables.chartFolder}`.For more information, see [Kubernetes Workflow Variable Expressions](workflow-variables-expressions.md) and [Variables and Expressions in Harness](../../firstgen-platform/techref-category/variables/variables.md).
 	1. If the chart is in the **root** folder of the repository location set in the Helm Chart Repository you added as a Harness Artifact Server, leave **Base Path** empty.
 5. In **Chart Name**, enter the name of the chart in that repo. For example, we use **nginx**.  
 	In some cases, you might have different charts in different repos, and you do not want to create a new Harness Service for each chart. To address this, you have the following options:
-	* You can use a Service variable for the **Chart Name** setting. You can then supply the value at deployment runtime. See [Add Service Config Variables](https://docs.harness.io/article/q78p7rpx9u-add-service-level-config-variables). You can also override this setting using an Environment Service Override Variable. [Override a Service Configuration in an Environment](https://docs.harness.io/article/4m2kst307m-override-service-files-and-variables-in-environments).
+	* You can use a Service variable for the **Chart Name** setting. You can then supply the value at deployment runtime. See [Add Service Config Variables](../model-cd-pipeline/setup-services/add-service-level-config-variables.md). You can also override this setting using an Environment Service Override Variable. [Override a Service Configuration in an Environment](../model-cd-pipeline/environments/override-service-files-and-variables-in-environments.md).
 	* You can also override the Helm chart in the Service using a Helm chart override in an Environment. See [Override Harness Kubernetes Service Settings](override-harness-kubernetes-service-settings.md).
 6. In **Chart Version**, enter the chart version to use. This is found in the **Chart.yaml** **version** label. For this guide, we will use **1.0.1**. If you leave this field empty Harness gets the latest chart.
 7. In **Helm Version**, select the Helm version of your chart, such as **v3**.
@@ -83,7 +83,7 @@ If you use Helm commands in the Harness Service and in a Workflow deploying that
 
 #### Harness Variable Expressions are Supported
 
-You can use [Harness variable expressions](https://docs.harness.io/article/9dvxcegm90-variables) in any of the command options settings. For example, [Service Config variables](https://docs.harness.io/article/q78p7rpx9u-add-service-level-config-variables) and [Workflow variables](https://docs.harness.io/article/766iheu1bk-add-workflow-variables-new-template).
+You can use [Harness variable expressions](../../firstgen-platform/techref-category/variables/variables.md) in any of the command options settings. For example, [Service Config variables](../model-cd-pipeline/setup-services/add-service-level-config-variables.md) and [Workflow variables](../model-cd-pipeline/workflows/add-workflow-variables-new-template.md).
 
 ### Option: Override Helm Chart Values YAML
 

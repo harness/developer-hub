@@ -49,7 +49,7 @@ When you create a Feature Flag, you also create different options to label the l
 2. Select **Boolean**.
 3. In **About the Flag**, in **Name**, enter a name for your Flag and click **Next**.
 
-> **☆ NOTE —** When you name a Flag, Harness automatically generates its identifier. You can edit the Identifier when you are creating the Flag, but not after it is saved. If you rename the Flag, the Identifier remains the same. For more information, go to [Entity Identifier Reference](https://ngdocs.harness.io/article/li0my8tcz3-entity-identifier-reference).
+> **☆ NOTE —** When you name a Flag, Harness automatically generates its identifier. You can edit the Identifier when you are creating the Flag, but not after it is saved. If you rename the Flag, the Identifier remains the same. For more information, go to [Entity Identifier Reference](../../../platform/20_References/entity-identifier-reference.md).
 
 4. To make the Feature Flag permanent, select the **This is a permanent flag** checkbox. Permanent Flags are flags you intend to stay in your system indefinitely, so we will never mark them as potentially stale.
 5. Click **Next**.

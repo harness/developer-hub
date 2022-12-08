@@ -44,11 +44,11 @@ Simply click **Overwrite All** and then **Submit** to replace the default files.
 
 ### Step 2: Upload Remote Manifest and Variable Files
 
-Harness checks out manifest files from your repo at deployment runtime. If any files in the repository contain non UTF-8 characters (binary, zip, etc), the checkout fails. For example, sometimes an operating system file such as .DS\_Store files get added to a repo.Once you have set up a Harness [Source Repro Provider](https://docs.harness.io/article/ay9hlwbgwa-add-source-repo-providers) using your remote Git repo, you can use TAS files from the remote repo in your TAS Service **Manifests** section.
+Harness checks out manifest files from your repo at deployment runtime. If any files in the repository contain non UTF-8 characters (binary, zip, etc), the checkout fails. For example, sometimes an operating system file such as .DS\_Store files get added to a repo.Once you have set up a Harness [Source Repro Provider](../../firstgen-platform/account/manage-connectors/add-source-repo-providers.md) using your remote Git repo, you can use TAS files from the remote repo in your TAS Service **Manifests** section.
 
 To use remote files, do the following:
 
-1. Create a [Harness Source Repro Provider](https://docs.harness.io/article/ay9hlwbgwa-add-source-repo-providers) that connects to the branch where your remote files are located.  
+1. Create a [Harness Source Repro Provider](../../firstgen-platform/account/manage-connectors/add-source-repo-providers.md) that connects to the branch where your remote files are located.  
    When you set up the Source Repro Provider, you specify the repo URL and branch name:
    ![](./static/upload-local-and-remote-pcf-resource-files-66.png)
 2. In the TAS Service, in **Manifests**, click the options button, and then click **Link Remote Manifests**.

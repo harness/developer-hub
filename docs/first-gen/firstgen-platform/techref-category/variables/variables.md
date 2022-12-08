@@ -14,14 +14,16 @@ You can create your own variable expressions to pass information through your Pi
 
 For example, you can use an expression containing the variable name `account` to refer to account properties:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/9dvxcegm90/1537295053592/image.png)### Overview
+![](./static/variables-15.png)
+
+### Overview
 
 Harness includes two types of variables that you can use in expressions:
 
 * **Harness built-in variables:** There are variables scoped to different entities—such as Applications, Services, Environments, and Workflows—and variables that provide information about deployment environments.
 * **User-created variables:** You can create variables at the account level and application level, which can be used across your Harness applications. You can also create variables in Application entities, to be replaced by users when configuring or deploying a CD pipeline.
 
-All expressions are evaluated immediately and use the `${}` delimiters. Harness uses the [Java Expression Language (JEXL)](http://commons.apache.org/proper/commons-jexl/) expression language to render variables.For information on passing variables from a Trigger to a Workflow, see [Passing Variables into Workflows from Triggers](/article/revc37vl0f-passing-variable-into-workflows).
+All expressions are evaluated immediately and use the `${}` delimiters. Harness uses the [Java Expression Language (JEXL)](http://commons.apache.org/proper/commons-jexl/) expression language to render variables.For information on passing variables from a Trigger to a Workflow, see [Passing Variables into Workflows from Triggers](../../../continuous-delivery/model-cd-pipeline/expressions/passing-variable-into-workflows.md).
 
 To use a variable, you enter the variable name inside `${...}` expression. For example, to obtain the name of a Harness application, you would use the expression `${app.name}`.
 
@@ -33,9 +35,11 @@ ${instance.hostName.split('\.')[0]}
 ```
 A split method is called with the argument **('\.')**, and the result is a Java array, returning the first item, **[0]**.
 
-For more information, see [Objects and Functors](https://docs.harness.io/article/9dvxcegm90-variables#objects_and_functors).
+For more information, see [Objects and Functors](variables.md#objects-and-functors).
 
-Do not use hyphens (dashes) in variable names, as some Linux distributions and deployment-related software do not allow them.#### JEXL and Java String API
+Do not use hyphens (dashes) in variable names, as some Linux distributions and deployment-related software do not allow them.
+
+#### JEXL and Java String API
 
 JEXL supports all [Java String methods](https://docs.oracle.com/javase/8/docs/api/?java/lang/String.html). You can use these methods wherever you use expressions in Harness.
 
@@ -55,7 +59,7 @@ ip-${instanceDetails.aws.ip.replaceAll("\\.","-")}.us-east-2.compute.internal
 ```
 ### Limitations
 
-See [Variable Expression Limitations and Restrictions](/article/9ob3r6v9tg-variable-expression-name-restrictions).
+See [Variable Expression Limitations and Restrictions](variable-expression-name-restrictions.md).
 
 ### What Expressions Am I Already Using?
 
@@ -63,8 +67,8 @@ An easy way to see what expressions are already used in your deployments is to l
 
 1. In Harness, click **Continuous Deployment**.
 2. Locate a deployment and open it.
-3. Expand the deployment flowchart and then click any step in the deployment. You will see its details displayed.![](https://files.helpdocs.io/kw8ldg1itf/articles/9dvxcegm90/1575581640461/image.png)
-4. In the execution details, click the option button and click **View Execution Context**.![](https://files.helpdocs.io/kw8ldg1itf/articles/9dvxcegm90/1575581715807/image.png)The expressions used in that step are displayed.![](https://files.helpdocs.io/kw8ldg1itf/articles/9dvxcegm90/1575581799701/image.png)If an expression is too long to view, hover over it to see its full name.
+3. Expand the deployment flowchart and then click any step in the deployment. You will see its details displayed.![](./static/variables-16.png)
+4. In the execution details, click the option button and click **View Execution Context**.![](./static/variables-17.png)The expressions used in that step are displayed.![](./static/variables-18.png)If an expression is too long to view, hover over it to see its full name.
 
 Now you can reference those expressions elsewhere in your Workflow or Pipeline, in the set up of the Workflow, or in command such as Shell Script.
 
@@ -72,17 +76,17 @@ Now you can reference those expressions elsewhere in your Workflow or Pipeline, 
 
 You can create variables in Services and Workflows.
 
-* [Service Configuration Variables](/article/eb3kfl8uls-service-configuration#configuration_variables_and_files) are variables you can use in the manifests and specifications in your Service, and can be overwritten by [Service Variable Overrides](/article/n39w05njjv-environment-configuration#override_a_service_configuration) in Environments.
-* [Workflow Variables](/article/m220i1tnia-workflow-configuration#add_workflow_variables) let you add parameters to your Workflow that can be used throughout the Workflow. When the Workflow is deployed, values for the variables can be provided or required. Values can also be passed into the Workflow from Triggers. See [Passing Variables into Workflows and Pipelines from Triggers](/article/revc37vl0f-passing-variable-into-workflows).
+* [Service Configuration Variables](../../../continuous-delivery/model-cd-pipeline/setup-services/service-configuration.md#configuration-variables-and-files) are variables you can use in the manifests and specifications in your Service, and can be overwritten by [Service Variable Overrides](../../../continuous-delivery/model-cd-pipeline/environments/environment-configuration.md#override-a-service-configuration) in Environments.
+* [Workflow Variables](../../../continuous-delivery/model-cd-pipeline/workflows/workflow-configuration.md#add-workflow-variables) let you add parameters to your Workflow that can be used throughout the Workflow. When the Workflow is deployed, values for the variables can be provided or required. Values can also be passed into the Workflow from Triggers. See [Passing Variables into Workflows and Pipelines from Triggers](../../../continuous-delivery/model-cd-pipeline/expressions/passing-variable-into-workflows.md).
 
 Some Workflow commands let you publish their output as variables:
 
-* [Jenkins](/article/5fzq9w0pq7-using-the-jenkins-command)
-* [Jira](/article/077hwokrpr-jira-integration#jira_issue_variables)
-* [Shell Script](/article/1fjrjbau7x-capture-shell-script-step-output#using_shell_script_step)
-* [HTTP](/article/wfvecw3yod-json-and-xml-functors)
+* [Jenkins](../../../continuous-delivery/model-cd-pipeline/workflows/using-the-jenkins-command.md)
+* [Jira](../../../continuous-delivery/model-cd-pipeline/workflows/jira-integration.md#jira-issue-variables)
+* [Shell Script](../../../continuous-delivery/model-cd-pipeline/workflows/capture-shell-script-step-output.md#using-shell-script-step)
+* [HTTP](json-and-xml-functors.md)
 
-Variables are also integrated into [Workflow Approval](/article/0ajz35u2hy-approvals#create_variable_workflow) and [Pipeline Approval](/article/0ajz35u2hy-approvals#approving_pipeline_stages_using_variables) steps.
+Variables are also integrated into [Workflow Approval](../../../continuous-delivery/model-cd-pipeline/approvals/approvals.md#create-variable-workflow) and [Pipeline Approval](../../../continuous-delivery/model-cd-pipeline/approvals/approvals.md#approving-pipeline-stages-using-variables) steps.
 
 ### When are Variable Expressions Evaluated?
 
@@ -96,7 +100,7 @@ If Harness cannot resolve an expression to a value, it simply outputs the expres
 
 Harness includes many default (built-in) Harness variable expressions. This variables are frequently updated.
 
-See [Built-in Variables List](/article/aza65y4af6-built-in-variables-list).
+See [Built-in Variables List](built-in-variables-list.md).
 
 ### Account Default Variables
 
@@ -107,37 +111,37 @@ Account Defaults are account-level variables available to all users logged into 
 To create an Account Default variable, do the following:
 
 1. Log into Harness, and then click **Setup**.
-2. Click the More Options ⋮ menu next to **Account**, and then click **Account Defaults**.![](https://files.helpdocs.io/kw8ldg1itf/articles/9dvxcegm90/1537217642989/image.png)![](https://files.helpdocs.io/kw8ldg1itf/articles/9dvxcegm90/1537219197217/image.png)
-3. Click **Add Row**. A new row appears.![](https://files.helpdocs.io/kw8ldg1itf/articles/9dvxcegm90/1537219267171/image.png)
+2. Click the More Options ⋮ menu next to **Account**, and then click **Account Defaults**.![](./static/variables-19.png)![](./static/variables-20.png)
+3. Click **Add Row**. A new row appears.![](./static/variables-21.png)
 4. In **Name**, enter a name for the variable. Ensure that the name is descriptive, as users will be looking at a list of variable names and will need to distinguish between them.
 5. In **Type**, select **STRING**.
-6. In **Value**, enter the value for the variable. For example, if you added an Account Default variable for **productName**, the dialog would look like this:![](https://files.helpdocs.io/kw8ldg1itf/articles/9dvxcegm90/1537219480037/image.png)
+6. In **Value**, enter the value for the variable. For example, if you added an Account Default variable for **productName**, the dialog would look like this:![](./static/variables-22.png)
 7. Click **SUBMIT**. The new variable is added.  
   
 Now, let's reference the variable.
 
 1. Open a Harness Application, and then open a Service, such as Docker or Pivotal Cloud Foundry (PCF) Service within that Application.
-2. In the Service, under **Configuration**, click **Add Variable**. The **Config Variable** dialog appears.![](https://files.helpdocs.io/kw8ldg1itf/articles/9dvxcegm90/1537219871181/image.png)
-3. In **Value**, enter `${account.defaults}` to see the account variables displayed.![](https://files.helpdocs.io/kw8ldg1itf/articles/9dvxcegm90/1537219993244/image.png)
+2. In the Service, under **Configuration**, click **Add Variable**. The **Config Variable** dialog appears.![](./static/variables-23.png)
+3. In **Value**, enter `${account.defaults}` to see the account variables displayed.![](./static/variables-24.png)
 4. Click the account variable name to enter it. It is entered as `${account.defaults.variable_name}`.
 
 ### Application Default Variables
 
 When you create an Application in Harness, you can define Application-wide variables that can be referenced in any entity within the Application. For example, you might want to create an Application-wide variable for an approval.
 
-See [Create a Default Application Directories and Variables](/article/lgg12f0yry-set-default-application-directories-as-variables).
+See [Create a Default Application Directories and Variables](../../../continuous-delivery/model-cd-pipeline/applications/set-default-application-directories-as-variables.md).
 
 ### Secrets and Variables
 
-You can create encrypted text items in Harness **Secrets Management**, and reference that the text using variables. For information on creating and managing secrets, see [Secrets Management](/article/au38zpufhr-secret-management).
+You can create encrypted text items in Harness **Secrets Management**, and reference that the text using variables. For information on creating and managing secrets, see [Secrets Management](../../security/secrets-management/secret-management.md).
 
 For example, you can add a username as an encrypted text item, named **Username**, and then reference it using the variable `${secrets.getValue("Username")}`.
 
-By default, the `${secrets.getValue("var_name")}` is available in the Harness Applications listed in its **Usage Scope**. To make the secret available Account-wide, so that it can be used in a [Delegate Profile](/article/h9tkwmkrm7-delegate-installation#delegate_profiles), you must select the **Scope to Account** option:![](https://files.helpdocs.io/kw8ldg1itf/other/1570485047825/image.png)For an extended example, see [Using Secrets in a Profile](/article/h9tkwmkrm7-delegate-installation#using_secrets_in_a_profile).
+By default, the `${secrets.getValue("var_name")}` is available in the Harness Applications listed in its **Usage Scope**. To make the secret available Account-wide, so that it can be used in a [Delegate Profile](../../account/manage-delegates/delegate-installation.md#delegate-profiles), you must select the **Scope to Account** option:![](./static/variables-25.png)For an extended example, see [Using Secrets in a Profile](../../account/manage-delegates/delegate-installation.md#using-secrets-in-a-profile).
 
 ### Service Config Variables
 
-When you create variables in a Harness Service's **Config Variables** section, they can be referenced anywhere that Service is used in your Workflow. For more information, see [Add Service Config Variables](/article/q78p7rpx9u-add-service-level-config-variables).
+When you create variables in a Harness Service's **Config Variables** section, they can be referenced anywhere that Service is used in your Workflow. For more information, see [Add Service Config Variables](../../../continuous-delivery/model-cd-pipeline/setup-services/add-service-level-config-variables.md).
 
 You reference the Service Config Variable using the `${serviceVariable.your_var_name}` format.
 
@@ -155,7 +159,7 @@ Files added in the **Config Files** section of a Service are referenced using 
 * `configFile.getAsString("fileName")` – Plain text file contents.
 * `configFile.getAsBase64("fileName")` – Base64-encoded file contents.
 
-For more information, see [Add Service Config Files](/article/iwtoq9lrky-add-service-level-configuration-files-april-2-2020).
+For more information, see [Add Service Config Files](../../../continuous-delivery/model-cd-pipeline/setup-services/add-service-level-configuration-files.md).
 
 ### Objects and Functors
 
@@ -193,7 +197,7 @@ ${regex.extract("[0-9]+-[0-9]+", "build-webservices-3935-0.noarch.rpm")}
 ```
 It resolves to **"3935-0"**.
 
-For more functors, see [JSON and XML Functors](/article/wfvecw3yod-json-and-xml-functors).
+For more functors, see [JSON and XML Functors](json-and-xml-functors.md).
 
 ##### AWS Functor
 
@@ -235,26 +239,26 @@ The **Deployments** page in Harness Manager displays the output of any of the Ha
 
 Here is an example of the Harness variables in a Shell Script command in a Kubernetes Workflow:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/9dvxcegm90/1553300895313/image.png)Here is the output of these variables displayed in the **Execution Context** panel:
+![](./static/variables-26.png)Here is the output of these variables displayed in the **Execution Context** panel:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/9dvxcegm90/1553295857977/image.png)#### View 3rd Party API Calls
+![](./static/variables-27.png)#### View 3rd Party API Calls
 
 To see the output from third-party API calls, you select a Verification Provider node, and then click **View 3rd Party API Calls** option:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/9dvxcegm90/1553295163867/image.png)The **Third Party API Call History** window appears.
+![](./static/variables-28.png)The **Third Party API Call History** window appears.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/9dvxcegm90/1553295206092/image.png)Clicking the API call links displays the request and response for the call:
+![](./static/variables-29.png)Clicking the API call links displays the request and response for the call:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/9dvxcegm90/1553295267334/image.png)#### Install Command
+![](./static/variables-30.png)#### Install Command
 
 Some Workflow commands contain a lot of variable output information. An example is the Install command:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/9dvxcegm90/1553298172742/image.png)#### Output History
+![](./static/variables-31.png)#### Output History
 
 Each deployment shows its own execution variable output. Rerunning the deployment does not overwrite the output. If you rerun a deployment, the old deployment contains its variable output, and the new deployment contains its new variable output.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/9dvxcegm90/1553293599715/image.png)### See Also
+![](./static/variables-32.png)### See Also
 
-* [Passing Variables into Workflows and Pipelines from Triggers](/article/revc37vl0f-passing-variable-into-workflows)
-* [Triggers](/article/xerirloz9a-add-a-trigger-2)
+* [Passing Variables into Workflows and Pipelines from Triggers](../../../continuous-delivery/model-cd-pipeline/expressions/passing-variable-into-workflows.md)
+* [Triggers](../../../continuous-delivery/model-cd-pipeline/triggers/add-a-trigger-2.md)
 

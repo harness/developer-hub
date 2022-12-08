@@ -15,7 +15,7 @@ Harness creates and polls tickets using ServiceNow's REST API.
 
 ### Before You Begin
 
-* [Add Collaboration Providers](/article/cv98scx8pj-collaboration-providers)
+* [Add Collaboration Providers](collaboration-providers.md)
 
 
 ### Limitations
@@ -31,15 +31,15 @@ Start adding a Collaboration Provider to Harness as follows:
 
 1. Click **Setup**.
 2. Click **Connectors**.
-3. Click **Collaboration Providers**.![](https://files.helpdocs.io/kw8ldg1itf/articles/8nkhcbjnh7/1586404291844/image.png)
-4. Click **Add Collaboration Provider**. This opens the default Collaboration Provider settings, which you will configure in the following steps.![](https://files.helpdocs.io/kw8ldg1itf/articles/vftxcr51xx/1644861001336/screenshot-2022-02-14-at-11-18-02-pm.png)
+3. Click **Collaboration Providers**.![](./static/add-service-now-collaboration-provider-25.png)
+4. Click **Add Collaboration Provider**. This opens the default Collaboration Provider settings, which you will configure in the following steps.![](./static/add-service-now-collaboration-provider-26.png)
 
 
 ### Step 2: Type
 
 Set the **Type** drop-down to **ServiceNow**. The settings now display ServiceNow-specific fields.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/vftxcr51xx/1587762672612/image.png)
+![](./static/add-service-now-collaboration-provider-27.png)
 ### Step 3: Display Name
 
 In **Display Name**, enter a unique name to identify this ServiceNow account connection. When you add ServiceNow steps to Workflows or Pipelines, you will select the appropriate ServiceNow account using this name.
@@ -57,18 +57,18 @@ In **Username**, enter the username of the ServiceNow account to use for the con
 
 ### Step 6: Password
 
-In **Select Encrypted Password**, select or create a new [Harness Encrypted Text secret](/article/ygyvp998mu-use-encrypted-text-secrets).
+In **Select Encrypted Password**, select or create a new [Harness Encrypted Text secret](../../security/secrets-management/use-encrypted-text-secrets.md).
 
 
 ### Step 7: Delegate Selector
 
 Select the Delegate Selector(s) of the Delegate(s) you want this Connector to use.
 
-When Harness needs to run a task, it makes a connection to a resource via its Delegates. Harness selects the best Delegate according to its history or it round-robins between Delegates. See [How Does Harness Manager Pick Delegates?](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation#how_does_harness_manager_pick_delegates).
+When Harness needs to run a task, it makes a connection to a resource via its Delegates. Harness selects the best Delegate according to its history or it round-robins between Delegates. See [How Does Harness Manager Pick Delegates?](../manage-delegates/delegate-installation.md#how-does-harness-manager-pick-delegates).
 
 In a few cases, you might want Harness to select specific Delegates. In these cases, you can use Delegate Selectors.
 
-See [Select Delegates with Selectors](/article/c3fvixpgsl-select-delegates-for-specific-tasks-with-selectors).
+See [Select Delegates with Selectors](../manage-delegates/select-delegates-for-specific-tasks-with-selectors.md).
 
 ### Step 8: Skip Validation
 
@@ -87,5 +87,5 @@ Usage Scope is determined by the secret you used in **Select Encrypted Password*
 
 ### Next Steps
 
-* To use your ServiceNow Collaboration Provider in Workflows and Pipelines, see [ServiceNow Integration](/article/7vsqnt0gch-service-now-integration).
+* To use your ServiceNow Collaboration Provider in Workflows and Pipelines, see [ServiceNow Integration](../../../continuous-delivery/model-cd-pipeline/workflows/service-now-integration.md).
 

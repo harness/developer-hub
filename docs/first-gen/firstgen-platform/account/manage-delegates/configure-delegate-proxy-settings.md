@@ -12,9 +12,9 @@ All of the Delegate settings include proxy settings you can use to change how th
 
 By default, the Harness Delegate uses HTTP and HTTPS in its Proxy Scheme settings.In this topic:
 
-* [Shell Script Proxy Settings](https://docs.harness.io/article/pfim3oig7o-configure-delegate-proxy-settings#shell_script_proxy_settings)
-* [Docker Proxy Settings](https://docs.harness.io/article/pfim3oig7o-configure-delegate-proxy-settings#docker_proxy_settings)
-* [Kubernetes Proxy Settings](https://docs.harness.io/article/pfim3oig7o-configure-delegate-proxy-settings#kubernetes_proxy_settings)
+* [Shell Script Proxy Settings](configure-delegate-proxy-settings.md#shell-script-proxy-settings)
+* [Docker Proxy Settings](configure-delegate-proxy-settings.md#docker-proxy-settings)
+* [Kubernetes Proxy Settings](configure-delegate-proxy-settings.md#kubernetes-proxy-settings)
 
 #### Shell Script Proxy Settings
 
@@ -45,7 +45,9 @@ PROXY_MANAGER=false
 
 `PROXY_SCHEME` is for the Delegate to reach the proxy server, not for Delegate connections beyond that.
 
-Do not edit the **setup-proxy.sh** script. Simply run the script and provide the proxy information.#### Docker Proxy Settings
+Do not edit the **setup-proxy.sh** script. Simply run the script and provide the proxy information.
+
+#### Docker Proxy Settings
 
 The proxy settings are in the **launch-harness-delegate.sh** file:
 

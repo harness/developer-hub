@@ -12,20 +12,20 @@ This topic describes how to use Harness Application APIs.
 
 The `!` following the type means that this field is *required*.In this topic:
 
-* [Before You Begin](https://docs.harness.io/article/0wmvn5dgzn-use-harness-applications-api#undefined)
-* [Create Applications](https://docs.harness.io/article/0wmvn5dgzn-use-harness-applications-api#create_applications)
-* [Update Applications](https://docs.harness.io/article/0wmvn5dgzn-use-harness-applications-api#update_applications)
-* [Enable Git Sync for an Application](https://docs.harness.io/article/0wmvn5dgzn-use-harness-applications-api#enable_git_sync_for_an_application)
-* [Show Pipelines for a Given Application](https://docs.harness.io/article/0wmvn5dgzn-use-harness-applications-api#show_pipelines_for_a_given_application)
-* [Show Services for a Given Application](https://docs.harness.io/article/0wmvn5dgzn-use-harness-applications-api#show_services_for_a_given_application)
-* [Fetch the List of Services for a Given Application](https://docs.harness.io/article/0wmvn5dgzn-use-harness-applications-api#fetch_the_list_of_services_for_a_given_application)
+* [Before You Begin](use-harness-applications-api.md#undefined)
+* [Create Applications](use-harness-applications-api.md#create-applications)
+* [Update Applications](use-harness-applications-api.md#update-applications)
+* [Enable Git Sync for an Application](use-harness-applications-api.md#enable-git-sync-for-an-application)
+* [Show Pipelines for a Given Application](use-harness-applications-api.md#show-pipelines-for-a-given-application)
+* [Show Services for a Given Application](use-harness-applications-api.md#show-services-for-a-given-application)
+* [Fetch the List of Services for a Given Application](use-harness-applications-api.md#fetch-the-list-of-services-for-a-given-application)
 * [Filter Harness Applications using Harness Tags in the API](https://harness.helpdocs.io/article/0wmvn5dgzn-use-harness-applications-api#filter_harness_applications_using_harness_tags_in_the_api)
 
 ### Before You Begin
 
-* [​Introduction to Harness GraphQL API](/article/tm0w6rruqv-harness-api)
-* [Harness API Explorer](/article/2rmd5i0e0h-harness-api-explorer)
-* [API Schema and Structure](/article/kn8wsu80n4-api-schema-and-structure)
+* [​Introduction to Harness GraphQL API](harness-api.md)
+* [Harness API Explorer](harness-api-explorer.md)
+* [API Schema and Structure](api-schema-and-structure.md)
 
 ### Create Applications
 
@@ -55,7 +55,9 @@ Here are sample query variables for the above operation. The `name` variable req
   }  
 }
 ```
-Values for other variables are optional. In this and other mutation requests, a `clientMutationId` is needed only when multiple clients make updates to the same entity, and each client needs a way to identify the request-response. In this case, each update should supply an arbitrary, unique `clientMutationId`.### Update Applications
+Values for other variables are optional. In this and other mutation requests, a `clientMutationId` is needed only when multiple clients make updates to the same entity, and each client needs a way to identify the request-response. In this case, each update should supply an arbitrary, unique `clientMutationId`.
+
+### Update Applications
 
 This sample updates an existing Application.
 
@@ -201,7 +203,7 @@ This sample queries by `applicationId` to return `id` and `name` values fo
 ```
 ### Filter Harness Applications using Harness Tags in the API
 
-Harness provides advanced tagging features for your Harness [Applications](https://docs.harness.io/article/bucothemly-application-configuration) as described in [Assign Metadata Using Tags](https://docs.harness.io/article/nrxfix3i58-tags) and [Apply Filters Using Tags](https://docs.harness.io/article/nyxf7g8erd-apply-filters-using-tags).
+Harness provides advanced tagging features for your Harness [Applications](../../../continuous-delivery/model-cd-pipeline/applications/application-configuration.md) as described in [Assign Metadata Using Tags](../../account/tags/tags.md) and [Apply Filters Using Tags](../../account/tags/apply-filters-using-tags.md).
 
 You can use Tags to search associated Harness Applications.
 

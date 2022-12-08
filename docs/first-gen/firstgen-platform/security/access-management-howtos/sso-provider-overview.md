@@ -10,9 +10,9 @@ helpdocs_is_published: true
 
 Harness provides the following Sign-On (SSO) options for leveraging your existing user management infrastructure, to provide Harness login and user control:
 
-[Single Sign-On (SSO) with OAuth 2.0](/article/02ehq56x6d-single-sign-on-sso-with-oauth-2-0)
+[Single Sign-On (SSO) with OAuth 2.0](single-sign-on-sso-with-oauth-2-0.md)
 
-[Single Sign-On (SSO) with LDAP](/article/85rycqfiqg-sso-ldap)
+[Single Sign-On (SSO) with LDAP](sso-ldap.md)
 
-[Single Sign-On (SSO) with SAML](/article/zy8yjcrqzg-single-sign-on-sso-with-saml)
+[Single Sign-On (SSO) with SAML](single-sign-on-sso-with-saml.md)
 

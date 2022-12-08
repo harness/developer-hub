@@ -19,9 +19,9 @@ In this topic:
 
 ### Before You Begin
 
-* [​Introduction to Harness GraphQL API](/article/tm0w6rruqv-harness-api)
-* [Harness API Explorer](/article/2rmd5i0e0h-harness-api-explorer)
-* [API Schema and Structure](/article/kn8wsu80n4-api-schema-and-structure)
+* [​Introduction to Harness GraphQL API](harness-api.md)
+* [Harness API Explorer](harness-api-explorer.md)
+* [API Schema and Structure](api-schema-and-structure.md)
 
 ### Show Execution Details
 

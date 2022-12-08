@@ -8,25 +8,25 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic lists sample queries for CRUD operations that create, read, update, and delete [Harness secrets](/article/au38zpufhr-secret-management) and [Custom Secrets](/article/ejaddm3ddb), that rely on encrypted text.
+This topic lists sample queries for CRUD operations that create, read, update, and delete [Harness secrets](../../security/secrets-management/secret-management.md) and [Custom Secrets](../../security/secrets-management/add-and-use-a-custom-secrets-manager.md), that rely on encrypted text.
 
 The `!` following the type means that this field is *required*.In this topic:
 
-* [Before You Begin](https://docs.harness.io/article/omnfccj1n0-api-encrypted-text#before_you_begin)
-* [Get a Secret](https://docs.harness.io/article/omnfccj1n0-api-encrypted-text#get_a_secret)
-* [Get a Secret by Name](https://docs.harness.io/article/omnfccj1n0-api-encrypted-text#get_a_secret_by_name)
-* [Get Secrets Manager IDs](https://docs.harness.io/article/omnfccj1n0-api-encrypted-text#get_secrets_manager_i_ds)
-* [Create an Encrypted Text Secret](https://docs.harness.io/article/omnfccj1n0-api-encrypted-text#create_an_encrypted_text_secret)
-* [Update a Secret](https://docs.harness.io/article/omnfccj1n0-api-encrypted-text#update_a_secret)
-* [Delete a Secret](https://docs.harness.io/article/omnfccj1n0-api-encrypted-text#delete_a_secret)
-* [Related Topics](https://docs.harness.io/article/omnfccj1n0-api-encrypted-text#related_topics)
+* [Before You Begin](api-encrypted-text.md#before-you-begin)
+* [Get a Secret](api-encrypted-text.md#get-a-secret)
+* [Get a Secret by Name](api-encrypted-text.md#get-a-secret-by-name)
+* [Get Secrets Manager IDs](api-encrypted-text.md#get-secrets-manager-i-ds)
+* [Create an Encrypted Text Secret](api-encrypted-text.md#create-an-encrypted-text-secret)
+* [Update a Secret](api-encrypted-text.md#update-a-secret)
+* [Delete a Secret](api-encrypted-text.md#delete-a-secret)
+* [Related Topics](api-encrypted-text.md#related-topics)
 
 ### Before You Begin
 
-* [​Introduction to Harness GraphQL API](/article/tm0w6rruqv-harness-api)
-* [Harness API Explorer](/article/2rmd5i0e0h-harness-api-explorer)
-* [Scope Secret Managers to Applications and Environments](/article/e4ikpd00f6-scope-secret-managers-to-applications-and-environments)
-* [Restrict Secrets Usage](/article/e5q9qcho4y-restrict-secrets-usage)
+* [​Introduction to Harness GraphQL API](harness-api.md)
+* [Harness API Explorer](harness-api-explorer.md)
+* [Scope Secret Managers to Applications and Environments](../../security/secrets-management/scope-secret-managers-to-applications-and-environments.md)
+* [Restrict Secrets Usage](../../security/secrets-management/restrict-secrets-usage.md)
 
 ### Get a Secret by ID
 
@@ -498,8 +498,8 @@ Here are query variables for the above `deleteSecret` operation.
 ```
 ### Related Topics
 
-* [Harness API](/article/tm0w6rruqv-harness-api)
-* [Encrypted Files API](/article/jvhzdi1ztj-api-encrypted-files)
-* [SSH Credentials API](/article/v65okfwfl2-api-ssh-credentials)
-* [WinRM Credentials API](/article/2rlo5zw321-api-win-rm-credentials)
+* [Harness API](harness-api.md)
+* [Encrypted Files API](api-encrypted-files.md)
+* [SSH Credentials API](api-ssh-credentials.md)
+* [WinRM Credentials API](api-win-rm-credentials.md)
 

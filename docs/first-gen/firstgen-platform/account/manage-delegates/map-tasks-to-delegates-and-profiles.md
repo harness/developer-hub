@@ -14,7 +14,7 @@ Tasks are organized by category. For example, all the connections and images pul
 
 By default, Harness performs tasks using any available Delegates. If you want Harness to prioritize a specific Delegate for a task category, you can map the task category to a Selector, and apply that Selector to a Delegate.
 
-The mapped Selector can also be used in certain Harness entities to prioritize Delegates, such as [Cloud Providers](/article/whwnovprrb-cloud-providers) and the [Shell Script Workflow step](/article/1fjrjbau7x-capture-shell-script-step-output).
+The mapped Selector can also be used in certain Harness entities to prioritize Delegates, such as [Cloud Providers](../manage-connectors/cloud-providers.md) and the [Shell Script Workflow step](../../../continuous-delivery/model-cd-pipeline/workflows/capture-shell-script-step-output.md).
 
 This topic describes how to map task categories to Selectors, and then apply the Selector to one or more Delegates.
 
@@ -33,22 +33,24 @@ In this topic:
 
 The Delegate is a key component of your Harness setup. Please review the following topics to ensure you have a solid understanding of the Delegate:
 
-* [Harness Key Concepts](/article/4o7oqwih6h-harness-key-concepts)
-* [Harness Delegate Overview](/article/h9tkwmkrm7-delegate-installation)
-* [Select Delegates with Selectors](/article/c3fvixpgsl-select-delegates-for-specific-tasks-with-selectors)
-* [Run Scripts on Delegates using Profiles](/article/yd4bs0pltf-run-scripts-on-the-delegate-using-profiles)
+* [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts)
+* [Harness Delegate Overview](delegate-installation.md)
+* [Select Delegates with Selectors](select-delegates-for-specific-tasks-with-selectors.md)
+* [Run Scripts on Delegates using Profiles](run-scripts-on-the-delegate-using-profiles.md)
 
 ### Supported Platforms and Technologies
 
-See [Supported Platforms and Technologies](/article/220d0ojx5y-supported-platforms).
+See [Supported Platforms and Technologies](https://docs.harness.io/article/220d0ojx5y-supported-platforms).
 
 ### Visual Summary
 
-Here is example of adding a new Selector to a Delegate, and then mapping the Selector to a Task Category:![](https://files.helpdocs.io/kw8ldg1itf/articles/nzuhppobyg/1604446534988/task-category-custom.gif)Here is an example of adding a Selector to a Task Category Mapping, and then applying the Selector to a Delegate:![](https://files.helpdocs.io/kw8ldg1itf/articles/nzuhppobyg/1604446880968/task-category.gif)### Step 1: Set Permissions
+Here is example of adding a new Selector to a Delegate, and then mapping the Selector to a Task Category:![](./static/map-tasks-to-delegates-and-profiles-54.gif)Here is an example of adding a Selector to a Task Category Mapping, and then applying the Selector to a Delegate:![](./static/map-tasks-to-delegates-and-profiles-55.gif)
+
+### Step 1: Set Permissions
 
 To map Selectors to Task Categories a user must belong to a User Group with the Account Permission **Manage Delegates** enabled.
 
-See [Managing Users and Groups (RBAC)](/article/ven0bvulsj-users-and-permissions).
+See [Managing Users and Groups (RBAC)](../../security/access-management-howtos/users-and-permissions.md).
 
 ### Step 2: Map a Selector to a Task Category
 
@@ -70,9 +72,9 @@ Once you have mapped a Selector to a Task Category, you can apply the Selector t
 * Add the Selector to the Delegate's **Custom Selectors** setting.
 * Add the Selector to a Delegate Profile, and then add the Profile to any Delegates. All the Delegates using that Profile are thereby mapped to the Task Category.
 
-For steps on adding Custom Selectors, see [Select Delegates with Selectors](/article/c3fvixpgsl-select-delegates-for-specific-tasks-with-selectors).
+For steps on adding Custom Selectors, see [Select Delegates with Selectors](select-delegates-for-specific-tasks-with-selectors.md).
 
-For steps on adding Profile Selectors, see the Selector option in [Run Scripts on Delegates using Profiles](/article/yd4bs0pltf-run-scripts-on-the-delegate-using-profiles).
+For steps on adding Profile Selectors, see the Selector option in [Run Scripts on Delegates using Profiles](run-scripts-on-the-delegate-using-profiles.md).
 
 #### Which option to use?
 
@@ -89,20 +91,20 @@ The following table describes the different task categories.
 |  |  |
 | --- | --- |
 | **Task Category** | **Description** |
-| Amazon Machine Image (AMI) | Perform tasks related to [AMI Deployments](/article/wfk9o0tsjb-aws-ami-deployments). |
+| Amazon Machine Image (AMI) | Perform tasks related to [AMI Deployments](https://docs.harness.io/article/wfk9o0tsjb-aws-ami-deployments). |
 | Amazon Elastic Container Registry (ECR) | Connect and pull images from ECR. |
 | Amazon S3 | Connect and pull artifacts and files from Amazon S3. |
-| AppDynamics | Perform [AppDynamics verification tasks](/article/2zxfjt67yb-app-dynamics-verification-overview). |
-| AWS | Connect using any Harness [AWS Cloud Provider](/article/wt1gnigme7-add-amazon-web-services-cloud-provider). |
+| AppDynamics | Perform [AppDynamics verification tasks](../../../continuous-delivery/continuous-verification/continuous-verification-overview/concepts-cv/app-dynamics-verification-overview.md). |
+| AWS | Connect using any Harness [AWS Cloud Provider](../manage-connectors/add-amazon-web-services-cloud-provider.md). |
 | APM | Delegate can perform any APM task |
-| Artifactory | Connect to JFrog Artifactory using the [Artifactory Artifact Server](/article/nj3p1t7v3x-add-artifactory-servers) credentials. |
-| Azure Container Registry | Connect and pull [Azure Container Registry](/article/kiuft72fr5-azure-deployments-overview) images and artifacts. |
-| Bamboo | Perform Bamboo related tasks using the [Bamboo Artifact Server](/article/feks6co940-add-bamboo-artifact-servers) credentials. |
-| Build Source | Perform tasks for any [Build Workflow](/article/0tphhkfqx8-artifact-build-and-deploy-pipelines-overview). |
-| CloudFormation | Perform CloudFormation tasks such as CloudFormation Create Stack and CloudFormation Delete Stack Workflow steps. See [CloudFormation Provisioning with Harness](/article/qj0ems5hmg-cloud-formation-provisioning-with-harness). |
-| CloudWatch | Perform configuration and verification using AWS [CloudWatch](/article/q6ti811nck-cloud-watch-verification-overview). |
-| Collaboration Provider | Connect and configure Harness [Collaboration Providers](/article/cv98scx8pj-collaboration-providers). |
-| Command | Delegate will be used first for [Service commands](/article/kbmz9uc7q9-create-a-service-command-template). |
+| Artifactory | Connect to JFrog Artifactory using the [Artifactory Artifact Server](../manage-connectors/add-artifactory-servers.md) credentials. |
+| Azure Container Registry | Connect and pull [Azure Container Registry](../../../continuous-delivery/azure-deployments/aks-howtos/azure-deployments-overview.md) images and artifacts. |
+| Bamboo | Perform Bamboo related tasks using the [Bamboo Artifact Server](../manage-connectors/add-bamboo-artifact-servers.md) credentials. |
+| Build Source | Perform tasks for any [Build Workflow](../../../continuous-delivery/concepts-cd/deployment-types/artifact-build-and-deploy-pipelines-overview.md). |
+| CloudFormation | Perform CloudFormation tasks such as CloudFormation Create Stack and CloudFormation Delete Stack Workflow steps. See [CloudFormation Provisioning with Harness](../../../continuous-delivery/concepts-cd/deployment-types/cloud-formation-provisioning-with-harness.md). |
+| CloudWatch | Perform configuration and verification using AWS [CloudWatch](../../../continuous-delivery/continuous-verification/continuous-verification-overview/concepts-cv/cloud-watch-verification-overview.md). |
+| Collaboration Provider | Connect and configure Harness [Collaboration Providers](../manage-connectors/collaboration-providers.md). |
+| Command | Delegate will be used first for [Service commands](../manage-templatelib/create-a-service-command-template.md). |
 | Connectivity Validation | Tests connectivity with resources, such as Harness Cloud Providers. |
 | Container | Performs the following container-related tasks:* Container active service counts
 * Container information
@@ -118,44 +120,44 @@ The following table describes the different task categories.
 * ECS steady state check
 * Validate Kubernetes config
  |
-| Custom Artifact Source | Collect artifacts using [Custom Artifact Sources](/article/jizsp5tsms-custom-artifact-source). |
-| Custom Log Collection and Bugsnag | Perform configuration and verification using [Custom Logs](/article/d4i9pp3uea-verify-deployments-with-custom-logs) and [Bugsnag Verification Overview](/article/ac5piurukt-bugsnag-verification-overview).  |
-| Dynatrace | Perform configuration and verification using [Dynatrace](/article/r3xtgg0e2k-dynatrace-verification-overview). |
-| Docker Hub | Connect to [Docker Hub](/article/tdj2ghkqb0-add-docker-registry-artifact-servers) and pull down metadata associated with the artifact. |
-| ELK | Perform configuration and verification using [ELK](/article/qdajtgsqfj-elasticsearch-verification-overview). |
-| Git | Perform configuration and tasks [Git Source Repo Providers](/article/ay9hlwbgwa-add-source-repo-providers). |
-| Google Cloud Build | Perform [Google Cloud Build](/article/dvm5q9j0d0-trigger-google-cloud-builds) related tasks. |
-| Google Cloud Storage | Connect and pull artifacts from [Google Cloud Storage](/article/6x52zvqsta-add-google-cloud-platform-cloud-provider#review_google_gcs_and_gcr_requirements). |
-| Google Container Registry | Connect and pull artifacts from [GCR](/article/6x52zvqsta-add-google-cloud-platform-cloud-provider#review_google_gcs_and_gcr_requirements). |
-| Helm | Delegate can perform [Native Helm deployment](/article/583ojfgg49-helm-deployments-overview) tasks. |
-| Helm Repo Config Validation | Validate the [Helm Repo](/article/0hrzb1zkog-add-helm-repository-servers) connection. |
-| Helm Values Fetch | Fetch values.yaml for [Native](/article/583ojfgg49-helm-deployments-overview) and [Kubernetes Helm](/article/hddm3rgf1y-use-a-helm-repository-with-kubernetes) deployments. |
-| HTTP Verification | Perform the [HTTP step](/article/m8ksas9f71-using-the-http-command) in a Workflow. |
-| Host Validation | Validating target hosts availability. For example, see [Select Nodes Workflow Step](/article/9h1cqaxyp9-select-nodes-workflow-step). |
-| Jenkins | Connect and perform tasks for [Jenkins](/article/5fzq9w0pq7-using-the-jenkins-command). |
-| Jira | Connect and perform tasks for [Jira](/article/077hwokrpr-jira-integration). |
-| Key Management Service | Connect and perform tasks for [Harness Secrets Managers](/article/au38zpufhr-secret-management). |
-| Kubernetes | Performs Kubernetes rollouts for [Kubernetes deployments](/article/7in9z2boh6-kubernetes-quickstart). |
-| LDAP | Connect to LDAP server and perform [LDAP tasks](/article/85rycqfiqg-sso-ldap). |
-| Logz | Connect and perform [Logz tasks](/article/vbl1xlad1e-verify-deployments-with-logz-io). |
-| Nexus | Connect to [Nexus](/article/rdhndux2ab-nexus-artifact-sources) and pull down metadata associated with the artifact. |
-| New Relic | Connect and perform [New Relic](/article/ht3amzjvle-new-relic-verification-overview) tasks. |
-| Prometheus | Connect and perform [Prometheus](/article/5uh79dplbj-prometheus-verification-overview) tasks. |
-| PCF | Connect and perform [Pivotal (PCF) deployments](/article/hy819vmsux-pivotal-cloud-foundry-quickstart). |
-| Service Guard | Perform [24/7 Service Guard](/article/dajt54pyxd-24-7-service-guard-overview) tasks. |
-| ServiceNow | Connect and perform [ServiceNow](/article/7vsqnt0gch-service-now-integration) tasks. |
-| SFTP | Delegate can perform [SFTP](/article/3d1awjkw57-add-sftp-artifact-servers) (email server) tasks such as sending emails. |
-| Splunk | Connect and perform [Splunk](/article/dujtd6ek5p-splunk-verification-overview) tasks. |
-| Shell Script | Perform [Shell Script](/article/1fjrjbau7x-capture-shell-script-step-output) step in a Workflow. |
-| Shell Script Provision | Delegate can perform [Shell Script Provisioner](/article/1m3p7phdqo-shell-script-provisioner) tasks. |
-| Slack Notifications | Delegate can perform tasks related to sending [Slack notifications](/article/4blpfqwfdc-send-notification-using-slack). |
-| SMB | Delegate can perform tasks related to [SMB Artifact Servers](/article/o1ck4eay7a-add-smb-artifact-servers).  |
-| SpotInst | Delegate can perform [SpotInst Deployments](/article/ighbnk6xg6-ami-spotinst-elastigroup-deployments-overview) and connect to the [SpotInst Cloud Provider](/article/uxah3ji489-add-spot-inst-cloud-provider). |
-| Sumo Logic | Delegate can perform tasks related to [Sumo Logic calls](/article/wb2k4u4kxm-sumo-logic-verification-overview) and [Sumo Logic Verification Provider](/article/38qrwi7wu2-1-sumo-logic-connection-setup). |
-| Terraform | Delegate can perform [Terraform tasks](/article/hh52ews03d-terraform-provisioning-with-harness). |
-| Trigger | Delegate can perform tasks related to [Harness Triggers](https://docs.harness.io/article/xerirloz9a-add-a-trigger-2). |
-| Continuous Integration | Delegate can perform tasks related to CI: [Jenkins](/article/5fzq9w0pq7-using-the-jenkins-command), [Bamboo](/article/feks6co940-add-bamboo-artifact-servers). |
-| Artifact Collection In Pipeline | Delegate can perform the [artifact collection](/article/0tphhkfqx8-artifact-build-and-deploy-pipelines-overview) step in a Pipeline. |
+| Custom Artifact Source | Collect artifacts using [Custom Artifact Sources](../../../continuous-delivery/model-cd-pipeline/setup-services/custom-artifact-source.md). |
+| Custom Log Collection and Bugsnag | Perform configuration and verification using [Custom Logs](../../../continuous-delivery/continuous-verification/custom-metrics-and-logs-verification/verify-deployments-with-custom-logs.md) and [Bugsnag Verification Overview](../../../continuous-delivery/continuous-verification/continuous-verification-overview/concepts-cv/bugsnag-verification-overview.md).  |
+| Dynatrace | Perform configuration and verification using [Dynatrace](../../../continuous-delivery/continuous-verification/continuous-verification-overview/concepts-cv/dynatrace-verification-overview.md). |
+| Docker Hub | Connect to [Docker Hub](../manage-connectors/add-docker-registry-artifact-servers.md) and pull down metadata associated with the artifact. |
+| ELK | Perform configuration and verification using [ELK](../../../continuous-delivery/continuous-verification/continuous-verification-overview/concepts-cv/elasticsearch-verification-overview.md). |
+| Git | Perform configuration and tasks [Git Source Repo Providers](../manage-connectors/add-source-repo-providers.md). |
+| Google Cloud Build | Perform [Google Cloud Build](../../../continuous-delivery/google-cloud/trigger-google-cloud-builds.md) related tasks. |
+| Google Cloud Storage | Connect and pull artifacts from [Google Cloud Storage](../manage-connectors/add-google-cloud-platform-cloud-provider.md#review-google-gcs-and-gcr-requirements). |
+| Google Container Registry | Connect and pull artifacts from [GCR](../manage-connectors/add-google-cloud-platform-cloud-provider.md#review-google-gcs-and-gcr-requirements). |
+| Helm | Delegate can perform [Native Helm deployment](../../../continuous-delivery/concepts-cd/deployment-types/helm-deployments-overview.md) tasks. |
+| Helm Repo Config Validation | Validate the [Helm Repo](../manage-connectors/add-helm-repository-servers.md) connection. |
+| Helm Values Fetch | Fetch values.yaml for [Native](../../../continuous-delivery/concepts-cd/deployment-types/helm-deployments-overview.md) and [Kubernetes Helm](../../../continuous-delivery/kubernetes-deployments/use-a-helm-repository-with-kubernetes.md) deployments. |
+| HTTP Verification | Perform the [HTTP step](../../../continuous-delivery/model-cd-pipeline/workflows/using-the-http-command.md) in a Workflow. |
+| Host Validation | Validating target hosts availability. For example, see [Select Nodes Workflow Step](../../techref-category/cd-ref/workflow-steps-and-settings/select-nodes-workflow-step.md). |
+| Jenkins | Connect and perform tasks for [Jenkins](../../../continuous-delivery/model-cd-pipeline/workflows/using-the-jenkins-command.md). |
+| Jira | Connect and perform tasks for [Jira](../../../continuous-delivery/model-cd-pipeline/workflows/jira-integration.md). |
+| Key Management Service | Connect and perform tasks for [Harness Secrets Managers](../../security/secrets-management/secret-management.md). |
+| Kubernetes | Performs Kubernetes rollouts for [Kubernetes deployments](https://docs.harness.io/article/7in9z2boh6-kubernetes-quickstart). |
+| LDAP | Connect to LDAP server and perform [LDAP tasks](../../security/access-management-howtos/sso-ldap.md). |
+| Logz | Connect and perform [Logz tasks](../../../continuous-delivery/continuous-verification/logz-io-verification/verify-deployments-with-logz-io.md). |
+| Nexus | Connect to [Nexus](../../techref-category/cd-ref/artifacts-ref/nexus-artifact-sources.md) and pull down metadata associated with the artifact. |
+| New Relic | Connect and perform [New Relic](../../../continuous-delivery/continuous-verification/continuous-verification-overview/concepts-cv/new-relic-verification-overview.md) tasks. |
+| Prometheus | Connect and perform [Prometheus](../../../continuous-delivery/continuous-verification/continuous-verification-overview/concepts-cv/prometheus-verification-overview.md) tasks. |
+| PCF | Connect and perform [Pivotal (PCF) deployments](https://docs.harness.io/article/hy819vmsux-pivotal-cloud-foundry-quickstart). |
+| Service Guard | Perform [24/7 Service Guard](../../../continuous-delivery/continuous-verification/continuous-verification-overview/concepts-cv/24-7-service-guard-overview.md) tasks. |
+| ServiceNow | Connect and perform [ServiceNow](../../../continuous-delivery/model-cd-pipeline/workflows/service-now-integration.md) tasks. |
+| SFTP | Delegate can perform [SFTP](../manage-connectors/add-sftp-artifact-servers.md) (email server) tasks such as sending emails. |
+| Splunk | Connect and perform [Splunk](../../../continuous-delivery/continuous-verification/continuous-verification-overview/concepts-cv/splunk-verification-overview.md) tasks. |
+| Shell Script | Perform [Shell Script](../../../continuous-delivery/model-cd-pipeline/workflows/capture-shell-script-step-output.md) step in a Workflow. |
+| Shell Script Provision | Delegate can perform [Shell Script Provisioner](../../../continuous-delivery/model-cd-pipeline/infrastructure-provisioner/ssh-provisioner-category/shell-script-provisioner.md) tasks. |
+| Slack Notifications | Delegate can perform tasks related to sending [Slack notifications](../manage-notegroups/send-notification-using-slack.md). |
+| SMB | Delegate can perform tasks related to [SMB Artifact Servers](../manage-connectors/add-smb-artifact-servers.md).  |
+| SpotInst | Delegate can perform [SpotInst Deployments](../../../continuous-delivery/concepts-cd/deployment-types/ami-spotinst-elastigroup-deployments-overview.md) and connect to the [SpotInst Cloud Provider](../manage-connectors/add-spot-inst-cloud-provider.md). |
+| Sumo Logic | Delegate can perform tasks related to [Sumo Logic calls](../../../continuous-delivery/continuous-verification/continuous-verification-overview/concepts-cv/sumo-logic-verification-overview.md) and [Sumo Logic Verification Provider](../../../continuous-delivery/continuous-verification/sumo-logic-verification/1-sumo-logic-connection-setup.md). |
+| Terraform | Delegate can perform [Terraform tasks](../../../continuous-delivery/concepts-cd/deployment-types/terraform-provisioning-with-harness.md). |
+| Trigger | Delegate can perform tasks related to [Harness Triggers](../../../continuous-delivery/model-cd-pipeline/triggers/add-a-trigger-2.md). |
+| Continuous Integration | Delegate can perform tasks related to CI: [Jenkins](../../../continuous-delivery/model-cd-pipeline/workflows/using-the-jenkins-command.md), [Bamboo](../manage-connectors/add-bamboo-artifact-servers.md). |
+| Artifact Collection In Pipeline | Delegate can perform the [artifact collection](../../../continuous-delivery/concepts-cd/deployment-types/artifact-build-and-deploy-pipelines-overview.md) step in a Pipeline. |
 
  
 

@@ -26,9 +26,9 @@ In this topic:
 
 ### Before You Begin
 
-* [What is Secrets Management?](/article/au38zpufhr-secret-management)
-* [Add a Secrets Manager](/article/uuer539u3l-add-a-secrets-manager)
-* [Managing Harness Secrets](/article/8bldcebkkf-managing-harness-secrets)
+* [What is Secrets Management?](secret-management.md)
+* [Add a Secrets Manager](add-a-secrets-manager.md)
+* [Managing Harness Secrets](managing-harness-secrets.md)
 
 ### Visual Summary
 
@@ -42,7 +42,7 @@ To scope a Secret Manager, a Harness User must belong to a User Group with the f
 
 A User must belong to a User Group with the **Manage Secrets Managers** Account Permission enabled.
 
-See [Managing Users and Groups (RBAC)](/article/ven0bvulsj-users-and-permissions).
+See [Managing Users and Groups (RBAC)](../access-management-howtos/users-and-permissions.md).
 
 #### Application Permissions
 
@@ -83,19 +83,19 @@ You can only change the scope of Secret Managers if your Harness User Group has 
 ### See Also
 
 * Adding Secrets Managers
-	+ [Add a Google Cloud KMS Secrets Manager](https://docs.harness.io/article/avo98eldl0-add-a-google-cloud-kms-secrets-manager)
-	+ [Add an AWS Secrets Manager](https://docs.harness.io/article/otkxijqoa6-add-an-aws-secrets-manager)
-	+ [Add an AWS KMS Secrets Manager](https://docs.harness.io/article/qj4psb5vsf-add-an-aws-kms-secrets-manager)
-	+ [Add an Azure Key Vault Secrets](https://docs.harness.io/article/2nv0gy1wnh-azure-key-vault)
-	+ [Add a HashiCorp Vault Secrets Manager](https://docs.harness.io/article/am3dmoxywy-add-a-hashi-corp-vault-secrets-manager)
+	+ [Add a Google Cloud KMS Secrets Manager](add-a-google-cloud-kms-secrets-manager.md)
+	+ [Add an AWS Secrets Manager](add-an-aws-secrets-manager.md)
+	+ [Add an AWS KMS Secrets Manager](add-an-aws-kms-secrets-manager.md)
+	+ [Add an Azure Key Vault Secrets](azure-key-vault.md)
+	+ [Add a HashiCorp Vault Secrets Manager](add-a-hashi-corp-vault-secrets-manager.md)
 * Managing Secrets
-	+ [Use Encrypted Text Secrets](https://docs.harness.io/article/ygyvp998mu-use-encrypted-text-secrets)
-	+ [Use Encrypted File Secrets](https://docs.harness.io/article/nt5vchhka4-use-encrypted-file-secrets)
-	+ [Migrate Secrets between Secrets Managers](https://docs.harness.io/article/prjsaaev0c-migrate-secrets-between-secrets-managers)
-	+ [Restrict Secrets Usage](https://docs.harness.io/article/e5q9qcho4y-restrict-secrets-usage)
-	+ [Reference Existing Secrets](https://docs.harness.io/article/cwp7rlauzn-reference-existing-secrets)
-	+ [Use Secrets in a Delegate Profile](https://docs.harness.io/article/imzgiz9h41-use-a-secret-in-a-delegate-profile)
-	+ [Add SSH Keys](https://docs.harness.io/article/gsp4s7abgc-add-ssh-keys)
-	+ [Use SSH Keys via Kerberos for Server Authentication](https://docs.harness.io/article/lx4wios62k-use-ssh-key-via-kerberos-for-server-authentication)
-	+ [Add WinRM Connection Credentials](https://docs.harness.io/article/9fqa1vgar7-add-win-rm-connection-credentials)
+	+ [Use Encrypted Text Secrets](use-encrypted-text-secrets.md)
+	+ [Use Encrypted File Secrets](use-encrypted-file-secrets.md)
+	+ [Migrate Secrets between Secrets Managers](migrate-secrets-between-secrets-managers.md)
+	+ [Restrict Secrets Usage](restrict-secrets-usage.md)
+	+ [Reference Existing Secrets](reference-existing-secrets.md)
+	+ [Use Secrets in a Delegate Profile](../../account/manage-delegates/use-a-secret-in-a-delegate-profile.md)
+	+ [Add SSH Keys](add-ssh-keys.md)
+	+ [Use SSH Keys via Kerberos for Server Authentication](use-ssh-key-via-kerberos-for-server-authentication.md)
+	+ [Add WinRM Connection Credentials](add-win-rm-connection-credentials.md)
 

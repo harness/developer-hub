@@ -38,7 +38,7 @@ Harness takes the artifacts and Kubernetes manifests you provide and deploys the
 | Azure deployment in Harness Manager | The same deployment in Kubernetes Dashboard |
 |  |  |
 
-See [What Can I Deploy in Kubernetes?](https://docs.harness.io/article/6ujb3c70fh).
+See [What Can I Deploy in Kubernetes?](../../../firstgen-platform/techref-category/cd-ref/platforms-ref/what-can-i-deploy-in-kubernetes.md).
 
 ### What Does a Harness AKS Deployment Involve?
 
@@ -56,7 +56,7 @@ The following list describes the major steps of a Harness AKS deployment:
 | 5 | Create the Harness **Service** using the **Kubernetes** Deployment Type. | Add your Kubernetes manifests and any config variables and files.You can use remote manifests stored in a source repo or Helm charts in a Helm repo. |
 | 6 | Create the Harness **Environment** and Infrastructure Definition for your target AKS cluster, and any overrides. | Using the Harness Cloud Provider you set up, you can select the target AKS cluster and namespace for your deployment.You can also override any Service settings, such as manifest values. This enables you to use a single Service with multiple Harness Environments. |
 | 7 | Create the Canary, Blue/Green, or Rollout deployment Harness **Workflow**. | The Workflow deploys the artifact(s) and Kubernetes workloads defined in the Harness Service to the cluster and namespace in the Harness Infrastructure Definition.See [Azure Workflows and Deployments](../../azure-deployments/aks-howtos/4-azure-workflows-and-deployments.md).For additional Workflows, see the vendor-agnostic steps in the following: <br />&bull;&nbsp; [Create a Kubernetes Canary Deployment](../../kubernetes-deployments/create-a-kubernetes-canary-deployment.md) <br />&bull;&nbsp; [Create a Kubernetes Blue/Green Deployment](../../kubernetes-deployments/create-a-kubernetes-blue-green-deployment.md) <br />&bull;&nbsp;  [Create a Kubernetes Rolling Deployment](../../kubernetes-deployments/create-a-kubernetes-rolling-deployment.md) |
-| 8 | Deploy the Workflow. | Once you've deployed a Workflow, learn how to improve your AKS CD: <br />&bull;&nbsp; [Workflows](https://docs.harness.io/article/m220i1tnia-workflow-configuration) <br />&bull;&nbsp; [Triggers](https://docs.harness.io/article/xerirloz9a-add-a-trigger-2) <br />&bull;&nbsp; [Infrastructure Provisioners Overview](https://docs.harness.io/article/o22jx8amxb-add-an-infra-provisioner) |
+| 8 | Deploy the Workflow. | Once you've deployed a Workflow, learn how to improve your AKS CD: <br />&bull;&nbsp; [Workflows](../../model-cd-pipeline/workflows/workflow-configuration.md) <br />&bull;&nbsp; [Triggers](../../model-cd-pipeline/triggers/add-a-trigger-2.md) <br />&bull;&nbsp; [Infrastructure Provisioners Overview](../../model-cd-pipeline/infrastructure-provisioner/add-an-infra-provisioner.md) |
 
 ### Next Steps
 

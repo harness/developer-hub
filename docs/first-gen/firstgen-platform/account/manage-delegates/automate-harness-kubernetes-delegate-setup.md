@@ -26,7 +26,7 @@ In this topic:
 
 ### Before You Begin
 
-* [Harness Delegate Overview](/article/h9tkwmkrm7-delegate-installation)
+* [Harness Delegate Overview](delegate-installation.md)
 
 ### Step 1: Download the Base Delegate
 
@@ -141,7 +141,9 @@ spec:
       harness.io/name: mydelegate-dev  
 ...
 ```
-A suffix such as `-lnfzrf` is a Harness convention for identifying the Harness account. Do not remove it.### Step 4: Deploy the Delegate
+A suffix such as `-lnfzrf` is a Harness convention for identifying the Harness account. Do not remove it.
+
+### Step 4: Deploy the Delegate
 
 To install the new Delegate you created with the script, do the following:
 
@@ -195,5 +197,5 @@ Note that the `-0` suffix in the pod name is removed for the StatefulSet name.
 
 ### Next Steps
 
-* [Target Delegates to Specific Namespaces](/article/p91u0bxtaf-enable-delegate-to-deploy-to-multiple-kubernetes-namespaces)
+* [Target Delegates to Specific Namespaces](enable-delegate-to-deploy-to-multiple-kubernetes-namespaces.md)
 

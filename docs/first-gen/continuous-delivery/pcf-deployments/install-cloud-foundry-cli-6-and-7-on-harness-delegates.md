@@ -35,14 +35,14 @@ This topic provides examples of Delegate Profile scripts that install CF CLI 6 a
 
 Setting up Harness to use CF CLI versions involves the following steps:
 
-1. Install the CF CLI version on a Delegate manually or using a [Delegate Profile](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation#delegate_profiles).
+1. Install the CF CLI version on a Delegate manually or using a [Delegate Profile](../../firstgen-platform/account/manage-delegates/delegate-installation.md#delegate-profiles).
 2. Set the CF CLI version on the Harness Service(s) you are using for TAS deployments.
 
 Details and options for these steps are described below.
 
 ### Review: Delegate Capability Check for CF CLI
 
-Once you have installed the CF CLI on a Delegate using a [Delegate Profile](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation#delegate_profiles), and set the CF CLI version on the Harness Services (both steps are described below), the Harness Delegate performs the following capability check at deployment runtime:
+Once you have installed the CF CLI on a Delegate using a [Delegate Profile](../../firstgen-platform/account/manage-delegates/delegate-installation.md#delegate-profiles), and set the CF CLI version on the Harness Services (both steps are described below), the Harness Delegate performs the following capability check at deployment runtime:
 
 1. When the Workflow starts, the Delegate capability check determines whether a specific version is installed on available Delegates.  
 The required version is determined by whether or not the **Enable CF CLI 7** option is selected in the Harness Service being deployed.Currently, the **Enable CF CLI 7** feature is behind the Feature Flag `CF_CLI7`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
@@ -59,7 +59,7 @@ In these cases, the Delegate might be looking for the old version. If so, you wi
 
 ### Select the CF CLI Version in a Harness Service
 
-After you have installed the CF CLI on a Delegate using a [Delegate Profile](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation#delegate_profiles), you must select the CF CLI version in the Harness Service you are using for your TAS deployment.
+After you have installed the CF CLI on a Delegate using a [Delegate Profile](../../firstgen-platform/account/manage-delegates/delegate-installation.md#delegate-profiles), you must select the CF CLI version in the Harness Service you are using for your TAS deployment.
 
 ![](./static/install-cloud-foundry-cli-6-and-7-on-harness-delegates-22.png)
 
@@ -70,7 +70,7 @@ Currently, the **Enable CF CLI 7** feature is behind the Feature Flag `CF_CLI7`.
 
 ### Install the CF CLI on Harness Delegates using a Package Manager
 
-Two different CF versions cannot be installed on the same Delegate using a package manager, but it can be done using compressed binaries.Create a [Delegate Profile](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation#delegate_profiles).
+Two different CF versions cannot be installed on the same Delegate using a package manager, but it can be done using compressed binaries.Create a [Delegate Profile](../../firstgen-platform/account/manage-delegates/delegate-installation.md#delegate-profiles).
 
 Add the following script to the Delegate Profile:
 
@@ -176,7 +176,7 @@ The output of `cf plugins` should be the same as the output for CF CLI 6.
 
 ### Install the CF CLI on Harness Delegates using a Compressed Binary
 
-Two different CF versions cannot be installed on the same Delegate using a package manager, but it can be done using compressed binaries.Create a [Delegate Profile](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation#delegate_profiles).
+Two different CF versions cannot be installed on the same Delegate using a package manager, but it can be done using compressed binaries.Create a [Delegate Profile](../../firstgen-platform/account/manage-delegates/delegate-installation.md#delegate-profiles).
 
 Add the following script to the Delegate Profile:
 
@@ -268,7 +268,7 @@ Let's look at a few use cases using two different CF CLI version compressed bina
 
 In order to satisfy the above cases, we can use the following approach.
 
-Create a [Delegate Profile](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation#delegate_profiles).
+Create a [Delegate Profile](../../firstgen-platform/account/manage-delegates/delegate-installation.md#delegate-profiles).
 
 Add the following script to the Delegate Profile:
 

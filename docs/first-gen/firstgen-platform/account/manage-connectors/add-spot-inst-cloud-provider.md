@@ -24,13 +24,15 @@ In this topic:
 
 ### Before You Begin
 
-* See [Harness Key Concepts](/article/4o7oqwih6h-harness-key-concepts).
+* See [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts).
 
 ### Visual Summary
 
 Here's an overview of the settings required to add a SpotInst Cloud Provider.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/whwnovprrb/1587759744403/image.png)### Step 1: Add the Cloud Provider
+![](./static/add-spot-inst-cloud-provider-03.png)
+
+### Step 1: Add the Cloud Provider
 
 To add a cloud provider to your Harness account, do the following:
 

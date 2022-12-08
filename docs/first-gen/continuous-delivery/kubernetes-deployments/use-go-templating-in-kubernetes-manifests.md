@@ -20,7 +20,7 @@ Ensue you are familiar with the following:
 
 ### Step 1: Review the Default Values File
 
-Harness [variable expressions](https://docs.harness.io/article/9dvxcegm90-variables) may be added to values.yaml, not the manifests themselves. This provides more flexibility.
+Harness [variable expressions](../../firstgen-platform/techref-category/variables/variables.md) may be added to values.yaml, not the manifests themselves. This provides more flexibility.
 
 1. Look at the default values.yaml file to see the variables used in the default configuration files:
 
@@ -34,7 +34,7 @@ Harness [variable expressions](https://docs.harness.io/article/9dvxcegm90-variab
   # This will be used as {{.Values.image}}  
   image: ${artifact.metadata.image}
   ```
-  The variable `${artifact.metadata.image}` is a Harness variable for referencing the metadata of the Artifact Source. For more information about Harness variables, see [Variables and Expressions in Harness](https://docs.harness.io/article/9dvxcegm90-variables).
+  The variable `${artifact.metadata.image}` is a Harness variable for referencing the metadata of the Artifact Source. For more information about Harness variables, see [Variables and Expressions in Harness](../../firstgen-platform/techref-category/variables/variables.md).
 
 2. Look at the default object descriptions to understand how easy it is to use Kubernetes in Harness.
 
@@ -81,7 +81,7 @@ This expression builder helps to ensure that you do not accidentally enter an in
 
 ### Example 1: Use a Harness Variable in a Manifest
 
-Harness built-in variables can be used in values.yaml file, and are evaluated at runtime. For a list of Harness variables, see [Variables and Expressions in Harness](https://docs.harness.io/article/9dvxcegm90-variables).
+Harness built-in variables can be used in values.yaml file, and are evaluated at runtime. For a list of Harness variables, see [Variables and Expressions in Harness](../../firstgen-platform/techref-category/variables/variables.md).
 
 In the values.yaml file, it will look like this:
 
@@ -211,7 +211,7 @@ The critical line is:
 
 `{{- range $track := split " " .Values.nonPrimary }}`
 
-This line iterates over a list of existing items, where the list was computed with a simple [Shell Script](https://docs.harness.io/article/1fjrjbau7x-capture-shell-script-step-output) command and output to the context prior to the rollout.
+This line iterates over a list of existing items, where the list was computed with a simple [Shell Script](../model-cd-pipeline/workflows/capture-shell-script-step-output.md) command and output to the context prior to the rollout.
 
 VirtualService:
 

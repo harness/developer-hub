@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-You can create, read, update, and delete [Harness Cloud Providers](/article/whwnovprrb-cloud-providers) using the Harness API.
+You can create, read, update, and delete [Harness Cloud Providers](../../account/manage-connectors/cloud-providers.md) using the Harness API.
 
 This topic provides information on querying and managing all Cloud Provider types.
 
@@ -33,8 +33,8 @@ In this topic:
 
 ### Before You Begin
 
-* Review the [Harness API](/article/tm0w6rruqv-harness-api)
-* [Add Cloud Providers](/article/whwnovprrb-cloud-providers)
+* Review the [Harness API](harness-api.md)
+* [Add Cloud Providers](../../account/manage-connectors/cloud-providers.md)
 
 ### Step 1: Create a Cloud Provider
 
@@ -374,7 +374,7 @@ The output will give you the ID you need in `id`:
   }  
 }
 ```
-See [Encrypted Text API](/article/omnfccj1n0-api-encrypted-text), [Encrypted Files API](/article/jvhzdi1ztj-api-encrypted-files), [Use Encrypted Text Secrets](/article/ygyvp998mu-use-encrypted-text-secrets), and [Use Encrypted File Secrets](/article/nt5vchhka4-use-encrypted-file-secrets).
+See [Encrypted Text API](api-encrypted-text.md), [Encrypted Files API](api-encrypted-files.md), [Use Encrypted Text Secrets](../../security/secrets-management/use-encrypted-text-secrets.md), and [Use Encrypted File Secrets](../../security/secrets-management/use-encrypted-file-secrets.md).
 
 #### GCP
 

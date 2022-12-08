@@ -8,11 +8,13 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](https://docs.harness.io/article/1fjmm4by22). Switch to [NextGen](/article/k7sbhe419w-delegate-requirements-and-limitations).This topic lists the limitations and requirements of the Harness Delegate.
+This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../../platform/2_Delegates/delegate-reference/delegate-requirements-and-limitations.md).This topic lists the limitations and requirements of the Harness Delegate.
 
-For all the topics related to the Harness Delegate, see [Manage Harness Delegates](/category/gyd73rp7np-manage-delegates).### Delegate Limitations
+For all the topics related to the Harness Delegate, see [Manage Harness Delegates](https://docs.harness.io/category/manage-harness-delegates-firstgen).
 
-* **Deployment limits:** Deployment limits are set by account type**.** See [Harness Products and Editions](/article/y1t8hhz4y5-harness-editions).
+### Delegate Limitations
+
+* **Deployment limits:** Deployment limits are set by account type**.** See [Harness Products and Editions](https://docs.harness.io/article/y1t8hhz4y5-harness-editions).
 * You might need to install multiple Delegates depending on how many Continuous Delivery tasks you do concurrently, and on the compute resources you are providing to each Delegate. Typically, you will need one Delegate for every 300-500 service instances across your applications.
 
 ### System Requirements
@@ -24,14 +26,16 @@ The Delegate is installed in your network and connects to the Harness Manager.
 * Minimum 8GB RAM — There is a cap of 4GB per Delegate, but when the Delegate is updating there might be two Delegates running. Hence, the minimum is 8GB.  
 Ensure that you provide the minimum memory for the Delegate and enough memory for the host/node system. For example, an AWS EC2 instance type such as m5a.xlarge has 16GB of RAM, 8 for the Delegate and 8 for the remaining operations.If you using the Harness Kubernetes Delegate with Harness Community Edition and using a small server, you can adjust the Kubernetes Delegate YAML setting `memory: "8Gi"` to something smaller.
 * Minimum 6GB Disk space.
-* [Shell Script Delegate](/article/8o4cwqj1kv-install-shellscript-delegate) requires cURL 7.64.1 or later.
+* [Shell Script Delegate](install-shellscript-delegate.md) requires cURL 7.64.1 or later.
 * Access to artifact servers, deployment environments, and cloud providers. As shown in the following illustration:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/lwynqsgxt9/1598392684741/image.png)Multiple Delegates can be used and their scope can be managed.### Whitelist Harness Domains and IPs
+![](./static/delegate-requirements-and-limitations-34.png)Multiple Delegates can be used and their scope can be managed.
+
+### Whitelist Harness Domains and IPs
 
 Harness SaaS Delegates only need outbound access to the Harness domain name (most commonly, **app.harness.io)** and, optionally, to **logging.googleapis.com**. The URL logging.googleapis.com is used to provide logs to Harness support.
 
-See [Whitelist Harness Domains and IPs](/article/7a55dbryup-whitelist-harness-domains-and-ips).
+See [Whitelist Harness Domains and IPs](../delegate-ref/whitelist-harness-domains-and-ips.md).
 
 ### Network Requirements
 
@@ -47,22 +51,24 @@ All network connections from your local network to Harness SaaS are outbound-onl
 	+ Collaboration Providers.
 	+ SSH access to target physical and virtual servers.
 
-For more information, see [Supported Platforms and Technologies](/article/220d0ojx5y-supported-platforms).
+For more information, see [Supported Platforms and Technologies](https://docs.harness.io/article/220d0ojx5y-supported-platforms).
 
 #### gRPC Limitations
 
 If you do not enable gRPC connections, the following limitations apply:
 
-* [Cloud Cost Management](/article/rr85306lq8-continuous-efficiency-overview) will not collect events.
+* [Cloud Cost Management](https://docs.harness.io/article/rr85306lq8-continuous-efficiency-overview) will not collect events.
 * If the `ARTIFACT_PERPETUAL_TASK` feature flag is enabled in your account, Harness performs perpetual artifact collection. If you do not enable gRPC connections, this will not work.
 
-Contact [Harness Support](mailto:support@harness.io) to enable or disable feature flags.### Permissions and Ports
+Contact [Harness Support](mailto:support@harness.io) to enable or disable feature flags.
 
-See [Permissions and Ports for Harness Connections](/article/11hjhpatqz-connectivity-and-permissions-requirements).
+### Permissions and Ports
+
+See [Permissions and Ports for Harness Connections](../delegate-ref/connectivity-and-permissions-requirements.md).
 
 ### Add Certificates and Other Software to Delegate
 
-For steps on adding certs or other software to the Delegate, see [Common Delegate Profile Scripts](/article/nxhlbmbgkj-common-delegate-profile-scripts).
+For steps on adding certs or other software to the Delegate, see [Common Delegate Profile Scripts](../delegate-ref/common-delegate-profile-scripts.md).
 
 ### Delegate Access Requirements
 

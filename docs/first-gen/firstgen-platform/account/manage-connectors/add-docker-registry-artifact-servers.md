@@ -12,13 +12,15 @@ Connect your Docker Registry artifact servers with Harness.
 
 ### Before You Begin
 
-* See [Harness Key Concepts](/article/4o7oqwih6h-harness-key-concepts).
+* See [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts).
 
 ### Visual Summary
 
 Here's an example of the Docker Registry Artifact Source addition.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/7dghbx1dbl/1587761350338/image.png)### Review: Docker Registry Permissions
+![](./static/add-docker-registry-artifact-servers-33.png)
+
+### Review: Docker Registry Permissions
 
 Make sure the connected user account has the following permissions.
 
@@ -31,7 +33,9 @@ The user needs access and permissions to the following:
 
 See [Docker Permissions](https://docs.docker.com/datacenter/dtr/2.0/user-management/permission-levels/).
 
-If you are using anonymous access to a Docker registry for a Kubernetes deployment, then `imagePullSecrets` should be removed from the container specification. This is standard Kubernetes behavior and not related to Harness specifically.### Limitations
+If you are using anonymous access to a Docker registry for a Kubernetes deployment, then `imagePullSecrets` should be removed from the container specification. This is standard Kubernetes behavior and not related to Harness specifically.
+
+### Limitations
 
 * Some registry providers, such as [Quay](http://quay.io/), will not list images unless authenticated, even if the repo is public.
 
@@ -63,7 +67,7 @@ For Docker registry v2 API, specify a URL such as `https://registry.hub.docker.c
 
 Optionally, enter the credentials. The Docker Registry Artifact Server does not require a username and password because you might use it to connect to a public repo.
 
-For secrets and other sensitive settings, select or create a new [Harness Encrypted Text secret](/article/ygyvp998mu-use-encrypted-text-secrets).
+For secrets and other sensitive settings, select or create a new [Harness Encrypted Text secret](../../security/secrets-management/use-encrypted-text-secrets.md).
 
 Usage Scope is determined by the secret you selected.
 
@@ -71,9 +75,9 @@ Usage Scope is determined by the secret you selected.
 
 Select the Delegate Selector(s) of the Delegate(s) you want this Connector to use.
 
-When Harness needs to run a task, it makes a connection to a resource via its Delegates. Harness selects the best Delegate according to its history or it round robins between Delegates. See [How Does Harness Manager Pick Delegates?](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation#how_does_harness_manager_pick_delegates).
+When Harness needs to run a task, it makes a connection to a resource via its Delegates. Harness selects the best Delegate according to its history or it round robins between Delegates. See [How Does Harness Manager Pick Delegates?](../manage-delegates/delegate-installation.md#how-does-harness-manager-pick-delegates).
 
 In a few cases, you might want Harness to select specific Delegates. In these cases, you can use Delegate Selectors.
 
-See [Select Delegates with Selectors](/article/c3fvixpgsl-select-delegates-for-specific-tasks-with-selectors).
+See [Select Delegates with Selectors](../manage-delegates/select-delegates-for-specific-tasks-with-selectors.md).
 

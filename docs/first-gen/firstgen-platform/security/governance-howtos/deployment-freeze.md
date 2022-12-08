@@ -8,14 +8,14 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Currently, this feature is behind the `NEW_DEPLOYMENT_FREEZE` feature flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.Deployment Freeze is a Harness Governance feature that stops all Harness deployments. A deployment freeze helps ensure stability during periods of low engineering and support activity, such as holidays, trade shows, or company events. For steps to freeze deployments through Harness API, see [Use Deployment Freeze API](/article/vwu8tynfc4-use-deployment-freeze-api).
+Currently, this feature is behind the `NEW_DEPLOYMENT_FREEZE` feature flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.Deployment Freeze is a Harness Governance feature that stops all Harness deployments. A deployment freeze helps ensure stability during periods of low engineering and support activity, such as holidays, trade shows, or company events. For steps to freeze deployments through Harness API, see [Use Deployment Freeze API](../../techref-category/api/use-deployment-freeze-api.md).
 
 ### Before You Begin
 
-* [Deployments Overview](/category/cwefyz0jos-deployments-overview)
-* [Workflows](/article/m220i1tnia-workflow-configuration)
-* [Create a Pipeline](/article/zc1u96u6uj-pipeline-configuration)
-* Make sure you have **Administer Other Account Functions** permissions to access Governance in Harness. For more information, see [Account Permissions](/article/ven0bvulsj-users-and-permissions#account_permissions).
+* [Deployments Overview](https://docs.harness.io/category/general-deployment-features)
+* [Workflows](../../../continuous-delivery/model-cd-pipeline/workflows/workflow-configuration.md)
+* [Create a Pipeline](../../../continuous-delivery/model-cd-pipeline/pipelines/pipeline-configuration.md)
+* Make sure you have **Administer Other Account Functions** permissions to access Governance in Harness. For more information, see [Account Permissions](../access-management-howtos/users-and-permissions.md#account-permissions).
 
 ### Deployment Freeze Overview
 
@@ -29,21 +29,21 @@ When a deployment freeze window is enabled:
 
 * Deployments cannot be started manually or using a Trigger.
 * Active deployments are allowed to complete.
-* During execution if a Pipeline hits a stage with an Environment that has a deployment freeze enabled, then the Pipeline gets rejected. You can resume the rejected Pipelines from the previous state once the deployment freeze window is over. See [Resume Pipeline Deployments](/article/4dvyslwbun-resume-a-pipeline-deployment).
-* If the first stage of a Pipeline (or a Workflow) uses an Environment that has a deployment freeze enabled, then you need to wait for the deployment freeze window to be over before triggering the deployment. See [Trigger Workflows and Pipelines](/article/xerirloz9a-add-a-trigger-2).
+* During execution if a Pipeline hits a stage with an Environment that has a deployment freeze enabled, then the Pipeline gets rejected. You can resume the rejected Pipelines from the previous state once the deployment freeze window is over. See [Resume Pipeline Deployments](../../../continuous-delivery/concepts-cd/deployments-overview/resume-a-pipeline-deployment.md).
+* If the first stage of a Pipeline (or a Workflow) uses an Environment that has a deployment freeze enabled, then you need to wait for the deployment freeze window to be over before triggering the deployment. See [Trigger Workflows and Pipelines](../../../continuous-delivery/model-cd-pipeline/triggers/add-a-trigger-2.md).
 
 ### Step: Add a Freeze Window
 
 Perform the following steps to add a Freeze Window:
 
-1. In the **Deployment Governance** page, click **Add freeze window**.![](https://files.helpdocs.io/kw8ldg1itf/articles/wscbhd20ca/1612768526666/screenshot-2021-02-08-at-12-39-25-pm.png)
+1. In the **Deployment Governance** page, click **Add freeze window**.![](./static/deployment-freeze-17.png)
 2. In **Deployment Freeze Window**, in **Name**, enter a name for your freeze window.
-3. In **Freeze Window**, select **Applications** and **Environment Type** to restrict the Deployment Freeze Window to one or multiple Harness Applications.![](https://files.helpdocs.io/kw8ldg1itf/articles/wscbhd20ca/1612780507270/screenshot-2021-02-08-at-4-04-47-pm.png)
+3. In **Freeze Window**, select **Applications** and **Environment Type** to restrict the Deployment Freeze Window to one or multiple Harness Applications.![](./static/deployment-freeze-18.png)
 	1. In **Application**, select the application. You can select multiple Applications.
 	2. In **Environment Type**, select the environment type.
-	3. In **Environment**, select the Environment. **Environment(s)** option is enabled only if you select a Harness **Application** and **Specific Environment(s)** in the **Environment Type**.![](https://files.helpdocs.io/kw8ldg1itf/articles/wscbhd20ca/1612782163974/screenshot-2021-02-08-at-4-32-17-pm.png)
+	3. In **Environment**, select the Environment. **Environment(s)** option is enabled only if you select a Harness **Application** and **Specific Environment(s)** in the **Environment Type**.![](./static/deployment-freeze-19.png)
 	4. For **Excluded application(s)**, see [Option: Excluded application(s)](#option_excluded_application_s) below.
-	5. In **Service(s)**, select one or more Services to freeze deployment for the same.![](https://files.helpdocs.io/kw8ldg1itf/articles/wscbhd20ca/1635399226036/screenshot-2021-10-28-at-10-56-24-am.png)The default value for Service(s) is **All Services** when you select multiple Applications.![](https://files.helpdocs.io/kw8ldg1itf/articles/wscbhd20ca/1635412216732/screenshot-2021-10-28-at-2-33-38-pm.png)To add Freeze Window for a specific Service, select the Application and Environment corresponding to that Service.![](https://files.helpdocs.io/kw8ldg1itf/articles/wscbhd20ca/1635412685684/screenshot-2021-10-28-at-2-32-58-pm.png)
+	5. In **Service(s)**, select one or more Services to freeze deployment for the same.![](./static/deployment-freeze-20.png)The default value for Service(s) is **All Services** when you select multiple Applications.![](./static/deployment-freeze-21.png)To add Freeze Window for a specific Service, select the Application and Environment corresponding to that Service.![](./static/deployment-freeze-22.png)
 
 Currently, this feature is behind the Feature Flag `NEW_DEPLOYMENT_FREEZE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.1. Click **Add Row** to add more Applications, Environment Type, and Environment.
 2. In **Select** **Time Zone**, select a timezone from the drop-down list.
@@ -58,11 +58,13 @@ Currently, this feature is behind the feature flags `NEW_DEPLOYMENT_FREEZE` and 
 
 The deployment freeze will be applied to all Applications but the ones you enter in **Excluded application(s)**.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/wscbhd20ca/1667944808120/image.png)#### Configuration as Code
+![](./static/deployment-freeze-23.png)
+
+#### Configuration as Code
 
 Excluded application(s) is also available in Configuration as Code YAML. You can configure it in the Governance > Deployment Governance.yaml file.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/wscbhd20ca/1667945171212/image.png)The exclusions should be configured in the `excludeAppSelections` field in the YAML file. The `envSelection.filterType: ALL` should be set first.
+![](./static/deployment-freeze-24.png)The exclusions should be configured in the `excludeAppSelections` field in the YAML file. The `envSelection.filterType: ALL` should be set first.
 
 #### GraphQL API
 
@@ -101,19 +103,21 @@ Let's say your Start and End dates are June 15, 2021, 6:45 pm – June 15, 2021,
 
 In **Notify to** select the user group(s) to notify when the deployment freeze starts.
 
-For information on setting up the notification channels for a User Group, see [User Notifications and Alert Settings](https://docs.harness.io/article/kf828e347t-notification-groups).
+For information on setting up the notification channels for a User Group, see [User Notifications and Alert Settings](../../account/manage-notegroups/notification-groups.md).
 
 The added user group is notified of the activation and deactivation of the deployment freeze window.
 
 Use **All** to notify all User Groups.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/wscbhd20ca/1652739313782/clean-shot-2022-05-16-at-15-14-40.png)### Step: Submit
+![](./static/deployment-freeze-25.png)### Step: Submit
 
 Click **Submit**.
 
 The **Deployment Governance** page now displays the Deployment Freeze Window that you've set.
 
-By default when you add a Deployment Freeze Window, it's in OFF mode. Slide the slider to **ON** to enable the deployment freeze window.### Enable Deployment Freeze
+By default when you add a Deployment Freeze Window, it's in OFF mode. Slide the slider to **ON** to enable the deployment freeze window.
+
+### Enable Deployment Freeze
 
 Perform the following steps to freeze both manual and Trigger-based deployments:
 
@@ -138,11 +142,11 @@ If the **Deployment Freeze** setting is not enabled, but a Deployment Freeze Win
 
 To disable Deployment Freeze (including any scheduled Freeze Windows), just move the **Disable all deployment** page's slider back to **OFF**, and then click **Confirm** when prompted.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/wscbhd20ca/1612784823858/screenshot-2021-02-08-at-5-16-51-pm.png)### Override Deployment Freeze
+![](./static/deployment-freeze-26.png)### Override Deployment Freeze
 
-You can start a deployment even if there is an active Deployment Freeze window. You must be an Admin with the **Allow Deployments During Freeze** permission to do [this](/article/ven0bvulsj-users-and-permissions)**.** To override the deployment freeze window, just start, resume, or rerun the deployment for an Application, Workflow, or Pipeline with an active deployment freeze window, click **Confirm**.
+You can start a deployment even if there is an active Deployment Freeze window. You must be an Admin with the **Allow Deployments During Freeze** permission to do [this](../access-management-howtos/users-and-permissions.md)**.** To override the deployment freeze window, just start, resume, or rerun the deployment for an Application, Workflow, or Pipeline with an active deployment freeze window, click **Confirm**.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/wscbhd20ca/1633329062341/screenshot-2021-10-04-at-11-53-38-am.png)If you start deployment by overriding an active deployment freeze and then toggle off the override permission while waiting for runtime inputs, the deployment continues to run.### Aborting or Rolling Back Deployments Running when Freeze Begins
+![](./static/deployment-freeze-27.png)If you start deployment by overriding an active deployment freeze and then toggle off the override permission while waiting for runtime inputs, the deployment continues to run.### Aborting or Rolling Back Deployments Running when Freeze Begins
 
 If there is a deployment running when the freeze window begins, you can Roll back or Abort that deployment.
 
@@ -150,6 +154,6 @@ If there is a deployment running when the freeze window begins, you can Roll bac
 
 Review the following Harness features that help you monitor and control deployments:
 
-* [24/7 Service Guard Overview](/article/dajt54pyxd-24-7-service-guard-overview)
-* [Continuous Verification](/article/myw4h9u05l-verification-providers-list)
+* [24/7 Service Guard Overview](../../../continuous-delivery/continuous-verification/continuous-verification-overview/concepts-cv/24-7-service-guard-overview.md)
+* [Continuous Verification](https://docs.harness.io/article/myw4h9u05l-verification-providers-list)
 

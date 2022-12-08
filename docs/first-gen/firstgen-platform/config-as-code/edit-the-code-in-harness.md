@@ -10,23 +10,25 @@ helpdocs_is_published: true
 
 You can view or edit the code for any account or Application entity and its configuration.
 
-Before you can edit account and Application YAML, you must have the correct User Group Account and Application Permissions. See [Using RBAC for YAML Files](/article/htvzryeqjw-configuration-as-code#using_rbac_for_yaml_files).### Before You Begin
+Before you can edit account and Application YAML, you must have the correct User Group Account and Application Permissions. See [Using RBAC for YAML Files](configuration-as-code.md#using-rbac-for-yaml-files).
 
-* [Configuration as Code](/article/htvzryeqjw-configuration-as-code)
-* [Harness Account-Level Git Sync](/article/apiwdqngvz-harness-account-level-sync)
-* [Harness Application-Level Git Sync](/article/6mr74fm55h-harness-application-level-sync)
+### Before You Begin
+
+* [Configuration as Code](configuration-as-code.md)
+* [Harness Account-Level Git Sync](harness-account-level-sync.md)
+* [Harness Application-Level Git Sync](harness-application-level-sync.md)
 
 ### Step: Edit the Code
 
 1. In **Setup,** click **Configuration As Code**.
-2. Select the YAML file that you want to edit and click **Edit**.![](https://files.helpdocs.io/kw8ldg1itf/articles/r5vya3dlt0/1594747903401/screenshot-2020-07-14-at-11-00-35-pm.png)
-3. Edit the YAML file and click **Save**.![](https://files.helpdocs.io/kw8ldg1itf/articles/r5vya3dlt0/1594748236599/screenshot-2020-07-14-at-11-04-22-pm.png)
+2. Select the YAML file that you want to edit and click **Edit**.![](./static/edit-the-code-in-harness-44.png)
+3. Edit the YAML file and click **Save**.![](./static/edit-the-code-in-harness-45.png)
 
 You can configure any settings using YAML anywhere in Harness by clicking the **YAML** editor button.
 
 ### See Also
 
-* [Harness YAML Code Reference](/article/21kgaw4h86-harness-yaml-code-reference)
+* [Harness YAML Code Reference](../techref-category/configuration-as-code-yaml/harness-yaml-code-reference.md)
 
 ### Notes
 

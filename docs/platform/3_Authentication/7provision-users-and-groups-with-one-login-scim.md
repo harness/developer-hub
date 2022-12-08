@@ -17,7 +17,7 @@ This topic describes how to set up OneLogin provisioning for Harness Users and U
 ### Before you begin
 
 * This topic assumes you understand the System for Cross-domain Identity Management (SCIM). For an overview, see the article [Introduction to System for Cross-domain Identity Management (SCIM)](https://medium.com/@pamodaaw/system-for-cross-domain-identity-management-scim-def45ea83ae7).
-* [Learn Harness' Key Concepts](https://ngdocs.harness.io/article/hv2758ro4e-learn-harness-key-concepts)
+* [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md)
 * [Access Management (RBAC) Overview](../4_Role-Based-Access-Control/1-rbac-in-harness.md)
 * Make sure you are an Administrator in your OneLogin account and have the **Account Admin** permissions in Harness.
 * Make sure you have a Harness [API Key](../4_Role-Based-Access-Control/7-add-and-manage-api-keys.md) and a valid Token under it. The API Key must have all permissions on the Users and User Groups.
@@ -28,7 +28,7 @@ This integration does not support updating a provisioned user's **Email** in O
 
 Once a user is provisioned in Harness, you cannot delete the user in the Harness Manager. You must delete the user in OneLogin.
 
-The provisioned user cannot use the Harness OneLogin app to log into Harness unless OneLogin is also set up for [OneLogin SAML authentication in Harness](https://docs.harness.io/article/zy8yjcrqzg-single-sign-on-sso-with-saml#saml_sso_with_one_login). They must use their email address and password.
+The provisioned user cannot use the Harness OneLogin app to log into Harness unless OneLogin is also set up for [OneLogin SAML authentication in Harness](../../first-gen/firstgen-platform/security/access-management-howtos/single-sign-on-sso-with-saml.md#saml-sso-with-one-login). They must use their email address and password.
 
 ### Step 1: Add Harness App to OneLogin​
 

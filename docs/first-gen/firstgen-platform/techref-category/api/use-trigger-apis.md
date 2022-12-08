@@ -8,19 +8,19 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic provides information on how to create, read, update, and delete [Triggers](/article/xerirloz9a-add-a-trigger-2) using the Harness API. Triggers automate deployments using a variety of conditions, such as Git events, new Artifacts, schedules, and the success of other Pipelines.
+This topic provides information on how to create, read, update, and delete [Triggers](../../../continuous-delivery/model-cd-pipeline/triggers/add-a-trigger-2.md) using the Harness API. Triggers automate deployments using a variety of conditions, such as Git events, new Artifacts, schedules, and the success of other Pipelines.
 
 In this topic:
 
-* [Before You Begin](https://docs.harness.io/article/u21rkuzfod-use-trigger-apis#before_you_begin)
-* [Step: Create a Trigger](https://docs.harness.io/article/u21rkuzfod-use-trigger-apis#step_create_a_trigger)
-* [Step: Update a Trigger](https://docs.harness.io/article/u21rkuzfod-use-trigger-apis#step_update_a_trigger)
-* [Step: Delete a Trigger](https://docs.harness.io/article/u21rkuzfod-use-trigger-apis#step_delete_a_trigger)
+* [Before You Begin](use-trigger-apis.md#before-you-begin)
+* [Step: Create a Trigger](use-trigger-apis.md#step-create-a-trigger)
+* [Step: Update a Trigger](use-trigger-apis.md#step-update-a-trigger)
+* [Step: Delete a Trigger](use-trigger-apis.md#step-delete-a-trigger)
 
 ### Before You Begin
 
-* Review the [Harness API](https://docs.harness.io/article/tm0w6rruqv-harness-api)
-* [Trigger Workflows and Pipelines](/article/xerirloz9a-add-a-trigger-2)
+* Review the [Harness API](harness-api.md)
+* [Trigger Workflows and Pipelines](../../../continuous-delivery/model-cd-pipeline/triggers/add-a-trigger-2.md)
 
 ### Step: Create a Trigger
 
@@ -302,7 +302,7 @@ Your Git provider includes secret tokens that enable you to validate requests.
 
 You can use a Harness secret in your Webhook secret setting. When the Git provider sends a POST request to the Harness URL in the Webhook, Harness will use the secret to validate the request.
 
-The mutation uses the Harness secret identifier, not the secret name. For details on finding the secret Id, see [Encrypted Text API](/article/omnfccj1n0-api-encrypted-text).
+The mutation uses the Harness secret identifier, not the secret name. For details on finding the secret Id, see [Encrypted Text API](api-encrypted-text.md).
 
 Here is an example of creating the Trigger using the secret ID:
 
@@ -362,7 +362,7 @@ mutation {
   }  
 }
 ```
-For details on setting this up in the Harness Manager Trigger UI, see [Authenticate the Webhook](https://docs.harness.io/article/ys3cvwm5gc-trigger-a-deployment-on-git-event#option_authenticate_the_webhook).
+For details on setting this up in the Harness Manager Trigger UI, see [Authenticate the Webhook](../../../continuous-delivery/model-cd-pipeline/triggers/trigger-a-deployment-on-git-event.md#option-authenticate-the-webhook).
 
 ### Step: Update a Trigger
 

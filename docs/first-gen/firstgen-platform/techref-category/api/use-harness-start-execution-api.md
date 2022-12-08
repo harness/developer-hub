@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 This topic describes how to start executions using the `StartExecution` Harness API.
 
-You can start a Workflow and a Pipeline using APIs. For more information, see [Trigger Workflows or Pipelines Using GraphQL API](/article/s3leksekny-trigger-workflow-or-a-pipeline-using-api) and [Harness Blog Post](https://community.harness.io/t/deployment-api-is-live/419). The API access is tied to an [API Key](/article/smloyragsm-api-keys) created in the Access Management section in Continuous Security.
+You can start a Workflow and a Pipeline using APIs. For more information, see [Trigger Workflows or Pipelines Using GraphQL API](trigger-workflow-or-a-pipeline-using-api.md) and [Harness Blog Post](https://community.harness.io/t/deployment-api-is-live/419). The API access is tied to an [API Key](../../security/access-management-howtos/api-keys.md) created in the Access Management section in Continuous Security.
 
 ### Use Cases
 
@@ -22,7 +22,7 @@ You can start a Workflow and a Pipeline using APIs. For more information, see [T
 
 You can authenticate using **Logged-in User Session** or **Use API Key.** The authentication determines what data you can query and retrieve via API. By default, when you launch the **API Explorer**, you authenticate using a session key.
 
-For more information, see [Authenticate](/article/2rmd5i0e0h-harness-api-explorer#step_1_authenticate).
+For more information, see [Authenticate](harness-api-explorer.md#step-1-authenticate).
 
 ### Authorization
 
@@ -34,13 +34,15 @@ For list APIs, the data is returned based on your permissions. You are only allo
 
 Add an API key scoped to two different permission groups:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/ga3ccymwce/1620840049087/35529-d-199855-b-5-ce-5-b-8103-e-75892239-e-9-b-055-bb-6.png)Below, the user can see the key with the **Permissions Inherited from** field:
+![](./static/use-harness-start-execution-api-00.png)Below, the user can see the key with the **Permissions Inherited from** field:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/ga3ccymwce/1620840050781/c-635-ab-4-f-3-f-7-e-7354-bae-542-eb-9-b-08-bbc-0-f-1-c-5-f-3-e-4-2-690-x-50.png)The permissions for these groups are tied to the token. The user or system that uses the token will only be authorized to perform the specific actions.
+![](./static/use-harness-start-execution-api-01.png)The permissions for these groups are tied to the token. The user or system that uses the token will only be authorized to perform the specific actions.
 
 These user groups do not have permissions to execute a production Pipeline. When deploying the Pipeline with the key, the API throws an error stating that the user is not authorized to deploy.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/ga3ccymwce/1620840051757/7-fbb-2-bffad-9-a-3841-b-9-fd-790-f-65318-dc-1-daaa-49-d-0-2-690-x-387.png)#### Note
+![](./static/use-harness-start-execution-api-02.png)
+
+#### Note
 
 * The authorization and authentication of the API don’t apply to any specific portion, the entire API follows this model.
 * Admins can rotate the API keys to avoid them being stale. To rotate, simply delete the old API key and create a new one.
@@ -252,7 +254,9 @@ Payload and the Pipeline executed are returned.
 ```
 You can also see your deployment in the Continuous Deployment page.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/ga3ccymwce/1608716303343/screenshot-2020-12-23-at-3-08-10-pm.png)### Deploy a Pipeline with Variables
+![](./static/use-harness-start-execution-api-03.png)
+
+### Deploy a Pipeline with Variables
 
 The below sample shows how to deploy a Pipeline with variables.
 
@@ -308,15 +312,17 @@ Proof that the Workflow variables are passed:
 
 **Branch**
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/ga3ccymwce/1620840053356/a-6-b-3-e-9417-e-06389-d-4-b-2-ce-59788863-af-29-b-820542.png)**H****ot fix**
+![](./static/use-harness-start-execution-api-04.png)**H****ot fix**
 
 Since it was set to false all the stages are deployed.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/ga3ccymwce/1620840054460/7-cd-1-f-0-d-70194-f-157-c-58-af-8-cd-405-e-538-fa-16-c-1-d-36-2-690-x-58.png)**skipCV**
+![](./static/use-harness-start-execution-api-05.png)**skipCV**
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/ga3ccymwce/1620840055864/18088-d-8-fcfe-97-c-7-e-0-e-7-c-6-e-700553-bd-19199847-ab.png)The end result:
+![](./static/use-harness-start-execution-api-06.png)The end result:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/ga3ccymwce/1620840056887/6-cb-0-c-466914-bfd-363-e-3410-bbd-4-c-1215-b-0466-ef-79-2-690-x-180.png)### Deploy a Workflow with Variables
+![](./static/use-harness-start-execution-api-07.png)
+
+### Deploy a Workflow with Variables
 
 The following sample shows how to deploy a Workflow with variables.
 
@@ -407,9 +413,11 @@ mutation ($startExecution: StartExecutionInput!) {
 
 The value was **master** for **branch**. The **branch** is successfully passed:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/ga3ccymwce/1620840058120/b-7-f-1-c-539-c-712171-e-616-f-994-f-36-d-8-a-6-c-840-babc-8-f.png)The Prometheus step is skipped due to the set condition. **skipCV** was set to **true**.
+![](./static/use-harness-start-execution-api-08.png)The Prometheus step is skipped due to the set condition. **skipCV** was set to **true**.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/ga3ccymwce/1609822914053/screenshot-2021-01-05-at-10-28-29-am.png)### Check the Status of Deployments Via API
+![](./static/use-harness-start-execution-api-09.png)
+
+### Check the Status of Deployments Via API
 
 You can use the following queries to check the deployment status.
 
@@ -489,8 +497,8 @@ curl --request POST \
 ```
 You can use tools like [Insomnia](https://insomnia.rest/download/#mac) or [Postman](https://www.postman.com/downloads/) to generate these CURL commands. Here, Insomnia is used.
 
-1. Click on the **Arrow** key next to your command and select from the drop-down list.![](https://files.helpdocs.io/kw8ldg1itf/articles/ga3ccymwce/1620840059132/df-5-c-8-db-0019149-ead-3-c-6-ff-086-c-672-b-05-db-4-c-85-e-4.png)
-2. Click **Copy as Curl** and it's copied to your clipboard.![](https://files.helpdocs.io/kw8ldg1itf/articles/ga3ccymwce/1620840060243/777471606465-f-487169-f-8-edaf-5-d-86-b-2-cd-158790-f-2-690-x-311.png)
+1. Click on the **Arrow** key next to your command and select from the drop-down list.![](./static/use-harness-start-execution-api-10.png)
+2. Click **Copy as Curl** and it's copied to your clipboard.![](./static/use-harness-start-execution-api-11.png)
 3. Paste the command.  
   
 

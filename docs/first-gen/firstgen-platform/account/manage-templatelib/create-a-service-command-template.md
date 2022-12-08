@@ -14,22 +14,22 @@ To add bash and PowerShell commands to Services, you can create templates using 
 
 Only members of a Harness User Group with the **Manage Template Library** permission may create, edit, and delete Account and Application-level templates. Members of a User Group with this permission disabled can view and link to templates only.In this topic:
 
-* [Before You Begin](https://docs.harness.io/article/kbmz9uc7q9-create-a-service-command-template#before_you_begin)
+* [Before You Begin](create-a-service-command-template.md#before-you-begin)
 * [Review: Differences between Service Command and Shell Script Template Types](#review_differences_between_service_command_and_shell_script_template_types)
-* [Step: Create a Service Command](https://docs.harness.io/article/kbmz9uc7q9-create-a-service-command-template#step_create_a_service_command)
-* [Next Steps](https://docs.harness.io/article/kbmz9uc7q9-create-a-service-command-template#next_steps)
+* [Step: Create a Service Command](create-a-service-command-template.md#step-create-a-service-command)
+* [Next Steps](create-a-service-command-template.md#next-steps)
 
 ### Before You Begin
 
-* [Account and Application Templates](/article/ygi6d8epse-use-templates)
-* [Add a Service](https://docs.harness.io/article/eb3kfl8uls-service-configuration)
-* [Add a Workflow](https://docs.harness.io/article/m220i1tnia-workflow-configuration)
+* [Account and Application Templates](../../../continuous-delivery/concepts-cd/deployment-types/use-templates.md)
+* [Add a Service](../../../continuous-delivery/model-cd-pipeline/setup-services/service-configuration.md)
+* [Add a Workflow](../../../continuous-delivery/model-cd-pipeline/workflows/workflow-configuration.md)
 
 ### Review: Differences between Service Command and Shell Script Template Types
 
 Harness provides different methods for executing scripts in the Service Command and Shell Script Template types:
 
-* **Service Command Template**: a Service Command can run multiple scripts, including built-in scripts Harness provides, like the [Exec](/article/qluiky79j8-service-types-and-artifact-sources#exec_script) and [Copy Artifact](/article/qluiky79j8-service-types-and-artifact-sources#copy_and_download_of_metadata_artifact_sources) scripts.  
+* **Service Command Template**: a Service Command can run multiple scripts, including built-in scripts Harness provides, like the [Exec](../../../continuous-delivery/model-cd-pipeline/setup-services/service-types-and-artifact-sources.md#exec-script) and [Copy Artifact](../../../continuous-delivery/model-cd-pipeline/setup-services/service-types-and-artifact-sources.md#copy-and-download-of-metadata-artifact-sources) scripts.  
 When run on the target host, the commands are copied to the target host and run as an input parameter like `./internal-executor.sh script.sh` where `script.sh` is the script you provide. This is done using the Bourne shell (sh).
 * **Shell Script Template:** a Shell Script step runs a single script.  
 When run on the target host, the script is run inline using the Bash shell.
@@ -52,14 +52,14 @@ To create a Service Command, do the following:
 1. Click **Setup**.
 2. In **Account**, click **Template Library**.
 3. Click the template folder where you want to add your new template.
-4. Click **Add Template** and select the **Service Command** template type. The **Add Service Command Template** settings appear.![](https://files.helpdocs.io/kw8ldg1itf/articles/ygi6d8epse/1579912598739/image.png)
+4. Click **Add Template** and select the **Service Command** template type. The **Add Service Command Template** settings appear.![](./static/create-a-service-command-template-17.png)
 5. Enter a name and description for the command.
 6. In **Variables**, click **Add** to add variables to the template. You can set a default value. The variable value can be supplied or replaced when the template is used in a Service.
-7. Click **Submit**. The new Service Command template is created.![](https://files.helpdocs.io/kw8ldg1itf/articles/ygi6d8epse/1547246455435/image.png)
-8. Hover over **Add** to see the list of available subcommands to add to the template.![](https://files.helpdocs.io/kw8ldg1itf/articles/ygi6d8epse/1547246518891/image.png)
+7. Click **Submit**. The new Service Command template is created.![](./static/create-a-service-command-template-18.png)
+8. Hover over **Add** to see the list of available subcommands to add to the template.![](./static/create-a-service-command-template-19.png)
 9. Click a subcommand to see its script and make any changes.
-10. To use the template in a Service, click **Add Command** in the Service and then click **From Template Library**. The template is displayed.![](https://files.helpdocs.io/kw8ldg1itf/articles/ygi6d8epse/1547246647989/image.png)
-11. Click **Link** to link to the template. You can then edit the template in your Service, providing values for the variables in the template. When you use this Service in a Workflow, the Service command will be available as a step.![](https://files.helpdocs.io/kw8ldg1itf/articles/ygi6d8epse/1558480375100/image.png)
+10. To use the template in a Service, click **Add Command** in the Service and then click **From Template Library**. The template is displayed.![](./static/create-a-service-command-template-20.png)
+11. Click **Link** to link to the template. You can then edit the template in your Service, providing values for the variables in the template. When you use this Service in a Workflow, the Service command will be available as a step.![](./static/create-a-service-command-template-21.png)
 
 ### Step: Run Service Commands From a Template Library in a Workflow
 
@@ -75,21 +75,21 @@ Template variable names cannot contain hyphens or dots (`.`) between names.In a 
 4. Select **Execute on Delegate** option if you wish to execute Workflow on Harness Delegate. This option allow users to select Delegates on Service commands.
 5. In **Delegate Selector** enter the Selectors of the Delegates you want to use.  
   
-You can use Selectors to select which Harness Delegates to use when executing the Service Command step. For more information, see [Select Delegates with Selectors](/article/c3fvixpgsl-select-delegates-for-specific-tasks-with-selectors).
+You can use Selectors to select which Harness Delegates to use when executing the Service Command step. For more information, see [Select Delegates with Selectors](../manage-delegates/select-delegates-for-specific-tasks-with-selectors.md).
 	* Harness will use Delegates matching the Selectors you select.
 	* If you use one Selector, Harness will use any Delegate that has that Selector.
 	* If you select two Selectors, a Delegate must have both Selectors to be selected. That Delegate might also have other Selectors, but it must have the two you selected.
 	* Selectors can be used whether **Execute on Delegate** is enabled or not. The Shell Script command honors the Selector and executes the SSH connection to the specified target host via the selected Delegate. An example where Selectors might be useful when **Execute on Delegate** is disabled: When you specify an IP address in **Target Host**, but you have 2 VPCs with the same subnet and duplicate IP numbers exist in both. Using Selectors, you can scope the the shell session towards the delegate in a specific VPC.
-	* You can also use [Harness variable expressions](https://docs.harness.io/article/9dvxcegm90-variables). For example, if you have a Workflow variables named delegate, you can enter `$(workflow.variables.delegate)`. When you deploy the Workflow, you can provide a value for the variable that matches a Delegate Selector.
+	* You can also use [Harness variable expressions](../../techref-category/variables/variables.md). For example, if you have a Workflow variables named delegate, you can enter `$(workflow.variables.delegate)`. When you deploy the Workflow, you can provide a value for the variable that matches a Delegate Selector.
 6. If you do not select **Execute on Delegate** option and want to run it in another host, enter the following details:
 	1. **Target Host**: In **Target Host**, enter the IP address or hostname of the remote host where you want to execute the script. The target host must be in the **Infrastructure Definition** selected when you created the workflow, and the Harness Delegate must have network access to the target host. You can also enter the variable `${instance.name}` and the script will execute on whichever target host is used during deployment.
-	2. **Connection Type**: Select **WinRM** or **SSH**.![](https://files.helpdocs.io/kw8ldg1itf/articles/kbmz9uc7q9/1606281940661/screenshot-2020-11-23-at-11-46-08-pm.png)
+	2. **Connection Type**: Select **WinRM** or **SSH**.![](./static/create-a-service-command-template-22.png)
 7. Click **Submit**.
 
 ### Next Steps
 
-* [Create an HTTP Workflow Step Template](/article/dv7ajeroou-account-and-application-templates)
-* [Create a Shell Script Workflow Step Template](/article/lfqn3t83hd-create-a-shell-script-workflow-step-template)
-* [Link Templates to Services and Workflows](/article/xd70p7rmqd-link-templates-to-services-and-workflows)
-* [Add Service Command Templates into Command Units](/article/mfoy0hrw8y-add-service-command-templates-into-command-units)
+* [Create an HTTP Workflow Step Template](account-and-application-templates.md)
+* [Create a Shell Script Workflow Step Template](create-a-shell-script-workflow-step-template.md)
+* [Link Templates to Services and Workflows](link-templates-to-services-and-workflows.md)
+* [Add Service Command Templates into Command Units](add-service-command-templates-into-command-units.md)
 

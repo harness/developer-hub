@@ -12,10 +12,10 @@ You can remove the Git sync connection between a Harness account or Application 
 
 ### Before You Begin
 
-* [Configuration as Code](/article/htvzryeqjw-configuration-as-code)
-* [Harness Account-Level Git Sync](/article/apiwdqngvz-harness-account-level-sync)
-* [Harness Application-Level Git Sync](/article/6mr74fm55h-harness-application-level-sync)
-* [Edit Harness Components as YAML](/article/r5vya3dlt0-edit-the-code-in-harness)
+* [Configuration as Code](configuration-as-code.md)
+* [Harness Account-Level Git Sync](harness-account-level-sync.md)
+* [Harness Application-Level Git Sync](harness-application-level-sync.md)
+* [Edit Harness Components as YAML](edit-the-code-in-harness.md)
 
 ### Step: Delink a Git Connection
 
@@ -25,6 +25,6 @@ To delink a Git connection, do the following:
 2. Select the Git Sync connection you want to delink.
 	1. For an account-level connection, click the ellipsis next to the search field, and then click **Setup Git Sync**.
 	2. For an application-level connection, hover over the Application's **Git Sync** icon, and then click the icon.
-3. In **Git Sync**, click **DELINK**.![](https://files.helpdocs.io/kw8ldg1itf/articles/r8qvurlqiy/1594900511665/screenshot-2020-07-16-at-4-54-55-pm.png)
-4. Click **Confirm** to delink the Git sync.![](https://files.helpdocs.io/kw8ldg1itf/articles/r8qvurlqiy/1594900706798/screenshot-2020-07-16-at-5-27-52-pm.png)
+3. In **Git Sync**, click **DELINK**.![](./static/delink-git-sync-13.png)
+4. Click **Confirm** to delink the Git sync.![](./static/delink-git-sync-14.png)
 

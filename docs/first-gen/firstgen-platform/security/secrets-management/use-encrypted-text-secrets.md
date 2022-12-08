@@ -12,18 +12,18 @@ You can encrypt any text and reference it in Harness Application entities or con
 
 ### Before You Begin
 
-* See [Harness Key Concepts](/article/4o7oqwih6h-harness-key-concepts).
-* Make sure you add the required Secrets Manager. See [Add a Secrets Manager](/article/uuer539u3l-add-a-secrets-manager).
+* See [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts).
+* Make sure you add the required Secrets Manager. See [Add a Secrets Manager](add-a-secrets-manager.md).
 
 ### Step 1: Add Encrypted Text
 
 1. In **Secrets Management**, click **Encrypted Text**.
-2. Click **Add Encrypted Text**. The **Add Encrypted Text** dialog appears.![](https://files.helpdocs.io/kw8ldg1itf/articles/4vqipye0vz/1580802409035/image.png)
+2. Click **Add Encrypted Text**. The **Add Encrypted Text** dialog appears.![](./static/use-encrypted-text-secrets-68.png)
 3. Select the **Secrets Manager** you will use to encrypt this secret.
 4. Enter a name for the encrypted text. This is the name you will use to reference the text elsewhere in your applications.
 5. Enter a value for the encrypted text.
 6. **Scope to Account** - If your Harness User account is part of a User Group with the **Administer Other Account Functions** permission enabled, you will see the **Scope to Account** option. Select **Scope to Account** to make this encrypted text secret available to Delegate Profile scripts only. Only secrets scoped to the account are available to use in Delegate Profiles.
-7. For **Usage Scope**, see [Restrict Secrets Usage](/article/e5q9qcho4y-restrict-secrets-usage).
+7. For **Usage Scope**, see [Restrict Secrets Usage](restrict-secrets-usage.md).
 8. Click **Submit**.
 
 ### Step 2: Use the Encrypted Text in Services
@@ -41,13 +41,13 @@ All of the passwords and keys used in Harness Connectors (Cloud Providers, Artif
 
 You create the Encrypted Text secret first and then select it in the Connector. Or you can create it from the Connector by clicking **Create Encrypted Text**:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/ygyvp998mu/1587749743104/image.png)You can also edit it in the Connector.
+![](./static/use-encrypted-text-secrets-69.png)You can also edit it in the Connector.
 
 ### Step 4: Reference the Encrypted Text
 
 For an Encrypted Text secret that has been scoped to an Application (using its **Usage Scope** settings), you reference the secret in an Application component using the expression: `${secrets.getValue("secret_name")}`.
 
-For example, if you have text secret named doc-secret you can reference it in a Workflow [Shell Script](/article/1fjrjbau7x-capture-shell-script-step-output) step like this:
+For example, if you have text secret named doc-secret you can reference it in a Workflow [Shell Script](../../../continuous-delivery/model-cd-pipeline/workflows/capture-shell-script-step-output.md) step like this:
 
 
 ```
@@ -105,9 +105,11 @@ Here, the secret value is `"mysecret"` and the name is `secret_name` .
 
 Avoid using $ in your secret value. If your secret value includes $, you must use single quotes when you use the expression in a script.  
 For example, if your secret value is `'my$secret'` , and the name is `secret_name`, to echo, use single quotes:  
- `echo '${secrets.getValue("secret_name")}'`### Secrets in YAML Code
+ `echo '${secrets.getValue("secret_name")}'`
 
-The example below applies to the values.yaml used by the secret manifest for either Kubernetes and Native Helm deployments. See [Kubernetes or Native Helm?](/article/i3n6qr8p5i-deployments-overview#kubernetes_or_native_helm).When you plan to use your secrets in YAML content, make sure you follow the quoting mechanism needed by YAML syntax.
+### Secrets in YAML Code
+
+The example below applies to the values.yaml used by the secret manifest for either Kubernetes and Native Helm deployments. See [Kubernetes or Native Helm?](../../../continuous-delivery/concepts-cd/deployments-overview/deployments-overview.md#kubernetes-or-native-helm).When you plan to use your secrets in YAML content, make sure you follow the quoting mechanism needed by YAML syntax.
 
 For example, if the secret value is "foo: bar" and the secret has:
 
@@ -155,7 +157,7 @@ If you accidentally use a very common value in your secret, like whitespace, the
 
 If you see output similar to this, review your secret and fix the error.
 
-If an operation within a script changes the value of the secret and Harness cannot match it to the expression, the newly modified string is displayed in the output exposing the secret value. If the modification is minor, the secret value can be easily deciphered which is a security concern.See [Secrets and Log Sanitization](/article/o5ec7vvtju-secrets-and-log-sanitization).
+If an operation within a script changes the value of the secret and Harness cannot match it to the expression, the newly modified string is displayed in the output exposing the secret value. If the modification is minor, the secret value can be easily deciphered which is a security concern.See [Secrets and Log Sanitization](../../techref-category/techref-security/secrets-and-log-sanitization.md).
 
 ### Review: Secret Scope
 
@@ -169,7 +171,7 @@ If you have access to Application A and B, you may still narrow the secret's sco
 
 If the scope of a secret is only Application A, then only users with Read permission for Application A may see that secret. Users with Write permission to Application A may edit it also.
 
-For steps, see [Restrict Secrets Usage](/article/e5q9qcho4y-restrict-secrets-usage).
+For steps, see [Restrict Secrets Usage](restrict-secrets-usage.md).
 
 ### Review: Secrets and Caching
 

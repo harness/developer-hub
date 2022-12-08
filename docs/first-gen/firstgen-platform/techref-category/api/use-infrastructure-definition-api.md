@@ -10,20 +10,20 @@ helpdocs_is_published: true
 
 This topic lists example queries that you can execute against the Harness Infrastructure Definition API.
 
-See [Add an Infrastructure Definition](/article/v3l3wqovbe-infrastructure-definitions) for basic information.In this topic:
+See [Add an Infrastructure Definition](../../../continuous-delivery/model-cd-pipeline/environments/infrastructure-definitions.md) for basic information.In this topic:
 
-* [Before You Begin](https://docs.harness.io/article/07vhqhs1xy-use-infrastructure-definition-api#before_you_begin)
-* [Query Multiple Infrastructure Definitions by Deployment](https://docs.harness.io/article/07vhqhs1xy-use-infrastructure-definition-api#query_multiple_infrastructure_definitions_by_deployment)
-* [Query Infrastructure Definitions by Environment ID](https://docs.harness.io/article/07vhqhs1xy-use-infrastructure-definition-api#query_infrastructure_definitions_by_environment_id)
-* [Query Infrastructure Definitions by Infrastructure Definition ID](https://docs.harness.io/article/07vhqhs1xy-use-infrastructure-definition-api#query_infrastructure_definitions_by_infrastructure_definition_id)
-* [Query Infrastructure Definitions by Name](https://docs.harness.io/article/07vhqhs1xy-use-infrastructure-definition-api#query_infrastructure_definitions_by_name)
-* [See Also](https://docs.harness.io/article/07vhqhs1xy-use-infrastructure-definition-api#see_also)
+* [Before You Begin](use-infrastructure-definition-api.md#before-you-begin)
+* [Query Multiple Infrastructure Definitions by Deployment](use-infrastructure-definition-api.md#query-multiple-infrastructure-definitions-by-deployment)
+* [Query Infrastructure Definitions by Environment ID](use-infrastructure-definition-api.md#query-infrastructure-definitions-by-environment-id)
+* [Query Infrastructure Definitions by Infrastructure Definition ID](use-infrastructure-definition-api.md#query-infrastructure-definitions-by-infrastructure-definition-id)
+* [Query Infrastructure Definitions by Name](use-infrastructure-definition-api.md#query-infrastructure-definitions-by-name)
+* [See Also](use-infrastructure-definition-api.md#see-also)
 
 ### Before You Begin
 
-* [​Introduction to Harness GraphQL API](https://docs.harness.io/article/tm0w6rruqv-harness-api)
-* [Harness API Explorer](https://docs.harness.io/article/2rmd5i0e0h-harness-api-explorer)
-* [API Schema and Structure](https://docs.harness.io/article/kn8wsu80n4-api-schema-and-structure)
+* [​Introduction to Harness GraphQL API](harness-api.md)
+* [Harness API Explorer](harness-api-explorer.md)
+* [API Schema and Structure](api-schema-and-structure.md)
 
 ### Query Multiple Infrastructure Definitions by Deployment
 
@@ -31,7 +31,7 @@ Use the `deploymentType` parameter to query for all Infrastructure Definitions b
 
 The deployment type is defined in the **Deployment Type** setting in an Infrastructure Definition.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/07vhqhs1xy/1616789736371/image.png)For example, here's a query for Kubernetes deployment types:
+![](./static/use-infrastructure-definition-api-22.png)For example, here's a query for Kubernetes deployment types:
 
 
 ```
@@ -190,5 +190,5 @@ The output will look something like this:
 ```
 ### See Also
 
-* [Harness StartExecution API Deep Dive](/article/ga3ccymwce-use-harness-start-execution-api)
+* [Harness StartExecution API Deep Dive](use-harness-start-execution-api.md)
 

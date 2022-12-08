@@ -21,8 +21,8 @@ In this topic:
 
 ### Before You Begin
 
-* [Harness Key Concepts](/article/4o7oqwih6h-harness-key-concepts)
-* [Manage User Notifications](/article/kf828e347t-notification-groups)
+* [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts)
+* [Manage User Notifications](notification-groups.md)
 
 
 ### Step 1: Set up Alert Notification Rules
@@ -31,7 +31,7 @@ To set up an Alert Notification Rule, do the following:
 
 1. In Harness Manager, click **Setup**, and then click **Alert Notification Rules**. The **Alert Notification Rules** settings appear.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/a52uqxp9s0/1558371655071/image.png)The options here are outlined in the following sections:
+![](./static/manage-alert-notifications-06.png)The options here are outlined in the following sections:
 
 * [Alert Notification Status Toggle](#alert_notification_status_toggle)
 * [Catch-All Notification Rule Setup](#catch_all_notification_rule)
@@ -42,7 +42,7 @@ To set up an Alert Notification Rule, do the following:
 
 The **Alert Notification Status** slider at upper right is a global panic button for situations where your users are receiving too-frequent notifications. By sliding this to its **OFF** position, you restrict notifications to Harness Manager's adjacent bell-shaped **Alerts** indicator, only. This prevents notifications from being forwarded to any of the channels configured below.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/kf828e347t/1578080220588/image.png)While set to **OFF**, this Status toggle will suppress notifications to all User Groups—those configured under both the [Catch-All Notification Rule](#catch_all_notification_rule) and [Alert Notification Rules](#alert_notification_rules_2) sections.
+![](./static/manage-alert-notifications-07.png)While set to **OFF**, this Status toggle will suppress notifications to all User Groups—those configured under both the [Catch-All Notification Rule](#catch_all_notification_rule) and [Alert Notification Rules](#alert_notification_rules_2) sections.
 #### Catch-All Notification Rule Setup
 
 In **Catch-All Notification Rule**, you specify the User Groups to use as the Catch-All Notification Groups, and the alert rules for those Groups. Whatever rules are not covered by the parallel **Alert Notification Rules** section are applied to the User Groups in the **Catch-All Notification Rule** section.
@@ -51,20 +51,22 @@ For example, if a specific rule is not applied to any User Group in the **Alert 
 
 At least one **Catch-All Notification Rule** User Group is required. By default, the Account Administrator User Group is used.To set up a Catch-All Notification Rule User Group, do the following:
 
-1. In the **Alert Notification Rules** page, click the pencil icon next to the **Catch-All Notification User Group**. The **Notification Settings** dialog appears.![](https://files.helpdocs.io/kw8ldg1itf/articles/a52uqxp9s0/1558474324578/image.png)
+1. In the **Alert Notification Rules** page, click the pencil icon next to the **Catch-All Notification User Group**. The **Notification Settings** dialog appears.![](./static/manage-alert-notifications-08.png)
 
 1. In **User Group(s)**, select the User Groups to set as the **Catch-All Notification User Groups**.
 2. Click **SUBMIT**. The groups you selected are listed.
 
-For the Catch-All group, the **Notification Settings** dialog's **Alert Category** selection is locked to **All** alerts.#### Alert Notification Rules Setup
+For the Catch-All group, the **Notification Settings** dialog's **Alert Category** selection is locked to **All** alerts.
+
+#### Alert Notification Rules Setup
 
 The Alert Notification Rules determine how alerts are routed to User Groups.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/dt3rw9nj1n/1550551362010/image.png)To begin defining an alert notification rule, do the following:
+![](./static/manage-alert-notifications-09.png)To begin defining an alert notification rule, do the following:
 
 1. In the **Alert Notification Rules** section, click **Add New Rule**. The **Notification Settings** dialog appears.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/rt7zvmzlgx/1586687404701/alert-notifi-settings.png)1. Set the **Alert Filter** to either **Matching** or **Not Matching**, depending on the type of rule you want to create.![](https://files.helpdocs.io/kw8ldg1itf/articles/a52uqxp9s0/1558474407125/image.png)
+![](./static/manage-alert-notifications-10.png)1. Set the **Alert Filter** to either **Matching** or **Not Matching**, depending on the type of rule you want to create.![](./static/manage-alert-notifications-11.png)
 
 1. In **Alert Category**, select a category.
 
@@ -83,7 +85,7 @@ Selecting an **Alert Category** of **Setup** keeps the **Notification Settings**
   
 When you are done, the dialog will look something like this:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/rt7zvmzlgx/1586687646194/setup-alerts.png)1. Click **SUBMIT**. The new rule is displayed.![](https://files.helpdocs.io/kw8ldg1itf/articles/a52uqxp9s0/1558395022924/image.png)
+![](./static/manage-alert-notifications-12.png)1. Click **SUBMIT**. The new rule is displayed.![](./static/manage-alert-notifications-13.png)
 
 
 ### Step 3: Set up 24/7 Service Guard Alerts
@@ -99,7 +101,7 @@ Set the **Alert Type** to **24/7 Service Guard**.
 5. Select the **User Groups(s)** to receive the alert.  
 When you are done, the dialog will look something like this:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/rt7zvmzlgx/1586687951440/sg-alerts.png)1. Click **SUBMIT**. The new rule is displayed.![](https://files.helpdocs.io/kw8ldg1itf/articles/a52uqxp9s0/1558399936458/image.png)
+![](./static/manage-alert-notifications-14.png)1. Click **SUBMIT**. The new rule is displayed.![](./static/manage-alert-notifications-15.png)
 
 
 ### Review: Alert Thresholds
@@ -116,16 +118,18 @@ You can create multiple rules to route the same Alert Type to different User Gr
 
 The slider's scale represents Harness' analyzed risk level, based on metrics, transaction history, and machine-learning models. While third-party Verification Providers' alerts are typically based on static rules, Harness' alerts are dynamic. Over time, Harness will escalate or decrease alerts, as we observe anomalies, regressions, and other factors.
 
-To set the Overall Risk Level at which Harness originally *triggers* alerts—based on our analysis of data from your third-party Verification Providers—each provider's **Alert Notification** dialog provides a similar **Alert Threshold** slider. For details, see [24/7 Service Guard Overview](/article/dajt54pyxd-24-7-service-guard-overview).
+To set the Overall Risk Level at which Harness originally *triggers* alerts—based on our analysis of data from your third-party Verification Providers—each provider's **Alert Notification** dialog provides a similar **Alert Threshold** slider. For details, see [24/7 Service Guard Overview](../../../continuous-delivery/continuous-verification/continuous-verification-overview/concepts-cv/24-7-service-guard-overview.md).
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/a52uqxp9s0/1558573117231/image.png)#### Alert Examples
+![](./static/manage-alert-notifications-16.png)
+
+#### Alert Examples
 
 Here is an example of an alert in Slack:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/kf828e347t/1550686657245/image.png)Here is an example of an alert in email:
+![](./static/manage-alert-notifications-17.png)Here is an example of an alert in email:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/kf828e347t/1550687303894/image.png)
+![](./static/manage-alert-notifications-18.png)
 ### Step 4: Set up Workflow and Phase Notifications
 
-Workflow notifications are set up in the Workflow **Notification Strategy** settings. For information on setting the Workflow Notification Strategy, see [Notification Strategy](/article/m220i1tnia-workflow-configuration#notification_strategy).
+Workflow notifications are set up in the Workflow **Notification Strategy** settings. For information on setting the Workflow Notification Strategy, see [Notification Strategy](../../../continuous-delivery/model-cd-pipeline/workflows/workflow-configuration.md#notification-strategy).
 

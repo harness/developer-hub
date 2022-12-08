@@ -33,15 +33,15 @@ For these less common use cases, you can use the **Custom Remote Manifests** set
 See [Supported Platforms and Technologies](https://docs.harness.io/article/220d0ojx5y-supported-platforms).
 
 * Harness certifies its Helm support using [Helm 3.1.2](https://github.com/helm/helm/releases/tag/v3.1.2).
-* Helm chart dependencies are not supported in Git source repositories (Harness [Source Repo Providers](https://docs.harness.io/article/ay9hlwbgwa-add-source-repo-providers)). Helm chart dependencies are supported in [Helm Chart Repositories.](https://docs.harness.io/article/0hrzb1zkog-add-helm-repository-servers)
+* Helm chart dependencies are not supported in Git source repositories (Harness [Source Repo Providers](../../firstgen-platform/account/manage-connectors/add-source-repo-providers.md)). Helm chart dependencies are supported in [Helm Chart Repositories.](../../firstgen-platform/account/manage-connectors/add-helm-repository-servers.md)
 
 ### Limitations
 
 * **Custom Remote Manifests** scripts use Bash only.
 * Native Helm deployments in Harness use the Basic Workflow strategy only.
-* The Delegate that runs the script must have all the software needed for the scripts to execute. You can use [Delegate Profiles](https://docs.harness.io/article/yd4bs0pltf-run-scripts-on-the-delegate-using-profiles) to add software to Delegates from Harness.  
+* The Delegate that runs the script must have all the software needed for the scripts to execute. You can use [Delegate Profiles](../../firstgen-platform/account/manage-delegates/run-scripts-on-the-delegate-using-profiles.md) to add software to Delegates from Harness.  
 Typically, when you perform a Native Helm deployment in Harness, Harness checks its Delegates to see which Delegates have Helm installed.  
-For custom fetching and preprocessing of Helm charts described in this topic, Harness does not perform this check. Use [Delegate Profiles](https://docs.harness.io/article/yd4bs0pltf-run-scripts-on-the-delegate-using-profiles) and the **Delegate Selector** option described below to ensure that your deployment uses a Delegate running Helm.
+For custom fetching and preprocessing of Helm charts described in this topic, Harness does not perform this check. Use [Delegate Profiles](../../firstgen-platform/account/manage-delegates/run-scripts-on-the-delegate-using-profiles.md) and the **Delegate Selector** option described below to ensure that your deployment uses a Delegate running Helm.
 
 ### Review: What Workloads Can I Deploy?
 
@@ -67,7 +67,7 @@ You can use Harness secrets for the username and password in your script. For ex
 ```
 curl -sSf -u "${secrets.getValue("username")}:${secrets.getValue("password")}" -O 'https://mycompany.jfrog.io/module/example/chart.zip'
 ```
-For more information, see [Use Encrypted Text Secrets](https://docs.harness.io/article/ygyvp998mu-use-encrypted-text-secrets).
+For more information, see [Use Encrypted Text Secrets](../../firstgen-platform/security/secrets-management/use-encrypted-text-secrets.md).
 
 ### Step 1: Create a Harness Native Helm Service
 
@@ -129,9 +129,9 @@ As you can see, there are also Service Config Variables for values.yaml override
 
 Typically, when you perform a Native Helm deployment in Harness, Harness checks its Delegates to see which Delegates have Helm installed.
 
-For custom fetching and preprocessing of Helm charts described in this topic, Harness does not perform this check. Use [Delegate Profiles](https://docs.harness.io/article/yd4bs0pltf-run-scripts-on-the-delegate-using-profiles) and the **Delegate Selector** option described below to ensure that your deployment uses a Delegate running Helm.
+For custom fetching and preprocessing of Helm charts described in this topic, Harness does not perform this check. Use [Delegate Profiles](../../firstgen-platform/account/manage-delegates/run-scripts-on-the-delegate-using-profiles.md) and the **Delegate Selector** option described below to ensure that your deployment uses a Delegate running Helm.
 
-In **Delegate Selector**, select the Selector for the Delegate(s) you want to use. You add Selectors to Delegates to make sure that they're used to execute the command. For more information, see [Select Delegates with Selectors](https://docs.harness.io/article/c3fvixpgsl-select-delegates-for-specific-tasks-with-selectors).
+In **Delegate Selector**, select the Selector for the Delegate(s) you want to use. You add Selectors to Delegates to make sure that they're used to execute the command. For more information, see [Select Delegates with Selectors](../../firstgen-platform/account/manage-delegates/select-delegates-for-specific-tasks-with-selectors.md).
 
 Harness will use Delegates matching the Selectors you add.
 

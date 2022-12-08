@@ -66,16 +66,16 @@ Here are the major steps in an IIS (.NET) deployment:
 	3. IIS Virtual Directory Workflow.
 	4. Observe the deployment steps in real-time, and confirm in your VPC.
 7. **Continuous Verification:** Once your deployments are successful, you can add verification steps into the workflow using your verification provider. For more information, see [Continuous Verification](https://docs.harness.io/article/myw4h9u05l-verification-providers-list).
-8. **Refinements:** Add notification steps, failure strategy, and make your workflow a template for other users. For more information, see [Add a Workflow](https://docs.harness.io/article/m220i1tnia-workflow-configuration).
+8. **Refinements:** Add notification steps, failure strategy, and make your workflow a template for other users. For more information, see [Add a Workflow](../model-cd-pipeline/workflows/workflow-configuration.md).
 
 ### Before You Begin
 
 This guide assumes that you are familiar with Harness architecture and have downloaded the Harness delegate into your enterprise network or VPC. For more information, see:
 
 * [Harness Requirements](https://docs.harness.io/article/70zh6cbrhg-harness-requirements)
-* [Delegate Installation](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation)
+* [Delegate Installation](../../firstgen-platform/account/manage-delegates/delegate-installation.md)
 * [Harness Architecture](https://docs.harness.io/article/de9t8iiynt-harness-architecture)
-* [Configuration as Code](https://docs.harness.io/article/htvzryeqjw-configuration-as-code)
+* [Configuration as Code](../../firstgen-platform/config-as-code/configuration-as-code.md)
 
 ### Next Step
 

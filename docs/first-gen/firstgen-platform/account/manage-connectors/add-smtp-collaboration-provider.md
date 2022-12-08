@@ -29,12 +29,12 @@ Add your SMTP server as a Harness Collaboration Provider, to use email for deplo
 
 ### Before You Begin
 
-* [Add Collaboration Providers](/article/cv98scx8pj-collaboration-providers)
+* [Add Collaboration Providers](collaboration-providers.md)
 
 
 ### Limitations
 
-Configuring your SMTP server is required only if you are using [Harness On-Prem](/article/gng086569h-harness-on-premise-versions), or if you wish to use your own SMTP server instead of the Harness SaaS default SMTP option.
+Configuring your SMTP server is required only if you are using [Harness On-Prem](https://docs.harness.io/article/gng086569h-harness-on-premise-versions), or if you wish to use your own SMTP server instead of the Harness SaaS default SMTP option.
 
 
 ### Step 1: Add Collaboration Provider
@@ -51,7 +51,7 @@ Start adding a Collaboration Provider to Harness as follows:
 
 In **Type** select **SMTP**. The SMTP settings appear.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/8nkhcbjnh7/1587764186163/image.png)
+![](./static/add-smtp-collaboration-provider-29.png)
 ### Step 3: Display Name
 
 In **Display Name**, enter a unique name for this Collaboration Provider.
@@ -89,7 +89,7 @@ Enter the username for the email account.
 
 ### Step 10: Password
 
-In **Select Encrypted Password**, select or create a new [Harness Encrypted Text secret](/article/ygyvp998mu-use-encrypted-text-secrets) for the email account password.
+In **Select Encrypted Password**, select or create a new [Harness Encrypted Text secret](../../security/secrets-management/use-encrypted-text-secrets.md) for the email account password.
 
 
 ### Step 11: Usage Scope
@@ -105,5 +105,5 @@ Usage scope is inherited from the secret you entered in **Select Encrypted Passw
 
 ### Next Steps
 
-* For details about Harness email notifications, see [User Notifications and Alert Settings](/article/kf828e347t-notification-groups).
+* For details about Harness email notifications, see [User Notifications and Alert Settings](../manage-notegroups/notification-groups.md).
 

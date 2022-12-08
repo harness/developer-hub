@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](https://docs.harness.io/article/1fjmm4by22). Switch to [NextGen](/article/mg09uspsx1-custom-secret-manager).Harness provides first-class support and built-in integration for some of the third party Secret Managers. You can configure and make use of other Secrets Managers using the Custom Secrets Manager. It's a shell script that you can execute anywhere that fetches the secret and shares it with Harness. It can be run on a Delegate or a remote machine connected to a Delegate.
+This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../../platform/6_Security/9-custom-secret-manager.md).Harness provides first-class support and built-in integration for some of the third party Secret Managers. You can configure and make use of other Secrets Managers using the Custom Secrets Manager. It's a shell script that you can execute anywhere that fetches the secret and shares it with Harness. It can be run on a Delegate or a remote machine connected to a Delegate.
 
 In this topic:
 
@@ -24,7 +24,7 @@ In this topic:
 ### Before You Begin
 
 * See [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts).
-* See [Secrets Management Overview](https://docs.harness.io/article/au38zpufhr-secret-management).
+* See [Secrets Management Overview](secret-management.md).
 
 ### Limitations
 
@@ -41,7 +41,7 @@ Using a configured Secrets Manager, create an Encrypted Text secret to access th
 
 Ensure that **Usage Scope** is set to **Scope to Account**.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/ejaddm3ddb/1608743360592/image.png)For more information on creating Encrypted Text Secret, see [Add Encrypted Text](https://docs.harness.io/article/ygyvp998mu-use-encrypted-text-secrets#step_1_add_encrypted_text).
+![](./static/add-and-use-a-custom-secrets-manager-20.png)For more information on creating Encrypted Text Secret, see [Add Encrypted Text](use-encrypted-text-secrets.md#step-1-add-encrypted-text).
 
 Make sure that the secret you create to access your third party Secrets Manager is selected as Scope to Account. It will not be used for any Application.
 
@@ -49,14 +49,14 @@ Make sure that the secret you create to access your third party Secrets Manager 
 
 If you want to run the Shell Script on a target host and not on the Harness Delegate, you must first create the required connection attributes.
 
-* To access an SSH-based Custom Secrets Manager, create an SSH credential first. See [Add SSH Keys](https://docs.harness.io/article/gsp4s7abgc-add-ssh-keys) for the procedure to create SSH credentials.
-* To access a WinRM-based Custom Secrets Manager, create a WinRM connection first. See [Add WinRM Connection Credentials](https://docs.harness.io/article/9fqa1vgar7-add-win-rm-connection-credentials) for more information.
+* To access an SSH-based Custom Secrets Manager, create an SSH credential first. See [Add SSH Keys](add-ssh-keys.md) for the procedure to create SSH credentials.
+* To access a WinRM-based Custom Secrets Manager, create a WinRM connection first. See [Add WinRM Connection Credentials](add-win-rm-connection-credentials.md) for more information.
 
 This does not apply if you want to run the Custom Secrets Manager on the Harness Delegate.
 
 ### Step 3. Create a Shell Script Template
 
-Create a Shell Script Template. For more information on creating a Shell Script Template and adding it to the Template Library, see [Create Shell Script Template](https://docs.harness.io/article/ygi6d8epse-use-templates#create_shell_script_template).
+Create a Shell Script Template. For more information on creating a Shell Script Template and adding it to the Template Library, see [Create Shell Script Template](../../../continuous-delivery/concepts-cd/deployment-types/use-templates.md#create-shell-script-template).
 
 Note the following points while creating the template.
 
@@ -65,7 +65,7 @@ Note the following points while creating the template.
 
 Here’s an example Shell Script Template created for Custom Secrets Manager.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/ejaddm3ddb/1594228365187/shell-script-1.png)In this example, this script assigns the secret variable to your final value. Here are the details of the entries in the script.
+![](./static/add-and-use-a-custom-secrets-manager-21.png)In this example, this script assigns the secret variable to your final value. Here are the details of the entries in the script.
 
 * This script makes a cURL call to the API URL of the third party Secrets Manager and gets the output to the file secret.json.
 * It includes some parameters such as engine name and path.
@@ -80,7 +80,9 @@ Note: Template library add ons like default variable values, script output, and 
 
 Make sure you enter the following details.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/ejaddm3ddb/1594228485784/editcsm-1-1.png)#### Display Name
+![](./static/add-and-use-a-custom-secrets-manager-22.png)
+
+#### Display Name
 
 Enter a name for the Custom Secrets Manager.
 
@@ -120,7 +122,7 @@ Enter test values for the variables defined while creating the Shell Script Temp
 
 Create an Encrypted Text using the Custom Secrets Manager you created earlier. Enter the name and values of all the Input Variables defined while creating the Shell Script Template. 
 
-For more information on creating Encrypted Text Secret, see [Add Encrypted Text](https://docs.harness.io/article/ygyvp998mu-use-encrypted-text-secrets#step_1_add_encrypted_text).
+For more information on creating Encrypted Text Secret, see [Add Encrypted Text](use-encrypted-text-secrets.md#step-1-add-encrypted-text).
 
 If you want to create a secret on a Target Host Custom Secrets Manager, you must also select the Connection Attribute.
 

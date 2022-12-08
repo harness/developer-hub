@@ -10,7 +10,9 @@ helpdocs_is_published: true
 
 If a Harness Kubernetes deployment fails, Harness will rollback to the last successful version of your workload.
 
-Please review the [Kubernetes Versioning and Annotations](/article/ttn8acijrz-versioning-and-annotations) topic. It explains how Harness names and versions Kubernetes releases.### Identifying Deployments for Rollback
+Please review the [Kubernetes Versioning and Annotations](versioning-and-annotations.md) topic. It explains how Harness names and versions Kubernetes releases.
+
+### Identifying Deployments for Rollback
 
 All Harness entities have Ids. You can see them in the URL of each entity. For example, here is a Service URL where you can see the Id `GmukVkNJRhqX53JEzI-3UQ` after `services`:
 
@@ -38,7 +40,7 @@ For example, if two different Workflows, w1 and w2, are using same Infrastructur
 
 ### Workload Rollback Only
 
-**Rollback rolls back workloads only.** If there are other objects or operations executed in your Workflow or Pipeline, Harness does not roll those back.See [What Can I Deploy in Kubernetes?](/article/6ujb3c70fh).
+**Rollback rolls back workloads only.** If there are other objects or operations executed in your Workflow or Pipeline, Harness does not roll those back.See [What Can I Deploy in Kubernetes?](what-can-i-deploy-in-kubernetes.md).
 
 ### Scaling and Rollback
 
@@ -62,11 +64,11 @@ You do not need to redeploy previous versions of the service/artifact and the in
 
 You can add a **Rollback Deployment** command to the **Rollback Steps** in your Workflow to roll back the workloads deployed by the **Rollout Deployment** step.
 
-Simply add this command to the **Rollback Steps** in a Workflow where you want to initiate a rollback. Note that this command applies to the deployments of the Rollout Deployment command, and not the [Apply Step](/article/4vjgmjcj6z-deploy-manifests-separately-using-apply-step) command.
+Simply add this command to the **Rollback Steps** in a Workflow where you want to initiate a rollback. Note that this command applies to the deployments of the Rollout Deployment command, and not the [Apply Step](../../../../continuous-delivery/kubernetes-deployments/deploy-manifests-separately-using-apply-step.md) command.
 
 ### See Also
 
-* [Kubernetes Quickstart](/article/7in9z2boh6-kubernetes-quickstart)
-* [Kubernetes How-tos](/article/pc6qglyp5h-kubernetes-deployments-overview)
-* [Kubernetes Deployments Overview](/article/wnr5n847b1-kubernetes-overview)
+* [Kubernetes Quickstart](https://docs.harness.io/article/7in9z2boh6-kubernetes-quickstart)
+* [Kubernetes How-tos](../../../../continuous-delivery/kubernetes-deployments/kubernetes-deployments-overview.md)
+* [Kubernetes Deployments Overview](../../../../continuous-delivery/concepts-cd/deployment-types/kubernetes-overview.md)
 

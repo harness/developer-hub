@@ -17,7 +17,7 @@ Make sure the connected user account has the following permissions in the Nexus 
 * Repo: All repositories (Read)
 * Nexus UI: Repository Browser
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/6y6b8pkm12/1589570434373/image.png)If used as a Docker Repo, the user needs:
+![](./static/nexus-artifact-sources-00.png)If used as a Docker Repo, the user needs:
 
 * List images and tags
 * Pull images
@@ -38,7 +38,9 @@ Legend:
 | **Docker Image**(Kubernetes/Helm) | **AWS** **AMI** | **AWS CodeDeploy** | **AWS Lambda** | **JAR** | **RPM** | **TAR** | **WAR** | **ZIP** | **PCF** | **IIS** |
 | M |  | M |  | M | M | M | M | M | M | M |
 
-For any other types, you can use [Custom Artifact Sources](/article/jizsp5tsms-custom-artifact-source).### Docker Support
+For any other types, you can use [Custom Artifact Sources](../../../../continuous-delivery/model-cd-pipeline/setup-services/custom-artifact-source.md).
+
+### Docker Support
 
 Nexus 3 Artifact Servers only.
 
@@ -60,11 +62,13 @@ For Nexus 3.x, Harness supports repository formats Docker 3.0 and greater, Maven
 
 ##### RAW Format Support
 
-Currently, this feature is behind the feature flag `NEXUS3_RAW_REPOSITORY`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.#### Credentials
+Currently, this feature is behind the feature flag `NEXUS3_RAW_REPOSITORY`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+#### Credentials
 
 Enter the username and select and encrypted password.
 
-For secrets and other sensitive settings, select or create a new [Harness Encrypted Text secret](https://docs.harness.io/article/ygyvp998mu-use-encrypted-text-secrets).
+For secrets and other sensitive settings, select or create a new [Harness Encrypted Text secret](../../../security/secrets-management/use-encrypted-text-secrets.md).
 
 Usage Scope is determined by the secret you selected.
 
@@ -76,9 +80,11 @@ If you click **Artifact History** in a Harness Service**,** you will see the bui
 
 Here is an example of the Nexus repo settings and how they are used in the Nexus Artifact Source:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/gxv9gj6khz/1576106831688/image.png)#### Source Server
+![](./static/nexus-artifact-sources-01.png)
 
-Select the name of the artifact source server you added in [Add Artifact Servers](/article/7dghbx1dbl-configuring-artifact-server#nexus).
+#### Source Server
+
+Select the name of the artifact source server you added in [Add Artifact Servers](../../../account/manage-connectors/configuring-artifact-server.md#nexus).
 
 #### Repository Format
 
@@ -88,7 +94,7 @@ Select the Nexus format for your repo, such as Maven.
 
 Select the name of the repository where the artifact is located. If you don't see it, the API might have timed out. Enter its name and Harness will query for it.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/rdhndux2ab/1593118437981/image.png)For **Nexus 2**, you can enter a variable expression to parameterize this setting.
+![](./static/nexus-artifact-sources-02.png)For **Nexus 2**, you can enter a variable expression to parameterize this setting.
 
 #### Group ID
 
@@ -128,11 +134,11 @@ For **Nexus 2**, you can enter a variable expression to parameterize the followi
 * Group ID
 * Artifact ID
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/rdhndux2ab/1593119998355/image.png)When you deploy a Workflow (or Pipeline containing the Workflow) using a Service with a parameterized Nexus artifact source, you are notified that the Artifact Source requires values:
+![](./static/nexus-artifact-sources-03.png)When you deploy a Workflow (or Pipeline containing the Workflow) using a Service with a parameterized Nexus artifact source, you are notified that the Artifact Source requires values:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/rdhndux2ab/1593120403776/image.png)This is also true for the Artifact Collection step in a [Build Workflow](/article/wqytbv2bfd-ci-cd-with-the-build-workflow).
+![](./static/nexus-artifact-sources-04.png)This is also true for the Artifact Collection step in a [Build Workflow](../../../../continuous-delivery/concepts-cd/deployment-types/ci-cd-with-the-build-workflow.md).
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/rdhndux2ab/1593120615209/image.png)For Build Workflows, you are not prompted for artifact variables at deployment runtime because you must provide them in the Artifact Collection step.
+![](./static/nexus-artifact-sources-05.png)For Build Workflows, you are not prompted for artifact variables at deployment runtime because you must provide them in the Artifact Collection step.
 
 #### Switching Between Parameterized and Non-Parameterized
 

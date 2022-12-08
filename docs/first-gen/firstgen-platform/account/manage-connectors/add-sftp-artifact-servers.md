@@ -24,13 +24,13 @@ In this topic:
 
 ### Before You Begin
 
-* See [Harness Key Concepts](/article/4o7oqwih6h-harness-key-concepts).
+* See [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts).
 
 ### Visual Summary
 
 Here's an example configuration of SFTP Artifact Source.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/7dghbx1dbl/1587762357577/image.png)The SFTP dialog has the following fields.
+![](./static/add-sftp-artifact-servers-10.png)The SFTP dialog has the following fields.
 
 ### Step 1: Select SFTP Artifact Server
 
@@ -60,7 +60,7 @@ Enter the domain where the SFTP server is located.
 
 Use a user account that has permissions to access the SFTP server.
 
-For secrets and other sensitive settings, select or create a new [Harness Encrypted Text secret](/article/ygyvp998mu-use-encrypted-text-secrets).
+For secrets and other sensitive settings, select or create a new [Harness Encrypted Text secret](../../security/secrets-management/use-encrypted-text-secrets.md).
 
 Usage Scope is determined by the secret you selected.
 
@@ -70,7 +70,7 @@ Click **Submit**.
 
 When you use the SFTP Artifact Server as an Artifact Source for a Service, you can specify a file or a folder for the artifact. This allows a folder to be copied to the deployment target host by the Harness Delegate. Here is the SFTP Artifact Source dialog:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/7dghbx1dbl/1547593762735/image.png)In **Artifact Path**, you can specify a file or folder by name or using wildcards. The following are example for different files and folders:
+![](./static/add-sftp-artifact-servers-11.png)In **Artifact Path**, you can specify a file or folder by name or using wildcards. The following are example for different files and folders:
 
 * todo-\*zip - All matching files, such todo-1.0.zip, todo-2.0.zip.
 * test/\*zip - All zip files under **test** folder.

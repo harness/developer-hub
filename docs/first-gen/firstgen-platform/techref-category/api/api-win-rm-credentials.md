@@ -8,22 +8,22 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic lists sample queries for CRUD operations that create, read, update, and delete [Harness secrets](/article/au38zpufhr-secret-management) that manage WinRM credentials.
+This topic lists sample queries for CRUD operations that create, read, update, and delete [Harness secrets](../../security/secrets-management/secret-management.md) that manage WinRM credentials.
 
 The `!` following the type means that this field is *required*.In this topic:
 
-* [Before You Begin](https://docs.harness.io/article/2rlo5zw321-api-win-rm-credentials#before_you_begin)
-* [Get a Secret](https://docs.harness.io/article/2rlo5zw321-api-win-rm-credentials#get_a_secret)
-* [Get a Secret by Name](https://docs.harness.io/article/2rlo5zw321-api-win-rm-credentials#get_a_secret_by_name)
-* [Create a WinRM Credentials Secret](https://docs.harness.io/article/2rlo5zw321-api-win-rm-credentials#create_a_win_rm_credentials_secret)
-* [Update a Secret](https://docs.harness.io/article/2rlo5zw321-api-win-rm-credentials#update_a_secret)
-* [Delete a Secret](https://docs.harness.io/article/2rlo5zw321-api-win-rm-credentials#delete_a_secret)
-* [Related Topics](https://docs.harness.io/article/2rlo5zw321-api-win-rm-credentials#related_topics)
+* [Before You Begin](api-win-rm-credentials.md#before-you-begin)
+* [Get a Secret](api-win-rm-credentials.md#get-a-secret)
+* [Get a Secret by Name](api-win-rm-credentials.md#get-a-secret-by-name)
+* [Create a WinRM Credentials Secret](api-win-rm-credentials.md#create-a-win-rm-credentials-secret)
+* [Update a Secret](api-win-rm-credentials.md#update-a-secret)
+* [Delete a Secret](api-win-rm-credentials.md#delete-a-secret)
+* [Related Topics](api-win-rm-credentials.md#related-topics)
 
 ### Before You Begin
 
-* [​Introduction to Harness GraphQL API](/article/tm0w6rruqv-harness-api)
-* [Harness API Explorer](/article/2rmd5i0e0h-harness-api-explorer)
+* [​Introduction to Harness GraphQL API](harness-api.md)
+* [Harness API Explorer](harness-api-explorer.md)
 
 ### Get a Secret
 
@@ -222,8 +222,8 @@ Query Variables
 ```
 ### Related Topics
 
-* [Harness API](/article/tm0w6rruqv-harness-api)
-* [Encrypted Text API](/article/omnfccj1n0-api-encrypted-text)
-* [Encrypted Files API](/article/jvhzdi1ztj-api-encrypted-files)
-* [SSH Credentials API](/article/v65okfwfl2-api-ssh-credentials)
+* [Harness API](harness-api.md)
+* [Encrypted Text API](api-encrypted-text.md)
+* [Encrypted Files API](api-encrypted-files.md)
+* [SSH Credentials API](api-ssh-credentials.md)
 

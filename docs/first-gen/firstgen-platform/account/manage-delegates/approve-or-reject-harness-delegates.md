@@ -24,9 +24,9 @@ In addition to administration benefits, Delegate Profile Approval is a security 
 
 ### Before You Begin
 
-* [Harness Key Concepts](/article/4o7oqwih6h-harness-key-concepts)
-* [Harness Delegate Overview](/article/h9tkwmkrm7-delegate-installation)
-* [Run Scripts on Delegates using Profiles](/article/yd4bs0pltf-run-scripts-on-the-delegate-using-profiles)
+* [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts)
+* [Harness Delegate Overview](delegate-installation.md)
+* [Run Scripts on Delegates using Profiles](run-scripts-on-the-delegate-using-profiles.md)
 
 ### Step 1: Create a Delegate Profile
 
@@ -44,7 +44,7 @@ Harness includes the default Profile named **Primary**. This can be a useful Pro
 
 To enforce Profile approval, and use this Profile for approving/rejecting Delegate registrations, select the **Delegate Requires Approval** setting.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/2uhtcqzaio/1588975856275/image.png)Click **Submit**.
+![](./static/approve-or-reject-harness-delegates-11.png)Click **Submit**.
 
 #### Delegate Registrations Only
 
@@ -58,7 +58,7 @@ The **Delegate Requires Approval** setting only applies to Delegates attempting 
   
 You can select any Profile with **Delegate Requires Approval** enabled. If there is a Profile created for approving/rejecting Delegate registrations only, select that Profile.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/2uhtcqzaio/1588976151358/image.png)1. Install and start the Delegate in your infrastructure as described in [Delegate Installation and Management](/article/h9tkwmkrm7-delegate-installation).
+![](./static/approve-or-reject-harness-delegates-12.png)1. Install and start the Delegate in your infrastructure as described in [Delegate Installation and Management](delegate-installation.md).
 
 It will take a few minutes for the Delegate registration attempt to appear in your **Harness Delegates** page.
 
@@ -66,9 +66,9 @@ It will take a few minutes for the Delegate registration attempt to appear in yo
 
 When the Delegate registration attempt appears in your **Harness Delegates** page, a **Pending Approval** button appears.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/2uhtcqzaio/1588976772432/image.png)1. Click **Pending Approval**. The **Approve** and **Reject** buttons appear.
+![](./static/approve-or-reject-harness-delegates-13.png)1. Click **Pending Approval**. The **Approve** and **Reject** buttons appear.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/2uhtcqzaio/1588976905716/image.png)1. Click **Approve** or **Reject**.
+![](./static/approve-or-reject-harness-delegates-14.png)1. Click **Approve** or **Reject**.
 
 When you approve, Harness indicates that the Delegate is activated.
 
@@ -100,10 +100,10 @@ Note that the `-0` suffix in the pod name is removed for the StatefulSet name.
 
 You can also Delete a Delegate after it is registered or when it is pending approval.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/2uhtcqzaio/1588962546601/image.png)This simply deletes the Delegate from the **Harness Delegates** page list. You still need to delete it from your infrastructure.
+![](./static/approve-or-reject-harness-delegates-15.png)This simply deletes the Delegate from the **Harness Delegates** page list. You still need to delete it from your infrastructure.
 
 ### See Also
 
-* [Run Scripts on Delegates using Profiles](/article/yd4bs0pltf-run-scripts-on-the-delegate-using-profiles)
-* [Use Secrets in a Delegate Profile](/article/imzgiz9h41-use-a-secret-in-a-delegate-profile)
+* [Run Scripts on Delegates using Profiles](run-scripts-on-the-delegate-using-profiles.md)
+* [Use Secrets in a Delegate Profile](use-a-secret-in-a-delegate-profile.md)
 

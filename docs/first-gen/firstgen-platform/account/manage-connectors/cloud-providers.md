@@ -12,11 +12,11 @@ Cloud Providers represent the infrastructure of your applications. Typically, a 
 
 See the How-tos for adding these providers:
 
-* [Add Kubernetes Cluster Cloud Provider](/article/l68rujg6mp-add-kubernetes-cluster-cloud-provider)
-* [Add Google Cloud Platform Cloud Provider](/article/6x52zvqsta-add-google-cloud-platform-cloud-provider)
-* [Add Amazon Web Services Cloud Provider](/article/wt1gnigme7-add-amazon-web-services-cloud-provider)
-* [Add Microsoft Azure Cloud Provider](/article/4n3595l6in-add-microsoft-azure-cloud-provider)
-* [Add Pivotal Cloud Foundry Cloud Provider](/article/v0x32ks1kp-add-pivotal-cloud-foundry-cloud-provider)
-* [Add Physical Data Center as Cloud Provider](/article/stkxmb643f-add-physical-data-center-cloud-provider)
-* [Add SpotInst Cloud Provider](/article/uxah3ji489-add-spot-inst-cloud-provider)
+* [Add Kubernetes Cluster Cloud Provider](add-kubernetes-cluster-cloud-provider.md)
+* [Add Google Cloud Platform Cloud Provider](add-google-cloud-platform-cloud-provider.md)
+* [Add Amazon Web Services Cloud Provider](add-amazon-web-services-cloud-provider.md)
+* [Add Microsoft Azure Cloud Provider](add-microsoft-azure-cloud-provider.md)
+* [Add Pivotal Cloud Foundry Cloud Provider](add-pivotal-cloud-foundry-cloud-provider.md)
+* [Add Physical Data Center as Cloud Provider](add-physical-data-center-cloud-provider.md)
+* [Add SpotInst Cloud Provider](add-spot-inst-cloud-provider.md)
 

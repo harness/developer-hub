@@ -20,15 +20,15 @@ Let's look at some examples:
 
 To obtain an understanding of Harness variable expressions and the Workflow steps that use them, ensure you're read the following:
 
-* [Variables and Expressions in Harness](https://docs.harness.io/article/9dvxcegm90-variables)
+* [Variables and Expressions in Harness](../../../firstgen-platform/techref-category/variables/variables.md)
 * [Add Service Config Variables](../setup-services/add-service-level-config-variables.md)
 * [Set Workflow Variables](../workflows/add-workflow-variables-new-template.md)
 * [Passing Variables into Workflows and Pipelines from Triggers](passing-variable-into-workflows.md)
 * [Jira Integration](../workflows/jira-integration.md)
 * [Using the HTTP Command](../workflows/using-the-http-command.md)
 * [Using the Jenkins Command](../workflows/using-the-jenkins-command.md)
-* [Use Terraform Outputs in Workflow Steps](https://docs.harness.io/article/8p2ze4u25w-use-terraform-outputs-in-workflow-steps)
-* [Using CloudFormation Outputs in Workflow Steps](https://docs.harness.io/article/ez8bgluqg5-using-cloudformation-outputs-in-workflow-steps)
+* [Use Terraform Outputs in Workflow Steps](../../terraform-category/use-terraform-outputs-in-workflow-steps.md)
+* [Using CloudFormation Outputs in Workflow Steps](../../aws-deployments/cloudformation-category/using-cloudformation-outputs-in-workflow-steps.md)
 
 #### Prerequisites
 
@@ -55,7 +55,7 @@ export last
 4. In **Script Output**, list out all the environment variables that you want to reference later on. We'll use the variable names `name, last`.
 5. Enable **Publish output in the context**.
 6. In **Publish Variable Name**, enter a unique parent name for all of the output variables. This is the parent variable that you will use to call the `name` and `last` variables elsewhere.  
-We'll use the name `info`.Do not use reserved words in **Publish Variable Name**, such as `var`. See [Variable Expression Limitations and Restrictions](https://docs.harness.io/article/9ob3r6v9tg-variable-expression-name-restrictions).
+We'll use the name `info`.Do not use reserved words in **Publish Variable Name**, such as `var`. See [Variable Expression Limitations and Restrictions](../../../firstgen-platform/techref-category/variables/variable-expression-name-restrictions.md).
 7. In **Scope**, select **Pipeline** so we can reference these variables in the second Workflow in the Pipeline. When you're done, the step will look like this:
 
    ![](./static/how-to-pass-variables-between-workflows-00.png)

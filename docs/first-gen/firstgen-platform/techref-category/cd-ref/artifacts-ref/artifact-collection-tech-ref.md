@@ -20,14 +20,14 @@ The two hour time frame is the result of limitations of third-party APIs and rep
 
 You can manually or programmatically sync (and delete old artifacts from the Harness cache) using the Harness API.
 
-See [Sync and Clean Up Artifact Stream using the Harness API](/article/7tlyu5jesf-sync-and-clean-up-artifact-stream-using-the-harness-api).
+See [Sync and Clean Up Artifact Stream using the Harness API](../../api/sync-and-clean-up-artifact-stream-using-the-harness-api.md).
 
 ### See Also
 
-* [Add Specs and Artifacts using a Harness Service](/article/eb3kfl8uls-service-configuration)
-* [Using Custom Artifact Sources](/article/jizsp5tsms-custom-artifact-source)
-* [Service Types and Artifact Sources](/article/qluiky79j8-service-types-and-artifact-sources)
-* [Add a Docker Image](/article/gxv9gj6khz-add-a-docker-image-service)
-* [Add an Azure DevOps Artifact Source](/article/rbfjmko1og-add-an-azure-dev-ops-artifact-source)
-* [Built-in Variables List](/article/aza65y4af6-built-in-variables-list)
+* [Add Specs and Artifacts using a Harness Service](../../../../continuous-delivery/model-cd-pipeline/setup-services/service-configuration.md)
+* [Using Custom Artifact Sources](../../../../continuous-delivery/model-cd-pipeline/setup-services/custom-artifact-source.md)
+* [Service Types and Artifact Sources](../../../../continuous-delivery/model-cd-pipeline/setup-services/service-types-and-artifact-sources.md)
+* [Add a Docker Image](../../../../continuous-delivery/model-cd-pipeline/setup-services/add-a-docker-image-service.md)
+* [Add an Azure DevOps Artifact Source](../../../../continuous-delivery/model-cd-pipeline/setup-services/add-an-azure-dev-ops-artifact-source.md)
+* [Built-in Variables List](../../variables/built-in-variables-list.md)
 

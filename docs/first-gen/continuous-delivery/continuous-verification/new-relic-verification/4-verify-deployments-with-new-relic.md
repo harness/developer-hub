@@ -86,7 +86,7 @@ The expression that you provide in **Expression for Host/Container Name** should
 
 You can use integers and expressions in the **Analysis Time Duration** field.
 
-See [Harness Variable Expression](https://docs.harness.io/article/9dvxcegm90-variables) and [Analysis Time Duration](../continuous-verification-overview/concepts-cv/cv-strategies-and-best-practices.md#analysis-time-duration).
+See [Harness Variable Expression](../../../firstgen-platform/techref-category/variables/variables.md) and [Analysis Time Duration](../continuous-verification-overview/concepts-cv/cv-strategies-and-best-practices.md#analysis-time-duration).
 
 ### Step 7: Baseline for Risk Analysis
 
@@ -190,7 +190,7 @@ You can also pass variables into a Workflow from a Trigger that can be used for 
 
 ### Review: Harness Expression Support in CV Settings
 
-You can use expressions (`${...}`) for [Harness built-in variables](https://docs.harness.io/article/7bpdtvhq92-workflow-variables-expressions) and custom [Service](../../model-cd-pipeline/setup-services/service-configuration.md) and [Workflow](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md) variables in the settings of Harness Verification Providers.
+You can use expressions (`${...}`) for [Harness built-in variables](../../kubernetes-deployments/workflow-variables-expressions.md) and custom [Service](../../model-cd-pipeline/setup-services/service-configuration.md) and [Workflow](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md) variables in the settings of Harness Verification Providers.
 
 ![](./static/4-verify-deployments-with-new-relic-22.png)
 

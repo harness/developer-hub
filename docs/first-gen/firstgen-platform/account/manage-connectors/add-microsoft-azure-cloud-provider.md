@@ -16,23 +16,25 @@ In this topic:
 
 * [Before You Begin](#before_you_begin)
 * [Visual Summary](#visual_summary)
-* [Review: Permissions](https://docs.harness.io/article/4n3595l6in-add-microsoft-azure-cloud-provider#review_permissions)
+* [Review: Permissions](add-microsoft-azure-cloud-provider.md#review-permissions)
 * [Step 1: Add the Cloud Provider](#step_1_add_the_cloud_provider)
 * [Step 2: Gather the Required Information](#step_2_gather_the_required_information)
 * [Step 3: Client ID](#step_3_client_id)
 * [Step 4: Tenant ID](#step_4_tenant_id)
 * [Step 5: Select Encrypted Key](#step_5_select_encrypted_key)
-* [Artifact Support for Download and Copy](https://docs.harness.io/article/4n3595l6in-add-microsoft-azure-cloud-provider#artifact_support_for_download_and_copy)
+* [Artifact Support for Download and Copy](add-microsoft-azure-cloud-provider.md#artifact-support-for-download-and-copy)
 
 ### Before You Begin
 
-* See [Harness Key Concepts](/article/4o7oqwih6h-harness-key-concepts).
+* See [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts).
 
 ### Visual Summary
 
 Here's an overview of the Microsoft Azure Cloud Provider settings.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/whwnovprrb/1587759421405/image.png)### Review: Permissions
+![](./static/add-microsoft-azure-cloud-provider-43.png)
+
+### Review: Permissions
 
 This section assume you are familiar with Azure RBAC.
 
@@ -56,7 +58,7 @@ Make sure the following permissions are assigned to the roles.
 
 Currently, Harness supports **public** ACR repos. Harness will be supporting private repos soon. Contact [Harness Sales](https://harness.io/company/contact-sales) for more information.The **Reader** role must be assigned. **This is the minimum requirement.**
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/4n3595l6in/1618946221348/image.png)You must provide the **Reader** role in the role assignment at the **Subscription** level used by the Application ID entered in the Cloud Provider. The application needs permission to list **all** container registries.
+![](./static/add-microsoft-azure-cloud-provider-44.png)You must provide the **Reader** role in the role assignment at the **Subscription** level used by the Application ID entered in the Cloud Provider. The application needs permission to list **all** container registries.
 
 Some common mistakes:
 
@@ -65,11 +67,13 @@ Some common mistakes:
 
 Harness supports 500 images from an ACR repo. If you do not see some of your images you might have exceeded this limit. This is the result of an Azure API limitation.  
   
-If you connect to an ACR repo via the platform agnostic [Docker Registry](/article/tdj2ghkqb0-add-docker-registry-artifact-servers), the limit is 100.#### Azure Kubernetes Services (AKS)
+If you connect to an ACR repo via the platform agnostic [Docker Registry](add-docker-registry-artifact-servers.md), the limit is 100.
+
+#### Azure Kubernetes Services (AKS)
 
 There are two options for connecting Harness to your target AKS cluster:
 
-* **Recommend:** Install a [Kubernetes Delegate](/article/0hn6vdpeqz-install-kubernetes-delegate) in the target AKS cluster and use it for authentication in a Harness [Kubernetes Cluster Cloud Provider](/article/l68rujg6mp-add-kubernetes-cluster-cloud-provider). The Harness Kubernetes Cluster Cloud Provider is platform-agnostic.  
+* **Recommend:** Install a [Kubernetes Delegate](../manage-delegates/install-kubernetes-delegate.md) in the target AKS cluster and use it for authentication in a Harness [Kubernetes Cluster Cloud Provider](add-kubernetes-cluster-cloud-provider.md). The Harness Kubernetes Cluster Cloud Provider is platform-agnostic.  
 With this method, AKS permissions are not required at all. This is recommended.
 * As an alternative, use the Harness Azure Cloud Provider as described in this topic. The **Owner** role must be assigned.
 
@@ -83,9 +87,9 @@ The **Reader** role must be assigned. This is the minimum requirement.
 
 This role is only used by the Harness Delegate when it uses the Azure APIs to discover target VMs.
 
-For IIS deployments, Harness uses a WinRM connection for credentials. See [Add WinRM Connection Credentials](/article/9fqa1vgar7-add-win-rm-connection-credentials).
+For IIS deployments, Harness uses a WinRM connection for credentials. See [Add WinRM Connection Credentials](../../security/secrets-management/add-win-rm-connection-credentials.md).
 
-For SSH deployments, Harness uses SSH keys for credentials. See [Add SSH Keys](/article/gsp4s7abgc-add-ssh-keys).
+For SSH deployments, Harness uses SSH keys for credentials. See [Add SSH Keys](../../security/secrets-management/add-ssh-keys.md).
 
 #### Azure Resource Management (ARM)
 
@@ -97,7 +101,9 @@ Currently, this feature is behind a Feature Flag. Contact [Harness Support](mail
 * **Tenant:** requires the **Contributor** or **Owner** role. For example, creating a Tenant requires the **Contributor** role, but the **Owner** role is required to create role assignments.
 * **Key Vault access:** to enable access to Key Vaults from the ARM templates you use in Harness, make sure you select the **Azure Resource Manager for template deployment** option in the Key Vault Access Policy.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/qhnnq1mks3/1615404158395/image.png)The Azure roles provided in the Cloud Provider must allow Harness to provision the Azure resources in your ARM templates. For example, to create a policy assignment, the **Resource Policy Contributor** role is required.#### Azure Blueprint
+![](./static/add-microsoft-azure-cloud-provider-45.png)The Azure roles provided in the Cloud Provider must allow Harness to provision the Azure resources in your ARM templates. For example, to create a policy assignment, the **Resource Policy Contributor** role is required.
+
+#### Azure Blueprint
 
 Currently, this feature is behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature. Feature Flags can only be removed for Harness Professional and Essentials editions. Once the feature is released to a general audience, it is available for Trial and Community Editions.In Azure, the permissions required to create and delete Blueprints are listed in [Permissions in Azure Blueprints](https://docs.microsoft.com/en-us/azure/governance/blueprints/overview#permissions-in-azure-blueprints) from Azure.
 
@@ -133,7 +139,9 @@ The **Add Microsoft Azure Cloud Provider** panel appears.
 
 In Microsoft Azure, you can find the information you need in the App registration **Overview** page:
 
-![](https://files.helpdocs.io/kw8ldg1itf/other/1567028367061/image.png)### Step 3: Client ID
+![](./static/add-microsoft-azure-cloud-provider-46.png)
+
+### Step 3: Client ID
 
 This is the **Client/****Application ID** for the Azure app registration you are using. It is found in the Azure Active Directory **App registrations**. For more information, see [Quickstart: Register an app with the Azure Active Directory v1.0 endpoint](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-v1-add-azure-ad-app) from Microsoft.
 
@@ -149,11 +157,11 @@ The **Tenant ID** is the ID of the Azure Active Directory (AAD) in which you cre
 
 ### Step 5: Select Encrypted Key
 
-For secrets and other sensitive settings, select or create a new [Harness Encrypted Text secret](/article/ygyvp998mu-use-encrypted-text-secrets).This is the authentication key for your application. This is found in **Azure Active Directory**, **App Registrations**. Click the App name. Click **Certificates & secrets**, and then click **New client secret**.
+For secrets and other sensitive settings, select or create a new [Harness Encrypted Text secret](../../security/secrets-management/use-encrypted-text-secrets.md).This is the authentication key for your application. This is found in **Azure Active Directory**, **App Registrations**. Click the App name. Click **Certificates & secrets**, and then click **New client secret**.
 
-[![](https://files.helpdocs.io/kw8ldg1itf/other/1567028538937/image.png)](https://files.helpdocs.io/kw8ldg1itf/other/1567028538937/image.png)You cannot view existing secret values, but you can create a new key. For more information, see [Create a new application secret](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-a-new-application-secret) from Azure.
+[![](./static/add-microsoft-azure-cloud-provider-47.png)](./static/add-microsoft-azure-cloud-provider-47.png)You cannot view existing secret values, but you can create a new key. For more information, see [Create a new application secret](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-a-new-application-secret) from Azure.
 
 ### Artifact Support for Download and Copy
 
-See [Service Types and Artifact Sources](/article/qluiky79j8-service-types-and-artifact-sources).
+See [Service Types and Artifact Sources](../../../continuous-delivery/model-cd-pipeline/setup-services/service-types-and-artifact-sources.md).
 

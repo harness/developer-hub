@@ -43,7 +43,7 @@ Here is an individual Lambda deployment and how it is displayed on the Serverles
 
 ![](./static/view-lamba-deployments-in-the-serverless-functions-dashboard-28.png)
 
-See [Serverless Functions Dashboard](https://docs.harness.io/article/vlj9xbj315-serverless-functions-dashboard).
+See [Serverless Functions Dashboard](../../../firstgen-platform/techref-category/monitoring-ref/serverless-functions-dashboard.md).
 
 ### Next Steps
 

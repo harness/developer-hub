@@ -10,14 +10,14 @@ helpdocs_is_published: true
 
 Services represent your microservices/apps. You define where the artifacts for those services come from, and you define the container specs, configuration variables, and files for those services.
 
-This is a general overview of a Harness Service. For detailed deployment information for each type of Service, see [Deployments Overview](https://docs.harness.io/article/i3n6qr8p5i-deployments-overview) and select your deployment type.
+This is a general overview of a Harness Service. For detailed deployment information for each type of Service, see [Deployments Overview](../../concepts-cd/deployments-overview/deployments-overview.md) and select your deployment type.
 
 
 ### Before You Begin
 
 * Read the [Create an Application](../applications/application-configuration.md) topic to get an overview of how Harness organizes Services.
 * Read the [Add a Service](service-configuration.md) topic to understand the process to add a Service to an Application.
-* Read [Configuration as Code](https://docs.harness.io/article/htvzryeqjw-configuration-as-code) to see how you can quickly configure your Harness Service using your existing YAML in Git.
+* Read [Configuration as Code](../../../firstgen-platform/config-as-code/configuration-as-code.md) to see how you can quickly configure your Harness Service using your existing YAML in Git.
 
 ### Step 1: Add a Service to a Harness Application
 
@@ -45,7 +45,7 @@ There are multiple Service types used in Harness, listed in the **Deployment Typ
 
 ![](./static/service-configuration-56.png)
 
-These Service types are discussed in detail in the deployment guides for those platforms. For more information, see [Deployments Overview](https://docs.harness.io/article/i3n6qr8p5i-deployments-overview).
+These Service types are discussed in detail in the deployment guides for those platforms. For more information, see [Deployments Overview](../../concepts-cd/deployments-overview/deployments-overview.md).
 
 ### Step 3: Add an Artifact Source
 
@@ -245,5 +245,5 @@ If you delete artifacts in another repo, such as S3, the list of artifacts in Ha
 
 ### Container Specs and Manifests
 
-You can use container specifications and manifests to configure a Service. For information on the specs and manifests available for the different Service types, see [Deployments Overview](https://docs.harness.io/article/i3n6qr8p5i-deployments-overview).
+You can use container specifications and manifests to configure a Service. For information on the specs and manifests available for the different Service types, see [Deployments Overview](../../concepts-cd/deployments-overview/deployments-overview.md).
 

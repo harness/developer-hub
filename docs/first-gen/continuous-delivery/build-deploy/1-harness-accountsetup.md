@@ -25,7 +25,7 @@ In this topic:
 ### Before You Begin
 
 * [CI/CD with the Build Workflow](../concepts-cd/deployment-types/ci-cd-with-the-build-workflow.md)
-* [Delegate Installation Overview](https://docs.harness.io/article/igftn7rrtg-delegate-installation-overview)
+* [Delegate Installation Overview](../../firstgen-platform/account/manage-delegates/delegate-installation-overview.md)
 
 ### Step 1: Install a Harness Delegate
 
@@ -35,19 +35,19 @@ As explained in [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih
 
 The Delegate performs all deployment operations. To do so, it needs network connectivity to your artifact server, such as Jenkins, and your cloud deployment environment, such as a Kubernetes cluster or AWS. Also, the roles associated with the Delegate must have the policies needed to perform its operations.
 
-For detailed information on installing Harness Delegates, see [Manage Harness Delegates](https://docs.harness.io/category/gyd73rp7np-manage-delegates).
+For detailed information on installing Harness Delegates, see [Manage Harness Delegates](https://docs.harness.io/category/manage-harness-delegates-firstgen).
 
 ### Step 2: Create an Artifact Server
 
 After installing the Delegate, create an Artifact Server in Harness to connect to Jenkins or any other artifact server that you use. Provide the necessary credentials when you set up the Artifact Server.
 
-For detailed information on creating an Artifact Server, see [Add Artifact Servers](https://docs.harness.io/article/7dghbx1dbl-configuring-artifact-server).
+For detailed information on creating an Artifact Server, see [Add Artifact Servers](../../firstgen-platform/account/manage-connectors/configuring-artifact-server.md).
 
 ### Step 3: Create a Cloud Provider
 
 After installing the Delegate, you also need to create a Cloud Provider in Harness to connect to your target deployment environment. For some Cloud Providers, such as Kubernetes Cluster and AWS, the Cloud Providers can assume the credentials assigned to the Delegate.
 
-For more information on creating a Cloud Provider, see [Add Cloud Providers](https://docs.harness.io/article/whwnovprrb-cloud-providers).
+For more information on creating a Cloud Provider, see [Add Cloud Providers](../../firstgen-platform/account/manage-connectors/cloud-providers.md).
 
 Now that your Harness account-level components are set up, you can build your Harness Application containing your Artifact Build and Deploy Workflows and Pipelines.
 

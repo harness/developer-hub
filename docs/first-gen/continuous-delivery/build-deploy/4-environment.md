@@ -41,7 +41,7 @@ To set up the ​Infrastructure Definition, do the following:
 2. In **Display Name**, enter a name for the Infrastructure Definition. In this example, ToDo List WAR is used as a name for the Infrastructure Definition.
 3. In **Cloud Provider Type**, select the type of Cloud Provider you used in [Harness Account Setup](1-harness-accountsetup.md).
 4. In Deployment Type, select **Secure Shell (SSH)**.
-5. Click **Use Already Provisioned Infrastructure**. If you were using a Harness [Infrastructure Provisioner](https://docs.harness.io/article/o22jx8amxb-add-an-infra-provisioner), you would select **Map Dynamically Provisioned Infrastructure**.
+5. Click **Use Already Provisioned Infrastructure**. If you were using a Harness [Infrastructure Provisioner](../model-cd-pipeline/infrastructure-provisioner/add-an-infra-provisioner.md), you would select **Map Dynamically Provisioned Infrastructure**.
 6. In **Cloud Provider**, select the Cloud Provider you set up in [Harness Account Setup](1-harness-accountsetup.md).
 7. Fill out the remaining infrastructure settings for your target deployment infrastructure.
 8. In **Scope to specific Services**, select the Service you created in [Service and Artifact Source](2-service-and-artifact-source.md).  

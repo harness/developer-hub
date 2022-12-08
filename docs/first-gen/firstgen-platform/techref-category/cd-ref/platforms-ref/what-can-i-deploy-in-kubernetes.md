@@ -14,13 +14,13 @@ Harness Canary and Blue/Green Workflow default steps support a single **Deployme
 
 Rolling Workflow default steps support Deployment, StatefulSet, or DaemonSet as **managed** workloads, but not Jobs.
 
-You can deploy any Kubernetes workload in any Workflow type by using a Harness [annotation](/article/ttn8acijrz-versioning-and-annotations#annotations) to make it unmanaged (`harness.io/direct-apply`).
+You can deploy any Kubernetes workload in any Workflow type by using a Harness [annotation](versioning-and-annotations.md#annotations) to make it unmanaged (`harness.io/direct-apply`).
 
-The [Apply Step](/article/4vjgmjcj6z-deploy-manifests-separately-using-apply-step) can deploy any workloads or objects in any Workflow type as a managed workload, including [Jobs](/article/qpv2jfdjgm-run-kubernetes-jobs). Workloads deployed with the Apply step are not rollback on failure.
+The [Apply Step](../../../../continuous-delivery/kubernetes-deployments/deploy-manifests-separately-using-apply-step.md) can deploy any workloads or objects in any Workflow type as a managed workload, including [Jobs](../../../../continuous-delivery/kubernetes-deployments/run-kubernetes-jobs.md). Workloads deployed with the Apply step are not rollback on failure.
 
 **OpenShift:** Harness supports OpenShift [DeploymentConfig](https://docs.openshift.com/container-platform/4.1/applications/deployments/what-deployments-are.html) in OpenShift clusters as a managed workload across Canary, Blue Green, and Rolling deployment strategies. Please use `apiVersion: apps.openshift.io/v1` and not `apiVersion: v1`.
 
-See [Using OpenShift with Harness Kubernetes](/article/p756zrn9vc).
+See [Using OpenShift with Harness Kubernetes](../../../../continuous-delivery/kubernetes-deployments/using-open-shift-with-harness-kubernetes.md).
 
 ### Rolling vs Apply
 

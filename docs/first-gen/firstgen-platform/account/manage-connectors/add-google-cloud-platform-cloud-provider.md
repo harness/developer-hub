@@ -12,16 +12,18 @@ You use a Harness Google Cloud Platform Cloud Provider to connect your Harness a
 
 You add Cloud Providers to your Harness Account and then reference them when defining deployment resources and environments.
 
-Before setting up a Google Cloud Platform Cloud Provider, you must have a [Harness Delegate](/article/h9tkwmkrm7-delegate-installation) installed on a host where it can connect to your Google Cloud Platform account.### Before You Begin
+Before setting up a Google Cloud Platform Cloud Provider, you must have a [Harness Delegate](../manage-delegates/delegate-installation.md) installed on a host where it can connect to your Google Cloud Platform account.
 
-* [Harness Key Concepts](/article/4o7oqwih6h-harness-key-concepts)
-* [Harness Delegate Overview](/article/h9tkwmkrm7-delegate-installation)
+### Before You Begin
+
+* [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts)
+* [Harness Delegate Overview](../manage-delegates/delegate-installation.md)
 
 ### Review: Connecting to Kubernetes Clusters
 
 Harness includes a platform-agnostic Kubernetes Cluster Cloud Provider for connections to a Kubernetes cluster. This is the preferred method for connecting Harness to a target Kubernetes cluster.
 
-See [Add Kubernetes Cluster Cloud Provider](/article/l68rujg6mp-add-kubernetes-cluster-cloud-provider).
+See [Add Kubernetes Cluster Cloud Provider](add-kubernetes-cluster-cloud-provider.md).
 
 #### Limitations
 
@@ -40,25 +42,25 @@ The **Add Google Cloud Platform Cloud Provider** panel appears.
 
 If your GCP Cloud Provider uses the **Inherit from Delegate** option, it cannot be used with an Infrastructure Definition, such as a Kubernetes cluster Infrastructure Definition. It is not supported at this time.Select this option to have the Cloud Provider inherit the default credentials used by the Harness Delegate running in GCP.
 
-For example, if you installed the [Harness Kubernetes Delegate](/article/0hn6vdpeqz-install-kubernetes-delegate) in a Kubernetes cluster (GKE) that has [GCP Workload Identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity?hl=tr#enable_on_cluster) enabled, the Cloud Provider provider will inherit these credentials if it uses that Delegate.
+For example, if you installed the [Harness Kubernetes Delegate](../manage-delegates/install-kubernetes-delegate.md) in a Kubernetes cluster (GKE) that has [GCP Workload Identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity?hl=tr#enable_on_cluster) enabled, the Cloud Provider provider will inherit these credentials if it uses that Delegate.
 
 To use **Inherit from Delegate**, do the following:
 
 1. Ensure a Harness Delegate is installed in your GCP project.
 2. Ensure the Harness Delegate host has the required credentials. See the different permissions required below.
-3. Add Delegate Selector(s) to the Harness Delegate. There are implicit Selectors that you can use, but it is best to add a custom selector. See [Select Delegates for Specific Tasks with Selectors](/article/c3fvixpgsl-select-delegates-for-specific-tasks-with-selectors).
+3. Add Delegate Selector(s) to the Harness Delegate. There are implicit Selectors that you can use, but it is best to add a custom selector. See [Select Delegates for Specific Tasks with Selectors](../manage-delegates/select-delegates-for-specific-tasks-with-selectors.md).
 4. In your Google Cloud Platform Cloud Provider, select **Inherit from Delegate**.
 5. In **Delegate Selectors**, select the Selector(s) attached to the Delegate(s) running in your GCP account.
 6. Click **Test**. You will see **Test was successful** unless there is a connectivity error, or the Delegate is disconnected. If it is disconnected, simply restart it.
 
-If you want to set up certain credentials on the Delegate using Harness, you can run the commands in a Delegate Profile and attach that profile to the Delegate. See [Run Scripts on Delegates using Profiles](/article/yd4bs0pltf-run-scripts-on-the-delegate-using-profiles).
+If you want to set up certain credentials on the Delegate using Harness, you can run the commands in a Delegate Profile and attach that profile to the Delegate. See [Run Scripts on Delegates using Profiles](../manage-delegates/run-scripts-on-the-delegate-using-profiles.md).
 
 You can even add a Selector to the Profile, and then use that Selector in the Google Cloud Platform Cloud Provider. This ensure that any Google Cloud Platform Cloud Provider using that Selector is also using a Delegate with that Profile.
 
 ### Option 2: Select Encrypted Key
 
-1. In **Select Encrypted Key**, select or create a new [Harness Encrypted Text secret](https://docs.harness.io/article/ygyvp998mu-use-encrypted-text-secrets) that contains the Google Cloud's Account Service Key File.
-	1. To obtain the Google Cloud's Account Service Key File, see [Creating and managing service account keys](https://cloud.google.com/iam/docs/creating-managing-service-account-keys) from Google (JSON is recommended).![](https://files.helpdocs.io/kw8ldg1itf/articles/6x52zvqsta/1593629254966/image.png)
+1. In **Select Encrypted Key**, select or create a new [Harness Encrypted Text secret](../../security/secrets-management/use-encrypted-text-secrets.md) that contains the Google Cloud's Account Service Key File.
+	1. To obtain the Google Cloud's Account Service Key File, see [Creating and managing service account keys](https://cloud.google.com/iam/docs/creating-managing-service-account-keys) from Google (JSON is recommended).![](./static/add-google-cloud-platform-cloud-provider-34.png)
 	2. Once you have the key file from Google, open it, copy it, and paste it into the Harness Encrypted Text secret.
 	3. Next, use that Harness Encrypted Text secret in **Select Encrypted Key**.
 2. Click **Submit**. The GCP cloud provider is added.
@@ -69,7 +71,7 @@ The GCP service account used for any credentials requires **Kubernetes Engine D
 
 * For steps to add roles to your service account, see [Granting Roles to Service Accounts](https://cloud.google.com/iam/docs/granting-roles-to-service-accounts) from Google. For more information, see [Understanding Roles](https://cloud.google.com/iam/docs/understanding-roles?_ga=2.123080387.-954998919.1531518087#curated_roles) from GCP.
 
-Another option is to use a service account that has only the Storage Object Viewer permission needed to query GCR, and then use either an in-cluster Kubernetes Delegate or a direct [Kubernetes Cluster](https://docs.harness.io/article/whwnovprrb-cloud-providers#kubernetes_cluster) Cloud Provider with the Kubernetes service account token for performing deployment.Harness supports GKE 1.19 and later. If you use a version prior to GKE 1.19, please enable Basic Authentication. If Basic authentication is inadequate for your security requirements, use the [Kubernetes Cluster Connector](/article/1gaud2efd4-add-a-kubernetes-cluster-connector).
+Another option is to use a service account that has only the Storage Object Viewer permission needed to query GCR, and then use either an in-cluster Kubernetes Delegate or a direct [Kubernetes Cluster](cloud-providers.md#kubernetes-cluster) Cloud Provider with the Kubernetes service account token for performing deployment.Harness supports GKE 1.19 and later. If you use a version prior to GKE 1.19, please enable Basic Authentication. If Basic authentication is inadequate for your security requirements, use the [Kubernetes Cluster Connector](../../../../platform/7_Connectors/add-a-kubernetes-cluster-connector.md).
 
 ### Review: Google GCS and GCR Requirements
 
@@ -80,9 +82,11 @@ For Google Cloud Storage (GCS) and Google Container Registry (GCR), the followin
 
 See [Cloud IAM roles for Cloud Storage](https://cloud.google.com/storage/docs/access-control/iam-roles) from GCP.
 
-Ensure the Harness Delegate you have installed can reach to the GCR registry host name you are using in **Registry Host Name** (for example, gcr.io) and storage.cloud.google.com.#### Artifact Support
+Ensure the Harness Delegate you have installed can reach to the GCR registry host name you are using in **Registry Host Name** (for example, gcr.io) and storage.cloud.google.com.
 
-See [Service Types and Artifact Sources](/article/qluiky79j8-service-types-and-artifact-sources).
+#### Artifact Support
+
+See [Service Types and Artifact Sources](../../../continuous-delivery/model-cd-pipeline/setup-services/service-types-and-artifact-sources.md).
 
 ### Review: Google Cloud Operations Suite (Stackdriver) Requirements
 
@@ -104,5 +108,5 @@ If you are using a proxy server in your GCP account, but want to use GCP service
 
 ### Artifact Support for Download and Copy
 
-See [Service Types and Artifact Sources](/article/qluiky79j8-service-types-and-artifact-sources).
+See [Service Types and Artifact Sources](../../../continuous-delivery/model-cd-pipeline/setup-services/service-types-and-artifact-sources.md).
 

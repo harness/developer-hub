@@ -45,7 +45,7 @@ In this example, we will use a file in a ConfigMap object.
 
 1. Add the unencrypted file to **Config Files**. In this example, the file is a base64 encoded file named `myFile`.
 
-  Make sure you have the **update** permission on the Service or the Environment before you try to add the Service Config File. See [Managing Users and Groups (RBAC)](https://docs.harness.io/article/ven0bvulsj-users-and-permissions) for more information about assigning permissions.
+  Make sure you have the **update** permission on the Service or the Environment before you try to add the Service Config File. See [Managing Users and Groups (RBAC)](../../firstgen-platform/security/access-management-howtos/users-and-permissions.md) for more information about assigning permissions.
 
   ![](./static/using-harness-config-files-in-manifests-102.png)
 

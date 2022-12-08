@@ -17,7 +17,7 @@ A Harness Delegate needs to connect to the Artifact Servers, Cloud Providers, an
 
 To ensure that the Harness Delegate you use for Azure deployments can connect to your Azure resources, you can run the Delegate on a Linux VM in your Azure VPC (such as Ubuntu) or simply ensure that the Delegate has network access to resources in your Azure VPC.
 
-For steps on setting up the Harness Delegate, see [Delegate Installation and Management](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation).
+For steps on setting up the Harness Delegate, see [Delegate Installation and Management](../../firstgen-platform/account/manage-delegates/delegate-installation.md).
 
 ### Set Up WinRM on Instances and Network
 
@@ -208,10 +208,10 @@ Add a connection to the Cloud Provider where the IIS website, application, or vi
 1. Click **Setup**, and then click **Cloud Providers**. The **Cloud Providers** page appears.
 2. Click **Add Cloud Provider**. The **Cloud Provider** dialog appears.![](./static/1-delegate-and-connectors-for-iis-25.png)
 3. In **Type**, select the type of cloud provider you want to add, such as **Amazon Web Services** or **Microsoft Azure**. The dialog settings will change for each cloud provider.
-4. Enter the cloud provider account information, and then click **SUBMIT**. For account details and Harness permission requirements for the different providers, see [Add Cloud Providers](https://docs.harness.io/article/whwnovprrb-infrastructure-providers) ([AWS](https://docs.harness.io/article/whwnovprrb-infrastructure-providers#amazon_web_services_aws_cloud), [Azure](https://docs.harness.io/article/whwnovprrb-infrastructure-providers#azure)).  
+4. Enter the cloud provider account information, and then click **SUBMIT**. For account details and Harness permission requirements for the different providers, see [Add Cloud Providers](../../firstgen-platform/account/manage-connectors/cloud-providers.md) ([AWS](../../firstgen-platform/account/manage-connectors/cloud-providers.md#amazon-web-services-aws-cloud), [Azure](../../firstgen-platform/account/manage-connectors/cloud-providers.md#azure)).  
 Once you have created Harness applications and environments, you can return to this dialog and add **Usage Scope** on which applications and environments may use this provider.
 
-For certain Cloud Providers, such as AWS, instead of using account information to set up the Cloud Provider, you can install a Harness Delegate in your VPC and use its credentials for your Cloud Provider. After you install the Delegate, you add a Selector to the Delegate, and then simply select that Selector in the Cloud Provider dialog. For an example, see [Installation Example: Amazon Web Services and ECS](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation#installation_example_amazon_web_services_and_ecs).### Artifact Server Setup
+For certain Cloud Providers, such as AWS, instead of using account information to set up the Cloud Provider, you can install a Harness Delegate in your VPC and use its credentials for your Cloud Provider. After you install the Delegate, you add a Selector to the Delegate, and then simply select that Selector in the Cloud Provider dialog. For an example, see [Installation Example: Amazon Web Services and ECS](../../firstgen-platform/account/manage-delegates/delegate-installation.md#installation-example-amazon-web-services-and-ecs).### Artifact Server Setup
 
 Add a connection to the Artifact Server where Harness can pull the IIS website, application, or virtual directory artifact.
 
@@ -220,7 +220,7 @@ If you are using the same Cloud Provider as artifact server, then you can skip t
 1. Click **Setup**, and then click **Connectors**. The **Connectors** page appears.
 2. Click **Artifact Server**, and then click **Add Artifact Server**. The artifact server dialog appears.![](./static/1-delegate-and-connectors-for-iis-26.png)
 3. In **Type**, click the artifact source you want to use. The dialog settings will change for each server.
-4. Enter the artifact server information and click **SUBMIT**. For account details and Harness permission requirements for the different servers, such as SMB and SFTP, see [Add Artifact Servers](https://docs.harness.io/article/7dghbx1dbl-configuring-artifact-server).  
+4. Enter the artifact server information and click **SUBMIT**. For account details and Harness permission requirements for the different servers, such as SMB and SFTP, see [Add Artifact Servers](../../firstgen-platform/account/manage-connectors/configuring-artifact-server.md).  
 Once you have created Harness applications and environments, you can return to this dialog and add **Usage Scope** on which applications and environments may use this server.
 
 Now that you have connected the IIS artifact server and a cloud provider, and configured a WinRM connection to execute deployment steps on the remote Windows servers, you can add your Harness application.

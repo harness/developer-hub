@@ -14,15 +14,15 @@ When creating a template, type `${...}` in a field, then enter the variable name
 
 Only members of a Harness User Group with the **Manage Template Library** permission may create, edit, and delete Account and Application-level templates. Members of a User Group with this permission disabled can view and link to templates only.In this topic:
 
-* [Before You Begin](https://docs.harness.io/article/dv7ajeroou-account-and-application-templates#before_you_begin)
-* [Step: Create HTTP Template](https://docs.harness.io/article/dv7ajeroou-account-and-application-templates#step_create_http_template)
-* [Next Steps](https://docs.harness.io/article/dv7ajeroou-account-and-application-templates#next_steps)
+* [Before You Begin](account-and-application-templates.md#before-you-begin)
+* [Step: Create HTTP Template](account-and-application-templates.md#step-create-http-template)
+* [Next Steps](account-and-application-templates.md#next-steps)
 
 ### Before You Begin
 
-* [Account and Application Templates](/article/ygi6d8epse-use-templates)
-* [Add a Service](https://docs.harness.io/article/eb3kfl8uls-service-configuration)
-* [Add a Workflow](https://docs.harness.io/article/m220i1tnia-workflow-configuration)
+* [Account and Application Templates](../../../continuous-delivery/concepts-cd/deployment-types/use-templates.md)
+* [Add a Service](../../../continuous-delivery/model-cd-pipeline/setup-services/service-configuration.md)
+* [Add a Workflow](../../../continuous-delivery/model-cd-pipeline/workflows/workflow-configuration.md)
 
 ### Step: Create HTTP Template
 
@@ -57,8 +57,8 @@ The following table displays the HTTP template in the Template Library and the a
 
 ### Next Steps
 
-* [Create a Shell Script Workflow Step Template](/article/lfqn3t83hd-create-a-shell-script-workflow-step-template)
-* [Create a Service Command Template](/article/kbmz9uc7q9-create-a-service-command-template)
-* [Add Service Command Templates into Command Units](/article/mfoy0hrw8y-add-service-command-templates-into-command-units)
-* [Link Templates to Services and Workflows](/article/xd70p7rmqd-link-templates-to-services-and-workflows)
+* [Create a Shell Script Workflow Step Template](create-a-shell-script-workflow-step-template.md)
+* [Create a Service Command Template](create-a-service-command-template.md)
+* [Add Service Command Templates into Command Units](add-service-command-templates-into-command-units.md)
+* [Link Templates to Services and Workflows](link-templates-to-services-and-workflows.md)
 

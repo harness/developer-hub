@@ -14,25 +14,25 @@ You add cloud providers to your Harness Account and then reference them when def
 
 In this topic:
 
-* [Before You Begin](https://docs.harness.io/article/v0x32ks1kp-add-pivotal-cloud-foundry-cloud-provider#before_you_begin)
-* [Visual Summary](https://docs.harness.io/article/v0x32ks1kp-add-pivotal-cloud-foundry-cloud-provider#visual_summary)
-* [Review: TAS Permissions](https://docs.harness.io/article/v0x32ks1kp-add-pivotal-cloud-foundry-cloud-provider#review_tas_permissions)
-* [Step 1: Add the Cloud Provider](https://docs.harness.io/article/v0x32ks1kp-add-pivotal-cloud-foundry-cloud-provider#step_1_add_the_cloud_provider)
-* [Step 2: Endpoint URL](https://docs.harness.io/article/v0x32ks1kp-add-pivotal-cloud-foundry-cloud-provider#step_2_endpoint_url)
-* [Step 3: Username and Password](https://docs.harness.io/article/v0x32ks1kp-add-pivotal-cloud-foundry-cloud-provider#step_3_username_and_password)
-* [Step 4: Skip Validation](https://docs.harness.io/article/v0x32ks1kp-add-pivotal-cloud-foundry-cloud-provider#step_4_skip_validation)
-* [Step 5: Usage Scope](https://docs.harness.io/article/v0x32ks1kp-add-pivotal-cloud-foundry-cloud-provider#step_5_usage_scope)
-* [Artifact Support for Download and Copy](https://docs.harness.io/article/v0x32ks1kp-add-pivotal-cloud-foundry-cloud-provider#artifact_support_for_download_and_copy)
+* [Before You Begin](add-pivotal-cloud-foundry-cloud-provider.md#before-you-begin)
+* [Visual Summary](add-pivotal-cloud-foundry-cloud-provider.md#visual-summary)
+* [Review: TAS Permissions](add-pivotal-cloud-foundry-cloud-provider.md#review-tas-permissions)
+* [Step 1: Add the Cloud Provider](add-pivotal-cloud-foundry-cloud-provider.md#step-1-add-the-cloud-provider)
+* [Step 2: Endpoint URL](add-pivotal-cloud-foundry-cloud-provider.md#step-2-endpoint-url)
+* [Step 3: Username and Password](add-pivotal-cloud-foundry-cloud-provider.md#step-3-username-and-password)
+* [Step 4: Skip Validation](add-pivotal-cloud-foundry-cloud-provider.md#step-4-skip-validation)
+* [Step 5: Usage Scope](add-pivotal-cloud-foundry-cloud-provider.md#step-5-usage-scope)
+* [Artifact Support for Download and Copy](add-pivotal-cloud-foundry-cloud-provider.md#artifact-support-for-download-and-copy)
 
 ### Before You Begin
 
-* See [Harness Key Concepts](/article/4o7oqwih6h-harness-key-concepts).
+* See [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts).
 
 ### Visual Summary
 
 Here's an example configuration of TAS as Cloud Provider in Harness.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/v0x32ks1kp/1623889012248/clean-shot-2021-06-16-at-17-16-37.png)### Review: TAS Permissions
+![](./static/add-pivotal-cloud-foundry-cloud-provider-21.png)### Review: TAS Permissions
 
 TAS user account with Admin, Org Manager, or Space Manager role. The user account must be able to update spaces, orgs, and applications.
 
@@ -55,7 +55,7 @@ Enter the API endpoint URL, without URL scheme. For example, **api.run.pivotal.i
 
 Username and password for the TAS account to use for this connection.
 
-You can use an inline username or a Harness [Encrypted Text secret](/article/ygyvp998mu-use-encrypted-text-secrets).
+You can use an inline username or a Harness [Encrypted Text secret](../../security/secrets-management/use-encrypted-text-secrets.md).
 
 For the password, select or create a new Harness Encrypted Text secret.
 
@@ -71,5 +71,5 @@ Usage scope is inherited from the secret you selected for **Select Encrypted Pas
 
 ### Artifact Support for Download and Copy
 
-See [Service Types and Artifact Sources](/article/qluiky79j8-service-types-and-artifact-sources).
+See [Service Types and Artifact Sources](../../../continuous-delivery/model-cd-pipeline/setup-services/service-types-and-artifact-sources.md).
 

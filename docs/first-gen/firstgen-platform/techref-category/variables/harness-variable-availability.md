@@ -63,5 +63,5 @@ Depending on the type of the variable, the scope and availability of variables c
 
 ### Related Reference Material
 
-* [What is a Harness Variable Expression?](/article/9dvxcegm90-variables)
+* [What is a Harness Variable Expression?](variables.md)
 

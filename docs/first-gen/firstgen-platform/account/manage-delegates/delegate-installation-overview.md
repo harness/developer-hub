@@ -8,9 +8,9 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](https://docs.harness.io/article/1fjmm4by22). Switch to [NextGen](/article/re8kk0ex4k-delegate-installation-overview).This topic discusses general Delegate installation information. For Delegate requirements and limitations, see [Delegate Requirements and Limitations](/article/lwynqsgxt9-delegate-requirements-and-limitations).
+This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/article/re8kk0ex4k-delegate-installation-overview).This topic discusses general Delegate installation information. For Delegate requirements and limitations, see [Delegate Requirements and Limitations](delegate-requirements-and-limitations.md).
 
-For all the topics related to the Harness Delegate, see [Manage Harness Delegates](/category/gyd73rp7np-manage-delegates).In this topic:
+For all the topics related to the Harness Delegate, see [Manage Harness Delegates](https://docs.harness.io/category/manage-harness-delegates-firstgen).In this topic:
 
 * [Visual Summary](#visual_summary)
 * [Delegate Types](#delegate_types)
@@ -24,7 +24,9 @@ For all the topics related to the Harness Delegate, see [Manage Harness Delegate
 
 The following diagram shows how the Delegate enables Harness to integrate with all of your deployment resources:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/8o4cwqj1kv/1596840107816/image.png)### Delegate Types
+![](./static/delegate-installation-overview-16.png)
+
+### Delegate Types
 
 Harness provides different types of Delegates to give you flexibility in how your manage deployments.
 
@@ -32,13 +34,13 @@ In many cases, you will use a Kubernetes Delegate for Kubernetes deployments, an
 
 But you are not limited to using a Delegate of the same type as your deployment platform. You can use a Shell Script Delegate running in a VM with a Kubernetes deployment, although that is more complicated to set up initially.
 
-For information on targeting Delegates to different Kubernetes namespaces, see [Target Delegates to Specific Namespaces](/article/p91u0bxtaf-enable-delegate-to-deploy-to-multiple-kubernetes-namespaces).You can install the following types of Delegates:
+For information on targeting Delegates to different Kubernetes namespaces, see [Target Delegates to Specific Namespaces](enable-delegate-to-deploy-to-multiple-kubernetes-namespaces.md).You can install the following types of Delegates:
 
-* [Kubernetes Delegate](/article/0hn6vdpeqz-install-kubernetes-delegate)
-* [Shell Script Delegate](/article/8o4cwqj1kv-install-shellscript-delegate)
-* [ECS Delegate](/article/oiy5fxawzq-install-ecs-delegate)
-* [Helm Delegate](/article/6n7fon8rit-using-the-helm-delegate)
-* [Docker Delegate](/article/hnvvwbhbdu-install-docker-delegate)
+* [Kubernetes Delegate](install-kubernetes-delegate.md)
+* [Shell Script Delegate](install-shellscript-delegate.md)
+* [ECS Delegate](install-ecs-delegate.md)
+* [Helm Delegate](using-the-helm-delegate.md)
+* [Docker Delegate](install-docker-delegate.md)
 
 ### Where do I Install the Delegate?
 
@@ -63,13 +65,15 @@ All Delegates are identified by your Harness account ID. But, depending on the t
 
 For Delegates running on virtual machines, such as the Shell Script and Docker Delegates running on an AWS EC2 instance, the Delegate is identified by the combination of **Hostname** and **IP**:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/h9tkwmkrm7/1560383229070/image.png)Therefore, if the hostname or IP changes on the VM, the Delegate cannot be identified by the Harness Manager. The IP used is the private IP. The Delegate connects to the Harness Manager, but the Harness Manager does not initiate a connection to the Delegate, and so the public IP address of the Delegate is not needed, typically.
+![](./static/delegate-installation-overview-17.png)Therefore, if the hostname or IP changes on the VM, the Delegate cannot be identified by the Harness Manager. The IP used is the private IP. The Delegate connects to the Harness Manager, but the Harness Manager does not initiate a connection to the Delegate, and so the public IP address of the Delegate is not needed, typically.
 
 For Kubernetes and ECS Delegates, the IP can change if a pod is rescheduled, for example. Consequently, Kubernetes Delegates are identified by a suffix using a unique six letter code in their **Hostname** (the first six letters that occur in your account ID):
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/h9tkwmkrm7/1560383507971/image.png)ECS Delegates are identified by the **Hostname** entered when the ECS Delegate Task Spec is downloaded:
+![](./static/delegate-installation-overview-18.png)ECS Delegates are identified by the **Hostname** entered when the ECS Delegate Task Spec is downloaded:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/h9tkwmkrm7/1560465943276/image.png)### Harness Delegate Link TTL
+![](./static/delegate-installation-overview-19.png)
+
+### Harness Delegate Link TTL
 
 When you add a Delegate, you can copy a link to it that you can paste and run in the terminal.
 
@@ -77,5 +81,5 @@ The link has a TTL of 1 hour. After that, you need to copy a new link.
 
 ### Troubleshooting
 
-See the Delegate-related content in Harness [Troubleshooting](/article/g9o2g5jbye-troubleshooting-harness).
+See the Delegate-related content in Harness [Troubleshooting](https://docs.harness.io/article/g9o2g5jbye-troubleshooting-harness).
 

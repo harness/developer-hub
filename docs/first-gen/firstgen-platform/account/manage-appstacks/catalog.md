@@ -27,8 +27,8 @@ In this topic:
 ### Before You Begin
 
 
-* [Harness Key Concepts](/article/4o7oqwih6h-harness-key-concepts)
-* [Services](https://docs.harness.io/article/eb3kfl8uls-service-configuration)
+* [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts)
+* [Services](../../../continuous-delivery/model-cd-pipeline/setup-services/service-configuration.md)
 
 
 ### Review: Permissions
@@ -38,7 +38,7 @@ In order to manage Application Stacks in Harness, a Harness User must belong to 
 
 
 See
- [Managing Users and Groups (RBAC)](/article/ven0bvulsj-users-and-permissions).
+ [Managing Users and Groups (RBAC)](../../security/access-management-howtos/users-and-permissions.md).
 
 
 ### Option 1: Add an Application Stack when Adding Service
@@ -46,12 +46,12 @@ See
 
 Add the application stack when you create your Harness Service.
 
-
-
-
-![](https://files.helpdocs.io/kw8ldg1itf/articles/g26sp2ay68/1579911948110/image.png)
+![](./static/catalog-00.png)
 
 You can choose to include your application stack as part of the artifact you attach to your Harness Service. In this case, when you create a Service, leave the **Application Stack** field empty (do not choose any of the options in that list).
+
+
+
 
 
 The **Application Stack** dialog has the following fields.
@@ -89,7 +89,7 @@ The **Application Stack** dialog appears.
 
 
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/c0s1dwlqyv/1586107105618/screenshot-2020-04-05-at-10-48-00-pm.png)
+![](./static/catalog-01.png)
 
 Refer to the table in Option 1 for details on each of the settings.
 

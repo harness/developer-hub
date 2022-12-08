@@ -39,7 +39,7 @@ In general, if you are already connecting to your artifact servers, cloud, verif
 | ELK Elasticsearch | User (Read permission) or Token Header and Token Value. | TCP: 9200. |  [User authentication](https://www.elastic.co/guide/en/elastic-stack-overview/current/setting-up-authentication.html) |
 | Github Repo | User account: repository owner.Organization account: read and write. | HTTP: 443. |  [Permission levels for a user account repository](https://help.github.com/articles/permission-levels-for-a-user-account-repository/) [Repository permission levels for an organization](https://help.github.com/articles/repository-permission-levels-for-an-organization/) |
 | Google Cloud Platform (GCP) | Policies:* Kubernetes Engine Admin.
-* Storage Object Viewer. [Google Cloud Platform (GCP)](https://docs.harness.io/article/whwnovprrb-infrastructure-providers#google_cloud_platform_gcp)
+* Storage Object Viewer. [Google Cloud Platform (GCP)](../manage-connectors/cloud-providers.md#google-cloud-platform-gcp)
  | SSH: 22. | [Understanding Roles](https://cloud.google.com/iam/docs/understanding-roles?_ga=2.123080387.-954998919.1531518087#curated_roles) |
 | JFrog Artifactory | Privileged User: Read permission. | HTTP: 443. |  [Managing Permissions](https://www.jfrog.com/confluence/display/RTF/Managing+Permissions) |
 | Jenkins | Matrix-based: Read permission.Execute Permission, if jobs are triggered from Workflow. | HTTPS: 443. |  [Matrix-based security](https://wiki.jenkins.io/display/JENKINS/Matrix-based+security) |
@@ -48,7 +48,7 @@ In general, if you are already connecting to your artifact servers, cloud, verif
 * CA certificate, client certificate, and client key. Key passphrase and key algorithm are optional.
 * For OpenShift: Kubernetes service account token.
 
-[Kubernetes Cluster](/article/whwnovprrb-infrastructure-providers#kubernetes_cluster) | Depends where the cluster is hosted, such as GCP or AWS. |  [Authenticating](https://kubernetes.io/docs/reference/access-authn-authz/authentication/) |
+[Kubernetes Cluster](../manage-connectors/cloud-providers.md#kubernetes-cluster) | Depends where the cluster is hosted, such as GCP or AWS. |  [Authenticating](https://kubernetes.io/docs/reference/access-authn-authz/authentication/) |
 | Logz | Token-based. | HTTPS: 443. |  [Announcing the Logz.io Search API](https://logz.io/blog/announcing-the-logz-io-search-api/) |
 | OpenShift | Kubernetes service account token. | HTTPS: 443. |  [Enabling Service Account Authentication](https://docs.openshift.com/container-platform/3.6/dev_guide/service_accounts.html#enabling-service-account-authentication) |
 | New Relic | API key. | HTTPS: 443. | [Access to REST API keys](https://docs.newrelic.com/docs/apis/getting-started/intro-apis/access-rest-api-keys) |

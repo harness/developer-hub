@@ -23,7 +23,7 @@ In this topic:
 
 ### Before You Begin
 
-* See [Harness Key Concepts](/article/4o7oqwih6h-harness-key-concepts).
+* See [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts).
 
 ### Limitations
 
@@ -41,7 +41,9 @@ For token-based authentication, go to **http://*****Jenkins-IP-address*****/jobs
 
 See [Jenkins Matrix-based security](https://wiki.jenkins.io/display/JENKINS/Matrix-based+security).
 
-If you add Jenkins as an Artifact Server, it is automatically added as a Verification Provider, and is a single account. Changes made to the Jenkins Artifact Server settings, such as username or Display Name, will also apply to the Jenkins Verification Provider settings, and vice versa.#### Okta or Two-Factor Authentication
+If you add Jenkins as an Artifact Server, it is automatically added as a Verification Provider, and is a single account. Changes made to the Jenkins Artifact Server settings, such as username or Display Name, will also apply to the Jenkins Verification Provider settings, and vice versa.
+
+#### Okta or Two-Factor Authentication
 
 If you use Okta or 2FA for connections to Jenkins, use the Jenkins API token for **Authentication Mechanism** in the Harness Jenkins Artifact Server.
 
@@ -63,9 +65,11 @@ Enter a name for the Jenkins Server. This is the name you will use to identify t
 
 Enter the URL of the Jenkins server. If you are using the Jenkins SaaS (cloud) edition, the URL is in your browser's location field. If you are using the standalone edition of Jenkins, the URL is located in **Manage Jenkins**, **Jenkins Location**:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/7dghbx1dbl/1573590417482/image.png)### Option: Use this URL for Job Execution
+![](./static/add-jenkins-artifact-servers-22.png)
 
-Select this option to have Harness use this URL when executing jobs in the [Jenkins Workflow step](/article/5fzq9w0pq7-using-the-jenkins-command). In most cases, you will not need to select this option.
+### Option: Use this URL for Job Execution
+
+Select this option to have Harness use this URL when executing jobs in the [Jenkins Workflow step](../../../continuous-delivery/model-cd-pipeline/workflows/using-the-jenkins-command.md). In most cases, you will not need to select this option.
 
 In some cases, the Jenkins server and Jenkins job(s) have different URLs. The server URL is typically what you see in the **Jenkins Location** settings.
 
@@ -81,7 +85,7 @@ If you use Okta or 2FA for connections to Jenkins, use the Jenkins API token for
 
 The **Bearer Token (HTTP Header)** option is only for Jenkins servers hosted/embedded in an OpenShift cluster and using this authentication method.For more information, see [Authentication](https://docs.openshift.com/container-platform/3.7/architecture/additional_concepts/authentication.html) from OpenShift. For token-based authentication, go to **http://*****Jenkins-IP-address*****/jobs/me/configure** to check and change your API access token. The token is added as part of the HTTP header.
 
-For secrets and other sensitive settings, select or create a new [Harness Encrypted Text secret](/article/ygyvp998mu-use-encrypted-text-secrets).
+For secrets and other sensitive settings, select or create a new [Harness Encrypted Text secret](../../security/secrets-management/use-encrypted-text-secrets.md).
 
 Usage Scope is determined by the secret you selected.
 

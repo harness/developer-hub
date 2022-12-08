@@ -33,10 +33,10 @@ Also, other key platforms that help you make your CD powerful and efficient:
 
 - [Terraform](/docs/category/terraform)
 - [CloudFormation](/docs/category/aws-cloudformation)
-- [Configuration as Code](https://docs.harness.io/category/2ea2y01kgz-config-as-code) (work exclusively in YAML and sync with your Git repos)
-- [Harness GitOps](https://docs.harness.io/category/goyudf2aoh-harness-gitops)
+- [Configuration as Code](https://docs.harness.io/category/configuration-as-code) (work exclusively in YAML and sync with your Git repos)
+- [Harness GitOps](https://docs.harness.io/category/harness-git-based-how-tos)
 
-For topics on general CD modeling in Harness, see [Model Your CD Pipeline](https://docs.harness.io/category/ywqzeje187-setup).
+For topics on general CD modeling in Harness, see [Model Your CD Pipeline](https://docs.harness.io/category/model-your-cd-pipeline).
 
 ### Kubernetes or Native Helm?
 

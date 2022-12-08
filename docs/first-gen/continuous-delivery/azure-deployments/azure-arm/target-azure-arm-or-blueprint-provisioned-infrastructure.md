@@ -55,7 +55,7 @@ To set up a Harness Infrastructure Provisioner for an ARM template, follow the s
 
 ### Step 2: Create Infrastructure Definition
 
-Add a new Environment as described in [Add an Environment](https://docs.harness.io/article/n39w05njjv-environment-configuration).
+Add a new Environment as described in [Add an Environment](../../model-cd-pipeline/environments/environment-configuration.md).
 
 Click **Add Infrastructure Definition**.
 

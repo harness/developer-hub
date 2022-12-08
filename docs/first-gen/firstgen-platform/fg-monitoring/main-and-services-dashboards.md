@@ -14,33 +14,39 @@ Harness Manager's Main Dashboard and Services Dashboard offer predefined views
 
 The Main Dashboard foregrounds deployment and instance activity. It includes breakdowns by successful versus failed deployment, by Harness Service, and by other factors.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/c3s245o7z8/1578096836735/image.png)### Services Dashboard
+![](./static/main-and-services-dashboards-00.png)
+
+### Services Dashboard
 
 The Services Dashboard foregrounds data about **currently** deployed instances. Harness syncs every 10 minutes. The dashboard is a live snapshot of what is currently running.
 
 It includes breakdowns by Harness Service, Cloud Provider, Production versus Non-Production Environment, and Harness Application.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/c3s245o7z8/1578096994998/image.png)Only active, running instances are reflected in the Services Dashboard's count and details.#### How often does Harness Sync with my Deployed Service Instances?
+![](./static/main-and-services-dashboards-01.png)Only active, running instances are reflected in the Services Dashboard's count and details.
+
+#### How often does Harness Sync with my Deployed Service Instances?
 
 Harness syncs just after the deployment and then it syncs every 10 minutes.
 
 You can check the status using the **Instances** section of the **Services** dashboard by hovering over the Environment.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/cegdxcepwi/1625593528990/clean-shot-2021-07-06-at-10-44-54.png)You can also sync on demand using the Refresh icon. You don't need to rerun the deployment.
+![](./static/main-and-services-dashboards-02.png)You can also sync on demand using the Refresh icon. You don't need to rerun the deployment.
 
 #### Instances Drill Down
 
 Click on any instance in **Instances** are a drill down of the instance's deployments is displayed.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/c3s245o7z8/1604086868274/image.png)To see older deployments, go to the **Deployments** dashboard and filter for the Service:
+![](./static/main-and-services-dashboards-03.png)To see older deployments, go to the **Deployments** dashboard and filter for the Service:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/c3s245o7z8/1604086139423/image.png)#### Environment Comparison
+![](./static/main-and-services-dashboards-04.png)
+
+#### Environment Comparison
 
 Currently, this feature is behind the Feature Flag `COMPARE_SERVICE_BY_ENV`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. The Services dashboard contains a **Compare Environments** option.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/c3s245o7z8/1628885554261/clean-shot-2021-08-13-at-13-12-03.png)Compare Environments shows you what artifacts have been deployed to each Environment.
+![](./static/main-and-services-dashboards-05.png)Compare Environments shows you what artifacts have been deployed to each Environment.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/c3s245o7z8/1628885213555/clean-shot-2021-08-13-at-13-06-42.png)You can see the Environments where each Service was deployed:
+![](./static/main-and-services-dashboards-06.png)You can see the Environments where each Service was deployed:
 
 * Green: Services have the same versions deployed on both environments.
 * Red only: Services have different versions deployed on both environments.
@@ -48,5 +54,5 @@ Currently, this feature is behind the Feature Flag `COMPARE_SERVICE_BY_ENV`. Con
 
 ### Next Steps
 
-* Snap together Harness' flexible chart Widgets to design your own [Custom Dashboards](/article/rxlbhvwe6q-custom-dashboards).
+* Snap together Harness' flexible chart Widgets to design your own [Custom Dashboards](custom-dashboards.md).
 

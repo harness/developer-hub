@@ -14,11 +14,13 @@ Most importantly, the Delegate performs all deployment operations.
 
 There are several types of Delegates. This topic describes how to install the Kubernetes Delegate.
 
-If you want to run multiple Delegates on the same or different clusters, see [Automate Harness Kubernetes Delegate Setup](/article/up3w9d8zd0-automate-harness-kubernetes-delegate-setup).### Before You Begin
+If you want to run multiple Delegates on the same or different clusters, see [Automate Harness Kubernetes Delegate Setup](automate-harness-kubernetes-delegate-setup.md).
 
-* [Harness Key Concepts](/article/4o7oqwih6h-harness-key-concepts)
-* [Harness Delegate Overview](/article/h9tkwmkrm7-delegate-installation)
-* [Delegate Requirements and Limitations](/article/lwynqsgxt9-delegate-requirements-and-limitations)
+### Before You Begin
+
+* [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts)
+* [Harness Delegate Overview](delegate-installation.md)
+* [Delegate Requirements and Limitations](delegate-requirements-and-limitations.md)
 
 ### Limitations
 
@@ -28,20 +30,22 @@ Currently, Harness Kubernetes Delegates do not install with the default settings
 
 The following diagram shows how the Delegate enables Harness to integrate with all of your deployment resources:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/8o4cwqj1kv/1596840107816/image.png)### Step 1: Download the Kubernetes Delegate
+![](./static/install-kubernetes-delegate-36.png)
+
+### Step 1: Download the Kubernetes Delegate
 
 1. Log into Harness.
 2. In the Harness Manager, click **Setup**, and then click **Harness Delegates**.
 3. In the **Delegate** tab, click **Install Delegate**.
 4. In **Download Type**, select **Kubernetes YAML**.
 5. In **Name**, enter a name for your Delegate.
-6. In **Profile**, select a Delegate Profile. See [Run Scripts on the Delegate using Profiles](/article/yd4bs0pltf-run-scripts-on-the-delegate-using-profiles).
+6. In **Profile**, select a Delegate Profile. See [Run Scripts on the Delegate using Profiles](run-scripts-on-the-delegate-using-profiles.md).
 
 A Delegate Profile is mandatory. The **Primary** Profile is the default and contains no script. You can add a script to it, or create and apply new Profiles for your Delegate.1. Click **Download** or **Copy Download Link**.
 
 ### Step 2: Apply the Delegate Spec
 
-1. Ensure the host where you run the Delegate meets the [Delegate Requirements and Limitations](/article/lwynqsgxt9-delegate-requirements-and-limitations).
+1. Ensure the host where you run the Delegate meets the [Delegate Requirements and Limitations](delegate-requirements-and-limitations.md).
 2. Open a terminal and navigate to where the Delegate file is located.
 3. If you downloaded the Delegate, extract the YAML file's folder from the download and then navigate to the **harness-delegate-kubernetes** folder that you extracted:
 
@@ -80,13 +84,15 @@ The **Delegates** page provides a list of installed Delegates. The information d
 * Status.
 * Last heartbeat. This is the last time the Delegate communicated with the Harness Manager. The Delegate pings the Manager once per minute.
 * Available Versions
-* [Selectors](/article/c3fvixpgsl-select-delegates-for-specific-tasks-with-selectors)
-* [Profiles](/article/yd4bs0pltf-run-scripts-on-the-delegate-using-profiles)
-* [Scopes](/article/hw56f9nz7q-scope-delegates-to-harness-components-and-commands)
+* [Selectors](select-delegates-for-specific-tasks-with-selectors.md)
+* [Profiles](run-scripts-on-the-delegate-using-profiles.md)
+* [Scopes](scope-delegates-to-harness-components-and-commands.md)
 
 Now you're ready to connect Harness to your artifact servers, clusters, and so on.
 
-When you onboard your own applications, you might need to install multiple Delegates, depending on their workloads, network segmentation, and firewall zones. Typically, you will need one Delegate for every 300-500 service instances across your applications, and will need one Delegate in each subnet or zone.### Installation Example: Google Cloud Platform
+When you onboard your own applications, you might need to install multiple Delegates, depending on their workloads, network segmentation, and firewall zones. Typically, you will need one Delegate for every 300-500 service instances across your applications, and will need one Delegate in each subnet or zone.
+
+### Installation Example: Google Cloud Platform
 
 The following steps describe how to install the Kubernetes Delegate in a Kubernetes cluster in Google Cloud Platform. The steps assume you have Google Cloud SDK installed, as it is used to execute gcloud command-line commands. For more information on installing the Google Cloud SDK, see [Install the Latest Cloud SDK version](https://cloud.google.com/sdk/docs/#install_the_latest_cloud_sdk_version) from Google.
 
@@ -108,10 +114,10 @@ A Kubernetes cluster in Google Cloud Platform has a variety of settings that are
 	**Minimum number of nodes:** 3  
 	**Maximum number of nodes:** 8
 	9. Click **NEXT**.  
-	The settings will look something like this:![](https://files.helpdocs.io/kw8ldg1itf/articles/0hn6vdpeqz/1603227794423/image.png)
+	The settings will look something like this:![](./static/install-kubernetes-delegate-37.png)
 	10. Click **Create** to create the cluster. It will take a few minutes to create the Kubernetes cluster.
-3. When the cluster is created, click the **Connect** button.![](https://files.helpdocs.io/kw8ldg1itf/articles/h9tkwmkrm7/1542995949723/image.png)
-4. In the **Connect to the cluster** dialog, copy the **Command-line access** command.![](https://files.helpdocs.io/kw8ldg1itf/articles/h9tkwmkrm7/1542996065180/image.png)
+3. When the cluster is created, click the **Connect** button.![](./static/install-kubernetes-delegate-38.png)
+4. In the **Connect to the cluster** dialog, copy the **Command-line access** command.![](./static/install-kubernetes-delegate-39.png)
 5. On your local machine, open a Terminal, and paste the command, and press **Enter**. You are now connected to the Kubernetes cluster.  
   
 By default, your cluster should be able to connect to the Internet. If you run into errors, ensure the GCE firewall isn’t blocking port 22 to your VMs. For more information, see [Debug Running Pods](https://kubernetes.io/docs/tasks/debug/debug-application/debug-running-pod/) from Kubernetes.
@@ -148,6 +154,6 @@ StatefulSets is used for the the Kubernetes Delegate to ensure the same pod name
 
 ### See Also
 
-* For all the topics related to the Harness Delegate, see [Manage Harness Delegates](/category/gyd73rp7np-manage-delegates).
-* Delegate are used to provide credentials for some Harness [Cloud Providers](/article/whwnovprrb-cloud-providers).
+* For all the topics related to the Harness Delegate, see [Manage Harness Delegates](https://docs.harness.io/category/manage-harness-delegates-firstgen).
+* Delegate are used to provide credentials for some Harness [Cloud Providers](../manage-connectors/cloud-providers.md).
 

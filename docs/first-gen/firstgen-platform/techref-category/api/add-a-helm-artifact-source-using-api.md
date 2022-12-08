@@ -12,12 +12,12 @@ This topic describes how to create, read, update, and delete Helm Artifact Sour
 
 ### Before You Begin
 
-* Read the [Create an Application](https://docs.harness.io/article/bucothemly-application-configuration) topic to get an overview of how Harness organizes Services.
-* Read the [Add a Service](https://docs.harness.io/article/eb3kfl8uls-service-configuration) topic to understand the process to add a Service to an Application.
-* Read [Configuration as Code](https://docs.harness.io/article/htvzryeqjw-configuration-as-code) to see how you can quickly configure your Harness Service using your existing YAML in Git.
-* [Add Helm Repository Artifact Servers](/article/0hrzb1zkog-add-helm-repository-servers)
-* [Add Artifact Servers](https://docs.harness.io/article/7dghbx1dbl-configuring-artifact-server)
-* [Use Cloud Providers API](/article/dfx0qi1zf7-use-cloud-providers-api)
+* Read the [Create an Application](../../../continuous-delivery/model-cd-pipeline/applications/application-configuration.md) topic to get an overview of how Harness organizes Services.
+* Read the [Add a Service](../../../continuous-delivery/model-cd-pipeline/setup-services/service-configuration.md) topic to understand the process to add a Service to an Application.
+* Read [Configuration as Code](../../config-as-code/configuration-as-code.md) to see how you can quickly configure your Harness Service using your existing YAML in Git.
+* [Add Helm Repository Artifact Servers](../../account/manage-connectors/add-helm-repository-servers.md)
+* [Add Artifact Servers](../../account/manage-connectors/configuring-artifact-server.md)
+* [Use Cloud Providers API](use-cloud-providers-api.md)
 
 ### Step: Create a Helm Artifact Source
 
@@ -27,13 +27,13 @@ Use this sample query to create a Helm Artifact Source. You can use the followin
 * Amazon S3
 * GCS (Google Cloud Storage)
 
-If you select an option other than **HTTP Server**, such as **Amazon S3** or **GCS** (Google Cloud Storage), you will need a Cloud Provider for that account. For more information, see [AWS S3](/article/wt1gnigme7-add-amazon-web-services-cloud-provider) and [Google Cloud Storage (GCS)](/article/6x52zvqsta-add-google-cloud-platform-cloud-provider).
+If you select an option other than **HTTP Server**, such as **Amazon S3** or **GCS** (Google Cloud Storage), you will need a Cloud Provider for that account. For more information, see [AWS S3](../../account/manage-connectors/add-amazon-web-services-cloud-provider.md) and [Google Cloud Storage (GCS)](../../account/manage-connectors/add-google-cloud-platform-cloud-provider.md).
 
 To fetch the `passwordSecretId` use:
 
-* [Encrypted Text API](https://docs.harness.io/article/omnfccj1n0-api-encrypted-text#get_a_secret_by_name)
-* [WinRM Credentials API](https://docs.harness.io/article/2rlo5zw321-api-win-rm-credentials#get_a_secret_by_name)
-* [SSH Credentials API](https://docs.harness.io/article/v65okfwfl2-api-ssh-credentials#get_a_secret_by_name)
+* [Encrypted Text API](api-encrypted-text.md#get-a-secret-by-name)
+* [WinRM Credentials API](api-win-rm-credentials.md#get-a-secret-by-name)
+* [SSH Credentials API](api-ssh-credentials.md#get-a-secret-by-name)
 
 #### HTTP Server
 
@@ -103,7 +103,7 @@ mutation CreateConnector($connector: CreateConnectorInput!) {
 
 The Query Variables follow this syntax, with `connectorType` identifying the Helm Artifact Source to create.
 
-To get the cloud provider ID, see [Find Cloud Provider by Name](/article/dfx0qi1zf7-use-cloud-providers-api#step_6_find_cloud_provider_by_name).
+To get the cloud provider ID, see [Find Cloud Provider by Name](use-cloud-providers-api.md#step-6-find-cloud-provider-by-name).
 
 
 ```
@@ -209,7 +209,9 @@ For GCR as an OCI registry, Harness support authentication using the following:
 * Access token
 * A JSON key file where username is `_json_key_base64` and password is base64-encoded JSON key file content.
 
-Harness does not support a username of `_json_key` and password as unencrypted JSON key file content.### Step: Update a Helm Artifact Source
+Harness does not support a username of `_json_key` and password as unencrypted JSON key file content.
+
+### Step: Update a Helm Artifact Source
 
 Use this sample query to update a Helm Artifact Source.
 
@@ -235,7 +237,7 @@ mutation UpdateConnector($connector: UpdateConnectorInput!) {
 ```
 ##### Query Variables
 
-The Query Variables follow this syntax, with `connectorType` identifying the Helm Artifact Source to update. See [Fetch the Connector ID](/article/y5ngh9ktzj-add-a-helm-artifact-source-using-api#fetch_the_connector_id) to get the connector ID details.
+The Query Variables follow this syntax, with `connectorType` identifying the Helm Artifact Source to update. See [Fetch the Connector ID](add-a-helm-artifact-source-using-api.md#fetch-the-connector-id) to get the connector ID details.
 
 
 ```
@@ -293,7 +295,7 @@ mutation UpdateConnector($connector: UpdateConnectorInput!) {
 ```
 ##### Query Variables
 
-The Query Variables follow this syntax, with `connectorType` identifying the Helm Artifact Source to update. See [Fetch the Connector ID](/article/y5ngh9ktzj-add-a-helm-artifact-source-using-api#fetch_the_connector_id_2) to get the connector ID details.
+The Query Variables follow this syntax, with `connectorType` identifying the Helm Artifact Source to update. See [Fetch the Connector ID](add-a-helm-artifact-source-using-api.md#fetch-the-connector-id-2) to get the connector ID details.
 
 
 ```
@@ -348,7 +350,7 @@ mutation UpdateConnector($connector: UpdateConnectorInput!) {
 ```
 ##### Query Variables
 
-The Query Variables follow this syntax, with `connectorType` identifying the Helm Artifact Source to update. See [Fetch the Connector ID](/article/y5ngh9ktzj-add-a-helm-artifact-source-using-api#fetch_the_connector_id_3) to get the connector ID details.
+The Query Variables follow this syntax, with `connectorType` identifying the Helm Artifact Source to update. See [Fetch the Connector ID](add-a-helm-artifact-source-using-api.md#fetch-the-connector-id-3) to get the connector ID details.
 
 
 ```
@@ -403,7 +405,7 @@ mutation UpdateConnector($connector: UpdateConnectorInput!) {
 ```
 ##### Query Variables
 
-The Query Variables follow this syntax, with `connectorType` identifying the Helm Artifact Source to update. See [Fetch the Connector ID](/article/y5ngh9ktzj-add-a-helm-artifact-source-using-api#fetch_the_connector_id_3) to get the connector ID details.
+The Query Variables follow this syntax, with `connectorType` identifying the Helm Artifact Source to update. See [Fetch the Connector ID](add-a-helm-artifact-source-using-api.md#fetch-the-connector-id-3) to get the connector ID details.
 
 
 ```

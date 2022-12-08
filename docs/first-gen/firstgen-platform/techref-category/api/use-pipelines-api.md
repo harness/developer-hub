@@ -26,9 +26,9 @@ In this topic:
 
 ### Before You Begin
 
-* [​Introduction to Harness GraphQL API](/article/tm0w6rruqv-harness-api)
-* [Harness API Explorer](/article/2rmd5i0e0h-harness-api-explorer)
-* [API Schema and Structure](/article/kn8wsu80n4-api-schema-and-structure)
+* [​Introduction to Harness GraphQL API](harness-api.md)
+* [Harness API Explorer](harness-api-explorer.md)
+* [API Schema and Structure](api-schema-and-structure.md)
 
 ### Fetch Pipeline ID
 
@@ -538,13 +538,13 @@ For example, you might have an Approval step as part of the Workflow or Pipeline
 
 To do this, when you add an Execution Step stage to your Pipeline, use **Runtime Input Settings**.
 
-For steps on performing this in the Harness Manager UI, see [Create a Pipeline](/article/zc1u96u6uj-pipeline-configuration).
+For steps on performing this in the Harness Manager UI, see [Create a Pipeline](../../../continuous-delivery/model-cd-pipeline/pipelines/pipeline-configuration.md).
 
 #### Start Execution Mutation
 
 Let's use a simple Pipeline with one stage:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/rfqmu6cejy/1606940949473/image.png)To execute this Pipeline and provide runtime inputs, the mutation is:
+![](./static/use-pipelines-api-18.png)To execute this Pipeline and provide runtime inputs, the mutation is:
 
 
 ```
@@ -591,7 +591,9 @@ The response is the Pipeline execution ID:
 ```
 And you can see that the Pipeline is started, but paused awaiting the inputs:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/rfqmu6cejy/1606954288465/image.png)The `variableInputs` are not mandatory.#### Execution and Executions Query
+![](./static/use-pipelines-api-19.png)The `variableInputs` are not mandatory.
+
+#### Execution and Executions Query
 
 Next, you can take the Pipeline execution ID in the response and use it to query everything about the execution:
 

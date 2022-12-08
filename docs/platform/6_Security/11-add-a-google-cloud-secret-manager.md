@@ -16,7 +16,7 @@ Harness also supports [Google KMS as a secrets manager](../6_Security/10-add-go
 
 ### Before you begin
 
-* See [Harness Key Concepts](https://docs.harness.io/article/hv2758ro4e)
+* See [Harness Key Concepts](../../getting-started/learn-harness-key-concepts.md)
 * See [Secrets Management Overview](../6_Security/1-harness-secret-manager-overview.md)
 
 ### Limitations

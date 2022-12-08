@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-As discussed in [Deploy Helm Charts](/article/p5om530pe0-deploy-a-helm-chart-as-an-artifact), you can deploy the Helm chart without adding your artifact to Harness.
+As discussed in [Deploy Helm Charts](../../../continuous-delivery/kubernetes-deployments/deploy-a-helm-chart-as-an-artifact.md), you can deploy the Helm chart without adding your artifact to Harness.
 
 Instead, the Helm chart identifies the artifact. Harness installs the chart, gets the artifact from the repo, and then installs the artifact. We call this a *Helm chart deployment*.
 
@@ -16,21 +16,21 @@ This topic explains how to set up a Helm chart deployment using the Harness Grap
 
 In this topic:
 
-* [Before You Begin](https://docs.harness.io/article/sbvn6uwcq1-deploy-helm-charts-using-api#before_you_begin)
-* [Option: Create Harness Helm Chart Deployment](https://docs.harness.io/article/sbvn6uwcq1-deploy-helm-charts-using-api#option_create_harness_helm_chart_deployment)
-* [Step 1: Specify Helm Chart Version and Start Execution](https://docs.harness.io/article/sbvn6uwcq1-deploy-helm-charts-using-api#step_1_specify_helm_chart_version_and_start_execution)
-* [Step 2: Query the Execution](https://docs.harness.io/article/sbvn6uwcq1-deploy-helm-charts-using-api#step_2_query_the_execution)
-* [Option: Create and Update Trigger](https://docs.harness.io/article/sbvn6uwcq1-deploy-helm-charts-using-api#option_create_and_update_trigger)
+* [Before You Begin](deploy-helm-charts-using-api.md#before-you-begin)
+* [Option: Create Harness Helm Chart Deployment](deploy-helm-charts-using-api.md#option-create-harness-helm-chart-deployment)
+* [Step 1: Specify Helm Chart Version and Start Execution](deploy-helm-charts-using-api.md#step-1-specify-helm-chart-version-and-start-execution)
+* [Step 2: Query the Execution](deploy-helm-charts-using-api.md#step-2-query-the-execution)
+* [Option: Create and Update Trigger](deploy-helm-charts-using-api.md#option-create-and-update-trigger)
 
 ### Before You Begin
 
-* [Deploy Helm Charts](/article/p5om530pe0-deploy-a-helm-chart-as-an-artifact): review this topic to learn how to create a Helm chart deployment using the Harness Manager UI.
+* [Deploy Helm Charts](../../../continuous-delivery/kubernetes-deployments/deploy-a-helm-chart-as-an-artifact.md): review this topic to learn how to create a Helm chart deployment using the Harness Manager UI.
 
 ### Option: Create Harness Helm Chart Deployment
 
 This topic covers how to specify the Helm chart as artifact when you execute your Workflow or Pipeline manually or programmatically via the API, including API Triggers.
 
-If this is your first Helm chart deployment, follow the steps in [Deploy Helm Charts](/article/p5om530pe0-deploy-a-helm-chart-as-an-artifact) to create the Helm Chart as Artifact deployment.
+If this is your first Helm chart deployment, follow the steps in [Deploy Helm Charts](../../../continuous-delivery/kubernetes-deployments/deploy-a-helm-chart-as-an-artifact.md) to create the Helm Chart as Artifact deployment.
 
 Next, you will use the API to execute this deployment and specify the chart version to use.
 
@@ -117,7 +117,7 @@ You use `TriggerConditionInput.manifestConditionInput` to specify the chart vers
 
 This is the same as selecting these in the UI:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/sbvn6uwcq1/1625857917350/clean-shot-2021-07-09-at-12-11-26.png)Here's a Pipeline Trigger example:
+![](./static/deploy-helm-charts-using-api-39.png)Here's a Pipeline Trigger example:
 
 
 ```

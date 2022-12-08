@@ -13,7 +13,7 @@ Add Jira as a Harness Collaboration Provider, to enable deployment notifications
 
 ### Before You Begin
 
-* [Add Collaboration Providers](/article/cv98scx8pj-collaboration-providers)
+* [Add Collaboration Providers](collaboration-providers.md)
 
 
 ### Limitations
@@ -37,7 +37,7 @@ Start adding a Collaboration Provider to Harness as follows:
 
 Select **Jira**. The Jira settings appear.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/bhpffyx0co/1587763971060/image.png)
+![](./static/add-jira-collaboration-provider-30.png)
 ### Step 3: Display Name
 
 In **Display Name**, enter a unique name to identify this Jira account connection. When you add Jira steps to Workflows or Pipelines, you will select the appropriate Jira account using this name.
@@ -55,7 +55,7 @@ In **Username**, enter the **full email address** you use to log into Jira.
 
 ### Step 6: Password/API Token
 
-In **Select Encrypted Password/API Token**, select or create a new [Harness Encrypted Text secret](/article/ygyvp998mu-use-encrypted-text-secrets) containing the password or API Token to use for the Jira account.
+In **Select Encrypted Password/API Token**, select or create a new [Harness Encrypted Text secret](../../security/secrets-management/use-encrypted-text-secrets.md) containing the password or API Token to use for the Jira account.
 
 For more information, see [API tokens](https://confluence.atlassian.com/cloud/api-tokens-938839638.html) from Atlassian.
 
@@ -73,6 +73,6 @@ Usage scope is inherited from the secret entered in **Select Encrypted Password/
 
 ### Next Steps
 
-* To use Jira in a Workflow or Pipeline, see [Jira Integration](/article/077hwokrpr-jira-integration).
-* To integrate Jira with Harness Verification features, see [File Jira Tickets on Verification Events](/article/v4d4pd5lxi-jira-cv-ticket)
+* To use Jira in a Workflow or Pipeline, see [Jira Integration](../../../continuous-delivery/model-cd-pipeline/workflows/jira-integration.md).
+* To integrate Jira with Harness Verification features, see [File Jira Tickets on Verification Events](../../../continuous-delivery/continuous-verification/tuning-tracking-verification/jira-cv-ticket.md)
 

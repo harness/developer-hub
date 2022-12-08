@@ -40,7 +40,7 @@ In the CI Artifact, select **Upload Artifacts to JFrog Artifactory**.
 
 In this step, configure the Harness Artifactory Connector, enter the source file/path, and the target path. 
 
-The JFrog Account associated with the Connector must have read/write permission. See [Connector Settings Reference](https://ngdocs.harness.io/article/euueiiai4m-artifactory-connector-settings-reference).
+The JFrog Account associated with the Connector must have read/write permission. See [Connector Settings Reference](../../../platform/7_Connectors/ref-cloud-providers/artifactory-connector-settings-reference.md).
 
 For the step Settings, see [Upload Artifacts to JFrog Artifactory](../../ci-technical-reference/upload-artifacts-to-jfrog-artifactory-step-settings.md).
 

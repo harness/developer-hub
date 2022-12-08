@@ -32,6 +32,6 @@ createImagePullSecret: true
 ### Next Steps
 
 * [Kubernetes Deployments](https://docs.harness.io/category/kubernetes-deployments)
-* [Secrets Management](https://docs.harness.io/article/au38zpufhr-secret-management)
+* [Secrets Management](../../../firstgen-platform/security/secrets-management/secret-management.md)
 * [Continuous Verification](https://docs.harness.io/article/myw4h9u05l-verification-providers-list)
 

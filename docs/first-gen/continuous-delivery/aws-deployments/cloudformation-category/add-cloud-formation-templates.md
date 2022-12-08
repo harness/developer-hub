@@ -76,11 +76,11 @@ CloudFormation templates may be in JSON or YAML and Harness accepts both formats
 
 ![](./static/add-cloud-formation-templates-22.png)
 
-You can also use [Harness variable expressions](https://docs.harness.io/article/9dvxcegm90-variables), such as [Workflow variables](https://docs.harness.io/article/766iheu1bk-add-workflow-variables-new-template), in **Template Body**.
+You can also use [Harness variable expressions](../../../firstgen-platform/techref-category/variables/variables.md), such as [Workflow variables](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md), in **Template Body**.
 
 #### Git Repository
 
-For Git Repository, ensure that you have added a SourceRepo Provider in Harness that connects to your Git repo. For more information, see [Add SourceRepo Providers](https://docs.harness.io/article/ay9hlwbgwa-add-source-repo-providers).
+For Git Repository, ensure that you have added a SourceRepo Provider in Harness that connects to your Git repo. For more information, see [Add SourceRepo Providers](../../../firstgen-platform/account/manage-connectors/add-source-repo-providers.md).
 
 If you select **Git Repository**, do the following:
 
@@ -93,7 +93,7 @@ For example, if the full path to your script is **http://github.com/johnsmith/ha
   
 Using the same example, if you selected **Specific Commit ID** and enter a commit ID, in **File Path** you can enter **scripts/foo.yaml** or even **./scripts/foo.yaml**.
 
-You cannot also use [Harness variable expressions](https://docs.harness.io/article/9dvxcegm90-variables), such as [Workflow variables](https://docs.harness.io/article/766iheu1bk-add-workflow-variables-new-template), in **File Path** at this time.
+You cannot also use [Harness variable expressions](../../../firstgen-platform/techref-category/variables/variables.md), such as [Workflow variables](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md), in **File Path** at this time.
 
 #### Amazon S3
 
@@ -103,7 +103,7 @@ If you select **Amazon S3**, in **Template File Path**, enter the URL for the te
 
 ![](./static/add-cloud-formation-templates-23.png)
 
-Only enter the [globally-unique S3 bucket name URL](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingBucket.html). Not the region-specific URL.You can also use [Harness variable expressions](https://docs.harness.io/article/9dvxcegm90-variables), such as [Workflow variables](https://docs.harness.io/article/766iheu1bk-add-workflow-variables-new-template), in **Template File Path**.Ensure that the AWS Cloud Provider has permissions to read the bucket contents. The required policies is `AmazonS3ReadOnlyAccess` and you need another policy with the action `cloudformation:GetTemplateSummary`. See [Set Up Your Harness Account for CloudFormation](cloud-formation-account-setup.md).
+Only enter the [globally-unique S3 bucket name URL](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingBucket.html). Not the region-specific URL.You can also use [Harness variable expressions](../../../firstgen-platform/techref-category/variables/variables.md), such as [Workflow variables](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md), in **Template File Path**.Ensure that the AWS Cloud Provider has permissions to read the bucket contents. The required policies is `AmazonS3ReadOnlyAccess` and you need another policy with the action `cloudformation:GetTemplateSummary`. See [Set Up Your Harness Account for CloudFormation](cloud-formation-account-setup.md).
 
 You can find many template samples from CloudFormation [Sample Templates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-sample-templates.html).
 
@@ -133,7 +133,7 @@ You can also use **Populate Variables** if you added your template manually, but
 	2. In **Region**, select the AWS region where the AWS Cloud Provider should connect. AWS S3 is global, but AWS connections require a region.
 3. If you are using a Git Repository source, you do not need to enter anything.
 4. Click **Submit**. The input parameters from your template are added automatically:![](./static/add-cloud-formation-templates-25.png)
-5. For each input, select the type of value required: **Text** or **Encrypted Text**. When this provisioner is added to a Workflow, the user will have to provide a value for the input that matches the type. Encrypted Text values use secrets you set up in Harness [Secrets Management](https://docs.harness.io/article/au38zpufhr-secret-management).
+5. For each input, select the type of value required: **Text** or **Encrypted Text**. When this provisioner is added to a Workflow, the user will have to provide a value for the input that matches the type. Encrypted Text values use secrets you set up in Harness [Secrets Management](../../../firstgen-platform/security/secrets-management/secret-management.md).
 
 Here is what the input variables look like in a Workflow CloudFormation Create Stack step:
 

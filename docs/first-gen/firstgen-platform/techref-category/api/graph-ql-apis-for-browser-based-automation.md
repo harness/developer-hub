@@ -12,20 +12,20 @@ This section outlines how to use [Postman](https://www.postman.com/downloads/) (
 
 In this topic:
 
-* [Before You Begin](https://docs.harness.io/article/txrp7awwu8-graph-ql-apis-for-browser-based-automation#before_you_begin)
-* [Query Harness GraphQL in Postman](https://docs.harness.io/article/txrp7awwu8-graph-ql-apis-for-browser-based-automation#query_harness_graph_ql_in_postman)
-* [Build Language-Specific Queries in Postman](https://docs.harness.io/article/txrp7awwu8-graph-ql-apis-for-browser-based-automation#build_language_specific_queries_in_postman)
-* [Use the Harness API in Your Web App](https://docs.harness.io/article/txrp7awwu8-graph-ql-apis-for-browser-based-automation#use_the_harness_api_in_your_web_app)
+* [Before You Begin](graph-ql-apis-for-browser-based-automation.md#before-you-begin)
+* [Query Harness GraphQL in Postman](graph-ql-apis-for-browser-based-automation.md#query-harness-graph-ql-in-postman)
+* [Build Language-Specific Queries in Postman](graph-ql-apis-for-browser-based-automation.md#build-language-specific-queries-in-postman)
+* [Use the Harness API in Your Web App](graph-ql-apis-for-browser-based-automation.md#use-the-harness-api-in-your-web-app)
 
 ### Before You Begin
 
-* [Harness API](/article/tm0w6rruqv-harness-api)
+* [Harness API](harness-api.md)
 
 ### Query Harness GraphQL in Postman
 
 This section shows how to transfer a GraphQL query from the [Harness API Explorer](#api_explorer) to Postman. You'll copy and paste your Harness account ID, [API Key](#/article/smloyragsm-api-keys), and the query itself.
 
-If you face CORS issues, use [Harness API in Your Web App](https://docs.harness.io/article/txrp7awwu8-graph-ql-apis-for-browser-based-automation#use_the_harness_api_in_your_web_app).
+If you face CORS issues, use [Harness API in Your Web App](graph-ql-apis-for-browser-based-automation.md#use-the-harness-api-in-your-web-app).
 
 ##### API Endpoint
 
@@ -37,7 +37,7 @@ https://app.harness.io/gateway/api/graphql?accountId=<your-harness-account-id>
 
 1. Copy your Harness account ID from your browser's address bar.
 2. In Postman, set up a **POST** request of this form, ending in your Harness account ID: `https://app.harness.io/gateway/api/graphql?accountId=<your-harness-account-id>`  
-For [on-prem installations](/article/gng086569h-harness-on-premise-versions), substitute your organization's subdomain and domain, in this form:  
+For [on-prem installations](https://docs.harness.io/article/gng086569h-harness-on-premise-versions), substitute your organization's subdomain and domain, in this form:  
 `https://harness.<your-domain>/gateway/api/graphql?accountId=<your-harness-account-id>\`  
   
 For example:  
@@ -45,14 +45,14 @@ For example:
 3. Select Postman's **Authorization** tab.
 4. Set the **Type** drop-down to **API Key**.
 5. In the resulting right panel, set the **Key** to `x-api-key`.
-6. From Harness Manager, copy your API key's value to your clipboard, as outlined in [API Keys](/article/smloyragsm-api-keys).
+6. From Harness Manager, copy your API key's value to your clipboard, as outlined in [API Keys](../../security/access-management-howtos/api-keys.md).
 7. In Postman's right panel, paste this value into the **Value** field. (Accept the **Add to: Header** default.)  
   
-Your Postman setup will now look something like this:![](https://files.helpdocs.io/kw8ldg1itf/other/1566264383880/image.png)
+Your Postman setup will now look something like this:![](./static/graph-ql-apis-for-browser-based-automation-23.png)
 8. In the [Harness API Explorer](#api_explorer), click **COPY** to grab your query.
 9. In Postman, select the **Body** tab > **GraphQL** radio button.
 10. Paste your query into Postman's **QUERY** box.
-11. Click **Send** to run the query. Verify the response in the response **Body** panel below.![](https://files.helpdocs.io/kw8ldg1itf/other/1566442263563/image.png)
+11. Click **Send** to run the query. Verify the response in the response **Body** panel below.![](./static/graph-ql-apis-for-browser-based-automation-24.png)
 
 You can also use this syntax (notice `-api`):
 
@@ -62,13 +62,15 @@ POST https://app.harness.io/gateway/api/graphql-api?accountId=<<account-id>>
 ```
 But you need to pass parameters in a different way:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/txrp7awwu8/1616428447246/image.png)### Build Language-Specific Queries in Postman
+![](./static/graph-ql-apis-for-browser-based-automation-25.png)
+
+### Build Language-Specific Queries in Postman
 
 Here is how to convert your query into your programming language of choice. We assume that you've already pasted your GraphQL query into Postman's **QUERY** box.
 
 1. In Postman, select the **raw** radio button (not the **GraphQL** radio button).
-2. Select Postman's **Code** tab.![](https://files.helpdocs.io/kw8ldg1itf/other/1566442342883/image.png)
-3. In the resulting **GENERATE CODE SNIPPETS** window, select your target language from the drop-down at upper left. This displays the generated snippet for that language.![](https://files.helpdocs.io/kw8ldg1itf/other/1566263963630/image.png)
+2. Select Postman's **Code** tab.![](./static/graph-ql-apis-for-browser-based-automation-26.png)
+3. In the resulting **GENERATE CODE SNIPPETS** window, select your target language from the drop-down at upper left. This displays the generated snippet for that language.![](./static/graph-ql-apis-for-browser-based-automation-27.png)
 4. Click **Copy to Clipboard**.
 5. Paste and verify the translated query in your chosen environment.
 
@@ -102,12 +104,12 @@ Body parameters are constructed as the form-data.
 
 |  |  |
 | --- | --- |
-| `query` | Specify a query. You can get a query using [Harness API Explorer](https://docs.harness.io/article/tm0w6rruqv-harness-api#api_explorer).For example,
+| `query` | Specify a query. You can get a query using [Harness API Explorer](harness-api.md#api-explorer).For example,
 ```
 query{applications(limit: 10) {nodes {name}}}
 ```
  |
-| `x-api-key` | Specify a unique identifier. For more information, see [API Keys](/article/smloyragsm-api-keys). |
+| `x-api-key` | Specify a unique identifier. For more information, see [API Keys](../../security/access-management-howtos/api-keys.md). |
 
 ##### Step: Use API in Your Web App
 
@@ -118,7 +120,7 @@ To build browser-based queries in Postman, perform the following steps:
 `https://app.harness.io/gateway/api/graphql?accountId=<<account-id>>`
 3. In Body tab of Postman select, **form-data**.
 4. Add `query` in the **KEY**.
-5. Add `x-api-key` in the **KEY** and set its value as the API key.![](https://files.helpdocs.io/kw8ldg1itf/articles/txrp7awwu8/1591373842447/screenshot-2020-06-05-at-9-47-06-pm.png)
+5. Add `x-api-key` in the **KEY** and set its value as the API key.![](./static/graph-ql-apis-for-browser-based-automation-28.png)
 6. Click **Send** to run the query. Verify the response in the response **Body** panel.
-7. Click **Code** to get code in different languages for the request.![](https://files.helpdocs.io/kw8ldg1itf/articles/txrp7awwu8/1591373952513/screenshot-2020-06-05-at-9-48-56-pm.png)
+7. Click **Code** to get code in different languages for the request.![](./static/graph-ql-apis-for-browser-based-automation-29.png)
 

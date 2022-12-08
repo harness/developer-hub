@@ -23,11 +23,13 @@ In this topic:
 
 The Install step is added in the Basic Workflow as part of its **Deploy Service** section.
 
-The Install step is used after the [Select Nodes step](/article/9h1cqaxyp9-select-nodes-workflow-step), which select the target nodes on which to run the Install step.
+The Install step is used after the [Select Nodes step](select-nodes-workflow-step.md), which select the target nodes on which to run the Install step.
 
 The following image shows the Install step in the deployed Workflow and its corresponding Service commands and scripts.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/2q8vjxdjcq/1598378385484/image.png)### Not Seeing the Install Step in a Workflow?
+![](./static/install-workflow-step-07.png)
+
+### Not Seeing the Install Step in a Workflow?
 
 Install commands are added in a Harness SSH Service, and then used in a Harness Workflow that uses the Service.
 
@@ -41,9 +43,9 @@ For SSH Services using the **Docker Image** artifact type, the Install command i
 
 To overcome this limitation, in the SSH Service using the Docker Image artifact type, click **Add Command**, and then select **Install** in **Command Type**.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/2q8vjxdjcq/1612914919416/image.png)Next, in the **Install** command you just added to the Service, click **Add**, and select a Docker script.
+![](./static/install-workflow-step-08.png)Next, in the **Install** command you just added to the Service, click **Add**, and select a Docker script.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/2q8vjxdjcq/1612915009687/image.png)Now, when you use this Service to a Workflow, the **Install** step is added to the Workflow.
+![](./static/install-workflow-step-09.png)Now, when you use this Service to a Workflow, the **Install** step is added to the Workflow.
 
 ### Name
 
@@ -66,5 +68,5 @@ You can use:
 
 ### Related Reference Material
 
-* [Select Nodes Workflow Step](/article/9h1cqaxyp9-select-nodes-workflow-step)
+* [Select Nodes Workflow Step](select-nodes-workflow-step.md)
 

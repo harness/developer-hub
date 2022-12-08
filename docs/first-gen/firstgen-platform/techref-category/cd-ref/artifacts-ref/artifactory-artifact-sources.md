@@ -38,7 +38,9 @@ Legend:
 | **Sources** | **Docker Image**(Kubernetes/Helm/TAS) | **AWS** **AMI** | **AWS CodeDeploy** | **AWS Lambda** | **JAR** | **RPM** | **TAR** | **WAR** | **ZIP** | **PCF** | **IIS** |
 | Artifactory | M |  | M | M | M | M | M | M | M | M | M |
 
-If you are new to using Artifactory as a Docker repo, see [Getting Started with Artifactory as a Docker Registry](https://www.jfrog.com/confluence/display/RTF6X/Getting+Started+with+Artifactory+as+a+Docker+Registry) from JFrog.### Artifactory Artifact Collection and Sync
+If you are new to using Artifactory as a Docker repo, see [Getting Started with Artifactory as a Docker Registry](https://www.jfrog.com/confluence/display/RTF6X/Getting+Started+with+Artifactory+as+a+Docker+Registry) from JFrog.
+
+### Artifactory Artifact Collection and Sync
 
 Harness artifact collection runs approximately every 2 mins.
 
@@ -70,7 +72,7 @@ See  [Repository Management](https://www.jfrog.com/confluence/display/JFROG/Rep
 
 Enter the credentials.
 
-For secrets and other sensitive settings, select or create a new  [Harness Encrypted Text secret](https://docs.harness.io/article/ygyvp998mu-use-encrypted-text-secrets).
+For secrets and other sensitive settings, select or create a new  [Harness Encrypted Text secret](../../../security/secrets-management/use-encrypted-text-secrets.md).
 
 Usage Scope is determined by the secret you selected.
 
@@ -86,13 +88,13 @@ You can enter a name or have Harness generate one for you automatically.
 
 #### Use Docker Format
 
-This option is in [TAS (PCF) Services](/article/6m7w43yw4u-pcf-tutorial-overview) only.Select this option if your artifact is a Docker image. Selecting this option changes the remaining settings.
+This option is in [TAS (PCF) Services](../../../../continuous-delivery/pcf-deployments/pcf-tutorial-overview.md) only.Select this option if your artifact is a Docker image. Selecting this option changes the remaining settings.
 
-See the [Add Container Images for PCF Deployments](/article/jxsna1a0mi-add-container-images-for-pcf-deployments).
+See the [Add Container Images for PCF Deployments](../../../../continuous-delivery/pcf-deployments/add-container-images-for-pcf-deployments.md).
 
 #### Source Server
 
-Select the name of the artifact source server you added in [Add Artifact Servers](/article/7dghbx1dbl-configuring-artifact-server). The format for the cloud-based Artifactory URL is https://*company\_name*.jfrog.io/*context*. For more information, see [Pushing and Pulling Images](https://www.jfrog.com/confluence/display/RTF/Docker+Registry#DockerRegistry-PushingandPullingImages) from JFrog.
+Select the name of the artifact source server you added in [Add Artifact Servers](../../../account/manage-connectors/configuring-artifact-server.md). The format for the cloud-based Artifactory URL is https://*company\_name*.jfrog.io/*context*. For more information, see [Pushing and Pulling Images](https://www.jfrog.com/confluence/display/RTF/Docker+Registry#DockerRegistry-PushingandPullingImages) from JFrog.
 
 #### Repository
 
@@ -106,7 +108,7 @@ Click in **Docker Image Name** and select or enter the name of the artifact you 
 
 Enter the name of the server from the `docker login` command. For example:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/gxv9gj6khz/1576783783511/image.png)If you don't see it, the API might have timed out. Enter its name and Harness will query for it.
+![](./static/artifactory-artifact-sources-06.png)If you don't see it, the API might have timed out. Enter its name and Harness will query for it.
 
 See [Configuring Docker Repositories](https://www.jfrog.com/confluence/display/RTF/Docker+Registry#DockerRegistry-ConfiguringDockerRepositories) from JFrog for more information. It describes the URLs for local, remote, and virtual repositories.
 

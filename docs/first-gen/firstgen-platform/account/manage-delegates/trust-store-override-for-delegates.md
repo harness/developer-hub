@@ -28,17 +28,17 @@ In this topic:
 
 ### Before You Begin
 
-* [Harness Delegate FAQs](/article/migeq3achl-harness-delegate-faqs)
-* [Harness Delegate Overview](/article/h9tkwmkrm7-delegate-installation)
-* [Install the Harness Docker Delegate](/article/hnvvwbhbdu-install-docker-delegate)
-* [Install the Harness Shell Script Delegate](/article/8o4cwqj1kv-install-shellscript-delegate)
-* [Install the Harness Kubernetes Delegate](/article/0hn6vdpeqz-install-kubernetes-delegate)
+* [Harness Delegate FAQs](https://docs.harness.io/article/migeq3achl-harness-delegate-faqs)
+* [Harness Delegate Overview](delegate-installation.md)
+* [Install the Harness Docker Delegate](install-docker-delegate.md)
+* [Install the Harness Shell Script Delegate](install-shellscript-delegate.md)
+* [Install the Harness Kubernetes Delegate](install-kubernetes-delegate.md)
 
 ### Required: Harness Trusted Certificate
 
 TLS/SSL communication between the Harness Delegate and Harness SaaS uses a certificate from the DigiCert Global Root CA:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/lb2cxxgak1/1636062222450/clean-shot-2021-11-04-at-14-43-32-2-x.png)For Delegates to communicate with Harness, this root CA certificate needs to be installed in the Delegate's truststore.
+![](./static/trust-store-override-for-delegates-00.png)For Delegates to communicate with Harness, this root CA certificate needs to be installed in the Delegate's truststore.
 
 The public key for the certificate is publicly available and can be downloaded. Here it is:
 
@@ -262,5 +262,5 @@ The Delegate will start and in a few moments you will see it listed in the **Ha
 
 ### See Also
 
-* [Add Self-Signed Certificates for Delegate Connections](/article/8bj3v5jqzk-add-self-signed-certificates-for-delegate-connections)
+* [Add Self-Signed Certificates for Delegate Connections](add-self-signed-certificates-for-delegate-connections.md)
 

@@ -28,15 +28,15 @@ In this topic:
 ### Before You Begin
 
 * See [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts).
-* See [Secrets Management Overview](https://docs.harness.io/article/au38zpufhr-secret-management).
+* See [Secrets Management Overview](secret-management.md).
 * Make sure you can generate TGT using `kinit` command on the machine where the Delegate is running. For more information about `kinit` command, see [kinit documentation](https://web.mit.edu/kerberos/krb5-1.12/doc/user/user_commands/kinit.html).
 
 ### Limitations
 
 There are some corner use cases which Harness does not support because of how Java and Python interact, and as a result of limitations in Windows:
 
-* The equals character (=) is not supported in the name of a Harness Service Config Variable or Environment Service Variable Override. See [Add Service Config Variables](/article/q78p7rpx9u-add-service-level-config-variables) and [Override a Service Configuration in an Environment](/article/4m2kst307m-override-service-files-and-variables-in-environments).
-* The underscore character (\_) is not supported in the working directory for Service Commands and their shell scripts. See [Create Default Application Directories and Variables](/article/lgg12f0yry-set-default-application-directories-as-variables) and [Use Script Based Services](/article/1329n00z5e-use-script-based-service).
+* The equals character (=) is not supported in the name of a Harness Service Config Variable or Environment Service Variable Override. See [Add Service Config Variables](../../../continuous-delivery/model-cd-pipeline/setup-services/add-service-level-config-variables.md) and [Override a Service Configuration in an Environment](../../../continuous-delivery/model-cd-pipeline/environments/override-service-files-and-variables-in-environments.md).
+* The underscore character (\_) is not supported in the working directory for Service Commands and their shell scripts. See [Create Default Application Directories and Variables](../../../continuous-delivery/model-cd-pipeline/applications/set-default-application-directories-as-variables.md) and [Use Script Based Services](../../../continuous-delivery/model-cd-pipeline/setup-services/use-script-based-service.md).
 * Harness has the same limitations as Windows environment variables. Harness treats all Service Config Variables and Environment Service Variable Overrides as Windows environment variables.
 * Non-UTF8 characters are not supported in Service Config Variables and Environment Service Variable Overrides. For example, `äöü!ÖÜÄéÊêÈèç`.
 * Harness has limited support for quotes in Service Config Variables and Environment Service Variable Overrides. A simple use such as `foo'bar` will work, but a complex combination of single quotes and other characters such as backslash (\) might not work.
@@ -114,9 +114,11 @@ In this example, the target host that you want to use Kerberos authentication wi
 
 Note that the domain name used to identify the hosts in the **Host Name(s)** field is likely to be the same as the domain name you entered in **Domain** when configuring the WinRM connection.
 
-The Host Name cannot be an IP address and it should be a domain name. The connection will not succeed if it is an IP address.### Step 9: Advanced Options
+The Host Name cannot be an IP address and it should be a domain name. The connection will not succeed if it is an IP address.
 
-See the Advanced Options settings in [Add WinRM Connection Credentials](/article/9fqa1vgar7-add-win-rm-connection-credentials).
+### Step 9: Advanced Options
+
+See the Advanced Options settings in [Add WinRM Connection Credentials](add-win-rm-connection-credentials.md).
 
 ### Step 10: Test the Connection
 

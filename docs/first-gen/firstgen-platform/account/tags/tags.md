@@ -10,27 +10,17 @@ helpdocs_is_published: true
 
 Harness enables you to provide metadata for organizing, searching, and filtering components. You add your metadata using Harness Tags. This topic explains how to create Tags, including guidelines and restrictions.
 
-In this topic:
-
-* [Before You Begin](#before_you_begin)
-* [Video Summary](#visual_summary)
-* [Review: Tag Guidelines](#tag_guidelines)
-* [Review: Tag Scope](#tag_scope)
-* [Step 1: Assign Required Permissions](#assign_permissions)
-* [Step 2: Add Tags](#add_tags)
-* [Option 1: Replace Tag Values](#replace_tag)
-* [Option 2: Remove Tags](#remove_tag)
-* [Next Steps](#next_steps)
-
 
 ### Before You Begin
 
-* See [Harness Key Concepts](/article/4o7oqwih6h-harness-key-concepts).
+* See [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts).
 
 
 ### Video Summary
 
 Here's a quick video demo of the process of creating and applying Tags in Harness.
+
+<docvideo src="https://www.youtube.com/embed/JiryB5tyY3o" />
 
 
 ### Review: Tag Guidelines
@@ -64,7 +54,7 @@ When the variable expression is evaluated by Harness, it does **not** need to me
 
 If a Tag uses a variable expression in its name or value, you cannot edit it in **Tags Management**. You must edit the Tag in a Workflow or Pipeline.
 
-For more information, see [Use Expressions in Workflow and Pipeline Tags](/article/285bu842gb-use-expressions-in-workflow-and-pipeline-tags).
+For more information, see [Use Expressions in Workflow and Pipeline Tags](use-expressions-in-workflow-and-pipeline-tags.md).
 
 #### Tag General Restrictions
 
@@ -107,44 +97,44 @@ Harness plans to add further tagging options.
 
 ### Step 1: Assign Required Permissions
 
-Your options for interacting with Tags depend on your Harness [User Group permissions](/article/ven0bvulsj-users-and-permissions), as follows:
+Your options for interacting with Tags depend on your Harness [User Group permissions](../../security/access-management-howtos/users-and-permissions.md), as follows:
 
 * All users can view Tags (and values) that have been applied to Applications and their components.
-* Users' [Application Permissions](/article/ven0bvulsj-users-and-permissions#application_permissions) determine their ability to apply, update, and remove Tags on specific Applications and Application components.
-* Users who have the [Account Permission:](/article/ven0bvulsj-users-and-permissions#account_permissions) **Manage Tags** can create Tag keys, impose Allowed Values on keys, and edit and delete keys.
+* Users' [Application Permissions](../../security/access-management-howtos/users-and-permissions.md#application-permissions) determine their ability to apply, update, and remove Tags on specific Applications and Application components.
+* Users who have the [Account Permission:](../../security/access-management-howtos/users-and-permissions.md#account-permissions) **Manage Tags** can create Tag keys, impose Allowed Values on keys, and edit and delete keys.
 
 #### Applying Tags
 
-Users who have appropriate [Application-level permissions](/article/ven0bvulsj-users-and-permissions#application_permissions) can add and modify Tags on the Harness Application components listed above under [Tag Scope](#tag_scope).
+Users who have appropriate [Application-level permissions](../../security/access-management-howtos/users-and-permissions.md#application-permissions) can add and modify Tags on the Harness Application components listed above under [Tag Scope](#tag_scope).
 
 
 ### Step 2: Add Tags
 
 To add a Tag to an Application or [supported](#tag_scope) Application component:
 
-1. Click into the Application or component to display its Overview card: **Application Overview**, **Environment Overview**, **Workflow Overview**, etc. Here, you can locate and click the **Add Tag** link:![](https://files.helpdocs.io/kw8ldg1itf/articles/nrxfix3i58/1564873361327/image.png)
+1. Click into the Application or component to display its Overview card: **Application Overview**, **Environment Overview**, **Workflow Overview**, etc. Here, you can locate and click the **Add Tag** link:![](./static/tags-00.png)
 
-1. In the resulting pop-up, select a key from the **Tag Name** drop-down:![](https://files.helpdocs.io/kw8ldg1itf/articles/nrxfix3i58/1564873625006/image.png)
-2. The **Tag Value** field can normally be left empty, or can accept a single free-form value (subject to Harness' restrictions on Tag values):![](https://files.helpdocs.io/kw8ldg1itf/articles/nrxfix3i58/1564874257456/image.png)However, if the tag has [Allowed Values](#allowed_values)—indicated by a **R**(estricted) symbol—you must select a value from the drop-down list, as shown below:![](https://files.helpdocs.io/kw8ldg1itf/articles/nrxfix3i58/1564874025537/image.png)
-3. Click **Submit** to add your Tag:![](https://files.helpdocs.io/kw8ldg1itf/articles/nrxfix3i58/1564874297730/image.png)Each applied Tag's key and value will now appear on the Application's or component's **Overview** card:![](https://files.helpdocs.io/kw8ldg1itf/articles/nrxfix3i58/1564874403935/image.png)
+1. In the resulting pop-up, select a key from the **Tag Name** drop-down:![](./static/tags-01.png)
+2. The **Tag Value** field can normally be left empty, or can accept a single free-form value (subject to Harness' restrictions on Tag values):![](./static/tags-02.png)However, if the tag has [Allowed Values](#allowed_values)—indicated by a **R**(estricted) symbol—you must select a value from the drop-down list, as shown below:![](./static/tags-03.png)
+3. Click **Submit** to add your Tag:![](./static/tags-04.png)Each applied Tag's key and value will now appear on the Application's or component's **Overview** card:![](./static/tags-05.png)
 
 
 ### Option 1: Replace Tag Values
 
 If you click **Add Tag**, and then select a **Tag Name** that has already been applied to this Application or component, you will see the error message shown below:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/nrxfix3i58/1564817894179/image.png)This is a reminder that each Tag can have only one value on a given Application or component. You can just click on the existing Tag to type (or select) a replacement **Tag Value**:
+![](./static/tags-06.png)This is a reminder that each Tag can have only one value on a given Application or component. You can just click on the existing Tag to type (or select) a replacement **Tag Value**:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/nrxfix3i58/1564875222815/image.png)Click **Submit** to update the tag's value.
+![](./static/tags-07.png)Click **Submit** to update the tag's value.
 
 
 ### Option 2: Remove Tags
 
-You can remove Tags from the same Applications and components where you have [Application Permissions](/article/ven0bvulsj-users-and-permissions#application_permissions) to add (attach) Tags. Simply click the Tag's **X** box, then respond to the confirmation message box shown below.
+You can remove Tags from the same Applications and components where you have [Application Permissions](../../security/access-management-howtos/users-and-permissions.md#application-permissions) to add (attach) Tags. Simply click the Tag's **X** box, then respond to the confirmation message box shown below.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/nrxfix3i58/1578087103634/image.png)There is no automatic undo. To restore a removed Tag, you will need to manually re-enter its key and value.
+![](./static/tags-08.png)There is no automatic undo. To restore a removed Tag, you will need to manually re-enter its key and value.
 ### Next Steps
 
-* [Apply Filters Using Tags](/article/nyxf7g8erd-apply-filters-using-tags)
-* [Manage Tags](/article/mzcpqs3hrl-manage-tags)
+* [Apply Filters Using Tags](apply-filters-using-tags.md)
+* [Manage Tags](manage-tags.md)
 

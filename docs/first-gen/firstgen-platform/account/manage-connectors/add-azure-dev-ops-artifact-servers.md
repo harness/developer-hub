@@ -22,13 +22,13 @@ The package types supported currently are NuGet and Maven.In this topic:
 
 ### Before You Begin
 
-* See [Harness Key Concepts](/article/4o7oqwih6h-harness-key-concepts).
+* See [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts).
 
 ### Visual Summary
 
 Here's a summary of Azure DevOps Artifact Server connection setup.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/7dghbx1dbl/1587760478190/image.png)The Azure Artifacts connection has the following settings.
+![](./static/add-azure-dev-ops-artifact-servers-08.png)The Azure Artifacts connection has the following settings.
 
 ### Step 1: Select Azure DevOps Artifact Server
 
@@ -58,11 +58,11 @@ Next, copy the token and paste it in the Harness Encrypted Text secret you use f
 
 The Personal Access Token must have the **Read** permission in **Packaging**.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/7dghbx1dbl/1576003690479/image.png)Click **Submit**.
+![](./static/add-azure-dev-ops-artifact-servers-09.png)Click **Submit**.
 
-Once you have added the Azure DevOps Artifact Server, you can use Azure DevOps Artifact feeds as Artifact Sources in Harness Services. See [Add an Azure DevOps Artifact Source](/article/rbfjmko1og-add-an-azure-dev-ops-artifact-source).
+Once you have added the Azure DevOps Artifact Server, you can use Azure DevOps Artifact feeds as Artifact Sources in Harness Services. See [Add an Azure DevOps Artifact Source](../../../continuous-delivery/model-cd-pipeline/setup-services/add-an-azure-dev-ops-artifact-source.md).
 
 ### Next Steps
 
-* See [Azure Deployments Overview](/article/kiuft72fr5-azure-deployments-overview).
+* See [Azure Deployments Overview](../../../continuous-delivery/azure-deployments/aks-howtos/azure-deployments-overview.md).
 

@@ -12,15 +12,15 @@ This topic provides examples of how to get Services information using APIs.
 
 In this topic:
 
-* [Before You Begin](https://docs.harness.io/article/lbw6cny911-use-services-api#undefined)
-* [Fetch the List of Services for a Given Application](https://docs.harness.io/article/lbw6cny911-use-services-api#undefined)
-* [Show Services for a Given Application](https://docs.harness.io/article/lbw6cny911-use-services-api#show_services_for_a_given_application)
+* [Before You Begin](use-services-api.md#undefined)
+* [Fetch the List of Services for a Given Application](use-services-api.md#undefined)
+* [Show Services for a Given Application](use-services-api.md#show-services-for-a-given-application)
 
 ### Before You Begin
 
-* [​Introduction to Harness GraphQL API](/article/tm0w6rruqv-harness-api)
-* [Harness API Explorer](/article/2rmd5i0e0h-harness-api-explorer)
-* [API Schema and Structure](/article/kn8wsu80n4-api-schema-and-structure)
+* [​Introduction to Harness GraphQL API](harness-api.md)
+* [Harness API Explorer](harness-api-explorer.md)
+* [API Schema and Structure](api-schema-and-structure.md)
 
 ### Fetch the List of Services for a Given Application
 

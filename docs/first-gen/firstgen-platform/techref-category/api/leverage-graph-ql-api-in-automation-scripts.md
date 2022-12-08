@@ -16,13 +16,13 @@ This topic uses a sample automation script to collect the execution data of a Ku
 
 In this topic:
 
-* [Review: Use Cases](https://docs.harness.io/article/0b4s6mhpxn-leverage-graph-ql-api-in-automation-scripts#review_use_cases)
-* [Pre-requisites](https://docs.harness.io/article/0b4s6mhpxn-leverage-graph-ql-api-in-automation-scripts#pre_requisites)
-* [Step 1: Fetch the Required Information](https://docs.harness.io/article/0b4s6mhpxn-leverage-graph-ql-api-in-automation-scripts#step_1_fetch_the_required_information)
-* [Step 2: Build a Script](https://docs.harness.io/article/0b4s6mhpxn-leverage-graph-ql-api-in-automation-scripts#step_2_build_a_script)
-* [Step 3: Use the Automation Script in Your CI Tool](https://docs.harness.io/article/0b4s6mhpxn-leverage-graph-ql-api-in-automation-scripts#step_3_use_the_automation_script_in_your_ci_tool)
-* [Gather Deployment Execution Details](https://docs.harness.io/article/0b4s6mhpxn-leverage-graph-ql-api-in-automation-scripts#gather_deployment_execution_details)
-* [Summary](https://docs.harness.io/article/0b4s6mhpxn-leverage-graph-ql-api-in-automation-scripts#summary)
+* [Review: Use Cases](leverage-graph-ql-api-in-automation-scripts.md#review-use-cases)
+* [Pre-requisites](leverage-graph-ql-api-in-automation-scripts.md#pre-requisites)
+* [Step 1: Fetch the Required Information](leverage-graph-ql-api-in-automation-scripts.md#step-1-fetch-the-required-information)
+* [Step 2: Build a Script](leverage-graph-ql-api-in-automation-scripts.md#step-2-build-a-script)
+* [Step 3: Use the Automation Script in Your CI Tool](leverage-graph-ql-api-in-automation-scripts.md#step-3-use-the-automation-script-in-your-ci-tool)
+* [Gather Deployment Execution Details](leverage-graph-ql-api-in-automation-scripts.md#gather-deployment-execution-details)
+* [Summary](leverage-graph-ql-api-in-automation-scripts.md#summary)
 
 ### Review: Use Cases
 
@@ -32,21 +32,23 @@ In this topic:
 
 ### Pre-requisites
 
-* Harness API Key. For more information, see [API Keys](/article/smloyragsm-api-keys).
-* A working query. You can test your queries in [Harness API Explorer](/article/2rmd5i0e0h-harness-api-explorer) and port it to Postman or Insomnia to test and generate the code. Then build curl commands or clients to interact with [Harness API](/article/tm0w6rruqv-harness-api).
+* Harness API Key. For more information, see [API Keys](../../security/access-management-howtos/api-keys.md).
+* A working query. You can test your queries in [Harness API Explorer](harness-api-explorer.md) and port it to Postman or Insomnia to test and generate the code. Then build curl commands or clients to interact with [Harness API](harness-api.md).
 * CI job that calls out to Harness and triggers a deployment.
 
 ### Step 1: Fetch the Required Information
 
 You need to fetch the following information:
 
-* [Application ID and name](https://docs.harness.io/article/0b4s6mhpxn-leverage-graph-ql-api-in-automation-scripts#request_fetch_application_id)
-* [Pipeline ID of the Application](https://docs.harness.io/article/0b4s6mhpxn-leverage-graph-ql-api-in-automation-scripts#request_fetch_pipeline_id)
-* [Pipeline execution status based on the selected ID](https://docs.harness.io/article/0b4s6mhpxn-leverage-graph-ql-api-in-automation-scripts#request_fetch_pipeline_execution_status)
+* [Application ID and name](leverage-graph-ql-api-in-automation-scripts.md#request-fetch-application-id)
+* [Pipeline ID of the Application](leverage-graph-ql-api-in-automation-scripts.md#request-fetch-pipeline-id)
+* [Pipeline execution status based on the selected ID](leverage-graph-ql-api-in-automation-scripts.md#request-fetch-pipeline-execution-status)
 
 Use the following query to fetch the Application ID.
 
-This scenario is using the **Guestbook Application** as an example.##### Request: Fetch the Application ID
+This scenario is using the **Guestbook Application** as an example.
+
+##### Request: Fetch the Application ID
 
 
 ```
@@ -219,7 +221,7 @@ The following Pipelines are associated with this Application:
 * Rancher Guestbook Cluster Pipeline
 * Deploy Guestbook
 
-Provide Deploy Guestbook's Pipeline ID in the following [query](https://docs.harness.io/article/0b4s6mhpxn-leverage-graph-ql-api-in-automation-scripts#request_fetch_the_pipeline_execution_status):
+Provide Deploy Guestbook's Pipeline ID in the following [query](leverage-graph-ql-api-in-automation-scripts.md#request-fetch-the-pipeline-execution-status):
 
 ##### Request: Fetch the Pipeline Execution Status
 
@@ -264,7 +266,7 @@ The last Pipeline execution deployment is displayed in epoch time.
 
 ### Step 2: Build a Script
 
-Here is a sample script that runs the curl command and allows you to check deployment status in the CI tool using an account ID (`<YOUR_ACCOUNT_ID>`) and Harness [API key](/article/smloyragsm-api-keys) (`<API_KEY>`).
+Here is a sample script that runs the curl command and allows you to check deployment status in the CI tool using an account ID (`<YOUR_ACCOUNT_ID>`) and Harness [API key](../../security/access-management-howtos/api-keys.md) (`<API_KEY>`).
 
 
 ```
@@ -285,7 +287,7 @@ curl 'https://app.harness.io/gateway/api/graphql?accountId=<YOUR_ACCOUNT_ID>' \
 
 You can use the automation script in your CI Tool.
 
-1. Click **Manual Trigger** to get the curl details. For more information, see [Manual Triggers and Git Webhooks](https://docs.harness.io/article/xerirloz9a-add-a-trigger-2#manual_triggers_and_git_webhooks).![](https://files.helpdocs.io/kw8ldg1itf/articles/0b4s6mhpxn/1620840084062/nq-1-m-3-us-hvqbvf-csc-d-6-iu-sowsvfir-ilpeb-e-6-xys-6-vt-vm-9-bom-1-wl-dv-8-add-gs-a-y-4-j-rcl-1-iu-rwl-mu-ka-sigy-498-eje-ro-hm-8-iib-szgh-lmn-oekf-4-d-5-ismjred-rwil-6-ihk-edn-1-rn-q-6-g-0)
+1. Click **Manual Trigger** to get the curl details. For more information, see [Manual Triggers and Git Webhooks](../../../continuous-delivery/model-cd-pipeline/triggers/add-a-trigger-2.md#manual-triggers-and-git-webhooks).![](./static/leverage-graph-ql-api-in-automation-scripts-20.png)
 2. Enter the curl Webhook payload from your Pipeline Trigger in Harness.
 3. Place that Trigger into the desired step in your CI Pipeline.
 4. Let your Pipeline trigger the Query Script.  
@@ -300,7 +302,9 @@ A result like this is displayed in your `output.json`.
 
 Here is a sample CI flow:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/0b4s6mhpxn/1594619803271/screenshot-2020-07-13-at-11-11-30-am.png)### Gather Deployment Execution Details
+![](./static/leverage-graph-ql-api-in-automation-scripts-21.png)
+
+### Gather Deployment Execution Details
 
 Harness GraphQL API allows you to gather deployment execution details for the last twenty-four hours and pass that information in JSON format.
 

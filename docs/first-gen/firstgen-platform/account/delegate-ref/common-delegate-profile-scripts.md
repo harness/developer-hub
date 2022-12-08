@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 You can use the delegate`INIT_SCRIPT` environment variable to run startup scripts on the host, container, or pod on installation or restart.
 
-For information on using the`INIT_SCRIPT` environment variable to run scripts, see [Run Initialization Scripts on Delegates](/article/ul6qktixip-run-initialization-scripts-on-delegates).
+For information on using the`INIT_SCRIPT` environment variable to run scripts, see [Run Initialization Scripts on Delegates](../manage-delegates/run-initialization-scripts-on-delegates.md).
 
 This topic provides information on script availability and some common delegate scripts you can declare in the`INIT_SCRIPT` environment variable.
 
@@ -80,7 +80,7 @@ terragrunt --version
 
 Use the following script to install Helm 2 and Tiller in the delegate cluster:
 
-If you are using remote Helm charts with your Harness Kubernetes Service, use the `helm init --client-only` option. For more information, see [Helm charts](/article/t6zrgqq0ny-kubernetes-services#helm_charts).
+If you are using remote Helm charts with your Harness Kubernetes Service, use the `helm init --client-only` option. For more information, see [Helm charts](https://docs.harness.io/article/t6zrgqq0ny-kubernetes-services#helm_charts).
 ```
 # Add the Helm version that you want to install  
 HELM_VERSION=v2.14.0  
@@ -106,7 +106,7 @@ helm init --client-only
 ```
 kubectl config current-context cluster_name
 ```
-If you are using TLS for communication between Helm and Tiller, ensure that you use the `--tls` parameter with your commands. For more information, see **Command Flags** in [Helm Deploy step](/article/m8ra49bqd5-4-helm-workflows) in the Helm Deployment guide, and see  [Using SSL Between Helm and Tiller](https://docs.helm.sh/using_helm/#using-ssl-between-helm-and-tiller) from Helm, and the section **Securing your Helm Installation** in that document.Here is an example of how to add a Helm chart from a private repo using secrets `repoUsername` and `repoPassword` from Harness [Secrets Management](/article/au38zpufhr-secret-management).
+If you are using TLS for communication between Helm and Tiller, ensure that you use the `--tls` parameter with your commands. For more information, see **Command Flags** in [Helm Deploy step](../../../continuous-delivery/helm-deployment/4-helm-workflows.md) in the Helm Deployment guide, and see  [Using SSL Between Helm and Tiller](https://docs.helm.sh/using_helm/#using-ssl-between-helm-and-tiller) from Helm, and the section **Securing your Helm Installation** in that document.Here is an example of how to add a Helm chart from a private repo using secrets `repoUsername` and `repoPassword` from Harness [Secrets Management](../../security/secrets-management/secret-management.md).
 
 
 ```
@@ -127,7 +127,7 @@ helm repo update
 
 You do not need to use the `INIT_SCRIPT` environment variable for Helm 3. Harness provides support for Helm 3 for delegates that connect to the target Kubernetes cluster.
 
-For more information, see [Upgrade to Helm 3 Charts in Kubernetes Services](/article/lk57k7irla-upgrade-to-helm-3-charts-in-kubernetes-services) and [Upgrade Native Helm 2 Deployments to Helm 3](/article/cqidzwbzaa-upgrade-native-helm-2-deployments-to-helm-3).
+For more information, see [Upgrade to Helm 3 Charts in Kubernetes Services](../../../continuous-delivery/kubernetes-deployments/upgrade-to-helm-3-charts-in-kubernetes-services.md) and [Upgrade Native Helm 2 Deployments to Helm 3](../../../continuous-delivery/helm-deployment/upgrade-native-helm-2-deployments-to-helm-3.md).
 
 ### Pip
 
@@ -193,7 +193,7 @@ git --version
 ```
 ### Cloud Foundry CLI
 
-Harness supports Cloud Foundry CLI version 6 only. Support for version 7 is pending.See [Install Cloud Foundry CLI Versions on the Harness Delegate](/article/8tsb75aldu-install-cloud-foundry-cli-6-and-7-on-harness-delegates).
+Harness supports Cloud Foundry CLI version 6 only. Support for version 7 is pending.See [Install Cloud Foundry CLI Versions on the Harness Delegate](../../../continuous-delivery/pcf-deployments/install-cloud-foundry-cli-6-and-7-on-harness-delegates.md).
 
 ### Docker Installation
 
@@ -204,7 +204,9 @@ To install Docker on the Delegate, use the following script:
 apt-get update  
 apt-get install -y apt-utils dnsutils docker
 ```
-Ensure that you run `apt-get update` before running any `apt-get` commands.### PowerShell
+Ensure that you run `apt-get update` before running any `apt-get` commands.
+
+### PowerShell
 
 You can run PowerShell scripts on a Harness Delegate, even though the Delegate must be run on Linux. Linux supports PowerShell using [PowerShell core](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-core-on-windows?view=powershell-7).
 
@@ -235,5 +237,5 @@ If apt-get is not installed on your Delegate host, you can use snap (`snap insta
 
 ### Import a Self-Signed Certificate
 
-See [Add Self-Signed Certificates for Delegate Connections](/article/8bj3v5jqzk-add-self-signed-certificates-for-delegate-connections).
+See [Add Self-Signed Certificates for Delegate Connections](../manage-delegates/add-self-signed-certificates-for-delegate-connections.md).
 

@@ -8,26 +8,16 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](/article/1fjmm4by22). Switch to [NextGen](/article/r5ytrnpcgr-audit-trail).Harness provides auditing of events for many Harness account, Applications, and Application components. The Audit Trail enables you to track and review all events in one place.
+This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../../platform/15_Audit-Trail/audit-trail.md).Harness provides auditing of events for many Harness account, Applications, and Application components. The Audit Trail enables you to track and review all events in one place.
 
-This topic covers:
+The Audit Trail feature covers events in accounts and Applications. To see your deployment history use Harness Manager's **Continuous Deployment**. See [Filtering Deployments](../../../continuous-delivery/concepts-cd/deployments-overview/filtering-deployments.md).
 
-* [Video Summary](https://docs.harness.io/article/kihlcbcnll-audit-trail#video_summary)
-* [Before You Begin](https://docs.harness.io/article/kihlcbcnll-audit-trail#before_you_begin)
-* [Limitations](https://docs.harness.io/article/kihlcbcnll-audit-trail#limitations)
-* [View an Audit Trail](https://docs.harness.io/article/kihlcbcnll-audit-trail#view_an_audit_trail)
-* [Modify the Audit Trail View](https://docs.harness.io/article/kihlcbcnll-audit-trail#modify_the_audit_trail_view)
-	+ [Set Date/Time Range](https://docs.harness.io/article/kihlcbcnll-audit-trail#set_date_time_range)
-	+ [Filter Audit Events](https://docs.harness.io/article/kihlcbcnll-audit-trail#filter_audit_events)
-	+ [Update or Save Filters](https://docs.harness.io/article/kihlcbcnll-audit-trail#update_or_save_filters)
-* [View Audit Trail Event Details](https://docs.harness.io/article/kihlcbcnll-audit-trail#view_audit_trail_event_details)
-
-The Audit Trail feature covers events in accounts and Applications. To see your deployment history use Harness Manager's **Continuous Deployment**. See [Filtering Deployments](/article/lbiv3zwwm0-filtering-deployments).### Video Summary
+### Video Summary
 
 ### Before You Begin
 
-* [Users and Permissions](/article/ven0bvulsj-users-and-permissions)
-* [Application Components](/article/bucothemly-application-configuration)
+* [Users and Permissions](../access-management-howtos/users-and-permissions.md)
+* [Application Components](../../../continuous-delivery/model-cd-pipeline/applications/application-configuration.md)
 
 ### Limitations
 
@@ -38,7 +28,7 @@ The Audit Trail feature covers events in accounts and Applications. To see your 
 
 To view your account's audit trail: From Harness Manager, select **Continuous Security** **>** **Audit Trail**. The **Audit Trail** page appears, displaying a record for each event that changed the setup of your Harness account, Applications, or Application components.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/bl4f6khn4z/1561680384147/image.png)For each event record, this view shows the:
+![](./static/audit-trail-00.png)For each event record, this view shows the:
 
 * Date and time.
 * User who made the change (**Updated By**).
@@ -56,13 +46,15 @@ You can restrict the Audit Trail's displayed events by date and time, or define 
 
 Use the Date Picker to restrict events to a predefined date range, or to a custom date/time range:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/qy3g5irh5j/1559944203461/image.png)Selecting **Custom Date Range** enables you to set arbitrary limits by date and time of day:
+![](./static/audit-trail-01.png)Selecting **Custom Date Range** enables you to set arbitrary limits by date and time of day:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/qy3g5irh5j/1559946086698/image.png)#### Filter Audit Events
+![](./static/audit-trail-02.png)
+
+#### Filter Audit Events
 
 Click the Filter button to open a dialog where you can set multiple conditions on the events displayed:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/bl4f6khn4z/1561745296033/image.png)This dialog provides the following options. Your selections are cumulative—they combine to restrict the Audit Trail's display:
+![](./static/audit-trail-03.png)This dialog provides the following options. Your selections are cumulative—they combine to restrict the Audit Trail's display:
 
 
 
@@ -87,11 +79,13 @@ After making selections in this dialog:
 * Use the **Clear All** link to reset the whole dialog.
 * Click **APPLY** to immediately filter the Audit Trail's displayed events according to your selections.
 
-Once you've applied a filter, you can share your filtered view of the Audit Trail with other Harness users by copying its URL from your browser's address bar.#### Update or Save Filters
+Once you've applied a filter, you can share your filtered view of the Audit Trail with other Harness users by copying its URL from your browser's address bar.
+
+#### Update or Save Filters
 
 Once you've applied any filters to the Audit Trail display, controls along the top allow you to update, remove, or save your filter selections:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/bl4f6khn4z/1561746817380/image.png)* To remove a single filter from the Audit Trail display, click its **X** box.
+![](./static/audit-trail-04.png)* To remove a single filter from the Audit Trail display, click its **X** box.
 * To remove all filters, click **Reset**. (There is no undo for this action.)
 * To name and save your current set of filters, click **Save Filter**. (Saved filters will appear on the Filter button's submenu.)
 * To fine-tune filters, click the Filter button. (This reopens the **Audit Trail Filter** dialog with your current filter settings.)
@@ -112,4 +106,4 @@ Within each of the Audit Trail's events, you can click links to display further 
 
 As shown in the example below, the resulting diff view indicates deletions and insertions in the underlying YAML.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/kihlcbcnll/1605823916645/image.png)
+![](./static/audit-trail-05.png)

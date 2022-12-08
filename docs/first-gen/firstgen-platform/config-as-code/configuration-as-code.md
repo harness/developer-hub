@@ -23,21 +23,23 @@ Using the Harness code editor, you can set up and manage accounts for artifact s
 
 Here is the same Harness Workflow in the Harness GUI, Harness code editor, and a Git repo.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/htvzryeqjw/1541459754650/image.png)### Before You Begin
+![](./static/configuration-as-code-40.png)
 
-* if you're trying to resolve git sync issues, see [Diagnose Git Sync Errors](/article/0ralbeajno-diagnose-git-errors).
-* Connect your Git provider to Harness using the steps in [Add Source Repo Providers](/article/ay9hlwbgwa-add-source-repo-providers).
-* Trigger Harness Workflow and Pipeline execution from Git using Harness Triggers. See [Manual Triggers and Git Webhooks](https://docs.harness.io/article/xerirloz9a-add-a-trigger-2#manual_triggers_and_git_webhooks) and [File-based Repo Triggers](/article/xerirloz9a-add-a-trigger-2#file_based_repo_triggers).
+### Before You Begin
 
-Currently, [YAML-based Triggers](https://docs.harness.io/article/21kgaw4h86-harness-yaml-code-reference#triggers) are behind the feature flag `TRIGGER_YAML`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.Review the [Harness YAML Code Reference](/article/21kgaw4h86-harness-yaml-code-reference).
+* if you're trying to resolve git sync issues, see [Diagnose Git Sync Errors](https://docs.harness.io/article/0ralbeajno-diagnose-git-errors).
+* Connect your Git provider to Harness using the steps in [Add Source Repo Providers](../account/manage-connectors/add-source-repo-providers.md).
+* Trigger Harness Workflow and Pipeline execution from Git using Harness Triggers. See [Manual Triggers and Git Webhooks](../../continuous-delivery/model-cd-pipeline/triggers/add-a-trigger-2.md#manual-triggers-and-git-webhooks) and [File-based Repo Triggers](../../continuous-delivery/model-cd-pipeline/triggers/add-a-trigger-2.md#file-based-repo-triggers).
+
+Currently, [YAML-based Triggers](../techref-category/configuration-as-code-yaml/harness-yaml-code-reference.md#triggers) are behind the feature flag `TRIGGER_YAML`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.Review the [Harness YAML Code Reference](../techref-category/configuration-as-code-yaml/harness-yaml-code-reference.md).
 
 ### Sync Scenarios Overview
 
 Here is a visual summary of Git to Harness sync:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/htvzryeqjw/1586048059575/image.png)Here is a visual summary of Harness to Git sync:
+![](./static/configuration-as-code-41.png)Here is a visual summary of Harness to Git sync:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/htvzryeqjw/1586048049899/image.png)The following table provides an overview of the sync scenarios and how to configure them.
+![](./static/configuration-as-code-42.png)The following table provides an overview of the sync scenarios and how to configure them.
 
 
 
@@ -50,13 +52,15 @@ Here is a visual summary of Git to Harness sync:
 | Stop using a Source Repo provider with an application. | In the **Git Sync** setting for the application, click **DELINK**. |
 | Have the Source Repo Provider sync bidirectionally with the Git repo, but have an application using that Source Repo Provider only sync unidirectionally. | This is not available. |
 
-Repo and brach names may not contain characters from the Emoticons unicode block.### Rapid Development with Harness and Git
+Repo and brach names may not contain characters from the Emoticons unicode block.
+
+### Rapid Development with Harness and Git
 
 One of the advantages with Harness Git integration is the ability to clone or duplicate a Harness Application entity quickly in the Git repo, and then have the cloned entity show up in the Harness platform. For example, you can clone a Harness Environment in the Harness GUI using the **Clone** button.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/htvzryeqjw/1541548890394/image.png)But if you wish to make several copies, this can be time-consuming in the GUI.
+![](./static/configuration-as-code-43.png)But if you wish to make several copies, this can be time-consuming in the GUI.
 
-With Harness GitOps, you can simply duplicate the environment folder in Git, give the duplicate folder a unique name, and push it to the origin. The new environment will appear in Harness. For more information, see [Harness GitOps](https://docs.harness.io/category/goyudf2aoh-harness-gitops).
+With Harness GitOps, you can simply duplicate the environment folder in Git, give the duplicate folder a unique name, and push it to the origin. The new environment will appear in Harness. For more information, see [Harness GitOps](https://docs.harness.io/category/harness-git-based-how-tos).
 
 ### Using RBAC for YAML Files
 
@@ -64,7 +68,7 @@ You manage Harness User permissions using Account and Application permissions in
 
 The same Account and Application permissions apply to both the Harness Manager UI and Configure as Code YAML files.
 
-For more information on how to manage RBAC, see [Managing Users and Groups (RBAC)](/article/ven0bvulsj-users-and-permissions).
+For more information on how to manage RBAC, see [Managing Users and Groups (RBAC)](../security/access-management-howtos/users-and-permissions.md).
 
 #### Harness User Group Account Permissions
 
@@ -73,7 +77,7 @@ To manage Configuration as Code, a Harness User must be a member of a User Group
 * Manage Config as Code
 * Manage Applications
 
-See [Managing Users and Groups (RBAC)](/article/ven0bvulsj-users-and-permissions).
+See [Managing Users and Groups (RBAC)](../security/access-management-howtos/users-and-permissions.md).
 
 #### Harness Entity YAML Files
 
@@ -108,8 +112,8 @@ Harness handles such scenarios through Git Polling. Every five minutes, it start
 
 ### Next Steps
 
-* [Harness Account-Level Git Sync](/article/apiwdqngvz-harness-account-level-sync)
-* [Harness Application-Level Git Sync](/article/6mr74fm55h-harness-application-level-sync)
-* [Edit Harness Components as YAML](/article/r5vya3dlt0-edit-the-code-in-harness)
-* [Delink Git Sync](/article/r8qvurlqiy-delink-git-sync)
+* [Harness Account-Level Git Sync](harness-account-level-sync.md)
+* [Harness Application-Level Git Sync](harness-application-level-sync.md)
+* [Edit Harness Components as YAML](edit-the-code-in-harness.md)
+* [Delink Git Sync](delink-git-sync.md)
 

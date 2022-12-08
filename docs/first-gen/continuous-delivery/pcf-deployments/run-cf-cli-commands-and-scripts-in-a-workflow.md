@@ -50,7 +50,7 @@ These variables appear when you type `${service` in **Script**:
 
 ![](./static/run-cf-cli-commands-and-scripts-in-a-workflow-39.png)
 
-Environment Service Overrides, such as [Tanzu Manifest Overrides](override-pcf-manifests-and-config-variables-and-files.md), do not apply to or override the `${service.manifest}` variable. The `${service.manifest}` variable only looks in the Harness Service.You can also use variables in your script to templatize paths to manifest files. For example, if your Workflow Environment were templatized (see  [Template a Workflow](https://docs.harness.io/article/m220i1tnia-workflow-configuration#template_a_workflow)), you can use the Environment variable `${env.name}` in your path, like this:
+Environment Service Overrides, such as [Tanzu Manifest Overrides](override-pcf-manifests-and-config-variables-and-files.md), do not apply to or override the `${service.manifest}` variable. The `${service.manifest}` variable only looks in the Harness Service.You can also use variables in your script to templatize paths to manifest files. For example, if your Workflow Environment were templatized (see  [Template a Workflow](../model-cd-pipeline/workflows/workflow-configuration.md#template-a-workflow)), you can use the Environment variable `${env.name}` in your path, like this:
 
 `${service.manifest.repoRoot}/${env.name}/vars.yml`
 
@@ -64,7 +64,7 @@ Harness checks out manifest files from your repo at deployment runtime. If any f
 
 Ensure that the Harness Delegate(s) used for your deployment have the correct version of the CF CLI installed. See [Install Cloud Foundry CLI Versions on the Harness Delegate](install-cloud-foundry-cli-6-and-7-on-harness-delegates.md).In order for the commands in your script to execute, the Harness Delegate(s) running the script must have the CF CLI and any related CF plugins installed.
 
-Unless all of your Harness Delegates have the CF CLI and CF plugins installed, you can refer to the specific Delegates using [Delegate Selectors](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation#delegate_selectors).
+Unless all of your Harness Delegates have the CF CLI and CF plugins installed, you can refer to the specific Delegates using [Delegate Selectors](../../firstgen-platform/account/manage-delegates/delegate-installation.md#delegate-selectors).
 
 In **Run only on delegates having the following selectors**, add the Delegate Selector(s) for the Delegates with the CF CLI and CF plugins installed.
 

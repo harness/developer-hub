@@ -12,26 +12,26 @@ You can upload encrypted files and reference them across your account in the sam
 
 In this topic:
 
-* [Before You Begin](https://docs.harness.io/article/nt5vchhka4-use-encrypted-file-secrets#before_you_begin)
-* [Step 1: Add Encrypted File](https://docs.harness.io/article/nt5vchhka4-use-encrypted-file-secrets#step_1_add_encrypted_file)
-* [Step 2: Reference the Encrypted File](https://docs.harness.io/article/nt5vchhka4-use-encrypted-file-secrets#step_2_reference_the_encrypted_file)
+* [Before You Begin](use-encrypted-file-secrets.md#before-you-begin)
+* [Step 1: Add Encrypted File](use-encrypted-file-secrets.md#step-1-add-encrypted-file)
+* [Step 2: Reference the Encrypted File](use-encrypted-file-secrets.md#step-2-reference-the-encrypted-file)
 * [Review: Encrypted Files Must be Added to a Service](#review_encrypted_files_must_be_added_to_a_service)
-* [Review: File Secrets in Outputs](https://docs.harness.io/article/nt5vchhka4-use-encrypted-file-secrets#review_file_secrets_in_outputs)
+* [Review: File Secrets in Outputs](use-encrypted-file-secrets.md#review-file-secrets-in-outputs)
 
 ### Before You Begin
 
-* See [Harness Key Concepts](/article/4o7oqwih6h-harness-key-concepts).
-* Make sure you add the required Secrets Manager. See [Add a Secrets Manager](/article/uuer539u3l-add-a-secrets-manager).
+* See [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts).
+* Make sure you add the required Secrets Manager. See [Add a Secrets Manager](add-a-secrets-manager.md).
 
 ### Step 1: Add Encrypted File
 
 1. In **Secrets Management**, click **Encrypted Files**.
-2. Click **Add Encrypted File**. The **Add Encrypted File** dialog appears.![](https://files.helpdocs.io/kw8ldg1itf/articles/4vqipye0vz/1580802694901/image.png)
+2. Click **Add Encrypted File**. The **Add Encrypted File** dialog appears.![](./static/use-encrypted-file-secrets-28.png)
 3. Select the secrets manager you will use to encrypt this file.
 4. Enter a name for the encrypted file. This is the name you will use to reference the file in application entities.
 5. Click **Choose File**, and locate and add a file. The default Secrets Manager for your account is used to encrypt the file.
 6. **Scope to Account** - If your Harness User account is part of a User Group with the **Administer Other Account Functions** permission enabled, you will see the **Scope to Account** option. Select **Scope to Account** to make this encrypted file secret available to Delegate Profile scripts only. Only secrets scoped to the account are available to use in Delegate Profiles.
-7. For **Usage Scope**, see [Restrict Secrets Usage](/article/e5q9qcho4y-restrict-secrets-usage).
+7. For **Usage Scope**, see [Restrict Secrets Usage](restrict-secrets-usage.md).
 8. Click **SUBMIT**.
 
 ### Step 2: Reference the Encrypted File
@@ -40,7 +40,9 @@ When you are in an application entity that uses files, you can reference the enc
 
 For example, in the following **Configuration File** dialog, click **Encrypt File** and the **File** dropdown lets you choose the file you added in **Secrets Management**:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/au38zpufhr/1534805540009/image.png)### Review: Encrypted Files Must be Added to a Service
+![](./static/use-encrypted-file-secrets-29.png)
+
+### Review: Encrypted Files Must be Added to a Service
 
 To use Encrypted Files, you must add them to a Service. 
 
@@ -96,7 +98,7 @@ this is a file secret
   
 Command completed with ExitCode (0)
 ```
-For information on adding Encrypted Files to a Service, see [Config Files](https://docs.harness.io/article/eb3kfl8uls-service-configuration#config_files).
+For information on adding Encrypted Files to a Service, see [Config Files](../../../continuous-delivery/model-cd-pipeline/setup-services/service-configuration.md#config-files).
 
 #### Do Not Echo File Secrets
 
@@ -135,5 +137,5 @@ EOF
 
 File secrets are not masked in Harness logs. As noted above they can be encoded in different formats, but they are not masked from users.
 
-See [Secrets and Log Sanitization](/article/o5ec7vvtju-secrets-and-log-sanitization).
+See [Secrets and Log Sanitization](../../techref-category/techref-security/secrets-and-log-sanitization.md).
 

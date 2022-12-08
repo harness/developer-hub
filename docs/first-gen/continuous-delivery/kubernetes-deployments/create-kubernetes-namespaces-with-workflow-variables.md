@@ -23,7 +23,7 @@ A value for the namespace Workflow variable can be provided manually or in respo
 
 ### Step 1: Create the Workflow Variable
 
-1. Create a Workflow variable. For steps on create a Workflow variable, see [Workflows](https://docs.harness.io/article/m220i1tnia-workflow-configuration).
+1. Create a Workflow variable. For steps on create a Workflow variable, see [Workflows](../model-cd-pipeline/workflows/workflow-configuration.md).
 
 For example, we'll name the variable `namespace`. and give it three allowed values: `qa,stage,prod`.
 
@@ -58,7 +58,7 @@ To reference the variable we created, we use the expression `${workflow.variable
   ![](./static/create-kubernetes-namespaces-with-workflow-variables-210.png)
 
 3. For **namespace**, select one of the variable's allowed values.  
-If your Workflow variable is not limited to allowed values, you can enter custom values. For more information, see [Passing Variables into Workflows and Pipelines from Triggers](https://docs.harness.io/article/revc37vl0f-passing-variable-into-workflows).
+If your Workflow variable is not limited to allowed values, you can enter custom values. For more information, see [Passing Variables into Workflows and Pipelines from Triggers](../model-cd-pipeline/expressions/passing-variable-into-workflows.md).
 4. Click **Submit**. When the Trigger condition is met, the Workflow deploys to the namespace you selected.
 
 ### Example: Trigger Parallel Workflow Executions
@@ -69,6 +69,6 @@ Using the steps in this topic, you can have parallel executions for same Workflo
 
 ### Next Steps
 
-* [Harness GitOps](https://docs.harness.io/article/khbt0yhctx-harness-git-ops)
-* [Passing Variables into Workflows and Pipelines from Triggers](https://docs.harness.io/article/revc37vl0f-passing-variable-into-workflows)
+* [Harness GitOps](../harness-git-based/harness-git-ops.md)
+* [Passing Variables into Workflows and Pipelines from Triggers](../model-cd-pipeline/expressions/passing-variable-into-workflows.md)
 

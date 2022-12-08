@@ -19,8 +19,8 @@ In this topic:
 
 ### Before You Begin
 
-* [Harness Key Concepts](/article/4o7oqwih6h-harness-key-concepts)
-* [Add a Secrets Manager](/article/uuer539u3l-add-a-secrets-manager)
+* [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts)
+* [Add a Secrets Manager](add-a-secrets-manager.md)
 
 ### Limitations
 
@@ -59,11 +59,11 @@ During migration transmission, secrets are encrypted by AES 256 encryption. They
 ### Step: Migrating Secrets
 
 1. In **Secrets Management**, click **Configure Secrets Managers**.
-2. Next to the secrets manager from which you want to migrate secrets, click **Migrate**.![](https://files.helpdocs.io/kw8ldg1itf/articles/q7fqo7wt73/1585198089694/image.png)
-3. In the **Migrate Secrets** dialog, select your target secrets manager in the **Transition Secrets to:** drop‑down list, and click **Submit**.![](https://files.helpdocs.io/kw8ldg1itf/articles/q7fqo7wt73/1585198189196/image.png)
+2. Next to the secrets manager from which you want to migrate secrets, click **Migrate**.![](./static/migrate-secrets-between-secrets-managers-59.png)
+3. In the **Migrate Secrets** dialog, select your target secrets manager in the **Transition Secrets to:** drop‑down list, and click **Submit**.![](./static/migrate-secrets-between-secrets-managers-60.png)
 
 ### Next Steps
 
-* [Use Encrypted Text Secrets](/article/ygyvp998mu-use-encrypted-text-secrets)
-* [Use Encrypted File Secrets](/article/nt5vchhka4-use-encrypted-file-secrets)
+* [Use Encrypted Text Secrets](use-encrypted-text-secrets.md)
+* [Use Encrypted File Secrets](use-encrypted-file-secrets.md)
 

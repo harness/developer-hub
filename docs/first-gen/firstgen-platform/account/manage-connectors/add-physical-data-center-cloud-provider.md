@@ -21,7 +21,7 @@ In this topic:
 
 ### Before You Begin
 
-* See [Harness Key Concepts](/article/4o7oqwih6h-harness-key-concepts).
+* See [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts).
 
 ### Step 1: Add the Cloud Provider
 
@@ -36,9 +36,9 @@ The **Add Physical Data Center Cloud Provider** panel appears.
 
 Enter a unique **Display Name**.
 
-For a Physical Data Center Cloud Provider, no credentials are required. Instead, you add an SSH secret in Harness Secrets Management, and select that later in your Harness Environment in **Connection Attributes**. For more information, see [Secrets Management](/article/au38zpufhr-secret-management).
+For a Physical Data Center Cloud Provider, no credentials are required. Instead, you add an SSH secret in Harness Secrets Management, and select that later in your Harness Environment in **Connection Attributes**. For more information, see [Secrets Management](../../security/secrets-management/secret-management.md).
 
 ### Artifact Support for Download and Copy
 
-See [Service Types and Artifact Sources](/article/qluiky79j8-service-types-and-artifact-sources).
+See [Service Types and Artifact Sources](../../../continuous-delivery/model-cd-pipeline/setup-services/service-types-and-artifact-sources.md).
 

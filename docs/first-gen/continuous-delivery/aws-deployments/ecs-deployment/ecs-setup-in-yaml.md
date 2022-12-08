@@ -88,7 +88,7 @@ rollbackPhases:
 templatized: false  
 
 ```
-For more information, see [Configuration as Code](https://docs.harness.io/article/htvzryeqjw-configuration-as-code) and [Harness GitOps](https://docs.harness.io/article/khbt0yhctx-harness-git-ops).
+For more information, see [Configuration as Code](../../../firstgen-platform/config-as-code/configuration-as-code.md) and [Harness GitOps](../../harness-git-based/harness-git-ops.md).
 
 The above example is a simple one. If you are using more steps, like a [Terraform Infrastructure Provisioner](../../terraform-category/terraform-provisioner-step.md) step, there will be additional labels and values.
 

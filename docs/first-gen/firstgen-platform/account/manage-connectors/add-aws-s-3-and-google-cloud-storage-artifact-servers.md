@@ -14,8 +14,8 @@ You simply add them as Cloud Providers, and then when you are adding an artifact
 
 Here is what the Artifact Source list looks like in a Harness service when AWS S3 and Google Cloud Storage have been as added as Cloud Providers:
 
-[![](https://files.helpdocs.io/kw8ldg1itf/articles/7dghbx1dbl/1538674447613/image.png)](https://files.helpdocs.io/kw8ldg1itf/articles/7dghbx1dbl/1538674447613/image.png)For information on how to add AWS and GCP as Cloud Providers, see:
+[![](./static/add-aws-s-3-and-google-cloud-storage-artifact-servers-17.png)](./static/add-aws-s-3-and-google-cloud-storage-artifact-servers-17.png)For information on how to add AWS and GCP as Cloud Providers, see:
 
-* [Add Amazon Web Services Cloud Provider](/article/wt1gnigme7-add-amazon-web-services-cloud-provider)
-* [Add Google Cloud Platform Cloud Provider](/article/6x52zvqsta-add-google-cloud-platform-cloud-provider)
+* [Add Amazon Web Services Cloud Provider](add-amazon-web-services-cloud-provider.md)
+* [Add Google Cloud Platform Cloud Provider](add-google-cloud-platform-cloud-provider.md)
 

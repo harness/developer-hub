@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Using Profiles is Deprecated. Please use [Run Initialization Scripts on Delegates](/article/ul6qktixip-run-initialization-scripts-on-delegates).To use secrets in a Delegate Profile, create encrypted text in Harness Secrets Management for the credentials, and then use variable names for those credentials in the Delegate Profile.
+Using Profiles is Deprecated. Please use [Run Initialization Scripts on Delegates](run-initialization-scripts-on-delegates.md).To use secrets in a Delegate Profile, create encrypted text in Harness Secrets Management for the credentials, and then use variable names for those credentials in the Delegate Profile.
 
 In this topic:
 
@@ -16,38 +16,38 @@ In this topic:
 * [Step 1: Add Encrypted Texts](#step_1_add_encrypted_texts)
 * [Step 2: Manage Delegate Profiles](#step_2_manage_delegate_profiles)
 * [Step 3: Use Secret in Profile Script](#step_3_use_secret_in_profile_script)
-* [Review: Use Config Files in Delegate Profiles](https://docs.harness.io/article/imzgiz9h41-use-a-secret-in-a-delegate-profile#review_use_config_files_in_delegate_profiles)
+* [Review: Use Config Files in Delegate Profiles](use-a-secret-in-a-delegate-profile.md#review-use-config-files-in-delegate-profiles)
 
 ### Before You Begin
 
-* [Harness Key Concepts](/article/4o7oqwih6h-harness-key-concepts)
-* [Secrets Management Overview](/article/au38zpufhr-secret-management)
-* [Use Encrypted Text Secrets](/article/ygyvp998mu-use-encrypted-text-secrets)
-* [Run Scripts on Delegates using Profiles](/article/yd4bs0pltf-run-scripts-on-the-delegate-using-profiles)
+* [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts)
+* [Secrets Management Overview](../../security/secrets-management/secret-management.md)
+* [Use Encrypted Text Secrets](../../security/secrets-management/use-encrypted-text-secrets.md)
+* [Run Scripts on Delegates using Profiles](run-scripts-on-the-delegate-using-profiles.md)
 
 ### Step 1: Add Encrypted Text
 
-For [Delegate Profiles](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation#delegate_profiles), if you wanted to add a Helm repo that requires login credentials to every Kubernetes pod running a Harness Kubernetes Delegate, you can create encrypted text in Harness Secrets Management for those credentials, and then use variable names for those credentials in the Delegate Profile using the `${secrets.getValue("secret_name")}` expression.
+For [Delegate Profiles](delegate-installation.md#delegate-profiles), if you wanted to add a Helm repo that requires login credentials to every Kubernetes pod running a Harness Kubernetes Delegate, you can create encrypted text in Harness Secrets Management for those credentials, and then use variable names for those credentials in the Delegate Profile using the `${secrets.getValue("secret_name")}` expression.
 
-For more information about Delegate Profiles, see [Run Scripts on Delegates using Profiles](/article/yd4bs0pltf-run-scripts-on-the-delegate-using-profiles) and [Common Delegate Profile Scripts](/article/nxhlbmbgkj-common-delegate-profile-scripts).
+For more information about Delegate Profiles, see [Run Scripts on Delegates using Profiles](run-scripts-on-the-delegate-using-profiles.md) and [Common Delegate Profile Scripts](../delegate-ref/common-delegate-profile-scripts.md).
 
 1. In Harness, select **Continuous Security** > **Secrets Management**.  
 The **Secrets Management** page appears.
 2. Under **Execution Credentials**, click **Encrypted Text**. The **Encrypted Text** page appears.
-3. Click **Add Encrypted Text**. The **Add Encrypted Text** dialog appears.![](https://files.helpdocs.io/kw8ldg1itf/articles/au38zpufhr/1580864256095/image.png)
+3. Click **Add Encrypted Text**. The **Add Encrypted Text** dialog appears.![](./static/use-a-secret-in-a-delegate-profile-24.png)
 4. In **Name**, enter **repoUsername**. This name will be used later in the **Delegate Profile** script to reference this secret.
 5. In **Value**, enter any **username**. The dialog will look like this:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/au38zpufhr/1573065585725/image.png)1. In **Usage Scope**, click **Scope to Account**. This will scope the secret to the Account-level. It can then be used in a Delegate Profile.You must set **Usage Scope** to **Scope to Account** to use the secret in a Delegate Profile. Once it is set to **Scope to Account**, the secret can used in a Delegate Profile only.![](https://files.helpdocs.io/kw8ldg1itf/articles/au38zpufhr/1573065628503/image.png)
+![](./static/use-a-secret-in-a-delegate-profile-25.png)1. In **Usage Scope**, click **Scope to Account**. This will scope the secret to the Account-level. It can then be used in a Delegate Profile.You must set **Usage Scope** to **Scope to Account** to use the secret in a Delegate Profile. Once it is set to **Scope to Account**, the secret can used in a Delegate Profile only.![](./static/use-a-secret-in-a-delegate-profile-26.png)
 2. Click **Submit**.
-3. Add a second encrypted text with the name **repoPassword**, using any password. Be sure to set **Usage Scope** to **Scope to Account**, also. The dialog will look like this:![](https://files.helpdocs.io/kw8ldg1itf/articles/au38zpufhr/1573065682858/image.png)
+3. Add a second encrypted text with the name **repoPassword**, using any password. Be sure to set **Usage Scope** to **Scope to Account**, also. The dialog will look like this:![](./static/use-a-secret-in-a-delegate-profile-27.png)
 4. Click **Submit**. Now you can create a Delegate Profile and use these secrets.
 
 ### Step 2: Manage Delegate Profiles
 
 1. Click **Setup**.
 2. Click **Harness Delegates**.
-3. Click **Manage Delegate Profiles**, and then **Add Delegate Profile**.![](https://files.helpdocs.io/kw8ldg1itf/articles/imzgiz9h41/1620840093272/mj-5-frss-fvrzt-wc-bpj-gcrpb-ozx-7-k-7-h-y-c-2-p-7-ku-itb-8-qob-n-5-h-rsbfniurc-kjnv-fa-jqn-1-stlqtyt-6-a-0-pr-5-tmy-9-zkz-2-9-hent-96-e-5-r-ddjftr-bxla-oj-szajpu-sr-iozlosiqt-nr-7-upe-se)The **Manage Delegate Profile** dialog appears.
+3. Click **Manage Delegate Profiles**, and then **Add Delegate Profile**.![](./static/use-a-secret-in-a-delegate-profile-28.png)The **Manage Delegate Profile** dialog appears.
 4. In **Name**, enter **Helm Repo**.
 
 ### Step 3: Use Secret in Profile Script
@@ -65,18 +65,20 @@ The secrets are referenced as variables using `${secrets.getValue()}` and the na
 `${secrets.getValue(“repoUsername”)}`  
 `${secrets.getValue(“repoPassword”)}`  
   
-The **Manage Delegate Profile** dialog will look like this:![](https://files.helpdocs.io/kw8ldg1itf/articles/au38zpufhr/1585285164774/image.png)
+The **Manage Delegate Profile** dialog will look like this:![](./static/use-a-secret-in-a-delegate-profile-29.png)
 2. Click **Submit**.
 
 Now when you add this profile to a Kubernetes Delegate, it will add the Helm repo using the credentials you added as **Encrypted Text** in Harness **Secrets Management**.
 
 A quick way to get the name of a secret is to hover over the secrets in **Secrets Management** and click the Copy icon:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/au38zpufhr/1553903487541/image.png)### Review: Use Config Files in Delegate Profiles
+![](./static/use-a-secret-in-a-delegate-profile-30.png)
 
-The [Service Config file](/article/iwtoq9lrky-add-service-level-configuration-files) expressions `${configFile.getAsString("fileName")}` and `${configFile.getAsBase64("fileName")}` are not supported in [Delegate Profiles](/article/yd4bs0pltf-run-scripts-on-the-delegate-using-profiles).
+### Review: Use Config Files in Delegate Profiles
 
-Instead, encode the file in base64 and then add the file to Harness as an [Encrypted File Secret](/article/nt5vchhka4-use-encrypted-file-secrets).
+The [Service Config file](../../../continuous-delivery/model-cd-pipeline/setup-services/add-service-level-configuration-files.md) expressions `${configFile.getAsString("fileName")}` and `${configFile.getAsBase64("fileName")}` are not supported in [Delegate Profiles](run-scripts-on-the-delegate-using-profiles.md).
+
+Instead, encode the file in base64 and then add the file to Harness as an [Encrypted File Secret](../../security/secrets-management/use-encrypted-file-secrets.md).
 
 Next, in the Delegate Profile script, reference the secret, pipe it to base64 and output it to the path where you need it:
 

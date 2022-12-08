@@ -12,18 +12,18 @@ This topic lists common audit trail queries.
 
 In this topic:
 
-* [Before You Begin](https://docs.harness.io/article/k9d2zjdnw8-use-audit-trails-api#undefined)
-* [Generic Change Set](https://docs.harness.io/article/k9d2zjdnw8-use-audit-trails-api#generic_change_set)
-* [User Change Set](https://docs.harness.io/article/k9d2zjdnw8-use-audit-trails-api#user_change_set)
-* [API Key Change Set](https://docs.harness.io/article/k9d2zjdnw8-use-audit-trails-api#api_key_change_set)
-* [Git Change Set](https://docs.harness.io/article/k9d2zjdnw8-use-audit-trails-api#git_change_set)
-* [Other Examples](https://docs.harness.io/article/k9d2zjdnw8-use-audit-trails-api#other_examples)
+* [Before You Begin](use-audit-trails-api.md#undefined)
+* [Generic Change Set](use-audit-trails-api.md#generic-change-set)
+* [User Change Set](use-audit-trails-api.md#user-change-set)
+* [API Key Change Set](use-audit-trails-api.md#api-key-change-set)
+* [Git Change Set](use-audit-trails-api.md#git-change-set)
+* [Other Examples](use-audit-trails-api.md#other-examples)
 
 ### Before You Begin
 
-* [​Introduction to Harness GraphQL API](/article/tm0w6rruqv-harness-api)
-* [Harness API Explorer](/article/2rmd5i0e0h-harness-api-explorer)
-* [API Schema and Structure](/article/kn8wsu80n4-api-schema-and-structure)
+* [​Introduction to Harness GraphQL API](harness-api.md)
+* [Harness API Explorer](harness-api-explorer.md)
+* [API Schema and Structure](api-schema-and-structure.md)
 
 ### Generic Change Set
 

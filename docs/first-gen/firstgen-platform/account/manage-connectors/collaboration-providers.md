@@ -12,7 +12,7 @@ To collaborate and share Harness information with other users and groups, add a 
 
 See the How-tos for adding these providers:
 
-* [Add Jira Collaboration Provider](/article/bhpffyx0co-add-jira-collaboration-provider)
-* [Add ServiceNow Collaboration Provider](/article/vftxcr51xx-add-service-now-collaboration-provider)
-* [Add SMTP Collaboration Provider](/article/8nkhcbjnh7-add-smtp-collaboration-provider)
+* [Add Jira Collaboration Provider](add-jira-collaboration-provider.md)
+* [Add ServiceNow Collaboration Provider](add-service-now-collaboration-provider.md)
+* [Add SMTP Collaboration Provider](add-smtp-collaboration-provider.md)
 

@@ -20,7 +20,7 @@ In this topic:
 
 ### Before You Begin
 
-* See the overview of [Secrets Management](/article/au38zpufhr-secret-management).
+* See the overview of [Secrets Management](secret-management.md).
 
 ### Step 1: View a Secret's Setup Usage
 
@@ -46,7 +46,9 @@ For Encrypted Files, the **Setup Usage** displays the following details:
 
 If the secret has not been used already, the number will be 0 and no details will be displayed.
 
-Only Encrypted Text secrets used in Service Config Variables are counted in Setup Usage.### Step 2: View a Secret's Runtime Usage
+Only Encrypted Text secrets used in Service Config Variables are counted in Setup Usage.
+
+### Step 2: View a Secret's Runtime Usage
 
 In the Run Time Usage column, click the number to view the run time usage details of the secret.
 
@@ -54,7 +56,9 @@ The Run Time Usage window displays a list of deployments where the secret has be
 
 If the secret has not been used for deployments already, the number will be 0 and no details will be displayed.
 
-Only Encrypted Text secrets used in Service Config Variables are counted in Runtime Usage.### Step 3: View a Secret's Change Log
+Only Encrypted Text secrets used in Service Config Variables are counted in Runtime Usage.
+
+### Step 3: View a Secret's Change Log
 
 In the **Change Log** column, click the number associated with the secret. The **Change Log** window appears. It shows the following details:
 

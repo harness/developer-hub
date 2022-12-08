@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic lists sample queries that read, create, update and delete [Harness secrets](/article/au38zpufhr-secret-management) that rely on encrypted files.
+This topic lists sample queries that read, create, update and delete [Harness secrets](../../security/secrets-management/secret-management.md) that rely on encrypted files.
 
 In this topic:
 
@@ -85,7 +85,9 @@ query{
 
 This sample creates a file secret.
 
-The UI doesn't support file upload for Create and Update. To do this, use the below cURL commands. You must pass **query** and **file** as two form parameters as shown in the below samples.#### Usage Scope
+The UI doesn't support file upload for Create and Update. To do this, use the below cURL commands. You must pass **query** and **file** as two form parameters as shown in the below samples.
+
+#### Usage Scope
 
 The required `CreateSecretInput` input must include a `SecretType`.
 
@@ -429,8 +431,8 @@ Here are query variables for the above `deleteSecret` operation.
 
 ### Related Reference Material
 
-* [Harness API](/article/tm0w6rruqv-harness-api)
-* [Encrypted Text API](/article/omnfccj1n0-api-encrypted-text)
-* [SSH Credentials API](/article/v65okfwfl2-api-ssh-credentials)
-* [WinRM Credentials API](/article/2rlo5zw321-api-win-rm-credentials)
+* [Harness API](harness-api.md)
+* [Encrypted Text API](api-encrypted-text.md)
+* [SSH Credentials API](api-ssh-credentials.md)
+* [WinRM Credentials API](api-win-rm-credentials.md)
 

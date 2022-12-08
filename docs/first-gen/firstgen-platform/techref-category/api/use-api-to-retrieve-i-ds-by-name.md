@@ -14,17 +14,17 @@ Below are the sample queries for each of these retrieval operations. It is follo
 
 In this topic:
 
-* [Before You Begin](https://docs.harness.io/article/iuswbbvwnm-use-api-to-retrieve-i-ds-by-name#before_you_begin)
-* [Fetch Application ID by Name](https://docs.harness.io/article/iuswbbvwnm-use-api-to-retrieve-i-ds-by-name#fetch_application_id_by_name)
-* [Fetch User ID and Details by Name](https://docs.harness.io/article/iuswbbvwnm-use-api-to-retrieve-i-ds-by-name#fetch_user_id_and_details_by_name)
-* [Fetch User Group ID by Name](https://docs.harness.io/article/iuswbbvwnm-use-api-to-retrieve-i-ds-by-name#fetch_user_group_id_by_name)
-* [Round-Trip Example](https://docs.harness.io/article/iuswbbvwnm-use-api-to-retrieve-i-ds-by-name#round_trip_example)
+* [Before You Begin](use-api-to-retrieve-i-ds-by-name.md#before-you-begin)
+* [Fetch Application ID by Name](use-api-to-retrieve-i-ds-by-name.md#fetch-application-id-by-name)
+* [Fetch User ID and Details by Name](use-api-to-retrieve-i-ds-by-name.md#fetch-user-id-and-details-by-name)
+* [Fetch User Group ID by Name](use-api-to-retrieve-i-ds-by-name.md#fetch-user-group-id-by-name)
+* [Round-Trip Example](use-api-to-retrieve-i-ds-by-name.md#round-trip-example)
 
 ### Before You Begin
 
-* [​Introduction to Harness GraphQL API](/article/tm0w6rruqv-harness-api)
-* [Harness API Explorer](/article/2rmd5i0e0h-harness-api-explorer)
-* [API Schema and Structure](/article/kn8wsu80n4-api-schema-and-structure)
+* [​Introduction to Harness GraphQL API](harness-api.md)
+* [Harness API Explorer](harness-api-explorer.md)
+* [API Schema and Structure](api-schema-and-structure.md)
 
 ### Fetch Application ID by Name
 

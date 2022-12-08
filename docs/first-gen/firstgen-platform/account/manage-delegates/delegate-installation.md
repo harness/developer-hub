@@ -8,13 +8,13 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](https://docs.harness.io/article/1fjmm4by22). Switch to [NextGen](/article/2k7lnc7lvl-delegates-overview).The Harness Delegate is a service you run in your local network or VPC to connect all of your artifact, infrastructure, collaboration, verification and other providers with the Harness Manager.
+This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../../platform/2_Delegates/delegates-overview.md).The Harness Delegate is a service you run in your local network or VPC to connect all of your artifact, infrastructure, collaboration, verification and other providers with the Harness Manager.
 
-As explained in [Harness Key Concepts](/article/4o7oqwih6h-harness-key-concepts), when you set up Harness for the first time, you install a Harness Delegate in your target infrastructure (for example, Kubernetes cluster, ECS cluster, EC2 subnet, Pivotal Cloud Foundry space, etc). Once the Delegate is installed, you can set up the resources and model your release process.
+As explained in [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts), when you set up Harness for the first time, you install a Harness Delegate in your target infrastructure (for example, Kubernetes cluster, ECS cluster, EC2 subnet, Pivotal Cloud Foundry space, etc). Once the Delegate is installed, you can set up the resources and model your release process.
 
 Most importantly, the Delegate performs all deployment operations.
 
-For all the topics related to the Harness Delegate, see [Manage Harness Delegates](/category/gyd73rp7np-manage-delegates).In this article:
+For all the topics related to the Harness Delegate, see [Manage Harness Delegates](https://docs.harness.io/category/manage-harness-delegates-firstgen).In this article:
 
 * [Limitations and Requirements](#limitations_and_requirements)
 * [What Data does the Delegate Send to the Harness Manager?](#what_data_does_the_delegate_send_to_the_harness_manager)
@@ -33,7 +33,7 @@ For all the topics related to the Harness Delegate, see [Manage Harness Delegate
 
 ### Limitations and Requirements
 
-See [Delegate Requirements and Limitations](/article/lwynqsgxt9-delegate-requirements-and-limitations).
+See [Delegate Requirements and Limitations](delegate-requirements-and-limitations.md).
 
 ### What Data does the Delegate Send to the Harness Manager?
 
@@ -52,12 +52,12 @@ The Delegate and the Harness Manager (via SaaS) establish a Secure WebSocket cha
 
 See the following topics:
 
-* [Delegate Installation Overview](/article/igftn7rrtg-delegate-installation-overview)
-* [Install the Harness Kubernetes Delegate](/article/0hn6vdpeqz-install-kubernetes-delegate)
-* [Install the Harness Shell Script Delegate](/article/8o4cwqj1kv-install-shellscript-delegate)
-* [Install the Harness ECS Delegate](/article/oiy5fxawzq-install-ecs-delegate)
-* [Install the Harness Helm Delegate](/article/6n7fon8rit-using-the-helm-delegate)
-* [Install the Harness Docker Delegate](/article/hnvvwbhbdu-install-docker-delegate)
+* [Delegate Installation Overview](delegate-installation-overview.md)
+* [Install the Harness Kubernetes Delegate](install-kubernetes-delegate.md)
+* [Install the Harness Shell Script Delegate](install-shellscript-delegate.md)
+* [Install the Harness ECS Delegate](install-ecs-delegate.md)
+* [Install the Harness Helm Delegate](using-the-helm-delegate.md)
+* [Install the Harness Docker Delegate](install-docker-delegate.md)
 
 ### How Does Harness Manager Identify Delegates?
 
@@ -65,20 +65,22 @@ All Delegates are identified by your Harness account ID. But, depending on the t
 
 For Delegates running on virtual machines, such as the Shell Script and Docker Delegates running on an AWS EC2 instance, the Delegate is identified by the combination of **Hostname** and **IP**:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/h9tkwmkrm7/1560383229070/image.png)Therefore, if the hostname or IP changes on the VM, the Delegate cannot be identified by the Harness Manager. The IP used is the private IP. The Delegate connects to the Harness Manager, but the Harness Manager does not initiate a connection to the Delegate, and so the public IP address of the Delegate is not needed, typically.
+![](./static/delegate-installation-08.png)Therefore, if the hostname or IP changes on the VM, the Delegate cannot be identified by the Harness Manager. The IP used is the private IP. The Delegate connects to the Harness Manager, but the Harness Manager does not initiate a connection to the Delegate, and so the public IP address of the Delegate is not needed, typically.
 
 For Kubernetes and ECS Delegates, the IP can change if a pod is rescheduled, for example. Consequently, Kubernetes Delegates are identified by a suffix using a unique six letter code in their **Hostname** (the first six letters that occur in your account ID):
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/h9tkwmkrm7/1560383507971/image.png)ECS Delegates are identified by the **Hostname** entered when the ECS Delegate Task Spec is downloaded:
+![](./static/delegate-installation-09.png)ECS Delegates are identified by the **Hostname** entered when the ECS Delegate Task Spec is downloaded:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/h9tkwmkrm7/1560465943276/image.png)### How Does Harness Manager Pick Delegates?
+![](./static/delegate-installation-10.png)
+
+### How Does Harness Manager Pick Delegates?
 
 When a task is ready to be assigned, the Harness Manager first validates its lists of Delegates to see which Delegate should be assigned the task.
 
 The following information describes how the Harness Manager validates and assigns tasks to a Delegate:
 
 * **Heartbeats** - Running Delegates send heartbeats to the Harness Manager in 1 minute intervals. If the Manager does not have a heartbeat for a Delegate when a task is ready to be assigned, it will not assign the task to that Delegate.
-* **Selectors and Scoping** - For more information, see [Delegate Selectors](#delegate_selectors), [Delegate Scope](https://harness.helpdocs.io/article/h9tkwmkrm7-delegate-installation#delegate_scope), and [Map Tasks to Delegates and Profiles](/article/nzuhppobyg-map-tasks-to-delegates-and-profiles).
+* **Selectors and Scoping** - For more information, see [Delegate Selectors](#delegate_selectors), [Delegate Scope](https://harness.helpdocs.io/article/h9tkwmkrm7-delegate-installation#delegate_scope), and [Map Tasks to Delegates and Profiles](map-tasks-to-delegates-and-profiles.md).
 * **Whitelisting** - Once a Delegate has been validated for a task, it is whitelisted for that task and will likely be used again for that task. The whitelisting criteria is the URL associated with the task, such as a connection to a cloud platform, repo, or API. A Delegate is whitelisted for all tasks using that URL. The Time-To-Live (TTL) for the whitelisting is 6 hours, and the TTL is reset with each successful task validation.
 * **Blacklisting** - If a Delegate fails to perform a task that Delegate is blacklisted for that task and will not be tried again. TTL is 5 minutes. This is true if there is only one Delegate and even if the Delegate is selected for that task with a Selector, such as with a Shell Script command in a Workflow.
 
@@ -117,30 +119,30 @@ Two Delegates in different locations with different connectivity do not support 
 
 ### Delegate Proxy Settings
 
-See [Configure Delegate Proxy Settings](/article/pfim3oig7o-configure-delegate-proxy-settings).
+See [Configure Delegate Proxy Settings](configure-delegate-proxy-settings.md).
 
 ### Delegate Scope
 
-See [Scope Delegates to Harness Components and Commands](/article/hw56f9nz7q-scope-delegates-to-harness-components-and-commands).
+See [Scope Delegates to Harness Components and Commands](scope-delegates-to-harness-components-and-commands.md).
 
 ### Delegate Profiles
 
-A Delegate Profile is mandatory. The [Primary Profile](/article/2uhtcqzaio-approve-or-reject-harness-delegates) is the default and contains no script. You can add a script to it, or create and apply new Profiles for your Delegate.A Delegate Profile enables you to run a startup script on the host/container/pod for a Harness Delegate when the Delegate is installed. You can create a single Delegate Profile and apply it to multiple Delegates.
+A Delegate Profile is mandatory. The [Primary Profile](approve-or-reject-harness-delegates.md) is the default and contains no script. You can add a script to it, or create and apply new Profiles for your Delegate.A Delegate Profile enables you to run a startup script on the host/container/pod for a Harness Delegate when the Delegate is installed. You can create a single Delegate Profile and apply it to multiple Delegates.
 
 See the following Delegate Profile topics:
 
-* [Run Scripts on the Delegate using Profiles](/article/yd4bs0pltf-run-scripts-on-the-delegate-using-profiles)
-* [Use Secrets in a Delegate Profile](/article/imzgiz9h41-use-a-secret-in-a-delegate-profile)
-* [Common Delegate Profile Scripts](/article/nxhlbmbgkj-common-delegate-profile-scripts)
-* [Approve or Reject Harness Delegates](/article/2uhtcqzaio-approve-or-reject-harness-delegates)
+* [Run Scripts on the Delegate using Profiles](run-scripts-on-the-delegate-using-profiles.md)
+* [Use Secrets in a Delegate Profile](use-a-secret-in-a-delegate-profile.md)
+* [Common Delegate Profile Scripts](../delegate-ref/common-delegate-profile-scripts.md)
+* [Approve or Reject Harness Delegates](approve-or-reject-harness-delegates.md)
 
 ### Delegate Selectors
 
-Delegate Selectors were formerly called Tags. Now, *Tags* refers only to tagging Harness Application components as described in [Using Tags](/article/nrxfix3i58-tags).When Harness makes a connection via its Delegates, it will select the best Delegate according to [How Does Harness Manager Pick Delegates?](#how_does_harness_manager_pick_delegates).
+Delegate Selectors were formerly called Tags. Now, *Tags* refers only to tagging Harness Application components as described in [Using Tags](../tags/tags.md).When Harness makes a connection via its Delegates, it will select the best Delegate according to [How Does Harness Manager Pick Delegates?](#how_does_harness_manager_pick_delegates).
 
 To ensure a specific Delegate is used by a Harness entity, you can add Selectors to Delegates and then reference the Selectors in commands and configurations.
 
-See [Select Delegates with Selectors](/article/c3fvixpgsl-select-delegates-for-specific-tasks-with-selectors) and [Map Tasks to Delegates and Profiles](/article/nzuhppobyg-map-tasks-to-delegates-and-profiles).
+See [Select Delegates with Selectors](select-delegates-for-specific-tasks-with-selectors.md) and [Map Tasks to Delegates and Profiles](map-tasks-to-delegates-and-profiles.md).
 
 ### Delegate Log File
 
@@ -165,9 +167,9 @@ Here are some examples of the common Delegate log parameters and what they mean:
 
 ### Add Self-Signed Certificates for Delegate Connections
 
-See [Add Self-Signed Certificates for Delegate Connections](/article/8bj3v5jqzk-add-self-signed-certificates-for-delegate-connections).
+See [Add Self-Signed Certificates for Delegate Connections](add-self-signed-certificates-for-delegate-connections.md).
 
 ### Troubleshooting
 
-See [Troubleshooting](/article/g9o2g5jbye-troubleshooting-harness).
+See [Troubleshooting](https://docs.harness.io/article/g9o2g5jbye-troubleshooting-harness).
 

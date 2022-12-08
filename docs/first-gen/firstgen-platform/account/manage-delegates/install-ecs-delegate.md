@@ -28,15 +28,17 @@ In this topic:
 
 ### Before You Begin
 
-* [Harness Key Concepts](/article/4o7oqwih6h-harness-key-concepts)
-* [Harness Delegate Overview](/article/h9tkwmkrm7-delegate-installation)
-* [Delegate Requirements and Limitations](/article/lwynqsgxt9-delegate-requirements-and-limitations)
+* [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts)
+* [Harness Delegate Overview](delegate-installation.md)
+* [Delegate Requirements and Limitations](delegate-requirements-and-limitations.md)
 
 ### Visual Summary
 
 The following diagram shows how the Delegate enables Harness to integrate with all of your deployment resources:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/8o4cwqj1kv/1596840107816/image.png)### Review: ECS Requirements
+![](./static/install-ecs-delegate-01.png)
+
+### Review: ECS Requirements
 
 Ensure that your AWS account and the ECS cluster that will host the Delegate meet the following requirements:
 
@@ -198,13 +200,15 @@ Although it can help simplify deployments, the Harness ECS Delegate service does
 ```
 The cluster must have a minimum of 8GB of memory (t2.large minimum). Run the above command and the ECS Delegate will install as a service in your cluster. The Delegate will appear in the **Setup** > **Harness Delegates** page in a few minutes.
 
-If you are using Fargate, follow the steps in the README.### Step 1: Install and Launch the ECS Delegate
+If you are using Fargate, follow the steps in the README.
+
+### Step 1: Install and Launch the ECS Delegate
 
 1. Click **Setup**., and then click **Harness Delegates**.
 2. In the **Delegate** tab, click **Install Delegate**.
 3. In **Download Type**, select **ECS Task Spec**.
 4. In **Delegate Group Name**, enter the name for the Delegate group. For more information, see [Delegate Groups](#delegate_groups) below.
-5. In **Profile**, select a Delegate Profile. See [Run Scripts on the Delegate using Profiles](/article/yd4bs0pltf-run-scripts-on-the-delegate-using-profiles).
+5. In **Profile**, select a Delegate Profile. See [Run Scripts on the Delegate using Profiles](run-scripts-on-the-delegate-using-profiles.md).
 
 A Delegate Profile is mandatory. The **Primary** Profile is the default and contains no script. You can add a script to it, or create and apply new Profiles for your Delegate.1. If you are installing the Delegate in an ECS cluster, do not select **Use AWS VPC Mode**. **Use AWS VPC Mode** runs the ECS Delegate task with a [FARGATE launch type](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html).
 2. You can leave **Hostname** empty. ECS will use the default hostname **Harness-ECS-Delegate**.
@@ -300,7 +304,7 @@ The output will display the new service:
 
 When ECS is ready, the new service is running in the cluster:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/j39azkrevm/1587071124739/image.png)View the new ECS Delegate in Harness Manager.
+![](./static/install-ecs-delegate-02.png)View the new ECS Delegate in Harness Manager.
 
 1. In **Harness Manager**, in the **Harness** **Delegates** page. When the ECS Delegate connects to the Harness Manager, it is listed with a status of **Connected**.  
 Congratulations! You are done installing and running the ECS Delegate.
@@ -313,7 +317,7 @@ To group ECS Delegates, you enter a name in the **Delegate Group Name** setting
 
 The Delegate group is displayed in a single expand/collapse (accordion) panel.
 
-All Delegates in this group use the same Task Definition, and share the same Delegate settings, including [Selectors](/article/c3fvixpgsl-select-delegates-for-specific-tasks-with-selectors), [Profiles](/article/yd4bs0pltf-run-scripts-on-the-delegate-using-profiles), and [Scopes](/article/hw56f9nz7q-scope-delegates-to-harness-components-and-commands).
+All Delegates in this group use the same Task Definition, and share the same Delegate settings, including [Selectors](select-delegates-for-specific-tasks-with-selectors.md), [Profiles](run-scripts-on-the-delegate-using-profiles.md), and [Scopes](scope-delegates-to-harness-components-and-commands.md).
 
 When you change a Selector, Profile, or Scope for a Delegate in the group, the change is applied to all Delegates running under that group.
 
@@ -325,6 +329,6 @@ When an ECS Delegate is stopped or offline, it will disappear from the Delegate 
 
 ### See Also
 
-* For all the topics related to the Harness Delegate, see [Manage Harness Delegates](/category/gyd73rp7np-manage-delegates).
-* Delegate are used to provide credentials for some Harness [Cloud Providers](/article/whwnovprrb-cloud-providers).
+* For all the topics related to the Harness Delegate, see [Manage Harness Delegates](https://docs.harness.io/category/manage-harness-delegates-firstgen).
+* Delegate are used to provide credentials for some Harness [Cloud Providers](../manage-connectors/cloud-providers.md).
 

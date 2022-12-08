@@ -12,9 +12,9 @@ You can send a Slack message at any point in a Workflow using a Slack webhook an
 
 This simple integration allows you to notify team members at any point in a deployment.
 
-For more advanced integrations, see [Manage User Notifications](/article/kf828e347t-notification-groups), [Manage Alert Notifications](/article/rt7zvmzlgx-manage-alert-notifications), and [Approvals](/article/0ajz35u2hy-approvals).
+For more advanced integrations, see [Manage User Notifications](notification-groups.md), [Manage Alert Notifications](manage-alert-notifications.md), and [Approvals](../../../continuous-delivery/model-cd-pipeline/approvals/approvals.md).
 
-For steps on sending all User Group notifications to a Slack channel, see [Send Notifications Using Slack](/article/4blpfqwfdc-send-notification-using-slack).In this topic:
+For steps on sending all User Group notifications to a Slack channel, see [Send Notifications Using Slack](send-notification-using-slack.md).In this topic:
 
 * [Before You Begin](#before_you_begin)
 * [Step 1: Create a Slack App and Webhook for your Channel](#step_1_create_a_slack_app_and_webhook_for_your_channel)
@@ -25,8 +25,8 @@ For steps on sending all User Group notifications to a Slack channel, see [Send 
 ### Before You Begin
 
 * [Sending messages using Incoming Webhooks](https://api.slack.com/messaging/webhooks) from Slack.
-* [Using the Shell Script Step](/article/1fjrjbau7x-capture-shell-script-step-output)
-* [Workflows](/article/m220i1tnia-workflow-configuration)
+* [Using the Shell Script Step](../../../continuous-delivery/model-cd-pipeline/workflows/capture-shell-script-step-output.md)
+* [Workflows](../../../continuous-delivery/model-cd-pipeline/workflows/workflow-configuration.md)
 
 ### Step 1: Create a Slack App and Webhook for your Channel
 
@@ -34,9 +34,11 @@ Follow the steps in Slack documentation for creating a Slack app, selecting your
 
 When you are done, you'll have a webhook that looks something like this:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/4zd81qhhiu/1589479083422/image.png)### Step 2: Add a Shell Script Step using your Webhook
+![](./static/slack-notifications-23.png)
 
-At any place in your Harness Workflow, add a [Shell Script step](/article/1fjrjbau7x-capture-shell-script-step-output).
+### Step 2: Add a Shell Script Step using your Webhook
+
+At any place in your Harness Workflow, add a [Shell Script step](../../../continuous-delivery/model-cd-pipeline/workflows/capture-shell-script-step-output.md).
 
 In **Script**, enter the Slack message using your webhook.
 
@@ -48,7 +50,7 @@ curl -X POST -H 'Content-type: application/json' --data '{"text":"simple cURL co
 ```
 When you deploy the Workflow, the message will look something like this:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/4zd81qhhiu/1589477832229/image.png)Here is a more advanced example using bash and Harness [built-in variable expressions](/article/9dvxcegm90-variables):
+![](./static/slack-notifications-24.png)Here is a more advanced example using bash and Harness [built-in variable expressions](../../techref-category/variables/variables.md):
 
 
 ```
@@ -70,12 +72,12 @@ curl -s -X POST -H "Content-type: application/json" --data "$payload" $url
 ```
 When you deploy the Workflow, the message will look something like this:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/4zd81qhhiu/1589478107071/image.png)You can use different variable expressions in your messages. See the following:
+![](./static/slack-notifications-25.png)You can use different variable expressions in your messages. See the following:
 
-* [Passing Variables into Workflows and Pipelines from Triggers](/article/revc37vl0f-passing-variable-into-workflows)
-* [Set Workflow Variables](/article/766iheu1bk-add-workflow-variables-new-template)
-* [Add Service Config Variables](/article/q78p7rpx9u-add-service-level-config-variables)
-* [Override a Service Configuration in an Environment](/article/4m2kst307m-override-service-files-and-variables-in-environments)
+* [Passing Variables into Workflows and Pipelines from Triggers](../../../continuous-delivery/model-cd-pipeline/expressions/passing-variable-into-workflows.md)
+* [Set Workflow Variables](../../../continuous-delivery/model-cd-pipeline/workflows/add-workflow-variables-new-template.md)
+* [Add Service Config Variables](../../../continuous-delivery/model-cd-pipeline/setup-services/add-service-level-config-variables.md)
+* [Override a Service Configuration in an Environment](../../../continuous-delivery/model-cd-pipeline/environments/override-service-files-and-variables-in-environments.md)
 
 ### Option: Improve Your Message
 
@@ -88,7 +90,7 @@ See the following Slack docs:
 
 ### Next Steps
 
-* [Manage User Notifications](/article/kf828e347t-notification-groups)
-* [Manage Alert Notifications](/article/rt7zvmzlgx-manage-alert-notifications)
-* [Approvals](/article/0ajz35u2hy-approvals)
+* [Manage User Notifications](notification-groups.md)
+* [Manage Alert Notifications](manage-alert-notifications.md)
+* [Approvals](../../../continuous-delivery/model-cd-pipeline/approvals/approvals.md)
 

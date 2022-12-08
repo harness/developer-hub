@@ -14,17 +14,17 @@ To connect Harness to your Rancher account, you must set up a Harness Rancher Cl
 
 This topic describes how to set up a Harness Ranch Cloud Provider.
 
-Once you are done adding a Rancher Cloud Provider, you can deploy Kubernetes Services to multiple clusters simultaneously. See [Deploy Kubernetes Services to Multiple Clusters using Rancher](/article/hsc50ny57g-deploy-kubernetes-service-to-multiple-clusters-using-rancher).
+Once you are done adding a Rancher Cloud Provider, you can deploy Kubernetes Services to multiple clusters simultaneously. See [Deploy Kubernetes Services to Multiple Clusters using Rancher](../../../continuous-delivery/kubernetes-deployments/deploy-kubernetes-service-to-multiple-clusters-using-rancher.md).
 
 In this topic:
 
-* [Before You Begin](https://docs.harness.io/article/dipgqjn5pq-add-rancher-cloud-providers#before_you_begin)
-* [Visual Summary](https://docs.harness.io/article/dipgqjn5pq-add-rancher-cloud-providers#visual_summary)
-* [Supported Platforms and Technologies](https://docs.harness.io/article/dipgqjn5pq-add-rancher-cloud-providers#undefined)
-* [Review: Harness Delegates and Rancher Clusters](https://docs.harness.io/article/dipgqjn5pq-add-rancher-cloud-providers#review_harness_delegates_and_rancher_clusters)
-* [Step 1: Create a Rancher Account Bearer Token](https://docs.harness.io/article/dipgqjn5pq-add-rancher-cloud-providers#step_1_create_a_rancher_account_bearer_token)
-* [Step 2: Add a Rancher Cloud Provider](https://docs.harness.io/article/dipgqjn5pq-add-rancher-cloud-providers#step_2_add_a_rancher_cloud_provider)
-* [See Also](https://docs.harness.io/article/dipgqjn5pq-add-rancher-cloud-providers#see_also)
+* [Before You Begin](add-rancher-cloud-providers.md#before-you-begin)
+* [Visual Summary](add-rancher-cloud-providers.md#visual-summary)
+* [Supported Platforms and Technologies](add-rancher-cloud-providers.md#undefined)
+* [Review: Harness Delegates and Rancher Clusters](add-rancher-cloud-providers.md#review-harness-delegates-and-rancher-clusters)
+* [Step 1: Create a Rancher Account Bearer Token](add-rancher-cloud-providers.md#step-1-create-a-rancher-account-bearer-token)
+* [Step 2: Add a Rancher Cloud Provider](add-rancher-cloud-providers.md#step-2-add-a-rancher-cloud-provider)
+* [See Also](add-rancher-cloud-providers.md#see-also)
 
 ### Before You Begin
 
@@ -37,9 +37,11 @@ Enter the following in the Harness Rancher Cloud Provider:
 * URL of the Rancher endpoint.
 * Bearer token for the Rancher account to use.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/dipgqjn5pq/1644885199151/clean-shot-2022-02-14-at-16-33-00.png)### Supported Platforms and Technologies
+![](./static/add-rancher-cloud-providers-06.png)
 
-See [Supported Platforms and Technologies](/article/220d0ojx5y-supported-platforms).
+### Supported Platforms and Technologies
+
+See [Supported Platforms and Technologies](https://docs.harness.io/article/220d0ojx5y-supported-platforms).
 
 ### Review: Harness Delegates and Rancher Clusters
 
@@ -49,7 +51,7 @@ The Harness Delegate does not need to be a Kubernetes Delegate and it does not n
 
 The Harness Delegate does need to be able to connect to the Rancher URL endpoint and to connect to the target Kubernetes clusters.
 
-See [Harness Delegate Overview](/article/h9tkwmkrm7-delegate-installation).
+See [Harness Delegate Overview](../manage-delegates/delegate-installation.md).
 
 ### Step 1: Create a Rancher Account Bearer Token
 
@@ -72,11 +74,11 @@ In Harness, click **Setup**, and then click **Cloud Providers**.
 
 Click **Add Cloud Provider**, and then select **Rancher**. The **Rancher** Cloud Provider appears.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/dipgqjn5pq/1644884796598/clean-shot-2022-02-14-at-16-26-28.png)In **Display Name**, give the Cloud Provider a name.
+![](./static/add-rancher-cloud-providers-07.png)In **Display Name**, give the Cloud Provider a name.
 
 In **Rancher URL**, enter the Rancher URL endpoint. This is the domain name you use to connect to Rancher, such as `https://rancher-internal.dev.mycompany.io`. Make sure to include the URL scheme.
 
-In **Select Encrypted Bearer Token**, click **Create Encrypted Text**, and add the Rancher bearer token to Harness. See [Use Encrypted Text Secrets](/article/ygyvp998mu-use-encrypted-text-secrets).
+In **Select Encrypted Bearer Token**, click **Create Encrypted Text**, and add the Rancher bearer token to Harness. See [Use Encrypted Text Secrets](../../security/secrets-management/use-encrypted-text-secrets.md).
 
 Click **Test**. Harness reports **Test was successful**. If the test fails, check that the URL and bearer token are correct.
 
@@ -86,5 +88,5 @@ The Rancher Cloud Provider is added.
 
 ### See Also
 
-* [Deploy Kubernetes Services to Multiple Clusters using Rancher](/article/hsc50ny57g-deploy-kubernetes-service-to-multiple-clusters-using-rancher)
+* [Deploy Kubernetes Services to Multiple Clusters using Rancher](../../../continuous-delivery/kubernetes-deployments/deploy-kubernetes-service-to-multiple-clusters-using-rancher.md)
 

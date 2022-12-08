@@ -8,27 +8,27 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Deployment Freeze is a Harness Governance feature that stops all Harness deployments. To learn more on this, see [Deployment Freeze](/article/wscbhd20ca-deployment-freeze).
+Deployment Freeze is a Harness Governance feature that stops all Harness deployments. To learn more on this, see [Deployment Freeze](../../security/governance-howtos/deployment-freeze.md).
 
 Currently, this feature is behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature. Feature Flags can only be removed for Harness Professional and Essentials editions. Once the feature is released to a general audience, it is available for Trial and Community Editions.This topic shows how to use the Deployment Freeze API to freeze Harness deployments.
 
 In this topic:
 
-* [Before You Begin](https://docs.harness.io/article/vwu8tynfc4-use-deployment-freeze-api#before_you_begin)
-* [Create a Deployment Freeze Window](https://docs.harness.io/article/vwu8tynfc4-use-deployment-freeze-api#create_a_deployment_freeze_window)
-* [Get Deployment Freeze Window by ID](https://docs.harness.io/article/vwu8tynfc4-use-deployment-freeze-api#get_deployment_freeze_window_by_id)
-* [Get Deployment Freeze Window by Name](https://docs.harness.io/article/vwu8tynfc4-use-deployment-freeze-api#get_deployment_freeze_window_by_name)
-* [List Deployment Freeze Windows](https://docs.harness.io/article/vwu8tynfc4-use-deployment-freeze-api#list_deployment_freeze_windows)
-* [Update a Deployment Freeze Window](https://docs.harness.io/article/vwu8tynfc4-use-deployment-freeze-api#update_a_deployment_freeze_window)
-* [Delete a Deployment Freeze Window](https://docs.harness.io/article/vwu8tynfc4-use-deployment-freeze-api#delete_a_deployment_freeze_window)
-* [Toggle a Deployment Freeze Window](https://docs.harness.io/article/vwu8tynfc4-use-deployment-freeze-api#toggle_a_deployment_freeze_window)
+* [Before You Begin](use-deployment-freeze-api.md#before-you-begin)
+* [Create a Deployment Freeze Window](use-deployment-freeze-api.md#create-a-deployment-freeze-window)
+* [Get Deployment Freeze Window by ID](use-deployment-freeze-api.md#get-deployment-freeze-window-by-id)
+* [Get Deployment Freeze Window by Name](use-deployment-freeze-api.md#get-deployment-freeze-window-by-name)
+* [List Deployment Freeze Windows](use-deployment-freeze-api.md#list-deployment-freeze-windows)
+* [Update a Deployment Freeze Window](use-deployment-freeze-api.md#update-a-deployment-freeze-window)
+* [Delete a Deployment Freeze Window](use-deployment-freeze-api.md#delete-a-deployment-freeze-window)
+* [Toggle a Deployment Freeze Window](use-deployment-freeze-api.md#toggle-a-deployment-freeze-window)
 
 ### Before You Begin
 
-* [Deployments Overview](/category/cwefyz0jos-deployments-overview)
-* [Deployment Freeze Overview](/article/wscbhd20ca-deployment-freeze#deployment_freeze_overview)
-* [Workflows](/article/m220i1tnia-workflow-configuration)
-* [Create a Pipeline](/article/zc1u96u6uj-pipeline-configuration)
+* [Deployments Overview](https://docs.harness.io/category/general-deployment-features)
+* [Deployment Freeze Overview](../../security/governance-howtos/deployment-freeze.md#deployment-freeze-overview)
+* [Workflows](../../../continuous-delivery/model-cd-pipeline/workflows/workflow-configuration.md)
+* [Create a Pipeline](../../../continuous-delivery/model-cd-pipeline/pipelines/pipeline-configuration.md)
 * Make sure you have **manage deployment freezes** permission to use this API.
 
 ### Create a Deployment Freeze Window

@@ -12,7 +12,7 @@ You can use your [Google Cloud Secret Manager](https://cloud.google.com/secret-m
 
 Once you connect your GSM to Harness, you can store the secrets and other sensitive information you use in Harness in your GSM.
 
-Harness also supports [Google KMS as a secrets manager](/article/avo98eldl0-add-a-google-cloud-kms-secrets-manager).In this topic:
+Harness also supports [Google KMS as a secrets manager](add-a-google-cloud-kms-secrets-manager.md).In this topic:
 
 * [Before You Begin](#before_you_begin)
 * [Limitations](#limitations)
@@ -22,7 +22,7 @@ Harness also supports [Google KMS as a secrets manager](/article/avo98eldl0-add-
 * [Step 2: Display Name](#step_2_display_name)
 * [Step 3: Attach Service Account Key (Credentials) File](#step_3_attach_service_account_key_credentials_file)
 * [Step 4: Usage Scope](#step_4_usage_scope)
-* [Option: Reference Existing Secrets](https://docs.harness.io/article/t0rj3ze6ui-add-a-google-cloud-secrets-manager#option_reference_existing_secrets)
+* [Option: Reference Existing Secrets](add-a-google-cloud-secrets-manager.md#option-reference-existing-secrets)
 * [Option: Migrate Existing Secrets to GSM](#option_migrate_existing_secrets_to_gsm)
 * [Notes](#notes)
 * [See Also](#see_also)
@@ -30,8 +30,8 @@ Harness also supports [Google KMS as a secrets manager](/article/avo98eldl0-add-
 
 ### Before You Begin
 
-* See [Harness Key Concepts](/article/4o7oqwih6h-harness-key-concepts).
-* See [Secrets Management Overview](/article/au38zpufhr-secret-management).
+* See [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts).
+* See [Secrets Management Overview](secret-management.md).
 
 ### Limitations
 
@@ -44,11 +44,11 @@ Harness also supports [Google KMS as a secrets manager](/article/avo98eldl0-add-
 	+ When you change the content of a secret stored by Harness in GSM, a new version of that secret is created. That is the latest version, and that version is used by Harness.
 	+ When you delete a secret in Harness that is stored in GSM, the entire secret is deleted, not just a version.
 * An existing GSM secret's name cannot be updated using the Harness Secret Manager. Only the content of the secret is updated.
-* **Migration:** You can migrate **inline secrets** (existing secrets created in Harness) to and from your Harness GSM secrets manager. Any [secret references](/article/cwp7rlauzn-reference-existing-secrets) to secrets in your GSM secrets manager are not migrated.
+* **Migration:** You can migrate **inline secrets** (existing secrets created in Harness) to and from your Harness GSM secrets manager. Any [secret references](reference-existing-secrets.md) to secrets in your GSM secrets manager are not migrated.
 
 ### Supported Platforms and Technologies
 
-See [Supported Platforms and Technologies](/article/220d0ojx5y-supported-platforms).
+See [Supported Platforms and Technologies](https://docs.harness.io/article/220d0ojx5y-supported-platforms).
 
 ### Review: Permissions
 
@@ -80,7 +80,7 @@ Export your Google Cloud service account key, and attach it to the Harness **Co
 3. Grant this service account the GSM permissions needed.  
 To do this, edit the service account and click **Permissions**. Click **Roles**, and then add the roles needed.  
 See [Managing secrets](https://cloud.google.com/secret-manager/docs/access-control) from Google.
-4. Open your service account's Actions ⋮ menu, then select **Create key.**[![](https://files.helpdocs.io/kw8ldg1itf/articles/32poj7ap92/1576190233970/image.png)](https://files.helpdocs.io/kw8ldg1itf/articles/32poj7ap92/1576190233970/image.png)
+4. Open your service account's Actions ⋮ menu, then select **Create key.**[![](./static/add-a-google-cloud-secrets-manager-52.png)](./static/add-a-google-cloud-secrets-manager-52.png)
 5. In the resulting **Create private key** dialog, select the **JSON** option, create the key, and download it to your computer.
 6. Return to Harness Manager's **Configure Secrets Manager** dialog.
 7. In **Google Secrets Manager Credentials File**, click the **Choose File** button, and upload the key file you just exported from Google Cloud.
@@ -88,31 +88,31 @@ See [Managing secrets](https://cloud.google.com/secret-manager/docs/access-contr
 
 ### Step 4: Usage Scope
 
-See [Scope Secret Managers to Applications and Environments](https://docs.harness.io/article/e4ikpd00f6-scope-secret-managers-to-applications-and-environments).
+See [Scope Secret Managers to Applications and Environments](scope-secret-managers-to-applications-and-environments.md).
 
 ### Option: Reference Existing Secrets
 
 Create new Encrypted Text and File secrets in Harness using the existing secrets in Google Cloud Secret Manager.
 
-See [Reference Existing Secret Manager Secrets](/article/cwp7rlauzn-reference-existing-secrets).
+See [Reference Existing Secret Manager Secrets](reference-existing-secrets.md).
 
 ### Option: Migrate Existing Secrets to GSM
 
 You can migrate **inline secrets** from the Harness Secrets Manager to GSM.
 
-See [Migrate Secrets between Secrets Managers](/article/prjsaaev0c-migrate-secrets-between-secrets-managers).
+See [Migrate Secrets between Secrets Managers](migrate-secrets-between-secrets-managers.md).
 
 ### Notes
 
-* In [Harness Audit Trail](/article/kihlcbcnll-audit-trail), the event for adding a GSM secret manager is `Google Secrets Manager Connected`.
-* You can see a secret's usage in Harness. See [View Secrets Usage](/article/8bldcebkkf-managing-harness-secrets).
+* In [Harness Audit Trail](../auditing-howtos/audit-trail.md), the event for adding a GSM secret manager is `Google Secrets Manager Connected`.
+* You can see a secret's usage in Harness. See [View Secrets Usage](managing-harness-secrets.md).
 
 ### See Also
 
-* [Use Encrypted Text Secrets](/article/ygyvp998mu-use-encrypted-text-secrets)
-* [Use Encrypted File Secrets](/article/nt5vchhka4-use-encrypted-file-secrets)
-* [Secrets and Log Sanitization](/article/o5ec7vvtju-secrets-and-log-sanitization)
-* [Scope Secret Managers to Applications and Environments](/article/e4ikpd00f6-scope-secret-managers-to-applications-and-environments)
+* [Use Encrypted Text Secrets](use-encrypted-text-secrets.md)
+* [Use Encrypted File Secrets](use-encrypted-file-secrets.md)
+* [Secrets and Log Sanitization](../../techref-category/techref-security/secrets-and-log-sanitization.md)
+* [Scope Secret Managers to Applications and Environments](scope-secret-managers-to-applications-and-environments.md)
 
 ### Configure As Code
 

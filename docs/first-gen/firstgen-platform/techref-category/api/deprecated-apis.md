@@ -12,8 +12,8 @@ This topic contains a list of currently-deprecated API features with their repla
 
 ### Before You Begin
 
-* [​Introduction to Harness GraphQL API](/article/tm0w6rruqv-harness-api)
-* [Use Workflows API](/article/ba4vs50071-use-workflows-api)
+* [​Introduction to Harness GraphQL API](harness-api.md)
+* [Use Workflows API](use-workflows-api.md)
 
 ### Execution
 

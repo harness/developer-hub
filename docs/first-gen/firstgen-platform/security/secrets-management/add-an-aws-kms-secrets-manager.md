@@ -8,31 +8,31 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](https://docs.harness.io/article/1fjmm4by22). Switch to [NextGen](/article/pt52h8sb6z-add-an-aws-kms-secrets-manager).To store and use encrypted secrets (such as access keys) and files, you can add an AWS KMS Secrets Manager.
+This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../../platform/6_Security/7-add-an-aws-kms-secrets-manager.md).To store and use encrypted secrets (such as access keys) and files, you can add an AWS KMS Secrets Manager.
 
 In this topic:
 
-* [Before You Begin](https://docs.harness.io/article/qj4psb5vsf-add-an-aws-kms-secrets-manager#before_you_begin)
-* [Step 1: Configure Secrets Manager](https://docs.harness.io/article/qj4psb5vsf-add-an-aws-kms-secrets-manager#step_1_configure_secrets_manager)
-* [Step 2: Display Name](https://docs.harness.io/article/qj4psb5vsf-add-an-aws-kms-secrets-manager#step_2_display_name)
-* [Option: Credentials Type](https://docs.harness.io/article/qj4psb5vsf-add-an-aws-kms-secrets-manager#option_credentials_type)
-* [Option: Assume IAM Role on Delegate](https://docs.harness.io/article/qj4psb5vsf-add-an-aws-kms-secrets-manager#option_assume_iam_role_on_delegate)
-	+ [Delegate Selector](https://docs.harness.io/article/qj4psb5vsf-add-an-aws-kms-secrets-manager#delegate_selector)
-* [Option: AWS Access Keys Manually](https://docs.harness.io/article/qj4psb5vsf-add-an-aws-kms-secrets-manager#option_aws_access_keys_manually)
-	+ [Access Key](https://docs.harness.io/article/qj4psb5vsf-add-an-aws-kms-secrets-manager#access_key)
-	+ [Secret Key](https://docs.harness.io/article/qj4psb5vsf-add-an-aws-kms-secrets-manager#secret_key)
-* [Option: Assume Role Using STS on Delegate](https://docs.harness.io/article/qj4psb5vsf-add-an-aws-kms-secrets-manager#option_assume_role_using_sts_on_delegate)
-	+ [Role ARN](https://docs.harness.io/article/qj4psb5vsf-add-an-aws-kms-secrets-manager#role_arn)
-	+ [External ID](https://docs.harness.io/article/qj4psb5vsf-add-an-aws-kms-secrets-manager#external_id)
-	+ [Assume Role Duration](https://docs.harness.io/article/qj4psb5vsf-add-an-aws-kms-secrets-manager#assume_role_duration)
-* [Step 3: Key ARN](https://docs.harness.io/article/qj4psb5vsf-add-an-aws-kms-secrets-manager#step_3_key_arn)
-* [Step 4: Region](https://docs.harness.io/article/qj4psb5vsf-add-an-aws-kms-secrets-manager#step_4_region)
-* [Step 5: Usage Scope](https://docs.harness.io/article/qj4psb5vsf-add-an-aws-kms-secrets-manager#step_5_usage_scope)
+* [Before You Begin](add-an-aws-kms-secrets-manager.md#before-you-begin)
+* [Step 1: Configure Secrets Manager](add-an-aws-kms-secrets-manager.md#step-1-configure-secrets-manager)
+* [Step 2: Display Name](add-an-aws-kms-secrets-manager.md#step-2-display-name)
+* [Option: Credentials Type](add-an-aws-kms-secrets-manager.md#option-credentials-type)
+* [Option: Assume IAM Role on Delegate](add-an-aws-kms-secrets-manager.md#option-assume-iam-role-on-delegate)
+	+ [Delegate Selector](add-an-aws-kms-secrets-manager.md#delegate-selector)
+* [Option: AWS Access Keys Manually](add-an-aws-kms-secrets-manager.md#option-aws-access-keys-manually)
+	+ [Access Key](add-an-aws-kms-secrets-manager.md#access-key)
+	+ [Secret Key](add-an-aws-kms-secrets-manager.md#secret-key)
+* [Option: Assume Role Using STS on Delegate](add-an-aws-kms-secrets-manager.md#option-assume-role-using-sts-on-delegate)
+	+ [Role ARN](add-an-aws-kms-secrets-manager.md#role-arn)
+	+ [External ID](add-an-aws-kms-secrets-manager.md#external-id)
+	+ [Assume Role Duration](add-an-aws-kms-secrets-manager.md#assume-role-duration)
+* [Step 3: Key ARN](add-an-aws-kms-secrets-manager.md#step-3-key-arn)
+* [Step 4: Region](add-an-aws-kms-secrets-manager.md#step-4-region)
+* [Step 5: Usage Scope](add-an-aws-kms-secrets-manager.md#step-5-usage-scope)
 
 ### Before You Begin
 
-* See [Harness Key Concepts](/article/4o7oqwih6h-harness-key-concepts).
-* See [Secrets Management Overview](/article/au38zpufhr-secret-management).
+* See [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts).
+* See [Secrets Management Overview](secret-management.md).
 
 ### Step 1: Configure Secrets Manager
 
@@ -59,7 +59,7 @@ If you select **Assume the IAM Role on Delegate**, Harness will authenticate us
 
 #### Delegate Selector
 
-In **Delegate Selector**, enter the Selector of the Delegate that this Secrets Manager will use for all connections. For information about Selectors, see [Select Delegates for Specific Tasks with Selectors](https://docs.harness.io/article/c3fvixpgsl-select-delegates-for-specific-tasks-with-selectors).
+In **Delegate Selector**, enter the Selector of the Delegate that this Secrets Manager will use for all connections. For information about Selectors, see [Select Delegates for Specific Tasks with Selectors](../../account/manage-delegates/select-delegates-for-specific-tasks-with-selectors.md).
 
 ### Option: AWS Access Keys Manually
 
@@ -105,5 +105,5 @@ Select the AWS Region for the Secrets Manager.
 
 ### Step 5: Usage Scope
 
-See [Scope Secret Managers to Applications and Environments](/article/e4ikpd00f6-scope-secret-managers-to-applications-and-environments).
+See [Scope Secret Managers to Applications and Environments](scope-secret-managers-to-applications-and-environments.md).
 

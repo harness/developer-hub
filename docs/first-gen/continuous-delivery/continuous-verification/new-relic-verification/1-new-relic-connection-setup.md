@@ -30,7 +30,7 @@ To connect a verification provider, do the following:
 
 ### Step 2: Encrypted API Key
 
-For secrets and other sensitive settings, select or create a new [Harness Encrypted Text secret](https://docs.harness.io/article/ygyvp998mu-use-encrypted-text-secrets).Enter the API key needed to connect with the server. For information on API keys, see [Access to REST API keys](https://docs.newrelic.com/docs/apis/getting-started/intro-apis/access-rest-api-keys) from New Relic.
+For secrets and other sensitive settings, select or create a new [Harness Encrypted Text secret](../../../firstgen-platform/security/secrets-management/use-encrypted-text-secrets.md).Enter the API key needed to connect with the server. For information on API keys, see [Access to REST API keys](https://docs.newrelic.com/docs/apis/getting-started/intro-apis/access-rest-api-keys) from New Relic.
 
 1. Log into New Relic.
 2. On the home page, click your account name, and then click **Account Settings**.

@@ -16,9 +16,9 @@ This topic describes how to set up the Delegate config files for running scripts
 
 ### Before You Begin
 
-* [Delegate Installation Overview](/article/igftn7rrtg-delegate-installation-overview)
-* [Install the Harness Kubernetes Delegate](/article/0hn6vdpeqz-install-kubernetes-delegate)
-* [Install the Harness Docker Delegate](/article/hnvvwbhbdu-install-docker-delegate)
+* [Delegate Installation Overview](delegate-installation-overview.md)
+* [Install the Harness Kubernetes Delegate](install-kubernetes-delegate.md)
+* [Install the Harness Docker Delegate](install-docker-delegate.md)
 
 ### Limitations
 
@@ -78,7 +78,7 @@ spec:
             echo wget installed  
 ...
 ```
-In `value`, enter your script. For a list of common scripts, see [Common Delegate Scripts](/article/nxhlbmbgkj-common-delegate-profile-scripts).
+In `value`, enter your script. For a list of common scripts, see [Common Delegate Scripts](../delegate-ref/common-delegate-profile-scripts.md).
 
 A multiline script must follow the YAML spec for [literal scalar style](https://yaml.org/spec/1.2-old/spec.html#id2795688).The script should not be in quotes.For the Docker Delegate, Harness uses a Docker compose file, so you add your script like this:
 
@@ -99,8 +99,8 @@ Follow the remaining Delegate installation steps.
 
 See:
 
-* [Install the Harness Kubernetes Delegate](/article/0hn6vdpeqz-install-kubernetes-delegate)
-* [Install the Harness Docker Delegate](/article/hnvvwbhbdu-install-docker-delegate)
+* [Install the Harness Kubernetes Delegate](install-kubernetes-delegate.md)
+* [Install the Harness Docker Delegate](install-docker-delegate.md)
 
 ### Step 4: Verify the Script
 
@@ -143,5 +143,5 @@ Watcher started
 ```
 ### See Also
 
-* [Automate Harness Kubernetes Delegate Setup](/article/up3w9d8zd0-automate-harness-kubernetes-delegate-setup)
+* [Automate Harness Kubernetes Delegate Setup](automate-harness-kubernetes-delegate-setup.md)
 

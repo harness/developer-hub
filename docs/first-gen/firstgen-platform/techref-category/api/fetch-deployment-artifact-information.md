@@ -14,19 +14,19 @@ You can use the **WorkflowExecution** API to obtain details on all of the artifa
 
 In this topic:
 
-* [Before You Begin](https://docs.harness.io/article/dhdq2nqxai-fetch-deployment-artifact-information#before_you_begin)
-* [Supported Platforms and Technologies](https://docs.harness.io/article/dhdq2nqxai-fetch-deployment-artifact-information#undefined)
-* [Step: Fetch Artifact Information from Deployments](https://docs.harness.io/article/dhdq2nqxai-fetch-deployment-artifact-information#step_fetch_artifact_information_from_deployments)
-* [See Also](https://docs.harness.io/article/dhdq2nqxai-fetch-deployment-artifact-information#see_also)
+* [Before You Begin](fetch-deployment-artifact-information.md#before-you-begin)
+* [Supported Platforms and Technologies](fetch-deployment-artifact-information.md#undefined)
+* [Step: Fetch Artifact Information from Deployments](fetch-deployment-artifact-information.md#step-fetch-artifact-information-from-deployments)
+* [See Also](fetch-deployment-artifact-information.md#see-also)
 
 ### Before You Begin
 
-* [Harness API](https://docs.harness.io/article/tm0w6rruqv-harness-api)
-* [Service Types and Artifact Sources](https://docs.harness.io/article/qluiky79j8-service-types-and-artifact-sources)
+* [Harness API](harness-api.md)
+* [Service Types and Artifact Sources](../../../continuous-delivery/model-cd-pipeline/setup-services/service-types-and-artifact-sources.md)
 
 ### Supported Platforms and Technologies
 
-See [Supported Platforms and Technologies](/article/220d0ojx5y-supported-platforms).
+See [Supported Platforms and Technologies](https://docs.harness.io/article/220d0ojx5y-supported-platforms).
 
 ### Step: Fetch Artifact Information from Deployments
 
@@ -141,10 +141,10 @@ You can get a Pipeline ID by querying for a list of Pipelines:
   }  
 }
 ```
-See [Use Pipelines API](/article/rfqmu6cejy-use-pipelines-api).
+See [Use Pipelines API](use-pipelines-api.md).
 
 ### See Also
 
-* [Use Workflows API](/article/ba4vs50071-use-workflows-api)
-* [Use Pipelines API](/article/rfqmu6cejy-use-pipelines-api)
+* [Use Workflows API](use-workflows-api.md)
+* [Use Pipelines API](use-pipelines-api.md)
 

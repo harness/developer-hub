@@ -12,25 +12,25 @@ This topic shows you how to list tagged Harness resources using the Harness API.
 
 In this topic:
 
-* [Before You Begin](/article/80ppvv3a3p-use-tags-api#before_you_begin)
-* [Fetch the List of Tags](/article/80ppvv3a3p-use-tags-api#fetch_the_list_of_tags)
-* [Fetch Details of the Tags](/article/80ppvv3a3p-use-tags-api#fetch_details_of_the_tags)
-* [Fetch List of all the Tags](/article/80ppvv3a3p-use-tags-api#fetch_list_of_all_the_tags)
-* [Fetch Details of Tags by List of Tag IDs or Names](/article/80ppvv3a3p-use-tags-api#fetch_details_of_tags_by_list_of_tag_i_ds_or_names)
-* [Fetch Tag Usage Details by Tag ID, Name, or Harness Entity Type](/article/80ppvv3a3p-use-tags-api#fetch_tag_usage_details_by_tag_id_name_or_harness_entity_type)
-* [Attach a Tag to a Harness Entity](/article/80ppvv3a3p-use-tags-api#attach_a_tag_to_a_harness_entity)
-* [Detach a Tag from a Harness Entity](/article/80ppvv3a3p-use-tags-api#detach_a_tag_from_a_harness_entity)
+* [Before You Begin](use-tags-api.md#before-you-begin)
+* [Fetch the List of Tags](use-tags-api.md#fetch-the-list-of-tags)
+* [Fetch Details of the Tags](use-tags-api.md#fetch-details-of-the-tags)
+* [Fetch List of all the Tags](use-tags-api.md#fetch-list-of-all-the-tags)
+* [Fetch Details of Tags by List of Tag IDs or Names](use-tags-api.md#fetch-details-of-tags-by-list-of-tag-i-ds-or-names)
+* [Fetch Tag Usage Details by Tag ID, Name, or Harness Entity Type](use-tags-api.md#fetch-tag-usage-details-by-tag-id-name-or-harness-entity-type)
+* [Attach a Tag to a Harness Entity](use-tags-api.md#attach-a-tag-to-a-harness-entity)
+* [Detach a Tag from a Harness Entity](use-tags-api.md#detach-a-tag-from-a-harness-entity)
 
 ### Before You Begin
 
-* [​Introduction to Harness GraphQL API](/article/tm0w6rruqv-harness-api)
-* [Harness API Explorer](/article/2rmd5i0e0h-harness-api-explorer)
-* [API Schema and Structure](/article/kn8wsu80n4-api-schema-and-structure)
-* [Manage Tags](/article/mzcpqs3hrl-manage-tags)
+* [​Introduction to Harness GraphQL API](harness-api.md)
+* [Harness API Explorer](harness-api-explorer.md)
+* [API Schema and Structure](api-schema-and-structure.md)
+* [Manage Tags](../../account/tags/manage-tags.md)
 
 ### Fetch the List of Tags
 
-You can get the list of Tags associated with all of your Harness [Application Entities,](/article/bucothemly-application-configuration) such as:
+You can get the list of Tags associated with all of your Harness [Application Entities,](../../../continuous-delivery/model-cd-pipeline/applications/application-configuration.md) such as:
 
 * Services
 * Environments

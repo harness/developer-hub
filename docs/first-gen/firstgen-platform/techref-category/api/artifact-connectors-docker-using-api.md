@@ -12,18 +12,18 @@ This topic describes how to create, read, update, and delete Docker Artifact So
 
 In this topic:
 
-* [Before You Begin](https://docs.harness.io/article/4jobsef2vx-artifact-connectors-docker-using-api#undefined)
-* [Step: Create a Docker Artifact Source](https://docs.harness.io/article/4jobsef2vx-artifact-connectors-docker-using-api#undefined)
-* [Step: Update a Docker Artifact Source](https://docs.harness.io/article/4jobsef2vx-artifact-connectors-docker-using-api#undefined)
-* [Step: Delete a Docker Artifact Source](https://docs.harness.io/article/4jobsef2vx-artifact-connectors-docker-using-api#undefined)
+* [Before You Begin](artifact-connectors-docker-using-api.md#undefined)
+* [Step: Create a Docker Artifact Source](artifact-connectors-docker-using-api.md#undefined)
+* [Step: Update a Docker Artifact Source](artifact-connectors-docker-using-api.md#undefined)
+* [Step: Delete a Docker Artifact Source](artifact-connectors-docker-using-api.md#undefined)
 
 ### Before You Begin
 
-* Read the [Create an Application](https://docs.harness.io/article/bucothemly-application-configuration) topic to get an overview of how Harness organizes Services.
-* Read the [Add a Service](https://docs.harness.io/article/eb3kfl8uls-service-configuration) topic to understand the process to add a Service to an Application.
-* Read [Configuration as Code](https://docs.harness.io/article/htvzryeqjw-configuration-as-code) to see how you can quickly configure your Harness Service using your existing YAML in Git.
-* [Add Artifact Servers](https://docs.harness.io/article/7dghbx1dbl-configuring-artifact-server)
-* [Add a Docker Artifact Source](/article/gxv9gj6khz-add-a-docker-image-service)
+* Read the [Create an Application](../../../continuous-delivery/model-cd-pipeline/applications/application-configuration.md) topic to get an overview of how Harness organizes Services.
+* Read the [Add a Service](../../../continuous-delivery/model-cd-pipeline/setup-services/service-configuration.md) topic to understand the process to add a Service to an Application.
+* Read [Configuration as Code](../../config-as-code/configuration-as-code.md) to see how you can quickly configure your Harness Service using your existing YAML in Git.
+* [Add Artifact Servers](../../account/manage-connectors/configuring-artifact-server.md)
+* [Add a Docker Artifact Source](../../../continuous-delivery/model-cd-pipeline/setup-services/add-a-docker-image-service.md)
 
 ### Step: Create a Docker Artifact Source
 
@@ -53,9 +53,9 @@ The Query Variables follow this syntax, with `connectorType` identifying the D
 
 To fetch the `passwordSecretId` use:
 
-* [Encrypted Text API](https://docs.harness.io/article/omnfccj1n0-api-encrypted-text#get_a_secret_by_name)
-* [WinRM Credentials API](https://docs.harness.io/article/2rlo5zw321-api-win-rm-credentials#get_a_secret_by_name)
-* [SSH Credentials API](https://docs.harness.io/article/v65okfwfl2-api-ssh-credentials#get_a_secret_by_name)
+* [Encrypted Text API](api-encrypted-text.md#get-a-secret-by-name)
+* [WinRM Credentials API](api-win-rm-credentials.md#get-a-secret-by-name)
+* [SSH Credentials API](api-ssh-credentials.md#get-a-secret-by-name)
 
 
 ```
@@ -94,7 +94,7 @@ mutation UpdateConnector($connector: UpdateConnectorInput!) {
 ```
 ##### Query Variables
 
-The Query Variables follow this syntax, with `connectorType` identifying the Docker Artifact Source to update. See [Fetch the Connector ID](/article/4jobsef2vx-artifact-connectors-docker-using-api#fetch_the_connector_id) to get the connector ID details.
+The Query Variables follow this syntax, with `connectorType` identifying the Docker Artifact Source to update. See [Fetch the Connector ID](artifact-connectors-docker-using-api.md#fetch-the-connector-id) to get the connector ID details.
 
 
 ```

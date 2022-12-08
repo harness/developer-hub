@@ -8,11 +8,13 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-The Select Nodes step selects the target hosts from the [Infrastructure Definition](/article/v3l3wqovbe-infrastructure-definitions) you defined. You can choose to select a specific host or simply specify the number of instances to select with the Infrastructure Definition criteria.
+The Select Nodes step selects the target hosts from the [Infrastructure Definition](../../../../continuous-delivery/model-cd-pipeline/environments/infrastructure-definitions.md) you defined. You can choose to select a specific host or simply specify the number of instances to select with the Infrastructure Definition criteria.
 
-The Select Nodes step is used before the [Install step](/article/2q8vjxdjcq-install-workflow-step), which installs the application on the hosts or instances you selected.
+The Select Nodes step is used before the [Install step](install-workflow-step.md), which installs the application on the hosts or instances you selected.
 
-You cannot use [Harness expressions](https://docs.harness.io/article/9dvxcegm90-variables) as parameters in the Select Nodes step.### Limitation
+You cannot use [Harness expressions](../../variables/variables.md) as parameters in the Select Nodes step.
+
+### Limitation
 
 Use the **Select Nodes** step once per phase only. You cannot use **Select Nodes** more than once per phase.
 
@@ -28,13 +30,15 @@ If you choose **Yes** in **Select specific hosts?**, click in **Host Name(s)
 
 The following image shows an **Infrastructure Definition** specifying an AWS Region, VPC, and Tags (**Name:doc-target**), the EC2 instance that meets that criteria, and the host name in the Node Select dialog.
 
-[![](https://files.helpdocs.io/kw8ldg1itf/articles/7xoulhbcj6/1580333800017/image.png)](https://files.helpdocs.io/kw8ldg1itf/articles/7xoulhbcj6/1580333800017/image.png)### Option: Select Host Not in Infrastructure Definition
+[![](./static/select-nodes-workflow-step-00.png)](./static/select-nodes-workflow-step-00.png)
+
+### Option: Select Host Not in Infrastructure Definition
 
 Currently, this feature is behind the feature flag `DEPLOY_TO_INLINE_HOSTS` and available in SSH and WinRM deployments only. Contact [Harness Support](mailto:support@harness.io) to enable the feature.The nodes that appear in the Select Nodes **Host Name(s)** setting are taken from the Workflow's Infrastructure Definition, but you can enter in alternate or additional nodes. 
 
 In the following example, host1 and host2 are from the Workflow's Infrastructure Definition, and the remaining hosts are entered manually.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/ax6mntmp3s/1643931866004/clean-shot-2022-02-03-at-15-44-16-2-x.png)You can also enter [Workflow variable expressions](/article/766iheu1bk-add-workflow-variables-new-template) that are resolved at runtime. The Workflow variables can be a list of hosts.
+![](./static/select-nodes-workflow-step-02.png)You can also enter [Workflow variable expressions](../../../../continuous-delivery/model-cd-pipeline/workflows/add-workflow-variables-new-template.md) that are resolved at runtime. The Workflow variables can be a list of hosts.
 
 ### Instances
 
@@ -63,14 +67,14 @@ In a Canary Workflow deployment for an SSH Service, you use multiple Phases, eac
 
 Node Select will look like this in Phase 1:
 
-[![](https://files.helpdocs.io/kw8ldg1itf/articles/7xoulhbcj6/1580333880608/image.png)](https://files.helpdocs.io/kw8ldg1itf/articles/7xoulhbcj6/1580333880608/image.png)And like this in Phase 2:
+[![](./static/select-nodes-workflow-step-03.png)](./static/select-nodes-workflow-step-03.png)And like this in Phase 2:
 
-[![](https://files.helpdocs.io/kw8ldg1itf/articles/7xoulhbcj6/1580333897252/image.png)](https://files.helpdocs.io/kw8ldg1itf/articles/7xoulhbcj6/1580333897252/image.png)The **Instances** setting is cumulative not additive. So using 25% at each phase will not equal 100%. Each successive **Node Select** incorporates all **Node Select** **Instances** settings before it. To reach 100%, your **Instances** setting at each phase must include the previous percentage (25%, 50%, 75%, 100%).
+[![](./static/select-nodes-workflow-step-05.png)](./static/select-nodes-workflow-step-05.png)The **Instances** setting is cumulative not additive. So using 25% at each phase will not equal 100%. Each successive **Node Select** incorporates all **Node Select** **Instances** settings before it. To reach 100%, your **Instances** setting at each phase must include the previous percentage (25%, 50%, 75%, 100%).
 
 The same is true for using Count instead of Percentage. If you use multiple **Node Select** steps in multiple Workflow phases (as in a Canary Workflow) using 1 Count at each of 4 phases will not equal 4 instances. Each successive **Node Select** incorporates all **Node Select** **Instances** settings before it. To reach 4 instances, your **Instances** setting at each phase must include the previous count (1, 2, 3, 4).
 
 When the **Exclude instances from future phases** setting is selected (recommended for Canary deployments), the instance(s) selected by this **Node Select** step will not be eligible for selection by any future **Node Select** step.### See Also
 
-* [Install Workflow Step](/article/2q8vjxdjcq-install-workflow-step)
-* [Traditional Deployments Overview](/article/6pwni5f9el-traditional-deployments-overview)
+* [Install Workflow Step](install-workflow-step.md)
+* [Traditional Deployments Overview](../../../../continuous-delivery/traditional-deployments/traditional-deployments-overview.md)
 

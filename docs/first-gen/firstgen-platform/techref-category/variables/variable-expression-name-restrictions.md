@@ -12,8 +12,8 @@ The following limitations and restrictions apply to Harness variable expressions
 
 For general details about Harness variable expressions, see:
 
-* [What is a Harness Variable Expression?](/article/9dvxcegm90-variables)
-* [Built-in Variables List](/article/aza65y4af6-built-in-variables-list)
+* [What is a Harness Variable Expression?](variables.md)
+* [Built-in Variables List](built-in-variables-list.md)
 
 ### Limitations
 

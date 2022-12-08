@@ -20,8 +20,8 @@ Harness will use your tools to verify deployments, and will use Harness' machine
 
 ### Before You Begin
 
-* [What Is Continuous Verification (CV)?](/article/ina58fap5y-what-is-cv)
-* [When Does Harness Verify Deployments?](/article/95vzen6l4m-when-verify)
+* [What Is Continuous Verification (CV)?](../../../continuous-delivery/continuous-verification/continuous-verification-overview/concepts-cv/what-is-cv.md)
+* [When Does Harness Verify Deployments?](../../../continuous-delivery/continuous-verification/continuous-verification-overview/concepts-cv/when-verify.md)
 
 
 ### Step 1: Connect a Verification Provider
@@ -38,22 +38,22 @@ Harness will use your tools to verify deployments, and will use Harness' machine
 
 Proceed to the integration overview for the provider you've selected, and follow the steps it provides:
 
-* [AppDynamics](/article/2zxfjt67yb-app-dynamics-verification-overview)
-* [New Relic](/article/ht3amzjvle-new-relic-verification-overview)
-* [Dynatrace](/article/r3xtgg0e2k-dynatrace-verification-overview)
-* [Splunk](/article/dujtd6ek5p-splunk-verification-overview)
-* [ELK Elasticsearch](/article/qdajtgsqfj-elasticsearch-verification-overview)
-* [Datadog](/article/ong5rbbn49-datadog-verification-overview)
-* [Sumo Logic](/article/wb2k4u4kxm-sumo-logic-verification-overview)
-* [Prometheus](/article/5uh79dplbj-prometheus-verification-overview)
-* [Bugsnag](/article/ac5piurukt-bugsnag-verification-overview)
-* [Stackdriver](/article/jn0axefdat-stackdriver-and-harness-overview)
-* [CloudWatch](/article/q6ti811nck-cloud-watch-verification-overview)
-* [Instana](/article/s9qjvicmod-instana-verification-overview)
-* [Logz.io](/article/1hw6xxh73c-logz-verification-provider)
+* [AppDynamics](../../../continuous-delivery/continuous-verification/continuous-verification-overview/concepts-cv/app-dynamics-verification-overview.md)
+* [New Relic](../../../continuous-delivery/continuous-verification/continuous-verification-overview/concepts-cv/new-relic-verification-overview.md)
+* [Dynatrace](../../../continuous-delivery/continuous-verification/continuous-verification-overview/concepts-cv/dynatrace-verification-overview.md)
+* [Splunk](../../../continuous-delivery/continuous-verification/continuous-verification-overview/concepts-cv/splunk-verification-overview.md)
+* [ELK Elasticsearch](../../../continuous-delivery/continuous-verification/continuous-verification-overview/concepts-cv/elasticsearch-verification-overview.md)
+* [Datadog](../../../continuous-delivery/continuous-verification/continuous-verification-overview/concepts-cv/datadog-verification-overview.md)
+* [Sumo Logic](../../../continuous-delivery/continuous-verification/continuous-verification-overview/concepts-cv/sumo-logic-verification-overview.md)
+* [Prometheus](../../../continuous-delivery/continuous-verification/continuous-verification-overview/concepts-cv/prometheus-verification-overview.md)
+* [Bugsnag](../../../continuous-delivery/continuous-verification/continuous-verification-overview/concepts-cv/bugsnag-verification-overview.md)
+* [Stackdriver](../../../continuous-delivery/continuous-verification/continuous-verification-overview/concepts-cv/stackdriver-and-harness-overview.md)
+* [CloudWatch](../../../continuous-delivery/continuous-verification/continuous-verification-overview/concepts-cv/cloud-watch-verification-overview.md)
+* [Instana](../../../continuous-delivery/continuous-verification/continuous-verification-overview/concepts-cv/instana-verification-overview.md)
+* [Logz.io](../../../continuous-delivery/continuous-verification/logz-io-verification/logz-verification-provider.md)
 
 
 ### Option: Custom Metrics and Logs
 
-If your APM or logging tool is not in the list above, you can configure it as a Harness custom APM or log provider. See [Custom Verification Overview](/article/e87u8c63z4-custom-verification-overview).
+If your APM or logging tool is not in the list above, you can configure it as a Harness custom APM or log provider. See [Custom Verification Overview](../../../continuous-delivery/continuous-verification/custom-metrics-and-logs-verification/custom-verification-overview.md).
 

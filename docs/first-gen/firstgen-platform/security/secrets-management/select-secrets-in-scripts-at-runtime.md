@@ -36,11 +36,11 @@ In this topic:
 ### Before You Begin
 
 
-* [Use Encrypted Text Secrets](/article/ygyvp998mu-use-encrypted-text-secrets)
-* [Set Workflow Variables](/article/766iheu1bk-add-workflow-variables-new-template)
-* [Add Service Config Variables](/article/q78p7rpx9u-add-service-level-config-variables)
-* [Create a Shell Script Workflow Step Template](/article/lfqn3t83hd-create-a-shell-script-workflow-step-template)
-* [Secrets and Log Sanitization](/article/o5ec7vvtju-secrets-and-log-sanitization)
+* [Use Encrypted Text Secrets](use-encrypted-text-secrets.md)
+* [Set Workflow Variables](../../../continuous-delivery/model-cd-pipeline/workflows/add-workflow-variables-new-template.md)
+* [Add Service Config Variables](../../../continuous-delivery/model-cd-pipeline/setup-services/add-service-level-config-variables.md)
+* [Create a Shell Script Workflow Step Template](../../account/manage-templatelib/create-a-shell-script-workflow-step-template.md)
+* [Secrets and Log Sanitization](../../techref-category/techref-security/secrets-and-log-sanitization.md)
 
 
 ### Visual Summary
@@ -51,7 +51,7 @@ You create a Shell Script template that uses a variable to replace the value of 
 
 
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/dgylyvpls8/1606346799744/image.png)
+![](./static/select-secrets-in-scripts-at-runtime-30.png)
 
 
 In the following example, you can see the Shell Script template uses a Workflow variable in **Value** to replace the secret name in the script. When the Workflow is deployed, you enter in a new variable name.
@@ -59,24 +59,24 @@ In the following example, you can see the Shell Script template uses a Workflow 
 
 
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/dgylyvpls8/1606346653226/image.png)
+![](./static/select-secrets-in-scripts-at-runtime-31.png)
 
 You can also perform the same substitution using Service Config Variables and
- [Environment Overrides](/article/4m2kst307m-override-service-files-and-variables-in-environments):
+ [Environment Overrides](../../../continuous-delivery/model-cd-pipeline/environments/override-service-files-and-variables-in-environments.md):
 
 
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/dgylyvpls8/1606344652995/image.png)
+![](./static/select-secrets-in-scripts-at-runtime-32.png)
 
 In this use case, you can have a single Service Config Variable and multiple Environments that override the variable with their own values. You can then
- [templatize the Workflow](/article/bov41f5b7o-templatize-a-workflow-new-template) and select a different Environment each time you deploy.
+ [templatize the Workflow](../../../continuous-delivery/model-cd-pipeline/workflows/templatize-a-workflow-new-template.md) and select a different Environment each time you deploy.
 
 
 ### Supported Platforms and Technologies
 
 
 See
- [Supported Platforms and Technologies](/article/220d0ojx5y-supported-platforms).
+ [Supported Platforms and Technologies](https://docs.harness.io/article/220d0ojx5y-supported-platforms).
 
 
 ### Step 1: Create Secrets
@@ -93,7 +93,7 @@ For this example, we'll use a secret named `hello`.
 
 
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/dgylyvpls8/1606332584578/image.png)
+![](./static/select-secrets-in-scripts-at-runtime-33.png)
 
 You can use file secrets, also, but we cover text secrets in this topic.
 
@@ -101,8 +101,8 @@ You can use file secrets, also, but we cover text secrets in this topic.
 See:
 
 
-* [Use Encrypted Text Secrets](/article/ygyvp998mu-use-encrypted-text-secrets)
-* [Use Encrypted File Secrets](/article/nt5vchhka4-use-encrypted-file-secrets)
+* [Use Encrypted Text Secrets](use-encrypted-text-secrets.md)
+* [Use Encrypted File Secrets](use-encrypted-file-secrets.md)
 
 
 ### Step 2: Create the Shell Script Template
@@ -112,14 +112,14 @@ Next, we will create a Shell Script template that we can add to any Workflow.
 
 
 You can create a Shell Script Workflow Step template in the account Template Library or the
- [Application Templates](/article/ygi6d8epse-use-templates).
+ [Application Templates](../../../continuous-delivery/concepts-cd/deployment-types/use-templates.md).
 Create a **Shell Script** template. See
- [Create a Shell Script Workflow Step Template](/article/lfqn3t83hd-create-a-shell-script-workflow-step-template).
+ [Create a Shell Script Workflow Step Template](../../account/manage-templatelib/create-a-shell-script-workflow-step-template.md).
 
 
 
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/dgylyvpls8/1606347114110/image.png)
+![](./static/select-secrets-in-scripts-at-runtime-34.png)
 
 In **Script**, enter a script that includes the text secret expression `${secrets.getValue("token")}`.
 
@@ -144,7 +144,7 @@ When you are done, the Shell Script template will look something like this:
 
 
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/dgylyvpls8/1606346799744/image.png)
+![](./static/select-secrets-in-scripts-at-runtime-35.png)
 
 
 You can see that the variable `token` in **Variables** will replace the value in the `${secrets.getValue("token")}` expression with `hello`.
@@ -157,14 +157,14 @@ When you add the template to the Workflow, you will replace `hello` with a Workf
 
 
 If you want to use a Workflow variable to replace the secret name at deployment runtime, create the Workflow variable. See
- [Set Workflow Variables](/article/766iheu1bk-add-workflow-variables-new-template).
+ [Set Workflow Variables](../../../continuous-delivery/model-cd-pipeline/workflows/add-workflow-variables-new-template.md).
 
 
 Here's an example that includes multiple options:
 
 
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/dgylyvpls8/1606343739200/image.png)
+![](./static/select-secrets-in-scripts-at-runtime-36.png)
 
 Later, when you add this Workflow variable to the template, you will reference it as `${workflow.variables.secret_name}`.
 
@@ -176,7 +176,7 @@ Instead of using a Workflow variable in the template, you can use a Service Conf
 
 
 In the Service your Workflow will deploy, create a Service Config Variable. See
- [Add Service Config Variables](/article/q78p7rpx9u-add-service-level-config-variables).
+ [Add Service Config Variables](../../../continuous-delivery/model-cd-pipeline/setup-services/add-service-level-config-variables.md).
 
 
 In our example, the variable is named `secret`.
@@ -184,7 +184,7 @@ In our example, the variable is named `secret`.
 
 
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/dgylyvpls8/1606344785386/image.png)
+![](./static/select-secrets-in-scripts-at-runtime-37.png)
 
 Later, when you add this Service Config Variable to the template, you will reference it as `${serviceVariable.secret}`.
 
@@ -197,10 +197,10 @@ Here is an example where the Service Configuration Override uses the secret name
 
 
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/dgylyvpls8/1606344949196/image.png)
+![](./static/select-secrets-in-scripts-at-runtime-38.png)
 
 In your Workflow, you can templatize the Environment setting so that you can select different Environments, and their Service Configuration Overrides, when you deploy the Workflow. See
- [Templatize a Workflow](/article/bov41f5b7o-templatize-a-workflow-new-template).
+ [Templatize a Workflow](../../../continuous-delivery/model-cd-pipeline/workflows/templatize-a-workflow-new-template.md).
 
 
 ### Step 3: Add the Template to the Workflow
@@ -220,14 +220,14 @@ Here is an example using the Workflow variable:
 
 
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/dgylyvpls8/1606345694711/image.png)
+![](./static/select-secrets-in-scripts-at-runtime-39.png)
 
 Here is an example using the Service Config Variable:
 
 
 
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/dgylyvpls8/1606345677579/image.png)
+![](./static/select-secrets-in-scripts-at-runtime-40.png)
 
 If you are using a Service Config Variable, ensure you add the template to a Workflow section that can access the Service. A Pre-deployment section
  cannot access Service Config Variables.
@@ -244,11 +244,11 @@ If you are using a Workflow variable, you will be prompted to provide a value fo
 
 
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/dgylyvpls8/1606345981105/image.png)
+![](./static/select-secrets-in-scripts-at-runtime-41.png)
 
 If you use a
- [Trigger](/article/xerirloz9a-add-a-trigger-2) to execute the Workflow, you will select a secret name in the Trigger. You can also
- [pass values into the Workflow using a Trigger](/article/revc37vl0f-passing-variable-into-workflows).
+ [Trigger](../../../continuous-delivery/model-cd-pipeline/triggers/add-a-trigger-2.md) to execute the Workflow, you will select a secret name in the Trigger. You can also
+ [pass values into the Workflow using a Trigger](../../../continuous-delivery/model-cd-pipeline/expressions/passing-variable-into-workflows.md).
 In the **Deployments** page, click the template step to see that the secret was substituted:
 
 
@@ -266,14 +266,14 @@ Here is the **Execution Context** for a template using a Workflow variable:
 
 
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/dgylyvpls8/1606346297819/image.png)
+![](./static/select-secrets-in-scripts-at-runtime-42.png)
 
 Here is the **Execution Context** for a template using a Service Config Variable:
 
 
 
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/dgylyvpls8/1606346248388/image.png)
+![](./static/select-secrets-in-scripts-at-runtime-43.png)
 
 That's it. You have successfully selected a secret at deployment runtime.
 

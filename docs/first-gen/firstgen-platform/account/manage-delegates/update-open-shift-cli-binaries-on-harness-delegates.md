@@ -16,16 +16,16 @@ Updating the OpenShift CLI is as simple as adding the binary to the Delegate hos
 
 In this topic:
 
-* [Before You Begin](https://docs.harness.io/article/gol46jnpeh-update-open-shift-cli-binaries-on-harness-delegates#before_you_begin)
-* [Step 1: Download the OpenShift Binary](https://docs.harness.io/article/gol46jnpeh-update-open-shift-cli-binaries-on-harness-delegates#step_1_download_the_open_shift_binary)
-* [Step 2: Update OC\_VERSION](https://docs.harness.io/article/gol46jnpeh-update-open-shift-cli-binaries-on-harness-delegates#step_2_update_oc_version)
-* [Step 3: Restart the Delegate](https://docs.harness.io/article/gol46jnpeh-update-open-shift-cli-binaries-on-harness-delegates#step_3_restart_the_delegate)
-* [See Also](https://docs.harness.io/article/gol46jnpeh-update-open-shift-cli-binaries-on-harness-delegates#see_also)
+* [Before You Begin](update-open-shift-cli-binaries-on-harness-delegates.md#before-you-begin)
+* [Step 1: Download the OpenShift Binary](update-open-shift-cli-binaries-on-harness-delegates.md#step-1-download-the-open-shift-binary)
+* [Step 2: Update OC\_VERSION](update-open-shift-cli-binaries-on-harness-delegates.md#step-2-update-oc-version)
+* [Step 3: Restart the Delegate](update-open-shift-cli-binaries-on-harness-delegates.md#step-3-restart-the-delegate)
+* [See Also](update-open-shift-cli-binaries-on-harness-delegates.md#see-also)
 
 ### Before You Begin
 
-* [Harness Delegate Overview](/article/h9tkwmkrm7-delegate-installation)
-* [Using OpenShift with Harness Kubernetes](/article/p756zrn9vc-using-open-shift-with-harness-kubernetes)
+* [Harness Delegate Overview](delegate-installation.md)
+* [Using OpenShift with Harness Kubernetes](../../../continuous-delivery/kubernetes-deployments/using-open-shift-with-harness-kubernetes.md)
 
 ### Step 1: Download the OpenShift Binary
 
@@ -62,5 +62,5 @@ Here are the different types of Delegates and the configuration restart commands
 
 ### See Also
 
-* [Using OpenShift with Harness Kubernetes](/article/p756zrn9vc-using-open-shift-with-harness-kubernetes)
+* [Using OpenShift with Harness Kubernetes](../../../continuous-delivery/kubernetes-deployments/using-open-shift-with-harness-kubernetes.md)
 

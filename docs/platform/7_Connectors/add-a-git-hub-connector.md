@@ -12,7 +12,7 @@ Harness Code Repository Connectors connect your Harness account with your Git pl
 
 ### Before you begin
 
-* [Learn Harness' Key Concepts](https://docs.harness.io/article/hv2758ro4e-learn-harness-key-concepts)
+* [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md)
 
 ### Step 1: Add a GitHub Code Repo Connector
 
@@ -86,7 +86,7 @@ Click **Continue**.
 In **Select Connectivity Mode**, you have two options:
 
 * **Connect Through Harness Platform:** Harness SaaS will connect to your Git repo whenever it needs to pull code or a file or sync.
-* **Connect Through a Harness Delegate:** Harness will make all connections using the Harness Delegate. This option is used for Harness Self-Managed Enterprise Edition Overview often, but it is also used for Harness SaaS. See [Harness Self-Managed Enterprise Edition Overview](https://docs.harness.io/article/tb4e039h8x-harness-on-premise-overview).![](./static/add-a-git-hub-connector-39.png)
+* **Connect Through a Harness Delegate:** Harness will make all connections using the Harness Delegate. This option is used for Harness Self-Managed Enterprise Edition Overview often, but it is also used for Harness SaaS. See [Harness Self-Managed Enterprise Edition Overview](../../self-managed-enterprise-edition/introduction/harness-self-managed-enterprise-edition-overview.md).![](./static/add-a-git-hub-connector-39.png)
 
 **Secrets:** if you select **Connect Through Harness Platform**, the Harness Manager exchanges a key pair with the Secrets Manager configured in Harness using an encrypted connection. Next, the Harness Manager uses the encrypted key and the encrypted secret and then discards them. The keys never leave the Harness Manager. Secrets are always encrypted in transit, in memory, and in the Harness database.If you select **Connect Through** **Harness Platform**, click **Save and Continue**.
 

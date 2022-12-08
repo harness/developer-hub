@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](https://docs.harness.io/article/1fjmm4by22). Switch to [NextGen](/article/xmp9j0dk8b-add-use-ssh-secrets).You can add SSH keys for use in connecting to remote servers, such as an AWS EC2 instance.
+This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../../platform/6_Security/4-add-use-ssh-secrets.md).You can add SSH keys for use in connecting to remote servers, such as an AWS EC2 instance.
 
 In this topic:
 
@@ -20,8 +20,8 @@ In this topic:
 
 ### Before You Begin
 
-* See [Harness Key Concepts](/article/4o7oqwih6h-harness-key-concepts).
-* See [Secrets Management Overview](/article/au38zpufhr-secret-management).
+* See [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts).
+* See [Secrets Management Overview](secret-management.md).
 
 ### Step 1: Configure SSH Connectivity
 
@@ -29,7 +29,7 @@ Currently, Harness does not support OpenSSH private keys for SSH keys. Support w
 
 `ssh -i "example.pem" ec2-user@ec2-76-939-110-125.us-west-1.compute.amazonaws.com`
 
-The SSH secret you add here can be used in Harness components wherever they need to SSH into your remote server. For example, in a Harness Environment **Service Infrastructure/**[Infrastructure Definition](https://docs.harness.io/article/n39w05njjv-environment-configuration#add_an_infrastructure_definition) dialog, you specify **Connection Attributes** that use the SSH secret to connect to the target host.
+The SSH secret you add here can be used in Harness components wherever they need to SSH into your remote server. For example, in a Harness Environment **Service Infrastructure/**[Infrastructure Definition](../../../continuous-delivery/model-cd-pipeline/environments/environment-configuration.md#add-an-infrastructure-definition) dialog, you specify **Connection Attributes** that use the SSH secret to connect to the target host.
 
 To add an SSH key that can be referenced in Harness entities, do the following:
 
@@ -38,15 +38,15 @@ To add an SSH key that can be referenced in Harness entities, do the following:
 3. Enter a **Display Name** for the SSH credentials.If you change this display name at a later date, the key will still work. You do not need to do anything.
 4. In Auth Scheme, select one of the following:
 	1. **SSH Key/Password:** add SSH keys for Harness to use when connecting to remote servers.
-	2. **Kerberos:** SSH into a target host via the Kerberos protocol. See [Use SSH Key via Kerberos for Server Authentication](/article/lx4wios62k-use-ssh-key-via-kerberos-for-server-authentication).
+	2. **Kerberos:** SSH into a target host via the Kerberos protocol. See [Use SSH Key via Kerberos for Server Authentication](use-ssh-key-via-kerberos-for-server-authentication.md).
 5. In **User Name**, provide the user name for the user account on the remote server. For example, if you want to SSH into an AWS EC2 instance, the user name would be **ec2-user**.
 6. Do one of the following:
-	1. Click **SSH Key File.** You must create or use an existing Encrypted SSH Key file. In the **Select Encrypted SSH key File** drop down, select an existing file or create a new one. For more information on creating a new Encrypted SSH Key file, see [Harness Encrypted File Secrets](https://docs.harness.io/article/nt5vchhka4-use-encrypted-file-secrets).If you are modifying an existing SSH Key File, you will not be able to edit the existing inline key that you have entered earlier. Instead, you should select an existing file or create a new Encrypted SSH key file.
+	1. Click **SSH Key File.** You must create or use an existing Encrypted SSH Key file. In the **Select Encrypted SSH key File** drop down, select an existing file or create a new one. For more information on creating a new Encrypted SSH Key file, see [Harness Encrypted File Secrets](use-encrypted-file-secrets.md).If you are modifying an existing SSH Key File, you will not be able to edit the existing inline key that you have entered earlier. Instead, you should select an existing file or create a new Encrypted SSH key file.
 	1. Click **SSH Key****File Path (on Delegate)** and specify the location of the key. This is the file path on the server running the Harness Delegate, such as **/home/johndoe/example.pem**.
 	2. Click **Password** and **Select Encrypted Password** for the user account. You must use an Encrypted Text Secret to save your password and select it here. Either select an existing Encrypted Text Secret from the drop down list or create a new one by clicking **+ Create Encrypted Text**.
-	3. For **Vault SSH**, see [Add HashiCorp Vault Signed SSH Certificate Keys](/article/8y73f4o4ph-add-hashi-corp-vault-signed-ssh-certificate-keys).
+	3. For **Vault SSH**, see [Add HashiCorp Vault Signed SSH Certificate Keys](add-hashi-corp-vault-signed-ssh-certificate-keys.md).
 7. In **Select Encrypted Passphrase**, select the SSH key [passphrase](https://www.ssh.com/ssh/passphrase) from the drop down if one is required. It is **not** required by default for AWS or many other platforms. Make sure you use a Harness Encrypted Text secret to save the passphrase and refer it here. Either select an existing secret from the drop down list or create a new one by clicking **+ Create Encrypted Text**.  
-For more information on creating an Encrypted Text Secret, see [Harness Encrypted Text secret](/article/ygyvp998mu-use-encrypted-text-secrets).
+For more information on creating an Encrypted Text Secret, see [Harness Encrypted Text secret](use-encrypted-text-secrets.md).
 8. In **SSH Port**, leave the default **22** or enter in a different port if needed.
 9. If you want to restrict the use of these SSH credentials to specific Harness components, do the following:
 	1. In **Usage Scope**, click the drop-down under **Applications**, and click the name of the application.
@@ -54,7 +54,7 @@ For more information on creating an Encrypted Text Secret, see [Harness Encrypt
 
 ### Step 2: Test Host Connectivity
 
-1. Click **TEST**. The **Host Connectivity Test** tool appears.![](https://files.helpdocs.io/kw8ldg1itf/articles/au38zpufhr/1552087195896/image.png)
+1. Click **TEST**. The **Host Connectivity Test** tool appears.![](./static/add-ssh-keys-25.png)
 2. In **Host Name**, enter the host name of the remote server you want to SSH into. For example, if it is an AWS EC2 instance, it will be something like, `ec2-76-939-110-125.us-west-1.compute.amazonaws.com`.
 3. Click **RUN**. If the test is unsuccessful, you might see an error stating that no Harness Delegate could reach the host, or that a credential is invalid. Ensure that your settings are correct and that a Harness Delegate is able to connect to the server.
 4. When a test is successful, click **Submit**.
@@ -75,6 +75,6 @@ to
 
 ### Next Steps
 
-* [Use SSH Keys via Kerberos for Server Authentication](/article/lx4wios62k-use-ssh-key-via-kerberos-for-server-authentication)
-* [Add WinRM Connection Credentials](/article/9fqa1vgar7-add-win-rm-connection-credentials)
+* [Use SSH Keys via Kerberos for Server Authentication](use-ssh-key-via-kerberos-for-server-authentication.md)
+* [Add WinRM Connection Credentials](add-win-rm-connection-credentials.md)
 

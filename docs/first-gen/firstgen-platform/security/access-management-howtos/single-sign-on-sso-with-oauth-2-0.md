@@ -8,21 +8,21 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](https://docs.harness.io/article/1fjmm4by22). Switch to [NextGen](/article/rb33l4x893-single-sign-on-sso-with-oauth).Harness supports Single Sign-On (SSO) with OAuth 2.0 identity providers, such as GitHub, Bitbucket, GitLab, LinkedIn, Google, and Azure. This integration allows you to use an OAuth 2.0 provider to authenticate your Harness Users.
+This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../../platform/3_Authentication/4-single-sign-on-sso-with-oauth.md).Harness supports Single Sign-On (SSO) with OAuth 2.0 identity providers, such as GitHub, Bitbucket, GitLab, LinkedIn, Google, and Azure. This integration allows you to use an OAuth 2.0 provider to authenticate your Harness Users.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/02ehq56x6d/1561422849561/image.png)Once OAuth 2.0 SSO is enabled, Harness Users can simply log into Harness using their GitHub, Google, or other provider's email address.
+![](./static/single-sign-on-sso-with-oauth-2-0-86.png)Once OAuth 2.0 SSO is enabled, Harness Users can simply log into Harness using their GitHub, Google, or other provider's email address.
 
-For information on Harness RBAC, see [Managing Users and Groups (RBAC)](/article/ven0bvulsj-users-and-permissions).In this topic:
+For information on Harness RBAC, see [Managing Users and Groups (RBAC)](users-and-permissions.md).In this topic:
 
-* [Intended Audience](https://docs.harness.io/article/02ehq56x6d-single-sign-on-sso-with-oauth-2-0#intended_audience)
-* [Before You Begin](https://docs.harness.io/article/02ehq56x6d-single-sign-on-sso-with-oauth-2-0#before_you_begin)
-* [Requirements](https://docs.harness.io/article/02ehq56x6d-single-sign-on-sso-with-oauth-2-0#requirements)
-* [Setup Overview](https://docs.harness.io/article/02ehq56x6d-single-sign-on-sso-with-oauth-2-0#setup_overview)
-	+ [How Do I Prevent Lockouts?](https://docs.harness.io/article/02ehq56x6d-single-sign-on-sso-with-oauth-2-0#how_do_i_prevent_lockouts)
-* [Set Up OAuth 2.0 SSO](https://docs.harness.io/article/02ehq56x6d-single-sign-on-sso-with-oauth-2-0#set_up_o_auth_2_0_sso)
-* [Log in with an OAuth 2.0 Provider](https://docs.harness.io/article/02ehq56x6d-single-sign-on-sso-with-oauth-2-0#log_in_with_an_o_auth_2_0_provider)
-* [Limit OAuth 2.0 SSO Domain Names](https://docs.harness.io/article/02ehq56x6d-single-sign-on-sso-with-oauth-2-0#limit_o_auth_2_0_sso_domain_names)
-* [Next Steps](https://docs.harness.io/article/02ehq56x6d-single-sign-on-sso-with-oauth-2-0#next_steps)
+* [Intended Audience](single-sign-on-sso-with-oauth-2-0.md#intended-audience)
+* [Before You Begin](single-sign-on-sso-with-oauth-2-0.md#before-you-begin)
+* [Requirements](single-sign-on-sso-with-oauth-2-0.md#requirements)
+* [Setup Overview](single-sign-on-sso-with-oauth-2-0.md#setup-overview)
+	+ [How Do I Prevent Lockouts?](single-sign-on-sso-with-oauth-2-0.md#how-do-i-prevent-lockouts)
+* [Set Up OAuth 2.0 SSO](single-sign-on-sso-with-oauth-2-0.md#set-up-o-auth-2-0-sso)
+* [Log in with an OAuth 2.0 Provider](single-sign-on-sso-with-oauth-2-0.md#log-in-with-an-o-auth-2-0-provider)
+* [Limit OAuth 2.0 SSO Domain Names](single-sign-on-sso-with-oauth-2-0.md#limit-o-auth-2-0-sso-domain-names)
+* [Next Steps](single-sign-on-sso-with-oauth-2-0.md#next-steps)
 
 ### Intended Audience
 
@@ -33,7 +33,7 @@ For information on Harness RBAC, see [Managing Users and Groups (RBAC)](/article
 ### Before You Begin
 
 * If you are new to OAuth 2.0, read [OAuth 2 Simplified](https://aaronparecki.com/oauth-2-simplified/) from Aaron Parecki.
-* To learn about all Harness options governing SSO logins, see [Authentication Settings](/article/zlymcu6bf1-authentication-settings).
+* To learn about all Harness options governing SSO logins, see [Authentication Settings](authentication-settings.md).
 
 ### Requirements
 
@@ -48,7 +48,7 @@ For example, if a Harness User is registered with Harness using the email addres
 
 GitHub supports [primary](https://help.github.com/en/github/setting-up-and-managing-your-github-user-account/changing-your-primary-email-address) and secondary email addresses:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/02ehq56x6d/1590771419278/image.png)If you use GitHub for Harness OAuth 2.0 SSO with Harness, the primary email must be used for the Harness account and login.
+![](./static/single-sign-on-sso-with-oauth-2-0-87.png)If you use GitHub for Harness OAuth 2.0 SSO with Harness, the primary email must be used for the Harness account and login.
 
 ### Setup Overview
 
@@ -71,24 +71,24 @@ If you accidentally get locked out of Harness, email [support@harness.io](mailto
 
 To prevent lockouts or in the event of OAuth downtime, a User in the Harness Administrators Group can use the [**Local Login**](http://app.harness.io/auth/#/local-login) URL (http://app.harness.io/auth/#/local-login) to log in and update the OAuth settings.
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/rb33l4x893/1638374284838/screenshot-2021-12-01-at-9-27-06-pm.png)1. Log in using **Harness Local Login**.
+![](./static/single-sign-on-sso-with-oauth-2-0-88.png)1. Log in using **Harness Local Login**.
 2. Change the settings to enable users to log in.
 
 ### Set Up OAuth 2.0 SSO
 
 To set up OAuth 2.0 SSO, do the following:
 
-1. Log into Harness using a Harness User account that is a member of the Administrator User Group. For information on Harness RBAC, see [Managing Users and Groups (RBAC)](/article/ven0bvulsj-users-and-permissions).  
+1. Log into Harness using a Harness User account that is a member of the Administrator User Group. For information on Harness RBAC, see [Managing Users and Groups (RBAC)](users-and-permissions.md).  
   
 The email address used to log into Harness should also be registered with the OAuth 2.0 providers you intend to enable for Harness SSO.
-2. Click **Continuous Security**, and then click **Access Management**. The **Access Management** page appears.![](https://files.helpdocs.io/kw8ldg1itf/articles/02ehq56x6d/1578095174936/image.png)
-3. Click **Users**. The **Users** page appears.![](https://files.helpdocs.io/kw8ldg1itf/articles/02ehq56x6d/1551465725530/image.png)Here we see that the user we want to log in using OAuth 2.0 SSO, **johnoauth20@outlook.com**, has an Outlook.com email address.
+2. Click **Continuous Security**, and then click **Access Management**. The **Access Management** page appears.![](./static/single-sign-on-sso-with-oauth-2-0-89.png)
+3. Click **Users**. The **Users** page appears.![](./static/single-sign-on-sso-with-oauth-2-0-90.png)Here we see that the user we want to log in using OAuth 2.0 SSO, **johnoauth20@outlook.com**, has an Outlook.com email address.
 4. Before you set up SSO, confirm that your users' email addresses registered with Harness are the same email addresses they use to log into the OAuth 2.0 provider you're enabling for Harness SSO.  
   
-In this case, we are going to use Bitbucket for SSO, so let's confirm that the **johnoauth20@outlook.com** email address is used to log into Bitbucket.![](https://files.helpdocs.io/kw8ldg1itf/articles/02ehq56x6d/1551465988604/image.png)Email address confirmed. Now you are all set to add and enable Harness OAuth 2.0 SSO.
-5. In **Harness Manager**, click the drop-down menu next to the **Users** breadcrumb and select **Authentication Settings**.![](https://files.helpdocs.io/kw8ldg1itf/articles/kl3xc8iap2/1561098645768/image.png)The **Authentication Settings** page appears.![](https://files.helpdocs.io/kw8ldg1itf/articles/02ehq56x6d/1561423314054/image.png)Now we will add Bitbucket as the OAuth 2.0 SSO provider.
+In this case, we are going to use Bitbucket for SSO, so let's confirm that the **johnoauth20@outlook.com** email address is used to log into Bitbucket.![](./static/single-sign-on-sso-with-oauth-2-0-91.png)Email address confirmed. Now you are all set to add and enable Harness OAuth 2.0 SSO.
+5. In **Harness Manager**, click the drop-down menu next to the **Users** breadcrumb and select **Authentication Settings**.![](./static/single-sign-on-sso-with-oauth-2-0-92.png)The **Authentication Settings** page appears.![](./static/single-sign-on-sso-with-oauth-2-0-93.png)Now we will add Bitbucket as the OAuth 2.0 SSO provider.
 6. If it's not already enabled, enable **Allow login via public OAuth providers**.
-7. Enable each public OAuth 2.0 provider you want to use for SSO. In this example, you would enable **BitBucket**.![](https://files.helpdocs.io/kw8ldg1itf/articles/02ehq56x6d/1561423383186/image.png)The OAuth 2.0 provider is now enabled as an SSO option. The **Current authentication mechanism(s)** header confirms that **Public OAuth providers** is enabled.
+7. Enable each public OAuth 2.0 provider you want to use for SSO. In this example, you would enable **BitBucket**.![](./static/single-sign-on-sso-with-oauth-2-0-94.png)The OAuth 2.0 provider is now enabled as an SSO option. The **Current authentication mechanism(s)** header confirms that **Public OAuth providers** is enabled.
 8. Before you log out of Harness, test the OAuth 2.0 SSO using a Harness User account. This will confirm that Harness Users can now log in from the Harness login page.
 
 
@@ -102,31 +102,33 @@ Let's look at an example:
 
 The Harness user **John OAuth20** is registered in Harness with the email address **johnoauth20@outlook.com**:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/02ehq56x6d/1551475268059/image.png)The email address **johnoauth20@outlook.com** is also registered with Bitbucket:
+![](./static/single-sign-on-sso-with-oauth-2-0-95.png)The email address **johnoauth20@outlook.com** is also registered with Bitbucket:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/02ehq56x6d/1551475364381/image.png)And Bitbucket is enabled as the Harness SSO Provider:
+![](./static/single-sign-on-sso-with-oauth-2-0-96.png)And Bitbucket is enabled as the Harness SSO Provider:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/02ehq56x6d/1551475402030/image.png)John OAuth20 logs into Harness with the email address **johnoauth20@outlook.com**:
+![](./static/single-sign-on-sso-with-oauth-2-0-97.png)John OAuth20 logs into Harness with the email address **johnoauth20@outlook.com**:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/02ehq56x6d/1551475833730/image.png)When he clicks **NEXT**, the browser is redirected to the Bitbucket website:
+![](./static/single-sign-on-sso-with-oauth-2-0-98.png)When he clicks **NEXT**, the browser is redirected to the Bitbucket website:
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/02ehq56x6d/1551476029884/image.png)John enters in his **johnoauth20@outlook.com** email address and clicks **Continue**. Next, he enters in his Bitbucket password and clicks **Continue**.
+![](./static/single-sign-on-sso-with-oauth-2-0-99.png)John enters in his **johnoauth20@outlook.com** email address and clicks **Continue**. Next, he enters in his Bitbucket password and clicks **Continue**.
 
 Bitbucket verifies the email address and password and returns the browser to Harness, where John OAuth20 is logged in automatically.
 
 Harness OAuth 2.0 login successful!
 
-Each time you use the OAuth provider to log into Harness, you will be required to log into the OAuth provider first. This is the standard OAuth process.### Limit OAuth 2.0 SSO Domain Names
+Each time you use the OAuth provider to log into Harness, you will be required to log into the OAuth provider first. This is the standard OAuth process.
+
+### Limit OAuth 2.0 SSO Domain Names
 
 By default, any member invited to Harness by a Harness Administrator can log in using an OAuth 2.0 SSO identity provider that's enabled on Harness. However, you can limit which email domain names can be used to log into Harness.
 
 For example, you might set up Google as a Harness OAuth 2.0 SSO provider, but you want only users who have **example.io** in their (login) email address to be able to log in via Google.
 
-To filter domain names in this way, see our [Authentication Settings](/article/zlymcu6bf1-authentication-settings) topic's section on [Restricting Email Domains](/article/zlymcu6bf1-authentication-settings#restricting_email_domains).
+To filter domain names in this way, see our [Authentication Settings](authentication-settings.md) topic's section on [Restricting Email Domains](authentication-settings.md#restricting-email-domains).
 
 ### Next Steps
 
-* [Two Factor Authentication](/article/h0ie5q5lkl-login-settings).
-* [IP Whitelist Management](/article/j2ww8l3yjw-access-management).
-* [API Keys](/article/smloyragsm-api-keys)
+* [Two Factor Authentication](login-settings.md).
+* [IP Whitelist Management](access-management.md).
+* [API Keys](api-keys.md)
 

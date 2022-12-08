@@ -16,27 +16,27 @@ This topic describes how to fetch Artifact Type details using GraphQL APIs.
 
 In this topic:
 
-* [Before You Begin](https://docs.harness.io/article/nrl5r5zj94-add-artifact-source-using-graph-ql-apis#before_you_begin)
-* [Fetch Details of Jenkins Artifact Type](https://docs.harness.io/article/nrl5r5zj94-add-artifact-source-using-graph-ql-apis#fetch_details_of_jenkins_artifact_type)
-* [Fetch Details of Bamboo Artifact Type](https://docs.harness.io/article/nrl5r5zj94-add-artifact-source-using-graph-ql-apis#fetch_details_of_bamboo_artifact_type)
-* [Fetch Details of Docker Registry Artifact Type](https://docs.harness.io/article/nrl5r5zj94-add-artifact-source-using-graph-ql-apis#fetch_details_of_docker_registry_artifact_type)
-* [Fetch Details of Elastic Container Registry (ECR) Artifact Type](https://docs.harness.io/article/nrl5r5zj94-add-artifact-source-using-graph-ql-apis#fetch_details_of_elastic_container_registry_ecr_artifact_type)
-* [Fetch Details of Google Cloud Container Registry (GCR) Artifact Type](https://docs.harness.io/article/nrl5r5zj94-add-artifact-source-using-graph-ql-apis#fetch_details_of_google_cloud_container_registry_gcr_artifact_type)
-* [Fetch Details of Azure Container Registry (ACR) Artifact Type](https://docs.harness.io/article/nrl5r5zj94-add-artifact-source-using-graph-ql-apis#fetch_details_of_azure_container_registry_acr_artifact_type)
-* [Fetch Details of Nexus Artifact Type](https://docs.harness.io/article/nrl5r5zj94-add-artifact-source-using-graph-ql-apis#fetch_details_of_nexus_artifact_type)
-* [Fetch Details of Artifactory Artifact Type](https://docs.harness.io/article/nrl5r5zj94-add-artifact-source-using-graph-ql-apis#fetch_details_of_artifactory_artifact_type)
-* [Fetch Details of Amazon S3 Artifact Type](https://docs.harness.io/article/nrl5r5zj94-add-artifact-source-using-graph-ql-apis#fetch_details_of_amazon_s3_artifact_type)
-* [Fetch Details of AMI Artifact Type](https://docs.harness.io/article/nrl5r5zj94-add-artifact-source-using-graph-ql-apis#fetch_details_of_ami_artifact_type)
-* [Fetch Details of GCS Artifact Type](https://docs.harness.io/article/nrl5r5zj94-add-artifact-source-using-graph-ql-apis#fetch_details_of_gcs_artifact_type)
-* [Fetch Details of SMB Artifact Type](https://docs.harness.io/article/nrl5r5zj94-add-artifact-source-using-graph-ql-apis#fetch_details_of_smb_artifact_type)
-* [Fetch Details of Azure Artifact Type](https://docs.harness.io/article/nrl5r5zj94-add-artifact-source-using-graph-ql-apis#fetch_details_of_azure_artifact_type)
+* [Before You Begin](fetch-artifact-type-using-graph-ql-apis.md#before-you-begin)
+* [Fetch Details of Jenkins Artifact Type](fetch-artifact-type-using-graph-ql-apis.md#fetch-details-of-jenkins-artifact-type)
+* [Fetch Details of Bamboo Artifact Type](fetch-artifact-type-using-graph-ql-apis.md#fetch-details-of-bamboo-artifact-type)
+* [Fetch Details of Docker Registry Artifact Type](fetch-artifact-type-using-graph-ql-apis.md#fetch-details-of-docker-registry-artifact-type)
+* [Fetch Details of Elastic Container Registry (ECR) Artifact Type](fetch-artifact-type-using-graph-ql-apis.md#fetch-details-of-elastic-container-registry-ecr-artifact-type)
+* [Fetch Details of Google Cloud Container Registry (GCR) Artifact Type](fetch-artifact-type-using-graph-ql-apis.md#fetch-details-of-google-cloud-container-registry-gcr-artifact-type)
+* [Fetch Details of Azure Container Registry (ACR) Artifact Type](fetch-artifact-type-using-graph-ql-apis.md#fetch-details-of-azure-container-registry-acr-artifact-type)
+* [Fetch Details of Nexus Artifact Type](fetch-artifact-type-using-graph-ql-apis.md#fetch-details-of-nexus-artifact-type)
+* [Fetch Details of Artifactory Artifact Type](fetch-artifact-type-using-graph-ql-apis.md#fetch-details-of-artifactory-artifact-type)
+* [Fetch Details of Amazon S3 Artifact Type](fetch-artifact-type-using-graph-ql-apis.md#fetch-details-of-amazon-s3-artifact-type)
+* [Fetch Details of AMI Artifact Type](fetch-artifact-type-using-graph-ql-apis.md#fetch-details-of-ami-artifact-type)
+* [Fetch Details of GCS Artifact Type](fetch-artifact-type-using-graph-ql-apis.md#fetch-details-of-gcs-artifact-type)
+* [Fetch Details of SMB Artifact Type](fetch-artifact-type-using-graph-ql-apis.md#fetch-details-of-smb-artifact-type)
+* [Fetch Details of Azure Artifact Type](fetch-artifact-type-using-graph-ql-apis.md#fetch-details-of-azure-artifact-type)
 
 ### Before You Begin
 
-* [​Introduction to Harness GraphQL API](/article/tm0w6rruqv-harness-api)
-* [Harness API Explorer](/article/2rmd5i0e0h-harness-api-explorer)
-* [Service Types and Artifact Sources](/article/qluiky79j8-service-types-and-artifact-sources)
-* [Fetch Artifact Source Details Using GraphQL APIs](/article/0z2b5a1x4x-artifact-source-api)
+* [​Introduction to Harness GraphQL API](harness-api.md)
+* [Harness API Explorer](harness-api-explorer.md)
+* [Service Types and Artifact Sources](../../../continuous-delivery/model-cd-pipeline/setup-services/service-types-and-artifact-sources.md)
+* [Fetch Artifact Source Details Using GraphQL APIs](artifact-source-api.md)
 
 ### Fetch Details of Jenkins Artifact Type
 

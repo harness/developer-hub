@@ -134,7 +134,7 @@ Note the `imagePullSecrets` settings. Harness used the Go templating in Service 
 
 The Prepare section identifies the resources used and versions any for release history. Every Harness deployment creates a new release with an incrementally increasing number. Release history is stored in the Kubernetes cluster in a ConfigMap. This ConfigMap is essential for release tracking, versioning and rollback.
 
-For more information, see [Releases and Versioning](https://docs.harness.io/article/ttn8acijrz-versioning-and-annotations#releases_and_versioning).
+For more information, see [Releases and Versioning](../../../firstgen-platform/techref-category/cd-ref/platforms-ref/versioning-and-annotations.md#releases-and-versioning).
 
 
 ```

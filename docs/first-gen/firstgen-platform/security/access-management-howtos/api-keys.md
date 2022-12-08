@@ -10,7 +10,9 @@ helpdocs_is_published: true
 
 To integrate Harness with some third-party apps, you need to register Harness with the app and then supply a Harness API key. The API key is a simple encrypted string that other applications can use to access Harness without a private Harness account.
 
-Once you have generated an API key in Harness, deployment status can be tracked by making a REST call to Harness. For more information, see [Get Deployment Status using REST](/article/uccck6kq5m-get-deployment-status-using-rest).### Create an API Key
+Once you have generated an API key in Harness, deployment status can be tracked by making a REST call to Harness. For more information, see [Get Deployment Status using REST](../../../continuous-delivery/model-cd-pipeline/triggers/get-deployment-status-using-rest.md).
+
+### Create an API Key
 
 The following procedure creates, copies, and deletes an API Key.
 
@@ -38,7 +40,9 @@ To edit a Harness API key, do the following:
 
 You can use a RESt call to track the details of your Harness deployments. An API key is required in the call header in the REST call to Harness. The API key uniquely identifies your Harness account and authorizes access to your account data.
 
-Once you have generated an API key in Harness, deployment status can be tracked by making a REST call to Harness. For more information, see [Get Deployment Status using REST](/article/uccck6kq5m-get-deployment-status-using-rest).### Troubleshooting
+Once you have generated an API key in Harness, deployment status can be tracked by making a REST call to Harness. For more information, see [Get Deployment Status using REST](../../../continuous-delivery/model-cd-pipeline/triggers/get-deployment-status-using-rest.md).
+
+### Troubleshooting
 
 The Harness API has a usage rate limit of **1 query per second per API Key**. If the rate limit is reached, you will receive this response in the API call:
 

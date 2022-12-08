@@ -16,9 +16,9 @@ Harness integrates with many different types of repositories and providers. We c
 
 The following topics describe each of the Harness integrations you can make:
 
-* [Add Cloud Providers](/article/whwnovprrb-cloud-providers)
-* [Add Artifact Servers](/article/7dghbx1dbl-configuring-artifact-server)
-* [Add Source Repo Providers](/article/ay9hlwbgwa-add-source-repo-providers)
-* [Add Collaboration Providers](/article/cv98scx8pj-collaboration-providers)
-* [Add Verification Providers](/article/r6ut6tldy0-verification-providers)
+* [Add Cloud Providers](cloud-providers.md)
+* [Add Artifact Servers](configuring-artifact-server.md)
+* [Add Source Repo Providers](add-source-repo-providers.md)
+* [Add Collaboration Providers](collaboration-providers.md)
+* [Add Verification Providers](verification-providers.md)
 

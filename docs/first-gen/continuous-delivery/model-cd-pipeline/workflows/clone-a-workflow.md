@@ -16,7 +16,7 @@ You can use a Workflow as a template for future Workflows by cloning the Workflo
 
 ### Limitations
 
-* [Harness Tags](https://docs.harness.io/article/mzcpqs3hrl-manage-tags) are not copied when you clone a Workflow.
+* [Harness Tags](../../../firstgen-platform/account/tags/manage-tags.md) are not copied when you clone a Workflow.
 
 ### Step: Clone a Workflow
 

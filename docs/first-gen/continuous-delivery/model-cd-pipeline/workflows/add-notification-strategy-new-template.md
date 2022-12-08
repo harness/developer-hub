@@ -46,7 +46,7 @@ Select Workflow or Workflow Phase (for Canary or Multi-Service) as the scope for
 The default User Group is Account Administrator. You can change this, but it is always the default when a new Workflow is created.
 :::
 
-Select the User Group to notify when the condition is met within the scope. For information on setting up the notification channels for a User Group, see [User Notifications and Alert Settings](https://docs.harness.io/article/kf828e347t-notification-groups).
+Select the User Group to notify when the condition is met within the scope. For information on setting up the notification channels for a User Group, see [User Notifications and Alert Settings](../../../firstgen-platform/account/manage-notegroups/notification-groups.md).
 
 You can also enter variable expressions for Workflow variables.
 
@@ -60,7 +60,7 @@ You cannot use Service or Environment **Service Variables Overrides** in **User
 
 #### Slack Notification Example
 
-Once Slack has been configured in the Harness User Group [Notification Settings](https://docs.harness.io/article/kf828e347t-notification-groups), you can add the User Group in the Workflow **Notification Settings**:
+Once Slack has been configured in the Harness User Group [Notification Settings](../../../firstgen-platform/account/manage-notegroups/notification-groups.md), you can add the User Group in the Workflow **Notification Settings**:
 
 ![](./static/add-notification-strategy-new-template-85.png)
 

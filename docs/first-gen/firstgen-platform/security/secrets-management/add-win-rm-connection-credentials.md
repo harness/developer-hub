@@ -10,27 +10,10 @@ helpdocs_is_published: true
 
 You can set up a WinRM connection and then use it as a **Deployment Type** in an Environment's Service Infrastructure.
 
-In this topic:
-
-* [Before You Begin](#before_you_begin)
-* [Review: Limitations](#review_limitations)
-* [Step 1: Set Up the WinRM Connection](#step_1_set_up_the_win_rm_connection)
-* [Step 2: Name](#step_2_name)
-* [Step 3: Auth Scheme](#step_3_auth_scheme)
-* [Step 4: Domain](#step_4_domain)
-* [Step 5: User Name](#step_5_user_name)
-* [Step 6: Select Encrypted Password](#step_6_select_encrypted_password)
-* [Step 7: Use SSL](#step_7_use_ssl)
-* [Step 8: Skip Cert Check](#step_8_skip_cert_check)
-* [Step 9: Use No Profile](#step_9_use_no_profile)
-* [Step 10: WinRM Port](#step_10_win_rm_port)
-* [Step 11: Test the Connection](#step_11_test_the_connection)
-* [Step 12: Update the Infrastructure Definition](#step_12_update_the_infrastructure_definition)
-
 ### Before You Begin
 
-* See [Harness Key Concepts](/article/4o7oqwih6h-harness-key-concepts).
-* See [Secrets Management Overview](/article/au38zpufhr-secret-management).
+* See [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts).
+* See [Secrets Management Overview](secret-management.md).
 
 ### Review: Limitations
 
@@ -66,7 +49,7 @@ In cases when **Domain** is blank (local user), you can put **./** before the us
 
 Make sure you use a Harness Encrypted Text secret to save the password and refer it using this option. Either select an existing secret from the drop down list or create a new one by clicking **+ Create Encrypted Text**.
 
-For more information on creating Encrypted Text, see  [Harness Encrypted Text secret](/article/ygyvp998mu-use-encrypted-text-secrets).
+For more information on creating Encrypted Text, see  [Harness Encrypted Text secret](use-encrypted-text-secrets.md).
 
 ### Step 7: Use SSL
 
@@ -112,7 +95,9 @@ If the Harness Delegate cannot resolve the private address of the target node, t
 
 In **Infrastructure Definition**, the Infrastructure Definition dialog will look like this:
 
-![](https://files.helpdocs.io/kw8ldg1itf/other/1568326366870/image.png)### Troubleshooting
+![](./static/add-win-rm-connection-credentials-54.png)
+
+### Troubleshooting
 
 The WinRM Connection simply checks a log in. When you use the WinRM Connection to perform deployment operations other errors might occur.
 
@@ -120,6 +105,6 @@ In general, the errors result from port conflicts or the WinRM settings on the t
 
 See:
 
-* [Troubleshooting](/article/g9o2g5jbye-troubleshooting-harness)
-* [IIS Best Practices and Troubleshooting](/article/l639i8uqxs-5-best-practices-and-troubleshooting)
+* [Troubleshooting](https://docs.harness.io/article/g9o2g5jbye-troubleshooting-harness)
+* [IIS Best Practices and Troubleshooting](../../../continuous-delivery/dotnet-deployments/5-best-practices-and-troubleshooting.md)
 

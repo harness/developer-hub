@@ -12,20 +12,22 @@ Connect your Nexus artifact servers with Harness.
 
 ### Before You Begin
 
-* See [Harness Key Concepts](/article/4o7oqwih6h-harness-key-concepts).
+* See [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts).
 
 ### Visual Summary
 
 Here's an example configuration of the Nexus Artifaction Source addition.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/7dghbx1dbl/1587761468278/image.png)### Review: Nexus Permissions
+![](./static/add-nexus-artifact-servers-49.png)
+
+### Review: Nexus Permissions
 
 Make sure the connected user account has the following permissions in the Nexus Server.
 
 * Repo: All repositories (Read)
 * Nexus UI: Repository Browser
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/6y6b8pkm12/1589570434373/image.png)If used as a Docker Repo, the user needs:
+![](./static/add-nexus-artifact-servers-50.png)If used as a Docker Repo, the user needs:
 
 * List images and tags
 * Pull images
@@ -58,7 +60,7 @@ For Nexus 3.x, Harness supports repository formats Docker 3.0 and greater, Maven
 
 Enter the username and Select Encrypted Password.
 
-For secrets and other sensitive settings, select or create a new [Harness Encrypted Text secret](/article/ygyvp998mu-use-encrypted-text-secrets).
+For secrets and other sensitive settings, select or create a new [Harness Encrypted Text secret](../../security/secrets-management/use-encrypted-text-secrets.md).
 
 Usage Scope is determined by the secret you selected.
 
@@ -66,9 +68,9 @@ Usage Scope is determined by the secret you selected.
 
 Select the Delegate Selector(s) of the Delegate(s) you want this Connector to use.
 
-When Harness needs to run a task, it makes a connection to a resource via its Delegates. Harness selects the best Delegate according to its history or it round-robins between Delegates. See [How Does Harness Manager Pick Delegates?](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation#how_does_harness_manager_pick_delegates).
+When Harness needs to run a task, it makes a connection to a resource via its Delegates. Harness selects the best Delegate according to its history or it round-robins between Delegates. See [How Does Harness Manager Pick Delegates?](../manage-delegates/delegate-installation.md#how-does-harness-manager-pick-delegates).
 
 In a few cases, you might want Harness to select specific Delegates. In these cases, you can use Delegate Selectors.
 
-See [Select Delegates with Selectors](/article/c3fvixpgsl-select-delegates-for-specific-tasks-with-selectors).
+See [Select Delegates with Selectors](../manage-delegates/select-delegates-for-specific-tasks-with-selectors.md).
 

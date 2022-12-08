@@ -70,7 +70,7 @@ Do one of the following:
 * If you have an existing Pipeline with a CI stage, click **Codebase** on the right.
 
 
-In **Connector**, select an existing Connector to your codebase repo, or create a new one. See [Code Repo Connectors](https://docs.harness.io/category/xyexvcc206-ref-source-repo-provider).
+In **Connector**, select an existing Connector to your codebase repo, or create a new one. See [Code Repo Connectors](https://docs.harness.io/category/code-repo-connectors).
 
 
 You can see the URL for the repo account below **Repository Name**. Don't add the URL into **Repository Name**.
@@ -94,10 +94,10 @@ In the CI stage **Infrastructure**, define the build farm for the codebase.
 The following example uses a Kubernetes cluster build farm.
 
 
-In **Select a Kubernetes Cluster**, select or create a Kubernetes Connector. This Connector connects Harness to the cluster to use as the build farm. See [Kubernetes Cluster Connector Settings Reference](https://docs.harness.io/article/sjjik49xww-kubernetes-cluster-connector-settings-reference).
+In **Select a Kubernetes Cluster**, select or create a Kubernetes Connector. This Connector connects Harness to the cluster to use as the build farm. See [Kubernetes Cluster Connector Settings Reference](../../../platform/7_Connectors/ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md).
 
 
-In **Namespace**, enter the Kubernetes namespace to use. You can use a text string, a Runtime Input (`<+input>`), or an expression. See [Runtime Inputs](https://docs.harness.io/article/f6yobn7iq0-runtime-inputs).
+In **Namespace**, enter the Kubernetes namespace to use. You can use a text string, a Runtime Input (`<+input>`), or an expression. See [Runtime Inputs](../../../platform/20_References/runtime-inputs.md).
 
 
 See [Define Kubernetes Cluster Build Infrastructure](../set-up-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md).

@@ -22,8 +22,8 @@ In this topic:
 
 ### Before You Begin
 
-* See [Harness Key Concepts](/article/4o7oqwih6h-harness-key-concepts).
-* See [Secrets Management Overview](/article/au38zpufhr-secret-management).
+* See [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts).
+* See [Secrets Management Overview](secret-management.md).
 * Make sure you can generate TGT using `kinit` command on the machine where the Delegate is running. For more information about `kinit` command, see [kinit documentation](https://web.mit.edu/kerberos/krb5-1.12/doc/user/user_commands/kinit.html).
 
 ### Step 1: Access SSH Configuration
@@ -49,16 +49,16 @@ Realm is the logical network served by a single Kerberos database and a set of K
 Select one of the following options:
 
 * **Key Tab File Path (on Delegate)** - You can choose this option to generate a new TGT from the KDC every time you authenticate with the service. This ensures that the TGT is always valid and not expired when you try to authenticate.
-* **Password** - Select a password for TGT generation. Make sure you use a Harness Encrypted Text secret to save the password and refer to it using this option. Either select an existing secret from the drop down list or create a new one by clicking **+ Create Encrypted Text**. For more information on creating Encrypted Text, see [Harness Encrypted Text secret](https://docs.harness.io/article/ygyvp998mu-use-encrypted-text-secrets).
+* **Password** - Select a password for TGT generation. Make sure you use a Harness Encrypted Text secret to save the password and refer to it using this option. Either select an existing secret from the drop down list or create a new one by clicking **+ Create Encrypted Text**. For more information on creating Encrypted Text, see [Harness Encrypted Text secret](use-encrypted-text-secrets.md).
 * **None** - Select this option to skip TGT Generation. If you select this option, you must ensure that the TGT that is on the server running the Harness delegate is always available.
 
 ### Step 6: Keytab File Path
 
 This field is displayed if you select **Key Tab File Path** for **TGT Generation**. Enter the file path to the keytab file on the server running the Harness delegate. For example, **/home/johndoe/a.keytab**. The file is not uploaded to Harness.
 
-To use the Kerberos SSH connection to connect to a target host, you select it in **SSH Connection Attributes** while specifying the target host in the Service Infrastructure/ [Infrastructure Definition](https://docs.harness.io/article/n39w05njjv-environment-configuration#add_an_infrastructure_definition) settings of an environment.
+To use the Kerberos SSH connection to connect to a target host, you select it in **SSH Connection Attributes** while specifying the target host in the Service Infrastructure/ [Infrastructure Definition](../../../continuous-delivery/model-cd-pipeline/environments/environment-configuration.md#add-an-infrastructure-definition) settings of an environment.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/au38zpufhr/1542144259291/image.png)In this example, the target host that you want to use Kerberos authentication with is entered in **Host Name(s)**.
+![](./static/use-ssh-key-via-kerberos-for-server-authentication-61.png)In this example, the target host that you want to use Kerberos authentication with is entered in **Host Name(s)**.
 
 Note that the domain name used to identify the hosts in the **Host Name(s)** field is likely to be the same as the domain name you entered in **Realm** when configuring the SSH connection.
 

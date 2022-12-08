@@ -22,6 +22,6 @@ Traditional Deployments How-tos:
 * [Add Artifacts and App Stacks for Traditional (SSH) Deployments](add-artifacts-for-ssh-deployments.md)
 * [Add Scripts for Traditional (SSH) Deployments](add-deployment-specs-for-traditional-ssh-deployments.md)
 * [Define Your Traditional (SSH) Target Infrastructure](define-your-traditional-ssh-target-infrastructure.md)
-* [Create Default Application Directories and Variables](https://docs.harness.io/article/lgg12f0yry-set-default-application-directories-as-variables)
+* [Create Default Application Directories and Variables](../model-cd-pipeline/applications/set-default-application-directories-as-variables.md)
 * [Create a Basic Workflow for Traditional (SSH) Deployments](create-a-basic-workflow-for-traditional-ssh-deployments.md)
 

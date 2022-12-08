@@ -12,24 +12,24 @@ This topic provides examples of how to create Harness users and user groups, and
 
 In this topic:
 
-* [Before You Begin](https://docs.harness.io/article/p9ssx4cv5t-sample-queries-create-users-user-groups-and-assign-permissions#undefined)
-* [Create a User](https://docs.harness.io/article/p9ssx4cv5t-sample-queries-create-users-user-groups-and-assign-permissions#create_a_user)
+* [Before You Begin](sample-queries-create-users-user-groups-and-assign-permissions.md#undefined)
+* [Create a User](sample-queries-create-users-user-groups-and-assign-permissions.md#create-a-user)
 * [Delete a User](#delete_a_user)
-* [Create a User Group](https://docs.harness.io/article/p9ssx4cv5t-sample-queries-create-users-user-groups-and-assign-permissions#create_a_user_group)
-* [Assign Permissions](https://docs.harness.io/article/p9ssx4cv5t-sample-queries-create-users-user-groups-and-assign-permissions#assign_permissions)
+* [Create a User Group](sample-queries-create-users-user-groups-and-assign-permissions.md#create-a-user-group)
+* [Assign Permissions](sample-queries-create-users-user-groups-and-assign-permissions.md#assign-permissions)
 * [Querying Users](#querying_users)
 
 ### Before You Begin
 
-* [​Introduction to Harness GraphQL API](/article/tm0w6rruqv-harness-api)
-* [Harness API Explorer](/article/2rmd5i0e0h-harness-api-explorer)
-* [API Schema and Structure](/article/kn8wsu80n4-api-schema-and-structure)
+* [​Introduction to Harness GraphQL API](harness-api.md)
+* [Harness API Explorer](harness-api-explorer.md)
+* [API Schema and Structure](api-schema-and-structure.md)
 
 ### Create a User
 
 This sample shows how to create a user in your Harness account, and assigns the user to up to five Harness User Groups.
 
-See [clientMutationId](/article/tm0w6rruqv-harness-api#use_client_mutation_id_optional) and [userGroupId](/article/iuswbbvwnm-use-api-to-retrieve-i-ds-by-name#fetch_user_group_id_by_name).  
+See [clientMutationId](harness-api.md#use-client-mutation-id-optional) and [userGroupId](use-api-to-retrieve-i-ds-by-name.md#fetch-user-group-id-by-name).  
 
 
 
@@ -293,7 +293,7 @@ Beyond the `userGroupId` requirement, note these usage details for the `updateUs
 2. To scope the Harness Applications on which you are granting permission, you should either supply specific `appId`s, or supply a `filterType`.
 3. You cannot set the `MANAGE_USERS_AND_GROUPS` permission without first setting `READ_USERS_AND_GROUPS`.
 
-For information on deprecated API features with their replacements, see [Deprecated API Features](/article/22e87m2sjt-deprecated-apis).
+For information on deprecated API features with their replacements, see [Deprecated API Features](deprecated-apis.md).
 
 ### Querying Users
 

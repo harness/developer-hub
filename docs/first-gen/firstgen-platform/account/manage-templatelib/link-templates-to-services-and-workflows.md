@@ -12,18 +12,18 @@ You can link a template to a Service or Workflow. The templates available for li
 
 When you add a command by linking to a Template, the Template often shows you Template variables that require values. These values are mandatory.In this topic:
 
-* [Before You Begin](https://docs.harness.io/article/xd70p7rmqd-link-templates-to-services-and-workflows#before_you_begin)
-* [Link Template to a Service](https://docs.harness.io/article/xd70p7rmqd-link-templates-to-services-and-workflows#link_template_to_a_service)
-* [Link Template to a Workflow](https://docs.harness.io/article/xd70p7rmqd-link-templates-to-services-and-workflows#link_template_to_a_workflow)
-* [Next Steps](https://docs.harness.io/article/xd70p7rmqd-link-templates-to-services-and-workflows#next_steps)
+* [Before You Begin](link-templates-to-services-and-workflows.md#before-you-begin)
+* [Link Template to a Service](link-templates-to-services-and-workflows.md#link-template-to-a-service)
+* [Link Template to a Workflow](link-templates-to-services-and-workflows.md#link-template-to-a-workflow)
+* [Next Steps](link-templates-to-services-and-workflows.md#next-steps)
 
 ### Before You Begin
 
-* [Account and Application Templates](/article/ygi6d8epse-use-templates)
-* [Create an HTTP Workflow Step Template](/article/dv7ajeroou-account-and-application-templates)
-* [Create a Shell Script Workflow Step Template](/article/lfqn3t83hd-create-a-shell-script-workflow-step-template)
-* [Create a Service Command Template](/article/kbmz9uc7q9-create-a-service-command-template)
-* [Add Service Command Templates into Command Units](/article/mfoy0hrw8y-add-service-command-templates-into-command-units)
+* [Account and Application Templates](../../../continuous-delivery/concepts-cd/deployment-types/use-templates.md)
+* [Create an HTTP Workflow Step Template](account-and-application-templates.md)
+* [Create a Shell Script Workflow Step Template](create-a-shell-script-workflow-step-template.md)
+* [Create a Service Command Template](create-a-service-command-template.md)
+* [Add Service Command Templates into Command Units](add-service-command-templates-into-command-units.md)
 
 ### Link Template to a Service
 
@@ -35,7 +35,7 @@ To link a template to a Service, do the following:
 4. Locate the template you want, and click the **Link** button.
 5. Provide values for the template variables and click **Submit**.  
   
-The template is added to the service and linked. You can see the **Version:*****version*** and **Template icon** next to the entity you selected. For example:![](https://files.helpdocs.io/kw8ldg1itf/articles/ygi6d8epse/1532732445768/linked-template.png)
+The template is added to the service and linked. You can see the **Version:*****version*** and **Template icon** next to the entity you selected. For example:![](./static/link-templates-to-services-and-workflows-00.png)
 
 ### Link Template to a Workflow
 
@@ -47,5 +47,5 @@ To link a template to a Workflow, do the following:
 4. Locate the template you want, and click the **Link** button.
 5. Provide values for the template variables and click **SUBMIT**.  
   
-The template is added to the workflow and linked. You can see the **Version:*****version*** and **Link icon** next to the entity you selected. For example:![](https://files.helpdocs.io/kw8ldg1itf/articles/ygi6d8epse/1533074956803/template-added-workflow.png)
+The template is added to the workflow and linked. You can see the **Version:*****version*** and **Link icon** next to the entity you selected. For example:![](./static/link-templates-to-services-and-workflows-01.png)
 

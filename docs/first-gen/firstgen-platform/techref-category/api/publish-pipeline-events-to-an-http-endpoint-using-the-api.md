@@ -12,18 +12,18 @@ Currently, this feature is behind the Feature Flag `GRAPHQL_DEV`. Contact [Harne
 
 In this topic:
 
-* [Before You Begin](https://docs.harness.io/article/cfrqinjhci-publish-pipeline-events-to-an-http-endpoint-using-the-api#before_you_begin)
-* [Step: Query the event rules for an Application](https://docs.harness.io/article/cfrqinjhci-publish-pipeline-events-to-an-http-endpoint-using-the-api#step_query_the_event_rules_for_an_application)
-* [Step: Create Event Rule](https://docs.harness.io/article/cfrqinjhci-publish-pipeline-events-to-an-http-endpoint-using-the-api#step_create_event_rule)
-* [Option: Update and Delete Event Rules](https://docs.harness.io/article/cfrqinjhci-publish-pipeline-events-to-an-http-endpoint-using-the-api#option_update_and_delete_event_rules)
+* [Before You Begin](publish-pipeline-events-to-an-http-endpoint-using-the-api.md#before-you-begin)
+* [Step: Query the event rules for an Application](publish-pipeline-events-to-an-http-endpoint-using-the-api.md#step-query-the-event-rules-for-an-application)
+* [Step: Create Event Rule](publish-pipeline-events-to-an-http-endpoint-using-the-api.md#step-create-event-rule)
+* [Option: Update and Delete Event Rules](publish-pipeline-events-to-an-http-endpoint-using-the-api.md#option-update-and-delete-event-rules)
 
 ### Before You Begin
 
-You can see how to create event rules in Harness UI in [Publish Pipeline Events to an HTTP Endpoint](/article/scrsak5124-publish-pipeline-events-to-an-http-endpoint).
+You can see how to create event rules in Harness UI in [Publish Pipeline Events to an HTTP Endpoint](../../../continuous-delivery/concepts-cd/deployments-overview/publish-pipeline-events-to-an-http-endpoint.md).
 
 ### Step: Query the event rules for an Application
 
-You can query the event rules for an Application using the GraphQL `eventsConfigs` method. You simply need an Application Id. See [Use Harness Applications API](/article/0wmvn5dgzn-use-harness-applications-api).
+You can query the event rules for an Application using the GraphQL `eventsConfigs` method. You simply need an Application Id. See [Use Harness Applications API](use-harness-applications-api.md).
 
 Here is an example:
 

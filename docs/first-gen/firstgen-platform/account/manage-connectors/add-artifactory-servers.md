@@ -12,13 +12,15 @@ Harness supports both cloud and on-prem versions of Artifactory. Connect your Ar
 
 ### Before You Begin
 
-* See [Harness Key Concepts](/article/4o7oqwih6h-harness-key-concepts).
+* See [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts).
 
 ### Visual Summary
 
 Here's an example of the Artifactory Sources configuration.
 
-![](https://files.helpdocs.io/kw8ldg1itf/articles/7dghbx1dbl/1587761892279/image.png)### Review: Artifactory Permissions
+![](./static/add-artifactory-servers-02.png)
+
+### Review: Artifactory Permissions
 
 Make sure the following permissions are granted to the user:
 
@@ -36,11 +38,11 @@ See [Managing Permissions: JFrog Artifactory User Guide](https://www.jfrog.com/c
 
 Docker labels are supported for Docker images in Artifactory.
 
-You can reference a label using this expression in a [Shell Script](/article/1fjrjbau7x-capture-shell-script-step-output) step:
+You can reference a label using this expression in a [Shell Script](../../../continuous-delivery/model-cd-pipeline/workflows/capture-shell-script-step-output.md) step:
 
 `${artifact.label.get("<label-key>")}`
 
-See [Built-in Variables List (FirstGen)](/article/aza65y4af6-built-in-variables-list).
+See [Built-in Variables List (FirstGen)](../../techref-category/variables/built-in-variables-list.md).
 
 ### Step 1: Select Artifactory Server
 
@@ -74,7 +76,7 @@ See [Repository Management](https://www.jfrog.com/confluence/display/JFROG/Repos
 
 Enter the credentials.
 
-For secrets and other sensitive settings, select or create a new [Harness Encrypted Text secret](/article/ygyvp998mu-use-encrypted-text-secrets).
+For secrets and other sensitive settings, select or create a new [Harness Encrypted Text secret](../../security/secrets-management/use-encrypted-text-secrets.md).
 
 Usage Scope is determined by the secret you selected.
 
@@ -82,11 +84,11 @@ Usage Scope is determined by the secret you selected.
 
 Select the Delegate Selector(s) of the Delegate(s) you want this Connector to use.
 
-When Harness needs to run a task, it makes a connection to a resource via its Delegates. Harness selects the best Delegate according to its history or it round-robins between Delegates. See [How Does Harness Manager Pick Delegates?](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation#how_does_harness_manager_pick_delegates).
+When Harness needs to run a task, it makes a connection to a resource via its Delegates. Harness selects the best Delegate according to its history or it round-robins between Delegates. See [How Does Harness Manager Pick Delegates?](../manage-delegates/delegate-installation.md#how-does-harness-manager-pick-delegates).
 
 In a few cases, you might want Harness to select specific Delegates. In these cases, you can use Delegate Selectors.
 
-See [Select Delegates with Selectors](/article/c3fvixpgsl-select-delegates-for-specific-tasks-with-selectors).
+See [Select Delegates with Selectors](../manage-delegates/select-delegates-for-specific-tasks-with-selectors.md).
 
 ### Step 6: Skip Validation
 
@@ -94,5 +96,5 @@ Select **Skip Validation** to skip credential verification and creation or upd
 
 ### See Also
 
-* [Add a Docker Artifact Source](/article/gxv9gj6khz-add-a-docker-image-service)
+* [Add a Docker Artifact Source](../../../continuous-delivery/model-cd-pipeline/setup-services/add-a-docker-image-service.md)
 
