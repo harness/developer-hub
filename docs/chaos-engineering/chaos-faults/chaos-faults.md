@@ -3,13 +3,13 @@ id: chaos-faults
 title: Chaos Faults
 ---
 
-The fault execution is triggered upon creation of the ChaosEngine resource (various examples of which are provided under the respective faults). Typically, these chaosengines are embedded within the 'steps' of a Chaos fault. However, one may also create the ChaosEngines manually, and the chaos-operator reconciles this resource and triggers the fault execution.
+The fault execution is triggered when the chaosengine resource (various examples of which are provided under the respective faults) is created. Typically, these chaosengines are embedded within the 'steps' of a chaos fault. However, you can also create the chaosengine manually, and the chaos-operator reconciles this resource and triggers the fault execution.
 
 Provided below are tables with links to the individual fault docs for easy navigation.
 
 ## Kubernetes Faults
 
-Kubernetes faults disrupt the resources running on a Kubernetes cluster. They can be categorized into Pod-level faults and Node-level faults.
+Kubernetes faults disrupt the resources running on a cluster. They can be categorized into **pod-level** faults and **node-level** faults.
 
 ### Pod Chaos
 
@@ -46,7 +46,7 @@ Kubernetes faults disrupt the resources running on a Kubernetes cluster. They ca
   </tr>
   <tr>
     <td>Pod Delete</td>
-    <td>Deletes the application pods </td>
+    <td>Deletes the application pods. </td>
     <td><a href="/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-delete">pod-delete</a></td>
   </tr>
   <tr>
@@ -141,7 +141,7 @@ Kubernetes faults disrupt the resources running on a Kubernetes cluster. They ca
   </tr>
   <tr>
     <td>Node CPU Hog</td>
-    <td>Exhaust CPU resources on the Kubernetes Node</td>
+    <td>Exhaust CPU resources on the Kubernetes node. </td>
     <td><a href="/docs/chaos-engineering/chaos-faults/kubernetes/node/node-cpu-hog">node-cpu-hog</a></td>
   </tr>
   <tr>
@@ -173,9 +173,9 @@ Kubernetes faults disrupt the resources running on a Kubernetes cluster. They ca
 
 ## Cloud Infrastructure
 
-Chaos faults that inject chaos into the platform resources of Kubernetes are classified into this category. Management of platform resources vary significantly from each other, Chaos Charts may be maintained separately for each platform (For example, AWS, GCP, Azure, etc)
+Chaos faults that inject chaos into Kubernetes platform resources are classified in this category. Platform management for these resources differs significantly. You can maintain chaos charts separately for each platform (For example, AWS, GCP, Azure, etc).
 
-Following Platform Chaos faults are available:
+The below mentioned platform chaos faults are available:
 
 ### AWS
 
@@ -187,7 +187,7 @@ Following Platform Chaos faults are available:
   </tr>
   <tr>
     <td>EC2 Stop By ID</td>
-    <td>Stop EC2 instances using the instance IDs</td>
+    <td>Stop EC2 instances using the instance IDs.</td>
     <td><a href="/docs/chaos-engineering/chaos-faults/aws/ec2-stop-by-id">ec2-stop-by-id</a></td>
   </tr>
   <tr>
@@ -222,27 +222,27 @@ Following Platform Chaos faults are available:
   </tr>
   <tr>
     <td>EC2 HTTP Latency</td>
-    <td>Inject HTTP latency for services running on EC2 instances</td>
+    <td>Inject HTTP latency for services running on the EC2 instances.</td>
     <td><a href="/docs/chaos-engineering/chaos-faults/aws/ec2-http-latency">ec2-http-latency</a></td>
   </tr>
   <tr>
     <td>EC2 HTTP Reset Peer</td>
-    <td>Inject connection reset for services running  on EC2 instances</td>
+    <td>Inject connection reset for services running on the EC2 instances.</td>
     <td><a href="/docs/chaos-engineering/chaos-faults/aws/ec2-http-reset-peer">ec2-http-reset-peer</a></td>
   </tr>
   <tr>
     <td>EC2 HTTP Status Code</td>
-    <td>Modifies HTTP response status code for services running on EC2 instances</td>
+    <td>Modifies HTTP response status code for services running on the EC2 instances.</td>
     <td><a href="/docs/chaos-engineering/chaos-faults/aws/ec2-http-status-code">ec2-http-status-code</a></td>
   </tr>
   <tr>
     <td>EC2 HTTP Modify Body</td>
-    <td>Modifies HTTP response body for services running on EC2 instances</td>
+    <td>Modifies HTTP response body for services running on the EC2 instances.</td>
     <td><a href="/docs/chaos-engineering/chaos-faults/aws/ec2-http-modify-body">ec2-http-modify-body</a></td>
   </tr>
   <tr>
     <td>EC2 HTTP Modify Header</td>
-    <td>Modifies HTTP request or response headers for services running  on EC2 instances</td>
+    <td>Modifies HTTP request or response headers for services running on the EC2 instances.</td>
     <td><a href="/docs/chaos-engineering/chaos-faults/aws/ec2-http-modify-header">ec2-http-modify-header</a></td>
   </tr>
   <tr>
@@ -317,7 +317,7 @@ Following Platform Chaos faults are available:
   </tr>
   <tr>
     <td>GCP VM Instance Stop</td>
-    <td>Stop GCP VM instances using the VM names</td>
+    <td>Stop GCP VM instances using the VM names.</td>
     <td><a href="/docs/chaos-engineering/chaos-faults/gcp/gcp-vm-instance-stop">gcp-vm-instance-stop</a></td>
   </tr>
   <tr>
@@ -347,7 +347,7 @@ Following Platform Chaos faults are available:
   </tr>
   <tr>
     <td>Azure Instance Stop</td>
-    <td>Stop Azure VM instances</td>
+    <td>Stop Azure VM instances.</td>
     <td><a href="/docs/chaos-engineering/chaos-faults/azure/azure-instance-stop">azure-instance-stop</a></td>
   </tr>
   <tr>
@@ -397,12 +397,12 @@ Following Platform Chaos faults are available:
   </tr>
   <tr>
     <td>VMWare DNS Chaos</td>
-    <td>Injects DNS errors on the VMWare VMs</td>
+    <td>Injects DNS errors on the VMWare VM(s).</td>
     <td><a href="/docs/chaos-engineering/chaos-faults/vmware/vmware-dns-chaos">vmware-dns-chaos</a></td>
   </tr>
   <tr>
     <td>VMWare Network Loss</td>
-    <td>Injects network loss on the target VM(s)</td>
+    <td>Injects network loss on the target VM(s).</td>
     <td><a href="/docs/chaos-engineering/chaos-faults/vmware/vmware-network-loss">vmware-network-loss</a></td>
   </tr>
   <tr>
@@ -412,17 +412,17 @@ Following Platform Chaos faults are available:
   </tr>
   <tr>
     <td>VMware HTTP Latency</td>
-    <td>Add HTTP Latency to the services running on the VMs</td>
+    <td>Add HTTP Latency to the services running on the VM(s).</td>
     <td><a href="/docs/chaos-engineering/chaos-faults/vmware/vmware-http-latency">vmware-http-latency</a></td>
   </tr>
   <tr>
     <td>VMware HTTP Reset Peer</td>
-    <td>Simulate connection lost for HTTP requests on the services running on the VMs</td>
+    <td>Simulate connection lost for HTTP requests on the services running on the VM(s).</td>
     <td><a href="/docs/chaos-engineering/chaos-faults/vmware/vmware-http-reset-peer">vmware-http-reset-peer</a></td>
   </tr>
   <tr>
     <td>VMware HTTP Modify Response</td>
-    <td>Modify HTTP Response on services running on the VMs</td>
+    <td>Modify HTTP Response on services running on the VM(s).</td>
     <td><a href="/docs/chaos-engineering/chaos-faults/vmware/vmware-http-modify-response">vmware-http-modify-response</a></td>
   </tr>
   <tr>
