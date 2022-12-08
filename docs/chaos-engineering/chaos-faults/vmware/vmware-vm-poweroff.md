@@ -22,6 +22,7 @@ Coming soon.
 ## Prerequisites
 
 :::info
+
 - Kubernetes >= 1.17
 - Vcenter access to stop and start the VM.
 - Kubernetes secret that has the Vcenter credentials in the `CHAOS_NAMESPACE`. A sample secret file looks like:

@@ -15,6 +15,7 @@ title: VMware Network Loss
 <details>
 <summary>View the uses of the fault</summary>
 <div>
+
 The fault results in network degradation without the VM being marked unhealthy (or unworthy) of traffic. The goal of this fault is to simulate issues within your VM network or microservice communication across services in different hosts etc.
 
 Mitigation (in this case, keeping the timeout i.e, the network latency low) can be achieved using a middleware that can switch traffic based on certain SLOs/performance parameters. If such an arrangement is not available, the next best solution would be to verify if a degradation is highlighted by notifying about it using alerts so that the admin (or SRE) has the opportunity to investigate and fix these issues. 

@@ -1,32 +1,33 @@
 ---
-id: vmware-vmpoweroff
-title: VMware VM-Poweroff
+id: vmware-dns-chaos
+title: VMware DNS Chaos
 ---
 
 ## Introduction
-- It stops (or powers off) the VMWare VMs before bringing them back to powered-on state. After a specific chaos duration, the VMWare APIs help start/stop the target VM.
+- It causes DNS errors in the VMWare VMs for a specified chaos duration.
 - It checks the performance of the application/process running on the VMWare VMs.
 
 :::tip Fault execution flow chart
-![VMware VM Poweroff](./static/images/vm-poweroff.png)
+![VMware DNS Chaos](./static/images/vmware-dns-chaos.png)
 :::
 
 ## Uses
 <details>
 <summary>View the uses of the fault</summary>
 <div>
-Coming soon.
+The fault causes DNS errors on the target VMs which results in unavailability/distorted network connectivity from the VM to the target hosts. This will also help produce a hypothesis where certain services of an application are unreachable from the VM. This will help the user take mitigation steps to overcome such situation. This fault also helps understand how the DNS error can impact your infrastructure and standalone tasks.
 </div>
 </details>
 
 ## Prerequisites
-
 :::info
+- Kubernetes > 1.16
 
-- Kubernetes >= 1.17
-- Vcenter access to stop and start the VM.
-- Kubernetes secret having the Vcenter credentials in the `CHAOS_NAMESPACE`. A secret file looks like:
-
+**vCenter Requirements**
+- Ensure the connectivity of execution plane with vCenter and the hosts over 443 port. 
+- Ensure that VMware tool is installed on the target VM with remote execution enabled.
+- Ensure that you have sufficient vCenter permission to access hosts and VMs.
+- Ensure to create a Kubernetes secret having the Vcenter credentials in the `CHAOS_NAMESPACE`. A sample secret file looks like:
 ```yaml
 apiVersion: v1
 kind: Secret
@@ -41,20 +42,16 @@ stringData:
 ```
 
 ### NOTE
-
-You can pass the VM credentials as a secret or as a chaosengine environment variable.
+You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
 :::
 
+
 ## Default Validations
-
 :::info
-
-- The VM should be in a healthy state.
-
+- VM should be in healthy state before and after chaos.
 :::
 
 ## Fault Tunables
-
 <details>
     <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>
@@ -65,9 +62,19 @@ You can pass the VM credentials as a secret or as a chaosengine environment vari
         <th> Notes </th>
       </tr>
       <tr>
-        <td> APP_VM_MOIDS </td>
-        <td> MOIDs of the VMware instance</td>
-        <td> Once you open VM in vCenter WebClient, you can find MOID in address field (VirtualMachine:vm-5365). Alternatively you can use the CLI to fetch the MOID. Eg: vm-5365 </td>
+        <td> VM_USER_NAME </td>
+        <td> Provide the username of the target VM(s)</td>
+        <td> Multiple usernames can be provided as comma separated (for more than one VM under chaos). It is used to run the govc command.</td>
+      </tr>
+      <tr>
+        <td> VM_PASSWORD </td>
+        <td> Provide the password for the target VM(s)</td>
+        <td> It is used to run the govc command.</td>
+      </tr>
+      <tr>
+        <td> PORT </td>
+        <td> Provide the DNS Port</td>
+        <td> Default value is 54 </td>
       </tr>
     </table>
     <h2>Optional Fields</h2>
@@ -89,31 +96,105 @@ You can pass the VM credentials as a secret or as a chaosengine environment vari
       </tr>
       <tr>
         <td> SEQUENCE </td>
-        <td> It defines the sequence of chaos execution for multiple instance </td>
+        <td> It defines sequence of chaos execution for multiple instance </td>
         <td> Default value: parallel. Supported: serial, parallel </td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injection of chaos in sec </td>
-        <td> For example, 30s</td>
+        <td> Eg. 30 </td>
+      </tr>
+      <tr>
+        <td> TARGET_HOSTNAMES </td>
+        <td> List of the target hostnames or keywords eg. '["litmuschaos","chaosnative.com"]' </td>
+        <td> If not provided, all hostnames/domains will be targeted</td>
+      </tr>
+      <tr>
+        <td> MATCH_SCHEME </td>
+        <td> Determines whether the dns query has to match exactly with one of the targets or can have any of the targets as substring. Can be either exact or substring </td>
+        <td> if not provided, it will be set as exact</td>
+      </tr>
+      <tr>
+        <td> UPSTREAM_SERVER </td>
+        <td> Custom upstream server to which intercepted dns requests will be forwarded </td>
+        <td> defaults to the server mentioned in resolv.conf </td>
       </tr>
     </table>
+    <h2>Secret Fields</h2>
+     <table>
+      <tr>
+        <th> Variables </th>
+        <th> Description </th>
+        <th> Notes </th>
+      </tr>
+      <tr>
+        <td> GOVC_URL </td>
+        <td> Provide the VMCenter Server URL</td>
+        <td> It is used to perform the VMware API calls using govc command and is derived from secret.</td>
+      </tr>
+      <tr>
+        <td> GOVC_USERNAME </td>
+        <td> Provide the username of VMCenter Server</td>
+        <td> It is used for auth purpose and this ENV is setup using secret.</td>
+      </tr>
+      <tr>
+        <td> GOVC_PASSWORD </td>
+        <td> Provide the password of VMCenter Server</td>
+        <td> It is used for auth purpose and this ENV is setup using secret.</td>
+      </tr>
+      <tr>
+        <td> GOVC_INSECURE </td>
+        <td> Provide the value as <code>true</code> </td>
+        <td> It is used to run the govc in insecure mode and this ENV is setup using secret.</td>
+      </tr>
+     </table>
 </details>
 
 ## Fault Examples
 
 ### Common Fault Tunables
-Refer to the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
+Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
-### Stop/Poweroff VM By MOID
+### Run DNS Chaos With Port
 
-It contains MOID of the VM instance. You can tune it using the `APP_VM_MOIDS` environment variable.
+It contains the DNS port to inject the DNS chaos. The value can be provided using `PORT` Env.
 
-Use the following example to tune it:
+Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/vm-poweroff/app-vm-moid.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-dns-chaos/vmware-dns-port.yaml yaml)
 ```yaml
-# power-off the VMWare VM
+# induces dns chaos on the VMWare VM
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: vmware-engine
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: vmware-dns-chaos
+    spec:
+      components:
+        env:
+        - name: PORT
+          value: '54'
+        - name: VM_NAME
+          value: 'vm-1,vm-2'
+        - name: VM_USER_NAME
+          value: 'ubuntu,debian'
+        - name: VM_PASSWORD
+          value: '123,123'
+```
+
+### Run DNS Chaos With Target HostNames
+
+It contains the list of the target host name to inject the DNS chaos. The value can be provided using `TARGET_HOSTNAMES` Env.
+
+Use the following example to tune this:
+
+[embedmd]:# (./static/manifests/vmware-dns-chaos/vmware-dns-target-hostnames.yaml yaml)
+```yaml
+# induces dns chaos on the VMware VMs
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -122,13 +203,83 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: vm-poweroff
+  - name: vmware-dns-chaos
     spec:
       components:
         env:
-        # MOID of the VM
-        - name: APP_VM_MOIDS
-          value: 'vm-53,vm-65'
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
+        # list of target host names
+        - name: TARGET_HOSTNAMES
+          value: '["litmuschaos","chaosnative.com"]'
+        - name: VM_NAME
+          value: 'vm-1,vm-2'
+        - name: VM_USER_NAME
+          value: 'ubuntu,debian'
+        - name: VM_PASSWORD
+          value: '123,123'
+```
+
+
+### Run DNS Chaos With Match scheme
+
+It determines whether the dns query has to match exactly with one of the targets or can have any of the targets as substring. It can be either exact or substring. The value can be provided using `MATCH_SCHEME` Env.
+
+Use the following example to tune this:
+
+[embedmd]:# (./static/manifests/vmware-dns-chaos/vmware-dns-match-scheme.yaml yaml)
+```yaml
+# induces dns chaos on the VMware VMs
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: vmware-dns-chaos
+    spec:
+      components:
+        env:
+        # match scheme type
+        - name: MATCH_SCHEME
+          value: 'exact'
+        - name: VM_NAME
+          value: 'vm-1,vm-2'
+        - name: VM_USER_NAME
+          value: 'ubuntu,debian'
+        - name: VM_PASSWORD
+          value: '123,123'
+```
+
+
+### Run DNS Chaos With Upstream server
+
+It contains the custom upstream server to which intercepted dns requests will be forwarded. It is defaults to the server mentioned in resolv.conf. The value can be provided using `UPSTREAM_SERVER` Env.
+
+Use the following example to tune this:
+
+[embedmd]:# (./static/manifests/vmware-dns-chaos/vmware-dns-upstream-server.yaml yaml)
+```yaml
+# induces dns chaos on the VMware VMs
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: vmware-dns-chaos
+    spec:
+      components:
+        env:
+        # name of the upstream server
+        - name: UPSTREAM_SERVER
+          value: '8.8.8.8'
+        - name: VM_NAME
+          value: 'vm-1,vm-2'
+        - name: VM_USER_NAME
+          value: 'ubuntu,debian'
+        - name: VM_PASSWORD
+          value: '123,123'
 ```
