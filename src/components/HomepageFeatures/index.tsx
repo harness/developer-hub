@@ -2,30 +2,16 @@ import React from "react";
 import clsx from "clsx";
 import Tooltip from "rc-tooltip";
 import Link from "@docusaurus/Link";
+import { CardItem, docType } from "../LandingPage/TutorialCard";
 import "rc-tooltip/assets/bootstrap.css";
 import styles from "./styles.module.scss";
 
-enum docType {
-  Documentation = "doc",
-  Interactive = "interactive",
-  Video = "video",
-}
-
-export type FeatureItem = {
-  title: string;
-  module: string;
-  Svg?: string; // React.ComponentType<React.ComponentProps<'svg'>>;
-  description: JSX.Element;
-  type: docType[];
-  link: string;
-};
-
-const FeatureList: FeatureItem[] = [
+const FeatureList: CardItem[] = [
   {
     title: "Build & Test Code",
     module: "ci",
-    Svg: "/img/icon_ci.svg",
-    description: <>Create a CI build pipeline.</>,
+    icon: "/img/icon_ci.svg",
+    description: "Create a CI build pipeline.",
     type: [docType.Documentation],
     //type: [docType.Documentation, docType.Interactive, docType.Video],
     link: "/tutorials/build-code",
@@ -33,7 +19,7 @@ const FeatureList: FeatureItem[] = [
   {
     title: "Deploy Services",
     module: "cd",
-    Svg: "/img/icon_cd.svg",
+    icon: "/img/icon_cd.svg",
     description: <>Create a CD deployment pipeline.</>,
     type: [docType.Documentation],
     link: "/tutorials/deploy-services",
@@ -41,7 +27,7 @@ const FeatureList: FeatureItem[] = [
   {
     title: "Manage Feature Flags",
     module: "ff",
-    Svg: "/img/icon_ff.svg",
+    icon: "/img/icon_ff.svg",
     description: <>Roll out new features progressively.</>,
     type: [docType.Documentation],
     link: "/tutorials/manage-feature-flags",
@@ -49,7 +35,7 @@ const FeatureList: FeatureItem[] = [
   {
     title: "Manage Cloud Costs",
     module: "ccm",
-    Svg: "/img/icon_ccm.svg",
+    icon: "/img/icon_ccm.svg",
     description: <>Achieve cost transparency and cut costs.</>,
     type: [docType.Documentation],
     link: "/tutorials/manage-cloud-costs",
@@ -57,7 +43,7 @@ const FeatureList: FeatureItem[] = [
   {
     title: "Manage Service Reliability",
     module: "srm",
-    Svg: "/img/icon_srm.svg",
+    icon: "/img/icon_srm.svg",
     description: <>Monitor SLOs, track error budgets, debug code errors.</>,
     type: [docType.Documentation, docType.Interactive, docType.Video],
     link: "/tutorials/manage-service-reliability",
@@ -65,7 +51,7 @@ const FeatureList: FeatureItem[] = [
   {
     title: "Orchestrate Security Tests",
     module: "sto",
-    Svg: "/img/icon_sto.svg",
+    icon: "/img/icon_sto.svg",
     description: <>Scan code, containers and apps.</>,
     type: [docType.Documentation],
     link: "/tutorials/orchestrate-security-tests",
@@ -73,7 +59,7 @@ const FeatureList: FeatureItem[] = [
   {
     title: "Run Chaos Experiments",
     module: "ce",
-    Svg: "/img/icon_ce.svg",
+    icon: "/img/icon_ce.svg",
     description: <>Ensure app and infrastructure resilience.</>,
     type: [docType.Documentation],
     link: "/tutorials/run-chaos-experiments",
@@ -81,7 +67,7 @@ const FeatureList: FeatureItem[] = [
   {
     title: "Administer Harness Platform",
     module: "platform",
-    Svg: "/img/logo.svg",
+    icon: "/img/logo.svg",
     description: (
       <>
         Install a Kubernetes or Docker delegate, Onboard with Terraform
@@ -93,13 +79,13 @@ const FeatureList: FeatureItem[] = [
   },
 ];
 
-function Feature({ title, Svg, description, type, module, link }: FeatureItem) {
+function Feature({ title, icon, description, type, module, link }: CardItem) {
   return (
     <a href={link}>
       <div className={clsx(styles.getStartItem, styles[module])}>
         <div className="text--center">
-          {/* <Svg className={styles.featureSvg} role="img" /> */}
-          <img src={Svg} className={styles.featureSvg} alt={title} />
+          {/* <icon className={styles.featureSvg} role="img" /> */}
+          <img src={icon} className={styles.featureSvg} alt={title} />
         </div>
         <div
           className={clsx(
