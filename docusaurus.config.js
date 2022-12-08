@@ -251,7 +251,7 @@ const config = {
                 to: "release-notes/service-reliability-management",
               },
               {
-                label: "Service Reliability Management",
+                label: "Security Testing Orchestration",
                 to: "release-notes/security-testing-orchestration",
               },
               {
@@ -261,6 +261,10 @@ const config = {
               {
                 label: "Harness Platform",
                 to: "release-notes/platform",
+              },
+              {
+                label: "Self-Managed Enterprise Edition",
+                to: "release-notes/self-managed-ee",
               },
               {
                 label: "Harness FirstGen",

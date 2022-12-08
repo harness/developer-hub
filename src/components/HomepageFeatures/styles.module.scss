@@ -90,6 +90,11 @@
     }
   }
 }
+.btnContainer {
+  display: flex;
+  justify-content: center;
+  padding-top: 24px;
+}
 
 .featureSvg {
   height: 40px;

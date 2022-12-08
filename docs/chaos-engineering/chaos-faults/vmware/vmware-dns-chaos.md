@@ -4,8 +4,8 @@ title: VMware DNS Chaos
 ---
 
 ## Introduction
-- It causes DNS errors in the provided VMWare VMs for a specified chaos duration.
-- It helps to check the performance of the application/process running on the VMWare VMs.
+- It causes DNS errors in the VMWare VMs for a specified chaos duration.
+- It checks the performance of the application/process running on the VMWare VMs.
 
 :::tip Fault execution flow chart
 ![VMware DNS Chaos](./static/images/vmware-dns-chaos.png)
@@ -15,15 +15,15 @@ title: VMware DNS Chaos
 <details>
 <summary>View the uses of the fault</summary>
 <div>
-The fault causes DNS errors on the target VMs which can result in unavailability/distorted network connectivity from the VM to the target hosts. This will also help to produce a hypothesis where some services of an application are unreachable from the VM. This will help the user to think the mitigation steps that should be taken to overcome such situation. This fault can also be used to know how the DNS error can impact your infra and standalone tasks as well.
+The fault causes DNS errors on the target VMs which results in unavailability/distorted network connectivity from the VM to the target hosts. This will also help produce a hypothesis where certain services of an application are unreachable from the VM. This will help the user take mitigation steps to overcome such situation. This fault also helps understand how the DNS error can impact your infrastructure and standalone tasks.
 </div>
 </details>
 
 ## Prerequisites
 :::info
-- Ensure that Kubernetes Version > 1.16
+- Kubernetes > 1.16
 
-** vCenter Requirements **
+**vCenter Requirements**
 - Ensure the connectivity of execution plane with vCenter and the hosts over 443 port. 
 - Ensure that VMware tool is installed on the target VM with remote execution enabled.
 - Ensure that you have sufficient vCenter permission to access hosts and VMs.
@@ -283,4 +283,3 @@ spec:
         - name: VM_PASSWORD
           value: '123,123'
 ```
-

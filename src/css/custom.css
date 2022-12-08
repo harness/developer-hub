@@ -244,15 +244,24 @@
   --ifm-link-color: var(--ifm-color-primary);
 }
 
-.button--cta {
+.button--cta,
+.button--primary {
   background-color: var(--primary-7);
+  border-color: var(--primary-7);
   font-weight: 600;
   font-size: 16px;
   line-height: 24px;
   color: var(--white);
 }
-.button--cta:hover {
+.button--cta:hover,
+.button--primary:hover {
   background-color: var(--primary-5);
+  border-color: var(--primary-5);
+}
+.button--primary {
+  height: 48px;
+  padding-left: 2em;
+  padding-right: 2em;
 }
 
 /* style overwriting temporarily for the beta icon */
