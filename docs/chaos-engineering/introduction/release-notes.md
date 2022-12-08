@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: HCE Release Notes
+title: Chaos Engineering Release Notes
 ---
 
 Harness Chaos Engineering is updated regularly. Review the notes below for details about recent changes. 
@@ -11,33 +11,33 @@ Harness deploys updates progressively to different Harness cluster hosting accou
 
 # December 2, 2022, version 0.4.2
 
-## What’s New
+## What’s new
 
-1. Update feature for ChaosHub enabling users to update details like Git Connector, Repository Name, Branch name & Name for an already connected ChaosHub.
-2. Adds CDN Support for Chaos module static artifacts, making UI load faster on client's devices.
-3. Added version info in ChaosDriver & ChaosManager. Now, the versions will be available over provided endpoints `/chaos/driver/api/version` & `/chaos/manager/api/version` for ChaosDriver & ChaosManager respectively.
-4. Adds a range filter dropdown in the Experiment Runs bar graph under Experiment overview allowing users to set the range on the last runs to be shown in the graph.
-5. Adds support for all faults statuses in the Experiment Runs graph. Previously only `Failed` & `Passed` faults were getting shown, now faults in `Awaited`, `Stopped` & `N/A` states will also be available under the Experiment Runs graph.
-6. Adds manifest download button in UI for Chaos Infrastructures enabling users to have seamless upgrade.
-7. Adds consistent loaders for all components & screens in UI.
+* Update feature for ChaosHub enables users to update details such as `Git Connector`, `Repository Name`, `Branch Name` and `Name` for an already connected ChaosHub.
+* Adds CDN Support for Chaos module static artifacts thereby loading the UI with reduced latency on client devices.
+* Adds version information in the ChaosDriver and ChaosManager. Hence, the versions are available over endpoints `/chaos/driver/api/version` and `/chaos/manager/api/version` for ChaosDriver and ChaosManager, respectively.
+* Adds a range filter dropdown in the `Experiment Runs` bar graph under `Experiment overview` allowing you to set the range on the last runs shown in the graph.
+* Adds support for all fault statuses in the `Experiment Runs` graph. Apart from `Failed` and `Passed` states being shown, faults in `Awaited`, `Stopped` and `N/A` states are also available under the `Experiment Runs` graph.
+* Adds manifest download button in the UI for Chaos Infrastructures that enables you to have a seamless upgrade.
+* Adds consistent loaders for all components and screens in the UI.
 
 ## Early access features
 
 No early access features are available in this release.
 
-## Fixed Issues
+## Fixed issues
 
-1. Fixes Enterprise ChaosHub shown irrespective of searched terms by the users.
-2. Fixes httpProbe schema in UI to add support for new response timeout changes for HTTP probe. Now, probeTimeout for HTTP probes will be treated as response timeout & should be provided in seconds.
-3. Fixes the issue when the details of previously connected chaos infrastructure were getting pre-filled while connecting new chaos infrastructure.
-4. Fixes the Run button returning an error even when the Experiment run is already completed.
-5. Fixes calendar on the Experiments & Experiment Runs page having a default selection of one week. Now, all experiments & runs will be shown by default.
-6. Fixes panic error for k8sObjects and k8sLogs go-routines resulting in closed channel error.
-7. Fixes cancel(X) button & back button missing in Enable Chaos Infrastructure screen
-8. Fixes repeated error logs for ChaosHub in Chaos-Manager when it was not available to find some of the icons.
-9. Fixes the Expected Resilience Score changing to NaN when trying to override the same completely.
-10. Fixes resource-type not coming for aborting a Chaos Experiment in audit-trail.
-11. Fixes Minor UI/UX Issues making the UI more user-friendly & more accessible.
+* Enterprise ChaosHub is visible irrespective of terms users search.
+* New response timeout changes to HTTP probe in the UI. The probeTimeout for HTTP probes is treated as a response timeout and is in seconds.
+* Details of previously connected chaos infrastructure does not pre-fill while connecting to a new chaos infrastructure.
+* Only after a chaos experiment is complete, the `Run` button is activated again.
+* All `Experiments` and `Experiment Runs` are shown by default, rather than showing experiments within a specific timeframe.
+* Panic error for k8sObjects and k8sLogs goroutines does not throw a closed channel error.
+* The `Enable Chaos Infrastructure` screen has a cancel(X) button and a back button.
+* When chaos manager can not find certain chaos fault icons, error logs for ChaosHub are not repeated.
+* The `Expected Resilience Score` does not change to `NaN` when overriding it.
+* To abort a chaos experiment in audit trail, resource-type field is available. 
+* Minor UI/UX issues are fixed making the UI user-friendly.
 
 # November 14, 2022
 
@@ -49,34 +49,34 @@ The Harness Chaos Engineering (HCE) module, which you can use to perform chaos e
 
 #### ChaosHub
 
-1. Github is the only Git provider for chaoshubs.
-2. Details for an already connected chaoshub can’t be updated.
+* Github is the only Git provider for chaoshubs.
+* Details for an already connected chaoshub cannot be updated.
 
-#### Chaos Infrastructure
+#### Chaos infrastructure
 
-1. Chaos infrastructure can't be installed through Harness Delegate.
-2. Logs for chaos infrastructure can’t be viewed.
-3. The properties of chaos infrastructure can’t be updated. You will need to provide blacklisted namespaces.
-4. The properties of the environment to which the chaos infrastructure belongs can’t be updated.
-5. Configuring chaos infrastructure doesn’t provide support for Linux and Windows.
+* Chaos infrastructure cannot be installed through Harness Delegate.
+* Logs for chaos infrastructure cannot be viewed.
+* The properties of chaos infrastructure cannot be updated. You will need to provide blacklisted namespaces.
+* The properties of the environment to which the chaos infrastructure belongs cannot be updated.
+* Configuring chaos infrastructure doesnot provide support for Linux and Windows.
  
-#### Chaos Experiments
+#### Chaos experiments
 
-1. Experiments with parallel faults can’t be created.
-2. Probe tunables can’t be updated or edited.
-3. A cron or recurring chaos experiment can’t be suspended or resumed.
-4. An individual fault in an experiment can’t be stopped through your input.
-5. A chaos experiment can’t be pushed to Gitlab, Bitbucket, or Gerrit.
-6. A chaos experiment can’t be pushed from Azure to Got
-7. SCM experiment push logs can’t be audited.
+* Experiments with parallel faults cannot be created.
+* Probe tunables cannot be updated or edited.
+* A cron or recurring chaos experiment cannot be suspended or resumed.
+* An individual fault in an experiment cannot be stopped through your input.
+* A chaos experiment cannot be pushed to Gitlab, Bitbucket, or Gerrit.
+* A chaos experiment cannot be pushed from Azure to Got
+* SCM experiment push logs cannot be audited.
 
-#### CI Pipeline integration
+#### CI pipeline integration
 
-1. Optional assertion for chaos step failure can’t be provided during pipeline integration.
-2. The chaos error type(s) can’t be selected in a failure strategy.
-3. Timeouts can’t be defined for experiment execution.
-4. Access control can’t be gained for the chaos step addition.
-5. Pipeline template support can’t be obtained with the chaos steps.
-6. The experiment execution can’t be viewed from step output during the experiment run.
-7. Propagation can’t be aborted from chaos step to experiment execution.
-8. Information about propagation can’t be gained from pipeline to experiment (for audit purposes).
+* Optional assertion for chaos step failure cannot be provided during pipeline integration.
+* The chaos error type(s) cannot be selected in a failure strategy.
+* Timeouts cannot be defined for experiment execution.
+* Access control cannot be gained for the chaos step addition.
+* Pipeline template support cannot be obtained with the chaos steps.
+* The experiment execution cannot be viewed from step output during the experiment run.
+* Propagation cannot be aborted from chaos step to experiment execution.
+* Information about propagation cannot be gained from pipeline to experiment (for audit purposes).
