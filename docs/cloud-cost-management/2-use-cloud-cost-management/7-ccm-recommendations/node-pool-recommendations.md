@@ -23,8 +23,8 @@ Using recommendations without proper assessment could result in unexpected chang
 
 ## Before You Begin
 
-* [Set Up Cloud Cost Management for Kubernetes](../../1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-kubernetes.md)
-* [CCM Perspectives](../2-ccm-perspectives/1-create-cost-perspectives.md)
+* [Set Up Cloud Cost Management for Kubernetes](/docs/cloud-cost-management/1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-kubernetes.md)
+* [CCM Perspectives](/docs/cloud-cost-management/2-use-cloud-cost-management/2-ccm-perspectives/1-create-cost-perspectives.md)
 
 ## Prerequisites
 
@@ -94,7 +94,7 @@ So the Max CPU recommendation would be: Max (10.4, 10.5) = **10.5 vCPU**
 ```
 Similarly, for memory, nodes will be the max number of nodes in the observation interval.
 
-Node pool recommendations also offer the flexibility of tuning the recommendations by setting the resource configuration preferences. See [Tune Recommendations](/article/x75xp0xime-node-pool-recommendations#step_tune_recommendations).
+Node pool recommendations also offer the flexibility of tuning the recommendations by setting the resource configuration preferences. See **Tune Recommendations**.
 
 ## View Recommendations
 
@@ -208,5 +208,5 @@ Capturing your changes in the URL enables you to share your tuned recommendation
 
 ### Next Steps
 
-* [Optimize Kubernetes Costs with Workload Recommendations](workload-recommendations.md)
+* [Optimize Kubernetes Costs with Workload Recommendations](/docs/cloud-cost-management/2-use-cloud-cost-management/7-ccm-recommendations/workload-recommendations.md)
 

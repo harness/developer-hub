@@ -8,14 +8,14 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-AutoStopping Rule is a dynamic and powerful resource orchestrator for non-production workloads. For more information, see [AutoStopping Rules Overview](../1-add-connectors/1-auto-stopping-rules.md).
+AutoStopping Rule is a dynamic and powerful resource orchestrator for non-production workloads. For more information, see [AutoStopping Rules Overview](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/1-add-connectors/1-auto-stopping-rules.md).
 
 This topic describes how to create AutoStopping Rules for Amazon Relational Database Service (RDS).
 
 
 ## Prerequisites
 
-* Read the following topics in [Set up Cloud Cost Management for AWS](../../../1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md): 
+* Read the following topics in [Set up Cloud Cost Management for AWS](/docs/cloud-cost-management/1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md): 
 
 	* Access to CUR. See Cost and Usage Reports (CUR) and CCM Requirements.
 	* Permissions to create a cross-account role. See AWS Access Permissions.
@@ -38,7 +38,7 @@ You can achieve this by simply creating an EC2 AutoStopping Rule and adding an R
 
 ### Query the Archived Database Using Your Own Database Client
 
-See [Use Harness AutoStopping CLI to Keep the RDS Instance(s) Running](/article/ryk2e3ujpn-create-auto-stopping-rules-for-rds#use_harness_auto_stopping_cli_to_keep_the_rds_instance_s_running).
+See [Use Harness AutoStopping CLI to Keep the RDS Instance(s) Running](/docs/cloud-cost-management/use-cloud-cost-management/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/create-auto-stopping-rules-for-rds#use-harness-autostopping-cli-to-keep-the-rds-instances-running).
 
 ## Step 1: Add a Cloud Provider
 
@@ -51,7 +51,9 @@ Perform the following steps to link your AWS cloud account to Harness.
    
      ![](./static/create-auto-stopping-rules-for-rds-71.png)
 3. If you have already linked your AWS account and want to use that account, then select the AWS account from the **Connect to your AWS account** drop-down list.
-4. If you have not added your cloud account, click **Connect to your AWS account** drop-down list and then click **New Connector**. For the detailed steps, see [Connect to an AWS Connector](https://ngdocs.harness.io/article/hiyi6xvj36-connect-to-an-aws-connector).[![](./static/create-auto-stopping-rules-for-rds-73.png)](./static/create-auto-stopping-rules-for-rds-73.png)
+4. If you have not added your cloud account, click **Connect to your AWS account** drop-down list and then click **New Connector**. For the detailed steps, see [Connect to an AWS Connector](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/1-add-connectors/connect-to-an-aws-connector.md).
+   
+   ![](./static/create-auto-stopping-rules-for-rds-73.png)
 
 ## Step 2: Add a New AutoStopping Rule for RDS
 
@@ -61,7 +63,7 @@ Creating AutoStopping Rules for Amazon RDS involves the following steps:
 
 1. In **Cloud Costs,** in **AutoStopping Rules**, click **New AutoStopping Rule**.
 2. In the cloud account type, select **AWS**. It is the cloud account in which your workloads are running that you want to manage using AutoStopping rules.
-3. Select your AWS account from the **Connect to your AWS account** drop-down list and click **Next**. If you have not added an AWS cloud account, see [Connect to an AWS Connector](https://newdocs.helpdocs.io/article/hiyi6xvj36-connect-to-an-aws-connector).
+3. Select your AWS account from the **Connect to your AWS account** drop-down list and click **Next**. If you have not added an AWS cloud account, see [Connect to an AWS Connector](/docs/cloud-cost-management/1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md).
    
      ![](./static/create-auto-stopping-rules-for-rds-75.png)
 4. In **Define your AutoStopping rule**, in **Name your Rule**, enter a name for your rule. This is the name of your AutoStopping rule.
@@ -71,10 +73,14 @@ Creating AutoStopping Rules for Amazon RDS involves the following steps:
 
 Select the cloud resources that you want to manage using this rule. AutoStopping Rule will monitor the selected resources and stop them when they are idle beyond the configured idle time.
 
-1. In **Select the resources to be managed by the rule**, select **RDS** and then click Add RDS instance.![](./static/create-auto-stopping-rules-for-rds-77.png)
+1. In **Select the resources to be managed by the rule**, select **RDS** and then click Add RDS instance.
+   
+     ![](./static/create-auto-stopping-rules-for-rds-77.png)
 2. In **Select RDS Instance**, do the following:
 	1. Select the region where your instance is hosted from the drop-down list.
-	2. Select the RDS instance for which you want to enable AutoStopping Rule and click **Add Selected**.![](./static/create-auto-stopping-rules-for-rds-78.png)
+	2. Select the RDS instance for which you want to enable AutoStopping Rule and click **Add Selected**.
+   
+     ![](./static/create-auto-stopping-rules-for-rds-78.png)
 	3. Once you've made all the selections, click **Add Selected**.
 3. Click **Next**.
 
@@ -82,14 +88,14 @@ Select the cloud resources that you want to manage using this rule. AutoStopping
 
 In this step, you can configure the following settings:
 
-* **Add Dependency**: Set dependencies between two or more AutoStopping Rules when you want one Rule to make one or more Rules to be active based on the traffic that it receives. See [Add Dependency](create-autostopping-rules-aws.md).
+* **Add Dependency**: Set dependencies between two or more AutoStopping Rules when you want one Rule to make one or more Rules to be active based on the traffic that it receives. See [Add Dependency](/docs/cloud-cost-management/use-cloud-cost-management/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/create-autostopping-rules-aws#optional-step-set-up-advanced-configuration).
 * **Fixed Schedules**: Create fixed uptime or downtime schedules for the resources managed by this AutoStopping Rule. When a resource is configured to go up or down on a fixed schedule, it is unaffected by activity or idleness during that time period. See [Fixed Schedules](create-autostopping-rules-aws.md).
 
 ## Review
 
 In Review, verify all the configuration details and click **Save Rule**. To edit any of the configuration settings, click **EDIT** and modify the settings.
 
-Your AutoStopping rule is listed under the [AutoStopping Rules dashboard](autostopping-dashboard.md).
+Your AutoStopping rule is listed under the [AutoStopping Rules dashboard](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/3-create-auto-stopping-rules/autostopping-dashboard.md).
 
 ## Use Harness AutoStopping CLI to Keep the RDS Instance(s) Running
 

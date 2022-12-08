@@ -22,7 +22,7 @@ Harness Cloud Cost Management (CCM) monitors the cloud costs of your GCP product
 
 ## Before you begin
 
-* The same connector cannot be used in NextGen and FirstGen. For information on creating a GCP connector in the FirstGen see [Set Up Cost Visibility for GCP](https://docs.harness.io/article/x53e2by67m-enable-cloud-efficiency-for-google-cloud-platform-gcp).
+* The same connector cannot be used in NextGen and FirstGen. For information on creating a GCP connector in the FirstGen see [Set Up Cost Visibility for GCP](/docs/cloud-cost-management/1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-gcp.md).
 * Review [Required permissions and roles](https://cloud.google.com/iam/docs/understanding-custom-roles#required_permissions_and_roles) to create an IAM role at the organization level
 * Ensure that you have the following permissions to enable and configure the export of Google Cloud billing data to a BigQuery dataset:
 	+ **Billing Account Administrator** role for the target Cloud Billing account
@@ -30,7 +30,7 @@ Harness Cloud Cost Management (CCM) monitors the cloud costs of your GCP product
 
 ## Connect Harness to Google Cloud Platform (GCP) Account
 
-Connect Harness to your GCP account to gain access your GCP services, Compute Engine, Cloud Storage, BigQuery, etc. Harness CCM gives you cost insights that are derived from the billing export. For deep Kubernetes visibility and rightsizing recommendations based on the historical utilization and usage metrics, set up Kubernetes connectors. See [Set Up Cloud Cost Management for Kubernetes](https://ngdocs.harness.io/article/ltt65r6k39-set-up-cost-visibility-for-kubernetes).
+Connect Harness to your GCP account to gain access your GCP services, Compute Engine, Cloud Storage, BigQuery, etc. Harness CCM gives you cost insights that are derived from the billing export. For deep Kubernetes visibility and rightsizing recommendations based on the historical utilization and usage metrics, set up Kubernetes connectors. See [Set Up Cloud Cost Management for Kubernetes](/docs/cloud-cost-management/1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-kubernetes.md).
 
 > **☆ NOTE —** Time periods in the GCP Cloud Billing report use the Pacific Time Zone (PST) and observe daylight saving time shifts. However, Harness CCM explorer uses the UTC time zone. You may notice some cloud cost differences between Harness CCM explorer and the GCP Cloud Billing report due to the time zone difference.
 
@@ -92,7 +92,7 @@ CCM offers the following features:
 | --- | --- | 
 | **Cost Visibility** (Required)| This feature is available by default. Make sure you have set up the GCP Billing Export. Provides the following capabilities:<ul><li>Insights into GCP costs by projects, products, etc.</li><li>Root cost analysis using cost perspectives </li><li>Cost anomaly detection</li><li>Governance using budgets and forecasts</li><li>Alert users using Email and Slack notification</li></ul>|
 | **GCP Inventory Management** (Optional)| This feature provides visibility into your GCE VMs and unused disks and snapshots. The insights provided by inventory management can be used by Finance teams to understand resource utilization across the board.|
-| **GCP optimization using AutoStopping rules** (Required for AutoStopping Rules)| This feature allows you to enable Intelligent Cloud AutoStopping for your GCP cloud resources. For more information, see [Create AutoStopping Rules for GCP](create-auto-stopping-rules-for-gcp.md).<ul><li>Orchestrate GCE VMs based on idleness</li><li>Set dependencies between VMs</li><li>Granular savings visibility</li><li>Simple one-time setup</li></ul>|
+| **GCP optimization using AutoStopping rules** (Required for AutoStopping Rules)| This feature allows you to enable Intelligent Cloud AutoStopping for your GCP cloud resources. For more information, see [Create AutoStopping Rules for GCP](/docs/cloud-cost-management/use-cloud-cost-management/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/create-auto-stopping-rules-for-gcp).<ul><li>Orchestrate GCE VMs based on idleness</li><li>Set dependencies between VMs</li><li>Granular savings visibility</li><li>Simple one-time setup</li></ul>|
 
 
 Make your selection and click **Continue**.
@@ -118,7 +118,9 @@ Cloud Billing Export to BigQuery helps you export detailed Google Cloud billing
 <img src={dataset_permissions} alt="A screenshot that illstrates how and where to enter the dataset name." height="500" width="600" />
 
 
-To enable AutoStopping rules, you need to add more permissions. For more information, see [Create a GCP Connector for AutoStopping Rules](../o2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/1-add-connectors/create-a-gcp-connector-for-auto-stopping-rules.md).
+To enable AutoStopping rules, you need to add more permissions. For more information, see [Create a GCP Connector for AutoStopping Rules](/docs/cloud-cost-management/use-cloud-cost-management/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/add-connectors/create-a-gcp-connector-for-auto-stopping-rules).
+  
+   
 9. Click **Continue** in Harness.
 
 
@@ -134,6 +136,6 @@ Your connector is now listed in the **Connectors**.
 
 ### Next Steps
 
-* [Analyze Cost for GCP ​Using Perspectives](/article/ryhe4aut1y-analyze-cost-for-gcp-using-perspectives)
-* [Create Cost Perspectives](/article/dvspc6ub0v-create-cost-perspectives)
+* [Analyze Cost for GCP ​Using Perspectives](/docs/cloud-cost-management/use-cloud-cost-management/root-cost-analysis/analyze-cost-for-gcp-using-perspectives)
+* [Create Cost Perspectives](/docs/cloud-cost-management/use-cloud-cost-management/ccm-perspectives/create-cost-perspectives)
 

@@ -21,20 +21,20 @@ Harness provides pre-loaded **By Harness** (pre-defined) and **Custom** (use
 * Explore the cloud cost data in a logical and structured manner
 * View your cloud costs at a glance, understand what is costing the most, and analyze cost trends
 
-This Dashboard will not be available if you have not selected **AWS ECS and Resource Inventory Management** feature when setting up [CCM for AWS](../../../1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md).This topic describes how to view the **AWS EC2 Instance Metrics** **Dashboard** and get more information about that data.
+This Dashboard will not be available if you have not selected **AWS ECS and Resource Inventory Management** feature when setting up [CCM for AWS](/docs/cloud-cost-management/1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md).This topic describes how to view the **AWS EC2 Instance Metrics** **Dashboard** and get more information about that data.
 
 ![](./static/view-aws-ec-2-instance-metrics-50.png)
 
 
 ## Before You Begin
 
-* [Set Up Cloud Cost Management for AWS](../../../1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md)
-* [Manage Access Control for CCM Dashboards](../access-control/manage-access-control-for-ccm-dashboards.md)
+* [Set Up Cloud Cost Management for AWS](/docs/cloud-cost-management/1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md)
+* [Manage Access Control for CCM Dashboards](/docs/cloud-cost-management/use-cloud-cost-management/ccm-dashboards-and-access-control/access-control/manage-access-control-for-ccm-dashboards)
 
 ## Prerequisites
 
-* Ensure that you have **Dashboard-All View** permissions assigned. See [Manage Access Control for CCM Dashboards](/../access-control/manage-access-control-for-ccm-dashboards.md).
-* Ensure that you have set up Cloud Cost Management (CCM) for the [AWS](../../../1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md) cloud provider.
+* Ensure that you have **Dashboard-All View** permissions assigned. See [Manage Access Control for CCM Dashboards](/docs/cloud-cost-management/use-cloud-cost-management/ccm-dashboards-and-access-control/access-control/manage-access-control-for-ccm-dashboards).
+* Ensure that you have set up Cloud Cost Management (CCM) for the [AWS](/docs/cloud-cost-management/1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md) cloud provider.
 * Ensure that you have selected **AWS ECS and Resource Inventory Management** feature when creating the AWS connector. 
 
 ## Data Ingestion for Dashboard
@@ -65,13 +65,13 @@ The **EC2 Instance Metrics Dashboard** is displayed.
 
 Once you have set up cost visibility for your Kubernetes clusters, AWS, GCP, and Azure cloud providers, you can create your own Dashboards. Refer to the following topics to create your own Dashboard and chart data.
 
-* [Create Dashboards](https://docs.harness.io/article/ardf4nbvcy-create-dashboards)
-* [Create Visualizations and Graphs](https://docs.harness.io/article/n2jqctdt7c-create-visualizations-and-graphs)
+* [Create Dashboards](/docs/platform/Dashboards/create-dashboards)
+* [Create Visualizations and Graphs](/docs/platform/Dashboards/create-visualizations-and-graphs)
 
 ### Next Steps
 
-* [Use Dashboard Actions](https://docs.harness.io/article/y1oh7mkwmh-use-dashboard-actions)
-* [Download Dashboard Data](https://docs.harness.io/article/op59lb1pxv-download-dashboard-data)
-* [Create Conditional Alerts](https://docs.harness.io/article/ro0i58mvby-create-conditional-alerts)
-* [Schedule and Share Dashboards](https://docs.harness.io/article/35gfke0rl8-share-dashboards)
+* [Use Dashboard Actions](/docs/platform/Dashboards/use-dashboard-actions)
+* [Download Dashboard Data](/docs/platform/Dashboards/download-dashboard-data)
+* [Create Conditional Alerts](/docs/platform/Dashboards/create-conditional-alerts)
+* [Schedule and Share Dashboards](/docs/platform/Dashboards/share-dashboards)
 

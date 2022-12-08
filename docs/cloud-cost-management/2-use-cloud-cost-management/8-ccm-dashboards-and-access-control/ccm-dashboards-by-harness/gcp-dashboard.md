@@ -32,13 +32,13 @@ This topic describes how to view the **By Harness GCP Cost Dashboard** and get
 
 ## Prerequisites
 
-* Ensure that you have **Dashboard-All View** permissions assigned. See [Manage Access Control for CCM Dashboards](/article/ng6yaxqi2r-manage-access-control-for-ccm-dashboards).
-* Ensure that you have set up Cloud Cost Management (CCM) for the [GCP](/article/kxnsritjls-set-up-cost-visibility-for-gcp) cloud account.
+* Ensure that you have **Dashboard-All View** permissions assigned. See [Manage Access Control for CCM Dashboards](/docs/cloud-cost-management/2-use-cloud-cost-management/8-ccm-dashboards-and-access-control/access-control/manage-access-control-for-ccm-dashboards.md).
+* Ensure that you have set up Cloud Cost Management (CCM) for the [GCP](/docs/cloud-cost-management/1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-gcp.md) cloud account.
 * Ensure that you have added all the required permissions for your cloud provider. The data available in the Dashboard depends on the permissions you provided to the GCP cloud provider when setting up CCM.
 
 ## Data Ingestion for GCP Dashboard
 
-Once you have set up cost visibility for the [GCP](/article/kxnsritjls-set-up-cost-visibility-for-gcp) cloud account and the data is available in the Perspective, you can view the **GCP Cost Dashboard**. The data in the Dashboard is updated dynamically.
+Once you have set up cost visibility for the [GCP](docs/cloud-cost-management/1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-gcp.md) cloud account and the data is available in the Perspective, you can view the **GCP Cost Dashboard**. The data in the Dashboard is updated dynamically.
 
 ## View GCP Dashboard
 

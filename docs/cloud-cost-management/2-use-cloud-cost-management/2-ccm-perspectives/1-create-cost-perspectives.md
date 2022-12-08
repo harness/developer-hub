@@ -12,10 +12,10 @@ You can add business context to your Harness Cloud Cost Management (CCM) data us
 
 ### Before You Begin
 
-* [Set Up Cloud Cost Management for AWS](../../1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md)
-* [Set Up Cloud Cost Management for Azure](../../1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-azure.md)
-* [Set Up Cloud Cost Management for GCP](../../1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-gcp.md)
-* [Set Up Cloud Cost Management for Kubernetes](../../1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-kubernetes.md)
+* [Set Up Cloud Cost Management for AWS](/docs/cloud-cost-management/1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md)
+* [Set Up Cloud Cost Management for Azure](/docs/cloud-cost-management/1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-azure.md)
+* [Set Up Cloud Cost Management for GCP](/docs/cloud-cost-management/1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-gcp.md)
+* [Set Up Cloud Cost Management for Kubernetes](/docs/cloud-cost-management/1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-kubernetes.md)
 
 ## Cloud Costs Perspective Concepts
 
@@ -55,10 +55,10 @@ For example, in **Rules for Perspective**, if you select `Label: kubernetes.io/n
 
 You can create a Perspective for your resources using rules and filters. The filters are used to group the resources. The following are the supported filters:
 
-* **Cost Categories**: You can create a perspective by filtering based on the cost categories you have created. To create cost categories, see [Use Cost Categories](../3-ccm-cost-categories/use-ccm-cost-categories.md).
-* **AWS**: CCM allows you to view your AWS costs at a glance, understand what is costing the most, and analyze cost trends. CE displays the data for all your Amazon Web Services (ECS, EC2, and so on). For more information, see [Analyze Cost for AWS Using Perspectives](/article/1nf0qcz4o0-analyze-cost-for-aws).
-* **GCP**: CCM allows you to view your Google Cloud Platform (GCP) costs, understand what is costing the most, and analyze cost trends. CE displays data for all your GCP products (such as Compute Engine, Cloud Storage, BigQuery, and so on), projects, SKUs, and location. For more information, see [Analyze Cost for GCP ​Using Perspectives](/article/ryhe4aut1y-analyze-cost-for-gcp-using-perspectives).
-* **Azure**: CCM allows you to view your Azure costs at a glance, understand what is costing the most, and analyze cost trends. CE displays the data for all your Azure services (Storage accounts, Virtual machines, Containers, and so on). For more information, see [Analyze Cost for Azure Using Perspectives](/article/p17sq3pwbd-analyze-cost-for-azure).
+* **Cost Categories**: You can create a perspective by filtering based on the cost categories you have created. To create cost categories, see [Use Cost Categories](/docs/cloud-cost-management/2-use-cloud-cost-management/3-ccm-cost-categories/use-ccm-cost-categories.md).
+* **AWS**: CCM allows you to view your AWS costs at a glance, understand what is costing the most, and analyze cost trends. CE displays the data for all your Amazon Web Services (ECS, EC2, and so on). For more information, see [Analyze Cost for AWS Using Perspectives](/docs/cloud-cost-management/2-use-cloud-cost-management/4-root-cost-analysis/analyze-cost-for-aws.md).
+* **GCP**: CCM allows you to view your Google Cloud Platform (GCP) costs, understand what is costing the most, and analyze cost trends. CE displays data for all your GCP products (such as Compute Engine, Cloud Storage, BigQuery, and so on), projects, SKUs, and location. For more information, see [Analyze Cost for GCP ​Using Perspectives](/docs/cloud-cost-management/2-use-cloud-cost-management/4-root-cost-analysis/analyze-cost-for-gcp-using-perspectives.md).
+* **Azure**: CCM allows you to view your Azure costs at a glance, understand what is costing the most, and analyze cost trends. CE displays the data for all your Azure services (Storage accounts, Virtual machines, Containers, and so on). For more information, see [Analyze Cost for Azure Using Perspectives](/docs/cloud-cost-management/2-use-cloud-cost-management/4-root-cost-analysis/analyze-cost-for-azure.md).
 * **Cluster**: Total cost, Cost trend, Idle cost, and Unallocated cost for each cluster.
 * **Region**: Each AWS, GCP, or Azure region you're currently running services in.
 * **Product**: Each of your active products with its cloud costs.
@@ -125,9 +125,9 @@ If you've added labels and cluster rules in the perspective builder section, it'
 ## Budgets, Reports, and Alerts
 For details on adding Budgets, Reports, and Alerts go to:
 
-* [Create a Budget for Your Perspective](create-a-budget-perspective.md)
-* [Share Your Cost Perspective Report](share-cost-perspective-report.md)
-* [Detect Cloud Cost Anomalies with CCM](../5-ccm-cost-anomaly-detection/detect-cloud-cost-anomalies-with-ccm.md)
+* [Create a Budget for Your Perspective](/docs/cloud-cost-management/2-use-cloud-cost-management/2-ccm-perspectives/2-create-a-budget-perspective.md)
+* [Share Your Cost Perspective Report](/docs/cloud-cost-management/2-use-cloud-cost-management/2-ccm-perspectives/3-share-cost-perspective-report.md)
+* [Detect Cloud Cost Anomalies with CCM](/docs/cloud-cost-management/2-use-cloud-cost-management/5-ccm-cost-anomaly-detection/detect-cloud-cost-anomalies-with-ccm.md)
 
 ## Perspective Preferences
 
@@ -222,10 +222,10 @@ You can also move a Perspective to a folder from its more options (⋮) setting.
 
 ## Next Steps
 
-* [Create a Budget for Your Perspective](../6-ccm-budgets/create-a-budget.md)
-* [Share Your Cost Perspective Report](share-cost-perspective-report.md)
-* [Analyze Cost for Kubernetes Using Perspectives](../4-root-cost-analysis/analyze-cost-for-k8s-ecs-using-perspectives.md)
-* [Analyze Cost for AWS Using Perspectives](../4-root-cost-analysis/analyze-cost-for-aws.md)
-* [Analyze Cost for GCP ​Using Perspectives](../4-root-cost-analysis/analyze-cost-for-gcp-using-perspectives.md)
-* [Analyze Cost for Azure Using Perspectives](../4-root-cost-analysis/analyze-cost-for-azure.md)
+* [Create a Budget for Your Perspective](/docs/cloud-cost-management/2-use-cloud-cost-management/2-ccm-perspectives/2-create-a-budget-perspective.md)
+* [Share Your Cost Perspective Report](/docs/cloud-cost-management/2-use-cloud-cost-management/2-ccm-perspectives/3-share-cost-perspective-report.md)
+* [Analyze Cost for Kubernetes Using Perspectives](/docs/cloud-cost-management/2-use-cloud-cost-management/4-root-cost-analysis/analyze-cost-for-k8s-ecs-using-perspectives.md)
+* [Analyze Cost for AWS Using Perspectives](/docs/cloud-cost-management/2-use-cloud-cost-management/4-root-cost-analysis/analyze-cost-for-aws.md)
+* [Analyze Cost for GCP ​Using Perspectives](/docs/cloud-cost-management/2-use-cloud-cost-management/4-root-cost-analysis/analyze-cost-for-gcp-using-perspectives.md)
+* [Analyze Cost for Azure Using Perspectives](/docs/cloud-cost-management/2-use-cloud-cost-management/4-root-cost-analysis/analyze-cost-for-azure.md)
 

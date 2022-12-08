@@ -14,9 +14,9 @@ This topic describes how to create AutoStopping Rules for GCP.
 
 ## Before You Begin
 
-* [Create a GCP Connector for AutoStopping Rules](../../1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/1-add-connectors/connect-to-a-gcp-connector.md)
-* [Create a Kubernetes Connector for AutoStopping Rules](../../1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/1-add-connectors/k8s-connector-autostopping.md)
-* [AutoStopping Rules Overview](../1-add-connectors/1-auto-stopping-rules.md)
+* [Create a GCP Connector for AutoStopping Rules](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/3-create-auto-stopping-rules/create-auto-stopping-rules-for-gcp.md)
+* [Create a Kubernetes Connector for AutoStopping Rules](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/1-add-connectors/k8s-connector-autostopping.md)
+* [AutoStopping Rules Overview](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/1-add-connectors/1-auto-stopping-rules.md)
 
 ## Visual Summary
 
@@ -34,7 +34,7 @@ Perform the following steps to link your GCP cloud account to Harness.
 2. In **AutoStopping Rules**, select **GCP**. It is the cloud account in which your workloads are running that you want to manage using AutoStopping Rules.
    
 3. If you have already linked your GCP account and want to use that account, then select the GCP account from the **Connect to your GCP account** drop-down list.
-4. If you have not added your cloud account, click **Connect to your GCP account** drop-down list and then click **New Connector**. For the detailed steps, see [Create a GCP Connector for AutoStopping Rules](../1-add-connectors/create-a-gcp-connector-for-auto-stopping-rules.md).
+4. If you have not added your cloud account, click **Connect to your GCP account** drop-down list and then click **New Connector**. For the detailed steps, see [Create a GCP Connector for AutoStopping Rules](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/1-add-connectors/create-a-gcp-connector-for-auto-stopping-rules.md).
 
 ## Step 2: Add a New AutoStopping Rule
 
@@ -46,7 +46,7 @@ Perform the following steps to get started with AutoStopping Rule.
 
 1. In **Cloud Costs,** in **AutoStopping Rules**, click **New AutoStopping Rule**.
 2. In the cloud account type, select **GCP**. It is the cloud account in which your workloads are running that you want to manage using AutoStopping rules.
-3. Select your GCP account from the **Connect to your GCP account** drop-down list and click **Next**. If you have not added a GCP cloud account, see [Create a GCP Connector for AutoStopping Rules](../1-add-connectors/create-a-gcp-connector-for-auto-stopping-rules.md).
+3. Select your GCP account from the **Connect to your GCP account** drop-down list and click **Next**. If you have not added a GCP cloud account, see [Create a GCP Connector for AutoStopping Rules](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/1-add-connectors/create-a-gcp-connector-for-auto-stopping-rules.md).
 4. In **Define your AutoStopping rule**, in **Name your Rule**, enter a name for your rule. This is the name of your AutoStopping rule.
 5. In **Idle time**, enter the idle time in minutes. This is the time that the AutoStopping rule will wait before stopping the idle instances.
 
@@ -72,7 +72,7 @@ You can add multiple instances to a single Rule. However, all the VMs should be 
 #### Option 2: Select Kubernetes Cluster
 
 1. Select **Kubernetes Cluster** and then click **Add a cluster**.
-2. Select the Kubernetes cluster that you want to manage using the AutoStopping rules. If you wish to create a new connector for the Kubernetes cluster, see [Create a Kubernetes Connector for AutoStopping Rules](../1-add-connectors/k8s-connector-autostopping.md).
+2. Select the Kubernetes cluster that you want to manage using the AutoStopping rules. If you wish to create a new connector for the Kubernetes cluster, see [Create a Kubernetes Connector for AutoStopping Rules](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/1-add-connectors/k8s-connector-autostopping.md).
 3. Once you have finished selecting the Kubernetes cluster, click **Add selected**.
 
 ### (Optional) Step 3: Set Up Advanced Configuration
@@ -101,7 +101,9 @@ The fixed schedule takes precedence over the defined AutoStopping Rule.
 
 To create a fixed schedule for your rule, do the following:
 
-1. In **Fixed Schedules**, click **Add Fixed Schedule**.![](./static/create-auto-stopping-rules-for-gcp-20.png)
+1. In **Fixed Schedules**, click **Add Fixed Schedule**.
+   
+     ![](./static/create-auto-stopping-rules-for-gcp-20.png)
 2. In **New Fixed Schedule**, enter a **Name** for your schedule.
 3. In **Type**, select the type for your schedule. You can schedule an **Uptime** or **Downtime** for your rule. As per your schedule, the resources will go up or down.
 4. Select the **Time Zone** from the drop-down list.
@@ -118,16 +120,22 @@ To create a fixed schedule for your rule, do the following:
 	4. Select **All Day**, if you wish to set your schedule for the entire day. If you choose All Day for your schedule, you won't be able to choose a start and end time.  
 	  
 	**Example 1**:  
-	In the following example, resources will be up every Mon, Tue, Wed starting from 12:00 a.m. on February 14, 2022 till April 30, at 10:00 p.m.![](./static/create-auto-stopping-rules-for-gcp-21.png)**Example 2**:  
-	In the following example, resources will be down every day (all day) starting from 12:00 a.m. on February 14, 2022 till April 30, at 12:00 a.m.![](./static/create-auto-stopping-rules-for-gcp-22.png)
+	In the following example, resources will be up every Mon, Tue, Wed starting from 12:00 a.m. on February 14, 2022 till April 30, at 10:00 p.m.
+	
+	  ![](./static/create-auto-stopping-rules-for-gcp-21.png)
+	
+	**Example 2**:  
+	In the following example, resources will be down every day (all day) starting from 12:00 a.m. on February 14, 2022 till April 30, at 12:00 a.m.
+	
+	  ![](./static/create-auto-stopping-rules-for-gcp-22.png)
 8. Click **Apply**.
 
 ### Setup Access for GCE VM(s)
 
 Now that you have the AutoStopping rule configured, define how you would want to access the underlying application running on the resources managed by this Rule. You can use any of the following methods:
 
-* [**DNS Link**](https://ngdocs.harness.io/article/7025n9ml7z-create-autostopping-rules-aws#setup_access_using_dns_link): If the underlying applications running on the resources managed by the AutoStopping Rule are accessed by an HTTP or HTTPS URL.
-* [**SSH/RDP**](https://ngdocs.harness.io/article/7025n9ml7z-create-autostopping-rules-aws#setup_access_using_ssh_rdp): If the underlying applications running on the resources managed by AutoStopping Rule are accessed via SSH or RDP.
+* [**DNS Link**](/docs/cloud-cost-management/use-cloud-cost-management/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/create-autostopping-rules-aws#setup-access-using-dns-link): If the underlying applications running on the resources managed by the AutoStopping Rule are accessed by an HTTP or HTTPS URL.
+* [**SSH/RDP**](/docs/cloud-cost-management/use-cloud-cost-management/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/create-autostopping-rules-aws#setup-access-using-sshrdp): If the underlying applications running on the resources managed by AutoStopping Rule are accessed via SSH or RDP.
 
 ### Setup Access Using DNS Link
 
@@ -150,7 +158,7 @@ To create a DNS Link, you need to:
 #### Select a Load Balancer
 
 1. In **Setup Access**, select **DNS Link**.
-2. Select a load balancer from the drop-down list. If you have not added your load balancer yet, click **New Load Balancer** to add a load balancer. For detailed steps, see [Create a Custom Load Balancer for GCP](../4-load-balancer/create-custom-load-balancer-for-gcp.md).
+2. Select a load balancer from the drop-down list. If you have not added your load balancer yet, click **New Load Balancer** to add a load balancer. For detailed steps, see [Create a Custom Load Balancer for GCP](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/4-load-balancer/create-custom-load-balancer-for-gcp.md)
    
      ![](./static/create-auto-stopping-rules-for-gcp-23.png)
 
@@ -187,11 +195,13 @@ You can use either of the following methods:
 
 **Auto-generated URL**
 
-Every AutoStopping rule will have an auto-generated URL. This URL will be a subdomain to the domain name specified for the [load balancer](../4-load-balancer/create-load-balancer-aws.md). Since the load balancer configures a wildcard domain such as `*.autostopping.yourcompany.com`, the auto-generated URL will work automatically and point to the correct load balancer.
+Every AutoStopping rule will have an auto-generated URL. This URL will be a subdomain to the domain name specified for the [load balancer](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/4-load-balancer/create-load-balancer-aws.md). Since the load balancer configures a wildcard domain such as `*.autostopping.yourcompany.com`, the auto-generated URL will work automatically and point to the correct load balancer.
 
 Select **Use the auto-generated URL to access the resources managed by this AutoStopping Rule**.
 
-![](./static/create-auto-stopping-rules-for-gcp-27.png)**Custom URL**
+![](./static/create-auto-stopping-rules-for-gcp-27.png)
+
+**Custom URL**
 
 AutoStopping rule can use multiple custom domains. In such a case, it should be configured in the DNS provider. AutoStopping Rules also allows you to use custom domains or change the root of your site's URL from the default, like,`autostop.harness.io`, to any domain you own. To point your site's default domain to a custom domain, you can set it up in your DNS provider.
 
@@ -204,7 +214,9 @@ Enter the custom URL currently used to access the instances. The domain name sho
 SSH/RDP allows you to access the resources managed by the AutoStopping rule via SSH or RDP HTTPS URL. Select this option if the underlying applications running on the resources managed by AutoStopping Rule are accessed via SSH or RDP.
 
 1. In **Setup Access**, select **SSH/RDP**.
-2. Select your operating system to download the Harness CLI for your system.![](./static/create-auto-stopping-rules-for-gcp-29.png)
+2. Select your operating system to download the Harness CLI for your system.
+   
+     ![](./static/create-auto-stopping-rules-for-gcp-29.png)
 3. Click **Download CLI**.
 4. You can connect using SSH or RDP.
 
@@ -218,7 +230,9 @@ harness connect --host hostname --port <ssh/rdp port>
 ```
 You can simply copy the hostname from the AutoStopping Rule dashboard view. Click on the AutoStopping Rule that you want to connect and copy the hostname.
 
-![](./static/create-auto-stopping-rules-for-gcp-30.png)For example:
+![](./static/create-auto-stopping-rules-for-gcp-30.png)
+
+  For example:
 
 
 ```
@@ -261,13 +275,13 @@ harness rdp --host default-test-rdp-1.abc1000test.lightwingtest.com --internal-i
 
 In Review, verify all the configuration details and click **Save Rule**. To edit any of the configuration settings, click **EDIT** and modify the settings.
 
-Your AutoStopping rule is listed under the [AutoStopping Rules dashboard](autostopping-dashboard.md).
+Your AutoStopping rule is listed under the [AutoStopping Rules dashboard](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/3-create-auto-stopping-rules/autostopping-dashboard.md).
 
 ### Setup Access for Kubernetes Clusters
 
-For more information on setting up access for Kubernetes clusters, see [Setup Access](create-autostopping-rules-for-kubernetes.md).
+For more information on setting up access for Kubernetes clusters, see [Setup Access](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/3-create-auto-stopping-rules/create-autostopping-rules-for-kubernetes.md).
 
 ### Next Step
 
-* [Use AutoStopping Rules Dashboard](../3-create-auto-stopping-rules/autostopping-dashboard.md)
+* [Use AutoStopping Rules Dashboard](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/3-create-auto-stopping-rules/autostopping-dashboard.md).
 

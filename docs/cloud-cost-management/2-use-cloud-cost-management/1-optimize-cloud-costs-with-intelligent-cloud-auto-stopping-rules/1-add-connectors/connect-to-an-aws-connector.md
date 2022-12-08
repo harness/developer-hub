@@ -12,7 +12,7 @@ Connectors allow Harness to connect to your deployment environments, such as Kub
 
 ### Before you begin
 
-* [AutoStopping Rules Overview](1-auto-stopping-rules.md)
+* [AutoStopping Rules Overview](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/1-add-connectors/1-auto-stopping-rules.md)
 
 ### Add an AWS Connector
 
@@ -25,10 +25,10 @@ Perform the following steps to add an AWS connector for AutoStopping Rules:
 
   ![](./static/connect-to-an-aws-connector-01.png)
 3. Click **Connect to your AWS account** drop-down list and then click **New Connector**.
-4. See [Set up Cloud Cost Management for AWS](../../../1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md) for further instructions.
+4. See [Set up Cloud Cost Management for AWS](/docs/cloud-cost-management/1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md) for further instructions.
 
 ### Next Steps
 
-* [Create AutoStopping Rules for AWS](../3-create-auto-stopping-rules/create-auto-stopping-rules-for-aws.md)
-* [Use AutoStopping Rules Dashboard](../3-create-auto-stopping-rules/autostopping-dashboard.md)
+* [Create AutoStopping Rules for AWS](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/3-create-auto-stopping-rules/create-autostopping-rules-aws.md)
+* [Use AutoStopping Rules Dashboard](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/3-create-auto-stopping-rules/autostopping-dashboard.md)
 

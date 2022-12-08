@@ -161,7 +161,7 @@ This feature provides visibility into your EC2, EBS volumes, and ECS costs. The 
 
 * Breakdown by ECS cluster cost, Service, Task, and Launch Type (EC2, Fargate).
 * Insight into EC2 instances and their utilization.
-* Access to AWS EC2 Inventory Cost and EBS Volumes and Snapshots inventory dashboards. For more information, see [View AWS EC2 Inventory Cost Dashboard](https://developer.harness.io/docs/cloud-cost-management/use-cloud-cost-management/8-ccm-dashboards-and-access-control/ccm-dashboards-by-harness/view-aws-ec-2-inventory-cost-dashboard), [Orphaned EBS Volumes and Snapshots Dashboard](https://developer.harness.io/docs/cloud-cost-management/use-cloud-cost-management/8-ccm-dashboards-and-access-control/ccm-dashboards-by-harness/orphaned-ebs-volumes-and-snapshots-dashboard), and [View AWS EC2 Instance Metrics Dashboard](https://developer.harness.io/docs/cloud-cost-management/use-cloud-cost-management/8-ccm-dashboards-and-access-control/ccm-dashboards-by-harness/view-aws-ec-2-instance-metrics).
+* Access to AWS EC2 Inventory Cost and EBS Volumes and Snapshots inventory dashboards. For more information, see [View AWS EC2 Inventory Cost Dashboard](/docs/cloud-cost-management/2-use-cloud-cost-management/8-ccm-dashboards-and-access-control/ccm-dashboards-by-harness/view-aws-ec-2-inventory-cost-dashboard.md), [Orphaned EBS Volumes and Snapshots Dashboard](/docs/cloud-cost-management/2-use-cloud-cost-management/8-ccm-dashboards-and-access-control/ccm-dashboards-by-harness/orphaned-ebs-volumes-and-snapshots-dashboard.md), and [View AWS EC2 Instance Metrics Dashboard](/docs/cloud-cost-management/2-use-cloud-cost-management/8-ccm-dashboards-and-access-control/ccm-dashboards-by-harness/view-aws-ec-2-instance-metrics.md).
 
 ### AWS Resource optimization using AutoStopping rules
 
@@ -267,6 +267,7 @@ Perform the following steps to connect CCM to the AWS cloud provider.
 3. In **Cloud Costs**, click **AWS**.
    
      ![](./static/set-up-cost-visibility-for-aws-23.png)
+
 4. In **AWS Connector**, in **Overview**, enter the **Connector** **Name**. The name will appear in CCM Perspectives to identify this cloud provider.
 5. In **Specify the AWS account ID**, enter your AWS account ID and click **Continue**. To find your AWS account ID, see [Finding your AWS account ID](https://docs.aws.amazon.com/IAM/latest/UserGuide/console_account-alias.html#FindingYourAWSId).
    
@@ -280,6 +281,7 @@ Cost and Usage Report (CUR) provides detailed billing data across AWS accounts 
 2. In **AWS Cost and Usage Reports**, click **Create Report**.
    
      ![](./static/set-up-cost-visibility-for-aws-25.png)
+
 3. Enter the **Report Name**. This is the CUR name that you need to enter in Harness.
 4. In **Additional report details**, select the checkbox **Include resource IDs** to include the IDs of each individual resource in the report.
 5. In **Data refresh settings**, select the checkbox **Automatically refresh your Cost & Usage Report when charges are detected for previous months with closed bills**.
@@ -326,7 +328,7 @@ Select the Cloud Cost Management features that you would like to use on your AWS
 
 | **Features**  | **Capabilities** | 
 | --- | --- | 
-| **Cost Visibility** (Required)| This feature is available by default and requires access to the CUR report. Provides the following capabilities:<ul><li>Insights into AWS costs by services, accounts, etc. </li><li>Root cost analysis using cost perspectives</li><li>Cost anomaly detection</li><li>Governance using budgets and forecasts</li><li>Alert users using Email and Slack notification</li></ul> This feature will give you cost insights that are derived from the CUR. For deep Kubernetes visibility and rightsizing recommendations based on the historical utilization and usage metrics, set up Kubernetes connectors. See [Set Up Cloud Cost Management for Kubernetes](set-up-cost-visibility-for-kubernetes.md). |
+| **Cost Visibility** (Required)| This feature is available by default and requires access to the CUR report. Provides the following capabilities:<ul><li>Insights into AWS costs by services, accounts, etc. </li><li>Root cost analysis using cost perspectives</li><li>Cost anomaly detection</li><li>Governance using budgets and forecasts</li><li>Alert users using Email and Slack notification</li></ul> This feature will give you cost insights that are derived from the CUR. For deep Kubernetes visibility and rightsizing recommendations based on the historical utilization and usage metrics, set up Kubernetes connectors. See [Set Up Cloud Cost Management for Kubernetes](/docs/cloud-cost-management/1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-kubernetes.md). |
 | **AWS ECS and Resource Inventory Management** (Optional)| This feature provides visibility into your EC2, EBS volumes, and ECS costs. The insights provided by inventory management can be consumed by Finance teams to understand resource utilization across the board. <ul><li>Breakdown by ECS cluster cost, Service, Task, and Launch Type (EC2, Fargate) </li><li>Insight into EC2 instances and their utilization</li><li>Access to AWS EC2 Inventory Cost and EBS Volumes and Snapshots inventory dashboards. For more information, see View AWS EC2 Inventory Cost Dashboard, Orphaned EBS Volumes and Snapshots Dashboard, and View AWS EC2 Instance Metrics Dashboard.</li></ul> |
 | **AWS resource optimization using AutoStopping rules** (Optional)| This feature allows you to enable Intelligent Cloud AutoStopping for your AWS instances and auto-scaling groups. For more information, see Create AutoStopping Rules for AWS. <ul><li>Orchestrate VMs and ASGs based on idleness</li><li>Run your workloads on fully orchestrated spot instances</li><li>Granular savings visibility</li></ul> |
 
@@ -360,7 +362,9 @@ Harness uses the secure cross-account role to access your AWS account. The role 
 
 The connection is validated, and verified in this step. After successful validation, click **Finish**.
 
-![](./static/set-up-cost-visibility-for-aws-38.png)Your connector is now listed in the **Connectors**.
+![](./static/set-up-cost-visibility-for-aws-38.png)
+
+Your connector is now listed in the **Connectors**.
 
 ![](./static/set-up-cost-visibility-for-aws-39.png)
 
@@ -398,6 +402,7 @@ Perform the following steps to create a stack set in AWS:
 	8. In **RoleName**, enter the role name, for example, `HarnessCERole`. The role name must begin with Harness e.g., HarnessCERole, HarnessManagedRole.
    
      ![](./static/set-up-cost-visibility-for-aws-41.png)
+
 8. After entering all the details, click **Next**.
 9. In **Configure StackSet options**, in **Managed execution**, select **Active** and click **Next**.
     
@@ -416,7 +421,7 @@ Perform the following steps to create a stack set in AWS:
 
 1. In Harness, click **Home**.
 2. In **Account Setup**, click **Access Control**.
-3. Click **Service Accounts** and then click the service account to which you want to add a new API Key. For step-by-step instructions to add a new Service Account, see [Add and Manage Service Accounts](https://ngdocs.harness.io/article/e5p4hdq6bd).
+3. Click **Service Accounts** and then click the service account to which you want to add a new API Key. For step-by-step instructions to add a new Service Account, see [Add and Manage Service Accounts](/docs/platform/Role-Based-Access-Control/add-and-manage-service-account).
 4. In the Service Account's settings page, click **API Key**.
 5. In the **New API Key** settings, enter **Name, Description,** and **Tags**.
 6. Click **Save**. The new API Key is created.  
@@ -474,6 +479,6 @@ curl -i -X POST \
 ```
 ## Next Steps
 
-* [Create Cost Perspectives](../../2-use-cloud-cost-management/2-ccm-perspectives/1-create-cost-perspectives.md)
-* [Analyze Cost for AWS Using Perspectives](../../2-use-cloud-cost-management/4-root-cost-analysis/analyze-cost-for-aws.md)
+* [Create Cost Perspectives](/docs/cloud-cost-management/use-cloud-cost-management/ccm-perspectives/create-cost-perspectives)
+* [Analyze Cost for AWS Using Perspectives](/docs/cloud-cost-management/use-cloud-cost-management/root-cost-analysis/analyze-cost-for-aws)
 

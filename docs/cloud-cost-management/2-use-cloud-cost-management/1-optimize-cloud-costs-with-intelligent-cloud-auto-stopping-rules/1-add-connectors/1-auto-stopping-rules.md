@@ -74,5 +74,5 @@ The following section lists where you can use AutoStopping rules:
 
 ### Next Steps
 
-* [Optimize Cloud Costs with AutoStopping Rules](/category/e04ek5vxtx-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules)
+* [Optimize Cloud Costs with AutoStopping Rules](/docs/category/optimize-cloud-costs-with-autostopping-rules)
 

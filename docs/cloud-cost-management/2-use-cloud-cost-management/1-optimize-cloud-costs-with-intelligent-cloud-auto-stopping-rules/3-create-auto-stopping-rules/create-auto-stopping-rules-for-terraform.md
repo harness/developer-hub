@@ -14,9 +14,9 @@ This topic describes how to create AutoStopping Rules with Terraform using scrip
 
 ### Before You Begin
 
-* [AutoStopping Rules Overview](../1-add-connectors/1-auto-stopping-rules.md)
-* [Create AutoStopping Rules for AWS](create-autostopping-rules-aws.md)
-* [Create AutoStopping Rules for Azure](create-auto-stopping-rules-for-azure.md)
+* [AutoStopping Rules Overview](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/1-add-connectors/1-auto-stopping-rules.md)
+* [Create AutoStopping Rules for AWS](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/3-create-auto-stopping-rules/create-autostopping-rules-aws.md)
+* [Create AutoStopping Rules for Azure](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/3-create-auto-stopping-rules/create-auto-stopping-rules-for-azure.md)
 
 Perform the following steps to create AutoStopping Rules for Terraform.
 
@@ -62,9 +62,9 @@ The following sample script creates AutoStopping rules for an instance.
 
 Specify the following details:
 
-* **Token**: Specify the [API Key](/article/90zwlg096d-create-auto-stopping-rules-for-terraform#step_2_create_an_api_key).
+* **Token**: Specify the API Key.
 * **API\_URL**: Specify the endpoint.
-* **Account Identifier**: Specify the [Account ID](/article/90zwlg096d-create-auto-stopping-rules-for-terraform#step_3_obtain_harness_account_identifier).
+* **Account Identifier**: Specify the Account ID.
 * **Name**: Specify a name for your AutoStopping Rule.
 * **Fulfilment**: Specify the instance fulfillment type, **On-Demand** or **Spot**.
 * **L****oad balancer**: Specify the name of the load balancer domain name. You can obtain this information from the screen where you create the load balancer.

@@ -12,15 +12,15 @@ AutoStopping Rules make sure that your non-production resources run only when us
 
 ## Before You Begin
 
-* [Create an AWS Connector for Autostopping Rules](create-autostopping-rules-aws.md)
-* [Create a Kubernetes Connector for AutoStopping Rules](create-autostopping-rules-for-kubernetes.md)
-* [AutoStopping Rules Overview](../1-add-connectors/1-auto-stopping-rules.md)
+* [Create an AWS Connector for Autostopping Rules](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/1-add-connectors/connect-to-an-aws-connector.md)
+* [Create a Kubernetes Connector for AutoStopping Rules](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/3-create-auto-stopping-rules/create-autostopping-rules-for-kubernetes.md)
+* [AutoStopping Rules Overview](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/1-add-connectors/1-auto-stopping-rules.md)
 
 ## Prerequisites
 
 * Ensure that you have AWS EC2 VMs or Auto Scaling Groups created.
-* Ensure that you have access to CUR. See [Review: Cost and Usage Reports (CUR) and CCM Requirements](../../../1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md).
-* Permissions to create a cross-account role. See [AWS Access Permissions](../../../1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md).
+* Ensure that you have access to CUR. See [Review: Cost and Usage Reports (CUR) and CCM Requirements](/docs/cloud-cost-management/onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-aws#cost-and-usage-reports-cur-and-ccm-requirements).
+* Permissions to create a cross-account role. See [AWS Access Permissions](/docs/cloud-cost-management/onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-aws#aws-access-permissions).
 
 ## How Spot Orchestration Works?
 
@@ -50,7 +50,7 @@ Perform the following steps to link your AWS cloud account to Harness.
    
       ![](./static/create-autostopping-rules-aws-90.png)
 3. If you have already linked your AWS account and want to use that account, then select the AWS account from the **Connect to your AWS account** drop-down list.
-4. If you have not added your cloud account, click **Connect to your AWS account** drop-down list and then click **New Connector**. For the detailed steps, see [Connect to an AWS Connector](../1-add-connectors/connect-to-an-aws-connector.md).
+4. If you have not added your cloud account, click **Connect to your AWS account** drop-down list and then click **New Connector**. For the detailed steps, see [Connect to an AWS Connector](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/1-add-connectors/connect-to-an-aws-connector.md).
    
      ![](./static/create-autostopping-rules-aws-91.png)
 
@@ -78,7 +78,7 @@ Perform the following steps to get started with AutoStopping Rule.
 
 1. In **Cloud Costs,** in **AutoStopping Rules**, click **New AutoStopping Rule**.
 2. In the cloud account type, select **AWS**. It is the cloud account in which your workloads are running that you want to manage using AutoStopping rules.
-3. Select your AWS account from the **Connect to your AWS account** drop-down list and click **Next**. If you have not added an AWS cloud account, see [Connect to an AWS Connector](../1-add-connectors/connect-to-an-aws-connector.md).
+3. Select your AWS account from the **Connect to your AWS account** drop-down list and click **Next**. If you have not added an AWS cloud account, see [Connect to an AWS Connector](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/1-add-connectors/connect-to-an-aws-connector.md).
    
      ![](./static/create-autostopping-rules-aws-92.png)
 4. In **Define your AutoStopping rule**, in **Name your Rule**, enter a name for your rule. This is the name of your AutoStopping rule.
@@ -153,17 +153,17 @@ In this example, all the instances are of On-Demand type.
 Add a cluster to be managed by the AutoStopping Rule.
 
 1. Select **Kubernetes Cluster** and then click **Add a cluster**.
-2. Select the Kubernetes cluster that you want to manage using the AutoStopping rules. If you wish to create a new connector for the Kubernetes cluster, see [Create a Kubernetes Connector for AutoStopping Rules](create-autostopping-rules-for-kubernetes.md).
+2. Select the Kubernetes cluster that you want to manage using the AutoStopping rules. If you wish to create a new connector for the Kubernetes cluster, see [Create a Kubernetes Connector for AutoStopping Rules](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/1-add-connectors/k8s-connector-autostopping.md).
 3. Once you have finished selecting the Kubernetes cluster, click **Add selected**.  
 
 :::note
-If you select a Kubernetes cluster, follow the steps in [Create AutoStopping Rules for Kubernetes Cluster](create-autostopping-rules-for-kubernetes.md).
+If you select a Kubernetes cluster, follow the steps in [Create AutoStopping Rules for Kubernetes Cluster](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/3-create-auto-stopping-rules/create-autostopping-rules-for-kubernetes.md).
 :::
 
 
 #### Option 4: Select ECS Service
 
-Add an ECS Service to be managed by the AutoStopping Rule. See [Create AutoStopping Rules for Amazon ECS](create-auto-stopping-rules-for-ecs.md).
+Add an ECS Service to be managed by the AutoStopping Rule. See [Create AutoStopping Rules for Amazon ECS](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/3-create-auto-stopping-rules/create-auto-stopping-rules-for-ecs.md).
 
 #### Option 5: Select RDS Instances
 
@@ -196,7 +196,9 @@ In certain scenarios, you would not want your resources to go down or up. For ex
 
 The fixed schedule takes precedence over the defined AutoStopping Rule.To create a fixed schedule for your rule, do the following:
 
-1. In **Fixed Schedules**, click **Add Fixed Schedule**.![](./static/create-autostopping-rules-aws-98.png)
+1. In **Fixed Schedules**, click **Add Fixed Schedule**.
+   
+     ![](./static/create-autostopping-rules-aws-98.png)
 2. In **New Fixed Schedule**, enter a **Name** for your schedule.
 3. In **Type**, select the type for your schedule. You can schedule an **Uptime** or **Downtime** for your rule. As per your schedule, the resources will go up or down.
 4. Select the **Time Zone** from the drop-down list.
@@ -213,14 +215,20 @@ The fixed schedule takes precedence over the defined AutoStopping Rule.To create
 	4. Select **All Day**, if you wish to set your schedule for the entire day. If you choose All Day for your schedule, you won't be able to choose a start and end time.  
 	  
 	**Example 1**:  
-	In the following example, resources will be up every Mon, Tue, Wed starting from 12:00 a.m. on February 14, 2022 till April 30, at 10:00 p.m.![](./static/create-autostopping-rules-aws-99.png)**Example 2**:  
-	In the following example, resources will be down every day (all day) starting from 12:00 a.m. on February 14, 2022 till April 30, at 12:00 a.m.![](./static/create-autostopping-rules-aws-100.png)
+	In the following example, resources will be up every Mon, Tue, Wed starting from 12:00 a.m. on February 14, 2022 till April 30, at 10:00 p.m.
+     
+       ![](./static/create-autostopping-rules-aws-99.png)
+     
+     **Example 2**:  
+	In the following example, resources will be down every day (all day) starting from 12:00 a.m. on February 14, 2022 till April 30, at 12:00 a.m.
+     
+       ![](./static/create-autostopping-rules-aws-100.png)
 8. Click **Apply**.
 
 Now that you have the AutoStopping rule configured, define how you would want to access the underlying application running on the resources managed by this Rule. You can use any of the following methods:
 
-* [**DNS Link**](/article/7025n9ml7z-create-autostopping-rules-aws#setup_access_using_dns_link): If the underlying applications running on the resources managed by the AutoStopping Rule are accessed by an HTTP or HTTPS URL.
-* [**SSH/RDP**](/article/7025n9ml7z-create-autostopping-rules-aws#setup_access_using_ssh_rdp): If the underlying applications running on the resources managed by AutoStopping Rule are accessed via SSH or RDP.
+* [**DNS Link**](/docs/cloud-cost-management/use-cloud-cost-management/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/create-autostopping-rules-aws#setup-access-using-dns-link): If the underlying applications running on the resources managed by the AutoStopping Rule are accessed by an HTTP or HTTPS URL.
+* [**SSH/RDP**](/docs/cloud-cost-management/use-cloud-cost-management/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/create-autostopping-rules-aws#setup-access-using-sshrdp): If the underlying applications running on the resources managed by AutoStopping Rule are accessed via SSH or RDP.
 
 ### Setup Access Using DNS Link
 
@@ -245,7 +253,15 @@ To create a DNS Link, you need to:
 #### Select a Load Balancer
 
 1. In **Setup Access**, select **DNS Link**.
-2. Select a load balancer from the drop-down list. If you have not added your load balancer yet, click **New Load Balancer** to add a load balancer. For detailed steps, see [Create an Application Load Balancer for AWS](/article/eba1bn2jm6-create-load-balancer-aws).![](./static/create-autostopping-rules-aws-102.png)The list will populate the load balancer if the load balancer has previously been created in your environment but not yet mapped to Harness. In that case, you must [configure the DNS mapping settings](/article/eba1bn2jm6-create-load-balancer-aws).![](./static/create-autostopping-rules-aws-103.png)Multiple instances and rules can use a single load balancer. It identifies instances based on hostnames and directs the HTTP traffic appropriately.
+2. Select a load balancer from the drop-down list. If you have not added your load balancer yet, click **New Load Balancer** to add a load balancer. For detailed steps, see [Create an Application Load Balancer for AWS](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/4-load-balancer/create-load-balancer-aws.md).
+   
+   ![](./static/create-autostopping-rules-aws-102.png)
+
+The list will populate the load balancer if the load balancer has previously been created in your environment but not yet mapped to Harness. In that case, you must [configure the DNS mapping settings](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/4-load-balancer/create-load-balancer-aws.md).
+
+  ![](./static/create-autostopping-rules-aws-103.png)
+
+Multiple instances and rules can use a single load balancer. It identifies instances based on hostnames and directs the HTTP traffic appropriately.
 
 #### Enter Routing Configuration and Health Check Details
 
@@ -258,12 +274,16 @@ You can edit or delete the routing information. However, it is mandatory to have
 	  
   * If you are forwarding the same action to different ports, then specify the server name and/or path match.  
 	  
-  * If you specify the server name, then the host will use the custom URL to access the resources. You cannot use an auto-generated URL to access the resources.![](./static/create-autostopping-rules-aws-105.png)
-3. Toggle the **Health check** button to configure the health check. Health check status should be successful for the AutoStopping rules to come into effect.  
+  * If you specify the server name, then the host will use the custom URL to access the resources. You cannot use an auto-generated URL to access the resources.
+  
+    ![](./static/create-autostopping-rules-aws-105.png)
+2. Toggle the **Health check** button to configure the health check. Health check status should be successful for the AutoStopping rules to come into effect.  
   
 By default, the health check is turned on.
 1. In PROTOCOL, select **http** or **https**.
-2. Enter Path, port, and timeout details. For example, if you have configured port 80 and the timeout as 30 seconds for your instance, then the AutoStopping rule will check these specified parameters before bringing AutoStopping Rule into effect.![](./static/create-autostopping-rules-aws-106.png)
+2. Enter Path, port, and timeout details. For example, if you have configured port 80 and the timeout as 30 seconds for your instance, then the AutoStopping rule will check these specified parameters before bringing AutoStopping Rule into effect.
+   
+     ![](./static/create-autostopping-rules-aws-106.png)
 
 #### Select the URL for Accessing the Resources
 
@@ -274,7 +294,7 @@ You can use either of the following methods:
 
 **Auto-generated URL**
 
-Every AutoStopping rule will have an auto-generated URL. This URL will be a subdomain to the domain name specified for the [load balancer](../4-load-balancer/create-load-balancer-aws.md). Since the load balancer configures a wildcard domain such as `*.autostopping.yourcompany.com`, the auto-generated URL will work automatically and point to the correct load balancer.
+Every AutoStopping rule will have an auto-generated URL. This URL will be a subdomain to the domain name specified for the [load balancer](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/4-load-balancer/create-load-balancer-aws.md). Since the load balancer configures a wildcard domain such as `*.autostopping.yourcompany.com`, the auto-generated URL will work automatically and point to the correct load balancer.
 
 Select **Use the auto-generated URL to access the resources managed by this AutoStopping Rule**.
 
@@ -305,7 +325,7 @@ Since you've chosen to use a custom URL to access the resources, you need to map
      ![](./static/create-autostopping-rules-aws-111.png)
 2. Click **Next**.
 3. In **Review**, verify all the configuration details and click **Save Rule**.
-4. From the [AutoStopping Rules dashboard](autostopping-dashboard.md), click the AutoStopping Rule that you just created.
+4. From the [AutoStopping Rules dashboard](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/1-add-connectors/1-auto-stopping-rules.md), click the AutoStopping Rule that you just created.
 5. Copy the auto-generated hostname of the rule.
 6. In your DNS provider’s configuration page, add a CNAME record. See [Add DNS CNAME record](https://docs.aws.amazon.com/managedservices/latest/ctexguide/ex-dirserv-cname-record-add-col.html). For example:  
   
@@ -322,7 +342,12 @@ Custom exclusions and inclusions allow you to keep the cloud resources managed b
 
 You can configure exclusions by defining either of the following options:
 
-* **Path-based match**: Specify the path that you want to exclude from invoking the instance. You can use wildcards in the path.![](./static/create-autostopping-rules-aws-112.png)An error message is displayed to the user trying to access the path if the managed resource is in a stopped state. If the resource is active and running, this request is not considered as traffic and is ignored by the AutoStopping rule.
+* **Path-based match**: Specify the path that you want to exclude from invoking the instance. You can use wildcards in the path.
+  
+  ![](./static/create-autostopping-rules-aws-112.png)
+  
+  An error message is displayed to the user trying to access the path if the managed resource is in a stopped state. If the resource is active and running, this request is not considered as traffic and is ignored by the AutoStopping rule.
+
 * **Source IP-based match**: Specify one or more IP addresses that you want to exclude from accessing the instance. You could specify an entire range of IP addresses. Use commas to separate the IP addresses.
   
     ![](./static/create-autostopping-rules-aws-113.png)
@@ -333,7 +358,7 @@ Requests from these IP addresses or to these paths do not disturb the idle time 
 
 Similarly, you can configure custom inclusions. Requests to the specified path or from the specified IP address alone can invoke the cloud resource managed by AutoStopping. Only these requests are detected as traffic by the AutoStopping rule.
 
-#### Setup Access Using SSH/RDP
+### Setup Access Using SSH/RDP
 
 SSH/RDP allows you to access the resources managed by the AutoStopping rule via SSH or RDP HTTPS URL. Select this option if the underlying applications running on the resources managed by AutoStopping Rule are accessed via SSH or RDP.
 
@@ -399,10 +424,10 @@ harness rdp --host default-test-rdp-1.abc1000test.lightwingtest.com --internal-i
 
 In Review, verify all the configuration details and click **Save Rule**. To edit any of the configuration settings, click **EDIT** and modify the settings.
 
-Your AutoStopping rule is listed under the [AutoStopping Rules dashboard](autostopping-dashboard.md).
+Your AutoStopping rule is listed under the [AutoStopping Rules dashboard](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/3-create-auto-stopping-rules/autostopping-dashboard.md).
 
 ### Next Steps
 
-* [Create AutoStopping Rules for a Kubernetes Cluster](create-autostopping-rules-for-kubernetes.md)
-* [Use AutoStopping Rules Dashboard](autostopping-dashboard.md)
+* [Create AutoStopping Rules for a Kubernetes Cluster](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/3-create-auto-stopping-rules/create-autostopping-rules-for-kubernetes.md)
+* [Use AutoStopping Rules Dashboard](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/3-create-auto-stopping-rules/autostopping-dashboard.md)
 
