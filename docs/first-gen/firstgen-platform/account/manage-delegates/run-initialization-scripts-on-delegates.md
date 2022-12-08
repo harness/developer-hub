@@ -78,7 +78,7 @@ spec:
             echo wget installed  
 ...
 ```
-In `value`, enter your script. For a list of common scripts, see [Common Delegate Scripts](../delegate-ref/common-delegate-profile-scripts.md).
+In `value`, enter your script. For a list of common scripts, see [Common Delegate Scripts](../../techref-category/account-ref/delegate-ref/common-delegate-profile-scripts.md).
 
 A multiline script must follow the YAML spec for [literal scalar style](https://yaml.org/spec/1.2-old/spec.html#id2795688).The script should not be in quotes.For the Docker Delegate, Harness uses a Docker compose file, so you add your script like this:
 

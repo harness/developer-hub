@@ -26,7 +26,7 @@ You don't need to install the AWS CLI onto a Delegate to perform deployments in 
 ### Before You Begin
 
 * [Harness Delegate Overview](delegate-installation.md)
-* [Common Delegate Profile Scripts](../delegate-ref/common-delegate-profile-scripts.md)
+* [Common Delegate Profile Scripts](../../techref-category/account-ref/delegate-ref/common-delegate-profile-scripts.md)
 * [Installing the AWS CLI version 2 on Linux](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-linux.html) from AWS
 * [Using the Shell Script Step](../../../continuous-delivery/model-cd-pipeline/workflows/capture-shell-script-step-output.md)
 
@@ -83,5 +83,5 @@ If the Profile does not work, change the script in the Profile and try again. To
 
 ### See Also
 
-For a list of other script you can apply using Profiles, see [Common Delegate Profile Scripts](../delegate-ref/common-delegate-profile-scripts.md).
+For a list of other script you can apply using Profiles, see [Common Delegate Profile Scripts](../../techref-category/account-ref/delegate-ref/common-delegate-profile-scripts.md).
 

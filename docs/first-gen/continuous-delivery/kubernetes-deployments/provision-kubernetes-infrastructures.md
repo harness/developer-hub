@@ -27,7 +27,7 @@ Provisioning Kubernetes is supported with the Google Cloud Platform Cloud Provid
 The Delegate needs to be able to reach the Kubernetes master endpoint of the provisioned cluster and have the necessary credentials, such as the Kubernetes service account token.  
 Follow the steps in [Connect to Your Target Kubernetes Platform](connect-to-your-target-kubernetes-platform.md).
 2. Install Terraform on the Delegate using a Delegate Profile.  
-Follow the steps in [Delegate Installation and Management](../../firstgen-platform/account/manage-delegates/delegate-installation.md) and [Common Delegate Profile Scripts](../../firstgen-platform/account/delegate-ref/common-delegate-profile-scripts.md).
+Follow the steps in [Delegate Installation and Management](../../firstgen-platform/account/manage-delegates/delegate-installation.md) and [Common Delegate Profile Scripts](../../firstgen-platform/techref-category/account-ref/delegate-ref/common-delegate-profile-scripts.md).
 3. Tag the Delegate.  
 When you add the Terraform Provision step in your Workflow, you will specify that a specific Delegate perform the operation by using its Delegate Tag.  
 Follow the steps in [Delegate Installation and Management](../../firstgen-platform/account/manage-delegates/delegate-installation.md).

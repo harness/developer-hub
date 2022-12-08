@@ -214,7 +214,7 @@ Once a rollback occurs, the resources created by the ECS Run Task step still nee
 
 You can delete the resources created by adding a [Shell Script step](../../model-cd-pipeline/workflows/capture-shell-script-step-output.md) in **Rollback Steps**. For example, using the AWS ECS CLI [delete-service](https://docs.aws.amazon.com/cli/latest/reference/ecs/delete-service.html) command.
 
-If you want to execute AWS CLI commands, ensure that the Delegate host has the AWS CLI installed via a Delegate Profile. See [Common Delegate Profile Scripts](../../../firstgen-platform/account/delegate-ref/common-delegate-profile-scripts.md).
+If you want to execute AWS CLI commands, ensure that the Delegate host has the AWS CLI installed via a Delegate Profile. See [Common Delegate Profile Scripts](../../../firstgen-platform/techref-category/account-ref/delegate-ref/common-delegate-profile-scripts.md).
 
 The **Rollback Containers** step in **Rollback Steps** only applies to the core service deployed by the Workflow. If a Workflow containing only an ECS Task Run step fails, the **Rollback Containers** step is skipped.
 

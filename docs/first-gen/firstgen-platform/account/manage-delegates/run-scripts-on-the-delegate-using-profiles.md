@@ -31,7 +31,7 @@ unzip terraform_0.11.13_linux_amd64.zip
 sudo mv terraform /usr/local/bin/  
 terraform --version
 ```
-For examples of Delegate Profile scripts, see [Common Delegate Profile Scripts](../delegate-ref/common-delegate-profile-scripts.md).
+For examples of Delegate Profile scripts, see [Common Delegate Profile Scripts](../../techref-category/account-ref/delegate-ref/common-delegate-profile-scripts.md).
 
 #### Primary Profile
 

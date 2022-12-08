@@ -29,7 +29,7 @@ In this topic:
 
 For [Delegate Profiles](delegate-installation.md#delegate-profiles), if you wanted to add a Helm repo that requires login credentials to every Kubernetes pod running a Harness Kubernetes Delegate, you can create encrypted text in Harness Secrets Management for those credentials, and then use variable names for those credentials in the Delegate Profile using the `${secrets.getValue("secret_name")}` expression.
 
-For more information about Delegate Profiles, see [Run Scripts on Delegates using Profiles](run-scripts-on-the-delegate-using-profiles.md) and [Common Delegate Profile Scripts](../delegate-ref/common-delegate-profile-scripts.md).
+For more information about Delegate Profiles, see [Run Scripts on Delegates using Profiles](run-scripts-on-the-delegate-using-profiles.md) and [Common Delegate Profile Scripts](../../techref-category/account-ref/delegate-ref/common-delegate-profile-scripts.md).
 
 1. In Harness, select **Continuous Security** > **Secrets Management**.  
 The **Secrets Management** page appears.

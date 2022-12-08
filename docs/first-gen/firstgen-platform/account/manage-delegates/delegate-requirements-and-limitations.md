@@ -36,7 +36,7 @@ Multiple Delegates can be used and their scope can be managed.
 
 Harness SaaS Delegates only need outbound access to the Harness domain name (most commonly, **app.harness.io)** and, optionally, to **logging.googleapis.com**. The URL logging.googleapis.com is used to provide logs to Harness support.
 
-See [Whitelist Harness Domains and IPs](../delegate-ref/whitelist-harness-domains-and-ips.md).
+See [Whitelist Harness Domains and IPs](../../techref-category/account-ref/delegate-ref/whitelist-harness-domains-and-ips.md).
 
 ### Network Requirements
 
@@ -65,11 +65,11 @@ Contact [Harness Support](mailto:support@harness.io) to enable or disable feat
 
 ### Permissions and Ports
 
-See [Permissions and Ports for Harness Connections](../delegate-ref/connectivity-and-permissions-requirements.md).
+See [Permissions and Ports for Harness Connections](../../techref-category/account-ref/delegate-ref/connectivity-and-permissions-requirements.md).
 
 ### Add Certificates and Other Software to Delegate
 
-For steps on adding certs or other software to the Delegate, see [Common Delegate Profile Scripts](../delegate-ref/common-delegate-profile-scripts.md).
+For steps on adding certs or other software to the Delegate, see [Common Delegate Profile Scripts](../../techref-category/account-ref/delegate-ref/common-delegate-profile-scripts.md).
 
 ### Delegate Access Requirements
 

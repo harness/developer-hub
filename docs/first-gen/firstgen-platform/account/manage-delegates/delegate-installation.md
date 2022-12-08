@@ -136,7 +136,7 @@ See the following Delegate Profile topics:
 
 * [Run Scripts on the Delegate using Profiles](run-scripts-on-the-delegate-using-profiles.md)
 * [Use Secrets in a Delegate Profile](use-a-secret-in-a-delegate-profile.md)
-* [Common Delegate Profile Scripts](../delegate-ref/common-delegate-profile-scripts.md)
+* [Common Delegate Profile Scripts](../../techref-category/account-ref/delegate-ref/common-delegate-profile-scripts.md)
 * [Approve or Reject Harness Delegates](approve-or-reject-harness-delegates.md)
 
 ### Delegate Selectors

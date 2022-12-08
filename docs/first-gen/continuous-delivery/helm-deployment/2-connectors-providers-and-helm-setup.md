@@ -28,7 +28,7 @@ You connect Docker registries and Kubernetes clusters with Harness using the acc
 	+ **URL for the Helm chart** - For this guide, we use a publicly available Helm chart for NGINX from Bitnami, hosted on their Github account. You do not need a Github account.
 	+ **Helm and Tiller** - Helm and Tiller must be installed and running in your Kubernetes cluster. Steps for setting this up are listed below.
 
-For a list of all of the permissions and network requirements for connecting Harness to providers, see [Delegate Connection Requirements](../../firstgen-platform/account/delegate-ref/connectivity-and-permissions-requirements.md).
+For a list of all of the permissions and network requirements for connecting Harness to providers, see [Delegate Connection Requirements](../../firstgen-platform/techref-category/account-ref/delegate-ref/connectivity-and-permissions-requirements.md).
 
 ### Harness Kubernetes Delegate
 

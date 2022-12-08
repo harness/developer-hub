@@ -148,7 +148,7 @@ For steps on setting up a Platform-Specific Cloud Provider, see [Add Cloud Provi
 
 ### Notes
 
-* **Helm Client Only Mode** — When you use a remote Helm chart in your Harness Service, you do not need to have Tiller installed on the Harness Delegate because Harness interacts directly with the Kubernetes API server to install, upgrade, query, and remove Kubernetes resources. The Helm client is used to fetch charts from the repository and render a template. Consequently, when you install Helm on the Harness Delegate pod you can use the client-only option, as described in [Common Delegate Profile Scripts](../../firstgen-platform/account/delegate-ref/common-delegate-profile-scripts.md).
+* **Helm Client Only Mode** — When you use a remote Helm chart in your Harness Service, you do not need to have Tiller installed on the Harness Delegate because Harness interacts directly with the Kubernetes API server to install, upgrade, query, and remove Kubernetes resources. The Helm client is used to fetch charts from the repository and render a template. Consequently, when you install Helm on the Harness Delegate pod you can use the client-only option, as described in [Common Delegate Profile Scripts](../../firstgen-platform/techref-category/account-ref/delegate-ref/common-delegate-profile-scripts.md).
 
 ### Next Steps
 

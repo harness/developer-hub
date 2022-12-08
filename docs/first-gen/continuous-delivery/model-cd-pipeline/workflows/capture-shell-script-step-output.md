@@ -45,7 +45,7 @@ With the Shell Script command, you can execute scripts in the shell session of t
 * Execute bash scripts on the host running a Harness Delegate. You can use Delegate Selectors to identify which Harness Delegate to use.
 * Execute bash or PowerShell scripts on a remote target host in the deployment Infrastructure Definition.
 
-You can run PowerShell scripts on a Harness Delegate, even though the Delegate must be run on Linux. Linux supports PowerShell using  [PowerShell core](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-core-on-windows?view=powershell-7). You must install PowerShell on the Delegate using a Delegate Profile. See [PowerShell](../../../firstgen-platform/account/delegate-ref/common-delegate-profile-scripts.md#power-shell) in Common Profile Scripts.
+You can run PowerShell scripts on a Harness Delegate, even though the Delegate must be run on Linux. Linux supports PowerShell using  [PowerShell core](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-core-on-windows?view=powershell-7). You must install PowerShell on the Delegate using a Delegate Profile. See [PowerShell](../../../firstgen-platform/techref-category/account-ref/delegate-ref/common-delegate-profile-scripts.md#power-shell) in Common Profile Scripts.
 
 When executing a script, you can also **dynamically capture** the execution output from the script, providing runtime variables based on the script execution context, and export those to another step in the same workflow or another workflow in the same pipeline.
 
