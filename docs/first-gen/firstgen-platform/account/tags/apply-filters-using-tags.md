@@ -47,7 +47,9 @@ This opens the **Filter** dialog, initially empty:![](./static/apply-filters-usi
 Tag names have a gray background. Tag values have a white background, and are indented after their check boxes.
 3. To retrieve Harness entities that match a given Tag with any value, select the **Any Value** check box to the Tag's right. To match only one or more specific values, select the check boxes to their left.Within a given Tag, inclusive OR search logic is *always* applied among the *values* you select. (Remember that each Tag can take only one value on a given Application or component—so a restrictive AND search for two or more values would always return zero results.) The search logic among your selected *Tags* is either OR or AND—depending on your **Match**  [setting](#tags_search_logic). The **Tags** field updates to display a running summary of your selections.![](./static/apply-filters-using-tags-18.png)
 
-4. When you are ready to display the results of your selected filter conditions, click **Apply**. To discard all selections and keep the dialog open to make new selections, click **Clear All**.![](./static/apply-filters-using-tags-19.png)
+4. When you are ready to display the results of your selected filter conditions, click **Apply**. To discard all selections and keep the dialog open to make new selections, click **Clear All
+
+![]static/apply-filters-using-tags-19.png)
 
 
 

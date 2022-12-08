@@ -45,6 +45,7 @@ There are many restrictions for using variable expressions in Tags. Review the f
 You can only use variable expressions in the Tags created/modified in Workflows and Pipelines. If you attempt to add one in **Tags Management**, an error will occur:
 
 ![](./static/use-expressions-in-workflow-and-pipeline-tags-20.png)
+
 If a Tag uses a variable expression in its name or value, you cannot edit it in **Tags Management**. You must delete the Tag in a Workflow or Pipeline and add it again.
 
 #### Workflow Variables, Application and Account Defaults Only
