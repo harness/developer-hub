@@ -6,7 +6,7 @@ keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial]
 
 # Build, test, and publish a Docker Image for a Java HTTP server application
 
-In this tutorial, you will create a Harness CI pipeline for a Java HTTP server application that will:
+In this tutorial, you will create a Harness CI pipeline for a Java HTTP server application that does the following:
 1. Build and test the application.
 2. Publish a Docker image.
 3. Pull the published Docker image, then pull and run it as a [Background step](/docs/continuous-integration/ci-technical-reference/background-step-settings).
@@ -42,7 +42,7 @@ import TabItem from '@theme/TabItem';
 
 ### Docker Hub connector
 
-You will need a [Docker Hub](https://hub.docker.com/) connector. This connector will be used to authenticate and publish the Java HTTP server image to your Docker Hub account.
+You need a [Docker Hub](https://hub.docker.com/) connector. This connector is used to authenticate and publish the Java HTTP server image to your Docker Hub account.
 
 If you have not created a Docker Hub connector yet, follow these steps.
 
@@ -64,13 +64,13 @@ Your connector needs an access token with **Read, Write, Delete** permissions.
 
 :::
 
-### Modify pipeline
+### Modify the pipeline
 
-Select **Pipelines** from the menu on the left, then select your **jhttp** pipeline from the list.
+From the left pane, select **Pipelines**, and then select your **jhttp** pipeline from the list.
 
 Switch from the **Visual** view to the **YAML** view, and then select **Edit YAML**.
 
-You will see your starter pipeilne was created with a single stage, it should look similar to this:
+A starter pipeline is created with a single stage. It should look similar to this:
 
 ```yaml
 pipeline:
@@ -199,18 +199,18 @@ Replace the sample `stages` section with the following `variables` and `stages` 
 
 :::info
 
-This configuration expects the Docker Hub connector ID to be `Docker_Hub`. If your connector ID is different, replace `Docker_Hub` with the correct ID.
+This configuration requires the Docker Hub connector ID to be `Docker_Hub`. If your connector ID is different, replace `Docker_Hub` with the correct ID.
 
 :::
 
-Click the **Save** button in the YAML editor.
+Select **Save** in the YAML editor.
 
 ## Run your pipeline
 
 1. In the **Pipeline Studio**, select **Run**.
 2. Enter your Docker Hub username in the `DOCKERHUB_USERNAME` field.
-2. Select **Git Branch** as the **Build Type**, and then enter `main` in the **Branch Name** field.
+2. In the **Build Type** field, select **Git Branch**, and then enter **main** in the **Branch Name** field.
 3. Select **Run Pipeline**.
-4. Observe each step of the pipeline execution. When the first stage completes, test results appear in the **Tests** tab.
+4. Observe each step of the pipeline execution. When the first stage completes, test results appear on the **Tests** tab.
 
    When the second stage completes, you should see the successful `curl` command in the **Test Connection to Java HTTP Server** step.
