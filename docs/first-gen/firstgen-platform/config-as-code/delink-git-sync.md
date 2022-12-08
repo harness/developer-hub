@@ -26,5 +26,7 @@ To delink a Git connection, do the following:
 	1. For an account-level connection, click the ellipsis next to the search field, and then click **Setup Git Sync**.
 	2. For an application-level connection, hover over the Application's **Git Sync** icon, and then click the icon.
 3. In **Git Sync**, click **DELINK**.![](./static/delink-git-sync-13.png)
+
 4. Click **Confirm** to delink the Git sync.![](./static/delink-git-sync-14.png)
+
 

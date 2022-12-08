@@ -70,7 +70,8 @@ Let's look at how to obtain the UUID.
 
 In Harness, open the Service with the Artifact Source you want to sync with.
 
-![](./static/sync-and-clean-up-artifact-stream-using-the-harness-api-15.png)In your browser, open Dev Tools. The following example is for Chrome.
+![](./static/sync-and-clean-up-artifact-stream-using-the-harness-api-15.png)
+In your browser, open Dev Tools. The following example is for Chrome.
 
 Click **Network**, and select **All**.
 
@@ -78,13 +79,15 @@ In **Filter**, enter **artifactstreams**.
 
 The artifact stream request is displayed.
 
-![](./static/sync-and-clean-up-artifact-stream-using-the-harness-api-16.png)Click the **artifactstreams?appId=...** message.
+![](./static/sync-and-clean-up-artifact-stream-using-the-harness-api-16.png)
+Click the **artifactstreams?appId=...** message.
 
 Click **Preview**, and then expand **resource**.
 
 In response, you will see the UUID (`uuid`) for the Artifact Source.
 
-![](./static/sync-and-clean-up-artifact-stream-using-the-harness-api-17.png)Copy and save the UUID value.
+![](./static/sync-and-clean-up-artifact-stream-using-the-harness-api-17.png)
+Copy and save the UUID value.
 
 ### Step 2: Sync the Artifact Stream via API
 

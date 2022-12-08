@@ -53,13 +53,18 @@ To create a Service Command, do the following:
 2. In **Account**, click **Template Library**.
 3. Click the template folder where you want to add your new template.
 4. Click **Add Template** and select the **Service Command** template type. The **Add Service Command Template** settings appear.![](./static/create-a-service-command-template-17.png)
+
 5. Enter a name and description for the command.
 6. In **Variables**, click **Add** to add variables to the template. You can set a default value. The variable value can be supplied or replaced when the template is used in a Service.
 7. Click **Submit**. The new Service Command template is created.![](./static/create-a-service-command-template-18.png)
+
 8. Hover over **Add** to see the list of available subcommands to add to the template.![](./static/create-a-service-command-template-19.png)
+
 9. Click a subcommand to see its script and make any changes.
 10. To use the template in a Service, click **Add Command** in the Service and then click **From Template Library**. The template is displayed.![](./static/create-a-service-command-template-20.png)
+
 11. Click **Link** to link to the template. You can then edit the template in your Service, providing values for the variables in the template. When you use this Service in a Workflow, the Service command will be available as a step.![](./static/create-a-service-command-template-21.png)
+
 
 ### Step: Run Service Commands From a Template Library in a Workflow
 
@@ -84,6 +89,7 @@ You can use Selectors to select which Harness Delegates to use when executing th
 6. If you do not select **Execute on Delegate** option and want to run it in another host, enter the following details:
 	1. **Target Host**: In **Target Host**, enter the IP address or hostname of the remote host where you want to execute the script. The target host must be in the **Infrastructure Definition** selected when you created the workflow, and the Harness Delegate must have network access to the target host. You can also enter the variable `${instance.name}` and the script will execute on whichever target host is used during deployment.
 	2. **Connection Type**: Select **WinRM** or **SSH**.![](./static/create-a-service-command-template-22.png)
+
 7. Click **Submit**.
 
 ### Next Steps

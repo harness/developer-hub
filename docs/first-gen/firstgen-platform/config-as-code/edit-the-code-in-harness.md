@@ -22,7 +22,9 @@ Before you can edit account and Application YAML, you must have the correct User
 
 1. In **Setup,** click **Configuration As Code**.
 2. Select the YAML file that you want to edit and click **Edit**.![](./static/edit-the-code-in-harness-44.png)
+
 3. Edit the YAML file and click **Save**.![](./static/edit-the-code-in-harness-45.png)
+
 
 You can configure any settings using YAML anywhere in Harness by clicking the **YAML** editor button.
 

@@ -29,7 +29,8 @@ In this topic:
 
 Here's an example configuration of Samba Server Artifact Source.
 
-![](./static/add-smb-artifact-servers-04.png)The SMB dialog has the following fields.
+![](./static/add-smb-artifact-servers-04.png)
+The SMB dialog has the following fields.
 
 ### Step 1: Select Samba Server
 
@@ -69,7 +70,8 @@ Click **Submit**.
 
 When you use the SMB Artifact Server as an Artifact Source for a Service, you can specify a file or a folder for the artifact. This allows a folder to be copied to the deployment target host by the Harness Delegate. Here is the SMB Artifact Source dialog:
 
-![](./static/add-smb-artifact-servers-05.png)In **Artifact Path**, you can specify a file or folder by name or using wildcards. The following are examples for matching different files and folders:
+![](./static/add-smb-artifact-servers-05.png)
+In **Artifact Path**, you can specify a file or folder by name or using wildcards. The following are examples for matching different files and folders:
 
 * todo-\*zip - All matching files, such todo-1.0.zip, todo-2.0.zip.
 * test/\*zip - All zip files under **test** folder.

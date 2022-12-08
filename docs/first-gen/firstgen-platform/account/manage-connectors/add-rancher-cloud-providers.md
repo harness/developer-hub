@@ -39,6 +39,7 @@ Enter the following in the Harness Rancher Cloud Provider:
 
 ![](./static/add-rancher-cloud-providers-06.png)
 
+
 ### Supported Platforms and Technologies
 
 See [Supported Platforms and Technologies](https://docs.harness.io/article/220d0ojx5y-supported-platforms).
@@ -74,7 +75,8 @@ In Harness, click **Setup**, and then click **Cloud Providers**.
 
 Click **Add Cloud Provider**, and then select **Rancher**. The **Rancher** Cloud Provider appears.
 
-![](./static/add-rancher-cloud-providers-07.png)In **Display Name**, give the Cloud Provider a name.
+![](./static/add-rancher-cloud-providers-07.png)
+In **Display Name**, give the Cloud Provider a name.
 
 In **Rancher URL**, enter the Rancher URL endpoint. This is the domain name you use to connect to Rancher, such as `https://rancher-internal.dev.mycompany.io`. Make sure to include the URL scheme.
 

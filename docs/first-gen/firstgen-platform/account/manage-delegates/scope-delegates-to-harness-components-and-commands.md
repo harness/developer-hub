@@ -56,7 +56,8 @@ It is better to use **Scope Excluded** to exclude one Delegate from the **Produc
 
 The fields in the Delegate Scope dialog narrow the scope of the Delegate's operations as you move down the dialog. For example, you can pick an operation in Command, and the limit its scope further by picking the Application and Environment.Think of using the Delegate Scope dialog fields as ANDs: Command AND Application AND Environment Type, and so on.
 
-![](./static/scope-delegates-to-harness-components-and-commands-40.png)If you want to OR Delegate Scope settings, you need to make separate Delegate Scopes and apply them to the same Delegate.
+![](./static/scope-delegates-to-harness-components-and-commands-40.png)
+If you want to OR Delegate Scope settings, you need to make separate Delegate Scopes and apply them to the same Delegate.
 
 #### Use a Display Name
 

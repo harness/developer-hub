@@ -37,13 +37,19 @@ When a deployment freeze window is enabled:
 Perform the following steps to add a Freeze Window:
 
 1. In the **Deployment Governance** page, click **Add freeze window**.![](./static/deployment-freeze-17.png)
+
 2. In **Deployment Freeze Window**, in **Name**, enter a name for your freeze window.
 3. In **Freeze Window**, select **Applications** and **Environment Type** to restrict the Deployment Freeze Window to one or multiple Harness Applications.![](./static/deployment-freeze-18.png)
+
 	1. In **Application**, select the application. You can select multiple Applications.
 	2. In **Environment Type**, select the environment type.
 	3. In **Environment**, select the Environment. **Environment(s)** option is enabled only if you select a Harness **Application** and **Specific Environment(s)** in the **Environment Type**.![](./static/deployment-freeze-19.png)
+
 	4. For **Excluded application(s)**, see [Option: Excluded application(s)](#option_excluded_application_s) below.
-	5. In **Service(s)**, select one or more Services to freeze deployment for the same.![](./static/deployment-freeze-20.png)The default value for Service(s) is **All Services** when you select multiple Applications.![](./static/deployment-freeze-21.png)To add Freeze Window for a specific Service, select the Application and Environment corresponding to that Service.![](./static/deployment-freeze-22.png)
+	5. In **Service(s)**, select one or more Services to freeze deployment for the same.![](./static/deployment-freeze-20.png)
+The default value for Service(s) is **All Services** when you select multiple Applications.![](./static/deployment-freeze-21.png)
+To add Freeze Window for a specific Service, select the Application and Environment corresponding to that Service.![](./static/deployment-freeze-22.png)
+
 
 Currently, this feature is behind the Feature Flag `NEW_DEPLOYMENT_FREEZE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.1. Click **Add Row** to add more Applications, Environment Type, and Environment.
 2. In **Select** **Time Zone**, select a timezone from the drop-down list.
@@ -60,11 +66,13 @@ The deployment freeze will be applied to all Applications but the ones you enter
 
 ![](./static/deployment-freeze-23.png)
 
+
 #### Configuration as Code
 
 Excluded application(s) is also available in Configuration as Code YAML. You can configure it in the Governance > Deployment Governance.yaml file.
 
-![](./static/deployment-freeze-24.png)The exclusions should be configured in the `excludeAppSelections` field in the YAML file. The `envSelection.filterType: ALL` should be set first.
+![](./static/deployment-freeze-24.png)
+The exclusions should be configured in the `excludeAppSelections` field in the YAML file. The `envSelection.filterType: ALL` should be set first.
 
 #### GraphQL API
 
@@ -109,7 +117,8 @@ The added user group is notified of the activation and deactivation of the deplo
 
 Use **All** to notify all User Groups.
 
-![](./static/deployment-freeze-25.png)### Step: Submit
+![](./static/deployment-freeze-25.png)
+### Step: Submit
 
 Click **Submit**.
 
@@ -142,11 +151,13 @@ If the **Deployment Freeze** setting is not enabled, but a Deployment Freeze Win
 
 To disable Deployment Freeze (including any scheduled Freeze Windows), just move the **Disable all deployment** page's slider back to **OFF**, and then click **Confirm** when prompted.
 
-![](./static/deployment-freeze-26.png)### Override Deployment Freeze
+![](./static/deployment-freeze-26.png)
+### Override Deployment Freeze
 
 You can start a deployment even if there is an active Deployment Freeze window. You must be an Admin with the **Allow Deployments During Freeze** permission to do [this](../access-management-howtos/users-and-permissions.md)**.** To override the deployment freeze window, just start, resume, or rerun the deployment for an Application, Workflow, or Pipeline with an active deployment freeze window, click **Confirm**.
 
-![](./static/deployment-freeze-27.png)If you start deployment by overriding an active deployment freeze and then toggle off the override permission while waiting for runtime inputs, the deployment continues to run.### Aborting or Rolling Back Deployments Running when Freeze Begins
+![](./static/deployment-freeze-27.png)
+If you start deployment by overriding an active deployment freeze and then toggle off the override permission while waiting for runtime inputs, the deployment continues to run.### Aborting or Rolling Back Deployments Running when Freeze Begins
 
 If there is a deployment running when the freeze window begins, you can Roll back or Abort that deployment.
 

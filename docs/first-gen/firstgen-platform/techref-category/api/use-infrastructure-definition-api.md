@@ -31,7 +31,8 @@ Use the `deploymentType` parameter to query for all Infrastructure Definitions b
 
 The deployment type is defined in the **Deployment Type** setting in an Infrastructure Definition.
 
-![](./static/use-infrastructure-definition-api-22.png)For example, here's a query for Kubernetes deployment types:
+![](./static/use-infrastructure-definition-api-22.png)
+For example, here's a query for Kubernetes deployment types:
 
 
 ```

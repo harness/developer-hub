@@ -21,7 +21,8 @@ When 2FA is turned off by an administrator (with **Manage Account** permissions)
 
 In order for a user to enforce **account-wide** 2FA, their user account must belong to a group with the **Manage Account** permission enabled.
 
-![](./static/login-settings-154.png)For more information, see ​[Users and Permissions](users-and-permissions.md).
+![](./static/login-settings-154.png)
+For more information, see ​[Users and Permissions](users-and-permissions.md).
 
 ### Intended Audience
 
@@ -39,7 +40,8 @@ The following procedure enables 2FA for a single user account. This option is av
 
 To enable 2FA for a single account, do the following:
 
-1. Mouseover your **User Profile** icon, and then click **User Profile**.![](./static/login-settings-155.png)The **User Profile** page appears.
+1. Mouseover your **User Profile** icon, and then click **User Profile**.![](./static/login-settings-155.png)
+The **User Profile** page appears.
 2. Toggle the **Two Factor Authentication** indicator. The **Two Factor Authentication** dialog appears.
 3. Using your smartphone's 2FA token generator app, such as Google Authenticator, scan the QRCode and add it to the list in your app.  
 **Harness Inc** is added to your 2FA token generator app, and begins to provide authentication codes.  
@@ -59,14 +61,20 @@ To require that all account users and groups use 2FA, do the following:
 1. Enable 2FA for your account as described in [To Set Up 2FA for Your Profile](#to_set_up_2fa_for_your_profile).
 2. Select **Continuous Security** > **Access Management**.
 3. Click **Authentication Settings**, and scroll down to the **Security Options** section.![](./static/login-settings-156.png)
+
 4. Slide the **Enforce Two Factor Authentication** setting on.  
   
 If you have not yet [set up 2FA for your own profile](#to_set_up_2fa_for_your_profile), this prompt reminds you to protect your own login before proceeding:![](./static/login-settings-157.png)
+
 5. Click **Go to settings** to display a QRCode and secret key that you can store to ensure your own ability to log in:![](./static/login-settings-158.png)
+
 6. You can then enable 2FA for your own login:![](./static/login-settings-159.png)
+
 7. Return to **Continuous Security** > **Access Management** > **Authentication Settings** to enable two-factor authentication across your organization's Harness account:![](./static/login-settings-160.png)
 
+
 1. Confirm that you want to proceed. 2FA is now enforced across your Harness account.![](./static/login-settings-161.png)
+
 
 ### Resetting 2FA
 

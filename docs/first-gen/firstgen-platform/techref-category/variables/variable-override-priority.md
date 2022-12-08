@@ -65,6 +65,7 @@ Each Phase of a multi-phase Workflow, such as a Canary Workflow, allows you to o
 
 ![](./static/variable-override-priority-00.png)
 
+
 ### Overrides Are at the Key:Value Level Not the File Level
 
 Overrides are at the `key:value` level not the file level. You must override each `key:value` pair. 
@@ -88,7 +89,8 @@ This can be either of the following:
 
 Put simply:
 
-![](./static/variable-override-priority-01.png)At the Environment-level, you can override a variable for **All Services** or a specific Service. If you override for All Services but then also override for a specific Service, the override for the specific Service is used for that Service+Environment combination.### Overriding and Merging Values YAML, Manifests, Charts etc in Environments
+![](./static/variable-override-priority-01.png)
+At the Environment-level, you can override a variable for **All Services** or a specific Service. If you override for All Services but then also override for a specific Service, the override for the specific Service is used for that Service+Environment combination.### Overriding and Merging Values YAML, Manifests, Charts etc in Environments
 
 In addition to overriding Service text and file variables, you can override or merge new values for the Values YAML, manifest files, Helm charts, and OpenShift Params in a Harness Service (Kubernetes, Helm, Tanzu).
 

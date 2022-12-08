@@ -39,13 +39,15 @@ Your Harness account comes with a default Primary Profile. When you install a ne
 
 It cannot be renamed or deleted.
 
-![](./static/run-scripts-on-the-delegate-using-profiles-57.png)You can add any script to the Primary Profile, and apply it to any Delegate.
+![](./static/run-scripts-on-the-delegate-using-profiles-57.png)
+You can add any script to the Primary Profile, and apply it to any Delegate.
 
 #### Profile Approvals
 
 When you create a Profile you can require that its use be approved by a member of the Harness Account Administrator group.
 
-![](./static/run-scripts-on-the-delegate-using-profiles-58.png)When this option is selected, and Delegate that uses this Profile will appear with a **Pending Approval** option in the **Harness Delegates** page.
+![](./static/run-scripts-on-the-delegate-using-profiles-58.png)
+When this option is selected, and Delegate that uses this Profile will appear with a **Pending Approval** option in the **Harness Delegates** page.
 
 If you reject the Delegate, it is not registered with Harness and does not appear in the list.
 
@@ -137,6 +139,7 @@ You can view the execution log of the Profile script for each Delegate. For exam
 The date next to the Profile name is a timestamped link to the script execution log. Click the link to see the log:
 
 ![](./static/run-scripts-on-the-delegate-using-profiles-59.png)
+
 
 ### Step 3: Manage Profiles
 

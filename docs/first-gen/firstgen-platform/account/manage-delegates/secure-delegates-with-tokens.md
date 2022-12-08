@@ -47,19 +47,22 @@ Click **Delegate Tokens**.
 
 Here you can see, create, and revoke all Delegate tokens.
 
-![](./static/secure-delegates-with-tokens-20.png)Enter a name for the new token, and then click **Generate New Token**.
+![](./static/secure-delegates-with-tokens-20.png)
+Enter a name for the new token, and then click **Generate New Token**.
 
 The new token is created and its value is copied to your system clipboard. The new token also appears in the list using the name you gave it.
 
 Save the new token value. You cannot retrieve the token value after this.
 
-![](./static/secure-delegates-with-tokens-21.png)Now you can update the Delegate(s) with the new token.
+![](./static/secure-delegates-with-tokens-21.png)
+Now you can update the Delegate(s) with the new token.
 
 ### Option: Install a New Delegate with New Token
 
 When you install a new Delegate, you can select the token to use:
 
-![](./static/secure-delegates-with-tokens-22.png)After the new Delegate registers with Harness, you can:
+![](./static/secure-delegates-with-tokens-22.png)
+After the new Delegate registers with Harness, you can:
 
 * Remove any Delegates that use old tokens
 * Revoke the old tokens
@@ -205,7 +208,8 @@ Click **Delegate Tokens**.
 
 Here you can see, create, and revoke all Delegate tokens.
 
-![](./static/secure-delegates-with-tokens-23.png)Select the token you want to revoke, and click **Revoke**.
+![](./static/secure-delegates-with-tokens-23.png)
+Select the token you want to revoke, and click **Revoke**.
 
 Click **Confirm**. The token is revoked. The Harness Manager will not accept connections from any Delegates using this revoked token.
 

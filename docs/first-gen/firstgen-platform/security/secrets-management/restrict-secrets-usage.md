@@ -40,6 +40,7 @@ Harness secrets are managed and scoped using the following settings:
 	If this permission is not enabled, the users within the User Groups will be able to view the secrets only.
 * Harness User Group **Application Permissions**:
 	+ Add the Actions **Create**, **Read**, and **Update** to the Applications and Environments where Users in the User Group may use secrets.![](./static/restrict-secrets-usage-56.png)
+
 * **Secret Manager Usage Scope**—When you create a Harness Encrypted Text or File secret, you select the Secret Manager for the secret. By default, Harness secrets inherit the same scope as the secret manager where they are stored. See [Scope Secret Managers to Applications and Environments](scope-secret-managers-to-applications-and-environments.md).
 * **Secret** **Usage Scope**—Each secret has **Usage Scope** settings for Applications and Environments. For Encrypted Text and Files, you also have **Scope to Account**:  
 You have two options:
@@ -81,7 +82,8 @@ If the Environment is deleted from your Harness Application, the secret will rev
 
 If your Harness User account is part of a User Group with the **Manage Secrets** Account Permission enabled, you will see the **Scope to Account** option in the Encrypted Text and File dialogs.
 
-![](./static/restrict-secrets-usage-57.png)Select **Scope to Account** to make this encrypted file secret available to Delegate Profile scripts only. Only secrets scoped to the account are available to use in Delegate Profiles.
+![](./static/restrict-secrets-usage-57.png)
+Select **Scope to Account** to make this encrypted file secret available to Delegate Profile scripts only. Only secrets scoped to the account are available to use in Delegate Profiles.
 
 For more information, see [Managing Users and Groups (RBAC)](../access-management-howtos/users-and-permissions.md) and [Delegate Profiles](../../account/manage-delegates/delegate-installation.md#delegate-profiles).
 
@@ -91,7 +93,8 @@ You might want to restrict which Harness User Groups can use a secret. Restricti
 
 For example, in the following image, the **Usage Scope** of the secret is limited to the **ExampleForDoc** Application, and a User Group's **Application Permissions** are also limited to **ExampleForDoc**:
 
-![](./static/restrict-secrets-usage-58.png)This limits the User Group to using only that secret (assuming that no other secrets **Usage Scopes** include **ExampleForDoc**).
+![](./static/restrict-secrets-usage-58.png)
+This limits the User Group to using only that secret (assuming that no other secrets **Usage Scopes** include **ExampleForDoc**).
 
 it is important to remember that in order for a user to use the secret, the user's User Group must also have **Applications Permissions** (Create, Read, Update) set for the same Applications and Environments (or all Applications and Environments).
 

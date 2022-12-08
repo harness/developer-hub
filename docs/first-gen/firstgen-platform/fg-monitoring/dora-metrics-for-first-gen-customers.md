@@ -31,13 +31,15 @@ For each of these metrics you can choose to visualize the data by:
 
 ![Example of timeframe selection](./static/dora-metrics-for-first-gen-customers-29.png)
 
+
 #### Deployments Frequency
 
 This metric shows the frequency of deployments. The data is displayed visually in two ways:
 
 ##### By status
 
-![Example deployments frequency chart](./static/dora-metrics-for-first-gen-customers-30.png)The data is displayed per the following status: 
+![Example deployments frequency chart](./static/dora-metrics-for-first-gen-customers-30.png)
+The data is displayed per the following status: 
 
 * ABORTED
 * EXPIRED
@@ -46,11 +48,13 @@ This metric shows the frequency of deployments. The data is displayed visually i
 
 ##### By environment
 
-![Example deployments frequency by status chart](./static/dora-metrics-for-first-gen-customers-31.png)The data is displayed for production or non-production environments. 
+![Example deployments frequency by status chart](./static/dora-metrics-for-first-gen-customers-31.png)
+The data is displayed for production or non-production environments. 
 
 #### Success and failures
 
-![Example success and failures chart](./static/dora-metrics-for-first-gen-customers-32.png)This metric shows the following data:
+![Example success and failures chart](./static/dora-metrics-for-first-gen-customers-32.png)
+This metric shows the following data:
 
 * Success versus failure rates for all your deployments.
 * The percentage failure rate.
@@ -59,11 +63,13 @@ This metric shows the frequency of deployments. The data is displayed visually i
 
 #### Mean Time to Recovery
 
-![Example mean time to recovery chart](./static/dora-metrics-for-first-gen-customers-33.png)This metric shows the duration of a rollback in seconds. 
+![Example mean time to recovery chart](./static/dora-metrics-for-first-gen-customers-33.png)
+This metric shows the duration of a rollback in seconds. 
 
 #### Lead Time to Production
 
-![Example lead time to production chart](./static/dora-metrics-for-first-gen-customers-34.png)This metric shows the mean duration of pipeline executions of your deployments. The data is displayed visually at a per service level within the timeframe you specified.
+![Example lead time to production chart](./static/dora-metrics-for-first-gen-customers-34.png)
+This metric shows the mean duration of pipeline executions of your deployments. The data is displayed visually at a per service level within the timeframe you specified.
 
 ### How to view DORA metrics
 
@@ -71,6 +77,7 @@ DORA metrics are not available within the FirstGen platform, however, if you hav
 
 1. Go to the Harness Platform.
 2. On the top banner, select **Launch Harness Next Generation**.![The launch Harness next generation button](./static/dora-metrics-for-first-gen-customers-35.png)
+
 3. On the left-hand navigation, select **Dashboards**.
 4. Click the **DORA Metrics (First Gen)** tile.
 

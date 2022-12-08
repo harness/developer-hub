@@ -34,6 +34,7 @@ The following diagram shows how the Delegate enables Harness to integrate with a
 
 ![](./static/install-docker-delegate-07.png)
 
+
 ### Step 1: Download the Docker Delegate
 
 1. Sign into the Harness Manager.

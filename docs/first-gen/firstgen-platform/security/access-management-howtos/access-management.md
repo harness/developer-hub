@@ -31,9 +31,12 @@ To set up an IP Whitelist, do the following:
 
 1. Mouseover **Continuous Security**, and click **Access Management**. The **Access Management** page appears.
 2. Click **IP Whitelist Management**. The current IP Whitelisting configuration appears![](./static/access-management-230.png)
+
 3. Click **Add CIDR/IP Address**. The **Add** **CIDR/IP Address** dialog appears.![](./static/access-management-231.png)
+
 4. In **IP Address/CIDR**, enter a CIDR or an individual IP address. You can click **Include Current IP Address** as a shortcut.
 5. Set the **Status** of the Whitelist to **ACTIVE** or **DISABLED** and click **SUBMIT**. The Whitelist is created.![](./static/access-management-232.png)
+
 
 You can create multiple Whitelists and enable or disable them as needed.
 

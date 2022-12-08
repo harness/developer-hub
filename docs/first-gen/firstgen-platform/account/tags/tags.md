@@ -114,25 +114,34 @@ To add a Tag to an Application or [supported](#tag_scope) Application component:
 
 1. Click into the Application or component to display its Overview card: **Application Overview**, **Environment Overview**, **Workflow Overview**, etc. Here, you can locate and click the **Add Tag** link:![](./static/tags-00.png)
 
+
 1. In the resulting pop-up, select a key from the **Tag Name** drop-down:![](./static/tags-01.png)
-2. The **Tag Value** field can normally be left empty, or can accept a single free-form value (subject to Harness' restrictions on Tag values):![](./static/tags-02.png)However, if the tag has [Allowed Values](#allowed_values)—indicated by a **R**(estricted) symbol—you must select a value from the drop-down list, as shown below:![](./static/tags-03.png)
-3. Click **Submit** to add your Tag:![](./static/tags-04.png)Each applied Tag's key and value will now appear on the Application's or component's **Overview** card:![](./static/tags-05.png)
+
+2. The **Tag Value** field can normally be left empty, or can accept a single free-form value (subject to Harness' restrictions on Tag values):![](./static/tags-02.png)
+However, if the tag has [Allowed Values](#allowed_values)—indicated by a **R**(estricted) symbol—you must select a value from the drop-down list, as shown below:![](./static/tags-03.png)
+
+3. Click **Submit** to add your Tag:![](./static/tags-04.png)
+Each applied Tag's key and value will now appear on the Application's or component's **Overview** card:![](./static/tags-05.png)
+
 
 
 ### Option 1: Replace Tag Values
 
 If you click **Add Tag**, and then select a **Tag Name** that has already been applied to this Application or component, you will see the error message shown below:
 
-![](./static/tags-06.png)This is a reminder that each Tag can have only one value on a given Application or component. You can just click on the existing Tag to type (or select) a replacement **Tag Value**:
+![](./static/tags-06.png)
+This is a reminder that each Tag can have only one value on a given Application or component. You can just click on the existing Tag to type (or select) a replacement **Tag Value**:
 
-![](./static/tags-07.png)Click **Submit** to update the tag's value.
+![](./static/tags-07.png)
+Click **Submit** to update the tag's value.
 
 
 ### Option 2: Remove Tags
 
 You can remove Tags from the same Applications and components where you have [Application Permissions](../../security/access-management-howtos/users-and-permissions.md#application-permissions) to add (attach) Tags. Simply click the Tag's **X** box, then respond to the confirmation message box shown below.
 
-![](./static/tags-08.png)There is no automatic undo. To restore a removed Tag, you will need to manually re-enter its key and value.
+![](./static/tags-08.png)
+There is no automatic undo. To restore a removed Tag, you will need to manually re-enter its key and value.
 ### Next Steps
 
 * [Apply Filters Using Tags](apply-filters-using-tags.md)

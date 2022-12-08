@@ -35,11 +35,14 @@ To sync your Harness account with a Git repo, do the following:
 1. Add your Git repo as a Source Repo Provider in Harness. For more information, see [Add Source Repo Providers](../account/manage-connectors/add-source-repo-providers.md).
 2. In **Setup**, click **Configuration As Code**.
 3. Click the ellipsis next to the **Search** field, and then click **Setup Git** **Sync**.![](./static/harness-account-level-sync-00.png)
+
 4. In **Git Connector**, select a Harness **Source Repo Provider**. For information on setting up a Source Repo Provider, see [Add Source Repo Providers](../account/manage-connectors/add-source-repo-providers.md).![](./static/harness-account-level-sync-01.png)
+
 5. In **Branch Name**, enter the name of the repo branch to sync with the Harness account. This can be the master branch or another branch where you want to keep the Harness account-level settings.Names may not contain characters from the Emoticons unicode block.
 6. To enable sync between Harness and the repo in the Source Repo provider, ensure Git Sync is **Enabled**.  
   
 Your Harness account is now synced with your Git repo. Open your Git repo to see the Harness account.![](./static/harness-account-level-sync-02.png)
+
 
 ### Step: Two-Way Git Sync
 
@@ -48,6 +51,7 @@ Your Harness account is now synced with your Git repo. Open your Git repo to see
 Here is an example of a CD `pipeline.yaml` file within the folder `harness/Setup/Applications/RetailApplication/Pipelines`. The file contains a Pipeline with four deployment stages: Dev, QA, Approval, and Prod.![](./static/harness-account-level-sync-03.jpg)
 2. Commit your YAML file to the branch. Seconds after you commit the YAML file to the branch, Harness is fully synced, and the new Pipeline is available to view in the Harness Manager.![](./static/harness-account-level-sync-04.jpg)
 3. To view or make edits to the Pipeline YAML, click the config-as-code icon.![](./static/harness-account-level-sync-05.png)
+
 4. View or edit the YAML in the context of the Pipeline.![](./static/harness-account-level-sync-06.jpg)You can view or edit the Services, Environments, Workflows, and everything else in the Harness platform in the same way.
 
 ### Step: Reset Git Repository
@@ -62,7 +66,9 @@ To reset the remote Git repo, do the following:
 1. Add your Git repo as a Source Repo Provider in Harness. For more information, see [Add Source Repo Providers](../account/manage-connectors/add-source-repo-providers.md).
 2. In **Setup**, click **Configuration As Code**.
 3. Click the ellipsis next to the **Search** field, and then click **Reset Git** **Repository**.![](./static/harness-account-level-sync-07.png)
+
 4. Click **Confirm** to reset the remote Git repo.![](./static/harness-account-level-sync-08.png)
+
 
 ### Step: Refresh Menu Tree
 
@@ -72,15 +78,19 @@ To refresh the files in your menu tree, do the following:
 2. In **Setup**, click **Configuration As Code**.
 3. Click the ellipsis next to the **Search** field, and then click **Refresh Menu Tree**.![](./static/harness-account-level-sync-09.png)
 
+
 ### Step: Open Settings
 
 1. Add your Git repo as a Source Repo Provider in Harness. For more information, see [Add Source Repo Providers](../account/manage-connectors/add-source-repo-providers.md).
 2. In **Setup**, click **Configuration As Code**.
 3. Click the ellipsis next to the **Search** field, and then click **Open Settings**.![](./static/harness-account-level-sync-10.png)
+
 4. In **Settings**, do the following:
 	1. **Choose Theme** from the drop-down list. You can select, Light, Dark, or High Contrast Dark.
 	2. Select the checkbox **Show Line numbers** to show line numbers in your YAML files.
-	3. Select the checkbox **Show Minimap** to show the smaller map of your YAML file.![](./static/harness-account-level-sync-11.png)The line numbers and minimap are displayed as the following:![](./static/harness-account-level-sync-12.png)
+	3. Select the checkbox **Show Minimap** to show the smaller map of your YAML file.![](./static/harness-account-level-sync-11.png)
+The line numbers and minimap are displayed as the following:![](./static/harness-account-level-sync-12.png)
+
 
 ### Next Steps
 

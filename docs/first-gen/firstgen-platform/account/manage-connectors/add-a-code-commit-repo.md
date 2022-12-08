@@ -35,6 +35,7 @@ To add a source repo, do the following:
 
 ![](./static/add-a-code-commit-repo-28.png)
 
+
 ### Step: Display Name
 
 Enter a name for the repo connection. This is the name you will select when you sync your Harness account and applications in [Configuration as Code](../../config-as-code/configuration-as-code.md).You could create a Source Repo Provider for the Harness admin account, such as **Admin\_CodeCommit**. Later, you can create a Source Repo account for each Harness user, such as **J\_User\_CodeCommit**.

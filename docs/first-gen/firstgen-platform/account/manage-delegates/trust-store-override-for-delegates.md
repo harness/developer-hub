@@ -38,7 +38,8 @@ In this topic:
 
 TLS/SSL communication between the Harness Delegate and Harness SaaS uses a certificate from the DigiCert Global Root CA:
 
-![](./static/trust-store-override-for-delegates-00.png)For Delegates to communicate with Harness, this root CA certificate needs to be installed in the Delegate's truststore.
+![](./static/trust-store-override-for-delegates-00.png)
+For Delegates to communicate with Harness, this root CA certificate needs to be installed in the Delegate's truststore.
 
 The public key for the certificate is publicly available and can be downloaded. Here it is:
 

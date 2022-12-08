@@ -20,6 +20,7 @@ Here's an example of the Docker Registry Artifact Source addition.
 
 ![](./static/add-docker-registry-artifact-servers-33.png)
 
+
 ### Review: Docker Registry Permissions
 
 Make sure the connected user account has the following permissions.

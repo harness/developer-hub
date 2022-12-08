@@ -49,10 +49,12 @@ For example:
 7. In Postman's right panel, paste this value into the **Value** field. (Accept the **Add to: Header** default.)  
   
 Your Postman setup will now look something like this:![](./static/graph-ql-apis-for-browser-based-automation-23.png)
+
 8. In the [Harness API Explorer](#api_explorer), click **COPY** to grab your query.
 9. In Postman, select the **Body** tab > **GraphQL** radio button.
 10. Paste your query into Postman's **QUERY** box.
 11. Click **Send** to run the query. Verify the response in the response **Body** panel below.![](./static/graph-ql-apis-for-browser-based-automation-24.png)
+
 
 You can also use this syntax (notice `-api`):
 
@@ -64,13 +66,16 @@ But you need to pass parameters in a different way:
 
 ![](./static/graph-ql-apis-for-browser-based-automation-25.png)
 
+
 ### Build Language-Specific Queries in Postman
 
 Here is how to convert your query into your programming language of choice. We assume that you've already pasted your GraphQL query into Postman's **QUERY** box.
 
 1. In Postman, select the **raw** radio button (not the **GraphQL** radio button).
 2. Select Postman's **Code** tab.![](./static/graph-ql-apis-for-browser-based-automation-26.png)
+
 3. In the resulting **GENERATE CODE SNIPPETS** window, select your target language from the drop-down at upper left. This displays the generated snippet for that language.![](./static/graph-ql-apis-for-browser-based-automation-27.png)
+
 4. Click **Copy to Clipboard**.
 5. Paste and verify the translated query in your chosen environment.
 
@@ -121,6 +126,8 @@ To build browser-based queries in Postman, perform the following steps:
 3. In Body tab of Postman select, **form-data**.
 4. Add `query` in the **KEY**.
 5. Add `x-api-key` in the **KEY** and set its value as the API key.![](./static/graph-ql-apis-for-browser-based-automation-28.png)
+
 6. Click **Send** to run the query. Verify the response in the response **Body** panel.
 7. Click **Code** to get code in different languages for the request.![](./static/graph-ql-apis-for-browser-based-automation-29.png)
+
 

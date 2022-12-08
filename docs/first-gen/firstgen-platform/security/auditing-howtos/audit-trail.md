@@ -28,7 +28,8 @@ The Audit Trail feature covers events in accounts and Applications. To see your 
 
 To view your account's audit trail: From Harness Manager, select **Continuous Security** **>** **Audit Trail**. The **Audit Trail** page appears, displaying a record for each event that changed the setup of your Harness account, Applications, or Application components.
 
-![](./static/audit-trail-00.png)For each event record, this view shows the:
+![](./static/audit-trail-00.png)
+For each event record, this view shows the:
 
 * Date and time.
 * User who made the change (**Updated By**).
@@ -46,15 +47,18 @@ You can restrict the Audit Trail's displayed events by date and time, or define 
 
 Use the Date Picker to restrict events to a predefined date range, or to a custom date/time range:
 
-![](./static/audit-trail-01.png)Selecting **Custom Date Range** enables you to set arbitrary limits by date and time of day:
+![](./static/audit-trail-01.png)
+Selecting **Custom Date Range** enables you to set arbitrary limits by date and time of day:
 
 ![](./static/audit-trail-02.png)
+
 
 #### Filter Audit Events
 
 Click the Filter button to open a dialog where you can set multiple conditions on the events displayed:
 
-![](./static/audit-trail-03.png)This dialog provides the following options. Your selections are cumulative—they combine to restrict the Audit Trail's display:
+![](./static/audit-trail-03.png)
+This dialog provides the following options. Your selections are cumulative—they combine to restrict the Audit Trail's display:
 
 
 
@@ -85,7 +89,8 @@ Once you've applied a filter, you can share your filtered view of the Audit Tra
 
 Once you've applied any filters to the Audit Trail display, controls along the top allow you to update, remove, or save your filter selections:
 
-![](./static/audit-trail-04.png)* To remove a single filter from the Audit Trail display, click its **X** box.
+![](./static/audit-trail-04.png)
+* To remove a single filter from the Audit Trail display, click its **X** box.
 * To remove all filters, click **Reset**. (There is no undo for this action.)
 * To name and save your current set of filters, click **Save Filter**. (Saved filters will appear on the Filter button's submenu.)
 * To fine-tune filters, click the Filter button. (This reopens the **Audit Trail Filter** dialog with your current filter settings.)

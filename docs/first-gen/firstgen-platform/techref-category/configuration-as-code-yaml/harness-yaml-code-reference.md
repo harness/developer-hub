@@ -12,7 +12,8 @@ YAML schema for some Workflow, Pipeline, and Triggers have changed. See [Recent 
 
 For how-tos on using YAML in Harness, see [Configuration as Code Overview](../../config-as-code/configuration-as-code.md).
 
-![](./static/harness-yaml-code-reference-00.png)For each YAML file described in this document, the default keys are listed with example values and commented descriptions, for example:
+![](./static/harness-yaml-code-reference-00.png)
+For each YAML file described in this document, the default keys are listed with example values and commented descriptions, for example:
 
 
 ```
@@ -62,6 +63,7 @@ In the Harness UI, you can reference pre-existing secrets in Vault and AWS Secre
 For HashiCorp Vault, you can also use the Harness YAML editor to reference pre-existing secrets in Vault using a fully-qualified path, such as `hashicorpvault://LocalVault/foo/bar/mysecret#mykey`. The scheme `hashicorpvault://` is needed to distinguish a Vault secret from other secret references. It is followed by the name of the Vault secret manager. In the following example, `LocalVault`:
 
 ![](./static/harness-yaml-code-reference-01.png)
+
 
 ### RBAC and YAMl Editor in Harness Manager
 
@@ -317,7 +319,8 @@ serverName: registry_hub_docker_com # The name of the Artifact Server selected.
 
 This folder contains the scripts for commands that are in the Service, such as Bash and PowerShell scripts. Here is an example of some common scripts:
 
-![](./static/harness-yaml-code-reference-02.png)Here is the code for the Install.yaml file that contains the Install script:
+![](./static/harness-yaml-code-reference-02.png)
+Here is the code for the Install.yaml file that contains the Install script:
 
 
 ```
@@ -419,7 +422,8 @@ targetToAllEnv: true
 
 The **Commands** folder displays different YAML keys to indicate that a script is linked from the [Template Library](../../../continuous-delivery/concepts-cd/deployment-types/use-templates.md). For example, the following script named **JSON to Environment Variables** is linked to the **JSON to Environment Variables** script in the Template Library:
 
-![](./static/harness-yaml-code-reference-03.png)Here is the YAML for the script:
+![](./static/harness-yaml-code-reference-03.png)
+Here is the YAML for the script:
 
 
 ```
@@ -463,7 +467,8 @@ templateVariables: # Variable used in the template
 
 This folder contains the files added to the Config Files section of a Service. Here is an example with a text file and an encrypted PDF file.
 
-![](./static/harness-yaml-code-reference-04.png)Here is an example of the YAML file for an encrypted file in Config Files:
+![](./static/harness-yaml-code-reference-04.png)
+Here is an example of the YAML file for an encrypted file in Config Files:
 
 
 ```
@@ -505,7 +510,8 @@ environmentType: NON_PROD # The Environment type.
 ```
 Variable Overrides and, in the case of Kubernetes, ConfigMap YAML Overrides, are stored in the Index.yaml file. For example, here is a **Service Configuration Overrides** section of an **Environment** that contains simple **Variable Overrides** and **ConfigMap YAML Overrides** entries:
 
-![](./static/harness-yaml-code-reference-05.png)The Index.yaml example we used above now includes these variable overrides, highlighted below:
+![](./static/harness-yaml-code-reference-05.png)
+The Index.yaml example we used above now includes these variable overrides, highlighted below:
 
 
 ```
@@ -542,6 +548,7 @@ variableOverrides: # Override Variables
 The **Infrastructure Definition** file is named with the Infrastructure Definition name and describes the Infrastructure Definition settings.
 
 ![](./static/harness-yaml-code-reference-06.png)
+
 ```
 harnessApiVersion: '1.0'  
 type: INFRA_DEFINITION  
@@ -610,7 +617,8 @@ timestampFormat: yyyy-MM-dd'T'HH:mm:ss.SSSX # Format for the timestamp field in 
 
 File Overrides in the Service Configuration Overrides of an Environment are listed in the Config Files folder. Here is a File Override in the UI:
 
-![](./static/harness-yaml-code-reference-07.png)The YAML file added for each File Override is named the same as the variable name. Here is the YAML in the file named after the variable, bar.yaml:
+![](./static/harness-yaml-code-reference-07.png)
+The YAML file added for each File Override is named the same as the variable name. Here is the YAML in the file named after the variable, bar.yaml:
 
 
 ```
@@ -660,7 +668,8 @@ This folder contains all Workflows for the Application. Each Workflow is in its 
 
 Here is the UI of a Basic Workflow of SSH deployment type:
 
-![](./static/harness-yaml-code-reference-08.png)Below is the Workflow YAML for the Basic Workflow SSH deployment type with all of its sections collapsed. Each section is discussed later in the document.
+![](./static/harness-yaml-code-reference-08.png)
+Below is the Workflow YAML for the Basic Workflow SSH deployment type with all of its sections collapsed. Each section is discussed later in the document.
 
 
 ```
@@ -822,7 +831,8 @@ Canary Workflows typically use two phases. The first phase deploys the microserv
 
 Here is the first phase of a Canary Workflow of Kubernetes deployment type in the UI:
 
-![](./static/harness-yaml-code-reference-09.png)Here is an example of the two phases of a Canary Workflow of Kubernetes deployment type:phases:
+![](./static/harness-yaml-code-reference-09.png)
+Here is an example of the two phases of a Canary Workflow of Kubernetes deployment type:phases:
 
 
 ```
@@ -946,7 +956,8 @@ The Failure Strategy YAML describes the steps Harness will take when a Workflow 
 
 Here is what the default Failure Strategy looks like in the UI:
 
-![](./static/harness-yaml-code-reference-10.png)Here is the YAML for the default Failure Strategy:
+![](./static/harness-yaml-code-reference-10.png)
+Here is the YAML for the default Failure Strategy:
 
 
 ```
@@ -976,7 +987,8 @@ The Notification Strategy describes which Harness Users and/or Groups to notify 
 
 Here is the default Notification Strategy in the UI:
 
-![](./static/harness-yaml-code-reference-11.png)Here is the YAML for the default Notification Strategy:
+![](./static/harness-yaml-code-reference-11.png)
+Here is the YAML for the default Notification Strategy:
 
 
 ```
@@ -992,7 +1004,8 @@ notificationRules: # Notification Strategy settings.
 
 The following are Rollback steps in case of a deployment failure or if rollback is part of a Failure Strategy. Here are the Rollback steps in the UI:
 
-![](./static/harness-yaml-code-reference-12.png)Here is the YAML for the Rollback Steps:
+![](./static/harness-yaml-code-reference-12.png)
+Here is the YAML for the Rollback Steps:
 
 
 ```
@@ -1098,7 +1111,8 @@ rollbackPhases:
 
 Verification Steps are used to apply Harness Continuous Verification to your deployment. Here is a Splunk Verification Step in the UI:
 
-![](./static/harness-yaml-code-reference-13.png)Here is the YAML for the same step:
+![](./static/harness-yaml-code-reference-13.png)
+Here is the YAML for the same step:
 
 
 ```
@@ -1134,7 +1148,8 @@ Verification Steps are used to apply Harness Continuous Verification to your dep
 
 Here is an example of a Workflow variable in the UI:
 
-![](./static/harness-yaml-code-reference-14.png)Here is the YAML for the variable:
+![](./static/harness-yaml-code-reference-14.png)
+Here is the YAML for the variable:
 
 
 ```
@@ -1156,7 +1171,8 @@ userVariables:
 
 The Workflow commands you use varies according to your Workflow and deployment type, but there are some common commands that are used by most Workflows.
 
-![](./static/harness-yaml-code-reference-15.png)The following YAML lists examples for common commands:
+![](./static/harness-yaml-code-reference-15.png)
+The following YAML lists examples for common commands:
 
 **Barrier:**
 
@@ -1282,7 +1298,8 @@ This folder contains all Pipelines for the Application. Each Pipeline is in its 
 
 Here is an example for a Pipeline named Example-Pipeline, displayed in the UI:
 
-![](./static/harness-yaml-code-reference-16.png)It's YAML file is named Example-Pipeline.yaml:
+![](./static/harness-yaml-code-reference-16.png)
+It's YAML file is named Example-Pipeline.yaml:
 
 
 ```
@@ -1338,7 +1355,8 @@ Once enabled, Trigger YAML can be synced with Git. See [Configuration as Code](.
 
 Here is an example for a Trigger named **On New Artifact**, displayed in the UI:
 
-![](./static/harness-yaml-code-reference-17.png)Here is the YAML for the Trigger:
+![](./static/harness-yaml-code-reference-17.png)
+Here is the YAML for the Trigger:
 
 
 ```
@@ -1362,7 +1380,8 @@ For Git-synced Harness Applications, once you have YAML-based Triggers enabled, 
 
 Locate your Harness Application, and click its sync button:
 
-![](./static/harness-yaml-code-reference-18.png)For details on syncing, see [Configuration as Code](../../config-as-code/configuration-as-code.md).
+![](./static/harness-yaml-code-reference-18.png)
+For details on syncing, see [Configuration as Code](../../config-as-code/configuration-as-code.md).
 
 #### Limitations
 
@@ -1375,7 +1394,8 @@ This folder contains all Infrastructure Provisioners for the Application. Each I
 
 Here is an example for a CloudFormation Infrastructure Provisioners named CF-Test, displayed in the UI:
 
-![](./static/harness-yaml-code-reference-19.png)Here is the YAML for the CF-Test Infrastructure Provisioner:
+![](./static/harness-yaml-code-reference-19.png)
+Here is the YAML for the CF-Test Infrastructure Provisioner:
 
 
 ```
@@ -1419,7 +1439,8 @@ Many Harness configuration components, such as Cloud Providers, provide **Usage 
 
 Here is what Usage Scope looks like in the UI, scoped to three Applications and Environments:
 
-![](./static/harness-yaml-code-reference-20.png)Here is the same example in YAML:
+![](./static/harness-yaml-code-reference-20.png)
+Here is the same example in YAML:
 
 
 ```
@@ -1541,7 +1562,8 @@ type: PHYSICAL_DATA_CENTER # The Cloud provider type.
 
 The Kubernetes Cluster Cloud Provider can be authenticated using the Inherit Cluster Details from selected Delegate option or manually.
 
-![](./static/harness-yaml-code-reference-21.png)Below is the YAML for a Kubernetes Cluster Cloud Provider authenticated using the **Inherit Cluster Details from selected Delegate** option. Although it does not use manual authentication (the **Enter Cluster Details manually** option), there are placeholders for the manual authentication values, and they are also commented on below:
+![](./static/harness-yaml-code-reference-21.png)
+Below is the YAML for a Kubernetes Cluster Cloud Provider authenticated using the **Inherit Cluster Details from selected Delegate** option. Although it does not use manual authentication (the **Enter Cluster Details manually** option), there are placeholders for the manual authentication values, and they are also commented on below:
 
 
 ```
@@ -1571,7 +1593,8 @@ username: johndoe@harness.io # Username and password for the Kubernetes cluster.
 
 The Microsoft Azure Cloud Provider authentication is performed using application, client, and project information.
 
-![](./static/harness-yaml-code-reference-22.png)Here is the YAML for a Microsoft Azure Cloud Provider:
+![](./static/harness-yaml-code-reference-22.png)
+Here is the YAML for a Microsoft Azure Cloud Provider:
 
 
 ```
@@ -1793,7 +1816,8 @@ Notification Groups simply use email addresses and Slack channels to notify peop
 
 Here is a sample Notification Group in the UI:
 
-![](./static/harness-yaml-code-reference-23.png)Here is the YAML for that Notification Group:
+![](./static/harness-yaml-code-reference-23.png)
+Here is the YAML for that Notification Group:
 
 
 ```
@@ -1824,6 +1848,7 @@ Harness Source Repo Providers connect your Harness account with your Git platfor
 The `password` label contains the path to the secret in the Secret Manager you have set up and used in Harness.
 
 ![](./static/harness-yaml-code-reference-24.png)
+
 
 ### YAML and JSON in Harness Manager
 

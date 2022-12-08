@@ -27,6 +27,7 @@ In this topic:
 
 1. In **Secrets Management**, click **Encrypted Files**.
 2. Click **Add Encrypted File**. The **Add Encrypted File** dialog appears.![](./static/use-encrypted-file-secrets-28.png)
+
 3. Select the secrets manager you will use to encrypt this file.
 4. Enter a name for the encrypted file. This is the name you will use to reference the file in application entities.
 5. Click **Choose File**, and locate and add a file. The default Secrets Manager for your account is used to encrypt the file.
@@ -41,6 +42,7 @@ When you are in an application entity that uses files, you can reference the enc
 For example, in the following **Configuration File** dialog, click **Encrypt File** and the **File** dropdown lets you choose the file you added in **Secrets Management**:
 
 ![](./static/use-encrypted-file-secrets-29.png)
+
 
 ### Review: Encrypted Files Must be Added to a Service
 

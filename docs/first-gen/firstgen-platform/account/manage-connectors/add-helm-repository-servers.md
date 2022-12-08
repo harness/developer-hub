@@ -28,7 +28,8 @@ From Helm:
 
 Here's an example of Helm Repository Artifact Source configuration.
 
-![](./static/add-helm-repository-servers-31.png)The Helm Repository dialog has the following fields.
+![](./static/add-helm-repository-servers-31.png)
+The Helm Repository dialog has the following fields.
 
 ### Step 1: Select Helm Repository
 
@@ -73,6 +74,7 @@ For example, suppose a chart with the name **test-chart** is present in a **helm
 In **Repository URL**, you would enter `[registry-name].azurecr.io/helm/charts/`.
 
 ![](./static/add-helm-repository-servers-32.png)
+
 
 ### Step 5: Username and Password
 

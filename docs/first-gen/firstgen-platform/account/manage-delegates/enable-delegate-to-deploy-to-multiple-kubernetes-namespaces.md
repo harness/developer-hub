@@ -40,7 +40,8 @@ By default, the Delegate resides in a namespace in the target cluster with a ser
 
 The is called this the central model. Here is a simple illustration of the central model:
 
-![](./static/enable-delegate-to-deploy-to-multiple-kubernetes-namespaces-03.png)The central model is simple and efficient, but it does not let you restrict teams to deploying into specific namespaces. Any team member can deploy to any namespace.
+![](./static/enable-delegate-to-deploy-to-multiple-kubernetes-namespaces-03.png)
+The central model is simple and efficient, but it does not let you restrict teams to deploying into specific namespaces. Any team member can deploy to any namespace.
 
 As an alternative, you can use a distributed model.
 
@@ -50,7 +51,8 @@ This model places a Delegate in each namespace in the cluster. It limits each De
 
 Here is the illustration of the distributed model:
 
-![](./static/enable-delegate-to-deploy-to-multiple-kubernetes-namespaces-04.png)In this model, each team uses their own Delegate for their deployments into their own namespace.
+![](./static/enable-delegate-to-deploy-to-multiple-kubernetes-namespaces-04.png)
+In this model, each team uses their own Delegate for their deployments into their own namespace.
 
 The distributed model is more complex, but it prevents a team member from deploying into the wrong namespace.
 
@@ -93,7 +95,8 @@ There are two ways for the Kubernetes Cluster Could Provider to get credentials:
 * Inherit from selected Delegate
 * Enter manually
 
-![](./static/enable-delegate-to-deploy-to-multiple-kubernetes-namespaces-05.png)Both methods can use the service account to provide either the central or distributed models.
+![](./static/enable-delegate-to-deploy-to-multiple-kubernetes-namespaces-05.png)
+Both methods can use the service account to provide either the central or distributed models.
 
 #### Inherit from selected Delegate
 
@@ -211,6 +214,7 @@ echo $TOKEN
 Next, enter the service account token in the Kubernetes Cluster Cloud Provider:
 
 ![](./static/enable-delegate-to-deploy-to-multiple-kubernetes-namespaces-06.png)
+
 
 ### Option 2: Add Service Account to Delegate Spec
 

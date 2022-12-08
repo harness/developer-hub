@@ -69,7 +69,8 @@ For example, you can install a Delegate in an AWS VPC and then select it in the 
 
 In the **Delegate Selector** setting, you select the Selector by name, such as **ecs-delegate**.
 
-![](./static/select-delegates-for-specific-tasks-with-selectors-56.png)Now the Harness AWS Cloud Provider will use the Delegate's credentials to connect with AWS.
+![](./static/select-delegates-for-specific-tasks-with-selectors-56.png)
+Now the Harness AWS Cloud Provider will use the Delegate's credentials to connect with AWS.
 
 ### See Also
 

@@ -55,6 +55,7 @@ For more information on creating an Encrypted Text Secret, see [Harness Encrypt
 ### Step 2: Test Host Connectivity
 
 1. Click **TEST**. The **Host Connectivity Test** tool appears.![](./static/add-ssh-keys-25.png)
+
 2. In **Host Name**, enter the host name of the remote server you want to SSH into. For example, if it is an AWS EC2 instance, it will be something like, `ec2-76-939-110-125.us-west-1.compute.amazonaws.com`.
 3. Click **RUN**. If the test is unsuccessful, you might see an error stating that no Harness Delegate could reach the host, or that a credential is invalid. Ensure that your settings are correct and that a Harness Delegate is able to connect to the server.
 4. When a test is successful, click **Submit**.

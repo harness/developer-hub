@@ -31,7 +31,8 @@ You can reference a file secret using the expression `${configFile.getAsBase64("
 
 At deployment runtime, the Harness Delegate uses the Secrets Manager to decrypt and read the secret only when it is needed.
 
-![](./static/secrets-and-log-sanitization-00.png)Harness sends only encrypted data to the Secrets Manager, as follows: 
+![](./static/secrets-and-log-sanitization-00.png)
+Harness sends only encrypted data to the Secrets Manager, as follows: 
 
 1. Your browser sends data over HTTPS to Harness Manager.
 2. Harness Manager relays encrypted data to the Harness Delegate, also over HTTPS.

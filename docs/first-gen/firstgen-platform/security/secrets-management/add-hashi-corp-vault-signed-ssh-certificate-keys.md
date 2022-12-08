@@ -55,7 +55,8 @@ $ ssh -i signed-cert.pub -i ~/.ssh/id_rsa username@10.0.23.5
 ```
 In Harness, you are simply providing the same information in the Harness SSH Key settings:
 
-![](./static/add-hashi-corp-vault-signed-ssh-certificate-keys-50.png)Next, you use the SSH key in a Harness Infrastructure Definition as the target host(s) connection method.
+![](./static/add-hashi-corp-vault-signed-ssh-certificate-keys-50.png)
+Next, you use the SSH key in a Harness Infrastructure Definition as the target host(s) connection method.
 
 During deployment, the Harness Delegate connects to the Vault server and exchanges the public key for a new certificate.
 
@@ -76,6 +77,7 @@ Ensure you select the Secrets Engine that will validate the public key from Vaul
 When you are done, the Secrets Manager will look something like this:
 
 ![](./static/add-hashi-corp-vault-signed-ssh-certificate-keys-51.png)
+
 
 ### Step 2: Create SSH Key
 

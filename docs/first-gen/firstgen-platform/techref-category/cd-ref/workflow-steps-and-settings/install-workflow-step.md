@@ -29,6 +29,7 @@ The following image shows the Install step in the deployed Workflow and its corr
 
 ![](./static/install-workflow-step-07.png)
 
+
 ### Not Seeing the Install Step in a Workflow?
 
 Install commands are added in a Harness SSH Service, and then used in a Harness Workflow that uses the Service.
@@ -43,9 +44,11 @@ For SSH Services using the **Docker Image** artifact type, the Install command i
 
 To overcome this limitation, in the SSH Service using the Docker Image artifact type, click **Add Command**, and then select **Install** in **Command Type**.
 
-![](./static/install-workflow-step-08.png)Next, in the **Install** command you just added to the Service, click **Add**, and select a Docker script.
+![](./static/install-workflow-step-08.png)
+Next, in the **Install** command you just added to the Service, click **Add**, and select a Docker script.
 
-![](./static/install-workflow-step-09.png)Now, when you use this Service to a Workflow, the **Install** step is added to the Workflow.
+![](./static/install-workflow-step-09.png)
+Now, when you use this Service to a Workflow, the **Install** step is added to the Workflow.
 
 ### Name
 

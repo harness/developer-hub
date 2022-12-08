@@ -36,7 +36,8 @@ You don't need to install the AWS CLI onto a Delegate to perform deployments in 
 2. Click **Harness Delegates**.
 3. Click **Manage Delegate Profiles**, and then click **Add Delegate Profile**. The **Manage Delegate Profile** settings appear.
 
-![](./static/install-the-aws-cli-on-a-delegate-41.png)Next, we'll add the script for installing the AWS CLI.
+![](./static/install-the-aws-cli-on-a-delegate-41.png)
+Next, we'll add the script for installing the AWS CLI.
 
 For information on the **Delegate Requires Approval** setting, see [Approve or Reject Harness Delegates](approve-or-reject-harness-delegates.md).
 
@@ -64,7 +65,8 @@ In the listing for the Delegate, in **Profile**, select the Delegate Profile you
 
 When you are prompted to confirm, click **Confirm**.
 
-![](./static/install-the-aws-cli-on-a-delegate-42.png)The message `Delegate profile Install AWS CLI saved successfully` appears.
+![](./static/install-the-aws-cli-on-a-delegate-42.png)
+The message `Delegate profile Install AWS CLI saved successfully` appears.
 
 Wait a few minutes for the Profile script to run on the Delegate host(s) and for Harness to receive any output.
 
@@ -74,7 +76,8 @@ The Profile status icon indicates whether the script ran successfully.
 
 In the listing of the Delegate where you applied the profile, in **Profile**, click **View Logs**.
 
-![](./static/install-the-aws-cli-on-a-delegate-43.png)If you see the message, `Profile execution log temporarily unavailable. Try again in a few moments`, the Delegate is still applying the script. Simply wait a few more minutes.You will see the successful output of the installation.
+![](./static/install-the-aws-cli-on-a-delegate-43.png)
+If you see the message, `Profile execution log temporarily unavailable. Try again in a few moments`, the Delegate is still applying the script. Simply wait a few more minutes.You will see the successful output of the installation.
 
 If the Profile does not work, change the script in the Profile and try again. To try the new Profile script, switch the Profile on the Delete to another Profile, such as Primary, and then back to the revised AWS CLI Profile.
 

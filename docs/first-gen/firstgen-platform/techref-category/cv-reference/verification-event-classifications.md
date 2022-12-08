@@ -27,15 +27,18 @@ For an overview of verification feedback, and steps on applying and changing an 
 
 A Known Event is a non-anomalous event from your baseline execution, as opposed to a **Not a Risk** event, which is from the current execution.
 
-![](./static/verification-event-classifications-00.png)If you decide that a Known Event should fail deployments, you can remove the **Known Event** from the baseline and assign it a priority.
+![](./static/verification-event-classifications-00.png)
+If you decide that a Known Event should fail deployments, you can remove the **Known Event** from the baseline and assign it a priority.
 
 ![](./static/verification-event-classifications-01.png)
+
 
 ## Not a Risk
 
 **Not a Risk** events are events from the current execution that are expected or that have been marked as **Not a Risk** so that they do not fail the deployment. 
 
-![](./static/verification-event-classifications-02.png)**Not a Risk** means the event is in the baseline moving forward. A **Not a Risk** event from the current execution becomes a **Known Event** in subsequent executions.
+![](./static/verification-event-classifications-02.png)
+**Not a Risk** means the event is in the baseline moving forward. A **Not a Risk** event from the current execution becomes a **Known Event** in subsequent executions.
 
 In many cases, an event is labeled **Not a Risk** because a Jira ticket for the event has been created and it is being resolved.
 
@@ -49,13 +52,16 @@ Anomalous Events fail a deployment. Anomalous Events are events Harness has neve
 
 ![](./static/verification-event-classifications-03.png)
 
+
 ## Priority Events
 
 Priority Events fail a deployment. They range in priority from P0 to P5. 
 
-![](./static/verification-event-classifications-04.png)Each priority number has a separate color associated with it:
+![](./static/verification-event-classifications-04.png)
+Each priority number has a separate color associated with it:
 
-![](./static/verification-event-classifications-05.png)You can change priority levels to specify the priority of the event. When you mark an even with a priority, Harness will identify the event with that priority in future analysis and fail the deployment if the event occurs.
+![](./static/verification-event-classifications-05.png)
+You can change priority levels to specify the priority of the event. When you mark an even with a priority, Harness will identify the event with that priority in future analysis and fail the deployment if the event occurs.
 
 You can assign a Jira issue for any event that has a priority assigned to it. For more information, see [File Jira Tickets on Verification Events](../../../continuous-delivery/continuous-verification/tuning-tracking-verification/jira-cv-ticket.md).If other matching events are discovered in future deployments, they will be assigned the same P#. The matching is performed by text matching with the event log data.
 

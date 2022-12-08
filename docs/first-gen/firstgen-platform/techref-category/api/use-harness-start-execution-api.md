@@ -34,13 +34,16 @@ For list APIs, the data is returned based on your permissions. You are only allo
 
 Add an API key scoped to two different permission groups:
 
-![](./static/use-harness-start-execution-api-00.png)Below, the user can see the key with the **Permissions Inherited from** field:
+![](./static/use-harness-start-execution-api-00.png)
+Below, the user can see the key with the **Permissions Inherited from** field:
 
-![](./static/use-harness-start-execution-api-01.png)The permissions for these groups are tied to the token. The user or system that uses the token will only be authorized to perform the specific actions.
+![](./static/use-harness-start-execution-api-01.png)
+The permissions for these groups are tied to the token. The user or system that uses the token will only be authorized to perform the specific actions.
 
 These user groups do not have permissions to execute a production Pipeline. When deploying the Pipeline with the key, the API throws an error stating that the user is not authorized to deploy.
 
 ![](./static/use-harness-start-execution-api-02.png)
+
 
 #### Note
 
@@ -256,6 +259,7 @@ You can also see your deployment in the Continuous Deployment page.
 
 ![](./static/use-harness-start-execution-api-03.png)
 
+
 ### Deploy a Pipeline with Variables
 
 The below sample shows how to deploy a Pipeline with variables.
@@ -312,15 +316,19 @@ Proof that the Workflow variables are passed:
 
 **Branch**
 
-![](./static/use-harness-start-execution-api-04.png)**H****ot fix**
+![](./static/use-harness-start-execution-api-04.png)
+**H****ot fix**
 
 Since it was set to false all the stages are deployed.
 
-![](./static/use-harness-start-execution-api-05.png)**skipCV**
+![](./static/use-harness-start-execution-api-05.png)
+**skipCV**
 
-![](./static/use-harness-start-execution-api-06.png)The end result:
+![](./static/use-harness-start-execution-api-06.png)
+The end result:
 
 ![](./static/use-harness-start-execution-api-07.png)
+
 
 ### Deploy a Workflow with Variables
 
@@ -413,9 +421,11 @@ mutation ($startExecution: StartExecutionInput!) {
 
 The value was **master** for **branch**. The **branch** is successfully passed:
 
-![](./static/use-harness-start-execution-api-08.png)The Prometheus step is skipped due to the set condition. **skipCV** was set to **true**.
+![](./static/use-harness-start-execution-api-08.png)
+The Prometheus step is skipped due to the set condition. **skipCV** was set to **true**.
 
 ![](./static/use-harness-start-execution-api-09.png)
+
 
 ### Check the Status of Deployments Via API
 
@@ -498,7 +508,9 @@ curl --request POST \
 You can use tools like [Insomnia](https://insomnia.rest/download/#mac) or [Postman](https://www.postman.com/downloads/) to generate these CURL commands. Here, Insomnia is used.
 
 1. Click on the **Arrow** key next to your command and select from the drop-down list.![](./static/use-harness-start-execution-api-10.png)
+
 2. Click **Copy as Curl** and it's copied to your clipboard.![](./static/use-harness-start-execution-api-11.png)
+
 3. Paste the command.  
   
 

@@ -35,19 +35,24 @@ For more information about Delegate Profiles, see [Run Scripts on Delegates usin
 The **Secrets Management** page appears.
 2. Under **Execution Credentials**, click **Encrypted Text**. The **Encrypted Text** page appears.
 3. Click **Add Encrypted Text**. The **Add Encrypted Text** dialog appears.![](./static/use-a-secret-in-a-delegate-profile-24.png)
+
 4. In **Name**, enter **repoUsername**. This name will be used later in the **Delegate Profile** script to reference this secret.
 5. In **Value**, enter any **username**. The dialog will look like this:
 
-![](./static/use-a-secret-in-a-delegate-profile-25.png)1. In **Usage Scope**, click **Scope to Account**. This will scope the secret to the Account-level. It can then be used in a Delegate Profile.You must set **Usage Scope** to **Scope to Account** to use the secret in a Delegate Profile. Once it is set to **Scope to Account**, the secret can used in a Delegate Profile only.![](./static/use-a-secret-in-a-delegate-profile-26.png)
+![](./static/use-a-secret-in-a-delegate-profile-25.png)
+1. In **Usage Scope**, click **Scope to Account**. This will scope the secret to the Account-level. It can then be used in a Delegate Profile.You must set **Usage Scope** to **Scope to Account** to use the secret in a Delegate Profile. Once it is set to **Scope to Account**, the secret can used in a Delegate Profile only.![](./static/use-a-secret-in-a-delegate-profile-26.png)
+
 2. Click **Submit**.
 3. Add a second encrypted text with the name **repoPassword**, using any password. Be sure to set **Usage Scope** to **Scope to Account**, also. The dialog will look like this:![](./static/use-a-secret-in-a-delegate-profile-27.png)
+
 4. Click **Submit**. Now you can create a Delegate Profile and use these secrets.
 
 ### Step 2: Manage Delegate Profiles
 
 1. Click **Setup**.
 2. Click **Harness Delegates**.
-3. Click **Manage Delegate Profiles**, and then **Add Delegate Profile**.![](./static/use-a-secret-in-a-delegate-profile-28.png)The **Manage Delegate Profile** dialog appears.
+3. Click **Manage Delegate Profiles**, and then **Add Delegate Profile**.![](./static/use-a-secret-in-a-delegate-profile-28.png)
+The **Manage Delegate Profile** dialog appears.
 4. In **Name**, enter **Helm Repo**.
 
 ### Step 3: Use Secret in Profile Script
@@ -66,6 +71,7 @@ The secrets are referenced as variables using `${secrets.getValue()}` and the na
 `${secrets.getValue(“repoPassword”)}`  
   
 The **Manage Delegate Profile** dialog will look like this:![](./static/use-a-secret-in-a-delegate-profile-29.png)
+
 2. Click **Submit**.
 
 Now when you add this profile to a Kubernetes Delegate, it will add the Helm repo using the credentials you added as **Encrypted Text** in Harness **Secrets Management**.
@@ -73,6 +79,7 @@ Now when you add this profile to a Kubernetes Delegate, it will add the Helm rep
 A quick way to get the name of a secret is to hover over the secrets in **Secrets Management** and click the Copy icon:
 
 ![](./static/use-a-secret-in-a-delegate-profile-30.png)
+
 
 ### Review: Use Config Files in Delegate Profiles
 

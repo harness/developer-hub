@@ -198,7 +198,8 @@ Assume STS Role is supported for EC2 and ECS. It is supported for EKS if you use
 
 In this scenario, the AWS account used for AWS access in **Credentials** will assume the IAM role you specify in **Role ARN** setting.
 
-![](./static/add-amazon-web-services-cloud-provider-23.png)The Harness Delegate(s) always runs in the account you specify in **Credentials** via **Access/Secret Key** or **Assume IAM Role on Delegate**.To assume the role in **Role ARN**, the AWS account in **Credentials** must be trusted by the role. The trust relationship is defined in the **Role ARN** role's trust policy when the role is created. That trust policy states which accounts are allowed to give that access to users in the account.
+![](./static/add-amazon-web-services-cloud-provider-23.png)
+The Harness Delegate(s) always runs in the account you specify in **Credentials** via **Access/Secret Key** or **Assume IAM Role on Delegate**.To assume the role in **Role ARN**, the AWS account in **Credentials** must be trusted by the role. The trust relationship is defined in the **Role ARN** role's trust policy when the role is created. That trust policy states which accounts are allowed to give that access to users in the account.
 
 You can use **Assume STS Role** to establish trust between roles in the same account, but cross-account trust is more common.The assumed role in **Role ARN** must have all the IAM policies required to perform your Harness deployment, such as [Amazon S3](cloud-providers.md#amazon-s3), [ECS (Existing Cluster)](cloud-providers.md#ecs-existing-cluster), and [AWS EC2](cloud-providers.md#aws-ec2) policies. For more information, see [Assuming an IAM Role in the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-role.html) from AWS.
 

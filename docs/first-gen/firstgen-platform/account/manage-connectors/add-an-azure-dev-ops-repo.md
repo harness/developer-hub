@@ -58,7 +58,8 @@ Select **HTTPS** or **SSH** for the connection. You will need to provide the
 
 For SSH, ensure that the key is not OpenSSH, but rather PEM format. To generate an SSHv2 key, use: `ssh-keygen -t rsa -m PEM` The `rsa` and `-m PEM` ensure the algorithm and that the key is PEM.Next, follow the prompts to create the PEM key. For more information, see the  [ssh-keygen man page](https://linux.die.net/man/1/ssh-keygen) and [Connecting to GitHub with SSH](https://help.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh).In your DevOps repo, click **Clone**, and then copy the URL.
 
-![](./static/add-an-azure-dev-ops-repo-12.png)Make sure you copy the URL from Azure and not form it yourself. Azure replaces spaces and other formatting with the correct values and ensures the link will work.
+![](./static/add-an-azure-dev-ops-repo-12.png)
+Make sure you copy the URL from Azure and not form it yourself. Azure replaces spaces and other formatting with the correct values and ensures the link will work.
 
 ### Step: Credentials
 
@@ -70,7 +71,8 @@ For token, in Azure, create a Personal Access Token (PAT).
 
 Next, add the token to Harness as a Harness Secret.
 
-![](./static/add-an-azure-dev-ops-repo-13.png)Enter the PAT in the secret and select the secret in **Select Encrypted Password/Token**.
+![](./static/add-an-azure-dev-ops-repo-13.png)
+Enter the PAT in the secret and select the secret in **Select Encrypted Password/Token**.
 
 If you enable `OPTIMIZED_GIT_FETCH_FILES`, you must use a **token** for authentication. Passwords are not supported.
 
@@ -114,9 +116,11 @@ If you selected the **Generate Webhook URL** option when adding your **Source
 
 For steps on setting this up in your repo, see [Webhooks](https://docs.microsoft.com/en-us/azure/devops/service-hooks/services/webhooks?view=azure-devops) from Azure. The Webhook is added in **Project Settings** > **Service hooks**.
 
-![](./static/add-an-azure-dev-ops-repo-14.png)The Azure Service Hook must use **Code pushed** as its **Trigger on this type of event**.
+![](./static/add-an-azure-dev-ops-repo-14.png)
+The Azure Service Hook must use **Code pushed** as its **Trigger on this type of event**.
 
 ![](./static/add-an-azure-dev-ops-repo-15.png)
+
 
 ### Step: Test and Save
 
@@ -124,6 +128,7 @@ To finish configuring this Source Repo Provider:
 
 1. In the **Git Connector** settings, click **Test**.  
 Harness verifies the settings you entered.![](./static/add-an-azure-dev-ops-repo-16.png)
+
 2. When testing is successful, click **Submit**. This Source Repo Provider is now added to Harness.
 
 ### Next Steps

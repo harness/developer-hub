@@ -20,6 +20,7 @@ Here's an example configuration of the Nexus Artifaction Source addition.
 
 ![](./static/add-nexus-artifact-servers-49.png)
 
+
 ### Review: Nexus Permissions
 
 Make sure the connected user account has the following permissions in the Nexus Server.
@@ -27,7 +28,8 @@ Make sure the connected user account has the following permissions in the Nexus 
 * Repo: All repositories (Read)
 * Nexus UI: Repository Browser
 
-![](./static/add-nexus-artifact-servers-50.png)If used as a Docker Repo, the user needs:
+![](./static/add-nexus-artifact-servers-50.png)
+If used as a Docker Repo, the user needs:
 
 * List images and tags
 * Pull images

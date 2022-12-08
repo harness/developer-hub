@@ -29,7 +29,8 @@ Ensure that you provide the minimum memory for the Delegate and enough memory fo
 * [Shell Script Delegate](install-shellscript-delegate.md) requires cURL 7.64.1 or later.
 * Access to artifact servers, deployment environments, and cloud providers. As shown in the following illustration:
 
-![](./static/delegate-requirements-and-limitations-34.png)Multiple Delegates can be used and their scope can be managed.
+![](./static/delegate-requirements-and-limitations-34.png)
+Multiple Delegates can be used and their scope can be managed.
 
 ### Whitelist Harness Domains and IPs
 

@@ -69,15 +69,18 @@ mv linux-amd64/helm $path
 ```
 It will look something like this:
 
-![](./static/use-custom-helm-binaries-on-harness-delegates-31.png)Next, you can add a Delegate Profile to a new or existing Delegate.
+![](./static/use-custom-helm-binaries-on-harness-delegates-31.png)
+Next, you can add a Delegate Profile to a new or existing Delegate.
 
 ### Step 2: Apply the Profile to a New or Existing Delegate
 
 If you are adding a new Delegate, you select the profile when you download the Delegate.
 
-![](./static/use-custom-helm-binaries-on-harness-delegates-32.png)If you apply the profile to an existing Delegate, you simply select the it in the Delegate's **Profile** setting:
+![](./static/use-custom-helm-binaries-on-harness-delegates-32.png)
+If you apply the profile to an existing Delegate, you simply select the it in the Delegate's **Profile** setting:
 
 ![](./static/use-custom-helm-binaries-on-harness-delegates-33.png)
+
 
 ### Step 3: Update the Delegate Config File and Start the Delegate
 

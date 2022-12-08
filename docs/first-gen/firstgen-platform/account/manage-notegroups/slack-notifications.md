@@ -36,6 +36,7 @@ When you are done, you'll have a webhook that looks something like this:
 
 ![](./static/slack-notifications-23.png)
 
+
 ### Step 2: Add a Shell Script Step using your Webhook
 
 At any place in your Harness Workflow, add a [Shell Script step](../../../continuous-delivery/model-cd-pipeline/workflows/capture-shell-script-step-output.md).
@@ -50,7 +51,8 @@ curl -X POST -H 'Content-type: application/json' --data '{"text":"simple cURL co
 ```
 When you deploy the Workflow, the message will look something like this:
 
-![](./static/slack-notifications-24.png)Here is a more advanced example using bash and Harness [built-in variable expressions](../../techref-category/variables/variables.md):
+![](./static/slack-notifications-24.png)
+Here is a more advanced example using bash and Harness [built-in variable expressions](../../techref-category/variables/variables.md):
 
 
 ```
@@ -72,7 +74,8 @@ curl -s -X POST -H "Content-type: application/json" --data "$payload" $url
 ```
 When you deploy the Workflow, the message will look something like this:
 
-![](./static/slack-notifications-25.png)You can use different variable expressions in your messages. See the following:
+![](./static/slack-notifications-25.png)
+You can use different variable expressions in your messages. See the following:
 
 * [Passing Variables into Workflows and Pipelines from Triggers](../../../continuous-delivery/model-cd-pipeline/expressions/passing-variable-into-workflows.md)
 * [Set Workflow Variables](../../../continuous-delivery/model-cd-pipeline/workflows/add-workflow-variables-new-template.md)

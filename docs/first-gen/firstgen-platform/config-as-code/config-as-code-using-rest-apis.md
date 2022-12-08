@@ -36,6 +36,7 @@ The Harness User account that executes the API must belong to a User Group with 
 
 * **Account Permission:** `Administer Other Account Functions`.![](./static/config-as-code-using-rest-apis-20.png)
 
+
 ### Granular Permissions for CRUD
 
 Currently, this feature is behind the feature flag `YAML_APIS_GRANULAR_PERMISSION`. Contact Harness Support to enable the feature.To perform CRUD operations on a specific Harness entity, your account must have **Create/update** permissions for that entity.
@@ -227,7 +228,8 @@ At this time, this API supports bearer token authentication only. It will be upd
 
 For example, here’s the response from a `/api/setup-as-code/yaml/directory` API call:
 
-![](./static/config-as-code-using-rest-apis-21.png)For all Application-level entities like Service, Workflow, Pipeline etc., you can use the API to fetch YAML content.
+![](./static/config-as-code-using-rest-apis-21.png)
+For all Application-level entities like Service, Workflow, Pipeline etc., you can use the API to fetch YAML content.
 
 **URL:** `/api/setup-as-code/yaml/{node.restName}/{node.uuid}?accountId={accountId}&appId={appId}`
 

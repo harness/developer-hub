@@ -48,6 +48,7 @@ Add the application stack when you create your Harness Service.
 
 ![](./static/catalog-00.png)
 
+
 You can choose to include your application stack as part of the artifact you attach to your Harness Service. In this case, when you create a Service, leave the **Application Stack** field empty (do not choose any of the options in that list).
 
 
@@ -88,6 +89,7 @@ The **Application Stack** dialog appears.
 
 
 
+png)
 
 ![](./static/catalog-01.png)
 

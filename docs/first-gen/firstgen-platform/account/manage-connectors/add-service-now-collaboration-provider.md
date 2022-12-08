@@ -32,7 +32,9 @@ Start adding a Collaboration Provider to Harness as follows:
 1. Click **Setup**.
 2. Click **Connectors**.
 3. Click **Collaboration Providers**.![](./static/add-service-now-collaboration-provider-25.png)
+
 4. Click **Add Collaboration Provider**. This opens the default Collaboration Provider settings, which you will configure in the following steps.![](./static/add-service-now-collaboration-provider-26.png)
+
 
 
 ### Step 2: Type
@@ -40,6 +42,7 @@ Start adding a Collaboration Provider to Harness as follows:
 Set the **Type** drop-down to **ServiceNow**. The settings now display ServiceNow-specific fields.
 
 ![](./static/add-service-now-collaboration-provider-27.png)
+
 ### Step 3: Display Name
 
 In **Display Name**, enter a unique name to identify this ServiceNow account connection. When you add ServiceNow steps to Workflows or Pipelines, you will select the appropriate ServiceNow account using this name.

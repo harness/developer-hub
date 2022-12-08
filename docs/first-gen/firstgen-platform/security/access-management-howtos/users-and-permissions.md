@@ -16,7 +16,8 @@ Users' login access is managed at the user level, and users' account and applica
 
 Here is an overview of Harness RBAC. It shows how a user is authenticated via its User settings and authorized via its User Group Account and Application Permissions.
 
-![](./static/users-and-permissions-233.png)### Default User Groups
+![](./static/users-and-permissions-233.png)
+### Default User Groups
 
 Each Harness account includes default User Groups to help you organize your users. The following table describes the default Harness User Groups.
 
@@ -57,9 +58,11 @@ There is no limit to the number of users you may add. Harness Community Edition 
 1. Click **Security**, and click **Access Management**.
 2. Click **Users**. The **Users** page appears.
 3. Click **Add User**. The **Add User** dialog appears.![](./static/users-and-permissions-234.png)
+
 4. Enter the email address(es) that user will use to log into the Harness platform.
 5. If you have User Groups defined, select the User Groups for this user. You can add a user before they are verified. You can also add this user to a group from the group's **Add Members** dialog when you manage the group.
-6. Click **SUBMIT**. The user is added. The name provided for the user says **user not registered**.![](./static/users-and-permissions-235.png)The user will receive a verification email at the address(es) you provided. When the user logs into Harness, the user creates a password, the email address is verified, and the user name is updated.  
+6. Click **SUBMIT**. The user is added. The name provided for the user says **user not registered**.![](./static/users-and-permissions-235.png)
+The user will receive a verification email at the address(es) you provided. When the user logs into Harness, the user creates a password, the email address is verified, and the user name is updated.  
 You can reset the password in the user's information in **Users**.
 
 #### Invite and User TTL
@@ -76,13 +79,17 @@ The following procedure creates a new User Group and defines permissions for its
 2. Click **User Groups**. The **User Groups** page appears.
 3. Create the User Group.
 	1. Click **Add User Group**. The **Add User Group** dialog appears.![](./static/users-and-permissions-236.png)
+
 	2. Enter a name and description for the new User Group, and click **SUBMIT**. The management page for the new group appears.
 4. Add users to the group.
 	1. Click **Member Users**. The **Add Members** dialog appears.![](./static/users-and-permissions-237.png)
+
 	2. Click in the text area and select the members for the group, and then click **SUBMIT**. The **Member Users** section of the group page is updated with the new members.
 5. Set **Account** Permissions.
 	1. In **Account Permissions**, enable one or more of the account permissions for this group. For most users, you will enable only the **Create/Delete** Application permissions. For more information, see [Permissions](#permissions).![](./static/users-and-permissions-238.png)
+
 6. Add **Application** Permissions.![](./static/users-and-permissions-239.png)
+
 	1. Click **Add Permissions**. The **Add Application Permission** dialog appears.
 	2. In **Permission Type**, select the permissions to apply to the group. These are the Harness components you want the group's members to use. For example, if you click **Services**, you can then use the **Filter** field to select the services on which the permission will apply. (For details, see [Permissions](#permissions) below.)
 	3. In **Application**, select the applications where the permission will apply.
@@ -107,7 +114,8 @@ When a Harness User is a member of two or more User Groups, that user's permissi
 
 A user group might have the **Account permission** to add an application, but only the **Application permission** to add services:
 
-![](./static/users-and-permissions-240.png)Users in this group will be able to create applications and add Services to them, but not will not be able to add Environments, Workflows, or other Application components.
+![](./static/users-and-permissions-240.png)
+Users in this group will be able to create applications and add Services to them, but not will not be able to add Environments, Workflows, or other Application components.
 
 ### Account Permissions
 
@@ -195,6 +203,7 @@ In **Action**, select the Create, Read, Update, and Delete permissions as requir
 
 ![](./static/users-and-permissions-241.png)
 
+
 #### Exclude Applications
 
 Currently, this feature is in Beta and behind a Feature Flag. Contact [Harness Support](https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=support@harness.io) to enable the feature. Feature Flags can only be removed for Harness Professional and Essentials editions. Once the feature is released to a general audience, it is available for Trial and Community Editions.You can exclude applications when assigning permissions to User Groups in Harness.
@@ -204,8 +213,10 @@ Exclusion is only applicable to Applications and not to Filters or Actions.For s
 * **All Applications** - This assigns permissions for all of your existing applications as well as any new ones you add later.
 * **Include Selected** - This assigns permissions for the applications you select. Any new application that you add afterward must be selected separately for permission assignment.  
 Let's look at an example. If you click **Include Selected** and select App 1, App 2, and App 3, permissions are assigned to these 3 applications only. For an application App 7 that you add later, you must select it separately to assign permissions to it.![](./static/users-and-permissions-242.png)
+
 * **Exclude Selected** - This assigns permissions to all your applications except the selected ones. This applies to all of your existing applications as well as any new ones you add later.  
 Let's look at an example. If you click **Exclude Selected** and select App 1, App 2 and App 3, permissions are assigned to all the applications except these 3 applications.![](./static/users-and-permissions-243.png)
+
 
 If you choose **Exclude Selected**, you can no longer pick **All Applications.**
 
@@ -215,13 +226,17 @@ Currently, this feature is in Beta and behind a Feature Flag. Contact [Harness 
 
 * **By Environments/By Workflows** — This will give access to all the workflows that use the environment you select, or as per the entities. Other workflows using the same environment won't be accessible.![](./static/users-and-permissions-244.png)
 
+
 You must have Create Workflow permission to create a new workflow in a particular Environment. To create a workflow that uses an Environment, you must have workflow permission with **Create** action type for that Environment.* **By** **Environments/By** **Pipelines** — This will give access to all the workflows that use the environment you select, or as per the pipeline you select.![](./static/users-and-permissions-245.png)
+
 
 You must have Create Pipeline permission to create a new pipeline in a particular Environment. To create a pipeline that uses an Environment, you must have pipeline permission with **Create** action type for that Environment.Select **All Workflows** or **All Pipelines** to assign permissions for all Workflows or Pipelines.
 
-![](./static/users-and-permissions-246.png)To provide access to Workflows/Pipelines for a specific application, select the application in **Application** and then select the workflows/pipelines.
+![](./static/users-and-permissions-246.png)
+To provide access to Workflows/Pipelines for a specific application, select the application in **Application** and then select the workflows/pipelines.
 
 ![](./static/users-and-permissions-247.png)
+
 
 #### Deploying, Aborting, and Rolling Back Workflows and Pipelines
 
@@ -231,7 +246,8 @@ The following permission types and actions are needed for deploying, aborting, a
 
 To enable a User Group to deploy Workflows and Pipelines, you must use the **Deployments** Permission Type.
 
-![](./static/users-and-permissions-248.png)The **Workflows** and **Pipelines** Permission Types are used for Create, Read, Update, and Delete permissions.
+![](./static/users-and-permissions-248.png)
+The **Workflows** and **Pipelines** Permission Types are used for Create, Read, Update, and Delete permissions.
 
 #### Production and Non-Production Pipelines and Permissions
 
@@ -251,7 +267,8 @@ If you have Execute Permissions on Pipelines from included Applications, you can
 
 Currently, this feature is behind the Feature Flag `PIPELINE_PER_ENV_DEPLOYMENT_PERMISSION`. Contact [Harness Support](https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=support@harness.io) to enable the feature.To select Pipelines to deploy to specific Environments, select the Environment in **Filter** and **Execute Pipeline** in **Action**.
 
-![](./static/users-and-permissions-249.png)Only those Environments for which you have Deployment permissions can be used to deploy templated Pipelines using Environment templates.
+![](./static/users-and-permissions-249.png)
+Only those Environments for which you have Deployment permissions can be used to deploy templated Pipelines using Environment templates.
 
 ##### Abort and Rollback
 
@@ -261,7 +278,8 @@ To enable a User Group to abort or rollback Workflows and Pipelines, the **Execu
 
 You can restrict who can apply settings—such as **Secrets Management** and some **Account** settings—to specific Application entities. These are set up in the **Usage Scope** section of the corresponding setting's dialog. For example, here is the **Usage Scope** section of an **Artifact Server** dialog:
 
-![](./static/users-and-permissions-250.png)In this case, the Artifact Server may be used by the **ExampleApp** Application in both **K8s-GCP** and **dev** Environments.
+![](./static/users-and-permissions-250.png)
+In this case, the Artifact Server may be used by the **ExampleApp** Application in both **K8s-GCP** and **dev** Environments.
 
 For a User to modify **Usage Scope**, the User must belong to a Group that has **read** and **update** **Application** permissions for the Application and components on which the restrictions are placed.
 

@@ -34,6 +34,7 @@ Custom Dashboards expand on Harness Manager's default [Main and Services Dashboa
 
 ![](./static/custom-dashboards-97.png)
 
+
 ### RBAC and Dashboards
 
 [Harness RBAC](../security/access-management-howtos/users-and-permissions.md) is not applied to:
@@ -68,7 +69,8 @@ For more information, see [Manage Groups and Permissions](custom-dashboards.md#
 
 Once you have one or more Custom Dashboards available to you, the **Custom Dashboards** page lists them as the following:
 
-![](./static/custom-dashboards-98.png)If you are not an Account Administrator, you will see only Custom Dashboards that have been shared with your User Groups.
+![](./static/custom-dashboards-98.png)
+If you are not an Account Administrator, you will see only Custom Dashboards that have been shared with your User Groups.
 
 #### List View
 
@@ -76,11 +78,13 @@ This list view provides the following controls:
 
 ![](./static/custom-dashboards-99.png)
 
+
 #### Detailed View
 
 To view a Custom Dashboard, click its name in the list view's **Name** column.
 
-![](./static/custom-dashboards-100.png)### Next Steps
+![](./static/custom-dashboards-100.png)
+### Next Steps
 
 * [Primary Widgets](primary-widgets.md)
 * [Custom Widgets](custom-widgets.md)

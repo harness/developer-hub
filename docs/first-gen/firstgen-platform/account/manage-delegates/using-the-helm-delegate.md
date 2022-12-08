@@ -41,6 +41,7 @@ The following diagram shows how the Delegate enables Harness to integrate with a
 
 ![](./static/using-the-helm-delegate-44.png)
 
+
 ### Review: Helm Version Support
 
 The Harness Helm Delegate uses Helm 3.
@@ -73,9 +74,11 @@ Add user to the file, save, and re-run the installation:
 ```
 Different Kubernetes platforms might require different roles for Helm to deploy to the cluster. For example, the Kubernetes Engine Cluster Admin role is required for the service account on Google Kubernetes Engine that will run the commands to install the Helm Delegate.
 
-![](./static/using-the-helm-delegate-45.png)GKE clusters also have security settings that might need to be applied. For example, the [Access Scope](https://cloud.google.com/compute/docs/access/service-accounts#accesscopesiam) might need to be set to **Allow full access to all Cloud APIs** for some clusters.
+![](./static/using-the-helm-delegate-45.png)
+GKE clusters also have security settings that might need to be applied. For example, the [Access Scope](https://cloud.google.com/compute/docs/access/service-accounts#accesscopesiam) might need to be set to **Allow full access to all Cloud APIs** for some clusters.
 
 ![](./static/using-the-helm-delegate-46.png)
+
 
 ### Option 1: Install using Helm
 
@@ -85,7 +88,8 @@ To install the Helm Delegate using Helm commands, do the following:
 2. Click **Harness Delegates**.
 3. In the **Harness Delegates** page, click **Download Delegate**, and then click **Helm Values YAML**. The Delegate Setup dialog appears.
 
-![](./static/using-the-helm-delegate-47.png)1. In **Name**, enter a name for the Delegate. You will use this name later when you install the Delegate in Kubernetes using the command `helm install --name <delegate_name> harness-helm-repo/harness-delegate -f harness-delegate-values.yaml`.
+![](./static/using-the-helm-delegate-47.png)
+1. In **Name**, enter a name for the Delegate. You will use this name later when you install the Delegate in Kubernetes using the command `helm install --name <delegate_name> harness-helm-repo/harness-delegate -f harness-delegate-values.yaml`.
 2. In **Profile**, select a [Delegate Profile](https://harness.helpdocs.io/article/h9tkwmkrm7-delegate-installation#delegate_profiles) to apply to the Delegate. The default is named **Primary**.
 3. Click **Download**. The Helm Values YAML is downloaded.
 4. Open a Terminal and navigate to where the Helm Values YAML file is downloaded.
@@ -149,6 +153,7 @@ Wait a few minutes and the Helm Delegate will appear in the **Harness Delegates*
 
 ![](./static/using-the-helm-delegate-48.png)
 
+
 ### Option 2: Install Using Rancher
 
 The Harness Helm Delegate integrates with [Rancher](https://rancher.com/docs/rancher/v2.x/en/) as many users now use Rancher to deploy and manage multiple Kubernetes clusters running anywhere, on any provider.
@@ -160,16 +165,19 @@ To install the Helm Delegate using Rancher, do the following:
 1. In Harness, click **Setup**.
 2. Click **Harness Delegates**.
 3. In the **Harness Delegates** page, click **Download Delegate**, and then click **Helm Values YAML**. The **Delegate Setup** dialog appears.![](./static/using-the-helm-delegate-49.png)
+
 4. In **Name**, enter a name for the Delegate.
 5. In **Profile**, select a [Delegate Profile](https://harness.helpdocs.io/article/h9tkwmkrm7-delegate-installation#delegate_profiles) to apply to the Delegate. The default is named **Primary**.
 6. Click **SUBMIT**. The Helm Values YAML is downloaded.
 7. Log into your Rancher account.
 8. Click **Apps**.
 
-![](./static/using-the-helm-delegate-50.png)1. Click Launch.
+![](./static/using-the-helm-delegate-50.png)
+1. Click Launch.
 2. In **Search**, enter **Harness**. The **Harness Delegate** app appears.
 
-![](./static/using-the-helm-delegate-51.png)1. Click **View Details**. Next, you will use the Helm Values YAML file you downloaded to fill out the fields in the Harness Delegate app in Rancher.
+![](./static/using-the-helm-delegate-51.png)
+1. Click **View Details**. Next, you will use the Helm Values YAML file you downloaded to fill out the fields in the Harness Delegate app in Rancher.
 2. Open the Helm Values YAML you downloaded in a text editor. It will look something like this:
 
 
@@ -200,7 +208,8 @@ In **Rancher**, use the Helm Values YAML file to enter the following:
 1. in **Name**, enter a name for the Delegate App.
 2. In **Namespace**, enter the Kubernetes namespace in the target cluster where you want the Delegate installed. To see the **Namespace** field, you might need to change to the Project in Rancher:
 
-![](./static/using-the-helm-delegate-52.png)1. In **Account ID**, enter the value used for `accountId`.
+![](./static/using-the-helm-delegate-52.png)
+1. In **Account ID**, enter the value used for `accountId`.
 2. In **Account Secret**, enter the value used for `delegateToken`.
 3. In **Short Account ID**, enter the value used for `accountIdShort`.
 4. In **Delegate Name**, enter the name used for the `delegateName`.
@@ -213,6 +222,7 @@ When you are finished setting up the Delegate, click **Launch**. Rancher will la
 In a few minutes, the Helm Delegate appears in Harness in the **Harness Delegates** page. Here is the Helm Delegate and its corresponding Rancher status page:
 
 ![](./static/using-the-helm-delegate-53.png)
+
 
 ### Troubleshooting
 

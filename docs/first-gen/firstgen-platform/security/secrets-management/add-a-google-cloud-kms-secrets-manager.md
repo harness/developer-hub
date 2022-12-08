@@ -44,8 +44,10 @@ To fill in the **Configure Secrets Manager** dialog's remaining fields, log into
 2. Select **Security** > **Cryptographic****Keys**.
 3. Select a key ring. (If no key ring is present, create one.)To create resources in this or the next step, see Google Cloud's [Creating Symmetric Keys](https://cloud.google.com/kms/docs/creating-keys) topic.
 4. Select a key within the ring. (If no key ring is present, create one.)
-5. To the right of your key's **Enabled & Primary** Version, open the Actions ⋮ menu, then select **Copy Resource ID**.![](./static/add-a-google-cloud-kms-secrets-manager-70.png)A reference to the key is now on your clipboard.
+5. To the right of your key's **Enabled & Primary** Version, open the Actions ⋮ menu, then select **Copy Resource ID**.![](./static/add-a-google-cloud-kms-secrets-manager-70.png)
+A reference to the key is now on your clipboard.
 6. Paste the reference into an editor. You can now copy and paste its substrings into each of the Harness **Configure Secrets Manager** dialog's remaining fields—**Project ID**, **Region**, **Key Ring**, **Key Name**—as shown below.![](./static/add-a-google-cloud-kms-secrets-manager-71.png)
+
 
 ### Step 4: Attach Service Account Key (Credentials) File
 
@@ -55,8 +57,10 @@ Export your Google Cloud service account key, and attach it to the Harness **Con
 2. Scroll to the service account you want to use. (If no service account is present, create one.)
 3. Grant this service account the `cloudkms.cryptoKeyEncrypterDecrypter` permission. (See Google Cloud's [Using Cloud IAM with KMS](https://cloud.google.com/kms/docs/iam#granting_permissions_to_use_keys) topic.)
 4. Open your service account's Actions ⋮ menu, then select **Create key.**![](./static/add-a-google-cloud-kms-secrets-manager-72.png)
+
 5. In the resulting **Create private key** dialog, select the **JSON** option, create the key, and download it to your computer.
 6. Return to Harness Manager's **Configure Secrets Manager** dialog. Under **GCP KMS Credentials File**, click the **Choose File** button, and upload the key file you just exported from Google Cloud.![](./static/add-a-google-cloud-kms-secrets-manager-73.png)
+
 7. Click **Submit**. Your Google Cloud KMS will now appear in Harness Manager's **Secrets Managers** list, labeled with the **Display Name** you assigned.
 
 ### Step 5: Usage Scope

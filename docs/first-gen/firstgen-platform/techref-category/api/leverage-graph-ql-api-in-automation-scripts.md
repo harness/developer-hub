@@ -288,6 +288,7 @@ curl 'https://app.harness.io/gateway/api/graphql?accountId=<YOUR_ACCOUNT_ID>' \
 You can use the automation script in your CI Tool.
 
 1. Click **Manual Trigger** to get the curl details. For more information, see [Manual Triggers and Git Webhooks](../../../continuous-delivery/model-cd-pipeline/triggers/add-a-trigger-2.md#manual-triggers-and-git-webhooks).![](./static/leverage-graph-ql-api-in-automation-scripts-20.png)
+
 2. Enter the curl Webhook payload from your Pipeline Trigger in Harness.
 3. Place that Trigger into the desired step in your CI Pipeline.
 4. Let your Pipeline trigger the Query Script.  
@@ -303,6 +304,7 @@ A result like this is displayed in your `output.json`.
 Here is a sample CI flow:
 
 ![](./static/leverage-graph-ql-api-in-automation-scripts-21.png)
+
 
 ### Gather Deployment Execution Details
 

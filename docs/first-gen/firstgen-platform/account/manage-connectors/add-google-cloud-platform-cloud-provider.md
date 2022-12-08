@@ -61,6 +61,7 @@ You can even add a Selector to the Profile, and then use that Selector in the Go
 
 1. In **Select Encrypted Key**, select or create a new [Harness Encrypted Text secret](../../security/secrets-management/use-encrypted-text-secrets.md) that contains the Google Cloud's Account Service Key File.
 	1. To obtain the Google Cloud's Account Service Key File, see [Creating and managing service account keys](https://cloud.google.com/iam/docs/creating-managing-service-account-keys) from Google (JSON is recommended).![](./static/add-google-cloud-platform-cloud-provider-34.png)
+
 	2. Once you have the key file from Google, open it, copy it, and paste it into the Harness Encrypted Text secret.
 	3. Next, use that Harness Encrypted Text secret in **Select Encrypted Key**.
 2. Click **Submit**. The GCP cloud provider is added.

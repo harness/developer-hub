@@ -52,6 +52,7 @@ Start adding a Collaboration Provider to Harness as follows:
 In **Type** select **SMTP**. The SMTP settings appear.
 
 ![](./static/add-smtp-collaboration-provider-29.png)
+
 ### Step 3: Display Name
 
 In **Display Name**, enter a unique name for this Collaboration Provider.

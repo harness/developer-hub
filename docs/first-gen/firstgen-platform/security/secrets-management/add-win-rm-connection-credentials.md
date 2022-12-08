@@ -97,6 +97,7 @@ In **Infrastructure Definition**, the Infrastructure Definition dialog will look
 
 ![](./static/add-win-rm-connection-credentials-54.png)
 
+
 ### Troubleshooting
 
 The WinRM Connection simply checks a log in. When you use the WinRM Connection to perform deployment operations other errors might occur.

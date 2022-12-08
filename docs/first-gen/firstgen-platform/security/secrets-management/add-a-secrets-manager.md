@@ -35,7 +35,9 @@ Looking for specific secrets managers? See:
 
 1. Select **Security** > **Secrets Management**. The **Secrets Management** page appears.
 2. Click **Configure Secrets Managers**. In the resulting **Secrets Managers** page, the **Status** column indicates the **Default** provider.![](./static/add-a-secrets-manager-23.png)
+
 3. Click **Add Secrets Manager**. The **Configure Secrets Manager** dialog appears.![](./static/add-a-secrets-manager-24.png)
+
 4. Provide the account access information for the new secrets manager.
 5. If you choose to set this secrets manager as the default, select **Use as Default Secrets Manager**.
 6. For **Usage Scope**, see [Scope Secret Managers to Applications and Environments](scope-secret-managers-to-applications-and-environments.md).

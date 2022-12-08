@@ -28,14 +28,17 @@ The first step is adding the Harness app to your OneLogin **Applications**.
 
 To add the app, you must be in OneLogin Administration:
 
-![](./static/provision-users-with-one-login-130.png)1. In **Applications**, click **Add App**.
+![](./static/provision-users-with-one-login-130.png)
+1. In **Applications**, click **Add App**.
 2. Search for **Harness**. The Harness Application appears.
 
-![](./static/provision-users-with-one-login-131.png)1. Click the Harness app to open its Configuration page and click **Save**.
+![](./static/provision-users-with-one-login-131.png)
+1. Click the Harness app to open its Configuration page and click **Save**.
 
 When you are done, the Harness OneLogin app appears:
 
-![](./static/provision-users-with-one-login-132.png)For more information on adding apps, see OneLogin's documentation: [Introduction to App Management](https://onelogin.service-now.com/support/?id=kb_article&sys_id=6ac91143db109700d5505eea4b9619a2#add).
+![](./static/provision-users-with-one-login-132.png)
+For more information on adding apps, see OneLogin's documentation: [Introduction to App Management](https://onelogin.service-now.com/support/?id=kb_article&sys_id=6ac91143db109700d5505eea4b9619a2#add).
 
 ### Step 2: SCIM Base URL
 
@@ -44,6 +47,7 @@ Next, add a special Harness account URL to the OneLogin app's SCIM Base URL.
 1. Log into your Harness account.
 2. In Harness Manager's address bar, copy the Harness account from your Harness URL.  
 The Harness account ID comes after `account` in the URL. For example, in the following URL, the account ID is `PVyBOd5NseCZSn9pe6xn87`: `https://app.harness.io/#/account/PVyBOd5NseCZSn9pe6xn87`.![](./static/provision-users-with-one-login-133.png)
+
 3. Add your account ID to the end of the following URL: `https://app.harness.io/gateway/api/scim/account/<account_ID>`
 
 For [Harness On-Prem](https://docs.harness.io/category/xqs7h6dqu5-firstgen-self-managed-enterprise-edition), the URL will use your custom domain name and `gateway` is omitted. For example, if your On-Prem domain name is **harness.mycompany.com**:  
@@ -61,14 +65,17 @@ The SCIM Bearer Token value is used to authenticate requests and responses sent 
 1. In Harness Manager, create an API key by following the instructions in [API Keys](api-keys.md).  
   
 Make sure this key's permissions are inherited from the **Account Administrator** User Group, as shown here:![](./static/provision-users-with-one-login-134.png)
+
 2. Copy the new API key.![](./static/provision-users-with-one-login-135.png)
+
 3. In OneLogin, paste the API key in the **SCIM Bearer Token** setting in your Harness OneLogin app.
 
 ### Step 4: Enable API Connection
 
 In the Harness OneLogin app, ensure that the API Status is enabled:
 
-![](./static/provision-users-with-one-login-136.png)Click **Save** to save setting up the app's configuration.
+![](./static/provision-users-with-one-login-136.png)
+Click **Save** to save setting up the app's configuration.
 
 ### Step 5: Set Up Harness OneLogin App Provisioning
 
@@ -87,7 +94,8 @@ Ensure these settings are set up exactly as shown below.
 
 When you are done, it will look like this:
 
-![](./static/provision-users-with-one-login-137.png)1. Click **Save**.
+![](./static/provision-users-with-one-login-137.png)
+1. Click **Save**.
 
 ### Option 1: Provision OneLogin Users to Harness
 
@@ -97,18 +105,23 @@ Next, we will add users to the Harness OneLogin app. Once OneLogin SSO in enable
 2. Click a user.
 3. In **User Info**, ensure that user has **First name**, **Last name**, and **Email** completed.![](./static/provision-users-with-one-login-138.png)
 
+
 Only **First name**, **Last name**, and **Email** are permitted for Harness OneLogin SCIM provisioning. Do not use any additional User Info settings.1. Click **Applications**.
 2. In the **Applications** table, click the add button **(+)**.
 3. In the **Assign new login** settings, select the Harness OneLogin App, and click **Continue**.
 4. In **SCIM Username**, enter the email address for the user. This is the same email address in the **NameID** setting.  
 When you are done, the settings will look something like this:![](./static/provision-users-with-one-login-139.png)
+
 5. Click **Save**. The status in the **Applications** table is now **Pending**.
 6. Click **Pending**. The **Create User in Application** settings appear:![](./static/provision-users-with-one-login-140.png)
+
 7. Click **Approve**. The Provisioning status will turn to Provisioned.
 
-![](./static/provision-users-with-one-login-141.png)If provisioning fails, you might see something like the following error:
+![](./static/provision-users-with-one-login-141.png)
+If provisioning fails, you might see something like the following error:
 
-![](./static/provision-users-with-one-login-142.png)The most common reason is incorrect **SCIM Base URL** or **SCIM Bearer Token** settings in the OneLogin app.
+![](./static/provision-users-with-one-login-142.png)
+The most common reason is incorrect **SCIM Base URL** or **SCIM Bearer Token** settings in the OneLogin app.
 
 #### Verify Provisioning in Harness
 
@@ -120,13 +133,16 @@ Now that you have provisioning confirmation from OneLogin, let's verify that the
 
 ![](./static/provision-users-with-one-login-143.png)
 
+
 #### User Registers and Logs into Harness
 
 Provisioned users will received an email invite from Harness.
 
-![](./static/provision-users-with-one-login-144.png)When users click **SIGN UP** they are sent to Harness where they can create a password and log in.
+![](./static/provision-users-with-one-login-144.png)
+When users click **SIGN UP** they are sent to Harness where they can create a password and log in.
 
 ![](./static/provision-users-with-one-login-145.png)
+
 
 ### Option 2: Provision OneLogin Roles to Harness Groups
 
@@ -138,7 +154,8 @@ Next, you create a rule in the Harness OneLogin app that creates groups in Harne
 
 The OneLogin roles become User Groups in Harness.
 
-![](./static/provision-users-with-one-login-146.png)You cannot provision OneLogin users to Harness User Groups if they are already provisioned in Harness. Simply remove them from Harness and then provision them using the step below.
+![](./static/provision-users-with-one-login-146.png)
+You cannot provision OneLogin users to Harness User Groups if they are already provisioned in Harness. Simply remove them from Harness and then provision them using the step below.
 
 #### Add User Provisioning to the Harness OneLogin App
 
@@ -146,6 +163,7 @@ The OneLogin roles become User Groups in Harness.
 2. In OneLogin, open the Harness OneLogin app.
 3. In **Parameters**, in **Optional Parameters**, click on **Groups**.
 4. In **Edit Field Groups**, select **Include in User Provisioning** and click **Save**.![](./static/provision-users-with-one-login-147.png)
+
 5. Click **Save** to save the Harness OneLogin app.
 
 Next, we'll create the OneLogin role that will be used as your Harness User Group.
@@ -160,11 +178,13 @@ Next, we'll create the OneLogin role that will be used as your Harness User Grou
 6. In **Check existing or add new users to this role**, enter the name(s) of the users to add.
 7. When you have located each user name, click **Check**.
 8. For each user, click **Add to Role**. When you are done, the user(s) are listed in **Users Add Manually**.![](./static/provision-users-with-one-login-148.png)
+
 9. Click **Save**. You are returned to the Roles page.
 10. Open the role.
 11. In the roie, click **Applications**.
 12. Click the **Add Apps** button.
 13. In **Select Apps tp Add**, click the Harness OneLogin app.![](./static/provision-users-with-one-login-149.png)
+
 14. Click **Save**.
 
 Now that the role has users and the Harness OneLogin app, we can add the Harness OneLogin app to each OneLogin user.
@@ -178,6 +198,7 @@ For each of the OneLogin users you added to the role, you will now add the Harne
 3. Click the **Add App** button.
 4. In **Assign new login**, select the Harness OneLogin app, and click **Continue**.
 5. In the **Edit** settings, in **Groups**, select the role you created and click **Add**.![](./static/provision-users-with-one-login-150.png)
+
 6. Click **Save**.
 
 Now that each user is associated with the Harness OneLogin app and role, you add a rule to the Harness OneLogin app. The rule will set groups in the Harness OneLogin app using the role you created.
@@ -195,6 +216,7 @@ Next, you create a rule in the Harness OneLogin app to create groups using the r
 7. In **For each**, select **role**.
 8. In **with value that matches**, enter the name of the role you create or enter the regex `.*`.  
 When you are done it will look something like this:![](./static/provision-users-with-one-login-151.png)
+
 9. Click **Save**.
 10. Click **Save** to save the app.
 
@@ -213,6 +235,7 @@ The Provisioning State for each user is changed to **Provisioned**.
 
 ![](./static/provision-users-with-one-login-152.png)
 
+
 #### See the Provisioned Group In Harness
 
 Now that you have provisioned users using the Harness OneLogin app, you can see the new group and users in Harness.
@@ -223,7 +246,8 @@ Now that you have provisioned users using the Harness OneLogin app, you can see 
 
 You can see the User Group and Users are provisioned.
 
-![](./static/provision-users-with-one-login-153.png)Repeat the steps in this process for additional users.
+![](./static/provision-users-with-one-login-153.png)
+Repeat the steps in this process for additional users.
 
 ### Limitations
 

@@ -10,7 +10,9 @@ helpdocs_is_published: true
 
 In Harness, you configure [ECS Service Auto Scaling](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-auto-scaling.html) in the **ECS Service Setup** step of a Workflow.
 
-[![](./static/ecs-auto-scaling-00.png)](./static/ecs-auto-scaling-00.png)1. In a Workflow with the **ECS Service Setup** step, open the **ECS Service Setup** step.
+[![](./static/ecs-auto-scaling-00.png)
+](./static/ecs-auto-scaling-00.png)
+1. In a Workflow with the **ECS Service Setup** step, open the **ECS Service Setup** step.
 2. In **Auto Scaler Configurations**, the Auto Scaling property fields appear.
 
 When Harness deploys your ECS service, it will register the service with ECS Service Auto Scaling to apply the scaling policy, scaling out (and in) using CloudWatch target tracking.
@@ -25,7 +27,8 @@ For example, in an ECS Canary Workflow, ECS Auto Scaling is added after the **Up
 
 In order for rollback to add ECS Auto Scaling to the previous, successful service, you must have both the **Upgrade Containers** and **Rollback Containers** steps in the same Phase.
 
-![](./static/ecs-auto-scaling-02.png)Since ECS Auto Scaling is added by the **Upgrade Containers** step, if you delete **Upgrade Containers**, then **Rollback Containers** has no ECS Auto Scaling to roll back to.
+![](./static/ecs-auto-scaling-02.png)
+Since ECS Auto Scaling is added by the **Upgrade Containers** step, if you delete **Upgrade Containers**, then **Rollback Containers** has no ECS Auto Scaling to roll back to.
 
 If you want to remove ECS Auto Scaling from a Phase, delete both the **Upgrade Containers** and **Rollback Containers** steps. The Phase will no longer perform ECS Auto Scaling during deployment or rollback.
 

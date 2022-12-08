@@ -117,7 +117,8 @@ You use `TriggerConditionInput.manifestConditionInput` to specify the chart vers
 
 This is the same as selecting these in the UI:
 
-![](./static/deploy-helm-charts-using-api-39.png)Here's a Pipeline Trigger example:
+![](./static/deploy-helm-charts-using-api-39.png)
+Here's a Pipeline Trigger example:
 
 
 ```

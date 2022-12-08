@@ -32,7 +32,8 @@ In this topic:
 
 Here's an example configuration of TAS as Cloud Provider in Harness.
 
-![](./static/add-pivotal-cloud-foundry-cloud-provider-21.png)### Review: TAS Permissions
+![](./static/add-pivotal-cloud-foundry-cloud-provider-21.png)
+### Review: TAS Permissions
 
 TAS user account with Admin, Org Manager, or Space Manager role. The user account must be able to update spaces, orgs, and applications.
 

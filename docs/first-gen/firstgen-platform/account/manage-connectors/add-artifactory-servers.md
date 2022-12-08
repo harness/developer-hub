@@ -20,6 +20,7 @@ Here's an example of the Artifactory Sources configuration.
 
 ![](./static/add-artifactory-servers-02.png)
 
+
 ### Review: Artifactory Permissions
 
 Make sure the following permissions are granted to the user:

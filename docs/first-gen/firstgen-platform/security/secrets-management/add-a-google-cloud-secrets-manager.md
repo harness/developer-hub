@@ -80,7 +80,9 @@ Export your Google Cloud service account key, and attach it to the Harness **Co
 3. Grant this service account the GSM permissions needed.  
 To do this, edit the service account and click **Permissions**. Click **Roles**, and then add the roles needed.  
 See [Managing secrets](https://cloud.google.com/secret-manager/docs/access-control) from Google.
-4. Open your service account's Actions ⋮ menu, then select **Create key.**[![](./static/add-a-google-cloud-secrets-manager-52.png)](./static/add-a-google-cloud-secrets-manager-52.png)
+4. Open your service account's Actions ⋮ menu, then select **Create key.**[![](./static/add-a-google-cloud-secrets-manager-52.png)
+](./static/add-a-google-cloud-secrets-manager-52.png)
+
 5. In the resulting **Create private key** dialog, select the **JSON** option, create the key, and download it to your computer.
 6. Return to Harness Manager's **Configure Secrets Manager** dialog.
 7. In **Google Secrets Manager Credentials File**, click the **Choose File** button, and upload the key file you just exported from Google Cloud.

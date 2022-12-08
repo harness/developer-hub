@@ -58,6 +58,7 @@ To create a Shell Script template, do the following:
 6. In **Script**, fill out the Shell Script command as described in [Using the Shell Script Command](../../../continuous-delivery/model-cd-pipeline/workflows/capture-shell-script-step-output.md). The article describe how to create variables in the template, for example, `${myVar}`.
 7. Click **Submit** to create the script. The script appears with a list of the variables you created.
 8. Next, apply the Shell Script template as a command in a Workflow. In a Workflow, simply click **Add Command**, and select **Template Library**. The Shell Script template appears.![](./static/create-a-shell-script-workflow-step-template-02.png)
+
 9. Click **Link** to link to the template. You can then edit the template in your Workflow, providing values for the variables in the template.  
   
 The following table displays the Shell Script template in the Template Library and the applied template in a Workflow. Notice how the variable names defined in the template are greyed out in the applied template, and only the variable values are editable:  
@@ -71,6 +72,7 @@ The following table displays the Shell Script template in the Template Library a
 
   
 Once the Shell Script template is linked and added to the workflow, a link icon appears next to the command:![](./static/create-a-shell-script-workflow-step-template-03.png)
+
 
 ### Next Steps
 

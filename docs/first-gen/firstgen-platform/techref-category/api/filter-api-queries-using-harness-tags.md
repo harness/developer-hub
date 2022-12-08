@@ -31,7 +31,8 @@ For instructions, see [Assign Metadata Using Tags](../../account/tags/tags.md) a
 
 To see the available Tags in your Harness account, click **Setup**, and then click **Tags Management**. Each Tag pairs a name with one of more values:
 
-![](./static/filter-api-queries-using-harness-tags-12.png)Once you have Tags assigned, you can filter your API queries with them.
+![](./static/filter-api-queries-using-harness-tags-12.png)
+Once you have Tags assigned, you can filter your API queries with them.
 
 ### Step 2: Use TagFilter
 
@@ -51,7 +52,8 @@ The supported entity types are dependent on what you are querying.
 
 For example, if you are querying services, only APPLICATION is supported, which you can see when building the query:
 
-![](./static/filter-api-queries-using-harness-tags-13.png)The entity types that might be available include the following: 
+![](./static/filter-api-queries-using-harness-tags-13.png)
+The entity types that might be available include the following: 
 
 * APPLICATION
 * ARTIFACT

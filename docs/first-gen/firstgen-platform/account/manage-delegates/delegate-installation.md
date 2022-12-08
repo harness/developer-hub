@@ -65,13 +65,16 @@ All Delegates are identified by your Harness account ID. But, depending on the t
 
 For Delegates running on virtual machines, such as the Shell Script and Docker Delegates running on an AWS EC2 instance, the Delegate is identified by the combination of **Hostname** and **IP**:
 
-![](./static/delegate-installation-08.png)Therefore, if the hostname or IP changes on the VM, the Delegate cannot be identified by the Harness Manager. The IP used is the private IP. The Delegate connects to the Harness Manager, but the Harness Manager does not initiate a connection to the Delegate, and so the public IP address of the Delegate is not needed, typically.
+![](./static/delegate-installation-08.png)
+Therefore, if the hostname or IP changes on the VM, the Delegate cannot be identified by the Harness Manager. The IP used is the private IP. The Delegate connects to the Harness Manager, but the Harness Manager does not initiate a connection to the Delegate, and so the public IP address of the Delegate is not needed, typically.
 
 For Kubernetes and ECS Delegates, the IP can change if a pod is rescheduled, for example. Consequently, Kubernetes Delegates are identified by a suffix using a unique six letter code in their **Hostname** (the first six letters that occur in your account ID):
 
-![](./static/delegate-installation-09.png)ECS Delegates are identified by the **Hostname** entered when the ECS Delegate Task Spec is downloaded:
+![](./static/delegate-installation-09.png)
+ECS Delegates are identified by the **Hostname** entered when the ECS Delegate Task Spec is downloaded:
 
 ![](./static/delegate-installation-10.png)
+
 
 ### How Does Harness Manager Pick Delegates?
 

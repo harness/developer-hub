@@ -41,7 +41,9 @@ To add notification settings to Harness User Groups, do the following:
 2. In **Access Management**, click **User Groups**.
 3. Click the name of an existing User Group, or create a new User Group with the steps in [Managing Users and Groups (RBAC)](../../security/access-management-howtos/users-and-permissions.md).
 4. Locate the **Notification Settings** section.![](./static/notification-groups-19.png)
+
 5. Click the More Options **⋮** menu, then click **Edit**. The **Notification Settings** dialog appears.![](./static/notification-groups-20.png)
+
 
 1. Configure the following notification settings and click **SUBMIT**.
 * **Use Members' Individual Email Addresses** – Enable this setting to have notifications sent to the individual email addresses of the group's configured Member Users.
@@ -53,9 +55,11 @@ See [Send Notifications Using Slack](send-notification-using-slack.md).
 For steps on obtaining a Slack channel Incoming Webhook, see [Incoming Webhooks](https://api.slack.com/incoming-webhooks) from Slack.
 * **PagerDuty Integration Key** – Enter the key for a PagerDuty Account/Service to which Harness can send notifications. You can copy/paste this key from PagerDuty's **Configuration** > **Services** > **Service Details** dialog > **Integrations** tab, as shown below. (For details, see PagerDuty's documentation on [Creating Integrations](https://support.pagerduty.com/docs/services-and-integrations).)![](./static/notification-groups-21.png)
 
+
 Once you click **SUBMIT**, the **Notification Settings** appear in the User Group page.
 
 ![](./static/notification-groups-22.png)
+
 ### Next Steps
 
 * [Manage Alert Notifications](manage-alert-notifications.md)

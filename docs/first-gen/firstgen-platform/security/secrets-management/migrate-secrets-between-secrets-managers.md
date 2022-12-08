@@ -60,7 +60,9 @@ During migration transmission, secrets are encrypted by AES 256 encryption. They
 
 1. In **Secrets Management**, click **Configure Secrets Managers**.
 2. Next to the secrets manager from which you want to migrate secrets, click **Migrate**.![](./static/migrate-secrets-between-secrets-managers-59.png)
+
 3. In the **Migrate Secrets** dialog, select your target secrets manager in the **Transition Secrets to:** drop‑down list, and click **Submit**.![](./static/migrate-secrets-between-secrets-managers-60.png)
+
 
 ### Next Steps
 

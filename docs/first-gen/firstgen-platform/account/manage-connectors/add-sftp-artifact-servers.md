@@ -30,7 +30,8 @@ In this topic:
 
 Here's an example configuration of SFTP Artifact Source.
 
-![](./static/add-sftp-artifact-servers-10.png)The SFTP dialog has the following fields.
+![](./static/add-sftp-artifact-servers-10.png)
+The SFTP dialog has the following fields.
 
 ### Step 1: Select SFTP Artifact Server
 
@@ -70,7 +71,8 @@ Click **Submit**.
 
 When you use the SFTP Artifact Server as an Artifact Source for a Service, you can specify a file or a folder for the artifact. This allows a folder to be copied to the deployment target host by the Harness Delegate. Here is the SFTP Artifact Source dialog:
 
-![](./static/add-sftp-artifact-servers-11.png)In **Artifact Path**, you can specify a file or folder by name or using wildcards. The following are example for different files and folders:
+![](./static/add-sftp-artifact-servers-11.png)
+In **Artifact Path**, you can specify a file or folder by name or using wildcards. The following are example for different files and folders:
 
 * todo-\*zip - All matching files, such todo-1.0.zip, todo-2.0.zip.
 * test/\*zip - All zip files under **test** folder.

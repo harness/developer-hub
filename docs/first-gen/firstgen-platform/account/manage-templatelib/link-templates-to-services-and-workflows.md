@@ -37,6 +37,7 @@ To link a template to a Service, do the following:
   
 The template is added to the service and linked. You can see the **Version:*****version*** and **Template icon** next to the entity you selected. For example:![](./static/link-templates-to-services-and-workflows-00.png)
 
+
 ### Link Template to a Workflow
 
 To link a template to a Workflow, do the following:
@@ -48,4 +49,5 @@ To link a template to a Workflow, do the following:
 5. Provide values for the template variables and click **SUBMIT**.  
   
 The template is added to the workflow and linked. You can see the **Version:*****version*** and **Link icon** next to the entity you selected. For example:![](./static/link-templates-to-services-and-workflows-01.png)
+
 

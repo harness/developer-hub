@@ -25,6 +25,7 @@ Here is the same Harness Workflow in the Harness GUI, Harness code editor, and a
 
 ![](./static/configuration-as-code-40.png)
 
+
 ### Before You Begin
 
 * if you're trying to resolve git sync issues, see [Diagnose Git Sync Errors](https://docs.harness.io/article/0ralbeajno-diagnose-git-errors).
@@ -37,9 +38,11 @@ Currently, [YAML-based Triggers](../techref-category/configuration-as-code-yaml/
 
 Here is a visual summary of Git to Harness sync:
 
-![](./static/configuration-as-code-41.png)Here is a visual summary of Harness to Git sync:
+![](./static/configuration-as-code-41.png)
+Here is a visual summary of Harness to Git sync:
 
-![](./static/configuration-as-code-42.png)The following table provides an overview of the sync scenarios and how to configure them.
+![](./static/configuration-as-code-42.png)
+The following table provides an overview of the sync scenarios and how to configure them.
 
 
 
@@ -58,7 +61,8 @@ Repo and brach names may not contain characters from the Emoticons unicode block
 
 One of the advantages with Harness Git integration is the ability to clone or duplicate a Harness Application entity quickly in the Git repo, and then have the cloned entity show up in the Harness platform. For example, you can clone a Harness Environment in the Harness GUI using the **Clone** button.
 
-![](./static/configuration-as-code-43.png)But if you wish to make several copies, this can be time-consuming in the GUI.
+![](./static/configuration-as-code-43.png)
+But if you wish to make several copies, this can be time-consuming in the GUI.
 
 With Harness GitOps, you can simply duplicate the environment folder in Git, give the duplicate folder a unique name, and push it to the origin. The new environment will appear in Harness. For more information, see [Harness GitOps](https://docs.harness.io/category/harness-git-based-how-tos).
 

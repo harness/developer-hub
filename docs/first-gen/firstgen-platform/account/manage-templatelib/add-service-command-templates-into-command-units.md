@@ -12,7 +12,8 @@ You can add multiple Service commands into a single template as a Service Comman
 
 Here is an example of a Service Command Unit named **MyServiceTest** that contains the Service command **MeetAndCheck** and two instances of the Service command **ServiceCheck**.
 
-![](./static/add-service-command-templates-into-command-units-04.png)In this topic:
+![](./static/add-service-command-templates-into-command-units-04.png)
+In this topic:
 
 * [Before You Begin](add-service-command-templates-into-command-units.md#before-you-begin)
 * [Review: Differences between Service Command and Shell Script Template Types](#review_differences_between_service_command_and_shell_script_template_types)
@@ -57,17 +58,27 @@ To create a Service Command Unit, do the following:
 	2. In **Name**, enter a name for the new Service command.
 	3. In **Variables**, add any variables that you want to use in the subordinate commands. You can leave **Variables** empty, and when you add subordinate commands their variables will be added to the **Variables** section.
 	4. Click **Submit**. The Service Command is created.![](./static/add-service-command-templates-into-command-units-05.png)
+
 	5. Click **Add** to add the subordinate Service commands. The Service commands in the same folder are displayed.![](./static/add-service-command-templates-into-command-units-06.png)
+
 	6. Click a command. The command's dialog appears, and you can change any variables in the command.![](./static/add-service-command-templates-into-command-units-07.png)
+
 	7. Click **Submit**.  
 	  
 	If you click the parent Service Command Unit's name you will see that the variable from the subordinate Service command you added is now in the parent Service command's **Variables** section.![](./static/add-service-command-templates-into-command-units-08.png)
+
 	8. Add any more Service commands to the unit. All of the variables used in the subordinate commands are also added to the parent Service command's **Variables** section.
 		1. You can also add the same Service command more than once and Harness will add a **-*****number*** suffix to their names.![](./static/add-service-command-templates-into-command-units-09.png)
+
 		2. You can also use different versions of the same command in the unit:![](./static/add-service-command-templates-into-command-units-10.png)
+
 		3. You can also add a variable to the parent Service command, and use it in a subordinate Service command.![](./static/add-service-command-templates-into-command-units-11.png)
-	9. When you are done, link the Service Command Unit to a Service. In the Service, click **Add Command**, and select the Service Command Unit from a Template Library by clicking its **Link** button.![](./static/add-service-command-templates-into-command-units-12.png)You will be prompted to replace any Service command variables.![](./static/add-service-command-templates-into-command-units-13.png)
+
+	9. When you are done, link the Service Command Unit to a Service. In the Service, click **Add Command**, and select the Service Command Unit from a Template Library by clicking its **Link** button.![](./static/add-service-command-templates-into-command-units-12.png)
+You will be prompted to replace any Service command variables.![](./static/add-service-command-templates-into-command-units-13.png)
+
 	10. Change any variables, if needed, and click **Submit**. The Service Command Unit is added to the Service.![](./static/add-service-command-templates-into-command-units-14.png)
+
 
 ### Step 2: Add Service Command Unit to a Workflow
 
@@ -80,9 +91,11 @@ The Service Command Unit can be added to Workflow in two ways:
 
 1. In the Workflow, click **Add Command**, and select the Service Command Unit from a Template Library.![](./static/add-service-command-templates-into-command-units-15.png)
 
+
 #### Service in the Workflow
 
 1. When you create a Workflow you select a Harness Service to deploy. If the Service contains a Service Command Unit, click **Add Command** and the Service Command Unit is available in the **Commands** options.![](./static/add-service-command-templates-into-command-units-16.png)
+
 
 #### Notes
 

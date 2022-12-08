@@ -38,6 +38,7 @@ The following diagram shows how the Delegate enables Harness to integrate with a
 
 ![](./static/install-ecs-delegate-01.png)
 
+
 ### Review: ECS Requirements
 
 Ensure that your AWS account and the ECS cluster that will host the Delegate meet the following requirements:
@@ -304,7 +305,8 @@ The output will display the new service:
 
 When ECS is ready, the new service is running in the cluster:
 
-![](./static/install-ecs-delegate-02.png)View the new ECS Delegate in Harness Manager.
+![](./static/install-ecs-delegate-02.png)
+View the new ECS Delegate in Harness Manager.
 
 1. In **Harness Manager**, in the **Harness** **Delegates** page. When the ECS Delegate connects to the Harness Manager, it is listed with a status of **Connected**.  
 Congratulations! You are done installing and running the ECS Delegate.

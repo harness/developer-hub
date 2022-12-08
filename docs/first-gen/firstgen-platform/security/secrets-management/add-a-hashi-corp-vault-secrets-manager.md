@@ -115,17 +115,21 @@ In the **Sink Path** field, enter any sink path you have in your Vault Agent Con
 
 ![](./static/add-a-hashi-corp-vault-secrets-manager-62.png)
 
+
 ### Option: Kubernetes Auth
 
 Currently, this feature is behind the Feature Flag `ENABLE_K8S_AUTH_IN_VAULT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.This option uses a Kubernetes Service Account Token to authenticate with Vault. With this method of authentication, you can easily add a Vault token into a Kubernetes Pod.
 
 To authenticate with Kubernetes Auth, make sure you have created a role in the vault inside `auth/kubernetes/role`. This role authorizes the "vault-auth" service account in the default namespace and it gives it the default policy. This is also where you'll find the **service account name** and **namespace** that will be used to access the vault endpoint.
 
-[![](./static/add-a-hashi-corp-vault-secrets-manager-63.png)](./static/add-a-hashi-corp-vault-secrets-manager-63.png)For more information, see [Kubernetes Auth Method](https://www.vaultproject.io/docs/auth/kubernetes#configuration).
+[![](./static/add-a-hashi-corp-vault-secrets-manager-63.png)
+](./static/add-a-hashi-corp-vault-secrets-manager-63.png)
+For more information, see [Kubernetes Auth Method](https://www.vaultproject.io/docs/auth/kubernetes#configuration).
 
 In **Role Name**, enter the role you have configured in the Vault.
 
-![](./static/add-a-hashi-corp-vault-secrets-manager-65.png)In **Service Account Token Path**enter the JSON Web Token (JWT) path. This is the path where the JWT token is mounted. The default path of this token is `/var/run/secrets/kubernetes.io/serviceaccount/token`.
+![](./static/add-a-hashi-corp-vault-secrets-manager-65.png)
+In **Service Account Token Path**enter the JSON Web Token (JWT) path. This is the path where the JWT token is mounted. The default path of this token is `/var/run/secrets/kubernetes.io/serviceaccount/token`.
 
 For more information, see [Service Account Tokens](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#service-account-tokens).
 
@@ -161,7 +165,8 @@ You cannot change the Secret Engine later. Harness blocks editing this setting l
 
 In **Renew Interval**, you can (optionally) select how often Harness Delegate reloads the Vault access token.
 
-![](./static/add-a-hashi-corp-vault-secrets-manager-66.png)You can expect a delay during the Vault renewal. A periodic job runs to check if there has to be a renewal resulting in a delay of no more than 2 minutes.### Review: Validating Non-Read Only Vault Secrets Managers
+![](./static/add-a-hashi-corp-vault-secrets-manager-66.png)
+You can expect a delay during the Vault renewal. A periodic job runs to check if there has to be a renewal resulting in a delay of no more than 2 minutes.### Review: Validating Non-Read Only Vault Secrets Managers
 
 To validate a non-read only Vault Secrets Manager, Harness creates a dummy secret in the secret engine.
 
@@ -192,7 +197,8 @@ The secret can fail because of various reasons.
 
 If required by your organization's security practices, select the **Read-only Vault** check box. This selection authorizes Harness to read secrets from Vault, but not to create or manage secrets within Vault.
 
-![](./static/add-a-hashi-corp-vault-secrets-manager-67.png)Once you have filled out the dialog, click **Submit**.
+![](./static/add-a-hashi-corp-vault-secrets-manager-67.png)
+Once you have filled out the dialog, click **Submit**.
 
 ##### Read-only Limitations
 

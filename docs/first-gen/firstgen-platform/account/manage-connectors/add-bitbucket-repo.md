@@ -81,7 +81,8 @@ If you have set up Two-Factor Authentication in your Git repo, then you need to 
 
 If you selected **SSH** as the connection protocol, you must add the **SSH Key** for use with the connection. If you added a key in Harness Secrets Management, you can select it here. For more information, see [Secrets Management](../../security/secrets-management/secret-management.md#ssh). To add a new key, click the drop-down and select **Add New SSH Key**. The **SSH Configuration** dialog appears.
 
- ![](./static/add-bitbucket-repo-19.png)In **User Name**, enter **git**. Ensure that it is lowercase.
+ ![](./static/add-bitbucket-repo-19.png)
+In **User Name**, enter **git**. Ensure that it is lowercase.
 
 **git** is the only value you should use in **User Name**.In **Credentials**, paste in the key or key file path, enter a display name, and then click **Submit**.
 
@@ -119,7 +120,8 @@ If you selected the **Generate Webhook URL** option when adding your **Source Re
 
 Use the **Repository push** event trigger.
 
- ![](./static/add-bitbucket-repo-20.png)For information on Bitbucket Webhooks, see [Manage webhooks](https://confluence.atlassian.com/bitbucket/manage-webhooks-735643732.html) from Bitbucket.
+ ![](./static/add-bitbucket-repo-20.png)
+For information on Bitbucket Webhooks, see [Manage webhooks](https://confluence.atlassian.com/bitbucket/manage-webhooks-735643732.html) from Bitbucket.
 
 ##### Bitbucket Post Webhooks Plugin
 

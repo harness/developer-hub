@@ -42,11 +42,13 @@ For example. you might want to skip versioning is for an ImagePullSecret because
 
 Harness also uses a release name for tracking releases. You can supply a release name in an Environment's [Infrastructure Definition](../../../../continuous-delivery/model-cd-pipeline/environments/infrastructure-definitions.md) **Release Name** field. By default, the value Harness uses is `release-${infra.kubernetes.infraId}`.
 
-![](./static/versioning-and-annotations-03.png)The `${infra.kubernetes.infraId}` expression is a unique identifier that identifies the combination of Service and Infrastructure Definition.
+![](./static/versioning-and-annotations-03.png)
+The `${infra.kubernetes.infraId}` expression is a unique identifier that identifies the combination of Service and Infrastructure Definition.
 
 In the Infrastructure Definition **Service Infrastructure Mapping** below each listing has a unique identifier that can be referenced using `${infra.kubernetes.infraId}`:
 
-![](./static/versioning-and-annotations-04.png)For a list of Harness built-in expressions, see [Built-in Variables List](../../variables/built-in-variables-list.md). See the [Infrastructure](../../variables/built-in-variables-list.md#infrastructure) and [Kubernetes](../../variables/built-in-variables-list.md#kubernetes) sections.
+![](./static/versioning-and-annotations-04.png)
+For a list of Harness built-in expressions, see [Built-in Variables List](../../variables/built-in-variables-list.md). See the [Infrastructure](../../variables/built-in-variables-list.md#infrastructure) and [Kubernetes](../../variables/built-in-variables-list.md#kubernetes) sections.
 
 #### Release Name is Reserved for Internal Harness ConfigMap
 

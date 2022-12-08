@@ -38,6 +38,7 @@ Here's an overview of the settings required to add a Kubernetes Cluster as Cloud
 
 ![](./static/add-kubernetes-cluster-cloud-provider-35.png)
 
+
 ### Review: Using a Delegate Inside or Outside of the Target Cluster
 
 Typically, you install the Harness Kubernetes Delegate inside your target cluster and then add a Kubernetes Cluster Cloud Provider that inherits its credentials from the Delegate.
@@ -245,7 +246,8 @@ First let's look at the authorization server-related settings:
 
 For example, in Okta, this is the Issuer URL for the [Authorization Server](https://developer.okta.com/docs/concepts/auth-servers/):
 
-![](./static/add-kubernetes-cluster-cloud-provider-36.png)Providers use different API versions. If you want to identify the version also, you can obtain it from the token endpoint.
+![](./static/add-kubernetes-cluster-cloud-provider-36.png)
+Providers use different API versions. If you want to identify the version also, you can obtain it from the token endpoint.
 
 In Okta, in the authentication server **Settings**, click the **Metadata URI**. Locate the **token\_endpoint**. Use the **token\_endpoint** URL except for the **/token** part. For example, you would use `https://dev-00000.okta.com/oauth2/default/v1` from the following endpoint:
 
@@ -255,18 +257,21 @@ In Okta, in the authentication server **Settings**, click the **Metadata URI**. 
 ```
 * **OIDC Scopes:** OIDC scopes are used by an application during authentication to authorize access to a user's details, like name and picture. In Okta, you can find them in the Authorization Server **Scopes** tab:
 
-![](./static/add-kubernetes-cluster-cloud-provider-37.png)If you enter multiple scopes, separate them using spaces.
+![](./static/add-kubernetes-cluster-cloud-provider-37.png)
+If you enter multiple scopes, separate them using spaces.
 
 The remaining OIDC Token settings are part of the provider app you are using to log in.
 
 * **Username and password:** Login credentials for a user assigned to the provider app.
 * **Client ID:** Public identifier for the client that is required for all OAuth flows. In Okta, this is located in the **Client Credentials** for the app:
 
-![](./static/add-kubernetes-cluster-cloud-provider-38.png)* **Client Secret:** The client secret for the app. For Okta, you can see this in the above picture.
+![](./static/add-kubernetes-cluster-cloud-provider-38.png)
+* **Client Secret:** The client secret for the app. For Okta, you can see this in the above picture.
 
 Here is an example of OIDC credentials in the Kubernetes Cluster Cloud Provider:
 
 ![](./static/add-kubernetes-cluster-cloud-provider-39.png)
+
 
 ### Step 3: Skip Validation
 
@@ -327,7 +332,8 @@ The process is as follows:
 
 When setting up the EKS cluster as a Harness Infrastructure Definition in a Harness Environment, you simply select the Kubernetes Cluster Cloud Provider. For example:
 
-![](./static/add-kubernetes-cluster-cloud-provider-40.png)Using the EKS-based Environment in a Workflow is no different than using any Kubernetes cluster. You simply select the Environment and Infrastructure Provisioner as part of setting up the Workflow.
+![](./static/add-kubernetes-cluster-cloud-provider-40.png)
+Using the EKS-based Environment in a Workflow is no different than using any Kubernetes cluster. You simply select the Environment and Infrastructure Provisioner as part of setting up the Workflow.
 
 ### Option: OpenShift Support
 

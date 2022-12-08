@@ -92,6 +92,7 @@ To test use the AWS account when running [aws secretsmanager list-secrets](https
 2. Click **Add Secrets Manager**. The **Configure Secrets Manager** settings appear.
 3. Select **AWS Secrets Manager** from the drop-down list.For information on restrictions on names and maximum quotas, see [Quotas for AWS Secrets Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_limits.html).![](./static/add-an-aws-secrets-manager-26.png)
 
+
 ### Step 2: Display Name
 
 Enter a name for this secrets manager.
@@ -151,6 +152,7 @@ This is the AssumeRole Session Duration. See Session Duration in the [AssumeRole
 Enter a prefix to be added to all secrets. For example, `devops` will result in secrets like `devops/mysecret`. The prefix is not a folder name, but a prefix. Secrets Manager uses is a flat naming method.
 
 ![](./static/add-an-aws-secrets-manager-27.png)
+
 
 ### Step 4: Region
 

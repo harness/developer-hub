@@ -41,7 +41,8 @@ Using a configured Secrets Manager, create an Encrypted Text secret to access th
 
 Ensure that **Usage Scope** is set to **Scope to Account**.
 
-![](./static/add-and-use-a-custom-secrets-manager-20.png)For more information on creating Encrypted Text Secret, see [Add Encrypted Text](use-encrypted-text-secrets.md#step-1-add-encrypted-text).
+![](./static/add-and-use-a-custom-secrets-manager-20.png)
+For more information on creating Encrypted Text Secret, see [Add Encrypted Text](use-encrypted-text-secrets.md#step-1-add-encrypted-text).
 
 Make sure that the secret you create to access your third party Secrets Manager is selected as Scope to Account. It will not be used for any Application.
 
@@ -65,7 +66,8 @@ Note the following points while creating the template.
 
 Here’s an example Shell Script Template created for Custom Secrets Manager.
 
-![](./static/add-and-use-a-custom-secrets-manager-21.png)In this example, this script assigns the secret variable to your final value. Here are the details of the entries in the script.
+![](./static/add-and-use-a-custom-secrets-manager-21.png)
+In this example, this script assigns the secret variable to your final value. Here are the details of the entries in the script.
 
 * This script makes a cURL call to the API URL of the third party Secrets Manager and gets the output to the file secret.json.
 * It includes some parameters such as engine name and path.
@@ -81,6 +83,7 @@ Note: Template library add ons like default variable values, script output, and 
 Make sure you enter the following details.
 
 ![](./static/add-and-use-a-custom-secrets-manager-22.png)
+
 
 #### Display Name
 

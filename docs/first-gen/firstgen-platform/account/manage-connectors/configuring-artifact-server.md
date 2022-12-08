@@ -32,6 +32,7 @@ For artifacts larger than 1GB, use the **Metadata Only** option in the Harness S
 
 ![](./static/configuring-artifact-server-00.png)
 
+
 ### Review: Add AWS S3 and Google Cloud Storage Artifact Servers
 
 Amazon AWS and Google Cloud Platform are added to Harness as **Cloud Providers**, but they may also be used as artifact servers in a Harness Service.
@@ -40,7 +41,8 @@ You simply add them as Cloud Providers, and then when you are adding an artifact
 
 Here is what the Artifact Source list looks like in a Harness service when AWS S3 and Google Cloud Storage have been as added as Cloud Providers:
 
-![](./static/configuring-artifact-server-01.png)For information on how to add AWS and GCP as Cloud Providers, see [Add Cloud Providers](cloud-providers.md).
+![](./static/configuring-artifact-server-01.png)
+For information on how to add AWS and GCP as Cloud Providers, see [Add Cloud Providers](cloud-providers.md).
 
 ### Review: Anonymous Access
 

@@ -32,6 +32,7 @@ The following diagram shows how the Delegate enables Harness to integrate with a
 
 ![](./static/install-kubernetes-delegate-36.png)
 
+
 ### Step 1: Download the Kubernetes Delegate
 
 1. Log into Harness.
@@ -115,9 +116,12 @@ A Kubernetes cluster in Google Cloud Platform has a variety of settings that are
 	**Maximum number of nodes:** 8
 	9. Click **NEXT**.  
 	The settings will look something like this:![](./static/install-kubernetes-delegate-37.png)
+
 	10. Click **Create** to create the cluster. It will take a few minutes to create the Kubernetes cluster.
 3. When the cluster is created, click the **Connect** button.![](./static/install-kubernetes-delegate-38.png)
+
 4. In the **Connect to the cluster** dialog, copy the **Command-line access** command.![](./static/install-kubernetes-delegate-39.png)
+
 5. On your local machine, open a Terminal, and paste the command, and press **Enter**. You are now connected to the Kubernetes cluster.  
   
 By default, your cluster should be able to connect to the Internet. If you run into errors, ensure the GCE firewall isn’t blocking port 22 to your VMs. For more information, see [Debug Running Pods](https://kubernetes.io/docs/tasks/debug/debug-application/debug-running-pod/) from Kubernetes.

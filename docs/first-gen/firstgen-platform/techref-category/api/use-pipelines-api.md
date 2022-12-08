@@ -544,7 +544,8 @@ For steps on performing this in the Harness Manager UI, see [Create a Pipeline](
 
 Let's use a simple Pipeline with one stage:
 
-![](./static/use-pipelines-api-18.png)To execute this Pipeline and provide runtime inputs, the mutation is:
+![](./static/use-pipelines-api-18.png)
+To execute this Pipeline and provide runtime inputs, the mutation is:
 
 
 ```
@@ -591,7 +592,8 @@ The response is the Pipeline execution ID:
 ```
 And you can see that the Pipeline is started, but paused awaiting the inputs:
 
-![](./static/use-pipelines-api-19.png)The `variableInputs` are not mandatory.
+![](./static/use-pipelines-api-19.png)
+The `variableInputs` are not mandatory.
 
 #### Execution and Executions Query
 

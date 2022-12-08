@@ -42,6 +42,7 @@ Azure Key Vault safeguards cryptographic keys and secrets, encrypting authentica
 
 ![](./static/azure-key-vault-00.png)
 
+
 ### Step 1: Create Azure Reader Role
 
 To enable Harness to later fetch your Azure vaults (in [Step 7](#step_7) below), you must first set up a **Reader** role in Azure. You can do this two ways:
@@ -54,14 +55,20 @@ To enable Harness to later fetch your Azure vaults (in [Step 7](#step_7) below)
 To create a **Reader** role in the Azure portal UI:
 
 1. Navigate to Azure's **Subscriptions** page.![](./static/azure-key-vault-01.png)
-2. Under **Subscription name**, select the subscription where your vaults reside.![](./static/azure-key-vault-02.png)**Tip:** Copy and save the **Subscription ID**. You can paste this value into Harness Manager below at [Option: Enter Subscription](#subscription).
+
+2. Under **Subscription name**, select the subscription where your vaults reside.![](./static/azure-key-vault-02.png)
+**Tip:** Copy and save the **Subscription ID**. You can paste this value into Harness Manager below at [Option: Enter Subscription](#subscription).
 3. Select your **Subscription’s Access control (IAM)** property.![](./static/azure-key-vault-03.png)
+
 4. On the resulting **Access control (IAM)** page, select **Add a role assignment**.
 5. In the resulting right pane, set the **Role** to **Reader**.![](./static/azure-key-vault-04.png)
+
 6. Accept the default value: **Assign access to**: **Azure AD user**, **group, or service principal**.
 7. In the **Select** drop-down, select the name of your Azure App registration.![](./static/azure-key-vault-05.png)
+
 8. Click **Save**.
 9. On the **Access control (IAM)** page, select the **Role assignments** tab. Make sure your new role now appears under the **Reader** group.![](./static/azure-key-vault-06.png)
+
 
 Microsoft Azure's [Manage subscriptions](https://docs.microsoft.com/en-us/azure/cost-management-billing/manage/add-change-subscription-administrator#to-assign-a-user-as-an-administrator) documentation adds details about the above procedure, but focuses on the **Administrator** rather than the **Reader** role.
 
@@ -88,6 +95,7 @@ Key Vault stores and manages secrets as sequences of octets (8-bit bytes), with 
 
 ![](./static/azure-key-vault-07.png)
 
+
 ### Step 3: Set Display Name
 
 In the **Configure Secrets Manager** dialog's **Display Name** field, enter an arbitrary name to identify this key vault within Harness Manager.
@@ -102,7 +110,8 @@ In **Environment**, select **Azure Global** or **US Government**. Most accounts 
 
 This dialog's **Client ID** and **Tenant ID** entries correspond to the fields highlighted below in the Azure UI:
 
-![](./static/azure-key-vault-08.png)To provide these values:
+![](./static/azure-key-vault-08.png)
+To provide these values:
 
 1. In Azure, navigate to the **Azure Active Directory** > **App registrations** page, then select your App registration. (For details, see Azure's [Quickstart: Register an application with the Microsoft identity platform](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-v1-add-azure-ad-app).)
 2. Copy the **Application (client) ID** for the Azure App registration you are using, and paste it into the Harness dialog's **Client ID** field.
@@ -114,7 +123,8 @@ In the **Subscription** field, you can optionally enter your Azure Subscription 
 
 To find this ID, navigate to Azure's **Subscriptions** page, as outlined above in [Step 1: Create Azure Reader Role](#step_1). From the resulting list of subscriptions, copy the **Subscription ID** beside the subscription that contains your vaults.
 
-![](./static/azure-key-vault-09.png)If you do not enter a GUID, Harness uses the default subscription for the [Client ID](#step_4) you've provided above.
+![](./static/azure-key-vault-09.png)
+If you do not enter a GUID, Harness uses the default subscription for the [Client ID](#step_4) you've provided above.
 
 ### Step 6: Create and Exchange Authentication Key
 
@@ -122,14 +132,19 @@ Generate an authentication key in Azure, and add it to Harness Manager as an app
 
 1. Navigate to Azure's **Certificates & secrets** page. (For details, see Microsoft Azure's [Create a new application secret](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-application-id-and-authentication-key) documentation.)
 2. In the resulting page’s **Client secrets** section, select **New client secret**.![](./static/azure-key-vault-10.png)
+
 3. Enter a **Description** and expiration option, then click **Add**.![](./static/azure-key-vault-11.png)
-4. Find your new key in the **Client secrets** section, and copy its value to your clipboard.![](./static/azure-key-vault-12.png)This is your only chance to view this key's value in Azure. Store the value somewhere secure, and keep it on your clipboard.
+
+4. Find your new key in the **Client secrets** section, and copy its value to your clipboard.![](./static/azure-key-vault-12.png)
+This is your only chance to view this key's value in Azure. Store the value somewhere secure, and keep it on your clipboard.
 5. Paste the key into Harness’ **Key** field.![](./static/azure-key-vault-13.png)
+
 
 ### Step 7: Fetch Vault
 
 1. Click **Fetch Vault**.  
 After a slight delay, the **Vault** drop-down list populates with vaults corresponding to your client secret.![](./static/azure-key-vault-14.png)
+
 2. From the **Vault** drop-down, select the vault to use.
 
 If these controls do not respond as expected, double-check whether you have successfully configured [Step 1: Create Azure Reader Role](#step_1) above.
@@ -148,12 +163,16 @@ See [Scope Secret Managers to Applications and Environments](scope-secret-manage
 For every key vault that you'll want to write to, you must follow this procedure:
 
 1. Navigate to Azure 's **Key vaults** page.![](./static/azure-key-vault-15.png)
+
 2. Select the Vault instance that matches Harness Manager's **Vault** field.
 3. Select **Settings** > **Access policies**.
 4. In the **Access policies** page’s main area, click **Add access policy**.
 5. On the resulting **Add access policy** page, use the **Configure from template** drop-down to select **Key & Secret Management**.![](./static/azure-key-vault-16.png)
+
 6. Click **Select principal**.![](./static/azure-key-vault-17.png)
+
 7. In the resulting **Principal** pane at right, enter the name of the App registration whose **Client ID**, **Tenant ID**, **Key**, and **Vault** you’ve entered (above) in Harness Manager.![](./static/azure-key-vault-18.png)
+
 8. Click **Select** to select this App registration.
 9. Repeat the above steps (as needed) to make your other vaults writable.
 
@@ -162,6 +181,7 @@ For every key vault that you'll want to write to, you must follow this procedure
 You can create a Harness secret that refers to an existing secret in Azure Key Vault, using that secret's name (for example: `azureSecret`). You can also specify the secret's version (for example: `azureSecret/05`).
 
 ![](./static/azure-key-vault-19.png)
+
 
 ### Next Steps
 

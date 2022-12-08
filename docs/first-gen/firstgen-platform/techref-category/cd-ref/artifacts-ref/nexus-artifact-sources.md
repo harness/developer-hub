@@ -17,7 +17,8 @@ Make sure the connected user account has the following permissions in the Nexus 
 * Repo: All repositories (Read)
 * Nexus UI: Repository Browser
 
-![](./static/nexus-artifact-sources-00.png)If used as a Docker Repo, the user needs:
+![](./static/nexus-artifact-sources-00.png)
+If used as a Docker Repo, the user needs:
 
 * List images and tags
 * Pull images
@@ -82,6 +83,7 @@ Here is an example of the Nexus repo settings and how they are used in the Nexus
 
 ![](./static/nexus-artifact-sources-01.png)
 
+
 #### Source Server
 
 Select the name of the artifact source server you added in [Add Artifact Servers](../../../account/manage-connectors/configuring-artifact-server.md#nexus).
@@ -94,7 +96,8 @@ Select the Nexus format for your repo, such as Maven.
 
 Select the name of the repository where the artifact is located. If you don't see it, the API might have timed out. Enter its name and Harness will query for it.
 
-![](./static/nexus-artifact-sources-02.png)For **Nexus 2**, you can enter a variable expression to parameterize this setting.
+![](./static/nexus-artifact-sources-02.png)
+For **Nexus 2**, you can enter a variable expression to parameterize this setting.
 
 #### Group ID
 
@@ -134,11 +137,14 @@ For **Nexus 2**, you can enter a variable expression to parameterize the followi
 * Group ID
 * Artifact ID
 
-![](./static/nexus-artifact-sources-03.png)When you deploy a Workflow (or Pipeline containing the Workflow) using a Service with a parameterized Nexus artifact source, you are notified that the Artifact Source requires values:
+![](./static/nexus-artifact-sources-03.png)
+When you deploy a Workflow (or Pipeline containing the Workflow) using a Service with a parameterized Nexus artifact source, you are notified that the Artifact Source requires values:
 
-![](./static/nexus-artifact-sources-04.png)This is also true for the Artifact Collection step in a [Build Workflow](../../../../continuous-delivery/concepts-cd/deployment-types/ci-cd-with-the-build-workflow.md).
+![](./static/nexus-artifact-sources-04.png)
+This is also true for the Artifact Collection step in a [Build Workflow](../../../../continuous-delivery/concepts-cd/deployment-types/ci-cd-with-the-build-workflow.md).
 
-![](./static/nexus-artifact-sources-05.png)For Build Workflows, you are not prompted for artifact variables at deployment runtime because you must provide them in the Artifact Collection step.
+![](./static/nexus-artifact-sources-05.png)
+For Build Workflows, you are not prompted for artifact variables at deployment runtime because you must provide them in the Artifact Collection step.
 
 #### Switching Between Parameterized and Non-Parameterized
 

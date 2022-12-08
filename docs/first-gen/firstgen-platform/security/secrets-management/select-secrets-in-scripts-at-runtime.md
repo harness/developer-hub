@@ -54,6 +54,7 @@ You create a Shell Script template that uses a variable to replace the value of 
 ![](./static/select-secrets-in-scripts-at-runtime-30.png)
 
 
+
 In the following example, you can see the Shell Script template uses a Workflow variable in **Value** to replace the secret name in the script. When the Workflow is deployed, you enter in a new variable name.
 
 
@@ -61,12 +62,14 @@ In the following example, you can see the Shell Script template uses a Workflow 
 
 ![](./static/select-secrets-in-scripts-at-runtime-31.png)
 
+
 You can also perform the same substitution using Service Config Variables and
  [Environment Overrides](../../../continuous-delivery/model-cd-pipeline/environments/override-service-files-and-variables-in-environments.md):
 
 
 
 ![](./static/select-secrets-in-scripts-at-runtime-32.png)
+
 
 In this use case, you can have a single Service Config Variable and multiple Environments that override the variable with their own values. You can then
  [templatize the Workflow](../../../continuous-delivery/model-cd-pipeline/workflows/templatize-a-workflow-new-template.md) and select a different Environment each time you deploy.
@@ -95,6 +98,7 @@ For this example, we'll use a secret named `hello`.
 
 ![](./static/select-secrets-in-scripts-at-runtime-33.png)
 
+
 You can use file secrets, also, but we cover text secrets in this topic.
 
 
@@ -120,6 +124,7 @@ Create a **Shell Script** template. See
 
 
 ![](./static/select-secrets-in-scripts-at-runtime-34.png)
+
 
 In **Script**, enter a script that includes the text secret expression `${secrets.getValue("token")}`.
 
@@ -147,6 +152,7 @@ When you are done, the Shell Script template will look something like this:
 ![](./static/select-secrets-in-scripts-at-runtime-35.png)
 
 
+
 You can see that the variable `token` in **Variables** will replace the value in the `${secrets.getValue("token")}` expression with `hello`.
 
 
@@ -165,6 +171,7 @@ Here's an example that includes multiple options:
 
 
 ![](./static/select-secrets-in-scripts-at-runtime-36.png)
+
 
 Later, when you add this Workflow variable to the template, you will reference it as `${workflow.variables.secret_name}`.
 
@@ -186,6 +193,7 @@ In our example, the variable is named `secret`.
 
 ![](./static/select-secrets-in-scripts-at-runtime-37.png)
 
+
 Later, when you add this Service Config Variable to the template, you will reference it as `${serviceVariable.secret}`.
 
 
@@ -198,6 +206,7 @@ Here is an example where the Service Configuration Override uses the secret name
 
 
 ![](./static/select-secrets-in-scripts-at-runtime-38.png)
+
 
 In your Workflow, you can templatize the Environment setting so that you can select different Environments, and their Service Configuration Overrides, when you deploy the Workflow. See
  [Templatize a Workflow](../../../continuous-delivery/model-cd-pipeline/workflows/templatize-a-workflow-new-template.md).
@@ -222,12 +231,14 @@ Here is an example using the Workflow variable:
 
 ![](./static/select-secrets-in-scripts-at-runtime-39.png)
 
+
 Here is an example using the Service Config Variable:
 
 
 
 
 ![](./static/select-secrets-in-scripts-at-runtime-40.png)
+
 
 If you are using a Service Config Variable, ensure you add the template to a Workflow section that can access the Service. A Pre-deployment section
  cannot access Service Config Variables.
@@ -245,6 +256,7 @@ If you are using a Workflow variable, you will be prompted to provide a value fo
 
 
 ![](./static/select-secrets-in-scripts-at-runtime-41.png)
+
 
 If you use a
  [Trigger](../../../continuous-delivery/model-cd-pipeline/triggers/add-a-trigger-2.md) to execute the Workflow, you will select a secret name in the Trigger. You can also
@@ -268,12 +280,14 @@ Here is the **Execution Context** for a template using a Workflow variable:
 
 ![](./static/select-secrets-in-scripts-at-runtime-42.png)
 
+
 Here is the **Execution Context** for a template using a Service Config Variable:
 
 
 
 
 ![](./static/select-secrets-in-scripts-at-runtime-43.png)
+
 
 That's it. You have successfully selected a secret at deployment runtime.
 

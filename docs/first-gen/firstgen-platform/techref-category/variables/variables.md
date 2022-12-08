@@ -16,6 +16,7 @@ For example, you can use an expression containing the variable name `account` to
 
 ![](./static/variables-15.png)
 
+
 ### Overview
 
 Harness includes two types of variables that you can use in expressions:
@@ -68,7 +69,10 @@ An easy way to see what expressions are already used in your deployments is to l
 1. In Harness, click **Continuous Deployment**.
 2. Locate a deployment and open it.
 3. Expand the deployment flowchart and then click any step in the deployment. You will see its details displayed.![](./static/variables-16.png)
-4. In the execution details, click the option button and click **View Execution Context**.![](./static/variables-17.png)The expressions used in that step are displayed.![](./static/variables-18.png)If an expression is too long to view, hover over it to see its full name.
+
+4. In the execution details, click the option button and click **View Execution Context**.![](./static/variables-17.png)
+The expressions used in that step are displayed.![](./static/variables-18.png)
+If an expression is too long to view, hover over it to see its full name.
 
 Now you can reference those expressions elsewhere in your Workflow or Pipeline, in the set up of the Workflow, or in command such as Shell Script.
 
@@ -111,18 +115,24 @@ Account Defaults are account-level variables available to all users logged into 
 To create an Account Default variable, do the following:
 
 1. Log into Harness, and then click **Setup**.
-2. Click the More Options ⋮ menu next to **Account**, and then click **Account Defaults**.![](./static/variables-19.png)![](./static/variables-20.png)
+2. Click the More Options ⋮ menu next to **Account**, and then click **Account Defaults**.![](./static/variables-19.png)
+![](./static/variables-20.png)
+
 3. Click **Add Row**. A new row appears.![](./static/variables-21.png)
+
 4. In **Name**, enter a name for the variable. Ensure that the name is descriptive, as users will be looking at a list of variable names and will need to distinguish between them.
 5. In **Type**, select **STRING**.
 6. In **Value**, enter the value for the variable. For example, if you added an Account Default variable for **productName**, the dialog would look like this:![](./static/variables-22.png)
+
 7. Click **SUBMIT**. The new variable is added.  
   
 Now, let's reference the variable.
 
 1. Open a Harness Application, and then open a Service, such as Docker or Pivotal Cloud Foundry (PCF) Service within that Application.
 2. In the Service, under **Configuration**, click **Add Variable**. The **Config Variable** dialog appears.![](./static/variables-23.png)
+
 3. In **Value**, enter `${account.defaults}` to see the account variables displayed.![](./static/variables-24.png)
+
 4. Click the account variable name to enter it. It is entered as `${account.defaults.variable_name}`.
 
 ### Application Default Variables
@@ -137,7 +147,8 @@ You can create encrypted text items in Harness **Secrets Management**, and refer
 
 For example, you can add a username as an encrypted text item, named **Username**, and then reference it using the variable `${secrets.getValue("Username")}`.
 
-By default, the `${secrets.getValue("var_name")}` is available in the Harness Applications listed in its **Usage Scope**. To make the secret available Account-wide, so that it can be used in a [Delegate Profile](../../account/manage-delegates/delegate-installation.md#delegate-profiles), you must select the **Scope to Account** option:![](./static/variables-25.png)For an extended example, see [Using Secrets in a Profile](../../account/manage-delegates/delegate-installation.md#using-secrets-in-a-profile).
+By default, the `${secrets.getValue("var_name")}` is available in the Harness Applications listed in its **Usage Scope**. To make the secret available Account-wide, so that it can be used in a [Delegate Profile](../../account/manage-delegates/delegate-installation.md#delegate-profiles), you must select the **Scope to Account** option:![](./static/variables-25.png)
+For an extended example, see [Using Secrets in a Profile](../../account/manage-delegates/delegate-installation.md#using-secrets-in-a-profile).
 
 ### Service Config Variables
 
@@ -239,25 +250,32 @@ The **Deployments** page in Harness Manager displays the output of any of the Ha
 
 Here is an example of the Harness variables in a Shell Script command in a Kubernetes Workflow:
 
-![](./static/variables-26.png)Here is the output of these variables displayed in the **Execution Context** panel:
+![](./static/variables-26.png)
+Here is the output of these variables displayed in the **Execution Context** panel:
 
-![](./static/variables-27.png)#### View 3rd Party API Calls
+![](./static/variables-27.png)
+#### View 3rd Party API Calls
 
 To see the output from third-party API calls, you select a Verification Provider node, and then click **View 3rd Party API Calls** option:
 
-![](./static/variables-28.png)The **Third Party API Call History** window appears.
+![](./static/variables-28.png)
+The **Third Party API Call History** window appears.
 
-![](./static/variables-29.png)Clicking the API call links displays the request and response for the call:
+![](./static/variables-29.png)
+Clicking the API call links displays the request and response for the call:
 
-![](./static/variables-30.png)#### Install Command
+![](./static/variables-30.png)
+#### Install Command
 
 Some Workflow commands contain a lot of variable output information. An example is the Install command:
 
-![](./static/variables-31.png)#### Output History
+![](./static/variables-31.png)
+#### Output History
 
 Each deployment shows its own execution variable output. Rerunning the deployment does not overwrite the output. If you rerun a deployment, the old deployment contains its variable output, and the new deployment contains its new variable output.
 
-![](./static/variables-32.png)### See Also
+![](./static/variables-32.png)
+### See Also
 
 * [Passing Variables into Workflows and Pipelines from Triggers](../../../continuous-delivery/model-cd-pipeline/expressions/passing-variable-into-workflows.md)
 * [Triggers](../../../continuous-delivery/model-cd-pipeline/triggers/add-a-trigger-2.md)

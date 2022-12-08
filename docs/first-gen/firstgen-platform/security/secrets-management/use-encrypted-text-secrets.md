@@ -19,6 +19,7 @@ You can encrypt any text and reference it in Harness Application entities or con
 
 1. In **Secrets Management**, click **Encrypted Text**.
 2. Click **Add Encrypted Text**. The **Add Encrypted Text** dialog appears.![](./static/use-encrypted-text-secrets-68.png)
+
 3. Select the **Secrets Manager** you will use to encrypt this secret.
 4. Enter a name for the encrypted text. This is the name you will use to reference the text elsewhere in your applications.
 5. Enter a value for the encrypted text.
@@ -41,7 +42,8 @@ All of the passwords and keys used in Harness Connectors (Cloud Providers, Artif
 
 You create the Encrypted Text secret first and then select it in the Connector. Or you can create it from the Connector by clicking **Create Encrypted Text**:
 
-![](./static/use-encrypted-text-secrets-69.png)You can also edit it in the Connector.
+![](./static/use-encrypted-text-secrets-69.png)
+You can also edit it in the Connector.
 
 ### Step 4: Reference the Encrypted Text
 

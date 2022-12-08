@@ -54,9 +54,11 @@ For a visual overview of how Harness and Git sync works, see [Configuration as C
 
 Here is an example of some of the information available in **Git Sync Activity**:
 
-![](./static/view-harness-git-sync-activity-23.png)Here is some of the information available in each activity record:
+![](./static/view-harness-git-sync-activity-23.png)
+Here is some of the information available in each activity record:
 
 ![](./static/view-harness-git-sync-activity-24.png)
+
 
 ### Step 1: Open Git Sync Activity
 
@@ -77,7 +79,8 @@ To view git activity for all Harness account-level components, do the following:
 
 In **Git Sync Activity**, in **Filter by**, select **Setup**.
 
-![](./static/view-harness-git-sync-activity-25.png)The **Setup** option is always at the top of the drop-down.The results are ordered by more recent to oldest.
+![](./static/view-harness-git-sync-activity-25.png)
+The **Setup** option is always at the top of the drop-down.The results are ordered by more recent to oldest.
 
 You can sort the results by Activity Type, explained later in this topic.
 
@@ -91,19 +94,23 @@ To view Git activity for a Harness Application, do the following:
 
 In **Git Sync Activity**, in **Filter by**, select the name of your Harness Application.
 
-![](./static/view-harness-git-sync-activity-26.png)You can simply type in the name to locate the Application.
+![](./static/view-harness-git-sync-activity-26.png)
+You can simply type in the name to locate the Application.
 
 Harness displays the Application name, repo name, and repo branch name.
 
-![](./static/view-harness-git-sync-activity-27.png)The results display all Harness-related Git activity.
+![](./static/view-harness-git-sync-activity-27.png)
+The results display all Harness-related Git activity.
 
 If your Git webhook was incorrectly set up or changed in your repo and you committed a change in Git, the activity will not appear in Harness because the webhook failed to connect with Harness.### Option 1: Select Activity to View
 
 Use the Activity Type setting to select the Git activity you want to see. You can sort by **All**, **Git → Harness**, and **Harness → Git**.
 
-![](./static/view-harness-git-sync-activity-28.png)The sync direction is also displayed in every record.
+![](./static/view-harness-git-sync-activity-28.png)
+The sync direction is also displayed in every record.
 
 ![](./static/view-harness-git-sync-activity-29.png)
+
 
 ### Step 4: View Details
 
@@ -111,15 +118,18 @@ Click **View Details** on any record to see what happened.
 
 Each record displays a number of useful details from your Git commit. Here is an example of Git → Harness activity. You can see the commit in Github and in Harness:
 
-![](./static/view-harness-git-sync-activity-30.png)In the above example, you can see a difference in time since activity between Git and Harness records. This is because the initial Git → Harness activity failed due to an incorrect webhook. Once the webhook was fixed, the Git → Harness sync occurred.
+![](./static/view-harness-git-sync-activity-30.png)
+In the above example, you can see a difference in time since activity between Git and Harness records. This is because the initial Git → Harness activity failed due to an incorrect webhook. Once the webhook was fixed, the Git → Harness sync occurred.
 
 ### Step 5: Search by Status and Filename
 
 If you have a large commit that involves many files, you can sort the activity by status:
 
-![](./static/view-harness-git-sync-activity-31.png)You can also search by filename. Wildcards are not supported. Simply type any letter in the name and see all matching files.
+![](./static/view-harness-git-sync-activity-31.png)
+You can also search by filename. Wildcards are not supported. Simply type any letter in the name and see all matching files.
 
 ![](./static/view-harness-git-sync-activity-32.png)
+
 
 ### Step 6: View File Content
 
@@ -127,11 +137,13 @@ To view the content of a change, click **View Content** on any file. The YAML of
 
 ![](./static/view-harness-git-sync-activity-33.png)
 
+
 ### Step 7: View File History
 
 To view the history of all changes to the file, click **View History**.
 
-![](./static/view-harness-git-sync-activity-34.png)Each commit ID for the file is shown, along with its activity type, status, and change type.
+![](./static/view-harness-git-sync-activity-34.png)
+Each commit ID for the file is shown, along with its activity type, status, and change type.
 
 ### Review: Status and Error Messages
 
@@ -155,9 +167,13 @@ The status and errors message will appear as part of the Git sync process. Below
 The records displayed in Git Sync Activity have the following statuses:
 
 * **Completed** — The sync completed in either direction.![](./static/view-harness-git-sync-activity-35.png)
+
 * **Processed** — Harness successfully pushed or pulled the Git change, but was unable to make the change because of a conflict. For this reason, the activity is marked as Processed instead of Completed.  
 For example, a change made to a file in Git made it incompatible with Harness configuration requirements. In the following example, a required value was missing:![](./static/view-harness-git-sync-activity-36.png)
-* **Success** — The number of successful file changes in the Git activity.![](./static/view-harness-git-sync-activity-37.png)Harness also provides details on activity that fixes errors:![](./static/view-harness-git-sync-activity-38.png)
+
+* **Success** — The number of successful file changes in the Git activity.![](./static/view-harness-git-sync-activity-37.png)
+Harness also provides details on activity that fixes errors:![](./static/view-harness-git-sync-activity-38.png)
+
 * **Failed** — The number of unsuccessful file changes in the Git activity.
 * **Skipped** — If there are files in the commit that are not Harness files.
 
@@ -170,6 +186,7 @@ In most cases, a sync is failed to prevent issues. For example, when changes to 
 Here is an example of some errors:
 
 ![](./static/view-harness-git-sync-activity-39.png)
+
 
 ### Review: RBAC with Git Sync Activity
 

@@ -38,6 +38,7 @@ Start adding a Collaboration Provider to Harness as follows:
 Select **Jira**. The Jira settings appear.
 
 ![](./static/add-jira-collaboration-provider-30.png)
+
 ### Step 3: Display Name
 
 In **Display Name**, enter a unique name to identify this Jira account connection. When you add Jira steps to Workflows or Pipelines, you will select the appropriate Jira account using this name.

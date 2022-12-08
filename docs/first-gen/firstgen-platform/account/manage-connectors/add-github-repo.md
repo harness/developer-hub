@@ -81,6 +81,7 @@ For example, here are the HTTPS and SSH URLs from Github:
 
 ![](./static/add-github-repo-24.png)
 
+
 ### Step: Username and Password/Token
 
 Readonly GitHub repos also require username and password/token.In **Select Encrypted Password/Token**, select or create a new  [Harness Encrypted Text secret](../../security/secrets-management/use-encrypted-text-secrets.md) for the credentials of your Github user account.

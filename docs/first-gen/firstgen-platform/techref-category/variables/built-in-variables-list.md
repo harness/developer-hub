@@ -582,7 +582,8 @@ Approval variables can be defined only within Workflow Approval steps that use t
 
 The ECS service Harness deploys is named using whatever is set in the **ECS Service Setup** Workflow step's **ECS Service Name** setting:
 
-![](./static/built-in-variables-list-02.png)By default, the ECS service is named using a concatenation of Harness Application, Service, and Environment names: `${app.name}__${service.name}__${env.name}`.
+![](./static/built-in-variables-list-02.png)
+By default, the ECS service is named using a concatenation of Harness Application, Service, and Environment names: `${app.name}__${service.name}__${env.name}`.
 
 You can use a [Workflow variable](../../../continuous-delivery/model-cd-pipeline/workflows/add-workflow-variables-new-template.md) or built-in Harness expression in the **ECS Service Name** setting. You can then use that variable elsewhere to refer to the deployed service name.
 
@@ -606,7 +607,8 @@ The `serviceName` references the **ECS Service Name** setting.
 
 So, in this example, the reference is `${ECS__Service__Setup.serviceName}`.
 
-![](./static/built-in-variables-list-03.png)You must use double underscores in between any letters or numbers in the step name reference. For example, any spaces must be replaced double underscores.
+![](./static/built-in-variables-list-03.png)
+You must use double underscores in between any letters or numbers in the step name reference. For example, any spaces must be replaced double underscores.
 
 For example, you can use a [Shell Script](../../../continuous-delivery/model-cd-pipeline/workflows/capture-shell-script-step-output.md) step after the **ECS Service Setup** step to output the newly created ECS service name, including the version number suffix Harness adds each deployment:
 
@@ -716,7 +718,8 @@ These variables access infrastructure settings and so they cannot be used in the
 
 * The `${infra.kubernetes.infraId}` expression is a unique identifier that identifies the combination of Service and Infrastructure Definition. In the Infrastructure Definition **Service Infrastructure Mapping** below each listing has a unique identifier that can be referenced using `${infra.kubernetes.infraId}`:
 
-![](./static/built-in-variables-list-04.png)`release-${infra.kubernetes.infraId}` is typically used in the **Release Name** setting for a Harness Kubernetes Infrastructure Definition. Release names must be unique. Harness uses the release name for tracking releases.
+![](./static/built-in-variables-list-04.png)
+`release-${infra.kubernetes.infraId}` is typically used in the **Release Name** setting for a Harness Kubernetes Infrastructure Definition. Release names must be unique. Harness uses the release name for tracking releases.
 
 Use `release-${infra.kubernetes.infraId}` for the **Release Name** instead of just `${infra.kubernetes.infraId}`.
 

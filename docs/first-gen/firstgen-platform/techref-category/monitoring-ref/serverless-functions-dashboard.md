@@ -10,11 +10,13 @@ helpdocs_is_published: true
 
 Harness Manager's Serverless Functions Dashboard offers views of your Lambda deployment data.
 
-![](./static/serverless-functions-dashboard-00.png)The dashboard provides details for each deployment, giving you a way to view accumulated deployment details quickly.
+![](./static/serverless-functions-dashboard-00.png)
+The dashboard provides details for each deployment, giving you a way to view accumulated deployment details quickly.
 
 Here is an individual [Lambda deployment](../../../continuous-delivery/aws-deployments/lambda-deployments/lambda-deployment-overview.md) and how it is displayed on the Serverless Functions dashboard:
 
 ![](./static/serverless-functions-dashboard-01.png)
+
 
 ### Lambda Execution Role Policy Requirements
 

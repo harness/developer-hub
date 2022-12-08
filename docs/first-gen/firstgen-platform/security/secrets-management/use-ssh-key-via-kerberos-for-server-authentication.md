@@ -58,7 +58,8 @@ This field is displayed if you select **Key Tab File Path** for **TGT Generation
 
 To use the Kerberos SSH connection to connect to a target host, you select it in **SSH Connection Attributes** while specifying the target host in the Service Infrastructure/ [Infrastructure Definition](../../../continuous-delivery/model-cd-pipeline/environments/environment-configuration.md#add-an-infrastructure-definition) settings of an environment.
 
-![](./static/use-ssh-key-via-kerberos-for-server-authentication-61.png)In this example, the target host that you want to use Kerberos authentication with is entered in **Host Name(s)**.
+![](./static/use-ssh-key-via-kerberos-for-server-authentication-61.png)
+In this example, the target host that you want to use Kerberos authentication with is entered in **Host Name(s)**.
 
 Note that the domain name used to identify the hosts in the **Host Name(s)** field is likely to be the same as the domain name you entered in **Realm** when configuring the SSH connection.
 

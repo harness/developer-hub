@@ -35,6 +35,7 @@ The following diagram shows how the Delegate enables Harness to integrate with a
 
 ![](./static/install-shellscript-delegate-35.png)
 
+
 ### Review: Requirements
 
 * cURL version 7.64.1 or later.

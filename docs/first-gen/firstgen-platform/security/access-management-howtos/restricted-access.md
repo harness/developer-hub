@@ -30,6 +30,7 @@ You can provide read-only access to authorized Harness personnel using the **Res
 1. In Harness, click **Security**.
 2. Click **Restricted Access**.
 3. Click on the toggle to turn it on.![](./static/restricted-access-163.png)
+
 4. Click **Add Access Request**. The Restricted Access settings appear.
 5. Enter the email addresses of the people you would like to give access.
 6. Enter **Number of hours** to grant access.

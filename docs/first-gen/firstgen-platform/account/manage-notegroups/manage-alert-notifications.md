@@ -31,7 +31,8 @@ To set up an Alert Notification Rule, do the following:
 
 1. In Harness Manager, click **Setup**, and then click **Alert Notification Rules**. The **Alert Notification Rules** settings appear.
 
-![](./static/manage-alert-notifications-06.png)The options here are outlined in the following sections:
+![](./static/manage-alert-notifications-06.png)
+The options here are outlined in the following sections:
 
 * [Alert Notification Status Toggle](#alert_notification_status_toggle)
 * [Catch-All Notification Rule Setup](#catch_all_notification_rule)
@@ -42,7 +43,8 @@ To set up an Alert Notification Rule, do the following:
 
 The **Alert Notification Status** slider at upper right is a global panic button for situations where your users are receiving too-frequent notifications. By sliding this to its **OFF** position, you restrict notifications to Harness Manager's adjacent bell-shaped **Alerts** indicator, only. This prevents notifications from being forwarded to any of the channels configured below.
 
-![](./static/manage-alert-notifications-07.png)While set to **OFF**, this Status toggle will suppress notifications to all User Groups—those configured under both the [Catch-All Notification Rule](#catch_all_notification_rule) and [Alert Notification Rules](#alert_notification_rules_2) sections.
+![](./static/manage-alert-notifications-07.png)
+While set to **OFF**, this Status toggle will suppress notifications to all User Groups—those configured under both the [Catch-All Notification Rule](#catch_all_notification_rule) and [Alert Notification Rules](#alert_notification_rules_2) sections.
 #### Catch-All Notification Rule Setup
 
 In **Catch-All Notification Rule**, you specify the User Groups to use as the Catch-All Notification Groups, and the alert rules for those Groups. Whatever rules are not covered by the parallel **Alert Notification Rules** section are applied to the User Groups in the **Catch-All Notification Rule** section.
@@ -53,6 +55,7 @@ At least one **Catch-All Notification Rule** User Group is required. By default,
 
 1. In the **Alert Notification Rules** page, click the pencil icon next to the **Catch-All Notification User Group**. The **Notification Settings** dialog appears.![](./static/manage-alert-notifications-08.png)
 
+
 1. In **User Group(s)**, select the User Groups to set as the **Catch-All Notification User Groups**.
 2. Click **SUBMIT**. The groups you selected are listed.
 
@@ -62,11 +65,14 @@ For the Catch-All group, the **Notification Settings** dialog's **Alert Category
 
 The Alert Notification Rules determine how alerts are routed to User Groups.
 
-![](./static/manage-alert-notifications-09.png)To begin defining an alert notification rule, do the following:
+![](./static/manage-alert-notifications-09.png)
+To begin defining an alert notification rule, do the following:
 
 1. In the **Alert Notification Rules** section, click **Add New Rule**. The **Notification Settings** dialog appears.
 
-![](./static/manage-alert-notifications-10.png)1. Set the **Alert Filter** to either **Matching** or **Not Matching**, depending on the type of rule you want to create.![](./static/manage-alert-notifications-11.png)
+![](./static/manage-alert-notifications-10.png)
+1. Set the **Alert Filter** to either **Matching** or **Not Matching**, depending on the type of rule you want to create.![](./static/manage-alert-notifications-11.png)
+
 
 1. In **Alert Category**, select a category.
 
@@ -85,7 +91,9 @@ Selecting an **Alert Category** of **Setup** keeps the **Notification Settings**
   
 When you are done, the dialog will look something like this:
 
-![](./static/manage-alert-notifications-12.png)1. Click **SUBMIT**. The new rule is displayed.![](./static/manage-alert-notifications-13.png)
+![](./static/manage-alert-notifications-12.png)
+1. Click **SUBMIT**. The new rule is displayed.![](./static/manage-alert-notifications-13.png)
+
 
 
 ### Step 3: Set up 24/7 Service Guard Alerts
@@ -101,7 +109,9 @@ Set the **Alert Type** to **24/7 Service Guard**.
 5. Select the **User Groups(s)** to receive the alert.  
 When you are done, the dialog will look something like this:
 
-![](./static/manage-alert-notifications-14.png)1. Click **SUBMIT**. The new rule is displayed.![](./static/manage-alert-notifications-15.png)
+![](./static/manage-alert-notifications-14.png)
+1. Click **SUBMIT**. The new rule is displayed.![](./static/manage-alert-notifications-15.png)
+
 
 
 ### Review: Alert Thresholds
@@ -122,13 +132,16 @@ To set the Overall Risk Level at which Harness originally *triggers* alerts—ba
 
 ![](./static/manage-alert-notifications-16.png)
 
+
 #### Alert Examples
 
 Here is an example of an alert in Slack:
 
-![](./static/manage-alert-notifications-17.png)Here is an example of an alert in email:
+![](./static/manage-alert-notifications-17.png)
+Here is an example of an alert in email:
 
 ![](./static/manage-alert-notifications-18.png)
+
 ### Step 4: Set up Workflow and Phase Notifications
 
 Workflow notifications are set up in the Workflow **Notification Strategy** settings. For information on setting the Workflow Notification Strategy, see [Notification Strategy](../../../continuous-delivery/model-cd-pipeline/workflows/workflow-configuration.md#notification-strategy).

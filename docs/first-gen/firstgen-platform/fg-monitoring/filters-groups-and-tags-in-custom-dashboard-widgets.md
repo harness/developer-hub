@@ -32,11 +32,14 @@ In this topic:
 
 Click **Add Data Filter** to begin defining a filter. Use the resulting **Select Filter Type** drop-down to select which Harness entity or Tag to use as the filter.
 
-![](./static/filters-groups-and-tags-in-custom-dashboard-widgets-70.png)In most Widgets, the **Add Data Filter** link remains available to add more filters. Multiple filter rows combine using AND search logic. Each filter that you add can further narrow the returned data.
+![](./static/filters-groups-and-tags-in-custom-dashboard-widgets-70.png)
+In most Widgets, the **Add Data Filter** link remains available to add more filters. Multiple filter rows combine using AND search logic. Each filter that you add can further narrow the returned data.
 
-![](./static/filters-groups-and-tags-in-custom-dashboard-widgets-71.png)The adjacent **Select Filter Values** drop-down allows multiple selections. Within a given filter, values combine using OR search logic. Each value that you add can broaden the data retrievable with this filter.
+![](./static/filters-groups-and-tags-in-custom-dashboard-widgets-71.png)
+The adjacent **Select Filter Values** drop-down allows multiple selections. Within a given filter, values combine using OR search logic. Each value that you add can broaden the data retrievable with this filter.
 
 ![](./static/filters-groups-and-tags-in-custom-dashboard-widgets-72.png)
+
 
 |  |  |
 | --- | --- |
@@ -48,10 +51,13 @@ Each Tag filter can target only a single entity type (**Application**, **Environ
 
 Remember that the AND logic among the rows will further restrict your retrieved data.![](./static/filters-groups-and-tags-in-custom-dashboard-widgets-73.png)
 
+
 ### Tips
 
 Here are some tips about how to avoid unintended filter results.
 
 * Adding a filter target with *no* filter value doesn't restrict the Widget's data. The incomplete examples below don't actually function as filters.![](./static/filters-groups-and-tags-in-custom-dashboard-widgets-74.png)
+
 * Do not filter on an entity name, or Tag value, that's not used on the Harness entity (**Metric**) you're charting. This will generate a **No Data!** error when you preview, create, or update the Widget.![](./static/filters-groups-and-tags-in-custom-dashboard-widgets-75.png)
+
 

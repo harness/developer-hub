@@ -67,6 +67,7 @@ Enter the URL of the Jenkins server. If you are using the Jenkins SaaS (cloud) e
 
 ![](./static/add-jenkins-artifact-servers-22.png)
 
+
 ### Option: Use this URL for Job Execution
 
 Select this option to have Harness use this URL when executing jobs in the [Jenkins Workflow step](../../../continuous-delivery/model-cd-pipeline/workflows/using-the-jenkins-command.md). In most cases, you will not need to select this option.

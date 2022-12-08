@@ -108,7 +108,8 @@ Click in **Docker Image Name** and select or enter the name of the artifact you 
 
 Enter the name of the server from the `docker login` command. For example:
 
-![](./static/artifactory-artifact-sources-06.png)If you don't see it, the API might have timed out. Enter its name and Harness will query for it.
+![](./static/artifactory-artifact-sources-06.png)
+If you don't see it, the API might have timed out. Enter its name and Harness will query for it.
 
 See [Configuring Docker Repositories](https://www.jfrog.com/confluence/display/RTF/Docker+Registry#DockerRegistry-ConfiguringDockerRepositories) from JFrog for more information. It describes the URLs for local, remote, and virtual repositories.
 
