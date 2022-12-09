@@ -184,7 +184,7 @@ The **Rollout Deployment** step is added to **Execution**.
 
 That's it. Now you're ready to deploy.
 
-### Step 5: Deploy and Review
+## Step 5: Deploy and Review
 
 1. Click **Save** to save your Pipeline.
 2. Click **Run**.
@@ -216,6 +216,6 @@ In this quickstart, you learned how to:
 
 ## Next Steps
 
-* See [CD tutorials](/category/cd-tutorials) for other deployment features.
+* See [CD tutorials](/docs/category/cd-tutorials) for other deployment features.
 * [Trigger Pipelines on New Helm Chart](https://docs.harness.io/article/54eqk0d1bd-trigger-pipelines-on-new-helm-chart).
 

@@ -261,5 +261,5 @@ For steps on deleting the Delgate, go to [Delegate a delegate](https://docs.harn
 
 ## Next Steps
 
-See [CD tutorials](/category/cd-tutorials) for other deployment features.
+See [CD tutorials](/docs/category/cd-tutorials) for other deployment features.
 

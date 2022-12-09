@@ -75,12 +75,12 @@ The following list describes the major steps of a Harness Kubernetes deployment.
 | 3 | Define the Harness **Service** using the Kubernetes Deployment Type. | Add your Docker images and Kubernetes manifests and any config variables and files.<br/>See [Add Container Images for Kubernetes Deployments](add-artifacts-for-kubernetes-deployments.md). |
 | 6 | Define the Harness **Environment** and Infrastructure Definition for your target Kubernetes clusters, and any overrides. | Using the Harness Connector you set up, you can select the target Kubernetes cluster and namespace for your deployment.<br/>See [Define Your Kubernetes Target Infrastructure](../../cd-infrastructure/kubernetes-infra/define-your-kubernetes-target-infrastructure.md). |
 | 7 | Add the Canary, Blue/Green, or Rollout steps to the Deploy stage. | The stage deploys the artifact(s) and Kubernetes workloads defined in the Harness Service to the cluster and namespace in the Infrastructure Definition.<br/>See: [Create a Kubernetes Rolling Deployment](../../cd-execution/kubernetes-executions/create-a-kubernetes-rolling-deployment.md),  [Create a Kubernetes Canary Deployment](../../cd-execution/kubernetes-executions/create-a-kubernetes-canary-deployment.md), [Create a Kubernetes Blue/Green Deployment](../../cd-execution/kubernetes-executions/create-a-kubernetes-blue-green-deployment.md) |
-| 8 | Deploy the Pipeline. | Once you've deployed a Pipeline, learn how to improve your Kubernetes CD in [Kubernetes how-tos](/category/kubernetes). |
+| 8 | Deploy the Pipeline. | Once you've deployed a Pipeline, learn how to improve your Kubernetes CD in [Kubernetes how-tos](/docs/category/kubernetes). | 
 
 ## Next Steps
 
 Read the following topics to build on what you've learned:
 
-* [Kubernetes CD Quickstart](../../onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md) tutorial
-* [Kubernetes How-tos](https://docs.harness.io/category/kubernetes)
+* [Kubernetes deployment tutorial](../../onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md) tutorial
+* [Kubernetes How-tos](/docs/category/kubernetes)
 
