@@ -34,6 +34,9 @@
     justify-content: center;
     align-items: center;
     gap: 32px;
+    a:hover {
+      color: unset;
+    }
     li {
       box-sizing: border-box;
 
