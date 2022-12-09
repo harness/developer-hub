@@ -37,7 +37,7 @@ This topic assumes that you have the following:
   
       ![](./static/exemption-click-create-request.png)
      
-3. Send a notification of your exemption request — via email, Slack, Jira, etc. to your SecOps reviewer. Your notification should include the URL to the Security Tests page with the relevant issue selected.
+3. Send a notification of your exemption request — via email, Slack, Jira, etc. — to your SecOps reviewer. Your notification should include the URL to the Security Tests page with the relevant issue selected.
 
 
 ## Review, Approve, and Reject Ignore Rules (_SecOps users only_)

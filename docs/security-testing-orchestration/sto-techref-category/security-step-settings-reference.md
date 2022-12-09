@@ -40,6 +40,7 @@ The following scanners are supported.
 |  [Docker Content Trust (clair)](#docker-content-trust-clair) | container | orchestratedScan, ingestionOnly |
 |  [External (JSON upload v2)](../use-sto/ingesting-issues-from-other-scanners.md) | container, repository, instance, configuration | ingestionOnly |
 |  [Fortify on Demand](#fortify-on-demand) | repository | orchestratedScan, dataLoad, ingestionOnly |
+|  [Grype](grype-scanner-reference.md) | container, repository | orchestratedScan, ingestionOnly |
 |  [Mend (formerly WhiteSource)](#mend-formerly-whitesource) | repository | orchestratedScan, ingestionOnly |
 |  [Metasploit](#metasploit) | instance | orchestratedScan, ingestionOnly |
 |  [Nessus](#nessus) | instance | orchestratedScan, ingestionOnly |
@@ -314,6 +315,7 @@ Go to [Ingesting issues from other scanners](../use-sto/ingesting-issues-from-ot
 
 [↑ Scanners](#scanners-target-types-and-scan-approach)
 
+<!--
 ### Fortify
 
 When `product_name` is set to `fortify`
@@ -329,6 +331,8 @@ When `product_name` is set to `fortify`
 		- `default`
 
 [↑ Scanners](#scanners-target-types-and-scan-approach)
+
+-->
 
 ### Fortify on Demand
 

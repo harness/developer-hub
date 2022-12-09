@@ -8,8 +8,8 @@ sidebar_position: 35
 
 ### Important Notes
 
-* STO supports container scans and file systems with Grype.
-* STO supports [orchestrated scans](../use-sto/run-an-orchestrated-scan-in-sto.md) and ingestionOnly scans  with Grype. 
+* STO supports Grype scans of containers and repositories.
+* STO supports [orchestrated scans](../use-sto/run-an-orchestrated-scan-in-sto.md) and [ingestionOnly scans](../use-sto/ingest-scan-results-into-an-sto-pipeline.md) scans  with Grype. 
 
 ### Required Settings
 
