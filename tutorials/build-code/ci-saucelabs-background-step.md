@@ -49,18 +49,22 @@ This connector needs an access token with **Read-only** permissions.
 2. In the **Name** field, enter a name for your pipeline, then select **Start**.
 3. Switch from the **Visual** view to the **YAML** view, and then select **Edit YAML**.
 
-Append one of the the following example configurations:
+Append the following configuration:
 
-:::tip
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs
+    defaultValue="cloud"
+    values={[
+        {label: 'Cloud', value: 'cloud'},
+        {label: 'Kubernetes', value: 'kubernetes'},
+    ]}>
+<TabItem value="cloud">
+```
 
 **Cloud** pipelines run in managed infrastructure provided by Harness.
-
-**Kubernetes** pipelines run in a Kubernetes cluster that you manage. Kubernetes pipelines are an enterprise feature.
-
-:::
-
-<details><summary>Cloud infrastructure pipeline</summary>
-<p>
 
 ```yaml
   variables:
@@ -111,11 +115,13 @@ Append one of the the following example configurations:
                       echo "SC ready"
 ```
 
-</p>
-</details>
+```mdx-code-block
+</TabItem>
 
-<details><summary>Kubernetes infrastructure pipeline</summary>
-<p>
+<TabItem value="kubernetes">
+```
+
+**Kubernetes** pipelines run in a Kubernetes cluster that you manage. Kubernetes pipelines are an enterprise feature.
 
 ```yaml
   variables:
@@ -178,8 +184,10 @@ Replace `Kubernetes_Connector` with your Kubernetes cluster connector ID.
 
 :::
 
-</p>
-</details>
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
 
 :::info
 
