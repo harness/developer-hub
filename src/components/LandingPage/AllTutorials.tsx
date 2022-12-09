@@ -78,14 +78,29 @@ const CIList: CardItem[] = [
     icon: "/img/icon_ci.svg",
     description: (
       <>
-        This build automation guide shows how to run LocalStack as a Service
-        Dependency in a CI Pipeline
+        This build automation guide shows how to run LocalStack as a Background 
+        step in a CI Pipeline
       </>
     ),
     newDoc: true,
     type: [docType.Documentation],
     time: "15 min",
     link: "/tutorials/build-code/ci-localstack-background-step",
+  },
+  {
+    title: "Run Sauce Connect Proxy as a Service",
+    module: "ci",
+    icon: "/img/icon_ci.svg",
+    description: (
+      <>
+        This build automation guide walks you through running Sauce Connect
+        Proxy as a Background step in a CI Pipeline
+      </>
+    ),
+    newDoc: true,
+    type: [docType.Documentation],
+    time: "15 min",
+    link: "/tutorials/build-code/ci-saucelabs-background-step",
   },
   {
     title: "Build and publish a Java HTTP Server",
