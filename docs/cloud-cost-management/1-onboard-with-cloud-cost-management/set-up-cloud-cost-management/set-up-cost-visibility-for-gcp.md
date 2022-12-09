@@ -45,9 +45,11 @@ Connect Harness to your GCP account to gain access your GCP services, Compute En
    ```mdx-code-block
 <img src={select_gcp} alt="A screenshot that illstrates how and where to select the cloud provider." height="500" width="600" />
 
+
+Perform the following tasks in the **GCP Connector** wizard:
 ### Overview
-4. In **Overview**, in **Connector Name**, enter a name that describes this account.
-5. In **Specify Project ID**, enter the project ID and click **Continue**. For more information on how to get a project ID, see [Create a BigQuery dataset](https://cloud.google.com/billing/docs/how-to/export-data-bigquery-setup#create-bq-dataset).
+1. In **Overview**, in **Connector Name**, enter a name that describes this account.
+2. In **Specify Project ID**, enter the project ID and click **Continue**. For more information on how to get a project ID, see [Create a BigQuery dataset](https://cloud.google.com/billing/docs/how-to/export-data-bigquery-setup#create-bq-dataset).
 
 ### GCP Billing Export
 

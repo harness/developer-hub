@@ -110,13 +110,13 @@ If you have not created a cloud provider connector already, click **New Connecto
 * GCP: [Create a GCP Connector for AutoStopping Rules](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/1-add-connectors/create-a-gcp-connector-for-auto-stopping-rules.md)
   
     ![](./static/k8s-connector-autostopping-11.png)
-1. After creating your cloud account type Connector, select the Connector, and click **Apply Selected**.
+5. After creating your cloud account type Connector, select the Connector, and click **Apply Selected**.
    
      ![](./static/k8s-connector-autostopping-12.png)
-2. In **Let's get you started** page, click **Next**.
-3. In **Configurations**, in **Define your AutoStopping rule**, in **Name your Rule**, enter a name for your rule. This is the name of your AutoStopping rule.
-4. In **Idle time**, enter the idle time in minutes. This is the time that the AutoStopping rule will wait before stopping the idle instances.
-5.  In **Resources to be managed by the AutoStopping rules** step, select **Kubernetes Cluster** and then click **Add a cluster**.
+6. In **Let's get you started** page, click **Next**.
+7. In **Configurations**, in **Define your AutoStopping rule**, in **Name your Rule**, enter a name for your rule. This is the name of your AutoStopping rule.
+8. In **Idle time**, enter the idle time in minutes. This is the time that the AutoStopping rule will wait before stopping the idle instances.
+9.  In **Resources to be managed by the AutoStopping rules** step, select **Kubernetes Cluster** and then click **Add a cluster**.
     
 	  ![](./static/k8s-connector-autostopping-13.png)
 10. Click **Create a new connector**.

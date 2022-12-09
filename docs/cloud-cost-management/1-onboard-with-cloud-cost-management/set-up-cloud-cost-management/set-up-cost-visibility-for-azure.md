@@ -105,10 +105,12 @@ Billing export is used to get insights into your cloud infrastructure and Azure 
 		5. In **Container**, enter the container name where the report is to be stored.
 		6. In **Directory**, enter the directory path where the export is to be stored.
    
-       > **☆ NOTE —** Make a note of the **Storage account** name. You will need it while assigning permissions to the storage account.
+       
+	   > **☆ NOTE —** Make a note of the **Storage account** name. You will need it while assigning permissions to the storage account.
    
-     ![](static/set-up-cost-visibility-for-azure-07.png)
-		7. Click **Create**.  
+       ![](static/set-up-cost-visibility-for-azure-07.png)
+
+	   7. Click **Create**.  
 		Your export report is listed in the **Exports** list.
 					
 
@@ -116,17 +118,17 @@ Billing export is used to get insights into your cloud infrastructure and Azure 
    
 <img src={run_now} alt="A screenshot" height="500" width="500" />
 
-1. In the Azure **Cost Management** portal, click the billing export that you created in the enable export billing step.
+6. In the Azure **Cost Management** portal, click the billing export that you created in the enable export billing step.
    
      ![](static/set-up-cost-visibility-for-azure-10.png)
-2. Enter the following details in Harness:
+7. Enter the following details in Harness:
 	1. In the **Storage account name**, enter the account name.
 	2. In **Storage Container**, enter the container name.
 	3. In **Storage Directory**, enter the directory name.
 	4. In **Report Name**, enter the report name.
    
      ![](static/set-up-cost-visibility-for-azure-11.png)
-3. Click **Continue**.
+8. Click **Continue**.
 
 ### Choose Requirements
 

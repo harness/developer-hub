@@ -48,8 +48,8 @@ You can select any of the following cloud account types:
   
     ![](./static/create-autostopping-rules-for-kubernetes-81.png)
 
-1. If you have already linked your cloud account and want to use that account, then select your cloud account from the drop-down list.
-2. If you have not added your cloud account, click **Connect to your** ***Cloud Account*** drop-down list. The name of the drop-down list depends on the cloud account type selection. If you select AWS, then the label reads as **Connect to your AWS account**.  
+3. If you have already linked your cloud account and want to use that account, then select your cloud account from the drop-down list.
+4. If you have not added your cloud account, click **Connect to your** ***Cloud Account*** drop-down list. The name of the drop-down list depends on the cloud account type selection. If you select AWS, then the label reads as **Connect to your AWS account**.  
   
 For the detailed steps, see the [Create a Kubernetes Connector for AutoStopping Rules](../1-add-connectors/k8s-connector-autostopping.md).
 
@@ -69,8 +69,8 @@ For the detailed steps, see [Create a Kubernetes Connector for AutoStopping Rule
 
   ![](./static/create-autostopping-rules-for-kubernetes-82.png)
 
-1. In **Define your AutoStopping rule**, in **Name your Rule**, enter a name for your rule. This is the name of your AutoStopping rule.
-2. In **Idle time**, enter the idle time in minutes. This is the time that the AutoStopping rule will wait before stopping the idle instances.
+4. In **Define your AutoStopping rule**, in **Name your Rule**, enter a name for your rule. This is the name of your AutoStopping rule.
+5. In **Idle time**, enter the idle time in minutes. This is the time that the AutoStopping rule will wait before stopping the idle instances.
 
 ### Step 2: Select the Resources to be Managed by the AutoStopping Rule
 

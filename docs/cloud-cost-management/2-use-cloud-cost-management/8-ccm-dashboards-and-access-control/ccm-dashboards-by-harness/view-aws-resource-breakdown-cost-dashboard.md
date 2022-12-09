@@ -50,13 +50,13 @@ The **AWS Resource Breakdown Dashboard** is displayed:
 | --- | --- |
 | Monthly Cost Breakdown | Includes the monthly cost of all the AWS resources. |
 | Resource Level Cost Breakdown | Includes the resource level cost breakdown. |
-1. In **Reporting Timeframe**, select the time duration.
-2. In **Account**, select the account for which you want to view the cost. You can select multiple accounts.
+3. In **Reporting Timeframe**, select the time duration.
+4. In **Account**, select the account for which you want to view the cost. You can select multiple accounts.
    
      ![](./static/view-aws-resource-breakdown-cost-dashboard-48.png)
-3. In **Service**, select the service for which you want to view the cost. You can select multiple Services.
-4. In **Region**, select the region. You can select multiple regions.
-5. Once you have made all the selections, click **Update**.  The data is refreshed with the latest data from the database.
+5. In **Service**, select the service for which you want to view the cost. You can select multiple Services.
+6. In **Region**, select the region. You can select multiple regions.
+7. Once you have made all the selections, click **Update**.  The data is refreshed with the latest data from the database.
    
      ![](./static/view-aws-resource-breakdown-cost-dashboard-49.png)
 

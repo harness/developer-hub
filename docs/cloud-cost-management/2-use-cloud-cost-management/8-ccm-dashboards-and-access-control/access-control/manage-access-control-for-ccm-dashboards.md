@@ -72,16 +72,18 @@ Perform the following steps to limit access to specific Dashboards.
      ![](./static/manage-access-control-for-ccm-dashboards-04.png)
 2. In **Resource Groups**, click your Resource Group. For more information on adding and managing resource groups, see [Add and Manage Resource Groups](https://ngdocs.harness.io/article/yp4xj36xro-add-resource-groups).  
   
-This section uses **Dashboard - All** as an example.
-3. In **Shared Resources**, select **Dashboards**.  
+     This section uses **Dashboard - All** as an example.
+
+ 3. In **Shared Resources**, select **Dashboards**.  
   
 By default, **All Dashboards** is selected.
 
 
   ![](./static/manage-access-control-for-ccm-dashboards-05.png)
 
-4. Click **Add Dashboards**.
-5. In **Add Dashboards**, select the folders for which you want to limit the access.  
+
+ 4. Click **Add Dashboards**.
+ 5. In **Add Dashboards**, select the folders for which you want to limit the access.  
   
 The selected folder may have more than one dashboard. All the dashboards in the selected folders will have the same access.
 

@@ -8,6 +8,11 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+```mdx-code-block
+import ebs_dashboard from './static/orphaned-ebs-volumes-and-snapshots-dashboard-75.png'
+import custom_dashboard from './static/orphaned-ebs-volumes-and-snapshots-dashboard-77.png'
+```
+
 **Dashboards** are a collection of charts and data tables with filters that you can use to get at the data you're interested in. Dashboards serve as a platform for data modeling and analytics using a combination of available business metrics and operational data. You can use this data to make data-driven informed business decisions.
 
 :::note
@@ -45,13 +50,19 @@ Perform the following steps to view Orphaned EBS Volumes and Snapshots Dashboard
      ![](./static/orphaned-ebs-volumes-and-snapshots-dashboard-74.png)
 4. In **EBS Volume Cost Date**, select the date range.  
   
-By default, **This Month** is selected.
-  1. **Presets**: Select a Preset filter. For example, Today, Yesterday, etc.
- 
-   ![](./static/orphaned-ebs-volumes-and-snapshots-dashboard-75.png)
-  2. **Custom**: Custom allows you to select the date range.
-   
-     ![](./static/orphaned-ebs-volumes-and-snapshots-dashboard-77.png)
+     By default, **This Month** is selected.
+  * **Presets**: Select a Preset filter. For example, Today, Yesterday, etc.
+
+    ![](./static/orphaned-ebs-volumes-and-snapshots-dashboard-75.png)
+  
+  * **Custom**: Custom allows you to select the date range.
+  
+   ```mdx-code-block
+<img src={custom_dashboard} alt="EBS screenshot." height="500" width="600" />
+     
+       
+       
+
 5. In **Snapshot Creation Date**, select the date. You can add multiple OR conditions.
 6. Once you have selected all the filters, click **Update**.  
   

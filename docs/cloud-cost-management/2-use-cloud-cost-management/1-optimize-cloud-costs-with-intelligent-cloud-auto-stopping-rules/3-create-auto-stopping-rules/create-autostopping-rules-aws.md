@@ -270,18 +270,18 @@ You can edit or delete the routing information. However, it is mandatory to have
 
   ![](./static/create-autostopping-rules-aws-104.png)
 
-1. Click **Add** if you wish to add more ports. The following are some points to consider:  
+2. Click **Add** if you wish to add more ports. The following are some points to consider:  
 	  
   * If you are forwarding the same action to different ports, then specify the server name and/or path match.  
 	  
   * If you specify the server name, then the host will use the custom URL to access the resources. You cannot use an auto-generated URL to access the resources.
   
     ![](./static/create-autostopping-rules-aws-105.png)
-2. Toggle the **Health check** button to configure the health check. Health check status should be successful for the AutoStopping rules to come into effect.  
+3. Toggle the **Health check** button to configure the health check. Health check status should be successful for the AutoStopping rules to come into effect.  
   
 By default, the health check is turned on.
-1. In PROTOCOL, select **http** or **https**.
-2. Enter Path, port, and timeout details. For example, if you have configured port 80 and the timeout as 30 seconds for your instance, then the AutoStopping rule will check these specified parameters before bringing AutoStopping Rule into effect.
+4. In PROTOCOL, select **http** or **https**.
+5. Enter Path, port, and timeout details. For example, if you have configured port 80 and the timeout as 30 seconds for your instance, then the AutoStopping rule will check these specified parameters before bringing AutoStopping Rule into effect.
    
      ![](./static/create-autostopping-rules-aws-106.png)
 
@@ -318,7 +318,8 @@ Since you've chosen to use a custom URL to access the resources, you need to map
 
 ![](./static/create-autostopping-rules-aws-110.png)
 
-**DNS configuration using other providers:** Perform the following steps:
+**DNS configuration using other providers:** 
+Perform the following steps:
 
 1. Select **Others**.
    
