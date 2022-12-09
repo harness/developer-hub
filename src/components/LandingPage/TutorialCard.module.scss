@@ -19,7 +19,7 @@
     // &:last-child {
     //     margin-right: 0;
     // }
-    .ribbon{
+    .newDoc{
         position: absolute;
         top: 24px;
         right: -3px;
@@ -103,7 +103,7 @@
     .tutorialCard{
         width: 28%;
     }
-    .featureCard{
+    .featuredCard{
         width: 46%;
     }
 }
@@ -129,11 +129,11 @@
         }
     }
 }
-.featureCard{
+.featuredCard{
     border: 1px solid #D9DAE5;
     box-shadow: none;
     width: 47%;
-    .ribbon{
+    .newDoc{
         right: 0;
     }
     // &:last-child {

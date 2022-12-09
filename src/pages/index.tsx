@@ -4,7 +4,7 @@ import Link from "@docusaurus/Link";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
 import HomepageFeatures from "@site/src/components/HomepageFeatures";
-import WhatsNew from "@site/src/components/WhatsNew";
+// import WhatsNew from "@site/src/components/WhatsNew";
 import LearnAboutPlatform from "@site/src/components/LearnAboutPlatform";
 import HarnessU from "@site/src/components/HarnessU";
 import Feedback from "@site/src/components/Feedback";

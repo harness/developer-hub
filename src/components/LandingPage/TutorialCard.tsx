@@ -1,36 +1,53 @@
 import React from "react";
 // import clsx from 'clsx';
 import Tooltip from "rc-tooltip";
-import "rc-tooltip/assets/bootstrap.css";
-import styles from "./ModuleCard.module.scss";
 import Link from "@docusaurus/Link";
-import { FeatureItem } from "./AllTutorials";
+import "rc-tooltip/assets/bootstrap.css";
+import styles from "./TutorialCard.module.scss";
 
-function Feature({
+export enum docType {
+  Documentation = "doc",
+  Interactive = "interactive",
+  Video = "video",
+}
+
+export type CardItem = {
+  title: string;
+  module: string;
+  description: JSX.Element | string;
+  icon: string;
+  type?: docType[];
+  time?: string;
+  newDoc?: boolean;
+  link?: string;
+  featuredCard?: boolean;
+};
+
+function Card({
   title,
-  ribbon,
+  newDoc,
   description,
-  Svg,
+  icon,
   type,
   time,
   module,
-  featureCard,
+  featuredCard,
   link = "#",
-}: FeatureItem) {
+}: CardItem) {
   return (
     <Link
       to={link}
       className={`${styles.tutorialCard} ${
-        featureCard ? styles.featureCard : ""
+        featuredCard ? styles.featuredCard : ""
       } ${styles[module]}`}
     >
       <div>
         <h6>
-          {Svg && <img src={Svg} />}
+          {icon && <img src={icon} />}
           {time}
         </h6>
-        {ribbon && (
-          <div className={styles.ribbon}>
+        {newDoc && (
+          <div className={styles.newDoc}>
             <img src="/img/new.svg" />
           </div>
         )}
@@ -52,15 +69,15 @@ function Feature({
   );
 }
 
-export default function ModuleCard(props): JSX.Element {
+export default function TutorialCard(props): JSX.Element {
   return (
     <div className={styles.spaceBetween}>
-      {props.featureCard
+      {props.featuredCard
         ? props.FeatureList.map((props, idx) => (
-            <Feature key={idx} {...props} featureCard={true} />
+            <Card key={idx} {...props} featuredCard={true} />
           ))
         : props.FeatureList.map((props, idx) => (
-            <Feature key={idx} {...props} featureCard={false} />
+            <Card key={idx} {...props} featuredCard={false} />
           ))}
     </div>
   );

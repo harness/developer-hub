@@ -1,13 +1,13 @@
 ---
 title: Common Tunables for All Faults
 ---
-Fault tunables which are common for all the faults. These tunables can be provided at `.spec.experiment[*].spec.components.env` in chaosengine.
+Fault tunables are common for all the faults. These tunables can be provided at `.spec.experiment[*].spec.components.env` in the chaosengine.
 
 ### Duration of the chaos
 
-It defines the total time duration of the chaos injection. You can tune it using the `TOTAL_CHAOS_DURATION` environment variable. It is in unit of seconds.
+It defines the total duration of the chaos injection. You can tune it using the `TOTAL_CHAOS_DURATION` environment variable. It is in unit of seconds.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifest/common/chaos-duration.yaml yaml)
 ```yaml
@@ -36,9 +36,9 @@ spec:
 
 ### Multiple Iterations Of Chaos
 
-The multiple iterations of chaos can be tuned via setting `CHAOS_INTERVAL` ENV. Which defines the delay between each iteration of chaos.
+Multiple iterations of chaos can be tuned by setting the `CHAOS_INTERVAL` environment variable. This variable defines the delay between each chaos iteration.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifest/common/chaos-interval.yaml yaml)
 ```yaml
@@ -70,9 +70,9 @@ spec:
 
 ### Chaos Interval
 
-The multiple iterations of chaos can be tuned via setting `CHAOS_INTERVAL` ENV. Which defines the delay between each iteration of chaos.
+Multiple iterations of chaos can be tuned by setting the `CHAOS_INTERVAL` environment variable. This variable defines the delay between each chaos iteration.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifest/common/chaos-interval.yaml yaml)
 ```yaml
@@ -104,9 +104,9 @@ spec:
 
 ### Ramp Time
 
-It defines the period to wait before and after the injection of chaos. You can tune it using the `RAMP_TIME` environment variable. It is in unit of seconds.
+It defines the period to wait before and after injecting chaos. You can tune it using the `RAMP_TIME` environment variable. It is in unit of seconds.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifest/common/ramp-time.yaml yaml)
 ```yaml
@@ -135,13 +135,13 @@ spec:
 
 ### Sequence of chaos execution
 
-It defines the sequence of the chaos execution in the case of multiple targets. You can tune it using the `SEQUENCE` environment variable. It supports the following modes:
+It defines the sequence of the chaos execution in case of multiple targets. You can tune it using the `SEQUENCE` environment variable. It supports the following modes:
 
 - `parallel`: The chaos is injected in all the targets at once.
 - `serial`: The chaos is injected in all the targets one by one.
 The default value of `SEQUENCE` is `parallel`.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifest/common/sequence.yaml yaml)
 ```yaml
@@ -171,9 +171,9 @@ spec:
 
 ### Instance ID
 
-It defines a user-defined string that holds metadata/info about the current run/instance of chaos. For example: 04-05-2020-9-00. This string is appended as a suffix in the chaosresult CR name. It can be tuned with `INSTANCE_ID` ENV.
+It defines a user-defined string that holds metadata/info about the current run/instance of chaos. For example: 04-05-2020-9-00. This string is appended as a suffix in the chaosresult CR name. It can be tuned using the `INSTANCE_ID` environment variable.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifest/common/instance-id.yaml yaml)
 ```yaml
@@ -202,10 +202,10 @@ spec:
 
 ### Image used by the helper pod
 
-It defines the image, which is used to launch the helper pod, if applicable. It can be tuned with the `LIB_IMAGE` ENV.
-It is supported by [container-kill, network-faults, stress-faults, dns-faults, disk-fill, kubelet-service-kill, docker-service-kill, node-restart] faults.
+It defines the image which is used to launch the helper pod, if applicable. It can be tuned using the `LIB_IMAGE` environment variable.
+It is supported by **container-kill**, **network-faults**, **stress-faults**, **dns-faults**, **disk-fill**, **kubelet-service-kill**, **docker-service-kill**, and **node-restart** faults.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifest/common/lib-image.yaml yaml)
 ```yaml
