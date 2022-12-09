@@ -1,6 +1,6 @@
 ---
 title: Grype Scanner Reference
-description: You can set up a Security step with Aqua Trivy to detect vulnerabilities and misconfigurations in your container images.
+description: You can set up a Security step with Grype to detect vulnerabilities and misconfigurations in your container images.
 sidebar_position: 35
 ---
 
@@ -8,8 +8,8 @@ sidebar_position: 35
 
 ### Important Notes
 
-* STO supports container scans only with Grype.
-* STO supports [orchestrated scans](../use-sto/run-an-orchestrated-scan-in-sto.md) only with Grype. 
+* STO supports container scans and file systems with Grype.
+* STO supports [orchestrated scans](../use-sto/run-an-orchestrated-scan-in-sto.md) and ingestionOnly scans  with Grype. 
 
 ### Required Settings
 
