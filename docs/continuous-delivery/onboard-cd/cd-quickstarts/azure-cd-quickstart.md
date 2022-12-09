@@ -298,11 +298,11 @@ You can see `deployment "[name]" successfully rolled out`.
 
 Congratulations! The deployment was successful.
 
-### Clean Up
+## Clean Up
 
 To delete the Harness Delegate from your Kubernetes cluster, go to [Delete a Delegate](https://docs.harness.io/article/tl6ql57em6-delete-a-delegate).
 
-### Next Steps
+## Next Steps
 
-See [advanced Kubernetes](/category/kubernetes) for other deployment features.
+See [advanced Kubernetes](/docs/category/kubernetes) for other deployment features.
 
