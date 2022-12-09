@@ -12,7 +12,7 @@ title: GCP VM Disk Loss By Label
 
 ## Uses
 <details>
-<summary>View the uses of the experiment</summary>
+<summary>View the uses of the fault</summary>
 <div>
 Coming soon.
 </div>
@@ -49,9 +49,9 @@ stringData:
 - All the disk volumes having the target label are attached to their respective instances.
 :::
 
-## Experiment tunables
+## Fault Tunables
 <details>
-    <summary>Check the Experiment Tunables</summary>
+    <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>
     <table>
       <tr>
@@ -110,10 +110,10 @@ stringData:
     </table>
 </details>
 
-## Experiment Examples
+## Fault Examples
 
-### Common Experiment Tunables
-Refer the [common attributes](../common-tunables-for-all-experiments) to tune the common tunables for all the experiments.
+### Common Fault Tunables
+Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
 ### Detach Volumes By Label
 

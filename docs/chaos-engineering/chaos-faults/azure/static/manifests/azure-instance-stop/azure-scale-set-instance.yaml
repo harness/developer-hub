@@ -1,4 +1,4 @@
-## contains the azure instance details for scale set instances or AKS nodes
+## contains the Azure instance details for scale set instances or AKS nodes
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -11,7 +11,7 @@ spec:
     spec:
       components:
         env:
-        # comma separated list of azure instance names
+        # comma separated list of Azure instance names
         - name: AZURE_INSTANCE_NAMES
           value: 'instance-01,instance-02'
         # name of the resource group

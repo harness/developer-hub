@@ -1,0 +1,14 @@
+{
+  "label": "Add Workflows",
+  "position": 40,
+  "collapsible": "true",
+  "collapsed": "true",
+  "className": "red",
+  "link": {
+    "type": "generated-index",
+    "title": "Add Workflows"
+  },
+  "customProps": {
+    "helpdocs_category_id": "a8jhf8hizv"
+  }
+}

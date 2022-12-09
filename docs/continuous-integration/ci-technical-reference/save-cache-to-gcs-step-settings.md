@@ -53,11 +53,15 @@ A list of the files/folders to cache. Add each file/folder separately.
 
 Select the archive format.
 
-The default archive format is TAR.#### Override Cache
+The default archive format is TAR.
+
+#### Override Cache
 
 Select this option to override the cache if the key already exists.
 
-By default, the **Override Cache** option is set to False (unchecked).#### Run as User
+By default, the **Override Cache** option is set to False (unchecked).
+
+#### Run as User
 
 Set the value to specify the user id for all processes in the pod, running in containers. See [Set the security context for a pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod).
 

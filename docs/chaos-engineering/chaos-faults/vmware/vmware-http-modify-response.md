@@ -5,10 +5,10 @@ title: VMware HTTP Modify Response
 
 ## Introduction
 
-- It injects HTTP chaos which can affect the request/response by modifying either the status code, body or the headers by starting proxy server and then redirecting the traffic through the proxy server.
-- It can test the application's resilience to error code http responses from the provided application server.
-- It can test the application's resilience to error or incorrect http response body.
-- It can cause modification of headers of requests and responses of the service. This can be used to test service resilience towards incorrect or incomplete headers
+- It injects HTTP chaos that affects the request or response by modifying the status code, body or the headers. This is achieved by starting the proxy server and redirecting the traffic through the proxy server.
+- It tests the application's resilience to error code HTTP responses from the application server.
+- It tests the application's resilience to error or incorrect HTTP response body.
+- It modifies the headers of requests and responses of the service. This is used to test the service resilience towards incorrect or incomplete headers.
 
 :::tip Fault execution flow chart
 ![VMware HTTP Modify Response](./static/images/vmware-http-modify-response.png)
@@ -17,10 +17,9 @@ title: VMware HTTP Modify Response
 ## Prerequisites
 
 :::info
-
-- Ensure that Kubernetes Version >= 1.17
-- Ensure that you have sufficient Vcenter access to stop and start the VM.
-- Ensure to create a Kubernetes secret having the Vcenter credentials in the `CHAOS_NAMESPACE`. A secret file looks like:
+- Kubernetes >= 1.17
+- Vcenter access to stop and start the VM.
+- Kubernetes secret that has the Vcenter credentials in the `CHAOS_NAMESPACE`. A sample secret file looks like:
 
 ```yaml
 apiVersion: v1
@@ -37,21 +36,21 @@ stringData:
 
 ### NOTE
 
-You can pass the VM credentials as secrets or as an chaosengine ENV variable.
+You can pass the VM credentials as a secret or as a chaosengine environment variable.
 :::
 
 ## Default Validations
 
 :::info
 
-- VM should be in healthy state.
+- The VM should be in a healthy state.
 
 :::
 
-## Experiment tunables
+## Fault Tunables
 
 <details>
-    <summary>Check the Experiment Tunables</summary>
+    <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>
     <table>
         <tr>
@@ -62,27 +61,27 @@ You can pass the VM credentials as secrets or as an chaosengine ENV variable.
         <tr>
             <td> VM_NAME </td>
             <td> Name of VMware VM</td>
-            <td> Eg: test-vm </td>
+            <td> For example: test-vm </td>
         </tr>
         <tr>
             <td> VM_USER_NAME </td>
             <td> Username with sudo privileges.</td>
-            <td> Eg: vm-user</td>
+            <td> For example: vm-user</td>
         </tr>
         <tr>
             <td> VM_PASSWORD </td>
-            <td> Password of the provided user</td>
-            <td> Eg: 1234</td>
+            <td> User password </td>
+            <td> For example: 1234</td>
         </tr>
         <tr>
             <td> TARGET_SERVICE_PORT </td>
-            <td> Port of the service to target </td>
-            <td> Defaults to port 80 </td>
+            <td> Service port to target </td>
+            <td> Its default value is port 80 </td>
         </tr>
         <tr>
             <td> HTTP_CHAOS_TYPE </td>
             <td> Type of HTTP Modify Response chaos to be injected. </td>
-            <td> Accepted values are: status_code, body, header. Defaults to status_code. </td>
+            <td> Accepted values are 'status_code', 'body', 'header'. Its default value is 'status_code'. </td>
         </tr>
     </table>
     <h2> Status Code Modification Related Fields </h2>
@@ -90,15 +89,15 @@ You can pass the VM credentials as secrets or as an chaosengine ENV variable.
     <tr>
         <td> STATUS_CODE </td>
         <td> Modified status code for the HTTP response</td>
-        <td> If no value is provided, then a random value is selected from the list of supported values.
-        Multiple values can be provided as comma separated, a random value from the provided list will be selected
+        <td> If no value is provided, a random value is selected from the list of supported values.
+        Multiple values can be provided as comma separated values, and a random value from the list is selected
         Supported values: [200, 201, 202, 204, 300, 301, 302, 304, 307, 400, 401, 403, 404, 500, 501, 502, 503, 504].
-        Defaults to random status code </td>
+        Its default value is a random status code </td>
     </tr>
     <tr>
         <td> MODIFY_RESPONSE_BODY </td>
-        <td> Whether to modify the body as per the status code provided.</td>
-        <td> If true, then the body is replaced by a default template for the status code. Defaults to true </td>
+        <td> Whether to modify the body according to the status code provided.</td>
+        <td> If true, the body is replaced by a default template for the status code. Its default value is 'True'. </td>
     </tr>
     </table>
     <h2> Body Modification Related Fields </h2>
@@ -106,7 +105,7 @@ You can pass the VM credentials as secrets or as an chaosengine ENV variable.
         <tr>
             <td> RESPONSE_BODY </td>
             <td> Body string to overwrite the http response body</td>
-            <td> If no value is provided, response will be an empty body. Defaults to empty body </td>
+            <td> If no value is provided, response will be an empty body. Its default is an empty body. </td>
         </tr>
     </table>
     <h2> Header Modification Related Fields</h2>
@@ -114,12 +113,12 @@ You can pass the VM credentials as secrets or as an chaosengine ENV variable.
         <tr>
             <td> HEADERS_MAP </td>
             <td> Map of headers to modify/add </td>
-            <td> Eg: &#123;"X-Litmus-Test-Header":"X-Litmus-Test-Value"&#125;. To remove a header, just set the value to ""; Eg: &#123;"X-Litmus-Test-Header": ""&#125; </td>
+            <td> For example: &#123;"X-Litmus-Test-Header":"X-Litmus-Test-Value"&#125;. To remove a header, just set the value to ""; For example: &#123;"X-Litmus-Test-Header": ""&#125; </td>
         </tr>
         <tr>
             <td> HEADER_MODE </td>
             <td> Whether to modify response headers or request headers. Accepted values: request, response</td>
-            <td> Defaults to response </td>
+            <td> Its default value is 'response'. </td>
         </tr>
     </table>
     <h2>Optional Fields</h2>
@@ -131,58 +130,58 @@ You can pass the VM credentials as secrets or as an chaosengine ENV variable.
         </tr>
         <tr>
             <td> TOTAL_CHAOS_DURATION </td>
-            <td> The total time duration for chaos insertion (sec) </td>
-            <td> Defaults to 30s </td>
+            <td> The total duration to insert chaos (in seconds). </td>
+            <td> Its default value is 30s. </td>
         </tr>
         <tr>
             <td> CHAOS_INTERVAL </td>
-            <td> The interval (in sec) between successive instance termination </td>
-            <td> Defaults to 30s </td>
+            <td> The interval between successive instance terminations (in seconds). </td>
+            <td> Its default value is 30s. </td>
         </tr>
         <tr>
             <td> SEQUENCE </td>
             <td> It defines sequence of chaos execution for multiple instance </td>
-            <td> Default value: parallel. Supported: serial, parallel </td>
+            <td> Its default value is 'parallel', and it supports 'serial' value too. </td>
         </tr>
         <tr>
             <td> RAMP_TIME </td>
-            <td> Period to wait before and after injection of chaos in sec </td>
-            <td> Eg: 30 </td>
+            <td> Period to wait before and after injection of chaos (in seconds). </td>
+            <td> For example: 30. </td>
         </tr>
         <tr>
             <td> INSTALL_DEPENDENCY </td>
-            <td> Whether to install the dependency to run the experiment </td>
-            <td> If the dependency already exists, you can turn it off. Defaults to True.</td>
+            <td> Whether to install the dependancy to run the experiment </td>
+            <td> If the dependency already exists, you can turn it off. Its default value is 'True'.</td>
         </tr>
         <tr>
             <td> PROXY_PORT  </td>
-            <td> Port where the proxy will be listening for requests</td>
-            <td> Defaults to 20000 </td>
+            <td> Port where the proxy listens for requests. </td>
+            <td> Its default value is 20000. </td>
         </tr>
         <tr>
             <td> TOXICITY </td>
-            <td> Percentage of HTTP requests to be affected </td>
-            <td> Defaults to 100 </td>
+            <td> Percentage of HTTP requests affected. </td>
+            <td> Its default value is 100. </td>
         </tr>
         <tr>
           <td> NETWORK_INTERFACE  </td>
-          <td> Network interface to be used for the proxy</td>
-          <td> Defaults to `eth0` </td>
+          <td> Network interface used for the proxy. </td>
+          <td> Its default value is `eth0`. </td>
         </tr>
     </table>
 </details>
 
-## Experiment Examples
+## Fault Examples
 
-### Common Experiment Tunables
+### Common Fault Tunables
 
-Refer the [common attributes](../common-tunables-for-all-experiments) to tune the common tunables for all the experiments.
+Refer to the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
 ### Target Service Port
 
-It defines the port of the targeted service that is being targeted. It can be tuned via `TARGET_SERVICE_PORT` ENV.
+It defines the port of the target service. You can tune it using the `TARGET_SERVICE_PORT` environment variable.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/http-modify-response/target-service-port.yaml yaml)
 ```yaml
@@ -208,7 +207,7 @@ spec:
 
 Use this example to modify the status code of the response.
 
-***Note***: `HTTP_CHAOS_TYPE` should be provided as `status_code`
+***Note***: `HTTP_CHAOS_TYPE` should be provided as `status_code`.
 
 [embedmd]:# (./static/manifests/http-modify-response/status-code.yaml yaml)
 ```yaml
@@ -232,7 +231,7 @@ spec:
         # if no value is provided, a random status code from the supported code list will selected
         # if multiple comma separated values are provided, then a random value
         # from the provided list will be selected
-        # if an invalid status code is provided, the experiment will fail
+        # if an invalid status code is provided, the fault will fail
         # supported status code list:
         # [200, 201, 202, 204, 300, 301, 302, 304, 307, 400, 401, 403, 404, 500, 501, 502, 503, 504]
         - name: STATUS_CODE
@@ -249,7 +248,7 @@ spec:
 
 Use this example to modify the headers of the response.
 
-***Note***: `HTTP_CHAOS_TYPE` should be provided as `header`
+***Note***: `HTTP_CHAOS_TYPE` should be provided as `header`.
 
 [embedmd]:# (./static/manifests/http-modify-response/response-headers.yaml yaml)
 ```yaml
@@ -285,7 +284,7 @@ spec:
 
 Use this example to modify the headers of the response.
 
-***Note***: `HTTP_CHAOS_TYPE` should be provided as `header`
+***Note***: `HTTP_CHAOS_TYPE` should be provided as `header`.
 
 [embedmd]:# (./static/manifests/http-modify-response/response-headers.yaml yaml)
 ```yaml
@@ -321,7 +320,7 @@ spec:
 
 Use this example to modify the body of the response.
 
-***Note***: `HTTP_CHAOS_TYPE` should be provided as `body`
+***Note***: `HTTP_CHAOS_TYPE` should be provided as `body`.
 
 [embedmd]:# (./static/manifests/http-modify-response/response-body.yaml yaml)
 ```yaml
@@ -351,9 +350,9 @@ spec:
 
 ### Proxy Port
 
-It defines the port on which the proxy server will listen for requests. It can be tuned via `PROXY_PORT` ENV.
+It defines the port where the proxy server listens for requests. You can tune it using the `PROXY_PORT` environment variable.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/http-modify-response/proxy-port.yaml yaml)
 ```yaml
@@ -380,10 +379,10 @@ spec:
 
 ### Toxicity
 
-It defines the toxicity value to be added to the http request. It can be tuned via `TOXICITY` ENV.
-Toxicity value defines the percentage of the total number of http requests to be affected.
+It defines the toxicity value added to the HTTP request. You can tune it using the `TOXICITY` environment variable.
+Toxicity value defines the percentage of the total number of HTTP requests that are affected.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/http-modify-response/toxicity.yaml yaml)
 ```yaml
@@ -412,9 +411,9 @@ spec:
 
 ### Network Interface
 
-It defines the network interface to be used for the proxy. It can be tuned via `NETWORK_INTERFACE` ENV.
+It defines the network interface used for the proxy. You can tune it using the `NETWORK_INTERFACE` environment variable.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/http-modify-response/network-interface.yaml yaml)
 ```yaml

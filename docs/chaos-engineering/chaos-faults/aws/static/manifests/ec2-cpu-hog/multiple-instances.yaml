@@ -11,9 +11,9 @@ spec:
     spec:
       components:
         env:
-        # ids of the ec2 instances
+        # ids of the EC2 instances
         - name: EC2_INSTANCE_ID
           value: 'instance-1,instance-2,instance-3'
-        # region for the ec2 instance
+        # region for the EC2 instance
         - name: REGION
           value: 'us-east-1'

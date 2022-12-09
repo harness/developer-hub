@@ -4,7 +4,7 @@ title: VMware Process kill
 ---
 
 ## Introduction
-- VMware Process Kill experiment kills the target processes running as part of a Linux OS based VMware VM to determine the application/process resilience.
+- VMware Process Kill fault kills the target processes running as part of a Linux OS based VMware VM to determine the application/process resilience.
 - It helps to check the performance of the application/process running on the VMWare VMs.
 
 :::tip Fault execution flow chart
@@ -13,7 +13,7 @@ title: VMware Process kill
 
 ## Uses
 <details>
-<summary>View the uses of the experiment</summary>
+<summary>View the uses of the fault</summary>
 <div>
 Disrupt the application critical processes such as databases or message queues running in the VMware VM by killing their underlying processes or threads.
 </div>
@@ -24,8 +24,8 @@ Disrupt the application critical processes such as databases or message queues r
 - Ensure that Kubernetes Version > 1.16
 
 ** vCenter Requirements **
-- Ensure the connectivity of execution plane with vCenter and the hosts over 443 port.
-- Ensure that Vmware tool is installed on the target VM with remote execution enabled.
+- Ensure the connectivity of execution plane with vCenter and the hosts over 443 port. 
+- Ensure that VMware tool is installed on the target VM with remote execution enabled.
 - Ensure that you have sufficient vCenter permission to access hosts and VMs.
 - Ensure to create a Kubernetes secret having the Vcenter credentials in the `CHAOS_NAMESPACE`. A sample secret file looks like:
 ```yaml
@@ -52,9 +52,9 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
 - The target processes should exist in the VM.
 :::
 
-## Experiment tunables
+## Fault Tunables
 <details>
-    <summary>Check the Experiment Tunables</summary>
+    <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>
     <table>
       <tr>
@@ -93,10 +93,10 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
     </table>
 </details>
 
-## Experiment Examples
+## Fault Examples
 
-### Common Experiment Tunables
-Refer the [common attributes](../common-tunables-for-all-experiments) to tune the common tunables for all the experiments.
+### Common Fault Tunables
+Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
 ### PROCESS_IDS
 It contains the target process Ids running on a particular VM

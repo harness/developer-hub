@@ -4,7 +4,7 @@ title: VMware Disk Loss
 ---
 
 ## Introduction
-- VMware Disk Loss experiment will detach the disks attached to a Linux OS based VMware VM.
+- VMware Disk Loss fault will detach the disks attached to a Linux OS based VMware VM.
 
 :::tip Fault execution flow chart
 ![VMware Disk Loss](./static/images/vmware-disk-loss.png)
@@ -15,8 +15,8 @@ title: VMware Disk Loss
 - Ensure that Kubernetes Version > 1.16
 
 ** vCenter Requirements **
-- Ensure the connectivity of execution plane with vCenter and the hosts over 443 port.
-- Ensure that Vmware tool is installed on the target VM with remote execution enabled.
+- Ensure the connectivity of execution plane with vCenter and the hosts over 443 port. 
+- Ensure that VMware tool is installed on the target VM with remote execution enabled.
 - Ensure that you have sufficient vCenter permission to access hosts and VMs.
 - Ensure to create a Kubernetes secret having the Vcenter credentials in the `CHAOS_NAMESPACE`. A sample secret file looks like:
 ```yaml
@@ -38,9 +38,9 @@ stringData:
 - The target disks should be attached to the VM.
 :::
 
-## Experiment tunables
+## Fault Tunables
 <details>
-    <summary>Check the Experiment Tunables</summary>
+    <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>
     <table>
       <tr>
@@ -89,10 +89,10 @@ stringData:
     </table>
 </details>
 
-## Experiment Examples
+## Fault Examples
 
-### Common Experiment Tunables
-Refer the [common attributes](../common-tunables-for-all-experiments) to tune the common tunables for all the experiments.
+### Common Fault Tunables
+Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
 ### VIRTUAL_DISK_NAMES
 It contains the name of target disks attached to a particular VM. It can be tuned via `VIRTUAL_DISK_NAMES` ENV.

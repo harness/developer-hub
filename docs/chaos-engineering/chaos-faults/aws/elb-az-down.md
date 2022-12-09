@@ -113,7 +113,7 @@ stringData:
 
 ### Common and AWS specific tunables
 
-Refer to the [common attributes](../common-tunables-for-all-experiments) and [AWS specific tunable](./aws-experiments-tunables) to tune the common tunables for all faults and aws specific tunables.
+Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS specific tunable](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
 
 ### Target Zones
 

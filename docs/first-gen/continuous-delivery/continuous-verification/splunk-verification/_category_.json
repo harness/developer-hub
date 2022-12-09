@@ -1,0 +1,14 @@
+{
+  "label": "Splunk Verification",
+  "position": 120,
+  "collapsible": "true",
+  "collapsed": "true",
+  "className": "red",
+  "link": {
+    "type": "generated-index",
+    "title": "Splunk Verification"
+  },
+  "customProps": {
+    "helpdocs_category_id": "wnxi7xc4a4"
+  }
+}

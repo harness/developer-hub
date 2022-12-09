@@ -6,7 +6,7 @@ title: GCP VM Instance Stop
 ## Introduction
 - It powers off of a GCP VM instance by instance name or list of instance names before bringing it back to the running state after the specified chaos duration.
 - It checks the performance of the application/process running on the VM instance.
-- When the `MANAGED_INSTANCE_GROUP` is `enable`, the experiment doesn't start the instances after chaos. It checks the instance group for new instances.
+- When the `MANAGED_INSTANCE_GROUP` is `enable`, the fault doesn't start the instances after chaos. It checks the instance group for new instances.
 
 :::tip Fault execution flow chart
 ![GCP VM Instance Stop](./static/images/gcp-vm-instance-stop.png)
@@ -14,7 +14,7 @@ title: GCP VM Instance Stop
 
 ## Uses
 <details>
-<summary>View the uses of the experiment</summary>
+<summary>View the uses of the fault</summary>
 <div>
 Coming soon.
 </div>
@@ -50,9 +50,9 @@ stringData:
 - The VM instances should be in a healthy state.
 :::
 
-## Experiment Tunables
+## Fault Tunables
 <details>
-    <summary>Check the Experiment Tunables</summary>
+    <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>
     <table>
       <tr>
@@ -111,10 +111,10 @@ stringData:
     </table>
 </details>
 
-## Experiment Examples
+## Fault Examples
 
-### Common Experiment Tunables
-Refer the [common attributes](../common-tunables-for-all-experiments) to tune the common tunables for all the experiments.
+### Common Fault Tunables
+Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
 ### Target GCP Instances
 It stops all the instances with the given `VM_INSTANCE_NAMES` instance names and corresponding `ZONES` zone names in `GCP_PROJECT_ID` project. 
@@ -125,7 +125,7 @@ Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/gcp-vm-instance-stop/gcp-instance.yaml yaml)
 ```yaml
-## details of the gcp instance
+## details of the GCP instance
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -145,7 +145,7 @@ spec:
         # it should be provided in same order of VM_INSTANCE_NAMES
         - name: ZONES
           value: 'zone-01,zone-02'
-        # gcp project id to which vm instance belongs
+        # GCP project ID to which vm instance belongs
         - name: GCP_PROJECT_ID
           value: 'project-id'
 ```
@@ -182,7 +182,7 @@ spec:
         # it should be provided in same order of VM_INSTANCE_NAMES
         - name: ZONES
           value: 'zone-01,zone-02'
-        # gcp project id to which vm instance belongs
+        # GCP project ID to which vm instance belongs
         - name: GCP_PROJECT_ID
           value: 'project-id'
         - name: TOTAL_CHAOS_DURATION

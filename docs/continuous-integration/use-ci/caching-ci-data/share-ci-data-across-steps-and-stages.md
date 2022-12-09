@@ -20,7 +20,9 @@ You can declare Shared Paths for a Stage. Any Step in the Stage can create, retr
 
 To declare a Shared Path, open the Stage, go to the Overview tab, click **Shared Paths**, and add the subfolder such as `/root/.m2`. Once you do this, any Step can then access `/root/.m2`.
 
-![](./static/share-ci-data-across-steps-and-stages-01.png)### Share Data Across Stages
+![](./static/share-ci-data-across-steps-and-stages-01.png)
+
+### Share Data Across Stages
 
 You can share data across Stages using AWS or GCS buckets:
 

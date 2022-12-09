@@ -14,7 +14,7 @@ title: Azure Instance Stop
 ## Uses
 
 <details>
-<summary>View the uses of the experiment</summary>
+<summary>View the uses of the fault</summary>
 <div>
 Coming soon.
 </div>
@@ -49,7 +49,7 @@ stringData:
       "managementEndpointUrl": "XXXXXXXXX"
     }
 ```
-- If you change the secret key name (from `azure.auth`), update the `AZURE_AUTH_LOCATION` environment variable on `experiment.yaml` with the same name.
+- If you change the secret key name (from `azure.auth`) please also update the `AZURE_AUTH_LOCATION` ENV value in the ChaosExperiment CR with the same name.
 :::
 
 ## Default Validations
@@ -58,9 +58,9 @@ stringData:
 - The Azure instance should be in healthy state.
 :::
 
-## Experiment Tunables
+## Fault Tunables
 <details>
-    <summary>Check the Experiment Tunables</summary>
+    <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>
     <table>
       <tr>
@@ -70,7 +70,7 @@ stringData:
       </tr>
       <tr>
         <td> AZURE_INSTANCE_NAME </td>
-        <td> Instance name of the target azure instance</td>
+        <td> Instance name of the target Azure instance</td>
         <td> For AKS nodes, the instance name is from the scale set section in Azure and not the node name from AKS node pool </td>
       </tr>
       <tr>
@@ -114,11 +114,11 @@ stringData:
     </table>
 </details>
 
-## Experiment Examples
+## Fault Examples
 
-### Common Experiment Tunables
+### Common Fault Tunables
 
-Refer the [common attributes](../common-tunables-for-all-experiments) to tune the common tunables for all the experiments.
+Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
 ### Stop Instances By Name
 
@@ -128,7 +128,7 @@ You can use the following example to tune it:
 
 [embedmd]:# (./static/manifests/azure-instance-stop/azure-instance.yaml yaml)
 ```yaml
-## contains the azure instance details
+## contains the Azure instance details
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -170,7 +170,7 @@ spec:
     spec:
       components:
         env:
-        # comma separated list of azure instance names
+        # comma separated list of Azure instance names
         - name: AZURE_INSTANCE_NAMES
           value: 'instance-01,instance-02'
         # name of the resource group
@@ -179,39 +179,4 @@ spec:
         # accepts enable/disable value. default is disable
         - name: SCALE_SET
           value: 'enable'
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
-```
-
-### Multiple Iterations Of Chaos
-
-You can tune different iterations of chaos by setting `CHAOS_INTERVAL` environment variable. This variable defines the delay between each iteration of chaos.
-
-You can use the following example to tune it:
-
-[embedmd]:# (./static/manifests/azure-instance-stop/chaos-interval.yaml yaml)
-```yaml
-# defines delay between each successive iteration of the chaos
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  chaosServiceAccount: azure-instance-stop-sa
-  experiments:
-  - name: azure-instance-stop
-    spec:
-      components:
-        env:
-        # delay between each iteration of chaos
-        - name: CHAOS_INTERVAL
-          value: '10'
-         # time duration for the chaos execution
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
-        - name: AZURE_INSTANCE_NAME
-          value: 'instance-01,instance-02'
-        - name: RESOURCE_GROUP
-          value: 'rg-azure'
 ```

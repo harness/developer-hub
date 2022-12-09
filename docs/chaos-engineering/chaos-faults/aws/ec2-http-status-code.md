@@ -37,7 +37,7 @@ stringData:
     aws_secret_access_key = XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ```
 
-- If you change the secret, update the `experiment.yml` environment values to extract the relevant data from the secret. Also account for the path at which this secret is mounted as a file in the manifest environment variable `AWS_SHARED_CREDENTIALS_FILE`.
+- If you change the secret key name (from `cloud_config.yml`) please also update the `AWS_SHARED_CREDENTIALS_FILE` ENV value in the ChaosExperiment CR with the same name.
 
 ### NOTE
 
@@ -52,10 +52,10 @@ You can pass the VM credentials as secrets or as an chaosengine environment vari
 
 :::
 
-## Experiment Tunables
+## Fault Tunables
 
 <details>
-    <summary>Check the Experiment Tunables</summary>
+    <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>
     <table>
         <tr>
@@ -126,11 +126,11 @@ You can pass the VM credentials as secrets or as an chaosengine environment vari
         </tr>
         <tr>
             <td> INSTALL_DEPENDENCY </td>
-            <td> Whether to install the dependency to run the experiment </td>
+            <td> Whether to install the dependency to run the fault </td>
             <td> If the dependency already exists, you can turn it off (defaults to True)</td>
         </tr>
         <tr>
-            <td> PROXY_PORT  </td>
+            <td> PROXY_PORT </td>
             <td> Port where the proxy will be listening for requests</td>
             <td> Defaults to 20000 </td>
         </tr>
@@ -140,18 +140,18 @@ You can pass the VM credentials as secrets or as an chaosengine environment vari
             <td> Defaults to 100 </td>
         </tr>
         <tr>
-          <td> NETWORK_INTERFACE  </td>
+          <td> NETWORK_INTERFACE </td>
           <td> Network interface to be used for the proxy</td>
           <td> Defaults to `eth0` </td>
         </tr>
     </table>
 </details>
 
-## Experiment Examples
+## Fault Examples
 
-### Common Experiment Tunables
+### Common Fault Tunables
 
-Refer the [common attributes](../common-tunables-for-all-experiments) to tune the common tunables for all the experiments.
+Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
 ### Target Service Port
 
@@ -204,7 +204,7 @@ spec:
         # if no value is provided, a random status code from the supported code list will selected
         # if multiple comma separated values are provided, then a random value
         # from the provided list will be selected
-        # if an invalid status code is provided, the experiment will fail
+        # if an invalid status code is provided, the fault will fail
         # supported status code list:
         # [200, 201, 202, 204, 300, 301, 302, 304, 307, 400, 401, 403, 404, 500, 501, 502, 503, 504]
         - name: STATUS_CODE

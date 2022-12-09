@@ -4,7 +4,7 @@ title: Pod IO Stress
 ---
 
 ## Introduction
-- This experiment causes disk stress on the application pod. The experiment aims to verify the resiliency of applications that share this disk resource for ephemeral or persistent storage purposes.
+- This fault causes disk stress on the application pod. It aims to verify the resiliency of applications that share this disk resource for ephemeral or persistent storage purposes.
 
 :::tip Fault execution flow chart
 ![Pod IO Stress](./static/images/pod-stress.png)
@@ -12,7 +12,7 @@ title: Pod IO Stress
 
 ## Uses
 <details>
-<summary>View the uses of the experiment</summary>
+<summary>View the uses of the fault</summary>
 <div>
 Disk Pressure or CPU hogs is another very common and frequent scenario we find in kubernetes applications that can result in the eviction of the application replica and impact its delivery. Such scenarios that can still occur despite whatever availability aids K8s provides. These problems are generally referred to as "Noisy Neighbour" problems.
 
@@ -30,9 +30,9 @@ Stressing the disk with continuous and heavy IO for example can cause degradatio
 The application pods should be in running state before and after chaos injection.
 :::
 
-## Experiment tunables
+## Fault Tunables
 <details>
-    <summary>Check the Experiment Tunables</summary>
+    <summary>Check the Fault Tunables</summary>
     <h2>Optional Fields</h2>
     <table>
       <tr>
@@ -42,13 +42,13 @@ The application pods should be in running state before and after chaos injection
       </tr>
       <tr>
         <td> FILESYSTEM_UTILIZATION_PERCENTAGE </td>
-        <td> Specify the size as percentage of free space on the file system  </td>
+        <td> Specify the size as percentage of free space on the file system </td>
         <td> Default to 10%</td>
       </tr>
       <tr>
         <td> FILESYSTEM_UTILIZATION_BYTES </td>
         <td> Specify the size in GigaBytes(GB). <code>FILESYSTEM_UTILIZATION_PERCENTAGE</code> & <code>FILESYSTEM_UTILIZATION_BYTES</code> are mutually exclusive. If both are provided, <code>FILESYSTEM_UTILIZATION_PERCENTAGE</code> is prioritized. </td>
-        <td>  </td>
+        <td> </td>
       </tr>
       <tr>
         <td> NUMBER_OF_WORKERS </td>
@@ -57,13 +57,13 @@ The application pods should be in running state before and after chaos injection
       </tr> 
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The time duration for chaos (seconds)  </td>
+        <td> The time duration for chaos (seconds) </td>
         <td> Default to 120s </td>
       </tr>
       <tr>
         <td> VOLUME_MOUNT_PATH </td>
         <td> Fill the given volume mount path</td>
-        <td>  </td>
+        <td> </td>
       </tr>  
       <tr>
         <td> LIB </td>
@@ -82,7 +82,7 @@ The application pods should be in running state before and after chaos injection
       </tr>  
       <tr>
         <td> PODS_AFFECTED_PERC </td>
-        <td> The Percentage of total pods to target  </td>
+        <td> The Percentage of total pods to target </td>
         <td> Defaults to 0 (corresponds to 1 replica), provide numeric value only </td>
       </tr>
       <tr>
@@ -107,6 +107,11 @@ The application pods should be in running state before and after chaos injection
       </tr>
     </table>
 </details>
+
+## Fault Examples
+
+### Common and Pod specific tunables
+Refer the [common attributes](../../common-tunables-for-all-faults) and [Pod specific tunable](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
 
 ### Filesystem Utilization Percentage
 

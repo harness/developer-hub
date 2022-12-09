@@ -61,7 +61,9 @@ Enable this option to run the container with escalated privileges. This is the e
 
 The path to the file(s) that store results in the JUnit XML format. Regex is supported.
 
-This variable must be set for the background step to publish test results.#### Environment Variables
+This variable must be set for the background step to publish test results.
+
+#### Environment Variables
 
 You can inject environment variables into a container and use them in the **Command** script. You need to enter a **Name** and **Value** for each variable.
 

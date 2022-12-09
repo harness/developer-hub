@@ -1,0 +1,14 @@
+{
+  "label": "Sumo Logic Verification",
+  "position": 140,
+  "collapsible": "true",
+  "collapsed": "true",
+  "className": "red",
+  "link": {
+    "type": "generated-index",
+    "title": "Sumo Logic Verification"
+  },
+  "customProps": {
+    "helpdocs_category_id": "ux6clfhfhz"
+  }
+}

@@ -19,7 +19,9 @@ In a Harness CI Pipeline, you can save the cache to an AWS S3 bucket in one Stag
 
 The topic explains how to configure the **Save Cache to S3** and **Restore Cache from S3** steps in CI using a two-stage Pipeline.
 
-You cannot share access credentials or other [Text Secrets](https://ngdocs.harness.io/article/osfw70e59c-add-use-text-secrets) across Stages.### Before You Begin
+You cannot share access credentials or other [Text Secrets](https://ngdocs.harness.io/article/osfw70e59c-add-use-text-secrets) across Stages.
+
+### Before You Begin
 
 * [CI Pipeline Quickstart](../../ci-quickstarts/ci-pipeline-quickstart.md)
 * [CI Stage Settings](../../ci-technical-reference/ci-stage-settings.md)

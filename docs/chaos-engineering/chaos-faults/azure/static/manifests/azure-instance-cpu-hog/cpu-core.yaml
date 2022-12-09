@@ -1,4 +1,4 @@
-# cpu cores to utilize
+# CPU cores to utilize
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -13,9 +13,9 @@ spec:
         env:
         - name: CPU_CORE
           VALUE: '2'
-        # name of the azure instance
+        # name of the Azure instance
         - name: AZURE_INSTANCE_NAMES
           value: 'instance-1'
-        # resource group for the azure instance
+        # resource group for the Azure instance
         - name: RESOURCE_GROUP
           value: 'rg-azure'

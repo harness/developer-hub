@@ -5,8 +5,8 @@ title: EC2 Stop By Tag
 
 ## Introduction
 - It causes termination of an EC2 instance by tag before bringing it back to running state after the specified chaos duration.
-- It helps to check the performance of the application/process running on the ec2 instance.
-When the MANAGED_NODEGROUP is enable then the experiment will not try to start the instance post chaos instead it will check of the addition of the new node instance to the cluster.
+- It helps to check the performance of the application/process running on the EC2 instance.
+When the `MANAGED_NODEGROUP` is enable then the fault will not try to start the instance post chaos instead it will check of the addition of the new node instance to the cluster.
 
 :::tip Fault execution flow chart
 ![EC2 Stop By Tag](./static/images/ec2-stop.png)
@@ -15,7 +15,7 @@ When the MANAGED_NODEGROUP is enable then the experiment will not try to start t
 ## Uses
 
 <details>
-<summary>View the uses of the experiment</summary>
+<summary>View the uses of the fault</summary>
 <div>
 Coming soon.
 </div>
@@ -25,7 +25,7 @@ Coming soon.
 
 :::info
 - Ensure that Kubernetes Version > 1.16.
-- Ensure that you have sufficient AWS access to stop and start an ec2 instance.
+- Ensure that you have sufficient AWS access to stop and start an EC2 instance. 
 - Ensure to create a Kubernetes secret having the AWS access configuration(key) in the `CHAOS_NAMESPACE`. A sample secret file looks like:
 ```yaml
 apiVersion: v1
@@ -40,11 +40,11 @@ stringData:
     aws_access_key_id = XXXXXXXXXXXXXXXXXXX
     aws_secret_access_key = XXXXXXXXXXXXXXX
 ```
-- If you change the secret key name (from `cloud_config.yml`) please also update the `AWS_SHARED_CREDENTIALS_FILE` ENV value on `experiment.yaml`with the same name.
+- If you change the secret key name (from `cloud_config.yml`) please also update the `AWS_SHARED_CREDENTIALS_FILE` ENV value in the ChaosExperiment CR with the same name.
 
 ### WARNING
 
-If the target EC2 instance is a part of a self-managed nodegroup then make sure to drain the target node if any application is running on it and also ensure to cordon the target node before running the experiment so that the experiment pods do not schedule on it.
+If the target EC2 instance is a part of a self-managed nodegroup then make sure to drain the target node if any application is running on it and also ensure to cordon the target node before running the fault so that the fault pods do not schedule on it.
 :::
 
 ## Default Validations
@@ -55,10 +55,10 @@ If the target EC2 instance is a part of a self-managed nodegroup then make sure 
 
 :::
 
-## Experiment tunables
+## Fault Tunables
 
 <details>
-    <summary>Check the Experiment Tunables</summary>
+    <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>
     <table>
       <tr>
@@ -68,7 +68,7 @@ If the target EC2 instance is a part of a self-managed nodegroup then make sure 
       </tr>
       <tr>
         <td> INSTANCE_TAG </td>
-        <td> Instance Tag to filter the target ec2 instance.</td>
+        <td> Instance Tag to filter the target EC2 instance.</td>
         <td> The <code>INSTANCE_TAG</code> should be provided as <code>key:value</code> ex: <code>team:devops</code></td>
       </tr>
       <tr>
@@ -86,7 +86,7 @@ If the target EC2 instance is a part of a self-managed nodegroup then make sure 
       </tr>
       <tr>
         <td> INSTANCE_AFFECTED_PERC </td>
-        <td> The Percentage of total ec2 instance to target </td>
+        <td> The Percentage of total EC2 instance to target </td>
         <td> Defaults to 0 (corresponds to 1 instance), provide numeric value only </td>
       </tr>
       <tr>
@@ -112,26 +112,26 @@ If the target EC2 instance is a part of a self-managed nodegroup then make sure 
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injection of chaos in sec </td>
-        <td> </td>
-      </tr>
+        <td> Eg. 30 </td>
+      </tr>    
     </table>
 </details>
 
-## Experiment Examples
+## Fault Examples
 
 ### Common and AWS specific tunables
 
-Refer the [common attributes](../common-tunables-for-all-experiments) and [AWS specific tunable](./aws-experiments-tunables) to tune the common tunables for all experiments and aws specific tunables.
+Refer the [common attributes](../common-tunables-for-all-faults) and [AWS specific tunable](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
 
 ### Target single instance
 
-It will stop a random single ec2 instance with the given `INSTANCE_TAG` tag and the `REGION` region.
+It will stop a random single EC2 instance with the given `INSTANCE_TAG` tag and the `REGION` region.
 
 Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/ec2-stop-by-tag/instance-tag.yaml yaml)
 ```yaml
-# target the ec2 instances with matching tag
+# target the EC2 instances with matching tag
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -144,23 +144,23 @@ spec:
     spec:
       components:
         env:
-        # tag of the ec2 instance
+        # tag of the EC2 instance
         - name: INSTANCE_TAG
           value: 'key:value'
-        # region for the ec2 instance
+        # region for the EC2 instance
         - name: REGION
           value: 'us-east-1'
 ```
 
 ### Target Percent of instances
 
-It will stop the `INSTANCE_AFFECTED_PERC` percentage of ec2 instances with the given `INSTANCE_TAG` tag and `REGION` region.
+It will stop the `INSTANCE_AFFECTED_PERC` percentage of EC2 instances with the given `INSTANCE_TAG` tag and `REGION` region.
 
 Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/ec2-stop-by-tag/instance-affected-percentage.yaml yaml)
 ```yaml
-# percentage of ec2 instances, needs to terminate with provided tags
+# percentage of EC2 instances, needs to terminate with provided tags
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -173,13 +173,13 @@ spec:
     spec:
       components:
         env:
-        # percentage of ec2 instance filtered by tags
+        # percentage of EC2 instance filtered by tags
         - name: INSTANCE_AFFECTED_PERC
           value: '100'
-        # tag of the ec2 instance
+        # tag of the EC2 instance
         - name: INSTANCE_TAG
           value: 'key:value'
-        # region for the ec2 instance
+        # region for the EC2 instance
         - name: REGION
           value: 'us-east-1'
 ```

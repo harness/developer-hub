@@ -5,7 +5,7 @@ title: Azure Instance CPU Hog
 
 ## Introduction
 
-- Azure Instance CPU Hog contains chaos to disrupt the state of infra resources. The experiment can induce stress chaos on Azure Azure Instance using Azure Run Command, this is carried out by using bash scripts which are in-built in the experiment for the given chaos scenario.
+- Azure Instance CPU Hog contains chaos to disrupt the state of infra resources. The fault can induce stress chaos on Azure Azure Instance using Azure Run Command, this is carried out by using bash scripts which are in-built in the fault for the given chaos scenario.
 - It causes CPU Hog chaos on Azure Instance using an bash script for a certain chaos duration.
 
 :::tip Fault execution flow chart
@@ -18,8 +18,8 @@ title: Azure Instance CPU Hog
 
 :::info
 
-- The experiment causes cpu hog/stress on the target Azure Instance(s). The idea of this experiment is to simulate issues when there is lack of cpu for other runnning processes/applications resulting into degrading their performance.
-- Injecting a rogue process into a target azure instance, we starve the main processes/applications (typically pid 1) of the resources allocated to it (where limits are defined) causing slowness in application traffic or in other cases unrestrained use can cause instance to exhaust resources leading to degradation in performance of processes/applications present on the instance. So this category of chaos experiment helps to build the immunity on the application undergoing any such stress scenario.
+- The fault causes CPU hog/stress on the target Azure Instance(s). The idea of this fault is to simulate issues when there is lack of CPU for other runnning processes/applications resulting into degrading their performance.
+- Injecting a rogue process into a target Azure instance, we starve the main processes/applications (typically pid 1) of the resources allocated to it (where limits are defined) causing slowness in application traffic or in other cases unrestrained use can cause instance to exhaust resources leading to degradation in performance of processes/applications present on the instance. So this category of chaos fault helps to build the immunity on the application undergoing any such stress scenario.
 
 :::
 
@@ -32,7 +32,7 @@ title: Azure Instance CPU Hog
 **Azure Access Requirement:**
 
 - Ensure that Azure Run Command agent is installed and running in the target Azure instance.
-- We will use azure [file-based authentication](https://docs.microsoft.com/en-us/azure/developer/go/azure-sdk-authorization#use-file-based-authentication) to connect with the instance using azure GO SDK in the experiment. For generating auth file run `az ad sp create-for-rbac --sdk-auth > azure.auth` Azure CLI command.
+- We will use Azure [file-based authentication](https://docs.microsoft.com/en-us/azure/developer/go/azure-sdk-authorization#use-file-based-authentication) to connect with the instance using Azure GO SDK in the fault. For generating auth file run `az ad sp create-for-rbac --sdk-auth > azure.auth` Azure CLI command.
 - Ensure to create a Kubernetes secret having the auth file created in the step in `CHAOS_NAMESPACE`. A sample secret file looks like:
 
 ```yaml
@@ -57,7 +57,7 @@ stringData:
     }
 ```
 
-- If you change the secret key name (from `azure.auth`) please also update the `AZURE_AUTH_LOCATION` ENV value on `experiment.yaml` with the same name.
+- If you change the secret key name (from `azure.auth`) please also update the `AZURE_AUTH_LOCATION` ENV value in the ChaosExperiment CR with the same name.
 
 :::
 
@@ -69,10 +69,10 @@ stringData:
 
 :::
 
-## Experiment tunables
+## Fault Tunables
 
 <details>
-    <summary>Check the experiment tunables</summary>
+    <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>
     <table>
         <tr>
@@ -110,7 +110,7 @@ stringData:
         </tr>
         <tr>
           <td> AZURE_AUTH_LOCATION </td>
-          <td> Provide the name of the azure secret credentials files</td>
+          <td> Provide the name of the Azure secret credentials files</td>
           <td> Defaults to <code>azure.auth</code> </td>
         </tr>
         <tr>
@@ -120,17 +120,17 @@ stringData:
         </tr>
         <tr>
             <td> INSTALL_DEPENDENCIES </td>
-            <td> Select to install dependencies used to run the cpu chaos. It can be either True or False</td>
+            <td> Select to install dependencies used to run the CPU chaos. It can be either True or False</td>
             <td> Defaults to True </td>
         </tr>
         <tr>
             <td> CPU_CORE </td>
-            <td> Provide the number of cpu cores to consume</td>
+            <td> Provide the number of CPU cores to consume</td>
             <td> Defaults to 0 </td>
         </tr>
         <tr>
             <td> CPU_LOAD </td>
-            <td> Provide the percentage of a single cpu core to be consumed</td>
+            <td> Provide the percentage of a single CPU core to be consumed</td>
             <td> Defaults to 100 </td>
         </tr>
         <tr>
@@ -146,21 +146,21 @@ stringData:
     </table>
 </details>
 
-## Experiment Examples
+## Fault Examples
 
-### Common Experiment Tunables
+### Common Fault Tunables
 
-Refer the [common attributes](../common-tunables-for-all-experiments) to tune the common tunables for all the experiments.
+Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
 ### CPU CORE
 
-It defines the cpu core value to be utilised on the Azure instance. It can be tuned via `CPU_CORE` ENV.
+It defines the CPU core value to be utilised on the Azure instance. It can be tuned via `CPU_CORE` ENV.
 
 Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/azure-instance-cpu-hog/cpu-core.yaml yaml)
 ```yaml
-# cpu cores to utilize
+# CPU cores to utilize
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -175,23 +175,23 @@ spec:
         env:
         - name: CPU_CORE
           VALUE: '2'
-        # name of the azure instance
+        # name of the Azure instance
         - name: AZURE_INSTANCE_NAMES
           value: 'instance-1'
-        # resource group for the azure instance
+        # resource group for the Azure instance
         - name: RESOURCE_GROUP
           value: 'rg-azure'
 ```
 
 ### CPU PERCENTAGE
 
-It defines the cpu percentage value to be utilised on the Azure instance. It can be tuned via `CPU_LOAD` ENV.
+It defines the CPU percentage value to be utilised on the Azure instance. It can be tuned via `CPU_LOAD` ENV.
 
 Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/azure-instance-cpu-hog/cpu-percentage.yaml yaml)
 ```yaml
-# cpu percentage to utilize
+# CPU percentage to utilize
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -206,10 +206,10 @@ spec:
         env:
         - name: CPU_LOAD
           VALUE: '50'
-        # name of the azure instance
+        # name of the Azure instance
         - name: AZURE_INSTANCE_NAMES
           value: 'instance-1'
-        # resource group for the azure instance
+        # resource group for the Azure instance
         - name: RESOURCE_GROUP
           value: 'rg-azure'
 ```
@@ -235,23 +235,23 @@ spec:
     spec:
       components:
         env:
-        # names of the azure instance
+        # names of the Azure instance
         - name: AZURE_INSTANCE_NAMES
           value: 'instance-1,instance-2'
-        # resource group for the azure instance
+        # resource group for the Azure instance
         - name: RESOURCE_GROUP
           value: 'rg-azure'
 ```
 
 ### CPU CORE WITH PERCENTAGE CONSUMPTION
 
-It defines how many cpu cores to utilise with percentage of utilisation on the Azure instance. It can be tuned via `CPU_CORE` and `CPU_LOAD` ENV.
+It defines how many CPU cores to utilise with percentage of utilisation on the Azure instance. It can be tuned via `CPU_CORE` and `CPU_LOAD` ENV.
 
 Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/azure-instance-cpu-hog/cpu-core-with-percentage.yaml yaml)
 ```yaml
-# cpu core with percentage to utilize
+# CPU core with percentage to utilize
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -268,10 +268,10 @@ spec:
           VALUE: '2'
         - name: CPU_LOAD
           VALUE: '50'
-        # name of the azure instance
+        # name of the Azure instance
         - name: AZURE_INSTANCE_NAMES
           value: 'instance-1'
-        # resource group for the azure instance
+        # resource group for the Azure instance
         - name: RESOURCE_GROUP
           value: 'rg-azure'
 ```

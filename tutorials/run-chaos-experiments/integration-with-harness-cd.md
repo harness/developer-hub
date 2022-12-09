@@ -11,7 +11,7 @@ Welcome to this tutorial on HCE integration for Harness CD which allows chaos ex
 
 The CD pipelines created as part of Harness CD can natively integrate HCE experiments for continuous resiliency validation as well as automated failure mitigation, which we will learn about here.
 
-As part of the tutorial we have a pre-curated CD pipeline for deploying our demo application, Online Boutique Shop, to a Kubernetes cluster from [this](https://github.com/neelanjan00/boutique-app-monitoring) repository. Also, we have defined a pipeline webhook trigger for the repository such that any code change in the `main` branch triggers the CD pipeline to create a new deployment. 
+As part of the tutorial we have a pre-curated CD pipeline for deploying our demo application, Online Boutique Shop, to a Kubernetes cluster from a fork of [this](https://github.com/chaosnative/harness-chaos-demo/tree/main/boutique-app-manifests) repository. Also, we have defined a pipeline webhook trigger for the repository such that any code change in the `main` branch triggers the CD pipeline to create a new deployment. 
 
 ![Deployment Pipeline](./static/integration-with-harness-cd/deployment-pipeline.png)
 
@@ -59,7 +59,7 @@ A closer inspection indicates that the failure of the chaos step is caused by a 
 
 Hence, we were able to verify a potential weakness in our application using the HCE experiment and observed how the Harness CD pipeline integration can benefit from the continuous chaos validation.
 
-Now, let us see how you can resolve this weakness in your application so that it can be successfully deployed. If we update the manifest from which we are deploying the application in the repo (`manifest/app.yaml`) so that the number of pods for the cart deployment is bumped to **2**, we should be able to successfully deploy the application.
+Now, let us see how you can resolve this weakness in your application so that it can be successfully deployed. We can apply [this](https://raw.githubusercontent.com/chaosnative/harness-chaos-demo/main/boutique-app-manifests/manifest/cart.yaml) manifest for the existing **cartservice** deployment, which should bump up the number of deployment replicas to **2**, according to the manifest specification.
 
 As soon as the changes are pushed to the `main` branch of the repo, we can observe that a new pipeline has been triggered, due to the repository webhook that we have defined.
 

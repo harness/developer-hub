@@ -1,0 +1,14 @@
+{
+  "label": "Add Services",
+  "position": 20,
+  "collapsible": "true",
+  "collapsed": "true",
+  "className": "red",
+  "link": {
+    "type": "generated-index",
+    "title": "Add Services"
+  },
+  "customProps": {
+    "helpdocs_category_id": "u4eimxamd3"
+  }
+}

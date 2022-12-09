@@ -59,7 +59,9 @@ Add the following dependency in your project's pom.xml file:
     <version>1.1.5</version>  
 </dependency>
 ```
-If you are using the Harness Java sample application from the [Java SDK GitHub repository](https://github.com/harness/ff-java-server-sdk), do not add the Maven dependency in the `pom.xml` file as it has already been added.#### Install using Gradle
+If you are using the Harness Java sample application from the [Java SDK GitHub repository](https://github.com/harness/ff-java-server-sdk), do not add the Maven dependency in the `pom.xml` file as it has already been added.
+
+#### Install using Gradle
 
 
 ```

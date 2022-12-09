@@ -5,7 +5,7 @@ title: ECS Agent Stop
 
 ## Introduction
 
-- ECS Agent Stop contains chaos to disrupt the state of infra resources. The experiment can induce an agent stop chaos on AWS ECS using Amazon SSM Run Command, this is carried out by using SSM Docs which is in-built in the experiment for the give chaos scenario.
+- ECS Agent Stop contains chaos to disrupt the state of infra resources. The fault can induce an agent stop chaos on AWS ECS using Amazon SSM Run Command, this is carried out by using SSM Docs which is in-built in the fault for the give chaos scenario.
 
 - It causes agent container stop on ECS with a given `CLUSTER_NAME` using an SSM docs for a certain chaos duration.
 
@@ -16,11 +16,11 @@ title: ECS Agent Stop
 ## Uses
 
 <details>
-<summary>View the uses of the experiment</summary>
+<summary>View the uses of the fault</summary>
 <div>
 Agent chaos stop is another very common and frequent scenario we find with ECS clusters that can break an agent that manages the task container on the ECS cluster and impacts their delivery. Such scenarios can still occur despite whatever availability aids docker provides.
 
-Killing the agent container will distrupt the performance of it and impact to smooth working of task containers. So this category of chaos experiment helps to build the immunity on the application undergoing any such scenarios.
+Killing the agent container will distrupt the performance of it and impact to smooth working of task containers. So this category of chaos fault helps to build the immunity on the application undergoing any such scenarios.
 
 </div>
 </details>
@@ -35,7 +35,7 @@ Killing the agent container will distrupt the performance of it and impact to sm
 
 - Ensure that the ECS container metadata is enabled this feature is disabled by default. To enable it please follow the aws docs to [Enabling container metadata](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-metadata.html). If you have your task running prior this activity you may need to restart it to get the metadata directory as mentioned in the docs.
 
-- Ensure that both you and ECS cluster instances have a Role with required AWS access to do SSM and ECS operations. Refer the below mentioned sample policy for the experiment (please note that the sample policy can be minimised further). To know more checkout [Systems Manager Docs](https://docs.aws.amazon.com/systems-manager/latest/userguide/setup-launch-managed-instance.html). Also, please refer the below mentioned policy required for the experiment.
+- Ensure that both you and ECS cluster instances have a Role with required AWS access to do SSM and ECS operations. Refer the below mentioned sample policy for the fault (please note that the sample policy can be minimised further). To know more checkout [Systems Manager Docs](https://docs.aws.amazon.com/systems-manager/latest/userguide/setup-launch-managed-instance.html). Also, please refer the below mentioned policy required for the experiment.
 
 - Ensure to create a Kubernetes secret having the AWS access configuration(key) in the `CHAOS_NAMESPACE`. A sample secret file looks like:
 
@@ -53,7 +53,8 @@ stringData:
     aws_secret_access_key = XXXXXXXXXXXXXXX
 ```
 
-- If you change the secret key name (from `cloud_config.yml`) please also update the `AWS_SHARED_CREDENTIALS_FILE` ENV value on `experiment.yaml`with the same name.
+- If you change the secret key name (from `cloud_config.yml`) please also update the `AWS_SHARED_CREDENTIALS_FILE` ENV value in the ChaosExperiment CR with the same name.
+:::
 
 ## Default Validations
 
@@ -63,10 +64,10 @@ stringData:
 
 :::
 
-## Experiment tunables
+## Fault Tunables
 
 <details>
-    <summary>Check the Experiment Tunables</summary>
+    <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>
     <table>
         <tr>
@@ -120,11 +121,11 @@ stringData:
     </table>
 </details>
 
-## Experiment Examples
+## Fault Examples
 
 ### Common and AWS specific tunables
 
-Refer the [common attributes](../common-tunables-for-all-experiments) and [AWS specific tunable](./aws-experiments-tunables) to tune the common tunables for all experiments and aws specific tunables.
+Refer the [common attributes](../common-tunables-for-all-faults) and [AWS specific tunable](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
 
 ### Agent Stop
 
@@ -134,7 +135,7 @@ Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/ecs-agent-stop/agent-stop.yaml yaml)
 ```yaml
-# stops the agent of an ecs cluster
+# stops the agent of an ECS cluster
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -148,7 +149,7 @@ spec:
     spec:
       components:
         env:
-        # provide the name of ecs cluster
+        # provide the name of ECS cluster
         - name: CLUSTER_NAME
           value: 'demo'
         - name: REGION

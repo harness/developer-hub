@@ -5,9 +5,9 @@ title: ECS Instance Stop
 
 ## Introduction
 
-- ECS Instance Stop can induce an ec2 instance stop chaos on AWS ECS cluster. It derives the instance under chaos from ECS cluster.
+- ECS Instance Stop can induce an EC2 instance stop chaos on AWS ECS cluster. It derives the instance under chaos from ECS cluster.
 
-- It causes ec2 instance to stopped and further gets deleted on ECS cluster for a certain chaos duration.
+- It causes EC2 instance to stopped and further gets deleted on ECS cluster for a certain chaos duration.
 
 :::tip Fault execution flow chart
 ![ECS Instance Stop](./static/images/ecs-instance-stop.png)
@@ -16,11 +16,11 @@ title: ECS Instance Stop
 ## Uses
 
 <details>
-<summary>View the uses of the experiment</summary>
+<summary>View the uses of the fault</summary>
 <div>
 EC2 instance chaos stop is another very common and frequent scenario we find with ECS clusters that can result in breaking of agent that manages task container on ECS cluster and impact its delivery. Such scenarios that can still occur despite whatever availability aids docker provides.
 
-Killing the EC2 instance container will distrupt the performance of it and impact to smooth working of task containers. So this category of chaos experiment helps to build the immunity on the application undergoing any such scenarios.
+Killing the EC2 instance container will distrupt the performance of it and impact to smooth working of task containers. So this category of chaos fault helps to build the immunity on the application undergoing any such scenarios.
 </div>
 </details>
 
@@ -50,7 +50,8 @@ stringData:
     aws_secret_access_key = XXXXXXXXXXXXXXX
 ```
 
-- If you change the secret key name (from `cloud_config.yml`) please also update the `AWS_SHARED_CREDENTIALS_FILE` ENV value on `experiment.yaml`with the same name.
+- If you change the secret key name (from `cloud_config.yml`) please also update the `AWS_SHARED_CREDENTIALS_FILE` ENV value in the ChaosExperiment CR with the same name.
+:::
 
 ## Default Validations
 
@@ -60,10 +61,10 @@ stringData:
 
 :::
 
-## Experiment tunables
+## Fault Tunables
 
 <details>
-    <summary>Check the Experiment Tunables</summary>
+    <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>
     <table>
         <tr>
@@ -106,7 +107,7 @@ stringData:
       </tr>
       <tr> 
         <td> EC2_INSTANCE_ID </td>
-        <td> Provide the target instance id from ECS cluster</td>
+        <td> Provide the target instance ID from ECS cluster</td>
         <td> If not provided will select randomly </td>
       </tr>
       <tr>
@@ -122,11 +123,11 @@ stringData:
     </table>
 </details>
 
-## Experiment Examples
+## Fault Examples
 
 ### Common and AWS specific tunables
 
-Refer the [common attributes](../common-tunables-for-all-experiments) and [AWS specific tunable](./aws-experiments-tunables) to tune the common tunables for all experiments and aws specific tunables.
+Refer the [common attributes](../common-tunables-for-all-faults) and [AWS specific tunable](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
 
 ### ECS Instance Stop
 
@@ -136,7 +137,7 @@ Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/ecs-instance-stop/instance-stop.yaml yaml)
 ```yaml
-# stops the agent of an ecs cluster
+# stops the agent of an ECS cluster
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -150,7 +151,7 @@ spec:
     spec:
       components:
         env:
-        # provide the name of ecs cluster
+        # provide the name of ECS cluster
         - name: CLUSTER_NAME
           value: 'demo'
         - name: EC2_INSTANCE_ID

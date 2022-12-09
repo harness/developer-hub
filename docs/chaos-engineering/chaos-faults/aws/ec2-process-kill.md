@@ -4,8 +4,8 @@ title: EC2 Process Kill
 ---
 
 ## Introduction
-- EC2 Process Kill experiment kills the target processes running on ec2 instance to determine the application/process resilience.
-- It helps to check the performance of the application/process running on the ec2 instance(s).
+- EC2 Process Kill fault kills the target processes running on EC2 instance to determine the application/process resilience.
+- It helps to check the performance of the application/process running on the EC2 instance(s).
 
 :::tip Fault execution flow chart
 ![EC2 Process Kill](./static/images/ec2-process-kill.png)
@@ -13,9 +13,9 @@ title: EC2 Process Kill
 
 ## Uses
 <details>
-<summary>View the uses of the experiment</summary>
+<summary>View the uses of the fault</summary>
 <div>
-Disrupt the application critical processes such as databases or message queues running in the ec2 instance by killing their underlying processes or threads.
+Disrupt the application critical processes such as databases or message queues running in the EC2 instance by killing their underlying processes or threads.
 </div>
 </details>
 
@@ -55,9 +55,9 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
 - The target processes should exist in the VM.
 :::
 
-## Experiment tunables
+## Fault Tunables
 <details>
-    <summary>Check the Experiment Tunables</summary>
+    <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>
     <table>
       <tr>
@@ -101,20 +101,20 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
     </table>
 </details>
 
-## Experiment Examples
+## Fault Examples
 
-### Common Experiment Tunables
-Refer the [common attributes](../common-tunables-for-all-experiments) to tune the common tunables for all the experiments.
+### Common Fault Tunables
+Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
 ### PROCESS_IDS
-It contains the target process Ids running on a particular ec2 instance
+It contains the target process Ids running on a particular EC2 instance
 
 
 Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/ec2-process-kill/ec2-process-kill-processid.yaml yaml)
 ```yaml
-# Process kill running on ec2 instance
+# Process kill running on EC2 instance
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:

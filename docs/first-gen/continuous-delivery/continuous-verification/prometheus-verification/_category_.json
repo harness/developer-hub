@@ -1,0 +1,14 @@
+{
+  "label": "Prometheus Verification",
+  "position": 110,
+  "collapsible": "true",
+  "collapsed": "true",
+  "className": "red",
+  "link": {
+    "type": "generated-index",
+    "title": "Prometheus Verification"
+  },
+  "customProps": {
+    "helpdocs_category_id": "177rlmujlu"
+  }
+}

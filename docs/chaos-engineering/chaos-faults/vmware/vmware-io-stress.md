@@ -4,7 +4,7 @@ title: VMware IO Stress
 ---
 
 ## Introduction
-- This experiment causes disk stress on the target VMware VMs. The experiment aims to verify the resiliency of applications that share this disk resource to the VM.
+- This fault causes disk stress on the target VMware VMs. It aims to verify the resiliency of applications that share this disk resource to the VM. 
 
 :::tip Fault execution flow chart
 ![VMware IO Stress](./static/images/vmware-io-stress.png)
@@ -15,8 +15,8 @@ title: VMware IO Stress
 - Ensure that Kubernetes Version > 1.16
 
 ** vCenter Requirements **
-- Ensure the connectivity of  execution plane with vCenter and the hosts over 443 port.
-- Ensure that Vmware tool is installed on the target VM with remote execution enabled.
+- Ensure the connectivity of  execution plane with vCenter and the hosts over 443 port. 
+- Ensure that VMware tool is installed on the target VM with remote execution enabled.
 - Ensure that you have sufficient vCenter permission to access hosts and VMs.
 - Ensure to create a Kubernetes secret having the Vcenter credentials in the `CHAOS_NAMESPACE`. A sample secret file looks like:
 ```yaml
@@ -41,9 +41,9 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
 - VM should be in healthy state.
 :::
 
-## Experiment tunables
+## Fault Tunables
 <details>
-    <summary>Check the Experiment Tunables</summary>
+    <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>
     <table>
       <tr>
@@ -67,13 +67,13 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
        <tr>
         <td> FILESYSTEM_UTILIZATION_PERCENTAGE </td>
         <td> Specify the size as percentage of free space on the file system </td>
-        <td>  </td>
-      </tr>
+        <td> </td>
+      </tr>   
        <tr>
         <td> FILESYSTEM_UTILIZATION_BYTES </td>
         <td> Specify the size in GigaBytes(GB). FILESYSTEM_UTILIZATION_PERCENTAGE & FILESYSTEM_UTILIZATION_BYTES are mutually exclusive. If both are provided, FILESYSTEM_UTILIZATION_PERCENTAGE is prioritized. </td>
-        <td>  </td>
-      </tr>
+        <td> </td>
+      </tr>  
        <tr>
         <td> NUMBER_OF_WORKERS </td>
         <td> It is the number of IO workers involved in IO disk stress </td>
@@ -82,11 +82,11 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
        <tr>
         <td> VOLUME_MOUNT_PATH </td>
         <td> Fill the given volume mount path </td>
-        <td>  </td>
-      </tr>
+        <td> </td>
+      </tr>   
       <tr>
         <td> CPU_CORES </td>
-        <td> Number of the cpu cores subjected to CPU stress </td>
+        <td> Number of the CPU cores subjected to CPU stress </td>
         <td> Default to 1 </td>
         </tr>
       <tr>
@@ -112,10 +112,10 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
     </table>
 </details>
 
-## Experiment Examples
+## Fault Examples
 
-### Common Experiment Tunables
-Refer the [common attributes](../common-tunables-for-all-experiments) to tune the common tunables for all the experiments.
+### Common Fault Tunables
+Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
 ### FILESYSTEM_UTILIZATION_PERCENTAGE
 It stresses the `FILESYSTEM_UTILIZATION_PERCENTAGE` percentage of total free space available in the VM.

@@ -5,7 +5,7 @@ title: EC2 Memory Hog
 
 ## Introduction
 
-- EC2 Memory Hog contains chaos to disrupt the state of infra resources. The experiment can induce stress chaos on AWS EC2 Instance using Amazon SSM Run Command, this is carried out by using SSM Docs which is in-built in the experiment for the give chaos scenario.
+- EC2 Memory Hog contains chaos to disrupt the state of infra resources. The fault can induce stress chaos on AWS EC2 Instance using Amazon SSM Run Command, this is carried out by using SSM Docs which is in-built in the fault for the give chaos scenario.
 - It causes Memory Hog chaos on EC2 Instance using an SSM doc for a certain chaos duration.
 
 :::tip Fault execution flow chart
@@ -14,12 +14,12 @@ title: EC2 Memory Hog
 
 ## Uses
 
-### Uses of the experiment
+### Uses of the fault
 
 :::info
 
-- The experiment causes memory hog/stress on the target AWS EC2 Instance(s). The idea of this experiment is to simulate issues when there is lack of memory for other runnning processes/applications resulting into degrading their performance.
-- Injecting a rogue process into a target ec2 instance, we starve the main processes/applications (typically pid 1) of the resources allocated to it (where limits are defined) causing slowness in application traffic or in other cases unrestrained use can cause instance to exhaust resources leading to degradation in performance of processes/applications present on the instance. So this category of chaos experiment helps to build the immunity on the application undergoing any such stress scenario.
+- The fault causes memory hog/stress on the target AWS EC2 Instance(s). The idea of this fault is to simulate issues when there is lack of memory for other runnning processes/applications resulting into degrading their performance.
+- Injecting a rogue process into a target EC2 instance, we starve the main processes/applications (typically pid 1) of the resources allocated to it (where limits are defined) causing slowness in application traffic or in other cases unrestrained use can cause instance to exhaust resources leading to degradation in performance of processes/applications present on the instance. So this category of chaos fault helps to build the immunity on the application undergoing any such stress scenario.
 
 :::
 
@@ -62,10 +62,10 @@ stringData:
 
 :::
 
-## Experiment tunables
+## Fault Tunables
 
 <details>
-<summary>Check the experiment tunables</summary>
+<summary>Check the Fault Tunables</summary>
 <h2>Mandatory Fields</h2>
 <table>
     <tr>
@@ -113,17 +113,17 @@ stringData:
     </tr>
     <tr>
         <td> MEMORY_CONSUMPTION </td>
-        <td> The amount of memory to be hogged in the ec2 instance in terms of mega bytes </td>
+        <td> The amount of memory to be hogged in the EC2 instance in terms of mega bytes </td>
         <td> Defaults to 500MB </td>
     </tr>
     <tr>
         <td> MEMORY_PERCENTAGE </td>
-        <td> The amount of memory to be hogged in the ec2 instance in terms of percentage</td>
+        <td> The amount of memory to be hogged in the EC2 instance in terms of percentage</td>
         <td> Defaults to 0 </td>
     </tr>
     <tr>
         <td> NUMBER_OF_WORKERS </td>
-        <td> The number of workers used to run the stress process  </td>
+        <td> The number of workers used to run the stress process </td>
         <td> Defaults to 1 </td>
     </tr>
     <tr>
@@ -140,11 +140,11 @@ stringData:
 
 </details>
 
-## Experiment Examples
+## Fault Examples
 
-### Common Experiment Tunables
+### Common Fault Tunables
 
-Refer the [common attributes](../common-tunables-for-all-experiments) to tune the common tunables for all the experiments.
+Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
 ### MEMORY CONSUMPTION IN MEGABYTES
 
@@ -169,10 +169,10 @@ spec:
         env:
         - name: MEMORY_CONSUMPTION
           VALUE: '1024'
-        # id of the ec2 instance
+        # ID of the EC2 instance
         - name: EC2_INSTANCE_ID
           value: 'instance-1'
-        # region for the ec2 instance
+        # region for the EC2 instance
         - name: REGION
           value: 'us-east-1'
 ```
@@ -200,10 +200,10 @@ spec:
         env:
         - name: MEMORY_PERCENTAGE
           VALUE: '50'
-        # id of the ec2 instance
+        # ID of the EC2 instance
         - name: EC2_INSTANCE_ID
           value: 'instance-1'
-        # region for the ec2 instance
+        # region for the EC2 instance
         - name: REGION
           value: 'us-east-1'
 ```
@@ -229,10 +229,10 @@ spec:
     spec:
       components:
         env:
-        # ids of the ec2 instances
+        # ids of the EC2 instances
         - name: EC2_INSTANCE_ID
           value: 'instance-1,instance-2,instance-3'
-        # region for the ec2 instance
+        # region for the EC2 instance
         - name: REGION
           value: 'us-east-1'
 ```
@@ -260,10 +260,10 @@ spec:
         env:
         - name: NUMBER_OF_WORKERS
           VALUE: '3'
-        # id of the ec2 instance
+        # ID of the EC2 instance
         - name: EC2_INSTANCE_ID
           value: 'instance-1'
-        # region for the ec2 instance
+        # region for the EC2 instance
         - name: REGION
           value: 'us-east-1'
 ```

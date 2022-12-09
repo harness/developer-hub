@@ -114,7 +114,9 @@ To add Targets based on conditions:
 ```
 *Figure 6: Viewing the condition for adding a Target*
 
-When you add Targets based on conditions, on the **Target Management:Targets** page, the Target Group is **not** displayed in the **Target Groups** column.### Add or exclude Targets from Target settings
+When you add Targets based on conditions, on the **Target Management:Targets** page, the Target Group is **not** displayed in the **Target Groups** column.
+
+### Add or exclude Targets from Target settings
 
 You can use Target Settings to include or exclude Targets from a Target Group. Complete the following steps to include or exclude Targets using the Target Settings:
 

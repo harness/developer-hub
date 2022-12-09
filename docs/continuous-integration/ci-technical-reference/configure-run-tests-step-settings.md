@@ -88,7 +88,9 @@ Enter the commands used for cleaning up the environment after running the tests.
 
 The path to the file(s) that store results in the JUnit XML format. You can enter multiple paths. [Glob](https://en.wikipedia.org/wiki/Glob_(programming)) is supported.
 
-This variable must be set for the Run Tests tep to publish test results.### Environment Variables
+This variable must be set for the Run Tests tep to publish test results.
+
+### Environment Variables
 
 Variables passed to the container as environment variables and used in the Commands.
 

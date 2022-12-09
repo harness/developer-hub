@@ -1,4 +1,4 @@
-# target percentage of the ebs volumes with the provided tag
+# target percentage of the EBS volumes with the provided tag
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -11,13 +11,13 @@ spec:
     spec:
       components:
         env:
-        # percentage of ebs volumes filter by tag
+        # percentage of EBS volumes filter by tag
         - name: VOLUME_AFFECTED_PERC
           value: '100'
-        # tag of the ebs volume
+        # tag of the EBS volume
         - name: EBS_VOLUME_TAG
           value: 'key:value'
-        # region for the ebs volume
+        # region for the EBS volume
         - name: REGION
           value: 'us-east-1'
         - name: TOTAL_CHAOS_DURATION

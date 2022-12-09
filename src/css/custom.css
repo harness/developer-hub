@@ -229,6 +229,29 @@
   --ifm-navbar-padding-vertical: calc(var(--ifm-spacing-vertical) * 0.75);
   --ifm-navbar-height: 4.25rem;
 }
+html {
+  font-size: 16px;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  text-rendering: optimizeLegibility;
+  text-size-adjust: 100%;
+
+  box-sizing: border-box;
+  min-height: 100vh;
+}
+html *,
+html *:before,
+html *:after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: Inter, sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
+}
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme="dark"] {
@@ -244,15 +267,24 @@
   --ifm-link-color: var(--ifm-color-primary);
 }
 
-.button--cta {
+.button--cta,
+.button--primary {
   background-color: var(--primary-7);
+  border-color: var(--primary-7);
   font-weight: 600;
   font-size: 16px;
   line-height: 24px;
   color: var(--white);
 }
-.button--cta:hover {
+.button--cta:hover,
+.button--primary:hover {
   background-color: var(--primary-5);
+  border-color: var(--primary-5);
+}
+.button--primary {
+  height: 48px;
+  padding-left: 2em;
+  padding-right: 2em;
 }
 
 /* style overwriting temporarily for the beta icon */
@@ -267,6 +299,65 @@
   margin-top: 10px;
   width: 36px;
   height: auto;
+}
+.theme-doc-markdown h3 {
+  display: flex;
+}
+.theme-doc-markdown h3 > img {
+  margin-right: 0.2em;
+}
+
+.color-ci {
+  color: var(--mod-ci-200);
+}
+.color-cd {
+  color: var(--mod-cd-200);
+}
+.color-ff {
+  color: var(--mod-ff-200);
+}
+.color-ccm {
+  color: var(--mod-ccm-200);
+}
+.color-srm {
+  color: var(--mod-srm-200);
+}
+.color-sto {
+  color: var(--mod-sto-200);
+}
+.color-ce {
+  color: var(--mod-ce-200);
+}
+.table-of-contents ul li span[class*="color-"] {
+  color: unset;
+}
+.theme-doc-markdown h3 {
+  display: flex;
+}
+.theme-doc-markdown h3 > img {
+  margin-right: 0.2em;
+}
+
+.color-ci {
+  color: var(--mod-ci-200);
+}
+.color-cd {
+  color: var(--mod-cd-200);
+}
+.color-ff {
+  color: var(--mod-ff-200);
+}
+.color-ccm {
+  color: var(--mod-ccm-200);
+}
+.color-srm {
+  color: var(--mod-srm-200);
+}
+.color-sto {
+  color: var(--mod-sto-200);
+}
+.color-ce {
+  color: var(--mod-ce-200);
 }
 
 /* hide the algolia logo */
@@ -322,6 +413,18 @@ body.DocSearch--active #__docusaurus > div[class*="announcementBar"] {
   display: none;
 }
 
+.theme-doc-sidebar-container .sidebar-item-rss > a {
+  display: flex;
+  align-items: center;
+}
+.theme-doc-sidebar-container .sidebar-item-rss > a > svg {
+  display: none;
+}
+.theme-doc-sidebar-container .sidebar-item-rss > a::after {
+  content: url(/img/icon_rss.svg);
+  margin-left: 0.3em;
+}
+
 /* customize LHS menu items */
 aside nav.menu > ul > li > div > a,
 aside nav.menu > ul > li > ul > li > div > a,
@@ -347,19 +450,22 @@ aside nav.menu > ul > li > ul > li ul > li > a {
   background-size: 1.25rem 1.25rem;
 }
 
-@media screen and (min-width: 1080px) {
+@media screen and (min-width: 1200px) {
   /* style for the search bar in higher resolution */
   .searchBar {
-    width: calc(100vw - 925px);
+    width: calc(100vw - 1040px); /* - 925px */
   }
   .searchBar .DocSearch-Button {
     width: 100%;
   }
 }
 
-@media screen and (max-width: 1079px) {
+@media screen and (max-width: 1199px) {
   /* for tablet */
   .navbar__item img[alt="BETA"] {
+    display: none;
+  }
+  .searchBar {
     display: none;
   }
 }

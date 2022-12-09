@@ -4,7 +4,7 @@ title: EC2 DNS Chaos
 ---
 
 ## Introduction
-- It causes DNS errors in the provided ec2 instance for a specified chaos duration.
+- It causes DNS errors in the provided EC2 instance for a specified chaos duration. 
 - It helps to check the performance of the application/process running on the EC2 instance(s).
 
 :::tip Fault execution flow chart
@@ -13,9 +13,9 @@ title: EC2 DNS Chaos
 
 ## Uses
 <details>
-<summary>View the uses of the experiment</summary>
+<summary>View the uses of the fault</summary>
 <div>
-The experiment causes DNS errors on the target ec2 instances which can result in unavailability/distorted network connectivity from the VM to the target hosts. This will also help to produce a hypothesis where some services of an application are unreachable from the ec2 instance. This will help the user to think the mitigation steps that should be taken to overcome such situation. This experiment can also be used to know how the DNS error can impact your infra and standalone tasks as well.
+The fault causes DNS errors on the target EC2 instances which can result in unavailability/distorted network connectivity from the VM to the target hosts. This will also help to produce a hypothesis where some services of an application are unreachable from the EC2 instance. This will help the user to think the mitigation steps that should be taken to overcome such situation. This fault can also be used to know how the DNS error can impact your infra and standalone tasks as well.
 </div>
 </details>
 
@@ -54,9 +54,9 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
 - EC2 instance should be in healthy state.
 :::
 
-## Experiment tunables
+## Fault Tunables
 <details>
-    <summary>Check the Experiment Tunables</summary>
+    <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>
     <table>
       <tr>
@@ -130,10 +130,10 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
     </table>
 </details>
 
-## Experiment Examples
+## Fault Examples
 
-### Common Experiment Tunables
-Refer the [common attributes](../common-tunables-for-all-experiments) to tune the common tunables for all the experiments.
+### Common Fault Tunables
+Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
 ### Run DNS Chaos With Port
 

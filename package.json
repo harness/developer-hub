@@ -23,6 +23,7 @@
   "dependencies": {
     "@docusaurus/core": "^2.2.0",
     "@docusaurus/cssnano-preset": "2.2.0",
+    "@docusaurus/plugin-client-redirects": "^2.2.0",
     "@docusaurus/plugin-debug": "2.2.0",
     "@docusaurus/plugin-google-analytics": "2.2.0",
     "@docusaurus/plugin-google-gtag": "2.2.0",
@@ -33,6 +34,7 @@
     "@mdx-js/react": "^1.6.22",
     "clsx": "^1.2.1",
     "docusaurus-plugin-sass": "^0.2.2",
+    "fs-extra": "^11.1.0",
     "prism-react-renderer": "^1.3.5",
     "rc-tooltip": "^5.2.2",
     "react": "^17.0.2",
@@ -43,12 +45,12 @@
     "@docusaurus/module-type-aliases": "2.2.0",
     "@tsconfig/docusaurus": "^1.0.5",
     "dictionary-en": "^3.2.0",
+    "eslint": "^8.25.0",
+    "eslint-plugin-react": "^7.31.10",
     "textlint": "^12.2.2",
     "textlint-rule-no-todo": "^2.0.1",
     "textlint-rule-spelling": "^0.3.0",
     "textlint-rule-write-good": "^2.0.0",
-    "eslint": "^8.25.0",
-    "eslint-plugin-react": "^7.31.10",
     "typescript": "^4.7.4"
   },
   "browserslist": {

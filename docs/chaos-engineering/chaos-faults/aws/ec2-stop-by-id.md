@@ -5,9 +5,9 @@ title: EC2 Stop By ID
 
 ## Introduction
 
-- It stops an EC2 instance using the provided instance ID or list of instance IDs before bringing it back to running state after the specified chaos duration.
-- It checks the performance of the application/process running on the EC2 instance.
-- When the `MANAGED_NODEGROUP` is enabled, the experiment doesn't start the instance after chaos. It checks the cluster for the newly added node instance.
+- It causes stopping of an EC2 instance using the provided instance ID or list of instance IDs before bringing it back to running state after the specified chaos duration.
+- It helps to check the performance of the application/process running on the EC2 instance.
+- When the `MANAGED_NODEGROUP` is enabled then the fault will not try to start the instance post chaos instead it will check of the addition of the new node instance to the cluster.
 
 :::tip Fault execution flow chart
 ![EC2 Stop By ID](./static/images/ec2-stop.png)
@@ -16,7 +16,7 @@ title: EC2 Stop By ID
 ## Uses
 
 <details>
-<summary>View the uses of the experiment</summary>
+<summary>View the uses of the fault</summary>
 <div>
 Coming soon.
 </div>
@@ -48,7 +48,7 @@ stringData:
 
 ### WARNING
 
-If the target EC2 instance is a part of a managed node group, drain the target node of any application running on it. Isolate the target node before running the experiment so that the experiment pods are not scheduled on it.
+If the target EC2 instance is a part of a managed node group, drain the target node of any application running on it. Isolate the target node before running the fault so that the fault pods are not scheduled on it.
 :::
 
 ## Default Validations
@@ -59,10 +59,10 @@ If the target EC2 instance is a part of a managed node group, drain the target n
 
 :::
 
-## Experiment Tunables
+## Fault Tunables
 
 <details>
-    <summary>Check the Experiment Tunables</summary>
+    <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>
     <table>
       <tr>
@@ -72,7 +72,7 @@ If the target EC2 instance is a part of a managed node group, drain the target n
       </tr>
       <tr>
         <td> EC2_INSTANCE_ID </td>
-        <td> Instance ID of the target ec2 instance. Multiple IDs can also be provided as a comma(,) separated values</td>
+        <td> Instance ID of the target EC2 instance. Multiple IDs can also be provided as a comma(,) separated values</td>
         <td> Multiple IDs can be provided as `id1,id2` </td>
       </tr>
       <tr>
@@ -116,15 +116,15 @@ If the target EC2 instance is a part of a managed node group, drain the target n
     </table>
 </details>
 
-## Experiment Examples
+## Fault Examples
 
 ### Common and AWS specific tunables
 
-Refer the [common attributes](../common-tunables-for-all-experiments) and [AWS specific tunable](./aws-experiments-tunables) to tune the common tunables for all experiments and aws specific tunables.
+Refer the [common attributes](../common-tunables-for-all-faults) and [AWS specific tunable](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
 
 ### Stop Instances By ID
 
-It has comma separated list of instances IDs subject to EC2 stop chaos. You can tune it using the `EC2_INSTANCE_ID` environment variable.
+It contains comma separated list of instances IDs subjected to EC2 stop chaos. It can be tuned via `EC2_INSTANCE_ID` ENV.
 
 Use the following example to tune this:
 
@@ -143,10 +143,10 @@ spec:
     spec:
       components:
         env:
-        # id of the ec2 instance
+        # ID of the EC2 instance
         - name: EC2_INSTANCE_ID
           value: 'instance-1'
-        # region for the ec2 instance
+        # region for the EC2 instance
         - name: REGION
           value: 'us-east-1'
 ```

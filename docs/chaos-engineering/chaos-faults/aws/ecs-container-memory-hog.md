@@ -5,7 +5,7 @@ title: ECS Container Memory Hog
 
 ## Introduction
 
-- ECS Container Memory hog contains chaos to disrupt the state of infra resources. The experiment can induce a stress chaos on AWS ECS container using Amazon SSM Run Command, this is carried out by using SSM Docs which is in-built in the experiment for the give chaos scenario.
+- ECS Container Memory hog contains chaos to disrupt the state of infra resources. The fault can induce a stress chaos on AWS ECS container using Amazon SSM Run Command, this is carried out by using SSM Docs which is in-built in the fault for the give chaos scenario.
 
 - It causes memory chaos on containers of ECS task with given cluster name using an SSM docs for a certain chaos duration.
 
@@ -20,11 +20,11 @@ title: ECS Container Memory Hog
 ## Uses
 
 <details>
-<summary>View the uses of the experiment</summary>
+<summary>View the uses of the fault</summary>
 <div>
 Memory usage within containers is subject to various constraints. If the limits are specified in their spec, exceeding them can cause termination of the container (due to OOMKill of the primary process, often pid 1) - the restart of the container by docker, subject to the policy specified. For containers with no limits placed, the memory usage is uninhibited until such time as the VM level OOM Behaviour takes over. In this case, containers on the Instance can be killed based on their oom_score. This eval is extended to all task containers running on the instance - thereby causing a bigger blast radius.
 
-This experiment launches a stress process within the target container - which can cause either the primary process in the container to be resource constrained in cases where the limits are enforced OR eat up available system memory on the instance in cases where the limits are not specified.
+This fault launches a stress process within the target container - which can cause either the primary process in the container to be resource constrained in cases where the limits are enforced OR eat up available system memory on the instance in cases where the limits are not specified.
 </div>
 </details>
 
@@ -38,7 +38,7 @@ This experiment launches a stress process within the target container - which ca
 
 - Ensure that the ECS container metadata is enabled this feature is disabled by default. To enable it please follow the aws docs to [Enabling container metadata](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-metadata.html). If you have your task running prior this activity you may need to restart it to get the metadata directory as mentioned in the docs.
 
-- Ensure that both you and ECS cluster instances have a Role with required AWS access to do SSM and ECS operations. Refer the below mentioned sample policy for the experiment (please note that the sample policy can be minimised further). To know more checkout [Systems Manager Docs](https://docs.aws.amazon.com/systems-manager/latest/userguide/setup-launch-managed-instance.html). Also, please refer the below mentioned policy required for the experiment.
+- Ensure that both you and ECS cluster instances have a Role with required AWS access to do SSM and ECS operations. Refer the below mentioned sample policy for the fault (please note that the sample policy can be minimised further). To know more checkout [Systems Manager Docs](https://docs.aws.amazon.com/systems-manager/latest/userguide/setup-launch-managed-instance.html). Also, please refer the below mentioned policy required for the experiment.
 
 - Ensure to create a Kubernetes secret having the AWS access configuration(key) in the `CHAOS_NAMESPACE`. A sample secret file looks like:
 
@@ -56,7 +56,8 @@ stringData:
     aws_secret_access_key = XXXXXXXXXXXXXXX
 ```
 
-- If you change the secret key name (from `cloud_config.yml`) please also update the `AWS_SHARED_CREDENTIALS_FILE` ENV value on `experiment.yaml`with the same name.
+- If you change the secret key name (from `cloud_config.yml`) please also update the `AWS_SHARED_CREDENTIALS_FILE` ENV value in the ChaosExperiment CR with the same name.
+:::
 
 ## Default Validations
 
@@ -66,10 +67,10 @@ stringData:
 
 :::
 
-## Experiment tunables
+## Fault Tunables
 
 <details>
-    <summary>Check the Experiment Tunables</summary>
+    <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>
     <table>
         <tr>
@@ -133,11 +134,11 @@ stringData:
     </table>
 </details>
 
-## Experiment Examples
+## Fault Examples
 
 ### Common and AWS specific tunables
 
-Refer the [common attributes](../common-tunables-for-all-experiments) and [AWS specific tunable](./aws-experiments-tunables) to tune the common tunables for all experiments and aws specific tunables.
+Refer the [common attributes](../common-tunables-for-all-faults) and [AWS specific tunable](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
 
 ### Memory Percentage
 

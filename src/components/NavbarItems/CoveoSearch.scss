@@ -1,7 +1,7 @@
 /* --- Coveo style overwritten ---- */
 #searchBoxCoveo {
     // width: 400px;
-    width: calc(100vw - 925px);
+    width: calc(100vw - 1080px);
 }
 
 #coveo-search-mask{
@@ -594,6 +594,52 @@
     display: none !important;
 }
 
+@media screen and (max-width: 1199px) {
+    #searchBoxCoveo {
+
+		width: calc(100vw - 1025px);
+        .CoveoSearchButton {
+            display: none;
+        }
+        .magic-box-input > input {
+            font-size: 14px;
+        }
+    }
+}
+
+@media screen and (min-width: 997px) and (max-width: 1060px) {
+    #searchBoxCoveo {
+		display: none
+    }
+}
+
+@media screen and (max-width: 996px) {
+    #searchBoxCoveo {
+        width: 300px;
+    }
+	#searchResultsCoveo .coveo-search-results {
+		left: 15px;
+		width: calc(100vw - 30px);
+	}
+	#coveo-search {
+		min-width: unset;
+	}
+}
+
+@media screen and (max-width: 834px) {
+	 .coveo-result-frame .coveo-result-row, .CoveoResult.coveo-result-frame .coveo-result-row {
+		 display: block;
+	}
+}
+
+@media screen and (max-width: 678px) {
+    #searchBoxCoveo {
+        width: 300px;
+		display: none;
+    }
+}
+
+/*
 @media screen and (max-width: 1058px) {
     #searchBoxCoveo {
 
@@ -632,3 +678,4 @@
 		display: none;
     }
 }
+*/
