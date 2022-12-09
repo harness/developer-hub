@@ -1,0 +1,198 @@
+---
+title: Verify Deployments with Custom Health Source
+description: This topic shows you how to add and configure Custom Health as a Health Source for the Verify step.
+sidebar_position: 5
+helpdocs_topic_id: n67y68fopr
+helpdocs_category_id: 9mefqceij0
+helpdocs_is_private: false
+helpdocs_is_published: true
+---
+
+This topic covers how to add and configure Custom Health as a Health Source for the Verify step.
+
+Harness offers support for all major APM vendors and log providers, but there are cases where a customized APM or log provider is needed. The Custom Health Source lets you customize APMs and log providers of your choice.
+
+
+## Before You Begin
+
+[Add Custom Health as a Verification Provider](https://docs.harness.io/article/g21fb5kfkg-connect-to-monitoring-and-logging-systems#step_add_custom_health)
+
+## Review: CV Setup Options
+
+To use the Verify step, you will need a Harness Service Reliability Management Monitored Service. In the simplest terms, a Harness Monitored Service is a Service and Environment combination that Harness monitors for:
+
+* Any changes, such as deployments, infrastructure changes, and incidents
+* Any health trend deviations using logs and metrics obtained from APM and Logging tools, respectively
+
+No matter where you set up the Monitored Service, once it's set up, it's available to both Service Reliability Management and CD modules.
+
+In this topic, we set up the Harness Monitored Service as part of the Verify step setup.
+
+## Step 1: Add Verify Step
+
+There are two ways to add the Verify step:
+
+* **When selecting the stage deployment strategy:**  
+The **Verify** step can be enabled in a CD stage the first time you open the **Execution** settings and select the deployment strategy. When you select the deployment strategy you want to use, there is also an **Enable Verification** option. Select the **Enable Verification** option.  
+Harness will automatically add the **Verify** step. For example, here is a stage where Canary strategy and the **Enable Verification** option were selected.[![](./static/verify-deployments-with-custom-health-metrics-85.png)](./static/verify-deployments-with-custom-health-metrics-85.png)
+* **Add the Verify step to an existing Execution setup:** You can also add the Verify step to the Execution section of a CD stage in a Pipeline you previously created. Simply click **Add Step** after the deployment step, and then select **Verify**.[![](./static/verify-deployments-with-custom-health-metrics-87.png)](./static/verify-deployments-with-custom-health-metrics-87.png)
+
+## Step 2: Enter a Name and Timeout
+
+In **Name**, enter a name for the step.
+
+In **Timeout**, enter a timeout value for the step.
+
+You can use:
+
+* `w` for weeks
+* `d` for days
+* `h` for hours
+* `m` for minutes
+* `s` for seconds
+* `ms` for milliseconds
+
+The maximum is `53w`. Timeouts can be set at the Pipeline level also.
+
+## Step 3: Select a Continuous Verification Type
+
+In **Continuous Verification Type**, select a type that matches your [deployment strategy](verify-deployments-with-the-verify-step.md#step-3-select-a-continuous-verification-type).
+
+![](./static/verify-deployments-with-custom-health-metrics-89.png)### Step 4: Create a Monitored Service
+
+In **Monitored Service**, click **Click to autocreate a monitored service**.
+
+Harness automatically creates a Monitored Service using a concatenation of the Service and Environment names. For example, a Service named `todolist` and an Environment named `dev` will result in a Monitored Service named `todolist_dev`.
+
+If the stage Service or Environment settings are [Runtime Inputs](https://ngdocs.harness.io/article/f6yobn7iq0-runtime-inputs), the Monitored Service and Health Sources settings will show up in the **Runtime Input** settings when you run the Pipeline.
+
+## Step 5: Add Health Sources
+
+A Health Source is basically a mapping of a Harness Service to the service in a deployment environment monitored by an APM or logging tool.
+
+In **Health Sources**, click **Add**. The **Add New Health Source** settings appear.
+
+![](./static/verify-deployments-with-custom-health-metrics-90.png)
+
+1. In **Select health source type**, select **Custom Health**.
+2. In **Health Source Name**, enter a name for the Health Source. For example Quickstart.
+3. In **Connect Health Source**, click **Select Connector**.
+4. In **Connector** settings, you can either choose an existing connector or click **New Connector.**
+5. Click **Apply Selected**. The Connector is added to the Health Source.
+6. In **Select Feature**, select the feature to be monitored. You can either select **Custom Health Metrics** or **Custom Health Logs**.
+7. Click **Next**.
+
+#### Option: Custom Health Metrics
+
+1. If you select Custom Health Metrics, the **Customize Health Source** settings appear as:
+   
+   ![](./static/verify-deployments-with-custom-health-metrics-91.png)
+
+2. Click **Map Metric(s) to Harness Services**.
+3. In **Metric Name**, enter the name of the metric.
+4. In **Group Name**, click **Add New** and enter a name for the metric group.
+5. Click **Query specifications and mapping.**
+6. In **Query Type** you can choose either **Service Based (used for Health Score and SLI)** or **Host Based (used for CV)**.
+
+If you select the query type as **Host Based** (Continuous Verification), the verification won't happen for SLI and Health Score (Service Based), and vice versa.1. In **Request Method**, you can select **GET** or **POST**. If you select POST, you need to define the body format.
+2. In **Path**, enter the complete path of the metric.
+3. In **Start and End Time Placeholders**, enter the following:
+	1. In **Start time placeholder**, enter the start time placeholder in the metric path.
+	2. In **Unit**, select the preferred unit of measurement.
+	3. In **End time placeholder**, enter the end time placeholder in the metric path.
+	4. In **Unit**, select the preferred unit of measurement.
+4. Click **Fetch Records** to retrieve records from the provided URL.
+5. Click **Metric values and charts**.
+6. In **Timestamp Format**, enter a static value in dd/mm/yy format.
+7. Click **Assign**. Select the services for which you want to apply the metric. You can select **Health Score** or **SLI** or both options.
+
+The subsequent steps depend on the service you select in this step.1. In **Risk Category**, select a risk type. Available options for risk types are:
+	* Errors
+	* Infrastructure
+	* Performance/Throughput
+	* Performance/Other
+	* Performance/Response Time
+2. In **Deviation compared to Baseline**, select one of the options based on the selected risk type. Available options are:
+	* **Higher value is higher risk** - Select this option if a high value of the selected risk type is a risk.
+	* **Lower value is higher risk** - Select this option if lower value of the selected risk type is a risk.
+3. Click **Submit**.
+
+## Option: Custom Health Logs
+
+1. If you select Custom Health Logs, the **Customize Health Source** settings appear as:
+   
+   ![](./static/verify-deployments-with-custom-health-metrics-92.png)
+
+2. Click **Query specifications and mapping**.
+3. In **Query Name**, enter a name for the query. For example Custom Log Query.
+4. In **Request Method**, you can select **GET** or **POST**. If you select POST, you need to define the body format.
+5. In **Path**, enter the complete path of the metric. For example,`v2/logs/events/search`.
+6. In **Start and End Time Placeholders**, enter the following:
+	1. In **Start time placeholder**, enter the start time placeholder in the metric path. For example, start\_time.
+	2. In **Unit**, select the preferred unit of measurement. For example, Milliseconds.
+	3. In **End time placeholder**, enter the end time placeholder in the metric path. For example, end\_time.
+	4. In **Unit**, select the preferred unit of measurement. For example, Milliseconds.
+7. In **Body**, enter the request body. For example,`{"filter":{"query":","from":start_time,"to":end_time}}`.
+8. Click **Fetch Records** to retrieve records from the provided URL.
+   
+   ![](./static/verify-deployments-with-custom-health-metrics-93.png)
+
+9.  Once the response is retrieved, click **JSON path selection**.
+	1. In **Log Message JSON path**, click the plus icon to select the path to the log message from the data source. For example,`$.data.[*].attributes.message`.
+	2. In **Timestamp Field/Locator JSON** Path, click the plus icon to select the path to the log message from the data source. For example,`$.data.[*].attributes.timestamp`.
+	3. In **Provide Service Instance to map to Harness Service Instance**, click the plus icon to select the Service instance from the data source. For example,`$.data.[*].attributes.tags.[4]`.
+
+	![](./static/verify-deployments-with-custom-health-metrics-94.png)
+
+1.  Click **Submit**.
+
+## Step 7: Select Duration
+
+Select how long you want Harness to analyze and monitor the APM data points. Harness waits for 2-3 minutes to allow enough time for the data to be sent to the APM tool before it analyzes the data. This wait time is standard with monitoring tools.
+
+The recommended **Duration** is **15 min** for APM and infrastructure providers.### Step 8: Specify Artifact Tag
+
+In **Artifact Tag**, use a [Harness expression](https://newdocs.helpdocs.io/article/lml71vhsim-harness-variables) to reference the artifact in the stage Service settings.
+
+The expression `<+serviceConfig.artifacts.primary.tag>` refers to the primary artifact.
+
+## Option: Advanced Settings
+
+In **Advanced**, you can select the following options:
+
+* [Step Skip Condition Settings](https://docs.harness.io/article/i36ibenkq2-step-skip-condition-settings)
+* [Step Failure Strategy Settings](https://docs.harness.io/article/htrur23poj-step-failure-strategy-settings)
+* [Select Delegates with Selectors](https://docs.harness.io/article/nnuf8yv13o-select-delegates-with-selectors)
+
+See [Advanced Settings](verify-deployments-with-the-verify-step.md#option-advanced-settings).
+
+## Step 9: Deploy and Review Results
+
+When you are done setting up the **Verify** step, click **Apply Changes**.
+
+Now you can run the Pipeline. Click **Run**.
+
+In **Run Pipeline**, select the tag for the artifact if a tag wasn't added in the **Artifact Details** settings.
+
+Click **Run Pipeline**.
+
+When the Pipeline is running, click the **Verify** step.
+
+The verification takes a few minutes.
+
+![](./static/verify-deployments-with-custom-health-metrics-95.png)
+
+### Summary
+
+The **Summary** section shows the number of metrics and logs that are in violation.
+
+### Console View
+
+Click **Console View** or simply click **View Details** in **Summary** to take a deeper look at verification.
+
+![](./static/verify-deployments-with-custom-health-metrics-96.png)
+
+If you have more than one Health Source, you can use the **Health Source** dropdown to select each one.
+
+You can use the search option to search for any specific metric you want.
+

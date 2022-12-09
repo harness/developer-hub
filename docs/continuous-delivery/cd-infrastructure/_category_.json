@@ -1,0 +1,14 @@
+{
+    "label": "Infrastructure",
+    "position": "300",
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "link": {
+        "type": "generated-index",
+        "title": "Infrastructure"
+    },
+    "customProps": {
+        "helpdocs_category_id": "wg94socpyo"
+    }
+}
