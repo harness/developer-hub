@@ -1,7 +1,7 @@
 ---
 title: Use Deployment Freeze API
 description: This topic explains how to freeze Harness deployments using API.
-# sidebar_position: 2
+sidebar_position: 430
 helpdocs_topic_id: vwu8tynfc4
 helpdocs_category_id: l2p3i03l4a
 helpdocs_is_private: false
@@ -12,18 +12,8 @@ Deployment Freeze is a Harness Governance feature that stops all Harness deploym
 
 Currently, this feature is behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature. Feature Flags can only be removed for Harness Professional and Essentials editions. Once the feature is released to a general audience, it is available for Trial and Community Editions.This topic shows how to use the Deployment Freeze API to freeze Harness deployments.
 
-In this topic:
 
-* [Before You Begin](use-deployment-freeze-api.md#before-you-begin)
-* [Create a Deployment Freeze Window](use-deployment-freeze-api.md#create-a-deployment-freeze-window)
-* [Get Deployment Freeze Window by ID](use-deployment-freeze-api.md#get-deployment-freeze-window-by-id)
-* [Get Deployment Freeze Window by Name](use-deployment-freeze-api.md#get-deployment-freeze-window-by-name)
-* [List Deployment Freeze Windows](use-deployment-freeze-api.md#list-deployment-freeze-windows)
-* [Update a Deployment Freeze Window](use-deployment-freeze-api.md#update-a-deployment-freeze-window)
-* [Delete a Deployment Freeze Window](use-deployment-freeze-api.md#delete-a-deployment-freeze-window)
-* [Toggle a Deployment Freeze Window](use-deployment-freeze-api.md#toggle-a-deployment-freeze-window)
-
-### Before You Begin
+## Before You Begin
 
 * [Deployments Overview](https://docs.harness.io/category/general-deployment-features)
 * [Deployment Freeze Overview](../../security/governance-howtos/deployment-freeze.md#deployment-freeze-overview)
@@ -31,9 +21,9 @@ In this topic:
 * [Create a Pipeline](../../../continuous-delivery/model-cd-pipeline/pipelines/pipeline-configuration.md)
 * Make sure you have **manage deployment freezes** permission to use this API.
 
-### Create a Deployment Freeze Window
+## Create a Deployment Freeze Window
 
-#### Request
+### Request
 
 You can create a Deployment Freeze Window using the mutation `createDeploymentFreezeWindow`.
 
@@ -67,7 +57,7 @@ mutation createDeploymentFreezeWindow($x: CreateDeploymentFreezeWindowInput!) {
   }  
 }
 ```
-#### Query Variables
+### Query Variables
 
 Use these query variables to create a Deployment Freeze Window. The `freezeWindows` parameter specifies the appropriate Application(s), Environment(s), and Service(s) applicable to the Deployment Freeze Window.
 
@@ -89,9 +79,9 @@ Use these query variables to create a Deployment Freeze Window. The `freezeWind
   }  
 }
 ```
-### Get Deployment Freeze Window by ID
+## Get Deployment Freeze Window by ID
 
-#### Request
+### Request
 
 Use this sample query to get the Deployment Freeze Window details by its ID.
 
@@ -122,7 +112,7 @@ Use this sample query to get the Deployment Freeze Window details by its ID.
   }  
 }
 ```
-#### Response
+### Response
 
 
 ```
@@ -161,9 +151,9 @@ Use this sample query to get the Deployment Freeze Window details by its ID.
   }  
 }
 ```
-### Get Deployment Freeze Window by Name
+## Get Deployment Freeze Window by Name
 
-#### Request
+### Request
 
 Use this sample query to get the Deployment Freeze Window details by its Name.
 
@@ -194,7 +184,7 @@ Use this sample query to get the Deployment Freeze Window details by its Name.
   }  
 }
 ```
-#### Response
+### Response
 
 
 ```
@@ -233,9 +223,9 @@ Use this sample query to get the Deployment Freeze Window details by its Name.
   }  
 }
 ```
-### List Deployment Freeze Windows
+## List Deployment Freeze Windows
 
-#### Request
+### Request
 
 Use this sample query to get the list of Deployment Freeze Windows.
 
@@ -268,7 +258,7 @@ Use this sample query to get the list of Deployment Freeze Windows.
   }  
 }
 ```
-#### Response
+### Response
 
 
 ```
@@ -451,9 +441,9 @@ Use this sample query to get the list of Deployment Freeze Windows.
   }  
 }
 ```
-### Update a Deployment Freeze Window
+## Update a Deployment Freeze Window
 
-#### Request
+### Request
 
 You can update a Deployment Freeze Window using the mutation `updateDeploymentFreezeWindow`.
 
@@ -487,7 +477,7 @@ mutation updateDeploymentFreezeWindow($x: UpdateDeploymentFreezeWindowInput!) {
   }  
 }
 ```
-#### Query Variables
+### Query Variables
 
 Use these query variables to update a Deployment Freeze Window. The `freezeWindows` parameter specifies the appropriate Application(s), Environment(s), and Service(s) applicable to the Deployment Freeze Window.
 
@@ -510,9 +500,9 @@ Use these query variables to update a Deployment Freeze Window. The `freezeWind
   }  
 }
 ```
-### Delete a Deployment Freeze Window
+## Delete a Deployment Freeze Window
 
-#### Request
+### Request
 
 You can delete a Deployment Freeze Window using the mutation `deleteDeploymentFreezeWindow`.
 
@@ -524,7 +514,7 @@ mutation deleteDeploymentFreezeWindow($x: DeleteDeploymentFreezeWindowInput!) {
   }  
 }
 ```
-#### Query Variables
+### Query Variables
 
 Use these query variables to delete a Deployment Freeze Window. The `id` parameter specifies the Deployment Freeze Window to be deleted.
 
@@ -536,9 +526,9 @@ Use these query variables to delete a Deployment Freeze Window. The `id` param
   }  
 }
 ```
-### Enable/Disable a Deployment Freeze Window
+## Enable/Disable a Deployment Freeze Window
 
-#### Request
+### Request
 
 You can toggle a Deployment Freeze Window using the mutation `toggleDeploymentFreezeWindow`.
 
@@ -572,7 +562,7 @@ mutation toggleDeploymentFreezeWindow($x: ToggleDeploymentFreezeWindowInput!) {
   }  
 }
 ```
-#### Query Variables
+### Query Variables
 
 Use these query variables to toggle a Deployment Freeze Window. The `id` parameter specifies the Deployment Freeze Window to be toggled.
 

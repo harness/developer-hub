@@ -1,7 +1,7 @@
 ---
 title: Use Workflows API
 description: Show queries that your applications can execute against the Harness Workflows API.
-# sidebar_position: 2
+sidebar_position: 110
 helpdocs_topic_id: ba4vs50071
 helpdocs_category_id: l2p3i03l4a
 helpdocs_is_private: false
@@ -10,24 +10,17 @@ helpdocs_is_published: true
 
 This topic lists example queries that you can execute against the Harness Workflows API.
 
-In this topic:
-
-* [Before You Begin](#before_you_begin)
-* [Show Execution Details](#show_execution_details)
-* [Show Executions for a Given Workflow](#show_executions_for_a_given_workflow)
-* [Show Manifest as Artifact and Version for a Given Workflow Execution](#show_manifest_as_artifact_and_version_for_a_given_workflow_execution)
-
-### Before You Begin
+## Before You Begin
 
 * [​Introduction to Harness GraphQL API](harness-api.md)
 * [Harness API Explorer](harness-api-explorer.md)
 * [API Schema and Structure](api-schema-and-structure.md)
 
-### Show Execution Details
+## Show Execution Details
 
 This sample retrieves rich details on the parameters and results of (up to) 100 recent executions.
 
-##### Request
+### Request
 
 
 ```
@@ -89,7 +82,7 @@ This sample retrieves rich details on the parameters and results of (up to) 100 
   }  
 }
 ```
-##### Response
+### Response
 
 
 ```
@@ -236,11 +229,11 @@ This sample retrieves rich details on the parameters and results of (up to) 100 
 }  
 
 ```
-### Show Executions for a Given Workflow
+## Show Executions for a Given Workflow
 
 This sample queries by `workflowId` to return up to 30 deployments.
 
-##### Request
+### Request
 
 
 ```
@@ -260,7 +253,7 @@ This sample queries by `workflowId` to return up to 30 deployments.
   }  
 } 
 ```
-##### Response
+### Response
 
 
 ```
@@ -285,11 +278,11 @@ This sample queries by `workflowId` to return up to 30 deployments.
   }  
 }
 ```
-### Show Manifest as Artifact and Version for a Given Workflow Execution
+## Show Manifest as Artifact and Version for a Given Workflow Execution
 
 This sample queries by `serviceId` and `environmentId` to return up to 1000 deployments.
 
-##### Request
+### Request
 
 
 ```
@@ -358,7 +351,7 @@ This sample queries by `serviceId` and `environmentId` to return up to 1000 dep
   }  
 }
 ```
-##### Response
+### Response
 
 
 ```

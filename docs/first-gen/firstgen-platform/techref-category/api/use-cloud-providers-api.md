@@ -1,7 +1,7 @@
 ---
 title: Use Cloud Providers API
 description: Use the Cloud Providers API
-# sidebar_position: 2
+sidebar_position: 80
 helpdocs_topic_id: dfx0qi1zf7
 helpdocs_category_id: l2p3i03l4a
 helpdocs_is_private: false
@@ -12,31 +12,13 @@ You can create, read, update, and delete [Harness Cloud Providers](../../account
 
 This topic provides information on querying and managing all Cloud Provider types.
 
-In this topic:
 
-* [Before You Begin](#before_you_begin)
-* [Step 1: Create a Cloud Provider](#step_1_create_a_cloud_provider)
-* [Step 2: Update a Cloud Provider](#step_2_update_a_cloud_provider)
-* [Step 3: Delete a Cloud Provider](#step_3_delete_a_cloud_provider)
-* [Step 4: Find all Cloud Providers by Type](#step_4_find_all_cloud_providers_by_type)
-* [Step 5: Search for Cloud Provider by ID](#step_5_search_for_cloud_provider_by_id)
-* [Step 6: Find Cloud Provider by Name](#step_6_find_cloud_provider_by_name)
-* [Examples](#examples)
-	+ [Encrypted Keys Requirements](#encrypted_keys_requirements)
-	+ [GCP](#gcp)
-	+ [AWS](#aws)
-	+ [Azure](#azure)
-	+ [Pivotal (PCF)](#pivotal_pcf)
-	+ [Spotinst](#spotinst)
-	+ [Kubernetes](#kubernetes)
-	+ [Physical Data Center](#physical_data_center)
-
-### Before You Begin
+## Before You Begin
 
 * Review the [Harness API](harness-api.md)
 * [Add Cloud Providers](../../account/manage-connectors/cloud-providers.md)
 
-### Step 1: Create a Cloud Provider
+## Step 1: Create a Cloud Provider
 
 You create a Cloud Provider using the mutation `createCloudProvider`.
 
@@ -81,7 +63,7 @@ For example, to add a Google Cloud Platform (GCP) Cloud Provider, you would use 
   }  
 }
 ```
-### Step 2: Update a Cloud Provider
+## Step 2: Update a Cloud Provider
 
 The syntax for the **Query Variables** when updating is almost identical to the **Query Variables** when creating, with the addition of `cloudProviderId`. You simply need to enter the ID of the Cloud Provider you want to update.
 
@@ -127,7 +109,7 @@ The Query Variables follow this syntax, with `cloudProviderId` identifying the C
   }  
 }
 ```
-### Step 3: Delete a Cloud Provider
+## Step 3: Delete a Cloud Provider
 
 Deleting a Cloud Provider requires its ID only.
 
@@ -163,7 +145,7 @@ Output:
   }  
 }
 ```
-### Step 4: Find all Cloud Providers by Type
+## Step 4: Find all Cloud Providers by Type
 
 The first step is usually to get a list of all Harness Cloud Providers by type using `cloudProviders()`.
 
@@ -220,7 +202,7 @@ Output example:
 ```
 Now you can use the ID with `cloudProviderById()` below.
 
-### Step 5: Search for Cloud Provider by ID
+## Step 5: Search for Cloud Provider by ID
 
 Using the Cloud Providers ID, you can run `cloudProvider(cloudProviderId)` or `cloudProviderById()`.
 
@@ -286,7 +268,7 @@ Output example:
   }  
 }
 ```
-### Step 6: Find Cloud Provider by Name
+## Step 6: Find Cloud Provider by Name
 
 Using the Cloud Provider's name, run `cloudProviderByName`:
 
@@ -324,7 +306,7 @@ Output example:
  }  
 }
 ```
-### Examples
+## Examples
 
 In this section are examples of creating and updating the different Harness Cloud Provider types.
 
@@ -340,7 +322,7 @@ For all of the available methods and syntax, look up the following in the API Ex
 * `physicalDataCenterCloudProvider: PhysicalDataCenterCloudProviderInput`
 * `spotInstCloudProvider: SpotInstCloudProviderInput`
 
-#### Encrypted Keys Requirements
+### Encrypted Keys Requirements
 
 Most of the Cloud Providers require encrypted text or files, which are created in Harness Secrets Management.
 
@@ -376,13 +358,13 @@ The output will give you the ID you need in `id`:
 ```
 See [Encrypted Text API](api-encrypted-text.md), [Encrypted Files API](api-encrypted-files.md), [Use Encrypted Text Secrets](../../security/secrets-management/use-encrypted-text-secrets.md), and [Use Encrypted File Secrets](../../security/secrets-management/use-encrypted-file-secrets.md).
 
-#### GCP
+### GCP
 
 The GCP Cloud Provider uses the `gcpCloudProvider: GcpCloudProviderInput` API.
 
-##### Create
+#### Create
 
-Query:
+##### Query
 
 
 ```
@@ -397,7 +379,8 @@ mutation CreateCloudProviderMutation($cloudProvider: CreateCloudProviderInput!) 
   }  
 }
 ```
-Query Variables (Using Encrypted Key):
+
+##### Query Variables (Using Encrypted Key)
 
 
 ```
@@ -411,7 +394,8 @@ Query Variables (Using Encrypted Key):
   }  
 }
 ```
-Query Variables (Using Inherit From Delegate):
+
+##### Query Variables (Using Inherit From Delegate)
 
 Currently, this feature is behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature. Feature Flags can only be removed for Harness Professional and Essentials editions. Once the feature is released to a general audience, it is available for Trial and Community Editions.
 ```
@@ -427,7 +411,8 @@ Currently, this feature is behind a Feature Flag. Contact [Harness Support](mail
   }  
 }
 ```
-Output:
+
+##### Output
 
 
 ```
@@ -444,9 +429,10 @@ Output:
   }  
 }
 ```
-##### Update
+#### Update
 
-Query:
+
+##### Query 
 
 
 ```
@@ -461,7 +447,8 @@ mutation UpdateCloudProviderMutation($cloudProvider: UpdateCloudProviderInput!) 
   }  
 }
 ```
-Query Variables (Using Encrypted Key):
+
+##### Query Variables (Using Encrypted Key)
 
 
 ```
@@ -476,7 +463,8 @@ Query Variables (Using Encrypted Key):
   }  
 }
 ```
-Query Variables (Using Inherit From Delegate):
+
+##### Query Variables (Using Inherit From Delegate)
 
 Currently, this feature is behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature. Feature Flags can only be removed for Harness Professional and Essentials editions. Once the feature is released to a general audience, it is available for Trial and Community Editions.
 ```
@@ -493,7 +481,8 @@ Currently, this feature is behind a Feature Flag. Contact [Harness Support](mail
   }  
 }
 ```
-Output:
+
+##### Output
 
 
 ```
@@ -510,13 +499,14 @@ Output:
   }  
 }
 ```
-#### AWS
+### AWS
 
 The AWS Cloud Provider uses the `awsCloudProvider: AwsCloudProviderInput` API.
 
-##### Create
+#### Create
 
-Query:
+
+##### Query 
 
 
 ```
@@ -531,7 +521,8 @@ mutation CreateCloudProviderMutation($cloudProvider: CreateCloudProviderInput!) 
   }  
 }
 ```
-Query Variables:
+
+##### Query Variables
 
 
 ```
@@ -551,7 +542,7 @@ Query Variables:
 ```
 The above example is for manual credentials. You can also use `ec2IamCredentials`. and other settings. See `AwsCloudProviderInput` the API Explorer **Docs**.
 
-Output:
+##### Output
 
 
 ```
@@ -568,9 +559,9 @@ Output:
   }  
 }
 ```
-##### Update
+#### Update
 
-Query:
+##### Query 
 
 
 ```
@@ -585,7 +576,7 @@ mutation UpdateCloudProviderMutation($cloudProvider: UpdateCloudProviderInput!) 
   }  
 }
 ```
-Query Variables:
+##### Query Variables
 
 
 ```
@@ -604,7 +595,8 @@ Query Variables:
   }  
 }
 ```
-Output:
+
+##### Output
 
 
 ```
@@ -621,13 +613,14 @@ Output:
   }  
 }
 ```
-#### Azure
+### Azure
 
 The Azure Cloud Provider uses the `azureCloudProvider: AzureCloudProviderInput` API.
 
-##### Create
+#### Create
 
-Query:
+
+##### Query
 
 
 ```
@@ -642,7 +635,8 @@ mutation CreateCloudProviderMutation($cloudProvider: CreateCloudProviderInput!) 
   }  
 }
 ```
-Query Variables:
+
+##### Query Variables
 
 
 ```
@@ -658,7 +652,8 @@ Query Variables:
   }  
 }
 ```
-Output:
+
+##### Output
 
 
 ```
@@ -675,9 +670,10 @@ Output:
   }  
 }
 ```
-##### Update
+#### Update
 
-Query:
+
+##### Query
 
 
 ```
@@ -692,7 +688,8 @@ mutation UpdateCloudProviderMutation($cloudProvider: UpdateCloudProviderInput!) 
   }  
 }
 ```
-Query Variables:
+
+##### Query Variables
 
 
 ```
@@ -709,7 +706,8 @@ Query Variables:
   }  
 }
 ```
-Output:
+
+##### Output
 
 
 ```
@@ -726,13 +724,14 @@ Output:
   }  
 }
 ```
-#### Pivotal (PCF)
+### Pivotal (PCF)
 
 The PCF Cloud Provider uses the `pcfCloudProvider: PcfCloudProviderInput` API.
 
-##### Create
+#### Create
 
-Query:
+
+##### Query
 
 
 ```
@@ -747,7 +746,8 @@ mutation CreateCloudProviderMutation($cloudProvider: CreateCloudProviderInput!) 
   }  
 }
 ```
-Query Variables:
+
+##### Query Variables
 
 
 ```
@@ -763,7 +763,8 @@ Query Variables:
   }  
 }
 ```
-Output:
+
+##### Output
 
 
 ```
@@ -780,9 +781,10 @@ Output:
   }  
 }
 ```
-##### Update
+#### Update
 
-Query:
+
+##### Query
 
 
 ```
@@ -797,7 +799,8 @@ mutation UpdateCloudProviderMutation($cloudProvider: UpdateCloudProviderInput!) 
   }  
 }
 ```
-Query Variables:
+
+##### Query Variables
 
 
 ```
@@ -814,7 +817,8 @@ Query Variables:
   }  
 }
 ```
-Output:
+
+##### Output
 
 
 ```
@@ -831,13 +835,13 @@ Output:
   }  
 }
 ```
-#### Spotinst
+### Spotinst
 
 The Spotinst Cloud Provider uses the `spotInstCloudProvider: SpotInstCloudProviderInput` API.
 
-##### Create
+#### Create
 
-Query:
+##### Query 
 
 
 ```
@@ -852,7 +856,7 @@ mutation CreateCloudProviderMutation($cloudProvider: CreateCloudProviderInput!) 
   }  
 }
 ```
-Query Variables:
+##### Query Variables 
 
 
 ```
@@ -867,7 +871,7 @@ Query Variables:
   }  
 }
 ```
-Output:
+##### Output 
 
 
 ```
@@ -884,9 +888,9 @@ Output:
   }  
 }
 ```
-##### Update
+#### Update
 
-Query:
+##### Query: 
 
 
 ```
@@ -901,7 +905,7 @@ mutation UpdateCloudProviderMutation($cloudProvider: UpdateCloudProviderInput!) 
   }  
 }
 ```
-Query Variables:
+##### Query Variables 
 
 
 ```
@@ -917,7 +921,7 @@ Query Variables:
   }  
 }
 ```
-Output:
+##### Output 
 
 
 ```
@@ -934,13 +938,13 @@ Output:
   }  
 }
 ```
-#### Kubernetes
+### Kubernetes
 
 The Kubernetes Cloud Provider uses the `k8sCloudProvider: K8sCloudProviderInput` API
 
-##### Create
+#### Create
 
-Query:
+##### Query 
 
 
 ```
@@ -955,7 +959,7 @@ mutation CreateCloudProviderMutation($cloudProvider: CreateCloudProviderInput!) 
   }  
 }
 ```
-Query Variables:
+##### Query Variables 
 
 
 ```
@@ -975,7 +979,7 @@ Query Variables:
 ```
 The example above inherits credentials from a Harness Delegate (typically running in the target cluster). For manual cluster credential details, use `manualClusterDetails: UpdateManualClusterDetails`.
 
-Output:
+##### Output 
 
 
 ```
@@ -992,9 +996,9 @@ Output:
   }  
 }
 ```
-##### Update
+#### Update
 
-Query:
+##### Query: 
 
 
 ```
@@ -1009,7 +1013,7 @@ mutation UpdateCloudProviderMutation($cloudProvider: UpdateCloudProviderInput!) 
   }  
 }
 ```
-Query Variables:
+##### Query Variables 
 
 
 ```
@@ -1028,7 +1032,7 @@ Query Variables:
   }  
 }
 ```
-Output:
+##### Output 
 
 
 ```
@@ -1045,13 +1049,13 @@ Output:
   }  
 }
 ```
-#### Physical Data Center
+### Physical Data Center
 
 The Physical Data Center Cloud Provider uses the `physicalDataCenterCloudProvider: PhysicalDataCenterCloudProviderInput` API.
 
-##### Create
+#### Create
 
-Mutation:
+##### Mutation 
 
 
 ```
@@ -1066,7 +1070,9 @@ mutation CreateCloudProviderMutation($cloudProvider: CreateCloudProviderInput!) 
   }  
 }
 ```
-Query Variables — Physical Data Center is the only Cloud Provider that uses `usageScope`:
+#####  Query Variables 
+
+Physical Data Center is the only Cloud Provider that uses `usageScope`:
 
 
 ```
@@ -1094,7 +1100,7 @@ Note that the `appId` is used in `application`. You can use `filterType` instead
 
 `Exception while fetching data (/createCloudProvider) : Invalid request: Cannot set both appId and filterType in the app filter`
 
-Output:
+##### Output 
 
 
 ```
@@ -1111,9 +1117,9 @@ Output:
   }  
 }
 ```
-##### Update
+#### Update
 
-Query:
+##### Query  
 
 
 ```
@@ -1128,7 +1134,7 @@ mutation UpdateCloudProviderMutation($cloudProvider: UpdateCloudProviderInput!) 
   }  
 }
 ```
-Query Variables:
+##### Query Variables 
 
 
 ```
@@ -1153,7 +1159,7 @@ Query Variables:
  }  
 }
 ```
-Output:
+##### Output 
 
 
 ```

@@ -1,7 +1,7 @@
 ---
 title: Use Pipelines API
 description: Lists sample queries on how to use Pipeline APIs.
-# sidebar_position: 2
+sidebar_position: 130
 helpdocs_topic_id: rfqmu6cejy
 helpdocs_category_id: l2p3i03l4a
 helpdocs_is_private: false
@@ -10,31 +10,17 @@ helpdocs_is_published: true
 
 This topic lists sample queries on how to use Pipeline APIs.
 
-In this topic:
-
-* [Before You Begin](#undefined)
-* [Fetch Pipeline ID](#undefined)
-* [Show Details About a Pipeline](#show_details_about_a_pipeline)
-* [Fetch a List of Pipelines](#fetch_a_list_of_pipelines)
-* [Show Pipelines for a Given Application](#show_pipelines_for_a_given_application)
-* [Show Deployments for a Given Pipeline](#show_deployments_for_a_given_pipeline)
-* [Show All Execution Stages and Inputs for a Pipeline](#show_all_execution_stages_and_inputs_for_a_pipeline)
-* [Show Manifest as Artifact and Version for a Given Pipeline Execution](#show_manifest_as_artifact_and_version_for_a_given_pipeline_execution)
-* [Service Details for a Paused Pipeline](#service_details_for_a_paused_pipeline)
-* [Find the Workflows used in a Pipeline Deployment](#find_the_workflows_used_in_a_pipeline_deployment)
-* [Runtime Input Settings](#runtime_input_settings)
-
-### Before You Begin
+## Before You Begin
 
 * [​Introduction to Harness GraphQL API](harness-api.md)
 * [Harness API Explorer](harness-api-explorer.md)
 * [API Schema and Structure](api-schema-and-structure.md)
 
-### Fetch Pipeline ID
+## Fetch Pipeline ID
 
 Use this query to get `pipelineId` .
 
-##### Request
+### Request
 
 
 ```
@@ -44,7 +30,7 @@ Use this query to get `pipelineId` .
   }  
 }
 ```
-##### Response
+### Response
 
 
 ```
@@ -56,11 +42,11 @@ Use this query to get `pipelineId` .
   }  
 }
 ```
-### Show Details About a Pipeline
+## Show Details About a Pipeline
 
 This example returns basic information about a specified Pipeline. It corresponds to a `GET` operation in a REST API.
 
-##### Request
+### Request
 
 
 ```
@@ -72,7 +58,7 @@ This example returns basic information about a specified Pipeline. It correspond
   }  
 }
 ```
-##### Response
+### Response
 
 
 ```
@@ -86,11 +72,11 @@ This example returns basic information about a specified Pipeline. It correspond
   }  
 }
 ```
-### Fetch a List of Pipelines
+## Fetch a List of Pipelines
 
 This example iterates through Pipelines—using specified `limit` and `offset`values—to return basic details.
 
-##### Request
+### Request
 
 
 ```
@@ -108,7 +94,7 @@ This example iterates through Pipelines—using specified `limit` and `offset
   }  
 }
 ```
-##### Response
+### Response
 
 
 ```
@@ -154,7 +140,7 @@ This example iterates through Pipelines—using specified `limit` and `offset
   }  
 }
 ```
-### Show Pipelines for a Given Application
+## Show Pipelines for a Given Application
 
 This sample queries by `applicationId` to return details about corresponding Pipelines.
 
@@ -180,7 +166,7 @@ This sample queries by `applicationId` to return details about corresponding P
   }  
 }
 ```
-### Show Deployments for a Given Pipeline
+## Show Deployments for a Given Pipeline
 
 This sample queries by `pipelineId` to return details on up to 5 deployments.
 
@@ -202,7 +188,7 @@ For example, you have two Workflows in your Pipeline, `WF1: ENV1` and `WF2: ENV2
   }  
 }
 ```
-##### Example
+### Example
 
 
 ```
@@ -233,13 +219,13 @@ For example, you have two Workflows in your Pipeline, `WF1: ENV1` and `WF2: ENV2
     }  
 }
 ```
-### Show All Execution Stages and Inputs for a Pipeline
+## Show All Execution Stages and Inputs for a Pipeline
 
 Here is a more advanced query for Pipeline executions. It includes `runtimeInputVariables` to display any available input variables that have been selected as runtime inputs. Runtime inputs are discussed later in this topic.
 
 Note that `pipelineExecutionId` is the execution ID for a Pipeline's deployment. It is not the Pipeline ID.
 
-##### Request
+### Request
 
 
 ```
@@ -274,7 +260,7 @@ Note that `pipelineExecutionId` is the execution ID for a Pipeline's deployment.
   }  
 }
 ```
-##### Response
+### Response
 
 
 ```
@@ -354,11 +340,11 @@ Note that `pipelineExecutionId` is the execution ID for a Pipeline's deployment.
   }  
 }
 ```
-### Show Manifest as Artifact and Version for a Given Pipeline Execution
+## Show Manifest as Artifact and Version for a Given Pipeline Execution
 
 This sample queries by `serviceId` and `environmentId` to return up to 1000 deployments.
 
-##### Request
+### Request
 
 
 ```
@@ -427,7 +413,7 @@ This sample queries by `serviceId` and `environmentId` to return up to 1000 dep
   }  
 }
 ```
-##### Response
+### Response
 
 
 ```
@@ -462,7 +448,7 @@ This sample queries by `serviceId` and `environmentId` to return up to 1000 dep
   }  
 }
 ```
-### Service Details for a Paused Pipeline
+## Service Details for a Paused Pipeline
 
 
 ```
@@ -501,7 +487,7 @@ query {
   }  
 }
 ```
-### Find the Workflows used in a Pipeline Deployment
+## Find the Workflows used in a Pipeline Deployment
 
 The following query finds the Workflows used in a Pipeline deployment:
 
@@ -530,7 +516,7 @@ The following query finds the Workflows used in a Pipeline deployment:
   }  
 }
 ```
-### Runtime Input Settings
+## Runtime Input Settings
 
 Sometimes, the inputs and settings for all of the Workflows in a Pipeline are not known before you deploy. Some inputs and settings can depend on the execution of the previous stages in the Pipeline.
 
@@ -540,7 +526,7 @@ To do this, when you add an Execution Step stage to your Pipeline, use **Runtim
 
 For steps on performing this in the Harness Manager UI, see [Create a Pipeline](../../../continuous-delivery/model-cd-pipeline/pipelines/pipeline-configuration.md).
 
-#### Start Execution Mutation
+### Start Execution Mutation
 
 Let's use a simple Pipeline with one stage:
 
@@ -595,11 +581,11 @@ And you can see that the Pipeline is started, but paused awaiting the inputs:
 ![](./static/use-pipelines-api-19.png)
 The `variableInputs` are not mandatory.
 
-#### Execution and Executions Query
+### Execution and Executions Query
 
 Next, you can take the Pipeline execution ID in the response and use it to query everything about the execution:
 
-##### Request
+### Request
 
 
 ```
@@ -634,7 +620,7 @@ query {
   }  
 }
 ```
-##### Response
+### Response
 
 
 ```
@@ -680,7 +666,7 @@ As you can see, the status is `PAUSED` because Harness is awaiting values for th
 
 From the above query, you need to gather the `id` and `pipelineStageElementId`. You will also need the Application ID.
 
-#### Service Variables Required Query
+### Service Variables Required Query
 
 In most cases, you will need to collect the Service inputs for artifact sources being deployed. You can do this using `runtimeExecutionInputsToResumePipeline` and listing the inputs using `serviceInputs`:
 
@@ -722,13 +708,13 @@ query {
   }  
 }
 ```
-#### Continue Pipeline Execution Mutation
+### Continue Pipeline Execution Mutation
 
 To resume the Pipeline that is paused awaiting runtime inputs, you use the `applicationId`, `pipelineExecutionId` of the paused execution, and the `pipelineStageElementId` of the paused Pipeline stage.
 
 In `variableInputs`, you provide values for the inputs.
 
-##### Mutation
+### Mutation
 
 
 ```
@@ -758,7 +744,7 @@ mutation {
   }  
 }
 ```
-##### Response
+### Response
 
 You can see the Pipeline has resumed:
 

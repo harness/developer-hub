@@ -1,7 +1,7 @@
 ---
 title: Use Tags API
 description: Provides details on how to get details of resources that are associated with tags and their value using APIs.
-# sidebar_position: 2
+sidebar_position: 360
 helpdocs_topic_id: 80ppvv3a3p
 helpdocs_category_id: l2p3i03l4a
 helpdocs_is_private: false
@@ -10,25 +10,14 @@ helpdocs_is_published: true
 
 This topic shows you how to list tagged Harness resources using the Harness API.
 
-In this topic:
-
-* [Before You Begin](use-tags-api.md#before-you-begin)
-* [Fetch the List of Tags](use-tags-api.md#fetch-the-list-of-tags)
-* [Fetch Details of the Tags](use-tags-api.md#fetch-details-of-the-tags)
-* [Fetch List of all the Tags](use-tags-api.md#fetch-list-of-all-the-tags)
-* [Fetch Details of Tags by List of Tag IDs or Names](use-tags-api.md#fetch-details-of-tags-by-list-of-tag-i-ds-or-names)
-* [Fetch Tag Usage Details by Tag ID, Name, or Harness Entity Type](use-tags-api.md#fetch-tag-usage-details-by-tag-id-name-or-harness-entity-type)
-* [Attach a Tag to a Harness Entity](use-tags-api.md#attach-a-tag-to-a-harness-entity)
-* [Detach a Tag from a Harness Entity](use-tags-api.md#detach-a-tag-from-a-harness-entity)
-
-### Before You Begin
+## Before You Begin
 
 * [​Introduction to Harness GraphQL API](harness-api.md)
 * [Harness API Explorer](harness-api-explorer.md)
 * [API Schema and Structure](api-schema-and-structure.md)
 * [Manage Tags](../../account/tags/manage-tags.md)
 
-### Fetch the List of Tags
+## Fetch the List of Tags
 
 You can get the list of Tags associated with all of your Harness [Application Entities,](../../../continuous-delivery/model-cd-pipeline/applications/application-configuration.md) such as:
 
@@ -39,7 +28,7 @@ You can get the list of Tags associated with all of your Harness [Application En
 
 This sample queries by `applicationByName` to return `name` and `value` of all the associated Tags.
 
-##### Request
+### Request
 
 
 ```
@@ -53,7 +42,7 @@ This sample queries by `applicationByName` to return `name` and `value` of
   }  
 }
 ```
-##### Response
+### Response
 
 
 ```
@@ -83,7 +72,7 @@ This sample queries by `applicationByName` to return `name` and `value` of
   }  
 }
 ```
-### Fetch Details of the Tags
+## Fetch Details of the Tags
 
 You can get the details of your tags in the following ways:
 
@@ -92,7 +81,7 @@ You can get the details of your tags in the following ways:
 
 This query by `tagId` returns the ID and type values of the associated Harness Application entities.
 
-##### Request
+### Request
 
 
 ```
@@ -108,7 +97,7 @@ This query by `tagId` returns the ID and type values of the associated Harness A
   }  
 }
 ```
-##### Response
+### Response
 
 
 ```
@@ -142,7 +131,7 @@ This query by `tagId` returns the ID and type values of the associated Harness A
 ```
 This query by `tagByName` returns the ID and type values of the associated Harness Application entities.
 
-##### Request
+### Request
 
 
 ```
@@ -158,7 +147,7 @@ This query by `tagByName` returns the ID and type values of the associated Harne
   }  
 }
 ```
-##### Response
+### Response
 
 
 ```
@@ -190,11 +179,11 @@ This query by `tagByName` returns the ID and type values of the associated Harne
   }  
 }
 ```
-### Fetch List of all the Tags
+## Fetch List of all the Tags
 
 This query by`limit` returns the ID and name values of all the Tags that you have created.
 
-##### Request
+### Request
 
 
 ```
@@ -207,7 +196,7 @@ This query by`limit` returns the ID and name values of all the Tags that you hav
   }  
 }
 ```
-##### Response
+### Response
 
 
 ```
@@ -260,11 +249,11 @@ This query by`limit` returns the ID and name values of all the Tags that you hav
   }  
 }
 ```
-### Fetch Details of Tags by List of Tag IDs or Names
+## Fetch Details of Tags by List of Tag IDs or Names
 
 This query by `tagName` returns the entities and types matching the Tag names provided.
 
-##### Request
+### Request
 
 
 ```
@@ -283,7 +272,7 @@ This query by `tagName` returns the entities and types matching the Tag names pr
   }  
 }
 ```
-##### Response
+### Response
 
 
 ```
@@ -344,11 +333,11 @@ This query by `tagName` returns the entities and types matching the Tag names pr
   }  
 }
 ```
-### Fetch Tag Usage Details by Tag ID, Name, or Harness Entity Type
+## Fetch Tag Usage Details by Tag ID, Name, or Harness Entity Type
 
 This query by `tagName` returns the usage details of those Tags whose names match with the given list of names.
 
-##### Request
+### Request
 
 
 ```
@@ -367,7 +356,7 @@ This query by `tagName` returns the usage details of those Tags whose names matc
   }  
 }
 ```
-##### Response
+### Response
 
 
 ```
@@ -403,7 +392,7 @@ This query by `tagName` returns the usage details of those Tags whose names matc
   }  
 }
 ```
-### Attach a Tag to a Harness Entity
+## Attach a Tag to a Harness Entity
 
 You can attach a Tag to a Harness Entity using the mutation `attachTag`. In this example, the entity type is Service.
 
@@ -422,7 +411,7 @@ mutation {
   }  
 }
 ```
-### Detach a Tag from a Harness Entity
+## Detach a Tag from a Harness Entity
 
 You can detach a Tag from a Harness Entity using the mutation `detachTag`. In this example, the entity type is Service.
 

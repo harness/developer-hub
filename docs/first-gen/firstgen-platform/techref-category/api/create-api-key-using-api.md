@@ -1,7 +1,7 @@
 ---
 title: Manage API Keys using the Harness API
 description: This topic describes how to create an API Key using Harness API.
-# sidebar_position: 2
+sidebar_position: 410
 helpdocs_topic_id: o0bsjt966y
 helpdocs_category_id: l2p3i03l4a
 helpdocs_is_private: false
@@ -12,24 +12,18 @@ To integrate Harness with some third-party apps, you need to register Harness wi
 
 This topic lists sample queries that create, update, and delete Harness API keys using the Harness API. For steps to create, edit, and delete API keys from Harness UI, see [Harness API Keys](../../security/access-management-howtos/api-keys.md).
 
-In this topic:
-
-* [Create an API Key](create-api-key-using-api.md#create-an-api-key)
-* [Update an API Key](create-api-key-using-api.md#update-an-api-key)
-* [Delete an API Key](create-api-key-using-api.md#delete-an-api-key)
-
-### Before You Begin
+## Before You Begin
 
 * Review the [Harness API](harness-api.md)
 * [Harness API Keys](../../security/access-management-howtos/api-keys.md)
 
-### Create an API Key
+## Create an API Key
 
 Harness API key uniquely identifies your Harness account and authorizes access to your account data.
 
 For steps to create API Key from Harness UI, see [Create an API Key](../../security/access-management-howtos/api-keys.md#create-an-api-key).
 
-#### Request
+### Request
 
 You can create a Harness API Key using the mutation `createApiKey`.
 
@@ -45,7 +39,7 @@ mutation ($input: CreateApiKeyInput!) {
   }  
 }
 ```
-#### Query Variables
+### Query Variables
 
 Use the following query variables to create an API Key. The `accountId` parameter specifies the account where you are creating the API Key.
 
@@ -74,13 +68,13 @@ This will give you an output with the UUID for the newly created API key which y
   }  
 }
 ```
-### Update an API Key
+## Update an API Key
 
 You can update an existing API key to add or remove User Groups from which it inherits the permissions.
 
 For steps to edit an API key from Harness UI, see [Edit an API Key](../../security/access-management-howtos/api-keys.md#edit-an-api-key).
 
-#### Request
+### Request
 
 You can update a Harness API Key using the mutation `updateApiKey`. 
 
@@ -96,7 +90,7 @@ mutation($input: UpdateApiKeyInput!){
     }  
 }
 ```
-#### Query Variables
+### Query Variables
 
 Use these query variables to create an API Key. The `uuid` specifies the id of the API Key you want to update. For steps to get the **UUID** for the API Key, See [Create an API Key](create-api-key-using-api.md#create-an-api-key).
 
@@ -112,13 +106,13 @@ Use these query variables to create an API Key. The `uuid` specifies the id of t
      }  
 }
 ```
-### Delete an API Key
+## Delete an API Key
 
 You can delete an existing API key at any point in time. 
 
 For steps to delete an API key from Harness UI see [API Keys](../../security/access-management-howtos/api-keys.md#api-keys).
 
-#### Request
+### Request
 
 You can delete a Harness API Key using the mutation `deleteApiKey`.
 
@@ -133,7 +127,7 @@ mutation ($input: DeleteApiKeyInput!) {
 }  
 
 ```
-#### Query Variables
+### Query Variables
 
 Use these query variables to create an API Key. The `uuid` specifies the id of the API Key you want to delete. For steps to get the **UUID** for the API Key, See [Create an API Key](create-api-key-using-api.md#create-an-api-key).
 

@@ -1,7 +1,7 @@
 ---
 title: Fetch Artifact Type Details Using GraphQL APIs
 description: Describes how to fetch details of Artifact Type using GraphQL APIs.
-# sidebar_position: 2
+sidebar_position: 170
 helpdocs_topic_id: nrl5r5zj94
 helpdocs_category_id: l2p3i03l4a
 helpdocs_is_private: false
@@ -14,35 +14,19 @@ To add an Artifact source to a Harness Service, you add an Artifact Server as a 
 
 This topic describes how to fetch Artifact Type details using GraphQL APIs.
 
-In this topic:
 
-* [Before You Begin](fetch-artifact-type-using-graph-ql-apis.md#before-you-begin)
-* [Fetch Details of Jenkins Artifact Type](fetch-artifact-type-using-graph-ql-apis.md#fetch-details-of-jenkins-artifact-type)
-* [Fetch Details of Bamboo Artifact Type](fetch-artifact-type-using-graph-ql-apis.md#fetch-details-of-bamboo-artifact-type)
-* [Fetch Details of Docker Registry Artifact Type](fetch-artifact-type-using-graph-ql-apis.md#fetch-details-of-docker-registry-artifact-type)
-* [Fetch Details of Elastic Container Registry (ECR) Artifact Type](fetch-artifact-type-using-graph-ql-apis.md#fetch-details-of-elastic-container-registry-ecr-artifact-type)
-* [Fetch Details of Google Cloud Container Registry (GCR) Artifact Type](fetch-artifact-type-using-graph-ql-apis.md#fetch-details-of-google-cloud-container-registry-gcr-artifact-type)
-* [Fetch Details of Azure Container Registry (ACR) Artifact Type](fetch-artifact-type-using-graph-ql-apis.md#fetch-details-of-azure-container-registry-acr-artifact-type)
-* [Fetch Details of Nexus Artifact Type](fetch-artifact-type-using-graph-ql-apis.md#fetch-details-of-nexus-artifact-type)
-* [Fetch Details of Artifactory Artifact Type](fetch-artifact-type-using-graph-ql-apis.md#fetch-details-of-artifactory-artifact-type)
-* [Fetch Details of Amazon S3 Artifact Type](fetch-artifact-type-using-graph-ql-apis.md#fetch-details-of-amazon-s3-artifact-type)
-* [Fetch Details of AMI Artifact Type](fetch-artifact-type-using-graph-ql-apis.md#fetch-details-of-ami-artifact-type)
-* [Fetch Details of GCS Artifact Type](fetch-artifact-type-using-graph-ql-apis.md#fetch-details-of-gcs-artifact-type)
-* [Fetch Details of SMB Artifact Type](fetch-artifact-type-using-graph-ql-apis.md#fetch-details-of-smb-artifact-type)
-* [Fetch Details of Azure Artifact Type](fetch-artifact-type-using-graph-ql-apis.md#fetch-details-of-azure-artifact-type)
-
-### Before You Begin
+## Before You Begin
 
 * [​Introduction to Harness GraphQL API](harness-api.md)
 * [Harness API Explorer](harness-api-explorer.md)
 * [Service Types and Artifact Sources](../../../continuous-delivery/model-cd-pipeline/setup-services/service-types-and-artifact-sources.md)
 * [Fetch Artifact Source Details Using GraphQL APIs](artifact-source-api.md)
 
-### Fetch Details of Jenkins Artifact Type
+## Fetch Details of Jenkins Artifact Type
 
 Use this request to get the details of `Jenkins Artifact Type` in your Service.
 
-##### Request
+### Request
 
 
 ```
@@ -63,7 +47,7 @@ query{
 }  
 
 ```
-##### Response
+### Response
 
 
 ```
@@ -85,11 +69,11 @@ query{
   }  
 }
 ```
-### Fetch Details of Bamboo Artifact Type
+## Fetch Details of Bamboo Artifact Type
 
 Use this request to get the details of `Bamboo Artifact Type` in your Service.
 
-##### Request
+### Request
 
 
 ```
@@ -110,7 +94,7 @@ query{
 }  
 
 ```
-##### Response
+### Response
 
 
 ```
@@ -138,11 +122,11 @@ query{
   }  
 }
 ```
-### Fetch Details of Docker Registry Artifact Type
+## Fetch Details of Docker Registry Artifact Type
 
 Use this request to get the details of `Docker Registry Artifact Type` in your Service.
 
-##### Request
+### Request
 
 
 ```
@@ -162,7 +146,7 @@ query{
 }  
   
 ```
-##### Response
+### Response
 
 
 ```
@@ -183,11 +167,11 @@ query{
   }  
 }
 ```
-### Fetch Details of Elastic Container Registry (ECR) Artifact Type
+## Fetch Details of Elastic Container Registry (ECR) Artifact Type
 
 Use this request to get the details of `ECR Artifact Type` in your Service.
 
-##### Request
+### Request
 
 
 ```
@@ -207,7 +191,7 @@ query{
   }  
 }
 ```
-##### Response
+### Response
 
 
 ```
@@ -230,11 +214,11 @@ query{
 }  
 
 ```
-### Fetch Details of Google Cloud Container Registry (GCR) Artifact Type
+## Fetch Details of Google Cloud Container Registry (GCR) Artifact Type
 
 Use this request to get the details of `GCR Artifact Type` in your Service.
 
-##### Request
+### Request
 
 
 ```
@@ -254,7 +238,7 @@ query{
   }  
 }
 ```
-##### Response
+### Response
 
 
 ```
@@ -276,11 +260,11 @@ query{
   }  
 }
 ```
-### Fetch Details of Azure Container Registry (ACR) Artifact Type
+## Fetch Details of Azure Container Registry (ACR) Artifact Type
 
 Use this request to get the details of `ACR Artifact Type` in your Service.
 
-##### Request
+### Request
 
 
 ```
@@ -302,7 +286,7 @@ query{
   }  
 }
 ```
-##### Response
+### Response
 
 
 ```
@@ -325,11 +309,11 @@ query{
   }  
 }
 ```
-### Fetch Details of Nexus Artifact Type
+## Fetch Details of Nexus Artifact Type
 
 Use this request to get the details of `Nexus Artifact Type` in your Service.
 
-##### Request
+### Request
 
 
 ```
@@ -354,7 +338,7 @@ query{
   
   
 ```
-##### Response
+### Response
 
 
 ```
@@ -380,11 +364,11 @@ query{
   }  
 }
 ```
-### Fetch Details of Artifactory Artifact Type
+## Fetch Details of Artifactory Artifact Type
 
 Use this request to get the details of `Artifactory Artifact Type` in your Service.
 
-##### Request
+### Request
 
 
 ```
@@ -406,7 +390,7 @@ query{
   }  
 }
 ```
-##### Response
+### Response
 
 
 ```
@@ -430,11 +414,11 @@ query{
   }  
 } 
 ```
-### Fetch Details of Amazon S3 Artifact Type
+## Fetch Details of Amazon S3 Artifact Type
 
 Use this request to get the details of `Amazon S3 Artifact Type` in your Service.
 
-##### Request
+### Request
 
 
 ```
@@ -454,7 +438,7 @@ query{
   }  
 }
 ```
-##### Response
+### Response
 
 
 ```
@@ -478,11 +462,11 @@ query{
   }  
 }
 ```
-### Fetch Details of AMI Artifact Type
+## Fetch Details of AMI Artifact Type
 
 Use this request to get the details of `AMI Artifact Type` in your Service.
 
-##### Request
+### Request
 
 
 ```
@@ -506,7 +490,7 @@ query{
   }  
 
 ```
-##### Response
+### Response
 
 
 ```
@@ -534,11 +518,11 @@ query{
   }  
 }
 ```
-### Fetch Details of GCS Artifact Type
+## Fetch Details of GCS Artifact Type
 
 Use this request to get the details of `GCS Artifact Type` in your Service.
 
-##### Request
+### Request
 
 
 ```
@@ -559,7 +543,7 @@ query{
   }  
 }
 ```
-##### Response
+### Response
 
 
 ```
@@ -584,11 +568,11 @@ query{
   }  
 }
 ```
-### Fetch Details of SMB Artifact Type
+## Fetch Details of SMB Artifact Type
 
 Use this request to get the details of `SMB Artifact Type` in your Service.
 
-##### Request
+### Request
 
 
 ```
@@ -607,7 +591,7 @@ query{
   }  
 }
 ```
-##### Response
+### Response
 
 
 ```
@@ -630,11 +614,11 @@ query{
   }  
 } 
 ```
-### Fetch Details of Azure Artifact Type
+## Fetch Details of Azure Artifact Type
 
 Use this request to get the details of `Azure Artifact Type` in your Service.
 
-##### Request
+### Request
 
 
 ```
@@ -658,7 +642,7 @@ query{
   }  
 }
 ```
-##### Response
+### Response
 
 
 ```

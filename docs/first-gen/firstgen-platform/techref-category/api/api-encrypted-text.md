@@ -1,7 +1,7 @@
 ---
 title: Encrypted Text API
 description: Sample GraphQL queries to create, read, update, and delete Harness secrets that rely on encrypted text.
-# sidebar_position: 2
+sidebar_position: 230
 helpdocs_topic_id: omnfccj1n0
 helpdocs_category_id: l2p3i03l4a
 helpdocs_is_private: false
@@ -10,25 +10,18 @@ helpdocs_is_published: true
 
 This topic lists sample queries for CRUD operations that create, read, update, and delete [Harness secrets](../../security/secrets-management/secret-management.md) and [Custom Secrets](../../security/secrets-management/add-and-use-a-custom-secrets-manager.md), that rely on encrypted text.
 
-The `!` following the type means that this field is *required*.In this topic:
+:::note
+The `!` following the type means that this field is *required*.
+:::
 
-* [Before You Begin](api-encrypted-text.md#before-you-begin)
-* [Get a Secret](api-encrypted-text.md#get-a-secret)
-* [Get a Secret by Name](api-encrypted-text.md#get-a-secret-by-name)
-* [Get Secrets Manager IDs](api-encrypted-text.md#get-secrets-manager-i-ds)
-* [Create an Encrypted Text Secret](api-encrypted-text.md#create-an-encrypted-text-secret)
-* [Update a Secret](api-encrypted-text.md#update-a-secret)
-* [Delete a Secret](api-encrypted-text.md#delete-a-secret)
-* [Related Topics](api-encrypted-text.md#related-topics)
-
-### Before You Begin
+## Before You Begin
 
 * [​Introduction to Harness GraphQL API](harness-api.md)
 * [Harness API Explorer](harness-api-explorer.md)
 * [Scope Secret Managers to Applications and Environments](../../security/secrets-management/scope-secret-managers-to-applications-and-environments.md)
 * [Restrict Secrets Usage](../../security/secrets-management/restrict-secrets-usage.md)
 
-### Get a Secret by ID
+## Get a Secret by ID
 
 This sample retrieves an existing encrypted-text secret by its ID.
 
@@ -58,7 +51,7 @@ query{
   }  
 }
 ```
-### Get a Secret by Name
+## Get a Secret by Name
 
 This sample uses a `secretByName` query to retrieve an existing secret by its name.
 
@@ -102,7 +95,7 @@ query{
   }  
 }
 ```
-### Get Secrets Manager IDs
+## Get Secrets Manager IDs
 
 To [create](#create) a secret, you need the secrets manager's Harness ID (`secretManagerId`). This sample retrieves 10 secrets managers' IDs and names.
 
@@ -175,11 +168,11 @@ query{
   }  
 }
 ```
-### Create an Encrypted Text Secret
+## Create an Encrypted Text Secret
 
 This sample creates a secret.
 
-#### Usage Scope
+### Usage Scope
 
  The required `CreateSecretInput` input must include a `SecretType`.
 
@@ -211,7 +204,7 @@ mutation($secret: CreateSecretInput!){
   }  
 }
 ```
-##### Query Variables: Inline Value
+#### Query Variables: Inline Value
 
  For the above query, these sample variables specify the `SecretType`, and include an inline `name` value.
 
@@ -238,7 +231,7 @@ mutation($secret: CreateSecretInput!){
   }  
 }
 ```
-##### Query Variables: Reference
+#### Query Variables: Reference
 
 These sample variables specify the `SecretType`, but provide the `name` value by reference.
 
@@ -267,7 +260,7 @@ These sample variables specify the `SecretType`, but provide the `name` value by
   }  
 }
 ```
-#### Inherit Scope
+### Inherit Scope
 
 The required `CreateSecretInput` input must include a `SecretType`. 
 
@@ -289,7 +282,7 @@ mutation($secret: CreateSecretInput!){
   }  
 }
 ```
-##### Query Variables: Inline Value
+#### Query Variables: Inline Value
 
 For the above query, these sample variables specify the `SecretType`, and include an inline `name` value.
 
@@ -309,7 +302,7 @@ For the above query, these sample variables specify the `SecretType`, and includ
   }  
 }
 ```
-##### Query Variables: Reference
+#### Query Variables: Reference
 
 These sample variables specify the `SecretType`, but provide the `name` value by reference.
 
@@ -329,11 +322,11 @@ These sample variables specify the `SecretType`, but provide the `name` value by
   }  
 }
 ```
-### Update a Secret
+## Update a Secret
 
 This sample updates an existing secret.
 
-#### Usage Scope
+### Usage Scope
 
 The required `UpdateSecretInput` input must supply an `id` and a `secretType`.
 
@@ -365,7 +358,7 @@ mutation($secret: UpdateSecretInput!){
   }  
 }
 ```
-##### Query Variables: Inline Value
+#### Query Variables: Inline Value
 
 
 ```
@@ -390,7 +383,7 @@ mutation($secret: UpdateSecretInput!){
   }  
 }
 ```
-##### Query Variables: Reference
+#### Query Variables: Reference
 
 
 ```
@@ -415,7 +408,7 @@ mutation($secret: UpdateSecretInput!){
   }  
 }
 ```
-#### Inherit Scope
+### Inherit Scope
 
 The required `UpdateSecretInput` input must supply an `id` and a `secretType`.
 
@@ -437,7 +430,7 @@ mutation($secret: UpdateSecretInput!){
   }  
 }
 ```
-##### Query Variables: Inline Value
+#### Query Variables: Inline Value
 
 
 ```
@@ -455,7 +448,7 @@ mutation($secret: UpdateSecretInput!){
   }  
 }
 ```
-##### Query Variables: Reference
+#### Query Variables: Reference
 
 
 ```
@@ -473,7 +466,7 @@ mutation($secret: UpdateSecretInput!){
   }  
 }
 ```
-### Delete a Secret
+## Delete a Secret
 
 This sample deletes a specified secret. The required `DeleteSecretInput` input must supply a `secretId` and a `secretType`.
 
@@ -483,7 +476,7 @@ mutation($secret: DeleteSecretInput!){
   deleteSecret(input: $secret)  
 }
 ```
-#### Query Variables
+### Query Variables
 
 Here are query variables for the above `deleteSecret` operation.
 
@@ -496,7 +489,7 @@ Here are query variables for the above `deleteSecret` operation.
   }  
 }
 ```
-### Related Topics
+## Related Topics
 
 * [Harness API](harness-api.md)
 * [Encrypted Files API](api-encrypted-files.md)

@@ -1,7 +1,7 @@
 ---
 title: API Schema and Structure
 description: Describes about Harness API schema and structure.
-# sidebar_position: 2
+sidebar_position: 30
 helpdocs_topic_id: kn8wsu80n4
 helpdocs_category_id: l2p3i03l4a
 helpdocs_is_private: false
@@ -12,11 +12,8 @@ Harness' schema determines what parameters your queries can specify as arguments
 
 Following GraphQL conventions, Harness schema is represented in terms of *fields, types, enums, nodes, edges,* and *connections.*
 
-The `!` following the type means that this field is *required*.In this topic:
+The `!` following the type means that this field is *required*.
 
-* [Before You Begin](api-schema-and-structure.md#before-you-begin)
-* [Fields](api-schema-and-structure.md#fields)
-* [Next Steps](api-schema-and-structure.md#next-steps)
 
 ### Before You Begin
 

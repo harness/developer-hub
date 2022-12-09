@@ -1,7 +1,7 @@
 ---
 title: Use HashiCorp Vault Secrets Manager API
 description: Harness includes a built-in Secrets Management feature that enables you to store encrypted secrets, such as access keys, and use them in your Harness Applications. This topic describes how to create,…
-# sidebar_position: 2
+sidebar_position: 320
 helpdocs_topic_id: ehovbje4p1
 helpdocs_category_id: l2p3i03l4a
 helpdocs_is_private: false

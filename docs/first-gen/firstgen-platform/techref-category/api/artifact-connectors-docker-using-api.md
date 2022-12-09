@@ -1,7 +1,7 @@
 ---
 title: Add a Docker Artifact Source Using API
 description: Describes how to add a Docker Artifact Source using Harness GraphQL API.
-# sidebar_position: 2
+sidebar_position: 280
 helpdocs_topic_id: 4jobsef2vx
 helpdocs_category_id: l2p3i03l4a
 helpdocs_is_private: false
@@ -10,14 +10,8 @@ helpdocs_is_published: true
 
 This topic describes how to create, read, update, and delete Docker Artifact Source using Harness GraphQL APIs.
 
-In this topic:
 
-* [Before You Begin](artifact-connectors-docker-using-api.md#undefined)
-* [Step: Create a Docker Artifact Source](artifact-connectors-docker-using-api.md#undefined)
-* [Step: Update a Docker Artifact Source](artifact-connectors-docker-using-api.md#undefined)
-* [Step: Delete a Docker Artifact Source](artifact-connectors-docker-using-api.md#undefined)
-
-### Before You Begin
+## Before You Begin
 
 * Read the [Create an Application](../../../continuous-delivery/model-cd-pipeline/applications/application-configuration.md) topic to get an overview of how Harness organizes Services.
 * Read the [Add a Service](../../../continuous-delivery/model-cd-pipeline/setup-services/service-configuration.md) topic to understand the process to add a Service to an Application.
@@ -25,11 +19,11 @@ In this topic:
 * [Add Artifact Servers](../../account/manage-connectors/configuring-artifact-server.md)
 * [Add a Docker Artifact Source](../../../continuous-delivery/model-cd-pipeline/setup-services/add-a-docker-image-service.md)
 
-### Step: Create a Docker Artifact Source
+## Step: Create a Docker Artifact Source
 
 Use this sample query to create a Docker Artifact Source.
 
-##### Request
+### Request
 
 You create a Docker Artifact Source using the mutation `createConnector`.
 
@@ -47,7 +41,7 @@ mutation CreateConnector($connector: CreateConnectorInput!) {
   }  
 }
 ```
-##### Query Variables
+### Query Variables
 
 The Query Variables follow this syntax, with `connectorType` identifying the Docker Artifact Source to create.
 
@@ -72,11 +66,11 @@ To fetch the `passwordSecretId` use:
 }  
 
 ```
-### Step: Update a Docker Artifact Source
+## Step: Update a Docker Artifact Source
 
 Use this sample query to update a Docker Artifact Source.
 
-##### Request
+### Request
 
 You update a Docker Artifact Source using the mutation `updateConnector`.
 
@@ -92,7 +86,7 @@ mutation UpdateConnector($connector: UpdateConnectorInput!) {
   }  
 }
 ```
-##### Query Variables
+### Query Variables
 
 The Query Variables follow this syntax, with `connectorType` identifying the Docker Artifact Source to update. See [Fetch the Connector ID](artifact-connectors-docker-using-api.md#fetch-the-connector-id) to get the connector ID details.
 
@@ -111,7 +105,7 @@ The Query Variables follow this syntax, with `connectorType` identifying the D
   }  
 }
 ```
-##### Fetch the Connector ID
+### Fetch the Connector ID
 
 Use the following query to fetch the `ID` of a connector. A list of connectors is returned based on the set filters. You can select the `ID` of the connector that you want to update.
 
@@ -127,7 +121,7 @@ query
   }  
 }
 ```
-### Step: Delete a Docker Artifact Source
+## Step: Delete a Docker Artifact Source
 
 You delete a Docker Artifact Source using the mutation `deleteConnector`. Deleting a Docker Artifact Source requires its `ID` only.
 
@@ -139,7 +133,7 @@ mutation DeleteConnectorMutation($connector: DeleteConnectorInput!) {
   }  
 }
 ```
-##### Query Variables
+### Query Variables
 
 Query Variables, with `connectorId` identifies the Docker Artifact Source to delete.
 

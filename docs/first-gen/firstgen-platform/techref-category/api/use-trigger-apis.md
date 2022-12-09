@@ -1,7 +1,7 @@
 ---
 title: Use Trigger APIs
 description: This topic provides information on how to create, read, update, and delete Triggers using the Harness API.
-# sidebar_position: 2
+sidebar_position: 160
 helpdocs_topic_id: u21rkuzfod
 helpdocs_category_id: l2p3i03l4a
 helpdocs_is_private: false
@@ -10,19 +10,13 @@ helpdocs_is_published: true
 
 This topic provides information on how to create, read, update, and delete [Triggers](../../../continuous-delivery/model-cd-pipeline/triggers/add-a-trigger-2.md) using the Harness API. Triggers automate deployments using a variety of conditions, such as Git events, new Artifacts, schedules, and the success of other Pipelines.
 
-In this topic:
 
-* [Before You Begin](use-trigger-apis.md#before-you-begin)
-* [Step: Create a Trigger](use-trigger-apis.md#step-create-a-trigger)
-* [Step: Update a Trigger](use-trigger-apis.md#step-update-a-trigger)
-* [Step: Delete a Trigger](use-trigger-apis.md#step-delete-a-trigger)
-
-### Before You Begin
+## Before You Begin
 
 * Review the [Harness API](harness-api.md)
 * [Trigger Workflows and Pipelines](../../../continuous-delivery/model-cd-pipeline/triggers/add-a-trigger-2.md)
 
-### Step: Create a Trigger
+## Step: Create a Trigger
 
 Create a Trigger using the mutation `createTrigger`. You can select any of the following conditions to execute a Trigger:
 
@@ -31,7 +25,7 @@ Create a Trigger using the mutation `createTrigger`. You can select any of the 
 * On Time Schedule
 * On Webhook Event
 
-#### On Pipeline Completion
+### On Pipeline Completion
 
 In this example, the execution type is **Workflow**, and the Artifact selection is **From Triggering Pipeline**.
 
@@ -133,7 +127,7 @@ mutation {
   }  
 }
 ```
-#### On New Artifact
+### On New Artifact
 
 In this example, the execution type is **Pipeline**, and the Artifact selection type is **From Triggering Artifact**.
 
@@ -205,7 +199,7 @@ mutation {
   }  
 }
 ```
-#### On Time Schedule
+### On Time Schedule
 
 In this example, the execution type is **Workflow**, the and Artifact selection is **Last Collected**.
 
@@ -240,7 +234,7 @@ mutation {
   }  
 }
 ```
-#### On Webhook Event
+### On Webhook Event
 
 In this example, the execution type is **Workflow**, and Webhook source type is **BitBucket**.
 
@@ -296,7 +290,7 @@ mutation {
   }  
 }
 ```
-#### WebHook Triggers using Authorization
+### WebHook Triggers using Authorization
 
 Your Git provider includes secret tokens that enable you to validate requests.
 
@@ -364,7 +358,7 @@ mutation {
 ```
 For details on setting this up in the Harness Manager Trigger UI, see [Authenticate the Webhook](../../../continuous-delivery/model-cd-pipeline/triggers/trigger-a-deployment-on-git-event.md#option-authenticate-the-webhook).
 
-### Step: Update a Trigger
+## Step: Update a Trigger
 
 Update a Trigger using the mutation `updateTrigger`.
 
@@ -397,7 +391,7 @@ mutation {
   }  
 }
 ```
-### Step: Delete a Trigger
+## Step: Delete a Trigger
 
 Delete a Trigger using the mutation `deleteTrigger`. You need to enter the ID of the Trigger that you want to delete.
 

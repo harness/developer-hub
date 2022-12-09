@@ -1,7 +1,7 @@
 ---
 title: Use Approvals API
 description: Query and approve pending Approval steps and stages using Harness approvalDetails GraphQL API.
-# sidebar_position: 2
+sidebar_position: 140 
 helpdocs_topic_id: n43s95h2aj
 helpdocs_category_id: l2p3i03l4a
 helpdocs_is_private: false
@@ -11,15 +11,6 @@ helpdocs_is_published: true
 You can query for the pending Approval steps and stages of a Workflow or Pipeline using Harness `approvalDetails` GraphQL API.
 
 Once you have found the Approval step or stage, you can use the `approveOrRejectApprovals` mutation to approve or reject it.
-
-In this topic:
-
-* [Before You Begin](#before_you_begin)
-* [Supported Platforms and Technologies](#undefined)
-* [Requirements](#requirements)
-* [Step: Get Application and Execution Ids](#step_get_application_and_execution_ids)
-* [Step: Query Approvals by Execution](#step_query_approvals_by_execution)
-* [Step: Approve or Reject Approval](#step_approve_or_reject_approval)
 
 ### Before You Begin
 

@@ -1,7 +1,7 @@
 ---
 title: Add a Helm Artifact Source Using the API
 description: Describes how to create, read, update, and delete Helm Artifact Source using Harness GraphQL APIs.
-# sidebar_position: 2
+sidebar_position: 300
 helpdocs_topic_id: y5ngh9ktzj
 helpdocs_category_id: l2p3i03l4a
 helpdocs_is_private: false
@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 This topic describes how to create, read, update, and delete Helm Artifact Source using Harness GraphQL APIs.
 
-### Before You Begin
+## Before You Begin
 
 * Read the [Create an Application](../../../continuous-delivery/model-cd-pipeline/applications/application-configuration.md) topic to get an overview of how Harness organizes Services.
 * Read the [Add a Service](../../../continuous-delivery/model-cd-pipeline/setup-services/service-configuration.md) topic to understand the process to add a Service to an Application.
@@ -19,7 +19,7 @@ This topic describes how to create, read, update, and delete Helm Artifact Sour
 * [Add Artifact Servers](../../account/manage-connectors/configuring-artifact-server.md)
 * [Use Cloud Providers API](use-cloud-providers-api.md)
 
-### Step: Create a Helm Artifact Source
+## Step: Create a Helm Artifact Source
 
 Use this sample query to create a Helm Artifact Source. You can use the following hosting platforms:
 
@@ -35,11 +35,11 @@ To fetch the `passwordSecretId` use:
 * [WinRM Credentials API](api-win-rm-credentials.md#get-a-secret-by-name)
 * [SSH Credentials API](api-ssh-credentials.md#get-a-secret-by-name)
 
-#### HTTP Server
+### HTTP Server
 
 It is the type of server where the repo is hosted.
 
-##### Request
+#### Request
 
 You create a Helm Artifact Source using the mutation `createConnector`.
 
@@ -57,7 +57,7 @@ mutation CreateConnector($connector: CreateConnectorInput!) {
   }  
 }
 ```
-##### Query Variables
+#### Query Variables
 
 The Query Variables follow this syntax, with `connectorType` identifying the Helm Artifact Source to create.
 
@@ -77,11 +77,11 @@ The Query Variables follow this syntax, with `connectorType` identifying the H
     }  
   }
 ```
-#### GCS (Google Cloud Storage)
+### GCS (Google Cloud Storage)
 
 It is the type of server where the repo is hosted.
 
-##### Request
+#### Request
 
 You create a Helm Artifact Source using the mutation `createConnector`.
 
@@ -99,7 +99,7 @@ mutation CreateConnector($connector: CreateConnectorInput!) {
   }  
 }
 ```
-##### Query Variables
+#### Query Variables
 
 The Query Variables follow this syntax, with `connectorType` identifying the Helm Artifact Source to create.
 
@@ -120,11 +120,11 @@ To get the cloud provider ID, see [Find Cloud Provider by Name](use-cloud-provid
     }  
   }
 ```
-#### Amazon S3
+### Amazon S3
 
 It is the type of server where the repo is hosted. For more information, see
 
-##### Request
+#### Request
 
 You create a Helm Artifact Source using the mutation `createConnector`.
 
@@ -142,7 +142,7 @@ mutation CreateConnector($connector: CreateConnectorInput!) {
   }  
 }
 ```
-##### Query Variables
+#### Query Variables
 
 The Query Variables follow this syntax, with `connectorType` identifying the Helm Artifact Source to create.
 
@@ -162,9 +162,9 @@ The Query Variables follow this syntax, with `connectorType` identifying the H
   }  
 }
 ```
-#### Helm OCI Registries
+### Helm OCI Registries
 
-##### Request
+#### Request
 
 You create a Helm Artifact Source using the mutation `createConnector`.
 
@@ -182,7 +182,7 @@ mutation CreateConnector($connector: CreateConnectorInput!) {
   }  
 }
 ```
-##### Query Variables
+#### Query Variables
 
 The Query Variables follow this syntax, with `connectorType` identifying the Helm Artifact Source to create.
 
@@ -202,7 +202,7 @@ The Query Variables follow this syntax, with `connectorType` identifying the H
     }  
   }
 ```
-##### Authentication Supported
+#### Authentication Supported
 
 For GCR as an OCI registry, Harness support authentication using the following:
 
@@ -211,15 +211,15 @@ For GCR as an OCI registry, Harness support authentication using the following:
 
 Harness does not support a username of `_json_key` and password as unencrypted JSON key file content.
 
-### Step: Update a Helm Artifact Source
+## Step: Update a Helm Artifact Source
 
 Use this sample query to update a Helm Artifact Source.
 
-#### HTTP
+### HTTP
 
 It is the type of server where the repo is hosted.
 
-##### Request
+#### Request
 
 You update a Helm Artifact Source using the mutation `updateConnector`.
 
@@ -235,7 +235,7 @@ mutation UpdateConnector($connector: UpdateConnectorInput!) {
   }  
 }
 ```
-##### Query Variables
+#### Query Variables
 
 The Query Variables follow this syntax, with `connectorType` identifying the Helm Artifact Source to update. See [Fetch the Connector ID](add-a-helm-artifact-source-using-api.md#fetch-the-connector-id) to get the connector ID details.
 
@@ -257,7 +257,7 @@ The Query Variables follow this syntax, with `connectorType` identifying the H
 }  
 
 ```
-##### Fetch the Connector ID
+#### Fetch the Connector ID
 
 Use the following query to fetch the `ID` of a connector. A list of connectors is returned based on the set filters. You can select the `ID` of the connector that you want to update.
 
@@ -273,11 +273,11 @@ query
   }  
 }
 ```
-#### GCS
+### GCS
 
 It is the type of server where the repo is hosted.
 
-##### Request
+#### Request
 
 You update a Helm Artifact Source using the mutation `updateConnector`.
 
@@ -293,7 +293,7 @@ mutation UpdateConnector($connector: UpdateConnectorInput!) {
   }  
 }
 ```
-##### Query Variables
+#### Query Variables
 
 The Query Variables follow this syntax, with `connectorType` identifying the Helm Artifact Source to update. See [Fetch the Connector ID](add-a-helm-artifact-source-using-api.md#fetch-the-connector-id-2) to get the connector ID details.
 
@@ -314,7 +314,7 @@ The Query Variables follow this syntax, with `connectorType` identifying the H
 }  
 
 ```
-##### Fetch the Connector ID
+#### Fetch the Connector ID
 
 Use the following query to fetch the `ID` of a connector. A list of connectors is returned based on the set filters. You can select the `ID` of the connector that you want to update.
 
@@ -330,9 +330,9 @@ query
   }  
 }
 ```
-#### Amazon S3
+### Amazon S3
 
-##### Request
+#### Request
 
 You update a Helm Artifact Source using the mutation `updateConnector`.
 
@@ -348,7 +348,7 @@ mutation UpdateConnector($connector: UpdateConnectorInput!) {
   }  
 }
 ```
-##### Query Variables
+#### Query Variables
 
 The Query Variables follow this syntax, with `connectorType` identifying the Helm Artifact Source to update. See [Fetch the Connector ID](add-a-helm-artifact-source-using-api.md#fetch-the-connector-id-3) to get the connector ID details.
 
@@ -369,7 +369,7 @@ The Query Variables follow this syntax, with `connectorType` identifying the H
   }  
 }
 ```
-##### Fetch the Connector ID
+#### Fetch the Connector ID
 
 Use the following query to fetch the `ID` of a connector. A list of connectors is returned based on the set filters. You can select the `ID` of the connector that you want to update.
 
@@ -385,9 +385,9 @@ query
   }  
 }
 ```
-#### Helm OCI Registries
+### Helm OCI Registries
 
-##### Request
+#### Request
 
 You update a Helm Artifact Source using the mutation `updateConnector`.
 
@@ -403,7 +403,7 @@ mutation UpdateConnector($connector: UpdateConnectorInput!) {
   }  
 }
 ```
-##### Query Variables
+#### Query Variables
 
 The Query Variables follow this syntax, with `connectorType` identifying the Helm Artifact Source to update. See [Fetch the Connector ID](add-a-helm-artifact-source-using-api.md#fetch-the-connector-id-3) to get the connector ID details.
 
@@ -424,7 +424,7 @@ The Query Variables follow this syntax, with `connectorType` identifying the H
   }  
 }
 ```
-##### Fetch the Connector ID
+#### Fetch the Connector ID
 
 Use the following query to fetch the `ID` of a connector. A list of connectors is returned based on the set filters. You can select the `ID` of the connector that you want to update.
 
@@ -440,7 +440,7 @@ query
   }  
 }
 ```
-### Step: Delete a Helm Artifact Source
+## Step: Delete a Helm Artifact Source
 
 You delete a Helm Artifact Source using the mutation `deleteConnector`. Deleting a Helm Artifact Source requires its `ID` only.
 
@@ -452,7 +452,7 @@ mutation DeleteConnectorMutation($connector: DeleteConnectorInput!) {
   }  
 }
 ```
-##### Query Variables
+#### Query Variables
 
 Query Variables, with `connectorId` identifies the Helm Artifact Source to delete.
 

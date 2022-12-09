@@ -1,7 +1,7 @@
 ---
 title: Use Custom Secrets Manager API
 description: This topic describes how to create, read, update, and delete Custom Secrets Manager using Harness API.
-# sidebar_position: 2
+sidebar_position: 390
 helpdocs_topic_id: 9grbkf5d1k
 helpdocs_category_id: l2p3i03l4a
 helpdocs_is_private: false
@@ -14,31 +14,18 @@ This topic describes how to create, update, and delete a Custom Secrets Manager�
 
 For steps on setting up a Custom Secret Manager using the Harness UI, see [Add and Use a Custom Secrets Manager](../../security/secrets-management/add-and-use-a-custom-secrets-manager.md).
 
-In this topic:
 
-* [Before You Begin](use-custom-secrets-manager-api.md#before-you-begin)
-* [Review: Read-Only Secret Manager](#review_read_only_secret_manager)
-* [Create a Custom Secrets Manager](use-custom-secrets-manager-api.md#create-a-custom-secrets-manager)
-	+ [Request](use-custom-secrets-manager-api.md#request)
-	+ [Query Variables](use-custom-secrets-manager-api.md#query-variables)
-* [Update a Custom Secrets Manager](use-custom-secrets-manager-api.md#update-a-custom-secrets-manager)
-	+ [Request](use-custom-secrets-manager-api.md#request-2)
-	+ [Query Variables](use-custom-secrets-manager-api.md#query-variables-2)
-* [Delete a Custom Secrets Manager](use-custom-secrets-manager-api.md#delete-a-custom-secrets-manager)
-	+ [Request](use-custom-secrets-manager-api.md#request-3)
-	+ [Query Variables](use-custom-secrets-manager-api.md#query-variables-3)
-
-### Before You Begin
+## Before You Begin
 
 * Review the [Harness API](harness-api.md)
 * Review [Secrets Management Overview](../../security/secrets-management/secret-management.md)
 * [Add and Use a Custom Secrets Manager](../../security/secrets-management/add-and-use-a-custom-secrets-manager.md)
 
-### Review: Read-Only Secret Manager
+## Review: Read-Only Secret Manager
 
 Harness Custom Secrets Manager is a read-only Secrets Manager. Harness can read/decrypt secrets, but it cannot write secrets to the Custom Secrets Manager.
 
-### Create a Custom Secrets Manager
+## Create a Custom Secrets Manager
 
 A Custom Secrets Manager is created using a shell script.
 
@@ -46,7 +33,7 @@ You can choose to run the shell script on a **Harness Delegate** or on a **targe
 
 Use this query to create a Custom Secrets Manager.
 
-#### Request
+### Request
 
 You create a Secret Manager using the mutation `createSecretManager`.
 
@@ -61,7 +48,7 @@ mutation CreateSecretManagerMutation($secretManagerInput: CreateSecretManagerInp
 }  
 
 ```
-#### Query Variables
+### Query Variables
 
 Use these query variables if you want to run the shell script on a Harness Delegate. The `secretManagerType` parameter identifies the type of Secret Manager to create while the `executeOnDelegate` parameter identifies that the shell script will run on a Harness Delegate.
 
@@ -155,11 +142,11 @@ The following example shows the query variables to use if you want to run the sh
     }  
 }
 ```
-### Update a Custom Secrets Manager
+## Update a Custom Secrets Manager
 
 Use this simple query to update your Custom Secrets Manager.
 
-#### Request
+### Request
 
 You update a Secret Manager using the mutation `updateSecretManager`.
 
@@ -174,7 +161,7 @@ mutation UpdateSecretManagerMutation($input: UpdateSecretManagerInput!) {
   }  
 }
 ```
-#### Query Variables
+### Query Variables
 
 The query variables use the following syntax, with `secretManagerId` parameter and `secretManagerType` parameter identifying the Secret Manager to update.
 
@@ -223,11 +210,11 @@ The query variables use the following syntax, with `secretManagerId` parameter
     }  
 }
 ```
-### Delete a Custom Secrets Manager
+## Delete a Custom Secrets Manager
 
 Use this simple query to delete a Custom Secrets Manager.
 
-#### Request
+### Request
 
 You delete a Secret Manager using the mutation `deleteSecretManager`.
 
@@ -239,7 +226,7 @@ mutation DeleteSecretManagerMutation($input: DeleteSecretManagerInput!){
   }  
 }
 ```
-#### Query Variables
+### Query Variables
 
 The query variables use the following syntax, with `secretManagerId` parameter identifying the Secret Manager to delete.
 

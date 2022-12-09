@@ -1,14 +1,14 @@
 ---
 title: ​Introduction to Harness GraphQL API
 description: Query Harness' public GraphQL API using our API Explorer, Postman, or your custom applications.
-# sidebar_position: 2
+sidebar_position: 10
 helpdocs_topic_id: tm0w6rruqv
 helpdocs_category_id: l2p3i03l4a
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-GraphQL is the API for Harness FirstGen only. Harness NextGen uses a **REST** API. See [Use the Harness REST API](../../../../platform/16_APIs/harness-rest-api-reference.md) and [Harness API Quickstart](../../../../platform/16_APIs/api-quickstart.md).GraphQL is a query language for your API, and a server-side runtime for executing queries by using a type system you define for your data. GraphQL isn't tied to any specific database or storage engine and is instead backed by your existing code and data. For more information, visit [GraphQL.org](https://graphql.org/) and [GitHub GraphQL API v4](https://developer.github.com/v4/).
+GraphQL is the API for Harness FirstGen only. Harness NextGen uses a **REST** API. See [Use the Harness REST API](../../../../platform/16_APIs/harness-rest-api-reference.md) and [Harness API Quickstart](../../../../platform/16_APIs/api-quickstart.md). GraphQL is a query language for your API, and a server-side runtime for executing queries by using a type system you define for your data. GraphQL isn't tied to any specific database or storage engine and is instead backed by your existing code and data. For more information, visit [GraphQL.org](https://graphql.org/) and [GitHub GraphQL API v4](https://developer.github.com/v4/).
 
 Harness exposes its public API in GraphQL format. Virtually all of Harness' meaningful entities are exposed through the API, such as Applications, Services, Artifacts, Cloud Providers, Environments, Workflows, Pipelines, deployed instances, deployment data, etc.
 
@@ -151,7 +151,9 @@ Where a query returns a list of multiple objects, each returned object is trea
 
 Harness' schema determines what parameters your queries can specify as arguments, and what data we can return. Following GraphQL conventions, we represent our schema in terms of *fields, types, enums, nodes, edges,* and *connections.*
 
+:::note
 The `!` following the type means that this field is *required*.
+:::
 
 The Harness API's schema includes fields representing the following Harness entities. Use the API Explorer's search box to discover the available fields and their usage. For more information, see [API Schema and Structure](api-schema-and-structure.md).
 

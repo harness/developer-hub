@@ -1,7 +1,7 @@
 ---
 title: Use Audit Trails API
 description: Lists common audit trail queries.
-# sidebar_position: 2
+sidebar_position: 210
 helpdocs_topic_id: k9d2zjdnw8
 helpdocs_category_id: l2p3i03l4a
 helpdocs_is_private: false
@@ -10,22 +10,15 @@ helpdocs_is_published: true
 
 This topic lists common audit trail queries.
 
-In this topic:
 
-* [Before You Begin](use-audit-trails-api.md#undefined)
-* [Generic Change Set](use-audit-trails-api.md#generic-change-set)
-* [User Change Set](use-audit-trails-api.md#user-change-set)
-* [API Key Change Set](use-audit-trails-api.md#api-key-change-set)
-* [Git Change Set](use-audit-trails-api.md#git-change-set)
-* [Other Examples](use-audit-trails-api.md#other-examples)
 
-### Before You Begin
+## Before You Begin
 
 * [​Introduction to Harness GraphQL API](harness-api.md)
 * [Harness API Explorer](harness-api-explorer.md)
 * [API Schema and Structure](api-schema-and-structure.md)
 
-### Generic Change Set
+## Generic Change Set
 
 This query shows how to retrieve the 100 most recent audit records and generic change set information.
 
@@ -52,7 +45,7 @@ This query shows how to retrieve the 100 most recent audit records and generic c
   }  
 }
 ```
-### User Change Set
+## User Change Set
 
 This query shows how to retrieve the 100 most recent audit records and user change set information.
 
@@ -88,7 +81,7 @@ This query shows how to retrieve the 100 most recent audit records and user chan
   }  
 }
 ```
-### API Key Change Set
+## API Key Change Set
 
 This query shows how to retrieve the 100 most recent audit records and API key change set information.
 
@@ -122,7 +115,7 @@ This query shows how to retrieve the 100 most recent audit records and API key c
   }  
 }
 ```
-### Git Change Set
+## Git Change Set
 
 This query shows how to retrieve the 100 most recent audit records and Git change set information.
 
@@ -152,7 +145,7 @@ This query shows how to retrieve the 100 most recent audit records and Git chang
   }  
 }
 ```
-### Other Examples
+## Other Examples
 
 The `audits` API enables you to retrieve and export records from Harness' Audit Trail. This first sample query has no time filters.
 

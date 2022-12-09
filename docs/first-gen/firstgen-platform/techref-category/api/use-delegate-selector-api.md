@@ -1,7 +1,7 @@
 ---
 title: Use Delegate Selector
 description: Use the Delegate Selector API.
-# sidebar_position: 2
+sidebar_position: 380
 helpdocs_topic_id: 3n4t2p5iiu
 helpdocs_category_id: l2p3i03l4a
 helpdocs_is_private: false
@@ -10,17 +10,17 @@ helpdocs_is_published: true
 
 You can retrieve, assign, clear, and delete tags associated with Delegates using the Harness API.
 
-### Before You Begin
+## Before You Begin
 
 * [Harness API](harness-api.md)
 * [Using Tags](../../account/tags/tags.md)
 * [Select Delegates with Selectors](../../account/manage-delegates/select-delegates-for-specific-tasks-with-selectors.md)
 
-### Prerequisites
+## Prerequisites
 
 * You will need a Harness API Key to send API requests. For more information, see [API Keys](../../security/access-management-howtos/api-keys.md).
 
-### Fetch the List of Tags for a Given Delegate
+## Fetch the List of Tags for a Given Delegate
 
 To send the API request, you will need your Harness Account Id, Delegate Id and [API Key](../../security/access-management-howtos/api-keys.md).
 
@@ -30,14 +30,14 @@ The Account Id can be found in every URL when using Harness following `account`:
 ```
 https://app.harness.io/#/account/{accountid}/home/get-started
 ```
-##### Request
+### Request
 
 
 ```
 curl --location --request GET 'https://app.harness.io/gateway/api/delegate/{yourdelegateId}/delegate-tags?accountId={youraccountId}' \  
 --header 'x-api-key: {api-key}'
 ```
-##### Response
+### Response
 
 
 ```
@@ -54,7 +54,7 @@ curl --location --request GET 'https://app.harness.io/gateway/api/delegate/{your
     "responseMessages": []  
 }
 ```
-### Assign a Givet List of Tags to a Specific Delegate
+## Assign a Givet List of Tags to a Specific Delegate
 
 To send the API request, you will need your Harness Account Id, Delegate Id and [API Key](../../security/access-management-howtos/api-keys.md).
 
@@ -64,7 +64,7 @@ The Account Id can be found in every URL when using Harness following `account`:
 ```
 https://app.harness.io/#/account/{accountid}/home/get-started
 ```
-##### Request
+### Request
 
 
 ```
@@ -73,7 +73,7 @@ curl --location --request POST 'https://app.harness.io/gateway/api/delegate/{you
 --header 'Content-Type: application/json' \  
 --data-raw '{"tags": ["tag2"]}'
 ```
-##### Response
+### Response
 
 
 ```
@@ -91,7 +91,7 @@ curl --location --request POST 'https://app.harness.io/gateway/api/delegate/{you
     "responseMessages": []  
 }
 ```
-### Clear an Existing List of Tags and Assign a New List of Tags to Delegate
+## Clear an Existing List of Tags and Assign a New List of Tags to Delegate
 
 To send the API request, you will need your Harness Account Id, Delegate Id and [API Key](../../security/access-management-howtos/api-keys.md).
 
@@ -101,7 +101,7 @@ The Account Id can be found in every URL when using Harness following `account`:
 ```
 https://app.harness.io/#/account/{accountid}/home/get-started
 ```
-##### Request
+### Request
 
 
 ```
@@ -110,7 +110,7 @@ curl --location --request PUT 'https://app.harness.io/gateway/api/delegate/{your
 --header 'Content-Type: application/json' \  
 --data-raw '{"tags": ["tag2"]}'
 ```
-##### Response
+### Response
 
 
 ```
@@ -127,7 +127,7 @@ curl --location --request PUT 'https://app.harness.io/gateway/api/delegate/{your
     "responseMessages": []  
 }
 ```
-### Delete all the Tags from a Given Delegate
+## Delete all the Tags from a Given Delegate
 
 To send the API request, you will need your Harness Account Id, Delegate Id and [API Key](../../security/access-management-howtos/api-keys.md).
 
@@ -137,14 +137,14 @@ The Account Id can be found in every URL when using Harness following `account`:
 ```
 https://app.harness.io/#/account/{accountid}/home/get-started
 ```
-##### Request
+### Request
 
 
 ```
 curl --location --request DELETE 'https://app.harness.io/gateway/api/delegate/{yourdelegateId}/delegate-tags?accountId={youraccountId}' \  
 --header 'x-api-key: {api-key}'
 ```
-##### Response
+### Response
 
 
 ```

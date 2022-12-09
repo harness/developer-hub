@@ -1,7 +1,7 @@
 ---
 title: Add a Nexus Artifact Source Using API
 description: Describes how to create, read, update, and delete Nexus Artifact Source using Harness GraphQL APIs.
-# sidebar_position: 2
+sidebar_position: 290
 helpdocs_topic_id: 103heofz7o
 helpdocs_category_id: l2p3i03l4a
 helpdocs_is_private: false
@@ -10,14 +10,8 @@ helpdocs_is_published: true
 
 This topic describes how to create, read, update, and delete Nexus Artifact Source using Harness GraphQL APIs.
 
-In this topic:
 
-* [Before You Begin](nexus-artifact-source-using-api.md#before-you-begin)
-* [Step: Create a Nexus Artifact Source](nexus-artifact-source-using-api.md#step-create-a-nexus-artifact-source)
-* [Step: Update a Nexus Artifact Source](nexus-artifact-source-using-api.md#step-update-a-nexus-artifact-source)
-* [Step: Delete a Nexus Artifact Source](nexus-artifact-source-using-api.md#step-delete-a-nexus-artifact-source)
-
-### Before You Begin
+## Before You Begin
 
 * Read the [Create an Application](../../../continuous-delivery/model-cd-pipeline/applications/application-configuration.md) topic to get an overview of how Harness organizes Services.
 * Read the [Add a Service](../../../continuous-delivery/model-cd-pipeline/setup-services/service-configuration.md) topic to understand the process to add a Service to an Application.
@@ -25,7 +19,7 @@ In this topic:
 * [Nexus Artifact Sources](../cd-ref/artifacts-ref/nexus-artifact-sources.md)
 * [Add Artifact Servers](../../account/manage-connectors/configuring-artifact-server.md)
 
-### Step: Create a Nexus Artifact Source
+## Step: Create a Nexus Artifact Source
 
 Use this sample query to create a Nexus Artifact Source.
 
@@ -47,7 +41,7 @@ mutation CreateConnector($connector: CreateConnectorInput!) {
   }  
 }
 ```
-##### Query Variables
+#### Query Variables
 
 The Query Variables follow this syntax, with `connectorType` identifying the Nexus Artifact Source to create.
 
@@ -72,11 +66,11 @@ To fetch the `passwordSecretId` use:
   }  
 }
 ```
-### Step: Update a Nexus Artifact Source
+## Step: Update a Nexus Artifact Source
 
 Use this sample query to update a Nexus Artifact Source.
 
-##### Request
+#### Request
 
 You update a Nexus Artifact Source using the mutation `updateConnector`.
 
@@ -92,7 +86,7 @@ mutation UpdateConnector($connector: UpdateConnectorInput!) {
   }  
 }
 ```
-##### Query Variables
+#### Query Variables
 
 The Query Variables follow this syntax, with `connectorType` identifying the Nexus Artifact Source to update. See [Fetch the Connector ID](nexus-artifact-source-using-api.md#fetch-the-connector-id) to get the connector ID details.
 
@@ -112,7 +106,7 @@ The Query Variables follow this syntax, with `connectorType` identifying the N
   }  
 }
 ```
-##### Fetch the Connector ID
+#### Fetch the Connector ID
 
 Use the following query to fetch the `ID` of a connector. A list of connectors is returned based on the set filters. You can select the `ID` of the connector that you want to update.
 
@@ -128,7 +122,7 @@ query
   }  
 }
 ```
-### Step: Delete a Nexus Artifact Source
+## Step: Delete a Nexus Artifact Source
 
 You delete a Nexus Artifact Source using the mutation `deleteConnector`. Deleting a Nexus Artifact Source requires its `ID` only.
 
@@ -140,7 +134,7 @@ mutation DeleteConnectorMutation($connector: DeleteConnectorInput!) {
   }  
 }
 ```
-##### Query Variables
+#### Query Variables
 
 Query Variables, with `connectorId` identifies the Nexus Artifact Source to delete.
 
