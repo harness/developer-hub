@@ -1,6 +1,13 @@
 kind: pipeline
-type: docker
+type: vm
 name: default
+
+platform:
+  os: linux
+  arch: amd64
+  
+pool:
+  use: ubuntu
 
 steps:
 # - name: lint
@@ -19,7 +26,6 @@ steps:
   commands:
   - yarn
   - yarn build
-
 - name: publish
   image: plugins/netlify
   settings:
