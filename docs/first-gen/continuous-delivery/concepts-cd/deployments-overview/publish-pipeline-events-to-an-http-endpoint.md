@@ -13,7 +13,7 @@ To help you analyze how Pipelines are performing, Harness can send key Pipeline 
 
 ### Before You Begin
 
-* [Create a Pipeline](https://docs.harness.io/article/zc1u96u6uj-pipeline-configuration)
+* [Create a Pipeline](../../model-cd-pipeline/pipelines/pipeline-configuration.md)
 * [Monitor Deployments in Dashboards](https://docs.harness.io/article/c3s245o7z8-main-and-services-dashboards)
 
 ### Supported Platforms and Technologies

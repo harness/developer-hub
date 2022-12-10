@@ -29,7 +29,7 @@ In this topic:
 
 * Get an overview of provisioning with ARM in [Azure ARM and Blueprint Provisioning with Harness](../../concepts-cd/deployment-types/azure-arm-and-blueprint-provision-with-harness.md).
 * [Set Up Your Harness Account for Azure ARM](set-up-your-harness-account-for-azure-arm.md)
-* [Infrastructure Provisioners Overview](https://docs.harness.io/article/o22jx8amxb-add-an-infra-provisioner)
+* [Infrastructure Provisioners Overview](../../model-cd-pipeline/infrastructure-provisioner/add-an-infra-provisioner.md)
 
 ### Visual Summary
 

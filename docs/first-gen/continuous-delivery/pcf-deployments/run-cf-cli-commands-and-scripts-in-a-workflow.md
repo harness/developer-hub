@@ -50,7 +50,7 @@ These variables appear when you type `${service` in **Script**:
 
 ![](./static/run-cf-cli-commands-and-scripts-in-a-workflow-39.png)
 
-Environment Service Overrides, such as [Tanzu Manifest Overrides](override-pcf-manifests-and-config-variables-and-files.md), do not apply to or override the `${service.manifest}` variable. The `${service.manifest}` variable only looks in the Harness Service.You can also use variables in your script to templatize paths to manifest files. For example, if your Workflow Environment were templatized (see  [Template a Workflow](https://docs.harness.io/article/m220i1tnia-workflow-configuration#template_a_workflow)), you can use the Environment variable `${env.name}` in your path, like this:
+Environment Service Overrides, such as [Tanzu Manifest Overrides](override-pcf-manifests-and-config-variables-and-files.md), do not apply to or override the `${service.manifest}` variable. The `${service.manifest}` variable only looks in the Harness Service.You can also use variables in your script to templatize paths to manifest files. For example, if your Workflow Environment were templatized (see  [Template a Workflow](../model-cd-pipeline/workflows/workflow-configuration.md#template-a-workflow)), you can use the Environment variable `${env.name}` in your path, like this:
 
 `${service.manifest.repoRoot}/${env.name}/vars.yml`
 

@@ -103,7 +103,7 @@ To add the CloudFormation Create Stack step, do the following:
 You need to select an AWS Cloud Provider even if the CloudFormation Infrastructure Provisioner you selected uses a manually-entered template body. Harness needs access to the AWS API for CloudFormation via the credentials in the AWS Cloud Provider. Ensure that the AWS Cloud Provider has the credentials described in [Set Up Your Harness Account for CloudFormation](cloud-formation-account-setup.md).
 :::
 5. In **Region**, select the region where you will be provisioning your resources.  
-You can use a [Harness variable expression](https://docs.harness.io/article/9dvxcegm90-variables) in the Region setting, such as a [Workflow variable](https://docs.harness.io/article/766iheu1bk-add-workflow-variables-new-template). This allows you to select the AWS region for the provisioning when you deploy your Workflow.
+You can use a [Harness variable expression](https://docs.harness.io/article/9dvxcegm90-variables) in the Region setting, such as a [Workflow variable](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md). This allows you to select the AWS region for the provisioning when you deploy your Workflow.
 :::note 
 Currently, expressions in the Region setting is in Beta and behind a Feature Flag. Contact [Harness Support](https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=support@harness.io) to enable the feature. Feature Flags can only be removed for Harness Professional and Essentials editions. Once the feature is released to a general audience, it is available for Trial and Community Editions.
 :::
@@ -130,7 +130,7 @@ Currently, expressions in the Region setting is in Beta and behind a Feature Fla
 		  
 	The tags you add here are applied to all of the resources in the stack. AWS has a limit of 50 unique tags for each stack.  
 		  
-	You can use Harness variable expressions in the keys and values. See [Built-in Variables List](https://docs.harness.io/article/aza65y4af6-built-in-variables-list) and [Set Workflow Variables](https://docs.harness.io/article/766iheu1bk-add-workflow-variables-new-template).
+	You can use Harness variable expressions in the keys and values. See [Built-in Variables List](https://docs.harness.io/article/aza65y4af6-built-in-variables-list) and [Set Workflow Variables](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md).
 10. In **Skip based on Stack Status**, you can add the stack states that will not prevent provisioning.
 :::note 
 Harness checks if the stack is in ROLLBACK\_COMPLETE state before the deployment. If present, Harness deletes the stack and then triggers the deployment.
@@ -207,7 +207,7 @@ You can use Harness Workflow variables in **Path to Parameters.json**.
 
 When the Workflow is deployed, by itself, in a Pipeline, or in a Trigger, you will provide values for the Workflow variables. This allows you to templatize the path.
 
-See [Set Workflow Variables](https://docs.harness.io/article/766iheu1bk-add-workflow-variables-new-template) and [Templatize a Workflow](https://docs.harness.io/article/bov41f5b7o-templatize-a-workflow-new-template).
+See [Set Workflow Variables](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md) and [Templatize a Workflow](../../model-cd-pipeline/workflows/templatize-a-workflow-new-template.md).
 
 ### Workflow Variable Expressions in Files
 

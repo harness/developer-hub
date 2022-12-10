@@ -39,4 +39,4 @@ To prevent too many Workflows or Pipelines from being deployed to the same infra
 
 ### Troubleshooting Trigger Permissions
 
-See [Triggers and RBAC](https://docs.harness.io/article/su0wpdarqi-triggers-and-rbac) and [Troubleshooting](https://docs.harness.io/article/g9o2g5jbye-troubleshooting-harness).
+See [Triggers and RBAC](../../concepts-cd/deployment-types/triggers-and-rbac.md) and [Troubleshooting](https://docs.harness.io/article/g9o2g5jbye-troubleshooting-harness).

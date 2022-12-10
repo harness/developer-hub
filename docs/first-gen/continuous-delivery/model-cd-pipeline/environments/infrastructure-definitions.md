@@ -126,5 +126,5 @@ If an Infrastructure Definition is not scoped, and therefore available to any Se
 
 * [Add Workflows](https://docs.harness.io/category/add-workflows)
 * [Templatize a Workflow](../workflows/templatize-a-workflow-new-template.md)
-* [Deploy a Workflow to Multiple Infrastructures Simultaneously](https://docs.harness.io/article/bc65k2imoi-deploy-to-multiple-infrastructures)
+* [Deploy a Workflow to Multiple Infrastructures Simultaneously](../../concepts-cd/deployments-overview/deploy-to-multiple-infrastructures.md)
 

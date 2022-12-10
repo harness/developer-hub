@@ -53,7 +53,7 @@ You can also see this information in the gallery **Properties**.
 
 ### Step 2: Create the Harness VMSS Service
 
-1. In Harness, create or open an Application. See [Create an Application](https://docs.harness.io/article/bucothemly-application-configuration).
+1. In Harness, create or open an Application. See [Create an Application](../../model-cd-pipeline/applications/application-configuration.md).
 2. Select **Services**, and then click **Add Service**.
 3. In the **Add Service** settings, name your Service.
 4. In **Deployment Type**, select **Azure Virtual Machine Scale Set**.

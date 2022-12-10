@@ -25,7 +25,7 @@ For example, you can specify a variable in the Service once, and then use it in 
 * **Config Variables** - You can create Service variables to use in your Manifests files, and in Environments and Workflows. Any Service variables are added as environment variables when the app is created in the Pivotal environment (**cf push**). Later, when you want to reference a Service variable, you use the syntax `${serviceVariable.var_name}`.
 * **Config Files** - You can upload config files with variables to be used when deploying the Service. Later, when you want to reference a Service config file, you use the syntax `${configFile.getAsString("fileName")}` for unencrypted text files and `${configFile.getAsBase64("fileName")}` for encrypted text files.
 
-For details on configuration variables and files, see [Add Service Config Variables](https://docs.harness.io/article/q78p7rpx9u-add-service-level-config-variables) and [Add Service Config Files](https://docs.harness.io/article/iwtoq9lrky-add-service-level-configuration-files).
+For details on configuration variables and files, see [Add Service Config Variables](../model-cd-pipeline/setup-services/add-service-level-config-variables.md) and [Add Service Config Files](../model-cd-pipeline/setup-services/add-service-level-configuration-files.md).
 
 ### Step: Using Config Variables in Manifests
 

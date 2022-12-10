@@ -12,7 +12,7 @@ To store and use encrypted secrets (such as access keys), you can add a HashiCor
 
 ### Before you begin
 
-* [Learn Harness' Key Concepts](https://ngdocs.harness.io/article/hv2758ro4e-learn-harness-key-concepts)
+* [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md)
 * [Harness Secret Manager Overview](../6_Security/1-harness-secret-manager-overview.md)
 * Make sure that the Harness Delegate can connect to the Vault URL.
 * Make sure you have View and Create/Edit permissions for secrets.​

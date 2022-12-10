@@ -333,7 +333,7 @@ Harness includes several built-in variable expressions that you can use to outpu
 * `${helmChart.name}` - The `name` in the chart.
 * `${helmChart.version}` - The version of the chart that was deployed.
 
-You can use these expressions in a [Shell Script](https://docs.harness.io/article/1fjrjbau7x-capture-shell-script-step-output) Workflow step after the deployment step in the Workflow:
+You can use these expressions in a [Shell Script](../model-cd-pipeline/workflows/capture-shell-script-step-output.md) Workflow step after the deployment step in the Workflow:
 
 
 ```
@@ -361,7 +361,7 @@ Version: 2.14.0
 ```
 ### Review: Helm Artifacts in Pipelines and Triggers
 
-You can add your Workflow to a stage in a Harness [Pipeline](https://docs.harness.io/article/zc1u96u6uj-pipeline-configuration) or have it executed by a Harness [Trigger](https://docs.harness.io/article/xerirloz9a-add-a-trigger-2).
+You can add your Workflow to a stage in a Harness [Pipeline](../model-cd-pipeline/pipelines/pipeline-configuration.md) or have it executed by a Harness [Trigger](../model-cd-pipeline/triggers/add-a-trigger-2.md).
 
 In both cases, you can select the Helm chart version you want to deploy.
 

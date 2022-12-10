@@ -80,7 +80,7 @@ Technically, this is a different plan. If you want use the actual plan because
 
 ### Step 2: Add Approval Step
 
-Harness Workflow Approval steps can be done using Jira, ServiceNow, or the Harness UI. You can even use custom shell scripts. See [Approvals](https://docs.harness.io/article/0ajz35u2hy).
+Harness Workflow Approval steps can be done using Jira, ServiceNow, or the Harness UI. You can even use custom shell scripts. See [Approvals](../model-cd-pipeline/approvals/approvals.md).
 
 Add the Approval step after the Terragrunt Provision where you selected the **Set as Terragrunt Plan** option.
 

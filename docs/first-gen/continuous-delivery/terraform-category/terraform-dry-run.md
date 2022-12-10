@@ -80,7 +80,7 @@ If Harness detects that a Terraform plan produces no changes then the actual gen
 
 ### Step 2: Add Approval Step
 
-Harness Workflow Approval steps can be done using Jira, ServiceNow, or the Harness UI. You can even use custom shell scripts. See [Approvals](https://docs.harness.io/article/0ajz35u2hy-approvals).
+Harness Workflow Approval steps can be done using Jira, ServiceNow, or the Harness UI. You can even use custom shell scripts. See [Approvals](../model-cd-pipeline/approvals/approvals.md).
 
 Add the Approval step after the Terraform Provision or Terraform Apply step where you selected the **Set as Terraform Plan** option.
 
@@ -115,7 +115,7 @@ Deploy your Workflow and see the `terraform plan` executed in the first Terraf
 
 ### Review: Terraform Plan Output Variable
 
-If you select the **Set as Terraform Plan** option, you can display the output of the plan using the variable expression `${terraformApply.tfplan}`. For example, you can display the plan output in a [Shell Script](https://docs.harness.io/article/1fjrjbau7x-capture-shell-script-step-output) step.
+If you select the **Set as Terraform Plan** option, you can display the output of the plan using the variable expression `${terraformApply.tfplan}`. For example, you can display the plan output in a [Shell Script](../model-cd-pipeline/workflows/capture-shell-script-step-output.md) step.
 
 For help in parsing the plan output, see [Parsing Terraform Plan Output](https://community.harness.io/t/parsing-terraform-plan-output/545) on Harness Community.
 
@@ -127,7 +127,7 @@ Currently, this feature is behind the Feature Flag `OPTIMIZED_TF_PLAN`. Contact 
 
 The `${terraformPlan.jsonFilePath()}` expression outputs the path to the Terraform plan file on the Harness Delegate that executed the step.
 
-For example, you can display the plan output in a [Shell Script](https://docs.harness.io/article/1fjrjbau7x-capture-shell-script-step-output) step:
+For example, you can display the plan output in a [Shell Script](../model-cd-pipeline/workflows/capture-shell-script-step-output.md) step:
 
 
 ```

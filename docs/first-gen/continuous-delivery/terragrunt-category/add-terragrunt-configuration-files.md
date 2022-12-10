@@ -80,7 +80,7 @@ When the Workflow is deployed, you are prompted to provide values for the Workfl
 
 This allows the same Terragrunt Provisioner to be used by multiple Workflows, where each Workflow can use a different branch and path for the **Script Repository**.
 
-See [Set Workflow Variables](https://docs.harness.io/article/766iheu1bk-add-workflow-variables-new-template).
+See [Set Workflow Variables](../model-cd-pipeline/workflows/add-workflow-variables-new-template.md).
 
 ### Step 3: Select Secret Manager for Terragrunt Plan
 

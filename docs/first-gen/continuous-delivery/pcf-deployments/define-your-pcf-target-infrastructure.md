@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-In the Environment, you create [Infrastructure Definitions](https://docs.harness.io/article/v3l3wqovbe-infrastructure-definitions) that describe your target deployment environments. Tanzu Application Service (TAS, formerly PCF) Infrastructure Definitions specify the following:
+In the Environment, you create [Infrastructure Definitions](../model-cd-pipeline/environments/infrastructure-definitions.md) that describe your target deployment environments. Tanzu Application Service (TAS, formerly PCF) Infrastructure Definitions specify the following:
 
 * The TAS deployment type.
 * The TAS Cloud Provider that you added, as described in [Add Cloud Providers](https://docs.harness.io/article/whwnovprrb-infrastructure-providers#pivotal_cloud_foundry_pcf).

@@ -70,7 +70,7 @@ For example, if Phase 1 deploys to 25% of your nodes, the metrics received for t
 
 The metrics are taken for the period of time defined in **Analysis Time duration**.
 
-Harness supports Canary Analysis only in [Canary deployments](https://docs.harness.io/article/325x7awntc-deployment-concepts-and-strategies#canary_deployment).
+Harness supports Canary Analysis only in [Canary deployments](../../../concepts-cd/deployment-types/deployment-concepts-and-strategies.md#canary-deployment).
 
 ##### Canary Analysis without a Host
 
@@ -124,7 +124,7 @@ Use the following best practices with Canary Analysis.
 * Don't use Canary Analysis in the last phase of a Canary Workflow because the final phase deploys to 100% of nodes and so there are no other nodes to compare.
 * Don't use Canary Analysis when deploying 100% of instances at once.
 
-Harness supports Canary Analysis only in [Canary deployments](https://docs.harness.io/article/325x7awntc-deployment-concepts-and-strategies#canary_deployment).
+Harness supports Canary Analysis only in [Canary deployments](../../../concepts-cd/deployment-types/deployment-concepts-and-strategies.md#canary-deployment).
 
 ### Analysis Time Duration
 

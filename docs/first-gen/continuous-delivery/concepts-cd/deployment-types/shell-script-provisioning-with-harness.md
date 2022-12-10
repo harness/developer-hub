@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 Harness has first-class support for Terraform and AWS CloudFormation provisioners, but to support different provisioners, or your existing shell script implementations, Harness includes the Shell Script Infrastructure Provisioner.
 
-This is a conceptual overview. For steps on setting up the Shell Script Provisioner, see [Shell Script Provisioner](https://docs.harness.io/article/1m3p7phdqo-shell-script-provisioner).
+This is a conceptual overview. For steps on setting up the Shell Script Provisioner, see [Shell Script Provisioner](../../model-cd-pipeline/infrastructure-provisioner/ssh-provisioner-category/shell-script-provisioner.md).
 
 In this topic:
 
@@ -118,5 +118,5 @@ Harness Service Instances (SIs) are not consumed and no additional licensing is 
 
 ### Next Step
 
-[Shell Script Provisioner](https://docs.harness.io/article/1m3p7phdqo-shell-script-provisioner)
+[Shell Script Provisioner](../../model-cd-pipeline/infrastructure-provisioner/ssh-provisioner-category/shell-script-provisioner.md)
 

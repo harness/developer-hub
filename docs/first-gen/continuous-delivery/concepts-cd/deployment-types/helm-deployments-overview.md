@@ -60,7 +60,7 @@ The following list describes the major steps of a Harness Helm deployment:
 | 6 | Create the Harness **Service** using the **Native Helm** Deployment Type. | Add your Helm charts and any config variables and files. |
 | 7 | Create the Harness **Environment** and Infrastructure Definition for your target Kubernetes clusters, and any overrides. | Using the Harness Cloud Provider you set up, you can select the target Kubernetes cluster and namespace for your deployment.You can also override any Service settings, such as manifest values. This enables you to use a single Service with multiple Harness Environments. |
 | 8 | Create the Basic Helm deployment Harness **Workflow**. | The Workflow deploys the artifact(s) and Kubernetes workloads defined in the Harness Service Helm charts to the cluster and namespace in the Harness Infrastructure Definition. |
-| 9 | Deploy the Workflow. | Once you've deployed a Workflow, learn how to improve your Kubernetes CD: <br />&bull;&nbsp; [Workflows](https://docs.harness.io/article/m220i1tnia-workflow-configuration) <br />&bull;&nbsp;  [Triggers](https://docs.harness.io/article/xerirloz9a-add-a-trigger-2)  <br />&bull;&nbsp;  [Infrastructure Provisioners Overview](https://docs.harness.io/article/o22jx8amxb-add-an-infra-provisioner) |
+| 9 | Deploy the Workflow. | Once you've deployed a Workflow, learn how to improve your Kubernetes CD: <br />&bull;&nbsp; [Workflows](../../model-cd-pipeline/workflows/workflow-configuration.md) <br />&bull;&nbsp;  [Triggers](../../model-cd-pipeline/triggers/add-a-trigger-2.md)  <br />&bull;&nbsp;  [Infrastructure Provisioners Overview](../../model-cd-pipeline/infrastructure-provisioner/add-an-infra-provisioner.md) |
 
 ### Next Steps
 

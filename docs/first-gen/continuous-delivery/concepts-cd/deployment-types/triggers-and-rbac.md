@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/article/vz5cq0nfg2).A Trigger involves multiple settings, including Service, Environment, and Workflow specifications. Harness examines these components as you set up a Trigger.
+This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../../platform/4_Role-Based-Access-Control/1-rbac-in-harness.md).A Trigger involves multiple settings, including Service, Environment, and Workflow specifications. Harness examines these components as you set up a Trigger.
 
 You might be authorized for one component selected in a Trigger, such as a Service, but not another, such as an Environment. In these cases, an error message will alert you to missing authorizations.
 
@@ -37,5 +37,5 @@ One resolution is to set the **Environment** field to a static value. But if the
 
 ### See Also
 
-* You can use settings to enforce authorization on some Triggers. See [Trigger a Deployment using cURL](https://docs.harness.io/article/mc2lxsas4c-trigger-a-deployment-using-c-url).
+* You can use settings to enforce authorization on some Triggers. See [Trigger a Deployment using cURL](../../model-cd-pipeline/triggers/trigger-a-deployment-using-c-url.md).
 

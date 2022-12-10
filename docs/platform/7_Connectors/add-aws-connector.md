@@ -16,7 +16,7 @@ This topic explains how to set up the AWS Connector.
 
 ### Before you begin
 
-* [Learn Harness' Key Concepts](https://ngdocs.harness.io/article/hv2758ro4e-learn-harness-key-concepts)
+* [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md)
 
 ### Review: IAM Roles and Policies for the Connector
 
@@ -42,7 +42,7 @@ The [DescribeRegions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API
 
 ### Supported Platforms and Technologies
 
-For a list of the platforms and technologies supported by Harness, see [Supported Platforms and Technologies](https://docs.harness.io/article/1e536z41av).
+For a list of the platforms and technologies supported by Harness, see [Supported Platforms and Technologies](../../getting-started/supported-platforms-and-technologies.md).
 
 ### Step 1: Add an AWS Connector
 

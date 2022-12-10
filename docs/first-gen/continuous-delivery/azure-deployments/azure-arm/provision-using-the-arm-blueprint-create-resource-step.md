@@ -179,7 +179,7 @@ Here is an example of parameters using Workflow variables:
   }  
 }
 ```
-See [Set Workflow Variables](https://docs.harness.io/article/766iheu1bk-add-workflow-variables-new-template) and [Built-in Variables List](https://docs.harness.io/article/aza65y4af6-built-in-variables-list).
+See [Set Workflow Variables](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md) and [Built-in Variables List](https://docs.harness.io/article/aza65y4af6-built-in-variables-list).
 
 ### Option: Use Template Outputs in Workflow Steps
 

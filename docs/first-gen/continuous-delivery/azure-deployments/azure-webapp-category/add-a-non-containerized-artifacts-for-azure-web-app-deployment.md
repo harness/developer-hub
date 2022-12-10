@@ -31,7 +31,7 @@ The Harness Azure Web Application Service type supports the following repos:
 * **Artifactory:** see [Add Artifactory Servers](https://docs.harness.io/article/nj3p1t7v3x-add-artifactory-servers).
 * **Amazon S3:** see [Add Amazon Web Services (AWS) Cloud Provider](https://docs.harness.io/article/wt1gnigme7-add-amazon-web-services-cloud-provider).
 * **Jenkins:** see [Add Jenkins Artifact Servers](https://docs.harness.io/article/qa7lewndxq-add-jenkins-artifact-servers).
-* **Azure Artifact:** see [Add an Azure DevOps Artifact Source](https://docs.harness.io/article/rbfjmko1og-add-an-azure-dev-ops-artifact-source).
+* **Azure Artifact:** see [Add an Azure DevOps Artifact Source](../../model-cd-pipeline/setup-services/add-an-azure-dev-ops-artifact-source.md).
 	+ You can use Maven and NuGet. If you choose the Maven package type you can also use ZIP or WAR. If you use ZIP or WAR, then select ZIP or WAR as the type in your Harness Service Artifact Type.
 
 Harness supports JAR files from the following repos:
@@ -74,7 +74,7 @@ Select the Artifact Server type.
 
 Fill out the Artifact Source settings.
 
-For **Jenkins**, you will select the job and artifact. Harness will run the job and obtain the artifact metadata needed to pull the artifact at deployment runtime.For details on configuring the supported Artifact Source types, see [Service Types and Artifact Sources](https://docs.harness.io/article/qluiky79j8-service-types-and-artifact-sources).
+For **Jenkins**, you will select the job and artifact. Harness will run the job and obtain the artifact metadata needed to pull the artifact at deployment runtime.For details on configuring the supported Artifact Source types, see [Service Types and Artifact Sources](../../model-cd-pipeline/setup-services/service-types-and-artifact-sources.md).
 
 Here's an example of an Artifactory Artifact Source used to pull a WAR file:
 

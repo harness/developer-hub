@@ -85,7 +85,7 @@ Within the same resource group, you can't mix Windows and Linux apps in the same
 
 The **Scope to specific Services** setting in the Infrastructure Definition enables you to scope this Infrastructure Definition to specific Harness Services.
 
-See [Add an Infrastructure Definition](https://docs.harness.io/article/v3l3wqovbe-infrastructure-definitions).
+See [Add an Infrastructure Definition](../../model-cd-pipeline/environments/infrastructure-definitions.md).
 
 ### Option: Dynamically Provision Infrastructure
 

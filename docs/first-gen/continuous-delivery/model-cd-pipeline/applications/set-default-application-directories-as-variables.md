@@ -14,8 +14,8 @@ You can define Application-wide variables that can be referenced in any entity w
 
 * [What is a Harness Variable Expression?](https://docs.harness.io/article/9dvxcegm90-variables)
 * [Run Shell Scripts in Workflows](../workflows/capture-shell-script-step-output.md)
-* [Add Artifacts and App Stacks for Traditional (SSH) Deployments](https://docs.harness.io/article/umpe4zfnac-add-artifacts-for-ssh-deployments)
-* [Add Scripts for Traditional (SSH) Deployments](https://docs.harness.io/article/ih779z9kb6-add-deployment-specs-for-traditional-ssh-deployments)
+* [Add Artifacts and App Stacks for Traditional (SSH) Deployments](../../traditional-deployments/add-artifacts-for-ssh-deployments.md)
+* [Add Scripts for Traditional (SSH) Deployments](../../traditional-deployments/add-deployment-specs-for-traditional-ssh-deployments.md)
 
 ### Review: Application Defaults
 
@@ -79,6 +79,6 @@ You can reference an Application Default anywhere in your Application. Here is a
 
 * [What is a Harness Variable Expression?](https://docs.harness.io/article/9dvxcegm90-variables)
 * [Run Shell Scripts in Workflows](../workflows/capture-shell-script-step-output.md)
-* [Add Artifacts and App Stacks for Traditional (SSH) Deployments](https://docs.harness.io/article/umpe4zfnac-add-artifacts-for-ssh-deployments)
-* [Add Scripts for Traditional (SSH) Deployments](https://docs.harness.io/article/ih779z9kb6-add-deployment-specs-for-traditional-ssh-deployments)
+* [Add Artifacts and App Stacks for Traditional (SSH) Deployments](../../traditional-deployments/add-artifacts-for-ssh-deployments.md)
+* [Add Scripts for Traditional (SSH) Deployments](../../traditional-deployments/add-deployment-specs-for-traditional-ssh-deployments.md)
 

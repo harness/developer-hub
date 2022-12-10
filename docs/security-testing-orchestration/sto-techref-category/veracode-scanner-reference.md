@@ -16,7 +16,7 @@ Veracode is a popular tool for scanning code repos for security issues and vulne
 For specific requirements, got to the [Veracode docs](https://docs.veracode.com) and search for *Veracode Packaging Requirements*.
 * You also need access credentials so that STO can communicate with your Veracode instance. Harness recommends using API keys, not usernames and passwords, for your Veracode integrations  
 For instructions, go to the [Veracode docs](https://docs.veracode.com) and search for *Generate Veracode API Credentials*.  
-Harness recommends you create [text secrets](https://docs.harness.io/article/osfw70e59c) for your authentication credentials — password, API key, API secret key, etc. — and access your secrets using `<+secrets.getValue("<`*`my_secret`*`>")>`.
+Harness recommends you create [text secrets](../../platform/6_Security/2-add-use-text-secrets.md) for your authentication credentials — password, API key, API secret key, etc. — and access your secrets using `<+secrets.getValue("<`*`my_secret`*`>")>`.
 * The [Veracode - Automated Data Load](https://community.harness.io/t/veracode-automated-data-load/1066) and [Veracode - Activate Scenario](https://community.harness.io/t/veracode-activate-scenario/1067) blog posts include useful information about how to ingest Veracode scan results into Harness.
 
 ### Required Settings

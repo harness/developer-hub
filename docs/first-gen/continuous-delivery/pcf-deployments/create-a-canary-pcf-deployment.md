@@ -100,7 +100,7 @@ To configure the Canary phases, do the following:
 
 1. In the Workflow, in **Deployment Phases**, click **Add Phase**. The **Workflow Phase** dialog appears.
 2. In **Service**, ensure you select the Harness Service that contains the manifest for the TAS app you want to deploy.
-3. In **Infrastructure Definition**, select the [Infrastructure Definition](https://docs.harness.io/article/n39w05njjv-environment-configuration#step_2_add_infrastructure_definition) that defines the target space where you want to deploy your app.
+3. In **Infrastructure Definition**, select the [Infrastructure Definition](../model-cd-pipeline/environments/environment-configuration.md#step-2-add-infrastructure-definition) that defines the target space where you want to deploy your app.
 4. Click **Submit**. Phase 1 appears.
 
 ![](./static/create-a-canary-pcf-deployment-85.png)
@@ -152,7 +152,7 @@ Next, we'll add Phase 2 where we will deploy to 100% of the instances specified 
 
 1. From the breadcrumb menu, click back to the main Canary Workflow page.
 2. In **Deployment Phases**, under **Phase 1**, click **Add Phase**. The **Workflow Phase** dialog appears.
-3. Select the same Service and [Infrastructure Definition](https://docs.harness.io/article/n39w05njjv-environment-configuration#step_2_add_infrastructure_definition) that you selected in Phase 1, and then click **Submit**.
+3. Select the same Service and [Infrastructure Definition](../model-cd-pipeline/environments/environment-configuration.md#step-2-add-infrastructure-definition) that you selected in Phase 1, and then click **Submit**.
 
 The **Phase 2** steps appear.
 

@@ -76,7 +76,7 @@ CloudFormation templates may be in JSON or YAML and Harness accepts both formats
 
 ![](./static/add-cloud-formation-templates-22.png)
 
-You can also use [Harness variable expressions](https://docs.harness.io/article/9dvxcegm90-variables), such as [Workflow variables](https://docs.harness.io/article/766iheu1bk-add-workflow-variables-new-template), in **Template Body**.
+You can also use [Harness variable expressions](https://docs.harness.io/article/9dvxcegm90-variables), such as [Workflow variables](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md), in **Template Body**.
 
 #### Git Repository
 
@@ -93,7 +93,7 @@ For example, if the full path to your script is **http://github.com/johnsmith/ha
   
 Using the same example, if you selected **Specific Commit ID** and enter a commit ID, in **File Path** you can enter **scripts/foo.yaml** or even **./scripts/foo.yaml**.
 
-You cannot also use [Harness variable expressions](https://docs.harness.io/article/9dvxcegm90-variables), such as [Workflow variables](https://docs.harness.io/article/766iheu1bk-add-workflow-variables-new-template), in **File Path** at this time.
+You cannot also use [Harness variable expressions](https://docs.harness.io/article/9dvxcegm90-variables), such as [Workflow variables](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md), in **File Path** at this time.
 
 #### Amazon S3
 
@@ -103,7 +103,7 @@ If you select **Amazon S3**, in **Template File Path**, enter the URL for the te
 
 ![](./static/add-cloud-formation-templates-23.png)
 
-Only enter the [globally-unique S3 bucket name URL](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingBucket.html). Not the region-specific URL.You can also use [Harness variable expressions](https://docs.harness.io/article/9dvxcegm90-variables), such as [Workflow variables](https://docs.harness.io/article/766iheu1bk-add-workflow-variables-new-template), in **Template File Path**.Ensure that the AWS Cloud Provider has permissions to read the bucket contents. The required policies is `AmazonS3ReadOnlyAccess` and you need another policy with the action `cloudformation:GetTemplateSummary`. See [Set Up Your Harness Account for CloudFormation](cloud-formation-account-setup.md).
+Only enter the [globally-unique S3 bucket name URL](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingBucket.html). Not the region-specific URL.You can also use [Harness variable expressions](https://docs.harness.io/article/9dvxcegm90-variables), such as [Workflow variables](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md), in **Template File Path**.Ensure that the AWS Cloud Provider has permissions to read the bucket contents. The required policies is `AmazonS3ReadOnlyAccess` and you need another policy with the action `cloudformation:GetTemplateSummary`. See [Set Up Your Harness Account for CloudFormation](cloud-formation-account-setup.md).
 
 You can find many template samples from CloudFormation [Sample Templates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-sample-templates.html).
 

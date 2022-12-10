@@ -8,15 +8,15 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/article/1re7pz9bj8).Harness includes an account-wide Template Library, called the Shared Template Library, and an Application-wide Template Library.
+This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../../platform/13_Templates/use-a-template.md).Harness includes an account-wide Template Library, called the Shared Template Library, and an Application-wide Template Library.
 
 Only members of a Harness User Group with the **Manage Template Library** permission may create, edit, and delete Account and Application-level templates. Members of a User Group with this permission disabled can view and link to templates only.
 
 
 ### Before You Begin
 
-* [Add a Service](https://docs.harness.io/article/eb3kfl8uls-service-configuration)
-* [Add a Workflow](https://docs.harness.io/article/m220i1tnia-workflow-configuration)
+* [Add a Service](../../model-cd-pipeline/setup-services/service-configuration.md)
+* [Add a Workflow](../../model-cd-pipeline/workflows/workflow-configuration.md)
 
 ### Shared Template Library and Application Template Library
 

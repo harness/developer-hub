@@ -105,7 +105,7 @@ Harness supports any single file (non-folder) deployed using `cf push`. TAR, WAR
 
     Harness uses artifact metadata only. During deployment runtime, Harness passes the metadata to the target host(s) where it is used to obtain the artifact.
 
-    Ensure that the target host has network connectivity to the Artifact Server. For more information, see [Service Types and Artifact Sources](https://docs.harness.io/article/qluiky79j8-service-types-and-artifact-sources).
+    Ensure that the target host has network connectivity to the Artifact Server. For more information, see [Service Types and Artifact Sources](../model-cd-pipeline/setup-services/service-types-and-artifact-sources.md).
 
 3. Click **Submit**. The artifact is added to the Service.
 

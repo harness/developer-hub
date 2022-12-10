@@ -121,7 +121,7 @@ If multiple variables of the same name are defined in different places, such as 
 3. Variables in a Service **Config Variables** section.
 4. Variables defined in inline or remote files in Service **Manifests** section.
 
-For more information, see [Override a Service Configuration](https://docs.harness.io/article/n39w05njjv-environment-configuration#override_a_service_configuration).
+For more information, see [Override a Service Configuration](../model-cd-pipeline/environments/environment-configuration.md#override-a-service-configuration).
 
 Variable precedence is different from app or autoscalar manifest precedence.
 

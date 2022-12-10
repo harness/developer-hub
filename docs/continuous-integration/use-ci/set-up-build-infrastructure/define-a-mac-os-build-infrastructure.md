@@ -21,7 +21,7 @@ The following diagram shows the architecture of a CI build infrastructure on Mac
 This topic assumes you're familiar with the following:
 
 * [CI Pipeline Quickstart](../../ci-quickstarts/ci-pipeline-quickstart.md)
-* [Delegates Overview](https://ngdocs.harness.io/article/2k7lnc7lvl-delegates-overview)
+* [Delegates Overview](../../../platform/2_Delegates/delegates-overview.md)
 * [CI Stage Settings](../../ci-technical-reference/ci-stage-settings.md)
 * [Learn Harness' Key Concepts](../../../getting-started/learn-harness-key-concepts.md)
 * [VM Runner](https://docs.drone.io/runner/vm/overview/)

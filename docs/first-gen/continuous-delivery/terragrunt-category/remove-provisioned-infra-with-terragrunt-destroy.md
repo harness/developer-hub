@@ -115,7 +115,7 @@ See [Add a Secrets Manager](https://docs.harness.io/article/uuer539u3l-add-a-sec
 
 If you select the **Set as Terragrunt Destroy Plan and Export** option, you can display the output of the plan using the variable expression `${terraformDestroy.tfplan}`.
 
-For example, you can display the plan output in a [Shell Script](https://docs.harness.io/article/1fjrjbau7x-capture-shell-script-step-output) step.
+For example, you can display the plan output in a [Shell Script](../model-cd-pipeline/workflows/capture-shell-script-step-output.md) step.
 
 The plan is associated with the Terraform script source of the Terragrunt config file in the Terragrunt Infrastructure Provisioner.
 

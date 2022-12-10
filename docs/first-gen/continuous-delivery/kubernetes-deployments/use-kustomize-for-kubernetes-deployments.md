@@ -291,7 +291,7 @@ You cannot use Harness variables in the base manifest or kustomization.yaml. You
 
 We're going to use variables for `replicas` and `image`.
 
-Let's look at the Harness variables in our Service. Here are two Service [Config Variables](https://docs.harness.io/article/q78p7rpx9u-add-service-level-config-variables):
+Let's look at the Harness variables in our Service. Here are two Service [Config Variables](../model-cd-pipeline/setup-services/add-service-level-config-variables.md):
 
 ![](./static/use-kustomize-for-kubernetes-deployments-80.png)
 
@@ -459,7 +459,7 @@ You can also select the Environment in a Trigger than executes the Workflow:
 
 ![](./static/use-kustomize-for-kubernetes-deployments-90.png)
 
-For more information, see [Triggers](https://docs.harness.io/article/xerirloz9a-add-a-trigger-2) and [Passing Variables into Workflows and Pipelines from Triggers](https://docs.harness.io/article/revc37vl0f-passing-variable-into-workflows).
+For more information, see [Triggers](../model-cd-pipeline/triggers/add-a-trigger-2.md) and [Passing Variables into Workflows and Pipelines from Triggers](../model-cd-pipeline/expressions/passing-variable-into-workflows.md).
 
 ##### Service Variables
 
@@ -469,7 +469,7 @@ Here is an example of using a Service variable in **Path to kustomization direct
 
 ![](./static/use-kustomize-for-kubernetes-deployments-91.png)
 
-If you have Service **Config Variables** set up, you will see the variable expressions displayed when you enter `$`. For details on Service variables, see [Services](https://docs.harness.io/article/eb3kfl8uls-service-configuration).
+If you have Service **Config Variables** set up, you will see the variable expressions displayed when you enter `$`. For details on Service variables, see [Services](../model-cd-pipeline/setup-services/service-configuration.md).
 
 Service variables can be overwritten at the Harness Environment level. This allows you to use a variable for the **Path to kustomization directory** setting and then override it for each Harness Environment you use with this Service.
 
@@ -489,7 +489,7 @@ If you use Workflow variables for **Path to kustomization directory**, you can p
 
 ![](./static/use-kustomize-for-kubernetes-deployments-93.png)
 
-Typically, when you deploy a Workflow, you are prompted to select an artifact for deployment. If a Workflow is deploying a Service that uses a remote **Kustomization Configuration**, you are not prompted to provide an artifact for deployment.See [Workflows](https://docs.harness.io/article/m220i1tnia-workflow-configuration) and [Kubernetes Workflow Variable Expressions](https://docs.harness.io/article/9dvxcegm90-variables).
+Typically, when you deploy a Workflow, you are prompted to select an artifact for deployment. If a Workflow is deploying a Service that uses a remote **Kustomization Configuration**, you are not prompted to provide an artifact for deployment.See [Workflows](../model-cd-pipeline/workflows/workflow-configuration.md) and [Kubernetes Workflow Variable Expressions](https://docs.harness.io/article/9dvxcegm90-variables).
 
 ### Option: Use Plugins in Deployments
 

@@ -108,7 +108,7 @@ For steps on adding Selectors, see [Delegate Installation and Management](https:
 
 In this section, we will add a Harness AWS Cloud Provider to your Harness account to connect to both AWS S3, Lambda, and the VPC. You can use a single or separate AWS Cloud Providers for the connections, but using a single AWS Cloud Provider is easiest.
 
-As Harness provides first-class support for [CloudWatch](https://docs.harness.io/article/q6ti811nck-cloud-watch-verification-overview), you can also use the same AWS Cloud Provider for your CloudWatch connection.
+As Harness provides first-class support for [CloudWatch](../../continuous-verification/continuous-verification-overview/concepts-cv/cloud-watch-verification-overview.md), you can also use the same AWS Cloud Provider for your CloudWatch connection.
 
 #### Permissions
 

@@ -167,6 +167,6 @@ The following words cannot be used for names in **Publish Variable Name:**
 
 ### Next Steps
 
-* [Use Templates](https://docs.harness.io/article/ygi6d8epse-use-templates)
+* [Use Templates](../../concepts-cd/deployment-types/use-templates.md)
 * [Using the Shell Script Command](capture-shell-script-step-output.md)
 

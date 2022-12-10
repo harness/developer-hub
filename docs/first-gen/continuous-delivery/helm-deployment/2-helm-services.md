@@ -29,7 +29,7 @@ The release name must be unique across the cluster.
 
 ### Create the Harness Application
 
-An application in Harness represents a logical group of one or more entities, including Services, Environments, Workflows, Pipelines, Triggers, and Infrastructure Provisioners. Applications organize all of the entities and configurations in Harness CI/CD. For more information, see [Application Checklist](https://docs.harness.io/article/bucothemly-application-configuration).
+An application in Harness represents a logical group of one or more entities, including Services, Environments, Workflows, Pipelines, Triggers, and Infrastructure Provisioners. Applications organize all of the entities and configurations in Harness CI/CD. For more information, see [Application Checklist](../model-cd-pipeline/applications/application-configuration.md).
 
 To add the Harness Application and service, do the following:
 
@@ -77,7 +77,7 @@ harness:  
 
 ### Add the Docker Artifact Source
 
-1. In the new service, click **Add****Artifact Source**, and select **Docker Registry**. There are a number of artifact sources you can use. For more information, see [Add a Docker Image Server](https://docs.harness.io/article/gxv9gj6khz-add-a-docker-image-service#add_a_docker_image_service). The **Docker Registry** dialog appears.
+1. In the new service, click **Add****Artifact Source**, and select **Docker Registry**. There are a number of artifact sources you can use. For more information, see [Add a Docker Image Server](../model-cd-pipeline/setup-services/add-a-docker-image-service.md#add-a-docker-image-service). The **Docker Registry** dialog appears.
 
    ![](./static/2-helm-services-39.png)
 2. In **Name**, let Harness generate a name for the source.
@@ -107,7 +107,7 @@ Helm [chart dependencies](https://helm.sh/docs/topics/charts/) are not supported
 
   If you are using Google Cloud Storage for your Helm repo, you will see a **Base Path** setting for the bucket. See [Google Cloud Storage (GCS)](https://harness.helpdocs.io/article/whwnovprrb-cloud-providers#google_cloud_storage_gcs) for details on the policies required.1. In **Base Path**, enter the path to the charts' bucket folder or a Workflow variable expression.
 	1. If you use a charts' bucket folder, simply enter the name of the folder. Whether you need to specify a single folder (e.g. `charts`) a folder path (e.g. `helm/charts`) depends on the Helm Chart Repository you added as a Harness Artifact Server.
-	2. If you use a Workflow variable expression, you can enter in the expression as part of the path. For example, `/Myservice/Chart/${workflow.variables.branchName}/` or simply `${workflow.variables.chartFolder}`.For more information, see [Variables and Expressions in Harness](https://docs.harness.io/article/9dvxcegm90-variables) and [Add Workflow Variables](https://docs.harness.io/article/m220i1tnia-workflow-configuration#add_workflow_variables).
+	2. If you use a Workflow variable expression, you can enter in the expression as part of the path. For example, `/Myservice/Chart/${workflow.variables.branchName}/` or simply `${workflow.variables.chartFolder}`.For more information, see [Variables and Expressions in Harness](https://docs.harness.io/article/9dvxcegm90-variables) and [Add Workflow Variables](../model-cd-pipeline/workflows/workflow-configuration.md#add-workflow-variables).
 	1. If the chart is in the **root** folder of the repository location set in the Helm Chart Repository you added as a Harness Artifact Server, leave **Base Path** empty.
 2. In **Chart Name**, enter the name of the chart in that repo.
 3. In **Chart Version**, enter the chart version to use. This is found in the **Chart.yaml** **version** label. If you leave this field empty Harness gets the latest chart.
@@ -155,7 +155,7 @@ These options are provided for backwards-compatibility and it is preferable that
 
 For Helm, that's it. You don't have to do any further configuration to the service. Harness will use the chart you specified to configure the Kubernetes cluster.
 
-File-based repo triggers are a powerful feature of Harness that lets you set a Webhook on your repo to trigger a Harness Workflow or Pipeline when a Push event occurs in the repo. For more information, see [File-based Repo Triggers](https://docs.harness.io/article/xerirloz9a-add-a-trigger-2#file_based_repo_triggers).Now you can define the deployment environment and workflow for the deployment.
+File-based repo triggers are a powerful feature of Harness that lets you set a Webhook on your repo to trigger a Harness Workflow or Pipeline when a Push event occurs in the repo. For more information, see [File-based Repo Triggers](../model-cd-pipeline/triggers/add-a-trigger-2.md#file-based-repo-triggers).Now you can define the deployment environment and workflow for the deployment.
 
 ### Option: Helm Command Flags
 
@@ -175,7 +175,7 @@ If you use Helm commands in the Harness Service and in a Workflow deploying that
 
 #### Harness Variable Expressions are Supported
 
-You can use [Harness variable expressions](https://docs.harness.io/article/9dvxcegm90-variables) in any of the command options settings. For example, [Service Config variables](https://docs.harness.io/article/q78p7rpx9u-add-service-level-config-variables) and [Workflow variables](https://docs.harness.io/article/766iheu1bk-add-workflow-variables-new-template).
+You can use [Harness variable expressions](https://docs.harness.io/article/9dvxcegm90-variables) in any of the command options settings. For example, [Service Config variables](../model-cd-pipeline/setup-services/add-service-level-config-variables.md) and [Workflow variables](../model-cd-pipeline/workflows/add-workflow-variables-new-template.md).
 
 ### Spec Requirements for Steady State Check and Verification
 

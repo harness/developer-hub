@@ -36,7 +36,7 @@ This topic assumes you have read the following:
 ### Limitations
 
 * Terraform outputs are limited to the Workflow where the Terraform plan is applied. You cannot run a Terraform plan in one Workflow in a Pipeline and reference its outputs in another Workflow in a Pipeline.  
-You can, however, publish the values of the output variables from a Shell Script step, and then scope that published variable to the Pipeline. Now the output value can be passed to another Workflow in the Pipeline. See [Pass Variables between Workflows](https://docs.harness.io/article/gkmgrz9shh-how-to-pass-variables-between-workflows).
+You can, however, publish the values of the output variables from a Shell Script step, and then scope that published variable to the Pipeline. Now the output value can be passed to another Workflow in the Pipeline. See [Pass Variables between Workflows](../model-cd-pipeline/expressions/how-to-pass-variables-between-workflows.md).
 * You can only reference a Terraform output once the Terraform plan has been applied in the same Workflow. If a Terraform Provision or Terraform Apply step is set to run as a plan, you cannot reference its outputs.  
 Once the plan has been applied by another Terraform Provision or Terraform Apply step, you can reference the Terraform script outputs. See [Perform a Terraform Dry Run](terraform-dry-run.md).
 
@@ -46,7 +46,7 @@ This topic assumes you have a Workflow that uses a Terraform Provision or Terraf
 
 Add a Workflow step after the Terraform Provision or Terraform Apply step where you want to use the Terraform script outputs.
 
-Typically, you add a [Shell Script](https://docs.harness.io/article/1fjrjbau7x-capture-shell-script-step-output) step.
+Typically, you add a [Shell Script](../model-cd-pipeline/workflows/capture-shell-script-step-output.md) step.
 
 ### Step 2: Enter the Output Variable Expression
 

@@ -57,7 +57,7 @@ To add the Infrastructure Definition:
    ![](./static/3-lambda-environments-26.png)
 5. Select **Use** **Already Provisioned Infrastructure**, and follow the [Define a Provisioned Infrastructure](#define_provisioned_infrastructure) steps below.
 
-If you are using a configured Harness [Infrastructure Provisioner](https://docs.harness.io/article/o22jx8amxb-add-an-infra-provisioner), instead select **Map Dynamically Provisioned Infrastructure**, and then select the provisioner. The settings below are for **Use Already Provisioned Infrastructure**.
+If you are using a configured Harness [Infrastructure Provisioner](../../model-cd-pipeline/infrastructure-provisioner/add-an-infra-provisioner.md), instead select **Map Dynamically Provisioned Infrastructure**, and then select the provisioner. The settings below are for **Use Already Provisioned Infrastructure**.
 
 #### Define a Provisioned Infrastructure
 
@@ -110,7 +110,7 @@ With Harness, you can use a CloudFormation template to provision the Lambda infr
 
 Your Environment can overwrite Service Config Variables, Config Files, and other settings. This enables you to maintain a Service's native settings, but change them when the Service is used with this Environment.
 
-For more information, see [Override a Service Configuration](https://docs.harness.io/article/n39w05njjv-environment-configuration#override_a_service_configuration).
+For more information, see [Override a Service Configuration](../../model-cd-pipeline/environments/environment-configuration.md#override-a-service-configuration).
 
 ### Next Steps
 

@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-File-based repo Triggers are currently supported only for Native Helm and Helm-based Kubernetes deployments. For more information, see [Kubernetes or Helm?](https://docs.harness.io/article/i3n6qr8p5i-deployments-overview#kubernetes_or_helm).For [Build Workflows](https://docs.harness.io/article/wqytbv2bfd-ci-cd-with-the-build-workflow) or a  [Build and Deploy Pipeline](https://docs.harness.io/article/0tphhkfqx8-artifact-build-and-deploy-pipelines-overview), you can trigger deployments in response to a Git event using Webhooks. This is described in [Trigger Deployments using Git Events](trigger-a-deployment-on-git-event.md).
+File-based repo Triggers are currently supported only for Native Helm and Helm-based Kubernetes deployments. For more information, see [Kubernetes or Helm?](../../concepts-cd/deployments-overview/deployments-overview.md#kubernetes-or-helm).For [Build Workflows](../../concepts-cd/deployment-types/ci-cd-with-the-build-workflow.md) or a  [Build and Deploy Pipeline](../../concepts-cd/deployment-types/artifact-build-and-deploy-pipelines-overview.md), you can trigger deployments in response to a Git event using Webhooks. This is described in [Trigger Deployments using Git Events](trigger-a-deployment-on-git-event.md).
 
 In some Webhook Trigger scenarios, you might set a Webhook on your repo to trigger a Workflow or Pipeline when a Push event occurs in the repo. However, you might want to initiate the Trigger only when **specific files** in the repo are changed.
 
@@ -19,8 +19,8 @@ This topic describes how to set up and run a file-based Trigger.
 
 ### Before You Begin
 
-* [Build Workflows](https://docs.harness.io/article/wqytbv2bfd-ci-cd-with-the-build-workflow)
-* [Build and Deploy Pipeline](https://docs.harness.io/article/0tphhkfqx8-artifact-build-and-deploy-pipelines-overview)
+* [Build Workflows](../../concepts-cd/deployment-types/ci-cd-with-the-build-workflow.md)
+* [Build and Deploy Pipeline](../../concepts-cd/deployment-types/artifact-build-and-deploy-pipelines-overview.md)
 * [Add a Service](../setup-services/service-configuration.md)
 * [Workflows](../workflows/workflow-configuration.md)
 * [Add Environment](../environments/environment-configuration.md)
@@ -33,7 +33,7 @@ In the **Actions** section of the Trigger, the **Deploy only if files have chang
 * The Workflow selected deploys a Harness Kubernetes or Native Helm Service.
 * The **On Push** event is selected.
 
-For more information, see [Kubernetes or Helm?](https://docs.harness.io/article/i3n6qr8p5i-deployments-overview#kubernetes_or_helm).
+For more information, see [Kubernetes or Helm?](../../concepts-cd/deployments-overview/deployments-overview.md#kubernetes-or-helm).
 
 ### Step 1: Create the Git Webhook Trigger
 

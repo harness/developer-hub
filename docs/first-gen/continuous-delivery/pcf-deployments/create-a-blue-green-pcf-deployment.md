@@ -127,7 +127,7 @@ See [New features added to Harness](https://changelog.harness.io/?categories=fix
 
 There are no commands in **Verify Staging** because you have not set up verification steps in this tutorial, and you would not add them in the initial deployment because there are no other deployments for the steps to use in comparison.
 
-Later, when you are developing Blue/Green Workflows, add verification steps to verify the deployment of your app using the temporary route(s). This way, Harness will only proceed to the **Swap Routes** step if verification does not detects failures. For more information about verifying deployments, see [Continuous Verification](https://docs.harness.io/category/gurgsl2gqt-continuous-verification).
+Later, when you are developing Blue/Green Workflows, add verification steps to verify the deployment of your app using the temporary route(s). This way, Harness will only proceed to the **Swap Routes** step if verification does not detects failures. For more information about verifying deployments, see [Continuous Verification](https://docs.harness.io/category/continuous-verification).
 
 ### Step 6: Swap Routes
 

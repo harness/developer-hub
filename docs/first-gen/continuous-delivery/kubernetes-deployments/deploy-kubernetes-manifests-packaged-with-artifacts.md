@@ -191,7 +191,7 @@ You can use Harness Service, Workflow, and built-in variables in the script and 
 
 ### Option: Override Manifests in Environment
 
-You can override Harness Service settings at the Harness Environment level using Service Configuration Overrides. See [Override Harness Kubernetes Service Settings](override-harness-kubernetes-service-settings.md) and [Override a Service Configuration in an Environment](https://docs.harness.io/article/4m2kst307m-override-service-files-and-variables-in-environments).
+You can override Harness Service settings at the Harness Environment level using Service Configuration Overrides. See [Override Harness Kubernetes Service Settings](override-harness-kubernetes-service-settings.md) and [Override a Service Configuration in an Environment](../model-cd-pipeline/environments/override-service-files-and-variables-in-environments.md).
 
 The **Custom Manifest Override Configuration** follows the same guidelines as overriding settings using the Service's **Configuration** sections: **Add Values** (Kubernetes) or **Add Param** (OpenShift).
 

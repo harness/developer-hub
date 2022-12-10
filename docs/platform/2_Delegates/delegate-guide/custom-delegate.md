@@ -17,7 +17,7 @@ This topic explains the different ways to create a custom Delegate.
 ### Before you begin
 
 * [Delegates Overview](../delegates-overview.md)
-* [Supported Platforms and Technologies](https://docs.harness.io/article/1e536z41av-supported-platforms-and-technologies)
+* [Supported Platforms and Technologies](../../../getting-started/supported-platforms-and-technologies.md)
 * [Delegate Installation Overview](https://docs.harness.io/article/re8kk0ex4k-delegate-installation-overview)
 
 ### Option: Use the INIT\_SCRIPT environment variable

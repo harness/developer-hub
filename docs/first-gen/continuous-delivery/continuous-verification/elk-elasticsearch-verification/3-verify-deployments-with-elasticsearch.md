@@ -205,7 +205,7 @@ Click **Submit**.
 
 ##   Review: Harness Expression Support in CV Settings
 
-You can use expressions (`${...}`) for [Harness built-in variables](https://docs.harness.io/article/7bpdtvhq92-workflow-variables-expressions) and custom [Service](../../model-cd-pipeline/setup-services/service-configuration.md) and [Workflow](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md) variables in the settings of Harness Verification Providers.
+You can use expressions (`${...}`) for [Harness built-in variables](../../kubernetes-deployments/workflow-variables-expressions.md) and custom [Service](../../model-cd-pipeline/setup-services/service-configuration.md) and [Workflow](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md) variables in the settings of Harness Verification Providers.
 
 ![](./static/3-verify-deployments-with-elasticsearch-10.png)
 

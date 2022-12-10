@@ -140,7 +140,7 @@ You can SSH into the target host and see the application package:
 
 
 * [Artifact Build and Deploy Pipelines Overview](../concepts-cd/deployment-types/artifact-build-and-deploy-pipelines-overview.md)
-* [Trigger Workflows and Pipelines](https://docs.harness.io/article/xerirloz9a-add-a-trigger-2)
+* [Trigger Workflows and Pipelines](../model-cd-pipeline/triggers/add-a-trigger-2.md)
 
 
 ### Configure As Code

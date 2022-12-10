@@ -50,7 +50,7 @@ The architecture diagram of the Harness CI setup is as follows:
 
 ![](./static/ci-concepts-10.png)
 
-The [Harness Delegate](https://docs.harness.io/article/2k7lnc7lvl-delegates-overview) is central to all CI processes and is in charge of all CI operations. It runs in your environment, such as your local network, virtual private cloud, or cluster. It connects the Harness Manager in your SaaS instance to all of your code repositories, artifacts, infrastructure, and cloud providers. See also [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h).
+The [Harness Delegate](../../platform/2_Delegates/delegates-overview.md) is central to all CI processes and is in charge of all CI operations. It runs in your environment, such as your local network, virtual private cloud, or cluster. It connects the Harness Manager in your SaaS instance to all of your code repositories, artifacts, infrastructure, and cloud providers. See also [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h).
 
 The build infrastructure communicates directly with your repos, repositories, and cloud providers. You can maintain your code and artifacts internally or on public platforms such as GitHub or DockerHub.
 
@@ -97,7 +97,7 @@ Scripting Pipelines can be time-consuming and tedious. You may also be unaware o
 
 #### Harness Git Experience
 
-Harness Git Experience provides seamless integration between your Harness Projects, Pipelines, and resources and your Git repos. You can work entirely from Git or use a hybrid method of Git and the Harness Manager. Harness CI integrates with all the popular source control management tools including GitHub, GitLab, and Bitbucket. To get started, you need to activate the repository and include a `.harness` folder for the configuration files. This will trigger a build within Harness CI once a commit is detected. See [Git Experience](https://ngdocs.harness.io/article/utikdyxgfz-harness-git-experience-overview).
+Harness Git Experience provides seamless integration between your Harness Projects, Pipelines, and resources and your Git repos. You can work entirely from Git or use a hybrid method of Git and the Harness Manager. Harness CI integrates with all the popular source control management tools including GitHub, GitLab, and Bitbucket. To get started, you need to activate the repository and include a `.harness` folder for the configuration files. This will trigger a build within Harness CI once a commit is detected. See [Git Experience](../../platform/10_Git-Experience/harness-git-experience-overview.md).
 
 ![](./static/ci-concepts-506.png)
 

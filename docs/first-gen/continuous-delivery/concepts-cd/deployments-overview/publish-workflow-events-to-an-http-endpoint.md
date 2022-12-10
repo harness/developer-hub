@@ -15,7 +15,7 @@ This topic explains how to publish Workflow events. For information on how to pu
 
 ### Before You Begin
 
-* [Create a Workflow](https://docs.harness.io/article/o86qyexcab-tags-how-tos)
+* [Create a Workflow](../../model-cd-pipeline/workflows/tags-how-tos.md)
 * [Supported Platforms and Technologies](https://docs.harness.io/article/220d0ojx5y-supported-platforms)
 
 ### Review: Events Published

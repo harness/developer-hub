@@ -63,7 +63,7 @@ Enter the new Workflow's settings.
 
 #### Name
 
-Enter a name for the Workflow. You will use this name to locate the Workflow in Deployments and to add it to [Pipelines](https://docs.harness.io/article/zc1u96u6uj-pipeline-configuration).
+Enter a name for the Workflow. You will use this name to locate the Workflow in Deployments and to add it to [Pipelines](../../model-cd-pipeline/pipelines/pipeline-configuration.md).
 
 #### Workflow Type
 
@@ -169,9 +169,9 @@ Select the backend pool to use for stage traffic.
 
 ### Option: Use Variable Expressions in Settings
 
-You can use [Harness variable expressions](https://docs.harness.io/article/9dvxcegm90-variables), such as [Workflow variables](https://docs.harness.io/article/766iheu1bk-add-workflow-variables-new-template), in certain step settings.
+You can use [Harness variable expressions](https://docs.harness.io/article/9dvxcegm90-variables), such as [Workflow variables](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md), in certain step settings.
 
-When you deploy the Workflow, alone, in a Pipeline, or by a [Trigger](https://docs.harness.io/article/xerirloz9a-add-a-trigger-2), you will be prompted to provide values for the variables.
+When you deploy the Workflow, alone, in a Pipeline, or by a [Trigger](../../model-cd-pipeline/triggers/add-a-trigger-2.md), you will be prompted to provide values for the variables.
 
 To see if a Workflow variable can be used in a setting, enter `$` or `${workflow.variables` and see the available expressions.
 
@@ -202,7 +202,7 @@ Your setting cannot exceed your **Maximum Instances** setting in the Workflow'
 
 This setting corresponds to the **Maximum** setting in **Instance limits** in VMSS.
 
-You can use [Harness variable expressions](https://docs.harness.io/article/9dvxcegm90-variables), such as [Workflow variables](https://docs.harness.io/article/766iheu1bk-add-workflow-variables-new-template), in this setting.
+You can use [Harness variable expressions](https://docs.harness.io/article/9dvxcegm90-variables), such as [Workflow variables](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md), in this setting.
 
 ### Step 4: Swap Virtual Machine Scale Set Route
 

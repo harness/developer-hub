@@ -46,7 +46,7 @@ To create a Basic Workflow for Lambda, do the following:
 
 When you deploy the Workflow, the AWS Lambda step creates the Lambda functions defined in the Service you attached to the Workflow. This is the equivalent of the [aws lambda create-function](https://docs.aws.amazon.com/cli/latest/reference/lambda/create-function.html) API command.
 
-The next time you run the Workflow, manually or as the result of a [Trigger](https://docs.harness.io/article/xerirloz9a-add-a-trigger-2), the AWS Lambda step updates the Lambda functions. This is the equivalent of the [aws lambda update-function-configuration](https://docs.aws.amazon.com/cli/latest/reference/lambda/update-function-configuration.html) API command.
+The next time you run the Workflow, manually or as the result of a [Trigger](../../model-cd-pipeline/triggers/add-a-trigger-2.md), the AWS Lambda step updates the Lambda functions. This is the equivalent of the [aws lambda update-function-configuration](https://docs.aws.amazon.com/cli/latest/reference/lambda/update-function-configuration.html) API command.
 
 In the Workflow, click the **AWS Lambda** step. The **AWS Lambda** dialog appears.
 

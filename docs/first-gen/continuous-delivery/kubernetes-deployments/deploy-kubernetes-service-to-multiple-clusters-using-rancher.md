@@ -121,9 +121,9 @@ You can use Harness built-in and Workflow variables in **Cluster Selection Crite
 See:
 
 * [Built-in Variables List](https://docs.harness.io/article/aza65y4af6-built-in-variables-list)
-* [Set Workflow Variables](https://docs.harness.io/article/766iheu1bk-add-workflow-variables-new-template)
-* [Pass Variables between Workflows](https://docs.harness.io/article/gkmgrz9shh-how-to-pass-variables-between-workflows)
-* [Passing Variables into Workflows and Pipelines from Triggers](https://docs.harness.io/article/revc37vl0f-passing-variable-into-workflows)
+* [Set Workflow Variables](../model-cd-pipeline/workflows/add-workflow-variables-new-template.md)
+* [Pass Variables between Workflows](../model-cd-pipeline/expressions/how-to-pass-variables-between-workflows.md)
+* [Passing Variables into Workflows and Pipelines from Triggers](../model-cd-pipeline/expressions/passing-variable-into-workflows.md)
 
 ### Step 4: Create a Workflow
 

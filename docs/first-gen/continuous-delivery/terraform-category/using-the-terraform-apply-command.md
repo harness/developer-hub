@@ -328,7 +328,7 @@ Enter a name, type, and value for the environment variable. For example: **TF\_L
 
 If you select Encrypted Text, you must select an existing Harness [Encrypted Text secret](https://docs.harness.io/article/ygyvp998mu-use-encrypted-text-secrets).
 
-You can use Harness [Workflow variables](https://docs.harness.io/article/766iheu1bk-add-workflow-variables-new-template) and [expression variables](https://docs.harness.io/article/9dvxcegm90-variables) for the name and value.
+You can use Harness [Workflow variables](../model-cd-pipeline/workflows/add-workflow-variables-new-template.md) and [expression variables](https://docs.harness.io/article/9dvxcegm90-variables) for the name and value.
 
 ### Terraform Plan Human Readable
 
@@ -339,7 +339,7 @@ Harness provides expressions to view the plan in a more human readable format:
 
 ### Next Steps
 
-* [Infrastructure Provisioners Overview](https://docs.harness.io/article/o22jx8amxb-add-an-infra-provisioner)
+* [Infrastructure Provisioners Overview](../model-cd-pipeline/infrastructure-provisioner/add-an-infra-provisioner.md)
 * [Secrets Management](https://docs.harness.io/article/au38zpufhr-secret-management)
 
  

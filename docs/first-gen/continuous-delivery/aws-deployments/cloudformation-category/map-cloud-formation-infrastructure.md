@@ -72,7 +72,7 @@ You map the CloudFormation template outputs using this syntax, where `exact_nam
 ```
 ${cloudformation.*exact\_name*}
 ```
-When you map a CloudFormation template output to a Harness Infrastructure Definition setting, the expression for the output, `${cloudformation.exact_name​}`, can be used anywhere in the Workflow that uses that CloudFormation Provisioner. This can be useful if you want to echo the outputs in a [Shell Script step](https://docs.harness.io/article/1fjrjbau7x-capture-shell-script-step-output) for example.
+When you map a CloudFormation template output to a Harness Infrastructure Definition setting, the expression for the output, `${cloudformation.exact_name​}`, can be used anywhere in the Workflow that uses that CloudFormation Provisioner. This can be useful if you want to echo the outputs in a [Shell Script step](../../model-cd-pipeline/workflows/capture-shell-script-step-output.md) for example.
 
 ### Option 1: Map an AWS AMI/ASG Infrastructure
 
@@ -118,7 +118,7 @@ See [Lambda Deployment Overview](../lambda-deployments/lambda-deployment-overvie
 
 ### Option 4: Map a Secure Shell (SSH) Infrastructure on AWS
 
-The Secure Shell (SSH) deployment type is supported with CloudFormation on AWS only. To use SSH with a datacenter, see [Shell Script Provisioner](https://docs.harness.io/article/1m3p7phdqo-shell-script-provisioner).The Secure Shell (SSH) deployment type has two **AWS Node Type** options: **AWS Instance** and **AWS Autoscaling Group**.
+The Secure Shell (SSH) deployment type is supported with CloudFormation on AWS only. To use SSH with a datacenter, see [Shell Script Provisioner](../../model-cd-pipeline/infrastructure-provisioner/ssh-provisioner-category/shell-script-provisioner.md).The Secure Shell (SSH) deployment type has two **AWS Node Type** options: **AWS Instance** and **AWS Autoscaling Group**.
 
 For the **AWS Instance**, only AWS tags are required. Here is an example mapping both VPCs and AWS tags:
 

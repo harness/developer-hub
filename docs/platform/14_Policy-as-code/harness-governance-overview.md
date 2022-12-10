@@ -26,7 +26,7 @@ Looking for the quickstart? See [Harness Policy As Code Quickstart](harness-gove
 
 Before learning about Harness Policy As Code, you should have an understanding of the following:
 
-* [Learn Harness' Key Concepts](https://docs.harness.io/article/hv2758ro4e-learn-harness-key-concepts)
+* [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md)
 
 ### How does Harness use OPA?
 

@@ -38,13 +38,13 @@ The following list describes the major steps involved in a Traditional deploymen
 4. Create the Harness Application for your deploying your application packages.
 5. Create the Harness Service using the SSH type.
 	1. Add your packaged application file(s) as an Artifact Source.
-6. Create the Harness Environment containing the [Infrastructure Definition](https://docs.harness.io/article/n39w05njjv-environment-configuration#add_an_infrastructure_definition) definition of your deployment infrastructure.
+6. Create the Harness Environment containing the [Infrastructure Definition](../../model-cd-pipeline/environments/environment-configuration.md#add-an-infrastructure-definition) definition of your deployment infrastructure.
 7. Create the Basic Deployment Workflow.
 8. Deploy the Workflow.
 9. Next steps:
-	1. Create a Harness Pipeline for your deployment, including Workflows and Approval steps. For more information, see [Pipelines](https://docs.harness.io/article/zc1u96u6uj-pipeline-configuration) and [Approvals](https://docs.harness.io/article/0ajz35u2hy-approvals).
-	2. Create a Harness Trigger to automatically deploy your Workflows or Pipeline according to your criteria. For more information, see [Triggers](https://docs.harness.io/article/xerirloz9a-add-a-trigger-2).
-	3. Create Harness Infrastructure Provisioners for your deployment environments. For more information, see [Infrastructure Provisioners](https://docs.harness.io/article/o22jx8amxb-add-an-infra-provisioner).
+	1. Create a Harness Pipeline for your deployment, including Workflows and Approval steps. For more information, see [Pipelines](../../model-cd-pipeline/pipelines/pipeline-configuration.md) and [Approvals](../../model-cd-pipeline/approvals/approvals.md).
+	2. Create a Harness Trigger to automatically deploy your Workflows or Pipeline according to your criteria. For more information, see [Triggers](../../model-cd-pipeline/triggers/add-a-trigger-2.md).
+	3. Create Harness Infrastructure Provisioners for your deployment environments. For more information, see [Infrastructure Provisioners](../../model-cd-pipeline/infrastructure-provisioner/add-an-infra-provisioner.md).
 
 ### Next Step
 
@@ -54,6 +54,6 @@ Traditional Deployments How-tos:
 * [Add Artifacts and App Stacks for Traditional (SSH) Deployments](../../traditional-deployments/add-artifacts-for-ssh-deployments.md)
 * [Add Scripts for Traditional (SSH) Deployments](../../traditional-deployments/add-deployment-specs-for-traditional-ssh-deployments.md)
 * [Define Your Traditional (SSH) Target Infrastructure](../../traditional-deployments/define-your-traditional-ssh-target-infrastructure.md)
-* [Create Default Application Directories and Variables](https://docs.harness.io/article/lgg12f0yry-set-default-application-directories-as-variables)
+* [Create Default Application Directories and Variables](../../model-cd-pipeline/applications/set-default-application-directories-as-variables.md)
 * [Create a Basic Workflow for Traditional (SSH) Deployments](../../traditional-deployments/create-a-basic-workflow-for-traditional-ssh-deployments.md)
 

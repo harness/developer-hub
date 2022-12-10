@@ -29,7 +29,7 @@ When you create a script-based Service, Harness automatically generates the comm
 
 ### Option 2: Use Template Library
 
-You can use the wealth of scripts available in the Template Library to rapidly develop your script. For more information, see [Use Templates](https://docs.harness.io/article/ygi6d8epse-use-templates).
+You can use the wealth of scripts available in the Template Library to rapidly develop your script. For more information, see [Use Templates](../../concepts-cd/deployment-types/use-templates.md).
 
 1. In the **Script** section of **Deployment Specification**, click **Add Command**. The **Add Command** dialog appears.
 2. Click **From Template Library**. The Template Library is displayed. Find the template you need.![](./static/use-script-based-service-33.png)

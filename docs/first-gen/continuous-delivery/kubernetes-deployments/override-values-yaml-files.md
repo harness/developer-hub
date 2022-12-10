@@ -148,7 +148,7 @@ Click **Submit**. The override is listed in the **Service Configuration Override
 
 ### Option: Use Variable Expressions in Override File Settings
 
-You can use [Harness variable expressions](https://docs.harness.io/article/9dvxcegm90-variables), such as [Workflow variables](https://docs.harness.io/article/766iheu1bk-add-workflow-variables-new-template), in the names and values of the values.yaml files you use as overrides.
+You can use [Harness variable expressions](https://docs.harness.io/article/9dvxcegm90-variables), such as [Workflow variables](../model-cd-pipeline/workflows/add-workflow-variables-new-template.md), in the names and values of the values.yaml files you use as overrides.
 
 For example, let's say you have listed three values.yaml files in the Service Configuration **Values YAML Override**.
 
@@ -175,6 +175,6 @@ Now, when you deploy the Workflow, you can provide the file path for that values
 ### Next Steps
 
 * [Define Kubernetes Manifests](define-kubernetes-manifests.md)
-* [Pass Variables between Workflows](https://docs.harness.io/article/gkmgrz9shh-how-to-pass-variables-between-workflows)
-* [Passing Variables into Workflows and Pipelines from Triggers](https://docs.harness.io/article/revc37vl0f-passing-variable-into-workflows)
+* [Pass Variables between Workflows](../model-cd-pipeline/expressions/how-to-pass-variables-between-workflows.md)
+* [Passing Variables into Workflows and Pipelines from Triggers](../model-cd-pipeline/expressions/passing-variable-into-workflows.md)
 

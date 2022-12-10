@@ -118,13 +118,13 @@ When you select **Apply All Modules**, the [Export Terragrunt Plan to next Terra
 When you select **Apply All Modules**, you might want to use [Backend Configuration (Remote state)](#option_backend_configuration_remote_state) to store your state file. Harness will not sync with the current state when Apply All Modules is selected. Instead, Harness simply applies the terragrunt.hcl files.
 * **Specify Specific Module:** Harness will use the terragrunt.hcl file in the folder you specify in **Path to Module**.
 
-You can use [Workflow variables](https://docs.harness.io/article/766iheu1bk-add-workflow-variables-new-template) in **Path to Module**.
+You can use [Workflow variables](../model-cd-pipeline/workflows/add-workflow-variables-new-template.md) in **Path to Module**.
 
 #### Terragrunt Plan Configuration
 
 Essentially, these settings allow you to use your Terraform Provision steps as a Terragrunt plan dry run.
 
-Users typically do this and add a Harness [Approval step](https://docs.harness.io/category/4edbfn50l8) between the Terraform Provision step that runs the plan and the Terraform Provision step that applies the plan.
+Users typically do this and add a Harness [Approval step](https://docs.harness.io/category/add-approvals) between the Terraform Provision step that runs the plan and the Terraform Provision step that applies the plan.
 
 ##### Inherit configurations from previous Terragrunt Provision step
 
@@ -177,7 +177,7 @@ In **File Path**, enter the path to the terraform.tfvars file from the root of t
 
 For example, if the file is located from the root at `variables/local_variables/terraform.tfvars` you would enter `variables/local_variables/terraform.tfvars`. You can enter multiple file paths separated by commas.
 
-You can use [Workflow variables](https://docs.harness.io/article/766iheu1bk-add-workflow-variables-new-template) in **File Path**.
+You can use [Workflow variables](../model-cd-pipeline/workflows/add-workflow-variables-new-template.md) in **File Path**.
 
 ##### Remote tfvar Files
 
@@ -237,7 +237,7 @@ If you have multiple modules in your script and you do not select one in **Targe
 
 ![](./static/provision-using-the-terragrunt-provision-step-12\.png)
 
-See [Set Workflow Variables](https://docs.harness.io/article/766iheu1bk-add-workflow-variables-new-template).
+See [Set Workflow Variables](../model-cd-pipeline/workflows/add-workflow-variables-new-template.md).
 
 ### Option: Workspaces
 
@@ -285,7 +285,7 @@ This allows you to specify a different workspace name each time the Workflow is 
 
 You can even set a Harness Trigger where you can set the workspace name used by the Workflow:
 
-This Trigger can then be run in response to different events, such as a Git push. For more information, see [Passing Variables into Workflows and Pipelines from Triggers](https://docs.harness.io/article/revc37vl0f-passing-variable-into-workflows).
+This Trigger can then be run in response to different events, such as a Git push. For more information, see [Passing Variables into Workflows and Pipelines from Triggers](../model-cd-pipeline/expressions/passing-variable-into-workflows.md).
 
 When rollbacks occur, Harness will rollback the Terraform state to the previous version of same workspace.### Option: Select Delegate
 
@@ -293,9 +293,9 @@ In **Delegate Selector**, you can select the specific Harness Delegate(s) to exe
 
 For more information on Delegate Selectors, see [Select Delegates with Selectors](https://docs.harness.io/article/c3fvixpgsl-select-delegates-for-specific-tasks-with-selectors).
 
-You can even add a [Workflow variable](https://docs.harness.io/article/766iheu1bk-add-workflow-variables-new-template) for the Delegate Selector and the use an expression in the **Delegate Selectors** field. When you deploy the Workflow, you will provide the name of the Delegate Selector.
+You can even add a [Workflow variable](../model-cd-pipeline/workflows/add-workflow-variables-new-template.md) for the Delegate Selector and the use an expression in the **Delegate Selectors** field. When you deploy the Workflow, you will provide the name of the Delegate Selector.
 
-For more information, see [Add Workflow Variables](https://docs.harness.io/article/m220i1tnia-workflow-configuration#add_workflow_variables) and [Passing Variables into Workflows and Pipelines from Triggers](https://docs.harness.io/article/revc37vl0f-passing-variable-into-workflows).
+For more information, see [Add Workflow Variables](../model-cd-pipeline/workflows/workflow-configuration.md#add-workflow-variables) and [Passing Variables into Workflows and Pipelines from Triggers](../model-cd-pipeline/expressions/passing-variable-into-workflows.md).
 
 ### Option: Skip Terragrunt Rollback
 
@@ -311,7 +311,7 @@ Click **Add** and enter a name, type, and value for the environment variable. Fo
 
 If you select Encrypted Text, you must select an existing Harness [Encrypted Text secret](https://docs.harness.io/article/ygyvp998mu-use-encrypted-text-secrets).
 
-You can use Harness [Workflow variables](https://docs.harness.io/article/766iheu1bk-add-workflow-variables-new-template) and [expression variables](https://docs.harness.io/article/9dvxcegm90-variables) for the name and value.
+You can use Harness [Workflow variables](../model-cd-pipeline/workflows/add-workflow-variables-new-template.md) and [expression variables](https://docs.harness.io/article/9dvxcegm90-variables) for the name and value.
 
 Environment variables can also be deleted using the Terragrunt Destroy step. See [Remove Provisioned Infra with Terragrunt Destroy](remove-provisioned-infra-with-terragrunt-destroy.md).
 

@@ -21,7 +21,7 @@ Harness GCB integration lets you do the following:
 * If you are new to GCB, review [Overview of Cloud Build](https://cloud.google.com/cloud-build/docs/overview) and [Quickstart: Build](https://cloud.google.com/cloud-build/docs/quickstart-build) from Google.
 * [Add Google Cloud Platform Cloud Provider](https://docs.harness.io/article/6x52zvqsta-add-google-cloud-platform-cloud-provider)
 * [Add Source Repo Providers](https://docs.harness.io/article/ay9hlwbgwa-add-source-repo-providers)
-* [Workflows](https://docs.harness.io/article/m220i1tnia-workflow-configuration)
+* [Workflows](../model-cd-pipeline/workflows/workflow-configuration.md)
 
 ### Review: Harness GCB Integration
 
@@ -69,7 +69,7 @@ You can add the Google Cloud Build step to any Workflow type and Workflow sectio
 
 1. In your Harness Workflow, in any section, click **Add Step**.
 2. Select **Google Cloud Build**, and click **Next**.
-3. In **Google Cloud Provider**, select the Harness Google Cloud Provider you set up earlier. See [Add Google Cloud Platform Cloud Provider](https://docs.harness.io/article/6x52zvqsta-add-google-cloud-platform-cloud-provider).You can turn this setting into a deployment runtime parameter by clicking the template button **[T]**. This will create a [Workflow variable](https://docs.harness.io/article/766iheu1bk-add-workflow-variables-new-template) for the setting. When you deploy this Workflow, you can enter the option for the setting.
+3. In **Google Cloud Provider**, select the Harness Google Cloud Provider you set up earlier. See [Add Google Cloud Platform Cloud Provider](https://docs.harness.io/article/6x52zvqsta-add-google-cloud-platform-cloud-provider).You can turn this setting into a deployment runtime parameter by clicking the template button **[T]**. This will create a [Workflow variable](../model-cd-pipeline/workflows/add-workflow-variables-new-template.md) for the setting. When you deploy this Workflow, you can enter the option for the setting.
 4. Complete the step using the following settings.
 
 ### Option 1: Inline JSON Build Spec
@@ -110,9 +110,9 @@ In this option, you specify the repo where your build config file and its relate
 
 1. Ensure you have set up a Harness Source Repo Provider that points to the Git repo containing your build config file. See [Add Source Repo Providers](https://docs.harness.io/article/ay9hlwbgwa-add-source-repo-providers).
 2. In **Build Specification**, select **Remote**.
-3. In **Source Repository**, select the Source Repro Provider that connects to your build config file repo.You can turn this setting into a deployment runtime parameter by clicking the template button **[T]**. This will create a [Workflow variable](https://docs.harness.io/article/766iheu1bk-add-workflow-variables-new-template) for the setting. When you deploy this Workflow, you can enter the option for the setting.
+3. In **Source Repository**, select the Source Repro Provider that connects to your build config file repo.You can turn this setting into a deployment runtime parameter by clicking the template button **[T]**. This will create a [Workflow variable](../model-cd-pipeline/workflows/add-workflow-variables-new-template.md) for the setting. When you deploy this Workflow, you can enter the option for the setting.
 4. In **Commit ID**, select **Latest from Branch** or **Specific Commit ID**.
-5. Enter the branch name or commit ID. Both of these settings allow Harness variables, such as [Workflow variables](https://docs.harness.io/article/766iheu1bk-add-workflow-variables-new-template).  
+5. Enter the branch name or commit ID. Both of these settings allow Harness variables, such as [Workflow variables](../model-cd-pipeline/workflows/add-workflow-variables-new-template.md).  
 When you set up the Source Repo Provider, you entered in a branch name. The branch name you enter in the **Google Cloud Build** step **Branch Name** overrides that setting.
 6. In **File Path**, enter the full path from the root of the repo to the build config file. If the build file location in the repo is **https://github.com/john-smith/gcb/cloudbuild.json**, then the file is at the repo root and you would just enter **cloudbuild.json** in **File Path**.
 
@@ -121,12 +121,12 @@ When you set up the Source Repo Provider, you entered in a branch name. The bran
 Select this option if you have created a [Cloud Build trigger](https://cloud.google.com/cloud-build/docs/automating-builds/create-manage-triggers) for your Cloud Build and you want to execute it in your Workflow.
 
 1. In **Build Specification**, click **Trigger**.
-2. In **Trigger Name**, select the name of the Cloud Build trigger you want to execute.You can enter the name of an existing variable expression in this setting. For example, if you created the [Workflow variable](https://docs.harness.io/article/766iheu1bk-add-workflow-variables-new-template) `triggerName`, you can enter `${workflow.variables.triggerName}`. The variable expression should refer to a [Workflow variable](https://docs.harness.io/article/766iheu1bk-add-workflow-variables-new-template) or other available [Harness variable](https://docs.harness.io/article/9dvxcegm90-variables). When you deploy this Workflow, you can enter the option for the setting.
+2. In **Trigger Name**, select the name of the Cloud Build trigger you want to execute.You can enter the name of an existing variable expression in this setting. For example, if you created the [Workflow variable](../model-cd-pipeline/workflows/add-workflow-variables-new-template.md) `triggerName`, you can enter `${workflow.variables.triggerName}`. The variable expression should refer to a [Workflow variable](../model-cd-pipeline/workflows/add-workflow-variables-new-template.md) or other available [Harness variable](https://docs.harness.io/article/9dvxcegm90-variables). When you deploy this Workflow, you can enter the option for the setting.
 3. In **Trigger Type**, select one of the following:
 	1. **Branch Name:** Set your trigger to start a build using commits from a particular branch.
 	2. **Tag Name:** Set your trigger to start a build using commits that contain a particular tag.
 	3. **Commit SHA:** Set your trigger to start a build using an explicit commit SHA.  
-	All of these settings allow Harness variables, such as [Workflow variables](https://docs.harness.io/article/766iheu1bk-add-workflow-variables-new-template).
+	All of these settings allow Harness variables, such as [Workflow variables](../model-cd-pipeline/workflows/add-workflow-variables-new-template.md).
 
 #### Substitutions
 
@@ -143,7 +143,7 @@ This is often used for tagging. For example, if your config file has `tags: ["${
 
 #### Timeout
 
-The timeout period determines how long to wait for the step to complete. When the timeout expires, it is considered a workflow failure and the workflow [Failure Strategy](https://docs.harness.io/article/vfp0ksdzg3-define-workflow-failure-strategy-new-template) is initiated.
+The timeout period determines how long to wait for the step to complete. When the timeout expires, it is considered a workflow failure and the workflow [Failure Strategy](../model-cd-pipeline/workflows/define-workflow-failure-strategy-new-template.md) is initiated.
 
 #### Execute with previous steps
 
@@ -170,7 +170,7 @@ Harness provides the following information about the builds it executes:
 * Bucket: `artifactLocation`
 * Artifacts (an array of artifacts): `artifacts`
 
-You create an output variable in the Google Cloud Build step, and then you can reference each build output item in a subsequent [Shell Script](https://docs.harness.io/article/1fjrjbau7x-capture-shell-script-step-output) step.
+You create an output variable in the Google Cloud Build step, and then you can reference each build output item in a subsequent [Shell Script](../model-cd-pipeline/workflows/capture-shell-script-step-output.md) step.
 
 1. Select **Build output in the Context**.
 2. In **Name**, enter a name for the output variable, such as **gcb**.
@@ -224,8 +224,8 @@ Harness only supports the use of JSON in inline and remote build config files. I
 
 ### See Also
 
-* [Using the Jenkins Command](https://docs.harness.io/article/5fzq9w0pq7-using-the-jenkins-command)
-* [Configure Workflows Using YAML](https://docs.harness.io/article/0svkm9v7vr-configure-workflow-using-yaml)
+* [Using the Jenkins Command](../model-cd-pipeline/workflows/using-the-jenkins-command.md)
+* [Configure Workflows Using YAML](../model-cd-pipeline/workflows/configure-workflow-using-yaml.md)
 
 ### Configure As Code
 

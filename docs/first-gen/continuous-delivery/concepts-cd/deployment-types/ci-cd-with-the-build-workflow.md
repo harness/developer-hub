@@ -36,7 +36,7 @@ Rather than having a decoupled CI and CD process, Harness provides the Build Wor
 
 When you want to view your entire CI/CD flow in the Harness dashboard, use the Build Workflow as a proxy for the CI stage of the CI/CD pipeline.
 
-You can trigger a Pipeline in Harness in many ways, such as a code commit in your Git repository. The [Harness Trigger](https://docs.harness.io/article/xerirloz9a-add-a-trigger-2) will initiate a Pipeline in Harness with the Build Workflow as first stage in the Pipeline.
+You can trigger a Pipeline in Harness in many ways, such as a code commit in your Git repository. The [Harness Trigger](../../model-cd-pipeline/triggers/add-a-trigger-2.md) will initiate a Pipeline in Harness with the Build Workflow as first stage in the Pipeline.
 
 ### Summary of CI/CD Pipeline
 

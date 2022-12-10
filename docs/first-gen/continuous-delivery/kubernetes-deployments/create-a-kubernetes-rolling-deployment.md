@@ -141,7 +141,7 @@ If you enable this option, Harness does the following at runtime:
 
 If **Export Manifest** is enabled, the manifests are not deployed. You can use the **Inherit Manifest** option in a subsequent Kubernetes step to deploy a copy of the exported manifests.
 
-The exported manifests can be written to storage on the Delegate where the step is run. For example, you can add a [Shell Script](https://docs.harness.io/article/1fjrjbau7x-capture-shell-script-step-output) step to echo and write the manifest to a file:
+The exported manifests can be written to storage on the Delegate where the step is run. For example, you can add a [Shell Script](../model-cd-pipeline/workflows/capture-shell-script-step-output.md) step to echo and write the manifest to a file:
 
 
 ```

@@ -27,8 +27,8 @@ To obtain an understanding of Harness variable expressions and the Workflow step
 * [Jira Integration](../workflows/jira-integration.md)
 * [Using the HTTP Command](../workflows/using-the-http-command.md)
 * [Using the Jenkins Command](../workflows/using-the-jenkins-command.md)
-* [Use Terraform Outputs in Workflow Steps](https://docs.harness.io/article/8p2ze4u25w-use-terraform-outputs-in-workflow-steps)
-* [Using CloudFormation Outputs in Workflow Steps](https://docs.harness.io/article/ez8bgluqg5-using-cloudformation-outputs-in-workflow-steps)
+* [Use Terraform Outputs in Workflow Steps](../../terraform-category/use-terraform-outputs-in-workflow-steps.md)
+* [Using CloudFormation Outputs in Workflow Steps](../../aws-deployments/cloudformation-category/using-cloudformation-outputs-in-workflow-steps.md)
 
 #### Prerequisites
 

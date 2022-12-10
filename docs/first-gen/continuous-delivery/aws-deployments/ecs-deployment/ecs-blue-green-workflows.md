@@ -515,13 +515,13 @@ See [ECS Rollbacks](https://docs.harness.io/article/d7rnemtfuz-ecs-rollback).
 
 Harness also supports post-production rollback for cases where you want to recover from a deployment that succeeded on technical criteria, but that you want to undo for other reasons.
 
-See [Rollback Production Deployments](https://docs.harness.io/article/2f36rsbrve-post-deployment-rollback).
+See [Rollback Production Deployments](../../model-cd-pipeline/workflows/post-deployment-rollback.md).
 
 ### Next Step
 
 * [ECS Workflows](ecs-workflows.md)
 * [ECS Setup in YAML](ecs-setup-in-yaml.md)
 * [ECS Troubleshooting](ecs-troubleshooting.md)
-* [Pipelines](https://docs.harness.io/article/zc1u96u6uj-pipeline-configuration)
-* [Triggers](https://docs.harness.io/article/xerirloz9a-add-a-trigger-2)
+* [Pipelines](../../model-cd-pipeline/pipelines/pipeline-configuration.md)
+* [Triggers](../../model-cd-pipeline/triggers/add-a-trigger-2.md)
 

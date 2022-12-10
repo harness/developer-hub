@@ -18,7 +18,7 @@ This content is for Harness [FirstGen](../../../../getting-started/harness-first
 
 The following procedure creates a Harness Application for a AKS Kubernetes deployment using an ACR repository.
 
-An Application in Harness represents a logical group of one or more entities, including Services, Environments, Workflows, Pipelines, Triggers, and Infrastructure Provisioners. Applications organize all of the entities and configurations in Harness CI/CD. For more information, see [Application Components](https://docs.harness.io/article/bucothemly-application-configuration).
+An Application in Harness represents a logical group of one or more entities, including Services, Environments, Workflows, Pipelines, Triggers, and Infrastructure Provisioners. Applications organize all of the entities and configurations in Harness CI/CD. For more information, see [Application Components](../../model-cd-pipeline/applications/application-configuration.md).
 
 To create the Harness Application, do the following:
 
@@ -163,7 +163,7 @@ The `${infra.kubernetes.namespace}` variable let's you enter any value in the En
 
 #### Config Variables and Files
 
-For the purpose of this guide, we don't use many of the other Service settings you can use. For information on the Config Variables and Files settings, see [Configuration Variables and Files](https://docs.harness.io/article/eb3kfl8uls-service-configuration#configuration_variables_and_files).
+For the purpose of this guide, we don't use many of the other Service settings you can use. For information on the Config Variables and Files settings, see [Configuration Variables and Files](../../model-cd-pipeline/setup-services/service-configuration.md#configuration-variables-and-files).
 
 ### Next Step
 

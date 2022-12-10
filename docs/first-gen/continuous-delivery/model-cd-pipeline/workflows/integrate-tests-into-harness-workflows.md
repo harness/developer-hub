@@ -15,7 +15,7 @@ In this topic we will walk you through common test integrations.
 ### Before You Begin
 
 * **Application used in this topic** — This topic uses a simple Java application that exposes a REST endpoint: the [Hello World Quarkus app](https://quarkus.io/guides/getting-started). It includes unit tests using the [REST Assured](http://rest-assured.io/) Java DSL.
-* [Artifact Build and Deploy Pipelines](https://docs.harness.io/category/j1q21aler1-build-deploy) — Review these How-tos to learn about CI/CD integration in Harness.
+* [Artifact Build and Deploy Pipelines](https://docs.harness.io/category/ci/cd:-artifact-build-and-deploy-pipelines) — Review these How-tos to learn about CI/CD integration in Harness.
 
 ### Visual Summary
 
@@ -55,7 +55,7 @@ In this example, we are running Jenkins locally:
 
 ![](./static/integrate-tests-into-harness-workflows-60.png)
 
-We will create a Harness SSH deployment. This is also called a [Traditional deployment](https://docs.harness.io/article/6pwni5f9el-traditional-deployments-overview).
+We will create a Harness SSH deployment. This is also called a [Traditional deployment](../../traditional-deployments/traditional-deployments-overview.md).
 
 The same approach works for other types of deployments, such as Kubernetes, ECS, Helm, Pivotal, and so on. For deployments, you would use the corresponding Cloud Providers, and Service and Workflow deployment types.Next, we create the Harness Application with the following components:
 
@@ -423,5 +423,5 @@ This article showed you some of the benefits of integrated testing in Harness:
 
 ### Next Steps
 
-* [Artifact Build and Deploy Pipelines Overview](https://docs.harness.io/article/0tphhkfqx8-artifact-build-and-deploy-pipelines-overview)
+* [Artifact Build and Deploy Pipelines Overview](../../concepts-cd/deployment-types/artifact-build-and-deploy-pipelines-overview.md)
 

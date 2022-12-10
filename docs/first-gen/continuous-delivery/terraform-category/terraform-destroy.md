@@ -142,7 +142,7 @@ See [Add a Secrets Manager](https://docs.harness.io/article/uuer539u3l-add-a-sec
 
 #### Terraform Destroy Plan Output Variable
 
-If you select the **Set as Terraform Destroy Plan and Export** option, you can display the output of the plan using the variable expression `${terraformDestroy.tfplan}`. For example, you can display the plan output in a [Shell Script](https://docs.harness.io/article/1fjrjbau7x-capture-shell-script-step-output) step.
+If you select the **Set as Terraform Destroy Plan and Export** option, you can display the output of the plan using the variable expression `${terraformDestroy.tfplan}`. For example, you can display the plan output in a [Shell Script](../model-cd-pipeline/workflows/capture-shell-script-step-output.md) step.
 
 #### Terraform Destroy Plan File Output Variable
 
@@ -150,7 +150,7 @@ Currently, this feature is behind the Feature Flag `OPTIMIZED_TF_PLAN`. Contact 
 
 The `${terraformPlan.destroy.jsonFilePath()}` expression outputs the path to the Terraform plan file on the Harness Delegate that executed the step.
 
-For example, you can display the plan output in a [Shell Script](https://docs.harness.io/article/1fjrjbau7x-capture-shell-script-step-output) step:
+For example, you can display the plan output in a [Shell Script](../model-cd-pipeline/workflows/capture-shell-script-step-output.md) step:
 
 
 ```
@@ -200,7 +200,7 @@ If **Use tfvar files** is selected and there are also **Inline Values**, when Ha
 
 If you only want to use the tfvars file, make sure to delete the Inline Values.
 
-You can also use [Workflow variables](https://docs.harness.io/article/766iheu1bk-add-workflow-variables-new-template) in **File Path**. This allows you to make the setting a deployment runtime parameter and to output their values using a [Shell Script](https://docs.harness.io/article/1fjrjbau7x-capture-shell-script-step-output) step.
+You can also use [Workflow variables](../model-cd-pipeline/workflows/add-workflow-variables-new-template.md) in **File Path**. This allows you to make the setting a deployment runtime parameter and to output their values using a [Shell Script](../model-cd-pipeline/workflows/capture-shell-script-step-output.md) step.
 
 ##### Remote tfvar Files
 

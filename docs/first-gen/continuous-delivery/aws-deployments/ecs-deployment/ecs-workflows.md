@@ -52,7 +52,7 @@ To create a Workflow using a Service configured with a Replica Scheduling Strate
 	1. **Name** - Give the Workflow a name that describes its deployment goals, such as **ECS Replica Strategy**.
 	2. **Description** - Provide details about the Workflow so other users understand its deployment goals.
 	3. **Workflow Type** - Select **Canary Deployment**.
-	4. **Environment** - Select the Environment you created for ECS. This is the Environment containing an [Infrastructure Definition](https://docs.harness.io/article/v3l3wqovbe-infrastructure-definitions) for the Harness Service you are deploying with this Workflow. You will select the Service and the Infrastructure Definition when you set up the Canary deployment's stages.
+	4. **Environment** - Select the Environment you created for ECS. This is the Environment containing an [Infrastructure Definition](../../model-cd-pipeline/environments/infrastructure-definitions.md) for the Harness Service you are deploying with this Workflow. You will select the Service and the Infrastructure Definition when you set up the Canary deployment's stages.
 	5. Click **SUBMIT**. The new Workflow is displayed.
 	   
 		 ![](./static/ecs-workflows-15.png)
@@ -75,7 +75,7 @@ If you are using Infrastructure Definitions, the dialog will look like this:![](
 	2. **Same as already running instances** - This field displays the number of desired *ECS service instances* for this stage. By default, the ECS service will be set up using 2 ECS service instances even if the field contains **0**.During deployment, only one old version of the application will be kept. If there are more than one, Harness will reduce their instances to 0.
 	3. **Fixed** - Click this option to fix the specific number of ECS service instances to use for this stage. The **Fixed Instances Count** field will appear, where you can enter the value.
 	4. **Resize Strategy** - Specify how you want the new ECS service instances added and downsized.
-	5. **Service Steady State Wait Timeout** - Specify how many minutes Harness should wait for the ECS service instances to reach Steady State before failing the set up. The default is 10 minutes. If you use an expression for this setting and it fails or evaluates to null, 10 minutes is used.This setting supports Harness variable expressions in Basic and Canary Workflows. They are not supported in Blue/Green Workflows or the ECS Run Task and ECS Daemon Service Setup steps. See [What is a Harness Variable Expression?](https://docs.harness.io/article/9dvxcegm90-variables) and [Set Workflow Variables](https://docs.harness.io/article/766iheu1bk-add-workflow-variables-new-template).
+	5. **Service Steady State Wait Timeout** - Specify how many minutes Harness should wait for the ECS service instances to reach Steady State before failing the set up. The default is 10 minutes. If you use an expression for this setting and it fails or evaluates to null, 10 minutes is used.This setting supports Harness variable expressions in Basic and Canary Workflows. They are not supported in Blue/Green Workflows or the ECS Run Task and ECS Daemon Service Setup steps. See [What is a Harness Variable Expression?](https://docs.harness.io/article/9dvxcegm90-variables) and [Set Workflow Variables](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md).
 	6. **AWS Auto Scaler Configuration** - See [AWS Auto Scaling with ECS](#aws_auto_scaling_with_ecs).
 	7. **Use Load Balancer** - See [Using ELB Load Balancers During Deployment](#using_elb_load_balancers_during_deployment).
 	8. Close or Submit the **ECS Service Setup** dialog to return to the **Phase 1** page.
@@ -125,7 +125,7 @@ To deploy a Harness Service configured with a Daemon Scheduling Strategy, do the
 	1. **Name** - Give the Workflow a name that describes its deployment goals, such as **ECS Daemon Strategy**.
 	2. **Description** - Provide details about the Workflow so other users understand its deployment goals.
 	3. **Workflow Type** - Select **Basic Deployment**.
-	4. **Environment** - Select the Environment you created for ECS. This is the Environment containing an [Infrastructure Definition](https://docs.harness.io/article/v3l3wqovbe-infrastructure-definitions) for the Harness Service you are deploying with this Workflow. You will select the Service and Infrastructure Definition when you set up the Basic deployment.
+	4. **Environment** - Select the Environment you created for ECS. This is the Environment containing an [Infrastructure Definition](../../model-cd-pipeline/environments/infrastructure-definitions.md) for the Harness Service you are deploying with this Workflow. You will select the Service and Infrastructure Definition when you set up the Basic deployment.
 4. Click **SUBMIT**. The new Workflow is displayed.
 
    ![](./static/ecs-workflows-24.png)
@@ -165,7 +165,7 @@ To use ELBs in the **ECS Service Setup** or **ECS Daemon Service Setup** steps, 
 
 The ELB configuration is set. When Harness deploys the ECS service, traffic will be routed from the load balancer to the service task.
 
-You can use Harness [Service Config variables](https://docs.harness.io/article/q78p7rpx9u-add-service-level-config-variables), [Workflow variables](https://docs.harness.io/article/766iheu1bk-add-workflow-variables-new-template), and [CloudFormation Outputs](../cloudformation-category/using-cloudformation-outputs-in-workflow-steps.md) for all of these settings.
+You can use Harness [Service Config variables](../../model-cd-pipeline/setup-services/add-service-level-config-variables.md), [Workflow variables](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md), and [CloudFormation Outputs](../cloudformation-category/using-cloudformation-outputs-in-workflow-steps.md) for all of these settings.
 
 #### Multiple Load Balancers
 
@@ -175,7 +175,7 @@ Complete the settings as described above.
 
 The IAM role selected in **IAM Role** is used for all Load Balancers.
 
-You can use Harness [Service Config variables](https://docs.harness.io/article/q78p7rpx9u-add-service-level-config-variables), [Workflow variables](https://docs.harness.io/article/766iheu1bk-add-workflow-variables-new-template), and [CloudFormation Outputs](../cloudformation-category/using-cloudformation-outputs-in-workflow-steps.md) for all of these settings.
+You can use Harness [Service Config variables](../../model-cd-pipeline/setup-services/add-service-level-config-variables.md), [Workflow variables](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md), and [CloudFormation Outputs](../cloudformation-category/using-cloudformation-outputs-in-workflow-steps.md) for all of these settings.
 
 ### AWS Auto Scaling with ECS
 
@@ -303,7 +303,7 @@ See [ECS Rollbacks](https://docs.harness.io/article/d7rnemtfuz-ecs-rollback).
 
 ### Deploy ECS Workflows
 
-Once your ECS Workflow is complete, you can deploy it to your ECS cluster. For more information about deploying Workflows, see [Deploy a Workflow](https://docs.harness.io/article/m220i1tnia-workflow-configuration#deploy_a_workflow).
+Once your ECS Workflow is complete, you can deploy it to your ECS cluster. For more information about deploying Workflows, see [Deploy a Workflow](../../model-cd-pipeline/workflows/workflow-configuration.md#deploy-a-workflow).
 
 Let’s look at the deployment of an ECS Workflow that deploys an ECS service using the Replica Strategy as part of a Canary deployment. Here is what the completed **Phase 1** looks like in Harness.
 
@@ -399,7 +399,7 @@ This example is for Phase 1 of a Canary deployment where 50% of 2 services are d
 
 Harness also supports post-production rollback for cases where you want to recover from a deployment that succeeded on technical criteria, but that you want to undo for other reasons.
 
-See [Rollback Production Deployments](https://docs.harness.io/article/2f36rsbrve-post-deployment-rollback).
+See [Rollback Production Deployments](../../model-cd-pipeline/workflows/post-deployment-rollback.md).
 
 ### Next Step
 
@@ -408,6 +408,6 @@ Now that you have completed a successful deployment, explore some of the other E
 * [ECS Blue/Green Workflows](ecs-blue-green-workflows.md)
 * [ECS Setup in YAML](ecs-setup-in-yaml.md)
 * [ECS Troubleshooting](ecs-troubleshooting.md)
-* [Pipelines](https://docs.harness.io/article/zc1u96u6uj-pipeline-configuration)
-* [Triggers](https://docs.harness.io/article/xerirloz9a-add-a-trigger-2)
+* [Pipelines](../../model-cd-pipeline/pipelines/pipeline-configuration.md)
+* [Triggers](../../model-cd-pipeline/triggers/add-a-trigger-2.md)
 

@@ -100,7 +100,7 @@ You can also use a Service Account Tokens instead of PAT. See [Add and Manage Se
 
 ### Step 2: Create a Project via API
 
-Now that we have our token, we can create a Harness Project. A Harness [Project](https://docs.harness.io/article/hv2758ro4e-learn-harness-key-concepts#organizations_and_projects) is a group of Harness modules and their Pipelines.
+Now that we have our token, we can create a Harness Project. A Harness [Project](../../getting-started/learn-harness-key-concepts.md#organizations-and-projects) is a group of Harness modules and their Pipelines.
 
 To send the API request, you will need your Harness account Id and the token you created.
 
