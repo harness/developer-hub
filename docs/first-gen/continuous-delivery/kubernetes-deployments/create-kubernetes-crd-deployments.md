@@ -17,7 +17,7 @@ Harness supports CRDs for both Kubernetes and OpenShift. There is no difference 
 
 ### Before You Begin
 
-* [Kubernetes Quickstart](https://docs.harness.io/article/7in9z2boh6-kubernetes-quickstart)
+* [Kubernetes Quickstart](../../first-gen-quickstarts/kubernetes-quickstart.md)
 * [Create a Kubernetes Rolling Deployment](create-a-kubernetes-rolling-deployment.md)
 * [Kubernetes Versioning and Annotations](https://docs.harness.io/article/ttn8acijrz-versioning-and-annotations)
 

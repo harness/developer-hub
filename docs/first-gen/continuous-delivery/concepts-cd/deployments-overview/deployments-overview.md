@@ -12,7 +12,7 @@ This content is for Harness [FirstGen](../../../../getting-started/harness-first
 
 ### Deployment Guides
 
-Always start with the [Quickstarts](https://docs.harness.io/category/f6rh2cdvx9-first-gen-quickstarts). These will take you from novice to advanced Harness user in a matter of minutes.
+Always start with the [Quickstarts](https://docs.harness.io/category/quickstarts). These will take you from novice to advanced Harness user in a matter of minutes.
 
 The following topics will walk you through how Harness implements common deployments according to platforms and scenarios:
 

@@ -16,7 +16,7 @@ For information on Blue/Green deployments, see [Deployment Concepts and Strategi
 
 Ensure you are familiar with the following:
 
-* [Kubernetes Quickstart](https://docs.harness.io/article/7in9z2boh6-kubernetes-quickstart)
+* [Kubernetes Quickstart](../../first-gen-quickstarts/kubernetes-quickstart.md)
 * [Kubernetes Deployments Overview](../concepts-cd/deployment-types/kubernetes-overview.md)
 * [Define Kubernetes Manifests](define-kubernetes-manifests.md)
 * [Define Your Kubernetes Target Infrastructure](define-your-kubernetes-target-infrastructure.md)

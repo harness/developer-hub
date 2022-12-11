@@ -14,9 +14,9 @@ Once you set up an Artifact Server, Harness can pull artifacts and add them to t
 
 ### Before You Begin
 
-* See [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts).
+* See [Harness Key Concepts](../../starthere-firstgen/harness-key-concepts.md).
 * See [Connect to Your Target Tanzu Account](connect-to-your-target-pcf-account.md).
-* [Tanzu Application Service (TAS) Quickstart](https://docs.harness.io/article/hy819vmsux-pivotal-cloud-foundry-quickstart)
+* [Tanzu Application Service (TAS) Quickstart](../../first-gen-quickstarts/pivotal-cloud-foundry-quickstart.md)
 
 ### Step 1: Add an Artifact Server
 

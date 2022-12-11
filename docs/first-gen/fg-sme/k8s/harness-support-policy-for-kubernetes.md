@@ -1,7 +1,7 @@
 ---
 title: Support for Kubernetes
 description: This topic describes Harness support for Kubernetes in Harness Self-Managed Enterprise Edition. Supported Kubernetes Versions. Self-Managed Enterprise Edition supports Kubernetes v.1.23. Self-Managed…
-# sidebar_position: 2
+sidebar_position: 40
 helpdocs_topic_id: 6mxjxqgp29
 helpdocs_category_id: 9tb4tsgko5
 helpdocs_is_private: false

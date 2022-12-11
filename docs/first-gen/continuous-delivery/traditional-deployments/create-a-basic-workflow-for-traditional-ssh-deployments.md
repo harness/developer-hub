@@ -26,14 +26,14 @@ For a Build and Deploy Pipeline using a Traditional deployment, see
 * [Add Artifacts and App Stacks for Traditional (SSH) Deployments](add-artifacts-for-ssh-deployments.md)
 * [Connect to Your Repos and Target SSH Platforms](connect-to-your-target-ssh-platform.md)
 * [Traditional Deployments Overview](traditional-deployments-overview.md)
-* [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts)
+* [Harness Key Concepts](../../starthere-firstgen/harness-key-concepts.md)
 
 
 ### Supported Platforms and Technologies
 
 
 See **SSH** in
- [Supported Platforms and Technologies](https://docs.harness.io/article/220d0ojx5y-supported-platforms).
+ [Supported Platforms and Technologies](../../starthere-firstgen/supported-platforms.md).
 
 
 

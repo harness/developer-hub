@@ -16,8 +16,6 @@ This topic provides guidance on scaling Harness Self-Managed Enterprise Edition 
 
 ### Summary
 
-
-
 |  |  |  |
 | --- | --- | --- |
 | **Test** | **Configuration** | **Result** |

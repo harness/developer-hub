@@ -16,7 +16,7 @@ In order to obtain the names of the host(s), pod(s), or container(s) where your 
 
 ### Before You Begin
 
-* [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts)
+* [Harness Key Concepts](../../../starthere-firstgen/harness-key-concepts.md)
 * [Connect to Logz.io](logz-verification-provider.md)
 
 ### Limitations

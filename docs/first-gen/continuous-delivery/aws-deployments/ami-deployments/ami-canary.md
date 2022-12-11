@@ -14,7 +14,7 @@ This guide will walk you through configuring and executing an AMI (Amazon Machin
 
 ### Before You Begin
 
-* [AWS AMI Quickstart](https://docs.harness.io/article/wfk9o0tsjb-aws-ami-deployments)
+* [AWS AMI Quickstart](../../../first-gen-quickstarts/aws-ami-deployments.md)
 * [AMI Basic Deployment](ami-deployment.md)
 
 

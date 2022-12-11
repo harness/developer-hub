@@ -16,7 +16,7 @@ Please review the video [Kustomize: Deploy Your App with Template Free YAML](htt
 ### Before You Begin
 
 * [Connect to Your Target Kubernetes Platform](connect-to-your-target-kubernetes-platform.md)
-* [Kubernetes Quickstart](https://docs.harness.io/article/7in9z2boh6-kubernetes-quickstart)
+* [Kubernetes Quickstart](../../first-gen-quickstarts/kubernetes-quickstart.md)
 
 Kustomize is supported in Harness Kubernetes v2 Services only. This is the default type, but some Harness users might be using a legacy Kubernetes v1 Service.
 

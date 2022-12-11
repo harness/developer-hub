@@ -119,7 +119,7 @@ This example uses AWS. Harness already has full, first-class support for AWS dep
 
 This example also uses Harness secrets for username and password. See [Use Encrypted Text Secrets](https://docs.harness.io/article/ygyvp998mu-use-encrypted-text-secrets).
 
-Here's another example using Kubernetes and NGINX (Kubernetes also has [first-class support](https://docs.harness.io/article/7in9z2boh6-kubernetes-quickstart)):
+Here's another example using Kubernetes and NGINX (Kubernetes also has [first-class support](../../first-gen-quickstarts/kubernetes-quickstart.md)):
 
 
 ```

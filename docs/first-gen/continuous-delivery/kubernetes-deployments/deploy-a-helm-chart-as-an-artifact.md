@@ -10,13 +10,13 @@ helpdocs_is_published: true
 
 Typically, Harness Kubernetes deployments using Helm charts involve adding your artifact (image) to Harness in addition to your chart. The chart refers to the artifact you added to Harness (via its values.yaml). During deployment, Harness deploys the artifact you added to Harness and uses the chart to manage it.
 
-For the standard Harness Kubernetes and Native Helm deployments using Helm charts, see [Use a Helm Repository with Kubernetes](use-a-helm-repository-with-kubernetes.md) and [Helm Quickstart](https://docs.harness.io/article/2aaevhygep-helm-quickstart).In addition to this method, you can also simply deploy the Helm chart without adding your artifact to Harness. Instead, the *Helm chart is the artifact*. The Helm chart you provide contains the hardcoded link to the artifact.
+For the standard Harness Kubernetes and Native Helm deployments using Helm charts, see [Use a Helm Repository with Kubernetes](use-a-helm-repository-with-kubernetes.md) and [Helm Quickstart](../../first-gen-quickstarts/helm-quickstart.md).In addition to this method, you can also simply deploy the Helm chart without adding your artifact to Harness. Instead, the *Helm chart is the artifact*. The Helm chart you provide contains the hardcoded link to the artifact.
 
 Harness installs the chart, gets the artifact from the repo, and then installs the artifact. We call this a *Helm chart deployment*.
 
 This topic covers the second method: a Helm chart deployment.
 
-Looking for the API? You can use the Harness GraphQL to run a Helm chart deployment. See [Deploy Helm Charts Using the API](https://docs.harness.io/article/sbvn6uwcq1-deploy-helm-charts-using-api).New to Harness Kubernetes and Native Helm Deployments?Harness includes both [Kubernetes](https://docs.harness.io/article/7in9z2boh6-kubernetes-quickstart) and [Native Helm](../concepts-cd/deployment-types/helm-deployments-overview.md) deployments, and you can use Helm charts in both. Here's the difference:  
+Looking for the API? You can use the Harness GraphQL to run a Helm chart deployment. See [Deploy Helm Charts Using the API](https://docs.harness.io/article/sbvn6uwcq1-deploy-helm-charts-using-api).New to Harness Kubernetes and Native Helm Deployments?Harness includes both [Kubernetes](../../first-gen-quickstarts/kubernetes-quickstart.md) and [Native Helm](../concepts-cd/deployment-types/helm-deployments-overview.md) deployments, and you can use Helm charts in both. Here's the difference:  
 • **Harness Kubernetes Deployments** allow you to use your own Kubernetes manifests or a Helm chart (remote or local), and Harness executes the Kubernetes API calls to build everything without Helm and Tiller needing to be installed in the target cluster.  
 • Harness Kubernetes deployments also support all deployment strategies (Canary, Blue/Green, Rolling, etc).  
 • For **Harness Native Helm Deployments**, you must always have Helm and Tiller running on one pod in your target cluster. Tiller makes the API calls to Kubernetes in these cases.  
@@ -24,7 +24,7 @@ Looking for the API? You can use the Harness GraphQL to run a Helm chart deploym
 
 ### Before You Begin
 
-* [Kubernetes Quickstart](https://docs.harness.io/article/7in9z2boh6-kubernetes-quickstart)
+* [Kubernetes Quickstart](../../first-gen-quickstarts/kubernetes-quickstart.md)
 * [Use a Helm Repository with Kubernetes](use-a-helm-repository-with-kubernetes.md)
 * [Native Helm Deployments Overview](../concepts-cd/deployment-types/helm-deployments-overview.md)
 * [The Chart Template Developer's Guide](https://helm.sh/docs/chart_template_guide/) from Helm.
@@ -45,7 +45,7 @@ The Harness User Group must have the following [Application Permissions](https:/
 
 ### Supported Platforms and Technologies
 
-See [Supported Platforms and Technologies](https://docs.harness.io/article/220d0ojx5y-supported-platforms).
+See [Supported Platforms and Technologies](../../starthere-firstgen/supported-platforms.md).
 
 #### ChartMuseum Binaries
 

@@ -31,7 +31,7 @@ In this topic:
 
 The Harness Delegate is a service you run in your local network or VPC to connect all of your artifact, infrastructure, collaboration, verification, and other providers with the Harness Manager.
 
-As explained in [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts), when you set up Harness for the first time, you install a Harness Delegate in your target infrastructure (for example, Kubernetes cluster, ECS cluster, EC2 subnet, Pivotal Cloud Foundry space, etc). Once the Delegate is installed, you can set up the resources and model your release process.
+As explained in [Harness Key Concepts](../../starthere-firstgen/harness-key-concepts.md), when you set up Harness for the first time, you install a Harness Delegate in your target infrastructure (for example, Kubernetes cluster, ECS cluster, EC2 subnet, Pivotal Cloud Foundry space, etc). Once the Delegate is installed, you can set up the resources and model your release process.
 
 The Delegate performs all deployment operations. To do so, it needs network connectivity to your artifact server, such as Jenkins, and your cloud deployment environment, such as a Kubernetes cluster or AWS. Also, the roles associated with the Delegate must have the policies needed to perform its operations.
 

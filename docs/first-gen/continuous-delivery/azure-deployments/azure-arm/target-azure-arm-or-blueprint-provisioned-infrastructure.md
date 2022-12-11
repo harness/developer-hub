@@ -45,7 +45,7 @@ Here's a diagram of how you use your Azure ARM templates in Harness to provision
 
 ### Supported Platforms and Technologies
 
-See [Supported Platforms and Technologies](https://docs.harness.io/article/220d0ojx5y-supported-platforms).
+See [Supported Platforms and Technologies](../../../starthere-firstgen/supported-platforms.md).
 
 ### Step 1: Add the Infrastructure Provisioner
 

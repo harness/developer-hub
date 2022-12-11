@@ -10,13 +10,13 @@ helpdocs_is_published: true
 
 This topic describes the concept of a Harness Tanzu Application Service (TAS, formerly Pivotal Cloud Foundry) deployment by describing the high-level steps involved.
 
-Pivotal Cloud Foundry (PCF) was purchased by VMWare and renamed to Tanzu Application Service (TAS). For a quick tutorial, see the [Tanzu Application Service Quickstart](https://docs.harness.io/article/hy819vmsux-pivotal-cloud-foundry-quickstart).
+Pivotal Cloud Foundry (PCF) was purchased by VMWare and renamed to Tanzu Application Service (TAS). For a quick tutorial, see the [Tanzu Application Service Quickstart](../../../first-gen-quickstarts/pivotal-cloud-foundry-quickstart.md).
 
 For detailed instructions on using TAS in Harness, see the [Tanzu Application Service How-tos](https://docs.harness.io/category/tanzu-application-service-(https://docs.harness.ioformerly-pivotal)).
 
 ### Before You Begin
 
-Before learning about Harness TAS deployments, you should have an understanding of [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts).
+Before learning about Harness TAS deployments, you should have an understanding of [Harness Key Concepts](../../../starthere-firstgen/harness-key-concepts.md).
 
 ### What Does Harness Need Before You Start?
 
@@ -53,6 +53,6 @@ The following list describes the major steps of a Harness TAS deployment:
 
 Read the following topics to build on what you've learned:
 
-* [Tanzu Application Service (TAS) Quickstart](https://docs.harness.io/article/hy819vmsux-pivotal-cloud-foundry-quickstart)
+* [Tanzu Application Service (TAS) Quickstart](../../../first-gen-quickstarts/pivotal-cloud-foundry-quickstart.md)
 * [TAS How-tos](https://docs.harness.io/category/tanzu-application-service-(https://docs.harness.ioformerly-pivotal))
 

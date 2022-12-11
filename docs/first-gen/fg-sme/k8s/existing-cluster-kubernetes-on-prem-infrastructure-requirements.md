@@ -1,7 +1,7 @@
 ---
 title: Infrastructure
 description: This document lists the infrastructure requirements for installing Harness Self-Managed Enterprise Edition - Kubernetes Cluster in an existing Kubernetes cluster. Production Installation. Here are th…
-# sidebar_position: 2
+sidebar_position: 10
 helpdocs_topic_id: hmza5cvxib
 helpdocs_category_id: 9tb4tsgko5
 helpdocs_is_private: false
@@ -87,7 +87,11 @@ Outbound access to the following URLs:
 * k8s.kurl.sh​
 * app.replicated.com
 
-The outbound access is required for a **connected install only**. If you have opted for [Airgap mode](https://kots.io/kotsadm/installing/airgap-packages/), this is not required.If your cluster does not have direct outbound connectivity and needs a proxy for outbound connections, use these instructions: [https://docs.docker.com/network/proxy](https://docs.docker.com/network/proxy/) to set up a proxy on the node machines.
+:::note
+The outbound access is required for a **connected install only**. If you have opted for [Airgap mode](https://kots.io/kotsadm/installing/airgap-packages/), this is not required.
+:::
+
+If your cluster does not have direct outbound connectivity and needs a proxy for outbound connections, use these instructions: [https://docs.docker.com/network/proxy](https://docs.docker.com/network/proxy/) to set up a proxy on the node machines.
 
 ### Cluster and Network Architecture
 
@@ -127,7 +131,11 @@ For connections from the Harness Manager outbound to an integration, you can use
 
 See [Add Self-Signed Certificates for Delegate Connections](https://docs.harness.io/article/8bj3v5jqzk-add-self-signed-certificates-for-delegate-connections).
 
-You can use self-signed certs for TLS connections between the MongoDB that ships with Harness and the Harness microservices. See [Enable TLS/SSL between MongoDB and Harness Components](../vm/on-prem-embedded-cluster-setup.md#enable-tls-ssl-between-mongo-db-and-harness-components).### Install Harness Self-Managed Enterprise Edition
+:::note
+You can use self-signed certs for TLS connections between the MongoDB that ships with Harness and the Harness microservices. See [Enable TLS/SSL between MongoDB and Harness Components](../vm/on-prem-embedded-cluster-setup.md#enable-tls-ssl-between-mongo-db-and-harness-components).
+:::
+
+### Install Harness Self-Managed Enterprise Edition
 
 Now that you have set up the requirements, proceed with installation in [Harness Self-Managed Enterprise Edition - Kubernetes Cluster Setup](kubernetes-on-prem-existing-cluster-setup.md).
 

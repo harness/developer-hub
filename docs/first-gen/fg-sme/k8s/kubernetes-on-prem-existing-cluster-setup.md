@@ -1,7 +1,7 @@
 ---
 title: Installation
 description: This topic covers installing Harness Self-Managed Enterprise Edition - Kubernetes Cluster in an existing Kubernetes cluster. We assume that you are very familiar with Kubernetes, and can perform the…
-# sidebar_position: 2
+sidebar_position: 20
 helpdocs_topic_id: v6x4n5j9lv
 helpdocs_category_id: 9tb4tsgko5
 helpdocs_is_private: false
@@ -10,21 +10,27 @@ helpdocs_is_published: true
 
 This topic covers installing Harness Self-Managed Enterprise Edition - Kubernetes Cluster in an existing Kubernetes cluster.
 
-We assume that you are very familiar with Kubernetes, and can perform the standard Kubernetes and managing configurations using [Kustomize](https://kubernetes.io/docs/tasks/manage-kubernetes-objects/kustomization/) overlays.Harness Self-Managed Enterprise Edition - Kubernetes Cluster uses the [KOTS kubectl plugin](https://kots.io/kots-cli/getting-started/) for installation. This topic covers installing KOTS in your existing cluster as part of setting up Harness Self-Managed Enterprise Edition.
+:::note 
+This topic assumes that you are very familiar with Kubernetes, and can perform the standard Kubernetes and managing configurations using [Kustomize](https://kubernetes.io/docs/tasks/manage-kubernetes-objects/kustomization/) overlays.
+:::
+
+Harness Self-Managed Enterprise Edition - Kubernetes Cluster uses the [KOTS kubectl plugin](https://kots.io/kots-cli/getting-started/) for installation. This topic covers installing KOTS in your existing cluster as part of setting up Harness Self-Managed Enterprise Edition.
 
 Installing Harness Self-Managed Enterprise Edition into an existing Kubernetes cluster is a simple process where you prepare your existing cluster and network, and use the KOTS admin tool and Kustomize to complete the installation and deploy Harness.
 
-### Cluster Requirements
+## Cluster Requirements
 
 Do not perform any of the steps in this topic until you have set up the requirements in the [Harness Self-Managed Enterprise Edition - Kubernetes Cluster: Infrastructure Requirements](existing-cluster-kubernetes-on-prem-infrastructure-requirements.md) topic.
 
-### Summary
+## Summary
 
 Installing Harness in an existing cluster is performed as a [KOTS Existing Cluster Online Install](https://kots.io/kotsadm/installing/installing-a-kots-app/#existing-cluster-or-embedded-kubernetes).
 
 This simply means that you are using an existing Kubernetes cluster, as opposed to bare metal or VMs, and that your cluster can make outbound internet requests for an online installation.
 
-![](./static/kubernetes-on-prem-existing-cluster-setup-00.png)### Step 1: Set up Cluster Requirements
+![](./static/kubernetes-on-prem-existing-cluster-setup-00.png)
+
+## Step 1: Set up Cluster Requirements
 
 As stated earlier, follow the steps in the [Harness Self-Managed Enterprise Edition - Kubernetes Cluster: Infrastructure Requirements](existing-cluster-kubernetes-on-prem-infrastructure-requirements.md) topic to ensure you have your cluster set up correctly.
 
@@ -32,7 +38,7 @@ These requirements also include RBAC settings that might require your IT adminis
 
 Specifically, you need to create a KOTS admin Role and bind it to the user that will install Harness. You also need to create a Harness ClusterRole.
 
-### Step 2: Set Up Networking Requirements
+## Step 2: Set Up Networking Requirements
 
 Perform the following steps to ensure that you have the Load Balancer set up for Harness Self-Managed Enterprise Edition.
 
@@ -40,13 +46,13 @@ Later, when you set up the kustomization for Harness Self-Managed Enterprise Edi
 
 Finally, when you configure the Harness Self-Managed Enterprise Edition application, you will provide the Load Balancer URL. This URL is what Harness Self-Managed Enterprise Edition users will use.
 
-#### Using NodePort?
+### Using NodePort?
 
 If you are creating the load balancer's Service type using NodePort, create a load balancer that points to any port in range 30000-32767 on the node pool on which the Kubernetes cluster is running.
 
 If you are using NodePort, you can skip to [Step 3: Install KOTS](kubernetes-on-prem-existing-cluster-setup.md#step-3-install-kots).
 
-#### Set Up Static External IP
+### Set Up Static External IP
 
 You should have a static IP reserved to expose Harness outside of the Kubernetes cluster.
 
@@ -54,7 +60,9 @@ For example, in the GCP console, click **VPC network**, and then click **Externa
 
 ![](./static/kubernetes-on-prem-existing-cluster-setup-01.png)For more information, see [Reserving a static external IP address](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-external-ip-address).
 
-For GCP, the External IP address must be [Premium Tier](https://cloud.google.com/network-tiers/docs/overview#premium_tier).#### Set Up DNS
+For GCP, the External IP address must be [Premium Tier](https://cloud.google.com/network-tiers/docs/overview#premium_tier).
+
+### Set Up DNS
 
 Set up DNS to resolve the domain name you want to use for Harness Self-Managed Enterprise Edition to the static IP address you reserved in the previous step.
 
@@ -67,7 +75,7 @@ harness.abc.com has address 192.0.2.0
 ```
 The above DNS setup can be tested by running `host <domain_name>`.
 
-### Review: OpenShift Clusters
+## Review: OpenShift Clusters
 
 If you will be using OpenShift Clusters, run the following commands after installing the KOTS plugin, but before installing Harness:
 
@@ -85,7 +93,7 @@ oc adm policy add-scc-to-user anyuid -z default -n harness
 ```
 Once you've installed Harness and you want to install a Harness Kubernetes Delegate, see [Delegates and OpenShift](#delegates_and_open_shift).
 
-### Option 1: Disconnected Installation (Airgap)
+## Option 1: Disconnected Installation (Airgap)
 
 The following steps will install KOTS from your private repo and the Harness Self-Managed Enterprise Edition license and airgap file you obtain from Harness.
 
@@ -145,11 +153,11 @@ You might be prompted to allow a port-forward connection into the cluster.
 
 ![](./static/kubernetes-on-prem-existing-cluster-setup-03.png)Now that KOTS and Harness are installed, you can perform the necessary configurations.
 
-### Option 2: Connected Installation
+## Option 2: Connected Installation
 
 The following steps will install KOTS and Harness Self-Managed Enterprise Edition online. There is also an option to use a Harness Self-Managed Enterprise Edition airgap file instead of downloading Harness Self-Managed Enterprise Edition.
 
-#### Install KOTS Plugin
+### Install KOTS Plugin
 
 1. Log into your cluster.
 2. Install the KOTS kubectl plugin using the following command:
@@ -158,12 +166,11 @@ The following steps will install KOTS and Harness Self-Managed Enterprise Editio
 
 The output of the command is similar to this:
 
-
 ```
 Installing replicatedhq/kots v1.16.1  
 (https://github.com/replicatedhq/kots/releases/download/v1.16.1/kots_darwin_amd64.tar.gz)...  
-############################################# 100.0%#=#=-#  #  
-############################################# 100.0%  
+############################################ 100.0%#=#=-#  #  
+############################################ 100.0%  
 Installed at /usr/local/bin/kubectl-kots
 ```
 To test the installation, run this command:
@@ -174,7 +181,7 @@ The KOTS help appears.
 
 Now that KOTS is installed, you can install Harness Self-Managed Enterprise Edition into your cluster.
 
-#### Install KOTS
+### Install KOTS
 
 To install the KOTS Admin tool, enter the following command:
 
@@ -211,7 +218,9 @@ Use the URL provided in the output to open the KOTS admin console in a browser.
 
 You might be prompted to allow a port-forward connection into the cluster.
 
-![](./static/kubernetes-on-prem-existing-cluster-setup-05.png)#### Upload Your Harness License
+![](./static/kubernetes-on-prem-existing-cluster-setup-05.png)
+
+### Upload Your Harness License
 
 Once you are logged into the KOTS admin console, you can upload your Harness license.
 
@@ -225,7 +234,7 @@ Drag your license YAML file into the KOTS admin tool:
 
 Now that license file is uploaded, you can install Harness.
 
-#### Download Harness over the Internet
+### Download Harness over the Internet
 
 If you are installing Harness over the Internet, click the **download Harness from the Internet** link.
 
@@ -233,7 +242,7 @@ If you are installing Harness over the Internet, click the **download Harness fr
 
 ![](./static/kubernetes-on-prem-existing-cluster-setup-09.png)Next, you will configure Harness.
 
-### Step 3: Configure Harness
+## Step 3: Configure Harness
 
 Now that you have added your license you can configure the networking for the Harness installation.
 
@@ -241,19 +250,21 @@ If the KOTS Admin tool is not running, point `kubectl` to the cluster where Harn
 
 Harness Self-Managed Enterprise Edition - Kubernetes Cluster requires that you provide a NodePort and Application URL.
 
-![](./static/kubernetes-on-prem-existing-cluster-setup-10.png)#### Mode
+![](./static/kubernetes-on-prem-existing-cluster-setup-10.png)
+
+### Mode
 
 * Select **Demo** to run Harness Self-Managed Enterprise Edition in demo mode and experiment with it.
 * Select **Production HA** to run a production version of Harness Self-Managed Enterprise Edition.
 
-#### Ingress Service Type
+### Ingress Service Type
 
 By default, nginx is used for Ingress automatically. If you are deploy nginx separately, do the following:
 
 1. Click **Advanced Configurations**.
 2. Disable the **Install Nginx Ingress Controller** option.
 
-##### External Traffic Policy
+#### External Traffic Policy
 
 You can select the external traffic policy for the Ingress controller.
 
@@ -264,27 +275,27 @@ You can select the external traffic policy for the Ingress controller.
 
 For information on how these options work, see [Preserving the client source IP](https://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/#preserving-the-client-source-ip) from Kubernetes.
 
-#### NodePort
+### NodePort
 
 Enter any port in the range 30000-32767 on the node pool on which the Kubernetes cluster is running.
 
 If you do not enter a port, Harness uses 32500 by default.
 
-#### External Loadbalancer
+### External Loadbalancer
 
 Enter the IP address of the Load Balancer.
 
-#### Application URL
+### Application URL
 
 Enter the URL users will enter to access Harness. This is the DNS domain name mapped to the Load Balancer IP.
 
 When you are done, click **Continue**.
 
-#### Host Name
+### Host Name
 
 The hostname is the DNS name or IP address of the Load Balancer.
 
-#### Storage Class
+### Storage Class
 
 You can also add a Storage Class. The name of the Storage Class depends on the provider where you are hosting your Kubernetes cluster. See [Storage Classes](https://kubernetes.io/docs/concepts/storage/storage-classes/#parameters) from Kubernetes.
 
@@ -296,13 +307,15 @@ Once you have Harness Self-Managed Enterprise Edition installed, you can just ru
 
 Enter the name of the Storage Class.
 
-#### Option: Advanced Configurations
+### Option: Advanced Configurations
 
 In the **Advanced Configurations** section, there are a number of advanced settings you can configure. If this is the first time you are setting up Harness Self-Managed Enterprise Edition, there's no reason to fine tune the installation with these settings.
 
 You can change the settings later in the KOTS admin console's Config tab:
 
-![](./static/kubernetes-on-prem-existing-cluster-setup-12.png)### Step 4: Perform Preflight Checks
+![](./static/kubernetes-on-prem-existing-cluster-setup-12.png)
+
+## Step 4: Perform Preflight Checks
 
 Preflight checks run automatically and verify that your setup meets the minimum requirements.
 
@@ -316,11 +329,13 @@ Your cluster meets the minimum version of Kubernetes, but we recommend you updat
 ```
 You can update your cluster's version of Kubernetes if you like.
 
-### Step 5: Deploy Harness
+## Step 5: Deploy Harness
 
 When you are finished pre-flight checks, click **Deploy and** **Continue**.
 
-![](./static/kubernetes-on-prem-existing-cluster-setup-14.png)Harness is deployed in a few minutes.
+![](./static/kubernetes-on-prem-existing-cluster-setup-14.png)
+
+Harness is deployed in a few minutes.
 
 In a new browser tab, go to the following URL, replacing `<LB_URL>` with the URL you entered in the **Application URL** setting in the KOTS admin console:
 
@@ -338,19 +353,25 @@ The Harness sign up page appears.
 
 See [Managing Users and Groups (RBAC)](https://docs.harness.io/article/ven0bvulsj-users-and-permissions).
 
-#### Future Versions
+### Future Versions
 
 To set up future versions of Harness Self-Managed Enterprise Edition, in the KOTS admin console, in the **Version history** tab, click **Deploy**. The new version is displayed in Deployed version.
 
-![](./static/kubernetes-on-prem-existing-cluster-setup-17.png)### Important Next Steps
+![](./static/kubernetes-on-prem-existing-cluster-setup-17.png)
 
-**Important:** You cannot invite other users to Harness until a Harness Delegate is installed and a Harness SMTP Collaboration Provider is configured.1. Install the Harness Delegate: [Delegate Installation Overview](https://docs.harness.io/article/igftn7rrtg-delegate-installation-overview).
+## Important Next Steps
+
+:::note 
+You cannot invite other users to Harness until a Harness Delegate is installed and a Harness SMTP Collaboration Provider is configured.
+:::
+
+1. Install the Harness Delegate: [Delegate Installation Overview](https://docs.harness.io/article/igftn7rrtg-delegate-installation-overview).
 2. Set up an SMTP Collaboration Provider in Harness for email notifications from the Harness Manager: [Add SMTP Collaboration Provider](https://docs.harness.io/article/8nkhcbjnh7-add-smtp-collaboration-provider).  
 Ensure you open the correct port for your SMTP provider, such as [Office 365](https://support.office.com/en-us/article/server-settings-you-ll-need-from-your-email-provider-c82de912-adcc-4787-8283-45a1161f3cc3).
 3. [Add a Harness Secrets Manager](https://docs.harness.io/article/uuer539u3l-add-a-secrets-manager). By default, Harness Self-Managed Enterprise Edition installations use the local Harness MongoDB for the default Harness Secrets Manager. This is not recommended.  
 After Harness Self-Managed Enterprise Edition installation, configure a new Secret Manager (Vault, AWS, etc). You will need to open your network for the Secret Manager connection.
 
-#### Delegates and OpenShift
+### Delegates and OpenShift
 
 If you are deploying the Harness Kubernetes Delegate into an OpenShift cluster, you need to edit the Harness Kubernetes Delegate YAML before installing the Delegate.
 
@@ -380,7 +401,7 @@ kind: StatefulSet
       containers:  
       - image: harness/delegate:non-root-openshift
 ```
-### Updating Harness
+## Updating Harness
 
 **Do not upgrade Harness past 4 major releases.** Instead, upgrades each interim release until you upgrade to the latest release. A best practice is to upgrade Harness once a month.Please follow these steps to update your Harness Self-Managed Enterprise Edition installation.
 
@@ -388,81 +409,81 @@ The steps are very similar to how you installed Harness initially.
 
 For more information on updating KOTS and applications, see [Using CLI](https://kots.io/kotsadm/updating/updating-kots-apps/#using-cli) and [Updating the Admin Console](https://kots.io/kotsadm/updating/updating-admin-console/) from KOTS.
 
-#### Disconnected (Airgap)
+### Disconnected (Airgap)
 
 The following steps require a private registry, just like the initial installation of Harness.
 
-##### Upgrade Harness
+#### Upgrade Harness
 
 1. Download the latest release from Harness.
 2. Run the following command on the cluster hosting Harness, replacing the placeholders:
 
+  ```
+  kubectl kots upstream upgrade harness \   
+  --airgap-bundle <path to harness-<version>.airgap> \  
+  --kotsadm-registry <private.registry.url> \  
+  --registry-username <username> \  
+  --registry-password <password> \  
+  --deploy \  
+  -n harness
+  ```
 
-```
-kubectl kots upstream upgrade harness \   
---airgap-bundle <path to harness-<version>.airgap> \  
---kotsadm-registry <private.registry.url> \  
---registry-username <username> \  
---registry-password <password> \  
---deploy \  
--n harness
-```
-##### Upgrade KOTS Admin Tool
+#### Upgrade KOTS Admin Tool
 
 To upgrade the KOTS admin tool, first you will push images to your private Docker registry.
 
 1. Run the following command to push the images, replacing the placeholders:
 
+    ```
+    kubectl kots admin-console push-images ./<new-kotsadm>.tar.gz \  
+    <private.registry.host>/harness \  
+    --registry-username rw-username \  
+    --registry-password rw-password
+    ```
 
-```
-kubectl kots admin-console push-images ./<new-kotsadm>.tar.gz \  
-<private.registry.host>/harness \  
---registry-username rw-username \  
---registry-password rw-password
-```
-1. Next, run the following command on the cluster hosting Harness, replacing the placeholders:
+2. Next, run the following command on the cluster hosting Harness, replacing the placeholders:
 
+    ```
+    kubectl kots admin-console upgrade \   
+    --kotsadm-registry <private.registry.host>/harness \  
+    --registry-username rw-username \  
+    --registry-password rw-password \  
+    -n harness
+    ```
 
-```
-kubectl kots admin-console upgrade \   
---kotsadm-registry <private.registry.host>/harness \  
---registry-username rw-username \  
---registry-password rw-password \  
--n harness
-```
-#### Connected
+### Connected
 
 The following steps require a secure connection to the Internet, just like the initial installation of Harness.
 
-##### Upgrade Harness
+#### Upgrade Harness
 
 1. Run the following command on the cluster hosting Harness:
 
-
-```
-kubectl kots upstream upgrade harness --deploy -n harness
-```
-##### Upgrade KOTS Admin Tool
+  ```
+  kubectl kots upstream upgrade harness --deploy -n harness
+  ```
+  
+#### Upgrade KOTS Admin Tool
 
 1. Run the following command on the cluster hosting Harness:
 
-
-```
-kubectl kots admin-console upgrade -n harness
-```
-### Monitoring Harness
+  ```
+  kubectl kots admin-console upgrade -n harness
+  ```
+  
+## Monitoring Harness
 
 Harness monitoring is performed using the built in monitoring tools.
 
 ![](./static/kubernetes-on-prem-existing-cluster-setup-18.png)For steps on using the monitoring tools, see [Prometheus](https://kots.io/kotsadm/monitoring/prometheus/) from KOTS.
 
-### License Expired
+## License Expired
 
 If your license has expired, you will see something like the following:
 
 ![](./static/kubernetes-on-prem-existing-cluster-setup-19.png)Contact your Harness Customer Success representative or [support@harness.io](mailto:support@harness.io).
 
-### Bring Down Harness Cluster for Planned Downtime
+## Bring Down Harness Cluster for Planned Downtime
 
 If you need to bring down the Harness cluster for any reason, you simply scale down the Harness Manager and Verification Service deployments to zero replicas. That is sufficient to stop background tasks and remove connections to the database.
 
@@ -470,13 +491,13 @@ Next, optionally, you can scale everything else down if needed, but it is not ne
 
 To bring Harness back up, first ensure the Harness MongoDB is scaled up to 3 instances and Redis is scaled up also. Next, scale up the Harness Manager and Verification Service.
 
-### Logging
+## Logging
 
 For Harness Self-Managed Enterprise Edition - Kubernetes Cluster, logs are available as standard out.
 
 Use `kubectl get logs` on any pod to see the logs.
 
-### Enable TLS/SSL between MongoDB and Harness Components
+## Enable TLS/SSL between MongoDB and Harness Components
 
 You can now enable a TLS/SSL connection between the Harness Self-Managed Enterprise Edition components (microservices) and the MongoDB database that is included in Harness Self-Managed Enterprise Edition.
 
@@ -484,7 +505,10 @@ You can use public or self-signed certs.
 
 Simply select **True** in **Mongo Use SSL** and then upload your ca.pem, client.pem, and mongo.pem files:
 
-![](./static/kubernetes-on-prem-existing-cluster-setup-20.png)Instructions for creating self signed certs
+![](./static/kubernetes-on-prem-existing-cluster-setup-20.png)
+
+### Instructions for creating self signed certs
+
 ```
 # Create CA   
   
@@ -534,11 +558,11 @@ Now you have the ca.pem, client.pem and mongo.pem files.
 
 Upload all files into the **Mongo Use SSL** settings.
 
-### Notes
+## Notes
 
 Harness Self-Managed Enterprise Edition installations do not currently support the Harness [Helm Delegate](https://docs.harness.io/article/6n7fon8rit-using-the-helm-delegate).
 
-### Remove Previous kustomization for Ingress Controller
+## Remove Previous kustomization for Ingress Controller
 
 **This option is only needed if you have installed Harness Self-Managed Enterprise Edition previously.** If this is a fresh install, you can go directly to [Configure Harness](#step_4_configure_harness).
 
@@ -550,31 +574,29 @@ Do the following to remove the kustomization as follows:
 2. Ensure `kubectl` is pointing to the cluster.
 3. Run the following command:
 
+    ```
+    kubectl kots download --namespace harness --slug harness
+    ```
+    This example assumes we are installing Harness in a namespace named **harness**. Please change the namespace according to your configuration.This command will download a folder named **harness** in your current directory.
 
-```
-kubectl kots download --namespace harness --slug harness
-```
-This example assumes we are installing Harness in a namespace named **harness**. Please change the namespace according to your configuration.This command will download a folder named **harness** in your current directory.
+4. In the **harness** folder, open the file **kustomization.yaml**:
 
-1. In the **harness** folder, open the file **kustomization.yaml**:
+    ```
+    vi harness/overlays/midstream/kustomization.yaml 
+    ```
+5. In `patchesStrategicMerge` **remove** `nginx-service.yaml`.
+6. Save the file.
+7. Remove the nginx-service.yaml file:
 
+  ```
+  rm -rf harness/overlays/midstream/nginx-service.yaml
+  ```
 
-```
-vi harness/overlays/midstream/kustomization.yaml 
-```
-1. In `patchesStrategicMerge` **remove** `nginx-service.yaml`.
-2. Save the file.
-3. Remove the nginx-service.yaml file:
+8. Upload Harness:
 
+  ```
+  kubectl kots upload --namespace harness --slug harness ./harness
+  ```
 
-```
-rm -rf harness/overlays/midstream/nginx-service.yaml
-```
-1. Upload Harness:
-
-
-```
-kubectl kots upload --namespace harness --slug harness ./harness
-```
-1. Open the KOTS admin tool, and then deploy the uploaded version of Harness.
+9. Open the KOTS admin tool, and then deploy the uploaded version of Harness.
 

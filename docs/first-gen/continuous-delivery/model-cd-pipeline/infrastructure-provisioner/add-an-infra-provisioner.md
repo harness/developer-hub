@@ -45,7 +45,7 @@ The process is as follows:
 
 ### Before You Begin
 
-* [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts)
+* [Harness Key Concepts](../../../starthere-firstgen/harness-key-concepts.md)
 
 ### Add an Infrastructure Provisioner
 

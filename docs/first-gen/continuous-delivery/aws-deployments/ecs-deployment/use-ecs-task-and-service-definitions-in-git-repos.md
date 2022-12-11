@@ -17,7 +17,7 @@ You can also use a Git repo for your entire Harness Application, and sync it uni
 ### Before You Begin
 
 * [Add Source Repo Providers](https://docs.harness.io/article/ay9hlwbgwa-add-source-repo-providers)
-* [AWS ECS Quickstart](https://docs.harness.io/article/j39azkrevm-aws-ecs-deployments)
+* [AWS ECS Quickstart](../../../first-gen-quickstarts/aws-ecs-deployments.md)
 
 ### Limitations
 
@@ -31,7 +31,7 @@ You can also use a Git repo for your entire Harness Application, and sync it uni
 
 ### Supported Platforms and Technologies
 
-See  [Supported Platforms and Technologies](https://docs.harness.io/article/220d0ojx5y-supported-platforms).
+See  [Supported Platforms and Technologies](../../../starthere-firstgen/supported-platforms.md).
 
 ### Step 1: Link Harness to Your Repo
 

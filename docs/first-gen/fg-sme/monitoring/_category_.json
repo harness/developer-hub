@@ -1,1 +1,14 @@
-{"label": "FirstGen Monitoring", "collapsible": "true", "collapsed": "true", "className": "red", "link": {"type": "generated-index", "title": "FirstGen Monitoring"}, "customProps": {"position": "To position the category, enter a number and move this to the root level.", "helpdocs_category_id": "bl6dov8qq4"}}
+{
+  "label": "FirstGen Monitoring",
+  "position": 10,
+  "collapsible": "true",
+  "collapsed": "true",
+  "className": "red",
+  "link": {
+    "type": "generated-index",
+    "title": "FirstGen Monitoring"
+  },
+  "customProps": {
+    "helpdocs_category_id": "bl6dov8qq4"
+  }
+}

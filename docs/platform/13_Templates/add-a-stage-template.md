@@ -25,7 +25,7 @@ You'll learn how to: 
 ### Before you begin
 
 * Review [Template Library Overview](template.md).
-* Review [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts) to establish a general understanding of Harness.
+* Review [Harness Key Concepts](../../first-gen/starthere-firstgen/harness-key-concepts.md) to establish a general understanding of Harness.
 * The Stage Template in this quickstart is added to a CD Pipeline. If you are new to Harness CD, see [CD Quickstarts](https://ngdocs.harness.io/category/c9j6jejsws-cd-quickstarts).
 * You can also create CI Build Stage Templates and Manual and Jira Approval Stage Templates. See ​[CIE Quickstarts](../../continuous-integration/ci-quickstarts/ci-pipeline-quickstart.md) and [Using Manual Harness Approval Stages](../9_Approvals/adding-harness-approval-stages.md) and [Adding Jira Approval Stages and Steps](../9_Approvals/adding-jira-approval-stages.md).
 * The Stage Template in this quickstart uses Runtime Inputs. Runtime Inputs are placeholders for values that will be provided when you start a Pipeline execution. See [Fixed Values, Runtime Inputs, and Expressions](../20_References/runtime-inputs.md).

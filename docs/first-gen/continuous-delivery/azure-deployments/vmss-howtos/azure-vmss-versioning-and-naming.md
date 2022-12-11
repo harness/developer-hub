@@ -26,7 +26,7 @@ In this topic:
 * [Add Your Azure VM Image for Deployment](add-your-azure-vm-image-for-deployment.md)
 * [Connect to Your Azure VMSS](connect-to-your-azure-vmss.md)
 * [Harness Delegate Overview](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation)
-* [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts)
+* [Harness Key Concepts](../../../starthere-firstgen/harness-key-concepts.md)
 
 ### VMSS and Instance Names
 

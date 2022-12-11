@@ -10,13 +10,13 @@ helpdocs_is_published: true
 
 This topic describes the concept of a Harness IIS (.NET) deployment by describing the high-level steps involved.
 
-For a quick tutorial, see [IIS (.NET) Quickstart](https://docs.harness.io/article/2oo63r9rwb-iis-net-quickstart).
+For a quick tutorial, see [IIS (.NET) Quickstart](../../../first-gen-quickstarts/iis-net-quickstart.md).
 
 For detailed instructions on using IIS (.NET) in Harness, see the [IIS (.NET)](https://docs.harness.io/category/iis-(https://docs.harness.io.net)-deployments) How-tos.
 
 ### Before You Begin
 
-Before learning about Harness IIS (.NET) deployments, you should have an understanding of [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts).
+Before learning about Harness IIS (.NET) deployments, you should have an understanding of [Harness Key Concepts](../../../starthere-firstgen/harness-key-concepts.md).
 
 ### Video Summary
 
@@ -64,6 +64,6 @@ The following list describes the major steps of a Harness IIS (.NET) deployment:
 
 Read the following topics to build on what you've learned:
 
-* [IIS (.NET) Quickstart](https://docs.harness.io/article/2oo63r9rwb-iis-net-quickstart)
+* [IIS (.NET) Quickstart](../../../first-gen-quickstarts/iis-net-quickstart.md)
 * [IIS (.NET)](https://docs.harness.io/category/iis-(https://docs.harness.io.net)-deployments) How-tos
 

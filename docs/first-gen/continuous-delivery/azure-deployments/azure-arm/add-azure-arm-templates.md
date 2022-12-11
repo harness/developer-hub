@@ -37,7 +37,7 @@ The following video shows you how to add an ARM template from [Azure's ARM templ
 
 ### Supported Platforms and Technologies
 
-See [Supported Platforms and Technologies](https://docs.harness.io/article/220d0ojx5y-supported-platforms).
+See [Supported Platforms and Technologies](../../../starthere-firstgen/supported-platforms.md).
 
 ### Step 1: Add Harness Delegate
 

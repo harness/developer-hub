@@ -1,7 +1,7 @@
 ---
 title: Backup and Recovery
-description: You can back up and recover Harness Self-Managed Enterprise Edition - Virtual Machine using KOTS snapshots. KOTS has documented snapshots extensively in Snapshots. This topic provides a summary of th…
-# sidebar_position: 2
+description: You can back up and recover Harness Self-Managed Enterprise Edition - Virtual Machine using KOTS snapshots. KOTS has documented snapshots extensively in Snapshots. 
+sidebar_position: 30
 helpdocs_topic_id: j917dpk2zv
 helpdocs_category_id: 872aodnvl1
 helpdocs_is_private: false
@@ -42,7 +42,9 @@ Automated backup and recovery is supported in the following Harness Self-Managed
 
 Snapshots are stored in an AWS S3 bucket or AWS S3-compatible storage (Harness recommends either), or in Internal Storage.
 
-![](./static/virtual-machine-on-prem-backup-and-recovery-00.png)You will select and set up the storage option before creating a snapshot. This setup is described below.
+![](./static/virtual-machine-on-prem-backup-and-recovery-00.png)
+
+You will select and set up the storage option before creating a snapshot. This setup is described below.
 
 #### Velero is Already Installed
 
@@ -102,7 +104,14 @@ The retention policy is described by KOTS:
 You can perform a full or partial restore from a Full Snapshot. This is why KOTS recommends Full Snapshots.
 
 1. Click **Full Snapshots (Instance)**.
-2. Click the restore button.![](./static/virtual-machine-on-prem-backup-and-recovery-04.png)**Restore from backup** appears.![](./static/virtual-machine-on-prem-backup-and-recovery-05.png)
+2. Click the restore button.
+
+   ![](./static/virtual-machine-on-prem-backup-and-recovery-04.png)
+	 
+	 **Restore from backup** appears.
+	 
+	 ![](./static/virtual-machine-on-prem-backup-and-recovery-05.png)
+	 
 3. Select **Full restore** or **Partial restore**.
 4. For **Full restore**, do the following:
 	1. Copy the provided command and run it on any master node. You might need to log into the admin tool again after the restore.
@@ -116,7 +125,12 @@ You can perform a full or partial restore from a Full Snapshot. This is why KOTS
 You can perform a partial restore using a Full or Partial Snapshot. The Full Snapshot steps are described above.
 
 1. Click **Partial snapshots**.
-2. Click the restore button.![](./static/virtual-machine-on-prem-backup-and-recovery-06.png)**Restore from Partial backup (Application)** appears.
+2. Click the restore button.
+
+   ![](./static/virtual-machine-on-prem-backup-and-recovery-06.png)
+	 
+	 **Restore from Partial backup (Application)** appears.
+	 
 3. Enter the slug **harness**.
 4. Click **Confirm and restore**. You might need to log into the admin tool again after the restore.
 

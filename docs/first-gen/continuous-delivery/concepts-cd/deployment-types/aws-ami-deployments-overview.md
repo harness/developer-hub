@@ -10,13 +10,13 @@ helpdocs_is_published: true
 
 This topic describes the concept of a Harness AWS AMI deployment by describing the high-level steps involved.
 
-For a quick tutorial, see the [AWS AMI Quickstart](https://docs.harness.io/article/wfk9o0tsjb-aws-ami-deployments).
+For a quick tutorial, see the [AWS AMI Quickstart](../../../first-gen-quickstarts/aws-ami-deployments.md).
 
 For detailed instructions on using AWS AMI in Harness, see the [AWS AMI How-tos](https://docs.harness.io/category/aws-ami-deployments).
 
 ### Before You Begin
 
-Before learning about Harness AWS AMI deployments, you should have an understanding of [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts).
+Before learning about Harness AWS AMI deployments, you should have an understanding of [Harness Key Concepts](../../../starthere-firstgen/harness-key-concepts.md).
 
 ### What Does Harness Need Before You Start?
 
@@ -96,6 +96,6 @@ If you do not want a previously deployed ASG to be downsized, then you must use 
 
 Read the following topics to build on what you've learned:
 
-* [AWS AMI Quickstart](https://docs.harness.io/article/wfk9o0tsjb-aws-ami-deployments)
+* [AWS AMI Quickstart](../../../first-gen-quickstarts/aws-ami-deployments.md)
 * [AWS AMI How-tos](https://docs.harness.io/category/aws-ami-deployments)
 

@@ -1,7 +1,7 @@
 ---
 title: Infrastructure
 description: This document lists the infrastructure requirements for a Harness Self-Managed Enterprise Edition - Virtual Machine installation. Harness Self-Managed Enterprise Edition - Virtual Machine refers to i…
-# sidebar_position: 2
+sidebar_position: 10
 helpdocs_topic_id: yo2jldlq45
 helpdocs_category_id: 872aodnvl1
 helpdocs_is_private: false
@@ -16,27 +16,29 @@ First, you use the requirements below to bootstrap a Kubernetes cluster on your 
 
 After you stand up the Kubernetes cluster, you use it to install Harness Self-Managed Enterprise Edition - Virtual Machine on the configured cluster.
 
-### Supported Operating Systems
+## Supported Operating Systems
 
 * Ubuntu 18.04 (recommended)
 * CentOS 7.4, 7.5, 7.6, 7.7
 * RHEL 7.4, 7.5, 7.6, 7.7
 
-### VM Specifications
+## VM Specifications
 
 There are different VM specifications for production and development installations.
 
-#### Number of VMs
+### Number of VMs
 
 The number of VMs depends on the configuration mode you select during installation:
 
-![](./static/embedded-kubernetes-on-prem-infrastructure-requirements-32.png)* **Demo:** 1 VM.
+![](./static/embedded-kubernetes-on-prem-infrastructure-requirements-32.png)
+
+* **Demo:** 1 VM.
 * **Single node production:** 1 VM.
 * **HA production mode:** 3 VMs.
 
 You'll be able to add more nodes to the cluster later, if needed.
 
-#### Production Installation
+### Production Installation
 
 VM Specifications: 15 cores, 30 GB memory, 400 GB disk space.
 
@@ -58,13 +60,11 @@ Here are the requirements for each microservice.
 | KOTS Admin and Kubernetes Installations |   |   |   | 10 | 18 |
 | **Total** |  |  |  | **43.5** | **83.5** |
 
-#### Dev Installation
+### Dev Installation
 
 VM Specifications: 10 cores, 16 GB memory, 100 GB disk space.
 
 Here are the requirements for each microservice.
-
-
 
 |  |  |  |  |  |  |
 | --- | --- | --- | --- | --- | --- |
@@ -82,17 +82,21 @@ Here are the requirements for each microservice.
 
  
 
-### Networking Architecture
+## Networking Architecture
 
 The following examples diagram illustrate the simple networking architecture for Harness Self-Managed Enterprise Edition - Virtual Machine.
 
-GCP Example:
+#### GCP Example
 
-![](./static/embedded-kubernetes-on-prem-infrastructure-requirements-33.png)AWS Example:
+![](./static/embedded-kubernetes-on-prem-infrastructure-requirements-33.png)
 
-![](./static/embedded-kubernetes-on-prem-infrastructure-requirements-34.png)The following sections go into greater detail.
+#### AWS Example
 
-### Open Ports for 3 VMs
+![](./static/embedded-kubernetes-on-prem-infrastructure-requirements-34.png)
+
+The following sections go into greater detail.
+
+## Open Ports for 3 VMs
 
 * TCP ports 6443-6783
 * UDP ports 6783 and 6784
@@ -102,11 +106,13 @@ GCP Example:
 
 For example, here is a GCP firewall rule that includes the required ports (80 is already open):
 
-![](./static/embedded-kubernetes-on-prem-infrastructure-requirements-35.png)### Load Balancer
+![](./static/embedded-kubernetes-on-prem-infrastructure-requirements-35.png)
+
+## Load Balancer
 
 There are two load balancers required for a Harness Self-Managed Enterprise Edition - Virtual Machine installation.
 
-#### Load Balancer to Harness Self-Managed Enterprise Edition Application
+### Load Balancer to Harness Self-Managed Enterprise Edition Application
 
 A load balancer routing all the incoming traffic to the port where Harness is exposed on all of the VM’s. Once you install Harness, this port will be used for accessing Harness Self-Managed Enterprise Edition.
 
@@ -119,20 +125,21 @@ For example, in GCP, you create an HTTP Load Balancer with a frontend listening 
 
 Later, when you configure Harness Self-Managed Enterprise Edition, you will enter the frontend IP address in **Load Balancer URL** and the backend port 80 in the **NodePort** setting:
 
-![](./static/embedded-kubernetes-on-prem-infrastructure-requirements-36.png)You can also use port 443 for TLS.
+![](./static/embedded-kubernetes-on-prem-infrastructure-requirements-36.png)
+
+You can also use port 443 for TLS.
 
 Typically, you will also set up DNS to resolve a domain to the frontend IP, and then use the domain name in **Load Balancer URL**.
 
-##### Port Mapping for gRPC Traffic
+#### Port Mapping for gRPC Traffic
 
 You also need to open port 9879 on the Load Balancer and map it to port 9879 on the Ingress controller. This is to support gRPC traffic.
 
-#### In-Cluster Load Balancer for High Availability
+### In-Cluster Load Balancer for High Availability
 
 A TCP forwarding load balancer (L4) distributing the traffic on port 6443. This will be used for Kubernetes cluster HA. The health check should be on port 6443, also.
 
 The TCP load balancer you created will be selected when you install Harness using the KOTS plugin via the `-s ha` parameter:
-
 
 ```
 $ curl -sSL https://k8s.kurl.sh/harness | sudo bash -s ha  
@@ -141,6 +148,7 @@ Please enter a load balancer address to route external and internal traffic to t
 In the absence of a load balancer address, all traffic will be routed to the first master.  
 Load balancer address:
 ```
+
 You will enter the IP address of your TCP load balancer.
 
 For example, here is a GCP TCP load balancer with its frontend forwarding rule using port 6443:
@@ -149,11 +157,11 @@ For example, here is a GCP TCP load balancer with its frontend forwarding rule u
 
 See [HA Installations](https://kots.io/kotsadm/installing/installing-embedded-cluster/#ha-installations) from KOTS.
 
-### User Access Requirements
+## User Access Requirements
 
 For initial setup: sudo/root access is required.
 
-### Network Requirements
+## Network Requirements
 
 Whitelist the following URLs:
 
@@ -170,7 +178,7 @@ Outbound access to the following URLs:
 
 The outbound access is required for a **connected install only**. If you have opted for [Airgap mode](https://kots.io/kotsadm/installing/airgap-packages/), this is not required.If your cluster does not have direct outbound connectivity and needs a proxy for outbound connections, use these instructions: [https://docs.docker.com/network/proxy](https://docs.docker.com/network/proxy/) to set up a proxy on the node machines.
 
-### Trusted Certificate Requirement for Harness Self-Managed Enterprise Edition
+## Trusted Certificate Requirement for Harness Self-Managed Enterprise Edition
 
 All connections to the Harness Manager can be secure or unencrypted according to the URL scheme you use when you configure the Load Balancer URL during installation (`https://` or `http://`):
 
@@ -182,7 +190,7 @@ For connections from the Harness Manager outbound to an integration, you can use
 
 See [Add Self-Signed Certificates for Delegate Connections](https://docs.harness.io/article/8bj3v5jqzk-add-self-signed-certificates-for-delegate-connections).
 
-### Install Harness Self-Managed Enterprise Edition
+## Install Harness Self-Managed Enterprise Edition
 
 Now that you have set up the requirements, proceed with installation in [Harness Self-Managed Enterprise Edition - Virtual Machine: Installation Guide](on-prem-embedded-cluster-setup.md).
 

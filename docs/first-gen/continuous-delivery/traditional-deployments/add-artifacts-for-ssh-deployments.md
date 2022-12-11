@@ -16,7 +16,7 @@ In this topic, we will show you how to create the Service for your application p
 
 * [Connect to Your Repos and Target SSH Platforms](connect-to-your-target-ssh-platform.md)
 * [Traditional Deployments Overview](traditional-deployments-overview.md)
-* [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts)
+* [Harness Key Concepts](../../starthere-firstgen/harness-key-concepts.md)
 
 ### Step 1: Create a Harness SSH Service
 

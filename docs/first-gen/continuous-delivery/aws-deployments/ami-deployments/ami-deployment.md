@@ -13,7 +13,7 @@ This guide explains how to use existing Amazon Machine Images (AMIs) and AWS Aut
 
 ### Deployment Overview
 
-For a general overview of how Harness works, see [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts).
+For a general overview of how Harness works, see [Harness Key Concepts](../../../starthere-firstgen/harness-key-concepts.md).
 
 This guide will cover the following major steps:
 
@@ -71,7 +71,7 @@ Add an AWS Cloud Provider as follows:
 
 The following procedure creates a Harness Application for your AMI deployments.
 
-An Application in Harness represents a logical group of one or more entities, including Services, Environments, Workflows, Pipelines, Triggers, and Infrastructure Provisioners. Applications organize all of the entities and configurations in Harness CI/CD. For more about Applications, see [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts).
+An Application in Harness represents a logical group of one or more entities, including Services, Environments, Workflows, Pipelines, Triggers, and Infrastructure Provisioners. Applications organize all of the entities and configurations in Harness CI/CD. For more about Applications, see [Harness Key Concepts](../../../starthere-firstgen/harness-key-concepts.md).
 
 To create a new Application:
 

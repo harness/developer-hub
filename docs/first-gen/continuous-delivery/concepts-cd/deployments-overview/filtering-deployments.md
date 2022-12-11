@@ -16,7 +16,7 @@ You can save these filters as a quick way to filter deployments in the future.
 ### Before You Begin
 
 * [Deployments Overview](deployments-overview.md)
-* [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts)
+* [Harness Key Concepts](../../../starthere-firstgen/harness-key-concepts.md)
 
 ### Limitations
 

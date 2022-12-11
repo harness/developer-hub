@@ -10,13 +10,13 @@ helpdocs_is_published: true
 
 This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/article/lbhf2h71at).Harness includes both Kubernetes and Helm deployments, and you can use Helm charts in both. Harness [Kubernetes](../../kubernetes-deployments/kubernetes-deployments-overview.md) integration allows you to use your own Helm chart (remote or local), and Harness executes the Kubernetes API calls to build everything without Helm and Tiller (for Helm v2) needing to be installed in the target cluster. See [Link Resource Files or Helm Charts in Git Repos](../../kubernetes-deployments/link-resource-files-or-helm-charts-in-git-repos.md).This topic describes the concept of a Harness **Native Helm** deployment by describing the high-level steps involved.
 
-For a quick tutorial on using Helm with a Harness Kubernetes deployment, see the [Helm Quickstart](https://docs.harness.io/article/2aaevhygep-helm-quickstart).
+For a quick tutorial on using Helm with a Harness Kubernetes deployment, see the [Helm Quickstart](../../../first-gen-quickstarts/helm-quickstart.md).
 
 Harness supports Helm v2 and v3.
 
 ### Before You Begin
 
-Before learning about Harness Helm-based Kubernetes deployments, you should have an understanding of [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts).
+Before learning about Harness Helm-based Kubernetes deployments, you should have an understanding of [Harness Key Concepts](../../../starthere-firstgen/harness-key-concepts.md).
 
 ### Native Helm or Kubernetes Deployments?
 

@@ -10,11 +10,11 @@ helpdocs_is_published: true
 
 This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/article/5fnx4hgwsa).This topic describes the concept of a Harness AWS Lambda deployment by describing the high-level steps involved.
 
-For a quick tutorial, see the [AWS Lambda Quickstart](https://docs.harness.io/article/wy1rjh19ej-aws-lambda-deployments).
+For a quick tutorial, see the [AWS Lambda Quickstart](../../../first-gen-quickstarts/aws-lambda-deployments.md).
 
 ### Before You Begin
 
-Before learning about Harness AWS Lambda deployments, you should have an understanding of [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts).
+Before learning about Harness AWS Lambda deployments, you should have an understanding of [Harness Key Concepts](../../../starthere-firstgen/harness-key-concepts.md).
 
 ### What Does Harness Need Before You Start?
 
@@ -69,5 +69,5 @@ The following list describes the major steps of a Harness AWS Lambda deployment:
 
 Read the following topics to build on what you've learned:
 
-* [AWS Lambda Quickstart](https://docs.harness.io/article/wy1rjh19ej-aws-lambda-deployments) tutorial
+* [AWS Lambda Quickstart](../../../first-gen-quickstarts/aws-lambda-deployments.md) tutorial
 

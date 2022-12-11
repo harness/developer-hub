@@ -13,7 +13,7 @@ This topic sets up the Harness Delegate in your Tanzu Application Service (TAS, 
 
 ### Before You Begin
 
-* See [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts).
+* See [Harness Key Concepts](../../starthere-firstgen/harness-key-concepts.md).
 
 ### Step 1: Set Up the Harness Delegate
 

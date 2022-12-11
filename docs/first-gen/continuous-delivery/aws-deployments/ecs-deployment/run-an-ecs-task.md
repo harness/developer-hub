@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-In addition to deploying tasks as part of your [standard ECS deployment](https://docs.harness.io/article/j39azkrevm-aws-ecs-deployments), you can use the ECS Run Task step to run individual tasks separately as a step in your ECS Workflow.
+In addition to deploying tasks as part of your [standard ECS deployment](../../../first-gen-quickstarts/aws-ecs-deployments.md), you can use the ECS Run Task step to run individual tasks separately as a step in your ECS Workflow.
 
 The ECS Run Task step is available in all ECS Workflow types.
 
@@ -16,13 +16,13 @@ For more information, see [Running tasks](https://docs.aws.amazon.com/AmazonECS/
 
 ### Before You Begin
 
-* [AWS ECS Quickstart](https://docs.harness.io/article/j39azkrevm-aws-ecs-deployments)
+* [AWS ECS Quickstart](../../../first-gen-quickstarts/aws-ecs-deployments.md)
 * [ECS How-tos](https://docs.harness.io/category/aws-ecs-deployments)
 * [Deploy Multiple ECS Sidecar Containers](deploy-multiple-containers-in-a-single-ecs-workflow.md)
 
 ### Supported Platforms and Technologies
 
-See [Supported Platforms and Technologies](https://docs.harness.io/article/220d0ojx5y-supported-platforms).
+See [Supported Platforms and Technologies](../../../starthere-firstgen/supported-platforms.md).
 
 ### Limitations
 
@@ -61,7 +61,7 @@ if you are new to ECS task scheduling and running tasks manually, review the fol
 
 ### Step 1: Add ECS Run Task to Workflow
 
-This step assumes you have an existing Harness ECS Workflow. If you have not created one, see [AWS ECS Quickstart](https://docs.harness.io/article/j39azkrevm-aws-ecs-deployments) and [AWS ECS Deployments](https://docs.harness.io/category/aws-ecs-deployments)how-tos.
+This step assumes you have an existing Harness ECS Workflow. If you have not created one, see [AWS ECS Quickstart](../../../first-gen-quickstarts/aws-ecs-deployments.md) and [AWS ECS Deployments](https://docs.harness.io/category/aws-ecs-deployments)how-tos.
 
 1. In your ECS Workflow, in the **Set up Container** section, click **Add Step**.
 2. Select **ECS Run Task**.

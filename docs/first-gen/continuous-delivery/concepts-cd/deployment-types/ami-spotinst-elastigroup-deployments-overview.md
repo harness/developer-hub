@@ -14,7 +14,7 @@ For detailed instructions on using AWS Spotinst Elastigroup in Harness, see theÂ
 
 ### Before You Begin
 
-Before learning about Harness AWS Spotinst Elastigroup deployments, you should have an understanding of [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts).
+Before learning about Harness AWS Spotinst Elastigroup deployments, you should have an understanding of [Harness Key Concepts](../../../starthere-firstgen/harness-key-concepts.md).
 
 ### What Does Harness Need Before You Start?
 

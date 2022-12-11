@@ -16,7 +16,7 @@ Development teams can then deploy consistently without using the Harness UI to c
 
 ### Before You Begin
 
-* [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts) — Ensure you know Harness Key Concepts.
+* [Harness Key Concepts](../../starthere-firstgen/harness-key-concepts.md) — Ensure you know Harness Key Concepts.
 * [Configuration as Code](https://docs.harness.io/article/htvzryeqjw-configuration-as-code) — Review Harness YAML interface.
 * [Harness Git Integration Overview](harness-git-ops.md) — Review Harness support for Git.
 
@@ -60,7 +60,7 @@ Once you click **Submit** you will see the Application in your repo:
 
 #### Service Template
 
-Next, create a Harness Service in the Application. For this example, we'll create a Kubernetes Service named **SampleK8s**. For details, see [Kubernetes Quickstart](https://docs.harness.io/article/7in9z2boh6-kubernetes-quickstart).
+Next, create a Harness Service in the Application. For this example, we'll create a Kubernetes Service named **SampleK8s**. For details, see [Kubernetes Quickstart](../../first-gen-quickstarts/kubernetes-quickstart.md).
 
 The Service is set up with the following:
 

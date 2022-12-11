@@ -37,7 +37,7 @@ https://harness-1.wistia.com/medias/rpv5vwzpxz-->
 
 ### Supported Platforms and Technologies
 
-See [Supported Platforms and Technologies](https://docs.harness.io/article/220d0ojx5y-supported-platforms).
+See [Supported Platforms and Technologies](../../../starthere-firstgen/supported-platforms.md).
 
 ### Step 1: Collect Azure Web App Information
 

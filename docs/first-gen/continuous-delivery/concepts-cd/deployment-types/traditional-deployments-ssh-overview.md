@@ -12,7 +12,7 @@ Traditional deployments use application package files and a runtime environment 
 
 For How-tos on Traditional deployments, see [Traditional (SSH) Deployments How-tos](../../traditional-deployments/traditional-deployments-overview.md).You can perform traditional deployments to AWS and Azure, and to any server on any platform via a platform agnostic [Physical Data Center](https://docs.harness.io/article/stkxmb643f-add-physical-data-center-cloud-provider) connection. In all cases, you simply set up a Harness Infrastructure Definition and target the hosts on the platform.
 
-These deployments are different from Harness deployments using container orchestration platforms like [Kubernetes](https://docs.harness.io/article/7in9z2boh6-kubernetes-quickstart), [Helm](https://docs.harness.io/article/2aaevhygep-helm-quickstart), [Pivotal](https://docs.harness.io/article/hy819vmsux-pivotal-cloud-foundry-quickstart), [AWS ECS](https://docs.harness.io/article/j39azkrevm-aws-ecs-deployments), and [Azure](../../azure-deployments/aks-howtos/azure-deployments-overview.md).
+These deployments are different from Harness deployments using container orchestration platforms like [Kubernetes](../../../first-gen-quickstarts/kubernetes-quickstart.md), [Helm](../../../first-gen-quickstarts/helm-quickstart.md), [Pivotal](../../../first-gen-quickstarts/pivotal-cloud-foundry-quickstart.md), [AWS ECS](../../../first-gen-quickstarts/aws-ecs-deployments.md), and [Azure](../../azure-deployments/aks-howtos/azure-deployments-overview.md).
 
 For a Build and Deploy Pipeline using a Traditional deployment, see [Artifact Build and Deploy Pipelines Overview](artifact-build-and-deploy-pipelines-overview.md).Traditional deployments involve obtaining an application package from an artifact source, such as a WAR file in an AWS S3 bucket, and deploying it to a target host, such as a virtual machine.
 
@@ -24,11 +24,11 @@ All of these formats are also supported by other Harness deployment types, such 
 
 ### Supported Platforms and Technologies
 
-See **SSH** in [Supported Platforms and Technologies](https://docs.harness.io/article/220d0ojx5y-supported-platforms).
+See **SSH** in [Supported Platforms and Technologies](../../../starthere-firstgen/supported-platforms.md).
 
 ### Deployment Summary
 
-For a general overview of how Harness works, see [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts).
+For a general overview of how Harness works, see [Harness Key Concepts](../../../starthere-firstgen/harness-key-concepts.md).
 
 The following list describes the major steps involved in a Traditional deployment:
 

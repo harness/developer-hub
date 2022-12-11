@@ -23,7 +23,7 @@ For other deployment strategies, see [Create an Azure VMSS Basic Deployment](cre
 * [Add Your Azure VM Image for Deployment](add-your-azure-vm-image-for-deployment.md)
 * [Connect to Azure for VMSS Deployments](connect-to-your-azure-vmss.md)
 * [Harness Delegate Overview](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation)
-* [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts)
+* [Harness Key Concepts](../../../starthere-firstgen/harness-key-concepts.md)
 
 ### Visual Summary
 
@@ -41,7 +41,7 @@ Here is the final, deployed VMSS with its prod pool:
 
 ### Supported Platforms and Technologies
 
-See [Supported Platforms and Technologies](https://docs.harness.io/article/220d0ojx5y-supported-platforms).
+See [Supported Platforms and Technologies](../../../starthere-firstgen/supported-platforms.md).
 
 ### Review: Load Balancer Requirements
 
