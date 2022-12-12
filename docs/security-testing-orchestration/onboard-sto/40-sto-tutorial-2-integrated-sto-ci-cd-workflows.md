@@ -282,10 +282,6 @@ pipeline:
                                         fail_on_severity: HIGH  
                                     imagePullPolicy: Always  
                                 failureStrategies: []  
-              variables:  
-                  - name: sto_api_key  
-                    type: Secret  
-                    value: <+input>  
 
 ```
 </details>
