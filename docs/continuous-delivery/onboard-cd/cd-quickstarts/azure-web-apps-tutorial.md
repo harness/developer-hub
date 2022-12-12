@@ -107,26 +107,26 @@ You will add the same Docker image or non-containerized artifact you use in your
 2. In **Specify Artifact Repository Type**, select the artifact registry type.
 3. Select or create a Connector to this registry.
 
-For details on setting up each registry, go to [Connect to an Artifact Repo](https://docs.harness.io/article/xxvnk67c5x-connect-to-an-artifact-repo).
+  For details on setting up each registry, go to [Connect to an Artifact Repo](https://docs.harness.io/article/xxvnk67c5x-connect-to-an-artifact-repo).
 
-Once you have an artifact Connector set up and selected, you can fill out the **Artifact Details** settings.
+  Once you have an artifact Connector set up and selected, you can fill out the **Artifact Details** settings.
 
-Here are some common examples.
+  Here are some common examples.
 
-| **ACR** | **Artifactory** | **Docker Registry** |
-| --- | --- | --- |
-| ![](static/acr.png) | ![](static/artifactory.png) | ![](static/docker.png) |
+  | **ACR** | **Artifactory** | **Docker Registry** |
+  | --- | --- | --- |
+  | ![](static/acr.png) | ![](static/artifactory.png) | ![](static/docker.png) |
 
-The settings for the Harness Connector and Artifact Details are a combination of the container settings in your Azure Web App.
+  The settings for the Harness Connector and Artifact Details are a combination of the container settings in your Azure Web App.
 
-For example, here are the Docker Hub settings in Harness and an Azure Web App:
+  For example, here are the Docker Hub settings in Harness and an Azure Web App:
 
-![](./static/azure-web-apps-tutorial-159.png)
+  ![](./static/azure-web-apps-tutorial-159.png)
 
-The above example uses a [publicly available Docker image from Harness](https://hub.docker.com/r/harness/todolist-sample/tags?page=1&ordering=last_updated). 
+  The above example uses a [publicly available Docker image from Harness](https://hub.docker.com/r/harness/todolist-sample/tags?page=1&ordering=last_updated). 
 
-You might want to use that the first time you set up an Azure Web App deployment.When are done, click **Submit**.
-
+  You might want to use that the first time you set up an Azure Web App deployment.
+4. When are done, click **Submit**.
 1. Click **Continue** to move onto **Infrastructure**.
 
 ### Harness Delegate
@@ -151,39 +151,37 @@ You simply provide select or create an Azure Cloud Provider Connector and then s
 4. In **Web App Infrastructure Details**, you will select or create an Azure Cloud Provider Connector and then select the Web App's Subscription Id and Resource Group.
 5. In **Connector**, select or create an Azure Cloud Provider Connector that connects to your Application and Tenant Ids.
 
-For steps on setting up a new Azure Cloud Provider Connector, go to [Add a Microsoft Azure Cloud Connector](https://docs.harness.io/article/9epdx5m9ae-add-a-microsoft-azure-connector).
+  For steps on setting up a new Azure Cloud Provider Connector, go to [Add a Microsoft Azure Cloud Connector](https://docs.harness.io/article/9epdx5m9ae-add-a-microsoft-azure-connector).
 
-Azure Web App Roles and PermissionsIf you use Microsoft Azure Cloud Connector and Service Principal or Managed Identity credentials, you can use a custom role or the **Contributor** role. The **Contributor** role is the minimum requirement.
+  Azure Web App Roles and PermissionsIf you use Microsoft Azure Cloud Connector and Service Principal or Managed Identity credentials, you can use a custom role or the **Contributor** role. The **Contributor** role is the minimum requirement.
 
-Below are the Azure RBAC permissions used for System Assigned Managed Identity permissions to perform Azure Web App deployments for container and non-container artifacts.
+  Below are the Azure RBAC permissions used for System Assigned Managed Identity permissions to perform Azure Web App deployments for container and non-container artifacts.
 
-
-```
-[  
-                    "microsoft.web/sites/slots/deployments/read",  
-                    "Microsoft.Web/sites/Read",  
-                    "Microsoft.Web/sites/config/Read",  
-                    "Microsoft.Web/sites/slots/config/Read",  
-                    "microsoft.web/sites/slots/config/appsettings/read",  
-                    "Microsoft.Web/sites/slots/*/Read",  
-                    "Microsoft.Web/sites/slots/config/list/Action",  
-                    "Microsoft.Web/sites/slots/stop/Action",  
-                    "Microsoft.Web/sites/slots/start/Action",  
-                    "Microsoft.Web/sites/slots/config/Write",  
-                    "Microsoft.Web/sites/slots/Write",  
-                    "microsoft.web/sites/slots/containerlogs/action",  
-                    "Microsoft.Web/sites/config/Write",  
-                    "Microsoft.Web/sites/slots/slotsswap/Action",  
-                    "Microsoft.Web/sites/config/list/Action",  
-                    "Microsoft.Web/sites/start/Action",  
-                    "Microsoft.Web/sites/stop/Action",  
-                    "Microsoft.Web/sites/Write",  
-                    "microsoft.web/sites/containerlogs/action",  
-                    "Microsoft.Web/sites/publish/Action",  
-                    "Microsoft.Web/sites/slots/publish/Action"  
-]
-```
-
+  ```
+  [  
+                      "microsoft.web/sites/slots/deployments/read",  
+                      "Microsoft.Web/sites/Read",  
+                      "Microsoft.Web/sites/config/Read",  
+                      "Microsoft.Web/sites/slots/config/Read",  
+                      "microsoft.web/sites/slots/config/appsettings/read",  
+                      "Microsoft.Web/sites/slots/*/Read",  
+                      "Microsoft.Web/sites/slots/config/list/Action",  
+                      "Microsoft.Web/sites/slots/stop/Action",  
+                      "Microsoft.Web/sites/slots/start/Action",  
+                      "Microsoft.Web/sites/slots/config/Write",  
+                      "Microsoft.Web/sites/slots/Write",  
+                      "microsoft.web/sites/slots/containerlogs/action",  
+                      "Microsoft.Web/sites/config/Write",  
+                      "Microsoft.Web/sites/slots/slotsswap/Action",  
+                      "Microsoft.Web/sites/config/list/Action",  
+                      "Microsoft.Web/sites/start/Action",  
+                      "Microsoft.Web/sites/stop/Action",  
+                      "Microsoft.Web/sites/Write",  
+                      "microsoft.web/sites/containerlogs/action",  
+                      "Microsoft.Web/sites/publish/Action",  
+                      "Microsoft.Web/sites/slots/publish/Action"  
+  ]
+  ```
 1. In **Subscription Id**, select the Azure subscription used by your Web App.
   
   The subscription is located in the Web App **Overview** section of the Azure portal.

@@ -207,8 +207,7 @@ Next, we can add a serverless.yaml for our deployment. We'll use [the publicly-a
      * In **Secret Value**, paste in a GitHub Personal access token.When you're logged into GitHub, these tokens are listed at <https://github.com/settings/tokens>. For steps on setting up a GitHub PAT, see [Creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) from GitHub.
      * Make sure your PAT has the **repo** scope selected:
 
-![](static/repoScope.png)
-
+	![](static/repoScope.png)
 1. Select **Connect through Harness Platform**.
 1. Click **Finish**.
 2. Back in **Specify Serverless Lambda Manifest Store**, click **Continue**.
@@ -286,31 +285,30 @@ Now we need to edit the YAML to install Serverless when the Delegate pods are cr
 
 1. Open the Delegate YAML in a text editor.
 2. Locate the Environment variable `INIT_SCRIPT` in the `StatefulSet` (Legacy Delegate) or `Deployment` (Harness Delegate) object:
-
-```yaml
-...  
-        - name: INIT_SCRIPT  
-          value: ""  
-...
-```
+	```yaml
+	...  
+			- name: INIT_SCRIPT  
+			value: ""  
+	...
+	```
 1. Replace the value with the following Serverless installation script.
 
-```yaml
-...  
-        - name: INIT_SCRIPT  
-          value: |-  
-            #!/bin/bash  
-            echo "Start"  
-            export DEBIAN_FRONTEND=noninteractive  
-            echo "non-inte"  
-            apt-get update  
-            echo "updagte"  
-            apt install -yq npm  
-            echo "npm"  
-            npm install -g serverless@v2.50.0  
-            echo "Done"  
-...
-```
+	```yaml
+	...  
+			- name: INIT_SCRIPT  
+			value: |-  
+				#!/bin/bash  
+				echo "Start"  
+				export DEBIAN_FRONTEND=noninteractive  
+				echo "non-inte"  
+				apt-get update  
+				echo "updagte"  
+				apt install -yq npm  
+				echo "npm"  
+				npm install -g serverless@v2.50.0  
+				echo "Done"  
+	...
+	```
 
 In cases when the Delegate OS doesn't support `apt` (Red Hat Linux), you can edit this script to install `npm`. The rest of the code should remain the same. If you are using Harness Delegate, the base image is Red Hat UBI.Save the YAML file as **harness-delegate.yml**.
 
@@ -320,13 +318,13 @@ In cases when the Delegate OS doesn't support `apt` (Red Hat Linux), you can edi
 2. In the same terminal, log into your Kubernetes cluster. On most platforms, you select the cluster, click **Connect**, and copy the access command.
 3. Next, install Harness Delegate using the **harness-delegate.yml** file you just downloaded. In the terminal connected to your cluster, run this command:
 
-```
-kubectl apply -f harness-delegate.yml
-```
+	```
+	kubectl apply -f harness-delegate.yml
+	```
 
-You can find this command in the Delegate wizard:
+	You can find this command in the Delegate wizard:
 
-![](./static/serverless-lambda-cd-quickstart-116.png)
+	![](./static/serverless-lambda-cd-quickstart-116.png)
 
 1. In Harness, click **Verify**. It'll take a few minutes to verify the Delegate. Once it is verified, close the wizard.
 2. Back in **Set Up Delegates**, in the list of Delegates, you can see your new Delegate and its tags.
@@ -351,9 +349,9 @@ You can find this command in the Delegate wizard:
 	When you click one of the settings, the Delegate fetches artifact metadata from Artifactory.
 1. Click **Submit**.
 
-The artifact is now in the Service.
+	The artifact is now in the Service.
 
-![](./static/serverless-lambda-cd-quickstart-120.png)
+	![](./static/serverless-lambda-cd-quickstart-120.png)
 
 1. Click **Continue** to view the **Infrastructure**.
 

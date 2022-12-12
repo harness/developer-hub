@@ -393,9 +393,9 @@ Now we'll define the manifest to use for the PR Pipeline. We'll use the path to 
 
 2. Back in **New Service**, click **Save**.
 
-The Service is added to the Pipeline.
+  The Service is added to the Pipeline.
 
-![](./static/harness-git-ops-application-set-tutorial-54.png)
+  ![](./static/harness-git-ops-application-set-tutorial-54.png)
 
 1. Click **Continue** to add the Environment.
 
@@ -437,11 +437,11 @@ Now your PR Pipeline is ready.
 
 5. Click **Run Pipeline**.
 
-You can review the deployment steps in real-time.
+  You can review the deployment steps in real-time.
 
-![](./static/harness-git-ops-application-set-tutorial-58.png)
+  ![](./static/harness-git-ops-application-set-tutorial-58.png)
 
-Here's an example of each step:
+  Here's an example of each step:
 
 * Service:
   ```bash
@@ -479,9 +479,9 @@ Here's an example of each step:
   Done.
   ```
 
-1. Check the repo to see that the config.json file for the dev environment has been updated with the new **asset\_id** value:
+6. Check the repo to see that the config.json file for the dev environment has been updated with the new **asset\_id** value:
 
-![](./static/harness-git-ops-application-set-tutorial-60.png)
+  ![](./static/harness-git-ops-application-set-tutorial-60.png)
 
 Congratulations! You PR Pipeline was successful.
 

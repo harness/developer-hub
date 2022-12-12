@@ -67,15 +67,13 @@ Pipelines are collections of stages. For this quickstart, we'll create a new Pip
 5. Enter the name **quickstart**, make sure **Service** is selected, and then click **Set Up Stage**.
 6. The new stage settings appear.
 7. In **About the** **Service**, click **New Service**.
+   :::note
 
-:::note
+   Let's take a moment and review Harness Services and Service Definitions (which are explained below). Harness Services represent your microservices/apps logically. You can add the same Service to as many stages are you need. Service Definitions represent your artifacts, manifests, and variables physically. They are the actual files and variable values.
 
-Let's take a moment and review Harness Services and Service Definitions (which are explained below). Harness Services represent your microservices/apps logically. You can add the same Service to as many stages are you need. Service Definitions represent your artifacts, manifests, and variables physically. They are the actual files and variable values.
+   By separating Services and Service Definitions, you can propagate the same Service across stages while changing the artifacts, manifests, and variables with each stage.
 
-By separating Services and Service Definitions, you can propagate the same Service across stages while changing the artifacts, manifests, and variables with each stage.
-
-:::  
-  
+   :::
 1. Give the Service the name **quickstart** and click **Save**.
 2. Once you have created a Service, it is persistent and can be used throughout the stages of this or any other Pipeline in the Project.
 3. In **Deployment Type**, click **Native Helm**. Now your Service looks like this:

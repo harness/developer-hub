@@ -171,98 +171,95 @@ We'll create a quick CD Pipeline that deploys a public manifest and image to a l
 3. In **Invite Collaborators**, click **Save and Continue**. Your new project appears. Let's add a CD Pipeline.
 4. In **Setup Pipeline**, enter the name **quickstart**, and then click **Start**. Your new Pipeline is started!
 
-Now let's jumpstart your Pipeline setup by pasting in the YAML for a Pipeline. Once it's pasted in, we'll update a few placeholders and then deploy.
+  Now let's jumpstart your Pipeline setup by pasting in the YAML for a Pipeline. Once it's pasted in, we'll update a few placeholders and then deploy.
 
-Copy the following YAML:
+  Copy the following YAML:
 
-```yaml
-pipeline:  
-    name: quickstart  
-    identifier: quickstart  
-    projectIdentifier: Quickstart  
-    orgIdentifier: default  
-    tags: {}  
-    stages:  
-        - stage:  
-              name: demo  
-              identifier: demo  
-              description: ""  
-              type: Deployment  
-              spec:  
-                  serviceConfig:  
-                      serviceRef: <+input>  
-                      serviceDefinition:  
-                          type: Kubernetes  
-                          spec:  
-                              variables: []  
-                              manifests:  
-                                  - manifest:  
-                                        identifier: nginx  
-                                        type: K8sManifest  
-                                        spec:  
-                                            store:  
-                                                type: Github  
-                                                spec:  
-                                                    connectorRef: <+input>  
-                                                    gitFetchType: Branch  
-                                                    paths:  
-                                                        - content/en/examples/application/nginx-app.yaml  
-                                                    repoName: <+input>  
-                                                    branch: main  
-                                            skipResourceVersioning: false  
-                  infrastructure:  
-                      environmentRef: <+input>  
-                      infrastructureDefinition:  
-                          type: KubernetesDirect  
-                          spec:  
-                              connectorRef: <+input>  
-                              namespace: <+input>  
-                              releaseName: release-<+INFRA_KEY>  
-                      allowSimultaneousDeployments: false  
-                  execution:  
-                      steps:  
-                          - step:  
-                                type: K8sRollingDeploy  
-                                name: Rollout Deployment  
-                                identifier: Rollout_Deployment  
-                                spec:  
-                                    skipDryRun: false  
-                                timeout: 10m  
-                      rollbackSteps: []  
-                  serviceDependencies: []  
-              tags: {}  
-              failureStrategies:  
-                  - onFailure:  
-                        errors:  
-                            - AllErrors  
-                        action:  
-                            type: StageRollback
-```
-
+  ```yaml
+  pipeline:  
+      name: quickstart  
+      identifier: quickstart  
+      projectIdentifier: Quickstart  
+      orgIdentifier: default  
+      tags: {}  
+      stages:  
+          - stage:  
+                name: demo  
+                identifier: demo  
+                description: ""  
+                type: Deployment  
+                spec:  
+                    serviceConfig:  
+                        serviceRef: <+input>  
+                        serviceDefinition:  
+                            type: Kubernetes  
+                            spec:  
+                                variables: []  
+                                manifests:  
+                                    - manifest:  
+                                          identifier: nginx  
+                                          type: K8sManifest  
+                                          spec:  
+                                              store:  
+                                                  type: Github  
+                                                  spec:  
+                                                      connectorRef: <+input>  
+                                                      gitFetchType: Branch  
+                                                      paths:  
+                                                          - content/en/examples/application/nginx-app.yaml  
+                                                      repoName: <+input>  
+                                                      branch: main  
+                                              skipResourceVersioning: false  
+                    infrastructure:  
+                        environmentRef: <+input>  
+                        infrastructureDefinition:  
+                            type: KubernetesDirect  
+                            spec:  
+                                connectorRef: <+input>  
+                                namespace: <+input>  
+                                releaseName: release-<+INFRA_KEY>  
+                        allowSimultaneousDeployments: false  
+                    execution:  
+                        steps:  
+                            - step:  
+                                  type: K8sRollingDeploy  
+                                  name: Rollout Deployment  
+                                  identifier: Rollout_Deployment  
+                                  spec:  
+                                      skipDryRun: false  
+                                  timeout: 10m  
+                        rollbackSteps: []  
+                    serviceDependencies: []  
+                tags: {}  
+                failureStrategies:  
+                    - onFailure:  
+                          errors:  
+                              - AllErrors  
+                          action:  
+                              type: StageRollback
+  ```
 1. In the Pipeline Studio, click **YAML**.
   ![](./static/harness-community-edition-quickstart-134.png)
 2. Click **Edit YAML**.
 3. Replace all of the YAML with the YAML you copied above.
 4. Click **Save**.
 5. Click **Visual**. The new Pipeline is created.
+  ![](./static/harness-community-edition-quickstart-135.png)
 
-![](./static/harness-community-edition-quickstart-135.png)
+  Let's quickly review some key Pipeline concepts:
 
-Let's quickly review some key Pipeline concepts:
+  * **Harness Delegate:** the Harness Delegate is a software service you install in your environment that connects to the Harness Manager and performs tasks using your container orchestration platforms, artifact repositories, monitoring systems, etc.
+  * **Pipelines:** A CD Pipeline is a series of Stages where each Stage deploys a Service to an Environment.
+  * **Stages:** A CD Stage is a subset of a Pipeline that contains the logic to perform one major segment of the deployment process.
+  * **Services:** A Service represents your microservices and other workloads logically. A Service is a logical entity to be deployed, monitored, or changed independently.
+  * **Service Definition:** Service Definitions represent the real artifacts, manifests, and variables of a Service. They are the actual files and variable values.
+  * **Environments:** Environments represent your deployment targets logically (QA, Prod, etc).
+  * **Infrastructure Definition:** Infrastructure Definitions represent an Environment's infrastructure physically. They are the actual target clusters, hosts, etc.
+  * **Execution Steps:** Execution steps perform the CD operations like applying a manifest, asking for approval, rollback, and so on. Harness automatically adds the steps you need for the deployment strategy you select. You can then add additional steps to perform many other operations.
+  * **Connectors:** Connectors contain the information necessary to integrate and work with 3rd party tools such as Git providers and artifact repos. Harness uses Connectors at Pipeline runtime to authenticate and perform operations with a 3rd party tool.
 
-* **Harness Delegate:** the Harness Delegate is a software service you install in your environment that connects to the Harness Manager and performs tasks using your container orchestration platforms, artifact repositories, monitoring systems, etc.
-* **Pipelines:** A CD Pipeline is a series of Stages where each Stage deploys a Service to an Environment.
-* **Stages:** A CD Stage is a subset of a Pipeline that contains the logic to perform one major segment of the deployment process.
-* **Services:** A Service represents your microservices and other workloads logically. A Service is a logical entity to be deployed, monitored, or changed independently.
-* **Service Definition:** Service Definitions represent the real artifacts, manifests, and variables of a Service. They are the actual files and variable values.
-* **Environments:** Environments represent your deployment targets logically (QA, Prod, etc).
-* **Infrastructure Definition:** Infrastructure Definitions represent an Environment's infrastructure physically. They are the actual target clusters, hosts, etc.
-* **Execution Steps:** Execution steps perform the CD operations like applying a manifest, asking for approval, rollback, and so on. Harness automatically adds the steps you need for the deployment strategy you select. You can then add additional steps to perform many other operations.
-* **Connectors:** Connectors contain the information necessary to integrate and work with 3rd party tools such as Git providers and artifact repos. Harness uses Connectors at Pipeline runtime to authenticate and perform operations with a 3rd party tool.
-
-You'll notice a Runtime Input expression `<+input>` for most of the settings. These are placeholders we'll replace when we run the Pipeline.
-
-1. Click **Run**. The **Run Pipeline** settings appear.
+  You'll notice a Runtime Input expression `<+input>` for most of the settings. These are placeholders we'll replace when we run the Pipeline.
+10. Click **Run**. The **Run Pipeline** settings appear.
 
 ![](./static/harness-community-edition-quickstart-136.png)
 
@@ -308,19 +305,18 @@ This Delegate will perform all operations at runtime.
 4. Click **Kubernetes**, and then click **Continue**.
 5. Enter a name **quickstart** for the Delegate, click the **Laptop** size, and then click **Continue**.
 6. Click **Download YAML file**.
- 
-The YAML file for the Kubernetes Delegate will download to your computer.Open a terminal and navigate to where the Delegate file is located.If you're using a remote Kubernetes cluster, see [Notes](#notes).
+  The YAML file for the Kubernetes Delegate will download to your computer. 
 
-In the terminal, run this command:
+7. Open a terminal and navigate to where the Delegate file is located.If you're using a remote Kubernetes cluster, see [Notes](#notes).
 
-```
-kubectl apply -f harness-delegate.yaml
-```
+    In the terminal, run this command:
 
-This installs the Delegate into the default cluster that comes with Docker Desktop Kubernetes. It can take a few minutes for the Delegate pod to run.
+    ```bash
+    kubectl apply -f harness-delegate.yaml
+    ```
 
-Run `kubectl get pods -n harness-delegate-ng` to verify that it is **Ready: 1/1** and **Status: Running**.
-
+    This installs the Delegate into the default cluster that comes with Docker Desktop Kubernetes. It can take a few minutes for the Delegate pod to run.
+8. Run `kubectl get pods -n harness-delegate-ng` to verify that it is **Ready: 1/1** and **Status: Running**.
 1. Back in Harness, click **Continue**.
 2. Once the Delegate registers, click **Done**.
 3. In **Delegates Setup**, click **Connect only via Delegates which has all of the following tags**, and then select the tag for your new Delegate (**quickstart**).
@@ -345,10 +341,10 @@ Here you'll create a connection to the target cluster for this CD stage.
 1. Click the **Connector** dropdown menu, and then click **New Connector**.
 2. In **Name**, enter **localK8s**, and then click **Continue**.
 3. In **Details**, click **Use the credentials of a specific Harness Delegate**, and then click **Continue**.
-+ If you are running a local Delegate but using a target cluster that does not have a Delegate installed in it, select **Specify master URL and credentials**, and then see [Notes](#notes).
-1. In **Delegates Setup**, select **Connect only via Delegates which has all of the following tags**, and then enter and select **quickstart**. The Delegate you added earlier is selected.
-2. Click **Save and Continue**.
-3. In **Connection Test**, click **Finish**.
+   + If you are running a local Delegate but using a target cluster that does not have a Delegate installed in it, select **Specify master URL and credentials**, and then see [Notes](#notes).
+4. In **Delegates Setup**, select **Connect only via Delegates which has all of the following tags**, and then enter and select **quickstart**. The Delegate you added earlier is selected.
+5. Click **Save and Continue**.
+6. In **Connection Test**, click **Finish**.
 
 #### Namespace
 
@@ -365,17 +361,17 @@ If you want to save these settings, you can click **Save as Input Set**. Then yo
 
 1. In **Run Pipeline**, click **Run Pipeline**.
 
-You can see the Pipeline fetch the manifest and deploy the NGINX artifact to your local cluster.
+  You can see the Pipeline fetch the manifest and deploy the NGINX artifact to your local cluster.
 
-![](./static/harness-community-edition-quickstart-138.png)
+  ![](./static/harness-community-edition-quickstart-138.png)
 
-Click **Console View** to see more of the logs and watch the deployment in realtime.
+2. Click **Console View** to see more of the logs and watch the deployment in realtime.
 
-In the **Rollout Deployment** step, in Wait for Steady State, you'll see that NGINX was deployed successfully:
+3. In the **Rollout Deployment** step, in Wait for Steady State, you'll see that NGINX was deployed successfully:
 
-```
-Status : my-nginx   deployment "my-nginx" successfully rolled out
-```
+  ```
+  Status : my-nginx   deployment "my-nginx" successfully rolled out
+  ```
 
 Congratulations! You have a successful local deployment using Harness CD Community Edition!
 

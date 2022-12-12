@@ -66,16 +66,13 @@ The Repeat [Looping Strategy](https://docs.harness.io/article/eh4azj73m4-looping
 1. In your step, click **Advanced**.
 2. Click **Looping Strategy**.
 3. Click **Repeat** and enter the following:
+  ```
+  repeat:  
+    items: <+stage.output.hosts>
+  ```
+  Here's an example with a Shell Script step:
 
-
-```
-repeat:  
-  items: <+stage.output.hosts>
-```
-Here's an example with a Shell Script step:
-
-![](./static/run-a-script-on-multiple-target-instances-01.png)
-
+  ![](./static/run-a-script-on-multiple-target-instances-01.png)
 1. Click **Apply Changes**.
 
 ## Run your Pipeline

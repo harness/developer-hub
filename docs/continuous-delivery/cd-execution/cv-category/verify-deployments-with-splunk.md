@@ -74,38 +74,34 @@ If the stage Service or Environment settings are [Runtime Inputs](https://ngdoc
 
 A Health Source is basically a mapping of a Harness Service to the service in a deployment environment monitored by an APM or logging tool.
 
-In **Health Sources**, click **Add**. The **Add New Health Source** settings appear.
+1. In **Health Sources**, click **Add**. The **Add New Health Source** settings appear.
+   
+   ![](./static/verify-deployments-with-splunk-38.png)
 
-![](./static/verify-deployments-with-splunk-38.png)
+2. In **Select health source type**, select Splunk.
+3. In **Health Source Name**, enter a name for the Health Source.
+4. Under **Connect Health Source**, click **Select Connector**.
+5. In **Connector** settings, you can either choose an existing connector or click **New Connector.**
+   ![](./static/verify-deployments-with-splunk-39.png)
 
-1. In **Select health source type**, select Splunk.
-2. In **Health Source Name**, enter a name for the Health Source.
-3. Under **Connect Health Source**, click **Select Connector**.
-4. In **Connector** settings, you can either choose an existing connector or click **New Connector.**
+6. Click **Apply Selected**. The Connector is added to the Health Source.
+   
+   ![](./static/verify-deployments-with-splunk-40.png)
 
-![](./static/verify-deployments-with-splunk-39.png)
-
-1. Click **Apply Selected**. The Connector is added to the Health Source.
-
-![](./static/verify-deployments-with-splunk-40.png)
-
-1. In **Select Feature**, select the Splunk feature to be used.
-2. Click **Next**. The **Customize Health Source** settings appear.
-
-The subsequent settings in **Customize Health Source** depend on the Health Source Type you selected. You can customize the metrics to map the Harness Service to the monitored environment in **Query Specifications and Mapping** settings.
-
-![](./static/verify-deployments-with-splunk-41.png)
+7. In **Select Feature**, select the Splunk feature to be used.
+8. Click **Next**. The **Customize Health Source** settings appear.
+   The subsequent settings in **Customize Health Source** depend on the Health Source Type you selected. You can customize the metrics to map the Harness Service to the monitored environment in **Query Specifications and Mapping** settings.
+   
+   ![](./static/verify-deployments-with-splunk-41.png)
 
 1. Click **Map Queries to Harness Services** drop down.
 2. Enter a name for the query in **Name your Query**.
 3. Click **Select Query** to select a saved query. This is an optional step. You can also enter the query manually in **Query**.
 4. Click **Fetch Records** to retrieve the details. The results are displayed under **Records.**
+   ![](./static/verify-deployments-with-splunk-42.png)
 
-![](./static/verify-deployments-with-splunk-42.png)
-
-1. Once the records are fetched, click the plus icon in **Identify Service Instance** to select the path for service instance.
-
-Click **Submit**. The Health Source is displayed in the Verify step.
+5. Once the records are fetched, click the plus icon in **Identify Service Instance** to select the path for service instance.
+1. Click **Submit**. The Health Source is displayed in the Verify step.
 
 ![](./static/verify-deployments-with-splunk-43.png)
 
@@ -113,7 +109,7 @@ You can add one or more Health Sources for each APM or logging provider.
 
 ## Step 6: Select Sensitivity
 
-In **Sensitivity**, select **High**, **Medium**, or **Low** based on the risk level used as failure criteria during the deployment.
+1. In **Sensitivity**, select **High**, **Medium**, or **Low** based on the risk level used as failure criteria during the deployment.
 
 ## Step 7: Select Duration
 
@@ -123,7 +119,7 @@ The recommended **Duration** is **10 min** for logging providers and **15 m
 
 ## Step 8: Specify Artifact Tag
 
-In **Artifact Tag**, use a [Harness expression](https://newdocs.helpdocs.io/article/lml71vhsim-harness-variables) to reference the artifact in the stage Service settings.
+1. In **Artifact Tag**, use a [Harness expression](https://newdocs.helpdocs.io/article/lml71vhsim-harness-variables) to reference the artifact in the stage Service settings.
 
 The expression `<+serviceConfig.artifacts.primary.tag>` refers to the primary artifact.
 
@@ -139,15 +135,11 @@ See [Advanced Settings](verify-deployments-with-the-verify-step.md#option-advanc
 
 ## Step 9: Deploy and Review Results
 
-After setting up the **Verify** step, click **Apply Changes**.
-
-Click **Run** to run the pipeline.
-
-In **Run Pipeline**, select the tag for the artifact if a tag was not added in the **Artifact Details** settings.
-
-Click **Run Pipeline**.
-
-When the Pipeline is running, click the **Verify** step. You can see that the verification takes a few minutes.
+1. After setting up the **Verify** step, click **Apply Changes**.
+2. Click **Run** to run the pipeline.
+3. In **Run Pipeline**, select the tag for the artifact if a tag was not added in the **Artifact Details** settings.
+4. Click **Run Pipeline**.
+5. When the Pipeline is running, click the **Verify** step. You can see that the verification takes a few minutes.
 
 Once verification is complete, the Verify step shows the following:
 
