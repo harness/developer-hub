@@ -124,24 +124,41 @@ For more information, see [Manage Subscriptions](https://docs.microsoft.com/en-u
 
 Run the following **bash** commands using your **bash** terminal or Azure cloud shell:
 
-1. `az ad sp create --id <>`: Creates a service principal.  
-  
-**Required Parameter**  
-`--id`  
-This is a common ID for Harness CCM client application. Use `0211763d-24fb-4d63-865d-92f86f77e908`If you see the following error proceed with [Step 2: Assign Permissions to the Storage Account](/article/7idbmchsim-set-up-cost-visibility-for-azure#step_2_assign_permissions_to_the_storage_account).  
-  
-`Another object with the same value for property servicePrincipalNames already exists.`  
-  
-The error means that your Harness CE application is already registered into your Azure account.#### Step 2: Assign Permissions to the Storage Account
-
 Run the following **bash** commands using your **bash** terminal or Azure cloud shell:
-2. `SCOPE=`az storage account show --name <storage account name> --query "id" | xargs``: Provides scope for your storage account. Each role assignment in Azure needs a scope on which the permissions or role is applied. The output of this command is used in the next step.  
+
+`az ad sp create``10034206-24bf-442b-968c-70a9c896a2f6`  
+See **Azure client application ID**  in **Harness Platform** > **Connectors** > **Add a Microsoft Azure Cloud Connector** for more information.
+> **☆ NOTE —** If you encounter the following error message, proceed with assigning permissions to the storage account.  
+  `Another object with the same value for property servicePrincipalNames already exists.`  
+  The error means that your Harness CCM application is already registered into your Azure account.
   
-**Required Parameter**  
-`--name`  
-The name of your storage account.  
   
-Here's a screenshot with the Storage account name for your reference.![](./static/set-up-cost-visibility-for-azure-52.png)**Response**  
+#### Assign Permissions to the Storage Accounts
+Run the following **bash** commands using your **bash** terminal or Azure cloud shell:
+
+```
+SCOPE=`az storage account show --name <storage account name> --query "id" | xargs`
+```
+
+Provides scope for your storage account. Each role assignment in Azure needs a scope on which the permissions or role is applied. The output of this command is used in the next step.
+
+  **Required Parameter**
+   
+   --name
+
+  **Response**
+```
+$ SCOPE=`az storage account show --name test --query "id" | xargs`  
+  
+$ echo $SCOPE  
+/subscriptions/XXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/<resourcegroupname>/providers/Microsoft.Storage/storageAccounts/<storage account name>
+```
+  
+Here's a screenshot with the Storage account name for your reference.
+
+![](./static/set-up-cost-visibility-for-azure-52.png)
+
+**Response**  
 
 ```
 $ SCOPE=`az storage account show --name test --query "id" | xargs`  

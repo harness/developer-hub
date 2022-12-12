@@ -10,19 +10,10 @@ helpdocs_is_published: true
 
 Harness Cloud Cost Management (CCM) monitors the cloud costs of your Amazon Web Services (AWS). Connect your AWS account to Harness to get insights into your expenses across your cloud infrastructure and AWS services, such as EC2, S3, RDS, Lambda, and so on. Harness uses a secure, cross-account role with a restricted policy to access the cost and usage reports and resources for cost analysis.
 
-In this topic:
-
-* [Before You Begin](https://docs.harness.io/article/5ql31pdjcm-enable-continuous-efficiency-for-aws#before_you_begin)
-* [Prerequisites](https://docs.harness.io/article/5ql31pdjcm-enable-continuous-efficiency-for-aws#prerequisites)
-* [Review: AWS Access Permissions](https://docs.harness.io/article/5ql31pdjcm-enable-continuous-efficiency-for-aws#review_aws_access_permissions)
-* [Step: Connect to Your AWS Master Account](https://docs.harness.io/article/5ql31pdjcm-enable-continuous-efficiency-for-aws#step_connect_to_your_aws_master_account)
-* [Step (Optional): Provide Access to Member Accounts](https://docs.harness.io/article/5ql31pdjcm-enable-continuous-efficiency-for-aws#step_optional_provide_access_to_member_accounts)
-* [Troubleshooting](https://docs.harness.io/article/5ql31pdjcm-enable-continuous-efficiency-for-aws#troubleshooting)
-* [Next Steps](https://docs.harness.io/article/5ql31pdjcm-enable-continuous-efficiency-for-aws#next_steps)
 
 ### Before You Begin
 
-* [Cloud Cost Management Overview](/article/rr85306lq8-continuous-efficiency-overview)
+* [Cloud Cost Management Overview](/docs/first-gen/cloud-cost-management/concepts-ccm/b-cloud-cost-management-overview.md)
 * Review [AWS Access Permissions](/article/5ql31pdjcm-enable-continuous-efficiency-for-aws#review_aws_access_permissions)
 * The same connector cannot be used in FirstGen and NextGen. NextGen Connectors are recommended for the best experience of CCM capabilities and features. For information on creating an AWS connector in the NextGen see [Set Up Cloud Cost Management for AWS](https://ngdocs.harness.io/article/80vbt5jv0q-set-up-cost-visibility-for-aws).
 
