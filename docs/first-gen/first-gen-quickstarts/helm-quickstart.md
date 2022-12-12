@@ -1,14 +1,18 @@
 ---
 title: Helm Quickstart
 description: Deploy a Docker image to your Kubernetes cluster using Helm charts and a Canary Deployment strategy in Harness.
-# sidebar_position: 2
+sidebar_position: 40
 helpdocs_topic_id: 2aaevhygep
 helpdocs_category_id: f6rh2cdvx9
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/article/cifa2yb19a).This quickstart shows you how to deploy a publicly available Docker image to your Kubernetes cluster using Helm charts and a Canary Deployment strategy in Harness.
+:::note
+This content is for Harness [FirstGen](../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/article/cifa2yb19a).
+:::
+
+This quickstart shows you how to deploy a publicly available Docker image to your Kubernetes cluster using Helm charts and a Canary Deployment strategy in Harness.
 
 ### Objectives
 
@@ -64,12 +68,13 @@ If you have a cluster that meets the following requirements, then you can jump t
 * [Creating an Amazon EKS Cluster](https://docs.aws.amazon.com/eks/latest/userguide/create-cluster.html) (node type minimum: m5.xlarge)
 
 
-
 ### Visual Summary
 
 Once you've completed this tutorial, you'll deploy a Docker image to your Kubernetes cluster using a Harness Canary Workflow. Here's what your deployment will look like:
 
-![](./static/helm-quickstart-58.gif)Interested? You're only a few minutes away from doing it yourself. Let's get started.
+![](./static/helm-quickstart-58.gif)
+
+Interested? You're only a few minutes away from doing it yourself. Let's get started.
 
 ### Step 1: Install and Launch the Kubernetes Delegate
 
@@ -77,7 +82,8 @@ In this section, we'll download a new Harness Kubernetes Delegate and install an
 
 For this tutorial, we are using a Kubernetes Delegate, but Harness also includes a Helm Delegate that can be installed in your cluster using Helm or Rancher. See [Using the Helm Delegate](https://docs.harness.io/article/6n7fon8rit-using-the-helm-delegate).
 
-Before installing the Delegate, ensure that you have **kubectl** installed in your Kubernetes cluster. For **kubectl** installation steps, see  [Install and Set Up kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) from Kubernetes.1. Download the Delegate:
+Before installing the Delegate, ensure that you have **kubectl** installed in your Kubernetes cluster. For **kubectl** installation steps, see  [Install and Set Up kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) from Kubernetes.
+1. Download the Delegate:
 	1. Log into Harness.
 	2. In the Harness Manager, click **Setup**. **Setup** is where you configure your microservices, their deployment pipelines, and all the building blocks and resources for those pipelines.
 	3. Click **Harness Delegates**.
@@ -88,48 +94,50 @@ Before installing the Delegate, ensure that you have **kubectl** installed in 
 	8. Open a terminal and navigate to where the Delegate file is located.
 	9. Extract the YAML file's folder from the download and then navigate to the Harness Delegate folder that you extracted:
 
+		```
+		tar -zxvf harness-delegate-kubernetes.tar.gz  
+		  
+		cd harness-delegate-kubernetes
+		```
+		You will connect to your cluster using the terminal so you can simply copy the YAML file over.
 
-```
-tar -zxvf harness-delegate-kubernetes.tar.gz  
-  
-cd harness-delegate-kubernetes
-```
-You will connect to your cluster using the terminal so you can simply copy the YAML file over.
-
-1. Install and Launch the Delegate.
+2. Install and Launch the Delegate.
 	1. Log into your Kubernetes cluster. For example, if your Kubernetes cluster is in Google Cloud Platform, select the cluster, click **Connect**, and from the resulting **Connect to the cluster** setting, copy the **Command-line access command**.
 	2. In the terminal you used to navigate to the **harness-delegate** folder, paste the command and press **Enter**.  
 	You are now connected to the Kubernetes cluster. If the connection is unsuccessful, ensure that the GCE firewall is not blocking port 22 to your VMs. For more information, see [Debug Running Pods](https://kubernetes.io/docs/tasks/debug/debug-application/debug-running-pod/) from Kubernetes.
-	3. Let's quickly confirm that the cluster you created can connect to the Harness platform. Enter the following command:  
-	  
+	3. Let's quickly confirm that the cluster you created can connect to the Harness platform. Enter the following command:    
 	
-	```
-	wget -p https://app.harness.io/ -O /dev/null
-	```
-	A successful connection will display the following:  
-	  
+		```
+		wget -p https://app.harness.io/ -O /dev/null
+		```
+		A successful connection will display the following:  
+		  
+		```
+		HTTP request sent, awaiting response... 200 OK
+		```
 	
-	```
-	HTTP request sent, awaiting response... 200 OK
-	```
-	4. Next, install the Harness Delegate using the **harness-delegate.yaml** file you just downloaded. In the terminal connected to your cluster, run this command:  
-	  
+	4. Next, install the Harness Delegate using the **harness-delegate.yaml** file you just downloaded. In the terminal connected to your cluster, run this command:   
+		
+		```
+		kubectl apply -f harness-delegate.yaml
+		```
+		If you are not using your terminal to connect to your cluster, just copy the **harness-delegate.yaml** file to the cluster and run the command.
 	
-	```
-	kubectl apply -f harness-delegate.yaml
-	```
-	If you are not using your terminal to connect to your cluster, just copy the **harness-delegate.yaml** file to the cluster and run the command.
-	5. Run this command to verify that the Delegate pod was created:  
-	  
+	5. Run this command to verify that the Delegate pod was created:    
 	
-	```
-	kubectl get pods -n harness-delegate
-	```
-	It will take a moment for the Delegate to appear in Harness' **Installations** page.
+		```
+		kubectl get pods -n harness-delegate
+		```
+		It will take a moment for the Delegate to appear in Harness' **Installations** page.
 
 Now you're ready to connect Harness to your artifact server and cluster. After those quick steps, you'll begin creating your deployment.
 
-When you onboard your own applications, you might need to install multiple Delegates, depending on their workloads, network segmentation, and firewall zones. Typically, you will need one Delegate for every 300-500 service instances across your applications, and will need one Delegate in each subnet or zone.### Step 2: Add a Kubernetes Cluster Cloud Provider
+:::note 
+When you onboard your own applications, you might need to install multiple Delegates, depending on their workloads, network segmentation, and firewall zones. Typically, you will need one Delegate for every 300-500 service instances across your applications, and will need one Delegate in each subnet or zone.
+:::
+
+
+### Step 2: Add a Kubernetes Cluster Cloud Provider
 
 A Harness Cloud Provider represents your infrastructure, such as a Kubernetes cluster, AWS account, Google service account, Azure subscription, data center, etc.
 
@@ -139,19 +147,14 @@ The Kubernetes Cluster Cloud Provider you will add now will connect Harness with
 2. Click **Cloud Providers**. On the **Cloud Providers** page, click **Add Cloud Provider**. The Cloud Provider appears.
 3. Enter the following settings:
 
+   * **Type:** Select Kubernetes Cluster.
+   * **Display Name:** Enter **Helm Tutorial**. You will use this name later to select this Cloud Provider when you create a Harness Infrastructure Definition.
+   * **Inherit from selected Delegate:** Enable this option. Since the Delegate is already installed in the target cluster, you can use the Delegate's credentials for this Cloud Provider. This is the recommended configuration.
+   * **Delegate Name:** Select the name of the Delegate you installed in your cluster: **k8s-delegate**.
+   * **Select Skip Validation:** Enable this option.
+   * **Usage Scope:** Don't change this setting. Usage Scope limits the use of a Cloud Provider to specific Harness Applications and Environments. For this tutorial, we will use the default scopes.
 
-
-|  |  |
-| --- | --- |
-|   | * **Type:** Select Kubernetes Cluster.
-* **Display Name:** Enter **Helm Tutorial**. You will use this name later to select this Cloud Provider when you create a Harness Infrastructure Definition.
-* **Inherit from selected Delegate:** Enable this option. Since the Delegate is already installed in the target cluster, you can use the Delegate's credentials for this Cloud Provider. This is the recommended configuration.
-* **Delegate Name:** Select the name of the Delegate you installed in your cluster: **k8s-delegate**.
-* **Select Skip Validation:** Enable this option.
-* **Usage Scope:** Don't change this setting. Usage Scope limits the use of a Cloud Provider to specific Harness Applications and Environments. For this tutorial, we will use the default scopes.
- |
-
-1. Click **Test**. Verify that the `The test was successful message` appears, and then click **Submit**.
+4. Click **Test**. Verify that the `The test was successful message` appears, and then click **Submit**.
 
 Your Kubernetes Cloud Provider is set up. Now let's add an Artifact Server for the Helm chart.
 
@@ -167,20 +170,19 @@ For this tutorial, we will use a public Helm Repo from Bitnami.
 2. Click **Artifact Servers**, and then click **Add Artifact Server**. The **Artifact Server** settings appear.
 3. Enter the following settings:
 
+   * **Type:** Select **Helm Repository**.
+   * **Display Name:** Enter **Helm Repo**. You will use this name to select this repo later when you add a Helm chart to a Harness Service.
+   * **Hosting Platform:** Select **HTTP Server**.
+   * **Repository URL:** Enter `https://charts.bitnami.com/bitnami`.
+   * **Username and Password:** Leave these empty.
 
+3. Click Test, and then click the **SUBMIT** button.
 
-|  |  |
-| --- | --- |
-|   | * **Type:** Select **Helm Repository**.
-* **Display Name:** Enter **Helm Repo**. You will use this name to select this repo later when you add a Helm chart to a Harness Service.
-* **Hosting Platform:** Select **HTTP Server**.
-* **Repository URL:** Enter `https://charts.bitnami.com/bitnami`.
-* **Username and Password:** Leave these empty.
- |
+:::note 
+If the test fails, it is possible that the Harness Delegate you installed cannot connect to https://registry.hub.docker.com/v2/. Ensure that the pod where the Delegate is installed can connect to that address.
+:::
 
-1. Click Test, and then click the **SUBMIT** button.
-
-If the test fails, it is possible that the Harness Delegate you installed cannot connect to https://registry.hub.docker.com/v2/. Ensure that the pod where the Delegate is installed can connect to that address.Now Harness is connected to the Helm repo. We don't need any other connectors for this tutorial. Next, we'll add the Helm chart.
+Now Harness is connected to the Helm repo. We don't need any other connectors for this tutorial. Next, we'll add the Helm chart.
 
 ### Step 4: Add Your Helm Chart
 
@@ -191,9 +193,13 @@ First, we'll create a Harness Application and Service, and look at manifests.
 1. In **Setup**, click **Add Application**. The Application settings appear.
 2. Enter the name **Helm Tutorial** and click **Submit**.
 
-![](./static/helm-quickstart-60.png)The Application is created.
+   ![](./static/helm-quickstart-60.png)
+	 
+	 The Application is created.
 
-![](./static/helm-quickstart-61.png)We won't cover all of the Application entities in this tutorial. We assume you've read [Harness Key Concepts](../starthere-firstgen/harness-key-concepts.md).
+   ![](./static/helm-quickstart-61.png)
+	 
+We won't cover all of the Application entities in this tutorial. We assume you've read [Harness Key Concepts](../starthere-firstgen/harness-key-concepts.md).
 
 To add your Helm chart, you create a Harness Service. Services represent your microservices/apps. You define the sources of app artifacts for those microservices, and you add your Helm charts.
 
@@ -201,29 +207,25 @@ To add your Helm chart, you create a Harness Service. Services represent your mi
 2. In **Services**, click **Add Service**. The Add Service settings appear.
 3. Enter the following settings:
 
+   * **Name:** Enter **MyApp Helm**.
+   * **Deployment Type:** Select **Kubernetes**.
 
+   Click **Submit**. The new Service page appears.
 
-|  |  |
-| --- | --- |
-|   | * **Name:** Enter **MyApp Helm**.
-* **Deployment Type:** Select **Kubernetes**.
- |
+   ![](./static/helm-quickstart-62.png)
+	 
+	 Now you can add your Helm chart.
 
-Click **Submit**. The new Service page appears.
+:::note 
+**No Artifact Source?** Since your Helm chart uses a publicly available Docker image, you do not need to add a Harness Artifact Source. Harness Artifact Sources are used for private repos and when you want to replace the hardcoded image location in your values.yaml or manifests with a Harness expression that can replaced at runtime.
+:::
 
-![](./static/helm-quickstart-62.png)Now you can add your Helm chart.
+When you create a Service for your Harness application, you can link to your manifests in a source repo or a Helm chart in a source or Helm repo.
 
-**No Artifact Source?** Since your Helm chart uses a publicly available Docker image, you do not need to add a Harness Artifact Source. Harness Artifact Sources are used for private repos and when you want to replace the hardcoded image location in your values.yaml or manifests with a Harness expression that can replaced at runtime.When you create a Service for your Harness application, you can link to your manifests in a source repo or a Helm chart in a source or Helm repo.
-
-
-
-|  |  |
-| --- | --- |
-|   | * **Manifest Format:** Select **Helm Chart from Helm Repository**.
-* **Helm Repository:** Select the Helm Repo Artifact Server you set up earlier, **Helm Repo**.
-* **Chart Name:** Enter **nginx**.
-* **Chart Version:** Leave this empty. If Harness will get the latest chart.
- |
+   * **Manifest Format:** Select **Helm Chart from Helm Repository**.
+   * **Helm Repository:** Select the Helm Repo Artifact Server you set up earlier, **Helm Repo**.
+   * **Chart Name:** Enter **nginx**.
+   * **Chart Version:** Leave this empty. If Harness will get the latest chart.
 
 Our artifact is added and the Helm chart is ready. Next, we can define our target cluster and namespace for deployment.
 
@@ -237,31 +239,21 @@ In each Environment, you define Infrastructure Definitions to describe your depl
 2. In **Environments**, click **Add Environment**. The **Environment** settings appear.
 3. Enter the following settings:
 
+   * **Name:** Enter **Tutorial Cluster**.
+   * **Environment Type:** Select **Non-Production**.
 
+4. Click **Submit**. The Environment is created. Next we will add an Infrastructure Definition to identify the cluster and namespace for our deployment.
+5. Click **Add Infrastructure Definition**. The Infrastructure Definition settings appear.
+6. Enter the following settings:
 
-|  |  |
-| --- | --- |
-|   | * **Name:** Enter **Tutorial Cluster**.
-* **Environment Type:** Select **Non-Production**.
- |
+   * **Name:** Enter **Tutorial Namespace**.
+   * **Cloud Provider Type:** Select **Kubernetes Cluster**.
+   * **Deployment Type:** Select **Kubernetes**.
+   * **Cloud Provider:** Select the Cloud Provider you added earlier in this tutorial, **Helm Tutorial**.
+   * **Namespace:** Enter the namespace you want to use in your cluster. The `default` namespace is entered by default.
+   * **Release Name:** Leave the default `release-${infra.kubernetes.infraId}`. Harness uses this name for tracking releases for rollback, etc.
 
-1. Click **Submit**. The Environment is created. Next we will add an Infrastructure Definition to identify the cluster and namespace for our deployment.
-2. Click **Add Infrastructure Definition**. The Infrastructure Definition settings appear.
-3. Enter the following settings:
-
-
-
-|  |  |
-| --- | --- |
-|   | * **Name:** Enter **Tutorial Namespace**.
-* **Cloud Provider Type:** Select **Kubernetes Cluster**.
-* **Deployment Type:** Select **Kubernetes**.
-* **Cloud Provider:** Select the Cloud Provider you added earlier in this tutorial, **Helm Tutorial**.
-* **Namespace:** Enter the namespace you want to use in your cluster. The `default` namespace is entered by default.
-* **Release Name:** Leave the default `release-${infra.kubernetes.infraId}`. Harness uses this name for tracking releases for rollback, etc.
- |
-
-1. Click **Submit**. Your target infrastructure is defined. You can now use it and the Harness Service you set up to build your Canary Workflow.
+7. Click **Submit**. Your target infrastructure is defined. You can now use it and the Harness Service you set up to build your Canary Workflow.
 
 ### Step 6: Build a Canary Deployment
 
@@ -269,60 +261,48 @@ Now that you have a Helm chart and target cluster and namespace, you can create 
 
 In this tutorial, we will use the popular Canary Deployment strategy. In Canary, all pods in a single cluster are updated incrementally in small phases, with each phase verified as successful before proceeding to the next phase.
 
-To learn more about Canary deployments, see [Deployment Concepts and Strategies](../continuous-delivery/concepts-cd/deployment-types/deployment-concepts-and-strategies.md).1. Use the breadcrumb navigation to jump to **Workflows**, and then click **Add Workflow**. The Workflow settings appears.
+:::note 
+To learn more about Canary deployments, see [Deployment Concepts and Strategies](../continuous-delivery/concepts-cd/deployment-types/deployment-concepts-and-strategies.md).
+:::
+
+1. Use the breadcrumb navigation to jump to **Workflows**, and then click **Add Workflow**. The Workflow settings appears.
 2. Enter the following settings:
 
+   * **Name:** Enter **MyApp Helm Canary**.
+   * **Workflow Type:** Select **Canary Deployment**.
+   * **Environment:** Select the Environment you created earlier, **Tutorial Cluster**.
 
+3. Click **Submit**. The Workflow is created.
 
-|  |  |
-| --- | --- |
-|  | * **Name:** Enter **MyApp Helm Canary**.
+   ![](./static/helm-quickstart-64.png)Next, well add the first phase of our Canary Workflow.
 
-* **Workflow Type:** Select **Canary Deployment**.
+4. In **Deployment Phases**, click **Add Phase**. The Add Phase settings appear.
+5. Enter the following settings:
 
-* **Environment:** Select the Environment you created earlier, **Tutorial Cluster**.
- |
+   * **Service:** Select the Harness Service you created for this tutorial, **MyApp Helm**.
+   * **Infrastructure Definition:** Select the Infrastructure Definition you created for this tutorial, **Tutorial Namespace**.
+   * **Service Variable Overrides:** You can leave this setting blank. The purpose of Service Variable Overrides is to let you change any Config Variables created in the Service when the Workflow executes.
 
-1. Click **Submit**. The Workflow is created.
+6. Click **Submit**. The Phase is added to the Workflow.
 
-![](./static/helm-quickstart-64.png)Next, well add the first phase of our Canary Workflow.
-
-1. In **Deployment Phases**, click **Add Phase**. The Add Phase settings appear.
-2. Enter the following settings:
-
-
-
-|  |  |
-| --- | --- |
-|   | * **Service:** Select the Harness Service you created for this tutorial, **MyApp Helm**.
-* **Infrastructure Definition:** Select the Infrastructure Definition you created for this tutorial, **Tutorial Namespace**.
-* **Service Variable Overrides:** You can leave this setting blank. The purpose of Service Variable Overrides is to let you change any Config Variables created in the Service when the Workflow executes.
- |
-
-1. Click **Submit**. The Phase is added to the Workflow.
-
-![](./static/helm-quickstart-65.png)Harness adds the necessary steps automatically, but you can edit or add more as needed.
+   ![](./static/helm-quickstart-65.png)
+	 
+	 Harness adds the necessary steps automatically, but you can edit or add more as needed.
 
 Let's take a look at the **Canary Deployment** step. The Canary Deployment step defines how many pods are deployed for a Canary test of the configuration files in your Harness Service manifests.
 
 1. Click the **Canary Deployment** step.
 2. Review the following settings:
 
+  * **Instance Unit Type**: You can specify the number of replicas to deploy using **COUNT** or **PERCENTAGE**.
+	   + **COUNT:** This is simply the number of replicas.
+	   + **PERCENTAGE:** This is a percentage of the replicas defined in your Service manifests files. For example, in you have `replicas: 4` in a manifest in Service, and you enter **50** in **Instances**, then 2 pods are deployed in this Phase step.
+   * **Instances:** This is the number of replicas to deploy.
+   * **Skip Dry Run:** Do not select this option. By default, Harness uses the `--dry-run` flag on the `kubectl apply` command during the initial commands of this step. If the **Skip Dry Run** option is selected, Harness will not use the `--dry-run` flag.
 
+   For this tutorial, we'll use the default settings.
 
-|  |  |
-| --- | --- |
-| 
-  | * **Instance Unit Type**: You can specify the number of replicas to deploy using **COUNT** or **PERCENTAGE**.
-	+ **COUNT:** This is simply the number of replicas.
-	+ **PERCENTAGE:** This is a percentage of the replicas defined in your Service manifests files. For example, in you have `replicas: 4` in a manifest in Service, and you enter **50** in **Instances**, then 2 pods are deployed in this Phase step.
-* **Instances:** This is the number of replicas to deploy.
-* **Skip Dry Run:** Do not select this option. By default, Harness uses the `--dry-run` flag on the `kubectl apply` command during the initial commands of this step. If the **Skip Dry Run** option is selected, Harness will not use the `--dry-run` flag.
- |
-
-For this tutorial, we'll use the default settings.
-
-1. Close **Canary Deployment**.
+2. Close **Canary Deployment**.
 
 The Canary Delete step in the Wrap Up section deletes the workloads deployed successfully in this phase. Once the Canary Deployment step is successful, you don't need those workloads. You can move onto to deploying the workloads in a second phase, confident that they will deploy.
 
@@ -332,29 +312,28 @@ Next, we'll add the Primary phase using a Kubernetes rolling update.
 2. In **Deployment Phases**, click **Add Phase**.
 3. Enter the following settings:
 
+   * **Service:** Select the Harness Service you created for this tutorial, **MyApp Helm**.
+   * **Infrastructure Definition:** Select the Infrastructure Definition you created for this tutorial, **Tutorial Namespace**.
 
+4. Click **Submit**. The new phase is added.
 
-|  |  |
-| --- | --- |
-|   | * **Service:** Select the Harness Service you created for this tutorial, **MyApp Helm**.
-* **Infrastructure Definition:** Select the Infrastructure Definition you created for this tutorial, **Tutorial Namespace**.
- |
-
-1. Click **Submit**. The new phase is added.
-
-![](./static/helm-quickstart-66.png)Let's take a look at the **Rollout Deployment** step.
+   ![](./static/helm-quickstart-66.png)
+	 
+Let's take a look at the **Rollout Deployment** step.
 
 This step performs a standard Kubernetes rolling update, incrementally updating pod instances with new ones. The new pods are scheduled on nodes with available resources. The rolling update Deployment uses the number of pods you specified in the Harness Service Manifests (number of replicas).
 
 1. Click **Rollout Deployment**. The Rollout Deployment settings appear.
 
-![](./static/helm-quickstart-67.png)There's nothing to configure in this step. Click **Submit** to exit.
+  ![](./static/helm-quickstart-67.png)There's nothing to configure in this step. Click **Submit** to exit.
 
 That's it. The Canary Workflow is complete. Next, we'll deploy the Workflow to your cluster.
 
 1. In the breadcrumb navigation, click the name of the Workflow, **MyApp Helm Canary**. This takes you back to the main Workflow page where both phases are visible.
 
-![](./static/helm-quickstart-68.png)### Step 7: Deploy and Review
+   ![](./static/helm-quickstart-68.png)
+	 
+### Step 7: Deploy and Review
 
 Now that your Kubernetes Canary Workflow is complete you can deploy it to your cluster.
 

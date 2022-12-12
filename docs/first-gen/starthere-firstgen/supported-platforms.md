@@ -28,7 +28,7 @@ The following table lists Harness support for deployment platforms, artifacts, s
   <tbody>
     <tr>
       <td valign="top">
-        <p> <a href="https://developer.harness.io/category/kubernetes-deployments">Kubernetes</a></p>
+        <p> Kubernetes</p>
       </td>
       <td valign="top">
         <ul>
@@ -71,7 +71,6 @@ The following table lists Harness support for deployment platforms, artifacts, s
           <li>Canary</li>
           <li>Blue/Green</li>
         </ul>
-        <p>See <a href="#notes">Note on Kubernetes</a> for more deatils.</p>
       </td>
       <td valign="top">
         <p> Rolling:</p>
@@ -93,7 +92,7 @@ The following table lists Harness support for deployment platforms, artifacts, s
     </tr>
     <tr>
       <td valign="top">
-        <p> >Helm v3.0</p>
+        <p>Helm v3.0</p>
       </td>
       <td valign="top">
         <p> Docker Image Repo:</p>
@@ -211,7 +210,7 @@ The following table lists Harness support for deployment platforms, artifacts, s
     </tr>
     <tr>
       <td valign="top">
-        <p> <a href="https://developer.harness.io/category/aws-ecs-deployments">AWS ECS</a></p>
+        <p> AWS ECS</p>
       </td>
       <td valign="top">
         <ul>
@@ -264,7 +263,7 @@ The following table lists Harness support for deployment platforms, artifacts, s
     </tr>
     <tr>
       <td valign="top">
-        <p> <a href="https://developer.harness.io/docs/first-gen/first-gen-quickstarts/aws-ami-deployments.md">AWS AMI/ASG</a></p>
+        <p> AWS AMI/ASG</p>
       </td>
       <td valign="top">
         <p> AWS AMI Repository<br/>(private AMIs only)</p>
@@ -305,7 +304,7 @@ The following table lists Harness support for deployment platforms, artifacts, s
     </tr>
     <tr>
       <td valign="top">
-        <p> <a href="https://developer.harness.io/docs/first-gen/first-gen-quickstarts/aws-code-deploy-quickstart.md">AWS CodeDeploy</a></p>
+        <p> AWS CodeDeploy</p>
       </td>
       <td valign="top">
         <ul>
@@ -329,7 +328,7 @@ The following table lists Harness support for deployment platforms, artifacts, s
     </tr>
     <tr>
       <td valign="top">
-        <p> <a href="https://developer.harness.io/docs/first-gen/first-gen-quickstarts/aws-lambda-deployments.md">AWS Lambda</a></p>
+        <p> AWS Lambda</p>
       </td>
       <td valign="top">
         <ul>
@@ -354,7 +353,7 @@ The following table lists Harness support for deployment platforms, artifacts, s
     </tr>
     <tr>
       <td valign="top">
-        <p> <a href="https://docs.harness.io/category/azure-virtual-machine-scale-sets-(vmss)">Azure VMSS</a></p>
+        <p> Azure VMSS</p>
       </td>
       <td valign="top">Azure VM image gallery</td>
       <td valign="top">Static Infrastructure:<br/>Azure VMSS</td>
@@ -385,7 +384,7 @@ The following table lists Harness support for deployment platforms, artifacts, s
     </tr>
     <tr>
       <td valign="top">
-        <p> <a href="https://developer.harness.io/docs/azure-web-apps">Azure Web App</a></p>
+        <p> Azure Web App</p>
       </td>
       <td valign="top">
         <ul>
@@ -396,7 +395,7 @@ The following table lists Harness support for deployment platforms, artifacts, s
       </td>
       <td valign="top">
         <p> Static Infrastructure:<br/>Azure App Services</p>
-        <p> Dynamic Infrastructure:<br/>Terraform, <a href="https://developer.harness.io/docs/first-gen/continuous-delivery/concepts-cd/deployment-types/azure-arm-and-blueprint-provision-with-harness">ARM templates</a></p>
+        <p> Dynamic Infrastructure:<br/>Terraform, ARM templates</p>
       </td>
       <td valign="top">
         <ul>
@@ -425,7 +424,7 @@ The following table lists Harness support for deployment platforms, artifacts, s
     </tr>
     <tr>
       <td valign="top">
-        <p> <a href="https://docs.harness.io/category/traditional-deployments-(ssh)">SSH</a></p>
+        <p> SSH</p>
       </td>
       <td valign="top">
         <p> Copy Artifact:</p>
@@ -481,7 +480,7 @@ The following table lists Harness support for deployment platforms, artifacts, s
     </tr>
     <tr>
       <td valign="top">
-        <p> <a href="https://developer.harness.io/category/iis-(.net)-deployments">WinRM</a><br/> IIS (.NET)</p>
+        <p> WinRM<br/> IIS (.NET)</p>
       </td>
       <td valign="top">
         <p> Download Artifact:</p>

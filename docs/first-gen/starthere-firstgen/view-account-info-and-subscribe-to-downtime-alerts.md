@@ -1,7 +1,7 @@
 ---
 title: View Account Info and Subscribe to Downtime Alerts
 description: This content is for Harness FirstGen. Switch to NextGen. Harness provides a summary or your account information and enables you to subscribe to downtime alerts for the cluster hosting your Harness ac…
-# sidebar_position: 2
+sidebar_position: 80
 helpdocs_topic_id: s7ususmloy
 helpdocs_category_id: 0v0om5p9af
 helpdocs_is_private: false

@@ -1,7 +1,7 @@
 ---
 title: Traditional (SSH) Quickstart
 description: This quickstart shows you how to deploy a traditional (SSH) deployments using application package files and a runtime environment (Tomcat, JBoss) in Harness.
-# sidebar_position: 2
+sidebar_position: 80
 helpdocs_topic_id: keodlyvsg5
 helpdocs_category_id: f6rh2cdvx9
 helpdocs_is_private: false
@@ -12,7 +12,7 @@ This quickstart shows you how to deploy application package files and a runtime 
 
 This deployment is called traditional because it uses SSH (Secure Shell) scripts and a traditional runtime environment as opposed to containers and orchestration mechanisms, such as those in the [Kubernetes Quickstart](kubernetes-quickstart.md).
 
-### Objectives
+## Objectives
 
 You'll learn how to:
 
@@ -23,7 +23,7 @@ You'll learn how to:
 * Specify the target hosts.
 * Create and deploy a Harness SSH Basic Workflow.
 
-### Before You Begin
+## Before You Begin
 
 * Review [Harness Key Concepts](../starthere-firstgen/harness-key-concepts.md) to establish a general understanding of Harness.
 * Target host — In this guide, we use an AWS EC2 instance as the target host. Minimum t2.medium.
@@ -39,11 +39,17 @@ You'll learn how to:
 	+ Ensure that you have `netcat (nc)` installed on your target host. The Harness SSH Service Port Listening command uses `netcat`. You can use the following command to do the installation:  
 	`yum install -y nc`
 
-You can also simply deploy the artifact to your local computer instead of using an AWS EC2 instance. If you want to do this, install the Harness SSH Delegate on your local computer, use a [Physical Data Center Cloud Provider](https://docs.harness.io/article/stkxmb643f-add-physical-data-center-cloud-provider) instead of an AWS Cloud Provider, and when you set up the target infrastructure SSH key in Harness, use your local login information. You might also need to enable remote access on your computer.### Visual Summary
+:::note 
+You can also simply deploy the artifact to your local computer instead of using an AWS EC2 instance. If you want to do this, install the Harness SSH Delegate on your local computer, use a [Physical Data Center Cloud Provider](https://docs.harness.io/article/stkxmb643f-add-physical-data-center-cloud-provider) instead of an AWS Cloud Provider, and when you set up the target infrastructure SSH key in Harness, use your local login information. You might also need to enable remote access on your computer.
+:::
+
+## Visual Summary
 
 The following diagram shows the very simple topology for this tutorial:
 
-![](./static/traditional-ssh-quickstart-69.png)### Step 1: Install and Launch the Shell Script Delegate
+![](./static/traditional-ssh-quickstart-69.png)
+
+## Step 1: Install and Launch the Shell Script Delegate
 
 First, we'll install the Harness Shell Script Delegate on the EC2 instance you set up. Ensure that the EC2 instance meets the requirements in [Before You Begin](traditional-ssh-quickstart.md#before-you-begin).
 
@@ -57,58 +63,54 @@ To install the Delegate on your EC2 instance:
 6. Log into your EC2 instance, paste the Shell Script Delegate command, and hit **Enter**.
 7. Once the Delegate is downloaded, unzip it (`tar -zxvf harness-delegate.tar.gz`), change directories into the **harness-delegate** folder, and run the start command: `./start.sh`. Ignore any warning about the ulimit.
 
-The Delegate will start and in a few moments, you will see it listed on the **Harness Delegates** page.
+   The Delegate will start and in a few moments, you will see it listed on the **Harness Delegates** page.
 
-**Delegate Selectors** — As a best practice, add a Delegate Selector to the Delegate so you can quickly identify it.
+### Delegate Selectors
+
+As a best practice, add a Delegate Selector to the Delegate so you can quickly identify it.
 
 1. In the Delegate listing on the **Harness Delegates** page, click **Custom** **Selector**.
 2. In **Edit Selectors**, type in a Selector name such as `ssh-quickstart`, press **Enter**, and then click **Submit**.  
   
-The Selector is added to the Delegate.![](./static/traditional-ssh-quickstart-71.png)
+   The Selector is added to the Delegate.
+	 
+	 ![](./static/traditional-ssh-quickstart-71.png)
 
 Next, we need to add the AWS cloud provider.
 
-### Step 2: Add the AWS Cloud Provider
+## Step 2: Add the AWS Cloud Provider
 
 In this section, we will add a Harness AWS Cloud Provider to your Harness account to connect to AWS CodeDeploy, EC2, and S3.
 
-#### Permissions
+### Permissions
 
 The AWS Cloud Provider will assume the IAM Role associated with the EC2 host running the Delegate you installed in your VPC.
 
 1. In the Harness Manager, click **Setup**, and then click **Cloud Providers**.
 2. Click **Add Cloud Provider**. The **Cloud Provider** settings appear. Enter the following settings:  
   
+   * **Type:** Select **Amazon Web Services**.
+	 * **Display Name:** Enter **Traditional SSH**.
+	 * **Credentials:** Select **Assume IAM Role on Delegate**.
+	 * **Delegate Selector:** Select the Delegate Selector you added to your Delegate, **ssh-quickstart**. |
 
-
-|  |  |
-| --- | --- |
-|  | 
-	* **Type:** Select **Amazon Web Services**.
-	* **Display Name:** Enter **Traditional SSH**.
-	* **Credentials:** Select **Assume IAM Role on Delegate**.
-	* **Delegate Selector:** Select the Delegate Selector you added to your Delegate, **ssh-quickstart**. |
 3. Click **Test** and then **Submit**.
 
-### Step 3: Add the Artifactory Artifact Server
+## Step 3: Add the Artifactory Artifact Server
 
 For this tutorial, we'll use a Todo List app artifact, todolist.war, available in a public Harness Artifactory repo.
 
 1. In Harness, click **Setup,** and then click **Connectors**.
 2. Click **Artifact Servers**, and then click **Add Artifact Server**. Enter the following settings:  
   
-
-
-|  |  |
-| --- | --- |
-|  | 
-	* **Type:** Select **Artifactory**.
-	* **Display Name:** Enter **Artifactory Public**.
-	* **Artifactory URL**: Enter **https://harness.jfrog.io/artifactory**.
-	* **Username/****Select Encrypted Password****:** Leave these settings empty. |
+	 * **Type:** Select **Artifactory**.
+	 * **Display Name:** Enter **Artifactory Public**.
+	 * **Artifactory URL**: Enter **https://harness.jfrog.io/artifactory**.
+	 * **Username/****Select Encrypted Password****:** Leave these settings empty. 
+	 
 3. Click **Test** and then **Submit**. If the test fails, that means the Delegate can't connect to https://harness.jfrog.io/harness. Make sure that the EC2 instance hosting the Delegate can make outbound connections to https://harness.jfrog.io/harness.
 
-### Step 4: Add Target Instance SSH Key to Harness
+## Step 4: Add Target Instance SSH Key to Harness
 
 When you set up your target AWS instance, you created an SSH key file for connecting to it.
 
@@ -119,14 +121,10 @@ First, you add the key as an Encrypted File Secret in Harness, and then use that
 1. In Harness, in **Security**, in **Secrets Management**, click **Encrypted Files**.
 2. Click **Add Encrypted File**. The **Add Encrypted File** settings appear.  
   
-
-
-|  |  |
-| --- | --- |
-|  | 
-	* **Secrets Manager**: Use the default setting.
-	* **Name**: Enter **ssh\_quickstart**.
-	* **File**: Upload your PEM file. |
+	 * **Secrets Manager**: Use the default setting.
+	 * **Name**: Enter **ssh\_quickstart**.
+	 * **File**: Upload your PEM file. 
+	 
 3. Click **Submit**.
 
 Next, use the Encrypted File to create an SSH Key in Harness.
@@ -134,29 +132,27 @@ Next, use the Encrypted File to create an SSH Key in Harness.
 1. In **Secrets Management**, click **SSH**.
 2. Click **Add SSH Key.** The **SSH Configuration** settings appear.  
   
-
-
-|  |  |
-| --- | --- |
-|  | 
-	* **Name**: Enter **ssh\_quickstart**.
-	* **Auth Scheme**: Leave the default.
-	* **User Name**: Enter **ec2-user** (this is the default for AWS EC2 instances)
-	* **Credentials**: Select **SSH Key File**.
-	* **Select Encrypted SSH key Files**: Select the Harness Encrypted File you just added.
-	* **Select Encrypted Passphrase**: Leave empty.
-	* **SSH Port**: Leave the default, **22**. |
+	 * **Name**: Enter **ssh\_quickstart**.
+	 * **Auth Scheme**: Leave the default.
+	 * **User Name**: Enter **ec2-user** (this is the default for AWS EC2 instances)
+	 * **Credentials**: Select **SSH Key File**.
+	 * **Select Encrypted SSH key Files**: Select the Harness Encrypted File you just added.
+	 * **Select Encrypted Passphrase**: Leave empty.
+	 * **SSH Port**: Leave the default, **22**. |
 
 Now you're all set to use this SSH key when you set up the Infrastructure Definition in Harness, later in this quickstart.
 
-### Step 5: Create an Application
+## Step 5: Create an Application
 
-1. Click **Setup**, and then click **Add Application**. The **Application** settings appear.![](./static/traditional-ssh-quickstart-72.png)
+1. Click **Setup**, and then click **Add Application**. The **Application** settings appear.
+
+   ![](./static/traditional-ssh-quickstart-72.png)
+	 
 2. Enter the name for your Application, and click **Submit**. Your new Application appears.  
   
 For more information, see [Create an Application](../continuous-delivery/model-cd-pipeline/applications/application-configuration.md).
 
-### Step 6: Create a Harness SSH Service
+## Step 6: Create a Harness SSH Service
 
 To create a Service for an application package, do the following:
 
@@ -165,9 +161,12 @@ To create a Service for an application package, do the following:
 3. In **Deployment Type**, select **Secure Shell (SSH)**. All file-based Services are Secure Shell (SSH) deployments. The **Artifact Type** and **Application Stack** settings appear.
 4. In **Artifact Type**, select Web Archive (WAR).
 5. In **Application Stack**, select Tomcat. The app stack is used as a runtime environment for your application.  
-Ensure your target hosts have JAVA installed.
 
-#### Review: Default SSH Script Commands
+:::note
+Your target hosts must have JAVA installed.
+:::
+
+### Review: Default SSH Script Commands
 
 The Service page has the following important sections:
 
@@ -177,11 +176,11 @@ The Service page has the following important sections:
 * **Add Commands** - You can add new commands from an Application or Shared Template Library, or simply add a blank command and add Harness scripts to it.
 * **Configuration** - You can add variables and files to use in your Service scripts. These can be encrypted by Harness, allowing you to use secrets. The variables and files can be overwritten in Environments and Workflows.![](./static/traditional-ssh-quickstart-73.png)
 
-#### See Also
+### See Also
 
 * [Add Scripts for Traditional (SSH) Deployments](../continuous-delivery/traditional-deployments/add-deployment-specs-for-traditional-ssh-deployments.md)
 
-### Step 7: Add the Artifact Source
+## Step 7: Add the Artifact Source
 
 The Artifact Source for the Service lists the file(s) that you want to be copied to the target host(s). The Artifact History will manually pull artifact build and version metadata from the Artifact Source.
 
@@ -189,17 +188,26 @@ For more information, see [Add Artifact Servers](https://docs.harness.io/article
 
 To add an artifact source, do the following:
 
-1. In your Service, click **Add Artifact Source**.![](./static/traditional-ssh-quickstart-74.png)
-2. Select the repo or cloud platform where the artifact is located. The Artifact Source settings appear. This topic uses Artifactory as an example.![](./static/traditional-ssh-quickstart-75.png)
+1. In your Service, click **Add Artifact Source**.
+
+   ![](./static/traditional-ssh-quickstart-74.png)
+	 
+2. Select the repo or cloud platform where the artifact is located. The Artifact Source settings appear. This topic uses Artifactory as an example.
+   
+	 ![](./static/traditional-ssh-quickstart-75.png)
+	 
 3. In **Display Name**, enter a name for the Artifactory Server. This is the name you will use to identify this connection when adding an Artifact Source to a Harness Service.
 4. In **Source Server**, select the Artifact Server you added to Harness.
 5. In **Repository**, select the **todolist-tutorial**.
 6. In **Artifact Path/File Filter**, enter the artifact path in the repository: **todolist.war**.  
-Harness uses **Metadata Only** to download the file on the target host.  
-Metadata is sufficient as it contains enough information for the target host(s) to obtain or build the artifact. Harness stores the metadata. During runtime, Harness passes the metadata to the target host(s) where it is used to obtain the artifact(s). Ensure that the target host has network connectivity to the Artifact Server. For more information, see [Service Types and Artifact Sources](../continuous-delivery/model-cd-pipeline/setup-services/service-types-and-artifact-sources.md).
+
+   Harness uses **Metadata Only** to download the file on the target host.  
+	 
+   Metadata is sufficient as it contains enough information for the target host(s) to obtain or build the artifact. Harness stores the metadata. During runtime, Harness passes the metadata to the target host(s) where it is used to obtain the artifact(s). Ensure that the target host has network connectivity to the Artifact Server. For more information, see [Service Types and Artifact Sources](../continuous-delivery/model-cd-pipeline/setup-services/service-types-and-artifact-sources.md).
+	 
 7. Click **Submit**. The Artifact Source is listed.
 
-### Step 8: Add an Environment to the Application
+## Step 8: Add an Environment to the Application
 
 Add deployment Environments for the Services in your Application. These Environments will be deployed on the cloud providers you added as a connector. To add an Environment, do the following:
 
@@ -209,7 +217,7 @@ Add deployment Environments for the Services in your Application. These Environm
 4. In **Environment Type**, choose **Production** or **Non-Production**.![](./static/traditional-ssh-quickstart-76.png)
 5. Click **Submit**.
 
-### Step 9: Define Your Target Servers
+## Step 9: Define Your Target Servers
 
 As an example, we will create an Infrastructure Definition for an AWS EC2 target infrastructure.
 
@@ -230,7 +238,12 @@ To add an Infrastructure Definition, do the following:
 13. In **Host Connection Type**, select **Private DNS** (default selection).![](./static/traditional-ssh-quickstart-77.png)
 14. When you are finished, click **Submit**. The Infrastructure Definition is added.
 
-For AWS Infrastructure Definitions, you can use [Workflow variables](../continuous-delivery/model-cd-pipeline/workflows/add-workflow-variables-new-template.md) in the **Tags** setting. This allows you to parameterize the **Tags** setting, and enter or select the AWS tags to use when you deploy any Workflow that uses this Infrastructure Definition.### Step 10: Set up a Basic SSH Workflow
+:::note
+For AWS Infrastructure Definitions, you can use [Workflow variables](../continuous-delivery/model-cd-pipeline/workflows/add-workflow-variables-new-template.md) in the **Tags** setting. This allows you to parameterize the **Tags** setting, and enter or select the AWS tags to use when you deploy any Workflow that uses this Infrastructure Definition.
+:::
+
+
+## Step 10: Set up a Basic SSH Workflow
 
 Traditional (SSH) deployments involve obtaining an application package from an artifact source, such as a WAR file in an AWS S3 bucket, and deploying it to a target host, such as a virtual machine.
 
@@ -238,7 +251,7 @@ Typically, the Harness Basic Workflow is used for Traditional deployments, but H
 
 In this topic, we will use the Basic Workflow to demonstrate a simple Traditional deployment.
 
-#### Create a Workflow
+### Create a Workflow
 
 To create a Basic Workflow for a Traditional deployment, do the following:
 
@@ -253,7 +266,7 @@ To create a Basic Workflow for a Traditional deployment, do the following:
 
 Let's look at the two default steps in the Workflow, **Select Nodes** and **Install**.
 
-#### Select Target Node
+### Select Target Node
 
 The **Select Nodes** step selects the target hosts from the Infrastructure Definition you defined. You can choose to select a specific host or simply specify the number of instances to select with the Infrastructure Definition criteria.
 
@@ -261,7 +274,7 @@ The following image shows an **Infrastructure Definition** specifying an AWS R
 
 ![](./static/traditional-ssh-quickstart-78.png)For details, see [Select Nodes Workflow Step](https://docs.harness.io/article/9h1cqaxyp9-select-nodes-workflow-step).
 
-#### Install and Run the Application and Stacks
+### Install and Run the Application and Stacks
 
 The Install step runs the command scripts in your Harness SSH and Service on the target host. See [Install Workflow Step](https://docs.harness.io/article/2q8vjxdjcq-install-workflow-step).
 
@@ -269,7 +282,7 @@ The Install step is added in the Basic Workflow as part of its **Deploy Service*
 
 For details, see [Create a Basic Workflow for Traditional (SSH) Deployments](../continuous-delivery/traditional-deployments/create-a-basic-workflow-for-traditional-ssh-deployments.md).
 
-### Step 11: Deploy and Review
+## Step 11: Deploy and Review
 
 The Basic Workflow is the most common deployment of Services deploying application packages. Once you've successfully deployed the Workflow, you can click the **Install** step to see the Service commands and scripts in the **Deployments** page.
 
@@ -293,7 +306,8 @@ File successfully transferred to ip-172-31-7-227.ec2.internal:/home/ec2-user/Tra
   
 Command execution finished with status SUCCESS
 ```
-### Next Steps
+
+## Next Steps
 
 * [Traditional (SSH) Deployments How-tos](../continuous-delivery/traditional-deployments/traditional-deployments-overview.md)
 * [Build and Deploy Pipeline How-tos](../continuous-delivery/build-deploy/build-and-deploy-pipelines-overview.md)

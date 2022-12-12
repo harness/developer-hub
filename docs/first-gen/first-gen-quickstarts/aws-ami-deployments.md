@@ -1,7 +1,7 @@
 ---
 title: AWS AMI Quickstart
 description: Use existing AMIs and ASGs to deploy new ASGs and instances to EC2 via Harness.
-# sidebar_position: 2
+sidebar_position: 10
 helpdocs_topic_id: wfk9o0tsjb
 helpdocs_category_id: f6rh2cdvx9
 helpdocs_is_private: false
@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 This quickstart shows you how to use existing Amazon Machine Images (AMIs) and AWS Auto Scaling Groups (ASGs) to deploy new ASGs and instances to Amazon Elastic Compute Cloud (EC2) via Harness.
 
-### Objectives
+## Objectives
 
 You'll learn how to:
 
@@ -22,7 +22,7 @@ You'll learn how to:
 * Set the number of instances to deploy.
 * Create and deploy an AMI Basic Workflow.
 
-### Before You Begin
+## Before You Begin
 
 * Review [Harness Key Concepts](../starthere-firstgen/harness-key-concepts.md) to establish a general understanding of Harness.
 * **AWS IAM role** — Create an AWS IAM role that has the **AmazonEC2FullAccess** policy. You will apply this role to the EC2 instance you use to host the Harness Shell Script Delegate. This policy gives the Delegate access to the AWS EC2 API.  
@@ -37,13 +37,13 @@ See [Creating an IAM Group and Users](https://docs.aws.amazon.com/AWSEC2/latest/
 * **AMI and Base ASG** — Pick an existing AMI and ASG for Harness to use when creating new instances and ASGs. Harness will use the existing ASG as a template, but it will not resize it all.
 * **Tag your AMI** — Tag the existing AMI you picked with **Name: AMI-Tutorial**. You will use this tag to select the AMI in Harness. You can also enter the AMI ID in Harness if you don't want to tag the instance.
 
-### Visual Summary
+## Visual Summary
 
 The following diagram shows the very simple topology for this tutorial:
 
 ![](./static/aws-ami-deployments-49.png)You will install the Harness Shell Script Delegate on an EC2 instance in your AWS account, select an AMI for creating instances, a base ASG for creating a new ASG, and then deploy the number of new instances you need.
 
-### Step 1: Install and Launch the Shell Script Delegate
+## Step 1: Install and Launch the Shell Script Delegate
 
 First we'll install the Harness Shell Script Delegate on the EC2 instance you set up with the IAM role you created for Harness AMI deployments.
 
@@ -67,7 +67,7 @@ The Delegate will start and in a few moments you will see it listed in the **Har
 1. In the Delegate listing on the **Harness Delegates** page, click **Edit** next to **Selectors**.
 2. Type in **AWS-Tutorial**, press **Enter**, and then click **Submit**. The Selector is added to the Delegate.
 
-### Step 2: Add a AWS Cloud Provider
+## Step 2: Add a AWS Cloud Provider
 
 In this section, we will add a Harness AWS Cloud Provider to your Harness account to connect to AWS EC2.
 
@@ -76,21 +76,16 @@ As Harness provides first-class support for [CloudWatch](../continuous-delivery/
 1. In the Harness Manager, click **Setup**, and then click **Cloud Providers**.
 2. Click **Add Cloud Provider**. The **Cloud Provider** dialog appears. Enter the following settings:
 
+	* **Type:** Select **Amazon Web Services**.
+	* **Display Name:** Enter **AWS-Tutorial**.
+	* **Credentials:** Select **Assume IAM Role on Delegate**.
+	* **Delegate Selector:** Select the Delegate Selector you added to your Delegate, **AWS-Tutorial**.
 
-
-|  |  |
-| --- | --- |
-|  | * **Type:** Select **Amazon Web Services**.
-* **Display Name:** Enter **AWS-Tutorial**.
-* **Credentials:** Select **Assume IAM Role on Delegate**.
-* **Delegate Selector:** Select the Delegate Selector you added to your Delegate, **AWS-Tutorial**.
- |
-
-1. Click **Test** and then **Submit**.
+3. Click **Test** and then **Submit**.
 
 Now that the hard part is done, you can quickly set up your AMI deployment in just a few minutes.
 
-### Step 3: Add Your AMI and User Data
+## Step 3: Add Your AMI and User Data
 
 Next we'll add the AMI to use when creating you new instances. We'll start by creating a Harness Application.
 
@@ -101,44 +96,39 @@ An Application in Harness represents a logical group of one or more entities, in
 3. In your new Application, click **Services**. The **Services** page appears.
 4. In the **Services** page, click **Add Service**. The **Add** **Service** settings appear. Enter the following settings and then click **Submit**:
 
-
-
-|  |  |
-| --- | --- |
-|  | * **Name:** Enter **AMI Tutorial**.
-* **Deployment Type:** Select **Amazon Machine Image**.
- |
+	 * **Name:** Enter **AMI Tutorial**.
+	 * **Deployment Type:** Select **Amazon Machine Image**.\
 
 The new Service is listed.
 
-![](./static/aws-ami-deployments-51.png)Next, we'll select the AMI to use when creating your instances.
+![](./static/aws-ami-deployments-51.png)
+
+Next, we'll select the AMI to use when creating your instances.
 
 1. From the **Service Overview** section, click **Add Artifact Source**, then click **Amazon AMI**.
 2. In **Artifact Source**, enter the following settings and click **Submit**.
 
-
-
-|  |  |
-| --- | --- |
-|  | * **Cloud Provider:** Select the AWS Cloud Provider you added earlier, **AWS-Tutorial**.
-* **Region:** Select the AWS region where your AMI is located.
-* **AWS Tags:** Add the tag that is used by your AMI, such as **Name: AMI-Tutorial**.
-
- |
+   * **Cloud Provider:** Select the AWS Cloud Provider you added earlier, **AWS-Tutorial**.
+   * **Region:** Select the AWS region where your AMI is located.
+   * **AWS Tags:** Add the tag that is used by your AMI, such as **Name: AMI-Tutorial**.
 
 Optionally, in **AmiResource Filters**, you can add AMI ID filters to locate the AMI resource. These are key/value pairs that prepend `ami‑image:` to the AMI ID. For example: `ami‑image:ami‑0981c1b27d2d4f749`.
 
-![](./static/aws-ami-deployments-52.png)In the Service's **Deployment Specification** section, you can select the **User Data** link to enter configuration scripts and directives that your AWS instance will run upon launch.
+![](./static/aws-ami-deployments-52.png)
+
+In the Service's **Deployment Specification** section, you can select the **User Data** link to enter configuration scripts and directives that your AWS instance will run upon launch.
 
 The resulting **User Data** container corresponds to the AWS Launch Instance wizard's **Advanced Details** > **User data** container.
 
-[![](./static/aws-ami-deployments-53.png)](./static/aws-ami-deployments-53.png)You can enter the same shell scripts and cloud-init directives that AWS will accept through its own UI. For details about scripting requirements, formatting, and options, see Amazon's EC2 [User Data and Shell Scripts](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html#user-data-shell-scripts) documentation. When Harness creates a new instance, it will apply your defined User Data.
+[![](./static/aws-ami-deployments-53.png)](./static/aws-ami-deployments-53.png)
+
+You can enter the same shell scripts and cloud-init directives that AWS will accept through its own UI. For details about scripting requirements, formatting, and options, see Amazon's EC2 [User Data and Shell Scripts](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html#user-data-shell-scripts) documentation. When Harness creates a new instance, it will apply your defined User Data.
 
 For this tutorial we'll skip **User Data**.
 
 Next, you can select the base ASG to use when Harness creates a new ASG for your new AMI instances.
 
-### Step 4: Select the Base ASG
+## Step 4: Select the Base ASG
 
 Now that we've added an AMI Service to your Application, we'll define an Environment where your AMI instances will be deployed. 
 
@@ -146,14 +136,8 @@ In an Environment, you specify the base AWS Auto Scaling Group (ASG) as an Infra
 
 1. Use the breadcrumb navigation to jump to **Environments**.![](./static/aws-ami-deployments-55.png)
 2. Click **Add Environment**. The **Environment** settings appear. Enter the following settings and click **Submit**:
-
-
-
-|  |  |
-| --- | --- |
-|  | * **Name:** Enter **AMI Tutorial**.
-* **Environment Type:** Select **Non-Production**.
- |
+   * **Name:** Enter **AMI Tutorial**.
+   * **Environment Type:** Select **Non-Production**.
 
 One you click **Submit**, the new Environment page appears. Next we will add an Infrastructure Definition to identify the related ASG information.
 
@@ -163,92 +147,80 @@ When you create the Harness Workflow later, you will pick this Infrastructure D
 
 1. Click **Add Infrastructure Definition**. The **Infrastructure Definition** dialog appears. Enter the following settings and click **Submit**:
 
+   * **Name:** Enter **AMI Tutorial**.
+   * **Cloud Provider Type:** Select **Amazon Web Services**.
+   * **Deployment Type:** Select **Amazon Machine Image**.
+   * Select the **Use Already Provisioned Infrastructure** setting.
+   * **Cloud Provider:** Select the Cloud Provider you added earlier, **AMI-Tutorial**.
+   * **Region:** Select the region where you base ASG is located.
+   * **Auto Scaling Group:** Select your base ASG, such as **AMI-Tutorial**.
 
-
-|  |  |
-| --- | --- |
-|  | * **Name:** Enter **AMI Tutorial**.
-* **Cloud Provider Type:** Select **Amazon Web Services**.
-* **Deployment Type:** Select **Amazon Machine Image**.
-* Select the **Use Already Provisioned Infrastructure** setting.
-* **Cloud Provider:** Select the Cloud Provider you added earlier, **AMI-Tutorial**.
-* **Region:** Select the region where you base ASG is located.
-* **Auto Scaling Group:** Select your base ASG, such as **AMI-Tutorial**.
-
-You can leave the rest of the settings. |
+You can leave the rest of the settings. 
 
 This is the last required step to set up the deployment Environment in Harness. With both the Service and Environment set up, you can now proceed to creating a deployment Workflow.
 
-### Step 5: Build an AMI Basic Deployment
+## Step 5: Build an AMI Basic Deployment
 
 This section walks you through creating an AMI Basic Workflow in Harness. By default, Harness AMI Basic Workflows have two default deployment steps:
 
 * **​Setup AutoScaling Group** — Specify how many instances to launch, their resizing order, and their steady state timeout.
 * **​Deploy Service** — Specify the number/percentage of instances to deploy within the ASG you've deploying.
+
 1. Use the breadcrumb navigation to jump to **Workflows**, and then click **Add Workflow**. The Workflow settings appear. Enter the following settings and click **Submit**.
 
+   * **Name:** Enter **AMI Tutorial**.
+   * **Workflow Type:** Select **Basic Deployment**.
+   * **Environment:** Select the Environment you created, **AMI Tutorial**.
+   * **Service:** Select the Service you created, **AMI Tutorial**.
+   * **Infrastructure Definition:** Select the Infrastructure Definition you created, **AMI Tutorial**.
 
+  The new Basic Workflow appears with the pre-configured steps.
 
-|  |  |
-| --- | --- |
-|  | * **Name:** Enter **AMI Tutorial**.
-* **Workflow Type:** Select **Basic Deployment**.
-* **Environment:** Select the Environment you created, **AMI Tutorial**.
-* **Service:** Select the Service you created, **AMI Tutorial**.
-* **Infrastructure Definition:** Select the Infrastructure Definition you created, **AMI Tutorial**.
- |
+2. Click the **AWS AutoScaling Group Setup** step. This step configures the defaults for the new ASG. Enter the following settings and click **Submit**.
 
-The new Basic Workflow appears with the pre-configured steps.
+   * **Auto Scaling Group Name:** Enter **My-AMI-Tutorial**.
+   * **Instances:** Select **Fixed**.
+   * **Max Instances:** Enter **6**.
+   * **Min Instances:** Enter **1**.
+   * **Desired Instances:** Enter **1**.
 
-1. Click the **AWS AutoScaling Group Setup** step. This step configures the defaults for the new ASG. Enter the following settings and click **Submit**.
+   You can leave the rest of the settings. 
 
+3. Click **Upgrade AutoScaling Group**. This step defines the number of instances to deploy in the new ASG, as either a count or percentage. Enter the following settings and click **Submit**.
 
+  * **Desired Instances:** Enter **2**.
+  * **Instance Unit Type:** Leave the default, **Count**.
 
-|  |  |
-| --- | --- |
-|  | * **Auto Scaling Group Name:** Enter **My-AMI-Tutorial**.
-* **Instances:** Select **Fixed**.
-* **Max Instances:** Enter **6**.
-* **Min Instances:** Enter **1**.
-* **Desired Instances:** Enter **1**.
+:::note 
+The **Desired Instances** value in the **AWS AutoScaling Group Setup** step is used when calculating percentages in the **Desired Instances** field here in **Upgrade AutoScaling Group**. For example, if **Desired Instances** in the **AWS AutoScaling Group Setup** is 4 and you set **Desired instances** here to 25%, then it will deploy 1 instance.
+:::
 
-You can leave the rest of the settings. |
+Your AMI Basic Workflow is complete. You can run the Workflow to deploy the new instances to the new ASG.
 
-1. Click **Upgrade AutoScaling Group**. This step defines the number of instances to deploy in the new ASG, as either a count or percentage. Enter the following settings and click **Submit**.
+:::note 
+**What happens to the old ASG instances?** Every new AMI/ASG deployment creates a new ASG. The instances in ASGs used by previous deployments are downsized to a max count of 3. Additional instances are detached.
+:::
 
-
-
-|  |  |
-| --- | --- |
-|  | * **Desired Instances:** Enter **2**.
-* **Instance Unit Type:** Leave the default, **Count**.
- |
-
-The **Desired Instances** value in the **AWS AutoScaling Group Setup** step is used when calculating percentages in the **Desired Instances** field here in **Upgrade AutoScaling Group**. For example, if **Desired Instances** in the **AWS AutoScaling Group Setup** is 4 and you set **Desired instances** here to 25%, then it will deploy 1 instance.Your AMI Basic Workflow is complete. You can run the Workflow to deploy the new instances to the new ASG.
-
-**What happens to the old ASG instances?** Every new AMI/ASG deployment creates a new ASG. The instances in ASGs used by previous deployments are downsized to a max count of 3. Additional instances are detached.### Step 6: Deploy and Review
+## Step 6: Deploy and Review
 
 Now that the Basic Workflow for AMI is set up, you can click Deploy in the Workflow to deploy it.
 
 1. Click the **Deploy** button. The Deploy settings appear. Enter the following settings:
 
+   * **Artifacts > AMI Tutorial:** Select **Image: AMI-Tutorial**.
+   * **Send notification to me only:** Enable this setting if you are doing this tutorial using your corporate Harness account. Enabling this setting will ensure that other users won't be notified on this deployment.
 
-
-|  |  |
-| --- | --- |
-|  | * **Artifacts > AMI Tutorial:** Select **Image: AMI-Tutorial**.
-* **Send notification to me only:** Enable this setting if you are doing this tutorial using your corporate Harness account. Enabling this setting will ensure that other users won't be notified on this deployment.
- |
-
-1. Click **Submit**. The deployment executes.
+2. Click **Submit**. The deployment executes.
 
 Here's a example of what the deployment looks like typically:
 
-![](./static/aws-ami-deployments-56.gif)To see the completed deployment, log into your AWS EC2 console. The base ASG, new ASG, and new instances are listed:
+![](./static/aws-ami-deployments-56.gif)
+	 
+To see the completed deployment, log into your AWS EC2 console. The base ASG, new ASG, and new instances are listed:
 
 ![](./static/aws-ami-deployments-57.png)You now have two new instances built using the AMI you provided and managed by the new ASG you created.
 
-### Next Steps
+## Next Steps
 
 In this tutorial, you learned how to:
 

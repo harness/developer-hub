@@ -1,7 +1,7 @@
 ---
 title: AWS CodeDeploy Quickstart
 description: Deploy a sample Linux app to an AWS Auto Scaling Group (ASG) using CodeDeploy and Harness.
-# sidebar_position: 2
+sidebar_position: 20
 helpdocs_topic_id: 4t14lqxljo
 helpdocs_category_id: f6rh2cdvx9
 helpdocs_is_private: false
@@ -86,17 +86,12 @@ As Harness provides first-class support for [CloudWatch](../continuous-delivery/
 1. In the Harness Manager, click **Setup**, and then click **Cloud Providers**.
 2. Click **Add Cloud Provider**. The **Cloud Provider** dialog appears. Enter the following settings:
 
+   * **Type:** Select **Amazon Web Services**.
+   * **Display Name:** Enter **CodeDeploy**.
+   * **Credentials:** Select **Assume IAM Role on Delegate**.
+   * **Delegate Selector:** Select the Delegate Selector you added to your Delegate, **codedeploy-tutorial**.
 
-
-|  |  |
-| --- | --- |
-|  | * **Type:** Select **Amazon Web Services**.
-* **Display Name:** Enter **CodeDeploy**.
-* **Credentials:** Select **Assume IAM Role on Delegate**.
-* **Delegate Selector:** Select the Delegate Selector you added to your Delegate, **codedeploy-tutorial**.
- |
-
-1. Click **Test** and then **Submit**.
+2. Click **Test** and then **Submit**.
 
 Now that the hard part is done, you can quickly set up your CodeDeploy deployment in just a few minutes.
 
@@ -111,13 +106,8 @@ An Application in Harness represents a logical group of one or more entities, in
 3. In your new Application, click **Services**. The **Services** page appears.
 4. In the **Services** page, click **Add Service**. The **Add** **Service** settings appear. Enter the following settings and then click **Submit**:
 
-
-
-|  |  |
-| --- | --- |
-|  | * **Name:** Enter **CodeDeploy Example**.
-* **Deployment Type:** Select **AWS CodeDeploy**.
- |
+   * **Name:** Enter **CodeDeploy Example**.
+   * **Deployment Type:** Select **AWS CodeDeploy**.
 
 The new Service is listed.
 
@@ -133,20 +123,17 @@ You can find a list of all the download locations in step 19 of [Step 2: Deploy 
 
 Once the file is downloaded, upload it to your S3 bucket. When you're done your bucket will look something like this:
 
-![](./static/aws-code-deploy-quickstart-83.png)Now we'll add that S3 bucket and file as an Artifact Source in our Harness Service.
+![](./static/aws-code-deploy-quickstart-83.png)
+
+Now we'll add that S3 bucket and file as an Artifact Source in our Harness Service.
 
 1. From the **Service Overview** section, click **Add Artifact Source**, then click **Amazon S3**.
 2. In **Artifact Source**, enter the following settings and click **Submit**.
 
-
-
-|  |  |
-| --- | --- |
-|  | * **Name:** Enter **SampleApp**.
-* **Cloud Provider:** Select the AWS Cloud Provider you added, **CodeDeploy**.
-* **Bucket:** Select the S3 bucket you used for the SampleApp.
-* **Artifact Path:** Select the SampleApp zip file.
- |
+   * **Name:** Enter **SampleApp**.
+   * **Cloud Provider:** Select the AWS Cloud Provider you added, **CodeDeploy**.
+   * **Bucket:** Select the S3 bucket you used for the SampleApp.
+   * **Artifact Path:** Select the SampleApp zip file.
 
 Next, you can tell Harness what existing CodeDeploy deployment settings to use when it deploys the SampleApp.
 
@@ -154,42 +141,37 @@ Next, you can tell Harness what existing CodeDeploy deployment settings to use w
 
 Use the breadcrumb navigation to jump to **Environments**.
 
-![](./static/aws-code-deploy-quickstart-84.png)1. Click **Add Environment**. The **Environment** settings appear. Enter the following settings and click **Submit**:
+![](./static/aws-code-deploy-quickstart-84.png)
 
+1. Click **Add Environment**. The **Environment** settings appear. Enter the following settings and click **Submit**:
 
+   * **Name:** Enter **CodeDeploy**.
+   * **Environment Type:** Select **Non-Production**.
 
-|  |  |
-| --- | --- |
-|  | * **Name:** Enter **CodeDeploy**.
-* **Environment Type:** Select **Non-Production**.
- |
+   When you click **Submit**, the new Environment page appears. Next we will add an Infrastructure Definition to identify the related CodeDeploy information.
 
-One you click **Submit**, the new Environment page appears. Next we will add an Infrastructure Definition to identify the related CodeDeploy information.
+   An [Infrastructure Definition](../continuous-delivery/model-cd-pipeline/environments/environment-configuration.md#add-an-infrastructure-definition) for a CodeDeploy deployment specifies the CodeDeploy Application Name, Deployment Group, and Deployment Configuration.
 
-An [Infrastructure Definition](../continuous-delivery/model-cd-pipeline/environments/environment-configuration.md#add-an-infrastructure-definition) for a CodeDeploy deployment specifies the CodeDeploy Application Name, Deployment Group, and Deployment Configuration.
+  When you create the Harness Workflow later, you will pick this Infrastructure Definition to use for deployment.
 
-When you create the Harness Workflow later, you will pick this Infrastructure Definition to use for deployment.
+2. Click **Add Infrastructure Definition**. The **Infrastructure Definition** dialog appears. Enter the following settings and click **Submit**:
 
-1. Click **Add Infrastructure Definition**. The **Infrastructure Definition** dialog appears. Enter the following settings and click **Submit**:
+   * **Name:** Enter **CodeDeployTutorial**.
+   * **Cloud Provider Type:** Select **Amazon Web Services**.
+   * **Deployment Type:** Enter **AWS CodeDeploy**.
+   * **Cloud Provider:** Select the AWS Cloud Provider you added earlier, **CodeDeploy**.
+   * **Region:** Select the region where your ASG and target instances are located.
+   * **Application Name:** Select your existing CodeDeploy Application Name.
+   * **Deployment Group:** Select your existing Deployment Group.
+   * **Deployment Configuration:** Select **CodeDeployDefault.OneAtATime**.
+   * **Host Name Convention:** Leave the default setting.
 
-
-
-|  |  |
-| --- | --- |
-|  | * **Name:** Enter **CodeDeployTutorial**.
-* **Cloud Provider Type:** Select **Amazon Web Services**.
-* **Deployment Type:** Enter **AWS CodeDeploy**.
-* **Cloud Provider:** Select the AWS Cloud Provider you added earlier, **CodeDeploy**.
-* **Region:** Select the region where your ASG and target instances are located.
-* **Application Name:** Select your existing CodeDeploy Application Name.
-* **Deployment Group:** Select your existing Deployment Group.
-* **Deployment Configuration:** Select **CodeDeployDefault.OneAtATime**.
-* **Host Name Convention:** Leave the default setting.
- |
 
 These settings correspond to your exiting CodeDeploy Deployment details:
 
-![](./static/aws-code-deploy-quickstart-85.png)This is the last required step to set up the deployment Environment in Harness. With both the Service and Environment set up, you can now proceed to creating a deployment Workflow.
+![](./static/aws-code-deploy-quickstart-85.png)
+
+This is the last required step to set up the deployment Environment in Harness. With both the Service and Environment set up, you can now proceed to creating a deployment Workflow.
 
 ### Step 5: Build a CodeDeploy Basic Deployment
 
@@ -197,30 +179,23 @@ Next, we'll create a Harness Basic Workflow using the Service, Environment, and 
 
 Only Harness Basic deployment strategies are supported for CodeDeploy. See [Supported Platforms and Technologies](../starthere-firstgen/supported-platforms.md).1. Use the breadcrumb navigation to jump to **Workflows**, and then click **Add Workflow**. The Workflow settings appear. Enter the following settings and click **Submit**.
 
-
-
-|  |  |
-| --- | --- |
-|  | * **Name:** Enter **CodeDeployTutorial**.
+* **Name:** Enter **CodeDeployTutorial**.
 * **Workflow Type:** Select **Basic Deployment**.
 * **Environment:** Select the Environment you created, **CodeDeploy**.
 * **Service:** Select the Service you created, **CodeDeploy Example**.
 * **Infrastructure Definition:** Select the Infrastructure Definition you created, **CodeDeployTutorial**.
- |
 
 The new Basic Workflow appears with its steps pre-configured.
 
 Click the **AWS CodeDeploy** step. This step corresponds to several CodeDeploy deployment settings:
 
-![](./static/aws-code-deploy-quickstart-86.png)See [Create an EC2/On-Premises Compute Platform Deployment](https://docs.aws.amazon.com/codedeploy/latest/userguide/deployments-create-console.html) from AWS for details.
+![](./static/aws-code-deploy-quickstart-86.png)
+
+See [Create an EC2/On-Premises Compute Platform Deployment](https://docs.aws.amazon.com/codedeploy/latest/userguide/deployments-create-console.html) from AWS for details.
 
 Review the following settings and click **Submit**.
 
-
-
-|  |  |
-| --- | --- |
-|  | * **Name:** Use **AWS CodeDeploy**.
+* **Name:** Use **AWS CodeDeploy**.
 * **Bucket:** The variables expression here gets the bucket name from the Harness Service.
 * **Key:** The variables expression here gets the artifact URL from the Harness Service.
 * **Bundle Type:** Select **zip**.
@@ -229,7 +204,6 @@ Review the following settings and click **Submit**.
 * **Steady State Timeout:** Harness considers steady state a successful deployment. You can control how long Harness waits.
 * **Ignore ApplicationStop lifecycle event failure:** Enable this if you want a deployment to an instance to succeed if the ApplicationStop lifecycle event fails.
 
- |
 
 Your CodeDeploy Basic Workflow is complete. You can run the Workflow to deploy your app to the ASG.
 
@@ -238,26 +212,32 @@ Your CodeDeploy Basic Workflow is complete. You can run the Workflow to deploy y
 Now that the Basic Workflow for CodeDeploy is set up, you can click **Deploy** in the Workflow to deploy it.
 
 1. Click the **Deploy** button. The Deploy settings appear. Enter the following settings:
-
-
-
-|  |  |
-| --- | --- |
-|  | **Artifacts** > **CodeDeploy Example**: Select **Build# SampleApp\_Linux.zip**.**Send notification to me only:** Enable this setting if you are doing this quickstart using your corporate Harness account. Enabling this setting will ensure that other users won't be notified on this deployment. |
+   **Artifacts** > **CodeDeploy Example**: Select **Build# SampleApp\_Linux.zip**.
+	 **Send notification to me only:** Enable this setting if you are doing this quickstart using your corporate Harness account. Enabling this setting will ensure that other users won't be notified on this deployment. 
+	 
+2. Click **Submit**. The deployment executes.
 
 Here's a example of what the deployment looks like typically:
 
-![](./static/aws-code-deploy-quickstart-87.gif)To see the completed deployment, log into your AWS CodeDeploy console, and click the Refresh button to view the latest deployment.
+![](./static/aws-code-deploy-quickstart-87.gif)
 
-![](./static/aws-code-deploy-quickstart-88.png)Click the **Deployment Id**.
+To see the completed deployment, log into your AWS CodeDeploy console, and click the Refresh button to view the latest deployment.
+
+![](./static/aws-code-deploy-quickstart-88.png)
+
+Click the **Deployment Id**.
 
 Scroll to the bottom of the details page to the **Deployment lifecycle events** section.
 
-![](./static/aws-code-deploy-quickstart-89.png)Click the **Instance ID** to launch EC2.
+![](./static/aws-code-deploy-quickstart-89.png)
+
+Click the **Instance ID** to launch EC2.
 
 In EC2, the instance is selected. Copy the **Public DNS (IPv4)**, paste it in a browser tab, and then press **Enter**. The **Congratulations** page appears.
 
-![](./static/aws-code-deploy-quickstart-90.png)If the page doesn't appear, ensure that the **Inbound rules** for the security group used by the instance has HTTP open.Congratulations! You have completed the quickstart.
+![](./static/aws-code-deploy-quickstart-90.png)
+
+If the page doesn't appear, ensure that the **Inbound rules** for the security group used by the instance has HTTP open.Congratulations! You have completed the quickstart.
 
 ### Next Steps
 
