@@ -154,7 +154,7 @@ The following procedure describes how to set up the ECS Delegate and add a Deleg
 	  	
 		```
 		tar -zxvf harness-delegate-ecs.tar.gz
-		``
+		```
 	3. Navigate to the extracted folder: `cd harness-delegate-ecs`.
 	4. Log into AWS using your AWS Access Key ID and AWS Secret Key ID.  
 	  
