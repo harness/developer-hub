@@ -47,9 +47,9 @@ Pipelines are collections of stages. For this quickstart, we'll create a new Pip
 1. In your Harness Project, click **Deployments**, and then click **Create a Pipeline**.
 2. Enter the name **Azure Quickstart** and click **Start**.
 
-Your Pipeline appears.
+  Your Pipeline appears.
 
-Do the following:
+  Do the following:
 
 1. Click **Add Stage** and select **Deploy**.
 2. Enter the name **Deploy Service**, make sure **Service** is selected, and then click **Set Up Stage**.
@@ -82,9 +82,9 @@ Next, we can add a Kubernetes manifest for our deployment. We'll use [publicly-a
   5. In **Secret Name**, enter a name for the secret like **github-pat**.
   6. In **Secret Value**, paste in a GitHub Personal access token. When you're logged into GitHub, these are typically listed at <https://github.com/settings/tokens>. For steps on setting up a GitHub PAT, see [Creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) from GitHub.
   7. Ensure you PAT has the **repo** scope selected:
-
-![](static/azure-repo.png)
-
+  
+  ![](static/azure-repo.png)
+  
 1. Click **Continue**.
 2. In **Connect to the provider**, select **Connect through a Harness Delegate**, and click **Continue**. 
   
@@ -126,7 +126,6 @@ Next, we can add a Kubernetes manifest for our deployment. We'll use [publicly-a
   statefulset.apps/k8s-quickstart-sngxpn created  
   service/delegate-service unchanged
   ```
-
 1. In Harness, click **Verify**. It will take a few minutes to verify the Delegate. Once it is verified, close the wizard.
 2. Back in **Set Up Delegates**, you can select the new Delegate. In the list of Delegates, you can see your new Delegate and its tags.
 3. Select the **Connect using Delegates with the following Tags** option.
@@ -136,61 +135,60 @@ Next, we can add a Kubernetes manifest for our deployment. We'll use [publicly-a
 7. In **Manifest Details**, enter the following settings, test the connection, and click **Submit**.
 
   We are going to provide connection and path information for a manifest located at `https://github.com/wings-software/harness-docs/tree/main/default-k8s-manifests/Manifests/Files/templates`.
-
-1. **Manifest Identifier:** enter **manifests**.
-2. **Git Fetch Type:** select **Latest from Branch**.
-3. **Branch:** enter **main**.
-4. **File/Folder path:**`default-k8s-manifests/Manifests/Files/templates` 
+   1. **Manifest Identifier:** enter **manifests**.
+   2. **Git Fetch Type:** select **Latest from Branch**.
+   3. **Branch:** enter **main**.
+   4. **File/Folder path:**`default-k8s-manifests/Manifests/Files/templates` 
   
   This is the path from the repo root. The manifest is now listed.
 
   ![](./static/azure-cd-quickstart-101.png)
 
-Next, let's add the values.yaml file for the deployment.
+  Next, let's add the values.yaml file for the deployment.
 
-Harness supports Go templating with a Values YAML file by default so you can template your manifests. Also, you can use [Harness expressions](https://docs.harness.io/article/lml71vhsim-harness-variables) in your values.yaml file. 
+  Harness supports Go templating with a Values YAML file by default so you can template your manifests. Also, you can use [Harness expressions](https://docs.harness.io/article/lml71vhsim-harness-variables) in your values.yaml file. 
 
-We will use a [values.yaml file](https://github.com/wings-software/harness-docs/blob/main/default-k8s-manifests/Manifests/Files/ng_values_dockercfg.yaml) that uses the `<+artifact.image>` expression to reference the artifact you will add later in **Artifacts**.The values file looks like this:
+  We will use a [values.yaml file](https://github.com/wings-software/harness-docs/blob/main/default-k8s-manifests/Manifests/Files/ng_values_dockercfg.yaml) that uses the `<+artifact.image>` expression to reference the artifact you will add later in **Artifacts**.The values file looks like this:
 
-  ```yaml
-  name: harness-quickstart  
-  replicas: 1  
-    
-  image: <+artifact.image>  
-  dockercfg: <+artifact.imagePullSecret>  
-    
-  createNamespace: true  
-  namespace: <+infra.namespace>  
-    
-  # Service Type allow you to specify what kind of service you want.  
-  # Possible values for ServiceType are:  
-  # ClusterIP | NodePort | LoadBalancer | ExternalName  
-  serviceType: LoadBalancer  
-    
-  # A Service can map an incoming port to any targetPort.  
-  # targetPort is where application is listening on inside the container.  
-  servicePort: 80  
-  serviceTargetPort: 80  
-    
-  # Specify all environment variables to be added to the container.  
-  # The following two maps, config and secrets, are put into a ConfigMap  
-  # and a Secret, respectively.  
-  # Both are added to the container environment in podSpec as envFrom source.  
-  env:  
-    config:  
-      key1: value1  
-    secrets:  
-      key2: value2
-  ```
+    ```yaml
+    name: harness-quickstart  
+    replicas: 1  
+      
+    image: <+artifact.image>  
+    dockercfg: <+artifact.imagePullSecret>  
+      
+    createNamespace: true  
+    namespace: <+infra.namespace>  
+      
+    # Service Type allow you to specify what kind of service you want.  
+    # Possible values for ServiceType are:  
+    # ClusterIP | NodePort | LoadBalancer | ExternalName  
+    serviceType: LoadBalancer  
+      
+    # A Service can map an incoming port to any targetPort.  
+    # targetPort is where application is listening on inside the container.  
+    servicePort: 80  
+    serviceTargetPort: 80  
+      
+    # Specify all environment variables to be added to the container.  
+    # The following two maps, config and secrets, are put into a ConfigMap  
+    # and a Secret, respectively.  
+    # Both are added to the container environment in podSpec as envFrom source.  
+    env:  
+      config:  
+        key1: value1  
+      secrets:  
+        key2: value2
+    ```
 
 1. Click **Add Manifest**.
 2. In **Specify Manifest Type**, select **Values YAML**, and click **Continue**.
 3. In **Specify Values YAML Store**, select the same GitHub Connector you used for your manifests, and then click **Continue**.
-4. In **Manifest Details**, enter the following and click **Submit**.
-5. **Manifest Identifier:** `values`.
-6. **Git Fetch Type:** `Latest from Branch`.
-7. **Branch:** `main`.
-8. **File Path:** `default-k8s-manifests/Manifests/Files/ng_values_dockercfg.yaml`.
+   1. In **Manifest Details**, enter the following and click **Submit**.
+   2. **Manifest Identifier:** `values`.
+   3. **Git Fetch Type:** `Latest from Branch`.
+   4. **Branch:** `main`.
+   5. **File Path:** `default-k8s-manifests/Manifests/Files/ng_values_dockercfg.yaml`.
 
 The values file is listed.
 

@@ -198,125 +198,122 @@ If you are new to ECS, please review the AWS documentation on [ECS Task Definiti
 5. Create a new folder named **ECS Tutorial**.
 6. In the new folder, create a new file named **RegisterTaskDefinitionRequest.yaml**.
 7. Paste the following Task Definition into the file, click **Save**, and then click **Apply Selected**.
-
-Replace the two `<ecsInstanceRole Role ARN>` with the ARN for the **ecsInstanceRole** used for your cluster. See [Amazon ECS Instance Role](https://docs.aws.amazon.com/batch/latest/userguide/instance_IAM_role.html) from AWS.
+   1. Replace the two `<ecsInstanceRole Role ARN>` with the ARN for the **ecsInstanceRole** used for your cluster. See [Amazon ECS Instance Role](https://docs.aws.amazon.com/batch/latest/userguide/instance_IAM_role.html) from AWS. 
+   2. When you are done, in **Manifest Details**, click **Submit**. 
 
 JSON Example:
-
 ```json
 {  
-    "ipcMode": null,  
-    "executionRoleArn": "<ecsInstanceRole Role ARN>",  
-    "containerDefinitions": [  
-        {  
-            "dnsSearchDomains": null,  
-            "environmentFiles": null,  
-            "entryPoint": null,  
-            "portMappings": [  
-                {  
-                    "hostPort": 80,  
-                    "protocol": "tcp",  
-                    "containerPort": 80  
-                }  
-            ],  
-            "command": null,  
-            "linuxParameters": null,  
-            "cpu": 0,  
-            "environment": [],  
-            "resourceRequirements": null,  
-            "ulimits": null,  
-            "dnsServers": null,  
-            "mountPoints": [],  
-            "workingDirectory": null,  
-            "secrets": null,  
-            "dockerSecurityOptions": null,  
-            "memory": null,  
-            "memoryReservation": 128,  
-            "volumesFrom": [],  
-            "stopTimeout": null,  
-            "image": "<+artifact.image>",  
-            "startTimeout": null,  
-            "firelensConfiguration": null,  
-            "dependsOn": null,  
-            "disableNetworking": null,  
-            "interactive": null,  
-            "healthCheck": null,  
-            "essential": true,  
-            "links": null,  
-            "hostname": null,  
-            "extraHosts": null,  
-            "pseudoTerminal": null,  
-            "user": null,  
-            "readonlyRootFilesystem": null,  
-            "dockerLabels": null,  
-            "systemControls": null,  
-            "privileged": null,  
-            "name": "nginx"  
-        }  
-    ],  
-    "placementConstraints": [],  
-    "memory": "512",  
-    "taskRoleArn": "<ecsInstanceRole Role ARN>",  
-    "family": "fargate-task-definition",  
-    "pidMode": null,  
-    "requiresCompatibilities": [  
-        "FARGATE"  
-    ],  
-    "networkMode": "awsvpc",  
-    "runtimePlatform": null,  
-    "cpu": "256",  
-    "inferenceAccelerators": null,  
-    "proxyConfiguration": null,  
-    "volumes": []  
+   "ipcMode": null,  
+   "executionRoleArn": "<ecsInstanceRole Role ARN>",  
+   "containerDefinitions": [  
+       {  
+           "dnsSearchDomains": null,  
+           "environmentFiles": null,  
+           "entryPoint": null,  
+           "portMappings": [  
+               {  
+                   "hostPort": 80,  
+                   "protocol": "tcp",  
+                   "containerPort": 80  
+               }  
+           ],  
+           "command": null,  
+           "linuxParameters": null,  
+           "cpu": 0,  
+           "environment": [],  
+           "resourceRequirements": null,  
+           "ulimits": null,  
+           "dnsServers": null,  
+           "mountPoints": [],  
+           "workingDirectory": null,  
+           "secrets": null,  
+           "dockerSecurityOptions": null,  
+           "memory": null,  
+           "memoryReservation": 128,  
+           "volumesFrom": [],  
+           "stopTimeout": null,  
+           "image": "<+artifact.image>",  
+           "startTimeout": null,  
+           "firelensConfiguration": null,  
+           "dependsOn": null,  
+           "disableNetworking": null,  
+           "interactive": null,  
+           "healthCheck": null,  
+           "essential": true,  
+           "links": null,  
+           "hostname": null,  
+           "extraHosts": null,  
+           "pseudoTerminal": null,  
+           "user": null,  
+           "readonlyRootFilesystem": null,  
+           "dockerLabels": null,  
+           "systemControls": null,  
+           "privileged": null,  
+           "name": "nginx"  
+       }  
+   ],  
+   "placementConstraints": [],  
+   "memory": "512",  
+   "taskRoleArn": "<ecsInstanceRole Role ARN>",  
+   "family": "fargate-task-definition",  
+   "pidMode": null,  
+   "requiresCompatibilities": [  
+       "FARGATE"  
+   ],  
+   "networkMode": "awsvpc",  
+   "runtimePlatform": null,  
+   "cpu": "256",  
+   "inferenceAccelerators": null,  
+   "proxyConfiguration": null,  
+   "volumes": []  
 }
 ```
-
 YAML Example:
-
 ```yaml
 ipcMode:  
 executionRoleArn: <ecsInstanceRole Role ARN>  
 containerDefinitions:  
 - dnsSearchDomains:  
-  environmentFiles:  
-  entryPoint:  
-  portMappings:  
-  - hostPort: 80  
-    protocol: tcp  
-    containerPort: 80  
-  command:  
-  linuxParameters:  
-  cpu: 0  
-  environment: []  
-  resourceRequirements:  
-  ulimits:  
-  dnsServers:  
-  mountPoints: []  
-  workingDirectory:  
-  secrets:  
-  dockerSecurityOptions:  
-  memory:  
-  memoryReservation: 128  
-  volumesFrom: []  
-  stopTimeout:  
-  image: <+artifact.image>  
-  startTimeout:  
-  firelensConfiguration:  
-  dependsOn:  
-  disableNetworking:  
-  interactive:  
-  healthCheck:  
-  essential: true  
-  links:  
-  hostname:  
-  extraHosts:  
-  pseudoTerminal:  
-  user:  
-  readonlyRootFilesystem:  
-  dockerLabels:  
-  systemControls:  
-  privileged:  
-  name: nginx  
+ environmentFiles:  
+ entryPoint:  
+ portMappings:  
+ - hostPort: 80  
+   protocol: tcp  
+   containerPort: 80  
+ command:  
+ linuxParameters:  
+ cpu: 0  
+ environment: []  
+ resourceRequirements:  
+ ulimits:  
+ dnsServers:  
+ mountPoints: []  
+ workingDirectory:  
+ secrets:  
+ dockerSecurityOptions:  
+ memory:  
+ memoryReservation: 128  
+ volumesFrom: []  
+ stopTimeout:  
+ image: <+artifact.image>  
+ startTimeout:  
+ firelensConfiguration:  
+ dependsOn:  
+ disableNetworking:  
+ interactive:  
+ healthCheck:  
+ essential: true  
+ links:  
+ hostname:  
+ extraHosts:  
+ pseudoTerminal:  
+ user:  
+ readonlyRootFilesystem:  
+ dockerLabels:  
+ systemControls:  
+ privileged:  
+ name: nginx  
 placementConstraints: []  
 memory: '512'  
 taskRoleArn: <ecsInstanceRole Role ARN>  
@@ -334,7 +331,7 @@ volumes: []
 
 The `image: <+artifact.image>` setting instructs Harness to pull the image you add to the Service **Artifacts** section and use it for deployment. You do not have to add an image in **Artifacts** and reference it using `<+artifact.image>`. You can hardcode the `image` instead or use a [Harness variable](https://docs.harness.io/article/lml71vhsim-harness-variables) for the value that resolves to an image name at runtime. For this tutorial, we will use `image: <+artifact.image>` and an artifact.
 
-1. In **Manifest Details**, click **Submit**. The Task Definition is added to the Service.
+The Task Definition is added to the Service.
 
 ![](./static/ecs-deployment-tutorial-41.png)
 
@@ -769,26 +766,25 @@ To set up AWS for Blue/Green using ELB and Harness, do the following:
 5. Select the VPC where your ECS cluster instances will be hosted, and click **Create**.
 6. Create a second target group using a new name, such as **target2**, use the same port number, **8080**, and the same VPC as the first target.
 
-It is important that you use the same port numbers for both target groups.When you are done, the target configuration will look something like this:
+  It is important that you use the same port numbers for both target groups.When you are done, the target configuration will look something like this:
 
-![](./static/ecs-deployment-tutorial-55.png)
+  ![](./static/ecs-deployment-tutorial-55.png)
 
-Now that your targets are created, you can create the load balancer that will switch between the targets.
-
+  Now that your targets are created, you can create the load balancer that will switch between the targets.
 1. Create a Application Load Balancer. In the EC2 Console, click **Load Balancers**.
 
   ![](./static/ecs-deployment-tutorial-56.png)
 2. Click **Create Load Balancer**, and then under **Application Load Balancer**, click **Create**.
 
-![](./static/ecs-deployment-tutorial-57.png)
+  ![](./static/ecs-deployment-tutorial-57.png)
 
-You do not need to add listeners at this point. We will do that after the load balancer is created.
+  You do not need to add listeners at this point. We will do that after the load balancer is created.
 
-Ensure that the VPC you select for the load balancer has two subnets, each in a separate availability zone, like the following:
+  Ensure that the VPC you select for the load balancer has two subnets, each in a separate availability zone, like the following:
 
-![](./static/ecs-deployment-tutorial-58.png)
+  ![](./static/ecs-deployment-tutorial-58.png)
 
-Once your load balancer is created, you can add its Prod and Stage listeners.
+  Once your load balancer is created, you can add its Prod and Stage listeners.
 
 1. In your load balancer, click its **Listeners** tab to add the targets you created as listeners.
 
@@ -1010,68 +1006,65 @@ For more information, see [Running tasks](https://docs.aws.amazon.com/AmazonECS
 
 1. In your Harness ECS stage, in **Execution**, click **Add Step**, and then click **ECS Run Task**.   Using the **ECS Run Task** step is the same as running a task in the AWS console.
 2. In **ECS Run Task Definition**, add a Task Definition to run. Here's an example:
-
-
 ```yaml
-ipcMode:  
-executionRoleArn: <ecsInstanceRole Role ARN>  
-containerDefinitions:  
-- dnsSearchDomains:  
-  environmentFiles:  
-  entryPoint:  
-  portMappings:  
-  - hostPort: 80  
-    protocol: tcp  
-    containerPort: 80  
-  command:  
-  linuxParameters:  
-  cpu: 0  
-  environment: []  
-  resourceRequirements:  
-  ulimits:  
-  dnsServers:  
-  mountPoints: []  
-  workingDirectory:  
-  secrets:  
-  dockerSecurityOptions:  
-  memory:  
-  memoryReservation: 128  
-  volumesFrom: []  
-  stopTimeout:  
-  image: <+artifact.image>  
-  startTimeout:  
-  firelensConfiguration:  
-  dependsOn:  
-  disableNetworking:  
-  interactive:  
-  healthCheck:  
-  essential: true  
-  links:  
-  hostname:  
-  extraHosts:  
-  pseudoTerminal:  
-  user:  
-  readonlyRootFilesystem:  
-  dockerLabels:  
-  systemControls:  
-  privileged:  
-  name: nginx  
-placementConstraints: []  
-memory: '512'  
-taskRoleArn: <ecsInstanceRole Role ARN>  
-family: fargate-task-definition  
-pidMode:  
-requiresCompatibilities:  
-- FARGATE  
-networkMode: awsvpc  
-runtimePlatform:  
-cpu: '256'  
-inferenceAccelerators:  
-proxyConfiguration:  
-volumes: []
+  ipcMode:  
+  executionRoleArn: <ecsInstanceRole Role ARN>  
+  containerDefinitions:  
+  - dnsSearchDomains:  
+    environmentFiles:  
+    entryPoint:  
+    portMappings:  
+    - hostPort: 80  
+      protocol: tcp  
+      containerPort: 80  
+    command:  
+    linuxParameters:  
+    cpu: 0  
+    environment: []  
+    resourceRequirements:  
+    ulimits:  
+    dnsServers:  
+    mountPoints: []  
+    workingDirectory:  
+    secrets:  
+    dockerSecurityOptions:  
+    memory:  
+    memoryReservation: 128  
+    volumesFrom: []  
+    stopTimeout:  
+    image: <+artifact.image>  
+    startTimeout:  
+    firelensConfiguration:  
+    dependsOn:  
+    disableNetworking:  
+    interactive:  
+    healthCheck:  
+    essential: true  
+    links:  
+    hostname:  
+    extraHosts:  
+    pseudoTerminal:  
+    user:  
+    readonlyRootFilesystem:  
+    dockerLabels:  
+    systemControls:  
+    privileged:  
+    name: nginx  
+  placementConstraints: []  
+  memory: '512'  
+  taskRoleArn: <ecsInstanceRole Role ARN>  
+  family: fargate-task-definition  
+  pidMode:  
+  requiresCompatibilities:  
+  - FARGATE  
+  networkMode: awsvpc  
+  runtimePlatform:  
+  cpu: '256'  
+  inferenceAccelerators:  
+  proxyConfiguration:  
+  volumes: []
 ```
-
-1. In **ECS Run Task Request Definition**, you can customize how Amazon ECS places tasks using placement constraints and placement strategies just like using a **Capacity provider strategy** in the ECS console.
+3. In **ECS Run Task Request Definition**, you can customize how Amazon ECS places tasks using placement constraints and placement strategies just like using a **Capacity provider strategy** in the ECS console.
 
 ![](./static/ecs-deployment-tutorial-64.png)
 

@@ -16,11 +16,11 @@ Currently, this feature is behind the Feature Flags `TIME_SCALE_CG_SYNC` and `CU
 
 :::
 
-The **FirstGen Generation** custom dashboards in Harness NextGen display information for your Harness FirstGen deployments. See [Harness FirstGen vs Harness NextGen](../../getting-started/harness-first-gen-vs-harness-next-gen.md).
+The **FirstGen** custom dashboards in Harness NextGen display information for your Harness FirstGen deployments. See [Harness FirstGen vs Harness NextGen](../../getting-started/harness-first-gen-vs-harness-next-gen.md).
 
 Dashboards help you model and analyze business metrics and operational data. You can use this data to make data-driven business decisions. Using charts, data tables, and filters, Dashboards help you get the most useful deployments data.
 
-Harness provides pre-loaded **By Harness** (pre-defined) and **Custom** (user-defined) Dashboards to visualize deployments data across your Applications, Services, and Environment. Using the **Deployments (Current Generation) Dashboard** you can:
+Harness provides pre-loaded **By Harness** (pre-defined) and **Custom** (user-defined) Dashboards to visualize deployments data across your Applications, Services, and Environment. Using the **Deployments (FirstGen) Dashboard** you can:
 
 * Discover new analytical insights into your deployment frequency by Application and Pipeline
 * Track deployment status across different zones and time range in a logical and structured manner
@@ -41,12 +41,12 @@ Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 Perform the following steps to view CG Dashboard:
 
-1. In Harness First Generation, click **Custom** **Dashboards Next Gen**.![](./static/view-deployments-current-gen-dashboard-29.png)
-2. In **Dashboards**, select **By Harness** and click **Deployments (Current Generation) Dashboard**.
+1. In Harness FirstGen, click **Custom** **Dashboards Next Gen**.![](./static/view-deployments-current-gen-dashboard-29.png)
+2. In **Dashboards**, select **By Harness** and click **Deployments (FirstGen)**.
    
    ![](./static/view-deployments-current-gen-dashboard-30.png)
    
-   The Deployments (Current Generation) Dashboard is displayed.
+   The Deployments (FirstGen) Dashboard is displayed.
 3. In **Application**, select the Application(s) for which you want to view and analyze the data.
    
    ![](./static/view-deployments-current-gen-dashboard-31.png)
@@ -101,7 +101,7 @@ Perform the following steps to view CG Dashboard:
 
 To clone a Dashboard, do the following:
 
-1. In **Dashboards**, select **By Harness** and click **Deployments (Current Generation) Dashboard**.
+1. In **Dashboards**, select **By Harness** and click **Deployments (FirstGen) Dashboard**.
 2. Click the three-dot menu in the upper right of the dashboard and click **clone**.
    
    ![](./static/view-deployments-current-gen-dashboard-42.png)

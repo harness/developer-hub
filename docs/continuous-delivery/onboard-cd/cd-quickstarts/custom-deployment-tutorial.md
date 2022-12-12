@@ -72,17 +72,17 @@ You can add your own scripts or tests to your Pipelines to describe deployments,
 
 1. Install a Harness Kubernetes Delegate in a cluster. For steps on installing a Delegate, go to [Install Harness Delegate on Kubernetes](https://docs.harness.io/article/2132l9r4gt-install-harness-delegate-on-kubernetes).
 
-The Delegate you use for Deployment Templates should be in an environment where it can connect and query your artifact repo and target instances. Typically, you'll want a Delegate in the same subnet as the target instances.
+  The Delegate you use for Deployment Templates should be in an environment where it can connect and query your artifact repo and target instances. Typically, you'll want a Delegate in the same subnet as the target instances.
 
-If your scripts will use utilities or software that does not come with the Delegate by default, you can install them on the Delegate manually or using the Delegate `INIT_SCRIPT` environment variable.
+  If your scripts will use utilities or software that does not come with the Delegate by default, you can install them on the Delegate manually or using the Delegate `INIT_SCRIPT` environment variable.
 
-For steps on using `INIT_SCRIPT`, see [Install Software on the Delegate with Initialization Scripts](https://docs.harness.io/article/yte6x6cyhn-run-scripts-on-delegates).
+  For steps on using `INIT_SCRIPT`, see [Install Software on the Delegate with Initialization Scripts](https://docs.harness.io/article/yte6x6cyhn-run-scripts-on-delegates).
 
-Harness Delegate installation packages include `TAR` and `cURL`. You can use `cURL` and `TAR` in your Delegate scripts and Pipeline steps without installing these tools.
+  Harness Delegate installation packages include `TAR` and `cURL`. You can use `cURL` and `TAR` in your Delegate scripts and Pipeline steps without installing these tools.
 
-Harness Delegate installation packages also include standard tools and SDKs for the main platform integrations Harness uses, such as Kubernetes, Helm, AWS, Azure, GCP. You do not need to install their CLI tools on the Delegate.
+  Harness Delegate installation packages also include standard tools and SDKs for the main platform integrations Harness uses, such as Kubernetes, Helm, AWS, Azure, GCP. You do not need to install their CLI tools on the Delegate.
 
-Once the Delegate is installed and registers with your Harness account, you will see it listed on the Delegates page.
+  Once the Delegate is installed and registers with your Harness account, you will see it listed on the Delegates page.
 
 1. Note the default tag added to the Delegate. You will use this to select this Delegate in future steps.
 
@@ -208,11 +208,11 @@ You can map any additional attributes containing information you want to referen
 
 1. Now that the Deployment Template **Infrastructure** is complete, click **Continue** to view **Exectuion**.
 
-You can create or select step templates in Execution.
+  You can create or select step templates in Execution.
 
-You don't have to use any of these steps in your stage. Execution is simply a way of associating steps with Deployment Templates.
+  You don't have to use any of these steps in your stage. Execution is simply a way of associating steps with Deployment Templates.
 
-We'll create a Shell Script step template to deploy our Docker image artifact to the instances we fetch using the script we added in **Fetch Instance Script**.
+  We'll create a Shell Script step template to deploy our Docker image artifact to the instances we fetch using the script we added in **Fetch Instance Script**.
 
 1. In **Deployment Steps**, click **Add Step**, and click **Create and Use Template**.
 2. In **Step Library**, click **Shell Script**.
@@ -351,15 +351,14 @@ Next, we need this script to loop through all the fetched instances. We do that 
 2. Click **Looping Strategy**.
 3. Click Repeat, and enter the following script:
 
-```yaml
-repeat:  
-  items: <+stage.output.hosts>
-```
+  ```yaml
+  repeat:  
+    items: <+stage.output.hosts>
+  ```
 
-![](./static/custom-deployment-tutorial-28.png)
+  ![](./static/custom-deployment-tutorial-28.png)
 
-The `<+stage.output.hosts>` expression references all of the hosts/pods/instances returned by your script.
-
+  The `<+stage.output.hosts>` expression references all of the hosts/pods/instances returned by your script.
 1. Click **Apply Changes**.
 
 Execution is complete. Now we'll select the Delegate you set up as the Delegate to use for the entire stage.

@@ -84,20 +84,16 @@ In **Health Sources**, click **Add**. The **Add New Health Source** settings
 2. In **Health Source Name**, enter a name for the Health Source.
 3. Under **Connect Health Source**, click **Select Connector**.
 4. In **Connector** settings, you can either choose an existing connector or click **New Connector.**
-
-![](./static/verify-deployment-with-prometheus-78.png)
-
+   ![](./static/verify-deployment-with-prometheus-78.png)
 1. After selecting the connector, click **Apply Selected**. The Connector is added to the Health Source.
+   ![](./static/verify-deployment-with-prometheus-79.png)
+2. In **Select Feature**, select the Prometheus feature to be used.
+3. Click **Next**. The **Customize Health Source** settings appear.
 
-![](./static/verify-deployment-with-prometheus-79.png)
+   The subsequent settings in **Customize Health Source** depend on the Health Source Type you selected. You can customize the metrics to map the Harness Service to the monitored environment.
 
-1. In **Select Feature**, select the Prometheus feature to be used.
-2. Click **Next**. The **Customize Health Source** settings appear.
-
-The subsequent settings in **Customize Health Source** depend on the Health Source Type you selected. You can customize the metrics to map the Harness Service to the monitored environment.
-
-![](./static/verify-deployment-with-prometheus-80.png)
-
+   ![](./static/verify-deployment-with-prometheus-80.png)
+   
 1. In **Query Specifications and Mapping**, first click **Map Metric(s) to Harness Services**.
 2. Enter the desired metric name in **Metric** **Name**.
 3. Enter a name for the Prometheus group in **Group Name**.
