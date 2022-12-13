@@ -20,7 +20,7 @@ const FeaturedList: CardItem[] = [
     newDoc: true,
     type: [docType.Documentation],
     time: "5 min",
-    link: "/tutorials/build-code/fastest-ci-tool",
+    link: "/tutorials/build-code/fastest-ci",
   },
   {
     title: "Node and Docker CI Pipeline",
@@ -126,7 +126,7 @@ const CIList: CardItem[] = [
     newDoc: true,
     type: [docType.Documentation],
     time: "5 min",
-    link: "/tutorials/build-code/fastest-ci-tool",
+    link: "/tutorials/build-code/fastest-ci",
   },
 ];
 
