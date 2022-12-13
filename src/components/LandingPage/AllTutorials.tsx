@@ -28,12 +28,14 @@ const FeaturedList: CardItem[] = [
     link: "/tutorials/manage-feature-flags/typescript-react-first-feature-flag",
   },
   {
-    title: "Get started with the Fastest CI on the planet",
+    title: "Get started with the fastest CI on the planet",
+
     module: "ci",
     icon: "/img/icon_ci.svg",
     description: (
       <>
-        This tutorial will help you get started with Harness CI and explore some of the features that make it 4x faster than the leading competitor.
+        This tutorial helps you get started with Harness CI and explore some of the features that make it four times faster than the leading competitor.
+
       </>
     ),
     newDoc: true,
@@ -120,12 +122,14 @@ const CIList: CardItem[] = [
     link: "/tutorials/build-code/ci-java-http-server",
   },
   {
-    title: "Get started with the Fastest CI on the planet",
+    title: "Get started with the fastest CI on the planet",
+
     module: "ci",
     icon: "/img/icon_ci.svg",
     description: (
       <>
-        This tutorial will help you get started with Harness CI and explore some of the features that make it 4x faster than the leading competitor.
+        This tutorial helps you get started with Harness CI and explore some of the features that make it four times faster than the leading competitor.
+
       </>
     ),
     newDoc: true,
