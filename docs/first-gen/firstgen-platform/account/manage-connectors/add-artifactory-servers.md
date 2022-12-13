@@ -10,18 +10,18 @@ helpdocs_is_published: true
 
 Harness supports both cloud and on-prem versions of Artifactory. Connect your Artifactory artifact servers with Harness.
 
-### Before You Begin
+## Before You Begin
 
 * See [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts).
 
-### Visual Summary
+## Visual Summary
 
 Here's an example of the Artifactory Sources configuration.
 
 ![](./static/add-artifactory-servers-02.png)
 
 
-### Review: Artifactory Permissions
+## Review: Artifactory Permissions
 
 Make sure the following permissions are granted to the user:
 
@@ -35,7 +35,7 @@ If used as a Docker Repo, user needs:
 
 See [Managing Permissions: JFrog Artifactory User Guide](https://www.jfrog.com/confluence/display/RTF/Managing+Permissions)
 
-### Review: Label Support
+## Review: Label Support
 
 Docker labels are supported for Docker images in Artifactory.
 
@@ -45,7 +45,7 @@ You can reference a label using this expression in a [Shell Script](../../../con
 
 See [Built-in Variables List (FirstGen)](../../techref-category/variables/built-in-variables-list.md).
 
-### Step 1: Select Artifactory Server
+## Step 1: Select Artifactory Server
 
 To connect to an artifact server, do the following:
 
@@ -55,11 +55,11 @@ To connect to an artifact server, do the following:
 4. Click **Add Artifact Server**.
 5. In **Type**, select **Artifactory**.
 
-### Step 2: Display Name
+## Step 2: Display Name
 
 Enter a name for the Artifactory Server. This is the name you will use to identify this connection when adding an Artifact Source to a Harness Service.
 
-### Step 3: Artifactory URL
+## Step 3: Artifactory URL
 
 In the **Artifactory URL** field, ensure that you enter in your base URL followed by your module name.
 
@@ -73,7 +73,7 @@ To ensure you use the correct URL, copy it from your Artifactory settings.
 
 See [Repository Management](https://www.jfrog.com/confluence/display/JFROG/Repository+Management) from JFrog.
 
-### Step 4: Credentials and Usage Scope
+## Step 4: Credentials and Usage Scope
 
 Enter the credentials.
 
@@ -81,7 +81,7 @@ For secrets and other sensitive settings, select or create a new [Harness Encryp
 
 Usage Scope is determined by the secret you selected.
 
-### Step 5: Delegate Selector
+## Step 5: Delegate Selector
 
 Select the Delegate Selector(s) of the Delegate(s) you want this Connector to use.
 
@@ -91,11 +91,11 @@ In a few cases, you might want Harness to select specific Delegates. In these ca
 
 See [Select Delegates with Selectors](../manage-delegates/select-delegates-for-specific-tasks-with-selectors.md).
 
-### Step 6: Skip Validation
+## Step 6: Skip Validation
 
 Select **Skip Validation** to skip credential verification and creation or update process.
 
-### See Also
+## See Also
 
 * [Add a Docker Artifact Source](../../../continuous-delivery/model-cd-pipeline/setup-services/add-a-docker-image-service.md)
 

@@ -14,21 +14,21 @@ Developers often need to create Delegates in multiple cluster in their environme
 
 In this topic:
 
-* [Before You Begin](#before_you_begin)
-* [Step 1: Download the Base Delegate](#step_1_download_the_base_delegate)
-* [Step 2: Create the Script](#step_2_create_the_script)
-* [Step 3: Create a New Delegate](#step_3_create_a_new_delegate)
-* [Step 4: Deploy the Delegate](#step_4_deploy_the_delegate)
-* [Step 5: Add the Script and File to Your Repo](#step_5_add_the_script_and_file_to_your_repo)
-* [Option 1: Deploy using the Script](#option_1_deploy_using_the_script)
+* [Before You Begin](#before-you-begin)
+* [Step 1: Download the Base Delegate](#step-1-download-the-base-delegate)
+* [Step 2: Create the Script](#step-2-create-the-script)
+* [Step 3: Create a New Delegate](#step-3-create-a-new-delegate)
+* [Step 4: Deploy the Delegate](#step-4-deploy-the-delegate)
+* [Step 5: Add the Script and File to Your Repo](#step-5-add-the-script-and-file-to-your-repo)
+* [Option 1: Deploy using the Script](#option-1-deploy-using-the-script)
 * [Notes](#notes)
-* [Next Steps](#next_steps)
+* [Next Steps](#next-steps)
 
-### Before You Begin
+## Before You Begin
 
 * [Harness Delegate Overview](delegate-installation.md)
 
-### Step 1: Download the Base Delegate
+## Step 1: Download the Base Delegate
 
 You will use one Harness Kubernetes Delegate as the base for all of the Delegates you generate automatically.
 
@@ -39,7 +39,7 @@ You will use one Harness Kubernetes Delegate as the base for all of the Delegate
 
 The **harness-delegate-kubernetes** folder is where you will save your script. The folder contains the harness-delegate.yaml file for the Delegate. Your script will use this file to create additional Delegate YAML files.
 
-### Step 2: Create the Script
+## Step 2: Create the Script
 
 The script you will create uses harness-delegate.yaml to generate a new Delegate YAML file.
 
@@ -74,9 +74,9 @@ echo "creating $DST_FILE"
 cp $TMP_FILE $DST_FILE  
 sed -i -e "s/DELEGATENAME/${DELEGATE_NAME}/" $DST_FILE
 ```
-1. Save the file and name it **utils.sh**.
-2. Open a Terminal and navigate to the **harness-delegate-kubernetes** folder where you saved your script.
-3. Enter the following command to make the utils.sh file executable:
+2. Save the file and name it **utils.sh**.
+3. Open a Terminal and navigate to the **harness-delegate-kubernetes** folder where you saved your script.
+4. Enter the following command to make the utils.sh file executable:
 
 
 ```
@@ -84,7 +84,7 @@ chmod a+x utils.sh
 ```
 Now the script is ready to run.
 
-### Step 3: Create a New Delegate
+## Step 3: Create a New Delegate
 
 When you use the **utils.sh** script to generate a new Delegate YAML file, you will run the following command:
 
@@ -143,7 +143,7 @@ spec:
 ```
 A suffix such as `-lnfzrf` is a Harness convention for identifying the Harness account. Do not remove it.
 
-### Step 4: Deploy the Delegate
+## Step 4: Deploy the Delegate
 
 To install the new Delegate you created with the script, do the following:
 
@@ -163,13 +163,13 @@ clusterrolebinding.rbac.authorization.k8s.io/harness-delegate-cluster-admin crea
 secret/mydelegate-dev-proxy created  
 statefulset.apps/mydelegate-dev-sdqvgx created
 ```
-### Step 5: Add the Script and File to Your Repo
+## Step 5: Add the Script and File to Your Repo
 
 You can now add the harness-delegate-kubernetes folder containing the script and harness-delegate.yaml to your repo.
 
 Now your developers do not need to use the Harness Manager to create Delegates. They can use the utils.sh script in your repo to create new Delegates and then install them in their target cluster.
 
-### Option 1: Deploy using the Script
+## Option 1: Deploy using the Script
 
 If you want to use the utlis.sh script to both create and deploy the new Delegate, you can add the following line to the end the utlis.sh script:
 
@@ -187,7 +187,7 @@ Now you can copy the harness-delegate-kubernetes folder containing the script an
 ```
 The new Delegate is created and deployed in the cluster.
 
-### Notes
+## Notes
 
 * **Selectors and Scopes** — Harness does not support a way to automatically add Selectors or Delegate Scope for Delegates. Currently, you must add these attributes to Delegate manually in the Harness Manager.
 * **Delete a Delegate** — To delete a Harness Delegate from your Kubernetes cluster, delete the StatefulSet for the Delegate. Deleting the pod without deleting the StatefulSet will result in the pod being recreated.  
@@ -195,7 +195,7 @@ For example, if you have the Delegate pod name `mydelegate-vutpmk-0`, you can d
 `$ kubectl delete statefulset -n harness-delegate mydelegate-vutpmk`  
 Note that the `-0` suffix in the pod name is removed for the StatefulSet name.
 
-### Next Steps
+## Next Steps
 
 * [Target Delegates to Specific Namespaces](enable-delegate-to-deploy-to-multiple-kubernetes-namespaces.md)
 

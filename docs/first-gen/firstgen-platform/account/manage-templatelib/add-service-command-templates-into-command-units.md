@@ -13,22 +13,23 @@ You can add multiple Service commands into a single template as a Service Comman
 Here is an example of a Service Command Unit named **MyServiceTest** that contains the Service command **MeetAndCheck** and two instances of the Service command **ServiceCheck**.
 
 ![](./static/add-service-command-templates-into-command-units-04.png)
+
 In this topic:
 
-* [Before You Begin](add-service-command-templates-into-command-units.md#before-you-begin)
-* [Review: Differences between Service Command and Shell Script Template Types](#review_differences_between_service_command_and_shell_script_template_types)
-* [Step 1: Create a Service Command Unit](add-service-command-templates-into-command-units.md#step-1-create-a-service-command-unit)
-* [Step 2: Add Service Command Unit to a Workflow](add-service-command-templates-into-command-units.md#step-2-add-service-command-unit-to-a-workflow)
-* [Next Steps](add-service-command-templates-into-command-units.md#next-steps)
+* [Before You Begin](#before-you-begin)
+* [Review: Differences between Service Command and Shell Script Template Types](#review-differences-between-service-command-and-shell-script-template-types)
+* [Step 1: Create a Service Command Unit](#step-1-create-a-service-command-unit)
+* [Step 2: Add Service Command Unit to a Workflow](#step-2-add-service-command-unit-to-a-workflow)
+* [Next Steps](#next-steps)
 
-### Before You Begin
+## Before You Begin
 
 * [Account and Application Templates](../../../continuous-delivery/concepts-cd/deployment-types/use-templates.md)
 * [Create a Service Command Template](create-a-service-command-template.md)
 * [Add a Service](../../../continuous-delivery/model-cd-pipeline/setup-services/service-configuration.md)
 * [Add a Workflow](../../../continuous-delivery/model-cd-pipeline/workflows/workflow-configuration.md)
 
-### Review: Differences between Service Command and Shell Script Template Types
+## Review: Differences between Service Command and Shell Script Template Types
 
 Harness provides different methods for executing scripts in the Service Command and Shell Script Template types:
 
@@ -37,7 +38,7 @@ When run on the target host, the commands are copied to the target host and run 
 * **Shell Script Template:** a Shell Script step runs a single script.  
 When run on the target host, the script is run inline using the Bash shell.
 
-#### Where are they executed?
+### Where are they executed?
 
 Both Service Commands and Shell Scripts can be executed on the target host or the Harness Delegate.
 
@@ -48,7 +49,7 @@ When you apply the template, you use the **Execute on Delegate** option to run t
 * **Run on target host:** Harness moves the complete script to the target host (VM, pod, etc), and then executes the script.
 * **Run on Delegate:** Harness doesn't copy any file to the target host. Harness executes the script on the Delegate directly.
 
-### Step 1: Create a Service Command Unit
+## Step 1: Create a Service Command Unit
 
 To create a Service Command Unit, do the following:
 
@@ -75,36 +76,42 @@ To create a Service Command Unit, do the following:
 		3. You can also add a variable to the parent Service command, and use it in a subordinate Service command.![](./static/add-service-command-templates-into-command-units-11.png)
 
 	9. When you are done, link the Service Command Unit to a Service. In the Service, click **Add Command**, and select the Service Command Unit from a Template Library by clicking its **Link** button.![](./static/add-service-command-templates-into-command-units-12.png)
-You will be prompted to replace any Service command variables.![](./static/add-service-command-templates-into-command-units-13.png)
+You will be prompted to replace any Service command variables.
+
+![](./static/add-service-command-templates-into-command-units-13.png)
 
 	10. Change any variables, if needed, and click **Submit**. The Service Command Unit is added to the Service.![](./static/add-service-command-templates-into-command-units-14.png)
 
 
-### Step 2: Add Service Command Unit to a Workflow
+## Step 2: Add Service Command Unit to a Workflow
 
 The Service Command Unit can be added to Workflow in two ways:
 
 * [From Template Library](add-service-command-templates-into-command-units.md#template-library)
 * [From the Service in the Workflow](add-service-command-templates-into-command-units.md#service-in-the-workflow)
 
-#### Template Library
+### Template Library
 
-1. In the Workflow, click **Add Command**, and select the Service Command Unit from a Template Library.![](./static/add-service-command-templates-into-command-units-15.png)
+1. In the Workflow, click **Add Command**, and select the Service Command Unit from a Template Library.
 
-
-#### Service in the Workflow
-
-1. When you create a Workflow you select a Harness Service to deploy. If the Service contains a Service Command Unit, click **Add Command** and the Service Command Unit is available in the **Commands** options.![](./static/add-service-command-templates-into-command-units-16.png)
+![](./static/add-service-command-templates-into-command-units-15.png)
 
 
-#### Notes
+### Service in the Workflow
+
+1. When you create a Workflow you select a Harness Service to deploy. If the Service contains a Service Command Unit, click **Add Command** and the Service Command Unit is available in the **Commands** options.
+
+![](./static/add-service-command-templates-into-command-units-16.png)
+
+
+### Notes
 
 The same Service Command Unit added from the Template Library is different from the Service Command Unit added via the Service:
 
 * The Service Command Unit added from a Template Library will contain the variable values set in the Template Library.
 * The Service Command Unit added from the Service will contain the variable values set in the Service.
 
-### Next Steps
+## Next Steps
 
 * [Link Templates to Services and Workflows](link-templates-to-services-and-workflows.md)
 

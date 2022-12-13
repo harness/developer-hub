@@ -8,7 +8,11 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Delegate Selectors were formerly called Tags. Now, *Tags* refers only to tagging Harness Application components as described in [Using Tags](../tags/tags.md).When Harness needs to run a task, it makes a connection to a resource via its Delegates. Harness selects the best Delegate according to its history or it round robins between Delegates. See [How Does Harness Manager Pick Delegates?](delegate-installation.md#how-does-harness-manager-pick-delegates).
+:::note
+Delegate Selectors were formerly called Tags. Now, *Tags* refers only to tagging Harness Application components as described in [Using Tags](../tags/tags.md).
+:::
+
+When Harness needs to run a task, it makes a connection to a resource via its Delegates. Harness selects the best Delegate according to its history or it round robins between Delegates. See [How Does Harness Manager Pick Delegates?](delegate-installation.md#how-does-harness-manager-pick-delegates).
 
 In a few cases, you might want Harness to select specific Delegates. In these cases, you can use Delegate Selectors:
 
@@ -17,13 +21,13 @@ In a few cases, you might want Harness to select specific Delegates. In these ca
 
 In this topic:
 
-* [Review: Implicit and Custom Selectors](#review_implicit_and_custom_selectors)
-* [Review: How Selectors are Used](#review_how_selectors_are_used)
-* [Step 1: Create a Selector](#step_1_create_a_selector)
-* [Step 2: Select Delegates Using Selectors](#step_2_select_delegates_using_selectors)
-* [See Also](#see_also)
+* [Review: Implicit and Custom Selectors](#review-implicit-and-custom-selectors)
+* [Review: How Selectors are Used](#review-how-selectors-are-used)
+* [Step 1: Create a Selector](#step-1-create-a-selector)
+* [Step 2: Select Delegates Using Selectors](#step-2-select-delegates-using-selectors)
+* [See Also](#see-also)
 
-### Review: Implicit and Custom Selectors
+## Review: Implicit and Custom Selectors
 
 There are two types of Selectors:
 
@@ -32,7 +36,7 @@ There are two types of Selectors:
 
 In this topic, we will focus on custom Selectors.
 
-### Review: How Selectors are Used
+## Review: How Selectors are Used
 
 By default, when your Workflow is deployed, Harness uses the Cloud Provider in the Workflow's Infrastructure Definition to connect to the target environment. 
 
@@ -46,33 +50,36 @@ In these cases, you might want a Workflow step to use a specific Delegate. You c
 
 For that Workflow step only, Harness will use the Delegate selected via the Delegate Selector.
 
-#### Pre-deployment Steps
+### Pre-deployment Steps
 
 Workflow types with **Pre-deployment Steps** do not use the Infrastructure Definition, and so they do not use the Infrastructure Definition's Cloud Provider and any related Delegate Selectors. 
 
 Steps added to this section can select Delegates using the step's Delegate Selectors setting.
 
-### Step 1: Create a Selector
+## Step 1: Create a Selector
 
 1. In Harness, click Setup, and then click **Harness Delegates**.
 2. In the listing of the Delegate where you want to add a Selector, click **Custom** **Selector**.
 3. In **Edit Selectors**, type in the Selector name, such as **dev**, and press **Enter**. You can enter as many Selectors as you like.
 4. Click **Submit**. The Selector is added.
 
-### Step 2: Select Delegates Using Selectors
+## Step 2: Select Delegates Using Selectors
 
 Elsewhere, such as in a [Shell Script step in a Workflow](../../../continuous-delivery/model-cd-pipeline/workflows/capture-shell-script-step-output.md), you can use the Selector to ensure that this Delegate is used when executing the command.
 
+:::note
 **All of the Selectors** that you enter must be in the Delegate(s) you are targeting.Another common use of a Delegate Selector is in an [AWS Cloud Provider](../manage-connectors/add-amazon-web-services-cloud-provider.md).
+:::
 
 For example, you can install a Delegate in an AWS VPC and then select it in the AWS Cloud Provider Credentials when you select **Assume IAM Role on Delegate**.
 
 In the **Delegate Selector** setting, you select the Selector by name, such as **ecs-delegate**.
 
 ![](./static/select-delegates-for-specific-tasks-with-selectors-56.png)
+
 Now the Harness AWS Cloud Provider will use the Delegate's credentials to connect with AWS.
 
-### See Also
+## See Also
 
 * [Run Scripts on Delegates using Profiles](run-scripts-on-the-delegate-using-profiles.md)
 * [Scope Delegates to Harness Components and Commands](scope-delegates-to-harness-components-and-commands.md)

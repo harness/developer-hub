@@ -14,32 +14,33 @@ You add cloud providers to your Harness Account and then reference them when def
 
 In this topic:
 
-* [Before You Begin](add-pivotal-cloud-foundry-cloud-provider.md#before-you-begin)
-* [Visual Summary](add-pivotal-cloud-foundry-cloud-provider.md#visual-summary)
-* [Review: TAS Permissions](add-pivotal-cloud-foundry-cloud-provider.md#review-tas-permissions)
-* [Step 1: Add the Cloud Provider](add-pivotal-cloud-foundry-cloud-provider.md#step-1-add-the-cloud-provider)
-* [Step 2: Endpoint URL](add-pivotal-cloud-foundry-cloud-provider.md#step-2-endpoint-url)
-* [Step 3: Username and Password](add-pivotal-cloud-foundry-cloud-provider.md#step-3-username-and-password)
-* [Step 4: Skip Validation](add-pivotal-cloud-foundry-cloud-provider.md#step-4-skip-validation)
-* [Step 5: Usage Scope](add-pivotal-cloud-foundry-cloud-provider.md#step-5-usage-scope)
-* [Artifact Support for Download and Copy](add-pivotal-cloud-foundry-cloud-provider.md#artifact-support-for-download-and-copy)
+* [Before You Begin](#before-you-begin)
+* [Visual Summary](#visual-summary)
+* [Review: TAS Permissions](#review-tas-permissions)
+* [Step 1: Add the Cloud Provider](#step-1-add-the-cloud-provider)
+* [Step 2: Endpoint URL](#step-2-endpoint-url)
+* [Step 3: Username and Password](#step-3-username-and-password)
+* [Step 4: Skip Validation](#step-4-skip-validation)
+* [Step 5: Usage Scope](#step-5-usage-scope)
+* [Artifact Support for Download and Copy](#artifact-support-for-download-and-copy)
 
-### Before You Begin
+## Before You Begin
 
 * See [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts).
 
-### Visual Summary
+## Visual Summary
 
 Here's an example configuration of TAS as Cloud Provider in Harness.
 
 ![](./static/add-pivotal-cloud-foundry-cloud-provider-21.png)
-### Review: TAS Permissions
+
+## Review: TAS Permissions
 
 TAS user account with Admin, Org Manager, or Space Manager role. The user account must be able to update spaces, orgs, and applications.
 
 For more information, see [Orgs, Spaces, Roles, and Permissions](https://docs.pivotal.io/pivotalcf/2-3/concepts/roles.html) from Tanzu.
 
-### Step 1: Add the Cloud Provider
+## Step 1: Add the Cloud Provider
 
 To add a cloud provider to your Harness account, do the following:
 
@@ -48,11 +49,11 @@ To add a cloud provider to your Harness account, do the following:
 
 The **Add Tanzu Application Service Cloud Provider** panel appears.
 
-### Step 2: Endpoint URL
+## Step 2: Endpoint URL
 
 Enter the API endpoint URL, without URL scheme. For example, **api.run.pivotal.io**. Omit **http://**.For more information, see [Identifying the API Endpoint for your PAS Instance](https://docs.pivotal.io/pivotalcf/2-3/opsguide/api-endpoint.html) from TAS.
 
-### Step 3: Username and Password
+## Step 3: Username and Password
 
 Username and password for the TAS account to use for this connection.
 
@@ -60,17 +61,21 @@ You can use an inline username or a Harness [Encrypted Text secret](../../securi
 
 For the password, select or create a new Harness Encrypted Text secret.
 
-### Step 4: Skip Validation
+## Step 4: Skip Validation
 
 If you do not have a specific Endpoint URL or credentials set up, you can skip validation and add the Cloud Provider as is.
 
-Enable this option during *creation* of the Cloud Provider only.Later, when you create an Infrastructure Definition as part of your Harness setup, Harness will need to validate. Return to this Cloud Provider and disable **Skip Validation**.
+:::note
+Enable this option during *creation* of the Cloud Provider only.
+:::
 
-### Step 5: Usage Scope
+Later, when you create an Infrastructure Definition as part of your Harness setup, Harness will need to validate. Return to this Cloud Provider and disable **Skip Validation**.
+
+## Step 5: Usage Scope
 
 Usage scope is inherited from the secret you selected for **Select Encrypted Password**.
 
-### Artifact Support for Download and Copy
+## Artifact Support for Download and Copy
 
 See [Service Types and Artifact Sources](../../../continuous-delivery/model-cd-pipeline/setup-services/service-types-and-artifact-sources.md).
 

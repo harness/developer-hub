@@ -10,23 +10,31 @@ helpdocs_is_published: true
 
 You can use Template Library to create templates of scripts and other commands and copy or link them into Harness Services and Workflows. Templates are created in the Template Library. Each template can have multiple versions with unique variables.
 
-When creating a template, type `${...}` in a field, then enter the variable name to create a template variable.Shell Script templates contain Bash and PowerShell commands and parameters. You can enter variables into the template, apply the template to Workflows, and have the Workflow enter Workflow-specific values for the command.
+:::note
+When creating a template, type `${...}` in a field, then enter the variable name to create a template variable.
+:::
 
-Only members of a Harness User Group with the **Manage Template Library** permission may create, edit, and delete Account and Application-level templates. Members of a User Group with this permission disabled can view and link to templates only.In this topic:
+Shell Script templates contain Bash and PowerShell commands and parameters. You can enter variables into the template, apply the template to Workflows, and have the Workflow enter Workflow-specific values for the command.
+
+:::note
+Only members of a Harness User Group with the **Manage Template Library** permission may create, edit, and delete Account and Application-level templates. Members of a User Group with this permission disabled can view and link to templates only.
+:::
+
+In this topic:
 
 * [Before You Begin](create-a-shell-script-workflow-step-template.md#before-you-begin)
-* [Review: Differences between Service Command and Shell Script Template Types](#review_differences_between_service_command_and_shell_script_template_types)
-* [Step: Create a Shell Script Template](create-a-shell-script-workflow-step-template.md#step-create-a-shell-script-template)
-* [Next Steps](create-a-shell-script-workflow-step-template.md#next-steps)
+* [Review: Differences between Service Command and Shell Script Template Types](#review-differences-between-service-command-and-shell-script-template-types)
+* [Step: Create a Shell Script Template](#step-create-a-shell-script-template)
+* [Next Steps](#next-steps)
 
-### Before You Begin
+## Before You Begin
 
 * [Account and Application Templates](../../../continuous-delivery/concepts-cd/deployment-types/use-templates.md)
 * [Add a Service](../../../continuous-delivery/model-cd-pipeline/setup-services/service-configuration.md)
 * [Add a Workflow](../../../continuous-delivery/model-cd-pipeline/workflows/workflow-configuration.md)
 * [Using the Shell Script Command](../../../continuous-delivery/model-cd-pipeline/workflows/capture-shell-script-step-output.md)
 
-### Review: Differences between Service Command and Shell Script Template Types
+## Review: Differences between Service Command and Shell Script Template Types
 
 Harness provides different methods for executing scripts in the Service Command and Shell Script Template types:
 
@@ -35,7 +43,7 @@ When run on the target host, the commands are copied to the target host and run 
 * **Shell Script Template:** a Shell Script step runs a single script.  
 When run on the target host, the script is run inline using the Bash shell.
 
-#### Where are they executed?
+### Where are they executed?
 
 Both Service Commands and Shell Scripts can be executed on the target host or the Harness Delegate.
 
@@ -46,7 +54,7 @@ When you apply the template, you use the **Execute on Delegate** option to run t
 * **Run on target host:** Harness moves the complete script to the target host (VM, pod, etc), and then executes the script.
 * **Run on Delegate:** Harness doesn't copy any file to the target host. Harness executes the script on the Delegate directly.
 
-### Step: Create a Shell Script Template
+## Step: Create a Shell Script Template
 
 To create a Shell Script template, do the following:
 
@@ -74,7 +82,7 @@ The following table displays the Shell Script template in the Template Library a
 Once the Shell Script template is linked and added to the workflow, a link icon appears next to the command:![](./static/create-a-shell-script-workflow-step-template-03.png)
 
 
-### Next Steps
+## Next Steps
 
 * [Create an HTTP Workflow Step Template](account-and-application-templates.md)
 * [Create a Service Command Template](create-a-service-command-template.md)

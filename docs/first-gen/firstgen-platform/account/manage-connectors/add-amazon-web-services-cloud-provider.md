@@ -12,36 +12,44 @@ AWS is used as a Harness Cloud Provider for obtaining artifacts, deploying servi
 
 This topic explains how to set up the AWS Cloud Provider, and the IAM roles and policies needed by the AWS account used in the Cloud Provider.
 
-**Recommended:** Install and run a Harness Delegate (ECS Delegate in an ECS cluster, Shell Script Delegate on an EC2 instance, etc) in the same VPC as the AWS resources you will use, and then use the Delegate for the AWS Cloud Provider credentials. This is the easiest method to connect to AWS. For more information, see [Delegate Installation and Management](../manage-delegates/delegate-installation.md).The [DescribeRegions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRegions.html) action is required for all AWS Cloud Providers regardless of what AWS service you are using for your target infrastructure.In this topic:
+:::note
+**Recommended:** Install and run a Harness Delegate (ECS Delegate in an ECS cluster, Shell Script Delegate on an EC2 instance, etc) in the same VPC as the AWS resources you will use, and then use the Delegate for the AWS Cloud Provider credentials. This is the easiest method to connect to AWS. For more information, see [Delegate Installation and Management](../manage-delegates/delegate-installation.md).
+:::
 
-* [Before You Begin](#before_you_begin)
-* [Review: Use Kubernetes Cluster Cloud Provider for EKS](#review_use_kubernetes_cluster_cloud_provider_for_eks)
-* [Review: Switching IAM Policies](#review_switching_iam_policies)
-* [Step 1: Add the Cloud Provider](#step_1_add_the_cloud_provider)
-* [Step 2: Display Name](#step_2_display_name)
-* [Step 3: Credentials](#step_3_credentials)
-* [Review: AWS Security Token Service (STS)](#review_aws_security_token_service_sts)
-* [Review: AWS GovCloud and Override Default Region](#review_aws_gov_cloud_and_override_default_region)
+:::caution
+The [DescribeRegions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRegions.html) action is required for all AWS Cloud Providers regardless of what AWS service you are using for your target infrastructure.
+:::
+
+In this topic:
+
+* [Before You Begin](#before-you-begin)
+* [Review: Use Kubernetes Cluster Cloud Provider for EKS](#review-use-kubernetes-cluster-cloud-provider-for-eks)
+* [Review: Switching IAM Policies](#review-switching-iam-policies)
+* [Step 1: Add the Cloud Provider](#step-1-add-the-cloud-provider)
+* [Step 2: Display Name](#step-2-display-name)
+* [Step 3: Credentials](#step-3-credentials)
+* [Review: AWS Security Token Service (STS)](#review-aws-security-token-service-sts)
+* [Review: AWS GovCloud and Override Default Region](#review-aws-gov-cloud-and-override-default-region)
 * [Review: AWS IAM Roles and Policies](add-amazon-web-services-cloud-provider.md#review-aws-iam-roles-and-policies)
-* [All AWS Cloud Providers: DescribeRegions Required](#all_aws_cloud_providers_describe_regions_required)
-* [Policies Required: Elastic Container Registry (ECR)](#policies_required_elastic_container_registry_ecr)
-* [Policies Required: Amazon S3](#policies_required_amazon_s3)
-* [Policies Required: ECS (Existing Cluster)](#policies_required_ecs_existing_cluster)
+* [All AWS Cloud Providers: DescribeRegions Required](#all-aws-cloud-providers-describe-regions-required)
+* [Policies Required: Elastic Container Registry (ECR)](#policies-required-elastic-container-registry-ecr)
+* [Policies Required: Amazon S3](#policies-required-amazon-s3)
+* [Policies Required: ECS (Existing Cluster)](#policies-required-ecs-existing-cluster)
 * [Policies Required: AWS AMI/ASG Deployments](add-amazon-web-services-cloud-provider.md#policies-required-aws-ami-asg-deployments)
-* [Policies Required: AWS CodeDeploy](#policies_required_aws_code_deploy)
-* [Policies Required: AWS EC2](#policies_required_aws_ec2)
-* [Policies Required: Amazon Lambda](#policies_required_amazon_lambda)
+* [Policies Required: AWS CodeDeploy](#policies-required-aws-code-deploy)
+* [Policies Required: AWS EC2](#policies-required-aws-ec2)
+* [Policies Required: Amazon Lambda](#policies-required-amazon-lambda)
 * [Artifact Support for Download and Copy](add-amazon-web-services-cloud-provider.md#artifact-support-for-download-and-copy)
 
-### Before You Begin
+## Before You Begin
 
 * See [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts).
 
-### Review: Use Kubernetes Cluster Cloud Provider for EKS
+## Review: Use Kubernetes Cluster Cloud Provider for EKS
 
 If you want to connect Harness to Elastic Kubernetes Service (Amazon EKS), use the platform-agnostic [Kubernetes Cluster Cloud Provider](add-kubernetes-cluster-cloud-provider.md).
 
-### Review: Switching IAM Policies
+## Review: Switching IAM Policies
 
 If the IAM role used by your AWS Cloud Provider does not have the policies required by the AWS service you want to access, you can modify or switch the role.
 
@@ -49,7 +57,7 @@ This entails changing the role assigned to the AWS account or Harness Delegate y
 
 When you switch or modify the IAM role used by the Cloud Provider, it might take up to 5 minutes to take effect.
 
-### Step 1: Add the Cloud Provider
+## Step 1: Add the Cloud Provider
 
 To add a cloud provider to your Harness account, do the following:
 
@@ -58,23 +66,30 @@ To add a cloud provider to your Harness account, do the following:
 
 The **Add Amazon Web Services Cloud Provider** panel appears.
 
-### Step 2: Display Name
+## Step 2: Display Name
 
 Choose a name for this provider. This is to differentiate AWS providers in Harness. It is not the actual AWS account name.
 
-### Step 3: Credentials
+## Step 3: Credentials
 
-Ensure that the AWS IAM roles applied to the credentials you use (the Harness Delegate or the access key) includes the policies needed by Harness to deploy to the target AWS service. See [Review: AWS Permissions](add-amazon-web-services-cloud-provider.md#review-aws-permissions) below.The [DescribeRegions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRegions.html) action is required for all AWS Cloud Providers regardless of what AWS service you are using for your target infrastructure.
+:::note
+Ensure that the AWS IAM roles applied to the credentials you use (the Harness Delegate or the access key) includes the policies needed by Harness to deploy to the target AWS service. See [Review: AWS Permissions](add-amazon-web-services-cloud-provider.md#review-aws-permissions) below.
+:::
+:::caution
+The [DescribeRegions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRegions.html) action is required for all AWS Cloud Providers regardless of what AWS service you are using for your target infrastructure.
+:::
 
-#### Assume the IAM Role on Delegate
+### Assume the IAM Role on Delegate
 
 This is the recommended method.
 
 If you selected **Assume the IAM Role on Delegate**, in **Delegate Selector**, enter the Selector of the Delegate that this Cloud Provider will use for all connections. For information about Selectors, see [Select Delegates for Specific Tasks with Selectors](../manage-delegates/select-delegates-for-specific-tasks-with-selectors.md).
 
+:::note
 Presently, Harness does not support **Assume the IAM Role of the Delegate** with the Download Artifact command in a Harness Service. If you are using Download Artifact, use the Access and Secret Key settings in the AWS Cloud Provider.
+:::
 
-#### Enter AWS Access Keys manually
+### Enter AWS Access Keys manually
 
 If you selected **Enter AWS Access Keys manually**, enter your Access Key and your Secret Key.
 
@@ -82,17 +97,27 @@ For secrets and other sensitive settings, select or create a new [Harness Encryp
 
 For more information, see [Access Keys (Access Key ID and Secret Access Key)](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys) from AWS.
 
+:::note
 The AWS [IAM Policy Simulator](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_testing-policies.html) is a useful tool for evaluating policies and access.
+:::
 
-#### Use IRSA (IAM roles for service accounts)
+### Use IRSA (IAM roles for service accounts)
 
 Select **Use IRSA** if you want to have the Harness Kubernetes Delegate in AWS EKS use a specific IAM role when making authenticated requests to resources.
 
 By default, the Harness Kubernetes Delegate uses a ClusterRoleBinding to the **default** service account. Instead, you can use AWS IAM roles for service accounts (IRSA) to associate a specific IAM role with the service account used by the Harness Kubernetes Delegate.
 
-See [IAM roles for service accounts](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html) from AWS.Setting up this feature requires a few more steps than other methods, but it is a simple process.
+:::note
+See [IAM roles for service accounts](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html) from AWS.
+:::
 
-The following steps are for a new Delegate installation and new AWS Cloud Provider. If you updating an existing Delegate and AWS Cloud Provider, you can simply edit the Delegate YAML for your existing Delegate as described below, and select the **Use IRSA** option in your AWS Cloud Provider.1. Create the IAM role with the policies you want the Delegate to use. The policies you select with depend on what AWS resources you are deploying via the Delegate. See the different **Policies Required** sections in this document.
+Setting up this feature requires a few more steps than other methods, but it is a simple process.
+
+:::note
+The following steps are for a new Delegate installation and new AWS Cloud Provider. If you updating an existing Delegate and AWS Cloud Provider, you can simply edit the Delegate YAML for your existing Delegate as described below, and select the **Use IRSA** option in your AWS Cloud Provider.
+:::
+
+1. Create the IAM role with the policies you want the Delegate to use. The policies you select with depend on what AWS resources you are deploying via the Delegate. See the different **Policies Required** sections in this document.
 2. In the cluster where the Delegate will be installed, create a service account and attach the IAM role to it.
 
 Here is an example of how to create a new service account in the cluster where you will install the Delegate and attach the IAM policy to it:
@@ -107,9 +132,9 @@ eksctl create iamserviceaccount \
     --approve \  
     --override-existing-serviceaccounts —region=us-east-1
 ```
-1. In Harness, download the Harness Kubernetes Delegate YAML file. See [Install the Harness Kubernetes Delegate](../manage-delegates/install-kubernetes-delegate.md).
-2. Open the Delegate YAML file in text editor.
-3. Add service account with access to IAM role to Delegate YAML.
+3. In Harness, download the Harness Kubernetes Delegate YAML file. See [Install the Harness Kubernetes Delegate](../manage-delegates/install-kubernetes-delegate.md).
+4. Open the Delegate YAML file in text editor.
+5. Add service account with access to IAM role to Delegate YAML.
 
 There are two sections in the Delegate YAML that you must update.
 
@@ -184,24 +209,43 @@ New StatefulSet spec serviceAccountName (for example, using the name `cdp-admin`
           - containerPort: 8080  
 ...
 ```
-1. Save the Delegate YAML file.
-2. Install the Delegate in your EKS cluster and register the Delegate with Harness. See [Install the Harness Kubernetes Delegate](../manage-delegates/install-kubernetes-delegate.md).
+6. Save the Delegate YAML file.
+7. Install the Delegate in your EKS cluster and register the Delegate with Harness. See [Install the Harness Kubernetes Delegate](../manage-delegates/install-kubernetes-delegate.md).
 
+:::note
 When you install the Delegate in the cluster, the serviceAccount you added is used and the environment variables `AWS_ROLE_ARN` and `AWS_WEB_IDENTITY_TOKEN_FILE` are added automatically by EKS.1. Create a new AWS Cloud Provider.
-2. In **Credentials**, select **Use IRSA**.
-3. In **Delegate Selector**, select the Delegate you used.
-4. Click **Test** to verify the Delegate credentials.
+:::
 
-### Review: AWS Security Token Service (STS)
+8. In **Credentials**, select **Use IRSA**.
+9. In **Delegate Selector**, select the Delegate you used.
+10. Click **Test** to verify the Delegate credentials.
 
-Assume STS Role is supported for EC2 and ECS. It is supported for EKS if you use the IRSA option, described above.The [DescribeRegions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRegions.html) action is required for all AWS Cloud Providers regardless of what AWS service you are using for your target infrastructure.If you want to use one AWS account for the connection, but you want to deploy in a different AWS account, use the **Assume STS Role** option. This option uses the [AWS Security Token Service](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html) (STS) feature.
+## Review: AWS Security Token Service (STS)
+
+:::note
+Assume STS Role is supported for EC2 and ECS. It is supported for EKS if you use the IRSA option, described above.
+:::
+:::caution
+The [DescribeRegions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRegions.html) action is required for all AWS Cloud Providers regardless of what AWS service you are using for your target infrastructure.
+:::
+
+If you want to use one AWS account for the connection, but you want to deploy in a different AWS account, use the **Assume STS Role** option. This option uses the [AWS Security Token Service](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html) (STS) feature.
 
 In this scenario, the AWS account used for AWS access in **Credentials** will assume the IAM role you specify in **Role ARN** setting.
 
 ![](./static/add-amazon-web-services-cloud-provider-23.png)
-The Harness Delegate(s) always runs in the account you specify in **Credentials** via **Access/Secret Key** or **Assume IAM Role on Delegate**.To assume the role in **Role ARN**, the AWS account in **Credentials** must be trusted by the role. The trust relationship is defined in the **Role ARN** role's trust policy when the role is created. That trust policy states which accounts are allowed to give that access to users in the account.
 
-You can use **Assume STS Role** to establish trust between roles in the same account, but cross-account trust is more common.The assumed role in **Role ARN** must have all the IAM policies required to perform your Harness deployment, such as [Amazon S3](cloud-providers.md#amazon-s3), [ECS (Existing Cluster)](cloud-providers.md#ecs-existing-cluster), and [AWS EC2](cloud-providers.md#aws-ec2) policies. For more information, see [Assuming an IAM Role in the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-role.html) from AWS.
+:::note
+The Harness Delegate(s) always runs in the account you specify in **Credentials** via **Access/Secret Key** or **Assume IAM Role on Delegate**.
+:::
+
+To assume the role in **Role ARN**, the AWS account in **Credentials** must be trusted by the role. The trust relationship is defined in the **Role ARN** role's trust policy when the role is created. That trust policy states which accounts are allowed to give that access to users in the account.
+
+:::note
+You can use **Assume STS Role** to establish trust between roles in the same account, but cross-account trust is more common.
+:::
+
+The assumed role in **Role ARN** must have all the IAM policies required to perform your Harness deployment, such as [Amazon S3](cloud-providers.md#amazon-s3), [ECS (Existing Cluster)](cloud-providers.md#ecs-existing-cluster), and [AWS EC2](cloud-providers.md#aws-ec2) policies. For more information, see [Assuming an IAM Role in the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-role.html) from AWS.
 
 To use [AWS Security Token Service](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html) (STS) for cross-account access, do the following:
 
@@ -209,9 +253,17 @@ To use [AWS Security Token Service](https://docs.aws.amazon.com/IAM/latest/UserG
 2. In **Role ARN**, enter the Amazon Resource Name (ARN) of the role that you want to assume. This is an IAM role in the target deployment AWS account.
 3. (Optional) In **External ID**, if the administrator of the account to which the role belongs provided you with an external ID, then enter that value. For more information, see [How to Use an External ID When Granting Access to Your AWS Resources to a Third Party](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html) from AWS.
 
-The AWS [IAM Policy Simulator](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_testing-policies.html) is a useful tool for evaluating policies and access.### Review: AWS GovCloud and Override Default Region
+:::note
+The AWS [IAM Policy Simulator](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_testing-policies.html) is a useful tool for evaluating policies and access.
+:::
 
-Currently, this feature is behind the Feature Flag `AWS_OVERRIDE_REGION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.By default, Harness uses the **us-east-1** region to test the credentials for the Cloud Provider.
+## Review: AWS GovCloud and Override Default Region
+
+:::note
+Currently, this feature is behind the Feature Flag `AWS_OVERRIDE_REGION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+By default, Harness uses the **us-east-1** region to test the credentials for the Cloud Provider.
 
 If you want to use an [AWS GovCloud](https://aws.amazon.com/govcloud-us/faqs/) account for this Cloud Provider, use the **Override Default Region** option.
 
@@ -219,15 +271,19 @@ In **Region**, select the GovCloud region you want to use.
 
 GovCloud is used by organizations such as government agencies at the federal, state, and local level, as well as contractors, educational institutions. It is also used for regulatory compliance with these organizations.
 
-#### Restrictions
+### Restrictions
 
 You can access AWS GovCloud with AWS GovCloud credentials (AWS GovCloud account access key and AWS GovCloud IAM user credentials).
 
 You cannot access AWS GovCloud with standard AWS credentials. Likewise, you cannot access standard AWS regions using AWS GovCloud credentials.
 
-### Review: AWS IAM Roles and Policies
+## Review: AWS IAM Roles and Policies
 
-The [DescribeRegions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRegions.html) action is required for all AWS Cloud Providers regardless of what AWS service you are using for your target infrastructure.The AWS role policy requirements depend on what AWS services you are using for your artifacts and target infrastructure (ECR, S3, EC2, ECS, etc).
+:::caution
+The [DescribeRegions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRegions.html) action is required for all AWS Cloud Providers regardless of what AWS service you are using for your target infrastructure.
+:::
+
+The AWS role policy requirements depend on what AWS services you are using for your artifacts and target infrastructure (ECR, S3, EC2, ECS, etc).
 
 In this topic, we have called out the deployment scenario, such as Lambda and AMI deployments.
 
@@ -239,9 +295,13 @@ Here are the user and access type requirements that you need to consider.
 
 As described below, `DescribeRegions` is required for all AWS Cloud Provider connections.
 
-### All AWS Cloud Providers: DescribeRegions Required
+## All AWS Cloud Providers: DescribeRegions Required
 
-The [DescribeRegions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRegions.html) action is required for all AWS Cloud Providers regardless of what AWS service you are using for your target infrastructure.Harness needs a policy with the `DescribeRegions` action so that it can list the available regions for you when you define your target architecture.
+:::caution
+The [DescribeRegions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRegions.html) action is required for all AWS Cloud Providers regardless of what AWS service you are using for your target infrastructure.
+:::
+
+Harness needs a policy with the `DescribeRegions` action so that it can list the available regions for you when you define your target architecture.
 
 Create a [Customer Managed Policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html#customer-managed-policies), add the `DescribeRegions` action to list those regions, and add that to any role used by the Cloud Provider.
 
@@ -259,7 +319,7 @@ Create a [Customer Managed Policy](https://docs.aws.amazon.com/IAM/latest/UserG
     ]  
 }
 ```
-### Policies Required: Elastic Container Registry (ECR**)**
+## Policies Required: Elastic Container Registry (ECR**)**
 
 **Policy Name**:`AmazonEC2ContainerRegistryReadOnly`.
 
@@ -291,14 +351,18 @@ Create a [Customer Managed Policy](https://docs.aws.amazon.com/IAM/latest/UserG
   ]  
 }
 ```
-### Policies Required: Amazon S3
+## Policies Required: Amazon S3
 
 There are two policies required:
 
 * The Managed Policy **AmazonS3ReadOnlyAccess**.
 * The [Customer Managed Policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html#customer-managed-policies) you create using `ec2:DescribeRegions`.
 
-The AWS [IAM Policy Simulator](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_testing-policies.html) is a useful tool for evaluating policies and access.**Policy Name**: `AmazonS3ReadOnlyAccess`.
+:::note
+The AWS [IAM Policy Simulator](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_testing-policies.html) is a useful tool for evaluating policies and access.
+:::
+
+**Policy Name**: `AmazonS3ReadOnlyAccess`.
 
 **Policy ARN:** `arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess`.
 
@@ -342,9 +406,18 @@ The AWS [IAM Policy Simulator](https://docs.aws.amazon.com/IAM/latest/UserGuide/
     ]  
 }
 ```
-If you want to use an S3 bucket that is in a separate account than the account used to set up the AWS Cloud Provider, you can grant cross-account bucket access. For more information, see [Bucket Owner Granting Cross-Account Bucket Permissions](https://docs.aws.amazon.com/AmazonS3/latest/dev/example-walkthroughs-managing-access-example2.html) from AWS.### Policies Required: ECS (Existing Cluster)
+:::note
+If you want to use an S3 bucket that is in a separate account than the account used to set up the AWS Cloud Provider, you can grant cross-account bucket access. For more information, see [Bucket Owner Granting Cross-Account Bucket Permissions](https://docs.aws.amazon.com/AmazonS3/latest/dev/example-walkthroughs-managing-access-example2.html) from AWS.
+:::
 
-**Recommended:** Install and run the Harness ECS Delegate in the ECS cluster, and then use the AWS Cloud Provider to connect to that cluster using the Harness ECS Delegate you installed. This is the easiest method to connect to a ECS cluster. For more information, see [Installation Example: Amazon Web Services and ECS](../manage-delegates/delegate-installation.md#installation-example-amazon-web-services-and-ecs).Ensure that you add the IAM roles and policies to your ECS cluster when you create it. You cannot add the IAM roles and policies to an existing ECS cluster. You can add policies to whatever role is already assigned to an existing ECS cluster.
+## Policies Required: ECS (Existing Cluster)
+
+:::note
+**Recommended:** Install and run the Harness ECS Delegate in the ECS cluster, and then use the AWS Cloud Provider to connect to that cluster using the Harness ECS Delegate you installed. This is the easiest method to connect to a ECS cluster. 
+For more information, see [Installation Example: Amazon Web Services and ECS](../manage-delegates/delegate-installation.md#installation-example-amazon-web-services-and-ecs).
+:::
+
+Ensure that you add the IAM roles and policies to your ECS cluster when you create it. You cannot add the IAM roles and policies to an existing ECS cluster. You can add policies to whatever role is already assigned to an existing ECS cluster.
 
 In addition to the default ECS role, **ecsInstanceRole**, these policies are required:
 
@@ -354,7 +427,11 @@ In addition to the default ECS role, **ecsInstanceRole**, these policies are req
 
 Attach these policies to the **ecsInstanceRole** role, and apply that to your ECS cluster when you create it. For information on **ecsInstanceRole**, see [Amazon ECS Instance Role](https://docs.aws.amazon.com/batch/latest/userguide/instance_IAM_role.html) from AWS.
 
-The AWS [IAM Policy Simulator](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_testing-policies.html) is a useful tool for evaluating policies and access.#### ELB, ALB, and ECS
+:::note
+The AWS [IAM Policy Simulator](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_testing-policies.html) is a useful tool for evaluating policies and access.
+:::
+
+### ELB, ALB, and ECS
 
 **Policy Name**: `AmazonEC2ContainerServiceforEC2Role`.
 
@@ -455,7 +532,7 @@ The AWS [IAM Policy Simulator](https://docs.aws.amazon.com/IAM/latest/UserGuide/
     ]  
 }
 ```
-#### Notes
+### Notes
 
 * There is a limit on how many policies you can attach to a IAM role. If you exceed the limit, copy the permissions JSON under **Action**, create a single custom policy, and add them to the policy.
 * Due to an AWS limitation, Harness is unable to limit the three actions for ECS to `Create`, `Update`, and `DeleteService` for just a specific cluster/resource. This limitation is why we require `Resource *`.
@@ -464,7 +541,7 @@ The AWS [IAM Policy Simulator](https://docs.aws.amazon.com/IAM/latest/UserGuide/
 * **ECS with ECR:** For ECS and ECR, all permissions are required.
 * **ECS with GCR:** This is currently not supported.
 
-#### Auto Scaling with ECS
+### Auto Scaling with ECS
 
 For Auto Scaling, the AWS Managed policy **AWSApplicationAutoscalingECSServicePolicy** should be attached to the default **ecsInstanceRole** role, and applied to your ECS cluster when you create it.
 
@@ -541,7 +618,7 @@ For details on these deployments, see [AWS AMI Quickstart](https://docs.harness.
   ]  
 }
 ```
-#### Tagging
+### Tagging
 
 AMI Blue/Green deployments require AWS tags. Please create the following custom policy and apply it to the IAM role used by the AWS Cloud Provider (access key or IAM role applied to the Harness Delegate).
 
@@ -663,9 +740,13 @@ The AWS [IAM Policy Simulator](https://docs.aws.amazon.com/IAM/latest/UserGuide/
 }  
 
 ```
-### Policies Required: AWS EC2
+## Policies Required: AWS EC2
 
-The AWS [IAM Policy Simulator](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_testing-policies.html) is a useful tool for evaluating policies and access.#### Provisioned and Static Hosts
+:::note
+The AWS [IAM Policy Simulator](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_testing-policies.html) is a useful tool for evaluating policies and access.
+:::
+
+### Provisioned and Static Hosts
 
 **Policy Name**: `AmazonEC2FullAccess`.
 
@@ -704,15 +785,19 @@ The AWS [IAM Policy Simulator](https://docs.aws.amazon.com/IAM/latest/UserGuide/
 }  
 
 ```
-##### **Trusted entities**
+#### **Trusted entities**
 
 Newly created roles under Amazon EC2 have trusted entities listed as **ec2.amazonaws.com**. For ECS, this needs to be updated with **ecs.amazonaws.com**. See the AWS documentation at [Amazon ECS Service Scheduler IAM Role](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/service_IAM_role.html).
 
-### Policies Required: Amazon Lambda
+## Policies Required: Amazon Lambda
 
 The IAM role attached to your Delegate host (either an EC2 instance or ECS Task) must have the AWSLambdaRole policy attached. The policy contains the `lambda:InvokeFunction` needed for Lambda deployments.
 
-For details on connecting Lambda with S3 across AWS accounts, see [How do I allow my Lambda execution role to access my Amazon S3 bucket?](https://aws.amazon.com/premiumsupport/knowledge-center/lambda-execution-role-s3-bucket/) from AWS.**Policy Name**: `AWSLambdaRole`.
+:::note
+For details on connecting Lambda with S3 across AWS accounts, see [How do I allow my Lambda execution role to access my Amazon S3 bucket?](https://aws.amazon.com/premiumsupport/knowledge-center/lambda-execution-role-s3-bucket/) from AWS.
+:::
+
+**Policy Name**: `AWSLambdaRole`.
 
 **Policy ARN:** `arn:aws:iam::aws:policy/service-role/AWSLambdaRole`.
 
@@ -739,7 +824,11 @@ For details on connecting Lambda with S3 across AWS accounts, see [How do I allo
 ```
 For more information, see [Identity-based IAM Policies for AWS Lambda](https://docs.aws.amazon.com/lambda/latest/dg/access-control-identity-based.html) from AWS.
 
-Ensure that the IAM role assigned to the Delegate has the **IAMReadOnlyAccess** (arn:aws:iam::aws:policy/IAMReadOnlyAccess) policy attached. This enables Harness to ensure that AWSLambdaRole policy is attached.### Artifact Support for Download and Copy
+:::note 
+Ensure that the IAM role assigned to the Delegate has the **IAMReadOnlyAccess** (arn:aws:iam::aws:policy/IAMReadOnlyAccess) policy attached. This enables Harness to ensure that AWSLambdaRole policy is attached.
+:::
+
+## Artifact Support for Download and Copy
 
 See [Service Types and Artifact Sources](../../../continuous-delivery/model-cd-pipeline/setup-services/service-types-and-artifact-sources.md).
 

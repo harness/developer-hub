@@ -14,32 +14,32 @@ For more information, see [Authenticating](https://kubernetes.io/docs/reference/
 
 In this topic:
 
-* [Before You Begin](#before_you_begin)
-* [Visual Summary](#visual_summary)
-* [Review: Using a Delegate Inside or Outside of the Target Cluster](add-kubernetes-cluster-cloud-provider.md#review-using-a-delegate-inside-or-outside-of-the-target-cluster)
-* [Review: Kubernetes Cluster Cloud Provider vs Platform Cloud Providers](#review_kubernetes_cluster_cloud_provider_vs_platform_cloud_providers)
-* [Step 1: Add the Cloud Provider](#step_1_add_the_cloud_provider)
-* [Step 2: Cluster Details](#step_2_cluster_details)
-* [Option 1: Inherit from selected Delegate](#option_1_inherit_from_selected_delegate)
-* [Option 2: Enter manually](#option_2_enter_manually)
-* [Step 3: Skip Validation](#step_3_skip_validation)
-* [Step 4: Credential Validation](#step_4_credential_validation)
-* [Review: Permissions Required](#review_permissions_required)
-* [Option: Amazon AWS EKS Support](#option_amazon_aws_eks_support)
-* [Option: OpenShift Support](#option_open_shift_support)
+* [Before You Begin](#before-you-begin)
+* [Visual Summary](#visual-summary)
+* [Review: Using a Delegate Inside or Outside of the Target Cluster](#review-using-a-delegate-inside-or-outside-of-the-target-cluster)
+* [Review: Kubernetes Cluster Cloud Provider vs Platform Cloud Providers](#review-kubernetes-cluster-cloud-provider-vs-platform-cloud-providers)
+* [Step 1: Add the Cloud Provider](#step-1-add-the-cloud-provider)
+* [Step 2: Cluster Details](#step-2-cluster-details)
+* [Option 1: Inherit from selected Delegate](#option-1-inherit-from-selected-delegate)
+* [Option 2: Enter manually](#option-2-enter-manually)
+* [Step 3: Skip Validation](#step-3-skip-validation)
+* [Step 4: Credential Validation](#step-4-credential-validation)
+* [Review: Permissions Required](#review-permissions-required)
+* [Option: Amazon AWS EKS Support](#option-amazon-aws-eks-support)
+* [Option: OpenShift Support](#option-open-shift-support)
 
-### Before You Begin
+## Before You Begin
 
 * See  [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts).
 
-### Visual Summary
+## Visual Summary
 
 Here's an overview of the settings required to add a Kubernetes Cluster as Cloud Provider.
 
 ![](./static/add-kubernetes-cluster-cloud-provider-35.png)
 
 
-### Review: Using a Delegate Inside or Outside of the Target Cluster
+## Review: Using a Delegate Inside or Outside of the Target Cluster
 
 Typically, you install the Harness Kubernetes Delegate inside your target cluster and then add a Kubernetes Cluster Cloud Provider that inherits its credentials from the Delegate.
 
@@ -47,13 +47,13 @@ You can also install the Kubernetes Delegate outside of the target cluster (anyw
 
 In this case, the Kubernetes Cluster Cloud Provider will not inherit credentials from the Delegate, but use the target cluster master URL and some authentication method (Service Account Token, etc).
 
-#### Using Non-Kubernetes Delegates
+### Using Non-Kubernetes Delegates
 
 You can also use a non-Kubernetes Delegate type (Helm, Docker, Shell Script) with a Kubernetes Cluster Cloud Provider.
 
 In this case, the Kubernetes Cluster Cloud Provider will not inherit credentials from the Delegate, but use the cluster master URL and some authentication method (Service Account Token, etc).
 
-### Review: Kubernetes Cluster Cloud Provider vs Platform Cloud Providers
+## Review: Kubernetes Cluster Cloud Provider vs Platform Cloud Providers
 
 The Kubernetes Cluster Cloud Provider is platform-agnostic. Use it to access a cluster on any platform.
 
@@ -72,7 +72,7 @@ Which option you choose will depend on how your teams use Harness.
 
 Related topics: [Connect to Your Target Kubernetes Platform](../../../continuous-delivery/kubernetes-deployments/connect-to-your-target-kubernetes-platform.md) and [Target Delegates to Specific Namespaces](../manage-delegates/enable-delegate-to-deploy-to-multiple-kubernetes-namespaces.md).
 
-### Review: Permissions for the Kubernetes Role
+## Review: Permissions for the Kubernetes Role
 
 You can use different methods for authenticating with the Kubernetes cluster, but all of them use a Kubernetes Role.
 
@@ -84,7 +84,7 @@ If you don’t want to use `verbs: [“*”]` for the Role, you can list out all
 
 The YAML provided for the Harness Delegate defaults to `cluster-admin` because that ensures anything could be applied. Any restriction must take into account the actual manifests to be deployed.
 
-### Step 1: Add the Cloud Provider
+## Step 1: Add the Cloud Provider
 
 To add a cloud provider to your Harness account, do the following:
 
@@ -107,11 +107,11 @@ The **Kubernetes Cluster** settings support the following authentication strateg
 
 The **Kubernetes Cluster** dialog has the following fields.
 
-### Step 2: Cluster Details
+## Step 2: Cluster Details
 
 There are two ways to enter cluster authentication settings:
 
-### Option 1: Inherit from selected Delegate
+## Option 1: Inherit from selected Delegate
 
 Select this option if the Harness Delegate is installed in the deployment target Kubernetes cluster.
 
@@ -123,19 +123,21 @@ You select the Delegate by selecting the Selector(s) of the Delegate. For inform
 
 Custom Selectors can be applied to multiple Delegates. If you use Custom Selectors in the Cloud Provider, you can select multiple Delegates.
 
+:::note
 In the case of some Kubernetes providers, such as OpenShift, the Delegate should be installed outside of the cluster.
+:::
 
-### Option 2: Enter manually
+## Option 2: Enter manually
 
 If you want to enter specific credentials manually, there are several options.
 
-#### Master URL
+### Master URL
 
 The Kubernetes master node URL. The easiest method to obtain the master URL is using kubectl:
 
 `kubectl cluster-info`
 
-#### Username and Password
+### Username and Password
 
 Username and password for the Kubernetes cluster. For example, **admin** or **john@example.com**, and a Basic authentication password.
 
@@ -143,9 +145,14 @@ You can use an inline username or a Harness [Encrypted Text secret](../../securi
 
 For the password, select or create a new Harness Encrypted Text secret.
 
-This is not used, typically. Some cloud providers have Basic authentication disabled by default. The cluster would need Basic authentication enabled and a specific username and password configured for authentication.For OpenShift or any other platform, this is not the username/password for the platform. It is the username/password for the cluster.
+:::note
+This is not used, typically. Some cloud providers have Basic authentication disabled by default. The cluster would need Basic authentication enabled and a specific username and password configured for authentication.
+:::
+:::tip
+For OpenShift or any other platform, this is not the username/password for the platform. It is the username/password for the cluster.
+:::
 
-#### Service Account Token
+### Service Account Token
 
 Add the service account token for the service account. The token must be pasted in decoded in the Encrypted Text secret you create/select.
 
@@ -208,35 +215,35 @@ echo $TOKEN
 ```
 The `| base64 -d` piping decodes the token. You can now enter it into Harness.
 
-##### Encrypted CA Certificate (Deprecated)
+#### Encrypted CA Certificate (Deprecated)
 
 To support some legacy configurations, the Encrypted CA Certificate setting is available as an option here.
 
-#### Custom
+### Custom
 
 This option is used for older Harness accounts.
 
-##### CA Certificate
+#### CA Certificate
 
 Add the Certificate authority root certificate used to validate client certificates presented to the API server. For more information, see [Authenticating](https://kubernetes.io/docs/reference/access-authn-authz/authentication/) from Kubernetes.
 
-##### Client Certificate
+#### Client Certificate
 
 Add the client certificate for the cluster. The client certificate may be used in conjunction with or in place of Basic authentication. The public client certificate is generated along with the private client key used to authenticate.The certificate can be pasted in either Base64 encoded or decoded.
 
-##### Client Key
+#### Client Key
 
 Add the client key for the client certificate. The key can be pasted in either Base64 encoded or decoded.
 
-##### Client Key Passphrase
+#### Client Key Passphrase
 
 Add the client key passphrase. The passphrase can be pasted in either Base64 encoded or decoded.
 
-##### Client Key Algorithm
+#### Client Key Algorithm
 
 Specify the encryption algorithm used when the certificate was created. Typically, RSA.
 
-#### OIDC Token
+### OIDC Token
 
 These settings come from the OIDC provider authorization server you have set up and others come from the provider app you are using to log in with.
 
@@ -247,6 +254,7 @@ First let's look at the authorization server-related settings:
 For example, in Okta, this is the Issuer URL for the [Authorization Server](https://developer.okta.com/docs/concepts/auth-servers/):
 
 ![](./static/add-kubernetes-cluster-cloud-provider-36.png)
+
 Providers use different API versions. If you want to identify the version also, you can obtain it from the token endpoint.
 
 In Okta, in the authentication server **Settings**, click the **Metadata URI**. Locate the **token\_endpoint**. Use the **token\_endpoint** URL except for the **/token** part. For example, you would use `https://dev-00000.okta.com/oauth2/default/v1` from the following endpoint:
@@ -258,6 +266,7 @@ In Okta, in the authentication server **Settings**, click the **Metadata URI**. 
 * **OIDC Scopes:** OIDC scopes are used by an application during authentication to authorize access to a user's details, like name and picture. In Okta, you can find them in the Authorization Server **Scopes** tab:
 
 ![](./static/add-kubernetes-cluster-cloud-provider-37.png)
+
 If you enter multiple scopes, separate them using spaces.
 
 The remaining OIDC Token settings are part of the provider app you are using to log in.
@@ -266,6 +275,7 @@ The remaining OIDC Token settings are part of the provider app you are using to 
 * **Client ID:** Public identifier for the client that is required for all OAuth flows. In Okta, this is located in the **Client Credentials** for the app:
 
 ![](./static/add-kubernetes-cluster-cloud-provider-38.png)
+
 * **Client Secret:** The client secret for the app. For Okta, you can see this in the above picture.
 
 Here is an example of OIDC credentials in the Kubernetes Cluster Cloud Provider:
@@ -273,9 +283,11 @@ Here is an example of OIDC credentials in the Kubernetes Cluster Cloud Provider:
 ![](./static/add-kubernetes-cluster-cloud-provider-39.png)
 
 
-### Step 3: Skip Validation
+## Step 3: Skip Validation
 
+:::note
 This setting affects credential validation only. Harness will always verify network connectivity.Enable this option during *creation* of the Cloud Provider only.
+:::
 
 When you create a service infrastructure as part of your production Harness setup, Harness will need to validate its credentials.
 
@@ -283,7 +295,7 @@ Until Harness has a specific namespace for the Kubernetes cluster, it tries to v
 
 If you have a cluster without a default namespace, or the credentials entered in this dialog do not have permission in the default namespace, you can disable validation initially.
 
-### Step 4: Credential Validation
+## Step 4: Credential Validation
 
 When you click **Submit**, Harness uses the provided credentials to list controllers in the **default** namespace in order to validate the credentials. If validation fails, Harness does not save the Cloud Provider and the **Submit** fails.
 
@@ -295,7 +307,7 @@ When Harness saves the Infrastructure Definition it performs validation even if�
 
 Related topic:  [Target Delegates to Specific Namespaces](../manage-delegates/enable-delegate-to-deploy-to-multiple-kubernetes-namespaces.md).
 
-### Review: Permissions Required
+## Review: Permissions Required
 
 A Kubernetes service account with permission to create entities in the target namespace is required.
 
@@ -305,7 +317,7 @@ When you use the **Inherit from selected Delegate** option (an in-cluster Delega
 
 For more information, see [User-Facing Roles](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles) from Kubernetes.
 
-#### Kubernetes Permissions Depend in What You Are Deploying
+### Kubernetes Permissions Depend in What You Are Deploying
 
 The Kubernetes RBAC needed by Harness depends entirely on what you are deploying and where.
 
@@ -315,9 +327,11 @@ Any other Kubernetes permissions depends on what is in your manifests.
 
 [Kubernetes RBAC](https://kubernetes.io/docs/reference/access-authn-authz/rbac/) is documented by Kubernetes.
 
+:::note
 The exact API versions depends on the Kubernetes cluster version that evolves over time as entity types get promoted. For example, the [API for v1.20](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.20/).
+:::
 
-### Option: AWS EKS Support
+## Option: AWS EKS Support
 
 Harness does not support the STS assume role (`"Action": "sts:AssumeRole"`) for [IAM for Service Accounts](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html) in the Kubernetes Cluster Cloud Provider at the time. You can use the [AWS Cloud Provider](add-amazon-web-services-cloud-provider.md) for STS assume role.AWS EKS is supported using the **Inherit from selected Delegate** option in the Kubernetes Cluster Cloud Provider settings.
 
@@ -333,9 +347,10 @@ The process is as follows:
 When setting up the EKS cluster as a Harness Infrastructure Definition in a Harness Environment, you simply select the Kubernetes Cluster Cloud Provider. For example:
 
 ![](./static/add-kubernetes-cluster-cloud-provider-40.png)
+
 Using the EKS-based Environment in a Workflow is no different than using any Kubernetes cluster. You simply select the Environment and Infrastructure Provisioner as part of setting up the Workflow.
 
-### Option: OpenShift Support
+## Option: OpenShift Support
 
 This section describes how to support OpenShift using a Delegate running externally to the Kubernetes cluster. Harness does support running Delegates internally for OpenShift 3.11 or greater, but the cluster must be configured to allow images to run as root inside the container in order to write to the filesystem.Typically, OpenShift is supported through an external Delegate installation (shell script installation of the Delegate outside of the Kubernetes cluster) and a service account token, entered in the **Service Account Token** setting. You only need to use the **Master URL** and **Service Account Token** setting in the **Kubernetes Cluster Cloud Provider** dialog.
 
@@ -353,7 +368,7 @@ echo $TOKEN
 ```
 Once configured, OpenShift is used by Harness as a typical Kubernetes cluster.
 
-##### OpenShift Notes
+#### OpenShift Notes
 
 * If you decide to use a username/password for credentials in the Harness Kubernetes Cluster Cloud Provider, do not use the username/password for the OpenShift platform. Use the username/password for the **cluster**.
 * Harness supports [DeploymentConfig](https://docs.openshift.com/container-platform/4.1/applications/deployments/what-deployments-are.html), [Route](https://docs.openshift.com/enterprise/3.0/architecture/core_concepts/routes.html), and [ImageStream](https://docs.openshift.com/enterprise/3.2/architecture/core_concepts/builds_and_image_streams.html#image-streams) across Canary, Blue Green, and Rolling deployment strategies. Please use `apiVersion: apps.openshift.io/v1` and not `apiVersion: v1`.

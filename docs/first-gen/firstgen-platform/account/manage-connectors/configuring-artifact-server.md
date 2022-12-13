@@ -7,22 +7,26 @@ helpdocs_category_id: ll7h8ktlwe
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
+```mdx-code-block
+import image_1 from './static/configuring-artifact-server-00.png'
+import image_2 from './static/configuring-artifact-server-01.png'
+```
 
 Harness integrates with many different types of repositories and artifact providers. We call these Artifact Servers, and they help Harness you pull your artifacts during deployments.
 
 In this topic:
 
-* [Before You Begin](#before_you_begin)
-* [Review: Artifact Sizes and Limitations](#review_artifact_sizes_and_limitations)
-* [Review: Add AWS S3 and Google Cloud Storage Artifact Servers](#review_add_aws_s3_and_google_cloud_storage_artifact_servers)
-* [Review: Anonymous Access](#review_anonymous_access)
-* [Add Platform-Specific Artifact Servers](#add_platform_specific_artifact_servers)
+* [Before You Begin](#before-you-begin)
+* [Review: Artifact Sizes and Limitations](#review-artifact-sizes-and-limitations)
+* [Review: Add AWS S3 and Google Cloud Storage Artifact Servers](#review-add-aws-s3-and-google-cloud-storage-artifact-servers)
+* [Review: Anonymous Access](#review-anonymous-access)
+* [Add Platform-Specific Artifact Servers](#add-platform-specific-artifact-servers)
 
-### Before You Begin
+## Before You Begin
 
 * See [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts).
 
-### Review: Artifact Sizes and Limitations
+## Review: Artifact Sizes and Limitations
 
 Most artifacts are set up in Harness Services using only their metadata, but in some cases, like traditional deployments using ZIP, JAR, or WAR files, the files are uploaded to the Harness cloud.
 
@@ -30,10 +34,12 @@ Harness has a limit of a 1GB file upload. However, Harness directly streams from
 
 For artifacts larger than 1GB, use the **Metadata Only** option in the Harness Service **Artifact Source** settings.
 
-![](./static/configuring-artifact-server-00.png)
+```mdx-code-block
+<img src={image_1} height="100" width="300" />
+```
 
 
-### Review: Add AWS S3 and Google Cloud Storage Artifact Servers
+## Review: Add AWS S3 and Google Cloud Storage Artifact Servers
 
 Amazon AWS and Google Cloud Platform are added to Harness as **Cloud Providers**, but they may also be used as artifact servers in a Harness Service.
 
@@ -41,10 +47,13 @@ You simply add them as Cloud Providers, and then when you are adding an artifact
 
 Here is what the Artifact Source list looks like in a Harness service when AWS S3 and Google Cloud Storage have been as added as Cloud Providers:
 
-![](./static/configuring-artifact-server-01.png)
+```mdx-code-block
+<img src={image_2} height="150" width="250" />
+```
+
 For information on how to add AWS and GCP as Cloud Providers, see [Add Cloud Providers](cloud-providers.md).
 
-### Review: Anonymous Access
+## Review: Anonymous Access
 
 The following Artifact Servers support anonymous access for Docker images:
 
@@ -57,7 +66,7 @@ If you are using anonymous access to obtain the artifact for your Service, you s
 * **Kubernetes** - Ensure that `imagePullSecrets` is removed from the container specification. For more information, see [Pull an Image from a Private Registry for Kubernetes](../../../continuous-delivery/kubernetes-deployments/pull-an-image-from-a-private-registry-for-kubernetes.md). For Harness version 1 implementation of Kubernetes, `imagePullSecrets` is added by default. For version 2, `imagePullSecrets` is not added by default.
 * **ECS** - By default, ECS uses anonymous access. To use a private registry, you must use the RepositoryCredentials property type in the Container Specification. For more information, see [Using Private Docker Registry Authentication](../../../continuous-delivery/aws-deployments/ecs-deployment/ecs-services.md#using-private-docker-registry-authentication).
 
-### Add Platform-Specific Artifact Servers
+## Add Platform-Specific Artifact Servers
 
 See the following topics for platform-specific Artifact Servers:
 
