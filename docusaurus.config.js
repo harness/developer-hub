@@ -235,7 +235,7 @@ const config = {
                 to: "release-notes/continuous-integration",
               },
               {
-                label: "Continuous Delivery",
+                label: "Continuous Delivery & GitOps",
                 to: "release-notes/continuous-delivery",
               },
               {
