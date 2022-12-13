@@ -337,7 +337,9 @@ In you use **Production - Single Node**, you can convert to **Production - High 
 1. In the KOTS admin console, go to **Cluster Management**.
 2. Click **Add a node**. This will generate scripts for joining additional worker and master nodes.
 
-For Disconnected (Airgap) installations, the bundle must also be downloaded and extracted on the remote node prior to running the join script.### NodePort and Application URL
+For Disconnected (Airgap) installations, the bundle must also be downloaded and extracted on the remote node prior to running the join script.
+
+### NodePort and Application URL
 
 Harness Self-Managed Enterprise Edition - Virtual Machine requires that you provide a NodePort and Application URL.
 

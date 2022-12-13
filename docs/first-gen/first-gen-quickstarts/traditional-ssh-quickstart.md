@@ -127,10 +127,10 @@ First, you add the key as an Encrypted File Secret in Harness, and then use that
 	 
 3. Click **Submit**.
 
-Next, use the Encrypted File to create an SSH Key in Harness.
+   Next, use the Encrypted File to create an SSH Key in Harness.
 
-1. In **Secrets Management**, click **SSH**.
-2. Click **Add SSH Key.** The **SSH Configuration** settings appear.  
+4. In **Secrets Management**, click **SSH**.
+5. Click **Add SSH Key.** The **SSH Configuration** settings appear.  
   
 	 * **Name**: Enter **ssh\_quickstart**.
 	 * **Auth Scheme**: Leave the default.

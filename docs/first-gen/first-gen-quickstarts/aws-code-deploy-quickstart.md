@@ -64,13 +64,20 @@ Install the Delegate in the same subnet where you will be deploying your app. It
 2. Click **Setup**, and then click **Harness Delegates**.
 3. Click **Download Delegate**, and then click **Shell Script**.
 4. Enter a name for the Delegate, and select the **Primary** Profile.
-5. Click **Copy Download Link**.![](./static/aws-code-deploy-quickstart-81.png)
+5. Click **Copy Download Link**.
+
+   ![](./static/aws-code-deploy-quickstart-81.png)
+	 
 6. Log into your EC2 instance, paste the Shell Script Delegate command, and hit **Enter**.
 7. Once the Delegate is downloaded, unzip it (`tar -zxvf harness-delegate.tar.gz`), change directories into the **harness-delegate** folder and run the start command: `./start.sh`. Ignore any warning about the ulimit.
 
 The Delegate will start and in a few moments you will see it listed in the **Harness Delegates** page.
 
-![](./static/aws-code-deploy-quickstart-82.png)**Delegate Selector** — Add a Delegate Selector to the Delegate so you can use this Delegate when you create a Harness AWS Cloud Provider. This will ensure the IAM role applied to the Delegate is used by your AWS Cloud Provider.
+![](./static/aws-code-deploy-quickstart-82.png)
+
+#### Delegate Selector
+
+Add a Delegate Selector to the Delegate so you can use this Delegate when you create a Harness AWS Cloud Provider. This will ensure the IAM role applied to the Delegate is used by your AWS Cloud Provider.
 
 1. In the Delegate listing on the **Harness Delegates** page, click **Edit** next to **Selector**.
 2. Type in **codedeploy-tutorial**, press **Enter**, and then click **Submit**.  

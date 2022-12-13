@@ -182,23 +182,23 @@ First, we'll create a Harness Application and Service, and look at the default I
 1. In Harness, click **Setup**, and then click **Add Application**. The Application settings appear.
 2. Enter the name **IIS Tutorial**, and click **Submit**. Your new Application appears.
 
-We won't cover all of the Application entities in this tutorial. We assume you've read [Harness Key Concepts](../starthere-firstgen/harness-key-concepts.md).
+   We won't cover all of the Application entities in this tutorial. We assume you've read [Harness Key Concepts](../starthere-firstgen/harness-key-concepts.md).
 
-To add your IIS website zip and settings, you create a Harness Service. Services represent your IIS websites, applications, and virtual directories. You define the source of the IIS website artifact and your IIS specs, such as application pool identity.
+   To add your IIS website zip and settings, you create a Harness Service. Services represent your IIS websites, applications, and virtual directories. You define the source of the IIS website artifact and your IIS specs, such as application pool identity.
 
-1. In your Harness Application, click **Services**. On the **Services** page, click **Add Service**. The **Service** dialog appears. Enter the following settings:
+3. In your Harness Application, click **Services**. On the **Services** page, click **Add Service**. The **Service** dialog appears. Enter the following settings:
 
    * **Name:** Enter **IIS-Website**.
    * **Deployment Type:** Select **Windows Remote Management (WinRM)**.
    * **Artifact Type:** Select **IIS Website**.
 
-2. Click **Submit**. The new Service is added.
+4 Click **Submit**. The new Service is added.
 
    ![](./static/iis-net-quickstart-05.png)
 	 
-Next, we will add the IIS website zip file artifact to the Service.
+   Next, we'll add the IIS website zip file artifact to the Service.
 
-1. In your Service, click **Add Artifact Source**, and select the **Artifactory** artifact source. Enter the following settings:
+5 In your Service, click **Add Artifact Source**, and select the **Artifactory** artifact source. Enter the following settings:
 
    * **Display Name:** Enter **Todo List**.
    * **Source Server:** Select the Artifact Server you created earlier, **Artifactory Public**.
@@ -206,7 +206,7 @@ Next, we will add the IIS website zip file artifact to the Service.
    * **Artifact Path/File Filter:** Enter **todolist-v3.0.zip**.
    * **Metadata Only:** Select this option.
 
-2. Click **Submit**. The artifact is added to the Service. 
+6. Click **Submit**. The artifact is added to the Service. 
 
 Look at the **Script** in **Deployment Specification**. You can see the steps that Harness will perform on the target host during deployment.
 

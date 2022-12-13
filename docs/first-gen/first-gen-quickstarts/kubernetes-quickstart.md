@@ -274,12 +274,12 @@ To learn more about Canary deployments, see [Deployment Concepts and Strategies]
 
    ![](./static/kubernetes-quickstart-100.png)
    
-Harness adds the necessary steps automatically, but you can edit or add more as needed.
+   Harness adds the necessary steps automatically, but you can edit or add more as needed.
 
-Let's take a look at the **Canary Deployment** step. The Canary Deployment step defines how many pods are deployed for a Canary test of the configuration files in your Harness Service manifests.
+   Let's take a look at the **Canary Deployment** step. The Canary Deployment step defines how many pods are deployed for a Canary test of the configuration files in your Harness Service manifests.
 
-1. Click the **Canary Deployment** step.
-2. Review the following settings:
+8. Click the **Canary Deployment** step.
+9. Review the following settings:
 
    * **Instance Unit Type**: You can specify the number of replicas to deploy using **COUNT** or **PERCENTAGE**.
 	   + **COUNT:** This is simply the number of replicas.
@@ -290,36 +290,36 @@ Let's take a look at the **Canary Deployment** step. The Canary Deployment step 
 
    For this tutorial, we'll use the default settings.
 
-3. Close **Canary Deployment**.
+10. Close **Canary Deployment**.
 
-The Canary Delete step in the Wrap Up section deletes the workloads deployed successfully in this phase. Once the Canary Deployment step is successful, you don't need those workloads. You can move onto to deploying the workloads in a second phase, confident that they will deploy.
+   The Canary Delete step in the Wrap Up section deletes the workloads deployed successfully in this phase. Once the Canary Deployment step is successful, you don't need those workloads. You can move onto to deploying the workloads in a second phase, confident that they will deploy.
 
-Next, we'll add the Primary phase using a Kubernetes rolling update.
+   Next, we'll add the Primary phase using a Kubernetes rolling update.
 
-1. In the breadcrumb navigation, click the name of the Workflow, **MyApp K8s Canary**. This takes you back to the main Workflow page.
-2. In **Deployment Phases**, click **Add Phase**.
-3. Enter the following settings:
+11. In the breadcrumb navigation, click the name of the Workflow, **MyApp K8s Canary**. This takes you back to the main Workflow page.
+12. In **Deployment Phases**, click **Add Phase**.
+13. Enter the following settings:
 
    * **Service:** Select the Harness Service you created for this tutorial, **MyApp K8s**.
    * **Infrastructure Definition:** Select the Infrastructure Definition you created for this tutorial, **Tutorial Namespace**.
 
-3. Click **Submit**. The new phase is added.
+14. Click **Submit**. The new phase is added.
 
    ![](./static/kubernetes-quickstart-101.png)
 
-Let's take a look at the **Rollout Deployment** step.
+   Let's take a look at the **Rollout Deployment** step.
 
-This step performs a standard Kubernetes rolling update, incrementally updating pod instances with new ones. The new pods are scheduled on nodes with available resources. The rolling update Deployment uses the number of pods you specified in the Harness Service Manifests (number of replicas).
+   This step performs a standard Kubernetes rolling update, incrementally updating pod instances with new ones. The new pods are scheduled on nodes with available resources. The rolling update Deployment uses the number of pods you specified in the Harness Service Manifests (number of replicas).
 
-1. Click **Rollout Deployment**. The Rollout Deployment settings appear.
+15. Click **Rollout Deployment**. The Rollout Deployment settings appear.
 
   ![](./static/kubernetes-quickstart-102.png)
   
   There's nothing to configure in this step. Click **Submit** to exit.
 
-That's it. The Canary Workflow is complete. Next, we'll deploy the Workflow to your cluster.
+   That's it. The Canary Workflow is complete. Next, we'll deploy the Workflow to your cluster.
 
-1. In the breadcrumb navigation, click the name of the Workflow, **MyApp K8s Canary**. This takes you back to the main Workflow page where both phases are visible.
+16. In the breadcrumb navigation, click the name of the Workflow, **MyApp K8s Canary**. This takes you back to the main Workflow page where both phases are visible.
 
    ![](./static/kubernetes-quickstart-103.png)
    

@@ -92,12 +92,11 @@ Scheduling snapshots is covered in the KOTS [Schedules](https://kots.io/kotsadm/
 4. In **Schedule**, select the schedule for the snapshot.
 5. In **Retention policy**, define how long to keep snapshots.
 
-The retention policy is described by KOTS:
+   The retention policy is described by KOTS:
 
+   > The default retention period for snapshots is 1 month. Setting the retention only affects snapshots created after the time of the change. For example, if an existing snapshot had a retention of 1 year and is already 6 months old, and a user then uses the UI to change the retention to 1 month, the existing snapshot will still be around for another 6 months.
 
-> The default retention period for snapshots is 1 month. Setting the retention only affects snapshots created after the time of the change. For example, if an existing snapshot had a retention of 1 year and is already 6 months old, and a user then uses the UI to change the retention to 1 month, the existing snapshot will still be around for another 6 months.
-
-1. Click **Update schedule**. The schedule is updated. To disable it, deselect **Enable automatic scheduled snapshots**.
+6. Click **Update schedule**. The schedule is updated. To disable it, deselect **Enable automatic scheduled snapshots**.
 
 ### Option: Restore from a Full Snapshot
 

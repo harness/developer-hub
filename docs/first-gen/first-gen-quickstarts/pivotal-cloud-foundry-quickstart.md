@@ -157,22 +157,22 @@ First, we'll create a Harness Application and Service, and look at the default T
 1. In Harness, click **Setup**, and then click **Add Application**. The Application settings appear.
 2. Enter the name TAS Tutorial, and click Submit. Your new Application appears.
 
-We won't cover all of the Application entities in this tutorial. We assume you've read [Harness Key Concepts](../starthere-firstgen/harness-key-concepts.md).
+   We won't cover all of the Application entities in this tutorial. We assume you've read [Harness Key Concepts](../starthere-firstgen/harness-key-concepts.md).
 
-To add your specs, you create a Harness Service. Services represent your TAS apps. You define the sources of app artifacts and your TAS specs.
+   To add your specs, you create a Harness Service. Services represent your TAS apps. You define the sources of app artifacts and your TAS specs.
 
-1. In your Harness Application, click **Services**. On the **Services** page, click **Add Service**. The **Service** dialog appears. Enter the following settings:
+3. In your Harness Application, click **Services**. On the **Services** page, click **Add Service**. The **Service** dialog appears. Enter the following settings:
 
    * **Name:** Enter **TAS Tutorial**.
    * **Deployment Type:** Select **Tanzu Application Services**.
 
-2. Click **SUBMIT**. The new Service is added.
+4. Click **SUBMIT**. The new Service is added.
 
    ![](./static/pivotal-cloud-foundry-quickstart-42.png)
 	 
    Next, we will add the WAR file artifact to the Service.
 
-3. In your Service, click **Add Artifact Source**, and select the **Artifactory** artifact source. Enter the following settings:
+5. In your Service, click **Add Artifact Source**, and select the **Artifactory** artifact source. Enter the following settings:
 
    * **Display Name:** Enter **Todo List**.
    * **Source Server:** Select the Artifact Server you created earlier, **Artifactory Public**.
@@ -180,14 +180,17 @@ To add your specs, you create a Harness Service. Services represent your TAS app
    * **Artifact Path/File Filter:** Enter **todolist.war**.
    * **Metadata Only:** Do not select this option.
 
-4. Click **Submit**. The artifact is added to the Service. Next we'll check the **Artifact History** to get a history of the WAR file. This primes the deployment with the history of artifacts.
-5. Click **Artifact History**, and then click **Manually pull artifact**.![](./static/pivotal-cloud-foundry-quickstart-43.png)
-6. Enter the following settings:
+6. Click **Submit**. The artifact is added to the Service. Next we'll check the **Artifact History** to get a history of the WAR file. This primes the deployment with the history of artifacts.
+7. Click **Artifact History**, and then click **Manually pull artifact**.
+
+   ![](./static/pivotal-cloud-foundry-quickstart-43.png)
+	 
+8. Enter the following settings:
 
    * **Artifact Stream:** Select **Todo List**.
    * **Artifact:** Select **build# todolist.war**.
 
-7. Click **Submit**. 
+9. Click **Submit**. 
 
 Now Harness has a history of all the artifacts. When you deploy the app, you can select a build number from this history.
 
@@ -255,11 +258,11 @@ Once the TAS app is set up in the Workflow using the **App Setup** command, yo
 
 3. Click **Submit**. The TAS Basic Workflow is created.
 
-There's nothing to change in the default Workflow settings. We simply need to open and confirm the defaults.
+   There's nothing to change in the default Workflow settings. We simply need to open and confirm the defaults.
 
-We'll walk through the default steps in the Workflow, **App Step** and **App Resize**.
+  We'll walk through the default steps in the Workflow, **App Step** and **App Resize**.
 
-1. Click **App Setup**. The App Setup command uses the manifest.yml in your Harness TAS Service to set up your app. We'll confirm the defaults.
+4. Click **App Setup**. The App Setup command uses the manifest.yml in your Harness TAS Service to set up your app. We'll confirm the defaults.
 
    * **Name:** This is the name of the step.
    * **Instance Count:** The number of instances for your app. By default, we use the `INSTANCES` settings from the vars.yml in your Service **Manifests** section. The **Match running instances** setting can be used after your first deployment to override the `instances` setting in the manifest.yml.
@@ -267,13 +270,13 @@ We'll walk through the default steps in the Workflow, **App Step** and **App Res
    * **Additional Routes:** Any additional routes to add to the mapping configured in the Service manifest.
    * **Use App Autoscaler Plugin:** This setting can be used if the [App Autoscaler plugin](https://docs.pivotal.io/application-service/2-7/appsman-services/autoscaler/using-autoscaler-cli.html) service running in your target Pivotal space and bound to the app you are deploying.
 
-2. Click **Submit**.
-3. Click **App Resize**. The App Resize command is displayed as incomplete. Harness simply needs you to confirm the default number of desired instances, **100 Percent**.
+5. Click **Submit**.
+6. Click **App Resize**. The App Resize command is displayed as incomplete. Harness simply needs you to confirm the default number of desired instances, **100 Percent**.
 
    * **Name:** This is the name of the step.
    * **Desired Instances:** A percentage of the number specified in your manifest.yml, or if you used the **App Setup Match desired count with current running instances** setting, the current number of running instances. You can also use **Count** to explicitly set the number of desired instances.
 
-4. Click **Submit**.
+7. Click **Submit**.
 
 The Workflow is complete. You can run the Workflow to deploy the app to your TAS space.
 

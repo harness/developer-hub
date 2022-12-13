@@ -299,46 +299,46 @@ The Harness Application represents a logical group of the ECS setup and release 
 
    ![](./static/aws-ecs-deployments-113.png)
 	 
-We won't cover all of the Application entities in this tutorial. We assume you've read  [Learn Harness' Key Concepts](https://newdocs.helpdocs.io/article/hv2758ro4e-learn-harness-key-concepts).
+   We won't cover all of the Application entities in this tutorial. We assume you've read  [Learn Harness' Key Concepts](https://newdocs.helpdocs.io/article/hv2758ro4e-learn-harness-key-concepts).
 
-To add your specs, you create a Harness Service. Services represent your microservices/apps. You define the sources of app artifacts for those microservices, and you add your ECS specs.
+   To add your specs, you create a Harness Service. Services represent your microservices/apps. You define the sources of app artifacts for those microservices, and you add your ECS specs.
 
 :::note 
 Harness Services are different from ECS services. Where a Harness Service describes your microservice, an ECS service is a specified number of task definition instances run and maintained simultaneously in an Amazon ECS cluster. For a detailed description of ECS services, see  [Services](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html) from AWS.
 :::
 
-1. Click **Services**. The **Services** page appears.
-2. Click **Add Service**. The **Service** dialog appears.
-3. Enter the following settings:
+3. Click **Services**. The **Services** page appears.
+4. Click **Add Service**. The **Service** dialog appears.
+5. Enter the following settings:
 
    * **Name:** Enter **MyApp ECS**.
    * **Deployment Type:** Select **Amazon EC2 Container Services (ECS).**
 
-4. Click **SUBMIT**. The new service is listed.
+6. Click **SUBMIT**. The new service is listed.
 
    ![](./static/aws-ecs-deployments-114.png)
 	 
-Next, we will add the Docker image artifact source to the Service: a sample app publicly hosted on Docker Hub.
+    Next, we will add the Docker image artifact source to the Service: a sample app publicly hosted on Docker Hub.
 
-1. Click **Add Artifact Source** and then click **Docker Registry**. The **Artifact Source - Docker Registry** settings appear.
-2. Enter the following settings:
+7. Click **Add Artifact Source** and then click **Docker Registry**. The **Artifact Source - Docker Registry** settings appear.
+8. Enter the following settings:
 
    * **Source Server:** Select the Artifact Server you added earlier, **Docker Hub**.
    * **Docker Image Name:** Enter `harness/todolist-sample`.
 
-3. Click **Submit**. The artifact source is added.
+9. Click **Submit**. The artifact source is added.
 
 :::note 
 You can pull a list of artifacts from the source using **Artifact History**.
 :::
 
-Now that the artifact source is added, you can add your ECS specs.
+   Now that the artifact source is added, you can add your ECS specs.
 
 :::note 
 If you are not very familiar with container and service specifications, see these examples from AWS: [Task Definitions for Amazon ECS](https://github.com/aws-samples/aws-containers-task-definitions), [Example Task Definitions](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/example_task_definitions.html).
 :::
 
-1. First, click **Container Specification** and enter the following settings:
+10. Click **Container Specification** and enter the following settings:
 
    * **CPU:** Enter **1**.
    * **Memory:** Enter **1000**.
@@ -443,7 +443,8 @@ In this tutorial, we will use the popular Canary Deployment strategy. In Canary,
 
    The value in **Desired Instances** relates to the number of ECS service instances set in the **ECS Service Setup** dialog. For example, since you entered **2** in **Fixed** in **ECS Service Setup** and then enter **50 Percent** in **Upgrade Containers**, that means, for this phase, Harness will deploy **1** ECS service instance.
 
-8  Click **SUBMIT**.
+8. Click **SUBMIT**.
+
 9. To add the second Phase of this Canary deployment, click the name of the Workflow **MyApp ECS Canary** in the breadcrumb links to return to the **Workflow** page.
 
    ![](./static/aws-ecs-deployments-121.png)
@@ -457,16 +458,16 @@ In this tutorial, we will use the popular Canary Deployment strategy. In Canary,
 
     ![](./static/aws-ecs-deployments-122.png)
 		
-As this is the second phase in the Canary deployment, and will only run if Phase 1 deployed successfully.
+    As this is the second phase in the Canary deployment, and will only run if Phase 1 deployed successfully.
 
-For Phase 2, let's upgrade the number of containers to 100%.
+    For Phase 2, let's upgrade the number of containers to 100%.
 
-1. Click **Upgrade Containers**. The **Upgrade Containers** dialog appears. Enter the following settings:
+12. Click **Upgrade Containers**. The **Upgrade Containers** dialog appears. Enter the following settings:
 
    * **Name:** Leave the default name.
    * **Desired Instances:** Enter **100** and **Percent** if it's not already configured.
 
-2. Click **SUBMIT**. This will deploy to the full count of ECS service instances.
+13. Click **SUBMIT**. This will deploy to the full count of ECS service instances.
 
 The Workflow is complete. You can run the Workflow to deploy the ECS service with the Replica strategy to your ECS cluster.
 

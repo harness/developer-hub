@@ -199,13 +199,13 @@ First, we'll create a Harness Application and Service, and look at manifests.
 
    ![](./static/helm-quickstart-61.png)
 	 
-We won't cover all of the Application entities in this tutorial. We assume you've read [Harness Key Concepts](../starthere-firstgen/harness-key-concepts.md).
+    We won't cover all of the Application entities in this tutorial. We assume you've read [Harness Key Concepts](../starthere-firstgen/harness-key-concepts.md).
 
-To add your Helm chart, you create a Harness Service. Services represent your microservices/apps. You define the sources of app artifacts for those microservices, and you add your Helm charts.
+    To add your Helm chart, you create a Harness Service. Services represent your microservices/apps. You define the sources of app artifacts for those microservices, and you add your Helm charts.
 
-1. Click **Services**.
-2. In **Services**, click **Add Service**. The Add Service settings appear.
-3. Enter the following settings:
+3. Click **Services**.
+4. In **Services**, click **Add Service**. The Add Service settings appear.
+5. Enter the following settings:
 
    * **Name:** Enter **MyApp Helm**.
    * **Deployment Type:** Select **Kubernetes**.
@@ -289,10 +289,10 @@ To learn more about Canary deployments, see [Deployment Concepts and Strategies]
 	 
 	 Harness adds the necessary steps automatically, but you can edit or add more as needed.
 
-Let's take a look at the **Canary Deployment** step. The Canary Deployment step defines how many pods are deployed for a Canary test of the configuration files in your Harness Service manifests.
+   Let's take a look at the **Canary Deployment** step. The Canary Deployment step defines how many pods are deployed for a Canary test of the configuration files in your Harness Service manifests.
 
-1. Click the **Canary Deployment** step.
-2. Review the following settings:
+7. Click the **Canary Deployment** step.
+8. Review the following settings:
 
   * **Instance Unit Type**: You can specify the number of replicas to deploy using **COUNT** or **PERCENTAGE**.
 	   + **COUNT:** This is simply the number of replicas.
@@ -302,34 +302,34 @@ Let's take a look at the **Canary Deployment** step. The Canary Deployment step 
 
    For this tutorial, we'll use the default settings.
 
-2. Close **Canary Deployment**.
+9. Close **Canary Deployment**.
 
-The Canary Delete step in the Wrap Up section deletes the workloads deployed successfully in this phase. Once the Canary Deployment step is successful, you don't need those workloads. You can move onto to deploying the workloads in a second phase, confident that they will deploy.
+   The Canary Delete step in the Wrap Up section deletes the workloads deployed successfully in this phase. Once the Canary Deployment step is successful, you don't need those workloads. You can move onto to deploying the workloads in a second phase, confident that they will deploy.
 
-Next, we'll add the Primary phase using a Kubernetes rolling update.
+   Next, we'll add the Primary phase using a Kubernetes rolling update.
 
-1. In the breadcrumb navigation, click the name of the Workflow, **MyApp Helm Canary**. This takes you back to the main Workflow page.
-2. In **Deployment Phases**, click **Add Phase**.
-3. Enter the following settings:
+10. In the breadcrumb navigation, click the name of the Workflow, **MyApp Helm Canary**. This takes you back to the main Workflow page.
+11. In **Deployment Phases**, click **Add Phase**.
+12. Enter the following settings:
 
    * **Service:** Select the Harness Service you created for this tutorial, **MyApp Helm**.
    * **Infrastructure Definition:** Select the Infrastructure Definition you created for this tutorial, **Tutorial Namespace**.
 
-4. Click **Submit**. The new phase is added.
+13. Click **Submit**. The new phase is added.
 
    ![](./static/helm-quickstart-66.png)
 	 
-Let's take a look at the **Rollout Deployment** step.
+   Let's take a look at the **Rollout Deployment** step.
 
-This step performs a standard Kubernetes rolling update, incrementally updating pod instances with new ones. The new pods are scheduled on nodes with available resources. The rolling update Deployment uses the number of pods you specified in the Harness Service Manifests (number of replicas).
+   This step performs a standard Kubernetes rolling update, incrementally updating pod instances with new ones. The new pods are scheduled on nodes with available resources. The rolling update Deployment uses the number of pods you specified in the Harness Service Manifests (number of replicas).
 
-1. Click **Rollout Deployment**. The Rollout Deployment settings appear.
+14. Click **Rollout Deployment**. The Rollout Deployment settings appear.
 
-  ![](./static/helm-quickstart-67.png)There's nothing to configure in this step. Click **Submit** to exit.
+    ![](./static/helm-quickstart-67.png)There's nothing to configure in this step. Click **Submit** to exit.
 
-That's it. The Canary Workflow is complete. Next, we'll deploy the Workflow to your cluster.
+    That's it. The Canary Workflow is complete. Next, we'll deploy the Workflow to your cluster.
 
-1. In the breadcrumb navigation, click the name of the Workflow, **MyApp Helm Canary**. This takes you back to the main Workflow page where both phases are visible.
+15. In the breadcrumb navigation, click the name of the Workflow, **MyApp Helm Canary**. This takes you back to the main Workflow page where both phases are visible.
 
    ![](./static/helm-quickstart-68.png)
 	 

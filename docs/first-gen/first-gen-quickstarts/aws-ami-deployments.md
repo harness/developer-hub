@@ -139,13 +139,13 @@ In an Environment, you specify the base AWS Auto Scaling Group (ASG) as an Infra
    * **Name:** Enter **AMI Tutorial**.
    * **Environment Type:** Select **Non-Production**.
 
-One you click **Submit**, the new Environment page appears. Next we will add an Infrastructure Definition to identify the related ASG information.
+   Once you click **Submit**, the new Environment page appears. Next we will add an Infrastructure Definition to identify the related ASG information.
 
-An [Infrastructure Definition](../continuous-delivery/model-cd-pipeline/environments/environment-configuration.md#add-an-infrastructure-definition) for an AMI deployment specifies the base ASG for deployments, as well as options such as Target Groups and Load Balancers.
+   An [Infrastructure Definition](../continuous-delivery/model-cd-pipeline/environments/environment-configuration.md#add-an-infrastructure-definition) for an AMI deployment specifies the base ASG for deployments, as well as options such as Target Groups and Load Balancers.
 
-When you create the Harness Workflow later, you will pick this Infrastructure Definition to use for deployment.
+   When you create the Harness Workflow later, you will pick this Infrastructure Definition to use for deployment.
 
-1. Click **Add Infrastructure Definition**. The **Infrastructure Definition** dialog appears. Enter the following settings and click **Submit**:
+3. Click **Add Infrastructure Definition**. The **Infrastructure Definition** dialog appears. Enter the following settings and click **Submit**:
 
    * **Name:** Enter **AMI Tutorial**.
    * **Cloud Provider Type:** Select **Amazon Web Services**.

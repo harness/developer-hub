@@ -179,13 +179,13 @@ To add your function and spec, you create a Harness Service. Services represent 
 
    This grabs the file from your AWS S3 bucket, for example:
 
-![](./static/aws-lambda-deployments-28.png)
+   ![](./static/aws-lambda-deployments-28.png)
 
 :::note 
 The **Meta-data Only** option is selected by default. Harness will not copy the actual zip file. During runtime, Harness passes the metadata to Lambda where it is used to obtain the file.
 :::
 
-1. Click **SUBMIT**. The Lambda function file is added as an Artifact Source.
+3. Click **SUBMIT**. The Lambda function file is added as an Artifact Source.
 
 #### Add AWS Lambda Function Specification
 
