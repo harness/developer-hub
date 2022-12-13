@@ -8,7 +8,13 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Currently, this feature is behind the Feature Flag `LIMITED_ACCESS_FOR_HARNESS_USER_GROUP`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.The Restricted Access setting in Harness allows you to control when Harness support and engineering may access your account for troubleshooting. You can turn off this setting anytime, thus preventing Harness from viewing your account.
+
+:::note
+Currently, this feature is behind the Feature Flag `LIMITED_ACCESS_FOR_HARNESS_USER_GROUP`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+The Restricted Access setting in Harness allows you to control when Harness support and engineering may access your account for troubleshooting. You can turn off this setting anytime, thus preventing Harness from viewing your account.
 
 ### Limitations
 

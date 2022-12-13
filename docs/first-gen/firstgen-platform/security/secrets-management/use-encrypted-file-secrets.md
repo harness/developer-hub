@@ -15,7 +15,7 @@ In this topic:
 * [Before You Begin](use-encrypted-file-secrets.md#before-you-begin)
 * [Step 1: Add Encrypted File](use-encrypted-file-secrets.md#step-1-add-encrypted-file)
 * [Step 2: Reference the Encrypted File](use-encrypted-file-secrets.md#step-2-reference-the-encrypted-file)
-* [Review: Encrypted Files Must be Added to a Service](#review_encrypted_files_must_be_added_to_a_service)
+* [Review: Encrypted Files Must be Added to a Service](#review-encrypted-files-must-be-added-to-a-service)
 * [Review: File Secrets in Outputs](use-encrypted-file-secrets.md#review-file-secrets-in-outputs)
 
 ### Before You Begin

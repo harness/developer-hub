@@ -14,14 +14,14 @@ When used in combination with Harness User Groups Application Permissions, you c
 
 In this topic:
 
-* [Before You Begin](#before_you_begin)
-* [Visual Summary](#visual_summary)
-* [Review: Required Permissions](#review_required_permissions)
-	+ [Account Permissions](#account_permissions)
-	+ [Application Permissions](#application_permissions)
-* [Review: Secrets Limitations](#review_secrets_limitations)
-* [Review: Changing Secret Manager Scope](#review_changing_secret_manager_scope)
-* [Step 1: Open the Harness Secret Manger](#step_1_open_the_harness_secret_manger)
+* [Before You Begin](#before-you-begin)
+* [Visual Summary](#visual-summary)
+* [Review: Required Permissions](#review-required-permissions)
+	+ [Account Permissions](#account-permissions)
+	+ [Application Permissions](#application-permissions)
+* [Review: Secrets Limitations](#review-secrets-limitations)
+* [Review: Changing Secret Manager Scope](#review-changing-secret-manager-scope)
+* [Step 1: Open the Harness Secret Manger](#step-1-open-the-harness-secret-manger)
 * [See Also](#see_also)
 
 ### Before You Begin

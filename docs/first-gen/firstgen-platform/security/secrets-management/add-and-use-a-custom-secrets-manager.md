@@ -8,17 +8,23 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../../platform/6_Security/9-custom-secret-manager.md).Harness provides first-class support and built-in integration for some of the third party Secret Managers. You can configure and make use of other Secrets Managers using the Custom Secrets Manager. It's a shell script that you can execute anywhere that fetches the secret and shares it with Harness. It can be run on a Delegate or a remote machine connected to a Delegate.
+
+:::tip
+This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../../platform/6_Security/9-custom-secret-manager.md).
+:::
+
+
+Harness provides first-class support and built-in integration for some of the third party Secret Managers. You can configure and make use of other Secrets Managers using the Custom Secrets Manager. It's a shell script that you can execute anywhere that fetches the secret and shares it with Harness. It can be run on a Delegate or a remote machine connected to a Delegate.
 
 In this topic:
 
-* [Before You Begin](#before_you_begin)
-* [Review: Read-Only Secret Manager](#review_read_only_secret_manager)
-* [Step 1. Create an Encrypted Text Secret](#step_1_create_an_encrypted_text_secret)
-* [Step 2: Add Connection Attributes for Target Hosts](#step_2_add_connection_attributes_for_target_hosts)
-* [Step 3. Create a Shell Script Template](#step_3_create_a_shell_script_template)
-* [Step 4. Configure Custom Secrets Manager](#step_4_configure_custom_secrets_manager)
-* [Step 5. Use the Custom Secrets Manager](#step_5_use_the_custom_secrets_manager)
+* [Before You Begin](#before-you-begin)
+* [Review: Read-Only Secret Manager](#review-read-only-secret-manager)
+* [Step 1. Create an Encrypted Text Secret](#step-1-create-an-encrypted-text-secret)
+* [Step 2: Add Connection Attributes for Target Hosts](#step-2-add-connection-attributes-for-target-hosts)
+* [Step 3. Create a Shell Script Template](#step-3-create-a-shell-script-template)
+* [Step 4. Configure Custom Secrets Manager](#step-4-configure-custom-secrets-manager)
+* [Step 5. Use the Custom Secrets Manager](#step-5-use-the-custom-secrets-manager)
 * [Limitations](#limitations)
 
 ### Before You Begin
@@ -42,6 +48,7 @@ Using a configured Secrets Manager, create an Encrypted Text secret to access th
 Ensure that **Usage Scope** is set to **Scope to Account**.
 
 ![](./static/add-and-use-a-custom-secrets-manager-20.png)
+
 For more information on creating Encrypted Text Secret, see [Add Encrypted Text](use-encrypted-text-secrets.md#step-1-add-encrypted-text).
 
 Make sure that the secret you create to access your third party Secrets Manager is selected as Scope to Account. It will not be used for any Application.
@@ -57,7 +64,7 @@ This does not apply if you want to run the Custom Secrets Manager on the Harness
 
 ### Step 3. Create a Shell Script Template
 
-Create a Shell Script Template. For more information on creating a Shell Script Template and adding it to the Template Library, see [Create Shell Script Template](../../../continuous-delivery/concepts-cd/deployment-types/use-templates.md#create-shell-script-template).
+Create a Shell Script Template. For more information on creating a Shell Script Template and adding it to the Template Library, see [Create Shell Script Template](../../../continuous-delivery/concepts-cd/deployment-types/use-templates.md#cr).
 
 Note the following points while creating the template.
 
@@ -67,6 +74,7 @@ Note the following points while creating the template.
 Here’s an example Shell Script Template created for Custom Secrets Manager.
 
 ![](./static/add-and-use-a-custom-secrets-manager-21.png)
+
 In this example, this script assigns the secret variable to your final value. Here are the details of the entries in the script.
 
 * This script makes a cURL call to the API URL of the third party Secrets Manager and gets the output to the file secret.json.

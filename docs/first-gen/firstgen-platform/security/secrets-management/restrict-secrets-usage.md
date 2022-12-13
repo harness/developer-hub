@@ -39,7 +39,9 @@ Harness secrets are managed and scoped using the following settings:
 	+ Required to add secrets for Account-level settings (Cloud Providers, Connectors, etc) and to any Applications on which the user has the Application Permissions **Create**, **Read**, and **Update**.  
 	If this permission is not enabled, the users within the User Groups will be able to view the secrets only.
 * Harness User Group **Application Permissions**:
-	+ Add the Actions **Create**, **Read**, and **Update** to the Applications and Environments where Users in the User Group may use secrets.![](./static/restrict-secrets-usage-56.png)
+	+ Add the Actions **Create**, **Read**, and **Update** to the Applications and Environments where Users in the User Group may use secrets.
+      
+	  ![](./static/restrict-secrets-usage-56.png)
 
 * **Secret Manager Usage Scope**—When you create a Harness Encrypted Text or File secret, you select the Secret Manager for the secret. By default, Harness secrets inherit the same scope as the secret manager where they are stored. See [Scope Secret Managers to Applications and Environments](scope-secret-managers-to-applications-and-environments.md).
 * **Secret** **Usage Scope**—Each secret has **Usage Scope** settings for Applications and Environments. For Encrypted Text and Files, you also have **Scope to Account**:  
@@ -47,7 +49,13 @@ You have two options:
 	+ **Scope to Account:** Use allows the secret to be used in a Harness [Delegate Profile](../../account/manage-delegates/delegate-installation.md) only.
 	+ **Applications and Environments:** Scope the usage to specific Applications and their Production and Non-Production Environments.
 
-If you choose to apply scoping rules to a secret, then the Applications and Environments in the secret's scope must be entirely contained within the scope applied to its Secrets Manager. See [Scope Secret Managers to Applications and Environments](scope-secret-managers-to-applications-and-environments.md).Since User Group permissions are the broadest method for controlling secret usage, set those permissions first.
+
+:::note
+If you choose to apply scoping rules to a secret, then the Applications and Environments in the secret's scope must be entirely contained within the scope applied to its Secrets Manager. See [Scope Secret Managers to Applications and Environments](scope-secret-managers-to-applications-and-environments.md).
+
+:::
+
+Since User Group permissions are the broadest method for controlling secret usage, set those permissions first.
 
 A user can only create a secret according to the scope set by its Harness User Group Account and Application permissions.
 
@@ -64,18 +72,10 @@ The following table explains the secret Usage Scope options and how they apply t
 |  |  |
 | --- | --- |
 | Usage Scope Scenario | Result |
-| **Scope to Account** is selected. | The secret can be used in a Harness [Delegate Profile](../../account/manage-delegates/delegate-installation.md) only.The secret can be managed by members of User Groups with the following [Account Permission](../access-management-howtos/users-and-permissions.md) enabled:* **Manage Secrets**
-
-Or the following Application Permission:* **All Permissions Types** and all items under **Action**
- |
-| **No Usage Scope**:* **Scope to Account** is not selected.
-* No Application and Environment are selected.
- | The secret can be used in a Harness [Delegate Profile](../../account/manage-delegates/delegate-installation.md) only.The secret can be managed by members of User Groups with the following [Account Permission](../access-management-howtos/users-and-permissions.md) enabled:* **Manage Secrets**
- |
-| A single Application and Environment are selected. | The secret can be used in that Application and Environment.The secret cannot be used in a Harness [Delegate Profile](../../account/manage-delegates/delegate-installation.md).The secret can only be managed by the user that created it, and members of User Groups with the following [Account Permission](../access-management-howtos/users-and-permissions.md) enabled:* **Manage Secrets**
-
-If the Environment is deleted from your Harness Application, the secret will revert to **No Usage Scope**. |
-| Multiple or All Applications and Environments are selected. | The secret can be used in those Applications and Environments.The secret cannot be used in a Harness [Delegate Profile](../../account/manage-delegates/delegate-installation.md).The secret can only be managed by the user that created it, and members of User Groups with the following [Account Permission](../access-management-howtos/users-and-permissions.md) enabled:* **Manage Secrets**
+| **Scope to Account** is selected. | The secret can be used in a Harness [Delegate Profile](../../account/manage-delegates/delegate-installation.md) only.The secret can be managed by members of User Groups with the following [Account Permission](../access-management-howtos/users-and-permissions.md) enabled:<li> **Manage Secrets** </li>Or the following Application Permission:<li> **All Permissions Types** and all items under **Action**</li>|
+| **No Usage Scope**:<li> **Scope to Account** is not selected.</li><li>No Application and Environment are selected.</li>| The secret can be used in a Harness [Delegate Profile](../../account/manage-delegates/delegate-installation.md) only.The secret can be managed by members of User Groups with the following [Account Permission](../access-management-howtos/users-and-permissions.md) enabled:<li> **Manage Secrets**</li>|
+| A single Application and Environment are selected. | The secret can be used in that Application and Environment.<br/>The secret cannot be used in a Harness [Delegate Profile](../../account/manage-delegates/delegate-installation.md).<br/>The secret can only be managed by the user that created it, and members of User Groups with the following [Account Permission](../access-management-howtos/users-and-permissions.md) enabled:<li> **Manage Secrets**</li>If the Environment is deleted from your Harness Application, the secret will revert to **No Usage Scope**. |
+| Multiple or All Applications and Environments are selected. | The secret can be used in those Applications and Environments.<br/>The secret cannot be used in a Harness [Delegate Profile](../../account/manage-delegates/delegate-installation.md).<br/>The secret can only be managed by the user that created it, and members of User Groups with the following [Account Permission](../access-management-howtos/users-and-permissions.md) enabled:<li> **Manage Secrets**</li>
  |
 
 ### Option 1: Scope to Account
@@ -83,6 +83,7 @@ If the Environment is deleted from your Harness Application, the secret will rev
 If your Harness User account is part of a User Group with the **Manage Secrets** Account Permission enabled, you will see the **Scope to Account** option in the Encrypted Text and File dialogs.
 
 ![](./static/restrict-secrets-usage-57.png)
+
 Select **Scope to Account** to make this encrypted file secret available to Delegate Profile scripts only. Only secrets scoped to the account are available to use in Delegate Profiles.
 
 For more information, see [Managing Users and Groups (RBAC)](../access-management-howtos/users-and-permissions.md) and [Delegate Profiles](../../account/manage-delegates/delegate-installation.md#delegate-profiles).
@@ -94,6 +95,7 @@ You might want to restrict which Harness User Groups can use a secret. Restricti
 For example, in the following image, the **Usage Scope** of the secret is limited to the **ExampleForDoc** Application, and a User Group's **Application Permissions** are also limited to **ExampleForDoc**:
 
 ![](./static/restrict-secrets-usage-58.png)
+
 This limits the User Group to using only that secret (assuming that no other secrets **Usage Scopes** include **ExampleForDoc**).
 
 it is important to remember that in order for a user to use the secret, the user's User Group must also have **Applications Permissions** (Create, Read, Update) set for the same Applications and Environments (or all Applications and Environments).

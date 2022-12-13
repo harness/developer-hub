@@ -12,10 +12,10 @@ Harness Secrets Management supports the ability to migrate your secrets between 
 
 In this topic:
 
-* [Before You Begin](#before_you_begin)
-* [Review: Important Migration Topics](#review_important_migration_topics)
-* [Step: Migrating Secrets](#step_migrating_secrets)
-* [Next Steps](#next_steps)
+* [Before You Begin](#before-you-begin)
+* [Review: Important Migration Topics](#review-important-migration-topics)
+* [Step: Migrating Secrets](#step-migrating-secrets)
+* [Next Steps](#next-steps)
 
 ### Before You Begin
 
@@ -59,9 +59,13 @@ During migration transmission, secrets are encrypted by AES 256 encryption. They
 ### Step: Migrating Secrets
 
 1. In **Secrets Management**, click **Configure Secrets Managers**.
-2. Next to the secrets manager from which you want to migrate secrets, click **Migrate**.![](./static/migrate-secrets-between-secrets-managers-59.png)
+2. Next to the secrets manager from which you want to migrate secrets, click **Migrate**.
+   
+   ![](./static/migrate-secrets-between-secrets-managers-59.png)
 
-3. In the **Migrate Secrets** dialog, select your target secrets manager in the **Transition Secrets to:** drop‑down list, and click **Submit**.![](./static/migrate-secrets-between-secrets-managers-60.png)
+3. In the **Migrate Secrets** dialog, select your target secrets manager in the **Transition Secrets to:** drop‑down list, and click **Submit**.
+   
+   ![](./static/migrate-secrets-between-secrets-managers-60.png)
 
 
 ### Next Steps

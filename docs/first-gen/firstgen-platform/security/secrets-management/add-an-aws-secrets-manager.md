@@ -8,7 +8,13 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../../platform/6_Security/6-add-an-aws-secret-manager.md).You can use AWS Secrets Manager for your Harness secrets. AWS Secrets Manager differs from AWS KMS in that AWS Secrets Manager stores both secrets and encryption keys whereas with AWS KMS, Harness stores the secret in its Harness store and retrieves the encryption keys from KMS.
+
+:::tip
+This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../../platform/6_Security/6-add-an-aws-secret-manager.md).
+
+:::
+
+You can use AWS Secrets Manager for your Harness secrets. AWS Secrets Manager differs from AWS KMS in that AWS Secrets Manager stores both secrets and encryption keys whereas with AWS KMS, Harness stores the secret in its Harness store and retrieves the encryption keys from KMS.
 
 In this topic:
 
@@ -90,7 +96,14 @@ To test use the AWS account when running [aws secretsmanager list-secrets](https
 
 1. In **Security**, select **Secrets Management**, and then click **Configure Secrets Managers.** In the resulting **Secrets Managers** page, the **Status** column indicates the **Default** provider.
 2. Click **Add Secrets Manager**. The **Configure Secrets Manager** settings appear.
-3. Select **AWS Secrets Manager** from the drop-down list.For information on restrictions on names and maximum quotas, see [Quotas for AWS Secrets Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_limits.html).![](./static/add-an-aws-secrets-manager-26.png)
+3. Select **AWS Secrets Manager** from the drop-down list.
+
+:::note
+   For information on restrictions on names and maximum quotas, see [Quotas for AWS Secrets Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_limits.html).
+
+:::
+   
+   ![](./static/add-an-aws-secrets-manager-26.png)
 
 
 ### Step 2: Display Name

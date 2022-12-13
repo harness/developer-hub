@@ -1,4 +1,4 @@
-FROM node:lts as base
+FROM node:18-alpine as base
 
 # Reduce npm log spam and colour during install within Docker
 ENV NPM_CONFIG_LOGLEVEL=warn
@@ -9,8 +9,10 @@ WORKDIR /home/node/app
 COPY . /home/node/app/
 
 # Build the Docusaurus app
-RUN npm install
-RUN npm run build
+# RUN npm install
+# RUN npm run build
+RUN yarn install --frozen-lockfile
+RUN yarn build
 
 ## Deploy ######################################################################
 # Use a stable nginx image

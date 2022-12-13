@@ -8,7 +8,13 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../../platform/6_Security/12-add-hashicorp-vault.md).To store and use encrypted secrets (such as access keys), you can add a HashiCorp Vault Secrets Manager.
+
+:::tip
+This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../../platform/6_Security/12-add-hashicorp-vault.md).
+
+:::
+
+To store and use encrypted secrets (such as access keys), you can add a HashiCorp Vault Secrets Manager.
 
 ### Before You Begin
 
@@ -67,17 +73,33 @@ The App Role option enables the Harness Vault Secrets Manager to authenticate wi
 
 The Vault AppRole method allows multiple roles to be defined, corresponding to different applications, and each with different levels of access. To authenticate with Vault, the application is assigned a static Role ID and a dynamically generated Secret ID, which are both required to log in and fetch a Vault token.
 
-The SecretId should not expire and it should be valid until it is manually revoked. This SecretId is needed to generate new tokens when the older tokens expire.The App Role ID and Secret ID you supply will be used by Harness to fetch a Vault Auth Token dynamically at configured intervals set in Renewal Interval.
+
+:::note
+The SecretId should not expire and it should be valid until it is manually revoked. This SecretId is needed to generate new tokens when the older tokens expire.
+
+:::
+
+The App Role ID and Secret ID you supply will be used by Harness to fetch a Vault Auth Token dynamically at configured intervals set in Renewal Interval.
 
 For more information, see [RoleID](https://www.vaultproject.io/docs/auth/approle.html#roleid) and [Authenticating Applications with HashiCorp Vault AppRole](https://www.hashicorp.com/blog/authenticating-applications-with-vault-approle) from HashiCorp.
 
+
+:::note
 If you encounter errors, setting [token\_num\_uses](https://www.vaultproject.io/api-docs/auth/approle#token_num_uses) to `0` can often resolve problems.
+
+:::
 
 #### Permissions
 
 The Vault AppRole ID or the Periodic Token used in either of the authentication options needs to have an ACL policy attached for Harness to use it. Typically, you create the policy first, then create the AppRole or Periodic Token and attach the policy.
 
-In the policy examples below: If you've created a [Read-only Vault Secrets Manager](#read_only_vault), this secrets manager needs only read and list permissions on Vault. It does not need—and cannot assume—create, update, or delete permissions.If the secrets are in the Secret Engine named “secret”, the following permissions are required in the policy.
+
+:::note
+In the policy examples below: If you've created a [Read-only Vault Secrets Manager](#step-4-read-only-vault), this secrets manager needs only read and list permissions on Vault. It does not need—and cannot assume—create, update, or delete permissions.
+
+:::
+
+If the secrets are in the Secret Engine named “secret”, the following permissions are required in the policy.
 
 
 ```
@@ -96,7 +118,13 @@ path "secret/harness" {
    capabilities = ["list", "read"]  
 }
 ```
-These examples apply only for a **v1** secret engine. If you are planning to use a secret engine with version 2 (versioned secret engine), then the policies are different as explained [here](https://www.vaultproject.io/docs/secrets/kv/kv-v2). Go through this link to understand the correct permissions required for your use case.If the Vault Secrets Manager needs to renew tokens, the following permissions are needed:
+
+:::note
+These examples apply only for a **v1** secret engine. If you are planning to use a secret engine with version 2 (versioned secret engine), then the policies are different as explained [here](https://www.vaultproject.io/docs/secrets/kv/kv-v2). Go through this link to understand the correct permissions required for your use case.
+
+:::
+
+If the Vault Secrets Manager needs to renew tokens, the following permissions are needed:
 
 
 ```
@@ -107,7 +135,13 @@ path "auth/token/renew-self"
 ```
 ### Option: Vault Agent
 
-For a detailed walkthrough, see [How to integrate Harness with Vault using Vault Agent (Delegate)](https://community.harness.io/t/hashicorp-vault-2022-review-how-to-integrate-harness-with-vault-using-vault-agent-delegate/11710) from Harness Community.This option enables the Harness Vault Secrets Manager to authenticate with the Auto-Auth functionality of the [Vault Agent](https://www.vaultproject.io/docs/agent/autoauth).
+
+:::note
+For a detailed walkthrough, see [How to integrate Harness with Vault using Vault Agent (Delegate)](https://community.harness.io/t/hashicorp-vault-2022-review-how-to-integrate-harness-with-vault-using-vault-agent-delegate/11710) from Harness Community.
+
+:::
+
+This option enables the Harness Vault Secrets Manager to authenticate with the Auto-Auth functionality of the [Vault Agent](https://www.vaultproject.io/docs/agent/autoauth).
 
 To authenticate with Vault Agent, make sure you have configured it on the required environment, with entries for **method** and **sinks**. For more information, see [Vault Agent](https://www.vaultproject.io/docs/agent).
 
@@ -118,17 +152,24 @@ In the **Sink Path** field, enter any sink path you have in your Vault Agent Con
 
 ### Option: Kubernetes Auth
 
-Currently, this feature is behind the Feature Flag `ENABLE_K8S_AUTH_IN_VAULT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.This option uses a Kubernetes Service Account Token to authenticate with Vault. With this method of authentication, you can easily add a Vault token into a Kubernetes Pod.
+
+:::note
+Currently, this feature is behind the Feature Flag `ENABLE_K8S_AUTH_IN_VAULT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+This option uses a Kubernetes Service Account Token to authenticate with Vault. With this method of authentication, you can easily add a Vault token into a Kubernetes Pod.
 
 To authenticate with Kubernetes Auth, make sure you have created a role in the vault inside `auth/kubernetes/role`. This role authorizes the "vault-auth" service account in the default namespace and it gives it the default policy. This is also where you'll find the **service account name** and **namespace** that will be used to access the vault endpoint.
 
-[![](./static/add-a-hashi-corp-vault-secrets-manager-63.png)
-](./static/add-a-hashi-corp-vault-secrets-manager-63.png)
+![](./static/add-a-hashi-corp-vault-secrets-manager-63.png)
+
 For more information, see [Kubernetes Auth Method](https://www.vaultproject.io/docs/auth/kubernetes#configuration).
 
 In **Role Name**, enter the role you have configured in the Vault.
 
 ![](./static/add-a-hashi-corp-vault-secrets-manager-65.png)
+
 In **Service Account Token Path**enter the JSON Web Token (JWT) path. This is the path where the JWT token is mounted. The default path of this token is `/var/run/secrets/kubernetes.io/serviceaccount/token`.
 
 For more information, see [Service Account Tokens](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#service-account-tokens).
@@ -161,16 +202,35 @@ If you don’t want to or cannot add the ACL policy (with read permission for sy
 2. In **Secret Engine Name**, enter the name of the Secret Engine.
 3. In **Version**, select the engine version from the drop down list.
 
-You cannot change the Secret Engine later. Harness blocks editing this setting later because there might be secrets that are created/referenced in this secret engine. Changing the secret engine might break references to those secrets. To migrate secrets, see [Migrate Secrets between Secrets Managers](migrate-secrets-between-secrets-managers.md).### Step 3: Renewal Interval
+
+:::note
+You cannot change the Secret Engine later. Harness blocks editing this setting later because there might be secrets that are created/referenced in this secret engine. Changing the secret engine might break references to those secrets. To migrate secrets, see [Migrate Secrets between Secrets Managers](migrate-secrets-between-secrets-managers.md).
+
+:::
+
+### Step 3: Renewal Interval
 
 In **Renew Interval**, you can (optionally) select how often Harness Delegate reloads the Vault access token.
 
 ![](./static/add-a-hashi-corp-vault-secrets-manager-66.png)
-You can expect a delay during the Vault renewal. A periodic job runs to check if there has to be a renewal resulting in a delay of no more than 2 minutes.### Review: Validating Non-Read Only Vault Secrets Managers
+
+
+:::note
+You can expect a delay during the Vault renewal. A periodic job runs to check if there has to be a renewal resulting in a delay of no more than 2 minutes.
+
+:::
+
+### Review: Validating Non-Read Only Vault Secrets Managers
 
 To validate a non-read only Vault Secrets Manager, Harness creates a dummy secret in the secret engine.
 
-The event for creating the dummy secret this will show up on [Audit Trail](../../../../platform/15_Audit-Trail/audit-trail.md) as if the user who initiated the creation of the Vault Secrets Manager created the secret. The path of the secret is as follows:
+
+:::note
+The event for creating the dummy secret this will show up on [Audit Trail](../../../../platform/15_Audit-Trail/audit-trail.md) as if the user who initiated the creation of the Vault Secrets Manager created the secret. 
+
+:::
+
+The path of the secret is as follows:
 
 v2 Secret Engine:
 

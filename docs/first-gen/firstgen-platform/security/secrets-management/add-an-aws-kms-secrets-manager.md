@@ -8,7 +8,13 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../../platform/6_Security/7-add-an-aws-kms-secrets-manager.md).To store and use encrypted secrets (such as access keys) and files, you can add an AWS KMS Secrets Manager.
+
+:::note
+This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../../platform/6_Security/7-add-an-aws-kms-secrets-manager.md).
+
+:::
+
+To store and use encrypted secrets (such as access keys) and files, you can add an AWS KMS Secrets Manager.
 
 In this topic:
 

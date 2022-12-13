@@ -12,13 +12,13 @@ Harness supports SSH server authentication using Kerberos, enabling you to SSH i
 
 In this topic:
 
-* [Before You Begin](#before_you_begin)
-* [Step 1: Access SSH Configuration](#step_1_access_ssh_configuration)
-* [Step 2: Auth Scheme](#step_2_auth_scheme)
-* [Step 3: Principal](#step_3_principal)
-* [Step 4: Realm](#step_4_realm)
-* [Step 5: TGT Generation](#step_5_tgt_generation)
-* [Step 6: Keytab File Path](#step_6_keytab_file_path)
+* [Before You Begin](#before-you-begin)
+* [Step 1: Access SSH Configuration](#step-1-access-ssh-configuration)
+* [Step 2: Auth Scheme](#step-2-auth-scheme)
+* [Step 3: Principal](#step-3-principal)
+* [Step 4: Realm](#step-4-realm)
+* [Step 5: TGT Generation](#step-5-tgt-generation)
+* [Step 6: Keytab File Path](#step-6-keytab-file-path)
 
 ### Before You Begin
 
@@ -56,9 +56,10 @@ Select one of the following options:
 
 This field is displayed if you select **Key Tab File Path** for **TGT Generation**. Enter the file path to the keytab file on the server running the Harness delegate. For example, **/home/johndoe/a.keytab**. The file is not uploaded to Harness.
 
-To use the Kerberos SSH connection to connect to a target host, you select it in **SSH Connection Attributes** while specifying the target host in the Service Infrastructure/ [Infrastructure Definition](../../../continuous-delivery/model-cd-pipeline/environments/environment-configuration.md#add-an-infrastructure-definition) settings of an environment.
+To use the Kerberos SSH connection to connect to a target host, you select it in **SSH Connection Attributes** while specifying the target host in the Service Infrastructure/ [Infrastructure Definition](../../../continuous-delivery/model-cd-pipeline/environments/environment-configuration.md#step-2-add-infrastructure-definition) settings of an environment.
 
 ![](./static/use-ssh-key-via-kerberos-for-server-authentication-61.png)
+
 In this example, the target host that you want to use Kerberos authentication with is entered in **Host Name(s)**.
 
 Note that the domain name used to identify the hosts in the **Host Name(s)** field is likely to be the same as the domain name you entered in **Realm** when configuring the SSH connection.

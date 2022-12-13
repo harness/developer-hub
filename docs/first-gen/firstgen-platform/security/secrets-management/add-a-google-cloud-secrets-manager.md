@@ -12,21 +12,27 @@ You can use your [Google Cloud Secret Manager](https://cloud.google.com/secret-m
 
 Once you connect your GSM to Harness, you can store the secrets and other sensitive information you use in Harness in your GSM.
 
-Harness also supports [Google KMS as a secrets manager](add-a-google-cloud-kms-secrets-manager.md).In this topic:
 
-* [Before You Begin](#before_you_begin)
+:::note
+Harness also supports [Google KMS as a secrets manager](add-a-google-cloud-kms-secrets-manager.md).
+
+:::
+
+In this topic:
+
+* [Before You Begin](#before-you-begin)
 * [Limitations](#limitations)
-* [Supported Platforms and Technologies](#supported_platforms_and_technologies)
-* [Review: Permissions](#review_permissions)
-* [Step 1: Add a Secrets Manager](#step_1_add_a_secrets_manager)
-* [Step 2: Display Name](#step_2_display_name)
-* [Step 3: Attach Service Account Key (Credentials) File](#step_3_attach_service_account_key_credentials_file)
-* [Step 4: Usage Scope](#step_4_usage_scope)
+* [Supported Platforms and Technologies](#supported-platforms-and-technologies)
+* [Review: Permissions](#review-permissions)
+* [Step 1: Add a Secrets Manager](#step-1-add-a-secrets-manager)
+* [Step 2: Display Name](#step-2-display-name)
+* [Step 3: Attach Service Account Key (Credentials) File](#step-3-attach-service-account-key-credentials-file)
+* [Step 4: Usage Scope](#step-4-usage-scope)
 * [Option: Reference Existing Secrets](add-a-google-cloud-secrets-manager.md#option-reference-existing-secrets)
-* [Option: Migrate Existing Secrets to GSM](#option_migrate_existing_secrets_to_gsm)
+* [Option: Migrate Existing Secrets to GSM](#option-migrate-existing-secrets-to-gsm)
 * [Notes](#notes)
-* [See Also](#see_also)
-* [Configure As Code](#configure_as_code)
+* [See Also](#see-also)
+* [Configure As Code](#configure-as-code)
 
 ### Before You Begin
 
@@ -80,8 +86,9 @@ Export your Google Cloud service account key, and attach it to the Harness **Co
 3. Grant this service account the GSM permissions needed.  
 To do this, edit the service account and click **Permissions**. Click **Roles**, and then add the roles needed.  
 See [Managing secrets](https://cloud.google.com/secret-manager/docs/access-control) from Google.
-4. Open your service account's Actions ⋮ menu, then select **Create key.**[![](./static/add-a-google-cloud-secrets-manager-52.png)
-](./static/add-a-google-cloud-secrets-manager-52.png)
+4. Open your service account's Actions ⋮ menu, then select **Create key.**
+   
+   ![](./static/add-a-google-cloud-secrets-manager-52.png)
 
 5. In the resulting **Create private key** dialog, select the **JSON** option, create the key, and download it to your computer.
 6. Return to Harness Manager's **Configure Secrets Manager** dialog.

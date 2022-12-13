@@ -12,10 +12,10 @@ Harness includes a built-in Secrets Management feature that enables you to store
 
 In this topic:
 
-* [Before You Begin](#before_you_begin)
-* [Step 1: Configure Secrets Manager](#step_1_configure_secrets_manager)
-* [Where is the Secret for the Secret Manager Stored?](#where_is_the_secret_for_the_secret_manager_stored)
-* [Next Steps](#next_steps)
+* [Before You Begin](#before-you-begin)
+* [Step 1: Configure Secrets Manager](#step-1-configure-secrets-manager)
+* [Where is the Secret for the Secret Manager Stored?](#where-is-the-secret-for-the-secret-manager-stored)
+* [Next Steps](#next-steps)
 
 Looking for specific secrets managers? See:
 
@@ -34,9 +34,13 @@ Looking for specific secrets managers? See:
 ### Step 1: Configure Secrets Manager
 
 1. Select **Security** > **Secrets Management**. The **Secrets Management** page appears.
-2. Click **Configure Secrets Managers**. In the resulting **Secrets Managers** page, the **Status** column indicates the **Default** provider.![](./static/add-a-secrets-manager-23.png)
+2. Click **Configure Secrets Managers**. In the resulting **Secrets Managers** page, the **Status** column indicates the **Default** provider.
+   
+   ![](./static/add-a-secrets-manager-23.png)
 
-3. Click **Add Secrets Manager**. The **Configure Secrets Manager** dialog appears.![](./static/add-a-secrets-manager-24.png)
+3. Click **Add Secrets Manager**. The **Configure Secrets Manager** dialog appears.
+   
+   ![](./static/add-a-secrets-manager-24.png)
 
 4. Provide the account access information for the new secrets manager.
 5. If you choose to set this secrets manager as the default, select **Use as Default Secrets Manager**.

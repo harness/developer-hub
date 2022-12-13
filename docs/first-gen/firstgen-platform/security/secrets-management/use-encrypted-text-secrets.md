@@ -43,6 +43,7 @@ All of the passwords and keys used in Harness Connectors (Cloud Providers, Artif
 You create the Encrypted Text secret first and then select it in the Connector. Or you can create it from the Connector by clicking **Create Encrypted Text**:
 
 ![](./static/use-encrypted-text-secrets-69.png)
+
 You can also edit it in the Connector.
 
 ### Step 4: Reference the Encrypted Text
@@ -91,7 +92,13 @@ If the secret value itself includes quotes, either single or double, and anywher
 
 While uncommon, you might need quotes in the secret value for interpreting environment variables, etc.
 
-If you do not use the opposite quote you will expose the secret value.Single quote example:
+
+:::warning
+If you do not use the opposite quote you will expose the secret value.
+
+:::
+
+Single quote example:
 
 Here, the secret value is `'mysecret'` and the name is `secret_name`. To echo, use double quotes:
 
@@ -105,13 +112,23 @@ Here, the secret value is `"mysecret"` and the name is `secret_name` .
 
 `echo '${secrets.getValue('secret_name')}'`
 
+
+:::warning
 Avoid using $ in your secret value. If your secret value includes $, you must use single quotes when you use the expression in a script.  
 For example, if your secret value is `'my$secret'` , and the name is `secret_name`, to echo, use single quotes:  
  `echo '${secrets.getValue("secret_name")}'`
 
+:::
+
 ### Secrets in YAML Code
 
-The example below applies to the values.yaml used by the secret manifest for either Kubernetes and Native Helm deployments. See [Kubernetes or Native Helm?](../../../continuous-delivery/concepts-cd/deployments-overview/deployments-overview.md#kubernetes-or-native-helm).When you plan to use your secrets in YAML content, make sure you follow the quoting mechanism needed by YAML syntax.
+
+:::note
+The example below applies to the values.yaml used by the secret manifest for either Kubernetes and Native Helm deployments. See [Kubernetes or Native Helm?](../../../continuous-delivery/concepts-cd/deployments-overview/deployments-overview.md#kubernetes-or-native-helm).
+:::
+
+
+When you plan to use your secrets in YAML content, make sure you follow the quoting mechanism needed by YAML syntax.
 
 For example, if the secret value is "foo: bar" and the secret has:
 
@@ -159,7 +176,13 @@ If you accidentally use a very common value in your secret, like whitespace, the
 
 If you see output similar to this, review your secret and fix the error.
 
-If an operation within a script changes the value of the secret and Harness cannot match it to the expression, the newly modified string is displayed in the output exposing the secret value. If the modification is minor, the secret value can be easily deciphered which is a security concern.See [Secrets and Log Sanitization](../../techref-category/techref-security/secrets-and-log-sanitization.md).
+
+:::warning
+If an operation within a script changes the value of the secret and Harness cannot match it to the expression, the newly modified string is displayed in the output exposing the secret value. If the modification is minor, the secret value can be easily deciphered which is a security concern.
+:::
+
+
+See [Secrets and Log Sanitization](../../techref-category/techref-security/secrets-and-log-sanitization.md).
 
 ### Review: Secret Scope
 
@@ -183,4 +206,7 @@ By default, secrets are cached for 1 hour. When a secret is used, the cache is r
 
 If the secret is not in the cache when Harness fetches the secret, then the secret is fetched from the source and put in cache.
 
+
+:::note
 [Harness Support](mailto:support@harness.io) can increase the default cache expiry limit for your account. Harness can also disable secret caching entirely if you want.
+:::

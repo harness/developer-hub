@@ -12,11 +12,11 @@ You can view a Secret's Setup Usage, Runtime Usage, and Change Logs. You can als
 
 In this topic:
 
-* [Before You Begin](#before_you_begin)
-* [Step 1: View a Secret's Setup Usage](#step_1_view_a_secret_s_setup_usage)
-* [Step 2: View a Secret's Runtime Usage](#step_2_view_a_secret_s_runtime_usage)
-* [Step 3: View a Secret's Change Log](#step_3_view_a_secret_s_change_log)
-* [Option: Deleting Harness Secrets](#option_deleting_harness_secrets)
+* [Before You Begin](#before-you-begin)
+* [Step 1: View a Secret's Setup Usage](#step-1-view-a-secrets-setup-usage)
+* [Step 2: View a Secret's Runtime Usage](#step-2-view-a-secrets-runtime-usage)
+* [Step 3: View a Secret's Change Log](#step-3-view-a-secrets-change-log)
+* [Option: Deleting Harness Secrets](#option-deleting-harness-secrets)
 
 ### Before You Begin
 
@@ -46,7 +46,11 @@ For Encrypted Files, the **Setup Usage** displays the following details:
 
 If the secret has not been used already, the number will be 0 and no details will be displayed.
 
+
+:::note
 Only Encrypted Text secrets used in Service Config Variables are counted in Setup Usage.
+:::
+
 
 ### Step 2: View a Secret's Runtime Usage
 
@@ -56,7 +60,11 @@ The Run Time Usage window displays a list of deployments where the secret has be
 
 If the secret has not been used for deployments already, the number will be 0 and no details will be displayed.
 
+
+:::note
 Only Encrypted Text secrets used in Service Config Variables are counted in Runtime Usage.
+
+:::
 
 ### Step 3: View a Secret's Change Log
 
@@ -74,4 +82,7 @@ In the row where the Secret appears, click **X** that appears in the last column
 
 Click **Confirm** to delete the Secret.
 
+
+:::note
 When you delete an Encrypted Text secret, Harness only checks to see if it is used in Service Config Variables.
+:::

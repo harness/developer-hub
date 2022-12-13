@@ -12,11 +12,11 @@ This topic describes how to use Harness flexible RBAC for the very common Applic
 
 In this topic:
 
-* [Before You Begin](#before_you_begin)
-* [Review: Application Release Process and Roles](#review_application_release_process_and_roles)
-* [Step 1: Create the User Groups](#step_1_create_the_user_groups)
-* [Step 2: Add Members to the Groups](#step_2_add_members_to_the_groups)
-* [Next Steps](#next_steps)
+* [Before You Begin](#before-you-begin)
+* [Review: Application Release Process and Roles](#review-application-release-process-and-roles)
+* [Step 1: Create the User Groups](#step-1-create-the-user-groups)
+* [Step 2: Add Members to the Groups](#step-2-add-members-to-the-groups)
+* [Next Steps](#next-steps)
 
 ### Before You Begin
 
@@ -27,6 +27,7 @@ In this topic:
 ### Review: Application Release Process and Roles
 
 ![](./static/rbac-setup-in-harness-100.png)
+
 Many organizations depend on RBAC to ensure compliance and consistency with application deployment. This topic describes a simplistic (minimal) approach by defining three groups associated with each application as follows:
 
 
@@ -66,15 +67,23 @@ Add a User Group with the name **K8S\_Deployer** group. See [Add a User Group](u
 The members of this Deployer Group need read access to the Environment, Services and Pipeline to allow Pipeline execution for the specific application—K8S. Set Account Permissions and Application Permissions to this user group as needed while adding the User Group.
 
 ![](./static/rbac-setup-in-harness-101.png)
+
 This example shows that the Deployer Group is allowed access to both Non-Production and Production Environments. But, you can restrict access to the Production Environments by providing permission to only Non-Production Environments. This may be necessary in some organizations where the access to Production Environments is given only to a certain group/team.
 
-The Deployer role does not have read access to Workflow. Users with this role can execute the Pipeline with just read access, but the users will not have access to view the Workflow steps.#### Create the K8S\_DevOps Group
+
+:::note
+The Deployer role does not have read access to Workflow. Users with this role can execute the Pipeline with just read access, but the users will not have access to view the Workflow steps.
+
+:::
+
+#### Create the K8S\_DevOps Group
 
 Add a User Group with the name **K8S\_DevOps** group. See [Add a User Group](users-and-permissions.md#to-add-a-user-group) for specific instructions.
 
 Assign the following permissions for full access to members of K8S\_DevOps group for the K8S application except the **Delete** Application Permission.
 
 ![](./static/rbac-setup-in-harness-102.png)
+
 DevOps users do not need full access like the Harness Administrator because they are only responsible for specific Applications. For example, it is a good practice not to assign the **Delete** Application Permission for this role. This allows Harness Administrators to be responsible for setting up the Application pre-configured with reference Workflows and Pipelines including RBAC setup. Users in the DevOps group can update/create new Services but cannot delete the Application. If the Application has to be deleted (if it is a sandbox application), the Harness Administrator should delete it.
 
 #### Create the K8S\_Approver Group
@@ -84,6 +93,7 @@ Add a User Group with the name **K8S\_Approver** group. See [Add a User Group](u
 Assign the following Permissions to the members of the K8S\_Approver group to allow them to approve or reject a Pipeline execution. The assumption is that these users log in into Harness to approve or reject. In many organizations, the decision to approve or reject is done externally via JIRA or a change management system such as Service Now. In such cases, this group is optional.
 
 ![](./static/rbac-setup-in-harness-103.png)
+
 ### Step 2: Add Members to the Groups
 
 Add members to the three groups—K8S\_Deployer, K8S\_DevOps and K8S\_Approver. See [Add a User Group](users-and-permissions.md#to-add-a-user-group) for specific instructions to add members to User Groups.

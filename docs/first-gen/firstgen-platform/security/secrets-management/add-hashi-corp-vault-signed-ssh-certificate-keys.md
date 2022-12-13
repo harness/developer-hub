@@ -8,13 +8,25 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Currently, this feature is behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature. Feature Flags can only be removed for Harness Professional and Essentials editions. Once the feature is released to a general audience, it's available for Trial and Community Editions.You can use Vault Secrets Engine Signed SSH Certificates in Harness.
+
+:::note
+Currently, this feature is behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature. Feature Flags can only be removed for Harness Professional and Essentials editions. Once the feature is released to a general audience, it's available for Trial and Community Editions.
+
+:::
+
+You can use Vault Secrets Engine Signed SSH Certificates in Harness.
 
 Vault Secrets Engine provides signed public keys. SSH certificate authentication helps you avoid the common challenges with SSH public key authentication (rekeying, scaling, etc).
 
 The setup process is simple. You add your private key to Harness as an encrypted key file, specify the Vault SSH Engine to use, paste in the public key, and specify the Vault role used for signing client keys.
 
-This topic assumes you are familiar with creating Signed SSH Certificates in Vault and have a running HashiCorp Secrets Engine. For more information, see [Signed SSH Certificates](https://www.vaultproject.io/docs/secrets/ssh/signed-ssh-certificates) from Vault.In this topic:
+
+:::note
+This topic assumes you are familiar with creating Signed SSH Certificates in Vault and have a running HashiCorp Secrets Engine. For more information, see [Signed SSH Certificates](https://www.vaultproject.io/docs/secrets/ssh/signed-ssh-certificates) from Vault.
+
+:::
+
+In this topic:
 
 * [Before You Begin](add-hashi-corp-vault-signed-ssh-certificate-keys.md#before-you-begin)
 * [Supported Platforms and Technologies](add-hashi-corp-vault-signed-ssh-certificate-keys.md#undefined)

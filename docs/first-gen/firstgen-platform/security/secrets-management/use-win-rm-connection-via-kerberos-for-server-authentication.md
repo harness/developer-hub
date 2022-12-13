@@ -12,18 +12,18 @@ Harness supports WinRM authentication using Kerberos, enabling you to connect to
 
 In this topic:
 
-* [Before You Begin](#before_you_begin)
+* [Before You Begin](#before-you-begin)
 * [Limitations](#limitations)
-* [Step 1: Add SPN to the Active Directory Server](#step_1_add_spn_to_the_active_directory_server)
-* [Step 2: Access WinRM Configuration](#step_2_access_win_rm_configuration)
-* [Step 3: Display Name](#step_3_display_name)
-* [Step 4: Auth Scheme](#step_4_auth_scheme)
-* [Step 5: Username](#step_5_username)
-* [Step 6: Domain](#step_6_domain)
-* [Step 7: TGT Generation](#step_7_tgt_generation)
-* [Step 8: Keytab File Path](#step_8_keytab_file_path)
-* [Step 9: Advanced Options](#step_9_advanced_options)
-* [Step 10: Test the Connection](#step_9_test_the_connection)
+* [Step 1: Add SPN to the Active Directory Server](#step-1-add-spn-to-the-active-directory-server)
+* [Step 2: Access WinRM Configuration](#step-2-access-winrm-configuration)
+* [Step 3: Display Name](#step-3-display-name)
+* [Step 4: Auth Scheme](#step-4-auth-scheme)
+* [Step 5: Username](#step-5-username)
+* [Step 6: Domain](#step-6-domain)
+* [Step 7: TGT Generation](#step-7-tgt-generation)
+* [Step 8: Keytab File Path](#step-8-keytab-file-path)
+* [Step 9: Advanced Options](#step-9-advanced-options)
+* [Step 10: Test the Connection](#step-10-test-the-connection)
 
 ### Before You Begin
 
@@ -114,7 +114,11 @@ In this example, the target host that you want to use Kerberos authentication wi
 
 Note that the domain name used to identify the hosts in the **Host Name(s)** field is likely to be the same as the domain name you entered in **Domain** when configuring the WinRM connection.
 
+
+:::warning
 The Host Name cannot be an IP address and it should be a domain name. The connection will not succeed if it is an IP address.
+
+:::
 
 ### Step 9: Advanced Options
 

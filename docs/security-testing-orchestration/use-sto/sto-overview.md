@@ -1,7 +1,7 @@
 ---
 title: STO Overview
 description: The STO Overview enables you to see all detected issues in your target baselines.
-sidebar_position: 50
+sidebar_position: 60
 helpdocs_topic_id: 2ap1uol6ti
 helpdocs_category_id: utstv3qzqt
 helpdocs_is_private: false

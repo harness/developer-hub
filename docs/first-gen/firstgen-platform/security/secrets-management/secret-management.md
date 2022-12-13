@@ -8,19 +8,25 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../../platform/6_Security/1-harness-secret-manager-overview.md).Harness includes a built-in Secrets Management feature that enables you to store encrypted secrets, such as access keys, and use them in your Harness applications. Some key points about Secrets Management:
+
+:::note
+This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../../platform/6_Security/1-harness-secret-manager-overview.md).
+
+:::
+
+Harness includes a built-in Secrets Management feature that enables you to store encrypted secrets, such as access keys, and use them in your Harness applications. Some key points about Secrets Management:
 
 * Secrets are always accessed/decrypted at the time when they are needed, and at no time they are stored unencrypted.
 * Harness Manager does not have access to your key management system, and only the Harness Delegate, which sits in your private network, has access to it. Harness never makes secrets management accessible publicly. This adds an important layer of security.
 
 In this topic:
 
-* [Secrets How-tos](#secrets_how_tos)
-* [Before You Begin](#before_you_begin)
-* [Visual Summary](#visual_summary)
-* [Harness Secrets Management Process Overview](#harness_secrets_management_process_overview)
-* [Scoping Secrets Usage](#scoping_secrets_usage)
-* [Secrets in Harness Community and On-Prem Accounts](#secrets_in_harness_community_and_on_prem_accounts)
+* [Secrets How-tos](#secrets-how-tos)
+* [Before You Begin](#before-you-begin)
+* [Visual Summary](#visual-summary)
+* [Harness Secrets Management Process Overview](#harness-secrets-management-process-overview)
+* [Scoping Secrets Usage](#scoping-secrets-usage)
+* [Secrets in Harness Community and On-Prem Accounts](#secrets-in-harness-community-and-on-prem-accounts)
 
 ### Secrets How-tos
 
@@ -64,7 +70,13 @@ Harness sends only encrypted data to the secrets manager, as follows: 
 3. The Delegate exchanges a key pair with the secrets manager, over an encrypted connection.
 4. The Harness Delegate uses the encrypted key and the encrypted secret, and then discards them. The keys never leave the Delegate.
 
-Any secrets manager requires a running Harness Delegate to encrypt and decrypt secrets. Any Delegate that references a secret requires direct access to the secrets manager.You can manage your secrets in Harness using either a Key Management Service or third party Secrets Managers.
+
+:::note
+Any secrets manager requires a running Harness Delegate to encrypt and decrypt secrets. Any Delegate that references a secret requires direct access to the secrets manager.
+
+:::
+
+You can manage your secrets in Harness using either a Key Management Service or third party Secrets Managers.
 
 #### Using Key Management Services
 
@@ -72,7 +84,11 @@ Google Cloud Key Management Service is the default Secrets Manager in Harness. 
 
 The Key Management Service (Google Cloud KMS or AWS KMS) only stores the key. Harness uses [envelope encryption](https://cloud.google.com/kms/docs/envelope-encryption) to encrypt and decrypt the secrets. The encrypted secret and the encrypted Data Encryption Key (used for envelope encryption) are stored in the Harness database. 
 
+
+:::warning
 If you are using a KMS, rotation of keys is not supported by Harness and you might lose access to your secrets if the older version of the key is removed from your KMS.
+
+:::
 
 #### Using Third-Party Secrets Managers
 
@@ -90,7 +106,19 @@ For scoping Secret Managers, see [Scope Secret Managers to Applications and Envi
 
 In [Community](https://docs.harness.io/article/y1t8hhz4y5-harness-editions) and [On-Prem](https://docs.harness.io/article/gng086569h-harness-on-premise-versions) accounts, Harness uses a random-key secrets store as the Harness Secrets Manager.
 
-Once you have installed On-Prem, [Add a Harness Secrets Manager](add-a-secrets-manager.md). By default, On-Prem installations use the local Harness MongoDB for the default Harness Secrets Manager. This is not recommended.Harness does not currently support migrating secrets from the random-key secrets store. If you add secrets here, you will need to recreate them in any custom secrets manager you configure later.All Harness secrets managers require a running Harness Delegate to encrypt and decrypt secrets.
+
+:::note
+Once you have installed On-Prem, [Add a Harness Secrets Manager](add-a-secrets-manager.md). By default, On-Prem installations use the local Harness MongoDB for the default Harness Secrets Manager. This is not recommended.
+
+:::
+
+
+:::note
+Harness does not currently support migrating secrets from the random-key secrets store. If you add secrets here, you will need to recreate them in any custom secrets manager you configure later.
+
+:::
+
+All Harness secrets managers require a running Harness Delegate to encrypt and decrypt secrets.
 
 If you created a Harness trial account, a Delegate is typically provisioned by Harness, and the default Harness Secrets Manager performs encryption/decryption.
 

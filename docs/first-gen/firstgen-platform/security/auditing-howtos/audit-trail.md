@@ -8,9 +8,19 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../../platform/15_Audit-Trail/audit-trail.md).Harness provides auditing of events for many Harness account, Applications, and Application components. The Audit Trail enables you to track and review all events in one place.
 
+:::tip
+This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../../platform/15_Audit-Trail/audit-trail.md).
+
+:::
+
+Harness provides auditing of events for many Harness account, Applications, and Application components. The Audit Trail enables you to track and review all events in one place.
+
+
+:::note
 The Audit Trail feature covers events in accounts and Applications. To see your deployment history use Harness Manager's **Continuous Deployment**. See [Filtering Deployments](../../../continuous-delivery/concepts-cd/deployments-overview/filtering-deployments.md).
+
+:::
 
 ### Video Summary
 
@@ -29,6 +39,7 @@ The Audit Trail feature covers events in accounts and Applications. To see your 
 To view your account's audit trail: From Harness Manager, select **Continuous Security** **>** **Audit Trail**. The **Audit Trail** page appears, displaying a record for each event that changed the setup of your Harness account, Applications, or Application components.
 
 ![](./static/audit-trail-00.png)
+
 For each event record, this view shows the:
 
 * Date and time.
@@ -48,6 +59,7 @@ You can restrict the Audit Trail's displayed events by date and time, or define 
 Use the Date Picker to restrict events to a predefined date range, or to a custom date/time range:
 
 ![](./static/audit-trail-01.png)
+
 Selecting **Custom Date Range** enables you to set arbitrary limits by date and time of day:
 
 ![](./static/audit-trail-02.png)
@@ -58,6 +70,7 @@ Selecting **Custom Date Range** enables you to set arbitrary limits by date and 
 Click the Filter button to open a dialog where you can set multiple conditions on the events displayed:
 
 ![](./static/audit-trail-03.png)
+
 This dialog provides the following options. Your selections are cumulative—they combine to restrict the Audit Trail's display:
 
 
@@ -83,13 +96,18 @@ After making selections in this dialog:
 * Use the **Clear All** link to reset the whole dialog.
 * Click **APPLY** to immediately filter the Audit Trail's displayed events according to your selections.
 
+
+:::tip
 Once you've applied a filter, you can share your filtered view of the Audit Trail with other Harness users by copying its URL from your browser's address bar.
+
+:::
 
 #### Update or Save Filters
 
 Once you've applied any filters to the Audit Trail display, controls along the top allow you to update, remove, or save your filter selections:
 
 ![](./static/audit-trail-04.png)
+
 * To remove a single filter from the Audit Trail display, click its **X** box.
 * To remove all filters, click **Reset**. (There is no undo for this action.)
 * To name and save your current set of filters, click **Save Filter**. (Saved filters will appear on the Filter button's submenu.)
@@ -103,11 +121,11 @@ Within each of the Audit Trail's events, you can click links to display further 
 
 |  |  |
 | --- | --- |
-|  | Click a user's name for details about the user who performed the action. |
-|  | Click a resource name to open the Details page for that resource (in this case, a Service). |
-|  | Click an Application name to open the Details page for that Application. |
-|  | Click a link in the **Details** column to expand details about an event. |
-|  | ​Click the **YAML Diff** icon to see the actual configuration changes that Harness recorded for an event. |
+| ![](./static/audit-trail-06.png) | Click a user's name for details about the user who performed the action. |
+| ![](./static/audit-trail-07.png) | Click a resource name to open the Details page for that resource (in this case, a Service). |
+| ![](./static/audit-trail-08.png) | Click an Application name to open the Details page for that Application. |
+| ![](./static/audit-trail-09.png) | Click a link in the **Details** column to expand details about an event. |
+| ![](./static/audit-trail-10.png) | ​Click the **YAML Diff** icon to see the actual configuration changes that Harness recorded for an event. |
 
 As shown in the example below, the resulting diff view indicates deletions and insertions in the underlying YAML.
 
