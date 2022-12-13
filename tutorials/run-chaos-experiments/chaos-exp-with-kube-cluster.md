@@ -293,6 +293,11 @@ You can view the details of the experiment by clicking on '**Summary**'.
 
 ### View Chaos Results on Grafana Dashboard
 
-#### TO-DO
+#### You can see the results of injecting chaos into the target application on the Grafana dashboard.
+
+![After Chaos](./static/chaos-exp-with-kube-cluster/after-chaos.png)
+![After Chaos](./static/chaos-exp-with-kube-cluster/after-chaos-2.png)
+![After Chaos](./static/chaos-exp-with-kube-cluster/after-chaos-3.png)
+
 
 ## Troubleshooting
