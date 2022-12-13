@@ -66,7 +66,7 @@ const config = {
           customCss: require.resolve("./src/css/custom.css"), // we could also use scss here
         },
         gtag: {
-          trackingID: "GTM-MJB7HPB", //, GTM-MJB7HPB is Prod - GTM-W895FNP is Pre-Prod
+          trackingID: "G-46758J5H8P", //"G-Z62TFF68Z3", // , GTM-MJB7HPB is Prod - GTM-W895FNP is Pre-Prod
           anonymizeIP: false,
         },
       }),
