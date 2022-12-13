@@ -1,73 +1,72 @@
 import React from "react";
-import clsx from "clsx";
-import ChaosCard, { CardItem, docType } from "./ChaosCard";
+import ChaosCard, { CardItem } from "./ChaosCard";
 import styles from "./ChaosEngineering.module.scss";
-import moduleStyles from "./ChaosCard.module.scss";
 
 /* Define the cards here */
-const FeaturedList: CardItem[] = [
+const FaultCategories: CardItem[] = [
   {
-    title: "Chaos Faults for Kubernetes",
-    module: "ce",
-    icon: "/img/icon_ce.svg",
-    description: (
-      <>
-        Kubernetes faults disrupt the resources running on a Kubernetes cluster.
-        They can be categorized into Pod-level faults and Node-level faults.
-      </>
-    ),
-    newDoc: true,
-    type: [docType.Documentation],
-    time: "31",
-    link: "/docs/chaos-engineering/chaos-faults/kubernetes/",
+    title: "Kubernetes",
+    icon: "/img/chaosfaults/k8s.svg",
+    description: <>Short description about this</>,
+    faults: 31,
+    link: "#",
   },
   {
-    title: "TypeScript and React Feature Flags",
-    module: "ff",
-    icon: "/img/icon_ff.svg",
-    description:
-      "Walks you through adding JavaScript Feature Flags to a TypeScript and React Application.",
-    newDoc: true,
-    type: [docType.Documentation],
-    time: "10min",
-    link: "/tutorials/manage-feature-flags/typescript-react-first-feature-flag",
+    title: "Linux",
+    icon: "/img/chaosfaults/linux.svg",
+    description: <>Short description about this</>,
+    faults: 31,
+    link: "#",
   },
   {
-    title: "Scan a NodeJS Application",
-    module: "sto",
-    icon: "/img/icon_sto.svg",
-    description: (
-      <>Scanning a NodeJS Application and prioritizing scan results.</>
-    ),
-    newDoc: false,
-    type: [docType.Documentation],
-    time: "10min",
-    link: "/tutorials/orchestrate-security-tests/nodejs-firstscan",
+    title: "VMware",
+    icon: "/img/chaosfaults/vmware.svg",
+    description: <>Achieve cost transparency and cut costs</>,
+    faults: 14,
+    link: "#",
   },
   {
-    title: "Onboard with Terraform",
-    module: "platform",
-    icon: "/img/logo.svg",
-    description: (
-      <>
-        Automate lifecycle management of orgs, projects, services, environments,
-        connectors and pipelines using the Harness Terraform Provider.
-      </>
-    ),
-    newDoc: true,
-    type: [docType.Documentation],
-    time: "5 min",
-    link: "/tutorials/platform/onboard-terraform-provider",
+    title: "AWS",
+    icon: "/img/chaosfaults/aws.svg",
+    description: <>Create SLOs. track error budgets, govern pipelines</>,
+    faults: 35,
+    link: "#",
+  },
+  {
+    title: "GCP",
+    icon: "/img/chaosfaults/gcp.svg",
+    description: <>Scan your code, containers and apps</>,
+    faults: 4,
+    link: "#",
+  },
+  {
+    title: "Azure",
+    icon: "/img/chaosfaults/azure.svg",
+    description: <>Ensure app and infrastructure resilience</>,
+    faults: 7,
+    link: "#",
+  },
+  {
+    title: "Kube-Resilience",
+    icon: "/img/chaosfaults/kube_resilience.svg",
+    description: <>Ensure app and infrastructure resilience</>,
+    faults: 1,
+    link: "#",
+  },
+  {
+    title: "Boutique Shop",
+    icon: "/img/chaosfaults/boutique.svg",
+    description: <>Ensure app and infrastructure resilience</>,
+    link: "#",
   },
 ];
 
 export default function ChaosFaults() {
   return (
-    <div className={clsx("container", moduleStyles.allFaults)}>
-      <div className={styles.subSection}>
-        {/* <h3>Featured Faults</h3> */}
-        <ChaosCard FeatureList={FeaturedList} featuredCard={true} />
-      </div>
+    <div className={styles.spaceBetween}>
+      {FaultCategories.map((props, idx) => (
+        <ChaosCard key={idx} {...props} />
+      ))}
     </div>
   );
 }
