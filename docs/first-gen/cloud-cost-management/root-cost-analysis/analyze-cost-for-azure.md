@@ -16,17 +16,14 @@ Harness Cloud Cost Management (CCM) allows you to view your Azure costs at a gla
 * Resources that cost the most in the selected time range
 * Azure spending by region, for example, US East or US West
 
-### Before You Begin
 
-* [Set Up Cost Visibility for Azure](/article/7idbmchsim-set-up-cost-visibility-for-azure)
-* [Create Cost Perspectives](/article/0yt4i7m7nz-perspectives)
-* [Cost Explorer Walkthrough](/article/eeekdk75q2-cost-explorer-walkthrough)
-
-### Step: Analyze Azure Cost
+## Step: Analyze Azure Cost
 
 The Cost Explorer provides deep insights into your Azure costs. The cost includes all the applicable discounts.
 
-1. In **Cloud Cost Management**, click **Explorer**,and then click **Azure** in the top navigation. The Azure services are displayed.![](./static/analyze-cost-for-azure-00.png)
+1. In **Cloud Cost Management**, click **Explorer**,and then click **Azure** in the top navigation. The Azure services are displayed.
+   
+     ![](./static/analyze-cost-for-azure-00.png)
 2. You can use the following options to **Group By**:
 * **Azure**: Under Azure, you can Group by:
 	+ **Resource group name**: Resource group is a container that holds related resources that you want to manage as a group. Grouping by resource group name shows the cost of various resource groups present in your account.
@@ -48,15 +45,19 @@ The Cost Explorer provides deep insights into your Azure costs. The cost include
 * **Product**: Each of your active products with their cloud costs.
 * **Label**: Each label that you assign to your Azure resources. You can select a label name to get further granular details of your label.
 
-#### Option: Add a Filter Using Default Fields
+### Option: Add a Filter Using Default Fields
 
 Perform the following steps to add filters using default fields.
 
 1. In **Cloud Cost Management**, click **Explorer**,and then click **Azure** in the top navigation.
-2. Click **add filter**.![](./static/analyze-cost-for-azure-01.png)
+2. Click **add filter**.
+   
+     ![](./static/analyze-cost-for-azure-01.png)
 3. Select Azure, Region, Product, or Label from the **Default Fields**.
 4. Select the operator. The supported operators are:
 * **IN**: The exact match operation used to filter for the value specified.
 * **NOT IN**: The exact match operation used to filter for the value that is not specified.
-1. Select value for your filter. You can select multiple values. You can also filter and customize your result using the search option.![](./static/analyze-cost-for-azure-02.png)
+5. Select value for your filter. You can select multiple values. You can also filter and customize your result using the search option.
+   
+     ![](./static/analyze-cost-for-azure-02.png)
 

@@ -13,28 +13,15 @@ Harness Cloud Cost Management (CCM) is an intelligent cloud cost management solu
 * Complete cost transparency across engineering and finance with robust business intelligence (BI)
 * Ability to reduce wasted cloud costs by up to 75% with Intelligent Cloud AutoStopping
 
-![](./static/b-cloud-cost-management-overview-10.png)In this topic:
+![](./static/b-cloud-cost-management-overview-10.png)
 
-* [What is Cloud Cost Management?](https://ngdocs.harness.io/article/n8e7rddf8w-cloud-cost-management-overview#what_is_cloud_cost_management)
-	+ [Cost Transparency](https://ngdocs.harness.io/article/n8e7rddf8w-cloud-cost-management-overview#cost_transparency)
-	+ [Cost Optimization](https://ngdocs.harness.io/article/n8e7rddf8w-cloud-cost-management-overview#cost_optimization)
-	+ [Cost Governance](https://ngdocs.harness.io/article/n8e7rddf8w-cloud-cost-management-overview#cost_governance)
-* [Why Harness' Cloud Cost Management?](https://ngdocs.harness.io/article/n8e7rddf8w-cloud-cost-management-overview#why_harness_cloud_cost_management)
-* [CCM Coverage](https://ngdocs.harness.io/article/n8e7rddf8w-cloud-cost-management-overview#ccm_coverage)
-* [Supported Kubernetes Management Platform](https://ngdocs.harness.io/article/n8e7rddf8w-cloud-cost-management-overview#supported_kubernetes_management_platform)
-* [Feature Support Matrix](https://ngdocs.harness.io/article/n8e7rddf8w-cloud-cost-management-overview#feature_support_matrix)
-	+ [AWS Service](https://ngdocs.harness.io/article/n8e7rddf8w-cloud-cost-management-overview#aws_service)
-	+ [GCP Product](https://ngdocs.harness.io/article/n8e7rddf8w-cloud-cost-management-overview#gcp_product)
-	+ [Azure Product](https://ngdocs.harness.io/article/n8e7rddf8w-cloud-cost-management-overview#azure_product)
-* [CCM Data Retention Policy](https://ngdocs.harness.io/article/n8e7rddf8w-cloud-cost-management-overview#ccm_data_retention_policy)
-* [Blog Post](https://ngdocs.harness.io/article/n8e7rddf8w-cloud-cost-management-overview#blog_post)
-* [Next Steps](https://ngdocs.harness.io/article/n8e7rddf8w-cloud-cost-management-overview#next_steps)
-
-### What is Cloud Cost Management?
+## What is Cloud Cost Management?
 
 Harness Cloud Cost Management (CCM) is a simplified cloud cost management tool for FinOps, Infrastructure, and Engineering teams.
 
-![](./static/b-cloud-cost-management-overview-11.png)#### Cost Transparency
+![](./static/b-cloud-cost-management-overview-11.png)
+
+### Cost Transparency
 
 From the CFO to the engineer, CCM provides contextually relevant visibility into cloud costs so that they can be understood at any level of the organization, from high-level business intelligence to the individual resource level. 
 
@@ -42,17 +29,17 @@ Costs across AWS, GCP, Azure, and Kubernetes (K8s) are all easily accessible, an
 
 Actionable insights into your workloads & clusters’ utilized, idle and unallocated resources. Correlate costs due to deployments, changes in replica count, CPU or memory configurations, cost events and specific lines of code, etc.
 
-#### Cost Optimization
+### Cost Optimization
 
 Implementing cost savings shouldn’t be tedious for engineers. For manual cost savings recommendations across K8s workloads and nodes, Harness provides built-in validation and cost vs. performance customization so engineers can skip straight to implementation. And with Intelligent Cloud AutoStopping, engineers can **automate** idle resource management across AWS, GCP, Azure, and K8s without taking on any risk. 
 
 In scenarios where cloud costs unexpectedly spike, CCM has FinOps and engineering teams covered with anomaly detection, which surfaces issues and their origins as soon as they happen, so customers can avoid pricey cost snowballs they won’t see until the end of the month.
 
-#### Cost Governance
+### Cost Governance
 
 Creating cost predictability requires process, policy, and collaboration. Tagging resources to create visibility is a big pain point for customers that CCM obviates. With budgeting and forecasting capabilities, Harness CCM keeps teams accountable for their spend and helps them proactively avoid budget overruns. 
 
-### Why Harness' Cloud Cost Management?
+## Why Harness' Cloud Cost Management?
 
 Harness Cloud Cost Management provides the following benefits:
 
@@ -68,7 +55,7 @@ Some of the unique challenges that CCM addresses are:
 * **Container costs** – Visibility into container costs across all cloud providers and Kubernetes, showing utilized, idle, and unallocated costs. Recommendations at the Node and Workload level to optimize container costs.
 * **Aligning Finance to tech teams** – Using Cloud Cost Business Intelligence and Perspectives to create cost transparency across the organization. Doing Budgeting & Forecasting to get teams on the same page about cost expectations vs. reality. Enforcing cost management policies at the infrastructure level to avoid issues altogether.
 
-### CCM Coverage
+## CCM Coverage
 
 The following section lists where you can use CCM:
 
@@ -86,10 +73,8 @@ Harness Connected On-Prem and Harness Disconnected On-Prem are not supported.###
 The following section lists the support for Kubernetes management platform for CCM:
 
 
-
-|  |  |  |
-| --- | --- | --- |
 | **Technology** | **Supported Platform** | **Pricing** |
+| --- | --- | --- |
 | OpenShift 3.11 | GCP | GCP |
 | OpenShift 4.3 | AWSOn-Prem | AWSCustom-rate\* |
 | Rancher | AWS | Custom-rate\*\* |
@@ -102,17 +87,16 @@ The following section lists the support for Kubernetes management platform for C
 
 \*\*\*Cost is computed using a custom rate. This can be modified by Harness on request.
 
-### Feature Support Matrix
+## Feature Support Matrix
 
 This section lists the feature support matrix for the supported cloud platforms:
 
-#### AWS Service
+### AWS Service
 
 
 
-|  |  |  |  |
-| --- | --- | --- | --- |
 |  | **Inventory Dashboard** | **Recommendations** | **AutoStopping** |
+| --- | --- | --- | --- |
 | **EC2** | Yes | Coming soon | Yes (With Spot Orchestration) |
 | **ECS** | Yes | Coming soon | Yes |
 | **EKS** | Yes | Yes | Yes |
@@ -122,27 +106,25 @@ This section lists the feature support matrix for the supported cloud platforms:
 | **Elastic** **IPs** | Yes | No | NA |
 | **ASGs** | No | No | Yes (With Spot Orchestration) |
 
-#### GCP Product
+### GCP Product
 
 
 
-|  |  |  |  |
-| --- | --- | --- | --- |
 |  | **Inventory Dashboard** | **Recommendations** | **AutoStopping** |
+| --- | --- | --- | --- |
 | **GCE VMs** | Yes | Coming soon | Coming soon |
 | **GKE** | Yes | Yes | Yes |
 
-#### Azure Product
+### Azure Product
 
 
 
-|  |  |  |  |
-| --- | --- | --- | --- |
 |  | **Inventory Dashboard** | **Recommendations** | **AutoStopping** |
+| --- | --- | --- | --- |
 | **Virtual Machine** | Coming soon | Coming soon | Yes (With Spot Orchestration) |
 | **AKS** | Yes | Yes | Yes |
 
-### CCM Data Retention Policy
+## CCM Data Retention Policy
 
 CCM is available in three different editions to meet different users' needs:
 
@@ -154,23 +136,15 @@ CCM has a data retention policy per edition. After this period, the data is clea
 
 
 
-|  |  |  |
-| --- | --- | --- |
 | **Free** | **Team** | **Enterprise** |
+| --- | --- | --- |
 | 1 month | 5 Years | 5 Years |
 
 The hourly granularity of cluster data is retained for 14 days, post that CCM retains daily granularity of the data.### Blog Post
 
 The following blog post walks you through Kubernetes Cost Analysis:
 
-[Kubernetes Cost Analysis](https://harness.io/blog/kubernetes-cost-analysis/)
+[**Kubernetes Cost Analysis**](https://harness.io/blog/kubernetes-cost-analysis/)
 
-### Next Steps
 
-* [Set Up Cloud Cost Management](/category/7vy86n7cws-set-up-cloud-cost-management)
-* [Optimize Cloud Costs with AutoStopping Rules](/category/e04ek5vxtx-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules)
-* [CCM Perspectives](/category/e7k0qds7tw-ccm-perspectives)
-* [CCM Recommendations](/category/viib5j7fek-ccm-recommendations)
-* [CCM Budgets](/category/lpq8glhiyc-ccm-budgets)
-* [CCM Dashboards](/category/wywpilryhu-ccm-dashboards)
 

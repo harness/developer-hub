@@ -14,34 +14,21 @@ Currently, these APIs can provide data for up to the last seven days. If you do 
 
 This topic lists examples of export data API usage.
 
-In this topic:
+## Before You Begin
+* [​Introduction to Harness GraphQL API](https://docs.harness.io/article/tm0w6rruqv-harness-api#introduction-to-harness-graphql-api)
+* [Cost Explorer Walkthrough](/docs/first-gen/cloud-cost-management/concepts-ccm/a-cost-explorer-walkthrough.md)
+* [Analyze Cost for Kubernetes](/docs/first-gen/cloud-cost-management/root-cost-analysis/analyze-cost-trends-across-clusters.md)
 
-* [Before You Begin](https://docs.harness.io/article/5zxz6rxtne-ce-export-data-apis#before_you_begin)
-* [Example 1: Get Total, Idle, and Unallocated Cost Across Your Clusters](https://docs.harness.io/article/5zxz6rxtne-ce-cost-explorer-apis#undefined)
-* [Example 2: Get Total Cost Across Your Clusters](https://docs.harness.io/article/5zxz6rxtne-ce-cost-explorer-apis#example_2_get_total_cost_across_your_clusters)
-* [Example 3: Get Total and Idle Cost in Your Cluster Workloads](https://docs.harness.io/article/5zxz6rxtne-ce-cost-explorer-apis#example_3_get_total_and_idle_cost_in_your_cluster_workloads)
-* [Example 4: Get Total Cost in Your Cluster Workloads](https://docs.harness.io/article/5zxz6rxtne-ce-cost-explorer-apis#example_4_get_total_cost_in_your_cluster_workloads)
-* [Example 5: Get the Cost of ECS Service in Your Cluster](https://docs.harness.io/article/5zxz6rxtne-ce-cost-explorer-apis#example_5_get_the_cost_of_ecs_service_in_your_cluster)
-* [Example 6: Get Total and Idle Cost in Your Harness Applications](https://docs.harness.io/article/5zxz6rxtne-ce-cost-explorer-apis#example_6_get_total_and_idle_cost_in_your_harness_applications)
-* [Example 7: Get Raw Data](https://docs.harness.io/article/5zxz6rxtne-ce-cost-explorer-apis#example_7_get_raw_data)
-* [Example 8: Add Label Information in the Workload Table View](https://docs.harness.io/article/5zxz6rxtne-ce-cost-explorer-apis#example_8_add_label_information_in_the_workload_table_view)
-* [Example 9: Get Cost Details of Nodes in Your Cluster](https://docs.harness.io/article/5zxz6rxtne-ce-cost-explorer-apis#example_9_get_cost_details_of_nodes_in_your_cluster)
-* [Example 10: Fetch Cost Details of Pods in Your Cluster](https://docs.harness.io/article/5zxz6rxtne-ce-cost-explorer-apis#example_10_fetch_cost_details_of_pods_in_your_cluster)
 
-### Before You Begin
-
-* [​Introduction to Harness GraphQL API](/article/tm0w6rruqv-harness-api)
-* [Harness API Explorer](/article/2rmd5i0e0h-harness-api-explorer)
-* [Cost Explorer Walkthrough](/article/eeekdk75q2-cost-explorer-walkthrough)
-* [Analyze Cost for Kubernetes](/article/4rq26sszja-analyze-cost-trends-across-clusters)
-
-### Example 1: Get Total, Idle, and Unallocated Cost Across Your Clusters
+## Example 1: Get Total, Idle, and Unallocated Cost Across Your Clusters
 
 Use this sample query to get the `total`, `idle`, and `unallocated` cost across your clusters.
 
 You can also specify a `limit` and `offset` to the query. Limit specifies the number of entries that will be returned and offset specifies the index from start.
 
-The time values passed for these queries follow Unix Time. You can use [Epoch and Unix Timestamp Conversion Tools](https://www.epochconverter.com/) to convert.##### Request
+The time values passed for these queries follow Unix Time. You can use [Epoch and Unix Timestamp Conversion Tools](https://www.epochconverter.com/) to convert.
+
+### Request
 
 
 ```
@@ -57,7 +44,7 @@ The time values passed for these queries follow Unix Time. You can use [Epoch a
   }  
 }
 ```
-##### Response
+### Response
 
 
 ```
@@ -84,11 +71,11 @@ The time values passed for these queries follow Unix Time. You can use [Epoch a
   }  
 }
 ```
-### Example 2: Get Total Cost Across Your Clusters
+## Example 2: Get Total Cost Across Your Clusters
 
 Use this sample query to get the details of the `total` cost across your clusters.
 
-##### Request
+### Request
 
 
 ```
@@ -102,7 +89,7 @@ Use this sample query to get the details of the `total` cost across your cluste
   }  
 }
 ```
-##### Response
+### Response
 
 
 ```
@@ -215,11 +202,11 @@ Use this sample query to get the details of the `total` cost across your cluste
   }  
 }
 ```
-### Example 3: Get Total and Idle Cost in Your Cluster Workloads
+## Example 3: Get Total and Idle Cost in Your Cluster Workloads
 
 Use this sample query to get the `total` and `idle` cost in your cluster workloads. This example uses a Kubernetes cluster.
 
-##### Request
+### Request
 
 
 ```
@@ -237,7 +224,7 @@ Use this sample query to get the `total` and `idle` cost in your cluster worklo
 }  
 
 ```
-##### Response
+### Response
 
 
 ```
@@ -282,11 +269,11 @@ Use this sample query to get the `total` and `idle` cost in your cluster worklo
   }  
 }
 ```
-### Example 4: Get Total Cost in Your Cluster Workloads
+## Example 4: Get Total Cost in Your Cluster Workloads
 
 Use this sample query to get the `total` cost in your cluster workloads. This example uses a Kubernetes cluster.
 
-##### Request
+### Request
 
 
 ```
@@ -302,7 +289,7 @@ Use this sample query to get the `total` cost in your cluster workloads. This e
   }  
 }
 ```
-##### Response
+### Response
 
 
 ```
@@ -350,11 +337,11 @@ Use this sample query to get the `total` cost in your cluster workloads. This e
   }  
 }
 ```
-### Example 5: Get the Cost of ECS Service in Your Cluster
+## Example 5: Get the Cost of ECS Service in Your Cluster
 
 Use this sample query to get the cost of `ECS Service` in your cluster.
 
-##### Request
+### Request
 
 
 ```
@@ -371,7 +358,7 @@ Use this sample query to get the cost of `ECS Service` in your cluster.
   }  
 }
 ```
-##### Response
+### Response
 
 
 ```
@@ -408,11 +395,11 @@ Use this sample query to get the cost of `ECS Service` in your cluster.
   }  
 }
 ```
-### Example 6: Get Total and Idle Cost in Your Harness Applications
+## Example 6: Get Total and Idle Cost in Your Harness Applications
 
-Use this sample query to get the `total`, `idle`, and `unallocated` cost in your Harness Application. For more information on how Harness organizes and models your projects using Applications, review [Harness Applications](/article/v7eaaq98vo-perform-root-cause-analysis#option_5_root_cost_analysis_for_harness_applications).
+Use this sample query to get the `total`, `idle`, and `unallocated` cost in your Harness Application. For more information on how Harness organizes and models your projects using Applications, review [Harness Applications](/docs/first-gen/cloud-cost-management/root-cost-analysis/perform-root-cause-analysis.md).
 
-##### Request
+### Request
 
 
 ```
@@ -428,7 +415,7 @@ Use this sample query to get the `total`, `idle`, and `unallocated` cost in you
   }  
 }
 ```
-##### Response
+#### Response
 
 
 ```
@@ -455,11 +442,11 @@ Use this sample query to get the `total`, `idle`, and `unallocated` cost in you
   }  
 }
 ```
-### Example 7: Get Raw Data
+## Example 7: Get Raw Data
 
 Use this sample query to get raw data, such as cluster name, cluster type, average memory, and CPU utilization, etc.
 
-##### Request
+### Request
 
 
 ```
@@ -495,7 +482,7 @@ Use this sample query to get raw data, such as cluster name, cluster type, avera
 }  
 
 ```
-##### Response
+### Response
 
 
 ```
@@ -560,11 +547,11 @@ Use this sample query to get raw data, such as cluster name, cluster type, avera
   }  
 }
 ```
-### Example 8: Add Label Information in the Workload Table View
+## Example 8: Add Label Information in the Workload Table View
 
 Use this sample query to add label data in the workload table view. This adds **Name** and **Value** columns for the selected labels.
 
-##### Request
+### Request
 
 
 ```
@@ -591,7 +578,7 @@ Use this sample query to add label data in the workload table view. This adds **
   }  
 }
 ```
-##### Response
+### Response
 
 
 ```
@@ -676,11 +663,11 @@ Use this sample query to add label data in the workload table view. This adds **
   }  
 }
 ```
-### Example 9: Get Cost Details of Nodes in Your Cluster
+## Example 9: Get Cost Details of Nodes in Your Cluster
 
 Use this sample query to get the cost details of nodes in your cluster.
 
-##### Request
+### Request
 
 
 ```
@@ -736,7 +723,7 @@ Use this sample query to get the cost details of nodes in your cluster.
   }  
 }
 ```
-##### Response
+### Response
 
 
 ```
@@ -799,11 +786,11 @@ Use this sample query to get the cost details of nodes in your cluster.
   }  
 }
 ```
-### Example 10: Fetch Cost Details of Pods in Your Cluster
+## Example 10: Fetch Cost Details of Pods in Your Cluster
 
 Use this sample query to fetch the cost details of pods in your cluster.
 
-##### Request
+### Request
 
 
 ```
@@ -862,7 +849,7 @@ Use this sample query to fetch the cost details of pods in your cluster.
   }  
 }
 ```
-##### Response
+### Response
 
 
 ```

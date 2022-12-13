@@ -12,13 +12,15 @@ This topic describes how to use workload recommendations APIs.
 
 Harness Continuous Efficiency (CE) provides recommendations for your Kubernetes clusters. These recommendations show you resource optimization opportunities to potentially reduce your monthly spend.
 
-The `!` following the type means that this field is *required*.### Before You Begin
+The `!` following the type means that this field is *required*.
+
+## Before You Begin
 
 * [​Introduction to Harness GraphQL API](https://docs.harness.io/article/tm0w6rruqv-harness-api)
 * [Harness API Explorer](https://docs.harness.io/article/2rmd5i0e0h-harness-api-explorer)
-* [Optimize Kubernetes Costs with Resource Recommendations](/article/ikxjmkqi03-recommendations)
+* [Optimize Kubernetes Costs with Resource Recommendations](/docs/first-gen/cloud-cost-management/ccm-recommendations/recommendations.md)
 
-### Fetch Resource Recommendations
+## Fetch Resource Recommendations
 
 This sample query returns recommendations for your Kubernetes clusters. 
 
@@ -32,7 +34,7 @@ The recommendation APIs allow you to customize your recommendations by selecting
 
 This sample query computes the recommendations at the 99th percentile of CPU and memory samples.
 
-#### Request
+### Request
 
 
 ```
@@ -83,7 +85,7 @@ query ($filters: [WorkloadFilter], $limit: Int!) {
 }  
 
 ```
-#### Variables
+### Variables
 
 Here are sample query variables for the above operation. The `limit` variable requires a value.
 
@@ -113,7 +115,7 @@ Here are sample query variables for the above operation. The `limit` variable 
     "limit": 10  
 }
 ```
-#### Response
+### Response
 
 
 ```

@@ -24,30 +24,11 @@ The following are the key features of Cost Explorer:
 * View hourly, daily, weekly, or monthly granular details.
 * View an Efficiency Score: a measurement of how cost-optimized your resource usage is across your clusters.
 
-In this topic:
-
-* [Before You Begin](https://docs.harness.io/article/eeekdk75q2-explorer-walkthrough#before_you_begin)
-* [Visual Summary](https://docs.harness.io/article/eeekdk75q2-explorer-walkthrough#visual_summary)
-* [Reading the Cost Explorer Data](https://docs.harness.io/article/eeekdk75q2-cost-explorer-walkthrough#read_the_cost_explorer_data)
-* [Cost Explorer Overview](https://docs.harness.io/article/eeekdk75q2-explorer-walkthrough#cost_explorer_overview)
-* [Cost Explorer by Cluster](https://docs.harness.io/article/eeekdk75q2-cost-explorer-walkthrough#cost_explorer_by_cluster)
-* [Cost Explorer AWS](https://docs.harness.io/article/eeekdk75q2-explorer-walkthrough#cost_explorer_aws)
-* [Cost Explorer GCP](https://docs.harness.io/article/eeekdk75q2-cost-explorer-walkthrough#cost_explorer_gcp)
-* [Cost Explorer Azure](https://docs.harness.io/article/eeekdk75q2-cost-explorer-walkthrough#cost_explorer_azure)
-* [Key Cost Concepts](https://docs.harness.io/article/eeekdk75q2-explorer-walkthrough#key_cost_concepts)
-* [Context and Visibility](https://docs.harness.io/article/eeekdk75q2-explorer-walkthrough#context_and_visibility)
-* [Next Steps](https://docs.harness.io/article/eeekdk75q2-explorer-walkthrough#next_steps)
-
-### Before You Begin
-
-* [Cloud Cost Management Overview](/article/rr85306lq8-continuous-efficiency-overview)
-* [Set Up Cost Visibility for Kubernetes](/article/hrdw3foy2r-enable-ce-by-adding-a-delegate)
-* [Set Up Cost Visibility for Kubernetes Using an Existing Delegate](/article/kuiuc6x257-enable-continuous-efficiency-for-kubernetes)
-* [Set Up Cost Visibility for AWS](/article/5ql31pdjcm-enable-continuous-efficiency-for-aws)
-* [Set Up Cost Visibility for GCP](/article/x53e2by67m-enable-cloud-efficiency-for-google-cloud-platform-gcp)
-* [Set Up Cost Visibility for Azure](/article/7idbmchsim-set-up-cost-visibility-for-azure)
 
 ### Visual Summary
+<!-- Video:
+https://harness-1.wistia.com/medias/rpv5vwzpxz-->
+<docvideo src="https://www.youtube.com/watch?v=sXftHXhSlo0" />
 
 ### Reading the Cost Explorer Data
 
@@ -57,7 +38,9 @@ The **Cost Explorer** displays data as a chart and table. You can view, understa
 * Change the sort order of the data in the table by clicking on the column header. The direction of the arrow indicates if you are sorting largest to smallest (down arrow) or smallest to largest (up arrow). To reverse the sort order on the selected column, click the column header again.
 * The **Group by** setting determines what data will be presented in the chart and the table. You have multiple options available to customize your Cost Explorer view including filters and other settings. Your view changes depending on the filter selections you choose.
 * The summary bar above the chart provides a summary of the total cost, cost breakdown, forecasted cost, and cost trend.
-* Download the CSV format of the report for your reference.![](./static/a-cost-explorer-walkthrough-00.png)
+* Download the CSV format of the report for your reference.
+  
+    ![](./static/a-cost-explorer-walkthrough-00.png)
 
 ### Cost Explorer Overview
 
@@ -72,34 +55,46 @@ Get a summary of your total spend by Harness Application and cluster from the **
 * Top cluster by spend
 * Top cloud accounts by spend
 
-![](./static/a-cost-explorer-walkthrough-01.png)### Cost Explorer by Cluster
+![](./static/a-cost-explorer-walkthrough-01.png)
+
+### Cost Explorer by Cluster
 
 The **Cost Explorer Cluster** tab displays the following information based on the selected date range:
 
 * **All Clusters**: Displays the total cost, cost breakdown, and cost trend.
 * **Group by** and **Filter by**: The **Group by** and **Filter by** settings determine what data will be presented in the chart and the table. Based on your selection the data is populated.
-* **Idle cost** and **Total cost**: Displays the idle or total cost for your selected cluster.![](./static/a-cost-explorer-walkthrough-02.png)
+* **Idle cost** and **Total cost**: Displays the idle or total cost for your selected cluster.
+  
+    ![](./static/a-cost-explorer-walkthrough-02.png)
 * **Search**: You can filter and customize your result using the search option.
 	+ Enter the keywords in the search field.
-	+ Use the checkbox to select multiple options.![](./static/a-cost-explorer-walkthrough-03.png)
+	+ Use the checkbox to select multiple options.
+ 
+   ![](./static/a-cost-explorer-walkthrough-03.png)
 * **Exclude**: Allows to exclude the specific options.
 * **Supported Group by** and **Filter Combination**: You can customize your cloud cost view by using different group by and filter combinations. The following options are supported by the group and filter settings:  
 
 
-|  |  |
-| --- | --- |
 | **Group By** | **Filter** |
+| --- | --- |
 | Application, Service, Environment, Tag, Cloud Provider | Application, Service, Environment, and Cloud Provider |
 | Workload and Namespace | Workload, Namespace, Node, Cluster, and Label |
 | Node | Node and Cluster |
 | ECS Service, Task, and LaunchType | ECS Service, Task, Launch Type, and Cluster |
 
-If you select an unsupported combination, **invalid combination of group by and filters** error is thrown.### Cost Explorer AWS
+
+:::note
+If you select an unsupported combination, **invalid combination of group by and filters** error is thrown.
+:::
+
+### Cost Explorer AWS
 
 The **Cost Explorer AWS** tab displays the following information based on the selected date range:
 
 * **AWS total cost**: Displays the total AWS cost and cost trend.
-* **Group by Service**, **Account**, **Instance Type**, **Usage Type**, and **Region**: The **Group by** setting determines what data will be presented in the chart and the table. Based on your selection the data is populated.![](./static/a-cost-explorer-walkthrough-04.png)
+* **Group by Service**, **Account**, **Instance Type**, **Usage Type**, and **Region**: The **Group by** setting determines what data will be presented in the chart and the table. Based on your selection the data is populated.
+  
+    ![](./static/a-cost-explorer-walkthrough-04.png)
 
 ### Cost Explorer GCP
 
@@ -119,15 +114,19 @@ The **Cost Explorer Azure** tab displays the following information based on the 
 
 This section defines different CE cost concepts.
 
+
+:::note
 For ECS clusters, you can replace nodes with container instances and pods with tasks.#### Node Cost
+:::
 
 Node cost is calculated based on the public pricing API of the cloud platform.
 
-![](./static/a-cost-explorer-walkthrough-05.png)Here is an example of how node cost is calculated based on the following node specification:
+![](./static/a-cost-explorer-walkthrough-05.png)
+
+Here is an example of how node cost is calculated based on the following node specification:
 
 
-
-|  |  |
+| | |
 | --- | --- |
 | **Operating system** | Linux |
 | **Region** | us-central1 |
@@ -165,7 +164,9 @@ System cost is calculated by subtracting the total cost of the node from the all
 
 Allocatable on a Kubernetes node is defined as the amount of compute resources that are available for pods. For more information, see [Reserve Compute Resources for System Daemons](https://kubernetes.io/docs/tasks/administer-cluster/reserve-compute-resources/) in Kubernetes.
 
-![](./static/a-cost-explorer-walkthrough-06.png)Here is the formula:
+![](./static/a-cost-explorer-walkthrough-06.png)
+
+Here is the formula:
 
 
 ```
@@ -232,13 +233,14 @@ Utilized cost = Total cost - node idle cost - unallocated cost
 
 Forecasted costs are predictions based on your historical cost data. The forecasted date is applicable only where historical data exists. If there is insufficient data to compute the forecast, the value is not displayed. The forecasted cost is predicted for the same future time period as your selected date range.
 
-![](./static/a-cost-explorer-walkthrough-07.png)The following table lists some of the examples for forecasted cost calculation. In this example, the current date is considered as **March 30, 2020.**
+![](./static/a-cost-explorer-walkthrough-07.png)
+
+The following table lists some of the examples for forecasted cost calculation. In this example, the current date is considered as **March 30, 2020.**
 
 
 
-|  |  |
-| --- | --- |
 | **Selected** **Date Range** | **Forecasted Date Range** |
+| --- | --- |
 | Predefined date range, for example, Last 7 days, Last 30 days, Last month, and so on | Calculated for the next 7 days, next 30 days, or next month based on the selected date range |
 | Custom date range, for example, March 25 - 30 (6 days) | March 31 - April 5 (next 6 days) |
 | Future date range, for example, March 25 - April 3 (invalid date range) | Not applicable |
@@ -250,13 +252,17 @@ The cost trend is calculated based on the previous spending. It can be calculate
 
 #### Others Cost
 
-The cluster dashboard can list data for up to 100 resources. If there are more than 100 resources in your environment, the details of these resources are clubbed and displayed as one single entity as **Others**. These clusters are generally very small that they would not be visually discernible. For more information, see [Group By and Filter Options](/article/4rq26sszja-analyze-cost-trends-across-clusters#group_by_and_filter_options).
+The cluster dashboard can list data for up to 100 resources. If there are more than 100 resources in your environment, the details of these resources are clubbed and displayed as one single entity as **Others**. These clusters are generally very small that they would not be visually discernible. For more information, see [Group By and Filter Options](/docs/first-gen/cloud-cost-management/root-cost-analysis/analyze-cost-trends-across-clusters.md#group-by-and-filter-options).
 
-![](./static/a-cost-explorer-walkthrough-08.png)#### Efficiency Score
+![](./static/a-cost-explorer-walkthrough-08.png)
+
+#### Efficiency Score
 
 A measure of how cost-optimized your resource usage is across your clusters. It is derived from the total and idle (and or unallocated) spend of your resources. Efficiency score and trend is displayed on the Overview page as the following:
 
-![](./static/a-cost-explorer-walkthrough-09.png)Efficiency score display uses the following visual cues:
+![](./static/a-cost-explorer-walkthrough-09.png)
+
+Efficiency score display uses the following visual cues:
 
 * **Green (Healthy)**: 61 - 100 range; indicates that the cost of your resources across clusters is well optimized
 * **Orange (Medium)**: 31- 60 range; indicates that the cost of your resources across clusters can be optimized better
@@ -287,33 +293,23 @@ If the utilization is 58% of total cost, then the efficiency score =
 Cost Explorer provides context and visibility into the following:
 
 
-
-|  |  |
-| --- | --- |
-| Cluster |  |
-| Namespace |  |
-| Workload |  |
-| Node |  |
-| Application |  |
-| Harness Service |  |
-| Environment |  |
-| Region |  |
-| Usage Type |  |
-| Account |  |
-| Service |  |
-| Instance Type |  |
-| Products |  |
-| Project |  |
-| SKUs |  |
+- Cluster 
+- Namespace
+- Workload 
+- Node 
+- Application  
+- Harness Service 
+- Environment 
+- Region 
+- Usage Type 
+- Account 
+- Service 
+- Instance Type 
+- Products 
+- Project 
+- SKUs
 
  
 
-### Next Steps
 
-* [Analyze Cost Across Clusters](/article/4rq26sszja-analyze-cost-trends-across-clusters)
-* [Analyze Cost for AWS](/article/244q2uv4or-analyze-cost-trends-for-aws)
-* [Analyze Cost for GCP](/article/oo4vs4exhz-analyze-cost-for-gcp)
-* [Analyze Cost for Azure](/article/wvag8xht5o-analyze-cost-for-azure)
-* [Perform Root Cost Analysis](/article/v7eaaq98vo-perform-root-cause-analysis)
-* [Optimize Kubernetes Cluster Costs With Resource Recommendations](/article/ikxjmkqi03-recommendations)
 

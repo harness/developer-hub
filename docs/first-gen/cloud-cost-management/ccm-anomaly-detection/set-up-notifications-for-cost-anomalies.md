@@ -12,7 +12,7 @@ Cloud cost anomaly detection can be used as a tool to keep cloud costs under con
 
 ### Before You Begin
 
-* [Detect Cloud Cost Anomalies with CCM (formerly CE)](/article/akdd3mxobc-detect-cost-anomalies-with-ce)
+* [Detect Cloud Cost Anomalies with CCM (formerly CE)](/docs/first-gen/cloud-cost-management/ccm-anomaly-detection/detect-cost-anomalies-with-ce.md)
 
 ### Set Up Slack Notifications
 
@@ -22,10 +22,28 @@ You can receive your alert report for the cost anomalies in your Slack channel. 
 2. In **Slack Integration**, enter the Slack Webhook URL of the channel to which you want to send the weekly cost report and click **Update**.
 	1. Follow the steps in Slack documentation for creating a Slack app, selecting your channel, and creating a webhook:  [Sending messages using Incoming Webhooks](https://api.slack.com/messaging/webhooks).  
 	  
-	When you are done, you'll have a webhook that looks something like this:[![](./static/set-up-notifications-for-cost-anomalies-00.png)](./static/set-up-notifications-for-cost-anomalies-00.png)
+	When you are done, you'll have a webhook that looks something like this:
+	
+	  ![](./static/set-up-notifications-for-cost-anomalies-00.png)
 	2. Copy the Webhook URL.
 3. In **Slack Integration**, enter the Slack Webhook URL of the channel to which you want to send the weekly cost report and click **Update**.
-4. In **Send Notification**, select the checkbox **Anomaly alerts**.![](./static/set-up-notifications-for-cost-anomalies-02.png)Now you will receive your cost anomaly alerts in the configured Slack channel.If you have more than three cost anomalies, only the top three anomalies are listed in the Slack notification.![](./static/set-up-notifications-for-cost-anomalies-03.png)
-5. Click **View in Explorer** to view the details. For more information, see [Root Cost Analysis](https://docs.harness.io/category/0u3gmt1ufk-root-cost-analysis).
-6. Click **Notification Settings** to modify the notification settings. Follow the steps in [Set Up Slack Notifications](/article/gyesbuez52-set-up-notifications-for-cost-anomalies#set_up_slack_notifications) to edit the notification settings.
+4. In **Send Notification**, select the checkbox **Anomaly alerts**.
+   
+     ![](./static/set-up-notifications-for-cost-anomalies-02.png)
+	 
+	 Now you will receive your cost anomaly alerts in the configured Slack channel.
+	 
+
+:::note
+If you have more than three cost anomalies, only the top three anomalies are listed in the Slack notification.
+:::
+
+	 
+  ![](./static/set-up-notifications-for-cost-anomalies-03.png)	   
+		
+	     
+
+
+5. Click **View in Explorer** to view the details. For more information, see [Root Cost Analysis](/docs/first-gen/cloud-cost-management/root-cost-analysis/perform-root-cause-analysis.md).
+6. Click **Notification Settings** to modify the notification settings. Follow the steps in **Set Up Slack Notifications** to edit the notification settings.
 

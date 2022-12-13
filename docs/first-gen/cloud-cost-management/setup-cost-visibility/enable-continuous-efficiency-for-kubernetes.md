@@ -10,38 +10,28 @@ helpdocs_is_published: true
 
 Harness Cloud Cost Management (CCM) monitors the cloud costs of your Kubernetes clusters, namespaces, nodes, workloads, and labels. This topic describes how to connect your Kubernetes to CCM using an existing Harness Delegate.
 
-In this topic:
 
-* [Before You Begin](https://docs.harness.io/article/kuiuc6x257-enable-continuous-efficiency-for-kubernete#before_you_begin)
-* [Review: Is Harness Delegate Running in Your Cluster?](https://docs.harness.io/article/kuiuc6x257-enable-continuous-efficiency-for-kubernetes#review_is_harness_delegate_running_in_your_cluster)
-* [Prerequisites](https://docs.harness.io/article/kuiuc6x257-enable-continuous-efficiency-for-kubernete#prerequisites)
-* [Step: Enable Cloud Cost Management](https://docs.harness.io/article/kuiuc6x257-enable-continuous-efficiency-for-kubernetes#step_enable_cloud_cost_management)
-* [Troubleshooting](https://docs.harness.io/article/kuiuc6x257-enable-continuous-efficiency-for-kubernetes#troubleshooting)
-* [Next Steps](https://docs.harness.io/article/kuiuc6x257-enable-continuous-efficiency-for-kubernetes#next_steps)
-
-### Before You Begin
-
-* [Cloud Cost Management Overview](/article/rr85306lq8-continuous-efficiency-overview)
-* [Set Up Cost Visibility for Kubernetes](/article/hrdw3foy2r-enable-ce-by-adding-a-delegate)
-* [Install the Harness Kubernetes Delegate](/article/0hn6vdpeqz-install-kubernetes-delegate)
-* [Add Kubernetes Cluster Cloud Provider](/article/l68rujg6mp-add-kubernetes-cluster-cloud-provider)
-
-### Review: Is Harness Delegate Running in Your Cluster?
+## Is Harness Delegate Running in Your Cluster?
 
 Before connecting your Kubernetes cluster to Harness CCM, review the following:
 
-* **Provide** **CCM Permissions to Harness Delegate**: If the Delegate is already running in the Kubernetes cluster that you want to monitor, the Service account you used to install and run the Harness Kubernetes Delegate is granted a special `ClusterRole` for accessing the resource metrics. For more information, see [Provide CCM Permissions to Harness Delegate](/article/kuiuc6x257-enable-continuous-efficiency-for-kubernetes#step_2_provide_ccm_permissions_to_harness_delegate).
+* **Provide** **CCM Permissions to Harness Delegate**: If the Delegate is already running in the Kubernetes cluster that you want to monitor, the Service account you used to install and run the Harness Kubernetes Delegate is granted a special `ClusterRole` for accessing the resource metrics. For more information, see [Provide CCM Permissions to Harness Delegate](/docs/first-gen/cloud-cost-management/setup-cost-visibility/enable-continuous-efficiency-for-kubernetes.md#step-2-provide-ccm-permissions-to-harness-delegate).
 
-* **Use Single Harness Delegate to Access Multiple Kubernetes Clusters**: You can use a single Harness Delegate to access multiple Kubernetes clusters. To do so, you need to enter specific credentials manually. For more information, see [Enter manually](https://harness.helpdocs.io/article/l68rujg6mp-add-kubernetes-cluster-cloud-provider#option_2_enter_manually).![](./static/enable-continuous-efficiency-for-kubernetes-53.png)
+* **Use Single Harness Delegate to Access Multiple Kubernetes Clusters**: You can use a single Harness Delegate to access multiple Kubernetes clusters. To do so, you need to enter specific credentials manually. For more information, see [Enter manually](https://harness.helpdocs.io/article/l68rujg6mp-add-kubernetes-cluster-cloud-provider#option_2_enter_manually).
+  
+    ![](./static/enable-continuous-efficiency-for-kubernetes-53.png)
 
-### Prerequisites
+## Prerequisites
 
 * Each Kubernetes cluster you want to monitor must have a Harness Delegate and Cloud Provider associated with it. For more information, see [Install the Harness Kubernetes Delegate](https://harness.helpdocs.io/article/0hn6vdpeqz-install-kubernetes-delegate) and [Add Kubernetes Cluster Cloud Provider](https://harness.helpdocs.io/article/l68rujg6mp-add-kubernetes-cluster-cloud-provider).
 * Before enabling CCM for Kubernetes, you must ensure the utilization data for pods and nodes is available. To do so, perform the following steps:
 
-#### Step 1: Install Kubernetes Metrics Server
+### Step 1: Install Kubernetes Metrics Server
 
+
+:::note
 Metrics Server must be running on the Kubernetes cluster where your Harness Kubernetes Delegate is installed.
+:::
 
 Metrics Server is installed by default on GKE and AKS clusters, however, you need to install it on the AWS EKS cluster.1. Metrics Server is a cluster-wide aggregator of resource usage data. It collects resource metrics from kubelets and exposes them in the Kubernetes API server through Metrics API. CCM polls the utilization data every minute on the Delegate. The metrics are aggregated for 20 minutes and then CCM keeps one data point per 20 minutes. For more information, see [Installing the Kubernetes Metrics Server](https://docs.aws.amazon.com/eks/latest/userguide/metrics-server.html) from AWS.  
   
@@ -52,7 +42,7 @@ To install metrics server on your EKS clusters, run the following command:
 kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/download/v0.3.6/components.yaml
 ```
 
-#### Step 2: Provide CCM Permissions to Harness Delegate
+### Step 2: Provide CCM Permissions to Harness Delegate
 
 Bind the cluster-admin ClusterRole to a user account. Next, you will use this user account to create a ClusterRole and bind it to the Service account used by the Delegate.
 
@@ -119,40 +109,63 @@ $ kubectl auth can-i watch podmetrics --as=system:serviceaccount:harness-delegat
 yes
 ```
 
-### Step: Enable Cloud Cost Management
+## Step: Enable Cloud Cost Management
 
 To enable CCM in your cloud environment, you simply need to enable it on the Harness Kubernetes Cloud Provider that connects to your target cluster.
 
+
+:::note
 Once you enable CCM, for the first cluster the data is available within a few minutes for viewing and analysis. However, you will not see the idle cost because of the lack of utilization data. CCM generates the last 30 days of the cost data based on the first events.  
   
-From the second cluster onwards, it takes about 2–3 hours for the data to be available for viewing and analysis.1. In **Cloud Cost Management**, click **Settings**.
+From the second cluster onwards, it takes about 2–3 hours for the data to be available for viewing and analysis.
+:::
+
+
+1. In **Cloud Cost Management**, click **Settings**.
 2. Select the Kubernetes cluster for which you want to enable Cloud Cost Management.
-3. In **Display Name**, enter the name that will appear in CCM Explorer to identify this cluster. Typically, this is the cluster name.![](./static/enable-continuous-efficiency-for-kubernetes-54.png)
+3. In **Display Name**, enter the name that will appear in CCM Explorer to identify this cluster. Typically, this is the cluster name.
+   
+     ![](./static/enable-continuous-efficiency-for-kubernetes-54.png)
 4. In **Cluster Details**, select:
-	1. **Inherit from selected Delegate**: (Recommended) Select this option if the Kubernetes cluster is the same cluster where the Harness delegate was installed.
-		1. **Delegate Name**: Select the Delegate.
-	2. **Enter manually**: In this option, the Cloud Provider uses the credentials that you enter manually. The Delegate uses these credentials to send deployment tasks to the cluster. The Delegate can be outside or within the target cluster.Use this option, if you wish to use a single Delegate to access multiple Kubernetes clusters. To do so, you need to enter specific credentials manually. For more information, see [Enter manually](https://harness.helpdocs.io/article/l68rujg6mp-add-kubernetes-cluster-cloud-provider#option_2_enter_manually).
-		1. **Master Url**: The Kubernetes master node URL. The easiest method to obtain the master URL is using kubectl:  
-		`kubectl cluster-info`
+* **Inherit from selected Delegate**: (Recommended) Select this option if the Kubernetes cluster is the same cluster where the Harness delegate was installed.
+
+  **Delegate Name**: Select the Delegate.
+	   
+* **Enter manually**: In this option, the Cloud Provider uses the credentials that you enter manually. The Delegate uses these credentials to send deployment tasks to the cluster. The Delegate can be outside or within the target cluster.
+
+  **Master Url**: The Kubernetes master node URL. The easiest method to obtain the master URL is using kubectl:  
+`kubectl cluster-info`
+
+	
+:::note
+Use this option, if you wish to use a single Delegate to access multiple Kubernetes clusters. To do so, you need to enter specific credentials manually. For more information, see [Enter manually](https://harness.helpdocs.io/article/l68rujg6mp-add-kubernetes-cluster-cloud-provider#option_2_enter_manually).
+:::
+		 
+		  
 5. Click **Next**.
-6. Select the checkbox **Enable Cloud Cost Management** and click **Submit**.![](./static/enable-continuous-efficiency-for-kubernetes-55.png)
+6. Select the checkbox **Enable Cloud Cost Management** and click **Submit**.
+   
+     ![](./static/enable-continuous-efficiency-for-kubernetes-55.png)
 
 The Kubernetes Cloud Provider is now listed under **Efficiency Enabled**. Once CCM has data, the cluster is listed in **Cost Explorer**. The cluster is identified by the **Display Name** you used in the Kubernetes Cloud Provider.
 
+
+:::note
 When you enable Kubernetes with CCM, Kubernetes utilization events are automatically collected via the Harness Delegate. This information is used to show you historical cost data for your resources. The cost is calculated based on the publicly available catalog price information.  
   
-If a CCM AWS connector is created, then for the EKS clusters the pricing data is used from the CUR report instead of publicly available catalog price information.### Troubleshooting
+If a CCM AWS connector is created, then for the EKS clusters the pricing data is used from the CUR report instead of publicly available catalog price information.
+:::
 
+### Troubleshooting
 1. If the Cloud Provider listed in Setup is listed with the following error message, you need to review the steps earlier in this topic.
 ```
 No Delegate has all the requisites to access the cluster <cluster-name>.
 ```
 ![](./static/enable-continuous-efficiency-for-kubernetes-56.png)
-2. If the Cloud Provider listed in Setup is listed with the following **Invalid request** error message, you need to download the [ce-default-k8s-cluster-role.yaml](https://raw.githubusercontent.com/harness/continuous-efficiency/master/config/ce-default-k8s-cluster-role.yaml) file from Harness again. The `Subjects` section of the ClusterRoleBinding is configured with the default Delegate Service account name (`default`) and namespace (`harness-delegate`). If you have changed these defaults, update the `ce-default-k8s-cluster-role.yaml` file before running it. See [Step 2: Provide CCM Permissions to Harness Delegate](/article/kuiuc6x257-enable-continuous-efficiency-for-kubernetes#step_2_provide_ccm_permissions_to_harness_delegate).![](./static/enable-continuous-efficiency-for-kubernetes-57.png)
+  
+2. If the Cloud Provider listed in Setup is listed with the following **Invalid request** error message, you need to download the [ce-default-k8s-cluster-role.yaml](https://raw.githubusercontent.com/harness/continuous-efficiency/master/config/ce-default-k8s-cluster-role.yaml) file from Harness again. The `Subjects` section of the ClusterRoleBinding is configured with the default Delegate Service account name (`default`) and namespace (`harness-delegate`). If you have changed these defaults, update the `ce-default-k8s-cluster-role.yaml` file before running it. See **Step 2: Provide CCM Permissions to Harness Delegate**.
+   
+     ![](./static/enable-continuous-efficiency-for-kubernetes-57.png)
 
-### Next Steps
 
-* [Cost Explorer Walkthrough](/article/eeekdk75q2-explorer-walkthrough)
-* [Analyze Cost for Kubernetes](/article/4rq26sszja-analyze-cost-trends-across-clusters)
-* [Perform Root Cost Analysis](/article/v7eaaq98vo-perform-root-cause-analysis)
 

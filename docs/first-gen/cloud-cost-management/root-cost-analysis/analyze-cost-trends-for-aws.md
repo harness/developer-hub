@@ -15,22 +15,17 @@ Harness Cloud Cost Management (CCM) allows you to view your AWS costs at a glanc
 * Primary cost contributor, for example, region, account, instance type, or usage type
 * AWS spending by region, for example, US East or US West
 
-In this topic:
 
-* [Before You Begin](https://docs.harness.io/article/244q2uv4or-analyze-cost-trends-for-aws#before_you_begin)
-* [Step: Analyze AWS Cost](https://docs.harness.io/article/244q2uv4or-analyze-cost-trends-for-aws#step_analyze_aws_cost)
-* [Next Steps](https://docs.harness.io/article/244q2uv4or-analyze-cost-trends-for-aws#next_steps)
+## Step: Analyze AWS Cost
 
-### Before You Begin
-
-* [Cloud Cost Management Overview](/article/rr85306lq8-continuous-efficiency-overview)
-* [Enable Continuous Efficiency for Amazon Web Services (AWS)](/article/5ql31pdjcm-enable-continuous-efficiency-for-aws)
-* [Cost Explorer Walkthrough](/article/eeekdk75q2-explorer-walkthrough)
-
-### Step: Analyze AWS Cost
-
-1. In **Cloud Cost Management**, click **Explorer**,and then click **AWS** in the top navigation. The AWS services are displayed.![](./static/analyze-cost-trends-for-aws-26.png)
-2. View the cost of the resources that are important to you. Select a **date range**, **Group by**, and **Filter by** options. Based on your **Group by** and **Filter by** selection, the table, and chart display information. Hover over the chart to see the details.![](./static/analyze-cost-trends-for-aws-27.png)You can **Group by**:
+1. In **Cloud Cost Management**, click **Explorer**,and then click **AWS** in the top navigation. The AWS services are displayed.
+   
+   ![](./static/analyze-cost-trends-for-aws-26.png)
+2. View the cost of the resources that are important to you. Select a **date range**, **Group by**, and **Filter by** options. Based on your **Group by** and **Filter by** selection, the table, and chart display information. Hover over the chart to see the details.
+   
+     ![](./static/analyze-cost-trends-for-aws-27.png)
+	 
+You can **Group by**:
 * **Service**: Each of your active [AWS services](https://aws.amazon.com/) is displayed.
 * **Account**: Each AWS account you are using to connect Harness to AWS via a Harness AWS Cloud Provider.
 * **Instance Type**: Each [Amazon EC2 instance type](https://aws.amazon.com/ec2/instance-types/) you are using.
@@ -40,16 +35,15 @@ In this topic:
 	+ For the user-defined tags, `user_` prefix is added.
 	+ For the AWS system tags, `aws_` prefix is added.
 	+ The characters that do not follow regex `[a-zA-Z0-9_]` are changed to `_`.
-	+ The tags are case sensitive. If the tags are specified as `UserName` and `username`, then the number suffix `_<Number>`is added to the tag. For example, `UserName` and `username_1`.![](./static/analyze-cost-trends-for-aws-28.png)
+	+ The tags are case sensitive. If the tags are specified as `UserName` and `username`, then the number suffix `_<Number>`is added to the tag. For example, `UserName` and `username_1`.
+  
+    ![](./static/analyze-cost-trends-for-aws-28.png)
+	  
 * **No Grouping**: The total AWS cloud cost.
-1. To get further granular details, use **Filter by** options.![](./static/analyze-cost-trends-for-aws-29.png)
+   To get further granular details, use **Filter by** options.
+   
+   ![](./static/analyze-cost-trends-for-aws-29.png)
 
 The information is displayed as the following:
 
-![](./static/analyze-cost-trends-for-aws-30.png)### Next Steps
-
-* [Analyze Cost Across Clusters](/article/4rq26sszja-analyze-cost-trends-across-clusters)
-* [Analyze Cost for GCP](/article/oo4vs4exhz-analyze-cost-for-gcp)
-* [Perform Root Cost Analysis](/article/v7eaaq98vo-perform-root-cause-analysis)
-* [Optimize Kubernetes Cluster Costs With Resource Recommendations](/article/ikxjmkqi03-recommendations)
-
+![](./static/analyze-cost-trends-for-aws-30.png)
