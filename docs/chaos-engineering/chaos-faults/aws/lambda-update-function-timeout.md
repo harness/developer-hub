@@ -5,8 +5,9 @@ title: Lambda Update Function Timeout
 
 ## Introduction
 
-- It causes the timeout of a lambda function to be updated to a specified value for a certain chaos duration.
-- It checks the performance of the application/service running with a new timeout and also helps to determine a safe overall timeout value for the function.
+- It modifies the timeout value for a function, causing it to fail fast. This helps in verifying the handling mechanism for function failures and also helps determine the correct/min. timeout value for the function.
+
+- It helps to checks the performance of the running lambda application at different timeout values.
 
 :::tip Fault execution flow chart
 ![Lambda Update Function Timeout](./static/images/lambda-update-function-timeout.png)
@@ -27,8 +28,7 @@ Getting timeout errors interrupts the flow of the given function. So this catego
 
 :::info
 
-- Kubernetes >= 1.17
-- Access to operate AWS Lambda service.
+- Ensure that Kubernetes Version >= 1.17
 - Kubernetes secret that has AWS access configuration(key) in the `CHAOS_NAMESPACE`. A secret file looks like this:
 
 ```yaml
@@ -46,6 +46,35 @@ stringData:
 ```
 
 - If you change the secret key name (from `cloud_config.yml`), update the `AWS_SHARED_CREDENTIALS_FILE` environment variable value on `experiment.yaml` with the same name.
+
+## Permission Requirement
+
+- Here is an example AWS policy to execute this fault.
+
+<details>
+<summary>View policy for this fault</summary>
+
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "lambda:UpdateFunctionConfiguration",
+                "lambda:GetFunctionConcurrency",
+                "lambda:GetFunction",
+                "lambda:DeleteFunctionConcurrency",
+                "lambda:PutFunctionConcurrency"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+```
+</details>
+
+- Refer a [superset permission/policy](../policy-for-all-aws-faults) to execute all AWS faults.
 
 ## Default Validations
 

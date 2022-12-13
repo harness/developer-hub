@@ -4,7 +4,7 @@ title: EBS Loss By ID
 ---
 
 ## Introduction
-- It causes chaos to removes an AZ from the Load Balancer to simulate AZ failure/down conditions.
+- It Detaches an EBS volume from the EC2 instance for a specified chaos duration using instance ids.
 - In case of EBS persistent volumes, the volumes can get self-attached and the re-attachment step is skipped.
 
 Tests deployment sanity (replica availability & uninterrupted service) and recovery workflows of the application pod.
@@ -25,9 +25,8 @@ Coming soon.
 ## Prerequisites
 
 :::info
-- Ensure that Kubernetes Version > 1.16.
-- Ensure that you have sufficient AWS access to attach or detach an EBS volume for the instance. 
-- Ensure that the target ELB is a classic load balancer as the experiment right now only supports classic load balancer.
+- Ensure that Kubernetes Version > 1.17
+- Ensure that you have sufficient AWS access to attach or detach an EBS volume form the instance (as mentioned in permission section below). 
 - Ensure to create a Kubernetes secret having the AWS access configuration(key) in the `CHAOS_NAMESPACE`. A sample secret file looks like:
 ```yaml
 apiVersion: v1
@@ -45,145 +44,44 @@ stringData:
 - If you change the secret key name (from `cloud_config.yml`) please also update the `AWS_SHARED_CREDENTIALS_FILE` ENV value in the ChaosExperiment CR with the same name.
 :::
 
-<details>
-<summary>View an example policy for the fault</summary>
-<div>
-&#123;
-    "Version": "2012-10-17",
-    "Statement": &#91;
-        &#123;
-            "Effect": "Allow",
-            "Action": &#91;
-                "ec2:DescribeInstanceStatus",
-                "ec2:DescribeInstances",
-                "ec2:DescribeSubnets",
-                "elasticloadbalancing:DetachLoadBalancerFromSubnets",
-                "elasticloadbalancing:AttachLoadBalancerToSubnets",
-                "elasticloadbalancing:DescribeLoadBalancers"
-            &#93;,
-            "Resource": "*"
-        &#125;
-    &#93;
-&#125;
-</div>
-</details>
+## Permission Requirement
+
+- Here is an example AWS policy to execute ebs loss fault.
 
 <details>
-<summary>View master policy for all AWS fault</summary>
-<div>
-&#123;
+<summary>View policy for this fault</summary>
+
+```json
+{
     "Version": "2012-10-17",
-    "Statement": &#91;
-        &#123;
+    "Statement": [
+        {
             "Effect": "Allow",
-            "Action": &#91;
-                "ec2:StartInstances",
-                "ec2:StopInstances",
+            "Action": [
                 "ec2:AttachVolume",
-                "ec2:DetachVolume",
-                "ec2:DescribeVolumes",
-                "ec2:DescribeSubnets",
+                "ec2:DetachVolume"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "ec2:DescribeVolumes",
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
                 "ec2:DescribeInstanceStatus",
-                "ec2:DescribeInstances",
-                "ec2messages:AcknowledgeMessage",
-                "ec2messages:DeleteMessage",
-                "ec2messages:FailMessage",
-                "ec2messages:GetEndpoint",
-                "ec2messages:GetMessages",
-                "ec2messages:SendReply"
-            &#93;,
+                "ec2:DescribeInstances"
+            ],
             "Resource": "*"
-        &#125;,
-        &#123;
-            "Effect": "Allow",
-            "Action": &#91;
-                "autoscaling:DescribeAutoScalingInstances"
-            &#93;,
-            "Resource": "*"
-        &#125;,
-        &#123;
-            "Effect": "Allow",
-            "Action": &#91;
-                "ssm:GetDocument",
-                "ssm:DescribeDocument",
-                "ssm:GetParameter",
-                "ssm:GetParameters",
-                "ssm:SendCommand",
-                "ssm:CancelCommand",
-                "ssm:CreateDocument",
-                "ssm:DeleteDocument",
-                "ssm:GetCommandInvocation",          
-                "ssm:UpdateInstanceInformation",
-                "ssm:DescribeInstanceInformation"
-            &#93;,
-            "Resource": "*"
-        &#125;,
-        &#123;
-            "Effect": "Allow",
-            "Action": &#91;
-                "ecs:UpdateContainerInstancesState",
-                "ecs:RegisterContainerInstance",
-                "ecs:ListContainerInstances",
-                "ecs:DeregisterContainerInstance",
-                "ecs:DescribeContainerInstances",
-                "ecs:ListTasks",
-                "ecs:DescribeClusters"
-            &#93;,
-            "Resource": "*"
-        &#125;,
-        &#123;
-            "Effect": "Allow",
-            "Action": &#91;
-                "elasticloadbalancing:DetachLoadBalancerFromSubnets",
-                "elasticloadbalancing:AttachLoadBalancerToSubnets",
-                "elasticloadbalancing:DescribeLoadBalancers"
-            &#93;,
-            "Resource": "*"
-        &#125;,
-        &#123;
-            "Effect": "Allow",
-            "Action": &#91;
-                "lambda:ListEventSourceMappings",
-                "lambda:DeleteEventSourceMapping",
-                "lambda:UpdateEventSourceMapping",
-                "lambda:CreateEventSourceMapping",
-                "lambda:UpdateFunctionConfiguration",
-                "lambda:GetFunctionConcurrency",
-                "lambda:GetFunction",
-                "lambda:DeleteFunctionConcurrency",
-                "lambda:PutFunctionConcurrency",
-                "lambda:DeleteLayerVersion",
-                "lambda:GetLayerVersion",
-                "lambda:ListLayerVersions",
-                "iam:ListAttachedRolePolicies",
-                "iam:DetachRolePolicy",
-                "iam:AttachRolePolicy"
-             &#93;,
-            "Resource": "*"
-        &#125;,
-        &#123;
-            "Effect": "Allow",
-            "Action": &#91;
-                "iam:ListAttachedRolePolicies",
-                "iam:DetachRolePolicy",
-                "iam:AttachRolePolicy"
-            &#93;,
-            "Resource": "*"
-        &#125;,
-        &#123;
-            "Effect": "Allow",
-            "Action": &#91;
-                "rds:DescribeDBClusters",
-                "rds:DescribeDBInstances",
-                "rds:DeleteDBInstance",
-                "rds:RebootDBInstance"
-            &#93;,
-            "Resource": "*"
-        &#125;
-    &#93;
-&#125;
-</div>
+        }
+    ]
+}
+```
 </details>
+
+- Refer a [superset permission/policy](../policy-for-all-aws-faults) to execute all AWS faults.
 
 ## Default Validations
 
