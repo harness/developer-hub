@@ -11,18 +11,18 @@ helpdocs_is_published: true
 Harness provides granular control of notifications, allowing you to control alert conditions, users, and groups across your account and in individual Workflows. This topic describes the major notification features and explains the procedure to add notification settings for user groups.
 
 
-### Before You Begin
+## Before You Begin
 
 * See [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts).
 
 
-### Video Summary
+## Video Summary
 
 The following video shows how to set up notifications using Harness PagerDuty integration as an example.
 
 <docvideo src="https://www.youtube.com/embed/YDyNj9EYiNk" />
 
-### Review: Major Notification Features
+## Review: Major Notification Features
 
 There are three major notification features:
 
@@ -31,7 +31,7 @@ There are three major notification features:
 * **Workflows Notification Strategy** – Set notification conditions in a Workflow or Workflow Phase, and the User Groups that need to be notified when these conditions are met.
 
 
-### Step: Add Notification Settings for User Groups
+## Step: Add Notification Settings for User Groups
 
 You can add notification settings to Harness User Groups, including group email addresses and Slack channels. When the User Group is assigned an Alert Notification Rule, or added to a Workflow Notification Strategy, the channels you set here will be used to notify them.
 
@@ -40,12 +40,16 @@ To add notification settings to Harness User Groups, do the following:
 1. In Harness Manager, click **Continuous Security**, and then click **Access Management**.
 2. In **Access Management**, click **User Groups**.
 3. Click the name of an existing User Group, or create a new User Group with the steps in [Managing Users and Groups (RBAC)](../../security/access-management-howtos/users-and-permissions.md).
-4. Locate the **Notification Settings** section.![](./static/notification-groups-19.png)
+4. Locate the **Notification Settings** section.
 
-5. Click the More Options **⋮** menu, then click **Edit**. The **Notification Settings** dialog appears.![](./static/notification-groups-20.png)
+![](./static/notification-groups-19.png)
+
+5. Click the More Options **⋮** menu, then click **Edit**. The **Notification Settings** dialog appears.
+
+![](./static/notification-groups-20.png)
 
 
-1. Configure the following notification settings and click **SUBMIT**.
+6. Configure the following notification settings and click **SUBMIT**.
 * **Use Members' Individual Email Addresses** – Enable this setting to have notifications sent to the individual email addresses of the group's configured Member Users.
 * **Send an Email Notification to Members Newly Added to This Group** – Enable this setting to notify new members when they're added to the group.
 * **Group Email Addresses** – Enter any group email addresses where Harness can send notifications. The **Group Email Addresses** are always used, regardless of whether **Use Members' Individual Email Addresses** is enabled.
@@ -60,7 +64,7 @@ Once you click **SUBMIT**, the **Notification Settings** appear in the User Grou
 
 ![](./static/notification-groups-22.png)
 
-### Next Steps
+## Next Steps
 
 * [Manage Alert Notifications](manage-alert-notifications.md)
 

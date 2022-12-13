@@ -14,18 +14,18 @@ You can also add script after the Delegate is installed, and then simply restart
 
 This topic describes how to set up the Delegate config files for running scripts.
 
-### Before You Begin
+## Before You Begin
 
 * [Delegate Installation Overview](delegate-installation-overview.md)
 * [Install the Harness Kubernetes Delegate](install-kubernetes-delegate.md)
 * [Install the Harness Docker Delegate](install-docker-delegate.md)
 
-### Limitations
+## Limitations
 
 * When editing or deleting scripts, any binaries installed as part of the earlier scripts are not removed automatically. If you need to remove them, then restart or clean up the pod/VM.
 * You cannot use Harness secrets in scripts since there is no connectivity to Harness at the time when the script is run (before the Delegate registers with Harness).
 
-### Review: What Can I Run In a Script?
+## Review: What Can I Run In a Script?
 
 You can add any commands supported on the host/container/pod running the Delegate. Linux shell commands are most common. If kubectl, Helm, or Docker is running on the host/container/pod where you install the Delegate, then you can use their commands. The Kubernetes and Docker Delegates include Helm.
 
@@ -40,20 +40,20 @@ curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
 unzip awscli-bundle.zip  
 ./awscli-bundle/install -b ~/bin/aws
 ```
-#### When is the Script Executed?
+### When is the Script Executed?
 
 Delegate scripts are applied under the following conditions:
 
 * **New Delegate** - If you add a Delegate script when you create the Delegate, the commands are executed before the Delegate is started.
 * **Running Delegate** - If you apply a Delegate script to a running Delegate, either by applying it as a new script or by switching the Delegate’s current script, the script commands are executed when the Delegate is restarted, but before the Delegate comes up.
 
-### Step 1: Download the Delegate Config File
+## Step 1: Download the Delegate Config File
 
 When you install a Delegate, you are prompted to download its config file. For Kubernetes and Docker Delegates, this is a YAML file.
 
 Download the file and open it in a text editor.
 
-### Step 2: Add a Script to the Delegate INIT\_SCRIPT Environment Variable
+## Step 2: Add a Script to the Delegate INIT\_SCRIPT Environment Variable
 
 In the Delegate config file, locate the `INIT_SCRIPT` environment variable.
 
@@ -80,7 +80,15 @@ spec:
 ```
 In `value`, enter your script. For a list of common scripts, see [Common Delegate Scripts](../../techref-category/account-ref/delegate-ref/common-delegate-profile-scripts.md).
 
-A multiline script must follow the YAML spec for [literal scalar style](https://yaml.org/spec/1.2-old/spec.html#id2795688).The script should not be in quotes.For the Docker Delegate, Harness uses a Docker compose file, so you add your script like this:
+:::tip
+A multiline script must follow the YAML spec for [literal scalar style](https://yaml.org/spec/1.2-old/spec.html#id2795688).
+:::
+
+:::note
+The script should not be in quotes.
+:::
+
+For the Docker Delegate, Harness uses a Docker compose file, so you add your script like this:
 
 
 ```
@@ -93,7 +101,7 @@ A multiline script must follow the YAML spec for [literal scalar style](https://
 ```
 A Docker compose file doesn't use the exact same YAML formatting as Kubernetes manifests and so the script formatting is slightly different.
 
-### Step 3: Install the Delegate
+## Step 3: Install the Delegate
 
 Follow the remaining Delegate installation steps.
 
@@ -102,7 +110,7 @@ See:
 * [Install the Harness Kubernetes Delegate](install-kubernetes-delegate.md)
 * [Install the Harness Docker Delegate](install-docker-delegate.md)
 
-### Step 4: Verify the Script
+## Step 4: Verify the Script
 
 Check the Delegate pod/host/container to see if the script ran correctly.
 
@@ -141,7 +149,7 @@ Downloading Delegate  ...
 Watcher started  
 
 ```
-### See Also
+## See Also
 
 * [Automate Harness Kubernetes Delegate Setup](automate-harness-kubernetes-delegate-setup.md)
 

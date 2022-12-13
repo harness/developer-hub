@@ -8,15 +8,19 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-The Command setting in Delegate Scopes is deprecated and will be removed soon. Please use Task Category Map to scope commands to specific Delegates. See [Delegate Task Category Mapping](map-tasks-to-delegates-and-profiles.md).By default, a Delegate will perform all connections you set up and processes you run. To limit, or scope, a Delegate, you can set specific boundaries and associations for each Delegate you run.
+:::note
+The Command setting in Delegate Scopes is deprecated and will be removed soon. Please use Task Category Map to scope commands to specific Delegates. See [Delegate Task Category Mapping](map-tasks-to-delegates-and-profiles.md).
+:::
+
+By default, a Delegate will perform all connections you set up and processes you run. To limit, or scope, a Delegate, you can set specific boundaries and associations for each Delegate you run.
 
 In this topic:
 
-* [Review: Delegate Scope Example](#review_delegate_scope_example)
-* [Step 1: Scope a Delegate](#step_1_scope_a_delegate)
-* [Best Practices and Notes](#best_practices_and_notes)
+* [Review: Delegate Scope Example](#review-delegate-scope-example)
+* [Step 1: Scope a Delegate](#step-1-scope-a-delegate)
+* [Best Practices and Notes](#best-practices-and-notes)
 
-### Review: Delegate Scope Example
+## Review: Delegate Scope Example
 
 You need to restrict access to a production environment. Without defining a scope, the Delegate scans all network ports to map out the Environment and performs checks to access the Artifact Servers and Cloud Providers it needs. By defining a scope, you can limit the Delegate to connect to only the specific Environments, Applications, and Infrastructure Definition it needs. 
 
@@ -24,7 +28,7 @@ Defining a scope is optional, but if you use scoping you can prevent the Delegat
 
 You can apply multiple scopes to a Delegate.
 
-### Step 1: Scope a Delegate
+## Step 1: Scope a Delegate
 
 To scope a Delegate, do the following:
 
@@ -40,11 +44,11 @@ To scope a Delegate, do the following:
 You must pick at least one Delegate Scope property.
 6. Click **Submit**. The scope is added to the Delegate.
 
-### Best Practices and Notes
+## Best Practices and Notes
 
 The following information will help you prevent many Delegate issues.
 
-#### Scopes Excluded is More Effective
+### Scopes Excluded is More Effective
 
 The most important decision when creating a Delegate Scope is selecting **Scopes Limited To** or **Scopes Excluded**.
 
@@ -52,14 +56,17 @@ The most important decision when creating a Delegate Scope is selecting **Scopes
 
 It is better to use **Scope Excluded** to exclude one Delegate from the **Production** Environment Type and the other Delegate from the **Non-Production** Environment Type. This way, either Delegate can still perform general operations outside of Environment Type.
 
-#### Scope Options are ANDs
+### Scope Options are ANDs
 
 The fields in the Delegate Scope dialog narrow the scope of the Delegate's operations as you move down the dialog. For example, you can pick an operation in Command, and the limit its scope further by picking the Application and Environment.Think of using the Delegate Scope dialog fields as ANDs: Command AND Application AND Environment Type, and so on.
 
 ![](./static/scope-delegates-to-harness-components-and-commands-40.png)
-If you want to OR Delegate Scope settings, you need to make separate Delegate Scopes and apply them to the same Delegate.
 
-#### Use a Display Name
+:::note
+If you want to OR Delegate Scope settings, you need to make separate Delegate Scopes and apply them to the same Delegate.
+:::
+
+### Use a Display Name
 
 Ensure that you enter a name in **Display Name**. This will help you and others quickly select the scope in the future.
 

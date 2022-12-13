@@ -16,7 +16,7 @@ For information on Harness On-Prem and certificates, see [Virtual Machine On-Pre
 
 For information on TLS and the JRE, see [Sun Java System Application Server Platform Edition 8.2 Administration Guide](https://docs.oracle.com/cd/E19830-01/819-4712/ablqw/index.html) and [keytool](https://docs.oracle.com/javase/9/tools/keytool.htm#JSWOR-GUID-5990A2E4-78E3-47B7-AE75-6D1826259549).
 
-### Using Explicit Paths
+## Using Explicit Paths
 
 Here is the the self-signed certificate import using explicit paths:
 
@@ -24,7 +24,7 @@ Here is the the self-signed certificate import using explicit paths:
 ```
 /opt/harness-delegate/jdk8u242-b08-jre/bin/keytool -import -trustcacerts -keystore /opt/harness-delegate/jdk8u242-b08-jre/lib/security/cacerts -storepass changeit -alias example.com -file ca.cer -noprompt
 ```
-### Using JAVA\_HOME and PATH
+## Using JAVA\_HOME and PATH
 
 Here is the the self-signed certificate import using the PATH environment variable:
 
@@ -44,7 +44,7 @@ keytool -import -trustcacerts -keystore $JAVA_HOME/lib/security/cacerts -storepa
   
 # Depending on the different versions of JDK, the CACERT keystore might reside in different locations.
 ```
-### Password
+## Password
 
 The default keystore password is used in our example, but if you change the default you can replace the password with a Harness encrypted text secret.
 
@@ -57,7 +57,7 @@ then
 echo "Alias ca.cer already exists"  
 else
 ```
-### See Also
+## See Also
 
 * [Adding 3rd Party CA certificate(s) to Kubernetes and/or OpenShift Harness Delegates](https://community.harness.io/t/adding-3rd-party-ca-certificate-s-to-kubernetes-and-or-openshift-harness-delegates/831) from Harness Community
 

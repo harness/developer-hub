@@ -18,20 +18,20 @@ Use an application stack or catalog as the solution stack when deploying your ap
 In this topic:
 
 
-* [Before You Begin](#before_you_begin)
-* [Review: Permissions](#review_permissions)
-* [Option 1: Add an Application Stack when Adding Service](#option_1_add_an_application_stack_when_adding_service)
-* [Option 2: Add an Application Stack from the Setup](#option_2_add_an_application_stack_from_the_setup)
+* [Before You Begin](#before-you-begin)
+* [Review: Permissions](#review-permissions)
+* [Option 1: Add an Application Stack when Adding Service](#option-1-add-an-application-stack-when-adding-service)
+* [Option 2: Add an Application Stack from the Setup](#option-2-add-an-application-stack-from-the-setup)
 
 
-### Before You Begin
+## Before You Begin
 
 
 * [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts)
 * [Services](../../../continuous-delivery/model-cd-pipeline/setup-services/service-configuration.md)
 
 
-### Review: Permissions
+## Review: Permissions
 
 
 In order to manage Application Stacks in Harness, a Harness User must belong to a User Group that has the Account Permission **Manage Application Stacks** enabled.
@@ -41,7 +41,7 @@ See
  [Managing Users and Groups (RBAC)](../../security/access-management-howtos/users-and-permissions.md).
 
 
-### Option 1: Add an Application Stack when Adding Service
+## Option 1: Add an Application Stack when Adding Service
 
 
 Add the application stack when you create your Harness Service.
@@ -52,12 +52,7 @@ Add the application stack when you create your Harness Service.
 You can choose to include your application stack as part of the artifact you attach to your Harness Service. In this case, when you create a Service, leave the **Application Stack** field empty (do not choose any of the options in that list).
 
 
-
-
-
 The **Application Stack** dialog has the following fields.
-
-
 
 
 |  |  |
@@ -67,14 +62,12 @@ The **Application Stack** dialog has the following fields.
 | **Version** | Enter the version number, such as Tomcat 6. |
 | **Name** | Enter a name for the application stack. |
 | **Description** | Enter a description for the application stack. |
-| **App Stack Archive File** | Upload the app stack file. For example, here are the Tomcat app stack files for
- [Apache](https://tomcat.apache.org/download-80.cgi).
-The file must be in TAR or ZIP format. |
+| **App Stack Archive File** | Upload the app stack file. For example, here are the Tomcat app stack files for [Apache](https://tomcat.apache.org/download-80.cgi). The file must be in TAR or ZIP format. |
 | **MD5** | Enter the checksum to ensure transition and storage. |
 
 
 
-### Option 2: Add an Application Stack from the Setup
+## Option 2: Add an Application Stack from the Setup
 
 
 To add an application stack or catalog, do the following:
@@ -86,7 +79,6 @@ To add an application stack or catalog, do the following:
 
 
 The **Application Stack** dialog appears.
-
 
 
 png)

@@ -14,26 +14,28 @@ Most importantly, the Delegate performs all deployment operations.
 
 There are several types of Delegates. This topic describes how to install the Kubernetes Delegate.
 
+:::note
 If you want to run multiple Delegates on the same or different clusters, see [Automate Harness Kubernetes Delegate Setup](automate-harness-kubernetes-delegate-setup.md).
+:::
 
-### Before You Begin
+## Before You Begin
 
 * [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts)
 * [Harness Delegate Overview](delegate-installation.md)
 * [Delegate Requirements and Limitations](delegate-requirements-and-limitations.md)
 
-### Limitations
+## Limitations
 
 Currently, Harness Kubernetes Delegates do not install with the default settings in GKE Auto Pilot Mode. Please use the Manual mode when creating the cluster to make sure it meets the Delegate requirements.
 
-### Visual Summary
+## Visual Summary
 
 The following diagram shows how the Delegate enables Harness to integrate with all of your deployment resources:
 
 ![](./static/install-kubernetes-delegate-36.png)
 
 
-### Step 1: Download the Kubernetes Delegate
+## Step 1: Download the Kubernetes Delegate
 
 1. Log into Harness.
 2. In the Harness Manager, click **Setup**, and then click **Harness Delegates**.
@@ -42,9 +44,14 @@ The following diagram shows how the Delegate enables Harness to integrate with a
 5. In **Name**, enter a name for your Delegate.
 6. In **Profile**, select a Delegate Profile. See [Run Scripts on the Delegate using Profiles](run-scripts-on-the-delegate-using-profiles.md).
 
-A Delegate Profile is mandatory. The **Primary** Profile is the default and contains no script. You can add a script to it, or create and apply new Profiles for your Delegate.1. Click **Download** or **Copy Download Link**.
+:::note
+A Delegate Profile is mandatory. The **Primary** Profile is the default and contains no script. You can add a script to it, or create and apply new Profiles for your Delegate.
+:::
 
-### Step 2: Apply the Delegate Spec
+7. Click **Download** or **Copy Download Link**.
+
+
+## Step 2: Apply the Delegate Spec
 
 1. Ensure the host where you run the Delegate meets the [Delegate Requirements and Limitations](delegate-requirements-and-limitations.md).
 2. Open a terminal and navigate to where the Delegate file is located.
@@ -58,8 +65,8 @@ cd harness-delegate-kubernetes
 ```
 You will connect to your cluster using the terminal so you can simply copy the YAML file over.
 
-1. Log into your Kubernetes cluster.
-2. Let's quickly confirm that the cluster you created can connect to the Harness platform. Enter the following command:
+4. Log into your Kubernetes cluster.
+5. Let's quickly confirm that the cluster you created can connect to the Harness platform. Enter the following command:
 ```
 wget -p https://app.harness.io/ -O /dev/null
 ```
@@ -67,12 +74,13 @@ A successful connection will display the following:
 ```
 HTTP request sent, awaiting response... 200 OK
 ```
-3. Next, install the Harness Delegate using the **harness-delegate.yaml** file you just downloaded. In the terminal connected to your cluster, run this command:
+6. Next, install the Harness Delegate using the **harness-delegate.yaml** file you just downloaded. In the terminal connected to your cluster, run this command:
 ```
 kubectl apply -f harness-delegate.yaml
 ```
 If you are not using your terminal to connect to your cluster, just copy the **harness-delegate.yaml** file to the cluster and run the command.
-4. Run this command to verify that the Delegate pod was created:
+
+7. Run this command to verify that the Delegate pod was created:
 ```
 kubectl get pods -n harness-delegate
 ```
@@ -91,13 +99,19 @@ The **Delegates** page provides a list of installed Delegates. The information d
 
 Now you're ready to connect Harness to your artifact servers, clusters, and so on.
 
+:::note
 When you onboard your own applications, you might need to install multiple Delegates, depending on their workloads, network segmentation, and firewall zones. Typically, you will need one Delegate for every 300-500 service instances across your applications, and will need one Delegate in each subnet or zone.
+:::
 
-### Installation Example: Google Cloud Platform
+## Installation Example: Google Cloud Platform
 
 The following steps describe how to install the Kubernetes Delegate in a Kubernetes cluster in Google Cloud Platform. The steps assume you have Google Cloud SDK installed, as it is used to execute gcloud command-line commands. For more information on installing the Google Cloud SDK, see [Install the Latest Cloud SDK version](https://cloud.google.com/sdk/docs/#install_the_latest_cloud_sdk_version) from Google.
 
-A Kubernetes cluster in Google Cloud Platform has a variety of settings that are different from other vendors. For example, when creating your cluster in Google Cloud Platform, you might need to add more or less CPUs or RAM to your nodes than you would with another cloud vendor or an Internal cluster.1. Sign up for a [free tier Google Cloud Platform account](https://cloud.google.com/free/?gclid=EAIaIQobChMI7q3r8Krr3gIVvh-tBh2F0AOuEAAYASABEgLMI_D_BwE).
+:::note
+A Kubernetes cluster in Google Cloud Platform has a variety of settings that are different from other vendors. For example, when creating your cluster in Google Cloud Platform, you might need to add more or less CPUs or RAM to your nodes than you would with another cloud vendor or an Internal cluster.
+:::
+
+1. Sign up for a [free tier Google Cloud Platform account](https://cloud.google.com/free/?gclid=EAIaIQobChMI7q3r8Krr3gIVvh-tBh2F0AOuEAAYASABEgLMI_D_BwE).
 2. In Google Cloud Platform, create a Kubernetes cluster.
 	1. In **Kubernetes Engine**, click **CREATE CLUSTER**.
 	2. Click **My first cluster**.
@@ -115,12 +129,18 @@ A Kubernetes cluster in Google Cloud Platform has a variety of settings that are
 	**Minimum number of nodes:** 3  
 	**Maximum number of nodes:** 8
 	9. Click **NEXT**.  
-	The settings will look something like this:![](./static/install-kubernetes-delegate-37.png)
+	The settings will look something like this:
+	
+	![](./static/install-kubernetes-delegate-37.png)
 
 	10. Click **Create** to create the cluster. It will take a few minutes to create the Kubernetes cluster.
-3. When the cluster is created, click the **Connect** button.![](./static/install-kubernetes-delegate-38.png)
+3. When the cluster is created, click the **Connect** button.
 
-4. In the **Connect to the cluster** dialog, copy the **Command-line access** command.![](./static/install-kubernetes-delegate-39.png)
+![](./static/install-kubernetes-delegate-38.png)
+
+4. In the **Connect to the cluster** dialog, copy the **Command-line access** command.
+
+![](./static/install-kubernetes-delegate-39.png)
 
 5. On your local machine, open a Terminal, and paste the command, and press **Enter**. You are now connected to the Kubernetes cluster.  
   
@@ -152,11 +172,15 @@ By default, your cluster should be able to connect to the Internet. If you run i
 8. Wait a few moments for the cluster to finish loading the pod and for the Delegate to connect to Harness Manager.
 9. In **Harness Manager**, in the **Harness Delegates** page, the new Delegate will appear. You can refresh the page if you like.
 
-StatefulSets is used for the the Kubernetes Delegate to ensure the same pod name is used each time a pod is scheduled.You can also open a shell session to a Delegate pod using the following command:
+:::note
+StatefulSets is used for the the Kubernetes Delegate to ensure the same pod name is used each time a pod is scheduled.
+:::
+
+You can also open a shell session to a Delegate pod using the following command:
 
 `kubectl exec -n harness-delegate <pod_name> -it -- /bin/bash`
 
-### See Also
+## See Also
 
 * For all the topics related to the Harness Delegate, see [Manage Harness Delegates](https://docs.harness.io/category/manage-harness-delegates-firstgen).
 * Delegate are used to provide credentials for some Harness [Cloud Providers](../manage-connectors/cloud-providers.md).

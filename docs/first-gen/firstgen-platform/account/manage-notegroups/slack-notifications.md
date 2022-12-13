@@ -14,21 +14,25 @@ This simple integration allows you to notify team members at any point in a depl
 
 For more advanced integrations, see [Manage User Notifications](notification-groups.md), [Manage Alert Notifications](manage-alert-notifications.md), and [Approvals](../../../continuous-delivery/model-cd-pipeline/approvals/approvals.md).
 
-For steps on sending all User Group notifications to a Slack channel, see [Send Notifications Using Slack](send-notification-using-slack.md).In this topic:
+:::note
+For steps on sending all User Group notifications to a Slack channel, see [Send Notifications Using Slack](send-notification-using-slack.md).
+:::
 
-* [Before You Begin](#before_you_begin)
-* [Step 1: Create a Slack App and Webhook for your Channel](#step_1_create_a_slack_app_and_webhook_for_your_channel)
-* [Step 2: Add a Shell Script Step using your Webhook](#step_2_add_shell_script_step_using_your_webhook)
-* [Option: Improve Your Message](#option_improve_your_message)
-* [Next Steps](#next_steps)
+In this topic:
 
-### Before You Begin
+* [Before You Begin](#before-you-begin)
+* [Step 1: Create a Slack App and Webhook for your Channel](#step-1-create-a-slack-app-and-webhook-for-your-channel)
+* [Step 2: Add a Shell Script Step using your Webhook](#step-2-add-a-shell-script-step-using-your-webhook)
+* [Option: Improve Your Message](#option-improve-your-message)
+* [Next Steps](#next-steps)
+
+## Before You Begin
 
 * [Sending messages using Incoming Webhooks](https://api.slack.com/messaging/webhooks) from Slack.
 * [Using the Shell Script Step](../../../continuous-delivery/model-cd-pipeline/workflows/capture-shell-script-step-output.md)
 * [Workflows](../../../continuous-delivery/model-cd-pipeline/workflows/workflow-configuration.md)
 
-### Step 1: Create a Slack App and Webhook for your Channel
+## Step 1: Create a Slack App and Webhook for your Channel
 
 Follow the steps in Slack documentation for creating a Slack app, selecting your channel, and creating a webhook: [Sending messages using Incoming Webhooks](https://api.slack.com/messaging/webhooks).
 
@@ -37,7 +41,7 @@ When you are done, you'll have a webhook that looks something like this:
 ![](./static/slack-notifications-23.png)
 
 
-### Step 2: Add a Shell Script Step using your Webhook
+## Step 2: Add a Shell Script Step using your Webhook
 
 At any place in your Harness Workflow, add a [Shell Script step](../../../continuous-delivery/model-cd-pipeline/workflows/capture-shell-script-step-output.md).
 
@@ -52,6 +56,7 @@ curl -X POST -H 'Content-type: application/json' --data '{"text":"simple cURL co
 When you deploy the Workflow, the message will look something like this:
 
 ![](./static/slack-notifications-24.png)
+
 Here is a more advanced example using bash and Harness [built-in variable expressions](../../techref-category/variables/variables.md):
 
 
@@ -75,6 +80,7 @@ curl -s -X POST -H "Content-type: application/json" --data "$payload" $url
 When you deploy the Workflow, the message will look something like this:
 
 ![](./static/slack-notifications-25.png)
+
 You can use different variable expressions in your messages. See the following:
 
 * [Passing Variables into Workflows and Pipelines from Triggers](../../../continuous-delivery/model-cd-pipeline/expressions/passing-variable-into-workflows.md)
@@ -82,7 +88,7 @@ You can use different variable expressions in your messages. See the following:
 * [Add Service Config Variables](../../../continuous-delivery/model-cd-pipeline/setup-services/add-service-level-config-variables.md)
 * [Override a Service Configuration in an Environment](../../../continuous-delivery/model-cd-pipeline/environments/override-service-files-and-variables-in-environments.md)
 
-### Option: Improve Your Message
+## Option: Improve Your Message
 
 Slack messages have many formatting and interactive features. You can improve the Slack messages you send from your Workflow using these features.
 
@@ -91,7 +97,7 @@ See the following Slack docs:
 * [Creating rich message layouts](https://api.slack.com/messaging/composing/layouts)
 * [Creating interactive messages](https://api.slack.com/messaging/interactivity)
 
-### Next Steps
+## Next Steps
 
 * [Manage User Notifications](notification-groups.md)
 * [Manage Alert Notifications](manage-alert-notifications.md)

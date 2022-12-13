@@ -14,16 +14,16 @@ You add cloud providers to your Harness Account and then reference them when def
 
 In this topic:
 
-* [Before You Begin](#before_you_begin)
-* [Step 1: Add the Cloud Provider](#step_1_add_the_cloud_provider)
-* [Step 2: Display Name](#step_2_display_name)
-* [Artifact Support for Download and Copy](#artifact_support_for_download_and_copy)
+* [Before You Begin](#before-you-begin)
+* [Step 1: Add the Cloud Provider](#step-1-add-the-cloud-provider)
+* [Step 2: Display Name](#step-2-display-name)
+* [Artifact Support for Download and Copy](#artifact-support-for-download-and-copy)
 
-### Before You Begin
+## Before You Begin
 
 * See [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts).
 
-### Step 1: Add the Cloud Provider
+## Step 1: Add the Cloud Provider
 
 To add a cloud provider to your Harness account, do the following:
 
@@ -32,13 +32,13 @@ To add a cloud provider to your Harness account, do the following:
 
 The **Add Physical Data Center Cloud Provider** panel appears.
 
-### Step 2: Display Name
+## Step 2: Display Name
 
 Enter a unique **Display Name**.
 
 For a Physical Data Center Cloud Provider, no credentials are required. Instead, you add an SSH secret in Harness Secrets Management, and select that later in your Harness Environment in **Connection Attributes**. For more information, see [Secrets Management](../../security/secrets-management/secret-management.md).
 
-### Artifact Support for Download and Copy
+## Artifact Support for Download and Copy
 
 See [Service Types and Artifact Sources](../../../continuous-delivery/model-cd-pipeline/setup-services/service-types-and-artifact-sources.md).
 

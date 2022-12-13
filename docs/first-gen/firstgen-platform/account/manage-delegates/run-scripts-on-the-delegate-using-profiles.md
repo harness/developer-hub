@@ -8,11 +8,17 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Using Profiles is Deprecated. Please use [Run Initialization Scripts on Delegates](run-initialization-scripts-on-delegates.md).A Delegate Profile enables you to run a startup script on the host/container/pod for a Harness Delegate when the Delegate is installed, or any time after that. You can create a single Delegate Profile and apply it to multiple Delegates.
+:::caution
+Using Profiles is Deprecated. Please use [Run Initialization Scripts on Delegates](run-initialization-scripts-on-delegates.md).
+:::
 
+A Delegate Profile enables you to run a startup script on the host/container/pod for a Harness Delegate when the Delegate is installed, or any time after that. You can create a single Delegate Profile and apply it to multiple Delegates.
+
+:::note
 A Delegate Profile is mandatory. The Primary Profile is the default and contains no script. You can add a script to it, or create and apply new Profiles for your Delegate.
+:::
 
-### Review: Delegate Profile Summary
+## Review: Delegate Profile Summary
 
 A Delegate Profile lets you install and run script and software every time a Harness Delegate is added.
 
@@ -33,27 +39,30 @@ terraform --version
 ```
 For examples of Delegate Profile scripts, see [Common Delegate Profile Scripts](../../techref-category/account-ref/delegate-ref/common-delegate-profile-scripts.md).
 
-#### Primary Profile
+### Primary Profile
 
 Your Harness account comes with a default Primary Profile. When you install a new Delegate and it registers with Harness, the Primary Profile is added to that Delegate automatically.
 
 It cannot be renamed or deleted.
 
 ![](./static/run-scripts-on-the-delegate-using-profiles-57.png)
+
+
 You can add any script to the Primary Profile, and apply it to any Delegate.
 
-#### Profile Approvals
+### Profile Approvals
 
 When you create a Profile you can require that its use be approved by a member of the Harness Account Administrator group.
 
 ![](./static/run-scripts-on-the-delegate-using-profiles-58.png)
+
 When this option is selected, and Delegate that uses this Profile will appear with a **Pending Approval** option in the **Harness Delegates** page.
 
 If you reject the Delegate, it is not registered with Harness and does not appear in the list.
 
 See [Approve or Reject Harness Delegates](approve-or-reject-harness-delegates.md).
 
-#### What Can I Run In a Profile?
+### What Can I Run In a Profile?
 
 You can add any commands supported on the host/container/pod running the Delegate. Linux shell commands are most common. If kubectl, Helm, or Docker is running on the host/container/pod where you install the Delegate, then you can use their commands.
 
@@ -68,7 +77,7 @@ curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
 unzip awscli-bundle.zip  
 ./awscli-bundle/install -b ~/bin/aws
 ```
-#### When is the Profile Executed?
+### When is the Profile Executed?
 
 Delegate Profiles are applied under the following conditions:
 
@@ -76,11 +85,11 @@ Delegate Profiles are applied under the following conditions:
 * **Running Delegate** - If you apply a Delegate Profile to a running Delegate, either by applying it as a new profile or switching the Delegate’s current profile, the profile commands are executed immediately.
 * **Edited Profile** - If you edit a Delegate Profile, the new commands in the profile are applied to all Delegates using the profile.
 
-#### Profile Timeouts
+### Profile Timeouts
 
 The profile execution timeout limit is 10 minutes.
 
-### Step 1: Create a Delegate Profile
+## Step 1: Create a Delegate Profile
 
 To create a Delegate Profile, do the following:
 
@@ -92,7 +101,7 @@ To create a Delegate Profile, do the following:
 For **Delegate Requires Approval**, see [Approve or Reject Harness Delegates](approve-or-reject-harness-delegates.md).
 6. Click **Submit**. The profile is created. Now you can apply the profile to new or existing Delegates.
 
-### Option: Secrets in Profiles
+## Option: Secrets in Profiles
 
 You can use Harness encrypted text and file secrets in your Profile script. This is very common for usernames and passwords.
 
@@ -100,7 +109,7 @@ To use a secret in a Delegate Profile, the secret's **Usage Scope** must be set 
 
 See [Restrict Secrets Usage](../../security/secrets-management/restrict-secrets-usage.md) and [Use Secrets in a Delegate Profile](use-a-secret-in-a-delegate-profile.md).
 
-### Option: Add a Selector to a Delegate Profile
+## Option: Add a Selector to a Delegate Profile
 
 You can add a Selector to a Delegate Profile and then when you apply the Profile to a Delegate, the Delegate inherits the Selector.
 
@@ -112,7 +121,7 @@ When the Profile is removed from the Delegate, the Selector is also removed.
 
 A Delegate Profile Selector does not apply the Profile. It is simply a method of adding/removing Profile-specific Selectors dynamically.
 
-### Step 2: Applying a Profile
+## Step 2: Applying a Profile
 
 You can apply a profile in the following ways:
 
@@ -126,13 +135,13 @@ To apply a profile to an existing Delegate, do the following:
 3. Click the dropdown menu next to **Profile** and then click the profile you want applied to the Delegate.
 4. In the confirmation dialog, click **Confirm**.
 
-#### Notes
+### Notes
 
 * It might take a few minutes to apply the new profile.
 * When switching profiles, any binaries installed as part of the earlier profile are not removed automatically. If you need to remove them, then restart the Kubernetes pod hosting the Kubernetes Delegate or manually clean up the VM hosting the Shell or Docker delegate.
 * To remove a profile from a Delegate, click **Select Profile**, and then click another Profile, such as the default **Primary** Profile. Delegates must always have a profile. You can use the Primary Profile as a blank default.
 
-#### Profile Logs
+### Profile Logs
 
 You can view the execution log of the Profile script for each Delegate. For example, we'll use a Profile that simply prints out its environment variables using `printenv`.
 
@@ -141,13 +150,17 @@ The date next to the Profile name is a timestamped link to the script execution 
 ![](./static/run-scripts-on-the-delegate-using-profiles-59.png)
 
 
-### Step 3: Manage Profiles
+## Step 3: Manage Profiles
 
 When you update a Delegate Profile, the changes are applied to the Delegates using the profile.
 
 You can also delete a profile and it will be removed from the Delegates using it.
 
-When editing or deleting profiles, any binaries installed as part of the earlier profile are not removed automatically. If you need to remove them, then restart the Kubernetes pod hosting the Kubernetes Delegate or manually clean up the VM hosting the Shell or Docker Delegate.### See Also
+:::note
+When editing or deleting profiles, any binaries installed as part of the earlier profile are not removed automatically. If you need to remove them, then restart the Kubernetes pod hosting the Kubernetes Delegate or manually clean up the VM hosting the Shell or Docker Delegate.
+:::
+
+## See Also
 
 * [Use Secrets in a Delegate Profile](use-a-secret-in-a-delegate-profile.md)
 

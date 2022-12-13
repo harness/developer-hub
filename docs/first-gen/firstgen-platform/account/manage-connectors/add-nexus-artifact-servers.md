@@ -10,18 +10,18 @@ helpdocs_is_published: true
 
 Connect your Nexus artifact servers with Harness.
 
-### Before You Begin
+## Before You Begin
 
 * See [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts).
 
-### Visual Summary
+## Visual Summary
 
 Here's an example configuration of the Nexus Artifaction Source addition.
 
 ![](./static/add-nexus-artifact-servers-49.png)
 
 
-### Review: Nexus Permissions
+## Review: Nexus Permissions
 
 Make sure the connected user account has the following permissions in the Nexus Server.
 
@@ -29,6 +29,7 @@ Make sure the connected user account has the following permissions in the Nexus 
 * Nexus UI: Repository Browser
 
 ![](./static/add-nexus-artifact-servers-50.png)
+
 If used as a Docker Repo, the user needs:
 
 * List images and tags
@@ -36,7 +37,7 @@ If used as a Docker Repo, the user needs:
 
 See [Nexus Managing Security](https://help.sonatype.com/display/NXRM2/Managing+Security).
 
-### Step 1: Select Nexus Artifact Server
+## Step 1: Select Nexus Artifact Server
 
 To connect to an artifact server, do the following:
 
@@ -46,11 +47,11 @@ To connect to an artifact server, do the following:
 4. Click **Add Artifact Server**.
 5. In **Type**, select **Nexus**.
 
-### Step 2: Nexus URL
+## Step 2: Nexus URL
 
 In **Nexus U****RL**, enter the URL that you use to connect to your Nexus server. For example, `https://nexus2.dev.mycompany.io`.
 
-### Step 3: Version
+## Step 3: Version
 
 The **Version** field in the dialog lists the supported Nexus versions, 2.x and 3.x.
 
@@ -58,7 +59,7 @@ For Nexus 2.x, Harness supports repository formats Maven, npm, and NuGet. See So
 
 For Nexus 3.x, Harness supports repository formats Docker 3.0 and greater, Maven, npm, NuGet, and raw.
 
-### Step 4: Enter the Credentials
+## Step 4: Enter the Credentials
 
 Enter the username and Select Encrypted Password.
 
@@ -66,7 +67,7 @@ For secrets and other sensitive settings, select or create a new [Harness Encryp
 
 Usage Scope is determined by the secret you selected.
 
-### Step 5: Delegate Selector
+## Step 5: Delegate Selector
 
 Select the Delegate Selector(s) of the Delegate(s) you want this Connector to use.
 
