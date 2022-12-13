@@ -4,8 +4,9 @@ title: EBS Loss By ID
 ---
 
 ## Introduction
-- It causes chaos to disrupt state of EBS volume by detaching it from the node/EC2 instance for a certain chaos duration using volume id.
+- It causes chaos to removes an AZ from the Load Balancer to simulate AZ failure/down conditions.
 - In case of EBS persistent volumes, the volumes can get self-attached and the re-attachment step is skipped.
+
 Tests deployment sanity (replica availability & uninterrupted service) and recovery workflows of the application pod.
 
 :::tip Fault execution flow chart
@@ -26,6 +27,7 @@ Coming soon.
 :::info
 - Ensure that Kubernetes Version > 1.16.
 - Ensure that you have sufficient AWS access to attach or detach an EBS volume for the instance. 
+- Ensure that the target ELB is a classic load balancer as the experiment right now only supports classic load balancer.
 - Ensure to create a Kubernetes secret having the AWS access configuration(key) in the `CHAOS_NAMESPACE`. A sample secret file looks like:
 ```yaml
 apiVersion: v1
@@ -42,6 +44,146 @@ stringData:
 ```
 - If you change the secret key name (from `cloud_config.yml`) please also update the `AWS_SHARED_CREDENTIALS_FILE` ENV value in the ChaosExperiment CR with the same name.
 :::
+
+<details>
+<summary>View an example policy for the fault</summary>
+<div>
+&#123;
+    "Version": "2012-10-17",
+    "Statement": &#91;
+        &#123;
+            "Effect": "Allow",
+            "Action": &#91;
+                "ec2:DescribeInstanceStatus",
+                "ec2:DescribeInstances",
+                "ec2:DescribeSubnets",
+                "elasticloadbalancing:DetachLoadBalancerFromSubnets",
+                "elasticloadbalancing:AttachLoadBalancerToSubnets",
+                "elasticloadbalancing:DescribeLoadBalancers"
+            &#93;,
+            "Resource": "*"
+        &#125;
+    &#93;
+&#125;
+</div>
+</details>
+
+<details>
+<summary>View master policy for all AWS fault</summary>
+<div>
+&#123;
+    "Version": "2012-10-17",
+    "Statement": &#91;
+        &#123;
+            "Effect": "Allow",
+            "Action": &#91;
+                "ec2:StartInstances",
+                "ec2:StopInstances",
+                "ec2:AttachVolume",
+                "ec2:DetachVolume",
+                "ec2:DescribeVolumes",
+                "ec2:DescribeSubnets",
+                "ec2:DescribeInstanceStatus",
+                "ec2:DescribeInstances",
+                "ec2messages:AcknowledgeMessage",
+                "ec2messages:DeleteMessage",
+                "ec2messages:FailMessage",
+                "ec2messages:GetEndpoint",
+                "ec2messages:GetMessages",
+                "ec2messages:SendReply"
+            &#93;,
+            "Resource": "*"
+        &#125;,
+        &#123;
+            "Effect": "Allow",
+            "Action": &#91;
+                "autoscaling:DescribeAutoScalingInstances"
+            &#93;,
+            "Resource": "*"
+        &#125;,
+        &#123;
+            "Effect": "Allow",
+            "Action": &#91;
+                "ssm:GetDocument",
+                "ssm:DescribeDocument",
+                "ssm:GetParameter",
+                "ssm:GetParameters",
+                "ssm:SendCommand",
+                "ssm:CancelCommand",
+                "ssm:CreateDocument",
+                "ssm:DeleteDocument",
+                "ssm:GetCommandInvocation",          
+                "ssm:UpdateInstanceInformation",
+                "ssm:DescribeInstanceInformation"
+            &#93;,
+            "Resource": "*"
+        &#125;,
+        &#123;
+            "Effect": "Allow",
+            "Action": &#91;
+                "ecs:UpdateContainerInstancesState",
+                "ecs:RegisterContainerInstance",
+                "ecs:ListContainerInstances",
+                "ecs:DeregisterContainerInstance",
+                "ecs:DescribeContainerInstances",
+                "ecs:ListTasks",
+                "ecs:DescribeClusters"
+            &#93;,
+            "Resource": "*"
+        &#125;,
+        &#123;
+            "Effect": "Allow",
+            "Action": &#91;
+                "elasticloadbalancing:DetachLoadBalancerFromSubnets",
+                "elasticloadbalancing:AttachLoadBalancerToSubnets",
+                "elasticloadbalancing:DescribeLoadBalancers"
+            &#93;,
+            "Resource": "*"
+        &#125;,
+        &#123;
+            "Effect": "Allow",
+            "Action": &#91;
+                "lambda:ListEventSourceMappings",
+                "lambda:DeleteEventSourceMapping",
+                "lambda:UpdateEventSourceMapping",
+                "lambda:CreateEventSourceMapping",
+                "lambda:UpdateFunctionConfiguration",
+                "lambda:GetFunctionConcurrency",
+                "lambda:GetFunction",
+                "lambda:DeleteFunctionConcurrency",
+                "lambda:PutFunctionConcurrency",
+                "lambda:DeleteLayerVersion",
+                "lambda:GetLayerVersion",
+                "lambda:ListLayerVersions",
+                "iam:ListAttachedRolePolicies",
+                "iam:DetachRolePolicy",
+                "iam:AttachRolePolicy"
+             &#93;,
+            "Resource": "*"
+        &#125;,
+        &#123;
+            "Effect": "Allow",
+            "Action": &#91;
+                "iam:ListAttachedRolePolicies",
+                "iam:DetachRolePolicy",
+                "iam:AttachRolePolicy"
+            &#93;,
+            "Resource": "*"
+        &#125;,
+        &#123;
+            "Effect": "Allow",
+            "Action": &#91;
+                "rds:DescribeDBClusters",
+                "rds:DescribeDBInstances",
+                "rds:DeleteDBInstance",
+                "rds:RebootDBInstance"
+            &#93;,
+            "Resource": "*"
+        &#125;
+    &#93;
+&#125;
+</div>
+</details>
 
 ## Default Validations
 
