@@ -2,7 +2,7 @@
 sidebar_position: 2
 description: This tutorial helps you get started with Harness CI and explore some of the features that make it four times faster than the leading competitor.
 keywords: [CI]
-slug: /build-code/fastest-ci-tool
+slug: /build-code/fastest-ci
 ---
 
 # Building Your Application Fast
