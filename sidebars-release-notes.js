@@ -54,7 +54,7 @@ const sidebars = {
         },
         {
           type: "category",
-          label: "Continuous Delivery",
+          label: "Continuous Delivery & GitOps",
           link: {
             type: "generated-index",
             slug: "continuous-delivery",

@@ -27,16 +27,22 @@ import TabItem from '@theme/TabItem';
 
 1. Fork the repository https://github.com/keen-software/jhttp into your GitHub account.
 2. Follow the **Get Started** wizard in Harness CI.
-   ```mdx-code-block
-   <Tabs>
-     <TabItem value="newaccount" label="New account" default>
-       If you are signing in to Harness for the first time, select the <strong>Continuous Integration</strong> module after your initial sign in. This brings you to the <strong>Get Started</strong> wizard.
-     </TabItem>
-     <TabItem value="existingaccount" label="Existing account">
-       If you have an existing Harness account, either create a new project or select an existing project, and then select the <strong>Continuous Integration</strong> module. In the <strong>Project</strong> pane, expand the <strong>Project Setup</strong> menu, and then select <strong>Get Started</strong>.
-     </TabItem>
-   </Tabs>
-   ```
+
+```mdx-code-block
+<Tabs>
+<TabItem value="newaccount" label="New account" default>
+```
+[Sign up](https://app.harness.io/auth/#/signup/?module=ci) for a new Harness account. Select the **Continuous Integration** module after your initial sign in. This brings you to the **Get Started** wizard.
+```mdx-code-block
+</TabItem>
+<TabItem value="existingaccount" label="Existing account">
+```
+[Log in](https://app.harness.io/auth/#/signin) to your Harness account. You can either create a new project or select an existing project, and then select the **Continuous Integration** module. In the **Project** pane, expand the **Project Setup** menu, and then select **Get Started**.
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
 3. When you are prompted to select a repository, search for **jhttp**, select the repository that you forked in the earlier step, and then select **Configure Pipeline**.
 4. Select **Starter Pipeline**, and then select **Create Pipeline**.
 

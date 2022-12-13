@@ -1,15 +1,15 @@
 ---
-sidebar_position: 2
-description: This tutorial helps you get started with Harness CI and explore some of the features that make it four times faster than the leading competitor.
+sidebar_position: 1
+description: This tutorial helps you get started with Harness CI and explore some of the features that make it four times faster than GitHub Actions.
 keywords: [CI]
 slug: /build-code/fastest-ci
 ---
 
-# Building Your Application Fast
+# Build your applications fast
 
 ## Harness CI Overview
 
-Harness CI is a modern Continuous Integration platform that empowers busy teams to automate their build, test, and release workflows using a powerful, cloud-native pipeline engine. 
+Harness CI is a modern Continuous Integration solution that empowers busy teams to automate their build, test, and release workflows using a powerful, cloud-native pipeline engine. 
 
 Developers are frustrated with the time it takes to ship code. 
 
@@ -19,7 +19,7 @@ Harness CI is built on Drone and over the last 10 years have been focussing on s
 
 Harness CI comes with optimized defaults with hosted builds so you don’t have to set up and manage infrastructure or optimize caching and other technologies to improve build times.
 
-You can get started quickly with any language in Harness CI, within 60 seconds with out-of-the-box starter templates and code-first development. You can connect to any SCM system, build any app for any platform, and host it anywhere.
+You can get started quickly with any language in Harness CI, within 60 seconds with out-of-the-box starter templates and code-first development. You can connect to any Source Code Management (SCM) system, build any app for any platform, and host it anywhere.
 
 ![CI Getting Started](static/ci-tutorial-fast/cigettingstartedtemplates.png)
 
@@ -32,17 +32,23 @@ import TabItem from '@theme/TabItem';
 
 1. Fork the repository [https://github.com/rustd/jhttp](https://github.com/rustd/jhttp) into your GitHub account.
 2. Follow the **Get Started** wizard in Harness CI.
-   ```mdx-code-block
-   <Tabs>
-     <TabItem value="newaccount" label="New account" default>
-       If you are signing in to Harness for the first time, select the <strong>Continuous Integration</strong> module after your initial sign in. This brings you to the <strong>Get Started</strong> wizard.
-     </TabItem>
-     <TabItem value="existingaccount" label="Existing account">
-       If you have an existing Harness account, either create a new project or select an existing project, and then select the <strong>Continuous Integration</strong> module. In the <strong>Project</strong> pane, expand the <strong>Project Setup</strong> menu, and then select <strong>Get Started</strong>.
-     </TabItem>
-   </Tabs>
-   ```
-3. If you are signing in to Harness for the first time, select the Continuous Integration module after your initial sign in. This brings you to the Get Started wizard.
+
+```mdx-code-block
+<Tabs>
+<TabItem value="newaccount" label="New account" default>
+```
+[Sign up](https://app.harness.io/auth/#/signup/?module=ci) for a new Harness account. Select the **Continuous Integration** module after your initial sign in. This brings you to the **Get Started** wizard.
+```mdx-code-block
+</TabItem>
+<TabItem value="existingaccount" label="Existing account">
+```
+[Log in](https://app.harness.io/auth/#/signin) to your Harness account. You can either create a new project or select an existing project, and then select the **Continuous Integration** module. In the **Project** pane, expand the **Project Setup** menu, and then select **Get Started**.
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
+3. In the **Which code repository do you use** step, select GitHub and then select either the **OAuth** or the **Access Token** as the authentication method that Harness CI will use to connect to your GitHub account. Verify that the authentication is setup correctly using the **Test Connection** button.
 4. When you are prompted to select a repository, search for jhttp, select the repository that you forked in the earlier step, and then select **Configure Pipeline**.
 5. Select **Starter Pipeline**, and then select **Create Pipeline**.
 6. From the left pane, select **Pipelines**, and then select your jhttp pipeline from the list.
@@ -68,7 +74,7 @@ import TabItem from '@theme/TabItem';
 1. In the **Pipeline Studio**, select **Run**.​
 2. In the **Build Type** field, select **Git Branch**, and then enter **main** in the **Branch Name** field.
 3. Select **Run Pipeline**.
-
+4. You can see the pipeline execute the steps in the Execution View and see that the build artifact is available on the **Artifacts** tab.
 
 ## Next steps
 ### Build & test Apache Kafka 4x faster on Harness CI 
