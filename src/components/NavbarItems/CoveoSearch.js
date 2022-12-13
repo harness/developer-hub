@@ -125,9 +125,11 @@ const CoveoSearch = () => {
         });
         Coveo.$$(coveoRoot).on("afterInitialization", function (e, args) {
           Coveo.state(coveoRoot, "f:@commonsource", ["Developer Hub"]);
+          /* disable auto-focus @2022-12-12
           document
             .querySelector(".CoveoSearchbox .magic-box-input input")
             .focus();
+          */
 
           // hacked into Coveo searchbox
           const elemSearchbox = searchboxRoot.getElementsByTagName("input")[0];

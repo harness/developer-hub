@@ -229,6 +229,7 @@
   --ifm-navbar-padding-vertical: calc(var(--ifm-spacing-vertical) * 0.75);
   --ifm-navbar-height: 4.25rem;
 }
+
 html {
   font-size: 16px;
   -moz-osx-font-smoothing: grayscale;
@@ -360,11 +361,12 @@ body {
   color: var(--mod-ce-200);
 }
 
-/* hide the algolia logo */
+/* hide the algolia logo
 .DocSearch-Logo,
 a[aria-label="Search by Algolia"] {
   display: none;
 }
+*/
 
 .flexContainer {
   display: flex;
