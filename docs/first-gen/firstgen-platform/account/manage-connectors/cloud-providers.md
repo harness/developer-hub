@@ -16,7 +16,7 @@ See the How-tos for adding these providers:
 * [Add Google Cloud Platform Cloud Provider](add-google-cloud-platform-cloud-provider.md)
 * [Add Amazon Web Services Cloud Provider](add-amazon-web-services-cloud-provider.md)
 * [Add Microsoft Azure Cloud Provider](add-microsoft-azure-cloud-provider.md)
-* [Add Pivotal Cloud Foundry Cloud Provider](add-pivotal-cloud-foundry-cloud-provider.md)
+* [Add Tanzu Application Service (TAS) Provider](add-pivotal-cloud-foundry-cloud-provider.md)
 * [Add Physical Data Center as Cloud Provider](add-physical-data-center-cloud-provider.md)
 * [Add SpotInst Cloud Provider](add-spot-inst-cloud-provider.md)
 

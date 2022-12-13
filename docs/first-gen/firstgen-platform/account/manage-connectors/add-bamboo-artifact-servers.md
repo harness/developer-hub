@@ -12,18 +12,18 @@ Connect your Bamboo artifact servers with Harness.
 
 In this topic:
 
-* [Before You Begin](#before_you_begin)
-* [Review: Build Plan Permissions](#review_build_plan_permissions)
-* [Step 1: Select the Bamboo Artifact Server](#step_1_select_the_bamboo_artifact_server)
-* [Step 2: Display Name](#step_2_display_name)
-* [Step 3: Bamboo URL](#step_3_bamboo_url)
-* [Step 4: Enter the Credentials](#step_4_enter_the_credentials)
+* [Before You Begin](#before-you-begin)
+* [Review: Build Plan Permissions](#review-build-plan-permissions)
+* [Step 1: Select the Bamboo Artifact Server](#step-1-select-the-bamboo-artifact-server)
+* [Step 2: Display Name](#step-2-display-name)
+* [Step 3: Bamboo URL](#step-3-bamboo-url)
+* [Step 4: Enter the Credentials](#step-4-enter-the-credentials)
 
-### Before You Begin
+## Before You Begin
 
 * See [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts).
 
-### Review: Build Plan Permissions
+## Review: Build Plan Permissions
 
 Make sure the connected user account has the following required permissions to the Bamboo Server.
 
@@ -32,7 +32,7 @@ Make sure the connected user account has the following required permissions to t
 
 For more information, see [Bamboo Permissions](https://confluence.atlassian.com/bamboo/bamboo-permissions-369296034.html).
 
-### Step 1: Select the Bamboo Artifact Server
+## Step 1: Select the Bamboo Artifact Server
 
 To connect to an artifact server, do the following:
 
@@ -42,15 +42,15 @@ To connect to an artifact server, do the following:
 4. Click **Add Artifact Server**.
 5. In **Type**, click **Bamboo**.
 
-### Step 2: Display Name
+## Step 2: Display Name
 
 Enter a name for the Bamboo Server. This is the name you will use to identify this connection when adding an Artifact Source to a Harness Service.
 
-### Step 3: Bamboo URL
+## Step 3: Bamboo URL
 
 Enter the URL of the Bamboo server.
 
-### Step 4: Enter the Credentials
+## Step 4: Enter the Credentials
 
 Enter the username and the secret.
 

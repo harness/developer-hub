@@ -10,13 +10,15 @@ helpdocs_is_published: true
 
 All of the Delegate settings include proxy settings you can use to change how the Delegate connects to the Harness Manager.
 
-By default, the Harness Delegate uses HTTP and HTTPS in its Proxy Scheme settings.In this topic:
+By default, the Harness Delegate uses HTTP and HTTPS in its Proxy Scheme settings.
+
+In this topic:
 
 * [Shell Script Proxy Settings](configure-delegate-proxy-settings.md#shell-script-proxy-settings)
 * [Docker Proxy Settings](configure-delegate-proxy-settings.md#docker-proxy-settings)
 * [Kubernetes Proxy Settings](configure-delegate-proxy-settings.md#kubernetes-proxy-settings)
 
-#### Shell Script Proxy Settings
+## Shell Script Proxy Settings
 
 Run the **setup-proxy.sh** script included in the Delegate download and provide the proxy information.
 
@@ -47,7 +49,7 @@ PROXY_MANAGER=false
 
 Do not edit the **setup-proxy.sh** script. Simply run the script and provide the proxy information.
 
-#### Docker Proxy Settings
+## Docker Proxy Settings
 
 The proxy settings are in the **launch-harness-delegate.sh** file:
 
@@ -61,7 +63,7 @@ The proxy settings are in the **launch-harness-delegate.sh** file:
 -e PROXY_MANAGER= \  
 -e NO_PROXY= \
 ```
-#### Kubernetes Proxy Settings
+## Kubernetes Proxy Settings
 
 The proxy settings are in the **harness-delegate.yaml** file:
 
@@ -92,7 +94,7 @@ The proxy settings are in the **harness-delegate.yaml** file:
 ```
 The `PROXY_MANAGER` setting determines whether the Delegate bypasses proxy settings to reach the Harness Manager in the cloud. If you want to bypass, enter `false`.
 
-##### In-Cluster Kubernetes Delegate with Proxy
+## In-Cluster Kubernetes Delegate with Proxy
 
 If an in-cluster Kubernetes Delegate has a proxy configured, then `NO_PROXY` must contain the cluster master IP. This enables the Delegate to skip the proxy for in-cluster connections.
 

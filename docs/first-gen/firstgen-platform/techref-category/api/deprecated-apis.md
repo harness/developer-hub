@@ -1,7 +1,7 @@
 ---
 title: Deprecated API Features
 description: Contains a list of currently-deprecated API features with their replacements.
-# sidebar_position: 2
+sidebar_position: 330
 helpdocs_topic_id: 22e87m2sjt
 helpdocs_category_id: l2p3i03l4a
 helpdocs_is_private: false

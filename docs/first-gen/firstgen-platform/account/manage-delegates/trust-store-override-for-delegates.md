@@ -7,6 +7,9 @@ helpdocs_category_id: gyd73rp7np
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
+```mdx-code-block
+import image_1 from './static/trust-store-override-for-delegates-00.png'
+```
 
 Harness Delegates perform most Harness tasks. Delegates make outbound TLS/SSL connections to the Harness SaaS platform to obtain these task assignments. The TLS/SSL connection from the Delegate to Harness requires a trusted certificate.
 
@@ -18,15 +21,15 @@ This topic describes how to limit the truststore used with Harness Delegates and
 
 In this topic:
 
-* [Before You Begin](#before_you_begin)
-* [Required: Harness Trusted Certificate](#required_harness_trusted_certificate)
-* [Step 1: Stop the Delegate](#step_1_stop_the_delegate)
-* [Step 2: Create Truststore with Harness Trusted Certificate](#step_2_create_truststore_with_harness_trusted_certificate)
-* [Step 3: Add 3rd Party Certificates to the Truststore](#step_3_add_3rd_party_certificates_to_the_truststore)
-* [Step 4: Update the Delegate JAVA\_OPTS Environment Variable](#step_4_update_the_delegate_java_opts_environment_variable)
-* [Step 5: Start the Delegate](#step_5_start_the_delegate)
+* [Before You Begin](#before-you-begin)
+* [Required: Harness Trusted Certificate](#required-harness-trusted-certificate)
+* [Step 1: Stop the Delegate](#step-1-stop-the-delegate)
+* [Step 2: Create Truststore with Harness Trusted Certificate](#step-2-create-truststore-with-harness-trusted-certificate)
+* [Step 3: Add 3rd Party Certificates to the Truststore](#step-3-add-3rd-party-certificates-to-the-truststore)
+* [Step 4: Update the Delegate JAVA\_OPTS Environment Variable](#step-4-update-the-delegate-java-opts-environment-variable)
+* [Step 5: Start the Delegate](#step-5-start-the-delegate)
 
-### Before You Begin
+## Before You Begin
 
 * [Harness Delegate FAQs](https://docs.harness.io/article/migeq3achl-harness-delegate-faqs)
 * [Harness Delegate Overview](delegate-installation.md)
@@ -34,11 +37,15 @@ In this topic:
 * [Install the Harness Shell Script Delegate](install-shellscript-delegate.md)
 * [Install the Harness Kubernetes Delegate](install-kubernetes-delegate.md)
 
-### Required: Harness Trusted Certificate
+## Required: Harness Trusted Certificate
 
 TLS/SSL communication between the Harness Delegate and Harness SaaS uses a certificate from the DigiCert Global Root CA:
 
-![](./static/trust-store-override-for-delegates-00.png)
+```mdx-code-block
+<img src={image_1} height="200" width="400" />
+```
+
+
 For Delegates to communicate with Harness, this root CA certificate needs to be installed in the Delegate's truststore.
 
 The public key for the certificate is publicly available and can be downloaded. Here it is:
@@ -70,17 +77,17 @@ CAUw7C29C79Fv1C5qfPrmAESrciIxpg0X40KPMbp1ZWVbd4=
 ```
 This topic describes how to import this certificate into a new truststore.
 
-#### 3rd Party Certificates
+### 3rd Party Certificates
 
 The Harness Delegate also connects to all of the 3rd party tools you are using with Harness. You will need to include those certificates in the Delegate truststore also.
 
 For example, if you are pulling a Docker image from an artifact server like Nexus or DockerHub, the truststore will need the certificates required by those tools.
 
-### Step 1: Stop the Delegate
+## Step 1: Stop the Delegate
 
 You set up the truststore before running a Delegate. You can stop a running Delegate, set it up to use the new truststore, and then restart it.
 
-#### Shell Script Delegate
+### Shell Script Delegate
 
 To stop a Shell Script Delegate, run:
 
@@ -88,7 +95,7 @@ To stop a Shell Script Delegate, run:
 ```
 ./stop.sh
 ```
-#### Docker Delegate
+### Docker Delegate
 
 To stop a Docker Delegate, run:
 
@@ -96,11 +103,11 @@ To stop a Docker Delegate, run:
 ```
 docker stop harness/delegate
 ```
-#### Kubernetes Delegate
+### Kubernetes Delegate
 
 You don't need to stop the Kubernetes Delegate. You can simply run `kubectl apply` again once you have updated the Kubernetes Delegate YAML file.
 
-### Step 2: Create Truststore with Harness Trusted Certificate
+## Step 2: Create Truststore with Harness Trusted Certificate
 
 Let's walk through the steps of creating a new truststore and importing the Harness Trusted Certificate.
 
@@ -145,7 +152,7 @@ This command creates a file named **trustStore.jks** and imports DigiCert global
 
 **Note where the trustStore.jks is located.** You will provide this path to the Delegate as an environment variable.
 
-### Step 3: Add 3rd Party Certificates to the Truststore
+## Step 3: Add 3rd Party Certificates to the Truststore
 
 You should import any certificates required by the 3rd party tools you use with Harness.
 
@@ -153,11 +160,11 @@ In most cases, you can navigate to the 3rd party tool's website portal and downl
 
 To add multiple certificates in the trustStore.jks you created, simply run the `keytool -import` command multiple times with the different aliases and certificate PEM files for the certificates you are importing.
 
-### Step 4: Update the Delegate JAVA\_OPTS Environment Variable
+## Step 4: Update the Delegate JAVA\_OPTS Environment Variable
 
 Now that you have a new truststore, you need to update the Delegate JAVA\_OPTS environment variable to point to the location of the new truststore file.
 
-#### Shell Script Delegate
+### Shell Script Delegate
 
 SSH into the host and navigate to where the start.sh for the Delegate is located.
 
@@ -169,7 +176,7 @@ export JAVA_OPTS="-Djavax.net.ssl.trustStore=<path/to/trustStore.jks> -Djavax.ne
 ```
 Next, you can run the Delegate install script, described in the next step.
 
-#### Docker Delegate
+### Docker Delegate
 
 ​For the Docker Delegate, you need to edit the Delegate shell file. The file is named **launch-harness-delegate.sh**.
 
@@ -186,7 +193,7 @@ sudo docker run -d --restart unless-stopped --hostname=$(hostname -f) \
 ```
 Next, you can run the Delegate install script, described in the next step.
 
-#### Kubernetes Delegate
+### Kubernetes Delegate
 
 For the Kubernetes Delegate, you need to edit the Delegate YAML file. It's named **harness-delegate.yaml**.
 
@@ -225,11 +232,11 @@ For example:
 ```
 Next, you can apply the Delegate YAML file, described in the next step.
 
-### Step 5: Start the Delegate
+## Step 5: Start the Delegate
 
 Now that the JAVA\_OPTS environment variable is updated, you can start the Delegate.
 
-#### Shell Script Delegate
+### Shell Script Delegate
 
 To start the Delegate, you will need to run the following command where the start.sh for the Delegate is located:
 
@@ -239,7 +246,7 @@ To start the Delegate, you will need to run the following command where the star
 ```
 The Delegate will start and in a few moments you will see it listed in the **Harness Delegates** page.
 
-#### Docker Delegate
+### Docker Delegate
 
 Run the start script (`$ ./launch-harness-delegate.sh`). You will see the Docker image pull, for example:
 
@@ -251,7 +258,7 @@ Status: Downloaded newer image for harness/delegate:latest
 ```
 The Delegate will start and in a few moments you will see it listed in the **Harness Delegates** page.
 
-#### Kubernetes Delegate
+### Kubernetes Delegate
 
 Apply the Kubernetes Delegate YAML file you edited:
 
@@ -261,7 +268,7 @@ kubectl apply -f harness-delegate.yaml
 ```
 The Delegate will start and in a few moments you will see it listed in the **Harness Delegates** page.
 
-### See Also
+## See Also
 
 * [Add Self-Signed Certificates for Delegate Connections](add-self-signed-certificates-for-delegate-connections.md)
 

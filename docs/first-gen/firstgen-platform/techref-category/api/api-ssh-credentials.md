@@ -1,7 +1,7 @@
 ---
 title: SSH Credentials API
 description: Sample GraphQL queries to create, read, update, and delete Harness secrets that manage SSH keys.
-# sidebar_position: 2
+sidebar_position: 250
 helpdocs_topic_id: v65okfwfl2
 helpdocs_category_id: l2p3i03l4a
 helpdocs_is_private: false
@@ -10,22 +10,16 @@ helpdocs_is_published: true
 
 This topic lists sample queries for CRUD operations that create, read, update, and delete [Harness secrets](../../security/secrets-management/secret-management.md) that manage SSH keys.
 
-The `!` following the type means that this field is *required*.In this topic:
+:::note
+The `!` following the type means that this field is *required*.
+:::
 
-* [Before You Begin](api-ssh-credentials.md#before-you-begin)
-* [Get a Secret](api-ssh-credentials.md#get-a-secret)
-* [Get a Secret by Name](api-ssh-credentials.md#get-a-secret-by-name)
-* [Create an SSH Credentials Secret](api-ssh-credentials.md#create-an-ssh-credentials-secret)
-* [Update a Secret](api-ssh-credentials.md#update-a-secret)
-* [Delete a Secret](api-ssh-credentials.md#delete-a-secret)
-* [Related Topics](api-ssh-credentials.md#related-topics)
-
-### Before You Begin
+## Before You Begin
 
 * [​Introduction to Harness GraphQL API](harness-api.md)
 * [Harness API Explorer](harness-api-explorer.md)
 
-### Get a Secret
+## Get a Secret
 
 This sample retrieves an existing SSH Credentials secret by its ID.
 
@@ -53,7 +47,7 @@ query{
 ```
 The `authenticationType` element supports credentials using both `SSHAuthentication` and `KerberosAuthentication`.
 
-### Get a Secret by Name
+## Get a Secret by Name
 
 This sample uses a `secretByName` query to retrieve an existing secret by its name.
 
@@ -78,7 +72,7 @@ query{
   }  
 }
 ```
-### Create an SSH Credentials Secret
+## Create an SSH Credentials Secret
 
 This sample creates a secret. The required `CreateSecretInput` input must include a `SecretType`.
 
@@ -106,7 +100,7 @@ This sample creates a secret. The required `CreateSecretInput` input must includ
  }  
 }
 ```
-#### Query Variables: Inline Key
+### Query Variables: Inline Key
 
  For the above query, these sample variables supply the `SecretType` and an inline SSH key.
 
@@ -144,7 +138,7 @@ You must provide the inline SSH key as a Base64-encoded string.
   }  
 }
 ```
-#### Query Variables: File Path
+### Query Variables: File Path
 
 These sample variables specify the `SecretType`, and reference the SSH Key by its file path.
 
@@ -182,7 +176,7 @@ These sample variables specify the `SecretType`, and reference the SSH Key by it
   }  
 }
 ```
-#### Query Variables: Password
+### Query Variables: Password
 
 These sample variables supply an inline password for the new secret.
 
@@ -220,7 +214,7 @@ These sample variables supply an inline password for the new secret.
   }  
 }
 ```
-#### Query Variables: Kerberos Keytab
+### Query Variables: Kerberos Keytab
 
 These sample variables supply a Kerberos keytab for the new secret.
 
@@ -259,7 +253,7 @@ These sample variables supply a Kerberos keytab for the new secret.
   }  
 }
 ```
-#### Query Variables: Kerberos Password
+### Query Variables: Kerberos Password
 
 These sample variables supply a Kerberos password for the new secret.
 
@@ -298,7 +292,7 @@ These sample variables supply a Kerberos password for the new secret.
   }  
 }
 ```
-### Update a Secret
+## Update a Secret
 
 This sample updates an existing secret. The required `UpdateSecretInput` input must supply a `secretType` and an `id`.
 
@@ -326,7 +320,7 @@ mutation($secret: UpdateSecretInput!){
  }  
 }
 ```
-#### Query Variables
+### Query Variables
 
 These sample variables supply the required `secretType` and `id`.
 
@@ -366,7 +360,7 @@ These sample variables supply the required `secretType` and `id`.
 }  
 
 ```
-### Delete a Secret
+## Delete a Secret
 
 This sample deletes a specified secret. The required `DeleteSecretInput` input must supply a `secretId` and a `secretType`.
 
@@ -378,7 +372,7 @@ mutation($secret: DeleteSecretInput!){
   }  
 }
 ```
-#### Query Variables
+### Query Variables
 
 Here are query variables for the above `deleteSecret` operation.
 
@@ -391,7 +385,7 @@ Here are query variables for the above `deleteSecret` operation.
   }  
 }
 ```
-### Related Topics
+## Related Topics
 
 * [Harness API](harness-api.md)
 * [Encrypted Text API](api-encrypted-text.md)

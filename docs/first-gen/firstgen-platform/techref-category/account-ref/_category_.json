@@ -1,12 +1,12 @@
 {
-  "label": "Delegates FirstGen",
+  "label": "Account Reference FirstGen",
   "position": 50,
   "collapsible": "true",
   "collapsed": "true",
   "className": "red",
   "link": {
     "type": "generated-index",
-    "title": "Delegates FirstGen"
+    "title": "Account Reference FirstGen"
   },
   "customProps": {
     "helpdocs_category_id": "7l6owq61ja"

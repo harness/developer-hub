@@ -8,9 +8,13 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+:::note
 Currently, this feature is behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature. Feature Flags can only be removed for Harness Professional and Essentials editions. Once the feature is released to a general audience, it's available for Trial and Community Editions.  
   
-See [New features added to Harness](https://changelog.harness.io/?categories=fix,improvement,new) and [Features behind Feature Flags](https://changelog.harness.io/?categories=early-access) (Early Access) for Feature Flag information.Delegate tokens are used by Harness to encrypt communication between Harness Delegates and the Harness Manager. By default, when a new Harness account is created, all Harness Delegates in that account include the same token.
+See [New features added to Harness](https://changelog.harness.io/?categories=fix,improvement,new) and [Features behind Feature Flags](https://changelog.harness.io/?categories=early-access) (Early Access) for Feature Flag information.
+:::
+
+Delegate tokens are used by Harness to encrypt communication between Harness Delegates and the Harness Manager. By default, when a new Harness account is created, all Harness Delegates in that account include the same token.
 
 You can further secure Delegate to Harness communication by replacing the default Delegate token with new tokens. You can rotate and revoke Delegate tokens per your governance policies and replace revoked tokens with custom tokens when needed.
 
@@ -28,7 +32,7 @@ In this topic:
 * [Option: Revoke Tokens](secure-delegates-with-tokens.md#option-revoke-tokens)
 * [See Also](secure-delegates-with-tokens.md#see-also)
 
-### Before You Begin
+## Before You Begin
 
 * [Delegate Installation Overview](delegate-installation-overview.md)
 * [Install the Harness Kubernetes Delegate](install-kubernetes-delegate.md)
@@ -37,7 +41,7 @@ In this topic:
 * [Install the Harness Helm Delegate](using-the-helm-delegate.md)
 * [Install the Harness Docker Delegate](install-docker-delegate.md)
 
-### Step 1: Generate a New Token
+## Step 1: Generate a New Token
 
 In Harness, click **Setup**.
 
@@ -55,23 +59,25 @@ The new token is created and its value is copied to your system clipboard. The n
 Save the new token value. You cannot retrieve the token value after this.
 
 ![](./static/secure-delegates-with-tokens-21.png)
+
 Now you can update the Delegate(s) with the new token.
 
-### Option: Install a New Delegate with New Token
+## Option: Install a New Delegate with New Token
 
 When you install a new Delegate, you can select the token to use:
 
 ![](./static/secure-delegates-with-tokens-22.png)
+
 After the new Delegate registers with Harness, you can:
 
 * Remove any Delegates that use old tokens
 * Revoke the old tokens
 
-### Option: Update and Restart Existing Delegate
+## Option: Update and Restart Existing Delegate
 
 You can update an existing Delegate with the new token value and then restart the Delegate.
 
-#### Kubernetes Delegate
+### Kubernetes Delegate
 
 The Delegate is set up using the **harness-delegate.yaml** you downloaded originally.
 
@@ -95,7 +101,7 @@ Run `kubectl apply -f harness-delegate.yaml`
 
 The Delegate pods restart automatically. The pods restart with the updated settings.
 
-#### Shell Script Delegate
+### Shell Script Delegate
 
 You can rotate tokens for shell script delegates using one of the following methods:
 
@@ -104,7 +110,7 @@ You can rotate tokens for shell script delegates using one of the following meth
 
 If your delegates were not recently installed, the shart.sh, config-watcher.yaml, and config-delegate.yaml files might refer to the token name `accountSecret`. Replace these references with `delegateToken`. 
 
-#### Docker Delegate
+### Docker Delegate
 
 Docker doesn't provide a way to modify an environment variable in a running container because the operating system doesn't provide a way to modify an environment variable in a running process. You must destroy and recreate the container.
 
@@ -128,7 +134,7 @@ Create a new container: `./launch-harness-delegate.sh`
 
 You can verify that the environment variable has the new token using `docker exec [container ID] env`.
 
-#### ECS Task Delegate
+### ECS Task Delegate
 
 Update the Delegate by updating the existing ECS task and container instances.
 
@@ -168,7 +174,7 @@ aws ecs start-task \
     --task-definition [family and revision (family:revision ) or full ARN of the task definition] \  
     --container-instances [container instance IDs or full ARN entries for the container instances]
 ```
-#### Helm Delegate
+### Helm Delegate
 
 The Delegate is set up using the Helm values YAML file, **harness-delegate-values.yaml**, that you originally downloaded.
 
@@ -198,7 +204,7 @@ If you are installing into a specific namespace, you will need the `--namespace
 
 `helm install harness-helm-repo/harness-delegate --name helm-delegate-doc -f harness-delegate-values.yaml --namespace doc-example`
 
-### Option: Revoke Tokens
+## Option: Revoke Tokens
 
 To revoke unused token, in Harness, click **Setup**.
 
@@ -209,11 +215,12 @@ Click **Delegate Tokens**.
 Here you can see, create, and revoke all Delegate tokens.
 
 ![](./static/secure-delegates-with-tokens-23.png)
+
 Select the token you want to revoke, and click **Revoke**.
 
 Click **Confirm**. The token is revoked. The Harness Manager will not accept connections from any Delegates using this revoked token.
 
-### See Also
+## See Also
 
 * [Approve or Reject Harness Delegates](approve-or-reject-harness-delegates.md)
 

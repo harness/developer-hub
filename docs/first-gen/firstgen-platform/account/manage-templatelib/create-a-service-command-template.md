@@ -12,20 +12,22 @@ You can use Template Library to create templates of scripts and other commands a
 
 To add bash and PowerShell commands to Services, you can create templates using a Service Command template. You can add variables to the template and have values supplied to the variables in the Service using the template.
 
-Only members of a Harness User Group with the **Manage Template Library** permission may create, edit, and delete Account and Application-level templates. Members of a User Group with this permission disabled can view and link to templates only.In this topic:
+Only members of a Harness User Group with the **Manage Template Library** permission may create, edit, and delete Account and Application-level templates. Members of a User Group with this permission disabled can view and link to templates only.
 
-* [Before You Begin](create-a-service-command-template.md#before-you-begin)
-* [Review: Differences between Service Command and Shell Script Template Types](#review_differences_between_service_command_and_shell_script_template_types)
-* [Step: Create a Service Command](create-a-service-command-template.md#step-create-a-service-command)
-* [Next Steps](create-a-service-command-template.md#next-steps)
+In this topic:
 
-### Before You Begin
+* [Before You Begin](#before-you-begin)
+* [Review: Differences between Service Command and Shell Script Template Types](#review-differences-between-service-command-and-shell-script-template-types)
+* [Step: Create a Service Command](#step-create-a-service-command)
+* [Next Steps](#next-steps)
+
+## Before You Begin
 
 * [Account and Application Templates](../../../continuous-delivery/concepts-cd/deployment-types/use-templates.md)
 * [Add a Service](../../../continuous-delivery/model-cd-pipeline/setup-services/service-configuration.md)
 * [Add a Workflow](../../../continuous-delivery/model-cd-pipeline/workflows/workflow-configuration.md)
 
-### Review: Differences between Service Command and Shell Script Template Types
+## Review: Differences between Service Command and Shell Script Template Types
 
 Harness provides different methods for executing scripts in the Service Command and Shell Script Template types:
 
@@ -45,7 +47,7 @@ When you apply the template, you use the **Execute on Delegate** option to run t
 * **Run on target host:** Harness moves the complete script to the target host (VM, pod, etc), and then executes the script.
 * **Run on Delegate:** Harness doesn't copy any file to the target host. Harness executes the script on the Delegate directly.
 
-### Step: Create a Service Command
+## Step: Create a Service Command
 
 To create a Service Command, do the following:
 
@@ -66,13 +68,17 @@ To create a Service Command, do the following:
 11. Click **Link** to link to the template. You can then edit the template in your Service, providing values for the variables in the template. When you use this Service in a Workflow, the Service command will be available as a step.![](./static/create-a-service-command-template-21.png)
 
 
-### Step: Run Service Commands From a Template Library in a Workflow
+## Step: Run Service Commands From a Template Library in a Workflow
 
 One of the steps you can include in a Harness Workflow is a **Service Command** step.
 
 You can link a Service Command to a Workflow as a step and its script will be run on the target host(s) or Harness Delegate.
 
-Template variable names cannot contain hyphens or dots (`.`) between names.In a Harness Application, open a Workflow and then click **Add Step**.
+:::note
+Template variable names cannot contain hyphens or dots (`.`) between names.
+:::
+
+In a Harness Application, open a Workflow and then click **Add Step**.
 
 1. Select **Template Library** to select the Service Command from the Template Library. You can also select **Application Templates** to select from the command from the Application Template Library.
 2. Locate your command and click **Link**.
@@ -92,7 +98,7 @@ You can use Selectors to select which Harness Delegates to use when executing th
 
 7. Click **Submit**.
 
-### Next Steps
+## Next Steps
 
 * [Create an HTTP Workflow Step Template](account-and-application-templates.md)
 * [Create a Shell Script Workflow Step Template](create-a-shell-script-workflow-step-template.md)

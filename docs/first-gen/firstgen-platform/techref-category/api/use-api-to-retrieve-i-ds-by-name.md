@@ -1,7 +1,7 @@
 ---
 title: Use API to Retrieve IDs by Name
 description: Describes how to use API to retrieve IDs by name.
-# sidebar_position: 2
+sidebar_position: 220
 helpdocs_topic_id: iuswbbvwnm
 helpdocs_category_id: l2p3i03l4a
 helpdocs_is_private: false
@@ -12,25 +12,18 @@ You can retrieve `applicationId`, `userIds`, and `userGroupId` object IDs (respe
 
 Below are the sample queries for each of these retrieval operations. It is followed by round-trip examples of looking up an ID by name and then passing it as an argument to a second query.
 
-In this topic:
 
-* [Before You Begin](use-api-to-retrieve-i-ds-by-name.md#before-you-begin)
-* [Fetch Application ID by Name](use-api-to-retrieve-i-ds-by-name.md#fetch-application-id-by-name)
-* [Fetch User ID and Details by Name](use-api-to-retrieve-i-ds-by-name.md#fetch-user-id-and-details-by-name)
-* [Fetch User Group ID by Name](use-api-to-retrieve-i-ds-by-name.md#fetch-user-group-id-by-name)
-* [Round-Trip Example](use-api-to-retrieve-i-ds-by-name.md#round-trip-example)
-
-### Before You Begin
+## Before You Begin
 
 * [​Introduction to Harness GraphQL API](harness-api.md)
 * [Harness API Explorer](harness-api-explorer.md)
 * [API Schema and Structure](api-schema-and-structure.md)
 
-### Fetch Application ID by Name
+## Fetch Application ID by Name
 
 Use this sample query to get the `applicationId` for a Harness Application.
 
-##### Request
+### Request
 
 
 ```
@@ -40,7 +33,7 @@ Use this sample query to get the `applicationId` for a Harness Application.
   }  
 }
 ```
-##### Response
+### Response
 
 
 ```
@@ -52,11 +45,11 @@ Use this sample query to get the `applicationId` for a Harness Application.
   }  
 }
 ```
-### Fetch User ID and Details by Name
+## Fetch User ID and Details by Name
 
 Use this sample query to retrieve the `userGroupId` value for a Harness User and to confirm the user's name and email verification status.
 
-##### Request
+### Request
 
 
 ```
@@ -68,7 +61,7 @@ Use this sample query to retrieve the `userGroupId` value for a Harness User and
   }  
 }
 ```
-##### Response
+### Response
 
 
 ```
@@ -82,11 +75,11 @@ Use this sample query to retrieve the `userGroupId` value for a Harness User and
   }  
 }
 ```
-### Fetch User Group ID by Name
+## Fetch User Group ID by Name
 
 Use this sample query to retrieve the `userGroupId` value for a Harness User Group and to confirm the group's name.
 
-##### Request
+### Request
 
 
 ```
@@ -97,7 +90,7 @@ Use this sample query to retrieve the `userGroupId` value for a Harness User Gro
   }  
 }
 ```
-##### Response
+### Response
 
 
 ```
@@ -110,7 +103,7 @@ Use this sample query to retrieve the `userGroupId` value for a Harness User Gro
   }  
 }
 ```
-### Round-Trip Example
+## Round-Trip Example
 
 After using one of the above queries to obtain an object's ID, you can pass this ID to queries that require an ID argument.
 

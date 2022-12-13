@@ -1,7 +1,7 @@
 ---
 title: Harness StartExecution API Deep Dive
 description: This topic describes how to start executions using the StartExecution Harness API. You can start a Workflow and a Pipeline using APIs. For more information, see Trigger Workflows or Pipelines Using G…
-# sidebar_position: 2
+sidebar_position: 350
 helpdocs_topic_id: ga3ccymwce
 helpdocs_category_id: l2p3i03l4a
 helpdocs_is_private: false
@@ -12,32 +12,34 @@ This topic describes how to start executions using the `StartExecution` Harness 
 
 You can start a Workflow and a Pipeline using APIs. For more information, see [Trigger Workflows or Pipelines Using GraphQL API](trigger-workflow-or-a-pipeline-using-api.md) and [Harness Blog Post](https://community.harness.io/t/deployment-api-is-live/419). The API access is tied to an [API Key](../../security/access-management-howtos/api-keys.md) created in the Access Management section in Continuous Security.
 
-### Use Cases
+## Use Cases
 
 * Incorporate an API call in your Jenkins or another system to fire off the deployment (system to system interaction)
 * Create your own in-house CLI tool to trigger deployments
 * Start an execution using GraphQL queries via Harness API Explorer
 
-### Authentication
+## Authentication
 
 You can authenticate using **Logged-in User Session** or **Use API Key.** The authentication determines what data you can query and retrieve via API. By default, when you launch the **API Explorer**, you authenticate using a session key.
 
 For more information, see [Authenticate](harness-api-explorer.md#step-1-authenticate).
 
-### Authorization
+## Authorization
 
 The API authorization uses the API Token. The API token can be scoped to a Harness user group or multiple user groups.
 
 For list APIs, the data is returned based on your permissions. You are only allowed to see what your user group is authorized to read and have access to.
 
-#### Example
+### Example
 
 Add an API key scoped to two different permission groups:
 
 ![](./static/use-harness-start-execution-api-00.png)
+
 Below, the user can see the key with the **Permissions Inherited from** field:
 
 ![](./static/use-harness-start-execution-api-01.png)
+
 The permissions for these groups are tied to the token. The user or system that uses the token will only be authorized to perform the specific actions.
 
 These user groups do not have permissions to execute a production Pipeline. When deploying the Pipeline with the key, the API throws an error stating that the user is not authorized to deploy.
@@ -45,20 +47,20 @@ These user groups do not have permissions to execute a production Pipeline. When
 ![](./static/use-harness-start-execution-api-02.png)
 
 
-#### Note
+### Note
 
 * The authorization and authentication of the API don’t apply to any specific portion, the entire API follows this model.
 * Admins can rotate the API keys to avoid them being stale. To rotate, simply delete the old API key and create a new one.
 
-### Sample Queries
+## Sample Queries
 
 Here are the sample queries:
 
-#### Get Pipelines By Name
+### Get Pipelines By Name
 
 This sample query returns Pipeline name and the variables associated with it.
 
-##### Request
+#### Request
 
 
 ```
@@ -74,7 +76,7 @@ This sample query returns Pipeline name and the variables associated with it.
   }  
 }
 ```
-##### Response
+#### Response
 
 
 ```
@@ -104,11 +106,11 @@ This sample query returns Pipeline name and the variables associated with it.
   }  
 }
 ```
-#### Get Workflow By Name
+### Get Workflow By Name
 
 This sample query returns Workflow name and the variables associated with it.
 
-##### Request
+#### Request
 
 
 ```
@@ -125,7 +127,7 @@ This sample query returns Workflow name and the variables associated with it.
 }  
 
 ```
-##### Response
+#### Response
 
 
 ```
@@ -170,7 +172,7 @@ This sample query returns Workflow name and the variables associated with it.
   }  
 }
 ```
-### Deploy Fargate Production Pipeline
+## Deploy Fargate Production Pipeline
 
 This example has no Workflow variables, just a plain deployment.
 
@@ -260,11 +262,11 @@ You can also see your deployment in the Continuous Deployment page.
 ![](./static/use-harness-start-execution-api-03.png)
 
 
-### Deploy a Pipeline with Variables
+## Deploy a Pipeline with Variables
 
 The below sample shows how to deploy a Pipeline with variables.
 
-##### Query
+#### Query
 
 
 ```
@@ -283,7 +285,7 @@ mutation($startExecution: StartExecutionInput!){
   }  
 }
 ```
-##### Query with Variables
+#### Query with Variables
 
 
 ```
@@ -317,24 +319,27 @@ Proof that the Workflow variables are passed:
 **Branch**
 
 ![](./static/use-harness-start-execution-api-04.png)
+
 **H****ot fix**
 
 Since it was set to false all the stages are deployed.
 
 ![](./static/use-harness-start-execution-api-05.png)
+
 **skipCV**
 
 ![](./static/use-harness-start-execution-api-06.png)
+
 The end result:
 
 ![](./static/use-harness-start-execution-api-07.png)
 
 
-### Deploy a Workflow with Variables
+## Deploy a Workflow with Variables
 
 The following sample shows how to deploy a Workflow with variables.
 
-##### Query for the Execution
+#### Query for the Execution
 
 
 ```
@@ -353,7 +358,7 @@ mutation ($startExecution: StartExecutionInput!) {
   }  
 }
 ```
-##### Query Variables
+#### Query Variables
 
 
 ```
@@ -422,16 +427,17 @@ mutation ($startExecution: StartExecutionInput!) {
 The value was **master** for **branch**. The **branch** is successfully passed:
 
 ![](./static/use-harness-start-execution-api-08.png)
+
 The Prometheus step is skipped due to the set condition. **skipCV** was set to **true**.
 
 ![](./static/use-harness-start-execution-api-09.png)
 
 
-### Check the Status of Deployments Via API
+## Check the Status of Deployments Via API
 
 You can use the following queries to check the deployment status.
 
-#### For Pipeline Execution
+### For Pipeline Execution
 
 
 ```
@@ -446,7 +452,7 @@ query{
 }  
 
 ```
-#### For Workflow Execution
+### For Workflow Execution
 
 
 ```
@@ -469,7 +475,7 @@ query{
   }  
 }
 ```
-### Scripts for CLI Tools or System to System Interaction
+## Scripts for CLI Tools or System to System Interaction
 
 Here is a sample script with the `startExecution` API call:
 
@@ -513,7 +519,6 @@ You can use tools like [Insomnia](https://insomnia.rest/download/#mac) or [Postm
 
 3. Paste the command.  
   
-
 ```
 curl --request POST \  
   --url 'https://app.harness.io/gateway/api/graphql?accountId=<ACOUNTID> \  

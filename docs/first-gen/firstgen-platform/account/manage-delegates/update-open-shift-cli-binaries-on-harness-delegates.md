@@ -16,18 +16,18 @@ Updating the OpenShift CLI is as simple as adding the binary to the Delegate hos
 
 In this topic:
 
-* [Before You Begin](update-open-shift-cli-binaries-on-harness-delegates.md#before-you-begin)
-* [Step 1: Download the OpenShift Binary](update-open-shift-cli-binaries-on-harness-delegates.md#step-1-download-the-open-shift-binary)
-* [Step 2: Update OC\_VERSION](update-open-shift-cli-binaries-on-harness-delegates.md#step-2-update-oc-version)
-* [Step 3: Restart the Delegate](update-open-shift-cli-binaries-on-harness-delegates.md#step-3-restart-the-delegate)
-* [See Also](update-open-shift-cli-binaries-on-harness-delegates.md#see-also)
+* [Before You Begin](#before-you-begin)
+* [Step 1: Download the OpenShift Binary](#step-1-download-the-openshift-binary)
+* [Step 2: Update OC\_VERSION](#step-2-update-oc-version)
+* [Step 3: Restart the Delegate](#step-3-restart-the-delegate)
+* [See Also](#see-also)
 
-### Before You Begin
+## Before You Begin
 
 * [Harness Delegate Overview](delegate-installation.md)
 * [Using OpenShift with Harness Kubernetes](../../../continuous-delivery/kubernetes-deployments/using-open-shift-with-harness-kubernetes.md)
 
-### Step 1: Download the OpenShift Binary
+## Step 1: Download the OpenShift Binary
 
 To install the OpenShift CLI (`oc`) binary on Linux or Windows, do the following.
 
@@ -41,7 +41,7 @@ Unpack the archive (`tar xvzf <file>`).
 
 Place the `oc` binary in a directory that is on your `PATH` (for example, `client-tools/oc/v4.x.x`).
 
-### Step 2: Update OC\_VERSION
+## Step 2: Update OC\_VERSION
 
 The host must have an exact match between the `OC_VERSION` value (typically, in the `.bashrc` file) and the path of the library in `client-tools/oc/$OC_VERSION`.
 
@@ -49,7 +49,7 @@ Update the `OC_VERSION` environment variable on the host system with the new ver
 
 If the version number is not added, Harness defaults to v4.2.16.
 
-### Step 3: Restart the Delegate
+## Step 3: Restart the Delegate
 
 Each type of Delegate uses a configuration file that you must use to restart your Delegate.
 
@@ -60,7 +60,7 @@ Here are the different types of Delegates and the configuration restart commands
 * **Helm:** `helm install --name helm-delegate-doc harness/harness-delegate -f harness-delegate-values.yaml`
 * **Docker:** `./launch-harness-delegate.sh`
 
-### See Also
+## See Also
 
 * [Using OpenShift with Harness Kubernetes](../../../continuous-delivery/kubernetes-deployments/using-open-shift-with-harness-kubernetes.md)
 

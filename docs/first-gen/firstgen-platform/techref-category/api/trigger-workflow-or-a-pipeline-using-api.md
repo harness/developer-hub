@@ -1,7 +1,7 @@
 ---
 title: Trigger Workflows or Pipelines Using GraphQL API
 description: Describes how to trigger a Workflow or a Pipeline using GraphQL API.
-# sidebar_position: 2
+sidebar_position: 50
 helpdocs_topic_id: s3leksekny
 helpdocs_category_id: l2p3i03l4a
 helpdocs_is_private: false
@@ -9,14 +9,6 @@ helpdocs_is_published: true
 ---
 
 This topic describes how to trigger a Workflow or a Pipeline using Harness GraphQL APIs.
-
-In this topic:
-
-* [Before You Begin](trigger-workflow-or-a-pipeline-using-api.md#before-you-begin)
-* [Step 1: Fetch the Application ID](trigger-workflow-or-a-pipeline-using-api.md#step-1-fetch-the-application-id)
-* [Step 2: Fetch the Workflow or Pipeline ID](trigger-workflow-or-a-pipeline-using-api.md#step-2-fetch-the-workflow-or-pipeline-id)
-* [Step 3: Fetch the Execution Input](trigger-workflow-or-a-pipeline-using-api.md#step-3-fetch-the-execution-input)
-* [Step 4: Start the Execution](trigger-workflow-or-a-pipeline-using-api.md#step-4-start-the-execution)
 
 You can also deploy Workflow to multiple infrastructures simultaneously. See [Deploy Multiple Services Simultaneously using Barriers](../../../continuous-delivery/concepts-cd/deployments-overview/deploy-to-multiple-infrastructures.md).
 

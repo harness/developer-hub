@@ -1,7 +1,7 @@
 ---
 title: Leverage Harness GraphQL APIs in Automation Scripts
 description: Describes how to leverage on Harness GraphQL APIs to query information around Harness deployment.
-# sidebar_position: 2
+sidebar_position: 340
 helpdocs_topic_id: 0b4s6mhpxn
 helpdocs_category_id: l2p3i03l4a
 helpdocs_is_private: false
@@ -14,29 +14,19 @@ Most times, when a user triggers a deployment from their CI tool, it calls on to
 
 This topic uses a sample automation script to collect the execution data of a Kubernetes Guestbook Application deployment from a Pipeline. The automation script allows you to retrieve the deployment information once it's completed.
 
-In this topic:
-
-* [Review: Use Cases](leverage-graph-ql-api-in-automation-scripts.md#review-use-cases)
-* [Pre-requisites](leverage-graph-ql-api-in-automation-scripts.md#pre-requisites)
-* [Step 1: Fetch the Required Information](leverage-graph-ql-api-in-automation-scripts.md#step-1-fetch-the-required-information)
-* [Step 2: Build a Script](leverage-graph-ql-api-in-automation-scripts.md#step-2-build-a-script)
-* [Step 3: Use the Automation Script in Your CI Tool](leverage-graph-ql-api-in-automation-scripts.md#step-3-use-the-automation-script-in-your-ci-tool)
-* [Gather Deployment Execution Details](leverage-graph-ql-api-in-automation-scripts.md#gather-deployment-execution-details)
-* [Summary](leverage-graph-ql-api-in-automation-scripts.md#summary)
-
-### Review: Use Cases
+## Review: Use Cases
 
 * Use automation scripts with Harness GraphQL APIs to query Harness deployment information.
 * Gather information about the execution of the latest Pipeline. Send this information to Jenkins or Splunk for auditing or tracking the status.
 * Gather the deployment execution details and send them to the Grafana dashboard.
 
-### Pre-requisites
+## Pre-requisites
 
 * Harness API Key. For more information, see [API Keys](../../security/access-management-howtos/api-keys.md).
 * A working query. You can test your queries in [Harness API Explorer](harness-api-explorer.md) and port it to Postman or Insomnia to test and generate the code. Then build curl commands or clients to interact with [Harness API](harness-api.md).
 * CI job that calls out to Harness and triggers a deployment.
 
-### Step 1: Fetch the Required Information
+## Step 1: Fetch the Required Information
 
 You need to fetch the following information:
 
@@ -48,7 +38,7 @@ Use the following query to fetch the Application ID.
 
 This scenario is using the **Guestbook Application** as an example.
 
-##### Request: Fetch the Application ID
+#### Request: Fetch the Application ID
 
 
 ```
@@ -61,7 +51,7 @@ This scenario is using the **Guestbook Application** as an example.
   }  
 }
 ```
-##### Response: Application ID
+#### Response: Application ID
 
 
 ```
@@ -166,7 +156,7 @@ Here is the name and ID of **Guestbook Application**:
 ```
 Use this Application ID to fetch the associated Pipeline IDs.
 
-##### Request: Fetch the Pipeline ID
+#### Request: Fetch the Pipeline ID
 
 
 ```
@@ -185,7 +175,7 @@ Use this Application ID to fetch the associated Pipeline IDs.
   }  
 }
 ```
-If you receive the error `Exception while fetching data (/application) : User not authorized`, it might be because you are using an entity ID other than an Application ID.##### Response: Pipeline ID
+If you receive the error `Exception while fetching data (/application) : User not authorized`, it might be because you are using an entity ID other than an Application ID.#### Response: Pipeline ID
 
 
 ```
@@ -223,7 +213,7 @@ The following Pipelines are associated with this Application:
 
 Provide Deploy Guestbook's Pipeline ID in the following [query](leverage-graph-ql-api-in-automation-scripts.md#request-fetch-the-pipeline-execution-status):
 
-##### Request: Fetch the Pipeline Execution Status
+#### Request: Fetch the Pipeline Execution Status
 
 
 ```
@@ -242,7 +232,7 @@ Provide Deploy Guestbook's Pipeline ID in the following [query](leverage-graph-q
   }  
 }
 ```
-##### Response: Pipeline Execution Status
+#### Response: Pipeline Execution Status
 
 
 ```
@@ -264,7 +254,7 @@ Provide Deploy Guestbook's Pipeline ID in the following [query](leverage-graph-q
 ```
 The last Pipeline execution deployment is displayed in epoch time.
 
-### Step 2: Build a Script
+## Step 2: Build a Script
 
 Here is a sample script that runs the curl command and allows you to check deployment status in the CI tool using an account ID (`<YOUR_ACCOUNT_ID>`) and Harness [API key](../../security/access-management-howtos/api-keys.md) (`<API_KEY>`).
 
@@ -283,7 +273,7 @@ curl 'https://app.harness.io/gateway/api/graphql?accountId=<YOUR_ACCOUNT_ID>' \
 --header 'x-api-key:<API_KEY>' \  
 --data-binary '{"query":"{userByName(name: \"John Doe\") {id name}}" }'
 ```
-### Step 3: Use the Automation Script in Your CI Tool
+## Step 3: Use the Automation Script in Your CI Tool
 
 You can use the automation script in your CI Tool.
 
@@ -306,7 +296,7 @@ Here is a sample CI flow:
 ![](./static/leverage-graph-ql-api-in-automation-scripts-21.png)
 
 
-### Gather Deployment Execution Details
+## Gather Deployment Execution Details
 
 Harness GraphQL API allows you to gather deployment execution details for the last twenty-four hours and pass that information in JSON format.
 
@@ -343,7 +333,7 @@ The time values passed for this query follows Unix Time. You can use [Epoch and 
 
 The command returns the data in JSON format that can be parsed into Splunk or any other auditing tool for business consumption. 
 
-### Summary
+## Summary
 
 This is how you can leverage on Harness GraphQL APIs to gather deployment status and collect that information in your CI tool. 
 

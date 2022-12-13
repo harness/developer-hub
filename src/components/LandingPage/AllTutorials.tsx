@@ -28,16 +28,20 @@ const FeaturedList: CardItem[] = [
     link: "/tutorials/manage-feature-flags/typescript-react-first-feature-flag",
   },
   {
-    title: "Scan a NodeJS Application",
-    module: "sto",
-    icon: "/img/icon_sto.svg",
+    title: "Get started with the fastest CI on the planet",
+
+    module: "ci",
+    icon: "/img/icon_ci.svg",
     description: (
-      <>Scanning a NodeJS Application and prioritizing scan results.</>
+      <>
+        This tutorial helps you get started with Harness CI and explore some of the features that make it four times faster than the leading competitor.
+
+      </>
     ),
-    newDoc: false,
+    newDoc: true,
     type: [docType.Documentation],
-    time: "10min",
-    link: "/tutorials/orchestrate-security-tests/nodejs-firstscan",
+    time: "5 min",
+    link: "/tutorials/build-code/fastest-ci",
   },
   {
     title: "Onboard with Terraform",
@@ -82,7 +86,7 @@ const CIList: CardItem[] = [
         step in a CI Pipeline
       </>
     ),
-    newDoc: true,
+    newDoc: false,
     type: [docType.Documentation],
     time: "15 min",
     link: "/tutorials/build-code/ci-localstack-background-step",
@@ -112,10 +116,26 @@ const CIList: CardItem[] = [
         application
       </>
     ),
-    newDoc: true,
+    newDoc: false,
     type: [docType.Documentation],
     time: "20 min",
     link: "/tutorials/build-code/ci-java-http-server",
+  },
+  {
+    title: "Get started with the fastest CI on the planet",
+
+    module: "ci",
+    icon: "/img/icon_ci.svg",
+    description: (
+      <>
+        This tutorial helps you get started with Harness CI and explore some of the features that make it four times faster than the leading competitor.
+
+      </>
+    ),
+    newDoc: true,
+    type: [docType.Documentation],
+    time: "5 min",
+    link: "/tutorials/build-code/fastest-ci",
   },
 ];
 

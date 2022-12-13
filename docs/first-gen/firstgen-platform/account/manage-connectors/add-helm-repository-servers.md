@@ -15,23 +15,25 @@ A Helm chart repository is an HTTP server that houses an **index.yaml** file and
 From Helm:
 
 
-> Note: For Helm 2.0.0, chart repositories do not have any intrinsic authentication. There is an issue tracking progress in GitHub.
+:::note 
+For Helm 2.0.0, chart repositories do not have any intrinsic authentication. There is an issue tracking progress in GitHub.
 
-
-> Because a chart repository can be any HTTP server that can serve YAML and tar files and can answer GET requests, you have a plethora of options when it comes down to hosting your own chart repository. For example, you can use a Google Cloud Storage (GCS) bucket, Amazon S3 bucket, Github Pages, or even create your own web server.
-
-### Before You Begin
+ Because a chart repository can be any HTTP server that can serve YAML and tar files and can answer GET requests, you have a plethora of options when it comes down to hosting your own chart repository. For example, you can use a Google Cloud Storage (GCS) bucket, Amazon S3 bucket, Github Pages, or even create your own web server.
+ 
+:::
+## Before You Begin
 
 * See [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts).
 
-### Visual Summary
+## Visual Summary
 
 Here's an example of Helm Repository Artifact Source configuration.
 
 ![](./static/add-helm-repository-servers-31.png)
+
 The Helm Repository dialog has the following fields.
 
-### Step 1: Select Helm Repository
+## Step 1: Select Helm Repository
 
 To connect to an artifact server, do the following:
 
@@ -41,29 +43,29 @@ To connect to an artifact server, do the following:
 4. Click **Add Artifact Server**.
 5. In **Type**, click **Helm Repository**.
 
-### Step 2: Display Name
+## Step 2: Display Name
 
 This is the name you will use to select this Artifact Server in you Kubernetes and Helm Services.
 
-### Step 3: Hosting Platform
+## Step 3: Hosting Platform
 
 The type of server where the repo is hosted.
 
 If you select an option other than **HTTP Server**, such as **Amazon S3** or **GCS** (Google Cloud Storage), you will need a Cloud Provider for that account. For more information, see [Add Cloud Providers](cloud-providers.md).
 
-#### OCI Registry
+### OCI Registry
 
 Harness supports [OCI registry](https://helm.sh/docs/topics/registries/) for Helm charts using the Helm Repository Artifact Server.
 
 [Helm Registry support](https://helm.sh/docs/topics/registries/) is officially for Helm version 3.8 and above and experimental with version below 3.8.
 
-### Step 4: Repository URL
+## Step 4: Repository URL
 
 The URL of the chart repo.
 
 Helm Hub at `https://hub.helm.sh` is not a Helm repo. It is a website for discovery and documentation. While it does list charts for deployments such cluster-autoscaler, the actual Helm repo for this and most charts is `https://kubernetes-charts.storage.googleapis.com`**.**
 
-#### OCI Registry
+### OCI Registry
 
 Harness supports [OCI registry](https://helm.sh/docs/topics/registries/) for Helm charts using the Helm Repository Artifact Server.
 
@@ -76,7 +78,7 @@ In **Repository URL**, you would enter `[registry-name].azurecr.io/helm/charts/`
 ![](./static/add-helm-repository-servers-32.png)
 
 
-### Step 5: Username and Password
+## Step 5: Username and Password
 
 If the charts are backed by HTTP basic authentication, you can also supply the username and password. See [Share your charts with others](https://helm.sh/docs/topics/chart_repository/#share-your-charts-with-others) from Helm.
 
@@ -86,7 +88,7 @@ Usage Scope is determined by the secret you selected.
 
 Click **Submit**.
 
-#### GCR authentication supported
+### GCR authentication supported
 
 For GCR as an OCI registry, Harness support authentication using the following:
 
@@ -113,7 +115,7 @@ For example: `aws ecr get-login-password --region us-west-2`
 
 Copy the password and paste it into a Harness text secret.
 
-### Next Steps
+## Next Steps
 
 * [Use a Helm Repository with Kubernetes](../../../continuous-delivery/kubernetes-deployments/use-a-helm-repository-with-kubernetes.md)
 

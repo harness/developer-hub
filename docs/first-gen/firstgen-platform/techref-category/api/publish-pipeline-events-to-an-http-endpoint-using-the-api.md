@@ -1,7 +1,7 @@
 ---
 title: Publish Pipeline Events to an HTTP Endpoint using the API
 description: Send key Pipeline deployment events to a URL endpoint as a JSON payload.
-# sidebar_position: 2
+sidebar_position: 400
 helpdocs_topic_id: cfrqinjhci
 helpdocs_category_id: l2p3i03l4a
 helpdocs_is_private: false
@@ -10,18 +10,11 @@ helpdocs_is_published: true
 
 Currently, this feature is behind the Feature Flag `GRAPHQL_DEV`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.To help you analyze how Pipelines are performing, Harness can send key Pipeline deployment events to a URL endpoint as a JSON payload. Next, you can use other tools to consume and build dashboards for the events.
 
-In this topic:
-
-* [Before You Begin](publish-pipeline-events-to-an-http-endpoint-using-the-api.md#before-you-begin)
-* [Step: Query the event rules for an Application](publish-pipeline-events-to-an-http-endpoint-using-the-api.md#step-query-the-event-rules-for-an-application)
-* [Step: Create Event Rule](publish-pipeline-events-to-an-http-endpoint-using-the-api.md#step-create-event-rule)
-* [Option: Update and Delete Event Rules](publish-pipeline-events-to-an-http-endpoint-using-the-api.md#option-update-and-delete-event-rules)
-
-### Before You Begin
+## Before You Begin
 
 You can see how to create event rules in Harness UI in [Publish Pipeline Events to an HTTP Endpoint](../../../continuous-delivery/concepts-cd/deployments-overview/publish-pipeline-events-to-an-http-endpoint.md).
 
-### Step: Query the event rules for an Application
+## Step: Query the event rules for an Application
 
 You can query the event rules for an Application using the GraphQL `eventsConfigs` method. You simply need an Application Id. See [Use Harness Applications API](use-harness-applications-api.md).
 
@@ -144,7 +137,7 @@ This will return the specific event rule settings:
   }  
 }
 ```
-### Step: Create Event Rule
+## Step: Create Event Rule
 
 You use createEventsConfig to create an event rule. You simply need the Application Id.
 
@@ -213,7 +206,7 @@ The new event rule is returned.
 ```
 The new event rule will also show up in the Application UI.
 
-### Option: Update and Delete Event Rules
+## Option: Update and Delete Event Rules
 
 There are also APIs for `deleteEventsConfig` and `updateEventsConfig`.
 

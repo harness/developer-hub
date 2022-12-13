@@ -1,7 +1,7 @@
 ---
 title: Deploy Helm Charts Using the API
 description: Deploy the Helm chart without adding your artifact to Harness using the Harness API.
-# sidebar_position: 2
+sidebar_position: 370
 helpdocs_topic_id: sbvn6uwcq1
 helpdocs_category_id: l2p3i03l4a
 helpdocs_is_private: false
@@ -13,14 +13,6 @@ As discussed in [Deploy Helm Charts](../../../continuous-delivery/kubernetes-dep
 Instead, the Helm chart identifies the artifact. Harness installs the chart, gets the artifact from the repo, and then installs the artifact. We call this a *Helm chart deployment*.
 
 This topic explains how to set up a Helm chart deployment using the Harness GraphQL API.
-
-In this topic:
-
-* [Before You Begin](deploy-helm-charts-using-api.md#before-you-begin)
-* [Option: Create Harness Helm Chart Deployment](deploy-helm-charts-using-api.md#option-create-harness-helm-chart-deployment)
-* [Step 1: Specify Helm Chart Version and Start Execution](deploy-helm-charts-using-api.md#step-1-specify-helm-chart-version-and-start-execution)
-* [Step 2: Query the Execution](deploy-helm-charts-using-api.md#step-2-query-the-execution)
-* [Option: Create and Update Trigger](deploy-helm-charts-using-api.md#option-create-and-update-trigger)
 
 ### Before You Begin
 

@@ -16,6 +16,7 @@ Here is what the Artifact Source list looks like in a Harness service when AWS S
 
 [![](./static/add-aws-s-3-and-google-cloud-storage-artifact-servers-17.png)
 ](./static/add-aws-s-3-and-google-cloud-storage-artifact-servers-17.png)
+
 For information on how to add AWS and GCP as Cloud Providers, see:
 
 * [Add Amazon Web Services Cloud Provider](add-amazon-web-services-cloud-provider.md)

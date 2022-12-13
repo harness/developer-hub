@@ -1,7 +1,7 @@
 ---
 title: Add Git Connectors Using API
 description: Describes how to add Git connectors using Harness GraphQL APIs.
-# sidebar_position: 2
+sidebar_position: 270
 helpdocs_topic_id: qwkg2khtr7
 helpdocs_category_id: l2p3i03l4a
 helpdocs_is_private: false
@@ -12,23 +12,18 @@ This topic describes how to create, read, update, and delete [Git Connectors](.
 
 In this document, GitHub Repo is used as an example. But you can use Harness GraphQL APIs for the other supported [Harness Source Repo Providers](../../account/manage-connectors/add-source-repo-providers.md) as well.
 
-In this topic:
 
-* [Before You Begin](add-git-connectors-using-api.md#before-you-begin)
-* [Step: Create a Git Connector](add-git-connectors-using-api.md#undefined)
-* [Step: Update a Git Connector](add-git-connectors-using-api.md#step-update-a-git-connector)
-* [Step: Delete a Git Connector](add-git-connectors-using-api.md#step-delete-a-git-connector)
 
-### Before You Begin
+## Before You Begin
 
 * [​Introduction to Harness GraphQL API](harness-api.md)
 * [Harness API Explorer](harness-api-explorer.md)
 
-### Step: Create a Git Connector
+## Step: Create a Git Connector
 
 Use this sample query to create a Git Connector.
 
-##### Request
+#### Request
 
 You create a Git Connector using the mutation `createConnector`. You can use `passwordSecretId` or `sshSettingId` to authenticate to your Git connector.
 
@@ -54,7 +49,7 @@ mutation CreateConnector($connector: CreateConnectorInput!) {
   }  
 }
 ```
-##### Query Variables
+#### Query Variables
 
 The Query Variables follow this syntax, with `connectorType` identifying the Git Connector to create.
 
@@ -88,7 +83,7 @@ The following sample query variable uses `passwordSecretId` to authenticate to t
   }  
 }
 ```
-##### Response
+#### Response
 
 
 ```
@@ -135,11 +130,11 @@ The following sample query variable uses `sshSettingId` to authenticate to the G
   }  
 }
 ```
-### Step: Update a Git Connector
+## Step: Update a Git Connector
 
 Use this sample query to update a Git Connector.
 
-##### Request
+#### Request
 
 You update a Git Connector using the mutation `updateConnector`. You can use `passwordSecretId` or `sshSettingId` to authenticate to your Git connector.
 
@@ -166,7 +161,7 @@ mutation UpdateConnector($connector: UpdateConnectorInput!) {
   }  
 }
 ```
-##### Query Variables
+#### Query Variables
 
 The Query Variables follow this syntax, with `connectorType` identifying the Git Connector to update. See [Fetch the Connector ID](add-git-connectors-using-api.md#fetch-the-connector-id) to get the connector ID details.
 
@@ -192,7 +187,7 @@ The Query Variables follow this syntax, with `connectorType` identifying the G
   }  
 }
 ```
-##### Response
+#### Response
 
 
 ```
@@ -217,7 +212,7 @@ The Query Variables follow this syntax, with `connectorType` identifying the G
   }  
 
 ```
-##### Fetch the Connector ID
+#### Fetch the Connector ID
 
 Use the following query to fetch the `ID` of a connector. A list of connectors is returned based on the set filters. You can select the `ID` of the connector that you want to update.
 
@@ -248,11 +243,11 @@ query{
   }  
 }
 ```
-### Step: Delete a Git Connector
+## Step: Delete a Git Connector
 
 You delete a Git Connector using the mutation `deleteConnector`. Deleting a Git Connector requires its `ID` only.
 
-##### Request
+#### Request
 
 
 ```
@@ -262,7 +257,7 @@ mutation DeleteConnectorMutation($connector: DeleteConnectorInput!) {
   }  
 }
 ```
-##### Query Variables
+#### Query Variables
 
 Query Variables, with `connectorId` identifies the Git Connector to delete.
 

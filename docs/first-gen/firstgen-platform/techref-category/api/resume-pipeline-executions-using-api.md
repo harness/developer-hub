@@ -1,7 +1,7 @@
 ---
 title: Resume Pipeline Executions using API
 description: You can use the resumeExecution API to resume Pipeline deployment executions that meet the following criteria --  Failed. Aborted. Expired. Rejected. You cannot resume Successful or Paused executions. T…
-# sidebar_position: 2
+sidebar_position: 150
 helpdocs_topic_id: 612oq2dsqy
 helpdocs_category_id: l2p3i03l4a
 helpdocs_is_private: false
@@ -17,15 +17,6 @@ You can use the **resumeExecution** API to resume Pipeline deployment executions
 
 You cannot resume Successful or Paused executions.This is similar to resuming Pipeline executions in the Harness Manager. See [Resume Pipeline Deployments](../../../continuous-delivery/concepts-cd/deployments-overview/resume-a-pipeline-deployment.md).
 
-In this topic:
-
-* [Before You Begin](#before_you_begin)
-* [Supported Platforms and Technologies](#supported_platforms_and_technologies)
-* [Limitations](#limitations)
-* [Review: Permissions](#review_permissions)
-* [Review: What Can Be Resumed](#review_what_can_be_resumed)
-* [Step: Resume Pipeline](#step_resume_pipeline)
-* [See Also](#see_also)
 
 ### Before You Begin
 

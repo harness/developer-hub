@@ -1,7 +1,7 @@
 ---
 title: Use Harness Applications API
 description: Shows how to create and update Harness Applications using API calls.
-# sidebar_position: 2
+sidebar_position: 90
 helpdocs_topic_id: 0wmvn5dgzn
 helpdocs_category_id: l2p3i03l4a
 helpdocs_is_private: false
@@ -10,16 +10,9 @@ helpdocs_is_published: true
 
 This topic describes how to use Harness Application APIs.
 
-The `!` following the type means that this field is *required*.In this topic:
-
-* [Before You Begin](use-harness-applications-api.md#undefined)
-* [Create Applications](use-harness-applications-api.md#create-applications)
-* [Update Applications](use-harness-applications-api.md#update-applications)
-* [Enable Git Sync for an Application](use-harness-applications-api.md#enable-git-sync-for-an-application)
-* [Show Pipelines for a Given Application](use-harness-applications-api.md#show-pipelines-for-a-given-application)
-* [Show Services for a Given Application](use-harness-applications-api.md#show-services-for-a-given-application)
-* [Fetch the List of Services for a Given Application](use-harness-applications-api.md#fetch-the-list-of-services-for-a-given-application)
-* [Filter Harness Applications using Harness Tags in the API](https://harness.helpdocs.io/article/0wmvn5dgzn-use-harness-applications-api#filter_harness_applications_using_harness_tags_in_the_api)
+T:::note
+The `!` following the type means that this field is *required*.
+:::
 
 ### Before You Begin
 

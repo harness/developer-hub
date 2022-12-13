@@ -1,7 +1,7 @@
 ---
 title: Fetch Users By Email Address
 description: You can fetch a user by email address using the Harness API, including users that have not accepted invites. In this topic --  Before You Begin. Step 1 --  Fetch Users by Email Address. Limitations. See Al…
-# sidebar_position: 2
+sidebar_position: 310
 helpdocs_topic_id: 0a9x29s5ym
 helpdocs_category_id: l2p3i03l4a
 helpdocs_is_private: false
@@ -10,13 +10,6 @@ helpdocs_is_published: true
 
 You can fetch a user by email address using the Harness API, including users that have not accepted invites.
 
-In this topic:
-
-* [Before You Begin](#before_you_begin)
-* [Step 1: Fetch Users by Email Address](#step_1_fetch_users_by_email_address)
-* [Limitations](#limitations)
-* [See Also](#see_also)
-* [Configure As Code](#configure_as_code)
 
 ### Before You Begin
 

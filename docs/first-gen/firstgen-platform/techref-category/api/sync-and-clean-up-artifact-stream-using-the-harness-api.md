@@ -1,7 +1,7 @@
 ---
 title: Sync and Clean Up Artifact Stream using the Harness API
 description: Harness provides a the artifactCleanup() mutation to sync the artifact versions collected by Harness with the artifact source you set up in your Harness Service.
-# sidebar_position: 2
+sidebar_position: 190
 helpdocs_topic_id: 7tlyu5jesf
 helpdocs_category_id: l2p3i03l4a
 helpdocs_is_private: false
@@ -15,14 +15,6 @@ Harness provides the `artifactCleanup()` mutation to sync the artifact versions 
 The mutation remove any artifacts and versions that have been deleted at the source from Harness.
 
 This topic describes how to use the Harness API to sync and clean up the artifact list available to you in Harness.
-
-In this topic:
-
-* [Before You Begin](sync-and-clean-up-artifact-stream-using-the-harness-api.md#before-you-begin)
-* [Supported Platforms and Technologies](sync-and-clean-up-artifact-stream-using-the-harness-api.md#undefined)
-* [Limitations](sync-and-clean-up-artifact-stream-using-the-harness-api.md#limitations)
-* [Step 1: Obtain Artifact Stream Id](sync-and-clean-up-artifact-stream-using-the-harness-api.md#step-1-obtain-artifact-stream-id)
-* [Step 2: Sync the Artifact Stream via API](sync-and-clean-up-artifact-stream-using-the-harness-api.md#step-2-sync-the-artifact-stream-via-api)
 
 ### Before You Begin
 
@@ -71,6 +63,7 @@ Let's look at how to obtain the UUID.
 In Harness, open the Service with the Artifact Source you want to sync with.
 
 ![](./static/sync-and-clean-up-artifact-stream-using-the-harness-api-15.png)
+
 In your browser, open Dev Tools. The following example is for Chrome.
 
 Click **Network**, and select **All**.
@@ -80,6 +73,7 @@ In **Filter**, enter **artifactstreams**.
 The artifact stream request is displayed.
 
 ![](./static/sync-and-clean-up-artifact-stream-using-the-harness-api-16.png)
+
 Click the **artifactstreams?appId=...** message.
 
 Click **Preview**, and then expand **resource**.
@@ -87,6 +81,7 @@ Click **Preview**, and then expand **resource**.
 In response, you will see the UUID (`uuid`) for the Artifact Source.
 
 ![](./static/sync-and-clean-up-artifact-stream-using-the-harness-api-17.png)
+
 Copy and save the UUID value.
 
 ### Step 2: Sync the Artifact Stream via API

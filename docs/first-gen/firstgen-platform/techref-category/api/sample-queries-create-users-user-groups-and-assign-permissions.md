@@ -1,7 +1,7 @@
 ---
 title: Use Users and Groups API
 description: Provides examples of how to create Harness users and user groups, and how to assign permissions to the users and User Groups, using API calls.
-# sidebar_position: 2
+sidebar_position: 200
 helpdocs_topic_id: p9ssx4cv5t
 helpdocs_category_id: l2p3i03l4a
 helpdocs_is_private: false
@@ -10,22 +10,14 @@ helpdocs_is_published: true
 
 This topic provides examples of how to create Harness users and user groups, and how to assign permissions to the users and User Groups, using API calls.
 
-In this topic:
 
-* [Before You Begin](sample-queries-create-users-user-groups-and-assign-permissions.md#undefined)
-* [Create a User](sample-queries-create-users-user-groups-and-assign-permissions.md#create-a-user)
-* [Delete a User](#delete_a_user)
-* [Create a User Group](sample-queries-create-users-user-groups-and-assign-permissions.md#create-a-user-group)
-* [Assign Permissions](sample-queries-create-users-user-groups-and-assign-permissions.md#assign-permissions)
-* [Querying Users](#querying_users)
-
-### Before You Begin
+## Before You Begin
 
 * [​Introduction to Harness GraphQL API](harness-api.md)
 * [Harness API Explorer](harness-api-explorer.md)
 * [API Schema and Structure](api-schema-and-structure.md)
 
-### Create a User
+## Create a User
 
 This sample shows how to create a user in your Harness account, and assigns the user to up to five Harness User Groups.
 
@@ -51,7 +43,7 @@ mutation createUser($user: CreateUserInput!) {
   }  
 }
 ```
-#### Sample Query Variables for Create User
+### Sample Query Variables for Create User
 
 Values are required for the `email`, `name`, and `userGroupIds` variables.
 
@@ -66,7 +58,7 @@ Values are required for the `email`, `name`, and `userGroupIds` variables.
   }  
 }
 ```
-### Delete a User
+## Delete a User
 
 Update:
 
@@ -89,7 +81,7 @@ query variables:
   }  
 }
 ```
-### Create a User Group
+## Create a User Group
 
 This sample shows how to create a User Group in your Harness account, and (optionally) assign users to the new group.
 
@@ -125,7 +117,7 @@ mutation($userGroup: CreateUserGroupInput!){
   }  
 }
 ```
-#### Sample Query Variables for Create Group
+### Sample Query Variables for Create Group
 
 The `name` variable requires a value, which must be unique in your Harness account.
 
@@ -138,7 +130,7 @@ The `name` variable requires a value, which must be unique in your Harness accou
   }  
 }
 ```
-### Assign Permissions
+## Assign Permissions
 
 This sample shows how to assign permissions to Harness User Groups.
 
@@ -186,7 +178,7 @@ mutation($userGroup: UpdateUserGroupPermissionsInput!){
     }  
   }
 ```
-#### Sample Query Variables for Assign Permissions
+### Sample Query Variables for Assign Permissions
 
 A value is required for the `userGroupId` variable. 
 
@@ -236,56 +228,56 @@ The JSON in the above example sets three sets of permissions:
 
 * Enables the User Group's members to perform all four CRUD operations on two Applications, specified by `appId`s:
 
+  ```
+  {  
+    "permissionType": "ALL",  
+    "applications": {  
+      "appIds": [  
+        "A0M4nZJJTQekFfp4lX71Zw",  
+        "g7sJZKmMRd-oHWdjsjF0ZQ"  
+      ]  
+    },  
+    "actions": ["CREATE", "DELETE", "READ", "UPDATE"]  
+  }
+  ```
 
-```
-{  
-  "permissionType": "ALL",  
-  "applications": {  
-    "appIds": [  
-      "A0M4nZJJTQekFfp4lX71Zw",  
-      "g7sJZKmMRd-oHWdjsjF0ZQ"  
-    ]  
-  },  
-  "actions": ["CREATE", "DELETE", "READ", "UPDATE"]  
-}
-```
 * Grants permission to perform all CRUD operations on all Services, across all Applications:
 
+  ```
+   {  
+    "permissionType": "SERVICE",  
+    "applications": {  
+      "filterType": "ALL"  
+    },  
+    "services": {  
+      "filterType": "ALL"  
+    },  
+    "actions": ["CREATE", "DELETE", "READ", "UPDATE"]  
+  }
+  ```
 
-```
- {  
-  "permissionType": "SERVICE",  
-  "applications": {  
-    "filterType": "ALL"  
-  },  
-  "services": {  
-    "filterType": "ALL"  
-  },  
-  "actions": ["CREATE", "DELETE", "READ", "UPDATE"]  
-}
-```
 * Grants permission to perform the specified operations on the specified Environments:
 
-
-```
-{  
-  "permissionType": "ENV",  
-  "applications": {  
-    "appIds": [  
-      "A0M4nZJJTQekFfp4lX71Zw",  
-      "g7sJZKmMRd-oHWdjsjF0ZQ"  
-    ]  
-  },  
-  "environments": {  
-    "envIds": [  
-      "hRCUcsHmSPaHA7LXKzosAw",  
-      "m7d7Kg2TQlKrrlbcnPUY5A"  
-    ]  
-  },  
-  "actions": ["READ","UPDATE"]  
-}
-```
-#### Notes on updateUserGroupPermissions
+  ```
+  {  
+    "permissionType": "ENV",  
+    "applications": {  
+      "appIds": [  
+        "A0M4nZJJTQekFfp4lX71Zw",  
+        "g7sJZKmMRd-oHWdjsjF0ZQ"  
+      ]  
+    },  
+    "environments": {  
+      "envIds": [  
+        "hRCUcsHmSPaHA7LXKzosAw",  
+        "m7d7Kg2TQlKrrlbcnPUY5A"  
+      ]  
+    },  
+    "actions": ["READ","UPDATE"]  
+  }
+  ```
+  
+### Notes on updateUserGroupPermissions
 
 Beyond the `userGroupId` requirement, note these usage details for the `updateUserGroupPermissions` operation:
 
@@ -295,7 +287,7 @@ Beyond the `userGroupId` requirement, note these usage details for the `updateUs
 
 For information on deprecated API features with their replacements, see [Deprecated API Features](deprecated-apis.md).
 
-### Querying Users
+## Querying Users
 
 Here is a simple way to query for users:
 
@@ -322,8 +314,8 @@ Here is a simple way to query for users:
   }  
 }
 ```
-Here is a simply query that shows user names and demonstrates pagination:
 
+Here is a simply query that shows user names and demonstrates pagination:
 
 ```
 {  

@@ -12,51 +12,53 @@ By default, Harness Delegates deploy to all namespaces in a Kubernetes cluster. 
 
 In this topic:
 
-* [Before You Begin](#before_you_begin)
-* [Visual Summary](#visual_summary)
-* [Review: Harness Connections to Kubernetes](#review_harness_connections_to_kubernetes)
-	+ [Inherit from selected Delegate](#inherit_from_selected_delegate)
-	+ [Enter Manually](#enter_manually)
-* [Step 1: Create Service Account](#step_1_create_service_account)
-* [Step 2: Create Role and RoleBinding](#step_2_create_role_and_role_binding)
-* [Option 1: Use the Service Account Token](#option_1_use_the_service_account_token)
-* [Option 2: Add Service Account to Delegate Spec](#option_2_add_service_account_to_delegate_spec)
-* [Review: Enable Skip Validation in Kubernetes Cluster Cloud Provider](#review_enable_skip_validation_in_kubernetes_cluster_cloud_provider)
+* [Before You Begin](#before-you-begin)
+* [Visual Summary](#visual-summary)
+* [Review: Harness Connections to Kubernetes](#review-harness-connections-to-kubernetes)
+	+ [Inherit from selected Delegate](#inherit-from-selected-delegate)
+	+ [Enter Manually](#enter-manually)
+* [Step 1: Create Service Account](#step-1-create-service-account)
+* [Step 2: Create Role and RoleBinding](#step-2-create-role-and-role-binding)
+* [Option 1: Use the Service Account Token](#option-1-use-the-service-account-token)
+* [Option 2: Add Service Account to Delegate Spec](#option-2-add-service-account-to-delegate-spec)
+* [Review: Enable Skip Validation in Kubernetes Cluster Cloud Provider](#review-enable-skip-validation-in-kubernetescluster-cloud-provider)
 * [Notes](#notes)
-* [Next Steps](#next_steps)
+* [Next Steps](#next-steps)
 
-### Before You Begin
+## Before You Begin
 
 * [Harness Delegate Overview](delegate-installation.md)
 * [Install the Harness Kubernetes Delegate](install-kubernetes-delegate.md)
 
-### Visual Summary
+## Visual Summary
 
 Let's take a quick look at the two ways the Delegate can deploy to namespaces in a cluster.
 
-#### Central Model
+### Central Model
 
 By default, the Delegate resides in a namespace in the target cluster with a service account attached to it. The service account uses a ClusterRole for permission to deploy to all namespaces in the cluster.
 
 The is called this the central model. Here is a simple illustration of the central model:
 
 ![](./static/enable-delegate-to-deploy-to-multiple-kubernetes-namespaces-03.png)
+
 The central model is simple and efficient, but it does not let you restrict teams to deploying into specific namespaces. Any team member can deploy to any namespace.
 
 As an alternative, you can use a distributed model.
 
-#### Distributed Model
+### Distributed Model
 
 This model places a Delegate in each namespace in the cluster. It limits each Delegate to deploying into its own namespace.
 
 Here is the illustration of the distributed model:
 
 ![](./static/enable-delegate-to-deploy-to-multiple-kubernetes-namespaces-04.png)
+
 In this model, each team uses their own Delegate for their deployments into their own namespace.
 
 The distributed model is more complex, but it prevents a team member from deploying into the wrong namespace.
 
-### Review: Harness Connections to Kubernetes
+## Review: Harness Connections to Kubernetes
 
 First, we'll review how Harness connects to the target Kubernetes cluster using the Delegate.
 
@@ -88,7 +90,9 @@ roleRef:
 ```
 This ClusterRoleBinding binds the service account with the **cluster-admin** ClusterRole. The cluster-admin ClusterRole exists by default in your Kubernetes cluster, and allows superuser operations in all of the cluster resources.
 
+:::note 
 For other type of Delegates (Shell Script, Docker, ECS), you need to create the Kubernetes resources yourself and then use the service account when setting up the Harness Kubernetes Cluster Cloud Provider.Once a Delegate is installed and running, you can add a Harness Kubernetes Cluster Could Provider to connect to the target cluster.
+:::
 
 There are two ways for the Kubernetes Cluster Could Provider to get credentials:
 
@@ -96,15 +100,16 @@ There are two ways for the Kubernetes Cluster Could Provider to get credentials:
 * Enter manually
 
 ![](./static/enable-delegate-to-deploy-to-multiple-kubernetes-namespaces-05.png)
+
 Both methods can use the service account to provide either the central or distributed models.
 
-#### Inherit from selected Delegate
+### Inherit from selected Delegate
 
 **Supported Delegate types:** Kubernetes and Helm Delegate.
 
 In this option, the Cloud Provider inherits the service account created when you installed the Delegate.
 
-#### Enter Manually
+### Enter Manually
 
 **Supported Delegate types:** Shell Script, Docker, ECS, Kubernetes, Helm.
 
@@ -118,9 +123,14 @@ Some examples:
 * Docker Image Delegate outside of the target cluster.
 * Kubernetes Delegate in a pod outside of the target cluster.
 
-Providing the **Master URL** is mandatory. This is the Kubernetes master node URL.The remaining steps in this topic explain how to create the Kubernetes resources needed for the service account used by the Delegates in the distributed model.
+:::note
+Providing the **Master URL** is mandatory. This is the Kubernetes master node URL.
+:::
 
-### Step 1: Create Service Account
+The remaining steps in this topic explain how to create the Kubernetes resources needed for the service account used by the Delegates in the distributed model.
+
+
+## Step 1: Create Service Account
 
 To restrict the Delegate to deploy to a specific namespace, first you create the namespace, if it isn't already created.
 
@@ -141,7 +151,7 @@ metadata:
   name: mynamespace-delegate-sa  
   namespace: mynamespace
 ```
-### Step 2: Create Role and RoleBinding
+## Step 2: Create Role and RoleBinding
 
 By default, the Delegate can deploy to all namespaces. Its service account uses the cluster-admin ClusterRole. This method enables the central model.
 
@@ -189,13 +199,13 @@ Now you have two options:
 * **Option 1:** Install a Delegate outside of the namespace and simply enter the service account token in the Kubernetes Cluster Cloud Provider.
 * **Option 2:** Install a Kubernetes or Helm Delegate in the namespace using the service account. You simply reference the service account in the Delegate spec. You can then have the Kubernetes Cluster Cloud Provider inherit credentials from the Delegate.
 
-#### Resources and Verbs
+### Resources and Verbs
 
 If you don't want to use `resources: ["*"]` for the role you can list out the resources you want to grant. Harness needs `configMap`, `secret`, `event`, `deployment`, and `pod` at a minimum. Beyond that, it depends on the resources you are deploying via Harness.
 
 If you don't want to use `verbs: ["*"]` for the role you can list out the verbs you want to grant (create, delete, get, list, patch, update, watch).
 
-### Option 1: Use the Service Account Token
+## Option 1: Use the Service Account Token
 
 If you are using the **Enter Cluster Details manually** option in the Kubernetes Cloud Provider, use the service account in the **Service Account Token** setting.
 
@@ -216,7 +226,7 @@ Next, enter the service account token in the Kubernetes Cluster Cloud Provider:
 ![](./static/enable-delegate-to-deploy-to-multiple-kubernetes-namespaces-06.png)
 
 
-### Option 2: Add Service Account to Delegate Spec
+## Option 2: Add Service Account to Delegate Spec
 
 In you are using the **Inherit from selected Delegate** option in the Kubernetes Cloud Provider, add the service account to the Delegate YAML. See `serviceAccountName: mynamespace-delegate-sa` below:
 
@@ -248,8 +258,8 @@ Edit the harness-delegate.yaml file to create these new resources.
 
 Here is an example of the Kubernetes Delegate YAML that creates all the necessary resources:
 
-
-Kubernetes Delegate YAML Sample
+<details>
+  <summary>Kubernetes Delegate YAML Sample</summary>
 
 ```
   
@@ -578,6 +588,7 @@ spec:
 
 
 ```
+</details>
 
 Next, connect to your cluster and run the kubectl command to install the Delegate:
 
@@ -617,13 +628,13 @@ You will delete **cluster-rolebinding.yaml**. and replace it a new file(s) for t
 
 For details on installing the Helm Delegate, see [Install the Harness Helm Delegate](using-the-helm-delegate.md).
 
-### Review: Enable Skip Validation in Kubernetes Cluster Cloud Provider
+## Review: Enable Skip Validation in Kubernetes Cluster Cloud Provider
 
 By default, Harness uses the default namespace to validate credentials the first time you set up a Kubernetes Cluster Cloud Provider.
 
 If you add a Kubernetes Cluster Cloud Provider in Harness with a Service Account that does not have list all namespaces permissions in the cluster, ensure that you enable the **Skip Validation** option.
 
-### Notes
+## Notes
 
 You can also enable a Delegate to deploy to namespaces outside its own. In this model, the Delegate does not have to be in the same namespace as the deployment target.
 
@@ -636,7 +647,7 @@ For this method, do the following:
 	1. RoleRef pointing to the Role in the same namespace `target`
 	2. Subject pointing to the Delegate service account and namespace: `delegate-ns`.
 
-### Next Steps
+## Next Steps
 
 * [Add Cloud Providers](../manage-connectors/cloud-providers.md)
 

@@ -1,7 +1,7 @@
 ---
 title: Use Services API
 description: Provides detail of some common basic queries that your applications can execute against the Harness API.
-# sidebar_position: 2
+sidebar_position: 100
 helpdocs_topic_id: lbw6cny911
 helpdocs_category_id: l2p3i03l4a
 helpdocs_is_private: false
@@ -9,12 +9,6 @@ helpdocs_is_published: true
 ---
 
 This topic provides examples of how to get Services information using APIs.
-
-In this topic:
-
-* [Before You Begin](use-services-api.md#undefined)
-* [Fetch the List of Services for a Given Application](use-services-api.md#undefined)
-* [Show Services for a Given Application](use-services-api.md#show-services-for-a-given-application)
 
 ### Before You Begin
 

@@ -1,7 +1,7 @@
 ---
 title: Use Infrastructure Definition API
 description: Query the Harness Infrastructure Definition API.
-# sidebar_position: 2
+sidebar_position: 120
 helpdocs_topic_id: 07vhqhs1xy
 helpdocs_category_id: l2p3i03l4a
 helpdocs_is_private: false
@@ -10,15 +10,7 @@ helpdocs_is_published: true
 
 This topic lists example queries that you can execute against the Harness Infrastructure Definition API.
 
-See [Add an Infrastructure Definition](../../../continuous-delivery/model-cd-pipeline/environments/infrastructure-definitions.md) for basic information.In this topic:
-
-* [Before You Begin](use-infrastructure-definition-api.md#before-you-begin)
-* [Query Multiple Infrastructure Definitions by Deployment](use-infrastructure-definition-api.md#query-multiple-infrastructure-definitions-by-deployment)
-* [Query Infrastructure Definitions by Environment ID](use-infrastructure-definition-api.md#query-infrastructure-definitions-by-environment-id)
-* [Query Infrastructure Definitions by Infrastructure Definition ID](use-infrastructure-definition-api.md#query-infrastructure-definitions-by-infrastructure-definition-id)
-* [Query Infrastructure Definitions by Name](use-infrastructure-definition-api.md#query-infrastructure-definitions-by-name)
-* [See Also](use-infrastructure-definition-api.md#see-also)
-
+See [Add an Infrastructure Definition](../../../continuous-delivery/model-cd-pipeline/environments/infrastructure-definitions.md) for basic information.
 ### Before You Begin
 
 * [​Introduction to Harness GraphQL API](harness-api.md)

@@ -1,7 +1,7 @@
 ---
 title: Fetch Deployment Artifact Information using GraphQL APIs
 description: This topic explains how to fetch artifact information when deployments are successes, failures, or still running. You can use the WorkflowExecution API to obtain details on all of the artifacts in th…
-# sidebar_position: 2
+sidebar_position: 180
 helpdocs_topic_id: dhdq2nqxai
 helpdocs_category_id: l2p3i03l4a
 helpdocs_is_private: false
@@ -12,23 +12,17 @@ This topic explains how to fetch artifact information when deployments are succe
 
 You can use the **WorkflowExecution** API to obtain details on all of the artifacts in the deployment.
 
-In this topic:
 
-* [Before You Begin](fetch-deployment-artifact-information.md#before-you-begin)
-* [Supported Platforms and Technologies](fetch-deployment-artifact-information.md#undefined)
-* [Step: Fetch Artifact Information from Deployments](fetch-deployment-artifact-information.md#step-fetch-artifact-information-from-deployments)
-* [See Also](fetch-deployment-artifact-information.md#see-also)
-
-### Before You Begin
+## Before You Begin
 
 * [Harness API](harness-api.md)
 * [Service Types and Artifact Sources](../../../continuous-delivery/model-cd-pipeline/setup-services/service-types-and-artifact-sources.md)
 
-### Supported Platforms and Technologies
+## Supported Platforms and Technologies
 
 See [Supported Platforms and Technologies](https://docs.harness.io/article/220d0ojx5y-supported-platforms).
 
-### Step: Fetch Artifact Information from Deployments
+## Step: Fetch Artifact Information from Deployments
 
 Here is an example of a query that returns all of the artifacts for a deployment:
 
@@ -143,7 +137,7 @@ You can get a Pipeline ID by querying for a list of Pipelines:
 ```
 See [Use Pipelines API](use-pipelines-api.md).
 
-### See Also
+## See Also
 
 * [Use Workflows API](use-workflows-api.md)
 * [Use Pipelines API](use-pipelines-api.md)

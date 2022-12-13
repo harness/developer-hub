@@ -1,7 +1,7 @@
 ---
 title: Harness API Explorer
 description: Describes how to use Harness API Explorer.
-# sidebar_position: 2
+sidebar_position: 20
 helpdocs_topic_id: 2rmd5i0e0h
 helpdocs_category_id: l2p3i03l4a
 helpdocs_is_private: false
@@ -32,7 +32,9 @@ The Harness API Explorer is intended primarily as a testing tool. When you're re
 2. Click **Harness API Explorer**.![](./static/harness-api-explorer-31.png)
 
 3. In **Authentication**, select **Logged-in User Session** or **Use API Key**. The authentication determines what data you can query and retrieve via the API. By default, when you launch the **API Explorer**, you authenticate using a session key.![](./static/harness-api-explorer-32.png)
-Authenticating with an alternative key can provide access to a different scope of data.
+
+  Authenticating with an alternative key can provide access to a different scope of data.
+	
 	1. **Switch Keys (Administrators)**: Members of **Account Administrator** [User Group](../../security/access-management-howtos/users-and-permissions.md#default-user-groups) can use the **Authentication** drop-down list to select a different API key from the Harness account.![](./static/harness-api-explorer-33.png)
 
 	2. **Enter Keys (Non-Administrators)**: Non-administrators (with appropriate access) can perform the following steps to authenticate using an alternative API key:

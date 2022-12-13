@@ -8,7 +8,9 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+:::note
 The **Task Category Map** feature replaces the **Command** setting in Delegate Scopes, which is deprecated and will be removed soon.Harness deployments are broken down into separate tasks performed by Harness Delegates.
+:::
 
 Tasks are organized by category. For example, all the connections and images pulled using Docker Hub are part of the Docker Hub Task Category.
 
@@ -20,16 +22,16 @@ This topic describes how to map task categories to Selectors, and then apply the
 
 In this topic:
 
-* [Before You Begin](#before_you_begin)
-* [Supported Platforms and Technologies](#supported_platforms_and_technologies)
-* [Visual Summary](#visual_summary)
-* [Step 1: Set Permissions](#step_1_set_permissions)
-* [Step 2: Map a Selector to a Task Category](#step_2_map_a_selector_to_a_task_category)
-* [Review: Applying Selectors to Delegates and Profiles](#review_applying_selectors_to_delegates_and_profiles)
-	+ [Which option to use?](#which_option_to_use)
-* [Review: Task Categories](#review_task_categories)
+* [Before You Begin](#before-you-begin)
+* [Supported Platforms and Technologies](#supported-platforms-and-technologies)
+* [Visual Summary](#visual-summary)
+* [Step 1: Set Permissions](#step-1-set-permissions)
+* [Step 2: Map a Selector to a Task Category](#step-2-map-a-selector-to-a-task-category)
+* [Review: Applying Selectors to Delegates and Profiles](#review-applying-selectors-to-delegates-and-profiles)
+	+ [Which option to use?](#which-option-to-use)
+* [Review: Task Categories](#review-task-categories)
 
-### Before You Begin
+## Before You Begin
 
 The Delegate is a key component of your Harness setup. Please review the following topics to ensure you have a solid understanding of the Delegate:
 
@@ -38,21 +40,27 @@ The Delegate is a key component of your Harness setup. Please review the followi
 * [Select Delegates with Selectors](select-delegates-for-specific-tasks-with-selectors.md)
 * [Run Scripts on Delegates using Profiles](run-scripts-on-the-delegate-using-profiles.md)
 
-### Supported Platforms and Technologies
+## Supported Platforms and Technologies
 
 See [Supported Platforms and Technologies](https://docs.harness.io/article/220d0ojx5y-supported-platforms).
 
-### Visual Summary
+## Visual Summary
 
-Here is example of adding a new Selector to a Delegate, and then mapping the Selector to a Task Category:![](./static/map-tasks-to-delegates-and-profiles-54.gif)Here is an example of adding a Selector to a Task Category Mapping, and then applying the Selector to a Delegate:![](./static/map-tasks-to-delegates-and-profiles-55.gif)
+Here is example of adding a new Selector to a Delegate, and then mapping the Selector to a Task Category:
 
-### Step 1: Set Permissions
+![](./static/map-tasks-to-delegates-and-profiles-54.gif)
+
+Here is an example of adding a Selector to a Task Category Mapping, and then applying the Selector to a Delegate:
+
+![](./static/map-tasks-to-delegates-and-profiles-55.gif)
+
+## Step 1: Set Permissions
 
 To map Selectors to Task Categories a user must belong to a User Group with the Account Permission **Manage Delegates** enabled.
 
 See [Managing Users and Groups (RBAC)](../../security/access-management-howtos/users-and-permissions.md).
 
-### Step 2: Map a Selector to a Task Category
+## Step 2: Map a Selector to a Task Category
 
 1. To map a Selector to a Task Category, in **Setup**, click **Harness Delegates**.
 2. Click **Task Category Map**.
@@ -60,12 +68,15 @@ See [Managing Users and Groups (RBAC)](../../security/access-management-howtos/u
 4. In **Task Category**, select the category you want to map. See [Review: Task Categories](#review_task_categories).
 5. Select or create selectors to map to this Task Category.
 	1. You can simply enter the name of a new Selector and click **Create**.
-	2. If you have an existing Selector, one that is perhaps already used by a Delegate or Delegate Profile, you can start entering its name and it will appear. Next, click its name to select it.You must select or create at least one Selector.
+	2. If you have an existing Selector, one that is perhaps already used by a Delegate or Delegate Profile, you can start entering its name and it will appear. Next, click its name to select it.
+	:::note
+	You must select or create at least one Selector.
+	:::
 6. Click **Submit**. The Task Category is now mapped to the Selector.
 
 If this Selector is not being used by a Delegate or Profile, you can now add it to one or both.
 
-### Review: Applying Selectors to Delegates and Profiles
+## Review: Applying Selectors to Delegates and Profiles
 
 Once you have mapped a Selector to a Task Category, you can apply the Selector to a Delegate using the following options:
 
@@ -76,13 +87,13 @@ For steps on adding Custom Selectors, see [Select Delegates with Selectors](sele
 
 For steps on adding Profile Selectors, see the Selector option in [Run Scripts on Delegates using Profiles](run-scripts-on-the-delegate-using-profiles.md).
 
-#### Which option to use?
+### Which option to use?
 
 If your task requires a Delegate Profile, it is best to map the Task Category to a Selector and apply that Selector to the Profile. All Delegates assigned that Profile will then perform the mapped tasks.
 
 If your task can only be performed by specific Delegates because of their location or credentials, it is best to map it to specific Delegate using a Delegate's **Custom Selectors** setting.
 
-### Review: Task Categories
+## Review: Task Categories
 
 The following table describes the different task categories.
 
@@ -106,20 +117,7 @@ The following table describes the different task categories.
 | Collaboration Provider | Connect and configure Harness [Collaboration Providers](../manage-connectors/collaboration-providers.md). |
 | Command | Delegate will be used first for [Service commands](../manage-templatelib/create-a-service-command-template.md). |
 | Connectivity Validation | Tests connectivity with resources, such as Harness Cloud Providers. |
-| Container | Performs the following container-related tasks:* Container active service counts
-* Container information
-* Controller names with labels
-* Container Continuous Efficiency (CE) validation
-* CE Delegate validation
-* Container connection validation
-* List clusters
-* Container validation
-* Fetch Kubernetes master URL
-* Kubernetes steady state check
-* Kubernetes swap service selectors
-* ECS steady state check
-* Validate Kubernetes config
- |
+| Container | Performs the following container-related tasks: <ul><li>Container active service counts </li><li>Container information</li><li>Controller names with labels</li><li>Container Continuous Efficiency (CE) validation</li> <li>CE Delegate validation</li> <li>Container connection validation</li> <li>List clusters</li> <li>Container validation</li> <li>Fetch Kubernetes master URL</li> <li>Kubernetes steady state check</li> <li>Kubernetes swap service selectors</li> <li>ECS steady state check</li> <li>Validate Kubernetes config</li></ul>|
 | Custom Artifact Source | Collect artifacts using [Custom Artifact Sources](../../../continuous-delivery/model-cd-pipeline/setup-services/custom-artifact-source.md). |
 | Custom Log Collection and Bugsnag | Perform configuration and verification using [Custom Logs](../../../continuous-delivery/continuous-verification/custom-metrics-and-logs-verification/verify-deployments-with-custom-logs.md) and [Bugsnag Verification Overview](../../../continuous-delivery/continuous-verification/continuous-verification-overview/concepts-cv/bugsnag-verification-overview.md).  |
 | Dynatrace | Perform configuration and verification using [Dynatrace](../../../continuous-delivery/continuous-verification/continuous-verification-overview/concepts-cv/dynatrace-verification-overview.md). |
