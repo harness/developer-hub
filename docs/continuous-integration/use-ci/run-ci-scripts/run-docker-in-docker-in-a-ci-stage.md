@@ -97,7 +97,7 @@ Now you can run your Pipeline. You simply need to select the codebase.
 3. If prompted, specify a Git branch, tag, or PR number.
 4. Click **Run Pipeline** and check the console output to verify that the Pipeline runs as intended.
 
-### Configure As code: YAML
+### Configure as code: YAML
 
 To configure your pipeline as YAML in CI, go to Harness **Pipeline Studio**, click **YAML**. Here’s is a working example of the workflow described in this topic. Modify the YAML attributes such as name, identifiers, codebase, connector refs, and variables as needed.
 
