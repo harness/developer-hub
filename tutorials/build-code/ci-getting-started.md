@@ -37,7 +37,7 @@ import TabItem from '@theme/TabItem';
 <Tabs>
 <TabItem value="newaccount" label="New account" default>
 ```
-[Sign up](https://app.harness.io/auth/#/signup/?module=ci) for a new Harness account. Select the **Continuous Integration** module after your initial sign in. This brings you to the **Get Started** wizard.
+[Sign up](https://app.harness.io/auth/#/signup/?module=ci&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=ci-plg&utm_content=get-started) for a new Harness account. Select the **Continuous Integration** module after your initial sign in. This brings you to the **Get Started** wizard.
 ```mdx-code-block
 </TabItem>
 <TabItem value="existingaccount" label="Existing account">
