@@ -165,6 +165,6 @@ Your ability to deploy Pipelines also depends on your **Deployments** Applicatio
 ### Next Steps
 
 * [Create Pipeline Templates](templatize-pipelines.md)
-* [Resume Pipeline Deployments](https://docs.harness.io/article/4dvyslwbun-resume-a-pipeline-deployment)
+* [Resume Pipeline Deployments](../../concepts-cd/deployments-overview/resume-a-pipeline-deployment.md)
 * [Pipeline Governance](https://docs.harness.io/article/zhqccv0pff-pipeline-governance)
 

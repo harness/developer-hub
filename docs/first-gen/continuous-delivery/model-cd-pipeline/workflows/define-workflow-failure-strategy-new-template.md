@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 A Failure Strategy defines how your Workflow handles different failure conditions.
 
-There is no Failure Strategy in a [Build Workflow](https://docs.harness.io/article/wqytbv2bfd-ci-cd-with-the-build-workflow) because there is no rollback in a Build Workflow. A Build Workflow simply runs a build job and collects an artifact.
+There is no Failure Strategy in a [Build Workflow](../../concepts-cd/deployment-types/ci-cd-with-the-build-workflow.md) because there is no rollback in a Build Workflow. A Build Workflow simply runs a build job and collects an artifact.
 
 ### Before You Begin
 

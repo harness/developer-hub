@@ -33,10 +33,10 @@ As a first step, you need to create a project in Harness. To do this:
 2. In **Projects**, click **Project**.
 3. In **About the Project**, in **Name**, enter the name for your Project. You will create your Feature Flag for this Project.
 4. (Optional) Select color for your Project.
-5. Select the Organization from the list. If you need to create a new Organization, go to [Create a Harness Organization](https://docs.harness.io/article/36fw2u92i4-create-an-organization#step_1_create_a_harness_org) and [Projects and Organizations](https://docs.harness.io/article/7fibxie636-projects-and-organizations).
+5. Select the Organization from the list. If you need to create a new Organization, go to [Create a Harness Organization](../../../platform/1_Organizations-and-Projects/2-create-an-organization.md#step-1-create-a-harness-org) and [Projects and Organizations](../../../platform/1_Organizations-and-Projects/1-projects-and-organizations.md).
 6. Click **Save and Continue**.
 7. (Optional) In **Invite Collaborators**, in **Invite People to Collaborate**, add members to collaborate with you on the Project.
-8. (Optional) Assign a role to the collaborators and click **Add**. You can select **Project Admin**, **Project Member**, or **Project Viewer**. For more information on permissions, go to [Permissions Reference](https://docs.harness.io/article/yaornnqh0z-permissions-reference).
+8. (Optional) Assign a role to the collaborators and click **Add**. You can select **Project Admin**, **Project Member**, or **Project Viewer**. For more information on permissions, go to [Permissions Reference](../../../platform/4_Role-Based-Access-Control/ref-access-management/permissions-reference.md).
 9. Once you're done adding contributors and adding a role, click **Save and Continue**.
 10. Click **GO TO FEATURE FLAGS**.
 
@@ -80,7 +80,7 @@ To create a boolean Flag:
 1. In **Feature Flags**, click **Flag**.
 2. Select the **Boolean** type.
 3. In **About the Flag**, in **Name**, enter a name for your boolean Flag and click **Next**.  
-When you name a Feature Flag, Harness automatically generates its unique identifier based on the name you give it. You can edit the identifier when you are creating the Flag, but not after it is saved. If you rename the feature flag, the identifier remains the same. For more information, go to [Entity Identifier Reference](https://docs.harness.io/article/li0my8tcz3-entity-identifier-reference).
+When you name a Feature Flag, Harness automatically generates its unique identifier based on the name you give it. You can edit the identifier when you are creating the Flag, but not after it is saved. If you rename the feature flag, the identifier remains the same. For more information, go to [Entity Identifier Reference](../../../platform/20_References/entity-identifier-reference.md).
 
 > **☆ NOTE —** If you need to make the Flag a permanent Flag, select the checkbox **This is a permanent flag**.
 
@@ -172,7 +172,7 @@ Evaluate a Target for your Feature Flag. Once you have added the Target, evaluat
 ```
 boolean result = cfClient.boolVariation(<feature_identifier>, target, <default_result>);
 ```
-The `<feature_identifier>` is your Feature Flag identifier. When you name a Feature Flag, Harness automatically generates its identifier. For more information, go to [Entity Identifier Reference](https://docs.harness.io/article/li0my8tcz3-entity-identifier-reference) and [Create a flag type](../../2-ff-using-flags/1-ff-creating-flag/4-create-a-feature-flag.md#step-4-create-a-flag-type).
+The `<feature_identifier>` is your Feature Flag identifier. When you name a Feature Flag, Harness automatically generates its identifier. For more information, go to [Entity Identifier Reference](../../../platform/20_References/entity-identifier-reference.md) and [Create a flag type](../../2-ff-using-flags/1-ff-creating-flag/4-create-a-feature-flag.md#step-4-create-a-flag-type).
 
 **Sample code for a boolean Flag**
 

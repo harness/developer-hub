@@ -16,7 +16,7 @@ This topic explains how to set up the GCP Connector.
 
 ### Before you begin
 
-* [Learn Harness' Key Concepts](https://ngdocs.harness.io/article/hv2758ro4e-learn-harness-key-concepts)
+* [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md)
 
 ### Limitations
 
@@ -26,7 +26,7 @@ If you use a version prior to GKE 1.19, please enable Basic Authentication. If B
 
 ### Supported Platforms and Technologies
 
-For a list of the platforms and technologies supported by Harness, see [Supported Platforms and Technologies](https://docs.harness.io/article/1e536z41av-supported-platforms-and-technologies).
+For a list of the platforms and technologies supported by Harness, see [Supported Platforms and Technologies](../../getting-started/supported-platforms-and-technologies.md).
 
 ### Review: Connecting to Kubernetes Clusters
 

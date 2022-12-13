@@ -66,6 +66,6 @@ Make sure you have the **update** permission on the Environment before you try
 
 ### Platform-Specific Options
 
-* For Kubernetes, Helm charts, and OpenShift, see [Override Harness Kubernetes Service Settings](https://docs.harness.io/article/ycacqs7tlx-override-harness-kubernetes-service-settings).
-* For PCF, see [PCF Manifests Override](https://docs.harness.io/article/r0vp331jnq-override-pcf-manifests-and-config-variables-and-files#option_2_pcf_manifests_override).
+* For Kubernetes, Helm charts, and OpenShift, see [Override Harness Kubernetes Service Settings](../../kubernetes-deployments/override-harness-kubernetes-service-settings.md).
+* For PCF, see [PCF Manifests Override](../../pcf-deployments/override-pcf-manifests-and-config-variables-and-files.md#option-2-pcf-manifests-override).
 

@@ -18,7 +18,7 @@ This topic describes how to create an Org, invite Harness Users to it as members
 
 ### Before you begin
 
-* [Learn Harness' Key Concepts](https://docs.harness.io/article/hv2758ro4e-learn-harness-key-concepts)
+* [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md)
 
 ### Prerequisites
 
@@ -82,6 +82,6 @@ Next, the Harness modules appear.
 
 ### See also
 
-* [Learn Harness' Key Concepts](https://docs.harness.io/article/hv2758ro4e-learn-harness-key-concepts)
+* [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md)
 * [Harness Role-Based Access Control Overview](../4_Role-Based-Access-Control/1-rbac-in-harness.md)
 

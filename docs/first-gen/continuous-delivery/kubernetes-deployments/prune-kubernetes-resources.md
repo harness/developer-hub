@@ -20,7 +20,7 @@ Harness also allows you to identify resources you do not want pruned using the a
 
 ### Before You Begin
 
-* [Kubernetes Quickstart](https://docs.harness.io/article/7in9z2boh6-kubernetes-quickstart)
+* [Kubernetes Quickstart](../../first-gen-quickstarts/kubernetes-quickstart.md)
 * [Create a Kubernetes Rolling Deployment](create-a-kubernetes-rolling-deployment.md)
 * [Create a Kubernetes Blue/Green Deployment](create-a-kubernetes-blue-green-deployment.md)
 * [Delete Kubernetes Resources](delete-kubernetes-resources.md)
@@ -34,7 +34,7 @@ Pruning is supported for the following deployment strategies and Workflow types:
 
 See:
 
-* [Supported Platforms and Technologies](https://docs.harness.io/article/220d0ojx5y-supported-platforms)
+* [Supported Platforms and Technologies](../../starthere-firstgen/supported-platforms.md)
 * [Create a Kubernetes Rolling Deployment](create-a-kubernetes-rolling-deployment.md)
 * [Create a Kubernetes Blue/Green Deployment](create-a-kubernetes-blue-green-deployment.md)
 

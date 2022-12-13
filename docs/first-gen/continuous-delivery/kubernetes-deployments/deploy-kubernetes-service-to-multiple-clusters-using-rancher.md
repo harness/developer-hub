@@ -18,7 +18,7 @@ You can also deploy to multiple infrastructures without using Rancher. See [Depl
 ### Before You Begin
 
 * This topic assumes you are familiar with Rancher and have set up Kubernetes clusters in its UI. If you are new to Rancher, see [Setting up Kubernetes Clusters in Rancher](https://rancher.com/docs/rancher/v2.5/en/cluster-provisioning/) from Rancher.
-* This topic assumes you are familiar with Harness Kubernetes deployments. See [Kubernetes Quickstart](https://docs.harness.io/article/7in9z2boh6-kubernetes-quickstart).
+* This topic assumes you are familiar with Harness Kubernetes deployments. See [Kubernetes Quickstart](../../first-gen-quickstarts/kubernetes-quickstart.md).
 
 ### Visual Summary
 
@@ -121,9 +121,9 @@ You can use Harness built-in and Workflow variables in **Cluster Selection Crite
 See:
 
 * [Built-in Variables List](https://docs.harness.io/article/aza65y4af6-built-in-variables-list)
-* [Set Workflow Variables](https://docs.harness.io/article/766iheu1bk-add-workflow-variables-new-template)
-* [Pass Variables between Workflows](https://docs.harness.io/article/gkmgrz9shh-how-to-pass-variables-between-workflows)
-* [Passing Variables into Workflows and Pipelines from Triggers](https://docs.harness.io/article/revc37vl0f-passing-variable-into-workflows)
+* [Set Workflow Variables](../model-cd-pipeline/workflows/add-workflow-variables-new-template.md)
+* [Pass Variables between Workflows](../model-cd-pipeline/expressions/how-to-pass-variables-between-workflows.md)
+* [Passing Variables into Workflows and Pipelines from Triggers](../model-cd-pipeline/expressions/passing-variable-into-workflows.md)
 
 ### Step 4: Create a Workflow
 

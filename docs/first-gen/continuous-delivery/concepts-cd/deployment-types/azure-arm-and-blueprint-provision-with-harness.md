@@ -16,7 +16,7 @@ You can use Blueprints to provision Azure resources that adhere to your organiza
 
 This topic provides a high-level summary of how to use Harness to provision a target environment using ARM, or to simply provision resources using ARM or Blueprint.
 
-Looking for How-tos? See [Azure Resource Management (ARM) How-tos](https://docs.harness.io/article/qhnnq1mks3-azure-arm-and-blueprint-how-tos).
+Looking for How-tos? See [Azure Resource Management (ARM) How-tos](../../azure-deployments/azure-arm/azure-arm-and-blueprint-how-tos.md).
 
 ### Provision and Deploy to the Same Infrastructure using ARM
 
@@ -62,7 +62,7 @@ You can use Azure ARM templates/Blueprint definitions in Harness for general Azu
 
 ### Limitations
 
-For ARM, see [Azure Resource Management (ARM) How-tos](https://docs.harness.io/article/qhnnq1mks3-azure-arm-and-blueprint-how-tos).
+For ARM, see [Azure Resource Management (ARM) How-tos](../../azure-deployments/azure-arm/azure-arm-and-blueprint-how-tos.md).
 
 ### Azure Roles Required
 
@@ -104,5 +104,5 @@ When Harness deploys artifacts via Harness Services to the provisioned infrastru
 
 ### Next Steps
 
-* [Azure ARM and Blueprint How-tos](https://docs.harness.io/article/qhnnq1mks3-azure-arm-and-blueprint-how-tos)
+* [Azure ARM and Blueprint How-tos](../../azure-deployments/azure-arm/azure-arm-and-blueprint-how-tos.md)
 

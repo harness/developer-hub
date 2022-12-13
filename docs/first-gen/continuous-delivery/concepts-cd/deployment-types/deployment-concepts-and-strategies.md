@@ -35,7 +35,7 @@ For example, you might use a Trigger to execute the Workflow on a Webhook event,
 
 You simply add a Build Workflow at the beginning of the Pipeline to build the artifact so you always have the latest build.
 
-See [Triggers](https://docs.harness.io/article/xerirloz9a-add-a-trigger-2) for information on Webhook triggers.
+See [Triggers](../../model-cd-pipeline/triggers/add-a-trigger-2.md) for information on Webhook triggers.
 
 ### Basic Deployment
 
@@ -222,5 +222,5 @@ You can also combine many of the above deployment strategies into a single strat
 
 ### Next Steps
 
-* [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts)
+* [Harness Key Concepts](../../../starthere-firstgen/harness-key-concepts.md)
 

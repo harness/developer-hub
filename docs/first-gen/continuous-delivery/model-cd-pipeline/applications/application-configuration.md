@@ -23,7 +23,7 @@ Keep this diagram in mind when setting up your Harness Application.
 
 ### Before You Begin
 
-* [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts)
+* [Harness Key Concepts](../../../starthere-firstgen/harness-key-concepts.md)
 
 
 ### Step 1: Set up the Application

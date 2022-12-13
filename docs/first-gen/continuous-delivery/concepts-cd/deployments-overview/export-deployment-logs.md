@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/article/0slo2gklsy).Large enterprises are highly regulated and auditing the deployments happening in their environments is critical. These audits might take into account deployment information across years.
+This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../../platform/2_Delegates/delegate-guide/delegate-how-tos.md).Large enterprises are highly regulated and auditing the deployments happening in their environments is critical. These audits might take into account deployment information across years.
 
 Harness provides advanced auditing in the Harness Manager, as described in [Audit Trail](https://docs.harness.io/article/kihlcbcnll-audit-trail), and deployment information in the **Deployments** page and [dashboards](https://docs.harness.io/article/c3s245o7z8-main-and-services-dashboards), but large enterprises want to save deployment information to their centralized archives for years to come.
 

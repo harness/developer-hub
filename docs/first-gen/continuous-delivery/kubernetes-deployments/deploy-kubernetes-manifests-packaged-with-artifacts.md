@@ -18,13 +18,13 @@ Looking for other methods? See [Define Kubernetes Manifests](define-kubernetes-m
 
 ### Before You Begin
 
-* [Kubernetes Quickstart](https://docs.harness.io/article/7in9z2boh6-kubernetes-quickstart)
+* [Kubernetes Quickstart](../../first-gen-quickstarts/kubernetes-quickstart.md)
 * [Kubernetes Deployments Overview](../concepts-cd/deployment-types/kubernetes-overview.md)
 * [Add Container Images for Kubernetes Deployments](add-container-images-for-kubernetes-deployments.md)
 
 ### Supported Platforms and Technologies
 
-See [Supported Platforms and Technologies](https://docs.harness.io/article/220d0ojx5y-supported-platforms).
+See [Supported Platforms and Technologies](../../starthere-firstgen/supported-platforms.md).
 
 ### Limitations
 
@@ -191,7 +191,7 @@ You can use Harness Service, Workflow, and built-in variables in the script and 
 
 ### Option: Override Manifests in Environment
 
-You can override Harness Service settings at the Harness Environment level using Service Configuration Overrides. See [Override Harness Kubernetes Service Settings](override-harness-kubernetes-service-settings.md) and [Override a Service Configuration in an Environment](https://docs.harness.io/article/4m2kst307m-override-service-files-and-variables-in-environments).
+You can override Harness Service settings at the Harness Environment level using Service Configuration Overrides. See [Override Harness Kubernetes Service Settings](override-harness-kubernetes-service-settings.md) and [Override a Service Configuration in an Environment](../model-cd-pipeline/environments/override-service-files-and-variables-in-environments.md).
 
 The **Custom Manifest Override Configuration** follows the same guidelines as overriding settings using the Service's **Configuration** sections: **Add Values** (Kubernetes) or **Add Param** (OpenShift).
 

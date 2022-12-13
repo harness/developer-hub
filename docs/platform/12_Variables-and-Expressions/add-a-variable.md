@@ -24,7 +24,7 @@ For details on Harness built-in variables, see [Built-in Harness Variables Refer
 
 ### Before you begin
 
-* [Learn Harness' Key Concepts](https://ngdocs.harness.io/article/hv2758ro4e-learn-harness-key-concepts).
+* [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md).
 * Make sure you have [all permissions](../4_Role-Based-Access-Control/9-add-manage-roles.md) on Variables to add and manage Variables.
   
   ![](./static/add-a-variable-00.png)

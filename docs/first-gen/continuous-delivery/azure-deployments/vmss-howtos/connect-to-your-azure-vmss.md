@@ -23,15 +23,15 @@ In this topic:
 
 * [Azure Virtual Machine Scale Set Deployments Overview](azure-virtual-machine-scale-set-deployments.md)
 * [Harness Delegate Overview](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation)
-* [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts)
+* [Harness Key Concepts](../../../starthere-firstgen/harness-key-concepts.md)
 
 ### Supported Platforms and Technologies
 
-See  [Supported Platforms and Technologies](https://docs.harness.io/article/220d0ojx5y-supported-platforms).
+See  [Supported Platforms and Technologies](../../../starthere-firstgen/supported-platforms.md).
 
 ### Review: Azure Connection Options
 
-As covered in [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts), you need to install a Harness Delegate in your target infrastructure before setting up your Harness deployment.
+As covered in [Harness Key Concepts](../../../starthere-firstgen/harness-key-concepts.md), you need to install a Harness Delegate in your target infrastructure before setting up your Harness deployment.
 
 There are several types of Delegates you can use for a virtual machine scale set deployment, described in [Delegate Installation Overview](https://docs.harness.io/article/igftn7rrtg-delegate-installation-overview).
 

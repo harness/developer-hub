@@ -28,7 +28,7 @@ When you switch or modify the IAM role, it might take up to 5 minutes to take ef
 
 ### Supported Platforms and Technologies
 
-For a list of the platforms and technologies supported by Harness, see [Supported Platforms and Technologies](https://ngdocs.harness.io/article/1e536z41av-supported-platforms-and-technologies).
+For a list of the platforms and technologies supported by Harness, see [Supported Platforms and Technologies](../../getting-started/supported-platforms-and-technologies.md).
 
 ### Step 1: Generate an API Key in IBM Cloud Console
 

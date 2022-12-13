@@ -26,7 +26,7 @@ You'll learn how to: 
 
 ### Before you begin
 
-* Review [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts)
+* Review [Harness Key Concepts](../../first-gen/starthere-firstgen/harness-key-concepts.md)
 * See [Templates Overview](template.md).
 * See [CIE Quickstarts](../../continuous-integration/ci-quickstarts/ci-pipeline-quickstart.md)
 

@@ -211,7 +211,7 @@ The critical line is:
 
 `{{- range $track := split " " .Values.nonPrimary }}`
 
-This line iterates over a list of existing items, where the list was computed with a simple [Shell Script](https://docs.harness.io/article/1fjrjbau7x-capture-shell-script-step-output) command and output to the context prior to the rollout.
+This line iterates over a list of existing items, where the list was computed with a simple [Shell Script](../model-cd-pipeline/workflows/capture-shell-script-step-output.md) command and output to the context prior to the rollout.
 
 VirtualService:
 

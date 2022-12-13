@@ -18,11 +18,11 @@ Deployment Templates use shell scripts to connect to target platforms, obtain ta
 
 You can review some of the other custom options Harness provides in addition to its support for all major platforms:
 
-* [Using Custom Artifact Sources](https://docs.harness.io/article/jizsp5tsms-custom-artifact-source)
+* [Using Custom Artifact Sources](../model-cd-pipeline/setup-services/custom-artifact-source.md)
 * [Add and Use a Custom Secrets Manager](https://docs.harness.io/article/ejaddm3ddb-add-and-use-a-custom-secrets-manager)
-* [Custom Shell Script Approvals](https://docs.harness.io/article/lf79ixw2ge-shell-script-ticketing-system)
-* [Shell Script Provisioner](https://docs.harness.io/article/1m3p7phdqo-shell-script-provisioner)
-* [Custom Verification Overview](https://docs.harness.io/article/e87u8c63z4-custom-verification-overview)
+* [Custom Shell Script Approvals](../model-cd-pipeline/approvals/shell-script-ticketing-system.md)
+* [Shell Script Provisioner](../model-cd-pipeline/infrastructure-provisioner/ssh-provisioner-category/shell-script-provisioner.md)
+* [Custom Verification Overview](../continuous-verification/custom-metrics-and-logs-verification/custom-verification-overview.md)
 
 Google Cloud Function deployments using Deployment Templates are covered in [Google Cloud Functions with Harness Deployment Template](https://community.harness.io/t/google-cloud-functions-with-harness-deployment-template/598).
 
@@ -40,7 +40,7 @@ Here is a summary of the steps for setting up custom deployments using Deploymen
 2. In the template, include a script that returns a JSON array containing a list of the target instances Harness will use to deploy your artifact.
 3. Identify the array path to the host object in the JSON so Harness can locate it at deployment runtime.
 4. Map any important host attributes that you want to reference later, like IP, region, etc.
-5. Create a Harness Service that using the Deployment Template.Artifacts are added just as they are for supported platforms. See [Add Artifact Servers](https://docs.harness.io/article/7dghbx1dbl-configuring-artifact-server). Harness includes the [Custom Artifact Source](https://docs.harness.io/article/jizsp5tsms-custom-artifact-source) also.
+5. Create a Harness Service that using the Deployment Template.Artifacts are added just as they are for supported platforms. See [Add Artifact Servers](https://docs.harness.io/article/7dghbx1dbl-configuring-artifact-server). Harness includes the [Custom Artifact Source](../model-cd-pipeline/setup-services/custom-artifact-source.md) also.
 6. Create a Harness Infrastructure Definition that uses the template.
 7. Create a Workflow that uses the Harness Service and Infrastructure Definition.
 8. In the Workflow, add the **Fetch Instances** step wherever you want to execute the script in your template.
@@ -54,7 +54,7 @@ Unlike the deployments for supported platforms, like Kubernetes and AWS, Deploym
 * No steady state checks on deployed services.
 * Harness does not track releases.
 * The Deployment Template where you define your infrastructure can be created in the account-wide Template Library only (also called the Shared Template Library). Not in an Application-wide Template Library. See [Use Templates](../concepts-cd/deployment-types/use-templates.md).
-* Only Basic, Canary, and Multi-Service Deployment [Workflow types](https://docs.harness.io/article/m220i1tnia-workflow-configuration#workflow_types) are supported.
+* Only Basic, Canary, and Multi-Service Deployment [Workflow types](../model-cd-pipeline/workflows/workflow-configuration.md#workflow-types) are supported.
 
 ### Step 1: Harness Delegate Setup
 
@@ -119,7 +119,7 @@ This example uses AWS. Harness already has full, first-class support for AWS dep
 
 This example also uses Harness secrets for username and password. See [Use Encrypted Text Secrets](https://docs.harness.io/article/ygyvp998mu-use-encrypted-text-secrets).
 
-Here's another example using Kubernetes and NGINX (Kubernetes also has [first-class support](https://docs.harness.io/article/7in9z2boh6-kubernetes-quickstart)):
+Here's another example using Kubernetes and NGINX (Kubernetes also has [first-class support](../../first-gen-quickstarts/kubernetes-quickstart.md)):
 
 
 ```
@@ -283,7 +283,7 @@ In the Services Dashboard, you will see different artifact versions and the numb
 
 ### Step 4: Create Harness Service
 
-Create your Harness Service as described in [Add Specs and Artifacts using a Harness Service](https://docs.harness.io/article/eb3kfl8uls-service-configuration).
+Create your Harness Service as described in [Add Specs and Artifacts using a Harness Service](../model-cd-pipeline/setup-services/service-configuration.md).
 
 In **Deployment Type**, select your Deployment Template.
 
@@ -293,16 +293,16 @@ In the new Service, add your Artifact Source just as you would with any other Ha
 
 You must reference the artifact source somewhere in your Harness entities, such as a Shell Script Workflow step. If you do not reference the artifact source, Harness does not prompt you to select an artifact version when you deploy your Workflow. See [Option: Reference Artifact Sources](#option_reference_artifact_sources).See
 
-* [Service Types and Artifact Sources](https://docs.harness.io/article/qluiky79j8-service-types-and-artifact-sources)
-* [Add a Docker Artifact Source](https://docs.harness.io/article/gxv9gj6khz-add-a-docker-image-service)
-* [Using Custom Artifact Sources](https://docs.harness.io/article/jizsp5tsms-custom-artifact-source)
+* [Service Types and Artifact Sources](../model-cd-pipeline/setup-services/service-types-and-artifact-sources.md)
+* [Add a Docker Artifact Source](../model-cd-pipeline/setup-services/add-a-docker-image-service.md)
+* [Using Custom Artifact Sources](../model-cd-pipeline/setup-services/custom-artifact-source.md)
 
-There are no specs for the custom deployment service. You can add Configuration variables (environment variables) and files that can be referenced and used in your Workflow, and [overwritten by Harness Environments](https://docs.harness.io/article/4m2kst307m-override-service-files-and-variables-in-environments).
+There are no specs for the custom deployment service. You can add Configuration variables (environment variables) and files that can be referenced and used in your Workflow, and [overwritten by Harness Environments](../model-cd-pipeline/environments/override-service-files-and-variables-in-environments.md).
 
 See:
 
-* [Add Service Config Variables](https://docs.harness.io/article/q78p7rpx9u-add-service-level-config-variables)
-* [Add Service Config Files](https://docs.harness.io/article/iwtoq9lrky-add-service-level-configuration-files)
+* [Add Service Config Variables](../model-cd-pipeline/setup-services/add-service-level-config-variables.md)
+* [Add Service Config Files](../model-cd-pipeline/setup-services/add-service-level-configuration-files.md)
 
 ### Step 5: Create Target Infrastructure Definition
 
@@ -354,7 +354,7 @@ To create the Workflow, do the following:
 
 The Workflow is created. The Workflow does not have any default steps added like the platform-specific Workflows.
 
-The Workflow is fully customizable. You can add sections, phases, Rollback Steps, etc, as needed. See [Workflows](https://docs.harness.io/article/m220i1tnia-workflow-configuration).
+The Workflow is fully customizable. You can add sections, phases, Rollback Steps, etc, as needed. See [Workflows](../model-cd-pipeline/workflows/workflow-configuration.md).
 
 As this a custom deployment Workflow, the number of available steps is limited:
 
@@ -372,13 +372,13 @@ For example, let's say you added an artifact source for a WAR file in the Servic
 
 ![](./static/create-a-custom-deployment-10.png)
 
-In your Workflow, add a [Shell Script step](https://docs.harness.io/article/1fjrjbau7x-capture-shell-script-step-output) that echos the `${artifact.buildNo}` or other [artifact built-in variables](https://docs.harness.io/article/aza65y4af6-built-in-variables-list#artifact).
+In your Workflow, add a [Shell Script step](../model-cd-pipeline/workflows/capture-shell-script-step-output.md) that echos the `${artifact.buildNo}` or other [artifact built-in variables](https://docs.harness.io/article/aza65y4af6-built-in-variables-list#artifact).
 
 Now when you deploy this Workflow, you will be prompted to select an artifact version.
 
 If you did not reference the artifact in the Workflow, you would not be prompted.
 
-See [Run Shell Scripts in Workflows](https://docs.harness.io/article/1fjrjbau7x-capture-shell-script-step-output).
+See [Run Shell Scripts in Workflows](../model-cd-pipeline/workflows/capture-shell-script-step-output.md).
 
 ### Step 7: Fetch Instances
 
@@ -403,10 +403,10 @@ Here is an example using a Shell Script step:
 
 ### See Also
 
-* [Using Custom Artifact Sources](https://docs.harness.io/article/jizsp5tsms-custom-artifact-source)
+* [Using Custom Artifact Sources](../model-cd-pipeline/setup-services/custom-artifact-source.md)
 * [Add and Use a Custom Secrets Manager](https://docs.harness.io/article/ejaddm3ddb-add-and-use-a-custom-secrets-manager)
-* [Custom Shell Script Approvals](https://docs.harness.io/article/lf79ixw2ge-shell-script-ticketing-system)
-* [Shell Script Provisioner](https://docs.harness.io/article/1m3p7phdqo-shell-script-provisioner)
+* [Custom Shell Script Approvals](../model-cd-pipeline/approvals/shell-script-ticketing-system.md)
+* [Shell Script Provisioner](../model-cd-pipeline/infrastructure-provisioner/ssh-provisioner-category/shell-script-provisioner.md)
 
 ### Configure As Code
 

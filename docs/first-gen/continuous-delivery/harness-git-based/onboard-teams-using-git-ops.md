@@ -16,7 +16,7 @@ Development teams can then deploy consistently without using the Harness UI to c
 
 ### Before You Begin
 
-* [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts) — Ensure you know Harness Key Concepts.
+* [Harness Key Concepts](../../starthere-firstgen/harness-key-concepts.md) — Ensure you know Harness Key Concepts.
 * [Configuration as Code](https://docs.harness.io/article/htvzryeqjw-configuration-as-code) — Review Harness YAML interface.
 * [Harness Git Integration Overview](harness-git-ops.md) — Review Harness support for Git.
 
@@ -60,13 +60,13 @@ Once you click **Submit** you will see the Application in your repo:
 
 #### Service Template
 
-Next, create a Harness Service in the Application. For this example, we'll create a Kubernetes Service named **SampleK8s**. For details, see [Kubernetes Quickstart](https://docs.harness.io/article/7in9z2boh6-kubernetes-quickstart).
+Next, create a Harness Service in the Application. For this example, we'll create a Kubernetes Service named **SampleK8s**. For details, see [Kubernetes Quickstart](../../first-gen-quickstarts/kubernetes-quickstart.md).
 
 The Service is set up with the following:
 
-* **Artifact Source placeholder** — We'll add a publicly-available Nginx Docker image from Docker Hub. When teams clone this Application, they can update the Artifact Source. See [Add Container Images for Kubernetes Deployments](https://docs.harness.io/article/6ib8n1n1k6-add-container-images-for-kubernetes-deployments)
-* **Remote manifests** — When teams clone this Application, they can update the link to point to their own manifests. See [Link Resource Files or Helm Charts in Git Repos](https://docs.harness.io/article/yjkkwi56hl-link-resource-files-or-helm-charts-in-git-repos).
-* **Service Config Variable for the namespace** — A Service Config Variable is created for the namespace used in the manifests. This will enable teams to simply update the variable in their clones with their own namespaces. See [Using Harness Config Variables in Manifests](https://docs.harness.io/article/qy6zw1u0y2-using-harness-config-variables-in-manifests).
+* **Artifact Source placeholder** — We'll add a publicly-available Nginx Docker image from Docker Hub. When teams clone this Application, they can update the Artifact Source. See [Add Container Images for Kubernetes Deployments](../kubernetes-deployments/add-container-images-for-kubernetes-deployments.md)
+* **Remote manifests** — When teams clone this Application, they can update the link to point to their own manifests. See [Link Resource Files or Helm Charts in Git Repos](../kubernetes-deployments/link-resource-files-or-helm-charts-in-git-repos.md).
+* **Service Config Variable for the namespace** — A Service Config Variable is created for the namespace used in the manifests. This will enable teams to simply update the variable in their clones with their own namespaces. See [Using Harness Config Variables in Manifests](../kubernetes-deployments/using-harness-config-variables-in-manifests.md).
 
 Once you create the Service it is synced with your repo automatically:
 
@@ -86,7 +86,7 @@ If you use remote manifest, you typically need to add another Source Repro Provi
 Once you have set up the remote manifests, the default manifest files that were synched when you created the Service will be ignored. You can delete them if you like.
 :::
 
-Once this template Application is cloned and used by other teams, we want them to have a simple way to change the target namespace for the deployment. There are different options (see [Create Kubernetes Namespaces based on InfraMapping](https://docs.harness.io/article/5xm4z4q3d8-create-kubernetes-namespaces-based-on-infra-mapping), [Create Kubernetes Namespaces with Workflow Variables](https://docs.harness.io/article/nhlzsni30x-create-kubernetes-namespaces-with-workflow-variables)), but for this example, we will use a Service variable.
+Once this template Application is cloned and used by other teams, we want them to have a simple way to change the target namespace for the deployment. There are different options (see [Create Kubernetes Namespaces based on InfraMapping](../kubernetes-deployments/create-kubernetes-namespaces-based-on-infra-mapping.md), [Create Kubernetes Namespaces with Workflow Variables](../kubernetes-deployments/create-kubernetes-namespaces-with-workflow-variables.md)), but for this example, we will use a Service variable.
 
 Create a Service variable and then reference it in the values.yaml file in your remote manifests repo. Here's an example using a Service variable named **namespace**:
 

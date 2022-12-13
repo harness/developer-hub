@@ -15,7 +15,7 @@ Most APM and logging tools are added to Harness as Verification Providers. For S
 
 ### Before You Begin
 
-* See [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts).
+* See [Harness Key Concepts](../../../starthere-firstgen/harness-key-concepts.md).
 * See the [Stackdriver Verification Overview](../continuous-verification-overview/concepts-cv/stackdriver-and-harness-overview.md).
 
 

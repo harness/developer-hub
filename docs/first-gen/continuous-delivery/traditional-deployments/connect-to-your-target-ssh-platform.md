@@ -16,7 +16,7 @@ This topic covers the steps needed to connect Harness to your artifact servers a
 
 * [Traditional Deployments (SSH) Overview](../concepts-cd/deployment-types/traditional-deployments-ssh-overview.md)
 * [Harness Delegate Overview](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation)
-* [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts)
+* [Harness Key Concepts](../../starthere-firstgen/harness-key-concepts.md)
 
 ### Step 1: Set Up a Harness Delegate
 

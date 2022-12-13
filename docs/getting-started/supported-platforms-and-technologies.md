@@ -374,7 +374,7 @@ Guidelines:
 
 ##### Helm
 
-Helm chart dependencies are not supported in Git source repositories (Harness [Code Repo Connectors](https://docs.harness.io/category/xyexvcc206)). Helm chart dependencies are supported in Helm Chart Repositories.
+Helm chart dependencies are not supported in Git source repositories (Harness [Code Repo Connectors](https://docs.harness.io/category/code-repo-connectors)). Helm chart dependencies are supported in Helm Chart Repositories.
 
 ##### Artifact servers, repos, and artifacts
 
@@ -732,18 +732,18 @@ The following table lists Harness support for collaboration tools.
 Most providers are used in both Pipeline Notification Strategies and User Group notifications:
 
 * [Add a Pipeline Notification Strategy](https://docs.harness.io/article/4bor7kyimj-notify-users-of-pipeline-events)
-* [Send Notifications Using Slack](https://docs.harness.io/article/h5n2oj8y5y-send-notifications-using-slack)
-* [Send Notifications to Microsoft Teams](https://docs.harness.io/article/xcb28vgn82-send-notifications-to-microsoft-teams)
+* [Send Notifications Using Slack](../platform/5_Notifications/send-notifications-using-slack.md)
+* [Send Notifications to Microsoft Teams](../platform/5_Notifications/send-notifications-to-microsoft-teams.md)
 
 
 
 |  Provider Name |  Notification |  Approval/Change Management |
 | --- | --- | --- |
-| [Microsoft Teams](https://docs.harness.io/article/xcb28vgn82) |  Yes |  N/A |
+| [Microsoft Teams](../platform/5_Notifications/send-notifications-to-microsoft-teams.md) |  Yes |  N/A |
 | [Email](https://docs.harness.io/article/4bor7kyimj) |  Yes |  N/A |
-| [Slack](https://docs.harness.io/article/h5n2oj8y5y) |  Yes |  N/A |
-| [Jira](https://docs.harness.io/article/2lhfk506r8) |  Yes |  Yes |
-| [ServiceNow](https://docs.harness.io/article/h1so82u9ub) |  N/A |  Yes |
+| [Slack](../platform/5_Notifications/send-notifications-using-slack.md) |  Yes |  N/A |
+| [Jira](../platform/9_Approvals/adding-jira-approval-stages.md) |  Yes |  Yes |
+| [ServiceNow](../platform/9_Approvals/service-now-approvals.md) |  N/A |  Yes |
 | [PagerDuty](https://docs.harness.io/article/4bor7kyimj) |  Yes |  N/A |
 
 ### Access control
@@ -756,11 +756,11 @@ See [Add and Manage Access Control](../feature-flags/1-ff-onboarding/3-ff-securi
 
 |  SSO Type |  SSO Providers |  Authentication Supported |  Authorization (Group Linking) Supported |  SCIM Provisioning |
 | --- | --- | --- | --- | --- |
-| [SAML 2.0](https://docs.harness.io/article/mlpksc7s6c) |  Okta |  Yes |  Yes |  Yes |
+| [SAML 2.0](../platform/3_Authentication/3-single-sign-on-saml.md) |  Okta |  Yes |  Yes |  Yes |
 |  |  Azure Active Directory |  Yes |  Yes |  Yes |
 |  |  Others |  Yes |  Yes | No |
 |  |  OneLogin |  Yes |  Yes |  Yes |
-| [OAuth 2.0](https://docs.harness.io/article/rb33l4x893) |  Github |  Yes |  No |  N/A |
+| [OAuth 2.0](../platform/3_Authentication/4-single-sign-on-sso-with-oauth.md) |  Github |  Yes |  No |  N/A |
 |  |  GitLab |  Yes |  No |  N/A |
 |  |  Bitbucket |  Yes |  No |  N/A |
 |  |  Google |  Yes |  No |  N/A |
@@ -774,15 +774,15 @@ See [Add and Manage Access Control](../feature-flags/1-ff-onboarding/3-ff-securi
 
 The following table lists Harness support for cloud platform secrets management services.
 
-See [Harness Secrets Management Overview](https://docs.harness.io/article/hngrlb7rd6-harness-secret-manager-overview).
+See [Harness Secrets Management Overview](../platform/6_Security/1-harness-secret-manager-overview.md).
 
 |  Provider Name |  Key Encryption Support |  Encrypted Data Storaged with Harness |  Support for Referencing Existing Secrets |
 | --- | --- | --- | --- |
-| [AWS KMS](https://docs.harness.io/article/pt52h8sb6z) |  Yes |  Yes |  No |
-| [AWS Secret Manager](https://docs.harness.io/article/a73o2cg3pe) |  Yes |  No |  Yes |
-| [Hashicorp Vault](https://docs.harness.io/article/s65mzbyags) |  Yes |  No |  Yes |
-| [Azure Key Vault](https://docs.harness.io/article/53jrd1cv4i) |  Yes |  No |  Yes |
-| [Google KMS](https://docs.harness.io/article/cyyym9tbqt) |  Yes |  Yes |  No |
+| [AWS KMS](../platform/6_Security/7-add-an-aws-kms-secrets-manager.md) |  Yes |  Yes |  No |
+| [AWS Secret Manager](../platform/6_Security/6-add-an-aws-secret-manager.md) |  Yes |  No |  Yes |
+| [Hashicorp Vault](../platform/6_Security/12-add-hashicorp-vault.md) |  Yes |  No |  Yes |
+| [Azure Key Vault](../platform/6_Security/8-azure-key-vault.md) |  Yes |  No |  Yes |
+| [Google KMS](../platform/6_Security/10-add-google-kms-secrets-manager.md) |  Yes |  Yes |  No |
 
 ### Harness Self-Managed Enterprise Edition
 
@@ -793,7 +793,7 @@ The following table lists the major support features for Harness Self-Managed En
 |  Solution |  Supported Platform |  Connected\* |  HA Supported\*\* |  Monitoring |  Disaster Recovery |  Auto Restart |  Features Under Controlled Release |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | [Kubernetes Cluster](https://docs.harness.io/category/v313myup55) |  Kubernetes - GKE - AKS - EKS |  Yes |  Yes | Prometheus, Grafana | Supported | Supported |  |
-| [Virtual Machine (VM)](https://docs.harness.io/category/ubhcaw8n0l) |  Linux VM (3 VM minimum) |  Yes |  Yes | Prometheus, Grafana | Supported | Supported |  |
+| [Virtual Machine (VM)](https://docs.harness.io/category/install-on-virtual-machine) |  Linux VM (3 VM minimum) |  Yes |  Yes | Prometheus, Grafana | Supported | Supported |  |
 
 ### SDKs installed with the Delegate
 
@@ -810,7 +810,7 @@ For Kubernetes deployments, the following SDKs/tools are included in the Delegat
 
 The versions can be found in this public GitHub repo: <https://github.com/harness/harness-core/tree/develop/960-api-services/src/main/java/io/harness/delegate/clienttools>
 
-For details on updating the default tool versions, go to [Install Software on the Delegate with Initialization Scripts](https://docs.harness.io/article/yte6x6cyhn-run-scripts-on-delegates).
+For details on updating the default tool versions, go to [Install Software on the Delegate with Initialization Scripts](../platform/2_Delegates/delegate-guide/run-scripts-on-delegates.md).
 
 For Kubernetes deployments, the following SDKs/tools are certified.
 
@@ -849,7 +849,7 @@ To support customization, Harness provides a Harness Delegate image that does no
 
 Using the No Tools Image and Delegate YAML, you can install the specific SDK versions you want. You install software on the Delegate using the `INIT_SCRIPT` environment variable in the Delegate YAML.
 
-For steps on using the No Tools Delegate image and installing specific SDK versions, see [Install a Delegate with 3rd Party Tool Custom Binaries](https://docs.harness.io/article/ql86a0iqta-install-a-delegate-with-3-rd-party-tool-custom-binaries).
+For steps on using the No Tools Delegate image and installing specific SDK versions, see [Install a Delegate with 3rd Party Tool Custom Binaries](../platform/2_Delegates/delegate-guide/install-a-delegate-with-3-rd-party-tool-custom-binaries.md).
 
 ### Supported browsers
 

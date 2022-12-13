@@ -115,7 +115,7 @@ For all Service types, the Exec script can be added to the Service to use the ar
 	
 	![](./static/service-types-and-artifact-sources-12.png)
 	
-	For information on using the Template Library, see [Use Templates](https://docs.harness.io/article/ygi6d8epse-use-templates).
+	For information on using the Template Library, see [Use Templates](../../concepts-cd/deployment-types/use-templates.md).
 	
 2. Hover over the **Add** button to see the available scripts.
 

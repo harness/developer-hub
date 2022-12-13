@@ -32,7 +32,7 @@ Harness supports the following artifact sources with Lambda:
 * [Artifactory](https://docs.harness.io/article/nj3p1t7v3x-add-artifactory-servers)
 * [AWS S3](1-delegate-and-connectors-for-lambda.md)
 * [Nexus](https://docs.harness.io/article/rdhndux2ab-nexus-artifact-sources)
-* [Custom Artifact Source](https://docs.harness.io/article/jizsp5tsms-custom-artifact-source)
+* [Custom Artifact Source](../../model-cd-pipeline/setup-services/custom-artifact-source.md)
 
 ### Step 1: Create a Harness Lambda Service
 
@@ -54,7 +54,7 @@ An Artifact Source in a Lambda Service is the Lambda function file you want to d
 
 To add an Artifact Source to this Service, do the following:
 
-1. In your Lambda Service, click **Add Artifact Source**, and then click **Amazon S3**. For information on using a Custom Artifact Source, see [Custom Artifact Source](https://docs.harness.io/article/jizsp5tsms-custom-artifact-source). 
+1. In your Lambda Service, click **Add Artifact Source**, and then click **Amazon S3**. For information on using a Custom Artifact Source, see [Custom Artifact Source](../../model-cd-pipeline/setup-services/custom-artifact-source.md). 
 
    The **Amazon S3 Artifact Source** dialog appears.
 
@@ -115,7 +115,7 @@ When you are done, click **Submit**. Your function is added to the Service.
 
 ### Option: Lambda Environment Variables using Service Config Variables
 
-You can use [Config Variables](https://docs.harness.io/article/q78p7rpx9u-add-service-level-config-variables) in your Service to create [Lambda Environment Variables](https://docs.aws.amazon.com/lambda/latest/dg/configuration-envvars.html).
+You can use [Config Variables](../../model-cd-pipeline/setup-services/add-service-level-config-variables.md) in your Service to create [Lambda Environment Variables](https://docs.aws.amazon.com/lambda/latest/dg/configuration-envvars.html).
 
 Encrypted Config Variables will appear as plaintext Environment Variables in Lambda.
 

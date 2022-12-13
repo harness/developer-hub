@@ -231,7 +231,7 @@ Here's the Jira step in Harness that creates the Jira issue:
 
 This second Workflow example uses a variable, combined with an artifact tag, to update a pair of Jira issues during deployment. In this example, the artifact is a an AMI.
 
-See [AMI (Amazon Machine Image) Deployment](https://docs.harness.io/article/rd6ghl00va-ami-deployment) for background information about AMI deployment in Harness.In the AWS Console, the highlighted AMI (`ui-integration-test-v5`) has been assigned a Tag consisting of a key/value pair. The key is named `jiraIds`, and its value is the pair of Jira issue IDs we want to update: `TJI-1234, TJI-1235`.
+See [AMI (Amazon Machine Image) Deployment](../../aws-deployments/ami-deployments/ami-deployment.md) for background information about AMI deployment in Harness.In the AWS Console, the highlighted AMI (`ui-integration-test-v5`) has been assigned a Tag consisting of a key/value pair. The key is named `jiraIds`, and its value is the pair of Jira issue IDs we want to update: `TJI-1234, TJI-1235`.
 
 ![](./static/jira-integration-150.png)In Harness, our Workflow to deploy this AMI contains a Jira step, which is executed after **Setup AutoScaling Group**:
 

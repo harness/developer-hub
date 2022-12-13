@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 This content is for Harness [FirstGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/article/lbhf2h71at).Currently, this feature is behind the Feature Flag `CUSTOM_MANIFEST`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.Typically, you add Helm Charts and manifests to a Harness Kubernetes or Native Helm Service from a Helm or Source Repository by simply pointing at the chart repo.
 
-You can see how this is done using Harness Kubernetes integration in [Helm Quickstart](https://docs.harness.io/article/2aaevhygep-helm-quickstart), or using Harness Native Helm integration in [Helm Native Deployment Guide Overview](helm-deployments-overview.md).
+You can see how this is done using Harness Kubernetes integration in [Helm Quickstart](../../first-gen-quickstarts/helm-quickstart.md), or using Harness Native Helm integration in [Helm Native Deployment Guide Overview](helm-deployments-overview.md).
 
 Harness also supports less common use cases:
 
@@ -26,11 +26,11 @@ For these less common use cases, you can use the **Custom Remote Manifests** set
 ### Before You Begin
 
 * [Helm Native Deployment Guide Overview](helm-deployments-overview.md)
-* [Helm Quickstart](https://docs.harness.io/article/2aaevhygep-helm-quickstart): this is not a Native Helm Quickstart. This quickstart shows you how to use your own Kubernetes manifests or a Helm chart (remote or local), and have Harness execute the Kubernetes kubectl calls to build everything without Helm and Tiller needing to be installed in the target cluster.
+* [Helm Quickstart](../../first-gen-quickstarts/helm-quickstart.md): this is not a Native Helm Quickstart. This quickstart shows you how to use your own Kubernetes manifests or a Helm chart (remote or local), and have Harness execute the Kubernetes kubectl calls to build everything without Helm and Tiller needing to be installed in the target cluster.
 
 ### Supported Platforms and Technologies
 
-See [Supported Platforms and Technologies](https://docs.harness.io/article/220d0ojx5y-supported-platforms).
+See [Supported Platforms and Technologies](../../starthere-firstgen/supported-platforms.md).
 
 * Harness certifies its Helm support using [Helm 3.1.2](https://github.com/helm/helm/releases/tag/v3.1.2).
 * Helm chart dependencies are not supported in Git source repositories (Harness [Source Repo Providers](https://docs.harness.io/article/ay9hlwbgwa-add-source-repo-providers)). Helm chart dependencies are supported in [Helm Chart Repositories.](https://docs.harness.io/article/0hrzb1zkog-add-helm-repository-servers)

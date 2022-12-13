@@ -19,7 +19,7 @@ For more information, see [GitHub Connector Settings Reference](ref-source-repo-
 ### Before you begin
 
 * [GitHub Connector Settings Reference](ref-source-repo-provider/git-hub-connector-settings-reference.md)
-* [Quickstarts](https://docs.harness.io/article/u8lgzsi7b3-quickstarts)
+* [Quickstarts](../../getting-started/quickstarts.md)
 
 ### Review: Requirements
 

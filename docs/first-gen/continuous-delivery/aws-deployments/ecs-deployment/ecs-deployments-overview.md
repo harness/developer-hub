@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 This guide explains how to use Amazon Elastic Container Service (ECS) with Harness.
 
-New to using ECS with Harness? See [AWS ECS Quickstart](https://docs.harness.io/article/j39azkrevm-aws-ecs-deployments).In this guide, we will set up Harness for ECS, create a Harness Application, and deploy a public Docker image from Docker Hub to an existing ECS cluster using Harness. This deployment scenario is very popular and a walkthrough of all the steps involved will help you set up this scenario in Harness for your own microservices and apps.
+New to using ECS with Harness? See [AWS ECS Quickstart](../../../first-gen-quickstarts/aws-ecs-deployments.md).In this guide, we will set up Harness for ECS, create a Harness Application, and deploy a public Docker image from Docker Hub to an existing ECS cluster using Harness. This deployment scenario is very popular and a walkthrough of all the steps involved will help you set up this scenario in Harness for your own microservices and apps.
 
 Walk through this guide in the following order:
 

@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-For GitHub, GitLab, and Bitbucket, you can trigger [Build Workflows](https://docs.harness.io/article/wqytbv2bfd-ci-cd-with-the-build-workflow) or a [Build and Deploy Pipeline](https://docs.harness.io/article/0tphhkfqx8-artifact-build-and-deploy-pipelines-overview) in response to a Git event using Webhooks using a Harness [On Webhook Event](trigger-a-deployment-on-git-event.md) Trigger.
+For GitHub, GitLab, and Bitbucket, you can trigger [Build Workflows](../../concepts-cd/deployment-types/ci-cd-with-the-build-workflow.md) or a [Build and Deploy Pipeline](../../concepts-cd/deployment-types/artifact-build-and-deploy-pipelines-overview.md) in response to a Git event using Webhooks using a Harness [On Webhook Event](trigger-a-deployment-on-git-event.md) Trigger.
 
 For Custom Git providers, you can trigger any type of Workflow using a Harness [On Webhook Event](trigger-a-deployment-on-git-event.md) Trigger. This is described in [Trigger Deployments using Git Events](trigger-a-deployment-on-git-event.md).
 
@@ -28,8 +28,8 @@ For GitHub, GitLab, and Bitbucket, this option is used to execute a Build Workf
 
 ### Before You Begin
 
-* [Build Workflows](https://docs.harness.io/article/wqytbv2bfd-ci-cd-with-the-build-workflow)
-* [Build and Deploy Pipeline](https://docs.harness.io/article/0tphhkfqx8-artifact-build-and-deploy-pipelines-overview)
+* [Build Workflows](../../concepts-cd/deployment-types/ci-cd-with-the-build-workflow.md)
+* [Build and Deploy Pipeline](../../concepts-cd/deployment-types/artifact-build-and-deploy-pipelines-overview.md)
 * [Add a Service](../setup-services/service-configuration.md)
 * [Workflows](../workflows/workflow-configuration.md)
 * [Add Environment](../environments/environment-configuration.md)

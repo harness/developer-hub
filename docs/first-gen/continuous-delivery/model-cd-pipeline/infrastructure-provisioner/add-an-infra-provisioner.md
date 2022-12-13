@@ -10,10 +10,10 @@ helpdocs_is_published: true
 
 This article provides a general overview of Harness support for Infrastructure Provisioners. For detailed Harness Infrastructure Provisioner guides, see:
 
-* [Terrform Provisioner](https://docs.harness.io/article/9pvvgcdbjh-terrform-provisioner)
-* [Using the Terraform Apply Command](https://docs.harness.io/article/jaxppd8w9j-using-the-terraform-apply-command)
+* [Terrform Provisioner](../../terraform-category/terrform-provisioner.md)
+* [Using the Terraform Apply Command](../../terraform-category/using-the-terraform-apply-command.md)
 * [Shell Script Provisioner](../infrastructure-provisioner/ssh-provisioner-category/shell-script-provisioner.md)
-* [CloudFormation Provisioner](https://docs.harness.io/article/78g32khjcu-cloud-formation-provisioner)
+* [CloudFormation Provisioner](../../aws-deployments/cloudformation-category/cloud-formation-provisioner.md)
 
 You can create any resource using Terraform, and output values can be published for use in Harness Workflows and Pipelines. Harness supports first-class [Service Mapping](#service_mappings) for AWS-based infrastructures (SSH, ASG, ECS, Lambda) and Google Kubernetes (GKE). Google Kubernetes is not supported for CloudFormation, as CloudFormation is used for provisioning infrastructure on AWS only.
 
@@ -45,7 +45,7 @@ The process is as follows:
 
 ### Before You Begin
 
-* [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts)
+* [Harness Key Concepts](../../../starthere-firstgen/harness-key-concepts.md)
 
 ### Add an Infrastructure Provisioner
 
@@ -60,11 +60,11 @@ Below are the options for each infrastructure provisioner type.
 
 ### CloudFormation
 
-For all information on using Harness CloudFormation Infrastructure Provisioner, see [CloudFormation Provisioner](https://docs.harness.io/article/78g32khjcu-cloud-formation-provisioner).
+For all information on using Harness CloudFormation Infrastructure Provisioner, see [CloudFormation Provisioner](../../aws-deployments/cloudformation-category/cloud-formation-provisioner.md).
 
 ### Terraform
 
-For all information on using Harness Terraform Infrastructure Provisioner, see [Terraform Provisioner](https://docs.harness.io/article/9pvvgcdbjh-terrform-provisioner).
+For all information on using Harness Terraform Infrastructure Provisioner, see [Terraform Provisioner](../../terraform-category/terrform-provisioner.md).
 
 ### Shell Script
 
@@ -78,7 +78,7 @@ You can create any resource using Terraform and output values can be published f
 
 If you have been running your deployments manually, you might not have outputs configured in your template files. To configure Service Mappings, you will need to add these output variables to your template.When you use Terraform or CloudFormation with Harness, you can map the template outputs with Harness settings so that a single Infrastructure Provisioner can be used by many of the deployments you have configured in Harness.
 
-For more information, see Terraform [Service Mappings](https://docs.harness.io/article/9pvvgcdbjh-terrform-provisioner#service_mappings) and [Infrastructure Definition](https://docs.harness.io/article/9pvvgcdbjh-terrform-provisioner#infrastructure_definition), CloudFormation [Service Mappings](https://docs.harness.io/article/78g32khjcu-cloud-formation-provisioner#service_mappings) and [Infrastructure Definition Mappings](https://docs.harness.io/article/78g32khjcu-cloud-formation-provisioner#infrastructure_definition_service_mappings), or Shell Script Provisioner [Service Mappings](../infrastructure-provisioner/ssh-provisioner-category/shell-script-provisioner.md#service-mappings) and [Environment Setup and Infrastructure Definitions](../infrastructure-provisioner/ssh-provisioner-category/shell-script-provisioner.md#environment-setup-and-infrastructure-definitions).
+For more information, see Terraform [Service Mappings](../../terraform-category/terrform-provisioner.md#service-mappings) and [Infrastructure Definition](../../terraform-category/terrform-provisioner.md#infrastructure-definition), CloudFormation [Service Mappings](../../aws-deployments/cloudformation-category/cloud-formation-provisioner.md#service-mappings) and [Infrastructure Definition Mappings](../../aws-deployments/cloudformation-category/cloud-formation-provisioner.md#infrastructure-definition-service-mappings), or Shell Script Provisioner [Service Mappings](../infrastructure-provisioner/ssh-provisioner-category/shell-script-provisioner.md#service-mappings) and [Environment Setup and Infrastructure Definitions](../infrastructure-provisioner/ssh-provisioner-category/shell-script-provisioner.md#environment-setup-and-infrastructure-definitions).
 
 ### Rollback
 

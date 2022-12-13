@@ -38,7 +38,7 @@ See [Add Helm Repository Artifact Servers](https://docs.harness.io/article/0hrzb
 	1. If the chart is in the **root** folder of the repository location set in the Helm Chart Repository you added as a Harness Artifact Server, leave **Base Path** empty.
 5. In **Chart Name**, enter the name of the chart in that repo. For example, we use **nginx**.  
 	In some cases, you might have different charts in different repos, and you do not want to create a new Harness Service for each chart. To address this, you have the following options:
-	* You can use a Service variable for the **Chart Name** setting. You can then supply the value at deployment runtime. See [Add Service Config Variables](https://docs.harness.io/article/q78p7rpx9u-add-service-level-config-variables). You can also override this setting using an Environment Service Override Variable. [Override a Service Configuration in an Environment](https://docs.harness.io/article/4m2kst307m-override-service-files-and-variables-in-environments).
+	* You can use a Service variable for the **Chart Name** setting. You can then supply the value at deployment runtime. See [Add Service Config Variables](../model-cd-pipeline/setup-services/add-service-level-config-variables.md). You can also override this setting using an Environment Service Override Variable. [Override a Service Configuration in an Environment](../model-cd-pipeline/environments/override-service-files-and-variables-in-environments.md).
 	* You can also override the Helm chart in the Service using a Helm chart override in an Environment. See [Override Harness Kubernetes Service Settings](override-harness-kubernetes-service-settings.md).
 6. In **Chart Version**, enter the chart version to use. This is found in the **Chart.yaml** **version** label. For this guide, we will use **1.0.1**. If you leave this field empty Harness gets the latest chart.
 7. In **Helm Version**, select the Helm version of your chart, such as **v3**.
@@ -83,7 +83,7 @@ If you use Helm commands in the Harness Service and in a Workflow deploying that
 
 #### Harness Variable Expressions are Supported
 
-You can use [Harness variable expressions](https://docs.harness.io/article/9dvxcegm90-variables) in any of the command options settings. For example, [Service Config variables](https://docs.harness.io/article/q78p7rpx9u-add-service-level-config-variables) and [Workflow variables](https://docs.harness.io/article/766iheu1bk-add-workflow-variables-new-template).
+You can use [Harness variable expressions](https://docs.harness.io/article/9dvxcegm90-variables) in any of the command options settings. For example, [Service Config variables](../model-cd-pipeline/setup-services/add-service-level-config-variables.md) and [Workflow variables](../model-cd-pipeline/workflows/add-workflow-variables-new-template.md).
 
 ### Option: Override Helm Chart Values YAML
 

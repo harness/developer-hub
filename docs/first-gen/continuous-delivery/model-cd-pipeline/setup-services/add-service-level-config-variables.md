@@ -14,7 +14,7 @@ During deployment, the Service Config variables are created as environment varia
 
 Only Service Config Variables are added as environment variables and can be output with `env`. Workflow and other variables are not added as environment variables.Service variables can be overwritten at the Environment level. See [Override a Service Configuration](../environments/environment-configuration.md#override-a-service-configuration).
 
-For information about how configuration variables and files are used in a Kubernetes deployment, see [Kubernetes Deployments Overview](https://docs.harness.io/article/pc6qglyp5h-kubernetes-deployments-overview). For information on using Harness variables and expressions, see [Variables and Expressions in Harness](https://docs.harness.io/article/9dvxcegm90-variables).
+For information about how configuration variables and files are used in a Kubernetes deployment, see [Kubernetes Deployments Overview](../../kubernetes-deployments/kubernetes-deployments-overview.md). For information on using Harness variables and expressions, see [Variables and Expressions in Harness](https://docs.harness.io/article/9dvxcegm90-variables).
 
 ### Before You Begin
 
@@ -87,7 +87,7 @@ For example, if you have a Service Config Variable named **jarName**, Harness cr
 
 ### Override Values YAML
 
-For information on Helm Values YAML, see [Override Harness Kubernetes Service Settings](https://docs.harness.io/article/ycacqs7tlx-override-harness-kubernetes-service-settings) and [Helm Deployments Overview](https://docs.harness.io/article/ii558ppikj-helm-deployments-overview).
+For information on Helm Values YAML, see [Override Harness Kubernetes Service Settings](../../kubernetes-deployments/override-harness-kubernetes-service-settings.md) and [Helm Deployments Overview](../../helm-deployment/helm-deployments-overview.md).
 
 ### Notes
 

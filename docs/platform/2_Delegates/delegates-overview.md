@@ -226,5 +226,5 @@ This means that if a role does not have these permissions the User with that rol
 
 ### Third-party tools installed with the delegate
 
-See [Supported Platforms and Technologies](https://docs.harness.io/article/1e536z41av-supported-platforms-and-technologies).
+See [Supported Platforms and Technologies](../../getting-started/supported-platforms-and-technologies.md).
 

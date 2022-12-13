@@ -53,7 +53,7 @@ This topic assumes you have a Workflow that uses an Infrastructure Definition th
 
 For details, see [Map CloudFormation Infrastructure](map-cloud-formation-infrastructure.md).
 
-Add a Workflow step where you want to use the CloudFormation template output value. Typically, this is a [Shell Script](https://docs.harness.io/article/1fjrjbau7x-capture-shell-script-step-output) step.
+Add a Workflow step where you want to use the CloudFormation template output value. Typically, this is a [Shell Script](../../model-cd-pipeline/workflows/capture-shell-script-step-output.md) step.
 
 ### Step 2: Enter the Output Variable Expression
 

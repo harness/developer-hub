@@ -28,7 +28,7 @@ https://harness-1.wistia.com/medias/rpv5vwzpxz-->
 
 ### Supported Platforms and Technologies
 
-See [Supported Platforms and Technologies](https://docs.harness.io/article/220d0ojx5y-supported-platforms).
+See [Supported Platforms and Technologies](../../../starthere-firstgen/supported-platforms.md).
 
 ### Limitations
 
@@ -68,7 +68,7 @@ Select the Artifact Server type.
 
 Fill out the Artifact Source settings.
 
-For details on configuring the supported Artifact Source types, see [Add a Docker Image](https://docs.harness.io/article/gxv9gj6khz-add-a-docker-image-service).
+For details on configuring the supported Artifact Source types, see [Add a Docker Image](../../model-cd-pipeline/setup-services/add-a-docker-image-service.md).
 
 The settings for the Harness Artifact Server and Artifact Source are a combination of the container settings in your Azure Web App.
 

@@ -58,7 +58,7 @@ You can include multiple resource files in the Apply step **File paths** field
 
 If you apply the ignore comment `# harness.io/skip-file-for-deploy` to a resource but do not use the resource in an Apply step, the resource is never deployed.If you use a remote manifest in your Harness Service, in **File paths** enter a path relative to the path you specified for the manifest in the Harness Service.
 
-Harness variables such as [Workflow variables](https://docs.harness.io/article/766iheu1bk-add-workflow-variables-new-template) are supported in the **File Paths** setting.
+Harness variables such as [Workflow variables](../model-cd-pipeline/workflows/add-workflow-variables-new-template.md) are supported in the **File Paths** setting.
 
 ### Option: Manifest Options
 
@@ -74,7 +74,7 @@ If you enable this option, Harness does the following at runtime:
 
 If **Export Manifest** is enabled, the manifests are not deployed. You can use the **Inherit Manifest** option in a subsequent Kubernetes step to deploy a copy of the exported manifests.
 
-The exported manifests can be written to storage on the Delegate where the step is run. For example, you can add a [Shell Script](https://docs.harness.io/article/1fjrjbau7x-capture-shell-script-step-output) step to echo and write the manifest to a file:
+The exported manifests can be written to storage on the Delegate where the step is run. For example, you can add a [Shell Script](../model-cd-pipeline/workflows/capture-shell-script-step-output.md) step to echo and write the manifest to a file:
 
 
 ```
@@ -160,7 +160,7 @@ In **Values YAML**, enter the YAML label and value you want to use. For example:
 ```
 replicas: 2
 ```
-You can use [Workflow variables](https://docs.harness.io/article/766iheu1bk-add-workflow-variables-new-template) in the value. For example:
+You can use [Workflow variables](../model-cd-pipeline/workflows/add-workflow-variables-new-template.md) in the value. For example:
 
 
 ```
@@ -184,7 +184,7 @@ Here's an example:
 
 ![](./static/deploy-manifests-separately-using-apply-step-195.png)
 
-You can use [Workflow variables](https://docs.harness.io/article/766iheu1bk-add-workflow-variables-new-template) in the value. For example:
+You can use [Workflow variables](../model-cd-pipeline/workflows/add-workflow-variables-new-template.md) in the value. For example:
 
 
 ```
@@ -204,7 +204,7 @@ Another example of the use of the Apply step is service mesh traffic shifting. Y
 
 * The **Apply** step applies to Service Manifests that are local or added remotely using the **Kubernetes Resource Specs in YAML format** option. See [Link Resource Files or Helm Charts in Git Repos](link-resource-files-or-helm-charts-in-git-repos.md).
 * The Apply step does not version ConfigMap and Secret objects. ConfigMap and Secret objects are overwritten on each deployment. This is the same as when ConfigMap and Secret objects are marked as unversioned in typical rollouts (`harness.io/skip-versioning: "true"`). See [Kubernetes Versioning and Annotations](https://docs.harness.io/article/ttn8acijrz-versioning-and-annotations).
-* You can use Harness variables in your manifests and values.yaml files. For example, Harness [Workflow variables](https://docs.harness.io/article/766iheu1bk-add-workflow-variables-new-template).
+* You can use Harness variables in your manifests and values.yaml files. For example, Harness [Workflow variables](../model-cd-pipeline/workflows/add-workflow-variables-new-template.md).
 * In some cases, you might want to deploy a Service but skip its versioning. By default, release history is stored in the Kubernetes cluster in a ConfigMap. This ConfigMap is essential for release tracking, versioning, and rollback. If you want Harness to skip versioning for the Service, use the **Skip Versioning for Service** option in **Remote Manifests**. See [Option: Skip Versioning for Service](link-resource-files-or-helm-charts-in-git-repos.md#option-skip-versioning-for-service).
 
 ### Next Steps

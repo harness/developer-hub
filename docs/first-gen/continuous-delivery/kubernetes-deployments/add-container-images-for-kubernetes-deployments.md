@@ -58,7 +58,7 @@ For the settings for all Artifact Sources, see [Add Artifact Servers](https://do
 
 [![](./static/add-container-images-for-kubernetes-deployments-138.png)](./static/add-container-images-for-kubernetes-deployments-138.png)
 
-In addition to artifact sources taken from Artifact Servers, you can use a Shell Script to query a custom artifact repository. See [Custom Artifact Source](https://docs.harness.io/article/jizsp5tsms-custom-artifact-source).
+In addition to artifact sources taken from Artifact Servers, you can use a Shell Script to query a custom artifact repository. See [Custom Artifact Source](../model-cd-pipeline/setup-services/custom-artifact-source.md).
 
 ### Next Steps
 

@@ -46,7 +46,7 @@ This topic assumes you have a Workflow that uses a Terragrunt Provision step.
 
 Add a Workflow step after the Terragrunt Provision step where you want to use the Terraform script outputs.
 
-Typically, you add a [Shell Script](https://docs.harness.io/article/1fjrjbau7x-capture-shell-script-step-output) step.
+Typically, you add a [Shell Script](../model-cd-pipeline/workflows/capture-shell-script-step-output.md) step.
 
 ### Step 2: Enter the Output Variable Expression
 

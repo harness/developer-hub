@@ -17,7 +17,7 @@ The following steps build an image and push it to GCR.
 ### Before You Begin
 
 * [CI Pipeline Quickstart](../../ci-quickstarts/ci-pipeline-quickstart.md)
-* [Delegates Overview](https://ngdocs.harness.io/article/2k7lnc7lvl-delegates-overview)
+* [Delegates Overview](../../../platform/2_Delegates/delegates-overview.md)
 * [CI Stage Settings](../../ci-technical-reference/ci-stage-settings.md)
 * [Learn Harness' Key Concepts](../../../getting-started/learn-harness-key-concepts.md)
 
@@ -46,13 +46,13 @@ The unique name for this Step.
 
 ##### ID
 
-See [Entity Identifier Reference](https://ngdocs.harness.io/article/li0my8tcz3-entity-identifier-reference).
+See [Entity Identifier Reference](../../../platform/20_References/entity-identifier-reference.md).
 
 ##### GCP Connector
 
 The Harness GCP Connector to use to connect to GCR. GCP account associated with the GCP Connector needs specific roles.
 
-See [Google Cloud Platform (GCP) Connector Settings Reference](https://ngdocs.harness.io/article/yykfduond6-gcs-connector-settings-reference).
+See [Google Cloud Platform (GCP) Connector Settings Reference](../../../platform/7_Connectors/ref-cloud-providers/gcs-connector-settings-reference.md).
 
 ##### Host
 
@@ -132,11 +132,11 @@ Timeout for the step. Once the timeout is reached, the step fails, and the Pipel
 
 ##### Conditional Execution
 
-Set conditions to determine when the step should be executed. See [Conditional Execution](https://ngdocs.harness.io/article/i36ibenkq2-step-skip-condition-settings).
+Set conditions to determine when the step should be executed. See [Conditional Execution](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md).
 
 ##### Failure Strategy
 
-Define one or more failure strategies to control the behavior of your pipeline when your step execution encounters an error. See [Failure Strategy](https://ngdocs.harness.io/article/htrur23poj-step-failure-strategy-settings). 
+Define one or more failure strategies to control the behavior of your pipeline when your step execution encounters an error. See [Failure Strategy](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md). 
 
 ### Step 4: Specify Codebase Branch or Tag at Pipeline Execution
 

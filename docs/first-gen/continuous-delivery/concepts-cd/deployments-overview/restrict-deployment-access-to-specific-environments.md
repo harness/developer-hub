@@ -19,8 +19,8 @@ Restricting a User Group's deployments to specific Environments enables you to m
 Ensure you are familiar with the following Harness features:
 
 * [Managing Users and Groups (RBAC)](https://docs.harness.io/article/ven0bvulsj-users-and-permissions)
-* [Create an Application](https://docs.harness.io/article/bucothemly-application-configuration)
-* [Add an Environment](https://docs.harness.io/article/n39w05njjv-environment-configuration)
+* [Create an Application](../../model-cd-pipeline/applications/application-configuration.md)
+* [Add an Environment](../../model-cd-pipeline/environments/environment-configuration.md)
 
 ### Visual Summary
 

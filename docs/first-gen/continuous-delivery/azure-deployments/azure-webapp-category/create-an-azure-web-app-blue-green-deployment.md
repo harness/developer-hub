@@ -36,7 +36,7 @@ https://harness-1.wistia.com/medias/rpv5vwzpxz-->
 
 ### Supported Platforms and Technologies
 
-See [Supported Platforms and Technologies](https://docs.harness.io/article/220d0ojx5y-supported-platforms).
+See [Supported Platforms and Technologies](../../../starthere-firstgen/supported-platforms.md).
 
 ### Step 1: Collect Azure Web App Information
 
@@ -86,9 +86,9 @@ When you're done, the step will look like this:
 
 ### Option: Use Variable Expressions in Settings
 
-You can use built-in Harness or custom Workflow variable expressions in the **Slot Deployment** step. See [Set Workflow Variables](https://docs.harness.io/article/766iheu1bk-add-workflow-variables-new-template).
+You can use built-in Harness or custom Workflow variable expressions in the **Slot Deployment** step. See [Set Workflow Variables](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md).
 
-Variables are often used for templating the Workflow. See [Create Pipeline Templates](https://docs.harness.io/article/60j7391eyy-templatize-pipelines).
+Variables are often used for templating the Workflow. See [Create Pipeline Templates](../../model-cd-pipeline/pipelines/templatize-pipelines.md).
 
 ### Option: Add a Health Check after Slot Deployment
 
@@ -170,7 +170,7 @@ And the same information is displayed in the Azure portal Activity log:
 
 ### Option: Templatize the Workflow
 
-See [Create Pipeline Templates](https://docs.harness.io/article/60j7391eyy-templatize-pipelines).
+See [Create Pipeline Templates](../../model-cd-pipeline/pipelines/templatize-pipelines.md).
 
 ### Configure As Code
 

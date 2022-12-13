@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 On the Services page, as a part of managing the Services you created, you can add Service Config Files that can be used throughout your configuration settings.
 
-For information about how configuration files are used in a Kubernetes deployment, see [Kubernetes Deployments Overview](https://docs.harness.io/article/pc6qglyp5h-kubernetes-deployments-overview).
+For information about how configuration files are used in a Kubernetes deployment, see [Kubernetes Deployments Overview](../../kubernetes-deployments/kubernetes-deployments-overview.md).
 
 ### Before You Begin
 

@@ -1,0 +1,14 @@
+{
+  "label": "Start Here",
+  "position": 10,
+  "collapsible": "true",
+  "collapsed": "true",
+  "className": "red",
+  "link": {
+    "type": "generated-index",
+    "title": "Start Here"
+  },
+  "customProps": {
+    "helpdocs_category_id": "0v0om5p9af"
+  }
+}

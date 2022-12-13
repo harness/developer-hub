@@ -26,14 +26,14 @@ For a Build and Deploy Pipeline using a Traditional deployment, see
 * [Add Artifacts and App Stacks for Traditional (SSH) Deployments](add-artifacts-for-ssh-deployments.md)
 * [Connect to Your Repos and Target SSH Platforms](connect-to-your-target-ssh-platform.md)
 * [Traditional Deployments Overview](traditional-deployments-overview.md)
-* [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts)
+* [Harness Key Concepts](../../starthere-firstgen/harness-key-concepts.md)
 
 
 ### Supported Platforms and Technologies
 
 
 See **SSH** in
- [Supported Platforms and Technologies](https://docs.harness.io/article/220d0ojx5y-supported-platforms).
+ [Supported Platforms and Technologies](../../starthere-firstgen/supported-platforms.md).
 
 
 
@@ -140,7 +140,7 @@ You can SSH into the target host and see the application package:
 
 
 * [Artifact Build and Deploy Pipelines Overview](../concepts-cd/deployment-types/artifact-build-and-deploy-pipelines-overview.md)
-* [Trigger Workflows and Pipelines](https://docs.harness.io/article/xerirloz9a-add-a-trigger-2)
+* [Trigger Workflows and Pipelines](../model-cd-pipeline/triggers/add-a-trigger-2.md)
 
 
 ### Configure As Code

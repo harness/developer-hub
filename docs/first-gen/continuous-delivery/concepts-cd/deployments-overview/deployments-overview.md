@@ -12,7 +12,7 @@ This content is for Harness [FirstGen](../../../../getting-started/harness-first
 
 ### Deployment Guides
 
-Always start with the [Quickstarts](https://docs.harness.io/category/f6rh2cdvx9-first-gen-quickstarts). These will take you from novice to advanced Harness user in a matter of minutes.
+Always start with the [Quickstarts](https://docs.harness.io/category/quickstarts). These will take you from novice to advanced Harness user in a matter of minutes.
 
 The following topics will walk you through how Harness implements common deployments according to platforms and scenarios:
 
@@ -34,9 +34,9 @@ Also, other key platforms that help you make your CD powerful and efficient:
 - [Terraform](/docs/category/terraform)
 - [CloudFormation](/docs/category/aws-cloudformation)
 - [Configuration as Code](https://docs.harness.io/category/2ea2y01kgz-config-as-code) (work exclusively in YAML and sync with your Git repos)
-- [Harness GitOps](https://docs.harness.io/category/goyudf2aoh-harness-gitops)
+- [Harness GitOps](https://docs.harness.io/category/harness-git-based-how-tos)
 
-For topics on general CD modeling in Harness, see [Model Your CD Pipeline](https://docs.harness.io/category/ywqzeje187-setup).
+For topics on general CD modeling in Harness, see [Model Your CD Pipeline](https://docs.harness.io/category/model-your-cd-pipeline).
 
 ### Kubernetes or Native Helm?
 

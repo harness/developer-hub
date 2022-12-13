@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 This topic describes how to add a Docker Artifact Source in a Harness Service.
 
-Do not use Docker Registry to connect to a Docker resource on Artifactory. See [Artifactory](https://docs.harness.io/article/7dghbx1dbl-configuring-artifact-server#artifactory).For details on using Docker with Kubernetes, see [Add Container Images for Kubernetes Deployments](https://docs.harness.io/article/6ib8n1n1k6-add-container-images-for-kubernetes-deployments). For details on using Docker with Helm, see [Helm Deployments Overview](https://docs.harness.io/article/583ojfgg49-helm-deployments-overview).
+Do not use Docker Registry to connect to a Docker resource on Artifactory. See [Artifactory](https://docs.harness.io/article/7dghbx1dbl-configuring-artifact-server#artifactory).For details on using Docker with Kubernetes, see [Add Container Images for Kubernetes Deployments](../../kubernetes-deployments/add-container-images-for-kubernetes-deployments.md). For details on using Docker with Helm, see [Helm Deployments Overview](../../concepts-cd/deployment-types/helm-deployments-overview.md).
 
 ### Before You Begin
 

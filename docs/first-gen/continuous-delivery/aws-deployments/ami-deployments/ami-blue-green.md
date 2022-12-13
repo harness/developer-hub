@@ -206,7 +206,7 @@ When you deploy, this option resets ASG numbering even for the same combination 
 * A separate franchisee.
 * A separate level of your SaaS product offering, each with its own configuration, permissions, and pricing.
 
-Deploying the new ASG with a new numbering series prevents existing, unrelated ASGs from being downscaled. You achieve this independence without having to create duplicate Infrastructure Definitions. Within Harness, each combination of a Service with a new base ASG creates a new  [Service Infrastructure Mapping](https://docs.harness.io/article/v3l3wqovbe-infrastructure-definitions#service_infrastructure_mapping).
+Deploying the new ASG with a new numbering series prevents existing, unrelated ASGs from being downscaled. You achieve this independence without having to create duplicate Infrastructure Definitions. Within Harness, each combination of a Service with a new base ASG creates a new  [Service Infrastructure Mapping](../../model-cd-pipeline/environments/infrastructure-definitions.md#service-infrastructure-mapping).
 
 If you select the **Use Already Provisioned Infrastructure** option along with the **Reset ASG revision numbers...** option, Harness will start a new ASG numbering series each time you manually select a new base ASG in the **Auto Scaling Group** drop-down.
 
@@ -265,7 +265,7 @@ The weight for the **other** TG is automatically set to the remaining percenta
 
 You keep adding **Shift Traffic Weight** steps until the weight of the TG for the new ASG is 100.
 
-You can manipulate traffic shifting using as many **Shift Traffic Weight** steps as you like.Typically, you add  [Approval](https://docs.harness.io/article/0ajz35u2hy-approvals) steps between each **Shift Traffic Weight** step to ensure that everything is running smoothly. For example, you can test the new feature(s) of your app before approving. This is a simple way to incorporate A/B testing into your Workflow.
+You can manipulate traffic shifting using as many **Shift Traffic Weight** steps as you like.Typically, you add  [Approval](../../model-cd-pipeline/approvals/approvals.md) steps between each **Shift Traffic Weight** step to ensure that everything is running smoothly. For example, you can test the new feature(s) of your app before approving. This is a simple way to incorporate A/B testing into your Workflow.
 
 Approval steps are very useful because they enable you to cancel a deployment and return to the pre-deployment traffic weighting with a single step.The Workflow looks something like the following. Here the names of the **Shift Traffic Weight** steps have been changed to describe the weights they are assigning (10%, 100%):
 
@@ -301,7 +301,7 @@ This step creates the new ASG. In this step, you name the new ASG, specify how i
 4. In **Production Listener Rule ARN**, select the ARN for the rule to use. You can find the ARN by its number in the AWS console.
 5. Click **Submit**.
 
-Most of the settings support  [Workflow variable expressions](https://docs.harness.io/article/766iheu1bk-add-workflow-variables-new-template). You can use these to template this step and then allow its values to be specified at deployment runtime. You can even pass in the values using a Harness  [Trigger](https://docs.harness.io/article/revc37vl0f-passing-variable-into-workflows).When you deploy this Workflow, the output for the step will show the ASG creation and load balancer assignments.
+Most of the settings support  [Workflow variable expressions](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md). You can use these to template this step and then allow its values to be specified at deployment runtime. You can even pass in the values using a Harness  [Trigger](../../model-cd-pipeline/expressions/passing-variable-into-workflows.md).When you deploy this Workflow, the output for the step will show the ASG creation and load balancer assignments.
 
 
 ```
@@ -350,7 +350,7 @@ This is the step where you shift traffic from the TG for the previous ASG to the
 1. In **Name**, it can helpful to name the step after the traffic shift percentage it will apply, such as **10%**. You might also choose to name it according to its position, like **Shift Step 1**.
 2. In **New Autoscaling Group Weight**, enter the percentage of traffic you want shifted from the previous ASG to the new ASG you are deploying.
 
-Most of the settings support  [Workflow variable expressions](https://docs.harness.io/article/766iheu1bk-add-workflow-variables-new-template). You can use these to template this step and then allow its values to be specified at deployment runtime. You can even pass in the values using a Harness  [Trigger](https://docs.harness.io/article/revc37vl0f-passing-variable-into-workflows).Here is an example of what this step looks like when it shifts traffic 10% during deployment.
+Most of the settings support  [Workflow variable expressions](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md). You can use these to template this step and then allow its values to be specified at deployment runtime. You can even pass in the values using a Harness  [Trigger](../../model-cd-pipeline/expressions/passing-variable-into-workflows.md).Here is an example of what this step looks like when it shifts traffic 10% during deployment.
 
 
 ```
@@ -363,7 +363,7 @@ Traffic shift route updated successfully
 ```
 You can see that the New AutoScaling Group is receiving 10% of traffic and the Old AutoScaling Group is receiving 90%.
 
-Next, you will likely want to follow the Shift Traffic Weight step with an  [Approval step](https://docs.harness.io/article/0ajz35u2hy-approvals). This way you can test the new ASG before shifting more traffic to it.
+Next, you will likely want to follow the Shift Traffic Weight step with an  [Approval step](../../model-cd-pipeline/approvals/approvals.md). This way you can test the new ASG before shifting more traffic to it.
 
 Add more **Shift Traffic Weight** and **Approval** steps until you shift traffic to 100.
 
@@ -425,7 +425,7 @@ In Step 1, select **AWS AutoScaling Group Setup** to open a dialog where you can
 
 ![](./static/ami-blue-green-67.png)
 
-The **Instances** settings support [Harness variable expressions](https://docs.harness.io/article/9dvxcegm90-variables), such as [Workflow variable expressions](https://docs.harness.io/article/766iheu1bk-add-workflow-variables-new-template).For most settings here, see the corresponding [AMI Basic Workflow instructions](ami-deployment.md#basic-setup-asg). However:
+The **Instances** settings support [Harness variable expressions](https://docs.harness.io/article/9dvxcegm90-variables), such as [Workflow variable expressions](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md).For most settings here, see the corresponding [AMI Basic Workflow instructions](ami-deployment.md#basic-setup-asg). However:
 
 Harness recommends setting the **Auto Scaling Steady State Timeout (mins)** field to at least **20** minutes, as shown above. This is a safe interval to prevent failed deployments while the [Swap Routes](#swap_routes_bg) step's Blue/Green switchover completes.
 
@@ -613,6 +613,6 @@ For example, if there were multiple ASGs of the series having active instances b
 
 ### Next Steps
 
-* Add monitoring to your AMI deployment and running instances: see [Continuous Verification](https://docs.harness.io/article/myw4h9u05l-verification-providers-list) and [24/7 Service Guard Overview](https://docs.harness.io/article/dajt54pyxd-24-7-service-guard-overview).
+* Add monitoring to your AMI deployment and running instances: see [Continuous Verification](https://docs.harness.io/article/myw4h9u05l-verification-providers-list) and [24/7 Service Guard Overview](../../continuous-verification/continuous-verification-overview/concepts-cv/24-7-service-guard-overview.md).
 * [AMI Canary Deployment](ami-canary.md).
 
