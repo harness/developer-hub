@@ -440,20 +440,16 @@ The JSON of the Terraform Plan step is not available after Rollback.
 
 Enable this option to view the Terraform plan file path and contents as human-readable JSON is subsequent steps, such as a [Shell Script step](../../cd-execution/cd-general-steps/using-shell-scripts).
 
-Once you enable this option and run a CD stage with the Terraform Plan step, you can click in the Terraform Plan step's **Output** tab and copy the **Output Value** for **jsonFilePath** and **humanReadableFilePath** outputs.
+Once you enable this option and run a CD stage with the Terraform Plan step, you can click in the Terraform Plan step's **Output** tab and copy the **Output Value** for the **humanReadableFilePath** output.
 
 ![alt](static/human-readable.png)
 
-The formats for the expressions are:
-- **jsonFilePath**:
-  - `<+terraformPlanJson."pipeline.stages.[stage Id].spec.execution.steps.[step Id].tf_planJson">`
+The format for the expression is:
 - **humanReadableFilePath**:
   - `<+terraformPlanHumanReadable."pipeline.stages.[stage Id].spec.execution.steps.[step Id].tf_planHumanReadable">`
 
 For example, if the Terraform Plan stage and step Ids are `tf` then you would get the following expressions:
 
-- **jsonFilePath**: 
-  - `<+terraformPlanJson."pipeline.stages.tf.spec.execution.steps.tf.tf_planJson">`
 - **humanReadableFilePath**:
   - `<+terraformPlanHumanReadable."pipeline.stages.tf.spec.execution.steps.tf.tf_planHumanReadable">`
 
@@ -462,10 +458,6 @@ Next, you can enter those expressions in a subsequent [Shell Script step](../../
 For example, here is a script using the variables:
 
 ```bash
-echo "<+terraformPlanJson."pipeline.stages.tf.spec.execution.steps.tf.tf_planJson">"
-echo "full plan"
-cat "<+terraformPlanJson."pipeline.stages.tf.spec.execution.steps.tf.tf_planJson">"
-
 echo "<+terraformPlanHumanReadable."pipeline.stages.tf.spec.execution.steps.tf.tf_planHumanReadable">"
 echo "Plan is"
 cat "<+terraformPlanHumanReadable."pipeline.stages.tf.spec.execution.steps.tf.tf_planHumanReadable">"
