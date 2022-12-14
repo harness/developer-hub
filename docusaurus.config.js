@@ -5,13 +5,15 @@
 const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 const path = require("path");
 
+const baseUrl = process.env.BASE_URL || "/";
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "Harness Developer Hub",
   tagline:
     "Learn intelligent software delivery at your own pace. Step-by-step tutorials, videos, and reference docs to help you deliver customer happiness.",
   url: "https://developer.harness.io",
-  baseUrl: process.env.BASE_URL || "/",
+  baseUrl,
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
   favicon: "img/favicon.ico",
@@ -87,7 +89,7 @@ const config = {
           {
             position: "left",
             // label: "img",
-            html: "<img src='/img/icon_beta.svg' alt='BETA' width='39' height='19' />",
+            html: `<img src='${baseUrl}img/icon_beta.svg' alt='BETA' width='39' height='19' />`,
             href: "#",
           },
           {
