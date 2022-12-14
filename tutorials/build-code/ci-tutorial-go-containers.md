@@ -4,7 +4,7 @@ description: This build automation guide walks you through building a Go applica
 keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial,Go,Ko]
 ---
 
-# Build Go Application Containers CI Pipeline
+# Build Go Application Containers
 
 ## Objectives
 
