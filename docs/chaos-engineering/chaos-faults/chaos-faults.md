@@ -305,6 +305,30 @@ The below mentioned platform chaos faults are available:
     <td>Injects RDS instance reboot chaos on target RDS instance/cluster</td>
     <td><a href="/docs/chaos-engineering/chaos-faults/aws/rds-instance-reboot">rds-instance-reboot</a></td>
   </tr>
+
+  <tr>
+    <td>Lambda Delete Event Source Mapping</td>
+    <td>Inject chaos to delete event source mapping of target lambda function</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/aws/lambda-delete-event-source-mapping">lambda-delete-event-source-mapping</a></td>
+  </tr>
+
+  <tr>
+    <td>Lambda Toggle Event Mapping State</td>
+    <td>Inject chaos to toggle event mapping state of target lambda function</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/aws/lambda-toggle-event-mapping-state">lambda-toggle-event-mapping-state</a></td>
+  </tr>
+
+  <tr>
+    <td>Lambda Update Function Memory</td>
+    <td>Inject chaos to update the lambda function memory limit</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/aws/lambda-update-function-memory">lambda-update-function-memory</a></td>
+  </tr>
+
+  <tr>
+    <td>Lambda Update Function Timeout</td>
+    <td>Inject chaos to update the lambda function timeout value</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/aws/lambda-update-function-timeout">lambda-update-function-timeout</a></td>
+  </tr>
 </table>
 
 ### GCP
