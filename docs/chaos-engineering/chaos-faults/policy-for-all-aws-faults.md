@@ -2,9 +2,9 @@
 title: Policy For All AWS Faults
 ---
 
-## Permission Requirement
+## Permissions required
 
-Here is an example AWS superset policy to execute all AWS faults:
+Here is an example AWS superset policy to execute all AWS faults.
 
 ```json
 {
