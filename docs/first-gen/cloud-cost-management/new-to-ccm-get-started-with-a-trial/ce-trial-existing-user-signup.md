@@ -120,11 +120,13 @@ name: default
 namespace: harness-delegate
 ```
 If you have changed these, obtain the new name and namespace.
+
 3. Download the [ce-default-k8s-cluster-role.yaml](https://raw.githubusercontent.com/harness/continuous-efficiency/master/config/ce-default-k8s-cluster-role.yaml) file from Harness.  
   
 The `Subjects` section of the ClusterRoleBinding is configured with the default Delegate Service account name (`default`) and namespace (`harness-delegate`).  
   
 If you have changed these defaults, update the ce-default-k8s-cluster-role.yaml file before running it.
+
 4. Once you have downloaded the file, connect to your Kubernetes cluster and run the following command in your Kubernetes cluster:  
   
 
