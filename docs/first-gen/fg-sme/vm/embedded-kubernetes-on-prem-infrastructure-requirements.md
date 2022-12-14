@@ -186,9 +186,9 @@ All connections to the Harness Manager can be secure or unencrypted according to
 
 Harness does not support self-signed certificates for connections to the Harness Manager.
 
-For connections from the Harness Manager outbound to an integration, you can use a self-signed certificate. In this case, you must import the self-signed certificate into Harness Delegate's JRE keystore manually or using a Harness [Delegate Profile](https://docs.harness.io/article/yd4bs0pltf-run-scripts-on-the-delegate-using-profiles).
+For connections from the Harness Manager outbound to an integration, you can use a self-signed certificate. In this case, you must import the self-signed certificate into Harness Delegate's JRE keystore manually or using a Harness [Delegate Profile](../../firstgen-platform/account/manage-delegates/run-scripts-on-the-delegate-using-profiles.md).
 
-See [Add Self-Signed Certificates for Delegate Connections](https://docs.harness.io/article/8bj3v5jqzk-add-self-signed-certificates-for-delegate-connections).
+See [Add Self-Signed Certificates for Delegate Connections](../../firstgen-platform/account/manage-delegates/add-self-signed-certificates-for-delegate-connections.md).
 
 ## Install Harness Self-Managed Enterprise Edition
 

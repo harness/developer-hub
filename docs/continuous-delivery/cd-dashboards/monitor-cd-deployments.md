@@ -95,5 +95,5 @@ You can create custom CD dashboards that visualize deployment data by different 
 
 Here's a quick video showing how to create a CD custom dashboard:
 
-See [Create Dashboards](https://docs.harness.io/article/ardf4nbvcy-create-dashboards).
+See [Create Dashboards](../../platform/18_Dashboards/create-dashboards.md).
 

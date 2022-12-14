@@ -35,7 +35,7 @@ To add an ELK verification step to your Workflow:
 
 Select the server you added when you set up the ELK verification provider earlier in [Connect to Elasticsearch](1-elasticsearch-connection-setup.md).
 
-You can also enter [variable expressions](https://docs.harness.io/article/9dvxcegm90-variables), such as: `${serviceVariable.elk_connector_name}`.
+You can also enter [variable expressions](../../../firstgen-platform/techref-category/variables/variables.md), such as: `${serviceVariable.elk_connector_name}`.
 
 If the **Elasticsearch Server** field contains an expression, the **Index** field must also use an expression.
 

@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/article/5fnx4hgwsa).This topic describes how to create a Harness Application and adds a Service that uses a function file, runtime, and handler information to define the Lambda function to deploy.
+This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../../continuous-delivery/onboard-cd/cd-quickstarts/serverless-lambda-cd-quickstart.md).This topic describes how to create a Harness Application and adds a Service that uses a function file, runtime, and handler information to define the Lambda function to deploy.
 
 In this topic:
 
@@ -28,10 +28,10 @@ In this topic:
 
 Harness supports the following artifact sources with Lambda:
 
-* [Jenkins](https://docs.harness.io/article/qa7lewndxq-add-jenkins-artifact-servers)
-* [Artifactory](https://docs.harness.io/article/nj3p1t7v3x-add-artifactory-servers)
+* [Jenkins](../../../firstgen-platform/account/manage-connectors/add-jenkins-artifact-servers.md)
+* [Artifactory](../../../firstgen-platform/account/manage-connectors/add-artifactory-servers.md)
 * [AWS S3](1-delegate-and-connectors-for-lambda.md)
-* [Nexus](https://docs.harness.io/article/rdhndux2ab-nexus-artifact-sources)
+* [Nexus](../../../firstgen-platform/techref-category/cd-ref/artifacts-ref/nexus-artifact-sources.md)
 * [Custom Artifact Source](../../model-cd-pipeline/setup-services/custom-artifact-source.md)
 
 ### Step 1: Create a Harness Lambda Service

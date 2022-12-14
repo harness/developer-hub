@@ -17,13 +17,13 @@ To determine if you are authorized to create Triggers for a particular Environme
 * All the permissions of your Harness User Group. The User Group Application Permissions should include the **Deployments** Permission Type and **Execute Workflow** and/or **Execute Pipeline** Action for the Harness Application(s) with the Triggers you want Users to execute.
 * The Usage Scope of the Cloud Provider, and of any other Harness connectors you have set up.
 
-For further details, see [Managing Users and Groups (RBAC)](https://docs.harness.io/article/ven0bvulsj-users-and-permissions) and [Connectors Overview](https://docs.harness.io/article/a7n7lwsjpk-harness-connectors).
+For further details, see [Managing Users and Groups (RBAC)](../../../firstgen-platform/security/access-management-howtos/users-and-permissions.md) and [Connectors Overview](../../../firstgen-platform/account/manage-connectors/harness-connectors.md).
 
 Below are some errors that can occur.
 
 #### User does not have "Deployment: execute" permission
 
-Error messages of the form `User does not have "Deployment: execute" permission` indicate that your user group's **Application Permissions** > **Action** settings do not include **execute** in the scope of the specified Application and/or Environment. To resolve this, see [Application Permissions](https://docs.harness.io/article/ven0bvulsj-users-and-permissions#application_permissions).
+Error messages of the form `User does not have "Deployment: execute" permission` indicate that your user group's **Application Permissions** > **Action** settings do not include **execute** in the scope of the specified Application and/or Environment. To resolve this, see [Application Permissions](../../../firstgen-platform/security/access-management-howtos/users-and-permissions.md#application-permissions).
 
 #### User not authorized
 

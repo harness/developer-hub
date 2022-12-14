@@ -60,7 +60,7 @@ Click **Next**. The **Script Repository** section appears. This is where you pro
 
 ### Step 2: Select Your Terraform Script Repo
 
-In **Script Repository**, in **Git Repository**, select the [Source Repo Provider](https://docs.harness.io/article/ay9hlwbgwa-add-source-repo-providers) you added for the Git repo where your script is located.
+In **Script Repository**, in **Git Repository**, select the [Source Repo Provider](../../firstgen-platform/account/manage-connectors/add-source-repo-providers.md) you added for the Git repo where your script is located.
 
 In **Commit**, select **Latest from Branch** or **Specific Commit ID**:
 
@@ -95,7 +95,7 @@ This allows the same Terraform Provisioner to be used by multiple Workflows, whe
 
 In **Plan Configuration**, in **Terraform Plan Storage Configuration**, select a Secrets Manager to use for encrypting/decrypting and saving the Terraform plan file.
 
-See [Add a Secrets Manager](https://docs.harness.io/article/uuer539u3l-add-a-secrets-manager).
+See [Add a Secrets Manager](../../firstgen-platform/security/secrets-management/add-a-secrets-manager.md).
 
 A Terraform plan is a sensitive file that could be misused to alter cloud provider resources if someone has access to it. Harness avoids this issue by never passing the Terraform plan file as plain text.
 

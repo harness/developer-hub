@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/article/5fnx4hgwsa).This topic sets up the Harness Delegate, Artifact Server, and Cloud Provider for your Lambda Deployment.
+This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../../continuous-delivery/onboard-cd/cd-quickstarts/serverless-lambda-cd-quickstart.md).This topic sets up the Harness Delegate, Artifact Server, and Cloud Provider for your Lambda Deployment.
 
 ### Before You Begin
 
@@ -34,8 +34,8 @@ The Lambda function metadata is pulled from an AWS S3 bucket and therefore the D
 
 The Delegate might be a Shell Script Delegate installed on an EC2 instance or an ECS Delegate installed on an ECS cluster. The required policies for the Delegate are described here:
 
-* [ECS (Existing Cluster)](https://docs.harness.io/article/whwnovprrb-cloud-providers#ecs_existing_cluster) - **AmazonEC2ContainerServiceforEC2Role** and a custom Harness policy.
-* [AWS EC2](https://docs.harness.io/article/whwnovprrb-cloud-providers#aws_ec2) - **AmazonEC2FullAccess**.
+* [ECS (Existing Cluster)](../../../firstgen-platform/account/manage-connectors/cloud-providers.md#ecs-existing-cluster) - **AmazonEC2ContainerServiceforEC2Role** and a custom Harness policy.
+* [AWS EC2](../../../firstgen-platform/account/manage-connectors/cloud-providers.md#aws-ec2) - **AmazonEC2FullAccess**.
 
 ##### AWS Lambda Policies
 
@@ -78,7 +78,7 @@ If the IAM role assigned to the Delegate has the following roles you will encoun
 
 ##### Policy Requirements for Serverless Dashboard
 
-To see your Lambda invocations on the [Serverless Dashboard](https://docs.harness.io/article/vlj9xbj315-serverless-functions-dashboard), the [Execution Role](https://docs.aws.amazon.com/lambda/latest/dg/lambda-intro-execution-role.html) for the Lambda function must have the following policies:
+To see your Lambda invocations on the [Serverless Dashboard](../../../firstgen-platform/techref-category/monitoring-ref/serverless-functions-dashboard.md), the [Execution Role](https://docs.aws.amazon.com/lambda/latest/dg/lambda-intro-execution-role.html) for the Lambda function must have the following policies:
 
 * AmazonEC2FullAccess
 * AWSLambda\_FullAccess (previously AWSLambdaFullAccess)
@@ -94,7 +94,7 @@ The Harness Delegate runs in your AWS VPC and executes all deployment steps, suc
 
 The simplest method is to install a Harness Shell Script or ECS Delegate in same AWS VPC as your Lambda functions and then set up the Harness AWS Cloud Provider to use the same IAM credentials as the installed Delegate. This is described in [Add the Cloud Provider](1-delegate-and-connectors-for-lambda.md#add-the-cloud-provider) below.
 
-For steps on installing a Delegate in your VPC, see [Delegate Installation and Management](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation).
+For steps on installing a Delegate in your VPC, see [Delegate Installation and Management](../../../firstgen-platform/account/manage-delegates/delegate-installation.md).
 
 #### Delegate Selector
 
@@ -102,7 +102,7 @@ To ensure the IAM role applied to the Delegate you installed in the AWS VPC is u
 
 ![](./static/1-delegate-and-connectors-for-lambda-00.png)
 
-For steps on adding Selectors, see [Delegate Installation and Management](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation).
+For steps on adding Selectors, see [Delegate Installation and Management](../../../firstgen-platform/account/manage-delegates/delegate-installation.md).
 
 ### Step 3: Add an AWS Cloud Provider
 

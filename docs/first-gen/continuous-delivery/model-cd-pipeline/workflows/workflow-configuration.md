@@ -91,7 +91,7 @@ You can set variables in the **Workflow Variables** section of your Workflow, an
 
 See [Set Workflow Variables](add-workflow-variables-new-template.md).
 
-For information on variables and expressions, see [Variables and Expressions in Harness](https://docs.harness.io/article/9dvxcegm90-variables) and [Passing Variables into Workflows and Pipelines from Triggers](../expressions/passing-variable-into-workflows.md).
+For information on variables and expressions, see [Variables and Expressions in Harness](../../../firstgen-platform/techref-category/variables/variables.md) and [Passing Variables into Workflows and Pipelines from Triggers](../expressions/passing-variable-into-workflows.md).
 
 ### Template a Workflow
 
@@ -152,7 +152,7 @@ If a Workflow fails before reaching its barrier point, the Workflow signals the 
 
 You define the steps of a Workflow rollback in **Rollback Steps**. Typically you want to rollback failed containers and container orchestration setup. You can also verify that the rollback has restored the last working version of your Service.
 
-Harness performs rollback differently depending on the target platform (deployment type), deployment strategy, and the steps where you can configure how we handle old versions. See [Kubernetes Rollback](https://docs.harness.io/article/v41e8oo00e-kubernetes-rollback) and [ECS Rollbacks](https://docs.harness.io/article/d7rnemtfuz-ecs-rollback) as examples.
+Harness performs rollback differently depending on the target platform (deployment type), deployment strategy, and the steps where you can configure how we handle old versions. See [Kubernetes Rollback](../../../firstgen-platform/techref-category/cd-ref/platforms-ref/kubernetes-rollback.md) and [ECS Rollbacks](../../../firstgen-platform/techref-category/cd-ref/platforms-ref/ecs-rollback.md) as examples.
 
 In general, during a successful deployment, Harness deletes all old versions of the deployed service except for the last successfully deployed version. This version is kept for rollback. If rollback occurs, Harness restores the last successful version but not the older versions it deleted.
 

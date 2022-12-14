@@ -63,7 +63,7 @@ To create a Harness Service for ECS, do the following:
 Next, we will add the artifact source for the service, a sample app publicly hosted on Docker Hub.
 8. Click **Add Artifact Source**, and click **Docker Registry**.
 9. The **Artifact Source** dialog appears.![](./static/ecs-services-40.png)
-10. In **Source Server**, select the Harness Artifact Server for the Docker Registry. For information on setting up a Harness Artifact Server, see [Add Artifact Servers](https://docs.harness.io/article/7dghbx1dbl-configuring-artifact-server).
+10. In **Source Server**, select the Harness Artifact Server for the Docker Registry. For information on setting up a Harness Artifact Server, see [Add Artifact Servers](../../../firstgen-platform/account/manage-connectors/configuring-artifact-server.md).
 11. In **Docker Image Name**, enter the name of the image.
 12. Click **SUBMIT**. The Artifact Source is added.
 
@@ -523,7 +523,7 @@ You must use either inline or remote task and service definitions. You cannot us
 
 To use remote task and service definitions:
 
-1. Ensure you have set up a Harness Source Repo Provider connection to your Git repo. See [Add Source Repo Providers](https://docs.harness.io/article/ay9hlwbgwa-add-source-repo-providers).
+1. Ensure you have set up a Harness Source Repo Provider connection to your Git repo. See [Add Source Repo Providers](../../../firstgen-platform/account/manage-connectors/add-source-repo-providers.md).
 2. In your Harness ECS Service, in **Deployment Specification**, click more options (︙), and then click **Link Remote Definitions**.
 
 ### Review: Task Definitions and Amazon ECS Service Quotas

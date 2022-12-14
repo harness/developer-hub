@@ -23,8 +23,8 @@ The Delegate host must have Helm installed on it. Harness installs Helm with the
 For information on the Helm binaries installed by default, see [Supported platforms and technologies](../../../getting-started/supported-platforms-and-technologies.md).  
 You can install the chart manually on the host, but it is easier to install it using the `INIT_SCRIPT` environment variable in the Delegate YAML.
 2. Add the `INIT_SCRIPT` environment variable to the StatefulSet (Legacy Delegate) or Deployment (Immutable Delegate) object in the Delegate YAML, and add your Helm chart installation script.  
-For information on Delegate types, go to [Install a Kubernetes Delegate](https://docs.harness.io/article/f9bd10b3nj-install-a-kubernetes-delegate) or [Install a Docker Delegate](https://docs.harness.io/article/cya29w2b99-install-a-docker-delegate).  
-For information on using `INIT_SCRIPT`, go to [Install Software on the Delegate with Initialization Scripts](https://docs.harness.io/article/yte6x6cyhn-run-scripts-on-delegates).  
+For information on Delegate types, go to [Install a Kubernetes Delegate](../../../platform/2_Delegates/delegate-guide/install-a-kubernetes-delegate.md) or [Install a Docker Delegate](../../../platform/2_Delegates/delegate-install-docker/install-a-docker-delegate.md).  
+For information on using `INIT_SCRIPT`, go to [Install Software on the Delegate with Initialization Scripts](../../../platform/2_Delegates/delegate-guide/run-scripts-on-delegates.md).  
 For information on installing Helm charts, go to Helm's documentation for [Helm Install](https://helm.sh/docs/helm/helm_install/).
 
 ### Add HELM\_LOCAL\_REPOSITORY environment variable to Delegate YAML
@@ -51,7 +51,7 @@ If the chart version is not included, Harness will fetch the `latest` version.
 
 The `HELM_LOCAL_REPOSITORY` environment variable is the same for both Delegate types.
 
-For information on Delegate types, go to [Install a Kubernetes Delegate](https://docs.harness.io/article/f9bd10b3nj-install-a-kubernetes-delegate) or [Install a Docker Delegate](https://docs.harness.io/article/cya29w2b99-install-a-docker-delegate).
+For information on Delegate types, go to [Install a Kubernetes Delegate](../../../platform/2_Delegates/delegate-guide/install-a-kubernetes-delegate.md) or [Install a Docker Delegate](../../../platform/2_Delegates/delegate-install-docker/install-a-docker-delegate.md).
 
 ### Important notes
 
@@ -89,5 +89,5 @@ When Harness finds the charts it displays the message `Found the chart at local 
 
 Local Helm charts are supported in both Harness FirstGen and NextGen. There is no difference in setup.
 
-Harness FirstGen does not include Delegate Selectors on many Workflow steps. Typically, you use Infrastructure Definition's Cloud Provider Delegate Selectors to ensure that the Delegate used for deployment has the local Helm chart installed. For more information, go to [Select Delegates with Selectors](https://docs.harness.io/article/c3fvixpgsl-select-delegates-for-specific-tasks-with-selectors).
+Harness FirstGen does not include Delegate Selectors on many Workflow steps. Typically, you use Infrastructure Definition's Cloud Provider Delegate Selectors to ensure that the Delegate used for deployment has the local Helm chart installed. For more information, go to [Select Delegates with Selectors](../../../first-gen/firstgen-platform/account/manage-delegates/select-delegates-for-specific-tasks-with-selectors.md).
 

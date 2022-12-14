@@ -51,7 +51,7 @@ Harness Source Repo Providers connect your Harness account with your Git platfor
 
 For Azure ARM templates, you add a Harness Source Repo Provider and connect it to the Git repo for your ARM templates.
 
-For steps on setting up a Source Repo Provider, see [Add Source Repo Providers](https://docs.harness.io/article/ay9hlwbgwa-add-source-repo-providers).
+For steps on setting up a Source Repo Provider, see [Add Source Repo Providers](../../../firstgen-platform/account/manage-connectors/add-source-repo-providers.md).
 
 For example, here an Azure ARM template created my Azure and hosted on Harness' Docs repo at `https://github.com/wings-software/harness-docs/101-vm-simple-windows/azuredeploy.json`.
 

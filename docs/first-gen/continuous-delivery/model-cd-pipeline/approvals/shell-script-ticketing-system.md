@@ -30,7 +30,7 @@ The other approval options are:
 4. Enter custom shell script to approve or reject the Pipeline deployment request.
 5. Enter the time duration in **Retry Interval (sec)** that Harness should wait between attempts to successfully execute the script.
 6. Enter the time duration that Harness should wait for the approval or rejection before killing the deployment process. You can use `**w**`  for week, `**d**`  for day, `**h**`  for hour, `**m**`  for minutes, `**s**`  for seconds and `**ms**` for milliseconds. For example, 1d for one day.
-7. In **Delegate Selector**, select the Selector for the Delegate(s) you want to use. Harness will use Delegates matching the Selector(s) for this approval step. For more information, see [Select Delegates with Selectors](https://docs.harness.io/article/c3fvixpgsl-select-delegates-for-specific-tasks-with-selectors).
+7. In **Delegate Selector**, select the Selector for the Delegate(s) you want to use. Harness will use Delegates matching the Selector(s) for this approval step. For more information, see [Select Delegates with Selectors](../../../firstgen-platform/account/manage-delegates/select-delegates-for-specific-tasks-with-selectors.md).
 8. Select **Execute in Parallel with Previous Step** checkbox to execute the steps in parallel.
 9. Select either **Do not skip** or **Skip always** for setting the skip option. For more information, see [Skip Execution](../pipelines/skip-conditions.md#skip-execution).
 10. Click **Submit**.

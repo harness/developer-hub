@@ -51,7 +51,7 @@ Pipelines are collections of stages. For this quickstart, we'll create a new Pip
 
 :::note
 
-**Create a Project for your new CD Pipeline:** if you don't already have a Harness Project, create a Project for your new CD Pipeline. Ensure that you add the **Continuous Delivery** module to the Project. See [Create Organizations and Projects](https://docs.harness.io/article/36fw2u92i4-create-an-organization).
+**Create a Project for your new CD Pipeline:** if you don't already have a Harness Project, create a Project for your new CD Pipeline. Ensure that you add the **Continuous Delivery** module to the Project. See [Create Organizations and Projects](../../../platform/1_Organizations-and-Projects/2-create-an-organization.md).
 
 :::
 
@@ -214,5 +214,5 @@ In this quickstart, you learned how to:
 ## Next Steps
 
 * See [CD tutorials](/docs/category/cd-tutorials) for other deployment features.
-* [Trigger Pipelines on New Helm Chart](https://docs.harness.io/article/54eqk0d1bd-trigger-pipelines-on-new-helm-chart).
+* [Trigger Pipelines on New Helm Chart](../../../platform/11_Triggers/trigger-pipelines-on-new-helm-chart.md).
 

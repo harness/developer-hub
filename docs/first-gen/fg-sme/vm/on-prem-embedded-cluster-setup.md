@@ -402,7 +402,7 @@ The Harness sign up page appears.
 
 ![](./static/on-prem-embedded-cluster-setup-27.png)Your new account will be added to the Harness Account Administrators User Group.
 
-See [Managing Users and Groups (RBAC)](https://docs.harness.io/article/ven0bvulsj-users-and-permissions).
+See [Managing Users and Groups (RBAC)](../../firstgen-platform/security/access-management-howtos/users-and-permissions.md).
 
 ### Future Versions
 
@@ -451,10 +451,10 @@ The worker is now joined.
 **Important:** You cannot invite other users to Harness until a Harness Delegate is installed and a Harness SMTP Collaboration Provider is configured.
 :::
 
-1. Install the Harness Delegate: [Delegate Installation and Management](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation).
-2. Set up an SMTP Collaboration Provider in Harness for email notifications from the Harness Manager: [Add SMTP Collaboration Provider](https://docs.harness.io/article/8nkhcbjnh7-add-smtp-collaboration-provider).  
+1. Install the Harness Delegate: [Delegate Installation and Management](../../firstgen-platform/account/manage-delegates/delegate-installation.md).
+2. Set up an SMTP Collaboration Provider in Harness for email notifications from the Harness Manager: [Add SMTP Collaboration Provider](../../firstgen-platform/account/manage-connectors/add-smtp-collaboration-provider.md).  
 Ensure you open the correct port for your SMTP provider, such as [Office 365](https://support.office.com/en-us/article/server-settings-you-ll-need-from-your-email-provider-c82de912-adcc-4787-8283-45a1161f3cc3).
-3. [Add a Harness Secrets Manager](https://docs.harness.io/article/uuer539u3l-add-a-secrets-manager). By default, Harness Self-Managed Enterprise Edition installations use the local Harness MongoDB for the default Harness Secrets Manager. This is not recommended.  
+3. [Add a Harness Secrets Manager](../../firstgen-platform/security/secrets-management/add-a-secrets-manager.md). By default, Harness Self-Managed Enterprise Edition installations use the local Harness MongoDB for the default Harness Secrets Manager. This is not recommended.  
 After Harness Self-Managed Enterprise Edition installation, configure a new Secret Manager (Vault, AWS, etc). You will need to open your network for the Secret Manager connection.
 
 ## Updating Harness
@@ -602,5 +602,5 @@ If your license has expired, you will see something like the following:
 
 ## Notes
 
-Harness Self-Managed Enterprise Edition installations do not currently support the Harness [Helm Delegate](https://docs.harness.io/article/6n7fon8rit-using-the-helm-delegate).
+Harness Self-Managed Enterprise Edition installations do not currently support the Harness [Helm Delegate](../../firstgen-platform/account/manage-delegates/using-the-helm-delegate.md).
 

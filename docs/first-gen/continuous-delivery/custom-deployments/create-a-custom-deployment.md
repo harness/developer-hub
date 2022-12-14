@@ -19,7 +19,7 @@ Deployment Templates use shell scripts to connect to target platforms, obtain ta
 You can review some of the other custom options Harness provides in addition to its support for all major platforms:
 
 * [Using Custom Artifact Sources](../model-cd-pipeline/setup-services/custom-artifact-source.md)
-* [Add and Use a Custom Secrets Manager](https://docs.harness.io/article/ejaddm3ddb-add-and-use-a-custom-secrets-manager)
+* [Add and Use a Custom Secrets Manager](../../firstgen-platform/security/secrets-management/add-and-use-a-custom-secrets-manager.md)
 * [Custom Shell Script Approvals](../model-cd-pipeline/approvals/shell-script-ticketing-system.md)
 * [Shell Script Provisioner](../model-cd-pipeline/infrastructure-provisioner/ssh-provisioner-category/shell-script-provisioner.md)
 * [Custom Verification Overview](../continuous-verification/custom-metrics-and-logs-verification/custom-verification-overview.md)
@@ -40,7 +40,7 @@ Here is a summary of the steps for setting up custom deployments using Deploymen
 2. In the template, include a script that returns a JSON array containing a list of the target instances Harness will use to deploy your artifact.
 3. Identify the array path to the host object in the JSON so Harness can locate it at deployment runtime.
 4. Map any important host attributes that you want to reference later, like IP, region, etc.
-5. Create a Harness Service that using the Deployment Template.Artifacts are added just as they are for supported platforms. See [Add Artifact Servers](https://docs.harness.io/article/7dghbx1dbl-configuring-artifact-server). Harness includes the [Custom Artifact Source](../model-cd-pipeline/setup-services/custom-artifact-source.md) also.
+5. Create a Harness Service that using the Deployment Template.Artifacts are added just as they are for supported platforms. See [Add Artifact Servers](../../firstgen-platform/account/manage-connectors/configuring-artifact-server.md). Harness includes the [Custom Artifact Source](../model-cd-pipeline/setup-services/custom-artifact-source.md) also.
 6. Create a Harness Infrastructure Definition that uses the template.
 7. Create a Workflow that uses the Harness Service and Infrastructure Definition.
 8. In the Workflow, add the **Fetch Instances** step wherever you want to execute the script in your template.
@@ -60,11 +60,11 @@ Unlike the deployments for supported platforms, like Kubernetes and AWS, Deploym
 
 Install a Delegate in your deployment environment, verify that its host/pod can connect to the server you plan to query for your target host information, and the target host.
 
-See [Harness Delegate Overview](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation).
+See [Harness Delegate Overview](../../firstgen-platform/account/manage-delegates/delegate-installation.md).
 
 ### Step 2: Connectors Setup
 
-In a custom deployment using Deployment Templates, Harness Connectors are only used for the Artifact Server. See [Add Artifact Servers](https://docs.harness.io/article/7dghbx1dbl-configuring-artifact-server).
+In a custom deployment using Deployment Templates, Harness Connectors are only used for the Artifact Server. See [Add Artifact Servers](../../firstgen-platform/account/manage-connectors/configuring-artifact-server.md).
 
 No Harness Cloud Providers are used unless you are using an artifact source from GCP or AWS.
 
@@ -117,7 +117,7 @@ aws ec2 describe-instances --instance-ids i-0beacf0f260edd19f > "${INSTANCE_OUTP
 ```
 This example uses AWS. Harness already has full, first-class support for AWS deployments. We just use this script as an example. See the AWS Quickstarts in [Start Here](https://docs.harness.io/category/get-started).
 
-This example also uses Harness secrets for username and password. See [Use Encrypted Text Secrets](https://docs.harness.io/article/ygyvp998mu-use-encrypted-text-secrets).
+This example also uses Harness secrets for username and password. See [Use Encrypted Text Secrets](../../firstgen-platform/security/secrets-management/use-encrypted-text-secrets.md).
 
 Here's another example using Kubernetes and NGINX (Kubernetes also has [first-class support](../../first-gen-quickstarts/kubernetes-quickstart.md)):
 
@@ -236,7 +236,7 @@ For example, to reference the Host Attribute hostname below you would use `${ins
 
 ![](./static/create-a-custom-deployment-03.png)
 
-You can also use any of the default Harness expressions that are host-related. See [What is a Harness Variable Expression?](https://docs.harness.io/article/9dvxcegm90-variables).
+You can also use any of the default Harness expressions that are host-related. See [What is a Harness Variable Expression?](../../firstgen-platform/techref-category/variables/variables.md).
 
 #### Artifact Build Number and Different Artifact Versions
 
@@ -316,7 +316,7 @@ Here is an example targeting a cluster:
 
 ![](./static/create-a-custom-deployment-07.png)
 
-In the Infrastructure Definition, you can edit the variable values from the Deployment Template. You can use Harness variable expressions and secrets. See [What is a Harness Variable Expression?](https://docs.harness.io/article/9dvxcegm90-variables) and [Managing Harness Secrets](https://docs.harness.io/article/8bldcebkkf-managing-harness-secrets).
+In the Infrastructure Definition, you can edit the variable values from the Deployment Template. You can use Harness variable expressions and secrets. See [What is a Harness Variable Expression?](../../firstgen-platform/techref-category/variables/variables.md) and [Managing Harness Secrets](../../firstgen-platform/security/secrets-management/managing-harness-secrets.md).
 
 **If you do not change the defaults**, and the variables are changed in the Deployment Template, or new ones are added, the variables in the Infrastructure Definition are updated with the new defaults from the Deployment Template automatically.
 
@@ -372,7 +372,7 @@ For example, let's say you added an artifact source for a WAR file in the Servic
 
 ![](./static/create-a-custom-deployment-10.png)
 
-In your Workflow, add a [Shell Script step](../model-cd-pipeline/workflows/capture-shell-script-step-output.md) that echos the `${artifact.buildNo}` or other [artifact built-in variables](https://docs.harness.io/article/aza65y4af6-built-in-variables-list#artifact).
+In your Workflow, add a [Shell Script step](../model-cd-pipeline/workflows/capture-shell-script-step-output.md) that echos the `${artifact.buildNo}` or other [artifact built-in variables](../../firstgen-platform/techref-category/variables/built-in-variables-list.md#artifact).
 
 Now when you deploy this Workflow, you will be prompted to select an artifact version.
 
@@ -387,7 +387,7 @@ The **Fetch Instances** step runs the script in your Deployment Template's **Fet
 ![](./static/create-a-custom-deployment-11.png)
 
 1. Add Fetch Instances to any point in the Workflow where you want to run your script.
-2. In **Delegate Selector**, select the Delegate you want to use to run this step. See [Select Delegates with Selectors](https://docs.harness.io/article/c3fvixpgsl-select-delegates-for-specific-tasks-with-selectors).
+2. In **Delegate Selector**, select the Delegate you want to use to run this step. See [Select Delegates with Selectors](../../firstgen-platform/account/manage-delegates/select-delegates-for-specific-tasks-with-selectors.md).
 
 ### Option: Deployment Template Variable Expressions
 
@@ -395,7 +395,7 @@ Any variables set in **Infrastructure Variables** can he referenced in your Work
 
 You can reference the host in your Workflow using the expression `${instance.hostName}`.
 
-You can also use any of the default Harness expressions that are host-related. See [What is a Harness Variable Expression?](https://docs.harness.io/article/9dvxcegm90-variables).
+You can also use any of the default Harness expressions that are host-related. See [What is a Harness Variable Expression?](../../firstgen-platform/techref-category/variables/variables.md).
 
 Here is an example using a Shell Script step:
 
@@ -404,7 +404,7 @@ Here is an example using a Shell Script step:
 ### See Also
 
 * [Using Custom Artifact Sources](../model-cd-pipeline/setup-services/custom-artifact-source.md)
-* [Add and Use a Custom Secrets Manager](https://docs.harness.io/article/ejaddm3ddb-add-and-use-a-custom-secrets-manager)
+* [Add and Use a Custom Secrets Manager](../../firstgen-platform/security/secrets-management/add-and-use-a-custom-secrets-manager.md)
 * [Custom Shell Script Approvals](../model-cd-pipeline/approvals/shell-script-ticketing-system.md)
 * [Shell Script Provisioner](../model-cd-pipeline/infrastructure-provisioner/ssh-provisioner-category/shell-script-provisioner.md)
 

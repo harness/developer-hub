@@ -64,7 +64,7 @@ Add the query headers required by your metrics data provider. For New Relic Insi
 
 1. Click **Add Headers**.
 2. In **Key**, enter **X-Query-Key**. For New Relic, a X-Query-Key must contain a valid query key.
-3. In **Value**, enter the key, or click **Use Secret** and select or create a new [Harness Encrypted Text secret](https://docs.harness.io/article/ygyvp998mu-use-encrypted-text-secrets) for the API key you got from New Relic.
+3. In **Value**, enter the key, or click **Use Secret** and select or create a new [Harness Encrypted Text secret](../../../firstgen-platform/security/secrets-management/use-encrypted-text-secrets.md) for the API key you got from New Relic.
 4. Click the checkbox under **Encrypted Value** to encrypt the key.
 5. Click **Add Headers** again.
 6. In **Key**, enter **Accept**. This is for the Content-Type of a query.
@@ -74,7 +74,7 @@ Add the query headers required by your metrics data provider. For New Relic Insi
 
 Add any request parameters that do not change for every request.
 
-In **Value**, enter the key, or click **Use Secret** and select or create a new [Harness Encrypted Text secret](https://docs.harness.io/article/ygyvp998mu-use-encrypted-text-secrets) for the API key you got from New Relic.
+In **Value**, enter the key, or click **Use Secret** and select or create a new [Harness Encrypted Text secret](../../../firstgen-platform/security/secrets-management/use-encrypted-text-secrets.md) for the API key you got from New Relic.
 
 ### Step 7: Validation Path
 

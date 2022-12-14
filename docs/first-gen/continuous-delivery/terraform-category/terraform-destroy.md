@@ -88,7 +88,7 @@ The **AWS Cloud Provider** setting can be templated.You need to select an AWS Cl
 * **Region:** the AWS region where you will be provisioning your resources. If not region is specified, Harness uses `us-east-1`.
 * **Role ARN:** enter the Amazon Resource Name (ARN) of an AWS IAM role that Terraform assumes when provisioning. This allows you to tune the step for provisioning a specific AWS resource. For example, if you will only provision AWS S3, then you can use a role that is limited to S3.  
 At a minimum, select the **AWS Cloud Provider** and **Role ARN**. When used in combination with the AWS Cloud Provider option, the Role ARN is assumed by the Cloud Provider you select.  
-You can also use [Harness variable expressions](https://docs.harness.io/article/9dvxcegm90-variables) in **Role ARN**. For example, you can create a Service or Workflow variable and then enter its expression in **Role ARN**, such as `${serviceVariables.roleARN}` or `${workflow.variables.roleArn}`.
+You can also use [Harness variable expressions](../../firstgen-platform/techref-category/variables/variables.md) in **Role ARN**. For example, you can create a Service or Workflow variable and then enter its expression in **Role ARN**, such as `${serviceVariables.roleARN}` or `${workflow.variables.roleArn}`.
 
 #### Environment Variables
 
@@ -102,7 +102,7 @@ Harness generates these keys using the the **AWS Cloud Provider** and/or **Role 
 
 ### Option: Select Delegate
 
-In **Delegate Selector**, enter the [Delegate Selector](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation) for the Delegate that you want to execute this step. Typically, this is the same Selector used to select a Delegate in the **Terraform Provision** or **Terraform Apply** step.
+In **Delegate Selector**, enter the [Delegate Selector](../../firstgen-platform/account/manage-delegates/delegate-installation.md) for the Delegate that you want to execute this step. Typically, this is the same Selector used to select a Delegate in the **Terraform Provision** or **Terraform Apply** step.
 
 ### Option: Terraform Environment Variables
 
@@ -138,7 +138,7 @@ The Terraform Plan is stored in the default Harness Secrets Manager as encrypted
 
 The Terraform plan size must not exceed the secret size limit for secrets in your default Secret Manager. AWS Secrets Manager has a limitation of 64KB. Other supported Secrets Managers support larger file size.
 
-See [Add a Secrets Manager](https://docs.harness.io/article/uuer539u3l-add-a-secrets-manager).
+See [Add a Secrets Manager](../../firstgen-platform/security/secrets-management/add-a-secrets-manager.md).
 
 #### Terraform Destroy Plan Output Variable
 
@@ -204,7 +204,7 @@ You can also use [Workflow variables](../model-cd-pipeline/workflows/add-workflo
 
 ##### Remote tfvar Files
 
-In **Source Repository**, select the Harness [Source Repo Provider](https://docs.harness.io/article/ay9hlwbgwa-add-source-repo-providers) that connects to the repo where your tfvar file is.
+In **Source Repository**, select the Harness [Source Repo Provider](../../firstgen-platform/account/manage-connectors/add-source-repo-providers.md) that connects to the repo where your tfvar file is.
 
 Select **Commit ID** or **Branch.**
 

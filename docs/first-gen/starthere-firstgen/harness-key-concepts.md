@@ -325,7 +325,7 @@ Visualize and prioritize the deployment and related data that matters to you, in
 
 ![](./static/harness-key-concepts-59.png)
 
-See [Custom Dashboards](https://docs.harness.io/article/rxlbhvwe6q-custom-dashboards).
+See [Custom Dashboards](../firstgen-platform/fg-monitoring/custom-dashboards.md).
 
 
 ## Continuous Security

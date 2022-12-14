@@ -144,7 +144,7 @@ This option supports [Terraform version 12](https://www.terraform.io/upgrade-gui
 
 The next Terragrunt Provision step must have the **Inherit configurations from previous Terragrunt Provision** **step** selected to apply the plan.
 
-By default, Harness uses the [Harness Secret Manager](https://docs.harness.io/article/uuer539u3l-add-a-secrets-manager) you have selected as your **default**.
+By default, Harness uses the [Harness Secret Manager](../../firstgen-platform/security/secrets-management/add-a-secrets-manager.md) you have selected as your **default**.
 
 ### Step 3: Input Values
 
@@ -181,7 +181,7 @@ You can use [Workflow variables](../model-cd-pipeline/workflows/add-workflow-var
 
 ##### Remote tfvar Files
 
-In **Source Repository**, select the Harness [Source Repo Provider](https://docs.harness.io/article/ay9hlwbgwa-add-source-repo-providers) that connects to the repo where your tfvar file is.
+In **Source Repository**, select the Harness [Source Repo Provider](../../firstgen-platform/account/manage-connectors/add-source-repo-providers.md) that connects to the repo where your tfvar file is.
 
 Select **Commit ID** or **Branch.**
 
@@ -213,7 +213,7 @@ In **Inline Values**, you can enter values for those inputs or select Harness se
 
 ![](./static/provision-using-the-terragrunt-provision-step-09\.png)
 
-See [Use Encrypted Text Secrets](https://docs.harness.io/article/ygyvp998mu-use-encrypted-text-secrets).
+See [Use Encrypted Text Secrets](../../firstgen-platform/security/secrets-management/use-encrypted-text-secrets.md).
 
 ### Option: Backend Configuration (Remote state)
 
@@ -291,7 +291,7 @@ When rollbacks occur, Harness will rollback the Terraform state to the previous 
 
 In **Delegate Selector**, you can select the specific Harness Delegate(s) to execute the Terragrunt Provisioning step.
 
-For more information on Delegate Selectors, see [Select Delegates with Selectors](https://docs.harness.io/article/c3fvixpgsl-select-delegates-for-specific-tasks-with-selectors).
+For more information on Delegate Selectors, see [Select Delegates with Selectors](../../firstgen-platform/account/manage-delegates/select-delegates-for-specific-tasks-with-selectors.md).
 
 You can even add a [Workflow variable](../model-cd-pipeline/workflows/add-workflow-variables-new-template.md) for the Delegate Selector and the use an expression in the **Delegate Selectors** field. When you deploy the Workflow, you will provide the name of the Delegate Selector.
 
@@ -309,9 +309,9 @@ In **Terragrunt** **Environment Variables**, you can reference additional enviro
 
 Click **Add** and enter a name, type, and value for the environment variable. For example: **TF\_LOG**, **Text**, and `TRACE`.
 
-If you select Encrypted Text, you must select an existing Harness [Encrypted Text secret](https://docs.harness.io/article/ygyvp998mu-use-encrypted-text-secrets).
+If you select Encrypted Text, you must select an existing Harness [Encrypted Text secret](../../firstgen-platform/security/secrets-management/use-encrypted-text-secrets.md).
 
-You can use Harness [Workflow variables](../model-cd-pipeline/workflows/add-workflow-variables-new-template.md) and [expression variables](https://docs.harness.io/article/9dvxcegm90-variables) for the name and value.
+You can use Harness [Workflow variables](../model-cd-pipeline/workflows/add-workflow-variables-new-template.md) and [expression variables](../../firstgen-platform/techref-category/variables/variables.md) for the name and value.
 
 Environment variables can also be deleted using the Terragrunt Destroy step. See [Remove Provisioned Infra with Terragrunt Destroy](remove-provisioned-infra-with-terragrunt-destroy.md).
 

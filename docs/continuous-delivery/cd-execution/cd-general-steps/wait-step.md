@@ -52,7 +52,7 @@ If you use Runtime input, you can enter the wait time when you run the pipeline.
 
 If you use an Expression, ensure that the Expression resolves to one of the allowed time values. 
 
-For information on Fixed Value, Runtime input, and Expression, go to [Fixed Values, Runtime Inputs, and Expressions](https://docs.harness.io/article/f6yobn7iq0-runtime-inputs). 
+For information on Fixed Value, Runtime input, and Expression, go to [Fixed Values, Runtime Inputs, and Expressions](../../../platform/20_References/runtime-inputs.md). 
 
 ## Marking the Wait step as Success or Fail
 
@@ -60,7 +60,7 @@ When the Wait step is running, it provides **Mark as Success** and **Mark as Fai
 
 ![](./static/wait-step-28.png)
 
-For information on Failure Strategies, go to [Define a Failure Strategy on Stages and Steps](https://docs.harness.io/article/0zvnn5s1ph-define-a-failure-strategy-on-stages-and-steps).
+For information on Failure Strategies, go to [Define a Failure Strategy on Stages and Steps](../../../platform/8_Pipelines/define-a-failure-strategy-on-stages-and-steps.md).
 
 For example, let's say a Wait step has the Failure Strategy **Manual Intervention**. When the user clicks **Mark as Failed**, they are prompted with the **Manual Intervention** options:
 

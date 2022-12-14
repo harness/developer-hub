@@ -16,8 +16,8 @@ The `!` following the type means that this field is *required*.
 
 ## Before You Begin
 
-* [​Introduction to Harness GraphQL API](https://docs.harness.io/article/tm0w6rruqv-harness-api)
-* [Harness API Explorer](https://docs.harness.io/article/2rmd5i0e0h-harness-api-explorer)
+* [​Introduction to Harness GraphQL API](../../firstgen-platform/techref-category/api/harness-api.md)
+* [Harness API Explorer](../../firstgen-platform/techref-category/api/harness-api-explorer.md)
 * [Optimize Kubernetes Costs with Resource Recommendations](/docs/first-gen/cloud-cost-management/ccm-recommendations/recommendations.md)
 
 ## Fetch Resource Recommendations

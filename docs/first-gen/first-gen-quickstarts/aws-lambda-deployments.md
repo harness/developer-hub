@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/article/5fnx4hgwsa).This quickstart shows you how to deploy a Node.js function to your AWS Lambda service using a Basic Deployment strategy in Harness.
+This content is for Harness [FirstGen](../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../continuous-delivery/onboard-cd/cd-quickstarts/serverless-lambda-cd-quickstart.md).This quickstart shows you how to deploy a Node.js function to your AWS Lambda service using a Basic Deployment strategy in Harness.
 
 ### Objectives
 
@@ -164,10 +164,10 @@ To add your function and spec, you create a Harness Service. Services represent 
 
 	 We use S3 in this quickstart, but Harness supports the following artifact sources with Lambda:
 
-	 * [Jenkins](https://docs.harness.io/article/qa7lewndxq-add-jenkins-artifact-servers)
-	 * [Artifactory](https://docs.harness.io/article/nj3p1t7v3x-add-artifactory-servers)
+	 * [Jenkins](../firstgen-platform/account/manage-connectors/add-jenkins-artifact-servers.md)
+	 * [Artifactory](../firstgen-platform/account/manage-connectors/add-artifactory-servers.md)
 	 * [AWS S3](../continuous-delivery/aws-deployments/lambda-deployments/1-delegate-and-connectors-for-lambda.md)
-	 * [Nexus](https://docs.harness.io/article/rdhndux2ab-nexus-artifact-sources)
+	 * [Nexus](../firstgen-platform/techref-category/cd-ref/artifacts-ref/nexus-artifact-sources.md)
 	 * [Custom Artifact Source](../continuous-delivery/model-cd-pipeline/setup-services/custom-artifact-source.md)
 
 2. In your Harness Service, click **Add Artifact Source** and select **Amazon S3**. The Amazon S3 settings appear. Enter the following settings:
@@ -333,7 +333,7 @@ Here is an individual Lambda deployment and how it is displayed on the Serverles
 
 [![](./static/aws-lambda-deployments-34.png)](./static/aws-lambda-deployments-34.png)
 
-See  [Serverless Functions Dashboard](https://docs.harness.io/article/vlj9xbj315-serverless-functions-dashboard).
+See  [Serverless Functions Dashboard](../firstgen-platform/techref-category/monitoring-ref/serverless-functions-dashboard.md).
 
 To see your Lambda invocations on the Serverless Dashboard, the  [Execution Role](https://docs.aws.amazon.com/lambda/latest/dg/lambda-intro-execution-role.html) for the Lambda function must have the following policies:
 

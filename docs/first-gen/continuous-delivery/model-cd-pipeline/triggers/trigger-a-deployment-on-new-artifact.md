@@ -18,7 +18,7 @@ For example, every time a new Docker image is uploaded to your Docker hub accoun
 * [Workflows](../workflows/workflow-configuration.md)
 * [Add Environment](../environments/environment-configuration.md)
 * [Create a Pipeline](../pipelines/pipeline-configuration.md)
-* [Add Artifact Servers](https://docs.harness.io/article/7dghbx1dbl-configuring-artifact-server)
+* [Add Artifact Servers](../../../firstgen-platform/account/manage-connectors/configuring-artifact-server.md)
 
 ### Important Notes
 
@@ -119,7 +119,7 @@ There are three main settings:
 
 Select this option to use the artifact identified in Artifact Source you selected in **Condition**.
 
-Harness ties Artifact Sources to their Harness Services. If you have a Pipeline with three Workflows that deploy three Services that use the same Artifact Source (say, an artifact in a Nexus repo), you should not create three Triggers. You can simply create a Trigger on the first Service deployed. You can then get the `${artifact.buildNo}` [expression](https://docs.harness.io/article/aza65y4af6-built-in-variables-list#artifact) and [pass it on to the subsequent Workflows](../expressions/how-to-pass-variables-between-workflows.md).
+Harness ties Artifact Sources to their Harness Services. If you have a Pipeline with three Workflows that deploy three Services that use the same Artifact Source (say, an artifact in a Nexus repo), you should not create three Triggers. You can simply create a Trigger on the first Service deployed. You can then get the `${artifact.buildNo}` [expression](../../../firstgen-platform/techref-category/variables/built-in-variables-list.md#artifact) and [pass it on to the subsequent Workflows](../expressions/how-to-pass-variables-between-workflows.md).
 
 #### Last Collected
 

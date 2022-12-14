@@ -26,7 +26,7 @@ This Trigger is a simple way to automate deployments for new builds.
 
 ### Before you begin
 
-* You should be familiar with Harness CD Pipelines, such as the one you create in the [Kubernetes CD Quickstart](https://docs.harness.io/article/knunou9j30-kubernetes-cd-quickstart).
+* You should be familiar with Harness CD Pipelines, such as the one you create in the [Kubernetes CD Quickstart](../../continuous-delivery/onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md).
 
 ### Important notes
 
@@ -65,7 +65,7 @@ You can also set Tag as a Runtime Input and then use `<+trigger.artifact.build>`
 
    ![](./static/trigger-on-a-new-artifact-24.png)
 
-   You reference an artifact in the Stage's Service Definition in your manifests using the expression `<+artifact.image>`. See [Add Container Images as Artifacts for Kubernetes Deployments](https://docs.harness.io/article/4ifq51cp0i-add-artifacts-for-kubernetes-deployments).
+   You reference an artifact in the Stage's Service Definition in your manifests using the expression `<+artifact.image>`. See [Add Container Images as Artifacts for Kubernetes Deployments](../../continuous-delivery/cd-advanced/cd-kubernetes-category/add-artifacts-for-kubernetes-deployments.md).
 
 2. Click **Triggers**.
 3. Click **New Trigger**.
@@ -76,7 +76,7 @@ You can also set Tag as a Runtime Input and then use `<+trigger.artifact.build>`
 
 1. In **Configuration**, in **Name**, enter a name for the Trigger.
 2. In **Listen on New Artifact**, click **Define Artifact Source**. This is where you tell Harness what artifact repository to poll for changes.
-3. Create or select the Connector to connect Harness to the repository, and then click **Continue**. For steps on Docker Registry Connectors, go to [Add Docker Registry Artifact Servers](https://docs.harness.io/article/tdj2ghkqb0-add-docker-registry-artifact-servers).
+3. Create or select the Connector to connect Harness to the repository, and then click **Continue**. For steps on Docker Registry Connectors, go to [Add Docker Registry Artifact Servers](../../first-gen/firstgen-platform/account/manage-connectors/add-docker-registry-artifact-servers.md).
 4. In **Artifact Details**, enter the artifact for this Trigger to listen for and click **Submit**. For example, in Docker Hub, you might enter `library/nginx`. The artifact is now listed in Trigger.
    
    ![](./static/trigger-on-a-new-artifact-25.png)

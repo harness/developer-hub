@@ -71,7 +71,7 @@ All User Groups that had the **Execute Workflow** permission enabled will now ha
 
 Before you begin, please review [Requirements and Warnings](post-deployment-rollback.md#requirements-and-warnings).To initiate a post-deployment rollback:
 
-1. Open your [Services Dashboard](https://docs.harness.io/article/c3s245o7z8-main-and-services-dashboards#services_dashboard).
+1. Open your [Services Dashboard](../../../firstgen-platform/fg-monitoring/main-and-services-dashboards.md#services-dashboard).
 2. In the **Current Deployment Status** panel, click the More Options ⋮ menu beside the most-recent deployment. Then select **Rollback Deployment**.![](./static/post-deployment-rollback-04.png)The **Rollback Deployment** option appears only for the current deployment.
 3. In the resulting confirmation dialog, verify the deployment's details. If everything looks correct, click **Rollback**.![](./static/post-deployment-rollback-05.png)Harness then invokes the Workflow's configured [Rollback Strategy](workflow-configuration.md#rollback-steps), executing the same Rollback Steps as if the deployment had failed.![](./static/post-deployment-rollback-06.png)Once the rollback completes, your deployed instances will be returned to the state they were in before the most-recent deployment.![](./static/post-deployment-rollback-07.png)
 
@@ -81,7 +81,7 @@ Before you begin, please review [Requirements and Warnings](post-deployment-roll
 
 * There must be at least two successful deployments of the Workflow.
 * The **Workflow Type** cannot be a **Multi-Service Deployment.**![](./static/post-deployment-rollback-08.png)
-* A user's ability to invoke the **Rollback Deployment** option is based on their [User Group](https://docs.harness.io/article/ven0bvulsj-users-and-permissions) membership, and on corresponding role-based permissions.
+* A user's ability to invoke the **Rollback Deployment** option is based on their [User Group](../../../firstgen-platform/security/access-management-howtos/users-and-permissions.md) membership, and on corresponding role-based permissions.
 
 ### AWS ASG Deployments
 

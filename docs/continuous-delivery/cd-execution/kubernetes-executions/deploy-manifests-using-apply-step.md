@@ -102,7 +102,7 @@ You can enter multiple file paths in File Path. Simply click **Add file**.
 
 ### File Path Runtime Inputs
 
-You can set [Fixed Values, Runtime Inputs, and Expressions](https://docs.harness.io/article/f6yobn7iq0-runtime-inputs) for File Path settings:
+You can set [Fixed Values, Runtime Inputs, and Expressions](../../../platform/20_References/runtime-inputs.md) for File Path settings:
 
 ![](./static/deploy-manifests-using-apply-step-25.png)
 
@@ -110,10 +110,10 @@ Here are the options:
 
 * **File Path setting:**
 	+ **Fixed Value:** this is the default. Selecting **Fixed Value** means that you will set a static file path or expression in the step.
-	+ **Runtime Input:** select this option if you want to enter a value at runtime or using [Input Sets and Overlays](https://docs.harness.io/article/3fqwa8et3d-input-sets).
+	+ **Runtime Input:** select this option if you want to enter a value at runtime or using [Input Sets and Overlays](../../../platform/8_Pipelines/input-sets.md).
 * **File path field:**
 	+ **Fixed Value:** this is the default. Selecting **Fixed Value** means that you will set a static file path in the step.
-	+ **Expression:** Selecting **Expression** means that you will use a variable in the step, such as a [stage variable](https://docs.harness.io/article/2chyf1acil-add-a-stage).
+	+ **Expression:** Selecting **Expression** means that you will use a variable in the step, such as a [stage variable](../../../platform/8_Pipelines/add-a-stage.md).
 
 ## Option: Skip Dry Run
 

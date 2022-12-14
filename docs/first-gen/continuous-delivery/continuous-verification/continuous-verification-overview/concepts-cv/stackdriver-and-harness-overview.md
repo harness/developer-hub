@@ -34,7 +34,7 @@ You set up Stackdriver and Harness in the following way:
 ![](./static/stackdriver-and-harness-overview-71.png)
 
 1. **Google Operations –** Monitor your application using Stackdriver. In this article, we assume that you are using Stackdriver to monitor your application already.
-2. **Cloud Provider Setup –** In Harness, you connect Harness to your Google account, adding Google Cloud Platform as a **Harness Cloud Provider**. For more informations, see [Add Cloud Providers](https://docs.harness.io/article/whwnovprrb-cloud-providers).
+2. **Cloud Provider Setup –** In Harness, you connect Harness to your Google account, adding Google Cloud Platform as a **Harness Cloud Provider**. For more informations, see [Add Cloud Providers](../../../../firstgen-platform/account/manage-connectors/cloud-providers.md).
 3. **Harness Application** – Create a Harness Application with a Service, Environment, and Workflow. We do not cover Application setup in this sequence. See  [Application Components](../../../model-cd-pipeline/applications/application-configuration.md).
 4. **​24/7 Service Guard Setup****–** In the Environment, set up 24/7 Service Guard to monitor your live, production application.
 5. ​**Verify Deployments**:

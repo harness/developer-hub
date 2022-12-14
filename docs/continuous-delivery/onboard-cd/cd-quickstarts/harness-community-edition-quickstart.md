@@ -37,7 +37,7 @@ You'll learn how to:
   	  - Minikube needs 4GB and 4 CPUs: `minikube start --memory 4g --cpus 4`.
 	+ Kubernetes cluster.
   	+ This is the target cluster for the deployment you will set up in this quickstart. When Docker Compose Kubernetes is installed it comes with a cluster and the **default** namespace. You don't need to make any changes to Docker Compose Kubernetes.Don't have a cluster? See [Notes](#notes).
-	+ Review [Harness CD Community Edition Overview](../../cd-advanced/cd-kubernetes-category/harness-community-edition-overview.md) and [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts) to establish a general understanding of Harness.
+	+ Review [Harness CD Community Edition Overview](../../cd-advanced/cd-kubernetes-category/harness-community-edition-overview.md) and [Harness Key Concepts](../../../first-gen/starthere-firstgen/harness-key-concepts.md) to establish a general understanding of Harness.
 
 The Docker Compose installer is described below, but Harness also supports a [Helm installer](https://github.com/harness/harness-cd-community/blob/main/helm/README.md).
 
@@ -437,7 +437,7 @@ Try some other tutorials to learn more about Harness CD:
 * [Kubernetes deployment tutorial](kubernetes-cd-quickstart)
 * [Helm Chart deployment tutorial](helm-cd-quickstart)
 * [Kustomize deployment tutorial](kustomize-quickstart)
-* [Harness YAML Quickstart](https://docs.harness.io/article/1eishcolt3-harness-yaml-quickstart)
+* [Harness YAML Quickstart](../../../platform/8_Pipelines/harness-yaml-quickstart.md)
 
 ## Notes
 

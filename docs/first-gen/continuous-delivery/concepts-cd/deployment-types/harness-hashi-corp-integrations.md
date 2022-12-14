@@ -24,5 +24,5 @@ Vault secures, stores, and tightly controls access to tokens, passwords, certifi
 
 Harness allows you to use HashiCorp Vault as your Harness secrets manager. Managing all secrets used in your Harness account and deployments.
 
-See: [Add a HashiCorp Vault Secrets Manager](https://docs.harness.io/article/am3dmoxywy-add-a-hashi-corp-vault-secrets-manager), [Use HashiCorp Vault Secrets Manager API](https://docs.harness.io/article/ehovbje4p1-use-hashi-corp-vault-secrets-manager-api).
+See: [Add a HashiCorp Vault Secrets Manager](../../../firstgen-platform/security/secrets-management/add-a-hashi-corp-vault-secrets-manager.md), [Use HashiCorp Vault Secrets Manager API](../../../firstgen-platform/techref-category/api/use-hashi-corp-vault-secrets-manager-api.md).
 

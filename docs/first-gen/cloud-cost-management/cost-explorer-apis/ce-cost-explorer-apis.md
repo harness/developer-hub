@@ -15,7 +15,7 @@ Currently, these APIs can provide data for up to the last seven days. If you do 
 This topic lists examples of export data API usage.
 
 ## Before You Begin
-* [​Introduction to Harness GraphQL API](https://docs.harness.io/article/tm0w6rruqv-harness-api#introduction-to-harness-graphql-api)
+* [​Introduction to Harness GraphQL API](../../firstgen-platform/techref-category/api/harness-api.md#introduction-to-harness-graphql-api)
 * [Cost Explorer Walkthrough](/docs/first-gen/cloud-cost-management/concepts-ccm/a-cost-explorer-walkthrough.md)
 * [Analyze Cost for Kubernetes](/docs/first-gen/cloud-cost-management/root-cost-analysis/analyze-cost-trends-across-clusters.md)
 

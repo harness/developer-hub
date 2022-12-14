@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Currently, this feature is behind the feature flag `AUDIT_TRAIL_WEB_INTERFACE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.Your Harness account [Audit Trail](https://docs.harness.io/article/r5ytrnpcgr-audit-trail) includes events for CCM changes.
+Currently, this feature is behind the feature flag `AUDIT_TRAIL_WEB_INTERFACE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.Your Harness account [Audit Trail](../../../platform/15_Audit-Trail/audit-trail.md) includes events for CCM changes.
 
 ## CCM Events in Audit Trail
 

@@ -54,12 +54,12 @@ You can use Harness secrets for the username and password in your script. For e
 ```bash
 curl -sSf -u "<+secrets.getValue("username")>:<+secrets.getValue("password")>" -O 'https://mycompany.jfrog.io/module/example/manifest.zip'
 ```
-For more information, see [Add and Reference Text Secrets](https://docs.harness.io/article/osfw70e59c-add-use-text-secrets).
+For more information, see [Add and Reference Text Secrets](../../../platform/6_Security/2-add-use-text-secrets.md).
 
 
 ## Start a pipeline
 
-This topic assumes you have a Harness Project set up. If not, see [Create Organizations and Projects](https://docs.harness.io/article/36fw2u92i4-create-an-organization).
+This topic assumes you have a Harness Project set up. If not, see [Create Organizations and Projects](../../../platform/1_Organizations-and-Projects/2-create-an-organization.md).
 
 You can create a Pipeline from any module in your Project, or in the **Project Overview**, and then add stages for any module.
 
@@ -67,7 +67,7 @@ Enter a name for the Pipeline and click **Start**. Now you're ready to add a sta
 
 ## Add a Deploy stage
 
-For steps on adding a stage, see [Add a Stage](https://docs.harness.io/article/2chyf1acil-add-a-stage).
+For steps on adding a stage, see [Add a Stage](../../../platform/8_Pipelines/add-a-stage.md).
 
 1. Name the stage, and select what you'd like to deploy. For example, select Service.
 2. Click **Set Up Stage**. The new stage's settings appear.
@@ -100,7 +100,7 @@ If you are adding the image location to Harness as an Artifact in the Service De
 1. Enter the name in **Manifest Name**.
 1. In the **Custom Remote Manifest Extraction Script**, enter the path to the Git repo where your remote manifest script is available. This script runs on the Harness Delegate selected for the deployment.
 2. In **Extracted Manifest File Location**, enter the folder path for the manifests.
-3. In **Define Delegate Selector**, Harness selects the best Delegate. See [Select Delegates with Delegate Selectors and Tags](https://docs.harness.io/article/nnuf8yv13o-select-delegates-with-selectors). Select a specific delegate from the list of tags available for delegates or leave this blank and allow Harness to select a delegate.
+3. In **Define Delegate Selector**, Harness selects the best Delegate. See [Select Delegates with Delegate Selectors and Tags](../../../platform/2_Delegates/delegate-guide/select-delegates-with-selectors.md). Select a specific delegate from the list of tags available for delegates or leave this blank and allow Harness to select a delegate.
 4. In the **Values.yaml**, the field is populated with the folder path for the values.yaml.
 5. Click **Submit**. The new manifest is created and added to **Manifests** in Harness.
 

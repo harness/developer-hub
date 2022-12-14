@@ -128,7 +128,7 @@ Select **GET** or **POST**. If you select **POST**, the **Metric Collection Body
 
 In **Metric Collection Body**, enter the JSON body to send as a payload when making a REST call to the APM Provider. The requirements of the JSON body will depend on your APM provider.
 
-You can use variables you created in the Service and Workflow in the JSON, as well as [Harness built-in variables](https://docs.harness.io/article/9dvxcegm90-variables).
+You can use variables you created in the Service and Workflow in the JSON, as well as [Harness built-in variables](../../../firstgen-platform/techref-category/variables/variables.md).
 
 ### Step 11: Response Mapping
 

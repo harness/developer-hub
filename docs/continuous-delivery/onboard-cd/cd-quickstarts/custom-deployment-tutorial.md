@@ -66,17 +66,17 @@ Unlike the deployments for supported platforms, like Kubernetes and AWS, Deploym
 * No steady state checks on deployed services.
 * Harness does not track releases.
 
-You can add your own scripts or tests to your Pipelines to describe deployments, check steady state, and track releases. For example, using the [Shell Script](https://docs.harness.io/article/1fjrjbau7x-capture-shell-script-step-output) or [HTTP](../../cd-execution/cd-general-steps/using-http-requests-in-cd-pipelines.md) steps.
+You can add your own scripts or tests to your Pipelines to describe deployments, check steady state, and track releases. For example, using the [Shell Script](../../../first-gen/continuous-delivery/model-cd-pipeline/workflows/capture-shell-script-step-output.md) or [HTTP](../../cd-execution/cd-general-steps/using-http-requests-in-cd-pipelines.md) steps.
 
 ## Harness Delegate setup
 
-1. Install a Harness Kubernetes Delegate in a cluster. For steps on installing a Delegate, go to [Install Harness Delegate on Kubernetes](https://docs.harness.io/article/2132l9r4gt-install-harness-delegate-on-kubernetes).
+1. Install a Harness Kubernetes Delegate in a cluster. For steps on installing a Delegate, go to [Install Harness Delegate on Kubernetes](../../../platform/2_Delegates/delegate-install-kubernetes/install-harness-delegate-on-kubernetes.md).
 
   The Delegate you use for Deployment Templates should be in an environment where it can connect and query your artifact repo and target instances. Typically, you'll want a Delegate in the same subnet as the target instances.
 
   If your scripts will use utilities or software that does not come with the Delegate by default, you can install them on the Delegate manually or using the Delegate `INIT_SCRIPT` environment variable.
 
-  For steps on using `INIT_SCRIPT`, see [Install Software on the Delegate with Initialization Scripts](https://docs.harness.io/article/yte6x6cyhn-run-scripts-on-delegates).
+  For steps on using `INIT_SCRIPT`, see [Install Software on the Delegate with Initialization Scripts](../../../platform/2_Delegates/delegate-guide/run-scripts-on-delegates.md).
 
   Harness Delegate installation packages include `TAR` and `cURL`. You can use `cURL` and `TAR` in your Delegate scripts and Pipeline steps without installing these tools.
 
@@ -297,7 +297,7 @@ If you do not use `<+artifact.image>`, Harness will not attempt to download and 
 
 For non-containerized artifacts, use `<+artifact.path>`.
 
-To learn more, go to [Built-in and Custom Harness Variables Reference](https://docs.harness.io/article/lml71vhsim-harness-variables#artifact).
+To learn more, go to [Built-in and Custom Harness Variables Reference](../../../platform/12_Variables-and-Expressions/harness-variables.md#artifact).
 
 ## Create the Environment
 
@@ -345,7 +345,7 @@ kubectl describe deployment nginx-deployment
 ```
 ![](./static/custom-deployment-tutorial-27.png)
 
-Next, we need this script to loop through all the fetched instances. We do that by using a [Looping Strategy](https://docs.harness.io/article/eh4azj73m4-looping-strategies-matrix-repeat-and-parallelism) in the step's **Advanced** section.
+Next, we need this script to loop through all the fetched instances. We do that by using a [Looping Strategy](../../../platform/8_Pipelines/looping-strategies-matrix-repeat-and-parallelism.md) in the step's **Advanced** section.
 
 1. Click **Advanced**.
 2. Click **Looping Strategy**.
@@ -415,7 +415,7 @@ You can create the following types of variables.
 ![](./static/custom-deployment-tutorial-32.png)
 
 * **String:** any string you might want to reference in your stage steps.
-* **Secret:** select or create a secret in Harness using Harness default Secret Manager or a Secret Manager you have configured in Harness. For more information, go to [Secrets and Secret Management](https://docs.harness.io/category/48wnu4u0tj).
+* **Secret:** select or create a secret in Harness using Harness default Secret Manager or a Secret Manager you have configured in Harness. For more information, go to [Secrets and Secret Management](https://docs.harness.io/category/security).
 * **Number:** a number you might want to reference in your stage steps.
 * **Connector:** a Harness Connector that you want to use for this deployment. Any Connector can be used, such as an infrastructure Connector, like an AWS Connector, or a repo Connector for your manifests and specs, like a GitHub Connector.
 
@@ -481,9 +481,9 @@ The `<+instance...>` expressions refer to the **Instance Attributes** in the Dep
 
 The following expressions refer to instance(s) collected by the mandatory **instancename** field:
 
-* [<+instance.hostName>](https://docs.harness.io/article/lml71vhsim-harness-variables#instance_host_name)
-* [<+instance.host.instanceName>](https://docs.harness.io/article/lml71vhsim-harness-variables#instance_host_instance_name)
-* [<+instance.name>](https://docs.harness.io/article/lml71vhsim-harness-variables#instance_name)
+* [<+instance.hostName>](../../../platform/12_Variables-and-Expressions/harness-variables.md#instance-host-name)
+* [<+instance.host.instanceName>](../../../platform/12_Variables-and-Expressions/harness-variables.md#instance-host-instance-name)
+* [<+instance.name>](../../../platform/12_Variables-and-Expressions/harness-variables.md#instance-name)
 
 The expression `<+instance.host.properties.[property name]>` can used to reference the other properties you added to **Instance Attributes**.
 
@@ -501,7 +501,7 @@ For example, here is a Shell Script step that outputs these expressions:
 
 1. In the step, in **Advanced**, click **Looping Strategy**.
 2. Select **Repeat**.
-3. In **Repeat**, use the Repeat [Looping Strategy](https://docs.harness.io/article/eh4azj73m4-looping-strategies-matrix-repeat-and-parallelism) and identify all the hosts for the stage as the target:
+3. In **Repeat**, use the Repeat [Looping Strategy](../../../platform/8_Pipelines/looping-strategies-matrix-repeat-and-parallelism.md) and identify all the hosts for the stage as the target:
 
 ```yaml
 repeat:  

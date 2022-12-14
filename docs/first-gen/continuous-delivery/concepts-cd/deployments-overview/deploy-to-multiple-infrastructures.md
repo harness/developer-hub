@@ -134,7 +134,7 @@ Or by Infrastructure Definition ID:
     }  
 ...
 ```
-See [Trigger Workflows or Pipelines Using GraphQL API](https://docs.harness.io/article/s3leksekny-trigger-workflow-or-a-pipeline-using-api).
+See [Trigger Workflows or Pipelines Using GraphQL API](../../../firstgen-platform/techref-category/api/trigger-workflow-or-a-pipeline-using-api.md).
 
 ### Review: Rollback
 

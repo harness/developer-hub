@@ -44,7 +44,7 @@ For information about setting up an ingestionOnly scan, go to [Ingest scan resul
 ###  `orchestratedScan` and `dataLoad` settings
 
 * `product_domain` — The URL of the SonarQube server.
-* `product_access_token` — The access token to communicate with the SonarQube server. You must create a secret for the token and use the format `<+secrets.getValue("secret_name")>` to reference the secret. See [Use Encrypted Text Secrets](https://docs.harness.io/article/ygyvp998mu).  
+* `product_access_token` — The access token to communicate with the SonarQube server. You must create a secret for the token and use the format `<+secrets.getValue("secret_name")>` to reference the secret. See [Use Encrypted Text Secrets](../../first-gen/firstgen-platform/security/secrets-management/use-encrypted-text-secrets.md).  
 Go to the [SonarQube docs](https://docs.sonarqube.org/latest/user-guide/user-token/) for information about creating tokens.
 * `product_project_name`—The name of the SonarQube project. This is the also the target name in the Harness UI (Security Tests > Test Targets).
 * `product_project_key` — The unique identifier of the SonarQube project you want to scan. Look for `sonar.projectKey` in the **sonar-project.properties** file.

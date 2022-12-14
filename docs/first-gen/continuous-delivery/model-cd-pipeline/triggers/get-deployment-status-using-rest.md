@@ -22,7 +22,7 @@ In this topic, we will cover using a REST call to get deployment status.
 
 ### Before You Begin
 
-* [API Keys](https://docs.harness.io/article/smloyragsm-api-keys)
+* [API Keys](../../../firstgen-platform/security/access-management-howtos/api-keys.md)
 * [Build Workflows](../../concepts-cd/deployment-types/ci-cd-with-the-build-workflow.md)
 * [Build and Deploy Pipeline](../../concepts-cd/deployment-types/artifact-build-and-deploy-pipelines-overview.md)
 * [Add a Service](../setup-services/service-configuration.md)

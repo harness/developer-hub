@@ -31,7 +31,7 @@ The Harness ECS Delegate runs as an ECS service in an ECS cluster. The ECS setup
 * ECS Cluster.
 * ECS Cluster must have 8GB memory for each ECS Delegate service added (m5ad.xlarge minimum).
 * AWS IAM Role containing the required policies. The AWS policies are described in detail in
- [ECS (Existing Cluster)](https://docs.harness.io/article/whwnovprrb-infrastructure-providers#ecs_existing_cluster). For information on adding an IAM role to the ECS Delegate task definition, see
+ [ECS (Existing Cluster)](../../../firstgen-platform/account/manage-connectors/cloud-providers.md#ecs-existing-cluster). For information on adding an IAM role to the ECS Delegate task definition, see
  [Trust Relationships and Roles](#trust_relationships_and_roles).
 
 
@@ -96,7 +96,7 @@ The following procedure describes how to set up the ECS Delegate for the common 
 	3. In **Delegate Group Name**, enter the name for your Delegate. When you add more ECS Delegates in the future, you can add to this group. All Delegates in this group use the same Task Definition, and share the same Delegate settings,
 	 including Selectors. When you change a Selector, it will apply to all Delegates running under that Group.
 	4. In **Profile**, select a Profile for the Delegate. The default is named **Primary**. For more information, see
-	 [Delegate Profiles](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation#delegate_profiles).
+	 [Delegate Profiles](../../../firstgen-platform/account/manage-delegates/delegate-installation.md#delegate-profiles).
 	5. Select **Use AWS VPC Mode** if you want to run the ECS Delegate task with a
 	 [FARGATE launch type](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html).
 	6. In **Hostname**, enter a hostname for the ECS Delegate. If you do not enter a hostname, ECS will use your Docker container ID as the hostname for the ECS Delegate. If you provide a hostname, ECS uses it.
@@ -328,15 +328,15 @@ For more information, see
 
 
 When Harness makes a connection to your ECS cluster via its Delegates, it will select the best Delegate according to its history and
- [other factors](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation#how_does_harness_manager_pick_delegates). To ensure a specific Delegate is used by a Harness entity, you can scope the Delegate as explained in
- [Delegate Scope](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation#delegate_scope), or you can add Selectors to Delegates and then reference the tags in commands and configurations.
+ [other factors](../../../firstgen-platform/account/manage-delegates/delegate-installation.md#how-does-harness-manager-pick-delegates). To ensure a specific Delegate is used by a Harness entity, you can scope the Delegate as explained in
+ [Delegate Scope](../../../firstgen-platform/account/manage-delegates/delegate-installation.md#delegate-scope), or you can add Selectors to Delegates and then reference the tags in commands and configurations.
 
 
 For this guide, we will use a Delegate Selector. Later, when you add an AWS Cloud Provider to your Harness account, you will use the Delegate Tag you added to ensure the Cloud Provider uses that Delegate.
 
 
 For steps on using Delegate Selector with your ECS Delegate, see the steps in
- [Set up ECS Delegate in AWS](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation#set_up_ecs_delegate_in_aws).
+ [Set up ECS Delegate in AWS](../../../firstgen-platform/account/manage-delegates/delegate-installation.md#set-up-ecs-delegate-in-aws).
 
 
 ### Next Step

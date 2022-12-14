@@ -97,7 +97,7 @@ Steps can be run in sequential and parallel order.
 
 A Step Group is a collection of steps that share the same logic such as the same rollback strategy.
 
-See a visual example![](./static/learn-harness-key-concepts-13.png)See [Run Steps in a Step Group](https://docs.harness.io/article/ihnuhrtxe3-run-steps-in-parallel-using-a-step-group).
+See a visual example![](./static/learn-harness-key-concepts-13.png)See [Run Steps in a Step Group](../continuous-delivery/cd-technical-reference/cd-gen-ref-category/step-groups.md).
 
 ### Services
 
@@ -123,7 +123,7 @@ You can also propagate and override a Service in subsequent stages by selecting 
 
 See a visual example![](./static/learn-harness-key-concepts-16.png)
 
-See [Monitor Deployments and Services in CD Dashboards](https://docs.harness.io/article/phiv0zaoex-monitor-cd-deployments).
+See [Monitor Deployments and Services in CD Dashboards](../continuous-delivery/cd-dashboards/monitor-cd-deployments.md).
 
 ### Environments
 

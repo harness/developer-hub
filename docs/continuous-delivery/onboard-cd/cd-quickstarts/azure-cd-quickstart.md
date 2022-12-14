@@ -21,13 +21,13 @@ You'll learn how to:
 
 ## Before You Begin
 
-Review [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts) to establish a general understanding of Harness.Make sure you have the following set up before you begin this quickstart:
+Review [Harness Key Concepts](../../../first-gen/starthere-firstgen/harness-key-concepts.md) to establish a general understanding of Harness.Make sure you have the following set up before you begin this quickstart:
 
 * **GitHub account:** this quickstart uses publicly available manifests and values YAML files, but GitHub requires that you use a GitHub account for fetching files.
 * **Azure ACR and AKS Permissions:** make sure you have a Service Principal or Managed Identity you can use to connect Harness to your Azure App registration, and that it has the required permissions:
 	+ **ACR:** the **Reader** role must be assigned.
 	+ **AKS:** the **Owner** role must be assigned.
-	+ For a custom role, see the permissions in [Add a Microsoft Azure Cloud Connector](https://docs.harness.io/article/9epdx5m9ae-add-a-microsoft-azure-connector).
+	+ For a custom role, see the permissions in [Add a Microsoft Azure Cloud Connector](../../../platform/7_Connectors/add-a-microsoft-azure-connector.md).
 
 * **AKS Cluster:** you'll need a target AKS cluster for the deployment. Ensure your cluster meets the following requirements:
   * **Number of nodes:** 2.
@@ -40,7 +40,7 @@ Pipelines are collections of stages. For this quickstart, we'll create a new Pip
 
 :::note
 
-**Create a Project for your new CD Pipeline:** if you don't already have a Harness Project, create a Project for your new CD Pipeline. Ensure that you add the **Continuous Delivery** module to the Project. See [Create Organizations and Projects](https://ngdocs.harness.io/article/36fw2u92i4-create-an-organization).In your Harness Project, click **Deployments**, and then click **Create a** **Pipeline**.
+**Create a Project for your new CD Pipeline:** if you don't already have a Harness Project, create a Project for your new CD Pipeline. Ensure that you add the **Continuous Delivery** module to the Project. See [Create Organizations and Projects](../../../platform/1_Organizations-and-Projects/2-create-an-organization.md).In your Harness Project, click **Deployments**, and then click **Create a** **Pipeline**.
 
 :::
 
@@ -146,7 +146,7 @@ Next, we can add a Kubernetes manifest for our deployment. We'll use [publicly-a
 
   Next, let's add the values.yaml file for the deployment.
 
-  Harness supports Go templating with a Values YAML file by default so you can template your manifests. Also, you can use [Harness expressions](https://docs.harness.io/article/lml71vhsim-harness-variables) in your values.yaml file. 
+  Harness supports Go templating with a Values YAML file by default so you can template your manifests. Also, you can use [Harness expressions](../../../platform/12_Variables-and-Expressions/harness-variables.md) in your values.yaml file. 
 
   We will use a [values.yaml file](https://github.com/wings-software/harness-docs/blob/main/default-k8s-manifests/Manifests/Files/ng_values_dockercfg.yaml) that uses the `<+artifact.image>` expression to reference the artifact you will add later in **Artifacts**.The values file looks like this:
 
@@ -209,11 +209,11 @@ Now you can add an artifact from your ACR repo. We'll create a Harness Azure Con
 
   ![](./static/azure-cd-quickstart-103.png)
 
-   + **Azure ACR and AKS Permissions:** make sure the Service Principal or Managed Identity has the [required permissions](https://ngdocs.harness.io/article/9epdx5m9ae-add-a-microsoft-azure-connector):
+   + **Azure ACR and AKS Permissions:** make sure the Service Principal or Managed Identity has the [required permissions](../../../platform/7_Connectors/add-a-microsoft-azure-connector.md):
      
      + **ACR:** the **Reader** role must be assigned.
      + **AKS:** the **Owner** role must be assigned.
-     + For a custom role, see the permissions in [Add a Microsoft Azure Cloud Connector](https://docs.harness.io/article/9epdx5m9ae-add-a-microsoft-azure-connector).
+     + For a custom role, see the permissions in [Add a Microsoft Azure Cloud Connector](../../../platform/7_Connectors/add-a-microsoft-azure-connector.md).
   
 1. Click **Continue**.
 2. In **Delegates Setup**, click **Only use Delegates with all of the following tags**, and then select the Delegate you added earlier.
@@ -298,7 +298,7 @@ Congratulations! The deployment was successful.
 
 ## Clean Up
 
-To delete the Harness Delegate from your Kubernetes cluster, go to [Delete a Delegate](https://docs.harness.io/article/tl6ql57em6-delete-a-delegate).
+To delete the Harness Delegate from your Kubernetes cluster, go to [Delete a Delegate](../../../platform/2_Delegates/delegate-guide/delete-a-delegate.md).
 
 ## Next Steps
 

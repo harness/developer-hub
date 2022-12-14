@@ -25,7 +25,7 @@ In this topic:
 
 * [Azure Virtual Machine Scale Set Deployments Overview](azure-virtual-machine-scale-set-deployments.md)
 * [Connect to Azure for VMSS Deployments](connect-to-your-azure-vmss.md)
-* [Harness Delegate Overview](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation)
+* [Harness Delegate Overview](../../../firstgen-platform/account/manage-delegates/delegate-installation.md)
 * [Harness Key Concepts](../../../starthere-firstgen/harness-key-concepts.md)
 
 Ensure you have connected Harness to your Azure subscription as described in [Connect to Azure for VMSS Deployments](connect-to-your-azure-vmss.md).

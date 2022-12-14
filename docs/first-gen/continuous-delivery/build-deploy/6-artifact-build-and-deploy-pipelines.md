@@ -52,7 +52,7 @@ Add the Build Workflow as the first stage in the Pipeline:
 The Workflows are run in succession. First, the Build Workflow is run. Click the **Artifact Collection** step to see the metadata collected by Harness, including the build number.
 ![](./static/6-artifact-build-and-deploy-pipelines-18.png)
 You can see the same build number in Jenkins.  
-In this document, Jenkins job artifact is used as an example but Harness supports all the common [artifact source](https://docs.harness.io/article/7dghbx1dbl-configuring-artifact-server) and [custom sources](../model-cd-pipeline/setup-services/custom-artifact-source.md).
+In this document, Jenkins job artifact is used as an example but Harness supports all the common [artifact source](../../firstgen-platform/account/manage-connectors/configuring-artifact-server.md) and [custom sources](../model-cd-pipeline/setup-services/custom-artifact-source.md).
 
 ![](./static/6-artifact-build-and-deploy-pipelines-19.png)
 

@@ -44,9 +44,9 @@ This table explains how Stages perform your CD operations:
 
 See the following:
 
-* [Add a Stage](https://docs.harness.io/article/2chyf1acil-add-a-stage)
-* [Add a Stage Template Quickstart](https://docs.harness.io/article/s3wrqjsg43-add-a-stage-template)
-* [Stage and Step Conditional Execution Settings](https://docs.harness.io/article/i36ibenkq2-step-skip-condition-settings)
+* [Add a Stage](../../../platform/8_Pipelines/add-a-stage.md)
+* [Add a Stage Template Quickstart](../../../platform/13_Templates/add-a-stage-template.md)
+* [Stage and Step Conditional Execution Settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
 
 ### Services
 
@@ -107,9 +107,9 @@ For example, a GitHub Connector authenticates with a GitHub account and repo and
 
 For example, see:
 
-* [Add a Kubernetes Cluster Connector](https://docs.harness.io/article/1gaud2efd4-add-a-kubernetes-cluster-connector)
-* [Docker Connector Settings Reference](https://docs.harness.io/article/u9bsd77g5a-docker-registry-connector-settings-reference)
-* [Git Connector Settings Reference](https://docs.harness.io/article/tbm2hw6pr6-git-connector-settings-reference)
+* [Add a Kubernetes Cluster Connector](../../../platform/7_Connectors/add-a-kubernetes-cluster-connector.md)
+* [Docker Connector Settings Reference](../../../platform/7_Connectors/ref-cloud-providers/docker-registry-connector-settings-reference.md)
+* [Git Connector Settings Reference](../../../platform/7_Connectors/ref-source-repo-provider/git-connector-settings-reference.md)
 
 #### Permissions
 
@@ -124,8 +124,8 @@ The Harness Delegate is a software service you install in your environment that 
 For examples, see:
 
 * [Delegate Installation Overview](https://docs.harness.io/article/re8kk0ex4k-delegate-installation-overview)
-* [Install a Kubernetes Delegate](https://docs.harness.io/article/f9bd10b3nj-install-a-kubernetes-delegate)
-* [Install a Docker Delegate](https://docs.harness.io/article/cya29w2b99-install-a-docker-delegate)
+* [Install a Kubernetes Delegate](../../../platform/2_Delegates/delegate-guide/install-a-kubernetes-delegate.md)
+* [Install a Docker Delegate](../../../platform/2_Delegates/delegate-install-docker/install-a-docker-delegate.md)
 
 #### Credentials and Permissions
 
@@ -137,7 +137,7 @@ The Delegate also needs permissions in the target environment to execute deploym
 
 Pipeline and Stage variables are custom variables you can add and reference in your Pipeline and Stage. They're available across the Pipeline. You can propagate and override their values in later stages.
 
-See [Built-in Harness Variables Reference](https://docs.harness.io/article/lml71vhsim-harness-variables).
+See [Built-in Harness Variables Reference](../../../platform/12_Variables-and-Expressions/harness-variables.md).
 
 ### Triggers
 
@@ -147,9 +147,9 @@ You can trigger a Pipeline based on Git events, manifest changes, schedules, new
 
 For examples, see:
 
-* [Trigger Pipelines on a New Artifact](https://docs.harness.io/article/c1eskrgngf-trigger-on-a-new-artifact)
-* [Trigger Pipelines on New Helm Chart](https://docs.harness.io/article/54eqk0d1bd-trigger-pipelines-on-new-helm-chart)
-* [Trigger Pipelines using Git Events](https://docs.harness.io/article/hndnde8usz-triggering-pipelines)
+* [Trigger Pipelines on a New Artifact](../../../platform/11_Triggers/trigger-on-a-new-artifact.md)
+* [Trigger Pipelines on New Helm Chart](../../../platform/11_Triggers/trigger-pipelines-on-new-helm-chart.md)
+* [Trigger Pipelines using Git Events](../../../platform/11_Triggers/triggering-pipelines.md)
 
 ### Advanced Settings
 
@@ -163,7 +163,7 @@ Overlays are groups of Input Sets. Overlays enable you to provide several Input 
 
 With Input Sets and Overlays, you can make a single Pipeline template that can be used for multiple scenarios. Each scenario can be defined in an Input Set or Overlay and simply selected at runtime.
 
-See [Input Sets and Overlays](https://docs.harness.io/article/3fqwa8et3d-input-sets).
+See [Input Sets and Overlays](../../../platform/8_Pipelines/input-sets.md).
 
 #### Conditional Executions
 
@@ -171,7 +171,7 @@ You can set conditions on when you run Stages and steps. For example, `Execute T
 
 The stage Conditional Execution applies to all steps that do not have their own Conditional Execution. A step's Conditional Execution overrides its stage's Conditional Execution.
 
-See [Stage and Step Conditional Execution Settings](https://docs.harness.io/article/i36ibenkq2-step-skip-condition-settings).
+See [Stage and Step Conditional Execution Settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md).
 
 #### Failure Strategies
 
@@ -181,5 +181,5 @@ The failure strategy contains error conditions that must occur for the strategy 
 
 Failure strategies are a critical pipeline design component that determine what fails a step or stage and what to do when the failure occurs.
 
-See [Step and Stage Failure Strategy References](https://docs.harness.io/article/0zvnn5s1ph-define-a-failure-strategy-on-stages-and-steps).
+See [Step and Stage Failure Strategy References](../../../platform/8_Pipelines/define-a-failure-strategy-on-stages-and-steps.md).
 

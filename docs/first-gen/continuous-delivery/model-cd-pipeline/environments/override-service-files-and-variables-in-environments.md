@@ -43,13 +43,13 @@ You can also create an Environment variable or file that can be used by any Work
 
    ![](./static/override-service-files-and-variables-in-environments-02.png)
 
-4. You can select the encrypted file from the drop-down menu or **Add New Encrypt File**. For more information on adding new encrypt file, see [Use Encrypted File Secrets](https://docs.harness.io/article/nt5vchhka4-use-encrypted-file-secrets).
+4. You can select the encrypted file from the drop-down menu or **Add New Encrypt File**. For more information on adding new encrypt file, see [Use Encrypted File Secrets](../../../firstgen-platform/security/secrets-management/use-encrypted-file-secrets.md).
 
    ![](./static/override-service-files-and-variables-in-environments-03.png)
 
 5. If you do not select the **Encrypt File** option, then choose the **File** to overwrite the Service's **Config Files** and click **Submit**.
 
-Make sure you have the **update** permission on the Environment before you try to add the Service Config File. See [Managing Users and Groups (RBAC)](https://docs.harness.io/article/ven0bvulsj-users-and-permissions) for more information about assigning permissions.![](./static/override-service-files-and-variables-in-environments-04.png)
+Make sure you have the **update** permission on the Environment before you try to add the Service Config File. See [Managing Users and Groups (RBAC)](../../../firstgen-platform/security/access-management-howtos/users-and-permissions.md) for more information about assigning permissions.![](./static/override-service-files-and-variables-in-environments-04.png)
 
 ### Option 2: Variable Override
 
@@ -62,7 +62,7 @@ Make sure you have the **update** permission on the Environment before you try
 
   ![](./static/override-service-files-and-variables-in-environments-06.png)
 
-4. In **Override Value**, enter the value to overwrite the variable value in the Service. If you selected **Encrypted Text** in Type, you can select an Encrypted Text values defined in [Secrets Management](https://docs.harness.io/article/au38zpufhr-secret-management) and click **Submit**.
+4. In **Override Value**, enter the value to overwrite the variable value in the Service. If you selected **Encrypted Text** in Type, you can select an Encrypted Text values defined in [Secrets Management](../../../firstgen-platform/security/secrets-management/secret-management.md) and click **Submit**.
 
 ### Platform-Specific Options
 

@@ -42,7 +42,7 @@ Harness Continuous Efficiency (CE) is a Harness cloud cost management solution t
 
 ![](./static/meet-harness-05.png)
 
-See [Cost Explorer Walkthrough](https://docs.harness.io/article/eeekdk75q2-cost-explorer-walkthrough).
+See [Cost Explorer Walkthrough](../cloud-cost-management/concepts-ccm/a-cost-explorer-walkthrough.md).
 
 ## Continuous Verification Tools
 
@@ -64,7 +64,7 @@ Harness 24/7 Service Guard monitors your microservices post-deployment, using Ha
 
 ## Custom Dashboards
 
-[Custom Dashboards](https://docs.harness.io/article/rxlbhvwe6q-custom-dashboards) provide a toolbox for building your own visual interface around Harness data. Predefined visualizations allow quick reporting on key DevOps metrics (like deployment frequency, lead time, change failure rate, and mean time to restore). You can customize the data filtering, grouping, and time intervals.
+[Custom Dashboards](../firstgen-platform/fg-monitoring/custom-dashboards.md) provide a toolbox for building your own visual interface around Harness data. Predefined visualizations allow quick reporting on key DevOps metrics (like deployment frequency, lead time, change failure rate, and mean time to restore). You can customize the data filtering, grouping, and time intervals.
 
 ![](./static/meet-harness-09.png)
 

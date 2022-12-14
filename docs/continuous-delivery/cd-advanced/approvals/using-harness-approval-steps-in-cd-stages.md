@@ -18,9 +18,9 @@ For example, in a [Kubernetes Blue Green Deployment](../../cd-execution/kubernet
 
 Other approval methods are:
 
-* [Harness Approval Stages](https://docs.harness.io/article/fkvso46bok-adding-harness-approval-stages): add Approval stages for manual intervention.
-* [Adding Jira Approval Stages and Steps](https://docs.harness.io/article/2lhfk506r8-adding-jira-approval-stages): add Jira Approval stages and steps.
-* [Adding ServiceNow Approval Steps and Stages](https://docs.harness.io/article/h1so82u9ub-service-now-approvals) for ServiceNow Approval stages and steps.
+* [Harness Approval Stages](../../../platform/9_Approvals/adding-harness-approval-stages.md): add Approval stages for manual intervention.
+* [Adding Jira Approval Stages and Steps](../../../platform/9_Approvals/adding-jira-approval-stages.md): add Jira Approval stages and steps.
+* [Adding ServiceNow Approval Steps and Stages](../../../platform/9_Approvals/service-now-approvals.md) for ServiceNow Approval stages and steps.
 
 ## Before You Begin
 
@@ -95,7 +95,7 @@ The maximum timeout duration is 24 days.The timeout countdown appears when the s
 
 ## Step 3: Select Approvers
 
-1. In **User Groups**, select the Harness User Groups that will approve the step. See [Add and Manage User Groups](https://docs.harness.io/article/dfwuvmy33m-add-user-groups).
+1. In **User Groups**, select the Harness User Groups that will approve the step. See [Add and Manage User Groups](../../../platform/4_Role-Based-Access-Control/4-add-user-groups.md).
 2. In **Number of approvers that are required at this step**, enter how many of the Users in the User Groups must approve the step.
 
 ## Option: Prevent Approval by Pipeline Executor
@@ -130,9 +130,9 @@ For example, in a subsequent step's **Conditional Execution** settings, you coul
 
 See:
 
-* [Step Skip Condition Settings](https://docs.harness.io/article/i36ibenkq2-step-skip-condition-settings)
-* [Step Failure Strategy Settings](https://docs.harness.io/article/htrur23poj-step-failure-strategy-settings)
-* [Select Delegates with Selectors](https://docs.harness.io/article/nnuf8yv13o-select-delegates-with-selectors)
+* [Step Skip Condition Settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+* [Step Failure Strategy Settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+* [Select Delegates with Selectors](../../../platform/2_Delegates/delegate-guide/select-delegates-with-selectors.md)
 
 ## See Also
 
