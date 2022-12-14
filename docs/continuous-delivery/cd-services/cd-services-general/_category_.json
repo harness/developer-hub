@@ -1,0 +1,14 @@
+{
+    "label": "General Service Settings",
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "link": {
+        "type": "generated-index",
+        "title": "General Service Settings"
+    },
+    "customProps": {
+        "position": "100",
+        "helpdocs_category_id": "ivpp0y9sdf"
+    }
+}

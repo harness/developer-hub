@@ -135,7 +135,7 @@ The Lambda deployment type requires the IAM Role and Region fields. The followin
 
 ![](./static/map-terragrunt-infrastructure-23\.png)
 
-See [AWS Lambda Quickstart](https://docs.harness.io/article/wy1rjh19ej-aws-lambda-deployments).
+See [AWS Lambda Quickstart](../../first-gen-quickstarts/aws-lambda-deployments.md).
 
 ### Option 6: ​Map a Secure Shell (SSH) Infrastructure
 
@@ -143,7 +143,7 @@ The Secure Shell (SSH) deployment type requires the **Region** and **Tags** 
 
 ![](./static/map-terragrunt-infrastructure-24\.png)
 
-See [Traditional (SSH) Quickstart](https://docs.harness.io/article/keodlyvsg5-traditional-ssh-quickstart).
+See [Traditional (SSH) Quickstart](../../first-gen-quickstarts/traditional-ssh-quickstart.md).
 
 ### Option 7: Map an Azure Web App
 

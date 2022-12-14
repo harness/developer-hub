@@ -222,5 +222,5 @@ You can also combine many of the above deployment strategies into a single strat
 
 ### Next Steps
 
-* [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts)
+* [Harness Key Concepts](../../../starthere-firstgen/harness-key-concepts.md)
 

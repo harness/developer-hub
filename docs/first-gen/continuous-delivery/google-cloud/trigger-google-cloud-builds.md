@@ -69,7 +69,11 @@ You can add the Google Cloud Build step to any Workflow type and Workflow sectio
 
 1. In your Harness Workflow, in any section, click **Add Step**.
 2. Select **Google Cloud Build**, and click **Next**.
+<<<<<<< HEAD
 3. In **Google Cloud Provider**, select the Harness Google Cloud Provider you set up earlier. See [Add Google Cloud Platform Cloud Provider](../../firstgen-platform/account/manage-connectors/add-google-cloud-platform-cloud-provider.md).You can turn this setting into a deployment runtime parameter by clicking the template button **[T]**. This will create a [Workflow variable](../model-cd-pipeline/workflows/add-workflow-variables-new-template.md) for the setting. When you deploy this Workflow, you can enter the option for the setting.
+=======
+3. In **Google Cloud Provider**, select the Harness Google Cloud Provider you set up earlier. See [Add Google Cloud Platform Cloud Provider](https://docs.harness.io/article/6x52zvqsta-add-google-cloud-platform-cloud-provider).You can turn this setting into a deployment runtime parameter by clicking the template button **[T]**. This will create a [Workflow variable](../model-cd-pipeline/workflows/add-workflow-variables-new-template.md) for the setting. When you deploy this Workflow, you can enter the option for the setting.
+>>>>>>> main
 4. Complete the step using the following settings.
 
 ### Option 1: Inline JSON Build Spec
@@ -121,7 +125,11 @@ When you set up the Source Repo Provider, you entered in a branch name. The bran
 Select this option if you have created a [Cloud Build trigger](https://cloud.google.com/cloud-build/docs/automating-builds/create-manage-triggers) for your Cloud Build and you want to execute it in your Workflow.
 
 1. In **Build Specification**, click **Trigger**.
+<<<<<<< HEAD
 2. In **Trigger Name**, select the name of the Cloud Build trigger you want to execute.You can enter the name of an existing variable expression in this setting. For example, if you created the [Workflow variable](../model-cd-pipeline/workflows/add-workflow-variables-new-template.md) `triggerName`, you can enter `${workflow.variables.triggerName}`. The variable expression should refer to a [Workflow variable](../model-cd-pipeline/workflows/add-workflow-variables-new-template.md) or other available [Harness variable](../../firstgen-platform/techref-category/variables/variables.md). When you deploy this Workflow, you can enter the option for the setting.
+=======
+2. In **Trigger Name**, select the name of the Cloud Build trigger you want to execute.You can enter the name of an existing variable expression in this setting. For example, if you created the [Workflow variable](../model-cd-pipeline/workflows/add-workflow-variables-new-template.md) `triggerName`, you can enter `${workflow.variables.triggerName}`. The variable expression should refer to a [Workflow variable](../model-cd-pipeline/workflows/add-workflow-variables-new-template.md) or other available [Harness variable](https://docs.harness.io/article/9dvxcegm90-variables). When you deploy this Workflow, you can enter the option for the setting.
+>>>>>>> main
 3. In **Trigger Type**, select one of the following:
 	1. **Branch Name:** Set your trigger to start a build using commits from a particular branch.
 	2. **Tag Name:** Set your trigger to start a build using commits that contain a particular tag.

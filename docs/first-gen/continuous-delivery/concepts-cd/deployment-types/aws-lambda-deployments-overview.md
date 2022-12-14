@@ -10,11 +10,11 @@ helpdocs_is_published: true
 
 This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/article/5fnx4hgwsa).This topic describes the concept of a Harness AWS Lambda deployment by describing the high-level steps involved.
 
-For a quick tutorial, see the [AWS Lambda Quickstart](https://docs.harness.io/article/wy1rjh19ej-aws-lambda-deployments).
+For a quick tutorial, see the [AWS Lambda Quickstart](../../../first-gen-quickstarts/aws-lambda-deployments.md).
 
 ### Before You Begin
 
-Before learning about Harness AWS Lambda deployments, you should have an understanding of [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts).
+Before learning about Harness AWS Lambda deployments, you should have an understanding of [Harness Key Concepts](../../../starthere-firstgen/harness-key-concepts.md).
 
 ### What Does Harness Need Before You Start?
 
@@ -54,8 +54,13 @@ The following list describes the major steps of a Harness AWS Lambda deployment:
 |  |  |  |
 | --- | --- | --- |
 | **Step** | **Name** | **Description and Links** |
+<<<<<<< HEAD
 | 1 | Install the Harness Shell Script or ECS **Delegate** in AWS. | Typically, the Shell Script or ECS Delegate is installed in the same AWS VPC as your Lambda functions.When you set up a Harness AWS Cloud Provider, you can use the same IAM credentials as the installed Delegate.The IAM role you assign to the Delegate requires the standard Lambda Permissions.See [Delegate Installation and Management](../../../firstgen-platform/account/manage-delegates/delegate-installation.md).See [Lambda Permissions](https://docs.aws.amazon.com/lambda/latest/dg/lambda-permissions.html) from AWS. |
 | 2 | Add an **AWS** **Cloud Provider**. | An AWS Cloud Provider is a connection to your AWS account.If you use AWS S3 to store your Lambda function files, the AWS Cloud Provider is used to obtain the Lambda function file from AWS S3.The AWS Cloud Provider is also used to connect to Lambda and deploy your function.When you set up a Harness AWS Cloud Provider, you can use the same IAM credentials as the installed Delegate.See [Add Cloud Providers](../../../firstgen-platform/account/manage-connectors/cloud-providers.md). |
+=======
+| 1 | Install the Harness Shell Script or ECS **Delegate** in AWS. | Typically, the Shell Script or ECS Delegate is installed in the same AWS VPC as your Lambda functions.When you set up a Harness AWS Cloud Provider, you can use the same IAM credentials as the installed Delegate.The IAM role you assign to the Delegate requires the standard Lambda Permissions.See [Delegate Installation and Management](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation).See [Lambda Permissions](https://docs.aws.amazon.com/lambda/latest/dg/lambda-permissions.html) from AWS. |
+| 2 | Add an **AWS** **Cloud Provider**. | An AWS Cloud Provider is a connection to your AWS account.If you use AWS S3 to store your Lambda function files, the AWS Cloud Provider is used to obtain the Lambda function file from AWS S3.The AWS Cloud Provider is also used to connect to Lambda and deploy your function.When you set up a Harness AWS Cloud Provider, you can use the same IAM credentials as the installed Delegate.See [Add Cloud Providers](https://docs.harness.io/article/whwnovprrb-cloud-providers). |
+>>>>>>> main
 | 3 | Create the Harness **Application** for your Lambda CD Pipeline. | The Harness Application represents a group of microservices, their deployment pipelines, and all the building blocks for those pipelines. Harness represents your release process using a logical group of one or more entities: Services, Environments, Workflows, Pipelines, Triggers, and Infrastructure Provisioners. Applications organize all of the entities and configurations in Harness CD.See [Create an Application](../../model-cd-pipeline/applications/application-configuration.md). |
 | 4 | Create the Harness **Service** using the **AWS Lambda** Deployment Type. | Add a Lambda function file as an artifact in a Harness Service, define a function specification, and any config variables and files.See [Services for Lambda](../../aws-deployments/lambda-deployments/2-service-for-lambda.md). |
 | 5 | Create the Harness **Environment** and Infrastructure Definition for your deployment, and any overrides. | Using the Harness AWS Cloud Provider you set up, you can select the IAM role, region, and other components of the target environment for your deployment.You can also override any Service settings, such as config variables and files. This enables you to use a single Service with multiple Harness Environments.See [Define Your Kubernetes Target Infrastructure](../../kubernetes-deployments/define-your-kubernetes-target-infrastructure.md). |
@@ -69,5 +74,5 @@ The following list describes the major steps of a Harness AWS Lambda deployment:
 
 Read the following topics to build on what you've learned:
 
-* [AWS Lambda Quickstart](https://docs.harness.io/article/wy1rjh19ej-aws-lambda-deployments) tutorial
+* [AWS Lambda Quickstart](../../../first-gen-quickstarts/aws-lambda-deployments.md) tutorial
 

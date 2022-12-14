@@ -12,7 +12,7 @@ This content is for Harness [FirstGen](../../../../getting-started/harness-first
 
 ### Before You Begin
 
-* See [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts).
+* See [Harness Key Concepts](../../../starthere-firstgen/harness-key-concepts.md).
 
 ### Step 1: Create Roles and Policies
 

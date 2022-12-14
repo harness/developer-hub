@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/article/u29v1uc1mh).This topic describes the concept of a Harness Kubernetes deployment by describing the high-level steps involved.
 
-For a quick tutorial, see the [Kubernetes Quickstart](https://docs.harness.io/article/7in9z2boh6-kubernetes-quickstart) tutorial.
+For a quick tutorial, see the [Kubernetes Quickstart](../../../first-gen-quickstarts/kubernetes-quickstart.md) tutorial.
 
 For detailed instructions on using Kubernetes in Harness, see the [Kubernetes How-tos](https://docs.harness.io/category/kubernetes-deployments).
 
@@ -18,7 +18,7 @@ This guide covers new Harness Kubernetes Deployment **Version 2** features. Fo
 
 ### Before You Begin
 
-Before learning about Harness Kubernetes deployments, you should have an understanding of [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts).
+Before learning about Harness Kubernetes deployments, you should have an understanding of [Harness Key Concepts](../../../starthere-firstgen/harness-key-concepts.md).
 
 ### What Does Harness Need Before You Start?
 
@@ -59,6 +59,6 @@ In Harness, a workload is a Deployment, StatefulSet, or DaemonSet object deploye
 
 Read the following topics to build on what you've learned:
 
-* [Kubernetes Quickstart](https://docs.harness.io/article/7in9z2boh6-kubernetes-quickstart) tutorial
+* [Kubernetes Quickstart](../../../first-gen-quickstarts/kubernetes-quickstart.md) tutorial
 * [Kubernetes How-tos](../../kubernetes-deployments/kubernetes-deployments-overview.md)
 

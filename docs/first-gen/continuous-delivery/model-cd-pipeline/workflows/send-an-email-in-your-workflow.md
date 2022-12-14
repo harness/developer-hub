@@ -26,7 +26,7 @@ The Email step is different than the Workflow Notification Strategy, which notif
 
 ### Supported Platforms and Technologies
 
-See [Supported Platforms and Technologies](https://docs.harness.io/article/220d0ojx5y-supported-platforms).
+See [Supported Platforms and Technologies](../../../starthere-firstgen/supported-platforms.md).
 
 ### Option: Use Your Own SMTP Server
 
@@ -34,7 +34,7 @@ By default, emails are sent using the built-in Harness default SMTP server.
 
 To use your own SMTP server, follow the steps in [Add SMTP Collaboration Provider](../../../firstgen-platform/account/manage-connectors/add-smtp-collaboration-provider.md).
 
-Configuring your SMTP server is required only if you are using [Harness On-Prem](https://docs.harness.io/article/gng086569h-harness-on-premise-versions).
+Configuring your SMTP server is required only if you are using [Harness On-Prem](../../../starthere-firstgen/harness-on-premise-versions.md).
 
 ### Step 1: Add the Email Step
 

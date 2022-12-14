@@ -19,7 +19,7 @@ Harness deploys all containers and images as defined in the specs.
 
 This topic assumes you have read or performed the following:
 
-* [AWS ECS Quickstart](https://docs.harness.io/article/j39azkrevm-aws-ecs-deployments)
+* [AWS ECS Quickstart](../../../first-gen-quickstarts/aws-ecs-deployments.md)
 * [AWS ECS Deployments Overview](../../concepts-cd/deployment-types/aws-ecs-deployments-overview.md)
 * [ECS Workflows](ecs-workflows.md)
 * [ECS Blue/Green Workflows](ecs-blue-green-workflows.md)

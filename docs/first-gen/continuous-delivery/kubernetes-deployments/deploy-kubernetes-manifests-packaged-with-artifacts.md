@@ -18,13 +18,13 @@ Looking for other methods? See [Define Kubernetes Manifests](define-kubernetes-m
 
 ### Before You Begin
 
-* [Kubernetes Quickstart](https://docs.harness.io/article/7in9z2boh6-kubernetes-quickstart)
+* [Kubernetes Quickstart](../../first-gen-quickstarts/kubernetes-quickstart.md)
 * [Kubernetes Deployments Overview](../concepts-cd/deployment-types/kubernetes-overview.md)
 * [Add Container Images for Kubernetes Deployments](add-container-images-for-kubernetes-deployments.md)
 
 ### Supported Platforms and Technologies
 
-See [Supported Platforms and Technologies](https://docs.harness.io/article/220d0ojx5y-supported-platforms).
+See [Supported Platforms and Technologies](../../starthere-firstgen/supported-platforms.md).
 
 ### Limitations
 

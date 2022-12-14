@@ -160,7 +160,7 @@ Here is an example of a deployment Pipeline Stage verified using Prometheus.
 
 Under **Prometheus**, you can see that all Prometheus metrics have been validated by the Harness machine learning algorithms. Green indicates that there are no anomalies or regressions identified and the deployment is operating within its normal range.
 
-To see an overview of the verification UI elements, see [Continuous Verification Tools](https://docs.harness.io/article/xldc13iv1y-meet-harness#-continuous-verification-tools-).
+To see an overview of the verification UI elements, see [Continuous Verification Tools](../../../starthere-firstgen/meet-harness.md#-continuous-verification-tools-).
 
 ### Next Steps
 

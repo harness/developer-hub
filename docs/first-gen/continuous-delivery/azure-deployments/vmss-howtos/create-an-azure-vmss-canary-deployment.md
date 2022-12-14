@@ -21,7 +21,7 @@ For other deployment strategies, see [Create an Azure VMSS Basic Deployment](cre
 * [Add Your Azure VM Image for Deployment](add-your-azure-vm-image-for-deployment.md)
 * [Connect to Azure for VMSS Deployments](connect-to-your-azure-vmss.md)
 * [Harness Delegate Overview](../../../firstgen-platform/account/manage-delegates/delegate-installation.md)
-* [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts)
+* [Harness Key Concepts](../../../starthere-firstgen/harness-key-concepts.md)
 
 ### Visual Summary
 
@@ -31,7 +31,7 @@ Here is a successful Canary VMSS deployment, showing both phases:
 
 ### Supported Platforms and Technologies
 
-See [Supported Platforms and Technologies](https://docs.harness.io/article/220d0ojx5y-supported-platforms).
+See [Supported Platforms and Technologies](../../../starthere-firstgen/supported-platforms.md).
 
 ### Step 1: Create the Canary Workflow
 
@@ -138,7 +138,11 @@ Enter how long you want Harness to wait for this step to finish. If the step's e
 
 ### Option: Use Variable Expressions in Settings
 
+<<<<<<< HEAD
 You can use [Harness variable expressions](../../../firstgen-platform/techref-category/variables/variables.md), such as [Workflow variables](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md), in certain step settings.
+=======
+You can use [Harness variable expressions](https://docs.harness.io/article/9dvxcegm90-variables), such as [Workflow variables](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md), in certain step settings.
+>>>>>>> main
 
 When you deploy the Workflow, alone, in a Pipeline, or using a [Trigger](../../model-cd-pipeline/triggers/add-a-trigger-2.md), you will be prompted to provide values for the variables.
 
@@ -171,7 +175,11 @@ Your setting cannot exceed your **Maximum Instances** setting in the Workflow'
 
 This setting corresponds to the **Maximum** setting in **Instance limits** in VMSS.
 
+<<<<<<< HEAD
 You can use [Harness variable expressions](../../../firstgen-platform/techref-category/variables/variables.md), such as [Workflow variables](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md), in this setting.
+=======
+You can use [Harness variable expressions](https://docs.harness.io/article/9dvxcegm90-variables), such as [Workflow variables](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md), in this setting.
+>>>>>>> main
 
 ### Step 5: Create Phase 2
 

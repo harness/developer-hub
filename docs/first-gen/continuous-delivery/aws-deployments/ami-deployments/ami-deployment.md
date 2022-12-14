@@ -13,7 +13,7 @@ This guide explains how to use existing Amazon Machine Images (AMIs) and AWS Aut
 
 ### Deployment Overview
 
-For a general overview of how Harness works, see [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts).
+For a general overview of how Harness works, see [Harness Key Concepts](../../../starthere-firstgen/harness-key-concepts.md).
 
 This guide will cover the following major steps:
 
@@ -71,7 +71,7 @@ Add an AWS Cloud Provider as follows:
 
 The following procedure creates a Harness Application for your AMI deployments.
 
-An Application in Harness represents a logical group of one or more entities, including Services, Environments, Workflows, Pipelines, Triggers, and Infrastructure Provisioners. Applications organize all of the entities and configurations in Harness CI/CD. For more about Applications, see [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts).
+An Application in Harness represents a logical group of one or more entities, including Services, Environments, Workflows, Pipelines, Triggers, and Infrastructure Provisioners. Applications organize all of the entities and configurations in Harness CI/CD. For more about Applications, see [Harness Key Concepts](../../../starthere-firstgen/harness-key-concepts.md).
 
 To create a new Application:
 
@@ -327,7 +327,11 @@ Many of the ASG's settings are mirrored from the ASG selected in the Workflow's 
 | **Resize Strategy** | Select whether to resize new ASGs upward first, or to resize old ASGs downward first. The typical production selection is **Resize New First**, to maintain the highest availability. The **Downsize Old First** option constrains usage and costs, especially during testing. |
 | **Auto Scaling Steady State Timeout (mins)** | Enter how long Harness should wait for ASGs to register and reach steady state. This setting (which is internal to Harness) also defines the interval that Harness will wait before downsizing old ASGs and deregistering them from the Target Group(s). |
 
+<<<<<<< HEAD
 The **Instances** settings support [Harness variable expressions](../../../firstgen-platform/techref-category/variables/variables.md), such as [Workflow variable expressions](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md).Certain settings in this dialog correspond to AWS Console options, as shown here:
+=======
+The **Instances** settings support [Harness variable expressions](https://docs.harness.io/article/9dvxcegm90-variables), such as [Workflow variable expressions](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md).Certain settings in this dialog correspond to AWS Console options, as shown here:
+>>>>>>> main
 
 ![](./static/ami-deployment-32.png)
 ##### Setup AutoScaling Group in Deployment

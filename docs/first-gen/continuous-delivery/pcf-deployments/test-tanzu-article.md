@@ -17,14 +17,14 @@ This topic describes how to pull packaged archives, reference their manifest, an
 
 ### Before You Begin
 
-* [Tanzu Application Service (TAS) Quickstart](https://docs.harness.io/article/hy819vmsux-pivotal-cloud-foundry-quickstart)
+* [Tanzu Application Service (TAS) Quickstart](../../first-gen-quickstarts/pivotal-cloud-foundry-quickstart.md)
 * [Create a Basic Tanzu Deployment](create-a-basic-pcf-deployment.md)
 * [Connect to Your Target Tanzu Account](connect-to-your-target-pcf-account.md).
 * [Override Tanzu Manifests and Config Variables and Files](override-pcf-manifests-and-config-variables-and-files.md).
 
 ### Supported Platforms and Technologies
 
-See [Supported Platforms and Technologies](https://docs.harness.io/article/220d0ojx5y-supported-platforms).
+See [Supported Platforms and Technologies](../../starthere-firstgen/supported-platforms.md).
 
 ### Option: Application Manifest API Developed in Custom Manifest
 

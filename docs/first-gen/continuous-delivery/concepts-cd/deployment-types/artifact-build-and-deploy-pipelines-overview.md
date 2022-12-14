@@ -16,7 +16,7 @@ For detailed instructions on using build and deploy pipelines in Harness, see
 
 ### Before You Begin
 
-Before learning about Build and Deploy Pipelines, you should have an understanding of [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts).
+Before learning about Build and Deploy Pipelines, you should have an understanding of [Harness Key Concepts](../../../starthere-firstgen/harness-key-concepts.md).
 
 ### Visual Summary
 

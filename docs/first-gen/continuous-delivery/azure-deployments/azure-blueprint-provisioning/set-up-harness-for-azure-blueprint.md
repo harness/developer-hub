@@ -17,7 +17,7 @@ Once you set your account for Blueprint, you can begin integrating your Blueprin
 
 ### Before You Begin
 
-* [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts)
+* [Harness Key Concepts](../../../starthere-firstgen/harness-key-concepts.md)
 * Get an overview of provisioning with Blueprint in [Azure ARM and Blueprint Provisioning with Harness](../../concepts-cd/deployment-types/azure-arm-and-blueprint-provision-with-harness.md).
 * [Delegate Installation and Management](../../../firstgen-platform/account/manage-delegates/delegate-installation.md)
 * [Add Cloud Providers](../../../firstgen-platform/account/manage-connectors/cloud-providers.md)

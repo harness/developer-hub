@@ -60,7 +60,7 @@ Once you click **Submit** you will see the Application in your repo:
 
 #### Service Template
 
-Next, create a Harness Service in the Application. For this example, we'll create a Kubernetes Service named **SampleK8s**. For details, see [Kubernetes Quickstart](https://docs.harness.io/article/7in9z2boh6-kubernetes-quickstart).
+Next, create a Harness Service in the Application. For this example, we'll create a Kubernetes Service named **SampleK8s**. For details, see [Kubernetes Quickstart](../../first-gen-quickstarts/kubernetes-quickstart.md).
 
 The Service is set up with the following:
 

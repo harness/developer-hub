@@ -16,7 +16,7 @@ Once your account is set up, you can begin integrating your Terragrunt files. Se
 
 ### Before You Begin
 
-* [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts)
+* [Harness Key Concepts](../../starthere-firstgen/harness-key-concepts.md)
 * Get an overview of how Harness integrates Terragrunt: [Terragrunt Provisioning with Harness](../concepts-cd/deployment-types/terragrunt-provisioning-with-harness.md).
 * [Delegate Installation and Management](../../firstgen-platform/account/manage-delegates/delegate-installation.md)
 * [Add Cloud Providers](../../firstgen-platform/account/manage-connectors/cloud-providers.md)

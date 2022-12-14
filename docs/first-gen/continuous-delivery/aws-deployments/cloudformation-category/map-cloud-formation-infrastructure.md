@@ -104,7 +104,7 @@ The ECS deployment type has two **Launch Type** options:
 
 ![](./static/map-cloud-formation-infrastructure-08.png)
 
-See [AWS ECS Deployments Overview](../../concepts-cd/deployment-types/aws-ecs-deployments-overview.md) and [AWS ECS Quickstart](https://docs.harness.io/article/j39azkrevm-aws-ecs-deployments).
+See [AWS ECS Deployments Overview](../../concepts-cd/deployment-types/aws-ecs-deployments-overview.md) and [AWS ECS Quickstart](../../../first-gen-quickstarts/aws-ecs-deployments.md).
 
 ### Option 3: Map an AWS Lambda Infrastructure
 
@@ -114,7 +114,7 @@ Here is an Infrastructure Definition example for Lambda.
 
 ![](./static/map-cloud-formation-infrastructure-09.png)
 
-See [Lambda Deployment Overview](../lambda-deployments/lambda-deployment-overview.md) and [AWS Lambda Quickstart](https://docs.harness.io/article/wy1rjh19ej-aws-lambda-deployments).
+See [Lambda Deployment Overview](../lambda-deployments/lambda-deployment-overview.md) and [AWS Lambda Quickstart](../../../first-gen-quickstarts/aws-lambda-deployments.md).
 
 ### Option 4: Map a Secure Shell (SSH) Infrastructure on AWS
 

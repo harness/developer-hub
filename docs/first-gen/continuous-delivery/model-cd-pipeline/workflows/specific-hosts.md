@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Currently, this feature is behind the feature flag `DEPLOY_TO_SPECIFIC_HOSTS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.You can choose to deploy to specific hosts when you start or rerun a Workflow whose Service uses the [Secure Shell (SSH) Deployment Type](../../traditional-deployments/traditional-deployments-overview.md) or [Windows Remote Management (WinRM)](https://docs.harness.io/article/2oo63r9rwb-iis-net-quickstart) deployment types.
+Currently, this feature is behind the feature flag `DEPLOY_TO_SPECIFIC_HOSTS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.You can choose to deploy to specific hosts when you start or rerun a Workflow whose Service uses the [Secure Shell (SSH) Deployment Type](../../traditional-deployments/traditional-deployments-overview.md) or [Windows Remote Management (WinRM)](../../../first-gen-quickstarts/iis-net-quickstart.md) deployment types.
 
 ![](./static/specific-hosts-13.png)
 

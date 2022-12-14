@@ -1,0 +1,14 @@
+{
+    "label": "CloudFormation Infrastructure Provisioning",
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "link": {
+        "type": "generated-index",
+        "title": "CloudFormation Infrastructure Provisioning"
+    },
+    "customProps": {
+        "position": "300",
+        "helpdocs_category_id": "mlqlmg0tww"
+    }
+}

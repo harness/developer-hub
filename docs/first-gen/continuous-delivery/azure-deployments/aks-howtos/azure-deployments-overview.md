@@ -12,7 +12,7 @@ This content is for Harness [FirstGen](../../../../getting-started/harness-first
 
 ### Deployment Summary
 
-For a general overview of how Harness works, see [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts). For a vendor-agnostic, Harness Docker-to-Kubernetes deployment, see our [Kubernetes Quickstart](https://docs.harness.io/article/7in9z2boh6-kubernetes-quickstart) doc.
+For a general overview of how Harness works, see [Harness Key Concepts](../../../starthere-firstgen/harness-key-concepts.md). For a vendor-agnostic, Harness Docker-to-Kubernetes deployment, see our [Kubernetes Quickstart](../../../first-gen-quickstarts/kubernetes-quickstart.md) doc.
 
 |  |  |
 | --- | --- |

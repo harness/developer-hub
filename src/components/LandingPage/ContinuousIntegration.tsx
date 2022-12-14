@@ -7,6 +7,22 @@ import TutorialCard, { CardItem, docType } from "./TutorialCard";
 /* Define the cards here */
 const FeaturedList: CardItem[] = [
   {
+    title: "Get started with the fastest CI on the planet",
+
+    module: "ci",
+    icon: "/img/icon_ci.svg",
+    description: (
+      <>
+        This tutorial helps you get started with Harness CI and explore some of the features that make it four times faster than the leading competitor.
+
+      </>
+    ),
+    newDoc: true,
+    type: [docType.Documentation],
+    time: "5 min",
+    link: "/tutorials/build-code/fastest-ci",
+  },
+  {
     title: "Node and Docker CI Pipeline",
     module: "ci",
     icon: "/img/icon_ci.svg",
@@ -16,7 +32,7 @@ const FeaturedList: CardItem[] = [
         Docker Application in a CI Pipeline.
       </>
     ),
-    newDoc: true,
+    newDoc: false,
     type: [docType.Documentation],
     time: "15 min",
     link: "/tutorials/build-code/ci-node-docker-quickstart",
@@ -57,14 +73,29 @@ const CIList: CardItem[] = [
     icon: "/img/icon_ci.svg",
     description: (
       <>
-        This build automation guide shows how to run LocalStack as a Service
-        Dependency in a CI Pipeline
+        This build automation guide shows how to run LocalStack as a Background 
+        step in a CI Pipeline
+      </>
+    ),
+    newDoc: false,
+    type: [docType.Documentation],
+    time: "15 min",
+    link: "/tutorials/build-code/ci-localstack-background-step",
+  },
+  {
+    title: "Run Sauce Connect Proxy as a Service",
+    module: "ci",
+    icon: "/img/icon_ci.svg",
+    description: (
+      <>
+        This build automation guide walks you through running Sauce Connect
+        Proxy as a Background step in a CI Pipeline
       </>
     ),
     newDoc: true,
     type: [docType.Documentation],
     time: "15 min",
-    link: "/tutorials/build-code/ci-localstack-background-step",
+    link: "/tutorials/build-code/ci-saucelabs-background-step",
   },
   {
     title: "Build and publish a Java HTTP Server",
@@ -76,10 +107,26 @@ const CIList: CardItem[] = [
         application
       </>
     ),
-    newDoc: true,
+    newDoc: false,
     type: [docType.Documentation],
     time: "20 min",
     link: "/tutorials/build-code/ci-java-http-server",
+  },
+  {
+    title: "Get started with the fastest CI on the planet",
+
+    module: "ci",
+    icon: "/img/icon_ci.svg",
+    description: (
+      <>
+        This tutorial helps you get started with Harness CI and explore some of the features that make it four times faster than the leading competitor.
+
+      </>
+    ),
+    newDoc: true,
+    type: [docType.Documentation],
+    time: "5 min",
+    link: "/tutorials/build-code/fastest-ci",
   },
 ];
 

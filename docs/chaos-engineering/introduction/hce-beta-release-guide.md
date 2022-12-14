@@ -39,7 +39,7 @@ Learn more about how to connect chaos hubs [here](https://developer.harness.io/d
 
 By deploying specific Kubernetes resources (which establishes connectivity with the Harness control plane, relay instructions and events from/to it, respectively), you can attach target clusters or namespaces (where the chaos business logic is executed on discovered workloads) to the chaos module.
  
-These target clusters/namespaces are referenced within the module through the “Chaos Infrastructure” platform resource. This chaos infrastructure belongs either to a pre-prod or prod [environment](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts#environments) within the Harness platform. 
+These target clusters/namespaces are referenced within the module through the “Chaos Infrastructure” platform resource. This chaos infrastructure belongs either to a pre-prod or prod [environment](../../first-gen/starthere-firstgen/harness-key-concepts.md#environments) within the Harness platform. 
 
 You can connect your chaos infrastructure by applying a YAML manifest that is generated from the module dashboard by providing some simple inputs, such as: 
 

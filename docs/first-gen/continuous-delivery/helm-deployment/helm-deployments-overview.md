@@ -37,7 +37,7 @@ This document covers Harness Helm implementation. For Kubernetes implementation,
 * Developers and DevOps with a working knowledge of Docker, Kubernetes, and Helm.
 * Harness users with a working knowledge of the Harness Delegate. For information, see [Delegate Installation](../../firstgen-platform/account/manage-delegates/delegate-installation.md), [Harness Requirements](https://docs.harness.io/article/70zh6cbrhg-harness-requirements), and [Connectivity and Permissions Requirements](../../firstgen-platform/techref-category/account-ref/delegate-ref/connectivity-and-permissions-requirements.md).
 
-If you are entirely new to Harness, please see the [Quick Start Setup Guide](https://docs.harness.io/article/9hd68pg5rs-quick-start-setup-guide).
+If you are entirely new to Harness, please see the [Quick Start Setup Guide](../../starthere-firstgen/quick-start-setup-guide.md).
 
 #### What Are We Going to Do?
 

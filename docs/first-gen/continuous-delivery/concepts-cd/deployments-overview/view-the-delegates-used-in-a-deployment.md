@@ -16,7 +16,7 @@ This topic will walk you through the process.
 
 ### Before You Begin
 
-* [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts)
+* [Harness Key Concepts](../../../starthere-firstgen/harness-key-concepts.md)
 * [Delegate Installation and Management](../../../firstgen-platform/account/manage-delegates/delegate-installation.md)
 
 ### Visual Summary

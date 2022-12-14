@@ -10,15 +10,15 @@ helpdocs_is_published: true
 
 This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/article/m7nkbph0ac).This topic describes the concept of a Harness Azure Kubernetes Service (AKS) deployment by describing the high-level steps involved.
 
-For a vendor-agnostic, Harness Kubernetes deployment, see our [Kubernetes Deployments Overview](kubernetes-overview.md) doc.For a quick tutorial, see the [Kubernetes Quickstart](https://docs.harness.io/article/7in9z2boh6-kubernetes-quickstart).
+For a vendor-agnostic, Harness Kubernetes deployment, see our [Kubernetes Deployments Overview](kubernetes-overview.md) doc.For a quick tutorial, see the [Kubernetes Quickstart](../../../first-gen-quickstarts/kubernetes-quickstart.md).
 
 For detailed instructions on using AKS in Harness, see the [Azure How-tos](https://docs.harness.io/category/azure-deployments-and-provisioning).
 
-This guide covers new the **Version 2** features of Harness' Kubernetes implementation for AKS. For Version 1 Kubernetes see [Harness Kubernetes v1 FAQ](https://docs.harness.io/article/dtu3ud1ok7-kubernetes-and-harness-faq). For Helm deployment features, see [Helm Quickstart](https://docs.harness.io/article/2aaevhygep-helm-quickstart).
+This guide covers new the **Version 2** features of Harness' Kubernetes implementation for AKS. For Version 1 Kubernetes see [Harness Kubernetes v1 FAQ](https://docs.harness.io/article/dtu3ud1ok7-kubernetes-and-harness-faq). For Helm deployment features, see [Helm Quickstart](../../../first-gen-quickstarts/helm-quickstart.md).
 
 ### Before You Begin
 
-Before learning about Harness Azure Kubernetes Service (AKS) deployments, you should have an understanding of [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts).
+Before learning about Harness Azure Kubernetes Service (AKS) deployments, you should have an understanding of [Harness Key Concepts](../../../starthere-firstgen/harness-key-concepts.md).
 
 ### What Does Harness Need Before You Start?
 
@@ -63,5 +63,5 @@ The following list describes the major steps of a Harness AKS deployment:
 Read the following topics to build on what you've learned:
 
 * [Azure (AKS) How-tos](https://docs.harness.io/category/azure-deployments-and-provisioning)
-* [Kubernetes Quickstart](https://docs.harness.io/article/7in9z2boh6-kubernetes-quickstart)
+* [Kubernetes Quickstart](../../../first-gen-quickstarts/kubernetes-quickstart.md)
 

@@ -171,7 +171,7 @@ The **Test** button will be disabled if any of the **AppDynamics Server**, **App
 
 Once you have executed the Workflow, Harness performs the verification you configured and displays the results in the **Deployments** and **Continuous Verification** pages. Verification is executed in real time, quantifying the business impact of every production deployment.
 
-For a quick overview of the verification UI elements, see [Continuous Verification Tools](https://docs.harness.io/article/xldc13iv1y-meet-harness#continuous_verification_tools). For details about viewing and interpreting verification results, see [Verification Results Overview](../continuous-verification-overview/concepts-cv/deployment-verification-results.md).
+For a quick overview of the verification UI elements, see [Continuous Verification Tools](../../../starthere-firstgen/meet-harness.md#continuous-verification-tools). For details about viewing and interpreting verification results, see [Verification Results Overview](../continuous-verification-overview/concepts-cv/deployment-verification-results.md).
 
 ### Harness Expression Support in CV Settings
 

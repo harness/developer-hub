@@ -18,7 +18,7 @@ To help you analyze how Pipelines are performing, Harness can send key Pipeline 
 
 ### Supported Platforms and Technologies
 
-See [Supported Platforms and Technologies](https://docs.harness.io/article/220d0ojx5y-supported-platforms).
+See [Supported Platforms and Technologies](../../../starthere-firstgen/supported-platforms.md).
 
 ### Review: Events Published
 
