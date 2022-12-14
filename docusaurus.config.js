@@ -11,7 +11,7 @@ const config = {
   tagline:
     "Learn intelligent software delivery at your own pace. Step-by-step tutorials, videos, and reference docs to help you deliver customer happiness.",
   url: "https://developer.harness.io",
-  baseUrl: "/",
+  baseUrl: process.env.BASE_URL || "/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
   favicon: "img/favicon.ico",
