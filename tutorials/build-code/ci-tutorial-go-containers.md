@@ -6,12 +6,6 @@ keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial,Go,Ko]
 
 # Build Go Application Containers CI Pipeline
 
-```mdx-code-block
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import DelegateInstall from '/tutorials/platform/install-delegate.md';
-```
-
 ## Objectives
 
 At the end of this tutorial you will learn,
@@ -541,7 +535,7 @@ Once a successful run, head back to Docker Hub, and tag `latest` is there!
 
 This is just the start of your Continuous Integration journey. It might seem like multiple steps to get your local build in the platform, but it unlocks the world of possibilities.
 
-:::note
+:::note Exercise
 
 The <https://github.com/harness-apps/go-fruits-api> has another branch __mongodb__. Adapt your pipeline so that it build and test the code from __mongodb__ branch.
 
