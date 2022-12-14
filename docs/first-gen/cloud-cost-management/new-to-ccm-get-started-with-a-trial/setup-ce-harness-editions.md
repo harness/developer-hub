@@ -30,7 +30,7 @@ If you are new to Harness and want to sign up for the CCM trial edition, perform
 3. Select **Cloud Cost Management**.
    
      ![](./static/setup-ce-harness-editions-14.png)
-4. In **C****loud Cost Management**, select the cluster or cloud account for which you want to enable Cloud Cost Management. You can add the following:
+4. In **Cloud Cost Management**, select the cluster or cloud account for which you want to enable Cloud Cost Management. You can add the following:
 	1. **Kubernetes**: For detailed instructions, see [Set Up Cost Visibility for Kubernetes](/docs/first-gen/cloud-cost-management/setup-cost-visibility/enable-continuous-efficiency-for-kubernetes.md).
 	2. **AWS**: For detailed instructions, see [Set Up Cost Visibility for AWS](/docs/first-gen/cloud-cost-management/setup-cost-visibility/enable-continuous-efficiency-for-aws.md).
 	3. **GCP**: For detailed instructions, see [Set Up Cost Visibility for GCP](/docs/first-gen/cloud-cost-management/setup-cost-visibility/enable-cloud-efficiency-for-google-cloud-platform-gcp.md).
