@@ -392,31 +392,56 @@ And click __Build Go__ pipeline to open the pipeline editor,
 
 ![Build Go Pipeline](static/ci-tutorial-go-docker/select_build_go_pipeline_2.png)
 
-Click __Add Step__ to add a new step called __build__, from the _Step Library_ choose step type as __Run__ and configure the step with details as shown,
+Click __Add Step__ to add a new step called __build and push__, from the _Step Library_ choose step type as __Run__ and configure the step with details,
 
-![Build Step](static/ci-tutorial-go-docker/go_pipeline_step_build.png)
+Name:
+
+```text
+build and push
+```
+
+Description:
+
+```text
+Build go application
+```
+
+Choose __Bash__ to be the __Shell__
+
+Command:
+
+```shell
+echo -n "$DOCKER_HUB_PASSWORD" | ko auth login docker.io -u "$DOCKER_HUB_USERNAME" --password-stdin
+ko build --bare --platform linux/amd64 --platform linux/arm64 .
+```
+
+![Build and Push Step](static/ci-tutorial-go-docker/go_pipeline_step_build_push.png)
+
+We also need to configure few environment variables that is required to push the image to Docker Hub. Update the __Environment Variables__ with following values,
+
+```shell
+DOCKER_HUB_USERNAME: $DOCKER_HUB_USERNAME
+DOCKER_HUB_PASSWORD: <+secrets.getValue("docker_hub_password")>
+KO_DOCKER_REPO: docker.io/$DOCKER_HUB_USERNAME/fruits-api
+```
+
+![Build and Push Env](static/ci-tutorial-go-docker/go_pipeline_step_build_push_env_vars.png)
+
+:::note
+
+- As marked ensure the `DOCKER_HUB_PASSWORD` is of type __Expression__
+- `secrets.getValue` is an expression that allows to get the value from the secret `docker_hub_password`, that was created earlier in the tutorial. Check the [docs](https://developer.harness.io/docs/platform/security/add-use-text-secrets/#step-3-reference-the-encrypted-text-by-identifier) for more info
+- All `$DOCKER_HUB_USERNAME` references should your Docker Hub Username
+
+:::
 
 Click __Apply Changes__ to save the step.
 
 :::note
-The tutorial project uses [goreleaser](https://goreleaser.com/), a very handy tool to build go lang applications, especially if you are building multi architecture images. Check the blog [Simplify go Multi Arch Container Builds](https://blogs.kameshs.dev/simplify-go-multi-arch-container-builds-eaeb09aee22c) to know more on how to simplify go lang multi architecture builds.
+The tutorial project uses [ko-build](https://ko.build/) which can build go container images without the need for _Dockerfile_. It also allows you to build the multi arch/platform images with much ease.
 :::
 
 Click __Save__ to save the pipeline.
-
-The final step that we need to add is __push__, which containerizes the go application and push it to the container registry i.e. Docker Hub.
-
-Click __Add Step__ to add a new step called __push__, from the _Step Library_ choose step type as __Build and Push an image to Docker Registry__,
-
-![Docker Build Step](static/ci-tutorial-go-docker/docker_build_step.png)
-
-Configure the __push__ step as shown,
-
-![Push Step](static/ci-tutorial-go-docker/go_pipeline_push_step.png)
-
-Click __Apply Changes__ to save the step.
-
-And finally click __Save__ to save the pipeline.
 
 ![Final Pipeline](static/ci-tutorial-go-docker/go_pipeline_final.png)
 
