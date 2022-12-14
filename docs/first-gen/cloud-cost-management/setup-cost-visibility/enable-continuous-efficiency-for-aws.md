@@ -17,7 +17,9 @@ Harness Cloud Cost Management (CCM) monitors the cloud costs of your Amazon Web 
 * [AWS Access Permissions](/docs/first-gen/cloud-cost-management/setup-cost-visibility/enable-continuous-efficiency-for-aws.md#review-aws-access-permissions)
 * The same connector cannot be used in FirstGen and NextGen. NextGen Connectors are recommended for the best experience of CCM capabilities and features. For information on creating an AWS connector in the NextGen see [Set Up Cloud Cost Management for AWS](/docs/cloud-cost-management/1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md).
 
-After enabling CCM, it takes about 24 hours for the data to be available for viewing and analysis.### Prerequisites
+After enabling CCM, it takes about 24 hours for the data to be available for viewing and analysis.
+
+## Prerequisites
 
 Create an organization that starts with your AWS account as the master account. When you create an organization, you can choose whether the organization supports all features (recommended) or only consolidated billing features. For more information, see [Creating an organization](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_create.html).
 
