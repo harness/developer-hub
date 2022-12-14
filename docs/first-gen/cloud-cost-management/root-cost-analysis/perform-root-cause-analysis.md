@@ -74,14 +74,17 @@ The cost of each Kubernetes workload or ECS service. You can see the workload ty
      ![](./static/perform-root-cause-analysis-40.png)
 5. You can also analyze the cost event correlation for the workloads. Cost event correlation identifies the events that caused costs to change (increase or decrease). For example, new service deployments, autoscaling, etc. CE timestamps events and shows their corresponding YAML. You can even drill down to all the events on a particular day to know exactly what caused costs to change.  
   
-To analyze the cost event correlation for the workloads, click on the workload for which you want to analyze the cost event correlation.
-4. The detailed information for the selected workload is displayed under **Resources** and **Events** tabs.
-5. In **Resources**, the following information is displayed:
-* Details of the pods associated with the workload.
-* CPU and memory utilization of the workload.
+6. To analyze the cost event correlation for the workloads, click on the workload for which you want to analyze the cost event correlation. 
+  The detailed information for the selected workload is displayed under **Resources** and **Events** tabs.
+  In **Resources**, the following information is displayed:
+   * Details of the pods associated with the workload.
+   * CPU and memory utilization of the workload.
+
+
   
-    ![](./static/perform-root-cause-analysis-41.png)
-1. In **Events**, the following details are displayed:
+![](./static/perform-root-cause-analysis-41.png)
+  
+7. In **Events**, the following details are displayed:
 * **Time**: Timestamp of the event.
 * **Cost Impact**: Percentage of the cost change because of the event. It also shows the trend of cost change.
 * **Source**: Source of the event.
@@ -91,14 +94,14 @@ To analyze the cost event correlation for the workloads, click on the workload f
     ![](./static/perform-root-cause-analysis-42.png)
 	
 	When you notice a surge in the price, click on the associated event for that day. It will list all the events that occurred on that day. The events are listed as **Notable** and **All**.
-1. **Notable** lists the events that have an impact on the cost.
+8. **Notable** lists the events that have an impact on the cost.
 	1. Click the arrow. The YAML file is displayed. 
    
      ![](./static/perform-root-cause-analysis-43.png)
 	2. View the YAML file to understand the exact differences that led to a change in the cost. 
     
 	 ![](./static/perform-root-cause-analysis-44.png)
-2. **All** lists all the events that occurred on the selected workload.
+9. **All** lists all the events that occurred on the selected workload.
 	1. Click the arrow. The YAML file is displayed. 
    
      ![](./static/perform-root-cause-analysis-45.png)

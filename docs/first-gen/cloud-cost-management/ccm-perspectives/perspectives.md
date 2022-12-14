@@ -213,9 +213,10 @@ Perspectives allow you to view your costs at a glance, understand what is costin
   
 The Group by options are dynamically listed based on the filters used in your Perspective. For example, if you have selected AWS, GCP, and Custom for creating your Perspective, then only AWS, GCP, and Custom **Group by** and **Filter** options are listed.
 
-    ![](./static/perspectives-20.png)
-5. The cost data for custom fields are displayed under the **Custom** tab.
+![](./static/perspectives-20.png)
+
+5. The cost data for custom fields are displayed under the **Custom** tab. 
    
-     ![](./static/perspectives-21.png)
+![](./static/perspectives-21.png)
 
 

@@ -40,7 +40,8 @@ Harness will send an alert to the specified email addresses and Harness User Gro
   ![](./static/create-your-perspectives-budget-25.png)
 2. Add email addresses to receive budget notifications.
    
-     ![](./static/create-your-perspectives-budget-26.png)
+![](./static/create-your-perspectives-budget-26.png)
+
 3. Click **Show more options**.
 4. Select the Harness **User Group**(s) to receive the email alerts. For information on setting up email alerts for User Groups, see **Manage User Notifications**.
    

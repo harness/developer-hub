@@ -57,7 +57,7 @@ Harness will send an alert to Harness User Groups when the actual or forecasted 
   ![](./static/create-a-budget-03.png)
 2. Add email addresses to receive budget notifications.
    
-     ![](./static/create-a-budget-04.png)
+![](./static/create-a-budget-04.png)
 3. Select the Harness **User Group**(s) to receive the email alerts. For information on setting up email alerts for User Groups, see [Manage User Notifications](/docs/first-gen/cloud-cost-management/ccm-anomaly-detection/set-up-notifications-for-cost-anomalies.md).  
   
 You can receive budget notifications in your Slack channels. You simply add a Slack Incoming Webhook into a Harness User Groups' Notification Settings. See [Send Notifications Using Slack](/docs/first-gen/cloud-cost-management/ccm-anomaly-detection/set-up-notifications-for-cost-anomalies.md#set-up-slack-notifications).  

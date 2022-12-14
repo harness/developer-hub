@@ -15,7 +15,7 @@ Harness Cloud Cost Management (CCM) monitors the cloud costs of your Amazon Web 
 
 * [Cloud Cost Management Overview](/docs/first-gen/cloud-cost-management/concepts-ccm/b-cloud-cost-management-overview.md)
 * [AWS Access Permissions](/docs/first-gen/cloud-cost-management/setup-cost-visibility/enable-continuous-efficiency-for-aws.md#review-aws-access-permissions)
-* The same connector cannot be used in FirstGen and NextGen. NextGen Connectors are recommended for the best experience of CCM capabilities and features. For information on creating an AWS connector in the NextGen see [Set Up Cloud Cost Management for AWS](/docs/first-gen/cloud-cost-management/setup-cost-visibility/enable-continuous-efficiency-for-aws.md).
+* The same connector cannot be used in FirstGen and NextGen. NextGen Connectors are recommended for the best experience of CCM capabilities and features. For information on creating an AWS connector in the NextGen see [Set Up Cloud Cost Management for AWS](/docs/cloud-cost-management/1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md).
 
 After enabling CCM, it takes about 24 hours for the data to be available for viewing and analysis.### Prerequisites
 
@@ -102,11 +102,14 @@ You need to enter the **cost and usage report name** and **cost and usage S3 buc
 When you are done with the **Report content** step, it will look something like this:
 
   ![](./static/enable-continuous-efficiency-for-aws-04.png)
+    
 7. In the **S3 bucket**, click **Configure**.
 8. In **Configure S3 Bucket**, in **Create a bucket**, enter **S3 bucket name**. This is the cost and usage S3 bucket name that you need to enter in Harness. For more information on S3 bucket naming requirements, see [Amazon S3 Bucket Naming Requirements](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-s3-bucket-naming-requirements.html).
-9. Select **Region** from the drop-down list and click **Next**. It is recommended to select **US East** (**N. Virginia**).
+     
+9.  Select **Region** from the drop-down list and click **Next**. It is recommended to select **US East** (**N. Virginia**).
     
 	  ![](./static/enable-continuous-efficiency-for-aws-05.png)
+	    
 10. In **Verify policy**, select the checkbox **I have confirmed that this policy is correct** and click **Save**.
     
 	  ![](./static/enable-continuous-efficiency-for-aws-06.png)
@@ -122,7 +125,8 @@ When you are done with the **Delivery options** step, it will look something lik
   ![](./static/enable-continuous-efficiency-for-aws-07.png)
 17. Review your report details and click **Review and Complete**.
     
-	  ![](./static/enable-continuous-efficiency-for-aws-08.png)
+![](./static/enable-continuous-efficiency-for-aws-08.png)
+	    
 18. Enter the **Cost and Usage Report Name** (as entered in step 3) and **Cost and Usage S3 Bucket Name** (as entered in step 8) in Harness.
     
 	  ![](./static/enable-continuous-efficiency-for-aws-09.png)
@@ -206,7 +210,8 @@ Review the details, select acknowledgment, and click **Submit**.
   ![](./static/enable-continuous-efficiency-for-aws-18.png)
 2. To modify any of the master account settings, click **Back**.
    
-     ![](./static/enable-continuous-efficiency-for-aws-19.png)
+![](./static/enable-continuous-efficiency-for-aws-19.png)
+	   
 3. When you have provided access to Harness for all of the member accounts you want to analyze, click **Done**.
 4. The connected AWS master account along with the member account details are displayed.
    
