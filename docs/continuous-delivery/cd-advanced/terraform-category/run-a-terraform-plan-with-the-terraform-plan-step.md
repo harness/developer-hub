@@ -462,9 +462,9 @@ Next, you can enter those expressions in a subsequent [Shell Script step](../../
 For example, here is a script using the variables:
 
 ```bash
-echo "<+pipeline.stages.tf.spec.execution.steps.tf.plan.jsonFilePath>"
+echo "<+terraformPlanJson."pipeline.stages.tf.spec.execution.steps.tf.tf_planJson">"
 echo "full plan"
-cat "<+pipeline.stages.tf.spec.execution.steps.tf.plan.jsonFilePath>"
+cat "<+terraformPlanJson."pipeline.stages.tf.spec.execution.steps.tf.tf_planJson">"
 
 echo "<+terraformPlanHumanReadable."pipeline.stages.tf.spec.execution.steps.tf.tf_planHumanReadable">"
 echo "Plan is"
