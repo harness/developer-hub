@@ -128,9 +128,9 @@ For example, in **Rules for Perspective**, if you select `Label: kubernetes.io/n
 
 For example, in **Rules for Perspective**, if you select `Label: kubernetes.io/name` as `NOT_NULL`, then your perspective will list the cost of the selected label only (`kubernetes.io/name`). It will not include the cost of any other resources.
 
-1. Select value for your filter. You can select multiple values. You can also filter and customize your result using the search option.![](./static/perspectives-09.png)
-2. Once you have added all the filters, you can [add a report sharing schedule](/docs/first-gen/cloud-cost-management/ccm-perspectives/share-report-in-cost-perspectives.md).
-3. Click **Save**. The cost data for your selection is displayed.
+5. Select value for your filter. You can select multiple values. You can also filter and customize your result using the search option.![](./static/perspectives-09.png)
+6. Once you have added all the filters, you can [add a report sharing schedule](/docs/first-gen/cloud-cost-management/ccm-perspectives/share-report-in-cost-perspectives.md).
+7. Click **Save**. The cost data for your selection is displayed.
    
     ![](./static/perspectives-10.png)
 
