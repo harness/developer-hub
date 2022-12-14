@@ -123,6 +123,7 @@ When you are done with the **Report content** step, it will look something like 
 When you are done with the **Delivery options** step, it will look something like this:
 
   ![](./static/enable-continuous-efficiency-for-aws-07.png)
+  
 17. Review your report details and click **Review and Complete**.
     
 ![](./static/enable-continuous-efficiency-for-aws-08.png)
