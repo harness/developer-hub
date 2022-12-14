@@ -23,6 +23,12 @@ You can get started quickly with any language in Harness CI, within 60 seconds w
 
 ![CI Getting Started](static/ci-tutorial-fast/cigettingstartedtemplates.png)
 
+```mdx-code-block
+import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
+```
+
+<CISignupTip />
+
 ## Create your pipeline​
 
 ```mdx-code-block

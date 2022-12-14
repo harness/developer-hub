@@ -20,6 +20,12 @@ However, more than the compiled source code can go into a build. The end product
 
 According to [Paul Duvall](https://www.oreilly.com/library/view/continuous-integration-improving/9780321336385/), co-author of Continuous Integration, in a nutshell, CI will improve quality and reduce risk. Having a Continuous Integration approach frees teams from the burden of manual builds and also makes builds more repeatable, consistent, and available. If you are unfamiliar with CI, this guide will get you started on your first automated build.
 
+```mdx-code-block
+import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
+```
+
+<CISignupTip />
+
 ## Your Local Build - Onramp to Continuous Integration
 
 To create a build, you need to have something that can be built, which means source code. The steps you take to build and package your application or service need to be represented in a CI tool or platform for automation. CI platforms will need to connect to source code management e.g SCM to start the build process. This can be as simple as connecting your public GitHub Repository for something that needs to be built.
