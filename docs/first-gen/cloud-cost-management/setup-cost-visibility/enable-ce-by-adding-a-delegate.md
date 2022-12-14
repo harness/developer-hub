@@ -45,6 +45,7 @@ From the second cluster onwards, it takes about 2–3 hours for the data to be a
   
 `kubectl apply -f ~/Downloads/harness-delegate-kubernetes.yaml`  
 Ensure that you are connected to the Kubernetes cluster.
+
 6. Click **Done**.  
   
 Once the Delegate is connected to your Kubernetes cluster, the status turns green.
