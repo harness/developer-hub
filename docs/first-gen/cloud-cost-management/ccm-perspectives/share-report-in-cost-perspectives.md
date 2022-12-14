@@ -15,7 +15,7 @@ You can share the cost report of your Perspective with your stakeholders. Create
 
 You can create a schedule for sharing the cost report of your Perspective. Perform the following steps to create a schedule:
 
-1. In **Perspective** **Builder**, click **A****dd a report sharing schedule**.
+1. In **Perspective** **Builder**, click **Add a report sharing schedule**.
 2. In **Name of the Report**, enter a name for your Perspective report.
 3. In **Enter Recipients**, enter an email ID of the recipient.You can add up to 50 email IDs for sharing the report schedule. Email IDs are separated by a comma.
 4. In **Repeat frequency in UTC**, select the **frequency** for sharing the report. All the schedules are executed in Universal Time Coordinated (UTC).
