@@ -106,7 +106,7 @@ const config = {
               {
                 // type: "doc",
                 label: "All Tutorials",
-                to: "tutorials/get-started",
+                to: "tutorials",
               },
               {
                 // type: "doc",
