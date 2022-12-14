@@ -156,7 +156,7 @@ const CIList: CardItem[] = [
     link: "/tutorials/build-code/fastest-ci",
   },
 {
-  title: 'Build Go Application Containers using CI Pipeline',
+  title: 'Build Go Application Containers',
   module: 'ci',
   Svg: '/img/icon_ci.svg',
   description: (
@@ -169,7 +169,7 @@ const CIList: CardItem[] = [
   time: '15 min',
   link: '/tutorials/build-code/ci-tutorial-go-containers',
 },{
-  title: 'Sign Application Containers using CI Pipeline',
+  title: 'Sign Application Containers',
   module: 'ci',
   Svg: '/img/icon_ci.svg',
   description: (

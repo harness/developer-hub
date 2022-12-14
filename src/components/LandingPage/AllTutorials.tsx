@@ -59,6 +59,20 @@ const FeaturedList: CardItem[] = [
     time: "5 min",
     link: "/tutorials/platform/onboard-terraform-provider",
   },
+  {
+    title: 'Sign Application Containers',
+    module: 'ci',
+    Svg: '/img/icon_ci.svg',
+    description: (
+      <>
+        This build automation guide walks you through on how to sign a container image using CI pipeline.
+      </>
+    ),
+    ribbon: true,
+    type: [docType.Documentation],
+    time: '15 min',
+    link: '/tutorials/build-code/ci-tutorial-go-containers',
+  },
 ];
 
 const CIList: CardItem[] = [
@@ -137,6 +151,33 @@ const CIList: CardItem[] = [
     type: [docType.Documentation],
     time: "5 min",
     link: "/tutorials/build-code/fastest-ci",
+  },
+  {
+    title: 'Build Go Application Containers',
+    module: 'ci',
+    Svg: '/img/icon_ci.svg',
+    description: (
+      <>
+        This build automation guide walks you through building a Go container image in a CI Pipeline.
+      </>
+    ),
+    ribbon: true,
+    type: [docType.Documentation],
+    time: '15 min',
+    link: '/tutorials/build-code/ci-tutorial-go-containers',
+  },{
+    title: 'Sign Application Containers',
+    module: 'ci',
+    Svg: '/img/icon_ci.svg',
+    description: (
+      <>
+        This build automation guide walks you through on how to sign a container image using CI pipeline.
+      </>
+    ),
+    ribbon: true,
+    type: [docType.Documentation],
+    time: '15 min',
+    link: '/tutorials/build-code/ci-tutorial-go-containers',
   },
 ];
 
