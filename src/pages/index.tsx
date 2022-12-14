@@ -4,7 +4,6 @@ import Link from "@docusaurus/Link";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
 import HomepageFeatures from "@site/src/components/HomepageFeatures";
-// import WhatsNew from "@site/src/components/WhatsNew";
 import LearnAboutPlatform from "@site/src/components/LearnAboutPlatform";
 import HarnessU from "@site/src/components/HarnessU";
 import Feedback from "@site/src/components/Feedback";
@@ -29,7 +28,7 @@ function HomepageHeader() {
           </Link>
       </div> */}
       </div>
-      {/* <img src="/img/hero.svg" className={styles.heroImg} /> */}
+      {/* <img src="img/hero.svg" className={styles.heroImg} /> */}
       <div className={styles.heroImg}>
         {/* <Lottie animationData={allModuleAnimation} loop={true} /> */}
         <video autoPlay={true} loop={true} muted={true}>
@@ -57,7 +56,6 @@ export default function Home(): JSX.Element {
             <div className="container">
               <div className="flexContainer">
                 <HomepageFeatures />
-                {/* <WhatsNew /> */}
               </div>
               <LearnAboutPlatform />
             </div>

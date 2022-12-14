@@ -15,7 +15,7 @@ const FeatureList: CardItem[] = [
     description: "Create a CI build pipeline.",
     type: [docType.Documentation],
     //type: [docType.Documentation, docType.Interactive, docType.Video],
-    link: "/tutorials/build-code",
+    link: "tutorials/build-code",
   },
   {
     title: "Deploy Services",
@@ -23,7 +23,7 @@ const FeatureList: CardItem[] = [
     icon: "img/icon_cd.svg",
     description: <>Create a CD deployment pipeline.</>,
     type: [docType.Documentation],
-    link: "/tutorials/deploy-services",
+    link: "tutorials/deploy-services",
   },
   {
     title: "Manage Feature Flags",
@@ -31,7 +31,7 @@ const FeatureList: CardItem[] = [
     icon: "img/icon_ff.svg",
     description: <>Roll out new features progressively.</>,
     type: [docType.Documentation],
-    link: "/tutorials/manage-feature-flags",
+    link: "tutorials/manage-feature-flags",
   },
   {
     title: "Manage Cloud Costs",
@@ -39,7 +39,7 @@ const FeatureList: CardItem[] = [
     icon: "img/icon_ccm.svg",
     description: <>Achieve cost transparency and cut costs.</>,
     type: [docType.Documentation],
-    link: "/tutorials/manage-cloud-costs",
+    link: "tutorials/manage-cloud-costs",
   },
   {
     title: "Manage Service Reliability",
@@ -47,7 +47,7 @@ const FeatureList: CardItem[] = [
     icon: "img/icon_srm.svg",
     description: <>Monitor SLOs, track error budgets, debug code errors.</>,
     type: [docType.Documentation, docType.Interactive, docType.Video],
-    link: "/tutorials/manage-service-reliability",
+    link: "tutorials/manage-service-reliability",
   },
   {
     title: "Orchestrate Security Tests",
@@ -55,7 +55,7 @@ const FeatureList: CardItem[] = [
     icon: "img/icon_sto.svg",
     description: <>Scan code, containers and apps.</>,
     type: [docType.Documentation],
-    link: "/tutorials/orchestrate-security-tests",
+    link: "tutorials/orchestrate-security-tests",
   },
   {
     title: "Run Chaos Experiments",
@@ -63,7 +63,7 @@ const FeatureList: CardItem[] = [
     icon: "img/icon_ce.svg",
     description: <>Ensure app and infrastructure resilience.</>,
     type: [docType.Documentation],
-    link: "/tutorials/run-chaos-experiments",
+    link: "tutorials/run-chaos-experiments",
   },
   {
     title: "Administer Harness Platform",
@@ -76,14 +76,14 @@ const FeatureList: CardItem[] = [
       </>
     ),
     type: [docType.Documentation],
-    link: "/tutorials/platform",
+    link: "tutorials/platform",
   },
 ];
 
 function Feature({ title, icon, description, type, module, link }: CardItem) {
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   return (
-    <a href={link}>
+    <Link href={link}>
       <div className={clsx(styles.getStartItem, styles[module])}>
         <div className="text--center">
           {/* <icon className={styles.featureSvg} role="img" /> */}
@@ -113,7 +113,7 @@ function Feature({ title, icon, description, type, module, link }: CardItem) {
           </ul>
         </div>
       </div>
-    </a>
+    </Link>
   );
 }
 
