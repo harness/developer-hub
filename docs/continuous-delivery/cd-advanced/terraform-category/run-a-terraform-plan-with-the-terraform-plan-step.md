@@ -1,5 +1,5 @@
 ---
-title: Plan Terraform Provisioning with the Terraform Plan Step
+title: Preview with the Terraform Plan step
 description: Run a Terraform script as a Terraform plan.
 sidebar_position: 4
 helpdocs_topic_id: 52n3j0ci72
@@ -176,7 +176,7 @@ If you do not select **Use Connector credentials**, Terraform will use the crede
 
 The **Use Connector credentials** setting is limited to Harness Git Connectors using SSH authentication (not HTTPS) and a token.
 
-## Option: Workspace
+## Workspace
 
 Harness supports Terraform [workspaces](https://www.terraform.io/docs/state/workspaces.html). A Terraform workspace is a logical representation of one your infrastructures, such as Dev, QA, Stage, Production.
 
@@ -218,7 +218,7 @@ This allows you to specify a different workspace name each time the Pipeline is 
 
 You can even set a Harness Trigger where you can set the workspace name used in **Workspace**.
 
-## Option: Terraform Var Files
+## Terraform Var Files
 
 The **Terraform Var Files** section is for entering and/or linking to Terraform script Input variables.
 
@@ -298,7 +298,7 @@ Click **Submit**. The remote file(s) are added.
 
 See [Artifactory Connector Settings Reference](https://docs.harness.io/article/euueiiai4m-artifactory-connector-settings-reference) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**).
 
-## Option: Backend Configuration
+## Backend Configuration
 
 The **Backend Configuration** section contains the [remote state](https://www.terraform.io/docs/language/state/remote.html) values.
 
@@ -382,7 +382,7 @@ terraform {
 
 In **Backend Configuration**, you provide the required configuration variables for that backend type. See **Configuration variables** in Terraform's [gcs Standard Backend doc](https://www.terraform.io/docs/language/settings/backends/gcs.html#configuration-variables).
 
-## Option: Targets
+## Targets
 
 You can use the **Targets** setting to target one or more specific modules in your Terraform script, just like using the `terraform plan -target` command. See [Resource Targeting](https://www.terraform.io/docs/commands/plan.html#resource-targeting) from Terraform.
 
@@ -390,7 +390,7 @@ You simply identify the module using the standard format `module.name`, like you
 
 If you have multiple modules in your script and you don't select one in **Targets**, all modules are used.
 
-## Option: Environment Variables
+## Environment Variables
 
 If your Terraform script uses [environment variables](https://www.terraform.io/docs/cli/config/environment-variables.html), you can provide values for those variables here.
 
@@ -403,7 +403,7 @@ TF_VAR_alist='[1,2,3]'
 ```
 You can use Harness encrypted text for values. See [Add Text Secrets](https://docs.harness.io/article/osfw70e59c-add-use-text-secrets).
 
-## Option: Export JSON representation of Terraform Plan
+## Export JSON representation of Terraform Plan
 
 Enable this setting to use a JSON representation of the Terraform plan that is implemented in a Terraform Plan step.
 
@@ -435,6 +435,48 @@ JSON representation of the Terraform plan is available only between the Terrafor
 If used across stages, the Terraform Plan step can be used in one stage and the Terraform Apply step can be used in a subsequent stage. The expression will resolve successfully in this case.
 
 The JSON of the Terraform Plan step is not available after Rollback.
+
+## Export Human Readable representation of Terraform Plan
+
+Enable this option to view the Terraform plan file path and contents as human-readable JSON is subsequent steps, such as a [Shell Script step](../../cd-execution/cd-general-steps/using-shell-scripts).
+
+Once you enable this option and run a CD stage with the Terraform Plan step, you can click in the Terraform Plan step's **Output** tab and copy the **Output Value** for **jsonFilePath** and **humanReadableFilePath** outputs.
+
+![alt](static/human-readable.png)
+
+The formats for the expressions are:
+- **jsonFilePath**:
+  - `<+terraformPlanJson."pipeline.stages.[stage Id].spec.execution.steps.[step Id].tf_planJson">`
+- **humanReadableFilePath**:
+  - `<+terraformPlanHumanReadable."pipeline.stages.[stage Id].spec.execution.steps.[step Id].tf_planHumanReadable">`
+
+For example, if the Terraform Plan stage and step Ids are `tf` then you would get the following expressions:
+
+- **jsonFilePath**: 
+  - `<+terraformPlanJson."pipeline.stages.tf.spec.execution.steps.tf.tf_planJson">`
+- **humanReadableFilePath**:
+  - `<+terraformPlanHumanReadable."pipeline.stages.tf.spec.execution.steps.tf.tf_planHumanReadable">`
+
+Next, you can enter those expressions in a subsequent [Shell Script step](../../cd-execution/cd-general-steps/using-shell-scripts) step and Harness will resolve them to the human-readable paths and JSON.
+
+For example, here is a script using the variables:
+
+```bash
+echo "<+pipeline.stages.tf.spec.execution.steps.tf.plan.jsonFilePath>"
+echo "full plan"
+cat "<+pipeline.stages.tf.spec.execution.steps.tf.plan.jsonFilePath>"
+
+echo "<+terraformPlanHumanReadable."pipeline.stages.tf.spec.execution.steps.tf.tf_planHumanReadable">"
+echo "Plan is"
+cat "<+terraformPlanHumanReadable."pipeline.stages.tf.spec.execution.steps.tf.tf_planHumanReadable">"
+```
+Note that if there are no changes in the plan, the standard Terraform message is shown in the Shell Step's logs:
+
+```
+No changes. Your infrastructure matches the configuration.
+Terraform has compared your real infrastructure against your configuration
+and found no differences, so no changes are needed.
+```
 
 ## Option: Terraform Plan detailed-exitcode
 

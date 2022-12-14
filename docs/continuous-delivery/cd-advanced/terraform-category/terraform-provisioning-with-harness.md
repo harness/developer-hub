@@ -1,6 +1,6 @@
 ---
 title: Terraform Provisioning with Harness
-description: This topic describes how to use Terraform to provision infrastructure as part of your deployment process.
+description: Use Terraform as part of your deployment process.
 sidebar_position: 2
 helpdocs_topic_id: boug6e884h
 helpdocs_category_id: jcu7twh2t6
