@@ -143,8 +143,6 @@ For more information, see [Manage Subscriptions](https://docs.microsoft.com/en-u
 
 Run the following **bash** commands using your **bash** terminal or Azure cloud shell:
 
-Run the following **bash** commands using your **bash** terminal or Azure cloud shell:
-
 `az ad sp create``10034206-24bf-442b-968c-70a9c896a2f6`  
 See **Azure client application ID**  in **Harness Platform** > **Connectors** > **Add a Microsoft Azure Cloud Connector** for more information.
 > **☆ NOTE —** If you encounter the following error message, proceed with assigning permissions to the storage account.  
@@ -185,13 +183,14 @@ $ SCOPE=`az storage account show --name test --query "id" | xargs`
 $ echo $SCOPE  
 /subscriptions/XXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/<resourcegroupname>/providers/Microsoft.Storage/storageAccounts/<storage account name>
 ```
-3. `az role assignment create --assignee 0211763d-24fb-4d63-865d-92f86f77e908 --role 'Storage Blob Data Reader' --scope $SCOPE`: Provides Storage Blob Data Reader permission to the Harness application on the scope fetched in the previous step.  
+`az role assignment create --assignee 0211763d-24fb-4d63-865d-92f86f77e908 --role 'Storage Blob Data Reader' --scope $SCOPE`: Provides Storage Blob Data Reader permission to the Harness application on the scope fetched in the previous step.  
   
 **Required Parameter**  
 `--assignee`  
   
 This is the ID of the Harness CCM client application. Use `0211763d-24fb-4d63-865d-92f86f77e908`
-4. Once you are done, click **Finish** in Harness.Upon clicking the **Finish** button, Harness performs the input validation. The validation may take a few seconds.  
+
+Once you are done, click **Finish** in Harness.Upon clicking the **Finish** button, Harness performs the input validation. The validation may take a few seconds.  
   
 If the process throws an `Authorization permission mismatch` error, wait for a few more seconds and click the **Finish** button again.
 
