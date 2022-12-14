@@ -40,6 +40,13 @@ See [Cloud IAM roles for Cloud Storage](https://cloud.google.com/storage/docs/ac
 
 Ensure the Harness Delegate you have installed can reach to the GCR registry host name you are using in **Registry Host Name** (for example, gcr.io) and storage.cloud.google.com.
 
+### Google Artifact Registry
+
+For Google Artifact Registry, the following roles are required:
+
+- Artifact Registry Reader
+- Artifact Registry Writer
+
 ### Google Cloud Operations Suite (Stackdriver) Requirements
 
 Most APM and logging tools are added to Harness as Verification Providers. For Google Cloud's operations suite (formerly Stackdriver), you use the GCP Connector.
