@@ -106,7 +106,7 @@ To view cost anomalies from the **Overview** tab, perform the following steps:
 Once you have submitted your feedback and wish to change your assessment, click **reset**.
 
   ![](./static/detect-cost-anomalies-with-ce-09.png)
-1. Click **Add comment** to enter any comment. You can choose to edit your comment later.
+7. Click **Add comment** to enter any comment. You can choose to edit your comment later.
 
 ### View Cost Anomalies for Cluster
 
