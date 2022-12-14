@@ -34,7 +34,7 @@ function HomepageHeader() {
         {/* <Lottie animationData={allModuleAnimation} loop={true} /> */}
         <video autoPlay={true} loop={true} muted={true}>
           <source
-            src={`${siteConfig.baseUrl || "/"}img/all_module_animation.mp4`}
+            src={`${siteConfig?.baseUrl || "/"}img/all_module_animation.mp4`}
             type="video/mp4"
           />
         </video>
