@@ -22,7 +22,7 @@ Developers are frustrated with the time it takes to ship code and often end up w
 
 ![XKCD](static/ci-tutorial-fast/xkcd.png)
 
-With Harness CI, you can build faster and be more productive. Harness CI's pricing is competitive to other leading CI providers which give you more cost savings with the speed benfit.
+With Harness CI, you can build faster and be more productive. Harness CI's pricing is competitive to other leading CI providers, which gives you more cost savings with the speed benefit.
 Harness CI is built on Drone and over the last 10 years we have been focussing on solving the developer frustration on the time it took to ship code with existing CI tools. Harness CI’s vision is to create a CI tool that is fast, simple, open, and secure.
 
 ### Build pipelines 4x faster than GitHub Actions
