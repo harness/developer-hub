@@ -212,7 +212,7 @@ io.fabric8.kubernetes.client.KubernetesClientException: Operation: [list]  for k
         - name: NO_PROXY  
           value: "192.0.2.0"
 ```
-1. Apply harness-delegate.yaml again to restart the Kubernetes delegate (`kubectl apply -f harness-delegate.yaml`).
+3. Apply harness-delegate.yaml again to restart the Kubernetes delegate (`kubectl apply -f harness-delegate.yaml`).
 
 ### Artifact collection
 
