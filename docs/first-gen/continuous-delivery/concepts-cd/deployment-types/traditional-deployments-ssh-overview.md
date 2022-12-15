@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 Traditional deployments use application package files and a runtime environment (Tomcat, JBoss) in Harness.
 
-For How-tos on Traditional deployments, see [Traditional (SSH) Deployments How-tos](../../traditional-deployments/traditional-deployments-overview.md).You can perform traditional deployments to AWS and Azure, and to any server on any platform via a platform agnostic [Physical Data Center](https://docs.harness.io/article/stkxmb643f-add-physical-data-center-cloud-provider) connection. In all cases, you simply set up a Harness Infrastructure Definition and target the hosts on the platform.
+For How-tos on Traditional deployments, see [Traditional (SSH) Deployments How-tos](../../traditional-deployments/traditional-deployments-overview.md).You can perform traditional deployments to AWS and Azure, and to any server on any platform via a platform agnostic [Physical Data Center](../../../firstgen-platform/account/manage-connectors/add-physical-data-center-cloud-provider.md) connection. In all cases, you simply set up a Harness Infrastructure Definition and target the hosts on the platform.
 
 These deployments are different from Harness deployments using container orchestration platforms like [Kubernetes](../../../first-gen-quickstarts/kubernetes-quickstart.md), [Helm](../../../first-gen-quickstarts/helm-quickstart.md), [Pivotal](../../../first-gen-quickstarts/pivotal-cloud-foundry-quickstart.md), [AWS ECS](../../../first-gen-quickstarts/aws-ecs-deployments.md), and [Azure](../../azure-deployments/aks-howtos/azure-deployments-overview.md).
 
@@ -32,9 +32,9 @@ For a general overview of how Harness works, see [Harness Key Concepts](../../..
 
 The following list describes the major steps involved in a Traditional deployment:
 
-1. Installing the Harness Delegate in your target infrastructure. See [Harness Delegate Overview](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation).
-2. Add a connection to your artifact server. See [Add Artifactory Servers](https://docs.harness.io/article/nj3p1t7v3x-add-artifactory-servers).
-3. Add a connection to your cloud provider. This is a connection to your deployment infrastructure, either physical or hosted in a cloud platform like AWS, GCP, or Azure. See [Add Cloud Providers](https://docs.harness.io/article/whwnovprrb-cloud-providers).
+1. Installing the Harness Delegate in your target infrastructure. See [Harness Delegate Overview](../../../firstgen-platform/account/manage-delegates/delegate-installation.md).
+2. Add a connection to your artifact server. See [Add Artifactory Servers](../../../firstgen-platform/account/manage-connectors/add-artifactory-servers.md).
+3. Add a connection to your cloud provider. This is a connection to your deployment infrastructure, either physical or hosted in a cloud platform like AWS, GCP, or Azure. See [Add Cloud Providers](../../../firstgen-platform/account/manage-connectors/cloud-providers.md).
 4. Create the Harness Application for your deploying your application packages.
 5. Create the Harness Service using the SSH type.
 	1. Add your packaged application file(s) as an Artifact Source.

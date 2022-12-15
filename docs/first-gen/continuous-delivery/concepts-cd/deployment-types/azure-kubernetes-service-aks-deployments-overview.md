@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/article/m7nkbph0ac).This topic describes the concept of a Harness Azure Kubernetes Service (AKS) deployment by describing the high-level steps involved.
+This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../../continuous-delivery/onboard-cd/cd-quickstarts/azure-cd-quickstart.md).This topic describes the concept of a Harness Azure Kubernetes Service (AKS) deployment by describing the high-level steps involved.
 
 For a vendor-agnostic, Harness Kubernetes deployment, see our [Kubernetes Deployments Overview](kubernetes-overview.md) doc.For a quick tutorial, see the [Kubernetes Quickstart](../../../first-gen-quickstarts/kubernetes-quickstart.md).
 
@@ -38,7 +38,7 @@ Harness takes the artifacts and Kubernetes manifests you provide and deploys the
 | Azure deployment in Harness Manager | The same deployment in Kubernetes Dashboard |
 |  |  |
 
-See [What Can I Deploy in Kubernetes?](https://docs.harness.io/article/6ujb3c70fh).
+See [What Can I Deploy in Kubernetes?](../../../firstgen-platform/techref-category/cd-ref/platforms-ref/what-can-i-deploy-in-kubernetes.md).
 
 ### What Does a Harness AKS Deployment Involve?
 

@@ -132,13 +132,13 @@ For more information, go to [Send Notifications using Slack](../../../platform/5
 
 For email notifications, simply type in the email addresses that you want to notify.
 
-For more information, go to [Send Notifications using Email](https://docs.harness.io/article/4bor7kyimj-notify-users-of-pipeline-events#option_email_notifications).
+For more information, go to [Send Notifications using Email](../../../continuous-delivery/cd-advanced/cd-notifications/notify-users-of-pipeline-events.md#option-email-notifications).
 
 ### PagerDuty notification
 
 For PagerDuty notifications, enter the key for a PagerDuty Account/Service to which Harness can send notifications.
 
-For more information, go to [Send Notifications using PagerDuty](https://docs.harness.io/article/4bor7kyimj-notify-users-of-pipeline-events#option_pager_duty_notifications).
+For more information, go to [Send Notifications using PagerDuty](../../../continuous-delivery/cd-advanced/cd-notifications/notify-users-of-pipeline-events.md#option-pager-duty-notifications).
 
 ### Microsoft Teams notification
 

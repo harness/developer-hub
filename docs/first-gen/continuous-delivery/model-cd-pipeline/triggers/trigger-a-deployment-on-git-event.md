@@ -112,7 +112,7 @@ See [New features added to Harness](https://changelog.harness.io/?categories=fix
 
 You can use a Harness secret in your Webhook secret setting. When the Git provider sends a POST request to the Harness URL in the Webhook, Harness will use the secret to validate the request.
 
-In **Select Encrypted Webhook Secret**, create or select a Harness secret. See [Use Encrypted Text Secrets](https://docs.harness.io/article/ygyvp998mu-use-encrypted-text-secrets).
+In **Select Encrypted Webhook Secret**, create or select a Harness secret. See [Use Encrypted Text Secrets](../../../firstgen-platform/security/secrets-management/use-encrypted-text-secrets.md).
 
 Later, when you set up the Webhook for this Trigger in your Git provider, enter the value of the Harness secret in the Webhook secret's settings. Do not enter the secret name.
 
@@ -128,7 +128,7 @@ For more information on Webhook secrets, see the following Git provider docs:
 * [GitLab](https://docs.gitlab.com/ee/user/project/integrations/webhooks.html)
 * [Bitbucket](https://confluence.atlassian.com/bitbucketserver/managing-webhooks-in-bitbucket-server-938025878.html)
 
-For details on using the Harness API to set up Trigger authentication, see [Use Trigger APIs](https://docs.harness.io/article/u21rkuzfod-use-trigger-apis).
+For details on using the Harness API to set up Trigger authentication, see [Use Trigger APIs](../../../firstgen-platform/techref-category/api/use-trigger-apis.md).
 
 ### Authentication and Delegate Scoping
 
@@ -136,7 +136,7 @@ When Harness authenticates the Trigger, the Harness Delegate you have installed 
 
 If you have scoped the Delegate in anyway (such as to specific Applications), it might be too limited to retrieve the secret.
 
-Either remove the limitation (remove all scopes) or map the **Key Management Service** task to the Delegate. See [Delegate Task Category Mapping](https://docs.harness.io/article/nzuhppobyg-map-tasks-to-delegates-and-profiles).
+Either remove the limitation (remove all scopes) or map the **Key Management Service** task to the Delegate. See [Delegate Task Category Mapping](../../../firstgen-platform/account/manage-delegates/map-tasks-to-delegates-and-profiles.md).
 
 The **Task Category Map** feature replaces the **Command** setting in Delegate Scopes, which is deprecated and will be removed soon.
 
@@ -198,7 +198,7 @@ To see how to configure the settings in this topic using YAML, configure the set
 
 ## Related Topics
 
-* [Use Trigger APIs](https://docs.harness.io/article/u21rkuzfod-use-trigger-apis)
+* [Use Trigger APIs](../../../firstgen-platform/techref-category/api/use-trigger-apis.md)
 * [Passing Variables into Workflows from Triggers](../expressions/passing-variable-into-workflows.md)
 * For information on using Triggers as part of Harness GitOps, see [Harness GitOps](../../harness-git-based/harness-git-ops.md).
 * [Trigger Deployments When a New Artifact is Added to a Repo](trigger-a-deployment-on-new-artifact.md)

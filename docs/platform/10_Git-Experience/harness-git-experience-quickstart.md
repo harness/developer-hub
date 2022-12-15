@@ -300,6 +300,6 @@ Congratulations! You now have Harness Git Experience set up, synced with your Gi
 Next, explore other Harness features:
 
 * [CI Pipeline Quickstart](../../continuous-integration/ci-quickstarts/ci-pipeline-quickstart.md)
-* [Kubernetes CD Quickstart](https://docs.harness.io/article/knunou9j30-kubernetes-cd-quickstart)
+* [Kubernetes CD Quickstart](../../continuous-delivery/onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md)
 * [Git Experience How-tos](https://docs.harness.io/article/soavr3jh0i-git-experience-how-tos)
 

@@ -24,7 +24,7 @@ This option is used to execute a Build Workflow or a Build Pipeline only.
 
 ### Before You Begin
 
-* [API Keys](https://docs.harness.io/article/smloyragsm-api-keys)
+* [API Keys](../../../firstgen-platform/security/access-management-howtos/api-keys.md)
 * [Build Workflows](../../concepts-cd/deployment-types/ci-cd-with-the-build-workflow.md)
 * [Build and Deploy Pipeline](../../concepts-cd/deployment-types/artifact-build-and-deploy-pipelines-overview.md)
 * [Add a Service](../setup-services/service-configuration.md)

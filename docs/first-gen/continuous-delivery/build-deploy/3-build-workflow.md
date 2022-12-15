@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 A Build Workflow doesn't require a deployment environment, unlike other Harness Workflows. It simply runs a build process via Jenkins, Bamboo, or Shell Script, and then saves the artifact to an explicit path.
 
-In this document, Jenkins is used as an example, but Harness supports all the common [artifact sources](https://docs.harness.io/article/7dghbx1dbl-configuring-artifact-server) and [custom sources](../model-cd-pipeline/setup-services/custom-artifact-source.md).
+In this document, Jenkins is used as an example, but Harness supports all the common [artifact sources](../../firstgen-platform/account/manage-connectors/configuring-artifact-server.md) and [custom sources](../model-cd-pipeline/setup-services/custom-artifact-source.md).
 
 ### Before You Begin
 
@@ -77,7 +77,7 @@ Next, we will add the **Artifact Collection** step and use the `${Jenkins.buildN
 
 To learn more about the Shell Script command, see [Using the Shell Script Command](../model-cd-pipeline/workflows/capture-shell-script-step-output.md).
 
-You can use these [artifact variable expressions](https://docs.harness.io/article/9dvxcegm90-variables#artifact) in a Shell Script to see the built artifact information (at the end of the Workflow).
+You can use these [artifact variable expressions](../../firstgen-platform/techref-category/variables/variables.md#artifact) in a Shell Script to see the built artifact information (at the end of the Workflow).
 
 ### Step: Configure Artifact Collection
 

@@ -36,7 +36,7 @@ Enter a name and timeout for the Queue step.
 
 In **Resource Key**, enter a unique key. This is the same key you will add to the Queue steps in other Pipelines.
 
-The **Resource Key** supports Fixed Values, Runtime Inputs, and Expressions. See [Fixed Values, Runtime Inputs, and Expressions](https://docs.harness.io/article/f6yobn7iq0-runtime-inputs).
+The **Resource Key** supports Fixed Values, Runtime Inputs, and Expressions. See [Fixed Values, Runtime Inputs, and Expressions](../../platform/20_References/runtime-inputs.md).
 
 In **Run next queued execution after completion of**, select one of the following:
 
@@ -49,9 +49,9 @@ Queue steps can be used on different Pipelines or even multiple executions of th
 
 In **Advanced**, you can use the following options:
 
-* [Step Skip Condition Settings](https://docs.harness.io/article/i36ibenkq2)
-* [Step Failure Strategy Settings](https://docs.harness.io/article/htrur23poj)
-* [Select Delegates with Selectors](https://docs.harness.io/article/nnuf8yv13o)
+* [Step Skip Condition Settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+* [Step Failure Strategy Settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+* [Select Delegates with Selectors](../../platform/2_Delegates/delegate-guide/select-delegates-with-selectors.md)
 
 ### Step 2: Test
 
@@ -59,7 +59,7 @@ Let's look at a simple example to show how Queue steps work.
 
 Here's the YAML for the Pipeline that contains a Custom Stage with a Queue Step followed by a [Shell Script](../cd-execution/cd-general-steps/using-shell-scripts.md) step that runs a Bash `sleep 30`.
 
-You can copy it and paste it into your Harness Project. You simply need to update the `projectIdentifier` and `orgIdentifier` settings to match your current [Project and Org](https://docs.harness.io/article/7fibxie636-projects-and-organizations).
+You can copy it and paste it into your Harness Project. You simply need to update the `projectIdentifier` and `orgIdentifier` settings to match your current [Project and Org](../../platform/1_Organizations-and-Projects/1-projects-and-organizations.md).
 
 
 ```yaml

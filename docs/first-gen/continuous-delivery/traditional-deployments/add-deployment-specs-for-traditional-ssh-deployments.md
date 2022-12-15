@@ -57,7 +57,7 @@ The Download Artifact script is supported for Amazon S3, Artifactory, SMB (Power
 
 You can use Harness built-in variables in your Service scripts, or add your own variables and reference them in your scripts.
 
-For information on Harness built-in variables, see  [What is a Harness Variable Expression?](https://docs.harness.io/article/9dvxcegm90-variables). For information on using variables in your scripts, see  [Add Service Config Variables](../model-cd-pipeline/setup-services/add-service-level-config-variables.md) and [Add Service Config Files](../model-cd-pipeline/setup-services/add-service-level-configuration-files.md).
+For information on Harness built-in variables, see  [What is a Harness Variable Expression?](../../firstgen-platform/techref-category/variables/variables.md). For information on using variables in your scripts, see  [Add Service Config Variables](../model-cd-pipeline/setup-services/add-service-level-config-variables.md) and [Add Service Config Files](../model-cd-pipeline/setup-services/add-service-level-configuration-files.md).
 
 ### See Also
 

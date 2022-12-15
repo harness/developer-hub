@@ -28,12 +28,12 @@ With the **Target to specific hosts only** alternative outlined below, when you 
 
 The **Target to specific hosts only** option is restricted to the following circumstances where it is practical:
 
-* Available only in Workflows that deploy SSH Services (see [Traditional Deployments](../../traditional-deployments/traditional-deployments-overview.md)) or WinRM Services (see [IIS (.NET) Quickstart](../../../first-gen-quickstarts/iis-net-quickstart.md)), and that therefore contain a [Select Nodes](https://docs.harness.io/article/9h1cqaxyp9-select-nodes-workflow-step) step.
+* Available only in Workflows that deploy SSH Services (see [Traditional Deployments](../../traditional-deployments/traditional-deployments-overview.md)) or WinRM Services (see [IIS (.NET) Quickstart](../../../first-gen-quickstarts/iis-net-quickstart.md)), and that therefore contain a [Select Nodes](../../../firstgen-platform/techref-category/cd-ref/workflow-steps-and-settings/select-nodes-workflow-step.md) step.
 * Available only in direct Workflow execution—not in Pipeline or Trigger execution.
 * Available only in Basic, Canary, or Rolling Workflows that deploy a *single* Harness SSH or WinRM Service.
 * Unavailable with [dynamically provisioned](../infrastructure-provisioner/add-an-infra-provisioner.md) Infrastructure Definitions, relying on Terraform or CloudFormation (where selecting nodes/hosts is not possible).
 * In a multi-phase Workflow, your selected hosts will override only the first phase. Harness will skip remaining phases.
-* Overrides any [Select Nodes](https://docs.harness.io/article/9h1cqaxyp9-select-nodes-workflow-step) count, percentage, or specific hosts statically configured in the Workflow.
+* Overrides any [Select Nodes](../../../firstgen-platform/techref-category/cd-ref/workflow-steps-and-settings/select-nodes-workflow-step.md) count, percentage, or specific hosts statically configured in the Workflow.
 * Overrides the option to **Skip instances with the same artifact version already deployed.**
 * Defaults to no selected hosts each time you start or rerun a Workflow deployment.
 

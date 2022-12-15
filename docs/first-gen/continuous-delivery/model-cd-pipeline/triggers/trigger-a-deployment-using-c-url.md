@@ -187,7 +187,7 @@ By using Harness API keys in your cURL commands, you can enforce **authorization
 
 #### Permissions Required
 
-* **Account Permissions:** to enforce API keys for manual triggers, your Harness User account must belong to a User Group with the **Manage Applications** Account Permissions option enabled. See [Managing Users and Groups (RBAC)](https://docs.harness.io/article/ven0bvulsj-users-and-permissions).
+* **Account Permissions:** to enforce API keys for manual triggers, your Harness User account must belong to a User Group with the **Manage Applications** Account Permissions option enabled. See [Managing Users and Groups (RBAC)](../../../firstgen-platform/security/access-management-howtos/users-and-permissions.md).
 * **Application Permissions:** to initiate any manual triggers (with or without using API keys), the Harness User account must belong to a User Group with the **Deployments** Permission Type and the **Execute Workflow** and/or **Execute Pipeline** Application Permissions.
 
 #### Enforce API Keys for Manual Triggers
@@ -196,7 +196,7 @@ To enforce API keys for manual triggers, do the following:
 
 In Harness, in **Security**, click **Access Management**.
 
-Click **API Keys**, and then follow the steps in [API Keys](https://docs.harness.io/article/smloyragsm-api-keys) to create an API key. Or you can select an existing key.
+Click **API Keys**, and then follow the steps in [API Keys](../../../firstgen-platform/security/access-management-howtos/api-keys.md) to create an API key. Or you can select an existing key.
 
 Make sure your API key is assigned a User Group that only contains the Harness Users that you want to use this API key to run the Manual Trigger cURL command.
 

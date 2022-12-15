@@ -59,7 +59,7 @@ Once you select a Dynatrace server in **Dynatrace Server**, Harness goes and fet
 
 Select the Dynatrace service to monitor. Dynatrace analytics are performed at Dynatrace's service level.
 
-You can also enter a built-in [Harness variable expression](https://docs.harness.io/article/9dvxcegm90-variables) or custom variable, such as a [Service](../../model-cd-pipeline/setup-services/service-configuration.md) or [Workflow variable](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md):
+You can also enter a built-in [Harness variable expression](../../../firstgen-platform/techref-category/variables/variables.md) or custom variable, such as a [Service](../../model-cd-pipeline/setup-services/service-configuration.md) or [Workflow variable](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md):
 
 [![](./static/2-24-7-service-guard-for-dynatrace-19.png)](./static/2-24-7-service-guard-for-dynatrace-19.png)
 

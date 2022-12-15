@@ -90,9 +90,9 @@ Adding a Helm chart is a simple process of connecting Harness to the Git or HTTP
    ![](./static/deploy-helm-charts-02.png)
 1. In **Specify Helm Chart Store**, select the type of repo or or cloud storage service (Google Cloud Storage, AWS S3) you're using.
 
-For the steps and settings of each option, see the [Connect to an Artifact Repo](https://docs.harness.io/article/xxvnk67c5x-connect-to-an-artifact-repo) How-tos.
+For the steps and settings of each option, see the [Connect to an Artifact Repo](../../../platform/7_Connectors/connect-to-an-artifact-repo.md) How-tos.
 
-If you are using Google Cloud Storage or Amazon S3, see [Cloud Platform Connectors](https://docs.harness.io/category/1ehb4tcksy).
+If you are using Google Cloud Storage or Amazon S3, see [Cloud Platform Connectors](https://docs.harness.io/category/cloud-platform-connectors).
 
 You can also use a local Helm chart if you are deploying the same Helm chart and version to many clusters/namespaces in parallel. For information, see [Use a local Helm Chart](use-a-local-helm-chart.md).For all of the Helm Chart Store types (Git, GitHub, HTTP Helm, OCI, etc), you will need to provide the following Helm info:
 
@@ -101,7 +101,7 @@ You can also use a local Helm chart if you are deploying the same Helm chart and
 - **Chart Name**: Enter the name of the Helm chart for Harness to pull. Don't include the chart version. You will add that in the **Chart Version** setting. Ex: `todolist`.
 - **Chart Version**: Enter the version of the chart you want to deploy. This is found in the Chart.yaml `version` label in your chart.You can list all available versions of a chart using the `search repo` command with the `--versions` option. See [helm search repo](https://helm.sh/docs/helm/helm_search_repo) from Helm.
   - If you leave **Chart Version** empty Harness gets the latest chart.
-  - If you are going to use a Harness Trigger to run this Pipeline when a new version is added to your chart repo, select the **Runtime Input** option. When you set up the Trigger, you will select this chart and Harness will listen on the repo for new versions. See [Trigger Pipelines on New Helm Chart](https://docs.harness.io/article/54eqk0d1bd-trigger-pipelines-on-new-helm-chart). Ex: `1.4.1`.
+  - If you are going to use a Harness Trigger to run this Pipeline when a new version is added to your chart repo, select the **Runtime Input** option. When you set up the Trigger, you will select this chart and Harness will listen on the repo for new versions. See [Trigger Pipelines on New Helm Chart](../../../platform/11_Triggers/trigger-pipelines-on-new-helm-chart.md). Ex: `1.4.1`.
 - **Helm Version**: Select the version of Helm used in your chart. See [Helm Version Support Policy](https://helm.sh/docs/topics/version_skew/) from Helm. Ex: `Version 2`.
 - **Values YAML**: Your chart will have a default values.yaml file in its root folder.
   - If you do not enter a values.yaml in **Values YAML**, Harness uses the default values.yaml file in the root of the chart.
@@ -130,7 +130,7 @@ You can also use a local Helm chart if you are deploying the same Helm chart and
 
   The values3.yaml key:value pair overrides the key:value pair of values2.yaml and values.yaml files.
 
-  You can also select **Expression** and use [Harness expressions](https://docs.harness.io/article/lml71vhsim-harness-variables) in this setting. The resolved expression must be the name of a Values YAML file in the chart. For example, you could create a Stage variable for **values4.yaml** named **qa** and then reference it in **Values YAML** like this: `<+stage.variables.qa>`.
+  You can also select **Expression** and use [Harness expressions](../../../platform/12_Variables-and-Expressions/harness-variables.md) in this setting. The resolved expression must be the name of a Values YAML file in the chart. For example, you could create a Stage variable for **values4.yaml** named **qa** and then reference it in **Values YAML** like this: `<+stage.variables.qa>`.
 - **Skip Resource Versioning**: By default, Harness versions ConfigMaps and Secrets deployed into Kubernetes clusters.
   In some cases, such as when using public manifests or Helm charts, you cannot add the annotation.When you enable **Skip Resource Versioning**, Harness will not perform versioning of ConfigMaps and Secrets for the resource.If you have enabled **Skip Resource Versioning** for a few deployments and then disable it, Harness will start versioning ConfigMaps and Secrets.
 - **Helm Command Flags**: You can use Helm command flags to extend the Helm commands that Harness runs when deploying your Helm chart.Harness will run Helm-specific Helm commands and their flags as part of preprocessing. All the commands you select are run before `helm install/upgrade`.
@@ -143,7 +143,7 @@ Here's an example:
 
 ![](./static/deploy-helm-charts-03.png)
 
-If you haven't set up a Harness Delegate, you can add one as part of the Connector setup. This process is described in [Helm CD Quickstart](../../onboard-cd/cd-quickstarts/helm-cd-quickstart.md) and [Install a Kubernetes Delegate](https://docs.harness.io/article/f9bd10b3nj-install-a-kubernetes-delegate).
+If you haven't set up a Harness Delegate, you can add one as part of the Connector setup. This process is described in [Helm CD Quickstart](../../onboard-cd/cd-quickstarts/helm-cd-quickstart.md) and [Install a Kubernetes Delegate](../../../platform/2_Delegates/delegate-guide/install-a-kubernetes-delegate.md).
 
 Once your Helm chart is added, it appears in the **Manifests** section. For example:
 
@@ -176,7 +176,7 @@ For example, let's say you have 3 files: the default values.yaml, values2.yaml a
 
 All files contain the same key:value pair. The values3.yaml key:value pair overrides the key:value pair of values2.yaml and values.yaml files.
 
-Your values.yaml file can use [Go templating](https://godoc.org/text/template) and [Harness built-in variable expressions](https://docs.harness.io/article/lml71vhsim-harness-variables).
+Your values.yaml file can use [Go templating](https://godoc.org/text/template) and [Harness built-in variable expressions](../../../platform/12_Variables-and-Expressions/harness-variables.md).
 
 See [Example Kubernetes Manifests using Go Templating](../../cd-technical-reference/cd-k8s-ref/example-kubernetes-manifests-using-go-templating.md).
 
@@ -325,7 +325,7 @@ See [Kubernetes Rollback](../../cd-technical-reference/cd-k8s-ref/kubernetes-rol
 
 ## Option: Trigger the Pipeline on a New Chart Version
 
-You can set up a Harness Trigger to listen on the chart repo and execute the Pipeline when a new chart version appears. See [Trigger Pipelines on New Helm Chart](https://docs.harness.io/article/54eqk0d1bd-trigger-pipelines-on-new-helm-chart).
+You can set up a Harness Trigger to listen on the chart repo and execute the Pipeline when a new chart version appears. See [Trigger Pipelines on New Helm Chart](../../../platform/11_Triggers/trigger-pipelines-on-new-helm-chart.md).
 
 ## Notes
 

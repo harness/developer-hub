@@ -16,7 +16,7 @@ For information about how configuration files are used in a Kubernetes deploymen
 
 * Read the [Create an Application](../applications/application-configuration.md) topic to get an overview of how Harness organizes Services.
 * Read the [Add a Service](service-configuration.md) topic to understand the process to add a Service to an Application.
-* Read [Configuration as Code](https://docs.harness.io/article/htvzryeqjw-configuration-as-code) to see how you can quickly configure your Harness Service using your existing YAML in Git.
+* Read [Configuration as Code](../../../firstgen-platform/config-as-code/configuration-as-code.md) to see how you can quickly configure your Harness Service using your existing YAML in Git.
 
 ### Limitations
 
@@ -26,7 +26,7 @@ All file types are supported.
 
 ### Review: Required Permissions
 
-Make sure you have the **update** permission on the Service before you try to add the Service Config File. See [Managing Users and Groups (RBAC)](https://docs.harness.io/article/ven0bvulsj-users-and-permissions) for more information about assigning permissions.
+Make sure you have the **update** permission on the Service before you try to add the Service Config File. See [Managing Users and Groups (RBAC)](../../../firstgen-platform/security/access-management-howtos/users-and-permissions.md) for more information about assigning permissions.
 
 ### Review: String and Base64 Options
 
@@ -79,7 +79,7 @@ In most cases, use the **Copy Configs** command to copy the Config Files to your
 
 ![](./static/add-service-level-configuration-files-03.png)
 
-By default, it uses the [Application Defaults](https://docs.harness.io/article/9dvxcegm90-variables#application_default_variables) path `$WINGS_RUNTIME_PATH`.
+By default, it uses the [Application Defaults](../../../firstgen-platform/techref-category/variables/variables.md#application-default-variables) path `$WINGS_RUNTIME_PATH`.
 
 When the Workflow using this Service is deployed, the Copy Configs command copies the Service Config File to the target host:
 
@@ -87,9 +87,9 @@ When the Workflow using this Service is deployed, the Copy Configs command copie
 
 ### Review: Use Config Files in Delegate Profiles
 
-The `${configFile.getAsString("fileName")}` and `${configFile.getAsBase64("fileName")}` expressions are not supported in [Delegate Profiles](https://docs.harness.io/article/yd4bs0pltf-run-scripts-on-the-delegate-using-profiles).
+The `${configFile.getAsString("fileName")}` and `${configFile.getAsBase64("fileName")}` expressions are not supported in [Delegate Profiles](../../../firstgen-platform/account/manage-delegates/run-scripts-on-the-delegate-using-profiles.md).
 
-Instead, encode the file in base64 and then add the file to Harness as an [Encrypted File Secret](https://docs.harness.io/article/nt5vchhka4-use-encrypted-file-secrets).
+Instead, encode the file in base64 and then add the file to Harness as an [Encrypted File Secret](../../../firstgen-platform/security/secrets-management/use-encrypted-file-secrets.md).
 
 Next, in the Delegate Profile script, reference the secret, pipe it to base64 and output it to the path where you need it:
 
@@ -99,5 +99,5 @@ echo ${secrets.getValue("secret_name")} | base64 -d > /path/to/file
 ```
 ### Notes
 
-* If you sync your Harness Application as described in [Harness Application-Level Git Sync](https://docs.harness.io/article/6mr74fm55h-harness-application-level-sync), the Config Files are also synched to your remote repo.
+* If you sync your Harness Application as described in [Harness Application-Level Git Sync](../../../firstgen-platform/config-as-code/harness-application-level-sync.md), the Config Files are also synched to your remote repo.
 

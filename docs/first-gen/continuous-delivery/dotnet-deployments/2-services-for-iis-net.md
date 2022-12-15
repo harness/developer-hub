@@ -165,7 +165,7 @@ Write-Host "Done."
 ```
 Note the following:
 
-* The `$releaseId` variable has the value `${workflow.ReleaseNo}`. This is one of the builtin Harness variables. For more information, see [Variables and Expressions in Harness](https://docs.harness.io/article/9dvxcegm90-variables).
+* The `$releaseId` variable has the value `${workflow.ReleaseNo}`. This is one of the builtin Harness variables. For more information, see [Variables and Expressions in Harness](../../firstgen-platform/techref-category/variables/variables.md).
 * The `$VirtualDirPath` variable shows you where your IIS directory will be deployed.
 
 When you deploy this service as part of your workflow, you will see these variables used in the Harness deployment dashboard:

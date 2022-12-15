@@ -16,7 +16,7 @@ You template a Pipeline by replacing these settings with variable expressions. E
 
 * [Pipelines](pipeline-configuration.md)
 * [Workflows](../workflows/workflow-configuration.md)
-* [Variables and Expressions in Harness](https://docs.harness.io/article/9dvxcegm90-variables)
+* [Variables and Expressions in Harness](../../../firstgen-platform/techref-category/variables/variables.md)
 
 ### Visual Summary
 

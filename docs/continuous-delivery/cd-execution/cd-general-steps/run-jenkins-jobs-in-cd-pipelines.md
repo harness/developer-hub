@@ -22,7 +22,7 @@ Harness integrates with [Jenkins](https://jenkins.io/), enabling you to run Jen
 
 ## Supported Platforms and Technologies
 
-See [Supported Platforms and Technologies](https://docs.harness.io/article/220d0ojx5y-supported-platforms).
+See [Supported Platforms and Technologies](../../../first-gen/starthere-firstgen/supported-platforms.md).
 
 ## Limitations and Requirements
 
@@ -37,19 +37,19 @@ When executing a job, you can also *dynamically capture* the output from the j
 
 ### What Information is Available to Capture?
 
-Any Jenkins job information in the particular shell session of the Pipeline can be captured and output using one or more Jenkins steps. In addition, you can capture information available using the built-in Harness variables. For more information, see [Built-in and Custom Harness Variables Reference](https://docs.harness.io/article/lml71vhsim-harness-variables).
+Any Jenkins job information in the particular shell session of the Pipeline can be captured and output using one or more Jenkins steps. In addition, you can capture information available using the built-in Harness variables. For more information, see [Built-in and Custom Harness Variables Reference](../../../platform/12_Variables-and-Expressions/harness-variables.md).
 
 Capturing and exporting output in the Jenkins step can be very powerful. For example, a Jenkins step could capture Jenkins build information, and a Harness Service could echo the build information and use it in a complex function, and then export the output down the Pipeline for further evaluation.
 
 ## Step 1: Add the Jenkins Step
 
-This step assumes you have a created a Pipeline and CD stage. If you are new to stages, see [Add a Stage](https://docs.harness.io/article/2chyf1acil-add-a-stage).
+This step assumes you have a created a Pipeline and CD stage. If you are new to stages, see [Add a Stage](../../../platform/8_Pipelines/add-a-stage.md).
 
 In your CD Stage's **Execution**, click **Add Step**, and then click **Jenkins**.
 
 ## Step 2: Jenkins Connector
 
-Select the Jenkins server you added as a Harness Jenkins Connector. For more information, see [Connect to Jenkins](https://docs.harness.io/article/7frr40zml5-connect-to-jenkins).
+Select the Jenkins server you added as a Harness Jenkins Connector. For more information, see [Connect to Jenkins](../../../platform/7_Connectors/connect-to-jenkins.md).
 
 ## Step 3: Job Name
 
@@ -59,7 +59,7 @@ Select the Jenkins job (also called a project) to execute. The list is automatic
 
 You can use Runtime Inputs or Expressions for the Jenkins Connector and Job Name.
 
-See [Fixed Values, Runtime Inputs, and Expressions](https://docs.harness.io/article/f6yobn7iq0-runtime-inputs).
+See [Fixed Values, Runtime Inputs, and Expressions](../../../platform/20_References/runtime-inputs.md).
 
 ## Option: Job Parameters
 
@@ -84,9 +84,9 @@ If this setting is enabled then `Unstable` statuses will be considered as `Succe
 
 In **Advanced**, you can use the following options:
 
-* [Step Skip Condition Settings](https://docs.harness.io/article/i36ibenkq2)
-* [Step Failure Strategy Settings](https://docs.harness.io/article/htrur23poj)
-* [Select Delegates with Selectors](https://docs.harness.io/article/nnuf8yv13o)
+* [Step Skip Condition Settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+* [Step Failure Strategy Settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+* [Select Delegates with Selectors](../../../platform/2_Delegates/delegate-guide/select-delegates-with-selectors.md)
 
 ## Review: Captured Environment Variables from Jenkins Builds
 

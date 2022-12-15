@@ -17,7 +17,7 @@ This topic will walk you through the process.
 ### Before You Begin
 
 * [Harness Key Concepts](../../../starthere-firstgen/harness-key-concepts.md)
-* [Delegate Installation and Management](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation)
+* [Delegate Installation and Management](../../../firstgen-platform/account/manage-delegates/delegate-installation.md)
 
 ### Visual Summary
 
@@ -37,7 +37,7 @@ When a task is ready to be assigned, the Harness Manager first validates its lis
 The following information describes how the Harness Manager validates and assigns tasks to a Delegate:
 
 * **Heartbeats** - Running Delegates send heartbeats to the Harness Manager in 1 minute intervals. If the Manager does not have a heartbeat for a Delegate when a task is ready to be assigned, it will not assign the task to that Delegate.
-* **Selectors and Scoping** - For more information, see  [Delegate Selectors](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation#delegate_selectors) and  [Delegate Scope](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation#delegate_scope).
+* **Selectors and Scoping** - For more information, see  [Delegate Selectors](../../../firstgen-platform/account/manage-delegates/delegate-installation.md#delegate-selectors) and  [Delegate Scope](../../../firstgen-platform/account/manage-delegates/delegate-installation.md#delegate-scope).
 * **Whitelisting** - Once a Delegate has been validated for a task, it is whitelisted for that task and will likely be used again for that task. The whitelisting criteria is the URL associated with the task, such as a connection to a cloud platform, repo, or API. A Delegate is whitelisted for all tasks using that URL. The Time-To-Live (TTL) for the whitelisting is 6 hours, and the TTL is reset with each successful task validation.
 * **Blacklisting** - If a Delegate fails to perform a task that Delegate is blacklisted for that task and will not be tried again. TTL is 5 minutes. This is true if there is only one Delegate and even if the Delegate is selector for that task with a Selector, such as with a Shell Script command in a Workflow.
 

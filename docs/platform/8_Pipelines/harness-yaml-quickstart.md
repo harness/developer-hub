@@ -33,7 +33,7 @@ You'll learn how to:
 ### Before you begin
 
 * Review [Harness Key Concepts](../../first-gen/starthere-firstgen/harness-key-concepts.md) to establish a general understanding of Harness.
-* The best way to get started with YAML is to do a CI or CD quickstart and then view the YAML in Pipeline Studio. See ​[CD Quickstarts](https://docs.harness.io/category/c9j6jejsws) and [CI Quickstarts](https://docs.harness.io/category/onboard-with-ci).
+* The best way to get started with YAML is to do a CI or CD quickstart and then view the YAML in Pipeline Studio. See ​[CD Quickstarts](https://docs.harness.io/category/cd-tutorials) and [CI Quickstarts](https://docs.harness.io/category/onboard-with-ci).
 
 ### Visual Summary
 
@@ -147,7 +147,7 @@ For details on each type, see:
 
 * **Approval:** [Using Manual Harness Approval Stages](../9_Approvals/adding-harness-approval-stages.md), [Adding Jira Approval Stages and Steps](../9_Approvals/adding-jira-approval-stages.md)
 * **CI:** [CI Pipeline Quickstart](../../continuous-integration/ci-quickstarts/ci-pipeline-quickstart.md)
-* **Deployment:** [CD Quickstarts](https://docs.harness.io/category/c9j6jejsws)
+* **Deployment:** [CD Quickstarts](https://docs.harness.io/category/cd-tutorials)
 
 For this quickstart, we're going to use the **Deployment** type.
 
@@ -210,7 +210,7 @@ For this quickstart, we'll just use `service` and `serviceDefinition`. We're jus
 ```
 This stage simply adds a Service named `myservice` and a Service Definition using Kubernetes manifests.
 
-For details on adding manifests to a Service Definition, see [Add Kubernetes Manifests](https://docs.harness.io/article/ssbq0xh0hx-define-kubernetes-manifests).
+For details on adding manifests to a Service Definition, see [Add Kubernetes Manifests](../../continuous-delivery/cd-advanced/cd-kubernetes-category/define-kubernetes-manifests.md).
 
 The `connectorRef` setting is for the Harness Connector that connects to the Git repo where the manifests are located. In the Visual editor you can create/select Connectors inline, but in the YAML editor, you must use the name of an existing Connector. In this example, we simply use a Runtime Input (`connectorRef: <+input>`) and we can add the Connector later.
 

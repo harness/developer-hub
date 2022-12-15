@@ -534,7 +534,7 @@ Harness Canary and Blue/Green Workflow default steps support a single **Deployme
 
 Rolling Workflow default steps support Deployment, StatefulSet, or DaemonSet as **managed** workloads, but not Jobs.
 
-You can deploy any Kubernetes workload in any Workflow type by using a Harness  [annotation](https://docs.harness.io/article/ttn8acijrz-versioning-and-annotations#annotations) to make it unmanaged (`harness.io/direct-apply`).
+You can deploy any Kubernetes workload in any Workflow type by using a Harness  [annotation](../firstgen-platform/techref-category/cd-ref/platforms-ref/versioning-and-annotations.md#annotations) to make it unmanaged (`harness.io/direct-apply`).
 
 The  [Apply Step](../continuous-delivery/kubernetes-deployments/deploy-manifests-separately-using-apply-step.md) can deploy any workloads or objects in any Workflow type as a managed workload.
 
@@ -561,7 +561,7 @@ Currently, Kubernetes command-line tool kubectl binary version 1.19.2 is support
 
 Harness certifies its Helm support using [Helm 3.1.2](https://github.com/helm/helm/releases/tag/v3.1.2).
 
-Helm chart dependencies are not supported in Git source repositories (Harness [Source Repo Providers](https://docs.harness.io/article/ay9hlwbgwa-add-source-repo-providers)). Helm chart dependencies are supported in [Helm Chart Repositories.](https://docs.harness.io/article/0hrzb1zkog-add-helm-repository-servers)
+Helm chart dependencies are not supported in Git source repositories (Harness [Source Repo Providers](../firstgen-platform/account/manage-connectors/add-source-repo-providers.md)). Helm chart dependencies are supported in [Helm Chart Repositories.](../firstgen-platform/account/manage-connectors/add-helm-repository-servers.md)
 
 ##### Artifact Servers, Repos, and Artifacts
 
@@ -645,12 +645,12 @@ The following table lists Harness support for collaboration tools.
 
 |  Provider Name |  Notification |  Approval/Change Management |
 | --- | --- | --- |
-| [Microsoft Teams](https://docs.harness.io/article/b84f0pu1cl-send-notifications-to-microsoft-teams) |  Yes |  N/A |
-| [Email (SMTP)](https://docs.harness.io/article/cv98scx8pj-collaboration-providers) |  Yes |  N/A |
-| [Slack](https://docs.harness.io/article/kf828e347t-notification-groups) |  Yes |  N/A |
-| [Jira](https://docs.harness.io/article/cv98scx8pj-collaboration-providers) - Supported Custom Field Types: Option, Array, Any, Number, Date, and String - Non-supported Field Types: User, Attachment |  Yes |  Yes |
-| [ServiceNow](https://docs.harness.io/article/cv98scx8pj-collaboration-providers) |  Yes |  Yes |
-| [PagerDuty](https://docs.harness.io/article/kf828e347t-notification-groups) |  Yes |  |
+| [Microsoft Teams](../firstgen-platform/account/manage-notegroups/send-notifications-to-microsoft-teams.md) |  Yes |  N/A |
+| [Email (SMTP)](../firstgen-platform/account/manage-connectors/collaboration-providers.md) |  Yes |  N/A |
+| [Slack](../firstgen-platform/account/manage-notegroups/notification-groups.md) |  Yes |  N/A |
+| [Jira](../firstgen-platform/account/manage-connectors/collaboration-providers.md) - Supported Custom Field Types: Option, Array, Any, Number, Date, and String - Non-supported Field Types: User, Attachment |  Yes |  Yes |
+| [ServiceNow](../firstgen-platform/account/manage-connectors/collaboration-providers.md) |  Yes |  Yes |
+| [PagerDuty](../firstgen-platform/account/manage-notegroups/notification-groups.md) |  Yes |  |
 
 ### Access Control
 
@@ -660,20 +660,20 @@ The following table lists Harness support for SSO protocols and tools.
 
 |  SSO Type |  SSO Providers |  Authentication Supported |  Authorization (Group Linking) Supported |  SCIM Provisioning |
 | --- | --- | --- | --- | --- |
-| [SAML](https://docs.harness.io/article/zy8yjcrqzg-single-sign-on-sso-with-saml) |  Okta |  Yes |  Yes |  Yes |
+| [SAML](../firstgen-platform/security/access-management-howtos/single-sign-on-sso-with-saml.md) |  Okta |  Yes |  Yes |  Yes |
 |  |  Azure Active Directory |  Yes |  Yes |  Yes |
 |  |  Google |  Yes |  No | No |
 |  |  Others |  Yes |  Yes | No |
 |  |  OneLogin |  Yes |  Yes |  Yes |
 |  |  ADFS SAML |  Yes |  No | No |
 |  |  PingFederate |  Yes |  No | No |
-| [OAuth 2.0](https://docs.harness.io/article/02ehq56x6d-single-sign-on-sso-with-oauth-2-0) |  Github |  Yes |  No |  N/A |
+| [OAuth 2.0](../firstgen-platform/security/access-management-howtos/single-sign-on-sso-with-oauth-2-0.md) |  Github |  Yes |  No |  N/A |
 |  |  GitLab |  Yes |  No |  N/A |
 |  |  Bitbucket |  Yes |  No |  N/A |
 |  |  Google |  Yes |  No |  N/A |
 |  |  Azure |  Yes |  No |  N/A |
 |  |  LinkedIn |  Yes |  No |  N/A |
-| [LDAP](https://docs.harness.io/article/85rycqfiqg-sso-ldap) (Delegate connectivity needed) |  Active Directory |  Yes |  Yes |  N/A |
+| [LDAP](../firstgen-platform/security/access-management-howtos/sso-ldap.md) (Delegate connectivity needed) |  Active Directory |  Yes |  Yes |  N/A |
 |  |  Open LDAP |  Yes |  Yes |  N/A |
 |  |  Oracle LDAP |  Yes |  Yes |  N/A |
 
@@ -685,12 +685,12 @@ The following table lists Harness support for cloud platform secrets management 
 
 |  Provider Name |  Key Encryption Support |  Encrypted Data Storaged with Harness |  Support for Referencing Existing Secrets |
 | --- | --- | --- | --- |
-| [AWS KMS](https://docs.harness.io/article/au38zpufhr-secret-management#harness_secret_store_aws_kms) |  Yes |  Yes |  No |
-| [AWS Secret Manager](https://docs.harness.io/article/au38zpufhr-secret-management#aws_secrets_manager) |  Yes |  No |  Yes |
-| [Hashicorp Vault](https://docs.harness.io/article/au38zpufhr-secret-management#hashi_corp_vault) |  Yes |  No |  Yes |
-| [Azure Key Vault](https://docs.harness.io/article/au38zpufhr-secret-management#azure_key_vault) |  Yes |  No |  Yes |
-| [CyberArk](https://docs.harness.io/article/au38zpufhr-secret-management#cyber_ark) |  No |  No |  Yes |
-| [Google KMS](https://docs.harness.io/article/au38zpufhr-secret-management#google_cloud_kms) |  Yes |  Yes |  No |
+| [AWS KMS](../firstgen-platform/security/secrets-management/secret-management.md#harness-secret-store-aws-kms) |  Yes |  Yes |  No |
+| [AWS Secret Manager](../firstgen-platform/security/secrets-management/secret-management.md#aws-secrets-manager) |  Yes |  No |  Yes |
+| [Hashicorp Vault](../firstgen-platform/security/secrets-management/secret-management.md#hashi-corp-vault) |  Yes |  No |  Yes |
+| [Azure Key Vault](../firstgen-platform/security/secrets-management/secret-management.md#azure-key-vault) |  Yes |  No |  Yes |
+| [CyberArk](../firstgen-platform/security/secrets-management/secret-management.md#cyber-ark) |  No |  No |  Yes |
+| [Google KMS](../firstgen-platform/security/secrets-management/secret-management.md#google-cloud-kms) |  Yes |  Yes |  No |
 
 ### Harness Self-Managed Enterprise Edition
 

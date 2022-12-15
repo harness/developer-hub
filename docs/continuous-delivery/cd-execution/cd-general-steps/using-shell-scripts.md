@@ -50,11 +50,11 @@ You don't need to use `export` for the variables to use them with **Script Outpu
 
 ### Using Harness expressions in your scripts
 
-If you need quotes around the [Harness variable expressions](https://docs.harness.io/article/lml71vhsim-harness-variables) in your script, use single quotes, like this:
+If you need quotes around the [Harness variable expressions](../../../platform/12_Variables-and-Expressions/harness-variables.md) in your script, use single quotes, like this:
 
 `export EVENT_PAYLOAD='<+trigger.eventPayload>'` 
 
-If you use [Harness variable expressions](https://docs.harness.io/article/lml71vhsim-harness-variables) in comments in your script, Harness will still try to evaluate and render the variable expressions. Don't use variable expressions that Harness cannot evaluate.
+If you use [Harness variable expressions](../../../platform/12_Variables-and-Expressions/harness-variables.md) in comments in your script, Harness will still try to evaluate and render the variable expressions. Don't use variable expressions that Harness cannot evaluate.
 
 ## Option: Specify Input Variables
 
@@ -158,12 +158,12 @@ In **Execution Target**, select **Specify on** **Target Host** or **On Delegate*
 
 In you select On Delegate, the script is executed on whichever Delegate runs the step. You can use **Delegate Selector** in **Advanced** to pick the Delegate(s) if needed.
 
-See [Select Delegates with Selectors](https://docs.harness.io/article/nnuf8yv13o-select-delegates-with-selectors).
+See [Select Delegates with Selectors](../../../platform/2_Delegates/delegate-guide/select-delegates-with-selectors.md).
 
 If you select **Target Host**, enter the following:
 
 * **Target Host:** enter the IP address or hostname of the remote host where you want to execute the script. The target host must be in the **Infrastructure Definition** selected when you created the workflow, and the Harness Delegate must have network access to the target host. You can also enter the variable `<+instance.name>` and the script will execute on whichever target host is used during deployment.
-* **SSH Connection Attribute:** select the execution credentials to use for the shell session. For information on setting up execution credentials, see [Add SSH Keys](https://docs.harness.io/article/xmp9j0dk8b-add-use-ssh-secrets).
+* **SSH Connection Attribute:** select the execution credentials to use for the shell session. For information on setting up execution credentials, see [Add SSH Keys](../../../platform/6_Security/4-add-use-ssh-secrets.md).
 
 ## Option: Advanced Settings
 
@@ -199,7 +199,7 @@ Instead, if you publish output variables in your Shell Script command, structure
 
 You can use Harness secrets in your Shell Script steps.
 
-See [Add Text Secrets](https://docs.harness.io/article/osfw70e59c-add-use-text-secrets).
+See [Add Text Secrets](../../../platform/6_Security/2-add-use-text-secrets.md).
 
 Basically, you use `<+secrets.getValue("secret_Id")>` to refer to the secret.
 

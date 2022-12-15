@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-You can configure a Workflow using YAML. You can view the YAML using the main Code editor, as described in [Configuration as Code](https://docs.harness.io/article/htvzryeqjw-configuration-as-code), or you can jump directly to the YAML of a specific Workflow in the **Workflows** page.
+You can configure a Workflow using YAML. You can view the YAML using the main Code editor, as described in [Configuration as Code](../../../firstgen-platform/config-as-code/configuration-as-code.md), or you can jump directly to the YAML of a specific Workflow in the **Workflows** page.
 
 In this topic:
 

@@ -33,7 +33,7 @@ You can use Harness to run a build or test process via Jenkins, Bamboo, Shell Sc
 
 First, you need to connect Harness with Jenkins, Bamboo, or other CI tool.
 
-For Jenkins and Bamboo connections, see [Add Artifact Servers](https://docs.harness.io/article/7dghbx1dbl-configuring-artifact-server).
+For Jenkins and Bamboo connections, see [Add Artifact Servers](../../../firstgen-platform/account/manage-connectors/configuring-artifact-server.md).
 
 For integrating CI using Shell Scripts, see [Using the Shell Script Command](capture-shell-script-step-output.md).
 
@@ -49,7 +49,7 @@ Let's look at a Jenkins pipeline execution that uses parameters to skip the buil
 
 In Harness, we'll execute this Jenkins pipeline as part of a deployment Workflow.
 
-The first step is to add a Jenkins Artifact Server in Harness, as described in [Add Artifact Servers](https://docs.harness.io/article/7dghbx1dbl-configuring-artifact-server).
+The first step is to add a Jenkins Artifact Server in Harness, as described in [Add Artifact Servers](../../../firstgen-platform/account/manage-connectors/configuring-artifact-server.md).
 
 In this example, we are running Jenkins locally:
 
@@ -95,7 +95,7 @@ This Environment configuration enables the same Workflow to run using different 
 	 
 4. Add values for the job parameters Harness automatically populates.
 
-You can use Harness variable expressions for values. For example, Service or Workflow variables. Users can assign values when the Workflow is deployed. See [Variables and Expressions in Harness](https://docs.harness.io/article/9dvxcegm90-variables).
+You can use Harness variable expressions for values. For example, Service or Workflow variables. Users can assign values when the Workflow is deployed. See [Variables and Expressions in Harness](../../../firstgen-platform/techref-category/variables/variables.md).
 
 Let's look at the Workflow execution.
 
@@ -285,7 +285,7 @@ This could be all the hosts configured Infrastructure Definition, a percentage s
 
   ![](./static/integrate-tests-into-harness-workflows-72.png)
 	
-* Run the tests on a specific test node using the **Target Host** option and the built-in Harness `${instance.hostName}` expression. See [Variables and Expressions in Harness](https://docs.harness.io/article/9dvxcegm90-variables).
+* Run the tests on a specific test node using the **Target Host** option and the built-in Harness `${instance.hostName}` expression. See [Variables and Expressions in Harness](../../../firstgen-platform/techref-category/variables/variables.md).
 
   ![](./static/integrate-tests-into-harness-workflows-73.png)
 
@@ -355,7 +355,7 @@ The Artifact Source in the Service is named **quarkus-test-image**. It uses a Ha
 
 The Docker image is referenced in the **run maven test** Exec command script as `${artifact.source.repositoryName}`.
 
-You can modify the script to specify image tag/version using `${artifact.buildNo}`. See [Variables and Expressions in Harness](https://docs.harness.io/article/9dvxcegm90-variables).
+You can modify the script to specify image tag/version using `${artifact.buildNo}`. See [Variables and Expressions in Harness](../../../firstgen-platform/techref-category/variables/variables.md).
 
 We is using the latest image (the default). The REST API endpoint listed in the script is at `${demo.MYHOST}`. This is a variable published from a Shell Script step in the previous Workflow in the Pipeline. `${demo.MYHOST}` is the hostname of the instance where the application was deployed.
 

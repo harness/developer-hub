@@ -51,7 +51,7 @@ The file-based, repo-related settings appear.
 
 ### Step 2: Select the Files to Watch
 
-1. In **Git Connector**, select which of the SourceRepro Providers set up in Harness to use. These are the connections between Harness and your Git repos. For more information, see [Add SourceRepo Providers](https://docs.harness.io/article/ay9hlwbgwa-add-source-repo-providers).
+1. In **Git Connector**, select which of the SourceRepro Providers set up in Harness to use. These are the connections between Harness and your Git repos. For more information, see [Add SourceRepo Providers](../../../firstgen-platform/account/manage-connectors/add-source-repo-providers.md).
 2. In **Branch Name**, enter the name of the branch to use.
 3. In **File Path**, enter the file name for the file that, when changed and Pushed, will execute this Trigger.  
 

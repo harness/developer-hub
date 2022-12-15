@@ -20,7 +20,7 @@ New to Serverless? See [Tutorial: Your First Serverless Framework Project](https
 
 ## Before you begin
 
-Review [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts) to establish a general understanding of Harness.* **GitHub account:** this quickstart uses a publicly available serverless.yaml file, but GitHub requires that you use a GitHub account for fetching files.
+Review [Harness Key Concepts](../../../first-gen/starthere-firstgen/harness-key-concepts.md) to establish a general understanding of Harness.* **GitHub account:** this quickstart uses a publicly available serverless.yaml file, but GitHub requires that you use a GitHub account for fetching files.
 * **Kubernetes** **Delegate cluster with Serverless installed:** the Harness Delegate is a worker process that performs all deployment tasks. For this quickstart, we'll install a Kubernetes Delegate running in a Kubernetes cluster.
 	+ You can use a cluster hosted on a cloud platform or run one in minikube using Docker Desktop locally. The installation steps are the same.
 	+ The Delegate host must have Serverless installed. We'll add the Serverless installation script to the Delegate YAML file later in this quickstart.
@@ -160,7 +160,7 @@ Pipelines are collections of stages. For this quickstart, we'll create a new Pip
 
 :::note
 
-**Create a Project for your new CD Pipeline:** if you don't already have a Harness Project, create a Project for your new CD Pipeline. Make sure that you add the **Continuous Delivery** module to the Project. See [Create Organizations and Projects](https://ngdocs.harness.io/article/36fw2u92i4-create-an-organization).
+**Create a Project for your new CD Pipeline:** if you don't already have a Harness Project, create a Project for your new CD Pipeline. Make sure that you add the **Continuous Delivery** module to the Project. See [Create Organizations and Projects](../../../platform/1_Organizations-and-Projects/2-create-an-organization.md).
 
 :::
 
@@ -244,7 +244,7 @@ plugins:
   - serverless-deployment-bucket@latest
 ```
 
-You can see the [Harness expression](https://docs.harness.io/article/lml71vhsim-harness-variables) `<+artifact.path>` in `artifact: <+artifact.path>`. The expression `<+artifact.path>` tells Harness to get the artifact from **Artifacts** section of the Service. We'll add the artifact next.
+You can see the [Harness expression](../../../platform/12_Variables-and-Expressions/harness-variables.md) `<+artifact.path>` in `artifact: <+artifact.path>`. The expression `<+artifact.path>` tells Harness to get the artifact from **Artifacts** section of the Service. We'll add the artifact next.
 
 The expression `<+service.name>` simply uses the Harness Service name for the deployed service name.
 
@@ -368,7 +368,7 @@ Now that you have configured the Service, we can define the target for our deplo
 7. Enter the following and click **Save and Continue**.
 	* **Name:** `AWS Serverless`.
 	* **Credentials:** `AWS Access Key`. Enter the AWS access key for the AWS User you created with the required policies in [Before You Begin](#before-you-begin).
-	* Enter the secret key as a [Harness Text Secret](https://docs.harness.io/article/osfw70e59c-add-use-text-secrets). The Harness Delegate uses these credentials to authenticate Harness with AWS at deployment runtime.
+	* Enter the secret key as a [Harness Text Secret](../../../platform/6_Security/2-add-use-text-secrets.md). The Harness Delegate uses these credentials to authenticate Harness with AWS at deployment runtime.
 	* **Delegates Setup:** `Only use Delegates with all of the following tags`.
 	* Select the Delegate you added earlier in this quickstart.
 1. The **Connection Test** verifies the connection. Click **Finish**.
@@ -467,7 +467,7 @@ Congratulations! You have successfully deployed a function using Serverless Lamb
 
 ## Clean up
 
-For steps on deleting the Delgate, go to [Delegate a delegate](https://docs.harness.io/article/tl6ql57em6-delete-a-delegate).
+For steps on deleting the Delgate, go to [Delegate a delegate](../../../platform/2_Delegates/delegate-guide/delete-a-delegate.md).
 
 ## Notes
 
@@ -501,9 +501,9 @@ plugins:
 
 See:
 
-* [Add and Reference Text Secrets](https://docs.harness.io/article/osfw70e59c-add-use-text-secrets)
-* [Built-in Harness Variables Reference](https://docs.harness.io/article/lml71vhsim-harness-variables)
-* [Run Pipelines using Input Sets and Overlays](https://docs.harness.io/article/gfk52g74xt-run-pipelines-using-input-sets-and-overlays)
+* [Add and Reference Text Secrets](../../../platform/6_Security/2-add-use-text-secrets.md)
+* [Built-in Harness Variables Reference](../../../platform/12_Variables-and-Expressions/harness-variables.md)
+* [Run Pipelines using Input Sets and Overlays](../../../platform/8_Pipelines/run-pipelines-using-input-sets-and-overlays.md)
 
 ### Rollback timestamps
 

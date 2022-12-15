@@ -86,7 +86,7 @@ The expression that you provide in **Expression for Host/Container Name** should
 
 You can use integers and expressions in the **Analysis Time Duration** field.
 
-See [Harness Variable Expression](https://docs.harness.io/article/9dvxcegm90-variables) and [Analysis Time Duration](../continuous-verification-overview/concepts-cv/cv-strategies-and-best-practices.md#analysis-time-duration).
+See [Harness Variable Expression](../../../firstgen-platform/techref-category/variables/variables.md) and [Analysis Time Duration](../continuous-verification-overview/concepts-cv/cv-strategies-and-best-practices.md#analysis-time-duration).
 
 ### Step 7: Baseline for Risk Analysis
 

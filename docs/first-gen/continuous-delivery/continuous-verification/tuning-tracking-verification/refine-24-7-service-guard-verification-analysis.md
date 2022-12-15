@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 You can refine the priority or classification of an event in 24/7 Service Guard.
 
-For information on changing event priorities in a deployment, see [Refine Deployment Verification Analysis](refine-deployment-verification-analysis.md). Event classifications are covered in [Verification Event Classifications](https://docs.harness.io/article/339hy0kbnu-verification-event-classifications). For an overview of verification analysis feedback, see [Harness Verification Feedback Overview](../continuous-verification-overview/concepts-cv/harness-verification-feedback-overview.md).In this topic:
+For information on changing event priorities in a deployment, see [Refine Deployment Verification Analysis](refine-deployment-verification-analysis.md). Event classifications are covered in [Verification Event Classifications](../../../firstgen-platform/techref-category/cv-reference/verification-event-classifications.md). For an overview of verification analysis feedback, see [Harness Verification Feedback Overview](../continuous-verification-overview/concepts-cv/harness-verification-feedback-overview.md).In this topic:
 
 * [Review: Permissions Required](#review_permissions_required)
 * [Step 1: Change Event Priority in 24/7 Service Guard](#step_1_change_event_priority_in_24_7_service_guard)
@@ -58,7 +58,7 @@ To change the priority of an event in 24/7 Service Guard, do the following:
 
 Once you have assigned a priority to an event (P0-P5), you can create a Jira issue using the event. See [File Jira Tickets on Verification Events](jira-cv-ticket.md).
 
-For details on the different verification settings, see [Verification Event Classifications](https://docs.harness.io/article/339hy0kbnu-verification-event-classifications).
+For details on the different verification settings, see [Verification Event Classifications](../../../firstgen-platform/techref-category/cv-reference/verification-event-classifications.md).
 
 #### Priority Events in 24/7 Service Guard
 

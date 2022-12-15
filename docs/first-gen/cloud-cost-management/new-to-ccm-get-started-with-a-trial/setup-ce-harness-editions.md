@@ -48,7 +48,7 @@ Harness CCM monitors cloud costs of your Kubernetes clusters, namespaces, nodes,
 	+ Minimum 8GB RAM — There is a cap of 4GB per Delegate, but when the Delegate is updating there might be two Delegates running. Hence, the minimum is 8GB.
 	+ Ensure that you provide the minimum memory for the Delegate and enough memory for the host/node system. For example, an AWS EC2 instance type such as m5a.xlarge has 16GB of RAM, 8 for the Delegate, and 8 for the remaining operations.
 	+ Minimum 6GB Disk space.
-	+ For more information, see [System Requirements](https://docs.harness.io/article/lwynqsgxt9-delegate-requirements-and-limitations#system_requirements).
+	+ For more information, see [System Requirements](../../firstgen-platform/account/manage-delegates/delegate-requirements-and-limitations.md#system-requirements).
 * Metrics Server must be running on the Kubernetes cluster where your Harness Kubernetes Delegate will be installed. For more information, see [Install Kubernetes Metrics Server](/docs/first-gen/cloud-cost-management/setup-cost-visibility/enable-continuous-efficiency-for-kubernetes.md).
 
 Metrics Server is installed by default on GKE and AKS clusters, however, you need to install it on the AWS EKS cluster.#### Step: Connect Your Kubernetes Cluster to CCM

@@ -26,7 +26,7 @@ The following section lists the support for Kubernetes clusters for AutoStopping
 
 ## Prerequisites
 
-* Ingress controller installed. For more information, go to [Supported Ingress Controllers for Kubernetes AutoStopping](https://docs.harness.io/article/1e536z41av-supported-platforms-and-technologies#cloud_cost_management).
+* Ingress controller installed. For more information, go to [Supported Ingress Controllers for Kubernetes AutoStopping](../../../../getting-started/supported-platforms-and-technologies.md#cloud-cost-management).
 * Ensure that you have Cluster Autoscaler enabled for EKS with managed node groups.
 * For EKS:
 	+ Ensure that you have access to (Cost Usage Report) CUR. See [Review: Cost and Usage Reports (CUR) and CCM Requirements](https://newdocs.helpdocs.io/article/80vbt5jv0q-set-up-cost-visibility-for-aws#review_cost_and_usage_reports_cur_and_ccm_requirements)

@@ -98,7 +98,7 @@ The Delegate must be in the same AWS VPC and subnet that you plan to use for you
 
 ### Spotinst Cloud Provider
 
-To set up the Spotinst Cloud Provider, follow the steps in [Spotinst Cloud Provider](https://docs.harness.io/article/whwnovprrb-cloud-providers).
+To set up the Spotinst Cloud Provider, follow the steps in [Spotinst Cloud Provider](../../../firstgen-platform/account/manage-connectors/cloud-providers.md).
 
 Keep the Spotinst Console open to [copy its configuration](#add_elastigroup_config) into your Harness Infrastructure Definition.
 
@@ -179,7 +179,7 @@ Harness preconfigures only the first two steps. Below, we outline those steps' d
 
 The remaining two steps are placeholders, to which you can add integrations and commands. For details on adding **Verify Staging** integrations, see [Continuous Verification](https://docs.harness.io/article/myw4h9u05l-verification-providers-list).
 
-Your Workflows can use Harness' built-in `${artifact.metadata.tag}` variable to refer to tagged AMIs. For example, if an AMI has an AWS tag named `harness`, you can refer to that AMI within Harness as `${artifact.metadata.harness}`. For details about this convention, see [Variables and Expressions in Harness](https://docs.harness.io/article/9dvxcegm90-variables#variables_list). This can be useful in [triggering Workflows and Pipelines](../../model-cd-pipeline/triggers/add-a-trigger-2.md#add-a-trigger).
+Your Workflows can use Harness' built-in `${artifact.metadata.tag}` variable to refer to tagged AMIs. For example, if an AMI has an AWS tag named `harness`, you can refer to that AMI within Harness as `${artifact.metadata.harness}`. For details about this convention, see [Variables and Expressions in Harness](../../../firstgen-platform/techref-category/variables/variables.md#variables-list). This can be useful in [triggering Workflows and Pipelines](../../model-cd-pipeline/triggers/add-a-trigger-2.md#add-a-trigger).
 
 ### Create a Basic Workflow
 

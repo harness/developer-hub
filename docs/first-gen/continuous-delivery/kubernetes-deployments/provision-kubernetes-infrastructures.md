@@ -27,10 +27,10 @@ Provisioning Kubernetes is supported with the Google Cloud Platform Cloud Provid
 The Delegate needs to be able to reach the Kubernetes master endpoint of the provisioned cluster and have the necessary credentials, such as the Kubernetes service account token.  
 Follow the steps in [Connect to Your Target Kubernetes Platform](connect-to-your-target-kubernetes-platform.md).
 2. Install Terraform on the Delegate using a Delegate Profile.  
-Follow the steps in [Delegate Installation and Management](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation) and [Common Delegate Profile Scripts](https://docs.harness.io/article/nxhlbmbgkj-common-delegate-profile-scripts).
+Follow the steps in [Delegate Installation and Management](../../firstgen-platform/account/manage-delegates/delegate-installation.md) and [Common Delegate Profile Scripts](../../firstgen-platform/techref-category/account-ref/delegate-ref/common-delegate-profile-scripts.md).
 3. Tag the Delegate.  
 When you add the Terraform Provision step in your Workflow, you will specify that a specific Delegate perform the operation by using its Delegate Tag.  
-Follow the steps in [Delegate Installation and Management](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation).
+Follow the steps in [Delegate Installation and Management](../../firstgen-platform/account/manage-delegates/delegate-installation.md).
 
 ### Step 2: Set Up the Cloud Provider
 
@@ -38,7 +38,7 @@ Harness supports provisioning Kubernetes using Google Cloud Platform (GKE) only.
 
 The GCP service account requires **Kubernetes Engine Admin** (GKE Admin) role to get the Kubernetes master username and password. Harness also requires **Storage Object Viewer** permissions.
 
-See [Add Cloud Providers](https://docs.harness.io/article/whwnovprrb-cloud-providers).
+See [Add Cloud Providers](../../firstgen-platform/account/manage-connectors/cloud-providers.md).
 
 ### Step 3: Git Repo Setup
 
@@ -46,7 +46,7 @@ The Terraform script you use with Harness must be available in a Git repo. You c
 
 ![](./static/provision-kubernetes-infrastructures-28.png)
 
-Set up a Harness Source Repro Provider that connects to the Git repo hosting your Terraform script. See [Add Source Repo Providers](https://docs.harness.io/article/ay9hlwbgwa-add-source-repo-providers).
+Set up a Harness Source Repro Provider that connects to the Git repo hosting your Terraform script. See [Add Source Repo Providers](../../firstgen-platform/account/manage-connectors/add-source-repo-providers.md).
 
 ### Step 4: Set Up a Terraform Infrastructure Provisioner
 
@@ -71,7 +71,7 @@ Setting up the Terraform Provisioner involves the following:
 
 5. In **Display Name**, enter the name for this provisioner. You will use this name to select this provisioner in Harness Environments and Workflows.
 6. Click **NEXT**. The **Script Repository** section appears. This is where you provide the location of your Terraform script in your Git repo.
-7. In **Script Repository**, in **Git Repository**, select the [Source Repo Provider](https://docs.harness.io/article/ay9hlwbgwa-add-source-repo-providers) you added for the Git repo where your script is located.
+7. In **Script Repository**, in **Git Repository**, select the [Source Repo Provider](../../firstgen-platform/account/manage-connectors/add-source-repo-providers.md) you added for the Git repo where your script is located.
 8. In **Git Repository Branch**, enter the repo branch to use. For example, **master**. For master, you can also use a dot (`.`).
 9. In **Terraform Configuration Root Directory**, enter the folder where the script is located. Here is an example showing the Git repo on GitHub and the **Script Repository** settings:
 
@@ -86,7 +86,7 @@ Setting up the Terraform Provisioner involves the following:
   
 12. In the **Type** column for each variable, specify **Text** or **Encrypted Text**.  
 
-  When you add the provisioner to a Workflow, you will have to provide text values for **Text** variables, and select Harness Encrypted Text variables for **Encrypted Text** variables. See [Secrets Management](https://docs.harness.io/article/au38zpufhr-secret-management).
+  When you add the provisioner to a Workflow, you will have to provide text values for **Text** variables, and select Harness Encrypted Text variables for **Encrypted Text** variables. See [Secrets Management](../../firstgen-platform/security/secrets-management/secret-management.md).
   
 13. Click **NEXT**. The **Backend Configuration (Remote state)** section appears. This is an optional step.  
   

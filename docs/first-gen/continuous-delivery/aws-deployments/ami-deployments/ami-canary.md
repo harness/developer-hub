@@ -36,7 +36,7 @@ Otherwise, please use the following links to the [AMI Basic deployment prerequi
 * A working AMI that Harness will use to create your instances.
 * A base [Auto Scaling Group](https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-asg.html) (ASG) that Harness will use as a template for the Auto Scaling Group it will create and deploy. For information on launch configuration and launch template support, see [Launch Configuration and Launch Template Support](ami-deployment.md#launch-configuration-and-launch-template-support).
 * An AWS instance or ECS cluster in which to install the Harness Delegate(s).
-* IAM role for the Harness Cloud Provider connection to AWS. Typically, you will set up the Harness Cloud Provider to assume the roles used by the installed Harness Delegate, whether that's an ECS or a Shell Script Delegate. The required policies for an ECS connection are listed in [ECS (Existing Cluster)](https://docs.harness.io/article/whwnovprrb-infrastructure-providers#ecs_existing_cluster).
+* IAM role for the Harness Cloud Provider connection to AWS. Typically, you will set up the Harness Cloud Provider to assume the roles used by the installed Harness Delegate, whether that's an ECS or a Shell Script Delegate. The required policies for an ECS connection are listed in [ECS (Existing Cluster)](../../../firstgen-platform/account/manage-connectors/cloud-providers.md#ecs-existing-cluster).
 
 Within Harness, you'll need the following resources:
 
@@ -130,7 +130,7 @@ In Step 1, select **AWS AutoScaling Group Setup** to open a dialog where you def
 
 ![](./static/ami-canary-163.png)
 
-The **Instances** settings support [Harness variable expressions](https://docs.harness.io/article/9dvxcegm90-variables), such as [Workflow variable expressions](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md).For details about this dialog's fields, see the corresponding [AMI Basic Workflow instructions](ami-deployment.md#basic-setup-asg). For this Workflow, we've selected **Fixed Instances**, and have set **Max Instances** to **10** and **Desired Instances** to **4**.
+The **Instances** settings support [Harness variable expressions](../../../firstgen-platform/techref-category/variables/variables.md), such as [Workflow variable expressions](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md).For details about this dialog's fields, see the corresponding [AMI Basic Workflow instructions](ami-deployment.md#basic-setup-asg). For this Workflow, we've selected **Fixed Instances**, and have set **Max Instances** to **10** and **Desired Instances** to **4**.
 
 All Canary counts or percentages specified later in the Workflow are based on the **Desired Instances** setting. So, when we later deploy **25%** in this phase's [Upgrade Autoscaling Group](#upgrade_asg_1) step, that will be 25% of this **Desired Instances** setting.
 ##### Setup AutoScaling Group in Deployment

@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/article/cqgeblt4uh).The deployment guides walk you through setting up a specific deployment using Harness, such as ECS, Kubernetes, and Helm. They are written to provide you with everything you need to learn how to model your CD process in Harness.
+This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../../continuous-delivery/onboard-cd/cd-concepts/cd-pipeline-basics.md).The deployment guides walk you through setting up a specific deployment using Harness, such as ECS, Kubernetes, and Helm. They are written to provide you with everything you need to learn how to model your CD process in Harness.
 
 ### Deployment Guides
 
@@ -33,7 +33,7 @@ Also, other key platforms that help you make your CD powerful and efficient:
 
 - [Terraform](/docs/category/terraform)
 - [CloudFormation](/docs/category/aws-cloudformation)
-- [Configuration as Code](https://docs.harness.io/category/2ea2y01kgz-config-as-code) (work exclusively in YAML and sync with your Git repos)
+- [Configuration as Code](https://docs.harness.io/category/configuration-as-code) (work exclusively in YAML and sync with your Git repos)
 - [Harness GitOps](https://docs.harness.io/category/harness-git-based-how-tos)
 
 For topics on general CD modeling in Harness, see [Model Your CD Pipeline](https://docs.harness.io/category/model-your-cd-pipeline).

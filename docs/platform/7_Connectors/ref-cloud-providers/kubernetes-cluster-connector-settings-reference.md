@@ -184,7 +184,7 @@ Basic (Username and Password) authentication is not recommended. Basic authentic
 
 Username and password for the Kubernetes cluster. For example, **admin** or **john@example.com**, and a Basic authentication password.
 
-You can use an inline username or a Harness [Encrypted Text secret](https://docs.harness.io/article/ygyvp998mu-use-encrypted-text-secrets).
+You can use an inline username or a Harness [Encrypted Text secret](../../../first-gen/firstgen-platform/security/secrets-management/use-encrypted-text-secrets.md).
 
 For the password, select or create a new Harness Encrypted Text secret.
 

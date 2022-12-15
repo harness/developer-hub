@@ -128,7 +128,7 @@ Let us add the Variable in a Pipeline now.
 
 In Harness go to a Pipeline in the same Org as the variable you created.
 
-In **Execution**, add a [Shell Script](https://docs.harness.io/article/k5lu0u6i1i-using-shell-scripts) step and reference the variables:
+In **Execution**, add a [Shell Script](../../continuous-delivery/cd-execution/cd-general-steps/using-shell-scripts.md) step and reference the variables:
 
 
 ```

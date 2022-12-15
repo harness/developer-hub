@@ -63,14 +63,14 @@ You can customize your report views using the available grouping and filtering o
 * **Service**: Services represent your microservices and applications. These are your microservice costs.
 * **Environment**: Environments organize and name the deployment infrastructures in your cloud platforms, such as Dev, QA, Stage, Production, etc. These are your cloud platform infrastructures costs, grouped by team, department, and so on.
 * **Label**: Cost organized by the Kubernetes labels used in the workload manifests. This does not apply to ECS clusters.
-* **Tags**: Harness Tags provide metadata for organizing, searching, and filtering Harness components. See [Manage Tags](https://docs.harness.io/article/mzcpqs3hrl-manage-tags). These are the costs of the components sharing the same tags.
+* **Tags**: Harness Tags provide metadata for organizing, searching, and filtering Harness components. See [Manage Tags](../../firstgen-platform/account/tags/manage-tags.md). These are the costs of the components sharing the same tags.
 * **Storage**: These are the cost of the persistent volumes present in your Kubernetes cluster. For more information, see [Persistent Volumes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/).
 * **ECS Service**: The cost of an ECS service that specifies the number of task definition instances running in an Amazon ECS cluster. For a detailed description of ECS services, see [Services](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html) from AWS.
 * **Task**: This is the cost of an instance of a Task Definition.
 * **Launch type**: The cost of an Amazon ECS launch type. An Amazon ECS launch type determines the type of infrastructure on which your tasks and services are hosted. There are two types:
 	+ Fargate - Run containers without having to manage servers or clusters of Amazon EC2 instances.
 	+ EC2 - Run containers on a cluster of Amazon EC2 instances that you manage.
-* **Cloud Provider**: These are your cloud platform costs. Cloud Providers describe your public or private cloud or physical infrastructures, like AWS and Kubernetes. See [Add Cloud Providers](https://docs.harness.io/article/whwnovprrb-cloud-providers).
+* **Cloud Provider**: These are your cloud platform costs. Cloud Providers describe your public or private cloud or physical infrastructures, like AWS and Kubernetes. See [Add Cloud Providers](../../firstgen-platform/account/manage-connectors/cloud-providers.md).
   
     ![](./static/analyze-cost-trends-across-clusters-05.png)
 

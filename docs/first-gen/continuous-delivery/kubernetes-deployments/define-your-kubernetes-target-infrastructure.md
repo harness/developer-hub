@@ -83,11 +83,11 @@ Use `release-${infra.kubernetes.infraId}` for the **Release Name** instead o
 
 ![](./static/define-your-kubernetes-target-infrastructure-172.png)
 
-See [Built-in Variables List](https://docs.harness.io/article/aza65y4af6-built-in-variables-list) for more expressions.
+See [Built-in Variables List](../../firstgen-platform/techref-category/variables/built-in-variables-list.md) for more expressions.
 
 The release name is not incremented with each release. It identifies releases so that Harness knows which release is being replaced with a new version.
 
-See [Kubernetes Versioning and Annotations](https://docs.harness.io/article/ttn8acijrz-versioning-and-annotations).
+See [Kubernetes Versioning and Annotations](../../firstgen-platform/techref-category/cd-ref/platforms-ref/versioning-and-annotations.md).
 
 ##### Release Name is Reserved for Internal Harness ConfigMap
 
@@ -145,7 +145,7 @@ All Azure Cloud Providers are prefaced with **Azure:**.
 
 Select the Azure subscription to use.
 
-When you set up the [Azure Cloud Provider](https://docs.harness.io/article/whwnovprrb-cloud-providers) in Harness, you entered the **Client/Application ID** for the Azure App registration. To access resources in your Azure subscription, you must assign the Azure app using this Client ID to a role in that subscription.
+When you set up the [Azure Cloud Provider](../../firstgen-platform/account/manage-connectors/cloud-providers.md) in Harness, you entered the **Client/Application ID** for the Azure App registration. To access resources in your Azure subscription, you must assign the Azure app using this Client ID to a role in that subscription.
 
 In this Azure Infrastructure Definition, you select the subscription. If the Azure App registration using this Client ID is not assigned a role in a subscription, no subscriptions will be available.
 

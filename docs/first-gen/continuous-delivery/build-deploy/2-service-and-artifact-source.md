@@ -12,7 +12,7 @@ The first step in Artifact Build and Deploy pipeline is to create a Harness Serv
 
 This Service is used by the **Artifact Collection** command in [Create the Deploy Workflow for Build and Deploy Pipelines](5-deploy-workflow.md), the Environment's [target infrastructure](4-environment.md), and in the set up of the [Deploy Workflow](5-deploy-workflow.md).
 
-In this document, Shell Script Service and a Jenkins job artifact is used as an example but Harness supports all the common [artifact source](https://docs.harness.io/article/7dghbx1dbl-configuring-artifact-server) and [custom sources](../model-cd-pipeline/setup-services/custom-artifact-source.md).
+In this document, Shell Script Service and a Jenkins job artifact is used as an example but Harness supports all the common [artifact source](../../firstgen-platform/account/manage-connectors/configuring-artifact-server.md) and [custom sources](../model-cd-pipeline/setup-services/custom-artifact-source.md).
 
 ### Before You Begin
 

@@ -105,7 +105,7 @@ The **Execution Strategies** settings appear.
 
 1. In **Execution Strategies**, select the deployment strategy for your Pipeline Template.​  
 This topic uses the example of Rolling deployment.​  
-For more information on different execution strategies, see [Deployment Concepts and Strategies.](https://docs.harness.io/article/0zsf97lo3c-deployment-concepts)
+For more information on different execution strategies, see [Deployment Concepts and Strategies.](../../continuous-delivery/cd-deployments-category/deployment-concepts.md)
 2. Click **Use Strategy**.​
 3. Click **Save**. The **Save Template to Git** settings appear.![](./static/create-a-remote-pipeline-template-26.png)
 

@@ -1,0 +1,15 @@
+{
+  "label": "Platform FirstGen",
+  "position": 50,
+  "collapsible": "true",
+  "collapsed": "true",
+  "className": "red",
+  "link": {
+    "type": "generated-index",
+    "title": "Platform FirstGen"
+  },
+  "customProps": {
+    "helpdocs_category_id": "pa3v189a2b",
+    "helpdocs_parent_category_id": "yj3d4lvxn0"
+  }
+}

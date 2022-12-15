@@ -43,6 +43,6 @@ The Config Variables in the Harness Service can be overwritten by the Harness En
 Do not hard-code the node name (`APPDYNAMICS_AGENT_NODE_NAME`) in any environment variables. Doing so will prevent certain deployment features—such as Canary and Blue/Green strategies, and rollback—from executing.
 ### Next Steps
 
-* [Configuration as Code](https://docs.harness.io/article/htvzryeqjw-configuration-as-code)
+* [Configuration as Code](../../../firstgen-platform/config-as-code/configuration-as-code.md)
 * [AppDynamics as a Custom APM](../custom-metrics-and-logs-verification/connect-to-app-dynamics-as-a-custom-apm.md)
 

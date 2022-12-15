@@ -34,13 +34,13 @@ You'll learn how to:
 	+ Minimum 6GB Disk space.
 	+ Inbound Access: SSH.
 	+ Outbound Access: HTTP and HTTPS. This enables the Delegate to communicate with Harness and Artifactory.
-	+ IAM role: AmazonEC2FullAccess. See [Policies Required: AWS EC2](https://docs.harness.io/article/wt1gnigme7-add-amazon-web-services-cloud-provider#policies_required_aws_ec2).
+	+ IAM role: AmazonEC2FullAccess. See [Policies Required: AWS EC2](../firstgen-platform/account/manage-connectors/add-amazon-web-services-cloud-provider.md#policies-required-aws-ec2).
 	+ If you wish to use an App Stack like Tomcat, then ensure that you have JAVA installed in your target AWS instance.
 	+ Ensure that you have `netcat (nc)` installed on your target host. The Harness SSH Service Port Listening command uses `netcat`. You can use the following command to do the installation:  
 	`yum install -y nc`
 
 :::note 
-You can also simply deploy the artifact to your local computer instead of using an AWS EC2 instance. If you want to do this, install the Harness SSH Delegate on your local computer, use a [Physical Data Center Cloud Provider](https://docs.harness.io/article/stkxmb643f-add-physical-data-center-cloud-provider) instead of an AWS Cloud Provider, and when you set up the target infrastructure SSH key in Harness, use your local login information. You might also need to enable remote access on your computer.
+You can also simply deploy the artifact to your local computer instead of using an AWS EC2 instance. If you want to do this, install the Harness SSH Delegate on your local computer, use a [Physical Data Center Cloud Provider](../firstgen-platform/account/manage-connectors/add-physical-data-center-cloud-provider.md) instead of an AWS Cloud Provider, and when you set up the target infrastructure SSH key in Harness, use your local login information. You might also need to enable remote access on your computer.
 :::
 
 ## Visual Summary
@@ -184,7 +184,7 @@ The Service page has the following important sections:
 
 The Artifact Source for the Service lists the file(s) that you want to be copied to the target host(s). The Artifact History will manually pull artifact build and version metadata from the Artifact Source.
 
-For more information, see [Add Artifact Servers](https://docs.harness.io/article/7dghbx1dbl-configuring-artifact-server) and [Add Cloud Providers](https://docs.harness.io/article/whwnovprrb-cloud-providers).
+For more information, see [Add Artifact Servers](../firstgen-platform/account/manage-connectors/configuring-artifact-server.md) and [Add Cloud Providers](../firstgen-platform/account/manage-connectors/cloud-providers.md).
 
 To add an artifact source, do the following:
 
@@ -272,13 +272,13 @@ The **Select Nodes** step selects the target hosts from the Infrastructure Defin
 
 The following image shows an **Infrastructure Definition** specifying an AWS Region, VPC, and Tags (**Name:ssh-target**), the EC2 instance that meets that criteria, and the host name in the Node Select dialog.
 
-![](./static/traditional-ssh-quickstart-78.png)For details, see [Select Nodes Workflow Step](https://docs.harness.io/article/9h1cqaxyp9-select-nodes-workflow-step).
+![](./static/traditional-ssh-quickstart-78.png)For details, see [Select Nodes Workflow Step](../firstgen-platform/techref-category/cd-ref/workflow-steps-and-settings/select-nodes-workflow-step.md).
 
 ### Install and Run the Application and Stacks
 
-The Install step runs the command scripts in your Harness SSH and Service on the target host. See [Install Workflow Step](https://docs.harness.io/article/2q8vjxdjcq-install-workflow-step).
+The Install step runs the command scripts in your Harness SSH and Service on the target host. See [Install Workflow Step](../firstgen-platform/techref-category/cd-ref/workflow-steps-and-settings/install-workflow-step.md).
 
-The Install step is added in the Basic Workflow as part of its **Deploy Service** section. The Install step is used after the [Select Nodes step](https://docs.harness.io/article/9h1cqaxyp9-select-nodes-workflow-step), which select the target nodes on which to run the Install step.
+The Install step is added in the Basic Workflow as part of its **Deploy Service** section. The Install step is used after the [Select Nodes step](../firstgen-platform/techref-category/cd-ref/workflow-steps-and-settings/select-nodes-workflow-step.md), which select the target nodes on which to run the Install step.
 
 For details, see [Create a Basic Workflow for Traditional (SSH) Deployments](../continuous-delivery/traditional-deployments/create-a-basic-workflow-for-traditional-ssh-deployments.md).
 

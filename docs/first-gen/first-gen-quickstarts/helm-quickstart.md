@@ -9,7 +9,7 @@ helpdocs_is_published: true
 ---
 
 :::note
-This content is for Harness [FirstGen](../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/article/cifa2yb19a).
+This content is for Harness [FirstGen](../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../continuous-delivery/onboard-cd/cd-quickstarts/helm-cd-quickstart.md).
 :::
 
 This quickstart shows you how to deploy a publicly available Docker image to your Kubernetes cluster using Helm charts and a Canary Deployment strategy in Harness.
@@ -80,7 +80,7 @@ Interested? You're only a few minutes away from doing it yourself. Let's get sta
 
 In this section, we'll download a new Harness Kubernetes Delegate and install and launch it in your target cluster. Running the Delegate as a pod in the same cluster used to deploy the your application is the recommended practice.
 
-For this tutorial, we are using a Kubernetes Delegate, but Harness also includes a Helm Delegate that can be installed in your cluster using Helm or Rancher. See [Using the Helm Delegate](https://docs.harness.io/article/6n7fon8rit-using-the-helm-delegate).
+For this tutorial, we are using a Kubernetes Delegate, but Harness also includes a Helm Delegate that can be installed in your cluster using Helm or Rancher. See [Using the Helm Delegate](../firstgen-platform/account/manage-delegates/using-the-helm-delegate.md).
 
 Before installing the Delegate, ensure that you have **kubectl** installed in your Kubernetes cluster. For **kubectl** installation steps, see  [Install and Set Up kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) from Kubernetes.
 1. Download the Delegate:

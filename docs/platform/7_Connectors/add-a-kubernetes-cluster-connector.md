@@ -17,7 +17,7 @@ Once connected, you can use Kubernetes and Harness for provisioning infrastructu
 ### Before you begin
 
 * [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md)
-* [Kubernetes CD Quickstart](https://docs.harness.io/article/knunou9j30-kubernetes-cd-quickstart)
+* [Kubernetes CD Quickstart](../../continuous-delivery/onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md)
 
 ### Visual Summary
 

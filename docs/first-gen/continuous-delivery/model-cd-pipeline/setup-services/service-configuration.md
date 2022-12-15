@@ -17,7 +17,7 @@ This is a general overview of a Harness Service. For detailed deployment informa
 
 * Read the [Create an Application](../applications/application-configuration.md) topic to get an overview of how Harness organizes Services.
 * Read the [Add a Service](service-configuration.md) topic to understand the process to add a Service to an Application.
-* Read [Configuration as Code](https://docs.harness.io/article/htvzryeqjw-configuration-as-code) to see how you can quickly configure your Harness Service using your existing YAML in Git.
+* Read [Configuration as Code](../../../firstgen-platform/config-as-code/configuration-as-code.md) to see how you can quickly configure your Harness Service using your existing YAML in Git.
 
 ### Step 1: Add a Service to a Harness Application
 

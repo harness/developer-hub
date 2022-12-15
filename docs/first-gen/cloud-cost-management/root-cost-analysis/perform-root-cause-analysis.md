@@ -157,7 +157,7 @@ If your Pod and Node are stopped for 30 and 180 days respectively, the following
 
 The Cost Explorer provides deep insights into your total cloud costs and resources. It helps you to understand the primary cost contributors. You can use this data to manage and optimize your cost and resources.
 
-To perform root cost analysis on Harness Applications and subordinate components, it's important to review how Harness organizes and models your projects using Applications. See [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts) for an overview.
+To perform root cost analysis on Harness Applications and subordinate components, it's important to review how Harness organizes and models your projects using Applications. See [Harness Key Concepts](../../starthere-firstgen/harness-key-concepts.md) for an overview.
 
 The follow graphic shows how Harness represents and organizes the components of your release process using its Application model:
 
@@ -180,7 +180,7 @@ The following steps take you through the process.
    
 
 :::note
-In order for an Application to appear, a Workflow in the Application must be deployed by Harness. For more information, see [Applications](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts#applications).
+In order for an Application to appear, a Workflow in the Application must be deployed by Harness. For more information, see [Applications](../../starthere-firstgen/harness-key-concepts.md#applications).
 :::
    
 
@@ -188,8 +188,8 @@ In order for an Application to appear, a Workflow in the Application must be dep
 
 4. You can further customize your views using the **Group by** and **Filter** settings to get more granular details. You can **Group by**:
 	* **Application**: These are the sum of your Harness Application costs.
-	* **Cloud Providers**: These are your cloud platform costs. Cloud Providers describe your public or private cloud or physical infrastructures, like AWS and Kubernetes. See [Add Cloud Providers](https://docs.harness.io/article/whwnovprrb-cloud-providers).
-	* **Tags**: Harness Tags provide metadata for organizing, searching, and filtering Harness components. See [Manage Tags](https://docs.harness.io/article/mzcpqs3hrl-manage-tags). These are the costs of the components sharing the same tags.
+	* **Cloud Providers**: These are your cloud platform costs. Cloud Providers describe your public or private cloud or physical infrastructures, like AWS and Kubernetes. See [Add Cloud Providers](../../firstgen-platform/account/manage-connectors/cloud-providers.md).
+	* **Tags**: Harness Tags provide metadata for organizing, searching, and filtering Harness components. See [Manage Tags](../../firstgen-platform/account/tags/manage-tags.md). These are the costs of the components sharing the same tags.
 	* **Service**: Services represent your microservices and applications. These are your microservice costs.
 	* **Environments**: Environments organize and name the deployment infrastructures in your cloud platforms, such as Dev, QA, Stage, Production, etc. These are your cloud platform infrastructures costs, grouped by team, dept, and so on.
 * 

@@ -111,7 +111,7 @@ The **AWS Cloud Provider** setting can be templated.You need to select an AWS Cl
 * **Region:** the AWS region where you will be provisioning your resources. If not region is specified, Harness uses `us-east-1`.
 * **Role ARN:** enter the Amazon Resource Name (ARN) of an AWS IAM role that Terraform assumes when provisioning. This allows you to tune the step for provisioning a specific AWS resource. For example, if you will only provision AWS S3, then you can use a role that is limited to S3.  
 At a minimum, select the **AWS Cloud Provider** and **Role ARN**. When used in combination with the AWS Cloud Provider option, the Role ARN is assumed by the Cloud Provider you select.  
-You can also use [Harness variable expressions](https://docs.harness.io/article/9dvxcegm90-variables) in **Role ARN**. For example, you can create a Service or Workflow variable and then enter its expression in **Role ARN**, such as `${serviceVariables.roleARN}` or `${workflow.variables.roleArn}`.
+You can also use [Harness variable expressions](../../firstgen-platform/techref-category/variables/variables.md) in **Role ARN**. For example, you can create a Service or Workflow variable and then enter its expression in **Role ARN**, such as `${serviceVariables.roleARN}` or `${workflow.variables.roleArn}`.
 
 #### Environment Variables
 
@@ -149,7 +149,7 @@ If you want to avoid the Terraform refresh, in your Terraform Infrastructure Pro
 
 This option supports [Terraform version 12](https://www.terraform.io/upgrade-guides/0-12.html) only.This option is only available if you've selected **Set as Terraform Plan**. Select this option to save this Terraform Provision step as a `tfplan` to be applied in a later **Terraform Apply** step.
 
-Select the [Harness Secret Manager](https://docs.harness.io/article/uuer539u3l-add-a-secrets-manager) to use for the plan.
+Select the [Harness Secret Manager](../../firstgen-platform/security/secrets-management/add-a-secrets-manager.md) to use for the plan.
 
 By default, Harness uses the Harness Secret Manager you have selected as your **default** for the export process.The size of the plan you can export is limited to the size of secret that the Secret Manager you selected allows.
 
@@ -167,7 +167,7 @@ Enter a value for each variable in **Input Values**. For encrypted text values, 
 
 ![](./static/terraform-provisioner-step-16\.png)
 
-For more information, see [Secrets Management](https://docs.harness.io/article/au38zpufhr-secret-management).
+For more information, see [Secrets Management](../../firstgen-platform/security/secrets-management/secret-management.md).
 
 #### Use tfvar Files
 
@@ -189,7 +189,7 @@ In **File Path**, you can enter multiple files separated by commas.
 
 You can also use [Workflow variables](../model-cd-pipeline/workflows/add-workflow-variables-new-template.md) in **File Path**. This allows you to make the setting a deployment runtime parameter and to output their values using a [Shell Script](../model-cd-pipeline/workflows/capture-shell-script-step-output.md) step.##### Remote tfvar Files
 
-In **Source Repository**, select the Harness [Source Repo Provider](https://docs.harness.io/article/ay9hlwbgwa-add-source-repo-providers) that connects to the repo where your tfvar file is.
+In **Source Repository**, select the Harness [Source Repo Provider](../../firstgen-platform/account/manage-connectors/add-source-repo-providers.md) that connects to the repo where your tfvar file is.
 
 Select **Commit ID** or **Branch.**
 
@@ -331,7 +331,7 @@ When rollbacks occur, Harness will rollback the Terraform state to the previous 
 
 In **Delegate Selector**, you can select a specific Harness Delegate to execute the Terraform Provisioning step by selecting the Selector for the Delegate.
 
-For more information on Delegate Selectors, see [Select Delegates with Selectors](https://docs.harness.io/article/c3fvixpgsl-select-delegates-for-specific-tasks-with-selectors).
+For more information on Delegate Selectors, see [Select Delegates with Selectors](../../firstgen-platform/account/manage-delegates/select-delegates-for-specific-tasks-with-selectors.md).
 
 You can even add a Workflow variable for the Delegate Selector and the use an expression in the **Delegate Selectors** field. When you deploy the Workflow, you will provide the name of the Delegate Selector.
 
@@ -349,9 +349,9 @@ Click **Add**.
 
 Enter a name, type, and value for the environment variable. For example: **TF\_LOG**, **Text**, and `TRACE`.
 
-If you select Encrypted Text, you must select an existing Harness [Encrypted Text secret](https://docs.harness.io/article/ygyvp998mu-use-encrypted-text-secrets).
+If you select Encrypted Text, you must select an existing Harness [Encrypted Text secret](../../firstgen-platform/security/secrets-management/use-encrypted-text-secrets.md).
 
-You can use Harness [Workflow variables](../model-cd-pipeline/workflows/add-workflow-variables-new-template.md) and [expression variables](https://docs.harness.io/article/9dvxcegm90-variables) for the name and value.
+You can use Harness [Workflow variables](../model-cd-pipeline/workflows/add-workflow-variables-new-template.md) and [expression variables](../../firstgen-platform/techref-category/variables/variables.md) for the name and value.
 
 Environment variables can also be deleted using the Terraform Destroy step. See [Remove Provisioned Infra with Terraform Destroy](terraform-destroy.md).
 
