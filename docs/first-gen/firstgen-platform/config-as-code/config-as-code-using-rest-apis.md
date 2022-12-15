@@ -12,7 +12,7 @@ Harness includes many REST APIs that allow you to have full control over its Con
 
 The REST APIs allow you to perform CRUD operations on Harness YAML entities.
 
-The CRUD REST API is different from Harness GraphQL API. For information on the GraphQL API, see [Harness GraphQL API FAQs](https://docs.harness.io/article/jbjam276xn-harness-graph-ql-api-faqs).
+The CRUD REST API is different from Harness GraphQL API. For information on the GraphQL API, see [Harness GraphQL API FAQs](../../firstgen-fa-qs/harness-graph-ql-api-faqs.md).
 
 ### Before You Begin
 

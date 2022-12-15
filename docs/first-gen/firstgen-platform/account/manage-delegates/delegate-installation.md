@@ -210,5 +210,5 @@ See [Add Self-Signed Certificates for Delegate Connections](add-self-signed-cert
 
 ## Troubleshooting
 
-See [Troubleshooting](https://docs.harness.io/article/g9o2g5jbye-troubleshooting-harness).
+See [Troubleshooting](../../../firstgen-troubleshooting/troubleshooting-harness.md).
 

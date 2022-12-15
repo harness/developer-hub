@@ -21,7 +21,7 @@ Harness IP Whitelisting is for user connections to a Harness account. It will no
 
 Harness IP Whitelisting applies to any Harness Manager change (such as user logins).
 
-Harness IP Whitelisting does not apply to Webhooks and [Harness GraphQL](https://docs.harness.io/article/jbjam276xn-harness-graph-ql-api-faqs) API calls.
+Harness IP Whitelisting does not apply to Webhooks and [Harness GraphQL](../../../firstgen-fa-qs/harness-graph-ql-api-faqs.md) API calls.
 
 ### Step 1: Set Up IP Whitelisting
 

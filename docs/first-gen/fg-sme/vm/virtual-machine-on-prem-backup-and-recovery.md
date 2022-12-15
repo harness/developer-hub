@@ -36,7 +36,7 @@ Ensure you meet the Harness Self-Managed Enterprise Edition - Virtual Machine ve
 
 Automated backup and recovery is supported in the following Harness Self-Managed Enterprise Edition versions:
 
-* 670XX and later. See [Harness Self-Managed Enterprise Edition Release Notes](https://docs.harness.io/article/0v512791gf-harness-on-prem-release-notes).
+* 670XX and later. See [Harness Self-Managed Enterprise Edition Release Notes](../../firstgen-release-notes/harness-on-prem-release-notes.md).
 
 #### Storage Required
 

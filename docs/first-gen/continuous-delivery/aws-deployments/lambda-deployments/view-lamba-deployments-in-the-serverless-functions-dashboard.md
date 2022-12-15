@@ -47,5 +47,5 @@ See [Serverless Functions Dashboard](../../../firstgen-platform/techref-category
 
 ### Next Steps
 
-* [Troubleshooting AWS Lambda Deployments](https://docs.harness.io/article/g9o2g5jbye-troubleshooting-harness#aws_lambda)
+* [Troubleshooting AWS Lambda Deployments](../../../firstgen-troubleshooting/troubleshooting-harness.md#aws-lambda)
 

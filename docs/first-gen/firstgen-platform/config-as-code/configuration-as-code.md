@@ -28,7 +28,7 @@ Here is the same Harness Workflow in the Harness GUI, Harness code editor, and a
 
 ### Before You Begin
 
-* if you're trying to resolve git sync issues, see [Diagnose Git Sync Errors](https://docs.harness.io/article/0ralbeajno-diagnose-git-errors).
+* if you're trying to resolve git sync issues, see [Diagnose Git Sync Errors](../../firstgen-troubleshooting/diagnose-git-errors.md).
 * Connect your Git provider to Harness using the steps in [Add Source Repo Providers](../account/manage-connectors/add-source-repo-providers.md).
 * Trigger Harness Workflow and Pipeline execution from Git using Harness Triggers. See [Manual Triggers and Git Webhooks](../../continuous-delivery/model-cd-pipeline/triggers/add-a-trigger-2.md#manual-triggers-and-git-webhooks) and [File-based Repo Triggers](../../continuous-delivery/model-cd-pipeline/triggers/add-a-trigger-2.md#file-based-repo-triggers).
 

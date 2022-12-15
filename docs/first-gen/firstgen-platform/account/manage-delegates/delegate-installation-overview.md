@@ -102,5 +102,5 @@ The link has a TTL of 1 hour. After that, you need to copy a new link.
 
 ## Troubleshooting
 
-See the Delegate-related content in Harness [Troubleshooting](https://docs.harness.io/article/g9o2g5jbye-troubleshooting-harness).
+See the Delegate-related content in Harness [Troubleshooting](../../../firstgen-troubleshooting/troubleshooting-harness.md).
 
