@@ -29,7 +29,7 @@ Harness CI is built on Drone, and over the last 10 years we have been focusing o
 Harness CI is 4 times faster due to optimized defaults with hosted builds so you don’t have to set up and manage infrastructure or optimize caching and other technologies to improve build times. Cache Intelligence dramatically reduces pipeline execution time by automatically caching well-known directories for Java, Node package managers, and more. Test Intelligence
 can build cycles by up to 90% with machine learning (ML) that runs only the necessary tests relevant to code changes. Once tests are identified, speed up test cycles even more by splitting and running tests concurrently.
 
-In this demo, Harness goes head to head with GitHub Actions. You can follow [these instructions](https://github.com/harness-community/kafka/blob/trunk/.harness/README.md) to reproduce the results and see for yourself. 
+In this demo, Harness goes head-to-head with GitHub Actions. You can follow [these instructions](https://github.com/harness-community/kafka/blob/trunk/.harness/README.md) to reproduce the results and see for yourself. 
 <!-- Video:
 https://harness-1.wistia.com/medias/rpv5vwzpxz-->
 <docvideo src="https://www.youtube.com/watch?v=ECF1BDlzb-I" />
