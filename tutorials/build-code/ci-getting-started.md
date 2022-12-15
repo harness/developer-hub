@@ -8,7 +8,7 @@ slug: /build-code/fastest-ci
 # Get started for free with the fastest CI on the planet 
 :::info
 
-[Signup for free to try the world's fastest CI](https://app.harness.io/auth/#/signup/?module=ci&utm_source=Website&utm_medium=&utm_campaign=CI-Product-Page-Hero-PLG)
+[Sign up for free to try the world's fastest CI](https://app.harness.io/auth/#/signup/?module=ci&utm_source=Website&utm_medium=&utm_campaign=CI-Product-Page-Hero-PLG)
 
 :::
 
