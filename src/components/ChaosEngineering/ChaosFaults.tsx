@@ -1,9 +1,9 @@
 import React from "react";
-import ChaosCard, { CardItem } from "./ChaosCard";
-import styles from "./ChaosEngineering.module.scss";
+import FaultCard, { FaultCardItem } from "./FaultCard";
+import styles from "./ChaosFaults.module.scss";
 
 /* Define the cards here */
-const FaultCategories: CardItem[] = [
+const FaultCategories: FaultCardItem[] = [
   {
     title: "Kubernetes",
     icon: "/img/chaosfaults/k8s.svg",
@@ -65,7 +65,7 @@ export default function ChaosFaults() {
   return (
     <div className={styles.spaceBetween}>
       {FaultCategories.map((props, idx) => (
-        <ChaosCard key={idx} {...props} />
+        <FaultCard key={idx} {...props} />
       ))}
     </div>
   );
