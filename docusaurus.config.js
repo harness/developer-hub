@@ -424,6 +424,7 @@ const config = {
         disableSwitch: true,
         respectPrefersColorScheme: false,
       },
+      /*
       announcementBar: {
         id: "support_us",
         content:
@@ -432,6 +433,7 @@ const config = {
         textColor: "#ffffff",
         isCloseable: true,
       },
+      */
       hotjar: {
         siteId: 3194971,
       },
