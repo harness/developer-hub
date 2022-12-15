@@ -232,39 +232,39 @@ const config = {
               },
               {
                 label: "Continuous Integration",
-                to: "release-notes/continuous-integration",
+                to: "release-notes/continuous-integration-release-notes",
               },
               {
                 label: "Continuous Delivery & GitOps",
-                to: "release-notes/continuous-delivery",
+                to: "release-notes/continuous-delivery-release-notes",
               },
               {
                 label: "Feature Flags",
-                to: "release-notes/feature-flags",
+                to: "release-notes/feature-flag-release-notes",
               },
               {
                 label: "Cloud Cost Management",
-                to: "release-notes/cloud-cost-management",
+                to: "release-notes/cloud-cost-management-release-notes",
               },
               {
                 label: "Service Reliability Management",
-                to: "release-notes/service-reliability-management",
+                to: "release-notes/service-reliability-management-release-notes",
               },
               {
                 label: "Security Testing Orchestration",
-                to: "release-notes/security-testing-orchestration",
+                to: "release-notes/security-testing-orchestration-release-notes",
               },
               {
                 label: "Chaos Engineering",
-                to: "release-notes/chaos-engineering",
+                to: "release-notes/chaos-engineering-release-notes",
               },
               {
                 label: "Harness Platform",
-                to: "release-notes/platform",
+                to: "release-notes/harness-platform-release-notes",
               },
               {
                 label: "Self-Managed Enterprise Edition",
-                to: "release-notes/self-managed-ee",
+                to: "release-notes/self-managed-enterprise-edition-release-notes",
               },
             ],
           },
