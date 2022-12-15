@@ -6,7 +6,7 @@
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start --host 0.0.0.0",
-    "build": "docusaurus build",
+    "build": "export NODE_OPTIONS=--max-old-space-size=4096 && docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
@@ -14,10 +14,10 @@
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
     "typecheck": "tsc",
-    "lint:textlint": "textlint tutorials/**/**.md* docs/**/**.md*",
+    "lint:textlint": "export NODE_OPTIONS=--max-old-space-size=4096 && textlint tutorials/**/**.md* docs/**/**.md*",
     "lint:eslint": "eslint ./src/**/*.js*",
     "lint:vale": "npm run lint:textlint",
-    "lint:ci": "npm run lint:eslint && npm run lint:textlint",
+    "lint:ci": "export NODE_OPTIONS=--max-old-space-size=4096 && npm run lint:eslint && npm run lint:textlint",
     "test": "npm run lint:ci"
   },
   "dependencies": {
