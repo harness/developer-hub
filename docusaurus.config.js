@@ -86,12 +86,11 @@ const config = {
           src: "img/logo_dlp.svg",
         },
         items: [
-          {
+          /*{
             position: "left",
-            // label: "img",
             html: `<img src='${BASE_URL}img/icon_beta.svg' alt='BETA' width='39' height='19' />`,
             href: "#",
-          },
+          },*/
           {
             // type: "search",
             // position: "right",
