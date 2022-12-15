@@ -29,11 +29,13 @@ The first step is adding the Harness app to your OneLogin **Applications**.
 To add the app, you must be in OneLogin Administration:
 
 ![](./static/provision-users-with-one-login-130.png)
+
 1. In **Applications**, click **Add App**.
 2. Search for **Harness**. The Harness Application appears.
 
-![](./static/provision-users-with-one-login-131.png)
-1. Click the Harness app to open its Configuration page and click **Save**.
+   ![](./static/provision-users-with-one-login-131.png)
+   
+3. Click the Harness app to open its Configuration page and click **Save**.
 
 When you are done, the Harness OneLogin app appears:
 
@@ -46,15 +48,19 @@ Next, add a special Harness account URL to the OneLogin app's SCIM Base URL.
 
 1. Log into your Harness account.
 2. In Harness Manager's address bar, copy the Harness account from your Harness URL.  
-The Harness account ID comes after `account` in the URL. For example, in the following URL, the account ID is `PVyBOd5NseCZSn9pe6xn87`: `https://app.harness.io/#/account/PVyBOd5NseCZSn9pe6xn87`.![](./static/provision-users-with-one-login-133.png)
+
+   The Harness account ID comes after `account` in the URL. For example, in the following URL, the account ID is `PVyBOd5NseCZSn9pe6xn87`: `https://app.harness.io/#/account/PVyBOd5NseCZSn9pe6xn87`.![](./static/provision-users-with-one-login-133.png)
 
 3. Add your account ID to the end of the following URL: `https://app.harness.io/gateway/api/scim/account/<account_ID>`
 
-For [Harness On-Prem](https://docs.harness.io/category/self-managed-enterprise-edition-fg), the URL will use your custom domain name and `gateway` is omitted. For example, if your On-Prem domain name is **harness.mycompany.com**:  
- `https://harness.mycompany.com/api/scim/account/<account_ID>`1. Copy the full URL.
-2. In OneLogin, open the Harness OneLogin app.
-3. Click **Configuration**.
-4. In **SCIM Base URL**, paste the Harness URL you copied.You can ignore the **SCIM JSON Template** and **Custom Headers** settings.
+   For [Harness On-Prem](https://docs.harness.io/category/self-managed-enterprise-edition-fg), the URL will use your custom domain name and `gateway` is omitted. For example, if your On-Prem domain name is **harness.mycompany.com**:  
+   
+   `https://harness.mycompany.com/api/scim/account/<account_ID>`
+
+4. Copy the full URL.
+5. In OneLogin, open the Harness OneLogin app.
+6. Click **Configuration**.
+7. In **SCIM Base URL**, paste the Harness URL you copied.You can ignore the **SCIM JSON Template** and **Custom Headers** settings.
 
 Next we will use a Harness API access key for the **SCIM Bearer Token** setting in your Harness OneLogin app.
 
@@ -85,17 +91,18 @@ Ensure these settings are set up exactly as shown below.
 
 1. In the Harness OneLogin app, click **Provisioning**.
 2. In **Workflow**, ensure the following are selected:
-* Enable provisioning
-* Create user
-* Delete user
-* Update user
-* When users are deleted in OneLogin, or the user's app access is removed, perform the below action: **Delete**.
-* When user accounts are suspended in OneLogin, perform the following action: **Suspend**.
+    * Enable provisioning
+    * Create user
+    * Delete user
+    * Update user
+    * When users are deleted in OneLogin, or the user's app access is removed, perform the below action: **Delete**.
+    * When user accounts are suspended in OneLogin, perform the following action: **Suspend**.
 
-When you are done, it will look like this:
+    When you are done, it will look like this:
 
-![](./static/provision-users-with-one-login-137.png)
-1. Click **Save**.
+    ![](./static/provision-users-with-one-login-137.png)
+    
+3. Click **Save**.
 
 ### Option 1: Provision OneLogin Users to Harness
 
@@ -105,19 +112,23 @@ Next, we will add users to the Harness OneLogin app. Once OneLogin SSO in enable
 2. Click a user.
 3. In **User Info**, ensure that user has **First name**, **Last name**, and **Email** completed.![](./static/provision-users-with-one-login-138.png)
 
+:::note
+Only **First name**, **Last name**, and **Email** are permitted for Harness OneLogin SCIM provisioning. Do not use any additional User Info settings.
+:::
 
-Only **First name**, **Last name**, and **Email** are permitted for Harness OneLogin SCIM provisioning. Do not use any additional User Info settings.1. Click **Applications**.
-2. In the **Applications** table, click the add button **(+)**.
-3. In the **Assign new login** settings, select the Harness OneLogin App, and click **Continue**.
-4. In **SCIM Username**, enter the email address for the user. This is the same email address in the **NameID** setting.  
+4. Click **Applications**.
+5. In the **Applications** table, click the add button **(+)**.
+6. In the **Assign new login** settings, select the Harness OneLogin App, and click **Continue**.
+7. In **SCIM Username**, enter the email address for the user. This is the same email address in the **NameID** setting.  
 When you are done, the settings will look something like this:![](./static/provision-users-with-one-login-139.png)
 
-5. Click **Save**. The status in the **Applications** table is now **Pending**.
-6. Click **Pending**. The **Create User in Application** settings appear:![](./static/provision-users-with-one-login-140.png)
+8. Click **Save**. The status in the **Applications** table is now **Pending**.
+9. Click **Pending**. The **Create User in Application** settings appear:![](./static/provision-users-with-one-login-140.png)
 
-7. Click **Approve**. The Provisioning status will turn to Provisioned.
+10. Click **Approve**. The Provisioning status will turn to Provisioned.
 
-![](./static/provision-users-with-one-login-141.png)
+    ![](./static/provision-users-with-one-login-141.png)
+    
 If provisioning fails, you might see something like the following error:
 
 ![](./static/provision-users-with-one-login-142.png)

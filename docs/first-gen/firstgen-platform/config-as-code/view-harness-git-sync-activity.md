@@ -26,14 +26,15 @@ Next, your Harness account or Applications must be synced with your Git repo usi
 To connect Harness with your Git repo and sync your Harness account and Applications, see the following topics:
 
 1. Connect Harness with your Git repo(s).
-* See the following topics:
-	+ [Add a GitHub Repo](../account/manage-connectors/add-github-repo.md)
-	+ [Add a GitLab Repo](../account/manage-connectors/add-a-gitlab-repo.md)
-	+ [Add a Bitbucket Repo](../account/manage-connectors/add-bitbucket-repo.md)
-	+ [Add a CodeCommit Repo](../account/manage-connectors/add-a-code-commit-repo.md)
-1. Sync your Harness account and/or Applications with your Git repo.
-* See the following topic for an overview and steps on your Harness account and/or Application:
-	+ [Configuration as Code](configuration-as-code.md)
+	 See the following topics:
+	 + [Add a GitHub Repo](../account/manage-connectors/add-github-repo.md)
+	 + [Add a GitLab Repo](../account/manage-connectors/add-a-gitlab-repo.md)
+	 + [Add a Bitbucket Repo](../account/manage-connectors/add-bitbucket-repo.md)
+	 + [Add a CodeCommit Repo](../account/manage-connectors/add-a-code-commit-repo.md)
+
+2. Sync your Harness account and/or Applications with your Git repo.
+   See the following topic for an overview and steps on your Harness account and/or Application:
+	 + [Configuration as Code](configuration-as-code.md)
 
 ### Visual Summary
 
@@ -45,7 +46,6 @@ Here is an example of some of the information available in **Git Sync Activity**
 Here is some of the information available in each activity record:
 
 ![](./static/view-harness-git-sync-activity-24.png)
-
 
 ### Step 1: Open Git Sync Activity
 

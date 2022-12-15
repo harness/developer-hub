@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 This topic describes how to use Harness Application APIs.
 
-T:::note
+:::note
 The `!` following the type means that this field is *required*.
 :::
 

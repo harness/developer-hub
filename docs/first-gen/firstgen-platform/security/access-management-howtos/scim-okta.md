@@ -165,17 +165,24 @@ You can edit a user's profile in Okta to update the following attribute values f
 
 To update user attributes:
 
-1. From Okta's top menu, select **Directory** > **People**.![](./static/scim-okta-199.png)
+1. From Okta's top menu, select **Directory** > **People**.
 
-2. Locate the user you want to edit, and click their name to display their profile.![](./static/scim-okta-200.png)
+   ![](./static/scim-okta-199.png)
+
+2. Locate the user you want to edit, and click their name to display their profile.
+
+   ![](./static/scim-okta-200.png)
 
 3. Click the **Profile** tab, then click the **Edit** button.
 
-![](./static/scim-okta-201.png)
-1. Update desired attributes in the fields shown below, then click **Save**.![](./static/scim-okta-202.png)
+   ![](./static/scim-okta-201.png)
+   
+4. Update desired attributes in the fields shown below, then click **Save**.
 
+   ![](./static/scim-okta-202.png)
 
 Only the five fields listed at the top of this section will be synced to Harness users. You can update values in other fields, but those values will be saved for this user only in Okta. They won't be reflected in Harness.
+
 #### Deactivate Users
 
 You can deactivate users in Okta to delete their Harness accounts, as follows:

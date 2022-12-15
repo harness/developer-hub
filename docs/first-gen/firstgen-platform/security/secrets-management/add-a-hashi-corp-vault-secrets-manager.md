@@ -191,7 +191,8 @@ The secret can fail because of various reasons.
             capabilities = ["read"]  
             }    
 ```
-1. 3. The policy attached to the Token/AppRole does not provide the **write**permission in the specified path. Make sure you update the policies and permissions.
+
+3. The policy attached to the Token/AppRole does not provide the **write**permission in the specified path. Make sure you update the policies and permissions.
 
 ### Step 4: Read-only Vault
 

@@ -145,13 +145,13 @@ A Kubernetes cluster in Google Cloud Platform has a variety of settings that are
 
 5. On your local machine, open a Terminal, and paste the command, and press **Enter**. You are now connected to the Kubernetes cluster.  
   
-By default, your cluster should be able to connect to the Internet. If you run into errors, ensure the GCE firewall isn’t blocking port 22 to your VMs. For more information, see [Debug Running Pods](https://kubernetes.io/docs/tasks/debug/debug-application/debug-running-pod/) from Kubernetes.
+   By default, your cluster should be able to connect to the Internet. If you run into errors, ensure the GCE firewall isn’t blocking port 22 to your VMs. For more information, see [Debug Running Pods](https://kubernetes.io/docs/tasks/debug/debug-application/debug-running-pod/) from Kubernetes.
 
-1. Let's quickly confirm that the cluster you created can connect to the Harness platform. Enter the following command:  
-	  
-	`wget -p https://app.harness.io/ -O /dev/null` 
+   1. Let's quickly confirm that the cluster you created can connect to the Harness platform. Enter the following command:	  
    
-	A successful connection will display the following output:  
+	   `wget -p https://app.harness.io/ -O /dev/null` 
+   
+	   A successful connection will display the following output:  
 	
     `Resolving app.harness.io (app.harness.io)... 35.197.53.196`  
   	`Connecting to app.harness.io (app.harness.io)|35.197.53.196|:443... connected.`  

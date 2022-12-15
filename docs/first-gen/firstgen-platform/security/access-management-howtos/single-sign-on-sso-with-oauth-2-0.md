@@ -83,7 +83,8 @@ To set up OAuth 2.0 SSO, do the following:
 
 1. Log into Harness using a Harness User account that is a member of the Administrator User Group. For information on Harness RBAC, see [Managing Users and Groups (RBAC)](users-and-permissions.md).  
   
-The email address used to log into Harness should also be registered with the OAuth 2.0 providers you intend to enable for Harness SSO.
+   The email address used to log into Harness should also be registered with the OAuth 2.0 providers you intend to enable for Harness SSO.
+
 2. Click **Continuous Security**, and then click **Access Management**. The **Access Management** page appears.![](./static/single-sign-on-sso-with-oauth-2-0-89.png)
 
 3. Click **Users**. The **Users** page appears.![](./static/single-sign-on-sso-with-oauth-2-0-90.png)

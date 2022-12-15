@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-YAML schema for some Workflow, Pipeline, and Triggers have changed. See [Recent YAML Schema Changes](recent-yaml-schema-changes.md).This document describes the YAML code keys and values used in the Harness Manager code editor to describe Harness Services, Environments, Workflows, and other components.
+This document describes the YAML code keys and values used in the Harness Manager code editor to describe Harness Services, Environments, Workflows, and other components.
 
 For how-tos on using YAML in Harness, see [Configuration as Code Overview](../../config-as-code/configuration-as-code.md).
 

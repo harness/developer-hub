@@ -21,33 +21,12 @@ Here is an overview of Harness RBAC. It shows how a user is authenticated via it
 
 Each Harness account includes default User Groups to help you organize your users. The following table describes the default Harness User Groups.
 
-
-
 |  |  |  |
 | --- | --- | --- |
 | **Default Group** | **Account Permissions** | **Application Permissions** |
-| Account Administrator | * Create/Delete Application
-* Manage Users & Groups
-* Manage Template Library
-* [Administer Other Account Functions](#administer_other_account_functions_permissions)
- | * All Permission Types
-* All Applications
-* Actions: Create, Read, Update, Delete, Execute Pipeline, and Execute Workflow
- |
-| Production Support | No Account Permissions | * **Pipelines:** All Applications; Filters: Production Pipelines; Actions: Create, Read, Update, Delete
-* **Services:** All Applications; Filters: All Services; Actions: Create, Read, Update, Delete
-* **Provisioners:** All Applications; Filters: All Provisioners; Actions: Create, Read, Update, Delete
-* **Environments:** All Applications; Filters: Production Environments; Actions: Create, Read, Update, Delete
-* **Workflows:** All Applications; Filters: Workflow Templates, Production Workflows; Actions: Create, Read, Update, Delete
-* **Deployments:** All Applications; Filters: Production Environments; Actions: Read, Execute Pipeline, Execute Workflow
- |
-| Non-Production Support | No Account Permissions | * **Pipelines:** All Applications; Filters: Non-Production Pipelines; Actions: Create, Read, Update, Delete
-* **Services:** All Applications; Filters: All Services; Actions: Create, Read, Update, Delete
-* **Provisioners:** All Applications; Filters: All Provisioners; Actions: Create, Read, Update, Delete
-* **Environments:** All Applications; Filters: Non-Production Environments; Actions: Create, Read, Update, Delete
-* **Workflows:** All Applications; Filters: Workflow Templates, Non-Production Workflows; Actions: Create, Read, Update, Delete
-* **Deployments:** All Applications; Filters: Non-Production Environments; Actions: Read, Execute Pipeline, Execute Workflow
- |
+| Account Administrator | &bull;&nbsp;Create/Delete Application <br />&bull;&nbsp; Manage Users & Groups <br />&bull;&nbsp; Manage Template Library <br />&bull;&nbsp; [Administer Other Account Functions](#administer_other_account_functions_permissions) | <br />&bull;&nbsp;All Permission Types <br />&bull;&nbsp;All Applications <br />&bull;&nbsp;Actions: Create, Read, Update, Delete, Execute Pipeline, and Execute Workflow |
+| Production Support | No Account Permissions | * **Pipelines:** All Applications; Filters: Production Pipelines; Actions: Create, Read, Update, Delete <br />&bull;&nbsp;**Services:** All Applications; Filters: All Services; Actions: Create, Read, Update, Delete <br />&bull;&nbsp;**Provisioners:** All Applications; Filters: All Provisioners; Actions: Create, Read, Update, Delete <br />&bull;&nbsp;**Environments:** All Applications; Filters: Production Environments; Actions: Create, Read, Update, Delete <br />&bull;&nbsp;**Workflows:** All Applications; Filters: Workflow Templates, Production Workflows; Actions: Create, Read, Update, Delete <br />&bull;&nbsp;**Deployments:** All Applications; Filters: Production Environments; Actions: Read, Execute Pipeline, Execute Workflow |
+| Non-Production Support | No Account Permissions |  <br />&bull;&nbsp;**Pipelines:** All Applications; Filters: Non-Production Pipelines; Actions: Create, Read, Update, Delete <br />&bull;&nbsp;**Services:** All Applications; Filters: All Services; Actions: Create, Read, Update, Delete <br />&bull;&nbsp;**Provisioners:** All Applications; Filters: All Provisioners; Actions: Create, Read, Update, Delete <br />&bull;&nbsp;**Environments:** All Applications; Filters: Non-Production Environments; Actions: Create, Read, Update, Delete <br />&bull;&nbsp;**Workflows:** All Applications; Filters: Workflow Templates, Non-Production Workflows; Actions: Create, Read, Update, Delete <br />&bull;&nbsp;**Deployments:** All Applications; Filters: Non-Production Environments; Actions: Read, Execute Pipeline, Execute Workflow |
 
 ### To Add Users
 

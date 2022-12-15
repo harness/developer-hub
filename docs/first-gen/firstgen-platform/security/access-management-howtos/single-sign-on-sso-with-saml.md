@@ -62,7 +62,9 @@ To set up an SAML support in your Okta Harness app, ensure that the app has corr
 
 The only user property that must match between a Harness User and its corresponding SAML provider user account is its **email address**.  
   
-Sometimes users might have mixed case email addresses in Okta. In these situations, Harness converts the email address to lowercase when adding them to Harness.### Configure SAML 2.0 for Harness
+Sometimes users might have mixed case email addresses in Okta. In these situations, Harness converts the email address to lowercase when adding them to Harness.
+
+### Configure SAML 2.0 for Harness
 
 As described above, you will enter the Harness **SAML Endpoint URL** as your Okta app's **ACS URL**. You will first copy the URL out of Harness Manager, and then enter it into your Okta app.
 
@@ -103,21 +105,39 @@ For example, here is what the SAML metadata file section looks like in an Okta a
 
 Now that Okta is set up in Harness as a SAML SSO provider, you can enable and test it.
 
-1. To enable the SSO provider, drag the slider under **Authentication** **Enabled?**![](./static/single-sign-on-sso-with-saml-08.png)
+1. To enable the SSO provider, drag the slider under **Authentication** **Enabled?**
 
-2. In the resulting **Enable SSO Provider** dialog, click **TEST** to verify the SAML connection you've configured.![](./static/single-sign-on-sso-with-saml-09.png)
-A new browser tab will prompt you to log into your SAML provider.
+   ![](./static/single-sign-on-sso-with-saml-08.png)
 
-If you do not see a new tab, your browser might have blocked it with a pop-up blocker. Please disable the blocker temporarily and retry the TEST button.1. Upon a successful test, Harness will display the **SAML test successful** banner below.![](./static/single-sign-on-sso-with-saml-10.png)
-When you see this banner, it is safe to click **CONFIRM** to enable SAML SSO in Harness.  
+2. In the resulting **Enable SSO Provider** dialog, click **TEST** to verify the SAML connection you've configured.
+
+   ![](./static/single-sign-on-sso-with-saml-09.png)
+   
+   A new browser tab will prompt you to log into your SAML provider.
+
+:::danger
+If you do not see a new tab, your browser might have blocked it with a pop-up blocker. Please disable the blocker temporarily and retry the TEST button.
+:::
+
+3. Upon a successful test, Harness will display the **SAML test successful** banner below.
+
+   ![](./static/single-sign-on-sso-with-saml-10.png)
+   
+    When you see this banner, it is safe to click **CONFIRM** to enable SAML SSO in Harness.  
+
+:::danger
 If you become locked out of Harness because of an SSO issue, you must [contact Harness](mailto:support@harness.io) to have the SSO Provider disabled.
-2. Test the SSO Provider as a Harness User.  
+:::
+
+4. Test the SSO Provider as a Harness User.  
   
-To fully test SSO, you will log into Harness using another User account. You should use a Chrome Incognito window to test SSO so that you can disable SSO back in your Harness Administrator account if there are any errors.
-	1. Open an Incognito window in Chrome.
-	2. Log into Harness using a Harness User account that has a corresponding user account email address in the SAML SSO provider. You will be redirected to your SAML SSO provider's login page.
-	3. Log into your SSO Provider using an email address for a Harness User. The password does not have to be the same.  
-	You are automatically returned to the Harness Manager, and logged into the dashboard using your SSO credentials.
+   To fully test SSO, you will log into Harness using another User account. You should use a Chrome Incognito window to test SSO so that you can disable SSO back in your Harness Administrator account if there are any errors.
+   
+  	1. Open an Incognito window in Chrome.
+  	2. Log into Harness using a Harness User account that has a corresponding user account email address in the SAML SSO provider. You will be redirected to your SAML SSO provider's login page.
+  	3. Log into your SSO Provider using an email address for a Harness User. The password does not have to be the same.  
+  	
+    You are automatically returned to the Harness Manager, and logged into the dashboard using your SSO credentials.
 
 #### SAML Authorization with Okta
 
@@ -218,14 +238,14 @@ You cannot delete a SAML SSO Provider from Harness that is linked to a Harness G
 
 The section describes the Azure-specific steps you must perform to use an Azure app for Harness SAML SSO:
 
-* [Azure User Accounts](#azure_user_accounts)
-* [Endpoint URL for Azure](#endpoint_url_for_azure)
-* [User Attributes Claims](#user_attributes_claims)
-* [Azure SAML Metadata File](#azure_saml_metadata_file)
-* [Enable and Test SSO with Azure](#enable_and_test_sso_with_azure)
-* [SAML Authorization with Azure](#saml_authorization_with_azure)
+* [Azure User Accounts](#azure-user-accounts)
+* [Endpoint URL for Azure](#endpoint-url-for-azure)
+* [User Attributes Claims](#user-attributes-claims)
+* [Azure SAML Metadata File](#azure-saml-metadata-file)
+* [Enable and Test SSO with Azure](#enable-and-test-sso-with-azure)
+* [SAML Authorization with Azure](#saml-authorization-with-azure)
 
-Make sure the email address used in Harness matches with the email address in the Azure app for every user.Users are not created as part of the SAML SSO integration. Users are invited to Harness using their email addresses. Once they log into Harness, their email addresses are registered as Harness Users. For more information, see [SAML SSO with Harness Overview](#saml_sso_with_harness_overview).The following image shows the basic exchange of information between Harness and your Azure app's Single sign-on settings:
+Make sure the email address used in Harness matches with the email address in the Azure app for every user.Users are not created as part of the SAML SSO integration. Users are invited to Harness using their email addresses. Once they log into Harness, their email addresses are registered as Harness Users. For more information, see [SAML SSO with Harness Overview](#saml-sso-with-harness-overview).The following image shows the basic exchange of information between Harness and your Azure app's Single sign-on settings:
 
 ![](./static/single-sign-on-sso-with-saml-25.png)
 
@@ -245,20 +265,36 @@ The following image shows a Harness User Group containing two users and their co
 
 You must enter the **Harness SAML Endpoint URL** from Harness in your Azure app **Reply URL**:
 
-1. In your Azure app, click **Single sign-on**. The SSO settings for the Azure app are displayed.![](./static/single-sign-on-sso-with-saml-27.png)
+1. In your Azure app, click **Single sign-on**. The SSO settings for the Azure app are displayed.
+
+   ![](./static/single-sign-on-sso-with-saml-27.png)
 
 2. In **Basic SAML Configuration**, click the edit icon (pencil).
-3. Enter **app.harness.io** in the **Identifier (Entity ID)** field.![](./static/single-sign-on-sso-with-saml-28.png)
-Next, you will use the **SAML SSO Provider** settings in Harness to set up your Azure app **Single sign-on**.
+3. Enter **app.harness.io** in the **Identifier (Entity ID)** field.
 
-For [Harness On-Prem](../../../starthere-firstgen/harness-on-premise-versions.md), replace **app.harness.io** with your custom URL.  
-If you use a custom Harness subdomain in any Harness version, like **example.harness.io**, use that URL.1. In Harness, click **Continuous Security**, and then click **Access Management**.
-2. Click **SSO Providers**, and then click **Add SSO Provider** and choose **SAML**. The **Add SAML Provider** dialog appears.![](./static/single-sign-on-sso-with-saml-29.png)
+   ![](./static/single-sign-on-sso-with-saml-28.png)
 
-3. In **Display Name**, enter a name for the SAML SSO Provider, such as **Azure**.
-4. Copy the **Harness SAML Endpoint URL** from the **Add SAML Provider** dialog, and paste it in the **Reply URL** in your Azure app.![](./static/single-sign-on-sso-with-saml-30.png)
+    Next, you will use the **SAML SSO Provider** settings in Harness to set up your Azure app **Single sign-on**.
 
-5. Click **Save**. The Basic SAML Configuration now looks like this:![](./static/single-sign-on-sso-with-saml-31.png)
+    For [Harness On-Prem](../../../starthere-firstgen/harness-on-premise-versions.md), replace **app.harness.io** with your custom URL.  
+    If you use a custom Harness subdomain in any Harness version, like **example.harness.io**, use that URL.
+
+4. In Harness, click **Continuous Security**, and then click **Access Management**.
+5. Click **SSO Providers**, and then click **Add SSO Provider** and choose **SAML**. 
+
+  The **Add SAML Provider** dialog appears.
+  
+  ![](./static/single-sign-on-sso-with-saml-29.png)
+
+6. In **Display Name**, enter a name for the SAML SSO Provider, such as **Azure**.
+
+7. Copy the **Harness SAML Endpoint URL** from the **Add SAML Provider** dialog, and paste it in the **Reply URL** in your Azure app.
+
+   ![](./static/single-sign-on-sso-with-saml-30.png)
+
+8. Click **Save**. The Basic SAML Configuration now looks like this:
+
+   ![](./static/single-sign-on-sso-with-saml-31.png)
 
 
 #### User Attributes & Claims

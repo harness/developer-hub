@@ -61,7 +61,7 @@ The following table displays the HTTP template in the Template Library and the a
 |  |  |
 | --- | --- |
 | **Template in Template Library** | **Template Applied in a Workflow** |
-|  |  |
+| ![](./static/_tmpl-lib-left.png) | ![](./static/_tmpl-appl-right.png) |
 
 ## Next Steps
 

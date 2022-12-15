@@ -12,19 +12,19 @@ This content is for Harness [FirstGen](../../../../getting-started/harness-first
 
 The Audit Trail feature covers events in accounts and Applications. To see your deployment history use Harness Manager's **Continuous Deployment**. See [Filtering Deployments](../../../continuous-delivery/concepts-cd/deployments-overview/filtering-deployments.md).
 
-### Video Summary
+## Video Summary
 
-### Before You Begin
+## Before You Begin
 
 * [Users and Permissions](../access-management-howtos/users-and-permissions.md)
 * [Application Components](../../../continuous-delivery/model-cd-pipeline/applications/application-configuration.md)
 
-### Limitations
+## Limitations
 
 * Audit data retention is 6 months. Harness reserves the right to delete audit data after 6 months. You can request a longer retention period by contacting Harness. For example, if you require audit data for legal discoveries, etc, contact Harness and we can help.
 * There can be a lag of a few minutes for events to show up in the Audit Trail. If you do not see an event immediately, wait a minute and then refresh your browser.
 
-### View an Audit Trail
+## View an Audit Trail
 
 To view your account's audit trail: From Harness Manager, select **Continuous Security** **>** **Audit Trail**. The **Audit Trail** page appears, displaying a record for each event that changed the setup of your Harness account, Applications, or Application components.
 
@@ -39,11 +39,11 @@ For each event record, this view shows the:
 
 From here, you have multiple options to [modify this view](#modify) and [display event details](#details).
 
-### Modify the Audit Trail View
+## Modify the Audit Trail View
 
 You can restrict the Audit Trail's displayed events by date and time, or define detailed filters by these and other criteria.
 
-#### Set Date/Time Range
+### Set Date/Time Range
 
 Use the Date Picker to restrict events to a predefined date range, or to a custom date/time range:
 
@@ -53,14 +53,12 @@ Selecting **Custom Date Range** enables you to set arbitrary limits by date and 
 ![](./static/audit-trail-02.png)
 
 
-#### Filter Audit Events
+### Filter Audit Events
 
 Click the Filter button to open a dialog where you can set multiple conditions on the events displayed:
 
 ![](./static/audit-trail-03.png)
 This dialog provides the following options. Your selections are cumulative—they combine to restrict the Audit Trail's display:
-
-
 
 |  |  |
 | --- | --- |
@@ -69,10 +67,20 @@ This dialog provides the following options. Your selections are cumulative—the
 | **Updated By** | Select one or more users, to view only events they performed. (Select **Git Sync** to see changes per commit.) |
 | **Actions** | Select one or more of the basic CRUD actions—**Create**, **Update**, and **Delete**—to view only matching events. |
 | **Resources to Include** | Filter by **Account Resources**, **Application Resources**, or **Include Both**. The broadest choice (**Include Both**) displays the most fields in the dialog's lower section—which, conversely, enables you to filter the displayed events most narrowly. |
-| **Account Resources** |
+
+#### Account Resources
+
+|  |  |
+| --- | --- |
+| **Field** | **Description** |
 | **Resource Type** | Select one or more account-wide resource types: **Artifact Server**, **Collaboration Provider**, **Connection Attributes**, **Cloud Provider**, **Encrypted Records** (secrets), **Load Balancer**, (access-control) **Role**, **Setting**, **Source Repo Provider**, and **Template**. Your selections will display only events that modified these resource types. |
 | **Resource** | Select one or more resources matching the type(s) you've defined in the **Resource Type** field. (Options appear here only if you've selected at least one **Resource Type**. The displayed options are themselves filtered by your **Resource Type** selections.) |
-| **Application Resources** |
+
+
+#### Application Resources
+|  |  |
+| --- | --- |
+| **Field** | **Description** |
 | **Application** | Select a single Application defined in your organization's account. |
 | **Resource Type** | Select a single type of Application-level resource: **Service**, **Environment**, **Workflow**, **Pipeline**, **Trigger**, **Provisioner**, or **Template**. |
 | **Resource** | Select a single resource of the type you've defined in the **Resource Type** field. (This control is available only if you've selected an **Application** and **Resource Type**.) |
@@ -85,7 +93,7 @@ After making selections in this dialog:
 
 Once you've applied a filter, you can share your filtered view of the Audit Trail with other Harness users by copying its URL from your browser's address bar.
 
-#### Update or Save Filters
+### Update or Save Filters
 
 Once you've applied any filters to the Audit Trail display, controls along the top allow you to update, remove, or save your filter selections:
 
@@ -95,7 +103,7 @@ Once you've applied any filters to the Audit Trail display, controls along the t
 * To name and save your current set of filters, click **Save Filter**. (Saved filters will appear on the Filter button's submenu.)
 * To fine-tune filters, click the Filter button. (This reopens the **Audit Trail Filter** dialog with your current filter settings.)
 
-### View Audit Trail Event Details
+## View Audit Trail Event Details
 
 Within each of the Audit Trail's events, you can click links to display further information about the event:
 
