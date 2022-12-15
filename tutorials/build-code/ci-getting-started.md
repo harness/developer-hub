@@ -25,7 +25,7 @@ Developers are frustrated with the time it takes to ship code and often end up w
 With Harness CI, you can build faster and be more productive. Harness CI's pricing is competitive to other leading CI providers, which gives you more cost savings with the speed benefit.
 Harness CI is built on Drone, and over the last 10 years we have been focusing on solving the developer's frustration with the time it took to ship code with existing CI tools. Harness CI’s vision is to create a CI tool that is fast, simple, open, and secure.
 
-### Build pipelines 4x faster than GitHub Actions
+### Build pipelines 4 times faster than GitHub Actions
 Harness CI is 4x faster due to optimized defaults with hosted builds so you don’t have to set up and manage infrastructure or optimize caching and other technologies to improve build times. Cache Intelligence dramatically reduces pipeline execution time by automatically caching well known directories for Java, Node package managers and more. Test Intelligence
 can build cycles by up to 90% with machine learning (ML) that runs only the necessary tests relevant to code changes. Once tests are identified, speed up test cycles even more by splitting and running tests concurrently.
 
