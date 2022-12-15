@@ -157,7 +157,7 @@ import TabItem from '@theme/TabItem';
 * [Sign up](https://app.harness.io/auth/#/signup/?module=ci&utm_source=Website&utm_medium=&utm_campaign=CI-Product-Page-Hero-PLG) for a free account 
 * Follow the **Get Started** wizard in Harness CI.
 * Fork the repository [https://github.com/rustd/python](https://github.com/rustd/python) into your GitHub account.
-* In the **Which code repository do you use** step, select GitHub and then select either the **OAuth** or the **Access Token** as the authentication method that Harness CI will use to connect to your GitHub account. Verify that the authentication is setup correctly using the **Test Connection** button.
+* In the **Which code repository do you use** step, select GitHub, and then select either the **OAuth** or the **Access Token** as the authentication method that Harness CI will use to connect to your GitHub account. Verify that the authentication is set up correctly using the **Test Connection** button.
 * When you are prompted to select a repository, select the repository that you forked in the earlier step, and then select **Configure Pipeline**.
 * Select **Starter Pipeline**, and then select **Create Pipeline**.
 * Switch from the **Visual** view to the **YAML** view, and then select **Edit YAML**.
