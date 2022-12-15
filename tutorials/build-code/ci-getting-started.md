@@ -200,4 +200,4 @@ This is the cost of running a single build on Apache Kafka, RocketMQ and Zookeep
 
 
 ## Get started for free 
-[Signup](https://app.harness.io/auth/#/signup/?module=ci&utm_source=Website&utm_medium=&utm_campaign=CI-Product-Page-Hero-PLG) for a free Harness CI account and run your pipelines fastest on Harness CI.
+[Sign up](https://app.harness.io/auth/#/signup/?module=ci&utm_source=Website&utm_medium=&utm_campaign=CI-Product-Page-Hero-PLG) for a free Harness CI account and run your pipelines faster on Harness CI.
