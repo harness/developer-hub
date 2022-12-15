@@ -2,25 +2,32 @@ import React from "react";
 import Link from "@docusaurus/Link";
 import styles from "./FaultCard.module.scss";
 import clsx from "clsx";
+import { getCategoryDetails } from "./utils/helper";
 
 export type FaultCardItem = {
-  icon: string;
+  icon?: string;
   title: string;
+  category: string;
   description: JSX.Element | string;
   faults?: number;
-  link: string;
+  link?: string;
 };
 
 export default function FaultCard({
   icon,
   title,
+  category,
   description,
   faults,
-  link = "#",
+  link,
 }: FaultCardItem) {
+  const details = getCategoryDetails(category);
+  console.log(details);
   return (
-    <Link to={link} className={styles.tutorialCard}>
-      <div className={styles.icon}>{icon && <img src={icon} />}</div>
+    <Link to={details.link} className={styles.tutorialCard}>
+      <div className={styles.icon}>
+        {icon ? <img src={icon} /> : <img src={details.icon} />}
+      </div>
       <div className={styles.title}>{title}</div>
       <div className={styles.description}>{description}</div>
       {faults && (
