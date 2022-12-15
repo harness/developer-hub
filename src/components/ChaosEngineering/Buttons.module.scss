@@ -2,9 +2,12 @@
 	color: #0278d5;
 	font-size: 1rem;
 	font-weight: 600;
-	display: flex;
+	display: inline-flex;
 	align-items: center;
 	gap: 0.5rem;
+	&:hover {
+		color: #0278d5;
+	}
 }
 .viewDetailsButton {
 	margin-top: 2rem;
