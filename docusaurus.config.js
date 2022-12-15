@@ -266,10 +266,6 @@ const config = {
                 label: "Self-Managed Enterprise Edition",
                 to: "release-notes/self-managed-ee",
               },
-              {
-                label: "Harness FirstGen",
-                to: "release-notes/first-gen",
-              },
             ],
           },
           {
