@@ -1,0 +1,108 @@
+.experimentListSectionContainer {
+	.experimentListSectionHeader {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		button {
+			background: none;
+			border: none;
+			outline: none;
+			cursor: pointer;
+			color: #0278d5;
+			font-weight: 600;
+			font-size: 0.9rem;
+		}
+		input {
+			flex-grow: 1;
+			border: 1px solid #d9dae5;
+			outline: none;
+			padding: 8px;
+			border-radius: 4px;
+			background-color: #fff;
+		}
+	}
+}
+a {
+	color: inherit;
+}
+a:hover {
+	text-decoration: none;
+	color: inherit;
+}
+.experimentListSectionContent {
+	margin-top: 2rem;
+	display: grid;
+	grid-template-columns: repeat(1, 1fr);
+	gap: 1rem;
+	min-height: 416px;
+	align-content: flex-start;
+	@media (min-width: 600px) {
+		grid-template-columns: repeat(2, 1fr);
+	}
+	@media (min-width: 1280px) {
+		grid-template-columns: repeat(3, 1fr);
+	}
+	.experimentCard {
+		display: flex;
+		align-items: flex-start;
+		gap: 0.5rem;
+		box-shadow: 0px 0px 1px rgba(40, 41, 61, 0.04),
+			0px 2px 4px rgba(96, 97, 112, 0.16);
+		height: 100%;
+		border-radius: 8px;
+		background-color: #fff;
+		padding: 1.5rem 1rem;
+		.experimentCardContent {
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			gap: 2rem;
+			height: 100%;
+			.title {
+				font-size: 1rem;
+				font-weight: 600;
+				margin: 0 0 0.5rem 0;
+				line-height: 1.2;
+			}
+			.description {
+				font-size: 0.9rem;
+				margin: 0 0 0.5rem 0;
+				line-height: 1.2;
+			}
+			.experimentCardTags {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.5rem;
+				span {
+					display: inline-block;
+					border-radius: 6px;
+					padding: 2px 6px;
+					font-size: 0.8rem;
+					color: #fff;
+					font-weight: 600;
+				}
+			}
+		}
+		&:hover {
+			box-shadow: 0 0 0 2px #0278d5, 0px 0px 1px rgba(40, 41, 61, 0.04),
+				0px 2px 4px rgba(96, 97, 112, 0.16);
+		}
+	}
+}
+
+.experimentListSectionFooter {
+	display: grid;
+	grid-template-columns: 32px 1fr 32px;
+	width: 25%;
+	margin: 1.5rem auto 0 auto;
+	align-items: center;
+	gap: 0.5rem;
+	justify-items: center;
+	@media screen and (max-width: 600px) {
+		width: 100%;
+	}
+	p {
+		margin: 0;
+		font-size: 0.8rem;
+	}
+}

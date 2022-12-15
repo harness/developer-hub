@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./Buttons.module.scss";
+import clsx from "clsx";
 
 interface LinkProps {
 	href: string;
@@ -39,7 +40,7 @@ const ViewDetails = (props: LinkProps): React.ReactElement => {
 			href={props.href}
 			target={props.isExternal ? "_blank" : "_self"}
 			rel={props.isExternal ? "noopener noreferrer" : ""}
-			className={styles.backToTopButton}
+			className={clsx(styles.viewDetailsButton, styles.backToTopButton)}
 		>
 			View details{" "}
 			<svg
