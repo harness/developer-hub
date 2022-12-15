@@ -187,7 +187,7 @@ import TabItem from '@theme/TabItem';
 * Select **Run Pipeline**.
 * You can see the pipeline execute the steps in the Execution View.
 
-## Build & Test Apache Kafka 4x faster on Harness CI 
+## Build and test Apache Kafka 4 times faster on Harness CI 
 Congratulations on building your first pipeline. You can build even faster with Harness CI.
 Learn how you can build and test Apache Kafka four times faster on Harness CI. 
 Read more about the performance data here [https://harness.io/blog/fastest-ci-tool](https://harness.io/blog/fastest-ci-tool) and follow the instructions of [this sample](https://github.com/harness-community/kafka/blob/trunk/.harness/README.md) to reproduce the results and see for yourself. 
