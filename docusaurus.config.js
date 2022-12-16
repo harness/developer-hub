@@ -440,6 +440,9 @@ const config = {
       oneTrust: {
         dataDomainScript: "59633b83-e34c-443c-a807-63232ce145e5",
       },
+      utmCookie: {
+        prefix: "utm_",
+      },
       rss: {
         rssPath: "release-notes/rss.xml",
         rssTitle: "Harness Release Notes",
@@ -504,6 +507,7 @@ const config = {
     "docusaurus-plugin-sass",
     path.join(__dirname, "/plugins/hotjar-plugin"),
     path.join(__dirname, "/plugins/onetrust-plugin"),
+    path.join(__dirname, "/plugins/utmcookie-plugin"),
   ],
 };
 
