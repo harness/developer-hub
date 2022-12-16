@@ -43,7 +43,7 @@ Developer productivity is a core pillar for Harness. We didn't want to build a C
 Harness uses containers to drop pre‑configured steps into your pipeline. Choose from thousands of existing plugins, or create your own and run it on a container or the host virtual machine.
 
 ## Create a pipeline​ for your favorite language
-Build, test, and deploy applications in Node.js, Python, Java, Ruby, PHP, Go, Rust, .NET, and more. Use VMs or containers for Linux, Windows, Mac operating systems.
+Build, test, and deploy applications in Node.js, Python, Java, Ruby, PHP, Go, Rust, .NET, and more. Use VMs or containers for Linux, Windows, and Mac operating systems.
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
