@@ -49,20 +49,18 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
 
-
-
 ```mdx-code-block
 <Tabs>
 <TabItem value="Go" label="Go" default>
 ```
-* [Signup](https://app.harness.io/auth/#/signup/?module=ci&utm_source=Website&utm_medium=&utm_campaign=CI-Product-Page-Hero-PLG) for a free account 
-* Follow the **Get Started** wizard in Harness CI.
-* Fork the repository [https://github.com/rustd/gosample](https://github.com/rustd/gosample) into your GitHub account.
-* In the **Which code repository do you use** step, select GitHub and then select either the **OAuth** or the **Access Token** as the authentication method that Harness CI will use to connect to your GitHub account.
-* When you are prompted to select a repository, select the repository that you forked in the earlier step, and then select **Configure Pipeline**.
-* Select **Starter Pipeline**, and then select **Create Pipeline**.
-* Switch from the **Visual** view to the **YAML** view, and then select **Edit YAML**.
-* Replace the sample step section with the following and **Save** the pipeline.
+1. [Signup](https://app.harness.io/auth/#/signup/?module=ci&utm_source=Website&utm_medium=&utm_campaign=CI-Product-Page-Hero-PLG) for a free account 
+2. Follow the **Get Started** wizard in Harness CI.
+3. Fork the repository [https://github.com/rustd/gosample](https://github.com/rustd/gosample) into your GitHub account.
+4. In the **Which code repository do you use** step, select GitHub and then select either the **OAuth** or the **Access Token** as the authentication method that Harness CI will use to connect to your GitHub account.
+5. When you are prompted to select a repository, select the repository that you forked in the earlier step, and then select **Configure Pipeline**.
+6. Select **Starter Pipeline**, and then select **Create Pipeline**.
+7. Switch from the **Visual** view to the **YAML** view, and then select **Edit YAML**.
+8. Replace the sample step section with the following and **Save** the pipeline.
 ```
               - step:
                   type: Run
@@ -79,14 +77,14 @@ import TabItem from '@theme/TabItem';
 </TabItem>
 <TabItem value="Java" label="Java">
 ```
-* [Signup](https://app.harness.io/auth/#/signup/?module=ci&utm_source=Website&utm_medium=&utm_campaign=CI-Product-Page-Hero-PLG) for a free account 
-* Follow the **Get Started** wizard in Harness CI.
-* Fork the repository [https://github.com/rustd/jhttp](https://github.com/rustd/jhttp) into your GitHub account.
-* In the **Which code repository do you use** step, select GitHub and then select either the **OAuth** or the **Access Token** as the authentication method that Harness CI will use to connect to your GitHub account. Verify that the authentication is setup correctly using the **Test Connection** button.
-* When you are prompted to select a repository, select the repository that you forked in the earlier step, and then select **Configure Pipeline**.
-* Select **Starter Pipeline**, and then select **Create Pipeline**.
-* Switch from the **Visual** view to the **YAML** view, and then select **Edit YAML**.
-* Replace the sample step section with the following and **Save** the pipeline.
+1. [Signup](https://app.harness.io/auth/#/signup/?module=ci&utm_source=Website&utm_medium=&utm_campaign=CI-Product-Page-Hero-PLG) for a free account 
+2. Follow the **Get Started** wizard in Harness CI.
+3. Fork the repository [https://github.com/rustd/jhttp](https://github.com/rustd/jhttp) into your GitHub account.
+4. In the **Which code repository do you use** step, select GitHub and then select either the **OAuth** or the **Access Token** as the authentication method that Harness CI will use to connect to your GitHub account.
+5. When you are prompted to select a repository, select the repository that you forked in the earlier step, and then select **Configure Pipeline**.
+6. Select **Starter Pipeline**, and then select **Create Pipeline**.
+7. Switch from the **Visual** view to the **YAML** view, and then select **Edit YAML**.
+8. Replace the sample step section with the following and **Save** the pipeline.
 ```
               - step:
                   type: Run
@@ -103,14 +101,14 @@ import TabItem from '@theme/TabItem';
 </TabItem>
 <TabItem value="JavaScript" label="JavaScript">
 ```
-* [Signup](https://app.harness.io/auth/#/signup/?module=ci&utm_source=Website&utm_medium=&utm_campaign=CI-Product-Page-Hero-PLG) for a free account 
-* Follow the **Get Started** wizard in Harness CI.
-* Fork the repository [https://github.com/rustd/reactcalculator](https://github.com/rustd/reactcalculator) into your GitHub account.
-* In the **Which code repository do you use** step, select GitHub and then select either the **OAuth** or the **Access Token** as the authentication method that Harness CI will use to connect to your GitHub account. Verify that the authentication is setup correctly using the **Test Connection** button.
-* When you are prompted to select a repository, select the repository that you forked in the earlier step, and then select **Configure Pipeline**.
-* Select **Starter Pipeline**, and then select **Create Pipeline**.
-* Switch from the **Visual** view to the **YAML** view, and then select **Edit YAML**.
-* Replace the sample step section with the following and **Save** the pipeline.
+1. [Signup](https://app.harness.io/auth/#/signup/?module=ci&utm_source=Website&utm_medium=&utm_campaign=CI-Product-Page-Hero-PLG) for a free account 
+2. Follow the **Get Started** wizard in Harness CI.
+3. Fork the repository [https://github.com/rustd/reactcalculator](https://github.com/rustd/reactcalculator) into your GitHub account.
+4. In the **Which code repository do you use** step, select GitHub and then select either the **OAuth** or the **Access Token** as the authentication method that Harness CI will use to connect to your GitHub account.
+5. When you are prompted to select a repository, select the repository that you forked in the earlier step, and then select **Configure Pipeline**.
+6. Select **Starter Pipeline**, and then select **Create Pipeline**.
+7. Switch from the **Visual** view to the **YAML** view, and then select **Edit YAML**.
+8. Replace the sample step section with the following and **Save** the pipeline.
 ```
               - step:
                   type: Run
@@ -129,14 +127,14 @@ import TabItem from '@theme/TabItem';
 </TabItem>
 <TabItem value=".NET" label=".NET">
 ```
-* [Signup](https://app.harness.io/auth/#/signup/?module=ci&utm_source=Website&utm_medium=&utm_campaign=CI-Product-Page-Hero-PLG) for a free account 
-* Follow the **Get Started** wizard in Harness CI.
-* Fork the repository [https://github.com/rustd/hello-dotnet-core](https://github.com/rustd/hello-dotnet-core) into your GitHub account.
-* In the **Which code repository do you use** step, select GitHub and then select either the **OAuth** or the **Access Token** as the authentication method that Harness CI will use to connect to your GitHub account. Verify that the authentication is setup correctly using the **Test Connection** button.
-* When you are prompted to select a repository, select the repository that you forked in the earlier step, and then select **Configure Pipeline**.
-* Select **Starter Pipeline**, and then select **Create Pipeline**.
-* Switch from the **Visual** view to the **YAML** view, and then select **Edit YAML**.
-* Replace the sample step section with the following and **Save** the pipeline.
+1. [Signup](https://app.harness.io/auth/#/signup/?module=ci&utm_source=Website&utm_medium=&utm_campaign=CI-Product-Page-Hero-PLG) for a free account 
+2. Follow the **Get Started** wizard in Harness CI.
+3. Fork the repository [https://github.com/rustd/hello-dotnet-core](https://github.com/rustd/hello-dotnet-core) into your GitHub account.
+4. In the **Which code repository do you use** step, select GitHub and then select either the **OAuth** or the **Access Token** as the authentication method that Harness CI will use to connect to your GitHub account.
+5. When you are prompted to select a repository, select the repository that you forked in the earlier step, and then select **Configure Pipeline**.
+6. Select **Starter Pipeline**, and then select **Create Pipeline**.
+7. Switch from the **Visual** view to the **YAML** view, and then select **Edit YAML**.
+8. Replace the sample step section with the following and **Save** the pipeline.
 ```
               - step:
                   type: Run
@@ -154,14 +152,14 @@ import TabItem from '@theme/TabItem';
 </TabItem>
 <TabItem value="Python" label="Python">
 ```
-* [Sign up](https://app.harness.io/auth/#/signup/?module=ci&utm_source=Website&utm_medium=&utm_campaign=CI-Product-Page-Hero-PLG) for a free account 
-* Follow the **Get Started** wizard in Harness CI.
-* Fork the repository [https://github.com/rustd/python](https://github.com/rustd/python) into your GitHub account.
-* In the **Which code repository do you use** step, select GitHub, and then select either the **OAuth** or the **Access Token** as the authentication method that Harness CI will use to connect to your GitHub account. Verify that the authentication is set up correctly using the **Test Connection** button.
-* When you are prompted to select a repository, select the repository that you forked in the earlier step, and then select **Configure Pipeline**.
-* Select **Starter Pipeline**, and then select **Create Pipeline**.
-* Switch from the **Visual** view to the **YAML** view, and then select **Edit YAML**.
-* Replace the sample step section with the following and **Save** the pipeline.
+1. [Signup](https://app.harness.io/auth/#/signup/?module=ci&utm_source=Website&utm_medium=&utm_campaign=CI-Product-Page-Hero-PLG) for a free account 
+2. Follow the **Get Started** wizard in Harness CI.
+3. Fork the repository [https://github.com/rustd/python](https://github.com/rustd/python) into your GitHub account.
+4. In the **Which code repository do you use** step, select GitHub and then select either the **OAuth** or the **Access Token** as the authentication method that Harness CI will use to connect to your GitHub account.
+5. When you are prompted to select a repository, select the repository that you forked in the earlier step, and then select **Configure Pipeline**.
+6. Select **Starter Pipeline**, and then select **Create Pipeline**.
+7. Switch from the **Visual** view to the **YAML** view, and then select **Edit YAML**.
+8. Replace the sample step section with the following and **Save** the pipeline.
 ```
               - step:
                   type: Run
@@ -182,10 +180,10 @@ import TabItem from '@theme/TabItem';
 
 ## Run your pipeline​
 
-* In the **Pipeline Studio**, select **Run**.​
-* In the **Build Type** field, select **Git Branch**, and then enter **main** in the **Branch Name** field.
-* Select **Run Pipeline**.
-* You can see the pipeline execute the steps in the Execution View.
+1. In the **Pipeline Studio**, select **Run**.​
+2. In the **Build Type** field, select **Git Branch**, and then enter **main** in the **Branch Name** field.
+3. Select **Run Pipeline**.
+4. You can see the pipeline execute the steps in the Execution View.
 
 ## Build and test Apache Kafka 4 times faster on Harness CI 
 Congratulations on building your first pipeline. You can build even faster with Harness CI.
@@ -194,9 +192,9 @@ Read more about the performance data here [https://harness.io/blog/fastest-ci-to
 
 ![HarnessCI Performance Chart ](static/ci-tutorial-fast/harness_ci_stats.png)
 
-This is the cost of running a single build on Apache Kafka, RocketMQ and Zookeeper.
+Harness CI gives you speed benefits at a much lower cost. We compared the cost of running a single build for Apache Kafka, RocketMQ and Zookeeper. GitHub Actions costs $0.008 per build minute, and CI Vendor 2 costs $0.0120 per build minute. Harness CI is competitively priced ($0.008 per build minute) relative to GitHub Actions and priced lower than CI Vendor 2. With the four times speed benefits, your builds will take less time and with the competitive pricing of $0.008 per build minute, your total cost could be 1/4th the cost of the other CI competitors. Learn more about our test methodology [here](https://harness.io/blog/fastest-ci-tool)
 
-![HarnessCI Cost and Speed Performance Chart ](static/ci-tutorial-fast/costspeedbenefits.png)
+![HarnessCI Cost and Speed Performance Chart](static/ci-tutorial-fast/costspeedbenefits.png)
 
 
 ## Get started for free 
