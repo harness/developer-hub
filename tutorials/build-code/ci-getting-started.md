@@ -39,7 +39,7 @@ Developer productivity is a core pillar for Harness. We didn't want to build a C
 
 ![CI Getting Started](static/ci-tutorial-fast/gettingstarted.gif)
 
-### Create & Share Open Source Plugins
+### Create and share open source plugins
 Harness uses containers to drop pre‑configured steps into your pipeline. Choose from thousands of existing plugins, or create your own and run it on a container or the host Virtual machine.
 
 ## Create a pipeline​ for your favorite language
