@@ -35,7 +35,7 @@ As explained in [Harness Key Concepts](../../starthere-firstgen/harness-key-con
 
 The Delegate performs all deployment operations. To do so, it needs network connectivity to your artifact server, such as Jenkins, and your cloud deployment environment, such as a Kubernetes cluster or AWS. Also, the roles associated with the Delegate must have the policies needed to perform its operations.
 
-For detailed information on installing Harness Delegates, see [Manage Harness Delegates](https://docs.harness.io/category/manage-harness-delegates-firstgen).
+For detailed information on installing Harness Delegates, see [Manage Harness Delegates](/docs/category/manage-harness-delegates-firstgen).
 
 ### Step 2: Create an Artifact Server
 

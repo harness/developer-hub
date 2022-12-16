@@ -82,7 +82,7 @@ In **Repository name**, enter a name for the repo. It doesn't have to be the sam
 For example, here's the **Repository name** `GitExpDocExample` after Harness Git Experience is enabled:
 
 ![](./static/harness-git-experience-quickstart-58.png)
-In **Select Connector**, select or create a Git Connector to the repo for your Project. For steps, see [Code Repo Connectors](https://docs.harness.io/category/code-repo-connectors).
+In **Select Connector**, select or create a Git Connector to the repo for your Project. For steps, see [Code Repo Connectors](/docs/category/code-repo-connectors).
 
 Important: Connector must use the Enable API access option and Token**Important:** the Connector must use the **Enable API access** option and Username and **Token** authentication. Harness needs the PAT to access the Git platform APIs. Generate the token in your account on the Git provider and add it to Harness as a Secret. Next, use the token in the credentials for the Git Connector. For details on source code manager settings, see [Source Code Manager Settings](../7_Connectors/ref-source-repo-provider/source-code-manager-settings.md).
 
@@ -90,7 +90,7 @@ Important: Connector must use the Enable API access option and Token**Important:
 For GitHub, the token must have the following scopes:
 
 ![](./static/harness-git-experience-quickstart-60.png)
-For other Git providers, see [Code Repo Connectors](https://docs.harness.io/category/code-repo-connectors).
+For other Git providers, see [Code Repo Connectors](/docs/category/code-repo-connectors).
 
 Here's an example of a GitHub Connector that has the correct settings:
 
@@ -185,7 +185,7 @@ In **About Your Stage**, enter the name **helloworld**.
 
 Enable **Clone Codebase**.
 
-In **Connector**, select or create a Git Connector to the repo for your Project. For steps, see [Code Repo Connectors](https://docs.harness.io/category/code-repo-connectors).
+In **Connector**, select or create a Git Connector to the repo for your Project. For steps, see [Code Repo Connectors](/docs/category/code-repo-connectors).
 
 Click **Set Up Stage**.
 

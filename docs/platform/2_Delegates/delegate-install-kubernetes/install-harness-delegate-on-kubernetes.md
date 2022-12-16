@@ -97,7 +97,7 @@ Some delegate values are configured in the harness-delegate-values.yml file. You
 1. Click **Continue**.![](./static/install-harness-delegate-on-kubernetes-16.png)
 2. Copy the provided commands and apply the chart.
 
-If the deployment is successful, the installer verifies the delegate heartbeat. Otherwise, if there are problems, see [Delegate Issues](https://docs.harness.io/article/jzklic4y2j-troubleshooting#delegate_issues). After the issue is resolved, try the `helm upgrade` command again.
+If the deployment is successful, the installer verifies the delegate heartbeat. Otherwise, if there are problems, see [Delegate Issues](../../../troubleshooting/troubleshooting-nextgen.md#delegate-issues). After the issue is resolved, try the `helm upgrade` command again.
 
 If you require additional assistance, contact Harness Support.
 
@@ -113,7 +113,7 @@ For a sample manifest, see [Example Kubernetes Manifest: Harness Delegate](../de
 
 1. Copy the provided command and apply the YAML.
 
-If the deployment is successful, the installer verifies the delegate heartbeat. If the deployment is not successful, see [Troubleshooting](https://docs.harness.io/article/jzklic4y2j) for instructions. After you resolve the issue, apply the YAML again.
+If the deployment is successful, the installer verifies the delegate heartbeat. If the deployment is not successful, see [Troubleshooting](../../../troubleshooting/troubleshooting-nextgen.md) for instructions. After you resolve the issue, apply the YAML again.
 
 If you require additional assistance, contact Harness Support.
 

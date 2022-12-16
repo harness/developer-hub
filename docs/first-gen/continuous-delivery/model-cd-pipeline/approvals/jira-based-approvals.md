@@ -23,7 +23,7 @@ The other approval mechanisms are:
 * [Workflows](../workflows/workflow-configuration.md)
 * [Pipelines](../pipelines/pipeline-configuration.md)
 * [Create Pipeline Templates](../pipelines/templatize-pipelines.md)
-* [Use Variable Expressions](https://docs.harness.io/category/use-variable-expressions)
+* [Use Variable Expressions](/docs/category/use-variable-expressions)
 
 ### Step: Add an Approval Step
 

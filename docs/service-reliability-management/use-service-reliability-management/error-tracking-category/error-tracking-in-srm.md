@@ -66,7 +66,7 @@ In **Select Health Source type**, select Error Tracking.
 
 In **Health Source Name**, enter a name for the Health Source.
 
-Click **Select Connector**. In the **Connector** settings, you can select an existing Connector or click **New Connector**. Harness uses Connectors to authenticate and perform operations with third-party tools. Connectors contain the information necessary to integrate and work with 3rd party tools. For more details, see [Connectors](https://docs.harness.io/category/connectors).
+Click **Select Connector**. In the **Connector** settings, you can select an existing Connector or click **New Connector**. Harness uses Connectors to authenticate and perform operations with third-party tools. Connectors contain the information necessary to integrate and work with 3rd party tools. For more details, see [Connectors](/docs/category/connectors).
 
 Click **New Connector**.
 
@@ -90,7 +90,7 @@ Click **Next**.
 
 ### Step 3: Setup Delegates
 
-The Harness Delegate is a service you run in your own environment, such as your local network, VPC, or cluster. The Delegate connects all of your artifact, infrastructure, collaboration, verification, and other providers with the Harness Manager. For more details, see [Delegates](https://docs.harness.io/category/9i5thr0ot2-delegates#sort=relevancy&f:@commonsource=[NextGen%20Docs]).
+The Harness Delegate is a service you run in your own environment, such as your local network, VPC, or cluster. The Delegate connects all of your artifact, infrastructure, collaboration, verification, and other providers with the Harness Manager. For more details, see [Delegates](/docs/category/delegates).
 
 In **Delegates Setup**, you can either select **Connect via any available Delegate** or **Connect only via Delegates with all of the following tags** and choose an option from the list.
 

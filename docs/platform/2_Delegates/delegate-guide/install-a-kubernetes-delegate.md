@@ -79,7 +79,7 @@ Enter a name and description for the Delegate that will let others know what it 
 
 
 :::note
-**Do not run Delegates with the same name in different clusters.** See [Troubleshooting](https://docs.harness.io/article/jzklic4y2j-troubleshooting).
+**Do not run Delegates with the same name in different clusters.** See [Troubleshooting](../../../troubleshooting/troubleshooting-nextgen.md).
 :::
 
 

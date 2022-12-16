@@ -214,7 +214,7 @@ State of the Git working directory.
 
 ### Pull Request Webhook Event
 
-You can configure [Triggers](https://docs.harness.io/category/triggers) in Harness for events in your Git repo. Harness automatically triggers a build whenever there's a new action on your Git repo. A **Pull Request Webhook Event** is when your build is automatically triggered in Harness due to a new pull event on your Git repo. See [Trigger Pipelines using Git Events](../../platform/11_Triggers/triggering-pipelines.md) to set up a **Trigger** in Harness.
+You can configure [Triggers](/docs/category/triggers) in Harness for events in your Git repo. Harness automatically triggers a build whenever there's a new action on your Git repo. A **Pull Request Webhook Event** is when your build is automatically triggered in Harness due to a new pull event on your Git repo. See [Trigger Pipelines using Git Events](../../platform/11_Triggers/triggering-pipelines.md) to set up a **Trigger** in Harness.
 
 You can refer to the webhook pull request in Harness with the expression`<+codebase.build.type> == “PR”`.
 
@@ -294,7 +294,7 @@ State of the Git working directory.
 
 ### Push Webhook Event
 
-You can configure [Trigger](https://docs.harness.io/category/triggers) in Harness for an event on your Git repo, and Harness will automatically trigger a build whenever there is a new action on your Git repo. A **Push Webhook Event** is when your build is automatically triggered in Harness due to a new push action on your Git repo. See [Trigger Pipelines using Git Events](../../platform/11_Triggers/triggering-pipelines.md) to set up a **Trigger** in Harness.
+You can configure [Trigger](/docs/category/triggers) in Harness for an event on your Git repo, and Harness will automatically trigger a build whenever there is a new action on your Git repo. A **Push Webhook Event** is when your build is automatically triggered in Harness due to a new push action on your Git repo. See [Trigger Pipelines using Git Events](../../platform/11_Triggers/triggering-pipelines.md) to set up a **Trigger** in Harness.
 
 You can refer to the webhook pull request in Harness with the expression`<+codebase.build.type> == “Push”`.
 

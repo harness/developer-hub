@@ -16,7 +16,7 @@ Terraform allows infrastructure to be expressed as code in a simple, human reada
 
 Harness allows you to use Terraform to provision deployment target infrastructure and any other components supported by Terraform.
 
-See: [Terraform Infrastructure Provisioner](https://docs.harness.io/category/terraform).
+See: [Terraform Infrastructure Provisioner](/docs/category/terraform).
 
 ### HashiCorp Vault
 

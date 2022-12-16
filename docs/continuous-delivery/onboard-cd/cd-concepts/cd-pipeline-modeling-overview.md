@@ -60,7 +60,7 @@ Automate the execution of a Pipeline in response to changes in manifests/specs, 
 
 ![](./static/cd-pipeline-modeling-overview-05.png)
 
-For more details, go to [Triggers](https://docs.harness.io/category/triggers).
+For more details, go to [Triggers](/docs/category/triggers).
 
 #### Conditions
 
@@ -76,7 +76,7 @@ Add checks at any point in your process to ensure that deployments are safe:
 
 ![](./static/cd-pipeline-modeling-overview-07.png)
 
-For more details, see [Approvals](https://docs.harness.io/category/approvals).
+For more details, see [Approvals](/docs/category/approvals).
 
 ### Verification
 

@@ -16,7 +16,7 @@ In addition to the Harness SaaS offering, Harness offers on-premises editions na
 
 This topic describes the major difference between the SaaS and Harness Self-Managed Enterprise Edition offerings, and then describes the two Harness Self-Managed Enterprise Editions.
 
-**Looking for the How-tos?** If you want to jump right to the How-to topics, see [Harness Self-Managed Enterprise Edition](https://docs.harness.io/category/self-managed-enterprise-edition-fg).
+**Looking for the How-tos?** If you want to jump right to the How-to topics, see [Harness Self-Managed Enterprise Edition](/docs/category/self-managed-enterprise-edition-fg).
 
 ### Harness SaaS vs Self-Managed
 

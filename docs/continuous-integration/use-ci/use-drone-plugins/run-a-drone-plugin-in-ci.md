@@ -23,7 +23,7 @@ To install and run a plugin, you need the following:
 	+ [CI Pipeline Quickstart](../../ci-quickstarts/ci-pipeline-quickstart.md)
 	+ [Learn Harness' Key Concepts](../../../getting-started/learn-harness-key-concepts.md)
 * A build infrastructure and Delegate to run builds:
-	+ [Set Up Build Infrastructure](https://docs.harness.io/category/set-up-build-infrastructure)
+	+ [Set Up Build Infrastructure](/docs/category/set-up-build-infrastructure)
 	+ [Install a Kubernetes Delegate](../../../platform/2_Delegates/delegate-guide/install-a-kubernetes-delegate.md) *or* [Install a Docker Delegate](../../../platform/2_Delegates/delegate-install-docker/install-a-docker-delegate.md)
 * A CI Pipeline with a Build Stage to run the plugin:
 	+ [CI Stage Settings](../../ci-technical-reference/ci-stage-settings.md)

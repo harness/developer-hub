@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Harness provides deployment support for all of the major platforms, listed in the[​Continuous Delivery](https://docs.harness.io/category/continuous-delivery) category.
+Harness provides deployment support for all of the major platforms, listed in the[​Continuous Delivery](/docs/category/continuous-delivery) category.
 
 In some cases, you might be using a platform that does not have first class support in Harness, such as WebLogic, WebSphere, or [Google Cloud functions](https://community.harness.io/t/google-cloud-functions-with-harness-deployment-template/598). For these situations, Harness provides a custom deployment option using Deployment Templates.
 
@@ -115,7 +115,7 @@ aws configure set aws_secret_access_key ${secrets.getValue("password")
 aws configure set region us-west-1  
 aws ec2 describe-instances --instance-ids i-0beacf0f260edd19f > "${INSTANCE_OUTPUT_PATH}"
 ```
-This example uses AWS. Harness already has full, first-class support for AWS deployments. We just use this script as an example. See the AWS Quickstarts in [Start Here](https://docs.harness.io/category/get-started).
+This example uses AWS. Harness already has full, first-class support for AWS deployments. We just use this script as an example. See the AWS Quickstarts in [Start Here](/docs/category/get-started).
 
 This example also uses Harness secrets for username and password. See [Use Encrypted Text Secrets](../../firstgen-platform/security/secrets-management/use-encrypted-text-secrets.md).
 

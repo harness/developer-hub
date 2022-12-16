@@ -15,16 +15,19 @@ import custom_dashboard from './static/orphaned-ebs-volumes-and-snapshots-dashbo
 
 **Dashboards** are a collection of charts and data tables with filters that you can use to get at the data you're interested in. Dashboards serve as a platform for data modeling and analytics using a combination of available business metrics and operational data. You can use this data to make data-driven informed business decisions.
 
+<!--  commenting out breaking links until DOC-2376 can be resolved
 :::note
-For information on core Dashboard functionality, see [Create Dashboards](https://docs.harness.io/article/ardf4nbvcy-create-dashboards).
+For information on core Dashboard functionality, see [Create Dashboards](../../../../platform/18_Dashboards/create-dashboards.md).
 :::
+-->
+
 Harness provides pre-loaded **By Harness** (pre-defined) and **Custom** (user-defined) Dashboards to visualize cloud cost data across clusters and cloud accounts. Using the **Orphaned EBS Volumes and Snapshots** **Dashboard** you can:
 
 * Discover new analytical insights into your EBS volumes and snapshots
 * Explore the cloud cost data in a logical and structured manner
 * View your cloud costs at a glance, understand what is costing the most, and analyze cost trends
 
-This Dashboard will not be available if you have not selected **AWS ECS and Resource Inventory Management** feature when setting up [CCM for AWS](https://ngdocs.harness.io/article/80vbt5jv0q-set-up-cost-visibility-for-aws).This topic describes how to view the **Orphaned EBS Volumes and Snapshots** **Dashboard** and get more information about that data.
+This Dashboard will not be available if you have not selected **AWS ECS and Resource Inventory Management** feature when setting up [CCM for AWS](../../../1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md).This topic describes how to view the **Orphaned EBS Volumes and Snapshots** **Dashboard** and get more information about that data.
 
 ![](./static/orphaned-ebs-volumes-and-snapshots-dashboard-73.png)
 
@@ -37,7 +40,7 @@ This Dashboard will not be available if you have not selected **AWS ECS and Reso
   
 ## Data Ingestion for Dashboard
 
-Once you have set up cost visibility for the [AWS](https://ngdocs.harness.io/article/80vbt5jv0q-set-up-cost-visibility-for-aws) cloud provider and the data is available for root cost analysis, you can view the dashboard. The data in the Dashboard is updated dynamically.
+Once you have set up cost visibility for the [AWS](../../../1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md) cloud provider and the data is available for root cost analysis, you can view the dashboard. The data in the Dashboard is updated dynamically.
 
 ## View Orphaned EBS Volumes and Snapshots Dashboard
 
@@ -70,14 +73,19 @@ The **Orphaned EBS Volumes and Snapshots Dashboard** is displayed.
 
 ### See Also
 
-Once you have set up cost visibility for your Kubernetes clusters, AWS, GCP, and Azure cloud providers, you can create your own Dashboards. Refer to the following topics to create your own Dashboard and chart data.
+Once you have set up cost visibility for your Kubernetes clusters, AWS, GCP, and Azure cloud providers, you can create your own Dashboards. 
 
-* [Create Dashboards](https://docs.harness.io/article/ardf4nbvcy-create-dashboards)
-* [Create Visualizations and Graphs](https://docs.harness.io/article/n2jqctdt7c-create-visualizations-and-graphs)
+<!-- Refer to the following topics to create your own Dashboard and chart data. 
+
+* [Create Dashboards](../../../platform/18_Dashboards/create-dashboards.md)
+* [Create Visualizations and Graphs](../../../platform/18_Dashboards/create-visualizations-and-graphs.md)
 
 ### Next Steps
 
-* [Use Dashboard Actions](https://docs.harness.io/article/y1oh7mkwmh-use-dashboard-actions)
-* [Download Dashboard Data](https://docs.harness.io/article/op59lb1pxv-download-dashboard-data)
-* [Create Conditional Alerts](https://docs.harness.io/article/ro0i58mvby-create-conditional-alerts)
-* [Schedule and Share Dashboards](https://docs.harness.io/article/35gfke0rl8-share-dashboards)
+* [Use Dashboard Actions](../../../platform/18_Dashboards/use-dashboard-actions.md)
+* [Download Dashboard Data](../../../platform/18_Dashboards/download-dashboard-data.md)
+* [Create Conditional Alerts](../../../platform/18_Dashboards/create-conditional-alerts.md)
+* [Schedule and Share Dashboards](../../../platform/18_Dashboards/share-dashboards.md)
+
+
+-->

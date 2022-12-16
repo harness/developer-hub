@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 This topic describes how to pull an image from a private registry and use the Docker credentials file.
 
-Typically, if the Docker image you are deploying is in a private registry, Harness has access to that registry using the credentials set up in the Harness [Connector](https://docs.harness.io/category/connectors).
+Typically, if the Docker image you are deploying is in a private registry, Harness has access to that registry using the credentials set up in the Harness [Connector](/docs/category/connectors).
 
 If some cases, your Kubernetes cluster might not have the permissions needed to access a private Docker registry. For these cases, the values.yaml or manifest file in Service Definition **Manifests** section must use the `dockercfg` parameter.
 

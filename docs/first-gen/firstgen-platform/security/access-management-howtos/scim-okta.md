@@ -58,7 +58,7 @@ The Harness account ID comes after `account` in the URL.
   
 For example, in the following URL, the account ID is `1a2b3c`: `https://app.harness.io/#/account/1a2b3c`.![](./static/scim-okta-168.png)
 
-3. Add your account ID to the end of the following URL: `https://app.harness.io/gateway/api/scim/account/<account_ID>`For [Harness On-Prem](https://docs.harness.io/category/self-managed-enterprise-edition-fg), the URL will use your custom domain name. For example, if your On-Prem domain name is **harness.mycompany.com**: `https://harness.mycompany.com/api/scim/account/<account_ID>`
+3. Add your account ID to the end of the following URL: `https://app.harness.io/gateway/api/scim/account/<account_ID>`For [Harness On-Prem](/docs/category/self-managed-enterprise-edition-fg), the URL will use your custom domain name. For example, if your On-Prem domain name is **harness.mycompany.com**: `https://harness.mycompany.com/api/scim/account/<account_ID>`
 4. Copy the full URL.
 5. From your Okta user home page, select **Admin** at upper right.![](./static/scim-okta-169.png)
 

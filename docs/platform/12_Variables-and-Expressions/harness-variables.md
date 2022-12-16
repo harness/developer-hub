@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 This topic describes the default (built-in) and custom Harness expressions, as well as the prefixes used to identify user-created variables. This list will be periodically updated when new expressions are added to Harness.
 
-Looking for how-tos? See [Variable Expressions How-tos](https://docs.harness.io/category/variables-and-expressions).
+Looking for how-tos? See [Variable Expressions How-tos](/docs/category/variables-and-expressions).
 
 ### Variable Expression Basics
 
@@ -461,11 +461,11 @@ You can use `<+pipeline.sequenceId>` to tag a CI build when you push it to a rep
 
 #### <+pipeline.startTs>
 
-The start time of a Pipeline execution in [Unix Epoch format](https://www.epoch101.com/). See [Trigger How-tos](https://docs.harness.io/category/triggers).
+The start time of a Pipeline execution in [Unix Epoch format](https://www.epoch101.com/). See [Trigger How-tos](/docs/category/triggers).
 
 #### <+pipeline.triggerType>
 
-The type of Trigger. See [Trigger How-tos](https://docs.harness.io/category/triggers).
+The type of Trigger. See [Trigger How-tos](/docs/category/triggers).
 
 #### <+pipeline.triggeredBy.name>
 
@@ -475,7 +475,7 @@ If a user name is not present in the event payload, the `<+pipeline.triggeredBy.
 
 #### <+pipeline.triggeredBy.email>
 
-The email of the user who triggered the Pipeline. This returns NULL if the Pipeline is triggered using a webhook. See [Trigger How-tos](https://docs.harness.io/category/triggers).
+The email of the user who triggered the Pipeline. This returns NULL if the Pipeline is triggered using a webhook. See [Trigger How-tos](/docs/category/triggers).
 
 ### Deployment and Step Status
 
