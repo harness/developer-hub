@@ -145,7 +145,7 @@ export default function ExperimentListSection() {
 						</Link>
 					))}
 			</div>
-			{!showAll && (
+			{!showAll && experiments.length > 6 && (
 				<div className={styles.experimentListSectionFooter}>
 					{page > 0 ? (
 						<img src="/img/prev.svg" onClick={() => setPage(page - 1)} />
