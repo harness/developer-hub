@@ -35,7 +35,7 @@ https://harness-1.wistia.com/medias/rpv5vwzpxz-->
 <docvideo src="https://www.youtube.com/watch?v=ECF1BDlzb-I" />
 
 ### Get started in 5 easy steps
-Developer productivity is a core pillar for us. We didn't want to build a CI tool that was fast and complex to use. You can get started rapidly with any language in Harness CI, with out-of-the-box starter templates and code-first development. You can connect to any Source Code manager (SCM) system, build any apps for any lanugage, platform, and host it anywhere.
+Developer productivity is a core pillar for Harness. We didn't want to build a CI tool that was fast and complex to use. You can get started quickly with any language in Harness CI, with out-of-the-box starter templates and code-first development. You can connect to any Source Code Management (SCM) system, build any apps for any language or platform, and host it anywhere.
 
 ![CI Getting Started](static/ci-tutorial-fast/gettingstarted.gif)
 
