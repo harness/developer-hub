@@ -220,5 +220,5 @@ $ aws lambda get-function --function-name ExampleApp-aws-lambda-Lambda-my-functi
 ```
 ### Next Steps
 
-* [Troubleshoot AWS Lambda Deployments](https://docs.harness.io/article/g9o2g5jbye-troubleshooting-harness#aws_lambda)
+* [Troubleshoot AWS Lambda Deployments](../../../firstgen-troubleshooting/troubleshooting-harness.md#aws-lambda)
 

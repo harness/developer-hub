@@ -14,7 +14,7 @@ While Git repo providers include activity and webhook information, they do not p
 
 Git Sync Activity provides you with a granular, commit-by-commit audit of every change and ensures that you are fully aware of all Git activity with your Harness account and Applications.
 
-For information on fixing Git sync errors, see [Diagnose Git Sync Errors](https://docs.harness.io/article/0ralbeajno-diagnose-git-errors).
+For information on fixing Git sync errors, see [Diagnose Git Sync Errors](../../firstgen-troubleshooting/diagnose-git-errors.md).
 
 
 ### Before You Begin

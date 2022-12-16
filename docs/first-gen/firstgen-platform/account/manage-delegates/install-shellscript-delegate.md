@@ -64,7 +64,7 @@ If you clicked **Copy Download Link**, connect to the machine or VM instance whe
 2. On the host where you want to run the Delegate, unzip the file (`tar -zxvf harness-delegate.tar.gz`), open the **harness-delegate** folder (`cd harness-delegate`) and run the start.sh script (`$ ./start.sh`).
 
 :::note
-If you see a ulimit warning, see [WARNING: ulimit -n is too low (1024)](https://docs.harness.io/article/g9o2g5jbye-troubleshooting-harness#warning_ulimit_n_is_too_low_1024).
+If you see a ulimit warning, see [WARNING: ulimit -n is too low (1024)](../../../firstgen-troubleshooting/troubleshooting-harness.md#warning-ulimit-n-is-too-low-1024).
 :::
 
 The Delegate will start and in a few moments you will see it listed in the **Harness Delegates** page.

@@ -115,5 +115,5 @@ For more information, see [Override a Service Configuration](../../model-cd-pipe
 ### Next Steps
 
 * [Create a Basic Lambda Deployment](4-lambda-workflows-and-deployments.md)
-* [Troubleshoot AWS Lambda Deployments](https://docs.harness.io/article/g9o2g5jbye-troubleshooting-harness#aws_lambda)
+* [Troubleshoot AWS Lambda Deployments](../../../firstgen-troubleshooting/troubleshooting-harness.md#aws-lambda)
 

@@ -125,5 +125,5 @@ When you deploy your function, Harness replaces any existing Environment variabl
 
 * [Define your Lambda Target Infrastructure](3-lambda-environments.md)
 * [Create a Basic Lambda Deployment](4-lambda-workflows-and-deployments.md)
-* [Troubleshooting AWS Lambda Deployments](https://docs.harness.io/article/g9o2g5jbye-troubleshooting-harness#aws_lambda)
+* [Troubleshooting AWS Lambda Deployments](../../../firstgen-troubleshooting/troubleshooting-harness.md#aws-lambda)
 

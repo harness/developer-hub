@@ -31,7 +31,7 @@ In this topic:
 
 ## Before You Begin
 
-* [Harness Delegate FAQs](https://docs.harness.io/article/migeq3achl-harness-delegate-faqs)
+* [Harness Delegate FAQs](../../../firstgen-fa-qs/harness-delegate-faqs.md)
 * [Harness Delegate Overview](delegate-installation.md)
 * [Install the Harness Docker Delegate](install-docker-delegate.md)
 * [Install the Harness Shell Script Delegate](install-shellscript-delegate.md)

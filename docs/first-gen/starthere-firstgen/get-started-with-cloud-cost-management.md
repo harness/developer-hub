@@ -59,7 +59,7 @@ The following topics will guide you through the concepts and how-tos of Cloud Co
 
 #### FAQs
 
-* [Cloud Cost Management FAQs](https://docs.harness.io/article/q8uycdeqvc-cloud-cost-management-faqs)
+* [Cloud Cost Management FAQs](../firstgen-fa-qs/cloud-cost-management-faqs.md)
 
 #### Video
 

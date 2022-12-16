@@ -106,6 +106,6 @@ In general, the errors result from port conflicts or the WinRM settings on the t
 
 See:
 
-* [Troubleshooting](https://docs.harness.io/article/g9o2g5jbye-troubleshooting-harness)
+* [Troubleshooting](../../../firstgen-troubleshooting/troubleshooting-harness.md)
 * [IIS Best Practices and Troubleshooting](../../../continuous-delivery/dotnet-deployments/5-best-practices-and-troubleshooting.md)
 
