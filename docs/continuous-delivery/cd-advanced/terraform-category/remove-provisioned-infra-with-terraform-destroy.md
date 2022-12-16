@@ -1,5 +1,5 @@
 ---
-title: Remove Provisioned Infra with the Terraform Destroy Step
+title: Remove Infra with the Terraform Destroy step
 description: Remove any Terraform provisioned infrastructure.
 sidebar_position: 5
 helpdocs_topic_id: j75xc704c8

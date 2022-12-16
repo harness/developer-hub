@@ -1,5 +1,5 @@
 ---
-title: Terraform How-tos
+title: Terraform how-tos
 description: Harness has first-class support for HashiCorp Terraform.
 sidebar_position: 1
 helpdocs_topic_id: w6i5f7cpc9
