@@ -11,13 +11,13 @@ slug: /build-code/fastest-ci
   buttonText="Sign Up"
   title="THE WORLD'S FASTEST CI."
   tagline="Sign up today to get started for free!"
-  link="https://app.harness.io/auth/#/signup/?module=ci&utm_source=Website&utm_medium=&utm_campaign=CI-Product-Page-Hero-PLG"
+  link="https://app.harness.io/auth/#/signup/?module=ci&utm_source=HDH&utm_medium=&utm_campaign=Fastest-CI-HDH-Article&utm_term=sign-up&utm_content=CI-HDH-Top-Nav"
   closable={true}
 />
 
 :::info
 
-[Sign up for free to try the world's fastest CI](https://app.harness.io/auth/#/signup/?module=ci&utm_source=Website&utm_medium=&utm_campaign=CI-Product-Page-Hero-PLG)
+[Sign up for free to try the world's fastest CI](https://app.harness.io/auth/#/signup/?module=ci&utm_source=HDH&utm_medium=&utm_campaign=Fastest-CI-HDH-Article&utm_term=sign-up&utm_content=CI-HDH-Top-Banner)
 
 :::
 
@@ -69,7 +69,7 @@ import TabItem from '@theme/TabItem';
 <TabItem value="Go" label="Go" default>
 ```
 
-1. [Signup](https://app.harness.io/auth/#/signup/?module=ci&utm_source=Website&utm_medium=&utm_campaign=CI-Product-Page-Hero-PLG) for a free account
+1. [Signup](https://app.harness.io/auth/#/signup/?module=ci&utm_source=HDH&utm_medium=&utm_campaign=Fastest-CI-HDH-Article&utm_term=sign-up&utm_content=CI-HDH-Article) for a free account
 2. Follow the **Get Started** wizard in Harness CI.
 3. Fork the repository [https://github.com/rustd/gosample](https://github.com/rustd/gosample) into your GitHub account.
 4. In the **Which code repository do you use** step, select GitHub and then select either the **OAuth** or the **Access Token** as the authentication method that Harness CI will use to connect to your GitHub account.
@@ -96,7 +96,7 @@ import TabItem from '@theme/TabItem';
 <TabItem value="Java" label="Java">
 ```
 
-1. [Signup](https://app.harness.io/auth/#/signup/?module=ci&utm_source=Website&utm_medium=&utm_campaign=CI-Product-Page-Hero-PLG) for a free account
+1. [Signup](https://app.harness.io/auth/#/signup/?module=ci&utm_source=HDH&utm_medium=&utm_campaign=Fastest-CI-HDH-Article&utm_term=sign-up&utm_content=CI-HDH-Article) for a free account
 2. Follow the **Get Started** wizard in Harness CI.
 3. Fork the repository [https://github.com/rustd/jhttp](https://github.com/rustd/jhttp) into your GitHub account.
 4. In the **Which code repository do you use** step, select GitHub and then select either the **OAuth** or the **Access Token** as the authentication method that Harness CI will use to connect to your GitHub account.
@@ -122,7 +122,7 @@ import TabItem from '@theme/TabItem';
 <TabItem value="JavaScript" label="JavaScript">
 ```
 
-1. [Signup](https://app.harness.io/auth/#/signup/?module=ci&utm_source=Website&utm_medium=&utm_campaign=CI-Product-Page-Hero-PLG) for a free account
+1. [Signup](https://app.harness.io/auth/#/signup/?module=ci&utm_source=HDH&utm_medium=&utm_campaign=Fastest-CI-HDH-Article&utm_term=sign-up&utm_content=CI-HDH-Article) for a free account
 2. Follow the **Get Started** wizard in Harness CI.
 3. Fork the repository [https://github.com/rustd/reactcalculator](https://github.com/rustd/reactcalculator) into your GitHub account.
 4. In the **Which code repository do you use** step, select GitHub and then select either the **OAuth** or the **Access Token** as the authentication method that Harness CI will use to connect to your GitHub account.
@@ -151,7 +151,7 @@ import TabItem from '@theme/TabItem';
 <TabItem value=".NET" label=".NET">
 ```
 
-1. [Signup](https://app.harness.io/auth/#/signup/?module=ci&utm_source=Website&utm_medium=&utm_campaign=CI-Product-Page-Hero-PLG) for a free account
+1. [Signup](https://app.harness.io/auth/#/signup/?module=ci&utm_source=HDH&utm_medium=&utm_campaign=Fastest-CI-HDH-Article&utm_term=sign-up&utm_content=CI-HDH-Article) for a free account
 2. Follow the **Get Started** wizard in Harness CI.
 3. Fork the repository [https://github.com/rustd/hello-dotnet-core](https://github.com/rustd/hello-dotnet-core) into your GitHub account.
 4. In the **Which code repository do you use** step, select GitHub and then select either the **OAuth** or the **Access Token** as the authentication method that Harness CI will use to connect to your GitHub account.
@@ -179,7 +179,7 @@ import TabItem from '@theme/TabItem';
 <TabItem value="Python" label="Python">
 ```
 
-1. [Signup](https://app.harness.io/auth/#/signup/?module=ci&utm_source=Website&utm_medium=&utm_campaign=CI-Product-Page-Hero-PLG) for a free account
+1. [Signup](https://app.harness.io/auth/#/signup/?module=ci&utm_source=HDH&utm_medium=&utm_campaign=Fastest-CI-HDH-Article&utm_term=sign-up&utm_content=CI-HDH-Article) for a free account
 2. Follow the **Get Started** wizard in Harness CI.
 3. Fork the repository [https://github.com/rustd/python](https://github.com/rustd/python) into your GitHub account.
 4. In the **Which code repository do you use** step, select GitHub and then select either the **OAuth** or the **Access Token** as the authentication method that Harness CI will use to connect to your GitHub account.
@@ -228,4 +228,4 @@ Harness CI gives you speed benefits at a much lower cost. We compared the cost o
 
 ## Get started for free
 
-[Sign up](https://app.harness.io/auth/#/signup/?module=ci&utm_source=Website&utm_medium=&utm_campaign=CI-Product-Page-Hero-PLG) for a free Harness CI account and run your pipelines faster on Harness CI.
+[Sign up](https://app.harness.io/auth/#/signup/?module=ci&utm_source=HDH&utm_medium=&utm_campaign=Fastest-CI-HDH-Article&utm_term=sign-up&utm_content=CI-HDH-Get-Started-Free) for a free Harness CI account and run your pipelines faster on Harness CI.
