@@ -1,9 +1,10 @@
 ---
 title: Early access features
+date: 2022-12-15T10:00
 sidebar_position: 2
 ---
 
-Learn about the new early access features in all Harness modules. Early access features require a feature flag. 
+Learn about the new early access features in all Harness modules. Early access features require a feature flag.
 
 ## December 13, 2022
 
@@ -45,9 +46,9 @@ This functionality is behind a feature flag: TERRAFORM_REMOTE_BACKEND_CONFIG.
 
 You can now create secrets using the Google Cloud Secret Manager in Harness. (PL-28978)
 
-* For more information, see [Add a Google Cloud Secret Manager](https://developer.harness.io/docs/platform/security/add-a-google-cloud-secret-manager/)
+- For more information, see [Add a Google Cloud Secret Manager](https://developer.harness.io/docs/platform/security/add-a-google-cloud-secret-manager/)
 
-* You can now select modules and configure your own navigation in Harness. (SPG-153) 
+- You can now select modules and configure your own navigation in Harness. (SPG-153)
 
 Also, Projects is a new option in the left navigation. Click Projects to view the project-specific overview, pipeline, connector, and other details.
 
@@ -69,7 +70,7 @@ For more information and to access this SDK, see the [Apex SDK reference guide](
 
 ## October 18, 2022
 
-### Continuous Delivery 
+### Continuous Delivery
 
 ECS Run Task support
 
@@ -77,19 +78,19 @@ In addition to deploying tasks as part of your standard ECS deployment, you can 
 
 This functionality is behind feature flags: NG_SVC_ENV_REDESIGN and ECS_NG
 
-For more information, go to the [ECS tutorial's run task step](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-quickstarts/ecs-deployment-tutorial/). 
+For more information, go to the [ECS tutorial's run task step](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-quickstarts/ecs-deployment-tutorial/).
 
 ## October 7, 2022
 
 ### Continuous Delivery
 
-* ECS deployments: deploy artifacts to your Amazon Elastic Container Service (ECS) clusters using a Rolling, Canary, and Blue Green strategies.
+- ECS deployments: deploy artifacts to your Amazon Elastic Container Service (ECS) clusters using a Rolling, Canary, and Blue Green strategies.
 
 Enable Feature Flags NG_SVC_ENV_REDESIGN and ECS_NG.
 
 For more information, go to the [ECS deployment tutorial](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-quickstarts/ecs-deployment-tutorial/).
 
-* Traditional deployments using SSH or WinRM: deploy your artifacts to hosts located in Microsoft Azure, AWS, or any platform-agnostic Physical Data Center (PDC).
+- Traditional deployments using SSH or WinRM: deploy your artifacts to hosts located in Microsoft Azure, AWS, or any platform-agnostic Physical Data Center (PDC).
 
 These deployments are called Traditional because they use Secure Shell and PowerShell scripts and a traditional runtime environment as opposed to containers and orchestration mechanisms, like Kubernetes.
 
@@ -97,7 +98,7 @@ Enable Feature Flags NG_SVC_ENV_REDESIGN, SSH_NG, and PIPELINE_MATRIX.
 
 For more information, go to [Secure Shell (SSH) deployment tutorial](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-quickstarts/ssh-ng/) and [WinRM deployment tutorial](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-quickstarts/win-rm-tutorial).
 
-* Custom deployments using Deployment templates: In some cases, you might be using a platform that does not have first class support in Harness, such as OpenStack, WebLogic, WebSphere, Google Cloud functions, etc. We call these non-native deployments. For non-native deployments, Harness provides a custom deployment option using Deployment Templates.
+- Custom deployments using Deployment templates: In some cases, you might be using a platform that does not have first class support in Harness, such as OpenStack, WebLogic, WebSphere, Google Cloud functions, etc. We call these non-native deployments. For non-native deployments, Harness provides a custom deployment option using Deployment Templates.
 
 Enable Feature Flags NG_SVC_ENV_REDESIGN and NG_DEPLOYMENT_TEMPLATE.
 
@@ -105,15 +106,15 @@ For more information, go to the [Custom deployments using deployment templates t
 
 ### Harness Platform
 
-* You can now create remote Templates in Harness and save it in your Git repo by enabling the feature flag NG_TEMPLATE_GITX. (PL-28573)
+- You can now create remote Templates in Harness and save it in your Git repo by enabling the feature flag NG_TEMPLATE_GITX. (PL-28573)
 
 For more information, see [Create a remote step template](https://developer.harness.io/docs/platform/Templates/create-a-remote-step-template), [Create a remote stage template](https://developer.harness.io/docs/platform/Templates/create-a-remote-stage-template), and [Create a remote pipeline template](https://developer.harness.io/docs/platform/Templates/create-a-remote-pipeline-template).
 
-* You can now use expressions to reference pre-existing secrets in Vault using a fully-qualified path. (PL-28352)
+- You can now use expressions to reference pre-existing secrets in Vault using a fully-qualified path. (PL-28352)
 
 For more information, see [HashiCorp Vault Secrets](https://developer.harness.io/docs/platform/Security/reference-existing-secret-manager-secrets#option-hashicorp-vault-secrets).
 
-* Harness will now send email notification for user invites when the feature flag AUTO_ACCEPT_SAML_ACCOUNT_INVITES is enabled. (PL-26218, ZD-32152,35287)
+- Harness will now send email notification for user invites when the feature flag AUTO_ACCEPT_SAML_ACCOUNT_INVITES is enabled. (PL-26218, ZD-32152,35287)
 
 Harness will not send any emails for user invites when the feature flag PL_NO_EMAIL_FOR_SAML_ACCOUNT_INVITES is enabled.
 
@@ -133,7 +134,6 @@ This is behind the feature flag CUSTOM_SECRET_MANAGER_NG.
 
 See [Add a custom secret manager](https://developer.harness.io/docs/platform/security/custom-secret-manager/).
 
-
 ## July 7, 2022
 
 ### Harness Platform
@@ -147,5 +147,3 @@ With Harness Git Experience, you can select the repository and branch from where
 For more information, refer to [Harness Git Experience Overview](https://developer.harness.io/docs/platform/git-experience/git-experience-overview/).
 
 This functionality is behind a feature flag: NG_GIT_EXPERIENCE
-
-

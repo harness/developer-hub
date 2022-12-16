@@ -1,8 +1,9 @@
 ---
 title: Feature Flags release notes
-date: 2020-10-18T10:00
+date: 2022-12-15T10:00
 tags: [NextGen, "feature flags"]
 slug: feature-flag-release-notes
+sidebar_position: 6
 ---
 
 Harness Feature Flags is updated regularly. Review the notes below for details about recent changes.
@@ -33,9 +34,9 @@ Fixed a bug where target names were labelled "UNDEFINED" on the Harness UI if th
 
 The Python SDK has been updated to version 1.1.5. This includes the following changes:
 
-* Fixed a bug where only one target was registered as a metric when multiple, unique targets evaluations were made. (FFM-5995)
+- Fixed a bug where only one target was registered as a metric when multiple, unique targets evaluations were made. (FFM-5995)
 
-* Fixed a bug that caused an error the first time a metrics request was sent. (FFM-5995)
+- Fixed a bug that caused an error the first time a metrics request was sent. (FFM-5995)
 
 ## December 7, 2022
 
@@ -49,25 +50,25 @@ This release does not include early access features.
 
 ### Fixed issues
 
-**Feature Flags on the Harness Platform** 
+**Feature Flags on the Harness Platform**
 
-* Fixed a UI bug where the dialog box during the flag creation was shorter in length than it should be. (FFM-5509)
+- Fixed a UI bug where the dialog box during the flag creation was shorter in length than it should be. (FFM-5509)
 
-* Resolved an issue that caused flag lists to load slowly. (FFM-5507)
+- Resolved an issue that caused flag lists to load slowly. (FFM-5507)
 
-* Fixed a bug that caused flag pipeline stages to continue to run even if previous stages had failed. (FFM-5289)
+- Fixed a bug that caused flag pipeline stages to continue to run even if previous stages had failed. (FFM-5289)
 
-* Fixed a minor UI bug where the back and next buttons during the Get Started flow were pushed out of the browser view. (FFM-5086)
+- Fixed a minor UI bug where the back and next buttons during the Get Started flow were pushed out of the browser view. (FFM-5086)
 
-* Resolved a minor UI bug that caused the empty state image in the Feature Flags landing page to be incorrectly aligned. (FFM-3839)
+- Resolved a minor UI bug that caused the empty state image in the Feature Flags landing page to be incorrectly aligned. (FFM-3839)
 
 **Feature Flag SDKs**
 
 The Java SDK has been updated to version 1.1.8. This version includes the following changes:
 
-* Added a check to ensure the correct variations are served when a flag has nested prerequisite flags. (FFM-5306)
-* Fixed a bug where the Target ID set by the customer was being overwritten and set to the default value. (FFM-5471)
-* Fixed an issue with our internal dependencies that prevented the Java SDK version 1.1.7 from initializing. (FFM-5944)
+- Added a check to ensure the correct variations are served when a flag has nested prerequisite flags. (FFM-5306)
+- Fixed a bug where the Target ID set by the customer was being overwritten and set to the default value. (FFM-5471)
+- Fixed an issue with our internal dependencies that prevented the Java SDK version 1.1.7 from initializing. (FFM-5944)
 
 ## December 1, 2022
 
@@ -83,12 +84,12 @@ This release does not include early access features.
 
 **Feature Flag SDKs**
 
-* The .NET SDK has been updated to version 1.1.6. This adds a check to ensure the correct variations are served when a flag has nested prerequisite flags. (FFM-5307)
+- The .NET SDK has been updated to version 1.1.6. This adds a check to ensure the correct variations are served when a flag has nested prerequisite flags. (FFM-5307)
 
-* The Python SDK has been updated to version 1.1.4. This includes the following changes:
+- The Python SDK has been updated to version 1.1.4. This includes the following changes:
 
-    * Added a check to ensure the correct variations are served when a flag has nested prerequisite flags. (FFM-5263)
-    * Fixed a bug where requests continuously repeated themselves when using the SDK's streaming mode. (FFM-5352)
+  - Added a check to ensure the correct variations are served when a flag has nested prerequisite flags. (FFM-5263)
+  - Fixed a bug where requests continuously repeated themselves when using the SDK's streaming mode. (FFM-5352)
 
 ## November 29, 2022
 
@@ -104,11 +105,11 @@ This release does not include early access features.
 
 **Feature Flags on the Harness Platform**
 
-* Minor UI bug resolved in which buttons for creating Flags were sometimes pushed out of the browser view. (FFM-5336)
+- Minor UI bug resolved in which buttons for creating Flags were sometimes pushed out of the browser view. (FFM-5336)
 
-* Added a warning that Flag Variation names cannot contain only numerical characters. (FFM-4581)
+- Added a warning that Flag Variation names cannot contain only numerical characters. (FFM-4581)
 
-* Resolved an issue where the Getting Started flow was inadvertently showing only Xamarin instructions in some cases. (FFM-5203)
+- Resolved an issue where the Getting Started flow was inadvertently showing only Xamarin instructions in some cases. (FFM-5203)
 
 **Feature Flag SDKs**
 
@@ -128,12 +129,12 @@ This release does not include early access features.
 
 **Feature Flag SDKs**
 
-* The Ruby SDK has been updated to version 1.0.3. This fixes the following issues:
+- The Ruby SDK has been updated to version 1.0.3. This fixes the following issues:
 
-    * The SDK is now compatible with Ruby 2.6. (FFM-5354)
-    * Some JSON was being incorrectly rendered in Flag responses. This has been fixed and responses are in the correct format. (FFM-4755)
-    * When using a prerequisite Flag, if the identifier and value were not identical, the wrong value for the original Flag was returned. Now, the correct value is returned. (FFM-5355)
-    * Target groups were storing data incorrectly due to an incorrect variable, the variable has now been fixed and data is stored correctly. (FFM-4058)
+  - The SDK is now compatible with Ruby 2.6. (FFM-5354)
+  - Some JSON was being incorrectly rendered in Flag responses. This has been fixed and responses are in the correct format. (FFM-4755)
+  - When using a prerequisite Flag, if the identifier and value were not identical, the wrong value for the original Flag was returned. Now, the correct value is returned. (FFM-5355)
+  - Target groups were storing data incorrectly due to an incorrect variable, the variable has now been fixed and data is stored correctly. (FFM-4058)
 
 ## November 11, 2022
 
@@ -153,19 +154,19 @@ When submitting an invalid YAML file for Feature Flag steps in a Pipeline, you n
 
 **Feature Flag SDKs**
 
-* The Java SDK has been updated to version 1.1.6.0. This fixes the following issues:
+- The Java SDK has been updated to version 1.1.6.0. This fixes the following issues:
 
-    * A bug where sometimes the SDK was not closed before making a new request. (FFM-3246)
+  - A bug where sometimes the SDK was not closed before making a new request. (FFM-3246)
 
-    * Previously when setting metrics to false, the metrics weren't posted but continued to queue. This has been fixed so that they don't queue, therefore saving memory. (FFM-3694)
+  - Previously when setting metrics to false, the metrics weren't posted but continued to queue. This has been fixed so that they don't queue, therefore saving memory. (FFM-3694)
 
-    * The Java SDK previously took the first value for Flag rules, instead of cycling through all the rules, so the Flag was not evaluated as expected. This issue has been resolved and the SDK now successfully goes through and evaluates the list of rules for the IN clause. (FFM-4744)
+  - The Java SDK previously took the first value for Flag rules, instead of cycling through all the rules, so the Flag was not evaluated as expected. This issue has been resolved and the SDK now successfully goes through and evaluates the list of rules for the IN clause. (FFM-4744)
 
-    * A thread leak was fixed for the metrics processor. (FFM-4849)
+  - A thread leak was fixed for the metrics processor. (FFM-4849)
 
-    * Previously the OR and AND operators for Target Group attribute rules were both treated as AND operators. Now, the OR operator works correctly. (FFM-4808)
+  - Previously the OR and AND operators for Target Group attribute rules were both treated as AND operators. Now, the OR operator works correctly. (FFM-4808)
 
-    * An inconsistency in the percentage distribution of multivariate Flags has been fixed, so the percentages now work correctly. (FFM-4830)
+  - An inconsistency in the percentage distribution of multivariate Flags has been fixed, so the percentages now work correctly. (FFM-4830)
 
 ## November 6, 2022
 
@@ -181,9 +182,9 @@ This release does not include early access features.
 
 **Feature Flags on the Harness Platform**
 
-* Added validation messages to Flag pipelines to ensure you know which fields must be completed for your pipeline to run successfully. (FFM-3176)
+- Added validation messages to Flag pipelines to ensure you know which fields must be completed for your pipeline to run successfully. (FFM-3176)
 
-* Fixed a bug that was causing some failure strategies not to show on Feature Flag Pipeline stages. (FFM-4844)
+- Fixed a bug that was causing some failure strategies not to show on Feature Flag Pipeline stages. (FFM-4844)
 
 **Feature Flag SDKs**
 
@@ -203,25 +204,25 @@ This release does not include early access features.
 
 ### Fixed issues
 
-* **Javascript SDK**
+- **Javascript SDK**
 
-    The Javascript SDK has been updated to 1.4.14.
+  The Javascript SDK has been updated to 1.4.14.
 
-    This fixes a bug to ensure that Target identifiers are sent as a string before authorization, to prevent authorization errors. (FFM-5104)
+  This fixes a bug to ensure that Target identifiers are sent as a string before authorization, to prevent authorization errors. (FFM-5104)
 
-* **.NET SDK**
+- **.NET SDK**
 
-    The .NET SDK has been updated to 1.1.5.
+  The .NET SDK has been updated to 1.1.5.
 
-    The SDK will now print debug logs for analytics to the console. (FFM-4835)
+  The SDK will now print debug logs for analytics to the console. (FFM-4835)
 
-* **Java SDK**
+- **Java SDK**
 
-    The Java SDK has been updated to 1.1.5.3. This fixes the following bugs:
-    
-    * OR conditions being incorrectly treated as AND conditions. (FFM-4808)
-    
-    * Multivariate Flags using percentage roll-outs showing inconsistent amounts of results based on the inserted percentages. (FFM-4830)
+  The Java SDK has been updated to 1.1.5.3. This fixes the following bugs:
+
+  - OR conditions being incorrectly treated as AND conditions. (FFM-4808)
+
+  - Multivariate Flags using percentage roll-outs showing inconsistent amounts of results based on the inserted percentages. (FFM-4830)
 
 ## October 25, 2022
 
@@ -251,8 +252,8 @@ This release does not include early access features.
 
 ### Fixed issues
 
-* Some accounts were not able to use failure strategies on their Feature Flags pipeline stages. We've fixed this bug and all accounts can now use failure strategies. (FFM-4844)
-* On the Harness Platform, any Get Started with Feature Flag buttons will now take you directly to the first stage of the Get Started flow, instead of the Overview page. (FFM-4740)
+- Some accounts were not able to use failure strategies on their Feature Flags pipeline stages. We've fixed this bug and all accounts can now use failure strategies. (FFM-4844)
+- On the Harness Platform, any Get Started with Feature Flag buttons will now take you directly to the first stage of the Get Started flow, instead of the Overview page. (FFM-4740)
 
 ## October 20, 2022
 
@@ -278,7 +279,7 @@ If you use Target Group functionality, make sure to upgrade to this latest versi
 
 ### What's new
 
-You can now add a default pipeline to your Feature Flags that will be applied when you add targeting rules, or when you enable or disable a Flag. This means that you can ensure your Flag changes go through the process you want them to, allowing for better security and more consistent operations. For example, you can add an approval step so all your production Flag changes must be approved before they are executed, or you can send a Slack notification every time a Flag changes. 
+You can now add a default pipeline to your Feature Flags that will be applied when you add targeting rules, or when you enable or disable a Flag. This means that you can ensure your Flag changes go through the process you want them to, allowing for better security and more consistent operations. For example, you can add an approval step so all your production Flag changes must be approved before they are executed, or you can send a Slack notification every time a Flag changes.
 
 For more information about how to use a default pipeline for your Flags, go to Add a Default Pipeline for Flag Changes.
 
@@ -402,28 +403,27 @@ This release does not include early access features.
 
 The .NET SDK has been updated to version 1.1.3. Fixes in this update include:
 
-* The package name for the SDK has changed from ff-netF48-server-sdk to ff-dotnet-server-sdk. To use this version, make sure you remove the old package name and use the new one.
+- The package name for the SDK has changed from ff-netF48-server-sdk to ff-dotnet-server-sdk. To use this version, make sure you remove the old package name and use the new one.
 
-* The sample app in the .NET SDK Git repository has been updated to the new version 1.1.3. (FFM-3651)
+- The sample app in the .NET SDK Git repository has been updated to the new version 1.1.3. (FFM-3651)
 
-* The default configuration of the .NET SDK didn't have analytics enabled. (FFM-3520)
+- The default configuration of the .NET SDK didn't have analytics enabled. (FFM-3520)
 
-    This has been fixed and analytics is now set to true and enabled as default.
+  This has been fixed and analytics is now set to true and enabled as default.
 
-* When using the Relay Proxy with the .NET SDK, the URL for sending events was incorrect. (FFM-3652)
+- When using the Relay Proxy with the .NET SDK, the URL for sending events was incorrect. (FFM-3652)
 
-    The events URL has now been updated so it directs to the correct place.
+  The events URL has now been updated so it directs to the correct place.
 
-* The .NET SDK README file has been updated to rename the Target data. (FFM-3759)
+- The .NET SDK README file has been updated to rename the Target data. (FFM-3759)
 
-    The example Target data is now consistent across the sample code in the README and the SDK Reference Guide.
+  The example Target data is now consistent across the sample code in the README and the SDK Reference Guide.
 
-* The .NET SDK README file has updated to remove an extra period and a reference to debugging that was causing the example to fail. (FFM-4306)
-    You can now run the example successfully.
+- The .NET SDK README file has updated to remove an extra period and a reference to debugging that was causing the example to fail. (FFM-4306)
+  You can now run the example successfully.
 
-* When evaluating Target Groups that used an IN operator, the SDK was only evaluating the first Target. (FFM-4358)
-    
-    The logic has now been fixed so that the SDK will check all values when an IN operator is used for a Target Group.
+- When evaluating Target Groups that used an IN operator, the SDK was only evaluating the first Target. (FFM-4358)
+  The logic has now been fixed so that the SDK will check all values when an IN operator is used for a Target Group.
 
 ## August 18, 2022
 
@@ -439,26 +439,25 @@ This release does not include early access features.
 
 **Feature Flags on the Harness Platform**
 
-* When creating a stage on pipeline template, Name and Description fields were displayed . (FFM-4098)
+- When creating a stage on pipeline template, Name and Description fields were displayed . (FFM-4098)
 
-    As these fields are not required for creating a stage using a template, they have been removed from the About your Stage screen. You will no longer be able to enter a name and description for stages on a Pipeline template, but note this applies to templates only.
-* When using a Pipeline and configuring a Flag stage, only the first 15 Flags in your Project would appear as an option in the Select Flag menu. (FFM-3716)
+  As these fields are not required for creating a stage using a template, they have been removed from the About your Stage screen. You will no longer be able to enter a name and description for stages on a Pipeline template, but note this applies to templates only.
 
-    This has been fixed and you can now select any Flag in your Project.
+- When using a Pipeline and configuring a Flag stage, only the first 15 Flags in your Project would appear as an option in the Select Flag menu. (FFM-3716)
+
+  This has been fixed and you can now select any Flag in your Project.
 
 **Feature Flag SDKs**
 
 The Python SDK has been updated to Version 1.1.1. Fixes in this update include:
 
-* Removing the type of Flag check on Prerequisite Flags. (FFM-3868)
+- Removing the type of Flag check on Prerequisite Flags. (FFM-3868)
 
-    Previously, if you created a Multivariate Flag as a Prerequisite Flag, once you turned the Flag on you couldn't turn it off again. This bug has been fixed and you can now turn Flags with Multivariate Prerequisite Flags.
+  Previously, if you created a Multivariate Flag as a Prerequisite Flag, once you turned the Flag on you couldn't turn it off again. This bug has been fixed and you can now turn Flags with Multivariate Prerequisite Flags.
 
-* The Node.js SDK has been updated to Version 1.2.7. Fixes in this update include:
-    
-    * When using conditions for Target Groups, and conditions were treated as or conditions, meaning some Targets were not selected. (FFM-4331)
-            
-        This has now been fixed and conditions are treated correctly.
+- The Node.js SDK has been updated to Version 1.2.7. Fixes in this update include:
+  - When using conditions for Target Groups, and conditions were treated as or conditions, meaning some Targets were not selected. (FFM-4331)
+    This has now been fixed and conditions are treated correctly.
 
 ## August 8, 2022
 
@@ -474,22 +473,22 @@ This release does not include early access features.
 
 **Feature Flags on the Harness Platform**
 
-* On the Harness Platform, when no Environment had been added to a project, the tooltip for a Flag toggle was displaying HTML. (FFM-4094)
+- On the Harness Platform, when no Environment had been added to a project, the tooltip for a Flag toggle was displaying HTML. (FFM-4094)
 
-    This has been fixed to remove the raw HTML text.
+  This has been fixed to remove the raw HTML text.
 
-* On the Harness Platform, when the value of a Variation was set as a long non-breaking string, the content on the left bar of the Flag detail page overflowed into the main content of the page. (FFM-4010)
+- On the Harness Platform, when the value of a Variation was set as a long non-breaking string, the content on the left bar of the Flag detail page overflowed into the main content of the page. (FFM-4010)
 
-    This has been fixed so that the value will now wrap correctly.
+  This has been fixed so that the value will now wrap correctly.
 
 **Feature Flag SDKs**
 
 The Go SDK has been updated to Version 0.1.2. Fixes in this update include:
 
-* The polling interval is now measured in seconds instead of minutes. (FFM-3676)
-    This means the interval is now 60 seconds, instead of 1 minute. If you are using the default configuration, there are no actions for you. If you configured the polling interval, you need to convert the configuration from minutes to seconds. For more information, see Configure the SDK in the Go SDK Reference Guide.
-* A check has been added to ensure that when a Flag has nested Prerequisite Flags, the correct Variations are served. (FFM-4043)
-    You can now turn off analytics using the Go SDK. For more information, see Configure the SDK in the Go SDK Reference Guide. (FFM-3677)
+- The polling interval is now measured in seconds instead of minutes. (FFM-3676)
+  This means the interval is now 60 seconds, instead of 1 minute. If you are using the default configuration, there are no actions for you. If you configured the polling interval, you need to convert the configuration from minutes to seconds. For more information, see Configure the SDK in the Go SDK Reference Guide.
+- A check has been added to ensure that when a Flag has nested Prerequisite Flags, the correct Variations are served. (FFM-4043)
+  You can now turn off analytics using the Go SDK. For more information, see Configure the SDK in the Go SDK Reference Guide. (FFM-3677)
 
 ## August 1, 2022
 
@@ -503,13 +502,13 @@ This release does not include early access features.
 
 ### Fixed issues
 
-* During the Feature Flag Getting Started tutorial on the Harness Platform, some buttons displayed an extra + symbol. (FFM-4056)
+- During the Feature Flag Getting Started tutorial on the Harness Platform, some buttons displayed an extra + symbol. (FFM-4056)
 
-    This has been fixed and the extra symbols have been removed.
+  This has been fixed and the extra symbols have been removed.
 
-* On the Harness Platform, when adding a Flag to a Target, some text boxes did not adjust to fit the full width of the table. (FFM-4055)
+- On the Harness Platform, when adding a Flag to a Target, some text boxes did not adjust to fit the full width of the table. (FFM-4055)
 
-    This has now been fixed and the text boxes adjust as necessary.
+  This has now been fixed and the text boxes adjust as necessary.
 
 ## July 27, 2022
 
@@ -555,13 +554,13 @@ This release does not include early access features.
 
 ### Fixed issues
 
-* On the Target and Target Group page UI, when there are no Flag rules added the layout is now correctly aligned and stretches to the full available height. (FFM-3931)
+- On the Target and Target Group page UI, when there are no Flag rules added the layout is now correctly aligned and stretches to the full available height. (FFM-3931)
 
-* On the Flags page UI, when you enter a search term that returns no results, the search bar is no longer cleared and you can use the Clear Search button. (FFM-3877)
+- On the Flags page UI, when you enter a search term that returns no results, the search bar is no longer cleared and you can use the Clear Search button. (FFM-3877)
 
-* When filtering Flags and you receive more than a single page of results then reset the filter or select another filter, the page number is updated correctly. (FFM-3876)
-* When editing a multivariate Flag that has two Variations, the trash icon is now displayed at the end of each Variation row. (FFM-3714)
+- When filtering Flags and you receive more than a single page of results then reset the filter or select another filter, the page number is updated correctly. (FFM-3876)
+- When editing a multivariate Flag that has two Variations, the trash icon is now displayed at the end of each Variation row. (FFM-3714)
 
-* The Retry button displayed when there is an error now reloads the Flag endpoint instead of the Environment endpoint. (FFM-3713)
+- The Retry button displayed when there is an error now reloads the Flag endpoint instead of the Environment endpoint. (FFM-3713)
 
-* On the Flag details page, the Save or Cancel footer now aligns correctly with the panel. (FFM-3712)
+- On the Flag details page, the Save or Cancel footer now aligns correctly with the panel. (FFM-3712)

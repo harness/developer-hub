@@ -1,10 +1,12 @@
 ---
-title: Chaos Engineering release notes 
+title: Chaos Engineering release notes
 tags: [nextGen, "chaos engineering"]
 slug: chaos-engineering-release-notes
+date: 2020-10-18T10:00
+sidebar_position: 9
 ---
 
-Harness Chaos Engineering is updated regularly. Review the notes below for details about recent changes. 
+Harness Chaos Engineering is updated regularly. Review the notes below for details about recent changes.
 
 :::note
 Harness deploys updates progressively to different Harness cluster hosting accounts. The features and fixes in the release notes may not be available in your cluster immediately.
@@ -46,7 +48,6 @@ No early access features are available in this release.
 
 The Harness Chaos Engineering (HCE) module, which you can use to perform chaos experiments on your applications and infrastructure, is now available for testing. To be part of this testing, contact [Harness Support](mailto:support@harness.io). HCE documentation, which includes user guides and [tutorials](https://developer.harness.io/tutorials/run-chaos-experiments), is available on the Harness Developer Hub. Harness recommends that you gain familiarity with the chaos experimentation workflow in HCE by following the instructions in [Your First Chaos Experiment Run](https://developer.harness.io/tutorials/run-chaos-experiments/first-chaos-engineering).
 
-
 ### Known issues
 
 #### ChaosHub
@@ -61,7 +62,7 @@ The Harness Chaos Engineering (HCE) module, which you can use to perform chaos e
 3. The properties of chaos infrastructure can’t be updated. You will need to provide blacklisted namespaces.
 4. The properties of the environment to which the chaos infrastructure belongs can’t be updated.
 5. Configuring chaos infrastructure doesn’t provide support for Linux and Windows.
- 
+
 #### Chaos Experiments
 
 1. Experiments with parallel faults can’t be created.

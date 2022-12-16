@@ -122,7 +122,7 @@ export default function HomepageFeatures(): JSX.Element {
         ))}
       </div>
       <div className={styles.btnContainer}>
-        <Link href="/tutorials/get-started">
+        <Link href="/tutorials">
           <button className="button button--primary">All Tutorials</button>
         </Link>
       </div>
