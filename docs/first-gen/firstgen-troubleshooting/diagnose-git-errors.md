@@ -10,18 +10,7 @@ helpdocs_is_published: true
 
 This topic helps you diagnose errors you might encounter during the Harness Git sync process. For example, when you sync a Harness Application or account with a Git repo, or when you sync an Application or Workflow in Git with Harness.
 
-For information on viewing Git sync activity, see [View Harness Git Sync Activity](../firstgen-platform/config-as-code/view-harness-git-sync-activity.md).In this topic:
-
-* [Git Sync](#git_sync)
-* [Review: Error Categories](#review_error_categories)
-* [Step: Diagnose Git to Harness Sync Errors](#step_diagnose_git_to_harness_sync_errors)
-* [Step: Diagnose Harness to Git Sync Errors](#step_diagnose_harness_to_git_sync_errors)
-* [Step: Diagnose Connectivity Issues](#step_diagnose_connectivity_issues)
-* [Review: RBAC with Diagnose Git Sync Errors](#review_rbac_with_diagnose_git_sync_errors)
-* [Files Unavailable Error](#files_unavailable_error)
-* [Git Symbolic Link Errors](#git_symbolic_link_errors)
-* [See Also](#see_also)
-
+For information on viewing Git sync activity, see [View Harness Git Sync Activity](../firstgen-platform/config-as-code/view-harness-git-sync-activity.md).I
 ### Git Sync
 
 Harness enables you to use YAML for all your account and Application components and sync it with a Git repo. Errors can occur during the Git sync process. Harness captures and displays the errors to help you fix them. For more information on how Git sync works, refer [Configuration as Code](../firstgen-platform/config-as-code/configuration-as-code.md).
@@ -70,33 +59,49 @@ All connection or network-related errors that occur during the Git Sync process 
 1. Click **Setup**, and then click **Configuration As Code**.
 2. In the **Errors** tab, click **Git → Harness**.
 3. Errors are listed based on commit IDs or file names.
-* Select the **Commits** tab to list errors by commit IDs.
-* Select the **Files** tab to list errors by file name.
+   * Select the **Commits** tab to list errors by commit IDs.
+   * Select the **Files** tab to list errors by file name.
 
-![](./static/diagnose-git-errors-00.png)1. Filter errors for a specific repository. Select a repo from the **Select a repository** drop-down to view repo specific errors.
-2. Click **View details** to see the details of the error encountered. You can see the complete path of the file where the error has occurred. It also specifies the type of change made to the file, for example, ADD, MODIFY, or DELETE.
+   ![](./static/diagnose-git-errors-00.png)
 
-The commit ID, commit message, file path, error message, and initial commit message are truncated. You can hover over the mouse to view the full message.Here is a list of actions that you can perform under **View Details**:
+4. Filter errors for a specific repository. Select a repo from the **Select a repository** drop-down to view repo specific errors.
+5. Click **View details** to see the details of the error encountered. You can see the complete path of the file where the error has occurred. It also specifies the type of change made to the file, for example, ADD, MODIFY, or DELETE.
+
+:::note 
+The commit ID, commit message, file path, error message, and initial commit message are truncated. You can hover over the mouse to view the full message.
+:::
+
+Here is a list of actions that you can perform under **View Details**:
 
 * **Discard All:** To discard all the error messages. The discarded messages disappear from the list and cannot be retrieved.
 * **Discard:** To discard the specific error message. The discarded message disappears from the list and cannot be retrieved.
 * **View Content:** To view the content of the YAML file.
 
-![](./static/diagnose-git-errors-01.png)* **Obsolete Error:** Shows the original error when the commit was processed, but has a more recent failure in a later commit.
+  ![](./static/diagnose-git-errors-01.png)
+  
+* **Obsolete Error:** Shows the original error when the commit was processed, but has a more recent failure in a later commit.
 
-![](./static/diagnose-git-errors-02.png)* **View Latest:** Provides the detail of the latest error encountered in the file.
+  ![](./static/diagnose-git-errors-02.png)
 
-![](./static/diagnose-git-errors-03.png)### Step: Diagnose Harness to Git Sync Errors
+* **View Latest:** Provides the detail of the latest error encountered in the file.
+
+  ![](./static/diagnose-git-errors-03.png)
+
+### Step: Diagnose Harness to Git Sync Errors
 
 1. Click **Setup**, and then click **Configuration As Code**.
 2. In the **Errors** tab, click **Harness → Git**.
 
-![](./static/diagnose-git-errors-04.png)### Step: Diagnose Connectivity Issues
+   ![](./static/diagnose-git-errors-04.png)
+
+### Step: Diagnose Connectivity Issues
 
 1. Click **Setup**, and then click **Configuration As Code**.
 2. In the **Errors** tab, click **Connectivity Issues**.
 
-![](./static/diagnose-git-errors-05.png)### Review: RBAC with Diagnose Git Sync Errors
+   ![](./static/diagnose-git-errors-05.png)
+   
+### Review: RBAC with Diagnose Git Sync Errors
 
 RBAC in Diagnose Git Sync Errors follows permissions set on the User Group to which you are a member. It follows standard Harness RBAC as described in  [Managing Users and Groups (RBAC)](../firstgen-platform/security/access-management-howtos/users-and-permissions.md).
 

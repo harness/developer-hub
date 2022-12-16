@@ -13,7 +13,7 @@ This article addresses some frequently asked questions about Harness Continuous 
 <!-- TOC start -->
 - [Before You Begin](#before-you-begin)
 - [General](#general)
-  * [What Is Continuous Verification (CV)?](#what-is-continuous-verification-cv)
+  <!-- * [What Is Continuous Verification (CV)?](#what-is-continuous-verification-cv) -->
   * [How can Harness help verify my applications and services?](#how-can-harness-help-verify-my-applications-and-services)
   * [What does Harness do with my APM/Time-Series data?](#what-does-harness-do-with-my-apmtime-series-data)
   * [What does Harness do with my log data?](#what-does-harness-do-with-my-log-data)
@@ -92,6 +92,7 @@ This article addresses some frequently asked questions about Harness Continuous 
 
 For an overview of Harness' support for platforms, methodologies, and related technologies, see [Supported Platforms and Technologies](../starthere-firstgen/supported-platforms.md).
 
+<!--
 #### What Is Continuous Verification (CV)?
 
 Here's a one-minute video summary of how Harness helps you monitor the health of your deployments through a streamlined, comprehensive interface:
@@ -102,6 +103,8 @@ Here's a one-minute video summary of how Harness helps you monitor the health of
 
 
  ![](./static/continuous-verification-faqs-24.jpeg)
+ 
+ -->
 
 
 #### How can Harness help verify my applications and services?
@@ -184,7 +187,9 @@ Yes. The following image shows how the Continuous Verification dashboard include
 
 2. Harness Deployments verification.
 
-For 24/7 Service Guard, the queries you define to collect logs are specific to the application or service you want monitored. Verification is at the application/service level. This is unlike Workflows, where verification is performed at the host/node/pod level.#### What Machine Learning does 24/7 Service Guard do?
+For 24/7 Service Guard, the queries you define to collect logs are specific to the application or service you want monitored. Verification is at the application/service level. This is unlike Workflows, where verification is performed at the host/node/pod level.
+
+#### What Machine Learning does 24/7 Service Guard do?
 
 24/7 Service Guard applies:
 
@@ -252,7 +257,9 @@ For example, if Phase 1 deploys app version 1.2 to node A, the metrics received 
 
 Yes. By default in a Previous Analysis strategy, Harness uses the Continuous Verification data of the last successful Workflow execution **with data** as the baseline for the current analysis. This is an automatic setting, but you can select a specific deployment as a new baseline.
 
-![](./static/continuous-verification-faqs-32.png)#### What is Canary Analysis?
+![](./static/continuous-verification-faqs-32.png)
+
+#### What is Canary Analysis?
 
 For Canary Analysis, Harness compares the metrics received for all old app version nodes with the metrics for the new app version nodes. The nodes deployed in each Workflow Phase are compared with metrics received for all of the existing nodes hosting the application.
 
@@ -458,7 +465,7 @@ Harness Continuous Verification integrates with AppDynamics to verify your deplo
 |  |  |
 | --- | --- |
 | **Microservices Environment using AppDynamics** | **Harness Verification and Impact Analysis** |
-|  |  |
+| ![](./static/_appd-left.png) | ![](./static/_appd-right.png) |
 
 AppDynamics announced a new partnership with Harness to help customers embrace continuous delivery and understand the business impact of every application deployment.
 
@@ -498,7 +505,7 @@ Harness Continuous Verification integrates with Bugsnag to verify your deploymen
 |  |  |
 | --- | --- |
 | **Reporting with Bugsnag** | **Harness Analysis** |
-|  |  |
+| ![](./static/_bugsnag-left.png) | ![](./static/_bugsnag-right.png) |
 
 See [Bugsnag Verification Overview](../continuous-delivery/continuous-verification/continuous-verification-overview/concepts-cv/bugsnag-verification-overview.md).
 
@@ -532,7 +539,7 @@ This document describes how to set up these Harness Continuous Verification feat
 |  |  |
 | --- | --- |
 | **Monitoring with CloudWatch** | **Harness Analysis** |
-|  |  |
+| ![](./static/_cw-left.png) | ![](./static/_cw-right.png) |
 
 See [CloudWatch Verification Overview](../continuous-delivery/continuous-verification/continuous-verification-overview/concepts-cv/cloud-watch-verification-overview.md).
 
@@ -556,7 +563,7 @@ Harness Continuous Verification integrates with Datadog to verify your deploymen
 |  |  |
 | --- | --- |
 | **Analysis with Datadog** | **Harness Analysis** |
-|  |  |
+| ![](./static/_dd-left.png) | ![](./static/_dd-right.png) |
 
 See [Datadog Verification Overview](../continuous-delivery/continuous-verification/continuous-verification-overview/concepts-cv/datadog-verification-overview.md) and this overview of Harness' integration with Datadog APM: [Harness Extends Continuous Verification To Datadog](https://harness.io/2018/05/harness-extends-continuous-verification-datadog/).
 
@@ -581,7 +588,7 @@ Harness applies unsupervised machine learning (Hidden Markov models and Symbolic
 |  |  |
 | --- | --- |
 | **Analysis with Dynatrace** | **Harness Analysis** |
-|  |  |
+| ![](./static/_dt-left.png) | ![](./static/_dt-right.png) |
 
 See [Dynatrace Verification Overview](../continuous-delivery/continuous-verification/continuous-verification-overview/concepts-cv/dynatrace-verification-overview.md).
 
@@ -611,7 +618,7 @@ Harness Continuous Verification integrates with ELK to verify your deployments a
 |  |  |
 | --- | --- |
 | **Exceptions with Elasticsearch via Kibana** | **Harness Analysis of Elasticsearch Verification** |
-|  |  |
+| ![](./static/_es-left.png) | ![](./static/_es-right.png) |
 
 See:
 
@@ -653,7 +660,7 @@ Harness Continuous Verification integrates with New Relic to verify your deploym
 |  |  |
 | --- | --- |
 | **Web Transactions in New Relic** | **Web Transactions analyzed in Harness** |
-|  |  |
+| ![](./static/_nr-left.png) | ![](./static/_nr-right.png) |
 
 See [New Relic Verification Overview](../continuous-delivery/continuous-verification/continuous-verification-overview/concepts-cv/new-relic-verification-overview.md).
 
@@ -712,11 +719,10 @@ Harness Continuous Verification integrates with Splunk to verify your deployment
 For example, once you have integrated Splunk with your microservice or app, you can add a Splunk verification step to your Harness workflows and Harness will use Splunk to verify the performance and quality of your deployments and apply Harness machine-learning verification analysis to Splunk data.
 
 
-
 |  |  |
 | --- | --- |
 | **Verification with Splunk Enterprise** | **Harness Analysis** |
-|  |  |
+| ![](./static/_splnk-left.png) | ![](./static/_splnk-right.png) |
 
 See:
 
@@ -737,11 +743,10 @@ Harness Continuous Verification integrates with Google Operations to verify your
 * **Deployment Verification** – Monitors your application deployments, and performs automatic rollback according to your criteria.
 
 
-
 |  |  |
 | --- | --- |
 | **Verification with Stackdriver** | **Harness Analysis** |
-|  |  |
+| ![](./static/_stckdrv-left.png) | ![](./static/_stckdrv-right.png) |
 
 See:
 
@@ -770,7 +775,7 @@ Harness Continuous Verification integrates with Sumo Logic to verify your deploy
 |  |  |
 | --- | --- |
 | **Search with Sumo Logic** | **Harness Analysis** |
-|  |  |
+| ![](./static/_sumo-left.png) | ![](./static/_sumo-right.png) |
 
 See:
 
@@ -795,7 +800,7 @@ Harness Continuous Verification integrates with Instana to verify your deploymen
 |  |  |
 | --- | --- |
 | **Analysis with Instana** | **Harness Analysis** |
-|  |  |
+| ![](./static/_instana-left.png) | ![](./static/_instana-right.png) |
 
 See:
 

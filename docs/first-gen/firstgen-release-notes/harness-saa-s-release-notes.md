@@ -14,7 +14,9 @@ Harness is updated regularly. This document describes recent changes.
 
 For Harness on-prem releases, see [Harness Self-Managed Enterprise Edition Release Notes](harness-on-prem-release-notes.md).Release notes are displayed with the most recent release first.
 
-If you don't see a new feature or enhancement in your Harness account, it might be behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.### December 13, 2022, version 77808
+If you don't see a new feature or enhancement in your Harness account, it might be behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+### December 13, 2022, version 77808
 
 #### Fixed issues
 
