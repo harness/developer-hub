@@ -60,8 +60,12 @@ const CTABanner = ({
       linkButton.appendChild(btnCTA);
       spanClose.appendChild(document.createTextNode("✕"));
       ctaBannerRoot.appendChild(imgIcon);
-      ctaBannerRoot.appendChild(spanTitle);
-      ctaBannerRoot.appendChild(spanTagline);
+      if (title) {
+        ctaBannerRoot.appendChild(spanTitle);
+      }
+      if (tagline) {
+        ctaBannerRoot.appendChild(spanTagline);
+      }
       ctaBannerRoot.appendChild(linkButton);
       if (closable) {
         ctaBannerRoot.appendChild(spanClose);
