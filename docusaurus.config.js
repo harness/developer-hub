@@ -233,43 +233,39 @@ const config = {
               },
               {
                 label: "Continuous Integration",
-                to: "release-notes/continuous-integration",
+                to: "release-notes/continuous-integration-release-notes",
               },
               {
                 label: "Continuous Delivery & GitOps",
-                to: "release-notes/continuous-delivery",
+                to: "release-notes/continuous-delivery-release-notes",
               },
               {
                 label: "Feature Flags",
-                to: "release-notes/feature-flags",
+                to: "release-notes/feature-flag-release-notes",
               },
               {
                 label: "Cloud Cost Management",
-                to: "release-notes/cloud-cost-management",
+                to: "release-notes/cloud-cost-management-release-notes",
               },
               {
                 label: "Service Reliability Management",
-                to: "release-notes/service-reliability-management",
+                to: "release-notes/service-reliability-management-release-notes",
               },
               {
                 label: "Security Testing Orchestration",
-                to: "release-notes/security-testing-orchestration",
+                to: "release-notes/security-testing-orchestration-release-notes",
               },
               {
                 label: "Chaos Engineering",
-                to: "release-notes/chaos-engineering",
+                to: "release-notes/chaos-engineering-release-notes",
               },
               {
                 label: "Harness Platform",
-                to: "release-notes/platform",
+                to: "release-notes/harness-platform-release-notes",
               },
               {
                 label: "Self-Managed Enterprise Edition",
-                to: "release-notes/self-managed-ee",
-              },
-              {
-                label: "Harness FirstGen",
-                to: "release-notes/first-gen",
+                to: "release-notes/self-managed-enterprise-edition-release-notes",
               },
             ],
           },
@@ -443,6 +439,10 @@ const config = {
       utmCookie: {
         prefix: "utm_",
       },
+      munity: {
+        clientId: "b866f690584d8345",
+      },
+
       rss: {
         rssPath: "release-notes/rss.xml",
         rssTitle: "Harness Release Notes",
@@ -508,6 +508,7 @@ const config = {
     path.join(__dirname, "/plugins/hotjar-plugin"),
     path.join(__dirname, "/plugins/onetrust-plugin"),
     path.join(__dirname, "/plugins/utmcookie-plugin"),
+    path.join(__dirname, "/plugins/munity-plugin"),
   ],
 };
 
