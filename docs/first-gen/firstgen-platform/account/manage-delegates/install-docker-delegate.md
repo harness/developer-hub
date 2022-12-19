@@ -73,5 +73,5 @@ The **Delegates** page provides a list of installed Delegates. The information d
 
 ## See Also
 
-* For all the topics related to the Harness Delegate, see [Manage Harness Delegates](https://docs.harness.io/category/manage-harness-delegates-firstgen).
+* For all the topics related to the Harness Delegate, see [Manage Harness Delegates](/docs/category/manage-harness-delegates-firstgen).
 

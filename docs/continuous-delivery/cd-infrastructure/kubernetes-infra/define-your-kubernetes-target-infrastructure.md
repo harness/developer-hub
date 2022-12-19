@@ -150,7 +150,7 @@ Select the cloud platform where your Kubernetes cluster is hosted, such as Googl
 
 Select or create a Connector for your target cluster's platform.
 
-For details on the Connector settings, see [Cloud Platform Connectors](https://docs.harness.io/category/cloud-platform-connectors).
+For details on the Connector settings, see [Cloud Platform Connectors](/docs/category/cloud-platform-connectors).
 
 ### Cluster
 

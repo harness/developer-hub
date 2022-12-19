@@ -803,7 +803,7 @@ You cannot access AWS GovCloud with standard AWS credentials. Likewise, you cann
 
 ### Troubleshooting
 
-See [Troubleshooting Harness](https://docs.harness.io/article/jzklic4y2j-troubleshooting).
+See [Troubleshooting Harness](../../../troubleshooting/troubleshooting-nextgen.md).
 
 
 :::warning

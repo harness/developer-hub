@@ -17,5 +17,5 @@ Jira and ServiceNow Approval stages are described in the following topics:
 
 You can also use Jira and ServiceNow steps anywhere inside your CD stages.
 
-For more details, see [Ticketing Systems](https://docs.harness.io/category/ticketing-systems).
+For more details, see [Ticketing Systems](/docs/category/ticketing-systems).
 

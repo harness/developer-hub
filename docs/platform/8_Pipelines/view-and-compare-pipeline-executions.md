@@ -59,5 +59,5 @@ The diff can help you quickly see changes and troubleshoot a failed execution.
 
 ### See also
 
-* [Pipelines and Stages How-tos](https://docs.harness.io/category/pipelines)
+* [Pipelines and Stages How-tos](/docs/category/pipelines)
 

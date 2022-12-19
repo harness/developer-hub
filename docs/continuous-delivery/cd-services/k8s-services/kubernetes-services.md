@@ -51,7 +51,7 @@ Harness supports Kubernetes deployments using Kubernetes manifests.
 
 If this is your first time using Harness for a Kubernetes deployment, see [Kubernetes CD Quickstart](../../onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md).
 
-For a task-based walkthroughs of different Kubernetes features in Harness, see [Kubernetes How-tos](https://docs.harness.io/category/kubernetes).
+For a task-based walkthroughs of different Kubernetes features in Harness, see [Kubernetes How-tos](/docs/category/kubernetes).
 
 Add a Kubernetes ManifestYou can hardcode your artifact in your manifests, our add your artifact source to your **Service Definition** and then reference it in your manifests. See [Reference Artifacts in Manifests](kubernetes-services.md#reference-artifacts-in-manifests).
 
@@ -173,7 +173,7 @@ In **Specify Helm Chart Store**, select HTTP Helm Repository, OCI Registry, a G
 
 For the steps and settings of each option, see the [Connect to an Artifact Repo](../../../platform/7_Connectors/connect-to-an-artifact-repo.md) or [Connect to a Git Repo](../../../platform/7_Connectors/connect-to-code-repo.md) How-tos.
 
-If you are using Google Cloud Storage or Amazon S3, see [Cloud Platform Connectors](https://docs.harness.io/category/cloud-platform-connectors).
+If you are using Google Cloud Storage or Amazon S3, see [Cloud Platform Connectors](/docs/category/cloud-platform-connectors).
 
 If you haven't set up a Harness Delegate, you can add one as part of the Connector setup. This process is described in [Helm CD Quickstart](../../onboard-cd/cd-quickstarts/helm-cd-quickstart.md) and [Install a Kubernetes Delegate](../../../platform/2_Delegates/delegate-guide/install-a-kubernetes-delegate.md).
 

@@ -63,7 +63,7 @@ All network connections from your local network to Harness SaaS are outbound-onl
 
 If you do not enable gRPC connections, the following limitations apply:
 
-* [Cloud Cost Management (CCM)](https://docs.harness.io/category/cloud-cost-management) will not collect events.
+* [Cloud Cost Management (CCM)](/docs/category/cloud-cost-management) will not collect events.
 * If the `ARTIFACT_PERPETUAL_TASK` feature flag is enabled in your account, Harness performs perpetual artifact collection. If you do not enable gRPC connections, this will not work.
 
 Contact [Harness Support](mailto:support@harness.io) to enable or disable feature flags.### Permissions and Ports

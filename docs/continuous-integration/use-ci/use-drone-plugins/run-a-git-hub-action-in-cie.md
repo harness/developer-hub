@@ -25,7 +25,7 @@ In this topic, we cover using GitHub Actions in the Plugin step with one of the 
 
 * [CI Pipeline Quickstart](../../ci-quickstarts/ci-pipeline-quickstart.md)
 * [CI Stage Settings](../../ci-technical-reference/ci-stage-settings.md)
-* [Set Up Build Infrastructure](https://docs.harness.io/category/set-up-build-infrastructure)
+* [Set Up Build Infrastructure](/docs/category/set-up-build-infrastructure)
 * [Learn Harness' Key Concepts](../../../getting-started/learn-harness-key-concepts.md)
 
 ### Step 1: Create the CI Stage
@@ -34,7 +34,7 @@ In your Harness Pipeline, click Add Stage, and then click CI.
 
 ### Step 2: Add the Codebase
 
-In Connector, select an existing Connector to your codebase repo, or create a new one. See [Code Repo Connectors](https://docs.harness.io/category/code-repo-connectors).
+In Connector, select an existing Connector to your codebase repo, or create a new one. See [Code Repo Connectors](/docs/category/code-repo-connectors).
 
 You can see the URL for the repo account below **Repository Name**. Don't add the URL into Repository Name.
 

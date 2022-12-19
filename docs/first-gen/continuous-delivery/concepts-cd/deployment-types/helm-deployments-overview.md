@@ -66,6 +66,6 @@ The following list describes the major steps of a Harness Helm deployment:
 
 Read the following topics to build on what you've learned:
 
-* [Helm How-tos](https://docs.harness.io/category/native-helm-deployments)
+* [Helm How-tos](/docs/category/native-helm-deployments)
 * Blog on Helm support in Harness Kubernetes deployments, [Helm Support for Harness Continuous Delivery](https://harness.io/2019/05/helm-support-for-harness-continuous-delivery/).
 
