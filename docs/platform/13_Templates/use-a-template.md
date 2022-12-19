@@ -69,7 +69,7 @@ Once you've made all the changes, click **Run** and then click **Run Pipeline**.
 
 
 :::note
-To copy a template, make sure you have the **core_templates_copy** permission. The option to copy templates is disabled if you do not have this permission.
+To copy a template, make sure you have the **core_template_copy** permission. The option to copy templates is disabled if you do not have this permission.
 :::
 
 
