@@ -14,6 +14,29 @@ Harness deploys updates progressively to different Harness cluster hosting accou
 
 :::
 
+## December 16, 2022
+
+### What's new
+
+* Adding a node pool name (CCM-10203)
+  
+    Earlier, while adding a node pool name, Harness CCM looked only for the exact match. Now, support has been introduced to check if the node label key _'contains'_ the node-pool-name. If an exact match is not found, CCM falls back to '_contains_'. See [Labels for node pool recommendations](https://developer.harness.io/docs/cloud-cost-management/use-cloud-cost-management/ccm-recommendations/node-pool-recommendations#prerequisites) for more information.
+
+* API implementation for Currency Preferences (CCM-9632)
+
+    You can now select the preferred currency that you want to see for your entire CCM application from different currencies across different cloud providers by using the Currency Preference APIs. See [Harness API Documentation](https://apidocs.harness.io/) for more information.
+  
+### Early access
+
+* Introducing **Currency Preference** to view your cost data for your entire CCM application in your preferred currency for different cloud providers. This feature is behind a feature flag `CCM_CURRENCY_PREFERENCES`. (CCM-9280)
+
+### Fixed issues
+
+- Language in budget alert notification was misleading (CCM-9291)
+
+  The budget alerts sent via emails now convey more meaningful, dynamic messages. It provides the cost type and the period for which the alert is created.
+
+
 ## December 7, 2022, version 77716
 
 ### What's new
@@ -30,7 +53,7 @@ This release does not include early access features.
 
   Now, this issue is fixed.
 
-- When you clicked Explore all plans on the Cloud Cost Management Getting Started page, you were directed to the old onboarding page instead of the new one. (CCM-9638)
+- When you clicked **Explore all plans** on the Cloud Cost Management Getting Started page, you were directed to the old onboarding page instead of the new one. (CCM-9638)
 
   Now, this issue is fixed.
 
@@ -88,9 +111,9 @@ NA
 
 ## October 21, 2022, version 77221
 
-What's new
+### What's new
 
-You can now add labels to enable node pool recommendations. kops cluster node label has been added for node pool recommendations. See Labels for node pool recommendations for more information. (CCM-9309)
+You can now add labels to enable node pool recommendations. `kops cluster` node label has been added for node pool recommendations. See [Labels for node pool recommendations](https://developer.harness.io/docs/cloud-cost-management/use-cloud-cost-management/ccm-recommendations/node-pool-recommendations#prerequisites) for more information. (CCM-9309)
 
 ### Early access
 
