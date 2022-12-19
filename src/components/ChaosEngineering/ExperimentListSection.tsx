@@ -3,53 +3,7 @@ import React from "react";
 import styles from "./ExperimentListSection.module.scss";
 import { getCategoryDetails, getFaultDetails } from "./utils/helper";
 
-const experiments = [
-  {
-    name: "Pod Delete",
-    description: "This is a description of experiment 1",
-    tags: ["tag1", "tag2"],
-    category: "kubernetes",
-  },
-  {
-    name: "Not Pod Delete",
-    description:
-      "This is a description of experiment 2. This is a description of experiment 2. This is a description of experiment 2. This is a description of experiment 2",
-    tags: ["tag1", "tag6"],
-    category: "kubernetes",
-  },
-  {
-    name: "Experiment 4",
-    description: "This is a description of experiment 2",
-    tags: ["tag1", "tag2"],
-    category: "kubernetes",
-  },
-  {
-    name: "Experiment 5",
-    description: "This is a description of experiment 2",
-    tags: ["tag1", "tag2"],
-    category: "kubernetes",
-  },
-  {
-    name: "Experiment 6",
-    description: "This is a description of experiment 2",
-    tags: ["tag1", "tag2"],
-    category: "kubernetes",
-  },
-  {
-    name: "Experiment 7",
-    description: "This is a description of experiment 2",
-    tags: ["tag1", "tag2"],
-    category: "kubernetes",
-  },
-  {
-    name: "Definitely Not Pod Delete",
-    description: "This is a description of experiment 2",
-    tags: ["tag1", "tag2"],
-    category: "kubernetes",
-  },
-];
-
-export default function ExperimentListSection() {
+export default function ExperimentListSection({ experiments }) {
   const [showAll, setShowAll] = React.useState(false);
   const [page, setPage] = React.useState(0);
   const [search, setSearch] = React.useState("");
@@ -71,8 +25,6 @@ export default function ExperimentListSection() {
       setFilteredExperiments(filtered);
     }
   }, [search]);
-
-  console.log(filteredExperiments);
 
   return (
     <div className={styles.experimentListSectionContainer}>

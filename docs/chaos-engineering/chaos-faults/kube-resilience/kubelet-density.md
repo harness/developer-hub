@@ -1,4 +1,4 @@
-cd---
+---
 id: kubelet-density
 title: Kubelet Density
 ---
@@ -117,7 +117,8 @@ pass its name and mountPath via `POD_TEMPLATE_CM` and `POD_TEMPLATE_PATH` ENV re
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/kubelet-density/pod-template.yaml yaml)
+[embedmd]: # "./static/manifests/kubelet-density/pod-template.yaml yaml"
+
 ```yaml
 # defines pod template cm and its mount path
 apiVersion: litmuschaos.io/v1alpha1
@@ -129,18 +130,18 @@ spec:
   annotationCheck: "false"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: kubelet-density
-    spec:
-      components:
-        env:
-        # name of the pod template cm
-        - name: POD_TEMPLATE_CM
-          value: 'pod-template-cm'
-         # mount path of the cm
-        - name: POD_TEMPLATE_PATH
-          VALUE: '/templates/pod.yml'
-        - name: TARGET_NODE
-          value: 'node1'
+    - name: kubelet-density
+      spec:
+        components:
+          env:
+            # name of the pod template cm
+            - name: POD_TEMPLATE_CM
+              value: "pod-template-cm"
+              # mount path of the cm
+            - name: POD_TEMPLATE_PATH
+              VALUE: "/templates/pod.yml"
+            - name: TARGET_NODE
+              value: "node1"
 ```
 
 ### Pod Count
@@ -149,7 +150,8 @@ It contains the number of the pods, which should be created on the target node. 
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/kubelet-density/pod-count.yaml yaml)
+[embedmd]: # "./static/manifests/kubelet-density/pod-count.yaml yaml"
+
 ```yaml
 # defines count of the pod
 apiVersion: litmuschaos.io/v1alpha1
@@ -161,15 +163,15 @@ spec:
   annotationCheck: "false"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: kubelet-density
-    spec:
-      components:
-        env:
-        # number of pods, which needs to be created
-        - name: POD_COUNT
-          value: '50'
-        - name: TARGET_NODE
-          value: 'node1'
+    - name: kubelet-density
+      spec:
+        components:
+          env:
+            # number of pods, which needs to be created
+            - name: POD_COUNT
+              value: "50"
+            - name: TARGET_NODE
+              value: "node1"
 ```
 
 ### Target Namespace
@@ -178,7 +180,8 @@ It contains the namespace where pods need to be created. It can be tuned via `TA
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/kubelet-density/target-namespace.yaml yaml)
+[embedmd]: # "./static/manifests/kubelet-density/target-namespace.yaml yaml"
+
 ```yaml
 # defines pod namespace
 apiVersion: litmuschaos.io/v1alpha1
@@ -190,15 +193,15 @@ spec:
   annotationCheck: "false"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: kubelet-density
-    spec:
-      components:
-        env:
-        # namespace where pods need to be created
-        - name: TARGET_NAMESPACE
-          value: 'litmus'
-        - name: TARGET_NODE
-          value: 'node1'
+    - name: kubelet-density
+      spec:
+        components:
+          env:
+            # namespace where pods need to be created
+            - name: TARGET_NAMESPACE
+              value: "litmus"
+            - name: TARGET_NODE
+              value: "node1"
 ```
 
 ### Pod Image and Pod Selectors
@@ -207,7 +210,8 @@ Pod image and label selectors can be tuned via `POD_IMAGE` and `POD_SELECTOR` EN
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/kubelet-density/pod-image-and-selectors.yaml yaml)
+[embedmd]: # "./static/manifests/kubelet-density/pod-image-and-selectors.yaml yaml"
+
 ```yaml
 # defines pod image and label selectors
 apiVersion: litmuschaos.io/v1alpha1
@@ -219,16 +223,16 @@ spec:
   annotationCheck: "false"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: kubelet-density
-    spec:
-      components:
-        env:
-        # image of the pod
-        - name: POD_IMAGE
-          value: 'nginx'
-        # pod label selectors
-        - name: POD_SELECTOR
-          value: '{name: kubelet-density-app}'
-        - name: TARGET_NODE
-          value: 'node1'
+    - name: kubelet-density
+      spec:
+        components:
+          env:
+            # image of the pod
+            - name: POD_IMAGE
+              value: "nginx"
+            # pod label selectors
+            - name: POD_SELECTOR
+              value: "{name: kubelet-density-app}"
+            - name: TARGET_NODE
+              value: "node1"
 ```

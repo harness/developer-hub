@@ -22,7 +22,6 @@ export default function FaultCard({
   link,
 }: FaultCardItem) {
   const details = getCategoryDetails(category);
-  console.log(details);
   return (
     <Link to={details.link} className={styles.tutorialCard}>
       <div className={styles.icon}>

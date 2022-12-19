@@ -1,12 +1,13 @@
 ---
 id: kubernetes
-title: Chaos Faults for Kubernetes (31)
+title: Chaos Faults for Kubernetes
 ---
 
 <!-- Import statement for Custom Components -->
 
 import FaultDetailsCard from "@site/src/components/ChaosEngineering/FaultDetailsCard";
 import ExperimentListSection from "@site/src/components/ChaosEngineering/ExperimentListSection"
+import { experiments } from "./experiments"
 
 <!-- Heading Description -->
 
@@ -14,7 +15,7 @@ Kubernetes faults disrupt the resources running on a Kubernetes cluster. They ca
 
 <!-- Experiment List and Search Bar (every experiment added below, need to be added in this file also) -->
 
-<ExperimentListSection />
+<ExperimentListSection experiments={experiments} />
 
 ## Faults Introduction
 

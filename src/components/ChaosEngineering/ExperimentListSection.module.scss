@@ -43,7 +43,7 @@ a:hover {
 }
 
 .noExperimentFound {
-  min-height: 416px;
+  min-height: 504px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -76,7 +76,7 @@ a:hover {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      gap: 2rem;
+      gap: 1.5rem;
       height: 100%;
       .title {
         font-size: 1rem;
@@ -86,8 +86,9 @@ a:hover {
       }
       .description {
         font-size: 0.9rem;
-        margin: 0 0 0.5rem 0;
+        margin: 0 0 0rem 0;
         line-height: 1.2;
+        height: 70px;
         text-overflow: ellipsis;
         overflow: hidden;
         display: -webkit-box !important;
@@ -99,6 +100,7 @@ a:hover {
         display: flex;
         flex-wrap: wrap;
         gap: 0.5rem;
+        overflow: scrol;
         span {
           display: inline-block;
           border-radius: 6px;
