@@ -23,12 +23,12 @@ To install and run a plugin, you need the following:
 	+ [CI Pipeline Quickstart](../../ci-quickstarts/ci-pipeline-quickstart.md)
 	+ [Learn Harness' Key Concepts](../../../getting-started/learn-harness-key-concepts.md)
 * A build infrastructure and Delegate to run builds:
-	+ [Set Up Build Infrastructure](https://docs.harness.io/category/set-up-build-infrastructure)
-	+ [Install a Kubernetes Delegate](https://docs.harness.io/article/f9bd10b3nj) *or* [Install a Docker Delegate](https://docs.harness.io/article/cya29w2b99)
+	+ [Set Up Build Infrastructure](/docs/category/set-up-build-infrastructure)
+	+ [Install a Kubernetes Delegate](../../../platform/2_Delegates/delegate-guide/install-a-kubernetes-delegate.md) *or* [Install a Docker Delegate](../../../platform/2_Delegates/delegate-install-docker/install-a-docker-delegate.md)
 * A CI Pipeline with a Build Stage to run the plugin:
 	+ [CI Stage Settings](../../ci-technical-reference/ci-stage-settings.md)
 * You should create text secrets for any sensitive information required by the plugin, such as a password or Personal Access Token. You'll need to reference the IDs for any secrets when you set up the Plugin Step.
-	+ [Add and Reference Text Secrets](https://docs.harness.io/article/osfw70e59c)
+	+ [Add and Reference Text Secrets](../../../platform/6_Security/2-add-use-text-secrets.md)
 
 ### Workflow Description
 
@@ -59,7 +59,7 @@ The [Download plugin doc](https://plugins.drone.io/plugins/download) shows the i
 	+ `source` = The artifact to download.
 	+ `destination` = Save the downloaded artifact to this file.
 	+ `username` = A valid username for the Git provider.
-	+ `password` = The ID of the text secret that contains the Git provider password, using the convention described [here](https://ngdocs.harness.io/article/osfw70e59c-add-use-text-secrets#step_3_reference_the_encrypted_text_by_identifier). For example: `<+secrets.getValue("mygithubpersonalaccesstoken")>`
+	+ `password` = The ID of the text secret that contains the Git provider password, using the convention described [here](../../../platform/6_Security/2-add-use-text-secrets.md#step-3-reference-the-encrypted-text-by-identifier). For example: `<+secrets.getValue("mygithubpersonalaccesstoken")>`
   
    ![](./static/run-a-drone-plugin-in-ci-00.png)
    
@@ -74,7 +74,7 @@ You can use the examples in [Drone plugin descriptions](https://plugins.drone.io
 
 #### Text Secrets in Drone vs. Harness CI
 
-The following snippets illustrate the different ways that Drone and Harness CI handle text secrets. See [Add and Use Text Secrets](https://ngdocs.harness.io/article/osfw70e59c-add-use-text-secrets).
+The following snippets illustrate the different ways that Drone and Harness CI handle text secrets. See [Add and Use Text Secrets](../../../platform/6_Security/2-add-use-text-secrets.md).
 
 Note that the CI definition includes a few additional fields and that some fields use different formats.
 
@@ -115,5 +115,5 @@ The settings appear in the UI like this:
 * [Drone Community Plugins](https://plugins.drone.io/)
 * [Run a GitHub Action in CIE](run-a-git-hub-action-in-cie.md)
 * [Plugin Step Settings](../../ci-technical-reference/plugin-step-settings-reference.md)
-* [Add and Use Text Secrets](https://docs.harness.io/article/osfw70e59c)
+* [Add and Use Text Secrets](../../../platform/6_Security/2-add-use-text-secrets.md)
 

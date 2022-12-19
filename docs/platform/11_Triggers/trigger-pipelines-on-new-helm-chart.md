@@ -26,7 +26,7 @@ This Trigger is a simple way to automate deployments for new Helm charts.
 
 ### Before you begin
 
-* You should be familiar with Harness CD Pipelines for Helm charts, such as the one you create in the [Helm Chart deployment tutorial](https://docs.harness.io/article/cifa2yb19a-helm-cd-quickstart).
+* You should be familiar with Harness CD Pipelines for Helm charts, such as the one you create in the [Helm Chart deployment tutorial](../../continuous-delivery/onboard-cd/cd-quickstarts/helm-cd-quickstart.md).
 
 ### Summary and important notes
 
@@ -76,7 +76,7 @@ Typically, you add a Helm Chart Trigger to a Pipeline that deploys a Helm Chart.
 
    ![](./static/trigger-pipelines-on-new-helm-chart-06.png)
 
-   See [Helm Chart deployment tutorial](https://docs.harness.io/article/cifa2yb19a-helm-cd-quickstart) for details on adding Helm Charts to a Stage's **Service Definition**.
+   See [Helm Chart deployment tutorial](../../continuous-delivery/onboard-cd/cd-quickstarts/helm-cd-quickstart.md) for details on adding Helm Charts to a Stage's **Service Definition**.
 
 Next, let's add the Trigger.
 

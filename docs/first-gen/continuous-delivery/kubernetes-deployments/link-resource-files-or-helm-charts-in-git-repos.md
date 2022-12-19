@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/category/qfj6m1k2c4).
+This content is for Harness [FirstGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/category/kubernetes).
 
 You can use your Git repo for the configuration files in **Manifests** and Harness will use them at runtime. You have two options for remote files:
 
@@ -28,15 +28,15 @@ For steps on other options, see:
 * [Define Kubernetes Manifests](define-kubernetes-manifests.md)
 * [Use a Helm Repository with Kubernetes](use-a-helm-repository-with-kubernetes.md)
 
-You can also use a Git repo for your entire Harness Application, and sync it unidirectionally or bidirectionally. For more information, see  [Configuration as Code](https://docs.harness.io/article/htvzryeqjw-configuration-as-code). There is no conflict between the Git repo used for remote **Manifests** files and the Git repo used for the entire Harness Application.
+You can also use a Git repo for your entire Harness Application, and sync it unidirectionally or bidirectionally. For more information, see  [Configuration as Code](../../firstgen-platform/config-as-code/configuration-as-code.md). There is no conflict between the Git repo used for remote **Manifests** files and the Git repo used for the entire Harness Application.
 
 ### Step 1: Add a Source Repo Provider
 
 To use a remote Git repo for your resource files or Helm charts, you must set up a Harness Source Repo Provider to connect to your repo. To set up the connection, see one of the following:
 
-* [Add a GitHub Repo](https://docs.harness.io/article/sip9rr6ogy-add-github-repo)
-* [Add a GitLab Repo](https://docs.harness.io/article/od1u7t4vgq-add-a-gitlab-repo)
-* [Add a Bitbucket Repo](https://docs.harness.io/article/etl0yejzsm-add-bitbucket-repo)
+* [Add a GitHub Repo](../../firstgen-platform/account/manage-connectors/add-github-repo.md)
+* [Add a GitLab Repo](../../firstgen-platform/account/manage-connectors/add-a-gitlab-repo.md)
+* [Add a Bitbucket Repo](../../firstgen-platform/account/manage-connectors/add-bitbucket-repo.md)
 
 ### Step 2: Link Remote Manifests
 
@@ -63,7 +63,7 @@ Helm Dependencies are supported with charts in [Helm Chart from Helm Repository]
 
 ### Step 4: Configure the Repo Settings
 
-In **Source Repository**, select a SourceRepo Provider for the Git repo you added to your Harness account. For more information, see  [Add Source Repo Providers](https://docs.harness.io/article/ay9hlwbgwa-add-source-repo-providers).
+In **Source Repository**, select a SourceRepo Provider for the Git repo you added to your Harness account. For more information, see  [Add Source Repo Providers](../../firstgen-platform/account/manage-connectors/add-source-repo-providers.md).
 
 In **Commit ID** , select **Latest from Branch** or **Specific Commit ID**.
 
@@ -111,7 +111,7 @@ If you use Helm commands in the Harness Service and in a Workflow deploying that
 
 #### Harness Variable Expressions are Supported
 
-You can use [Harness variable expressions](https://docs.harness.io/article/9dvxcegm90-variables) in any of the command options settings. For example, [Service Config variables](https://docs.harness.io/article/q78p7rpx9u-add-service-level-config-variables) and [Workflow variables](https://docs.harness.io/article/766iheu1bk-add-workflow-variables-new-template).
+You can use [Harness variable expressions](../../firstgen-platform/techref-category/variables/variables.md) in any of the command options settings. For example, [Service Config variables](../model-cd-pipeline/setup-services/add-service-level-config-variables.md) and [Workflow variables](../model-cd-pipeline/workflows/add-workflow-variables-new-template.md).
 
 ### How Does Harness Use the Remote Files?
 

@@ -16,7 +16,7 @@ If your artifact doesn't match the supported types, you can run a script to prep
 
 * [Add Container Images for Tanzu Deployments](add-container-images-for-pcf-deployments.md)
 * [Create a Basic Tanzu Deployment](create-a-basic-pcf-deployment.md)
-* [Pivotal Cloud Foundry Quickstart](https://docs.harness.io/article/hy819vmsux-pivotal-cloud-foundry-quickstart)
+* [Pivotal Cloud Foundry Quickstart](../../first-gen-quickstarts/pivotal-cloud-foundry-quickstart.md)
 
 ### Limitations
 

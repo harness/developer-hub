@@ -20,7 +20,7 @@ Harness build farms run on your infrastructure using battle-tested platforms f
 
 Once you set up the Kubernetes cluster to use as your build infrastructure, you connect Harness to it using a Harness Kubernetes Cluster Connector and Harness Delegate.
 
-You can also set up build infrastructures using VMs. See [Set Up Build Infrastructure](https://docs.harness.io/category/set-up-build-infrastructure).
+You can also set up build infrastructures using VMs. See [Set Up Build Infrastructure](/docs/category/set-up-build-infrastructure).
 
 ### Limitations
 
@@ -79,7 +79,7 @@ Autopilot might be cheaper than standard Kubernetes if you only run builds occas
 ### Before You Begin
 
 * [CI Pipeline Quickstart](../../ci-quickstarts/ci-pipeline-quickstart.md)
-* [Delegates Overview](https://docs.harness.io/article/2k7lnc7lvl-delegates-overview)
+* [Delegates Overview](../../../platform/2_Delegates/delegates-overview.md)
 * [CI Stage Settings](../../ci-technical-reference/ci-stage-settings.md)
 * [Learn Harness' Key Concepts](../../../getting-started/learn-harness-key-concepts.md)
 
@@ -98,8 +98,8 @@ https://harness-1.wistia.com/medias/rpv5vwzpxz-->
 
 #### Prerequisites
 
-* Ensure your Kubernetes cluster meets the build infrastructure requirements in [CI Cluster Requirement](https://docs.harness.io/article/sjjik49xww-kubernetes-cluster-connector-settings-reference#harness_ci_cluster_requirements).
-* For Harness-specific permission requirements, see [permission required](https://docs.harness.io/article/sjjik49xww-kubernetes-cluster-connector-settings-reference#permissions_required) for CI.
+* Ensure your Kubernetes cluster meets the build infrastructure requirements in [CI Cluster Requirement](../../../platform/7_Connectors/ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md#harness-ci-cluster-requirements).
+* For Harness-specific permission requirements, see [permission required](../../../platform/7_Connectors/ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md#permissions-required) for CI.
 * Install the Harness Kubernetes Delegate on the same cluster you use as your build infrastructure. Make sure that the cluster has enough memory and CPU for the Delegate you are installing.Harness Kubernetes Delegates can be in a different [namespace](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) than the one you provide while defining the build farm infrastructure for the CI Pipeline.
 
 To create a new Kubernetes cluster, see:
@@ -191,7 +191,7 @@ In the CI stage Infrastructure, select the Kubernetes Cluster Connector you crea
 
 In Namespace, enter the Kubernetes namespace to use.
 
-You can use a Runtime Input (`<+input>`) or expression also. See [Runtime Inputs](https://ngdocs.harness.io/article/f6yobn7iq0-runtime-inputs).
+You can use a Runtime Input (`<+input>`) or expression also. See [Runtime Inputs](../../../platform/20_References/runtime-inputs.md).
 
 ### Option: Service Account Name
 
@@ -258,6 +258,6 @@ Once the build infrastructure is set up, you can now add CI stages to execute yo
 
 ### See Also
 
-* [Add a Kubernetes Cluster Connector](https://docs.harness.io/article/1gaud2efd4-add-a-kubernetes-cluster-connector)
-* [Kubernetes Cluster Connector Settings](https://docs.harness.io/article/sjjik49xww-kubernetes-cluster-connector-settings-reference)
+* [Add a Kubernetes Cluster Connector](../../../platform/7_Connectors/add-a-kubernetes-cluster-connector.md)
+* [Kubernetes Cluster Connector Settings](../../../platform/7_Connectors/ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md)
 

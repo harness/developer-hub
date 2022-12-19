@@ -12,10 +12,10 @@ You can define Application-wide variables that can be referenced in any entity w
 
 ### Before You Begin
 
-* [What is a Harness Variable Expression?](https://docs.harness.io/article/9dvxcegm90-variables)
+* [What is a Harness Variable Expression?](../../../firstgen-platform/techref-category/variables/variables.md)
 * [Run Shell Scripts in Workflows](../workflows/capture-shell-script-step-output.md)
-* [Add Artifacts and App Stacks for Traditional (SSH) Deployments](https://docs.harness.io/article/umpe4zfnac-add-artifacts-for-ssh-deployments)
-* [Add Scripts for Traditional (SSH) Deployments](https://docs.harness.io/article/ih779z9kb6-add-deployment-specs-for-traditional-ssh-deployments)
+* [Add Artifacts and App Stacks for Traditional (SSH) Deployments](../../traditional-deployments/add-artifacts-for-ssh-deployments.md)
+* [Add Scripts for Traditional (SSH) Deployments](../../traditional-deployments/add-deployment-specs-for-traditional-ssh-deployments.md)
 
 ### Review: Application Defaults
 
@@ -23,7 +23,7 @@ For example, here is the **Application Defaults** dialog, the **Copy Artifact
 
 ![](./static/set-default-application-directories-as-variables-00.png)
 
-For more information, see  [Application Default Variables](https://docs.harness.io/article/9dvxcegm90-variables#application_default_variables).
+For more information, see  [Application Default Variables](../../../firstgen-platform/techref-category/variables/variables.md#application-default-variables).
 
 ### Limitations
 
@@ -31,7 +31,7 @@ To create or edit Application Defaults, you must be logged into Harness as a mem
 
 The User Group must also have the **Administer Other Account Functions** setting enabled.
 
-See [Managing Users and Groups (RBAC)](https://docs.harness.io/article/ven0bvulsj-users-and-permissions).
+See [Managing Users and Groups (RBAC)](../../../firstgen-platform/security/access-management-howtos/users-and-permissions.md).
 
 ### Step 1: Create an Application Default
 
@@ -77,8 +77,8 @@ You can reference an Application Default anywhere in your Application. Here is a
 
 ### See Also
 
-* [What is a Harness Variable Expression?](https://docs.harness.io/article/9dvxcegm90-variables)
+* [What is a Harness Variable Expression?](../../../firstgen-platform/techref-category/variables/variables.md)
 * [Run Shell Scripts in Workflows](../workflows/capture-shell-script-step-output.md)
-* [Add Artifacts and App Stacks for Traditional (SSH) Deployments](https://docs.harness.io/article/umpe4zfnac-add-artifacts-for-ssh-deployments)
-* [Add Scripts for Traditional (SSH) Deployments](https://docs.harness.io/article/ih779z9kb6-add-deployment-specs-for-traditional-ssh-deployments)
+* [Add Artifacts and App Stacks for Traditional (SSH) Deployments](../../traditional-deployments/add-artifacts-for-ssh-deployments.md)
+* [Add Scripts for Traditional (SSH) Deployments](../../traditional-deployments/add-deployment-specs-for-traditional-ssh-deployments.md)
 

@@ -388,7 +388,7 @@ There are three authentication options for the AWS Connector when used for AWS E
 * [Enable cross-account access (STS Role)](#enable-cross-account-access-sts-role)
 	+ Requires that the AWS CLI is installed on the Delegate. See [Serverless and ​Enable cross-account access (STS Role)](#serverless-and-​enable-cross-account-access-sts-role).
 
-For steps on Serverless Lambda deployments, see [Serverless Lambda CD Quickstart](https://docs.harness.io/article/5fnx4hgwsa-serverless-lambda-cd-quickstart).
+For steps on Serverless Lambda deployments, see [Serverless Lambda CD Quickstart](../../../continuous-delivery/onboard-cd/cd-quickstarts/serverless-lambda-cd-quickstart.md).
 
 
 :::warning
@@ -803,7 +803,7 @@ You cannot access AWS GovCloud with standard AWS credentials. Likewise, you cann
 
 ### Troubleshooting
 
-See [Troubleshooting Harness](https://docs.harness.io/article/jzklic4y2j-troubleshooting).
+See [Troubleshooting Harness](../../../troubleshooting/troubleshooting-nextgen.md).
 
 
 :::warning

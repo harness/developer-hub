@@ -191,7 +191,7 @@ A Docker Hub connector is required to run a Docker-in-Docker service as describe
 
 You'll need a GitHub Connector to do the [STO Tutorials](30-tutorial-1-standalone-workflows.md). 
 
-You also need a Git repo connector for any STO pipeline that scans a codebase. You can create connectors for codebases in [AWS CodeCommit](https://harness.helpdocs.io/article/jed9he2i45), [Azure](https://docs.harness.io/article/9epdx5m9ae), [Bitbucket](https://harness.helpdocs.io/article/iz5tucdwyu), [Git](https://harness.helpdocs.io/article/tbm2hw6pr6) (platform-agnostic), [GitHub](https://harness.helpdocs.io/article/v9sigwjlgo), and [GitLab](https://harness.helpdocs.io/article/5abnoghjgo).
+You also need a Git repo connector for any STO pipeline that scans a codebase. You can create connectors for codebases in [AWS CodeCommit](https://harness.helpdocs.io/article/jed9he2i45), [Azure](../../platform/7_Connectors/add-a-microsoft-azure-connector.md), [Bitbucket](https://harness.helpdocs.io/article/iz5tucdwyu), [Git](https://harness.helpdocs.io/article/tbm2hw6pr6) (platform-agnostic), [GitHub](https://harness.helpdocs.io/article/v9sigwjlgo), and [GitLab](https://harness.helpdocs.io/article/5abnoghjgo).
 
 To do the STO tutorials, point the connector at the following repo: <https://github.com/williamwissemann/dvpwa>
 

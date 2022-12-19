@@ -21,17 +21,17 @@ This topic covers adding a non-containerized artifact. For steps on adding a Doc
 
 ### Supported Platforms and Technologies
 
-See [Supported Platforms and Technologies](https://docs.harness.io/article/220d0ojx5y-supported-platforms).
+See [Supported Platforms and Technologies](../../../starthere-firstgen/supported-platforms.md).
 
 ### Limitations
 
 The Harness Azure Web Application Service type supports the following repos:
 
-* **Docker Registry:** see [Add Docker Registry Artifact Servers](https://docs.harness.io/article/tdj2ghkqb0-add-docker-registry-artifact-servers).
-* **Artifactory:** see [Add Artifactory Servers](https://docs.harness.io/article/nj3p1t7v3x-add-artifactory-servers).
-* **Amazon S3:** see [Add Amazon Web Services (AWS) Cloud Provider](https://docs.harness.io/article/wt1gnigme7-add-amazon-web-services-cloud-provider).
-* **Jenkins:** see [Add Jenkins Artifact Servers](https://docs.harness.io/article/qa7lewndxq-add-jenkins-artifact-servers).
-* **Azure Artifact:** see [Add an Azure DevOps Artifact Source](https://docs.harness.io/article/rbfjmko1og-add-an-azure-dev-ops-artifact-source).
+* **Docker Registry:** see [Add Docker Registry Artifact Servers](../../../firstgen-platform/account/manage-connectors/add-docker-registry-artifact-servers.md).
+* **Artifactory:** see [Add Artifactory Servers](../../../firstgen-platform/account/manage-connectors/add-artifactory-servers.md).
+* **Amazon S3:** see [Add Amazon Web Services (AWS) Cloud Provider](../../../firstgen-platform/account/manage-connectors/add-amazon-web-services-cloud-provider.md).
+* **Jenkins:** see [Add Jenkins Artifact Servers](../../../firstgen-platform/account/manage-connectors/add-jenkins-artifact-servers.md).
+* **Azure Artifact:** see [Add an Azure DevOps Artifact Source](../../model-cd-pipeline/setup-services/add-an-azure-dev-ops-artifact-source.md).
 	+ You can use Maven and NuGet. If you choose the Maven package type you can also use ZIP or WAR. If you use ZIP or WAR, then select ZIP or WAR as the type in your Harness Service Artifact Type.
 
 Harness supports JAR files from the following repos:
@@ -74,7 +74,7 @@ Select the Artifact Server type.
 
 Fill out the Artifact Source settings.
 
-For **Jenkins**, you will select the job and artifact. Harness will run the job and obtain the artifact metadata needed to pull the artifact at deployment runtime.For details on configuring the supported Artifact Source types, see [Service Types and Artifact Sources](https://docs.harness.io/article/qluiky79j8-service-types-and-artifact-sources).
+For **Jenkins**, you will select the job and artifact. Harness will run the job and obtain the artifact metadata needed to pull the artifact at deployment runtime.For details on configuring the supported Artifact Source types, see [Service Types and Artifact Sources](../../model-cd-pipeline/setup-services/service-types-and-artifact-sources.md).
 
 Here's an example of an Artifactory Artifact Source used to pull a WAR file:
 

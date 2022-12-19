@@ -24,7 +24,7 @@ The steps available in a Custom stage are also available in standard stages.
 
 ### Before you begin
 
-* [Learn Harness' Key Concepts](https://docs.harness.io/article/hv2758ro4e-learn-harness-key-concepts)
+* [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md)
 * [Add a Stage](add-a-stage.md)
 
 ### Limitations
@@ -78,13 +78,13 @@ These steps are also available in CI, CD, and Approval stages.
 
 For details on the different steps, see:
 
-* [General CD](https://ngdocs.harness.io/category/y6gyszr0kl)
-* [Using Shell Scripts in CD Stages](https://docs.harness.io/article/k5lu0u6i1i-using-shell-scripts)
+* [General CD](/docs/category/general-cd-execution-steps)
+* [Using Shell Scripts in CD Stages](../../continuous-delivery/cd-execution/cd-general-steps/using-shell-scripts.md)
 * [Create an HTTP Step Template](../13_Templates/harness-template-library.md)
-* [Approvals](https://ngdocs.harness.io/category/bz4zh3b75p)
-* [Synchronize Deployments using Barriers](https://docs.harness.io/article/dmlf8w2aeh-synchronize-deployments-using-barriers)
+* [Approvals](/docs/category/approvals)
+* [Synchronize Deployments using Barriers](../../continuous-delivery/cd-deployments-category/synchronize-deployments-using-barriers.md)
 * [Add a Policy Engine Step to a Pipeline](../14_Policy-as-code/add-a-governance-policy-step-to-a-pipeline.md)
-* [Terraform How-tos](https://docs.harness.io/article/w6i5f7cpc9-terraform-how-tos)
+* [Terraform How-tos](../../continuous-delivery/cd-advanced/terraform-category/terraform-how-tos.md)
 
 CI and CD-specific steps, like a Rolling Deployment, are not available in the Custom stage.
 

@@ -66,7 +66,7 @@ In **Select Health Source type**, select Error Tracking.
 
 In **Health Source Name**, enter a name for the Health Source.
 
-Click **Select Connector**. In the **Connector** settings, you can select an existing Connector or click **New Connector**. Harness uses Connectors to authenticate and perform operations with third-party tools. Connectors contain the information necessary to integrate and work with 3rd party tools. For more details, see [Connectors](https://docs.harness.io/category/o1zhrfo8n5-connectors#sort=relevancy&f:@commonsource=[NextGen%20Docs]).
+Click **Select Connector**. In the **Connector** settings, you can select an existing Connector or click **New Connector**. Harness uses Connectors to authenticate and perform operations with third-party tools. Connectors contain the information necessary to integrate and work with 3rd party tools. For more details, see [Connectors](/docs/category/connectors).
 
 Click **New Connector**.
 
@@ -76,13 +76,13 @@ Click **Continue**.
 
 In **URL**, enter the URL needed for Error Tracking. For example, https://qa.harness.io/prod1/et for prod1.
 
-In **Encrypted Key**, click **Create or Select a Secret**. You can either select an existing API Key or create a new Secret by clicking **New Secret Text**. Harness includes a built-in Secret Management feature that enables you to store encrypted secrets, such as access keys, and use them in your Harness Connectors and Pipelines. You can choose to use your own secrets management solution, or the built-in Harness Secrets Manager.  For more details, see [Secret Management Overview](https://docs.harness.io/article/hngrlb7rd6-harness-secret-manager-overview#sort=relevancy&f:@commonsource=[NextGen%20Docs]).
+In **Encrypted Key**, click **Create or Select a Secret**. You can either select an existing API Key or create a new Secret by clicking **New Secret Text**. Harness includes a built-in Secret Management feature that enables you to store encrypted secrets, such as access keys, and use them in your Harness Connectors and Pipelines. You can choose to use your own secrets management solution, or the built-in Harness Secrets Manager.  For more details, see [Secret Management Overview](../../../platform/6_Security/1-harness-secret-manager-overview.md#sort=relevancy&f:@commonsource=[NextGen%20Docs]).
 
 Click **New Secret Text**.
 
 In **Secret Name**, enter a name for the encrypted text.
 
-In **Secret Value**, enter a value for the encrypted text. You can [create](https://docs.harness.io/article/tdoad7xrh9-add-and-manage-api-keys#create_personal_access_token) and [generate](https://docs.harness.io/article/tdoad7xrh9-add-and-manage-api-keys#generate_personal_access_token) an API Token from your user profile that allows you to make authorized API calls to Harness.
+In **Secret Value**, enter a value for the encrypted text. You can [create](../../../platform/4_Role-Based-Access-Control/7-add-and-manage-api-keys.md#create-personal-access-token) and [generate](../../../platform/4_Role-Based-Access-Control/7-add-and-manage-api-keys.md#generate-personal-access-token) an API Token from your user profile that allows you to make authorized API calls to Harness.
 
 Click **Apply Selected**. The Connector is added to the Health Source.
 
@@ -90,7 +90,7 @@ Click **Next**.
 
 ### Step 3: Setup Delegates
 
-The Harness Delegate is a service you run in your own environment, such as your local network, VPC, or cluster. The Delegate connects all of your artifact, infrastructure, collaboration, verification, and other providers with the Harness Manager. For more details, see [Delegates](https://docs.harness.io/category/9i5thr0ot2-delegates#sort=relevancy&f:@commonsource=[NextGen%20Docs]).
+The Harness Delegate is a service you run in your own environment, such as your local network, VPC, or cluster. The Delegate connects all of your artifact, infrastructure, collaboration, verification, and other providers with the Harness Manager. For more details, see [Delegates](/docs/category/delegates).
 
 In **Delegates Setup**, you can either select **Connect via any available Delegate** or **Connect only via Delegates with all of the following tags** and choose an option from the list.
 

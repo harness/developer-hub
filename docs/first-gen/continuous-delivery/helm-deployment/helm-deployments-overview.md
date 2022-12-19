@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/article/lbhf2h71at).
+This content is for Harness [FirstGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../continuous-delivery/onboard-cd/cd-quickstarts/native-helm-quickstart.md).
 
 Harness supports Helm 2 and Helm v3. This guide will walk you through deploying a Docker image to a Kubernetes cluster using a Helm chart. This deployment scenario is very popular and a walkthrough of all the steps involved will help you set up this scenario in Harness for your own microservices and apps.
 
@@ -30,14 +30,14 @@ The following blog post walks you through creating a Helm 3 deployment from scra
 
 You can perform all of the steps in this guide using free accounts. You will need a Docker Hub account and a Google Cloud Platform account. Both offer free accounts.
 
-This document covers Harness Helm implementation. For Kubernetes implementation, see [Kubernetes Deployments](https://docs.harness.io/category/kubernetes-deployments).
+This document covers Harness Helm implementation. For Kubernetes implementation, see [Kubernetes Deployments](/docs/category/kubernetes-deployments).
 
 #### Intended Audience
 
 * Developers and DevOps with a working knowledge of Docker, Kubernetes, and Helm.
-* Harness users with a working knowledge of the Harness Delegate. For information, see [Delegate Installation](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation), [Harness Requirements](https://docs.harness.io/article/70zh6cbrhg-harness-requirements), and [Connectivity and Permissions Requirements](https://docs.harness.io/article/11hjhpatqz-connectivity-and-permissions-requirements).
+* Harness users with a working knowledge of the Harness Delegate. For information, see [Delegate Installation](../../firstgen-platform/account/manage-delegates/delegate-installation.md), [Harness Requirements](https://docs.harness.io/article/70zh6cbrhg-harness-requirements), and [Connectivity and Permissions Requirements](../../firstgen-platform/techref-category/account-ref/delegate-ref/connectivity-and-permissions-requirements.md).
 
-If you are entirely new to Harness, please see the [Quick Start Setup Guide](https://docs.harness.io/article/9hd68pg5rs-quick-start-setup-guide).
+If you are entirely new to Harness, please see the [Quick Start Setup Guide](../../starthere-firstgen/quick-start-setup-guide.md).
 
 #### What Are We Going to Do?
 

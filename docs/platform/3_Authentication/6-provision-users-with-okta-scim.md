@@ -17,7 +17,7 @@ This topic describes how to build a SCIM endpoint using OKTA and integrate it wi
 ### Before you begin
 
 * This topic assumes you understand System for Cross-domain Identity Management (SCIM). For an overview, see the article [Introduction to System for Cross-domain Identity Management (SCIM)](https://medium.com/@pamodaaw/system-for-cross-domain-identity-management-scim-def45ea83ae7).
-* [Learn Harness' Key Concepts](https://docs.harness.io/article/hv2758ro4e-learn-harness-key-concepts)
+* [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md)
 * [Access Management (RBAC) Overview](../4_Role-Based-Access-Control/1-rbac-in-harness.md)
 * Make sure you are an Administrator in your Okta account and have the **Account Admin** permissions in Harness.
 * Make sure you have a Harness [API Key](../4_Role-Based-Access-Control/7-add-and-manage-api-keys.md) and a valid Token under it. The API Key must have all permissions on the Users and User Groups.

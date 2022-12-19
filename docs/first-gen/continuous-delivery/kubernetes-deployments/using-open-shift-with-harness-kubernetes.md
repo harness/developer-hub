@@ -13,14 +13,14 @@ Harness supports OpenShift for Kubernetes deployments. This topic reviews OpenSh
 ### Before You Begin
 
 * [Connect to Your Target Kubernetes Platform](connect-to-your-target-kubernetes-platform.md)
-* [Delegate Installation and Management](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation)
-* [Add Cloud Providers](https://docs.harness.io/article/whwnovprrb-cloud-providers)
+* [Delegate Installation and Management](../../firstgen-platform/account/manage-delegates/delegate-installation.md)
+* [Add Cloud Providers](../../firstgen-platform/account/manage-connectors/cloud-providers.md)
 
 ### Review: Kubernetes Delegate and OpenShift
 
 Harness supports OpenShift using a Delegate running externally to the Kubernetes cluster.
 
-For steps on connecting, see Kubernetes Cluster in [Add Cloud Providers](https://docs.harness.io/article/whwnovprrb-cloud-providers).Harness does support running Delegates internally for OpenShift 3.11 or greater, but the cluster must be configured to allow images to run as root inside the container in order to write to the filesystem.
+For steps on connecting, see Kubernetes Cluster in [Add Cloud Providers](../../firstgen-platform/account/manage-connectors/cloud-providers.md).Harness does support running Delegates internally for OpenShift 3.11 or greater, but the cluster must be configured to allow images to run as root inside the container in order to write to the filesystem.
 
 Typically, OpenShift is supported through an external Delegate installation (shell script installation of the Delegate outside of the Kubernetes cluster) and a service account token, entered in the **Kubernetes Service Account Token** field. You only need to use the **Master URL** and **Kubernetes Service Account Token** fields in the **Kubernetes Cloud Provider** dialog.
 
@@ -120,5 +120,5 @@ If you have enabled **Skip Versioning for Service** for a few deployments and th
 
 ### Next Steps
 
-* [Delegate Installation](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation)
+* [Delegate Installation](../../firstgen-platform/account/manage-delegates/delegate-installation.md)
 

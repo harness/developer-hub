@@ -54,7 +54,7 @@ See [Plugin Step Settings](../ci-technical-reference/plugin-step-settings-refere
 
 ### Caching
 
-Caching ensures faster job execution by reusing data from expensive fetch operations in previous jobs. You can use Save Cache and Restore Cache steps to save a cache to a cloud storage bucket and restore it later. See [Cache CI Data](https://docs.harness.io/category/share-and-cache-ci-data).
+Caching ensures faster job execution by reusing data from expensive fetch operations in previous jobs. You can use Save Cache and Restore Cache steps to save a cache to a cloud storage bucket and restore it later. See [Cache CI Data](/docs/category/share-and-cache-ci-data).
 
 ### Remote Docker Layer Caching
 

@@ -13,7 +13,7 @@ You define your target deployment infrastructure using a Harness Environment. En
 
 ### Before You Begin
 
-* [Add Services](https://docs.harness.io/category/add-services)
+* [Add Services](/docs/category/add-services)
 
 ### Step 1: Add an Environment
 
@@ -36,7 +36,7 @@ The Infrastructure Definition is where you specify the target infrastructure for
 
 ### Step 3: Override a Service Configuration
 
-For information about how a Service configuration is overwritten in a Kubernetes deployment, see [Override Harness Kubernetes Service Settings](https://docs.harness.io/article/ycacqs7tlx-override-harness-kubernetes-service-settings).You can configure your Environment to override settings of the Services that use the Environment. For example, a Service might use a specific values.yaml file, but your Environment might need to change the name and namespace of the Deployment object because it is deploying the Service to a QA Environment.
+For information about how a Service configuration is overwritten in a Kubernetes deployment, see [Override Harness Kubernetes Service Settings](../../kubernetes-deployments/override-harness-kubernetes-service-settings.md).You can configure your Environment to override settings of the Services that use the Environment. For example, a Service might use a specific values.yaml file, but your Environment might need to change the name and namespace of the Deployment object because it is deploying the Service to a QA Environment.
 
 To override a Service configuration, see [Override a Service Configuration in an Environment](override-service-files-and-variables-in-environments.md).
 
@@ -48,6 +48,6 @@ For detailed information on adding Service Verification, see [24/7 Service Guard
 
 ### Next Steps
 
-* [Restrict Deployment Access to Specific Environments](https://docs.harness.io/article/twlzny81xl-restrict-deployment-access-to-specific-environments)
-* [Add Workflows](https://docs.harness.io/category/add-workflows)
+* [Restrict Deployment Access to Specific Environments](../../concepts-cd/deployments-overview/restrict-deployment-access-to-specific-environments.md)
+* [Add Workflows](/docs/category/add-workflows)
 

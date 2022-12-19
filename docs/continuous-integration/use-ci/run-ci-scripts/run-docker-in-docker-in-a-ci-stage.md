@@ -41,7 +41,9 @@ In the Overview tab for the new Build Stage, configure the Stage as follows:
 
 ### Step 2: Define the build infrastructure
 
-In the CI stage Infrastructure, define the build infrastructure for the codebase. See [Set Up Build Infrastructure](https://docs.harness.io/category/set-up-build-infrastructure).
+
+In the CI stage Infrastructure, define the build farm for the codebase. See [Set Up Build Infrastructure](/docs/category/set-up-build-infrastructure).
+
 
 ### Step 3: Add a dind Background step
 

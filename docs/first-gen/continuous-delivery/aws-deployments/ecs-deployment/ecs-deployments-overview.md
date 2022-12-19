@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 This guide explains how to use Amazon Elastic Container Service (ECS) with Harness.
 
-New to using ECS with Harness? See [AWS ECS Quickstart](https://docs.harness.io/article/j39azkrevm-aws-ecs-deployments).In this guide, we will set up Harness for ECS, create a Harness Application, and deploy a public Docker image from Docker Hub to an existing ECS cluster using Harness. This deployment scenario is very popular and a walkthrough of all the steps involved will help you set up this scenario in Harness for your own microservices and apps.
+New to using ECS with Harness? See [AWS ECS Quickstart](../../../first-gen-quickstarts/aws-ecs-deployments.md).In this guide, we will set up Harness for ECS, create a Harness Application, and deploy a public Docker image from Docker Hub to an existing ECS cluster using Harness. This deployment scenario is very popular and a walkthrough of all the steps involved will help you set up this scenario in Harness for your own microservices and apps.
 
 Walk through this guide in the following order:
 
@@ -54,8 +54,8 @@ The following table lists the ECS components and where they are set up in Harnes
 * One or more existing ECS clusters:
 	+ You will need an ECS cluster to deploy your ECS services using Harness.
 	+ If you use a Harness ECS Delegate (recommended), you will need an ECS cluster for the Delegate. The steps for setting up an ECS Delegate are in [Harness ECS Delegate](harness-ecs-delegate.md).
-* If you want to run a Harness Shell Script Delegate on an EC2 instance in the same VPC as the ECS cluster, ensure it meets the Harness [Delegate Requirements](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation#delegate_requirements).
-* IAM Role for the Harness Cloud Provider connection to AWS. The policies are listed in [ECS (Existing Cluster)](https://docs.harness.io/article/whwnovprrb-infrastructure-providers#ecs_existing_cluster) and also described in this document.
+* If you want to run a Harness Shell Script Delegate on an EC2 instance in the same VPC as the ECS cluster, ensure it meets the Harness [Delegate Requirements](../../../firstgen-platform/account/manage-delegates/delegate-installation.md#delegate-requirements).
+* IAM Role for the Harness Cloud Provider connection to AWS. The policies are listed in [ECS (Existing Cluster)](../../../firstgen-platform/account/manage-connectors/cloud-providers.md#ecs-existing-cluster) and also described in this document.
 
 ### Deployment Overview
 
@@ -78,7 +78,7 @@ This guide takes you through setting up ECS Deployment using the following steps
 
 ### Rollbacks
 
-See [ECS Rollbacks](https://docs.harness.io/article/d7rnemtfuz-ecs-rollback).
+See [ECS Rollbacks](../../../firstgen-platform/techref-category/cd-ref/platforms-ref/ecs-rollback.md).
 
 ### Next Step
 

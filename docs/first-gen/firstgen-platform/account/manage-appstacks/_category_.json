@@ -1,0 +1,14 @@
+{
+  "label": "Manage App Stacks FirstGen",
+  "position": 40,
+  "collapsible": "true",
+  "collapsed": "true",
+  "className": "red",
+  "link": {
+    "type": "generated-index",
+    "title": "Manage App Stacks FirstGen"
+  },
+  "customProps": {
+    "helpdocs_category_id": "iu2v9nlefv"
+  }
+}

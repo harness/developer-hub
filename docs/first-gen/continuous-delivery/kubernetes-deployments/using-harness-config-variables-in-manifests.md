@@ -8,14 +8,14 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/category/qfj6m1k2c4).
+This content is for Harness [FirstGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/category/kubernetes).
 
 You can create a variable in the Harness Kubernetes Service **Config Variables** section and then use it in your **Manifests** files, such as in the ConfigMap definition.
 
 
 ### Before You Begin
 
-* [Services](https://docs.harness.io/article/eb3kfl8uls-service-configuration)
+* [Services](../model-cd-pipeline/setup-services/service-configuration.md)
 * [Define Kubernetes Manifests](define-kubernetes-manifests.md)
 
 In Harness Kubernetes version 1 implementation, Harness would create the ConfigMap automatically using the `${CONFIG_MAP_NAME}` expression and all unencrypted Service **Config Variables** and **Config Files**. In the current Harness Kubernetes implementation, you define your ConfigMap manually using the values.yaml and **Config Variables** and **Config Files**.

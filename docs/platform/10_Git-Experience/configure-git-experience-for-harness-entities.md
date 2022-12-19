@@ -55,7 +55,7 @@ For this, you must specify a Harness Git Connector, a repo, branch details, and 
 
 This topic explains how to create a remote Pipeline and execute it using Harness Git Experience.
 
-You can also store your configurations in Harness, by selecting the **Inline** option while creating resources. For more information on creating an inline Pipeline, see [Pipelines and Stages](https://docs.harness.io/category/pipelines).
+You can also store your configurations in Harness, by selecting the **Inline** option while creating resources. For more information on creating an inline Pipeline, see [Pipelines and Stages](/docs/category/pipelines).
 
 ![](./static/configure-git-experience-for-harness-entities-37.png)
 You can store configurations of the following resources in Git:
@@ -77,7 +77,7 @@ Enter a **Name** for your Pipeline.
 Click **Remote**. The additional settings appear to configure Git Experience.
 
 ![](./static/configure-git-experience-for-harness-entities-39.png)
-In **Git Connector**, select or create a Git Connector to the repo for your Project. For steps, see [Code Repo Connectors](https://docs.harness.io/category/code-repo-connectors).
+In **Git Connector**, select or create a Git Connector to the repo for your Project. For steps, see [Code Repo Connectors](/docs/category/code-repo-connectors).
 
 ![](./static/configure-git-experience-for-harness-entities-40.png)
 Important: Connector must use the Enable API access option and Token**Important**: The Connector must use the Enable API access option and Username and Token authentication. Harness requires the token for API access. Generate the token in your account on the Git provider and add it to Harness as a Secret. Next, use the token in the credentials for the Git Connector.​  

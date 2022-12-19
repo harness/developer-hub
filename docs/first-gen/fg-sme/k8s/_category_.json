@@ -1,0 +1,14 @@
+{
+  "label": "Kubernetes Cluster FG",
+  "position": 10,
+  "collapsible": "true",
+  "collapsed": "true",
+  "className": "red",
+  "link": {
+    "type": "generated-index",
+    "title": "Kubernetes Cluster FG"
+  },
+  "customProps": {
+    "helpdocs_category_id": "9tb4tsgko5"
+  }
+}

@@ -12,7 +12,7 @@ This topic provides settings and permissions for the Kubernetes Cluster Connecto
 
 The Kubernetes Cluster Connector is a platform-agnostic connection to a Kubernetes cluster located anywhere.
 
-For cloud platform-specific connections, see platform [Cloud Connectors](https://docs.harness.io/category/cloud-platform-connectors).
+For cloud platform-specific connections, see platform [Cloud Connectors](/docs/category/cloud-platform-connectors).
 
 Looking for the How-to? See [Add a Kubernetes Cluster Connector](../add-a-kubernetes-cluster-connector.md).
 
@@ -184,7 +184,7 @@ Basic (Username and Password) authentication is not recommended. Basic authentic
 
 Username and password for the Kubernetes cluster. For example, **admin** or **john@example.com**, and a Basic authentication password.
 
-You can use an inline username or a Harness [Encrypted Text secret](https://docs.harness.io/article/ygyvp998mu-use-encrypted-text-secrets).
+You can use an inline username or a Harness [Encrypted Text secret](../../../first-gen/firstgen-platform/security/secrets-management/use-encrypted-text-secrets.md).
 
 For the password, select or create a new Harness Encrypted Text secret.
 

@@ -115,7 +115,7 @@ resource "aws_instance" "tf_instance" {
    }  
 }
 ```
-The access and secret keys will be provided when you add the Terraform Apply step to your Workflow. In Harness, you create secrets in Harness [Secrets Management](https://docs.harness.io/article/au38zpufhr-secret-management) and then you can use them in other Harness components.
+The access and secret keys will be provided when you add the Terraform Apply step to your Workflow. In Harness, you create secrets in Harness [Secrets Management](../../firstgen-platform/security/secrets-management/secret-management.md) and then you can use them in other Harness components.
 
 You can also use a Terraform Apply step with the [HashiCorp Vault](https://www.terraform.io/docs/providers/vault/index.html) provider to access Vault credentials for a Terraform configuration.
 
@@ -157,7 +157,7 @@ Click **Populate Variables** and Harness will pull all of the input variables fr
 
 It can table a moment to populate the variables.
 
-You can see that the AWS access and secret keys are inputs in this configuration. You can use [Harness Secrets Management](https://docs.harness.io/article/au38zpufhr-secret-management) to provide encrypted text secrets in the Terraform Apply step.
+You can see that the AWS access and secret keys are inputs in this configuration. You can use [Harness Secrets Management](../../firstgen-platform/security/secrets-management/secret-management.md) to provide encrypted text secrets in the Terraform Apply step.
 
 When the Workflow is deployed, you can see the traditional deployment of the application package succeed and the Terraform Apply step executed successfully.
 
@@ -228,7 +228,7 @@ The **AWS Cloud Provider** setting can be templated.You need to select an AWS Cl
 * **Region:** the AWS region where you will be provisioning your resources. If not region is specified, Harness uses `us-east-1`.
 * **Role ARN:** enter the Amazon Resource Name (ARN) of an AWS IAM role that Terraform assumes when provisioning. This allows you to tune the step for provisioning a specific AWS resource. For example, if you will only provision AWS S3, then you can use a role that is limited to S3.  
 At a minimum, select the **AWS Cloud Provider** and **Role ARN**. When used in combination with the AWS Cloud Provider option, the Role ARN is assumed by the Cloud Provider you select.  
-You can also use [Harness variable expressions](https://docs.harness.io/article/9dvxcegm90-variables) in **Role ARN**. For example, you can create a Service or Workflow variable and then enter its expression in **Role ARN**, such as `${serviceVariables.roleARN}` or `${workflow.variables.roleArn}`.
+You can also use [Harness variable expressions](../../firstgen-platform/techref-category/variables/variables.md) in **Role ARN**. For example, you can create a Service or Workflow variable and then enter its expression in **Role ARN**, such as `${serviceVariables.roleARN}` or `${workflow.variables.roleArn}`.
 
 #### Environment Variables
 
@@ -326,9 +326,9 @@ Click **Add**.
 
 Enter a name, type, and value for the environment variable. For example: **TF\_LOG**, **Text**, and `TRACE`.
 
-If you select Encrypted Text, you must select an existing Harness [Encrypted Text secret](https://docs.harness.io/article/ygyvp998mu-use-encrypted-text-secrets).
+If you select Encrypted Text, you must select an existing Harness [Encrypted Text secret](../../firstgen-platform/security/secrets-management/use-encrypted-text-secrets.md).
 
-You can use Harness [Workflow variables](https://docs.harness.io/article/766iheu1bk-add-workflow-variables-new-template) and [expression variables](https://docs.harness.io/article/9dvxcegm90-variables) for the name and value.
+You can use Harness [Workflow variables](../model-cd-pipeline/workflows/add-workflow-variables-new-template.md) and [expression variables](../../firstgen-platform/techref-category/variables/variables.md) for the name and value.
 
 ### Terraform Plan Human Readable
 
@@ -339,8 +339,8 @@ Harness provides expressions to view the plan in a more human readable format:
 
 ### Next Steps
 
-* [Infrastructure Provisioners Overview](https://docs.harness.io/article/o22jx8amxb-add-an-infra-provisioner)
-* [Secrets Management](https://docs.harness.io/article/au38zpufhr-secret-management)
+* [Infrastructure Provisioners Overview](../model-cd-pipeline/infrastructure-provisioner/add-an-infra-provisioner.md)
+* [Secrets Management](../../firstgen-platform/security/secrets-management/secret-management.md)
 
  
 

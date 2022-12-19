@@ -79,7 +79,7 @@ Typically, this is the Terragrunt Provisioner and Workspace used in the **Pre-de
 
 In **Delegate Selector**, enter the Delegate Selector for the Delegate that you want to execute this step. Typically, this is the same Selector used to select a Delegate in the **Terragrunt** **Provision** step.
 
-See [Select Delegates with Selectors](https://docs.harness.io/article/c3fvixpgsl-select-delegates-for-specific-tasks-with-selectors).
+See [Select Delegates with Selectors](../../firstgen-platform/account/manage-delegates/select-delegates-for-specific-tasks-with-selectors.md).
 
 ### Option: Inherit configurations from previous Terragrunt Provision Step
 
@@ -101,7 +101,7 @@ The **Inherit following configurations from Terragrunt Destroy Plan** option onl
 
 The Terragrunt Plan is stored in a Secrets Manager as an encrypted text.
 
-See [Add a Secrets Manager](https://docs.harness.io/article/uuer539u3l-add-a-secrets-manager).
+See [Add a Secrets Manager](../../firstgen-platform/security/secrets-management/add-a-secrets-manager.md).
 
 #### Terragrunt Plan Size Limit
 
@@ -109,13 +109,13 @@ The Terragrunt Plan is stored in the default Harness Secrets Manager as encrypte
 
 The Terragrunt plan size must not exceed the secret size limit for secrets in your default Secret Manager. AWS Secrets Manager has a limitation of 64KB. Other supported Secrets Managers support larger file size.
 
-See [Add a Secrets Manager](https://docs.harness.io/article/uuer539u3l-add-a-secrets-manager).
+See [Add a Secrets Manager](../../firstgen-platform/security/secrets-management/add-a-secrets-manager.md).
 
 #### Terragrunt Destroy Plan Output Variable
 
 If you select the **Set as Terragrunt Destroy Plan and Export** option, you can display the output of the plan using the variable expression `${terraformDestroy.tfplan}`.
 
-For example, you can display the plan output in a [Shell Script](https://docs.harness.io/article/1fjrjbau7x-capture-shell-script-step-output) step.
+For example, you can display the plan output in a [Shell Script](../model-cd-pipeline/workflows/capture-shell-script-step-output.md) step.
 
 The plan is associated with the Terraform script source of the Terragrunt config file in the Terragrunt Infrastructure Provisioner.
 

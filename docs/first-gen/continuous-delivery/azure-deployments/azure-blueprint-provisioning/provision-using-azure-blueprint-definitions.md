@@ -63,7 +63,7 @@ In **Overview**, in **Provisioner**, select the Infrastructure Provisioner for y
 
 In **Azure Cloud Provider**, enter the Cloud Provider for Harness to use when connecting to Azure and provisioning with the Blueprint.
 
-The Azure service account used with the Cloud Provider must have the Azure permissions needed to provision the resources in your Blueprint. See **Azure Blueprint** in [Add Microsoft Azure Cloud Provider](https://docs.harness.io/article/4n3595l6in-add-microsoft-azure-cloud-provider).In **Timeout**, enter at least 20m. Provisioning Azure resources can take time.
+The Azure service account used with the Cloud Provider must have the Azure permissions needed to provision the resources in your Blueprint. See **Azure Blueprint** in [Add Microsoft Azure Cloud Provider](../../../firstgen-platform/account/manage-connectors/add-microsoft-azure-cloud-provider.md).In **Timeout**, enter at least 20m. Provisioning Azure resources can take time.
 
 Click **Submit**.
 

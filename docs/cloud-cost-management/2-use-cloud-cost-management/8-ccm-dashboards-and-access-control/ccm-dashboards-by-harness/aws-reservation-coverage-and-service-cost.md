@@ -12,7 +12,7 @@ helpdocs_is_published: true
 
 
 :::note
-For information on core Dashboard functionality, see [Create Dashboards](https://docs.harness.io/article/ardf4nbvcy-create-dashboards).
+For information on core Dashboard functionality, see [Create Dashboards](../../../../platform/18_Dashboards/create-dashboards.md).
 :::
 
 Harness provides **By Harness** (pre-defined) and **Custom** (user-defined) Dashboards to visualize cloud cost data across cloud providers.
@@ -94,20 +94,20 @@ Perform the following steps to view AWS Reservation Efficiency Dashboard:
    
      ![](./static/aws-reservation-coverage-and-service-cost-46.png)
 4. Click **Back** to go back to the previous page in the Dashboard.
-5. Click **Download** to download the Dashboard. See [Download Dashboard Data](https://docs.harness.io/article/op59lb1pxv-download-dashboard-data).
+5. Click **Download** to download the Dashboard. See [Download Dashboard Data](../../../../platform/18_Dashboards/download-dashboard-data.md).
 
 ### See Also
 
 Once you have set up cost visibility for your Kubernetes clusters, AWS, GCP, and Azure cloud providers, you can create your own Dashboards. Refer to the following topics to create your own Dashboard and chart data.
 
-* [Create Dashboards](https://docs.harness.io/article/ardf4nbvcy-create-dashboards)
-* [Create Visualizations and Graphs](https://docs.harness.io/article/n2jqctdt7c-create-visualizations-and-graphs)
+* [Create Dashboards](../../../../platform/18_Dashboards/create-dashboards.md)
+* [Create Visualizations and Graphs](../../../../platform/18_Dashboards/create-visualizations-and-graphs.md)
 
 ### Next Steps
 
-* [Use Dashboard Actions](https://docs.harness.io/article/y1oh7mkwmh-use-dashboard-actions)
-* [Download Dashboard Data](https://docs.harness.io/article/op59lb1pxv-download-dashboard-data)
-* [Create Conditional Alerts](https://docs.harness.io/article/ro0i58mvby-create-conditional-alerts)
-* [Schedule and Share Dashboards](https://docs.harness.io/article/35gfke0rl8-share-dashboards)
+* [Use Dashboard Actions](../../../../platform/18_Dashboards/use-dashboard-actions.md)
+* [Download Dashboard Data](../../../../platform/18_Dashboards/download-dashboard-data.md)
+* [Create Conditional Alerts](../../../../platform/18_Dashboards/create-conditional-alerts.md)
+* [Schedule and Share Dashboards](../../../../platform/18_Dashboards/share-dashboards.md)
 * [View AWS Cost Dashboard](aws-dashboard.md)
 

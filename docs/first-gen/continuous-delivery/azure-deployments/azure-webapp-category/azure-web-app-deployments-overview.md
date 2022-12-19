@@ -27,7 +27,7 @@ Basic deployments are also supported.The following topic covers related deployme
 
 ### Before You Begin
 
-Before learning about Harness Azure Web App deployments, you should have an understanding of [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts).
+Before learning about Harness Azure Web App deployments, you should have an understanding of [Harness Key Concepts](../../../starthere-firstgen/harness-key-concepts.md).
 
 ### Limitations
 

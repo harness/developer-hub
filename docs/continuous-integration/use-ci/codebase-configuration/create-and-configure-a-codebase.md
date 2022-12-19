@@ -31,7 +31,7 @@ Editing the Codebase for a Pipeline:
 ### Before You Begin
 
 * [CI Pipeline Quickstart](../../ci-quickstarts/ci-pipeline-quickstart.md)
-* [Delegates Overview](https://docs.harness.io/article/2k7lnc7lvl-delegates-overview)
+* [Delegates Overview](../../../platform/2_Delegates/delegates-overview.md)
 * [CI Stage Settings](../../ci-technical-reference/ci-stage-settings.md)
 * [Learn Harness Key Concepts](../../../getting-started/learn-harness-key-concepts.md)
 
@@ -57,10 +57,10 @@ In this step, you'll create the Codebase for a new Pipeline in Harness CIE.
 The CodeCommit, Bitbucker, GitHub, and GitLab Connectors have authorization settings as required by their respective providers. The Git Connector can connect with any provider using Basic authentication over HTTPS.
 
 * [AWS CodeCommit Connector Settings Reference](https://docs.harness.io/article/jed9he2i45-aws-code-commit-connector-settings-reference)
-* [Bitbucket Connector Settings Reference](https://docs.harness.io/article/iz5tucdwyu-bitbucket-connector-settings-reference)
-* [Git Connector Settings Reference](https://docs.harness.io/article/tbm2hw6pr6-git-connector-settings-reference)
-* [GitHub Connector Settings Reference](https://docs.harness.io/article/v9sigwjlgo-git-hub-connector-settings-reference)
-* [GitLab Connector Settings Reference](https://docs.harness.io/article/5abnoghjgo-git-lab-connector-settings-reference)
+* [Bitbucket Connector Settings Reference](../../../platform/7_Connectors/ref-source-repo-provider/bitbucket-connector-settings-reference.md)
+* [Git Connector Settings Reference](../../../platform/7_Connectors/ref-source-repo-provider/git-connector-settings-reference.md)
+* [GitHub Connector Settings Reference](../../../platform/7_Connectors/ref-source-repo-provider/git-hub-connector-settings-reference.md)
+* [GitLab Connector Settings Reference](../../../platform/7_Connectors/ref-source-repo-provider/git-lab-connector-settings-reference.md)
 
 After you set up and configure the Connector, Harness will use the configured repo to clone your source code and to test and build your Pipeline.
 
@@ -139,6 +139,6 @@ ci:
 ```
 ### See Also
 
-* [Runtime Inputs](https://docs.harness.io/article/f6yobn7iq0-runtime-inputs)
-* [Create a Connector using YAML](https://docs.harness.io/article/m0awmzipdp-create-a-connector-using-yaml)
+* [Runtime Inputs](../../../platform/20_References/runtime-inputs.md)
+* [Create a Connector using YAML](../../../platform/7_Connectors/create-a-connector-using-yaml.md)
 

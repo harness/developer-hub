@@ -18,7 +18,7 @@ This topic describes how to set up and use AWS VMs as build infrastructures for 
 
 Running builds in your infrastructure, rather than in a vendor's cloud, has significant benefits. Vendor clouds often experience outages that can result in backlogs and delayed builds. AWS has been battle-tested for large container workloads. You can build software and run tests, repeatedly and automatically, on a scalable platform with no outages or backlogs.
 
-For information on using Kubernetes as a build farm, see [Define Kubernetes Cluster Build Infrastructure](set-up-a-kubernetes-cluster-build-infrastructure.md).The following diagram illustrates an AWS build farm. The [​Harness Docker Delegate](https://docs.harness.io/article/cya29w2b99-install-a-docker-delegate) communicates directly with your Harness instance. The [VM Runner](https://docs.drone.io/runner/vm/overview/) maintains a pool of VMs for running builds. When the Delegate receives a build request, it forwards the request to the Runner, which runs the build on an available VM.
+For information on using Kubernetes as a build farm, see [Define Kubernetes Cluster Build Infrastructure](set-up-a-kubernetes-cluster-build-infrastructure.md).The following diagram illustrates an AWS build farm. The [​Harness Docker Delegate](../../../platform/2_Delegates/delegate-install-docker/install-a-docker-delegate.md) communicates directly with your Harness instance. The [VM Runner](https://docs.drone.io/runner/vm/overview/) maintains a pool of VMs for running builds. When the Delegate receives a build request, it forwards the request to the Runner, which runs the build on an available VM.
 
 ![](./static/set-up-an-aws-vm-build-infrastructure-12.png)
 
@@ -27,7 +27,7 @@ For information on using Kubernetes as a build farm, see [Define Kubernetes Clus
 This topic assumes you're familiar with the following:
 
 * [CI Pipeline Quickstart](../../ci-quickstarts/ci-pipeline-quickstart.md)
-* [Delegates Overview](https://ngdocs.harness.io/article/2k7lnc7lvl-delegates-overview)
+* [Delegates Overview](../../../platform/2_Delegates/delegates-overview.md)
 * [CI Stage Settings](../../ci-technical-reference/ci-stage-settings.md)
 * [Learn Harness' Key Concepts](../../../getting-started/learn-harness-key-concepts.md)
 * [VM Runner](https://docs.drone.io/runner/vm/overview/)
@@ -133,7 +133,7 @@ Later in this workflow, you'll reference the pool identifier in the Harness Mana
 
 1. Navigate to the Delegates page for your Harness account, organization, or project.
 2. Click **New Delegate** and select **Docker**.
-3. Follow the steps in [Install the Docker Delegate](https://docs.harness.io/article/cya29w2b99-install-a-docker-delegate) and download the **docker-compose.yaml** file to your local machine.
+3. Follow the steps in [Install the Docker Delegate](../../../platform/2_Delegates/delegate-install-docker/install-a-docker-delegate.md) and download the **docker-compose.yaml** file to your local machine.
 
 ### Step 4: Configure the Docker Compose File
 
@@ -241,7 +241,7 @@ $ docker logs <runner-container-id>
 
 The Delegate and Runner have now been successfully installed, registered, and connected.
 
-For details on the environment variables of the Harness Docker Delegate, see [Harness Docker Delegate Environment Variables](https://ngdocs.harness.io/article/cya29w2b99-install-a-docker-delegate#harness_docker_delegate_environment_variables).
+For details on the environment variables of the Harness Docker Delegate, see [Harness Docker Delegate Environment Variables](../../../platform/2_Delegates/delegate-install-docker/install-a-docker-delegate.md#harness-docker-delegate-environment-variables).
 
 ### Step 6: Run a CI Build
 

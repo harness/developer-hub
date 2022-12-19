@@ -41,7 +41,7 @@ The unique name for this step.
 
 ### ID
 
-See [Entity Identifier Reference](https://docs.harness.io/article/li0my8tcz3-entity-identifier-reference).
+See [Entity Identifier Reference](../../platform/20_References/entity-identifier-reference.md).
 
 ### Description
 

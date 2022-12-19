@@ -57,9 +57,9 @@ Enter the message body (if any) of the HTTP message. |
 
 The assertion is used to validate the incoming response. For example, if you wanted to check the health of an HTTP connection, you could use the assertion **${httpResponseCode}==200**.
 
-To see the available expressions, simply enter `${` in the Assertions field. The HTTP expressions are described in the [HTTP](https://docs.harness.io/article/9dvxcegm90-variables#http) section of [Variables and Expressions in Harness](https://docs.harness.io/article/9dvxcegm90-variables).
+To see the available expressions, simply enter `${` in the Assertions field. The HTTP expressions are described in the [HTTP](../../../firstgen-platform/techref-category/variables/variables.md#http) section of [Variables and Expressions in Harness](../../../firstgen-platform/techref-category/variables/variables.md).
   
-You can also use JSON and XML functors as described in [JSON and XML Functors](https://docs.harness.io/article/wfvecw3yod-json-and-xml-functors). For example:
+You can also use JSON and XML functors as described in [JSON and XML Functors](../../../firstgen-platform/techref-category/variables/json-and-xml-functors.md). For example:
 
 `json.select("status", ${httpResponseBody}) == "success"` 
 
@@ -79,9 +79,9 @@ Create variables using built-in Harness expressions.You can then publish these a
 * XPath:
 	+ `select()`. Example: `${xml.select("/bookstore/book[1]/title", httpResponseBody)}`
 
-For details, see [JSON and XML Functors](https://docs.harness.io/article/wfvecw3yod-json-and-xml-functors).
+For details, see [JSON and XML Functors](../../../firstgen-platform/techref-category/variables/json-and-xml-functors.md).
 
-See [Variable Expression Name Restrictions](https://docs.harness.io/article/9dvxcegm90-variables#variable_expression_name_restrictions). |
+See [Variable Expression Name Restrictions](../../../firstgen-platform/techref-category/variables/variables.md#variable-expression-name-restrictions). |
 
 ####  **Publish output in the context**
 
@@ -107,19 +107,19 @@ The scope you select is useful for preventing variable name conflicts. You might
 
 You can use Selectors to select which Harness Delegates to use when executing the HTTP step. Enter the Selectors of the Delegates you want to use.
 
-You can also use [Harness variable expressions](https://docs.harness.io/article/9dvxcegm90-variables). For example, if you have a Workflow variables named delegate, you can enter `$(workflow.variables.delegate)`. When you deploy the Workflow, you can provide a value for the variable that matches a Delegate Selector.
+You can also use [Harness variable expressions](../../../firstgen-platform/techref-category/variables/variables.md). For example, if you have a Workflow variables named delegate, you can enter `$(workflow.variables.delegate)`. When you deploy the Workflow, you can provide a value for the variable that matches a Delegate Selector.
 
 Harness will use Delegates matching the Selectors you select.
 
 If you use one Selector, Harness will use any Delegate that has that Selector.If you select two Selectors, a Delegate must have both Selectors to be selected. That Delegate might also have other Selectors, but it must have the two you selected.
 
 :::danger
-If your Workflow Infrastructure Definition's Cloud Provider is a Harness [Kubernetes Cluster Cloud Provider](https://docs.harness.io/article/l68rujg6mp-add-kubernetes-cluster-cloud-provider) or [AWS Cloud Provider](https://docs.harness.io/article/wt1gnigme7-add-amazon-web-services-cloud-provider) that uses Delegate Selectors, do not add a Selector to the Workflow step. The Workflow is already targeted to a specific Delegate. 
+If your Workflow Infrastructure Definition's Cloud Provider is a Harness [Kubernetes Cluster Cloud Provider](../../../firstgen-platform/account/manage-connectors/add-kubernetes-cluster-cloud-provider.md) or [AWS Cloud Provider](../../../firstgen-platform/account/manage-connectors/add-amazon-web-services-cloud-provider.md) that uses Delegate Selectors, do not add a Selector to the Workflow step. The Workflow is already targeted to a specific Delegate. 
 :::
 
 ####  Use Delegate Proxy 
 
-Select this option to explicitly use the delegate proxy settings. For details, see [Delegate Proxy Settings](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation#delegate_proxy_settings).
+Select this option to explicitly use the delegate proxy settings. For details, see [Delegate Proxy Settings](../../../firstgen-platform/account/manage-delegates/delegate-installation.md#delegate-proxy-settings).
 * If the Delegate is not using any proxy, selecting this option does not enable the proxy settings.
 * If you have specified an URL that is set up to bypass proxy settings on the Delegate, then it throws an error.
 
@@ -167,6 +167,6 @@ The following words cannot be used for names in **Publish Variable Name:**
 
 ### Next Steps
 
-* [Use Templates](https://docs.harness.io/article/ygi6d8epse-use-templates)
+* [Use Templates](../../concepts-cd/deployment-types/use-templates.md)
 * [Using the Shell Script Command](capture-shell-script-step-output.md)
 

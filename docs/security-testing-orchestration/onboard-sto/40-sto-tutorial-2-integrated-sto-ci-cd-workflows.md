@@ -111,7 +111,7 @@ You know how to implement Pipelines when scanners detect security issues, and ho
 
 #### Add Governance Policies
 
-You can use the [Harness Policy Engine](https://docs.harness.io/article/1d3lmhv4jl) to create policies based on the [Open Policy Agent (OPA)](https://www.openpolicyagent.org/) standard. For example, you could create a rule like the following to ensure that all Pipelines include a Security Stage.
+You can use the [Harness Policy Engine](../../platform/14_Policy-as-code/harness-governance-overview.md) to create policies based on the [Open Policy Agent (OPA)](https://www.openpolicyagent.org/) standard. For example, you could create a rule like the following to ensure that all Pipelines include a Security Stage.
 
 
 ```
@@ -135,9 +135,9 @@ contains(arr, elem) {
 ```
 #### Add Failure Strategies to a CI/CD Stage
 
-You can implement [Failure Strategies](https://docs.harness.io/article/0zvnn5s1ph) to bypass the failure policies in previous Security steps. One use case for this would be to enable manual interventions when a Security Step generates a failure. You could set up a workflow like this:
+You can implement [Failure Strategies](../../platform/8_Pipelines/define-a-failure-strategy-on-stages-and-steps.md) to bypass the failure policies in previous Security steps. One use case for this would be to enable manual interventions when a Security Step generates a failure. You could set up a workflow like this:
 
-1. A Build Step is downstream from the Security Step. It has a Failure Strategy that's set to run on [All Errors](https://docs.harness.io/article/htrur23poj#error_types).
+1. A Build Step is downstream from the Security Step. It has a Failure Strategy that's set to run on [All Errors](../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md#error-types).
 2. The scanner detects issues and the Security Step generates an error.
 3. The Failure Strategy in the Build Step initiates a 30-minute pause before proceeding.
 4. The developer and security team evaluate the issues and then abort the Pipeline or allow it to proceed.
@@ -282,10 +282,6 @@ pipeline:
                                         fail_on_severity: HIGH  
                                     imagePullPolicy: Always  
                                 failureStrategies: []  
-              variables:  
-                  - name: sto_api_key  
-                    type: Secret  
-                    value: <+input>  
 
 ```
 </details>

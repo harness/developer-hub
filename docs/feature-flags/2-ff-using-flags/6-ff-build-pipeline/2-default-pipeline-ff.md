@@ -21,7 +21,7 @@ Using a default Pipeline means that you can ensure your Flag changes can go thro
 
 ## Before you begin
 
-* You should understand how to create a Pipeline. For more information about Pipelines, go to [Pipelines and Stages](https://docs.harness.io/category/kncngmy17o-pipelines).
+* You should understand how to create a Pipeline. For more information about Pipelines, go to [Pipelines and Stages](/docs/category/pipelines).
 * You should have a Project set up with Feature Flags added to it.
 
 ## Important things to consider

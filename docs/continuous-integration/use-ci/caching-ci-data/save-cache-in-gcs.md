@@ -19,18 +19,18 @@ In a Harness CI Pipeline, you can save the cache to Google Cloud Storage (GCS) b
 
 The topic explains how to configure the Save Cache to GCS and Restore Cache from GCS steps in CIE using a two-Stage Pipeline.
 
-You cannot share access credentials or other [Text Secrets](https://ngdocs.harness.io/article/osfw70e59c-add-use-text-secrets) across Stages.
+You cannot share access credentials or other [Text Secrets](../../../platform/6_Security/2-add-use-text-secrets.md) across Stages.
 
 ### Before You Begin
 
 * [CI Pipeline Quickstart](../../ci-quickstarts/ci-pipeline-quickstart.md)
 * [CI Stage Settings](../../ci-technical-reference/ci-stage-settings.md)
-* [Set Up Build Infrastructure](https://docs.harness.io/category/set-up-build-infrastructure)
+* [Set Up Build Infrastructure](/docs/category/set-up-build-infrastructure)
 * [Learn Harness' Key Concepts](../../../getting-started/learn-harness-key-concepts.md)
 
 ### Limitations
 
-* You cannot share access credentials or other [Text Secrets](https://docs.harness.io/article/osfw70e59c-add-use-text-secrets) across Stages.
+* You cannot share access credentials or other [Text Secrets](../../../platform/6_Security/2-add-use-text-secrets.md) across Stages.
 * Use a dedicated bucket for your Harness cache operations. Do not save files to the bucket manually. The Retrieve Cache operation will fail if the bucket includes any files that do not have a Harness cache key.
 
 ### Review: YAML Example

@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/article/0zsf97lo3c).You have likely heard terms like *blue/green* and *canary* when it comes to deploying code and applications into production. These are common deployment strategies, available in Harness as Workflow types, along with many others.
+This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../../continuous-delivery/cd-deployments-category/deployment-concepts.md).You have likely heard terms like *blue/green* and *canary* when it comes to deploying code and applications into production. These are common deployment strategies, available in Harness as Workflow types, along with many others.
 
 [![](./static/deployment-concepts-and-strategies-02.png)](./static/deployment-concepts-and-strategies-02.png)
 
@@ -35,7 +35,7 @@ For example, you might use a Trigger to execute the Workflow on a Webhook event,
 
 You simply add a Build Workflow at the beginning of the Pipeline to build the artifact so you always have the latest build.
 
-See [Triggers](https://docs.harness.io/article/xerirloz9a-add-a-trigger-2) for information on Webhook triggers.
+See [Triggers](../../model-cd-pipeline/triggers/add-a-trigger-2.md) for information on Webhook triggers.
 
 ### Basic Deployment
 
@@ -222,5 +222,5 @@ You can also combine many of the above deployment strategies into a single strat
 
 ### Next Steps
 
-* [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts)
+* [Harness Key Concepts](../../../starthere-firstgen/harness-key-concepts.md)
 

@@ -50,7 +50,7 @@ A step's **Advanced** settings override the **Advanced** settings of the step gr
 
 ### Option: Conditional Execution
 
-A Step Group can have its own Conditional Execution settings separate from the Stage settings. The Conditional Execution settings of the step group apply to all of its steps. See [Step Skip Condition Settings](https://docs.harness.io/article/i36ibenkq2-step-skip-condition-settings).
+A Step Group can have its own Conditional Execution settings separate from the Stage settings. The Conditional Execution settings of the step group apply to all of its steps. See [Step Skip Condition Settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md).
 
 The Conditional Execution settings of any step in a step group override the settings of the Step Group itself.
 
@@ -62,7 +62,7 @@ A Step Group can have its own Failure Strategy separate from the Stage strategy.
 
 ![](./static/group-ci-steps-using-step-groups-21.png)
 
-See [Step Failure Strategy Settings](https://docs.harness.io/article/htrur23poj-step-failure-strategy-settings).
+See [Step Failure Strategy Settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md).
 
 The Failure Strategy of any step in a step group overrides the Failure Strategy of the step group.
 

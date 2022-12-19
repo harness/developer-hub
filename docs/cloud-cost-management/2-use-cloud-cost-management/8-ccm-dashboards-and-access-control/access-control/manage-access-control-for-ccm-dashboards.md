@@ -14,7 +14,7 @@ This topic describes how to add and manage access control for CCM Dashboards.
 
 ## Before You Begin
 
-* [Access Management (RBAC) Overview](https://ngdocs.harness.io/article/vz5cq0nfg2-rbac-in-harness)
+* [Access Management (RBAC) Overview](../../../../platform/4_Role-Based-Access-Control/1-rbac-in-harness.md)
 
 ## CCM Dashboards Roles and Permissions
 
@@ -70,7 +70,7 @@ Perform the following steps to limit access to specific Dashboards.
 1. In **Harness**, click **Account Settings**, and then click **Access Control**.
    
      ![](./static/manage-access-control-for-ccm-dashboards-04.png)
-2. In **Resource Groups**, click your Resource Group. For more information on adding and managing resource groups, see [Add and Manage Resource Groups](https://ngdocs.harness.io/article/yp4xj36xro-add-resource-groups).  
+2. In **Resource Groups**, click your Resource Group. For more information on adding and managing resource groups, see [Add and Manage Resource Groups](../../../../platform/4_Role-Based-Access-Control/8-add-resource-groups.md).  
   
      This section uses **Dashboard - All** as an example.
 
@@ -97,7 +97,7 @@ Perform the following steps to limit the access to specific Dashboards for diffe
 1. In **Harness**, click **Access Control**.
    
      ![](./static/manage-access-control-for-ccm-dashboards-07.png)
-2. In **User**, in **New User**, select the User for which you want to add or modify the access control. For more information on adding and managing resource groups, see [Add and Manage Users](https://ngdocs.harness.io/article/hyoe7qcaz6-add-users).
+2. In **User**, in **New User**, select the User for which you want to add or modify the access control. For more information on adding and managing resource groups, see [Add and Manage Users](../../../../platform/4_Role-Based-Access-Control/3-add-users.md).
 3. In **Assign Roles**, select the **Role** from the drop-down list. You can select either **Dashboard - Static Editor** or **Dashboard - All View**.
 4. In **Resource Groups**, select the resource group for which you want to add or modiy the access control.
    

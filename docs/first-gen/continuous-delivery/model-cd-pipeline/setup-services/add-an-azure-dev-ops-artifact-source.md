@@ -13,13 +13,13 @@ To add an Azure DevOps Artifact source to a Harness Service, you add an Azure De
 
 ### Before You Begin
 
-* [Azure DevOps Artifacts](https://docs.harness.io/article/7dghbx1dbl-configuring-artifact-server#azure_dev_ops_artifacts)
+* [Azure DevOps Artifacts](../../../firstgen-platform/account/manage-connectors/configuring-artifact-server.md#azure-dev-ops-artifacts)
 
 ### Step 1: Ensure an Azure Artifacts Connector is Set Up
 
 Before you can add an Azure DevOps artifact feeds to your Harness Service, you need to add a Harness Connector for your Azure DevOps organization.
 
-Use the information in [Azure DevOps Artifacts](https://docs.harness.io/article/7dghbx1dbl-configuring-artifact-server#azure_dev_ops_artifacts) to set up the Connector in Harness.
+Use the information in [Azure DevOps Artifacts](../../../firstgen-platform/account/manage-connectors/configuring-artifact-server.md#azure-dev-ops-artifacts) to set up the Connector in Harness.
 
 ### Step 2: Add Azure Artifacts Package Feed to the Harness Service
 
@@ -38,7 +38,7 @@ In your Harness Service, do the following:
    ![](./static/add-an-azure-dev-ops-artifact-source-66.png)
 
 4. In **Name**, enter a name that identifies the artifact feed you are adding.
-5. In **Source Server**, select the Azure DevOps Artifact Server you added to connect Harness to your Azure DevOps Artifacts. For more information, see [Azure DevOps Artifacts](https://docs.harness.io/article/7dghbx1dbl-configuring-artifact-server#azure_dev_ops_artifacts).
+5. In **Source Server**, select the Azure DevOps Artifact Server you added to connect Harness to your Azure DevOps Artifacts. For more information, see [Azure DevOps Artifacts](../../../firstgen-platform/account/manage-connectors/configuring-artifact-server.md#azure-dev-ops-artifacts).
 6. In **Package Type**, select the package type. Only supported types are listed.
 7. In **Scope**, select **Project** or **Organization**. If you selected Organization, Harness uses the organization specified in the **Azure DevOps URL** setting in the **Source Server** you selected.
 

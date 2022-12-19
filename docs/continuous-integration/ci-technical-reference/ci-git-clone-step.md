@@ -20,11 +20,11 @@ The unique name for this step.
 
 ### Id
 
-See [Entity Identifier Reference](https://docs.harness.io/article/li0my8tcz3-entity-identifier-reference).
+See [Entity Identifier Reference](../../platform/20_References/entity-identifier-reference.md).
 
 ### Connector
 
-The connector to your code repo. See [Code Repo Connectors](https://docs.harness.io/category/xyexvcc206).
+The connector to your code repo. See [Code Repo Connectors](/docs/category/code-repo-connectors).
 
 ### Repository
 

@@ -50,7 +50,7 @@ The architecture diagram of the Harness CI setup is as follows:
 
 ![](./static/ci-concepts-10.png)
 
-The [Harness Delegate](https://docs.harness.io/article/2k7lnc7lvl-delegates-overview) is central to all CI processes and is in charge of all CI operations. It runs in your environment, such as your local network, virtual private cloud, or cluster. It connects the Harness Manager in your SaaS instance to all of your code repositories, artifacts, infrastructure, and cloud providers. See also [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h).
+The [Harness Delegate](../../platform/2_Delegates/delegates-overview.md) is central to all CI processes and is in charge of all CI operations. It runs in your environment, such as your local network, virtual private cloud, or cluster. It connects the Harness Manager in your SaaS instance to all of your code repositories, artifacts, infrastructure, and cloud providers. See also [Harness Key Concepts](../../first-gen/starthere-firstgen/harness-key-concepts.md).
 
 The build infrastructure communicates directly with your repos, repositories, and cloud providers. You can maintain your code and artifacts internally or on public platforms such as GitHub or DockerHub.
 
@@ -81,7 +81,7 @@ Test Intelligence (TI) reduces test time significantly by running only the tests
 
 ![](./static/ci-concepts-501.png)
 
-Harness is seamlessly integrated with other Harness modules such as [Continuous Delivery](https://ngdocs.harness.io/article/0zsf97lo3c-deployment-concepts), [Cloud Cost Management](https://ngdocs.harness.io/category/7vy86n7cws-set-up-cloud-cost-management), and [Feature Flags](../../feature-flags/1-ff-onboarding/1-cf-feature-flag-overview.md). You no longer have to navigate from application to application to follow the steps of the Pipeline. Harness platform offers unified CI/CD Pipelines with visual controls and approval gates.  
+Harness is seamlessly integrated with other Harness modules such as [Continuous Delivery](../../continuous-delivery/cd-deployments-category/deployment-concepts.md), [Cloud Cost Management](/docs/category/set-up-cloud-cost-management), and [Feature Flags](../../feature-flags/1-ff-onboarding/1-cf-feature-flag-overview.md). You no longer have to navigate from application to application to follow the steps of the Pipeline. Harness platform offers unified CI/CD Pipelines with visual controls and approval gates.  
 
 #### Containerized Steps
 
@@ -97,7 +97,7 @@ Scripting Pipelines can be time-consuming and tedious. You may also be unaware o
 
 #### Harness Git Experience
 
-Harness Git Experience provides seamless integration between your Harness Projects, Pipelines, and resources and your Git repos. You can work entirely from Git or use a hybrid method of Git and the Harness Manager. Harness CI integrates with all the popular source control management tools including GitHub, GitLab, and Bitbucket. To get started, you need to activate the repository and include a `.harness` folder for the configuration files. This will trigger a build within Harness CI once a commit is detected. See [Git Experience](https://ngdocs.harness.io/article/utikdyxgfz-harness-git-experience-overview).
+Harness Git Experience provides seamless integration between your Harness Projects, Pipelines, and resources and your Git repos. You can work entirely from Git or use a hybrid method of Git and the Harness Manager. Harness CI integrates with all the popular source control management tools including GitHub, GitLab, and Bitbucket. To get started, you need to activate the repository and include a `.harness` folder for the configuration files. This will trigger a build within Harness CI once a commit is detected. See [Git Experience](../../platform/10_Git-Experience/harness-git-experience-overview.md).
 
 ![](./static/ci-concepts-506.png)
 
@@ -131,7 +131,7 @@ Plugins are Docker containers that perform predefined tasks and are configured a
 
 #### Caching
 
-Caching ensures faster job execution by reusing data from previous jobs' expensive fetch operations. Using the [Save Cache steps](https://docs.harness.io/category/share-and-cache-ci-data) in Harness CI, you can save the cache to a cloud storage bucket and later restore it using the [Restore Cache steps](https://docs.harness.io/category/share-and-cache-ci-data).
+Caching ensures faster job execution by reusing data from previous jobs' expensive fetch operations. Using the [Save Cache steps](/docs/category/share-and-cache-ci-data) in Harness CI, you can save the cache to a cloud storage bucket and later restore it using the [Restore Cache steps](/docs/category/share-and-cache-ci-data).
 
 #### Remote Docker Layer Caching
 

@@ -10,12 +10,12 @@ helpdocs_is_published: true
 
 This topic explains how to connect Harness to the Microsoft Azure cloud. Using this Connector, you can pull Azure artifacts and deploy your applications to Azure using Harness.
 
-Using Harness **Cloud Cost Management (CCM)**? See [Set Up Cloud Cost Management for Azure](https://docs.harness.io/article/v682mz6qfd-set-up-cost-visibility-for-azure).
+Using Harness **Cloud Cost Management (CCM)**? See [Set Up Cloud Cost Management for Azure](../../cloud-cost-management/1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-azure.md).
 
 ### Before you begin
 
-* [Learn Harness' Key Concepts](https://docs.harness.io/article/hv2758ro4e-learn-harness-key-concepts)
-* [CD Pipeline Basics](https://docs.harness.io/article/cqgeblt4uh-cd-pipeline-basics)
+* [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md)
+* [CD Pipeline Basics](../../continuous-delivery/onboard-cd/cd-concepts/cd-pipeline-basics.md)
 
 ### Limitations
 
@@ -371,6 +371,6 @@ For Azure deployments, note the following:
 
 ### See also
 
-* [Azure ACR to AKS CD Quickstart](https://docs.harness.io/article/m7nkbph0ac-azure-cd-quickstart)
-* [Kubernetes CD Quickstart](https://docs.harness.io/article/knunou9j30-kubernetes-cd-quickstart)
+* [Azure ACR to AKS CD Quickstart](../../continuous-delivery/onboard-cd/cd-quickstarts/azure-cd-quickstart.md)
+* [Kubernetes CD Quickstart](../../continuous-delivery/onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md)
 

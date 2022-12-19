@@ -16,7 +16,7 @@ For information on Blue/Green deployments, see [Deployment Concepts and Strategi
 
 Ensure you are familiar with the following:
 
-* [Kubernetes Quickstart](https://docs.harness.io/article/7in9z2boh6-kubernetes-quickstart)
+* [Kubernetes Quickstart](../../first-gen-quickstarts/kubernetes-quickstart.md)
 * [Kubernetes Deployments Overview](../concepts-cd/deployment-types/kubernetes-overview.md)
 * [Define Kubernetes Manifests](define-kubernetes-manifests.md)
 * [Define Your Kubernetes Target Infrastructure](define-your-kubernetes-target-infrastructure.md)
@@ -29,7 +29,7 @@ In Harness, a **managed** workload is a Deployment, StatefulSet, or DaemonSet o
 
 Rolling Workflow default steps support Deployment, StatefulSet, or DaemonSet as **managed** workloads, but not Jobs.
 
-You can deploy any Kubernetes workload in any Workflow type by using a Harness  [annotation](https://docs.harness.io/article/ttn8acijrz-versioning-and-annotations#annotations) to make it unmanaged (`harness.io/direct-apply`).
+You can deploy any Kubernetes workload in any Workflow type by using a Harness  [annotation](../../firstgen-platform/techref-category/cd-ref/platforms-ref/versioning-and-annotations.md#annotations) to make it unmanaged (`harness.io/direct-apply`).
 
 The [Apply Step](deploy-manifests-separately-using-apply-step.md) can deploy any workloads or objects in any Workflow type as a managed workload.
 
@@ -153,7 +153,7 @@ If you enable this option, Harness does the following at runtime:
 
 If **Export Manifest** is enabled, the manifests are not deployed. You can use the **Inherit Manifest** option in a subsequent Kubernetes step to deploy a copy of the exported manifests.
 
-The exported manifests can be written to storage on the Delegate where the step is run. For example, you can add a [Shell Script](https://docs.harness.io/article/1fjrjbau7x-capture-shell-script-step-output) step to echo and write the manifest to a file:
+The exported manifests can be written to storage on the Delegate where the step is run. For example, you can add a [Shell Script](../model-cd-pipeline/workflows/capture-shell-script-step-output.md) step to echo and write the manifest to a file:
 
 
 ```
@@ -185,7 +185,7 @@ In these cases, you shouldn't add a Delegate Selector to any step in the Workflo
 
 If your Workflow Infrastructure Definition's Cloud Provider isn't using a Delegate Selector, and you want this Workflow step to use a specific Delegate, do the following:
 
-In **Delegate Selector**, select the Selector for the Delegate(s) you want to use. You add Selectors to Delegates to make sure that they're used to execute the command. For more information, see [Select Delegates for Specific Tasks with Selectors](https://docs.harness.io/article/c3fvixpgsl-select-delegates-for-specific-tasks-with-selectors).
+In **Delegate Selector**, select the Selector for the Delegate(s) you want to use. You add Selectors to Delegates to make sure that they're used to execute the command. For more information, see [Select Delegates for Specific Tasks with Selectors](../../firstgen-platform/account/manage-delegates/select-delegates-for-specific-tasks-with-selectors.md).
 
 Harness will use Delegates matching the Selectors you add.
 
@@ -280,7 +280,7 @@ Done.
 
 Typically, in the **Prepare** section, you can see that each release of the resources is versioned. This is used in case Harness needs to rollback to a previous version.
 
-See [Kubernetes Rollback](https://docs.harness.io/article/v41e8oo00e-kubernetes-rollback).In the case of Blue/Green, the resources are not versioned because a Blue/Green deployment uses **rapid rollback**: network traffic is simply routed back to the original instances. You do not need to redeploy previous versions of the service/artifact and the instances that comprised their environment.
+See [Kubernetes Rollback](../../firstgen-platform/techref-category/cd-ref/platforms-ref/kubernetes-rollback.md).In the case of Blue/Green, the resources are not versioned because a Blue/Green deployment uses **rapid rollback**: network traffic is simply routed back to the original instances. You do not need to redeploy previous versions of the service/artifact and the instances that comprised their environment.
 
 
 ```
@@ -410,7 +410,7 @@ A great benefit of a Blue/Green deployment is rapid rollback: rolling back to th
 
 #### Scale Down Example
 
-If you would like to scale down the old version **for one service**, add a [Shell Script step](https://docs.harness.io/article/1fjrjbau7x-capture-shell-script-step-output) to the Post-deployment steps of your Workflow, for example:
+If you would like to scale down the old version **for one service**, add a [Shell Script step](../model-cd-pipeline/workflows/capture-shell-script-step-output.md) to the Post-deployment steps of your Workflow, for example:
 
 
 ```
@@ -493,7 +493,7 @@ When using this with a traffic splitting strategy, your pods will scale automati
 
 ### Kubernetes Rollback
 
-See [Kubernetes Rollback](https://docs.harness.io/article/v41e8oo00e-kubernetes-rollback).
+See [Kubernetes Rollback](../../firstgen-platform/techref-category/cd-ref/platforms-ref/kubernetes-rollback.md).
 
 ### Notes
 

@@ -20,7 +20,7 @@ Input Sets and Overlays allow you to create a Pipeline template that can use dif
 ### Before you begin
 
 * [CI Pipeline Quickstart](../../continuous-integration/ci-quickstarts/ci-pipeline-quickstart.md)
-* [Kubernetes CD Quickstart](https://docs.harness.io/article/knunou9j30-kubernetes-cd-quickstart)
+* [Kubernetes CD Quickstart](../../continuous-delivery/onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md)
 * [Input Sets and Overlays](input-sets.md)
 * [Runtime Inputs](../20_References/runtime-inputs.md)
 

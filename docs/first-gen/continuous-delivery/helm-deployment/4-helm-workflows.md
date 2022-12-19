@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/article/lbhf2h71at).Once you have added the Harness Service and Environment for Helm, you can add a Harness Workflow to manage how your Harness Service is deployed, verified, and rolled back, among other important phases.
+This content is for Harness [FirstGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../continuous-delivery/onboard-cd/cd-quickstarts/native-helm-quickstart.md).Once you have added the Harness Service and Environment for Helm, you can add a Harness Workflow to manage how your Harness Service is deployed, verified, and rolled back, among other important phases.
 
 Harness includes both Kubernetes and Helm deployments, and you can Helm charts in both. Harness [Kubernetes Deployments](../kubernetes-deployments/kubernetes-deployments-overview.md) allow you to use your own Helm chart (remote or local), and Harness executes the Kubernetes API calls to build everything without Helm and Tiller (for Helm v2) needing to be installed in the target cluster. See [Helm Charts](https://docs.harness.io/article/t6zrgqq0ny-kubernetes-services#helm_charts).
 
@@ -16,7 +16,7 @@ Harness includes both Kubernetes and Helm deployments, and you can Helm charts i
 
 Helm deployments use a Basic workflow that simply puts the Docker image on the Kubernetes cluster built using the Helm chart.
 
-For more information about workflows, see [Add a Workflow](https://docs.harness.io/article/m220i1tnia-workflow-configuration).
+For more information about workflows, see [Add a Workflow](../model-cd-pipeline/workflows/workflow-configuration.md).
 
 To add the workflow, do the following:
 
@@ -27,7 +27,7 @@ To add the workflow, do the following:
 2. On the **Workflows** page, click **Add Workflow**. The **Workflow** dialog appears.
    ![](./static/4-helm-workflows-19.png)
 3. In **Name**, give your workflow a name that describes its purpose, such as **NGINX-K8s-Helm**.
-4. In **Workflow Type**, select **Basic Deployment**. Helm deployments are Basic deployments, unlike Canary or Blue/Green. They are single-phase deployments where each deployment is installed or upgraded. You can create multiple Helm deployments and add them to a Harness pipeline. For more information, see [Add a Pipeline](https://docs.harness.io/article/zc1u96u6uj-pipeline-configuration).
+4. In **Workflow Type**, select **Basic Deployment**. Helm deployments are Basic deployments, unlike Canary or Blue/Green. They are single-phase deployments where each deployment is installed or upgraded. You can create multiple Helm deployments and add them to a Harness pipeline. For more information, see [Add a Pipeline](../model-cd-pipeline/pipelines/pipeline-configuration.md).
 5. In **Environment**, select the environment you created earlier in this guide.
 6. In **Service**, select the service you added earlier in this guide.
 7. In Infrastructure Definition, select the Infrastructure Definition you created earlier in this guide. When you are done, the dialog will look something like this:
@@ -103,7 +103,7 @@ This will override the values or values.yaml used in the Service.
 
 For information on how Harness merges values from different source for the values.yaml, see [Helm Values Priority](#helm_values_priority).
 
-File-based repo triggers are a powerful feature of Harness that lets you set a Webhook on your repo to trigger a Harness Workflow or Pipeline when a Push event occurs in the repo. For more information, see [File-based Repo Triggers](https://docs.harness.io/article/xerirloz9a-add-a-trigger-2#file_based_repo_triggers).To use a Git connector, you need to add a Git repo as a Harness Source Repo provider. For more information, see [Add Source Repo Providers](https://docs.harness.io/article/ay9hlwbgwa-add-source-repo-providers).
+File-based repo triggers are a powerful feature of Harness that lets you set a Webhook on your repo to trigger a Harness Workflow or Pipeline when a Push event occurs in the repo. For more information, see [File-based Repo Triggers](../model-cd-pipeline/triggers/add-a-trigger-2.md#file-based-repo-triggers).To use a Git connector, you need to add a Git repo as a Harness Source Repo provider. For more information, see [Add Source Repo Providers](../../firstgen-platform/account/manage-connectors/add-source-repo-providers.md).
 
 To use a **Git connector** in the **Helm Deploy** step, do the following:
 
@@ -123,7 +123,7 @@ When you are done, the typical **Helm Deploy** dialog will look something like t
 
 Only the **Release Name** is required.
 
-Click **SUBMIT** and **your workflow is complete.** You can look or modify the default rollback steps and other deployment strategies in the workflow (for more information, see [Add a Workflow](https://docs.harness.io/article/m220i1tnia-workflow-configuration)), but for this guide, the workflow is complete and you can now deploy it. See the next section for deployment steps.
+Click **SUBMIT** and **your workflow is complete.** You can look or modify the default rollback steps and other deployment strategies in the workflow (for more information, see [Add a Workflow](../model-cd-pipeline/workflows/workflow-configuration.md)), but for this guide, the workflow is complete and you can now deploy it. See the next section for deployment steps.
 
 ### Helm Deployments
 
@@ -436,7 +436,7 @@ templatized: false
 ### Next Steps
 
 * [5 - Helm Troubleshooting](5-helm-troubleshooting.md)
-* [Pipelines](https://docs.harness.io/article/zc1u96u6uj-pipeline-configuration)
-* [Triggers](https://docs.harness.io/article/xerirloz9a-add-a-trigger-2)
+* [Pipelines](../model-cd-pipeline/pipelines/pipeline-configuration.md)
+* [Triggers](../model-cd-pipeline/triggers/add-a-trigger-2.md)
 * [Continuous Verification](https://docs.harness.io/article/myw4h9u05l-verification-providers-list)
 

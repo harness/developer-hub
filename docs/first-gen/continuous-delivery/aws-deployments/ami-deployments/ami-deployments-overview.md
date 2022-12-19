@@ -16,7 +16,7 @@ Harness' AMI deployment guides walk you through deploying Amazon Machine Images 
 
 For an overview of AWS AMI deployments, see [AWS AMI Deployments Overview](../../concepts-cd/deployment-types/aws-ami-deployments-overview.md).
 
-For steps on using provisioners as part of the deployment, see [Infrastructure Provisioners Overview](https://docs.harness.io/article/o22jx8amxb-add-an-infra-provisioner).
+For steps on using provisioners as part of the deployment, see [Infrastructure Provisioners Overview](../../model-cd-pipeline/infrastructure-provisioner/add-an-infra-provisioner.md).
 
 ### Only Private AMIs are Supported
 

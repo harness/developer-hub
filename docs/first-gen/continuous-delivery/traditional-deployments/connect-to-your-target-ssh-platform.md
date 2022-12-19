@@ -15,28 +15,28 @@ This topic covers the steps needed to connect Harness to your artifact servers a
 ### Before You Begin
 
 * [Traditional Deployments (SSH) Overview](../concepts-cd/deployment-types/traditional-deployments-ssh-overview.md)
-* [Harness Delegate Overview](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation)
-* [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts)
+* [Harness Delegate Overview](../../firstgen-platform/account/manage-delegates/delegate-installation.md)
+* [Harness Key Concepts](../../starthere-firstgen/harness-key-concepts.md)
 
 ### Step 1: Set Up a Harness Delegate
 
 The Delegate needs to be able to connect to the artifact server or repository containing the file, and the target host where the file will be deployed. Typically, the Delegate is installed on a host in the same subnet as the target host.
 
-For steps on installing the Delegate, see [Harness Delegate Overview](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation).
+For steps on installing the Delegate, see [Harness Delegate Overview](../../firstgen-platform/account/manage-delegates/delegate-installation.md).
 
-For AWS, you can install the Delegate on an EC2 instance and then have the Harness Cloud Provider assume the IAM role used by the Delegate host. For more information, see Delegate Selectors in [Select Delegates for Specific Tasks with Selectors](https://docs.harness.io/article/c3fvixpgsl-select-delegates-for-specific-tasks-with-selectors).
+For AWS, you can install the Delegate on an EC2 instance and then have the Harness Cloud Provider assume the IAM role used by the Delegate host. For more information, see Delegate Selectors in [Select Delegates for Specific Tasks with Selectors](../../firstgen-platform/account/manage-delegates/select-delegates-for-specific-tasks-with-selectors.md).
 
 ### Step 2: Connect to Your Artifact Server
 
 Harness retrieves the package file from an artifact source using a Harness Artifact Server and deploys it to the target host using a Cloud Provider. 
 
-See [Add Artifact Servers](https://docs.harness.io/article/7dghbx1dbl-configuring-artifact-server).
+See [Add Artifact Servers](../../firstgen-platform/account/manage-connectors/configuring-artifact-server.md).
 
 ### Step 3: Connect to Your Cloud Provider or Physical Server
 
 You connect Harness to the target environment for your deployment. This can be a VM in the cloud or a physical server.
 
-See [Add Cloud Providers](https://docs.harness.io/article/whwnovprrb-cloud-providers) and [Add Physical Data Center as Cloud Provider](https://docs.harness.io/article/stkxmb643f-add-physical-data-center-cloud-provider).
+See [Add Cloud Providers](../../firstgen-platform/account/manage-connectors/cloud-providers.md) and [Add Physical Data Center as Cloud Provider](../../firstgen-platform/account/manage-connectors/add-physical-data-center-cloud-provider.md).
 
 ### Configure As Code
 

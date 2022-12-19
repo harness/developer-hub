@@ -19,13 +19,13 @@ Once you've defined a build farm in the CI stage's Infrastructure, you can add a
 * Amazon Elastic Container Registry (ECR)
 
 
-For setting up a build farm, see: [Set Up Build Infrastructure](https://docs.harness.io/category/set-up-build-infrastructure).
+For setting up a build farm, see: [Set Up Build Infrastructure](/docs/category/set-up-build-infrastructure).
 
 
 This topic describes a simple one-step build workflow, minus testing: build the code in a build farm and then push it to a repo. For a quick summary of a build, push, and test Pipeline, see [CI Pipeline Quickstart](../../ci-quickstarts/ci-pipeline-quickstart.md).
 
 
-For details about each build and push step, see [CI Technical Reference](https://docs.harness.io/category/ci-technical-reference).
+For details about each build and push step, see [CI Technical Reference](/docs/category/ci-technical-reference).
 
 
 ### Before You Begin
@@ -36,7 +36,7 @@ You should be familiar with the following:
 
 * [CI Pipeline Quickstart](../../ci-quickstarts/ci-pipeline-quickstart.md)
 * [CI Stage Settings](../../ci-technical-reference/ci-stage-settings.md)
-* [Set Up Build Infrastructure](https://docs.harness.io/category/set-up-build-infrastructure)
+* [Set Up Build Infrastructure](/docs/category/set-up-build-infrastructure)
 * [Learn Harness' Key Concepts](../../../getting-started/learn-harness-key-concepts.md)
 
 
@@ -70,7 +70,7 @@ Do one of the following:
 * If you have an existing Pipeline with a CI stage, click **Codebase** on the right.
 
 
-In **Connector**, select an existing Connector to your codebase repo, or create a new one. See [Code Repo Connectors](https://docs.harness.io/category/xyexvcc206-ref-source-repo-provider).
+In **Connector**, select an existing Connector to your codebase repo, or create a new one. See [Code Repo Connectors](/docs/category/code-repo-connectors).
 
 
 You can see the URL for the repo account below **Repository Name**. Don't add the URL into **Repository Name**.
@@ -94,10 +94,10 @@ In the CI stage **Infrastructure**, define the build farm for the codebase.
 The following example uses a Kubernetes cluster build farm.
 
 
-In **Select a Kubernetes Cluster**, select or create a Kubernetes Connector. This Connector connects Harness to the cluster to use as the build farm. See [Kubernetes Cluster Connector Settings Reference](https://docs.harness.io/article/sjjik49xww-kubernetes-cluster-connector-settings-reference).
+In **Select a Kubernetes Cluster**, select or create a Kubernetes Connector. This Connector connects Harness to the cluster to use as the build farm. See [Kubernetes Cluster Connector Settings Reference](../../../platform/7_Connectors/ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md).
 
 
-In **Namespace**, enter the Kubernetes namespace to use. You can use a text string, a Runtime Input (`<+input>`), or an expression. See [Runtime Inputs](https://docs.harness.io/article/f6yobn7iq0-runtime-inputs).
+In **Namespace**, enter the Kubernetes namespace to use. You can use a text string, a Runtime Input (`<+input>`), or an expression. See [Runtime Inputs](../../../platform/20_References/runtime-inputs.md).
 
 
 See [Define Kubernetes Cluster Build Infrastructure](../set-up-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md).

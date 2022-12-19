@@ -51,7 +51,7 @@ In the remaining settings, you will map the keys in the JSON response to Harness
 
 ### Step 4: Search Body
 
-In **Search Body**, enter any JSON search input for your query. If you need to send a token, but do not want to send it in plaintext, you can use a Harness [encrypted text secret](https://docs.harness.io/article/au38zpufhr-secret-management#encrypted_text).
+In **Search Body**, enter any JSON search input for your query. If you need to send a token, but do not want to send it in plaintext, you can use a Harness [encrypted text secret](../../../firstgen-platform/security/secrets-management/secret-management.md#encrypted-text).
 
 ### Step 5: Response Type
 

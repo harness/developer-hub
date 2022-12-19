@@ -1,0 +1,14 @@
+{
+    "label": "Kubernetes Executions",
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "link": {
+        "type": "generated-index",
+        "title": "Kubernetes Executions"
+    },
+    "customProps": {
+        "position": "100",
+        "helpdocs_category_id": "uj8bqz9j0q"
+    }
+}

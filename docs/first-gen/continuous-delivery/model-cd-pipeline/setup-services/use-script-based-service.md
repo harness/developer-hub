@@ -15,7 +15,7 @@ You can create and add Bash and PowerShell scripts as Services. You can use the 
 
 * Read the [Create an Application](../applications/application-configuration.md) topic to get an overview of how Harness organizes Services.
 * Read the [Add a Service](service-configuration.md) topic to understand the process to add a Service to an Application.
-* Read [Configuration as Code](https://docs.harness.io/article/htvzryeqjw-configuration-as-code) to see how you can quickly configure your Harness Service using your existing YAML in Git.
+* Read [Configuration as Code](../../../firstgen-platform/config-as-code/configuration-as-code.md) to see how you can quickly configure your Harness Service using your existing YAML in Git.
 
 ### Option 1: Edit Default Commands
 
@@ -29,7 +29,7 @@ When you create a script-based Service, Harness automatically generates the comm
 
 ### Option 2: Use Template Library
 
-You can use the wealth of scripts available in the Template Library to rapidly develop your script. For more information, see [Use Templates](https://docs.harness.io/article/ygi6d8epse-use-templates).
+You can use the wealth of scripts available in the Template Library to rapidly develop your script. For more information, see [Use Templates](../../concepts-cd/deployment-types/use-templates.md).
 
 1. In the **Script** section of **Deployment Specification**, click **Add Command**. The **Add Command** dialog appears.
 2. Click **From Template Library**. The Template Library is displayed. Find the template you need.![](./static/use-script-based-service-33.png)
@@ -64,15 +64,15 @@ This topic describes how to publish a Service Command output in a variable and u
 3. Click **Submit**. The step is added.
 4. Click on the step.![](./static/use-script-based-service-37.png)
 5. Set the **Timeout** period for your Service Command. If the command execution hangs beyond the timeout, Harness will fail the step.![](./static/use-script-based-service-38.png)
-6. Select **Execute on Delegate** option if you wish to execute Workflow on Harness Delegate. This option allow users to select Delegates on Service commands.If you do not select **Execute on Delegate** option then the node is selected from the Select Node. The Select Nodes step selects the target hosts from the [Infrastructure Definition](../environments/infrastructure-definitions.md) you defined. For more information, see [Select Nodes Workflow Step](https://docs.harness.io/article/9h1cqaxyp9-select-nodes-workflow-step).
+6. Select **Execute on Delegate** option if you wish to execute Workflow on Harness Delegate. This option allow users to select Delegates on Service commands.If you do not select **Execute on Delegate** option then the node is selected from the Select Node. The Select Nodes step selects the target hosts from the [Infrastructure Definition](../environments/infrastructure-definitions.md) you defined. For more information, see [Select Nodes Workflow Step](../../../firstgen-platform/techref-category/cd-ref/workflow-steps-and-settings/select-nodes-workflow-step.md).
 7. In **Delegate Selector** enter the Selectors of the Delegates you want to use.  
   
-You can use Selectors to select which Harness Delegates to use when executing the Service Command step. For more information, see [Select Delegates with Selectors](https://docs.harness.io/article/c3fvixpgsl-select-delegates-for-specific-tasks-with-selectors).
+You can use Selectors to select which Harness Delegates to use when executing the Service Command step. For more information, see [Select Delegates with Selectors](../../../firstgen-platform/account/manage-delegates/select-delegates-for-specific-tasks-with-selectors.md).
 	* Harness will use Delegates matching the Selectors you select.
 	* If you use one Selector, Harness will use any Delegate that has that Selector.
 	* If you select two Selectors, a Delegate must have both Selectors to be selected. That Delegate might also have other Selectors, but it must have the two you selected.
 	* Selectors can be used whether **Execute on Delegate** is enabled or not. The Shell Script command honors the Selector and executes the SSH connection to the specified target host via the selected Delegate.   
 	An example where Selectors might be useful when **Execute on Delegate** is disabled: When you specify an IP address in **Target Host**, but you have 2 VPCs with the same subnet and duplicate IP numbers exist in both. Using Selectors, you can scope the the shell session towards the delegate in a specific VPC.
-	* You can also use [Harness variable expressions](https://docs.harness.io/article/9dvxcegm90-variables). For example, if you have a Workflow variables named delegate, you can enter `$(workflow.variables.delegate)`. When you deploy the Workflow, you can provide a value for the variable that matches a Delegate Selector.
+	* You can also use [Harness variable expressions](../../../firstgen-platform/techref-category/variables/variables.md). For example, if you have a Workflow variables named delegate, you can enter `$(workflow.variables.delegate)`. When you deploy the Workflow, you can provide a value for the variable that matches a Delegate Selector.
 8. Click **Submit**.
 

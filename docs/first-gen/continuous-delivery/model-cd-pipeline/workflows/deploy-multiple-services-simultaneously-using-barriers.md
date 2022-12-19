@@ -20,7 +20,7 @@ If you want to reproduce this scenario, ensure that you have the following setup
 
 * Your target environment must have a Kubernetes cluster with two namespaces.
 * Your Harness Application must have two Services—one for the frontend service and one for the backend service—that can be deployed to a Kubernetes cluster.
-* Configure the Harness Kubernetes Cluster Cloud Provider, Environment, Infrastructure Definitions, and a [Rolling Deployment Workflow](https://docs.harness.io/article/dl0l34ge8l-create-a-kubernetes-rolling-deployment) to test each service deployment.
+* Configure the Harness Kubernetes Cluster Cloud Provider, Environment, Infrastructure Definitions, and a [Rolling Deployment Workflow](../../kubernetes-deployments/create-a-kubernetes-rolling-deployment.md) to test each service deployment.
 * Deploy the microservices in different namespaces. This is typically set up using separate Infrastructure Definitions in the Environment.
 
 ## Visual Summary
@@ -102,7 +102,7 @@ Let us see how we can use Barriers for the most common scenario, Scenario 1.
 
 ## Step 1: Add Barrier to Frontend Workflow
 
-Start with a [Kubernetes Rolling Workflow](https://docs.harness.io/article/dl0l34ge8l-create-a-kubernetes-rolling-deployment) and modify it to add Barriers as follows:
+Start with a [Kubernetes Rolling Workflow](../../kubernetes-deployments/create-a-kubernetes-rolling-deployment.md) and modify it to add Barriers as follows:
 
 ![](./static/deploy-multiple-services-simultaneously-using-barriers-47.png)
 

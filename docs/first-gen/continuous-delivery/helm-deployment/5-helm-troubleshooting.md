@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/article/lbhf2h71at).The following troubleshooting information should help you diagnose common problems:
+This content is for Harness [FirstGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../continuous-delivery/onboard-cd/cd-quickstarts/native-helm-quickstart.md).The following troubleshooting information should help you diagnose common problems:
 
 * [Failed to Find the Previous Helm Release Version](5-helm-troubleshooting.md#failed-to-find-the-previous-helm-release-version)
 * [Helm Install/Upgrade Failed](5-helm-troubleshooting.md#helm-install-upgrade-failed)
@@ -51,6 +51,6 @@ To fix this, pass the`--tiller-namespace <NAMESPACE>`as command flag in the Work
 
 ### Next Steps
 
-* **Pipeline and Triggers** - Once you have a successful workflow, you can experiment with a Harness pipeline, which as a collection of one or more workflows, and Harness triggers, which enable you to execute a workflow or pipeline deployment using different criteria, such as when a new artifact is added to an artifact source. For more information, see [Add a Pipeline](https://docs.harness.io/article/zc1u96u6uj-pipeline-configuration) and [Add a Trigger](https://docs.harness.io/article/xerirloz9a-add-a-trigger-2).
+* **Pipeline and Triggers** - Once you have a successful workflow, you can experiment with a Harness pipeline, which as a collection of one or more workflows, and Harness triggers, which enable you to execute a workflow or pipeline deployment using different criteria, such as when a new artifact is added to an artifact source. For more information, see [Add a Pipeline](../model-cd-pipeline/pipelines/pipeline-configuration.md) and [Add a Trigger](../model-cd-pipeline/triggers/add-a-trigger-2.md).
 * **Continuous Verification** - Add verification steps using Splunk, SumoLogic, Elk, AppDynamics, New Relic, DynaTrace, and others to your workflow. For more information, see [Continuous Verification](https://docs.harness.io/article/myw4h9u05l-verification-providers-list).
 

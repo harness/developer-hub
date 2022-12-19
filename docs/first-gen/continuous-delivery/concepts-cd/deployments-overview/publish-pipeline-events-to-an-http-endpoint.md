@@ -13,12 +13,12 @@ To help you analyze how Pipelines are performing, Harness can send key Pipeline 
 
 ### Before You Begin
 
-* [Create a Pipeline](https://docs.harness.io/article/zc1u96u6uj-pipeline-configuration)
-* [Monitor Deployments in Dashboards](https://docs.harness.io/article/c3s245o7z8-main-and-services-dashboards)
+* [Create a Pipeline](../../model-cd-pipeline/pipelines/pipeline-configuration.md)
+* [Monitor Deployments in Dashboards](../../../firstgen-platform/fg-monitoring/main-and-services-dashboards.md)
 
 ### Supported Platforms and Technologies
 
-See [Supported Platforms and Technologies](https://docs.harness.io/article/220d0ojx5y-supported-platforms).
+See [Supported Platforms and Technologies](../../../starthere-firstgen/supported-platforms.md).
 
 ### Review: Events Published
 
@@ -77,7 +77,7 @@ By default, Harness will select any available Delegate. You might want to use a 
 
 In **Delegate Selector**, select the Selector for the Delegate(s) you want to use.
 
-You add Selectors to Delegates to make sure that they're used to execute the command. For more information, see [Select Delegates with Selectors](https://docs.harness.io/article/c3fvixpgsl-select-delegates-for-specific-tasks-with-selectors).
+You add Selectors to Delegates to make sure that they're used to execute the command. For more information, see [Select Delegates with Selectors](../../../firstgen-platform/account/manage-delegates/select-delegates-for-specific-tasks-with-selectors.md).
 
 Harness will use Delegates matching the Selectors you add.
 
@@ -191,7 +191,7 @@ To perform analysis on Pipeline performance, you can use the `startedAt` and `co
 
 You can create and query the event rules for an Application using the Harness GraphQL API.
 
-See [Publish Pipeline Events to an HTTP Endpoint using the API](https://docs.harness.io/article/cfrqinjhci-publish-pipeline-events-to-an-http-endpoint-using-the-api).
+See [Publish Pipeline Events to an HTTP Endpoint using the API](../../../firstgen-platform/techref-category/api/publish-pipeline-events-to-an-http-endpoint-using-the-api.md).
 
 ### Notes
 

@@ -14,7 +14,7 @@ For detailed instructions on using AWS Spotinst Elastigroup in Harness, see the�
 
 ### Before You Begin
 
-Before learning about Harness AWS Spotinst Elastigroup deployments, you should have an understanding of [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts).
+Before learning about Harness AWS Spotinst Elastigroup deployments, you should have an understanding of [Harness Key Concepts](../../../starthere-firstgen/harness-key-concepts.md).
 
 ### What Does Harness Need Before You Start?
 
@@ -46,9 +46,9 @@ The following list describes the major steps of a Harness AWS Spotinst Elastigro
 | 4 | Create the Harness **Service** using the Amazon Machine Image Deployment Type. | Add an AMI as an artifact in a Harness Service, add any AMI User Data, and any config variables and files. |
 | 5 | Create the Harness **Environment** and Infrastructure Definition for your deployment, and any overrides. | Using the Harness AWS Cloud Provider and Spotinst Cloud Provider you set up, you can select the Elastigroup configuration as the target environment for your deployment.You can also override any Service settings, such as User Data values. This enables you to use a single Service with multiple Harness Environments. |
 | 6 | Create the Basic, Canary, and Blue/Green deployments in Harness **Workflows**. | The Workflow deploys the new AMI instances defined in the Harness Service to the environment in the Harness Infrastructure Definition. |
-| 7 | Deploy the Workflow. | Once you've deployed a Workflow, learn how to improve your AWS AMI CD:* [Workflows](https://docs.harness.io/article/m220i1tnia-workflow-configuration)
-* [Triggers](https://docs.harness.io/article/xerirloz9a-add-a-trigger-2)
-* [Infrastructure Provisioners Overview](https://docs.harness.io/article/o22jx8amxb-add-an-infra-provisioner)
+| 7 | Deploy the Workflow. | Once you've deployed a Workflow, learn how to improve your AWS AMI CD:* [Workflows](../../model-cd-pipeline/workflows/workflow-configuration.md)
+* [Triggers](../../model-cd-pipeline/triggers/add-a-trigger-2.md)
+* [Infrastructure Provisioners Overview](../../model-cd-pipeline/infrastructure-provisioner/add-an-infra-provisioner.md)
  |
 
 ### How Does Harness Downsize Old Elastigroups?

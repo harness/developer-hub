@@ -19,11 +19,11 @@ You can add Workflow step skip conditions to any Harness Workflow types.
 ### Before You Begin
 
 * [Workflows](workflow-configuration.md)
-* [Variables and Expressions in Harness](https://docs.harness.io/article/9dvxcegm90-variables)
+* [Variables and Expressions in Harness](../../../firstgen-platform/techref-category/variables/variables.md)
 
 ### Option 1: Skip All Steps in a Section
 
-This example uses Harness Workflow templates and Harness built-in variable expressions. See [Template a Workflow](workflow-configuration.md#template-a-workflow) and [Variables and Expressions in Harness](https://docs.harness.io/article/9dvxcegm90-variables).Open a Workflow that contains multiple steps that you want skipped under a specific condition.
+This example uses Harness Workflow templates and Harness built-in variable expressions. See [Template a Workflow](workflow-configuration.md#template-a-workflow) and [Variables and Expressions in Harness](../../../firstgen-platform/techref-category/variables/variables.md).Open a Workflow that contains multiple steps that you want skipped under a specific condition.
 
 For example, here is a Workflow that deploys a WAR file to physical servers.
 
@@ -43,7 +43,7 @@ In **Execution**, click **Conditional**. The **Conditional Execution** settings 
 
 Click **All Steps**.
 
-In **Skip condition**, enter the condition to evaluate. Enter `$` to see the available Harness built-in variables. See [Variables and Expressions in Harness](https://docs.harness.io/article/9dvxcegm90-variables).
+In **Skip condition**, enter the condition to evaluate. Enter `$` to see the available Harness built-in variables. See [Variables and Expressions in Harness](../../../firstgen-platform/techref-category/variables/variables.md).
 
 Skip conditions are boolean. If the condition you enter in **Skip condition** evaluates to **true**, all of the steps in **Prepare Infra** are skipped.
 
@@ -101,7 +101,7 @@ In **Skip condition**, enter the condition to evaluate. Enter `$` to see the ava
 
 Click **Add** to add conditions for other steps. Here's an example with conditions for two steps using the variable expression `${infra.name}`.
 
-The `${infra.name}` evaluates to the name of the Infrastructure Definition used by this Workflow at deployment runtime. See [Variables and Expressions in Harness](https://docs.harness.io/article/9dvxcegm90-variables) for other built-in expressions.
+The `${infra.name}` evaluates to the name of the Infrastructure Definition used by this Workflow at deployment runtime. See [Variables and Expressions in Harness](../../../firstgen-platform/techref-category/variables/variables.md) for other built-in expressions.
 
 In this example, two conditions are added:
 
@@ -196,5 +196,5 @@ Here is another example using the Inequality `!=` operator:
 
 ### Next Steps
 
-* [Variables and Expressions in Harness](https://docs.harness.io/article/9dvxcegm90-variables)
+* [Variables and Expressions in Harness](../../../firstgen-platform/techref-category/variables/variables.md)
 

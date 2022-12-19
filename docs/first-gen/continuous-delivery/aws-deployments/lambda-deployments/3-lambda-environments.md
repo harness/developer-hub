@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/article/5fnx4hgwsa).Once you've added a Lambda Service to your Application, you can define Environments where your Service can be deployed. Within an Environment, you specify the following in an Infrastructure Definition:
+This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../../continuous-delivery/onboard-cd/cd-quickstarts/serverless-lambda-cd-quickstart.md).Once you've added a Lambda Service to your Application, you can define Environments where your Service can be deployed. Within an Environment, you specify the following in an Infrastructure Definition:
 
 * The Lambda Service that contains your functions zip file and functions specs. (Set up in [Add Lambda Functions](2-service-for-lambda.md).)
 * A deployment type. In this case, **Lambda**.
@@ -57,7 +57,7 @@ To add the Infrastructure Definition:
    ![](./static/3-lambda-environments-26.png)
 5. Select **Use** **Already Provisioned Infrastructure**, and follow the [Define a Provisioned Infrastructure](#define_provisioned_infrastructure) steps below.
 
-If you are using a configured Harness [Infrastructure Provisioner](https://docs.harness.io/article/o22jx8amxb-add-an-infra-provisioner), instead select **Map Dynamically Provisioned Infrastructure**, and then select the provisioner. The settings below are for **Use Already Provisioned Infrastructure**.
+If you are using a configured Harness [Infrastructure Provisioner](../../model-cd-pipeline/infrastructure-provisioner/add-an-infra-provisioner.md), instead select **Map Dynamically Provisioned Infrastructure**, and then select the provisioner. The settings below are for **Use Already Provisioned Infrastructure**.
 
 #### Define a Provisioned Infrastructure
 
@@ -110,10 +110,10 @@ With Harness, you can use a CloudFormation template to provision the Lambda infr
 
 Your Environment can overwrite Service Config Variables, Config Files, and other settings. This enables you to maintain a Service's native settings, but change them when the Service is used with this Environment.
 
-For more information, see [Override a Service Configuration](https://docs.harness.io/article/n39w05njjv-environment-configuration#override_a_service_configuration).
+For more information, see [Override a Service Configuration](../../model-cd-pipeline/environments/environment-configuration.md#override-a-service-configuration).
 
 ### Next Steps
 
 * [Create a Basic Lambda Deployment](4-lambda-workflows-and-deployments.md)
-* [Troubleshoot AWS Lambda Deployments](https://docs.harness.io/article/g9o2g5jbye-troubleshooting-harness#aws_lambda)
+* [Troubleshoot AWS Lambda Deployments](../../../firstgen-troubleshooting/troubleshooting-harness.md#aws-lambda)
 
