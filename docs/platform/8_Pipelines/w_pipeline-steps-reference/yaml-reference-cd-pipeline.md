@@ -31,7 +31,7 @@ The Pipeline Studio includes visual and YAML editors.
 
 The best way to get started with YAML is to do a CI or CD quickstart and then view the YAML in Pipeline Studio.
 
-See ​[CD Quickstarts](https://docs.harness.io/category/c9j6jejsws) and [CI Quickstarts](https://docs.harness.io/category/onboard-with-ci).
+See ​[CD Quickstarts](https://docs.harness.io/category/cd-tutorials) and [CI Quickstarts](https://docs.harness.io/category/onboard-with-ci).
 
 The YAML editor validates YAML before allowing you to save it.
 
@@ -200,7 +200,7 @@ pipeline:
 ```
 See also:
 
-* [Using Shell Scripts in CD Stages](https://docs.harness.io/article/k5lu0u6i1i-using-shell-scripts)
+* [Using Shell Scripts in CD Stages](../../../continuous-delivery/cd-execution/cd-general-steps/using-shell-scripts.md)
 
 ### Stage
 
@@ -364,7 +364,7 @@ spec:
 ```
 See also:
 
-* [Propagate and Override CD Services](https://docs.harness.io/article/t57uzu1i41-propagate-and-override-cd-services)
+* [Propagate and Override CD Services](../../../continuous-delivery/cd-services/cd-services-general/propagate-and-override-cd-services.md)
 
 ### Infrastructure
 
@@ -415,7 +415,7 @@ That example is for the platform agnostic Kubernetes infrastructure. For a diffe
 ```
 See also:
 
-* [Define Your Kubernetes Target Infrastructure](https://docs.harness.io/article/0ud2ut4vt2-define-your-kubernetes-target-infrastructure)
+* [Define Your Kubernetes Target Infrastructure](../../../continuous-delivery/cd-infrastructure/kubernetes-infra/define-your-kubernetes-target-infrastructure.md)
 * [Define Kubernetes Cluster Build Infrastructure](https://docs.harness.io/article/x7aedul8qs-kubernetes-cluster-build-infrastructure-setup)
 
 ### Execution
@@ -517,7 +517,7 @@ Here is an example of a Canary Deployment step.
 ```
 See also:
 
-* [CD How-tos](https://docs.harness.io/category/21a052rbi0)
+* [CD How-tos](https://docs.harness.io/category/advanced-cd)
 
 ### Fixed Value, Runtime Input, and Expression
 
@@ -566,7 +566,7 @@ flowControl:
 ```
 See also:
 
-* [Synchronize Deployments using Barriers](https://docs.harness.io/article/dmlf8w2aeh-synchronize-deployments-using-barriers)
+* [Synchronize Deployments using Barriers](../../../continuous-delivery/cd-deployments-category/synchronize-deployments-using-barriers.md)
 
 ### Notification Rules
 
@@ -618,7 +618,7 @@ notificationRules:
 ```
 See also:
 
-* [Add a Pipeline Notification Strategy](https://docs.harness.io/article/4bor7kyimj-notify-users-of-pipeline-events)
+* [Add a Pipeline Notification Strategy](../../../continuous-delivery/cd-advanced/cd-notifications/notify-users-of-pipeline-events.md)
 
 ### Triggers
 

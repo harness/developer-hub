@@ -64,7 +64,7 @@ Harness checks out manifest files from your repo at deployment runtime. If any f
 
 Ensure that the Harness Delegate(s) used for your deployment have the correct version of the CF CLI installed. See [Install Cloud Foundry CLI Versions on the Harness Delegate](install-cloud-foundry-cli-6-and-7-on-harness-delegates.md).In order for the commands in your script to execute, the Harness Delegate(s) running the script must have the CF CLI and any related CF plugins installed.
 
-Unless all of your Harness Delegates have the CF CLI and CF plugins installed, you can refer to the specific Delegates using [Delegate Selectors](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation#delegate_selectors).
+Unless all of your Harness Delegates have the CF CLI and CF plugins installed, you can refer to the specific Delegates using [Delegate Selectors](../../firstgen-platform/account/manage-delegates/delegate-installation.md#delegate-selectors).
 
 In **Run only on delegates having the following selectors**, add the Delegate Selector(s) for the Delegates with the CF CLI and CF plugins installed.
 

@@ -40,7 +40,7 @@ Pipelines are collections of stages. For this tutorial, we'll create a new Pipel
 
 :::note
 
-**Create a Project for your new CD Pipeline:** if you don't already have a Harness Project, create a Project for your new CD Pipeline. Ensure that you add the **Continuous Delivery** module to the Project. See [Create Organizations and Projects](https://docs.harness.io/article/36fw2u92i4-create-an-organization).
+**Create a Project for your new CD Pipeline:** if you don't already have a Harness Project, create a Project for your new CD Pipeline. Ensure that you add the **Continuous Delivery** module to the Project. See [Create Organizations and Projects](../../../platform/1_Organizations-and-Projects/2-create-an-organization.md).
 
 :::
 
@@ -172,7 +172,7 @@ Harness connects to all of the common cloud platforms and provides a platform-ag
 
    ![](./static/kubernetes-cd-quickstart-88.png)
  
-The Kubernetes Cluster Connector is covered in detail [here](https://docs.harness.io/article/sjjik49xww-kubernetes-cluster-connector-settings-reference), but let's quickly walk through it.
+The Kubernetes Cluster Connector is covered in detail [here](../../../platform/7_Connectors/ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md), but let's quickly walk through it.
 
 Let's look at the steps:
 
@@ -248,7 +248,7 @@ Next, try Harness [Continuous Integration](https://docs.harness.io/category/cont
 
 ## Clean Up
 
-For steps on deleting the Delgate, go to [Delegate a delegate](https://docs.harness.io/article/tl6ql57em6-delete-a-delegate).
+For steps on deleting the Delgate, go to [Delegate a delegate](../../../platform/2_Delegates/delegate-guide/delete-a-delegate.md).
 
 ## Next Steps
 

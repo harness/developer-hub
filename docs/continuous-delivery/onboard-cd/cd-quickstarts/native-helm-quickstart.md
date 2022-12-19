@@ -15,7 +15,7 @@ Harness includes both Kubernetes and Native Helm deployments, and you can use He
 * **Kubernetes with Helm:** Harness Kubernetes deployments allow you to use your own Helm values.yaml or Helm chart (remote or local), and Harness executes the Kubernetes kubectl calls to build everything without Helm and Tiller needing to be installed in the target cluster. You can perform all deployment strategies (Rolling, Canary, Blue Green).  
 See [Kubernetes deployment tutorial](kubernetes-cd-quickstart), [Helm Chart deployment tutorial](helm-cd-quickstart).
 * **Native Helm:**
-	+ For Harness Native Helm V2 deployments, you must always have Helm and Tiller running on one pod in your target cluster and Tiller makes the API calls to Kubernetes. You can perform a Rolling deployment strategy only (no Canary or Blue Green).If you are using Helm V2, you will need to install Helm v2 and Tiller on the Delegate pod. For steps on installing software on the Delegate, go to [Install Software on the Delegate with Initialization Scripts](https://docs.harness.io/article/yte6x6cyhn-run-scripts-on-delegates).
+	+ For Harness Native Helm V2 deployments, you must always have Helm and Tiller running on one pod in your target cluster and Tiller makes the API calls to Kubernetes. You can perform a Rolling deployment strategy only (no Canary or Blue Green).If you are using Helm V2, you will need to install Helm v2 and Tiller on the Delegate pod. For steps on installing software on the Delegate, go to [Install Software on the Delegate with Initialization Scripts](../../../platform/2_Delegates/delegate-guide/run-scripts-on-delegates.md).
 	+ For Harness Native Helm v3 deployments, you no longer need Tiller, but you are still limited to the Rolling deployment strategy.
 		- **Versioning:** Harness Kubernetes deployments version all objects, such as ConfigMaps and Secrets. Native Helm does not.
 		- **Rollback:** Harness Kubernetes deployments will roll back to the last successful version. Native Helm will not. If you did 2 bad Native Helm deployments, the 2nd one will just rollback to the 1st. Harness will roll back to the last successful version.
@@ -32,7 +32,7 @@ You'll learn how to:
 
 ## Before You Begin
 
-Review [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts) to establish a general understanding of Harness.
+Review [Harness Key Concepts](../../../first-gen/starthere-firstgen/harness-key-concepts.md) to establish a general understanding of Harness.
 
 You will need a target Kubernetes cluster where you will deploy NGINX:
 
@@ -50,7 +50,7 @@ Pipelines are collections of stages. For this quickstart, we'll create a new Pip
 
 :::note
 
-**Create a Project for your new CD Pipeline:** if you don't already have a Harness Project, create a Project for your new CD Pipeline. Ensure that you add the **Continuous Delivery** module to the Project. See [Create Organizations and Projects](https://docs.harness.io/article/36fw2u92i4).
+**Create a Project for your new CD Pipeline:** if you don't already have a Harness Project, create a Project for your new CD Pipeline. Ensure that you add the **Continuous Delivery** module to the Project. See [Create Organizations and Projects](../../../platform/1_Organizations-and-Projects/2-create-an-organization.md).
 
 :::
 
@@ -143,7 +143,7 @@ service/delegate-service unchanged
 3. Select the **Connect using Delegates with the following Tags** option.
 4. Enter the tag of the new Delegate and click **Save and Continue**.
    When you are done, the Connector is tested. If it fails, your Delegate might not be able to connect to `https://charts.bitnami.com/bitnami`. Review its network connectivity and ensure it can connect.
-   If you are using Helm V2, you will need to install Helm v2 and Tiller on the Delegate pod. For steps on installing software on the Delegate, go to [Install Software on the Delegate with Initialization Scripts](https://docs.harness.io/article/yte6x6cyhn-run-scripts-on-delegates).
+   If you are using Helm V2, you will need to install Helm v2 and Tiller on the Delegate pod. For steps on installing software on the Delegate, go to [Install Software on the Delegate with Initialization Scripts](../../../platform/2_Delegates/delegate-guide/run-scripts-on-delegates.md).
 5. Click **Continue**.
 6. In **Manifest Details**, enter the following settings can click **Submit**.
    * **Manifest Identifier**: enter **nginx**.

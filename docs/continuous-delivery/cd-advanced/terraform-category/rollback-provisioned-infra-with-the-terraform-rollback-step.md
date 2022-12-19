@@ -1,5 +1,5 @@
 ---
-title: Rollback Provisioned Infra with the Terraform Rollback Step
+title: Rollback Infra with the Terraform Rollback step
 description: Roll back provisioning and return to pre-deployment state.
 sidebar_position: 6
 helpdocs_topic_id: jgi6d73noy
@@ -20,7 +20,7 @@ This topic describes how to roll back your provisioned infrastructure and resour
 
 Terraform must be installed on the Delegate to use a Harness Terraform Provisioner. You can install Terraform manually or use the `INIT_SCRIPT` environment variable in the Delegate YAML.
 
-See [Install Software on the Delegate with Initialization Scripts](https://docs.harness.io/article/yte6x6cyhn-run-scripts-on-delegates).
+See [Install Software on the Delegate with Initialization Scripts](../../../platform/2_Delegates/delegate-guide/run-scripts-on-delegates.md).
 
 
 ```bash

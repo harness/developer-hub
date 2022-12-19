@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "@docusaurus/Link";
 import clsx from "clsx";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import styles from "./styles.module.scss";
 import TutorialCard, { CardItem, docType } from "./TutorialCard";
 
@@ -10,11 +11,11 @@ const FeaturedList: CardItem[] = [
     title: "Get started with the fastest CI on the planet",
 
     module: "ci",
-    icon: "/img/icon_ci.svg",
+    icon: "img/icon_ci.svg",
     description: (
       <>
-        This tutorial helps you get started with Harness CI and explore some of the features that make it four times faster than the leading competitor.
-
+        This tutorial helps you get started with Harness CI and explore some of
+        the features that make it four times faster than the leading competitor.
       </>
     ),
     newDoc: true,
@@ -25,7 +26,7 @@ const FeaturedList: CardItem[] = [
   {
     title: "Node and Docker CI Pipeline",
     module: "ci",
-    icon: "/img/icon_ci.svg",
+    icon: "img/icon_ci.svg",
     description: (
       <>
         This build automation guide walks you through building a NodeJS and
@@ -43,7 +44,7 @@ const DroneList: CardItem[] = [
   {
     title: "Coming Soon",
     module: "ci",
-    icon: "/img/icon_ci.svg",
+    icon: "img/icon_ci.svg",
     description: <>Drone Tutorials Coming Soon</>,
     newDoc: false,
     type: [docType.Documentation],
@@ -55,7 +56,7 @@ const CIList: CardItem[] = [
   {
     title: "Node and Docker CI Pipeline",
     module: "ci",
-    icon: "/img/icon_ci.svg",
+    icon: "img/icon_ci.svg",
     description: (
       <>
         This build automation guide walks you through building a NodeJS and
@@ -70,10 +71,10 @@ const CIList: CardItem[] = [
   {
     title: "Run LocalStack as a Service",
     module: "ci",
-    icon: "/img/icon_ci.svg",
+    icon: "img/icon_ci.svg",
     description: (
       <>
-        This build automation guide shows how to run LocalStack as a Background 
+        This build automation guide shows how to run LocalStack as a Background
         step in a CI Pipeline
       </>
     ),
@@ -85,7 +86,7 @@ const CIList: CardItem[] = [
   {
     title: "Run Sauce Connect Proxy as a Service",
     module: "ci",
-    icon: "/img/icon_ci.svg",
+    icon: "img/icon_ci.svg",
     description: (
       <>
         This build automation guide walks you through running Sauce Connect
@@ -100,7 +101,7 @@ const CIList: CardItem[] = [
   {
     title: "Build and publish a Java HTTP Server",
     module: "ci",
-    icon: "/img/icon_ci.svg",
+    icon: "img/icon_ci.svg",
     description: (
       <>
         Build, test, and publish a Docker image for a Java HTTP server
@@ -116,11 +117,11 @@ const CIList: CardItem[] = [
     title: "Get started with the fastest CI on the planet",
 
     module: "ci",
-    icon: "/img/icon_ci.svg",
+    icon: "img/icon_ci.svg",
     description: (
       <>
-        This tutorial helps you get started with Harness CI and explore some of the features that make it four times faster than the leading competitor.
-
+        This tutorial helps you get started with Harness CI and explore some of
+        the features that make it four times faster than the leading competitor.
       </>
     ),
     newDoc: true,
@@ -131,6 +132,7 @@ const CIList: CardItem[] = [
 ];
 
 export default function CI() {
+  const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   return (
     // <Layout title="CI" description="CI">
     //   <ul className={styles.breadCrumb}>
@@ -138,14 +140,14 @@ export default function CI() {
     //     <li>Build and Test Code</li>
     //   </ul>
     <div className="container">
-      <img src="/img/ci.svg" />
+      <img src={`${baseUrl}img/ci.svg`} />
       <div className={styles.SectionName}>
         <h3>Build & Test Code</h3>
       </div>
       <div className={styles.topSection}>
         <div className={styles.spaceBetween}>
           <div className={styles.moduleTitle}>
-            <img src="/img/icon_ci.svg" />
+            <img src={`${baseUrl}img/icon_ci.svg`} />
             <h1>Continuous Integration</h1>
           </div>
           <div>
@@ -157,7 +159,7 @@ export default function CI() {
                   styles.btnLight
                 )}
               >
-                <img src="/img/icon_document.png" /> Documentation
+                <img src={`${baseUrl}img/icon_document.png`} /> Documentation
               </button>
             </Link>
           </div>
@@ -177,7 +179,7 @@ export default function CI() {
                 to="#all-tutorials"
               >
                 CI Tutorials
-                <img src="/img/Stroke.svg" />
+                <img src={`${baseUrl}img/Stroke.svg`} />
               </Link>
               <Link href="https://harness.io/products/continuous-integration">
                 <button className={styles.link}>Learn more about CI</button>
@@ -185,7 +187,7 @@ export default function CI() {
             </div>
           </div>
           <div>
-            <img src="/img/ci_flow.svg" />
+            <img src={`${baseUrl}img/ci_flow.svg`} />
           </div>
         </div>
       </div>

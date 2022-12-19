@@ -1,0 +1,14 @@
+{
+  "label": "FirstGen Troubleshooting",
+  "position": 90,
+  "collapsible": "true",
+  "collapsed": "true",
+  "className": "red",
+  "link": {
+    "type": "generated-index",
+    "title": "FirstGen Troubleshooting"
+  },
+  "customProps": {
+    "helpdocs_category_id": "pglyu478ao"
+  }
+}

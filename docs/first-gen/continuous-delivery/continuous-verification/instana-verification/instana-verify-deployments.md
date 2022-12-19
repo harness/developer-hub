@@ -99,6 +99,6 @@ To explore and interpret verification analysis results, see [Verification Result
 
 ### Next Steps
 
-* [Configuration as Code](https://docs.harness.io/article/htvzryeqjw-configuration-as-code)
-* [Users and Permissions](https://docs.harness.io/article/ven0bvulsj-users-and-permissions)
+* [Configuration as Code](../../../firstgen-platform/config-as-code/configuration-as-code.md)
+* [Users and Permissions](../../../firstgen-platform/security/access-management-howtos/users-and-permissions.md)
 

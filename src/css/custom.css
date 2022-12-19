@@ -228,6 +228,10 @@
 
   --ifm-navbar-padding-vertical: calc(var(--ifm-spacing-vertical) * 0.75);
   --ifm-navbar-height: 4.25rem;
+
+  --harness-font-family: Inter, sans-serif, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 html {
@@ -249,9 +253,7 @@ html *:after {
 }
 
 body {
-  font-family: Inter, sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
+  font-family: var(--harness-font-family) !important;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -425,6 +427,10 @@ body.DocSearch--active #__docusaurus > div[class*="announcementBar"] {
 .theme-doc-sidebar-container .sidebar-item-rss > a::after {
   content: url(/img/icon_rss.svg);
   margin-left: 0.3em;
+}
+
+.CoveoSearchInterface {
+  font-family: var(--harness-font-family) !important;
 }
 
 /* customize LHS menu items */

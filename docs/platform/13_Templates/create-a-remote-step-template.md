@@ -97,7 +97,7 @@ The **Step Parameters** settings appear.​
 3. Specify your **Input** **Variables** and **Output** **Variables**.
 4. In **Execution Target**,​ specify where you want to execute the script.  
 You can select **Specify on Target Host** or **On Delegate**.  
-For more information, see [Using Shell Scripts in CD Stages](https://docs.harness.io/article/k5lu0u6i1i-using-shell-scripts).
+For more information, see [Using Shell Scripts in CD Stages](../../continuous-delivery/cd-execution/cd-general-steps/using-shell-scripts.md).
 5. Click **Save**. The **Save Template to Git** settings appear.![](./static/create-a-remote-step-template-21.png)
 6. In **Select Branch to Commit**, You can select one of the following:
 	1. **Commit to an existing branch**: you can start a pull request if you like.​

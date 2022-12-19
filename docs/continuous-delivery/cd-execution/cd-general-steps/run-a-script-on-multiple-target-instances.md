@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 When you are deploying to multiple hosts, such as with an SSH, WinRM, or Deployment Template stage, you can run the same step on all of the target hosts.
 
-To run the step on all hosts, you use the Repeat [Looping Strategy](https://docs.harness.io/article/eh4azj73m4-looping-strategies-matrix-repeat-and-parallelism) and identify all the hosts for the stage as the target:
+To run the step on all hosts, you use the Repeat [Looping Strategy](../../../platform/8_Pipelines/looping-strategies-matrix-repeat-and-parallelism.md) and identify all the hosts for the stage as the target:
 
 
 ```yaml
@@ -50,18 +50,18 @@ You can use all of the `<+instance...>` expressions to reference your hosts.
 
 For Microsoft Azure, AWS, or any platform-agnostic Physical Data Center (PDC):
 
-* [<+instance.hostName>](https://docs.harness.io/article/lml71vhsim-harness-variables#instance_host_name)
-* [<+instance.host.hostName>](https://docs.harness.io/article/lml71vhsim-harness-variables#instance_host_host_name)
-* [<+instance.name>](https://docs.harness.io/article/lml71vhsim-harness-variables#instance_name)
+* [<+instance.hostName>](../../../platform/12_Variables-and-Expressions/harness-variables.md#instance-host-name)
+* [<+instance.host.hostName>](../../../platform/12_Variables-and-Expressions/harness-variables.md#instance-host-host-name)
+* [<+instance.name>](../../../platform/12_Variables-and-Expressions/harness-variables.md#instance-name)
 
 For Microsoft Azure or AWS:
 
-* [<+instance.host.privateIp>](https://docs.harness.io/article/lml71vhsim-harness-variables#instance_host_private_ip)
-* [<+instance.host.publicIp>](https://docs.harness.io/article/lml71vhsim-harness-variables#instance_host_public_ip)
+* [<+instance.host.privateIp>](../../../platform/12_Variables-and-Expressions/harness-variables.md#instance-host-private-ip)
+* [<+instance.host.publicIp>](../../../platform/12_Variables-and-Expressions/harness-variables.md#instance-host-public-ip)
 
 `instance.name` has the same value as `instance.hostName`. Both are available for backward compatibility.### Set Looping Strategy
 
-The Repeat [Looping Strategy](https://docs.harness.io/article/eh4azj73m4-looping-strategies-matrix-repeat-and-parallelism) allows you to repeat the step for all target hosts. The strategy will iterate through the list of hosts. The list of hosts is identified with the expression `<+stage.output.hosts>`.
+The Repeat [Looping Strategy](../../../platform/8_Pipelines/looping-strategies-matrix-repeat-and-parallelism.md) allows you to repeat the step for all target hosts. The strategy will iterate through the list of hosts. The list of hosts is identified with the expression `<+stage.output.hosts>`.
 
 1. In your step, click **Advanced**.
 2. Click **Looping Strategy**.

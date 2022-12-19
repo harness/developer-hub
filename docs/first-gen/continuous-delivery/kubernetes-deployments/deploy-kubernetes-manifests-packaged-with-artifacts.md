@@ -30,7 +30,7 @@ See [Supported Platforms and Technologies](../../starthere-firstgen/supported-p
 
 * Custom Remote Manifests scripts use Bash only.
 * The Delegate that runs the script must have all the software needed for the scripts to execute.  
-Currently, you cannot select a specific Delegate to execute the Custom Remote Manifests script. Harness selects the Delegate based on [its standard methods](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation#how_does_harness_manager_pick_delegates). You can use [Delegate Profiles](https://docs.harness.io/article/yd4bs0pltf-run-scripts-on-the-delegate-using-profiles) to add software to Delegates from Harness.  
+Currently, you cannot select a specific Delegate to execute the Custom Remote Manifests script. Harness selects the Delegate based on [its standard methods](../../firstgen-platform/account/manage-delegates/delegate-installation.md#how-does-harness-manager-pick-delegates). You can use [Delegate Profiles](../../firstgen-platform/account/manage-delegates/run-scripts-on-the-delegate-using-profiles.md) to add software to Delegates from Harness.  
 If you select a Delegate in the Kubernetes Cluster Cloud Provider used by the Workflow's Infrastructure Definition, then the script is run on that Delegate.
 
 ### Review: What Workloads Can I Deploy?
@@ -51,7 +51,7 @@ You can use Harness secrets for the username and password in your script. For ex
 ```
 curl -sSf -u "${secrets.getValue("username")}:${secrets.getValue("password")}" -O 'https://mycompany.jfrog.io/module/example/manifest.zip'
 ```
-For more information, see [Use Encrypted Text Secrets](https://docs.harness.io/article/ygyvp998mu-use-encrypted-text-secrets).
+For more information, see [Use Encrypted Text Secrets](../../firstgen-platform/security/secrets-management/use-encrypted-text-secrets.md).
 
 ### Step 1: Create a Harness Kubernetes Service
 
@@ -99,7 +99,7 @@ Look for the **CUSTOM\_MANIFEST\_VALUES\_FETCH\_TASK** task:
 
 ![](./static/deploy-kubernetes-manifests-packaged-with-artifacts-177.png)
 
-You can also map specific Delegates to specific Harness tasks. See [Delegate Task Category Mapping](https://docs.harness.io/article/nzuhppobyg-map-tasks-to-delegates-and-profiles).
+You can also map specific Delegates to specific Harness tasks. See [Delegate Task Category Mapping](../../firstgen-platform/account/manage-delegates/map-tasks-to-delegates-and-profiles.md).
 
 ### Step 4: Add Path to Manifests
 
@@ -137,7 +137,7 @@ The remainder of this topic covers options for overriding the template.
 
 ### Option: Delegate Selector
 
-In **Delegate Selector**, select the Selector for the Delegate(s) you want to use. You add Selectors to Delegates to make sure that they're used to execute the command. For more information, see [Select Delegates with Selectors](https://docs.harness.io/article/c3fvixpgsl-select-delegates-for-specific-tasks-with-selectors).
+In **Delegate Selector**, select the Selector for the Delegate(s) you want to use. You add Selectors to Delegates to make sure that they're used to execute the command. For more information, see [Select Delegates with Selectors](../../firstgen-platform/account/manage-delegates/select-delegates-for-specific-tasks-with-selectors.md).
 
 Harness will use Delegates matching the Selectors you add.
 

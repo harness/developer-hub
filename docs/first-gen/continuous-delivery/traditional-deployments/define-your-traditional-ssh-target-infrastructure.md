@@ -83,7 +83,7 @@ When you select a region, more settings appear, such as **VPC** and **Tags**.
 
 ##### Using Variable Expressions in Tags
 
-**Tags** support [Harness variable expressions](https://docs.harness.io/article/9dvxcegm90-variables) from Harness Services, Environment Overrides, Workflows, and secrets.
+**Tags** support [Harness variable expressions](../../firstgen-platform/techref-category/variables/variables.md) from Harness Services, Environment Overrides, Workflows, and secrets.
 
 **Tags** does not support file-based variable expressions.
 
@@ -99,7 +99,7 @@ In **Scope to specific Services**, you can select the Service(s) that you want 
 
 When you set up the Infrastructure Definition in Harness to identify the target host(s) where your file will be deployed, you also add **Connection Attributes** that use a Harness SSH Key secret. This key is used by the Harness Delegate to SSH into the target host.
 
-For more information, see  [Add SSH Keys](https://docs.harness.io/article/gsp4s7abgc-add-ssh-keys).
+For more information, see  [Add SSH Keys](../../firstgen-platform/security/secrets-management/add-ssh-keys.md).
 
 ### See Also
 

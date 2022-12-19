@@ -14,7 +14,7 @@ For example, you could create a Jira issue when your deployment Pipeline executi
 
 ### Add Jira as a Collaboration Provider
 
-To use Jira integration in your Workflow or Pipeline, you need to add a Jira account as a Harness Collaboration Provider. For instructions and required permissions, see [Add Jira Collaboration Provider](https://docs.harness.io/article/bhpffyx0co-add-jira-collaboration-provider).
+To use Jira integration in your Workflow or Pipeline, you need to add a Jira account as a Harness Collaboration Provider. For instructions and required permissions, see [Add Jira Collaboration Provider](../../../firstgen-platform/account/manage-connectors/add-jira-collaboration-provider.md).
 
 ![](./static/jira-integration-121.png)
 
@@ -26,7 +26,7 @@ You can create a Jira issue as a step in the execution of a Workflow. You can ad
 
 When you add a Workflow step that *creates* a Jira issue (as opposed to [updating](#update_a_jira_issue_using_a_workflow) an issue), the Workflow will create a new, independent Jira issue every time it is run.To create a Jira issue as part of a Workflow, do the following:
 
-1. Add a Jira account as a Harness Collaboration Provider, as described in [Add Jira Collaboration Provider](https://docs.harness.io/article/bhpffyx0co-add-jira-collaboration-provider).
+1. Add a Jira account as a Harness Collaboration Provider, as described in [Add Jira Collaboration Provider](../../../firstgen-platform/account/manage-connectors/add-jira-collaboration-provider.md).
 2. Create a new Harness Workflow, or open an existing Workflow.
 3. In any of the deployment or rollback steps, click **Add Step**. The **Add Step** settings appear.
 
@@ -40,7 +40,7 @@ The Jira dialog has the following fields:
 
 * **Title** – By default, the step is titled **Jira**. If you are creating a Jira issue, you might want to rename the step **Jira Creation**, for example.
 * **Request Type** – Select **Create an Issue**. **Update an issue** is discussed in [Update an Issue in a Workflow](#update_a_jira_issue_using_a_workflow).
-* **Jira Connector** – Select the Jira account to use, by selecting the Jira Collaboration Provider set up for that account. For more information, see [Add Jira Collaboration Provider](https://docs.harness.io/article/bhpffyx0co-add-jira-collaboration-provider).
+* **Jira Connector** – Select the Jira account to use, by selecting the Jira Collaboration Provider set up for that account. For more information, see [Add Jira Collaboration Provider](../../../firstgen-platform/account/manage-connectors/add-jira-collaboration-provider.md).
 * **Project** – Select a Jira project from the list. A Jira project is used to create the issue key and ID when the issue is created. The unique issue number is created automatically by Jira.
 * **Issue Type** – Select a Jira issue type from the list of types in the Jira project you selected.
 * **Priority** – Select a priority for the Jira issue. The list is generated from the Jira project you selected.
@@ -63,7 +63,7 @@ Deployment url : ${deploymentUrl}
 Artifact: ${artifact.displayName}  
 Build number: ${artifact.buildNo}
 ```
-The variables will be replaced at runtime with deployment information. For general information on Harness variables, see [Variables and Expressions in Harness](https://docs.harness.io/article/9dvxcegm90-variables). For specifics, see [Jira Issue Variables](#jira_issue_variables) below.
+The variables will be replaced at runtime with deployment information. For general information on Harness variables, see [Variables and Expressions in Harness](../../../firstgen-platform/techref-category/variables/variables.md). For specifics, see [Jira Issue Variables](#jira_issue_variables) below.
 
 When the Workflow is deployed, in the Harness Manager **Deployments** page, you can see a link to the Jira issue created by the Jira step:
 
@@ -157,7 +157,7 @@ When you deploy your Workflow, you will provide values for any variables. If you
 
 See:
 
-* [What is a Harness Variable Expression?](https://docs.harness.io/article/9dvxcegm90-variables)
+* [What is a Harness Variable Expression?](../../../firstgen-platform/techref-category/variables/variables.md)
 * [Add Service Config Variables](../setup-services/add-service-level-config-variables.md)
 * [Set Workflow Variables](add-workflow-variables-new-template.md)
 

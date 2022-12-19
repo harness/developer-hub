@@ -20,7 +20,7 @@ Other common uses are:
 
 This topic describes how to use the HTTP step. For comprehensive details on each setting, see [HTTP Step Reference](../../cd-technical-reference/cd-gen-ref-category/http-step.md).
 
-Looking for the Harness REST API? See [API Quickstart](https://docs.harness.io/article/f0aqiv3td7-api-quickstart).
+Looking for the Harness REST API? See [API Quickstart](../../../platform/16_APIs/api-quickstart.md).
 
 ## Before You Begin
 
@@ -62,14 +62,14 @@ In **URL**, enter a URL for the call. It must include the `http://` scheme.
 
 You can use a Fixed Value, Runtime Input, or Expression.
 
-You can use [Harness variables](https://docs.harness.io/article/lml71vhsim-harness-variables), too. For example, if the Service name matches the domain name of the HTTP address, you can use `http://<+service.name>/...`.
+You can use [Harness variables](../../../platform/12_Variables-and-Expressions/harness-variables.md), too. For example, if the Service name matches the domain name of the HTTP address, you can use `http://<+service.name>/...`.
 
 Before handing the execution of the HTTP step to a Harness Delegate, Harness performs a capability check on the URL to ensure that a non-400 response code is returned.
 
 
 <!-- ### Using secrets in the HTTP step URL
 
-In some cases, you might want to use a [Harness text secret](https://docs.harness.io/article/osfw70e59c-add-use-text-secrets) in the **URL** setting. For example, `https://www.google.com/<+secrets.getValue("xyz")>`.
+In some cases, you might want to use a [Harness text secret](../../../platform/6_Security/2-add-use-text-secrets.md) in the **URL** setting. For example, `https://www.google.com/<+secrets.getValue("xyz")>`.
 
 It's important to know how Harness uses the secret when evaluating the URL.
 
@@ -96,7 +96,7 @@ In Request **Body**, you can enter the body of the HTTP payload to send to the U
 
 You can use a Fixed Value, Runtime Input, or Expression.
 
-You can use [Harness variables](https://docs.harness.io/article/lml71vhsim-harness-variables), too.
+You can use [Harness variables](../../../platform/12_Variables-and-Expressions/harness-variables.md), too.
 
 ## Option: Assertion
 
@@ -113,7 +113,7 @@ Expressions can use the following aliases to refer to the HTTP responses, URL, a
 
 You can use a Fixed Value, Runtime Input, or Expression.
 
-You can use [Harness variables](https://docs.harness.io/article/lml71vhsim-harness-variables), too.
+You can use [Harness variables](../../../platform/12_Variables-and-Expressions/harness-variables.md), too.
 
 ## Option: Headers
 
@@ -124,9 +124,9 @@ Headers are `key:value` pairs. For example:
 
 You can use a Fixed Value, Runtime Input, or Expression.
 
-You can use [Harness variables](https://docs.harness.io/article/lml71vhsim-harness-variables), too.
+You can use [Harness variables](../../../platform/12_Variables-and-Expressions/harness-variables.md), too.
 
-You can reference [Harness secrets](https://docs.harness.io/article/osfw70e59c-add-use-text-secrets) in the **Value** setting, too.
+You can reference [Harness secrets](../../../platform/6_Security/2-add-use-text-secrets.md) in the **Value** setting, too.
 
 For example, in **Key**, enter `Token` .
 

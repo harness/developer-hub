@@ -17,7 +17,7 @@ Development teams can then deploy consistently without using the Harness UI to c
 ### Before You Begin
 
 * [Harness Key Concepts](../../starthere-firstgen/harness-key-concepts.md) — Ensure you know Harness Key Concepts.
-* [Configuration as Code](https://docs.harness.io/article/htvzryeqjw-configuration-as-code) — Review Harness YAML interface.
+* [Configuration as Code](../../firstgen-platform/config-as-code/configuration-as-code.md) — Review Harness YAML interface.
 * [Harness Git Integration Overview](harness-git-ops.md) — Review Harness support for Git.
 
 ### Review: Why Git-based Onboarding?
@@ -31,7 +31,7 @@ Here are a few examples of why Harness customers use Git for onboarding:
 
 ### Step 1: Set Up Git Connector
 
-Set up a Source Repo Provider connection in Harness that connects to the Git repo you want to use. For details, see [Add Source Repo Providers](https://docs.harness.io/article/ay9hlwbgwa-add-source-repo-providers).
+Set up a Source Repo Provider connection in Harness that connects to the Git repo you want to use. For details, see [Add Source Repo Providers](../../firstgen-platform/account/manage-connectors/add-source-repo-providers.md).
 
 For example, here is a new GitHub repo named **Golden Template Application** and its corresponding set up in Harness as a Source Repo Provider:
 
@@ -44,7 +44,7 @@ Remember the following important settings:
 * **Content type** — The **Content type** in the repo is **application/json**.
 * **Just the push event** — In the repo Webhook's **Which events would you like to trigger this webhook?** setting, only the **Just the push event** option is selected.
 
-For details, see [Configuration as Code](https://docs.harness.io/article/htvzryeqjw-configuration-as-code).
+For details, see [Configuration as Code](../../firstgen-platform/config-as-code/configuration-as-code.md).
 
 ### Step 2: Create Application Template
 
@@ -74,7 +74,7 @@ Once you create the Service it is synced with your repo automatically:
 
 First, set up an Artifact Source placeholder in the Service. Here we use a publicly-available Nginx Docker image from Docker Hub:
 
-![](./static/onboard-teams-using-git-ops-04.png)For details on setting up the Artifact Server connection to Docker Hub in Harness, see [Add Artifact Servers](https://docs.harness.io/article/7dghbx1dbl-configuring-artifact-server).
+![](./static/onboard-teams-using-git-ops-04.png)For details on setting up the Artifact Server connection to Docker Hub in Harness, see [Add Artifact Servers](../../firstgen-platform/account/manage-connectors/configuring-artifact-server.md).
 
 Next, we'll configure the SampleK8s **Manifests** section to use remote manifests.
 
@@ -262,7 +262,7 @@ This topic showed you how Git can be used for safe, version-controlled, easy Har
 
 Managing new Harness Application setup in Git brings deployment closer to developers. It enables them to live in their code.
 
-With Harness Git support, developers don't need to check deployment status in the Harness Manager UI. For example, they can use [Harness GraphQL](https://docs.harness.io/article/tm0w6rruqv-harness-api). Here's a simple Pipeline executions query and result:
+With Harness Git support, developers don't need to check deployment status in the Harness Manager UI. For example, they can use [Harness GraphQL](../../firstgen-platform/techref-category/api/harness-api.md). Here's a simple Pipeline executions query and result:
 
 
 ```
@@ -309,6 +309,6 @@ In addition, Harness Application that live in code are reusable and versioned. I
 ### Next Steps
 
 * [Triggers](../model-cd-pipeline/triggers/add-a-trigger-2.md)
-* [Harness API](https://docs.harness.io/article/tm0w6rruqv-harness-api)
+* [Harness API](../../firstgen-platform/techref-category/api/harness-api.md)
 * [Harness Git Integration Overview](harness-git-ops.md)
 

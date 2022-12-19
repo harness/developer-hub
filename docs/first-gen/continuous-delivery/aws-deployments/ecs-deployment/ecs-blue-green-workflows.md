@@ -31,7 +31,7 @@ To create and deploy an ECS Workflow, you must belong to a Harness User Group wi
 * `Workflow Update`
 * `Workflow Create`
 
-See [Managing Users and Groups (RBAC)](https://docs.harness.io/article/ven0bvulsj-users-and-permissions).
+See [Managing Users and Groups (RBAC)](../../../firstgen-platform/security/access-management-howtos/users-and-permissions.md).
 
 ### ECS Blue/Green Using ELB
 
@@ -197,7 +197,7 @@ In **Desired Instances**, set the number or percentage of ECS service instances 
 
 The value in **Desired Instances** relates to the number of ECS service instances set in the **Setup Load Balancer** dialog. For example, if you entered 2 as the **Desired Instance Count** in **Setup Load Balancer** and then enter 50 Percent in **Upgrade Containers**, that means Harness will deploy 1 ECS service instance.
 
-**Use Expressions:** You can use [Harness Service, Environment Override, and Workflow](https://docs.harness.io/article/9dvxcegm90-variables) variable expressions in **Desired Instances** by selecting **Use Expression** and then entering the expression, like `${workflow.variables.DesiredInstances}`. When you run the Workflow, you can provide a value for the variable.Here's what the **Upgrade Containers** step looks like in a Deployment of the Workflow.
+**Use Expressions:** You can use [Harness Service, Environment Override, and Workflow](../../../firstgen-platform/techref-category/variables/variables.md) variable expressions in **Desired Instances** by selecting **Use Expression** and then entering the expression, like `${workflow.variables.DesiredInstances}`. When you run the Workflow, you can provide a value for the variable.Here's what the **Upgrade Containers** step looks like in a Deployment of the Workflow.
 
 ![](./static/ecs-blue-green-workflows-65.png)
 
@@ -509,7 +509,7 @@ You can also see the Blue/Green tag in the ECS console, in the **Tags** tab for 
 
 ### Rollbacks
 
-See [ECS Rollbacks](https://docs.harness.io/article/d7rnemtfuz-ecs-rollback).
+See [ECS Rollbacks](../../../firstgen-platform/techref-category/cd-ref/platforms-ref/ecs-rollback.md).
 
 ### Post-Production Rollback
 

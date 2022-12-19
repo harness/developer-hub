@@ -1,0 +1,14 @@
+{
+  "label": "Manage Harness Delegates FirstGen",
+  "position": 10,
+  "collapsible": "true",
+  "collapsed": "true",
+  "className": "red",
+  "link": {
+    "type": "generated-index",
+    "title": "Manage Harness Delegates FirstGen"
+  },
+  "customProps": {
+    "helpdocs_category_id": "gyd73rp7np"
+  }
+}

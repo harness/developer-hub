@@ -12,12 +12,12 @@ You can use the same CD stage Services across your Pipeline stages. Once you hav
 
 This topic describes how to propagate and override Services.
 
-You can also use Harness Input Sets and Overlays to select from different collections of settings at runtime. See [Input Sets and Overlays](https://docs.harness.io/article/3fqwa8et3d-input-sets) and [Run Pipelines using Input Sets and Overlays](https://docs.harness.io/article/gfk52g74xt-run-pipelines-using-input-sets-and-overlays).
+You can also use Harness Input Sets and Overlays to select from different collections of settings at runtime. See [Input Sets and Overlays](../../../platform/8_Pipelines/input-sets.md) and [Run Pipelines using Input Sets and Overlays](../../../platform/8_Pipelines/run-pipelines-using-input-sets-and-overlays.md).
 
 ## Before You Begin
 
 * [Kubernetes CD Quickstart](../../onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md)
-* [Add a Stage](https://docs.harness.io/article/2chyf1acil-add-a-stage)
+* [Add a Stage](../../../platform/8_Pipelines/add-a-stage.md)
 
 ## Services and Environments v2
 

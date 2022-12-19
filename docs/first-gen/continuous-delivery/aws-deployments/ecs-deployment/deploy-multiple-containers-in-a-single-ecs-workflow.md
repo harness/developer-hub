@@ -429,7 +429,7 @@ If a single container fails, the task fails.
 
 #### Display Host and Container Information
 
-You can use [Harness built-inn variables expressions](https://docs.harness.io/article/9dvxcegm90-variables) and a [Shell Script](../../model-cd-pipeline/workflows/capture-shell-script-step-output.md) step in your Workflow to display useful information about the deployed containers and hosts.
+You can use [Harness built-inn variables expressions](../../../firstgen-platform/techref-category/variables/variables.md) and a [Shell Script](../../model-cd-pipeline/workflows/capture-shell-script-step-output.md) step in your Workflow to display useful information about the deployed containers and hosts.
 
 Here is an example:
 
@@ -449,5 +449,5 @@ echo ec2Instance.privateIpAddress: ${instance.host.ec2Instance.privateIpAddress}
 ```
 ### Next Steps
 
-* [Harness built-in AWS ECS variable expressions](https://docs.harness.io/article/9dvxcegm90-variables#aws_ecs).
+* [Harness built-in AWS ECS variable expressions](../../../firstgen-platform/techref-category/variables/variables.md#aws-ecs).
 

@@ -121,16 +121,16 @@ To clone a Dashboard, do the following:
 
 You can also perform the following actions on the Dashboard:
 
-* [Use Dashboard Actions](https://ngdocs.harness.io/article/y1oh7mkwmh-use-dashboard-actions)
-* [Download Dashboard Data](https://ngdocs.harness.io/article/op59lb1pxv-download-dashboard-data)
-* [Create Conditional Alerts](https://ngdocs.harness.io/article/ro0i58mvby-create-conditional-alerts)
-* [Schedule and Share Dashboards](https://ngdocs.harness.io/article/35gfke0rl8-share-dashboards)
+* [Use Dashboard Actions](../../platform/18_Dashboards/use-dashboard-actions.md)
+* [Download Dashboard Data](../../platform/18_Dashboards/download-dashboard-data.md)
+* [Create Conditional Alerts](../../platform/18_Dashboards/create-conditional-alerts.md)
+* [Schedule and Share Dashboards](../../platform/18_Dashboards/share-dashboards.md)
 
 ## Next Steps
 
 Refer to the following topics to create your own Dashboard and chart data.
 
-* [Create Dashboards](https://ngdocs.harness.io/article/ardf4nbvcy-create-dashboards)
-* [Create Visualizations and Graphs](https://ngdocs.harness.io/article/n2jqctdt7c-create-visualizations-and-graphs)
-* [Add Custom Fields](https://docs.harness.io/article/i4mtqea5es-add-custom-fields)
+* [Create Dashboards](../../platform/18_Dashboards/create-dashboards.md)
+* [Create Visualizations and Graphs](../../platform/18_Dashboards/create-visualizations-and-graphs.md)
+* [Add Custom Fields](../../platform/18_Dashboards/add-custom-fields.md)
 

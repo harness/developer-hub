@@ -345,7 +345,7 @@ The following notes clarify support of some platform features.
 
 ##### Kubernetes
 
-See [What Can I Deploy in Kubernetes?](https://docs.harness.io/article/efnlvytc6l-what-can-i-deploy-in-kubernetes).
+See [What Can I Deploy in Kubernetes?](../continuous-delivery/cd-technical-reference/cd-k8s-ref/what-can-i-deploy-in-kubernetes.md).
 
 ##### Kubernetes version support
 
@@ -421,7 +421,7 @@ The following table lists where you can store your manifests or config files for
 
 ##### Terraform version support
 
-Harness does not include Terraform on the Harness Delegate. You must install Terraform on the Delegate when using Terraform in Harness. For more information, go to [Terraform How-tos](https://docs.harness.io/article/w6i5f7cpc9-terraform-how-tos).
+Harness does not include Terraform on the Harness Delegate. You must install Terraform on the Delegate when using Terraform in Harness. For more information, go to [Terraform How-tos](../continuous-delivery/cd-advanced/terraform-category/terraform-how-tos.md).
 
 Harness supports the following Terraform versions:
 
@@ -541,15 +541,15 @@ The following table lists Harness support for metrics platforms (APMs).
 
 |  Metrics Provider Name |  Metric Pack |  Deployment Verification |
 | --- | --- | --- |
-| [AppDynamics](https://docs.harness.io/article/916vrl4l76-verify-deployments-with-app-dynamics) |  Business Transactions |  Yes |
-| [AppDynamics](https://ngdocs.harness.io/article/916vrl4l76) |  JVM and Infra Metrics | Supported via Custom Metrics |
-| [New Relic](https://docs.harness.io/article/p8lqq2il39-verify-deployments-with-new-relic) |  Business Transactions |  Yes |
+| [AppDynamics](../continuous-delivery/cd-execution/cv-category/verify-deployments-with-app-dynamics.md) |  Business Transactions |  Yes |
+| [AppDynamics](../continuous-delivery/cd-execution/cv-category/verify-deployments-with-app-dynamics.md) |  JVM and Infra Metrics | Supported via Custom Metrics |
+| [New Relic](../continuous-delivery/cd-execution/cv-category/verify-deployments-with-new-relic.md) |  Business Transactions |  Yes |
 |  New Relic |  Insights | Supported via Custom Metrics |
-| [Google Cloud Operations (GCP)](https://docs.harness.io/article/owqpo59gp5-verify-deployments-with-google-cloud-operations) |  Infrastructure Metrics |  Yes |
+| [Google Cloud Operations (GCP)](../continuous-delivery/cd-execution/cv-category/verify-deployments-with-google-cloud-operations.md) |  Infrastructure Metrics |  Yes |
 |  Google Cloud Operations (GCP) |  Custom metrics from explorer | No |
-| [Prometheus](https://ngdocs.harness.io/article/e9z7944qhw) |  Custom metrics from Prometheus |  Yes |
-| [Datadog](https://ngdocs.harness.io/article/z3kpdn6vcb) |  Docker Infra Metrics |  Yes |
-| [Dynatrace](https://ngdocs.harness.io/article/eamwqs2x5a) |  Performance |  Yes |
+| [Prometheus](../continuous-delivery/cd-execution/cv-category/verify-deployment-with-prometheus.md) |  Custom metrics from Prometheus |  Yes |
+| [Datadog](../continuous-delivery/cd-execution/cv-category/verify-deployments-with-datadog.md) |  Docker Infra Metrics |  Yes |
+| [Dynatrace](../continuous-delivery/cd-execution/cv-category/verify-deployments-with-dynatrace.md) |  Performance |  Yes |
 
 #### Log providers
 
@@ -560,14 +560,14 @@ Most logging platforms are also supported.
 |  |  |
 | --- | --- |
 | **Log Provider Name** | **Deployment Verification** |
-| [Splunk](https://docs.harness.io/article/mvjds2f3hb-verify-deployments-with-splunk) | Yes |
-| [Google Cloud Operations (GCP)](https://docs.harness.io/article/owqpo59gp5-verify-deployments-with-google-cloud-operations) | Yes |
+| [Splunk](../continuous-delivery/cd-execution/cv-category/verify-deployments-with-splunk.md) | Yes |
+| [Google Cloud Operations (GCP)](../continuous-delivery/cd-execution/cv-category/verify-deployments-with-google-cloud-operations.md) | Yes |
 
 #### Custom health sources
 
 Harness offers support for all major APM vendors and log providers, but there are cases where a customized APM or log provider is needed. The Custom Health Source lets you customize APMs and log providers of your choice.
 
-See [Verify Deployments with Custom Health Source](https://docs.harness.io/article/n67y68fopr-verify-deployments-with-custom-health-metrics).
+See [Verify Deployments with Custom Health Source](../continuous-delivery/cd-execution/cv-category/verify-deployments-with-custom-health-metrics.md).
 
 ### Cloud Cost Management
 
@@ -655,7 +655,7 @@ Harness supports the following Health Sources and Change Sources.
 
  A Health Source monitors changes in health trends of the Service using metrics and logs collected from an APM and log provider respectively.
 
-Harness offers support for all major APM vendors, but there are cases where a customized APM is needed. The [Custom Health Source](https://docs.harness.io/article/n67y68fopr-verify-deployments-with-custom-health-metrics) lets you customize APMs of your choice.
+Harness offers support for all major APM vendors, but there are cases where a customized APM is needed. The [Custom Health Source](../continuous-delivery/cd-execution/cv-category/verify-deployments-with-custom-health-metrics.md) lets you customize APMs of your choice.
 
 ##### Metrics providers and logging tools
 
@@ -731,7 +731,7 @@ The following table lists Harness support for collaboration tools.
 
 Most providers are used in both Pipeline Notification Strategies and User Group notifications:
 
-* [Add a Pipeline Notification Strategy](https://docs.harness.io/article/4bor7kyimj-notify-users-of-pipeline-events)
+* [Add a Pipeline Notification Strategy](../continuous-delivery/cd-advanced/cd-notifications/notify-users-of-pipeline-events.md)
 * [Send Notifications Using Slack](../platform/5_Notifications/send-notifications-using-slack.md)
 * [Send Notifications to Microsoft Teams](../platform/5_Notifications/send-notifications-to-microsoft-teams.md)
 
@@ -740,11 +740,11 @@ Most providers are used in both Pipeline Notification Strategies and User Group 
 |  Provider Name |  Notification |  Approval/Change Management |
 | --- | --- | --- |
 | [Microsoft Teams](../platform/5_Notifications/send-notifications-to-microsoft-teams.md) |  Yes |  N/A |
-| [Email](https://docs.harness.io/article/4bor7kyimj) |  Yes |  N/A |
+| [Email](../continuous-delivery/cd-advanced/cd-notifications/notify-users-of-pipeline-events.md) |  Yes |  N/A |
 | [Slack](../platform/5_Notifications/send-notifications-using-slack.md) |  Yes |  N/A |
 | [Jira](../platform/9_Approvals/adding-jira-approval-stages.md) |  Yes |  Yes |
 | [ServiceNow](../platform/9_Approvals/service-now-approvals.md) |  N/A |  Yes |
-| [PagerDuty](https://docs.harness.io/article/4bor7kyimj) |  Yes |  N/A |
+| [PagerDuty](../continuous-delivery/cd-advanced/cd-notifications/notify-users-of-pipeline-events.md) |  Yes |  N/A |
 
 ### Access control
 
@@ -833,7 +833,7 @@ For Kubernetes deployments, the following SDKs/tools are certified.
 
 ##### Native Helm deployments
 
-For [Native Helm deployments](https://docs.harness.io/article/lbhf2h71at-native-helm-quickstart), the following SDKs/tools are certified.
+For [Native Helm deployments](../continuous-delivery/onboard-cd/cd-quickstarts/native-helm-quickstart.md), the following SDKs/tools are certified.
 
 
 

@@ -1,6 +1,6 @@
 ---
 title: Terraform Provisioning with Harness
-description: This topic describes how to use Terraform to provision infrastructure as part of your deployment process.
+description: Use Terraform as part of your deployment process.
 sidebar_position: 2
 helpdocs_topic_id: boug6e884h
 helpdocs_category_id: jcu7twh2t6
@@ -79,7 +79,7 @@ However, let's look at the situation where module3 succeeds and now you have mod
 
 Terraform must be installed on the Delegate to use a Harness Terraform Provisioner. You can install Terraform manually or use the `INIT_SCRIPT` environment variable in the Delegate YAML.
 
-See [Install Software on the Delegate with Initialization Scripts](https://docs.harness.io/article/yte6x6cyhn-run-scripts-on-delegates).
+See [Install Software on the Delegate with Initialization Scripts](../../../platform/2_Delegates/delegate-guide/run-scripts-on-delegates.md).
 
 
 ```bash

@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import clsx from "clsx";
 import Tooltip from "rc-tooltip";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import styles from "./styles.module.scss";
 
 // harness-platform.svg | secret-mgmt.svg
 export default function LearnAboutPlatform(): JSX.Element {
+  const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   const [showMore, setShowMore] = useState(false);
   const toggleShowMore = () => {
     setShowMore(!showMore);
@@ -16,7 +18,7 @@ export default function LearnAboutPlatform(): JSX.Element {
         <div className={styles.subSectionName}>
           <h3>Modules</h3>
         </div>
-        {/* <img src="/img/harness-platform.svg" className={styles.platformIllustration} /> */}
+        {/* <img src="img/harness-platform.svg" className={styles.platformIllustration} /> */}
         <svg
           width="100%"
           height="742"
@@ -905,7 +907,7 @@ export default function LearnAboutPlatform(): JSX.Element {
           target="_blank"
         >
           <li>
-            <img src="/img/automated-pipeline.svg" />
+            <img src={`${baseUrl}img/automated-pipeline.svg`} />
             <h4>Pipelines</h4>
             <p>
               Run CI, CD, STO, FF and custom stages in an automated pipeline
@@ -917,7 +919,7 @@ export default function LearnAboutPlatform(): JSX.Element {
           target="_blank"
         >
           <li>
-            <img src="/img/templates.svg" />
+            <img src={`${baseUrl}img/templates.svg`} />
             <h4>Templates</h4>
             <p>
               Share organizational best practices for Pipelines, Steps, Stages,
@@ -930,7 +932,7 @@ export default function LearnAboutPlatform(): JSX.Element {
           target="_blank"
         >
           <li>
-            <img src="/img/delegates.svg" />
+            <img src={`${baseUrl}img/delegates.svg`} />
             <h4>Delegates</h4>
             <p>
               Install, configure, secure, monitor, upgrade Delegates running on
@@ -943,7 +945,7 @@ export default function LearnAboutPlatform(): JSX.Element {
           target="_blank"
         >
           <li>
-            <img src="/img/secret-mgmt.svg" />
+            <img src={`${baseUrl}img/secret-mgmt.svg`} />
             <h4>Secrets Managment</h4>
             <p>
               Secure your secrets using popular Secret Managers and Key
@@ -959,7 +961,6 @@ export default function LearnAboutPlatform(): JSX.Element {
               href="https://docs.harness.io/article/7fibxie636-projects-and-organizations"
               target="_blank"
             >
-              {/* <img src="/img/Templates.svg" /> */}
               <h4>Organizations &amp; Projects</h4>
               <p>Structure your development teams &amp; applications</p>
             </a>
@@ -969,7 +970,6 @@ export default function LearnAboutPlatform(): JSX.Element {
               href="https://docs.harness.io/article/vz5cq0nfg2-rbac-in-harness"
               target="_blank"
             >
-              {/* <img src="/img/Templates.svg" /> */}
               <h4>User &amp; Role Management</h4>
               <p>
                 Use OAuth/SAML/SSO/LDAP providers for authentication and RBAC

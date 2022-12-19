@@ -224,7 +224,7 @@ You will also provide the credentials to use when connecting to the target clust
 8. In **Authentication**, select **Service Account**.
 9.  In **Service Account Token**, paste in the Service Account Token for the cluster's **default** namespace.
 
-To use a Kubernetes Service Account (SA) and token, you will need to either use an existing SA that has `cluster-admin` or *admin* permissions in the namespace, or create a new SA and grant it the permissions. This is described in [Add a Kubernetes Cluster Connector](https://docs.harness.io/article/1gaud2efd4-add-a-kubernetes-cluster-connector).
+To use a Kubernetes Service Account (SA) and token, you will need to either use an existing SA that has `cluster-admin` or *admin* permissions in the namespace, or create a new SA and grant it the permissions. This is described in [Add a Kubernetes Cluster Connector](../../platform/7_Connectors/add-a-kubernetes-cluster-connector.md).
 
 Here's an example of a SA and ClusterRoleBinding with `cluster-admin`:
 

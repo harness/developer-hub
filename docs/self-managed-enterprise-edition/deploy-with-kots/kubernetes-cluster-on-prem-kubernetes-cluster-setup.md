@@ -464,7 +464,7 @@ To set up future versions of Harness Self-Managed Enterprise Edition, in the KOT
 
 **Important:** You cannot invite other users to Harness until a Harness Delegate is installed and a Harness SMTP Collaboration Provider is configured.
 
-1. Install Harness Delegate: [Delegate Installation Overview](https://docs.harness.io/article/igftn7rrtg).
+1. Install Harness Delegate: [Delegate Installation Overview](../../first-gen/firstgen-platform/account/manage-delegates/delegate-installation-overview.md).
 
 2. Set up an SMTP Collaboration Provider in Harness for email notifications from the Harness Manager.  
 Ensure you open the correct port for your SMTP provider, such as [Office 365](https://support.office.com/en-us/article/server-settings-you-ll-need-from-your-email-provider-c82de912-adcc-4787-8283-45a1161f3cc3).

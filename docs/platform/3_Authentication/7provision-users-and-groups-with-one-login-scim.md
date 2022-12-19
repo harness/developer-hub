@@ -28,7 +28,7 @@ This integration does not support updating a provisioned user's **Email** in O
 
 Once a user is provisioned in Harness, you cannot delete the user in the Harness Manager. You must delete the user in OneLogin.
 
-The provisioned user cannot use the Harness OneLogin app to log into Harness unless OneLogin is also set up for [OneLogin SAML authentication in Harness](https://docs.harness.io/article/zy8yjcrqzg-single-sign-on-sso-with-saml#saml_sso_with_one_login). They must use their email address and password.
+The provisioned user cannot use the Harness OneLogin app to log into Harness unless OneLogin is also set up for [OneLogin SAML authentication in Harness](../../first-gen/firstgen-platform/security/access-management-howtos/single-sign-on-sso-with-saml.md#saml-sso-with-one-login). They must use their email address and password.
 
 ### Step 1: Add Harness App to OneLogin​
 

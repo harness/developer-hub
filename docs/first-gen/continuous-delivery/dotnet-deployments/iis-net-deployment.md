@@ -73,9 +73,9 @@ Here are the major steps in an IIS (.NET) deployment:
 This guide assumes that you are familiar with Harness architecture and have downloaded the Harness delegate into your enterprise network or VPC. For more information, see:
 
 * [Harness Requirements](https://docs.harness.io/article/70zh6cbrhg-harness-requirements)
-* [Delegate Installation](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation)
+* [Delegate Installation](../../firstgen-platform/account/manage-delegates/delegate-installation.md)
 * [Harness Architecture](https://docs.harness.io/article/de9t8iiynt-harness-architecture)
-* [Configuration as Code](https://docs.harness.io/article/htvzryeqjw-configuration-as-code)
+* [Configuration as Code](../../firstgen-platform/config-as-code/configuration-as-code.md)
 
 ### Next Step
 

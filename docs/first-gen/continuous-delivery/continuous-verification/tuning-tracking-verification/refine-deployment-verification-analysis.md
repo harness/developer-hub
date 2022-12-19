@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 You can refine the priority or category of an event in the Workflow deployment.
 
-For information on changing event priorities in 24/7 Service Guard, see [Refine 24/7 Service Guard Verification Analysis](refine-24-7-service-guard-verification-analysis.md). Event classifications are covered in [Verification Event Classifications](https://docs.harness.io/article/339hy0kbnu-verification-event-classifications). For an overview of verification analysis feedback, see [Harness Verification Feedback Overview](../continuous-verification-overview/concepts-cv/harness-verification-feedback-overview.md).In this topic:
+For information on changing event priorities in 24/7 Service Guard, see [Refine 24/7 Service Guard Verification Analysis](refine-24-7-service-guard-verification-analysis.md). Event classifications are covered in [Verification Event Classifications](../../../firstgen-platform/techref-category/cv-reference/verification-event-classifications.md). For an overview of verification analysis feedback, see [Harness Verification Feedback Overview](../continuous-verification-overview/concepts-cv/harness-verification-feedback-overview.md).In this topic:
 
 * [Review: Permissions Required](#review_permissions_required)
 * [Step 1: Change Event Priority in a Deployment](#step_1_change_event_priority_in_a_deployment)
@@ -55,7 +55,7 @@ To change the priority of an event in a Deployment, do the following:
 
    ![](./static/refine-deployment-verification-analysis-18.png)
 
-6. Select a different priority setting. For details on the different verification settings, see [Verification Event Classifications](https://docs.harness.io/article/339hy0kbnu-verification-event-classifications).
+6. Select a different priority setting. For details on the different verification settings, see [Verification Event Classifications](../../../firstgen-platform/techref-category/cv-reference/verification-event-classifications.md).
 
 The options in the dialog are described below.
 

@@ -5,13 +5,15 @@
 const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 const path = require("path");
 
+const BASE_URL = process.env.BASE_URL || "/";
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "Harness Developer Hub",
   tagline:
     "Learn intelligent software delivery at your own pace. Step-by-step tutorials, videos, and reference docs to help you deliver customer happiness.",
   url: "https://developer.harness.io",
-  baseUrl: "/",
+  baseUrl: BASE_URL,
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
   favicon: "img/favicon.ico",
@@ -84,12 +86,11 @@ const config = {
           src: "img/logo_dlp.svg",
         },
         items: [
-          {
+          /*{
             position: "left",
-            // label: "img",
-            html: "<img src='/img/icon_beta.svg' alt='BETA' width='39' height='19' />",
+            html: `<img src='${BASE_URL}img/icon_beta.svg' alt='BETA' width='39' height='19' />`,
             href: "#",
-          },
+          },*/
           {
             // type: "search",
             // position: "right",
@@ -106,7 +107,7 @@ const config = {
               {
                 // type: "doc",
                 label: "All Tutorials",
-                to: "tutorials/get-started",
+                to: "tutorials",
               },
               {
                 // type: "doc",
@@ -232,43 +233,39 @@ const config = {
               },
               {
                 label: "Continuous Integration",
-                to: "release-notes/continuous-integration",
+                to: "release-notes/continuous-integration-release-notes",
               },
               {
                 label: "Continuous Delivery & GitOps",
-                to: "release-notes/continuous-delivery",
+                to: "release-notes/continuous-delivery-release-notes",
               },
               {
                 label: "Feature Flags",
-                to: "release-notes/feature-flags",
+                to: "release-notes/feature-flag-release-notes",
               },
               {
                 label: "Cloud Cost Management",
-                to: "release-notes/cloud-cost-management",
+                to: "release-notes/cloud-cost-management-release-notes",
               },
               {
                 label: "Service Reliability Management",
-                to: "release-notes/service-reliability-management",
+                to: "release-notes/service-reliability-management-release-notes",
               },
               {
                 label: "Security Testing Orchestration",
-                to: "release-notes/security-testing-orchestration",
+                to: "release-notes/security-testing-orchestration-release-notes",
               },
               {
                 label: "Chaos Engineering",
-                to: "release-notes/chaos-engineering",
+                to: "release-notes/chaos-engineering-release-notes",
               },
               {
                 label: "Harness Platform",
-                to: "release-notes/platform",
+                to: "release-notes/harness-platform-release-notes",
               },
               {
                 label: "Self-Managed Enterprise Edition",
-                to: "release-notes/self-managed-ee",
-              },
-              {
-                label: "Harness FirstGen",
-                to: "release-notes/first-gen",
+                to: "release-notes/self-managed-enterprise-edition-release-notes",
               },
             ],
           },
@@ -423,19 +420,24 @@ const config = {
         disableSwitch: true,
         respectPrefersColorScheme: false,
       },
+      /*
       announcementBar: {
         id: "support_us",
         content:
-          "Harness Developer Hub is in BETA. Help us improve by providing feedback.",
+          "Welcome to Harness Developer Hub. Help us improve by providing feedback.",
         backgroundColor: "#000000",
         textColor: "#ffffff",
         isCloseable: true,
       },
+      */
       hotjar: {
         siteId: 3194971,
       },
       oneTrust: {
         dataDomainScript: "59633b83-e34c-443c-a807-63232ce145e5",
+      },
+      utmCookie: {
+        prefix: "utm_",
       },
       rss: {
         rssPath: "release-notes/rss.xml",
@@ -501,6 +503,7 @@ const config = {
     "docusaurus-plugin-sass",
     path.join(__dirname, "/plugins/hotjar-plugin"),
     path.join(__dirname, "/plugins/onetrust-plugin"),
+    path.join(__dirname, "/plugins/utmcookie-plugin"),
   ],
 };
 

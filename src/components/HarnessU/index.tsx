@@ -1,10 +1,12 @@
 import React from "react";
 import clsx from "clsx";
 import Link from "@docusaurus/Link";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import styles from "./styles.module.scss";
 
 // harness-platform.svg | secret-mgmt.svg
 export default function HarnessU(): JSX.Element {
+  const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   return (
     <section className={styles.harnessU}>
       <div className="container">
@@ -25,7 +27,7 @@ export default function HarnessU(): JSX.Element {
               </div>
               <div className={styles.harnessUPath}>
                 <img
-                  src="/img/icon_univ-path.svg"
+                  src={`${baseUrl}img/icon_univ-path.svg`}
                   className={styles.harnssUIcon}
                 />
                 <span>4 Paths</span>
@@ -43,7 +45,7 @@ export default function HarnessU(): JSX.Element {
               </div>
               <div className={styles.harnessUPath}>
                 <img
-                  src="/img/icon_univ-path.svg"
+                  src={`${baseUrl}img/icon_univ-path.svg`}
                   className={styles.harnssUIcon}
                 />
                 <span>5 Roles</span>
@@ -61,7 +63,7 @@ export default function HarnessU(): JSX.Element {
               </div>
               <div className={styles.harnessUPath}>
                 <img
-                  src="/img/icon_univ-min.svg"
+                  src={`${baseUrl}img/icon_univ-min.svg`}
                   className={styles.harnssUIcon}
                 />
                 <span>1 Certification</span>

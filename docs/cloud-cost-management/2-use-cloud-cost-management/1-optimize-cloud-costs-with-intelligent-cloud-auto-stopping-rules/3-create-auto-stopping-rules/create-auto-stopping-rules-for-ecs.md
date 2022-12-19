@@ -124,7 +124,7 @@ You can use either of the following methods:
 
 **Auto-generated URL**
 
-Every AutoStopping rule will have an auto-generated URL. This URL will be a subdomain to the domain name specified for the [load balancer](https://ngdocs.harness.io/article/eba1bn2jm6-create-load-balancer-aws). Since the load balancer configures a wildcard domain such as `*.autostopping.yourcompany.com`, the auto-generated URL will work automatically and point to the correct load balancer.
+Every AutoStopping rule will have an auto-generated URL. This URL will be a subdomain to the domain name specified for the [load balancer](../4-load-balancer/create-load-balancer-aws.md). Since the load balancer configures a wildcard domain such as `*.autostopping.yourcompany.com`, the auto-generated URL will work automatically and point to the correct load balancer.
 
 Select **Use the auto-generated URL to access the resources managed by this AutoStopping Rule**.
 
@@ -157,7 +157,7 @@ If you've chosen to use a **custom URL** to access the resources, you need to ma
 
 In Review, verify all the configuration details and click **Save Rule**. To edit any of the configuration settings, click **EDIT** and modify the settings.
 
-Your AutoStopping rule is listed under the [AutoStopping Rules dashboard](https://ngdocs.harness.io/article/ehmi6kiynl-autostopping-dashboard).
+Your AutoStopping rule is listed under the [AutoStopping Rules dashboard](autostopping-dashboard.md).
 
 ### Create AutoStopping Rules with Terraform for ECS Services
 

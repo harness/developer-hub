@@ -43,7 +43,7 @@ The step level has the highest priority. Any delegate selected in a step's **Del
 
 A connector can be used in multiple places in a pipeline, such as a stage infrastructure's **Cloud Provider** setting or even in certain step settings.### Option: Step and step group delegate selector
 
-Delegates can be selected for steps and [step groups](https://docs.harness.io/article/ihnuhrtxe3-run-steps-in-parallel-using-a-step-group) in their **Advanced** settings.
+Delegates can be selected for steps and [step groups](../../../continuous-delivery/cd-technical-reference/cd-gen-ref-category/step-groups.md) in their **Advanced** settings.
 
 Here is a step example:
 

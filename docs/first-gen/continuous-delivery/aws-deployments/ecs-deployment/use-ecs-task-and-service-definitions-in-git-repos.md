@@ -12,11 +12,11 @@ As an alternative to entering your [ECS task and/or service definitions inline](
 
 This remote definition support enables you to leverage the build tooling and scripts you use currently for updating the definitions in your repos.
 
-You can also use a Git repo for your entire Harness Application, and sync it unidirectionally or bidirectionally. For more information, see  [Configuration as Code](https://docs.harness.io/article/htvzryeqjw-configuration-as-code). There is no conflict between the Git repo used for remote definition files and the Git repo used for the entire Harness Application.
+You can also use a Git repo for your entire Harness Application, and sync it unidirectionally or bidirectionally. For more information, see  [Configuration as Code](../../../firstgen-platform/config-as-code/configuration-as-code.md). There is no conflict between the Git repo used for remote definition files and the Git repo used for the entire Harness Application.
 
 ### Before You Begin
 
-* [Add Source Repo Providers](https://docs.harness.io/article/ay9hlwbgwa-add-source-repo-providers)
+* [Add Source Repo Providers](../../../firstgen-platform/account/manage-connectors/add-source-repo-providers.md)
 * [AWS ECS Quickstart](../../../first-gen-quickstarts/aws-ecs-deployments.md)
 
 ### Limitations
@@ -37,7 +37,7 @@ See  [Supported Platforms and Technologies](../../../starthere-firstgen/support
 
 Add a Harness Source Repo Provider to connect Harness to the repo where your ECS definitions are located.
 
-See [Add Source Repo Providers](https://docs.harness.io/article/ay9hlwbgwa-add-source-repo-providers).
+See [Add Source Repo Providers](../../../firstgen-platform/account/manage-connectors/add-source-repo-providers.md).
 
 ### Step 2: Link Remote Definitions
 

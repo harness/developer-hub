@@ -371,7 +371,7 @@ Now we'll add a Github Connector to tell Harness where to pull the config.json f
    
    ![](./static/harness-git-ops-application-set-tutorial-52.png)
    
-   You will store the PAT in a [Harness Text Secret](https://docs.harness.io/article/osfw70e59c-add-use-text-secrets). For details on Secrets Management, go to [Harness Secrets Management Overview](https://docs.harness.io/article/hngrlb7rd6-harness-secret-manager-overview).
+   You will store the PAT in a [Harness Text Secret](../../platform/6_Security/2-add-use-text-secrets.md). For details on Secrets Management, go to [Harness Secrets Management Overview](../../platform/6_Security/1-harness-secret-manager-overview.md).
 	7. Select **Enable API access** and use the same Harness Secret.
 3. Click **Continue**.
 4. In **Connect to the provider**, select **Connect through Harness Platform**., and then click **Save and Continue**.

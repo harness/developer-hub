@@ -19,8 +19,8 @@ Harness GCB integration lets you do the following:
 ### Before You Begin
 
 * If you are new to GCB, review [Overview of Cloud Build](https://cloud.google.com/cloud-build/docs/overview) and [Quickstart: Build](https://cloud.google.com/cloud-build/docs/quickstart-build) from Google.
-* [Add Google Cloud Platform Cloud Provider](https://docs.harness.io/article/6x52zvqsta-add-google-cloud-platform-cloud-provider)
-* [Add Source Repo Providers](https://docs.harness.io/article/ay9hlwbgwa-add-source-repo-providers)
+* [Add Google Cloud Platform Cloud Provider](../../firstgen-platform/account/manage-connectors/add-google-cloud-platform-cloud-provider.md)
+* [Add Source Repo Providers](../../firstgen-platform/account/manage-connectors/add-source-repo-providers.md)
 * [Workflows](../model-cd-pipeline/workflows/workflow-configuration.md)
 
 ### Review: Harness GCB Integration
@@ -45,7 +45,7 @@ Let's set it up.
 
 ### Step 1: Connect to Google Cloud Platform
 
-1. Connect Harness to your GCP account by setting up a Harness [Google Cloud Platform Cloud Provider](https://docs.harness.io/article/6x52zvqsta-add-google-cloud-platform-cloud-provider).  
+1. Connect Harness to your GCP account by setting up a Harness [Google Cloud Platform Cloud Provider](../../firstgen-platform/account/manage-connectors/add-google-cloud-platform-cloud-provider.md).  
 You set up this connection using a [GCP service account key file](https://cloud.google.com/iam/docs/creating-managing-service-account-keys) (in JSON format).
 2. Ensure that the service account used has the [**GCB Cloud Build Editor role**](https://cloud.google.com/cloud-build/docs/iam-roles-permissions#predefined_roles).
 
@@ -69,7 +69,7 @@ You can add the Google Cloud Build step to any Workflow type and Workflow sectio
 
 1. In your Harness Workflow, in any section, click **Add Step**.
 2. Select **Google Cloud Build**, and click **Next**.
-3. In **Google Cloud Provider**, select the Harness Google Cloud Provider you set up earlier. See [Add Google Cloud Platform Cloud Provider](https://docs.harness.io/article/6x52zvqsta-add-google-cloud-platform-cloud-provider).You can turn this setting into a deployment runtime parameter by clicking the template button **[T]**. This will create a [Workflow variable](../model-cd-pipeline/workflows/add-workflow-variables-new-template.md) for the setting. When you deploy this Workflow, you can enter the option for the setting.
+3. In **Google Cloud Provider**, select the Harness Google Cloud Provider you set up earlier. See [Add Google Cloud Platform Cloud Provider](../../firstgen-platform/account/manage-connectors/add-google-cloud-platform-cloud-provider.md).You can turn this setting into a deployment runtime parameter by clicking the template button **[T]**. This will create a [Workflow variable](../model-cd-pipeline/workflows/add-workflow-variables-new-template.md) for the setting. When you deploy this Workflow, you can enter the option for the setting.
 4. Complete the step using the following settings.
 
 ### Option 1: Inline JSON Build Spec
@@ -108,7 +108,7 @@ Harness uses the Cloud Build API [Build resource](https://cloud.google.com/cloud
 
 In this option, you specify the repo where your build config file and its related files are located.
 
-1. Ensure you have set up a Harness Source Repo Provider that points to the Git repo containing your build config file. See [Add Source Repo Providers](https://docs.harness.io/article/ay9hlwbgwa-add-source-repo-providers).
+1. Ensure you have set up a Harness Source Repo Provider that points to the Git repo containing your build config file. See [Add Source Repo Providers](../../firstgen-platform/account/manage-connectors/add-source-repo-providers.md).
 2. In **Build Specification**, select **Remote**.
 3. In **Source Repository**, select the Source Repro Provider that connects to your build config file repo.You can turn this setting into a deployment runtime parameter by clicking the template button **[T]**. This will create a [Workflow variable](../model-cd-pipeline/workflows/add-workflow-variables-new-template.md) for the setting. When you deploy this Workflow, you can enter the option for the setting.
 4. In **Commit ID**, select **Latest from Branch** or **Specific Commit ID**.
@@ -121,7 +121,7 @@ When you set up the Source Repo Provider, you entered in a branch name. The bran
 Select this option if you have created a [Cloud Build trigger](https://cloud.google.com/cloud-build/docs/automating-builds/create-manage-triggers) for your Cloud Build and you want to execute it in your Workflow.
 
 1. In **Build Specification**, click **Trigger**.
-2. In **Trigger Name**, select the name of the Cloud Build trigger you want to execute.You can enter the name of an existing variable expression in this setting. For example, if you created the [Workflow variable](../model-cd-pipeline/workflows/add-workflow-variables-new-template.md) `triggerName`, you can enter `${workflow.variables.triggerName}`. The variable expression should refer to a [Workflow variable](../model-cd-pipeline/workflows/add-workflow-variables-new-template.md) or other available [Harness variable](https://docs.harness.io/article/9dvxcegm90-variables). When you deploy this Workflow, you can enter the option for the setting.
+2. In **Trigger Name**, select the name of the Cloud Build trigger you want to execute.You can enter the name of an existing variable expression in this setting. For example, if you created the [Workflow variable](../model-cd-pipeline/workflows/add-workflow-variables-new-template.md) `triggerName`, you can enter `${workflow.variables.triggerName}`. The variable expression should refer to a [Workflow variable](../model-cd-pipeline/workflows/add-workflow-variables-new-template.md) or other available [Harness variable](../../firstgen-platform/techref-category/variables/variables.md). When you deploy this Workflow, you can enter the option for the setting.
 3. In **Trigger Type**, select one of the following:
 	1. **Branch Name:** Set your trigger to start a build using commits from a particular branch.
 	2. **Tag Name:** Set your trigger to start a build using commits that contain a particular tag.

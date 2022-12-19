@@ -25,7 +25,7 @@ The Terraform Apply step can provision any resource, including the target infras
 
 Terraform must be installed on the Delegate to use a Harness Terraform Provisioner. You can install Terraform manually or use the `INIT_SCRIPT` environment variable in the Delegate YAML.
 
-See [Install Software on the Delegate with Initialization Scripts](https://docs.harness.io/article/yte6x6cyhn-run-scripts-on-delegates).
+See [Install Software on the Delegate with Initialization Scripts](../../../platform/2_Delegates/delegate-guide/run-scripts-on-delegates.md).
 
 
 ```bash
@@ -72,7 +72,7 @@ The Terraform Apply step has the following settings.
 
 In **Name**, enter a name for the step, for example, **apply**.
 
-The name is very important. You can use the name in [expressions](https://docs.harness.io/article/lml71vhsim-harness-variables) to refer to settings in this step.
+The name is very important. You can use the name in [expressions](../../../platform/12_Variables-and-Expressions/harness-variables.md) to refer to settings in this step.
 
 For example, if the name of the stage is **Terraform** and the name of the step is **apply**, and you want to echo its timeout setting, you would use:
 
@@ -130,7 +130,7 @@ Click the provider where your files are hosted.
 
 ![](./static/run-a-terraform-plan-with-the-terraform-apply-step-05.png)
 
-Select or create a Connector for your repo. For steps, see [Connect to a Git Repo](https://docs.harness.io/article/zbhehjzsnv-connect-to-code-repo) or [Artifactory Connector Settings Reference](https://docs.harness.io/article/euueiiai4m-artifactory-connector-settings-reference) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**).
+Select or create a Connector for your repo. For steps, see [Connect to a Git Repo](../../../platform/7_Connectors/connect-to-code-repo.md) or [Artifactory Connector Settings Reference](../../../platform/7_Connectors/ref-cloud-providers/artifactory-connector-settings-reference.md) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**).
 
 In **Git Fetch Type**, select **Latest from Branch** or **Specific Commit ID**. When you run the Pipeline, Harness will fetch the script from the repo.
 
@@ -152,7 +152,7 @@ The following sections cover common Terraform Apply step options.
 
 ### Artifactory
 
-See [Artifactory Connector Settings Reference](https://docs.harness.io/article/euueiiai4m-artifactory-connector-settings-reference) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**).
+See [Artifactory Connector Settings Reference](../../../platform/7_Connectors/ref-cloud-providers/artifactory-connector-settings-reference.md) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**).
 
 ### Source Module
 
@@ -201,7 +201,7 @@ Harness will pass the workspace name you provide to the `terraform.workspace` 
 
 In the **Workspace** setting, you can simply select the name of the workspace to use.
 
-You can also use a [stage variable](https://docs.harness.io/article/lml71vhsim-harness-variables) in **Workspace**.
+You can also use a [stage variable](../../../platform/12_Variables-and-Expressions/harness-variables.md) in **Workspace**.
 
 Later, when the Pipeline is deployed, you specify the value for the stage variable and it is used in **Workspace**.
 
@@ -256,7 +256,7 @@ If you are entering secrets (for credentials, etc.), use Harness secret referenc
 ```bash
 secrets_encryption_kms_key = "<+secrets.getValue("org.kms_key")>"
 ```
-See [Add Text Secrets](https://docs.harness.io/article/osfw70e59c-add-use-text-secrets).
+See [Add Text Secrets](../../../platform/6_Security/2-add-use-text-secrets.md).
 
 ### Remote Variables
 
@@ -282,7 +282,7 @@ Click **Submit**. The remote file(s) are added.
 
 ##### Artifactory
 
-See [Artifactory Connector Settings Reference](https://docs.harness.io/article/euueiiai4m-artifactory-connector-settings-reference) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**).
+See [Artifactory Connector Settings Reference](../../../platform/7_Connectors/ref-cloud-providers/artifactory-connector-settings-reference.md) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**).
 
 ## Option: Backend Configuration
 
@@ -384,15 +384,15 @@ For example:
 TF_LOG_PATH=./terraform.log  
 TF_VAR_alist='[1,2,3]'
 ```
-You can use Harness encrypted text for values. See [Add Text Secrets](https://docs.harness.io/article/osfw70e59c-add-use-text-secrets).
+You can use Harness encrypted text for values. See [Add Text Secrets](../../../platform/6_Security/2-add-use-text-secrets.md).
 
 ## Option: Advanced Settings
 
 In **Advanced**, you can use the following options:
 
-* [Step Skip Condition Settings](https://docs.harness.io/article/i36ibenkq2-step-skip-condition-settings)
-* [Step Failure Strategy Settings](https://docs.harness.io/article/htrur23poj-step-failure-strategy-settings)
-* [Select Delegates with Selectors](https://docs.harness.io/article/nnuf8yv13o-select-delegates-with-selectors)
+* [Step Skip Condition Settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+* [Step Failure Strategy Settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+* [Select Delegates with Selectors](../../../platform/2_Delegates/delegate-guide/select-delegates-with-selectors.md)
 
 ## See Also
 

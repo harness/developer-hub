@@ -130,15 +130,12 @@
     }
 }
 .featuredCard{
-    border: 1px solid #D9DAE5;
-    box-shadow: none;
+    // border: 1px solid #D9DAE5;
+    box-shadow: 0px 1px 3px rgb(40 41 61 / 16%), 0px 0px 2px rgb(40 41 61 / 16%);
     width: 47%;
     .newDoc{
         right: 0;
     }
-    // &:last-child {
-    //     margin-right: 0;
-    // }
 }
 
 // @media screen and (max-width: 996px) {

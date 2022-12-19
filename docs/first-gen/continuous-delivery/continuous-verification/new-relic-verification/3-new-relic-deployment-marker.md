@@ -68,7 +68,7 @@ You cannot use it in the **Pre-deployment Steps** of a canary Workflow.
 
 
 You can also enter set up a
- [Service or Workflow variable](https://docs.harness.io/article/9dvxcegm90-variables) in the **New Relic Server** setting, such as: `${serviceVariable.new_relic_connector_name}` .
+ [Service or Workflow variable](../../../firstgen-platform/techref-category/variables/variables.md) in the **New Relic Server** setting, such as: `${serviceVariable.new_relic_connector_name}` .
 
 
 If the **New Relic Server** field contains an expression, the **Application Name** field must also use an expression.
@@ -89,7 +89,7 @@ The **Body** section contains the standard JSON content as in the cURL example:
 ```
 
 Harness uses some
- [built-in variables](https://docs.harness.io/article/9dvxcegm90-variables) to provide the revision information and other settings.
+ [built-in variables](../../../firstgen-platform/techref-category/variables/variables.md) to provide the revision information and other settings.
 
 
 Now when the Workflow is deployed you will see the Deployment Marker vertical line in New Relic:
@@ -133,7 +133,7 @@ For more information about variables and expressions, see the following topics:
 
 
 * [Add Service Config Variables](../../model-cd-pipeline/setup-services/add-service-level-config-variables.md)
-* [What is a Harness Variable Expression?](https://docs.harness.io/article/9dvxcegm90-variables)
+* [What is a Harness Variable Expression?](../../../firstgen-platform/techref-category/variables/variables.md)
 
 
 ### See Also

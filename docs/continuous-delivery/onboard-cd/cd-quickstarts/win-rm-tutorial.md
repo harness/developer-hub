@@ -30,7 +30,7 @@ Supported security protocols for WinRM include Kerberos and Windows New Technolo
 
 ## Before You Begin
 
-* Review Harness Key Concepts [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts) to establish a general understanding of Harness.
+* Review Harness Key Concepts [Harness Key Concepts](../../../first-gen/starthere-firstgen/harness-key-concepts.md) to establish a general understanding of Harness.
 * Make sure that you have a Delegate available in your environment.
 	+ You can install a Kubernetes or Docker Delegate.
 	+ Ideally, you should install the Delegate in the same subnet as the target host(s)
@@ -180,13 +180,13 @@ You can use all of the `<+instance...>` expressions to reference your hosts.
 
 For Microsoft Azure, AWS, or any platform-agnostic Physical Data Center (PDC):
 
-* [<+instance.hostName>](https://docs.harness.io/article/lml71vhsim-harness-variables#instance_host_name)
-* [<+instance.host.hostName>](https://docs.harness.io/article/lml71vhsim-harness-variables#instance_host_host_name)
-* [<+instance.name>](https://docs.harness.io/article/lml71vhsim-harness-variables#instance_name)
+* [<+instance.hostName>](../../../platform/12_Variables-and-Expressions/harness-variables.md#instance-host-name)
+* [<+instance.host.hostName>](../../../platform/12_Variables-and-Expressions/harness-variables.md#instance-host-host-name)
+* [<+instance.name>](../../../platform/12_Variables-and-Expressions/harness-variables.md#instance-name)
 
 For Microsoft Azure or AWS:
 
-* [<+instance.host.privateIp>](https://docs.harness.io/article/lml71vhsim-harness-variables#instance_host_private_ip)
-* [<+instance.host.publicIp>](https://docs.harness.io/article/lml71vhsim-harness-variables#instance_host_public_ip)
+* [<+instance.host.privateIp>](../../../platform/12_Variables-and-Expressions/harness-variables.md#instance-host-private-ip)
+* [<+instance.host.publicIp>](../../../platform/12_Variables-and-Expressions/harness-variables.md#instance-host-public-ip)
 
 `instance.name` has the same value as `instance.hostName`. Both are available for backward compatibility.

@@ -38,7 +38,7 @@ Click **New Monitored Service**. The **Add New Monitored Service** settings appe
 
 ![](./static/change-impact-analysis-quickstart-49.png)
 
-You can also set up a Monitored Service in the [Verify step](https://docs.harness.io/article/3xhqq9xllp-verify-deployments-with-the-verify-step#step_1_add_verify_step) in a CD stage.In **Overview**, in the **Service** tab, **Application** is selected by default in the **Type** field. You can also select **Infrastructure**.
+You can also set up a Monitored Service in the [Verify step](../../continuous-delivery/cd-execution/cv-category/verify-deployments-with-the-verify-step.md#step-1-add-verify-step) in a CD stage.In **Overview**, in the **Service** tab, **Application** is selected by default in the **Type** field. You can also select **Infrastructure**.
 
 In **Create or select a Service**, choose the Harness Service to be monitored from the list. Click **Add New** to create a new Service. A Service represents your microservices and other workloads.
 
