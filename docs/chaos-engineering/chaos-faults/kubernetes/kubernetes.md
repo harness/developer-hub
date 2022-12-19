@@ -23,7 +23,7 @@ Learn intelligent software delivery skills with step-by-step tutorials, interact
 
 <!-- Code for Fault Card starts from here -->
 
-<FaultDetailsCard category="kubernetes">
+<FaultDetailsCard category="kubernetes" subCategory="pod">
 
 <!-- please specify category in above tag to generate correct experiment icons and links by itself, if links are broken please contact @Sahil, that's me -->
 
@@ -57,11 +57,11 @@ Learn intelligent software delivery skills with step-by-step tutorials, interact
 
 <!-- Code for Fault Card starts from here -->
 
-<FaultDetailsCard category="kubernetes">
+<FaultDetailsCard category="kubernetes" subCategory="node">
 
 <!-- please specify category in above tag to generate correct experiment icons and links by itself, if links are broken please contact @Sahil, that's me -->
 
-### Not Pod Delete
+### Docker Service Kill
 
 <!-- Need above heading in markdown ### for it to populate right navigation bar and generate links -->
 
@@ -91,7 +91,7 @@ Learn intelligent software delivery skills with step-by-step tutorials, interact
 
 <!-- Code for Fault Card starts from here -->
 
-<FaultDetailsCard category="kubernetes">
+<FaultDetailsCard category="kubernetes" subCategory="pod">
 
 <!-- please specify category in above tag to generate correct experiment icons and links by itself, if links are broken please contact @Sahil, that's me -->
 

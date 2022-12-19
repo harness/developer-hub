@@ -63,7 +63,8 @@ export default function ExperimentListSection({ experiments }) {
             .map((experiment, index) => (
               <Link
                 to={`#${
-                  getFaultDetails(experiment.category, experiment.name).link
+                  getFaultDetails(experiment.category, experiment.name)
+                    .anchorLink
                 }`}
               >
                 <div key={index} className={styles.experimentCard}>

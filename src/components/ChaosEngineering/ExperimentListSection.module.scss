@@ -88,7 +88,7 @@ a:hover {
         font-size: 0.9rem;
         margin: 0 0 0rem 0;
         line-height: 1.2;
-        height: 70px;
+        max-height: 70px;
         text-overflow: ellipsis;
         overflow: hidden;
         display: -webkit-box !important;

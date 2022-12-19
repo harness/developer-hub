@@ -1,8 +1,11 @@
 import React from "react";
 
-import { experiments as KubernetesExperiments } from "./kubernetes/experiments";
 import { experiments as AwsExperiments } from "./aws/experiments";
 import { experiments as AzureExperiments } from "./azure/experiments";
+import { experiments as GcpExperiments } from "./gcp/experiments";
+import { experiments as KubeResilienceExperiments } from "./kube-resilience/experiments";
+import { experiments as KubernetesExperiments } from "./kubernetes/experiments";
+import { experiments as VMWareExperiments } from "./vmware/experiments";
 
 export const categories = [
   {
@@ -20,7 +23,7 @@ export const categories = [
   {
     title: "VMware",
     description: <>Achieve cost transparency and cut costs</>,
-    faults: 14,
+    faults: VMWareExperiments.length,
     category: "vmware",
   },
   {
@@ -32,7 +35,7 @@ export const categories = [
   {
     title: "GCP",
     description: <>Scan your code, containers and apps</>,
-    faults: 4,
+    faults: GcpExperiments.length,
     category: "gcp",
   },
   {
@@ -44,7 +47,7 @@ export const categories = [
   {
     title: "Kube-Resilience",
     description: <>Ensure app and infrastructure resilience</>,
-    faults: 1,
+    faults: KubeResilienceExperiments.length,
     category: "kube-resilience",
   },
   {

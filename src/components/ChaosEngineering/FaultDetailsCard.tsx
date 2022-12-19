@@ -5,7 +5,6 @@ import { getCategoryDetails, getFaultDetails } from "./utils/helper";
 
 export default function FaultDetailsCard(props) {
   const [heading, ...rest] = props.children;
-  console.log(heading);
   return (
     <div className={styles.detailsCard}>
       <div className={styles.headerBar}>
@@ -24,7 +23,13 @@ export default function FaultDetailsCard(props) {
       </div>
       {rest}
       <ViewDetails
-        href={getFaultDetails(props.category, heading.props.children).link}
+        href={
+          getFaultDetails(
+            props.category,
+            heading.props.children,
+            props.subCategory
+          ).link
+        }
       />
     </div>
   );
