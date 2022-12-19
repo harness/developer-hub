@@ -370,21 +370,28 @@ When `product_name` is set to `fortifyondemand`
 
 When `product_name` is set to `whitesource`
 
-  * `scan_type`
-	  - Accepted value(s): `ingestionOnly`, `dataLoad`, `orchestratedScan`
-	* `product_domain` (*optional*) — The default is `https://saas.whitesourcesoftware.com/api`
-	* `product_access_id`
-	* `product_access_token`
-	* `product_include`
-	* `product_config_name` = `default`
-	* `product_lookup_type`(*optional*)
-		- Accepted value(s) when policy_type is set to `dataLoad`: 
-		  - `byName`
-			- `byTokens`
-		- Accepted value(s) when policy_type is set to `orchestratedScan`: 
-			- `appendToProductByToken`
-			- `appendToProductByName`
-		
+* `scan_type`
+	- Accepted value(s): `ingestionOnly`, `dataLoad`, `orchestratedScan`
+* `product_domain` (*optional*) — The default is `https://saas.whitesourcesoftware.com/api`
+* `product_access_id`
+* `product_access_token`
+* `product_include`
+* `product_config_name` = `default`
+* `product_lookup_type`(*optional*)
+	- Accepted value(s) when policy_type is set to `dataLoad`: 
+		- `byName`
+		- `byTokens`
+	- Accepted value(s) when policy_type is set to `orchestratedScan`: 
+		- `appendToProductByToken`
+		- `appendToProductByName`
+	
+:::note
+You must configure the following settings depending on the product lookup type  — i.e., whether you are using the names or tokens to reference the Mend product:
+:::
+* `product_product_name`
+* `product_project_name`
+* `product_project_token`
+* `product_project_token`		
 :::note
 You must configure the following settings depending on the product lookup type  — i.e., whether you are using the names or tokens to reference the Mend product:
 :::
@@ -392,7 +399,6 @@ You must configure the following settings depending on the product lookup type  
 	* `product_project_name`
 	* `product_project_token`
 	* `product_project_token`
-	
 
 [↑ Scanners](#scanners-target-types-and-scan-approach)
 
