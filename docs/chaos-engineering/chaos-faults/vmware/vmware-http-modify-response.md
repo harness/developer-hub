@@ -39,7 +39,7 @@ stringData:
 You can pass the VM credentials as a secret or as a chaosengine environment variable.
 :::
 
-## Default Validations
+## Default validations
 
 :::info
 
@@ -47,7 +47,7 @@ You can pass the VM credentials as a secret or as a chaosengine environment vari
 
 :::
 
-## Fault Tunables
+## Fault tunables
 
 <details>
     <summary>Check the Fault Tunables</summary>
@@ -171,13 +171,13 @@ You can pass the VM credentials as a secret or as a chaosengine environment vari
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common Fault Tunables
+### Common fault tunables
 
 Refer to the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
-### Target Service Port
+### Target service port
 
 It defines the port of the target service. You can tune it using the `TARGET_SERVICE_PORT` environment variable.
 
@@ -203,7 +203,7 @@ spec:
           value: "80"
 ```
 
-### Modifying the Response Status Code
+### Modifying the response status code
 
 Use this example to modify the status code of the response.
 
@@ -244,7 +244,7 @@ spec:
           value: "80"
 ```
 
-### Modifying the Response Headers
+### Modifying the response headers
 
 Use this example to modify the headers of the response.
 
@@ -280,7 +280,7 @@ spec:
           value: "80"
 ```
 
-### Modifying the Request Headers
+### Modifying the request headers
 
 Use this example to modify the headers of the response.
 
@@ -316,7 +316,7 @@ spec:
           value: "80"
 ```
 
-### Modifying the Response Body
+### Modifying the response body
 
 Use this example to modify the body of the response.
 
@@ -348,7 +348,7 @@ spec:
           value: "80"
 ```
 
-### Proxy Port
+### Proxy port
 
 It defines the port where the proxy server listens for requests. You can tune it using the `PROXY_PORT` environment variable.
 
@@ -409,7 +409,7 @@ spec:
           value: "80"
 ```
 
-### Network Interface
+### Network interface
 
 It defines the network interface used for the proxy. You can tune it using the `NETWORK_INTERFACE` environment variable.
 

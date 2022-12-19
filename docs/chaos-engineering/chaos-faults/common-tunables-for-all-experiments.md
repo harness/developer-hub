@@ -3,7 +3,7 @@ title: Common Tunables for All Experiments
 ---
 Experiment tunables are common to all the experiments and these tunables are provided at `.spec.experiment[*].spec.components.env` in the chaosengine.
 
-### Duration of the Chaos
+### Duration of the chaos
 
 It defines the total duration of the chaos injection. You can tune it using the `TOTAL_CHAOS_DURATION` environment variable. The unit of measurement is seconds.
 
@@ -34,7 +34,7 @@ spec:
           VALUE: '60'
 ```
 
-### Ramp Time
+### Ramp time
 
 It defines the period to wait before and after chaos is injected. You can tune it using the `RAMP_TIME` environment variable. The unit of measurement is seconds.
 
@@ -67,7 +67,7 @@ spec:
           VALUE: '60'
 ```
 
-### Sequence of Chaos Execution
+### Sequence of Chaos execution
 
 It defines the sequence of the chaos execution in case of multiple targets. You can tune it using the `SEQUENCE` environment variable. It supports the following modes:
 
@@ -105,7 +105,7 @@ spec:
           VALUE: '60'
 ```
 
-### Chaos Library Name
+### Chaos library name
 
 It defines the name of the chaos library used for the chaos injection. You can tune it using the `LIB` environment variable.
 
@@ -171,7 +171,7 @@ spec:
           VALUE: '60'
 ```
 
-### Image Used by the Helper Pod
+### Image used by the helper pod
 
 It defines the image used to launch the helper pod, when applicable. You can tune it using the `LIB_IMAGE` environment variable.
 It supports container-kill, network-experiments, stress-experiments, dns-experiments, disk-fill, kubelet-service-kill, docker-service-kill, and node-restart experiments.

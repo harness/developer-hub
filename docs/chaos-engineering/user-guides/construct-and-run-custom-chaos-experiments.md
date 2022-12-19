@@ -1,5 +1,5 @@
 ---
-title: Construct and Run Custom Chaos Experiments
+title: Construct and run custom Chaos Experiments
 sidebar_position: 2
 ---
 
@@ -7,7 +7,7 @@ Harness Chaos Engineering provides you the flexibility of creating elaborate cha
 
 A chaos experiment is constituted out of chaos faults that are arranged in some specific order to create a failure scenario. The chaos faults can target various aspects of an application, including the constituent microservices and underlying infrastructure, and can be tuned to impart the desired chaos behavior.
 
-## 1. Add Overview
+## 1. Add overview
 
 ![Chaos Experiments](./static/construct-and-run-custom-chaos-experiments/chaos-experiments.png)
 
@@ -17,7 +17,7 @@ The very first step is to add the experiment overview, including experiment name
 
 ![Experiment Overview](./static/construct-and-run-custom-chaos-experiments/experiment-overview.png)
 
-## 2. Construct the Experiment
+## 2. Construct the experiment
 
 Under the Experiment Builder tab, first we need to specify the source of the experiment. Here we have the option for:
 1. Creating an experiment from scratch (Blank Canvas)
@@ -26,7 +26,7 @@ Under the Experiment Builder tab, first we need to specify the source of the exp
 
 ![Experiment Builder](./static/construct-and-run-custom-chaos-experiments/experiment-builder.png)
 
-### Blank Canvas
+### Blank canvas
 When starting from scratch, you can add individual faults from the available Chaos Hubs and tune them. This allows you to have access to not only the Enterprise Chaos Hub experiments provided by Harness but also any private Chaos Hub faults which you have access to. 
 
 ![Select Faults](./static/construct-and-run-custom-chaos-experiments/select-faults.png)
@@ -45,7 +45,7 @@ You can configure the sequence in which each of the faults execute. Also, comple
 
 ![Complex Faults Experiment](./static/construct-and-run-custom-chaos-experiments/complex-faults-experiment.png)
 
-### Templates from Chaos Hubs
+### Templates from ChaosHubs
 You can use the pre-curated experiment templates provided in the Enterprise Chaos Hub as well while trying to create a new chaos experiments. While these templates may be used as it is for the experiment execution, you can very well edit them to add more faults or update the existing faults.
 
 ![Fault Templates](./static/construct-and-run-custom-chaos-experiments/fault-templates.png)
@@ -53,7 +53,7 @@ You can use the pre-curated experiment templates provided in the Enterprise Chao
 ### Upload YAML
 You can also upload an experiment manifest file to create the experiment. In this case as well, you can edit the experiment to update the existing faults or add more of them.
 
-## 3. Set Fault Weights
+## 3. Set fault weights
 
 As a final step before running the experiment, switch to the tab **Set fault weights** to set the weight for each fault in the experiment, which will be used for the calculation of the resiliency score and the outcome of the experiment result.
 

@@ -1,5 +1,5 @@
 ---
-title: Environments
+title: Environment
 sidebar_position: 6
 ---
 

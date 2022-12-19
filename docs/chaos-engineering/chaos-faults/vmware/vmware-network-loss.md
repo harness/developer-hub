@@ -49,12 +49,12 @@ You can pass the VM credentials as a secret or as a chaosengine environment vari
 :::
 
 
-## Default Validations
+## Default validations
 :::info
 - The VM should be in a healthy state before and after chaos.
 :::
 
-## Fault Tunables
+## Fault tunables
 <details>
     <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>
@@ -153,12 +153,12 @@ You can pass the VM credentials as a secret or as a chaosengine environment vari
      </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common Fault Tunables
+### Common fault tunables
 Refer to the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
-### Network Packet Loss
+### Network packet loss
 
 It defines the network packet loss percentage that is injected to the VM. You can tune it using the `NETWORK_PACKET_LOSS_PERCENTAGE` environment variable.
 
@@ -189,7 +189,7 @@ spec:
           value: '123,123'
 ```
 
-### Run With Destination IPs And Destination Hosts
+### Run with destination IPs and destination hosts
 
 The network faults interrupt traffic for all the IPs/hosts by default. You can tune it using the `DESTINATION_IPS` and `DESTINATION_HOSTS` environment variables.
 
@@ -227,7 +227,7 @@ spec:
           value: '123,123'
 ```
 
-###  Network Interface
+###  Network interface
 
 The name of the ethernet interface that shapes the traffic. You can tune it using the `NETWORK_INTERFACE` environment variable. Its default value is `eth0`.
 

@@ -1,12 +1,12 @@
 ---
 sidebar_position: 2
-title: Chaos Experiment from a Blank Canvas
+title: Chaos Experiment from a blank canvas
 description: Create a Chaos Experiment from scratch.
 ---
 
 Welcome to this tutorial on creating Chaos Experiments from scratch. Here, you'll be constructing a chaos experiment from scratch in the Chaos Studio. Make sure you have completed the previous tutorial before starting.
 
-## Constructing a Chaos Experiment from Scratch
+## Constructing a Chaos Experiment from scratch
 
 In the previous tutorial we used the **Boutique cart delete** template to create our experiment. This time around, let us try to define the same experiment with minor changes from scratch. We will again be targeting the pods of the carts microservice with the Pod Delete fault. Right now, the cart page is healthy and accessible in the frontend, as seen at the `/cart` route.
 
@@ -38,7 +38,7 @@ In the last step, choose the **Set Fault Weight** tab. We will use the default w
 
 ![Set Fault Weight](./static/chaos-experiment-from-blank-canvas/set-fault-weight.png)
 
-## Observing Chaos Execution
+## Observing Chaos execution
 
 When ready, start the experiment execution by selecting **Run** on the top right corner of the screen. You'll be able to observe the experiment added to the list of chaos experiments and it should be in a `Running` status. Choose **Current Execution** to get a detailed view.
 
@@ -82,7 +82,7 @@ We can validate this behavior using the application metrics dashboard as well. T
 
 ![Application Down Dashboard](./static/chaos-experiment-from-blank-canvas/application-down-dashboard.png)
 
-## Evaluating the Experiment Run
+## Evaluating the experiment run
 
 This time when the experiment execution concludes, we get a resiliency score of 50%. The Pod Delete fault has failed this time as well.
 

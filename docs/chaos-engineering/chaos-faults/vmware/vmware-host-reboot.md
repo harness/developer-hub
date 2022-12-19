@@ -44,7 +44,7 @@ stringData:
 You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
 :::
 
-## Default Validations
+## Default validations
 :::info
 - Host should be in healthy state.
 :::
@@ -90,12 +90,12 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common Fault Tunables
+### Common fault tunables
 Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
-### Host Reboot
+### Host reboot
 Reboot a vCenter host.
 
 Use the following example to tune this:
@@ -124,7 +124,7 @@ spec:
               value: 'datacenter-1'
 ```
 
-### HA Cluster
+### HA cluster
 Reboot a vCenter host which is part of an HA cluster.
 
 Use the following example to tune this:

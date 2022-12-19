@@ -1,5 +1,5 @@
 ---
-title: Halt Chaos Experiments
+title: Halt chaos experiments
 sidebar_position: 5
 ---
 

@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: Introduction to Chaos Module
+title: Introduction to Chaos module
 ---
 
 Cloud native applications are highly distributed, elastic, resistant to failure, and loosely coupled. That being said, an important question arises. How would you ensure that your application performs as expected under different failure conditions?
@@ -25,7 +25,7 @@ carried out against different targets.
 <img width="544" alt="Screenshot 2022-10-10 at 4 23 22 PM" src="https://user-images.githubusercontent.com/21166217/194850472-0f4dda25-74f5-4dbb-86e8-45e09258de73.png"></img>
 
 
-## Left-Shift Chaos Engineering
+## Left-shift Chaos engineering
 
 The initial principles of chaos engineering advocate performing experiments in production (which is relevant and recommended), which is being viewed as a means to validate resilience beforehand, that is, as a quality gate for big deployment environments. 
 Generally, this is fueled by a need to build confidence in a highly dynamic environment in which application services _and_ infrastructure 

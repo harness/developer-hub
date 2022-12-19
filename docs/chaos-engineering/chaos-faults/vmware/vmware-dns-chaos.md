@@ -46,12 +46,12 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
 :::
 
 
-## Default Validations
+## Default validations
 :::info
 - VM should be in healthy state before and after chaos.
 :::
 
-## Fault Tunables
+## Fault tunables
 <details>
     <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>
@@ -150,12 +150,12 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
      </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common Fault Tunables
+### Common fault tunables
 Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
-### Run DNS Chaos With Port
+### Run DNS Chaos with port
 
 It contains the DNS port to inject the DNS chaos. The value can be provided using `PORT` Env.
 
@@ -186,7 +186,7 @@ spec:
           value: '123,123'
 ```
 
-### Run DNS Chaos With Target HostNames
+### Run DNS Chaos with target host names
 
 It contains the list of the target host name to inject the DNS chaos. The value can be provided using `TARGET_HOSTNAMES` Env.
 
@@ -219,7 +219,7 @@ spec:
 ```
 
 
-### Run DNS Chaos With Match scheme
+### Run DNS Chaos with match scheme
 
 It determines whether the dns query has to match exactly with one of the targets or can have any of the targets as substring. It can be either exact or substring. The value can be provided using `MATCH_SCHEME` Env.
 
@@ -252,7 +252,7 @@ spec:
 ```
 
 
-### Run DNS Chaos With Upstream server
+### Run DNS Chaos with upstream server
 
 It contains the custom upstream server to which intercepted dns requests will be forwarded. It is defaults to the server mentioned in resolv.conf. The value can be provided using `UPSTREAM_SERVER` Env.
 

@@ -1,13 +1,13 @@
 ---
 id: chaos-faults
-title: Chaos Faults
+title: Chaos faults
 ---
 
-The fault execution is triggered when the chaosengine resource (various examples of which are provided under the respective faults) is created. Typically, these chaosengines are embedded within the 'steps' of a chaos fault. However, you can also create the chaosengine manually, and the chaos-operator reconciles this resource and triggers the fault execution.
+Fault execution is triggered when the chaosengine resource (various examples are provided under the respective faults) is created. Typically, chaosengines are embedded within the 'steps' of a chaos fault. However, you can also create the chaosengine manually, and the chaos-operator reconciles this resource and triggers the fault execution.
 
 Provided below are tables with links to the individual fault docs for easy navigation.
 
-## Kubernetes Faults
+## Kubernetes faults
 
 Kubernetes faults disrupt the resources running on a cluster. They can be categorized into **pod-level** faults and **node-level** faults.
 
@@ -171,7 +171,7 @@ Kubernetes faults disrupt the resources running on a cluster. They can be catego
   </tr>
 </table>
 
-## Cloud Infrastructure
+## Cloud infrastructure
 
 Chaos faults that inject chaos into Kubernetes platform resources are classified in this category. Platform management for these resources differs significantly. You can maintain chaos charts separately for each platform (For example, AWS, GCP, Azure, etc).
 
@@ -486,7 +486,7 @@ The below mentioned platform chaos faults are available:
   </tr>
 </table>
 
-### Kube Resilience
+### Kube resilience
 
 <table>
   <tr>

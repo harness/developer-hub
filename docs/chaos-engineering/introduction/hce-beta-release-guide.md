@@ -10,7 +10,7 @@ The release of the Harness Chaos Engineering (HCE) module provides a **functiona
 The chaos module is built on the open source CNCF project LitmusChaos, with additional features to enhance the user experience. 
 Below is a list of actions that you (user) can perform as a part of the release (Nov 14th, 2022). 
 
-## Managing Access to Chaos Resources
+## Managing access to Chaos resources
 
 You will have the permissions to perform operations on the “chaos resources” platform due to the module’s ability to leverage the powerful access control capability in the Harness platform. The chaos resources include:
 
@@ -23,7 +23,7 @@ You can **view**, **create/edit**, and **delete** the chaos resources using the 
 
 Learn more about how to set up access control rules for chaos resources [here](https://developer.harness.io/docs/chaos-engineering/technical-reference/chaos-dashboard/#user-management).
 
-## Configuring Chaos Artifact Source (a.k.a ChaosHubs) 
+## Configuring Chaos artifact source (ChaosHubs) 
 
 The module equips each project with an embedded “Enterprise ChaosHub” that contains fault templates (and corresponding experiment definitions) for different infrastructure target types. You can also connect to your own chaos hub that supports the following operations: 
   
@@ -35,7 +35,7 @@ The module equips each project with an embedded “Enterprise ChaosHub” that c
 
 Learn more about how to connect chaos hubs [here](https://developer.harness.io/docs/chaos-engineering/user-guides/add-chaos-hub). 
 
-## Connecting Targets to the Chaos Control Plane (a.k.a Chaos Infrastructure)
+## Connecting targets to the Chaos control plane (Chaos Infrastructure)
 
 By deploying specific Kubernetes resources (which establishes connectivity with the Harness control plane, relay instructions and events from/to it, respectively), you can attach target clusters or namespaces (where the chaos business logic is executed on discovered workloads) to the chaos module.
  
@@ -53,7 +53,7 @@ You can disconnect from the chaos infrastructure(s) when required. To reconnect,
 
 Learn more about how to connect chaos infrastructure [here](https://developer.harness.io/docs/chaos-engineering/user-guides/connect-chaos-infrastructures). 
 
-## Constructing and Executing Chaos Experiments 
+## Constructing and executing Chaos Experiments 
 
 You can choose to construct and run chaos experiments (recurring or otherwise) on a given chaos infrastructure from the following options:
 
@@ -65,7 +65,7 @@ You can choose to construct and run chaos experiments (recurring or otherwise) o
 
 Learn more about how to construct and execute chaos experiments [here](https://developer.harness.io/docs/chaos-engineering/user-guides/construct-and-run-custom-chaos-experiments). 
 
-## Chaos Experiments Lifecycle Management 
+## Chaos Experiments lifecycle management 
 
 The Harness Chaos Engineering module provides a rich set of options to manage the experiment definitions, which include:  
 
@@ -82,7 +82,7 @@ Runtime options are also supported, which include:
 
 Learn more about runtime options for experiments [here](https://developer.harness.io/docs/chaos-engineering/user-guides/manage-chaos-experiment-execution/halt-chaos-experiments). 
 
-## Observability Around Chaos Experiments
+## Observability around Chaos Experiments
 
 Each experiment has a dedicated overview page that provides an execution summary that consists of:
 
@@ -96,7 +96,7 @@ Learn more about analyzing chaos experiment runs [here](https://developer.harnes
 
 In addition, the chaos infrastructure components deployed in the target cluster or namespace include a Prometheus exporter for the chaos which provides information about the state and results (upon completion) of the chaos experiment execution. 
 
-## Chaos Operations Audit
+## Chaos operations audit
 
 You can track the chaos operations on the module by examining the **Audit Trail** available in the Account Settings. Each supported (CRUD) operation on the [listed](https://docs.google.com/document/d/1WEezOwDJdeztN7-KAyhAciuFxiTUXuTeUhaQgrqPBLY/edit#heading=h.f6hslt96gaty) platform chaos resource is logged (with user, resource instance, type of action and timestamp) and the module source is set to “CHAOS”. 
 
@@ -120,7 +120,7 @@ Below is a list of supported actions placed under the audit log:
 |                      | Rerun / Execute             |
 
 
-## Pipeline Integration (CD) 
+## Pipeline integration (CD) 
 
 You can execute the chaos experiments defined in the module in the Deploy stage of Harness CD pipelines through a **chaos step** to validate the sanity of deployment. The chaos step configuration involves the following actions:  
 

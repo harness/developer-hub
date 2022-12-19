@@ -1,5 +1,5 @@
 ---
-title: Delete Chaos Experiments
+title: Delete chaos experiments
 sidebar_position: 6
 ---
 

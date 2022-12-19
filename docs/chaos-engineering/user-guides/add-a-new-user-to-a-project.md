@@ -1,5 +1,5 @@
 ---
-title: Add a New User to a Project
+title: Add a new user to a project
 sidebar_position: 7
 ---
 

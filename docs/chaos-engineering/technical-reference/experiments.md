@@ -1,5 +1,5 @@
 ---
-title: Experiments
+title: Experiment
 sidebar_position: 3
 ---
 
@@ -20,9 +20,9 @@ Once defined, an experiment can be:
 
 In the end, the success or failure of an experiment depends on the resiliency score obtained.
 
-## What is Resiliency Score?
+## Resiliency score
 
-**Resiliency Score** is a quantitative measure of how resilient is the target environment when the respective chaos experiment is performed on it.
+**Resiliency score** is a quantitative measure of how resilient is the target environment when the respective chaos experiment is performed on it.
 
 While creating a chaos experiment, certain weights are assigned to all the constituent faults. These weights signify the priority/importance of the respective fault. The higher the weight, the more significant is the fault.
 

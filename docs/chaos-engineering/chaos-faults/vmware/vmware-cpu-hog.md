@@ -38,12 +38,12 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
 :::
 
 
-## Default Validations
+## Default validations
 :::info
 - VM should be in healthy state.
 :::
 
-## Fault Tunables
+## Fault tunables
 <details>
     <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>
@@ -99,9 +99,9 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common Fault Tunables
+### Common fault tunables
 Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
 ### CPU_CORES
@@ -131,7 +131,7 @@ spec:
         - name: CPU_CORES 
           value: '1'
 ```
-### CPU Load
+### CPU load
 It contains percentage of vm CPU to be consumed. It can be tuned via `CPU_LOAD` ENV.
 
 Use the following example to tune this:
