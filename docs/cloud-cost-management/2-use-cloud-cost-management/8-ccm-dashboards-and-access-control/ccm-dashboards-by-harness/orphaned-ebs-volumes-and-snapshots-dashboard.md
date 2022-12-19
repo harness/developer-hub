@@ -72,14 +72,14 @@ The **Orphaned EBS Volumes and Snapshots Dashboard** is displayed.
 
 Once you have set up cost visibility for your Kubernetes clusters, AWS, GCP, and Azure cloud providers, you can create your own Dashboards. Refer to the following topics to create your own Dashboard and chart data.
 
-* [Create Dashboards](https://docs.harness.io/article/ardf4nbvcy-create-dashboards)
-* [Create Visualizations and Graphs](https://docs.harness.io/article/n2jqctdt7c-create-visualizations-and-graphs)
+* [Create Dashboards](https://developer.harness.io/docs/platform/Dashboards/create-dashboards)
+* [Create Visualizations and Graphs](https://developer.harness.io/docs/platform/Dashboards/create-visualizations-and-graphs)
 
 ### Next Steps
 
-* [Use Dashboard Actions](https://docs.harness.io/article/y1oh7mkwmh-use-dashboard-actions)
-* [Download Dashboard Data](https://docs.harness.io/article/op59lb1pxv-download-dashboard-data)
-* [Create Conditional Alerts](https://docs.harness.io/article/ro0i58mvby-create-conditional-alerts)
-* [Schedule and Share Dashboards](https://docs.harness.io/article/35gfke0rl8-share-dashboards)
+* [Use Dashboard Actions](https://developer.harness.io/docs/platform/Dashboards/use-dashboard-actions)
+* [Download Dashboard Data](https://developer.harness.io/docs/platform/Dashboards/download-dashboard-data)
+* [Create Conditional Alerts](https://developer.harness.io/docs/platform/Dashboards/create-conditional-alerts)
+* [Schedule and Share Dashboards](https://developer.harness.io/docs/platform/Dashboards/share-dashboards)
 
 
