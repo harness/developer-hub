@@ -43,7 +43,7 @@ a:hover {
 }
 
 .noExperimentFound {
-  min-height: 504px;
+  min-height: 289px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -54,7 +54,7 @@ a:hover {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   gap: 1rem;
-  min-height: 416px;
+  // min-height: 416px;
   align-content: flex-start;
   @media (min-width: 600px) {
     grid-template-columns: repeat(2, 1fr);

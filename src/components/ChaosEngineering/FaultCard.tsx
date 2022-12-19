@@ -23,7 +23,7 @@ export default function FaultCard({
 }: FaultCardItem) {
   const details = getCategoryDetails(category);
   return (
-    <Link to={details.link} className={styles.tutorialCard}>
+    <Link to={link ?? details.link} className={styles.tutorialCard}>
       <div className={styles.icon}>
         {icon ? <img src={icon} /> : <img src={details.icon} />}
       </div>

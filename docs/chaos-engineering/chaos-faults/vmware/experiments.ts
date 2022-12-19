@@ -1,4 +1,6 @@
-export const experiments = [
+import { ExperimentDetails } from "@site/src/components/ChaosEngineering/ExperimentListSection";
+
+export const experiments: ExperimentDetails[] = [
   {
     name: "VMware CPU Hog",
     description: "This is a description of experiment 1",

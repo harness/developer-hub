@@ -3,7 +3,19 @@ import React from "react";
 import styles from "./ExperimentListSection.module.scss";
 import { getCategoryDetails, getFaultDetails } from "./utils/helper";
 
-export default function ExperimentListSection({ experiments }) {
+export type ExperimentDetails = {
+  name: string;
+  description: string;
+  category: string;
+  tags?: string[];
+  link?: string;
+};
+
+export default function ExperimentListSection({
+  experiments,
+}: {
+  experiments: ExperimentDetails[];
+}) {
   const [showAll, setShowAll] = React.useState(false);
   const [page, setPage] = React.useState(0);
   const [search, setSearch] = React.useState("");
@@ -28,31 +40,33 @@ export default function ExperimentListSection({ experiments }) {
 
   return (
     <div className={styles.experimentListSectionContainer}>
-      <div className={styles.experimentListSectionHeader}>
-        <input
-          type="search"
-          onChange={(e) => setSearch(e.target.value)}
-          placeholder="Search Faults by Name or Tag"
-        />
-        <button onClick={() => setShowAll(!showAll)}>
-          <svg
-            width="10"
-            height="6"
-            viewBox="0 0 10 6"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            style={{ transform: showAll ? "rotate(180deg)" : "" }}
-          >
-            <path
-              d="M1 1L4.99161 5L9 1"
-              stroke="#0278D5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>{" "}
-          <span>Show {showAll ? "less" : "all"}</span>
-        </button>
-      </div>
+      {experiments.length > 6 && (
+        <div className={styles.experimentListSectionHeader}>
+          <input
+            type="search"
+            onChange={(e) => setSearch(e.target.value)}
+            placeholder="Search Faults by Name or Tag"
+          />
+          <button onClick={() => setShowAll(!showAll)}>
+            <svg
+              width="10"
+              height="6"
+              viewBox="0 0 10 6"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              style={{ transform: showAll ? "rotate(180deg)" : "" }}
+            >
+              <path
+                d="M1 1L4.99161 5L9 1"
+                stroke="#0278D5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>{" "}
+            <span>Show {showAll ? "less" : "all"}</span>
+          </button>
+        </div>
+      )}
       {filteredExperiments.length > 0 ? (
         <div className={styles.experimentListSectionContent}>
           {filteredExperiments
@@ -62,10 +76,13 @@ export default function ExperimentListSection({ experiments }) {
             )
             .map((experiment, index) => (
               <Link
-                to={`#${
-                  getFaultDetails(experiment.category, experiment.name)
-                    .anchorLink
-                }`}
+                to={
+                  experiment.link ??
+                  `#${
+                    getFaultDetails(experiment.category, experiment.name)
+                      .anchorLink
+                  }`
+                }
               >
                 <div key={index} className={styles.experimentCard}>
                   <img
@@ -83,16 +100,18 @@ export default function ExperimentListSection({ experiments }) {
                       </p>
                     </div>
                     <div className={styles.experimentCardTags}>
-                      {experiment.tags.map((tag, index) => (
-                        <span
-                          style={{
-                            background: index % 2 === 0 ? "#76AF34" : "#0092E4",
-                          }}
-                          key={index}
-                        >
-                          {tag}
-                        </span>
-                      ))}
+                      {experiment.tags &&
+                        experiment.tags.map((tag, index) => (
+                          <span
+                            style={{
+                              background:
+                                index % 2 === 0 ? "#76AF34" : "#0092E4",
+                            }}
+                            key={index}
+                          >
+                            {tag}
+                          </span>
+                        ))}
                     </div>
                   </div>
                 </div>

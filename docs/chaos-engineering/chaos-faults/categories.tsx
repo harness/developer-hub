@@ -1,5 +1,5 @@
 import React from "react";
-
+import { FaultCardItem } from "@site/src/components/ChaosEngineering/FaultCard";
 import { experiments as AwsExperiments } from "./aws/experiments";
 import { experiments as AzureExperiments } from "./azure/experiments";
 import { experiments as GcpExperiments } from "./gcp/experiments";
@@ -7,7 +7,7 @@ import { experiments as KubeResilienceExperiments } from "./kube-resilience/expe
 import { experiments as KubernetesExperiments } from "./kubernetes/experiments";
 import { experiments as VMWareExperiments } from "./vmware/experiments";
 
-export const categories = [
+export const categories: FaultCardItem[] = [
   {
     title: "Kubernetes",
     description: <>Short description about this</>,
