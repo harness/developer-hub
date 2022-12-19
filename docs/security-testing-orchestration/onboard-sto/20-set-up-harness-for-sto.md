@@ -21,36 +21,36 @@ This topic describes the steps you need to do to set up STO in your pipeline.
 
 The entire setup workflow should take about 30 minutes.
 
-## STO Requirements
+## STO requirements
 
 You'll all these requirements after you do the [STO Setup Procedures](#sto-setup-procedures) described below.
 
-### External Requirements
+### External requirements
 
 Before you start setting up Harness, make sure you have the following:
 
-* Git account and Personal Access Token — If you are scanning a repo, you need an account and access token with the Git provider.
+* Git account and Personal Access token — If you are scanning a repo, you need an account and access token with the Git provider.
 * Docker Hub account — STO uses Docker-in-Docker to run scans. The Pipeline needs to pull the **docker:dind** image from Docker Hub.
 * [Kubernetes cluster](#install-the-harness-delegate) — Running builds in your infrastructure, rather than in a vendor's cloud, has significant benefits. Vendor clouds often experience outages that can result in backlogs and delayed builds. You can build software and run tests, repeatedly and automatically, on a scalable platform with no outages or backlogs.
 
-### Harness User Requirements
+### Harness user requirements
 
-* To set up STO, you need Administrative privileges at the Account level (Account Admin role). It is not enough to have Administrative privileges at the Project level (Project Admin role).
+* To set up STO, you need administrative privileges at the account level (Account Admin role). It is not enough to have Administrative privileges at the Project level (Project Admin role).
 * Developers need a Security Testing Developer role to run tests and view results.
 * Security Operations staff need a Security Testing SecOps role to run tests, view results, and approve security exemptions.
 
-### Harness Account Requirements
+### Harness account requirements
 
-Harness recommends you create the following resources at the Account level. This enables you to use them across all projects and pipelines in the account.
+Harness recommends you create the following resources at the account level. This enables you to use them across all projects and pipelines in the account.
 
 * Harness delegate — Required to run builds in your Kubernetes infrastructure.
 * Secret for Git access credentials — Required to set up a codebase connector.
 * Git codebase connector — Required if you want to scan a codebase in your pipeline.
 * Docker Hub connector — Required to download images needed to run the pipeline.
 
-### Harness Pipeline Requirements
+### Harness pipeline [][]equirements
 
-* To run security scans, the pipeline requires a Security Stage with a Docker-in-Docker service dependency.
+* To run security scans, the pipeline requires a Background step that runs a Docker-in-Docker service.
 
 ## STO Setup Procedures
 
@@ -187,9 +187,9 @@ A Docker Hub connector is required to run a Docker-in-Docker service as describe
 
 </details>
 
-### Create a Codebase Connector
+### Create a Codebase connector
 
-You'll need a GitHub Connector to do the [STO Tutorials](30-tutorial-1-standalone-workflows.md). 
+You'll need a GitHub connector to do the [STO Tutorials](30-tutorial-1-standalone-workflows.md). 
 
 You also need a Git repo connector for any STO pipeline that scans a codebase. You can create connectors for codebases in [AWS CodeCommit](https://harness.helpdocs.io/article/jed9he2i45), [Azure](../../platform/7_Connectors/add-a-microsoft-azure-connector.md), [Bitbucket](https://harness.helpdocs.io/article/iz5tucdwyu), [Git](https://harness.helpdocs.io/article/tbm2hw6pr6) (platform-agnostic), [GitHub](https://harness.helpdocs.io/article/v9sigwjlgo), and [GitLab](https://harness.helpdocs.io/article/5abnoghjgo).
 
@@ -268,25 +268,30 @@ The following procedure creates a pipeline with the STO functionality required t
   ```
 	 
 2. In the **Infrastructure** tab, specify the following:
-	1. The infrastructure where you want your builds to run = **Kubernetes**
-	2. Kubernetes Cluster = The delegate you created in [Install the delegate](20-set-up-harness-for-sto.md#install-the-delegate).
-	3. Namespace = `harness-delegate-ng`
-	4. OS = `Linux`
+
+	 1. The infrastructure where you want your builds to run = **Kubernetes**
+   2. Operating System = **Linux**
+	 3. Kubernetes Cluster = The delegate you created in [Install the delegate](20-set-up-harness-for-sto.md#install-the-delegate).
+	 4. Namespace = `harness-delegate-ng`
 	
-  ```mdx-code-block
-   <img src={set_up_harness_24} alt="Define the build infrastructure" height="50%" width="75%" />
-  ```
-		 
-3. In the Execution tab, do the following:
-	1. Click **Add Service Dependency**.
-	2. Dependency Name = `dind`
-	3. Container Registry = The image connector you specified in [Create a Docker Hub connector](https://docs.harness.io/article/create-a-dockerhub-connector).
-	4. Image = `docker:dind`
-	5. Under Optional Configuration, select the **Privileged** checkbox.
-	   
-  ```mdx-code-block
-   <img src={set_up_harness_25} alt="Configure the service dependency" height="75%" width="75%" />
-  ```
+    ```mdx-code-block
+     <img src={set_up_harness_24} alt="Define the build infrastructure" height="50%" width="75%" />
+    ```
+
+#### Add a Docker-in-Docker service		 
+
+In the **Execution** tab, do the following:
+
+1. Click **Add Step** and then choose **Background**.
+2. Configure the Background step as follows:
+2. Dependency Name = `dind`
+3. Container Registry = The image connector you specified in [Create a Docker Hub connector](https://docs.harness.io/article/create-a-dockerhub-connector).
+4. Image = `docker:dind`
+5. Under Optional Configuration, select the **Privileged** checkbox.
+   
+    ```mdx-code-block
+     <img src={set_up_harness_25} alt="Configure the service dependency" height="75%" width="75%" />
+    ```
 
 #### Add a Security Step
 
@@ -295,8 +300,8 @@ The following procedure creates a pipeline with the STO functionality required t
 	1. Name = **banditScan**
 	2. `policy_type` = **`orchestratedScan`**
 	3. `scan_type` = **`repository`**
-	4. `product_name` = `**bandit**`
-	5. `product_config_name` = **`default`**
+	4. `product_name` = **bandit**
+	5. `product_config_name` = **default**
 	6. `repository_branch` = **`<+codebase.branch>`**
 	7. `repository_project` = **`dvpwa`**
 3. Apply your changes, return to the Stage, and **Save** the pipeline.
