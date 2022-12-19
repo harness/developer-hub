@@ -23,7 +23,7 @@ As explained in [Harness Key Concepts](../../../starthere-firstgen/harness-key-c
 Most importantly, the Delegate performs all deployment operations.
 
 :::note 
-For all the topics related to the Harness Delegate, see [Manage Harness Delegates](https://docs.harness.io/category/manage-harness-delegates-firstgen).
+For all the topics related to the Harness Delegate, see [Manage Harness Delegates](/docs/category/manage-harness-delegates-firstgen).
 :::
 
 In this article:

@@ -80,7 +80,7 @@ You can create a Step Template from your Account, Org or Project. This topic exp
 4. In **Name**, enter a name for the Template.
 5. In **Version Label**, enter a version for the Template.
 6. Click **Remote**.
-7. In **Git Connector**, select or create a Git Connector to the repo for your Project. For steps, see [Code Repo Connectors](https://docs.harness.io/category/code-repo-connectors).Important: Connector must use the Enable API access option and TokenImportant: The Connector must use the Enable API access option and Username and Token authentication. Harness requires the token for API access. Generate the token in your account on the Git provider and add it to Harness as a Secret. Next, use the token in the credentials for the Git Connector.​​  
+7. In **Git Connector**, select or create a Git Connector to the repo for your Project. For steps, see [Code Repo Connectors](/docs/category/code-repo-connectors).Important: Connector must use the Enable API access option and TokenImportant: The Connector must use the Enable API access option and Username and Token authentication. Harness requires the token for API access. Generate the token in your account on the Git provider and add it to Harness as a Secret. Next, use the token in the credentials for the Git Connector.​​  
 ![](./static/create-a-remote-step-template-18.png)For GitHub, the token must have the following scopes:​  
 ![](./static/create-a-remote-step-template-19.png)
 8. In **Repository**, select your repository. If your repository isn't listed, enter its name since only a select few repositories are filled here.​Create the repository in Git before entering it in Select Repository. Harness does not create the repository for you.

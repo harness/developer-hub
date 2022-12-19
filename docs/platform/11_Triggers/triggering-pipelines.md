@@ -62,7 +62,7 @@ Enter a name for the Trigger.
 
 In **Payload Type**, select your Git provider. This setting is populated with the provider you selected automatically.
 
-Select or create a Connector to the Git account for the Trigger repo. See [Code Repo Connectors](https://docs.harness.io/category/code-repo-connectors).
+Select or create a Connector to the Git account for the Trigger repo. See [Code Repo Connectors](/docs/category/code-repo-connectors).
 
 * **If you set up an account-level Code Repo Connector:** in **Repository Name**, enter the name of the repo in the account in the Connector.
 * **If you set up a repo-level Code Repo Connector:** the repo name cannot be edited.

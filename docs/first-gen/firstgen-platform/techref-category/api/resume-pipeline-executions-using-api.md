@@ -60,7 +60,7 @@ You cannot resume Successful or Paused executions.This includes Pipelines with d
 
 * Pipelines with [runtime inputs](../../../continuous-delivery/model-cd-pipeline/pipelines/pipeline-configuration.md).
 * [Templated Pipelines](../../../continuous-delivery/model-cd-pipeline/pipelines/templatize-pipelines.md).
-* Pipelines with [Approval stages](https://docs.harness.io/category/add-approvals) (approved or rejected).
+* Pipelines with [Approval stages](/docs/category/add-approvals) (approved or rejected).
 * Pipelines with parallel stage executions. In this case, both stages are resumed.
 * Pipelines with [skip conditions](../../../continuous-delivery/model-cd-pipeline/pipelines/skip-conditions.md).
 

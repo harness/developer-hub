@@ -605,22 +605,22 @@ The following table lists Harness support for metrics platforms (APMs).
 
 |  Metrics Provider Name |  Metric Pack |  Deployment Verification |  24/7 Service Guard |
 | --- | --- | --- | --- |
-| [AppDynamics](https://docs.harness.io/category/appdynamics-verification) |  Business Transactions |  Yes |  Yes |
+| [AppDynamics](/docs/category/appdynamics-verification) |  Business Transactions |  Yes |  Yes |
 |  AppDynamics |  JVM and Infra Metrics | Supported via Custom Metrics | Supported via Custom Metrics |
-| [New Relic](https://docs.harness.io/category/new-relic-verification) |  Business Transactions |  Yes |  Yes |
+| [New Relic](/docs/category/new-relic-verification) |  Business Transactions |  Yes |  Yes |
 |  New Relic |  Insights | Supported via Custom Metrics | Supported via Custom Metrics |
-| [CloudWatch](https://docs.harness.io/category/cloudwatch-verification) |  Infrastructure Metrics (ELB, ECS) |  Yes |  Yes |
+| [CloudWatch](/docs/category/cloudwatch-verification) |  Infrastructure Metrics (ELB, ECS) |  Yes |  Yes |
 |  CloudWatch |  Lambda Metrics |  Yes |  Yes |
-| [Dynatrace](https://docs.harness.io/category/dynatrace-verification) |  Business Transactions (service level) |  Yes |  Yes |
-| [Datadog](https://docs.harness.io/category/datadog-verification) |  Docker Infra Metrics |  Yes |  Yes |
+| [Dynatrace](/docs/category/dynatrace-verification) |  Business Transactions (service level) |  Yes |  Yes |
+| [Datadog](/docs/category/datadog-verification) |  Docker Infra Metrics |  Yes |  Yes |
 |  Datadog |  ECS Infra Metrics |  Yes |  Yes |
 |  Datadog |  APM Traces |  N/A - API not supported by Datadog |  Yes |
 |  Datadog |  Custom Metrics |  Yes |  Yes |
-| [Stackdriver](https://docs.harness.io/category/stackdriver-verification) |  Infrastructure Metrics |  Yes |  Yes |
+| [Stackdriver](/docs/category/stackdriver-verification) |  Infrastructure Metrics |  Yes |  Yes |
 |  Stackdriver |  Custom metrics from explorer | No |  Yes |
-| [Prometheus](https://docs.harness.io/category/prometheus-verification) |  |  Yes |  Yes |
-| [Instana](https://docs.harness.io/category/instana-verification) | Docker Infra MetricsBusiness Transactions |  Yes |  Yes |
-| [APM Custom Metrics](https://docs.harness.io/category/custom-metrics-and-logs-verification) |  |  Yes |  Yes |
+| [Prometheus](/docs/category/prometheus-verification) |  |  Yes |  Yes |
+| [Instana](/docs/category/instana-verification) | Docker Infra MetricsBusiness Transactions |  Yes |  Yes |
+| [APM Custom Metrics](/docs/category/custom-metrics-and-logs-verification) |  |  Yes |  Yes |
 
 #### Logging Platforms
 

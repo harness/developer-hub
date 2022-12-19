@@ -45,5 +45,5 @@ If this is a Basic Deployment, you might need to update one step before using th
 
 ### Next Steps
 
-For platform and strategy-specific Workflow configurations, see the topics in [Continuous Deployments](https://docs.harness.io/category/continuous-delivery).
+For platform and strategy-specific Workflow configurations, see the topics in [Continuous Deployments](/docs/category/continuous-delivery).
 

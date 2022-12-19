@@ -81,7 +81,7 @@ Test Intelligence (TI) reduces test time significantly by running only the tests
 
 ![](./static/ci-concepts-501.png)
 
-Harness is seamlessly integrated with other Harness modules such as [Continuous Delivery](../../continuous-delivery/cd-deployments-category/deployment-concepts.md), [Cloud Cost Management](https://docs.harness.io/category/set-up-cloud-cost-management), and [Feature Flags](../../feature-flags/1-ff-onboarding/1-cf-feature-flag-overview.md). You no longer have to navigate from application to application to follow the steps of the Pipeline. Harness platform offers unified CI/CD Pipelines with visual controls and approval gates.  
+Harness is seamlessly integrated with other Harness modules such as [Continuous Delivery](../../continuous-delivery/cd-deployments-category/deployment-concepts.md), [Cloud Cost Management](/docs/category/set-up-cloud-cost-management), and [Feature Flags](../../feature-flags/1-ff-onboarding/1-cf-feature-flag-overview.md). You no longer have to navigate from application to application to follow the steps of the Pipeline. Harness platform offers unified CI/CD Pipelines with visual controls and approval gates.  
 
 #### Containerized Steps
 
@@ -131,7 +131,7 @@ Plugins are Docker containers that perform predefined tasks and are configured a
 
 #### Caching
 
-Caching ensures faster job execution by reusing data from previous jobs' expensive fetch operations. Using the [Save Cache steps](https://docs.harness.io/category/share-and-cache-ci-data) in Harness CI, you can save the cache to a cloud storage bucket and later restore it using the [Restore Cache steps](https://docs.harness.io/category/share-and-cache-ci-data).
+Caching ensures faster job execution by reusing data from previous jobs' expensive fetch operations. Using the [Save Cache steps](/docs/category/share-and-cache-ci-data) in Harness CI, you can save the cache to a cloud storage bucket and later restore it using the [Restore Cache steps](/docs/category/share-and-cache-ci-data).
 
 #### Remote Docker Layer Caching
 

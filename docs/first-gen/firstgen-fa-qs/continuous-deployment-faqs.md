@@ -193,31 +193,31 @@ For an overview of Harness' support for platforms, methodologies, and related te
 
 Harness [supports all of the most common platforms](../starthere-firstgen/supported-platforms.md) and deployment use cases. For example, you can deploy applications to cloud platforms, VM images and auto scaling groups, CI/CD pipelines, and dynamically build infrastructure.
 
-Always start with the Quickstarts in [Start Here](https://docs.harness.io/category/get-started). These will take you from novice to advanced Harness user in a matter of minutes.
+Always start with the Quickstarts in [Start Here](/docs/category/get-started). These will take you from novice to advanced Harness user in a matter of minutes.
 
 The following topics will walk you through how Harness implements common deployments according to platforms and scenarios:
 
 * [​AMI (Amazon Machine Image)](../continuous-delivery/aws-deployments/ami-deployments/ami-deployment.md)
 * [​AWS Elastic Container Service (ECS)](../continuous-delivery/aws-deployments/ecs-deployment/ecs-deployments-overview.md)
-* [AWS Lambda](https://docs.harness.io/category/aws-lambda-deployments)
-* [​Azure](https://docs.harness.io/category/azure-deployments-and-provisioning)
-* [CI/CD: Artifact Build and Deploy Pipelines](https://docs.harness.io/category/ci/cd:-artifact-build-and-deploy-pipelines)
-* [Google Cloud](https://docs.harness.io/category/google-cloud)
-* [Native Helm](https://docs.harness.io/category/native-helm-deployments)
+* [AWS Lambda](/docs/category/aws-lambda-deployments)
+* [​Azure](/docs/category/azure-deployments-and-provisioning)
+* [CI/CD: Artifact Build and Deploy Pipelines](docs/category/cicd-artifact-build-and-deploy-pipelines)
+* [Google Cloud](/docs/category/google-cloud)
+* [Native Helm](/docs/category/native-helm-deployments)
 * [​IIS (.NET)](../continuous-delivery/dotnet-deployments/iis-net-deployment.md)
-* [​Kubernetes](https://docs.harness.io/category/kubernetes-deployments) (includes Helm, OpenShift, etc)
+* [​Kubernetes](/docs/category/kubernetes-deployments) (includes Helm, OpenShift, etc)
 * [Tanzu Application Service (TAS)](#tanzu_application_service_tas)
 * [​Traditional Deployments](../continuous-delivery/traditional-deployments/traditional-deployments-overview.md)
-* [Custom Deployments](https://docs.harness.io/category/custom-deployments)
+* [Custom Deployments](/docs/category/custom-deployments)
 
 Also, other key platforms that help you make your CD powerful and efficient:
 
-* [Terraform](https://docs.harness.io/category/terraform)
-* [CloudFormation](https://docs.harness.io/category/aws-cloudformation)
-* [Configuration as Code](https://docs.harness.io/category/configuration-as-code) (work exclusively in YAML and sync with your Git repos)
-* [Harness GitOps](https://docs.harness.io/category/harness-git-based-how-tos)
+* [Terraform](/docs/category/terraform)
+* [CloudFormation](/docs/category/aws-cloudformation)
+* [Configuration as Code](/docs/category/configuration-as-code) (work exclusively in YAML and sync with your Git repos)
+* [Harness GitOps](/docs/category/harness-git-based-how-tos)
 
-For topics on general CD modeling in Harness, see [Model Your CD Pipeline](https://docs.harness.io/category/model-your-cd-pipeline).
+For topics on general CD modeling in Harness, see [Model Your CD Pipeline](/docs/category/model-your-cd-pipeline).
 
 #### What is a Service Instance in Harness?
 
@@ -754,7 +754,7 @@ Harness takes the artifacts and Kubernetes manifests you provide and deploys the
 
 See the [Kubernetes Quickstart](../first-gen-quickstarts/kubernetes-quickstart.md) and [Kubernetes Deployments Overview](../continuous-delivery/concepts-cd/deployment-types/kubernetes-overview.md).
 
-For detailed instructions on using Kubernetes in Harness, see the [Kubernetes How-tos](https://docs.harness.io/category/kubernetes-deployments).
+For detailed instructions on using Kubernetes in Harness, see the [Kubernetes How-tos](/docs/category/kubernetes-deployments).
 
 #### What workloads can Harness deploy in a Kubernetes cluster?
 
@@ -1292,7 +1292,7 @@ See:
 * [Templatize a Workflow](../continuous-delivery/model-cd-pipeline/workflows/templatize-a-workflow-new-template.md)
 * [Clone a Workflow](../continuous-delivery/model-cd-pipeline/workflows/clone-a-workflow.md)
 
-For a list of all Workflow topics, see [Add Workflows](https://docs.harness.io/category/add-workflows).
+For a list of all Workflow topics, see [Add Workflows](/docs/category/add-workflows).
 
 #### How are deployment strategies implemented as Workflows?
 

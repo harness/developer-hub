@@ -186,7 +186,7 @@ A list of [`tolerations`](https://kubernetes.io/docs/concepts/scheduling-evictio
 
 The Execution section is where you add the steps that are performed in this stage.
 
-See [CI Technical Reference](https://docs.harness.io/category/ci-technical-reference).
+See [CI Technical Reference](/docs/category/ci-technical-reference).
 
 ### Build Stage YAML Example
 
@@ -234,6 +234,6 @@ Here's an example of a Build Stage definition taken from a Pipeline YAML:
 ```
 ### See Also
 
-* [CI Technical Reference](https://docs.harness.io/category/ci-technical-reference)
+* [CI Technical Reference](/docs/category/ci-technical-reference)
 * [Run Step Settings](run-step-settings.md)
 

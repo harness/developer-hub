@@ -67,7 +67,7 @@ One of the advantages with Harness Git integration is the ability to clone or du
 
 But if you want to make several copies, this can be time-consuming in the GUI.
 
-With Harness GitOps, you can simply duplicate the environment folder in Git, give the duplicate folder a unique name, and push it to the origin. The new environment will appear in Harness. For more information, see [Harness GitOps](https://docs.harness.io/category/harness-git-based-how-tos).
+With Harness GitOps, you can simply duplicate the environment folder in Git, give the duplicate folder a unique name, and push it to the origin. The new environment will appear in Harness. For more information, see [Harness GitOps](/docs/category/harness-git-based-how-tos).
 
 ### Using RBAC for YAML Files
 

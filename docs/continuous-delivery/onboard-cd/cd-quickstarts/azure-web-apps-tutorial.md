@@ -135,7 +135,7 @@ As covered in [Harness Platform architecture](../../../getting-started/harness-
 
 You will install a Harness Delegate in your infrastructure as part of adding the Connector for the **App Services Configuration** or **Artifacts**.
 
-There are several types of Delegates you can use for an Azure App Service deployment, such as Kubernetes and Docker Delegates, as listed in the [Delegates](https://docs.harness.io/category/9i5thr0ot2) category.
+There are several types of Delegates you can use for an Azure App Service deployment, such as Kubernetes and Docker Delegates, as listed in the [Delegates](/docs/category/delegates) category.
 
 For Azure Web App deployments, user typically install a Kubernetes Delegate in AKS or a Docker Delegate on a VMSS.
 
@@ -277,7 +277,7 @@ The Slot Deployment step is considered successful once the slot is in a running 
 
 A health check after Slot Deployment can ensure a successful deployment.
 
-A health check can be performed using a [Shell Script](../../cd-execution/cd-general-steps/using-shell-scripts.md) step. You can also use Harness [Approval](https://docs.harness.io/category/approvals) steps to ensure the app is running before proceeding to the Traffic Shift step.
+A health check can be performed using a [Shell Script](../../cd-execution/cd-general-steps/using-shell-scripts.md) step. You can also use Harness [Approval](/docs/category/approvals) steps to ensure the app is running before proceeding to the Traffic Shift step.
 
 ### Traffic Shift steps
 
@@ -354,7 +354,7 @@ The Slot Deployment step is considered successful once the slot is in a running 
 
 A health check after Slot Deployment can ensure a successful deployment.
 
-A health check can be performed using a [Shell Script](../../cd-execution/cd-general-steps/using-shell-scripts.md) step. You can also use Harness [Approval](https://docs.harness.io/category/approvals) steps to ensure the app is running before proceeding to the Traffic Shift step.
+A health check can be performed using a [Shell Script](../../cd-execution/cd-general-steps/using-shell-scripts.md) step. You can also use Harness [Approval](/docs/category/approvals) steps to ensure the app is running before proceeding to the Traffic Shift step.
 
 ### Swap Slot step
 

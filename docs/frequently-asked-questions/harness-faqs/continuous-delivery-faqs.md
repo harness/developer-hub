@@ -31,7 +31,7 @@ For an overview of Harness' support for platforms, methodologies, and related te
 Harness [supports all of the most common platforms](../../getting-started/supported-platforms-and-technologies.md) and deployment use cases.
 
 :::note 
-Currently, Harness NextGen CD supports Kubernetes, Helm, and Kustomize deployments. Harness NextGen CD will soon support all of the integrations supported in [Harness FirstGen](../../first-gen/starthere-firstgen/supported-platforms.md).Always start with the Quickstarts in [Start here](https://docs.harness.io/category/get-started). These will take you from novice to advanced Harness user in a matter of minutes.
+Currently, Harness NextGen CD supports Kubernetes, Helm, and Kustomize deployments. Harness NextGen CD will soon support all of the integrations supported in [Harness FirstGen](../../first-gen/starthere-firstgen/supported-platforms.md).Always start with the Quickstarts in [Start here](/docs/category/get-started). These will take you from novice to advanced Harness user in a matter of minutes.
 :::
 
 #### What is a service instance in Harness?
@@ -171,7 +171,7 @@ Harness takes the artifacts and Kubernetes manifests you provide and deploys the
 
 See the [Kubernetes CD quickstart](../../continuous-delivery/onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md) and [Kubernetes deployments overview](../../continuous-delivery/cd-advanced/cd-kubernetes-category/kubernetes-deployments-overview.md).
 
-For detailed instructions on using Kubernetes in Harness, see the [Kubernetes how-tos](https://docs.harness.io/category/kubernetes).
+For detailed instructions on using Kubernetes in Harness, see the [Kubernetes how-tos](/docs/category/kubernetes).
 
 #### What workloads can Harness deploy in a Kubernetes cluster?
 
@@ -528,7 +528,7 @@ Harness uses connectors at pipeline runtime to authenticate and perform operatio
 
 For example, a GitHub connector authenticates with a GitHub account and repo and fetches files as part of a build or deploy stage in a pipeline.
 
-See Harness [Connectors how-tos](https://docs.harness.io/category/connectors).
+See Harness [Connectors how-tos](/docs/category/connectors).
 
 ### Secrets management
 

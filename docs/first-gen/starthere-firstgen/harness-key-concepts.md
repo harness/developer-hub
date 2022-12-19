@@ -18,7 +18,7 @@ This topic describes the key concepts of Harness and its **End-to-End Software D
 First we'll look at platform and tool integration, and then how you can model a CD Pipeline in Harness.
 
 :::note 
-**Want to jump right in?** Use our [Quickstarts](https://docs.harness.io/category/quickstarts) and go from novice to advanced in minutes.
+**Want to jump right in?** Use our [Quickstarts](/docs/category/quickstarts) and go from novice to advanced in minutes.
 "position": "To position the category, enter a number and move this to the root level.",
 :::
 

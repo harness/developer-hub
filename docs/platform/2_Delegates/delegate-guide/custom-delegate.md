@@ -83,5 +83,5 @@ You can see all of the environment variables for the Delegates in the following 
 
 ### See also
 
-* [Delegate How-tos](https://docs.harness.io/category/9i5thr0ot2-delegates).
+* [Delegate How-tos](/docs/category/delegates).
 

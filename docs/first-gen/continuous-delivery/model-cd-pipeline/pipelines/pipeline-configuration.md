@@ -51,7 +51,7 @@ To add a Pipeline, perform the following steps:
 	 
 	 6. For **Runtime Input Settings**, see [Option: Runtime Input Settings](#option_runtime_input_settings).
 	 
-6. Select **Approval Step** to require approval before the next stage executes. You can use Harness UI, Jira, Custom Shell Script, or ServiceNow Approval mechanisms. For more information on Approvals, see [Add Approvals](https://docs.harness.io/category/add-approvals).
+6. Select **Approval Step** to require approval before the next stage executes. You can use Harness UI, Jira, Custom Shell Script, or ServiceNow Approval mechanisms. For more information on Approvals, see [Add Approvals](/docs/category/add-approvals).
 7. Click **Submit**. The Pipeline Stage and its steps are added to the Pipeline.![](./static/pipeline-configuration-02.png)
 8. You can add multiple Stages, and insert new Stages between the existing Stages. Pipelines Stages can be Workflows or Approvals. To add another stage to the Pipeline, in **Pipeline Stages**, click **+** and then follow the same [Steps](https://docs.harness.io/article/8j8yd7hky4-create-a-pipeline#step_1_add_a_pipeline).
 
