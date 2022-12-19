@@ -64,7 +64,14 @@ You can also perform the following actions:
 Once you've made all the changes, click **Run** and then click **Run Pipeline**. The Template is deployed.
 
 ![](./static/use-a-template-45.png)
+
 ### Option: Copy to Pipeline
+
+
+:::note
+To copy a template, make sure you have the **core_templates_copy** permission. The option to copy templates is disabled if you do not have this permission.
+:::
+
 
 You can also copy the contents of a specific Template to your Pipeline using the **Copy to Pipeline** option. This doesn't add any reference to the Template. Copying a Template to a Pipeline is different from using a Template for your Pipeline. You can't change any step or stage parameters when you link to a Template from your Pipeline.
 
@@ -73,6 +80,7 @@ Select the Pipeline Template that you want to copy.
 In **Template Inputs**, click **Copy to Pipeline**.
 
 ![](./static/use-a-template-46.png)
+
 In **Create new Pipeline**, enter a name and click **Start**.
 
 Add a Stage (if required).
