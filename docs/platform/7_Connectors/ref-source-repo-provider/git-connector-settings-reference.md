@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic provides settings and permissions for the platform-agnostic Git Connector. For Connectors to popular Git platforms like GitHub, see [Code Repo Connectors](https://docs.harness.io/category/code-repo-connectors).
+This topic provides settings and permissions for the platform-agnostic Git Connector. For Connectors to popular Git platforms like GitHub, see [Code Repo Connectors](/docs/category/code-repo-connectors).
 
 ### Limitations
 

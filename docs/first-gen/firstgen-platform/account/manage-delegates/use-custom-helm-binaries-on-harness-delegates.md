@@ -173,7 +173,7 @@ For Helm 3:
 `./stop`  
 `./start`
 
-For more information about Shell Script Delegates, see the Harness AWS [AMI Quickstart](https://docs.harness.io/category/get-started) documentation.
+For more information about Shell Script Delegates, see the Harness AWS [AMI Quickstart](/docs/category/get-started) documentation.
 
 ### Helm
 

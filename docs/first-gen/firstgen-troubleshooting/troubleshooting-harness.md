@@ -621,7 +621,7 @@ To fix this, click **Guide from Example** several times. This will give you diff
 
 ### AWS AMI
 
-The following errors might occur when setting up and deploying AMIs in Harness. For deployment steps, see [AWS AMI Deployments](https://docs.harness.io/category/aws-ami-deployments).
+The following errors might occur when setting up and deploying AMIs in Harness. For deployment steps, see [AWS AMI Deployments](/docs/category/aws-ami-deployments).
 
 #### Auto Scaling Group Not Showing Up
 

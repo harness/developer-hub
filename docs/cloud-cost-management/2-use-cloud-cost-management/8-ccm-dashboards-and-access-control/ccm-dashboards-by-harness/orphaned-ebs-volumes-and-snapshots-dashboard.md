@@ -82,5 +82,3 @@ Once you have set up cost visibility for your Kubernetes clusters, AWS, GCP, and
 * [Create Conditional Alerts](https://developer.harness.io/docs/platform/Dashboards/create-conditional-alerts)
 * [Schedule and Share Dashboards](https://developer.harness.io/docs/platform/Dashboards/share-dashboards)
 
-
-

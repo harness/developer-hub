@@ -15,7 +15,7 @@ Currently, this feature is behind a Feature Flag. Contact [Harness Support](mai
 
 ## Before You Begin
 
-* [Deployments Overview](https://docs.harness.io/category/general-deployment-features)
+* [Deployments Overview](/docs/category/general-deployment-features)
 * [Deployment Freeze Overview](../../security/governance-howtos/deployment-freeze.md#deployment-freeze-overview)
 * [Workflows](../../../continuous-delivery/model-cd-pipeline/workflows/workflow-configuration.md)
 * [Create a Pipeline](../../../continuous-delivery/model-cd-pipeline/pipelines/pipeline-configuration.md)

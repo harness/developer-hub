@@ -20,7 +20,7 @@ To store and use encrypted secrets (such as access keys) and files, you can add 
 
 ### Review: Secret Manager Overview
 
-For a full overview of how your secrets are used with the Secrets Managers you configure in Harness, please see [Harness Secrets Management Overview](../6_Security/1-harness-secret-manager-overview.md) and [Harness Security FAQs](https://docs.harness.io/article/320domdle1-harness-security-faqs).
+For a full overview of how your secrets are used with the Secrets Managers you configure in Harness, please see [Harness Secrets Management Overview](../6_Security/1-harness-secret-manager-overview.md) and [Harness Security FAQs](../../frequently-asked-questions/harness-faqs/harness-security-faqs.md).
 
 Here's a visual summary:
 

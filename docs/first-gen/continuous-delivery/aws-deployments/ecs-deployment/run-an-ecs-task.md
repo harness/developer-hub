@@ -17,7 +17,7 @@ For more information, see [Running tasks](https://docs.aws.amazon.com/AmazonECS/
 ### Before You Begin
 
 * [AWS ECS Quickstart](../../../first-gen-quickstarts/aws-ecs-deployments.md)
-* [ECS How-tos](https://docs.harness.io/category/aws-ecs-deployments)
+* [ECS How-tos](/docs/category/aws-ecs-deployments)
 * [Deploy Multiple ECS Sidecar Containers](deploy-multiple-containers-in-a-single-ecs-workflow.md)
 
 ### Supported Platforms and Technologies
@@ -61,7 +61,7 @@ if you are new to ECS task scheduling and running tasks manually, review the fol
 
 ### Step 1: Add ECS Run Task to Workflow
 
-This step assumes you have an existing Harness ECS Workflow. If you have not created one, see [AWS ECS Quickstart](../../../first-gen-quickstarts/aws-ecs-deployments.md) and [AWS ECS Deployments](https://docs.harness.io/category/aws-ecs-deployments)how-tos.
+This step assumes you have an existing Harness ECS Workflow. If you have not created one, see [AWS ECS Quickstart](../../../first-gen-quickstarts/aws-ecs-deployments.md) and [AWS ECS Deployments](/docs/category/aws-ecs-deployments)how-tos.
 
 1. In your ECS Workflow, in the **Set up Container** section, click **Add Step**.
 2. Select **ECS Run Task**.

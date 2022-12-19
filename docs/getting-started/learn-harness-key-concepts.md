@@ -141,7 +141,7 @@ Harness uses Connectors at Pipeline runtime to authenticate and perform operatio
 
 For example, a GitHub Connector authenticates with a GitHub account and repo and fetches files as part of a build or deploy Stage in a Pipeline.
 
-See [Connectors How-tos](https://docs.harness.io/category/connectors).
+See [Connectors How-tos](/docs/category/connectors).
 
 ### Secrets Management
 

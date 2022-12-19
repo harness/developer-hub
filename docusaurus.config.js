@@ -439,6 +439,10 @@ const config = {
       utmCookie: {
         prefix: "utm_",
       },
+      munity: {
+        clientId: "b866f690584d8345",
+      },
+
       rss: {
         rssPath: "release-notes/rss.xml",
         rssTitle: "Harness Release Notes",
@@ -504,6 +508,7 @@ const config = {
     path.join(__dirname, "/plugins/hotjar-plugin"),
     path.join(__dirname, "/plugins/onetrust-plugin"),
     path.join(__dirname, "/plugins/utmcookie-plugin"),
+    path.join(__dirname, "/plugins/munity-plugin"),
   ],
 };
 

@@ -10,9 +10,9 @@ helpdocs_is_published: true
 
 Harness Services represent your microservices/apps. You define where the artifacts for those microservices come from, and the container specs, configuration variables, and files for those microservices.
 
-See general [Harness Service How-tos](https://docs.harness.io/category/add-services). 
+See general [Harness Service How-tos](/docs/category/add-services). 
 
-Find deployment platform-specific information for Services in the respective deployment how-tos. See [Continuous Deployments](https://docs.harness.io/category/continuous-delivery).
+Find deployment platform-specific information for Services in the respective deployment how-tos. See [Continuous Deployments](/docs/category/continuous-delivery).
 
 ### Harness Service Names
 
@@ -37,5 +37,5 @@ For the latest supported platforms, see [Supported Platforms and Technologies](.
 
 ### Related Reference Material
 
-* [Artifacts Tech Ref](https://docs.harness.io/category/artifacts-tech-ref-firstgen)
+* [Artifacts Tech Ref](/docs/category/artifacts-tech-ref-firstgen)
 

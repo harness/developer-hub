@@ -92,7 +92,7 @@ Adding a Helm chart is a simple process of connecting Harness to the Git or HTTP
 
 For the steps and settings of each option, see the [Connect to an Artifact Repo](../../../platform/7_Connectors/connect-to-an-artifact-repo.md) How-tos.
 
-If you are using Google Cloud Storage or Amazon S3, see [Cloud Platform Connectors](https://docs.harness.io/category/cloud-platform-connectors).
+If you are using Google Cloud Storage or Amazon S3, see [Cloud Platform Connectors](/docs/category/cloud-platform-connectors).
 
 You can also use a local Helm chart if you are deploying the same Helm chart and version to many clusters/namespaces in parallel. For information, see [Use a local Helm Chart](use-a-local-helm-chart.md).For all of the Helm Chart Store types (Git, GitHub, HTTP Helm, OCI, etc), you will need to provide the following Helm info:
 
@@ -202,7 +202,7 @@ There is nothing unique about defining the target cluster Infrastructure Definit
 
 See [Define Your Kubernetes Target Infrastructure](../../cd-infrastructure/kubernetes-infra/define-your-kubernetes-target-infrastructure.md).
 
-Helm charts can be deployed using any of the Execution steps and deployment strategies used in other Kubernetes deployments. See [Kubernetes How-tos](https://docs.harness.io/category/kubernetes).
+Helm charts can be deployed using any of the Execution steps and deployment strategies used in other Kubernetes deployments. See [Kubernetes How-tos](/docs/category/kubernetes).
 
 ## Step 3: Deploy
 

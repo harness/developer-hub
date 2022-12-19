@@ -12,7 +12,7 @@ Currently, this feature is behind the `NEW_DEPLOYMENT_FREEZE` feature flag. Cont
 
 ### Before You Begin
 
-* [Deployments Overview](https://docs.harness.io/category/general-deployment-features)
+* [Deployments Overview](/docs/category/general-deployment-features)
 * [Workflows](../../../continuous-delivery/model-cd-pipeline/workflows/workflow-configuration.md)
 * [Create a Pipeline](../../../continuous-delivery/model-cd-pipeline/pipelines/pipeline-configuration.md)
 * Make sure you have **Administer Other Account Functions** permissions to access Governance in Harness. For more information, see [Account Permissions](../access-management-howtos/users-and-permissions.md#account-permissions).

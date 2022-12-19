@@ -24,7 +24,7 @@ See [Entity Identifier Reference](../../platform/20_References/entity-identifier
 
 ### Connector
 
-The connector to your code repo. See [Code Repo Connectors](https://docs.harness.io/category/code-repo-connectors).
+The connector to your code repo. See [Code Repo Connectors](/docs/category/code-repo-connectors).
 
 ### Repository
 
