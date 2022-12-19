@@ -16,7 +16,7 @@ const getCategoryDetails = (category: string): Record<string, string> => {
   };
   const setDetails = (category: FaultCategory) => {
     details.icon = `${path}/${category}.svg`;
-    details.link = `${category}`;
+    details.link = `${category}/`;
   };
   switch (category) {
     case FaultCategory.AWS:
@@ -55,7 +55,6 @@ const getFaultDetails = (
   faultName: string,
   subCategory?: string
 ): Record<string, string> => {
-  console.log(subCategory);
   const path = "/img/chaos/faults";
   const details = {
     icon: "",
@@ -69,8 +68,8 @@ const getFaultDetails = (
         )}.svg`
       : `${path}/${category}/${normaliseForImagePath(faultName)}.svg`;
     details.link = subCategory
-      ? `${subCategory}/${normaliseForURL(faultName)}`
-      : `${normaliseForURL(faultName)}`;
+      ? `${subCategory}/${normaliseForURL(faultName)}/`
+      : `${normaliseForURL(faultName)}/`;
     details.anchorLink = `${normaliseForURL(faultName)}`;
   };
   switch (category) {
