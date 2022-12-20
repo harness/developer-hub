@@ -13,7 +13,7 @@ Continuous integration is the process of automating the build and testing of cod
 Continuous delivery automates the release process. It ensures that code is always in a releasable state. This process includes taking the code from the build system and routing it through a staging environment to ensure it’s suitable for release. The outcome is a fully automated deployment process, which can be controlled by the team or triggered by triggers outside the team (such as when a developer pushes or commits a code to the main branch). The key difference between CI and CD is that the former is focused on building code, while the latter focuses on releasing the final product.
 
 The below diagram depicts the difference between CI, CD, and continuous deployment.
-![ci and cd image](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/s5s2ej46jktj6hepcayy.png)
+![ci and cd image](./static/harness-cicd-tutorial/ci_cd_workflow_sample.jpeg)
 
 Continuous deployment is the final and most desired stage of the CI/CD process. It’s the point at which the team can deploy the code with zero-touch automation. This is the difference between continuous delivery and deployment. When the deployment of the code is done via manual intervention, it is delivery. However, if the code is deployed in an automated fashion without any manual intervention, it is called continuous deployment. 
 
@@ -40,7 +40,7 @@ We will only be focusing on creating CI/CD pipelines with Harness in this tutori
 Software development teams that adopt a CI/CD pipeline see faster software deployments with more negligible risk and quicker bug identification and remediation. If you are new to CI/CD, it can seem like an overwhelming amount of new terms and processes to learn. But setting up a CI/CD pipeline is easier than you think. 
 
 A CI/CD pipeline helps your team pinpoint where problems in your software are likely to occur – before they reach end users. Additionally, it allows you to release updates more frequently and spend less time testing individual components or modules before releasing them to users. Harness is a leader in CI/CD with impeccable features. Today, we will show you how to implement CI/CD in minutes with a simple setup. 
-![CI/CD flowchart](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/5ae72bu7jaz1eiofwvvs.png)
+![CI/CD flowchart](./static/harness-cicd-tutorial/harness_cicd_pipeline.png)
 
 ### Pre-Requisites
 - Free [Harness](https://app.harness.io/auth/#/signup/?utm_source=internal&utm_medium=social&utm_campaign=community&utm_content=pavan_cicd_article&utm_term=get-started) account to do CI/CD (on-premise)
@@ -55,52 +55,52 @@ The Dockerfile you see in the repo will be used to build and push our applicatio
 `docker buildx build --platform=linux/arm64 --platform=linux/amd64  -t docker.io/<docker hub username>/<image name>:<tag> --push  -f ./Dockerfile .`
 
 Once the build and push are successful, you can confirm it by going to your Docker Hub account.
-![DockerHub image](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/7bwww9c4hmg3ng2jjb2u.png)
+![DockerHub image](./static/harness-cicd-tutorial/hello_world_docker_image.jpeg)
 
 You can see the `deployment.yaml` file in the forked repo, which defines the deployment yaml file to help us deploy the application to our Kubernetes cluster. At this point, make sure your Kubernetes cluster is up and running.
 
 Once everything is set, it is time to set up a Harness account to do CI/CD. Create a free Harness account and your first project. Once you sign-up at Harness, you will be presented with the new CI/CD experience and capabilities.
 
 Add the required connectors, GitHub repo, Docker Hub and secrets, if any. Delegate in Harness is a service/software you need to install/run on the target cluster [Kubernetes cluster in our case] to connect your artifacts, infrastructure, collaboration, verification and other providers with the Harness Manager. When you set up Harness for the first time, you install a Harness Delegate.
-![Harness Connectors](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/ur7vnqorzidnnlr9guyh.png)
+![Harness Connectors](./static/harness-cicd-tutorial/project_connectors.jpeg)
 
 Select the Continuous Integration module and add the necessary stages and steps, as shown below.
-![cicd with harness images](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/agj1alkta3airzy01p2r.png)
+![cicd with harness images](./static/harness-cicd-tutorial/build_and_test_stage.jpeg)
 
 ‘Test’ step set-up is done as below,
-![npm test](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/qemv0rybo1p3yuwh7s00.png)
+![npm test](./static/harness-cicd-tutorial/configure_run_step.jpeg)
 
 The “‘Push to Docker Registry” step is as below,
-![build and push image](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/k72jk64budqebn8ud0d2.png)
+![build and push image](./static/harness-cicd-tutorial/build_push_image.png)
 
 Next, set up a deployment pipeline.
-![CD overview](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/jgqu0d6giyzov9c36ac1.png)
+![CD overview](./static/harness-cicd-tutorial/deployment_pipeline.jpeg)
 
 Add the required details in the “Service” tab.
-![deploy service](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/xy4mkloyv2fkadc376hx.png)
+![deploy service](./static/harness-cicd-tutorial/service_tab.png)
 
 Define the environment type in the “Environment” tab.
-![environment](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/sbh51pgvrkj3pqobgqre.png)
+![environment](./static/harness-cicd-tutorial/environment_tab.png)
 
 Strategise the execution by selecting which deployment you prefer.
-![execution](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/24nmlpbdl0lttx1irff3.png)
+![execution](./static/harness-cicd-tutorial/execution_tab.jpeg)
 
 Save everything and run the pipeline.
-![run pipeline](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/20qaj71244gnsgjnj0tc.png)
+![run pipeline](./static/harness-cicd-tutorial/run_pipeline.jpeg)
 
 You can see both CI and CD getting executed one by one with all the steps specified.
-![CI/CD execution](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/gg40dwp34ga5dn1oussl.png)
+![CI/CD execution](./static/harness-cicd-tutorial/ci_cd_execution_successful.png)
 
 **Congratulations!** We successfully built, and tested the application code and deployed it onto our Kubernetes cluster using the Harness platform.
 
 You can confirm this deployment by using the command `kubectl get pods`
-![kubernetes deployments](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/qvj7ptjvb0lmpmz3p8jt.png)
+![kubernetes deployments](./static/harness-cicd-tutorial/pods_running.jpeg)
 
 You can see two replicas running as per our specifications on the `deployment.yaml` file. Also, confirm the same by going to your Kubernetes dashboard. Since I am using Google cloud (GCP), I can see and confirm that there are two pods running.
-![kubernetes pods](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/5fheffhlvwvcz2jty4xq.png)
+![kubernetes pods](./static/harness-cicd-tutorial/confirm_pods_running.png)
 
 Harness platform makes it easy for developers to streamline their SDLC by leveraging the different modules available. Today we saw CI and CD modules, and Harness has a total of seven modules as of now.
-![Harness CI/CD modules](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/27rr9rp2acjmrb34py5g.png)
+![Harness CI/CD modules](./static/harness-cicd-tutorial/Harness_modules.png)
 
 ### CI/CD and DevOps
 CI/CD is an essential part of any DevOps strategy. It helps to automate the code review and testing process, making it easier for teams to test and deploy software. It’s also a crucial part of creating a culture of continuous improvement. It is also important to remember that CI/CD is not a magic bullet. Laying the [DevOps culture](https://www.atlassian.com/team-playbook/examples/devops-culture) and methodologies are the initial steps. It is also important to remember that these processes and methodologies under DevOps are not static; they are ever-evolving and should be tweaked as needed to meet the team’s needs.
