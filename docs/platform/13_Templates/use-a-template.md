@@ -61,15 +61,15 @@ You can also perform the following actions:
 * Preview Template YAML
 
 ![](./static/use-a-template-44.png)
-Once you've made all the changes, click **Run** and then click **Run Pipeline**. The Template is deployed.
+After you've made all the changes, click **Run**, and then click **Run Pipeline**. The template is deployed.
 
 ![](./static/use-a-template-45.png)
 
-### Option: Copy to Pipeline
+### Option: Copy to the Pipeline
 
 
 :::note
-To copy a template, make sure you have the **core_template_copy** permission. The option to copy templates is disabled if you do not have this permission.
+To copy a template, make sure you have the **core_template_copy** permission.
 :::
 
 
