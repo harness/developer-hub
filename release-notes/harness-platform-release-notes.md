@@ -34,17 +34,17 @@ Harness deploys updates progressively to different Harness cluster hosting accou
 No early access features are available in this release.
 
 ### Fixed issues
--   The Create Resource Group API returns an HTTP 500 response code when the included scopes is blank. (PL-30195, ZD-37663)
+-   The Create Resource Group API returns an HTTP 500 response code when the included scopes are blank. (PL-30195, ZD-37663)
 
-    This is fixed by adding a null check and throwing a null pointer exception when the included scopes is left blank.
+    This is fixed by adding a null check and throwing a null pointer exception when the included scopes are left blank.
 
 -   Editing a connector through connector selection does not automatically select it. (PL-28175)
 
-    Enhancing the connector selection component logic to pre-select the connector in the list if its in edit mode fixed this issue.
+    Enhancing the connector selection component logic to pre-select the connector in the list if it is in edit mode fixed this issue.
     
 -   Entering an invalid `tenant_id` does not throw any error and allows selection of previously loaded vaults in Azure Key Vault secret manager. (PL-28136)
     
-    Displaying appropriate error message and setting the vault value to empty when there is an error in fetching vaults has fixed this issue.
+    Displaying appropriate error messages and setting the vault value to empty when there is an error in fetching vaults has fixed this issue.
 
 -   Searching for email addresses to add users to user groups does not show any results. (PL-27797)
     
