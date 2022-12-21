@@ -9,6 +9,22 @@ sidebar_position: 1
 
 Learn about the new features that are generally available in all Harness modules.
 
+## December 22, 2022, version 779xx
+
+### Harness Platform
+
+-   You can now get the service provider configuration, schema, and a list of all the supported resource types corresponding to SCIM applications through API. (PL-29069)
+
+    To facilitate the discovery of SCIM service provider features and schema, SCIM defines the following three HTTP GET endpoints:
+
+    -   ServiceProviderConfig
+
+    -   ResourceType
+
+    -   Schemas
+
+    Harness now supports these three API endpoints.
+
 ## December 13, 2022, version 77808
 
 ### Continuous Delivery
