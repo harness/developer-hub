@@ -1,5 +1,5 @@
 ---
-title: Migrating from CircleCI to HarnessCI
+title: Migrating from CircleCI to Harness CI
 description: Learn how to migrate your existing CircleCI workflows to Harness CI.
 sidebar_position: 4
 helpdocs_topic_id:
@@ -10,44 +10,46 @@ helpdocs_is_published: true
 
 ## Introduction
 
-Harness CI and CircleCI are both cloud-native CI products that allow developers to Build and Test code.  CircleCI and  Harness CI share some similarities: 
+Harness CI and CircleCI are both cloud-native CI products that allow developers to build and test code.  
 
-- Harness CI Pipeline Studio you can create Pipelines visually or using code, and switch back and forth as needed. CircleCI only allows pipeline configuration as code.
+CircleCI and Harness CI share some similarities: 
+
+- Harness CI Pipeline Studio allows you to create pipelines visually or using code, and switch back and forth as needed. CircleCI only allows pipeline configuration as code.
 - Harness CI uses stages to run a collection of steps, while CircleCI uses jobs to group one or more steps or individual commands.
 
-For more information, see [Harness CI Concepts](https://docs.harness.io/article/rch2t8j1ay-ci-concepts)
+For more information, see [Harness CI Concepts](https://developer.harness.io/docs/continuous-integration/ci-quickstarts/ci-concepts).
 
-## Key Differences
+## Key differences
 
-- Harness CI provides proprietary technologies like Cache Intelligence and Test Intelligence™ enabling [four times faster](https://harness.io/blog/fastest-ci-tool) than other leading CI tools 
-    - Harness [Test Intelligence](https://docs.harness.io/article/vtu9k1dsfa-test-intelligence-concepts) is a proprietary technology that speeds up test cycles by running only the tests required to confirm the quality of the code changes that triggered a build. It then ranks them in the best possible order to increase the rate of fault detection. It’s easy to see the code changes and gaps in the test plan. Test Intelligence also identifies negative trends and provides actionable insights to improve quality. Once the appropriate tests are identified, Harness CI runs split tests and runs them concurrently. It’s possible to reduce build cycle times by up to 90% without compromising application quality. This functionality is not built into CircleCI
-    - Harness Cache Intelligence is a proprietary technology that reduces pipeline execution time by automatically caching well-known directories for Java and Node.js with more languages to come. Manage and flush the cache in the Harness user interface
-- Harness CI allows executing Github Actions plugins, Dorne Plugins, and Bitrise Plugins using the [Plugin step](https://docs.harness.io/category/ei5fgqxb0j-use-drone-plugins)
-- Harness  YAML editor provides schema validation and auto-complete recommendations to simplify and expedite the configuration experience.  Harness is also equipped with a visual editor providing a guided experience that enables anyone to build, debug, and run pipelines easily. Users can switch back and forth between  YAML and Visual  Editor as required.
-- Harness CI is part of The [Harness Platform](https://docs.harness.io/article/len9gulvh1-harness-platform-architecture) which is a self-service CI/CD platform that enables end-to-end software delivery. The Platform includes the following modules to help you build, test, deploy, and verify software
-- Harness provides an Enterprise Ready Self-Managed Edition which is an end-to-end solution for continuous, self-managed delivery. You can install and update Harness Self-Managed Enterprise Edition using online or offline (air-gapped) methods.
-- Harness provides Role-Based Access Control (RBAC) that enables you to control user and group access to Harness resources according to the user's role. By using RBAC, users can increase security and improve efficiency
+- Harness CI provides proprietary technologies like Cache Intelligence and Test Intelligence™, which make Harness CI [four times faster](https://harness.io/blog/fastest-ci-tool) than other leading CI tools.
+    - Harness [Test Intelligence](https://developer.harness.io/docs/continuous-integration/ci-quickstarts/test-intelligence-concepts) is a proprietary technology that speeds up test cycles by running only the tests required to confirm the quality of the code changes that triggered a build. It then ranks them in the best possible order to increase the rate of fault detection. It’s easy to see the code changes and gaps in the test plan. Test Intelligence also identifies negative trends and provides actionable insights to improve quality. Once the appropriate tests are identified, Harness CI runs split tests and runs them concurrently. It’s possible to reduce build cycle times by up to 90 percent without compromising application quality. This functionality is not built into CircleCI.
+    - Harness Cache Intelligence is a proprietary technology that reduces pipeline execution time by automatically caching well-known directories for Java and Node.js with more languages to come. Manage and flush the cache in the Harness user interface.
+- Harness CI allows executing GitHub Actions plugins, Drone Plugins, and Bitrise Plugins using the [Plugin step](https://developer.harness.io/docs/category/use-drone-plugins).
+- The Harness YAML editor provides schema validation and auto-complete recommendations to simplify and expedite the configuration experience. Harness is also equipped with a visual editor providing a guided experience that enables anyone to build, debug, and run pipelines easily. Users can switch back and forth between the YAML and Visual Editor as required.
+- Harness CI is part of The [Harness Platform](https://developer.harness.io/docs/getting-started/harness-platform-architecture), which is a self-service CI/CD platform that enables end-to-end software delivery. The Harness Platform includes modules to help you build, test, deploy, and verify software.
+- Harness provides an Enterprise Ready Self-Managed Edition, which is an end-to-end solution for continuous, self-managed delivery. You can install and update Harness Self-Managed Enterprise Edition using online or offline (air-gapped) methods.
+- Harness provides Role-Based Access Control (RBAC) that enables you to control user and group access to Harness resources according to the user's role. By using RBAC, users can increase security and improve efficiency.
 - Harness Policy as Code is a centralized policy management and rules service that leverages the Open Policy Agent (OPA) to meet compliance requirements across software delivery and enforce governance policies.
 
-### CircleCI Orbs and Harness Plugin
+### CircleCI orbs and the Harness plugin
 
 - **HarnessCI**
-    - Harness has Plugin Step which is Docker Containers to perform a predefined task. Read more about Harness Plugins [here](https://docs.harness.io/article/8r5c3yvb8k-plugin-step-settings-reference)
-    - Harness also enables you to standardize and create step templates that can be reused across pipelines and teams that use Harness. Read More about Step Template [here](https://docs.harness.io/article/99y1227h13-run-step-template-quickstart)
+    - Harness has a Plugin Step, which is a Docker container to perform a predefined task. Read more about Harness plugins [here](https://developer.harness.io/docs/continuous-integration/ci-technical-reference/plugin-step-settings-reference).
+    - Harness also enables you to standardize and create step templates that can be reused across pipelines and teams that use Harness. Read more about step templates [here](https://developer.harness.io/docs/platform/Templates/run-step-template-quickstart).
 - **CircleCI**
     - CircleCI orbs are reusable shareable configuration packages that combine jobs, commands, and executors.
 
-### Specify a Docker Image to use for a Job
+### Specify a Docker image to use for a job
 
-- **Codebase Cloning**
-    - Each Harness CI Pipeline has a Codebase that specifies the code repo (input) that the Pipeline uses to build the artifact (output). You specify the Codebase when you add the first Build Stage to the Pipeline. This becomes the default input for all other Stages in the Pipeline. By default, a Build Stage clones the repo from your Git provider into your build infrastructure when the Pipeline runs.
-    - A Codebase has two components, both of which you can edit:
-        - The Codebase Connector, which specifies the codebase URL and required credentials.
-        - A set of advanced options to configure how the Pipeline clones and builds the repo.
+- **Codebase cloning**
+    - Each Harness CI pipeline has a codebase that specifies the code repo (input) that the pipeline uses to build the artifact (output). You specify the codebase when you add the first build stage to the pipeline. This becomes the default input for all other stages in the pipeline. By default, a build stage clones the repo from your Git provider into your build infrastructure when the pipeline runs.
+    - A codebase has two components, both of which you can edit:
+        - The codebase connector, which specifies the codebase URL and required credentials.
+        - A set of advanced options to configure how the Pppeline clones and builds the repo.
     - CircleCI checkout is a step used to check out source code to the configured path.
 
 - **Connectors**
-    - Harness integrates with many different types of repositories and providers. Connection to other platforms is called [Connectors](https://docs.harness.io/article/u9bsd77g5a-docker-registry-connector-settings-reference). In the below example DOCKER_CONNECTOR_REF in a reference to the docker connector. A Docker Connector is platform-agnostic and can be used to connect to any Docker container registry
+    - Harness integrates with many different types of repositories and providers. A connection to other platforms is called a [Connector](https://developer.harness.io/docs/platform/Connectors/ref-cloud-providers/docker-registry-connector-settings-reference). In the below example DOCKER_CONNECTOR_REF is a reference to the Docker connector. A Docker connector is platform-agnostic and can be used to connect to any Docker container registry.
 
 
 ```mdx-code-block
@@ -57,7 +59,7 @@ import TabItem from '@theme/TabItem';
 <Tabs
     defaultValue="harness"
     values={[
-        {label: 'Circle', value: 'circle'},
+        {label: 'CircleCI', value: 'circle'},
         {label: 'Harness', value: 'harness'},
     ]}>
 <TabItem value="circle">
@@ -93,9 +95,9 @@ stages:
 
 ### Define a multi-stage build pipeline
 
-Stage1 and Stage2 run concurrently. Once they are done, stage 3 gets executed. Once stage 3 is done, stage 4 runs.
+Stage1 and Stage2 run concurrently. Once they are done, stage 3 is executed. Once stage 3 is done, stage 4 runs.
 - CircleCI uses workflows to execute jobs in parallel, sequential, or mixed fashion.
-- In Harness CI Stages are executed in order of occurrence in the YAML config. Stages defined under the “- parallel” tag execute in a parallel fashion.
+- In Harness CI, stages are executed in order of occurrence in the YAML config. Stages defined under the `- parallel` tag execute in a parallel fashion.
 
 
 
@@ -104,7 +106,7 @@ Stage1 and Stage2 run concurrently. Once they are done, stage 3 gets executed. O
 <Tabs
     defaultValue="harness"
     values={[
-        {label: 'Circle', value: 'circle'},
+        {label: 'CircleCI', value: 'circle'},
         {label: 'Harness', value: 'harness'},
     ]}>
 <TabItem value="circle">
@@ -246,16 +248,16 @@ workflows:
 
 ### Environment variables
 
-- Project-level Environment variables in CircleCI are set using the web app and then referenced in the pipeline. To use Environment variables across multiple projects CircleCI uses Context.
+- Project-level environment variables in CircleCI are set using the web app and then referenced in the pipeline. To use environment variables across multiple projects CircleCI uses Context.
 
-- Harness allows users to add Variables on Project, Organization, and Account levels and those can be referenced using the following expression:
+- Harness allows users to add variables on project, organization, and account levels, and those can be referenced using the following expression:
 `<+variable.[scope].[variable_id]>`
 
     - `* Account-level reference: <+variable.account.[var Id]>`
     - `* Org-level reference: <+variable.org.[var Id]>`
     - `* Project-level reference: <+variable.[var Id]>`
 
-Read more about Account, project, and Org level Variables [here](https://docs.harness.io/article/f3450ye0ul-add-a-variable)
+Read more about account, project, and organization-level variables [here](https://developer.harness.io/docs/platform/Variables-and-Expressions/add-a-variable)
 
 ```mdx-code-block
 </TabItem>
@@ -268,7 +270,7 @@ Read more about Account, project, and Org level Variables [here](https://docs.ha
 <Tabs
     defaultValue="harness"
     values={[
-        {label: 'Circle', value: 'circle'},
+        {label: 'CircleCI', value: 'circle'},
         {label: 'Harness', value: 'harness'},
     ]}>
 <TabItem value="circle">
@@ -305,7 +307,7 @@ jobs:
 ```
 ### Matrix
 
-Matrix jobs in CircleCI are achieved using parameters and then referencing them in the pipeline using the following expression
+Matrix jobs in CircleCI are achieved using parameters and then referencing them in the pipeline using the following expression:
 
 `<< parameters.param >>`
 
@@ -313,7 +315,7 @@ Matrix is 1 of 2 looping executing strategies provided by Harness. Matrix gives 
 
 `<+matrix.usertag>`
 
-To learn more about Matrix click [here](https://docs.harness.io/article/eh4azj73m4#matrix)
+To learn more about Matrix click [here](https://developer.harness.io/docs/platform/Pipelines/looping-strategies-matrix-repeat-and-parallelism#matrix)
 
 ```mdx-code-block
 </TabItem>
@@ -392,14 +394,14 @@ workflows:
 ### Triggers
 
 - **HarnessCI**
-   - Harness supports webhook triggers and scheduled triggers. The two most commonly used triggers are webhook triggers based on Git events and Scheduled Triggers based on a cron expression. To know more about creating a trigger visit [Harness Triggers](https://docs.harness.io/category/oya6qhmmaw-trigger-category).
+   - Harness supports webhook triggers and scheduled triggers. The two most commonly used triggers are webhook triggers based on Git events and scheduled triggers based on a cron expression. To learn more about creating a trigger, go to [Harness Triggers](https://developer.harness.io/docs/category/triggers).
 
 - **CircleCI**
-    - CircleCI supports triggering a pipeline on push and PR to the code repository and Scheduled Triggers.
+    - CircleCI supports triggering a pipeline on push and PR to the code repository and scheduled triggers.
 
-> Note: CircleCI configurations are stored in the path `.CircleCI/config.yml` at the root of your source code repository on the counter. Harness provides inline pipeline storage or storing [Pipeline YAML (Pipeline-as-Code)](https://docs.harness.io/article/q1nnyk7h4v-import-a-pipeline) on Git.
+> Note: CircleCI configurations are stored in the path `.CircleCI/config.yml` at the root of your source code repository on the counter. Harness provides inline pipeline storage or storing [Pipeline YAML (Pipeline-as-Code)](https://developer.harness.io/docs/platform/Git-Experience/import-a-pipeline) on Git.
 
-## Complete Example
+## Complete example
 
 
 ```mdx-code-block
@@ -413,7 +415,7 @@ workflows:
 <Tabs
     defaultValue="harness"
     values={[
-        {label: 'Circle', value: 'circle'},
+        {label: 'CircleCI', value: 'circle'},
         {label: 'Harness', value: 'harness'},
     ]}>
 <TabItem value="circle">
@@ -610,9 +612,8 @@ pipeline:
 ```
 
 
-We recommend going through the following list to make you more comfortable before going ahead with complex config migration
-- [Caching](https://docs.harness.io/category/01tyeraya4-caching-ci-data)
-- [Parallelism](https://docs.harness.io/article/kce8mgionj-speed-up-ci-test-pipelines-using-parallelism)
-- [Platform Concepts](https://docs.harness.io/category/sy6sod35zi-platform-concepts)
-- [Platform How To’s](https://docs.harness.io/category/uepsjmurpb-platform-how-tos)
+We recommend going through the following list to make you more comfortable before going ahead with complex configiguration and migration:
+- [Caching](https://developer.harness.io/docs/category/share-and-cache-ci-data)
+- [Parallelism](https://developer.harness.io/docs/platform/Pipelines/speed-up-ci-test-pipelines-using-parallelism)
+- [Platform Concepts](https://developer.harness.io/docs/platform)
 
