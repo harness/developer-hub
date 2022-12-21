@@ -33,10 +33,10 @@ To standardize the currency in which your cloud cost data is displayed, perform 
 
 
 :::note
-Once configured, you CANNOT change the currency settings. It takes up to 24 hours for you to be able to view the costs in the specified currency. Historical data is also converted and displayed in the preferred currency.
+Once configured, you **cannot** change the currency settings. It takes up to 24 hours for you to be able to view the costs in the specified currency. Historical data is also converted and displayed in the preferred currency.
 :::
 
-3. You can use the default conversion factor or enter a custom value in the text box for each cloud service provider. This option is  useful when you have a predefined negotiated rate of conversion, or you want to use a fixed rate of conversion for reporting purposes.
-4. Click **Save**. 
+1. You can use the default conversion factor or enter a custom value in the text box for each cloud service provider. This option is  useful when you have a predefined negotiated rate of conversion, or you want to use a fixed rate of conversion for reporting purposes.
+2. Click **Save**. 
   
     The currency standardization process begins. On the **Perspectives** page, a banner displays the time and date by which the costs will be available in the selected currency.
