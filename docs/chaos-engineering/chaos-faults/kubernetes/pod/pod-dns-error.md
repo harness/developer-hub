@@ -1,6 +1,6 @@
 ---
 id: pod-dns-error
-title: Pod DNS Error
+title: Pod DNS error
 ---
 ## Introduction
 - Pod-dns-error injects chaos to disrupt dns resolution in kubernetes pods.
@@ -23,12 +23,12 @@ Coming soon.
 - Ensure that Kubernetes Version > 1.16.
 :::
 
-## Default Validations
+## Default validations
 :::note
 The application pods should be in running state before and after chaos injection.
 :::
 
-## Fault Tunables
+## Fault tunables
 <details>
     <summary>Check the Fault Tunables</summary>
     <h2>Optional Fields</h2>
@@ -96,12 +96,12 @@ The application pods should be in running state before and after chaos injection
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common and Pod specific tunables
+### Common and pod specific tunables
 Refer the [common attributes](../../common-tunables-for-all-faults) and [Pod specific tunable](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
 
-### Target Host Names
+### Target host names
 
 It defines the comma-separated name of the target hosts subjected to chaos. It can be tuned with the `TARGET_HOSTNAMES` ENV.
 If `TARGET_HOSTNAMES`not provided then all hostnames/domains will be targeted.
@@ -136,7 +136,7 @@ spec:
           value: '60'
 ```
 
-### Match Scheme
+### Match scheme
 
 It determines whether the DNS query has to match exactly with one of the targets or can have any of the targets as a substring. It can be tuned with `MATCH_SCHEME` ENV. It supports `exact` or `substring` values.
 
@@ -169,7 +169,7 @@ spec:
           value: '60'
 ```
 
-### Container Runtime Socket Path
+### Container runtime socket path
 
 It defines the `CONTAINER_RUNTIME` and `SOCKET_PATH` ENV to set the container runtime and socket file path.
 

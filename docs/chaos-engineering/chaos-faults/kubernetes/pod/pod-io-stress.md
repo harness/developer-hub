@@ -1,6 +1,6 @@
 ---
 id: pod-io-stress
-title: Pod IO Stress
+title: Pod IO stress
 ---
 
 ## Introduction
@@ -25,12 +25,12 @@ Stressing the disk with continuous and heavy IO for example can cause degradatio
 - Ensure that Kubernetes Version > 1.16.
 :::
 
-## Default Validations
+## Default validations
 :::note
 The application pods should be in running state before and after chaos injection.
 :::
 
-## Fault Tunables
+## Fault tunables
 <details>
     <summary>Check the Fault Tunables</summary>
     <h2>Optional Fields</h2>
@@ -108,12 +108,12 @@ The application pods should be in running state before and after chaos injection
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common and Pod specific tunables
+### Common and pod specific tunables
 Refer the [common attributes](../../common-tunables-for-all-faults) and [Pod specific tunable](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
 
-### Filesystem Utilization Percentage
+### Filesystem utilization percentage
 
 It stresses the `FILESYSTEM_UTILIZATION_PERCENTAGE` percentage of total free space available in the pod. 
 
@@ -148,7 +148,7 @@ spec:
           VALUE: '60'
 ```
 
-### Filesystem Utilization Bytes
+### Filesystem utilization bytes
 
 It stresses the `FILESYSTEM_UTILIZATION_BYTES` GB of the i/o of the targeted pod. 
 It is mutually exclusive with the `FILESYSTEM_UTILIZATION_PERCENTAGE` ENV. If `FILESYSTEM_UTILIZATION_PERCENTAGE` ENV is set then it will use the percentage for the stress otherwise, it will stress the i/o based on `FILESYSTEM_UTILIZATION_BYTES` ENV.
@@ -184,7 +184,7 @@ spec:
           VALUE: '60'
 ```
 
-### Container Runtime Socket Path
+### Container runtime socket path
 
 It defines the `CONTAINER_RUNTIME` and `SOCKET_PATH` ENV to set the container runtime and socket file path.
 
@@ -224,7 +224,7 @@ spec:
           VALUE: '60'
 ```
 
-### Mount Path
+### Mount path
 
 The volume mount path, which needs to be filled. It can be tuned with `VOLUME_MOUNT_PATH` ENV. 
 
@@ -257,7 +257,7 @@ spec:
           VALUE: '60'
 ```
 
-### Workers For Stress
+### Workers for stress
 
 The worker's count for the stress can be tuned with `NUMBER_OF_WORKERS` ENV. 
 
@@ -290,7 +290,7 @@ spec:
           VALUE: '60'
 ```
 
-### Pumba Chaos Library
+### Pumba chaos library
 
 It specifies the Pumba chaos library for the chaos injection. It can be tuned via `LIB` ENV. The defaults chaos library is `litmus`.
 

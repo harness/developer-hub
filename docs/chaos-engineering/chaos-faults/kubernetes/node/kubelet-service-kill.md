@@ -1,6 +1,6 @@
 ---
 id: kubelet-service-kill
-title: Kubelet Service Kill
+title: Kubelet service kill
 ---
 
 ## Introduction
@@ -28,12 +28,12 @@ Coming soon.
   - Cordon the node <code>kubectl cordon &lt;nodename&gt;</code>
 :::
 
-## Default Validations
+## Default validations
 :::note
 The target nodes should be in ready state before and after chaos injection.
 :::
 
-## Fault Tunables
+## Fault tunables
 <details>
     <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>
@@ -84,12 +84,12 @@ The target nodes should be in ready state before and after chaos injection.
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common and Node specific tunables
+### Common and node specific tunables
 Refer the [common attributes](../../common-tunables-for-all-faults) and [Node specific tunable](./common-tunables-for-node-faults) to tune the common tunables for all faults and node specific tunables.
 
-### Kill Kubelet Service
+### Kill kubelet service
 
 It contains name of target node subjected to the chaos. It can be tuned via `TARGET_NODE` ENV.
 

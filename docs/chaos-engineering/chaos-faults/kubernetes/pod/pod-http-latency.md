@@ -1,6 +1,6 @@
 ---
 id: pod-http-latency
-title: Pod HTTP Latency
+title: Pod HTTP latency
 ---
 
 ## Introduction
@@ -24,12 +24,12 @@ Coming soon.
 - Ensure that Kubernetes Version > 1.16.
 :::
 
-## Default Validations
+## Default validations
 :::note
 The application pods should be in running state before and after chaos injection.
 :::
 
-## Fault Tunables
+## Fault tunables
 <details>
     <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>
@@ -115,12 +115,12 @@ The application pods should be in running state before and after chaos injection
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common and Pod specific tunables
+### Common and pod specific tunables
 Refer the [common attributes](../../common-tunables-for-all-faults) and [Pod specific tunable](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
 
-### Target Service Port
+### Target service port
 
 It defines the port of the targeted service that is being targeted. It can be tuned via `TARGET_SERVICE_PORT` ENV.
 
@@ -150,7 +150,7 @@ spec:
         - name: TARGET_SERVICE_PORT
           value: "80"
 ```
-### Proxy Port
+### Proxy port
 
 It defines the port on which the proxy server will listen for requests. It can be tuned via `PROXY_PORT` ENV.
 
@@ -254,7 +254,7 @@ spec:
           value: "80"
 ```
 
-### Network Interface
+### Network interface
 It defines the network interface to be used for the proxy. It can be tuned via `NETWORK_INTERFACE` ENV.
 
 Use the following example to tune this:
@@ -287,7 +287,7 @@ spec:
           value: '80'
 ```
 
-### Container Runtime Socket Path
+### Container runtime socket path
 
 It defines the `CONTAINER_RUNTIME` and `SOCKET_PATH` ENV to set the container runtime and socket file path.
 

@@ -1,6 +1,6 @@
 ---
 id: pod-cpu-hog-exec
-title: Pod CPU Hog Exec
+title: Pod CPU hog exec
 ---
 
 ## Introduction
@@ -27,12 +27,12 @@ Injecting a rogue process into a target container, we starve the main microservi
 - Ensure that Kubernetes Version > 1.16.
 :::
 
-## Default Validations
+## Default validations
 :::note
 The application pods should be in running state before and after chaos injection.
 :::
 
-## Fault Tunables
+## Fault tunables
 <details>
     <summary>Check the Fault Tunables</summary>
     <h2>Optional Fields</h2>
@@ -95,12 +95,12 @@ The application pods should be in running state before and after chaos injection
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common and Pod specific tunables
+### Common and pod specific tunables
 Refer the [common attributes](../../common-tunables-for-all-faults) and [Pod specific tunable](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
 
-### CPU Cores
+### CPU cores
 
 It stresses the `CPU_CORE` CPU cores of the targeted pod for the `TOTAL_CHAOS_DURATION` duration.
 
@@ -133,7 +133,7 @@ spec:
           value: '60'
 ```
 
-### Chaos Inject and Kill Commands
+### Chaos inject and kill commands
 
 It defines the `CHAOS_INJECT_COMMAND` and `CHAOS_KILL_COMMAND` ENV to set the chaos inject and chaos kill commands respectively.
 Default values of commands:

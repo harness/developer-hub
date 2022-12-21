@@ -11,7 +11,7 @@ Provided below are tables with links to the individual fault docs for easy navig
 
 Kubernetes faults disrupt the resources running on a cluster. They can be categorized into **pod-level** faults and **node-level** faults.
 
-### Pod Chaos
+### Pod chaos
 
 <table>
   <tr>
@@ -121,7 +121,7 @@ Kubernetes faults disrupt the resources running on a cluster. They can be catego
   </tr>
 </table>
 
-### Node Chaos
+### Node chaos
 
 <table>
   <tr>

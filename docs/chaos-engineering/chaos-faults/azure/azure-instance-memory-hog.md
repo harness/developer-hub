@@ -1,6 +1,6 @@
 ---
 id: azure-instance-memory-hog
-title: Azure Instance Memory Hog
+title: Azure instance memory hog
 ---
 
 ## Introduction
@@ -26,8 +26,6 @@ title: Azure Instance Memory Hog
 ## Prerequisites
 
 :::info
-
-### Verify the prerequisites
 
 - Ensure that Kubernetes Version >= 1.17
 
@@ -63,7 +61,7 @@ stringData:
 
 :::
 
-## Default Validations
+## Default validations
 
 :::info
 
@@ -71,7 +69,7 @@ stringData:
 
 :::
 
-## Fault Tunables
+## Fault tunables
 
 <details>
 <summary>Check the Fault Tunables</summary>
@@ -149,13 +147,13 @@ stringData:
 
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common Fault Tunables
+### Common fault tunables
 
 Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
-### MEMORY CONSUMPTION IN MEGABYTES
+### Memory consumption in megabytes
 
 It defines the memory value to be utilised in megabytes on the Azure instance. It can be tuned via `MEMORY_CONSUMPTION` ENV.
 
@@ -186,7 +184,7 @@ spec:
           value: 'rg-azure'
 ```
 
-### MEMORY CONSUMPTION BY PERCENTAGE
+### Memory consumption by percentage
 
 It defines the memory percentage value to be utilised on the Azure instance. It can be tuned via `MEMORY_PERCENTAGE` ENV.
 
@@ -217,7 +215,7 @@ spec:
           value: 'rg-azure'
 ```
 
-### MULTIPLE Azure INSTANCES
+### Multiple Azure instances
 
 Multiple Azure instances can be targeted in one chaos run. It can be tuned via `AZURE_INSTANCE_NAMES` ENV.
 
@@ -246,7 +244,7 @@ spec:
           value: 'rg-azure'
 ```
 
-### MULTIPLE WORKERS
+### Multiple workers
 
 It defines the CPU threads to be run to spike the memory utilisation, this will increase the growth of memory consumption. It can be tuned via `NUMBER_OF_WORKERS` ENV.
 

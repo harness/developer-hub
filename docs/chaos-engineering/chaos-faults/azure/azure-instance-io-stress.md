@@ -1,6 +1,6 @@
 ---
 id: azure-instance-io-stress
-title: Azure Instance IO Stress
+title: Azure instance IO stress
 ---
 
 ## Introduction
@@ -26,8 +26,6 @@ title: Azure Instance IO Stress
 ## Prerequisites
 
 :::info
-
-### Verify the prerequisites
 
 - Ensure that Kubernetes Version >= 1.17
 
@@ -63,7 +61,7 @@ stringData:
 
 :::
 
-## Default Validations
+## Default validations
 
 :::info
 
@@ -71,7 +69,7 @@ stringData:
 
 :::
 
-## Fault Tunables
+## Fault tunables
 
 <details>
 <summary>Check the Fault Tunables</summary>
@@ -163,13 +161,13 @@ stringData:
 
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common Fault Tunables
+### Common fault tunables
 
 Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
-### FILESYSTEM UTILIZATION IN MEGABYTES
+### Filesystem utilization in megabytes
 
 It defines the filesytem value to be utilised in megabytes on the Azure instance. It can be tuned via `FILESYSTEM_UTILIZATION_BYTES` ENV.
 
@@ -200,7 +198,7 @@ spec:
           value: 'rg-azure'
 ```
 
-### FILESYSTEM UTILIZATION IN PERCENTAGE
+### Filesystem utilization in percentage
 
 It defines the filesytem percentage to be utilised on the Azure instance. It can be tuned via `FILESYSTEM_UTILIZATION_PERCENTAGE` ENV.
 
@@ -231,7 +229,7 @@ spec:
           value: 'rg-azure'
 ```
 
-### MULTIPLE WORKERS
+### Multiple workers
 
 It defines the CPU threads to be run to spike the filesystem utilisation, this will increase the growth of filesystem consumption. It can be tuned via `NUMBER_OF_WORKERS` ENV.
 
@@ -262,7 +260,7 @@ spec:
           value: 'rg-azure'
 ```
 
-### VOLUME MOUNT PATH
+### Volume mount path
 
 It defines volume mount path to target attached to the Azure instance. It can be tuned via `VOLUME_MOUNT_PATH` ENV.
 
@@ -293,7 +291,7 @@ spec:
           value: 'rg-azure'
 ```
 
-### MULTIPLE Azure INSTANCES
+### Multiple Azure instances
 
 Multiple Azure instances can be targeted in one chaos run. It can be tuned via `AZURE_INSTANCE_NAMES` ENV.
 

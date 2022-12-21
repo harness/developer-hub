@@ -1,6 +1,6 @@
 ---
 id: azure-web-app-access-restrict
-title: Azure Web App Access Restrict
+title: Azure web app access restrict
 ---
 
 ## Introduction
@@ -49,12 +49,12 @@ stringData:
 - If you change the secret key name (from `azure.auth`) please also update the `AZURE_AUTH_LOCATION` ENV value in the ChaosExperiment CR with the same name.
 :::
 
-## Default Validations
+## Default validations
 :::info
 - Azure target web app should be in running state.
 :::
 
-## Fault Tunables
+## Fault tunables
 <details>
     <summary>Check the Fault tunables</summary>
     <h2>Mandatory Fields</h2>
@@ -125,13 +125,13 @@ stringData:
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common Fault Tunables
+### Common fault tunables
 
 Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the experiments.
 
-### Web App Access Restrict By Name
+### Web app access restricted by name
 
 It contains comma separated list of web app names subjected to chaos. It can be tuned via `AZURE_WEB_APP_NAMES` ENV.
 
@@ -164,7 +164,7 @@ spec:
 ```
 
 
-### Access Restrict For A Certain CIDR Range
+### Restrict access for a certain CIDR range
 
 It contains a CIDR range to be used in rule. It can be tuned via `IP_ADDRESS_BLOCK`.
 
@@ -196,7 +196,7 @@ spec:
           VALUE: '60'
 ```
 
-### Access Restrict With Action
+### Restrict access with action
 
 You can tune if you want to allow or deny traffic for the provided rule using `ACTION` ENV. By default it is set to deny.
 
@@ -226,7 +226,7 @@ spec:
           VALUE: '60'
 ```
 
-### Access Restrict With Priority
+### Restrict access with priority
 
 You can define the priority of the network rule created by fault using `PRIORITY` ENV. By default it is set to `300`.
 
@@ -256,7 +256,7 @@ spec:
           VALUE: '60'
 ```
 
-### Access Restrict With Custom Rule Name
+### Restrict access with custom rule name
 
 You can define a custom rule name for this chaos using `RULE_NAME` ENV. This rule will be added for a period of chaos duration. If not provided it will by default use `litmus-experiment-rule`.
 

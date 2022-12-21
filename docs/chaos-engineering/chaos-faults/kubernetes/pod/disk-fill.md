@@ -1,6 +1,6 @@
 ---
 id: disk-fill
-title: Disk Fill
+title: Disk fill
 ---
 ## Introduction
 - It causes Disk Stress by filling up the ephemeral storage of the pod on any given node.
@@ -51,12 +51,12 @@ Coming soon.
     ```
 :::
 
-## Default Validations
+## Default validations
 :::note
 The application pods should be in running state before and after chaos injection.
 :::
 
-## Fault Tunables
+## Fault tunables
 <details>
     <summary>Check the Fault Tunables</summary>
     <h2>Optional Fields</h2>
@@ -137,12 +137,12 @@ The application pods should be in running state before and after chaos injection
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common and Pod specific tunables
+### Common and pod specific tunables
 Refer the [common attributes](../../common-tunables-for-all-faults) and [Pod specific tunable](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables. 
 
-### Disk Fill Percentage
+### Disk fill percentage
 
 It fills the `FILL_PERCENTAGE` percentage of the ephemeral-storage limit specified at `resource.limits.ephemeral-storage` inside the target application. 
 
@@ -175,7 +175,7 @@ spec:
           VALUE: '60'
 ```
 
-### Disk Fill Mebibytes
+### Disk fill mebibytes
 
 It fills the `EPHEMERAL_STORAGE_MEBIBYTES` MiBi of ephemeral storage of the targeted pod. 
 It is mutually exclusive with the `FILL_PERCENTAGE` ENV. If `FILL_PERCENTAGE` ENV is set then it will use the percentage for the fill otherwise, it will fill the ephemeral storage based on `EPHEMERAL_STORAGE_MEBIBYTES` ENV.
@@ -210,7 +210,7 @@ spec:
           VALUE: '60'
 ```
 
-### Data Block Size
+### Data block size
 
 It defines the size of the data block used to fill the ephemeral storage of the targeted pod. It can be tuned via `DATA_BLOCK_SIZE` ENV. Its unit is `KB`.
 The default value of `DATA_BLOCK_SIZE` is `256`.
@@ -244,7 +244,7 @@ spec:
           VALUE: '60'
 ```
 
-### Container Path
+### Container path
 
 It defines the storage location of the containers inside the host(node/VM). It can be tuned via `CONTAINER_PATH` ENV. 
 

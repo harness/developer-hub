@@ -49,7 +49,7 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
 - Host should be in healthy state.
 :::
 
-## Fault Tunables
+## Fault tunables
 <details>
     <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>

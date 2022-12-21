@@ -1,6 +1,6 @@
 cd---
 id: kubelet-density
-title: Kubelet Density
+title: Kubelet density
 ---
 
 ## Introduction
@@ -29,7 +29,7 @@ Coming soon.
 
 :::
 
-## Default Validations
+## Default validations
 
 :::info
 
@@ -37,7 +37,7 @@ Coming soon.
 
 :::
 
-## Fault Tunables
+## Fault tunables
 
 <details>
     <summary>Check the Fault Tunables</summary>
@@ -104,13 +104,13 @@ Coming soon.
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common Fault Tunables
+### Common fault tunables
 
 Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
-### Pod Template provided as CM
+### Pod template provided as CM
 
 Experiment creates pods on the target node during chaos. Template of the pod can be provided by mounting pod-template via configmap and
 pass its name and mountPath via `POD_TEMPLATE_CM` and `POD_TEMPLATE_PATH` ENV respectively.
@@ -143,7 +143,7 @@ spec:
           value: 'node1'
 ```
 
-### Pod Count
+### Pod count
 
 It contains the number of the pods, which should be created on the target node. It can be tuned via `POD_COUNT` ENV.
 
@@ -172,7 +172,7 @@ spec:
           value: 'node1'
 ```
 
-### Target Namespace
+### Target namespace
 
 It contains the namespace where pods need to be created. It can be tuned via `TARGET_NAMESPACE` ENV.
 
@@ -201,7 +201,7 @@ spec:
           value: 'node1'
 ```
 
-### Pod Image and Pod Selectors
+### Pod image and pod selectors
 
 Pod image and label selectors can be tuned via `POD_IMAGE` and `POD_SELECTOR` ENV respectively.
 

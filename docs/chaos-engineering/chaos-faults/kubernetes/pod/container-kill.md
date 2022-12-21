@@ -1,6 +1,6 @@
 ---
 id: container-kill
-title: Container Kill
+title: Container kill
 ---
 
 ## Introduction
@@ -25,12 +25,12 @@ Coming soon.
 - Ensure that Kubernetes Version > 1.16.
 :::
 
-## Default Validations
+## Default validations
 :::note
 The application pods should be in running state before and after chaos injection.
 :::
 
-## Fault Tunables
+## Fault tunables
 <details>
     <summary>Check the Fault Tunables</summary>
     <h2>Optional Fields</h2>
@@ -103,12 +103,12 @@ The application pods should be in running state before and after chaos injection
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common and Pod specific tunables
+### Common and pod specific tunables
 Refer the [common attributes](../../common-tunables-for-all-faults) and [Pod specific tunable](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
 
-### Kill Specific Container
+### Kill specific container
 
 It defines the name of the targeted container subjected to chaos. It can be tuned via `TARGET_CONTAINER` ENV. If `TARGET_CONTAINER` is provided as empty then it will use the first container of the targeted pod.
 
@@ -139,7 +139,7 @@ spec:
           VALUE: '60'
 ```
 
-### Container Runtime Socket Path
+### Container runtime socket path
 
 It defines the `CONTAINER_RUNTIME` and `SOCKET_PATH` ENV to set the container runtime and socket file path:
 
@@ -177,7 +177,7 @@ spec:
           VALUE: '60'
 ```
 
-### Signal For Kill
+### Signal for kill
 
 It defines the Linux signal passed while killing the container. It can be tuned via `SIGNAL` ENV. It defaults to the `SIGTERM`.
  
@@ -209,7 +209,7 @@ spec:
           VALUE: '60'
 ```
 
-### Pumba Chaos Library
+### Pumba chaos library
 
 It specifies the Pumba chaos library for the chaos injection. It can be tuned via `LIB` ENV. The defaults chaos library is `litmus`.
 

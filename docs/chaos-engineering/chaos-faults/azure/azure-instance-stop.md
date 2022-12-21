@@ -1,10 +1,10 @@
 ---
 id: azure-instance-stop
-title: Azure Instance Stop
+title: Azure instance stop
 ---
 
 ## Introduction
-- It results in PowerOff of an Azure instance before bringing it back to running state after the specified chaos duration.
+- It results in powerOff of an Azure instance before bringing it back to running state after the specified chaos duration.
 - It checks the performance of the application/process running on the instance.
 
 :::tip Fault execution flow chart
@@ -52,13 +52,13 @@ stringData:
 - If you change the secret key name (from `azure.auth`) please also update the `AZURE_AUTH_LOCATION` ENV value in the ChaosExperiment CR with the same name.
 :::
 
-## Default Validations
+## Default validations
 
 :::info
 - The Azure instance should be in healthy state.
 :::
 
-## Fault Tunables
+## Fault tunables
 <details>
     <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>
@@ -114,13 +114,13 @@ stringData:
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common Fault Tunables
+### Common fault tunables
 
 Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
-### Stop Instances By Name
+### Stop instances by name
 
 It has comma separated list of instance names subject to instance stop chaos. You can tune it using the `AZURE_INSTANCE_NAME` environment variable.
 
@@ -149,7 +149,7 @@ spec:
           value: 'rg-azure'
 ```
 
-### Stop Scale Set Instances
+### Stop scale set instances
 
 It has comma separated list of instance names subject to instance stop chaos that belong to Scale Set or AKS. You can tune it using the `SCALE_SET` environment variable.
 

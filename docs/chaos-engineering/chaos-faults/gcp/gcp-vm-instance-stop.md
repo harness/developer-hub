@@ -1,6 +1,6 @@
 ---
 id: gcp-vm-instance-stop
-title: GCP VM Instance Stop
+title: GCP VM instance stop
 ---
 
 ## Introduction
@@ -45,12 +45,12 @@ stringData:
 ```
 :::
 
-## Default Validations
+## Default validations
 :::info
 - The VM instances should be in a healthy state.
 :::
 
-## Fault Tunables
+## Fault tunables
 <details>
     <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>
@@ -111,12 +111,12 @@ stringData:
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common Fault Tunables
+### Common fault tunables
 Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
-### Target GCP Instances
+### Target GCP instances
 It stops all the instances with the given `VM_INSTANCE_NAMES` instance names and corresponding `ZONES` zone names in `GCP_PROJECT_ID` project. 
 
 `NOTE:` The `VM_INSTANCE_NAMES` contains multiple comma-separated VM instances. The comma-separated zone names should be provided in the same order as the instance names.
@@ -150,7 +150,7 @@ spec:
           value: 'project-id'
 ```
 
-### Managed Instance Group
+### Managed instance group
 
 If VM instances belong to a managed instance group, specify the `MANAGED_INSTANCE_GROUP` as `enable`, otherwise specify it as `disable`, which is the default value. 
 
@@ -189,7 +189,7 @@ spec:
           VALUE: '60'
 ```
 
-### Mutiple Iterations Of Chaos
+### Mutiple iterations of chaos
 
 You can tune different iterations of chaos by setting `CHAOS_INTERVAL` environment variable. It defines the delay between each iteration of chaos.
 

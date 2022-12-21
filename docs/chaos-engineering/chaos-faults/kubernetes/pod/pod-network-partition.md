@@ -1,6 +1,6 @@
 ---
 id: pod-network-partition
-title: Pod Network Partition
+title: Pod network partition
 ---
 ## Introduction
 - It blocks the 100% Ingress and Egress traffic of the target application by creating network policy.
@@ -23,12 +23,12 @@ Coming soon.
 - Ensure that Kubernetes Version > 1.16.
 :::
 
-## Default Validations
+## Default validations
 :::note
 The application pods should be in running state before and after chaos injection.
 :::
 
-## Fault Tunables
+## Fault tunables
 <details>
     <summary>Check the Fault Tunables</summary>
     <h2>Optional Fields</h2>
@@ -86,12 +86,12 @@ The application pods should be in running state before and after chaos injection
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common and Pod specific tunables
+### Common and pod specific tunables
 Refer the [common attributes](../../common-tunables-for-all-faults) and [Pod specific tunable](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
 
-### Destination IPs And Destination Hosts
+### Destination IPs and destination hosts
 
 The network partition fault interrupt traffic for all the IPs/hosts by default. The interruption of specific IPs/Hosts can be tuned via `DESTINATION_IPS` and `DESTINATION_HOSTS` ENV.
 
@@ -130,7 +130,7 @@ spec:
           value: '60'
 ```
 
-### Target Specific Namespace(s)
+### Target specific namespace(s)
 
 The network partition fault interrupt traffic for all the namespaces by default. The access to/from pods in specific namespace can be allowed via providing namespace labels inside `NAMESPACE_SELECTOR` ENV.
 
@@ -162,7 +162,7 @@ spec:
         - name: TOTAL_CHAOS_DURATION
           value: '60'
 ```
-### Target Specific Pod(s)
+### Target specific pod(s)
 
 The network partition fault interrupt traffic for all the external pods by default. The access to/from specific pod(s) can be allowed via providing pod labels inside `POD_SELECTOR` ENV.
 
@@ -195,7 +195,7 @@ spec:
           value: '60'
 ```
 
-### Policy Type
+### Policy type
 
 The network partition fault interrupt both ingress and egress traffic by default. The interruption of either `ingress` or `egress` traffic can be tuned via `POLICY_TYPES` ENV.
 
@@ -230,7 +230,7 @@ spec:
           value: '60'
 ```
 
-### Destination Ports
+### Destination ports
 
 The network partition fault interrupt traffic for all the external ports by default. Access to specific port(s) can be allowed by providing comma separated list of ports inside `PORTS` ENV. 
 

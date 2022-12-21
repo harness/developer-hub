@@ -1,6 +1,6 @@
 ---
 id: pod-network-loss
-title: Pod Network Loss
+title: Pod network loss
 ---
 ## Introduction
 - It injects packet loss on the specified container by starting a traffic control (tc) process with netem rules to add egress/ingress loss.
@@ -23,12 +23,12 @@ Coming soon.
 - Ensure that Kubernetes Version > 1.16.
 :::
 
-## Default Validations
+## Default validations
 :::note
 The application pods should be in running state before and after chaos injection.
 :::
 
-## Fault Tunables
+## Fault tunables
 <details>
     <summary>Check the Fault Tunables</summary>
     <h2>Optional Fields</h2>
@@ -118,12 +118,12 @@ The application pods should be in running state before and after chaos injection
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common and Pod specific tunables
+### Common and pod specific tunables
 Refer the [common attributes](../../common-tunables-for-all-faults) and [Pod specific tunable](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
 
-### Network Packet Loss
+### Network packet loss
 
 It defines the network packet loss percentage to be injected in the targeted application. It can be tuned via `NETWORK_PACKET_LOSS_PERCENTAGE` ENV. 
 
@@ -155,7 +155,7 @@ spec:
         - name: TOTAL_CHAOS_DURATION
           value: '60'
 ```
-### Destination IPs And Destination Hosts
+### Destination IPs and destination hosts
 
 The network faults interrupt traffic for all the IPs/hosts by default. The interruption of specific IPs/Hosts can be tuned via `DESTINATION_IPS` and `DESTINATION_HOSTS` ENV.
 
@@ -194,7 +194,7 @@ spec:
           value: '60'
 ```
 
-### Network Interface
+### Network interface
 
 The defined name of the ethernet interface, which is considered for shaping traffic. It can be tuned via `NETWORK_INTERFACE` ENV. Its default value is `eth0`.
 
@@ -227,7 +227,7 @@ spec:
           value: '60'
 ```
 
-### Container Runtime Socket Path
+### Container runtime socket path
 
 It defines the `CONTAINER_RUNTIME` and `SOCKET_PATH` ENV to set the container runtime and socket file path.
 
@@ -267,7 +267,7 @@ spec:
           VALUE: '60'
 ```
 
-### Pumba Chaos Library
+### Pumba chaos library
 
 It specifies the Pumba chaos library for the chaos injection. It can be tuned via `LIB` ENV. The defaults chaos library is `litmus`.
 Provide the traffic control image via `TC_IMAGE` ENV for the Pumba library.

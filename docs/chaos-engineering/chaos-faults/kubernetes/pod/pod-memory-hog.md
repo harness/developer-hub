@@ -1,6 +1,6 @@
 ---
 id: pod-memory-hog
-title: Pod Memory Hog
+title: Pod memory hog
 ---
 
 ## Introduction
@@ -26,12 +26,12 @@ This fault launches a stress process within the target container - which can cau
 - Ensure that Kubernetes Version > 1.16.
 :::
 
-## Default Validations
+## Default validations
 :::note
 The application pods should be in running state before and after chaos injection.
 :::
 
-## Fault Tunables
+## Fault tunables
 <details>
     <summary>Check the Fault Tunables</summary>
     <h2>Optional Fields</h2>
@@ -109,12 +109,12 @@ The application pods should be in running state before and after chaos injection
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common and Pod specific tunables
+### Common and pod specific tunables
 Refer the [common attributes](../../common-tunables-for-all-faults) and [Pod specific tunable](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
 
-### Memory Consumption
+### Memory consumption
 
 It stresses the `MEMORY_CONSUMPTION` MB memory of the targeted pod for the `TOTAL_CHAOS_DURATION` duration.
 
@@ -147,7 +147,7 @@ spec:
           value: '60'
 ```
 
-### Workers For Stress
+### Workers for stress
 
 The worker's count for the stress can be tuned with `NUMBER_OF_WORKERS` ENV. 
 
@@ -180,14 +180,14 @@ spec:
           value: '60'
 ```
 
-### Container Runtime Socket Path
+### Container runtime socket path
 
 It defines the `CONTAINER_RUNTIME` and `SOCKET_PATH` ENV to set the container runtime and socket file path.
 
 - `CONTAINER_RUNTIME`: It supports `docker`, `containerd`, and `crio` runtimes. The default value is `docker`.
 - `SOCKET_PATH`: It contains path of docker socket file by default(`/var/run/docker.sock`). For other runtimes provide the appropriate path.
 
-### Pumba Chaos Library
+### Pumba chaos library
 
 It specifies the Pumba chaos library for the chaos injection. It can be tuned via `LIB` ENV. The defaults chaos library is `litmus`.
 Provide the stress image via `STRESS_IMAGE` ENV for the pumba library.

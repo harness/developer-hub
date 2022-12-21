@@ -1,6 +1,6 @@
 ---
 id: azure-disk-loss
-title: Azure Disk Loss
+title: Azure disk loss
 ---
 
 ## Introduction
@@ -49,12 +49,12 @@ stringData:
 - If you change the secret key name (from `azure.auth`) please also update the `AZURE_AUTH_LOCATION` ENV value in the ChaosExperiment CR with the same name.
 :::
 
-## Default Validations
+## Default validations
 :::info
 - Azure Disk should be connected to an instance.
 :::
 
-## Fault Tunables
+## Fault tunables
 <details>
     <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>
@@ -110,13 +110,13 @@ stringData:
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common Fault Tunables
+### Common fault tunables
 
 Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
-### Detach Virtual Disks By Name
+### Detach virtual disks by name
 
 It contains comma separated list of disk names subjected to disk loss chaos. It can be tuned via `VIRTUAL_DISK_NAMES` ENV.
 
@@ -145,7 +145,7 @@ spec:
           value: 'rg-azure-disks'
 ```
 
-### Detach Virtual Disks Attached to Scale Set Instances By Name
+### Detach virtual disks attached to scale set instances by name
 
 It contains comma separated list of disk names attached to scale set instances subjected to disk loss chaos. It can be tuned via `VIRTUAL_DISK_NAMES` and `SCALE_SET` ENV.
 

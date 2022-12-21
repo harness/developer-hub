@@ -3,7 +3,7 @@ title: Common Tunables for All Experiments
 ---
 Experiment tunables are common to all the experiments and these tunables are provided at `.spec.experiment[*].spec.components.env` in the chaosengine.
 
-### Duration of the chaos
+### Duration of chaos
 
 It defines the total duration of the chaos injection. You can tune it using the `TOTAL_CHAOS_DURATION` environment variable. The unit of measurement is seconds.
 
@@ -67,7 +67,7 @@ spec:
           VALUE: '60'
 ```
 
-### Sequence of Chaos execution
+### Sequence of chaos execution
 
 It defines the sequence of the chaos execution in case of multiple targets. You can tune it using the `SEQUENCE` environment variable. It supports the following modes:
 

@@ -1,9 +1,9 @@
 ---
-title: Common Pod Fault Tunables
+title: Common pod fault tunables
 ---
 Fault tunables which are common for all pod-level faults. These tunables can be provided at `.spec.experiment[*].spec.components.env` in chaosengine.
 
-### Target Specific Pods
+### Target specific pods
 
 It defines the comma-separated name of the target pods subjected to chaos. The target pods can be tuned via `TARGET_PODS` ENV.
 
@@ -34,7 +34,7 @@ spec:
           value: 'pod1,pod2'
 ```
 
-### Pod Affected Percentage
+### Pod affected percentage
 
 It defines the percentage of pods subjected to chaos with matching labels provided at `.spec.appinfo.applabel` inside chaosengine. It can be tuned with `PODS_AFFECTED_PERC` ENV. If `PODS_AFFECTED_PERC` is provided as `empty` or `0` then it will target a minimum of one pod.
 
@@ -66,7 +66,7 @@ spec:
           value: '100'
 ```
 
-### Target Specific Container
+### Target specific container
 
 It defines the name of the targeted container subjected to chaos. It can be tuned via `TARGET_CONTAINER` ENV. If `TARGET_CONTAINER` is provided as empty then it will use the first container of the targeted pod.
 
@@ -98,7 +98,7 @@ spec:
           value: 'nginx'
 ```
 
-### Default Application Health Check
+### Default application health check
 
 It defines the default application status checks as a tunable. It is helpful for the scenarios where you don’t want to validate the application status as a mandatory check during pre & post chaos. It can be tuned via `DEFAULT_APP_HEALTH_CHECK` ENV. If `DEFAULT_APP_HEALTH_CHECK` is not provided by default it is set to `true`.
 
@@ -128,7 +128,7 @@ spec:
           value: 'false'
 ```
 
-### Node Label Filter For Selecting The Target Pods
+### Node label filter for selecting the target pods
 
 It defines the target application pod selection from a specific node. It is helpful for the scenarios where you want to select the pods scheduled on specific nodes as chaos candidates considering the pod affected percentage. It can be tuned via `NODE_LABEL` ENV.
 

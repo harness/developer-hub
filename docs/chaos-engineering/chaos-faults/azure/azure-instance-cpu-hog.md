@@ -1,6 +1,6 @@
 ---
 id: azure-instance-cpu-hog
-title: Azure Instance CPU Hog
+title: Azure instance CPU hog
 ---
 
 ## Introduction
@@ -29,7 +29,7 @@ title: Azure Instance CPU Hog
 
 - Ensure that Kubernetes Version >= 1.17
 
-**Azure Access Requirement:**
+**Azure access requirement:**
 
 - Ensure that Azure Run Command agent is installed and running in the target Azure instance.
 - We will use Azure [file-based authentication](https://docs.microsoft.com/en-us/azure/developer/go/azure-sdk-authorization#use-file-based-authentication) to connect with the instance using Azure GO SDK in the fault. For generating auth file run `az ad sp create-for-rbac --sdk-auth > azure.auth` Azure CLI command.
@@ -61,7 +61,7 @@ stringData:
 
 :::
 
-## Default Validations
+## Default validations
 
 :::info
 
@@ -69,7 +69,7 @@ stringData:
 
 :::
 
-## Fault Tunables
+## Fault tunables
 
 <details>
     <summary>Check the Fault Tunables</summary>
@@ -146,13 +146,13 @@ stringData:
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common Fault Tunables
+### Common fault tunables
 
 Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
-### CPU CORE
+### CPU core
 
 It defines the CPU core value to be utilised on the Azure instance. It can be tuned via `CPU_CORE` ENV.
 
@@ -183,7 +183,7 @@ spec:
           value: 'rg-azure'
 ```
 
-### CPU PERCENTAGE
+### CPU percentage
 
 It defines the CPU percentage value to be utilised on the Azure instance. It can be tuned via `CPU_LOAD` ENV.
 
@@ -214,7 +214,7 @@ spec:
           value: 'rg-azure'
 ```
 
-### MULTIPLE Azure INSTANCES
+### Multiple Azure instances
 
 Multiple Azure instances can be targeted in one chaos run. It can be tuned via `AZURE_INSTANCE_NAMES` ENV.
 
@@ -243,7 +243,7 @@ spec:
           value: 'rg-azure'
 ```
 
-### CPU CORE WITH PERCENTAGE CONSUMPTION
+### CPU core with percentage consumption
 
 It defines how many CPU cores to utilise with percentage of utilisation on the Azure instance. It can be tuned via `CPU_CORE` and `CPU_LOAD` ENV.
 

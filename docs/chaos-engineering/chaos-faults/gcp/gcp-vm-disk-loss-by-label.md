@@ -1,6 +1,6 @@
 ---
 id: gcp-vm-disk-loss-by-label
-title: GCP VM Disk Loss By Label
+title: GCP VM disk loss by label
 ---
 
 ## Introduction
@@ -44,12 +44,12 @@ stringData:
 ```
 :::
 
-## Default Validations
+## Default validations
 :::info
 - All the disk volumes having the target label are attached to their respective instances.
 :::
 
-## Fault Tunables
+## Fault tunables
 <details>
     <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>
@@ -110,12 +110,12 @@ stringData:
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common Fault Tunables
+### Common fault tunables
 Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
-### Detach Volumes By Label
+### Detach volumes by label
 
 It contains the label of disk volumes to be subjected to disk loss chaos. It will detach all the disks with the label `DISK_VOLUME_LABEL` in zone `ZONES` within the `GCP_PROJECT_ID` project.  It re-attaches the disk volume after waiting for the specified `TOTAL_CHAOS_DURATION` duration.
 

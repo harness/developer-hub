@@ -1,6 +1,6 @@
 ---
 id: pod-http-modify-header
-title: Pod HTTP Modify Header
+title: Pod HTTP modify header
 ---
 
 ## Introduction
@@ -24,12 +24,12 @@ Coming soon.
 - Ensure that Kubernetes Version > 1.16.
 :::
 
-## Default Validations
+## Default validations
 :::note
 The application pods should be in running state before and after chaos injection.
 :::
 
-## Fault Tunables
+## Fault tunables
 <details>
     <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>
@@ -120,12 +120,12 @@ The application pods should be in running state before and after chaos injection
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common and Pod specific tunables
+### Common and pod specific tunables
 Refer the [common attributes](../../common-tunables-for-all-faults) and [Pod specific tunable](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
 
-### Target Service Port
+### Target service port
 
 It defines the port of the targeted service that is being targeted. It can be tuned via `TARGET_SERVICE_PORT` ENV.
 
@@ -158,7 +158,7 @@ spec:
         - name: HEADERS_MAP
           value: '{"X-Litmus-Test-Header": "X-Litmus-Test-Value"}'
 ```
-### Proxy Port
+### Proxy port
 
 It defines the port on which the proxy server will listen for requests. It can be tuned via `PROXY_PORT`
 
@@ -195,7 +195,7 @@ spec:
           value: '{"X-Litmus-Test-Header": "X-Litmus-Test-Value"}'
 ```
 
-### Headers Map
+### Headers map
 
 It is the map of headers that are to be modified or added to the Http request/response. It can be tuned via `HEADERS_MAP` ENV.
 
@@ -230,7 +230,7 @@ spec:
           value: "80"
 ```
 
-### Header Mode
+### Header mode
 It defined whether the request or the response header has to be modified. It can be tuned via `HEADER_MODE` ENV.
 
 Use the following example to tune this:
@@ -301,7 +301,7 @@ spec:
           value: "80"
 ```
 
-### Network Interface
+### Network interface
 It defines the network interface to be used for the proxy. It can be tuned via `NETWORK_INTERFACE` ENV.
 
 Use the following example to tune this:
@@ -337,7 +337,7 @@ spec:
           value: '{"X-Litmus-Test-Header": "X-Litmus-Test-Value"}'
 ```
 
-### Container Runtime Socket Path
+### Container runtime socket path
 
 It defines the `CONTAINER_RUNTIME` and `SOCKET_PATH` ENV to set the container runtime and socket file path.
 

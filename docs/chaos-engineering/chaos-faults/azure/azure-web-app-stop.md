@@ -1,6 +1,6 @@
 ---
 id: azure-web-app-stop
-title: Azure Web App Stop
+title: Azure web app stop
 ---
 
 ## Introduction
@@ -51,12 +51,12 @@ stringData:
 - If you change the secret key name (from `azure.auth`) please also update the `AZURE_AUTH_LOCATION` ENV value in the ChaosExperiment CR with the same name.
 :::
 
-## Default Validations
+## Default validations
 :::info
 - Azure target web app should be in running state.
 :::
 
-## Fault Tunables
+## Fault tunables
 <details>
     <summary>Check the Fault tunables</summary>
     <h2>Mandatory Fields</h2>
@@ -107,13 +107,13 @@ stringData:
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common Fault Tunables
+### Common fault tunables
 
 Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the experiments.
 
-### Stop Web App By Name
+### Stop web app by name
 
 It contains comma separated list of web app names subjected to web app stop chaos. It can be tuned via `AZURE_WEB_APP_NAMES` ENV.
 

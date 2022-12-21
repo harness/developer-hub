@@ -1,5 +1,5 @@
 ---
-title: Policy For All AWS Faults
+title: Policy for all AWS faults
 ---
 
 ## Permissions required

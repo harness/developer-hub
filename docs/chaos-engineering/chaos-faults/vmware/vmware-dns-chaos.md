@@ -1,6 +1,6 @@
 ---
 id: vmware-dns-chaos
-title: VMware DNS Chaos
+title: VMware DNS chaos
 ---
 
 ## Introduction
@@ -155,7 +155,7 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
 ### Common fault tunables
 Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
-### Run DNS Chaos with port
+### Run DNS chaos with port
 
 It contains the DNS port to inject the DNS chaos. The value can be provided using `PORT` Env.
 
@@ -186,7 +186,7 @@ spec:
           value: '123,123'
 ```
 
-### Run DNS Chaos with target host names
+### Run DNS chaos with target host names
 
 It contains the list of the target host name to inject the DNS chaos. The value can be provided using `TARGET_HOSTNAMES` Env.
 
@@ -219,7 +219,7 @@ spec:
 ```
 
 
-### Run DNS Chaos with match scheme
+### Run DNS chaos with match scheme
 
 It determines whether the dns query has to match exactly with one of the targets or can have any of the targets as substring. It can be either exact or substring. The value can be provided using `MATCH_SCHEME` Env.
 
@@ -252,9 +252,9 @@ spec:
 ```
 
 
-### Run DNS Chaos with upstream server
+### Run DNS chaos with an upstream server
 
-It contains the custom upstream server to which intercepted dns requests will be forwarded. It is defaults to the server mentioned in resolv.conf. The value can be provided using `UPSTREAM_SERVER` Env.
+It contains the custom upstream server to which intercepted DNS requests will be forwarded. It defaults to the server mentioned in resolv.conf. The value can be provided using `UPSTREAM_SERVER` Env.
 
 Use the following example to tune this:
 

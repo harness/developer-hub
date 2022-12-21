@@ -1,6 +1,6 @@
 ---
 id: node-cpu-hog
-title: Node CPU Hog
+title: Node CPU hog
 ---
 
 ## Introduction
@@ -25,12 +25,12 @@ Coming soon.
 - Ensure that Kubernetes Version > 1.16.
 :::
 
-## Default Validations
+## Default validations
 :::note
 The target nodes should be in ready state before and after chaos injection.
 :::
 
-## Fault Tunables
+## Fault tunables
 <details>
     <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>
@@ -97,12 +97,12 @@ The target nodes should be in ready state before and after chaos injection.
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common and Node specific tunables
+### Common and node specific tunables
 Refer the [common attributes](../../common-tunables-for-all-faults) and [Node specific tunable](./common-tunables-for-node-faults) to tune the common tunables for all faults and node specific tunables.
 
-### Node CPU Cores
+### Node CPU cores
 It contains number of cores of node CPU to be consumed. It can be tuned via `NODE_CPU_CORE` ENV.
 
 Use the following example to tune this:
@@ -130,7 +130,7 @@ spec:
           VALUE: '60'
 ```
 
-### Node CPU Load
+### Node CPU load
 
 It contains percentage of node CPU to be consumed. It can be tuned via `CPU_LOAD` ENV.
 
