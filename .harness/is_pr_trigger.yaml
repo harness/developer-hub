@@ -1,0 +1,14 @@
+inputSet:
+  identifier: "is_pr_trigger"
+  name: "is_pr_trigger"
+  orgIdentifier: "HDH"
+  projectIdentifier: "HarnessDeveloperHub"
+  pipeline:
+    identifier: "hdh_pr_process"
+    properties:
+      ci:
+        codebase:
+          build:
+            type: "PR"
+            spec:
+              number: "<+trigger.prNumber>"

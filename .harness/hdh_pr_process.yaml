@@ -1,0 +1,54 @@
+pipeline:
+  name: hdh_pr_process
+  identifier: hdh_pr_process
+  projectIdentifier: HarnessDeveloperHub
+  orgIdentifier: HDH
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: hdh_gh_connector
+        build: <+input>
+  stages:
+    - stage:
+        name: HDH PR Build
+        identifier: HDH_PR_Build
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: hdh_large_buildfarm
+              namespace: default
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              os: Linux
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Build
+                  identifier: Build
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: node:18
+                    shell: Sh
+                    command: |-
+                      yarn
+                      yarn build
+              - step:
+                  type: Plugin
+                  name: Publish-Netifly
+                  identifier: PulishNetifly
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: plugins/netlify
+                    settings:
+                      path: ./build
+                      prod: "\"true\""
+                      site: 2dc01b76-a219-41c6-8333-d2a7067c34d9
+                      token: "12345678"
+        variables: []
+  variables: []
