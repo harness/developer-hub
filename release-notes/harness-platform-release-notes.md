@@ -14,6 +14,23 @@ Harness deploys updates progressively to different Harness cluster hosting accou
 
 :::
 
+## December 21, 2022, version 77808
+
+Delegate version: 77802
+
+### What's new
+
+### Early access
+
+No early access features are available in this release.
+
+### Fixed issues
+
+- Changed how the delegate handles secrets. Multiline secrets are now detected and masked appropriately. (DEL-5510)
+ 
+- Changed the display of delegate version information in Harness Manager to exclude minimum version information for delegates that are not connected. (DEL-5523)
+
+
 ## December 13, 2022, version 77808
 
 ### What's new
