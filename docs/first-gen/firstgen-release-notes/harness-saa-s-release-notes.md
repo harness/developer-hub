@@ -1,6 +1,6 @@
 ---
 title: Harness SaaS Release Notes (FirstGen)
-description: This document contains release notes for Harness SaaS.
+description: This document contains release notes for FirstGen Harness SaaS.
 sidebar_position: 10
 helpdocs_topic_id: q554zjytod
 helpdocs_category_id: h4k144tv5t
@@ -19,20 +19,23 @@ If you don't see a new feature or enhancement in your Harness account, it might 
 ### December 22, 2022, version 779xx
 
 #### What's new
-- Nothing this release.
+- No new features are available for this release.
 
 #### Early access
-- Nothing this release.
+- No early access features are available for this release.
 
 #### Enhancements
-- Decreasing overall all Perpetual Task Count (CDS-46240)
-  - We are now creating Perpetual Task on the basis of Cloud Provider. This will decrease all Perpetual Task Counts  overall.
-  - There is no change to the Harness Manager or action required by users.
-- Log improvement when only ConfigMap is deployed (CDS-47901)
-  - Harness only performs versioning when a Deployment, StatefulSet, DaemonSet and DeploymentConfig is performed. These are called managed workloads.
-  - In deployments of ConfigMaps without managed workloads, no versioning is performed. 
-  - The logs have been improved to indicate that no managed workloads were found
-  - **Note:** If the `harness.io/skip-versioning: "true"` annotation is in a manifest, Harness does not track release versions.
+- Decreasing the overall **all perpetual task** count. (CDS-46240)
+  Now we create a perpetual task on the basis of the cloud provider. This decreases the **all perpetual task** counts overall.The Harness Manager is not changed and no user action is required.
+  
+- Log improvement when only the ConfigMap is deployed. (CDS-47901)
+  Harness only performs versioning when a Deployment, StatefulSet, DaemonSet and DeploymentConfig is performed. These are called managed workloads.
+  
+  In deployments of ConfigMaps without managed workloads, no versioning is performed. 
+  
+  The logs have been improved to indicate that no managed workloads were found
+  
+  **Note:** If the `harness.io/skip-versioning: "true"` annotation is in a manifest, Harness does not track release versions.
 
 ### December 13, 2022, version 77808
 
