@@ -10,7 +10,9 @@ helpdocs_is_published: true
 
 This document contains release notes for Harness Self-Managed Enterprise Edition.
 
-For Harness SaaS release notes, see [Harness SaaS Release Notes](https://docs.harness.io/article/xacpxeyioo-harness-saa-s-release-notes).Release notes are displayed with the most recent release first.
+For Harness SaaS release notes, see [Harness SaaS Release Notes](https://docs.harness.io/article/xacpxeyioo-harness-saa-s-release-notes). 
+
+Release notes are displayed with the most recent release first.
 
 ### October 31, 2022, version 77117
 
@@ -20,11 +22,8 @@ Delegate: 77021
 
 This release introduces the following features and enhancements.
 
-
-
-|  |  |
-| --- | --- |
 | **Feature or enhancement** | **Description** |
+| --- | --- |
 | CDS-40206 | The option to use Kerberos-based authentication in the creation of Git connectors is no longer gated by feature flag. |
 | CDS-41527 | Exclusion filters can be applied to the applications, environments, and services that you specify in a deployment freeze configuration. This allows you to exclude applications from a deployment freeze despite the specification that **ALL** be included. |
 | CDS-43469 | The workflow execution page was optimized by adding SEARCH\_TEXT as a query parameter. This replaces the use of a CONTAINS parameter in the method call for the deployment page that was behind a feature flag. |
@@ -35,11 +34,8 @@ This release introduces the following features and enhancements.
 
 This release includes the following fixes.
 
-
-
-|  |  |
-| --- | --- |
 | **Issue** | **Description** |
+| --- | --- |
 | CDS-42400ZD-33890 | Resolved an issue in ProcessStopper that caused an intermittent issue. PowerShell sessions were not being terminated on workflow time out. |
 | CDS-43767ZD-34771 | Earlier we added support to allow customers to find artifacts from the last deployed workflow or pipeline with the same service as the triggered workflow by enabling the added feature flag `SERVICE_ID_FILTER_FOR_TRIGGERS.` A new index has been added for the new query. |
 | CDS-43945 | Handled an edge case to ensure that the default value is one of the allowed values of the pipeline variable. |
@@ -58,11 +54,8 @@ Delegate: 76818
 
 This release introduces the following features and enhancements.
 
-
-
-|  |  |
-| --- | --- |
 | **Feature or enhancement** | **Description** |
+| --- | --- |
 | CDS-42783 | Created upsert statement for looker entities. |
 | DEL-4589 | [UI] CG Immutable delegate should not use profile script If FF is on. |
 | DEL-4617ZD-33464 | Delegate logic was enhanced to ensure that `redis` connection errors do not interfere with task acquisition. |
@@ -73,11 +66,8 @@ This release introduces the following features and enhancements.
 
 This release includes the following fixes.
 
-
-
-|  |  |
-| --- | --- |
 | **Issue** | **Description** |
+| --- | --- |
 | CDS-41129ZD-32913 | For this FF `OPTIMIZED_TF_PLAN` shell script step will not fail if for `${terraformPlan.jsonFilePath()}` expression instead the value of this expression will be null. |
 | CDS-41232 | Introduced new fields `parent_pipeline_id` and `created_by_type` in timescaledb. |
 | CDS-41357ZD-32975 | Throw exception if the nexus artifact URL is empty. |
@@ -108,11 +98,8 @@ Delegate: 76614
 
 This release introduces the following features and enhancements:
 
-
-
-|  |  |
-| --- | --- |
 | **Feature or Enhancement** | **Description** |
+| :-- | :-- |
 | CDS-40796 | The Azure Identity (`azure-identity`) artifact was upgraded from version 1.1.2 to version 1.4.4. The upgrade was made to remove vulnerabilities. |
 | CDS-41347 | The `go-template` binary was replaced with an updated version 0.4.1. The new binary updates Golang from version 1.17.9 to 1.16.4. The `go-template` binary supplies a Delegate-required internal library. |
 | DEL-3171 | A change was made to prevent the CG Immutable Delegate from running the profile script. |
@@ -123,11 +110,8 @@ This release introduces the following features and enhancements:
 
 #### Issues Fixed in This Release
 
-
-
-|  |  |
-| --- | --- |
 | **Issue** | **Description** |
+| :-- | :-- |
 | CDS-41149ZD-32913 | Changed the behavior associated with the `OPTIMIZED_TF_PLAN` feature flag. An expression of `${terraformPlan.jsonFilePath()}` will no longer cause the shell script step to fail; instead, the value of the expression will be set to `null`. |
 | CDS-41232 | The `parent_pipeline_id` and `created_by_type` fields were introduced in `timescaledb`. |
 | CDS-41357ZD-32975 | A change was made to cause an exception to be generated if the field for the nexus artifact URL is empty. |
@@ -154,12 +138,16 @@ This release introduces the following features and enhancements:
 
 Delegate: 76324
 
-**Important information about upgrading KOTS admin console****Minor release 76324 requires KOTS admin console version 1.78.0.** You must update KOTS before you deploy this release of Harness Self-Managed Enterprise Edition.  
+**Important information about upgrading KOTS admin console**
+
+**Minor release 76324 requires KOTS admin console version 1.78.0.** You must update KOTS before you deploy this release of Harness Self-Managed Enterprise Edition.  
   
 To update KOTS admin console:  
-  
-`curl` [`https://kots.io/install/1.78.0`](https://kots.io/install/1.78.0)`| bash`  
-`kubectl kots admin-console upgrade -n <namespace>`#### New Features and Enhancements
+```
+curl https://kots.io/install/1.78.0 | bash  
+kubectl kots admin-console upgrade -n <namespace>
+```
+#### New Features and Enhancements
 
 This release introduces the following features and enhancements.
 
@@ -209,7 +197,9 @@ N/A
 
 ### July 31, 2022, minor release 76025
 
-**Important information about upgrading Timescale DB**Before you upgrade to this release, you must run the following script **timescaledb\_upgrade.sh**against your Harness namespace to update Timescale DB.  
+**Important information about upgrading Timescale DB**
+
+Before you upgrade to this release, you must run the following **timescaledb\_upgrade.sh** script against your Harness namespace to update Timescale DB.  
   
 ### timescaledb\_upgrade.sh
 
