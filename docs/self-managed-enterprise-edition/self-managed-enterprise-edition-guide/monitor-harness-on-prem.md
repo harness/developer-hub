@@ -22,7 +22,9 @@ Monitoring is included in Harness Self-Managed Enterprise Edition - Virtual Mach
 
 The KOTS admin tool for a running version of Harness Self-Managed Enterprise Edition - Virtual Machine displays Prometheus monitoring:
 
-![](./static/monitor-harness-on-prem-07.png)When you installed Harness Self-Managed Enterprise Edition - Virtual Machine, you were provided with Prometheus, Grafana, and Alertmanager ports and passwords in the output of the installer. For example:
+![](./static/monitor-harness-on-prem-07.png)
+
+When you installed Harness Self-Managed Enterprise Edition - Virtual Machine, you were provided with Prometheus, Grafana, and Alertmanager ports and passwords in the output of the installer. For example:
 
 
 ```
@@ -35,6 +37,7 @@ To view these addresses, log into the VM running Harness, and then view the Kube
 ```
 kubectl get svc -n monitoring
 ```
+
 The output will be something like this:
 
 
@@ -60,7 +63,9 @@ If you have a load balancer configured, then configure it to support the `promet
 
 In **Configure graphs**, enter the URL using the public IP and the Prometheus port number.
 
-![](./static/monitor-harness-on-prem-08.png)Click **Save**. The graphs appear.
+![](./static/monitor-harness-on-prem-08.png)
+
+Click **Save**. The graphs appear.
 
 #### Grafana
 
@@ -70,6 +75,7 @@ The Grafana port is listed by running `kubectl get svc -n monitoring`:
 ```
 grafana                 NodePort    10.96.2.252   <none>        3000:30902/TCP               
 ```
+
 Combine that port number with the public IP for Harness Self-Managed Enterprise Edition and you have the Grafana endpoint. For example `http://35.233.239.15:30902`.
 
 Log into Grafana using the generated username and password you received when you installed Harness Self-Managed Enterprise Edition:
@@ -86,9 +92,13 @@ kubectl get secrets grafana-admin -n monitoring -o yaml
 ```
 Once you are logged in, go to Dashboards and click a default dashboard or created a new one.
 
-![](./static/monitor-harness-on-prem-09.png)For example, open the **Kubernetes / Pods** dashboard.
+![](./static/monitor-harness-on-prem-09.png)
 
-![](./static/monitor-harness-on-prem-10.png)See [Grafana docs](https://grafana.com/docs/) for information on creating dashboards.
+For example, open the **Kubernetes / Pods** dashboard.
+
+![](./static/monitor-harness-on-prem-10.png)
+
+See [Grafana docs](https://grafana.com/docs/) for information on creating dashboards.
 
 For information on querying Prometheus, see [Querying Prometheus](https://prometheus.io/docs/prometheus/latest/querying/basics/).
 
@@ -120,9 +130,8 @@ In these examples, `<domain name>` represents your vanity URL (for example, `myc
 
 
 
-|  |  |  |
-| --- | --- | --- |
 | **Service Name** | **Endpoint** | **Response** |
+| --- | --- | --- |
 | Verification | `https://<domain name>/verification/health` | `{"metaData":{},"resource":"healthy","responseMessages":[]}` |
 | NextGen Manager | `https://<domain name>/ng/api/health` | `{"status":"SUCCESS","data":"healthy","metaData":null,"correlationId":"a38c51ac-07ec-4596-b40b-4cc9487f8506"}` |
 
