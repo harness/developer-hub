@@ -18,23 +18,25 @@ Harness deploys updates progressively to different Harness cluster hosting accou
 
 ### What's new
 
-* Adding a node pool name (CCM-10203)
+* Inroducing support to list the label keys that contain the string node-pool-name. (CCM-10203)
   
-    Earlier, while adding a node pool name, Harness CCM looked only for the exact match. Now, support has been introduced to check if the node label key _'contains'_ the node-pool-name. If an exact match is not found, CCM falls back to '_contains_'. See [Labels for node pool recommendations](https://developer.harness.io/docs/cloud-cost-management/use-cloud-cost-management/ccm-recommendations/node-pool-recommendations#prerequisites) for more information.
+    While adding a node pool name, Harness CCM looked only for the exact match. Now, CCM has introduced support to check if the node label key contains the string node-pool-name. CCM falls back to _contains_ if an exact match is not found. See [Labels for node pool recommendations](https://developer.harness.io/docs/cloud-cost-management/use-cloud-cost-management/ccm-recommendations/node-pool-recommendations#prerequisites) for more information.
 
-* API implementation for Currency Preferences (CCM-9632)
-
-    You can now select the preferred currency that you want to see for your entire CCM application from different currencies across different cloud providers by using the Currency Preference APIs. See [Harness API Documentation](https://apidocs.harness.io/) for more information.
   
 ### Early access
 
-* Introducing **Currency Preference** to view your cost data for your entire CCM application in your preferred currency for different cloud providers. This feature is behind a feature flag `CCM_CURRENCY_PREFERENCES`. (CCM-9280)
+* Standardize your currency across CCM (CCM-9280)
+
+  This release introduces **Currency Preference** that enables you to view the entire CCM application in your preferred currency for different cloud providers. This feature is behind a feature flag `CCM_CURRENCY_PREFERENCES`. 
+  
+* API implementation for the Currency Preferences feature (CCM-9632)
+
+    You can now select the currency in which you want to view your entire CCM application from different currencies across different cloud providers by using the Currency Preference APIs. See [Harness API Documentation](https://apidocs.harness.io/) for more information.
+
 
 ### Fixed issues
 
-- Language in budget alert notification was misleading (CCM-9291)
-
-  The budget alerts sent via emails now convey more meaningful, dynamic messages. It provides the cost type and the period for which the alert is created.
+- The messages in budget alert notification emails were misleading. Now, the emails convey more meaningful and dynamic messages. They provide the cost type and the period for which the alert is created. (CCM-9291)
 
 
 ## December 7, 2022, version 77716
