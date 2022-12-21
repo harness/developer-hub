@@ -19,16 +19,21 @@ If you don't see a new feature or enhancement in your Harness account, it might 
 ### December 22, 2022, version 779xx
 
 #### What's new
+
 - No new features are available for this release.
 
 #### Early access
+
 - No early access features are available for this release.
 
 #### Enhancements
+
 - Decreasing the overall **all perpetual task** count. (CDS-46240)
+
   Now we create a perpetual task on the basis of the cloud provider. This decreases the **all perpetual task** counts overall.The Harness Manager is not changed and no user action is required.
   
 - Log improvement when only the ConfigMap is deployed. (CDS-47901)
+
   Harness only performs versioning when a Deployment, StatefulSet, DaemonSet and DeploymentConfig is performed. These are called managed workloads.
   
   In deployments of ConfigMaps without managed workloads, no versioning is performed. 
