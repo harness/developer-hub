@@ -1,6 +1,6 @@
 ---
 title: Harness SaaS Release Notes (FirstGen)
-description: This document contains release notes for Harness SaaS.
+description: This document contains release notes for FirstGen Harness SaaS.
 sidebar_position: 10
 helpdocs_topic_id: q554zjytod
 helpdocs_category_id: h4k144tv5t
@@ -16,29 +16,50 @@ For Harness on-prem releases, see [Harness Self-Managed Enterprise Edition Relea
 
 If you don't see a new feature or enhancement in your Harness account, it might be behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
-### December 21, 2022, version 779xx
+### December 22, 2022, version 77908
 
 Delegate version: 77802
 
-#### New features and enhancements
+#### What's new
 
-* For information about compatibility between Harness Manager and delegate versions, query the new `supportedDelegate` endpoint. Include your account ID (`accountId`) in the request URL as shown in the following example. Specify your API key in the `x-api-key` field of the request header. (DEL-5019)
+- No new features are available for this release.
+
+#### Early access
+
+- No early access features are available for this release.
+
+#### Enhancements
+
+- Decreasing the overall **all perpetual task** count. (CDS-46240)
+
+  Now we create a perpetual task on the basis of the cloud provider. This decreases the **all perpetual task** counts overall.The Harness Manager is not changed and no user action is required.
+  
+- Log improvement when only the ConfigMap is deployed. (CDS-47901)
+
+  Harness only performs versioning when a Deployment, StatefulSet, DaemonSet and DeploymentConfig is performed. These are called managed workloads.
+  
+  In deployments of ConfigMaps without managed workloads, no versioning is performed. 
+  
+  The logs have been improved to indicate that no managed workloads were found
+  
+  **Note:** If the `harness.io/skip-versioning: "true"` annotation is in a manifest, Harness does not track release versions.
+  
+- For information about compatibility between Harness Manager and delegate versions, query the new `supportedDelegate` endpoint. Include your account ID (`accountId`) in the request URL as shown in the following example. Specify your API key in the `x-api-key` field of the request header. (DEL-5019)
 
   ```
   curl -X GET 'https://app.harness.io/api/version/supportedDelegate?accountId=<> \
   -H 'x-api-key: <api-key>'
   ```
 
-* Added internal metrics to track the pattern of automatic delegate upgrades. (DEL-5383)
+- Added internal metrics to track the pattern of automatic delegate upgrades. (DEL-5383)
  
-* Added a check to the container start process to ensure the user has the file permissions required to run the delegate. If user permissions are inadequate, the delegate fails fast and displays an error message. (DEL-5440)
- 
+- Added a check to the container start process to ensure the user has the file permissions required to run the delegate. If user permissions are inadequate, the delegate fails fast and displays an error message. (DEL-5440)
+
 #### Fixed issues
 
 * Avoid calling `closeChannel` more than one time during watcher shutdown. Invoking the method two times can cause the `logsAvoid` method to unnecessarily wait during executor shutdown. (DEL-4924)
  
 * Fixed a shell delegate issue that occurred on restart. The delegate name was not visible. (DEL-5443)
-
 
 ### December 13, 2022, version 77808
 

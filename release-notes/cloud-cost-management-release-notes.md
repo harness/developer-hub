@@ -14,6 +14,25 @@ Harness deploys updates progressively to different Harness cluster hosting accou
 
 :::
 
+## December 16, 2022
+
+### What's new
+
+* Introducing support to list the label keys that contain the string node-pool-name. (CCM-10203)
+  
+    While adding a node pool name, Harness CCM looked only for the exact match. Now, CCM has introduced support to check if the node label key contains the string node-pool-name. CCM falls back to _contains_ if an exact match is not found. See [Labels for node pool recommendations](https://developer.harness.io/docs/cloud-cost-management/use-cloud-cost-management/ccm-recommendations/node-pool-recommendations#prerequisites) for more information.
+
+  
+### Early access
+
+This release does not include early access features.
+
+
+### Fixed issues
+
+- The messages in budget alert notification emails were misleading. Now, the emails convey more meaningful and dynamic messages. They provide the cost type and the period for which the alert is created. (CCM-9291)
+
+
 ## December 7, 2022, version 77716
 
 ### What's new
@@ -30,7 +49,7 @@ This release does not include early access features.
 
   Now, this issue is fixed.
 
-- When you clicked Explore all plans on the Cloud Cost Management Getting Started page, you were directed to the old onboarding page instead of the new one. (CCM-9638)
+- When you clicked **Explore all plans** on the Cloud Cost Management Getting Started page, you were directed to the old onboarding page instead of the new one. (CCM-9638)
 
   Now, this issue is fixed.
 
@@ -88,9 +107,9 @@ NA
 
 ## October 21, 2022, version 77221
 
-What's new
+### What's new
 
-You can now add labels to enable node pool recommendations. kops cluster node label has been added for node pool recommendations. See Labels for node pool recommendations for more information. (CCM-9309)
+You can now add labels to enable node pool recommendations. `kops cluster` node label has been added for node pool recommendations. See [Labels for node pool recommendations](https://developer.harness.io/docs/cloud-cost-management/use-cloud-cost-management/ccm-recommendations/node-pool-recommendations#prerequisites) for more information. (CCM-9309)
 
 ### Early access
 
