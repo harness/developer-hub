@@ -14,6 +14,163 @@ Harness deploys updates progressively to different Harness cluster hosting accou
 
 :::
 
+## December 22, 2022, version 77908
+
+### What's new
+
+- The [Deployment Templates](../docs/continuous-delivery/onboard-cd/cd-quickstarts/custom-deployment-tutorial) **Execution** tab now supports all steps in the Command category. (CDS-48030)
+
+Earlier, only the Utilities steps were supported. Now you can add any CD step.
+ 
+- Support for absolute paths in a [Custom Remote Manifest](../docs/continuous-delivery/cd-advanced/cd-kubernetes-category/add-a-custom-remote-script-and-manifests/) for Helm Charts. (CDS-47647, ZD-37501) 
+ 
+Previously, we were only looking for a path relative to the Harness working directory (a temporary directory created by Harness). Now, you can specify an absolute path in **Extracted Manifest File Location** by starting with a forward slash `/`.
+ 
+Example: `/tmp/myChart1/custom-remote-test-repo/helm/todolist/`.
+
+- The **Referenced By** tab was added to [Environments](../docs/continuous-delivery/onboard-cd/cd-concepts/services-and-environments-overview). (CDS-39989)
+
+You can see which pipeline uses any Environment in the Environment's **Referenced By** tab.
+
+### Fixed issues
+
+- ECS Tests failing with Delegate not found error. (CDS-48522)
+
+Fixed the field alignment issues for artifacts.
+  
+- File Store File browser concatenates filenames and doesn’t scale to the size of the window. (CDS-48162)
+
+Fixed by adding hover text for files.
+  
+- Tempaltes Inline/Remote cropped in the UI. (CDS-48153)
+
+The Template modal functions fine now.
+  
+- Custom Artifact Trigger not working. (CDS-48134)
+
+We were not configuring the timeout field and timeout value was set as null from the UI, which was causing the issue. Added the check for the timeout value and set the default as 10 minutes.
+  
+- Google Artifact Registry Artifacts: Better error msg when the connector does not have access to a project. (CDS-48102)
+
+Error message was improved when the project and connector are incorrectly provided. The execution fails with the appropriate error message.
+  
+- Creating a Shell Script next to another Shell Script overwrites the first script. (CDS-48044)
+
+The default name and ID are longer provided. Therefore, duplicate IDs are not allowed for steps. This solves this issue.
+
+- The **Infrastructure** field in **Input Sets** shows [object object]. (CDS-47992)
+
+Marking an infrastructure runtime in an input set implies that the infrastructure is an execution-time input and that is not supported currently. This option was removed from the UI.
+  
+- Filtering infrastructures does not work with a **MatchAll** selection. (CDS-47981)
+
+The filtering infra feature did not match all the infrastructures as expected. The matching logic had an issue. The issue has been resolved. The feature now matches entities when `all` tags are selected.
+  
+- GCR Artifact throws a null pointer on a tag when the image path is wrong. (CDS-47980)
+
+An NPE was fixed when the imagePath is incorrect and the tags dropdown is called. 
+  
+- When a user defines 1 artifact source and fixes the values, we still prompt for an artifact source in the pipeline run form. (CDS-47908)
+
+Now the primary artifact is preselected when a single artifact source is added.
+  
+- A subtask can't be created in JIRA. The parent key or ID is missing. (CDS-47905, ZD-37640)
+
+The Harness Jira integration didn't support adding or updating the parent of Jira issues. Due to this, the creation of a subtask was not possible since we require a parent for creating a Jira subtask. This is because the parent's field type "issuelink" was not supported.
+  
+Resolution:
+
+    * The **issuelin** field type is supported now.
+    * The Jira Create step can now be used to create issues with existing issues as their parent.
+    * The Jira Update step can be used to update the parent of a specific issue.
+    * A subtask can be created using a Jira Create step.
+    * A parent can be provided by simply typing the parent issue key, such as "TJI-47890", in the Parent field.
+    
+- Input sets do not respect environment variable overrides. (CDS-47879, ZD-37675, ZD-38078)
+
+Service override input values were being cleared on the loading of the input set or when applied in a pipeline. This has been fixed now and the user can now run the pipeline with the input set directly from the **Input Set** page.
+
+- **Ne* dropdown is hidden under the modal for the file store. (CDS-47817)
+
+Now when the browser zooms to 100%, the **New** button in the file store displays the options list.
+  
+- Fix popup issues in execution strategy. (CDS-47792)
+
+Fixed an issue with display popovers on the execution strategy for SSh/WinRM deployment types.
+  
+- Cluster details mismatch in service instances. (CDS-47776)
+
+Cluster details are not uniquely returned for tbe active service instances popover. This fix adds a filter for infra/cluster ID, pipeline ID, service ID, build ID, and env ID.
+
+- Incorrect field label and tooltip.	(CDS-47758)
+
+When creating a reference secret using AzureKeyVault secret manager, the field label and the tooltip were incorrect. This label and tooltip have been corrected. 
+  
+- Unclear logs from the **Update GitOps Configuration files** step. (CDS-47640)
+
+When multiple clusters are used, variables were being repeated without any separation.The logs were enhanced to increase readability.
+  
+- Error when using Template API. (CDS-47488)
+
+A 500 internal server error occurred when git details details are passed as empty while creating a template at the project level with the new API. This is fixed.
+  
+- Kubernetes and Native Helm service Helm command flags: `-version` flag is missing from the dropdown. (CDS-47388)
+
+Added the version command flag.
+  
+- Runtime inputs for Artifactory Artifact are not resolved. (CDS-47344)
+
+When a repository is configured as runtime for Artifactory, the repository format is set as empty, which causes the issue. We have added the check that if the repository format is empty then we will read it from serviceRef.
+  
+- A default failure strategy is not added for the Deploy stage in a pipeline when an execution strategy is not selected. (CDS-47310)
+
+The call to fetch the default failure strategies for a Deploy stage was happening after 20 seconds of clicking the **New Stage** button. This timeout has now been removed and the call is made immediately after clicking the **New Stage** button. This fills in the default failure strategies for the stage immediately as well.
+
+- Expressions from Git stored files are not resolved. (CDS-46726)
+
+A test was added to verify.
+  
+- The approval stage is adding to the deployment count of services when it is added after the deployement stage. (CDS-46707)
+
+Deployments shown on the **Services** dashboard are fetched from service_infra_info table in timescaleDB. Since the dashboard shows the deployments for all services, we were not filtering based on service identifier, but that table contains approval and other data also. To allow only service deployments, we added a condition that service_id should not be null.
+  
+- Deployment freeze does not work for the condition combination: Add specific org with exclude project and specific environment. (CDS-46702)
+
+Deployment freeze will consider parent scopes when evaluating whether to block deployment.
+
+- Docker expressions: The following expressions were not working. (CDS-46656) 
+
+Added expression support for the following:
+
+  ```
+  <+artifact.displayName>
+  <+artifact.buildNo>
+  <+artifact.metadata.image>
+  <+artifact.metadata.tag>
+  <+artifact.metadata.regisrtyUrl>
+  <+artifact.metadata.repositoryName>
+  ```
+
+- Custom artifact trigger: secret support in script for curl command. (CDS-46113, ZD-37343)
+
+Currently we don't support secrets in perpetual tasks, and triggers create a perpetual task. Because of the limitation, customers were unable to use secrets in a trigger. Added support to resolve the secrets for custom triggers.
+  
+- Error improvement for Helm upgrade when there are no releases in a Deployed state. (CDS-41706)
+
+Going forward, when Helm upgrade or rollback fails with "No deployed releases", we offer a better hint and explanation on how to fix it.
+
+- No error for an empty service name when the service is updated from inside a pipeline/stage template. (CDS-41510)
+
+Now the "service required" message appears when the service name is empty, and the user is not allowed to submit the form unless service name is added.
+
+Getting NPE when using `useFromStage` in YAML. (CDS-41036)
+
+When there is `useFromStage` chaining in a pipeline (which is an unsupported use-case), an informative error message now appears instead of Null Pointer Exception.
+  
+- Remove **Skip Dry Run** from Kubernetes steps that are not using it. (CDS-17385)
+
+Removed **Skip Dry Run** from unnecessary steps.
+
 ## December 13, 2022, version 77808
 
 ### What's new

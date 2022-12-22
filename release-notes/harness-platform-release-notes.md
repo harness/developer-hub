@@ -14,11 +14,23 @@ Harness deploys updates progressively to different Harness cluster hosting accou
 
 :::
 
-## December 21, 2022, version 77808
+
+
+## December 22, 2022, version 77908
 
 Delegate version: 77802
 
 ### What's new
+
+-   API support for discovery of SCIM service provider features and schema. (PL-29069)
+    
+    Harness now supports the following three HTTP GET API endpoints to facilitate the discovery of SCIM service provider features and schema. These endpoints are defined in SCIM 2.0:
+
+    -   ServiceProviderConfig
+
+    -   ResourceType
+
+    -   Schemas
 
 ### Early access
 
@@ -26,9 +38,37 @@ No early access features are available in this release.
 
 ### Fixed issues
 
-- Changed how the delegate handles secrets. Multiline secrets are now detected and masked appropriately. (DEL-5510)
+-   Changed how the delegate handles secrets. Multiline secrets are now detected and masked appropriately. (DEL-5510)
  
-- Changed the display of delegate version information in Harness Manager to exclude minimum version information for delegates that are not connected. (DEL-5523)
+-   Changed the display of delegate version information in Harness Manager to exclude minimum version information for delegates that are not connected. (DEL-5523)
+
+-   The Create Resource Group API returns an HTTP 500 response code when the included scopes are blank. (PL-30195, ZD-37663)
+
+    This has been fixed by adding a null check and throwing a null pointer exception when the included scopes are left blank.
+
+-   Editing a connector through connector selection does not automatically select it. (PL-28175)
+
+    Enhancing the connector selection component logic to pre-select the connector in the list if it is in edit mode fixed this issue.
+    
+-   Entering an invalid value for `tenant_id` does not throw any error and allows selection of previously loaded vaults in Azure Key Vault secret manager. (PL-28136)
+    
+    Displaying an appropriate error message and setting the vault value to empty when there is an error in fetching vaults has fixed this issue.
+
+-   Searching for email addresses to add users to user groups does not show any results. (PL-27797)
+    
+    Changing the filter logic to search using the email address as well as the user name has fixed this issue.
+
+-   The date format in Pipeline Studio is incorrect. (PIE-7040)
+
+    Changing the date format to `DD/MM/YYYY` has fixed this issue.
+
+-   Retrying a failed pipeline does not populate the start pipeline dialog with the input values from the previous execution. (PIE-6780, ZD-37648)
+    
+    Resetting the input set form with values from Formik has fixed this issue.
+
+-   If the environment details are blank in the deploy stage settings, clicking the Service tab throws an error. (PIE-6240)
+    
+    Adding backward compatibility for the tabs has fixed this issue.
 
 
 ## December 13, 2022, version 77808
