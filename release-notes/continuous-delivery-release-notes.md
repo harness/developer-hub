@@ -14,7 +14,7 @@ Harness deploys updates progressively to different Harness cluster hosting accou
 
 :::
 
-## December 22, 2022, version 779xx
+## December 22, 2022, version 77908
 
 ### What's new
 
