@@ -14,7 +14,11 @@ Harness deploys updates progressively to different Harness cluster hosting accou
 
 :::
 
+
+
 ## December 22, 2022, version 77908
+
+Delegate version: 77802
 
 ### What's new
 
@@ -28,12 +32,16 @@ Harness deploys updates progressively to different Harness cluster hosting accou
 
     -   Schemas
 
-
 ### Early access
 
 No early access features are available in this release.
 
 ### Fixed issues
+
+-   Changed how the delegate handles secrets. Multiline secrets are now detected and masked appropriately. (DEL-5510)
+ 
+-   Changed the display of delegate version information in Harness Manager to exclude minimum version information for delegates that are not connected. (DEL-5523)
+
 -   The Create Resource Group API returns an HTTP 500 response code when the included scopes are blank. (PL-30195, ZD-37663)
 
     This has been fixed by adding a null check and throwing a null pointer exception when the included scopes are left blank.
@@ -61,9 +69,6 @@ No early access features are available in this release.
 -   If the environment details are blank in the deploy stage settings, clicking the Service tab throws an error. (PIE-6240)
     
     Adding backward compatibility for the tabs has fixed this issue.
-
-
-
 
 
 ## December 13, 2022, version 77808
