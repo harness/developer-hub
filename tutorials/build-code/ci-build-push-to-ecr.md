@@ -16,7 +16,7 @@ Before you can push your container image to ECR from Harness, there are a few pr
 1. You must have an [AWS account](https://aws.amazon.com/resources/create-account/) and have created a repository in ECR.
 2. You must have a Docker image of your application ready to push to ECR - We have a [sample application](https://github.com/pavanbelagatti/harness-ci-example) with a Dockerfile. You can clone it and use it in this tutorial. 
 3. You must have access to the AWS CLI or the AWS Management Console. 
-4. To use the [Harness CI](https://www.harness.io/products/continuous-integration), you must have an account on Harness (it is Free). Harness offers hosted virtual machines (VMs) to run your builds. With Harness Cloud, you can build your code worry-free on the infrastructure that Harness provides. You don't have to spend time and effort to maintain build infrastructure; you can focus on developing great software instead.
+4. To use the [Harness CI](https://app.harness.io/auth/#/signup/?module=ci&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=ci-plg&utm_content=get-started), you must have an account on Harness (it is Free). Harness offers hosted virtual machines (VMs) to run your builds. With Harness Cloud, you can build your code worry-free on the infrastructure that Harness provides. You don't have to spend time and effort to maintain build infrastructure; you can focus on developing great software instead.
 
 ### Step-by-Step Guide to Pushing Your Container Image to ECR using Harness
 
