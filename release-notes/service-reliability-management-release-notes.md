@@ -16,21 +16,7 @@ Harness deploys updates progressively to different Harness cluster hosting accou
 
 ## December 22, 2022, version 77908
 
-### What's New
-
-This release does not include new features.
-
-### Enhancements
-
-This release does not include enhancements.
-
-### Early access
-
-This release does not include early access features.
-
-### Fixed issues
-
-This release does not include fixed issues.
+This release does not include new features, early access features, enhancements, and fixed issues.
 
 
 ## December 13, 2022, version 77808
