@@ -1,4 +1,4 @@
-# Harness Continuous Integration and Continuous Delivery
+# Build and Deploy a NodJS App to Kubernetes
 
 ## Harness CI/CD Tutorial
 
@@ -43,7 +43,7 @@ A CI/CD pipeline helps your team pinpoint where problems in your software are li
 ![CI/CD flowchart](./static/harness-cicd-tutorial/harness_cicd_pipeline.png)
 
 ### Pre-Requisites
-- Free [Harness](https://app.harness.io/auth/#/signup/?utm_source=internal&utm_medium=social&utm_campaign=community&utm_content=pavan_cicd_article&utm_term=get-started) account to do CI/CD (on-premise)
+- Free [Harness](https://app.harness.io/auth/#/signup/?module=cd&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=cd-plg&utm_content=get-started) account to do CI/CD (on-premise)
 - Kubernetes cluster access from any cloud provider to deploy our application (you can also use [Minikube](https://minikube.sigs.k8s.io/docs/start/) or [Kind](https://kind.sigs.k8s.io/docs/user/quick-start/) to create a single node cluster).
 - Docker, preferably [Docker Desktop](https://www.docker.com/products/docker-desktop/)
 - Download and install [Node.js](https://nodejs.org/en/download/)
