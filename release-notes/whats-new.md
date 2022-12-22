@@ -9,7 +9,7 @@ sidebar_position: 1
 
 Learn about the new features that are generally available in all Harness modules.
 
-## December 22, 2022, version 779xx
+## December 22, 2022, version 77908
 
 ### Continuous Delivery
 
