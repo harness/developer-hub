@@ -18,20 +18,14 @@ Harness deploys updates progressively to different Harness cluster hosting accou
 
 ### What's new
 
-* Inroducing support to list the label keys that contain the string node-pool-name. (CCM-10203)
+* Introducing support to list the label keys that contain the string node-pool-name. (CCM-10203)
   
     While adding a node pool name, Harness CCM looked only for the exact match. Now, CCM has introduced support to check if the node label key contains the string node-pool-name. CCM falls back to _contains_ if an exact match is not found. See [Labels for node pool recommendations](https://developer.harness.io/docs/cloud-cost-management/use-cloud-cost-management/ccm-recommendations/node-pool-recommendations#prerequisites) for more information.
 
   
 ### Early access
 
-* Standardize your currency across CCM (CCM-9280)
-
-  This release introduces **Currency Preference** that enables you to view the entire CCM application in your preferred currency for different cloud providers. This feature is behind a feature flag `CCM_CURRENCY_PREFERENCES`. 
-  
-* API implementation for the Currency Preferences feature (CCM-9632)
-
-    You can now select the currency in which you want to view your entire CCM application from different currencies across different cloud providers by using the Currency Preference APIs. See [Harness API Documentation](https://apidocs.harness.io/) for more information.
+This release does not include early access features.
 
 
 ### Fixed issues
