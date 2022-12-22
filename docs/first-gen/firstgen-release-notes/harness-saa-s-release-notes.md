@@ -16,6 +16,30 @@ For Harness on-prem releases, see [Harness Self-Managed Enterprise Edition Relea
 
 If you don't see a new feature or enhancement in your Harness account, it might be behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
+### December 21, 2022, version 779xx
+
+Delegate version: 77802
+
+#### New features and enhancements
+
+* For information about compatibility between Harness Manager and delegate versions, query the new `supportedDelegate` endpoint. Include your account ID (`accountId`) in the request URL as shown in the following example. Specify your API key in the `x-api-key` field of the request header. (DEL-5019)
+
+  ```
+  curl -X GET 'https://app.harness.io/api/version/supportedDelegate?accountId=<> \
+  -H 'x-api-key: <api-key>'
+  ```
+
+* Added internal metrics to track the pattern of automatic delegate upgrades. (DEL-5383)
+ 
+* Added a check to the container start process to ensure the user has the file permissions required to run the delegate. If user permissions are inadequate, the delegate fails fast and displays an error message. (DEL-5440)
+ 
+#### Fixed issues
+
+* Avoid calling `closeChannel` more than one time during watcher shutdown. Invoking the method two times can cause the `logsAvoid` method to unnecessarily wait during executor shutdown. (DEL-4924)
+ 
+* Fixed a shell delegate issue that occurred on restart. The delegate name was not visible. (DEL-5443)
+
+
 ### December 13, 2022, version 77808
 
 #### Fixed issues
