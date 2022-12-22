@@ -1,5 +1,5 @@
 ---
-title: Service Reliability Management release rotes
+title: Service Reliability Management release notes
 date: 2022-12-15T10:00
 tags: [NextGen, "service reliability management"]
 slug: service-reliability-management-release-notes
@@ -13,6 +13,11 @@ Harness Service Reliability Management is updated regularly. Review the notes be
 Harness deploys updates progressively to different Harness cluster hosting accounts. The features and fixes in the release notes may not be available in your cluster immediately.
 
 :::
+
+## December 22, 2022, version 77908
+
+This release does not include new features, early access features, enhancements, and fixed issues.
+
 
 ## December 13, 2022, version 77808
 
