@@ -101,7 +101,7 @@ Harness provides different types of delegates to give you flexibility in how you
 
 You are not limited to using a delegate of the same type as your deployment platform, although that is more complicated to set up initially.
 
-For delegates types, see [Delegate how-tos](https://docs.harness.io/category/9i5thr0ot2).
+For delegates types, see [Delegate how-tos](/docs/category/delegates).
 
 #### Where do I install the Harness delegate?
 
@@ -312,5 +312,5 @@ Most delegate issues are:
 In most cases, this is a user account. In some cases, the host/pod/container running the delegate has a user, profile, or IAM account assigned to it, and the connector inherits those credentials.  
 The credentials used by the delegate must have the roles and permissions required to perform the task. For example, if the IAM user account used for an AWS connector does not have the roles required for EKS deployments, it will fail.  
 The deployment indicates which pipeline step failed because of delegate permission issues.  
-See the permissions required for the [Harness connector](https://docs.harness.io/category/connectors) used for the failed task.
+See the permissions required for the [Harness connector](/docs/category/connectors) used for the failed task.
 

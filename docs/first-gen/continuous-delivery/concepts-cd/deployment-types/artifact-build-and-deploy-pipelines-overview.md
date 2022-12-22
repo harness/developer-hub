@@ -12,7 +12,7 @@ This topic describes the concept of a Harness Build and Deploy Pipeline deployme
 
 For detailed instructions on using build and deploy pipelines in Harness, see
 
-* [Artifact Build and Deploy Pipelines How-tos](https://docs.harness.io/category/cicd-artifact-build-and-deploy-pipelines)
+* [Artifact Build and Deploy Pipelines How-tos](/docs/category/cicd-artifact-build-and-deploy-pipelines)
 
 ### Before You Begin
 
@@ -66,5 +66,5 @@ For an AMI Artifact Build and Deploy Pipeline, the only difference from the File
 
 Read the following topics to build on what you've learned:
 
-* [Artifact Build and Deploy Pipelines How-tos](https://docs.harness.io/category/cicd-artifact-build-and-deploy-pipelines)
+* [Artifact Build and Deploy Pipelines How-tos](/docs/category/cicd-artifact-build-and-deploy-pipelines)
 

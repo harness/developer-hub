@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-To go to the 24/7 Service Guard setup for a specific tool, see its listing in [Continuous Verification](https://docs.harness.io/category/continuous-verification).
+To go to the 24/7 Service Guard setup for a specific tool, see its listing in [Continuous Verification](/docs/category/continuous-verification).
 
 To see the list of all the APM and logging tools Harness supports, see [CV Summary and Provider Support](https://docs.harness.io/article/myw4h9u05l-verification-providers-list).
 

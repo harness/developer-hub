@@ -14,6 +14,22 @@ Harness deploys updates progressively to different Harness cluster hosting accou
 
 :::
 
+## December 22, 2022, version 77908
+
+### What's new
+
+* Customers on the free plan can now run 5 stages per day on the CI hosted infrastructure. Contact Harness Sales to upgrade your plan. (CI-6430)
+
+* The onboarding workflow now caters to customers who do not have a codebase with which to connect. (CI-6348)
+
+### Early access features
+
+No early access features are available for this release.
+
+### Fixed issues
+
+No fixed issues are available for this release. 
+
 ## December 13, 2022, version 77808
 
 ### What's new

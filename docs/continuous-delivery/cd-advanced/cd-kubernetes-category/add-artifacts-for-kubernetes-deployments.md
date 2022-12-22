@@ -78,7 +78,7 @@ The Connector can be added in line when you select your artifacts or separately 
 
 For steps on setting up each artifact server as a Connector, see the following [Connect to an Artifact Repo](../../../platform/7_Connectors/connect-to-an-artifact-repo.md).
 
-If you are using Google Container Registry (GCR) or Amazon Elastic Container Registry (ECR), see [Cloud Platform Connectors](https://docs.harness.io/category/cloud-platform-connectors).
+If you are using Google Container Registry (GCR) or Amazon Elastic Container Registry (ECR), see [Cloud Platform Connectors](/docs/category/cloud-platform-connectors).
 
 ## Review: Primary and Sidecar Artifacts
 

@@ -124,7 +124,7 @@ You can use [Workflow variables](../model-cd-pipeline/workflows/add-workflow-var
 
 Essentially, these settings allow you to use your Terraform Provision steps as a Terragrunt plan dry run.
 
-Users typically do this and add a Harness [Approval step](https://docs.harness.io/category/add-approvals) between the Terraform Provision step that runs the plan and the Terraform Provision step that applies the plan.
+Users typically do this and add a Harness [Approval step](/docs/category/add-approvals) between the Terraform Provision step that runs the plan and the Terraform Provision step that applies the plan.
 
 ##### Inherit configurations from previous Terragrunt Provision step
 

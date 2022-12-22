@@ -380,6 +380,21 @@ const PlatformList: CardItem[] = [
     time: "5 min",
     link: "/tutorials/platform/onboard-terraform-provider",
   },
+  {
+    title: "Provision Azure Infrastructure for Harness Delegate",
+    module: "platform",
+    icon: "img/logo.svg",
+    description: (
+      <>
+        Tutorial on how to set up a Kubernetes cluster on Azure 
+        and will serve as the foundation for your CI/CD pipeline infrastructure. 
+      </>
+    ),
+    newDoc: true,
+    type: [docType.Documentation],
+    time: "3 min",
+    link: "/tutorials/platform/provision-azure-infrastructure",
+  },
 ];
 
 export default function AllTutorials() {

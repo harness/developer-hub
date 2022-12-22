@@ -30,7 +30,7 @@ The following blog post walks you through creating a Helm 3 deployment from scra
 
 You can perform all of the steps in this guide using free accounts. You will need a Docker Hub account and a Google Cloud Platform account. Both offer free accounts.
 
-This document covers Harness Helm implementation. For Kubernetes implementation, see [Kubernetes Deployments](https://docs.harness.io/category/kubernetes-deployments).
+This document covers Harness Helm implementation. For Kubernetes implementation, see [Kubernetes Deployments](/docs/category/kubernetes-deployments).
 
 #### Intended Audience
 

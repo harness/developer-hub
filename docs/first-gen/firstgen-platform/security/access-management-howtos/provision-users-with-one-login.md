@@ -53,7 +53,7 @@ Next, add a special Harness account URL to the OneLogin app's SCIM Base URL.
 
 3. Add your account ID to the end of the following URL: `https://app.harness.io/gateway/api/scim/account/<account_ID>`
 
-   For [Harness On-Prem](https://docs.harness.io/category/self-managed-enterprise-edition-fg), the URL will use your custom domain name and `gateway` is omitted. For example, if your On-Prem domain name is **harness.mycompany.com**:  
+   For [Harness On-Prem](/docs/category/self-managed-enterprise-edition-fg), the URL will use your custom domain name and `gateway` is omitted. For example, if your On-Prem domain name is **harness.mycompany.com**:  
    
    `https://harness.mycompany.com/api/scim/account/<account_ID>`
 

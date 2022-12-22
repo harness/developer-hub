@@ -41,7 +41,7 @@ Click **Docker** and then click **Continue**.
 
 Enter a name for the Delegate. This is the name you will see when the Delegate is listed in Harness.
 
-**Do not run Delegates with the same name in different clusters.** See [Troubleshooting](https://docs.harness.io/article/jzklic4y2j-troubleshooting).Add Tags to the Delegate. By default, Harness adds a Tag using the name you enter, but you can more. Simply type them in and press Enter.
+**Do not run Delegates with the same name in different clusters.** See [Troubleshooting](../../../troubleshooting/troubleshooting-nextgen.md).Add Tags to the Delegate. By default, Harness adds a Tag using the name you enter, but you can more. Simply type them in and press Enter.
 
 These Tags are useful for selecting the Delegate when creating a Connector.
 

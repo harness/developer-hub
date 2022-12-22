@@ -15,7 +15,7 @@ This content is for Harness [FirstGen](../../../../getting-started/harness-firs
 This topic lists the limitations and requirements of the Harness Delegate.
 
 :::note
-For all the topics related to the Harness Delegate, see [Manage Harness Delegates](https://docs.harness.io/category/manage-harness-delegates-firstgen).
+For all the topics related to the Harness Delegate, see [Manage Harness Delegates](/docs/category/manage-harness-delegates-firstgen).
 :::
 
 ## Delegate Limitations

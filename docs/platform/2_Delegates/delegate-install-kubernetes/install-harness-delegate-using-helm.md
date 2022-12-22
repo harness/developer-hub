@@ -179,7 +179,7 @@ When the issue is resolved, apply the Delegate YAML a second time.
 
 From **Apply YAML and verify connection**, copy the instructions to the command line.
 
-For further information on troubleshooting, see [Troubleshooting Harness](https://docs.harness.io/article/jzklic4y2j-troubleshooting).
+For further information on troubleshooting, see [Troubleshooting Harness](../../../troubleshooting/troubleshooting-nextgen.md).
 
 ### Delegate Field Reference
 

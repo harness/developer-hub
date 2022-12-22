@@ -1,0 +1,49 @@
+.cta-banner {
+  background-color: #e8e8ff;
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  height: 56px;
+  padding: 12px;
+  gap: 12px;
+}
+
+.cta-banner-icon {
+  height: 24px;
+  width: auto;
+}
+.cta-banner-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #2e2d96;
+}
+.cta-banner-tagline {
+  font-size: 12px;
+  font-weight: 500;
+}
+.cta-banner-button {
+  background-color: var(--white);
+  border: 1px solid var(--primary-7);
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--primary-7);
+  border-radius: 4px;
+  height: 32px;
+  line-height: 32px;
+  padding: 0 1em;
+  cursor: pointer;
+}
+.cta-banner-button:hover {
+  background-color: var(--primary-2);
+  border-color: var(--primary-7);
+}
+.cta-banner-close {
+  position: absolute;
+  right: 1em;
+  cursor: pointer;
+  font-size: 16px;
+}
+.cta-banner-close:hover {
+  color: var(--primary-7);
+}

@@ -23,6 +23,26 @@ Learn about the new features that are generally available in all Harness modules
 - **Referenced By** tab added to [Environments](../docs/continuous-delivery/onboard-cd/cd-concepts/services-and-environments-overview) (CDS-39989)
   - You can see which pipeline use any Environment in the Environment's **Referenced By** tab.
 
+- The [Deployment Templates](../docs/continuous-delivery/onboard-cd/cd-quickstarts/custom-deployment-tutorial) **Execution** tab now supports all steps in the Command category. (CDS-48030)
+
+  Earlier, only the Utilities steps were supported. Now you can add any CD step.
+
+- Support for absolute paths in a [Custom Remote Manifest](../docs/continuous-delivery/cd-advanced/cd-kubernetes-category/add-a-custom-remote-script-and-manifests/) for Helm Charts. (CDS-47647, ZD-37501) 
+
+  Previously, we were only looking for a path relative to the Harness working directory (a temporary directory created by Harness). Now, you can specify an absolute path in **Extracted Manifest File Location** by starting with a forward slash `/`.
+
+  Example: `/tmp/myChart1/custom-remote-test-repo/helm/todolist/`.
+
+- The **Referenced By** tab was added to [Environments](../docs/continuous-delivery/onboard-cd/cd-concepts/services-and-environments-overview). (CDS-39989)
+
+  You can see which pipeline uses any Environment in the Environment's **Referenced By** tab.
+
+### Continuous Integration
+
+* Customers on the free plan can now run 5 stages per day on the CI hosted infrastructure. Contact Harness Sales to upgrade your plan. (CI-6430)
+
+* The onboarding workflow now caters to customers who do not have a codebase with which to connect. (CI-6348)
+
 ## December 13, 2022, version 77808
 
 ### Continuous Delivery

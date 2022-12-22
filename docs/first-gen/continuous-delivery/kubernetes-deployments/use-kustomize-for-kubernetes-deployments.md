@@ -618,7 +618,7 @@ The Harness Delegate ships with the 3.5.4 [release](https://github.com/kubernete
 
 If you want to use a different release of Kustomize, add it to a location on the Delegate, update the following Delegate files, and restart the Delegate.
 
-See [Manage Harness Delegates](https://docs.harness.io/category/manage-harness-delegates-firstgen) for details on each Delegate type.
+See [Manage Harness Delegates](/docs/category/manage-harness-delegates-firstgen) for details on each Delegate type.
 
 #### Shell Script Delegate
 

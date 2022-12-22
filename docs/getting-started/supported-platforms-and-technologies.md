@@ -29,7 +29,7 @@ The following table lists Harness support for deployment platforms, artifacts, s
 <tbody>
   <tr valign="top">
     <td>
-      <p> <a href="https://docs.harness.io/category/qfj6m1k2c4-cd-kubernetes-category">Kubernetes</a></p>
+      <p> <a href="/docs/category/kubernetes">Kubernetes</a></p>
     </td>
     <td>
       <ul>
@@ -374,7 +374,7 @@ Guidelines:
 
 ##### Helm
 
-Helm chart dependencies are not supported in Git source repositories (Harness [Code Repo Connectors](https://docs.harness.io/category/code-repo-connectors)). Helm chart dependencies are supported in Helm Chart Repositories.
+Helm chart dependencies are not supported in Git source repositories (Harness [Code Repo Connectors](/docs/category/code-repo-connectors)). Helm chart dependencies are supported in Helm Chart Repositories.
 
 ##### Artifact servers, repos, and artifacts
 
@@ -792,8 +792,8 @@ The following table lists the major support features for Harness Self-Managed En
 
 |  Solution |  Supported Platform |  Connected\* |  HA Supported\*\* |  Monitoring |  Disaster Recovery |  Auto Restart |  Features Under Controlled Release |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| [Kubernetes Cluster](https://docs.harness.io/category/v313myup55) |  Kubernetes - GKE - AKS - EKS |  Yes |  Yes | Prometheus, Grafana | Supported | Supported |  |
-| [Virtual Machine (VM)](https://docs.harness.io/category/install-on-virtual-machine) |  Linux VM (3 VM minimum) |  Yes |  Yes | Prometheus, Grafana | Supported | Supported |  |
+| [Kubernetes Cluster](/docs/category/kubernetes) |  Kubernetes - GKE - AKS - EKS |  Yes |  Yes | Prometheus, Grafana | Supported | Supported |  |
+| [Virtual Machine (VM)](/docs/category/install-on-virtual-machine) |  Linux VM (3 VM minimum) |  Yes |  Yes | Prometheus, Grafana | Supported | Supported |  |
 
 ### SDKs installed with the Delegate
 

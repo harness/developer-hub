@@ -294,5 +294,5 @@ Enable the **Ignore Release History Failed Status** option to have Harness ignor
 
 ## Next Steps
 
-See [Kubernetes How-tos](https://docs.harness.io/category/kubernetes) for other deployment features.
+See [Kubernetes How-tos](/docs/category/kubernetes) for other deployment features.
 
