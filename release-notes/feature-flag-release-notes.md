@@ -14,6 +14,21 @@ Harness deploys updates progressively to different Harness cluster hosting accou
 
 :::
 
+## December 22, 2022
+
+### What's new
+
+This release does not include new features.
+
+### Early access
+
+This release does not include early access features.
+
+### Fixed issues
+#### Feature Flags on the Harness Platform
+
+Resolved an issue that caused the edit section of a pipeline not to load on the Feature Flag module. (FFM-5948)
+
 ## December 13, 2022
 
 ### What's new
