@@ -2,6 +2,12 @@ import { ExperimentDetails } from "@site/src/components/ChaosEngineering/Experim
 
 export const experiments: ExperimentDetails[] = [
   {
+    name: "Pod memory hog",
+    description: "This is a description of pod memory hog",
+    tags: ["tag1", "pod"],
+    category: "kubernetes",
+  },
+  {
     name: "Pod Delete",
     description: "This is a description of experiment 1",
     tags: ["tag1", "pod"],
