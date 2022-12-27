@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 This document contains release notes for Harness Self-Managed Enterprise Edition.
 
-For Harness SaaS release notes, see [Harness SaaS Release Notes](https://docs.harness.io/article/xacpxeyioo-harness-saa-s-release-notes). 
+For Harness SaaS release notes, see [Harness SaaS Release Notes](https://developer.harness.io/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes). 
 
 Release notes are displayed with the most recent release first.
 
