@@ -336,6 +336,21 @@ const CEList: CardItem[] = [
     link: "/tutorials/run-chaos-experiments/chaos-experiment-from-blank-canvas",
   },
   {
+    title: "Build and Deploy a NodeJS App to Kubernetes",
+    module: "cd",
+    icon: "img/icon_cd.svg",
+    description: (
+      <>
+        Build and deploy a simple nodejs application using Harness CI and CD.
+      </>
+    ),
+    newDoc: false,
+    type: [docType.Documentation],
+    //type: [docType.Documentation, docType.Interactive, docType.Video],
+    time: "10 min",
+    link: "/tutorials/deploy-services/harness-cicd-tutorial",
+  },	
+  {
     title: "Integration with Harness CD",
     module: "ce",
     icon: "img/icon_ce.svg",

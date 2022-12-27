@@ -1,4 +1,4 @@
-# Build and Deploy a NodJS App to Kubernetes
+# Build and Deploy a NodeJS App to Kubernetes
 
 ## Harness CI/CD Tutorial
 
