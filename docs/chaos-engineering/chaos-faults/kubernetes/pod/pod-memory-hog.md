@@ -4,13 +4,13 @@ title: Pod memory hog
 ---
 
 ## Introduction
-- Pod CPU hog is a Kubernetes pod-level chaos fault that consumes CPU resources in excess, resulting in a significant spike in the CPU/resource usage of a pod.
-- This fault simulates a condition where the CPU resource usage of an application spikes up unexpectedly.  
+- Pod memory hog is a Kubernetes pod-level chaos fault that consumes memory resources in excess, resulting in a significant spike in the memory usage of a pod.
+- This fault simulates a condition where the memory usage of an application spikes up unexpectedly.  
 
-**Illustration of how pod-memory hog is executed**
+**Illustration of how pod memory hog is executed**
 
 :::tip Flow chart that describes how the fault is executed
-![Pod CPU Hog](./static/images/pod-stress.png)
+![Pod memory hog](./static/images/pod-stress.png)
 :::
 
 ## Usage
@@ -29,11 +29,11 @@ This fault launches a stress process within the target container - which can cau
 - Kubernetes > 1.16
 :::
 
-## Steps to run pod CPU hog chaos fault
+## Steps to implement pod memory hog
 
 **NOTE:** It is assumed that you already have the boutique app set up in a namespace. If not, follow [this](provide link) to set up your boutique application.
 
-To execute pod CPU hog, it is essential to tweak a section of the **app.yaml**. In the **deployment** kind, for **cartservice**, uncomment the following lines.
+To execute pod memory hog, it is essential to tweak a section of the **app.yaml**. In the **deployment** kind, for **cartservice**, uncomment the following lines.
 
 ```
 resources:
@@ -47,13 +47,13 @@ resources:
 
 [link](provide) to setup experiment to execute chaos faults.
 
-* On the right pane, select **Kubernetes** that displays a list of Kubernetes faults available. Select the **pod-cpu-hog**. 
+* On the right pane, select **Kubernetes** that displays a list of Kubernetes faults available. Select the **pod-memory-hog**. 
 
 ![Select Kubernetes](./static/images/select-kube-fault.png)
 
 * This leads you to a page where you can specify parameters for the **Target application**, **Tune fault**, and **Probes**.
 
-![Tune faults](./static/images/specify-parameters.png)
+![Tune faults](./static/images/mem-hog-specify-parameters.png)
 
 * The **Target application** section has three parameters:
   
@@ -63,11 +63,15 @@ resources:
 
 **Specify the parameters and explain them. Mention about container runtime, containerd, socket path.**
 
+![Tune fault params](./static/images/mem-hog-tune-fault-1.png)
+
+![Tune fault params2](./static/images/mem-hog-tune-fault-2.png)
+
 * In the **Probes** section, click on **Deploy new probe** to add a new probe. 
 
 **Specify the parameters and explain them**
 
-![Deploy probe](./static/images/deploy-new-probe.png)
+![Deploy probe](./static/images/mem-hog-deploy-new-probe.png)
 
 * Specify the **Probe name**, **Probe type**, and **Probe mode**. Click on **Continue**.
 **Specify the parameters and explain them**
@@ -86,30 +90,30 @@ resources:
 
 * You can see that the probe has been setup successfully with the parameters you specified. Close this pane by clicking on **X** at the top.
 
-![Probe setup done](./static/images/probe-setup-done.png)
+![Probe setup done](./static/images/mem-hog-probe-setup-done.png)
 
 * Navigate to the next step of setting fault weights. Click the **Set fault weights** present on top. 
 
-![Set weights](./static/images/set-fault-weights.png)
+![Set weights](./static/images/mem-hog-set-fault-weights.png)
 
 * Click **Run** to execute the experiment.
 
-![Run experiment](./static/images/run-experiment.png)
+![Run experiment](./static/images/mem-hog-run-experiment.png)
 
 * Visit [this link](provide link) to set up Grafana dashboard to visualize the results before and after injecting chaos into the application. 
 
-* Here is a representation of how the CPU resource usage is, before chaos has been injected. You can execute the following command to check the CPU usage:
+* Here is a representation of how memory usage is before chaos has been injected. You can execute the following command to check the memory usage:
 ```
 kubectl top pods <service name> -n <application namespace>
 ```
 
-![Before chaos](./static/images/before-chaos.png)
+![Before chaos](./static/images/mem-hog-before-chaos.png)
 
-* Here is a representation of how the resource usage changes after chaos has been injected.
+* Here is a representation of how memory usage changes after chaos has been injected.
 
-![After chaos](./static/images/after-chaos.png)
+![After chaos](./static/images/mem-hog-after-chaos.png)
 
-![After chaos visual](./static/images/cpu-hog-visual.png)
+![After chaos visual](./static/images/mem-hog-visual.png)
 
 
 ## Default validation

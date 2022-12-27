@@ -1,12 +1,11 @@
 ---
 id: pod-cpu-hog
-title: Pod CPU Hog
+title: Pod CPU hog
 ---
 
 ## Introduction
-- This fault consumes the CPU resources of the application container.
-- It simulates conditions where app pods experience CPU spikes either due to expected/undesired processes thereby testing how the overall application stack behaves when this occurs.
-- It can test the application's resilience to potential slowness/unavailability of some replicas due to high CPU load.
+- Pod CPU hog is a Kubernetes pod-level chaos fault that consumes CPU resources in excess, resulting in a significant spike in the CPU/resource usage of a pod.
+- This fault simulates a condition where the CPU resource usage of an application spikes up unexpectedly.  
 
 :::tip Fault execution flow chart
 ![Pod CPU Hog](./static/images/pod-stress.png)
@@ -24,9 +23,94 @@ Injecting a rogue process into a target container, we starve the main microservi
 
 ## Prerequisites
 :::info
-- Ensure that Kubernetes Version > 1.16.
+- Kubernetes > 1.16
 :::
 
+## Steps to implement pod CPU hog
+
+**NOTE:** It is assumed that you already have the boutique app set up in a namespace. If not, follow [this](provide link) to set up your boutique application.
+
+To execute pod CPU hog, it is essential to tweak a section of the **app.yaml**. In the **deployment** kind, for **cartservice**, uncomment the following lines.
+
+```
+resources:
+  requests:
+    cpu: 200m
+    memory: 64Mi
+  limits:
+    cpu: 300m
+    memory: 128Mi
+```
+
+[link](provide) to setup experiment to execute chaos faults.
+
+* On the right pane, select **Kubernetes** that displays a list of Kubernetes faults available. Select the **pod-cpu-hog**. 
+
+![Select Kubernetes](./static/images/select-kube-fault.png)
+
+* This leads you to a page where you can specify parameters for the **Target application**, **Tune fault**, and **Probes**.
+
+![Tune faults](./static/images/specify-parameters.png)
+
+* The **Target application** section has three parameters:
+  
+**Specify the parameters and explain them**
+
+* The **Tune fault** section has three parameters
+
+**Specify the parameters and explain them. Mention about container runtime, containerd, socket path.**
+
+![Tune fault params](./static/images/tune-fault-1.png)
+
+![Tune fault params2](./static/images/tune-fault-2.png)
+
+* In the **Probes** section, click on **Deploy new probe** to add a new probe. 
+
+**Specify the parameters and explain them**
+
+![Deploy probe](./static/images/deploy-new-probe.png)
+
+* Specify the **Probe name**, **Probe type**, and **Probe mode**. Click on **Continue**.
+**Specify the parameters and explain them**
+
+![Probe mode](./static/images/add-probe-params.png)
+
+* Specify properties . Click **Continue**.
+**Specify the parameters and explain them**
+
+![Probe mode](./static/images/probe-properties.png)
+
+* Specify details . Click **Setup the probe**.
+**Specify the parameters and explain them**
+
+![Probe mode](./static/images/probe-details.png)
+
+* You can see that the probe has been setup successfully with the parameters you specified. Close this pane by clicking on **X** at the top.
+
+![Probe setup done](./static/images/probe-setup-done.png)
+
+* Navigate to the next step of setting fault weights. Click the **Set fault weights** present on top. 
+
+![Set weights](./static/images/set-fault-weights.png)
+
+* Click **Run** to execute the experiment.
+
+![Run experiment](./static/images/run-experiment.png)
+
+* Visit [this link](provide link) to set up Grafana dashboard to visualize the results before and after injecting chaos into the application. 
+
+* Here is a representation of how the CPU resource usage is, before chaos has been injected. You can execute the following command to check the CPU usage:
+```
+kubectl top pods <service name> -n <application namespace>
+```
+
+![Before chaos](./static/images/before-chaos.png)
+
+* Here is a representation of how the resource usage changes after chaos has been injected.
+
+![After chaos](./static/images/after-chaos.png)
+
+![After chaos visual](./static/images/cpu-hog-visual.png)
 ## Default Validations
 :::note
 The application pods should be in running state before and after chaos injection.
