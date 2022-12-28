@@ -24,7 +24,7 @@ See [Entity Identifier Reference](../../platform/20_References/entity-identifier
 
 ### AWS Connector
 
-The Harness Connector to use when connecting to AWS S3. The AWS IAM roles and policies associated with the account used in the Harness AWS Connector must be able to push to S3. See [AWS Connector Settings Reference](https://newdocs.helpdocs.io/article/m5vkql35ca-aws-connector-settings-reference).
+The Harness Connector to use when connecting to AWS S3. The AWS IAM roles and policies associated with the account used in the Harness AWS Connector must be able to push to S3. See [AWS Connector Settings Reference](../../platform/7_Connectors/ref-cloud-providers/aws-connector-settings-reference.md).
 
 ### Bucket
 

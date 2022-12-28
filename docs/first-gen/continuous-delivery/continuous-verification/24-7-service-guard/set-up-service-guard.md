@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 To go to the 24/7 Service Guard setup for a specific tool, see its listing in [Continuous Verification](/docs/category/continuous-verification).
 
-To see the list of all the APM and logging tools Harness supports, see [CV Summary and Provider Support](https://docs.harness.io/article/myw4h9u05l-verification-providers-list).
+To see the list of all the APM and logging tools Harness supports, see [CV Summary and Provider Support](../continuous-verification-overview/concepts-cv/what-is-cv.md).
 
 For information on analysis strategies and best practices, see [CV Strategies, Tuning, and Best Practices](../continuous-verification-overview/concepts-cv/cv-strategies-and-best-practices.md).
 

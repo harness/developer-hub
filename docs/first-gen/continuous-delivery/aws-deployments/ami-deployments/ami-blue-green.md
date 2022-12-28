@@ -403,7 +403,7 @@ By default, Harness AMI Blue/Green Workflows have five steps:
 
 Harness pre-configures the **Setup**, **Deploy**, and **Swap Routes** steps. Below, we outline those steps' defaults and options, with examples of the deployment logs' contents at each step.
 
-The **Verify Staging** and **Wrap Up** steps are placeholders, to which you can add integrations and commands. For details on adding **Verify Staging** integrations, see [Continuous Verification](https://docs.harness.io/article/myw4h9u05l-verification-providers-list).
+The **Verify Staging** and **Wrap Up** steps are placeholders, to which you can add integrations and commands. For details on adding **Verify Staging** integrations, see [Continuous Verification](../../continuous-verification/continuous-verification-overview/concepts-cv/what-is-cv.md).
 
 #### Create the Blue/Green Workflow
 
@@ -613,6 +613,6 @@ For example, if there were multiple ASGs of the series having active instances b
 
 ### Next Steps
 
-* Add monitoring to your AMI deployment and running instances: see [Continuous Verification](https://docs.harness.io/article/myw4h9u05l-verification-providers-list) and [24/7 Service Guard Overview](../../continuous-verification/continuous-verification-overview/concepts-cv/24-7-service-guard-overview.md).
+* Add monitoring to your AMI deployment and running instances: see [Continuous Verification](../../continuous-verification/continuous-verification-overview/concepts-cv/what-is-cv.md) and [24/7 Service Guard Overview](../../continuous-verification/continuous-verification-overview/concepts-cv/24-7-service-guard-overview.md).
 * [AMI Canary Deployment](ami-canary.md).
 

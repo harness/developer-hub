@@ -45,7 +45,7 @@ spec:
             echo wget installed  
 ...
 ```
-In `value`, enter your script. For a list of common scripts, see [Common Delegate Initialization Scripts](https://newdocs.helpdocs.io/article/auveebqv37-common-delegate-profile-scripts).
+In `value`, enter your script. For a list of common scripts, see [Common Delegate Initialization Scripts](../delegate-reference/common-delegate-profile-scripts.md).
 
 For steps on using the `INIT_SCRIPT` environment variable, see [Run Scripts on Delegates](run-scripts-on-delegates.md).
 

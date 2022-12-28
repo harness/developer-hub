@@ -208,7 +208,7 @@ The following image describes the 24/7 Service Guard dashboard for the applicati
 
 [![](./static/continuous-verification-faqs-28.png)](./static/continuous-verification-faqs-28.png)
 
-1. **Monitoring sources:** Verification and metrics providers, such as AppDynamics, etc. For a list of the verification providers supported by Harness, see [Continuous Verification](https://docs.harness.io/article/myw4h9u05l-verification-providers-list).
+1. **Monitoring sources:** Verification and metrics providers, such as AppDynamics, etc. For a list of the verification providers supported by Harness, see [Continuous Verification](../continuous-delivery/continuous-verification/continuous-verification-overview/concepts-cv/what-is-cv.md).
 2. **Heat map:** The heat map is generated using the application and the monitoring sources. Each square is a time segment.
 3. **Time resolution:** You can go high-level (for example, 30 days) or low-level (12 hours).
 4. **Performance regressions:** Red and yellow are used to highlight regressions and anomalies. The colors indicate the Overall Risk Level for the monitoring segment.
@@ -515,7 +515,7 @@ Yes. Bugsnag is particularly useful for browser-based apps, as it collects brows
 
 This can helpful in determining if a new version of a browser is causing problems for users. Here is an example from Bugsnag:
 
-[![](./static/continuous-verification-faqs-51.png)](./static/continuous-verification-faqs-51.png)Once you have deployed your app via Harness, you can add host/node-focused verification to your Harness workflow using another [Verification Provider](https://docs.harness.io/article/myw4h9u05l-verification-providers-list), and use Bugsnag to focus on browser-based issues. Here is an example of a Harness verification where other verification tools have been used to verify host/node issues, and Bugsnag is added as the last verification step to capture browser-based issues:
+[![](./static/continuous-verification-faqs-51.png)](./static/continuous-verification-faqs-51.png)Once you have deployed your app via Harness, you can add host/node-focused verification to your Harness workflow using another [Verification Provider](../continuous-delivery/continuous-verification/continuous-verification-overview/concepts-cv/what-is-cv.md), and use Bugsnag to focus on browser-based issues. Here is an example of a Harness verification where other verification tools have been used to verify host/node issues, and Bugsnag is added as the last verification step to capture browser-based issues:
 
 [![](./static/continuous-verification-faqs-53.png)](./static/continuous-verification-faqs-53.png)When you set up Bugsnag as a verification step in a Harness workflow, you can indicate if your app is browser-based. When Harness arrives at the Bugsnag verification step, Harness will ignore deployment host or node information and focus on browser-based data. This browser focus enables you to capture browser issues on their own after you have already ensured that the deployment host/node environment is running correctly.
 

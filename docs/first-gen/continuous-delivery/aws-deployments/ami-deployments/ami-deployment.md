@@ -281,7 +281,7 @@ This section walks you through creating an AMI Basic Workflow in Harness. By def
 
 Harness preconfigures only the first two steps. Below, we outline those steps' defaults and options, with examples of the deployment logs' contents at each step.
 
-The remaining two steps are placeholders, to which you can add integrations and commands. For details on adding **Verify Service** integrations, see [Continuous Verification](https://docs.harness.io/article/myw4h9u05l-verification-providers-list).
+The remaining two steps are placeholders, to which you can add integrations and commands. For details on adding **Verify Service** integrations, see [Continuous Verification](../../continuous-verification/continuous-verification-overview/concepts-cv/what-is-cv.md).
 
 Your Workflows can use Harness' built-in `${artifact.metadata.tag}` variable to refer to tagged AMIs. For example, if an AMI has an AWS tag named `harness`, you can refer to that AMI within Harness as `${artifact.metadata.harness}`. For details about this convention, see [Variables and Expressions in Harness](../../../firstgen-platform/techref-category/variables/variables.md#variables-list). This can be useful in [triggering Workflows and Pipelines](../../model-cd-pipeline/triggers/add-a-trigger-2.md#add-a-trigger).
 #### Create a Basic Workflow
@@ -478,7 +478,7 @@ To correct this:
 Harness Manager will prevent you from simply removing a misconfigured Infrastructure Definition, if it's referenced by any of your Application's Workflows. So in some cases, you might find it easiest to create a new Infrastructure Definition, reconfigure your Workflow to use that new infrastructure, and then delete the broken Infrastructure Definition(s).
 ### Next Steps
 
-* See [Continuous Verification](https://docs.harness.io/article/myw4h9u05l-verification-providers-list) and [24/7 Service Guard Overview](../../continuous-verification/continuous-verification-overview/concepts-cv/24-7-service-guard-overview.md) to add Verification Providers to your AMI deployment and running services.
+* See [Continuous Verification](../../continuous-verification/continuous-verification-overview/concepts-cv/what-is-cv.md) and [24/7 Service Guard Overview](../../continuous-verification/continuous-verification-overview/concepts-cv/24-7-service-guard-overview.md) to add Verification Providers to your AMI deployment and running services.
 * [AMI Blue/Green Deployment](ami-blue-green.md).
 * [AMI Canary Deployment](ami-canary.md).
 

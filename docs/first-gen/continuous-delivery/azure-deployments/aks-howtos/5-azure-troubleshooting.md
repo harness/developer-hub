@@ -33,5 +33,5 @@ createImagePullSecret: true
 
 * [Kubernetes Deployments](/docs/category/kubernetes-deployments)
 * [Secrets Management](../../../firstgen-platform/security/secrets-management/secret-management.md)
-* [Continuous Verification](https://docs.harness.io/article/myw4h9u05l-verification-providers-list)
+* [Continuous Verification](../../continuous-verification/continuous-verification-overview/concepts-cv/what-is-cv.md)
 
