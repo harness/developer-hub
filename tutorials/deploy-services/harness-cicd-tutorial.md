@@ -50,47 +50,58 @@ First, we will create a simple “Hello World!” application in Node.js with a 
 
 1. [Fork this](https://github.com/pavanbelagatti/harness-ci-example) repo to start working on it.
 
-The Dockerfile you see in the repo is used to build and push our application as an image to the Docker Hub. 
+ The Dockerfile you see in the repo is used to build and push our application as an image to the Docker Hub. 
 
 2. The next thing is to build the image and push it to the Docker Hub using the following command:
 
-`docker buildx build --platform=linux/arm64 --platform=linux/amd64  -t docker.io/<docker hub username>/<image name>:<tag> --push  -f ./Dockerfile .`
+ `docker buildx build --platform=linux/arm64 --platform=linux/amd64  -t docker.io/<docker hub username>/<image name>:<tag> --push  -f ./Dockerfile .`
 
 3. Once the build and push are successful, you can confirm it by going to your Docker Hub account.
+
 ![DockerHub image](./static/harness-cicd-tutorial/hello_world_docker_image.jpeg)
 
-You can see the `deployment.yaml` file in the forked repo, which defines the deployment yaml file to help us deploy the application to our Kubernetes cluster. At this point, make sure your Kubernetes cluster is up and running.
+ You can see the `deployment.yaml` file in the forked repo, which defines the deployment yaml file to help us deploy the application to our Kubernetes      cluster. At this point, make sure your Kubernetes cluster is up and running.
 
-Once everything is set, it is time to set up a Harness account to do CI/CD. Create a free Harness account and your first project. Once you sign up at Harness, you are presented with the new CI/CD experience and capabilities.
+ Once everything is set, it is time to set up a Harness account to do CI/CD. Create a free Harness account and your first project. Once you sign up at Harness, you are presented with the new CI/CD experience and capabilities.
 
 4. Add the required connectors, GitHub repo, Docker Hub and secrets, if any. The Harness Delegate is a lightweight worker process that you need to install on the target cluster to connect your artifacts, infrastructure, collaboration, verification, and other providers with the Harness Manager. When you set up Harness for the first time, you install a Harness Delegate.
+
 ![Harness Connectors](./static/harness-cicd-tutorial/project_connectors.jpeg)
 
 5. Select the Continuous Integration module, and then add the necessary stages and steps, as shown below.
+
 ![cicd with harness images](./static/harness-cicd-tutorial/build_and_test_stage.jpeg)
 
 6. Set up the Test step as shown below.
+
 ![npm test](./static/harness-cicd-tutorial/configure_run_step.jpeg)
 
 7. Set up the Push to Docker Registry step as shown below.
+
 ![build and push image](./static/harness-cicd-tutorial/build_push_image.png)
 
 8. Next, set up a deployment pipeline.
+
 ![CD overview](./static/harness-cicd-tutorial/deployment_pipeline.jpeg)
 
 9. Add the required details on the **Service** tab.
+
 ![deploy service](./static/harness-cicd-tutorial/service_tab.png)
 
 10. Define the environment type in the **Environment** tab.
+
 ![environment](./static/harness-cicd-tutorial/environment_tab.png)
 
 11. Strategize the execution by selecting the deployment you prefer.
+
 ![execution](./static/harness-cicd-tutorial/execution_tab.jpeg)
 
 12. Save everything, and then run the pipeline.
+
 ![run pipeline](./static/harness-cicd-tutorial/run_pipeline.jpeg)
 
 You can see both CI and CD being executed one by one with all the steps specified.
+
 ![CI/CD execution](./static/harness-cicd-tutorial/ci_cd_execution_successful.png)
 
 **Congratulations!** You successfully built and tested the application code and deployed it onto the Kubernetes cluster.
@@ -99,11 +110,14 @@ You can confirm this deployment by using the command `kubectl get pods`
 ![kubernetes deployments](./static/harness-cicd-tutorial/pods_running.jpeg)
 
 You can see two replicas running as per the specifications on the `deployment.yaml` file. Also, confirm the same by going to your Kubernetes dashboard. The following image shows two pods running on Google cloud (GCP).
+
 ![kubernetes pods](./static/harness-cicd-tutorial/confirm_pods_running.png)
 
 Harness platform makes it easy for developers to streamline their SDLC by leveraging the different modules available. Today we saw CI and CD modules, and Harness has a total of seven modules as of now.
+
 ![Harness CI/CD modules](./static/harness-cicd-tutorial/Harness_modules.png)
 
 ### CI/CD and DevOps
+
 CI/CD is an essential part of any DevOps strategy. It helps to automate the code review and testing process, making it easier for teams to test and deploy software. It’s also a crucial part of creating a culture of continuous improvement. It is also important to remember that CI/CD is not a magic bullet. Laying the [DevOps culture](https://www.atlassian.com/team-playbook/examples/devops-culture) and methodologies are the initial steps. It is also important to remember that these processes and methodologies under DevOps are not static; they are ever-evolving and should be tweaked as needed to meet the team’s needs.
 
