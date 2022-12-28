@@ -50,7 +50,9 @@ A CI/CD pipeline helps your team pinpoint where problems in your software are li
 
 First, we will create a simple “Hello World!” application in Node.js with a simple test case. I have already created this simple “Hello World!” application to make it easier and pushed it to GitHub. You can [fork this](https://github.com/pavanbelagatti/harness-ci-example) repo to start working on it.
 
-The Dockerfile you see in the repo will be used to build and push our application as an image to the Docker Hub. The next thing is we will build the image and push it to the Docker Hub using the command,
+The Dockerfile you see in the repo is used to build and push our application as an image to the Docker Hub. 
+
+2. The next thing is to build the image and push it to the Docker Hub using the following command:
 
 `docker buildx build --platform=linux/arm64 --platform=linux/amd64  -t docker.io/<docker hub username>/<image name>:<tag> --push  -f ./Dockerfile .`
 
