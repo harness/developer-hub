@@ -7,7 +7,7 @@ DevOps continues to grow in popularity among software development teams. It’s 
 ## Continuous integration
 First, let’s take a look at what CI/CD is and what its benefits are. Although these two concepts are often discussed together, each has its own role in the software development process. 
 
-Continuous integration is the process of automating the build and testing of code. It requires a SaaS build service (like Harness Hosted Builds) or an on-premise build server responsible for taking code from a source control system (such as Git), compiling it, and testing it to ensure it’s error-free. This helps to keep software projects on track by ensuring that errors/mistakes/bugs get spotted as soon as they occur. If a build is broken, it halts the rest of the process until it’s been fixed. As a result, the build process is much more streamlined.
+Continuous integration is the process of automating the building and testing of code. It requires a SaaS build service, such as Harness Hosted Builds, or an on-premises build server responsible for taking code from a source control system (such as Git), compiling it, and testing it to ensure it’s error-free. This helps to keep software projects on track by ensuring that errors, mistakes, and bugs are spotted as soon as they occur. If a build is broken, it halts the rest of the process until it is fixed. As a result, the build process is much more streamlined.
 
 ## Continuous delivery and deployment
 Continuous delivery automates the release process. It ensures that code is always in a releasable state. This process includes taking the code from the build system and routing it through a staging environment to ensure it’s suitable for release. The outcome is a fully automated deployment process, which can be controlled by the team or triggered by triggers outside the team (such as when a developer pushes or commits a code to the main branch). The key difference between CI and CD is that the former is focused on building code, while the latter focuses on releasing the final product.
@@ -48,7 +48,9 @@ A CI/CD pipeline helps your team pinpoint where problems in your software are li
 - Docker, preferably [Docker Desktop](https://www.docker.com/products/docker-desktop/).
 - [Node.js](https://nodejs.org/en/download/)
 
-First, we will create a simple “Hello World!” application in Node.js with a simple test case. I have already created this simple “Hello World!” application to make it easier and pushed it to GitHub. You can [fork this](https://github.com/pavanbelagatti/harness-ci-example) repo to start working on it.
+First, we will create a simple “Hello World!” application in Node.js with a simple test case. I have already created this simple “Hello World!” application to make it easier and pushed it to GitHub. 
+
+1. [Fork this](https://github.com/pavanbelagatti/harness-ci-example) repo to start working on it.
 
 The Dockerfile you see in the repo is used to build and push our application as an image to the Docker Hub. 
 
