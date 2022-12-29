@@ -77,7 +77,7 @@ No early access features are available in this release.
 
 - You can now refer to existing secrets of Azure Key Vault, AWS secret manager, and GCP secret manager. (PL-29915)
 
-  With this enhancement, you need not create secrets in Harness. You can use expressions to reference the secrets already existing in the mentioned secrets managers. For more information, see Reference Existing Secret Managers Secrets.
+  With this enhancement, you need not create secrets in Harness. You can use expressions to reference the secrets already existing in the mentioned secrets managers. For more information, see [Reference Existing Secret Managers Secrets](https://developer.harness.io/docs/first-gen/firstgen-platform/security/secrets-management/reference-existing-secrets/).
 
 - You can now use the Git client to commit changes while creating or updating pipelines using Bitbucket on-prem as the Git provider. (PIE-6423)
 
@@ -241,7 +241,7 @@ Delegate version: 77431
 
 - You can now create secrets using the Google Cloud Secret Manager in Harness. (PL-28978)
 
-  For more information, see Add a Google Cloud Secret Manager.
+  For more information, see [Add a Google Cloud Secret Manager](https://developer.harness.io/docs/platform/security/add-a-google-cloud-secret-manager/).
 
 - You can now select modules and configure your own navigation in Harness. (SPG-153)
 
@@ -384,7 +384,7 @@ Delegate version: 77221
 
 - You can now import Templates from your Git repo. (PL-28597)
 
-  See Import a Template From Git.
+  See [Import a Template From Git](https://developer.harness.io/docs/platform/git-experience/import-a-template-from-git/).
 
 ### Fixed issues
 
@@ -464,13 +464,15 @@ Delegate version: 77021
 
   For more information, see:
 
-  Create a Remote Step Template
-  Create a Remote Stage Template
-  Create a Remote Pipeline Template
+  [Create a Remote Step Template](https://developer.harness.io/docs/platform/templates/create-a-remote-step-template/)
+
+  [Create a Remote Stage Template](https://developer.harness.io/docs/platform/Templates/create-a-remote-stage-template)
+
+  [Create a Remote Pipeline Template](https://developer.harness.io/docs/platform/Templates/create-a-remote-pipeline-template)
 
 - You can now use expressions to reference pre-existing secrets in Vault using a fully-qualified path. (PL-28352)
 
-  For more information, see HashiCorp Vault Secrets.
+  For more information, see [HashiCorp Vault Secrets](https://developer.harness.io/docs/platform/security/add-hashicorp-vault/).
 
 - Harness will now send email notification for user invites when the feature flag AUTO_ACCEPT_SAML_ACCOUNT_INVITES is enabled. (PL-26218, ZD-32152,35287)
 
@@ -552,7 +554,7 @@ N/A
 
   Harness now has a default User Group at each scope. These groups have all the users at the respective scope as their members. As a part of this change, Harness will stop assigning any roles to the User Groups by default.​ Users can assign roles to the default User Group at a specific scope, which becomes the default role for all the users in that group. (PL-26145)
 
-  See Harness Default User Groups.
+  See [Harness Default User Groups](https://developer.harness.io/docs/platform/role-based-access-control/harness-default-user-groups/).
 
 ### Early access
 
@@ -639,7 +641,7 @@ As a part of this change, Harness will stop assigning any roles to the User Grou
 
 Users can assign roles to the default User Group at a specific scope, which becomes the default role for all the users in that group.
 
-For more information on default User Group, see Harness Default User Groups.
+For more information on default User Group, see [Harness Default User Groups](https://developer.harness.io/docs/platform/role-based-access-control/harness-default-user-groups/).
 
 ## September 7, 2022, version 76619
 
@@ -647,7 +649,7 @@ For more information on default User Group, see Harness Default User Groups.
 
 - You can now inherit User Groups created at a higher scope by using Assign Roles. (PL-27237)
 
-  See Assign Roles.
+  See [Assign Roles](https://developer.harness.io/docs/platform/Role-Based-Access-Control/add-user-groups#step-assign-roles).
 
 - You can now view the past 10 executions of the Pipelines and sort them from the table. You can also go to a specific execution by clicking on it. (PIE-4903)
 
@@ -659,7 +661,7 @@ For more information on default User Group, see Harness Default User Groups.
 
   This is behind the feature flag CUSTOM_SECRET_MANAGER_NG.
 
-See Add a Custom Secret Manager.
+See [Add a Custom Secret Manager](https://developer.harness.io/docs/platform/security/custom-secret-manager/).
 
 ### Fixed issues
 
@@ -681,7 +683,7 @@ See Add a Custom Secret Manager.
 
 - Git Experience in Next Gen is now enhanced and simplified. (PL-26339)
 
-  See Git Experience.
+  See [Git Experience](https://developer.harness.io/docs/category/git-experience/).
 
 - You can now switch branches directly from the Pipeline execution history. This will make it easier to switch branches straight from execution history rather than going to the Pipeline studio first and then returning to execution history. (PIE-4985)
 
@@ -708,11 +710,11 @@ No early access features are available in this release.
 
 - Now you can add up to 50,000 users in the Harness Non-Community Edition. (PL-27300)
 
-  See Add and Manage Users.
+  See [Add and Manage Users](https://developer.harness.io/docs/platform/role-based-access-control/add-users/).
 
 - You can now use an enhanced Git Experience. (PL-26339)
 
-  See Harness Git Experience Overview.
+  See [Harness Git Experience Overview](https://developer.harness.io/docs/platform/git-experience/git-experience-overview/).
 
   Harness will continue to support users who have been using the old Git Experience.
 
