@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 This content is for Harness [FirstGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../continuous-delivery/onboard-cd/cd-quickstarts/native-helm-quickstart.md).This topic describes how to create a Harness Application and adds a Service that uses a Docker image and Helm chart for a Kubernetes deployment.
 
-Harness includes both Kubernetes and Helm deployments, and you can use Helm charts in both. Harness [Kubernetes Deployments](../kubernetes-deployments/kubernetes-deployments-overview.md) allow you to use your own Helm chart (remote or local), and Harness executes the Kubernetes API calls to build everything without Helm and Tiller needing to be installed in the target cluster. See [Helm Charts](https://docs.harness.io/article/t6zrgqq0ny-kubernetes-services#helm_charts).
+Harness includes both Kubernetes and Helm deployments, and you can use Helm charts in both. Harness [Kubernetes Deployments](../kubernetes-deployments/kubernetes-deployments-overview.md) allow you to use your own Helm chart (remote or local), and Harness executes the Kubernetes API calls to build everything without Helm and Tiller needing to be installed in the target cluster. See [Helm Charts](../kubernetes-deployments/use-a-helm-repository-with-kubernetes.md).
 
 
 ### Release Name Required

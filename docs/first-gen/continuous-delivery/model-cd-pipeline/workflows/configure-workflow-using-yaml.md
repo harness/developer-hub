@@ -31,7 +31,10 @@ To configure a Workflow as code, do the following:
 2. Modify the YAML of the Workflow as needed, and then click **Save**. If you like, you can verify your change in the Harness Manager interface.
 
 
+<!--
 ### Next Steps
 
 * [Troubleshooting a Workflow](https://docs.harness.io/article/y00dt1l4jl-troubleshooting-a-workflow)
+
+-->
 

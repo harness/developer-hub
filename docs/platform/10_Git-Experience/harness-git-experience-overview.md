@@ -204,6 +204,6 @@ The following blog post walks you through Harness Git Experience:
 ### Next steps
 
 * [Harness Git Experience Quickstart](harness-git-experience-quickstart.md)
-* [Git Experience How-tos](https://docs.harness.io/article/soavr3jh0i-git-experience-how-tos)
+* [Git Experience How-tos](git-experience-overview.md)
 * [Diagnose and Fix Git Sync Errors](https://docs.harness.io/article/24ehx5oa94-git-sync-errors)
 

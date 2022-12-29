@@ -319,7 +319,7 @@ See also:
 
 * [Add a Stage](../add-a-stage.md)
 * [Define a Failure Strategy on Stages and Steps](../define-a-failure-strategy-on-stages-and-steps.md)
-* [Set Execution Conditions on Stages and Steps](https://docs.harness.io/article/f5y37ke7ko-set-execution-conditions-on-stages-and-steps)
+* [Run Specific Stages in Pipeline](../run-specific-stage-in-pipeline.md)
 
 ### Service
 
@@ -416,7 +416,7 @@ That example is for the platform agnostic Kubernetes infrastructure. For a diffe
 See also:
 
 * [Define Your Kubernetes Target Infrastructure](../../../continuous-delivery/cd-infrastructure/kubernetes-infra/define-your-kubernetes-target-infrastructure.md)
-* [Define Kubernetes Cluster Build Infrastructure](https://docs.harness.io/article/x7aedul8qs-kubernetes-cluster-build-infrastructure-setup)
+* [Define Kubernetes Cluster Build Infrastructure](../../../continuous-integration/use-ci/set-up-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md)
 
 ### Execution
 

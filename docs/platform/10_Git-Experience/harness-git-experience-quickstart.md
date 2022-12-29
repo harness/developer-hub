@@ -12,7 +12,7 @@ This version of Harness Git Experience has been deprecated. To try out the lates
 
 Harness Git Experience integrates your Harness Projects, Pipelines, and resources with your Git repos. You can manage and run your Harness Pipelines and resources entirely from Git or use a hybrid method. With Harness Git Experience, your Git repos are always the single source of truth.
 
-See also: [Git Experience How-tos](https://docs.harness.io/article/soavr3jh0i-git-experience-how-tos), [Harness Git Experience Overview](harness-git-experience-overview.md).### Objectives
+See also: [Git Experience How-tos](git-experience-overview.md), [Harness Git Experience Overview](harness-git-experience-overview.md).### Objectives
 
 You'll learn how to:
 
@@ -301,5 +301,5 @@ Next, explore other Harness features:
 
 * [CI Pipeline Quickstart](../../continuous-integration/ci-quickstarts/ci-pipeline-quickstart.md)
 * [Kubernetes CD Quickstart](../../continuous-delivery/onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md)
-* [Git Experience How-tos](https://docs.harness.io/article/soavr3jh0i-git-experience-how-tos)
+* [Git Experience How-tos](git-experience-overview.md)
 

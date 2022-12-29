@@ -207,5 +207,5 @@ When syncing is off, the branch icon is a red warning circle:
 
 ## See also
 
-For more information about using Git Experience, go to [Git Experience How-tos](https://docs.harness.io/article/soavr3jh0i-git-experience-how-tos).
+For more information about using Git Experience, go to [Git Experience How-tos](../../platform/10_Git-Experience/git-experience-overview.md).
 

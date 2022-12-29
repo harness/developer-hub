@@ -48,7 +48,7 @@ data:
 ---  
   
 # If delegate needs to use a proxy, please follow instructions available in the documentation  
-# https://docs.harness.io/article/5ww21ewdt8-configure-delegate-proxy-settings  
+# https://docs.harness.io/article/pfim3oig7o-configure-delegate-proxy-settings  
   
 apiVersion: apps/v1  
 kind: Deployment  
