@@ -51,7 +51,7 @@ The following quickstart guides are available for Feature Flags:
 
 ### Harness YAML 
 
-* Harness YAML Quickstart](../platform/8_Pipelines/harness-yaml-quickstart.md) shows you how to build Pipelines using the Harness YAML builder. 
+* [Harness YAML Quickstart](../platform/8_Pipelines/harness-yaml-quickstart.md) shows you how to build Pipelines using the Harness YAML builder. 
 
 ### Service Reliability Management
 

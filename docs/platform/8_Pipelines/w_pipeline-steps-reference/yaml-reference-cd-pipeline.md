@@ -25,6 +25,7 @@ The Harness YAML schema is over 20k lines long and we are investigating how to e
 In the meantime, you can use [Chrome DevTools](https://developer.chrome.com/docs/devtools/) to view the schema:
 
 ![](./static/yaml-reference-cd-pipeline-00.png)
+
 ### Pipeline Studio YAML Editor
 
 The Pipeline Studio includes visual and YAML editors.
@@ -459,9 +460,6 @@ execution:
               timeout: 10m  
     rollbackSteps: []
 ```
-See also:
-
-* [Viewing Execution Status](https://docs.harness.io/article/aiuwxmwfe9-viewing-execution-status)
 
 ### Steps and Step Groups
 

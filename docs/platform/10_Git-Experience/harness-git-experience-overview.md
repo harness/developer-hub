@@ -137,7 +137,7 @@ A **Harness SCM** is required to sync entities from Harness to Git. If you try
 
 The Harness SCM stores your user profile information like username and PAT to connect to the Git provider. When you sync a Project with a repo, these credentials are used for the sync.
 
-<!-- For detailed steps to add an SCM, see  * [TBD DOC-2410 Add Source Code Managers](https://docs.harness.io/article/p92awqts2x-add-source-code-managers). -->
+<!--  TBD DOC-2410 For detailed steps to add an SCM, see  * [Add Source Code Managers ](https://docs.harness.io/article/p92awqts2x-add-source-code-managers). -->
 
 Any commit activities you perform when you make changes to the Project in Harness require your SCM credentials. Additional tasks, such as registering a webhook, require your Git Connector credentials.Git ConnectorA Harness Git Connector is used to sync your Harness Project with your Git repo. You can set up a [Git Connector](/docs/category/code-repo-connectors) first and simply select it when setting up Git Experience, or you can create a Git Connector as part of the Git Experience setup.
 
@@ -203,5 +203,5 @@ The following blog post walks you through Harness Git Experience:
 
 * [Harness Git Experience Quickstart](harness-git-experience-quickstart.md)
 * [Git Experience How-tos](git-experience-overview.md)
-<!-- * [TBD DOC-2409 Diagnose and Fix Git Sync Errors](https://docs.harness.io/article/24ehx5oa94-git-sync-errors) -->
+<!-- TBD DOC-2409 * [Diagnose and Fix Git Sync Errors ](https://docs.harness.io/article/24ehx5oa94-git-sync-errors) -->
 

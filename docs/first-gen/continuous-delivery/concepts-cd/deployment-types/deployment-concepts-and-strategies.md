@@ -107,7 +107,7 @@ One use of Rolling deployments is as the stage following a Canary deployment in 
 
 [![](./static/deployment-concepts-and-strategies-08.png)](./static/deployment-concepts-and-strategies-08.png)
 
-See  [Kubernetes Rolling Update Workflows](https://docs.harness.io/article/5gouaz9w5r-kubernetes-rolling-update-workflows).
+See  [Create a Kubernetes Rolling Deployment (FirstGen)](/docs/first-gen/continuous-delivery/kubernetes-deployments/create-a-kubernetes-rolling-deployment.md).
 
 ### Blue/Green Deployment
 
@@ -144,7 +144,7 @@ See:
 
 * [ECS Blue/Green Workflows](../../aws-deployments/ecs-deployment/ecs-blue-green-workflows.md)
 * [AMI Blue/Green Deployment](../../aws-deployments/ami-deployments/ami-blue-green.md)
-* [Kubernetes Blue/Green Workflows](https://docs.harness.io/article/zim6pw6hd5-blue-green-workflows)
+* [Kubernetes Blue/Green Deployment](/docs/continuous-delivery/cd-execution/kubernetes-executions/create-a-kubernetes-blue-green-deployment)
 * [Pivotal Cloud Foundry Deployments](../../pcf-deployments/pcf-tutorial-overview.md)
 
 ### Canary Deployment

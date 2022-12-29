@@ -209,7 +209,7 @@ To do the STO tutorials, point the connector at the following repo: <https://git
 	**GitHub Repository URL:** https://github.com/williamwissemann/dvpwa
 	3. Credentials:  
 	**Username:** Your GitHub username.  
-	**Personal Access Token:** Your [GitHub Personal Access Token secret](20-set-up-harness-for-sto.md).  
+	**Personal Access Token:** Your [GitHub Personal Access Token secret](#create-secrets-for-your-git-and-dockerhub-access-credentials).  
 	**Enable API Access:** Select this checkbox and select the same secret.
 	4. Connect to the provider:  
 	Click **Connect through Harness Platform**.
@@ -251,7 +251,7 @@ The following procedure creates a pipeline with the STO functionality required t
 4. In About your Stage:
 	1. Click **Add Stage** and then select **Build**.
 	2. Stage Name = **securityTestStage**
-	3. Connector = The connector you created in [Create a Codebase Connector](20-set-up-harness-for-sto.md).
+	3. Connector = The connector you created in [Create a Codebase Connector](#create-a-codebase-connector).
 	4. Click **Set Up Stage**.
 	
   ```mdx-code-block
@@ -269,7 +269,7 @@ The following procedure creates a pipeline with the STO functionality required t
 	 
 2. In the **Infrastructure** tab, specify the following:
 	1. The infrastructure where you want your builds to run = **Kubernetes**
-	2. Kubernetes Cluster = The delegate you created in [Install the delegate](20-set-up-harness-for-sto.md#install-the-delegate).
+	2. Kubernetes Cluster = The delegate you created in [Install the delegate](#install-the-harness-delegate).
 	3. Namespace = `harness-delegate-ng`
 	4. OS = `Linux`
 	
@@ -280,7 +280,7 @@ The following procedure creates a pipeline with the STO functionality required t
 3. In the Execution tab, do the following:
 	1. Click **Add Service Dependency**.
 	2. Dependency Name = `dind`
-	3. Container Registry = The image connector you specified in [Create a Docker Hub connector](https://docs.harness.io/article/create-a-dockerhub-connector).
+	3. Container Registry = The image connector you specified in [Create a Docker Hub connector](#create-a-docker-hub-connector).
 	4. Image = `docker:dind`
 	5. Under Optional Configuration, select the **Privileged** checkbox.
 	   

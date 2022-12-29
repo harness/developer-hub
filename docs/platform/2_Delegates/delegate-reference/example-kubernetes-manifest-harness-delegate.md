@@ -66,7 +66,7 @@ The following provides an example of a Kubernetes manifest used to configure Har
 
 `# If delegate needs to use a proxy, please follow instructions available in the documentation`
 
-`# https://docs.harness.io/article/pfim3oig7o-configure-delegate-proxy-settings`
+`# https://developer.harness.io/docs/first-gen/firstgen-platform/account/manage-delegates/configure-delegate-proxy-settings/`
 
 `apiVersion: apps/v1`
 
