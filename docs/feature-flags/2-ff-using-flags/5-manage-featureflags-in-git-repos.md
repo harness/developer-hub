@@ -33,7 +33,7 @@ Using Harness Git Experience with Feature Flags allows you to manage your Flags 
 
 You must set up Git Experience in your Project before you can use it with Feature Flags.To do this:
 
-* [Add a Source Code Manager to your account.](https://docs.harness.io/article/p92awqts2x-add-source-code-managers)
+<!-- TBD DOC-2410 * [ Add a Source Code Manager to your account. ](https://docs.harness.io/article/p92awqts2x-add-source-code-managers) -->
 * Follow the steps in [Configure GitSync in Harness](../../platform/10_Git-Experience/git-experience-overview.md) to enable Git Experience and create a Git repository that contains a folder called `.harness`. Harness will automatically create a `flags.yaml` file within this folder and this is where you manage your Feature Flags.
 
 Also ensure you read [How Git Experience works with Feature Flags](#how-git-experience-works-with-feature-flags). 
@@ -207,5 +207,5 @@ When syncing is off, the branch icon is a red warning circle:
 
 ## See also
 
-For more information about using Git Experience, go to [Git Experience How-tos](https://docs.harness.io/article/soavr3jh0i-git-experience-how-tos).
+For more information about using Git Experience, go to [Git Experience How-tos](../../platform/10_Git-Experience/git-experience-overview.md).
 

@@ -216,7 +216,7 @@ Add Kustomize PatchesIn the Stage's **Service**, in **Manifests**, click **Ad
 
 In **Specify Manifest Type**, select **Kustomize Patches**, and click **Continue**.
 
-In **Specify Kustomize Patches Store**, select your Git provider and Connector. See [Connect to a Git Repo](https://newdocs.helpdocs.io/article/zbhehjzsnv-connect-to-code-repo).
+In **Specify Kustomize Patches Store**, select your Git provider and Connector. See [Connect to a Git Repo](../../../platform/7_Connectors/connect-to-code-repo.md).
 
 The Git Connector should point to the Git account or repo where you Kustomize files are located. In **Kustomize Patches** you will specify the path to the actual patch files.
 

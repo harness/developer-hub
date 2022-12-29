@@ -33,7 +33,7 @@ If there are no deployments in your Harness account, we recommend that you first
 
 ### Prerequisites
 
-* Install a [Harness Kubernetes (K8S) Delegate](https://docs.harness.io/article/re8kk0ex4k-delegate-installation-overview) and ensure that, this Delegate is able to communicate with Harness Manager. Also, the Delegate must be gRPC protocol enabled.
+* Install a [Harness Kubernetes (K8S) Delegate](../../platform/2_Delegates/delegate-installation-overview.md) and ensure that, this Delegate is able to communicate with Harness Manager. Also, the Delegate must be gRPC protocol enabled.
 * Ensure that the installed Delegate can communicate with the Health Source and Change Source.
 
 ### Step 1: Add a New Monitored Service

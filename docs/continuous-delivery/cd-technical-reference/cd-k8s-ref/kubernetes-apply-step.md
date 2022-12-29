@@ -88,5 +88,4 @@ For details, go to [Deploy Manifests Separately using Apply Step](../../cd-execu
 ## See Also
 
 * [Add a Kubernetes Sidecar Container](../../cd-advanced/cd-kubernetes-category/add-a-kubernetes-sidecar-container.md)
-* [Kubernetes Scale Step](https://docs.harness.io/article/j11gi4hfo3-kubernetes-scale-step)
 

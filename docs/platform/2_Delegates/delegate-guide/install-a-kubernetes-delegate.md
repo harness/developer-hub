@@ -282,7 +282,7 @@ The following table lists each of the environment variables in the Harness Kuber
 - name: DELEGATE_NAME  value: qa
 ```
  |
-| `NEXT_GEN` | Indicates that this Delegate will register in [Harness NextGen](https://docs.harness.io/article/ra3nqcdbaf-compare-first-gen-and-next-gen).If this variable is set to `false`, the Delegate will attempt to register in Harness FirstGen. | 
+| `NEXT_GEN` | Indicates that this Delegate will register in Harness NextGen(`true`) or FirstGen(`false`). | 
 ```
 - name: NEXT_GEN  value: "true"
 ```

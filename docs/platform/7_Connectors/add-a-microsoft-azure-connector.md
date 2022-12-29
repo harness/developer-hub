@@ -281,7 +281,7 @@ In **Details**, you can select how you'd like Harness to authenticate with Azure
 
 If you have a Harness Delegate installed in your Azure subscription (preferably in your target AKS cluster) you can select **Use the credentials of a specific Harness Delegate**.
 
-For steps on installing a Delegate, see [Delegate Installation Overview](https://docs.harness.io/article/re8kk0ex4k-delegate-installation-overview).
+For steps on installing a Delegate, see [Delegate Installation Overview](../2_Delegates/delegate-installation-overview.md).
 
 ![](./static/add-a-microsoft-azure-connector-66.png)
 In **Environment**, select **Azure Global** or **US Government**.

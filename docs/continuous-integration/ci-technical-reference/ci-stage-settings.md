@@ -38,7 +38,7 @@ If you don't select the option here, you can select it in **Stage Details**.
 
 ### Configure Codebase
 
-These settings specify the codebase for the Stage. See [Edit Codebase Configuration](https://docs.harness.io/article/6vks5ym7sq-edit-a-ci-pipeline-codebase-configuration).
+These settings specify the codebase for the Stage. See [Edit Codebase Configuration](../use-ci/codebase-configuration/create-and-configure-a-codebase.md).
 
 ### Connector
 

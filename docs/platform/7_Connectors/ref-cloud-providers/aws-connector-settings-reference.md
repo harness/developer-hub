@@ -591,7 +591,7 @@ The unique name for this Connector.
 
 #### ID
 
-See [Entity Identifier Reference](https://newdocs.helpdocs.io/article/li0my8tcz3-entity-identifier-reference).
+See [Entity Identifier Reference](../../20_References/entity-identifier-reference.md).
 
 #### Description
 
@@ -599,7 +599,7 @@ Text string.
 
 #### Tags
 
-See [Tags Reference](https://newdocs.helpdocs.io/article/i8t053o0sq-tags-reference).
+See [Tags Reference](../../20_References/tags-reference.md).
 
 #### Credentials
 

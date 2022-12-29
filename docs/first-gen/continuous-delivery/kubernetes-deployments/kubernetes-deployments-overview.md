@@ -24,7 +24,7 @@ The following How-tos guide you through some common Kubernetes tasks.
 
 For more How-tos, see [Kubernetes How-tos](/docs/category/kubernetes-deployments).
 
-To see a summary of the changes in Harness Kubernetes Deployment Version 2, see [Harness Kubernetes V2 Changes](https://docs.harness.io/article/g3bzgg4rsw-summary-of-changes-in-kubernetes-deployments-version-2).
+<!-- TBD DOC-2412 To see a summary of the changes in Harness Kubernetes Deployment Version 2, see [Harness Kubernetes V2 Changes ](https://docs.harness.io/article/g3bzgg4rsw-summary-of-changes-in-kubernetes-deployments-version-2). -->
 
 ### Review: What Workloads Can I Deploy?
 
