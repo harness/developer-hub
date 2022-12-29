@@ -66,11 +66,19 @@ In **Continuous Verification Type**, select a type that matches your [deployment
 
 In **Monitored Service**, click **Click to autocreate a monitored service**.
 
-Harness automatically creates a Monitored Service using a concatenation of the Service and Environment names. For example, a Service named `todolist` and an Environment named `dev` will result in a Monitored Service named `todolist_dev`.
+Harness automatically creates a Monitored Service using a concatenation of the Service and Environment names. For example, a Service named `todolist` and an Environment named `dev` will result in a monitored service with the name `todolist_dev`.
 
-If the stage Service or Environment settings are [Runtime Inputs](../../../platform/20_References/runtime-inputs.md), the Monitored Service and Health Sources settings will show up in the **Runtime Input** settings when you run the Pipeline.
+:::note
+
+The option to auto-create a monitored service is not available if you have configured either service or environment or both as runtime values. When you run the pipeline, Harness concatenates the service and environment values you enter in the runtime inputs screen and generates a monitored service name. If an existing monitored service with the same name exists, Harness assigns it to the pipeline. If no monitored service exists that matches the generated monitored service name, Harness skips the verification step. 
+
+For example, suppose you enter service as `todolist` and environment as `dev`. In that case, Harness generates the monitored service name `todolist_dev`, checks whether a monitored service with the name `todolist_dev` is available, and assigns it to the pipeline. If no monitored service is available with the name `todolist_dev`, Harness skips the verification step.
+
+:::
 
 ## Step 5: Add Health Sources
+
+This option is available only if you have configured the service and environment as fixed values.
 
 A Health Source is basically a mapping of a Harness Service to the service in a deployment environment monitored by an APM or logging tool.
 
