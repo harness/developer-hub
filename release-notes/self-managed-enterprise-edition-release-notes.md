@@ -65,7 +65,7 @@ This release introduces the following fixes.
 | CDS-43200, ZD-34500 | **Pipeline variables are not being translated in HTTP step assertions and output variables**. Previously, only HTTP response expressions could be used in an HTTP step assertion. Now, users can use pipeline and other expressions in assertions and use them with HTTP response expressions. |
 | CDS-43673 | **A drop-down selector for the image path in an ECR artifact source is not available**. A drop-down selector is available now. |
 | CDS-43675 | **Implement dropdown for Artifact Path in Amazon S3 Artifact Source**. We have made the changes to fetch S3 filePaths in the dropdown while creating the artifact source. |
-| CDS-43863 | **The `<artifact.metadata.url>` is null for the Nexus3 artifact Docker repository format.** The URL was added to the metadata so it can now be accessed using <artifact.metadata.url>. |
+| CDS-43863 | **The `<artifact.metadata.url>` is null for the Nexus3 artifact Docker repository format.** The URL was added to the metadata so it can now be accessed using `<artifact.metadata.url>`. |
 | CDS-43869 | Made minor changes in style to infra definition section. |
 | CDS-43874 | **When editing a secret, the Verify Connection screen closes prematurely**. This issue has been fixed. |
 | CDS-44196 | **The ECS Harness file store console view does not show fetch manifests**. This issue has been fixed. |
