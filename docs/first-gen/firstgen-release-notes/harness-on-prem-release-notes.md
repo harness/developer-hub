@@ -37,11 +37,11 @@ This release introduces the following features and enhancements.
 | **Feature or enhancement** | **Description** |
 | --- | --- |
 | CDS-40179 | Added reconciliation for `looker` entities to ensure data synchronization between mongoDB and timescaleDB. |
-| CDS-45694 | **Coverage for Stage and Step level deployment details task**. Added unit tests. |
+| CDS-45694 | Deployment recon task failing. Longer retention for deployment in custom dashboards was failing due to a missing null check which has been added. (CDS-45694) |
 | CDS-47016 | Changed how search functionality on the deployments page works. Instead of using regex, search operations now use mongo stemming algorithms. |
-| DEL-4888 | Adopted the use of an immutable image for the delegate that is installed by default in newly created accounts. For more information on new delegate features including auto-update, see Delegate Overview. |
+| DEL-4888 | Adopted the use of an immutable image for the delegate that is installed by default in newly created accounts. For more information on new delegate features including auto-update, see [Delegate Overview](https://developer.harness.io/docs/platform/Delegates/delegates-overview). |
 | DEL-5073 | Updated the Core Protocol Buffers library `protobuf-java/protobuf-javalite` to version 3.21.7. This update fixes CVE-2022-3171, a vulnerability that affects some earlier versions. The vulnerability was linked with denial-of-service (DoS) attacks. |
-| DEL-5153 | Changed the base image for the non-legacy delegate to `redhat/ubi8-minimal:latest`. This ensures that each release includes fixes for all operating system-level fixes. |
+| DEL-5153 | Upgraded `org.apache.commons:commons-text` to version 1.10.0 to fix a critical vulnerability in the delegate. |
 | DEL-5308 | Removed the delegate dependency on Java driver component `mongo-java-driver`. This eliminates the CVE-2021-20328 vulnerability that affects client-side field-level encryption (CSFLE). |
 | DEL-5386 | Changed the base image that the non-legacy delegate uses to `redhat/ubi8-minimal:latest`. This ensures that each release includes all OS-level security updates. |
 | PL-26799 | Removed feature flag `LDAP_GROUP_SYNC_JOB_ITERATOR`. This makes it possible for all accounts for which LDAP is configured to set up a periodic group sync schedule by using a `cron` expression. |
