@@ -10,7 +10,9 @@ helpdocs_is_published: true
 
 This document contains release notes for Harness Self-Managed Enterprise Edition.
 
-For Harness SaaS release notes, see [Harness SaaS Release Notes](https://docs.harness.io/article/xacpxeyioo-harness-saa-s-release-notes).Release notes are displayed with the most recent release first.
+For Harness SaaS release notes, see [Harness SaaS Release Notes](https://developer.harness.io/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes). 
+
+Release notes are displayed with the most recent release first.
 
 ### December 21, 2022, version 77622
 
@@ -91,7 +93,6 @@ Delegate: 77021
 This release introduces the following features and enhancements.
 
 
-
 | **Feature or enhancement** | **Description** |
 | --- | --- |
 | CDS-40206 | The option to use Kerberos-based authentication in the creation of Git connectors is no longer gated by feature flag. |
@@ -103,8 +104,6 @@ This release introduces the following features and enhancements.
 #### Issues fixed in this release
 
 This release includes the following fixes.
-
-
 
 | **Issue** | **Description** |
 | --- | --- |
@@ -126,8 +125,6 @@ Delegate: 76818
 
 This release introduces the following features and enhancements.
 
-
-
 | **Feature or enhancement** | **Description** |
 | --- | --- |
 | CDS-42783 | Created upsert statement for looker entities. |
@@ -139,8 +136,6 @@ This release introduces the following features and enhancements.
 #### Issues fixed in this release
 
 This release includes the following fixes.
-
-
 
 | **Issue** | **Description** |
 | --- | --- |
@@ -174,10 +169,8 @@ Delegate: 76614
 
 This release introduces the following features and enhancements:
 
-
-
 | **Feature or Enhancement** | **Description** |
-| --- | --- |
+| :-- | :-- |
 | CDS-40796 | The Azure Identity (`azure-identity`) artifact was upgraded from version 1.1.2 to version 1.4.4. The upgrade was made to remove vulnerabilities. |
 | CDS-41347 | The `go-template` binary was replaced with an updated version 0.4.1. The new binary updates Golang from version 1.17.9 to 1.16.4. The `go-template` binary supplies a Delegate-required internal library. |
 | DEL-3171 | A change was made to prevent the CG Immutable Delegate from running the profile script. |
@@ -188,11 +181,8 @@ This release introduces the following features and enhancements:
 
 #### Issues Fixed in This Release
 
-
-
-|  |  |
-| --- | --- |
 | **Issue** | **Description** |
+| :-- | :-- |
 | CDS-41149ZD-32913 | Changed the behavior associated with the `OPTIMIZED_TF_PLAN` feature flag. An expression of `${terraformPlan.jsonFilePath()}` will no longer cause the shell script step to fail; instead, the value of the expression will be set to `null`. |
 | CDS-41232 | The `parent_pipeline_id` and `created_by_type` fields were introduced in `timescaledb`. |
 | CDS-41357ZD-32975 | A change was made to cause an exception to be generated if the field for the nexus artifact URL is empty. |
@@ -219,12 +209,16 @@ This release introduces the following features and enhancements:
 
 Delegate: 76324
 
-**Important information about upgrading KOTS admin console****Minor release 76324 requires KOTS admin console version 1.78.0.** You must update KOTS before you deploy this release of Harness Self-Managed Enterprise Edition.  
+**Important information about upgrading KOTS admin console**
+
+**Minor release 76324 requires KOTS admin console version 1.78.0.** You must update KOTS before you deploy this release of Harness Self-Managed Enterprise Edition.  
   
 To update KOTS admin console:  
-  
-`curl` [`https://kots.io/install/1.78.0`](https://kots.io/install/1.78.0)`| bash`  
-`kubectl kots admin-console upgrade -n <namespace>`#### New Features and Enhancements
+```
+curl https://kots.io/install/1.78.0 | bash  
+kubectl kots admin-console upgrade -n <namespace>
+```
+#### New Features and Enhancements
 
 This release introduces the following features and enhancements.
 
@@ -274,10 +268,11 @@ N/A
 
 ### July 31, 2022, minor release 76025
 
+
 :::note
+**Important information about upgrading Timescale DB**
 
-**Important information about upgrading Timescale DB**Before you upgrade to this release, you must run the following script **timescaledb\_upgrade.sh**against your Harness namespace to update Timescale DB.  
-
+Before you upgrade to this release, you must run the following **timescaledb\_upgrade.sh** script against your Harness namespace to update Timescale DB.  
 :::
 
 ### timescaledb\_upgrade.sh
