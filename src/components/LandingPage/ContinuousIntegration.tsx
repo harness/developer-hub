@@ -39,12 +39,14 @@ const FeaturedList: CardItem[] = [
     link: "/tutorials/build-code/ci-node-docker-quickstart",
   },
   {
-    title: 'Build Go Application Containers using CI Pipeline',
+    title: 'Build Go application containers using a CI Pipeline',
+
     module: 'ci',
     Svg: '/img/icon_ci.svg',
     description: (
       <>
-        This build automation guide walks you through building a Go container image in a CI Pipeline.
+        This build automation guide describes building a Go container image in a CI Pipeline.
+
       </>
     ),
     ribbon: true,
@@ -52,12 +54,14 @@ const FeaturedList: CardItem[] = [
     time: '15 min',
     link: '/tutorials/build-code/ci-tutorial-go-containers',
   },{
-    title: 'Sign Application Containers using CI Pipeline',
+    title: 'Sign application containers using a CI Pipeline',
+
     module: 'ci',
     Svg: '/img/icon_ci.svg',
     description: (
       <>
-        This build automation guide walks you through on how to sign a container image using CI pipeline.
+        This build automation guide describes how to sign a container image using a CI pipeline.
+
       </>
     ),
     ribbon: true,
@@ -156,12 +160,14 @@ const CIList: CardItem[] = [
     link: "/tutorials/build-code/fastest-ci",
   },
 {
-  title: 'Build Go Application Containers',
+  title: 'Build Go application containers',
+
   module: 'ci',
   Svg: '/img/icon_ci.svg',
   description: (
     <>
-      This build automation guide walks you through building a Go container image in a CI Pipeline.
+      This build automation guide describes building a Go container image in a CI Pipeline.
+
     </>
   ),
   ribbon: true,
@@ -174,7 +180,8 @@ const CIList: CardItem[] = [
   Svg: '/img/icon_ci.svg',
   description: (
     <>
-      This build automation guide walks you through on how to sign a container image using CI pipeline.
+      This build automation guide describes how to sign a container image using a CI pipeline.
+
     </>
   ),
   ribbon: true,

@@ -60,12 +60,14 @@ const FeaturedList: CardItem[] = [
     link: "/tutorials/platform/onboard-terraform-provider",
   },
   {
-    title: 'Sign Application Containers',
+    title: 'Sign application containers',
+
     module: 'ci',
     Svg: '/img/icon_ci.svg',
     description: (
       <>
-        This build automation guide walks you through on how to sign a container image using CI pipeline.
+        This build automation guide describes how to sign a container image using a CI pipeline.
+
       </>
     ),
     ribbon: true,
@@ -153,12 +155,14 @@ const CIList: CardItem[] = [
     link: "/tutorials/build-code/fastest-ci",
   },
   {
-    title: 'Build Go Application Containers',
+    title: 'Build Go application containers',
+
     module: 'ci',
     Svg: '/img/icon_ci.svg',
     description: (
       <>
-        This build automation guide walks you through building a Go container image in a CI Pipeline.
+        This build automation guide describes building a Go container image in a CI Pipeline.
+
       </>
     ),
     ribbon: true,
@@ -171,7 +175,8 @@ const CIList: CardItem[] = [
     Svg: '/img/icon_ci.svg',
     description: (
       <>
-        This build automation guide walks you through on how to sign a container image using CI pipeline.
+        This build automation guide describes how to sign a container image using a CI pipeline.
+
       </>
     ),
     ribbon: true,
