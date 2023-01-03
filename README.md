@@ -12,7 +12,6 @@ Welcome to the Harness Developer Hub (HDH)!
 
 Learn intelligent software delivery skills at your own pace and in one place. Step-by-step tutorials, videos, and reference docs help you create and deliver software.
 
-
 ### Contributing
 
 We welcome contributions. Check out the [Contributors Guide](CONTRIBUTING.md) for details
