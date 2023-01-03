@@ -12,8 +12,6 @@ You can set notifications on Service Reliability Management (SRM) monitored serv
 
 ### Before You Begin
 
-* [Health Monitoring Quickstart](../../../continuous-delivery/onboard-cd/cd-quickstarts/ssh-ng.md)
-<!--  TBD DOC-2413 [Change Monitoring Quickstart ](https://docs.harness.io/article/fs64l16dbp-change-intelligence-quick-start-change-monitoring) -->
 * [SLO Management Quickstart](../../howtos-service-reliability-management/slo-management-quickstart.md)
 * [Service Reliability Management Basics](../../howtos-service-reliability-management/service-reliability-management-basics.md)
 
@@ -32,7 +30,7 @@ You can create notifications for Monitored Services or SLOs.
 
 First, ensure that you have a Monitored Service or SLO set up. 
 
-See [Health Monitoring Quickstart](../../../continuous-delivery/onboard-cd/cd-quickstarts/ssh-ng.md), <!-- TBD DOC-2413 , [Change Monitoring Quickstart ](https://docs.harness.io/article/fs64l16dbp-change-intelligence-quick-start-change-monitoring) --> or [SLO Management Quickstart](../../howtos-service-reliability-management/slo-management-quickstart.md).
+See [SLO Management Quickstart](../../howtos-service-reliability-management/slo-management-quickstart.md).
 
 
 <!-- 
