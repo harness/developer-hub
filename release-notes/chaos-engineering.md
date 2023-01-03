@@ -1,7 +1,6 @@
 ---
-title: Chaos Engineering release notes
-tags: [nextGen, "chaos engineering"]
-slug: chaos-engineering-release-notes
+title: Chaos Engineering
+tags: [NextGen, "chaos engineering"]
 date: 2020-10-18T10:00
 sidebar_position: 9
 ---
@@ -9,12 +8,12 @@ sidebar_position: 9
 Harness Chaos Engineering is updated regularly. Review the notes below for details about recent changes.
 
 :::note
-Harness deploys updates progressively to different Harness cluster hosting accounts. The features and fixes in the release notes may not be available in your cluster immediately.
+Harness deploys updates progressively to different Harness SaaS clusters. You can identify the cluster hosting your account in your Account Overview page. The features and fixes in the release notes may not be available in your cluster immediately.
 :::
 
-# December 2, 2022, version 0.4.2
+## December 2, 2022, version 0.4.2
 
-## What’s New
+### What’s new
 
 1. Update feature for ChaosHub enabling users to update details like Git Connector, Repository Name, Branch name & Name for an already connected ChaosHub.
 2. Adds CDN Support for Chaos module static artifacts, making UI load faster on client's devices.
@@ -24,11 +23,11 @@ Harness deploys updates progressively to different Harness cluster hosting accou
 6. Adds manifest download button in UI for Chaos Infrastructures enabling users to have seamless upgrade.
 7. Adds consistent loaders for all components & screens in UI.
 
-## Early access features
+### Early access features
 
 No early access features are available in this release.
 
-## Fixed Issues
+### Fixed Issues
 
 1. Fixes Enterprise ChaosHub shown irrespective of searched terms by the users.
 2. Fixes httpProbe schema in UI to add support for new response timeout changes for HTTP probe. Now, probeTimeout for HTTP probes will be treated as response timeout & should be provided in seconds.
@@ -42,9 +41,9 @@ No early access features are available in this release.
 10. Fixes resource-type not coming for aborting a Chaos Experiment in audit-trail.
 11. Fixes Minor UI/UX Issues making the UI more user-friendly & more accessible.
 
-# November 14, 2022
+## November 14, 2022
 
-## Early access features
+### Early access features
 
 The Harness Chaos Engineering (HCE) module, which you can use to perform chaos experiments on your applications and infrastructure, is now available for testing. To be part of this testing, contact [Harness Support](mailto:support@harness.io). HCE documentation, which includes user guides and [tutorials](https://developer.harness.io/tutorials/run-chaos-experiments), is available on the Harness Developer Hub. Harness recommends that you gain familiarity with the chaos experimentation workflow in HCE by following the instructions in [Your First Chaos Experiment Run](https://developer.harness.io/tutorials/run-chaos-experiments/first-chaos-engineering).
 

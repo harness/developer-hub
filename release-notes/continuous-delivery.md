@@ -1,17 +1,14 @@
 ---
-title: Continuous Delivery & GitOps release notes
+title: Continuous Delivery & GitOps
 date: 2022-12-15T10:00
 tags: [NextGen, "continuous delivery"]
-slug: continuous-delivery-release-notes
 sidebar_position: 4
 ---
 
 Harness Continuous Delivery & GitOps is updated regularly. Review the notes below for details about recent changes.
 
 :::note
-
-Harness deploys updates progressively to different Harness cluster hosting accounts. The features and fixes in the release notes may not be available in your cluster immediately.
-
+Harness deploys updates progressively to different Harness SaaS clusters. You can identify the cluster hosting your account in your Account Overview page. The features and fixes in the release notes may not be available in your cluster immediately.
 :::
 
 ## December 22, 2022, version 77908

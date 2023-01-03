@@ -1,17 +1,14 @@
 ---
-title: Feature Flags release notes
+title: Feature Flags
 date: 2022-12-15T10:00
 tags: [NextGen, "feature flags"]
-slug: feature-flag-release-notes
 sidebar_position: 6
 ---
 
 Harness Feature Flags is updated regularly. Review the notes below for details about recent changes.
 
 :::note
-
-Harness deploys updates progressively to different Harness cluster hosting accounts. The features and fixes in the release notes may not be available in your cluster immediately.
-
+Harness deploys updates progressively to different Harness SaaS clusters. You can identify the cluster hosting your account in your Account Overview page. The features and fixes in the release notes may not be available in your cluster immediately.
 :::
 
 ## December 22, 2022
