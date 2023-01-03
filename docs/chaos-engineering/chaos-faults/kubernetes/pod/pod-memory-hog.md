@@ -29,7 +29,12 @@ This fault launches a stress process within the target container - which can cau
 - Kubernetes > 1.16
 :::
 
-## Steps to implement pod memory hog
+## Default validation
+:::note
+The pods in the application should be in the running state before and after the chaos has been injected.
+:::
+
+## Implementation
 
 **NOTE:** It is assumed that you already have the boutique app set up in a namespace. If not, follow [this](provide link) to set up your boutique application.
 
@@ -47,7 +52,7 @@ resources:
 
 [link](provide) to setup experiment to execute chaos faults.
 
-* On the right pane, select **Kubernetes** that displays a list of Kubernetes faults available. Select the **pod-memory-hog**. 
+* On the right pane, select **Kubernetes** that displays a list of Kubernetes faults available. Select **pod-memory-hog** fault. 
 
 ![Select Kubernetes](./static/images/select-kube-fault.png)
 
@@ -115,11 +120,6 @@ kubectl top pods <service name> -n <application namespace>
 
 ![After chaos visual](./static/images/mem-hog-visual.png)
 
-
-## Default validation
-:::note
-The pods in the application should be in the running state before and after the chaos has been injected.
-:::
 
 ## Fault tunables
 <details>

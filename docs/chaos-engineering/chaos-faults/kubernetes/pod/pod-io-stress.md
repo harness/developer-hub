@@ -1,16 +1,16 @@
 ---
 id: pod-io-stress
-title: Pod IO Stress
+title: Pod IO stress
 ---
 
-## Introduction
-- This fault causes disk stress on the application pod. It aims to verify the resiliency of applications that share this disk resource for ephemeral or persistent storage purposes.
+It is a chaos fault that causes disk stress on the application pod. This fault:
+- Aims to verify the resiliency of applications that share this disk resource for ephemeral or persistent storage purposes.
 
 :::tip Fault execution flow chart
 ![Pod IO Stress](./static/images/pod-stress.png)
 :::
 
-## Uses
+## Usage
 <details>
 <summary>View the uses of the fault</summary>
 <div>
@@ -22,15 +22,59 @@ Stressing the disk with continuous and heavy IO for example can cause degradatio
 
 ## Prerequisites
 :::info
-- Ensure that Kubernetes Version > 1.16.
+- Kubernetes > 1.16.
 :::
 
-## Default Validations
+## Default validations
 :::note
 The application pods should be in running state before and after chaos injection.
 :::
 
-## Fault Tunables
+
+## Implementation
+
+**NOTE:** It is assumed that you already have the boutique app set up in a namespace. If not, follow [this](provide link) to set up your boutique application.
+
+To execute pod IO stress fault, [setup experiment](provide) and infrastructure.
+
+* On the right pane, select **Kubernetes** that displays a list of Kubernetes faults available. Select **disk-fill**fault. 
+
+![Select Kubernetes](./static/images/select-disk-fill.png)
+
+* This leads you to a page where you can specify parameters for the **Target application**, **Tune fault**, and **Probes**.
+
+![Tune faults](./static/images/disk-fill-specify-parameters.png)
+
+* The **Target application** section has three parameters:
+  
+**Specify the parameters and explain them**
+
+* The **Tune fault** section has three parameters
+
+**Specify the parameters and explain them. Mention about container runtime, containerd, socket path.**
+
+![Tune fault params](./static/images/disk-fill-tune-fault-1.png)
+
+![Tune fault params2](./static/images/disk-fill-tune-fault-2.png)
+
+* You can see that the probe has been setup successfully with the parameters you specified. Close this pane by clicking on **X** at the top.
+
+![Probe setup done](./static/images/mem-hog-probe-setup-done.png)
+
+* Navigate to the next step of setting fault weights. Click the **Set fault weights** present on top. 
+
+![Set weights](./static/images/disk-fill-set-fault-weight.png)
+
+* Click **Run** to execute the experiment.
+
+![Run experiment](./static/images/disk-fill-run-exp.png)
+
+* Visit [this link](provide link) to set up Grafana dashboard to visualize the results before and after injecting chaos into the application. 
+
+* Here is a representation of how disk fill affects the application.
+
+
+## Fault tunables
 <details>
     <summary>Check the Fault Tunables</summary>
     <h2>Optional Fields</h2>
@@ -108,12 +152,12 @@ The application pods should be in running state before and after chaos injection
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common and Pod specific tunables
+### Common and pod specific tunables
 Refer the [common attributes](../../common-tunables-for-all-faults) and [Pod specific tunable](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
 
-### Filesystem Utilization Percentage
+### Filesystem utilization percentage
 
 It stresses the `FILESYSTEM_UTILIZATION_PERCENTAGE` percentage of total free space available in the pod. 
 
@@ -148,7 +192,7 @@ spec:
           VALUE: '60'
 ```
 
-### Filesystem Utilization Bytes
+### Filesystem utilization bytes
 
 It stresses the `FILESYSTEM_UTILIZATION_BYTES` GB of the i/o of the targeted pod. 
 It is mutually exclusive with the `FILESYSTEM_UTILIZATION_PERCENTAGE` ENV. If `FILESYSTEM_UTILIZATION_PERCENTAGE` ENV is set then it will use the percentage for the stress otherwise, it will stress the i/o based on `FILESYSTEM_UTILIZATION_BYTES` ENV.
@@ -184,7 +228,7 @@ spec:
           VALUE: '60'
 ```
 
-### Container Runtime Socket Path
+### Container runtime socket path
 
 It defines the `CONTAINER_RUNTIME` and `SOCKET_PATH` ENV to set the container runtime and socket file path.
 
@@ -224,7 +268,7 @@ spec:
           VALUE: '60'
 ```
 
-### Mount Path
+### Mount path
 
 The volume mount path, which needs to be filled. It can be tuned with `VOLUME_MOUNT_PATH` ENV. 
 
@@ -257,7 +301,7 @@ spec:
           VALUE: '60'
 ```
 
-### Workers For Stress
+### Workers for stress
 
 The worker's count for the stress can be tuned with `NUMBER_OF_WORKERS` ENV. 
 
@@ -290,7 +334,7 @@ spec:
           VALUE: '60'
 ```
 
-### Pumba Chaos Library
+### Pumba chaos library
 
 It specifies the Pumba chaos library for the chaos injection. It can be tuned via `LIB` ENV. The defaults chaos library is `litmus`.
 

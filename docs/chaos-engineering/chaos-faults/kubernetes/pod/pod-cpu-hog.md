@@ -26,7 +26,14 @@ Injecting a rogue process into a target container, we starve the main microservi
 - Kubernetes > 1.16
 :::
 
-## Steps to implement pod CPU hog
+
+## Default Validations
+:::note
+The application pods should be in running state before and after chaos injection.
+:::
+
+
+## Implementation
 
 **NOTE:** It is assumed that you already have the boutique app set up in a namespace. If not, follow [this](provide link) to set up your boutique application.
 
@@ -44,7 +51,7 @@ resources:
 
 [link](provide) to setup experiment to execute chaos faults.
 
-* On the right pane, select **Kubernetes** that displays a list of Kubernetes faults available. Select the **pod-cpu-hog**. 
+* On the right pane, select **Kubernetes** that displays a list of Kubernetes faults available. Select **pod-cpu-hog** fault. 
 
 ![Select Kubernetes](./static/images/select-kube-fault.png)
 
@@ -111,10 +118,7 @@ kubectl top pods <service name> -n <application namespace>
 ![After chaos](./static/images/after-chaos.png)
 
 ![After chaos visual](./static/images/cpu-hog-visual.png)
-## Default Validations
-:::note
-The application pods should be in running state before and after chaos injection.
-:::
+
 
 ## Fault Tunables
 <details>
