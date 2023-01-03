@@ -40,7 +40,7 @@ To use this SDK, make sure you:
 * (For Android apps) Install [Android Studio](https://developer.android.com/studio?gclid=CjwKCAjwp7eUBhBeEiwAZbHwkRqdhQkk6wroJeWGu0uGWjW9Ue3hFXc4SuB6lwYU4LOZiZ-MQ4p57BoCvF0QAvD_BwE&gclsrc=aw.ds), or install the Android SDK for Command-Line Interface (CLI) only.
 
 :::note
-To check you have installed the prerequisites, run the `flutter doctor` command. 
+To check if you have installed the prerequisites, run the `flutter doctor` command. 
 :::
 
 * [Download the SDK from our GitHub repository](https://github.com/harness/ff-flutter-client-sdk)

@@ -15,7 +15,7 @@ This topic describes how to use the Harness Feature Flags SDK for your React Cli
 
 For getting started quickly, you can use our [sample code from the SDK README](https://github.com/harness/ff-react-client-sdk/blob/main/README.md). You can also [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) and run a sample application from the [React Client SDK GitHub Repository](https://github.com/harness/ff-react-client-sdk).
 
-## Before You Begin
+## Before you begin
 
 * [Getting Started with Feature Flags](../../1-ff-onboarding/2-ff-getting-started/2-getting-started-with-feature-flags.md)
 * [Feature Flags Overview](../../1-ff-onboarding/1-cf-feature-flag-overview.md)

@@ -126,7 +126,7 @@ This turns on syncing with Git. When you toggle only this button, each time you 
 *Figure 2: Example commit message*
 
 :::note
- If you select the checkbox Always commit to this branch and do not prompt for commit message, the Auto-commit to the selected branch option will be toggled on.
+ If you select the checkbox Always commit to this branch and do not prompt for a commit message, the Auto-commit to the selected branch option will be toggled on.
 :::
 
 When you are using this option, the branch icon is a gray circle:

@@ -79,7 +79,7 @@ To create a Target, pass in arguments for the following:
 
 
 <details>
-<summary> Regex requirements for Target names and identifiers </summary>
+<summary> Regex requirements for target names and identifiers </summary>
 
 **Identifier** 
 

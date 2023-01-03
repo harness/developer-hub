@@ -45,7 +45,7 @@ To use this SDK, make sure you:  
 
 Install the Feature Flag SDK as a dependency in your application using your application's dependency manager. You can use Maven, Gradle, SBT, etc. for your application. 
 
-Below are the dependencies for Maven and Gradle that uses Java SDK version 1.1.8.0 as an example:
+Below are the dependencies for Maven and Gradle that use Java SDK version 1.1.8.0 as an example:
 
 ### Install using Maven
 

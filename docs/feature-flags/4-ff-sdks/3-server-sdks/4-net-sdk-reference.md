@@ -14,7 +14,7 @@ helpdocs_is_published: true
 ---
 
 :::caution 
-In Version 1.1.3 of the .NET SDK, the package name for installing the SDK changed from **ff-netF48-server-sdk** to **ff-dotnet-server-sdk**. To use this version, make sure you remove the old package name and use the new one.You can do this by using the following commands:  
+In Version 1.1.3 of the .NET SDK, the package name for installing the SDK changed from **ff-netF48-server-sdk** to **ff-dotnet-server-sdk**. To use this version, make sure you remove the old package name and use the new one. You can do this by using the following commands:  
 **Remove the old package**  
 `dotnet remove package ff-netF48-server-sdk`  
 **Add the new package**`dotnet add package ff-dotnet-server-sdk`
