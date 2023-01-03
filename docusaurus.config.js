@@ -16,7 +16,7 @@ const config = {
   baseUrl: BASE_URL,
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
-  favicon: "img/favicon.ico",
+  favicon: "img/hdh_fav_icon_grey.ico",
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
