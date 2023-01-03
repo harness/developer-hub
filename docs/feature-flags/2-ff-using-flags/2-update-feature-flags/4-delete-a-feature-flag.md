@@ -12,10 +12,11 @@ helpdocs_is_published: true
 
 When you are finished with a Feature Flag, it's best practice to remove it to keep your Flags and application organised and tidy. This topic describes how to delete a Feature Flag on the Harness Platform and using [Git](../5-manage-featureflags-in-git-repos.md).
 
-> **☆ NOTE —** Make sure you are ready to delete the Flag from all of your Environments. When you delete a Flag on the Harness Platform or on Git, it is removed from all Environments.
+:::note
+ Make sure you are ready to delete the Flag from all of your Environments. When you delete a Flag on the Harness Platform or on Git, it is removed from all Environments.
+:::
 
 ## Delete a Flag using the Harness Platform
-
 
 1. In Harness, go to **Feature Flags**, then to the Flag you want to delete.
 2. Click **more options (****︙****)**next to the flag that you want to delete, then click **Delete**.

@@ -23,11 +23,15 @@ import git_7 from './static/5-manage-featureflags-in-git-repos-09.png'
 import git_8 from './static/8-git-off.png' 
 ```
 
-> :warning: **Warning:** There is a known issue with this feature. When you turn on a Feature Flag, some Target rules may be reordered in your Git repo. This doesn't affect the functionality of your Feature Flag or Targets and we are working to fix this issue as soon as possible.
+:::caution
+ There is a known issue with this feature. When you turn on a Feature Flag, some Target rules may be reordered in your Git repo. This doesn't affect the functionality of your Feature Flag or Targets and we are working to fix this issue as soon as possible.
+:::
 
 Using Harness Git Experience with Feature Flags allows you to manage your Flags from a .yaml file in your Git repository. When you enable Git Experience, changes you make to Flags on the Harness Platform are committed on Git, and commits you make on Git are reflected in the Harness Platform. This means you can work on Flags entirely from Git, the Harness Platform, or both, and your changes will be synchronized in both places. 
 
-> **☆ NOTE —** In the unlikely circumstance that Harness and Git are connected but out of sync, your Git file is the source of truth. Changes in the Harness Platform don’t take effect until you commit them to Git. 
+:::note
+ In the unlikely circumstance that Harness and Git are connected but out of sync, your Git file is the source of truth. Changes in the Harness Platform don’t take effect until you commit them to Git. 
+:::
 
 ## Before you begin
 
@@ -121,7 +125,9 @@ This turns on syncing with Git. When you toggle only this button, each time you 
 ```
 *Figure 2: Example commit message*
 
-> **☆ NOTE —** If you select the checkbox Always commit to this branch and do not prompt for commit message, the Auto-commit to the selected branch option will be toggled on.
+:::note
+ If you select the checkbox Always commit to this branch and do not prompt for a commit message, the Auto-commit to the selected branch option will be toggled on.
+:::
 
 When you are using this option, the branch icon is a gray circle:
 
@@ -194,7 +200,9 @@ To turn off syncing with Git, turn off the Sync with Git toggle. 
 
 If you turn the toggle on again, your Flags will sync with Git again right away. 
 
-> **☆ NOTE —** The Auto-commit to selected branch toggle will be the same status as before you turned off synching with Git. 
+:::note
+ The Auto-commit to the selected branch toggle will be the same status as before you turned off synching with Git. 
+:::
 
 When syncing is off, the branch icon is a red warning circle:
 
