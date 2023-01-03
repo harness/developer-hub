@@ -201,7 +201,7 @@ To turn off syncing with Git, turn off the Sync with Git toggle. 
 If you turn the toggle on again, your Flags will sync with Git again right away. 
 
 :::note
- The Auto-commit to selected branch toggle will be the same status as before you turned off synching with Git. 
+ The Auto-commit to the selected branch toggle will be the same status as before you turned off synching with Git. 
 :::
 
 When syncing is off, the branch icon is a red warning circle:

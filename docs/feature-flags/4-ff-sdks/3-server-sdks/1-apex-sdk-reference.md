@@ -144,7 +144,7 @@ FFClient client = new FFClient('Your SDK Key', target, config);
 ```
  
 
-## Evaluating a Flag
+## Evaluating a flag
 
 Evaluating a Flag is when the SDK processes all Flag rules and returns the correct Variation of that Flag for the Target you provide. 
 
