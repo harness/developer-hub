@@ -1,7 +1,6 @@
 ---
-title: Cloud Cost Management release notes
+title: Cloud Cost Management
 tags: [NextGen, "cloud cost management"]
-slug: cloud-cost-management-release-notes
 date: 2022-12-15T10:00
 sidebar_position: 5
 ---
@@ -9,9 +8,7 @@ sidebar_position: 5
 Harness Cloud Cost Management is updated regularly. Review the notes below for details about recent changes.
 
 :::note
-
-Harness deploys updates progressively to different Harness cluster hosting accounts. The features and fixes in the release notes may not be available in your cluster immediately.
-
+Harness deploys updates progressively to different Harness SaaS clusters. You can identify the cluster hosting your account in your Account Overview page. The features and fixes in the release notes may not be available in your cluster immediately.
 :::
 
 ## December 16, 2022

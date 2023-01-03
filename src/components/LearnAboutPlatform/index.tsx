@@ -902,10 +902,7 @@ export default function LearnAboutPlatform(): JSX.Element {
         <h3>Platform</h3>
       </div>
       <ul className={styles.platformList}>
-        <a
-          href="https://docs.harness.io/category/kncngmy17o-pipelines"
-          target="_blank"
-        >
+        <a href="/docs/category/pipelines">
           <li>
             <img src={`${baseUrl}img/automated-pipeline.svg`} />
             <h4>Pipelines</h4>
@@ -914,10 +911,7 @@ export default function LearnAboutPlatform(): JSX.Element {
             </p>
           </li>
         </a>
-        <a
-          href="https://docs.harness.io/article/6tl8zyxeol-template"
-          target="_blank"
-        >
+        <a href="/docs/category/templates">
           <li>
             <img src={`${baseUrl}img/templates.svg`} />
             <h4>Templates</h4>
@@ -927,10 +921,7 @@ export default function LearnAboutPlatform(): JSX.Element {
             </p>
           </li>
         </a>
-        <a
-          href="https://docs.harness.io/article/2k7lnc7lvl-delegates-overview"
-          target="_blank"
-        >
+        <a href="/docs/category/delegates">
           <li>
             <img src={`${baseUrl}img/delegates.svg`} />
             <h4>Delegates</h4>
@@ -940,10 +931,7 @@ export default function LearnAboutPlatform(): JSX.Element {
             </p>
           </li>
         </a>
-        <a
-          href="https://docs.harness.io/article/hngrlb7rd6-harness-secret-manager-overview"
-          target="_blank"
-        >
+        <a href="/docs/platform/security/harness-secret-manager-overview">
           <li>
             <img src={`${baseUrl}img/secret-mgmt.svg`} />
             <h4>Secrets Managment</h4>
@@ -957,70 +945,58 @@ export default function LearnAboutPlatform(): JSX.Element {
       {showMore && (
         <ul className={styles.platformListMore}>
           <li>
-            <a
-              href="https://docs.harness.io/article/7fibxie636-projects-and-organizations"
-              target="_blank"
-            >
+            <a href="/docs/category/organizations-and-projects">
               <h4>Organizations &amp; Projects</h4>
               <p>Structure your development teams &amp; applications</p>
             </a>
           </li>
           <li>
-            <a
-              href="https://docs.harness.io/article/vz5cq0nfg2-rbac-in-harness"
-              target="_blank"
-            >
-              <h4>User &amp; Role Management</h4>
+            <a href="/docs/category/authentication">
+              <h4>User Management</h4>
               <p>
-                Use OAuth/SAML/SSO/LDAP providers for authentication and RBAC
-                &amp; User Groups for authorization
+                Use OAuth/SAML/SSO/LDAP providers for authentication
               </p>
             </a>
           </li>
           <li>
-            <a
-              href="https://docs.harness.io/category/id0hnxv6sg-dashboards-custom"
-              target="_blank"
-            >
+            <a href="/docs/category/role-based-access-control">
+              <h4>Role-Based Access Control</h4>
+              <p>
+                Use Roles &amp; User Groups for authorization
+              </p>
+            </a>
+          </li>
+          <li>
+            <a href="/docs/category/dashboards">
               <h4>Dashboards &amp; Reports</h4>
               <p>
-                Create &amp; share Dashboards as well as schedule &amp; download
-                Reports{" "}
+                Create &amp; share Dashboards as well as schedule &amp; download Reports
               </p>
             </a>
           </li>
           <li>
-            <a
-              href="https://docs.harness.io/category/zoc8fpiifm-gov-howtos"
-              target="_blank"
-            >
+            <a href="/docs/category/policy-as-code">
               <h4>Policy as Code</h4>
               <p>Define &amp; enforce Governance Policies</p>
             </a>
           </li>
           <li>
-            <a
-              href="https://docs.harness.io/article/7cude5tvzh-harness-terraform-provider"
-              target="_blank"
-            >
+            <a href="/docs/category/terraform-provider">
               <h4>Terraform Provider</h4>
               <p>Automate configuration and initial setup</p>
             </a>
           </li>
           <li>
-            <a href="https://apidocs.harness.io/" target="_blank">
-              <h4>API Reference</h4>
+            <a href="/docs/category/apis">
+              <h4>REST API</h4>
               <p>
-                Integrate with your ecosystem using API clients written in the
+                Integrate with your ecosystem using REST API clients written in the
                 language of your choice
               </p>
             </a>
           </li>
           <li>
-            <a
-              href="https://docs.harness.io/category/mm97945oxz-self-managed-category"
-              target="_blank"
-            >
+            <a href="/docs/self-managed-enterprise-edition">
               <h4>Self-Managed Enterprise Edition</h4>
               <p>
                 Install, configure, secure, upgrade Harness Platform on your own

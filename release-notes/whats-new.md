@@ -1,13 +1,14 @@
 ---
-title: What's new
+title: What's New
 date: 2022-12-15T10:00
 sidebar_position: 1
-# slug: /
 ---
 
-# What's new
+Learn about the new features that are generally available across all Harness modules and the Harness Platform.
 
-Learn about the new features that are generally available in all Harness modules.
+:::note
+Harness deploys updates progressively to different Harness SaaS clusters. You can identify the cluster hosting your account in your Account Overview page. The features in these release notes may not be available in your cluster immediately.
+:::
 
 ## December 22, 2022, version 77908
 

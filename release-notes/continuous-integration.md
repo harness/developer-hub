@@ -1,7 +1,6 @@
 ---
-title: Continuous Integration release notes
+title: Continuous Integration
 tags: [NextGen, "continuous integration"]
-slug: continuous-integration-release-notes
 date: 2022-12-15T10:00
 sidebar_position: 3
 ---
@@ -9,9 +8,7 @@ sidebar_position: 3
 Harness Continuous Integration is updated regularly. Review the notes below for details about recent changes.
 
 :::note
-
-Harness deploys updates progressively to different Harness cluster hosting accounts. The features and fixes in the release notes may not be available in your cluster immediately.
-
+Harness deploys updates progressively to different Harness SaaS clusters. You can identify the cluster hosting your account in your Account Overview page. The features and fixes in the release notes may not be available in your cluster immediately.
 :::
 
 ## December 22, 2022, version 77908
