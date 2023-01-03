@@ -1,6 +1,7 @@
 ---
 title: Entity caching with Git Experience
 description: Improve load times for remote entities, with caching.
+sidebar_position: 4
 ---
 
 Entity caching reduces delays in loading your remote entities on the Harness UI. The Harness UI maintains a local cache to reduce delays in loading your remote entities. Caching is especially useful when there are multiple levels of nesting, such as those involving  pipeline templates, stage templates, and step templates. Loading such nested entities can be time consuming involving numerous network calls, thereby reducing the performance.
