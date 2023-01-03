@@ -8,13 +8,13 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/article/u29v1uc1mh).This topic describes the concept of a Harness Kubernetes deployment by describing the high-level steps involved.
+This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../../continuous-delivery/cd-advanced/cd-kubernetes-category/kubernetes-deployments-overview.md).This topic describes the concept of a Harness Kubernetes deployment by describing the high-level steps involved.
 
 For a quick tutorial, see the [Kubernetes Quickstart](../../../first-gen-quickstarts/kubernetes-quickstart.md) tutorial.
 
-For detailed instructions on using Kubernetes in Harness, see the [Kubernetes How-tos](https://docs.harness.io/category/kubernetes-deployments).
+For detailed instructions on using Kubernetes in Harness, see the [Kubernetes How-tos](/docs/category/kubernetes-deployments).
 
-This guide covers new Harness Kubernetes Deployment **Version 2** features. For **Version 1** Kubernetes and Helm deployment features, see [Harness Kubernetes v1 FAQ](https://docs.harness.io/article/dtu3ud1ok7-kubernetes-and-harness-faq).
+This guide covers new Harness Kubernetes Deployment **Version 2** features. <!-- TBD DOC-2411 For **Version 1** Kubernetes and Helm deployment features, see [Harness Kubernetes v1 FAQ ](https://docs.harness.io/article/dtu3ud1ok7-kubernetes-and-harness-faq). -->
 
 ### Before You Begin
 
@@ -31,7 +31,7 @@ A Harness Kubernetes deployment requires the following:
 
 Harness takes the artifacts and Kubernetes manifests you provide and deploys them to the target Kubernetes cluster. You can simply deploy Kubernetes objects via manifests and you can provide manifests using remote sources and Helm charts.
 
-See [What Can I Deploy in Kubernetes?](https://docs.harness.io/article/6ujb3c70fh).
+See [What Can I Deploy in Kubernetes?](../../../firstgen-platform/techref-category/cd-ref/platforms-ref/what-can-i-deploy-in-kubernetes.md).
 
 ### What Does a Harness Kubernetes Deployment Involve?
 

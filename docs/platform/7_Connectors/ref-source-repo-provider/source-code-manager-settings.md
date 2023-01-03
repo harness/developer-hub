@@ -16,7 +16,7 @@ Currently, this feature is in Beta and behind a Feature Flag. Contact [Harness 
 
 This topic describes the settings in **My Source Code Manager**. It's a reference you can use when you are trying to find the requirements and options for a specific **My Source Code Manager** setting.
 
-For instructions on setting up and using My Source Code Manager, see [Add Source Code Managers](https://docs.harness.io/article/p92awqts2x-add-source-code-managers).
+<!--  For instructions on setting up and using My Source Code Manager, see [Add Source Code Manager TBD DOC-2410](https://docs.harness.io/article/p92awqts2x-add-source-code-managers). -->
 
 **My Source Code Manager** is required for Harness Git Experience. For details on Harness Git Experience, see [Harness Git Experience Overview](../../10_Git-Experience/git-experience-overview.md).
 

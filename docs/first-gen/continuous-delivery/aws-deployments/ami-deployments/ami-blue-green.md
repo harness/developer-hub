@@ -101,7 +101,7 @@ You do not need to register instances for your Target Groups. Harness will perfo
 
 #### Cloud Provider Requirements for Blue/Green Deployments
 
-Ensure that the IAM role applied to the AWS access key user or Harness Delegate host has the policies described in [Policies Required: AWS AMI/ASG Deployments](https://docs.harness.io/article/wt1gnigme7-add-amazon-web-services-cloud-provider#policies_required_aws_ami_asg_deployments).
+Ensure that the IAM role applied to the AWS access key user or Harness Delegate host has the policies described in [Policies Required: AWS AMI/ASG Deployments](../../../firstgen-platform/account/manage-connectors/add-amazon-web-services-cloud-provider.md#policies-required-aws-ami-asg-deployments).
 
 ### AWS Setup (Example)
 
@@ -403,7 +403,7 @@ By default, Harness AMI Blue/Green Workflows have five steps:
 
 Harness pre-configures the **Setup**, **Deploy**, and **Swap Routes** steps. Below, we outline those steps' defaults and options, with examples of the deployment logs' contents at each step.
 
-The **Verify Staging** and **Wrap Up** steps are placeholders, to which you can add integrations and commands. For details on adding **Verify Staging** integrations, see [Continuous Verification](https://docs.harness.io/article/myw4h9u05l-verification-providers-list).
+The **Verify Staging** and **Wrap Up** steps are placeholders, to which you can add integrations and commands. For details on adding **Verify Staging** integrations, see [Continuous Verification](../../continuous-verification/continuous-verification-overview/concepts-cv/what-is-cv.md).
 
 #### Create the Blue/Green Workflow
 
@@ -425,7 +425,7 @@ In Step 1, select **AWS AutoScaling Group Setup** to open a dialog where you can
 
 ![](./static/ami-blue-green-67.png)
 
-The **Instances** settings support [Harness variable expressions](https://docs.harness.io/article/9dvxcegm90-variables), such as [Workflow variable expressions](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md).For most settings here, see the corresponding [AMI Basic Workflow instructions](ami-deployment.md#basic-setup-asg). However:
+The **Instances** settings support [Harness variable expressions](../../../firstgen-platform/techref-category/variables/variables.md), such as [Workflow variable expressions](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md).For most settings here, see the corresponding [AMI Basic Workflow instructions](ami-deployment.md#basic-setup-asg). However:
 
 Harness recommends setting the **Auto Scaling Steady State Timeout (mins)** field to at least **20** minutes, as shown above. This is a safe interval to prevent failed deployments while the [Swap Routes](#swap_routes_bg) step's Blue/Green switchover completes.
 
@@ -613,6 +613,6 @@ For example, if there were multiple ASGs of the series having active instances b
 
 ### Next Steps
 
-* Add monitoring to your AMI deployment and running instances: see [Continuous Verification](https://docs.harness.io/article/myw4h9u05l-verification-providers-list) and [24/7 Service Guard Overview](../../continuous-verification/continuous-verification-overview/concepts-cv/24-7-service-guard-overview.md).
+* Add monitoring to your AMI deployment and running instances: see [Continuous Verification](../../continuous-verification/continuous-verification-overview/concepts-cv/what-is-cv.md) and [24/7 Service Guard Overview](../../continuous-verification/continuous-verification-overview/concepts-cv/24-7-service-guard-overview.md).
 * [AMI Canary Deployment](ami-canary.md).
 

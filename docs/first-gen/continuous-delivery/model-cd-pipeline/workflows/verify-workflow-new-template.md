@@ -32,5 +32,5 @@ To set up a verification step, do the following:
 
    ![](./static/verify-workflow-new-template-220.png)
 
-In a multi-phase deployment, the verification steps are in the sub-steps within each phase.You can read more about the different verification integrations in [What Is Continuous Verification (CV)?](https://harness.helpdocs.io/article/ina58fap5y-what-is-cv) and [Verification Providers](https://docs.harness.io/article/r6ut6tldy0-verification-providers).
+In a multi-phase deployment, the verification steps are in the sub-steps within each phase.You can read more about the different verification integrations in [What Is Continuous Verification (CV)?](https://harness.helpdocs.io/article/ina58fap5y-what-is-cv) and [Verification Providers](../../../firstgen-platform/account/manage-connectors/verification-providers.md).
 

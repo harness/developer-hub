@@ -63,7 +63,7 @@ For example:
 
 In the **User Name** and **Encrypted** **Password** fields, enter the credentials to authenticate with the AppDynamics server.
 
-In **Encrypted** **Password**, select or create a new [Harness Encrypted Text secret](https://docs.harness.io/article/ygyvp998mu-use-encrypted-text-secrets).
+In **Encrypted** **Password**, select or create a new [Harness Encrypted Text secret](../../../firstgen-platform/security/secrets-management/use-encrypted-text-secrets.md).
 
 Only local AppDynamics users are supported. SAML users are not supported.
 ### Step 6: Usage Scope

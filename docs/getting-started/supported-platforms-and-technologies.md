@@ -29,7 +29,7 @@ The following table lists Harness support for deployment platforms, artifacts, s
 <tbody>
   <tr valign="top">
     <td>
-      <p> <a href="https://docs.harness.io/category/qfj6m1k2c4-cd-kubernetes-category">Kubernetes</a></p>
+      <p> <a href="#see-also">Kubernetes</a></p>
     </td>
     <td>
       <ul>
@@ -91,7 +91,7 @@ The following table lists Harness support for deployment platforms, artifacts, s
   </tr>
   <tr valign="top">
     <td>
-      <p><a href="https://docs.harness.io/article/cifa2yb19a">Helm v3.0</a></p>
+      <p><a href="#see-also">Helm v3.0</a></p>
     </td>
     <td>
       <p> <strong>Docker Image Repo:</strong></p>
@@ -157,7 +157,7 @@ The following table lists Harness support for deployment platforms, artifacts, s
   </tr>
   <tr valign="top">
     <td>
-      <p><a href="https://docs.harness.io/article/5fnx4hgwsa">Serverless Lambda</a></p>
+      <p><a href="#see-also">Serverless Lambda</a></p>
     </td>
     <td>
       <ul>
@@ -177,7 +177,7 @@ The following table lists Harness support for deployment platforms, artifacts, s
   </tr>
   <tr valign="top">
     <td>
-      <p> <a href="https://docs.harness.io/article/muegjde97q">Azure Web App</a></p>
+      <p> <a href="#see-also">Azure Web App</a></p>
     </td>
     <td>
       <p> <strong>Container and non-container:</strong></p>
@@ -217,7 +217,7 @@ The following table lists Harness support for deployment platforms, artifacts, s
   </tr>
   <tr valign="top">
     <td>
-      <p> <a href="https://docs.harness.io/article/mpx2y48ovx">Secure Shell (SSH)</a></p>
+      <p> <a href="#see-also">Secure Shell (SSH)</a></p>
     </td>
     <td>
       <p> <strong>Non-container:</strong></p>
@@ -262,7 +262,8 @@ The following table lists Harness support for deployment platforms, artifacts, s
   </tr>
   <tr valign="top">
     <td>
-      <p> <a href="https://docs.harness.io/article/l8795ji7u3">Windows Remote Management (WinRM)</a></p>
+      (../continuous-delivery/onboard-cd/cd-quickstarts/win-rm-tutorial.md)
+      <p>Windows Remote Management (WinRM)</p>
     </td>
     <td>
       <p> <strong>Non-container:</strong></p>
@@ -296,7 +297,7 @@ The following table lists Harness support for deployment platforms, artifacts, s
   </tr>
   <tr valign="top">
     <td>
-      <p> <a href="https://docs.harness.io/article/vytf6s0kwc">AWS ECS</a></p>
+      <p> <a href="#see-also">AWS ECS</a></p>
     </td>
     <td>
       <p> <strong>Non-container:</strong></p>
@@ -345,7 +346,7 @@ The following notes clarify support of some platform features.
 
 ##### Kubernetes
 
-See [What Can I Deploy in Kubernetes?](https://docs.harness.io/article/efnlvytc6l-what-can-i-deploy-in-kubernetes).
+See [What Can I Deploy in Kubernetes?](../continuous-delivery/cd-technical-reference/cd-k8s-ref/what-can-i-deploy-in-kubernetes.md).
 
 ##### Kubernetes version support
 
@@ -374,7 +375,7 @@ Guidelines:
 
 ##### Helm
 
-Helm chart dependencies are not supported in Git source repositories (Harness [Code Repo Connectors](https://docs.harness.io/category/code-repo-connectors)). Helm chart dependencies are supported in Helm Chart Repositories.
+Helm chart dependencies are not supported in Git source repositories (Harness [Code Repo Connectors](/docs/category/code-repo-connectors)). Helm chart dependencies are supported in Helm Chart Repositories.
 
 ##### Artifact servers, repos, and artifacts
 
@@ -421,7 +422,7 @@ The following table lists where you can store your manifests or config files for
 
 ##### Terraform version support
 
-Harness does not include Terraform on the Harness Delegate. You must install Terraform on the Delegate when using Terraform in Harness. For more information, go to [Terraform How-tos](https://docs.harness.io/article/w6i5f7cpc9-terraform-how-tos).
+Harness does not include Terraform on the Harness Delegate. You must install Terraform on the Delegate when using Terraform in Harness. For more information, go to [Terraform How-tos](../continuous-delivery/cd-advanced/terraform-category/terraform-how-tos.md).
 
 Harness supports the following Terraform versions:
 
@@ -465,7 +466,7 @@ GitOps supports the following:
 * GnuPG Keys:
 	+ GnuPG Public Key Data (ASCII-armored).
 
-See [Harness GitOps Basics](https://newdocs.helpdocs.io/article/w1vg9l1j7q-harness-git-ops-basics) and [Harness CD GitOps Quickstart](https://newdocs.helpdocs.io/article/pptv7t53i9-harness-cd-git-ops-quickstart)
+See [Harness GitOps Basics](../continuous-delivery/cd-gitops/harness-git-ops-basics.md) and [Harness CD GitOps Quickstart](../continuous-delivery/cd-gitops/harness-cd-git-ops-quickstart.md)
 
 ### Continuous Integration (CI)
 
@@ -541,15 +542,15 @@ The following table lists Harness support for metrics platforms (APMs).
 
 |  Metrics Provider Name |  Metric Pack |  Deployment Verification |
 | --- | --- | --- |
-| [AppDynamics](https://docs.harness.io/article/916vrl4l76-verify-deployments-with-app-dynamics) |  Business Transactions |  Yes |
-| [AppDynamics](https://ngdocs.harness.io/article/916vrl4l76) |  JVM and Infra Metrics | Supported via Custom Metrics |
-| [New Relic](https://docs.harness.io/article/p8lqq2il39-verify-deployments-with-new-relic) |  Business Transactions |  Yes |
+| [AppDynamics](../continuous-delivery/cd-execution/cv-category/verify-deployments-with-app-dynamics.md) |  Business Transactions |  Yes |
+| [AppDynamics](../continuous-delivery/cd-execution/cv-category/verify-deployments-with-app-dynamics.md) |  JVM and Infra Metrics | Supported via Custom Metrics |
+| [New Relic](../continuous-delivery/cd-execution/cv-category/verify-deployments-with-new-relic.md) |  Business Transactions |  Yes |
 |  New Relic |  Insights | Supported via Custom Metrics |
-| [Google Cloud Operations (GCP)](https://docs.harness.io/article/owqpo59gp5-verify-deployments-with-google-cloud-operations) |  Infrastructure Metrics |  Yes |
+| [Google Cloud Operations (GCP)](../continuous-delivery/cd-execution/cv-category/verify-deployments-with-google-cloud-operations.md) |  Infrastructure Metrics |  Yes |
 |  Google Cloud Operations (GCP) |  Custom metrics from explorer | No |
-| [Prometheus](https://ngdocs.harness.io/article/e9z7944qhw) |  Custom metrics from Prometheus |  Yes |
-| [Datadog](https://ngdocs.harness.io/article/z3kpdn6vcb) |  Docker Infra Metrics |  Yes |
-| [Dynatrace](https://ngdocs.harness.io/article/eamwqs2x5a) |  Performance |  Yes |
+| [Prometheus](../continuous-delivery/cd-execution/cv-category/verify-deployment-with-prometheus.md) |  Custom metrics from Prometheus |  Yes |
+| [Datadog](../continuous-delivery/cd-execution/cv-category/verify-deployments-with-datadog.md) |  Docker Infra Metrics |  Yes |
+| [Dynatrace](../continuous-delivery/cd-execution/cv-category/verify-deployments-with-dynatrace.md) |  Performance |  Yes |
 
 #### Log providers
 
@@ -560,14 +561,14 @@ Most logging platforms are also supported.
 |  |  |
 | --- | --- |
 | **Log Provider Name** | **Deployment Verification** |
-| [Splunk](https://docs.harness.io/article/mvjds2f3hb-verify-deployments-with-splunk) | Yes |
-| [Google Cloud Operations (GCP)](https://docs.harness.io/article/owqpo59gp5-verify-deployments-with-google-cloud-operations) | Yes |
+| [Splunk](../continuous-delivery/cd-execution/cv-category/verify-deployments-with-splunk.md) | Yes |
+| [Google Cloud Operations (GCP)](../continuous-delivery/cd-execution/cv-category/verify-deployments-with-google-cloud-operations.md) | Yes |
 
 #### Custom health sources
 
 Harness offers support for all major APM vendors and log providers, but there are cases where a customized APM or log provider is needed. The Custom Health Source lets you customize APMs and log providers of your choice.
 
-See [Verify Deployments with Custom Health Source](https://docs.harness.io/article/n67y68fopr-verify-deployments-with-custom-health-metrics).
+See [Verify Deployments with Custom Health Source](../continuous-delivery/cd-execution/cv-category/verify-deployments-with-custom-health-metrics.md).
 
 ### Cloud Cost Management
 
@@ -655,7 +656,7 @@ Harness supports the following Health Sources and Change Sources.
 
  A Health Source monitors changes in health trends of the Service using metrics and logs collected from an APM and log provider respectively.
 
-Harness offers support for all major APM vendors, but there are cases where a customized APM is needed. The [Custom Health Source](https://docs.harness.io/article/n67y68fopr-verify-deployments-with-custom-health-metrics) lets you customize APMs of your choice.
+Harness offers support for all major APM vendors, but there are cases where a customized APM is needed. The [Custom Health Source](../continuous-delivery/cd-execution/cv-category/verify-deployments-with-custom-health-metrics.md) lets you customize APMs of your choice.
 
 ##### Metrics providers and logging tools
 
@@ -723,7 +724,7 @@ The following table lists the Server-side Feature Flag SDKs Harness supports.
 
 Perform chaos experiments on applications in your infrastructure, such as a Kubernetes cluster. Use predefined or custom, Workflow templates.
 
-See [Harness Chaos Engineering Basics (Public Preview)](https://docs.harness.io/article/v64rj2maiz-harness-chaos-engineering-basics), [Harness Chaos Engineering Quickstart (Public Preview)](https://docs.harness.io/article/da85u0cbhx-harness-chaos-engineering-quickstart-public-preview).
+See [Introduction to Chaos Module](../chaos-engineering/introduction/introduction-to-chaos-module.md), [HCE Release Guide](../chaos-engineering/introduction/hce-beta-release-guide.md).
 
 ### Collaboration
 
@@ -731,7 +732,7 @@ The following table lists Harness support for collaboration tools.
 
 Most providers are used in both Pipeline Notification Strategies and User Group notifications:
 
-* [Add a Pipeline Notification Strategy](https://docs.harness.io/article/4bor7kyimj-notify-users-of-pipeline-events)
+* [Add a Pipeline Notification Strategy](../continuous-delivery/cd-advanced/cd-notifications/notify-users-of-pipeline-events.md)
 * [Send Notifications Using Slack](../platform/5_Notifications/send-notifications-using-slack.md)
 * [Send Notifications to Microsoft Teams](../platform/5_Notifications/send-notifications-to-microsoft-teams.md)
 
@@ -740,11 +741,11 @@ Most providers are used in both Pipeline Notification Strategies and User Group 
 |  Provider Name |  Notification |  Approval/Change Management |
 | --- | --- | --- |
 | [Microsoft Teams](../platform/5_Notifications/send-notifications-to-microsoft-teams.md) |  Yes |  N/A |
-| [Email](https://docs.harness.io/article/4bor7kyimj) |  Yes |  N/A |
+| [Email](../continuous-delivery/cd-advanced/cd-notifications/notify-users-of-pipeline-events.md) |  Yes |  N/A |
 | [Slack](../platform/5_Notifications/send-notifications-using-slack.md) |  Yes |  N/A |
 | [Jira](../platform/9_Approvals/adding-jira-approval-stages.md) |  Yes |  Yes |
 | [ServiceNow](../platform/9_Approvals/service-now-approvals.md) |  N/A |  Yes |
-| [PagerDuty](https://docs.harness.io/article/4bor7kyimj) |  Yes |  N/A |
+| [PagerDuty](../continuous-delivery/cd-advanced/cd-notifications/notify-users-of-pipeline-events.md) |  Yes |  N/A |
 
 ### Access control
 
@@ -792,8 +793,8 @@ The following table lists the major support features for Harness Self-Managed En
 
 |  Solution |  Supported Platform |  Connected\* |  HA Supported\*\* |  Monitoring |  Disaster Recovery |  Auto Restart |  Features Under Controlled Release |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| [Kubernetes Cluster](https://docs.harness.io/category/v313myup55) |  Kubernetes - GKE - AKS - EKS |  Yes |  Yes | Prometheus, Grafana | Supported | Supported |  |
-| [Virtual Machine (VM)](https://docs.harness.io/category/install-on-virtual-machine) |  Linux VM (3 VM minimum) |  Yes |  Yes | Prometheus, Grafana | Supported | Supported |  |
+| [Kubernetes Cluster](/docs/category/kubernetes) |  Kubernetes - GKE - AKS - EKS |  Yes |  Yes | Prometheus, Grafana | Supported | Supported |  |
+| [Virtual Machine (VM)](/docs/category/install-on-virtual-machine) |  Linux VM (3 VM minimum) |  Yes |  Yes | Prometheus, Grafana | Supported | Supported |  |
 
 ### SDKs installed with the Delegate
 
@@ -833,7 +834,7 @@ For Kubernetes deployments, the following SDKs/tools are certified.
 
 ##### Native Helm deployments
 
-For [Native Helm deployments](https://docs.harness.io/article/lbhf2h71at-native-helm-quickstart), the following SDKs/tools are certified.
+For [Native Helm deployments](../continuous-delivery/onboard-cd/cd-quickstarts/native-helm-quickstart.md), the following SDKs/tools are certified.
 
 
 
@@ -866,3 +867,12 @@ Mobile browsers are not supported.
 
 Minimum supported screen resolution is 1440x900.
 
+<p id="see-also"></p>
+### See Also
+
+* [Kubernetes](/docs/category/kubernetes)
+* [Helm v3.0](../continuous-delivery/onboard-cd/cd-quickstarts/helm-cd-quickstart.md)
+* [Serverless Lambda](../continuous-delivery/onboard-cd/cd-quickstarts/serverless-lambda-cd-quickstart.md)
+* [Azure Web App](../continuous-delivery/onboard-cd/cd-quickstarts/azure-web-apps-tutorial.md)
+* [Secure Shell (SSH](../continuous-delivery/onboard-cd/cd-quickstarts/ssh-ng.md)
+* [AWS ECS](../continuous-delivery/onboard-cd/cd-quickstarts/ecs-deployment-tutorial.md)

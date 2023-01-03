@@ -13,7 +13,7 @@ You define your target deployment infrastructure using a Harness Environment. En
 
 ### Before You Begin
 
-* [Add Services](https://docs.harness.io/category/add-services)
+* [Add Services](/docs/category/add-services)
 
 ### Step 1: Add an Environment
 
@@ -49,5 +49,5 @@ For detailed information on adding Service Verification, see [24/7 Service Guard
 ### Next Steps
 
 * [Restrict Deployment Access to Specific Environments](../../concepts-cd/deployments-overview/restrict-deployment-access-to-specific-environments.md)
-* [Add Workflows](https://docs.harness.io/category/add-workflows)
+* [Add Workflows](/docs/category/add-workflows)
 

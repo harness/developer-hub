@@ -144,7 +144,7 @@ You can implement [Failure Strategies](../../platform/8_Pipelines/define-a-failu
 
 ### Integrated STO/CI Workflow Example
 
-The following Pipeline provides a simple example of how you can implement STO into a CI workflow. This is an expanded version of the standalone STO Stage we have been working with. The [YAML](https://docs.harness.io/article/qhgshfw3mg#integrated_workflow_yaml) of this pipeline is provided below.
+The following Pipeline provides a simple example of how you can implement STO into a CI workflow. This is an expanded version of the standalone STO Stage we have been working with. The [YAML](#integrated-workflow-yaml) of this pipeline is provided below.
 
 ![](./static/sto-tutorial-2-integrated-sto-ci-cd-workflows-08.png)
 
@@ -282,10 +282,6 @@ pipeline:
                                         fail_on_severity: HIGH  
                                     imagePullPolicy: Always  
                                 failureStrategies: []  
-              variables:  
-                  - name: sto_api_key  
-                    type: Secret  
-                    value: <+input>  
 
 ```
 </details>

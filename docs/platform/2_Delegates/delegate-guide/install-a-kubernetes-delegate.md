@@ -79,7 +79,7 @@ Enter a name and description for the Delegate that will let others know what it 
 
 
 :::note
-**Do not run Delegates with the same name in different clusters.** See [Troubleshooting](https://docs.harness.io/article/jzklic4y2j-troubleshooting).
+**Do not run Delegates with the same name in different clusters.** See [Troubleshooting](../../../troubleshooting/troubleshooting-nextgen.md).
 :::
 
 
@@ -282,7 +282,7 @@ The following table lists each of the environment variables in the Harness Kuber
 - name: DELEGATE_NAME  value: qa
 ```
  |
-| `NEXT_GEN` | Indicates that this Delegate will register in [Harness NextGen](https://docs.harness.io/article/ra3nqcdbaf-compare-first-gen-and-next-gen).If this variable is set to `false`, the Delegate will attempt to register in Harness FirstGen. | 
+| `NEXT_GEN` | Indicates that this Delegate will register in Harness NextGen(`true`) or FirstGen(`false`). | 
 ```
 - name: NEXT_GEN  value: "true"
 ```
@@ -352,7 +352,7 @@ The following table lists each of the environment variables in the Harness Kuber
 - name: JRE_VERSION  value: 1.8.0_242
 ```
  |
-| `HELM3_PATH`,`HELM_PATH` | When you Install and run a new Harness Delegate, Harness includes Helm 3 support automatically. But in some cases, you might want to use one of the custom Helm binaries available from [Helm release](https://github.com/helm/helm/releases).For a Helm 3 binary, enter the local path to the binary in `HELM3_PATH`.For a Helm 2 binary, enter the path local path to the binary in `HELM_PATH`.If you are performing a [Native Helm deployment](https://docs.harness.io/article/lbhf2h71at-native-helm-quickstart), do not use `HELM_PATH` for the Helm 2 binary. Harness will look for the Helm 2 binary on the Delegate in its standard path, such as `/usr/local/bin/helm`. | 
+| `HELM3_PATH`,`HELM_PATH` | When you Install and run a new Harness Delegate, Harness includes Helm 3 support automatically. But in some cases, you might want to use one of the custom Helm binaries available from [Helm release](https://github.com/helm/helm/releases).For a Helm 3 binary, enter the local path to the binary in `HELM3_PATH`.For a Helm 2 binary, enter the path local path to the binary in `HELM_PATH`.If you are performing a [Native Helm deployment](../../../continuous-delivery/onboard-cd/cd-quickstarts/native-helm-quickstart.md), do not use `HELM_PATH` for the Helm 2 binary. Harness will look for the Helm 2 binary on the Delegate in its standard path, such as `/usr/local/bin/helm`. | 
 ```
 - name: HELM3_PATH  value: ""- name: HELM_PATH  value: ""
 ```

@@ -253,5 +253,5 @@ Simply add this step where you want to initiate a rollback. Note that this comma
 
 ## Next Steps
 
-* [Kubernetes CD Reference](https://docs.harness.io/category/kubernetes)
+* [Kubernetes CD Reference](/docs/category/kubernetes)
 

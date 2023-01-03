@@ -17,7 +17,7 @@ Once connected, you can use Kubernetes and Harness for provisioning infrastructu
 ### Before you begin
 
 * [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md)
-* [Kubernetes CD Quickstart](https://docs.harness.io/article/knunou9j30-kubernetes-cd-quickstart)
+* [Kubernetes CD Quickstart](../../continuous-delivery/onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md)
 
 ### Visual Summary
 
@@ -165,7 +165,7 @@ You can select **Any Available Harness Delegate** and Harness will select the De
 
 You can use Delegate Tags to select one or more Delegates. For details on Delegate Tags, see [Select Delegates with Tags](../2_Delegates/delegate-guide/select-delegates-with-selectors.md).
 
-If you need to install a Delegate, see [Delegate Installation Overview](https://docs.harness.io/article/re8kk0ex4k-delegate-installation-overview) or the [Visual Summary](#visual_summary) above.
+If you need to install a Delegate, see [Delegate Installation Overview](../2_Delegates/delegate-installation-overview.md) or the [Visual Summary](#visual_summary) above.
 
 Click **Save and Continue**.
 

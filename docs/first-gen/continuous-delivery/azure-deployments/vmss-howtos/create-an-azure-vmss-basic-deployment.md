@@ -21,7 +21,7 @@ For other deployment strategies, see [Create an Azure VMSS Canary Deployment](cr
 * [Define Your Azure VMSS Target Infrastructure](define-your-azure-vmss-target-infrastructure.md)
 * [Add Your Azure VM Image for Deployment](add-your-azure-vm-image-for-deployment.md)
 * [Connect to Azure for VMSS Deployments](connect-to-your-azure-vmss.md)
-* [Harness Delegate Overview](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation)
+* [Harness Delegate Overview](../../../firstgen-platform/account/manage-delegates/delegate-installation.md)
 * [Harness Key Concepts](../../../starthere-firstgen/harness-key-concepts.md)
 
 ### Supported Platforms and Technologies
@@ -136,7 +136,7 @@ Enter how long you want Harness to wait for this step to finish. If the step's e
 
 ### Option: Use Variable Expressions in Settings
 
-You can use [Harness variable expressions](https://docs.harness.io/article/9dvxcegm90-variables), such as [Workflow variables](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md), in certain step settings.
+You can use [Harness variable expressions](../../../firstgen-platform/techref-category/variables/variables.md), such as [Workflow variables](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md), in certain step settings.
 
 When you deploy the Workflow, alone, in a Pipeline, or by a [Trigger](../../model-cd-pipeline/triggers/add-a-trigger-2.md), you will be prompted to provide values for the variables.
 
@@ -167,7 +167,7 @@ Your setting cannot exceed your **Maximum Instances** setting in the Workflow'
 
 This setting corresponds to the **Maximum** setting in **Instance limits** in VMSS.
 
-You can use [Harness variable expressions](https://docs.harness.io/article/9dvxcegm90-variables), such as [Workflow variables](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md), in this setting.
+You can use [Harness variable expressions](../../../firstgen-platform/techref-category/variables/variables.md), such as [Workflow variables](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md), in this setting.
 
 ### Step 4: Deploy
 

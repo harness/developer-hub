@@ -51,7 +51,7 @@ Harness supports Kubernetes deployments using Kubernetes manifests.
 
 If this is your first time using Harness for a Kubernetes deployment, see [Kubernetes CD Quickstart](../../onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md).
 
-For a task-based walkthroughs of different Kubernetes features in Harness, see [Kubernetes How-tos](https://docs.harness.io/category/kubernetes).
+For a task-based walkthroughs of different Kubernetes features in Harness, see [Kubernetes How-tos](/docs/category/kubernetes).
 
 Add a Kubernetes ManifestYou can hardcode your artifact in your manifests, our add your artifact source to your **Service Definition** and then reference it in your manifests. See [Reference Artifacts in Manifests](kubernetes-services.md#reference-artifacts-in-manifests).
 
@@ -67,7 +67,7 @@ In **Specify Manifest Type**, select **K8s Manifest**, and then click **Conti
 
 In **Specify K8s Manifest Store**, select the Git provider.
 
-The settings for each Git provider are slightly different, but you simply want to point to the Git account For example, click GitHub, and then select or create a new GitHub Connector. See [Connect to Code Repo](https://ngdocs.harness.io/article/zbhehjzsnv-connect-to-code-repo).
+The settings for each Git provider are slightly different, but you simply want to point to the Git account For example, click GitHub, and then select or create a new GitHub Connector. See [Connect to Code Repo](../../../platform/7_Connectors/connect-to-code-repo.md).
 
 Click **Continue**. **Manifest Details** appears.
 
@@ -102,7 +102,7 @@ Click **Submit**. The manifest is added to **Manifests**.
 
 ### Values YAML
 
-Harness Kubernetes Services can use Values YAML files just like you would using Helm. Harness manifests can use [Go templating](#go_templating) with your Values YAML files and you can include [Harness variable expressions](https://docs.harness.io/article/lml71vhsim-harness-variables) in the Values YAML files.
+Harness Kubernetes Services can use Values YAML files just like you would using Helm. Harness manifests can use [Go templating](#go_templating) with your Values YAML files and you can include [Harness variable expressions](../../../platform/12_Variables-and-Expressions/harness-variables.md) in the Values YAML files.
 
 If you are using a Values YAML file and it's in the same repo as your manifests, you can add it when you add your manifests, as described above (**Values YAML** --> **Add File**).
 
@@ -121,9 +121,9 @@ In **Manifests**, click **Add Manifest**.
 
 In **Specify Manifest Type**, select **Values YAML**, and click **Continue.**
 
-In **Specify Values YAML Store**, select the Git repo provider you're using and then create or select a Connector to that repo. The different Connectors are covered in [Connect to a Git Repo](https://ngdocs.harness.io/article/zbhehjzsnv-connect-to-code-repo).
+In **Specify Values YAML Store**, select the Git repo provider you're using and then create or select a Connector to that repo. The different Connectors are covered in [Connect to a Git Repo](../../../platform/7_Connectors/connect-to-code-repo.md).
 
-If you haven't set up a Harness Delegate, you can add one as part of the Connector setup. This process is described in [Kubernetes CD Quickstart](../../onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md), [Helm CD Quickstart](../../onboard-cd/cd-quickstarts/helm-cd-quickstart.md) and [Install a Kubernetes Delegate](https://ngdocs.harness.io/article/f9bd10b3nj-install-a-kubernetes-delegate).
+If you haven't set up a Harness Delegate, you can add one as part of the Connector setup. This process is described in [Kubernetes CD Quickstart](../../onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md), [Helm CD Quickstart](../../onboard-cd/cd-quickstarts/helm-cd-quickstart.md) and [Install a Kubernetes Delegate](../../../platform/2_Delegates/delegate-guide/install-a-kubernetes-delegate.md).
 
 Once you've selected a Connector, click **Continue**.
 
@@ -171,11 +171,11 @@ In **Specify Manifest Type**, select **Helm Chart**, and click **Continue**.
 
 In **Specify Helm Chart Store**, select HTTP Helm Repository, OCI Registry, a Git repo provider, or a cloud storage service (Google Cloud Storage, AWS S3) you're using.
 
-For the steps and settings of each option, see the [Connect to an Artifact Repo](https://ngdocs.harness.io/article/xxvnk67c5x-connect-to-an-artifact-repo) or [Connect to a Git Repo](https://docs.harness.io/article/zbhehjzsnv-connect-to-code-repo) How-tos.
+For the steps and settings of each option, see the [Connect to an Artifact Repo](../../../platform/7_Connectors/connect-to-an-artifact-repo.md) or [Connect to a Git Repo](../../../platform/7_Connectors/connect-to-code-repo.md) How-tos.
 
-If you are using Google Cloud Storage or Amazon S3, see [Cloud Platform Connectors](https://ngdocs.harness.io/category/1ehb4tcksy).
+If you are using Google Cloud Storage or Amazon S3, see [Cloud Platform Connectors](/docs/category/cloud-platform-connectors).
 
-If you haven't set up a Harness Delegate, you can add one as part of the Connector setup. This process is described in [Helm CD Quickstart](../../onboard-cd/cd-quickstarts/helm-cd-quickstart.md) and [Install a Kubernetes Delegate](https://ngdocs.harness.io/article/f9bd10b3nj-install-a-kubernetes-delegate).
+If you haven't set up a Harness Delegate, you can add one as part of the Connector setup. This process is described in [Helm CD Quickstart](../../onboard-cd/cd-quickstarts/helm-cd-quickstart.md) and [Install a Kubernetes Delegate](../../../platform/2_Delegates/delegate-guide/install-a-kubernetes-delegate.md).
 
 Once your Helm chart is added, it appears in the **Manifests** section. For example:
 
@@ -216,7 +216,7 @@ Add Kustomize PatchesIn the Stage's **Service**, in **Manifests**, click **Ad
 
 In **Specify Manifest Type**, select **Kustomize Patches**, and click **Continue**.
 
-In **Specify Kustomize Patches Store**, select your Git provider and Connector. See [Connect to a Git Repo](https://newdocs.helpdocs.io/article/zbhehjzsnv-connect-to-code-repo).
+In **Specify Kustomize Patches Store**, select your Git provider and Connector. See [Connect to a Git Repo](../../../platform/7_Connectors/connect-to-code-repo.md).
 
 The Git Connector should point to the Git account or repo where you Kustomize files are located. In **Kustomize Patches** you will specify the path to the actual patch files.
 
@@ -249,7 +249,7 @@ In **Specify Manifest Type**, select **OpenShift Template**, and then click **C
 
 In **Specify OpenShift Template Store**, select the Git provider where your template is located.
 
-For example, click **GitHub**, and then select or create a new GitHub Connector. See [Connect to Code Repo](https://ngdocs.harness.io/article/zbhehjzsnv-connect-to-code-repo).
+For example, click **GitHub**, and then select or create a new GitHub Connector. See [Connect to Code Repo](../../../platform/7_Connectors/connect-to-code-repo.md).
 
 Click **Continue**. **Manifest Details** appears.
 
@@ -279,7 +279,7 @@ In **Specify Manifest Type**, select **OpenShift Param**, and then click **Cont
 
 In **Specify OpenShift Param Store**, select the Git provider where your param file is located.
 
-For example, click **GitHub**, and then select or create a new GitHub Connector. See [Connect to Code Repo](https://ngdocs.harness.io/article/zbhehjzsnv-connect-to-code-repo).
+For example, click **GitHub**, and then select or create a new GitHub Connector. See [Connect to Code Repo](../../../platform/7_Connectors/connect-to-code-repo.md).
 
 Click **Continue**. **Manifest Details** appears.
 
@@ -309,7 +309,7 @@ This allows you to reference the image in your manifests and Values files using 
 image: <+artifact.image>  
 ...
 ```
-You cannot use Harness variables expressions in your Kubernetes object manifest files. You can only use Harness variables expressions in Values YAML files.When you select the artifact repo for the artifact, like a Docker Hub repo, you specify the artifact and tag/version to use. You can select a specific tag/version, use a [Runtime Input](https://docs.harness.io/article/f6yobn7iq0-runtime-inputs) so that you are prompted for the tag/version when you run the Pipeline, or you can use an Harness variable expression to pass in the tag/version at execution.
+You cannot use Harness variables expressions in your Kubernetes object manifest files. You can only use Harness variables expressions in Values YAML files.When you select the artifact repo for the artifact, like a Docker Hub repo, you specify the artifact and tag/version to use. You can select a specific tag/version, use a [Runtime Input](../../../platform/20_References/runtime-inputs.md) so that you are prompted for the tag/version when you run the Pipeline, or you can use an Harness variable expression to pass in the tag/version at execution.
 
 Here's an example where a Runtime Input is used and you select which image version/tag to deploy.
 
@@ -325,7 +325,7 @@ Select the **Artifact Repository Type**.
 
 ### Docker
 
-For details on all the Docker Connector settings, see [Docker Connector Settings Reference](https://docs.harness.io/article/u9bsd77g5a-docker-registry-connector-settings-reference).
+For details on all the Docker Connector settings, see [Docker Connector Settings Reference](../../../platform/7_Connectors/ref-cloud-providers/docker-registry-connector-settings-reference.md).
 
 Add an Artifact from a Docker RegistryIn **Artifacts**, click **Add Primary** **Artifact.**
 
@@ -333,7 +333,7 @@ In **Artifact Repository Type**, click **Docker Registry**, and then click **Co
 
 The **Docker Registry** settings appear.
 
-Select a [Docker Registry Connector](https://ngdocs.harness.io/article/u9bsd77g5a-docker-registry-connector-settings-reference) or create a new one.
+Select a [Docker Registry Connector](../../../platform/7_Connectors/ref-cloud-providers/docker-registry-connector-settings-reference.md) or create a new one.
 
 Click **Continue**.
 
@@ -349,15 +349,15 @@ The Artifact is added to the Service Definition.
 
 ### Google Container Registry (GCR)
 
-You connect to GCR using a Harness GCP Connector. For details on all the GCR requirements for the GCP Connector, see [Google Cloud Platform (GCP) Connector Settings Reference](https://docs.harness.io/article/yykfduond6-gcs-connector-settings-reference).
+You connect to GCR using a Harness GCP Connector. For details on all the GCR requirements for the GCP Connector, see [Google Cloud Platform (GCP) Connector Settings Reference](../../../platform/7_Connectors/ref-cloud-providers/gcs-connector-settings-reference.md).
 
 Add an Artifact from GCRIn **Artifacts**, click **Add Primary** **Artifact.**
 
 In **Artifact Repository Type**, click **GCR**, and then click **Continue**.
 
-In **GCR Repository**, select or create a [Google Cloud Platform (GCP) Connector](https://docs.harness.io/article/yykfduond6-gcs-connector-settings-reference) that connects to the GCP account where the GCR registry is located.
+In **GCR Repository**, select or create a [Google Cloud Platform (GCP) Connector](../../../platform/7_Connectors/ref-cloud-providers/gcs-connector-settings-reference.md) that connects to the GCP account where the GCR registry is located.
 
-* **GCP GCR Permissions:** make sure the connected IAM User has the policies listed in [Google Cloud Platform (GCP) Connector Settings Reference](https://docs.harness.io/article/yykfduond6-gcs-connector-settings-reference).
+* **GCP GCR Permissions:** make sure the connected IAM User has the policies listed in [Google Cloud Platform (GCP) Connector Settings Reference](../../../platform/7_Connectors/ref-cloud-providers/gcs-connector-settings-reference.md).
 
 Click **Continue**.
 
@@ -367,7 +367,7 @@ In **Image Path**, enter the name of the artifact you want to deploy.
 
 Images in repos need to reference a path starting with the project ID that the artifact is in, for example: `myproject-id/image-name`.
 
-In **Tag**, enter or select the [Docker image tag](https://docs.docker.com/engine/reference/commandline/tag/) for the image or select [Runtime Input or Expression](https://docs.harness.io/article/f6yobn7iq0-runtime-inputs).
+In **Tag**, enter or select the [Docker image tag](https://docs.docker.com/engine/reference/commandline/tag/) for the image or select [Runtime Input or Expression](../../../platform/20_References/runtime-inputs.md).
 
 ![](./static/kubernetes-services-10.png)
 
@@ -387,13 +387,13 @@ Currently, this feature is behind the feature flag `NG_GOOGLE_ARTIFACT_REGISTRY`
 
 You connect to Google Artifact Registry using a Harness GCP Connector. 
 
-For details on all the Google Artifact Registry requirements for the GCP Connector, see [Google Cloud Platform (GCP) Connector Settings Reference](https://docs.harness.io/article/yykfduond6-gcs-connector-settings-reference).
+For details on all the Google Artifact Registry requirements for the GCP Connector, see [Google Cloud Platform (GCP) Connector Settings Reference](../../../platform/7_Connectors/ref-cloud-providers/gcs-connector-settings-reference.md).
 
 Add an Artifact from Google Artifact RegistryIn **Artifacts**, click **Add Primary** **Artifact.**
 
 In **Artifact Repository Type**, click **Google Artifact Registry**, and then click **Continue**.
 
-In **GCP Connector**, select or create a [Google Cloud Platform (GCP) Connector](https://docs.harness.io/article/yykfduond6) that connects to the GCP account where the Google Artifact Registry is located. Ensure the GCP account it uses has the following roles:
+In **GCP Connector**, select or create a [Google Cloud Platform (GCP) Connector](../../../platform/7_Connectors/ref-cloud-providers/gcs-connector-settings-reference.md) that connects to the GCP account where the Google Artifact Registry is located. Ensure the GCP account it uses has the following roles:
 
 * Artifact Registry Reader
 * Artifact Registry Writer
@@ -421,7 +421,7 @@ In **Package**, enter the artifact name.
 
 In **Version Details**, select **Value** or **Regex**.
 
-In **Version**, enter or select the [Docker image tag](https://docs.docker.com/engine/reference/commandline/tag/) for the image or select [Runtime Input or Expression](https://docs.harness.io/article/f6yobn7iq0-runtime-inputs).
+In **Version**, enter or select the [Docker image tag](https://docs.docker.com/engine/reference/commandline/tag/) for the image or select [Runtime Input or Expression](../../../platform/20_References/runtime-inputs.md).
 
 ![](./static/kubernetes-services-11.png)
 
@@ -433,15 +433,15 @@ The Artifact is added to the Service Definition.
 
 ### Amazon Elastic Container Registry (ECR)
 
-You connect to ECR using a Harness AWS Connector. For details on all the ECR requirements for the AWS Connector, see [AWS Connector Settings Reference](https://docs.harness.io/article/m5vkql35ca-aws-connector-settings-reference).
+You connect to ECR using a Harness AWS Connector. For details on all the ECR requirements for the AWS Connector, see [AWS Connector Settings Reference](../../../platform/7_Connectors/ref-cloud-providers/aws-connector-settings-reference.md).
 
 Add an Artifact from ECRIn **Artifacts**, click **Add Primary** **Artifact.**
 
 In **Artifact Repository Type**, click **ECR**, and then click **Continue**.
 
-In **ECR Repository**, select or create an [AWS Connector](https://docs.harness.io/article/98ezfwox9u-add-aws-connector) that connects to the AWS account where the ECR registry is located.
+In **ECR Repository**, select or create an [AWS Connector](../../../platform/7_Connectors/add-aws-connector.md) that connects to the AWS account where the ECR registry is located.
 
-* **AWS ECR Permissions:** make sure the connected IAM User has the policies listed in [AWS Connector Settings Reference](https://docs.harness.io/article/m5vkql35ca-aws-connector-settings-reference).
+* **AWS ECR Permissions:** make sure the connected IAM User has the policies listed in [AWS Connector Settings Reference](../../../platform/7_Connectors/ref-cloud-providers/aws-connector-settings-reference.md).
 
 Click **Continue**.
 
@@ -461,15 +461,15 @@ The Artifact is added to the Service Definition.
 
 ### Azure Container Registry (ACR)
 
-You connect to ACR using a Harness Azure Connector. For details on all the Azure requirements for the Azure Connector, see [Add a Microsoft Azure Cloud Connector](https://docs.harness.io/article/9epdx5m9ae-add-a-microsoft-azure-connector).
+You connect to ACR using a Harness Azure Connector. For details on all the Azure requirements for the Azure Connector, see [Add a Microsoft Azure Cloud Connector](../../../platform/7_Connectors/add-a-microsoft-azure-connector.md).
 
 Add an Artifact from ACRIn **Artifacts**, click **Add Primary** **Artifact.**
 
 In **Artifact Repository Type**, click **ACR**, and then click **Continue**.
 
-In **ACR Repository**, select or create an [Azure Connector](https://docs.harness.io/article/9epdx5m9ae-add-a-microsoft-azure-connector) that connects to the Azure account where the ACR registry is located.
+In **ACR Repository**, select or create an [Azure Connector](../../../platform/7_Connectors/add-a-microsoft-azure-connector.md) that connects to the Azure account where the ACR registry is located.
 
-* **Azure ACR Permissions:** make sure the Service Principal or Managed Identity has the [required permissions](https://docs.harness.io/article/9epdx5m9ae-add-a-microsoft-azure-connector).
+* **Azure ACR Permissions:** make sure the Service Principal or Managed Identity has the [required permissions](../../../platform/7_Connectors/add-a-microsoft-azure-connector.md).
 
 Click **Continue**.
 
@@ -491,7 +491,7 @@ The Artifact is added to the Service Definition.
 
 ### Nexus
 
-You connect to Nexus using a Harness Nexus Connector. For details on all the requirements for the Nexus Connector, see [Nexus Connector Settings Reference](https://docs.harness.io/article/faor0dc98d-nexus-connector-settings-reference).
+You connect to Nexus using a Harness Nexus Connector. For details on all the requirements for the Nexus Connector, see [Nexus Connector Settings Reference](../../../platform/8_Pipelines/w_pipeline-steps-reference/nexus-connector-settings-reference.md).
 
 Add an Artifact from NexusIn **Artifacts**, click **Add Primary** **Artifact.**
 
@@ -499,7 +499,7 @@ In **Artifact Repository Type**, click **Nexus**, and then click **Continue**.
 
 In **Nexus Repository**, select of create a Nexus Connector that connects to the Nexus account where the repo is located. Click **Continue**.
 
-* **Nexus Permissions:** make sure the Nexus user account has the permissions listed in [Nexus Connector Settings Reference](https://docs.harness.io/article/faor0dc98d-nexus-connector-settings-reference).
+* **Nexus Permissions:** make sure the Nexus user account has the permissions listed in [Nexus Connector Settings Reference](../../../platform/8_Pipelines/w_pipeline-steps-reference/nexus-connector-settings-reference.md).
 
 The **Artifact Details** settings appear.
 
@@ -524,7 +524,7 @@ The Artifact is added to the Service Definition.
 
 ### Artifactory
 
-You connect to Artifactory (JFrog) using a Harness Artifactory Connector. For details on all the requirements for the Artifactory Connector, see [Artifactory Connector Settings Reference](https://docs.harness.io/article/euueiiai4m-artifactory-connector-settings-reference).
+You connect to Artifactory (JFrog) using a Harness Artifactory Connector. For details on all the requirements for the Artifactory Connector, see [Artifactory Connector Settings Reference](../../../platform/7_Connectors/ref-cloud-providers/artifactory-connector-settings-reference.md).
 
 Add an Artifact from ArtifactoryIn **Artifacts**, click **Add Primary** **Artifact.**
 
@@ -532,7 +532,7 @@ In **Artifact Repository Type**, click **Artifactory**, and then click **Contin
 
 In **Artifactory Repository**, select of create an Artifactory Connector that connects to the Artifactory account where the repo is located. Click **Continue**.
 
-* **Artifactory Permissions:** make sure the Artifactory user account has the permissions listed in [Artifactory Connector Settings Reference](https://docs.harness.io/article/euueiiai4m-artifactory-connector-settings-reference).
+* **Artifactory Permissions:** make sure the Artifactory user account has the permissions listed in [Artifactory Connector Settings Reference](../../../platform/7_Connectors/ref-cloud-providers/artifactory-connector-settings-reference.md).
 
 The **Artifact Details** settings appear.
 
@@ -583,7 +583,7 @@ In **Package Type**, select the type of package you are using.
 
 In **Package Name**, enter the name of the package.
 
-In **Version**, enter the version to use. If you use [Runtime Input](https://docs.harness.io/article/f6yobn7iq0-runtime-inputs), when you deploy the Pipeline, Harness will pull the list of tags from the repo and prompt you to select one.
+In **Version**, enter the version to use. If you use [Runtime Input](../../../platform/20_References/runtime-inputs.md), when you deploy the Pipeline, Harness will pull the list of tags from the repo and prompt you to select one.
 
 Click **Submit**.
 
@@ -837,7 +837,7 @@ See [Ignore a Manifest File During Deployment](../../cd-advanced/cd-kubernetes-c
 
 You can use Pipeline, Stage, Service, and Built-in variables in your values YAML files and Service settings.
 
-See [Built-in Harness Variables Reference](https://docs.harness.io/article/lml71vhsim-harness-variables) or watch this [short video](https://youtu.be/lqbmO6EVGuU).
+See [Built-in Harness Variables Reference](../../../platform/12_Variables-and-Expressions/harness-variables.md) or watch this [short video](https://youtu.be/lqbmO6EVGuU).
 
 ### Propagate and Override Artifacts, Manifests, and Service Variables
 

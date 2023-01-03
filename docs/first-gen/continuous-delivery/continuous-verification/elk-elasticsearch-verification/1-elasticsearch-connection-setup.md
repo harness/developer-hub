@@ -37,13 +37,13 @@ Enter the URL of the server. The format is **http(s)://*****server*****:*****por
 
 ### Step 4: Username and Encrypted Password
 
-For secrets and other sensitive settings, select or create a new [Harness Encrypted Text secret](https://docs.harness.io/article/ygyvp998mu-use-encrypted-text-secrets).
+For secrets and other sensitive settings, select or create a new [Harness Encrypted Text secret](../../../firstgen-platform/security/secrets-management/use-encrypted-text-secrets.md).
 
 Enter the credentials to authenticate with the server.
 
 ### Step 5: Token
 
-For secrets and other sensitive settings, select or create a new [Harness Encrypted Text secret](https://docs.harness.io/article/ygyvp998mu-use-encrypted-text-secrets).
+For secrets and other sensitive settings, select or create a new [Harness Encrypted Text secret](../../../firstgen-platform/security/secrets-management/use-encrypted-text-secrets.md).
 
 Some systems provide Elasticsearch as a service and use access tokens.If you have token based authentication, provide the authentication header that is passed when making the HTTP request.
 

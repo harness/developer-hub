@@ -19,7 +19,7 @@ Harness supports CRDs for both Kubernetes and OpenShift. There is no difference 
 
 * [Kubernetes Quickstart](../../first-gen-quickstarts/kubernetes-quickstart.md)
 * [Create a Kubernetes Rolling Deployment](create-a-kubernetes-rolling-deployment.md)
-* [Kubernetes Versioning and Annotations](https://docs.harness.io/article/ttn8acijrz-versioning-and-annotations)
+* [Kubernetes Versioning and Annotations](../../firstgen-platform/techref-category/cd-ref/platforms-ref/versioning-and-annotations.md)
 
 ### Limitations
 
@@ -77,7 +77,7 @@ spec:
         "harness.io/release-name": {{release}}  
 ...
 ```
-See Harness support for [JSON and XML Functors](https://docs.harness.io/article/wfvecw3yod-json-and-xml-functors).
+See Harness support for [JSON and XML Functors](../../firstgen-platform/techref-category/variables/json-and-xml-functors.md).
 
 If the `steadyStateCondition` fails, Harness logs the following error message:
 
@@ -225,7 +225,7 @@ For an example of a simple CRD setup, see [sample-controller](https://github.com
 
 ### Step 2: Define Custom Resource in Harness
 
-You add the manifest for your custom object in a Harness Service, along with the artifact you will deploy. See [Kubernetes Services](https://docs.harness.io/article/t6zrgqq0ny-kubernetes-services).
+You add the manifest for your custom object in a Harness Service, along with the artifact you will deploy. See [Kubernetes Services](/docs/continuous-delivery/cd-services/k8s-services/kubernetes-services).
 
 1. In your Harness Application, click **Services**, and then **Add Service**.
 2. Name your Service.

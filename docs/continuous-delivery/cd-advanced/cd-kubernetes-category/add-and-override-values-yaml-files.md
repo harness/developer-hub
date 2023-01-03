@@ -54,7 +54,7 @@ files/
  |-service.yaml
 ```
 
-Harness evaluates the values.yaml files you add just like Helm does with its values file. Values.yaml files added to Harness don't use Helm templating, but instead use [Go templating](https://godoc.org/text/template) and [Harness built-in variable expressions](https://docs.harness.io/article/lml71vhsim). This removes the need for Helm or Tiller to be installed.
+Harness evaluates the values.yaml files you add just like Helm does with its values file. Values.yaml files added to Harness don't use Helm templating, but instead use [Go templating](https://godoc.org/text/template) and [Harness built-in variable expressions](../../../platform/12_Variables-and-Expressions/harness-variables.md). This removes the need for Helm or Tiller to be installed.
 
 ### Helm Charts
 
@@ -82,7 +82,7 @@ https://www.youtube.com/watch?v=dVk6-8tfwJc-->
 
 You can hardcode the deployment artifact in your values.yaml file just as you might in a typical Helm deployment.
 
-Or you can add a path to the artifact in Harness and use a [Harness expression](https://docs.harness.io/article/lml71vhsim-harness-variables) in your values.yaml to refer to that path.
+Or you can add a path to the artifact in Harness and use a [Harness expression](../../../platform/12_Variables-and-Expressions/harness-variables.md) in your values.yaml to refer to that path.
 
 When Harness executes the Pipeline, the Harness Delegate resolves the expression and pulls the artifact onto the target pods.
 
@@ -121,9 +121,9 @@ We'll cover this option below.
    
    ![](./static/add-and-override-values-yaml-files-33.png)
 
-1. In **Specify Values YAML Store**, select the Git repo provider you're using and then create or select a Connector to that repo. The different Connectors are covered in [Connect to a Git Repo](https://docs.harness.io/article/zbhehjzsnv-connect-to-code-repo).
+1. In **Specify Values YAML Store**, select the Git repo provider you're using and then create or select a Connector to that repo. The different Connectors are covered in [Connect to a Git Repo](../../../platform/7_Connectors/connect-to-code-repo.md).
 5. If you haven't set up a Harness Delegate, you can add one as part of the Connector setup.
-    This process is described in [Kubernetes deployment tutorial](../../onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md), [Helm Chart  deployment tutorial](../../onboard-cd/cd-quickstarts/helm-cd-quickstart.md) and [Install a Kubernetes Delegate](https://ngdocs.harness.io/article/f9bd10b3nj-install-a-kubernetes-delegate).
+    This process is described in [Kubernetes deployment tutorial](../../onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md), [Helm Chart  deployment tutorial](../../onboard-cd/cd-quickstarts/helm-cd-quickstart.md) and [Install a Kubernetes Delegate](../../../platform/2_Delegates/delegate-guide/install-a-kubernetes-delegate.md).
 1. Once you've selected a Connector, click **Continue**.
 6. In **Manifest Details**, you tell Harness where the values.yaml is located.
 7. In **Manifest Identifier**, enter a name that identifies the file, like **values**.
@@ -155,11 +155,11 @@ Next, in the **Environment** setting, you add three Environments, one for each Y
 
 When you select an Environment, such as **qa**, the name of the Environment is used in **File Path** and resolves to **qa.yaml**. At runtime, the **qa.yaml** values file is used.
 
-Instead of selecting the Environment in the **Infrastructure** each time, you can set the Environment as a **Runtime Input** and then enter **dev**, **qa**, or **prod** at runtime. See [Runtime Inputs](https://docs.harness.io/article/f6yobn7iq0-runtime-inputs).
+Instead of selecting the Environment in the **Infrastructure** each time, you can set the Environment as a **Runtime Input** and then enter **dev**, **qa**, or **prod** at runtime. See [Runtime Inputs](../../../platform/20_References/runtime-inputs.md).
 
 ## Option: Override Values at Runtime
 
-You can make the values file path a **Runtime Input** and simply enter the name of the values file when you run the Pipeline. See [Runtime Inputs](https://docs.harness.io/article/f6yobn7iq0-runtime-inputs).
+You can make the values file path a **Runtime Input** and simply enter the name of the values file when you run the Pipeline. See [Runtime Inputs](../../../platform/20_References/runtime-inputs.md).
 
 In **Manifest Details** for the values file, in **File Path**, select **Runtime Input**. At runtime, you simply enter the name of the values file to use.
 

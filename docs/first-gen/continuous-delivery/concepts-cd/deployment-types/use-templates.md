@@ -57,9 +57,9 @@ When you look at the code for an Application containing Services or Workflows us
 ```
 ### Next Steps
 
-* [Create an HTTP Workflow Step Template](https://docs.harness.io/article/dv7ajeroou-account-and-application-templates)
-* [Create a Shell Script Workflow Step Template](https://docs.harness.io/article/lfqn3t83hd-create-a-shell-script-workflow-step-template)
-* [Create a Service Command Template](https://docs.harness.io/article/kbmz9uc7q9-create-a-service-command-template)
-* [Add Service Command Templates into Command Units](https://docs.harness.io/article/mfoy0hrw8y-add-service-command-templates-into-command-units)
-* [Link Templates to Services and Workflows](https://docs.harness.io/article/xd70p7rmqd-link-templates-to-services-and-workflows)
+* [Create an HTTP Workflow Step Template](../../../firstgen-platform/account/manage-templatelib/account-and-application-templates.md)
+* [Create a Shell Script Workflow Step Template](../../../firstgen-platform/account/manage-templatelib/create-a-shell-script-workflow-step-template.md)
+* [Create a Service Command Template](../../../firstgen-platform/account/manage-templatelib/create-a-service-command-template.md)
+* [Add Service Command Templates into Command Units](../../../firstgen-platform/account/manage-templatelib/add-service-command-templates-into-command-units.md)
+* [Link Templates to Services and Workflows](../../../firstgen-platform/account/manage-templatelib/link-templates-to-services-and-workflows.md)
 

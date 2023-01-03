@@ -44,7 +44,7 @@ When the Service is created, it contains the scripts need to install the applica
 
 ![](./static/add-artifacts-for-ssh-deployments-00\.png)
 
-If you are deploying to an existing instance that already has an app stack installed, you can leave **Application Stack** empty. For more information, see  [Add Application Stacks](https://docs.harness.io/article/g26sp2ay68-catalog).
+If you are deploying to an existing instance that already has an app stack installed, you can leave **Application Stack** empty. For more information, see  [Add Application Stacks](../../firstgen-platform/account/manage-appstacks/catalog.md).
 
 ### Review: Secure Shell Service Sections
 
@@ -84,7 +84,7 @@ If your artifact files are located on cloud platform storage like AWS S3, GCP St
 
 If the files are located in a repo such as Artifactory or an automation server such as Jenkins, you can create an Artifact Server.
 
-For more information, see  [Add Artifact Servers](https://docs.harness.io/article/7dghbx1dbl-configuring-artifact-server) and  [Add Cloud Providers](https://docs.harness.io/article/whwnovprrb-cloud-providers).
+For more information, see  [Add Artifact Servers](../../firstgen-platform/account/manage-connectors/configuring-artifact-server.md) and  [Add Cloud Providers](../../firstgen-platform/account/manage-connectors/cloud-providers.md).
 
 To add an artifact source, do the following:
 

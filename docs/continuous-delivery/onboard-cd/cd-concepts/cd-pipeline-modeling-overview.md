@@ -40,7 +40,7 @@ Model your process in code using a full-featured YAML editor:
 
 ![](./static/cd-pipeline-modeling-overview-03.png)
 
-For more details, go to [Harness YAML Quickstart](https://docs.harness.io/article/1eishcolt3-harness-yaml-quickstart) and [YAML Reference: Pipelines](https://docs.harness.io/article/xs2dfgq7s2-yaml-reference-cd-pipeline).
+For more details, go to [Harness YAML Quickstart](../../../platform/8_Pipelines/harness-yaml-quickstart.md) and [YAML Reference: Pipelines](../../../platform/8_Pipelines/w_pipeline-steps-reference/yaml-reference-cd-pipeline.md).
 
 #### REST API
 
@@ -48,7 +48,7 @@ Model your process using a full-featured REST API:
 
 ![](./static/cd-pipeline-modeling-overview-04.png)
 
-For more details, go to [Harness API Quickstart](https://docs.harness.io/article/f0aqiv3td7-api-quickstart) and [Use the Harness REST API](https://docs.harness.io/article/bn72tvbj6r-harness-rest-api-reference).
+For more details, go to [Harness API Quickstart](../../../platform/16_APIs/api-quickstart.md) and [Use the Harness REST API](../../../platform/16_APIs/harness-rest-api-reference.md).
 
 ### How do I automate my CD process in Harness?
 
@@ -60,7 +60,7 @@ Automate the execution of a Pipeline in response to changes in manifests/specs, 
 
 ![](./static/cd-pipeline-modeling-overview-05.png)
 
-For more details, go to [Triggers](https://docs.harness.io/category/oya6qhmmaw).
+For more details, go to [Triggers](/docs/category/triggers).
 
 #### Conditions
 
@@ -68,7 +68,7 @@ Set when, if, and how a Stage executes and what to do if it fails:
 
 ![](./static/cd-pipeline-modeling-overview-06.png)
 
-For more details, go to [Stage and Step Conditional Execution Settings](https://docs.harness.io/article/i36ibenkq2-step-skip-condition-settings).
+For more details, go to [Stage and Step Conditional Execution Settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md).
 
 #### Approvals
 
@@ -76,7 +76,7 @@ Add checks at any point in your process to ensure that deployments are safe:
 
 ![](./static/cd-pipeline-modeling-overview-07.png)
 
-For more details, see [Approvals](https://docs.harness.io/category/approvals).
+For more details, see [Approvals](/docs/category/approvals).
 
 ### Verification
 

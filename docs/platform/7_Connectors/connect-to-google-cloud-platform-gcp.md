@@ -52,7 +52,7 @@ When you switch or modify the IAM role, it might take up to 5 minutes to take ef
 
 ### Review: GCP Workload Identity
 
-If you installed the Harness [Kubernetes Delegate](https://docs.harness.io/article/4ax6q6dxa4-install-an-immutable-kubernetes-delegate) in a Kubernetes cluster (in GKE) that has [GCP Workload Identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity?hl=tr#enable_on_cluster) enabled and uses the same service account and node pool annotation, the Google Cloud Platform (GCP) Connector will inherit these credentials if it uses that Delegate.
+If you installed the Harness [Kubernetes Delegate](/docs/first-gen/firstgen-platform/account/manage-delegates/install-kubernetes-delegate/) in a Kubernetes cluster (in GKE) that has [GCP Workload Identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity?hl=tr#enable_on_cluster) enabled and uses the same service account and node pool annotation, the Google Cloud Platform (GCP) Connector will inherit these credentials if it uses that Delegate.
 
 ### Step 1: Add a GCP Connector
 
@@ -87,7 +87,7 @@ You can select **Any Available Harness Delegate** and Harness will select the De
 
 You can use Delegate Tags to select one or more Delegates. For details on Delegate Tags, see [Select Delegates with Tags](../2_Delegates/delegate-guide/select-delegates-with-selectors.md).
 
-If you need to install a Delegate, see [Delegate Installation Overview](https://docs.harness.io/article/re8kk0ex4k-delegate-installation-overview).
+If you need to install a Delegate, see [Delegate Installation Overview](../2_Delegates/delegate-installation-overview.md).
 
 Click **Save and Continue**.
 

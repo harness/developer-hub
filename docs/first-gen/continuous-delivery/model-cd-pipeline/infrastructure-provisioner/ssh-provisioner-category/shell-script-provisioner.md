@@ -85,7 +85,7 @@ To deploy using a Shell Script Provisioner, ensure the following Delegate config
 * Install a Harness Delegate on a host that can connect to the provisioner your shell script will query. Once you have installed your Delegate, open a terminal on its host and run your shell script to ensure that it will execute at runtime.
 * Ensure the same Delegate, or another Delegate, can connect to your target deployment environment.
 
-For information on setting up the Harness Delegate, see [Delegate Installation and Management](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation).
+For information on setting up the Harness Delegate, see [Delegate Installation and Management](../../../../firstgen-platform/account/manage-delegates/delegate-installation.md).
 
 #### Cloud Provider Requirements
 
@@ -93,19 +93,19 @@ Harness Cloud Providers are used in the Harness Environment, in **Infrastructure
 
 To ensure that your Cloud Provider and Infrastructure Provisioner are in sync, this topic will show you how to do the following:
 
-1. Set up a Cloud Provider (AWS, Physical Data Center, etc) for your connection to your deployment environment. For more information, see [Add Cloud Providers](https://docs.harness.io/article/whwnovprrb-cloud-providers).
+1. Set up a Cloud Provider (AWS, Physical Data Center, etc) for your connection to your deployment environment. For more information, see [Add Cloud Providers](../../../../firstgen-platform/account/manage-connectors/cloud-providers.md).
 2. Later, when you set up your Environment Infrastructure Definition, select the same Cloud Provider.
 
 #### Delegate and Cloud Provider Setup
 
-The simplest method to ensure that your Delegate and Cloud Provider support your Infrastructure Provisioner is to install a Delegate in your deployment environment, verify that its host can connect to the provisioner you plan to query, and then use the same Delegate for the Cloud Provider authentication credentials. This method uses Delegate Selectors or the Delegate name. For more information, see [Delegate Installation and Management](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation).
+The simplest method to ensure that your Delegate and Cloud Provider support your Infrastructure Provisioner is to install a Delegate in your deployment environment, verify that its host can connect to the provisioner you plan to query, and then use the same Delegate for the Cloud Provider authentication credentials. This method uses Delegate Selectors or the Delegate name. For more information, see [Delegate Installation and Management](../../../../firstgen-platform/account/manage-delegates/delegate-installation.md).
 
 To set up your Delegate and Cloud Provider, do the following:
 
 1. Install the Delegate.
 	1. In Harness, click **Setup**, and then click **Harness Delegates**.
 	2. Click **Download Delegate** and select the Delegate type.![](./static/shell-script-provisioner-01.png)
-	3. There are different installation steps depending on which Delegate type you select. For details on setting up each type, see [Delegate Installation and Management](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation).
+	3. There are different installation steps depending on which Delegate type you select. For details on setting up each type, see [Delegate Installation and Management](../../../../firstgen-platform/account/manage-delegates/delegate-installation.md).
 	4. Once the Delegate is installed, open a terminal on its host and test the shell script you plan to use to pull the provisioner JSON collection. For example, the following script obtains the JSON for AWS EC2 instances:
       ```
       apt-get -y install awscli  
@@ -121,7 +121,7 @@ To set up your Delegate and Cloud Provider, do the following:
 	2. Click **Add Cloud Provider**. The **Cloud Provider** dialog appears.
 	3. Select the Cloud Provider type you want to use.
 	4. In **Display Name**, enter the name to identify the Cloud Provider when you select it in your Harness Environment later.  
-	   For a Physical Data Center Cloud Provider, no credentials are required here. Instead, you add an SSH secret in Harness Secrets Management, and select that later in your Harness Environment in **Connection Attributes**. For more information, see [Secrets Management](https://docs.harness.io/article/au38zpufhr-secret-management).
+	   For a Physical Data Center Cloud Provider, no credentials are required here. Instead, you add an SSH secret in Harness Secrets Management, and select that later in your Harness Environment in **Connection Attributes**. For more information, see [Secrets Management](../../../../firstgen-platform/security/secrets-management/secret-management.md).
 	5. Click **SUBMIT** when you are done.
 
 ##### SSH Connection Credentials
@@ -130,7 +130,7 @@ When you set up a Physical Data Center Cloud Provider in Harness, you do not ent
 
 ![](./static/shell-script-provisioner-02.png)
 
-For steps on adding SSH credentials, see [Secrets Management](https://docs.harness.io/article/au38zpufhr-secret-management).
+For steps on adding SSH credentials, see [Secrets Management](../../../../firstgen-platform/security/secrets-management/secret-management.md).
 
 ### Application and Service Setup
 
@@ -217,7 +217,7 @@ There are two access key variables in the script example, `$access_key` and `$se
 
 ![](./static/shell-script-provisioner-06.png)
 
-When you select the Provisioner in a Harness Workflow, you will be prompted to provide the values for the variables. You can select secrets from the Harness Secrets Management. See [Secrets Management](https://docs.harness.io/article/au38zpufhr-secret-management). Selecting the Provisioner in a Harness Workflow is covered later in this topic.As an alternative, you can reference secrets directly in your script using the Harness variable, `${secrets.getValue("<name>")}`. For example:
+When you select the Provisioner in a Harness Workflow, you will be prompted to provide the values for the variables. You can select secrets from the Harness Secrets Management. See [Secrets Management](../../../../firstgen-platform/security/secrets-management/secret-management.md). Selecting the Provisioner in a Harness Workflow is covered later in this topic.As an alternative, you can reference secrets directly in your script using the Harness variable, `${secrets.getValue("<name>")}`. For example:
 
 
 ```
@@ -227,7 +227,7 @@ aws configure set aws_secret_access_key ${secrets.getValue("secret_key")}
 aws configure set region us-west-1  
 aws ec2 describe-instances --instance-ids i-0beacf0f260edd19f > "$PROVISIONER_OUTPUT_PATH"
 ```
-Ensure that the Usage Scope for any Harness Secret you use is set to the Application using the Infrastructure Provisioner. For more information, see [Secrets Management](https://docs.harness.io/article/au38zpufhr-secret-management).
+Ensure that the Usage Scope for any Harness Secret you use is set to the Application using the Infrastructure Provisioner. For more information, see [Secrets Management](../../../../firstgen-platform/security/secrets-management/secret-management.md).
 
 When you have entered your variables in the Shell Script Provisioner **Variables** section, click **NEXT**, and then click **SUBMIT**. The Shell Script Provisioner appears.
 
@@ -413,7 +413,7 @@ To use the Shell Script Infrastructure Provisioner in a Canary Workflow, do the 
    
 8. In **Provisioner**, select the Shell Script Provisioner you created.
 9. In **Timeout**, enter how long you want Harness to attempt to use the provisioner before failing the deployment. If the Delegate cannot reach the provisioner at all, or if the script does not work, it will fail immediately.
-10. In **Delegate Selectors**, enter the Selectors of the Delegate(s) you want to execute this step. See [Select Delegates with Selectors](https://docs.harness.io/article/c3fvixpgsl-select-delegates-for-specific-tasks-with-selectors).
+10. In **Delegate Selectors**, enter the Selectors of the Delegate(s) you want to execute this step. See [Select Delegates with Selectors](../../../../firstgen-platform/account/manage-delegates/select-delegates-for-specific-tasks-with-selectors.md).
 11. Click **Output in the Context**. The **Output in the Context** settings appear.
 
     ![](./static/shell-script-provisioner-21.png)
@@ -430,7 +430,7 @@ For example, here is the setup for the **Output in the Context** settings, the u
 For example, the following image shows a Shell Script Provisioner with two variables, `access_key` and `secret_key`, on the right, and their corresponding settings in the **Variables** section of the Canary Workflow step on the left:![](./static/shell-script-provisioner-23.png)
 
 
-14. For each variable, click in the **Value** column and add or select a value. If the variable is just text, enter a value. If the variable is encrypted text, the available values in the dropdown are taken from the Encrypted Text entries in Harness Secrets Management. For more information, see [Secrets Management](https://docs.harness.io/article/au38zpufhr-secret-management). When you are finished, the Variables section will look something like this:![](./static/shell-script-provisioner-24.png)
+14. For each variable, click in the **Value** column and add or select a value. If the variable is just text, enter a value. If the variable is encrypted text, the available values in the dropdown are taken from the Encrypted Text entries in Harness Secrets Management. For more information, see [Secrets Management](../../../../firstgen-platform/security/secrets-management/secret-management.md). When you are finished, the Variables section will look something like this:![](./static/shell-script-provisioner-24.png)
 
 You can use Workflow variables in the **Value** settings. See [Set Workflow Variables](../../workflows/add-workflow-variables-new-template.md).1. Click **NEXT**, and then click **SUBMIT**. The Shell Script Provisioner step is added to the Workflow.![](./static/shell-script-provisioner-25.png)
 
@@ -486,6 +486,6 @@ Now you have seen an example of how the Shell Script Provisioner was used to pro
 
 ### Next Steps
 
-* [Variables and Expressions in Harness](https://docs.harness.io/article/9dvxcegm90-variables)
-* [Continuous Verification](https://docs.harness.io/article/myw4h9u05l-verification-providers-list)
+* [Variables and Expressions in Harness](../../../../firstgen-platform/techref-category/variables/variables.md)
+* [Continuous Verification](../../../continuous-verification/continuous-verification-overview/concepts-cv/what-is-cv.md)
 

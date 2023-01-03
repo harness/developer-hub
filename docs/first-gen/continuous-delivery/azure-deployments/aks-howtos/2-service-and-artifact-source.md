@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/article/m7nkbph0ac).This topic describes how to set up the Harness Kubernetes Service and Artifact Source for an Azure deployment:
+This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../../continuous-delivery/onboard-cd/cd-quickstarts/azure-cd-quickstart.md).This topic describes how to set up the Harness Kubernetes Service and Artifact Source for an Azure deployment:
 
 * [Application Setup](2-service-and-artifact-source.md#application-setup)
 * [Harness Service Setup](2-service-and-artifact-source.md#harness-service-setup)
@@ -85,7 +85,7 @@ For this guide, we will use the default manifests, with one important change for
 
 ##### Pull an Image from a Private ACR Registry
 
-To pull the image from the private ACR registry, Harness accesses that registry using the credentials set up in the Harness [Artifact Server](https://docs.harness.io/article/7dghbx1dbl-configuring-artifact-server), but your AKS cluster might not have the needed permissions. To solve this problem, the default values.yaml file contains `dockercfg: ${artifact.source.dockerconfig}`.
+To pull the image from the private ACR registry, Harness accesses that registry using the credentials set up in the Harness [Artifact Server](../../../firstgen-platform/account/manage-connectors/configuring-artifact-server.md), but your AKS cluster might not have the needed permissions. To solve this problem, the default values.yaml file contains `dockercfg: ${artifact.source.dockerconfig}`.
 
 1. n your Harness Kubernetes Service, in **Manifests**, click **values.yaml**.
 2. Verify that `dockercfg` key exists, and uses the `${artifact.source.dockerconfig}` expression to obtain the credentials:

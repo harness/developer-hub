@@ -2,6 +2,7 @@ import React from "react";
 import clsx from "clsx";
 import Tooltip from "rc-tooltip";
 import Link from "@docusaurus/Link";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import { CardItem, docType } from "../LandingPage/TutorialCard";
 import "rc-tooltip/assets/bootstrap.css";
 import styles from "./styles.module.scss";
@@ -10,64 +11,64 @@ const FeatureList: CardItem[] = [
   {
     title: "Build & Test Code",
     module: "ci",
-    icon: "/img/icon_ci.svg",
+    icon: "img/icon_ci.svg",
     description: "Create a CI build pipeline.",
     type: [docType.Documentation],
     //type: [docType.Documentation, docType.Interactive, docType.Video],
-    link: "/tutorials/build-code",
+    link: "tutorials/build-code",
   },
   {
     title: "Deploy Services",
     module: "cd",
-    icon: "/img/icon_cd.svg",
+    icon: "img/icon_cd.svg",
     description: <>Create a CD deployment pipeline.</>,
     type: [docType.Documentation],
-    link: "/tutorials/deploy-services",
+    link: "tutorials/deploy-services",
   },
   {
     title: "Manage Feature Flags",
     module: "ff",
-    icon: "/img/icon_ff.svg",
+    icon: "img/icon_ff.svg",
     description: <>Roll out new features progressively.</>,
     type: [docType.Documentation],
-    link: "/tutorials/manage-feature-flags",
+    link: "tutorials/manage-feature-flags",
   },
   {
     title: "Manage Cloud Costs",
     module: "ccm",
-    icon: "/img/icon_ccm.svg",
+    icon: "img/icon_ccm.svg",
     description: <>Achieve cost transparency and cut costs.</>,
     type: [docType.Documentation],
-    link: "/tutorials/manage-cloud-costs",
+    link: "tutorials/manage-cloud-costs",
   },
   {
     title: "Manage Service Reliability",
     module: "srm",
-    icon: "/img/icon_srm.svg",
+    icon: "img/icon_srm.svg",
     description: <>Monitor SLOs, track error budgets, debug code errors.</>,
     type: [docType.Documentation, docType.Interactive, docType.Video],
-    link: "/tutorials/manage-service-reliability",
+    link: "tutorials/manage-service-reliability",
   },
   {
     title: "Orchestrate Security Tests",
     module: "sto",
-    icon: "/img/icon_sto.svg",
+    icon: "img/icon_sto.svg",
     description: <>Scan code, containers and apps.</>,
     type: [docType.Documentation],
-    link: "/tutorials/orchestrate-security-tests",
+    link: "tutorials/orchestrate-security-tests",
   },
   {
     title: "Run Chaos Experiments",
     module: "ce",
-    icon: "/img/icon_ce.svg",
+    icon: "img/icon_ce.svg",
     description: <>Ensure app and infrastructure resilience.</>,
     type: [docType.Documentation],
-    link: "/tutorials/run-chaos-experiments",
+    link: "tutorials/run-chaos-experiments",
   },
   {
     title: "Administer Harness Platform",
     module: "platform",
-    icon: "/img/logo.svg",
+    icon: "img/logo.svg",
     description: (
       <>
         Install a Kubernetes or Docker delegate, Onboard with Terraform
@@ -75,17 +76,18 @@ const FeatureList: CardItem[] = [
       </>
     ),
     type: [docType.Documentation],
-    link: "/tutorials/platform",
+    link: "tutorials/platform",
   },
 ];
 
 function Feature({ title, icon, description, type, module, link }: CardItem) {
+  const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   return (
-    <a href={link}>
+    <Link href={link}>
       <div className={clsx(styles.getStartItem, styles[module])}>
         <div className="text--center">
           {/* <icon className={styles.featureSvg} role="img" /> */}
-          <img src={icon} className={styles.featureSvg} alt={title} />
+          <img src={baseUrl + icon} className={styles.featureSvg} alt={title} />
         </div>
         <div
           className={clsx(
@@ -101,14 +103,17 @@ function Feature({ title, icon, description, type, module, link }: CardItem) {
             {type.map((props, idx) => (
               <li>
                 <Tooltip placement="top" overlay={props}>
-                  <img src={`/img/icon_doctype_${props}.svg`} alt={props} />
+                  <img
+                    src={`${baseUrl}img/icon_doctype_${props}.svg`}
+                    alt={props}
+                  />
                 </Tooltip>
               </li>
             ))}
           </ul>
         </div>
       </div>
-    </a>
+    </Link>
   );
 }
 
@@ -122,7 +127,7 @@ export default function HomepageFeatures(): JSX.Element {
         ))}
       </div>
       <div className={styles.btnContainer}>
-        <Link href="/tutorials/get-started">
+        <Link href="/tutorials">
           <button className="button button--primary">All Tutorials</button>
         </Link>
       </div>

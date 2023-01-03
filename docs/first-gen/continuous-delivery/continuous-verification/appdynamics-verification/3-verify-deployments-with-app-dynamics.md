@@ -19,7 +19,7 @@ Harness can analyze AppDynamics data to verify, rollback, and improve your deplo
 
 Add the AppDynamics Verification Provider to your Workflow only *after* you have run at least one successful Workflow deployment. This enables the AppDynamics integration to obtain the names of the host(s) or container(s) where your service is deployed.
 
-See [general limitations](https://docs.harness.io/article/9dvxcegm90-variables#limitations) on the Harness variable expressions that are presented as options below.
+See [general limitations](../../../firstgen-platform/techref-category/variables/variables.md#limitations) on the Harness variable expressions that are presented as options below.
 
 
 ### Step 1: Add Verification Step
@@ -40,7 +40,7 @@ To add an AppDynamics verification step to your Workflow:
 
 In the **AppDynamics Server** drop-down, select the server you added when you set up your [AppDynamics Verification Provider](1-app-dynamics-connection-setup.md).
 
-You can also enter variable expressions, such as: `${serviceVariable.appd_QA}`. Do not use hyphens (dashes) in variable expressions; also, see other [limitations on Harness variables](https://docs.harness.io/article/9dvxcegm90-variables#limitations).
+You can also enter variable expressions, such as: `${serviceVariable.appd_QA}`. Do not use hyphens (dashes) in variable expressions; also, see other [limitations on Harness variables](../../../firstgen-platform/techref-category/variables/variables.md#limitations).
 
 If the **AppDynamics Server** field contains an expression, the **Application Name** and **Tier Name** fields must also use an expression. [Templatized](#templatize) fields cannot take variable expressions, and cannot be edited. Using expressions or templatization will disable the **Test** button.
 ### Step 3: Application Name
@@ -51,7 +51,7 @@ This field's drop-down list is populated with the applications available on the 
 
 You can also enter variable expressions, such as: `${app.name}`.
 
-Do not use hyphens (dashes) in variable expressions. See other [limitations on Harness variables](https://docs.harness.io/article/9dvxcegm90-variables#limitations). If the **AppDynamics Server** field contains an expression, the **Application Name** and **Tier Name** fields must also use an expression. [Templatized](#templatize) fields cannot take variable expressions, and cannot be edited. Using expressions or templatization will disable the **Test** button.
+Do not use hyphens (dashes) in variable expressions. See other [limitations on Harness variables](../../../firstgen-platform/techref-category/variables/variables.md#limitations). If the **AppDynamics Server** field contains an expression, the **Application Name** and **Tier Name** fields must also use an expression. [Templatized](#templatize) fields cannot take variable expressions, and cannot be edited. Using expressions or templatization will disable the **Test** button.
 ### Step 4: Tier Name
 
 The field's drop-down list is populated with tiers from the AppDynamics application you selected. Pick the tier from which you want usage metrics, code exceptions, error conditions, and exit calls. In **AppDynamics**, the tiers are displayed in the **Tiers & Nodes** page.
@@ -60,7 +60,7 @@ The field's drop-down list is populated with tiers from the AppDynamics applicat
 
 You can also enter variable expressions, such as: `${service.name}`.
 
-Do not use hyphens (dashes) in variable expressions. See other [limitations on Harness variables](https://docs.harness.io/article/9dvxcegm90-variables#limitations). If the **Application Name** field contains an expression, the **Tier Name** field must also use an expression. [Templatized](#templatize) fields cannot take variable expressions, and cannot be edited. Using expressions or templatization will disable the **Test** button.For PCF deployments, application tiers will match tier information from the [application manifest file](../../pcf-deployments/adding-and-editing-inline-pcf-manifest-files.md).
+Do not use hyphens (dashes) in variable expressions. See other [limitations on Harness variables](../../../firstgen-platform/techref-category/variables/variables.md#limitations). If the **Application Name** field contains an expression, the **Tier Name** field must also use an expression. [Templatized](#templatize) fields cannot take variable expressions, and cannot be edited. Using expressions or templatization will disable the **Test** button.For PCF deployments, application tiers will match tier information from the [application manifest file](../../pcf-deployments/adding-and-editing-inline-pcf-manifest-files.md).
 
 
 ### Step 5: Expression for Host/Container Name

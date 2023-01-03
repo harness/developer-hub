@@ -18,7 +18,7 @@ This topic explains the different ways to create a custom Delegate.
 
 * [Delegates Overview](../delegates-overview.md)
 * [Supported Platforms and Technologies](../../../getting-started/supported-platforms-and-technologies.md)
-* [Delegate Installation Overview](https://docs.harness.io/article/re8kk0ex4k-delegate-installation-overview)
+* [Delegate Installation Overview](../delegate-installation-overview.md)
 
 ### Option: Use the INIT\_SCRIPT environment variable
 
@@ -45,7 +45,7 @@ spec:
             echo wget installed  
 ...
 ```
-In `value`, enter your script. For a list of common scripts, see [Common Delegate Initialization Scripts](https://newdocs.helpdocs.io/article/auveebqv37-common-delegate-profile-scripts).
+In `value`, enter your script. For a list of common scripts, see [Common Delegate Initialization Scripts](../delegate-reference/common-delegate-profile-scripts.md).
 
 For steps on using the `INIT_SCRIPT` environment variable, see [Run Scripts on Delegates](run-scripts-on-delegates.md).
 
@@ -83,5 +83,5 @@ You can see all of the environment variables for the Delegates in the following 
 
 ### See also
 
-* [Delegate How-tos](https://docs.harness.io/category/9i5thr0ot2-delegates).
+* [Delegate How-tos](/docs/category/delegates).
 

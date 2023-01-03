@@ -58,7 +58,7 @@ The Delegate you use for Kustomize deployments must have access to the Git repo 
 
 You add a connection to the repo containing your kustomize and resource files as a Harness Source Repo Provider.
 
-For details on adding a Source Repro Provider, see [Add Source Repo Providers](https://docs.harness.io/article/ay9hlwbgwa-add-source-repo-providers).
+For details on adding a Source Repro Provider, see [Add Source Repo Providers](../../firstgen-platform/account/manage-connectors/add-source-repo-providers.md).
 
 Here is a quick summary:
 
@@ -160,7 +160,7 @@ If you have enabled **Skip Versioning for Service** for a few deployments and th
 You can list artifacts in two ways:
 
 * Artifacts can be hardcoded in the deployment YAML file deployed using your Kustomization files.
-* You can add artifacts to the Service **Artifact Source** section and reference them in Kustomize Patch files using the Harness variable `${artifact.metadata.image}`. See [Option: Kustomize Patches](#option_kustomize_patches) below, and [Built-in Variables List](https://docs.harness.io/article/aza65y4af6-built-in-variables-list).
+* You can add artifacts to the Service **Artifact Source** section and reference them in Kustomize Patch files using the Harness variable `${artifact.metadata.image}`. See [Option: Kustomize Patches](#option_kustomize_patches) below, and [Built-in Variables List](../../firstgen-platform/techref-category/variables/built-in-variables-list.md).
 
 ### Option: Kustomize Patches
 
@@ -227,7 +227,7 @@ You can add multiple files by using **Add Patches** multiple times.In **Store Ty
 
 For **Inline**, enter the patch YAML, and click **Submit**.
 
-For **Remote**, in **Source Repository**, select your Source Repo Connector. See [Add Source Repo Providers](https://docs.harness.io/article/ay9hlwbgwa-add-source-repo-providers).
+For **Remote**, in **Source Repository**, select your Source Repo Connector. See [Add Source Repo Providers](../../firstgen-platform/account/manage-connectors/add-source-repo-providers.md).
 
 For Commit ID, select whether to use the latest branch or a specific commit Id/Git tag.
 
@@ -247,7 +247,7 @@ If you have hardcoded patches in `patchesStrategicMerge`, but not add these pat
 
 #### Using Harness Variables in Patches
 
-Currently, this feature is behind the Feature Flag `KUSTOMIZE_PATCHES_CG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.Kustomize does not natively support variable substitution but Harness supports variable substitution using [Harness variable expressions](https://docs.harness.io/article/9dvxcegm90-variables) in Kustomize patches.
+Currently, this feature is behind the Feature Flag `KUSTOMIZE_PATCHES_CG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.Kustomize does not natively support variable substitution but Harness supports variable substitution using [Harness variable expressions](../../firstgen-platform/techref-category/variables/variables.md) in Kustomize patches.
 
 This allows you to configure any patch YAML labels as Harness variables expressions and replace those values at Pipeline runtime.
 
@@ -330,7 +330,7 @@ If you look at the Initialize phase of the deployment step (in Rolling, Canary, 
 
 #### Using Harness Secrets in Patches
 
-You can also use [Harness secrets](https://docs.harness.io/article/ygyvp998mu-use-encrypted-text-secrets) in patches.
+You can also use [Harness secrets](../../firstgen-platform/security/secrets-management/use-encrypted-text-secrets.md) in patches.
 
 For example, let's say we have two secrets, one for `image` and one for `app`:
 
@@ -380,7 +380,7 @@ In **Store Type**, select **Inline** or **Remote**.
 
 For **Inline**, enter the patch YAML, and click **Submit**.
 
-For **Remote**, in **Source Repository**, select your Source Repo Connector. See [Add Source Repo Providers](https://docs.harness.io/article/ay9hlwbgwa-add-source-repo-providers).
+For **Remote**, in **Source Repository**, select your Source Repo Connector. See [Add Source Repo Providers](../../firstgen-platform/account/manage-connectors/add-source-repo-providers.md).
 
 For Commit ID, select whether to use the latest branch or a specific commit Id/Git tag.
 
@@ -489,7 +489,7 @@ If you use Workflow variables for **Path to kustomization directory**, you can p
 
 ![](./static/use-kustomize-for-kubernetes-deployments-93.png)
 
-Typically, when you deploy a Workflow, you are prompted to select an artifact for deployment. If a Workflow is deploying a Service that uses a remote **Kustomization Configuration**, you are not prompted to provide an artifact for deployment.See [Workflows](../model-cd-pipeline/workflows/workflow-configuration.md) and [Kubernetes Workflow Variable Expressions](https://docs.harness.io/article/9dvxcegm90-variables).
+Typically, when you deploy a Workflow, you are prompted to select an artifact for deployment. If a Workflow is deploying a Service that uses a remote **Kustomization Configuration**, you are not prompted to provide an artifact for deployment.See [Workflows](../model-cd-pipeline/workflows/workflow-configuration.md) and [Kubernetes Workflow Variable Expressions](../../firstgen-platform/techref-category/variables/variables.md).
 
 ### Option: Use Plugins in Deployments
 
@@ -570,7 +570,7 @@ Click **Submit**. Harness is now configured to use the plugin when it deploys us
 
 ### Example 1: Multibase Rolling Deployment
 
-For this example, we will deploy the [multibases example for Kustomize](https://github.com/kubernetes-sigs/kustomize/tree/master/examples/multibases) in a Rolling Update strategy. You can set up a [Harness Source Repro Provider](https://docs.harness.io/article/ay9hlwbgwa-add-source-repo-providers) to connect to that repo.
+For this example, we will deploy the [multibases example for Kustomize](https://github.com/kubernetes-sigs/kustomize/tree/master/examples/multibases) in a Rolling Update strategy. You can set up a [Harness Source Repro Provider](../../firstgen-platform/account/manage-connectors/add-source-repo-providers.md) to connect to that repo.
 
 We will use Harness Environment names that match the base folder names in the repo.
 
@@ -610,7 +610,7 @@ In this example, we select the **stage** Environment. Once deployment is complet
 
 ### Review: What Workloads Can I Deploy?
 
-See [What Can I Deploy in Kubernetes?](https://docs.harness.io/article/6ujb3c70fh).
+See [What Can I Deploy in Kubernetes?](../../firstgen-platform/techref-category/cd-ref/platforms-ref/what-can-i-deploy-in-kubernetes.md).
 
 ### Change the Default Path for the Kustomize Binary
 
@@ -618,7 +618,7 @@ The Harness Delegate ships with the 3.5.4 [release](https://github.com/kubernete
 
 If you want to use a different release of Kustomize, add it to a location on the Delegate, update the following Delegate files, and restart the Delegate.
 
-See [Manage Harness Delegates](https://docs.harness.io/category/gyd73rp7np-manage-delegates) for details on each Delegate type.
+See [Manage Harness Delegates](/docs/category/manage-harness-delegates-firstgen) for details on each Delegate type.
 
 #### Shell Script Delegate
 

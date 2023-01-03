@@ -56,7 +56,7 @@ In this step, you'll create the Codebase for a new Pipeline in Harness CIE.
 
 The CodeCommit, Bitbucker, GitHub, and GitLab Connectors have authorization settings as required by their respective providers. The Git Connector can connect with any provider using Basic authentication over HTTPS.
 
-* [AWS CodeCommit Connector Settings Reference](https://docs.harness.io/article/jed9he2i45-aws-code-commit-connector-settings-reference)
+* [AWS CodeCommit Connector Settings Reference](../../../platform/7_Connectors/ref-cloud-providers/aws-connector-settings-reference.md)
 * [Bitbucket Connector Settings Reference](../../../platform/7_Connectors/ref-source-repo-provider/bitbucket-connector-settings-reference.md)
 * [Git Connector Settings Reference](../../../platform/7_Connectors/ref-source-repo-provider/git-connector-settings-reference.md)
 * [GitHub Connector Settings Reference](../../../platform/7_Connectors/ref-source-repo-provider/git-hub-connector-settings-reference.md)

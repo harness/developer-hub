@@ -17,7 +17,7 @@ For more information, see [Running tasks](https://docs.aws.amazon.com/AmazonECS/
 ### Before You Begin
 
 * [AWS ECS Quickstart](../../../first-gen-quickstarts/aws-ecs-deployments.md)
-* [ECS How-tos](https://docs.harness.io/category/aws-ecs-deployments)
+* [ECS How-tos](/docs/category/aws-ecs-deployments)
 * [Deploy Multiple ECS Sidecar Containers](deploy-multiple-containers-in-a-single-ecs-workflow.md)
 
 ### Supported Platforms and Technologies
@@ -61,7 +61,7 @@ if you are new to ECS task scheduling and running tasks manually, review the fol
 
 ### Step 1: Add ECS Run Task to Workflow
 
-This step assumes you have an existing Harness ECS Workflow. If you have not created one, see [AWS ECS Quickstart](../../../first-gen-quickstarts/aws-ecs-deployments.md) and [AWS ECS Deployments](https://docs.harness.io/category/aws-ecs-deployments)how-tos.
+This step assumes you have an existing Harness ECS Workflow. If you have not created one, see [AWS ECS Quickstart](../../../first-gen-quickstarts/aws-ecs-deployments.md) and [AWS ECS Deployments](/docs/category/aws-ecs-deployments)how-tos.
 
 1. In your ECS Workflow, in the **Set up Container** section, click **Add Step**.
 2. Select **ECS Run Task**.
@@ -129,14 +129,14 @@ You can also obtain the Task Definition using the AWS CLI ( [describe-task-defin
 
 `aws ecs describe-task-definition --task-definition ecsTaskDefinitionName`
 
-The task definitions support Harness [Workflow variables](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md) and any other [Harness variables](https://docs.harness.io/article/9dvxcegm90-variables) available at the point when the ECS Task Run step is executed.
+The task definitions support Harness [Workflow variables](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md) and any other [Harness variables](../../../firstgen-platform/techref-category/variables/variables.md) available at the point when the ECS Task Run step is executed.
 
 ### Option 2: Add Remote Task Definition
 
 The Task Definition must follow the syntax described by AWS in [RegisterTaskDefinition](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_RegisterTaskDefinition.html).
 
 1. In **Add Task Definition**, click **Remote**.
-2. In **Source Repository**, select the Harness Source Repo Provider you added. See [Add Source Repo Providers](https://docs.harness.io/article/ay9hlwbgwa-add-source-repo-providers).
+2. In **Source Repository**, select the Harness Source Repo Provider you added. See [Add Source Repo Providers](../../../firstgen-platform/account/manage-connectors/add-source-repo-providers.md).
 3. In **Commit ID** , select **Latest from Branch** or **Specific Commit ID**.
 4. In **Branch/Commit ID** (required), enter the branch or commit ID for the remote repo.
 5. In **File Path**, enter the repo path to the task definition file.  
@@ -158,7 +158,7 @@ Successfully fetched following files:
   
 Done.
 ```
-The task definitions support Harness [Workflow variables](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md) and any other [Harness variables](https://docs.harness.io/article/9dvxcegm90-variables) available at the point when the ECS Task Run step is executed.
+The task definitions support Harness [Workflow variables](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md) and any other [Harness variables](../../../firstgen-platform/techref-category/variables/variables.md) available at the point when the ECS Task Run step is executed.
 
 #### Multiple Task Definitions
 
@@ -214,7 +214,7 @@ Once a rollback occurs, the resources created by the ECS Run Task step still nee
 
 You can delete the resources created by adding a [Shell Script step](../../model-cd-pipeline/workflows/capture-shell-script-step-output.md) in **Rollback Steps**. For example, using the AWS ECS CLI [delete-service](https://docs.aws.amazon.com/cli/latest/reference/ecs/delete-service.html) command.
 
-If you want to execute AWS CLI commands, ensure that the Delegate host has the AWS CLI installed via a Delegate Profile. See [Common Delegate Profile Scripts](https://docs.harness.io/article/nxhlbmbgkj-common-delegate-profile-scripts).
+If you want to execute AWS CLI commands, ensure that the Delegate host has the AWS CLI installed via a Delegate Profile. See [Common Delegate Profile Scripts](../../../firstgen-platform/techref-category/account-ref/delegate-ref/common-delegate-profile-scripts.md).
 
 The **Rollback Containers** step in **Rollback Steps** only applies to the core service deployed by the Workflow. If a Workflow containing only an ECS Task Run step fails, the **Rollback Containers** step is skipped.
 

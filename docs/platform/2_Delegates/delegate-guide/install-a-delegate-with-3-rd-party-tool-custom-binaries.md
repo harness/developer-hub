@@ -208,7 +208,7 @@ You can set up custom paths to certain third-party binaries using environment va
 | --- | --- |
 | **Tool** | **Environment Variable Name** |
 | Helm v3 | HELM3\_PATH |
-| Helm v2 | HELM\_PATHIf you are performing a [Native Helm deployment](https://docs.harness.io/article/lbhf2h71at-native-helm-quickstart), do not use `HELM_PATH` for the Helm 2 binary. Harness requires the Helm 2 binary on the delegate in its standard path, for example: `/usr/local/bin/helm`. |
+| Helm v2 | HELM\_PATHIf you are performing a [Native Helm deployment](../../../continuous-delivery/onboard-cd/cd-quickstarts/native-helm-quickstart.md), do not use `HELM_PATH` for the Helm 2 binary. Harness requires the Helm 2 binary on the delegate in its standard path, for example: `/usr/local/bin/helm`. |
 | Kustomize | KUSTOMIZE\_PATH |
 | Kubectl | KUBECTL\_PATH |
 | OpenShift (OC) | OC\_PATH |

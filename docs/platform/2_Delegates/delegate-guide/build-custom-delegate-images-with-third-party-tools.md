@@ -196,7 +196,7 @@ data:
 ---  
    
 # If delegate needs to use a proxy, please follow instructions available in the documentation  
-# https://ngdocs.harness.io/article/5ww21ewdt8-configure-delegate-proxy-settings  
+# https://developer.harness.io/docs/first-gen/firstgen-platform/account/manage-delegates/configure-delegate-proxy-settings/  
    
 apiVersion: apps/v1  
 kind: Deployment  
@@ -416,9 +416,9 @@ You can confirm the successful deployment and registration of the delegate in Ha
 
 You can use your registered delegate to run Kubernetes and Terraform pipelines.
 
-For information about creating a Kubernetes pipeline, see [Kubernetes deployment tutorial](https://docs.harness.io/article/knunou9j30).
+For information about creating a Kubernetes pipeline, see [Kubernetes deployment tutorial](../../../continuous-delivery/onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md).
 
 ![](./static/build-custom-delegate-images-with-third-party-tools-09.png)
 
-For information about creating a Terraform Plan, see [Provision with the Terraform Apply Step](https://docs.harness.io/article/hdclyshiho).
+For information about creating a Terraform Plan, see [Provision with the Terraform Apply Step](../../../continuous-delivery/cd-advanced/terraform-category/run-a-terraform-plan-with-the-terraform-apply-step.md).
 

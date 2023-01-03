@@ -26,7 +26,7 @@ For CCM, Kubernetes connectors are available only at the Account level in Harnes
 ## Create a Cloud Provider Kubernetes Connector
 You need to have completed the following tasks before creating a CCM connector for your Kubernetes cluster:
 * You need to set up Harness Delegate for each Cloud Provider (K8s cluster) connector. Delegate is installed when adding a Connector. See [Install a Kubernetes Delegate](/docs/platform/Delegates/delegate-guide/install-a-kubernetes-delegate). The Delegate is responsible for collecting metrics from the K8s connector.
-* You need to create a Kubernetes Cloud Provider Connector for each Kubernetes cluster. One connector can access only one cluster. See [Add a Kubernetes Cluster Connector](https://docs.harness.io/article/1gaud2efd4-add-a-kubernetes-cluster-connector).
+* You need to create a Kubernetes Cloud Provider Connector for each Kubernetes cluster. One connector can access only one cluster. See [Add a Kubernetes Cluster Connector](../../../platform/7_Connectors/add-a-kubernetes-cluster-connector.md).
  
 ## Create CCM Connector
 For the CCM Kubernetes connector, you need to reference an existing Cloud Provider Kubernetes Connector. Otherwise, you need to create one.
@@ -107,7 +107,7 @@ Perform the following steps to connect your Kubernetes cluster to CCM.
 3. In **Connectors**, click **+ Connector**.
 4. In **Cloud Costs**, click **Kubernetes**.![](./static/set-up-cost-visibility-for-kubernetes-16.png)
 5. In the **Kubernetes Connector** wizard, in the **Overview** section, from the **Reference an existing connector** drop-down list, select your Cloud Provider Kubernetes Connector.  
-If you do not have Cloud Provider Kubernetes Connector already created, click **Create a new connector**. See [Add a Kubernetes Cluster Connector](https://docs.harness.io/article/1gaud2efd4-add-a-kubernetes-cluster-connector).
+If you do not have Cloud Provider Kubernetes Connector already created, click **Create a new connector**. See [Add a Kubernetes Cluster Connector](../../../platform/7_Connectors/add-a-kubernetes-cluster-connector.md).
 1. The **Name** for your connector is automatically populated. You can choose to edit the name. This name appears on the Perspectives page to identify this cluster.
    
    ![](./static/set-up-cost-visibility-for-kubernetes-17.png)
@@ -137,7 +137,7 @@ Make your selection and click **Continue**.
 
 The secret creation settings appear only if you have selected **Kubernetes Optimization by AutoStopping** feature in the **Feature Selection** step. In this step, you are providing permissions for intelligent cloud AutoStopping rules. For more information, see [Create AutoStopping Rules for AWS](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/3-create-auto-stopping-rules/create-autostopping-rules-aws.md).
 
-1. In **Secret creation**, click create an API key here and create an API key. See [Create an API Key](https://docs.harness.io/article/tdoad7xrh9-add-and-manage-api-keys).
+1. In **Secret creation**, click create an API key here and create an API key. See [Create an API Key](../../../platform/4_Role-Based-Access-Control/7-add-and-manage-api-keys.md).
 2. Run the following commands in your Kubernetes cluster:
 	1. Create a namespace.  
 	

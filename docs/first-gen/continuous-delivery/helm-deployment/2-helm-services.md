@@ -8,9 +8,9 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/article/lbhf2h71at).This topic describes how to create a Harness Application and adds a Service that uses a Docker image and Helm chart for a Kubernetes deployment.
+This content is for Harness [FirstGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../continuous-delivery/onboard-cd/cd-quickstarts/native-helm-quickstart.md).This topic describes how to create a Harness Application and adds a Service that uses a Docker image and Helm chart for a Kubernetes deployment.
 
-Harness includes both Kubernetes and Helm deployments, and you can use Helm charts in both. Harness [Kubernetes Deployments](../kubernetes-deployments/kubernetes-deployments-overview.md) allow you to use your own Helm chart (remote or local), and Harness executes the Kubernetes API calls to build everything without Helm and Tiller needing to be installed in the target cluster. See [Helm Charts](https://docs.harness.io/article/t6zrgqq0ny-kubernetes-services#helm_charts).
+Harness includes both Kubernetes and Helm deployments, and you can use Helm charts in both. Harness [Kubernetes Deployments](../kubernetes-deployments/kubernetes-deployments-overview.md) allow you to use your own Helm chart (remote or local), and Harness executes the Kubernetes API calls to build everything without Helm and Tiller needing to be installed in the target cluster. See [Helm Charts](../kubernetes-deployments/use-a-helm-repository-with-kubernetes.md).
 
 
 ### Release Name Required
@@ -96,18 +96,18 @@ As explained earlier, you have two options when entering in the Helm chart info.
 
 For **Source Repository**, do the following:
 
-1. In **Source Repository**, select a Git SourceRepo Provider for the Git repo you added to your Harness account. For more information, see [Add SourceRepo Providers](https://docs.harness.io/article/ay9hlwbgwa-add-source-repo-providers).
+1. In **Source Repository**, select a Git SourceRepo Provider for the Git repo you added to your Harness account. For more information, see [Add SourceRepo Providers](../../firstgen-platform/account/manage-connectors/add-source-repo-providers.md).
 2. In **Commit ID**, select **Latest from Branch** or **Specific Commit ID**.
 3. In **Branch** or **Commit ID**, enter the branch or commit ID for the remote repo.
 4. In **File/Folder path**, enter the repo file and folder path.
 
 Helm [chart dependencies](https://helm.sh/docs/topics/charts/) are not supported in **Source Repository**. If your Helm chart in a Git repo uses chart dependencies, you will need to move to the **Helm Repository** option.For **Helm Repository**, do the following:
 
-1. In **Helm Repository**, select the Helm Chart Repository you added as a Harness Artifact Server. For more information, see [Helm Repository](https://docs.harness.io/article/7dghbx1dbl-configuring-artifact-server#helm_repository).
+1. In **Helm Repository**, select the Helm Chart Repository you added as a Harness Artifact Server. For more information, see [Helm Repository](../../firstgen-platform/account/manage-connectors/configuring-artifact-server.md#helm-repository).
 
   If you are using Google Cloud Storage for your Helm repo, you will see a **Base Path** setting for the bucket. See [Google Cloud Storage (GCS)](https://harness.helpdocs.io/article/whwnovprrb-cloud-providers#google_cloud_storage_gcs) for details on the policies required.1. In **Base Path**, enter the path to the charts' bucket folder or a Workflow variable expression.
 	1. If you use a charts' bucket folder, simply enter the name of the folder. Whether you need to specify a single folder (e.g. `charts`) a folder path (e.g. `helm/charts`) depends on the Helm Chart Repository you added as a Harness Artifact Server.
-	2. If you use a Workflow variable expression, you can enter in the expression as part of the path. For example, `/Myservice/Chart/${workflow.variables.branchName}/` or simply `${workflow.variables.chartFolder}`.For more information, see [Variables and Expressions in Harness](https://docs.harness.io/article/9dvxcegm90-variables) and [Add Workflow Variables](../model-cd-pipeline/workflows/workflow-configuration.md#add-workflow-variables).
+	2. If you use a Workflow variable expression, you can enter in the expression as part of the path. For example, `/Myservice/Chart/${workflow.variables.branchName}/` or simply `${workflow.variables.chartFolder}`.For more information, see [Variables and Expressions in Harness](../../firstgen-platform/techref-category/variables/variables.md) and [Add Workflow Variables](../model-cd-pipeline/workflows/workflow-configuration.md#add-workflow-variables).
 	1. If the chart is in the **root** folder of the repository location set in the Helm Chart Repository you added as a Harness Artifact Server, leave **Base Path** empty.
 2. In **Chart Name**, enter the name of the chart in that repo.
 3. In **Chart Version**, enter the chart version to use. This is found in the **Chart.yaml** **version** label. If you leave this field empty Harness gets the latest chart.
@@ -149,8 +149,8 @@ These options are provided for backwards-compatibility and it is preferable that
 | --- | --- | --- |
 | **Installation Method** | **Example** | **Field Values** |
 | Chart reference. | `helm install stable/nginx` | **Chart Name:** stable/nginx |
-| Path to a packaged chart.In this method, the chart file is located on the same pod as the Harness Delegate.You can add a Delegate Profile that copies the chart from a repo to the pod. For more information, see [Delegate Profiles](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation#delegate_profiles). | `helm install ./nginx-1.2.3.tgz` | **Chart Name:** *dir\_path\_to\_delegate*/nginx |
-| Path to an unpacked chart directory.In this method, the chart file is located on the same pod as the Harness delegate.You can add a Delegate Profile that copies the chart from a repo to the pod. For more information, see [Delegate Profiles](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation#delegate_profiles). | `helm install ./nginx` | **Chart Name:** *dir\_path\_to\_delegate*/nginx |
+| Path to a packaged chart.In this method, the chart file is located on the same pod as the Harness Delegate.You can add a Delegate Profile that copies the chart from a repo to the pod. For more information, see [Delegate Profiles](../../firstgen-platform/account/manage-delegates/delegate-installation.md#delegate-profiles). | `helm install ./nginx-1.2.3.tgz` | **Chart Name:** *dir\_path\_to\_delegate*/nginx |
+| Path to an unpacked chart directory.In this method, the chart file is located on the same pod as the Harness delegate.You can add a Delegate Profile that copies the chart from a repo to the pod. For more information, see [Delegate Profiles](../../firstgen-platform/account/manage-delegates/delegate-installation.md#delegate-profiles). | `helm install ./nginx` | **Chart Name:** *dir\_path\_to\_delegate*/nginx |
 | Absolute URL. | `helm install https://example.com/charts/nginx-1.2.3.tgz` | **Chart Name:** https://example.com/charts/nginx-1.2.3.tgz |
 
 For Helm, that's it. You don't have to do any further configuration to the service. Harness will use the chart you specified to configure the Kubernetes cluster.
@@ -175,7 +175,7 @@ If you use Helm commands in the Harness Service and in a Workflow deploying that
 
 #### Harness Variable Expressions are Supported
 
-You can use [Harness variable expressions](https://docs.harness.io/article/9dvxcegm90-variables) in any of the command options settings. For example, [Service Config variables](../model-cd-pipeline/setup-services/add-service-level-config-variables.md) and [Workflow variables](../model-cd-pipeline/workflows/add-workflow-variables-new-template.md).
+You can use [Harness variable expressions](../../firstgen-platform/techref-category/variables/variables.md) in any of the command options settings. For example, [Service Config variables](../model-cd-pipeline/setup-services/add-service-level-config-variables.md) and [Workflow variables](../model-cd-pipeline/workflows/add-workflow-variables-new-template.md).
 
 ### Spec Requirements for Steady State Check and Verification
 
@@ -226,7 +226,7 @@ In **Configuration**, in **Values YAML Override**, click the edit icon.
 
 For **Remote**, do the following:
 
-1. In **Source Repository**, select the Git repo you added as a [Source Repo Provider](https://docs.harness.io/article/ay9hlwbgwa-add-source-repo-providers).
+1. In **Source Repository**, select the Git repo you added as a [Source Repo Provider](../../firstgen-platform/account/manage-connectors/add-source-repo-providers.md).
 2. For **Commit ID**, select either **Latest from Branch** and enter in the branch name, or **Specific Commit ID** and enter in the **commit ID**.
 3. In **File path**, enter the path to the values.yaml file in the repo, including the repo name, like **helm/values.yaml**.
 

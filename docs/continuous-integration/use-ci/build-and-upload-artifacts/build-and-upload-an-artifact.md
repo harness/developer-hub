@@ -19,13 +19,13 @@ Once you've defined a build farm in the CI stage's Infrastructure, you can add a
 * Amazon Elastic Container Registry (ECR)
 
 
-For setting up a build farm, see: [Set Up Build Infrastructure](https://docs.harness.io/category/set-up-build-infrastructure).
+For setting up a build farm, see: [Set Up Build Infrastructure](/docs/category/set-up-build-infrastructure).
 
 
 This topic describes a simple one-step build workflow, minus testing: build the code in a build farm and then push it to a repo. For a quick summary of a build, push, and test Pipeline, see [CI Pipeline Quickstart](../../ci-quickstarts/ci-pipeline-quickstart.md).
 
 
-For details about each build and push step, see [CI Technical Reference](https://docs.harness.io/category/ci-technical-reference).
+For details about each build and push step, see [CI Technical Reference](/docs/category/ci-technical-reference).
 
 
 ### Before You Begin
@@ -36,7 +36,7 @@ You should be familiar with the following:
 
 * [CI Pipeline Quickstart](../../ci-quickstarts/ci-pipeline-quickstart.md)
 * [CI Stage Settings](../../ci-technical-reference/ci-stage-settings.md)
-* [Set Up Build Infrastructure](https://docs.harness.io/category/set-up-build-infrastructure)
+* [Set Up Build Infrastructure](/docs/category/set-up-build-infrastructure)
 * [Learn Harness' Key Concepts](../../../getting-started/learn-harness-key-concepts.md)
 
 
@@ -70,7 +70,7 @@ Do one of the following:
 * If you have an existing Pipeline with a CI stage, click **Codebase** on the right.
 
 
-In **Connector**, select an existing Connector to your codebase repo, or create a new one. See [Code Repo Connectors](https://docs.harness.io/category/code-repo-connectors).
+In **Connector**, select an existing Connector to your codebase repo, or create a new one. See [Code Repo Connectors](/docs/category/code-repo-connectors).
 
 
 You can see the URL for the repo account below **Repository Name**. Don't add the URL into **Repository Name**.

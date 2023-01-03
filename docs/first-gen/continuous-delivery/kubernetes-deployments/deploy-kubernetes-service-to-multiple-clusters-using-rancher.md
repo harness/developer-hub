@@ -44,7 +44,7 @@ The Harness Delegate does not need to be a Kubernetes Delegate and it does not n
 
 The Harness Delegate does need to be able to connect to the Rancher URL endpoint and to connect to the target Kubernetes clusters.
 
-See [Harness Delegate Overview](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation).
+See [Harness Delegate Overview](../../firstgen-platform/account/manage-delegates/delegate-installation.md).
 
 ### Review: Cluster Labels and Harness Infrastructure Definitions
 
@@ -82,7 +82,7 @@ Now that the cluster has labels, you can identify it in Harness as a target clus
 
 To connect Harness to your Rancher account, you must set up a Harness Rancher Cloud Provider.
 
-See [Add Rancher Cloud Providers](https://docs.harness.io/article/dipgqjn5pq-add-rancher-cloud-providers).
+See [Add Rancher Cloud Providers](../../firstgen-platform/account/manage-connectors/add-rancher-cloud-providers.md).
 
 ### Step 3: Add a Rancher Infrastructure Definition
 
@@ -98,7 +98,7 @@ Enter the following settings:
 
 * In **Cloud Provider Type**, select **Rancher**.
 * In **Deployment Type**, select **Kubernetes**.
-* In **Cloud Provider**, select the Rancher Cloud Provider you added using the steps in [Add Rancher Cloud Providers](https://docs.harness.io/article/dipgqjn5pq-add-rancher-cloud-providers).
+* In **Cloud Provider**, select the Rancher Cloud Provider you added using the steps in [Add Rancher Cloud Providers](../../firstgen-platform/account/manage-connectors/add-rancher-cloud-providers.md).
 * In **Namespace**, enter the target namespace for the deployments.
 	+ You can only enter one namespace. When you deploy to multiple clusters, the target namespaces must be the same.
 	+ You can also use a Harness variable expression to reference Kubernetes namespaces in Harness Infrastructure Definitions. When a Workflow is run, the namespace in the Infrastructure Definition is applied to all manifests in the Service. See [Select Kubernetes Namespaces based on InfraMapping](create-kubernetes-namespaces-based-on-infra-mapping.md).
@@ -120,7 +120,7 @@ You can use Harness built-in and Workflow variables in **Cluster Selection Crite
 
 See:
 
-* [Built-in Variables List](https://docs.harness.io/article/aza65y4af6-built-in-variables-list)
+* [Built-in Variables List](../../firstgen-platform/techref-category/variables/built-in-variables-list.md)
 * [Set Workflow Variables](../model-cd-pipeline/workflows/add-workflow-variables-new-template.md)
 * [Pass Variables between Workflows](../model-cd-pipeline/expressions/how-to-pass-variables-between-workflows.md)
 * [Passing Variables into Workflows and Pipelines from Triggers](../model-cd-pipeline/expressions/passing-variable-into-workflows.md)

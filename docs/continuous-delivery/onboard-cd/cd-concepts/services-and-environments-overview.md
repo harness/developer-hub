@@ -216,13 +216,13 @@ If you use Runtime Inputs in your Services and Environments, users will need to 
 
 If you use Expressions in your Services and Environments, Harness must be able to resolve these expressions when users run Pipeline using these Services and Environments.
 
-For more information on Runtime Inputs and Expressions, go to [Fixed Values, Runtime Inputs, and Expressions](https://docs.harness.io/article/f6yobn7iq0-runtime-inputs).
+For more information on Runtime Inputs and Expressions, go to [Fixed Values, Runtime Inputs, and Expressions](../../../platform/20_References/runtime-inputs.md).
 
 ### Services and Environments RBAC
 
 Please review these key RBAC uses cases for Services and Environments.
 
-For extensive information on Harness RBAC, go to [Harness Role-Based Access Control Overview](https://docs.harness.io/article/vz5cq0nfg2-rbac-in-harness) and [Harness Role-Based Access Control Quickstart](https://docs.harness.io/article/lrz2e4t1ko-set-up-rbac-pipelines).#### Access permission is needed to deploy to a Service or Environment
+For extensive information on Harness RBAC, go to [Harness Role-Based Access Control Overview](../../../platform/4_Role-Based-Access-Control/1-rbac-in-harness.md) and [Harness Role-Based Access Control Quickstart](../../../platform/4_Role-Based-Access-Control/10-set-up-rbac-pipelines.md).#### Access permission is needed to deploy to a Service or Environment
 
 One of the most important advantages of Services and Environments is the ability to define Roles that determines who can deploy them.
 

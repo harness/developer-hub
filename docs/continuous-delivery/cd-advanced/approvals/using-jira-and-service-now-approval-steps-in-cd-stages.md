@@ -12,10 +12,10 @@ This topic describes how to add Approval stages to your Pipeline and use Jira an
 
 Jira and ServiceNow Approval stages are described in the following topics:
 
-* [Adding Jira Approval Stages and Steps](https://docs.harness.io/article/2lhfk506r8-adding-jira-approval-stages): add Jira Approval stages and steps.
-* [Adding ServiceNow Approval Steps and Stages](https://docs.harness.io/article/h1so82u9ub-service-now-approvals) for ServiceNow Approval stages and steps.
+* [Adding Jira Approval Stages and Steps](../../../platform/9_Approvals/adding-jira-approval-stages.md): add Jira Approval stages and steps.
+* [Adding ServiceNow Approval Steps and Stages](../../../platform/9_Approvals/service-now-approvals.md) for ServiceNow Approval stages and steps.
 
 You can also use Jira and ServiceNow steps anywhere inside your CD stages.
 
-For more details, see [Ticketing Systems](https://docs.harness.io/category/ticketing-systems).
+For more details, see [Ticketing Systems](/docs/category/ticketing-systems).
 

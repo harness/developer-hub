@@ -18,11 +18,11 @@ Workflows include an **Apply** step that allows you to deploy any resource you
 
 * [Ignore a Manifest File During Deployment](ignore-a-manifest-file-during-deployment.md)
 * [Define Kubernetes Manifests](define-kubernetes-manifests.md)
-* [Kubernetes Versioning and Annotations](https://docs.harness.io/article/ttn8acijrz-versioning-and-annotations)
+* [Kubernetes Versioning and Annotations](../../firstgen-platform/techref-category/cd-ref/platforms-ref/versioning-and-annotations.md)
 
 ### Review: What Workloads Can I Deploy?
 
-See [What Can I Deploy in Kubernetes?](https://docs.harness.io/article/6ujb3c70fh).
+See [What Can I Deploy in Kubernetes?](../../firstgen-platform/techref-category/cd-ref/platforms-ref/what-can-i-deploy-in-kubernetes.md).
 
 ### Step 1: Ignore the Workload
 
@@ -102,7 +102,7 @@ In these cases, you shouldn't add a Delegate Selector to any step in the Workflo
 
 If your Workflow Infrastructure Definition's Cloud Provider isn't using a Delegate Selector, and you want this Workflow step to use a specific Delegate, do the following:
 
-In **Delegate Selector**, select the Selector for the Delegate(s) you want to use. You add Selectors to Delegates to make sure that they're used to execute the command. For more information, see [Select Delegates with Selectors](https://docs.harness.io/article/c3fvixpgsl-select-delegates-for-specific-tasks-with-selectors).
+In **Delegate Selector**, select the Selector for the Delegate(s) you want to use. You add Selectors to Delegates to make sure that they're used to execute the command. For more information, see [Select Delegates with Selectors](../../firstgen-platform/account/manage-delegates/select-delegates-for-specific-tasks-with-selectors.md).
 
 Harness will use Delegates matching the Selectors you add.
 
@@ -170,7 +170,7 @@ replicas: ${workflow.variables.replicas}
 
 Enable **Override YAML Values**, and then click **Remote**.
 
-In **Git Connector**, select the Harness Git Connector that connects Harness with your Git provider. See [Add Source Repo Providers](https://docs.harness.io/article/ay9hlwbgwa-add-source-repo-providers).
+In **Git Connector**, select the Harness Git Connector that connects Harness with your Git provider. See [Add Source Repo Providers](../../firstgen-platform/account/manage-connectors/add-source-repo-providers.md).
 
 In **Repo Name**, enter the name of the repo in your Git account.
 
@@ -203,7 +203,7 @@ Another example of the use of the Apply step is service mesh traffic shifting. Y
 ### Notes
 
 * The **Apply** step applies to Service Manifests that are local or added remotely using the **Kubernetes Resource Specs in YAML format** option. See [Link Resource Files or Helm Charts in Git Repos](link-resource-files-or-helm-charts-in-git-repos.md).
-* The Apply step does not version ConfigMap and Secret objects. ConfigMap and Secret objects are overwritten on each deployment. This is the same as when ConfigMap and Secret objects are marked as unversioned in typical rollouts (`harness.io/skip-versioning: "true"`). See [Kubernetes Versioning and Annotations](https://docs.harness.io/article/ttn8acijrz-versioning-and-annotations).
+* The Apply step does not version ConfigMap and Secret objects. ConfigMap and Secret objects are overwritten on each deployment. This is the same as when ConfigMap and Secret objects are marked as unversioned in typical rollouts (`harness.io/skip-versioning: "true"`). See [Kubernetes Versioning and Annotations](../../firstgen-platform/techref-category/cd-ref/platforms-ref/versioning-and-annotations.md).
 * You can use Harness variables in your manifests and values.yaml files. For example, Harness [Workflow variables](../model-cd-pipeline/workflows/add-workflow-variables-new-template.md).
 * In some cases, you might want to deploy a Service but skip its versioning. By default, release history is stored in the Kubernetes cluster in a ConfigMap. This ConfigMap is essential for release tracking, versioning, and rollback. If you want Harness to skip versioning for the Service, use the **Skip Versioning for Service** option in **Remote Manifests**. See [Option: Skip Versioning for Service](link-resource-files-or-helm-charts-in-git-repos.md#option-skip-versioning-for-service).
 

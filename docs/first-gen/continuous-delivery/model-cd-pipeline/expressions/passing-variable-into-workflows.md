@@ -12,7 +12,7 @@ You can pass values from a Harness Trigger into a Harness Workflow to be used du
 
 This process can be valuable when you want to use information from the Trigger condition as parameters in your Workflow at runtime.
 
-For information on variables in Harness, see [Variables and Expressions in Harness](https://docs.harness.io/article/9dvxcegm90-variables).An example is using a Github or Bitbucket push or pull request as a Trigger condition and passing push or pull request information to a Workflow via the Trigger.
+For information on variables in Harness, see [Variables and Expressions in Harness](../../../firstgen-platform/techref-category/variables/variables.md).An example is using a Github or Bitbucket push or pull request as a Trigger condition and passing push or pull request information to a Workflow via the Trigger.
 
 In the Workflow, you could take the branch name from the push or pull request and use it to create a namespace in a Helm chart, thereby creating a new Kubernetes namespace for each branch during deployment.
 
@@ -20,7 +20,7 @@ The Workflow can be templated (also called *templatized*) and each user that has
 
 ### Permissions Required
 
-The [Administer Other Account Functions](https://docs.harness.io/article/ven0bvulsj-users-and-permissions) account permission is required to template the Environment setting in a Workflow.
+The [Administer Other Account Functions](../../../firstgen-platform/security/access-management-howtos/users-and-permissions.md) account permission is required to template the Environment setting in a Workflow.
 
 ### Passing Variables Overview
 
@@ -41,7 +41,7 @@ These steps are demonstrated in detail below.
 
 * [Add a Workflow](../workflows/workflow-configuration.md)
 * [Add a Trigger](../triggers/add-a-trigger-2.md)
-* [Variables and Expressions in Harness](https://docs.harness.io/article/9dvxcegm90-variables)
+* [Variables and Expressions in Harness](../../../firstgen-platform/techref-category/variables/variables.md)
 
 ### Set Up Workflow with Variables
 

@@ -92,7 +92,7 @@ In **Specify Manifest Type**, select **OpenShift Template**, and then click **C
 
 In **Specify OpenShift Template Store**, select the Git provider where your template is located.
 
-For example, click **GitHub**, and then select or create a new GitHub Connector. See [Connect to Code Repo](https://ngdocs.harness.io/article/zbhehjzsnv-connect-to-code-repo).
+For example, click **GitHub**, and then select or create a new GitHub Connector. See [Connect to Code Repo](../../../platform/7_Connectors/connect-to-code-repo.md).
 
 Click **Continue**. **Manifest Details** appears.
 
@@ -122,7 +122,7 @@ In **Specify Manifest Type**, select **OpenShift Param**, and then click **Cont
 
 In **Specify OpenShift Param Store**, select the Git provider where your param file is located.
 
-For example, click **GitHub**, and then select or create a new GitHub Connector. See [Connect to Code Repo](https://ngdocs.harness.io/article/zbhehjzsnv-connect-to-code-repo).
+For example, click **GitHub**, and then select or create a new GitHub Connector. See [Connect to Code Repo](../../../platform/7_Connectors/connect-to-code-repo.md).
 
 Click **Continue**. **Manifest Details** appears.
 

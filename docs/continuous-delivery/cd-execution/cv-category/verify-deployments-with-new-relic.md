@@ -17,7 +17,7 @@ This topic covers how to add and configure New Relic as a Health Source for the 
 
 ## Before You Begin
 
-* [Add New Relic as a Verification Provider](https://docs.harness.io/article/g21fb5kfkg-connect-to-monitoring-and-logging-systems)
+* [Add New Relic as a Verification Provider](../../../platform/7_Connectors/connect-to-monitoring-and-logging-systems.md)
 
 ## Review: CV Setup Options
 
@@ -65,11 +65,17 @@ In **Continuous Verification Type**, select a type that matches your [deployment
 
 In **Monitored Service**, click **Click to autocreate a monitored service**.
 
-Harness automatically creates a Monitored Service using a concatenation of the Service and Environment names. For example, a Service named `todolist` and an Environment named `dev` will result in a Monitored Service named `todolist_dev`.
+:::note
 
-If the stage Service or Environment settings are [Runtime Inputs](https://ngdocs.harness.io/article/f6yobn7iq0-runtime-inputs), the Monitored Service and Health Sources settings will show up in the **Runtime Input** settings when you run the Pipeline.
+The option to auto-create a monitored service is not available if you have configured either a service, an environment, or both as runtime values. When you run the pipeline, Harness concatenates the service and environment values you enter in the runtime inputs screen and generates a monitored service name. If a monitored service with the same name exists, Harness assigns it to the pipeline. If no monitored service that matches the generated monitored service name exists, Harness skips the verification step. 
+
+For example, suppose you enter the service as `todolist` and the environment as `dev`. In that case, Harness generates the monitored service name `todolist_dev`, checks whether a monitored service with the name `todolist_dev` is available, and assigns it to the pipeline. If no monitored service is available with the name `todolist_dev`, Harness skips the verification step.
+
+:::
 
 ## Step 5: Add Health Sources
+
+This option is available only if you have configured the service and environment as fixed values.
 
 A Health Source is basically a mapping of a Harness Service to the service in a deployment environment monitored by an APM or logging tool.
 
@@ -110,7 +116,7 @@ The recommended **Duration** is **10 min** for logging providers and **15 m
 
 ## Step 8: Specify Artifact Tag
 
-In **Artifact Tag**, use a [Harness expression](https://newdocs.helpdocs.io/article/lml71vhsim-harness-variables) to reference the artifact in the stage Service settings.
+In **Artifact Tag**, use a [Harness expression](../../../platform/12_Variables-and-Expressions/harness-variables.md) to reference the artifact in the stage Service settings.
 
 The expression `<+serviceConfig.artifacts.primary.tag>` refers to the primary artifact.
 
@@ -118,9 +124,9 @@ The expression `<+serviceConfig.artifacts.primary.tag>` refers to the primary 
 
 In **Advanced**, you can select the following options:
 
-* [Step Skip Condition Settings](https://docs.harness.io/article/i36ibenkq2-step-skip-condition-settings)
-* [Step Failure Strategy Settings](https://docs.harness.io/article/htrur23poj-step-failure-strategy-settings)
-* [Select Delegates with Selectors](https://docs.harness.io/article/nnuf8yv13o-select-delegates-with-selectors)
+* [Step Skip Condition Settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+* [Step Failure Strategy Settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+* [Select Delegates with Selectors](../../../platform/2_Delegates/delegate-guide/select-delegates-with-selectors.md)
 
 See [Advanced Settings](verify-deployments-with-the-verify-step.md#option-advanced-settings).
 

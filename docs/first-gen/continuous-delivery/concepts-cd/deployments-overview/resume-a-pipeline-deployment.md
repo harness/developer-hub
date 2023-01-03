@@ -8,7 +8,11 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io).You can resume Pipeline deployment executions that meet the following criteria:
+:::note
+This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/continuous-delivery/cd-deployments-category/deployment-concepts).
+:::
+
+You can resume Pipeline deployment executions that meet the following criteria:
 
 * Failed
 * Aborted

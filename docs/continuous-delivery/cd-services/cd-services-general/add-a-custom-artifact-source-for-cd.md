@@ -102,7 +102,7 @@ The shell script you enter will query the Custom Artifact repository and output 
 
 `HARNESS_ARTIFACT_RESULT_PATH` is a random, unique file path created on the Delegate by Harness.
 
-You can use [Harness text secrets](https://docs.harness.io/article/osfw70e59c-add-use-text-secrets) in the script. For example:
+You can use [Harness text secrets](../../../platform/6_Security/2-add-use-text-secrets.md) in the script. For example:
 
 ```
 curl -u 'harness' <+secrets.getValue("repo_password")> https://myrepo.example.io/todolist/json/ > $HARNESS_ARTIFACT_RESULT_PATH
@@ -145,7 +145,7 @@ Enter the path in the payload array to the version. Using the above payload exam
 
 Enter the version number for this deployment, or select Runtime Input or Expression to select the version dynamically.
 
-For more information on Fixed Value, Runtime Input, and Expression got to [Fixed Values, Runtime Inputs, and Expressions](https://docs.harness.io/article/f6yobn7iq0-runtime-inputs).
+For more information on Fixed Value, Runtime Input, and Expression got to [Fixed Values, Runtime Inputs, and Expressions](../../../platform/20_References/runtime-inputs.md).
 
 When you done Artifact Details will look something like this:
 
@@ -244,7 +244,7 @@ namespace: <+infra.namespace>
 
 For details on using Values YAML in Harness, go to [Kubernetes Services](../k8s-services/kubernetes-services.md).
 
-[Harness Variables and Expressions](https://docs.harness.io/article/lml71vhsim-harness-variables) can be added to Values files (for example values.yaml), not the manifests themselves. This provides more flexibility.
+[Harness Variables and Expressions](../../../platform/12_Variables-and-Expressions/harness-variables.md) can be added to Values files (for example values.yaml), not the manifests themselves. This provides more flexibility.
 
 ### Shell Script Step
 

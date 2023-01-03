@@ -2,6 +2,7 @@ import React from "react";
 // import clsx from 'clsx';
 import Tooltip from "rc-tooltip";
 import Link from "@docusaurus/Link";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import "rc-tooltip/assets/bootstrap.css";
 import styles from "./TutorialCard.module.scss";
 
@@ -34,6 +35,7 @@ function Card({
   featuredCard,
   link = "#",
 }: CardItem) {
+  const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   return (
     <Link
       to={link}
@@ -43,12 +45,12 @@ function Card({
     >
       <div>
         <h6>
-          {icon && <img src={icon} />}
+          {icon && <img src={baseUrl + icon} />}
           {time}
         </h6>
         {newDoc && (
           <div className={styles.newDoc}>
-            <img src="/img/new.svg" />
+            <img src={`${baseUrl}img/new.svg`} />
           </div>
         )}
         <h4>{title}</h4>
@@ -58,7 +60,10 @@ function Card({
             {type.map((props, idx) => (
               <li>
                 <Tooltip placement="top" overlay={props}>
-                  <img src={`/img/icon_doctype_${props}.svg`} alt={props} />
+                  <img
+                    src={`${baseUrl}img/icon_doctype_${props}.svg`}
+                    alt={props}
+                  />
                 </Tooltip>
               </li>
             ))}

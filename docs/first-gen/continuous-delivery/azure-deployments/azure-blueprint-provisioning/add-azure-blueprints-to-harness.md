@@ -55,7 +55,7 @@ Harness Source Repo Providers connect your Harness account with your Git platfor
 
 For Azure Blueprint, you add a Harness Source Repo Provider and connect it to the Git repo for your definitions.
 
-For steps on setting up a Source Repo Provider, see [Add Source Repo Providers](https://docs.harness.io/article/ay9hlwbgwa-add-source-repo-providers).
+For steps on setting up a Source Repo Provider, see [Add Source Repo Providers](../../../firstgen-platform/account/manage-connectors/add-source-repo-providers.md).
 
 Next, you use this Source Repo Provider as the source of your Harness Infrastructure Provisioner.
 

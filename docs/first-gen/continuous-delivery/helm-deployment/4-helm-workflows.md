@@ -8,9 +8,9 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/article/lbhf2h71at).Once you have added the Harness Service and Environment for Helm, you can add a Harness Workflow to manage how your Harness Service is deployed, verified, and rolled back, among other important phases.
+This content is for Harness [FirstGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../continuous-delivery/onboard-cd/cd-quickstarts/native-helm-quickstart.md).Once you have added the Harness Service and Environment for Helm, you can add a Harness Workflow to manage how your Harness Service is deployed, verified, and rolled back, among other important phases.
 
-Harness includes both Kubernetes and Helm deployments, and you can Helm charts in both. Harness [Kubernetes Deployments](../kubernetes-deployments/kubernetes-deployments-overview.md) allow you to use your own Helm chart (remote or local), and Harness executes the Kubernetes API calls to build everything without Helm and Tiller (for Helm v2) needing to be installed in the target cluster. See [Helm Charts](https://docs.harness.io/article/t6zrgqq0ny-kubernetes-services#helm_charts).
+Harness includes both Kubernetes and Helm deployments, and you can Helm charts in both. Harness [Kubernetes Deployments](../kubernetes-deployments/kubernetes-deployments-overview.md) allow you to use your own Helm chart (remote or local), and Harness executes the Kubernetes API calls to build everything without Helm and Tiller (for Helm v2) needing to be installed in the target cluster. See [Helm Charts](/docs/category/helm-charts).
 
 ### Create the Workflow
 
@@ -103,7 +103,7 @@ This will override the values or values.yaml used in the Service.
 
 For information on how Harness merges values from different source for the values.yaml, see [Helm Values Priority](#helm_values_priority).
 
-File-based repo triggers are a powerful feature of Harness that lets you set a Webhook on your repo to trigger a Harness Workflow or Pipeline when a Push event occurs in the repo. For more information, see [File-based Repo Triggers](../model-cd-pipeline/triggers/add-a-trigger-2.md#file-based-repo-triggers).To use a Git connector, you need to add a Git repo as a Harness Source Repo provider. For more information, see [Add Source Repo Providers](https://docs.harness.io/article/ay9hlwbgwa-add-source-repo-providers).
+File-based repo triggers are a powerful feature of Harness that lets you set a Webhook on your repo to trigger a Harness Workflow or Pipeline when a Push event occurs in the repo. For more information, see [File-based Repo Triggers](../model-cd-pipeline/triggers/add-a-trigger-2.md#file-based-repo-triggers).To use a Git connector, you need to add a Git repo as a Harness Source Repo provider. For more information, see [Add Source Repo Providers](../../firstgen-platform/account/manage-connectors/add-source-repo-providers.md).
 
 To use a **Git connector** in the **Helm Deploy** step, do the following:
 
@@ -438,5 +438,5 @@ templatized: false
 * [5 - Helm Troubleshooting](5-helm-troubleshooting.md)
 * [Pipelines](../model-cd-pipeline/pipelines/pipeline-configuration.md)
 * [Triggers](../model-cd-pipeline/triggers/add-a-trigger-2.md)
-* [Continuous Verification](https://docs.harness.io/article/myw4h9u05l-verification-providers-list)
+* [Continuous Verification](../continuous-verification/continuous-verification-overview/concepts-cv/what-is-cv.md)
 

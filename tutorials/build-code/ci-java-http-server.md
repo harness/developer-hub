@@ -12,11 +12,11 @@ In this tutorial, you will create a Harness CI pipeline for a Java HTTP server a
 3. Pull the published Docker image, then pull and run it as a [Background step](/docs/continuous-integration/ci-technical-reference/background-step-settings).
 4. Run a connectivity test against the running application.
 
-:::tip
+```mdx-code-block
+import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
+```
 
-For a comprehensive guide on application testing, Harness provides O'Reilly's **Full Stack Testing** book for free at https://harness.io/resources/oreilly-full-stack-testing.
-
-:::
+<CISignupTip />
 
 ## Create your pipeline
 
@@ -220,3 +220,9 @@ Select **Save** in the YAML editor.
 4. Observe each step of the pipeline execution. When the first stage completes, test results appear on the **Tests** tab.
 
    When the second stage completes, you should see the successful `curl` command in the **Test Connection to Java HTTP Server** step.
+
+:::tip
+
+For a comprehensive guide on application testing, Harness provides O'Reilly's **Full Stack Testing** book for free at https://harness.io/resources/oreilly-full-stack-testing.
+
+:::

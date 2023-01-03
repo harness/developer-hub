@@ -12,12 +12,12 @@ This topic describes how to update a Jira issue using the Update Jira step.
 
 You can add the Update Jira step to a Harness CD stage or an Approval stage.
 
-You can also [create Jira Issues](create-jira-issues-in-cd-stages.md) and add [Jira Approval stages and steps](https://docs.harness.io/article/2lhfk506r8-adding-jira-approval-stages).
+You can also [create Jira Issues](create-jira-issues-in-cd-stages.md) and add [Jira Approval stages and steps](../../../platform/9_Approvals/adding-jira-approval-stages.md).
 
 ## Before You Begin
 
-* [Connect to Jira](https://docs.harness.io/article/e6s32ec7i7-connect-to-jira)
-* [Adding Jira Approval Stages and Steps](https://docs.harness.io/article/2lhfk506r8-adding-jira-approval-stages)
+* [Connect to Jira](../../../platform/7_Connectors/connect-to-jira.md)
+* [Adding Jira Approval Stages and Steps](../../../platform/9_Approvals/adding-jira-approval-stages.md)
 
 ## Visual Summary
 
@@ -37,9 +37,9 @@ Click **Jira Update**. The Jira Update step appears.
 
 In **Name**, enter a name that describes the step.
 
-In **Timeout**, enter how long you want Harness to try to update the issue before failing (and initiating the stage or step [Failure Strategy](https://docs.harness.io/article/0zvnn5s1ph-define-a-failure-strategy-on-stages-and-steps)).
+In **Timeout**, enter how long you want Harness to try to update the issue before failing (and initiating the stage or step [Failure Strategy](../../../platform/8_Pipelines/define-a-failure-strategy-on-stages-and-steps.md)).
 
-In **Jira Connector**, create or select the [Jira Connector](https://docs.harness.io/article/e6s32ec7i7-connect-to-jira) to use.
+In **Jira Connector**, create or select the [Jira Connector](../../../platform/7_Connectors/connect-to-jira.md) to use.
 
 In **Project**, select the Jira project that contains the issue you want to update.
 
@@ -89,7 +89,7 @@ If the issue is not part of a Jira workflow and does not have transition options
 
 ## Step 2: Add Issue Fields
 
-In Jira Fields, you can select specific fields to update within a Jira issue. For more information, see [Jira Custom Fields](https://docs.harness.io/article/077hwokrpr-jira-integration#jira_custom_fields).
+In Jira Fields, you can select specific fields to update within a Jira issue. For more information, see [Jira Custom Fields](../../../first-gen/continuous-delivery/model-cd-pipeline/workflows/jira-integration.md#jira-custom-fields).
 
 ![](./static/update-jira-issues-in-cd-stages-18.png)
 
@@ -124,8 +124,8 @@ The number 1 is used as an example. You can add whatever number you need.
 
 In Advanced, you can use the following options:
 
-* [Step Skip Condition Settings](https://docs.harness.io/article/i36ibenkq2-step-skip-condition-settings)
-* [Step Failure Strategy Settings](https://docs.harness.io/article/htrur23poj-step-failure-strategy-settings)
+* [Step Skip Condition Settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+* [Step Failure Strategy Settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
 
 ## Step 3: Apply and Test
 
@@ -148,5 +148,5 @@ The updated issue appears in Jira.
 ## See Also
 
 * [Create Jira Issues in CD Stages](create-jira-issues-in-cd-stages.md)
-* [Adding Jira Approval Stages and Steps](https://docs.harness.io/article/2lhfk506r8-adding-jira-approval-stages)
+* [Adding Jira Approval Stages and Steps](../../../platform/9_Approvals/adding-jira-approval-stages.md)
 

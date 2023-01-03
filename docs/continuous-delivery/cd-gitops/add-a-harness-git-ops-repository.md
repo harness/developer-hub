@@ -12,7 +12,7 @@ This topic describes how to add a Harness GitOps Repository containing the decla
 
 Harness GitOps Repositories are connections to repos containing the declarative description of a desired state. The declarative description can be in Kubernetes manifests, Helm Chart, Kustomize manifests, etc.
 
-A Harness GitOps Repository is used for Harness GitOps only. For other Harness features like CI, CD Pipelines, etc, use a standard [Git Connector](https://ngdocs.harness.io/category/o1zhrfo8n5).
+A Harness GitOps Repository is used for Harness GitOps only. For other Harness features like CI, CD Pipelines, etc, use a standard [Git Connector](/docs/category/connectors).
 
 ## Before you begin
 
@@ -60,7 +60,7 @@ If you use a [GitOps Repository Credentials Template](add-harness-git-ops-reposi
    - For **SSH**, ensure that the key is not OpenSSH, but rather PEM format. To generate an SSHv2 key, use: `ssh-keygen -t rsa -m PEM` The `rsa` and `-m PEM` ensure the algorithm and that the key is PEM. Next, follow the prompts to create the PEM key. 
    - For more information, see the [ssh-keygen man page](https://linux.die.net/man/1/ssh-keygen).
    - **HTTP** also has the **Anonymous** option.
-   - For steps on setting up the GitHub App, see [Use a GitHub App in a GitHub Connector](https://docs.harness.io/article/nze5evmqu1-git-hub-app-support).
+   - For steps on setting up the GitHub App, see [Use a GitHub App in a GitHub Connector](../../platform/7_Connectors/git-hub-app-support.md).
 2. Click **Save & Continue**. Harness validates the connection.
 
 ### Use a Credentials Template

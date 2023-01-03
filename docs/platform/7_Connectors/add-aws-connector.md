@@ -92,7 +92,7 @@ You can select **Any Available Harness Delegate** and Harness will select the De
 
 You can use Delegate Tags to select one or more Delegates. For details on Delegate Tags, see [Select Delegates with Tags](../2_Delegates/delegate-guide/select-delegates-with-selectors.md).
 
-If you need to install a Delegate, see [Delegate Installation Overview](https://docs.harness.io/article/re8kk0ex4k-delegate-installation-overview).
+If you need to install a Delegate, see [Delegate Installation Overview](../2_Delegates/delegate-installation-overview.md).
 
 Click **Save and Continue**.
 

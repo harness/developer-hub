@@ -155,7 +155,9 @@ CfClient cfClient = new CfClient(apiKey, Config.builder().build());
 * A Target is identified by a name and an identifier.
 	+ Enter a name that will identify this target.
 	+ Enter a unique identifier for your target. For example, an application, systems, services, machines, resources uniquely identified by an IP address, email ID, user ID, etc.
+
 	+ For more information about Targets, go to [Target Management](https://docs.harness.io/category/xw2hz815l8-ff-target-management).
+
 
 #### Add a Target
 

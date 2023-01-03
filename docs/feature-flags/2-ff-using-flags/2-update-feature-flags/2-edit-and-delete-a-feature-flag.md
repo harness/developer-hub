@@ -62,6 +62,6 @@ You can also:
 
 * [Edit your Flag Variations](3-manage-variations.md)
 * [Add Prerequisite Flags](../3-add-prerequisites-to-feature-flag.md)
-* [Manage Your Targets](https://docs.harness.io/category/manage-feature-flag-targets)
+* [Manage Your Targets](/docs/category/manage-feature-flag-targets)
 
 

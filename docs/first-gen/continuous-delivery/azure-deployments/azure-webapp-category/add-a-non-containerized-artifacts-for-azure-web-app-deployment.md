@@ -27,10 +27,10 @@ See [Supported Platforms and Technologies](../../../starthere-firstgen/supporte
 
 The Harness Azure Web Application Service type supports the following repos:
 
-* **Docker Registry:** see [Add Docker Registry Artifact Servers](https://docs.harness.io/article/tdj2ghkqb0-add-docker-registry-artifact-servers).
-* **Artifactory:** see [Add Artifactory Servers](https://docs.harness.io/article/nj3p1t7v3x-add-artifactory-servers).
-* **Amazon S3:** see [Add Amazon Web Services (AWS) Cloud Provider](https://docs.harness.io/article/wt1gnigme7-add-amazon-web-services-cloud-provider).
-* **Jenkins:** see [Add Jenkins Artifact Servers](https://docs.harness.io/article/qa7lewndxq-add-jenkins-artifact-servers).
+* **Docker Registry:** see [Add Docker Registry Artifact Servers](../../../firstgen-platform/account/manage-connectors/add-docker-registry-artifact-servers.md).
+* **Artifactory:** see [Add Artifactory Servers](../../../firstgen-platform/account/manage-connectors/add-artifactory-servers.md).
+* **Amazon S3:** see [Add Amazon Web Services (AWS) Cloud Provider](../../../firstgen-platform/account/manage-connectors/add-amazon-web-services-cloud-provider.md).
+* **Jenkins:** see [Add Jenkins Artifact Servers](../../../firstgen-platform/account/manage-connectors/add-jenkins-artifact-servers.md).
 * **Azure Artifact:** see [Add an Azure DevOps Artifact Source](../../model-cd-pipeline/setup-services/add-an-azure-dev-ops-artifact-source.md).
 	+ You can use Maven and NuGet. If you choose the Maven package type you can also use ZIP or WAR. If you use ZIP or WAR, then select ZIP or WAR as the type in your Harness Service Artifact Type.
 

@@ -33,7 +33,7 @@ See also [Application Checklist](../applications/application-configuration.md), 
 
 Infrastructure provisioner templates include inputs and outputs that Harness uses for provisioning:
 
-* **Inputs -** Typically, provisioner inputs are information needed to access the target environment, such access and secret keys. In Harness, you can write values from Harness [Secrets Management](https://docs.harness.io/article/au38zpufhr-secret-management) or [Workflow variables](../workflows/workflow-configuration.md#add-workflow-variables) to template inputs to be used at runtime.
+* **Inputs -** Typically, provisioner inputs are information needed to access the target environment, such access and secret keys. In Harness, you can write values from Harness [Secrets Management](../../../firstgen-platform/security/secrets-management/secret-management.md) or [Workflow variables](../workflows/workflow-configuration.md#add-workflow-variables) to template inputs to be used at runtime.
 * **Outputs -** In order for Harness to create infrastructure using your provisioner, you map template outputs (VPCs, regions, subnets, etc) to Harness Infrastructure Provisioner **Service Mappings**, and the outputs are used to provision as the Service is deployed.
 
 The process is as follows:
@@ -94,7 +94,7 @@ Currently, this feature is behind the Feature Flag `ROLLBACK_PROVISIONER_AFTER_
 
 You can set up an infrastructure provisioner quickly using the Harness code editor.
 
-For information about syncing the Harness code editor with Git, see [Configuration as Code](https://docs.harness.io/article/htvzryeqjw-configuration-as-code).To set up an infrastructure provisioner using code, do the following:
+For information about syncing the Harness code editor with Git, see [Configuration as Code](../../../firstgen-platform/config-as-code/configuration-as-code.md).To set up an infrastructure provisioner using code, do the following:
 
 1. In the Git repo for Harness, open your application folder.
 2. Inside your application folder, add a new folder named **Provisioners**.

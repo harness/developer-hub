@@ -20,12 +20,12 @@ This topic provides a simple demonstration of how to create a bash script in a S
 ### Before You Begin
 
 * [Add a Workflow](workflow-configuration.md)
-* [Variables and Expressions in Harness](https://docs.harness.io/article/9dvxcegm90-variables)
-* [Secrets Management](https://docs.harness.io/article/au38zpufhr-secret-management) (for shell session execution credentials)
+* [Variables and Expressions in Harness](../../../firstgen-platform/techref-category/variables/variables.md)
+* [Secrets Management](../../../firstgen-platform/security/secrets-management/secret-management.md) (for shell session execution credentials)
 
 ### Limitations
 
-* Shell Script step names cannot contain dots. This is true for names entered in the Harness Manager UI or YAML via [Configure as Code](https://docs.harness.io/article/r5vya3dlt0-edit-the-code-in-harness) or [Git Sync](https://docs.harness.io/article/6mr74fm55h-harness-application-level-sync).
+* Shell Script step names cannot contain dots. This is true for names entered in the Harness Manager UI or YAML via [Configure as Code](../../../firstgen-platform/config-as-code/edit-the-code-in-harness.md) or [Git Sync](../../../firstgen-platform/config-as-code/harness-application-level-sync.md).
 * If you add a trailing space at the end of any line on your script, Harness YAML transforms that into a single-line value with all control characters visible. For example, this script has a trailing space:
   
   ![](./static/capture-shell-script-step-output-91.png)
@@ -45,7 +45,7 @@ With the Shell Script command, you can execute scripts in the shell session of t
 * Execute bash scripts on the host running a Harness Delegate. You can use Delegate Selectors to identify which Harness Delegate to use.
 * Execute bash or PowerShell scripts on a remote target host in the deployment Infrastructure Definition.
 
-You can run PowerShell scripts on a Harness Delegate, even though the Delegate must be run on Linux. Linux supports PowerShell using  [PowerShell core](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-core-on-windows?view=powershell-7). You must install PowerShell on the Delegate using a Delegate Profile. See [PowerShell](https://docs.harness.io/article/nxhlbmbgkj-common-delegate-profile-scripts#power_shell) in Common Profile Scripts.
+You can run PowerShell scripts on a Harness Delegate, even though the Delegate must be run on Linux. Linux supports PowerShell using  [PowerShell core](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-core-on-windows?view=powershell-7). You must install PowerShell on the Delegate using a Delegate Profile. See [PowerShell](../../../firstgen-platform/techref-category/account-ref/delegate-ref/common-delegate-profile-scripts.md#power-shell) in Common Profile Scripts.
 
 When executing a script, you can also **dynamically capture** the execution output from the script, providing runtime variables based on the script execution context, and export those to another step in the same workflow or another workflow in the same pipeline.
 
@@ -61,7 +61,7 @@ The Shell Script step succeeds or fails based on the exit value of the script. A
 
 #### What Information is Available to Capture?
 
-Any information in the particular shell session of the workflow can be set, captured and exported using one or more Shell Script steps in that workflow. In addition, you can set and capture information available using the built-in Harness variables. For more information, see [Variables and Expressions in Harness](https://docs.harness.io/article/9dvxcegm90-variables).
+Any information in the particular shell session of the workflow can be set, captured and exported using one or more Shell Script steps in that workflow. In addition, you can set and capture information available using the built-in Harness variables. For more information, see [Variables and Expressions in Harness](../../../firstgen-platform/techref-category/variables/variables.md).
 
 A good example of information you can capture and export is the Harness variable `${instance.name}`, which gives you the name of the target host on which this script is executed at runtime.Capturing and exporting script output in the Shell Script step can be very powerful. For example, a Harness trigger could pass in a variable to a workflow (like a Git commitID), the Shell Step could use that value and info from its session in a complex function, and then export the output down the pipeline for further evaluation.
 
@@ -127,13 +127,13 @@ If your Workflow Infrastructure Definition's Cloud Provider uses a Delegate Sele
 
 If you have selected Delegates in the Shell Script **Delegate Selector** setting and enabled **Include Infrastructure Selectors**, then Harness will use the Delegates selected in both the Cloud Provider and Shell Script step.
 
-See [Select Delegates with Selectors](https://docs.harness.io/article/c3fvixpgsl-select-delegates-for-specific-tasks-with-selectors).
+See [Select Delegates with Selectors](../../../firstgen-platform/account/manage-delegates/select-delegates-for-specific-tasks-with-selectors.md).
 
 ### Step 4: Provide Execution Credentials
 
 If you selected **BASH** in **Script Type**, **Connection Type** will contain **SSH**. If you selected **POWERSHELL** in **Script Type**, **Connection Type** will contain **WINRM**.
 
-In **SSH Connection Attribute** (or **WinRM Connection Attribute**), select the execution credentials to use for the shell session. For information on setting up execution credentials, see [Add SSH Keys](https://docs.harness.io/article/gsp4s7abgc-add-ssh-keys) and [Add WinRM Connection Credentials](https://docs.harness.io/article/9fqa1vgar7-add-win-rm-connection-credentials).
+In **SSH Connection Attribute** (or **WinRM Connection Attribute**), select the execution credentials to use for the shell session. For information on setting up execution credentials, see [Add SSH Keys](../../../firstgen-platform/security/secrets-management/add-ssh-keys.md) and [Add WinRM Connection Credentials](../../../firstgen-platform/security/secrets-management/add-win-rm-connection-credentials.md).
 
 **Template the SSH Connection Attribute** — Click the **[T]** button to template the **SSH Connection Attribute**. This will create a Workflow variable for the SSH Connection Attribute. When you deploy, you will provide a value for the variable. This enables you to select the SSH Connection Attribute at deployment runtime.### Step 5: Specify Working Directory on Remote Host
 
@@ -151,7 +151,7 @@ If your Workflow Infrastructure Definition's Cloud Provider uses a Delegate Sele
 
 In some cases, you might want this Workflow step to use a specific Delegate. If so, do the following:
 
-In **Delegate Selectors**, select the Selector for the Delegate(s) you want to use. You add Selectors to Delegates in order to ensure that they are used to execute the command. For more information, see [Select Delegates for Specific Tasks with Selectors](https://docs.harness.io/article/c3fvixpgsl-select-delegates-for-specific-tasks-with-selectors).
+In **Delegate Selectors**, select the Selector for the Delegate(s) you want to use. You add Selectors to Delegates in order to ensure that they are used to execute the command. For more information, see [Select Delegates for Specific Tasks with Selectors](../../../firstgen-platform/account/manage-delegates/select-delegates-for-specific-tasks-with-selectors.md).
 
 Selectors can be used whether **Execute on Delegate** is enabled or not. The Shell Script command honors the Selector and executes the SSH connection to the specified target host via the selected Delegate.
 
@@ -303,7 +303,7 @@ For more information, see this article: [Writing Robust Bash Shell Scripts](http
 
 You can use Harness secrets in your Shell Script steps.
 
-See [Use Encrypted Text Secrets](https://docs.harness.io/article/ygyvp998mu-use-encrypted-text-secrets).
+See [Use Encrypted Text Secrets](../../../firstgen-platform/security/secrets-management/use-encrypted-text-secrets.md).
 
 Basically, you use `${secrets.getValue("secret_name")}` to refer to the secret.
 

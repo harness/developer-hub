@@ -20,7 +20,7 @@ You can connect to an artifact repo inline when developing your Pipeline, or sep
 
 Connectors for artifacts stored in Google Cloud Storage or Amazon S3 are added as **Cloud Providers** Connectors, not **Artifact Repositories**.
 
-If you are using Google Cloud Storage or Amazon S3, see [Cloud Platform Connectors](https://docs.harness.io/category/cloud-platform-connectors).
+If you are using Google Cloud Storage or Amazon S3, see [Cloud Platform Connectors](/docs/category/cloud-platform-connectors).
 
 For Azure ACR, use the **Docker Registry** Connector, described below.
 
@@ -30,7 +30,7 @@ You can add an Artifact Repository Connector at the Account/Org/Project scope.
 
 This topic will explain how to add it at the Project scope. The process is same for Org and Account.
 
-Steps on adding the Artifact Repository Connector inline when developing a Pipeline are covered in the relevant How-to and Technical Reference topics. For example, adding a Docker Registry is covered in the [Kubernetes CD Quickstart](https://docs.harness.io/article/knunou9j30-kubernetes-cd-quickstart) and [Docker Connector Settings Reference](ref-cloud-providers/docker-registry-connector-settings-reference.md).
+Steps on adding the Artifact Repository Connector inline when developing a Pipeline are covered in the relevant How-to and Technical Reference topics. For example, adding a Docker Registry is covered in the [Kubernetes CD Quickstart](../../continuous-delivery/onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md) and [Docker Connector Settings Reference](ref-cloud-providers/docker-registry-connector-settings-reference.md).
 
 ### Step: Add an Artifactory Repository
 
@@ -73,7 +73,7 @@ For details on settings and permissions, see [Docker Connector Settings Referenc
 
 You can add Helm Charts from an HTTP Helm Repo. Once you set up the Connector, you can use it in a Stage to add your Helm Chart.
 
-Since Harness lets you use the `<+artifact.image>` expression in your Helm Chart Values YAML files, Helm Charts are added a Stage Service in **Manifests** and not **Artifacts**. If you use the `<+artifact.image>` expression in your Helm Chart Values YAML files, then Harness will pull the image you add to **Artifacts**. See [Deploy Helm Charts](https://docs.harness.io/article/7owpxsaqar-deploy-helm-charts).
+Since Harness lets you use the `<+artifact.image>` expression in your Helm Chart Values YAML files, Helm Charts are added a Stage Service in **Manifests** and not **Artifacts**. If you use the `<+artifact.image>` expression in your Helm Chart Values YAML files, then Harness will pull the image you add to **Artifacts**. See [Deploy Helm Charts](../../continuous-delivery/cd-advanced/cd-helm-category/deploy-helm-charts.md).
 
 For details on settings and permissions, see [HTTP Helm Repo Connector Settings Reference](ref-source-repo-provider/http-helm-repo-connector-settings-reference.md).
 
@@ -95,7 +95,7 @@ For details on settings and permissions, see [HTTP Helm Repo Connector Settings 
 
 You can add Helm Charts from an [OCI Helm Registry](https://helm.sh/docs/topics/registries/). Once you set up the Connector, you can use it in a Stage to add your Helm Chart.
 
-Since Harness lets you use the `<+artifact.image>` expression in your Helm Chart Values YAML files, Helm Charts are added a Stage Service in **Manifests** and not **Artifacts**. If you use the `<+artifact.image>` expression in your Helm Chart Values YAML files, then Harness will pull the image you add to **Artifacts**. See [Deploy Helm Charts](https://docs.harness.io/article/7owpxsaqar-deploy-helm-charts).
+Since Harness lets you use the `<+artifact.image>` expression in your Helm Chart Values YAML files, Helm Charts are added a Stage Service in **Manifests** and not **Artifacts**. If you use the `<+artifact.image>` expression in your Helm Chart Values YAML files, then Harness will pull the image you add to **Artifacts**. See [Deploy Helm Charts](../../continuous-delivery/cd-advanced/cd-helm-category/deploy-helm-charts.md).
 
 1. Open a Harness Project.
 2. In **Project Setup**, click **Connectors**.

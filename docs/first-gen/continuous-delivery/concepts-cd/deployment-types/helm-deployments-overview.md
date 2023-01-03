@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/article/lbhf2h71at).Harness includes both Kubernetes and Helm deployments, and you can use Helm charts in both. Harness [Kubernetes](../../kubernetes-deployments/kubernetes-deployments-overview.md) integration allows you to use your own Helm chart (remote or local), and Harness executes the Kubernetes API calls to build everything without Helm and Tiller (for Helm v2) needing to be installed in the target cluster. See [Link Resource Files or Helm Charts in Git Repos](../../kubernetes-deployments/link-resource-files-or-helm-charts-in-git-repos.md).This topic describes the concept of a Harness **Native Helm** deployment by describing the high-level steps involved.
+This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../../continuous-delivery/onboard-cd/cd-quickstarts/native-helm-quickstart.md).Harness includes both Kubernetes and Helm deployments, and you can use Helm charts in both. Harness [Kubernetes](../../kubernetes-deployments/kubernetes-deployments-overview.md) integration allows you to use your own Helm chart (remote or local), and Harness executes the Kubernetes API calls to build everything without Helm and Tiller (for Helm v2) needing to be installed in the target cluster. See [Link Resource Files or Helm Charts in Git Repos](../../kubernetes-deployments/link-resource-files-or-helm-charts-in-git-repos.md).This topic describes the concept of a Harness **Native Helm** deployment by describing the high-level steps involved.
 
 For a quick tutorial on using Helm with a Harness Kubernetes deployment, see the [Helm Quickstart](../../../first-gen-quickstarts/helm-quickstart.md).
 
@@ -36,7 +36,7 @@ A Harness **Native Helm** deployment requires the following:
 * Kubernetes cluster: You will need a target cluster for the Harness Delegate, your application, and your Kubernetes workloads. A Kubernetes Delegate requires at least 8GB RAM, and so your cluster should have enough RAM to host the Delegate and your applications and workloads.
 * Helm and Tiller **for Helm v2 only**: Helm and Tiller installed and running on one pod in the cluster.
 	+ **If you are using Helm v3:** You do not need Tiller installed. Tiller is not used in Helm v3.
-	+ When you install and run a new Harness Delegate, [Harness includes Helm 3 support automatically](https://docs.harness.io/article/ymw96mf8wy-use-custom-helm-binaries-on-harness-delegates).
+	+ When you install and run a new Harness Delegate, [Harness includes Helm 3 support automatically](../../../firstgen-platform/account/manage-delegates/use-custom-helm-binaries-on-harness-delegates.md).
 * Helm chart: For example, a Bitnami Helm chart for NGINX from their Github repo.
 
 ### What Does Harness Deploy?
@@ -66,6 +66,6 @@ The following list describes the major steps of a Harness Helm deployment:
 
 Read the following topics to build on what you've learned:
 
-* [Helm How-tos](https://docs.harness.io/category/native-helm-deployments)
+* [Helm How-tos](/docs/category/native-helm-deployments)
 * Blog on Helm support in Harness Kubernetes deployments, [Helm Support for Harness Continuous Delivery](https://harness.io/2019/05/helm-support-for-harness-continuous-delivery/).
 

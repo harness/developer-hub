@@ -41,18 +41,18 @@ You will learn how to:
 
 ### Limitations and Requirements
 
-* Secure Shell requires looping capability. See [Looping Strategies Overview: Matrix, Repeat, and Parallelism](https://docs.harness.io/article/eh4azj73m4-looping-strategies-matrix-repeat-and-parallelism)
+* Secure Shell requires looping capability. See [Looping Strategies Overview: Matrix, Repeat, and Parallelism](../../../platform/8_Pipelines/looping-strategies-matrix-repeat-and-parallelism.md)
 
 ### Before You Begin
 
-* Review [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts) to establish a general understanding of Harness.
+* Review [Harness Key Concepts](../../../first-gen/starthere-firstgen/harness-key-concepts.md) to establish a general understanding of Harness.
 * Make sure that you have a Delegate available in your environment.
 	+ You can install a Kubernetes or Docker Delegate. See Install Delegates.
 	+ Ideally, you should install the Delegate in the same subnet as the target host(s).
 * Target host: in this guide, we use an AWS EC2 instance as the target host with a minimum t2-medium.
-* SSH Keys for the target host(s): you will need [SSH Keys](https://docs.harness.io/article/xmp9j0dk8b-add-use-ssh-secrets#add_ssh_credential) for the target hosts. For example, in this tutorial, we connect to an AWS EC2 instance by providing the username and an existing secret file for that AWS EC2 instance. When a EC2 instance is created, a Key Pair is generated in AWS. From the Key Pair for the AWS EC2 instance, you can download a .PEM file to your machine and upload that file to Harness as a secret file.
+* SSH Keys for the target host(s): you will need [SSH Keys](../../../platform/6_Security/4-add-use-ssh-secrets.md#add-ssh-credential) for the target hosts. For example, in this tutorial, we connect to an AWS EC2 instance by providing the username and an existing secret file for that AWS EC2 instance. When a EC2 instance is created, a Key Pair is generated in AWS. From the Key Pair for the AWS EC2 instance, you can download a .PEM file to your machine and upload that file to Harness as a secret file.
 
-You can also simply deploy the artifact to your local computer instead of using an AWS EC2 instance. If you want to do this, install the Harness Delegate on your local computer (for example, using Docker Desktop), use a [Physical Data Center](https://docs.harness.io/article/stkxmb643f-add-physical-data-center-cloud-provider) Connector instead of an AWS Connector, and when you set up the target infrastructure SSH key in Harness, use your local login information. You might also need to enable remote access on your computer.
+You can also simply deploy the artifact to your local computer instead of using an AWS EC2 instance. If you want to do this, install the Harness Delegate on your local computer (for example, using Docker Desktop), use a [Physical Data Center](../../../first-gen/firstgen-platform/account/manage-connectors/add-physical-data-center-cloud-provider.md) Connector instead of an AWS Connector, and when you set up the target infrastructure SSH key in Harness, use your local login information. You might also need to enable remote access on your computer.
 
 ## Create the Deploy Stage
 
@@ -155,7 +155,7 @@ Create the Infrastructure Definition for the target hosts.
    
    ![](./static/ssh-ng-178.png)
    
-   If you do not have a Delegate installed, go to [Delegate how-to](https://docs.harness.io/article/0slo2gklsy-delegate-how-tos) and follow one of the installation topics.
+   If you do not have a Delegate installed, go to [Delegate how-to](../../../platform/2_Delegates/delegate-guide/delegate-how-tos.md) and follow one of the installation topics.
 15. Click **Finish**. The Infrastructure Definition is updated with the PDC Connector.
   
 ![](./static/ssh-ng-179.png)
@@ -326,7 +326,7 @@ During deployment, you'll see each host listed in the loop:
 
 ### Looping Strategies for each deployment strategy
 
-The Repeat [Looping Strategy](https://docs.harness.io/article/eh4azj73m4-looping-strategies-matrix-repeat-and-parallelism) is used differently for the Basic, Rolling, and Canary deployment types.
+The Repeat [Looping Strategy](../../../platform/8_Pipelines/looping-strategies-matrix-repeat-and-parallelism.md) is used differently for the Basic, Rolling, and Canary deployment types.
 
 The Looping Strategy is automatically added to the **Deploy** step and configured for the deployment type you selected:
 
@@ -359,7 +359,7 @@ Harness creates 2 Phases.
 
 ![](./static/ssh-ng-197.png)
 
-You can add any Approval steps inside the Phase Group. See [Adding ServiceNow Approval Steps and Stages](../../cd-advanced/approvals/using-harness-approval-steps-in-cd-stages.md), [Adding Jira Approval Stages and Steps](https://docs.harness.io/article/2lhfk506r8-adding-jira-approval-stages), and [Adding ServiceNow Approval Steps and Stages](https://docs.harness.io/article/h1so82u9ub-service-now-approvals).
+You can add any Approval steps inside the Phase Group. See [Adding ServiceNow Approval Steps and Stages](../../cd-advanced/approvals/using-harness-approval-steps-in-cd-stages.md), [Adding Jira Approval Stages and Steps](../../../platform/9_Approvals/adding-jira-approval-stages.md), and [Adding ServiceNow Approval Steps and Stages](../../../platform/9_Approvals/service-now-approvals.md).
 
 The Looping Strategy for the first Phase deploys to 50% of the hosts (partitions):
 
@@ -400,7 +400,7 @@ Harness creates 2 phases as step groups.
 
 ![](./static/ssh-ng-199.png)
 
-You can add any Approval steps between the Step Groups. See [Adding ServiceNow Approval Steps and Stages](../../cd-advanced/approvals/using-harness-approval-steps-in-cd-stages.md), [Adding Jira Approval Stages and Steps](https://docs.harness.io/article/2lhfk506r8-adding-jira-approval-stages), and [Adding ServiceNow Approval Steps and Stages](https://docs.harness.io/article/h1so82u9ub-service-now-approvals).
+You can add any Approval steps between the Step Groups. See [Adding ServiceNow Approval Steps and Stages](../../cd-advanced/approvals/using-harness-approval-steps-in-cd-stages.md), [Adding Jira Approval Stages and Steps](../../../platform/9_Approvals/adding-jira-approval-stages.md), and [Adding ServiceNow Approval Steps and Stages](../../../platform/9_Approvals/service-now-approvals.md).
 
 The Looping Strategy for the first Phase selects 50% of the target hosts:
 
@@ -428,13 +428,13 @@ You can use all of the `<+instance...>` expressions to reference your hosts.
 
 For Microsoft Azure, AWS, or any platform-agnostic Physical Data Center (PDC):
 
-* [<+instance.hostName>](https://docs.harness.io/article/lml71vhsim-harness-variables#instance_host_name)
-* [<+instance.host.hostName>](https://docs.harness.io/article/lml71vhsim-harness-variables#instance_host_host_name)
-* [<+instance.name>](https://docs.harness.io/article/lml71vhsim-harness-variables#instance_name)
+* [<+instance.hostName>](../../../platform/12_Variables-and-Expressions/harness-variables.md#instance-host-name)
+* [<+instance.host.hostName>](../../../platform/12_Variables-and-Expressions/harness-variables.md#instance-host-host-name)
+* [<+instance.name>](../../../platform/12_Variables-and-Expressions/harness-variables.md#instance-name)
 
 For Microsoft Azure or AWS:
 
-* [<+instance.host.privateIp>](https://docs.harness.io/article/lml71vhsim-harness-variables#instance_host_private_ip)
-* [<+instance.host.publicIp>](https://docs.harness.io/article/lml71vhsim-harness-variables#instance_host_public_ip)
+* [<+instance.host.privateIp>](../../../platform/12_Variables-and-Expressions/harness-variables.md#instance-host-private-ip)
+* [<+instance.host.publicIp>](../../../platform/12_Variables-and-Expressions/harness-variables.md#instance-host-public-ip)
 
 `instance.name` has the same value as `instance.hostName`. Both are available for backward compatibility.

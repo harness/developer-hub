@@ -124,7 +124,7 @@ To set up the build infrastructure, you add a connector to your Kubernetes clust
 			</li>
 			<li>Download the YAML file.</li>
 			<li>In a terminal, navigate to the location of the file.</li>
-			<li>In the same Terminal, log into your cluster and run the following:<br/><code>kubectl apply -f harness-delegate.yml</code><br/>Once you apply the YAML file, you&#39;ll see an output like this:<pre>% kubectl apply -f harness-delegate.yml<br/>namespace/harness-delegate-ng created<br/>clusterrolebinding.rbac.authorization.k8s.io/harness-delegate-ng-cluster-admin created<br/>secret/sto-proxy created<br/>statefulset.apps/sto created<br/>service/delegate-service created</pre>In the Harness Delegate setup, you'll see the Delegate register with Harness. This might take a few minutes.<div class="note-callout">If you encounter errors, ensure your cluster can connect outbound to <strong>app.harness.io</strong>. See <a href="https://docs.harness.io/article/ooelo06uy5-whitelist-harness-domains-and-ips">Allowlist Harness Domains and IPs</a>.</div>
+			<li>In the same Terminal, log into your cluster and run the following:<br/><code>kubectl apply -f harness-delegate.yml</code><br/>Once you apply the YAML file, you&#39;ll see an output like this:<pre>% kubectl apply -f harness-delegate.yml<br/>namespace/harness-delegate-ng created<br/>clusterrolebinding.rbac.authorization.k8s.io/harness-delegate-ng-cluster-admin created<br/>secret/sto-proxy created<br/>statefulset.apps/sto created<br/>service/delegate-service created</pre>In the Harness Delegate setup, you'll see the Delegate register with Harness. This might take a few minutes.<div class="note-callout">If you encounter errors, ensure your cluster can connect outbound to <strong>app.harness.io</strong>. See <a href="https://developer.harness.io/docs/platform/references/whitelist-harness-domains-and-ips">Allowlist Harness Domains and IPs</a>.</div>
 			</li>
 		</ol>
 	</li>
@@ -209,7 +209,7 @@ To do the STO tutorials, point the connector at the following repo: <https://git
 	**GitHub Repository URL:** https://github.com/williamwissemann/dvpwa
 	3. Credentials:  
 	**Username:** Your GitHub username.  
-	**Personal Access Token:** Your [GitHub Personal Access Token secret](20-set-up-harness-for-sto.md).  
+	**Personal Access Token:** Your [GitHub Personal Access Token secret](#create-secrets-for-your-git-and-dockerhub-access-credentials).  
 	**Enable API Access:** Select this checkbox and select the same secret.
 	4. Connect to the provider:  
 	Click **Connect through Harness Platform**.
@@ -251,7 +251,7 @@ The following procedure creates a pipeline with the STO functionality required t
 4. In About your Stage:
 	1. Click **Add Stage** and then select **Build**.
 	2. Stage Name = **securityTestStage**
-	3. Connector = The connector you created in [Create a Codebase Connector](20-set-up-harness-for-sto.md).
+	3. Connector = The connector you created in [Create a Codebase Connector](#create-a-codebase-connector).
 	4. Click **Set Up Stage**.
 	
   ```mdx-code-block
@@ -269,7 +269,7 @@ The following procedure creates a pipeline with the STO functionality required t
 	 
 2. In the **Infrastructure** tab, specify the following:
 	1. The infrastructure where you want your builds to run = **Kubernetes**
-	2. Kubernetes Cluster = The delegate you created in [Install the delegate](20-set-up-harness-for-sto.md#install-the-delegate).
+	2. Kubernetes Cluster = The delegate you created in [Install the delegate](#install-the-harness-delegate).
 	3. Namespace = `harness-delegate-ng`
 	4. OS = `Linux`
 	
@@ -280,7 +280,7 @@ The following procedure creates a pipeline with the STO functionality required t
 3. In the Execution tab, do the following:
 	1. Click **Add Service Dependency**.
 	2. Dependency Name = `dind`
-	3. Container Registry = The image connector you specified in [Create a Docker Hub connector](https://docs.harness.io/article/create-a-dockerhub-connector).
+	3. Container Registry = The image connector you specified in [Create a Docker Hub connector](#create-a-docker-hub-connector).
 	4. Image = `docker:dind`
 	5. Under Optional Configuration, select the **Privileged** checkbox.
 	   

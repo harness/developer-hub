@@ -16,7 +16,7 @@ To use this artifact source, you provide a script to query your artifact server 
 
 * Read the [Create an Application](../applications/application-configuration.md) topic to get an overview of how Harness organizes Services.
 * Read the [Add a Service](service-configuration.md) topic to understand the process to add a Service to an Application.
-* Read [Configuration as Code](https://docs.harness.io/article/htvzryeqjw-configuration-as-code) to see how you can quickly configure your Harness Service using your existing YAML in Git.
+* Read [Configuration as Code](../../../firstgen-platform/config-as-code/configuration-as-code.md) to see how you can quickly configure your Harness Service using your existing YAML in Git.
 
 ### Step 1: Add an Artifact Source
 
@@ -98,13 +98,13 @@ Here is an example using a Harness encrypted text secret for credentials:
 ```
 curl -u 'harness' ${secrets.getValue("repo_password")} https://myrepo.example.io/todolist/json/ > ${ARTIFACT_RESULT_PATH}
 ```
-For more information, see [Secrets Management](https://docs.harness.io/article/au38zpufhr-secret-management).
+For more information, see [Secrets Management](../../../firstgen-platform/security/secrets-management/secret-management.md).
 
 The expected output from the shell script is a JSON structure with an array, where every element represents an artifact object. You map the array object using **Query Result to Artifact Mapping**.
 
 ### Step 5: Delegate Selectors
 
-Enter Delegate Selector names of one or more Harness Delegates to use when executing the script. The Delegates you identify should have network access to the custom repo in order to obtain any artifacts. See [Delegate Selectors](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation#delegate_selectors).
+Enter Delegate Selector names of one or more Harness Delegates to use when executing the script. The Delegates you identify should have network access to the custom repo in order to obtain any artifacts. See [Delegate Selectors](../../../firstgen-platform/account/manage-delegates/delegate-installation.md#delegate-selectors).
 
 ### Step 6: Timeout
 

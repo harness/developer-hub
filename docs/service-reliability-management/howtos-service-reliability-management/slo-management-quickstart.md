@@ -29,11 +29,11 @@ You'll learn how to:
 
 Harness Monitored Services, Change Sources, and Health Sources can be set up without any Harness deployments having been performed. If you already have Harness deployments in this Project, then you can use the Services and Environments from any of those deployments. 
 
-If there are no deployments in your Harness account, we recommend that you first follow the steps in a CD Quickstart to perform a deployment: [Kubernetes CD Quickstart](https://ngdocs.harness.io/article/knunou9j30-kubernetes-cd-quickstart), [Helm CD Quickstart](https://ngdocs.harness.io/article/cifa2yb19a-helm-cd-quickstart), or [Kustomize Quickstart](https://ngdocs.harness.io/article/uiqe6jz9o1-kustomize-quickstart).
+If there are no deployments in your Harness account, we recommend that you first follow the steps in a CD Quickstart to perform a deployment: [Kubernetes CD Quickstart](../../continuous-delivery/onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md), [Helm CD Quickstart](../../continuous-delivery/onboard-cd/cd-quickstarts/helm-cd-quickstart.md), or [Kustomize Quickstart](../../continuous-delivery/onboard-cd/cd-quickstarts/kustomize-quickstart.md).
 
 ### Prerequisites
 
-* Install a [Harness Kubernetes (K8S) Delegate](https://docs.harness.io/article/re8kk0ex4k-delegate-installation-overview) and ensure that, this Delegate is able to communicate with Harness Manager. Also, the Delegate must be gRPC protocol enabled.
+* Install a [Harness Kubernetes (K8S) Delegate](../../platform/2_Delegates/delegate-installation-overview.md) and ensure that, this Delegate is able to communicate with Harness Manager. Also, the Delegate must be gRPC protocol enabled.
 * Ensure that the installed Delegate can communicate with the Health Source and Change Source.
 
 ### Step 1: Add a New Monitored Service
@@ -48,7 +48,7 @@ Click **New Monitored Service**. The **Add New Monitored Service** settings appe
 
 ![](./static/slo-management-quickstart-01.png)
 
-You can also set up a Monitored Service in the [Verify step](https://docs.harness.io/article/3xhqq9xllp-verify-deployments-with-the-verify-step#step_1_add_verify_step) in a CD stage.In **Overview**, in the **Service** tab, **Application** is selected by default in the **Type** field. You can also select **Infrastructure**.
+You can also set up a Monitored Service in the [Verify step](../../continuous-delivery/cd-execution/cv-category/verify-deployments-with-the-verify-step.md#step-1-add-verify-step) in a CD stage.In **Overview**, in the **Service** tab, **Application** is selected by default in the **Type** field. You can also select **Infrastructure**.
 
 In **Create or select a Service**, choose the Harness Service to be monitored from the list. Click **Add New** to create a new Service. A Service represents your microservices and other workloads.
 

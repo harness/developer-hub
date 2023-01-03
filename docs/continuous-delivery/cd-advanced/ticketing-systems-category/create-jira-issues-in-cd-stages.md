@@ -12,11 +12,11 @@ You can create a Jira issue as a step in the execution of a Pipeline using the C
 
 You can add the Create Jira step to a Harness CD stage or an Approval stage.
 
-You can also [update Jira Issues](update-jira-issues-in-cd-stages.md) and [add Jira Approval stages and steps](https://docs.harness.io/article/2lhfk506r8-adding-jira-approval-stages).
+You can also [update Jira Issues](update-jira-issues-in-cd-stages.md) and [add Jira Approval stages and steps](../../../platform/9_Approvals/adding-jira-approval-stages.md).
 
 ## Before You Begin
 
-* [Connect to Jira](https://docs.harness.io/article/e6s32ec7i7-connect-to-jira): you can add a Harness Jira Connector before or during the Create Jira step setup.
+* [Connect to Jira](../../../platform/7_Connectors/connect-to-jira.md): you can add a Harness Jira Connector before or during the Create Jira step setup.
 
 ## Visual Summary
 
@@ -38,9 +38,9 @@ Click **Jira Create**. The Jira Create step appears.
 
 In **Name**, enter a name that describes the step.
 
-In **Timeout**, enter how long you want Harness to try to create the issue before failing (and initiating the stage or step [Failure Strategy](https://docs.harness.io/article/0zvnn5s1ph-define-a-failure-strategy-on-stages-and-steps)).
+In **Timeout**, enter how long you want Harness to try to create the issue before failing (and initiating the stage or step [Failure Strategy](../../../platform/8_Pipelines/define-a-failure-strategy-on-stages-and-steps.md)).
 
-In **Jira Connector**, create or select the [Jira Connector](https://docs.harness.io/article/e6s32ec7i7-connect-to-jira) to use.
+In **Jira Connector**, create or select the [Jira Connector](../../../platform/7_Connectors/connect-to-jira.md) to use.
 
 In **Project**, select a Jira project from the list. A Jira project is used to create the issue key and ID when the issue is created. The unique issue number is created automatically by Jira.
 
@@ -48,7 +48,7 @@ In **Issue Type**, select a Jira issue type from the list of types in the Jira p
 
 ## Step 2: Add Issue Fields
 
-In Jira Fields, you can select specific fields within a Jira issue. For more information, see [Jira Custom Fields](https://docs.harness.io/article/077hwokrpr-jira-integration#jira_custom_fields).
+In Jira Fields, you can select specific fields within a Jira issue. For more information, see [Jira Custom Fields](../../../first-gen/continuous-delivery/model-cd-pipeline/workflows/jira-integration.md#jira-custom-fields).
 
 Harness supports only Jira fields of type `Option`, `Array`, `Any`, `Number`, `Date`, and `String`. Harness does not integrate with Jira fields that manage users, issue links, or attachments. This means that Jira fields like Assignee and Sprint are not accessible in Harness' Jira integration.
 
@@ -83,8 +83,8 @@ The number 1 is used as an example. You can add whatever number you need.
 
 In Advanced, you can use the following options:
 
-* [Step Skip Condition Settings](https://docs.harness.io/article/i36ibenkq2-step-skip-condition-settings)
-* [Step Failure Strategy Settings](https://docs.harness.io/article/htrur23poj-step-failure-strategy-settings)
+* [Step Skip Condition Settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+* [Step Failure Strategy Settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
 
 
 ## Step 3: Apply and Test

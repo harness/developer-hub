@@ -91,7 +91,7 @@ The Command step can be added to SSH, WinRM, and Deployment Template deployment 
 1. In the stage **Execution**, click **Add Step**.
 2. Click **Command**.
 3. In **Name**, enter a name for the command.
-4. In **Timeout**, enter how long Harness should wait before failing this step and initiating the [Failure Strategy](https://docs.harness.io/article/0zvnn5s1ph-define-a-failure-strategy-on-stages-and-steps).
+4. In **Timeout**, enter how long Harness should wait before failing this step and initiating the [Failure Strategy](../../../platform/8_Pipelines/define-a-failure-strategy-on-stages-and-steps.md).
 5. In **Run the following commands**, click **Add Command**.
 
    ![](./static/download-and-copy-artifacts-using-the-command-step-08.png)
@@ -251,7 +251,7 @@ Since a Deployment Template can be used on any host type, the Command step can o
 
 ## Looping Strategy and target hosts
 
-To run the Command step on all the target hosts, you must use the Repeat [Looping Strategy](https://docs.harness.io/article/eh4azj73m4-looping-strategies-matrix-repeat-and-parallelism) and expression `<+stage.output.hosts>`:
+To run the Command step on all the target hosts, you must use the Repeat [Looping Strategy](../../../platform/8_Pipelines/looping-strategies-matrix-repeat-and-parallelism.md) and expression `<+stage.output.hosts>`:
 
 
 ```

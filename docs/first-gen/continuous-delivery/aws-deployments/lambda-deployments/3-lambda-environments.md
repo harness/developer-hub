@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/article/5fnx4hgwsa).Once you've added a Lambda Service to your Application, you can define Environments where your Service can be deployed. Within an Environment, you specify the following in an Infrastructure Definition:
+This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../../continuous-delivery/onboard-cd/cd-quickstarts/serverless-lambda-cd-quickstart.md).Once you've added a Lambda Service to your Application, you can define Environments where your Service can be deployed. Within an Environment, you specify the following in an Infrastructure Definition:
 
 * The Lambda Service that contains your functions zip file and functions specs. (Set up in [Add Lambda Functions](2-service-for-lambda.md).)
 * A deployment type. In this case, **Lambda**.
@@ -115,5 +115,5 @@ For more information, see [Override a Service Configuration](../../model-cd-pipe
 ### Next Steps
 
 * [Create a Basic Lambda Deployment](4-lambda-workflows-and-deployments.md)
-* [Troubleshoot AWS Lambda Deployments](https://docs.harness.io/article/g9o2g5jbye-troubleshooting-harness#aws_lambda)
+* [Troubleshoot AWS Lambda Deployments](../../../firstgen-troubleshooting/troubleshooting-harness.md#aws-lambda)
 

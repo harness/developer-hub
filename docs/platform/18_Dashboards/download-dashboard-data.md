@@ -93,13 +93,13 @@ Perform the following steps to download the data from a dashboard tile:
 
 You can choose to download the following By Harness CCM Dashboards:
 
-* [View AWS Cost Dashboard](https://docs.harness.io/article/u3yxrebj6r-aws-dashboard)
-* [View AWS Reservation Efficiency Dashboard](https://docs.harness.io/article/o86lf6qgr2-aws-reservation-coverage-and-service-cost)
-* [View Azure Cost Dashboard](https://docs.harness.io/article/n7vpieto0n-azure-cost-dashboard)
-* [View GCP Dashboard](https://docs.harness.io/article/tk55quhfi4-gcp-dashboard)
-* [View Cluster Cost Dashboard](https://docs.harness.io/article/uai4ud1ibi-cluster-cost-dashboard)
-* [View Multi-cloud Cost Overview Dashboard](https://docs.harness.io/article/ff5f08g4v4-multi-cloud-cost-overview-dashboard)
-* [Orphaned EBS Volumes and Snapshots Dashboard](https://docs.harness.io/article/itn49ytd8u-orphaned-ebs-volumes-and-snapshots-dashboard)
-* [View AWS EC2 Inventory Cost Dashboard](https://docs.harness.io/article/xbekog2ith-view-aws-ec-2-inventory-cost-dashboard)
-* [View AWS EC2 Instance Metrics Dashboard](https://docs.harness.io/article/mwhraec911-view-aws-ec-2-instance-metrics)
+* [View AWS Cost Dashboard](../../cloud-cost-management/2-use-cloud-cost-management/8-ccm-dashboards-and-access-control/ccm-dashboards-by-harness/aws-dashboard.md)
+* [View AWS Reservation Efficiency Dashboard](../../cloud-cost-management/2-use-cloud-cost-management/8-ccm-dashboards-and-access-control/ccm-dashboards-by-harness/aws-reservation-coverage-and-service-cost.md)
+* [View Azure Cost Dashboard](../../cloud-cost-management/2-use-cloud-cost-management/8-ccm-dashboards-and-access-control/ccm-dashboards-by-harness/azure-cost-dashboard.md)
+* [View GCP Dashboard](../../cloud-cost-management/2-use-cloud-cost-management/8-ccm-dashboards-and-access-control/ccm-dashboards-by-harness/gcp-dashboard.md)
+* [View Cluster Cost Dashboard](../../cloud-cost-management/2-use-cloud-cost-management/8-ccm-dashboards-and-access-control/ccm-dashboards-by-harness/cluster-cost-dashboard.md)
+* [View Multi-cloud Cost Overview Dashboard](../../cloud-cost-management/2-use-cloud-cost-management/8-ccm-dashboards-and-access-control/ccm-dashboards-by-harness/multi-cloud-cost-overview-dashboard.md)
+* [Orphaned EBS Volumes and Snapshots Dashboard](../../cloud-cost-management/2-use-cloud-cost-management/8-ccm-dashboards-and-access-control/ccm-dashboards-by-harness/orphaned-ebs-volumes-and-snapshots-dashboard.md)
+* [View AWS EC2 Inventory Cost Dashboard](../../cloud-cost-management/2-use-cloud-cost-management/8-ccm-dashboards-and-access-control/ccm-dashboards-by-harness/view-aws-ec-2-inventory-cost-dashboard.md)
+* [View AWS EC2 Instance Metrics Dashboard](../../cloud-cost-management/2-use-cloud-cost-management/8-ccm-dashboards-and-access-control/ccm-dashboards-by-harness/view-aws-ec-2-instance-metrics.md)
 

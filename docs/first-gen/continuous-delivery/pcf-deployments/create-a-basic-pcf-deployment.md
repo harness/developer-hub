@@ -56,7 +56,7 @@ For information on using the **Use App Autoscaler Plugin** settings, see [Use th
 
 In **Timeout**, set how long you want the Harness Delegate to wait for the TAS cloud to respond to API requests before timing out.
 
-In **Delegate Selectors**, select the Selector for the Delegate(s) you want to use. You add Selectors to Delegates to make sure that they're used to execute the command. For more information, see [Select Delegates with Selectors](https://docs.harness.io/article/c3fvixpgsl-select-delegates-for-specific-tasks-with-selectors).
+In **Delegate Selectors**, select the Selector for the Delegate(s) you want to use. You add Selectors to Delegates to make sure that they're used to execute the command. For more information, see [Select Delegates with Selectors](../../firstgen-platform/account/manage-delegates/select-delegates-for-specific-tasks-with-selectors.md).
 
 Harness will use Delegates matching the Selectors you add.
 

@@ -12,5 +12,5 @@ You can stop all of your Harness Triggers from executing deployments using Harne
 
 Deployment Freeze is a Harness Governance feature that stops all Harness deployments, including their Triggers. A deployment freeze helps ensure stability during periods of low engineering and support activity, such as holidays, trade shows, or company events.
 
-For details on how to add and enable a deployment freeze window, see [Deployment Freeze](https://docs.harness.io/article/wscbhd20ca-deployment-freeze).
+For details on how to add and enable a deployment freeze window, see [Deployment Freeze](../../../firstgen-platform/security/governance-howtos/deployment-freeze.md).
 

@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/article/m7nkbph0ac).Once you've added a Service to your Application, you can define Environments where your Service can be deployed.
+This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../../continuous-delivery/onboard-cd/cd-quickstarts/azure-cd-quickstart.md).Once you've added a Service to your Application, you can define Environments where your Service can be deployed.
 
 * [Create a New Harness Environment](3-azure-environment.md#create-a-new-harness-environment)
 * [Add an Infrastructure Definition](3-azure-environment.md#add-an-infrastructure-definition)
@@ -52,7 +52,7 @@ That is all you have to do to set up the deployment Environment in Harness.
 
 Now that you have the Service and Environment set up. Now you can create the deployment Workflow in Harness.
 
-Your Environment can overwrite Service Config Variables, Config Files, and other settings. This enables you to have a Service keep its settings but have them changed when used with this Environment. For example, you might have a single Service but an Environment for QA and an Environment for Production, and you want to overwrite the values.yaml setting in the Service depending on the Environment. We don't overwrite any Services variables in this guide. For more information, see [Override Service Settings](https://docs.harness.io/article/2gffsizl8u-kubernetes-environments#override_service_settings) in the [Kubernetes Deployments](../../kubernetes-deployments/kubernetes-deployments-overview.md) doc.
+Your Environment can overwrite Service Config Variables, Config Files, and other settings. This enables you to have a Service keep its settings but have them changed when used with this Environment. For example, you might have a single Service but an Environment for QA and an Environment for Production, and you want to overwrite the values.yaml setting in the Service depending on the Environment. We don't overwrite any Services variables in this guide. For more information, see [Override Service Settings](/docs/first-gen/continuous-delivery/kubernetes-deployments/override-harness-kubernetes-service-settings.md) in the [Kubernetes Deployments](../../kubernetes-deployments/kubernetes-deployments-overview.md) doc.
 
 ### Next Step
 
