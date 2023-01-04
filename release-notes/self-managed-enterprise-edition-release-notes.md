@@ -14,35 +14,33 @@ Harness Self-Managed Enterprise Edition is updated regularly. Review the notes b
 
 This release introduces the following features and enhancements.
 
-| **Feature or enhancement** | **Description** |
-| --- | --- | 
-| CDS-38870 | Users can copy the fqns for service and environment variables now . The service variables will be by the default name of `<+serviceVariables.variableName>` and environment by the name of `<env.variables.variableName>` |
+|  | Users can copy the fqns for service and environment variables now . The service variables will be by the default name of `<+serviceVariables.variableName>` and environment by the name of `<env.variables.variableName>`. (CDS-38870) |
 | CDS-39012 | **Terraform Backend Configuration file path in the Terraform Apply and Plan steps now supports remote file repos**. Terraform Backend Configuration now can be specified in the remote file repository. For more details, go to Provision with the Terraform Apply Step. This functionality is behind feature flag `TERRAFORM_REMOTE_BACKEND_CONFIG`. |
 | CDS-40390 | **Set Helm Chart Version as Runtime Input and fetch from source on Run Pipeline**. Now you can set Helm Chart Version using a Runtime Input when using HTTP Helm, AWS S3, and Google GCS stores. You can view the list of chart versions available at runtime in Run Pipeline, and select the required one. |
-| CDS-44054 | **Improve Azure Web App properties**. Previously, if Application Settings or Connection Strings were removed from Harness Service then they wouldn’t be removed from the deployed Azure Web App. Now Harness keeps track of Harness-added settings and will remove these settings from slot configuration when they are deleted from the Harness Service configuration. |
-| CDS-45189 | **Support for the Command step is added Deployment Template deployment types**. Now you can use the Command step in a Deployment Template pipeline. Using this step you can download/copy the artifact, copy the config files, or run scripts on the instances output by the Fetch Instances step. The Command step will always run on the Delegate, hence you need to enable the Run On Delegate option. The Command step should always be run after the the Fetch Instances step. See Use the Command step to download, copy, or run scripts. |
-| CDS-45655 | Increase polling interval in executions to 20s from 5s to avoid reaching database limit |
-| CDS-45662 | **Fetch Instance output now available as file**. Fetch instance output for Deployment Templates in NG is now available as a file instead of the environment variable. The script in your Deployment Template queries the server and receives a JSON array containing the target hosts. Previously, it saved in the environment variable $INSTANCE_OUTPUT_PATH. Now, it is saved as a file like this `> $INSTANCE_OUTPUT_PATH: /opt/harness-delegate/client-tools/kubectl/v1.19.2/kubectl get pods --namespace=harness-delegate-ng -o json > $INSTANCE_OUTPUT_PATH`. For more information, go to Custom deployments using Deployment Templates tutorial. |
-| CI-5580 | **New background step to define the service dependency**. A new background step has been added to define the service dependency in CI. The previous stage settings of service dependency are now deprecated. The new background step allows for better control and configuration of services. |
-| CI-5665 | **AWS Code Commit**. The AWS Code Commit Git connector has been deprecated. Going forward, use the generic Git connector to integrate with AWS Code Commit. |
-| CI-5666 | The Custom Git Connector now supports connection via the Harness Platform, in addition to the ability to connect through the Harness Delegate. Connecting through Harness Secrets Manager is required to use the generic git connector on the Harness Cloud build infrastructure hosted by Harness. |
-| CI-5816 | Test Intelligence now supports Scala and Kotlin programming languages. You can use it to optimise the Test run time in your scala/kotlin projects. |
-| CI-6032 | **New Subscription ID field**. An Azure subscription ID is now required in the Build and Push ACR step to enable the display of artifacts uploaded by the steps on the Artifacts tab. |
-| CI-6045 | Improved installation of Self-Managed Enterprise Edition using a Helm-based installation script that supports self-signed certificates. |
-| DEL-4328 | The method that the log streaming task client uses to create threadpools was modified. Threadpools are now created one time in the client's lifetime instead of being created for each task the delegate receives. |
-| FFM-3176 | Added validation messages to Flag pipelines to ensure you know which fields must be completed for your pipeline to run successfully. |
-| FFM-4557 | When submitting an invalid YAML file for Feature Flag steps in a Pipeline, you now receive an error describing why the YAML is invalid. Previously the incorrect YAML was accepted and only showed a general error during pipeline execution. |
-| PIE-4613 | **Harness service variables now support dots (.).** This is helpful when you have JSON/YAML files where you want to update the keys with some values. You can define variables for those keys in harness with (.) to access the keys. The expression to access a key would be: `<+variables.get("example.key")>` |
-| PL-27160 | The option to disable Harness Secret Manager is now a part of the core settings in Account Default Settings. |
-| PL-28597 | You can now import Templates from your Git repo. See Import a Template From Git. |
-| PL-28978 | You can now create secrets using the Google Cloud Secret Manager in Harness. For more information, see Add a Google Cloud Secret Manager. |
-| PL-29067 | SCIM defined three endpoints to facilitate discovery of SCIM service provider features and schema that MAY be retrieved using `HTTP GET:` Reference: https://www.rfc-editor.org/rfc/rfc7644.html#section-4 |
+| CDS-44054 | **Improve Azure Web App properties**. Previously, if Application Settings or Connection Strings were removed from Harness Service then they wouldn’t be removed from the deployed Azure Web App. Now Harness keeps track of Harness-added settings and will remove these settings from slot configuration when they are deleted from the Harness Service configuration. (CDS-44054)|
+| CDS-45189 | **Support for the Command step is added Deployment Template deployment types**. Now you can use the Command step in a Deployment Template pipeline. Using this step you can download/copy the artifact, copy the config files, or run scripts on the instances output by the Fetch Instances step. The Command step will always run on the Delegate, hence you need to enable the Run On Delegate option. The Command step should always be run after the the Fetch Instances step. See Use the Command step to download, copy, or run scripts. (CDS-45189) |
+| CDS-45655 | Increase polling interval in executions to 20s from 5s to avoid reaching database limit. (CDS-45655) |
+| CDS-45662 | **Fetch Instance output now available as file**. Fetch instance output for Deployment Templates in NG is now available as a file instead of the environment variable. The script in your Deployment Template queries the server and receives a JSON array containing the target hosts. Previously, it saved in the environment variable $INSTANCE_OUTPUT_PATH. Now, it is saved as a file like this `> $INSTANCE_OUTPUT_PATH: /opt/harness-delegate/client-tools/kubectl/v1.19.2/kubectl get pods --namespace=harness-delegate-ng -o json > $INSTANCE_OUTPUT_PATH`. For more information, go to Custom deployments using Deployment Templates tutorial. (CDS-45662) |
+| CI-5580 | **New background step to define the service dependency**. A new background step has been added to define the service dependency in CI. The previous stage settings of service dependency are now deprecated. The new background step allows for better control and configuration of services. (CI-5580) |
+| CI-5665 | **AWS Code Commit**. The AWS Code Commit Git connector has been deprecated. Going forward, use the generic Git connector to integrate with AWS Code Commit. (CI-5665) |
+|  | The Custom Git Connector now supports connection via the Harness Platform, in addition to the ability to connect through the Harness Delegate. Connecting through Harness Secrets Manager is required to use the generic git connector on the Harness Cloud build infrastructure hosted by Harness. (CI-5666) |
+|  | Test Intelligence now supports the Scala and Kotlin programming languages. You can use it to optimise the Test run time in your scala/kotlin projects. (CI-5816) |
+|  | **New Subscription ID field**. An Azure subscription ID is now required in the Build and Push ACR step to enable the display of artifacts uploaded by the steps on the Artifacts tab. (CI-6032) |
+|  | Improved installation of Self-Managed Enterprise Edition using a Helm-based installation script that supports self-signed certificates. (CI-6045) |
+|  | The method that the log streaming task client uses to create threadpools was modified. Threadpools are now created one time in the client's lifetime instead of being created for each task the delegate receives. (DEL-4328) |
+|  | Added validation messages to Flag pipelines to ensure you know which fields must be completed for your pipeline to run successfully. (FFM-3176) |
+|  | When submitting an invalid YAML file for Feature Flag steps in a Pipeline, you now receive an error describing why the YAML is invalid. Previously the incorrect YAML was accepted and only showed a general error during pipeline execution. (FFM-4557) |
+|  | Harness service variables now support dots (.). This is helpful when you have JSON/YAML files where you want to update the keys with some values. You can define variables for those keys in harness with (.) to access the keys. The expression to access a key would be: `<+variables.get("example.key")>` (PIE-4613)|
+|  | The option to disable Harness Secret Manager is now a part of the core settings in Account Default Settings. (PL-27160) |
+|  | You can now import Templates from your Git repo. See Import a Template From Git. (PL-28597) |
+|  | You can now create secrets using the Google Cloud Secret Manager in Harness. For more information, see [Add a Google Cloud Secret Manager](https://developer.harness.io/docs/platform/security/add-a-google-cloud-secret-manager/). (PL-28978)|
+|  | SCIM defined three endpoints to facilitate discovery of SCIM service provider features and schema that MAY be retrieved using `HTTP GET:` Reference: https://www.rfc-editor.org/rfc/rfc7644.html#section-4 (PL-29067)|
 |          | With this change, Harness supports the following new endpoints per SCIM 2.0 protocol: |
 |          | `/ServiceProviderConfig`, Reference: https://www.rfc-editor.org/rfc/rfc7643#section-5 |
 |          | `/ResourceType`, Reference: https://www.rfc-editor.org/rfc/rfc7643#section-6 |
 |          | `/Schemas`, Reference: https://www.rfc-editor.org/rfc/rfc7643#section-7 |
-| PL-29896 | When provisioning users through SCIM, users receive two emails: one from FirstGen and the other from NextGen. |
-| SRM-12386 | The user interface no longer allows you to configure invalid metric thresholds. |
+|  | When provisioning users through SCIM, users receive two emails: one from FirstGen and the other from NextGen. (PL-29896) |
+|  | The user interface no longer allows you to configure invalid metric thresholds. (SRM-12386) |
 |           | On the Customize Health Source tab, the following changes are made to the Advanced (Optional) configuration section: |
 |           | -   Under the Ignore Thresholds settings, only the Less than option is available for the Percentage Deviation criteria. The Greater than option is removed. |
 |           | -   Under the Fail-Fast Thresholds settings, only the Greater than option is available for the Percentage Deviation criteria. The Less than option is removed.
@@ -51,25 +49,26 @@ This release introduces the following features and enhancements.
 ### Issues fixed in this release
 
 This release introduces the following fixes.
-
-| **Issue** | **Description** |
-| --- | --- | 
-| CDB-415 | Users previously were only able to clone Dashboards either from the "Out Of The Box" Dashboards or from folders where they had an EDIT permission assigned. Now, if the user has any folder in which they have the EDIT permission assigned, they can clone any (available) Dashboard into that folder. |
-| CDB-434, ZD-35773 | Dashboard alerts and schedules will now run at the specified time in the user local time zone. |
-| CDS-25476 | **Approvals: JEXL expression doesn't support pipeline variables and expressions**. With this ticket, pipeline expressions (<+pipeline...) as well as other common expressions are now supported for Approvals in JEXL criteria. Previously users could give expressions related to the ticket only. |
-| CDS-41699 | **When number of Approvers in Harness Approval are given an expression it fails with Not able to detect Int**. Bug resolved by converting the values (in the format 1.0, 2.0, etc.) received from parameter framework in case of expressions to integer. If we get double values like 23.4, they are still rejected. Now, we can give expressions evaluating to integers as input to minCount field in Harness Approval. |
-| CDS-41700 | Harness approval step will fail if no valid user group is provided in the input. Additionally, console logs are enhanced with a warning related to invalid user groups given as input. Finally, valid user groups found in the input is added to Harness approval details. |
-| CDS-42609 | **Cleanup step is not getting executed for Kerberos**. Status logging is added to Cleanup step for WinRM deployments. Now the output in UI marks the step as completed properly. |
-| CDS-43144 | **Instance sync does not work with Jenkins artifacts when a service is updated**. Previously, from the delegate task, the last successful build was fetched, but the build was not verified. The build is now verified, which resolves this issue. |
-| CDS-43179 | **Clear tags on AWS/Azure Infrastructure if dependent fields are changed**. Cleaned tags when dependency fields have been updated. |
-| CDS-43200, ZD-34500 | **Pipeline variables are not being translated in HTTP step assertions and output variables**. Previously, only HTTP response expressions could be used in an HTTP step assertion. Now, users can use pipeline and other expressions in assertions and use them with HTTP response expressions. |
-| CDS-43673 | **A drop-down selector for the image path in an ECR artifact source is not available**. A drop-down selector is available now. |
-| CDS-43675 | **Implement dropdown for Artifact Path in Amazon S3 Artifact Source**. We have made the changes to fetch S3 filePaths in the dropdown while creating the artifact source. |
-| CDS-43863 | **The `<artifact.metadata.url>` is null for the Nexus3 artifact Docker repository format.** The URL was added to the metadata so it can now be accessed using `<artifact.metadata.url>`. |
-| CDS-43869 | Made minor changes in style to infra definition section. |
-| CDS-43874 | **When editing a secret, the Verify Connection screen closes prematurely**. This issue has been fixed. |
-| CDS-44196 | **The ECS Harness file store console view does not show fetch manifests**. This issue has been fixed. |
-| CDS-44495 | **When you give incorrect region, the list bucket call fails**. The message that we threw has been handled and appropriate message is thrown. |
+ 
+|  | Users previously were only able to clone Dashboards either from the "Out Of The Box" Dashboards or from folders where they had an EDIT permission assigned. Now, if the user has any folder in which they have the EDIT permission assigned, they can clone any (available) Dashboard into that folder. (CDB-415) |
+|  | Dashboard alerts and schedules will now run at the specified time in the user local time zone. (CDB-434, ZD-35773) |
+|  | **Approvals: JEXL expression doesn't support pipeline variables and expressions**. With this ticket, pipeline expressions (<+pipeline...) as well as other common expressions are now supported for Approvals in JEXL criteria. Previously users could give expressions related to the ticket only. (CDS-25476) |
+|  | **When number of Approvers in Harness Approval are given an expression it fails with Not able to detect Int**. 
+    + Bug resolved by converting the values (in the format 1.0, 2.0, etc.) received from parameter framework in case of expressions to integer. If we get double values like 23.4, they are still rejected. Now, we can give expressions evaluating to integers as input to minCount field in Harness Approval. (CDS-41699) |
+|  | Harness approval step will fail if no valid user group is provided in the input. Additionally, console logs are enhanced with a warning related to invalid user groups given as input. Finally, valid user groups found in the input is added to Harness approval details. (CDS-41700) |
+|  | **Cleanup step is not getting executed for Kerberos**. (CDS-42609)
++ Status logging is added to Cleanup step for WinRM deployments. Now the output in UI marks the step as completed properly. |
+|  | **Instance sync does not work with Jenkins artifacts when a service is updated**. (CDS-43144) Previously, from the delegate task, the last successful build was fetched, but the build was not verified. The build is now verified, which resolves this issue. |
+|  | **Clear tags on AWS/Azure Infrastructure if dependent fields are changed**. (CDS-43179)
+  + Cleaned tags when dependency fields have been updated. |
+|  | **Pipeline variables are not being translated in HTTP step assertions and output variables**. (CDS-43200, ZD-34500) Previously, only HTTP response expressions could be used in an HTTP step assertion. Now, users can use pipeline and other expressions in assertions and use them with HTTP response expressions. |
+|  | **A drop-down selector for the image path in an ECR artifact source is not available**. (CDS-43673) A drop-down selector is available now. |
+|  | **Implement dropdown for Artifact Path in Amazon S3 Artifact Source**. (CDS-43675) We have made the changes to fetch S3 filePaths in the dropdown while creating the artifact source. |
+|  | **The `<artifact.metadata.url>` is null for the Nexus3 artifact Docker repository format.** The URL was added to the metadata so it can now be accessed using `<artifact.metadata.url>`. (CDS-43863) |
+|  | Made minor changes in style to infra definition section. (CDS-43869) |
+|  | **When editing a secret, the Verify Connection screen closes prematurely**. (CDS-43874) This issue has been fixed. |
+|  | **The ECS Harness file store console view does not show fetch manifests**. (CDS-44196) This issue has been fixed. |
+|  | **When you give incorrect region, the list bucket call fails**. (CDS-44495) The message that we threw has been handled and appropriate message is thrown. |
 | CDS-44561 | **Reference by section while linking an account level template does not show up appropriately**. References were not getting displayed for Org and Account level templates when viewed inside pipeline studio. This issue has been resolved now. |
 |CDS-44598 | **The UI crashes when the artifact name is null**. The validation of the artifact name was missing, which allowed the user to submit the artifact without a name. This caused the null checks to fail and the UI to crash. Validations for the artifact name and an extra null check were added to prevent this issue. |
 | CDS-44660 | When creating an S3 artifact, a null pointer exception indicates that both the bucket name and the file path are empty. An appropriate error now appears in this situation. |
@@ -151,165 +150,97 @@ This release introduces the following fixes.
 
 This release introduces the following features and enhancements.
 
-CDS-40386
 
-You can now optionally configure Rolling, Rolling Rollback, and BlueGreen deployments. This option can be implemented in YAML.
 
-CDS-4313
+You can now optionally configure Rolling, Rolling Rollback, and BlueGreen deployments. This option can be implemented in YAML. (CDS-40386)
 
-You can now use an ECS Run Task step from an ECS swimlane.
+You can now use an ECS Run Task step from an ECS swimlane. (CDS-4313)
 
-CI-5653
+The UI was changed to support the selection of build tools based on Scala and Kotlin. The selection of Kotlin allows the use of maven, gradle and bazel build tools. The selection of Scala allows maven, gradle, bazel and sbt. (CI-5653)
 
-The UI was changed to support the selection of build tools based on Scala and Kotlin. The selection of Kotlin allows the use of maven, gradle and bazel build tools. The selection of Scala allows maven, gradle, bazel and sbt.
+Added a Docker infrastructure option to CI . The functionality is hidden behind a feature flag. (CI-568)
 
-CI-568
+The Infrastructure tab in Build steps has been updated to show only supported options when a Hosted build infrastructure is selected. (CI-5737)
 
-Added a Docker infrastructure option to CI . The functionality is hidden behind a feature flag.
+Changed the UI to support the option for Harness Delegate to run as root. By default, the `runAsRoot` option is set to `true`. (DEL-4836)
 
-CI-5737
-
-The Infrastructure tab in Build steps has been updated to show only supported options when a Hosted build infrastructure is selected.
-
-DEL-4836
-
-Changed the UI to support the option for Harness Delegate to run as root. By default, the runAsRoot option is set to true.
-
-DEL-4840
-
-The functionality of the delegate auto-upgrade components was enhanced. On installation, the AutoUpgrade feature displays a status message of Synchronizing. If the component does not receive an API call from the upgrader within 90 minutes, the status message changes to OFF. This affects delegates that are installed with upgrader components.
+The functionality of the delegate auto-upgrade components was enhanced. On installation, the AutoUpgrade feature displays a status message of **Synchronizing**. If the component does not receive an API call from the upgrader within 90 minutes, the status message changes to OFF. This affects delegates that are installed with upgrader components. (DEL-4840)
 
 For more information about delegate auto-upgrade, see Delegate Auto-Update.
 
-PIE-4369
+The RGB colors that are used in the console were updated to conform with accessibility standards. The specifications for orange, yellow and red were changed for contrast and readability. (PIE-4369)
 
-The RGB colors that are used in the console were updated to conform with accessibility standards. The specifications for orange, yellow and red were changed for contrast and readability.
+You can now use a read-only vault as your default Secrets Manager. This applies to Hashicorp Vault. (PL-24491)
 
-PL-24491
-
-You can now use a read-only vault as your default Secrets Manager. This applies to Hashicorp Vault.
-
-PL-28352
-
-Support was added to allow pre-existing secrets in Vault to be referenced with an expression that contains a fully qualified path. For example:
+Support was added to allow pre-existing secrets in Vault to be referenced with an expression that contains a fully qualified path. (PL-28352) For example:
 
 `<scope_of_secret_manager_connector>`.hashicorpvault://`<secret_manager_connector_identifier>`/path/to/secret#keye.g.: org.hashicorpvault://myVault/harness/testpath/test#key
 
-PL-28573
-
-Feature flag NG_TEMPLATE_GITX_ACCOUNT_ORG was removed to decrease complexity. This means that the functionality used to create templates on gitx primarily depends on the NG_TEMPLATE_GITX feature flag.
+Feature flag NG_TEMPLATE_GITX_ACCOUNT_ORG was removed to decrease complexity. This means that the functionality used to create templates on gitx primarily depends on the NG_TEMPLATE_GITX feature flag. (PL-28573)
 
 ### Fixed issues
 
 This release introduces the following fixes.
 
-CDB-390
 
-Resolved a feature flag issue that interfered with the behavior of certain dashboard that were incorrectly hidden or displayed.
 
-CDS-42637
+Resolved a feature flag issue that interfered with the behavior of certain dashboard that were incorrectly hidden or displayed. (CDB-390)
 
-Improving the error message that is shown when imagepath is a null value.
 
-CDS-46662 T
 
-he API (https://apidocs.harness.io/tag/Approvals#operation/addHarnessApprovalActivity ) did not provide details of Json Processing errors. ()Also with incorrect value of Harness Approval Action (https://apidocs.harness.io/tag/Approvals#operation/addHarnessApprovalActivity!ct=application/json&path=action&t=request ) appropriate details were not showing . This has been because of inappropriate error handling for enum and also error details not bubbling up correctly for JsonProcessingException.This issue has been resolved. The error details are shown up correctly
+Improving the error message that is shown when imagepath is a null value. (CDS-42637)
 
-CDS-43002
+The API (https://apidocs.harness.io/tag/Approvals#operation/addHarnessApprovalActivity ) did not provide details of Json Processing errors. (CDS-46662) Also with incorrect value of Harness Approval Action (https://apidocs.harness.io/tag/Approvals#operation/addHarnessApprovalActivity!ct=application/json&path=action&t=request ) appropriate details were not showing . This has been because of inappropriate error handling for enum and also error details not bubbling up correctly for JsonProcessingException.This issue has been resolved. The error details are shown up correctly
 
-Updated the UI to hide the count of template input values.
+Updated the UI to hide the count of template input values. (CDS-43002)
 
-CDS-43091, ZD-34422
+The template list screen did not display the account level templates created inline when git experience is enabled.There was a criteria in the query which was filtering out inline templates.This issue has been resolved. The template list screen now displays the account level templates created inline when git experience is enabled. (CDS-43091, ZD-34422)
 
-The template list screen did not display the account level templates created inline when git experience is enabled.There was a criteria in the query which was filtering out inline templates.This issue has been resolved. The template list screen now displays the account level templates created inline when git experience is enabled.
+The old connector’s delegate selector has a delegate that is no longer available. Hence it would never delete the old instances.Once the connector is deleted, we have written a migration to cleanup all instances of deleted connectors. This would cleanup instances for old connector and prevent it from looking for running instances (as it still points to same cluster/namespace) (CDS-43350, ZD-34558)
 
-CDS-43350, ZD-34558
+Clarified the error message that is sent when delegate execution halts unexpectedly. (CDS-43430, ZD-34745)
 
-The old connector’s delegate selector has a delegate that is no longer available. Hence it would never delete the old instances.Once the connector is deleted, we have written a migration to cleanup all instances of deleted connectors. This would cleanup instances for old connector and prevent it from looking for running instances (as it still points to same cluster/namespace)
+Corrected an issue that interfered with the update of the secrets variable in the shell script. it was not added in the map of variables so i added it in the map to generate autosuggestion (CDS-43714)
 
-CDS-43430, ZD-34745
+Expression to get the connector name is available now. Please use "<+infra.connector.name>" in the pipeline. (CDS-43757)
 
-Clarified the error message that is sent when delegate execution halts unexpectedly.
 
-CDS-43714
 
-Corrected an issue that interfered with the update of the secrets variable in the shell script. it was not added in the map of variables so i added it in the map to generate autosuggestion
+To support backward compatibility for Nexus docker yaml, we didn't remove the older field "artifactPath" but didn't marked the field as not mandatory which was root cause of the issue.Removing the annotation `NotNull` from field resolved the issue. (CDS-43778)
 
-CDS-43757
+Fixed an issue with theGET approvals/{approvalID} API not updating Window spec details. This occurred because wrapper classes that return the persistent entity were omitted. (CDS-43787)
 
-Expression to get the connector name is available now. Please use "<+infra.connector.name>" in the pipeline
+Added some extra checks to insure custom deployment event listener does not affect the updation other than templates. (CDS-43802)
 
-CDS-43778
+Changed code to add validation for an empty string. This fixed a null pointer exception that occurred on creation of a delegate task. Before empty string validation was added, the validation was checked for a null script for purposes of backward compatibility. (CDS-43841)
 
-To support backward compatibility for Nexus docker yaml, we didn't remove the older field "artifactPath" but didn't marked the field as not mandatory which was root cause of the issue.Removing the annotation `NotNull` from field resolved the issue.
+Fixed the display of PDC connection details. Host information was difficult to read. (CDS-43891)
 
-CDS-43787
+Fixed the inconsistent layout of WinRM credentials. (CDS-43892)
 
-Fixed an issue with theGET approvals/{approvalID} API not updating Window spec details. This occurred because wrapper classes that return the persistent entity were omitted.
+Added APIs for repository and artifact path information. (CDS-43898)
 
-CDS-43802
+Added a button to clear the status field. (CDS-43935)
 
-Added some extra checks to insure custom deployment event listener does not affect the updation other than templates.
+Changed code to check for support for an earlier spec version. (CDS-43970)
 
-CDS-43841
+Changed code to obtain the default value from the service manifest. This corrected an issue that occurred based on a default value that was an empty string. (CDS-44008)
 
-Changed code to add validation for an empty string. This fixed a null pointer exception that occurred on creation of a delegate task. Before empty string validation was added, the validation was checked for a null script for purposes of backward compatibility.
+Released the NG_CUSTOM_REMOTE_MANIFEST feature flag. (CDS-44058)
 
-CDS-43891
+Added a fix to add or update template variables from variable panels. (CDS-44066, ZD-34808)
 
-Fixed the display of PDC connection details. Host information was difficult to read.
+After this change, we will stop making bucket list API call, if region or connectorRef are runtime inputs. (CDS-44067)
 
-CDS-43892
+Changed code to forbid bucketName being an empty string. (CDS-44071)
 
-Fixed the inconsistent layout of WinRM credentials.
+Fixed the NPE. If `bucketName` or `filePath`/Regex is null or empty, the pipeline will throw appropriate exception. (CDS-44072)
 
-CDS-43898
+Added additional criteria to return files with undefined file usage. (CDS-44146)
 
-Added APIs for repository and artifact path information.
+Added support for an "infrastructure" key in the pipeline YAML expansion for OPA policies. This affects new services and environments that the pipeline references. (CDS-44213)
 
-CDS-43935
-
-Added a button to clear the status field.
-
-CDS-43970
-
-Changed code to check for support for an earlier spec version.
-
-CDS-44008
-
-Changed code to obtain the default value from the service manifest. This corrected an issue that occurred based on a default value that was an empty string.
-
-CDS-44058
-
-Released the NG_CUSTOM_REMOTE_MANIFEST feature flag.
-
-CDS-44066, ZD-34808
-
-Added a fix to add or update template variables from variable panels.
-
-CDS-44067
-
-After this change, we will stop making bucket list API call, if region or connectorRef are runtime inputs
-
-CDS-44071
-
-Changed code to forbid bucketName being an empty string.
-
-CDS-44072
-
-Fixed the NPE. If bucketName or filePath/Regex is null or empty, the pipeline will throw appropriate exception.
-
-CDS-44146
-
-Added additional criteria to return files with undefined file usage
-
-CDS-44213
-
-Added support for an "infrastructure" key in the pipeline YAML expansion for OPA policies. This affects new services and environments that the pipeline references.
-
-CDS-44233
-
-This issue was happening in edit flow as "EventConditions" were getting added to "Pipeline" artifact and manifest data.This issue has been resolved. The edit flow of "Artifact" and "Manifest" in triggers now works as expected.
+This issue was happening in edit flow as "EventConditions" were getting added to "Pipeline" artifact and manifest data.This issue has been resolved. The edit flow of "Artifact" and "Manifest" in triggers now works as expected. (CDS-44233)
 
 CDS-44246
 
