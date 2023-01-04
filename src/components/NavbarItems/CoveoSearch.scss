@@ -37,9 +37,14 @@
 		margin-right: 12px;
 		border-radius: 5px;
     }
-	// .coveo-main-section {
 	.coveo-facet-column {
-		display: none;
+		// display: none;
+	}
+	.coveo-dropdown-header-wrapper {
+		margin-top: 10px;
+		.coveo-facet-dropdown-header:hover {
+			color: var(--white);
+		}
 	}
 }
 
