@@ -51,7 +51,6 @@ export default function FF() {
     //     <li>Manage feature flags</li>
     //   </ul>
     <div className="container">
-      <img src={`${baseUrl}img/ff.svg`} />
       <div className={styles.SectionName}>
         <h3>Manage Feature Flags</h3>
       </div>
@@ -76,7 +75,7 @@ export default function FF() {
           </div>
         </div>
         <div className={styles.spaceBetween}>
-          <div>
+          <div className={styles.content}>
             <p>
               Harness Feature Flags (FF) is a feature management solution that
               lets you change your software's functionality without deploying
@@ -84,19 +83,21 @@ export default function FF() {
               without having to ship new versions of the software. A feature
               flag is like a powerful if statement.
             </p>
-            <img src={`${baseUrl}img/ff_flow.svg`} className={styles.ff_img} />
             <div className={styles.alignCenter}>
               <Link
                 className={clsx("button button--lg", styles.btn, styles.btnFF)}
                 to="#all-tutorials"
               >
-                FF Tutorials
+                Tutorials
                 <img src={`${baseUrl}img/Stroke.svg`} />
               </Link>
               <Link href="https://harness.io/products/feature-flags">
-                <button className={styles.link}>Learn more about FF</button>
+                <button className={styles.link}>Learn more</button>
               </Link>
             </div>
+          </div>
+          <div>
+            <img src={`${baseUrl}img/ff.svg`} />
           </div>
         </div>
       </div>

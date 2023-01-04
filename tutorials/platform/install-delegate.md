@@ -19,11 +19,7 @@ You can install the Harness Delegate on either Docker or Kubernetes.
 ## Install Delegate
 
 <h3> Create New Delegate Token </h3>
-Login to the Harness Platform and go to Account Settings -> Account Resources -> Delegates
-
-![Account Delegate](static/install-delegate/account_delegate.png)
-
-Click on Delegates then click the Tokens tab. Click +New Token and give your token a name `firstdeltoken`. When you click Apply, a new token is generated for you. Click on the copy button to copy and store the token in a temporary file for now. You will provide this token as an input parameter in the next delegation installation step. The delegate will use this token to authenticate with the Harness Platform.
+Login to the Harness Platform and go to Account Settings -> Account Resources -> Delegates. Click on the Tokens tab. Click +New Token and give your token a name `firstdeltoken`. When you click Apply, a new token is generated for you. Click on the copy button to copy and store the token in a temporary file for now. You will provide this token as an input parameter in the next delegation installation step. The delegate will use this token to authenticate with the Harness Platform.
 
 <h3> Get Your Harness Account ID </h3>
 Along with the delegate token, you will also need to provde your Harness accountId as an input parameter to the delegate installation. This accountId is present in every Harness URL. For example, in the following URL
@@ -109,8 +105,7 @@ Validate that you have kubectl access to your cluster.
 kubectl get pods -A
 ```
 
-Now that you have access to a Kubernetes cluster, you can install the delegate using either the `Helm Chart` option or the `Kubernetes Manifest` option.
-. 
+Now that you have access to a Kubernetes cluster, you can install the delegate using any of the options below.
 
 ```mdx-code-block
 <Tabs>
@@ -162,6 +157,71 @@ harness/harness-delegate-ng \
 | [CDCE Docker](/tutorials/deploy-services/cdce-helm-k8s)  	 		| `http://<HARNESS_HOST>` if Docker Delegate is remote to CDCE  or  `http://host.docker.internal` if Docker Delegate is on same host as CDCE |
 | [CDCE Helm](/tutorials/deploy-services/cdce-helm-k8s)      		| `http://<HARNESS_HOST>:7143`  where HARNESS_HOST is the public IP of the Kubernetes node where CDCE Helm is running|
 	
+<h3> Verify Helm Delegate Connectivity </h3>
+
+Click Continue and in a few moments after the health checks pass, your Harness Delegate will be available for you to leverage. Click Done and can verify your new Delegate is on the list.
+
+![Delegate Available](static/install-delegate/helm_available.png)
+
+```mdx-code-block
+</TabItem>
+<TabItem value="Terraform Helm Provider">
+```
+
+<h3> Clone Terraform Module Repo </h3>
+
+Harness has created a github repo that stores the terraform module for the Kubernetes delegate. This module uses the standard terraform Helm provider to install the helm chart onto a Kubernetes cluster whose config is stored in the same machine at the `~/.kube/config` path. You can change this path in the `providers.tf` file after cloning.
+
+```
+git clone git@github.com:harness/terraform-kubernetes-harness-delegate.git
+```
+
+<h3> Run terraform init, plan and apply </h3>
+
+Initialize terraform. This will download the terraform helm provider onto your machine.
+```
+terraform init
+```
+
+Run the following step to see exactly the changes terraform is going to make on your behalf.
+```
+terraform plan
+```
+
+Finally, run this step to make terraform install the Kubernetes delegate using the Helm provider.
+```
+terraform apply \
+-var delegate_name="firstk8sdel" \
+-var account_id="PUT_YOUR_HARNESS_ACCOUNTID_HERE" \
+-var delegate_token="PUT_YOUR_DELEGATE_TOKEN_HERE" \
+-var manager_endpoint="PUT_YOUR_MANAGER_HOST_AND_PORT_HERE" \
+-var delegate_image="harness/delegate:22.11.77436"
+```
+`PUT_YOUR_MANAGER_HOST_AND_PORT_HERE` should be replaced by the Harness Manager Endpoint noted below. For Harness SaaS accounts, you can find your Harness Cluster Location in the Account Overview page under Account Settings section of the left navigation. For Harness CDCE, the endpoint varies based on the Docker vs. Helm installation options.
+
+| Harness Cluster Location| Harness Manager Endpoint on Harness Cluster	|
+| ------------------------| -------------------------------------------	|
+| SaaS prod-1  	 		| `https://app.harness.io`       				|
+| SaaS prod-2  	 		| `https://app.harness.io/gratis`        		|
+| SaaS prod-3  	 		| `https://app3.harness.io`        				|
+| [CDCE Docker](/tutorials/deploy-services/cdce-helm-k8s)  	 		| `http://<HARNESS_HOST>` if Docker Delegate is remote to CDCE  or  `http://host.docker.internal` if Docker Delegate is on same host as CDCE |
+| [CDCE Helm](/tutorials/deploy-services/cdce-helm-k8s)      		| `http://<HARNESS_HOST>:7143`  where HARNESS_HOST is the public IP of the Kubernetes node where CDCE Helm is running|
+
+When prompted by terraform if you want to continue with the apply step, type `yes` and then you will see output similar to the following.
+
+```
+helm_release.delegate: Creating...
+helm_release.delegate: Still creating... [10s elapsed]
+helm_release.delegate: Still creating... [20s elapsed]
+helm_release.delegate: Still creating... [30s elapsed]
+helm_release.delegate: Still creating... [40s elapsed]
+helm_release.delegate: Still creating... [50s elapsed]
+helm_release.delegate: Still creating... [1m0s elapsed]
+helm_release.delegate: Creation complete after 1m0s [id=firstk8sdel]
+
+Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
+```
+
 <h3> Verify Helm Delegate Connectivity </h3>
 
 Click Continue and in a few moments after the health checks pass, your Harness Delegate will be available for you to leverage. Click Done and can verify your new Delegate is on the list.
