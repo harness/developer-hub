@@ -39,13 +39,15 @@ The application pods should be in running state before and after chaos injection
 
 [link](provide) to setup experiment to execute chaos faults.
 
-* On the right pane, select **Kubernetes** that displays a list of Kubernetes faults available. Select **pod-network-loss** fault. 
+* On the right pane, select **Kubernetes** that displays a list of Kubernetes faults available. Select **pod-network-latency** fault. 
 
-![Select Kubernetes](./static/images/select-pod-nw-loss.png)
+![Select Kubernetes](./static/images/select-pod-nw-latency.png)
 
 * This leads you to a page where you can specify parameters for the **Target application**, **Tune fault**, and **Probes**.
 
-![Tune faults](./static/images/nw-loss-specify-parameters.png)
+![Specify parameters](./static/images/nw-latency-specify-parameters.png)
+
+![Tune faults](./static/images/nw-latency-tune-faults.png)
 
 * The **Target application** section has three parameters:
   
@@ -55,19 +57,16 @@ The application pods should be in running state before and after chaos injection
 
 **Specify the parameters and explain them. Mention about container runtime, containerd, socket path.**
 
-![Tune fault params](./static/images/nw-loss-tune-fault.png)
-
 * Click on **Deploy new probe** to add a new probe. 
 
 * You can see that the setup is successfull with the parameters you specified. Close this pane by clicking on **X** at the top.
 
 * Navigate to the next step of setting fault weights. Click the **Set fault weights** present on top. 
 
-![Set weights](./static/images/nw-loss-set-fault-weights.png)
 
 * Click **Run** to execute the experiment.
 
-![Run experiment](./static/images/nw-loss-run-experiment.png)
+![Run experiment](./static/images/nw-latency-run-experiment.png)
 
 * Visit [this link](provide link) to set up Grafana dashboard to visualize the results before and after injecting chaos into the application. 
 
@@ -76,16 +75,12 @@ The application pods should be in running state before and after chaos injection
 kubectl top pods <service name> -n <application namespace>
 ```
 
-![Before chaos](./static/images/nw-loss-validation.png)
+![Before chaos](./static/images/nw-latency-validation.png)
 
 * Here is a representation of how the resource usage changes after chaos has been injected.
 
-![During chaos](./static/images/nw-loss-during-chaos.png)
+![During chaos](./static/images/nw-latency-during-chaos.png)
 
-![After chaos cart](./static/images/nw-loss-cart-service.png)
-
-
-![After chaos visual](./static/images/nw-loss-after-chaos.png)
 
 ## Fault Tunables
 <details>
