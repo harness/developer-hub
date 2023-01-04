@@ -465,7 +465,7 @@ This release introduces the following features and enhancements.
 
 ## September 6, 2022
 
-### What's New
+### What's new
 
 You can now install and maintain Continuous Delivery, Continuous Integration and Security Testing Orchestration using Helm package manager in a self-managed environment.
 
@@ -475,7 +475,7 @@ For more information, see Install Self-Managed Enterprise Edition Using Helm.
 
 Delegate version 76324
 
-### New Features and Enhancements
+### New features and enhancements
 
 This release introduces the following features and enhancements.
 
