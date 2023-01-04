@@ -1,6 +1,6 @@
 ---
 title: Delegate image types
-description: 
+description: Provides information about delegate image types.
 # sidebar_position: 2
 helpdocs_topic_id: nb9zuo3mxd
 helpdocs_category_id: m9iau0y3hv
