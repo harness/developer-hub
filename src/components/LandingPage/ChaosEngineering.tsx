@@ -72,7 +72,6 @@ export default function CE() {
     //     <li>Run chaos experiments</li>
     //   </ul>
     <div className="container">
-      <img src={`${baseUrl}img/ce.svg`} />
       <div className={styles.SectionName}>
         <h3>Run chaos experiments</h3>
       </div>
@@ -110,16 +109,16 @@ export default function CE() {
                 className={clsx("button button--lg", styles.btn, styles.btnCE)}
                 to="#all-tutorials"
               >
-                CE Tutorials
+                Tutorials
                 <img src={`${baseUrl}img/Stroke.svg`} />
               </Link>
               <Link href="https://harness.io/products/chaos-engineering">
-                <button className={styles.link}>Learn more about CE</button>
+                <button className={styles.link}>Learn more</button>
               </Link>
             </div>
           </div>
           <div>
-            <img src={`${baseUrl}img/ce_flow.svg`} />
+            <img src={`${baseUrl}img/ce.svg`} />
           </div>
         </div>
       </div>
