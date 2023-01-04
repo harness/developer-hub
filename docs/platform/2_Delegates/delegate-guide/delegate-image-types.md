@@ -1,5 +1,5 @@
 ---
-title: Delegate type types
+title: Delegate image types
 description: 
 # sidebar_position: 2
 helpdocs_topic_id: nb9zuo3mxd
