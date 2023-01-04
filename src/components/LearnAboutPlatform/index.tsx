@@ -33,7 +33,7 @@ export default function LearnAboutPlatform(): JSX.Element {
               overlay={
                 <p className="tooltip-max-width">
                   Container-native CI and test optimization that takes source
-                  code to artifacts 98% faster.
+                  code to artifacts 4X faster.
                 </p>
               }
             >

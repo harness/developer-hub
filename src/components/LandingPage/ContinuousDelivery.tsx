@@ -129,7 +129,6 @@ export default function CD() {
     //     <li>Deploy services</li>
     //   </ul>
     <div className="container">
-      <img src={`${baseUrl}img/cd.svg`} />
       <div className={styles.SectionName}>
         <h3>Deploy services</h3>
       </div>
@@ -156,7 +155,7 @@ export default function CD() {
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
             <p>
-              Continuous Delivery & GitOps focuses on delivery and deployment of
+              Harness CD & GitOps focuses on delivery and deployment of
               application and infrastructure changes in a safe and sustainable
               way. Your Continuous Delivery pipeline should automate all of the
               steps necessary to get your changes into production.
@@ -166,18 +165,18 @@ export default function CD() {
                 className={clsx("button button--lg", styles.btn, styles.btnCD)}
                 to="#all-tutorials"
               >
-                CD & GitOps Tutorials
+                Tutorials
                 <img src={`${baseUrl}img/Stroke.svg`} />
               </Link>
               <Link href="https://harness.io/products/continuous-delivery">
                 <button className={styles.link}>
-                  Learn more about CD & GitOps
+                  Learn more
                 </button>
               </Link>
             </div>
           </div>
           <div>
-            <img src={`${baseUrl}img/cd_flow.svg`} />
+            <img src={`${baseUrl}img/cd.svg`} />
           </div>
         </div>
       </div>

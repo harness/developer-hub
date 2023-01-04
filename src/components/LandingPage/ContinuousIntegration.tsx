@@ -140,7 +140,6 @@ export default function CI() {
     //     <li>Build and Test Code</li>
     //   </ul>
     <div className="container">
-      <img src={`${baseUrl}img/ci.svg`} />
       <div className={styles.SectionName}>
         <h3>Build & Test Code</h3>
       </div>
@@ -167,7 +166,7 @@ export default function CI() {
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
             <p>
-              The CI Overview provides a bird's-eye view of all your Builds —
+              Harness CI helps you build and test your code. It also provides a bird's-eye view of all your builds —
               successful, failed, aborted, and expired — and the percentage of
               successful builds for individual codebases. You can easily see
               where your builds have failed and drill down into specific builds
@@ -178,16 +177,16 @@ export default function CI() {
                 className={clsx("button button--lg", styles.btn, styles.btnCI)}
                 to="#all-tutorials"
               >
-                CI Tutorials
+                Tutorials
                 <img src={`${baseUrl}img/Stroke.svg`} />
               </Link>
               <Link href="https://harness.io/products/continuous-integration">
-                <button className={styles.link}>Learn more about CI</button>
+                <button className={styles.link}>Learn more</button>
               </Link>
             </div>
           </div>
           <div>
-            <img src={`${baseUrl}img/ci_flow.svg`} />
+            <img src={`${baseUrl}img/ci.svg`} />
           </div>
         </div>
       </div>
