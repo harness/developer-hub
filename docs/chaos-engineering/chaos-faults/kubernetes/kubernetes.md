@@ -1,5 +1,4 @@
 ---
-id: kubernetes
 title: Chaos Faults for Kubernetes
 ---
 
