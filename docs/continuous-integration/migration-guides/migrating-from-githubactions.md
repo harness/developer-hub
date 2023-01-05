@@ -220,6 +220,8 @@ Harness CI has a clone codebase option that acts similar to that of `actions/che
 
 Each CI Pipeline has a Codebase that specifies the code repo (input) that the Pipeline uses to build the artifact (output). You specify the Codebase when you add the first Build Stage to the Pipeline. This becomes the default input for all other Stages in the Pipeline. By default, a Build Stage clones the repo from your Git provider into your build infrastructure when the Pipeline runs.
 
+![](./static/clone-codebase.png)
+
 ## Trigger a workflow
 
 <Tabs
