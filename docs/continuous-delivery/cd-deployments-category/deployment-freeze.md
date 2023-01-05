@@ -53,9 +53,9 @@ Exceptions save you the time of having to select multiple subordinate entities i
 
 ### What about pipelines already running?
 
-If a pipeline is running and a freeze happens, the pipeline will contine to run until the current stage of the pipeline has executed. Once that stage executes, the freeze is implemented and no further stages will execute.
+If a pipeline is running and a freeze happens, the pipeline will continue to run until the current stage of the pipeline has executed. Once that stage executes, the freeze is implemented and no further stages will execute.
 
-If the freeze happens to a running pipeline and it is unable to complete all stages, the status of the pipeline execution is listed as **Aborted With Freeze**.
+If the freeze happens to a running pipeline and it is unable to complete all stages, the status of the pipeline execution is listed as **Aborted By Freeze**.
 
 ### Freeze windows only apply to CD stages
 
@@ -83,7 +83,7 @@ Deployment freeze access control is configured using the **Deployment Freeze** r
 
 - **Manage**: add/edit/delete freeze at any level.
 - **Override**: When a deployment is required during a freeze duration, users with this role can still perform deployments.
-- **Global**: enable/disable freeze at account level.
+- **Global**: enable/disable freeze across all deployments at account, org, and project levels.
 
 
 ## Create a freeze window
@@ -141,15 +141,13 @@ import TabItem from '@theme/TabItem';
 
 6. In **Timezone**, select a timezone.
 7. In **Start Time**, select a calendar date and time for the freeze window to start.
-8. In **End Time**, select a duration (for example `1d`) or an end date and time.
+8. In **End Time**, select a duration (for example `1d`) or an end date and time. A minimum of `30m` is required.
    
    For a duration, you can use:
    - `w` for weeks
    - `d` for days
    - `h` for hours
    - `m` for minutes
-   - `s` for seconds
-   - `ms` for milliseconds
 
 9.  In **Recurrence**, select how often to repeat the freeze window and a recurrence end date.
 
