@@ -20,13 +20,13 @@ This topic explains how to configure Azure Active Directory (Azure AD) to automa
 * Make sure you are an Administrator in your Azure AD account and have the **Account Admin** permissions in Harness.
 * Make sure you have a Harness [API Key](../4_Role-Based-Access-Control/7-add-and-manage-api-keys.md) and a valid Token under it. The API Key must have all permissions on the Users and User Groups.
 
-### Review: Harness Azure AD SCIM Integration
+### Review: Harness Azure AD SCIM integration
 
 By using Azure AD as your identity provider, you can efficiently provision and manage users in your Harness Account, Org and Project. Harness' [SCIM](https://www.okta.com/blog/2017/01/what-is-scim/) integration enables Azure AD to serve as a single identity manager, for adding and removing users, and for provisioning User Groups. This is especially efficient for managing many users.
 
 In exchange for the convenience of Azure AD-provisioned users and groups, you must configure several aspects of Azure AD, as described in the following sections. You will also have restrictions on modifying Azure AD-provisioned users and groups natively within Harness, as described in [Limitations](#limitations).
 
-#### Features Supported
+#### Features supported
 
 Once you have set up the SCIM integration between Azure AD and Harness (as described below), Administrators will be able to perform the following Harness actions within Azure AD:
 
@@ -56,7 +56,7 @@ You must use Azure AD to assign these users to other User Groups (to grant corr
 
 When you use Azure AD to directly assign users to Harness, those users initially have no User Group assignments in Harness. With this method, you are free to use Harness Manager to add and modify User Group assignments.
 
-### Step 1: Add Harness from the Gallery
+### Step 1: Add Harness from the gallery
 
 Before you configure Harness for automatic user provisioning with Azure AD, you need to add Harness from the Azure AD application gallery to your list of managed SaaS applications.
 
@@ -65,7 +65,7 @@ Before you configure Harness for automatic user provisioning with Azure AD, you 
 3. Click **New application** to add a new application.![](./static/provision-users-and-groups-using-azure-ad-scim-30.png)
 4. In the search box, enter **Harness**, select **Harness** in the results list, and then select the **Add** button to add the application. You can now provision users to Harness.
 
-### Step 2: Provision Users to Harness
+### Step 2: Provision users to Harness
 
 1. In your Azure portal, go to Enterprise Applications > All applications.
 2. In the applications list, select **Harness**.
@@ -92,11 +92,17 @@ Before you configure Harness for automatic user provisioning with Azure AD, you 
 
 This operation starts the initial sync of the users or groups you're provisioning. The initial sync takes longer to perform than later ones. Syncs occur approximately every 40 minutes, as long as the Azure AD provisioning service is running. To monitor progress, go to the **Synchronization Details** section. You can also follow links to a provisioning activity report, which describes all actions performed by the Azure AD provisioning service on Harness.
 
+
+:::note
+Enable the feature flag UPDATE_EMAILS_VIA_SCIM to reflect changes to the email address in the SCIM provider.
+
+:::
+
 For more information about how to read the Azure AD provisioning logs, see [Report on automatic user account provisioning](https://docs.microsoft.com/en-us/azure/active-directory/app-provisioning/check-status-user-account-provisioning).
 
 If an error prevents adding, updating, or deleting an individual user to Harness, Azure retries the operation in the next sync cycle. To resolve the failure, administrators must check the [provisioning logs](https://learn.microsoft.com/en-us/azure/active-directory/reports-monitoring/concept-provisioning-logs?context=azure/active-directory/manage-apps/context/manage-apps-context) to determine the root cause and take the appropriate action. For more information, see [Errors and retries](https://learn.microsoft.com/en-us/azure/active-directory/app-provisioning/how-provisioning-works#errors-and-retries).
 
-### What If I Already Have App Integration for Harness FirstGen?
+### What if I already have app integration for Harness FirstGen?
 
 If you currently have a Harness FirstGen App Integration setup in your IDP and are now trying to set up one for Harness NextGen, make sure the user information is also included in the FirstGen App Integration before attempting to log into Harness NextGen through SSO.
 
