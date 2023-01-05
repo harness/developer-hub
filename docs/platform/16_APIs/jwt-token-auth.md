@@ -1,5 +1,5 @@
 ---
-title: Use the Harness SCIM APIs through JWT Token
+title: Use a JWT token for Harness SCIM API authentication
 description: Access SCIM APIs through JWT Token.
 ---
 
@@ -9,30 +9,30 @@ Currently, this feature is behind the feature flags `NG_SETTINGS` and `PL_SUPPOR
 :::
 
 
-Harness SCIM APIs are accessible via JWT token. You can use your email addresses other than the ones you have registered in Harness, for identity provider authentication. After successful authentication, you can invoke the Harness SCIM APIs using the JWT token.
+You can access the Harness SCIM API by using a JWT token. You can use email addresses other than the ones you have registered with Harness, for identity provider authentication. After successful authentication, you can invoke the Harness SCIM APIs by using the JWT token.
 
-To be able to do this, you must enable the **SCIM JWT Token** in default settings through the Settings API.
+To do this, you must enable the **SCIM JWT** token settings through the [Setting API](https://apidocs.harness.io/tag/Setting).
 
 :::note
-Once you have configured the default settings, SCIM updates pick up the new settings after 120 secs.
+These settings become effective 120 seconds after you update them.
 :::
 
 - Use the settings API to configure the following settings:
-    - `keyField`: this is the distinguished field to match the JWT claims map.
-    - `valueField`: this is the value that matches to the above keyField.
-    - `publicJwtKeysUrl`: the endpoint for the JWT keys JSON data.
-    - `ServiceAccountId`: the identifier string of a service account which is assigned to roles in Harness.
-  For more information, see Use Settings API.
+    - `keyField`: Distinguished field to match the JWT claims map.
+    - `valueField`: Value corresponding to the keyField.
+    - `publicJwtKeysUrl`: Endpoint for the JWT keys JSON data.
+    - `ServiceAccountId`: Identifier string of a service account that is assigned to roles in Harness.
+  For more information, see [Use the Settings API](../16_APIs/api-quickstart.md).
 
 ## Permissions
-- Make sure you have the **Manage** permission for users and user groups. 
+- Make sure you have the **Manage** and **View** permissions for users and user groups. 
 
-## Invoke SCIM API through JWT token
-1. Enter your JWT Token in the Bearer header.
-   Harness checks the following to complete the authentication:
-   - Validate the authenticity of the issued JWT token using the public JWT Keys URL.
-   - Validate the JWT token and match the claims to be those defined in the account settings.
-2. Use the following curl command to fetch all the users using a JWT token: 
+## Invoke the SCIM API by using a JWT token
+1. Enter your JWT token in the `Bearer header`.
+  Harness validates the following to complete the authentication:
+  - Authenticity of the issued JWT token. For this validation, Harness uses the public JWT keys URL.
+  - Claims in the JWT token. Harness matches the claims in the token to those defined in the account settings.
+2. Use the following curl command to fetch all the users by using a JWT token: 
    
    
    
