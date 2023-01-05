@@ -1,19 +1,19 @@
 ---
 id: pod-network-latency
-title: Pod Network Latency
+title: Pod network latency
 ---
 
 ## Introduction
-- It injects latency on the specified container by starting a traffic control (tc) process with netem rules to add egress delays.
-- It can test the application's resilience to lossy/flaky network.
+- It introduces latency (delay) to a specific container by initiating a traffic control (tc) process with netem rules to add egress delays.
+- It tests the application's resilience to lossy/flaky networks.
 
 :::tip Fault execution flow chart
 ![Pod Network Latency](./static/images/network-chaos.png)
 :::
 
-## Uses
+## Usage
 <details>
-<summary>View the uses of the fault</summary>
+<summary>Fault application</summary>
 <div>
 The fault causes network degradation without the pod being marked unhealthy/unworthy of traffic by kube-proxy (unless you have a liveness probe of sorts that measures latency and restarts/crashes the container). The idea of this fault is to simulate issues within your pod network OR microservice communication across services in different availability zones/regions etc. 
 
@@ -25,13 +25,64 @@ The applications may stall or get corrupted while they wait endlessly for a pack
 
 ## Prerequisites
 :::info
-- Ensure that Kubernetes Version > 1.16.
+- Kubernetes > 1.16.
+- It is assumed that you already have the boutique app set up in a namespace. If not, follow [this](provide link) to set up your boutique application.
 :::
 
-## Default Validations
+## Default Validation
 :::note
 The application pods should be in running state before and after chaos injection.
 :::
+
+## Implementation
+
+* The next step is [setup experiment](provide) to execute the chaos faults.
+
+* On the right pane, select **Kubernetes** that displays a list of Kubernetes faults available. Select **pod-network-latency** fault. 
+
+![Select Kubernetes](./static/images/select-pod-nw-latency.png)
+
+* This leads you to a page to specify parameters for the **Target application**, **Tune fault**, and **Probes**.
+
+* The **Target application** section has three parameters:
+  * **App Namespace**: The namespace where your boutique application (or any other application) is present.
+  * **App Kind**: 
+  * **App Label**: The service within the application into which the chaos is injected.
+
+![Specify parameters](./static/images/nw-latency-specify-parameters.png)
+
+![Tune faults](./static/images/nw-latency-tune-faults.png)
+
+  
+**Specify the parameters and explain them**
+
+* The **Tune fault** section has three parameters
+
+**Specify the parameters and explain them. Mention about container runtime, containerd, socket path.**
+
+* Click on **Deploy new probe** to add a new probe. 
+
+* You can see that the setup is successful with the parameters you specified. Close this pane by clicking on **X** at the top.
+
+* Navigate to the next step to set fault weights. Click the **Set fault weights** present on top and adjust the weights according to your requirement. 
+
+* Click **Run** to execute the experiment.
+
+![Run experiment](./static/images/nw-latency-run-experiment.png)
+
+* Visit [this link](provide link) to set up Grafana dashboard to visualize the results before and after injecting chaos into the application. 
+
+* Here is a representation of how the CPU resource usage is, before chaos has been injected. You can execute the following command to check the CPU usage:
+```
+kubectl top pods <service name> -n <application namespace>
+```
+
+![Before chaos](./static/images/nw-latency-validation.png)
+
+* Here is a representation of how the resource usage changes after chaos has been injected.
+
+![During chaos](./static/images/nw-latency-during-chaos.png)
+
 
 ## Fault Tunables
 <details>

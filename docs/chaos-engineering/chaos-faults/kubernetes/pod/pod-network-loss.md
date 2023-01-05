@@ -1,6 +1,6 @@
 ---
 id: pod-network-loss
-title: Pod Network Loss
+title: Pod network loss
 ---
 ## Introduction
 - It injects packet loss on the specified container by starting a traffic control (tc) process with netem rules to add egress/ingress loss.
@@ -20,8 +20,69 @@ Coming soon.
 
 ## Prerequisites
 :::info
-- Ensure that Kubernetes Version > 1.16.
+- Kubernetes > 1.16.
 :::
+
+## Implementation
+
+**NOTE:** It is assumed that you already have the boutique app set up in a namespace. If not, follow [this](provide link) to set up your boutique application.
+
+[link](provide) to setup experiment to execute chaos faults.
+
+* On the right pane, select **Kubernetes** that displays a list of Kubernetes faults available. Select **pod-network-loss** fault. 
+
+![Select Kubernetes](./static/images/select-pod-nw-loss.png)
+
+* This leads you to a page where you can specify parameters for the **Target application**, **Tune fault**, and **Probes**.
+
+![Tune faults](./static/images/nw-loss-specify-parameters.png)
+
+* The **Target application** section has three parameters:
+  
+**Specify the parameters and explain them**
+
+* The **Tune fault** section has three parameters
+
+**Specify the parameters and explain them. Mention about container runtime, containerd, socket path.**
+
+![Tune fault params](./static/images/nw-loss-tune-fault.png)
+
+* Click on **Deploy new probe** to add a new probe. 
+
+* You can see that the setup is successfull with the parameters you specified. Close this pane by clicking on **X** at the top.
+
+* Navigate to the next step of setting fault weights. Click the **Set fault weights** present on top. 
+
+![Set weights](./static/images/nw-loss-set-fault-weights.png)
+
+* Click **Run** to execute the experiment.
+
+![Run experiment](./static/images/nw-loss-run-experiment.png)
+
+* Visit [this link](provide link) to set up Grafana dashboard to visualize the results before and after injecting chaos into the application. 
+
+* Here is a representation of how the CPU resource usage is, before chaos has been injected. You can execute the following command to check the CPU usage:
+```
+kubectl top pods <service name> -n <application namespace>
+```
+
+![Before chaos](./static/images/nw-loss-validation.png)
+
+* Here is a representation of how the IP address becomes inaccessible during chaos.
+
+![During chaos](./static/images/nw-loss-during-chaos.png)
+
+![During chaos visual](./static/images/nw-loss-during-chaos-dashboard.png)
+
+* When the IP address is inspected, you can see that the status is **pending**. 
+
+![After chaos cart](./static/images/nw-loss-cart-service.png)
+
+* After the chaos experiment completes execution, the IP address is back to normal state.
+
+![After chaos](./static/images/nw-loss-after-chaos.png)
+
+![After chaos visual](./static/images/nw-loss-after-chaos-dashboard.png)
 
 ## Default Validations
 :::note

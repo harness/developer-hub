@@ -1,20 +1,23 @@
 ---
 id: pod-memory-hog
-title: Pod Memory Hog
+title: Pod memory hog
 ---
 
 ## Introduction
-- This fault consumes the Memory resources on the application container on specified memory in megabytes.
-- It simulates conditions where app pods experience Memory spikes either due to expected/undesired processes thereby testing how the overall application stack behaves when this occurs.
+- Pod memory hog is a Kubernetes pod-level chaos fault that consumes memory resources in excess, resulting in a significant spike in the memory usage of a pod.
+- This fault simulates a condition where the memory usage of an application spikes up unexpectedly.  
 
-:::tip Fault execution flow chart
-![Pod Memory Hog](./static/images/pod-stress.png)
+**Illustration of how pod memory hog is executed**
+
+:::tip Flow chart that describes how the fault is executed
+![Pod memory hog](./static/images/pod-stress.png)
 :::
 
-## Uses
+## Usage
 <details>
 <summary>View the uses of the fault</summary>
 <div>
+**REWRITE**
 Memory usage within containers is subject to various constraints in Kubernetes. If the limits are specified in their spec, exceeding them can cause termination of the container (due to OOMKill of the primary process, often pid 1) - the restart of the container by kubelet, subject to the policy specified. For containers with no limits placed, the memory usage is uninhibited until such time as the Node level OOM behavior takes over. In this case, containers on the node can be killed based on their oom_score and the QoS class a given pod belongs to (bestEffort ones are first to be targeted). This eval is extended to all pods running on the node - thereby causing a bigger blast radius. 
 
 This fault launches a stress process within the target container - which can cause either the primary process in the container to be resource constrained in cases where the limits are enforced OR eat up available system memory on the node in cases where the limits are not specified.
@@ -23,15 +26,102 @@ This fault launches a stress process within the target container - which can cau
 
 ## Prerequisites
 :::info
-- Ensure that Kubernetes Version > 1.16.
+- Kubernetes > 1.16
 :::
 
-## Default Validations
+## Default validation
 :::note
-The application pods should be in running state before and after chaos injection.
+The pods in the application should be in the running state before and after the chaos has been injected.
 :::
 
-## Fault Tunables
+## Implementation
+
+**NOTE:** It is assumed that you already have the boutique app set up in a namespace. If not, follow [this](provide link) to set up your boutique application.
+
+To execute pod memory hog, it is essential to tweak a section of the **app.yaml**. In the **deployment** kind, for **cartservice**, uncomment the following lines.
+
+```
+resources:
+  requests:
+    cpu: 200m
+    memory: 64Mi
+  limits:
+    cpu: 300m
+    memory: 128Mi
+```
+
+[link](provide) to setup experiment to execute chaos faults.
+
+* On the right pane, select **Kubernetes** that displays a list of Kubernetes faults available. Select **pod-memory-hog** fault. 
+
+![Select Kubernetes](./static/images/select-kube-fault.png)
+
+* This leads you to a page where you can specify parameters for the **Target application**, **Tune fault**, and **Probes**.
+
+![Tune faults](./static/images/mem-hog-specify-parameters.png)
+
+* The **Target application** section has three parameters:
+  
+**Specify the parameters and explain them**
+
+* The **Tune fault** section has three parameters
+
+**Specify the parameters and explain them. Mention about container runtime, containerd, socket path.**
+
+![Tune fault params](./static/images/mem-hog-tune-fault-1.png)
+
+![Tune fault params2](./static/images/mem-hog-tune-fault-2.png)
+
+* In the **Probes** section, click on **Deploy new probe** to add a new probe. 
+
+**Specify the parameters and explain them**
+
+![Deploy probe](./static/images/mem-hog-deploy-new-probe.png)
+
+* Specify the **Probe name**, **Probe type**, and **Probe mode**. Click on **Continue**.
+**Specify the parameters and explain them**
+
+![Probe mode](./static/images/add-probe-params.png)
+
+* Specify properties . Click **Continue**.
+**Specify the parameters and explain them**
+
+![Probe mode](./static/images/probe-properties.png)
+
+* Specify details . Click **Setup the probe**.
+**Specify the parameters and explain them**
+
+![Probe mode](./static/images/probe-details.png)
+
+* You can see that the probe has been setup successfully with the parameters you specified. Close this pane by clicking on **X** at the top.
+
+![Probe setup done](./static/images/mem-hog-probe-setup-done.png)
+
+* Navigate to the next step of setting fault weights. Click the **Set fault weights** present on top. 
+
+![Set weights](./static/images/mem-hog-set-fault-weights.png)
+
+* Click **Run** to execute the experiment.
+
+![Run experiment](./static/images/mem-hog-run-experiment.png)
+
+* Visit [this link](provide link) to set up Grafana dashboard to visualize the results before and after injecting chaos into the application. 
+
+* Here is a representation of how memory usage is before chaos has been injected. You can execute the following command to check the memory usage:
+```
+kubectl top pods <service name> -n <application namespace>
+```
+
+![Before chaos](./static/images/mem-hog-before-chaos.png)
+
+* Here is a representation of how memory usage changes after chaos has been injected.
+
+![After chaos](./static/images/mem-hog-after-chaos.png)
+
+![After chaos visual](./static/images/mem-hog-visual.png)
+
+
+## Fault tunables
 <details>
     <summary>Check the Fault Tunables</summary>
     <h2>Optional Fields</h2>
@@ -43,7 +133,7 @@ The application pods should be in running state before and after chaos injection
       </tr>
       <tr>
         <td> MEMORY_CONSUMPTION </td>
-        <td>  The amount of memory used of hogging a Kubernetes pod (megabytes)</td>
+        <td> The amount of memory used of hogging a Kubernetes pod (megabytes)</td>
         <td> Defaults to 500MB </td>
       </tr>
       <tr>
@@ -109,12 +199,12 @@ The application pods should be in running state before and after chaos injection
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common and Pod specific tunables
-Refer the [common attributes](../../common-tunables-for-all-faults) and [Pod specific tunable](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
+### Common and pod-specific tunables
+Refer the [common attributes](../../common-tunables-for-all-faults) and [pod specific tunables](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
 
-### Memory Consumption
+### Memory consumption
 
 It stresses the `MEMORY_CONSUMPTION` MB memory of the targeted pod for the `TOTAL_CHAOS_DURATION` duration.
 
@@ -147,7 +237,7 @@ spec:
           value: '60'
 ```
 
-### Workers For Stress
+### Workers for stress
 
 The worker's count for the stress can be tuned with `NUMBER_OF_WORKERS` ENV. 
 
@@ -180,14 +270,14 @@ spec:
           value: '60'
 ```
 
-### Container Runtime Socket Path
+### Container runtime socket path
 
 It defines the `CONTAINER_RUNTIME` and `SOCKET_PATH` ENV to set the container runtime and socket file path.
 
 - `CONTAINER_RUNTIME`: It supports `docker`, `containerd`, and `crio` runtimes. The default value is `docker`.
 - `SOCKET_PATH`: It contains path of docker socket file by default(`/var/run/docker.sock`). For other runtimes provide the appropriate path.
 
-### Pumba Chaos Library
+### Pumba chaos library
 
 It specifies the Pumba chaos library for the chaos injection. It can be tuned via `LIB` ENV. The defaults chaos library is `litmus`.
 Provide the stress image via `STRESS_IMAGE` ENV for the pumba library.

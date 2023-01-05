@@ -1,18 +1,18 @@
 ---
 id: disk-fill
-title: Disk Fill
+title: Disk fill
 ---
-## Introduction
-- It causes Disk Stress by filling up the ephemeral storage of the pod on any given node.
-- It causes the application pod to get evicted if the capacity filled exceeds the pod's ephemeral storage limit.
-- It tests the Ephemeral Storage Limits, to ensure those parameters are sufficient.
-- It tests the application's resiliency to disk stress/replica evictions.
+It is a chaos fault that results in disk stress by filling up the ephemeral storage of the pod on a node. This fault:
+
+- Evicts the application pod when the capacity filled exceeds the pod's ephemeral storage limit.
+- Tests the ephemeral storage limits and ensures that the parameters are sufficient.
+- Tests the application's resiliency to disk stress/replica evictions.
 
 :::tip Fault execution flow chart
 ![Disk Fill](./static/images/disk-fill.png)
 :::
 
-## Uses
+## Usage
 <details>
 <summary>View the uses of the fault</summary>
 <div>
@@ -22,8 +22,8 @@ Coming soon.
 
 ## Prerequisites
 :::info
-- Ensure that Kubernetes Version > 1.16.
-- Appropriate Ephemeral Storage Requests and Limits should be set for the application before running the fault. An example specification is shown below:
+- Kubernetes > 1.16.
+- Specify ephemeral storage requests and limits for the application before implementing the fault. An example specification is shown below:
     ```yaml
     apiVersion: v1
     kind: Pod
@@ -51,12 +51,54 @@ Coming soon.
     ```
 :::
 
-## Default Validations
+## Default validations
 :::note
 The application pods should be in running state before and after chaos injection.
 :::
 
-## Fault Tunables
+## Implementation
+
+**NOTE:** It is assumed that you already have the boutique app set up in a namespace. If not, follow [this](provide link) to set up your boutique application.
+
+To execute disk fill fault, [setup experiment](provide) and infrastructure.
+
+* On the right pane, select **Kubernetes** that displays a list of Kubernetes faults available. Select **disk-fill**fault. 
+
+![Select Kubernetes](./static/images/select-disk-fill.png)
+
+* This leads you to a page where you can specify parameters for the **Target application**, **Tune fault**, and **Probes**.
+
+![Tune faults](./static/images/disk-fill-specify-parameters.png)
+
+* The **Target application** section has three parameters:
+  
+**Specify the parameters and explain them**
+
+* The **Tune fault** section has three parameters
+
+**Specify the parameters and explain them. Mention about container runtime, containerd, socket path.**
+
+![Tune fault params](./static/images/disk-fill-tune-fault-1.png)
+
+![Tune fault params2](./static/images/disk-fill-tune-fault-2.png)
+
+* You can see that the probe has been setup successfully with the parameters you specified. Close this pane by clicking on **X** at the top.
+
+![Probe setup done](./static/images/mem-hog-probe-setup-done.png)
+
+* Navigate to the next step of setting fault weights. Click the **Set fault weights** present on top. 
+
+![Set weights](./static/images/disk-fill-set-fault-weight.png)
+
+* Click **Run** to execute the experiment.
+
+![Run experiment](./static/images/disk-fill-run-exp.png)
+
+* Visit [this link](provide link) to set up Grafana dashboard to visualize the results before and after injecting chaos into the application. 
+
+* Here is a representation of how disk fill affects the application.
+
+## Fault tunables
 <details>
     <summary>Check the Fault Tunables</summary>
     <h2>Optional Fields</h2>
@@ -137,16 +179,16 @@ The application pods should be in running state before and after chaos injection
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common and Pod specific tunables
-Refer the [common attributes](../../common-tunables-for-all-faults) and [Pod specific tunable](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables. 
+### Common and pod specific tunables
+Refer to the [common attributes](../../common-tunables-for-all-faults) and [pod specific tunable](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables. 
 
-### Disk Fill Percentage
+### Disk fill percentage
 
-It fills the `FILL_PERCENTAGE` percentage of the ephemeral-storage limit specified at `resource.limits.ephemeral-storage` inside the target application. 
+It fills the `FILL_PERCENTAGE` parameter of the ephemeral-storage limit specified at `resource.limits.ephemeral-storage` within the target application. 
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/disk-fill/fill-percentage.yaml yaml)
 ```yaml
@@ -175,12 +217,12 @@ spec:
           VALUE: '60'
 ```
 
-### Disk Fill Mebibytes
+### Disk fill mebibytes
 
-It fills the `EPHEMERAL_STORAGE_MEBIBYTES` MiBi of ephemeral storage of the targeted pod. 
-It is mutually exclusive with the `FILL_PERCENTAGE` ENV. If `FILL_PERCENTAGE` ENV is set then it will use the percentage for the fill otherwise, it will fill the ephemeral storage based on `EPHEMERAL_STORAGE_MEBIBYTES` ENV.
+It fills the `EPHEMERAL_STORAGE_MEBIBYTES` parameter of ephemeral storage in the target pod. 
+It is mutually exclusive with the `FILL_PERCENTAGE` environment variable. If `FILL_PERCENTAGE` environment variable is set, it uses the percentage for the fill. Otherwise, it fills the ephemeral storage based on `EPHEMERAL_STORAGE_MEBIBYTES` environment variable.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/disk-fill/ephemeral-storage-mebibytes.yaml yaml)
 ```yaml
@@ -210,12 +252,12 @@ spec:
           VALUE: '60'
 ```
 
-### Data Block Size
+### Data block size
 
-It defines the size of the data block used to fill the ephemeral storage of the targeted pod. It can be tuned via `DATA_BLOCK_SIZE` ENV. Its unit is `KB`.
+It defines the size of the data block required to fill the ephemeral storage of the target pod. You can tune it using the `DATA_BLOCK_SIZE` environment variable. It is in terms of `KB`.
 The default value of `DATA_BLOCK_SIZE` is `256`.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/disk-fill/data-block-size.yaml yaml)
 ```yaml
@@ -244,11 +286,11 @@ spec:
           VALUE: '60'
 ```
 
-### Container Path
+### Container path
 
-It defines the storage location of the containers inside the host(node/VM). It can be tuned via `CONTAINER_PATH` ENV. 
+It defines the storage location of the containers inside the host (node/VM). You can tune it using the `CONTAINER_PATH` environment variable. 
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/disk-fill/container-path.yaml yaml)
 ```yaml
