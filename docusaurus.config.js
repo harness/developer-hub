@@ -494,6 +494,18 @@ const config = {
       },
     ],
     [
+      "@docusaurus/plugin-content-docs",
+      {
+        id: "certifications",
+        path: "certifications",
+        routeBasePath: "certifications",
+        exclude: ["**/shared/**", "**/static/**"],
+        sidebarPath: require.resolve("./sidebars-certifications.js"),
+        editUrl: "https://github.com/harness/developer-hub/tree/main",
+        // ... other options
+      },
+    ],
+    [
       path.resolve(__dirname, "./plugins/docs-rss-plugin"),
       {
         id: "release-notes",
