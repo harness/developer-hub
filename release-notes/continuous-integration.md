@@ -23,9 +23,9 @@ No early access features are available for this release.
 
 ### Fixed issues
 
-* Fixed an issue in the onboarding UI. In some cases, the web UI did not connect with the specified git account immediately after oAuth setup. (CI-6518)
+* Fixed an issue in the onboarding UI. In some cases, the web UI did not connect with the specified git account immediately after OAuth setup. (CI-6518)
 
-* You can now use codebase fields as expressions. Previously, when the codebase repository name is defined by `<+pipeline.name>`, the built-in variables `<+codebase.branch>` and `<+codebase.commitSha>` returned null. (CI-6478, ZD-38122, ZD-38241)
+* You can now use codebase fields as expressions. Previously, when the codebase repository name was defined by `<+pipeline.name>`, the built-in variables `<+codebase.branch>` and `<+codebase.commitSha>` returned null. (CI-6478, ZD-38122, ZD-38241)
 
 * Fixed an issue that prevented Azure connectors from connecting to repos with URLs that contained spaces or `%20`. (CI-6465)
 
