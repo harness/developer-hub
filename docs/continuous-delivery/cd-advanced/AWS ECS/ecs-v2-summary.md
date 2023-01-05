@@ -12,12 +12,11 @@ This topic describes the changes and provides some best practices to help you wi
 
 ## ECS Delegates
 
-For Harness FirstGen users who were using the FirstGen ECS Delegate, you can now use a Kubernetes, Helm, or Docker Delegate. To continue using an ECS-based Delegate in NextGen, see the blog post [How to deploy Delegate in Amazon ECS for Harness NG]([https://](https://community.harness.io/t/how-to-deploy-delegate-in-amazon-ecs-for-harness-ng/13056)).
+For Harness FirstGen users who were using the FirstGen ECS Delegate, you can now use a Kubernetes, Helm, or Docker Delegate. To continue using an ECS-based Delegate in NextGen, see the blog post [How to deploy Delegate in Amazon ECS for Harness NG](https://community.harness.io/t/how-to-deploy-delegate-in-amazon-ecs-for-harness-ng/13056).
 
 ## Getting started with ECS in NextGen
 
 - [ECS deployment tutorial](../../onboard-cd/cd-quickstarts/ecs-deployment-tutorial.md)
-- [Deploy a Docker image to Amazon ECS](../../../../tutorials/deploy-services/docker-ecs.md)
 
 ## ECS Basics
 
