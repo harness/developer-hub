@@ -21,7 +21,7 @@ You can define a CI build infrastructure on any Linux or macOS host. This is the
 ### Install the Delegate
 
 1. In the Harness UI, go to the screen that corresponds to the scope of your delegate: **Account Settings > Account Resources > Delegates **, or **Project Setup > Delegates**.
-2. Click **New Delegate** or **Create a Delegate**, and select **Docker** for the delegate type and click **Continue**.
+2. Select **New Delegate** or **Create a Delegate**, select **Docker** for the delegate type, and then select **Continue**.
 3. Enter a delegate name and click **Continue**.
 4. Download the **docker-compose.yml** file that appears.
 5. Click **Continue**.   
@@ -37,13 +37,13 @@ The UI shows the delegate as not connected. This is expected behavior. You need 
 8. Download a Drone Runner executable from <https://github.com/harness/drone-docker-runner/releases> .
 9. Enable execution permissions for the Runner. For example, on macOS you can run the command `sudo` `chmod +x` `drone-docker-runner-darwin-amd64`.
 10. Start the runner binary:
-	1. On macOS, run `./drone-docker-runner-darwin-amd64 server` (Note: You might have to allow this app to be run from `Security and Privacy` settings)
+	1. On macOS, run `./drone-docker-runner-darwin-amd64 server` Note: You might have to allow this app to be run from the**Security and Privacy** settings.
 	2. On Linux, run as sudo: `sudo ./drone-docker-runner-darwin-amd64 server`
 11. Go back to the Delegates page where you created the new delegate. The delegate should appear as connected. This might take a few minutes.
 
 ### Update the Pipeline
 
-Update the pipeline where you want to use the Docker delegate either from YAML or the Visual pipeline editor.
+Update the pipeline where you want to use the Docker delegate, either from YAML or the Visual pipeline editor.
 
 #### From the YAML view
 
@@ -82,7 +82,7 @@ Update the pipeline where you want to use the Docker delegate either from YAML o
 
 #### From the Visual Editor
 
-Update the infrastructure tab to use:
+Update the **Infrastructure** tab to use:
 
 1. Docker infrastructure
 2. Platform: Operating System and Architecture (Linux, AMD64 example below)
