@@ -1,5 +1,5 @@
 ---
-id: kubernetes
+id: pod-memory-hog
 title: Pod memory hog
 ---
 

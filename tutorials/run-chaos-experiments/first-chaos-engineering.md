@@ -4,19 +4,19 @@ title: Your first chaos experiment run
 description: Run a chaos experiment on Kubernetes for the first time.
 ---
 
-Welcome to Harness Chaos Engineering's first tutorial to run a chaos experiment. By the end of this tutorial, you would have successfully executed a chaos experiment on Kubernetes!
+Welcome to Harness Chaos Engineering's first tutorial on running a chaos experiment. By the end of this tutorial, you will have successfully executed a chaos experiment on Kubernetes!
 
 ## What is chaos engineering?
-Chaos engineering is a DevOps practice that involves proactive, and controlled experimentation on a system to identify weak points and misconfiguration, gain insights into how the system behaves in turbulent conditions, and improve the system’s resilience. The system typically comprises the application under test and all the components on which it depends, such as databases, networks, infrastructure, and cloud native services.
+Chaos engineering is a DevOps practise that involves proactive, and controlled experimentation on a system to identify weak points and misconfigurations, gain insights into how the system behaves in turbulent conditions, and improve the system’s resilience. The system typically comprises the application under test and all the components on which it depends, such as databases, networks, infrastructure, and cloud native services.
 
 Chaos engineering is relevant to all types of systems, including legacy applications and infrastructure. However, it assumes greater significance in deployments involving cloud native applications, which inherently carry multiple points of failure because of their distributed and elastic nature.
 
 ## Typical chaos experimentation workflow
-Chaos experiments target a steady-state system and simulate conditions that might induce failure in components such as infrastructure, networks, and services. For example, a Chaos experiment might terminate a pod in a functional Kubernetes cluster, shut down a working load balancer to validate failover, or induce CPU spikes on a server, and then observe how the system responds. 
- 
+Chaos experiments target a steady-state system and simulate conditions that might induce failure in components such as infrastructure, networks, and services. For example, a Chaos experiment might terminate a pod in a functional Kubernetes cluster, shut down a working load balancer to validate failover, or induce CPU spikes on a server, and then observe how the system responds.
+
 In a chaos experiment, you typically perform the following tasks:
-1. Define and apply a steady state to the test system and specify its service-level objectives (SLOs). 
-2. Develop a hypothesis on how the system will behave if you inject a specific fault.
+1. Define and apply a steady state to the test system and specify its service-level objectives (SLOs).
+2. Develop a hypothesis on the system's behaviour if you inject a specific fault.
 3. Inject the fault.
 4. Observe whether the system continues to meet the SLOs.
 
