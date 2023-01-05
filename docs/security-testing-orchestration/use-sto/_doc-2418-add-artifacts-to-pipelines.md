@@ -1,6 +1,6 @@
 ---
 title: Add Custom Artifacts to STO Pipelines
-description: You can specify exemptions (ignore rules) for specific security issues. An ignore rule allows pipeline builds to proceed even if a security scan detects an issue. 
+description: This topic describes how to include SSL certificates and other types of artifacts in your STO pipelines. 
 # sidebar_position: 60
 ---
 
