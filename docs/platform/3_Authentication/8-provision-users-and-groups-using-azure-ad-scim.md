@@ -26,7 +26,7 @@ By using Azure AD as your identity provider, you can efficiently provision and m
 
 In exchange for the convenience of Azure AD-provisioned users and groups, you must configure several aspects of Azure AD, as described in the following sections. You will also have restrictions on modifying Azure AD-provisioned users and groups natively within Harness, as described in [Limitations](#limitations).
 
-#### Features supported
+#### Supported features
 
 Once you have set up the SCIM integration between Azure AD and Harness (as described below), Administrators will be able to perform the following Harness actions within Azure AD:
 
