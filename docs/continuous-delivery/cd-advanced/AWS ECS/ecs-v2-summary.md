@@ -8,7 +8,7 @@ Harness NextGen has revamped its AWS ECS support from its FirstGen implementatio
 
 For users coming from Harness FirstGen, this is a significant change and requires time to upgrade previous pipelines.
 
-This topic describes the changes and provides some best practices to help you with migration or when creating new ECS deployments in Harness.
+This topic describes the changes and provides some best practices to help you migrate from FirstGen or create new ECS deployments in Harness.
 
 ## ECS Delegates
 
