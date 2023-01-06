@@ -10,6 +10,21 @@ Learn about the new features that are generally available across all Harness mod
 Harness deploys updates progressively to different Harness SaaS clusters. You can identify the cluster hosting your account in your Account Overview page. The features in these release notes may not be available in your cluster immediately.
 :::
 
+## January 5th, 2023, version 78100
+
+### Continuous Delivery
+
+- Make Failure Strategy mandatory for Deploy stage (CDS-48951)  
+  
+  We now have Failure Strategy as a mandatory setting in the Deploy stage YAML. Earlier this was mandatory but the check happened when a user would run the pipeline. The same applies to stage templates for the Deploy stage. With this release, all Deploy stages including stage templates without failure strategies will be considered invalid.
+- Loading Templates from the created branch (CDS-48308)
+  
+  If a remote template is created in a non-default/feature branch, viewing the template in the Harness template studio/listing page we will fetch the template details from the created branch instead of asking the user to manually select the correct branch.
+- Using absolute path for Native Helm chart [Custom Remote Manifest](../docs/continuous-delivery/cd-advanced/cd-kubernetes-category/add-a-custom-remote-script-and-manifests) for Helm Charts (CDS-47647, RN-37501)
+  
+  Previously, we were only looking for a path relative to the Harness working directory (a temporary directory created by Harness). Now, you can specify an absolute path in **Extracted Manifest File Location** by starting with a forward slash `/`. For example: `/tmp/myChart1/custom-remote-test-repo/helm/todolist/`.
+
+
 ## December 22, 2022, version 77908
 
 ### Harness Platform
