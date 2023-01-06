@@ -46,7 +46,7 @@ The following FirstGen ECS steps and workflow types are removed in ECS NextGen:
 
 ### New deployment types introduced in ECS NextGen
 
-- Added Rolling deployment support.
+- Added support for rolling deployment.
 - Revamped the Canary deployment behavior.
 
 These are covered in the [ECS deployment tutorial](../../onboard-cd/cd-quickstarts/ecs-deployment-tutorial.md).
