@@ -63,4 +63,4 @@ You can use JWT Tokens to access Harness SCIM APIs. To do this, you must first c
         ]'
 
 
-Replace {serviceaccountid} with your service account ID in Harness.
+Replace {serviceaccountid} with the ID for the service account you created in the previous section.
