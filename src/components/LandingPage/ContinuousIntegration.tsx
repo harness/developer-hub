@@ -42,14 +42,14 @@ const FeaturedList: CardItem[] = [
     title: 'Build Go application containers using a CI Pipeline',
 
     module: 'ci',
-    Svg: '/img/icon_ci.svg',
+    icon: "img/icon_ci.svg",
     description: (
       <>
         This build automation guide describes building a Go container image in a CI Pipeline.
 
       </>
     ),
-    ribbon: true,
+    newDoc: true,
     type: [docType.Documentation],
     time: '15 min',
     link: '/tutorials/build-code/ci-tutorial-go-containers',
@@ -57,17 +57,17 @@ const FeaturedList: CardItem[] = [
     title: 'Sign application containers using a CI Pipeline',
 
     module: 'ci',
-    Svg: '/img/icon_ci.svg',
+    icon: "img/icon_ci.svg",
     description: (
       <>
         This build automation guide describes how to sign a container image using a CI pipeline.
 
       </>
     ),
-    ribbon: true,
+    newDoc: true,
     type: [docType.Documentation],
     time: '15 min',
-    link: '/tutorials/build-code/ci-tutorial-go-containers',
+    link: '/tutorials/build-code/ci-tutorial-container-signing',
   },];
 
 const DroneList: CardItem[] = [
@@ -163,31 +163,31 @@ const CIList: CardItem[] = [
   title: 'Build Go application containers',
 
   module: 'ci',
-  Svg: '/img/icon_ci.svg',
+  icon: "img/icon_ci.svg",
   description: (
     <>
       This build automation guide describes building a Go container image in a CI Pipeline.
 
     </>
   ),
-  ribbon: true,
+  newDoc: true,
   type: [docType.Documentation],
   time: '15 min',
   link: '/tutorials/build-code/ci-tutorial-go-containers',
 },{
   title: 'Sign Application Containers',
   module: 'ci',
-  Svg: '/img/icon_ci.svg',
+  icon: "img/icon_ci.svg",
   description: (
     <>
       This build automation guide describes how to sign a container image using a CI pipeline.
 
     </>
   ),
-  ribbon: true,
+  newDoc: true,
   type: [docType.Documentation],
   time: '15 min',
-  link: '/tutorials/build-code/ci-tutorial-go-containers',
+  link: '/tutorials/build-code/ci-tutorial-container-signing',
 },
 ];
 
