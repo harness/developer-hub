@@ -38,7 +38,37 @@ const FeaturedList: CardItem[] = [
     time: "15 min",
     link: "/tutorials/build-code/ci-node-docker-quickstart",
   },
-];
+  {
+    title: 'Build Go application containers using a CI Pipeline',
+
+    module: 'ci',
+    Svg: '/img/icon_ci.svg',
+    description: (
+      <>
+        This build automation guide describes building a Go container image in a CI Pipeline.
+
+      </>
+    ),
+    ribbon: true,
+    type: [docType.Documentation],
+    time: '15 min',
+    link: '/tutorials/build-code/ci-tutorial-go-containers',
+  },{
+    title: 'Sign application containers using a CI Pipeline',
+
+    module: 'ci',
+    Svg: '/img/icon_ci.svg',
+    description: (
+      <>
+        This build automation guide describes how to sign a container image using a CI pipeline.
+
+      </>
+    ),
+    ribbon: true,
+    type: [docType.Documentation],
+    time: '15 min',
+    link: '/tutorials/build-code/ci-tutorial-go-containers',
+  },];
 
 const DroneList: CardItem[] = [
   {
@@ -129,6 +159,36 @@ const CIList: CardItem[] = [
     time: "5 min",
     link: "/tutorials/build-code/fastest-ci",
   },
+{
+  title: 'Build Go application containers',
+
+  module: 'ci',
+  Svg: '/img/icon_ci.svg',
+  description: (
+    <>
+      This build automation guide describes building a Go container image in a CI Pipeline.
+
+    </>
+  ),
+  ribbon: true,
+  type: [docType.Documentation],
+  time: '15 min',
+  link: '/tutorials/build-code/ci-tutorial-go-containers',
+},{
+  title: 'Sign Application Containers',
+  module: 'ci',
+  Svg: '/img/icon_ci.svg',
+  description: (
+    <>
+      This build automation guide describes how to sign a container image using a CI pipeline.
+
+    </>
+  ),
+  ribbon: true,
+  type: [docType.Documentation],
+  time: '15 min',
+  link: '/tutorials/build-code/ci-tutorial-go-containers',
+},
 ];
 
 export default function CI() {
