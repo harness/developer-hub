@@ -4,7 +4,7 @@ description: Harness ECS support.
 sidebar_position: 1
 ---
 
-Harness NextGen has revamped its AWS ECS support from its FirstGen implementation. This includes how you configure Harness and ECS services and perform rolling, canary, and blue green deployments.
+Harness NextGen has revamped its AWS ECS support from its [FirstGen implementation](../../../first-gen/continuous-delivery/aws-deployments/ecs-deployment/ecs-deployments-overview.md). This includes how you configure Harness and ECS services and perform rolling, canary, and blue green deployments.
 
 For users coming from Harness FirstGen, this is a significant change and requires time to upgrade previous pipelines.
 
