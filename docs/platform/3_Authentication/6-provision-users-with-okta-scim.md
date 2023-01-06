@@ -28,7 +28,7 @@ By using Okta as your identity provider, you can efficiently provision and manag
 
 In exchange for the convenience of Okta-provisioned users and groups, you must configure several aspects of Okta, as described in the following sections. You will also have restrictions on modifying Okta-provisioned users and groups natively within Harness, as described in [Limitations](#limitations).
 
-#### Features supported
+#### Supported features
 
 Once you have set up the SCIM integration between Okta and Harness (as described below), Administrators will be able to perform the following Harness actions within Okta:
 
@@ -179,7 +179,7 @@ Groups with the Harness app assignment now appear in **Groups**.
 
 You can edit or delete users from here.
 
-#### Group push to Harness
+#### Push assigned groups to Harness
 
 To provision your application's assigned groups in Harness:
 
@@ -197,7 +197,7 @@ Click **Save**. You can see the status of this Push Group in your application.
 
 
 :::note
-If an error prevents adding, deleting, or updating an individual user to Harness, you must retry provisioning the user in Okta later, after resolving the issues. For more information, see [Troubleshooting Group Push](https://help.okta.com/en-us/Content/Topics/users-groups-profiles/usgp-group-push-troubleshoot.htm).
+If an error prevents adding, deleting, or updating an individual user to Harness, you must retry provisioning the user later, after resolving the issues. For more information, see [Troubleshooting Group Push](https://help.okta.com/en-us/Content/Topics/users-groups-profiles/usgp-group-push-troubleshoot.htm).
 :::
 
 
@@ -230,7 +230,7 @@ To update user attributes:
 
 
 :::note
-Only the five fields listed at the top of this section will be synced to Harness users. You can update values in other fields, but those values will be saved for this user only in Okta. They won't be reflected in Harness.
+Only the five fields listed at the top of this section are synced to Harness users. You can update values in other fields, but those values are saved for this user in Okta only and are not updated in Harness.
 
 Enable the feature flag UPDATE_EMAILS_VIA_SCIM to reflect changes to the email address in the SCIM provider.
 
