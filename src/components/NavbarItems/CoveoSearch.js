@@ -218,7 +218,7 @@ const CoveoSearch = () => {
       </Head>
       {isCoveoLoaded && (
         <Head>
-          <script src="https://cdn.jsdelivr.net/gh/wei-harness/cdn/js/coveo_template.js"></script>
+          <script src="https://cdn.jsdelivr.net/gh/wei-harness/cdn@v0.2.1/js/coveo_template.js"></script>
         </Head>
       )}
       <div id="searchBoxCoveo" ref={searchBoxEl}></div>
