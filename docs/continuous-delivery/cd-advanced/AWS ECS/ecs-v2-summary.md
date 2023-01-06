@@ -18,7 +18,7 @@ Harness FirstGen users who used the FirstGen ECS Delegate can now use a Kubernet
 
 - [ECS deployment tutorial](../../onboard-cd/cd-quickstarts/ecs-deployment-tutorial.md)
 
-## ECS Basics
+## ECS basics
 
 Official AWS ECS docs explain ECS concepts in detail, but let's review a few important points:
 
