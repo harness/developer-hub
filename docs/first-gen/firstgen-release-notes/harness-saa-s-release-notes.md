@@ -16,6 +16,42 @@ For Harness on-prem releases, see [Harness Self-Managed Enterprise Edition Relea
 
 If you don't see a new feature or enhancement in your Harness account, it might be behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
+### Jan 5th, 2023, version 78100
+
+#### What's new
+
+- MongoDB Query tuning on executionInterrupts (CDS-49220)
+  
+  Fixed a bug where approvals executed after a stage with runtime inputs were not being expired.
+- Add the status of the collection in the artifactsource response in GraphQL API (CDS-44426)
+  
+  You can retrieve the value of the collectionEnabled field for an Artifact Source using GraphQL Apis, like in the example below:
+  ```
+    {
+      services(limit: 5) {
+        nodes {
+          name
+          artifactSources {
+            name
+            collectionEnabled
+          }
+        }
+      }
+    }	
+  ```
+
+#### Early access
+- Support AWS S3 as script source for Terraform Provisioners (CDS-2970
+  - Feature flag: `CDS_TERRAFORM_S3_SUPPORT`.
+  - Now you can use AWS S3 option for your remote Terraform script files.
+
+#### Fixed issues
+- Custom Fields of Jira step not executing (CDS-49108)
+  - Fixed an issue using multiselect fields with new metadata endpoint. While using new metadata endpoint, we received an empty string where null was expected. Now we check for both.
+- Custom Remote Manifest error message needs to be improved when Chart.yaml is given instead of directory (CDS-48038)
+  - Error improvement added around custom manifest Helm chart path using Helm deployment.
+
+
 ### December 22, 2022, version 77908
 
 Delegate version: 77802
