@@ -24,7 +24,7 @@ Harness UI uses the following cache life cycle to render a remote entity:
 
     ![](../10_Git-Experience/static/activecache.png)
 
-   When any entity's cache was last updated more than 2 hours ago, Harness displays an orange tick against it.
+Harness displays an orange tick against any entity whose cache was last updated more than two hours ago.
 
    ![](../10_Git-Experience/static/stalecache.png)
 
