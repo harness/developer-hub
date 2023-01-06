@@ -220,7 +220,7 @@ Next, you create a rule in the Harness OneLogin app to create groups using the r
 
 
 :::note
-If you have created users prior to adding the mapping rule, click Reapply Mappings in your Harness application User settings.
+If you have created users prior to adding the mapping rule, select **Reapply Mappings** in the **User** settings section of your Harness application.
 
 :::
 
