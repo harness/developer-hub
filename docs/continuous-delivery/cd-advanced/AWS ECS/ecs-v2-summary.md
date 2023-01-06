@@ -53,7 +53,7 @@ For details about the new deployment types, go to the [ECS deployment tutorial](
 
 ### ECS Run Task updated in ECS NextGen
 
-- Introduced new ECS Run Task Request Definition setting in the ECS Run Task Step.
+A new  ECS Run Task Request Definition setting was introduced in the ECS Run Task Step.
 
 This is covered in the [ECS deployment tutorial](../../onboard-cd/cd-quickstarts/ecs-deployment-tutorial.md#ecs-run-task-step).  
 
