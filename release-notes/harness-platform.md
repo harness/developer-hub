@@ -11,6 +11,39 @@ Harness Platform is updated regularly. Review the notes below for details about 
 Harness deploys updates progressively to different Harness SaaS clusters. You can identify the cluster hosting your account in your Account Overview page. The features and fixes in the release notes may not be available in your cluster immediately.
 :::
 
+## January 5, 2023, version 78100
+
+Delegate version: 78100
+
+:::important
+**Update repository references to the NextGen Helm delegate** <br>
+The location of the repository that contains the NextGen Helm chart is changing. You must change references to the chart location from [https://app.harness.io/storage/harness-download/delegate-helm-chart/](https://app.harness.io/storage/harness-download/delegate-helm-chart/) to [https://app.harness.io/storage/harness-download/harness-helm-charts/](https://app.harness.io/storage/harness-download/harness-helm-charts/). The chart will be removed from the current location and attempts to retrieve the chart from that location will fail.
+:::
+
+### What's new
+
+- The location of the Helm chart for the NextGen delegate is changing. (DEL-5576) 
+
+  The chart will be removed from [https://app.harness.io/storage/harness-download/delegate-helm-chart/](https://app.harness.io/storage/harness-download/delegate-helm-chart/) and will not be available from that location. To avoid failed retrieval attempts, you must update your references to the chart repository to [https://app.harness.io/storage/harness-download/harness-helm-charts/](https://app.harness.io/storage/harness-download/harness-helm-charts/).
+  
+- (DEL-5651)
+
+
+### Early access
+
+N/A
+
+### Fixed issues
+
+- Delegate dropdown menu collapses automatically. (DEL-5541)
+
+  Fixed a problem with the behavior of a dropdown menu. The UI core library was updated to add a parameter that prevents the reset of expanded states when new data loads in a table.
+
+- Fixed a problem that was causing the `kryo` component to fail. The problem was caused when nested `java.lang.RuntimeException` errors occurred during manager response. (DEL-5609)
+
+
+    
+
 ## December 22, 2022, version 77908
 
 Delegate version: 77802
