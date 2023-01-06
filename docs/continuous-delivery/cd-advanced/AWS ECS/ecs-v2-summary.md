@@ -1,6 +1,6 @@
 ---
-title: AWS ECS support summary
-description: Harness ECS support.
+title: AWS ECS support changes from Harness FirstGen to NextGen
+description: Review ECS support changes from FirstGen to NextGen.
 sidebar_position: 1
 ---
 
@@ -12,11 +12,11 @@ This topic describes the changes and provides some best practices to help you mi
 
 ## ECS delegates
 
-Harness FirstGen users who used the FirstGen ECS Delegate can now use a Kubernetes, Helm, or Docker delegate. To continue using an ECS-based delegate in NextGen, see the blog post [How to deploy Delegate in Amazon ECS for Harness NG](https://community.harness.io/t/how-to-deploy-delegate-in-amazon-ecs-for-harness-ng/13056).
+Harness FirstGen users who used the FirstGen ECS delegate can now use a Kubernetes, Helm, or Docker delegate. To continue using an ECS-based delegate in NextGen, see the blog post [How to deploy delegate in Amazon ECS for Harness NG](https://community.harness.io/t/how-to-deploy-delegate-in-amazon-ecs-for-harness-ng/13056).
 
 ## Get started with ECS in NextGen
 
-- [ECS deployment tutorial](../../onboard-cd/cd-quickstarts/ecs-deployment-tutorial.md)
+If you're new to Harness ECS deployments, the [ECS deployment tutorial](../../onboard-cd/cd-quickstarts/ecs-deployment-tutorial.md) shows you how to deploy a publicly available Docker image to your ECS cluster using a rolling deployment strategy.
 
 ## ECS basics
 
@@ -38,13 +38,15 @@ Please review the following changes to how Harness uses ECS in Harness FirstGen 
 
 The following FirstGen ECS steps and workflow types were removed from NextGen:
 
-- ECS Service Setup step.
-- Upgrade Containers step.
-- ECS Daemon Service Setup step.
-- ECS Steady State Check step.
-- Basic ECS Workflow type.
+- ECS Service Setup step
+- Upgrade Containers step
+- ECS Daemon Service Setup step
+- ECS Steady State Check step
+- Basic ECS Workflow type
 
 ### New deployment types introduced in ECS NextGen
+
+The following deployment type changes have been implemented for Harness ECS deployments:
 
 - Added support for rolling deployment.
 - Revamped the canary deployment behavior.
@@ -59,25 +61,31 @@ For details about this new step, go to the [ECS deployment tutorial](../../onboa
 
 ### Infrastructure definitions
 
-- Harness has made Infrastructure Definitions a lighter configuration you can reuse for other ECS Services.
-- The ECS Infrastructure Definition no longer has ECS service-specific properties like `Networking`, `ExecutionRoleARN`, and `AWSVPC`. These have been moved to the ECS Service Definition.
+Harness has made infrastructure definitions a lighter configuration you can reuse for other ECS services.
+
+The ECS infrastructure definition no longer has ECS service-specific properties like `Networking`, `ExecutionRoleARN`, and `AWSVPC`. These have been moved to the ECS service definition.
 
 ## ECS changes in detail
 
 Please review the following changes in Harness entities and ECS files.
 
-### Harness ECS Service
+### Harness ECS service
 
-- The Harness ECS Service now has more parameters in the Task Definition and Service Definition settings.
-- ECS Scaling Policies have moved to the ECS Service from the ECS Service Setup step and are now configurable as YAML or JSON files in the Service.
-- Scalable Targets have moved from the ECS Service Setup step and are now configurable as YAML or JSON param files in the Harness Service.
-- The AWS VPC, Security Group, Subnets, and Execution Role ARN have moved out of the Harness Infrastructure Definition and are now part of the Harness Service Definition configuration.
-- The Service Definition requires more configuration:
+The Harness ECS service now has more parameters in the Task Definition and service definition settings.
+
+ECS Scaling Policies have moved to the ECS service from the ECS service Setup step and are now configurable as YAML or JSON files in the service.
+
+Scalable Targets have moved from the ECS service Setup step and are now configurable as YAML or JSON param files in the Harness service.
+
+The AWS VPC, Security Group, Subnets, and Execution Role ARN have moved out of the Harness infrastructure definition and are now part of the Harness service definition configuration.
+
+The service definition requires more configuration:
   - `serviceName`
   - `loadbaBancer` properties
   - `networkConfiguration`
   - `desiredCount`
-- You can manipulate the deployment behavior via the new `deploymentConfiguration` properties `maximumPercent` and `minimumHealthyPercent`. See [DeploymentConfiguration](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_DeploymentConfiguration.html) from AWS.
+
+You can manipulate the deployment behavior via the new `deploymentConfiguration` properties `maximumPercent` and `minimumHealthyPercent`. See [DeploymentConfiguration](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_DeploymentConfiguration.html) from AWS.
 
 ### ECS Task Definition support in NextGen
 
@@ -222,18 +230,18 @@ Here is a JSON example highlighting the changes. Harness supports standard AWS E
 }
 ```
 
-### ECS NextGen Service Definition support in NextGen
+### ECS NextGen service definition support in NextGen
 
-The following samples demonstrate the ECS Service Definition parameters supported in NextGen.
+The following samples demonstrate the ECS service definition parameters supported in NextGen.
 
-#### Sample Service Definition and supported parameters
+#### Sample service definition and supported parameters
 
 Here is a YAML example highlighting the changes. Harness supports standard AWS ECS YAML and JSON.
 
 ```yaml
 launchType: FARGATE
 ## ECS NextGen update
-## The Service name, Desired Count, and network configuration needs to be defined in the Service Definition now
+## The service name, Desired Count, and network configuration needs to be defined in the service definition now
 serviceName: myapp
 desiredCount: 2
 networkConfiguration:
@@ -244,7 +252,7 @@ networkConfiguration:
     - <Subnet Id>
     assignPublicIp: ENABLED
 ## ECS NextGen update
-## We can define the deployment behavior properties in the Service Definition and Harness will deploy with the defined configuration
+## We can define the deployment behavior properties in the service definition and Harness will deploy with the defined configuration
 deploymentConfiguration:
   maximumPercent: 200
   minimumHealthyPercent: 100
@@ -254,7 +262,7 @@ loadBalancers:
   containerPort: 80    
 ```
 
-#### Sample Service Definition and supported parameters
+#### Sample service definition and supported parameters
 
 Here is a JSON example highlighting the changes. Harness supports standard AWS ECS YAML and JSON.
 
@@ -285,13 +293,15 @@ Here is a JSON example highlighting the changes. Harness supports standard AWS E
 
 Supported schema details can be found in [RunTask](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_RunTask.html) from AWS.
 
-### Infrastructure Definitions
+### infrastructure definitions
 
-The following changes were made to Infrastructure Definitions in NextGen:
+The following changes were made to infrastructure definitions in NextGen:
 
-- The ECS Infrastructure Definitions in NextGen do not have AWS VPC, Security Group, or Network Policies. This configuration was moved to the Harness ECS service.
-- The ECS cluster can be a Harness Runtime Input. This makes the Infrastructure Definition reusable for other clusters in a given environment.
-- Infrastructure Definition YAML has changed for ECS. Below is a YAML example, although both YAML and JSON are supported.
+The ECS infrastructure definitions in NextGen do not have AWS VPC, Security Group, or Network Policies. This configuration was moved to the Harness ECS service.
+
+The ECS cluster can be a Harness Runtime Input. This makes the infrastructure definition reusable for other clusters in a given environment.
+
+Infrastructure definition YAML has changed for ECS. Below is a YAML example, although both YAML and JSON are supported.
 
 ```yaml
 infrastructureDefinition:
@@ -318,28 +328,31 @@ Please review the following best practices for using ECS in Harness NextGen.
 
 ### Templates and ECS deployments
 
-- You can template your pipelines in Harness NextGen.
-- Harness templates create reusable logic for Harness entities like steps, stages, and pipelines. 
-- You can link templates in your pipelines or share them with your teams for improved efficiency. 
-- If you want to use this feature when you create a new entity like a step, click `Start with Template`. For more information, go to [Templates Overview](../../../platform/templates/../13_Templates/template.md).
+You can template your pipelines in Harness NextGen.
 
-### ECS Service configuration
+Harness templates create reusable logic for Harness entities like steps, stages, and pipelines. 
 
-- Although you can use the Harness [File Store](../../cd-services/cd-services-general/add-inline-manifests-using-file-store.md) for local file storage in your account, for production we recommend storing ECS manifests in remote stores like Github, Bitbucket, AWS S3, etc. Remote stores support version control on files for tracking and reverting changes.
+You can link templates in your pipelines or share them with your teams for improved efficiency. 
 
-- Harness recommends using Harness Service variables to template ECS service parameters. For example, you can refer to Service variables in your manifests using variable expressions such as `<+serviceVariables.serviceName>`. For more information, go to [Built-in and Custom Harness Variables Reference](../../../platform/12_Variables-and-Expressions/harness-variables.md).
+If you want to use this feature when you create a new entity like a step, click `Start with Template`. For more information, go to [Templates Overview](../../../platform/templates/../13_Templates/template.md).
 
-### ECS Environment configuration
+### ECS service configuration
 
-If Harness Service **Configuration Parameters** need to be overridden based on Infrastructure, Harness recommends using Harness Service variables and overriding them at the Environment level.
+Although you can use the Harness [File Store](../../cd-services/cd-services-general/add-inline-manifests-using-file-store.md) for local file storage in your account, for production we recommend storing ECS manifests in remote stores like Github, Bitbucket, AWS S3, etc. Remote stores support version control on files for tracking and reverting changes.
 
-For example, if the AWS Security Group in the ECS Service Definition needs to be overridden for a Harness Environment, we recommend creating a Service variable `securityGroup` in the Harness Service and using it in the ECS Service Definition Manifest as `<+serviceVariables.securityGroup>`.
+Harness recommends using Harness service variables to template ECS service parameters. For example, you can refer to service variables in your manifests using variable expressions such as `<+serviceVariables.serviceName>`. For more information, go to [Built-in and Custom Harness Variables Reference](../../../platform/12_Variables-and-Expressions/harness-variables.md).
 
-The variable `securityGroup` value can be overridden at the Environment level. For more information, go to [Services and environments overview](../../onboard-cd/cd-concepts/services-and-environments-overview.md). 
+### ECS environment configuration
+
+If Harness service **Configuration Parameters** need to be overridden based on Infrastructure, Harness recommends using Harness service variables and overriding them at the environment level.
+
+For example, if the AWS Security Group in the ECS service definition needs to be overridden for a Harness environment, we recommend creating a service variable `securityGroup` in the Harness service and using it in the ECS service definition Manifest as `<+serviceVariables.securityGroup>`.
+
+The variable `securityGroup` value can be overridden at the environment level. For more information, go to [Services and environments overview](../../onboard-cd/cd-concepts/services-and-environments-overview.md). 
 
 ### Rolling deployments
 
-To achieve phased rollout of ECS deployments, we recommend using the `deploymentConfiguration` field in the ECS Service Definition.
+To achieve phased rollout of ECS deployments, we recommend using the `deploymentConfiguration` field in the ECS service definition.
 
 For example:
 
@@ -354,6 +367,6 @@ To understand how this configuration works, go to [Service definition parameters
 
 ### Blue Green deployments
 
-- Harness recommends using an [Approval](/docs/category/approvals) step between the ECS Blue Green Create Service and ECS Blue Green Swap Target Groups steps. Approval steps can verify new service deployment health before shifting traffic from the old service to the new service.
+Harness recommends using an [Approval](/docs/category/approvals) step between the ECS Blue Green Create Service and ECS Blue Green Swap Target Groups steps. Approval steps can verify new service deployment health before shifting traffic from the old service to the new service.
 
-- For critical services with high availability requirements, Harness recommends enabling the **Do not does not downsize the old service. This method can help in faster rollbacks as the rollback process only switches traffic at the load balancer.
+For critical services with high availability requirements, Harness recommends enabling the **Do not does not downsize the old service. This method can help in faster rollbacks as the rollback process only switches traffic at the load balancer.
