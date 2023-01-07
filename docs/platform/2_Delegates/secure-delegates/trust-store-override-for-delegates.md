@@ -25,7 +25,7 @@ This topic describes how to limit the truststore used with Harness Delegates and
 
 TLS/SSL communication between the Harness Delegate and Harness SaaS uses a certificate from the DigiCert Global Root CA:
 
-![](./static/trust-store-override-for-delegates-00.png)
+![](static/trust-store-override-for-delegates-00.png)
 
 For Delegates to communicate with Harness, this root CA certificate must be installed in the delegate truststore.
 

@@ -22,7 +22,7 @@ When you create a new Delegate, you can generate a new token.
 
 In **Delegate Setup**, in **Delegate Tokens**, click **Add**, and then name and apply the new token:
 
-![](./static/secure-delegates-with-tokens-02.png)
+![](static/secure-delegates-with-tokens-02.png)
 
 The new token is created and its value is copied to your system clipboard. The new token also appears in the list using the name you gave it.
 
@@ -42,13 +42,13 @@ Click **New Token**.
 
 Here's an Account Settings example:
 
-![](./static/secure-delegates-with-tokens-03.png)
+![](static/secure-delegates-with-tokens-03.png)
 
 Enter a name for the new token, and then click **Apply**.
 
 You can copy the token and save it somewhere safe, if needed.
 
-![](./static/secure-delegates-with-tokens-04.png)
+![](static/secure-delegates-with-tokens-04.png)
 
 The new token is created and its value is copied to your system clipboard. The new token also appears in the list using the name you gave it.
 
@@ -56,7 +56,7 @@ Save the new token value. You cannot retrieve the token value after this.
 
 When you install a new Delegate, you can select the token to use:
 
-![](./static/secure-delegates-with-tokens-05.png)
+![](static/secure-delegates-with-tokens-05.png)
 ### Option: Update and restart existing delegate
 
 You can update an existing Delegate with a new token value and then restart the Delegate.
@@ -120,7 +120,7 @@ You can verify that the environment variable has the new token using `docker exe
 
 On the **Tokens** page, click **Revoke** to revoke any token.
 
-![](./static/secure-delegates-with-tokens-06.png)
+![](static/secure-delegates-with-tokens-06.png)
 
 Click **Revoke**. The token is revoked. The Harness Manager will not accept connections from any Delegates using this revoked token.
 

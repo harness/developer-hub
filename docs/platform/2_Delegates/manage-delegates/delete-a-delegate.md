@@ -60,7 +60,7 @@ For example, if the **Deployment** name is `quickstart-delegate`:
 
 Locate the delegate in the Harness account/Project/Org, click more options (⋮), and then click **Delete**.
 
-![](./static/delete-a-delegate-15.png)
+![](static/delete-a-delegate-15.png)
 ### Delete a legacy delegate
 
 Use the following process to delete a Legacy Delegate.
@@ -81,4 +81,4 @@ The name of the delegate pod includes the name of the **StatefulSet** followed b
 
 Locate the delegate in the Harness account/Project/Org, click more options (⋮), and then click **Delete**.
 
-![](./static/delete-a-delegate-16.png)
+![](static/delete-a-delegate-16.png)

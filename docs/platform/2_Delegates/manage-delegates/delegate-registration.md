@@ -18,7 +18,7 @@ To install a Delegate, follow the steps in the relevant Delegate installation to
 
 Once you have installed the Delegate in your environment, click **Verify** in the Delegate wizard and Harness will verify that it is receiving heartbeats from the Delegate.
 
-![](./static/delegate-registration-01.png)
+![](static/delegate-registration-01.png)
 This means Harness is waiting for the Delegate you installed to register.
 
 Registration can take a few minutes.
