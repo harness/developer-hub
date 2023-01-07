@@ -143,7 +143,7 @@ service/delegate-service unchanged
 3. Select the **Connect using Delegates with the following Tags** option.
 4. Enter the tag of the new Delegate and click **Save and Continue**.
    When you are done, the Connector is tested. If it fails, your Delegate might not be able to connect to `https://charts.bitnami.com/bitnami`. Review its network connectivity and ensure it can connect.
-   If you are using Helm V2, you will need to install Helm v2 and Tiller on the Delegate pod. For steps on installing software on the Delegate, go to [Install Software on the Delegate with Initialization Scripts](../../../platform/2_Delegates/delegate-guide/run-scripts-on-delegates.md).
+   If you are using Helm V2, you will need to install Helm v2 and Tiller on the Delegate pod. For steps on installing software on the Delegate, go to [Install Software on the Delegate with Initialization Scripts](../../../platform/2_Delegates/configure-delegates/run-scripts-on-delegates.md).
 5. Click **Continue**.
 6. In **Manifest Details**, enter the following settings can click **Submit**.
    * **Manifest Identifier**: enter **nginx**.

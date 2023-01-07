@@ -106,7 +106,7 @@ Since Harness lets you use the `<+artifact.image>` expression in your Helm Chart
 You don't need to include the `oci://` scheme in **Helm Repository URL**. Harness will preface the domain name you enter with `oci://`.
 7. In **Authentication**, in **Username and Password**, enter the **Username** and **Password**. For Password you can either create a new Secret or use an existing one.
 8. Click **Continue**.
-9. In **Delegates Setup**, use any Delegate or enter [Tags](../2_Delegates/delegate-guide/select-delegates-with-selectors.md) for specific Delegates that you want to allow to connect to his Connector.
+9. In **Delegates Setup**, use any Delegate or enter [Tags](../2_Delegates/manage-delegates/select-delegates-with-selectors.md) for specific Delegates that you want to allow to connect to his Connector.
 10. Click **Save and Continue**.
 11. Once the Test Connection succeeds, click **Finish**. The Connector is listed in Connectors.
 
