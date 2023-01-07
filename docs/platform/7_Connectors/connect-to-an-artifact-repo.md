@@ -46,7 +46,7 @@ For details on settings and permissions, see [Artifactory Connector Settings Ref
 	1. **Username and Password** - Once you choose this option, you need to enter the **Username** and **Password**. For Password you can either create a new Secret or use an existing one.
 	2. **Anonymous (no credentials required)**.
 8. Click **Continue**.
-9. In **Delegates Setup,**use any Delegate or enter [Tags](../2_Delegates/delegate-guide/select-delegates-with-selectors.md) for specific Delegates that you want to allow to connect to his Connector.
+9. In **Delegates Setup,**use any Delegate or enter [Tags](../2_Delegates/manage-delegates/select-delegates-with-selectors.md) for specific Delegates that you want to allow to connect to his Connector.
 10. Click **Save and Continue**.
 11. Once the Test Connection succeeds, click **Finish**. The Connector is listed in Connectors.
 
@@ -65,7 +65,7 @@ For details on settings and permissions, see [Docker Connector Settings Referenc
 	1. **Username and Password** - Once you choose this option, you need to enter the **Username** and **Password**. For Password you can either create a new Secret or use an existing one.
 	2. **Anonymous (no credentials required)**.
 9. Click **Continue**.
-10. In **Delegates Setup**, use any Delegate or enter [Tags](../2_Delegates/delegate-guide/select-delegates-with-selectors.md) for specific Delegates that you want to allow to connect to his Connector.
+10. In **Delegates Setup**, use any Delegate or enter [Tags](../2_Delegates/manage-delegates/select-delegates-with-selectors.md) for specific Delegates that you want to allow to connect to his Connector.
 11. Click **Save and Continue**.
 12. Once the Test Connection succeeds, click **Finish**. The Connector is listed in Connectors.
 
@@ -87,7 +87,7 @@ For details on settings and permissions, see [HTTP Helm Repo Connector Settings 
 	1. **Username and Password** - Once you choose this option, you need to enter the **Username** and **Password**. For Password you can either create a new Secret or use an existing one.
 	2. **Anonymous (no credentials required)**.
 8. Click **Continue**.
-9. In **Delegates Setup**, use any Delegate or enter [Tags](../2_Delegates/delegate-guide/select-delegates-with-selectors.md) for specific Delegates that you want to allow to connect to his Connector.
+9. In **Delegates Setup**, use any Delegate or enter [Tags](../2_Delegates/manage-delegates/select-delegates-with-selectors.md) for specific Delegates that you want to allow to connect to his Connector.
 10. Click **Save and Continue**.
 11. Once the Test Connection succeeds, click **Finish**. The Connector is listed in Connectors.
 
@@ -158,12 +158,12 @@ For details on settings and permissions, see [Nexus Connector Settings Reference
 	1. **Username and Password** - Once you choose this option, you need to enter the **Username** and **Password**. For Password you can either create a new Secret or use an existing one.
 	2. **Anonymous (no credentials required)**.
 9. Click **Continue**.
-10. In **Delegates Setup****,**use any Delegate or enter [Tags](../2_Delegates/delegate-guide/select-delegates-with-selectors.md) for specific Delegates that you want to allow to connect to his Connector.
+10. In **Delegates Setup****,**use any Delegate or enter [Tags](../2_Delegates/manage-delegates/select-delegates-with-selectors.md) for specific Delegates that you want to allow to connect to his Connector.
 11. Click **Save and Continue**.
 12. Once the Test Connection succeeds, click **Finish**. The Connector is listed in Connectors.
 
 ### See also
 
-* [Select Delegates with Selectors](../2_Delegates/delegate-guide/select-delegates-with-selectors.md)
+* [Select Delegates with Selectors](../2_Delegates/manage-delegates/select-delegates-with-selectors.md)
 * [Add a Secrets Manager](../6_Security/5-add-secrets-manager.md)
 
