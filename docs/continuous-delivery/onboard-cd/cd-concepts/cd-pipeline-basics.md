@@ -124,8 +124,8 @@ The Harness Delegate is a software service you install in your environment that 
 For examples, see:
 
 * [Delegate Installation Overview](../../../platform/2_Delegates/delegate-installation-overview.md)
-* [Install a Kubernetes Delegate](../../../platform/2_Delegates/delegate-guide/install-a-kubernetes-delegate.md)
-* [Install a Docker Delegate](../../../platform/2_Delegates/delegate-install-docker/install-a-docker-delegate.md)
+* [Install a Kubernetes Delegate](../../../platform/2_Delegates/install-delegates/kubernetes-delegates/install-a-kubernetes-delegate.md)
+* [Install a Docker Delegate](../../../platform/2_Delegates/install-delegates/docker-delegates/install-a-docker-delegate.md)
 
 #### Credentials and Permissions
 
