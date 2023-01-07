@@ -38,6 +38,7 @@ The Delegate requires access to all the Connectors and Harness Secrets needed to
 The following diagram shows how the Delegate enables Harness to integrate with all of your deployment resources:
 
 ![](./static/install-a-kubernetes-delegate-12.png)
+
 Here's a 10min video that walks you through adding a Harness Kubernetes Cluster Connector and Harness Kubernetes Delegate. The Delegate is added to the target cluster and then the Kubernetes Cluster Connector uses the Delegate to connect to the cluster:
 
 ### Inline or standalone installation
