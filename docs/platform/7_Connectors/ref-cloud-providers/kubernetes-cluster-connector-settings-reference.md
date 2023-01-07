@@ -166,7 +166,7 @@ When you select a Delegate, the Harness Delegate will inherit the Kubernetes ser
 
 The service account associated with the Delegate pod must have the Kubernetes `cluster-admin` role.
 
-See [Install a Kubernetes Delegate](../../2_Delegates/delegate-guide/install-a-kubernetes-delegate.md).
+See [Install a Kubernetes Delegate](../../2_Delegates/install-delegates/kubernetes-delegates/install-a-kubernetes-delegate.md).
 
 #### Master URL
 
