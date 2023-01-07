@@ -26,7 +26,7 @@ The delegate is added to the target cluster. Kubernetes Cluster Connector uses t
 
 The following diagram shows the integration of Harness Delegate into a Kubernetes deployment.
 
-![](./static/install-harness-delegate-on-kubernetes-09.png)
+![](static/install-harness-delegate-on-kubernetes-09.png)
 ### Requirements
 
 This section describes the requirements for Harness Delegate.
@@ -60,12 +60,12 @@ For basic information on Harness Delegate, see [Delegate Requirements and Limita
 
 1. Open the target project and select **Delegates**.
  
-![](./static/install-harness-delegate-on-kubernetes-10.png)
+![](static/install-harness-delegate-on-kubernetes-10.png)
 
 In this example, **Harness Project** is the target of the deployment.
 2. Click **Create a Delegate**.
 
-![](./static/install-harness-delegate-on-kubernetes-11.png)
+![](static/install-harness-delegate-on-kubernetes-11.png)
 
 3. Review the prerequisites and click **Continue**.
 4. Enter the name of your delegate.  
@@ -73,7 +73,7 @@ The name is populated into the **ID** field. You can change the name of the dele
 5. (Optional) Enter a description and create tags to be associated with your delegate.
 6. In **Delegate Size**, select the size of the deployment.
    
-   ![](./static/install-harness-delegate-on-kubernetes-12.png)
+   ![](static/install-harness-delegate-on-kubernetes-12.png)
    
    In this example, the target deployment is of medium size.
 
@@ -82,11 +82,11 @@ In this example, the delegate is granted default access with cluster-wide read/w
 
 You can install the delegate using a Helm chart.
 
-![](./static/install-harness-delegate-on-kubernetes-13.png)
+![](static/install-harness-delegate-on-kubernetes-13.png)
 
 Or you can use a Kubernetes manifest.
 
-![](./static/install-harness-delegate-on-kubernetes-14.png)
+![](static/install-harness-delegate-on-kubernetes-14.png)
 
 1. Select the installer you prefer and click **Continue**.
 
@@ -94,7 +94,7 @@ Or you can use a Kubernetes manifest.
 
 Some delegate values are configured in the harness-delegate-values.yml file. You can download the values file to configure a proxy or customize other editable values.
 
-![](./static/install-harness-delegate-on-kubernetes-15.png)
+![](static/install-harness-delegate-on-kubernetes-15.png)
 
 1. (Optional) To download the harness-delegate-values.yml file, click **Download YAML file**.  
    
@@ -104,7 +104,7 @@ Some delegate values are configured in the harness-delegate-values.yml file. You
 
 1. Click **Continue**.
 
-![](./static/install-harness-delegate-on-kubernetes-16.png)
+![](static/install-harness-delegate-on-kubernetes-16.png)
 
 2. Copy the provided commands and apply the chart.
 
@@ -116,7 +116,7 @@ If you require additional assistance, contact Harness Support.
 
 You can download the delegate manifest file to configure a proxy or customize other editable values.
 
-![](./static/install-harness-delegate-on-kubernetes-17.png)
+![](static/install-harness-delegate-on-kubernetes-17.png)
 
 1. (Optional) To download the harness-delegate.yml file, click **Download YAML file**.  
 For detailed information about configuring a proxy for the delegate, see [Configure Delegate Proxy Settings](/docs/platform/2_Delegates/configure-delegates/configure-delegate-proxy-settings.md).  
@@ -124,7 +124,7 @@ For a sample manifest, see [Example Kubernetes Manifest: Harness Delegate](/docs
 
 2. Click **Continue**.
 
-![](./static/install-harness-delegate-on-kubernetes-18.png)
+![](static/install-harness-delegate-on-kubernetes-18.png)
 
 1. Copy the provided command and apply the YAML.
 
@@ -138,8 +138,8 @@ When installation is complete, check Harness Manager to verify the status of the
 
 You can find auto-update information in Harness Manager. Check the list of delegates by name.
 
-![](./static/install-harness-delegate-on-kubernetes-19.png)
+![](static/install-harness-delegate-on-kubernetes-19.png)
 
 You can find expiration information listed with the details for the delegate.
 
-![](./static/install-harness-delegate-on-kubernetes-20.png)
+![](static/install-harness-delegate-on-kubernetes-20.png)
