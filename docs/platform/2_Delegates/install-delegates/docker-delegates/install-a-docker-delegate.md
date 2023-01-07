@@ -70,7 +70,7 @@ CONTAINER ID        IMAGE                     COMMAND                  CREATED  
 ```
 #### Verification
 
-For an overview of verification, see [Delegate Registration and Verification](../delegate-guide/delegate-registration.md).
+For an overview of verification, see [Delegate Registration and Verification](/docs/platform/2_Delegates/manage-delegates/delegate-registration.md).
 
 In the Delegate wizard, click **Verify** and Harness will verify that it is receiving heartbeats from the Delegate.
 
@@ -95,7 +95,7 @@ The following table lists each of the environment variables in the Harness Docke
 | `ACCOUNT_ID` | The Harness account Id for the account where this Delegate will attempt to register. | ```- ACCOUNT_ID=H5W8i2828282828Xg```|
 | `DELEGATE_TOKEN` | The Harness account token used to register the Delegate. | ```- DELEGATE_TOKEN=d229ee88bf7bbxxxx6ea```|
 | `MANAGER_HOST_AND_PORT` | The Harness SaaS manager URL. `https` indicates port 443. |```- MANAGER_HOST_AND_PORT=https://app.harness.io```|
-| `WATCHER_STORAGE_URL` | The URL for the Watcher versions.See [Delegate Installation Overview](../delegate-installation-overview.md). | ```- WATCHER_STORAGE_URL=https://app.harness.io/public/prod/premium/watchers```|
+| `WATCHER_STORAGE_URL` | The URL for the Watcher versions.See [Delegate Installation Overview](/docs/platform/2_Delegates/delegate-installation-overview.md). | ```- WATCHER_STORAGE_URL=https://app.harness.io/public/prod/premium/watchers```|
 | `WATCHER_CHECK_LOCATION` | The Delegate version location for the Watcher to check for. | ```- name: WATCHER_CHECK_LOCATION  value: current.version```|
 | `REMOTE_WATCHER_URL_CDN` | The CDN URL for Watcher builds. | ```- name: REMOTE_WATCHER_URL_CDN  value: https://app.harness.io/public/shared/watchers/builds```|
 | `DELEGATE_STORAGE_URL` | The URL where published Delegate jars are stored. | ```- name: DELEGATE_STORAGE_URL  value: https://app.harness.io```|
