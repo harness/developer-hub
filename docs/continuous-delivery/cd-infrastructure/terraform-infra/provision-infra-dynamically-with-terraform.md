@@ -27,7 +27,7 @@ To provision non-target infrastructure, add the Terraform Plan and Apply steps t
 
 Terraform must be installed on the Delegate to use a Harness Terraform Provisioner. You can install Terraform manually or use the `INIT_SCRIPT` environment variable in the Delegate YAML.
 
-See [Install Software on the Delegate with Initialization Scripts](../../../platform/2_Delegates/delegate-guide/run-scripts-on-delegates.md).
+See [Install Software on the Delegate with Initialization Scripts](docs/platform/2_Delegates/configure-delegates/run-scripts-on-delegates.md).
 
 
 ```
