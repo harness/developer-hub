@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-[Harness Delegates](../delegates-overview.md) are installed from the Harness Manager and typically contain the binaries you need for your CI/CD Pipelines.
+[Harness Delegates](/docs/platform/2_Delegates/delegates-overview.md) are installed from the Harness Manager and typically contain the binaries you need for your CI/CD Pipelines.
 
 In some cases, you might want to add more tools or even create your own custom Delegate and include the tools needed for your builds and deployments.
 
@@ -16,9 +16,9 @@ This topic explains the different ways to create a custom Delegate.
 
 ### Before you begin
 
-* [Delegates Overview](../delegates-overview.md)
-* [Supported Platforms and Technologies](../../../getting-started/supported-platforms-and-technologies.md)
-* [Delegate Installation Overview](../delegate-installation-overview.md)
+* [Delegates Overview](/docs/platform/2_Delegates/delegates-overview.md)
+* [Supported Platforms and Technologies](/docs/getting-started/supported-platforms-and-technologies.md)
+* [Delegate Installation Overview](/docs/platform/2_Delegates/delegate-installation-overview.md)
 
 ### Option: Use the INIT\_SCRIPT environment variable
 
@@ -45,14 +45,14 @@ spec:
             echo wget installed  
 ...
 ```
-In `value`, enter your script. For a list of common scripts, see [Common Delegate Initialization Scripts](../delegate-reference/common-delegate-profile-scripts.md).
+In `value`, enter your script. For a list of common scripts, see [Common Delegate Initialization Scripts](/docs/platform/2_Delegates/delegate-reference/common-delegate-profile-scripts.md).
 
-For steps on using the `INIT_SCRIPT` environment variable, see [Run Scripts on Delegates](run-scripts-on-delegates.md).
+For steps on using the `INIT_SCRIPT` environment variable, see [Run Scripts on Delegates](/docs/platform/2_Delegates/configure-delegates/run-scripts-on-delegates.md).
 
 You can see all of the environment variables for the Delegates in the following topics:
 
-* [Install a Kubernetes Delegate](install-a-kubernetes-delegate.md)
-* [Install a Docker Delegate](../delegate-install-docker/install-a-docker-delegate.md)
+* [Install a Kubernetes Delegate](/docs/platform/2_Delegates/install-delegates/kubernetes-delegates/install-a-kubernetes-delegate.md)
+* [Install a Docker Delegate](/docs/platform/2_Delegates/install-delegates/docker-delegates/install-a-docker-delegate.md)
 
 ### Option: Add a delegate image
 
@@ -78,10 +78,8 @@ ENV key=value
 ```
 You can see all of the environment variables for the Delegates in the following topics:
 
-* [Install a Kubernetes Delegate](install-a-kubernetes-delegate.md)
-* [Install a Docker Delegate](../delegate-install-docker/install-a-docker-delegate.md)
+* [Install a Kubernetes Delegate](/docs/platform/2_Delegates/install-delegates/kubernetes-delegates/install-a-kubernetes-delegate.md)
+* [Install a Docker Delegate](/docs/platform/2_Delegates/install-delegates/docker-delegates/install-a-docker-delegate.md)
 
-### See also
 
-* [Delegate How-tos](/docs/category/delegates).
 

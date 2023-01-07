@@ -18,14 +18,15 @@ This topic describes how to limit the truststore used with Harness Delegates and
 
 ### Before you begin
 
-* [Delegates Overview](../delegates-overview.md)
-* [Install a Kubernetes Delegate](install-a-kubernetes-delegate.md)
+* [Delegates Overview](/docs/platform/2_Delegates/delegates-overview.md)
+* [Install a Kubernetes Delegate](/docs/platform/2_Delegates/install-delegates/kubernetes-delegates/install-a-kubernetes-delegate.md)
 
 ### Required: Harness trusted certificate
 
 TLS/SSL communication between the Harness Delegate and Harness SaaS uses a certificate from the DigiCert Global Root CA:
 
 ![](./static/trust-store-override-for-delegates-00.png)
+
 For Delegates to communicate with Harness, this root CA certificate must be installed in the delegate truststore.
 
 The public key for the certificate is publicly available for downloaded:

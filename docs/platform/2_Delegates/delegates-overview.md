@@ -27,7 +27,7 @@ Harness Delegate is built for parallelism and performs tasks and deployments in 
 
 ### Limitations and requirements
 
-See [Delegate Requirements and Limitations](delegate-reference/delegate-requirements-and-limitations.md).
+See [Delegate Requirements and Limitations](/docs/platform/2_Delegates/delegate-reference/delegate-requirements-and-limitations.md).
 
 ### Data the delegate sends to Harness Manager
 
@@ -60,16 +60,16 @@ If you want to add tools to the image, Harness recommends the creation of a cust
 
 For basic information on installing Harness Delegate, see the following topics:
 
-* [Install Harness Delegate on Kubernetes](delegate-install-kubernetes/install-harness-delegate-on-kubernetes.md)
-* [Install Harness Delegate Using Helm](delegate-install-kubernetes/install-harness-delegate-using-helm.md)
-* [Install a Docker Delegate](delegate-install-docker/install-a-docker-delegate.md)
-* [Install a Legacy Kubernetes Delegate](delegate-guide/install-a-kubernetes-delegate.md)
+* [Install Harness Delegate on Kubernetes](/docs/platform/2_Delegates/install-delegates/kubernetes-delegates/install-harness-delegate-on-kubernetes.md)
+* [Install Harness Delegate Using Helm](/docs/platform/2_Delegates/install-delegates/kubernetes-delegates/install-harness-delegate-using-helm.md)
+* [Install a Docker Delegate](/docs/platform/2_Delegates/install-delegates/docker-delegates/install-a-docker-delegate.md)
+* [Install a Legacy Kubernetes Delegate](/docs/platform/2_Delegates/install-delegates/kubernetes-delegates/install-a-kubernetes-delegate.md)
 
 For advanced installation topics, see the following:
 
-* [Automate Delegate Installation](delegate-guide/automate-delegate-installation.md)
-* [Non-Root Delegate Installation](delegate-guide/non-root-delegate-installation.md)
-* [Install a Delegate with Third-Party Custom Tool Binaries](delegate-guide/install-a-delegate-with-3-rd-party-tool-custom-binaries.md)
+* [Automate Delegate Installation](/docs/platform/2_Delegates/advanced-installation/automate-delegate-installation.md)
+* [Non-Root Delegate Installation](/docs/platform/2_Delegates/advanced-installation/non-root-delegate-installation.md)
+* [Install a Delegate with Third-Party Custom Tool Binaries](/docs/platform/2_Delegates/advanced-installation/install-a-delegate-with-3-rd-party-tool-custom-binaries.md)
 
 ### Delegate sizes
 
@@ -109,7 +109,7 @@ When a task is ready to be assigned, the Harness Manager first validates its lis
 The following information describes how the Harness Manager validates and assigns tasks to a Delegate:
 
 * **Heartbeats** - Running Delegates send heartbeats to the Harness Manager in 1 minute intervals. If the Manager does not have a heartbeat for a Delegate when a task is ready to be assigned, it will not assign the task to that Delegate.
-* **Tags** - For more information, see [Select Delegates with Tags](delegate-guide/select-delegates-with-selectors.md).
+* **Tags** - For more information, see [Select Delegates with Tags](/docs/platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md).
 * **Allowlisting** - Once a Delegate has been validated for a task, it is allowlisted for that task and will likely be used again for that task. The allowlisting criteria is the URL associated with the task, such as a connection to a cloud platform, repo, or API. A Delegate is allowlisted for all tasks using that URL. The Time-To-Live (TTL) for the allowlisting is 6 hours, and the TTL is reset with each successful task validation.
 * **Blocklisting** - If a Delegate fails to perform a task that Delegate is blocklisted for that task and will not be tried again. TTL is 5 minutes. This is true if there is only one Delegate and even if the Delegate is selected for that task with a Selector, such as with a Shell Script step in a Stage.
 
@@ -131,7 +131,7 @@ Here you use Delegate Tags to select the Delegate(s) to use.
 
 The Delegates assigned to Connectors and steps are used during Pipeline execution.
 
-If no Delegates are selected, then the Delegates are selected as described in [Task Assignment](delegates-overview.md#task-assignment).
+If no Delegates are selected, then the Delegates are selected as described in [Task Assignment](/docs/platform/2_Delegates/delegates-overview.md#task-assignment).
 
 If no Delegates are selected for a CD step in its **Delegate Selector** setting, Harness prioritizes the Delegate used successfully for the Infrastructure Connector.
 
@@ -191,7 +191,7 @@ When Harness makes a connection via its Delegates, it will select the best Deleg
 
 To ensure a specific Delegate is used by a Harness entity, you can add Tags to Delegates and then reference the Tags in commands and Connectors.
 
-See [Select Delegates with Tags](delegate-guide/select-delegates-with-selectors.md).
+See [Select Delegates with Tags](/docs/platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md).
 
 ### Delegate log file
 
@@ -205,7 +205,7 @@ Harness keeps log files for today and the previous 10 days (up to one 1GB).
 
 ### Delegate permissions
 
-You can set permissions on Delegates using [Harness RBAC](../4_Role-Based-Access-Control/1-rbac-in-harness.md).
+You can set permissions on Delegates using [Harness RBAC](/docs/platform/4_Role-Based-Access-Control/1-rbac-in-harness.md).
 
 You create roles and then assign them to Harness Users.
 
@@ -226,5 +226,5 @@ This means that if a role does not have these permissions the User with that rol
 
 ### Third-party tools installed with the delegate
 
-See [Supported Platforms and Technologies](../../getting-started/supported-platforms-and-technologies.md).
+See [Supported Platforms and Technologies](/docs/getting-started/supported-platforms-and-technologies.md).
 

@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 Harness Manager installs and configures delegates with the binaries that most CI/CD pipelines require. In some cases, however, you might want to add tools to the delegate image or create your own delegate and customize the tool set for your builds and deployments. This document describes methods you can use to install third-party tools on the delegate image at runtime. 
 
-For basic information about Harness Delegate, see [Delegate Overview](../delegates-overview.md). 
+For basic information about Harness Delegate, see [Delegate Overview](/docs/platform/2_Delegates/delegates-overview.md). 
 
 ### Considerations
 
@@ -154,7 +154,7 @@ For more information about the Kubernetes emptyDir volume, see [emptyDir](https:
 
 #### Example
 
-The following example includes a segment of the delegate YAML file that contains the required changes. For the complete file, see the sample [harness-delegate.yaml](../delegate-reference/example-harness-delegate-yaml.md) in the *Delegate Reference*.
+The following example includes a segment of the delegate YAML file that contains the required changes. For the complete file, see the sample [harness-delegate.yaml](/docs/platform/2_Delegates/delegate-reference/example-harness-delegate-yaml.md) in the *Delegate Reference*.
 
 
 ```

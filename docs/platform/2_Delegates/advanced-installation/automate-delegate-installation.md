@@ -51,7 +51,7 @@ For the Kubernetes delegate, you only need one delegate in the cluster. Simply i
 
 ### Step 1: Duplicate the delegate config file
 
-These steps assume you have already installed and registered a Delegate. If you haven't, see the [Delegate installation topics](/docs/category/delegates).Duplicate the configuration file for a delegate you have installed and registered with your Harness account.
+These steps assume you have already installed and registered a Delegate. Duplicate the configuration file for a delegate you have installed and registered with your Harness account.
 
 Ensure that the delegate environment variables are set correctly.
 
@@ -103,5 +103,5 @@ After you update the delegate names, you can apply the configuration file. The d
 
 ### See also
 
-* [Run Scripts on Delegates](run-scripts-on-delegates.md)
+* [Run Scripts on Delegates](/docs/platform/2_Delegates/configure-delegates/run-scripts-on-delegates.md)
 

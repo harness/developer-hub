@@ -16,7 +16,7 @@ Harness supports a version skew of up to *n*-2 delegate versions, for which *n* 
 
 Delegate auto-upgrade status and expiration dates are shown in Harness Manager for each installed delegate where they apply.
 
-For an introduction to delegates, see [Delegate Overview](../delegates-overview.md). For more information about the delegate automatic update process, see [Delegate Auto-Update](../delegate-guide/delegate-auto-update.md).
+For an introduction to delegates, see [Delegate Overview](/docs/platform/2_Delegates/delegates-overview.md). For more information about the delegate automatic update process, see [Delegate Auto-Update](/docs/platform/2_Delegates/delegate-guide/delegate-auto-update.md).
 
 ### Install Process
 
@@ -54,13 +54,19 @@ The compute resources that the delegate workload requires depend on the scale of
 
 Harness Delegate for Helm is installed using a Kubernetes manifest or by deploying a Helm chart. The installation process requires you to configure the deployment and, if you are using a proxy, to configure proxy settings. Harness deploys the delegate and listens for a heartbeat to confirm the delegate is running. If you receive a message that the delegate could not be installed, see the final section of this document for links to troubleshooting information.
 
-For basic information on Harness Delegate, see [Delegate Requirements and Limitations](../delegates-overview.md).
+For basic information on Harness Delegate, see [Delegate Requirements and Limitations](/docs/platform/2_Delegates/delegates-overview.md).
 
 **To install the Delegate**
 
-1. Open the target project and select **Delegates**. ![](./static/install-harness-delegate-on-kubernetes-10.png)
+1. Open the target project and select **Delegates**.
+ 
+![](./static/install-harness-delegate-on-kubernetes-10.png)
+
 In this example, **Harness Project** is the target of the deployment.
-2. Click **Create a Delegate**.![](./static/install-harness-delegate-on-kubernetes-11.png)
+2. Click **Create a Delegate**.
+
+![](./static/install-harness-delegate-on-kubernetes-11.png)
+
 3. Review the prerequisites and click **Continue**.
 4. Enter the name of your delegate.  
 The name is populated into the **ID** field. You can change the name of the delegate after it is deployed; you cannot change the delegate ID.
@@ -77,9 +83,11 @@ In this example, the delegate is granted default access with cluster-wide read/w
 You can install the delegate using a Helm chart.
 
 ![](./static/install-harness-delegate-on-kubernetes-13.png)
+
 Or you can use a Kubernetes manifest.
 
 ![](./static/install-harness-delegate-on-kubernetes-14.png)
+
 1. Select the installer you prefer and click **Continue**.
 
 ### Install by Helm Chart
@@ -90,14 +98,17 @@ Some delegate values are configured in the harness-delegate-values.yml file. You
 
 1. (Optional) To download the harness-delegate-values.yml file, click **Download YAML file**.  
    
-   For detailed information about configuring a proxy for the delegate, see [Configure Delegate Proxy Settings](../delegate-guide/configure-delegate-proxy-settings.md). 
+   For detailed information about configuring a proxy for the delegate, see [Configure Delegate Proxy Settings](/docs/platform/2_Delegates/configure-delegates/configure-delegate-proxy-settings.md). 
 
-   For information about additional editable fields in the harness-delegate-values.yaml file, see [Delegate Environment Variables](../delegate-reference/delegate-environment-variables.md).
+   For information about additional editable fields in the harness-delegate-values.yaml file, see [Delegate Environment Variables](/docs/platform/2_Delegates/delegate-reference/delegate-environment-variables.md).
 
-1. Click **Continue**.![](./static/install-harness-delegate-on-kubernetes-16.png)
+1. Click **Continue**.
+
+![](./static/install-harness-delegate-on-kubernetes-16.png)
+
 2. Copy the provided commands and apply the chart.
 
-If the deployment is successful, the installer verifies the delegate heartbeat. Otherwise, if there are problems, see [Delegate Issues](../../../troubleshooting/troubleshooting-nextgen.md#delegate-issues). After the issue is resolved, try the `helm upgrade` command again.
+If the deployment is successful, the installer verifies the delegate heartbeat. Otherwise, if there are problems, see [Delegate Issues](/docs/troubleshooting/troubleshooting-nextgen.md#delegate-issues). After the issue is resolved, try the `helm upgrade` command again.
 
 If you require additional assistance, contact Harness Support.
 
@@ -106,14 +117,18 @@ If you require additional assistance, contact Harness Support.
 You can download the delegate manifest file to configure a proxy or customize other editable values.
 
 ![](./static/install-harness-delegate-on-kubernetes-17.png)
+
 1. (Optional) To download the harness-delegate.yml file, click **Download YAML file**.  
-For detailed information about configuring a proxy for the delegate, see [Configure Delegate Proxy Settings](../delegate-guide/configure-delegate-proxy-settings.md).  
-For a sample manifest, see [Example Kubernetes Manifest: Harness Delegate](../delegate-reference/example-kubernetes-manifest-harness-delegate.md).
-2. Click **Continue**.![](./static/install-harness-delegate-on-kubernetes-18.png)
+For detailed information about configuring a proxy for the delegate, see [Configure Delegate Proxy Settings](/docs/platform/2_Delegates/configure-delegates/configure-delegate-proxy-settings.md).  
+For a sample manifest, see [Example Kubernetes Manifest: Harness Delegate](/docs/platform/2_Delegate/delegate-reference/example-kubernetes-manifest-harness-delegate.md).
+
+2. Click **Continue**.
+
+![](./static/install-harness-delegate-on-kubernetes-18.png)
 
 1. Copy the provided command and apply the YAML.
 
-If the deployment is successful, the installer verifies the delegate heartbeat. If the deployment is not successful, see [Troubleshooting](../../../troubleshooting/troubleshooting-nextgen.md) for instructions. After you resolve the issue, apply the YAML again.
+If the deployment is successful, the installer verifies the delegate heartbeat. If the deployment is not successful, see [Troubleshooting](/docs/troubleshooting/troubleshooting-nextgen.md) for instructions. After you resolve the issue, apply the YAML again.
 
 If you require additional assistance, contact Harness Support.
 
@@ -124,6 +139,7 @@ When installation is complete, check Harness Manager to verify the status of the
 You can find auto-update information in Harness Manager. Check the list of delegates by name.
 
 ![](./static/install-harness-delegate-on-kubernetes-19.png)
+
 You can find expiration information listed with the details for the delegate.
 
 ![](./static/install-harness-delegate-on-kubernetes-20.png)

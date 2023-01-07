@@ -121,5 +121,6 @@ You can verify that the environment variable has the new token using `docker exe
 On the **Tokens** page, click **Revoke** to revoke any token.
 
 ![](./static/secure-delegates-with-tokens-06.png)
+
 Click **Revoke**. The token is revoked. The Harness Manager will not accept connections from any Delegates using this revoked token.
 

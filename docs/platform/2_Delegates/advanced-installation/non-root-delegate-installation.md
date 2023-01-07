@@ -10,17 +10,17 @@ helpdocs_is_published: true
 
 By default, Harness Delegates use root access. You can install a different Docker image tag of the Delegate if you want to install and run the Delegate as non-root.
 
-Harness Delegate images are publicly hosted on [Docker Hub](https://hub.docker.com/r/harness/delegate/tags).This topic described how to install and run a Delegate as non-root.
+Harness Delegate images are publicly hosted on [Docker Hub](https://hub.docker.com/r/harness/delegate/tags). This topic describes how to install and run a Delegate as non-root.
 
 ### Before you begin
 
-* [Delegate Requirements and Limitations](../delegate-reference/delegate-requirements-and-limitations.md)
-* [Delegate Installation Overview](../delegate-installation-overview.md)
+* [Delegate Requirements and Limitations](/docs/platform/2_Delegates/delegate-reference/delegate-requirements-and-limitations.md)
+* [Delegate Installation Overview](/docs/platform/2_Delegates/delegate-installation-overview.md)
 
 ### Limitations
 
 * The Harness Delegate does NOT require root account access. Kubernetes and Docker Delegates run as root by default.
-* If you do not run the Delegate as root, be aware that you cannot install any software using a [Delegate Initialization Script](../delegate-reference/common-delegate-profile-scripts.md).
+* If you do not run the Delegate as root, be aware that you cannot install any software using a [Delegate Initialization Script](/docs/platform/2_Delegates/delegate-reference/common-delegate-profile-scripts.md).
 
 ### Step 1: Download the Delegate Config File
 
@@ -28,8 +28,8 @@ Download the Delegate config file as part of its installation.
 
 For examples, see:
 
-* [Install a Docker Delegate](../delegate-install-docker/install-a-docker-delegate.md)
-* [Install a Kubernetes Delegate](install-a-kubernetes-delegate.md)
+* [Install a Docker Delegate](/docs/platform/2_Delegates/install-delegates/docker-delegates/install-a-docker-delegate.md)
+* [Install a Kubernetes Delegate](/docs/platform/2_Delegates/install-delegates/kubernetes-delegates/install-a-kubernetes-delegate.md)
 
 ### Option: Pick a Non-Root Type
 
@@ -102,10 +102,10 @@ spec:
 
 Install the Delegate as described in topics such as the following:
 
-* [Install a Docker Delegate](../delegate-install-docker/install-a-docker-delegate.md)
-* [Install a Kubernetes Delegate](install-a-kubernetes-delegate.md)
+* [Install a Docker Delegate](/docs/platform/2_Delegates/install-delegates/docker-delegates/install-a-docker-delegate.md)
+* [Install a Kubernetes Delegate](/docs/platform/2_Delegates/install-delegates/kubernetes-delegates/install-a-kubernetes-delegate.md)
 
 ### See also
 
-* [Automate Delegate Installation](automate-delegate-installation.md)
+* [Automate Delegate Installation](/docs/platform/2_Delegates/advanced-installation/automate-delegate-installation.md)
 

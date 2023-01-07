@@ -8,9 +8,9 @@ helpdocs_is_private: false
 helpdocs_is_published: false
 ---
 
-This topic discusses general Delegate installation information. For Delegate requirements and limitations, see [Delegate Requirements and Limitations](delegate-reference/delegate-requirements-and-limitations.md). 
+This topic discusses general Delegate installation information. For Delegate requirements and limitations, see [Delegate Requirements and Limitations](/docs/platform/2_Delegates/delegate-reference/delegate-requirements-and-limitations.md). 
 
-New to the Delegate? See [Delegates Overview](delegates-overview.md).
+New to the Delegate? See [Delegates Overview](/docs/platform/2_Delegates/delegates-overview.md).
 
 ### Visual Summary
 
@@ -58,5 +58,5 @@ For Kubernetes Delegates, the IP can change if a pod is rescheduled, for example
 
 ### Third-Party Tools installed with the Delegate
 
-See [Supported Platforms and Technologies](../../getting-started/supported-platforms-and-technologies.md).
+See [Supported Platforms and Technologies](docs/getting-started/supported-platforms-and-technologies.md).
 

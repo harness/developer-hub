@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Harness runs tasks by using Harness Delegate to connect your environment to resources. Harness selects the best delegate based on previous use or round-robin selection. See [How Does Harness Manager Pick Delegates?](../delegates-overview.md#how-does-harness-manager-pick-delegates)
+Harness runs tasks by using Harness Delegate to connect your environment to resources. Harness selects the best delegate based on previous use or round-robin selection. See [How Does Harness Manager Pick Delegates?](/docs/platform/2_Delegates/delegates-overview.md#how-does-harness-manager-pick-delegates)
 
 In some cases, you might want Harness to select specific delegates. In these cases, you can use the **Delegate Selector** settings in Pipelines, Connectors, and so on, with corresponding delegate tags.
 
@@ -20,7 +20,7 @@ You can also add more tags in the **Tags** field during the setup process:
 
 ![](./static/select-delegates-with-selectors-17.png)
 
-For detailed information on how delegates are selected during execution, see [Delegates Overview](../delegates-overview.md).
+For detailed information on how delegates are selected during execution, see [Delegates Overview](/docs/platform/2_Delegates/delegates-overview.md).
 
 You can select a delegate based on its tags in the **Delegate Selector** settings of Harness entities like pipelines and connectors.
 
@@ -39,11 +39,12 @@ The delegate selector priority is:
 5. Connector
 
 ![](./static/select-delegates-with-selectors-18.png)
+
 The step level has the highest priority. Any delegate selected in a step's **Delegate Selector** setting overrides any Delegates selected in 2-5 above.
 
 A connector can be used in multiple places in a pipeline, such as a stage infrastructure's **Cloud Provider** setting or even in certain step settings.### Option: Step and step group delegate selector
 
-Delegates can be selected for steps and [step groups](../../../continuous-delivery/cd-technical-reference/cd-gen-ref-category/step-groups.md) in their **Advanced** settings.
+Delegates can be selected for steps and [step groups](/docs/continuous-delivery/cd-technical-reference/cd-gen-ref-category/step-groups.md) in their **Advanced** settings.
 
 Here is a step example:
 
@@ -94,5 +95,5 @@ See [Delegate Group Tags Resource](https://harness.io/docs/api/tag/Delegate-Grou
 
 ### See also
 
-* [Delegates Overview](../delegates-overview.md)
+* [Delegates Overview](/docs/platform/2_Delegates/delegates-overview.md)
 

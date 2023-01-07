@@ -84,7 +84,7 @@ data:
 ---
 
 # For information about how to proxy the delegate, see the documentation: 
-# https://ngdocs.harness.io/article/5ww21ewdt8-configure-delegate-proxy-settings
+# [Configure delegate proxy settings](/docs/platform/2_Delegates/configure-delegates/configure-delegate-proxy-settings
 
 apiVersion: apps/v1
 kind: Deployment
@@ -476,6 +476,6 @@ spec:
 
 ### For more information
 
-* To add a custom toolset to a delegate image at runtime, see [Install delegates with third-party tools](https://developer.harness.io/docs/platform/Delegates/delegate-guide/install-delegates-with-third-party-tools).
-* To build delegate images with a custom toolset, see [Build custom images with third-party tools](https://developer.harness.io/docs/platform/delegates/delegate-guide/build-custom-delegate-images-with-third-party-tools/).
-* To find out about versions of the tools that are included on delegate images and how you can customize them, see [Install a delegate with third-party tool custom binaries](https://developer.harness.io/docs/platform/Delegates/delegate-guide/install-a-delegate-with-3-rd-party-tool-custom-binaries).
+* To add a custom toolset to a delegate image at runtime, see [Install delegates with third-party tools](/docs/platform/2_Delegates/delegate-guide/install-delegates-with-third-party-tools).
+* To build delegate images with a custom toolset, see [Build custom images with third-party tools](/docs/platform/2_Delegates/delegate-guide/build-custom-delegate-images-with-third-party-tools/).
+* To find out about versions of the tools that are included on delegate images and how you can customize them, see [Install a delegate with third-party tool custom binaries](/docs/platform/2_Delegates/advanced-installation/install-a-delegate-with-3-rd-party-tool-custom-binaries).

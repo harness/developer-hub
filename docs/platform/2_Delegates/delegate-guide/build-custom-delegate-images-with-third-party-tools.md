@@ -18,7 +18,7 @@ This document explains how you can:
 * Build and host a custom delegate image that includes the tools you select.
 * Use your custom delegate in CI/CD pipelines.
 
-This is not a runtime process. For information on how to install tools on the delegate in runtime, see [Install Delegates with Third-Party Tools](install-delegates-with-third-party-tools.md).
+This is not a runtime process. For information on how to install tools on the delegate in runtime, see [Install Delegates with Third-Party Tools](/docs/platform/2_Delegates/delegate-guide/install-delegates-with-third-party-tools.md).
 
 ### Select the delegate image
 
@@ -416,9 +416,9 @@ You can confirm the successful deployment and registration of the delegate in Ha
 
 You can use your registered delegate to run Kubernetes and Terraform pipelines.
 
-For information about creating a Kubernetes pipeline, see [Kubernetes deployment tutorial](../../../continuous-delivery/onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md).
+For information about creating a Kubernetes pipeline, see [Kubernetes deployment tutorial](/docs/continuous-delivery/onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md).
 
 ![](./static/build-custom-delegate-images-with-third-party-tools-09.png)
 
-For information about creating a Terraform Plan, see [Provision with the Terraform Apply Step](../../../continuous-delivery/cd-advanced/terraform-category/run-a-terraform-plan-with-the-terraform-apply-step.md).
+For information about creating a Terraform Plan, see [Provision with the Terraform Apply Step](/docs/continuous-delivery/cd-advanced/terraform-category/run-a-terraform-plan-with-the-terraform-apply-step.md).
 
