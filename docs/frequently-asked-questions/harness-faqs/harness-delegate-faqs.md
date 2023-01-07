@@ -220,7 +220,7 @@ For the Harness SaaS edition, you can add a self-signed certificates on the dele
 
 #### Can I override the truststore of the delegate?
 
-Yes. See [Truststore override for delegates](../../platform/2_Delegates/configure-delegates/trust-store-override-for-delegates.md).
+Yes. See [Truststore override for delegates](../../platform/2_Delegates/secure-delegates/trust-store-override-for-delegates.md).
 
 ### Copying and downloading artifacts by using the delegate
 
