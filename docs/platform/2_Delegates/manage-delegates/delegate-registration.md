@@ -14,7 +14,7 @@ The Delegate config file (for example, Kubernetes Delegate YAML file) contains y
 
 ### Installing and registering delegates
 
-To install a Delegate, follow the steps in the relevant Delegate installation topic, such as [Install a Kubernetes Delegate](install-a-kubernetes-delegate.md) or [Install a Docker Delegate](../delegate-install-docker/install-a-docker-delegate.md).
+To install a Delegate, follow the steps in the relevant Delegate installation topic, such as [Install a Kubernetes Delegate](/docs/platform/delegates/install-delegates/kubernetes-delegates/install-a-kubernetes-delegate.md) or [Install a Docker Delegate](/docs/platform/delegates/install-delegates/kubernetes-delegates/install-a-docker-delegate.md).
 
 Once you have installed the Delegate in your environment, click **Verify** in the Delegate wizard and Harness will verify that it is receiving heartbeats from the Delegate.
 

@@ -32,7 +32,7 @@ Harness Delegate for Helm requires the following access and permissions:
 	+ A namespace to host Harness Delegate
 	+ [**Deployment**](https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/deployment-v1/) resources, including the [**StatefulSet**](https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/stateful-set-v1/) objects required to manage Harness Delegate
 
-For more information about the permissions you need to install a Delegate, see [Review: Delegate Role Requirements](../delegate-guide/install-a-kubernetes-delegate.md#review-delegate-role-requirements).
+For more information about the permissions you need to install a Delegate, see [Review: Delegate Role Requirements](/docs/platform/2_Delegates/install-delegates/kubernetes-delegates/install-a-kubernetes-delegate.md#review-delegate-role-requirements).
 
 #### Compute Resources
 
@@ -47,7 +47,7 @@ The compute resources that the Delegate workload requires depend on the scale of
 
 Harness Delegate for Helm is installed by deploying a Helm chart. The installation process requires you to configure the deployment and, if you are using a proxy, to configure proxy settings. Harness deploys the Delegate and listens for a heartbeat to confirm the Delegate is running. If you receive a message that the Delegate could not be installed, see the final section of this document for troubleshooting information.
 
-For basic information on Harness Delegate, see [Delegate Requirements and Limitations](../delegates-overview.md).
+For basic information on Harness Delegate, see [Delegate Requirements and Limitations](/docs/platform/2_Delegates/delegates-overview.md).
 
 #### Configure the Deployment
 
@@ -133,7 +133,7 @@ For in-cluster Delegates with configured proxies, the `noProxy` value must be th
    
    ![](./static/install-harness-delegate-using-helm-04.png)
 
-   For information on using proxy settings with Helm Delegate, see [Configure Delegate Proxy Settings](../delegate-guide/configure-delegate-proxy-settings.md).
+   For information on using proxy settings with Helm Delegate, see [Configure Delegate Proxy Settings](/docs/platform/2_Delegates/configure-delegates/configure-delegate-proxy-settings.md).
 
 #### Deploy and Verify
 
@@ -179,7 +179,7 @@ When the issue is resolved, apply the Delegate YAML a second time.
 
 From **Apply YAML and verify connection**, copy the instructions to the command line.
 
-For further information on troubleshooting, see [Troubleshooting Harness](../../../troubleshooting/troubleshooting-nextgen.md).
+For further information on troubleshooting, see [Troubleshooting Harness](/docs/troubleshooting/troubleshooting-nextgen.md).
 
 ### Delegate Field Reference
 

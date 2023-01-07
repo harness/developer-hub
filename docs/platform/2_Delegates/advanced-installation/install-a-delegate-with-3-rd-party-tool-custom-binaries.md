@@ -47,7 +47,7 @@ In the delegate container `spec`, use the `INIT_SCRIPT` environment variable to 
 
 The SDKs you need to add depend on what type of deployment you are doing with Harness.
 
-For more information on how to use the `INIT_SCRIPT` environment variable, see [Run Initialization Scripts on Delegates](run-scripts-on-delegates.md).
+For more information on how to use the `INIT_SCRIPT` environment variable, see [Run Initialization Scripts on Delegates](/docs/platform/2_Delegates/configure-delegates/run-scripts-on-delegates.md).
 
 #### Table: Certified SDK versions for deployment types
 
@@ -243,5 +243,5 @@ In the delegate container `spec`, edit the image to use the `ubi-no-tools` tag.
 ```
 ### See also
 
-* [Common Delegate Initialization Scripts](../delegate-reference/common-delegate-profile-scripts.md)
+* [Common Delegate Initialization Scripts](/docs/platform/2_Delegates/delegate-reference/common-delegate-profile-scripts.md)
 

@@ -10,11 +10,15 @@ helpdocs_is_published: false
 
 This topic discusses general Delegate installation information. For Delegate requirements and limitations, see [Delegate Requirements and Limitations](delegate-reference/delegate-requirements-and-limitations.md). 
 
-New to the Delegate? See [Delegates Overview](delegates-overview.md).### Visual Summary
+New to the Delegate? See [Delegates Overview](delegates-overview.md).
+
+### Visual Summary
 
 The following diagram shows how the Delegate enables Harness to integrate with all of your resources:
 
-![](./static/delegate-installation-overview-05.png)Here's a 10min video that walks you through adding a Harness Kubernetes Cluster Connector and Harness Kubernetes Delegate. The Delegate is added to the target cluster and then the Kubernetes Cluster Connector uses the Delegate to connect to the cluster:
+![](./static/delegate-installation-overview-05.png)
+
+Here's a 10min video that walks you through adding a Harness Kubernetes Cluster Connector and Harness Kubernetes Delegate. The Delegate is added to the target cluster and then the Kubernetes Cluster Connector uses the Delegate to connect to the cluster:
 
 <docvideo src="https://www.youtube.com/embed/wUC23lmqfnY?feature=oembed" />
 
@@ -24,8 +28,8 @@ Harness provides different types of Delegates to give you flexibility in how you
 
 Currently, for Harness NextGen, you can install the following types of Delegates:
 
-* [Install a Kubernetes Delegate](delegate-guide/install-a-kubernetes-delegate.md)
-* [Install a Docker Delegate](delegate-install-docker/install-a-docker-delegate.md)
+* [Install a Kubernetes Delegate](/docs/platform/2_Delegates/install-delegates/kubernetes-delegates/install-a-kubernetes-delegate.md)
+* [Install a Docker Delegate](/docs/platform/2_Delegates/install-delegates/docker-delegates/install-a-docker-delegate.md)
 
 More Delegate types will be added soon.
 
