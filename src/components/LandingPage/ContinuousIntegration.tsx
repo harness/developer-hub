@@ -222,6 +222,19 @@ export default function CI() {
               </button>
             </Link>
           </div>
+          <div>
+            <Link href="/release-notes/continuous-integration">
+              <button
+                className={clsx(
+                  "button button--lg",
+                  styles.btn,
+                  styles.btnLight
+                )}
+              >
+                <img src={`${baseUrl}img/icon_document.png`} /> Release Notes
+              </button>
+            </Link>
+          </div>
         </div>
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
