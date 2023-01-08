@@ -5,10 +5,12 @@ tags: [NextGen, "continuous delivery"]
 sidebar_position: 4
 ---
 
-Harness Continuous Delivery & GitOps is updated regularly. Review the notes below for details about recent changes.
+Harness Continuous Delivery & GitOps is updated regularly in Harness SaaS. Review the notes below for details about recent changes. 
 
 :::note
 Harness deploys updates progressively to different Harness SaaS clusters. You can identify the cluster hosting your account in your Account Overview page. The features and fixes in the release notes may not be available in your cluster immediately.
+
+Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
 
 ## December 22, 2022, version 77908
@@ -1636,3 +1638,4 @@ For more information, refer to Prune Kubernetes Resources.
 - Select All was not disabled in the Delete Template modal when there was an empty list (CDS-36121)
 
 - The hover over card on the Deployments graph for a specific day wasn't clickable. It now routes the user to the Deployments listing page to see the list of Pipeline executions for that day (CDS-33717)
+
