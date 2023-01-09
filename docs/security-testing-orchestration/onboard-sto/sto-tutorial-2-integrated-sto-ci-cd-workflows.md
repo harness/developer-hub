@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This tutorial builds on the [previous tutorial](30-tutorial-1-standalone-workflows.md). You need to complete Tutorial 1 first.
+This tutorial builds on the [previous tutorial](tutorial-1-standalone-workflows.md). You need to complete Tutorial 1 first.
 
 The Pipeline you created in Tutorial 1 is an example of a stand-alone STO workflow. It scans a test target and reports on the vulnerabilities, but doesn't do anything else.
 
@@ -47,8 +47,8 @@ In some cases, developers might want to create "ignore rules" that override the 
 
 Harness provides two pre-defined roles for STO:
 
-* **Developer** role — Permissions needed for developer workflows. These workflows are described in [Tutorial 1](30-tutorial-1-standalone-workflows.md). A Developer can set up security pipelines, run scans, and view results. A Developer can also request (but not approve) Ignore rules for specific issues.
-* **SecOps** role — Permissions needed for Security Operations staff. This role includes all Developer permissions. In addition, SecOps users can approve Ignore rules. These workflows are covered in [Tutorial 2](40-sto-tutorial-2-integrated-sto-ci-cd-workflows.md).
+* **Developer** role — Permissions needed for developer workflows. These workflows are described in [Tutorial 1](tutorial-1-standalone-workflows.md). A Developer can set up security pipelines, run scans, and view results. A Developer can also request (but not approve) Ignore rules for specific issues.
+* **SecOps** role — Permissions needed for Security Operations staff. This role includes all Developer permissions. In addition, SecOps users can approve Ignore rules. These workflows are covered in [Tutorial 2](sto-tutorial-2-integrated-sto-ci-cd-workflows.md).
 
 In this section, you'll create an Ignore rule and approve it as SecOps user. In many real-world scenarios, two separate people will be performing the workflow: a developer creates an Ignore Rule, but the rule isn't active until a SecOps person approves it.
 
