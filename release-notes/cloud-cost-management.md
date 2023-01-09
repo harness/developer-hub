@@ -10,6 +10,23 @@ Harness Cloud Cost Management is updated regularly. Review the notes below for d
 :::note
 Harness deploys updates progressively to different Harness SaaS clusters. You can identify the cluster hosting your account in your Account Overview page. The features and fixes in the release notes may not be available in your cluster immediately.
 :::
+## January 4, 2023
+
+### What's new
+This release does not include new features.
+
+
+### Early access
+* Standardize your currency across CM (CCM-9280)
+  This release introduces Currency Preference that enables you to view the entire CM application in your preferred currency for different cloud providers. This feature is behind a feature flag CCM_CURRENCY_PREFERENCES.
+
+* API implementation for the Currency Preferences feature (CCM-9632)
+  You can now select the currency in which you want to view your entire CM application from different currencies across different cloud providers by using the Currency Preference APIs. Go to [Harness API Documentation](https://apidocs.harness.io/) for more information.
+
+### Fixed issues
+This release does not include fixed issues.
+
+
 
 ## December 16, 2022
 
