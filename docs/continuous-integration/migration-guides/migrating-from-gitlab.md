@@ -331,7 +331,7 @@ Matrix in Harness CI is one of the two looping executing strategies provided by 
 
 `<+matrix.usertag>`
 
-To learn more about Matrix check out the [documentation here](https://docs.harness.io/article/eh4azj73m4#matrix)
+To learn more about matrix, go to the [documentation here](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/#matrix)
 
 <Tabs
     defaultValue="harness"
