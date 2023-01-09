@@ -17,16 +17,14 @@ Delegate version: 78100
 
 :::important
 **Update repository references to the NextGen Helm delegate** <br>
-The location of the repository that contains the NextGen Helm chart is changing. You must change references to the chart location from [https://app.harness.io/storage/harness-download/delegate-helm-chart/](https://app.harness.io/storage/harness-download/delegate-helm-chart/) to [https://app.harness.io/storage/harness-download/harness-helm-charts/](https://app.harness.io/storage/harness-download/harness-helm-charts/). The chart will be removed from the current location and attempts to retrieve the chart from that location will fail.
+The location of the repository that contains the NextGen Helm chart is changing. Change your references to the repository location from [https://app.harness.io/storage/harness-download/delegate-helm-chart/](https://app.harness.io/storage/harness-download/delegate-helm-chart/) to [https://app.harness.io/storage/harness-download/harness-helm-charts/](https://app.harness.io/storage/harness-download/harness-helm-charts/). Updates to the chart will not be made to the deprecated repository.
 :::
 
 ### What's new
 
-- The location of the Helm chart for the NextGen delegate is changing. (DEL-5576) 
+- The repository location of the Helm chart for the NextGen delegate is changing. (DEL-5576) 
 
-  The chart will be removed from [https://app.harness.io/storage/harness-download/delegate-helm-chart/](https://app.harness.io/storage/harness-download/delegate-helm-chart/) and will not be available from that location. To avoid failed retrieval attempts, you must update your references to the chart repository to [https://app.harness.io/storage/harness-download/harness-helm-charts/](https://app.harness.io/storage/harness-download/harness-helm-charts/).
-  
-- (DEL-5651)
+  The repository has been deprecated. This means that updates to the chart will not be made to [https://app.harness.io/storage/harness-download/delegate-helm-chart/](https://app.harness.io/storage/harness-download/delegate-helm-chart/) and will not be available from that location. To ensure retrieval of the most recent Helm chart, update your references to the chart repository to [https://app.harness.io/storage/harness-download/harness-helm-charts/](https://app.harness.io/storage/harness-download/harness-helm-charts/).
 
 
 ### Early access
@@ -35,9 +33,9 @@ N/A
 
 ### Fixed issues
 
-- Delegate dropdown menu collapses automatically. (DEL-5541)
+-   Changed how the NextGen Docker delegate is identified in the delegate section log. The Docker delegate is now identified by the delegate ID, which is the concatenation of `delegateName` and `delegateHostName`. This replaces the use of the delegate name (`delegateHostName`), which was usually the `containerId` value. (DEL-5280) 
 
-  Fixed a problem with the behavior of a dropdown menu. The UI core library was updated to add a parameter that prevents the reset of expanded states when new data loads in a table.
+- Changed the behavior of the delegate dropdown menu. The UI core library was updated to add a parameter that prevents the reset of expanded states when new data loads in a table. This resolved an issue with the dropdown menu collapsing automatically. (DEL-5541)
 
 - Fixed a problem that was causing the `kryo` component to fail. The problem was caused when nested `java.lang.RuntimeException` errors occurred during manager response. (DEL-5609)
 
