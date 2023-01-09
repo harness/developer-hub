@@ -112,7 +112,7 @@ name: code compilation
 </TabItem>
 </Tabs>
 ```
-## Login into Docker registry
+## Log in to Docker registry
 
 <Tabs
     defaultValue="harness"
