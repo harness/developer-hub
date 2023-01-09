@@ -403,3 +403,12 @@ Now all custom triggers in this account must use an API key token or an authoriz
 ```
 {"status":"ERROR","code":"INVALID_REQUEST","message":"Invalid request: Authorization is mandatory for custom triggers in px7xd_BFRCi-pfWPYXVjvw:default:Docs. Please add X-Api-Key header in the request","correlationId":"465d6463-152b-4211-8cb5-6bcc2538afa8","detailedMessage":null,"responseMessages":[{"code":"INVALID_REQUEST","level":"ERROR","message":"Invalid request: Authorization is mandatory for custom triggers in px7xd_BFRCi-pfWPYXVjvw:default:Docs. Please add X-Api-Key header in the request","exception":null,"failureTypes":[]}],"metadata":null}
 ```
+
+##### Allow overrides
+When the **Allow Overrides** box is checked at the account level, Harness users are able to select a different value for this setting at project level. 
+
+In a project, in **Default Settings** > **General**, you can set a different value for **Mandate Authorization for Custom Webhook Triggers**.
+
+If **Allow Overrides** is unchecked, then the value of the setting is propagated to all projects in the account.
+
+
