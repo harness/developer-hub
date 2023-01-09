@@ -12,6 +12,23 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
+## January 4, 2023
+
+### What's new
+This release does not include new features.
+
+
+### Early access
+* Standardize your currency across Harness CCM (CCM-9280)
+  This release introduces Currency Preference that enables you to view the entire CCM application in your preferred currency for different cloud providers. This feature is behind a feature flag CCM_CURRENCY_PREFERENCES.
+
+* API implementation for the Currency Preferences feature (CCM-9632)
+  You can now select the currency in which you want to view your entire CM application from different currencies across different cloud providers by using the Currency Preference APIs. Go to [Harness API Documentation](https://apidocs.harness.io/) for more information.
+
+### Fixed issues
+This release does not include fixed issues.
+
+
 
 ## December 16, 2022
 
