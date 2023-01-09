@@ -47,44 +47,6 @@ Delegate version: 78100
 
   Limits are being introduced on the maximum number of tasks that can be created based on the account. Enforcement of task limits will be implemented at a later date and based on the product license.
   
-- The libraries of the Apache CXF open-source services framework (`org.apache.cxf`) were upgraded to fix vulnerabilities. (DEL-5591)
-
-  The Apache CXF libraries were found to be vulnerable to exploits including reflected Cross-Site Scripting (XSS) and code exfiltration. For a list of Common Vulnerabilities and Exposures (CVEs), see [CVE Details](https://www.cvedetails.com/vulnerability-list/vendor_id-45/product_id-19906/Apache-CXF.html). 
-  
-  | Library name and version | Upgrade version |
-  | :-- | :-- |
-  | org.apache.cxf:cxf-core:3.5.4 | 3.5.5 |
-  | org.apache.cxf:cxf-rt-bindings-soap:3.5.4 | 3.5.5 |
-  | org.apache.cxf:cxf-rt-bindings-xml:3.5.4 | 3.5.5 | 
-  | org.apache.cxf:cxf-rt-databinding-jaxb:3.5.4 | 3.5.5 |
-  | org.apache.cxf:cxf-rt-frontend-jaxws:3.5.4 | 3.5.5 |
-  | org.apache.cxf:cxf-rt-frontend-simple:3.5.4 | 3.5.5 |
-  | org.apache.cxf:cxf-rt-transports-http-hc:3.5.4 | 3.5.5 |
-  | org.apache.cxf:cxf-rt-transports-http:3.5.4 | 3.5.5 |
-  | org.apache.cxf:cxf-rt-ws-addr:3.5.4 | 3.5.5 |
-  | org.apache.cxf:cxf-rt-ws-policy:3.5.4 | 3.5.5 |
-  | org.apache.cxf:cxf-rt-wsdl:3.5.4 | 3.5.5 |
-
-  In a related change, the delegate base image was updated from `redhat/ubi8-minimal:8.4` to `redhat/ubi8-minimal:8.7`.
- 
-- The  libraries of the `io.netty:netty*` client/server framework have been updated to fix vulnerabilities. (DEL-5632)
-
-  The `io.netty:netty*` libraries were upgraded to mitigate the risk of denial-of-service (DoS) attack. Netty versions 4.1.0 to 4.1.67 are vulnerable, for example, to [CVE02021-37136](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-37136) and [CVE-2021-37137](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-37137). 
-  
-  | Library name and version | Upgrade version |
-  | :-- | :-- |
-  | io.netty:netty-all:4.1.77.Final | 4.1.86.Final |
-  | io.netty:netty-buffer:4.1.77.Final | 4.1.86.Final |
-  | io.netty:netty-handler-proxy:4.1.77.Final | 4.1.86.Final |
-  | io.netty:netty-common:4.1.77.Final | 4.1.86.Final |
-  | io.netty:netty-handler:4.1.77.Final | 4.1.86.Final |
-  | io.netty:netty-resolver-dns:4.1.77.Final | 4.1.86.Final |
-  | io.netty:netty-resolver:4.1.77.Final | 4.1.86.Final |
-  | io.netty:netty-transport-native-epoll:linux-x86_64:4.1.77.Final | 4.1.86.Final |
-  | io.netty:netty-transport-native-kqueue:4.1.77.Final | 4.1.86.Final |
-  | io.netty:netty-transport-native-unix-common:4.1.77.Final | 4.1.86.Final |
-  | io.netty:netty-transport:4.1.77.Final | 4.1.86.Final |
-
 
 #### Early access
 - Support AWS S3 as script source for Terraform Provisioners (CDS-2970
@@ -94,10 +56,48 @@ Delegate version: 78100
 #### Fixed issues
 - Custom Fields of Jira step not executing (CDS-49108)
   - Fixed an issue using multiselect fields with new metadata endpoint. While using new metadata endpoint, we received an empty string where null was expected. Now we check for both.
+  
 - Custom Remote Manifest error message needs to be improved when Chart.yaml is given instead of directory (CDS-48038)
   - Error improvement added around custom manifest Helm chart path using Helm deployment.
+  
 - `DelegateGroup` is not removed from the database or the UI after the associated delegate is deleted (DEL-3913)
   - Changed behavior to ensure that an inactive delegate is deleted from the UI after seven days.
+  
+- The following libraries of the Apache CXF open-source services framework (`org.apache.cxf`) were upgraded to version 3.5.5 to fix vulnerabilities. The delegate base image was updated from `redhat/ubi8-minimal:8.4` to `redhat/ubi8-minimal:8.7` to reflect these changes. (DEL-5591)
+
+  The Apache CXF libraries were found to be vulnerable to exploits including reflected Cross-Site Scripting (XSS) and code exfiltration. For a list of Common Vulnerabilities and Exposures (CVEs), see [CVE Details](https://www.cvedetails.com/vulnerability-list/vendor_id-45/product_id-19906/Apache-CXF.html). 
+  
+  | Library name and version | 
+  | :-- |
+  | `org.apache.cxf:cxf-core:3.5.4` | 
+  | `org.apache.cxf:cxf-rt-bindings-soap:3.5.4` | 
+  | `org.apache.cxf:cxf-rt-bindings-xml:3.5.4` | 
+  | `org.apache.cxf:cxf-rt-databinding-jaxb:3.5.4` | 
+  | `org.apache.cxf:cxf-rt-frontend-jaxws:3.5.4` | 
+  | `org.apache.cxf:cxf-rt-frontend-simple:3.5.4` | 
+  | `org.apache.cxf:cxf-rt-transports-http-hc:3.5.4` | 
+  | `org.apache.cxf:cxf-rt-transports-http:3.5.4` | 
+  | `org.apache.cxf:cxf-rt-ws-addr:3.5.4` | 
+  | `org.apache.cxf:cxf-rt-ws-policy:3.5.4` | 
+  | `org.apache.cxf:cxf-rt-wsdl:3.5.4` | 
+ 
+- The following libraries of the `io.netty:netty*` client/server framework were updated to version 4.1.86.Final to fix vulnerabilities. (DEL-5632)
+
+  The `io.netty:netty*` libraries were upgraded to mitigate the risk of denial-of-service (DoS) attack. Netty versions 4.1.0 to 4.1.67 are vulnerable, for example, to the exploits described in [CVE02021-37136](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-37136) and [CVE-2021-37137](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-37137). 
+  
+  | Library name and version | 
+  | :-- | 
+  | `io.netty:netty-all:4.1.77.Final` | 
+  | `io.netty:netty-buffer:4.1.77.Final` |
+  | `io.netty:netty-handler-proxy:4.1.77.Final` |
+  | `io.netty:netty-common:4.1.77.Final` |
+  | `io.netty:netty-handler:4.1.77.Final` |
+  | `io.netty:netty-resolver-dns:4.1.77.Final` |
+  | `io.netty:netty-resolver:4.1.77.Final` | 
+  | `io.netty:netty-transport-native-epoll:linux-x86_64:4.1.77.Final` | 
+  | `io.netty:netty-transport-native-kqueue:4.1.77.Final` | 
+  | `io.netty:netty-transport-native-unix-common:4.1.77.Final` | 
+  | `io.netty:netty-transport:4.1.77.Final` |
 
 
 ### December 22, 2022, version 77908
