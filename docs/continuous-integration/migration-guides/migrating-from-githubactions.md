@@ -18,7 +18,7 @@ For more information, see [Harness CI Concepts](https://developer.harness.io/doc
 
 ## Key differences
 
-- With Harness, there’s no scripting needed and configurations are passed to pipelines securely and in a pragmatic way while Github Actions has third-party actions that you can use as semi-plug-and-play functionality.
+- With Harness, no scripting is needed and configurations are passed to pipelines securely and in a pragmatic way while Github Actions has third-party actions that you can use as semi-plug-and-play functionality.
 - HashiCorp created an action to set up and configure the Terraform CLI in the GitHub Actions workflow. There’s also an action for CloudFormation. Harness provides both infrastructure provisioners with a simpler structure and configuration.
 - GitHub Actions does not provide a native Accelerate metrics dashboard whereas Harness has a dashboard specifically for these metrics and allows you to set alerts as needed.
 - The YAML file for Github actions is stored in the .github/workflows folder in a repository and for Harness CI it’s stored on the Harness itself and can be created from UI or by importing it from a Git Source.
