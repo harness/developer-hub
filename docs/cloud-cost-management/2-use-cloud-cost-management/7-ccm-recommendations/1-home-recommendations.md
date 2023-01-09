@@ -22,7 +22,7 @@ The Recommendations page displays the following information:
 * A breakdown of all the available recommendations.
 * **Potential Monthly Savings** across your ECS clusters if you apply the recommendations.
 * **Forecasted Monthly Spend** across your ECS clusters if you do not apply the recommendations.
-* **Emissions that can be reduced**, and **Potential Carbon Emissions** are features that track greenhouse gas emissions.
+* **Emissions that can be reduced**, and **Potential Carbon Emissions** are the features that track greenhouse gas emissions.
   
 If you do not want to view the recommendations for the child resources such as Workloads, deselect the **Child Resources** checkbox in the **Include** dropdown list at the top of the page.
 
