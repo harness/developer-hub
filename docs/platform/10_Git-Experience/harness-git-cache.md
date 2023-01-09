@@ -28,12 +28,13 @@ Harness displays an orange tick against any entity whose cache was last updated 
 
    ![](../10_Git-Experience/static/stalecache.png)
 
-   Click on the refresh option to refresh cache.
+   Refresh the cache and reload the entities from Git by selecting the refresh option. The following pop-up will appear to confirm the reload of the entities from Git.
 
    ![](../10_Git-Experience/static/refreshcache.png)
   
-  The cache status you see in the UI is only indicative of the cache status of the entity being fetched. Entities nested within the fetched entity may have different cache statuses.
-  For example, the cache status in the pipeline studio corresponds to the cache status of the pipeline. It is possible for nested remote templates within this pipeline to have a different cache status.
+  The cache status you see in the UI is only indicative of the cache status of the entity being fetched. Entities referenced within the fetched entity may have different cache statuses.
+  For example, the cache status in the pipeline studio corresponds to the cache status of the pipeline. It is possible for referenced remote templates within this pipeline to have a different cache status.
+  If you select refresh cache, the caches of all the referenced entities are also retrieved and reloaded from Git.
 
 3.  Harness clears the cache for any entity that hasn't been referred to or loaded on the Harness UI in the previous 72 hours. Any subsequent access (whether through API or UI) will fetch the entity from GIT, update the cache, and return the response.
    
@@ -50,8 +51,8 @@ To view the differences, click **See What Changed**.
 ![](../10_Git-Experience/static/commitcachedentity.png)
 
 You can do one of the following when there are differences:
-- **Cancel**: Retain your changes done on the UI and cancel commit.
-- **Save**: Resolve the conflicts and commit your changes in the UI.
+- **Cancel**: Retain your changes done on the UI. No commits are pushed to Git.
+- **Save**: Resolve the conflicts and commit your changes in the UI to Git.
 
 ![](../10_Git-Experience/static/CacheDiff.png)
 
