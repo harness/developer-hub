@@ -61,7 +61,7 @@ Delegate version: 78100
   - Error improvement added around custom manifest Helm chart path using Helm deployment.
   
 - `DelegateGroup` is not removed from the database or the UI after the associated delegate is deleted (DEL-3913)
-  - Changed behavior to ensure that an inactive delegate is deleted from the UI after seven days.
+  - Changed code to ensure that an inactive delegate is deleted from the UI after seven days.
   
 - The following libraries of the Apache CXF open-source services framework (`org.apache.cxf`) were upgraded to version 3.5.5 to fix vulnerabilities. The delegate base image was updated from `redhat/ubi8-minimal:8.4` to `redhat/ubi8-minimal:8.7` to reflect these changes. (DEL-5591)
 
