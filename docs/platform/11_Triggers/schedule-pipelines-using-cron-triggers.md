@@ -1,7 +1,7 @@
 ---
 title: Schedule Pipelines using Triggers
 description: Schedule Pipeline executions using Cron-based Triggers.
-# sidebar_position: 2
+sidebar_position: 1
 helpdocs_topic_id: 4z9mf24m1b
 helpdocs_category_id: oya6qhmmaw
 helpdocs_is_private: false
