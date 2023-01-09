@@ -4,7 +4,7 @@ description: Configure settings to enable authentication of SCIM APIs through JW
 sidebar_position: 3
 ---
 
-You can use JWT Tokens to access Harness SCIM APIs. To do this, you must first configure the settings corresponding to JWT token using the [Setting API](https://apidocs.harness.io/tag/Setting#operation/updateSettingValue)
+You can use JWT to access Harness SCIM APIs. To do this, you must first configure the settings corresponding to JWT using the [Setting API](https://apidocs.harness.io/tag/Setting#operation/updateSettingValue)
 
 ## Prerequisites
 
@@ -14,7 +14,11 @@ You can use JWT Tokens to access Harness SCIM APIs. To do this, you must first c
   
 ## Create a service account in Harness
 
-1. In Harness, click **Account Settings**.
+You must have a service account in Harness to authorize access to the API. You can either create a new service account or use an existing service account in Harness.
+
+To create a new service account, perform the following steps:
+
+1. In app.harness.io, click **Account Settings**.
 2. Select **Access Control**.
 3. Select **Service Accounts** and then select **New Service Account**.
 4. Enter a name and email address for this account.
