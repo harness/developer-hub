@@ -1,5 +1,5 @@
 ---
-title: Add Custom Artifacts to STO Pipelines
+title: Adding Custom Artifacts to STO Pipelines
 description: This topic describes how to include SSL certificates and other types of artifacts in your STO pipelines. 
 sidebar_position: 70
 ---
@@ -22,7 +22,7 @@ To add a PEM file or other SSL certificate, the shared folder should be **shared
 
 * If the scanner uses an SSL certificate such as a PEM file, save each certificate to **shared/customer-artifacts/certificates/`<certificate_name>`**. 
 
-* The following example workflow uses a PEM file stored as a [Harness file secret](/docs/platform/security/add-file-secrets.md). You can also use third-party managers such as HashiCorp Vault, Azure Key Vault, and AWS Secrets Manager. See [Harness Secrets Manager Overview](/docs/platform/Security/harness-secret-manager-overview.md).
+* The following example workflow uses a PEM file stored as a [Harness file secret](/docs/platform/6_Security/3-add-file-secrets.md). You can also use third-party managers such as HashiCorp Vault, Azure Key Vault, and AWS Secrets Manager. See [Harness Secrets Manager Overview](/docs/platform/6_Security/1-harness-secret-manager-overview.md).
 
 * If the scanner requires a license file, save the file to **shared/customer-artifacts/license/`<license_file_name>`**.  
 

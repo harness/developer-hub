@@ -22,7 +22,7 @@ The following steps describe the high-level workflow.
 
    a) `workspace` = The folder with the Java binaries to scan.
    
-      When a Harness pipeline clones a repo, the root folder is at `/harness` on the local container for the Run step. Thus if you compiled your binaries to `<repo_root>/bin` then set `workspace` to `/harness/bin`.
+      When a Harness pipeline clones a repo, the root folder is at `/harness` on the local container for the Run step. Thus if you compiled your binaries to `<repo_root>/bin`, then set `workspace` to `/harness/bin`.
       
-   b) `product_java_binaries` = The Java binary to scan. To scan multiple binaries, use a comma-separated list such as `myservice.jar, subservice1.class, subservice2.class`.
+   b) `product_java_binaries` = The Java binary or binaries to scan. To scan multiple binaries, use a comma-separated list such as `myservice.jar, subservice1.class, subservice2.class`.
    

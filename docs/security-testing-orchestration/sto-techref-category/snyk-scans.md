@@ -13,7 +13,7 @@ This workflow describes how to ingest Snyk scan results into a Harness pipeline.
 * This workflow assumes you're familiar with the following:
 
   * [Set up Harness for STO](../onboard-sto/20-set-up-harness-for-sto.md) 
-  * [Ingest Scan Results into an STO Pipeline](ingest-scan-results-into-an-sto-pipeline.md) 
+  * [Ingest Scan Results into an STO Pipeline](../use-sto/ingest-scan-results-into-an-sto-pipeline.md) 
   * [Setup requirements for AWS CodePipeline](https://docs.snyk.io/integrations/ci-cd-integrations/aws-codepipeline-integration/setup-requirements-for-aws-codepipeline)
   
     Check this page in the Snyk docs to see if you need to build the project before scanning. These requirements are applicable to Harness pipelines as well as AWS CodePipeline.  
