@@ -1,14 +1,14 @@
-# Build and Push Container Image to Amazon ECR
+# Build and push a container image to Amazon ECR
 
-Docker made a revolution with containerization. It truly helped to bridge the gap between Dev and Ops teams. Similarly, the cloud providers introduced their own container registries to provide more security and governance. For example, Amazon has Elastic container registry (ECR), Microsoft has Azure container registry (ACR), and Google has a Google container registry (GCR). Container registries have become an integral part of any CI/CD pipeline to store images, metadata, and other important artifacts. In addition, they provide a secure way to store and share container images across a distributed system to help development teams build their software efficiently. In this article, we will explore the Amazon ECR container registry and see how to use it to push our container images.
+Docker made a revolution with containerization. It truly helped to bridge the gap between Dev and Ops teams. Similarly, the cloud providers introduced their own container registries to provide more security and governance. For example, Amazon has Elastic Container Registry (ECR), Microsoft has Azure Container Registry (ACR), and Google has a Google Container Registry (GCR). Container registries have become an integral part of any CI/CD pipeline to store images, metadata, and other important artifacts. In addition, they provide a secure way to store and share container images across a distributed system to help development teams build their software efficiently. In this article, we will explore the Amazon ECR container registry and see how to use it to push container images.
 
-## Understanding Container Registries
-As the name suggests, container registries are used to store some valuable data related to our pipeline. In particular, for storing and sharing container images securely and reliably in a central repository, which multiple users and systems can access. This makes managing and deploying container images easy across a distributed system. Container registries also provide the ability to store multiple versions of a single container image, which allows for version control and rollback if needed. In addition, container registries can store and share sensitive data across the team, such as credentials and secrets.
+## Understanding container registries
+As the name suggests, container registries are used to store some valuable data related to a pipeline. In particular, for storing and sharing container images securely and reliably in a central repository, which multiple users and systems can access. This makes managing and deploying container images easy across a distributed system. Container registries also provide the ability to store multiple versions of a single container image, which allows for version control and rollback if needed. In addition, container registries can store and share sensitive data, such as credentials and secrets, across the team.
 
 ## Overview of Amazon ECR
-Amazon ECR (Elastic Container Registry) is a fully managed service from Amazon Web Services (AWS). It is used to store and manage Docker images securely and reliably. In addition, Amazon ECR provides a simple web-based interface for creating, managing, and sharing Docker images and integrating them with other AWS services. 
+Amazon ECR is a fully managed service from Amazon Web Services (AWS). It is used to store and manage Docker images securely and reliably. In addition, Amazon ECR provides a simple web-based interface for creating, managing, and sharing Docker images and integrating them with other AWS services. 
 
-## Pushing Your Container Image to ECR from Harness CI
+The following graphic shows how to push your container image to ECR from Harness CI:
 ![project flowchart](./static/ci-tutorial-build-push-ecr/pipeline_flow_chart.png)
 
 ### Prerequisites:
@@ -16,78 +16,78 @@ Before you can push your container image to ECR from Harness, there are a few pr
 1. You must have an [AWS account](https://aws.amazon.com/resources/create-account/) and have created a repository in ECR.
 2. You must have a Docker image of your application ready to push to ECR - We have a [sample application](https://github.com/pavanbelagatti/harness-ci-example) with a Dockerfile. You can clone it and use it in this tutorial. 
 3. You must have access to the AWS CLI or the AWS Management Console. 
-4. To use the [Harness CI](https://app.harness.io/auth/#/signup/?module=ci&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=ci-plg&utm_content=get-started), you must have an account on Harness (it is Free). Harness offers hosted virtual machines (VMs) to run your builds. With Harness Cloud, you can build your code worry-free on the infrastructure that Harness provides. You don't have to spend time and effort to maintain build infrastructure; you can focus on developing great software instead.
+4. To use [Harness CI](https://app.harness.io/auth/#/signup/?module=ci&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=ci-plg&utm_content=get-started), you must have an account on Harness (it is Free). Harness offers hosted virtual machines (VMs) to run your builds. With Harness Cloud, you can build your code worry-free on the infrastructure that Harness provides. You don't have to spend time and effort to maintain build infrastructure; you can focus on developing great software instead.
 
-### Step-by-Step Guide to Pushing Your Container Image to ECR using Harness
+### Push your container image to ECR using Harness
 
-We have a [sample application](https://github.com/pavanbelagatti/harness-ci-example) you can fork and use. This sample code repo has a Dockerfile with instructions to build our image. We need to create an ECR repository on AWS to push our image. Then, we will use the Harness CI module to test, build and push the image to our ECR repo. 
+We have a [sample application](https://github.com/pavanbelagatti/harness-ci-example) you can fork and use. This sample code repo has a Dockerfile with instructions to build our image. We need to create an ECR repository on AWS to push our image. Then, we will use the Harness CI module to test, build, and push the image to our ECR repo. 
 
-Assuming you have the ECR repo created on AWS. 
+This tutorial assumes you have the ECR repo created on AWS. 
 ![AWS ECR screenshot](./static/ci-tutorial-build-push-ecr/ECR_AWS_screenshot.png)
 
-Login to your Harness CI module and create a project.
+1. Log in to your Harness CI module and create a project.
 ![Harness CI](./static/ci-tutorial-build-push-ecr/CI_Project_creation.png)
 
-Create your first pipeline. Click ‘Get Started’.
+2. Create your first pipeline. Select **Get Started**.
 ![first pipeline](./static/ci-tutorial-build-push-ecr/CI_getstarted.png)
 
-Once you click on ‘Get Started’, the next step is to connect your repository. Since our code is on GitHub, we will authenticate with GitHub. 
+3. Connect your repository. Since our code is on GitHub, we will authenticate with GitHub. 
 
 ![CI get started](./static/ci-tutorial-build-push-ecr/code_repo_list.png)
 
 Once the GitHub authentication is done, you should see all your GitHub repositories listed.
-Select your repository and continue with ‘Configure Pipeline’.
+4. Select your repository and continue with **Configure Pipeline**.
 ![github repos](./static/ci-tutorial-build-push-ecr/select_repos.png)
 
-Since it is a Node.js project, we will select Node.js and continue with building the pipeline.
+5. Since it is a Node.js project, select Node.js, and then continue to build the pipeline.
 ![build pipeline](./static/ci-tutorial-build-push-ecr/configure_pipeline.png)
 
-Once you click on ‘Create Pipeline’, you should see the skeleton of your CI pipeline.
+After you select **Create Pipeline**, you should see the skeleton of your CI pipeline.
 ![create pipeline](./static/ci-tutorial-build-push-ecr/build_node_app.png)
 
-You can click on the name ‘Build NodeJS’ and modify the name accordingly. Click on the ‘Execution’ tab and then on ‘Build Node App’. You should see the ‘Run’ step configured for you automatically. 
+6. Select the name **Build NodeJS**, and then modify the name accordingly. Select the **Execution** tab, and then select **Build Node App** You should see the **Run** step configured for you automatically. 
 ![run step configure](./static/ci-tutorial-build-push-ecr/run_step_configuration.png)
 
-Now, you can modify the commands. Since we don’t want the first three lines in this project, we will remove them and just keep the ‘npm test’ command. Apply changes and save the pipeline.
+7. Now, you can modify the commands. Since we don’t want the first three lines in this project, we will remove them and just keep the ‘npm test’ command. Apply changes and save the pipeline.
 
-The pipeline is ready till testing and building the application. What is left is to push our built image to Amazon ECR. So, let us connect our AWS account with Harness to make sure they communicate with each other. 
+The pipeline is ready for testing and building the application. What is left is to push our built image to Amazon ECR. So, let us connect our AWS account with Harness to make sure they communicate with each other. 
 
-In the project setup, go to the ‘Connectors’ tab to connect our AWS account.
+8. In the project setup, go to the **Connectors** tab to connect our AWS account.
 
 ![explore connectors](./static/ci-tutorial-build-push-ecr/explore_connectors.png)
 
 ![connectors tab](./static/ci-tutorial-build-push-ecr/connectors.png)
 
-Select AWS from the list and add the required details. 
+9. Select AWS from the list and add the required details. 
 ![select AWS](./static/ci-tutorial-build-push-ecr/aws_connector_overview.png)
 
-There are three ways to connect your AWS account. We will use ‘AWS Access Key’ method to authenticate and connect.
+10. There are three ways to connect your AWS account. We will use **AWS Access Key** method to authenticate and connect.
 ![AWS access](./static/ci-tutorial-build-push-ecr/AWS_Access.png)
 
-Then we will connect the Harness platform as our option to connect with AWS.
+11. Connect the Harness platform as our option to connect with AWS.
 ![connect AWS](./static/ci-tutorial-build-push-ecr/connect_provider.png)
 
-Once you click ‘Save and Continue’, you should see a successful connection message.
+After you select **Save and Continue**, you should see a successful connection message.
 ![cloud provider](./static/ci-tutorial-build-push-ecr/cloud_provider_success.png)
 
 Now, you have successfully connected your AWS account with Harness.
 
-It is time we need to add our last step in the CI pipeline, i,e pushing the image to Amazon ECR.
+It is time to add our last step in the CI pipeline; pushing the image to Amazon ECR.
 
-Go back to your pipeline and add a step under the ‘Build and Test’ stage (under execution). 
+12. Go back to your pipeline and add a step under the **Build and Test** stage (under execution). 
 ![step library](./static/ci-tutorial-build-push-ecr/step_library.png)
 
-Select ‘Build and Push to ECR’ 
+13. Select **Build and Push to ECR**.
 ![build and push setup](./static/ci-tutorial-build-push-ecr/build_push_step.png)
 
-Make sure to correctly add the Region, Account ID and Image Name. Add the ‘Tags’ [I have added ‘testing’ as a Tag]. Apply changes and save the pipeline settings.
+14. Make sure to correctly add the Region, Account ID, and Image Name. Add the Tags [I have added **testing** as a Tag]. Apply the changes and save the pipeline settings.
 
 Finally, your pipeline should look like this.
 ![ecr tutorial](./static/ci-tutorial-build-push-ecr/ECR_tutorial.png)
 
 Basically, we are testing the application with a simple ‘npm test’ command as configured in the ‘Run’ step and pushing the built image to Amazon ECR (configured in the last step).
 
-Save and run the pipeline:)
+Save and run the pipeline.
 ![ci step success](./static/ci-tutorial-build-push-ecr/CI_step_success.png)
 
 You should see a successful output of all steps passing the pipeline if you followed this tutorial and configured everything correctly. You can switch to the console view to see what is happening with each step for more details. 
