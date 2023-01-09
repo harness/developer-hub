@@ -149,7 +149,7 @@ step:
 </Tabs>
 ```
 
-In Harness CI we have connectors for login into the Docker registry, to know more about connectors visit [Connecting to Docker Registry](https://docs.harness.io/article/my8n93rxnw-connect-to-harness-container-image-registry-using-docker-connector).
+In Harness CI we have connectors for logging into the Docker registry. To learn more about connectors, go to  [Connecting to Docker Registry](https://developer.harness.io/docs/platform/connectors/connect-to-harness-container-image-registry-using-docker-connector/).
 A Connector in Harness is a configurable object that connects to an external resource automatically. We reference a Connector in your Pipeline by using its Id in `connectorRef`.
 
 ## Defining an environment variable
