@@ -17,8 +17,8 @@ This release does not include new features.
 
 
 ### Early access
-* Standardize your currency across CM (CCM-9280)
-  This release introduces Currency Preference that enables you to view the entire CM application in your preferred currency for different cloud providers. This feature is behind a feature flag CCM_CURRENCY_PREFERENCES.
+* Standardize your currency across Harness CCM (CCM-9280)
+  This release introduces Currency Preference that enables you to view the entire CCM application in your preferred currency for different cloud providers. This feature is behind a feature flag CCM_CURRENCY_PREFERENCES.
 
 * API implementation for the Currency Preferences feature (CCM-9632)
   You can now select the currency in which you want to view your entire CM application from different currencies across different cloud providers by using the Currency Preference APIs. Go to [Harness API Documentation](https://apidocs.harness.io/) for more information.
