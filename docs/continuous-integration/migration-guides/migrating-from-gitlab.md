@@ -394,7 +394,7 @@ Gitlab CI Trigger: Through API
 
 Webhooks are a convenient way to trigger CI/CD on demand by sending an HTTP post request to specialized URLs. This is particularly useful for event-based triggering, in which a webhook can be called whenever a specified event occurs.
 
-Harness CI Harness supports Webhooks triggers, Artifacts triggers, Manifest triggers, and scheduled triggers. The two most commonly used triggers are webhook triggers based on Git events and Scheduled Triggers based on corn expression. 
+Harness CI supports webhook triggers, artifact triggers, manifest triggers, and scheduled triggers. The two most commonly used triggers are webhook triggers based on Git events and scheduled triggers based on cron expressions. 
 
 To learn more about creating a trigger, go to [Harness Triggers](https://developer.harness.io/docs/category/triggers).
 
