@@ -51,7 +51,7 @@ To view the differences, click **See What Changed**.
 ![](../10_Git-Experience/static/commitcachedentity.png)
 
 You can do one of the following when there are differences:
-- **Cancel**: Retain your changes done on the UI. No commits are pushed to Git.
+- **Cancel**: Retain changes made to the UI. There are no commits pushed to Git.
 - **Save**: Resolve the conflicts and commit your changes in the UI to Git.
 
 ![](../10_Git-Experience/static/CacheDiff.png)
