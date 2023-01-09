@@ -349,7 +349,7 @@ The response from the cURL command will contain the status of the deployment. Fo
 
 :::note
 
-Currently, this functionality is behind the feature flag `SPG_NG_CUSTOM_WEBHOOK_AUTHORIZATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Currently, this functionality is behind the feature flag `NG_SETTINGS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 :::
 
