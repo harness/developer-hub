@@ -396,7 +396,7 @@ Webhooks are a convenient way to trigger CI/CD on demand by sending an HTTP post
 
 Harness CI Harness supports Webhooks triggers, Artifacts triggers, Manifest triggers, and scheduled triggers. The two most commonly used triggers are webhook triggers based on Git events and Scheduled Triggers based on corn expression. 
 
-To know more about creating a trigger visit [Harness Triggers](https://developer.harness.io/docs/category/triggers)
+To learn more about creating a trigger, go to [Harness Triggers](https://developer.harness.io/docs/category/triggers).
 
 <Tabs
     defaultValue="harness"
