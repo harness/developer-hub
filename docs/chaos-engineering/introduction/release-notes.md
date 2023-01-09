@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: Chaos Engineering Release Notes
+title: Chaos engineering release notes
 ---
 
 Harness Chaos Engineering is updated regularly. Review the notes below for details about recent changes. 
