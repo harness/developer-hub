@@ -1,6 +1,6 @@
 ---
 title: Service Reliability Management
-date: 2022-12-15T10:00
+date: 2022-12-13T10:00
 tags: [NextGen, "service reliability management"]
 sidebar_position: 7
 ---

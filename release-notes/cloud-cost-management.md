@@ -1,7 +1,7 @@
 ---
 title: Cloud Cost Management
 tags: [NextGen, "cloud cost management"]
-date: 2022-12-15T10:00
+date: 2023-01-04T10:00
 sidebar_position: 5
 ---
 
