@@ -11,7 +11,7 @@ Amazon ECR is a fully managed service from Amazon Web Services (AWS). It is used
 The following graphic shows how to push your container image to ECR from Harness CI:
 ![project flowchart](./static/ci-tutorial-build-push-ecr/pipeline_flow_chart.png)
 
-### Prerequisites:
+### Prerequisites
 Before you can push your container image to ECR from Harness, there are a few prerequisites:
 1. You must have an [AWS account](https://aws.amazon.com/resources/create-account/) and have created a repository in ECR.
 2. You must have a Docker image of your application ready to push to ECR - We have a [sample application](https://github.com/pavanbelagatti/harness-ci-example) with a Dockerfile. You can clone it and use it in this tutorial. 
