@@ -21,10 +21,6 @@ If you don't see a new feature or enhancement in your Harness account, it might 
 Delegate version: 78100
 
 #### What's new
-
-- MongoDB Query tuning on executionInterrupts (CDS-49220)
-  
-  Fixed a bug where approvals executed after a stage with runtime inputs were not being expired.
   
 - Add the status of the collection in the artifactsource response in GraphQL API (CDS-44426)
   
@@ -54,6 +50,10 @@ Delegate version: 78100
   - Now you can use the AWS S3 option for your remote Terraform script files.
 
 #### Fixed issues
+- MongoDB Query tuning on executionInterrupts (CDS-49220)
+  
+  Fixed a bug where approvals executed after a stage with runtime inputs were not being expired.
+  
 - Custom Fields of Jira step not executing (CDS-49108)
   - Fixed an issue using multiselect fields with a new metadata endpoint. While using a new metadata endpoint, we received an empty string where null was expected. Now we check for both.
   
