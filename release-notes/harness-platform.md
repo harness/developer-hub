@@ -1,7 +1,7 @@
 ---
 title: Harness Platform
 tags: [NextGen, "platform"]
-date: 2022-12-15T10:00
+date: 2022-12-22T10:00
 sidebar_position: 10
 ---
 
