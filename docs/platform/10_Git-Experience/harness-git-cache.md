@@ -40,7 +40,7 @@ Harness displays an orange tick against any entity whose cache was last updated 
 ## Caching entities saved on multiple branches
 
 To ensure isolation between caches for different entities for different branches, the cache for each entity is maintained separately for each branch. 
-For example, if you have a stage template saved in separate branches in Git, Harness maintains a separate cache corresponding to each branch for the stage template. When this stage is encountered during your entity fetch, the cache corresponding to a unique key is requested from the server. The server then looks for a cache with this key and returns the cache (if available). 
+For example, if you have a stage template saved in separate branches in Git, Harness maintains a separate cache corresponding to each branch for the stage template. When this stage template is encountered during your entity fetch, the cache corresponding to a unique key is requested from the server. The server then looks for a cache with this key and returns the cache (if available). 
 
 ## Committing changes
 
