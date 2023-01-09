@@ -452,7 +452,7 @@ trigger:
 </Tabs>
 ```
 
-## Complete Example
+## Complete example
 
 <Tabs
     defaultValue="harness"
