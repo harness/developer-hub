@@ -21,7 +21,7 @@ To create a new service account, perform the following steps:
 1. In app.harness.io, click **Account Settings**.
 2. Select **Access Control**.
 3. Select **Service Accounts** and then select **New Service Account**.
-4. Enter a name and email address for this account.
+4. Enter your name and email address for this account.
 5. Select **Save**.
    For more information, see Create a [service account](../4_Role-Based-Access-Control/6-add-and-manage-service-account.md).
 6. Your service account now appears in the **Service Account** list. Select ** Manage Roles** next to the service account you just created to assign role bindings to the service account you just created.
