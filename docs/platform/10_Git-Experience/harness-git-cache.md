@@ -20,7 +20,7 @@ You can reload the entities from Git and update the cache at any time.
 
 Harness UI uses the following cache life cycle to render a remote entity:
 1. The first time you load a remote entity to the Harness UI, the Harness UI fetches the entity from Git, renders it in the UI, and then updates the cache. Subsequently, the Harness UI loads the entity from the cache.
-2. Harness indicates displays a green tick if an entity's cache has been updated in the last two hours.
+2. Harness displays a green tick if an entity's cache has been updated in the last two hours.
 
     ![](../10_Git-Experience/static/activecache.png)
 
