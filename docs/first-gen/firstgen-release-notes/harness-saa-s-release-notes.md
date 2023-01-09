@@ -28,7 +28,7 @@ Delegate version: 78100
   
 - Add the status of the collection in the artifactsource response in GraphQL API (CDS-44426)
   
-  You can retrieve the value of the collectionEnabled field for an Artifact Source using GraphQL Apis, like in the example below:
+  You can retrieve the value of the collectionEnabled field for an Artifact Source using GraphQL APIs, like in the example below:
   ```
     {
       services(limit: 5) {
@@ -49,16 +49,16 @@ Delegate version: 78100
   
 
 #### Early access
-- Support AWS S3 as script source for Terraform Provisioners (CDS-2970
+- Support AWS S3 as a script source for Terraform Provisioners (CDS-2970)
   - Feature flag: `CDS_TERRAFORM_S3_SUPPORT`.
-  - Now you can use AWS S3 option for your remote Terraform script files.
+  - Now you can use the AWS S3 option for your remote Terraform script files.
 
 #### Fixed issues
 - Custom Fields of Jira step not executing (CDS-49108)
-  - Fixed an issue using multiselect fields with new metadata endpoint. While using new metadata endpoint, we received an empty string where null was expected. Now we check for both.
+  - Fixed an issue using multiselect fields with a new metadata endpoint. While using a new metadata endpoint, we received an empty string where null was expected. Now we check for both.
   
-- Custom Remote Manifest error message needs to be improved when Chart.yaml is given instead of directory (CDS-48038)
-  - Error improvement added around custom manifest Helm chart path using Helm deployment.
+- Custom Remote Manifest error message needs to be improved when Chart.yaml is given instead of a directory (CDS-48038)
+  - Error improvement was added around the custom manifest Helm chart path using Helm deployment.
   
 - `DelegateGroup` is not removed from the database or the UI after the associated delegate is deleted (DEL-3913)
   - Changed code to ensure that an inactive delegate is deleted from the UI after seven days.
