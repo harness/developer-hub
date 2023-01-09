@@ -102,9 +102,9 @@ For the step settings on CI Plugins, see [Plugin Step Settings](../../ci-technic
 
 If you are trying to use an action composite that is located in a private repository, you first need to clone the repository using the `Git Clone` step.
 
-Then when specifying your action repository with the `uses` attribute, use the following pattern: `./../<private repository name>`.
+Then, when specifying your action repository with the `uses` attribute, use the following pattern: `./../<private repository name>`.
 
-In some cases you might specify a different path in the `Git Clone` step, just make sure that the `uses` path starts with `./`.
+In some cases you might specify a different path in the `Git Clone` step; make sure that the `uses` path starts with `./`.
 
 ### Step 5: View the Results
 
