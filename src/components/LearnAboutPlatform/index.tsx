@@ -1008,7 +1008,104 @@ export default function LearnAboutPlatform(): JSX.Element {
       )}
       <div className={styles.btnShowMore}>
         <button onClick={toggleShowMore}>
-          See {showMore ? "Less △" : "All ▽"}
+          See {showMore ? "Less △" : "All Platform Features▽"}
+        </button>
+      </div>
+
+      <div className={styles.subSectionName}>
+        <h3>Release Notes</h3>
+      </div>
+      <ul className={styles.platformListMore}>
+          <li>
+            <a href="/release-notes/whats-new">
+              <h4>What's New</h4>
+              <p>New GA features across all Harness modules and the Harness Platform</p>
+            </a>
+          </li>
+          <li>
+            <a href="/release-notes/early-access">
+              <h4>Early Access</h4>
+              <p>
+               New BETA features across all Harness modules and the Harness Platform, available behind a feature flag
+              </p>
+            </a>
+          </li>
+      </ul>
+      {showMore && (
+      <ul className={styles.platformListMore}>
+          <li>
+            <a href="/release-notes/continuous-integration">
+              <h4>Continuous Integration</h4>
+              <p>
+               New features and fixed issues for the CI module
+              </p>
+            </a>
+          </li>
+          <li>
+            <a href="/release-notes/continuous-delivery">
+              <h4>Continuous Delivery &amp; GitOps</h4>
+              <p>
+              New features and fixed issues for the CD module
+              </p>
+            </a>
+          </li>
+          <li>
+            <a href="/release-notes/feature-flags">
+              <h4>Feature Flags</h4>
+              <p>New features and fixed issues for the FF module</p>
+            </a>
+          </li>
+          <li>
+            <a href="/release-notes/cloud-cost-management">
+              <h4>Cloud Cost Management</h4>
+              <p>New features and fixed issues for the CCM module</p>
+            </a>
+          </li>
+          <li>
+            <a href="/release-notes/service-reliability-management">
+              <h4>Service Reliability Management</h4>
+              <p>
+              New features and fixed issues for the SRM module
+              </p>
+            </a>
+          </li>
+          <li>
+            <a href="/release-notes/security-testing-orchestration">
+              <h4>Security Testing Orchestration</h4>
+              <p>
+              New features and fixed issues for the STO module
+              </p>
+            </a>
+          </li>
+          <li>
+            <a href="/release-notes/chaos-engineering">
+              <h4>Chaos Engineering</h4>
+              <p>
+              New features and fixed issues for the CE module
+              </p>
+            </a>
+          </li>
+          <li>
+            <a href="/release-notes/harness-platform">
+              <h4>Harness Platform</h4>
+              <p>
+              New features and fixed issues for the Harness Platform
+              </p>
+            </a>
+          </li>
+          <li>
+            <a href="/release-notes/self-managed-enterprise-edition">
+              <h4>Self-Managed Enterprise Edition</h4>
+              <p>
+              New features and fixed issues for the self-managed (fka on-premises) edition
+              </p>
+            </a>
+          </li>
+        </ul>
+      )}
+      <div className={styles.btnShowMore}>
+        <button onClick={toggleShowMore}>
+          See {showMore ? "Less △" : "Module & Platform Release Notes ▽"}
         </button>
       </div>
     </section>
