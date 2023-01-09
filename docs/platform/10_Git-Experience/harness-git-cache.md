@@ -28,7 +28,7 @@ Harness displays an orange tick against any entity whose cache was last updated 
 
    ![](../10_Git-Experience/static/stalecache.png)
 
-   Refresh the cache and reload the entities from Git by selecting the refresh option. The following pop-up will appear to confirm the reload of the entities from Git.
+   Refresh the cache and reload the entities from Git by selecting the refresh option. The following pop-up appears to confirm the reload of the entities from Git.
 
    ![](../10_Git-Experience/static/refreshcache.png)
   
