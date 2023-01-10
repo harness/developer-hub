@@ -8,12 +8,6 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-**Dashboards** are a collection of charts and data tables with filters that you can use to get at the data you're interested in. Dashboards serve as a platform for data modeling and analytics using a combination of available business metrics and operational data. You can use this data to make data-driven informed business decisions.
-
-
-:::note
-For information on core Dashboard functionality, see [Create Dashboards](../../../../platform/18_Dashboards/create-dashboards.md).
-:::
 
 Harness provides pre-loaded **By Harness** (pre-defined) and **Custom** (user-defined) Dashboards to visualize cloud cost data across clusters and cloud accounts. Using the **Azure Cost Dashboard** you can:
 
@@ -66,7 +60,7 @@ Perform the following steps to view Azure Cost Dashboard:
 | Monthly Cost by Instance ID | The monthly cost of the instance ID. Each VM in a scale set gets an instance ID that uniquely identifies it. |
 | Monthly Cost by Service Name | The monthly cost of Azure services, for example, Virtual Machines, Azure App Service, Azure DNS, etc. |
 | Monthly Cost by Resource Group | The monthly cost of the resource group. A resource group is a container that holds related resources that you want to manage as a group. |
-1. Select **Time Range** to filter the data based on pre-defined time range filters. The available filters are:
+3. Select **Time Range** to filter the data based on pre-defined time range filters. The available filters are:
 	* Last 7 Days
 	* Last 30 Days
 	* Last 90 Days
@@ -88,7 +82,8 @@ The dashboard displays the data based on the set filter.
   ![](./static/azure-cost-dashboard-38.png)
 8. Click the Filter icon to hide or show the filters.
    
-     ![](./static/azure-cost-dashboard-39.png)
+
+  ![](./static/azure-cost-dashboard-39.png)
 
 ### See Also
 

@@ -9,7 +9,7 @@ helpdocs_is_published: true
 ---
 
 
-Dashboards are a collection of charts and data tables with filters you can use to get at the data you are interested. Dashboards serve as a platform for data modeling and analytics using a combination of available business metrics and operational data. You can use this data to make data-driven, informed business decisions.
+Dashboards are a collection of charts and data tables with filters that you can use to get at the data you are interested. Dashboards serve as a platform for data modeling and analytics using a combination of available business metrics and operational data. You can use this data to make data-driven, informed business decisions.
 
 
 :::note
@@ -19,7 +19,7 @@ For information on core Dashboard functionality, see [Create Dashboards](https:/
 Harness provides pre-loaded **By Harness** (pre-defined) and **Custom** (user-defined) Dashboards to visualize cloud cost data across clusters and the Cloud accounts.
 
 
-## Accessing the dashboards
+## Access the CCM dashboards
 
 To access the dashboards from the CCM module, perform the following steps:
 
