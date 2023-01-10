@@ -50,7 +50,7 @@ Harness recommends you create the following resources at the Account level. This
 
 ### Harness Pipeline Requirements
 
-* To run security scans, the pipeline requires a Security Stage with a Docker-in-Docker service dependency.
+* To run security scans, the pipeline requires a Background step that runs a Docker-in-Docker service.
 
 ## STO Setup Procedures
 
@@ -277,16 +277,20 @@ The following procedure creates a pipeline with the STO functionality required t
    <img src={set_up_harness_24} alt="Define the build infrastructure" height="50%" width="75%" />
   ```
 		 
-3. In the Execution tab, do the following:
-	1. Click **Add Service Dependency**.
-	2. Dependency Name = `dind`
-	3. Container Registry = The image connector you specified in [Create a Docker Hub connector](#create-a-docker-hub-connector).
-	4. Image = `docker:dind`
-	5. Under Optional Configuration, select the **Privileged** checkbox.
-	   
-  ```mdx-code-block
-   <img src={set_up_harness_25} alt="Configure the service dependency" height="75%" width="75%" />
-  ```
+#### Add a Docker-in-Docker background service		 
+
+In the **Execution** tab, do the following:
+
+1. Click **Add Step** and then choose **Background**.
+2. Configure the Background step as follows:
+2. Dependency Name = `dind`
+3. Container Registry = The image connector you specified in [Create a Docker Hub connector](#create-a-docker-hub-connector).
+4. Image = `docker:dind`
+5. Under Optional Configuration, select the **Privileged** checkbox.
+   
+    ```mdx-code-block
+     <img src={set_up_harness_25} alt="Configure the service dependency" height="75%" width="75%" />
+    ```
 
 #### Add a Security Step
 
