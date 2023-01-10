@@ -33,7 +33,7 @@ No early access features are available for this release.
 
 * Fixed an issue in the onboarding UI where the **Select Your Repository** progress bar was incorrect. (CI-6335)
 
-* Fixed an issue where a build does not run when a user clicks Run in the Pipeline Editor UI. To run the build, the user needed to go to the YAML editor, save, and then run. (CI-6239)
+* Fixed an issue where a build did not run when a user selected **Run** in the **Pipeline Editor** UI. To run the build, the user needed to go to the YAML editor, save, and then run. (CI-6239)
 
 * Added a log entry when a CI step skips a directory when uploading to an S3 bucket. (CI-6205)
 
