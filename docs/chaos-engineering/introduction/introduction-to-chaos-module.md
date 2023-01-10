@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: Introduction to Chaos Module
+title: Introduction to chaos module
 ---
 
 Cloud native applications are highly distributed, elastic, resistant to failure, and loosely coupled. That being said, an important question arises. How would you ensure that your application performs as expected under different failure conditions?
