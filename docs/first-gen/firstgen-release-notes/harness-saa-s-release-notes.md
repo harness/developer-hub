@@ -12,11 +12,11 @@ Harness progressively deploys updates to different Harness cluster hosting accou
 
 Harness is updated regularly. This document describes recent changes.
 
-For Harness on-prem releases, see [Harness Self-Managed Enterprise Edition Release Notes](harness-on-prem-release-notes.md).Release notes are displayed with the most recent release first.
+For Harness on-prem releases, see [Harness Self-Managed Enterprise Edition Release Notes](harness-on-prem-release-notes.md). Release notes are displayed with the most recent release first.
 
 If you don't see a new feature or enhancement in your Harness account, it might be behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
-### Jan 5th, 2023, version 78100
+### Jan 5, 2023, version 78100
 
 Delegate version: 78100
 
@@ -1265,9 +1265,8 @@ The following table lists the component versions in this release.
 
 
 
-|  |  |
-| --- | --- |
 | **Component** | **Version** |
+| --- | --- |
 | UI | 73700 |
 | Portal | 1.0.74407-000 |
 | Delegate | 1.0.74407-000 |
@@ -1306,9 +1305,8 @@ The following table lists the component versions in this release.
 
 
 
-|  |  |
-| --- | --- |
 | **Component** | **Version** |
+| --- | --- |
 | UI | 73604 |
 | Portal | 1.0.74307-000 |
 | Delegate | 1.0.74307-000 |
@@ -1345,9 +1343,8 @@ The following table lists the component versions in this release.
 
 
 
-|  |  |
-| --- | --- |
 | **Component** | **Version** |
+| --- | --- |
 | UI | 73502 |
 | Portal | 1.0.74214-000 |
 | Delegate | 1.0.74214-000 |
@@ -1384,9 +1381,8 @@ The following table lists the component versions in this release.
 
 
 
-|  |  |
-| --- | --- |
 | **Component** | **Version** |
+| --- | --- |
 | UI | 73402 |
 | Portal | 1.0.74109-000 |
 | Delegate | 1.0.74109-000 |
@@ -1433,9 +1429,8 @@ The following new features are added to the Harness SaaS components:
 The following table lists the component versions in this release.
 
 
-|  |  |
-| --- | --- |
 | **Component** | **Version** |
+| --- | --- |
 | UI | 73300 |
 | Portal | 1.0.74006-000 |
 | Delegate | 1.0.74006-000 |
@@ -1479,9 +1474,8 @@ The following table lists the component versions in this release.
 
 
 
-|  |  |
-| --- | --- |
 | **Component** | **Version** |
+| --- | --- |
 | UI | 73200 |
 | Portal | 1.0.73913-000 |
 | Delegate | 1.0.73913-000 |
@@ -1519,9 +1513,8 @@ The following table lists the component versions in this release.
 
 
 
-|  |  |
-| --- | --- |
 | **Component** | **Version** |
+| --- | --- |
 | UI | 73100 |
 | Portal | 1.0.73803-000 |
 | Delegate | 1.0.73803-000 |
@@ -1561,9 +1554,8 @@ The following table lists the component versions in this release.
 
 
 
-|  |  |
-| --- | --- |
 | **Component** | **Version** |
+| --- | --- |
 | UI | 73002 |
 | Portal | 1.0.73717-000 |
 | Delegate | 1.0.73717-000 |
@@ -1602,9 +1594,8 @@ The following table lists the component versions in this release.
 
 
 
-|  |  |
-| --- | --- |
 | **Component** | **Version** |
+| --- | --- |
 | UI | 72900 |
 | Portal | 1.0.73609-000 |
 | Delegate | 1.0.73609-000 |
@@ -1639,9 +1630,8 @@ The following table lists the component versions in this release.
 
 
 
-|  |  |
-| --- | --- |
 | **Component** | **Version** |
+| --- | --- |
 | UI | 72800 |
 | Portal | 1.0.73503-000 |
 | Delegate | 1.0.73503-000 |
@@ -1676,9 +1666,8 @@ The following table lists the component versions in this release.
 
 
 
-|  |  |
-| --- | --- |
 | **Component** | **Version** |
+| --- | --- |
 | UI | 72700 |
 | Portal | 1.0.73406-000 |
 | Delegate | 1.0.73406-000 |
@@ -1716,9 +1705,8 @@ The following table lists the component versions in this release.
 
 
 
-|  |  |
+| **Component**  | **Version**  |
 | --- | --- |
-| **Component** | **Version** |
 | UI | 72500 |
 | Portal | 1.0.73316-000 |
 | Delegate | 1.0.73316-000 |
