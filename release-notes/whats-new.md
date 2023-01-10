@@ -16,10 +16,14 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 
 - Secrets and connectors now have a character limit of 128 for the **Name** and **ID** fields. (PL-29887)
   
-- The [Role-Assignments](https://apidocs.harness.io/tag/Role-Assignments/#operation/getFilteredRoleAssignmentByScopeList) API now fetches role assignments by scope. 
-(PL-29496, ZD-36050)
-  This helps you keep a track of the role assignments within a specific scope.
+- The [Role-Assignments](https://apidocs.harness.io/tag/Role-Assignments/#operation/getFilteredRoleAssignmentByScopeList) API now fetches role assignments by scope. (PL-29496, ZD-36050)
 
+  This helps you keep a track of the role assignments within a specific scope.
+  
+- The repository location of the Helm chart for the NextGen delegate is changing. (DEL-5576) 
+
+  The repository is being deprecated. Updates to the chart will not be made to [https://app.harness.io/storage/harness-download/delegate-helm-chart/](https://app.harness.io/storage/harness-download/delegate-helm-chart/) and will not be available from that location. To ensure retrieval of the most recent Helm chart, update your repository references to [https://app.harness.io/storage/harness-download/harness-helm-charts/](https://app.harness.io/storage/harness-download/harness-helm-charts/).
+  
 ## December 22, 2022, version 77908
 
 ### Harness Platform
