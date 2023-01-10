@@ -13,13 +13,40 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
 
+## January 10, 2023, version 78105
+
+### What's new
+
+No new features are available in this release.
+
+### Early access features
+
+No early access features are available for this release.
+
+### Fixed issues
+
+* Fixed an issue in the onboarding UI. In some cases, the web UI did not connect with the specified git account immediately after OAuth setup. (CI-6518)
+
+* You can now use codebase fields as expressions. Previously, when the codebase repository name was defined by `<+pipeline.name>`, the built-in variables `<+codebase.branch>` and `<+codebase.commitSha>` returned null. (CI-6478, ZD-38122, ZD-38241)
+
+* Fixed an issue that prevented Azure connectors from connecting to repos with URLs that contained spaces or `%20`. (CI-6465)
+
+* Fixed an issue where CI reported an upload to an S3 as successful even if the upload failed. (CI-6420, ZD-37931)
+
+* Fixed an issue in the onboarding UI where the **Select Your Repository** progress bar was incorrect. (CI-6335)
+
+* Fixed an issue where a build did not run when a user selected **Run** in the **Pipeline Editor** UI. To run the build, the user needed to go to the YAML editor, save, and then run. (CI-6239)
+
+* Added a log entry when a CI step skips a directory when uploading to an S3 bucket. (CI-6205)
+
+
 ## December 22, 2022, version 77908
 
 ### What's new
 
 * Customers on the free plan can now run 5 stages per day on the CI hosted infrastructure. Contact Harness Sales to upgrade your plan. (CI-6430)
 
-* The onboarding workflow now caters to customers who do not have a codebase with which to connect. (CI-6348)
+* The onboarding experience for new users has been enhanced. You can now create a sample "Hello-world" pipeline even without a repository selected/created.  (CI-6348)
 
 ### Early access features
 
