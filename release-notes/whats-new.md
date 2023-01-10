@@ -10,19 +10,31 @@ Learn about the new features that are generally available across all Harness mod
 Harness deploys updates progressively to different Harness SaaS clusters. You can identify the cluster hosting your account in your Account Overview page. The features in these release notes may not be available in your cluster immediately.
 :::
 
-## January 5th, 2023, version 78100
+## January 10, 2023, version 78105
 
 ### Continuous Delivery
 
-- Make Failure Strategy mandatory for Deploy stage (CDS-48951)  
+- A [failure strategy](../docs/platform/8_Pipelines/define-a-failure-strategy-on-stages-and-steps.md) is now mandatory for all Deploy stages. (CDS-48951)  
   
-  We now have Failure Strategy as a mandatory setting in the Deploy stage YAML. Earlier this was mandatory but the check happened when a user would run the pipeline. The same applies to stage templates for the Deploy stage. With this release, all Deploy stages including stage templates without failure strategies will be considered invalid.
-- Loading Templates from the created branch (CDS-48308)
+  ![failure strategy](../static/3c690f9ba44e7cac1e6ccb605068b676ddd02f247f37c2d9b2524f30437c97ff.png)  
+
+  A failure strategy is now a mandatory setting in the **Deploy** stage. Previously, a failure strategy was mandatory, but the check happened when the pipeline ran. 
   
-  If a remote template is created in a non-default/feature branch, viewing the template in the Harness template studio/listing page we will fetch the template details from the created branch instead of asking the user to manually select the correct branch.
-- Using absolute path for Native Helm chart [Custom Remote Manifest](../docs/continuous-delivery/cd-advanced/cd-kubernetes-category/add-a-custom-remote-script-and-manifests) for Helm Charts (CDS-47647, RN-37501)
+  A failure strategy is also required for the **Deploy** stage in [stage templates](../docs/platform/13_Templates/add-a-stage-template.md). With this release, all Deploy stages, including in stage templates, without failure strategies are considered invalid.
+
+  No action required by users.
+- UI enhancements for remote templates created in non-default or feature branches. (CDS-48308)
   
-  Previously, we were only looking for a path relative to the Harness working directory (a temporary directory created by Harness). Now, you can specify an absolute path in **Extracted Manifest File Location** by starting with a forward slash `/`. For example: `/tmp/myChart1/custom-remote-test-repo/helm/todolist/`.
+  If a remote template is created in a non-default or feature branch, Harness fetches the template details from the created branch and displays them on the template studio/listing page. You no longer need to manually select the correct branch.
+
+  No action required by users.
+- Absolute paths for Native Helm charts [Custom Remote Manifest](../docs/continuous-delivery/cd-advanced/cd-kubernetes-category/add-a-custom-remote-script-and-manifests) are now supported. (CDS-47647, RN-37501)
+  
+  Previously, Harness CD looked for a path relative to the Harness working directory, which is a temporary directory that Harness creates. Now, you can specify an absolute path in **Extracted Manifest File Location** by starting with a forward slash `/`. For example: `/tmp/myChart1/custom-remote-test-repo/helm/todolist/`.
+
+  ![Custom Remote Manifest](../static/b401a79386824c0b00a74ad4d9ec4576db712982f9371c8e80e0913d5e4aa14a.png)
+
+  No action required by users.
 
 
 ## December 22, 2022, version 77908
