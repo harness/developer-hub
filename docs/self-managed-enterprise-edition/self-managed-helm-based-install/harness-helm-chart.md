@@ -17,24 +17,7 @@ Harness recommends Helm package manager for the installation and deployment of S
 
 The Harness Helm chart packages the core modules and components that are required to operate Harness at scale.
 
-For instructions on installing Self-Managed Enterprise Edition using Helm, see Install Harness Self-Managed Enterprise Edition Using Helm.
-
-## Supported modules
-
-Self-Managed Enterprise Edition supports the installation of the following Harness modules by Helm chart.
-
-
-
-| **Module** | **Helm Install** | **Notes** |
-| :-- | :-: | :-- |
-| Continuous Delivery | ✓ | Gitops is not included. |
-| Security Testing Orchestration | ✓ |  |
-| Service Reliability Management | ✓ | Error Tracking is not included. |
-| Continuous Integration | ✓ |  |
-| Feature Flags | X |  |
-| Cloud Costs Management | X |  |
-| Harness Chaos Engineering | X |  |
-| Harness Platform | ✓ | Policy as Code (Harness Policy Engine) and Custom Dashboards are not included. |
+For instructions on installing Self-Managed Enterprise Edition using Helm, see [Install Harness Self-Managed Enterprise Edition using Helm](/docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-harness-self-managed-enterprise-edition-using-helm-ga).
 
 ## Requirements
 
@@ -52,6 +35,7 @@ The production environment requires the following resources.
 | CD and CI | 40 | 51.3 | 135.2 | 1070 |
 | CD and STO | 42 | 52.3 | 130.2 | 1070 |
 | CD, CI and STO | 44 | 54.3 | 142.2 | 1070 |
+| FF | 3 | 3 | 6 | 0 |
 
 ### Development environment
 
@@ -63,6 +47,7 @@ The development environment requires the following resources.
 | CD and CI | 21 | 23.8 | 64.4 | 530 |
 | CD and STO | 22 | 24.3 | 61.9 | 530 |
 | CD, CI and STO | 23 | 25.3 | 67.9 | 530 |
+| FF | 2 | 2 | 2 | 0 |
 
 ## Included components
 
