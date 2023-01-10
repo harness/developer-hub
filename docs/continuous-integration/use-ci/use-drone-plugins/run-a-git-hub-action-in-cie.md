@@ -100,7 +100,7 @@ For the step settings on CI Plugins, see [Plugin Step Settings](../../ci-technic
 
 ##### Private Actions
 
-If you are trying to use an action composite that is located in a private repository, you will need to set a `GITHUB_TOKEN` environment variable on the plugin step. Make sure the token as pull permissions to the target repository.
+If you are trying to use an action composite that is located in a private repository, you will need to set a `GITHUB_TOKEN` environment variable on the plugin step. Make sure the token has pull permissions to the target repository.
 
 ```
 - step:
