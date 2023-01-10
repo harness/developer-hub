@@ -173,6 +173,21 @@ const CIList: CardItem[] = [
     time: '15 min',
     link: '/tutorials/build-code/ci-tutorial-container-signing',
   },
+  {
+    title: "Build, Test, and Publish a Docker Image for a sample React application",
+
+    module: "ci",
+    icon: "img/icon_ci.svg",
+    description: (
+      <>
+        This build automation guide walks you through building and testing a sample React application in a CI Pipeline.
+      </>
+    ),
+    newDoc: true,
+    type: [docType.Documentation],
+    time: "20 min",
+    link: "/tutorials/build-code/ci-react-quickstart",
+  },
 ];
 
 const CDList: CardItem[] = [
