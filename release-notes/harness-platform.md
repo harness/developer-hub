@@ -30,7 +30,7 @@ The location of the repository that contains the NextGen Helm chart is changing.
 - **Organization Viewer - All Organization Level Resources**: This was a role-assignment within the organization scope and has been removed for all the users.
 - **Project Viewer - All Project Level Resources**: This was a role-assignment within the project scope and has been removed for all the users.
 
-For more information, see [Default User Group](../../developer-hub/docs/platform/4_Role-Based-Access-Control/5-harness-default-user-groups.md)
+For more information, see [Default User Group](https://developer.harness.io/docs/platform/role-based-access-control/harness-default-user-groups/)
 
 
 ### What's new
