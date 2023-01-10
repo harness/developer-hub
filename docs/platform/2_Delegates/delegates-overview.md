@@ -1,7 +1,7 @@
 ---
 title: Delegate overview
 description: Harness Delegate is a service you run in your local network or VPC to connect your artifact, infrastructure, collaboration, verification and other providers with Harness Manager.
-sidebar_position: 1
+sidebar_position: 10
 helpdocs_topic_id: 2k7lnc7lvl
 helpdocs_category_id: sy6sod35zi
 helpdocs_is_private: false

@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-You can add a Helm Chart Repository as an Artifact Server and then use it in Harness Kubernetes and Helm Services. See [Kubernetes Deployments](https://docs.harness.io/article/t6zrgqq0ny-kubernetes-services#helm_charts) and [Helm Deployments](../../../continuous-delivery/helm-deployment/2-helm-services.md#add-the-helm-chart).
+You can add a Helm Chart Repository as an Artifact Server and then use it in Harness Kubernetes and Helm Services. See [Kubernetes Deployments](../../../continuous-delivery/kubernetes-deployments/use-a-helm-repository-with-kubernetes.md) and [Helm Deployments](../../../continuous-delivery/helm-deployment/2-helm-services.md#add-the-helm-chart).
 
 A Helm chart repository is an HTTP server that houses an **index.yaml** file and, if needed, packaged charts. For details, see [The Chart Repository Guide](https://helm.sh/docs/topics/chart_repository/) from Helm.
 

@@ -320,7 +320,7 @@ If you entered 123 in a string filed, such as a name, it is treated as a string.
 
 ### Built-in CIE Codebase Variables Reference
 
-In Harness, you set up your [Codebase](https://docs.harness.io/article/6vks5ym7sq-edit-a-ci-pipeline-codebase-configuration) by connecting to a Git repo using a Harness [Connector](../7_Connectors/ref-source-repo-provider/git-connector-settings-reference.md) and cloning the code you wish to build and test in your Pipeline.
+In Harness, you set up your [Codebase](../../continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md) by connecting to a Git repo using a Harness [Connector](../7_Connectors/ref-source-repo-provider/git-connector-settings-reference.md) and cloning the code you wish to build and test in your Pipeline.
 
 Harness also retrieves your Git details and presents them in your Build stage once a Pipeline is run.
 

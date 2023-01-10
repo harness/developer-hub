@@ -15,7 +15,7 @@ Harness Delegate images are publicly hosted on [Docker Hub](https://hub.docker.c
 ### Before you begin
 
 * [Delegate Requirements and Limitations](../delegate-reference/delegate-requirements-and-limitations.md)
-* [Delegate Installation Overview](https://docs.harness.io/article/re8kk0ex4k-delegate-installation-overview)
+* [Delegate Installation Overview](../delegate-installation-overview.md)
 
 ### Limitations
 

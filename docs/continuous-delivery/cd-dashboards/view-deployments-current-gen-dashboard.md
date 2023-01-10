@@ -141,7 +141,7 @@ Here's an example that explains how you can create your own Dashboard to view yo
 
 	* **Deployments**: Pipeline Name, Failed Deployments, and Total Deployments
 	* **Services**: Failed Service Deployments, Successful Service Deployments, and Total Service Deployments
-4.  Configure your visualization options. For more information, see [Create Visualizations and Graphs](https://newdocs.helpdocs.io/article/n2jqctdt7c-create-visualizations-and-graphs).
+4.  Configure your visualization options. For more information, see [Create Visualizations and Graphs](../../platform/18_Dashboards/create-visualizations-and-graphs.md).
 5.  Once you have set up your query, click **Run**.
    
    ![](./static/view-deployments-current-gen-dashboard-50.png)

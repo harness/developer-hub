@@ -29,7 +29,7 @@ The following table lists Harness support for deployment platforms, artifacts, s
 <tbody>
   <tr valign="top">
     <td>
-      <p> <a href="/docs/category/kubernetes">Kubernetes</a></p>
+      <p> <a href="#see-also">Kubernetes</a></p>
     </td>
     <td>
       <ul>
@@ -91,7 +91,7 @@ The following table lists Harness support for deployment platforms, artifacts, s
   </tr>
   <tr valign="top">
     <td>
-      <p><a href="https://docs.harness.io/article/cifa2yb19a">Helm v3.0</a></p>
+      <p><a href="#see-also">Helm v3.0</a></p>
     </td>
     <td>
       <p> <strong>Docker Image Repo:</strong></p>
@@ -157,7 +157,7 @@ The following table lists Harness support for deployment platforms, artifacts, s
   </tr>
   <tr valign="top">
     <td>
-      <p><a href="https://docs.harness.io/article/5fnx4hgwsa">Serverless Lambda</a></p>
+      <p><a href="#see-also">Serverless Lambda</a></p>
     </td>
     <td>
       <ul>
@@ -177,7 +177,7 @@ The following table lists Harness support for deployment platforms, artifacts, s
   </tr>
   <tr valign="top">
     <td>
-      <p> <a href="https://docs.harness.io/article/muegjde97q">Azure Web App</a></p>
+      <p> <a href="#see-also">Azure Web App</a></p>
     </td>
     <td>
       <p> <strong>Container and non-container:</strong></p>
@@ -217,7 +217,7 @@ The following table lists Harness support for deployment platforms, artifacts, s
   </tr>
   <tr valign="top">
     <td>
-      <p> <a href="https://docs.harness.io/article/mpx2y48ovx">Secure Shell (SSH)</a></p>
+      <p> <a href="#see-also">Secure Shell (SSH)</a></p>
     </td>
     <td>
       <p> <strong>Non-container:</strong></p>
@@ -262,7 +262,8 @@ The following table lists Harness support for deployment platforms, artifacts, s
   </tr>
   <tr valign="top">
     <td>
-      <p> <a href="https://docs.harness.io/article/l8795ji7u3">Windows Remote Management (WinRM)</a></p>
+      (../continuous-delivery/onboard-cd/cd-quickstarts/win-rm-tutorial.md)
+      <p>Windows Remote Management (WinRM)</p>
     </td>
     <td>
       <p> <strong>Non-container:</strong></p>
@@ -296,7 +297,7 @@ The following table lists Harness support for deployment platforms, artifacts, s
   </tr>
   <tr valign="top">
     <td>
-      <p> <a href="https://docs.harness.io/article/vytf6s0kwc">AWS ECS</a></p>
+      <p> <a href="#see-also">AWS ECS</a></p>
     </td>
     <td>
       <p> <strong>Non-container:</strong></p>
@@ -465,7 +466,7 @@ GitOps supports the following:
 * GnuPG Keys:
 	+ GnuPG Public Key Data (ASCII-armored).
 
-See [Harness GitOps Basics](https://newdocs.helpdocs.io/article/w1vg9l1j7q-harness-git-ops-basics) and [Harness CD GitOps Quickstart](https://newdocs.helpdocs.io/article/pptv7t53i9-harness-cd-git-ops-quickstart)
+See [Harness GitOps Basics](../continuous-delivery/cd-gitops/harness-git-ops-basics.md) and [Harness CD GitOps Quickstart](../continuous-delivery/cd-gitops/harness-cd-git-ops-quickstart.md)
 
 ### Continuous Integration (CI)
 
@@ -723,7 +724,7 @@ The following table lists the Server-side Feature Flag SDKs Harness supports.
 
 Perform chaos experiments on applications in your infrastructure, such as a Kubernetes cluster. Use predefined or custom, Workflow templates.
 
-See [Harness Chaos Engineering Basics (Public Preview)](https://docs.harness.io/article/v64rj2maiz-harness-chaos-engineering-basics), [Harness Chaos Engineering Quickstart (Public Preview)](https://docs.harness.io/article/da85u0cbhx-harness-chaos-engineering-quickstart-public-preview).
+See [Introduction to Chaos Module](../chaos-engineering/introduction/introduction-to-chaos-module.md), [HCE Release Guide](../chaos-engineering/introduction/hce-beta-release-guide.md).
 
 ### Collaboration
 
@@ -866,3 +867,12 @@ Mobile browsers are not supported.
 
 Minimum supported screen resolution is 1440x900.
 
+<p id="see-also"></p>
+### See Also
+
+* [Kubernetes](/docs/category/kubernetes)
+* [Helm v3.0](../continuous-delivery/onboard-cd/cd-quickstarts/helm-cd-quickstart.md)
+* [Serverless Lambda](../continuous-delivery/onboard-cd/cd-quickstarts/serverless-lambda-cd-quickstart.md)
+* [Azure Web App](../continuous-delivery/onboard-cd/cd-quickstarts/azure-web-apps-tutorial.md)
+* [Secure Shell (SSH](../continuous-delivery/onboard-cd/cd-quickstarts/ssh-ng.md)
+* [AWS ECS](../continuous-delivery/onboard-cd/cd-quickstarts/ecs-deployment-tutorial.md)

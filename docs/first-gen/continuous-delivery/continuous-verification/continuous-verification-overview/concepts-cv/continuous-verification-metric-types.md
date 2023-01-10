@@ -14,8 +14,8 @@ You can also add your Custom metrics to Harness 24/7 Service Guard in your Harne
 
 ### Before You Begin
 
-* See  [Continuous Verification Overview](https://www.google.com/url?q=https://docs.harness.io/article/ina58fap5y-what-is-cv&sa=D&ust=1596624436180000&usg=AOvVaw2-B986HwZG0UmYlOCU41s7).
-* See  [Custom Verification Overview](https://www.google.com/url?q=https://docs.harness.io/article/e87u8c63z4-custom-verification-overview&sa=D&ust=1596624436181000&usg=AOvVaw1hDkv2iuHflv6VWR5AZT5g).
+* See  [What Is Continuous Verification (CV)?](/docs/first-gen/continuous-delivery/continuous-verification/continuous-verification-overview/concepts-cv/what-is-cv).
+* See  [Custom Verification Integrations Overview](/docs/first-gen/continuous-delivery/continuous-verification/custom-metrics-and-logs-verification/custom-verification-overview).
 
 ### Identifying the Anomalies
 

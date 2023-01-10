@@ -80,7 +80,7 @@ terragrunt --version
 
 Use the following script to install Helm 2 and Tiller in the delegate cluster:
 
-If you are using remote Helm charts with your Harness Kubernetes Service, use the `helm init --client-only` option. For more information, see [Helm charts](https://docs.harness.io/article/t6zrgqq0ny-kubernetes-services#helm_charts).
+If you are using remote Helm charts with your Harness Kubernetes Service, use the `helm init --client-only` option. For more information, see [Helm charts](../../../../continuous-delivery/kubernetes-deployments/use-a-helm-repository-with-kubernetes.md).
 ```
 # Add the Helm version that you want to install  
 HELM_VERSION=v2.14.0  

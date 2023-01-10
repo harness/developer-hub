@@ -1,13 +1,16 @@
 ---
-title: What's new
-date: 2022-12-15T10:00
+title: What's New
+date: 2022-12-22T10:00
 sidebar_position: 1
-# slug: /
 ---
 
-# What's new
+Learn about the new features that are Generally Available (GA) in Harness SaaS across all Harness modules and the Harness Platform.
 
-Learn about the new features that are generally available in all Harness modules.
+:::note
+Harness deploys updates progressively to different Harness SaaS clusters. You can identify the cluster hosting your account in your Account Overview page. The features and fixes in the release notes may not be available in your cluster immediately.
+
+Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
+:::
 
 ## December 22, 2022, version 77908
 

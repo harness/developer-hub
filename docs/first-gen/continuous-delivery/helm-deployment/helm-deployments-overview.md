@@ -12,7 +12,7 @@ This content is for Harness [FirstGen](../../../getting-started/harness-first-ge
 
 Harness supports Helm 2 and Helm v3. This guide will walk you through deploying a Docker image to a Kubernetes cluster using a Helm chart. This deployment scenario is very popular and a walkthrough of all the steps involved will help you set up this scenario in Harness for your own microservices and apps.
 
-Harness includes both Kubernetes and Helm deployments, and you can use Helm charts in both. Harness [Kubernetes Deployments](../kubernetes-deployments/kubernetes-deployments-overview.md) allow you to use your own Helm chart (remote or local), and Harness executes the Kubernetes API calls to build everything without Helm and Tiller (for Helm v2) needing to be installed in the target cluster. See [Helm Charts](https://docs.harness.io/article/t6zrgqq0ny-kubernetes-services#helm_charts).
+Harness includes both Kubernetes and Helm deployments, and you can use Helm charts in both. Harness [Kubernetes Deployments](../kubernetes-deployments/kubernetes-deployments-overview.md) allow you to use your own Helm chart (remote or local), and Harness executes the Kubernetes API calls to build everything without Helm and Tiller (for Helm v2) needing to be installed in the target cluster. See [Helm Charts](../kubernetes-deployments/use-a-helm-repository-with-kubernetes.md).
 
 ### Harness Helm or Kubernetes Deployments?
 
@@ -35,7 +35,7 @@ This document covers Harness Helm implementation. For Kubernetes implementation,
 #### Intended Audience
 
 * Developers and DevOps with a working knowledge of Docker, Kubernetes, and Helm.
-* Harness users with a working knowledge of the Harness Delegate. For information, see [Delegate Installation](../../firstgen-platform/account/manage-delegates/delegate-installation.md), [Harness Requirements](https://docs.harness.io/article/70zh6cbrhg-harness-requirements), and [Connectivity and Permissions Requirements](../../firstgen-platform/techref-category/account-ref/delegate-ref/connectivity-and-permissions-requirements.md).
+* Harness users with a working knowledge of the Harness Delegate. For information, see [Delegate Installation](../../firstgen-platform/account/manage-delegates/delegate-installation.md), [Harness Requirements](../../firstgen-platform/account/manage-delegates/delegate-requirements-and-limitations.md), and [Connectivity and Permissions Requirements](../../firstgen-platform/techref-category/account-ref/delegate-ref/connectivity-and-permissions-requirements.md).
 
 If you are entirely new to Harness, please see the [Quick Start Setup Guide](../../starthere-firstgen/quick-start-setup-guide.md).
 
@@ -53,7 +53,7 @@ Sound fun? Let's get started.
 
 This is a simple guide that covers the basics of deploying Docker images to Kubernetes using Helm. It does not cover the following:
 
-* **Ingress Rules** - Harness supports Ingress Rules for Kubernetes deployments. You can learn how to use Ingress Rules in [Ingress Rules](https://docs.harness.io/article/fc3nlsr0hh-ingress-rules). For a Harness deployment using Helm, you can add Ingress rules in a Helm chart file (**kind: Ingress**) and Harness will use those during deployment. For information about Ingress rules and Helm, see [Secure Kubernetes Services With Ingress, TLS And LetsEncrypt](https://docs.bitnami.com/kubernetes/how-to/secure-kubernetes-services-with-ingress-tls-letsencrypt/) from Bitnami.
+* **Ingress Rules** - Harness supports Ingress Rules for Kubernetes deployments. You can learn how to use Ingress Rules in [Ingress Rules](../kubernetes-deployments/set-up-kubernetes-ingress-rules.md). For a Harness deployment using Helm, you can add Ingress rules in a Helm chart file (**kind: Ingress**) and Harness will use those during deployment. For information about Ingress rules and Helm, see [Secure Kubernetes Services With Ingress, TLS And LetsEncrypt](https://docs.bitnami.com/kubernetes/how-to/secure-kubernetes-services-with-ingress-tls-letsencrypt/) from Bitnami.
 
 #### What Harness Needs Before You Begin
 

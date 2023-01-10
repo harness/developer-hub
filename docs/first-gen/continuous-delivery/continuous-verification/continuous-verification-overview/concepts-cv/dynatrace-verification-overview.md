@@ -38,7 +38,7 @@ You set up Dynatrace and Harness in the following way:
 ![](./static/dynatrace-verification-overview-37.png)
 
 1. Using Dynatrace, you monitor your microservice or application.
-2. In Harness, you connect Harness to the Dynatrace API, adding Dynatrace as a [Harness Verification Provider](https://docs.harness.io/article/myw4h9u05l-verification-providers-list).
+2. In Harness, you connect Harness to the Dynatrace API, adding Dynatrace as a [Harness Verification Provider](what-is-cv.md).
 3. After you have built and run a successful deployment of your microservice or application in Harness, you then add Dynatrace verification steps to your Harness deployment workflow.
 4. Harness uses Dynatrace to verify your future microservice/application deployments.
 5. Harness Continuous Verification uses unsupervised machine-learning to analyze your deployments and Dynatrace analytics/logs, discovering events that might be causing your deployments to fail. Then you can use this information to improve your deployments.
