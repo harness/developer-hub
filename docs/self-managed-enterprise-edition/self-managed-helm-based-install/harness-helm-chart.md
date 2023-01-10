@@ -35,7 +35,7 @@ The production environment requires the following resources.
 | CD and CI | 40 | 51.3 | 135.2 | 1070 |
 | CD and STO | 42 | 52.3 | 130.2 | 1070 |
 | CD, CI and STO | 44 | 54.3 | 142.2 | 1070 |
-| FF | 3 | 3 | 6 | 0 |
+| CD, CI, STO and FF | 47 | 57.3 | 148.2 | 1070 |
 
 ### Development environment
 
@@ -47,7 +47,7 @@ The development environment requires the following resources.
 | CD and CI | 21 | 23.8 | 64.4 | 530 |
 | CD and STO | 22 | 24.3 | 61.9 | 530 |
 | CD, CI and STO | 23 | 25.3 | 67.9 | 530 |
-| FF | 2 | 2 | 2 | 0 |
+| CD, CI, STO and FF | 25 | 27.3 | 69.9 | 530 |
 
 ## Included components
 
