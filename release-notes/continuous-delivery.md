@@ -13,6 +13,155 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
 
+## January 5th, 2023, version 78100
+
+### What's new
+
+- A failure strategy is now mandatory for all Deploy stages. (CDS-48951)  
+  
+  A failure strategy is now a mandatory setting in the Deploy stage YAML. This is a change from the previous implementation where a failure strategy was mandatory, but the check happened when the pipeline ran. 
+  
+A failure strategy is also required for the Deploy stage in stage templates. With this release, all Deploy stages, including in stage templates, without failure strategies are considered invalid.
+- UI enhancements for remote templates created in non-default or feature branches. (CDS-48308)
+  
+  If a remote template is created in a non-default or feature branch, Harness fetches the template details from the created branch and displays them on the template studio/listing page. The user no longer has to manually select the correct branch. 
+- Absolute paths for Native Helm charts [Custom Remote Manifest](../docs/continuous-delivery/cd-advanced/cd-kubernetes-category/add-a-custom-remote-script-and-manifests) are now supported. (CDS-47647, RN-37501)
+  
+  Previously, Harness CD looked for a path relative to the Harness working directory, which is a temporary directory that Harness creates. Now, you can specify an absolute path in **Extracted Manifest File Location** by starting with a forward slash `/`. For example: `/tmp/myChart1/custom-remote-test-repo/helm/todolist/`.
+
+### Fixed issues
+
+- RBAC for environment was not enforced. (CDS-49732, RN-38326)
+  
+  In stage templates in pipelines, access checks for the environment was being skipped. However, a user still needed to have access to all the connectors/secrets used in the service and the infrastructure. This has been fixed now.
+- Deployment freeze notification was not working for **do not repeat** recurrence. (CDS-49667)
+  
+  The notification for deployment freeze was not working due to a null pointer exception to get the recurrence type in the case of no recurrence. Added a null check to fix this issue.
+- Incorrect validation error message on the **Step Parameters** tab of the **Manual Approval** dialog. (CDS-49404) 
+
+If the number entered in the **Number of approvers that are required at this step** field contained a decimal point, an incorrect validation error message, **Minimum count cannot be less than one** appeared. The error message has been corrected.
+- The OpenShift template path on the runtime screen is populated as a string instead of a list. (CDS-49256)
+  
+  The text was updated to list component so that the path is stored in the form of an array.
+- Unable to change the branch for a remote template in the template studio. (CDS-49159)
+  
+  It is expected behavior to not allow a branch change for readOnly mode in the template studio. Now, you can switch branches in the template studio.
+- ECS and Serverless Git task logs are not shown properly. (CDS-49117)
+  
+  The log stream closes when the status is successful. To ensure that each method can determine whether to close or not, a boolean attribute was added to the closeLogStream so that each class that implements and uses this function determines whether it wants to close or not.
+- Error when adding a template to a pipeline. (CDS-48924)
+  
+  Harness Manager used to show an error when `*` was used as the default value in the **Configure Options** modal for any setting. The component has been updated to support `*` as a value to resolve the issue.
+- Unclear error message on values YAML parse failure. (CDS-48881)
+  
+  Improved error message in case of parse failure. When the values YAML had secrets/certs that were not correctly encoded, we would see an error message that was not very clear. We have improved the error message to hint at the underlying cause.
+- Environments **Deploy to Filtered Envs** gives  a false error that an environment is required. (CDS-48648)
+  
+  Users were not able to proceed to the next tab when they selected filters directly at the environments level. This has been fixed now.
+- Unable to add tags to an environment .(CDS-48647)
+  
+  Empty strings of tags were being removed. This has been fixed now.
+- Gaps in instance stats if there is any exception while fetching the last snapshot. (CDS-48637)
+  
+  Now Harness catches the exception while fetching the last snapshot and skips publishing in this iteration.
+- When a user configures a manifest detail and adds a file, they cannot delete that file. They can only move things around. (CDS-48591)
+  
+  Removed the validation from values.yaml as it is an optional field.
+- Triggers failing with the feature flag `NG_DEPLOYMENT_FREEZE_OVERRIDE` enabled while checking permission in RBAC. (CDS-48529) 
+
+It was sending permissions for triggers as null and throwing an NPE. 
+  
+  Added a null check to send false in case the permission is null.
+- Poor error message if an ACR connector reference is a runtime input for the subscriptionId field. (CDS-48519)
+
+  Added a better error message when the connectorRef is empty and not-resolvable in Azure artifact sources APIs.
+- The **Submit** button is disabled after creating a Github connector, but works fine when only selecting a connector. (CDS-48497)
+  
+  Under Service V2, when creating a manifest under a service and creating a new connector from the **Select Connector** modal, we were able to see the newly created connector selected in the manifest modal but the **Continue** button was disabled. This is now fixed.
+- Input sets not working with a stage template. (CDS-48475)
+  
+  There was an issue with running pipelines through input sets specifically containing Artifact Sources with no runtime inputs. In this case, users were seeing an error message "Exception in resolving template refs.". Although when run manually (without input sets), the executions went through fine. This was happening because an extra field was being set in the input set. Now we have added handling for that field and executions should work fine.
+- Artifactory with `tagRegex: <+input>` fails to fetch imagePath. (CDS-48438)
+  
+  Updated the FQN path to pass tagRegex if the tagRegex field is runtime.
+- Fields on the **Advanced **tab in the **Template input** section appear crowded. (CDS-48423)
+  
+  The width was set relative to the parent component. This caused the width to compress even further on smaller width sections like the template selection screen. This has been fixed by setting the width to a standard 400px.
+- Template always shows an unsaved changes message even after repeated save attempts. (CDS-48422)
+  
+  Now the user can save a stage template with service and environments as runtime inputs and can eventually update them to multi-services and multi-environments as well.
+- Improve error messaging in case of Terraform plugin error. (CDS-48414)
+
+  Improved the error summary formatting.
+- Configure options associated with service should be readonly. (CDS-48410) 
+
+Removed configure options support for single- and multi-service. This also means that you cannot set an execution time input for a single- or multi-service.
+- Azure Artifacts Connector URL validation is missing. (CDS-48407)
+  
+  The server URL is now validated.
+- Terraform Apply Delegate Selector selection does not retain its value. (CDS-48375)
+  
+  Users can see the already added delegate selectors in the step Advanced section in case of Terraform Apply and Terraform Rollback.
+- Service Logs don't show fetch details for a Docker Artifact. (CDS-48358)
+  
+  Console logs during the service step were missing information about the tag, imagepath, and other metadata fields. These fields are now shown in the console logs.
+- Azure Artifact drop-downs in the project-level stage template fails. (CDS-48319)
+  
+  List drop-downs are now fixed in the Azure Artifact Source when you create the artifact source in the stage template.
+- For Azure Artifacts, the **Project** drop-down field shows an error when trying to load in a project-level stage template. (CDS-48318)
+  
+  The **Projects** drop-down field has been fixed.
+- Artifact Source Template: tags in template inputs do not have a Configure dialog. (CDS-48310)
+  
+  Configure options are not visible for the tags field in the template inputs view. This issue has been fixed.
+- Mapping incorrect nodes occurs when a multi-service environment is enabled. (CDS-48306)
+  
+  When a multi-service environment is enabled and we set the runtime input as Allowed Values, the pipeline UI shows an error in the flow. The custom runtime input node associated with stage data had the same id as the selected stage, causing the SVG to map to incorrect nodes due to multiple nodes having the same Id. This also caused the link to be broken. As part of the fix, the runtime node is given a unique Id, to prevent overlap of Ids.
+- The UI does not load all the templates by default. (CDS-48262)
+  
+  When creating a template from the project level to another level, and after creating return back to the project level template page, the UI does not load all the templates by default. A refresh is required. This issue has been fixed now.
+- The **Jira Description** field doesn't scale for long text. (CDS-48228)
+  
+  The description field now uses a textarea component to provide a better user experience.
+- Create new template form does not show up when a user is creating a second account-level template in a single login session. (CDS-48141)
+  
+  An incorrect template (with type info) entry in IDB prevented the template studio from opening. This issue has been fixed.
+- Unable to select a Primary Artifact in the pipeline input form. (CDS-48065)
+  
+  Multiple Artifact Source is only available with service V2. With this fix, the UI only allows the multiple artifact option with service V2. As this UI check was not present earlier, some users had multiple artifact sources with service V1. Users with existing configurations must fix this.
+- Custom Remote Manifest: error message needs to be improved when Chart.yaml is given instead of a directory. (CDS-48038)
+  
+  Error improvement is done around custom manifest Helm chart path using Helm deployment.
+- When the time frame is prior to the current time, the global window API returns success but the UI is still disabled. (CDS-47760)
+  
+  Earlier we were creating expired times for new freeze windows that will never get active. Due to this, manual freeze was getting marked as expired after creation, but global freeze was getting enabled in database even though it is expired. We have added to check to throw exception in case the new freeze window created is already expired.
+- The template input screen is blank when changing the template version. (CDS-47641) 
+
+A black template input screen is shown when the version of a linked template is changed from **stable** to **always use stable version**. This happens only for pipeline templates. This issue has been fixed.
+- multi-service: getting NPE when trying to run a pipeline with propagate services from previous stage (CDS-47626)
+  
+  We don't support propagate service from previous stage in case of multi-service deployments.
+- When adding a connector, the **Details** dialog is unclear. (CDS-47282)
+  
+  The UI was improved so that it now includes a delegate selector title and an icon with details for the Kubernetes Connector.
+- ACR connector: connector reference when passed as expression is not getting resolved (CDS-46816)
+
+  Created new endpoints for fetching subscription Ids, registries, repositories for ACR artifacts. These new endpoints receive the pipeline Id and input YAML data, which allows for expression rendering for the ACR parameters using variables declared in the pipeline.
+- ServiceNow import sets logging issues. (CDS-43958)
+  
+  Descriptive console logs have been added in the ServiceNow Import Set step for various scenarios. This will further help in debugging or monitoring the step from the console tab.
+- Getting "Connector Not Found Error" when checked from the pipeline (CDS-43812)
+  
+  Fixed the test connection for the Physical DataCenter connector.
+- Secret value is not masked in the exception. (CDS-43267)
+  
+  Secrets were not masked in exceptions due to invalid JSON input data containing secrets in ServiceNow Import Sets. 
+  
+Proper sanitization was added to ensure secrets are masked in exceptions resulting in this scenario in logs as well as in the UI.
+- Approval Slack notification sending names instead of identifier in the approval notification. (CDS-29134)
+  
+  Harness approval notifications via Slack and email currently send identifiers instead of readable names. For example, for details regarding organization and project, and triggered by metadata, identifiers are sent instead of names. This issue has been resolved. The notification now contains names, emails, etc., instead of identifiers. For users triggering the approval step, email is displayed. For organization and projects, names are displayed.
+
 ## December 22, 2022, version 77908
 
 ### What's new
