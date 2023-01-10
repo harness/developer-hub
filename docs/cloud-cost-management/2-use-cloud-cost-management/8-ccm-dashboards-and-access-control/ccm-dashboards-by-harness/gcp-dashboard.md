@@ -44,8 +44,8 @@ Once you have set up cost visibility for the [GCP](docs/cloud-cost-management/1
 
 Perform the following steps to view the GCP Cost Dashboard:
 
-1. In **Harness**, click **Dashboard**s.
-2. In **All Dashboards**, select **By Harness** and click **GCP Cost Dashboard**.![](./static/gcp-dashboard-21.png)The GCP Cost Dashboard is displayed:  
+1. In the **Harness** application, click **Dashboards**.
+2. Select **By Harness** and then, click **GCP Cost Dashboard**. The GCP Cost Dashboard is displayed.
 
 | **Dimension** | **Description** |
 | --- | --- |
@@ -60,7 +60,8 @@ Perform the following steps to view the GCP Cost Dashboard:
 	* Last 7 Days
 	* Last 30 Days
 	* Last 90 Days
-	* Last year
+	* Last 12 months
+	* last 24 months
 4. Select **Cost Type** to filter the data based on different cost types. The available filters are:
 	* **Total Cost**: Displays the total cost for the specified time range
 	* **Discounts and Promotions**: Displays the following data:

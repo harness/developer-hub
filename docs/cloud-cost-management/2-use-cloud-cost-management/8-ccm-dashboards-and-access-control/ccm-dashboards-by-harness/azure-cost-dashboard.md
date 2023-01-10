@@ -46,10 +46,9 @@ Once you have set up cost visibility for the Azure account and the data is ava
 
 Perform the following steps to view Azure Cost Dashboard:
 
-1. In Harness, click **Dashboards**.
-2. In **All Dashboards**, select **By Harness** and click **Azure Cost Dashboard**. The Azure Cost Dashboard is displayed. 
+1. In the **Harness** application, click **Dashboards**.
+2. Select **By Harness** and then, click **Azure Cost Dashboard**. The Azure Cost Dashboard is displayed. 
    
-     ![](./static/azure-cost-dashboard-34.png)
 	 
 
 | **Dimension** | **Description** |
@@ -68,7 +67,8 @@ Perform the following steps to view Azure Cost Dashboard:
 	* Last 7 Days
 	* Last 30 Days
 	* Last 90 Days
-	* Last year
+	* Last 12 months
+	* Last 24 months
 4. Once you have selected the **Time Range**, click **Update**. The data is refreshed with the latest data from the database. By default, **Last 30 Days** is selected.
    
    ![](./static/azure-cost-dashboard-35.png)

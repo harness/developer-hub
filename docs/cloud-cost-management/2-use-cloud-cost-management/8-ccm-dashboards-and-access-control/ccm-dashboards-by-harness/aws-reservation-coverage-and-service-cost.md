@@ -51,12 +51,9 @@ Once you have set up cost visibility for the AWS account and the data is avail
 
 Perform the following steps to view AWS Reservation Efficiency Dashboard:
 
-1. In Harness, click **Dashboards**.
-2. In **All Dashboards**, select **By Harness** and click **AWS Reservation Efficiency**.
+1. In the Harness application, click **Dashboards**.
+2. Select **By Harness** and then, click **AWS Reservation Efficiency**.
    The **AWS Reservation Efficiency Dashboard** is displayed.
-
-   
-     ![](./static/aws-reservation-coverage-and-service-cost-41.png)
    
   
 | **Dimension** | **Description** |
@@ -80,7 +77,7 @@ Perform the following steps to view AWS Reservation Efficiency Dashboard:
   The following example shows the cost of **Total EC2 Cost by Reservation Type** by **Usage Start Hour**:
   
     ![](./static/aws-reservation-coverage-and-service-cost-43.png)
-4. Click the date to further drill down to view the cost in the Dashboard. The drill-down options on this page depend on the selection that you made in the previous step. For example:  
+4. Click the date to drill down further and view the cost in the Dashboard. The drill-down options on this page depend on the selection that you made in the previous step. For example:  
   
  If you selected **by** **Usage Start Week** in **Drill into**, then on this page you will see **by Usage Start Date**, **by Usage Start Hour**, and **by Usage Start Time** options.  
   
