@@ -204,6 +204,10 @@ const config = {
                 to: "docs/first-gen",
               },
               {
+                label: "Release Notes",
+                href: "/release-notes/whats-new",
+              },
+              {
                 label: "FAQs",
                 to: "docs/frequently-asked-questions",
               },
@@ -219,53 +223,13 @@ const config = {
           },
           {
             // to: "release-notes",
-            label: "Release Notes",
+            label: "Certifications",
             position: "right",
             type: "dropdown",
             items: [
               {
-                label: "What's New",
-                to: "release-notes/whats-new",
-              },
-              {
-                label: "Early Access",
-                to: "release-notes/early-access",
-              },
-              {
-                label: "Continuous Integration",
-                to: "release-notes/continuous-integration",
-              },
-              {
-                label: "Continuous Delivery & GitOps",
-                to: "release-notes/continuous-delivery",
-              },
-              {
-                label: "Feature Flags",
-                to: "release-notes/feature-flags",
-              },
-              {
-                label: "Cloud Cost Management",
-                to: "release-notes/cloud-cost-management",
-              },
-              {
-                label: "Service Reliability Management",
-                to: "release-notes/service-reliability-management",
-              },
-              {
-                label: "Security Testing Orchestration",
-                to: "release-notes/security-testing-orchestration",
-              },
-              {
-                label: "Chaos Engineering",
-                to: "release-notes/chaos-engineering",
-              },
-              {
-                label: "Harness Platform",
-                to: "release-notes/harness-platform",
-              },
-              {
-                label: "Self-Managed Enterprise Edition",
-                to: "release-notes/self-managed-enterprise-edition",
+                label: "Software Delivery Foundations",
+                href: "https://university.harness.io/page/job-role-certifications",
               },
             ],
           },

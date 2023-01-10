@@ -1,13 +1,15 @@
 ---
 title: What's New
-date: 2022-12-15T10:00
+date: 2022-12-22T10:00
 sidebar_position: 1
 ---
 
-Learn about the new features that are generally available across all Harness modules and the Harness Platform.
+Learn about the new features that are Generally Available (GA) in Harness SaaS across all Harness modules and the Harness Platform.
 
 :::note
-Harness deploys updates progressively to different Harness SaaS clusters. You can identify the cluster hosting your account in your Account Overview page. The features in these release notes may not be available in your cluster immediately.
+Harness deploys updates progressively to different Harness SaaS clusters. You can identify the cluster hosting your account in your Account Overview page. The features and fixes in the release notes may not be available in your cluster immediately.
+
+Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
 
 ## January 10, 2023, version 78105
@@ -36,7 +38,18 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 
   No action required by users.
 
+### Harness Platform
 
+- Secrets and connectors now have a character limit of 128 for the **Name** and **ID** fields. (PL-29887)
+  
+- The [Role-Assignments](https://apidocs.harness.io/tag/Role-Assignments/#operation/getFilteredRoleAssignmentByScopeList) API now fetches role assignments by scope. (PL-29496, ZD-36050)
+
+  This helps you keep a track of the role assignments within a specific scope.
+  
+- The repository location of the Helm chart for the NextGen delegate is changing. (DEL-5576) 
+
+  The repository is being deprecated. Updates to the chart will not be made to [https://app.harness.io/storage/harness-download/delegate-helm-chart/](https://app.harness.io/storage/harness-download/delegate-helm-chart/) and will not be available from that location. To ensure retrieval of the most recent Helm chart, update your repository references to [https://app.harness.io/storage/harness-download/harness-helm-charts/](https://app.harness.io/storage/harness-download/harness-helm-charts/).
+  
 ## December 22, 2022, version 77908
 
 ### Harness Platform

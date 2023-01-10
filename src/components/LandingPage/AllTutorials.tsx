@@ -18,17 +18,6 @@ const FeaturedList: CardItem[] = [
     link: "/tutorials/deploy-services/helm-argocd-gitops-k8s",
   },
   {
-    title: "TypeScript and React Feature Flags",
-    module: "ff",
-    icon: "img/icon_ff.svg",
-    description:
-      "Walks you through adding JavaScript Feature Flags to a TypeScript and React Application.",
-    newDoc: true,
-    type: [docType.Documentation],
-    time: "10min",
-    link: "/tutorials/manage-feature-flags/typescript-react-first-feature-flag",
-  },
-  {
     title: "Get started with the fastest CI on the planet",
 
     module: "ci",
@@ -58,6 +47,22 @@ const FeaturedList: CardItem[] = [
     type: [docType.Documentation],
     time: "5 min",
     link: "/tutorials/platform/onboard-terraform-provider",
+  },
+  {
+    title: 'Sign application containers',
+
+    module: 'ci',
+    icon: "img/icon_ci.svg",
+    description: (
+      <>
+        This build automation guide describes how to sign a container image using a CI pipeline.
+
+      </>
+    ),
+    newDoc: true,
+    type: [docType.Documentation],
+    time: '15 min',
+    link: '/tutorials/build-code/ci-tutorial-container-signing',
   },
 ];
 
@@ -91,6 +96,20 @@ const CIList: CardItem[] = [
     type: [docType.Documentation],
     time: "15 min",
     link: "/tutorials/build-code/ci-localstack-background-step",
+  },
+  {
+    title: "Build and Push a Container Image to Amazon ECR",
+    module: "ci",
+    icon: "img/icon_ci.svg",
+    description: (
+      <>
+        This guide shows how to build, test, and publish a container image to AWS ECR
+      </>
+    ),
+    newDoc: false,
+    type: [docType.Documentation],
+    time: "15 min",
+    link: "/tutorials/build-code/ci-build-push-to-ecr",
   },
   {
     title: "Run Sauce Connect Proxy as a Service",
@@ -137,6 +156,36 @@ const CIList: CardItem[] = [
     type: [docType.Documentation],
     time: "5 min",
     link: "/tutorials/build-code/fastest-ci",
+  },
+  {
+    title: 'Build Go application containers',
+
+    module: 'ci',
+    icon: "img/logo.svg",
+    description: (
+      <>
+        This build automation guide describes building a Go container image in a CI Pipeline.
+
+      </>
+    ),
+    newDoc: true,
+    type: [docType.Documentation],
+    time: '15 min',
+    link: '/tutorials/build-code/ci-tutorial-go-containers',
+  },{
+    title: 'Sign Application Containers',
+    module: 'ci',
+    icon: "img/logo.svg",
+    description: (
+      <>
+        This build automation guide describes how to sign a container image using a CI pipeline.
+
+      </>
+    ),
+    newDoc: true,
+    type: [docType.Documentation],
+    time: '15 min',
+    link: '/tutorials/build-code/ci-tutorial-container-signing',
   },
 ];
 

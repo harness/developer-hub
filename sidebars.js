@@ -268,6 +268,12 @@ const sidebars = {
             },
           ],
         },
+         // Release Notes
+         {
+          type: "link",
+          label: "Release Notes",
+          href: "/release-notes/whats-new",
+        },
         {
           /*
           type: "doc",

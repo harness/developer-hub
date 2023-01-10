@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 This tutorial shows you how to use the Harness Security Testing Orchestration (STO) module to perform code security scanning in a Harness Pipeline. You'll set up a Pipeline with one scanner, run scans, analyze the results, and learn the key features of STO.
 
-This tutorial covers standalone or "audit-only" workflows that don't require any other Harness components. In [Tutorial 2](40-sto-tutorial-2-integrated-sto-ci-cd-workflows.md), you'll learn how to integrate STO into Harness CI and CD workflows and protect your repos, containers, and artifacts from vulnerabilities automatically.
+This tutorial covers standalone or "audit-only" workflows that don't require any other Harness components. In [Tutorial 2](sto-tutorial-2-integrated-sto-ci-cd-workflows.md), you'll learn how to integrate STO into Harness CI and CD workflows and protect your repos, containers, and artifacts from vulnerabilities automatically.
 
 ## Objectives
 
@@ -22,7 +22,7 @@ You'll learn how to:
 
 ## Before You Begin
 
-You must perform all the required steps in [Set Up Harness for STO](20-set-up-harness-for-sto.md). This topic describes how to do the following:
+You must perform all the required steps in [Set Up Harness for STO](set-up-harness-for-sto.md). This topic describes how to do the following:
 
 1. Install a delegate in a Kubernetes cluster.
 2. Create connectors to your Git and DockerHub repos
@@ -55,7 +55,7 @@ This Pipeline has only one scanner but you can easily add more later. For the li
 
 ## Clone your STO base pipeline
 
-1. Go to the project with the [base STO pipeline](20-set-up-harness-for-sto.md#create-an-sto-pipeline) project.
+1. Go to the project with the [base STO pipeline](set-up-harness-for-sto.md#create-an-sto-pipeline) project.
 2. Click the top-right menu, choose **Clone**, and save the new pipeline as **STO Tutorial 1**.
 
    ![](./static/tutorial-1-standalone-workflows-10.png)
@@ -141,7 +141,7 @@ The Issue Details pane has the information you need to troubleshoot and fix your
 
 In this tutorial you've learned how to set up a scanner, create a baseline, analyze scan results, and use the data collected by STO to pinpoint and fix vulnerabilities *before* you merge your code updates.
 
-Proceed to [Tutorial 2](40-sto-tutorial-2-integrated-sto-ci-cd-workflows.md) to learn how you can use STO to protect repos, images, and artifacts from vulnerabilities automatically.
+Proceed to [Tutorial 2](sto-tutorial-2-integrated-sto-ci-cd-workflows.md) to learn how you can use STO to protect repos, images, and artifacts from vulnerabilities automatically.
 
 ## See Also
 

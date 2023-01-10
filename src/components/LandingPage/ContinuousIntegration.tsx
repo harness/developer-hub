@@ -38,7 +38,37 @@ const FeaturedList: CardItem[] = [
     time: "15 min",
     link: "/tutorials/build-code/ci-node-docker-quickstart",
   },
-];
+  {
+    title: 'Build Go application containers using a CI Pipeline',
+
+    module: 'ci',
+    icon: "img/icon_ci.svg",
+    description: (
+      <>
+        This build automation guide describes building a Go container image in a CI Pipeline.
+
+      </>
+    ),
+    newDoc: true,
+    type: [docType.Documentation],
+    time: '15 min',
+    link: '/tutorials/build-code/ci-tutorial-go-containers',
+  },{
+    title: 'Sign application containers using a CI Pipeline',
+
+    module: 'ci',
+    icon: "img/icon_ci.svg",
+    description: (
+      <>
+        This build automation guide describes how to sign a container image using a CI pipeline.
+
+      </>
+    ),
+    newDoc: true,
+    type: [docType.Documentation],
+    time: '15 min',
+    link: '/tutorials/build-code/ci-tutorial-container-signing',
+  },];
 
 const DroneList: CardItem[] = [
   {
@@ -114,6 +144,22 @@ const CIList: CardItem[] = [
     link: "/tutorials/build-code/ci-java-http-server",
   },
   {
+    title: "Build and push a container image to Amazon ECR",
+
+    module: "ci",
+    icon: "img/icon_ci.svg",
+    description: (
+      <>
+        Build, test, and publish a container image to AWS ECR.
+
+      </>
+    ),
+    newDoc: false,
+    type: [docType.Documentation],
+    time: "15 min",
+    link: "/tutorials/build-code/ci-build-push-to-ecr",
+  },
+  {
     title: "Get started with the fastest CI on the planet",
 
     module: "ci",
@@ -129,6 +175,36 @@ const CIList: CardItem[] = [
     time: "5 min",
     link: "/tutorials/build-code/fastest-ci",
   },
+{
+  title: 'Build Go application containers',
+
+  module: 'ci',
+  icon: "img/icon_ci.svg",
+  description: (
+    <>
+      This build automation guide describes building a Go container image in a CI Pipeline.
+
+    </>
+  ),
+  newDoc: true,
+  type: [docType.Documentation],
+  time: '15 min',
+  link: '/tutorials/build-code/ci-tutorial-go-containers',
+},{
+  title: 'Sign Application Containers',
+  module: 'ci',
+  icon: "img/icon_ci.svg",
+  description: (
+    <>
+      This build automation guide describes how to sign a container image using a CI pipeline.
+
+    </>
+  ),
+  newDoc: true,
+  type: [docType.Documentation],
+  time: '15 min',
+  link: '/tutorials/build-code/ci-tutorial-container-signing',
+},
 ];
 
 export default function CI() {
@@ -159,6 +235,19 @@ export default function CI() {
                 )}
               >
                 <img src={`${baseUrl}img/icon_document.png`} /> Documentation
+              </button>
+            </Link>
+          </div>
+          <div>
+            <Link href="/release-notes/continuous-integration">
+              <button
+                className={clsx(
+                  "button button--lg",
+                  styles.btn,
+                  styles.btnLight
+                )}
+              >
+                <img src={`${baseUrl}img/icon_document.png`} /> Release Notes
               </button>
             </Link>
           </div>

@@ -1,15 +1,17 @@
 ---
 title: Security Testing Orchestration
 description: Provides an overview of new features and fixed issues.
-date: 2022-12-15T10:00
+date: 2022-10-31T10:00
 tags: [NextGen, "security testing orchestration"]
 sidebar_position: 8
 ---
 
-Harness Security Testing Orchestration is updated regularly. Review the notes below for details about recent changes.
+Harness Security Testing Orchestration is updated regularly in Harness SaaS. Review the notes below for details about recent changes.
 
 :::note
 Harness deploys updates progressively to different Harness SaaS clusters. You can identify the cluster hosting your account in your Account Overview page. The features and fixes in the release notes may not be available in your cluster immediately.
+
+Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
 
 ## October 31, 2022
