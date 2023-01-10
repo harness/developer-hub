@@ -11,7 +11,7 @@ Harness Continuous Integration is updated regularly. Review the notes below for 
 Harness deploys updates progressively to different Harness SaaS clusters. You can identify the cluster hosting your account in your Account Overview page. The features and fixes in the release notes may not be available in your cluster immediately.
 :::
 
-## January 5, 2023, version 78100
+## January 10, 2023, version 78105
 
 ### What's new
 
@@ -44,7 +44,7 @@ No early access features are available for this release.
 
 * Customers on the free plan can now run 5 stages per day on the CI hosted infrastructure. Contact Harness Sales to upgrade your plan. (CI-6430)
 
-* The onboarding experience for new users has been enhanced. You can now connect to a “hello-world” example repo instead of cloning your own codebase into Harness CI. (CI-6348)
+* The onboarding experience for new users has been enhanced. You can now create a sample "Hello-world" pipeline even without a repository selected/created.  (CI-6348)
 
 ### Early access features
 
