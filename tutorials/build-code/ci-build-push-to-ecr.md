@@ -100,4 +100,4 @@ Harness CI is the fastest CI on the planet that can help you get going in minute
 
 In this tutorial, we explored Amazon ECR and saw how to use it to push our container images using Harness CI. Now that you have a better understanding of ECR and Harness CI, why not give it a try? Push your container images to ECR using Harness and speed up your build process.
 
-**[Try Harness CI Today](https://www.harness.io/products/continuous-integration)!**
+**[Try Harness CI Today](https://app.harness.io/auth/#/signup/?module=ci&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=ci-plg&utm_content=get-started)!**
