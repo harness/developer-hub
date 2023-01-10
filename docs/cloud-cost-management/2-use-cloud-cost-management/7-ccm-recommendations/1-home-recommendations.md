@@ -22,7 +22,6 @@ The Recommendations page displays the following information:
 * A breakdown of all the available recommendations.
 * **Potential Monthly Savings** across your ECS clusters if you apply the recommendations.
 * **Forecasted Monthly Spend** across your ECS clusters if you do not apply the recommendations.
-* **Emissions that can be reduced**, and **Potential Carbon Emissions** are the features that track greenhouse gas emissions.
   
 If you do not want to view the recommendations for the child resources such as Workloads, deselect the **Child Resources** checkbox in the **Include** dropdown list at the top of the page.
 
@@ -58,7 +57,12 @@ You can use the **Create a ticket** link to raise a JIRA ticket to apply the rec
    * **Description** — Add a description for the issue.
 3. Click **Create Ticket**. 
    The status of the ticket is **To do**. You need to assign the ticket to apply the recommendations. After applying the recommendations, when the Jira status changes to **Done**, the recommendation is displayed in the **Applied** tab. 
-   If you have not changed the Jira status to Done after applying the recommendation, you could also use the **More actions** icon (three vertical dots), and then click **Mark as closed** to move the recommendation to the **Applied** tab.
+   If you have not changed the Jira status to **Done** after applying the recommendation, you could use the **More actions** icon (three vertical dots), and then click **Mark as closed** to move the recommendation to the **Applied** tab.
+   To view the recommendations that are applied, and the cost savings realized, click the **Applied** tab.
+
+     ![](./static/Applied-recommendations.png)
+
+
 
 ### Create a Jira Connector
 1. In the **Overview** step, enter the name. 
@@ -90,8 +94,8 @@ You can create and use filters to select resources and recommendations.
 You can filter by:
 
 * **Resource Name** — The name of the resource being monitored.
-* **Namespace** — Each namespace in the cluster.
-* **Cluster Name** — Each cluster in your infrastructure.
+* **Namespace** — A namespace in the cluster.
+* **Cluster Name** — A cluster in your infrastructure.
 * **Resource Type** — The type of resources for which the recommendation is displayed. Currently, CCM supports ECS service, node pool, and workload.
 * **Savings** — Enter the minimum monthly savings. For example, all the recommendations with potential monthly savings of more than $1000.
 * **Potential Spend** — Filter by forecasted monthly spend greater than the specified amount. For example, all the recommendations with forecasted monthly spend of more than $1000.
