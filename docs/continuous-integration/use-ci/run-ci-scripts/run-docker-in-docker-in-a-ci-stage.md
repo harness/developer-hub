@@ -41,14 +41,14 @@ In the Overview tab for the new Build Stage, configure the Stage as follows:
 
 ### Step 2: Define the Build Farm Infrastructure
 
-In the CI stage Infrastructure, define the build farm for the codebase. See [Set Up Build Infrastructure](/docs/category/set-up-build-infrastructure).
+In the CI Build stage > Infrastructure tab, define the build infrastructure for the codebase. See [Set Up Build Infrastructure](/docs/category/set-up-build-infrastructure).
 
-### Step 3: Add a dind Service Dependency
+### Step 3: Add a dind Background step
 
-In the Execution tab, click **Add Service Dependency** and configure the dependency as follows:
+In the Execution tab, add a [Background Step](../../ci-technical-reference/background-step-settings.md) and configure it as follows:
 
-* **Dependency Name:** dind\_Service.
-* **Container Registry:** A Connector to your Docker registry.
+* **Name:** dind_Service.
+* **Container Registry:** A connector to your Docker registry.
 * **Image:** The image you want to use, such as [docker:dind](https://hub.docker.com/_/docker).
 * **Optional Configuration:** Select **Privileged**. This is required for Docker-in-Docker.
 
