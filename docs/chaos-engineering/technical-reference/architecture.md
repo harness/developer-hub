@@ -10,7 +10,7 @@ Harness Chaos Engineering is split into two parts:
 1. **Harness Control Plane**
 2. **Chaos Infrastructures**
 
-The diagram below gives a peek into the HCE architecture.
+Below is a sneak peek into the HCE architecture.
 ![Architecture](./static/architecture/architecture.png)
 
 

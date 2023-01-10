@@ -27,12 +27,12 @@ Injecting a rogue process into a target container, we starve the main microservi
 - Ensure that Kubernetes Version > 1.16.
 :::
 
-## Default Validations
+## Default validations
 :::note
 The application pods should be in running state before and after chaos injection.
 :::
 
-## Fault Tunables
+## Fault tunables
 <details>
     <summary>Check the Fault Tunables</summary>
     <h2>Optional Fields</h2>
@@ -105,12 +105,12 @@ The application pods should be in running state before and after chaos injection
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
  
-### Common and Pod specific tunables
+### Common and pod specific tunables
 Refer the [common attributes](../../common-tunables-for-all-faults) and [Pod specific tunable](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
 
-### CPU Cores
+### CPU cores
 
 It stresses the `CPU_CORE` of the targeted pod for the `TOTAL_CHAOS_DURATION` duration.
 
@@ -143,7 +143,7 @@ spec:
           value: '60'
 ```
 
-### CPU Load
+### CPU load
 It contains percentage of pod CPU to be consumed. It can be tuned via `CPU_LOAD` ENV.
 
 Use the following example to tune this:
@@ -179,7 +179,7 @@ spec:
           value: '60'
 ```
 
-### Container Runtime Socket Path
+### Container runtime socket path
 
 It defines the `CONTAINER_RUNTIME` and `SOCKET_PATH` ENV to set the container runtime and socket file path.
 
@@ -219,7 +219,7 @@ spec:
           VALUE: '60'
 ```
 
-### Pumba Chaos Library
+### Pumba chaos library
 
 It specifies the Pumba chaos library for the chaos injection. It can be tuned via `LIB` ENV. The defaults chaos library is `litmus`.
 Provide the stress image via `STRESS_IMAGE` ENV for the pumba library.

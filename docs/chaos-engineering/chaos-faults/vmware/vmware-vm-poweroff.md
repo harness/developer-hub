@@ -45,7 +45,7 @@ stringData:
 You can pass the VM credentials as a secret or as a chaosengine environment variable.
 :::
 
-## Default Validations
+## Default validations
 
 :::info
 
@@ -53,7 +53,7 @@ You can pass the VM credentials as a secret or as a chaosengine environment vari
 
 :::
 
-## Fault Tunables
+## Fault tunables
 
 <details>
     <summary>Check the Fault Tunables</summary>
@@ -100,12 +100,12 @@ You can pass the VM credentials as a secret or as a chaosengine environment vari
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common Fault Tunables
+### Common fault tunables
 Refer to the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
-### Stop/Poweroff the VM By MOID
+### Stop/Poweroff the VM by MOID
 
 It contains MOID of the VM instance. You can tune it using the `APP_VM_MOIDS` environment variable.
 

@@ -8,7 +8,7 @@ Chaos infrastructure is a service that runs in your target environment and aids 
 - Currently only Kubernetes chaos infrastructure is available, the other chaos infrastructures will be available soon.
 - All the chaos infrastructure services adhere to the principle of least privilege where they execute only with the minimum number of permissions required.
 
-## Create Environment
+## Create environment
 To add a chaos infrastructure for your target environment, first we need to create a new environment as part of which the chaos infrastructures will exist. Head to the **Environments** page, which lists all the environments added as part of your project. Choose **New Environment**.
 
 ![Chaos Environments](./static/connect-chaos-infrastructures/chaos-environments.png)
@@ -17,7 +17,7 @@ In the **Create a new environment** modal, provide a name for the environment, o
 
 ![New Environment](./static/connect-chaos-infrastructures/new-environment.png)
 
-## Add Chaos Infrastructure
+## Add Chaos infrastructure
 Now we can add a chaos infrastructure to our environment. Select **New Chaos Infrastructure**.
 
 You can either setup a chaos infrastructure on existing infrastructures that uses a Harness cluster connector i.e. Harness Kubernetes connector or install the chaos infrastructure in a new infrastructure.
@@ -48,7 +48,7 @@ Then, select **Next**. In the final step, if you're deploying to an existing inf
 
 Finally, select **Done**.
 
-## Validating Chaos Infrastructure Installation
+## Validating Chaos infrastructure installation
 Upon applying the manifest, it will take a while to setup all the chaos infrastructure resources. After a while, the chaos infrastructure's connection state should reflect as `CONNECTED`.
 
 If the chaos infrastructure remains in an `INACTIVE` or `PENDING` state, follow the suggestions on the **Troubleshooting** tab to resolve it.

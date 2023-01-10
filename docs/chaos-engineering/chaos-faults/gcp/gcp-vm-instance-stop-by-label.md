@@ -1,6 +1,6 @@
 ---
 id: gcp-vm-instance-stop-by-label
-title: GCP VM Instance Stop By Label
+title: GCP VM instance stop by label
 ---
 
 ## Introduction
@@ -45,12 +45,12 @@ stringData:
 ```
 :::
 
-## Default Validations
+## Default validations
 :::info
 - All the VM instances having the target label are in a healthy state.
 :::
 
-## Fault Tunables
+## Fault tunables
 <details>
     <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>
@@ -116,12 +116,12 @@ stringData:
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common Fault Tunables
+### Common fault tunables
 Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
-### Target GCP Instances
+### Target GCP instances
 
 It will stop all the instances with filtered by the label `INSTANCE_LABEL` and corresponding `ZONES` zone in `GCP_PROJECT_ID` project.
 
@@ -153,9 +153,9 @@ spec:
           VALUE: '60'
 ```
 
-### Manged Instance Group
+### Managed instance group
 
-If vm instances belong to a managed instance group then provide the `MANAGED_INSTANCE_GROUP` as `enable` else provided it as `disable`, which is the default value.
+If VM instances belong to a managed instance group then provide the `MANAGED_INSTANCE_GROUP` as `enable` else provided it as `disable`, which is the default value.
 
 Use the following example to tune this:
 

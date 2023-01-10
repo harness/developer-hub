@@ -1,9 +1,9 @@
 ---
-title: Common Tunables for All Faults
+title: Common tunables for all faults
 ---
 Fault tunables are common for all the faults. These tunables can be provided at `.spec.experiment[*].spec.components.env` in the chaosengine.
 
-### Duration of the chaos
+### Duration of chaos
 
 It defines the total duration of the chaos injection. You can tune it using the `TOTAL_CHAOS_DURATION` environment variable. It is in unit of seconds.
 
@@ -34,7 +34,7 @@ spec:
           VALUE: '60'
 ```
 
-### Multiple Iterations Of Chaos
+### Multiple iterations of chaos
 
 Multiple iterations of chaos can be tuned by setting the `CHAOS_INTERVAL` environment variable. This variable defines the delay between each chaos iteration.
 
@@ -68,7 +68,7 @@ spec:
           VALUE: '60'
 ```
 
-### Chaos Interval
+### Chaos interval
 
 Multiple iterations of chaos can be tuned by setting the `CHAOS_INTERVAL` environment variable. This variable defines the delay between each chaos iteration.
 
@@ -102,7 +102,7 @@ spec:
           VALUE: '60'
 ```
 
-### Ramp Time
+### Ramp time
 
 It defines the period to wait before and after injecting chaos. You can tune it using the `RAMP_TIME` environment variable. It is in unit of seconds.
 

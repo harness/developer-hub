@@ -34,12 +34,12 @@ stringData:
 You can pass the VM credentials as a secret or as a chaosengine environment variable.
 :::
 
-## Default Validations
+## Default validations
 :::info
 - The VM should be in a healthy state.
 :::
 
-## Fault Tunables
+## Fault tunables
 
 <details>
     <summary>Check the Fault Tunables</summary>
@@ -126,13 +126,13 @@ You can pass the VM credentials as a secret or as a chaosengine environment vari
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common Fault Tunables
+### Common fault tunables
 
 Refer to the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
-### Target Service Port
+### Target service port
 
 It defines the port of the target service. You can tune it using the `TARGET_SERVICE_PORT` environment variable.
 
@@ -158,7 +158,7 @@ spec:
           value: "80"
 ```
 
-### Proxy Port
+### Proxy port
 
 It defines the port where the proxy server listens for requests. You can tune it using the `PROXY_PORT` environment variable.
 
@@ -248,7 +248,7 @@ spec:
           value: "80"
 ```
 
-### Network Interface
+### Network interface
 
 It defines the network interface to be used for the proxy. You can tune it using the `NETWORK_INTERFACE` environment variable.
 

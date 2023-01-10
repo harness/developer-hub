@@ -1,6 +1,6 @@
 ---
 id: gcp-vm-disk-loss
-title: GCP VM Disk Loss
+title: GCP VM disk loss
 ---
 
 ## Introduction
@@ -44,12 +44,12 @@ stringData:
 ```
 :::
 
-## Default Validations
+## Default validations
 :::info
 - Disk volumes are attached to their respective instances.
 :::
 
-## Fault Tunables
+## Fault tunables
 <details>
     <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>
@@ -110,12 +110,12 @@ stringData:
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common Fault Tunables
+### Common fault tunables
 Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
-### Detach Volumes By Names
+### Detach volumes by names
 
 It contains comma separated list of volume names subjected to disk loss chaos. It will detach all the disks with the given `DISK_VOLUME_NAMES` disk names and corresponding `ZONES` zone names and the `DEVICE_NAMES` device names in `GCP_PROJECT_ID` project. It re-attaches the volume after waiting for the specified `TOTAL_CHAOS_DURATION` duration.
 

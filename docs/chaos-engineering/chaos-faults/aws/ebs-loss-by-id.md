@@ -44,7 +44,7 @@ stringData:
 - If you change the secret key name (from `cloud_config.yml`) please also update the `AWS_SHARED_CREDENTIALS_FILE` ENV value in the ChaosExperiment CR with the same name.
 :::
 
-## Permission Requirement
+## Permission requirement
 
 - Here is an example AWS policy to execute ebs loss fault.
 
@@ -83,13 +83,13 @@ stringData:
 
 - Refer a [superset permission/policy](../policy-for-all-aws-faults) to execute all AWS faults.
 
-## Default Validations
+## Default validations
 
 :::info
 - EBS volume is attached to the instance.
 :::
 
-## Fault Tunables
+## Fault tunables
 
 <details>
     <summary>Check the Fault Tunables</summary>
@@ -141,13 +141,13 @@ stringData:
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common and AWS specific tunables
+### Common and AWS-specific tunables
 
 Refer the [common attributes](../common-tunables-for-all-faults) and [AWS specific tunable](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
 
-### Detach Volumes By ID
+### Detach volumes By ID
 
 It contains comma separated list of volume IDs subjected to EBS detach chaos. It can be tuned via `EBS_VOLUME_ID` ENV.
 

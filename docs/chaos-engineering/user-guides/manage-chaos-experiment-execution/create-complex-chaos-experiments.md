@@ -1,5 +1,5 @@
 ---
-title: Create Complex Chaos Experiments
+title: Create complex chaos experiments
 sidebar_position: 1
 ---
 

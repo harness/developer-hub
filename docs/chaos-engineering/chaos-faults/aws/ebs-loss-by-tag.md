@@ -44,7 +44,7 @@ stringData:
 - If you change the secret key name (from `cloud_config.yml`) please also update the `AWS_SHARED_CREDENTIALS_FILE` ENV value in the ChaosExperiment CR with the same name.
 :::
 
-## Permission Requirement
+## Permission requirement
 
 - Here is an example AWS policy to execute ebs loss fault.
 
@@ -83,7 +83,7 @@ stringData:
 
 - Refer a [superset permission/policy](../policy-for-all-aws-faults) to execute all AWS faults.
 
-## Default Validations
+## Default validations
 
 :::info
 
@@ -91,7 +91,7 @@ stringData:
 
 :::
 
-## Fault Tunables
+## Fault tunables
 
 <details>
     <summary>Check the Fault Tunables</summary>
@@ -148,7 +148,7 @@ stringData:
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
 ### Common and AWS specific tunables
 
@@ -185,7 +185,7 @@ spec:
           VALUE: '60'
 ```
 
-### Target Percent of volumes
+### Target percent of volumes
 
 It will detach the `VOLUME_AFFECTED_PERC` percentage of EBS volumes with the given `EBS_VOLUME_TAG` tag and `REGION` region.
 

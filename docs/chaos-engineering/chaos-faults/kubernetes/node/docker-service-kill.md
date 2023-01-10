@@ -1,6 +1,6 @@
 ---
 id: docker-service-kill
-title: Docker Service Kill
+title: Docker service kill
 ---
 
 ## Introduction

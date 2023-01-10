@@ -46,13 +46,13 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
 :::
 
 
-## Default Validations
+## Default validations
 :::info
 - VM should be in healthy state.
 - The target processes should exist in the VM.
 :::
 
-## Fault Tunables
+## Fault tunables
 <details>
     <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>
@@ -93,9 +93,9 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common Fault Tunables
+### Common fault tunables
 Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
 ### PROCESS_IDS

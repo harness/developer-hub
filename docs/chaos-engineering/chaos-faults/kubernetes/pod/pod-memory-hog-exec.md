@@ -1,6 +1,6 @@
 ---
 id: pod-memory-hog-exec
-title: Pod Memory Hog Exec
+title: Pod memory hog exec
 ---
 
 ## Introduction
@@ -26,12 +26,12 @@ This fault launches a stress process within the target container - which can cau
 - Ensure that Kubernetes Version > 1.16.
 :::
 
-## Default Validations
+## Default validations
 :::note
 The application pods should be in running state before and after chaos injection.
 :::
 
-## Fault Tunables
+## Fault tunables
 <details>
     <summary>Check the Fault Tunables</summary>
     <table>
@@ -88,12 +88,12 @@ The application pods should be in running state before and after chaos injection
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common and Pod specific tunables
+### Common and pod specific tunables
 Refer the [common attributes](../../common-tunables-for-all-faults) and [Pod specific tunable](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
 
-### Memory Consumption
+### Memory consumption
 
 It stresses the `MEMORY_CONSUMPTION` MB memory of the targeted pod for the `TOTAL_CHAOS_DURATION` duration.
 The memory consumption limit is 2000MB
@@ -128,7 +128,7 @@ spec:
           value: '60'
 ```
 
-### Chaos Kill Commands
+### Chaos kill commands
 
 It defines the `CHAOS_KILL_COMMAND` ENV to set the chaos kill command.
 Default values of `CHAOS_KILL_COMMAND` command:

@@ -1,6 +1,6 @@
 ---
 id: pod-delete
-title: Pod Delete
+title: Pod delete
 ---
 
 ## Introduction
@@ -27,12 +27,12 @@ This fault helps to reproduce such a scenario with forced/graceful pod failure o
 - Ensure that Kubernetes Version > 1.16.
 :::
 
-## Default Validations
+## Default validations
 :::note
 The application pods should be in running state before and after chaos injection.
 :::
 
-## Fault Tunables
+## Fault tunables
 <details>
     <summary>Check the Fault Tunables</summary>
     <h2>Optional Fields</h2>
@@ -85,12 +85,12 @@ The application pods should be in running state before and after chaos injection
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common and Pod specific tunables
-Refer the [common attributes](../../common-tunables-for-all-faults) and [Pod specific tunable](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables. 
+### Common and pod specific tunables
+Refer to the [common attributes](../../common-tunables-for-all-faults) and [Pod specific tunable](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables. 
 
-### Force Delete
+### Force delete
 
 The targeted pod can be deleted `forcefully` or `gracefully`. It can be tuned with the `FORCE` env. It will delete the pod forcefully if `FORCE` is provided as `true` and it will delete the pod gracefully if `FORCE` is provided as `false`.
 
@@ -124,7 +124,7 @@ spec:
           value: '60'
 ```
 
-### Random Interval
+### Random interval
 
 The randomness in the chaos interval can be enabled via setting `RANDOMNESS` ENV to `true`. It supports boolean values. The default value is `false`.
 The chaos interval can be tuned via `CHAOS_INTERVAL` ENV.

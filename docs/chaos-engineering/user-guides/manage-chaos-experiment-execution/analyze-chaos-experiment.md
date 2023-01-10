@@ -1,5 +1,5 @@
 ---
-title: Analyze Chaos Experiment
+title: Analyze chaos experiment
 sidebar_position: 2
 ---
 

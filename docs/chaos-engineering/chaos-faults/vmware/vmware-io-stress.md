@@ -36,12 +36,12 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
 :::
 
 
-## Default Validations
+## Default validations
 :::info
 - VM should be in healthy state.
 :::
 
-## Fault Tunables
+## Fault tunables
 <details>
     <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>
@@ -112,9 +112,9 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common Fault Tunables
+### Common fault tunables
 Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
 ### FILESYSTEM_UTILIZATION_PERCENTAGE
@@ -144,7 +144,7 @@ spec:
         - name: FILESYSTEM_UTILIZATION_PERCENTAGE
           value: '10'
 ```
-### Filesystem Utilization Bytes
+### Filesystem utilization bytes
 It stresses the `FILESYSTEM_UTILIZATION_BYTES` GB of the i/o of the targeted VM. It is mutually exclusive with the FILESYSTEM_UTILIZATION_PERCENTAGE ENV. If FILESYSTEM_UTILIZATION_PERCENTAGE ENV is set then it will use the percentage for the stress otherwise, it will stress the i/o based on FILESYSTEM_UTILIZATION_BYTES ENV.
 
 Use the following example to tune this:
@@ -170,7 +170,7 @@ spec:
         - name: FILESYSTEM_UTILIZATION_BYTES
           value: '1' #in GB
 ```
-### Mount Path
+### Mount path
 The volume mount path, which needs to be filled. It can be tuned with `VOLUME_MOUNT_PATH` ENV
 
 Use the following example to tune this:
@@ -200,7 +200,7 @@ spec:
         - name: FILESYSTEM_UTILIZATION_BYTES
           value: '1' #in GB
 ```
-### Workers For Stress
+### Workers for stress
 The worker's count for the stress can be tuned with `NUMBER_OF_WORKERS` ENV.
 
 [embedmd]:# (./static/manifests/vmware-io-stress/vm-io-stress-filesystem-worker.yaml yaml)
