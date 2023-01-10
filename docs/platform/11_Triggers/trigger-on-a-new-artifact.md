@@ -1,7 +1,7 @@
 ---
 title: Trigger Pipelines on a New Artifact
 description: Trigger Harness Pipeline deployments in response to a new artifact version being added to a registry.
-# sidebar_position: 2
+sidebar_position: 2
 helpdocs_topic_id: c1eskrgngf
 helpdocs_category_id: oya6qhmmaw
 helpdocs_is_private: false
