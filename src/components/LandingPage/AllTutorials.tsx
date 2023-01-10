@@ -98,6 +98,20 @@ const CIList: CardItem[] = [
     link: "/tutorials/build-code/ci-localstack-background-step",
   },
   {
+    title: "Build and Push a Container Image to Amazon ECR",
+    module: "ci",
+    icon: "img/icon_ci.svg",
+    description: (
+      <>
+        This guide shows how to build, test, and publish a container image to AWS ECR
+      </>
+    ),
+    newDoc: false,
+    type: [docType.Documentation],
+    time: "15 min",
+    link: "/tutorials/build-code/ci-build-push-to-ecr",
+  },
+  {
     title: "Run Sauce Connect Proxy as a Service",
     module: "ci",
     icon: "img/icon_ci.svg",
