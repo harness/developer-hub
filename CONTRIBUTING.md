@@ -64,7 +64,7 @@ Harness follows the Microsoft Style Guide:
 
 Since the final document is in Markdown, feel free to author in a tool of your choice and port to Markdown. 
 
-Vale is an excellent tool for validating spelling and style in Markdown. You can run [Vale](https://vale.sh/) aganist a specific file or project structure. 
+Vale is an excellent tool for validating spelling and style in Markdown locally. You can run [Vale](https://vale.sh/) aganist a specific file or project structure. ESLint is used in the CI/CD Pipeline. 
 
 ```
 #install
