@@ -162,7 +162,7 @@ This is your only chance to view this key's value in Azure. Store the value some
 
 ### Step 4: Setup Delegates
 
-In **Delegates** **Setup**, enter [**Selectors**](../2_Delegates/delegate-guide/select-delegates-with-selectors.md#option-select-a-delegate-for-a-connector-using-tags) for specific **Delegates** that you want to allow to connect to this Connector. Click **Continue**.
+In **Delegates** **Setup**, enter [**Selectors**](../2_Delegates/manage-delegates/select-delegates-with-selectors.md#option-select-a-delegate-for-a-connector-using-tags) for specific **Delegates** that you want to allow to connect to this Connector. Click **Continue**.
 
 ### Step 5: Setup Vault
 

@@ -12,7 +12,7 @@ This topic lists the limitations and requirements of the Harness Delegate.
 
 ### Before you begin
 
-* [Delegates Overview](../delegates-overview.md)
+* [Delegates Overview](/docs/platform/2_Delegates/delegates-overview.md)
 
 ### Delegate Limitations
 
@@ -43,7 +43,7 @@ Access to artifact servers, deployment environments, and cloud providers. As sho
 
 Harness SaaS Delegates only need outbound access to the Harness domain name (most commonly, **app.harness.io)** and, optionally, to **logging.googleapis.com**. The URL logging.googleapis.com is used to provide logs to Harness support.
 
-See [Allowlist Harness Domains and IPs](../../20_References/whitelist-harness-domains-and-ips.md).
+See [Allowlist Harness Domains and IPs](/docs/platform/20_References/whitelist-harness-domains-and-ips.md).
 
 ### Network Requirements
 
@@ -68,15 +68,15 @@ If you do not enable gRPC connections, the following limitations apply:
 
 Contact [Harness Support](mailto:support@harness.io) to enable or disable feature flags.### Permissions and Ports
 
-See [Permissions and Ports for Harness Connections](../../20_References/permissions-and-ports-for-harness-connections.md).
+See [Permissions and Ports for Harness Connections](/docs/platform/20_References/permissions-and-ports-for-harness-connections.md).
 
 ### Add Certificates and Other Software to Delegate
 
-For steps on adding certs or other software to the Delegate, see [Common Delegate Initialization Scripts](common-delegate-profile-scripts.md).
+For steps on adding certs or other software to the Delegate, see [Common Delegate Initialization Scripts](/docs/platform/2_Delegates/delegate-reference/common-delegate-profile-scripts.md).
 
 ### Delegate Access Requirements
 
 * The Harness Delegate does NOT require root account access, but the Kubernetes and Docker Delegates run as root by default. If you do not need to install applications using Delegate Profiles, then you can use a non-root account or install the application without the Delegate.  
-See [Non-Root Delegate Installation](../delegate-guide/non-root-delegate-installation.md).
-* If you do not run the Delegate as root, be aware that you cannot install any software using a [Delegate Initialization Script](common-delegate-profile-scripts.md).
+See [Non-Root Delegate Installation](/docs/platform/2_Delegates/advanced-installation/non-root-delegate-installation.md).
+* If you do not run the Delegate as root, be aware that you cannot install any software using a [Delegate Initialization Script](/docs/platform/2_Delegates/delegate-reference/common-delegate-profile-scripts.md).
 

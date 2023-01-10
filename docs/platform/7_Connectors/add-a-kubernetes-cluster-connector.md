@@ -163,7 +163,7 @@ Harness uses Kubernetes Cluster Connectors at Pipeline runtime to authenticate a
 
 You can select **Any Available Harness Delegate** and Harness will select the Delegate. For a description of how Harness picks Delegates, see [Delegates Overview](../2_Delegates/delegates-overview.md).
 
-You can use Delegate Tags to select one or more Delegates. For details on Delegate Tags, see [Select Delegates with Tags](../2_Delegates/delegate-guide/select-delegates-with-selectors.md).
+You can use Delegate Tags to select one or more Delegates. For details on Delegate Tags, see [Select Delegates with Tags](../2_Delegates/manage-delegates/select-delegates-with-selectors.md).
 
 If you need to install a Delegate, see [Delegate Installation Overview](../2_Delegates/delegate-installation-overview.md) or the [Visual Summary](#visual_summary) above.
 

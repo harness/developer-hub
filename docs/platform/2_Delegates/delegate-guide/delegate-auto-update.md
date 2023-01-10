@@ -36,5 +36,5 @@ Harness does not recommend the use of delegate images that are not current. Howe
 1. Replace **delegate name** with the name you gave your delegate. The Harness Delegate image is the latest release image by default.
 2. Replace **account id** with your Harness account ID.
 
-For an example of a complete Delegate YAML file, see [Example Kubernetes Manifest: Harness Delegate](../delegate-reference/example-kubernetes-manifest-harness-delegate.md).
+For an example of a complete Delegate YAML file, see [Example Kubernetes Manifest: Harness Delegate](/docs/platform/2_Delegates/delegate-reference/example-kubernetes-manifest-harness-delegate.md).
 
