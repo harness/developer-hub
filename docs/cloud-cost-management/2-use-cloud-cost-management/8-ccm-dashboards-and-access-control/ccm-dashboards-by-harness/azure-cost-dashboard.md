@@ -48,6 +48,9 @@ Perform the following steps to view Azure Cost Dashboard:
 
 1. In the **Harness** application, click **Dashboards**.
 2. Select **By Harness** and then, click **Azure Cost Dashboard**. The Azure Cost Dashboard is displayed. 
+
+    ![](./static/Azure-cost-dashboard.gif)
+
    
 	 
 
@@ -63,7 +66,7 @@ Perform the following steps to view Azure Cost Dashboard:
 | Monthly Cost by Instance ID | The monthly cost of the instance ID. Each VM in a scale set gets an instance ID that uniquely identifies it. |
 | Monthly Cost by Service Name | The monthly cost of Azure services, for example, Virtual Machines, Azure App Service, Azure DNS, etc. |
 | Monthly Cost by Resource Group | The monthly cost of the resource group. A resource group is a container that holds related resources that you want to manage as a group. |
-3. Select **Time Range** to filter the data based on pre-defined time range filters. The available filters are:
+1. Select **Time Range** to filter the data based on pre-defined time range filters. The available filters are:
 	* Last 7 Days
 	* Last 30 Days
 	* Last 90 Days
