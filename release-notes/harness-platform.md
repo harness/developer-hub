@@ -11,6 +11,67 @@ Harness Platform is updated regularly. Review the notes below for details about 
 Harness deploys updates progressively to different Harness SaaS clusters. You can identify the cluster hosting your account in your Account Overview page. The features and fixes in the release notes may not be available in your cluster immediately.
 :::
 
+## January 9, 2023, version 781xx
+
+Delegate version: xxxxx
+
+### What's new
+
+- Secrets and connectors now have a character limit of 128 for the **Name** and **ID** fields. (PL-29887)
+  
+- The [Role-Assignments](https://apidocs.harness.io/tag/Role-Assignments/#operation/getFilteredRoleAssignmentByScopeList) API now fetches role assignments by scope. 
+(PL-29496, ZD-36050)
+  This helps you keep a track of the role assignments within a specific scope.
+
+### Important announcement
+- The following role-assignments are removed for all the existing users across all the accounts:(PL-28848)
+  - **Account Viewer - All Account Level Resources**: This was a role-assignment within the account scope and has been removed for all the users.
+  This does not apply in the following scenarios: 
+    - If an account has enabled the feature flag `ACCOUNT_BASIC_ROLE_ONLY`.
+    - If an account does not have the **Account Viewer - All Account Level Resources** role-assignment for the default user group `All Account Users`.
+- **Organization Viewer - All Organization Level Resources**: This was a role-assignment within the organization scope and has been removed for all the users.
+- **Project Viewer - All Project Level Resources**: This was a role-assignment within the project scope and has been removed for all the users.
+
+For more information, see [Default User Group](../../developer-hub/docs/platform/4_Role-Based-Access-Control/5-harness-default-user-groups.md)
+
+### Early access
+
+No early access features are available in this release.
+
+### Fixed issues
+- Inline selection does not display connectors and secrets according to their scope. (PL-30655)
+  
+  An enhancement in the pre-select logic has fixed this issue.
+
+- In spite of selecting **Start TLS** in the UI, the SMTP configuration does not support StartTLS. (PL-30574)
+
+  A code enhancement has resolved this issue.
+
+- The Get Resource Group API returns an HTTP 200 response code when an entity is missing. (PL-30236)
+
+  This has been fixed, and the API now returns an HTTP 404 response code if an entity is missing.
+
+- Editing a connector through connector selection does not automatically select it. (PL-28175)
+
+  Enhancing the connector selection component logic to pre-select the connector in the list if it is in edit mode fixed this issue.
+
+- Unauthorized user login to a Harness account displays a white label error. This happens when the account has SAML enabled with restricted email domain access.(PL-15022)
+  
+  This has been fixed by displaying appropriate error message.
+
+- The date format in Pipeline Studio is incorrect. (PIE-7040)
+
+  Changing the date format to `DD/MM/YYYY` has fixed this issue.
+
+- Input sets with expression set fields does not support autocomplete. (PIE-6990)
+
+  The addition of pipeline variables context provider to the input set form has fixed this issue.
+
+- A hover over the stage does not display the condition details for skipping the stage. (PIE-6987)
+
+  A correction to the path used to collect the details has fixed this issue.
+    
+
 ## December 22, 2022, version 77908
 
 Delegate version: 77802

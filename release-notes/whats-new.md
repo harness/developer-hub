@@ -10,6 +10,16 @@ Learn about the new features that are generally available across all Harness mod
 Harness deploys updates progressively to different Harness SaaS clusters. You can identify the cluster hosting your account in your Account Overview page. The features in these release notes may not be available in your cluster immediately.
 :::
 
+## January 9, 2023, version 781xx
+
+### Harness Platform
+
+- Secrets and connectors now have a character limit of 128 for the **Name** and **ID** fields. (PL-29887)
+  
+- The [Role-Assignments](https://apidocs.harness.io/tag/Role-Assignments/#operation/getFilteredRoleAssignmentByScopeList) API now fetches role assignments by scope. 
+(PL-29496, ZD-36050)
+  This helps you keep a track of the role assignments within a specific scope.
+
 ## December 22, 2022, version 77908
 
 ### Harness Platform
