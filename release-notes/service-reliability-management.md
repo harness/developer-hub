@@ -13,6 +13,31 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
 
+## January xx, 2023, version xxxx
+
+### What's New
+
+This release does not include new features.
+
+### Enhancements
+
+This release does not include enhancements.
+
+### Early Access Features
+
+This release does not include early access features.
+
+### Fixed Issues
+
+Service Health screen displays service status as Healthy even if there is no metric data available from the health source for a time period. (SRM–13336)
+
+Now, the Service Health screen displays the service status as NO_DATA if there is no metric data available from the health source for a time period.
+
+Saving the **Verify** step in a Stage template throws the `Invalid YAML. Can't find pipeline.` error if the YAML file does not contain a pipeline key. (SRM-13320)
+ 
+You can now save the **Verfy** step in a Stage template even if the YAML file does not contain a pipeline key.
+
+
 ## December 22, 2022, version 77908
 
 This release does not include new features, early access features, enhancements, and fixed issues.
