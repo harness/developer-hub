@@ -10,7 +10,7 @@ Learn about the new features that are generally available across all Harness mod
 Harness deploys updates progressively to different Harness SaaS clusters. You can identify the cluster hosting your account in your Account Overview page. The features in these release notes may not be available in your cluster immediately.
 :::
 
-## January 9, 2023, version 781xx
+## January 10, 2023, version 78105
 
 ### Harness Platform
 
