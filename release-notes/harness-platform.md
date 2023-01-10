@@ -11,9 +11,27 @@ Harness Platform is updated regularly. Review the notes below for details about 
 Harness deploys updates progressively to different Harness SaaS clusters. You can identify the cluster hosting your account in your Account Overview page. The features and fixes in the release notes may not be available in your cluster immediately.
 :::
 
-## January 9, 2023, version 781xx
+## January 10, 2023, version 78105
 
-Delegate version: xxxxx
+Delegate version: 78100
+
+### Important announcements
+
+**Update repository references to the NextGen Helm delegate** 
+
+The location of the repository that contains the NextGen Helm chart is changing. Change your references to the repository location from [https://app.harness.io/storage/harness-download/delegate-helm-chart/](https://app.harness.io/storage/harness-download/delegate-helm-chart/) to [https://app.harness.io/storage/harness-download/harness-helm-charts/](https://app.harness.io/storage/harness-download/harness-helm-charts/). Updates to the chart will not be made to the deprecated repository.
+
+**The following role-assignments are removed for all the existing users across all the accounts:**(PL-28848)
+
+  - **Account Viewer - All Account Level Resources**: This was a role-assignment within the account scope and has been removed for all the users.
+  This does not apply in the following scenarios: 
+    - If an account has enabled the feature flag `ACCOUNT_BASIC_ROLE_ONLY`.
+    - If an account does not have the **Account Viewer - All Account Level Resources** role-assignment for the default user group `All Account Users`.
+- **Organization Viewer - All Organization Level Resources**: This was a role-assignment within the organization scope and has been removed for all the users.
+- **Project Viewer - All Project Level Resources**: This was a role-assignment within the project scope and has been removed for all the users.
+
+For more information, see [Default User Group](../../developer-hub/docs/platform/4_Role-Based-Access-Control/5-harness-default-user-groups.md)
+
 
 ### What's new
 
@@ -23,16 +41,9 @@ Delegate version: xxxxx
 (PL-29496, ZD-36050)
   This helps you keep a track of the role assignments within a specific scope.
 
-### Important announcement
-- The following role-assignments are removed for all the existing users across all the accounts:(PL-28848)
-  - **Account Viewer - All Account Level Resources**: This was a role-assignment within the account scope and has been removed for all the users.
-  This does not apply in the following scenarios: 
-    - If an account has enabled the feature flag `ACCOUNT_BASIC_ROLE_ONLY`.
-    - If an account does not have the **Account Viewer - All Account Level Resources** role-assignment for the default user group `All Account Users`.
-- **Organization Viewer - All Organization Level Resources**: This was a role-assignment within the organization scope and has been removed for all the users.
-- **Project Viewer - All Project Level Resources**: This was a role-assignment within the project scope and has been removed for all the users.
+- The repository location of the Helm chart for the NextGen delegate is changing. (DEL-5576) 
 
-For more information, see [Default User Group](../../developer-hub/docs/platform/4_Role-Based-Access-Control/5-harness-default-user-groups.md)
+  The repository is being deprecated. Updates to the chart will not be made to [https://app.harness.io/storage/harness-download/delegate-helm-chart/](https://app.harness.io/storage/harness-download/delegate-helm-chart/) and will not be available from that location. To ensure retrieval of the most recent Helm chart, update your repository references to [https://app.harness.io/storage/harness-download/harness-helm-charts/](https://app.harness.io/storage/harness-download/harness-helm-charts/).
 
 ### Early access
 
@@ -70,7 +81,12 @@ No early access features are available in this release.
 - A hover over the stage does not display the condition details for skipping the stage. (PIE-6987)
 
   A correction to the path used to collect the details has fixed this issue.
-    
+  
+  -   Changed how the NextGen Docker delegate is identified in the delegate section log. The Docker delegate is now identified by the delegate ID, which is the concatenation of `delegateName` and `delegateHostName`. This replaces the use of the delegate name (`delegateHostName`), which was usually the `containerId` value. (DEL-5280) 
+
+- Changed the behavior of the delegate dropdown menu. The UI core library was updated to add a parameter that prevents the reset of expanded states when new data loads in a table. This resolved an issue with the dropdown menu collapsing automatically. (DEL-5541)
+
+- Fixed a problem that was causing the `kryo` component to fail. The problem was caused when nested `java.lang.RuntimeException` errors occurred during manager response. (DEL-5609)    
 
 ## December 22, 2022, version 77908
 
