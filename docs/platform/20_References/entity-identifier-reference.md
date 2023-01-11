@@ -32,7 +32,7 @@ If an entity name cannot be used because it's already occupied by another entity
 
 The `identifier` field is immutable because Harness Entities use this field to interact with each other. If you delete an Entity, or create a copy with a new identifier, references to that Entity will not get updated. For example, each Trigger has a `pipelineIdentifier` field that specifies the Pipeline for that Trigger. If you create a copy of the original Pipeline (with a new identifier) and then delete the original, any Triggers that reference the original will no longer work.
 
-#### Identifier Restrictions
+#### Identifier restrictions
 
 Identifiers have the following restrictions:
 
@@ -63,7 +63,7 @@ Identifiers have the following restrictions:
 
 * Identifiers aren't case-sensitive. For example, the Identifiers `myIdentifier` and `myidentifier` are the same.
 
-#### Identifier Uniqueness
+#### Identifier uniqueness
 
 Identifiers are unique for the scope in which they are created.
 
@@ -79,11 +79,11 @@ If you want to edit the Identifier before you save the new entity or resource, y
 
 If you edit an identifier so that it is not unique or invalid, Harness will alert you.
 
-#### Identifier Reuse
+#### Identifier reuse
 
 Identifiers cannot be reused within the same scope, even if one entity was deleted.
 
-### Identifier Examples
+### Identifier examples
 
 Here's a secret with its Identifier in both the Visual and YAML editors.
 
@@ -101,7 +101,7 @@ secret:
     secretManagerIdentifier: harnessSecretManager  
     valueType: Inline
 ```
-### Related Reference Material
+### References
 
 * [Harness Entity Reference](harness-entity-reference.md)
 
