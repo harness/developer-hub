@@ -3,9 +3,10 @@ id: pod-cpu-hog
 title: Pod CPU hog
 ---
 
-## Introduction
-- Pod CPU hog is a Kubernetes pod-level chaos fault that consumes CPU resources in excess, resulting in a significant spike in the CPU/resource usage of a pod.
-- This fault simulates a condition where the CPU resource usage of an application spikes up unexpectedly.  
+Pod CPU hog is a Kubernetes pod-level chaos fault that:
+
+- Consumes CPU resources in excess, resulting in a significant spike in the CPU/resource usage of a pod.
+- Simulates a condition where the CPU resource usage of an application spikes up unexpectedly.  
 
 :::tip Fault execution flow chart
 ![Pod CPU Hog](./static/images/pod-stress.png)

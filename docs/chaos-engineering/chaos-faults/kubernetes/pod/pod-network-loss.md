@@ -35,10 +35,13 @@ Coming soon.
 
 * This leads you to a page where you can specify parameters for the **Target application**, **Tune fault**, and **Probes**.
 
+* The **Target application** section has three parameters:
+  * **App Namespace**: The namespace where your boutique application (or any other application) is present.
+  * **App Kind**: 
+  * **App Label**: The service within the application into which chaos is injected.
+  
 ![Tune faults](./static/images/nw-loss-specify-parameters.png)
 
-* The **Target application** section has three parameters:
-  
 **Specify the parameters and explain them**
 
 * The **Tune fault** section has three parameters

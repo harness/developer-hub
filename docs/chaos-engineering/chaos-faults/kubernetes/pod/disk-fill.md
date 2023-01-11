@@ -2,8 +2,8 @@
 id: disk-fill
 title: Disk fill
 ---
-It is a chaos fault that results in disk stress by filling up the ephemeral storage of the pod on a node. This fault:
-
+Disk fill is a Kubernetes pod-level chaos fault that:
+- Applies disk stress by filling up the ephemeral storage of the pod on a node.
 - Evicts the application pod when the capacity filled exceeds the pod's ephemeral storage limit.
 - Tests the ephemeral storage limits and ensures that the parameters are sufficient.
 - Tests the application's resiliency to disk stress/replica evictions.
@@ -14,7 +14,7 @@ It is a chaos fault that results in disk stress by filling up the ephemeral stor
 
 ## Usage
 <details>
-<summary>View the uses of the fault</summary>
+<summary>View fault usage</summary>
 <div>
 Coming soon.
 </div>
@@ -23,7 +23,7 @@ Coming soon.
 ## Prerequisites
 :::info
 - Kubernetes > 1.16.
-- Specify ephemeral storage requests and limits for the application before implementing the fault. An example specification is shown below:
+- Specify ephemeral storage requests and limits for the application before fault implementation. An example specification is shown below:
     ```yaml
     apiVersion: v1
     kind: Pod
@@ -51,7 +51,7 @@ Coming soon.
     ```
 :::
 
-## Default validations
+## Default validation
 :::note
 The application pods should be in running state before and after chaos injection.
 :::
@@ -68,11 +68,25 @@ To execute disk fill fault, [setup experiment](provide) and infrastructure.
 
 * This leads you to a page where you can specify parameters for the **Target application**, **Tune fault**, and **Probes**.
 
+* The **Target application** section has three parameters:
+
+    <table>
+      <tr>
+        <th> App Namespace </th>
+        <th> The namespace where your boutique application (or any other application) is present. </th>
+      </tr>
+      <tr>
+        <th> App Kind </th>
+        <th> </th>
+      </tr>
+      <tr>
+        <th> App Label </th>
+        <th> The service within the application into which chaos is injected. </th>
+      </tr>
+  </table>
+
 ![Tune faults](./static/images/disk-fill-specify-parameters.png)
 
-* The **Target application** section has three parameters:
-  
-**Specify the parameters and explain them**
 
 * The **Tune fault** section has three parameters
 
@@ -94,9 +108,7 @@ To execute disk fill fault, [setup experiment](provide) and infrastructure.
 
 ![Run experiment](./static/images/disk-fill-run-exp.png)
 
-* Visit [this link](provide link) to set up Grafana dashboard to visualize the results before and after injecting chaos into the application. 
-
-* Here is a representation of how disk fill affects the application.
+* [Here](provide link) are the steps to set up Grafana dashboard to visualize the results before and after injecting chaos into the application. 
 
 ## Fault tunables
 <details>
@@ -115,8 +127,8 @@ To execute disk fill fault, [setup experiment](provide) and infrastructure.
       </tr>
       <tr>
         <td> EPHEMERAL_STORAGE_MEBIBYTES </td>
-        <td> Ephemeral storage which need to fill (unit: MiBi)</td>
-        <td>It is mutually exclusive with the <code>FILL_PERCENTAGE</code> ENV. If both are provided then it will use the <code>FILL_PERCENTAGE</code></td>
+        <td> Ephemeral storage which need to fill (unit: MiB)</td>
+        <td>It is mutually exclusive with the <code>FILL_PERCENTAGE</code> environment variable. If both are provided,  <code>FILL_PERCENTAGE</code> is used. </td>
       </tr>
     </table>
     <h2>Optional Fields</h2>
@@ -133,7 +145,7 @@ To execute disk fill fault, [setup experiment](provide) and infrastructure.
       </tr>
       <tr> 
         <td> CONTAINER_PATH </td>
-        <td> Storage Location of containers</td>
+        <td> Storage location of containers</td>
         <td> Defaults to '/var/lib/docker/containers' </td>
       </tr>
       <tr> 

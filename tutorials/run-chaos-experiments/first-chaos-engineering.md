@@ -4,7 +4,14 @@ title: Your first chaos experiment run
 description: Run a chaos experiment on Kubernetes for the first time.
 ---
 
-Welcome to Harness Chaos Engineering's first tutorial on running a chaos experiment. By the end of this tutorial, you will have successfully executed a chaos experiment on Kubernetes!
+Welcome to Harness Chaos Engineering's first tutorial on running a chaos experiment. 
+
+In this tutorial, you will utilize an already exisiting application or create a new one, and
+1. Ceate environment, infrastructure and enable chaos on a chaos infrastructure, 
+2. Create a chaos experiment,
+3. Run the chaos experiment on the application and observe the actions that take place to determine how resilient the application is, to unforeseen failures.   
+
+[First Goal](./static/chaos-exp-with-kube-cluster/first-goal.png)
 
 ## What is chaos engineering?
 Chaos engineering is a DevOps practise that involves proactive, and controlled experimentation on a system to identify weak points and misconfigurations, gain insights into how the system behaves in turbulent conditions, and improve the system’s resilience. The system typically comprises the application under test and all the components on which it depends, such as databases, networks, infrastructure, and cloud native services.
@@ -24,7 +31,7 @@ In a chaos experiment, you typically perform the following tasks:
 
 # Access Harness Chaos Engineering
 
- To access HCE, log in to app.harness.io, and then click the **Chaos** tab.
+ To access HCE, log in to app.harness.io, and click the **Chaos** tab.
 
 ## Create a Project
 
@@ -248,12 +255,7 @@ sidebar_position: 1
 title: Your First End-to-End Chaos Experiment
 description: Running a Chaos Experiment on a Kubernetes cluster.
 ---
-In this tutorial, you will utilize an already exisiting application or create a new one, and
-1. Ceate environment, infrastructure and enable chaos on a chaos infrastructure, 
-2. Create a chaos experiment,
-3. Run the chaos experiment on the application and observe the actions that take place to determine how resilient the application is, to unforeseen failures.   
 
-First Goal](./static/chaos-exp-with-kube-cluster/first-goal.png)
 
 ## Prerequisites
 1. Permissions to create a cluster (so that you can create the namespace, resources, etc.)

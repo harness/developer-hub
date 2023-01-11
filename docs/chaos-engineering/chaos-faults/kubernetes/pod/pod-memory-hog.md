@@ -3,9 +3,9 @@ id: pod-memory-hog
 title: Pod memory hog
 ---
 
-## Introduction
-- Pod memory hog is a Kubernetes pod-level chaos fault that consumes memory resources in excess, resulting in a significant spike in the memory usage of a pod.
-- This fault simulates a condition where the memory usage of an application spikes up unexpectedly.  
+Pod memory hog is a Kubernetes pod-level chaos fault that:
+- Consumes memory resources in excess, resulting in a significant spike in the memory usage of a pod.
+- Simulates a condition where the memory usage of an application spikes up unexpectedly.  
 
 **Illustration of how pod memory hog is executed**
 
@@ -64,9 +64,10 @@ resources:
   
 **Specify the parameters and explain them**
 
-* The **Tune fault** section has three parameters
-
-**Specify the parameters and explain them. Mention about container runtime, containerd, socket path.**
+* The **Target application** section has three parameters:
+  * **App Namespace**: The namespace where your boutique application (or any other application) is present.
+  * **App Kind**: 
+  * **App Label**: The service within the application into which the chaos is injected.
 
 ![Tune fault params](./static/images/mem-hog-tune-fault-1.png)
 

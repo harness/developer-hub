@@ -4,7 +4,7 @@ title: Pod IO stress
 ---
 
 It is a chaos fault that causes disk stress on the application pod. This fault:
-- Aims to verify the resiliency of applications that share this disk resource for ephemeral or persistent storage purposes.
+- Aims to verify the resiliency of applications that share this disk resource for ephemeral or persistent storage.
 
 :::tip Fault execution flow chart
 ![Pod IO Stress](./static/images/pod-stress.png)
@@ -39,11 +39,11 @@ To execute pod IO stress fault, [setup experiment](provide) and infrastructure.
 
 * On the right pane, select **Kubernetes** that displays a list of Kubernetes faults available. Select **disk-fill**fault. 
 
-![Select Kubernetes](./static/images/select-disk-fill.png)
+![Select Kubernetes](./static/images/select-io-stress.png)
 
 * This leads you to a page where you can specify parameters for the **Target application**, **Tune fault**, and **Probes**.
 
-![Tune faults](./static/images/disk-fill-specify-parameters.png)
+![Tune faults](./static/images/io-stress-specify-parameters.png)
 
 * The **Target application** section has three parameters:
   
@@ -53,9 +53,9 @@ To execute pod IO stress fault, [setup experiment](provide) and infrastructure.
 
 **Specify the parameters and explain them. Mention about container runtime, containerd, socket path.**
 
-![Tune fault params](./static/images/disk-fill-tune-fault-1.png)
+![Tune fault params](./static/images/io-stress-tune-fault-1.png)
 
-![Tune fault params2](./static/images/disk-fill-tune-fault-2.png)
+![Tune fault params2](./static/images/io-stress-tune-fault-2.png)
 
 * You can see that the probe has been setup successfully with the parameters you specified. Close this pane by clicking on **X** at the top.
 
@@ -67,7 +67,9 @@ To execute pod IO stress fault, [setup experiment](provide) and infrastructure.
 
 * Click **Run** to execute the experiment.
 
-![Run experiment](./static/images/disk-fill-run-exp.png)
+![Run experiment](./static/images/io-stress-run-exp.png)
+
+![After chaos]
 
 * Visit [this link](provide link) to set up Grafana dashboard to visualize the results before and after injecting chaos into the application. 
 
