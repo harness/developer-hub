@@ -1,9 +1,8 @@
 ---
 id: pod-http-modify-header
-title: Pod HTTP Modify Header
+title: Pod HTTP modify header
 ---
 
-## Introduction
 - It injects http modify header on the service whose port is provided as `TARGET_SERVICE_PORT` by starting proxy server and then redirecting the traffic through the proxy server.
 - It can cause modification of headers of requests and responses of the service. This can be used to test service resilience towards incorrect or incomplete headers.
 
@@ -11,9 +10,9 @@ title: Pod HTTP Modify Header
 ![Pod HTTP Modify Header](./static/images/pod-http.png)
 :::
 
-## Uses
+## Usage
 <details>
-<summary>View the uses of the fault</summary>
+<summary>View fault usage</summary>
 <div>
 Coming soon.
 </div>
@@ -21,15 +20,32 @@ Coming soon.
 
 ## Prerequisites
 :::info
-- Ensure that Kubernetes Version > 1.16.
+- Kubernetes > 1.16
 :::
 
-## Default Validations
+## Default validation
 :::note
-The application pods should be in running state before and after chaos injection.
+The application pods should be running before and after injecting chaos.
 :::
 
-## Fault Tunables
+## Implementation
+
+**NOTE:** It is assumed that you already have the boutique app set up in a namespace. If not, follow [this](provide link) to set up your boutique application.
+
+To execute disk fill fault, [setup experiment](provide) and infrastructure.
+
+After successful setup of chaos infrastructure:
+* Choose the **disk-fill** fault from the list of Kubernetes faults available;
+* Specify parameters for the **Target application**, **Tune fault**, and **Probes**;
+
+* Close this pane by clicking on **X** at the top.
+* Set fault weights by clicking on **Set fault weights** tab present on top. 
+* Click **Run** to execute the experiment.
+
+
+## Chaos fault validation
+
+## Fault tunables
 <details>
     <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>
@@ -120,12 +136,12 @@ The application pods should be in running state before and after chaos injection
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common and Pod specific tunables
+### Common and pod specific tunables
 Refer the [common attributes](../../common-tunables-for-all-faults) and [Pod specific tunable](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
 
-### Target Service Port
+### Target service port
 
 It defines the port of the targeted service that is being targeted. It can be tuned via `TARGET_SERVICE_PORT` ENV.
 
@@ -158,7 +174,7 @@ spec:
         - name: HEADERS_MAP
           value: '{"X-Litmus-Test-Header": "X-Litmus-Test-Value"}'
 ```
-### Proxy Port
+### Proxy port
 
 It defines the port on which the proxy server will listen for requests. It can be tuned via `PROXY_PORT`
 
@@ -195,7 +211,7 @@ spec:
           value: '{"X-Litmus-Test-Header": "X-Litmus-Test-Value"}'
 ```
 
-### Headers Map
+### Headers map
 
 It is the map of headers that are to be modified or added to the Http request/response. It can be tuned via `HEADERS_MAP` ENV.
 
@@ -230,7 +246,7 @@ spec:
           value: "80"
 ```
 
-### Header Mode
+### Header mode
 It defined whether the request or the response header has to be modified. It can be tuned via `HEADER_MODE` ENV.
 
 Use the following example to tune this:
@@ -301,7 +317,7 @@ spec:
           value: "80"
 ```
 
-### Network Interface
+### Network interface
 It defines the network interface to be used for the proxy. It can be tuned via `NETWORK_INTERFACE` ENV.
 
 Use the following example to tune this:
@@ -337,7 +353,7 @@ spec:
           value: '{"X-Litmus-Test-Header": "X-Litmus-Test-Value"}'
 ```
 
-### Container Runtime Socket Path
+### Container runtime socket path
 
 It defines the `CONTAINER_RUNTIME` and `SOCKET_PATH` ENV to set the container runtime and socket file path.
 

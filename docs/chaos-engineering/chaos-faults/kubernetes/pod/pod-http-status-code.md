@@ -1,9 +1,8 @@
 ---
 id: pod-http-status-code
-title: Pod HTTP Status Code
+title: Pod HTTP status code
 ---
 
-## Introduction
 - It injects http status code chaos inside the pod which modifies the status code of the response from the provided application server to desired status code provided by user on the service whose port is provided as `TARGET_SERVICE_PORT` by starting proxy server and then redirecting the traffic through the proxy server.
 - It can test the application's resilience to error code http responses from the provided application server.
 
@@ -11,9 +10,9 @@ title: Pod HTTP Status Code
 ![Pod HTTP Status Code](./static/images/pod-http.png)
 :::
 
-## Uses
+## Usage
 <details>
-<summary>View the uses of the fault</summary>
+<summary>View fault usage</summary>
 <div>
 Coming soon.
 </div>
@@ -21,15 +20,32 @@ Coming soon.
 
 ## Prerequisites
 :::info
-- Ensure that Kubernetes Version > 1.16.
+- Kubernetes > 1.16
 :::
 
-## Default Validations
+## Default validation
 :::note
-The application pods should be in running state before and after chaos injection.
+The application pods should be running before and after injecting chaos.
 :::
 
-## Fault Tunables
+## Implementation
+
+**NOTE:** It is assumed that you already have the boutique app set up in a namespace. If not, follow [this](provide link) to set up your boutique application.
+
+To execute disk fill fault, [setup experiment](provide) and infrastructure.
+
+After successful setup of chaos infrastructure:
+* Choose the **disk-fill** fault from the list of Kubernetes faults available;
+* Specify parameters for the **Target application**, **Tune fault**, and **Probes**;
+
+* Close this pane by clicking on **X** at the top.
+* Set fault weights by clicking on **Set fault weights** tab present on top. 
+* Click **Run** to execute the experiment.
+
+
+## Chaos fault validation
+
+## Fault tunables
 <details>
     <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>
@@ -138,12 +154,12 @@ The application pods should be in running state before and after chaos injection
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common and Pod specific tunables
+### Common and pod specific tunables
 Refer the [common attributes](../../common-tunables-for-all-faults) and [Pod specific tunable](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
 
-### Target Service Port
+### Target service port
 
 It defines the port of the targeted service that is being targeted. It can be tuned via `TARGET_SERVICE_PORT` ENV.
 This should be the port where the application runs at the pod level, not at the service level. This means if the application pod is running the service at port 8080 and we create a service exposing that at port 80, then the target service port should be 8080 and not 80, which is the port at pod-level.
@@ -177,7 +193,7 @@ spec:
         - name: STATUS_CODE
           value: '500'
 ```
-### Proxy Port
+### Proxy port
 
 It defines the port on which the proxy server will listen for requests. It can be tuned via `PROXY_PORT` ENV.
 
@@ -214,7 +230,7 @@ spec:
           value: '500'
 ```
 
-### Status Code
+### Status code
 
 It defines the status code value for the http response. It can be tuned via `STATUS_CODE` ENV.
 
@@ -252,7 +268,7 @@ spec:
           value: "80"
 ```
 
-### Modify Response Body
+### Modify response body
 
 It defines whether to modify the respone body with a pre-defined template to match with the status code value of the http response. It can be tuned via `MODIFY_RESPONSE_BODY` ENV.
 
@@ -326,7 +342,7 @@ spec:
           value: "80"
 ```
 
-### RESPONSE BODY
+### Response body
 
 It defines the body string that will overwrite the http response body. It can be tuned via `RESPONSE_BODY` and `MODIFY_RESPONSE_BODY` ENV.
 The `MODIFY_RESPONSE_BODY` ENV should be set to `true` to enable this feature.
@@ -367,7 +383,7 @@ spec:
           value: "80"
 ```
 
-### Content Encoding and Content Type
+### Content encoding and content type
 
 It defines the content encoding and content type of the response body. It can be tuned via `CONTENT_ENCODING` and `CONTENT_TYPE` ENV.
 
@@ -411,7 +427,7 @@ spec:
           value: "80"
 ```
 
-### Network Interface
+### Network interface
 
 It defines the network interface to be used for the proxy. It can be tuned via `NETWORK_INTERFACE` ENV.
 
@@ -448,7 +464,7 @@ spec:
           value: '500'
 ```
 
-### Container Runtime Socket Path
+### Container runtime socket path
 
 It defines the `CONTAINER_RUNTIME` and `SOCKET_PATH` ENV to set the container runtime and socket file path.
 

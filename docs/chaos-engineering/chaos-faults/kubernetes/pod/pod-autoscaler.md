@@ -3,8 +3,8 @@ id: pod-autoscaler
 title: Pod autoscaler
 ---
 Pod autoscaler is a Kubernetes pod-level chaos fault that:
-- Checks the ability of nodes to accommodate multiple replicas a given application pod.
-- Can be used to check node auto-scaling feature, that is, determine if the pods have been successfully rescheduled within a specified period in case the existing nodes are running at the specified limits.
+- Determines whether nodes can accomodate multiple replicas of a given application pod.
+- Examines the node auto-scaling feature by determining whether the pods were successfully rescheduled within a specified time frame if the existing nodes are running at the specified limits.
 
 :::tip Fault execution flow chart
 ![Pod Autoscaler](./static/images/pod-autoscaler.png)
@@ -20,7 +20,7 @@ Coming soon.
 
 ## Prerequisites
 :::info
-- Kubernetes > 1.16.
+- Kubernetes > 1.16
 :::
 
 ## Default validation
@@ -32,25 +32,16 @@ The application pods should be running before and after injecting chaos.
 
 **NOTE:** It is assumed that you already have the boutique app set up in a namespace. If not, follow [this](provide link) to set up your boutique application.
 
-* To execute autoscaler fault, [setup experiment](provide) and infrastructure.
+To execute disk fill fault, [setup experiment](provide) and infrastructure.
 
-* Choose the fault you wish to implement from the list of Kubernetes faults available on the right pane. 
+After successful setup of chaos infrastructure:
+* Choose the **disk-fill**fault from the list of Kubernetes faults available;
+* Specify parameters for the **Target application**, **Tune fault**, and **Probes**;
+  * The prominent parameters here are 
 
-![Select Kubernetes](./static/images/select-disk-fill.png)
-
-* This leads you to a page where you can specify parameters for the **Target application**, **Tune fault**, and **Probes**. More information on these parameters [here](provide link).
-
-* After completing the setup, close this pane by clicking on **X** at the top.
-
-![Probe setup done](./static/images/mem-hog-probe-setup-done.png)
-
-* The next step is [setting the fault weights](provide link).
-
-* After setting the fault weights, **Run** the experiment.
-
-![Run experiment](./static/images/disk-fill-run-exp.png)
-
-* [Here](provide link) are the steps to set up Grafana dashboard to visualize the results before and after injecting chaos into the application. 
+* Close this pane by clicking on **X** at the top.
+* Set fault weights by clicking on **Set fault weights** tab present on top. 
+* Click **Run** to execute the experiment.
 
 ## Fault tunables
 <details>
@@ -93,7 +84,12 @@ The application pods should be running before and after injecting chaos.
     </table>
 </details>
 
-## Fault examples
+* Close this pane by clicking on **X** at the top.
+* Set fault weights by clicking on **Set fault weights** tab present on top. 
+* Click **Run** to execute the experiment.
+
+
+## Chaos fault validation
 
 ### Common and pod specific tunables
 Refer the [common attributes](../../common-tunables-for-all-faults) and [Pod specific tunable](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.

@@ -4,17 +4,16 @@ title: Pod CPU hog
 ---
 
 Pod CPU hog is a Kubernetes pod-level chaos fault that:
-
-- Consumes CPU resources in excess, resulting in a significant spike in the CPU/resource usage of a pod.
-- Simulates a condition where the CPU resource usage of an application spikes up unexpectedly.  
+- Excessively consumes CPU resources, resulting in a significant increase in the CPU resource usage of a pod.
+- Simulates a situation where an application's CPU resource usage unexpectedly spikes.
 
 :::tip Fault execution flow chart
 ![Pod CPU Hog](./static/images/pod-stress.png)
 :::
 
-## Uses
+## Usage
 <details>
-<summary>View the uses of the fault</summary>
+<summary>View fault usage</summary>
 <div>
 Disk Pressure or CPU hogs is another very common and frequent scenario we find in kubernetes applications that can result in the eviction of the application replica and impact its delivery. Such scenarios that can still occur despite whatever availability aids K8s provides. These problems are generally referred to as "Noisy Neighbour" problems.
     
@@ -28,9 +27,9 @@ Injecting a rogue process into a target container, we starve the main microservi
 :::
 
 
-## Default Validations
+## Default validation
 :::note
-The application pods should be in running state before and after chaos injection.
+The application pods should be running before and after injecting chaos.
 :::
 
 
@@ -121,7 +120,7 @@ kubectl top pods <service name> -n <application namespace>
 ![After chaos visual](./static/images/cpu-hog-visual.png)
 
 
-## Fault Tunables
+## Fault tunables
 <details>
     <summary>Check the Fault Tunables</summary>
     <h2>Optional Fields</h2>
@@ -194,12 +193,12 @@ kubectl top pods <service name> -n <application namespace>
     </table>
 </details>
 
-## Fault Examples
+## Fault Eexamples
  
-### Common and Pod specific tunables
+### Common and pod specific tunables
 Refer the [common attributes](../../common-tunables-for-all-faults) and [Pod specific tunable](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
 
-### CPU Cores
+### CPU cores
 
 It stresses the `CPU_CORE` of the targeted pod for the `TOTAL_CHAOS_DURATION` duration.
 
@@ -232,7 +231,7 @@ spec:
           value: '60'
 ```
 
-### CPU Load
+### CPU load
 It contains percentage of pod CPU to be consumed. It can be tuned via `CPU_LOAD` ENV.
 
 Use the following example to tune this:
@@ -268,7 +267,7 @@ spec:
           value: '60'
 ```
 
-### Container Runtime Socket Path
+### Container runtime socket path
 
 It defines the `CONTAINER_RUNTIME` and `SOCKET_PATH` ENV to set the container runtime and socket file path.
 
@@ -308,7 +307,7 @@ spec:
           VALUE: '60'
 ```
 
-### Pumba Chaos Library
+### Pumba chaos library
 
 It specifies the Pumba chaos library for the chaos injection. It can be tuned via `LIB` ENV. The defaults chaos library is `litmus`.
 Provide the stress image via `STRESS_IMAGE` ENV for the pumba library.

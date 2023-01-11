@@ -1,20 +1,18 @@
 ---
 id: pod-cpu-hog-exec
-title: Pod CPU Hog Exec
+title: Pod CPU hog exec
 ---
-
-## Introduction
-- This fault consumes the CPU resources of the application container.
-
-- It simulates conditions where app pods experience CPU spikes either due to expected/undesired processes thereby testing how the overall application stack behaves when this occurs.
+Pod CPU hog exec is a Kubernetes pod-level chaos fault that:
+- Consumes excess CPU resources of the application container.
+- Simulates conditions where the application pods experience CPU spikes due to expected (or undesired) processes thereby testing the behaviour of application stack.
 
 :::tip Fault execution flow chart
 ![Pod CPU Hog Exec](./static/images/pod-stress.png)
 :::
 
-## Uses
+## Usage
 <details>
-<summary>View the uses of the fault</summary>
+<summary>View fault usage</summary>
 <div>
 Disk Pressure or CPU hogs is another very common and frequent scenario we find in kubernetes applications that can result in the eviction of the application replica and impact its delivery. Such scenarios that can still occur despite whatever availability aids K8s provides. These problems are generally referred to as "Noisy Neighbor"  problems.
 
@@ -24,15 +22,33 @@ Injecting a rogue process into a target container, we starve the main microservi
 
 ## Prerequisites
 :::info
-- Ensure that Kubernetes Version > 1.16.
+- Kubernetes > 1.16
 :::
 
-## Default Validations
+## Default validation
 :::note
-The application pods should be in running state before and after chaos injection.
+The application pods should be running before and after injecting chaos.
 :::
 
-## Fault Tunables
+## Implementation
+
+**NOTE:** It is assumed that you already have the boutique app set up in a namespace. If not, follow [this](provide link) to set up your boutique application.
+
+To execute disk fill fault, [setup experiment](provide) and infrastructure.
+
+After successful setup of chaos infrastructure:
+* Choose the **disk-fill** fault from the list of Kubernetes faults available;
+* Specify parameters for the **Target application**, **Tune fault**, and **Probes**;
+
+* Close this pane by clicking on **X** at the top.
+* Set fault weights by clicking on **Set fault weights** tab present on top. 
+* Click **Run** to execute the experiment.
+
+
+## Chaos fault validation
+
+
+## Fault tunables
 <details>
     <summary>Check the Fault Tunables</summary>
     <h2>Optional Fields</h2>
@@ -95,12 +111,12 @@ The application pods should be in running state before and after chaos injection
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common and Pod specific tunables
+### Common and pod specific tunables
 Refer the [common attributes](../../common-tunables-for-all-faults) and [Pod specific tunable](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
 
-### CPU Cores
+### CPU cores
 
 It stresses the `CPU_CORE` CPU cores of the targeted pod for the `TOTAL_CHAOS_DURATION` duration.
 
@@ -133,7 +149,7 @@ spec:
           value: '60'
 ```
 
-### Chaos Inject and Kill Commands
+### Chaos inject and kill commands
 
 It defines the `CHAOS_INJECT_COMMAND` and `CHAOS_KILL_COMMAND` ENV to set the chaos inject and chaos kill commands respectively.
 Default values of commands:

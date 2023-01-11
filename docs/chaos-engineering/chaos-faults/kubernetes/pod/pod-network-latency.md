@@ -3,7 +3,6 @@ id: pod-network-latency
 title: Pod network latency
 ---
 
-## Introduction
 - It introduces latency (delay) to a specific container by initiating a traffic control (tc) process with netem rules to add egress delays.
 - It tests the application's resilience to lossy/flaky networks.
 
@@ -13,7 +12,7 @@ title: Pod network latency
 
 ## Usage
 <details>
-<summary>Fault application</summary>
+<summary>View fault usage</summary>
 <div>
 The fault causes network degradation without the pod being marked unhealthy/unworthy of traffic by kube-proxy (unless you have a liveness probe of sorts that measures latency and restarts/crashes the container). The idea of this fault is to simulate issues within your pod network OR microservice communication across services in different availability zones/regions etc. 
 
@@ -25,17 +24,24 @@ The applications may stall or get corrupted while they wait endlessly for a pack
 
 ## Prerequisites
 :::info
-- Kubernetes > 1.16.
+- Kubernetes > 1.16
 - It is assumed that you already have the boutique app set up in a namespace. If not, follow [this](provide link) to set up your boutique application.
 :::
 
-## Default Validation
+## Default validation
 :::note
-The application pods should be in running state before and after chaos injection.
+The application pods should be running before and after injecting chaos.
 :::
 
 ## Implementation
 
+**NOTE:** It is assumed that you already have the boutique app set up in a namespace. If not, follow [this](provide link) to set up your boutique application.
+
+To execute disk fill fault, [setup experiment](provide) and infrastructure.
+
+After successful setup of chaos infrastructure:
+* Choose the **disk-fill** fault from the list of Kubernetes faults available;
+* Specify parameters for the **Target application**, **Tune fault**, and **Probes**;
 * The next step is [setup experiment](provide) to execute the chaos faults.
 
 * On the right pane, select **Kubernetes** that displays a list of Kubernetes faults available. Select **pod-network-latency** fault. 
@@ -84,7 +90,14 @@ kubectl top pods <service name> -n <application namespace>
 ![During chaos](./static/images/nw-latency-during-chaos.png)
 
 
-## Fault Tunables
+* Close this pane by clicking on **X** at the top.
+* Set fault weights by clicking on **Set fault weights** tab present on top. 
+* Click **Run** to execute the experiment.
+
+
+## Chaos fault validation
+
+## Fault tunables
 <details>
     <summary>Check the Fault Tunables</summary>
     <h2>Optional Fields</h2>
@@ -177,12 +190,12 @@ kubectl top pods <service name> -n <application namespace>
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common and Pod specific tunables
+### Common and pod specific tunables
 Refer the [common attributes](../../common-tunables-for-all-faults) and [Pod specific tunable](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
 
-### Network Latency
+### Network latency
 
 It defines the network latency(in ms) to be injected in the targeted application. It can be tuned via `NETWORK_LATENCY` ENV. 
 
@@ -215,7 +228,7 @@ spec:
           value: '60'
 ```
 
-### Destination IPs And Destination Hosts
+### Destination IPs and destination hosts
 
 The network faults interrupt traffic for all the IPs/hosts by default. The interruption of specific IPs/Hosts can be tuned via `DESTINATION_IPS` and `DESTINATION_HOSTS` ENV.
 
@@ -254,7 +267,7 @@ spec:
           value: '60'
 ```
 
-### Network Interface
+### Network interface
 
 The defined name of the ethernet interface, which is considered for shaping traffic. It can be tuned via `NETWORK_INTERFACE` ENV. Its default value is `eth0`.
 
@@ -318,7 +331,7 @@ spec:
           value: '200'
 ```
 
-### Container Runtime Socket Path
+### Container runtime socket path
 
 It defines the `CONTAINER_RUNTIME` and `SOCKET_PATH` ENV to set the container runtime and socket file path.
 
@@ -358,7 +371,7 @@ spec:
           VALUE: '60'
 ```
 
-### Pumba Chaos Library
+### Pumba chaos library
 
 It specifies the Pumba chaos library for the chaos injection. It can be tuned via `LIB` ENV. The defaults chaos library is `litmus`.
 Provide the traffic control image via `TC_IMAGE` ENV for the Pumba library.

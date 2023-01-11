@@ -1,6 +1,6 @@
 ---
 id: pod-dns-spoof
-title: Pod DNS Spoof
+title: Pod DNS spoof
 ---
 
 - Pod-dns-spoof injects chaos to spoof dns resolution in kubernetes pods.
@@ -12,7 +12,7 @@ title: Pod DNS Spoof
 
 ## Usage
 <details>
-<summary>View the uses of the fault</summary>
+<summary>View fault usage</summary>
 <div>
 Coming soon.
 </div>
@@ -20,13 +20,32 @@ Coming soon.
 
 ## Prerequisites
 :::info
-- Kubernetes > 1.16.
+- Kubernetes > 1.16
 :::
 
 ## Default validation
 :::note
-The application pods should be in running state before and after chaos injection.
+The application pods should be running before and after injecting chaos.
 :::
+
+
+## Implementation
+
+**NOTE:** It is assumed that you already have the boutique app set up in a namespace. If not, follow [this](provide link) to set up your boutique application.
+
+To execute disk fill fault, [setup experiment](provide) and infrastructure.
+
+After successful setup of chaos infrastructure:
+* Choose the **disk-fill** fault from the list of Kubernetes faults available;
+* Specify parameters for the **Target application**, **Tune fault**, and **Probes**;
+
+* Close this pane by clicking on **X** at the top.
+* Set fault weights by clicking on **Set fault weights** tab present on top. 
+* Click **Run** to execute the experiment.
+
+
+## Chaos fault validation
+
 
 ## Fault tunables
 <details>

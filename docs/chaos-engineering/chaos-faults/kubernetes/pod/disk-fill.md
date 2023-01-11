@@ -3,10 +3,10 @@ id: disk-fill
 title: Disk fill
 ---
 Disk fill is a Kubernetes pod-level chaos fault that:
-- Applies disk stress by filling up the ephemeral storage of the pod on a node.
-- Evicts the application pod when the capacity filled exceeds the pod's ephemeral storage limit.
+- Applies disk stress by filling the pod's ephemeral storage on a node.
+- Evicts the application pod if its capacity exceeds the pod's ephemeral storage limit.
 - Tests the ephemeral storage limits and ensures that the parameters are sufficient.
-- Tests the application's resiliency to disk stress/replica evictions.
+- Evaluates the application's resilience to disk stress (or replica) evictions.
 
 :::tip Fault execution flow chart
 ![Disk Fill](./static/images/disk-fill.png)
@@ -22,7 +22,7 @@ Coming soon.
 
 ## Prerequisites
 :::info
-- Kubernetes > 1.16.
+- Kubernetes > 1.16
 - Specify ephemeral storage requests and limits for the application before fault implementation. An example specification is shown below:
     ```yaml
     apiVersion: v1
@@ -53,7 +53,7 @@ Coming soon.
 
 ## Default validation
 :::note
-The application pods should be in running state before and after chaos injection.
+The application pods should be running before and after injecting chaos.
 :::
 
 ## Implementation
@@ -62,134 +62,96 @@ The application pods should be in running state before and after chaos injection
 
 To execute disk fill fault, [setup experiment](provide) and infrastructure.
 
-* On the right pane, select **Kubernetes** that displays a list of Kubernetes faults available. Select **disk-fill**fault. 
+After successful setup of chaos infrastructure:
+* Choose the **disk-fill** fault from the list of Kubernetes faults available;
+* Specify parameters for the **Target application**, **Tune fault**, and **Probes**;
+    <details>
+      <summary>Fault Tunables</summary>
+      <h2>Optional Fields</h2>
+      <table>
+        <tr>
+          <th> Variables </th>
+          <th> Description </th>
+          <th> Notes </th>
+        </tr>
+        <tr> 
+          <td> FILL_PERCENTAGE </td>
+          <td> Percentage to fill the ephemeral storage limit </td>
+          <td> Can be set to more than 100 also, to force evict the pod. The ephemeral-storage limits must be set in targeted pod to use this ENV.</td>
+        </tr>
+        <tr>
+          <td> EPHEMERAL_STORAGE_MEBIBYTES </td>
+          <td> Ephemeral storage which need to fill (unit: MiB)</td>
+          <td>It is mutually exclusive with the <code>FILL_PERCENTAGE</code> environment variable. If both are provided,  <code>FILL_PERCENTAGE</code> is used. </td>
+        </tr>
+      </table>
+      <h2>Optional Fields</h2>
+      <table>
+        <tr>
+          <th> Variables </th>
+          <th> Description </th>
+          <th> Notes </th>
+        </tr>
+        <tr> 
+          <td> TARGET_CONTAINER </td>
+          <td> Name of container which is subjected to disk-fill </td>
+          <td> If not provided, the first container in the targeted pod will be subject to chaos </td>
+        </tr>
+        <tr> 
+          <td> CONTAINER_PATH </td>
+          <td> Storage location of containers</td>
+          <td> Defaults to '/var/lib/docker/containers' </td>
+        </tr>
+        <tr> 
+          <td> TOTAL_CHAOS_DURATION </td>
+          <td> The time duration for chaos insertion (sec) </td>
+          <td> Defaults to 60s </td>
+        </tr>
+        <tr>
+          <td> TARGET_PODS </td>
+          <td> Comma separated list of application pod name subjected to disk fill chaos</td>
+          <td> If not provided, it will select target pods randomly based on provided appLabels</td>
+        </tr> 
+        <tr>
+          <td> DATA_BLOCK_SIZE </td>
+          <td> It contains data block size used to fill the disk(in KB)</td>
+          <td> Defaults to 256, it supports unit as KB only</td>
+        </tr> 
+        <tr>
+          <td> PODS_AFFECTED_PERC </td>
+          <td> The Percentage of total pods to target </td>
+          <td> Defaults to 0 (corresponds to 1 replica), provide numeric value only </td>
+        </tr> 
+        <tr>
+          <td> LIB </td>
+          <td> The chaos lib used to inject the chaos </td>
+          <td> Defaults to `litmus` supported litmus only </td>
+        </tr>
+        <tr>
+          <td> LIB_IMAGE </td>
+          <td> The image used to fill the disk </td>
+          <td> Defaults to <code>litmuschaos/go-runner:latest</code> </td>
+        </tr>
+        <tr>
+          <td> RAMP_TIME </td>
+          <td> Period to wait before injection of chaos in sec </td>
+          <td> Eg. 30 </td>
+        </tr>
+        <tr>
+          <td> SEQUENCE </td>
+          <td> It defines sequence of chaos execution for multiple target pods </td>
+          <td> Default value: parallel. Supported: serial, parallel </td>
+        </tr>
+      </table>
+  </details>
 
-![Select Kubernetes](./static/images/select-disk-fill.png)
-
-* This leads you to a page where you can specify parameters for the **Target application**, **Tune fault**, and **Probes**.
-
-* The **Target application** section has three parameters:
-
-    <table>
-      <tr>
-        <th> App Namespace </th>
-        <th> The namespace where your boutique application (or any other application) is present. </th>
-      </tr>
-      <tr>
-        <th> App Kind </th>
-        <th> </th>
-      </tr>
-      <tr>
-        <th> App Label </th>
-        <th> The service within the application into which chaos is injected. </th>
-      </tr>
-  </table>
-
-![Tune faults](./static/images/disk-fill-specify-parameters.png)
-
-
-* The **Tune fault** section has three parameters
-
-**Specify the parameters and explain them. Mention about container runtime, containerd, socket path.**
-
-![Tune fault params](./static/images/disk-fill-tune-fault-1.png)
-
-![Tune fault params2](./static/images/disk-fill-tune-fault-2.png)
-
-* You can see that the probe has been setup successfully with the parameters you specified. Close this pane by clicking on **X** at the top.
-
-![Probe setup done](./static/images/mem-hog-probe-setup-done.png)
-
-* Navigate to the next step of setting fault weights. Click the **Set fault weights** present on top. 
-
-![Set weights](./static/images/disk-fill-set-fault-weight.png)
-
+* Close this pane by clicking on **X** at the top.
+* Set fault weights by clicking on **Set fault weights** tab present on top. 
 * Click **Run** to execute the experiment.
 
-![Run experiment](./static/images/disk-fill-run-exp.png)
 
-* [Here](provide link) are the steps to set up Grafana dashboard to visualize the results before and after injecting chaos into the application. 
+## Chaos fault validation
 
-## Fault tunables
-<details>
-    <summary>Check the Fault Tunables</summary>
-    <h2>Optional Fields</h2>
-    <table>
-      <tr>
-        <th> Variables </th>
-        <th> Description </th>
-        <th> Notes </th>
-      </tr>
-      <tr> 
-        <td> FILL_PERCENTAGE </td>
-        <td> Percentage to fill the Ephemeral storage limit </td>
-        <td> Can be set to more than 100 also, to force evict the pod. The ephemeral-storage limits must be set in targeted pod to use this ENV.</td>
-      </tr>
-      <tr>
-        <td> EPHEMERAL_STORAGE_MEBIBYTES </td>
-        <td> Ephemeral storage which need to fill (unit: MiB)</td>
-        <td>It is mutually exclusive with the <code>FILL_PERCENTAGE</code> environment variable. If both are provided,  <code>FILL_PERCENTAGE</code> is used. </td>
-      </tr>
-    </table>
-    <h2>Optional Fields</h2>
-    <table>
-      <tr>
-        <th> Variables </th>
-        <th> Description </th>
-        <th> Notes </th>
-      </tr>
-      <tr> 
-        <td> TARGET_CONTAINER </td>
-        <td> Name of container which is subjected to disk-fill </td>
-        <td> If not provided, the first container in the targeted pod will be subject to chaos </td>
-      </tr>
-      <tr> 
-        <td> CONTAINER_PATH </td>
-        <td> Storage location of containers</td>
-        <td> Defaults to '/var/lib/docker/containers' </td>
-      </tr>
-      <tr> 
-        <td> TOTAL_CHAOS_DURATION </td>
-        <td> The time duration for chaos insertion (sec) </td>
-        <td> Defaults to 60s </td>
-      </tr>
-      <tr>
-        <td> TARGET_PODS </td>
-        <td> Comma separated list of application pod name subjected to disk fill chaos</td>
-        <td> If not provided, it will select target pods randomly based on provided appLabels</td>
-      </tr> 
-      <tr>
-        <td> DATA_BLOCK_SIZE </td>
-        <td> It contains data block size used to fill the disk(in KB)</td>
-        <td> Defaults to 256, it supports unit as KB only</td>
-      </tr> 
-      <tr>
-        <td> PODS_AFFECTED_PERC </td>
-        <td> The Percentage of total pods to target </td>
-        <td> Defaults to 0 (corresponds to 1 replica), provide numeric value only </td>
-      </tr> 
-      <tr>
-        <td> LIB </td>
-        <td> The chaos lib used to inject the chaos </td>
-        <td> Defaults to `litmus` supported litmus only </td>
-      </tr>
-      <tr>
-        <td> LIB_IMAGE </td>
-        <td> The image used to fill the disk </td>
-        <td> Defaults to <code>litmuschaos/go-runner:latest</code> </td>
-      </tr>
-      <tr>
-        <td> RAMP_TIME </td>
-        <td> Period to wait before injection of chaos in sec </td>
-        <td> Eg. 30 </td>
-      </tr>
-      <tr>
-        <td> SEQUENCE </td>
-        <td> It defines sequence of chaos execution for multiple target pods </td>
-        <td> Default value: parallel. Supported: serial, parallel </td>
-      </tr>
-    </table>
-</details>
 
 ## Fault examples
 

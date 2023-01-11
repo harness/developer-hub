@@ -12,7 +12,7 @@ It is a chaos fault that causes disk stress on the application pod. This fault:
 
 ## Usage
 <details>
-<summary>View the uses of the fault</summary>
+<summary>View fault usage</summary>
 <div>
 Disk Pressure or CPU hogs is another very common and frequent scenario we find in kubernetes applications that can result in the eviction of the application replica and impact its delivery. Such scenarios that can still occur despite whatever availability aids K8s provides. These problems are generally referred to as "Noisy Neighbour" problems.
 
@@ -22,12 +22,12 @@ Stressing the disk with continuous and heavy IO for example can cause degradatio
 
 ## Prerequisites
 :::info
-- Kubernetes > 1.16.
+- Kubernetes > 1.16
 :::
 
-## Default validations
+## Default validation
 :::note
-The application pods should be in running state before and after chaos injection.
+The application pods should be running before and after injecting chaos.
 :::
 
 
@@ -75,6 +75,12 @@ To execute pod IO stress fault, [setup experiment](provide) and infrastructure.
 
 * Here is a representation of how disk fill affects the application.
 
+* Close this pane by clicking on **X** at the top.
+* Set fault weights by clicking on **Set fault weights** tab present on top. 
+* Click **Run** to execute the experiment.
+
+
+## Chaos fault validation
 
 ## Fault tunables
 <details>

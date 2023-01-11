@@ -15,7 +15,7 @@ Pod memory hog is a Kubernetes pod-level chaos fault that:
 
 ## Usage
 <details>
-<summary>View the uses of the fault</summary>
+<summary>View fault usage</summary>
 <div>
 **REWRITE**
 Memory usage within containers is subject to various constraints in Kubernetes. If the limits are specified in their spec, exceeding them can cause termination of the container (due to OOMKill of the primary process, often pid 1) - the restart of the container by kubelet, subject to the policy specified. For containers with no limits placed, the memory usage is uninhibited until such time as the Node level OOM behavior takes over. In this case, containers on the node can be killed based on their oom_score and the QoS class a given pod belongs to (bestEffort ones are first to be targeted). This eval is extended to all pods running on the node - thereby causing a bigger blast radius. 
@@ -31,7 +31,7 @@ This fault launches a stress process within the target container - which can cau
 
 ## Default validation
 :::note
-The pods in the application should be in the running state before and after the chaos has been injected.
+The application pods should be running before and after injecting chaos.
 :::
 
 ## Implementation
@@ -120,6 +120,13 @@ kubectl top pods <service name> -n <application namespace>
 ![After chaos](./static/images/mem-hog-after-chaos.png)
 
 ![After chaos visual](./static/images/mem-hog-visual.png)
+
+* Close this pane by clicking on **X** at the top.
+* Set fault weights by clicking on **Set fault weights** tab present on top. 
+* Click **Run** to execute the experiment.
+
+
+## Chaos fault validation
 
 
 ## Fault tunables
