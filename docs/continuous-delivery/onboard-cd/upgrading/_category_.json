@@ -1,0 +1,14 @@
+{
+    "label": "Upgrading CD",
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "link": {
+        "type": "generated-index",
+        "title": "Upgrading CD"
+    },
+    "customProps": {
+        "position": "300",
+        "helpdocs_category_id": "c9j6jejsws"
+    }
+}
