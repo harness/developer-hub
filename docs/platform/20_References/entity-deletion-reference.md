@@ -45,7 +45,7 @@ In some cases, you might try to delete an entity, but the entity is used by anot
 
 Harness will identify that you do not have permission to edit the other entity, and so you cannot delete this entity.
 
-### Deletion of roles
+### Role deletions
 
 When attempting to delete a role, you will see all the Groups assigned to it.
 
@@ -55,7 +55,7 @@ Role Id has the following deletion rules:
 * If the deleted role effects active users, they are prevented from performing the operations granted by the removed role’s permissions.   
 For example, if a user was assigned to a role that had the Create/Edit Pipeline permission, and the role is removed, then the user can no longer create or edit Pipelines.
 
-### Deletion of users
+### User deletions
 
 A User entity is identified by their Id. The Id is the email address used to invite and sign up the User:
 
@@ -64,7 +64,7 @@ A User and its Id can be deleted.
 
 When a User is deleted, their Id (email address) can’t be used until the User is completely removed from the system. See [Entity Retention Policy](entity-retention-policy.md).
 
-### Deletion of pipelines
+### Pipeline deletions
 
 When you delete a Pipeline, Harness will list all the related entities that will be deleted from Harness.
 
@@ -75,7 +75,7 @@ Pipeline deletion has the following rules:
 * The Pipeline is removed from Harness and is not available.
 * All [Input Sets and Overlays](../8_Pipelines/run-pipelines-using-input-sets-and-overlays.md) in the deleted Pipeline are deleted also.
 
-### Deletion of projects
+### Project deletions
 
 When you delete a Project, Harness will list all the related entities that will be deleted from Harness.
 
