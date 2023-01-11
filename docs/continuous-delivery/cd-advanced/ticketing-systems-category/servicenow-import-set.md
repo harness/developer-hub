@@ -27,6 +27,14 @@ For more information on ServiceNow import sets, go to [Import Set - POST /now/im
 
 :::
 
+## Required ServiceNow roles
+
+The following roles are required by the ServiceNow account used in the Harness ServiceNow connector you select in the ServiceNow Import Set step.
+
+- import_transformer.
+- role mapping to CRUD permissions on the staging table for the user (user role for custom security ACL for staging table).
+- role mapping to READ permissions for each of the target tables that have an existing transform map from the specified staging table to the target table(s).
+
 ## Add a ServiceNow Import Set step
 
 You can add a ServiceNow Import Set step anywhere in CD, approval, or custom stages where you need to import data using a staging table.
@@ -98,5 +106,6 @@ To reference these results as expressions in other pipeline steps, click the cop
 
 You can echo them in a subsequent step, such as a [Shell Script step](../../cd-execution/cd-general-steps/using-shell-scripts.md).
 
+## Notes
 
-
+It is advised to use custom fields instead of out of the box fields in transform maps, especially when an import set staging table has more than 1 associated transform map.
