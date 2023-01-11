@@ -60,7 +60,7 @@ Duplicate the configuration file for a delegate that is installed and registered
 
 Ensure that the delegate environment variables are correctly set.
 
-The delegate configuration file contains environment variables for account, Organization, and Project. The account variable is always set with your Harness account ID.
+The delegate configuration file contains environment variables for account, organization, and project. The account variable is always set with your Harness account ID.
 
 If your delegate is registered at the account level, the Organization and Project variables will be empty. If your delegate is registered at the Organization level, the Project variable will be empty.
 
