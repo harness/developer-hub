@@ -55,13 +55,13 @@ prometheus-operator     ClusterIP   None          <none>        8080/TCP        
 ```
 #### Prometheus
 
-The Prometheus port number is taken from the `prometheus-k8s` service (in this example `30900`).
+The Prometheus port number is taken from the `prometheus-k8s` service (in this example, `30900`).
 
-Combine that port number with the public IP for Harness Self-Managed Enterprise Edition and you have the Prometheus endpoint.
+Combine that port number with the public IP address for Harness Self-Managed Enterprise Edition and you have the Prometheus endpoint.
 
-If you have a load balancer configured, then configure it to support the `prometheus-k8s` port number.In the KOTS admin tool, in **Application**, click **Configure Prometheus Address**.
+If you have a load balancer configured, update the configuration to support the `prometheus-k8s` port number. In the KOTS admin tool, in **Application**, click **Configure Prometheus Address**.
 
-In **Configure graphs**, enter the URL using the public IP and the Prometheus port number.
+In **Configure graphs**, enter the URL using the public IP address and the Prometheus port number.
 
 ![](./static/monitor-harness-on-prem-08.png)
 
@@ -76,7 +76,7 @@ The Grafana port is listed by running `kubectl get svc -n monitoring`:
 grafana                 NodePort    10.96.2.252   <none>        3000:30902/TCP               
 ```
 
-Combine that port number with the public IP for Harness Self-Managed Enterprise Edition and you have the Grafana endpoint. For example `http://35.233.239.15:30902`.
+Combine that port number with the public IP address for Harness Self-Managed Enterprise Edition and you have the Grafana endpoint. For example `http://35.233.239.15:30902`.
 
 Log into Grafana using the generated username and password you received when you installed Harness Self-Managed Enterprise Edition:
 
@@ -90,7 +90,8 @@ If you do not have the username and password, log into the VM hosting Harness Se
 ```
 kubectl get secrets grafana-admin -n monitoring -o yaml
 ```
-Once you are logged in, go to Dashboards and click a default dashboard or created a new one.
+
+Log in and navigate to **Dashboards**. Click a default dashboard or create a new one.
 
 ![](./static/monitor-harness-on-prem-09.png)
 
@@ -106,37 +107,38 @@ For information on querying Prometheus, see [Querying Prometheus](https://promet
 
 The Alertmanager port is listed by running `kubectl get svc -n monitoring`:
 
-
 ```
 alertmanager-main       NodePort    10.96.2.240   <none>        9093:30903/TCP
 ```
-Combine that port number with the public IP for Harness Self-Managed Enterprise Edition and you have the Alertmanager endpoint. For example `http://35.233.239.15:30903`.
+
+Combine that port number with the public IP address for Harness Self-Managed Enterprise Edition and you have the Alertmanager endpoint. For example,  `http://35.233.239.15:30903`.
 
 See [Alerting Rules](https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/) from Prometheus for details on setting up alerts.
 
-### Monitoring Harness Self-Managed Enterprise Edition - Kubernetes Cluster
+### Monitoring Harness Self-Managed Enterprise Edition - Kubernetes cluster
 
 Harness does not provide default monitoring for Harness Self-Managed Enterprise Edition.
 
-You can deploy a Prometheus server and Grafana to monitor Harness Self-Managed Enterprise Edition. For steps on setting up monitoring using Prometheus, Grafana, and Alertmanager, see [Prometheus](https://kots.io/kotsadm/monitoring/prometheus/) in the KOTS docs.
+You can deploy a Prometheus server and Grafana to monitor Harness Self-Managed Enterprise Edition. For steps on setting up monitoring using Prometheus, Grafana, and Alertmanager, see [Prometheus](https://kots.io/kotsadm/monitoring/prometheus/) in the KOTS documentation.
 
-If you have an existing Prometheus setup, in the KOTS admin tool you can click **Configure Prometheus Address** and then enter the Prometheus URL endpoint.
+If you have an existing Prometheus setup, in the KOTS admin tool, click **Configure Prometheus Address** and then enter the Prometheus URL endpoint.
 
 ### Availability monitoring
 
-The following table shows the two available URL endpoints. These are microservices with external endpoints (they have Ingress configured by default).
+The following table shows the two available URL endpoints. These are microservices with external endpoints; ingress is configured by default.
 
-In these examples, `<domain name>` represents your vanity URL (for example, `mycompany.harness.io`). If your load balancer directs internal traffic for `app.harness.io` then the URLs can use that address.
+In these examples, `<domain name>` represents your vanity URL (for example, `mycompany.harness.io`). If your load balancer directs internal traffic for `app.harness.io`, you can use that address in the URLs.
 
 
 
 | **Service Name** | **Endpoint** | **Response** |
-| --- | --- | --- |
+| :-- | :-- | :-- |
 | Verification | `https://<domain name>/verification/health` | `{"metaData":{},"resource":"healthy","responseMessages":[]}` |
 | NextGen Manager | `https://<domain name>/ng/api/health` | `{"status":"SUCCESS","data":"healthy","metaData":null,"correlationId":"a38c51ac-07ec-4596-b40b-4cc9487f8506"}` |
 
-The following methods can be used for monitoring other Harness Self-Managed Enterprise Edition microservices:
+You can use the following methods to monitor other microservices in Self-Managed Enterprise Edition:
 
-* MongoDB: there are many ways to monitor MongoDB instances. For example, you can monitor your MongoDB database with Grafana and Prometheus. See the article [MongoDB Monitoring with Grafana & Prometheus](https://devconnected.com/mongodb-monitoring-with-grafana-prometheus/) for a summary.
-* Disk/Memory: use the [Kubernetes pod dashboard](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/).
+* MongoDB. There are many ways to monitor MongoDB instances. For example, you can monitor your MongoDB database with Grafana and Prometheus. For a summary, see the article [MongoDB Monitoring with Grafana & Prometheus](https://devconnected.com/mongodb-monitoring-with-grafana-prometheus/).
+
+* Disk/Memory. Use the [Kubernetes pod dashboard](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/).
 
