@@ -361,7 +361,7 @@ You can see the `-H 'X-Api-Key: sample_api_key'` parameter in the cURL command y
 curl -X POST -H 'content-type: application/json' -H 'X-Api-Key: sample_api_key' --url 'https://qa.harness.io/gateway/pipeline/api/webhook/custom/v2?accountIdentifier=px7xd_BFRCi-pfWPYXVjvw&orgIdentifier=default&projectIdentifier=Docs&pipelineIdentifier=Custom&triggerIdentifier=Custom' -d '{"sample_key": "sample_value"}'
 ```
 
-You can use this parameter with a Harness API key in your cURL command to authorize the execution of a trigger. You can also enforce the use of APIs for all custom triggers.
+You can use this parameter with a Harness API key in your cURL command to authorize the execution of a trigger. You can also enforce the use of API keys for all custom triggers.
 
 :::note
 
