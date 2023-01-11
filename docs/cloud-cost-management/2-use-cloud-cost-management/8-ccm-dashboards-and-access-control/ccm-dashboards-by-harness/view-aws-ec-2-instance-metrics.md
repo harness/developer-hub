@@ -9,7 +9,7 @@ helpdocs_is_published: true
 ---
 
 
-Harness provides pre-loaded **By Harness** (pre-defined) and **Custom** (user-defined) Dashboards to visualize cloud cost data across clusters and cloud accounts. Using the **AWS EC2** **Instance Metrics** **Dashboard** you can:
+Harness provides preloaded **By Harness** (pre-defined) and **Custom** (user-defined) Dashboards to visualize cloud cost data across clusters and cloud accounts. Using the **AWS EC2** **Instance Metrics** **Dashboard** you can:
 
 * Discover new analytical insights into your AWS EC2 instances metrics
 * Track various cloud cost indicators across different zones and time range

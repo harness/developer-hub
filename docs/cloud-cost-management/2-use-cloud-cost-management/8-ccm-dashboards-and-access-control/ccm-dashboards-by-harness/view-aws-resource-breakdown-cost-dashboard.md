@@ -9,7 +9,7 @@ helpdocs_is_published: true
 ---
 
 
-Harness provides pre-loaded **By Harness** (pre-defined) and **Custom** (user-defined) Dashboards to visualize cloud cost data across clusters and cloud accounts. Using the **AWS Resource Breakdown Dashboard** you can:
+Harness provides preloaded **By Harness** (pre-defined) and **Custom** (user-defined) Dashboards to visualize cloud cost data across clusters and cloud accounts. Using the **AWS Resource Breakdown Dashboard** you can:
 
 * Discover new analytical insights into your AWS Services
 * Track various cloud cost indicators across different zones and time range
@@ -17,7 +17,7 @@ Harness provides pre-loaded **By Harness** (pre-defined) and **Custom** (use
 * Explore the cloud cost data in a logical and structured manner
 * View your cloud costs at a glance, understand what is costing the most, and analyze cost trends
 
-This Dashboard will not be available if you have not selected **AWS** **Resource Breakdown Dashboard** feature when setting up [CCM for AWS](../../../1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md).This topic describes how to view the **By Harness AWS Resource Breakdown Dashboard** and get more information about that data.
+This Dashboard will not be available if you have not selected **AWS** **Resource Breakdown Dashboard** feature when setting up [CCM for AWS](../../../1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md). This topic describes how to view the **By Harness AWS Resource Breakdown Dashboard** and get more information about that data.
 
 ![](./static/view-aws-resource-breakdown-cost-dashboard-47.png)
 

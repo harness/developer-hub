@@ -33,7 +33,7 @@ Using the AWS reservation efficiency report you can:
 ## Prerequisites
 
 * Review [Set Up Cloud Cost Management for AWS](../../../1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md)
-* Ensure that you have **Dashboard-All View** permissions assigned. See [Manage Access Control for CCM Dashboards](../access-control/manage-access-control-for-ccm-dashboards.md).
+* Ensure that you have **Dashboard-All View** permissions assigned. Go to [Manage Access Control for CCM Dashboards](../access-control/manage-access-control-for-ccm-dashboards.md).
 * Ensure that you have set up Cloud Cost Management (CCM) for your AWS account.
 * Ensure that you have added all the required permissions for your cloud provider. The data available in the dashboard depends on the permissions you provided to the AWS cloud provider when setting up the CCM. 
 

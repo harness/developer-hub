@@ -13,7 +13,7 @@ import ebs_dashboard from './static/orphaned-ebs-volumes-and-snapshots-dashboard
 import custom_dashboard from './static/orphaned-ebs-volumes-and-snapshots-dashboard-77.png'
 ```
 
-Harness provides pre-loaded **By Harness** (pre-defined) and **Custom** (user-defined) Dashboards to visualize cloud cost data across clusters and cloud accounts. Using the **Orphaned EBS Volumes and Snapshots** **Dashboard** you can:
+Harness provides preloaded **By Harness** (pre-defined) and **Custom** (user-defined) Dashboards to visualize cloud cost data across clusters and cloud accounts. Using the **Orphaned EBS Volumes and Snapshots** **Dashboard** you can:
 
 * Discover new analytical insights into your EBS volumes and snapshots
 * Explore the cloud cost data in a logical and structured manner

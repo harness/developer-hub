@@ -13,10 +13,10 @@ Dashboards are a collection of charts and data tables with filters that you can 
 
 
 :::note
-For information on core Dashboard functionality, see [Create Dashboards](https://docs.harness.io/article/ardf4nbvcy-create-dashboards).
+For information on core Dashboard functionality, go to [Create Dashboards](https://docs.harness.io/article/ardf4nbvcy-create-dashboards).
 :::
 
-Harness provides pre-loaded **By Harness** (pre-defined) and **Custom** (user-defined) Dashboards to visualize cloud cost data across clusters and the Cloud accounts.
+Harness provides pre-loaded **By Harness** (pre-defined) and **Custom** (user-defined) dashboards to visualize cloud cost data across clusters and cloud accounts.
 
 
 ## Access the CCM dashboards
@@ -35,8 +35,6 @@ To access the dashboards from the CCM module, perform the following steps:
 
 
 To access the dashboards outside the CCM module, perform the following steps:
-
-
 
 1. In the **Harness** application, click **Dashboards**. 
 
