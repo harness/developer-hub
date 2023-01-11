@@ -13,21 +13,184 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
 
+## January 10, 2023, version 78105
+
+### What's new
+
+- A [failure strategy](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/) is now mandatory for all Deploy stages. (CDS-48951)  
+  
+  ![failure strategy](../static/3c690f9ba44e7cac1e6ccb605068b676ddd02f247f37c2d9b2524f30437c97ff.png)  
+
+  A failure strategy is now a mandatory setting in the **Deploy** stage. Previously, a failure strategy was mandatory, but the check happened when the pipeline ran. 
+  
+  A failure strategy is also required for the **Deploy** stage in [stage templates](https://developer.harness.io/docs/platform/Templates/add-a-stage-template). With this release, all Deploy stages, including in stage templates, without failure strategies are considered invalid.
+
+  No action required by users.
+- UI enhancements for remote templates created in non-default or feature branches. (CDS-48308)
+  
+  If a remote template is created in a non-default or feature branch, Harness fetches the template details from the created branch and displays them on the template studio/listing page. You no longer need to manually select the correct branch.
+
+  No action required by users.
+- Absolute paths for Native Helm charts [Custom Remote Manifest](/docs/continuous-delivery/cd-advanced/cd-kubernetes-category/add-a-custom-remote-script-and-manifests) are now supported. (CDS-47647, RN-37501)
+  
+  Previously, Harness CD looked for a path relative to the Harness working directory, which is a temporary directory that Harness creates. Now, you can specify an absolute path in **Extracted Manifest File Location** by starting with a forward slash `/`. For example: `/tmp/myChart1/custom-remote-test-repo/helm/todolist/`.
+
+  ![Custom Remote Manifest](../static/b401a79386824c0b00a74ad4d9ec4576db712982f9371c8e80e0913d5e4aa14a.png)
+
+  No action required by users.
+
+### Fixed issues
+
+- [RBAC](https://developer.harness.io/docs/platform/Role-Based-Access-Control/rbac-in-harness) for environment was not enforced. (CDS-49732, RN-38326)
+  
+  In stage templates in pipelines, access checks for the environment were skipped. Harness now performs an RBAC check.
+- [Deployment freeze](/docs/continuous-delivery/cd-deployments-category/deployment-freeze) notification was not working for **Does not repeat** in **Recurrence**. (CDS-49667)
+
+  ![Deployment freeze](../static/e804489bad159e4b70346eee0151a0b16f6e9a87f0257c9b1d2faaf6d2924d8c.png)  
+
+  
+  The notification for deployment freeze was not working due to a null pointer exception in the case of **Does not repeat** in **Recurrence**. Added a null check to fix this issue.
+- Incorrect validation error message on the **Step Parameters** tab of the **Manual Approval** dialog. (CDS-49404) 
+
+  If the number entered in the **Number of approvers that are required at this step** field contained a decimal point, an incorrect validation error message, **Minimum count cannot be less than one** appeared.
+  
+  ![Manual Approval](../static/0ca0f627a25f82c07038f9430bc37c9f7660aac6f5beaea3883efc2fcbf61a2f.png)  
+  
+  The error message has been corrected.
+- The [OpenShift](/docs/continuous-delivery/cd-technical-reference/cd-k8s-ref/using-open-shift-with-harness-kubernetes) template path on the runtime screen is populated as a string instead of a list. (CDS-49256)
+  
+  The text was updated to list component so that the path is stored in the form of an array.
+- Unable to change the branch for a remote template in the template studio. (CDS-49159)
+  
+  Harness was not allowing a branch change for read only mode in the template studio. You can now switch branches in the template studio.
+
+  ![remote template](../static/746afe2da521f0b80cae4fd566e7f251ea2caffedd3244216728d6e5259e838d.png)  
+
+
+- ECS and Serverless Git task logs are not shown properly. (CDS-49117)
+  
+  The log stream closes when the status is successful. To ensure that each method can determine whether to close or not, a boolean attribute was added to closeLogStream so that each class that implements and uses this function determines whether it wants to close or not.
+- Error when adding a template to a pipeline. (CDS-48924)
+  
+  Harness Manager used to show an error when `*` was used as the default value in the **Configure Options** modal for any setting. The component has been updated to support `*` as a value to resolve the issue.
+- Unclear error message on values YAML parse failure. (CDS-48881)
+  
+  Improved error message in case of parse failure. When the values YAML had secrets/certs that were not correctly encoded, we would see an error message that was not very clear. We have improved the error message to hint at the underlying cause.
+- Unable to add tags to an environment .(CDS-48647)
+  
+  Empty strings of tags were being removed. This has been fixed now.
+- Gaps in instance stats if there is any exception while fetching the last snapshot. (CDS-48637)
+  
+  Now Harness catches the exception while fetching the last snapshot and skips publishing in this iteration.
+- When a user configures a manifest detail and adds a file, they cannot delete that file. They can only move things around. (CDS-48591)
+  
+  Removed the validation from values.yaml as it is an optional field.
+
+  ![valuesYAML](../static/8412e36bf2432c85520b4eb719a0f41636ded7a827e28f888c1df0ee0574d9db.png)  
+
+- Triggers failing with the feature flag `NG_DEPLOYMENT_FREEZE_OVERRIDE` enabled while checking permission in RBAC. (CDS-48529) 
+
+  Deployment freeze has RBAC permissions for Harness users. A check for these permissions were passed as null and threw an NPE when the permission was null. Added a null check to send false in case the permission is null.
+- Poor error message if an ACR connector reference is a runtime input for the subscriptionId field. (CDS-48519)
+
+  Added a better error message when the connectorRef is empty and not resolvable in Azure artifact sources APIs.
+- The **Submit** button is disabled after creating a Github connector, but works fine when only selecting a connector. (CDS-48497)
+  
+  Under Service V2, when adding a manifest to a service and creating a new connector from the **Select Connector** screen, we were able to see the newly created connector selected in the manifest modal but the **Continue** button was disabled. The **Continue** button is now enabled in this use case.
+
+  ![Continue](../static/c4dc3bbb40c46e0ffd5b15d3cb38c4efaad154d0ab0453aad3408fd41ff10aca.png)  
+
+- [Input sets](https://developer.harness.io/docs/platform/pipelines/run-pipelines-using-input-sets-and-overlays/) not working with a stage template. (CDS-48475)
+  
+  This was an issue with running pipelines using input sets specifically containing artifact sources with no runtime inputs. In this case, users were seeing the error message "Exception in resolving template refs". When run manually without input sets the executions went through fine. This was happening because an extra field was being set in the input set. Now we have added handling for that field and executions work as expected.
+- Artifactory with `tagRegex: <+input>` fails to fetch imagePath. (CDS-48438)
+  
+  Updated the FQN path to pass tagRegex if the tagRegex field is runtime.
+
+  ![tagRegex](../static/1dfac296e95a55c0a7c8ea9bc54c2996a9e82832fc9db90e0789e7a1ab94a423.png)  
+
+- Fields on the **Advanced **tab in the **Template input** section appear crowded. (CDS-48423)
+  
+  The width was set relative to the parent component. This caused the width to compress even further on smaller width sections like the template selection screen. This has been fixed by setting the width to a standard 400px.
+- Template always shows an unsaved changes message even after repeated save attempts. (CDS-48422)
+  
+  Now you can save a [stage template](https://developer.harness.io/docs/platform/templates/add-a-stage-template/) with service and environments as runtime inputs and can eventually update them to [multi-services and multi-environments](/docs/continuous-delivery/cd-deployments-category/multiserv-multienv) as well.
+
+  ![stage template](../static/ab0ebd2fe7e4f06d25a19ad1e62969c9a7ff6fafcf2ab753e732b155a0b7b6ce.png)  
+
+- Improve error messaging in case of Terraform plugin error. (CDS-48414)
+
+  Improved the error summary formatting.
+- Azure Artifacts Connector URL validation is missing. (CDS-48407)
+  
+  The server URL is now validated.
+- Terraform Apply **Delegate Selector** selection does not retain its value. (CDS-48375)
+  
+  Users can see existing [delegate selectors](https://developer.harness.io/docs/first-gen/firstgen-platform/account/manage-delegates/select-delegates-for-specific-tasks-with-selectors/) in the step's **Advanced** section in case of [Terraform Apply](/docs/continuous-delivery/cd-advanced/terraform-category/run-a-terraform-plan-with-the-terraform-apply-step) and [Terraform Rollback](/docs/continuous-delivery/cd-advanced/terraform-category/rollback-provisioned-infra-with-the-terraform-rollback-step).
+- Service Logs don't show fetch details for a Docker Artifact. (CDS-48358)
+  
+  Console logs from the service step were missing information about the tag, imagePath, and other metadata fields. These fields are now shown in the console logs.
+- Azure Artifact drop-downs in the project-level stage template fails. (CDS-48319)
+  
+  List drop-downs are now fixed in the Azure Artifact Source when you create the artifact source in the stage template.
+- For Azure Artifacts, the **Project** drop-down field shows an error when trying to load in a project-level stage template. (CDS-48318)
+  
+  The **Projects** drop-down field has been fixed.
+- Artifact source template: Tags does not have a **Configure** option. (CDS-48310)
+  
+  **Configure** option is not visible for the **Tags** setting. This issue has been fixed and you can see the **Configure** option.
+
+  ![Configure](../static/785eb004b9b55e9bd72c9df586fdf9d4b41560dc749b4d15582b79980d5d18c4.png)  
+
+- The **Jira Description** field doesn't scale for long text. (CDS-48228)
+  
+  The description field now uses a textarea component to provide a better user experience.
+- Unable to select a Primary Artifact in the pipeline input form. (CDS-48065)
+  
+  Multiple Artifact Source is only available with [service V2](/docs/continuous-delivery/onboard-cd/cd-concepts/services-and-environments-overview). With this fix, the UI only allows the multiple artifact option with service V2. As this UI check was not present earlier, some users had multiple artifact sources with service V1. Users with existing configurations must fix this.
+- [Custom Remote Manifest](/docs/continuous-delivery/cd-advanced/cd-kubernetes-category/add-a-custom-remote-script-and-manifests): error message needs to be improved when Chart.yaml is given instead of a directory. (CDS-48038)
+  
+  Error improvement is done around custom manifest Helm chart path using Helm deployment.
+- [Deployment freeze](/docs/continuous-delivery/cd-deployments-category/deployment-freeze): When the freeze window schedule time frame is prior to the current time, the API returns success but the UI is still disabled. (CDS-47760)
+  
+  When users created freeze window schedule time frames that are in the past, the freeze window was marked as expired right after creation, which is correct, but the global freeze (`Freeze disabled on all deployments for this [Account/Organization/Project]`) was getting enabled. Now we throw an exception when the new freeze window created is already expired.
+- The [Deployment Template](/docs/continuous-delivery/onboard-cd/cd-quickstarts/custom-deployment-tutorial) **Details** screen goes blank when changing the template version in **Version Label**. (CDS-47641) 
+
+  A blank template **Details** screen is shown when the version of a linked template is changed from **stable** to **Always use stable version**. This happens only for pipeline templates. This issue has been fixed. Now you can change the **Version Label** and there is no issue.
+- [multi-services and multi-environments](/docs/continuous-delivery/cd-deployments-category/multiserv-multienv): getting NPE when trying to run a pipeline with propagate services from previous stage (CDS-47626)
+  
+  We don't support [propagating a service](/docs/continuous-delivery/cd-services/cd-services-general/propagate-and-override-cd-services) from previous stage in case of multi-service deployments. Now, the **Propagate from** option only appears in a stage if there are preceding single service stages to propagate from.
+- When adding a connector, the **Details** dialog is unclear. (CDS-47282)
+  
+  The UI was improved so that it now includes a delegate selector title and an icon with details for the Kubernetes connector.
+- ACR connector: connector reference when passed as expression is not getting resolved (CDS-46816)
+
+  Created new endpoints for fetching subscription Ids, registries, repositories for ACR artifacts. These new endpoints receive the pipeline Id and input YAML data, which allows for expression rendering for the ACR parameters using variables declared in the pipeline.
+- ServiceNow import sets logging issues. (CDS-43958)
+  
+  Descriptive console logs have been added in the ServiceNow Import Set step for various scenarios. This will further help in debugging or monitoring the step from the console tab.
+- Getting "Connector Not Found Error" when you save a pipeline using the Physical DataCenter connector even when the connector exists. (CDS-43812)
+  
+  Fixed the check for the Physical DataCenter connector. The Physical DataCenter connector is supported in [SSH](/docs/continuous-delivery/onboard-cd/cd-quickstarts/ssh-ng) and [WinRm](/docs/continuous-delivery/onboard-cd/cd-quickstarts/win-rm-tutorial) deployments.
+- Approval Slack notification sending names instead of identifier in the approval notification. (CDS-29134)
+  
+  Harness approval notifications via Slack and email currently send identifiers instead of readable names. For example, for details regarding organization and project, and triggered by metadata, identifiers are sent instead of names. This issue has been resolved. The notification now contains names, emails, etc., instead of identifiers. For users triggering the approval step, email is displayed. For organization and projects, names are displayed.
+
 ## December 22, 2022, version 77908
 
 ### What's new
 
-- The [Deployment Templates](../docs/continuous-delivery/onboard-cd/cd-quickstarts/custom-deployment-tutorial) **Execution** tab now supports all steps in the Command category. (CDS-48030)
+- The [Deployment Templates](/docs/continuous-delivery/onboard-cd/cd-quickstarts/custom-deployment-tutorial) **Execution** tab now supports all steps in the Command category. (CDS-48030)
 
 Earlier, only the Utilities steps were supported. Now you can add any CD step.
  
-- Support for absolute paths in a [Custom Remote Manifest](../docs/continuous-delivery/cd-advanced/cd-kubernetes-category/add-a-custom-remote-script-and-manifests/) for Helm Charts. (CDS-47647, ZD-37501) 
+- Support for absolute paths in a [Custom Remote Manifest](/docs/continuous-delivery/cd-advanced/cd-kubernetes-category/add-a-custom-remote-script-and-manifests/) for Helm Charts. (CDS-47647, ZD-37501) 
  
 Previously, we were only looking for a path relative to the Harness working directory (a temporary directory created by Harness). Now, you can specify an absolute path in **Extracted Manifest File Location** by starting with a forward slash `/`.
  
 Example: `/tmp/myChart1/custom-remote-test-repo/helm/todolist/`.
 
-- The **Referenced By** tab was added to [Environments](../docs/continuous-delivery/onboard-cd/cd-concepts/services-and-environments-overview). (CDS-39989)
+- The **Referenced By** tab was added to [Environments](/docs/continuous-delivery/onboard-cd/cd-concepts/services-and-environments-overview). (CDS-39989)
 
 You can see which pipeline uses any Environment in the Environment's **Referenced By** tab.
 
@@ -129,7 +292,7 @@ The call to fetch the default failure strategies for a Deploy stage was happenin
 
 A test was added to verify.
   
-- The approval stage is adding to the deployment count of services when it is added after the deployement stage. (CDS-46707)
+- The approval stage is adding to the deployment count of services when it is added after the deployment stage. (CDS-46707)
 
 Deployments shown on the **Services** dashboard are fetched from service_infra_info table in timescaleDB. Since the dashboard shows the deployments for all services, we were not filtering based on service identifier, but that table contains approval and other data also. To allow only service deployments, we added a condition that service_id should not be null.
   
@@ -182,7 +345,7 @@ Removed **Skip Dry Run** from unnecessary steps.
 
   You can now use AWS S3 for your Serverless YAML and ECS configuration files (Task Definition, Service Definition, Scaling Policy, and Scalable Target JSON/YAML files).
 
-- The <+rollbackArtifact...> expression is now available (CDS-46321)
+- The `<+rollbackArtifact...>` expression is now available (CDS-46321)
 
   For example, if you used a publicly available Docker Hub NGINX image as the Artifact Source for a Service, then when the Service is rolled back, the <+rollbackArtifact.meta.image> expression output would be something like this: registry.hub.docker.com/library/nginx:stable-perl.
 
@@ -559,7 +722,7 @@ For details on Environment and Infrastructure Definition expressions, go to Buil
 
 - Approvals: JEXL expression doesn't support pipeline variables and expressions (CDS-25476)
 
-  With this ticket, pipeline expressions (<+pipeline...) as well as other common expressions are now supported for Approvals in JEXL criteria. Previously users could give expressions related to the ticket only.
+  With this ticket, pipeline expressions (`<+pipeline...`) as well as other common expressions are now supported for Approvals in JEXL criteria. Previously users could give expressions related to the ticket only.
 
 ## October 21, 2022, version 77221
 

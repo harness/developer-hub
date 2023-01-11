@@ -14,6 +14,30 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
 ## January 10, 2023, version 78105
 
+### Continuous Delivery
+
+- A [failure strategy](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/) is now mandatory for all Deploy stages. (CDS-48951)  
+  
+  ![failure strategy](../static/3c690f9ba44e7cac1e6ccb605068b676ddd02f247f37c2d9b2524f30437c97ff.png)  
+
+  A failure strategy is now a mandatory setting in the **Deploy** stage. Previously, a failure strategy was mandatory, but the check happened when the pipeline ran. 
+  
+  A failure strategy is also required for the **Deploy** stage in [stage templates](https://developer.harness.io/docs/platform/templates/add-a-stage-template/). With this release, all Deploy stages, including in stage templates, without failure strategies are considered invalid.
+
+  No action required by users.
+- UI enhancements for remote templates created in non-default or feature branches. (CDS-48308)
+  
+  If a remote template is created in a non-default or feature branch, Harness fetches the template details from the created branch and displays them on the template studio/listing page. You no longer need to manually select the correct branch.
+
+  No action required by users.
+- Absolute paths for Native Helm charts [Custom Remote Manifest](/docs/continuous-delivery/cd-advanced/cd-kubernetes-category/add-a-custom-remote-script-and-manifests) are now supported. (CDS-47647, RN-37501)
+  
+  Previously, Harness CD looked for a path relative to the Harness working directory, which is a temporary directory that Harness creates. Now, you can specify an absolute path in **Extracted Manifest File Location** by starting with a forward slash `/`. For example: `/tmp/myChart1/custom-remote-test-repo/helm/todolist/`.
+
+  ![Custom Remote Manifest](../static/b401a79386824c0b00a74ad4d9ec4576db712982f9371c8e80e0913d5e4aa14a.png)
+
+  No action required by users.
+
 ### Harness Platform
 
 - Secrets and connectors now have a character limit of 128 for the **Name** and **ID** fields. (PL-29887)
@@ -44,27 +68,27 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
 ### Continuous Delivery
 
-- [Deployment Templates](../docs/continuous-delivery/onboard-cd/cd-quickstarts/custom-deployment-tutorial) **Execution** tab now supports all steps in Command category (CDS-48030)
+- [Deployment Templates](/docs/continuous-delivery/onboard-cd/cd-quickstarts/custom-deployment-tutorial) **Execution** tab now supports all steps in Command category (CDS-48030)
   - Earlier, only the Utilities steps were supported.
   - Now you can add any CD step.
-+ Support for absolute paths in [Custom Remote Manifest](../docs/continuous-delivery/cd-advanced/cd-kubernetes-category/add-a-custom-remote-script-and-manifests/) for Helm Charts (CDS-47647, ZD-37501) 
++ Support for absolute paths in [Custom Remote Manifest](/docs/continuous-delivery/cd-advanced/cd-kubernetes-category/add-a-custom-remote-script-and-manifests/) for Helm Charts (CDS-47647, ZD-37501) 
   - Previously, we were only looking for a path relative to Harness working directory (a temporary directory created by Harness).
   - Now, you can specify an absolute path in **Extracted Manifest File Location** by starting with a forward slash `/`.
   - Example: `/tmp/myChart1/custom-remote-test-repo/helm/todolist/`.
-- **Referenced By** tab added to [Environments](../docs/continuous-delivery/onboard-cd/cd-concepts/services-and-environments-overview) (CDS-39989)
+- **Referenced By** tab added to [Environments](/docs/continuous-delivery/onboard-cd/cd-concepts/services-and-environments-overview) (CDS-39989)
   - You can see which pipeline use any Environment in the Environment's **Referenced By** tab.
 
-- The [Deployment Templates](../docs/continuous-delivery/onboard-cd/cd-quickstarts/custom-deployment-tutorial) **Execution** tab now supports all steps in the Command category. (CDS-48030)
+- The [Deployment Templates](/docs/continuous-delivery/onboard-cd/cd-quickstarts/custom-deployment-tutorial) **Execution** tab now supports all steps in the Command category. (CDS-48030)
 
   Earlier, only the Utilities steps were supported. Now you can add any CD step.
 
-- Support for absolute paths in a [Custom Remote Manifest](../docs/continuous-delivery/cd-advanced/cd-kubernetes-category/add-a-custom-remote-script-and-manifests/) for Helm Charts. (CDS-47647, ZD-37501) 
+- Support for absolute paths in a [Custom Remote Manifest](/docs/continuous-delivery/cd-advanced/cd-kubernetes-category/add-a-custom-remote-script-and-manifests/) for Helm Charts. (CDS-47647, ZD-37501) 
 
   Previously, we were only looking for a path relative to the Harness working directory (a temporary directory created by Harness). Now, you can specify an absolute path in **Extracted Manifest File Location** by starting with a forward slash `/`.
 
   Example: `/tmp/myChart1/custom-remote-test-repo/helm/todolist/`.
 
-- The **Referenced By** tab was added to [Environments](../docs/continuous-delivery/onboard-cd/cd-concepts/services-and-environments-overview). (CDS-39989)
+- The **Referenced By** tab was added to [Environments](/docs/continuous-delivery/onboard-cd/cd-concepts/services-and-environments-overview). (CDS-39989)
 
   You can see which pipeline uses any Environment in the Environment's **Referenced By** tab.
 
@@ -122,7 +146,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
 - You can now refer to existing secrets of Azure Key Vault, AWS secret manager, and GCP secret manager. (PL-29915)
 
-  With this enhancement, you need not create secrets in Harness. You can use expressions to reference the secrets already existing in the mentioned secrets managers. For more information, see [Reference Existing Secret Managers Secrets](https://developer.harness.io/docs/platform/security/reference-existing-secret-manager-secrets/).
+  With this enhancement, you need not create secrets in Harness. You can use expressions to reference the secrets already existing in the mentioned secrets managers. For more information, see [Reference Existing Secret Managers Secrets](https://developer.harness.iohttps://developer.harness.io/docs/platform/security/reference-existing-secret-manager-secrets/).
 
 - You can now use the Git client to commit changes while creating or updating pipelines using Bitbucket on-prem as the Git provider. (PIE-6423)
 
