@@ -12,11 +12,11 @@ Many Harness entities and resources include a unique Id (entity Identifier) that
 
 Identifiers provide a permanent way to refer to an entity, and avoid issues that can arise when a name is changed.
 
-### Identifier Limits and Requirements
+### Identifier limits and requirements
 
 Identifiers have naming and usage limitations that you should be aware of.
 
-#### Identifier Creation
+#### Identifier creation
 
 When you name an entity, Harness automatically generates its identifier.
 
@@ -28,7 +28,7 @@ The generated Identifier is based on the entity name and meets the identifier na
 
 If an entity name cannot be used because it's already occupied by another entity, Harness automatically adds a prefix in the form of `-1`, `-2`, etc.
 
-#### Entities use Identifiers to Interact with Each Other
+#### Entities use identifiers to interact with each other
 
 The `identifier` field is immutable because Harness Entities use this field to interact with each other. If you delete an Entity, or create a copy with a new identifier, references to that Entity will not get updated. For example, each Trigger has a `pipelineIdentifier` field that specifies the Pipeline for that Trigger. If you create a copy of the original Pipeline (with a new identifier) and then delete the original, any Triggers that reference the original will no longer work.
 
@@ -36,7 +36,7 @@ The `identifier` field is immutable because Harness Entities use this field to i
 
 Identifiers have the following restrictions:
 
-* Identifiers must start with a-z, A-Z, \_ or . Identifiers can then be followed by 0-9, a-z, A-Z, \_ or $.
+* Identifiers must start with a-z, A-Z, or \_. Identifiers can then be followed by 0-9, a-z, A-Z, \_ or $.
 * Identifiers shouldn't be any of the following words
 	+ or
 	+ and
