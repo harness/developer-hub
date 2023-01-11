@@ -26,16 +26,16 @@ This release does not include early access features.
 ### Fixed issues
 #### Feature Flags on the Harness Platform
 
-- Fixed a bug where a completion tick never appeared on the UI after an evaluation had successfully passed. (FFM-6127)
+- Fixed a bug that prevented a completion tick from appearing in the UI after an evaluation had successfully passed. (FFM-6127)
 
-- Fixed an error that caused the Complete button at the end of the Get Started flow to link to the beginning of the flow, instead of the Feature Flag list page as expected. (FFM-5988)
+- Fixed an error that caused the Complete button at the end of the Get Started flow to link to the beginning of the flow instead of linking to the expected Feature Flag list page. (FFM-5988)
 
-- Resolved an issue that caused the user to scroll unnecessarily when they expanded the target attribute or operator drop down menus during the creating a target flow. (FFM-5187)
+- Resolved an issue that caused you to scroll unnecessarily when you expanded the target attribute or operator dropdown menus when creating a target. (FFM-5187)
 
-- Fixed a bug where scrollbars were unnecessarily displayed on the target groups section of the targets page. (FFM-4053)
+- Fixed a bug where scrollbars were unnecessarily displayed in the target groups section of the targets page during loading. (FFM-4053)
 
 #### Feature Flag SDKs
-The Ruby SDK has been updated to version 1.0.5. This fixes a bug that caused the SDK to not wait for initialization when using "wait_for_initialization" method. (FFM-6393)
+The Ruby SDK has been updated to version 1.0.5. This fixes a bug that caused the SDK to not wait for initialization when using the `wait_for_initialization` method. (FFM-6393)
 
 ## December 22, 2022
 
