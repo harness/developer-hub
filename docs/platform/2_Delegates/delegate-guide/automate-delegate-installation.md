@@ -70,7 +70,7 @@ Before you duplicate the file, review the list of environment variables in the d
 
 The process you use to rename a delegate depends on its type. For Docker delegates, you change the name in one environment variable in the Docker compose file. For the Kubernetes delegate, you change multiple instances of the name.
 
-#### Kubernetes delegate renaming
+#### Rename the Kubernetes delegate 
 
 For the Kubernetes delegate, the name is referenced in multiple fields:
 
