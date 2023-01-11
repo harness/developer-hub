@@ -20,6 +20,25 @@ In this step, you will define how many pods are deployed for a Canary test of th
 
 See [Create a Kubernetes Canary Deployment](../../cd-execution/kubernetes-executions/create-a-kubernetes-canary-deployment.md).
 
+## YAML
+
+```YAML
+              - step:
+                  type: K8sCanaryDeploy
+                  name: Canary Deploy
+                  identifier: Canary_Deploy
+                  spec:
+                    skipDryRun: false
+                    instanceSelection:
+                      type: Count
+                      spec:
+                        count: 1
+                  timeout: 10m
+```
+
+
+
+
 ## Name
 
 Enter the name for the step.
