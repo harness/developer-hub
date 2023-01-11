@@ -16,13 +16,13 @@ For Harness on-prem releases, see [Harness Self-Managed Enterprise Edition Relea
 
 If you don't see a new feature or enhancement in your Harness account, it might be behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
-### January 5, 2023, version 78100
+### January 5, 2023, version 78105
 
 Delegate version: 78100
 
 #### What's new
   
-- Add the status of the collection in the artifactsource response in GraphQL API (CDS-44426)
+- Add the status of the collection in the artifactsource response in GraphQL API. (CDS-44426)
   
   You can retrieve the value of the collectionEnabled field for an Artifact Source using GraphQL APIs, like in the example below:
   ```
@@ -42,26 +42,6 @@ Delegate version: 78100
 - Delegate tasks are now limited based on account. (DEL-5371)
 
   Limits are being introduced on the maximum number of tasks that can be created based on the account. Enforcement of task limits will be implemented at a later date and based on the product license.
-  
-
-#### Early access
-- Support AWS S3 as a script source for Terraform Provisioners (CDS-2970)
-  - Feature flag: `CDS_TERRAFORM_S3_SUPPORT`.
-  - Now you can use the AWS S3 option for your remote Terraform script files.
-
-#### Fixed issues
-- MongoDB Query tuning on executionInterrupts (CDS-49220)
-  
-  Fixed a bug where approvals executed after a stage with runtime inputs were not being expired.
-  
-- Custom Fields of Jira step not executing (CDS-49108)
-  - Fixed an issue using multiselect fields with a new metadata endpoint. While using a new metadata endpoint, we received an empty string where null was expected. Now we check for both.
-  
-- Custom Remote Manifest error message needs to be improved when Chart.yaml is given instead of a directory (CDS-48038)
-  - Error improvement was added around the custom manifest Helm chart path using Helm deployment.
-  
-- `DelegateGroup` is not removed from the database or the UI after the associated delegate is deleted (DEL-3913)
-  - Changed code to ensure that an inactive delegate is deleted from the UI after seven days.
   
 - The following libraries of the Apache CXF open-source services framework (`org.apache.cxf`) were upgraded to version 3.5.5 to fix vulnerabilities. The delegate base image was updated from `redhat/ubi8-minimal:8.4` to `redhat/ubi8-minimal:8.7` to reflect these changes. (DEL-5591)
 
@@ -98,6 +78,12 @@ Delegate version: 78100
   | `io.netty:netty-transport-native-kqueue:4.1.77.Final` | 
   | `io.netty:netty-transport-native-unix-common:4.1.77.Final` | 
   | `io.netty:netty-transport:4.1.77.Final` |
+
+#### Fixed issues
+  
+- `DelegateGroup` is not removed from the database or the UI after the associated delegate is deleted (DEL-3913)
+  - Changed code to ensure that an inactive delegate is deleted from the UI after seven days.
+  
 
 
 ### December 22, 2022, version 77908
