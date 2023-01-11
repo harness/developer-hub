@@ -981,6 +981,18 @@ The namespace used in the Infrastructure Definition.
 
 The release name used in the Infrastructure Definition.
 
+### Step
+
+The following instance expressions are for stage steps.
+
+#### <+step.name>
+
+The step name.
+
+### <+step.identifier>
+
+The the step [identifier](https://developer.harness.io/docs/platform/references/entity-identifier-reference/).
+
 ### Instances
 
 The following instance expressions are supported in SSH, WinRM, and custom deployments using Deployment Templates. These deployments can be done on Physical Data Centers, AWS, and Azure.
