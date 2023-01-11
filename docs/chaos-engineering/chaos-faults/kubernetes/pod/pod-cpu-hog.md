@@ -36,8 +36,9 @@ The application pods should be running before and after injecting chaos.
 ## Implementation
 
 **NOTE:** It is assumed that you already have the boutique app set up in a namespace. If not, follow [this](provide link) to set up your boutique application.
+To execute pod CPU hog fault, [setup experiment](provide) and infrastructure.
 
-To execute pod CPU hog, it is essential to tweak a section of the **app.yaml**. In the **deployment** kind, for **cartservice**, uncomment the following lines.
+It is essential to tweak a section of the **app.yaml** to see the effect of chaos on the application. In the **deployment** kind, for **cartservice**, uncomment the following lines.
 
 ```
 resources:
@@ -49,60 +50,88 @@ resources:
     memory: 128Mi
 ```
 
-[link](provide) to setup experiment to execute chaos faults.
+After successful setup of chaos infrastructure:
+* Choose the **pod-cpu-hog** fault from the list of Kubernetes faults available;
+* Specify parameters for the **Target application**, **Tune fault**, and **Probes**;
 
-* On the right pane, select **Kubernetes** that displays a list of Kubernetes faults available. Select **pod-cpu-hog** fault. 
+    <details>
+        <summary>Check the Fault Tunables</summary>
+        <h2>Optional Fields</h2>
+        <table>
+          <tr>
+            <th> Variables </th>
+            <th> Description </th>
+            <th> Notes </th>
+          </tr>
+          <tr>
+            <td> CPU_CORES </td>
+            <td> Number of the CPU cores subjected to CPU stress </td>
+            <td> Default to 1 </td>
+          </tr>
+          <tr>
+            <td> TOTAL_CHAOS_DURATION </td>
+            <td> The time duration for chaos insertion (seconds) </td>
+            <td> Default to 60s </td>
+          </tr>
+          <tr>
+            <td> LIB </td>
+            <td> The chaos lib used to inject the chaos. Available libs are <code>litmus</code> and <code>pumba</code> </td>
+            <td> Default to <code>litmus</code> </td>
+          </tr>
+          <tr>
+            <td> LIB_IMAGE </td>
+            <td> Image used to run the helper pod. </td>
+            <td> Defaults to <code>litmuschaos/go-runner:1.13.8</code> </td>
+          </tr>
+          <tr>
+            <td> STRESS_IMAGE </td>
+            <td> Container run on the node at runtime by the pumba lib to inject stressors. Only used in LIB <code>pumba</code></td>
+            <td> Default to <code>alexeiled/stress-ng:latest-ubuntu</code> </td>
+          </tr>
+          <tr>
+            <td> TARGET_PODS </td>
+            <td> Comma separated list of application pod name subjected to pod CPU hog chaos</td>
+            <td> If not provided, it will select target pods randomly based on provided appLabels</td>
+          </tr> 
+          <tr> 
+            <td> TARGET_CONTAINER </td>
+            <td> Name of the target container under chaos </td>
+            <td> If not provided, it will select the first container of the target pod </td>
+          </tr> 
+          <tr>
+            <td> PODS_AFFECTED_PERC </td>
+            <td> The Percentage of total pods to target </td>
+            <td> Defaults to 0 (corresponds to 1 replica), provide numeric value only </td>
+          </tr>
+          <tr>
+            <td> CONTAINER_RUNTIME </td>
+            <td> container runtime interface for the cluster</td>
+            <td> Defaults to docker, supported values: docker, containerd and crio for litmus and only docker for pumba LIB </td>
+          </tr>
+          <tr>
+            <td> SOCKET_PATH </td>
+            <td> Path of the containerd/crio/docker socket file </td>
+            <td> Defaults to <code>/var/run/docker.sock</code> </td>
+          </tr> 
+          <tr>
+            <td> RAMP_TIME </td>
+            <td> Period to wait before injection of chaos in sec </td>
+            <td> Eg. 30 </td>
+          </tr>
+          <tr>
+            <td> SEQUENCE </td>
+            <td> It defines sequence of chaos execution for multiple target pods </td>
+            <td> Default value: parallel. Supported: serial, parallel </td>
+          </tr>
+        </table>
+    </details>
 
-![Select Kubernetes](./static/images/select-kube-fault.png)
-
-* This leads you to a page where you can specify parameters for the **Target application**, **Tune fault**, and **Probes**.
-
-![Tune faults](./static/images/specify-parameters.png)
-
-* The **Target application** section has three parameters:
-  
-**Specify the parameters and explain them**
-
-* The **Tune fault** section has three parameters
-
-**Specify the parameters and explain them. Mention about container runtime, containerd, socket path.**
-
-![Tune fault params](./static/images/tune-fault-1.png)
-
-![Tune fault params2](./static/images/tune-fault-2.png)
-
-* In the **Probes** section, click on **Deploy new probe** to add a new probe. 
-
-**Specify the parameters and explain them**
-
-![Deploy probe](./static/images/deploy-new-probe.png)
-
-* Specify the **Probe name**, **Probe type**, and **Probe mode**. Click on **Continue**.
-**Specify the parameters and explain them**
-
-![Probe mode](./static/images/add-probe-params.png)
-
-* Specify properties . Click **Continue**.
-**Specify the parameters and explain them**
-
-![Probe mode](./static/images/probe-properties.png)
-
-* Specify details . Click **Setup the probe**.
-**Specify the parameters and explain them**
-
-![Probe mode](./static/images/probe-details.png)
-
-* You can see that the probe has been setup successfully with the parameters you specified. Close this pane by clicking on **X** at the top.
-
-![Probe setup done](./static/images/probe-setup-done.png)
-
-* Navigate to the next step of setting fault weights. Click the **Set fault weights** present on top. 
-
-![Set weights](./static/images/set-fault-weights.png)
-
+* Close this pane by clicking on **X** at the top.
+* Set fault weights by clicking on **Set fault weights** tab present on top. 
 * Click **Run** to execute the experiment.
 
-![Run experiment](./static/images/run-experiment.png)
+
+## Chaos fault validation
 
 * Visit [this link](provide link) to set up Grafana dashboard to visualize the results before and after injecting chaos into the application. 
 
@@ -120,78 +149,6 @@ kubectl top pods <service name> -n <application namespace>
 ![After chaos visual](./static/images/cpu-hog-visual.png)
 
 
-## Fault tunables
-<details>
-    <summary>Check the Fault Tunables</summary>
-    <h2>Optional Fields</h2>
-    <table>
-      <tr>
-        <th> Variables </th>
-        <th> Description </th>
-        <th> Notes </th>
-      </tr>
-      <tr>
-        <td> CPU_CORES </td>
-        <td> Number of the CPU cores subjected to CPU stress </td>
-        <td> Default to 1 </td>
-      </tr>
-      <tr>
-        <td> TOTAL_CHAOS_DURATION </td>
-        <td> The time duration for chaos insertion (seconds) </td>
-        <td> Default to 60s </td>
-      </tr>
-      <tr>
-        <td> LIB </td>
-        <td> The chaos lib used to inject the chaos. Available libs are <code>litmus</code> and <code>pumba</code> </td>
-        <td> Default to <code>litmus</code> </td>
-      </tr>
-      <tr>
-        <td> LIB_IMAGE </td>
-        <td> Image used to run the helper pod. </td>
-        <td> Defaults to <code>litmuschaos/go-runner:1.13.8</code> </td>
-      </tr>
-      <tr>
-        <td> STRESS_IMAGE </td>
-        <td> Container run on the node at runtime by the pumba lib to inject stressors. Only used in LIB <code>pumba</code></td>
-        <td> Default to <code>alexeiled/stress-ng:latest-ubuntu</code> </td>
-      </tr>
-      <tr>
-        <td> TARGET_PODS </td>
-        <td> Comma separated list of application pod name subjected to pod CPU hog chaos</td>
-        <td> If not provided, it will select target pods randomly based on provided appLabels</td>
-      </tr> 
-      <tr> 
-        <td> TARGET_CONTAINER </td>
-        <td> Name of the target container under chaos </td>
-        <td> If not provided, it will select the first container of the target pod </td>
-      </tr> 
-      <tr>
-        <td> PODS_AFFECTED_PERC </td>
-        <td> The Percentage of total pods to target </td>
-        <td> Defaults to 0 (corresponds to 1 replica), provide numeric value only </td>
-      </tr>
-      <tr>
-        <td> CONTAINER_RUNTIME </td>
-        <td> container runtime interface for the cluster</td>
-        <td> Defaults to docker, supported values: docker, containerd and crio for litmus and only docker for pumba LIB </td>
-      </tr>
-      <tr>
-        <td> SOCKET_PATH </td>
-        <td> Path of the containerd/crio/docker socket file </td>
-        <td> Defaults to <code>/var/run/docker.sock</code> </td>
-      </tr> 
-      <tr>
-        <td> RAMP_TIME </td>
-        <td> Period to wait before injection of chaos in sec </td>
-        <td> Eg. 30 </td>
-      </tr>
-      <tr>
-        <td> SEQUENCE </td>
-        <td> It defines sequence of chaos execution for multiple target pods </td>
-        <td> Default value: parallel. Supported: serial, parallel </td>
-      </tr>
-    </table>
-</details>
 
 ## Fault Eexamples
  

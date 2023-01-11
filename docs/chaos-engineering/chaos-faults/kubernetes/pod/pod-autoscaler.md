@@ -32,57 +32,50 @@ The application pods should be running before and after injecting chaos.
 
 **NOTE:** It is assumed that you already have the boutique app set up in a namespace. If not, follow [this](provide link) to set up your boutique application.
 
-To execute disk fill fault, [setup experiment](provide) and infrastructure.
+To execute pod autoscaler fault, [setup experiment](provide) and infrastructure.
 
 After successful setup of chaos infrastructure:
-* Choose the **disk-fill**fault from the list of Kubernetes faults available;
+* Choose the **pod-autoscaler**fault from the list of Kubernetes faults available;
 * Specify parameters for the **Target application**, **Tune fault**, and **Probes**;
-  * The prominent parameters here are 
-
-* Close this pane by clicking on **X** at the top.
-* Set fault weights by clicking on **Set fault weights** tab present on top. 
-* Click **Run** to execute the experiment.
-
-## Fault tunables
-<details>
-    <summary>Check the Fault Tunables</summary>
-    <h2>Optional Fields</h2>
-    <table>
-      <tr>
-        <th> Variables </th>
-        <th> Description </th>
-        <th> Notes </th>
-      </tr>
-      <tr>
-        <td> REPLICA_COUNT </td>
-        <td> Number of replicas upto which we want to scale </td>
-        <td> <code>nil</code> </td>
-      </tr>
-    </table>
-    <h2>Optional Fields</h2>
-    <table>
-      <tr>
-        <th> Variables </th>
-        <th> Description </th>
-        <th> Notes </th>
-      </tr>
-      <tr>
-        <td> TOTAL_CHAOS_DURATION </td>
-        <td> The timeout for the chaos fault (in seconds) </td>
-        <td> Defaults to 60 </td>
-      </tr>
-      <tr>
-        <td> LIB </td>
-        <td> The chaos lib used to inject the chaos </td>
-        <td> Defaults to <code>litmus</code> </td>
-      </tr>
-      <tr>
-        <td> RAMP_TIME </td>
-        <td> Period to wait before and after injection of chaos in sec </td>
-        <td> Eg. 30 </td>
-      </tr>
-    </table>
-</details>
+    <details>
+        <summary>Check the Fault Tunables</summary>
+        <h2>Optional Fields</h2>
+        <table>
+          <tr>
+            <th> Variables </th>
+            <th> Description </th>
+            <th> Notes </th>
+          </tr>
+          <tr>
+            <td> REPLICA_COUNT </td>
+            <td> Number of replicas upto which we want to scale </td>
+            <td> <code>nil</code> </td>
+          </tr>
+        </table>
+        <h2>Optional Fields</h2>
+        <table>
+          <tr>
+            <th> Variables </th>
+            <th> Description </th>
+            <th> Notes </th>
+          </tr>
+          <tr>
+            <td> TOTAL_CHAOS_DURATION </td>
+            <td> The timeout for the chaos fault (in seconds) </td>
+            <td> Defaults to 60 </td>
+          </tr>
+          <tr>
+            <td> LIB </td>
+            <td> The chaos lib used to inject the chaos </td>
+            <td> Defaults to <code>litmus</code> </td>
+          </tr>
+          <tr>
+            <td> RAMP_TIME </td>
+            <td> Period to wait before and after injection of chaos in sec </td>
+            <td> Eg. 30 </td>
+          </tr>
+        </table>
+    </details>
 
 * Close this pane by clicking on **X** at the top.
 * Set fault weights by clicking on **Set fault weights** tab present on top. 

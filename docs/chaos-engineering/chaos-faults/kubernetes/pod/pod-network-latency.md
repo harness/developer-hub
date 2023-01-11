@@ -2,6 +2,7 @@
 id: pod-network-latency
 title: Pod network latency
 ---
+Pod network latency is a Kubernetes pod-level chaos fault that:
 
 - It introduces latency (delay) to a specific container by initiating a traffic control (tc) process with netem rules to add egress delays.
 - It tests the application's resilience to lossy/flaky networks.
@@ -37,44 +38,109 @@ The application pods should be running before and after injecting chaos.
 
 **NOTE:** It is assumed that you already have the boutique app set up in a namespace. If not, follow [this](provide link) to set up your boutique application.
 
-To execute disk fill fault, [setup experiment](provide) and infrastructure.
+To execute pod network latency fault, [setup experiment](provide) and infrastructure.
 
 After successful setup of chaos infrastructure:
-* Choose the **disk-fill** fault from the list of Kubernetes faults available;
+* Choose the **pod-network-latency** fault from the list of Kubernetes faults available;
 * Specify parameters for the **Target application**, **Tune fault**, and **Probes**;
-* The next step is [setup experiment](provide) to execute the chaos faults.
+    <details>
+        <summary>Check the Fault Tunables</summary>
+        <h2>Optional Fields</h2>
+        <table>
+          <tr>
+            <th> Variables </th>
+            <th> Description </th>
+            <th> Notes </th>
+          </tr>
+          <tr>
+            <td> NETWORK_INTERFACE </td>
+            <td> Name of ethernet interface considered for shaping traffic </td>
+            <td> </td>
+          </tr>
+          <tr>
+            <td> TARGET_CONTAINER </td>
+            <td> Name of container which is subjected to network latency </td>
+            <td> Applicable for containerd & CRI-O runtime only. Even with these runtimes, if the value is not provided, it injects chaos on the first container of the pod </td>
+          </tr>
+          <tr>
+            <td> NETWORK_LATENCY </td>
+            <td> The latency/delay in milliseconds </td>
+            <td> Default 2000, provide numeric value only </td>
+          </tr>
+          <tr>
+            <td> JITTER </td>
+            <td> The network jitter value in ms </td>
+            <td> Default 0, provide numeric value only </td>
+          </tr> 
+          <tr>
+            <td> CONTAINER_RUNTIME </td>
+            <td> container runtime interface for the cluster</td>
+            <td> Defaults to docker, supported values: docker, containerd and crio for litmus and only docker for pumba LIB </td>
+          </tr>
+          <tr>
+            <td> SOCKET_PATH </td>
+            <td> Path of the containerd/crio/docker socket file </td>
+            <td> Defaults to `/var/run/docker.sock` </td>
+          </tr>
+          <tr>
+            <td> TOTAL_CHAOS_DURATION </td>
+            <td> The time duration for chaos insertion (seconds) </td>
+            <td> Default (60s) </td>
+          </tr>
+          <tr>
+            <td> TARGET_PODS </td>
+            <td> Comma separated list of application pod name subjected to pod network corruption chaos</td>
+            <td> If not provided, it will select target pods randomly based on provided appLabels</td>
+          </tr> 
+          <tr>
+            <td> DESTINATION_IPS </td>
+            <td> IP addresses of the services or pods or the CIDR blocks(range of IPs), the accessibility to which is impacted </td>
+            <td> comma separated IP(S) or CIDR(S) can be provided. if not provided, it will induce network chaos for all ips/destinations</td>
+          </tr>  
+          <tr>
+            <td> DESTINATION_HOSTS </td>
+            <td> DNS Names/FQDN names of the services, the accessibility to which, is impacted </td>
+            <td> if not provided, it will induce network chaos for all ips/destinations or DESTINATION_IPS if already defined</td>
+          </tr>      
+          <tr>
+            <td> PODS_AFFECTED_PERC </td>
+            <td> The Percentage of total pods to target </td>
+            <td> Defaults to 0 (corresponds to 1 replica), provide numeric value only </td>
+          </tr> 
+          <tr>
+            <td> LIB </td>
+            <td> The chaos lib used to inject the chaos </td>
+            <td> Default value: litmus, supported values: pumba and litmus </td>
+          </tr>
+          <tr>
+            <td> TC_IMAGE </td>
+            <td> Image used for traffic control in linux </td>
+            <td> default value is `gaiadocker/iproute2` </td>
+          </tr>
+          <tr>
+            <td> LIB_IMAGE </td>
+            <td> Image used to run the netem command </td>
+            <td> Defaults to `litmuschaos/go-runner:latest` </td>
+          </tr>
+          <tr>
+            <td> RAMP_TIME </td>
+            <td> Period to wait before and after injection of chaos in sec </td>
+            <td> Eg. 30 </td>
+          </tr>
+          <tr>
+            <td> SEQUENCE </td>
+            <td> It defines sequence of chaos execution for multiple target pods </td>
+            <td> Default value: parallel. Supported: serial, parallel </td>
+          </tr>
+        </table>
+    </details>
 
-* On the right pane, select **Kubernetes** that displays a list of Kubernetes faults available. Select **pod-network-latency** fault. 
-
-![Select Kubernetes](./static/images/select-pod-nw-latency.png)
-
-* This leads you to a page to specify parameters for the **Target application**, **Tune fault**, and **Probes**.
-
-* The **Target application** section has three parameters:
-  * **App Namespace**: The namespace where your boutique application (or any other application) is present.
-  * **App Kind**: 
-  * **App Label**: The service within the application into which the chaos is injected.
-
-![Specify parameters](./static/images/nw-latency-specify-parameters.png)
-
-![Tune faults](./static/images/nw-latency-tune-faults.png)
-
-  
-**Specify the parameters and explain them**
-
-* The **Tune fault** section has three parameters
-
-**Specify the parameters and explain them. Mention about container runtime, containerd, socket path.**
-
-* Click on **Deploy new probe** to add a new probe. 
-
-* You can see that the setup is successful with the parameters you specified. Close this pane by clicking on **X** at the top.
-
-* Navigate to the next step to set fault weights. Click the **Set fault weights** present on top and adjust the weights according to your requirement. 
-
+* Close this pane by clicking on **X** at the top.
+* Set fault weights by clicking on **Set fault weights** tab present on top. 
 * Click **Run** to execute the experiment.
 
-![Run experiment](./static/images/nw-latency-run-experiment.png)
+
+## Chaos fault validation
 
 * Visit [this link](provide link) to set up Grafana dashboard to visualize the results before and after injecting chaos into the application. 
 
@@ -89,106 +155,6 @@ kubectl top pods <service name> -n <application namespace>
 
 ![During chaos](./static/images/nw-latency-during-chaos.png)
 
-
-* Close this pane by clicking on **X** at the top.
-* Set fault weights by clicking on **Set fault weights** tab present on top. 
-* Click **Run** to execute the experiment.
-
-
-## Chaos fault validation
-
-## Fault tunables
-<details>
-    <summary>Check the Fault Tunables</summary>
-    <h2>Optional Fields</h2>
-    <table>
-      <tr>
-        <th> Variables </th>
-        <th> Description </th>
-        <th> Notes </th>
-      </tr>
-      <tr>
-        <td> NETWORK_INTERFACE </td>
-        <td> Name of ethernet interface considered for shaping traffic </td>
-        <td> </td>
-      </tr>
-      <tr>
-        <td> TARGET_CONTAINER </td>
-        <td> Name of container which is subjected to network latency </td>
-        <td> Applicable for containerd & CRI-O runtime only. Even with these runtimes, if the value is not provided, it injects chaos on the first container of the pod </td>
-      </tr>
-      <tr>
-        <td> NETWORK_LATENCY </td>
-        <td> The latency/delay in milliseconds </td>
-        <td> Default 2000, provide numeric value only </td>
-      </tr>
-      <tr>
-        <td> JITTER </td>
-        <td> The network jitter value in ms </td>
-        <td> Default 0, provide numeric value only </td>
-      </tr> 
-      <tr>
-        <td> CONTAINER_RUNTIME </td>
-        <td> container runtime interface for the cluster</td>
-        <td> Defaults to docker, supported values: docker, containerd and crio for litmus and only docker for pumba LIB </td>
-      </tr>
-      <tr>
-        <td> SOCKET_PATH </td>
-        <td> Path of the containerd/crio/docker socket file </td>
-        <td> Defaults to `/var/run/docker.sock` </td>
-      </tr>
-      <tr>
-        <td> TOTAL_CHAOS_DURATION </td>
-        <td> The time duration for chaos insertion (seconds) </td>
-        <td> Default (60s) </td>
-      </tr>
-      <tr>
-        <td> TARGET_PODS </td>
-        <td> Comma separated list of application pod name subjected to pod network corruption chaos</td>
-        <td> If not provided, it will select target pods randomly based on provided appLabels</td>
-      </tr> 
-      <tr>
-        <td> DESTINATION_IPS </td>
-        <td> IP addresses of the services or pods or the CIDR blocks(range of IPs), the accessibility to which is impacted </td>
-        <td> comma separated IP(S) or CIDR(S) can be provided. if not provided, it will induce network chaos for all ips/destinations</td>
-      </tr>  
-      <tr>
-        <td> DESTINATION_HOSTS </td>
-        <td> DNS Names/FQDN names of the services, the accessibility to which, is impacted </td>
-        <td> if not provided, it will induce network chaos for all ips/destinations or DESTINATION_IPS if already defined</td>
-      </tr>      
-      <tr>
-        <td> PODS_AFFECTED_PERC </td>
-        <td> The Percentage of total pods to target </td>
-        <td> Defaults to 0 (corresponds to 1 replica), provide numeric value only </td>
-      </tr> 
-      <tr>
-        <td> LIB </td>
-        <td> The chaos lib used to inject the chaos </td>
-        <td> Default value: litmus, supported values: pumba and litmus </td>
-      </tr>
-      <tr>
-        <td> TC_IMAGE </td>
-        <td> Image used for traffic control in linux </td>
-        <td> default value is `gaiadocker/iproute2` </td>
-      </tr>
-      <tr>
-        <td> LIB_IMAGE </td>
-        <td> Image used to run the netem command </td>
-        <td> Defaults to `litmuschaos/go-runner:latest` </td>
-      </tr>
-      <tr>
-        <td> RAMP_TIME </td>
-        <td> Period to wait before and after injection of chaos in sec </td>
-        <td> Eg. 30 </td>
-      </tr>
-      <tr>
-        <td> SEQUENCE </td>
-        <td> It defines sequence of chaos execution for multiple target pods </td>
-        <td> Default value: parallel. Supported: serial, parallel </td>
-      </tr>
-    </table>
-</details>
 
 ## Fault examples
 

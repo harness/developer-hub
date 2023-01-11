@@ -2,6 +2,7 @@
 id: pod-http-reset-peer
 title: Pod HTTP reset peer
 ---
+Pod HTTP reset peer is a Kubernetes pod-level chaos fault that:
 
 - It injects http reset on the service whose port is provided as `TARGET_SERVICE_PORT` which stops outgoing http requests by resetting the TCP connection by starting proxy server and then redirecting the traffic through the proxy server.
 - It can test the application's resilience to lossy/flaky http connection.
@@ -32,11 +33,95 @@ The application pods should be running before and after injecting chaos.
 
 **NOTE:** It is assumed that you already have the boutique app set up in a namespace. If not, follow [this](provide link) to set up your boutique application.
 
-To execute disk fill fault, [setup experiment](provide) and infrastructure.
+To execute pod HTTP reset peer fault, [setup experiment](provide) and infrastructure.
 
 After successful setup of chaos infrastructure:
-* Choose the **disk-fill** fault from the list of Kubernetes faults available;
+* Choose the **pod-http-reset-peer** fault from the list of Kubernetes faults available;
 * Specify parameters for the **Target application**, **Tune fault**, and **Probes**;
+    <details>
+        <summary>Check the Fault Tunables</summary>
+        <h2>Mandatory Fields</h2>
+        <table>
+          <tr>
+            <th> Variables </th>
+            <th> Description </th>
+            <th> Notes </th>
+          </tr>
+          <tr>
+            <td> TARGET_SERVICE_PORT </td>
+            <td> Port of the service to target</td>
+            <td>Defaults to port 80 </td>
+          </tr>
+          <tr>
+            <td> RESET_TIMEOUT </td>
+            <td> Reset Timeout specifies after how much duration to reset the connection</td>
+            <td> Defaults to 0 </td>
+          </tr>
+        </table>
+        <h2>Optional Fields</h2>
+        <table>
+          <tr>
+            <th> Variables </th>
+            <th> Description </th>
+            <th> Notes </th>
+          </tr>
+          <tr>
+            <td> PROXY_PORT </td>
+            <td> Port where the proxy will be listening for requests</td>
+            <td> Defaults to 20000 </td>
+          </tr>
+          <tr>
+            <td> NETWORK_INTERFACE </td>
+            <td> Network interface to be used for the proxy</td>
+            <td> Defaults to `eth0` </td>
+          </tr>
+          <tr>
+            <td> TOXICITY </td>
+            <td> Percentage of HTTP requests to be affected </td>
+            <td> Defaults to 100 </td>
+          </tr>
+          <tr>
+            <td> CONTAINER_RUNTIME </td>
+            <td> container runtime interface for the cluster</td>
+            <td> Defaults to docker, supported values: docker, containerd and crio for litmus and only docker for pumba LIB </td>
+          </tr>
+          <tr>
+            <td> SOCKET_PATH </td>
+            <td> Path of the containerd/crio/docker socket file </td>
+            <td> Defaults to `/var/run/docker.sock` </td>
+          </tr>
+          <tr>
+            <td> TOTAL_CHAOS_DURATION </td>
+            <td> The duration of chaos injection (seconds) </td>
+            <td> Default (60s) </td>
+          </tr>
+          <tr>
+            <td> TARGET_PODS </td>
+            <td> Comma separated list of application pod name subjected to pod http reset peer chaos</td>
+            <td> If not provided, it will select target pods randomly based on provided appLabels</td>
+          </tr>
+          <tr>
+            <td> PODS_AFFECTED_PERC </td>
+            <td> The Percentage of total pods to target </td>
+            <td> Defaults to 0 (corresponds to 1 replica), provide numeric value only </td>
+          </tr>
+          <tr>
+            <td> LIB_IMAGE </td>
+            <td> Image used to run the netem command </td>
+            <td> Defaults to `litmuschaos/go-runner:latest` </td>
+          </tr>
+          <tr>
+            <td> RAMP_TIME </td>
+            <td> Period to wait before and after injection of chaos in sec </td>
+            <td> Eg. 30 </td>
+          </tr>
+          <tr>
+            <td> SEQUENCE </td>
+            <td> It defines sequence of chaos execution for multiple target pods </td>
+            <td> Default value: parallel. Supported: serial, parallel </td>
+          </tr>
+        </table>
+    </details>
 * Close this pane by clicking on **X** at the top.
 * Set fault weights by clicking on **Set fault weights** tab present on top. 
 * Click **Run** to execute the experiment.
@@ -44,91 +129,6 @@ After successful setup of chaos infrastructure:
 
 ## Chaos fault validation
 
-## Fault tunables
-<details>
-    <summary>Check the Fault Tunables</summary>
-    <h2>Mandatory Fields</h2>
-    <table>
-      <tr>
-        <th> Variables </th>
-        <th> Description </th>
-        <th> Notes </th>
-      </tr>
-      <tr>
-        <td> TARGET_SERVICE_PORT </td>
-        <td> Port of the service to target</td>
-        <td>Defaults to port 80 </td>
-      </tr>
-      <tr>
-        <td> RESET_TIMEOUT </td>
-        <td> Reset Timeout specifies after how much duration to reset the connection</td>
-        <td> Defaults to 0 </td>
-      </tr>
-    </table>
-    <h2>Optional Fields</h2>
-    <table>
-      <tr>
-        <th> Variables </th>
-        <th> Description </th>
-        <th> Notes </th>
-      </tr>
-      <tr>
-        <td> PROXY_PORT </td>
-        <td> Port where the proxy will be listening for requests</td>
-        <td> Defaults to 20000 </td>
-      </tr>
-      <tr>
-        <td> NETWORK_INTERFACE </td>
-        <td> Network interface to be used for the proxy</td>
-        <td> Defaults to `eth0` </td>
-      </tr>
-      <tr>
-        <td> TOXICITY </td>
-        <td> Percentage of HTTP requests to be affected </td>
-        <td> Defaults to 100 </td>
-      </tr>
-      <tr>
-        <td> CONTAINER_RUNTIME </td>
-        <td> container runtime interface for the cluster</td>
-        <td> Defaults to docker, supported values: docker, containerd and crio for litmus and only docker for pumba LIB </td>
-      </tr>
-      <tr>
-        <td> SOCKET_PATH </td>
-        <td> Path of the containerd/crio/docker socket file </td>
-        <td> Defaults to `/var/run/docker.sock` </td>
-      </tr>
-      <tr>
-        <td> TOTAL_CHAOS_DURATION </td>
-        <td> The duration of chaos injection (seconds) </td>
-        <td> Default (60s) </td>
-      </tr>
-      <tr>
-        <td> TARGET_PODS </td>
-        <td> Comma separated list of application pod name subjected to pod http reset peer chaos</td>
-        <td> If not provided, it will select target pods randomly based on provided appLabels</td>
-      </tr>
-      <tr>
-        <td> PODS_AFFECTED_PERC </td>
-        <td> The Percentage of total pods to target </td>
-        <td> Defaults to 0 (corresponds to 1 replica), provide numeric value only </td>
-      </tr>
-      <tr>
-        <td> LIB_IMAGE </td>
-        <td> Image used to run the netem command </td>
-        <td> Defaults to `litmuschaos/go-runner:latest` </td>
-      </tr>
-      <tr>
-        <td> RAMP_TIME </td>
-        <td> Period to wait before and after injection of chaos in sec </td>
-        <td> Eg. 30 </td>
-      </tr>
-      <tr>
-        <td> SEQUENCE </td>
-        <td> It defines sequence of chaos execution for multiple target pods </td>
-        <td> Default value: parallel. Supported: serial, parallel </td>
-      </tr>
-    </table>
-</details>
 
 ## Fault examples
 

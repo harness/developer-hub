@@ -34,63 +34,62 @@ The application pods should be running before and after injecting chaos.
 
 **NOTE:** It is assumed that you already have the boutique app set up in a namespace. If not, follow [this](provide link) to set up your boutique application.
 
-To execute disk fill fault, [setup experiment](provide) and infrastructure.
+To execute pod delete fault, [setup experiment](provide) and infrastructure.
 
 After successful setup of chaos infrastructure:
-* Choose the **disk-fill** fault from the list of Kubernetes faults available;
+* Choose the **pod-delete** fault from the list of Kubernetes faults available;
 * Specify parameters for the **Target application**, **Tune fault**, and **Probes**;
-## Fault Tunables
-<details>
-    <summary>Check the Fault Tunables</summary>
-    <h2>Optional Fields</h2>
-    <table>
-      <tr>
-        <th> Variables </th>
-        <th> Description </th>
-        <th> Notes </th>
-      </tr>
-      <tr>
-        <td> TOTAL_CHAOS_DURATION </td>
-        <td> The time duration for chaos insertion (in sec) </td>
-        <td> Defaults to 15s, <b>NOTE:</b> Overall run duration of the fault may exceed the <code>TOTAL_CHAOS_DURATION</code> by a few min </td>
-      </tr>
-      <tr>
-        <td> CHAOS_INTERVAL </td>
-        <td> Time interval b/w two successive pod failures (in sec) </td>
-        <td> Defaults to 5s </td>
-      </tr>
-      <tr>
-        <td> RANDOMNESS </td>
-        <td> Introduces randomness to pod deletions with a minimum period defined by <code>CHAOS_INTERVAL</code> </td>
-        <td> It supports true or false. Default value: false </td>
-      </tr>
-      <tr>
-        <td> FORCE </td>
-        <td> Application Pod deletion mode. <code>false</code> indicates graceful deletion with default termination period of 30s. <code>true</code> indicates an immediate forceful deletion with 0s grace period</td>
-        <td> Default to <code>true</code>, With <code>terminationGracePeriodSeconds=0</code> </td>
-      </tr>
-      <tr>
-        <td> TARGET_PODS </td>
-        <td> Comma separated list of application pod name subjected to pod delete chaos</td>
-        <td> If not provided, it will select target pods randomly based on provided appLabels</td>
-      </tr>
-      <tr>
-        <td> PODS_AFFECTED_PERC </td>
-        <td> The Percentage of total pods to target </td>
-        <td> Defaults to 0 (corresponds to 1 replica), provide numeric value only </td>
-      </tr>
-      <tr>
-        <td> RAMP_TIME </td>
-        <td> Period to wait before and after injection of chaos in sec </td>
-        <td> Eg. 30 </td>
-      </tr>
-      <tr>
-        <td> SEQUENCE </td>
-        <td> It defines sequence of chaos execution for multiple target pods </td>
-        <td> Default value: parallel. Supported: serial, parallel </td>
-      </tr>
-    </table>
-</details>
+    <details>
+        <summary>Check the Fault Tunables</summary>
+        <h2>Optional Fields</h2>
+        <table>
+          <tr>
+            <th> Variables </th>
+            <th> Description </th>
+            <th> Notes </th>
+          </tr>
+          <tr>
+            <td> TOTAL_CHAOS_DURATION </td>
+            <td> The time duration for chaos insertion (in sec) </td>
+            <td> Defaults to 15s, <b>NOTE:</b> Overall run duration of the fault may exceed the <code>TOTAL_CHAOS_DURATION</code> by a few min </td>
+          </tr>
+          <tr>
+            <td> CHAOS_INTERVAL </td>
+            <td> Time interval b/w two successive pod failures (in sec) </td>
+            <td> Defaults to 5s </td>
+          </tr>
+          <tr>
+            <td> RANDOMNESS </td>
+            <td> Introduces randomness to pod deletions with a minimum period defined by <code>CHAOS_INTERVAL</code> </td>
+            <td> It supports true or false. Default value: false </td>
+          </tr>
+          <tr>
+            <td> FORCE </td>
+            <td> Application Pod deletion mode. <code>false</code> indicates graceful deletion with default termination period of 30s. <code>true</code> indicates an immediate forceful deletion with 0s grace period</td>
+            <td> Default to <code>true</code>, With <code>terminationGracePeriodSeconds=0</code> </td>
+          </tr>
+          <tr>
+            <td> TARGET_PODS </td>
+            <td> Comma separated list of application pod name subjected to pod delete chaos</td>
+            <td> If not provided, it will select target pods randomly based on provided appLabels</td>
+          </tr>
+          <tr>
+            <td> PODS_AFFECTED_PERC </td>
+            <td> The Percentage of total pods to target </td>
+            <td> Defaults to 0 (corresponds to 1 replica), provide numeric value only </td>
+          </tr>
+          <tr>
+            <td> RAMP_TIME </td>
+            <td> Period to wait before and after injection of chaos in sec </td>
+            <td> Eg. 30 </td>
+          </tr>
+          <tr>
+            <td> SEQUENCE </td>
+            <td> It defines sequence of chaos execution for multiple target pods </td>
+            <td> Default value: parallel. Supported: serial, parallel </td>
+          </tr>
+        </table>
+    </details>
 
 * Close this pane by clicking on **X** at the top.
 * Set fault weights by clicking on **Set fault weights** tab present on top. 

@@ -2,6 +2,7 @@
 id: pod-network-duplication
 title: Pod network duplication
 ---
+Pod network duplication is a Kubernetes pod-level chaos fault that:
 
 - It injects chaos to disrupt network connectivity to kubernetes pods.
 - It causes Injection of network duplication on the specified container by starting a traffic control (tc) process with netem rules to add egress delays. It Can test the application's resilience to duplicate network.
@@ -32,11 +33,99 @@ The application pods should be running before and after injecting chaos.
 
 **NOTE:** It is assumed that you already have the boutique app set up in a namespace. If not, follow [this](provide link) to set up your boutique application.
 
-To execute disk fill fault, [setup experiment](provide) and infrastructure.
+To execute pod network duplication fault, [setup experiment](provide) and infrastructure.
 
 After successful setup of chaos infrastructure:
-* Choose the **disk-fill** fault from the list of Kubernetes faults available;
+* Choose the **pod-network-duplication** fault from the list of Kubernetes faults available;
 * Specify parameters for the **Target application**, **Tune fault**, and **Probes**;
+    <details>
+        <summary>Check the Fault Tunables</summary>
+        <h2>Optional Fields</h2>
+        <table>
+          <tr>
+            <th> Variables </th>
+            <th> Description </th>
+            <th> Notes </th>
+          </tr>
+          <tr>
+            <td> NETWORK_INTERFACE </td>
+            <td> Name of ethernet interface considered for shaping traffic </td>
+            <td> </td>
+          </tr>
+          <tr>
+            <td> TARGET_CONTAINER </td>
+            <td> Name of container which is subjected to network latency </td>
+            <td> Optional </td>
+            <td> Applicable for containerd & CRI-O runtime only. Even with these runtimes, if the value is not provided, it injects chaos on the first container of the pod </td>
+          </tr>
+          <tr>
+            <td> NETWORK_PACKET_DUPLICATION_PERCENTAGE </td>
+            <td> The packet duplication in percentage </td>
+            <td> Optional </td>
+            <td> Default to 100 percentage </td>
+          </tr>
+          <tr>
+            <td> CONTAINER_RUNTIME </td>
+            <td> container runtime interface for the cluster</td>
+            <td> Defaults to docker, supported values: docker, containerd and crio for litmus and only docker for pumba LIB </td>
+          </tr>
+          <tr>
+            <td> SOCKET_PATH </td>
+            <td> Path of the containerd/crio/docker socket file </td>
+            <td> Defaults to `/var/run/docker.sock` </td>
+          </tr>
+          <tr>
+            <td> TOTAL_CHAOS_DURATION </td>
+            <td> The time duration for chaos insertion (seconds) </td>
+            <td> Default (60s) </td>
+          </tr>
+          <tr>
+            <td> TARGET_PODS </td>
+            <td> Comma separated list of application pod name subjected to pod network corruption chaos</td>
+            <td> If not provided, it will select target pods randomly based on provided appLabels</td>
+          </tr> 
+          <tr>
+            <td> DESTINATION_IPS </td>
+            <td> IP addresses of the services or pods or the CIDR blocks(range of IPs), the accessibility to which is impacted </td>
+            <td> comma separated IP(S) or CIDR(S) can be provided. if not provided, it will induce network chaos for all ips/destinations</td>
+          </tr>  
+          <tr>
+            <td> DESTINATION_HOSTS </td>
+            <td> DNS Names/FQDN names of the services, the accessibility to which, is impacted </td>
+            <td> if not provided, it will induce network chaos for all ips/destinations or DESTINATION_IPS if already defined</td>
+          </tr>      
+          <tr>
+            <td> PODS_AFFECTED_PERC </td>
+            <td> The Percentage of total pods to target </td>
+            <td> Defaults to 0 (corresponds to 1 replica), provide numeric value only </td>
+          </tr> 
+        <tr>
+            <td> LIB </td>
+            <td> The chaos lib used to inject the chaos </td>
+            <td> Default value: litmus, supported values: pumba and litmus </td>
+          </tr>
+          <tr>
+            <td> TC_IMAGE </td>
+            <td> Image used for traffic control in linux </td>
+            <td> default value is `gaiadocker/iproute2` </td>
+          </tr>
+          <tr>
+            <td> LIB_IMAGE </td>
+            <td> Image used to run the netem command </td>
+            <td> Defaults to `litmuschaos/go-runner:latest` </td>
+          </tr>
+          <tr>
+            <td> RAMP_TIME </td>
+            <td> Period to wait before and after injection of chaos in sec </td>
+            <td> Eg. 30 </td>
+          </tr>
+          <tr>
+            <td> SEQUENCE </td>
+            <td> It defines sequence of chaos execution for multiple target pods </td>
+            <td> Default value: parallel. Supported: serial, parallel </td>
+          </tr>
+        </table>
+    </details>
 
 * Close this pane by clicking on **X** at the top.
 * Set fault weights by clicking on **Set fault weights** tab present on top. 
@@ -45,95 +134,6 @@ After successful setup of chaos infrastructure:
 
 ## Chaos fault validation
 
-## Fault tunables
-<details>
-    <summary>Check the Fault Tunables</summary>
-    <h2>Optional Fields</h2>
-    <table>
-      <tr>
-        <th> Variables </th>
-        <th> Description </th>
-        <th> Notes </th>
-      </tr>
-      <tr>
-        <td> NETWORK_INTERFACE </td>
-        <td> Name of ethernet interface considered for shaping traffic </td>
-        <td> </td>
-      </tr>
-      <tr>
-        <td> TARGET_CONTAINER </td>
-        <td> Name of container which is subjected to network latency </td>
-        <td> Optional </td>
-        <td> Applicable for containerd & CRI-O runtime only. Even with these runtimes, if the value is not provided, it injects chaos on the first container of the pod </td>
-      </tr>
-      <tr>
-        <td> NETWORK_PACKET_DUPLICATION_PERCENTAGE </td>
-        <td> The packet duplication in percentage </td>
-        <td> Optional </td>
-        <td> Default to 100 percentage </td>
-      </tr>
-      <tr>
-        <td> CONTAINER_RUNTIME </td>
-        <td> container runtime interface for the cluster</td>
-        <td> Defaults to docker, supported values: docker, containerd and crio for litmus and only docker for pumba LIB </td>
-      </tr>
-      <tr>
-        <td> SOCKET_PATH </td>
-        <td> Path of the containerd/crio/docker socket file </td>
-        <td> Defaults to `/var/run/docker.sock` </td>
-      </tr>
-      <tr>
-        <td> TOTAL_CHAOS_DURATION </td>
-        <td> The time duration for chaos insertion (seconds) </td>
-        <td> Default (60s) </td>
-      </tr>
-      <tr>
-        <td> TARGET_PODS </td>
-        <td> Comma separated list of application pod name subjected to pod network corruption chaos</td>
-        <td> If not provided, it will select target pods randomly based on provided appLabels</td>
-      </tr> 
-      <tr>
-        <td> DESTINATION_IPS </td>
-        <td> IP addresses of the services or pods or the CIDR blocks(range of IPs), the accessibility to which is impacted </td>
-        <td> comma separated IP(S) or CIDR(S) can be provided. if not provided, it will induce network chaos for all ips/destinations</td>
-      </tr>  
-      <tr>
-        <td> DESTINATION_HOSTS </td>
-        <td> DNS Names/FQDN names of the services, the accessibility to which, is impacted </td>
-        <td> if not provided, it will induce network chaos for all ips/destinations or DESTINATION_IPS if already defined</td>
-      </tr>      
-      <tr>
-        <td> PODS_AFFECTED_PERC </td>
-        <td> The Percentage of total pods to target </td>
-        <td> Defaults to 0 (corresponds to 1 replica), provide numeric value only </td>
-      </tr> 
-    <tr>
-        <td> LIB </td>
-        <td> The chaos lib used to inject the chaos </td>
-        <td> Default value: litmus, supported values: pumba and litmus </td>
-      </tr>
-      <tr>
-        <td> TC_IMAGE </td>
-        <td> Image used for traffic control in linux </td>
-        <td> default value is `gaiadocker/iproute2` </td>
-      </tr>
-      <tr>
-        <td> LIB_IMAGE </td>
-        <td> Image used to run the netem command </td>
-        <td> Defaults to `litmuschaos/go-runner:latest` </td>
-      </tr>
-      <tr>
-        <td> RAMP_TIME </td>
-        <td> Period to wait before and after injection of chaos in sec </td>
-        <td> Eg. 30 </td>
-      </tr>
-      <tr>
-        <td> SEQUENCE </td>
-        <td> It defines sequence of chaos execution for multiple target pods </td>
-        <td> Default value: parallel. Supported: serial, parallel </td>
-      </tr>
-    </table>
-</details>
 
 ## Fault examples
 

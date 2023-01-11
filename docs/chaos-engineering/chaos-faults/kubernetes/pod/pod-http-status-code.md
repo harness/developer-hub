@@ -2,6 +2,7 @@
 id: pod-http-status-code
 title: Pod HTTP status code
 ---
+Pod HTTP status code is a Kubernetes pod-level chaos fault that:
 
 - It injects http status code chaos inside the pod which modifies the status code of the response from the provided application server to desired status code provided by user on the service whose port is provided as `TARGET_SERVICE_PORT` by starting proxy server and then redirecting the traffic through the proxy server.
 - It can test the application's resilience to error code http responses from the provided application server.
@@ -32,11 +33,118 @@ The application pods should be running before and after injecting chaos.
 
 **NOTE:** It is assumed that you already have the boutique app set up in a namespace. If not, follow [this](provide link) to set up your boutique application.
 
-To execute disk fill fault, [setup experiment](provide) and infrastructure.
+To execute pod HTTP status code fault, [setup experiment](provide) and infrastructure.
 
 After successful setup of chaos infrastructure:
-* Choose the **disk-fill** fault from the list of Kubernetes faults available;
+* Choose the **pod-http-status-code** fault from the list of Kubernetes faults available;
 * Specify parameters for the **Target application**, **Tune fault**, and **Probes**;
+    <details>
+        <summary>Check the Fault Tunables</summary>
+        <h2>Mandatory Fields</h2>
+        <table>
+          <tr>
+            <th> Variables </th>
+            <th> Description </th>
+            <th> Notes </th>
+          </tr>
+          <tr>
+            <td> TARGET_SERVICE_PORT </td>
+            <td> Port of the service to target</td>
+            <td>This should be the port on which the application container runs at the pod level, not at the service level. Defaults to port 80 </td>
+          </tr>
+          <tr>
+            <td> STATUS_CODE </td>
+            <td> Modified status code for the HTTP response</td>
+            <td> If no value is provided, then a random value is selected from the list of supported values.
+            Multiple values can be provided as comma separated, a random value from the provided list will be selected
+            Supported values: [200, 201, 202, 204, 300, 301, 302, 304, 307, 400, 401, 403, 404, 500, 501, 502, 503, 504].
+            Defaults to random status code </td>
+          </tr>
+          <tr>
+            <td> MODIFY_RESPONSE_BODY </td>
+            <td> Whether to modify the body as per the status code provided.</td>
+            <td> If true, then the body is replaced by a default template for the status code. Defaults to true </td>
+          </tr>
+        </table>
+        <h2>Optional Fields</h2>
+        <table>
+          <tr>
+            <th> Variables </th>
+            <th> Description </th>
+            <th> Notes </th>
+          </tr>
+          <tr>
+            <td> RESPONSE_BODY </td>
+            <td> Body string to overwrite the http response body</td>
+            <td> This will be used only if MODIFY_RESPONSE_BODY is set to true. If no value is provided, response will be an empty body. Defaults to empty body </td>
+          </tr>
+          <tr>
+            <td> CONTENT_ENCODING </td>
+            <td> Encoding type to compress/encodde the response body </td>
+            <td> Accepted values are: gzip, deflate, br, identity. Defaults to none (no encoding) </td>
+          </tr>
+          <tr>
+            <td> CONTENT_TYPE </td>
+            <td> Content type of the response body </td>
+            <td> Defaults to text/plain </td>
+          </tr>
+          <tr>
+            <td> PROXY_PORT </td>
+            <td> Port where the proxy will be listening for requests</td>
+            <td> Defaults to 20000 </td>
+          </tr>
+          <tr>
+            <td> NETWORK_INTERFACE </td>
+            <td> Network interface to be used for the proxy</td>
+            <td> Defaults to `eth0` </td>
+          </tr>
+          <tr>
+            <td> TOXICITY </td>
+            <td> Percentage of HTTP requests to be affected </td>
+            <td> Defaults to 100 </td>
+          </tr>
+          <tr>
+            <td> CONTAINER_RUNTIME </td>
+            <td> container runtime interface for the cluster</td>
+            <td> Defaults to docker, supported values: docker, containerd and crio for litmus and only docker for pumba LIB </td>
+          </tr>
+          <tr>
+            <td> SOCKET_PATH </td>
+            <td> Path of the containerd/crio/docker socket file </td>
+            <td> Defaults to `/var/run/docker.sock` </td>
+          </tr>
+          <tr>
+            <td> TOTAL_CHAOS_DURATION </td>
+            <td> The duration of chaos injection (seconds) </td>
+            <td> Default (60s) </td>
+          </tr>
+          <tr>
+            <td> TARGET_PODS </td>
+            <td> Comma separated list of application pod name subjected to pod http status code chaos</td>
+            <td> If not provided, it will select target pods randomly based on provided appLabels</td>
+          </tr>
+          <tr>
+            <td> PODS_AFFECTED_PERC </td>
+            <td> The Percentage of total pods to target </td>
+            <td> Defaults to 0 (corresponds to 1 replica), provide numeric value only </td>
+          </tr>
+          <tr>
+            <td> LIB_IMAGE </td>
+            <td> Image used to run the netem command </td>
+            <td> Defaults to `litmuschaos/go-runner:latest` </td>
+          </tr>
+          <tr>
+            <td> RAMP_TIME </td>
+            <td> Period to wait before and after injection of chaos in sec </td>
+            <td> Eg. 30 </td>
+          </tr>
+          <tr>
+            <td> SEQUENCE </td>
+            <td> It defines sequence of chaos execution for multiple target pods </td>
+            <td> Default value: parallel. Supported: serial, parallel </td>
+          </tr>
+        </table>
+    </details>
 
 * Close this pane by clicking on **X** at the top.
 * Set fault weights by clicking on **Set fault weights** tab present on top. 
@@ -45,114 +153,6 @@ After successful setup of chaos infrastructure:
 
 ## Chaos fault validation
 
-## Fault tunables
-<details>
-    <summary>Check the Fault Tunables</summary>
-    <h2>Mandatory Fields</h2>
-    <table>
-      <tr>
-        <th> Variables </th>
-        <th> Description </th>
-        <th> Notes </th>
-      </tr>
-      <tr>
-        <td> TARGET_SERVICE_PORT </td>
-        <td> Port of the service to target</td>
-        <td>This should be the port on which the application container runs at the pod level, not at the service level. Defaults to port 80 </td>
-      </tr>
-      <tr>
-        <td> STATUS_CODE </td>
-        <td> Modified status code for the HTTP response</td>
-        <td> If no value is provided, then a random value is selected from the list of supported values.
-        Multiple values can be provided as comma separated, a random value from the provided list will be selected
-        Supported values: [200, 201, 202, 204, 300, 301, 302, 304, 307, 400, 401, 403, 404, 500, 501, 502, 503, 504].
-        Defaults to random status code </td>
-      </tr>
-      <tr>
-        <td> MODIFY_RESPONSE_BODY </td>
-        <td> Whether to modify the body as per the status code provided.</td>
-        <td> If true, then the body is replaced by a default template for the status code. Defaults to true </td>
-      </tr>
-    </table>
-    <h2>Optional Fields</h2>
-    <table>
-      <tr>
-        <th> Variables </th>
-        <th> Description </th>
-        <th> Notes </th>
-      </tr>
-      <tr>
-        <td> RESPONSE_BODY </td>
-        <td> Body string to overwrite the http response body</td>
-        <td> This will be used only if MODIFY_RESPONSE_BODY is set to true. If no value is provided, response will be an empty body. Defaults to empty body </td>
-      </tr>
-      <tr>
-        <td> CONTENT_ENCODING </td>
-        <td> Encoding type to compress/encodde the response body </td>
-        <td> Accepted values are: gzip, deflate, br, identity. Defaults to none (no encoding) </td>
-      </tr>
-      <tr>
-        <td> CONTENT_TYPE </td>
-        <td> Content type of the response body </td>
-        <td> Defaults to text/plain </td>
-      </tr>
-      <tr>
-        <td> PROXY_PORT </td>
-        <td> Port where the proxy will be listening for requests</td>
-        <td> Defaults to 20000 </td>
-      </tr>
-      <tr>
-        <td> NETWORK_INTERFACE </td>
-        <td> Network interface to be used for the proxy</td>
-        <td> Defaults to `eth0` </td>
-      </tr>
-      <tr>
-        <td> TOXICITY </td>
-        <td> Percentage of HTTP requests to be affected </td>
-        <td> Defaults to 100 </td>
-      </tr>
-      <tr>
-        <td> CONTAINER_RUNTIME </td>
-        <td> container runtime interface for the cluster</td>
-        <td> Defaults to docker, supported values: docker, containerd and crio for litmus and only docker for pumba LIB </td>
-      </tr>
-      <tr>
-        <td> SOCKET_PATH </td>
-        <td> Path of the containerd/crio/docker socket file </td>
-        <td> Defaults to `/var/run/docker.sock` </td>
-      </tr>
-      <tr>
-        <td> TOTAL_CHAOS_DURATION </td>
-        <td> The duration of chaos injection (seconds) </td>
-        <td> Default (60s) </td>
-      </tr>
-      <tr>
-        <td> TARGET_PODS </td>
-        <td> Comma separated list of application pod name subjected to pod http status code chaos</td>
-        <td> If not provided, it will select target pods randomly based on provided appLabels</td>
-      </tr>
-      <tr>
-        <td> PODS_AFFECTED_PERC </td>
-        <td> The Percentage of total pods to target </td>
-        <td> Defaults to 0 (corresponds to 1 replica), provide numeric value only </td>
-      </tr>
-      <tr>
-        <td> LIB_IMAGE </td>
-        <td> Image used to run the netem command </td>
-        <td> Defaults to `litmuschaos/go-runner:latest` </td>
-      </tr>
-      <tr>
-        <td> RAMP_TIME </td>
-        <td> Period to wait before and after injection of chaos in sec </td>
-        <td> Eg. 30 </td>
-      </tr>
-      <tr>
-        <td> SEQUENCE </td>
-        <td> It defines sequence of chaos execution for multiple target pods </td>
-        <td> Default value: parallel. Supported: serial, parallel </td>
-      </tr>
-    </table>
-</details>
 
 ## Fault examples
 

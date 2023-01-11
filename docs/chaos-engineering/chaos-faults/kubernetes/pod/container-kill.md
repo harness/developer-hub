@@ -33,10 +33,10 @@ The application pods should be running before and after injecting chaos.
 
 **NOTE:** It is assumed that you already have the boutique app set up in a namespace. If not, follow [this](provide link) to set up your boutique application.
 
-To execute disk fill fault, [setup experiment](provide) and infrastructure.
+To execute container kill fault, [setup experiment](provide) and infrastructure.
 
 After successful setup of chaos infrastructure:
-* Choose the **disk-fill** fault from the list of Kubernetes faults available;
+* Choose the **container-kill** fault from the list of Kubernetes faults available;
 * Specify parameters for the **Target application**, **Tune fault**, and **Probes**;
     <details>
         <summary>Check the Fault Tunables</summary>
@@ -109,6 +109,12 @@ After successful setup of chaos infrastructure:
           </tr>
         </table>
     </details>
+
+* Close this pane by clicking on **X** at the top.
+* Set fault weights by clicking on **Set fault weights** tab present on top. 
+* Click **Run** to execute the experiment.
+
+## Chaos fault validation
 
 ## Fault examples
 

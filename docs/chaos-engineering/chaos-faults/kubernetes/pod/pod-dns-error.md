@@ -2,8 +2,9 @@
 id: pod-dns-error
 title: Pod DNS error
 ---
-- Pod-dns-error injects chaos to disrupt dns resolution in kubernetes pods.
-- It causes loss of access to services by blocking dns resolution of hostnames/domains.
+Pod DNS error is a Kubernetes pod-level chaos fault that:
+- Injects chaos to disrupt DNS resolution in pods.
+- Removes access to services by blocking DNS resolution of host names (or domains).
 
 :::tip Fault execution flow chart
 ![Pod DNS Error](./static/images/dns-chaos.png)
@@ -31,78 +32,77 @@ The application pods should be running before and after injecting chaos.
 
 **NOTE:** It is assumed that you already have the boutique app set up in a namespace. If not, follow [this](provide link) to set up your boutique application.
 
-To execute disk fill fault, [setup experiment](provide) and infrastructure.
+To execute pod DNS error fault, [setup experiment](provide) and infrastructure.
 
 After successful setup of chaos infrastructure:
-* Choose the **disk-fill** fault from the list of Kubernetes faults available;
+* Choose the **pod-dns-error** fault from the list of Kubernetes faults available;
 * Specify parameters for the **Target application**, **Tune fault**, and **Probes**;
-## Fault Tunables
-<details>
-    <summary>Check the Fault Tunables</summary>
-    <h2>Optional Fields</h2>
-    <table>
-      <tr>
-        <th> Variables </th>
-        <th> Description  </th>
-        <th> Notes </th>
-      </tr>
-      <tr>
-        <td> TARGET_CONTAINER </td>
-        <td> Name of container which is subjected to dns-error </td>
-        <td> None </td>
-      </tr>
-      <tr>
-        <td> TOTAL_CHAOS_DURATION </td>
-        <td> The time duration for chaos insertion (seconds) </td>
-        <td> Default (60s) </td>
-      </tr>
-      <tr>
-        <td> TARGET_HOSTNAMES </td>
-        <td> List of the target hostnames or keywords eg. '["litmuschaos","chaosnative.com"]'</td>
-        <td> If not provided, all hostnames/domains will be targeted</td>
-      </tr>
-      <tr>
-        <td> MATCH_SCHEME </td>
-        <td> Determines whether the dns query has to match exactly with one of the targets or can have any of the targets as substring. Can be either <code>exact</code> or <code>substring</code> </td>
-        <td> if not provided, it will be set as <code>exact</code></td>
-      </tr>
-      <tr>
-        <td> PODS_AFFECTED_PERC </td>
-        <td> The Percentage of total pods to target </td>
-        <td> Defaults to 0 (corresponds to 1 replica), provide numeric value only </td>
-      </tr>
-      <tr>
-        <td> CONTAINER_RUNTIME </td>
-        <td> container runtime interface for the cluster</td>
-        <td> Defaults to docker, supported values: docker</td>
-      </tr>
-      <tr>
-        <td> SOCKET_PATH </td>
-        <td> Path of the docker socket file </td>
-        <td> Defaults to <code>/var/run/docker.sock</code> </td>
-      </tr>
-      <tr>
-        <td> LIB </td>
-        <td> The chaos lib used to inject the chaos </td>
-        <td> Default value: litmus, supported values: litmus </td>
-      </tr>
-      <tr>
-        <td> LIB_IMAGE </td>
-        <td> Image used to run the netem command </td>
-        <td> Defaults to <code>litmuschaos/go-runner:latest</code> </td>
-      </tr>
-      <tr>
-        <td> RAMP_TIME </td>
-        <td> Period to wait before and after injection of chaos in sec </td>
-        <td> Eg. 30 </td>
-      </tr>
-      <tr>
-        <td> SEQUENCE </td>
-        <td> It defines sequence of chaos execution for multiple target pods </td>
-        <td> Default value: parallel. Supported: serial, parallel </td>
-      </tr>
-    </table>
-</details>
+    <details>
+        <summary>Check the Fault Tunables</summary>
+        <h2>Optional Fields</h2>
+        <table>
+          <tr>
+            <th> Variables </th>
+            <th> Description  </th>
+            <th> Notes </th>
+          </tr>
+          <tr>
+            <td> TARGET_CONTAINER </td>
+            <td> Name of container which is subjected to dns-error </td>
+            <td> None </td>
+          </tr>
+          <tr>
+            <td> TOTAL_CHAOS_DURATION </td>
+            <td> The time duration for chaos insertion (seconds) </td>
+            <td> Default (60s) </td>
+          </tr>
+          <tr>
+            <td> TARGET_HOSTNAMES </td>
+            <td> List of the target hostnames or keywords eg. '["litmuschaos","chaosnative.com"]'</td>
+            <td> If not provided, all hostnames/domains will be targeted</td>
+          </tr>
+          <tr>
+            <td> MATCH_SCHEME </td>
+            <td> Determines whether the dns query has to match exactly with one of the targets or can have any of the targets as substring. Can be either <code>exact</code> or <code>substring</code> </td>
+            <td> if not provided, it will be set as <code>exact</code></td>
+          </tr>
+          <tr>
+            <td> PODS_AFFECTED_PERC </td>
+            <td> The Percentage of total pods to target </td>
+            <td> Defaults to 0 (corresponds to 1 replica), provide numeric value only </td>
+          </tr>
+          <tr>
+            <td> CONTAINER_RUNTIME </td>
+            <td> container runtime interface for the cluster</td>
+            <td> Defaults to docker, supported values: docker</td>
+          </tr>
+          <tr>
+            <td> SOCKET_PATH </td>
+            <td> Path of the docker socket file </td>
+            <td> Defaults to <code>/var/run/docker.sock</code> </td>
+          </tr>
+          <tr>
+            <td> LIB </td>
+            <td> The chaos lib used to inject the chaos </td>
+            <td> Default value: litmus, supported values: litmus </td>
+          </tr>
+          <tr>
+            <td> LIB_IMAGE </td>
+            <td> Image used to run the netem command </td>
+            <td> Defaults to <code>litmuschaos/go-runner:latest</code> </td>
+          </tr>
+          <tr>
+            <td> RAMP_TIME </td>
+            <td> Period to wait before and after injection of chaos in sec </td>
+            <td> Eg. 30 </td>
+          </tr>
+          <tr>
+            <td> SEQUENCE </td>
+            <td> It defines sequence of chaos execution for multiple target pods </td>
+            <td> Default value: parallel. Supported: serial, parallel </td>
+          </tr>
+        </table>
+    </details>
 
 * Close this pane by clicking on **X** at the top.
 * Set fault weights by clicking on **Set fault weights** tab present on top. 

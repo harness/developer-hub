@@ -2,6 +2,7 @@
 id: pod-io-stress
 title: Pod IO stress
 ---
+Pod I/O stress is a Kubernetes pod-level chaos fault that:
 
 It is a chaos fault that causes disk stress on the application pod. This fault:
 - Aims to verify the resiliency of applications that share this disk resource for ephemeral or persistent storage.
@@ -35,46 +36,87 @@ The application pods should be running before and after injecting chaos.
 
 **NOTE:** It is assumed that you already have the boutique app set up in a namespace. If not, follow [this](provide link) to set up your boutique application.
 
-To execute pod IO stress fault, [setup experiment](provide) and infrastructure.
+To execute pod I/O stress fault, [setup experiment](provide) and infrastructure.
 
-* On the right pane, select **Kubernetes** that displays a list of Kubernetes faults available. Select **disk-fill**fault. 
-
-![Select Kubernetes](./static/images/select-io-stress.png)
-
-* This leads you to a page where you can specify parameters for the **Target application**, **Tune fault**, and **Probes**.
-
-![Tune faults](./static/images/io-stress-specify-parameters.png)
-
-* The **Target application** section has three parameters:
-  
-**Specify the parameters and explain them**
-
-* The **Tune fault** section has three parameters
-
-**Specify the parameters and explain them. Mention about container runtime, containerd, socket path.**
-
-![Tune fault params](./static/images/io-stress-tune-fault-1.png)
-
-![Tune fault params2](./static/images/io-stress-tune-fault-2.png)
-
-* You can see that the probe has been setup successfully with the parameters you specified. Close this pane by clicking on **X** at the top.
-
-![Probe setup done](./static/images/mem-hog-probe-setup-done.png)
-
-* Navigate to the next step of setting fault weights. Click the **Set fault weights** present on top. 
-
-![Set weights](./static/images/disk-fill-set-fault-weight.png)
-
-* Click **Run** to execute the experiment.
-
-![Run experiment](./static/images/io-stress-run-exp.png)
-
-![After chaos]
-
-* Visit [this link](provide link) to set up Grafana dashboard to visualize the results before and after injecting chaos into the application. 
-
-* Here is a representation of how disk fill affects the application.
-
+After successful setup of chaos infrastructure:
+* Choose the **pod-io-stress** fault from the list of Kubernetes faults available;
+* Specify parameters for the **Target application**, **Tune fault**, and **Probes**;
+    <details>
+        <summary>Check the Fault Tunables</summary>
+        <h2>Optional Fields</h2>
+        <table>
+          <tr>
+            <th> Variables </th>
+            <th> Description </th>
+            <th> Notes </th>
+          </tr>
+          <tr>
+            <td> FILESYSTEM_UTILIZATION_PERCENTAGE </td>
+            <td> Specify the size as percentage of free space on the file system </td>
+            <td> Default to 10%</td>
+          </tr>
+          <tr>
+            <td> FILESYSTEM_UTILIZATION_BYTES </td>
+            <td> Specify the size in GigaBytes(GB). <code>FILESYSTEM_UTILIZATION_PERCENTAGE</code> & <code>FILESYSTEM_UTILIZATION_BYTES</code> are mutually exclusive. If both are provided, <code>FILESYSTEM_UTILIZATION_PERCENTAGE</code> is prioritized. </td>
+            <td> </td>
+          </tr>
+          <tr>
+            <td> NUMBER_OF_WORKERS </td>
+            <td> It is the number of IO workers involved in IO disk stress </td>
+            <td> Default to 4 </td>
+          </tr> 
+          <tr>
+            <td> TOTAL_CHAOS_DURATION </td>
+            <td> The time duration for chaos (seconds) </td>
+            <td> Default to 120s </td>
+          </tr>
+          <tr>
+            <td> VOLUME_MOUNT_PATH </td>
+            <td> Fill the given volume mount path</td>
+            <td> </td>
+          </tr>  
+          <tr>
+            <td> LIB </td>
+            <td> The chaos lib used to inject the chaos </td>
+            <td> Default to <code>litmus</code>. Available litmus and pumba. </td>
+          </tr>
+          <tr>
+            <td> LIB_IMAGE </td>
+            <td> Image used to run the stress command </td>
+            <td> Default to <code>litmuschaos/go-runner:latest</code> </td>
+          </tr>  
+          <tr>
+            <td> TARGET_PODS </td>
+            <td> Comma separated list of application pod name subjected to pod io stress chaos</td>
+            <td> If not provided, it will select target pods randomly based on provided appLabels</td>
+          </tr>  
+          <tr>
+            <td> PODS_AFFECTED_PERC </td>
+            <td> The Percentage of total pods to target </td>
+            <td> Defaults to 0 (corresponds to 1 replica), provide numeric value only </td>
+          </tr>
+          <tr>
+            <td> CONTAINER_RUNTIME </td>
+            <td> container runtime interface for the cluster</td>
+            <td> Defaults to docker, supported values: docker, containerd and crio for litmus and only docker for pumba LIB </td>
+          </tr>
+          <tr>
+            <td> SOCKET_PATH </td>
+            <td> Path of the containerd/crio/docker socket file </td>
+            <td> Defaults to <code>/var/run/docker.sock</code> </td>
+          </tr>    
+          <tr>
+            <td> RAMP_TIME </td>
+            <td> Period to wait before and after injection of chaos in sec </td>
+            <td> Eg. 30 </td>
+          </tr>
+          <tr>
+            <td> SEQUENCE </td>
+            <td> It defines sequence of chaos execution for multiple target pods </td>
+            <td> Default value: parallel. Supported: serial, parallel </td>
+          </tr>
+        </table>
+    </details>
 * Close this pane by clicking on **X** at the top.
 * Set fault weights by clicking on **Set fault weights** tab present on top. 
 * Click **Run** to execute the experiment.
@@ -82,83 +124,7 @@ To execute pod IO stress fault, [setup experiment](provide) and infrastructure.
 
 ## Chaos fault validation
 
-## Fault tunables
-<details>
-    <summary>Check the Fault Tunables</summary>
-    <h2>Optional Fields</h2>
-    <table>
-      <tr>
-        <th> Variables </th>
-        <th> Description </th>
-        <th> Notes </th>
-      </tr>
-      <tr>
-        <td> FILESYSTEM_UTILIZATION_PERCENTAGE </td>
-        <td> Specify the size as percentage of free space on the file system </td>
-        <td> Default to 10%</td>
-      </tr>
-      <tr>
-        <td> FILESYSTEM_UTILIZATION_BYTES </td>
-        <td> Specify the size in GigaBytes(GB). <code>FILESYSTEM_UTILIZATION_PERCENTAGE</code> & <code>FILESYSTEM_UTILIZATION_BYTES</code> are mutually exclusive. If both are provided, <code>FILESYSTEM_UTILIZATION_PERCENTAGE</code> is prioritized. </td>
-        <td> </td>
-      </tr>
-      <tr>
-        <td> NUMBER_OF_WORKERS </td>
-        <td> It is the number of IO workers involved in IO disk stress </td>
-        <td> Default to 4 </td>
-      </tr> 
-      <tr>
-        <td> TOTAL_CHAOS_DURATION </td>
-        <td> The time duration for chaos (seconds) </td>
-        <td> Default to 120s </td>
-      </tr>
-      <tr>
-        <td> VOLUME_MOUNT_PATH </td>
-        <td> Fill the given volume mount path</td>
-        <td> </td>
-      </tr>  
-      <tr>
-        <td> LIB </td>
-        <td> The chaos lib used to inject the chaos </td>
-        <td> Default to <code>litmus</code>. Available litmus and pumba. </td>
-      </tr>
-      <tr>
-        <td> LIB_IMAGE </td>
-        <td> Image used to run the stress command </td>
-        <td> Default to <code>litmuschaos/go-runner:latest</code> </td>
-      </tr>  
-      <tr>
-        <td> TARGET_PODS </td>
-        <td> Comma separated list of application pod name subjected to pod io stress chaos</td>
-        <td> If not provided, it will select target pods randomly based on provided appLabels</td>
-      </tr>  
-      <tr>
-        <td> PODS_AFFECTED_PERC </td>
-        <td> The Percentage of total pods to target </td>
-        <td> Defaults to 0 (corresponds to 1 replica), provide numeric value only </td>
-      </tr>
-      <tr>
-        <td> CONTAINER_RUNTIME </td>
-        <td> container runtime interface for the cluster</td>
-        <td> Defaults to docker, supported values: docker, containerd and crio for litmus and only docker for pumba LIB </td>
-      </tr>
-      <tr>
-        <td> SOCKET_PATH </td>
-        <td> Path of the containerd/crio/docker socket file </td>
-        <td> Defaults to <code>/var/run/docker.sock</code> </td>
-      </tr>    
-      <tr>
-        <td> RAMP_TIME </td>
-        <td> Period to wait before and after injection of chaos in sec </td>
-        <td> Eg. 30 </td>
-      </tr>
-      <tr>
-        <td> SEQUENCE </td>
-        <td> It defines sequence of chaos execution for multiple target pods </td>
-        <td> Default value: parallel. Supported: serial, parallel </td>
-      </tr>
-    </table>
-</details>
+
 
 ## Fault examples
 

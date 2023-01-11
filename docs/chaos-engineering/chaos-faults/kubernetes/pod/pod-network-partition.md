@@ -2,6 +2,8 @@
 id: pod-network-partition
 title: Pod network partition
 ---
+Pod network partition is a Kubernetes pod-level chaos fault that:
+
 - It blocks the 100% Ingress and Egress traffic of the target application by creating network policy.
 - It can test the application's resilience to lossy/flaky network.
 
@@ -31,12 +33,67 @@ The application pods should be running before and after injecting chaos.
 
 **NOTE:** It is assumed that you already have the boutique app set up in a namespace. If not, follow [this](provide link) to set up your boutique application.
 
-To execute disk fill fault, [setup experiment](provide) and infrastructure.
+To execute pod network partition fault, [setup experiment](provide) and infrastructure.
 
 After successful setup of chaos infrastructure:
-* Choose the **disk-fill** fault from the list of Kubernetes faults available;
+* Choose the **pod-network-partition** fault from the list of Kubernetes faults available;
 * Specify parameters for the **Target application**, **Tune fault**, and **Probes**;
-
+    <details>
+        <summary>Check the Fault Tunables</summary>
+        <h2>Optional Fields</h2>
+        <table>
+          <tr>
+            <th> Variables </th>
+            <th> Description </th>
+            <th> Notes </th>
+          </tr>
+          <tr>
+            <td> TOTAL_CHAOS_DURATION </td>
+            <td> The time duration for chaos insertion (seconds) </td>
+            <td> Default (60s) </td>
+          </tr>
+          <tr>
+            <td> POLICY_TYPES </td>
+            <td> Contains type of network policy </td>
+            <td> It supports <code>egress</code>, <code>ingress</code> and <code>all</code> values</td>
+          </tr>
+          <tr>
+            <td> POD_SELECTOR </td>
+            <td> Contains labels of the destination pods </td>
+            <td> Eg. app=cart </td>
+          </tr>
+          <tr>
+            <td> NAMESPACE_SELECTOR </td>
+            <td> Contains labels of the destination namespaces </td>
+            <td> Eg. env=prod </td>
+          </tr>
+          <tr>
+            <td> PORTS </td>
+            <td> Comma separated list of the targeted ports </td>
+            <td> Eg. 80,443,22 </td>
+          </tr>
+          <tr>
+            <td> DESTINATION_IPS </td>
+            <td> IP addresses of the services or pods or the CIDR blocks(range of IPs), the accessibility to which is impacted </td>
+            <td> comma separated IP(S) or CIDR(S) can be provided. if not provided, it will induce network chaos for all ips/destinations</td>
+          </tr>  
+          <tr>
+            <td> DESTINATION_HOSTS </td>
+            <td> DNS Names/FQDN names of the services, the accessibility to which, is impacted </td>
+            <td> if not provided, it will induce network chaos for all ips/destinations or DESTINATION_IPS if already defined</td>
+          </tr>      
+          <tr>
+            <td> LIB </td>
+            <td> The chaos lib used to inject the chaos </td>
+            <td> supported value: litmus </td>
+          </tr>
+          <tr>
+            <td> RAMP_TIME </td>
+            <td> Period to wait before and after injection of chaos in sec </td>
+            <td> Eg. 30 </td>
+          </tr>
+        </table>
+    </details>
 * Close this pane by clicking on **X** at the top.
 * Set fault weights by clicking on **Set fault weights** tab present on top. 
 * Click **Run** to execute the experiment.
@@ -44,63 +101,6 @@ After successful setup of chaos infrastructure:
 
 ## Chaos fault validation
 
-## Fault tunables
-<details>
-    <summary>Check the Fault Tunables</summary>
-    <h2>Optional Fields</h2>
-    <table>
-      <tr>
-        <th> Variables </th>
-        <th> Description </th>
-        <th> Notes </th>
-      </tr>
-      <tr>
-        <td> TOTAL_CHAOS_DURATION </td>
-        <td> The time duration for chaos insertion (seconds) </td>
-        <td> Default (60s) </td>
-      </tr>
-      <tr>
-        <td> POLICY_TYPES </td>
-        <td> Contains type of network policy </td>
-        <td> It supports <code>egress</code>, <code>ingress</code> and <code>all</code> values</td>
-      </tr>
-      <tr>
-        <td> POD_SELECTOR </td>
-        <td> Contains labels of the destination pods </td>
-        <td> Eg. app=cart </td>
-      </tr>
-      <tr>
-        <td> NAMESPACE_SELECTOR </td>
-        <td> Contains labels of the destination namespaces </td>
-        <td> Eg. env=prod </td>
-      </tr>
-      <tr>
-        <td> PORTS </td>
-        <td> Comma separated list of the targeted ports </td>
-        <td> Eg. 80,443,22 </td>
-      </tr>
-      <tr>
-        <td> DESTINATION_IPS </td>
-        <td> IP addresses of the services or pods or the CIDR blocks(range of IPs), the accessibility to which is impacted </td>
-        <td> comma separated IP(S) or CIDR(S) can be provided. if not provided, it will induce network chaos for all ips/destinations</td>
-      </tr>  
-      <tr>
-        <td> DESTINATION_HOSTS </td>
-        <td> DNS Names/FQDN names of the services, the accessibility to which, is impacted </td>
-        <td> if not provided, it will induce network chaos for all ips/destinations or DESTINATION_IPS if already defined</td>
-      </tr>      
-      <tr>
-        <td> LIB </td>
-        <td> The chaos lib used to inject the chaos </td>
-        <td> supported value: litmus </td>
-      </tr>
-      <tr>
-        <td> RAMP_TIME </td>
-        <td> Period to wait before and after injection of chaos in sec </td>
-        <td> Eg. 30 </td>
-      </tr>
-    </table>
-</details>
 
 ## Fault examples
 
