@@ -11,8 +11,8 @@ export default function LandingPage() {
     <div>
       <MDXContent>
         <Layout
-          title={`${siteConfig.title}`}
-          description="Description will go into a meta tag in <head />"
+          title="Terms of Use" // {`${siteConfig.title}`}
+          description={`${siteConfig.tagline}`} // "Description will go into a meta tag in <head />"
         >
           <main className={`container ${styles.container}`}>
             <TermsOfUse />
