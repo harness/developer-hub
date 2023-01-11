@@ -58,10 +58,10 @@ Harness deploys updates progressively to different Harness cluster hosting accou
 * Cancel and back buttons have been added to Enable chaos screen
 	* A cancel button and a back button have been added to the Enable chaos screen which makes it easy to navigate between screens while setting up chaos infrastructure.
 
-* Failing to map a chaos fault to a chaos fault icon doesn’t throw an error on the user interface (Chaos-814)
-	* When you search for a specific chaos fault and the chaos manager cannot map this chaos fault to a chaos fault icon in the backend, it doesn’t throw an error on the user interface. Instead, it silently skips the error logs. 
+* Failing to map a chaos fault to a chaos fault icon does not throw an error on the user interface (Chaos-814)
+	* When you search for a specific chaos fault and the chaos manager cannot map this chaos fault to a chaos fault icon in the backend, it does not throw an error on the user interface. Instead, it silently skips the error logs. 
 
-* Expected Resilience Score doesn’t change when it is overridden (Chaos-791)
+* Expected Resilience Score does not change when it is overridden (Chaos-791)
 	* The Expected Resilience Score does not change to `NaN` when overridden.
 
 * Resource-type field has been made available (Chaos-714)
@@ -90,7 +90,7 @@ The Harness Chaos Engineering (HCE) module, which you can use to perform chaos e
 * Logs for chaos infrastructure cannot be viewed.
 * The properties of chaos infrastructure cannot be updated. You will need to provide blacklisted namespaces.
 * The properties of the environment to which the chaos infrastructure belongs cannot be updated.
-* Configuring chaos infrastructure doesnot provide support for Linux and Windows.
+* Configuring chaos infrastructure does not provide support for Linux and Windows.
  
 #### Chaos experiments
 
