@@ -13,29 +13,25 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
 
-## January xx, 2023, version xxxx
+## January 10, 2023, version 78105
 
-### What's New
+### What's new
 
-This release does not include new features.
+This release does not include new features and enhancements.
 
-### Enhancements
-
-This release does not include enhancements.
-
-### Early Access Features
+### Early access
 
 This release does not include early access features.
 
-### Fixed Issues
+### Fixed issues
 
-Service Health screen displays service status as Healthy even if there is no metric data available from the health source for a time period. (SRM–13336)
+- Saving the verify step in a stage template throws the `Invalid YAML. Can't find pipeline` error if the pipeline key is missing in YAML. (SRM-13320)
+      
+    You can now save the verify step in a stage template even if the pipeline key is missing in YAML.
 
-Now, the Service Health screen displays the service status as NO_DATA if there is no metric data available from the health source for a time period.
-
-Saving the **Verify** step in a Stage template throws the `Invalid YAML. Can't find pipeline.` error if the YAML file does not contain a pipeline key. (SRM-13320)
- 
-You can now save the **Verfy** step in a Stage template even if the YAML file does not contain a pipeline key.
+- Even though metric data is not available from the health source for a time period, the **Overall Health Score** timeline displays green bars and shows the service score as 100. (SRM-13336)
+  
+  Now, on the Service Health page, the **Overall Health Score** timeline displays grey bars if metric data is unavailable from the health source for a specific time period. It does not show the health score.
 
 
 ## December 22, 2022, version 77908
