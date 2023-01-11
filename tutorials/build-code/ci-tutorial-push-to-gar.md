@@ -25,6 +25,7 @@ Before you get started with the tutorial make sure you have the following accoun
 - [gcloud CLI](https://cloud.google.com/sdk/gcloud)
 - [Drone CLI](https://docs.drone.io/cli/install/) to build the application locally.
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+- [Terraform CLI](https://developer.hashicorp.com/terraform/downloads)
 
 ## Overview
 
