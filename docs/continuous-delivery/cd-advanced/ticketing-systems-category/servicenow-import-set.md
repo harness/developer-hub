@@ -29,11 +29,13 @@ For more information on ServiceNow import sets, go to [Import Set - POST /now/im
 
 ## Required ServiceNow roles
 
-The following roles are required by the ServiceNow account used in the Harness ServiceNow connector you select in the ServiceNow Import Set step.
+Here are the minimal permissions that integration user must have for executing a ServiceNow import set step;
 
 - import_transformer.
-- role mapping to CRUD permissions on the staging table for the user (user role for custom security ACL for staging table).
-- role mapping to READ permissions for each of the target tables that have an existing transform map from the specified staging table to the target table(s).
+- role mapping to CRUD permissions on staging table.
+- roles mapping to READ permissions for each of the target tables that have an existing transform map from the specified staging table to target table. 
+- (if required) permissions for fetching specific staging tables.
+- permission to access table sys_db_object. This is optional because you can enter your own staging table instead of selecting prefetched values.
 
 ## Add a ServiceNow Import Set step
 
