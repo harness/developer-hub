@@ -61,7 +61,7 @@ Customers will need to update their service/environment automation to use the v2
 
 Harness is happy to assist your migration to the new v2 experience. 
 
-For any questions or comments, please contact [support@harness.io](support@harness.io) or your Harness Customer Support Manager. Together we can work through discovery, migration planning, and assist with the process.
+For any questions or comments, please contact `support@harness.io` or your Harness Customer Support Manager. Together we can work through discovery, migration planning, and assist with the process.
 
 ## Links
 
