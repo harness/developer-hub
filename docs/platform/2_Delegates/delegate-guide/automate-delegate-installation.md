@@ -90,7 +90,7 @@ The `DELEGATE_NAME` environment variable is specified as a YAML list item:
 ...
 ```
 
-#### Docker delegate renaming
+#### Rename the Docker delegate 
 
 To rename the Docker delegate, set the `DELEGATE_NAME` environment variable to the new name.
 
