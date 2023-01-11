@@ -100,11 +100,22 @@ For the step settings on CI Plugins, see [Plugin Step Settings](../../ci-technic
 
 ##### Private Actions
 
-If you are trying to use an action composite that is located in a private repository, you first need to clone the repository using the `Git Clone` step.
+If you are trying to use an action composite that is located in a private repository, you will need to set a `GITHUB_TOKEN` environment variable on the plugin step. Make sure the token has pull permissions to the target repository.
 
-Then, when specifying your action repository with the `uses` attribute, use the following pattern: `./../<private repository name>`.
-
-In some cases you might specify a different path in the `Git Clone` step; make sure that the `uses` path starts with `./`.
+```
+- step:
+   type: Plugin
+   name: private action
+   identifier: private_action
+   spec:
+     connectorRef: dockerhub
+     image: plugins/github-actions
+     privileged: true
+     settings:
+       uses: myorg/private-action-step@v1
+     envVariables:
+       GITHUB_TOKEN: <+secrets.getValue("github_pat")>
+```
 
 ### Step 5: View the Results
 
