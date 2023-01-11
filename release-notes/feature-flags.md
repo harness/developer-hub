@@ -13,6 +13,27 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
 
+## January 10, 2023
+
+### What's new
+
+This release does not include new features.
+
+### Early access
+
+This release does not include early access features.
+
+### Fixed issues
+#### Feature Flags on the Harness Platform
+
+- Fixed a bug where a completion tick never appeared on the UI after an evaluation had successfully passed. (FFM-6127)
+
+- Fixed an error that caused the Complete button at the end of the Get Started flow to link to the beginning of the flow, instead of the Feature Flag list page as expected. (FFM-5988)
+
+- Resolved an issue that caused the user to scroll unnecessarily when they expanded the target attribute or operator drop down menus during the creating a target flow. (FFM-5187)
+
+- Fixed a bug where scrollbars were unnecessarily displayed on the target groups section of the targets page. (FFM-4053)
+
 ## December 22, 2022
 
 ### What's new
