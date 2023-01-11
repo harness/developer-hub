@@ -34,6 +34,9 @@ This release does not include early access features.
 
 - Fixed a bug where scrollbars were unnecessarily displayed on the target groups section of the targets page. (FFM-4053)
 
+#### Feature Flag SDKs
+The Ruby SDK has been updated to version 1.0.5. This fixes a bug that caused the SDK to not wait for initialization when using "wait_for_initialization" method. (FFM-6393)
+
 ## December 22, 2022
 
 ### What's new
