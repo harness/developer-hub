@@ -14,7 +14,9 @@ Harness subscriptions allow you to tailor the level of cover you need from each 
 
 Using online subscriptions, you can choose whether to be billed yearly or monthly, and can select the exact number of licenses you need for your developers and for monthly active users (MAUs). It’s as easy as signing in to the Harness Platform, choosing your [subscription plan](3-available-plans-for-feature-flags.md), and entering your billing details.  
 
-> **☆ NOTE —** Currently online subscriptions are available only to self-serve Feature Flags customers. For enterprise buyers or for subscribing to other modules, contact our Sales team.
+:::note
+Currently online subscriptions are available only to self-serve customers. If you are an enterprise buyer or want to subscribe to other modules, contact the Harness Sales team.
+:::
 
 ## See also:
 

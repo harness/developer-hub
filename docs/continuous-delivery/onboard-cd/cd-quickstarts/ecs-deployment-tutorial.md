@@ -604,6 +604,15 @@ To ensure that your deployments are successful, please follow the AWS schema syn
 * [PutScalingPolicy](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_PutScalingPolicy.html)
 * [RunTask](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_RunTask.html)
 
+### Supported stores for ECS manifests
+
+Harness can fetch your task definitions, service definitions, scalable target and scaling policy configurations (in JSON or YAML) from the following stores:
+
+- Harness File Store.
+- AWS S3 buckets. You can use the .Zip format or a direct path to the file in the S3 bucket.
+  - For S3, you use a Harness AWS Connector. The IAM role permissions required by Harness for S3 are described in [AWS Connector Settings Reference](../../../platform/connectors/../7_Connectors/ref-cloud-providers/aws-connector-settings-reference.md#aws-s3).
+- Git providers.
+
 ### AWS Auto Scaling with ECS
 
 The ECS service(s) you deploy with Harness can be configured to use AWS Service Auto Scaling to adjust its desired ECS service count up or down in response to CloudWatch alarms. For more information on using Auto Scaling with ECS, see [Target Tracking Scaling Policies](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-autoscaling-targettracking.html) from AWS.

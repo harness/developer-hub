@@ -1,18 +1,21 @@
 ---
 title: Harness Git Experience Quickstart (Deprecated)
 description: This quickstart shows you how to enable and use Harness Git Experience.
-# sidebar_position: 2
+sidebar_position: 12
 helpdocs_topic_id: dm69dkv34g
 helpdocs_category_id: w6r9f17pk3
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This version of Harness Git Experience has been deprecated. To try out the latest version of Git Experience, see [Harness Git Experience Quickstart](configure-git-experience-for-harness-entities.md).This quickstart shows you how to enable and use Harness Git Experience.
+:::important
+**Important** End-of-Life/Support Announcement: This version of Harness Git Experience is deprecated and will be out of support on January 31, 2023. Harness will not fix issues or add new features in the current version of Git Experience. To ensure uninterrupted support, please upgrade to the latest version of Git Experience before January 31, 2023. Harness provides support for migrating your existing projects from the older version to the latest version. Please contact Harness Support to schedule your migration.
+To learn more about the latest version of Git Experience, see [Harness Git Experience Quickstart](configure-git-experience-for-harness-entities.md).
+:::
 
 Harness Git Experience integrates your Harness Projects, Pipelines, and resources with your Git repos. You can manage and run your Harness Pipelines and resources entirely from Git or use a hybrid method. With Harness Git Experience, your Git repos are always the single source of truth.
 
-See also: [Git Experience How-tos](https://docs.harness.io/article/soavr3jh0i-git-experience-how-tos), [Harness Git Experience Overview](harness-git-experience-overview.md).### Objectives
+See also: [Git Experience How-tos](git-experience-overview.md), [Harness Git Experience Overview](harness-git-experience-overview.md).### Objectives
 
 You'll learn how to:
 
@@ -301,5 +304,5 @@ Next, explore other Harness features:
 
 * [CI Pipeline Quickstart](../../continuous-integration/ci-quickstarts/ci-pipeline-quickstart.md)
 * [Kubernetes CD Quickstart](../../continuous-delivery/onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md)
-* [Git Experience How-tos](https://docs.harness.io/article/soavr3jh0i-git-experience-how-tos)
+* [Git Experience How-tos](git-experience-overview.md)
 

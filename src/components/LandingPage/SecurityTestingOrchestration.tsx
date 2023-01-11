@@ -45,7 +45,6 @@ export default function STO() {
     //     <li>Orchestrate security tests</li>
     //   </ul>
     <div className="container">
-      <img src={`${baseUrl}img/sto.svg`} />
       <div className={styles.SectionName}>
         <h3>Orchestrate security tests</h3>
       </div>
@@ -72,8 +71,7 @@ export default function STO() {
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
             <p>
-              Harness Security Testing Orchestration (STO) enables DevOps and
-              DevSecOps teams to left shift security testing. STO orchestrates
+              Harness STO enables DevOps and Security teams teams to left shift security testing as a key outcome of their DevSecOps initiative. STO orchestrates
               scanning, intelligently deduplicating scanner output, prioritizing
               remediations, and enforcing governance into your Pipeline. STO
               puts scanning directly into your Pipelines to ensure that
@@ -85,16 +83,16 @@ export default function STO() {
                 className={clsx("button button--lg", styles.btn, styles.btnSTO)}
                 to="#all-tutorials"
               >
-                STO Tutorials
+                Tutorials
                 <img src={`${baseUrl}img/Stroke.svg`} />
               </Link>
               <Link href="https://harness.io/products/security-testing-orchestration">
-                <button className={styles.link}>Learn more about STO</button>
+                <button className={styles.link}>Learn more</button>
               </Link>
             </div>
           </div>
           <div>
-            <img src={`${baseUrl}img/sto_flow.svg`} />
+            <img src={`${baseUrl}img/sto.svg`} />
           </div>
         </div>
       </div>

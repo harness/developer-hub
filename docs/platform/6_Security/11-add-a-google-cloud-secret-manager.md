@@ -33,7 +33,7 @@ Harness also supports [Google KMS as a secrets manager](../6_Security/10-add-go
 
 ### Supported Platforms and Technologies
 
-See [Supported Platforms and Technologies](https://docs.harness.io/article/1e536z41av5y-supported-platforms).
+See [Supported Platforms and Technologies](../../getting-started/supported-platforms-and-technologies.md).
 
 ### Permissions
 

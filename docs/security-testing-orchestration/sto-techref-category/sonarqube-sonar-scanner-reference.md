@@ -1,7 +1,7 @@
 ---
 title: SonarQube SonarScanner Reference
 description: This topic describes how to configure a step to scan a repository using SonarQube. STO supports all languages supported by SonarScanner.
-sidebar_position: 40
+sidebar_position: 60
 helpdocs_topic_id: 4qe4h3cl28
 helpdocs_category_id: m01pu2ubai
 helpdocs_is_private: false
@@ -33,7 +33,7 @@ STO supports the following scan types for SonarQube:
 * `policy_type` — Enter one of the following:
 	+ `orchestratedScan`  — A Security step in the pipeline runs the scan and ingests the results. This is the easiest to set up and supports scans with default or predefined settings.
 	+ `dataLoad`  — The pipeline downloads scan results using the [SonarScanner API](https://docs.sonarqube.org/latest/extend/web-api/).
-	+ `ingestionOnly` — Run the scan in a Run step, or outside the pipeline, and then ingest the results. This is useful for advanced workflows that address specific security needs. See [Ingest scan results into an STO pipeline](https://docs.harness.io/article/ijkyokxrot).
+	+ `ingestionOnly` — Run the scan in a Run step, or outside the pipeline, and then ingest the results. This is useful for advanced workflows that address specific security needs. See [Ingest scan results into an STO pipeline](/docs/security-testing-orchestration/use-sto/ingest-scan-results-into-an-sto-pipeline).
 * `repository_project` — The repository name. If you want to scan `https://github.com/my-github-account/codebaseAlpha`, for example, you would set this to `codebaseAlpha`.
 * `repository_branch` — The git branch to scan. You can specify a hardcoded string or use the runtime variable [`<+codebase.branch>`](../../continuous-integration/ci-technical-reference/built-in-cie-codebase-variables-reference.md#manual-branch-build). This sets the branch based on the user input or trigger payload at runtime.
 

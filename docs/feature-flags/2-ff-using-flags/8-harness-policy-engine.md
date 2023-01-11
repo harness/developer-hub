@@ -13,7 +13,9 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-> **☆ NOTE —** Currently, this feature is behind the Feature Flags `OPA_PIPELINE_GOVERNANCE`, `CUSTOM_POLICY_STEP`, and `OPA_FF_GOVERNANCE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. 
+:::note
+ Currently, this feature is behind the Feature Flags `OPA_PIPELINE_GOVERNANCE`, `CUSTOM_POLICY_STEP`, and `OPA_FF_GOVERNANCE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. 
+:::
 
 Harness Policy Engine uses [Open Policy Agency (OPA)](https://www.openpolicyagent.org/docs/latest/) to store policies that you can then enforce on your Feature Flags. You can use Harness Policy Engine with the following [Harness entities](../../platform/20_References/harness-entity-reference.md) on the Harness Platform:
 
@@ -32,7 +34,9 @@ For example, you can use policies to ensure your Feature Flags: 
 
 This topic provides an overview of how Harness Policy Engine works with Feature Flags.
 
-> **☆ NOTE —** For steps to set up your policies on the Harness Platform, go to [Use Harness Policy Engine for Feature Flags.](../../platform/14_Policy-as-code/using-harness-policy-engine-for-feature-flags.md)
+:::note
+ For steps to set up your policies on the Harness Platform, go to [Use Harness Policy Engine for Feature Flags.](../../platform/14_Policy-as-code/using-harness-policy-engine-for-feature-flags.md)
+:::
 
 ## Before you begin
 

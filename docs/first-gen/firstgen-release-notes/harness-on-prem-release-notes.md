@@ -10,7 +10,79 @@ helpdocs_is_published: true
 
 This document contains release notes for Harness Self-Managed Enterprise Edition.
 
-For Harness SaaS release notes, see [Harness SaaS Release Notes](https://docs.harness.io/article/xacpxeyioo-harness-saa-s-release-notes).Release notes are displayed with the most recent release first.
+For Harness SaaS release notes, see [Harness SaaS Release Notes](https://developer.harness.io/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes). 
+
+Release notes are displayed with the most recent release first.
+
+### December 21, 2022, version 77622
+
+Delegate: 77621
+
+:::note
+
+**Important information about KOTS Admin Console**
+
+This release of Harness Self-Managed Enterprise Edition requires KOTS Admin Console (`kotsadm`) 1.88.0. You must upgrade KOTS before you deploy this Harness release. Use the following commands:
+
+```
+curl https://kots.io/install/1.88.0 | bash
+kubectl kots admin-console upgrade -n <namespace>
+```
+:::
+
+#### New features and enhancements
+
+This release introduces the following features and enhancements.
+
+| **Feature or enhancement** | **Description** |
+| --- | --- |
+| CDS-40179 | Added reconciliation for `looker` entities to ensure data synchronization between mongoDB and timescaleDB. |
+| CDS-45694 | Deployment recon task failing. Longer retention for deployment in custom dashboards was failing due to a missing null check which has been added. (CDS-45694) |
+| CDS-47016 | Changed how search functionality on the deployments page works. Instead of using regex, search operations now use mongo stemming algorithms. |
+| DEL-4888 | Adopted the use of an immutable image for the delegate that is installed by default in newly created accounts. For more information on new delegate features including auto-update, see [Delegate Overview](https://developer.harness.io/docs/platform/Delegates/delegates-overview). |
+| DEL-5073 | Updated the Core Protocol Buffers library `protobuf-java/protobuf-javalite` to version 3.21.7. This update fixes CVE-2022-3171, a vulnerability that affects some earlier versions. The vulnerability was linked with denial-of-service (DoS) attacks. |
+| DEL-5153 | Upgraded `org.apache.commons:commons-text` to version 1.10.0 to fix a critical vulnerability in the delegate. |
+| DEL-5308 | Removed the delegate dependency on Java driver component `mongo-java-driver`. This eliminates the CVE-2021-20328 vulnerability that affects client-side field-level encryption (CSFLE). |
+| DEL-5386 | Changed the base image that the non-legacy delegate uses to `redhat/ubi8-minimal:latest`. This ensures that each release includes all OS-level security updates. |
+| PL-26799 | Removed feature flag `LDAP_GROUP_SYNC_JOB_ITERATOR`. This makes it possible for all accounts for which LDAP is configured to set up a periodic group sync schedule by using a `cron` expression. |
+|          | Additionally, LDAP user group sync will not use a quartz job. Instead, the `cron`-based scheduler will use the user-configured `cron` expression. The default value remains set to a 15-minute interval. |
+| PL-29603 | Upgraded `org.mongodb:mongo-java-driver` to version 3.12.11 to fix vulnerabilities. |
+
+#### Issues fixed in this release
+
+This release includes the following fixes.
+
+| **Feature or enhancement** | **Description** |
+| --- | --- |
+| CDS-36784 | **NPE when trying to click a version of a linked Shell Script step from Template Library** |
+|           | Fixed a bug where the linked template in the pre-deployment step in the canary workflow did not show the correct version |
+| CDS-39248, ZD-36559 | Fixed a problem with comment-only scripts were not parsed as empty. This issue prevented the proper function of some custom artifacts. |
+| CDS-40336, ZD-32237, ZD-34859 | Terraform apply steps fail intermittently with an I/O exception.
+|          | Multiple parallel workflows were running the Terraform task. For example, one of the workflows cloned a git repository, but before it could copy it to a working directory on the delegate, another workflow reset it and cloned another repository. This caused a `File Not Found` exception for the first workflow. |
+|          | This was happening because Harness cloned the git repository and copied it to a working directory in two different steps asynchronously. The two steps are now performed synchronously, which allows multiple workflows to run in parallel using the same Terraform provisioner. |
+| CDS-43346, ZD-28902, ZD-34686 | Deployments Page Filters Problems |
+|          | Filter should work properly when user tries to switch from filter 2 to filter 1. |
+| CDS-43410, ZD-34705 | Users cannot set up start time and end time in a Jira step. |
+|          | This issue has been resolved. |
+| CDS-43477, ZD-34546 | **Service Dashboard showing the wrong Artifact info from what was deployed**. Fixed a bug where the Services dashboard statistics did not show the correct version of the artifact when a workflow rollback failed. |
+| CDS-44014 | **Dashboards Data Issue: Missing Service Names for Deployments with Running Status** |
+|           | Updated the Workflow Execution before publishing event and updating the timescale database, which allows time scale database to be populated with deployed service Ids while workflow or pipeline is running. |
+| CDS-44299, ZD-35185 | **Harness Manager and GraphQL missing Git Connector information**. The property sent to the backend was wrong and it was removed. Now we can fetch the correct connector list. |
+| CDS-44396 | **Fields overlap on the Deployment Freeze Window screen**. This issue has been resolved. |
+| CDS-44408 | When an active deployment freeze is on and no entries exist for app exclusions, the workflow deployment fails with an `appID may not be null` error. This issue occurs when the `SPG_NEW_DEPLOYMENT_FREEZE_EXCLUSIONS` feature flag is enabled. |
+|           | Validation has been added to prevent empty Application, Environment, and Service IDs in the **Deployment Freeze Window** screen. |
+| CDS-44485 | **A bad query on instance collection scans all the records, causing a high level of disk utilization**. This issue has been resolved. |
+| CDS-45647, ZD-36114, ZD-36510 | **Application is not showing in dropdown**. If user searched any query, then the ID provided to the child component restricted pagination. Now the ID is updated to the parent level so that if elements are more than 10/15, infinite scroll is enabled and all the matching results are fetched. |
+| CDS-46099 | **Perpetual task interval correction for instance sync**. Perpetual task interval for instance sync is 10 minutes. |
+| CDS-46163 | Kubernetes deployments were failing if a Shell Script step was placed after deployment steps. |
+| DEL-5100, ZD-35558 | Fixed a regression issue that allowed delegate tasks to continue to run when delegates were not able to reach external resources. |
+| PL-25845 | **When trying to delete a user provisioned through SCIM, the tooltip displays "User is not authorized"**. The tooltip text displays the correct message now to indicate that the user is externally managed and cannot be deleted from Harness. |
+| PL-28400, ZD-34766, ZD-35873, ZD-35878 | **When a delegate is down, there is a delay in sending notifications.** This has now been fixed by increasing the number of threads in the thread pool to enable the background jobs to pick corresponding alerts and send the notifications. |
+| PL-28828, ZD-35485 | When adding a new user to a user group through GraphQL APIs while the feature flag `AUTO_ACCEPT_SAML_ACCOUNT_INVITES` is enabled, the audit logs show incorrect details. |
+| PL-29027, ZD-35778 | **The list of service variables were not getting populated in the Environment details section.** This has now been fixed to enable selection of config variables for selected service. |
+| PL-29186, ZD-35968 | **The API to fetch list of secrets is taking longer than expected**. This has now been fixed by maintaining the secret logs for 90 days. |
+| PL-29495 | **New User is added in a pending state**. Now, when auth method is SAML and two-factor authentication is `ON`, user is added into verified state and a notify email with 2FA QR code is sent. When auth method is SAML and two-factor auth is `OFF`, user is added into verified state and no email is sent. |
+
 
 ### October 31, 2022, version 77117
 
@@ -21,10 +93,8 @@ Delegate: 77021
 This release introduces the following features and enhancements.
 
 
-
-|  |  |
-| --- | --- |
 | **Feature or enhancement** | **Description** |
+| --- | --- |
 | CDS-40206 | The option to use Kerberos-based authentication in the creation of Git connectors is no longer gated by feature flag. |
 | CDS-41527 | Exclusion filters can be applied to the applications, environments, and services that you specify in a deployment freeze configuration. This allows you to exclude applications from a deployment freeze despite the specification that **ALL** be included. |
 | CDS-43469 | The workflow execution page was optimized by adding SEARCH\_TEXT as a query parameter. This replaces the use of a CONTAINS parameter in the method call for the deployment page that was behind a feature flag. |
@@ -35,11 +105,8 @@ This release introduces the following features and enhancements.
 
 This release includes the following fixes.
 
-
-
-|  |  |
-| --- | --- |
 | **Issue** | **Description** |
+| --- | --- |
 | CDS-42400ZD-33890 | Resolved an issue in ProcessStopper that caused an intermittent issue. PowerShell sessions were not being terminated on workflow time out. |
 | CDS-43767ZD-34771 | Earlier we added support to allow customers to find artifacts from the last deployed workflow or pipeline with the same service as the triggered workflow by enabling the added feature flag `SERVICE_ID_FILTER_FOR_TRIGGERS.` A new index has been added for the new query. |
 | CDS-43945 | Handled an edge case to ensure that the default value is one of the allowed values of the pipeline variable. |
@@ -47,7 +114,7 @@ This release includes the following fixes.
 | CDS-44225 | Fixed a problem that resulted in UI windows freezing. The scope of a globally applied CSS was narrowed to a specific component. |
 | DEL-4667 | Changed code to reduce the volume of API calls made to retrieve the delegate configuration. This resolves a problem with API calls made to determine the configuration of a deactivated delegate.  |
 | DEL-5060 | Added validation to ensure the download of the correct delegate version. This fixed a problem that occurred when the `os_arch` value indicated a platform type of `amd64` instead of `x86_64.` |
-| DEL-5065 | Fixed a problem with the r`unAsRoot` boolean value that caused it to be incorrectly interpreted as a string. This prevented the commented-out specification of the `securityContext` required for a root user.  |
+| DEL-5065 | Fixed a problem with the `runAsRoot` boolean value that caused it to be incorrectly interpreted as a string. This prevented the commented-out specification of the `securityContext` required for a root user.  |
 | PL-26372 | Corrected the error message that is displayed when invalid parameters are entered in the creation of a Custom Secret Manager. The issue was fixed by including the references to the secret and the template from the Custom Secret Manager to provide the necessary information. |
 
 ### October 7, 2022, version 76918
@@ -58,11 +125,8 @@ Delegate: 76818
 
 This release introduces the following features and enhancements.
 
-
-
-|  |  |
-| --- | --- |
 | **Feature or enhancement** | **Description** |
+| --- | --- |
 | CDS-42783 | Created upsert statement for looker entities. |
 | DEL-4589 | [UI] CG Immutable delegate should not use profile script If FF is on. |
 | DEL-4617ZD-33464 | Delegate logic was enhanced to ensure that `redis` connection errors do not interfere with task acquisition. |
@@ -73,11 +137,8 @@ This release introduces the following features and enhancements.
 
 This release includes the following fixes.
 
-
-
-|  |  |
-| --- | --- |
 | **Issue** | **Description** |
+| --- | --- |
 | CDS-41129ZD-32913 | For this FF `OPTIMIZED_TF_PLAN` shell script step will not fail if for `${terraformPlan.jsonFilePath()}` expression instead the value of this expression will be null. |
 | CDS-41232 | Introduced new fields `parent_pipeline_id` and `created_by_type` in timescaledb. |
 | CDS-41357ZD-32975 | Throw exception if the nexus artifact URL is empty. |
@@ -108,11 +169,8 @@ Delegate: 76614
 
 This release introduces the following features and enhancements:
 
-
-
-|  |  |
-| --- | --- |
 | **Feature or Enhancement** | **Description** |
+| :-- | :-- |
 | CDS-40796 | The Azure Identity (`azure-identity`) artifact was upgraded from version 1.1.2 to version 1.4.4. The upgrade was made to remove vulnerabilities. |
 | CDS-41347 | The `go-template` binary was replaced with an updated version 0.4.1. The new binary updates Golang from version 1.17.9 to 1.16.4. The `go-template` binary supplies a Delegate-required internal library. |
 | DEL-3171 | A change was made to prevent the CG Immutable Delegate from running the profile script. |
@@ -123,11 +181,8 @@ This release introduces the following features and enhancements:
 
 #### Issues Fixed in This Release
 
-
-
-|  |  |
-| --- | --- |
 | **Issue** | **Description** |
+| :-- | :-- |
 | CDS-41149ZD-32913 | Changed the behavior associated with the `OPTIMIZED_TF_PLAN` feature flag. An expression of `${terraformPlan.jsonFilePath()}` will no longer cause the shell script step to fail; instead, the value of the expression will be set to `null`. |
 | CDS-41232 | The `parent_pipeline_id` and `created_by_type` fields were introduced in `timescaledb`. |
 | CDS-41357ZD-32975 | A change was made to cause an exception to be generated if the field for the nexus artifact URL is empty. |
@@ -154,12 +209,16 @@ This release introduces the following features and enhancements:
 
 Delegate: 76324
 
-**Important information about upgrading KOTS admin console****Minor release 76324 requires KOTS admin console version 1.78.0.** You must update KOTS before you deploy this release of Harness Self-Managed Enterprise Edition.  
+**Important information about upgrading KOTS admin console**
+
+**Minor release 76324 requires KOTS admin console version 1.78.0.** You must update KOTS before you deploy this release of Harness Self-Managed Enterprise Edition.  
   
 To update KOTS admin console:  
-  
-`curl` [`https://kots.io/install/1.78.0`](https://kots.io/install/1.78.0)`| bash`  
-`kubectl kots admin-console upgrade -n <namespace>`#### New Features and Enhancements
+```
+curl https://kots.io/install/1.78.0 | bash  
+kubectl kots admin-console upgrade -n <namespace>
+```
+#### New Features and Enhancements
 
 This release introduces the following features and enhancements.
 
@@ -209,8 +268,13 @@ N/A
 
 ### July 31, 2022, minor release 76025
 
-**Important information about upgrading Timescale DB**Before you upgrade to this release, you must run the following script **timescaledb\_upgrade.sh**against your Harness namespace to update Timescale DB.  
-  
+
+:::note
+**Important information about upgrading Timescale DB**
+
+Before you upgrade to this release, you must run the following **timescaledb\_upgrade.sh** script against your Harness namespace to update Timescale DB.  
+:::
+
 ### timescaledb\_upgrade.sh
 
 ```
@@ -406,7 +470,7 @@ Fix: We now first apply the pattern filter to all artifacts and then limit it to
 
 ### May 31, 2022, minor release 75281
 
-:::danger
+:::note
 **Important information regarding certificates and Delegate upgrade to OpenJDK 11:**  
   
 As part of our migration to OpenJDK 11, Delegates will download OpenJDK 11 and get started with it instead of the previous OpenJDK 8 that was used. This means that Delegates will have Java installed on a different path. Any user actions which modify or use older Java versions would be affected. Some of the most common scenarios include adding certificates to the default Java keystore and running additional Java applications using Delegates installed Java (e.g. from a profile or init script).  
@@ -653,9 +717,8 @@ The following table lists the component versions in this release.
 
 
 
-|  |  |
+| **Name** | **Version** |
 | --- | --- |
-| **Name**  | **Version** |
 | Manager  | 73807 |
 | Delegate | 73807 |
 | Watcher | 73807 |
@@ -700,11 +763,8 @@ The following new features were added to the Harness platform components:
 
 The following table lists the component versions in this release.
 
-
-
-|  |  |
+| **Name** | **Version** |
 | --- | --- |
-| **Name**  | **Version** |
 | **Manager**  | 73610 |
 | **Delegate** | 73610 |
 | **Watcher** | 73610 |
@@ -747,9 +807,8 @@ The following table lists the component versions in this release.
 
 
 
-|  |  |
+| **Name** | **Version** |
 | --- | --- |
-| **Name**  | **Version** |
 | **Manager**  | 73406 |
 | **Delegate** | 73406 |
 | **Watcher** | 73406 |
@@ -805,9 +864,8 @@ The following table lists the component versions in this release.
 
 
 
-|  |  |
+| **Name** | **Version** |
 | --- | --- |
-| **Name**  | **Version** |
 | **Manager**  | 73225 |
 | **Delegate** | 73225 |
 | **Watcher** | 73225 |

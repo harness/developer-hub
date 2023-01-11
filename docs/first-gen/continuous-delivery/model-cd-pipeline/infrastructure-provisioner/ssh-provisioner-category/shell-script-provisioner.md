@@ -487,5 +487,5 @@ Now you have seen an example of how the Shell Script Provisioner was used to pro
 ### Next Steps
 
 * [Variables and Expressions in Harness](../../../../firstgen-platform/techref-category/variables/variables.md)
-* [Continuous Verification](https://docs.harness.io/article/myw4h9u05l-verification-providers-list)
+* [Continuous Verification](../../../continuous-verification/continuous-verification-overview/concepts-cv/what-is-cv.md)
 

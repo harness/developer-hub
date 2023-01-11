@@ -19,7 +19,7 @@ Harness provides preloaded **By Harness** (pre-defined) and **Custom** (user-def
 * Explore the cloud cost data in a logical and structured manner
 * View your cloud costs at a glance, understand what is costing the most, and analyze cost trends
 
-This Dashboard will not be available if you have not selected **AWS ECS and Resource Inventory Management** feature when setting up [CCM for AWS](https://ngdocs.harness.io/article/80vbt5jv0q-set-up-cost-visibility-for-aws).This topic describes how to view the **Orphaned EBS Volumes and Snapshots** **Dashboard** and get more information about that data.
+This Dashboard will not be available if you have not selected **AWS ECS and Resource Inventory Management** feature when setting up [CCM for AWS](../../../1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md).This topic describes how to view the **Orphaned EBS Volumes and Snapshots** **Dashboard** and get more information about that data.
 
 ![](./static/orphaned-ebs-volumes-and-snapshots-dashboard-73.png)
 
@@ -32,7 +32,7 @@ This Dashboard will not be available if you have not selected **AWS ECS and Reso
   
 ## Data Ingestion for Dashboard
 
-Once you have set up cost visibility for the [AWS](https://ngdocs.harness.io/article/80vbt5jv0q-set-up-cost-visibility-for-aws) cloud provider and the data is available for root cost analysis, you can view the dashboard. The data in the Dashboard is updated dynamically.
+Once you have set up cost visibility for the [AWS](../../../1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md) cloud provider and the data is available for root cost analysis, you can view the dashboard. The data in the Dashboard is updated dynamically.
 
 ## View Orphaned EBS Volumes and Snapshots Dashboard
 

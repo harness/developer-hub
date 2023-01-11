@@ -118,7 +118,7 @@ Harness integrates with your Verification Providers to automatically test and ve
 
 
 ![](./static/harness-key-concepts-36.png)
-Harness Continuous Verification is a large topic and is covered in depth in [CV Summary and Provider Support](https://docs.harness.io/article/myw4h9u05l-verification-providers-list) and [CV Strategies, Tuning, and Best Practices](../continuous-delivery/continuous-verification/continuous-verification-overview/concepts-cv/cv-strategies-and-best-practices.md). For now, note that Harness uses machine-learning to analyze data from your tools and gain more insight with each deployment, or for each running service over time, enabling Harness to improve its understanding of anomalies and failures.
+Harness Continuous Verification is a large topic and is covered in depth in [CV Summary and Provider Support](../continuous-delivery/continuous-verification/continuous-verification-overview/concepts-cv/what-is-cv.md) and [CV Strategies, Tuning, and Best Practices](../continuous-delivery/continuous-verification/continuous-verification-overview/concepts-cv/cv-strategies-and-best-practices.md). For now, note that Harness uses machine-learning to analyze data from your tools and gain more insight with each deployment, or for each running service over time, enabling Harness to improve its understanding of anomalies and failures.
 
 
 ### Source Repo Providers

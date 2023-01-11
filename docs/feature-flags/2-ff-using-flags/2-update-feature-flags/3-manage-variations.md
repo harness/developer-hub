@@ -28,7 +28,9 @@ You can edit the Variations of your Flags on the Harness Platform even after usi
 
 ## Edit the default Flag Variations
 
-> **☆ NOTE —** When you change the default Variation of a Flag, the change is applied to **only** the current Environment you are in and any new Environments you create. To change the Variations in other pre-existing Environments, follow the steps in Option 1: Edit the Variations for a Specific Environment.
+:::note
+ When you change the default Variation of a Flag, the change is applied to **only** the current Environment you are in and any new Environments you create. To change the Variations in other pre-existing Environments, follow the steps in Option 1: Edit the Variations for a Specific Environment.
+:::
 
 1. Go to the Feature Flag you want to edit the Variations for.
 2. In **Variations**, click the edit icon.
@@ -59,8 +61,8 @@ You can edit the Variations of your Flags on the Harness Platform even after usi
 <img src={manage_vars} alt="A screenshot of the Targeting tab of a Flag, which highlights where you can change which Flag Variation is served." height="500" width="400" />
 ``` 
 *Figure 3: Variations when the Flag is enabled and disabled*
-
-> **☆ NOTE —** For information about Specific Targeting, go to [Targeting Users with Flags](../4-ff-target-management/3-targeting-users-with-flags.md)
-
+:::note
+ For information about Specific Targeting, go to [Targeting Users with Flags](../4-ff-target-management/3-targeting-users-with-flags.md)
+:::
 3. Click **Save** to save your changes.
 

@@ -51,7 +51,7 @@ The following Workflow types are available when creating a Workflow.
 * **Canary**  —  A Canary deployment rolls out a new app version to small sets of users in separate phases, tests and verifies it at each phase, gradually rolling it out to your entire infrastructure.
   See:
   * [AMI Canary Deployment](../../aws-deployments/ami-deployments/ami-canary.md)
-  * [Create a Kubernetes Canary Deployment](https://harness.helpdocs.io/article/2xp0oyubjj-create-a-kubernetes-canary-deployment)
+  * [Create a Kubernetes Canary Deployment](../../kubernetes-deployments/create-a-kubernetes-canary-deployment.md)
   * [ECS Workflows](../../aws-deployments/ecs-deployment/ecs-workflows.md)
   * [PCF Workflows and Deployments](../../pcf-deployments/create-a-canary-pcf-deployment.md)
 

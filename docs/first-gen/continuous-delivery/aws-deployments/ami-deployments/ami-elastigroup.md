@@ -177,7 +177,7 @@ Elastigroups perform the functions that Auto Scaling Groups perform in standard 
 
 Harness preconfigures only the first two steps. Below, we outline those steps' defaults and options, with examples of the deployment logs' contents at each step.
 
-The remaining two steps are placeholders, to which you can add integrations and commands. For details on adding **Verify Staging** integrations, see [Continuous Verification](https://docs.harness.io/article/myw4h9u05l-verification-providers-list).
+The remaining two steps are placeholders, to which you can add integrations and commands. For details on adding **Verify Staging** integrations, see [Continuous Verification](../../continuous-verification/continuous-verification-overview/concepts-cv/what-is-cv.md).
 
 Your Workflows can use Harness' built-in `${artifact.metadata.tag}` variable to refer to tagged AMIs. For example, if an AMI has an AWS tag named `harness`, you can refer to that AMI within Harness as `${artifact.metadata.harness}`. For details about this convention, see [Variables and Expressions in Harness](../../../firstgen-platform/techref-category/variables/variables.md#variables-list). This can be useful in [triggering Workflows and Pipelines](../../model-cd-pipeline/triggers/add-a-trigger-2.md#add-a-trigger).
 
@@ -512,7 +512,7 @@ By default, AMI Elastigroup Blue/Green Workflows in Harness have five steps:
 
 Harness preconfigures the **Setup**, **Deploy**, and **Swap Routes** steps. Below, we outline those steps' defaults and options, with examples of the deployment logs' contents at each step.
 
-The **Verify Staging** and **Wrap Up** steps are placeholders, to which you can add integrations and commands. For details on adding **Verify Staging** integrations, see [Continuous Verification](https://docs.harness.io/article/myw4h9u05l-verification-providers-list).
+The **Verify Staging** and **Wrap Up** steps are placeholders, to which you can add integrations and commands. For details on adding **Verify Staging** integrations, see [Continuous Verification](../../continuous-verification/continuous-verification-overview/concepts-cv/what-is-cv.md).
 
 
 #### Create the Blue/Green Workflow
@@ -736,7 +736,7 @@ Here are the phases and steps we'll build:
 1. [Phase 1: Canary](#phase_1)
    * [Elastigroup Setup](#setup_asg): Specify how many EC2 instances to launch in the Elastigroup that Harness deploys at the end of the Workflow. This step also specifies the steady state timeout.
    * [Deploy Service](#upgrade_asg_1): Specify the percentage of instances to deploy in this phase. When you add additional phases, each phase automatically includes a Deploy Service step, which you must configure with the count or percentage of instances you want deployed in that phase.
-   * [Verify Staging](#verify_service_1): This is a stub, while Harness adds support for [Verification Providers](https://docs.harness.io/article/myw4h9u05l-verification-providers-list) in Elastigroup Canary deployments.
+   * [Verify Staging](#verify_service_1): This is a stub, while Harness adds support for [Verification Providers](../../continuous-verification/continuous-verification-overview/concepts-cv/what-is-cv.md) in Elastigroup Canary deployments.
    * [Rollback Steps](#rollback_1): Roll back the ASG if deployment fails. (Rollback steps are automatically added here, and to each of the remaining phases. This guide covers them only in this first phase.)
 2. [Phase 2: Canary](#phase_2)
    * [Deploy Service](#upgrade_asg_2): Upgrade the Elastigroup to a higher percentage of instances.
@@ -832,7 +832,7 @@ Elastigroup: [sig-054f224d] reached steady state
 
 #### Step 3: Verify Staging
 
-Harness does not yet support [Verification Providers](https://docs.harness.io/article/myw4h9u05l-verification-providers-list) in Elastigroup Canary deployments.Once Continuous Verification support is added for Elastigroup, a Canary Workflow's Canary phases are the ideal places to add verification steps, using the [Canary Analysis strategy](../../continuous-verification/continuous-verification-overview/concepts-cv/cv-strategies-and-best-practices.md#canary-analysis). If the Canary phases are verified, you can assume that the Primary phase will proceed successfully.
+Harness does not yet support [Verification Providers](../../continuous-verification/continuous-verification-overview/concepts-cv/what-is-cv.md) in Elastigroup Canary deployments.Once Continuous Verification support is added for Elastigroup, a Canary Workflow's Canary phases are the ideal places to add verification steps, using the [Canary Analysis strategy](../../continuous-verification/continuous-verification-overview/concepts-cv/cv-strategies-and-best-practices.md#canary-analysis). If the Canary phases are verified, you can assume that the Primary phase will proceed successfully.
 
 For an example of how a **Verify Staging** step appears in the Harness Deployments page (and its **Details** panel), see our (non-Elastigroup) AMI Canary Deployment Guide's [Step 3: Verify Service](ami-canary.md#verify-service-1).
 
@@ -930,7 +930,7 @@ No deployment error. Execution success.
 
 #### Step 2: Verify Staging
 
-Once Harness adds [Continuous Verification](https://docs.harness.io/article/myw4h9u05l-verification-providers-list) support for Elastigroup deployments, you could use this step to verify this second Canary phase using any Harness-supported [Verification Provider](https://docs.harness.io/article/myw4h9u05l-verification-providers-list#supported_providers).
+Once Harness adds [Continuous Verification](../../continuous-verification/continuous-verification-overview/concepts-cv/what-is-cv.md) support for Elastigroup deployments, you could use this step to verify this second Canary phase using any Harness-supported [Verification Provider](../../continuous-verification/continuous-verification-overview/concepts-cv/what-is-cv.md#supported-providers).
 
 
 ### Phase 3: Primary
@@ -1017,5 +1017,5 @@ Yes. Assign an appropriate port in your Workflow's [Elastigroup Setup](#setup_as
 
 ### Next Steps
 
-* Add monitoring to your AMI deployment and running instances: see [Continuous Verification](https://docs.harness.io/article/myw4h9u05l-verification-providers-list) and [24/7 Service Guard Overview](../../continuous-verification/continuous-verification-overview/concepts-cv/24-7-service-guard-overview.md).
+* Add monitoring to your AMI deployment and running instances: see [Continuous Verification](../../continuous-verification/continuous-verification-overview/concepts-cv/what-is-cv.md) and [24/7 Service Guard Overview](../../continuous-verification/continuous-verification-overview/concepts-cv/24-7-service-guard-overview.md).
 

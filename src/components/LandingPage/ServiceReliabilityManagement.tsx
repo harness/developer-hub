@@ -61,7 +61,6 @@ export default function SRM() {
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   return (
     <div className="container">
-      <img src={`${baseUrl}img/srm.svg`} />
       <div className={styles.SectionName}>
         <h3>Manage Service Reliability</h3>
       </div>
@@ -98,16 +97,16 @@ export default function SRM() {
                 className={clsx("button button--lg", styles.btn, styles.btnSRM)}
                 to="#all-tutorials"
               >
-                SRM Tutorials
+                Tutorials
                 <img src={`${baseUrl}img/Stroke.svg`} />
               </Link>
               <Link href="https://harness.io/products/service-reliability-management">
-                <button className={styles.link}>Learn more about SRM</button>
+                <button className={styles.link}>Learn more</button>
               </Link>
             </div>
           </div>
           <div>
-            <img src={`${baseUrl}img/srm_flow.svg`} />
+            <img src={`${baseUrl}img/srm.svg`} />
           </div>
         </div>
       </div>

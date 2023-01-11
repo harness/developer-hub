@@ -123,7 +123,7 @@ The Harness Delegate is a software service you install in your environment that 
 
 For examples, see:
 
-* [Delegate Installation Overview](https://docs.harness.io/article/re8kk0ex4k-delegate-installation-overview)
+* [Delegate Installation Overview](../../../platform/2_Delegates/delegate-installation-overview.md)
 * [Install a Kubernetes Delegate](../../../platform/2_Delegates/delegate-guide/install-a-kubernetes-delegate.md)
 * [Install a Docker Delegate](../../../platform/2_Delegates/delegate-install-docker/install-a-docker-delegate.md)
 

@@ -166,5 +166,5 @@ If there is a deployment running when the freeze window begins, you can Roll bac
 Review the following Harness features that help you monitor and control deployments:
 
 * [24/7 Service Guard Overview](../../../continuous-delivery/continuous-verification/continuous-verification-overview/concepts-cv/24-7-service-guard-overview.md)
-* [Continuous Verification](https://docs.harness.io/article/myw4h9u05l-verification-providers-list)
+* [Continuous Verification](../../../continuous-delivery/continuous-verification/continuous-verification-overview/concepts-cv/what-is-cv.md)
 

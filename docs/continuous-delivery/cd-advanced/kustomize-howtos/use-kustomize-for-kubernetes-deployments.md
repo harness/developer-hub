@@ -53,7 +53,7 @@ The Delegate you use for Kustomize deployments must have access to the Git repo 
 
 For details on setting those up, see:
 
-* [Delegate Installation Overview](https://docs.harness.io/article/re8kk0ex4k-delegate-installation-overview)
+* [Delegate Installation Overview](../../../first-gen/firstgen-platform/account/manage-delegates/delegate-installation-overview.md)
 * [Define Your Kubernetes Target Infrastructure](../../cd-infrastructure/kubernetes-infra/define-your-kubernetes-target-infrastructure.md)
 
 ## Step 1: Add Manifests and Kustomization

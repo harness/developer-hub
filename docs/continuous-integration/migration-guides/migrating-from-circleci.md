@@ -245,6 +245,10 @@ workflows:
                     command: echo "step 1 in stage4 . stage 4 requires stage 3"
                 
 ```
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
 
 ### Environment variables
 
@@ -259,10 +263,6 @@ workflows:
 
 Read more about account, project, and organization-level variables [here](https://developer.harness.io/docs/platform/Variables-and-Expressions/add-a-variable)
 
-```mdx-code-block
-</TabItem>
-</Tabs>
-```
 
 
 ```mdx-code-block
@@ -305,6 +305,10 @@ jobs:
                     command: echo "project var: " <+variable.proj_var>
                 
 ```
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
 ### Matrix
 
 Matrix jobs in CircleCI are achieved using parameters and then referencing them in the pipeline using the following expression:
@@ -317,17 +321,14 @@ Matrix is 1 of 2 looping executing strategies provided by Harness. Matrix gives 
 
 To learn more about Matrix click [here](https://developer.harness.io/docs/platform/Pipelines/looping-strategies-matrix-repeat-and-parallelism#matrix)
 
-```mdx-code-block
-</TabItem>
-</Tabs>
-```
+
 
 ```mdx-code-block
 
 <Tabs
     defaultValue="harness"
     values={[
-        {label: 'Circle', value: 'circle'},
+        {label: 'CircleCI', value: 'circle'},
         {label: 'Harness', value: 'harness'},
     ]}>
 <TabItem value="circle">
@@ -391,6 +392,10 @@ workflows:
           maxConcurrency: 3
                 
 ```
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
 ### Triggers
 
 - **HarnessCI**
@@ -404,10 +409,6 @@ workflows:
 ## Complete example
 
 
-```mdx-code-block
-</TabItem>
-</Tabs>
-```
 
 
 ```mdx-code-block
@@ -604,8 +605,6 @@ pipeline:
       value: someval
                 
 ```
-
-
 ```mdx-code-block
 </TabItem>
 </Tabs>
@@ -616,4 +615,3 @@ We recommend going through the following list to make you more comfortable befor
 - [Caching](https://developer.harness.io/docs/category/share-and-cache-ci-data)
 - [Parallelism](https://developer.harness.io/docs/platform/Pipelines/speed-up-ci-test-pipelines-using-parallelism)
 - [Platform Concepts](https://developer.harness.io/docs/platform)
-

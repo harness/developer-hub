@@ -1,6 +1,6 @@
 {
     "label": "Kubernetes",
-    "position": "300",
+    "position": "100",
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",
