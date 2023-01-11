@@ -102,17 +102,13 @@ const CoveoSearch = () => {
             </div>`;
         let coveoRoot = document.getElementById("coveo-search");
 
-        /* it's more secure to use token, but the new API key got in Dec 2022 doesn't have permission to call the Coveo APIs to generate token.
         const resToken = await fetch(
           "https://next.harness.io/api/gettoken-all/"
         );
         const dataToken = await resToken.json();
         const orgId = dataToken?.orgId;
         const apiToken = dataToken?.apiKey;
-        */
-        const orgId = "harnessproductionp9tivsqy";
-        const apiKey = "xx37be67b8-68cb-49d1-8f39-1de3f72cdda5";
-        Coveo.SearchEndpoint.configureCloudV2Endpoint(orgId, apiKey);
+        Coveo.SearchEndpoint.configureCloudV2Endpoint(orgId, apiToken);
 
         const elemSearchMask = document.getElementById("coveo-search-mask");
         const elemDocusaurusRoot = document.getElementById("__docusaurus");
