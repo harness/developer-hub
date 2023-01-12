@@ -39,6 +39,7 @@ The following scanners are supported.
 |  [Docker Content Trust (DCT)](#docker-content-trust-dct) | container | orchestratedScan, ingestionOnly |
 |  [Docker Content Trust (clair)](#docker-content-trust-clair) | container | orchestratedScan, ingestionOnly |
 |  [External (JSON upload v2)](../use-sto/ingesting-issues-from-other-scanners.md) | container, repository, instance, configuration | ingestionOnly |
+|  [Fortify](#fortify) | repository | ingestionOnly |
 |  [Fortify on Demand](#fortify-on-demand) | repository | orchestratedScan, dataLoad, ingestionOnly |
 |  [Grype](grype-scanner-reference.md) | container, repository | orchestratedScan, ingestionOnly |
 |  [Mend (formerly WhiteSource)](#mend-formerly-whitesource) | repository | orchestratedScan, ingestionOnly |
