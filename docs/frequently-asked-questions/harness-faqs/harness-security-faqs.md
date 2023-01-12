@@ -1,7 +1,7 @@
 ---
 title: Harness security FAQs
 description: This article addresses some frequently asked questions about Harness security features.
-# sidebar_position: 2
+sidebar_position: 70
 helpdocs_topic_id: 320domdle1
 helpdocs_category_id: y7j7dl46ua
 helpdocs_is_private: false

@@ -1,7 +1,7 @@
 ---
 title: Continuous Delivery (CD) FAQs
 description: Frequently asked questions about Harness Continuous Delivery (CD).
-# sidebar_position: 2
+sidebar_position: 20
 helpdocs_topic_id: dhlon9vd17
 helpdocs_category_id: y7j7dl46ua
 helpdocs_is_private: false
