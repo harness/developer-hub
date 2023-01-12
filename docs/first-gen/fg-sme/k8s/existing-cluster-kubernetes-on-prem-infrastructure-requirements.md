@@ -29,7 +29,7 @@ Here are the requirements for each microservice.
 | KOTS Admin Pods |   |   |   | 4 | 8 |
 | **Total** |  |  |  | **37.5** | **73.5** |
 
-The KOTS Admin Pods requirements are for a full stack. In an existing cluster, they will likely be lower.
+The KOTS Admin Pods requirements support a full stack. In an existing cluster, they will likely be lower.
 
 ### Dev Installation
 
@@ -70,9 +70,9 @@ Harness uses a total 1000 GB of space distributed as:
 * Timescale DB - 1 pods \* 20 GB each = 20 GB
 * Redis: 30 GB total
 
-### Whitelist and Outbound Access Requirements
+### Allowlist and Outbound Access Requirements
 
-Whitelist the following URLs:
+Add the following URLs to your allowlist:
 
 * kots.io — Kots pulls the latest versions of the kubectl plugin and Kots admin console.
 * app.replicated.com — Kots admin console connects to check for the availability of releases according to your license
@@ -86,7 +86,7 @@ Outbound access to the following URLs:
 * app.replicated.com
 
 :::note
-The outbound access is required for a **connected install only**. If you use [Airgap mode](https://kots.io/kotsadm/installing/airgap-packages/), this is not required.
+Outbound access is required only for **connected installation**. Outbound access is not required for air-gap installation. For more information on installing KOTS in an air-gapped environment, see [Installing on an Existng Cluster](https://kots.io/kotsadm/installing/airgap-packages/).
 :::
 
 If your cluster does not have direct outbound connectivity and needs a proxy for outbound connections, use these instructions: [https://docs.docker.com/network/proxy](https://docs.docker.com/network/proxy/) to set up a proxy on the node machines.
