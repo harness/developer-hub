@@ -989,7 +989,7 @@ The following instance expressions are for stage steps.
 
 The step name.
 
-### <+step.identifier>
+#### <+step.identifier>
 
 The the step [identifier](https://developer.harness.io/docs/platform/references/entity-identifier-reference/).
 
