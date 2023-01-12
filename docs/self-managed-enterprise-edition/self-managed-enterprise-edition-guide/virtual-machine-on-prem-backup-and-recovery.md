@@ -80,7 +80,7 @@ Now that you have storage for your snapshots, you can create the snapshots.
 ### Step 2: Create full or partial snapshots
 
 1. In the KOTS admin tool, click **Full Snapshots (Instance)** or **Partial Snapshots (Application)**.
-2. Click **Start a snapshot**. The snapshot begins. You can see its progress:
+2. Click **Start a snapshot**. The progress of the snapshot is shown on the screen:
  
   ![](./static/virtual-machine-on-prem-backup-and-recovery-02.png)
   
@@ -88,7 +88,7 @@ Now that you have storage for your snapshots, you can create the snapshots.
 
 ![](./static/virtual-machine-on-prem-backup-and-recovery-03.png)
 
-That's it! You now have a snapshot you can use for recovery.
+Retain the snapshot for recovery operations.
 
 ### Option: Automating snapshots
 
