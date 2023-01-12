@@ -59,7 +59,7 @@ This topic shows you how to import a Template to the CD module.
 
    </summary>
    Connector must use the Enable API access option and Token
-   The Connector must use the Enable API access option and Username and Token authentication. Harness requires a token for API access. Generate the token in your account on the Git provider and add it to Harness as a Secret. Next, use the token in the credentials for the Git Connector.​
+   The Connector must use the **Enable API access** option and **Username and Token** authentication. Harness requires a token for API access. Generate the token in your account on the Git provider and add it to Harness as a Secret. Next, use the token in the credentials for the Git Connector.
 
    ![](./static/import-a-template-from-git-25.png)
 
