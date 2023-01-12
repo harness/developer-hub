@@ -13,6 +13,141 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
 
+## January 12, 2023, version 782xx
+
+### What's new
+
+- YAML schema validation for environments. (CDS-48947)
+  
+  We have added YAML schema validation to environment entities. Similar validation already exists for our pipeline YAML, but environments are separate entities.
+  If you try to save invalid YAML you will get an error like this:
+  ```bash
+  Invalid yaml: $.environment.overrides.manifests[0].manifest.spec: is missing but it is required.
+  ```
+- Improved error message when API calls fail while listing Helm **Chart Version** in **Run Pipeline**. (CDS-48436)
+  
+  If **Chart Version** is a runtime input, when you run the pipeline you are required to select a version from the **Chart Version** dropdown. If the Harness API is unable to fetch any versions, and improved error message is displayed.
+
+  ![picture 21](static/8ca12a2c84cf95499024fd11b11c055bc13ec9de4e0e767ae6f8422aeb596d91.png)  
+  
+  Hover over the error message to see the full message.
+
+### Early access
+
+- Convert imperative Kubernetes rollback to declarative rollback. (CDS-2993, ZD-26855, ZD-27690, ZD-36563, ZD-36670)
+
+  This functionality is behind a feature flag: `CDP_USE_K8S_DECLARATIVE_ROLLBACK_NG`.
+  
+  Kubernetes manifests are applied by Harness using `kubectl apply` which is a declarative way of creating Kubernetes objects. But when rolling back, we were performing `kubectl rollout undo workloadType/workloadName --to-revision=<REVISION_NUMBER>`. That is an imperative way of rolling back. Using imperative and declarative commands together is not recommended and can cause issues.
+
+  A common issue our customers faced was when the workload spec isn't updated properly when `rollout undo` is performed. Subsequent deployments then refer to an invalid spec of the workload and can cause Kubernetes issues like [kubectl rollout undo should warn about undefined behaviour with kubectl apply](https://github.com/kubernetes/kubernetes/issues/94698).
+  
+  **What is the fix?**
+  
+  We had to redesign our release history to store all rendered manifests in secrets, just like Helm does. While rolling back, we are now reapplying the last successful release's manifests. This solves this issue.
+
+  **What is the impact on customers?**
+    - Enabling declarative rollback disables versioning (even if the **Skip Versioning** checkbox is left unchecked), since versioning was introduced during with the imperative rollback design. However, versioning is not needed anymore with declarative rollback.
+    - The delegate's service account needs the permission to create/update/read secrets in the defined infrastructure namespace. Typically, customers' delegates already have these permissions, but if cluster roles are strictly scoped, this could cause failures. For information on cluster roles for the delegate, go to [Install Harness Delegate on Kubernetes](https://developer.harness.io/docs/platform/delegates/delegate-install-kubernetes/install-harness-delegate-on-kubernetes/).
+
+### Fixed issues
+
+- Multiline message support for Jira Create and Update step Description settings. (CDS-49666)
+  Multiline text support was added the Description setting in Jira Create and Jira Update Steps.
+  
+  | Before  | Now   |
+  |-------------- | -------------- |
+  | ![picture 16](static/28a372d797e51c4de68c37d72d4ba53e7f91598b56efcd699cd74c6e7f868ff0.png)    | ![picture 20](static/867064976ce3cc9fd0fb3bcfdfd11a0c1bc243b322f7d48a48dc0c3be56a3d20.png)    |
+
+- Fixing a service referencing a template is causing a save error.	(CDS-49817)
+  When making the service a runtime input within the template and providing this as a fixed value when using the template, it fails to save.
+
+  The sources were being added as an empty string when no runtime inputs were present.
+- RBAC for environment appears not enforced. (CDS-49732, ZD-38326)
+  
+  When using stage templates in pipelines there was a case where the access check for the environment was skipped and users still need to have access to all the connectors/secrets used in the service and the infrastructure. 
+
+  Now Harness will not check nested permissions for templates. For example, if a template has a connector/service/environment inside it, Harness won’t check for their nested access permissions during pre-execution validation. Instead, we rely on individual steps to do the RBAC during actual execution.
+- When using a Helm Chart from the Harness File Store and a values YAML file from a Git or custom provider, only 2 values are getting applied when more values files are passed. (CDS-49251)
+
+  Resolved the problem where user was unable to use specified values when defining service of type:
+    K8sManifest:
+    spec:
+    StoreType: Harness
+
+    ValuesManifest:
+    spec:
+    StoreType: Git
+
+    ValuesManifest:
+    spec:
+    StoreType: Custom
+  All the value files were not getting fetched. To prevent this, we have added a condition to address this use case.
+- OpenShift Parameters setting does not support Harness File Store (CDS-49249)
+
+  Enabled Harness File Sore for **OpenShift Parameters**.
+- When creating an OpenShift template with Harness File Store a default param file with an empty string is created. (CDS-49248)
+  
+  We have now set the default value of param paths as and empty array which will ensure an empty value is not set for param paths if no value is provided.
+- In the **Kustomize Folder Path**, the **Add** button is not required as there can be only one folder. (CDS-49245)
+
+  The **Kustomize Folder Path** now only accepts one folder path. **Add** button is removed.
+- Different artifacts with the same buildId are not considered in services listed in the Environments dashboard (CDS-49189)
+  
+  Earlier, only buildId was used to group instances in the Environments dashboard.When a user deployed a service with same buildId but different artifact paths, either of artifact paths would be present in the hover over buildId.
+  Now we perform grouping on displayName (artifact path + buildId) so that there are different entries for different artifacts even if they have same buildId.
+  
+  | First artifact  | Second artifact   |
+  |-------------- | -------------- |
+  | ![picture 28](static/12cf46c32d1fc632084fabb8de410303ad7f5cbc0217cbba5a8206174ed29ee4.png)  |  ![picture 29](static/e6864f470d938ae81cec899bc895ddf5447de432ec024179233086e475066813.png)  |
+
+- Nexus3 artifact source using the Maven **Repository Format** cannot filter the builds by **Classifier** and **Extension**.	(CDS-49020)
+  
+  In case of a Nexus Maven repository, users can now filter the builds by **Classifier** and **Extension**.
+
+  ![picture 30](static/2c2c05135634045cec1c06d9a5b1f24da68d0bc3d9d4cee3de78fc4304074aba.png)  
+- The confirmation dialog for closing a pipeline has misleading **Discard** button. (CDS-49000, ZD-38518)
+  
+  The **Discard** button is removed and the text is now:
+  - **Confirm** to leave the page.
+  - **Cancel** to stay on the page.
+- API calls fetching information about ACR repository if connectorRef is expression or runtime input. (CDS-48988)
+  
+  Harness was trying to fetch ACR repository information when the connector reference is an expression or runtime input. We have now removed the unnecessary API calls.
+- Deleted org or project services not cleaned up. (CDS-48890)
+  
+  When an org or project was deleted, the references to services within that org/project were not cleaned up. As a result, there were dangling references preventing the deletion of other resources. The service references are now cleaned up.
+- Deselecting a field sets **Tag** to **Regex** but **Value** is selected. (CDS-48576)
+  
+  Clearing the value of **Tag** changes the type from **Value** to **Regex** due to the form reinitializing when values changes. This is now fixed and the **Value** setting is maintained.
+- Service Logs not showing fetch details for AWS Elastic Container Registry and Google Artifact Registry artifacts. (CDS-48483)
+  
+  Console logs were missing information about the image, artifactName, tag, artifactPath, and URL. This metadata is now shown on the console logs.
+- Account level templates can be saved with org or project user group. (CDS-44557)
+  
+  The Harness Approval step did not validate the user group scope against the parent scope used to create the step.
+  
+  For example, a template containing Harness Approval steps with user groups at a project scope can be saved at an account level.
+  
+  Now it's invalid to have higher scope entities (for example, user groups at project level) referenced in lower scope entities (for example, a template at the account level).
+  
+  Validation has been added in Harness Approval steps to validate the scopes of the user groups against the scope in which the Approval step is created. The step is invalid if the user groups in the step have a higher scope than the scope where the Approval step is created.
+- Approval step Slack and email notifications using identifiers instead of names (CDS-29134)
+  
+  Harness Approval notifications using Slack and email were sending identifiers instead of readable names.
+  
+  For example, for the org, project, or triggered by information, identifiers are sent instead of names.
+  
+  This issue has been resolved. The notification now contains names, emails, etc. instead of identifiers. The email of the user triggering the Approval step  is displayed and the org and project names are displayed.
+
+  Email example:
+  
+  ![picture 33](static/fd00397b44a5d04ebd9d4c4e1c2a9493281147a26db13775759308d5e68ea511.png)  
+
+  Slack example:
+
+  ![picture 34](static/1bcafae790e255b341562a3e60ea2d937bfaac72605bf0eb41b789563540762e.png)
+
 ## January 10, 2023, version 78105
 
 ### What's new
