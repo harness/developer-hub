@@ -1,6 +1,6 @@
 ---
-title: Delegate Installation Overview
-description: This topic discusses general Delegate installation information. For Delegate requirements and limitations, see Delegate Requirements and Limitations. New to the Delegate? See Delegates Overview. Visu…
+title: Delegate installation overview
+description: This topic discusses general delegate installation information. For delegate requirements and limitations, see Delegate Requirements and Limitations. New to the Delegate? See Delegates Overview. Visu…
 sidebar_position: 20
 helpdocs_topic_id: re8kk0ex4k
 helpdocs_category_id: sy6sod35zi
@@ -8,9 +8,9 @@ helpdocs_is_private: false
 helpdocs_is_published: false
 ---
 
-This topic discusses general Delegate installation information. For Delegate requirements and limitations, see [Delegate Requirements and Limitations](/docs/platform/2_Delegates/delegate-reference/delegate-requirements-and-limitations.md). 
+This topic discusses general delegate installation information. For delegate requirements and limitations, see [Delegate Requirements and Limitations](/docs/platform/2_Delegates/delegate-reference/delegate-requirements-and-limitations.md). 
 
-New to the Delegate? See [Delegates Overview](/docs/platform/2_Delegates/delegates-overview.md).
+New to the delegate? See [Delegates Overview](/docs/platform/2_Delegates/delegates-overview.md).
 
 ### Visual Summary
 
