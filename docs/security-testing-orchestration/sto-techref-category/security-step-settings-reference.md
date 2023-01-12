@@ -261,6 +261,17 @@ When `product_name` is set to `checkmarx`
 	+ `product_project_name`
 * `product_config_name`
 	+ Accepted values(s): `default`
+* When `policy_type` is set to `orchestratedScan`
+	+ `tool_args`
+	   You can use this field to run the [Checkmarx plugin](https://www.jenkins.io/doc/pipeline/steps/checkmarx/#checkmarx-plugin) with specific command-line arguments. To run an incremental scan, for example, specify `tool_args` = `-incremental`.  
+
+#### Running incremental scans with Checkmarx
+
+In some cases, you might want to run an incremental rather than a full scan with Checkmarx due to time or licensing limits.  An incremental scan evaluates only new or changed code in a merge or pull request. Incremental scans are faster than full scans, but become less accurate over time. 
+
+:::note 
+You should consider carefully when to run incremental vs. full scans. See [When should I use Incremental Scans vs Full Scans in CxSAST?](https://support.checkmarx.com/s/article/When-should-I-use-an#:~:text=An%20incremental%20scan%20is%20a,interface%2C%20Cx%20plugins%20and%20CLI) in the Checkmarx docs.
+:::
 
 [↑ Scanners](#scanners-target-types-and-scan-approach)
 
@@ -315,24 +326,21 @@ Go to [Ingesting issues from other scanners](../use-sto/ingesting-issues-from-ot
 
 [↑ Scanners](#scanners-target-types-and-scan-approach)
 
-<!--
+
 ### Fortify
 
-When `product_name` is set to `fortify`
+When `product_name` is set to `fortify`
 
 * `scan_type`
-	+ accepted value(s): `repository`
+	+ accepted value(s): `repository`
 * `policy_type`
-	+ accepted value(s): `orchestratedScan`, `ingestionOnly`
-* When `policy_type` is set to `orchestratedScan`
-	+ `product_license_path`: see `customer_artifacts`
+	+ accepted value(s): `ingestionOnly`
 * `product_config_name`
 	+ Accepted values(s):
 		- `default`
 
 [↑ Scanners](#scanners-target-types-and-scan-approach)
 
--->
 
 ### Fortify on Demand
 
