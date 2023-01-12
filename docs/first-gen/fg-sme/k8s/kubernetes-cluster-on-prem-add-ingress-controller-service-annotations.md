@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 In Harness Self-Managed Enterprise Edition - Kubernetes Cluster, you can annotate the Ingress controller to customize its behavior.
 
-Annotations are done in the KOTS admin tool's Nginx Ingress Controller Service Annotations settings. 
+To add annotations, use the Nginx Ingress Controller Service Annotations settings in the KOTS admin tool. 
 
 ### Step 1: Open Advanced Configurations
 
@@ -32,7 +32,7 @@ Scroll down to **Nginx Ingress Controller Service Annotations**.
 
 ### Step 2: Annotate Nginx Ingress Controller Service
 
-In **Nginx Ingress Controller Service Annotations**, enter your annotations. See [NGINX Ingress Controller Annotations](https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/) and [Ingress Controllers](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/) from Kubernetes for examples.
+In **Nginx Ingress Controller Service Annotations**, enter your annotations. For more information on adding annotations to Kubernetes ingress controllers, see [Annotations](https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/) in the NGINX documentation, and [Ingress Controllers](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/) in the [Kubernetes documentation](https://kubernetes.io/docs/home/).
 
 Click **Save Config**.
 
