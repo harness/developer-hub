@@ -117,19 +117,17 @@ Follow the steps on creating the load balancer as part of the process described 
 
 ##### Port Mapping for gRPC Traffic
 
-You also need to open port 9879 on the load balancer and map it to port 9879 on the ingress controller. This is to support gRPC traffic.
+You must also open port 9879 on the load balancer and map it to port 9879 on the ingress controller. This is to support gRPC traffic.
 
 ### Trusted Certificate Requirement for Harness Self-Managed Enterprise Edition
 
-All connections to the Harness Manager can be secure or unencrypted according to the URL scheme you use when you configure the load balancer URL during installation (`https://` or `http://`):
+Connections to Harness Manager can be secure or unencrypted. This depends on the URL scheme you apply when you configure the load balancer URL during installation (`https://` or `http://`).
 
 ![](./static/existing-cluster-kubernetes-on-prem-infrastructure-requirements-22.png)
 
-For secure connections from any integration into the Harness Manager (Github Webhooks, for example), including **Harness Delegate**, you must use a publicly trusted certificate.
+To securely connect Harness Delegate and integrations like Github Webhooks to Harness Manager, you must use a publicly trusted certificate. Harness does not support self-signed certificates for connections to Harness Manager.
 
-Harness does not support self-signed certificates for connections to Harness Manager.
-
-For connections from Harness Manager outbound to an integration, you can use a self-signed certificate. In this case, you must import the self-signed certificate into the delegate's JRE keystore manually or using a Harness [Delegate Profile](../../firstgen-platform/account/manage-delegates/run-scripts-on-the-delegate-using-profiles.md).
+For connections from Harness Manager to an integration, you can use a self-signed certificate. In this case, you must import the self-signed certificate into the delegate's JRE keystore manually or by using a delegate profile. For information on the use of profiles, see [Run scripts on the delegate using profiles](../../firstgen-platform/account/manage-delegates/run-scripts-on-the-delegate-using-profiles.md).
 
 See [Add Self-Signed Certificates for Delegate Connections](../../firstgen-platform/account/manage-delegates/add-self-signed-certificates-for-delegate-connections.md).
 
