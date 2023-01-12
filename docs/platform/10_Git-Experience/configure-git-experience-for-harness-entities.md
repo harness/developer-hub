@@ -99,7 +99,7 @@ For GitHub, the token must have the following scopes:
 
 </details>
 
-Here's an example of a GitHub Connector that has the correct settings:​
+Here's an example of a GitHub Connector with the correct settings:​
 
 ![](./static/configure-git-experience-for-harness-entities-43.png)
 
