@@ -71,7 +71,7 @@ Storage destinations are described in the [KOTS documentation](https://kots.io/k
 
    ![](./static/virtual-machine-on-prem-backup-and-recovery-01.png)
    
-   For **Amazon S3** and **Other S3-Compatible Storage**, enter in the location and credentials.  
+   In **Amazon S3** and **Other S3-Compatible Storage**, enter the location and credentials.  
    For details on these settings, see [Compatible Backend Stores](https://kots.io/kotsadm/snapshots/storage-destinations/) from KOTS.
 5. Click **Update storage settings**. The settings are updated.
 
