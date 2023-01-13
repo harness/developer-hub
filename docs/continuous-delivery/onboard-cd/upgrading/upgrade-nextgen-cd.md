@@ -36,12 +36,12 @@ Here are some NextGen highlights.
 
 ### Automated deployment strategies
 
-Harness provides out of the box Canary, Blue Green, and Rolling Deployment capabilities for any tech stack.
+Harness provides out-of-the-box Canary, Blue Green, and Rolling Deployment capabilities for any tech stack.
 
 For examples of how these deployment types work with different platforms and services, go to [CD tutorials](/docs/category/cd-tutorials).
 
 ### Revamped template library experience
-- We now support pipelines as templates you can share across various projects.
+- We now support pipelines as templates that you can share across various projects.
 - We now allow for your stages to be templated as well!
 - Templates can now be managed in Git.
 - Templates can be enforced automatically across various projects and pipelines with minimal overhead.
@@ -51,7 +51,7 @@ For details, go to [Templates](/docs/category/templates).
 ### Enterprise GitOps
 
 - Harness brings enterprise controls to GitOps deployment with governance, reliability, and visibility at scale.
-- Harness GitOps delivers a fully managed GitOps experience to allows teams to scale implementations quickly and spend less time managing environments.
+- Harness GitOps delivers a fully managed GitOps experience that allows teams to scale implementations quickly and spend less time managing environments.
 
 For details, go to [GitOps](/docs/category/gitops).
 
@@ -73,7 +73,7 @@ For details, go to [Continuous Verification](/docs/category/continuous-verificat
 
 - A flexible and customized platform for policy-based control across the software development lifecycle.
 - Provides visibility into regulated applications/environments and exposes which compliance rules were not followed.
-- Enforce policies at when pipelines are saved or run.
+- Enforce policies when pipelines are saved or run.
 - Shift-left governance finds breaches as early as possible.
 - Based on [Open Policy Agent (OPA)](https://www.openpolicyagent.org/), the open source industry standard.
 
