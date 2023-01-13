@@ -1,1 +1,9 @@
-{"label": "Docker Delegates", "collapsible": "true", "collapsed": "true", "className": "red", "link": {"type": "generated-index", "title": "Docker Delegates"}, "customProps": {"position": "To position the category, enter a number and move this to the root level.", "helpdocs_category_id": "cybg19aoxt"}}
+{
+    "position": "20",
+    "label": "Docker delegates", 
+    "collapsible": "true", 
+    "collapsed": "true", 
+    "className": "red", 
+    "link": {"type": "generated-index", "title": "Docker Delegates"}, 
+    "customProps": {"helpdocs_category_id": "cybg19aoxt", "helpdocs_parent_category_id":"seizygxv7b"}
+}

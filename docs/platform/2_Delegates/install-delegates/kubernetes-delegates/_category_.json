@@ -1,1 +1,9 @@
-{"label": "Kubernetes Delegates", "collapsible": "true", "collapsed": "true", "className": "red", "link": {"type": "generated-index", "title": "Kubernetes Delegates"}, "customProps": {"position": "To position the category, enter a number and move this to the root level.", "helpdocs_category_id": "uimq4rlif9"}}
+{
+    "position": "10",
+    "label": "Kubernetes delegates", 
+    "collapsible": "true", 
+    "collapsed": "true", 
+    "className": "red", 
+    "link": {"type": "generated-index", "title": "Kubernetes delegates"}, 
+    "customProps": {"helpdocs_category_id": "uimq4rlif9", "helpdocs_parent_category_id":"seizygxv7b"}
+}
