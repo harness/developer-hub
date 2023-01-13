@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: false
 ---
 
-This topic discusses general delegate installation information. For delegate requirements and limitations, see [Delegate Requirements and Limitations](/docs/platform/2_Delegates/delegate-reference/delegate-requirements-and-limitations.md). 
+This topic discusses general delegate installation information. For delegate requirements and limitations, see [Delegate Requirements and Limitations](/docs/platform/2_Delegates/get-started-with-delegates/delegate-requirements-and-limitations.md). 
 
 New to the delegate? See [Delegates Overview](/docs/platform/2_Delegates/delegates-overview.md).
 

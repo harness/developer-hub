@@ -18,16 +18,15 @@ Harness Delegate is built for parallelism and performs tasks and deployments in 
 
 
 
-|  |  |  |  |
-| --- | --- | --- | --- |
 | **Delegate** | **Compute resources** | **Task type** | **Running in parallel** |
+| --- | --- | --- | --- |
 | NextGen Delegate | 0.5 CPU, 2 GiB | Perpetual | 40 tasks |
 | NextGen Delegate | 0.5 CPU, 2 GiB | Kubernetes deployment | 10 deployments |
 | NextGen Delegate | 1.0 CPU, 4 GiB | Kubernetes deployment | 20 deployments |
 
 ### Limitations and requirements
 
-See [Delegate Requirements and Limitations](/docs/platform/2_Delegates/delegate-reference/delegate-requirements-and-limitations.md).
+See [Delegate Requirements and Limitations](/docs/platform/2_Delegates/get-started-with-delegates/delegate-requirements-and-limitations.md).
 
 ### Data the delegate sends to Harness Manager
 
@@ -180,7 +179,8 @@ You can add Delegates at the Project, Org, and Account level. Delegate availabil
 
 For example, let's look at two users, Alex and Uri, and the Delegates (D*n*) available to them:
 
-![](./static/delegates-overview-04
+![](./static/delegates-overview-04.png)
+
 Alex's Pipelines can use Delegates D1, D2, or D4.
 
 Uri's Pipelines can use Delegates D1, D3, or D5.
