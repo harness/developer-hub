@@ -846,7 +846,6 @@ The following new features were added to the Harness platform components:
 The following table lists the component versions in this release.
 
 
-
 | **Name** | **Version** |
 | --- | --- |
 | **Manager**  | 73225 |
