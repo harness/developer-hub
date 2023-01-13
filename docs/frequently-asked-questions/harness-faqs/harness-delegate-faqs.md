@@ -139,7 +139,7 @@ It depends on the size of the delegate you are installing. For example, for the 
 
 #### What are the delegate network requirements?
 
-See [Delegate requirements and limitations](../../platform/2_Delegates/delegate-reference/delegate-requirements-and-limitations.md) and [Permissions and ports for Harness connections](../../platform/20_References/permissions-and-ports-for-harness-connections.md).
+See [Delegate requirements and limitations](../../platform/2_Delegates/get-started-with-delegates/delegate-requirements-and-limitations.md) and [Permissions and ports for Harness connections](../../platform/20_References/permissions-and-ports-for-harness-connections.md).
 
 #### What are the delegate access requirements?
 
@@ -305,7 +305,7 @@ For an overview of Harness' support for platforms, methodologies, and related te
 
 Most delegate issues are:
 
-* Delegate does not meet system, network, or access requirements. See [Delegate requirements and limitations](../../platform/2_Delegates/delegate-reference/delegate-requirements-and-limitations.md) and [Permissions and ports for Harness connections](../../platform/20_References/permissions-and-ports-for-harness-connections.md).
+* Delegate does not meet system, network, or access requirements. See [Delegate requirements and limitations](../../platform/2_Delegates/get-started-with-delegates/delegate-requirements-and-limitations.md) and [Permissions and ports for Harness connections](../../platform/20_References/permissions-and-ports-for-harness-connections.md).
 	+ Keep in mind that the delegate host or node needs resources to host the delegate and other software. The delegate resource requirements should be factored in, but they are not the minimum requirements for the infrastructure.
 * Delegate is not running.
 * Delegate does not have required permissions. The delegate uses the credentials you enter in Harness connectors to connect to cloud providers, artifact servers, etc.  

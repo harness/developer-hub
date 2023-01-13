@@ -43,7 +43,7 @@ In the case that app.harness.io is not allowlisted, please allowlist it before p
 
 
 :::note
-In general, and as a Best Practice, you should allowlist Harness Domains and IPs. See **Allowlist Harness Domains and IPs** in [Delegate Requirements and Limitations](../2_Delegates/delegate-reference/delegate-requirements-and-limitations.md).
+In general, and as a Best Practice, you should allowlist Harness Domains and IPs. See **Allowlist Harness Domains and IPs** in [Delegate Requirements and Limitations](../2_Delegates/get-started-with-delegates/delegate-requirements-and-limitations.md).
 
 :::
 

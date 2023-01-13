@@ -58,7 +58,7 @@ You can install the Kubernetes Delegate inside or outside your deployment target
 
 To install a Kubernetes Delegate, you must have access to a Kubernetes cluster. You'll install the Harness Delegate as YAML or Helm Chart.
 
-For connectivity, see [Delegate Requirements and Limitations](/docs/platform/2_Delegates/delegate-reference/delegate-requirements-and-limitations.md).
+For connectivity, see [Delegate Requirements and Limitations](/docs/platform/2_Delegates/get-started-with-delegates/delegate-requirements-and-limitations.md).
 
 You'll need the following Kubernetes permissions to install the delegate:
 

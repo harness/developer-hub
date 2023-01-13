@@ -16,7 +16,7 @@ Harness supports a version skew of up to *n*-2 delegate versions, for which *n* 
 
 Delegate auto-upgrade status and expiration dates are shown in Harness Manager for each installed delegate where they apply.
 
-For an introduction to delegates, see [Delegate Overview](/docs/platform/2_Delegates/delegates-overview.md). For more information about the delegate automatic update process, see [Delegate Auto-Update](/docs/platform/2_Delegates/delegate-guide/delegate-auto-update.md).
+For an introduction to delegates, see [Delegate Overview](/docs/platform/2_Delegates/delegates-overview.md). For more information about the delegate automatic update process, see [Delegate Auto-Update](/docs/platform/2_Delegates/get-started-with-delegates/delegate-auto-update.md).
 
 ### Install Process
 
@@ -100,7 +100,7 @@ Some delegate values are configured in the harness-delegate-values.yml file. You
    
    For detailed information about configuring a proxy for the delegate, see [Configure Delegate Proxy Settings](/docs/platform/2_Delegates/configure-delegates/configure-delegate-proxy-settings.md). 
 
-   For information about additional editable fields in the harness-delegate-values.yaml file, see [Delegate Environment Variables](/docs/platform/2_Delegates/delegate-reference/delegate-environment-variables.md).
+   For information about additional editable fields in the harness-delegate-values.yaml file, see [Delegate Environment Variables](/docs/platform/2_Delegates/get-started-with-delegates/delegate-environment-variables.md).
 
 1. Click **Continue**.
 
