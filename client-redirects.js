@@ -14,7 +14,7 @@ module.exports = {
     //Created by User for PR-123 on Jan 14, 2023
     // {
     //   from: "/docs/platform/delegates/delegate-guide/automate-delegate-installation",
-    //   to: "docs/platform/delegates/installation",
+    //   to: "/docs/platform/delegates/installation",
     // },
   ],
 };
