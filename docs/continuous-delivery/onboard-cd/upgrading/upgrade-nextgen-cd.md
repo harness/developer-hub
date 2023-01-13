@@ -24,6 +24,13 @@ For more information, go to [Harness FirstGen vs Harness NextGen](../../../getti
 
 The Harness FirstGen CD module will be phased out and will reach End of Life (EOL) in about 12 months. 
 
+### Timeline
+
+1/1/2023 - maintenance mode. no new features, bugs and security issues will be fixed.
+10/1/2023 - end of SMP releases
+1/1/2024 - end of support
+4/1/2024 - SaaS product shutdown
+
 As a first step towards that change, starting January 1st, 2023, Harness will no longer accept feature/enhancement requests and releasing new features for the FirstGen CD module.
 
 Harness will continue to support the FirstGen CD module and ensure the current system remains reliable. Support includes any customer found product defects and security issues. 
