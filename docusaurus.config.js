@@ -351,6 +351,21 @@ const config = {
         isCloseable: true,
       },
       */
+      announcementBar: {
+        id: "announcementBar_cd_announcement",
+        content:
+          "Our current generation CD product will be phased out and will reach EOL in about 12 months. For any questions or concerns please reach out to <a href='https://support.harness.io' target='_blank'>support.harness.io</a>",
+        backgroundColor: "#000000",
+        textColor: "#ffffff",
+        isCloseable: false,
+      },
+      announcementBarByPath: {
+        // list all pathnames in Regular expressions format
+        pathRegExp: [
+          "^/docs/continuous-delivery.*",
+          "^/tutorials/deploy-services.*",
+        ],
+      },
       hotjar: {
         siteId: 3194971,
       },
