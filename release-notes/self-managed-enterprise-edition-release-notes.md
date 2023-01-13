@@ -611,7 +611,7 @@ This release introduces the following features and enhancements.
 
 - TooltipProp which is present is removed and a new HarnessDocTooltip is passed which makes the Alignment proper. And also the information icon is aligned centre. (PL-26644)
 
-- The Input set error experience did not show the error response that we received from the BE. We were not sending error prop to the error page. Simply passing that prop resolved the issue. (PL-26686)
+- The Input set error experience did not show the error response that we received from the BE. We were not sending error prop to the error page. Simply passing that prop resolved the issue. (PL-26686) 
 
 - Repo details is showing in background ,when run pipeline using inputset selection (PL-26706)
 
