@@ -49,20 +49,20 @@ const FeaturedList: CardItem[] = [
     link: "/tutorials/platform/onboard-terraform-provider",
   },
   {
-    title: 'Sign application containers',
+    title: "Sign application containers",
 
-    module: 'ci',
+    module: "ci",
     icon: "img/icon_ci.svg",
     description: (
       <>
-        This build automation guide describes how to sign a container image using a CI pipeline.
-
+        This build automation guide describes how to sign a container image
+        using a CI pipeline.
       </>
     ),
     newDoc: true,
     type: [docType.Documentation],
-    time: '15 min',
-    link: '/tutorials/build-code/ci-tutorial-container-signing',
+    time: "15 min",
+    link: "/tutorials/build-code/ci-tutorial-container-signing",
   },
 ];
 
@@ -103,7 +103,8 @@ const CIList: CardItem[] = [
     icon: "img/icon_ci.svg",
     description: (
       <>
-        This guide shows how to build, test, and publish a container image to AWS ECR
+        This guide shows how to build, test, and publish a container image to
+        AWS ECR
       </>
     ),
     newDoc: false,
@@ -158,34 +159,35 @@ const CIList: CardItem[] = [
     link: "/tutorials/build-code/fastest-ci",
   },
   {
-    title: 'Build Go application containers',
+    title: "Build Go application containers",
 
-    module: 'ci',
+    module: "ci",
     icon: "img/logo.svg",
     description: (
       <>
-        This build automation guide describes building a Go container image in a CI Pipeline.
-
+        This build automation guide describes building a Go container image in a
+        CI Pipeline.
       </>
     ),
     newDoc: true,
     type: [docType.Documentation],
-    time: '15 min',
-    link: '/tutorials/build-code/ci-tutorial-go-containers',
-  },{
-    title: 'Sign Application Containers',
-    module: 'ci',
+    time: "15 min",
+    link: "/tutorials/build-code/ci-tutorial-go-containers",
+  },
+  {
+    title: "Sign Application Containers",
+    module: "ci",
     icon: "img/logo.svg",
     description: (
       <>
-        This build automation guide describes how to sign a container image using a CI pipeline.
-
+        This build automation guide describes how to sign a container image
+        using a CI pipeline.
       </>
     ),
     newDoc: true,
     type: [docType.Documentation],
-    time: '15 min',
-    link: '/tutorials/build-code/ci-tutorial-container-signing',
+    time: "15 min",
+    link: "/tutorials/build-code/ci-tutorial-container-signing",
   },
 ];
 
@@ -238,16 +240,14 @@ const CDList: CardItem[] = [
     module: "cd",
     icon: "img/icon_cd.svg",
     description: (
-      <>
-        Build and deploy a simple nodejs application using Harness CI and CD.
-      </>
+      <>Build and deploy a simple nodejs application using Harness CI and CD.</>
     ),
     newDoc: false,
     type: [docType.Documentation],
     //type: [docType.Documentation, docType.Interactive, docType.Video],
     time: "10 min",
     link: "/tutorials/deploy-services/harness-cicd-tutorial",
-  },	
+  },
   {
     title: "Deploy a Helm Chart using CD Community Edition",
     module: "cd",
@@ -450,8 +450,8 @@ const PlatformList: CardItem[] = [
     icon: "img/logo.svg",
     description: (
       <>
-        Tutorial on how to set up a Kubernetes cluster on Azure 
-        and will serve as the foundation for your CI/CD pipeline infrastructure. 
+        Tutorial on how to set up a Kubernetes cluster on Azure and will serve
+        as the foundation for your CI/CD pipeline infrastructure.
       </>
     ),
     newDoc: true,

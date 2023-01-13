@@ -33,6 +33,7 @@ You can save the following Harness resources in Git using Harness Git Experience
 
 * Pipelines
 * Input Sets
+* Templates
 
 ### What is Harness Git experience?
 
@@ -95,13 +96,21 @@ A Harness Git Connector is used to sync your Harness Project with your Git repo.
 
 You will need a Harness Git Connector to connect with the Git provider and perform operations like generating a webhook. Your Git Connector credentials are used to commit to Git when operations are performed using API.
 
-**Important:** The Connector must use the **Enable API access** option and Username and **Token** authentication. Harness requires the token to access the Git API. Generate the token in your account on the Git provider and add it to Harness as a Secret. Next, use the token in the credentials for the Git Connector.For detailed steps to add a Git Connector, see [Code Repo Connectors](/docs/category/code-repo-connectors).
+
+:::note
+**Important:** The Connector must use the **Enable API access** option and **Username and Token** authentication. Harness requires the token to access the Git API. Generate the token in your account on the Git provider and add it to Harness as a Secret. Next, use the token in the credentials for the Git Connector. For detailed steps to add a Git Connector, see [Code Repo Connectors](../7_Connectors/connect-to-code-repo.md).
+
+:::
 
 #### Repository
 
 Harness configurations are stored in repositories. These configuration files can be kept in the same repository as the code, or they can be kept separate. You can map your resources and configurations to multiple repositories.
 
+
+:::note
 You must have valid Git credentials and a repo within this Git account before you enable Harness Git Experience.
+
+:::
 
 ### Next steps
 
