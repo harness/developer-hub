@@ -144,6 +144,22 @@ const CIList: CardItem[] = [
     link: "/tutorials/build-code/ci-java-http-server",
   },
   {
+    title: "Build and push a container image to Amazon ECR",
+
+    module: "ci",
+    icon: "img/icon_ci.svg",
+    description: (
+      <>
+        Build, test, and publish a container image to AWS ECR.
+
+      </>
+    ),
+    newDoc: false,
+    type: [docType.Documentation],
+    time: "15 min",
+    link: "/tutorials/build-code/ci-build-push-to-ecr",
+  },
+  {
     title: "Get started with the fastest CI on the planet",
 
     module: "ci",
@@ -219,6 +235,19 @@ export default function CI() {
                 )}
               >
                 <img src={`${baseUrl}img/icon_document.png`} /> Documentation
+              </button>
+            </Link>
+          </div>
+          <div>
+            <Link href="/release-notes/continuous-integration">
+              <button
+                className={clsx(
+                  "button button--lg",
+                  styles.btn,
+                  styles.btnLight
+                )}
+              >
+                <img src={`${baseUrl}img/icon_document.png`} /> Release Notes
               </button>
             </Link>
           </div>

@@ -1,15 +1,38 @@
 ---
 title: Service Reliability Management
-date: 2022-12-15T10:00
+date: 2022-12-13T10:00
 tags: [NextGen, "service reliability management"]
 sidebar_position: 7
 ---
 
-Harness Service Reliability Management is updated regularly. Review the notes below for details about recent changes.
+Harness Service Reliability Management is updated regularly in Harness SaaS. Review the notes below for details about recent changes.
 
 :::note
 Harness deploys updates progressively to different Harness SaaS clusters. You can identify the cluster hosting your account in your Account Overview page. The features and fixes in the release notes may not be available in your cluster immediately.
+
+Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
+
+## January 10, 2023, version 78105
+
+### What's new
+
+This release does not include new features and enhancements.
+
+### Early access
+
+This release does not include early access features.
+
+### Fixed issues
+
+- Saving the verify step in a stage template throws the `Invalid YAML. Can't find pipeline` error if the pipeline key is missing in YAML. (SRM-13320)
+      
+    You can now save the verify step in a stage template even if the pipeline key is missing in YAML.
+
+- Even though metric data is not available from the health source for a time period, the **Overall Health Score** timeline displays green bars and shows the service score as 100. (SRM-13336)
+  
+  Now, on the Service Health page, the **Overall Health Score** timeline displays grey bars if metric data is unavailable from the health source for a specific time period. It does not show the health score.
+
 
 ## December 22, 2022, version 77908
 

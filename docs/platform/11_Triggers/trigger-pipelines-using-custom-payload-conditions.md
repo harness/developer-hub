@@ -1,7 +1,7 @@
 ---
 title: Trigger Pipelines using Git Event Payload Conditions
 description: You can trigger Pipelines in response to Git events that match specific payload conditions you set up in the Harness Trigger. For example, when a pull request or push event occurs on a Git repo and y…
-# sidebar_position: 2
+sidebar_position: 5
 helpdocs_topic_id: 10y3mvkdvk
 helpdocs_category_id: oya6qhmmaw
 helpdocs_is_private: false

@@ -1,14 +1,16 @@
 ---
 title: Chaos Engineering
 tags: [NextGen, "chaos engineering"]
-date: 2020-10-18T10:00
+date: 2020-12-02T10:00
 sidebar_position: 9
 ---
 
-Harness Chaos Engineering is updated regularly. Review the notes below for details about recent changes.
+Harness Chaos Engineering is updated regularly in Harness SaaS. Review the notes below for details about recent changes.
 
 :::note
 Harness deploys updates progressively to different Harness SaaS clusters. You can identify the cluster hosting your account in your Account Overview page. The features and fixes in the release notes may not be available in your cluster immediately.
+
+Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
 
 ## December 2, 2022, version 0.4.2

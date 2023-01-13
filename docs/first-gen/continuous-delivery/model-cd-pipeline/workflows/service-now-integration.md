@@ -10,8 +10,6 @@ helpdocs_is_published: true
 
 Using [ServiceNow](https://docs.servicenow.com/) (SNOW) tickets from one or more ServiceNow instances, you can track and audit the progress of Harness deployments and Pipelines, and can approve or reject Pipeline stages.
 
-### Video Summary
-
 ### ServiceNow Collaboration Provider
 
 To use ServiceNow integration in your Workflow or Pipeline, you must first add a ServiceNow account as a Harness Collaboration Provider. For instructions and required permissions, see [Add ServiceNow Collaboration Provider](../../../firstgen-platform/account/manage-connectors/add-service-now-collaboration-provider.md).

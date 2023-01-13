@@ -1,11 +1,15 @@
 ---
 title: Self-Managed Enterprise Edition
 tags: [NextGen, "self-managed-ee"]
-date: 2022-12-15T10:00
+date: 2022-12-21T10:00
 sidebar_position: 11
 ---
 
-Harness Self-Managed Enterprise Edition is updated regularly. Review the notes below for details about recent changes.
+Harness Self-Managed Enterprise Edition is updated regularly in Harness SaaS. Review the notes below for details about recent changes.
+
+:::note
+The release notes below are only for Self-Managed Enterprise Edition. NextGen SaaS release notes are available [here](/release-notes/whats-new) and FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes).
+:::
 
 ## December 21, 2022, version 77622
 

@@ -12,6 +12,12 @@ This topic describes Harness Continuous Delivery CD Services and Environments in
 
 Currently, there are two versions of Services and Environments, v1 and v2. Services and Environments v1 is being replaced by Services and Environments v2, and it's important to understand their differences. This topic will cover the differences between the two versions.
 
+:::info
+
+For details on when service and environments v2 will become the default settings in your account, go to [Upgrade to service and environment v2](../upgrading/upgrade-cd-v2.md).
+
+:::
+
 If you are new to Harness, please review [Harness key concepts](../../../getting-started/learn-harness-key-concepts.md) and [CD pipeline modeling overview](cd-pipeline-modeling-overview.md).
 
 :::note

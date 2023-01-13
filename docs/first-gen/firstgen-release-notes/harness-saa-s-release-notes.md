@@ -12,9 +12,79 @@ Harness progressively deploys updates to different Harness cluster hosting accou
 
 Harness is updated regularly. This document describes recent changes.
 
-For Harness on-prem releases, see [Harness Self-Managed Enterprise Edition Release Notes](harness-on-prem-release-notes.md).Release notes are displayed with the most recent release first.
+For Harness on-prem releases, see [Harness Self-Managed Enterprise Edition Release Notes](harness-on-prem-release-notes.md). Release notes are displayed with the most recent release first.
 
 If you don't see a new feature or enhancement in your Harness account, it might be behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+### January 5, 2023, version 78105
+
+Delegate version: 78100
+
+#### What's new
+  
+- Add the status of the collection in the artifactsource response in GraphQL API. (CDS-44426)
+  
+  You can retrieve the value of the collectionEnabled field for an Artifact Source using GraphQL APIs, like in the example below:
+  ```
+    {
+      services(limit: 5) {
+        nodes {
+          name
+          artifactSources {
+            name
+            collectionEnabled
+          }
+        }
+      }
+    }	
+  ```
+  
+- Delegate tasks are now limited based on account. (DEL-5371)
+
+  Limits are being introduced on the maximum number of tasks that can be created based on the account. Enforcement of task limits will be implemented at a later date and based on the product license.
+  
+- The following libraries of the Apache CXF open-source services framework (`org.apache.cxf`) were upgraded to version 3.5.5 to fix vulnerabilities. The delegate base image was updated from `redhat/ubi8-minimal:8.4` to `redhat/ubi8-minimal:8.7` to reflect these changes. (DEL-5591)
+
+  The Apache CXF libraries were found to be vulnerable to exploits including reflected Cross-Site Scripting (XSS) and code exfiltration. For a list of Common Vulnerabilities and Exposures (CVEs), see [CVE Details](https://www.cvedetails.com/vulnerability-list/vendor_id-45/product_id-19906/Apache-CXF.html). 
+  
+  | Library name and version | 
+  | :-- |
+  | `org.apache.cxf:cxf-core:3.5.4` | 
+  | `org.apache.cxf:cxf-rt-bindings-soap:3.5.4` | 
+  | `org.apache.cxf:cxf-rt-bindings-xml:3.5.4` | 
+  | `org.apache.cxf:cxf-rt-databinding-jaxb:3.5.4` | 
+  | `org.apache.cxf:cxf-rt-frontend-jaxws:3.5.4` | 
+  | `org.apache.cxf:cxf-rt-frontend-simple:3.5.4` | 
+  | `org.apache.cxf:cxf-rt-transports-http-hc:3.5.4` | 
+  | `org.apache.cxf:cxf-rt-transports-http:3.5.4` | 
+  | `org.apache.cxf:cxf-rt-ws-addr:3.5.4` | 
+  | `org.apache.cxf:cxf-rt-ws-policy:3.5.4` | 
+  | `org.apache.cxf:cxf-rt-wsdl:3.5.4` | 
+ 
+- The following libraries of the `io.netty:netty*` client/server framework were updated to version 4.1.86.Final to fix vulnerabilities. (DEL-5632)
+
+  The `io.netty:netty*` libraries were upgraded to mitigate the risk of denial-of-service (DoS) attack. Netty versions 4.1.0 to 4.1.67 are vulnerable, for example, to the exploits described in [CVE02021-37136](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-37136) and [CVE-2021-37137](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-37137). 
+  
+  | Library name and version | 
+  | :-- | 
+  | `io.netty:netty-all:4.1.77.Final` | 
+  | `io.netty:netty-buffer:4.1.77.Final` |
+  | `io.netty:netty-handler-proxy:4.1.77.Final` |
+  | `io.netty:netty-common:4.1.77.Final` |
+  | `io.netty:netty-handler:4.1.77.Final` |
+  | `io.netty:netty-resolver-dns:4.1.77.Final` |
+  | `io.netty:netty-resolver:4.1.77.Final` | 
+  | `io.netty:netty-transport-native-epoll:linux-x86_64:4.1.77.Final` | 
+  | `io.netty:netty-transport-native-kqueue:4.1.77.Final` | 
+  | `io.netty:netty-transport-native-unix-common:4.1.77.Final` | 
+  | `io.netty:netty-transport:4.1.77.Final` |
+
+#### Fixed issues
+  
+- `DelegateGroup` is not removed from the database or the UI after the associated delegate is deleted (DEL-3913)
+  - Changed code to ensure that an inactive delegate is deleted from the UI after seven days.
+  
+
 
 ### December 22, 2022, version 77908
 
@@ -1181,9 +1251,8 @@ The following table lists the component versions in this release.
 
 
 
-|  |  |
-| --- | --- |
 | **Component** | **Version** |
+| --- | --- |
 | UI | 73700 |
 | Portal | 1.0.74407-000 |
 | Delegate | 1.0.74407-000 |
@@ -1222,9 +1291,8 @@ The following table lists the component versions in this release.
 
 
 
-|  |  |
-| --- | --- |
 | **Component** | **Version** |
+| --- | --- |
 | UI | 73604 |
 | Portal | 1.0.74307-000 |
 | Delegate | 1.0.74307-000 |
@@ -1261,9 +1329,8 @@ The following table lists the component versions in this release.
 
 
 
-|  |  |
-| --- | --- |
 | **Component** | **Version** |
+| --- | --- |
 | UI | 73502 |
 | Portal | 1.0.74214-000 |
 | Delegate | 1.0.74214-000 |
@@ -1300,9 +1367,8 @@ The following table lists the component versions in this release.
 
 
 
-|  |  |
-| --- | --- |
 | **Component** | **Version** |
+| --- | --- |
 | UI | 73402 |
 | Portal | 1.0.74109-000 |
 | Delegate | 1.0.74109-000 |
@@ -1349,9 +1415,8 @@ The following new features are added to the Harness SaaS components:
 The following table lists the component versions in this release.
 
 
-|  |  |
-| --- | --- |
 | **Component** | **Version** |
+| --- | --- |
 | UI | 73300 |
 | Portal | 1.0.74006-000 |
 | Delegate | 1.0.74006-000 |
@@ -1395,9 +1460,8 @@ The following table lists the component versions in this release.
 
 
 
-|  |  |
-| --- | --- |
 | **Component** | **Version** |
+| --- | --- |
 | UI | 73200 |
 | Portal | 1.0.73913-000 |
 | Delegate | 1.0.73913-000 |
@@ -1435,9 +1499,8 @@ The following table lists the component versions in this release.
 
 
 
-|  |  |
-| --- | --- |
 | **Component** | **Version** |
+| --- | --- |
 | UI | 73100 |
 | Portal | 1.0.73803-000 |
 | Delegate | 1.0.73803-000 |
@@ -1477,9 +1540,8 @@ The following table lists the component versions in this release.
 
 
 
-|  |  |
-| --- | --- |
 | **Component** | **Version** |
+| --- | --- |
 | UI | 73002 |
 | Portal | 1.0.73717-000 |
 | Delegate | 1.0.73717-000 |
@@ -1518,9 +1580,8 @@ The following table lists the component versions in this release.
 
 
 
-|  |  |
-| --- | --- |
 | **Component** | **Version** |
+| --- | --- |
 | UI | 72900 |
 | Portal | 1.0.73609-000 |
 | Delegate | 1.0.73609-000 |
@@ -1555,9 +1616,8 @@ The following table lists the component versions in this release.
 
 
 
-|  |  |
-| --- | --- |
 | **Component** | **Version** |
+| --- | --- |
 | UI | 72800 |
 | Portal | 1.0.73503-000 |
 | Delegate | 1.0.73503-000 |
@@ -1592,9 +1652,8 @@ The following table lists the component versions in this release.
 
 
 
-|  |  |
-| --- | --- |
 | **Component** | **Version** |
+| --- | --- |
 | UI | 72700 |
 | Portal | 1.0.73406-000 |
 | Delegate | 1.0.73406-000 |
@@ -1632,9 +1691,8 @@ The following table lists the component versions in this release.
 
 
 
-|  |  |
+| **Component**  | **Version**  |
 | --- | --- |
-| **Component** | **Version** |
 | UI | 72500 |
 | Portal | 1.0.73316-000 |
 | Delegate | 1.0.73316-000 |
