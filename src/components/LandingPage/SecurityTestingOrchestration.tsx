@@ -34,7 +34,20 @@ const STOList: CardItem[] = [
     time: "10min",
     link: "/tutorials/orchestrate-security-tests/nodejs-firstscan",
   },
+  {
+    title: "Integrating Synk and OWASP Scan for NodeJS Application",
+    module: "sto",
+    icon: "img/icon_sto.svg",
+    description: (
+      <>Scanning a NodeJS Application with Snyk and Owasp for vulnerabilities.</>
+    ),
+    newDoc: false,
+    type: [docType.Documentation],
+    time: "15min",
+    link: "/tutorials/orchestrate-security-tests/integrating-snyk-and-owasp-scan-for-nodejs-app",
+  },
 ];
+
 
 export default function STO() {
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
