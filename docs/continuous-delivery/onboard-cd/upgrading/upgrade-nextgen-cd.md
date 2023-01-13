@@ -26,10 +26,10 @@ The Harness FirstGen CD module will be phased out and will reach End of Life (EO
 
 ### Timeline
 The FirstGen to NextGen CD upgrade will occur on the following dates:
-1/1/2023 - maintenance mode. no new features, bugs and security issues will be fixed.
-10/1/2023 - end of SMP releases
-1/1/2024 - end of support
-4/1/2024 - SaaS product shutdown
+- 1/1/2023. This is maintenance mode. No new features will be added and no new bugs and security issues will be fixed.
+- 10/1/2023. End of SMP releases.
+- 1/1/2024. End of support for FirstGen CD.
+- 4/1/2024. FirstGen SaaS product shutdown.
 
 As a first step towards that change, starting January 1st, 2023, Harness will no longer accept feature/enhancement requests and releasing new features for the FirstGen CD module.
 
