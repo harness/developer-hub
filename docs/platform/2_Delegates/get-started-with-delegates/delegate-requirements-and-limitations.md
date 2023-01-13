@@ -1,5 +1,5 @@
 ---
-title: Delegate Requirements and Limitations
+title: Delegate requirements and limitations
 description: This topic lists the limitations and requirements of the Harness Delegate. Before you begin. Delegates Overview. Delegate Limitations. Deployment limits --  Deployment limits are set by account type.. Y…
 # sidebar_position: 2
 helpdocs_topic_id: k7sbhe419w
