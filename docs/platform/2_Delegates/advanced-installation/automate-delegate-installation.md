@@ -103,5 +103,5 @@ After you update the delegate names, you can apply the configuration file. The d
 
 ### See also
 
-* [Run Scripts on Delegates](/docs/platform/2_Delegates/configure-delegates/run-scripts-on-delegates.md)
+* [Run Scripts on Delegates](/docs/platform/Delegates/configure-delegates/run-scripts-on-delegates.md)
 
