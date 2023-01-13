@@ -362,8 +362,8 @@ const config = {
       announcementBarByPath: {
         // list all pathnames in Regular expressions format
         pathRegExp: [
-          "^/docs/continuous-delivery.*",
-          "^/tutorials/deploy-services.*",
+          "^/docs/first-gen/continuous-delivery.*",
+          "^/docs/category/continuous-delivery.*",
         ],
       },
       hotjar: {
