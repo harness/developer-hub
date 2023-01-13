@@ -1,9 +1,0 @@
-{
-    "position": "100", 
-    "label": "Delegate guide", 
-    "collapsible": "true", 
-    "collapsed": "true", 
-    "className": "red", 
-    "link": {"type": "generated-index", "title": "Delegate guide"}, 
-    "customProps": {"helpdocs_category_id": "m9iau0y3hv"}
-}
