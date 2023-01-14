@@ -90,7 +90,7 @@ Do not run multiple delegates on the same host, pod, or container. This will res
 
 #### Delegate setup
 
-Most often, Delegate errors are the result of delegate setup issues. Ensure you are familiar with how the delegate and Harness Manager work together. See [Delegate installation overview](../platform/2_Delegates/delegate-installation-overview.md).
+Most often, Delegate errors are the result of delegate setup issues. Ensure you are familiar with how the delegate and Harness Manager work together. See [Delegate installation overview](/docs/platform/2_Delegates/get-started-with-delegates/delegate-installation-overview.md).
 
 Another common issue is the SSH key used by the delegate to deploy to a target host is incorrect. This can happen if the SSH key in [Harness secrets management](../platform/6_Security/1-harness-secret-manager-overview.md) was set up incorrectly, or if it is not the correct key for the target host, or the target host is not set up to allow SSH connections.
 
