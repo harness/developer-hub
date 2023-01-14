@@ -1,6 +1,6 @@
 ---
 title: Delegate environment variables
-description: The following table describes the environment variables that apply to the Delegate manifest. Some of these variables are included in the YAML by default; you can specify others based on use case…
+description: The following table describes the environment variables that apply to the delegate manifest. Some of these variables are included in the YAML by default; you can specify others based on use case…
 # sidebar_position: 2
 helpdocs_topic_id: b032tf34k9
 helpdocs_category_id: vm60533pvt
@@ -11,6 +11,7 @@ helpdocs_is_published: true
 The following table describes environment variables you can specify in the delegate manifest. Some of these variables are included in the YAML by default; you can specify others based on use case.
 
 | **Name** | **Description** | **Example** |
+| :-- | :-- | :-- |
 | `JAVA_OPTS` | JVM options for the Delegate. Use this variable to override or add JVM parameters. | `- name: JAVA_OPTS``value: "-XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -XX:MaxRAMFraction=2 -Xms64M"` |
 | `ACCOUNT_ID` | The Harness account Id for the account where this Delegate will attempt to register.This value is added automatically to the Delegate config file (YAML, etc) when you add the Delegate. | `- name: ACCOUNT_ID``value: H5W8iol5TNWc4G9h5A2MXg` |
 | `ACCOUNT_SECRET` | The Harness account token used to register the Delegate. | `- name: ACCOUNT_SECRET``value: d239xx88bf7xxxxxxx836ea` |
@@ -39,4 +40,5 @@ The following table describes environment variables you can specify in the deleg
 | `GRPC_SERVICE_ENABLED,``GRPC_SERVICE_CONNECTOR_PORT` | By default, the Delegate requires HTTP/2 for gRPC (gRPC Remote Procedure Calls) be enabled for connectivity between the Delegate and Harness Manager. | `- name: GRPC_SERVICE_ENABLED``value: "true"``- name: GRPC_SERVICE_CONNECTOR_PORT``value: "8080"` |
 | `VERSION_CHECK_DISABLED` | By default, the Delegate always checks for new versions (via the Watcher). | `- name: VERSION_CHECK_DISABLED``value: "false"` |
 | `DELEGATE_NAMESPACE` | The namespace for the Delegate is taken from the StatefulSet namespace. | `- name: DELEGATE_NAMESPACE``valueFrom:``fieldRef:``fieldPath: metadata.namespace` |
+
 

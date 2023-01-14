@@ -1,6 +1,6 @@
 ---
 title: Select delegates with delegate selectors and tags
-description: Use Delegate Tags to select specific Delegates in Connectors, steps, and more.
+description: Use delegate tags to select specific delegates in connectors, steps, and more.
 # sidebar_position: 2
 helpdocs_topic_id: nnuf8yv13o
 helpdocs_category_id: m9iau0y3hv
@@ -42,13 +42,16 @@ The delegate selector priority is:
 
 The step level has the highest priority. Any delegate selected in a step's **Delegate Selector** setting overrides any Delegates selected in 2-5 above.
 
-A connector can be used in multiple places in a pipeline, such as a stage infrastructure's **Cloud Provider** setting or even in certain step settings.### Option: Step and step group delegate selector
+A connector can be used in multiple places in a pipeline, such as a stage infrastructure's **Cloud Provider** setting or even in certain step settings.
+
+### Option: Step and step group delegate selector
 
 Delegates can be selected for steps and [step groups](/docs/continuous-delivery/cd-technical-reference/cd-gen-ref-category/step-groups.md) in their **Advanced** settings.
 
 Here is a step example:
 
 ![](./static/select-delegates-with-selectors-19.png)
+
 Here is a step group example:
 
 ![](./static/select-delegates-with-selectors-20.png)
@@ -58,6 +61,7 @@ Here is a step group example:
 When you add a connector you are given the option of connecting to your third part account using any available delegate or specific delegates.
 
 ![](./static/select-delegates-with-selectors-21.png)
+
 You select specific delegates using their tags.
 
 You only need to select one of a delegate's tags to select it. All delegates with the tag are selected.
@@ -65,21 +69,25 @@ You only need to select one of a delegate's tags to select it. All delegates wit
 Here, the tag is **test1**, and you can see multiple delegates match it:
 
 ![](./static/select-delegates-with-selectors-22.png)
+
 ### Option: Pipeline delegate selector
 
 Delegates can be selected for an entire pipeline in the pipeline **Advanced Options** settings.
 
 ![](./static/select-delegates-with-selectors-23.png)
+
 ### Option: Stage delegate selector
 
 Delegates can be selected for an entire stage in the stage **Advanced** settings.
 
 ![](./static/select-delegates-with-selectors-24.png)
+
 ### Option: Infrastructure connector
 
 Delegates can be selected for the connector used in a stage's Infrastructure settings, such as a CD stage's **Cluster Details** > **Connector** setting.
 
 ![](./static/select-delegates-with-selectors-25.png)
+
 ### Option: Select a delegate for a step using tags
 
 You can select one or more delegates for each pipeline step.
@@ -87,6 +95,7 @@ You can select one or more delegates for each pipeline step.
 In each step, in **Advanced**, there in the **Delegate Selector** option:
 
 ![](./static/select-delegates-with-selectors-26.png)
+
 You only need to select one of a delegate's tags to select it. All delegates with the tag are selected.
 
 ### Option: Modify tags using Harness API
@@ -95,5 +104,5 @@ See [Delegate Group Tags Resource](https://harness.io/docs/api/tag/Delegate-Grou
 
 ### See also
 
-* [Delegates Overview](/docs/platform/2_Delegates/get-started-with-delegates/delegates-overview.md)
+* [Delegate overview](/docs/platform/2_Delegates/get-started-with-delegates/delegates-overview.md)
 

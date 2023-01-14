@@ -1,6 +1,6 @@
 ---
 title: Non-root delegate installation
-description: By default, Harness Delegates use root access. You can install a different Docker image tag of the Delegate if you want to install and run the Delegate as non-root. Harness Delegate images are public…
+description: By default, Harness delegates use root access. You can install a different Docker image tag of the delegate if you want to install and run the Delegate as non-root. Harness delegate images are public…
 # sidebar_position: 2
 helpdocs_topic_id: h2kydm6qme
 helpdocs_category_id: m9iau0y3hv
@@ -8,9 +8,9 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-By default, Harness Delegates use root access. You can install a different Docker image tag of the Delegate if you want to install and run the Delegate as non-root.
+By default, Harness delegates use root access. You can install a different Docker image tag of the delegate if you want to install and run the delegate as non-root.
 
-Harness Delegate images are publicly hosted on [Docker Hub](https://hub.docker.com/r/harness/delegate/tags). This topic describes how to install and run a Delegate as non-root.
+Delegate images are publicly hosted on [Docker Hub](https://hub.docker.com/r/harness/delegate/tags). This topic describes how to install and run a delegate as non-root.
 
 ### Before you begin
 

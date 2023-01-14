@@ -58,7 +58,7 @@ Download the file and open it in a text editor.
 
 In the Delegate config file, locate the `INIT_SCRIPT` environment variable.
 
-For example, here it is in the Kubernetes Delegate harness-delegate.yaml file:
+For example, here it is in the Kubernetes delegate harness-delegate.yaml file:
 
 
 ```
@@ -79,7 +79,7 @@ spec:
             echo wget installed  
 ...
 ```
-In `value`, enter your script. For a list of common scripts, see [Common Delegate Initialization Scripts](/docs/platform/2_Delegates/delegate-reference/common-delegate-profile-scripts.md).
+In `value`, enter your script. For a list of common scripts, see [Common delegate initialization scripts](/docs/platform/2_Delegates/delegate-reference/common-delegate-profile-scripts.md).
 
 A multiline script must follow the YAML spec for [literal scalar style](https://yaml.org/spec/1.2-old/spec.html#id2795688).The script should not be in quotes.For the Docker Delegate, Harness uses a Docker compose file, so you add your script like this:
 
@@ -100,8 +100,8 @@ Follow the remaining Delegate installation steps.
 
 See:
 
-* [Install a Kubernetes Delegate](/docs/platform/2_Delegates/install-delegates/kubernetes-delegates/install-a-kubernetes-delegate.md)
-* [Install a Docker Delegate](/docs/platform/2_Delegates/install-delegates/docker-delegates/install-a-docker-delegate.md)
+* [Install a Kubernetes delegate](/docs/platform/2_Delegates/install-delegates/kubernetes-delegates/install-a-kubernetes-delegate.md)
+* [Install a Docker delegate](/docs/platform/2_Delegates/install-delegates/docker-delegates/install-a-docker-delegate.md)
 
 ### Step 4: Verify the script
 
@@ -144,5 +144,5 @@ Watcher started
 ```
 ### See also
 
-* [Automate Delegate Installation](/docs/platform/2_Delegates/advanced-installation/automate-delegate-installation.md)
+* [Automate delegate installation](/docs/platform/2_Delegates/advanced-installation/automate-delegate-installation.md)
 

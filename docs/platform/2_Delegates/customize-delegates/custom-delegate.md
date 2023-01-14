@@ -1,6 +1,6 @@
 ---
-title: Create a custom delegate that Includes custom tools
-description: Create your own custom Delegate and include the tools needed for your builds and deployments.
+title: Create a custom delegate that includes custom tools
+description: Create your own custom delegate and include the tools needed for your builds and deployments.
 # sidebar_position: 2
 helpdocs_topic_id: nbi9uj9wm4
 helpdocs_category_id: m9iau0y3hv
@@ -8,9 +8,9 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-[Harness Delegates](/docs/platform/2_Delegates/get-started-with-delegates/delegates-overview.md) are installed from the Harness Manager and typically contain the binaries you need for your CI/CD Pipelines.
+[Harness delegates](/docs/platform/2_Delegates/get-started-with-delegates/delegates-overview.md) are installed from Harness Manager and typically contain the binaries you need for your CI/CD Pipelines.
 
-In some cases, you might want to add more tools or even create your own custom Delegate and include the tools needed for your builds and deployments.
+In some cases, you might want to add more tools or even create your own custom delegate and include the tools needed for your builds and deployments.
 
 This topic explains the different ways to create a custom Delegate.
 

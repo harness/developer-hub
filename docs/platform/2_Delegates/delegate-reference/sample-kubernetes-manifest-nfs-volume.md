@@ -1,6 +1,6 @@
 ---
 title: Sample -- Kubernetes manifest - NFS volume
-description: This Kubernetes manifest creates an NFS volume. For a sample manifest for an NFS server, see Sample --  Create a Permanent Volume - NFS Server. apiVersion --  v1 kind --  PersistentVolumeClaim metadata --  name -- …
+description: This Kubernetes manifest creates an NFS volume. 
 # sidebar_position: 2
 helpdocs_topic_id: 6929n499sf
 helpdocs_category_id: vm60533pvt

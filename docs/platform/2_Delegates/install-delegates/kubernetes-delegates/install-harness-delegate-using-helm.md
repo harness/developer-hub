@@ -1,5 +1,5 @@
 ---
-title: Install Harness Delegate Using Helm
+title: Install Harness Delegate using Helm
 description: Harness Delegate is a service that runs in the target environment for a deployment – typically a local network, a VPC, or a cluster. Harness Delegate connects artifacts, infrastructure, and providers…
 # sidebar_position: 2
 helpdocs_topic_id: zo44dwgmin
