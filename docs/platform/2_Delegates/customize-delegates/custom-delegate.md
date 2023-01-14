@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-[Harness Delegates](/docs/platform/2_Delegates/delegates-overview.md) are installed from the Harness Manager and typically contain the binaries you need for your CI/CD Pipelines.
+[Harness Delegates](/docs/platform/2_Delegates/get-started-with-delegates/delegates-overview.md) are installed from the Harness Manager and typically contain the binaries you need for your CI/CD Pipelines.
 
 In some cases, you might want to add more tools or even create your own custom Delegate and include the tools needed for your builds and deployments.
 
@@ -16,9 +16,9 @@ This topic explains the different ways to create a custom Delegate.
 
 ### Before you begin
 
-* [Delegates Overview](/docs/platform/2_Delegates/delegates-overview.md)
+* [Delegates Overview](/docs/platform/2_Delegates/get-started-with-delegates/delegates-overview.md)
 * [Supported Platforms and Technologies](/docs/getting-started/supported-platforms-and-technologies.md)
-* [Delegate Installation Overview](/docs/platform/2_Delegates/delegate-installation-overview.md)
+* [Delegate Installation Overview](/docs/platform/2_Delegates/get-started-with-delegates/delegate-installation-overview.md)
 
 ### Option: Use the INIT\_SCRIPT environment variable
 

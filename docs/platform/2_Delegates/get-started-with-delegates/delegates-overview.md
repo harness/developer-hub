@@ -130,7 +130,7 @@ Here you use Delegate Tags to select the Delegate(s) to use.
 
 The Delegates assigned to Connectors and steps are used during Pipeline execution.
 
-If no Delegates are selected, then the Delegates are selected as described in [Task Assignment](/docs/platform/2_Delegates/delegates-overview.md#task-assignment).
+If no Delegates are selected, then the Delegates are selected as described in [Task Assignment](/docs/platform/2_Delegates/get-started-with-delegates/delegates-overview.md#task-assignment).
 
 If no Delegates are selected for a CD step in its **Delegate Selector** setting, Harness prioritizes the Delegate used successfully for the Infrastructure Connector.
 
