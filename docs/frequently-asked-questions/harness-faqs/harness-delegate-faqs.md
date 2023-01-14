@@ -294,7 +294,7 @@ For Kubernetes, you only need one delegate in the cluster. Simply increase the n
 :::
 
 :::note
-If you want to install Kubernetes delegates in separate clusters, do not use the same YAML `spec` and name for both delegates. Download a new YAML `spec` from Harness for each delegate you want to install. This avoids name conflicts.See [Delegates overview](../../platform/2_Delegates/delegates-overview.md).
+If you want to install Kubernetes delegates in separate clusters, do not use the same YAML `spec` and name for both delegates. Download a new YAML `spec` from Harness for each delegate you want to install. This avoids name conflicts.See [Delegates overview](/docs/platform/2_Delegates/get-started-with-delegates/delegates-overview.md).
 :::
 
 ### Troubleshooting the delegate

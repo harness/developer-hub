@@ -12,7 +12,7 @@ This topic lists the limitations and requirements of the Harness Delegate.
 
 ### Before you begin
 
-* [Delegates Overview](/docs/platform/2_Delegates//get-started-with-delegates/delegates-overview.md)
+* [Delegates Overview](/docs/platform/2_Delegates/get-started-with-delegates/delegates-overview.md)
 
 ### Delegate Limitations
 
