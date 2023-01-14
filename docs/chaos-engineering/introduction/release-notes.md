@@ -14,25 +14,28 @@ Harness deploys updates progressively to different Harness cluster hosting accou
 ## What’s new
 
 * Provision to update chaos hub details (Chaos-699)
-	* You can update the details (such as name, Git connector, repository name, and branch name) of a connected chaos hub. 
+	* You can update the details (such as name, Git connector, repository name, and branch name) of a connected chaos hub.  
 
 * CDN support for static artifacts (Chaos-600)
-	* This release adds CDN support for static artifacts which loads the user interface with reduced latency on client devices.
+	* This release adds CDN support for static artifacts. CDN support reduces the latency while loading the user interface on client devices.
 
 * Version information for Chaos Driver and Chaos Manager (Chaos-729)
-	* This release adds version numbers to Chaos Driver and Chaos Manager which enables Harness to version the corresponding endpoints (/chaos/driver/api/version for ChaosDriver and /chaos/manager/api/version for ChaosManager).
+	* This release adds version numbers to Chaos Driver and Chaos Manager. Versioning the Chaos Driver and Chaos Manager enables Harness to version the corresponding endpoints (/chaos/driver/api/version for ChaosDriver and /chaos/manager/api/version for ChaosManager).
 
 * Range filter for Experiment Runs in the Experiment overview (Chaos-824)
-	* It adds a range filter dropdown in the Experiment Runs bar graph under Experiment overview that allows setting the range on the last run in the graph.
+	* This release adds a range filter option in the Experiment Runs bar graph under Experiment overview that allows setting the range on the last run in the graph.
 
 * Support for fault statuses (Chaos-826)
-	* It adds support to show all the fault status in the Experiment Runs graph. In addition to `Failed` and `Passed` fault status, faults in `Awaited`, `Stopped` and `N/A` states are also seen. 
+	* This release adds support to show all the fault statuses in the Experiment Runs graph. In addition to `the Failed` and `Passed` fault status, faults in the `Awaited`, `Stopped`, and `N/A` states are also seen. 
 
 * Seamless upgrade 
-	* It adds a manifest download button on the user interface for chaos infrastructures that provides a seamless upgrade.
+	* This release adds a manifest download button for the chaos infrastructures, to enable a seamless upgrade.
 
 * Loaders for components and screens (Chaos-822)
-	* This release adds consistent loaders for all the components and screens in the user interface.
+	* This release adds consistent loaders for all the components and screens in the user interface. These loaders decouple API requests and avoid blocking the rendering of the entire page due to chained API calls.
+
+* Configurable response timeout for HTTP probes
+	* This release adds a new response timeout parameter for HTTP probes in the user interface. The response timeout is in units of seconds. You can use this parameter to specify timeouts during HTTP probe health checks during chaos fault execution.
 
 ## Early access
 
@@ -40,35 +43,21 @@ Harness deploys updates progressively to different Harness cluster hosting accou
 
 ## Fixed Issues
 
-* Enterprise ChaosHub appears only when it is searched.
-	* Enterprise ChaosHub appeared in the search result irrespective of the terms searched.
+* Enterprise ChaosHub appeared in the search results irrespective of the terms searched.
 
-* Response timeout added to HTTP probe
-	* A new response timeout change has been introduced in the HTTP probe in the user interface. The probeTimeout for HTTP probes is now treated as a response timeout and is in units of seconds.
+* Details of a previously connected chaos infrastructure are not prefilled when connecting to a new chaos infrastructure. (Chaos-777)
 
-* Previously connected chaos infrastructure is not considered while connecting to a new infrastructure (Chaos-777)
-	* Details of previously connected chaos infrastructure are not prefilled when connecting to a new chaos infrastructure. 
+* The Run button was activated even when the chaos experiment was running. Now, the button is reactivated only after the chaos experiment is complete. (Chaos-807)
 
-* Run button is activated after an experiment is complete (Chaos-807)
-	* The Run button is activated again only after the chaos experiment is complete.
+* The chaos access page shows all experiments and experiment runs instead of showing experiments that were performed within a specific time frame. (Chaos-810, Chaos-762) 
 
-* Chaos access page shows all experiments and experiment runs (Chaos-810, Chaos-762)
-	* The chaos access page shows all experiments and experiment runs instead of showing experiments that were performed within a specific time frame.
+* A cancel button and a back button have been added to the enable chaos screen. The buttons make it easy to navigate between screens while setting up chaos infrastructure.
 
-* Cancel and back buttons have been added to Enable chaos screen
-	* A cancel button and a back button have been added to the Enable chaos screen which makes it easy to navigate between screens while setting up chaos infrastructure.
+* When you search for a specific chaos fault and the chaos manager cannot map this chaos fault to a chaos fault icon, the user interface does not display any error. Instead, it silently skips the error logs. (Chaos-814)
 
-* Failing to map a chaos fault to a chaos fault icon does not throw an error on the user interface (Chaos-814)
-	* When you search for a specific chaos fault and the chaos manager cannot map this chaos fault to a chaos fault icon in the backend, it does not throw an error on the user interface. Instead, it silently skips the error logs. 
+* The expected resilience score does not change to `NaN` (not a number) when you override it. (Chaos-791)
 
-* Expected Resilience Score does not change when it is overridden (Chaos-791)
-	* The Expected Resilience Score does not change to `NaN` when overridden.
-
-* Resource-type field has been made available (Chaos-714)
-	* The resource-type field was previously not available. Now, it has been made available and you can utilize it to abort a chaos experiment in the audit trail.
-
-* UI/UX issues were fixed
-	* Minor UI/UX issues were fixed which has made the user interface user-friendly.
+* The resource-type field was previously not available. Now, it has been made available and you can use this field to abort a chaos experiment in the audit trail. (Chaos-714)
 
 
 # November 14, 2022
