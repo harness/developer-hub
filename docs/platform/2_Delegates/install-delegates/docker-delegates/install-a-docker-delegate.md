@@ -16,7 +16,7 @@ There are several types of Delegates. This topic describes how to install the Do
 
 ### Before you begin
 
-* [Delegate Installation Overview](/docs/platform/2_Delegates/delegate-installation-overview.md)
+* [Delegate Installation Overview](/docs/platform/2_Delegates/get-started-with-delegates/delegate-installation-overview.md)
 * [Projects and Organizations](/docs/platform/1_Organizations-and-Projects/1-projects-and-organizations.md)
 
 ### Review: System Requirements
@@ -95,7 +95,7 @@ The following table lists each of the environment variables in the Harness Docke
 | `ACCOUNT_ID` | The Harness account Id for the account where this Delegate will attempt to register. | ```- ACCOUNT_ID=H5W8i2828282828Xg```|
 | `DELEGATE_TOKEN` | The Harness account token used to register the Delegate. | ```- DELEGATE_TOKEN=d229ee88bf7bbxxxx6ea```|
 | `MANAGER_HOST_AND_PORT` | The Harness SaaS manager URL. `https` indicates port 443. |```- MANAGER_HOST_AND_PORT=https://app.harness.io```|
-| `WATCHER_STORAGE_URL` | The URL for the Watcher versions.See [Delegate Installation Overview](/docs/platform/2_Delegates/delegate-installation-overview.md). | ```- WATCHER_STORAGE_URL=https://app.harness.io/public/prod/premium/watchers```|
+| `WATCHER_STORAGE_URL` | The URL for the Watcher versions. See [Delegate Installation Overview](/docs/platform/2_Delegates/get-started-with-delegates/delegate-installation-overview.md). | ```- WATCHER_STORAGE_URL=https://app.harness.io/public/prod/premium/watchers```|
 | `WATCHER_CHECK_LOCATION` | The Delegate version location for the Watcher to check for. | ```- name: WATCHER_CHECK_LOCATION  value: current.version```|
 | `REMOTE_WATCHER_URL_CDN` | The CDN URL for Watcher builds. | ```- name: REMOTE_WATCHER_URL_CDN  value: https://app.harness.io/public/shared/watchers/builds```|
 | `DELEGATE_STORAGE_URL` | The URL where published Delegate jars are stored. | ```- name: DELEGATE_STORAGE_URL  value: https://app.harness.io```|

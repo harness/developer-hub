@@ -93,7 +93,7 @@ Harness uses Docker Registry Connectors at Pipeline runtime to pull images and p
 
 You can use Delegate Tags to select one or more Delegates. For details on Delegate Tags, see [Select Delegates with Tags](/docs/platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md).
 
-If you need to install a Delegate, see [Delegate Installation Overview](../2_Delegates/delegate-installation-overview.md).
+If you need to install a Delegate, see [Delegate Installation Overview](/docs/platform/2_Delegates/get-started-with-delegates/delegate-installation-overview.md).
 
 Click **Save and Continue**.
 
