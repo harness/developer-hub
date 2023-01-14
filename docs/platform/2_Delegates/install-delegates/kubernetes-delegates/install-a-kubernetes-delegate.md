@@ -1,6 +1,6 @@
 ---
 title: Install a legacy Kubernetes delegate
-description: Install a harness Kubernetes Delegate.
+description: Install a Harness Kubernetes delegate.
 # sidebar_position: 2
 helpdocs_topic_id: f9bd10b3nj
 helpdocs_category_id: m9iau0y3hv

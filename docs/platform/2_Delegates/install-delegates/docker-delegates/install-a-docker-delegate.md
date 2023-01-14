@@ -1,6 +1,6 @@
 ---
-title: Install a Docker Delegate
-description: Install a Docker Delegate.
+title: Install a Docker delegate
+description: Install a Docker delegate.
 # sidebar_position: 2
 helpdocs_topic_id: cya29w2b99
 helpdocs_category_id: cybg19aoxt
