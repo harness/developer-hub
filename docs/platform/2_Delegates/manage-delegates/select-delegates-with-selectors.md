@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Harness runs tasks by using Harness Delegate to connect your environment to resources. Harness selects the best delegate based on previous use or round-robin selection. See [How Does Harness Manager Pick Delegates?](/docs/platform/2_Delegates/delegates-overview.md#how-does-harness-manager-pick-delegates)
+Harness runs tasks by using Harness Delegate to connect your environment to resources. Harness selects the best delegate based on previous use or round-robin selection. See [How Does Harness Manager Pick Delegates?](/docs/platform/2_Delegates/get-started-with-delegates/delegates-overview.md#how-does-harness-manager-pick-delegates)
 
 In some cases, you might want Harness to select specific delegates. In these cases, you can use the **Delegate Selector** settings in Pipelines, Connectors, and so on, with corresponding delegate tags.
 
@@ -20,7 +20,7 @@ You can also add more tags in the **Tags** field during the setup process:
 
 ![](./static/select-delegates-with-selectors-17.png)
 
-For detailed information on how delegates are selected during execution, see [Delegates Overview](/docs/platform/2_Delegates/delegates-overview.md).
+For detailed information on how delegates are selected during execution, see [Delegates Overview](/docs/platform/2_Delegates/get-started-with-delegates/delegates-overview.md).
 
 You can select a delegate based on its tags in the **Delegate Selector** settings of Harness entities like pipelines and connectors.
 
@@ -95,5 +95,5 @@ See [Delegate Group Tags Resource](https://harness.io/docs/api/tag/Delegate-Grou
 
 ### See also
 
-* [Delegates Overview](/docs/platform/2_Delegates/delegates-overview.md)
+* [Delegates Overview](/docs/platform/2_Delegates/get-started-with-delegates/delegates-overview.md)
 

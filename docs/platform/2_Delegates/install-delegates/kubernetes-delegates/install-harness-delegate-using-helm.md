@@ -47,7 +47,7 @@ The compute resources that the Delegate workload requires depend on the scale of
 
 Harness Delegate for Helm is installed by deploying a Helm chart. The installation process requires you to configure the deployment and, if you are using a proxy, to configure proxy settings. Harness deploys the Delegate and listens for a heartbeat to confirm the Delegate is running. If you receive a message that the Delegate could not be installed, see the final section of this document for troubleshooting information.
 
-For basic information on Harness Delegate, see [Delegate Requirements and Limitations](/docs/platform/2_Delegates/delegates-overview.md).
+For basic information on Harness Delegate, see [Delegate Requirements and Limitations](/docs/platform/2_Delegates/get-started-with-delegates/delegates-overview.md).
 
 #### Configure the Deployment
 

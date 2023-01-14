@@ -16,7 +16,7 @@ Harness supports a version skew of up to *n*-2 delegate versions, for which *n* 
 
 Delegate auto-upgrade status and expiration dates are shown in Harness Manager for each installed delegate where they apply.
 
-For an introduction to delegates, see [Delegate Overview](/docs/platform/2_Delegates/delegates-overview.md). For more information about the delegate automatic update process, see [Delegate Auto-Update](/docs/platform/2_Delegates/get-started-with-delegates/delegate-auto-update.md).
+For an introduction to delegates, see [Delegate Overview](/docs/platform/2_Delegates/get-started-with-delegates/delegates-overview.md). For more information about the delegate automatic update process, see [Delegate Auto-Update](/docs/platform/2_Delegates/get-started-with-delegates/delegate-auto-update.md).
 
 ### Install Process
 
@@ -54,7 +54,7 @@ The compute resources that the delegate workload requires depend on the scale of
 
 Harness Delegate for Helm is installed using a Kubernetes manifest or by deploying a Helm chart. The installation process requires you to configure the deployment and, if you are using a proxy, to configure proxy settings. Harness deploys the delegate and listens for a heartbeat to confirm the delegate is running. If you receive a message that the delegate could not be installed, see the final section of this document for links to troubleshooting information.
 
-For basic information on Harness Delegate, see [Delegate Requirements and Limitations](/docs/platform/2_Delegates/delegates-overview.md).
+For basic information on Harness Delegate, see [Delegate Requirements and Limitations](/docs/platform/2_Delegates/get-started-with-delegates/delegates-overview.md).
 
 **To install the Delegate**
 
