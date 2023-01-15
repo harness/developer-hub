@@ -4,6 +4,7 @@
 // const lightCodeTheme = require("prism-react-renderer/themes/github");
 const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 const path = require("path");
+const clientRedirects = require("./client-redirects");
 
 const BASE_URL = process.env.BASE_URL || "/";
 
@@ -49,7 +50,7 @@ const config = {
           customCss: require.resolve("./src/css/custom.css"), // we could also use scss here
         },
         gtag: {
-          trackingID: "G-46758J5H8P", 
+          trackingID: "G-46758J5H8P",
           anonymizeIP: false,
         },
       }),
@@ -373,6 +374,7 @@ const config = {
   plugins: [
     [
       "@docusaurus/plugin-client-redirects",
+      /* externalizing the redirects
       {
         redirects: [
           {
@@ -385,6 +387,8 @@ const config = {
           },
         ],
       },
+      */
+      clientRedirects,
     ],
     [
       "@docusaurus/plugin-content-docs",

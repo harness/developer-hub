@@ -23,7 +23,7 @@ The entire setup workflow should take about 30 minutes.
 
 ## STO Requirements
 
-You'll all these requirements after you do the [STO Setup Procedures](#sto-setup-procedures) described below.
+Make sure you meet the following requirements before you perform [STO Setup Procedures](#sto-setup-procedures) steps described below.
 
 ### External Requirements
 
@@ -249,7 +249,7 @@ The following procedure creates a pipeline with the STO functionality required t
   ```
 		 
 4. In About your Stage:
-	1. Click **Add Stage** and then select **Build**.
+	1. Click **Add Stage** and then select **Security Tests**.
 	2. Stage Name = **securityTestStage**
 	3. Connector = The connector you created in [Create a Codebase Connector](#create-a-codebase-connector).
 	4. Click **Set Up Stage**.
