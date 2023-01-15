@@ -5,7 +5,7 @@ date: 2023-01-13T10:00
 sidebar_position: 12
 ---
 
-Dedicated Harness Delegate Releaes Notes coming soon. 
+Harness Delegate Release Notes coming soon. 
 
 :::note
 Harness deploys updates progressively to different Harness SaaS clusters. You can identify the cluster hosting your account in your Account Overview page. The features and fixes in the release notes may not be available in your cluster immediately.
