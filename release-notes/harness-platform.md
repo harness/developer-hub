@@ -33,7 +33,7 @@ No early access features are available in this release.
   
   The project selection code has been enhanced to select projects corresponding to specific organization IDs.
 
-- The error message displayed when creating the GitHub connector and selecting Harness manager as the connectivity option is not clear and informative. (PL-29953)
+- The error message displayed when creating the GitHub connector and selecting **Harness Platform** as the connectivity option is not clear and informative. (PL-29953)
   
   Modifying the error message to indicate that the secret manager being used is not Harness' built-in secret manager fixed the problem.
 
