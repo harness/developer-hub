@@ -310,6 +310,28 @@ body {
   margin-right: 0.2em;
 }
 
+/* #DLP-36 styles for details + summary */
+.alert--info {
+  --ifm-alert-background-color: var(--primary-1);
+  --ifm-alert-border-color: var(--primary-3);
+  --ifm-tabs-color-active: var(--primary);
+  --ifm-tabs-color-active-border: var(--primary);
+}
+details summary {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 140%;
+}
+details summary::before {
+  border-left-color: var(--black) !important;
+}
+.tabs {
+  border-bottom: 1px solid var(--gray-200);
+}
+.tabs__item--active {
+  border-bottom-color: var(--primary);
+}
+
 .color-ci {
   color: var(--mod-ci-200);
 }
