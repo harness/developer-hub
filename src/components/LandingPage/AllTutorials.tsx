@@ -189,6 +189,20 @@ const CIList: CardItem[] = [
     time: "15 min",
     link: "/tutorials/build-code/ci-tutorial-container-signing",
   },
+  {
+    title: "Github action step",
+    module: "ci",
+    icon: "img/icon_ci.svg",
+    description: (
+      <>
+        This guide shows how to run a github actions natively with harness ci
+      </>
+    ),
+    newDoc: false,
+    type: [docType.Documentation],
+    time: "10 min",
+    link: "/tutorials/build-code/ci-github-action-step",
+  },
 ];
 
 const CDList: CardItem[] = [
