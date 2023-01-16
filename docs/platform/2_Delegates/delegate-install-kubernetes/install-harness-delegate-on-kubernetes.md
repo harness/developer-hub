@@ -64,7 +64,7 @@ For basic information on Harness Delegate, see [Delegate Requirements and Limita
    ![](./static/install-harness-delegate-on-kubernetes-10.png)
    
    In this example, **Harness Project** is the target of the deployment.
-2. Click **Create a Delegate**.
+2. Click **New Delegate**.
 
    ![](./static/install-harness-delegate-on-kubernetes-11.png)
    
