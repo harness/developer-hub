@@ -13,6 +13,37 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
 
+## January 17, 2023, version 782xx
+
+### What's new
+
+* This release two new CI steps for integrating your Harness CI pipelines with other GitHub Actions and Bitrise. These actions are available Harness Cloud build infrastructures only. 
+   - A Harness Actions step that you can use to run GitHub Actions.
+   - A Bitrise step that enables you to run Bitrise steps and workflows. (CI-6479)
+* Harness CI now supports remote debugging of remote builds in Harness Cloud, Kubernetes, and VMs in AWS, Azure, and other cloud platforms. If a build fails or times out, you can re-run it in debug. This option is available, the **Builds**, **Execution**, and **Execution History** pages. (CI-6350) 
+* You can now specify hostnames in Kubernetes build infrastructures. This is useful when the cluster needs to communicate with external services during a CI build. The follow YAML snippet shows how to set up aliases for your cluster. (CI-5996, ZD-36578)
+
+##### Defining hostnames to use in a Kubernetes build infrastructure
+
+``` yaml 
+infrastructure:
+    type: KubernetesDirect
+    spec:
+      connectorRef: account.test
+      namespace: harness-delegate
+    hostNames:
+      - abc.com
+      - xyz.com
+```
+
+### Early access features
+
+This release does not include early access features.
+
+### Fixed issues
+
+This release does not include early access features.
+
 ## January 10, 2023, version 78105
 
 ### What's new
