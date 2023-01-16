@@ -117,7 +117,7 @@ You can download the delegate manifest file to configure a proxy or customize ot
 
 ![](./static/install-harness-delegate-on-kubernetes-17.png)
 
-1. (Optional) To download the harness-delegate.yml file, click **Download YAML file**. 
+1. To download the harness-delegate.yml file, click **Download YAML file**. 
  
    For detailed information about configuring a proxy for the delegate, see [Configure Delegate Proxy Settings](../delegate-guide/configure-delegate-proxy-settings.md).  
 
