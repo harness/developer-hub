@@ -16,7 +16,7 @@ Disk fill is a Kubernetes pod-level chaos fault that:
 <details>
 <summary>View fault usage</summary>
 <div>
-Disk fill is used to determine how the application behaves when the disk is under stress, that is, ephermal storage is added to the pod.   
+Disk fill is used to determine how the application behaves when the disk is under stress, that is, when ephermal storage is added to the pod.   
 </div>
 </details>
 
@@ -168,16 +168,17 @@ kubectl get pods -n <namespace>
 kubectl exec -it <microservice_name> -n <namespace> sh
 ``` 
 
-* This leads you into the application, where you can execute the below command to check the disk usage.
+* This leads you into the pod, where you can execute the below command to check the disk usage.
 ```
 /app # df -h
 ```
 
 This displays the amount of storage consumed by the application during chaos. 
- 
+
 ## Fault examples
 
 ### Common and pod specific tunables
+
 Refer to the [common attributes](../../common-tunables-for-all-faults) and [pod specific tunables](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables. 
 
 ### Disk fill percentage
@@ -284,7 +285,7 @@ spec:
 
 ### Container path
 
-It defines the storage location of the containers inside the host (node/VM). You can tune it using the `CONTAINER_PATH` environment variable. 
+It defines the storage location of the containers inside the host (node or VM). You can tune it using the `CONTAINER_PATH` environment variable. 
 
 Use the following example to tune it:
 

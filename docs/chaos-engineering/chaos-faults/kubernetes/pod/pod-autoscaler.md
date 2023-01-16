@@ -48,8 +48,8 @@ After successful setup of chaos infrastructure:
           </tr>
           <tr>
             <td> REPLICA_COUNT </td>
-            <td> Number of replicas upto which we want to scale </td>
-            <td> <code>nil</code> </td>
+            <td> Number of replicas to which you wish to scale. </td>
+            <td> <code>NIL</code> </td>
           </tr>
         </table>
         <h2>Optional Fields</h2>
@@ -61,18 +61,18 @@ After successful setup of chaos infrastructure:
           </tr>
           <tr>
             <td> TOTAL_CHAOS_DURATION </td>
-            <td> The timeout for the chaos fault (in seconds) </td>
+            <td> Timeout for the chaos fault (in seconds). </td>
             <td> Defaults to 60 </td>
           </tr>
           <tr>
             <td> LIB </td>
-            <td> The chaos lib used to inject the chaos </td>
+            <td> The chaos library used to inject chaos. </td>
             <td> Defaults to <code>litmus</code> </td>
           </tr>
           <tr>
             <td> RAMP_TIME </td>
-            <td> Period to wait before and after injection of chaos in sec </td>
-            <td> Eg. 30 </td>
+            <td> Period to wait before and after injecting chaos (in seconds). </td>
+            <td> For example, 30s. </td>
           </tr>
         </table>
     </details>
@@ -96,14 +96,22 @@ kubectl get pods -n <namespace>
 kubectl exec -it <microservice_name> -n <namespace> sh
 ``` 
 
+* This leads you into the pod, where you can execute the below command to check the workers running inside the pod.
+```
+/app # top
+```
+
+This displays the number of stress ng workers running inside the pod during chaos. 
+
 ### Common and pod specific tunables
-Refer the [common attributes](../../common-tunables-for-all-faults) and [Pod specific tunable](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
+
+Refer to the [common attributes](../../common-tunables-for-all-faults) and [Pod specific tunable](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
 
 ### Replica counts
 
-It defines the number of replicas, which should be present in the targeted application during the chaos. It can be tuned via `REPLICA_COUNT` ENV.
+It defines the number of replicas that are required to be present in the target application during chaos. You can tune it using the `REPLICA_COUNT` environment variable.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/pod-autoscaler/replica-count.yaml yaml)
 ```yaml
