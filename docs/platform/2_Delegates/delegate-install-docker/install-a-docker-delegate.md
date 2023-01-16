@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Harness Delegate is a worker process you run in your deployment target environment, such as your local network, VPC, or cluster. The delegate connects artifact, infrastructure, collaboration, verification and other providers with Harness Manager.
+Harness Delegate is a worker process that you run in your deployment target environment, such as your local network, VPC, or cluster. The delegate connects artifact, infrastructure, collaboration, verification and other providers with Harness Manager.
 
 Most importantly, the delegate performs all deployment operations.
 
@@ -42,7 +42,7 @@ Click **Docker** and then click **Continue**.
 
 Enter a name for the delegate. This name will identify the delegate in Harness Manager.
 
-**Do not run delegates with the same name in different clusters.** See [Troubleshooting](../../../troubleshooting/troubleshooting-nextgen.md).Add Tags to the Delegate. By default, Harness adds a tag using the name you enter. To add more, type them in and press **Enter**.
+**Do not run delegates with the same name in different clusters.** See [Troubleshooting](../../../troubleshooting/troubleshooting-nextgen.md). Add Tags to the Delegate. By default, Harness adds a tag using the name you enter. To add more, type them in and press **Enter**.
 
 These tags are useful for selecting the delegate when creating a connector.
 
