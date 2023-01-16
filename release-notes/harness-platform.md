@@ -13,6 +13,28 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
 
+## January 16, 2023, version 782xx
+
+### What's new
+
+### Early access
+
+No early access features are available in this release.
+
+
+### Fixed issues
+- The Harness APIs return a status code of HTTP 400 instead of HTTP 401 for an invalid or expired token. (PL-30757, ZD-38494,38547)
+
+  An enhancement to the code has fixed this issue.
+  
+- The project selector component selects multiple projects with the same project name across different organization IDs.(PL-30663)
+  
+  The project selection code has been enhanced to select projects corresponding to specific organization IDs.
+
+- The error message displayed when creating the GitHub connector and selecting Harness manager as the connectivity option is not clear and informative. (PL-29953)
+  
+  Modifying the error message to indicate that the secret manager being used is not Harness' built-in secret manager fixed the problem.
+
 ## January 10, 2023, version 78105
 
 Delegate version: 78100
