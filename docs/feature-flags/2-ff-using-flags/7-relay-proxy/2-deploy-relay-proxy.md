@@ -29,6 +29,7 @@ You can start the Relay Proxy by pulling the `harness/ff-proxy` image from [Dock
 1. Pull the latest Relay Proxy [Docker image](https://hub.docker.com/r/harness/ff-proxy).  
   
 `docker pull harness/ff-proxy`
+
 2. View the configuration variables by running the following command:  
   
 `docker run harness/ff-proxy`  
