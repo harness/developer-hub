@@ -99,7 +99,9 @@ If you have chosen **ECS Service Tags**, select the region, cluster, and the ser
      All the ECS services attached to the tag are displayed. 
 
 :::note
-If you have added the same tag to multiple ECS services, the AutoStopping rule is applied to the last service to which this tag was added.
+* If you have added the same tag to multiple ECS services, the AutoStopping rule is applied to the last service to which this tag was added.
+* If there are no services with the selected tag, the following error message is displayed: 
+  "There is no ECS service that contains the selected tag. Create a service with the selected tag to proceed."
 :::
 
 
