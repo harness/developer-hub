@@ -3,9 +3,8 @@ id: pod-dns-spoof
 title: Pod DNS spoof
 ---
 Pod DNS spoof is a Kubernetes pod-level chaos fault that:
-
-- Pod-dns-spoof injects chaos to spoof dns resolution in kubernetes pods.
-- It causes dns resolution of target hostnames/domains to wrong IPs as specified by SPOOF_MAP in the engine config.
+- Injects chaos into pods to mimic DNS resolution.
+- Resolves DNS target host names (or domains) to other IPs as specified in the `SPOOF_MAP` environment variable in the chaosengine configuration.
 
 :::tip Fault execution flow chart
 ![Pod DNS Spoof](./static/images/dns-chaos.png)
@@ -29,10 +28,9 @@ Coming soon.
 The application pods should be running before and after injecting chaos.
 :::
 
-
 ## Implementation
 
-**NOTE:** It is assumed that you already have the boutique app set up in a namespace. If not, follow [this](provide link) to set up your boutique application.
+**NOTE:** It is assumed that you already have the boutique application set up in a namespace. If not, follow [this](provide link) to set up your boutique application.
 
 To execute pod DNS spoof fault, [setup experiment](provide) and infrastructure.
 
@@ -40,7 +38,7 @@ After successful setup of chaos infrastructure:
 * Choose the **pod-dns-spoof** fault from the list of Kubernetes faults available;
 * Specify parameters for the **Target application**, **Tune fault**, and **Probes**;
     <details>
-        <summary>Check the Fault Tunables</summary>
+        <summary>Fault Tunables</summary>
         <h2>Optional Fields</h2>
         <table>
           <tr>
@@ -107,6 +105,18 @@ After successful setup of chaos infrastructure:
 
 
 ## Chaos fault validation
+
+To validate the experiment you ran, execute the below commands on your terminal. 
+
+* Fetch all the pods in the boutique namespace (or the namespace where your application is housed).
+```
+kubectl get pods -n <namespace>
+```
+
+* Exec into the microservice on which you will execute the chaos fault.
+```
+kubectl exec -it <microservice_name> -n <namespace> sh
+``` 
 
 ## Fault examples
 

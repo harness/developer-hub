@@ -32,10 +32,9 @@ Injecting a rogue process into a target container, we starve the main microservi
 The application pods should be running before and after injecting chaos.
 :::
 
-
 ## Implementation
 
-**NOTE:** It is assumed that you already have the boutique app set up in a namespace. If not, follow [this](provide link) to set up your boutique application.
+**NOTE:** It is assumed that you already have the boutique application set up in a namespace. If not, follow [this](provide link) to set up your boutique application.
 To execute pod CPU hog fault, [setup experiment](provide) and infrastructure.
 
 It is essential to tweak a section of the **app.yaml** to see the effect of chaos on the application. In the **deployment** kind, for **cartservice**, uncomment the following lines.
@@ -55,7 +54,7 @@ After successful setup of chaos infrastructure:
 * Specify parameters for the **Target application**, **Tune fault**, and **Probes**;
 
     <details>
-        <summary>Check the Fault Tunables</summary>
+        <summary>Fault Tunables</summary>
         <h2>Optional Fields</h2>
         <table>
           <tr>

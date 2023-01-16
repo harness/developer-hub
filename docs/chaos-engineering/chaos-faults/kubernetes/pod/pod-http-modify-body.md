@@ -4,9 +4,9 @@ title: Pod HTTP modify body
 ---
 Pod HTTP modify body is a Kubernetes pod-level chaos fault that:
 
-- It injects http modify body chaos on the service whose port is provided as `TARGET_SERVICE_PORT` by starting proxy server and then redirecting the traffic through the proxy server.
-- Can be used to overwrite the http response body by providing the new body value as `RESPONSE_BODY`.
-- It can test the application's resilience to error or incorrect http response body.
+- It injects HTTP modify body chaos on the service whose port is provided as `TARGET_SERVICE_PORT` by starting proxy server and then redirecting the traffic through the proxy server.
+- Can be used to overwrite the HTTP response body by providing the new body value as `RESPONSE_BODY`.
+- It can test the application's resilience to error or incorrect HTTP response body.
 
 :::tip Fault execution flow chart
 ![Pod HTTP Modify Body](./static/images/pod-http.png)
@@ -33,7 +33,7 @@ The application pods should be running before and after injecting chaos.
 
 ## Implementation
 
-**NOTE:** It is assumed that you already have the boutique app set up in a namespace. If not, follow [this](provide link) to set up your boutique application.
+**NOTE:** It is assumed that you already have the boutique application set up in a namespace. If not, follow [this](provide link) to set up your boutique application.
 
 To execute pod HTTP modify body fault, [setup experiment](provide) and infrastructure.
 
@@ -41,7 +41,7 @@ After successful setup of chaos infrastructure:
 * Choose the **pod-http-modify-body** fault from the list of Kubernetes faults available;
 * Specify parameters for the **Target application**, **Tune fault**, and **Probes**;
     <details>
-        <summary>Check the Fault Tunables</summary>
+        <summary>Fault Tunables</summary>
         <h2>Mandatory Fields</h2>
         <table>
           <tr>
@@ -141,7 +141,17 @@ After successful setup of chaos infrastructure:
 
 ## Chaos fault validation
 
+To validate the experiment you ran, execute the below commands on your terminal. 
 
+* Fetch all the pods in the boutique namespace (or the namespace where your application is housed).
+```
+kubectl get pods -n <namespace>
+```
+
+* Exec into the microservice on which you will execute the chaos fault.
+```
+kubectl exec -it <microservice_name> -n <namespace> sh
+``` 
 
 ## Fault examples
 

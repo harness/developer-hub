@@ -30,7 +30,7 @@ The application pods should be running before and after injecting chaos.
 
 ## Implementation
 
-**NOTE:** It is assumed that you already have the boutique app set up in a namespace. If not, follow [this](provide link) to set up your boutique application.
+**NOTE:** It is assumed that you already have the boutique application set up in a namespace. If not, follow [this](provide link) to set up your boutique application.
 
 To execute pod autoscaler fault, [setup experiment](provide) and infrastructure.
 
@@ -38,7 +38,7 @@ After successful setup of chaos infrastructure:
 * Choose the **pod-autoscaler**fault from the list of Kubernetes faults available;
 * Specify parameters for the **Target application**, **Tune fault**, and **Probes**;
     <details>
-        <summary>Check the Fault Tunables</summary>
+        <summary> Fault Tunables</summary>
         <h2>Optional Fields</h2>
         <table>
           <tr>
@@ -83,6 +83,18 @@ After successful setup of chaos infrastructure:
 
 
 ## Chaos fault validation
+
+To validate the experiment you ran, execute the below commands on your terminal. 
+
+* Fetch all the pods in the boutique namespace (or the namespace where your application is housed).
+```
+kubectl get pods -n <namespace>
+```
+
+* Exec into the microservice on which you will execute the chaos fault.
+```
+kubectl exec -it <microservice_name> -n <namespace> sh
+``` 
 
 ### Common and pod specific tunables
 Refer the [common attributes](../../common-tunables-for-all-faults) and [Pod specific tunable](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.

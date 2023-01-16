@@ -16,7 +16,7 @@ Disk fill is a Kubernetes pod-level chaos fault that:
 <details>
 <summary>View fault usage</summary>
 <div>
-Coming soon.
+Disk fill is used to determine how the application behaves when the disk is under stress, that is, ephermal storage is added to the pod.   
 </div>
 </details>
 
@@ -58,7 +58,7 @@ The application pods should be running before and after injecting chaos.
 
 ## Implementation
 
-**NOTE:** It is assumed that you already have the boutique app set up in a namespace. If not, follow [this](provide link) to set up your boutique application.
+**NOTE:** It is assumed that you already have the boutique application set up in a namespace. If not, follow [this](provide link) to set up your boutique application.
 
 To execute disk fill fault, [setup experiment](provide) and infrastructure.
 
@@ -67,7 +67,7 @@ After successful setup of chaos infrastructure:
 * Specify parameters for the **Target application**, **Tune fault**, and **Probes**;
     <details>
       <summary>Fault Tunables</summary>
-      <h2>Optional Fields</h2>
+      <h2>Populate one of the below fields (If both are populated, `FILL_PERCENTAGE` takes precedence.) </h2>
       <table>
         <tr>
           <th> Variables </th>
@@ -76,13 +76,13 @@ After successful setup of chaos infrastructure:
         </tr>
         <tr> 
           <td> FILL_PERCENTAGE </td>
-          <td> Percentage to fill the ephemeral storage limit </td>
-          <td> Can be set to more than 100 also, to force evict the pod. The ephemeral-storage limits must be set in targeted pod to use this ENV.</td>
+          <td> Percentage of the ephemeral storage limit to fill. </td>
+          <td> The value can be more than 100, that force evicts the pod. Ephemeral storage limits are set on the target pod.</td>
         </tr>
         <tr>
           <td> EPHEMERAL_STORAGE_MEBIBYTES </td>
-          <td> Ephemeral storage which need to fill (unit: MiB)</td>
-          <td>It is mutually exclusive with the <code>FILL_PERCENTAGE</code> environment variable. If both are provided,  <code>FILL_PERCENTAGE</code> is used. </td>
+          <td> Ephemeral storage to be filled (in MiB)</td>
+          <td> <code>FILL_PERCENTAGE</code> and <code>EPHEMERAL_STORAGE_MEBIBYTES</code> are mutually exclusive.</td>
         </tr>
       </table>
       <h2>Optional Fields</h2>
@@ -94,23 +94,23 @@ After successful setup of chaos infrastructure:
         </tr>
         <tr> 
           <td> TARGET_CONTAINER </td>
-          <td> Name of container which is subjected to disk-fill </td>
-          <td> If not provided, the first container in the targeted pod will be subject to chaos </td>
+          <td> Name of container subject to disk fill. </td>
+          <td> If you don't provide this value, the first container in the target pod will be subject to chaos. </td>
         </tr>
         <tr> 
           <td> CONTAINER_PATH </td>
-          <td> Storage location of containers</td>
+          <td> Storage location of containers. </td>
           <td> Defaults to '/var/lib/docker/containers' </td>
         </tr>
         <tr> 
           <td> TOTAL_CHAOS_DURATION </td>
-          <td> The time duration for chaos insertion (sec) </td>
+          <td> Duration to insert chaos (in seconds). </td>
           <td> Defaults to 60s </td>
         </tr>
         <tr>
           <td> TARGET_PODS </td>
-          <td> Comma separated list of application pod name subjected to disk fill chaos</td>
-          <td> If not provided, it will select target pods randomly based on provided appLabels</td>
+          <td> Comma separated list of application pod names subject to disk fill chaos. </td>
+          <td> If the pod names have not been provided, the target pods are randomly based on the appLabels provided. </td>
         </tr> 
         <tr>
           <td> DATA_BLOCK_SIZE </td>
@@ -122,6 +122,11 @@ After successful setup of chaos infrastructure:
           <td> The Percentage of total pods to target </td>
           <td> Defaults to 0 (corresponds to 1 replica), provide numeric value only </td>
         </tr> 
+        <tr> 
+          <td> CONTAINER_PATH </td>
+          <td> Path to cotainer runtime used during disk fill </td>
+          <td> If not provided, the first container in the targeted pod will be subject to chaos </td>
+        </tr>
         <tr>
           <td> LIB </td>
           <td> The chaos lib used to inject the chaos </td>
@@ -149,18 +154,35 @@ After successful setup of chaos infrastructure:
 * Set fault weights by clicking on **Set fault weights** tab present on top. 
 * Click **Run** to execute the experiment.
 
-
 ## Chaos fault validation
 
+To validate the experiment you ran, execute the below commands on your terminal. 
 
+* Fetch all the pods in the boutique namespace (or the namespace where your application is housed).
+```
+kubectl get pods -n <namespace>
+```
+
+* Exec into the microservice on which you will execute the chaos fault.
+```
+kubectl exec -it <microservice_name> -n <namespace> sh
+``` 
+
+* This leads you into the application, where you can execute the below command to check the disk usage.
+```
+/app # df -h
+```
+
+This displays the amount of storage consumed by the application during chaos. 
+ 
 ## Fault examples
 
 ### Common and pod specific tunables
-Refer to the [common attributes](../../common-tunables-for-all-faults) and [pod specific tunable](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables. 
+Refer to the [common attributes](../../common-tunables-for-all-faults) and [pod specific tunables](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables. 
 
 ### Disk fill percentage
 
-It fills the `FILL_PERCENTAGE` parameter of the ephemeral-storage limit specified at `resource.limits.ephemeral-storage` within the target application. 
+It fills the `FILL_PERCENTAGE` parameter of the ephemeral storage limit specified at `resource.limits.ephemeral-storage` within the target application. 
 
 Use the following example to tune it:
 

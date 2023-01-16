@@ -3,8 +3,7 @@ id: pod-memory-hog-exec
 title: Pod memory hog exec
 ---
 Pod memory hog exec is a Kubernetes pod-level chaos fault that:
-
-- This fault consumes the Memory resources on the application container on specified memory in megabytes.
+- Consumes Memory resources on the application container on specified memory in megabytes.
 - It simulates conditions where app pods experience Memory spikes either due to expected/undesired processes thereby testing how the overall application stack behaves when this occurs.
 
 :::tip Fault execution flow chart
@@ -33,7 +32,7 @@ The application pods should be running before and after injecting chaos.
 
 ## Implementation
 
-**NOTE:** It is assumed that you already have the boutique app set up in a namespace. If not, follow [this](provide link) to set up your boutique application.
+**NOTE:** It is assumed that you already have the boutique application set up in a namespace. If not, follow [this](provide link) to set up your boutique application.
 
 To execute pod memory hog exec fault, [setup experiment](provide) and infrastructure.
 
@@ -41,7 +40,7 @@ After successful setup of chaos infrastructure:
 * Choose the **pod-memory-hog-exec** fault from the list of Kubernetes faults available;
 * Specify parameters for the **Target application**, **Tune fault**, and **Probes**;
   <details>
-      <summary>Check the Fault Tunables</summary>
+      <summary>Fault Tunables</summary>
       <table>
         <tr>
           <th> Variables </th>
@@ -103,7 +102,17 @@ After successful setup of chaos infrastructure:
 
 ## Chaos fault validation
 
+To validate the experiment you ran, execute the below commands on your terminal. 
 
+* Fetch all the pods in the boutique namespace (or the namespace where your application is housed).
+```
+kubectl get pods -n <namespace>
+```
+
+* Exec into the microservice on which you will execute the chaos fault.
+```
+kubectl exec -it <microservice_name> -n <namespace> sh
+``` 
 
 ## Fault examples
 
