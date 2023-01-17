@@ -45,7 +45,7 @@ This release does not include early access features.
 
 ### Fixed issues
 
-This release does not include early access features.
+This release does not include fixed issues.
 
 ## January 10, 2023, version 78105
 
