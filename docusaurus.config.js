@@ -354,7 +354,7 @@ const config = {
       announcementBar: {
         id: "announcementBar_cd_announcement",
         content:
-          "<i class='fa-solid fa-circle-exclamation' style='color: #CF2318; margin-right: 4px;'></i><span style='color: #CF2318;'>Our FirstGen CD product will be phased out in about 12 months.</span> For any questions or concerns please reach out to <a href='https://support.harness.io' target='_blank'>support.harness.io</a>",
+          "<i class='fa-solid fa-circle-exclamation' style='color: #CF2318; margin-right: 4px;'></i><span style='color: #CF2318;'>Our FirstGen CD product will be phased out in about 12 months.</span> Learn more in our <a href='/docs/continuous-delivery/onboard-cd/upgrading/upgrade-nextgen-cd/' target='_self'>Upgrade Guide</a> . For any questions or concerns please reach out to <a href='https://support.harness.io' target='_blank'>support.harness.io</a>.,
         backgroundColor: "#FFF5ED",
         textColor: "#000000",
         isCloseable: true,
