@@ -1,5 +1,6 @@
 ## Kubernetes Dry Run Step
 
+Feature Flag name: `K8S_DRY_RUN_NG`
 
 - Harness can Fetch your Kubernetes Service Kubernetes Manifests or Helm Chart and perform a dry run of those resources. 
 - When Harness Runs a Dry Run, the step executes the command `kubectl apply --f --dry-run`
