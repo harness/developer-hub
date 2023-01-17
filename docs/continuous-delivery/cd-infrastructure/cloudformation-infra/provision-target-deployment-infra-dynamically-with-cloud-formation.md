@@ -235,17 +235,25 @@ A **Key** consists of any alphanumeric characters or spaces. Tag keys can be u
 
 A **Value** consists of any alphanumeric characters or spaces. Tag values can be up to 255 characters long.
 
-Enter the tags in JSON or YAML (lowercase is required):
+Enter the tags in JSON or YAML (lowercase is required).
+
+JSON example:
+
+```json
+{
+  "Key" : String,
+  "Value" : String
+}
+```
+
+YAML example:
 
 ```yaml
-[{  
-    "key": "string",  
-    "value": "string"  
-},{  
-    "key": "string",  
-    "value": "string"  
-}]
+Key: String
+Value: String
 ```
+
+Harness supports [CloudFormation-compliant JSON or YAML for tags](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-resource-tags.html).
 
 ### Option: Continue Based on Stack Statuses
 
