@@ -13,7 +13,7 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
 
-## January XX, 2023
+## January 17, 2023
 
 ### What's new
 
@@ -25,7 +25,7 @@ This release does not include early access features.
 
 ### Fixed issues
 #### Feature Flags on the Harness Platform
-If you changed the environment then opened the Pipeline or Environment tab in a second screen, the environment you set was defaulted to original one. This has now been fixed and the environment you select is consistent through all tabs. 
+If you changed the environment, and then opened the **Pipeline** tab or **Environment** tab on a second screen, the environment you set defaulted to the original one. This has been fixed and the environment you select is consistent through all tabs. 
 
 
 ## January 10, 2023
