@@ -13,15 +13,18 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
 
-## January 17, 2023, version 782xx
+## January 17, 2023, version 78201
 
 ### What's new
 
-* This release two new CI steps for integrating your Harness CI pipelines with other GitHub Actions and Bitrise. These actions are available Harness Cloud build infrastructures only. 
-   - A Harness Actions step that you can use to run GitHub Actions.
+* This release includes two new CI steps for integrating your Harness CI pipelines with other GitHub Actions and Bitrise. These actions are available in Harness Cloud build infrastructures only. 
+   - An Actions step that you can use to run GitHub Actions.
    - A Bitrise step that enables you to run Bitrise steps and workflows. (CI-6479)
-* Harness CI now supports remote debugging of remote builds in Harness Cloud, Kubernetes, and VMs in AWS, Azure, and other cloud platforms. If a build fails or times out, you can re-run it in debug. This option is available, the **Builds**, **Execution**, and **Execution History** pages. (CI-6350) 
-* You can now specify hostnames in Kubernetes build infrastructures. This is useful when the cluster needs to communicate with external services during a CI build. The follow YAML snippet shows how to set up aliases for your cluster. (CI-5996, ZD-36578)
+* Harness CI now supports remote debugging of remote builds in Harness Cloud, Kubernetes, and VMs in AWS, Azure, and other cloud platforms. If a build fails or times out, you can re-run it in debug mode. This option is available in the **Builds**, **Execution**, and **Execution History** pages of the Harness UI. (CI-6350) 
+   
+  ![](./static/ci-rerun-build-in-debug-mode.png) 
+
+* You can now specify hostnames in Kubernetes build infrastructures, which enables your pipelines to communicate with external services using hostnames instead of IPs. The following YAML snippet shows how to set up aliases for your cluster. (CI-5996, ZD-36578)
 
 ##### Defining hostnames to use in a Kubernetes build infrastructure
 

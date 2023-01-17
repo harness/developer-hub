@@ -50,7 +50,14 @@ Finally, when you configure the Harness Self-Managed Enterprise Edition applicat
 
 If you are creating the load balancer's Service type using `NodePort`, create a load balancer that points to any port in the range of 30000 to 32767 on the node pool on which the Kubernetes cluster is running.
 
-If you are using `NodePort`, you can skip to [Step 3: Install KOTS](kubernetes-on-prem-existing-cluster-setup.md#step-3-install-kots).
+<!-- bad link
+
+If you are using `NodePort`, you can skip to [Step 3: Install KOTS](kubernetes-on-prem-existing-cluster-setup.md#step-3-install-kots). 
+
+-->
+
+If you are using `NodePort`, you can skip to [Step 3: Install KOTS](#step-3-install-kots).
+
 
 ### Set up a static external IP address
 
@@ -611,7 +618,11 @@ Harness Self-Managed Enterprise Edition installations do not currently support t
 
 ## Remove previous kustomization for ingress controller
 
+<!-- bad link
 **This option is only needed if you have installed Harness Self-Managed Enterprise Edition previously.** If this is a fresh install, you can go directly to [Configure Harness](#kubernetes-on-prem-existing-cluster-setup.md#step-4-configure_harness).
+-->
+
+**This option is only needed if you have installed Harness Self-Managed Enterprise Edition previously.** If this is a fresh install, you can go directly to [Configure Harness](#step-4-configure_harness).
 
 If you installed Harness Self-Managed Enterprise Edition before, you updated Harness manifests using kustomize for the ingress controller. This is no longer required.
 
