@@ -20,7 +20,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 * This release includes two new CI steps for integrating your Harness CI pipelines with other GitHub Actions and Bitrise. These actions are available in Harness Cloud build infrastructures only. 
    - An Actions step that you can use to run GitHub Actions.
    - A Bitrise step that enables you to run Bitrise steps and workflows. (CI-6479)
-* Harness CI now supports remote debugging of remote builds in Harness Cloud, Kubernetes, and VMs in AWS, Azure, and other cloud platforms. If a build fails or times out, you can re-run it in debug mode. This option is available in the **Builds**, **Execution**, and **Execution History** pages of the Harness UI. (CI-6350) 
+* Harness CI now supports remote debugging of remote builds in Harness Cloud, Kubernetes, and VMs in AWS, Azure, and other cloud platforms. If a build fails at a Run step, you can re-run it in debug mode. This option is available in the **Builds**, **Execution**, and **Execution History** pages of the Harness UI. (CI-6350) 
    
   ![](./static/ci-rerun-build-in-debug-mode.png) 
 
