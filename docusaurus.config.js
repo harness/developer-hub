@@ -357,7 +357,7 @@ const config = {
           "<i class='fa-solid fa-circle-exclamation' style='color: #CF2318; margin-right: 4px;'></i><span style='color: #CF2318;'>Our FirstGen CD product will be phased out in about 12 months.</span> For any questions or concerns please reach out to <a href='https://support.harness.io' target='_blank'>support.harness.io</a>",
         backgroundColor: "#FFF5ED",
         textColor: "#000000",
-        isCloseable: false,
+        isCloseable: true,
       },
       announcementBarByPath: {
         // list all pathnames in Regular expressions format
