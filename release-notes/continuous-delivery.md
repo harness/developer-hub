@@ -47,7 +47,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
   We had to redesign our release history to store all rendered manifests in secrets, just like Helm does. While rolling back, we are now reapplying the last successful release's manifests. This solves this issue.
 
   **What is the impact on customers?**
-    - Enabling declarative rollback disables versioning (even if the **Skip Versioning** checkbox is left unchecked), since versioning was introduced during with the imperative rollback design. However, versioning is not needed anymore with declarative rollback.
+    - Enabling declarative rollback disables versioning (even if the **Skip Versioning** checkbox is left unchecked), since versioning was introduced with the imperative rollback design. However, versioning is not needed anymore with declarative rollback.
     - The delegate's service account needs the permission to create, update, and read secrets in the defined infrastructure namespace. Typically, customers' delegates already have these permissions, but if cluster roles are strictly scoped, this could cause failures. For information on cluster roles for the delegate, go to [Install Harness Delegate on Kubernetes](https://developer.harness.io/docs/platform/delegates/delegate-install-kubernetes/install-harness-delegate-on-kubernetes/).
 
 ### Fixed issues
@@ -101,7 +101,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
   |-------------- | -------------- |
   | ![picture 28](static/12cf46c32d1fc632084fabb8de410303ad7f5cbc0217cbba5a8206174ed29ee4.png)  |  ![picture 29](static/e6864f470d938ae81cec899bc895ddf5447de432ec024179233086e475066813.png)  |
 
-- Nexus3 artifact source using the Maven **Repository Format** cannot filter the builds by **Classifier** and **Extension**.	(CDS-49020)
+- Nexus3 artifact source using the Maven **Repository Format** cannot filter the builds by **Classifier** and **Extension**. (CDS-49020)
   
   In a Nexus Maven repository, users can now filter the builds by **Classifier** and **Extension**.
 
