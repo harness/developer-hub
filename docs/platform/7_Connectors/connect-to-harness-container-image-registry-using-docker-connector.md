@@ -10,13 +10,17 @@ helpdocs_is_published: true
 
 By default, at CIE Pipeline runtime, Harness pulls certain images from public Docker Hub repos. These images are only used for backend processes. At runtime, the Harness Delegate makes an outbound connection to the public repo and pulls the images.
 
-The Harness Container Image Registry is dedicated exclusively to Harness-supported images. You might want to override the default behavior and download your build images from this repo instead. To view the list of images in this registry, enter the following command.
+You can override this behavior and download your images from a fully private registry instead. The Harness Container Image Registry is dedicated exclusively to Harness-supported images. You can configure a Security stage to download Harness build images from this registry. 
 
+### Harness build images 
 
+To view the list of images in this Harness Container Image Registry, enter the following command.
 ```
 curl -X  GET https://app.harness.io/registry/_catalog
 ```
-You can override the default behavior at the Account level and the Stage level:
+Harness regularly publishes new versions of images required to run security scans. Each image is backwards-compatible with the previous two releases.
+
+
 
 * **Account-level override:** If you do not want the Harness Delegate to pull images from a public repo for security reasons, you can add a special Harness Connector to your Harness account, and the Delegate will pull these images from the Harness Container Image Registry only.
 * **Stage-level override:** You can configure a Build Stage to override the default Delegate and use a dedicated Connector that downloads build images from the Harness Container Image Registry. This is useful when the Delegate cannot access the public repo (for example, if the build infrastructure is running in a private cloud).
