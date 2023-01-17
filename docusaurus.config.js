@@ -362,8 +362,31 @@ const config = {
       announcementBarByPath: {
         // list all pathnames in Regular expressions format
         pathRegExp: [
+          // paths for md-doc pages
           "^/docs/first-gen/continuous-delivery.*",
+          "^/docs/first-gen/first-gen-quickstarts.*",
+          // paths for category pages
+          "^/docs/category/quickstarts.*",
           "^/docs/category/continuous-delivery.*",
+          "^/docs/category/continuous-delivery-overview.*",
+          "^/docs/category/general-deployment-features.*",
+          "^/docs/category/deployment-strategies-and-integrations.*",
+          "^/docs/category/aws-.*",
+          "^/docs/category/general-aws-.*",
+          "^/docs/category/azure-.*",
+          "^/docs/category/cicd-artifact-build-and-deploy-pipelines.*",
+          "^/docs/category/google-cloud.*",
+          "^/docs/category/native-helm-deployments.*",
+          "^/docs/category/iis-net-deployments.*",
+          "^/docs/category/kubernetes-deployments.*",
+          "^/docs/category/tanzu-application-service-formerly-pivotal.*",
+          "^/docs/category/terraform-1.*",
+          "^/docs/category/terragrunt.*",
+          "^/docs/category/traditional-deployments-ssh.*",
+          "^/docs/category/custom-deployments.*",
+          "^/docs/category/continuous-verification-1.*",
+          "^/docs/category/model-your-cd-pipeline.*",
+          "^/docs/category/harness-git-based-how-tos.*",
         ],
       },
       hotjar: {
