@@ -1,26 +1,24 @@
 ---
 id: lambda-update-function-timeout
-title: Lambda Update Function Timeout
+title: Lambda update function timeout
 ---
-
-## Introduction
-
-- It modifies the timeout value for a function, causing it to fail fast. This helps in verifying the handling mechanism for function failures and also helps determine the correct/min. timeout value for the function.
-
-- It helps to checks the performance of the running lambda application at different timeout values.
+Lambda update function timeout is an AWS fault that:
+- Modifies the timeout value for a function, which may cause the function to fail quickly. 
+- Verifies the handling mechanism for function failures and helps determine the correct (or minimum) timeout value for that function.
+- Checks the performance of the Lambda application running at different timeout values.
 
 :::tip Fault execution flow chart
 ![Lambda Update Function Timeout](./static/images/lambda-update-function-timeout.png)
 :::
 
-## Uses
+## Usage
 
 <details>
-<summary>View the uses of the fault</summary>
+<summary>View fault usage</summary>
 <div>
-Hitting a timeout is a very common and frequent scenario we find with lambda functions that can break the service and impacts their delivery. Such scenarios can still occur despite whatever availability aids AWS provides or we determine.
+Hitting a memory limit is a common scenario with Lambda functions that slows down the service and impacts their delivery. Such scenarios occur despite the availability aids provided by AWS or determined by users.
 
-Getting timeout errors interrupts the flow of the given function. So this category of chaos fault helps you to build the immunity of the application undergoing any such scenarios.
+Timeout errors interrupt the flow of the given function. This chaos fault helps the application build immunity against such scenarios.
 </div>
 </details>
 
@@ -28,8 +26,8 @@ Getting timeout errors interrupts the flow of the given function. So this catego
 
 :::info
 
-- Ensure that Kubernetes Version >= 1.17
-- Kubernetes secret that has AWS access configuration(key) in the `CHAOS_NAMESPACE`. A secret file looks like this:
+- Kubernetes >= 1.17
+- Kubernetes secret that has AWS access configuration (key) in the `CHAOS_NAMESPACE`. Below is a sample secret file:
 
 ```yaml
 apiVersion: v1
@@ -45,12 +43,12 @@ stringData:
     aws_secret_access_key = XXXXXXXXXXXXXXX
 ```
 
-- If you change the secret key name (from `cloud_config.yml`), update the `AWS_SHARED_CREDENTIALS_FILE` environment variable value on `experiment.yaml` with the same name.
+- If you change the secret key name (from `cloud_config.yml`), ensure that you update the `AWS_SHARED_CREDENTIALS_FILE` environment variable on `experiment.yaml` with the same name.
 :::
 
-## Permission Requirement
+## Permissions required
 
-- Here is an example AWS policy to execute this fault.
+- Here is an example AWS policy to execute the Lambda update function timeout fault.
 
 <details>
 <summary>View policy for this fault</summary>
@@ -75,9 +73,9 @@ stringData:
 ```
 </details>
 
-- Refer a [superset permission/policy](../policy-for-all-aws-faults) to execute all AWS faults.
+- Refer to the [superset permission (or policy)](../policy-for-all-aws-faults) to execute all AWS faults.
 
-## Default Validations
+## Default validation
 
 :::info
 
@@ -85,11 +83,11 @@ stringData:
 
 :::
 
-## Chaos Injection Validations
+## Chaos injection validation
 :::info
-- The lambda function timeout fault can be validated from the General configuration section of the target lambda function in the aws console, During the Chaos Injection, the function timeout will get updated with the provided value.
+- You can validate the Lambda function timeout fault from the general configuration section of the target Lambda function in the AWS console. While injecting chaos, the function timeout is updated with the value you provide.
 :::
-## Experiment Tunables
+## Experiment tunables
 
 <details>
     <summary>Check the Fault Tunables</summary>
@@ -102,18 +100,18 @@ stringData:
       </tr>
       <tr>
         <td> FUNCTION_NAME </td>
-        <td> Function name of the target lambda function. It support single function name.</td>
-        <td> Eg: <code>test-function</code> </td>
+        <td> Name of the target Lambda function. It support a single function name.</td>
+        <td> For example, <code>test-function</code>. </td>
       </tr>
       <tr>
         <td> FUNCTION_TIMEOUT </td>
-        <td> Provide the value of function timeout in seconds.</td>
-        <td> The minimum value is 1s and maximum upto 15mins that is 900s </td>
+        <td> Value of the function timeout (in seconds).</td>
+        <td> Range of the timeout is 1s to 900s (that is, 15 minutes). </td>
       </tr>
       <tr>
         <td> REGION </td>
-        <td> The region name of the target lambda function</td>
-        <td> Eg: <code>us-east-2</code> </td>
+        <td> Region name of the target Lambda function. </td>
+        <td> For example, <code>us-east-2</code>. </td>
       </tr>
     </table>
     <h2>Optional Fields</h2>
@@ -125,40 +123,38 @@ stringData:
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The total time duration for chaos insertion in seconds </td>
-        <td> Defaults to 30s </td>
+        <td> Duration to insert chaos (in seconds). </td>
+        <td> Defaults to 30s. </td>
       </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>
-        <td> The interval (in seconds) between successive instance termination.</td>
-        <td> Defaults to 30s </td>
+        <td> Time interval between two successive instance terminations (in seconds).</td>
+        <td> Defaults to 30s. </td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
-        <td> It defines sequence of chaos execution for multiple instance</td>
-        <td> Default value: parallel. Supported: serial, parallel </td>
+        <td> Sequence of chaos execution for multiple instances. </td>
+        <td> Defaults to parallel. Supports serial sequence as well. </td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
-        <td> Period to wait before and after injection of chaos in seconds </td>
-        <td> Eg. 30 </td>
+        <td> Period to wait before and after injecting chaos (in seconds). </td>
+        <td> For example, 30s. </td>
       </tr>
     </table>
 </details>
 
-
-
-## Fault Examples
+## Fault examples
 
 ### Common and AWS specific tunables
 
-Refer the [common attributes](../common-tunables-for-all-faults) and [AWS specific tunable](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
+Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
 
-### Timeout Value
+### Timeout value
 
-It can update the lambda function timeout value to a newer value by using `FUNCTION_TIMEOUT` ENV as shown below.
+You can update the value of the Lambda function timeout value using the `FUNCTION_TIMEOUT` environment variable.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/lambda-update-function-timeout/function-timeout.yaml yaml)
 ```yaml

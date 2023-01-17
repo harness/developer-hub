@@ -1,26 +1,24 @@
 ---
 id: lambda-update-role-permission
-title: Lambda Update Role Permission
+title: Lambda update role permission
 ---
 
-## Introduction
-
-- It modifies the policies of a role attached to lambda function. This helps in verifying the handling mechanism for function failure.
-
-- It can also modify the role attached to lambda function
-
-- It helps to checks the performance of the running lambda application, if the lambda function has not enough premissions.
+Lambda update role permission is an AWS fault that:
+- Modifies the role policies associated with a Lambda function.
+- Verifies the handling mechanism for function failures.
+- Can also be used to update the role attached to a Lambda function.
+- Checks the performance of the running lambda application in case it does not have enough permissions.
 
 :::tip Fault execution flow chart
 ![Lambda Update Role Permission](./static/images/lambda-update-role-permission.png)
 :::
 
-## Uses
+## Usage
 
 <details>
-<summary>View the uses of the fault</summary>
+<summary>View fault usage</summary>
 <div>
-In most of the cases lambda functions are dependent on ohter services like RDS, DynamoDB, S3 etc, For that lambda needs specific permissions to access these services. So this chaos faults helps you to check how your application is behaving when lambda function has not enough permission to access its dependent services.
+Lambda functions sometimes depend on services such as RDS, DynamoDB, S3, etc. In such cases, certain permissions are required to access these services. This chaos fault helps understand how your application would behave when a Lambda function does not have enough permissions to access the services.
 
 </div>
 </details>
@@ -29,8 +27,8 @@ In most of the cases lambda functions are dependent on ohter services like RDS, 
 
 :::info
 
-- Ensure that Kubernetes Version >= 1.17
-- Kubernetes secret that has AWS access configuration(key) in the `CHAOS_NAMESPACE`. A secret file looks like this:
+- Kubernetes >= 1.17
+- Kubernetes secret that has AWS access configuration (key) in the `CHAOS_NAMESPACE`. Below is a sample secret file:
 
 ```yaml
 apiVersion: v1
@@ -46,14 +44,14 @@ stringData:
     aws_secret_access_key = XXXXXXXXXXXXXXX
 ```
 
-- If you change the secret key name (from `cloud_config.yml`), update the `AWS_SHARED_CREDENTIALS_FILE` environment variable value on `experiment.yaml` with the same name.
+- If you change the secret key name (from `cloud_config.yml`), ensure that you update the `AWS_SHARED_CREDENTIALS_FILE` environment variable on `experiment.yaml` with the same name.
 :::
-## Permission Requirement
+## Permissions required
 
-- Here is an example AWS policy to execute this fault.
+- Here is an example AWS policy to execute the Lambda update role permission fault.
 
 <details>
-<summary>View policy for this fault if `ROLE_ARN` ENV is set</summary>
+<summary>View policy for this fault if `ROLE_ARN` environment variable is set.</summary>
 
 ```json
 {
@@ -75,7 +73,7 @@ stringData:
 ```
 </details>
 <details>
-<summary>View policy for this fault if `POLICY_ARN` ENV is set</summary>
+<summary>View policy for this fault if `POLICY_ARN` environment variable is set.</summary>
 
 ```json
 {
@@ -98,9 +96,9 @@ stringData:
 ```
 </details>
 
-- Refer a [superset permission/policy](../policy-for-all-aws-faults) to execute all AWS faults.
+- Refer to the [superset permission (or policy)](../policy-for-all-aws-faults) to execute all AWS faults.
 
-## Default Validations
+## Default validation
 
 :::info
 
@@ -108,10 +106,10 @@ stringData:
 
 :::
 
-## Experiment Tunables
+## Experiment tunables
 
 <details>
-    <summary>Check the Fault Tunables</summary>
+    <summary>Fault tunables</summary>
     <h2>Mandatory Fields</h2>
     <table>
       <tr>
@@ -121,8 +119,8 @@ stringData:
       </tr>
       <tr>
         <td> FUNCTION_NAME </td>
-        <td> Function name of the target lambda function. It support single function name.</td>
-        <td> Eg: <code>test-function</code> </td>
+        <td> Name of the target Lambda function. It supports a single function name.</td>
+        <td> For example, <code>test-function</code>. </td>
       </tr>
       <tr>
         <td> POLICY_ARN </td>
@@ -137,7 +135,7 @@ stringData:
       <tr>
         <td> REGION </td>
         <td> The region name of the target lambda function</td>
-        <td> Eg: <code>us-east-2</code> </td>
+        <td> For example, <code>us-east-2</code> </td>
       </tr>
     </table>
     <h2>Optional Fields</h2>
@@ -150,7 +148,7 @@ stringData:
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> The total time duration for chaos insertion in seconds </td>
-        <td> Defaults to 30s </td>
+        <td> Defaults to 30s. </td>
       </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>
@@ -165,22 +163,22 @@ stringData:
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injection of chaos in seconds </td>
-        <td> Eg. 30 </td>
+        <td> For example, 30s. </td>
       </tr>
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
 ### Common and AWS specific tunables
 
-Refer the [common attributes](../common-tunables-for-all-faults) and [AWS specific tunable](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
+Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
 
-### Role Arn
+### Role ARN
 
-It can update the role attached to lambda function to a newer role by using `ROLE_ARN` ENV as shown below.
+You can update the role attached to a Lambda function using the `ROLE_ARN` environment variable.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/lambda-update-role-permission/function-role.yaml yaml)
 ```yaml
@@ -204,12 +202,12 @@ spec:
         - name: FUNCTION_NAME
           value: 'chaos-function' 
 ```
-### Policy Arn
+### Policy ARN
 
-It can detach the policies that are attached to the role of lambda function by using `POLICY_ARN` ENV as shown below. 
-If `ROLE_ARN` ENV is set, then it will use the ROLE_ARN to update the role attached to the lambda function, otherwise it will detach the policy provided in the `POLICY_ARN` from the role that is attached to the lambda function.
+You can detach the policies attached to the role of Lambda function using the `POLICY_ARN` environment variable. 
+Setting the `ROLE_ARN` environment variable helps update the role attached to the Lambda function. Otherwise, the policy is detached using the `POLICY_ARN` environment variable.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/lambda-update-role-permission/function-policy.yaml yaml)
 ```yaml

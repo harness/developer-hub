@@ -337,13 +337,13 @@ The below mentioned platform chaos faults are available:
 
   <tr>
     <td>Lambda Update Role Permission</td>
-    <td>Inject chaos to update/change the role attached to the lambda function </td>
+    <td>Inject chaos to update (or change) the role attached to the Lambda function </td>
     <td><a href="/docs/chaos-engineering/chaos-faults/aws/lambda-update-role-permission">lambda-update-role-permission</a></td>
   </tr>
 
   <tr>
     <td>Lambda Delete Function Concurrency</td>
-    <td>Inject chaos to delete the reserved concurrency of the lambda function</td>
+    <td>Inject chaos to delete the reserved concurrency of the Lambda function</td>
     <td><a href="/docs/chaos-engineering/chaos-faults/aws/lambda-delete-function-concurrency">lambda-delete-function-concurrency</a></td>
   </tr>
 </table>
