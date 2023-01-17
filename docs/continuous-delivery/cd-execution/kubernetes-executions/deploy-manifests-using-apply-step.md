@@ -145,6 +145,75 @@ Values YAML files can be specified at several places in Harness:
 
 You can also add a Values YAML values and/or files in the Kubernetes Apply Step **Override Value**.
 
+## Option Command Flag
+CommandFlags - In the Advanced Section, User's can append flags after the kubectl apply -f <+filename> command. Command flags option availability is based on the version of the kubectl binary that is installed on the delegate. (i.e. kubectl apply -f <filename> --server-side is only available on kubectl version 1.22) For options please review the Kubernetes Documentation on Apply
+
+Note: The step DOES NOT SUPPORT Kubernets Apply subcommands when using commandFlags
+	
+```Sh
+kubectl apply view-last-applied - just return the current value of last-applied annotation
+kubectl apply set-last-applied - will set the manifest.yaml as value for annotation last applied, doesn't actually trigger any changes in the deployment itself
+kubectl apply edit-last-applied - require input from the user as opens value of last-applied annotation in editor
+```
+	
+### YAML for Apply Step
+
+```YAML
+          - step:
+              type: K8sApply
+              name: Apply DB Migration Job
+              identifier: Apply_DB_Migration_Job
+              spec:
+                filePaths:
+                  - database-migration.yaml
+                skipDryRun: false
+                skipSteadyStateCheck: true
+                skipRendering: false
+                commandFlags: 
+                  - commandType: Apply
+                    flag: "--dry-run=true --server-side"
+                overrides:
+                  - manifest:
+                      identifier: DBValues
+                      type: Values
+                      spec:
+                        store:
+                          type: Github
+                          spec:
+                            connectorRef: account.ThisRohanGupta
+                            gitFetchType: Branch
+                            paths:
+                              - migration-values.yaml
+                            repoName: Product-Management
+                            branch: "main"
+              timeout: 10m
+              failureStrategies:
+                - onFailure:
+                    errors:
+                      - AllErrors
+                    action:
+                      type: Retry
+                      spec:
+                        retryCount: 3
+                        retryIntervals:
+                          - 2s
+                        onRetryFailure:
+                          action:
+                            type: StageRollback
+```
+	
+	
+- `SkipDryRun` - this options allows users to skip the dry run for the Kubernetes Manifests that are about to be applied. Harness will run `kubectl apply -f <userProvidedFiles>` rather than `kubectl apply -f <userProvidedFiles> --dry-run`
+
+- `SkipSteadyStateCheck` - By default, Harness checks to see if a deployed workload has reached steady state. If you select this option, Harness will not check that the workload has reached steady state.
+
+- `Skip K8s Manifest(s) Rendering` - This option will skip printing out the kubernetes manifests with the rendered values in the Harness execution logs. Harness will go directly to the apply command after fetching the files. No Preview for the user.
+
+- `Override Values` - Users' can provide values.yamls to be Go Templated in to the provided manifest files. This is great when your trying to apply configuration for a specific file or reapply configuration with different parameters.
+
+- `CommandFlags` - In the Advanced Section, User's can append flags after the `kubectl apply -f <+filename>` command. Command flags option availability is based on the version of the kubectl binary that is installed on the delegate. (i.e. kubectl apply -f <filename> --server-side is only available on kubectl version 1.22) For options please review the Kubernetes Documentation on Apply
+
+
 ### Override Priority
 
 At Pipeline runtime, Harness compiles a single Values YAML for the deployment using all of the Values YAML files you have set up across the stage's Service, Environment, and Kubernetes Apply.
