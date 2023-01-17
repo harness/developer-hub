@@ -220,7 +220,7 @@ stringData:
         <td> Defaults to <code>/tmp/cloud_config.yml</code> </td>
       </tr>
       <tr> 
-        <td>  NETWORK_PACKET_LOSS_PERCENTAGE </td>
+        <td> NETWORK_PACKET_LOSS_PERCENTAGE </td>
         <td> Provide the value of loss in percentage	</td>
         <td> Defaults to 100 </td>
       </tr>
