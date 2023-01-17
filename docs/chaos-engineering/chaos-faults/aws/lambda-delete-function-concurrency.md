@@ -1,16 +1,16 @@
 ---
-id: lambda-update-function-memory
-title: Lambda Update Function Memory
+id: lambda-delete-function-concurrency
+title: Lambda Delete Function Concurrency
 ---
 
 ## Introduction
 
-- It causes the memory of a lambda function to be updated to a specified value for a specified chaos duration.
-- It checks the performance of the application/service running with a new memory limit and also helps to determine a safe overall memory limit value for the function.
-- Smaller the memory limit higher will be the time taken by the lambda function to execute.
+- It deletes the reserved concurrency of lambda function. This helps in verifying the function has adequate unreserved concurrency to run.
+
+- It helps to checks the performance of the running lambda application, if the lambda function has not enough concurrency.
 
 :::tip Fault execution flow chart
-![Lambda Update Function Memory](./static/images/lambda-update-function-memory.png)
+![Lambda Delete Function Concurrency](./static/images/lambda-delete-function-concurrency.png)
 :::
 
 ## Uses
@@ -18,9 +18,8 @@ title: Lambda Update Function Memory
 <details>
 <summary>View the uses of the fault</summary>
 <div>
-Hitting a memory limit is a very common and frequent scenario we find with lambda functions that can slow down the service and impacts their delivery. Such scenarios can still occur despite whatever availability aids AWS provides or we determine.
+In some of the cases, It may be possible that there is no unreserved concurrency left to run the lambda function. So this chaos faults helps you to check how your application is behaving when lambda function has no concurrency left to run.
 
-Running out of memory due to a smaller limit interrupts the flow of the given function. So this category of chaos fault helps you to build immunity on the application undergoing any such scenarios.
 </div>
 </details>
 
@@ -29,6 +28,7 @@ Running out of memory due to a smaller limit interrupts the flow of the given fu
 :::info
 
 - Ensure that Kubernetes Version >= 1.17
+- Reserved Concurrency should be set on the target lambda function
 - Kubernetes secret that has AWS access configuration(key) in the `CHAOS_NAMESPACE`. A secret file looks like this:
 
 ```yaml
@@ -47,6 +47,7 @@ stringData:
 
 - If you change the secret key name (from `cloud_config.yml`), update the `AWS_SHARED_CREDENTIALS_FILE` environment variable value on `experiment.yaml` with the same name.
 :::
+
 ## Permission Requirement
 
 - Here is an example AWS policy to execute this fault.
@@ -84,11 +85,6 @@ stringData:
 
 :::
 
-## Chaos Injection Validations
-:::info
-- The lambda update function memory fault can be validated from the General configuration section of the target lambda function in the aws console, During the Chaos Injection, the function memory will get updated with the provided value.
-:::
-
 ## Experiment Tunables
 
 <details>
@@ -102,13 +98,13 @@ stringData:
       </tr>
       <tr>
         <td> FUNCTION_NAME </td>
-        <td> Function name of the target lambda function. It supports single function name.</td>
+        <td> Function name of the target lambda function. It support single function name.</td>
         <td> Eg: <code>test-function</code> </td>
       </tr>
       <tr>
-        <td> MEMORY_IN_MEGABYTES </td>
-        <td> Provide the value of the memory limit of a function in megabytes.</td>
-        <td> The minimum value of the memory limit on a lambda function is 128Mb and the maximum upto 10240Mb </td>
+        <td> FUNCTION_VERSION </td>
+        <td> Provide the version of the function </td>
+        <td> Defaults to <code>$LATEST</code> </td>
       </tr>
       <tr>
         <td> REGION </td>
@@ -130,13 +126,8 @@ stringData:
       </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>
-        <td> The interval (in seconds) between successive instance termination.</td>
+        <td> The interval (in seconds) between successive deletion of reserved concurrency.</td>
         <td> Defaults to 30s </td>
-      </tr>
-      <tr>
-        <td> SEQUENCE </td>
-        <td> It defines sequence of chaos execution for multiple instance</td>
-        <td> Default value: parallel. Supported: serial, parallel </td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
@@ -151,32 +142,3 @@ stringData:
 ### Common and AWS specific tunables
 
 Refer the [common attributes](../common-tunables-for-all-faults) and [AWS specific tunable](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
-
-### Memory Limit
-
-It can update the lambda function memory limit to a newer value by using `MEMORY_IN_MEGABYTES` ENV as shown below.
-
-Use the following example to tune this:
-
-[embedmd]:# (./static/manifests/lambda-update-function-memory/function-memory.yaml yaml)
-```yaml
-# contains the memory limit value for the lambda function
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: lambda-update-function-memory
-    spec:
-      components:
-        env:
-        # provide the function memory limit
-        - name: MEMORY_IN_MEGABYTES
-          value: '10'
-        # provide the function name for memory limit chaos
-        - name: FUNCTION_NAME
-          value: 'chaos-function'
-```

@@ -261,6 +261,11 @@ The below mentioned platform chaos faults are available:
     <td><a href="/docs/chaos-engineering/chaos-faults/aws/ec2-dns-chaos">ec2-dns-chaos</a></td>
   </tr>
   <tr>
+    <td>ECS Task Stop</td>
+    <td>Injects task stop chaos on ECS tasks</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/aws/ecs-task-stop">ecs-task-stop</a></td>
+  </tr>
+  <tr>
     <td>ECS Container CPU Hog</td>
     <td>Injects container cpu hog chaos on ECS task containers</td>
     <td><a href="/docs/chaos-engineering/chaos-faults/aws/ecs-container-cpu-hog">ecs-container-cpu-hog</a></td>
@@ -328,6 +333,18 @@ The below mentioned platform chaos faults are available:
     <td>Lambda Update Function Timeout</td>
     <td>Inject chaos to update the lambda function timeout value</td>
     <td><a href="/docs/chaos-engineering/chaos-faults/aws/lambda-update-function-timeout">lambda-update-function-timeout</a></td>
+  </tr>
+
+  <tr>
+    <td>Lambda Update Role Permission</td>
+    <td>Inject chaos to update/change the role attached to the lambda function </td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/aws/lambda-update-role-permission">lambda-update-role-permission</a></td>
+  </tr>
+
+  <tr>
+    <td>Lambda Delete Function Concurrency</td>
+    <td>Inject chaos to delete the reserved concurrency of the lambda function</td>
+    <td><a href="/docs/chaos-engineering/chaos-faults/aws/lambda-delete-function-concurrency">lambda-delete-function-concurrency</a></td>
   </tr>
 </table>
 

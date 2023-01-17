@@ -46,6 +46,7 @@ stringData:
 ```
 
 - If you change the secret key name (from `cloud_config.yml`), update the `AWS_SHARED_CREDENTIALS_FILE` environment variable value on `experiment.yaml` with the same name.
+:::
 
 ## Permission Requirement
 
@@ -84,6 +85,10 @@ stringData:
 
 :::
 
+## Chaos Injection Validations
+:::info
+- The lambda function timeout fault can be validated from the General configuration section of the target lambda function in the aws console, During the Chaos Injection, the function timeout will get updated with the provided value.
+:::
 ## Experiment Tunables
 
 <details>
@@ -140,6 +145,8 @@ stringData:
       </tr>
     </table>
 </details>
+
+
 
 ## Fault Examples
 
