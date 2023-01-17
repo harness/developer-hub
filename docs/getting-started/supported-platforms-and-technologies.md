@@ -426,11 +426,24 @@ Harness does not include Terraform on the Harness Delegate. You must install Ter
 
 Harness supports the following Terraform versions:
 
+* v1.3.5
 * v1.1.9
 * v1.0.0
 * v0.15.5
 * v0.15.0
 * v0.14.0
+
+Here's an example install script for the Harness delegate:
+
+```bash
+# Install TF  
+microdnf install unzip
+curl -O -L https://releases.hashicorp.com/terraform/1.3.5/terraform_1.3.5_darwin_amd64.zip
+unzip terraform_1.3.5_darwin_amd64.zip
+mv ./terraform /usr/bin/
+# Check TF install
+terraform --version
+```
 
 Some Harness features might require specific Terraform versions.
 
