@@ -85,7 +85,7 @@ You have two options to choose from - Kubernetes or VMs. Choose VMs in this exam
 
 We need to add Service Dependency here to run our security scanning steps. A Service Dependency is a detached service that's accessible to all Steps in a Stage. Service dependencies support workflows such as
 - Integration testing: You can set up a service and then run tests against this service.
-- Running Docker-in-Docker: You can set up a [dind service](https://ngdocs.harness.io/article/ajehk588p4) to process Docker commands in Run Steps.
+- Running Docker-in-Docker: You can set up a [dind service](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-docker-in-docker-in-a-ci-stage/) to process Docker commands in Run Steps.
 
 Click on ‘Add Service Dependency’ and add the following details.
 ![description](./static/snyk-owasp-scan/configure_service_dependency.png)
