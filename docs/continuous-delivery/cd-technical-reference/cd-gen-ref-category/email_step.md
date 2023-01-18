@@ -1,16 +1,25 @@
-# Email Step
+---
+title: Email step reference
+description: Send emails using pipelines
+sidebar_position: 6
+---
 
-## Introduction
+This topic describes the settings for the Email step available in Continuous Delivery (CD) and custom stages.
 
-- Harness allows users to send emails via their pipeline executions
-- Harness has its on SMTP Server that it will use to send emails
-- This step is only available in Continuous Delivery Stages and Custom Stages
-- These emails allow for quick and easy notifications to users and their teams
-- Users leverage this step to send Deployment updates during the Pipeline Execution. It gives the user the flexibility to customize their email notifications they get from Harness
-- You can use this step as a step template and manage it's configuration via the Git Experience.
+The Email step lets you easily send emails to users and teams during a pipeline execution.
+
+![picture 1](static/866775ef02f7cb3dc6394be155cba8ff7d8a041f7511f09203afc4c3e2cdc85a.png)  
+
+The Email step has the following features:
+
+- Send emails during pipeline executions.
+- You can use the Harness SMTP Server included with your Harness account.
+- Use your own SMTP server by adding it to Harness. For more information, go to [Add SMTP Configuration](https://developer.harness.io/docs/platform/notifications/add-smtp-configuration/).
+- You can use this step as a [step template](https://developer.harness.io/docs/platform/templates/run-step-template-quickstart/) or as part of a [step template](https://developer.harness.io/docs/platform/Templates/add-a-stage-template). 
+- You can manage this step's configuration via [Harness Git Experience](https://developer.harness.io/docs/platform/git-experience/git-experience-overview/).
 
 
-## YAML
+## YAML example
 
 ```YAML
            steps:
@@ -22,25 +31,52 @@
                     to: rohan.gupta@harness.io 
                     cc: srinivas@harness.io
                     subject: Deployment Status
-                    body: "Pipeline: <+pipeline.name> is completeHarness Deployed service: <+service.name> into the environment name: <+env.name>"
+                    body: "Pipeline: <+pipeline.name> is complete. Harness deployed service <+service.name> into environment <+env.name>"
                   timeout: 10m
 ```
 
-## Key Fields
+## To
 
-`to` - this is the email address that you want Harness pipeline to send an email to. This can be a comma string of users like so: `rohan@harness.io, srinivas@harness.io`
-  - You can  pass in the emails as a runtime input - `<+input>`
-  - You can pass the email as an expression - `<+pipeline.triggeredBy>` 
+The email address(es) where you want this Harness pipeline to send an email. 
 
-`cc` - you can add emails to the cc section to cc' them on the email that will be sent via this pipeline
+This setting can use be a comma-separated string of addresses. For example, `john.doe@harness.io, bill.smith@harness.io`.
 
-`subject` - you can provide a subject to the email. This subject can be a fixed string: `Prod Deployment Notification` , a string with expressions: `<+env.name> Deployment Notification`, or passed in as a runtime input `<+input>`
+You can set **To** as a runtime input.
+  
+You can pass in the email as a Harness expression, such as `<+pipeline.triggeredBy>`.
 
-`body` - The body is a string field that users can pass in text and expressions and Harness will resolve the body with the expression references before sending email.
+For more information on runtime inputs and expressions, go to [Fixed Values, Runtime Inputs, and Expressions](https://developer.harness.io/docs/platform/references/runtime-inputs/).
 
-## Optional Configurations
+## CC
+ 
+You can add email addresses to the **CC** section to cc' them on the email that will be sent via this pipeline
 
-If user's want to send emails via their own SMTP Server to send emails. To configure your own SMTP Server please review the [SMTP Configuration Doc](https://developer.harness.io/docs/platform/notifications/add-smtp-configuration/)
+## Subject
+
+You can provide a subject for the email. 
+
+This subject can be a fixed string (for example, `Prod Deployment Notification`), a string with expressions (for example, `<+env.name> Deployment Notification`), or a runtime input.
+
+For more information on runtime inputs and expressions, go to [Fixed Values, Runtime Inputs, and Expressions](https://developer.harness.io/docs/platform/references/runtime-inputs/).
+
+## Body
+
+The **Body** is a string field. You enter in text and expressions and Harness will resolve the body with the expression references before sending the email.
+
+For more information on runtime inputs and expressions, go to [Fixed Values, Runtime Inputs, and Expressions](https://developer.harness.io/docs/platform/references/runtime-inputs/).
+
+## Advanced settings
+
+In **Advanced**, you can use the following options:
+
+* [Delegate Selector](../../../platform/2_Delegates/delegate-guide/select-delegates-with-selectors.md)
+* [Conditional Execution](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+* [Failure Strategy](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+* [Looping Strategy](../../..//platform/8_Pipelines/looping-strategies-matrix-repeat-and-parallelism.md)
+
+## Options
+
+If you want to send emails using your own SMTP Server, go to [Add SMTP Configuration](https://developer.harness.io/docs/platform/notifications/add-smtp-configuration/).
 
 
 
