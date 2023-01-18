@@ -15,7 +15,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
 ## January 17, 2023, version 78214
 
-This release does not include new features, early access features, enhancements, and fixed issues.
+This release does not include new features, early access features, and fixed issues.
 
 ## January 10, 2023, version 78105
 
