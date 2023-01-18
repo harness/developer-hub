@@ -75,7 +75,7 @@ In the Script, you declare the variable using the **Name** value (in this exampl
 
 ![picture 3](static/3efd3f47e73c3ca4804bd0e728d8815194ae80c9284ddfe0c11fb07c520b3b0c.png)
 
-At deployment runtime, Harness will evaluate the expression and the variable will contain its output.
+At deployment runtime, Harness evaluates the expression and the variable contains its output.
 
 ## Option: Specify Output Variables
 
