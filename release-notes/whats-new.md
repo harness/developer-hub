@@ -34,7 +34,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
 ### Platform
 
-- This release introduces a dedicated release notes page for Harness Delegate. You can find the delegate release notes at [Delegate](/release-notes/delegate).
+- A dedicated release notes page was introduced for Harness Delegate. You can find the delegate release notes at [Delegate](/release-notes/delegate).
 
 
 ## January 10, 2023, version 78105
