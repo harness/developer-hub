@@ -351,6 +351,44 @@ const config = {
         isCloseable: true,
       },
       */
+      announcementBar: {
+        id: "announcementBar_cd_announcement",
+        content:
+          "<i class='fa-solid fa-circle-exclamation' style='color: #CF2318; margin-right: 4px;'></i><span style='color: #CF2318;'>Our FirstGen CD product will be phased out in about 12 months.</span> Learn more in our <a href='/docs/continuous-delivery/onboard-cd/upgrading/upgrade-nextgen-cd/' target='_self'>Upgrade Guide</a> . For any questions or concerns please reach out to <a href='https://support.harness.io' target='_blank'>support.harness.io</a>.",
+        backgroundColor: "#FFF5ED",
+        textColor: "#000000",
+        isCloseable: true,
+      },
+      announcementBarByPath: {
+        // list all pathnames in Regular expressions format
+        pathRegExp: [
+          // paths for md-doc pages
+          "^/docs/first-gen/continuous-delivery.*",
+          "^/docs/first-gen/first-gen-quickstarts.*",
+          // paths for category pages
+          "^/docs/category/quickstarts.*",
+          "^/docs/category/continuous-delivery.*",
+          "^/docs/category/continuous-delivery-overview.*",
+          "^/docs/category/general-deployment-features.*",
+          "^/docs/category/deployment-strategies-and-integrations.*",
+          "^/docs/category/aws-.*",
+          "^/docs/category/general-aws-.*",
+          "^/docs/category/azure-.*",
+          "^/docs/category/cicd-artifact-build-and-deploy-pipelines.*",
+          "^/docs/category/google-cloud.*",
+          "^/docs/category/native-helm-deployments.*",
+          "^/docs/category/iis-net-deployments.*",
+          "^/docs/category/kubernetes-deployments.*",
+          "^/docs/category/tanzu-application-service-formerly-pivotal.*",
+          "^/docs/category/terraform-1.*",
+          "^/docs/category/terragrunt.*",
+          "^/docs/category/traditional-deployments-ssh.*",
+          "^/docs/category/custom-deployments.*",
+          "^/docs/category/continuous-verification-1.*",
+          "^/docs/category/model-your-cd-pipeline.*",
+          "^/docs/category/harness-git-based-how-tos.*",
+        ],
+      },
       hotjar: {
         siteId: 3194971,
       },
