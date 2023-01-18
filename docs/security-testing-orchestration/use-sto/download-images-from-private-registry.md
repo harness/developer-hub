@@ -12,7 +12,7 @@ This topic describes how to override the default behavior and use a private regi
 
 1. Download the scan images you need, test and validate the images, and store them in your private registry. 
 
-   Harness maintains a Container Image Registry that is dedicated exclusively to hosting Harness-supported images. You can download your scan images from this registry instead of Docker Hub. To view the list of images in this registry, enter the following command.
+   Harness maintains a Container Image Registry that is dedicated exclusively to hosting Harness-supported images. You can download your scan images from this registry instead of Docker Hub. To view the list of images in this registry, enter the following command:
    ```
    curl -X  GET https://app.harness.io/registry/_catalog
    ```
