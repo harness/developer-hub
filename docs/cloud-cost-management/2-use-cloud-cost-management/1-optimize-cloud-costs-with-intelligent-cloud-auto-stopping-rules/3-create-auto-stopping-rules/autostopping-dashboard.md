@@ -74,7 +74,7 @@ The **AutoStopping Summary of Rules dashboard** displays data as a chart and t
 
 ### Start the Instances from the Dashboard
 
-You can start an instance from the Summary of Rules Page or from the details page of a selected rule.
+You can start an instance from the Summary of Rules Page or from the Details page of a selected rule.
 
 #### From the Summary of Rules Page
 
@@ -90,7 +90,7 @@ You can start an instance from the Summary of Rules Page or from the details pag
 
 #### From the Details Page
 
-1. In **AutoStopping Rules**, in **Summary of Rules**, click the instance that you want to delete.
+1. In **AutoStopping Rules**, in **Summary of Rules**, click the instance that you want to start.
 2. In **Details**, click the **Hostname** or **Domain name** to warm up the instance.
    
      ![](./static/autostopping-dashboard-41.png)
