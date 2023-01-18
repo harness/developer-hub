@@ -13,11 +13,29 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 :::
 
 
-## January 17, 2023, version 78214
+## January 12, 2023, version 78214
+
+### Continuous Delivery
+
+- YAML schema validation for environments. (CDS-48947)
+  
+  We have added YAML schema validation to environment entities. Similar validation already exists for our pipeline YAML, but environments are separate entities.
+  If you try to save invalid YAML you will get an error like this:
+  ```bash
+  Invalid yaml: $.environment.overrides.manifests[0].manifest.spec: is missing but it is required.
+  ```
+- Improved error message when API calls fail while listing Helm **Chart Version** in **Run Pipeline**. (CDS-48436)
+  
+  If **Chart Version** is a runtime input, when you run the pipeline you are required to select a version from the **Chart Version** dropdown. If the Harness API is unable to fetch any versions, an improved error message is displayed.
+
+  ![picture 21](static/8ca12a2c84cf95499024fd11b11c055bc13ec9de4e0e767ae6f8422aeb596d91.png)  
+  
+  Hover over the error message to see the full message.
 
 ### Platform
 
-- This release introduces a dedicated release notes page for Harness Delegate &mdash; SaaS. You can find release notes for the NextGen delegate at [Delegate](/release-notes/delegate).
+- This release introduces a dedicated release notes page for Harness Delegate. You can find the NextGen delegate release notes at [Delegate](/release-notes/delegate).
+
 
 ## January 10, 2023, version 78105
 
