@@ -22,7 +22,7 @@ This topic describes how to override the default behavior and use a private regi
 
    * `runner_registry_domain`  —  The URL of the Docker registry where the images are stored. 
      
-     The supported format is <_domain_>/<_directory_> – for example, `app.harness.io/registry`. 
+     The supported format is `<_domain_>/<_directory_>` (such as, `app.harness.io/registry`). 
      
      Do not include the scheme (such as `http://` or `https://`).
 
