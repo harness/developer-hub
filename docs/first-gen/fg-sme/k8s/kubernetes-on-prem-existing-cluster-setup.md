@@ -50,7 +50,14 @@ Finally, when you configure the Harness Self-Managed Enterprise Edition applicat
 
 If you are creating the load balancer's Service type using `NodePort`, create a load balancer that points to any port in the range of 30000 to 32767 on the node pool on which the Kubernetes cluster is running.
 
-If you are using `NodePort`, you can skip to [Step 3: Install KOTS](kubernetes-on-prem-existing-cluster-setup.md#step-3-install-kots).
+<!-- bad link
+
+If you are using `NodePort`, you can skip to [Step 3: Install KOTS](kubernetes-on-prem-existing-cluster-setup.md#step-3-install-kots). 
+
+-->
+
+If you are using `NodePort`, you can skip to [Step 3: Install KOTS](#step-3-install-kots).
+
 
 ### Set up a static external IP address
 

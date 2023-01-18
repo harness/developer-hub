@@ -16,6 +16,41 @@ For Harness on-prem releases, see [Harness Self-Managed Enterprise Edition Relea
 
 If you don't see a new feature or enhancement in your Harness account, it might be behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
+### January 17, 2023, version 78105
+
+Delegate version: 78101
+
+#### What's new
+
+- Convert imperative Kubernetes rollback to declarative rollback. (CDS-2993)
+
+  This functionality is behind a feature flag: `CDP_USE_K8S_DECLARATIVE_ROLLBACK_NG`.
+
+  Harness applies Kubernetes manifest  using `kubectl apply`, which is a declarative way of creating Kubernetes objects. But when rolling back, we perform `kubectl rollout undo workloadType/workloadName --to-revision=<REVISION_NUMBER>`, which is an imperative way of rolling back. Using imperative and declarative commands together is not recommended and can cause issues.
+
+ In some instances, the workload spec was not updated properly when `rollout undo` was performed. Subsequent deployments then refered to an invalid spec of the workload and caused Kubernetes issues like [kubectl rollout undo should warn about undefined behaviour with kubectl apply](https://github.com/kubernetes/kubernetes/issues/94698).
+
+  **What is the fix?**
+  We had to redesign our release history to store all rendered manifests in secrets, just like Helm does. While rolling back, we are now reapplying the last successful release's manifests. This solves this issue.
+
+  **What is the impact on customers?**
+    - Enabling declarative rollback disables versioning (even if the **Skip Versioning** checkbox is left unchecked), since versioning was introduced with the imperative rollback design. However, versioning is not needed anymore with declarative rollback.
+    - The delegate's service account needs the permission to create, update, and read secrets in the defined infrastructure namespace. Typically, customers' delegates already have these permissions, but if cluster roles are strictly scoped, this could cause failures. For information on cluster roles for the delegate, go to [Install Harness Delegate on Kubernetes](https://developer.harness.io/docs/platform/delegates/delegate-install-kubernetes/install-harness-delegate-on-kubernetes/).
+
+#### Early access
+
+- Support for AWS S3 as a Terraform script file source for the Terraform Provision and Apply steps. (CDS-2970)
+  
+  This functionality is behind a feature flag: `CDS_TERRAFORM_S3_SUPPORT`.
+  
+  You can now use AWS S3 as a file source in the Terraform [Provision](https://developer.harness.io/docs/first-gen/continuous-delivery/terraform-category/terraform-provisioner-step) and [Apply](https://developer.harness.io/docs/first-gen/continuous-delivery/terraform-category/using-the-terraform-apply-command) steps.
+
+#### Fixed issues
+
+- Clicking on the **Forgot password** button after disabling SSO authentication is redirecting to the Harness FirstGen authentication UI. (PL-24649)
+  
+  This is now fixed and users are redirected to the NextGen authentication UI.
+
 ### January 5, 2023, version 78105
 
 Delegate version: 78100
