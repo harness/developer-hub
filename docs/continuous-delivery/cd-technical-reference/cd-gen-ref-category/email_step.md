@@ -49,7 +49,7 @@ For more information on runtime inputs and expressions, go to [Fixed Values, Run
 
 ## CC
  
-You can add email addresses to the **CC** section to cc' them on the email that will be sent via this pipeline
+You can add email addresses to the **CC** section to carbon copy addresses on the email that will be sent with the pipeline execution.
 
 ## Subject
 
@@ -61,7 +61,7 @@ For more information on runtime inputs and expressions, go to [Fixed Values, Run
 
 ## Body
 
-The **Body** is a string field. You enter in text and expressions and Harness will resolve the body with the expression references before sending the email.
+The **Body** is a string field. You can enter in text and Harness expressions. Harness will resolve the expressions before sending the email.
 
 For more information on runtime inputs and expressions, go to [Fixed Values, Runtime Inputs, and Expressions](https://developer.harness.io/docs/platform/references/runtime-inputs/).
 
@@ -76,7 +76,7 @@ In **Advanced**, you can use the following options:
 
 ## Options
 
-If you want to send emails using your own SMTP Server, go to [Add SMTP Configuration](https://developer.harness.io/docs/platform/notifications/add-smtp-configuration/).
+You can send emails using your own SMTP Server. For more information, go to [Add SMTP Configuration](https://developer.harness.io/docs/platform/notifications/add-smtp-configuration/).
 
 
 
