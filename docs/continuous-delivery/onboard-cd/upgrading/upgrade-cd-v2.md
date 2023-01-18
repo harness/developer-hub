@@ -20,7 +20,7 @@ Except for specific Harness accounts, the current v1 experience will be removed 
 
 The v2 experience has more robust service and environment entities. V2 has service variables, independent infrastructure definitions, environment groups, and file and variable overrides. 
 
-With v2, you'll notice an major reduction in the configuration included into pipelines. These changes are also reflected in the the Harness APIs.
+With v2, you'll notice an major reduction in the configuration included in pipelines. These changes are also reflected in the the Harness APIs.
 
 All new deployment types (ECS, Deployment Template, SSH, WinRM, etc.) are available in v2 only. New innovations such as Enterprise GitOps, multi-services and multi-environments, and environment groups, are in v2 only. 
 
@@ -47,14 +47,14 @@ Please review these important dates before upgrading.
 - Service and environment v1 APIs are being deprecated in March 2023.
 - On the official EOL date (Jan 31, 2023), v1 services and environments will continue to work as before. After March 2023, pipelines with v1 services and environments might experience issues or even failures because Harness will not update v1 with fixes or enhancements after that date.
 - Harness will globally enable service and environments v2 APIs for all customers at the end of January 2023.
-- The forced change is needed to reduce the migration effort needed for users.
+- The forced change will reduce the migration effort needed for users.
 - Harness has an automated tool to help migrate your services and environments from v1 to v2.
 
 We are happy to assist you in your migration to the new v2 experience. For any questions or comments, please contact `support@harness.io` or your CSM. Together we can work through discovery, migration planning, and assist with the process.
 
 ## API changes
 
-Harness has introduced the follow new APIs to support the v2 experience:
+Harness has introduced the following new APIs to support the v2 experience:
 
 - [Environments](https://apidocs.harness.io/tag/Environments#operation/createEnvironmentV2)
 - [Services](https://apidocs.harness.io/tag/Services#operation/createServiceV2)
@@ -92,7 +92,7 @@ The following changes apply to services:
 
 #### Service YAML updates
 
-Here is a a YAML sample the demonstrates the changes in v2.
+Here is a a YAML sample that demonstrates the changes in v2.
 
 ```yaml
 service:
@@ -304,7 +304,7 @@ The following changes apply to v2 environments:
 
 #### Environment groups
 
-V2 introduces environment groups. You can now group environments and manage them at scale. 
+V2 introduces environment groups. You can now aggregate environments and manage them at scale. 
 
 Environment groups are simply a list of environments. You can deploy to a subset of environments within the group or to all of them.
 
@@ -469,8 +469,8 @@ Harness has taken the infrastructure definition that was originally defined in t
 
 Here are the changes to infrastructure definition:
  
-- The infrastructure definition can only be associated with 1 environment.
-- The infrastructure definition is required for a pipeline execution to run. 
+- The infrastructure definition can be associated with one environment only.
+- The infrastructure definition is required to run a pipeline execution. 
 - Users now need to pick an environment and infrastructure definition.
 
 The infrastructure definition configuration now contains:
