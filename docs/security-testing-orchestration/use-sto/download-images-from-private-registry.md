@@ -26,7 +26,7 @@ This topic describes how to override the default behavior and use a private regi
      
      Do not include the scheme (such as `http://` or `https://`).
 
-   * `runner_registry_image_prefix` = `harness`
+   * `runner_registry_image_prefix : harness`
 
    * `runner_registry_username`  — As needed
 
