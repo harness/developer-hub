@@ -68,11 +68,11 @@ Perform the following steps to add a new AWS AutoStopping rule:
 		- Option 5: Select RDS Instances
 	+ (Optional) Step: Set Up Advanced Configuration
 * Setup Access: In this step, do the following:
-	+ Setup Access Using DNS Link
-	+ Setup Access Using SSH/RDP
+	+ Setup Access for TCP workload or SSH/RDP 
+	+ Setup Access for HTTP/HTTPS workload
 * Review: Verify the configurations.
 
-### Step: Define an AutoStopping Rule
+### Define an AutoStopping Rule
 
 Perform the following steps to get started with AutoStopping Rule.
 
@@ -92,7 +92,7 @@ Perform the following steps to get started with AutoStopping Rule.
   
    ![](./static/create-autostopping-rules-aws-93.png)
 
-### Step: Select the Resources to be managed by the AutoStopping Rule
+### Select the Resources to be managed by the AutoStopping Rule
 
 Select the cloud resources that you want to manage using this rule. AutoStopping Rule will monitor the selected resources and stop them when they are idle beyond the configured idle time. You can select any of the following:
 
@@ -175,11 +175,11 @@ Add the RDS instance to be managed by this Autostopping Rule.
    
      ![](./static/create-autostopping-rules-aws-97.png)
 
-### (Optional) Step: Set Up Advanced Configuration
+## (Optional) Step: Set Up Advanced Configuration
 
 In this step, you can configure the following settings:
 
-#### Add Dependency
+### Add Dependency
 
 Set dependencies between two or more AutoStopping Rules when you want one Rule to make one or more Rules to be active based on the traffic that it receives. For example for an application server dependant on a database server, create two AutoStopping Rules managing both the servers. Add a dependency on the Rule managing the application server to be dependant on the Rule managing the database server.
 
@@ -188,7 +188,7 @@ Set dependencies between two or more AutoStopping Rules when you want one Rule t
 3. In **DELAY IN SECS**, enter the number of seconds that rule should wait after warming up the dependent rule. For example, you have Rule 1 dependent on Rule 2 and you have set 5 seconds delay. In that case, when the request is received to warm up Rule 1, then first Rule 2 (dependent rule) is warmed up, and then there will be a delay of 5 seconds before warming up Rule 1.
 4. Once you're done with all the configurations, click **Next**.
 
-#### Fixed Schedules
+### Fixed Schedules
 
 Create fixed uptime or downtime schedules for the resources managed by this AutoStopping Rule. When a resource is configured to go up or down on a fixed schedule, it is unaffected by activity or idleness during that time period.
 
@@ -230,7 +230,8 @@ Now that you have the AutoStopping rule configured, define how you would want to
 * [**DNS Link**](/docs/cloud-cost-management/use-cloud-cost-management/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/create-autostopping-rules-aws#setup-access-using-dns-link): If the underlying applications running on the resources managed by the AutoStopping Rule are accessed by an HTTP or HTTPS URL.
 * [**SSH/RDP**](/docs/cloud-cost-management/use-cloud-cost-management/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/create-autostopping-rules-aws#setup-access-using-sshrdp): If the underlying applications running on the resources managed by AutoStopping Rule are accessed via SSH or RDP.
 
-### Setup Access Using DNS Link
+## Setup Access for TCP workload or SSH/RDP 
+
 
 A DNS link allows you to access the resources managed by the AutoStopping rule using an HTTP or HTTPS URL. Select DNS Link if the underlying application running on the resources managed by this AutoStopping Rule is currently accessed by an HTTP or HTTPS URL.
 
