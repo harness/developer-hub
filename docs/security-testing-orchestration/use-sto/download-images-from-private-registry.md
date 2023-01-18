@@ -32,7 +32,7 @@ This topic describes how to override the default behavior and use a private regi
 
    * `runner_registry_token`  — As needed
 
-   If you need to use a proxy server, you can also specify the following: 
+   If you need to use a proxy server, you must also specify the following: 
 
    * `http_proxy`	 —  The hostname and port to use for proxied HTTP requests.
   
