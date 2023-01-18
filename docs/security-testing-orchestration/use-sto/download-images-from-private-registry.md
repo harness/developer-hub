@@ -34,7 +34,7 @@ This topic describes how to override the default behavior and use a private regi
 
    If you need to use a proxy server, you must also specify the following: 
 
-   * `http_proxy`	 —  The hostname and port to use for proxied HTTP requests.
+   * `http_proxy`	 —  The hostname and port to use for proxied HTTP requests
   
    * `https_proxy`  —  The hostname and port to use for proxied HTTPS requests
 
