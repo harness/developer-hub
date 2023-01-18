@@ -38,7 +38,7 @@ This topic describes how to override the default behavior and use a private regi
   
    * `https_proxy`  —  The hostname and port to use for proxied HTTPS requests
 
-   * `no_proxy`  — A comma -separated list of hosts to bypass the proxy.
+   * `no_proxy`  — A comma-separated list of hosts to bypass the proxy
 
 
 ### YAML example
