@@ -88,7 +88,7 @@ Select the cloud resources that you want to manage using this rule. AutoStopping
    
    ![](./static/aws-ecs-tags.png)
    
-If you have chosen **ECS Service Tags**, select the region, cluster, and the tag associated with the service. Once you create a rule using this option, it is applied automatically to the most recently created ECS service to which the tag is added. You need not create a new AutoStopping rule. You can update the same rule if required.
+If you have chosen **ECS Service Tags**, select the region, cluster, and the tag associated with the service. Once you create a rule using this option, it is applied automatically to the most recently created ECS service to which the tag is added. 
 1. Select the region where your cluster is hosted from the **Select Region** dropdown list.
 2. Select your cluster from the **Select Cluster** dropdown list.
 3. Select the tag key and the tag value from the dropdown lists. If you want to learn how to add tags to your service, go to [Tagging your Amazon ECS Resources](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html).
