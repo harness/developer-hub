@@ -53,7 +53,7 @@ For more information, see [Harness Provider](https://registry.terraform.io/provi
 
 ## Benefits of Harness Terraform Provider
 
-This section explains the benefits of using Harness Terraform Provider to provision your resources.
+This section explains the benefits of using Harness Terraform Provider to provision your Harness resources.
 
 ### Common tool to provision infrastructure
 
