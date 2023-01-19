@@ -79,9 +79,6 @@ Select the cloud resources that you want to manage using this rule. AutoStopping
    * ECS Service Tags
    
     
-      
-
-
 
   If you have chosen **ECS Service Name**, select a region and a cluster to see all the services:
   1. Select the region where your cluster is hosted from the **Select Region** dropdown list.
@@ -91,38 +88,26 @@ Select the cloud resources that you want to manage using this rule. AutoStopping
    
    ![](./static/aws-ecs-tags.png)
    
-If you have chosen **ECS Service Tags**, select the region, cluster, and the service tag to configure the AutoStopping rule for the ECS service associated with that tag. If you apply a tag while creating the cluster, you can run the AutoStopping rule on the new ECS cluster without having to configure the rule manually.
+If you have chosen **ECS Service Tags**, select the region, cluster, and the tag associated with the service. Once you create a rule using this option, it is applied automatically to the most recently created ECS service to which the tag is added. You need not create a new AutoStopping rule. You can update the same rule if required.
 1. Select the region where your cluster is hosted from the **Select Region** dropdown list.
 2. Select your cluster from the **Select Cluster** dropdown list.
-3. Select the tag key and the tag value from the dropdown lists. Go to [Add a tag to your cluster](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/3-create-auto-stopping-rules/create-auto-stopping-rules-for-ecs.md#steps-to-perform-on-the-aws-console).
+3. Select the tag key and the tag value from the dropdown lists. If you want to learn how to add tags to your service, go to [Tagging your Amazon ECS Resources](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html).
    
-     All the ECS services attached to the tag are displayed. 
+     You can view the list of ECS services to which this tag is added. 
+
+4. Click **Continue**.  
 
 :::note
-* If you have added the same tag to multiple ECS services, the AutoStopping rule is applied to the last service to which this tag was added.
+* If you have added the same tag to multiple ECS services, the AutoStopping rule is applied to the most recently created service.
 * If there are no services with the selected tag, the following error message is displayed: 
   "There is no ECS service that contains the selected tag. Create a service with the selected tag to proceed."
 :::
 
 
+
 ![](./static/aws-ecs-use-tags.png)
 
-
-#### Steps to perform on the AWS console:
    
-
-  On the AWS console, you need to add tags to use the **ECS Service Tags** feature.
-   1. Go to https://console.aws.amazon.com/ecs/
-   2. Navigate to the **Clusters** page, and then, click **Create Clusters**. For detailed instructions on creating a cluster, go to [Creating a cluster using the classic console](https://docs.aws.amazon.com/AmazonECS/latest/userguide/create_cluster.html).
-   3. The last step in the cluster creation process is adding tags to the cluster. This is an optional step. However, you need to add a tag to seamlessly set up AutoStopping rule for your ECS cluster.
-    
-    ![](./static/aws-console-add-tags.png)
-
-
-
-    
-
-  
 ### **Specify the desired task count**
 In **Desired Task Count**, specify the desired task count for the selected ECS service. This is the number of tasks that Harness will instantiate when your service is up and running. For more information, see [Amazon ECS service quotas](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-quotas.html).
 
