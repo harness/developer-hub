@@ -12,7 +12,7 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
 
-## January 12, 2023, version 78214
+## January 17, 2023, version 78214
 
 ### Continuous Delivery
 
@@ -30,6 +30,10 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
   ![picture 21](static/8ca12a2c84cf95499024fd11b11c055bc13ec9de4e0e767ae6f8422aeb596d91.png)  
   
   Hover over the error message to see the full message.
+  
+### Platform
+
+- A dedicated release notes page was introduced for Harness Delegate. You can find the delegate release notes at [Delegate](/release-notes/delegate).
 
 ## January 10, 2023, version 78105
 
