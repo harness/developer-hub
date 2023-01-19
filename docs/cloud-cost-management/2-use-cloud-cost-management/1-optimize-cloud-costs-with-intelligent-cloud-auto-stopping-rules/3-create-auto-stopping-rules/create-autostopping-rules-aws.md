@@ -227,49 +227,42 @@ The fixed schedule takes precedence over the defined AutoStopping Rule.To create
 
 Now that you have the AutoStopping rule configured, define how you would want to access the underlying application running on the resources managed by this Rule. You can use any of the following methods:
 
-* [**DNS Link**](/docs/cloud-cost-management/use-cloud-cost-management/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/create-autostopping-rules-aws#setup-access-using-dns-link): If the underlying applications running on the resources managed by the AutoStopping Rule are accessed by an HTTP or HTTPS URL.
-* [**SSH/RDP**](/docs/cloud-cost-management/use-cloud-cost-management/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/create-autostopping-rules-aws#setup-access-using-sshrdp): If the underlying applications running on the resources managed by AutoStopping Rule are accessed via SSH or RDP.
+* Set up Access for HTTP/HTTPS workload: If the underlying applications running on the resources managed by the AutoStopping Rule are accessed by an HTTP or HTTPS URL.
+* Setup Access for TCP workload or SSH/RDP: If the underlying applications running on the resources managed by AutoStopping Rule are accessed via TCP, SSH or RDP.
 
 ## Setup Access for TCP workload or SSH/RDP 
 
+If you need to access the resources managed by this AutoStopping rule using TCP or SSH/RDP HTTPS URL, you need to perform the following steps: 
 
-A DNS link allows you to access the resources managed by the AutoStopping rule using an HTTP or HTTPS URL. Select DNS Link if the underlying application running on the resources managed by this AutoStopping Rule is currently accessed by an HTTP or HTTPS URL.
 
-AutoStopping integrates with the cloud provider's native load balancing technologies (Application Load Balancer, Azure AppGateway, etc.) to provide start and stop capability for the AutoStopping-managed cloud services. Each load balancer is identified by its DNS hostname (autostopping.example.com, www.example.com, etc.).
+  ![](./static/aws-set-up-tcp.png)
 
-![](./static/create-autostopping-rules-aws-101.png)
 
-To create a DNS Link, you need to:
+1. Choose an AutoStopping Proxy load balancer (custom) from the **Specify AutoStopping Proxy** dropdown list to set up access.
+2. Toggle the protocol to specify the listening ports.
+3. Specify additional ports if required. 
+4. Click **Next**.
 
-* **Select a Load Balancer**: The rule requires a load balancer to detect traffic and shut down appropriate instances. Multiple instances and rules can use a single load balancer. It identifies instances based on hostnames and directs the HTTP traffic appropriately.
-* **Enter Routing Configuration and Health Check Details**: This is the load balancer routing configuration for the underlying application that is running on the cloud resources managed by this AutoStopping Rule.
-* **Select the URL Used to Access the Resources**: You can use either of the following methods:
-	+ **Auto-generated URL**: You can use the auto-generated URL to access the resources managed by this AutoStopping Rule.
-	+ **Custom URL**: If using a custom URL:
-		- The domain name should be entered without prefixing the scheme.
-		- A rule can have multiple URLs.
-		- You can enter comma-separated values into a custom URL to support multiple URLs.
-		- AutoStopping rule can also use an additional custom domain. In such a case, it should be configured in the DNS provider.
 
-#### Select a Load Balancer
+## Set up Access for HTTP/HTTPS workload
 
-1. In **Setup Access**, select **DNS Link**.
-2. Select a load balancer from the drop-down list. If you have not added your load balancer yet, click **New Load Balancer** to add a load balancer. For detailed steps, see [Create an Application Load Balancer for AWS](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/4-load-balancer/create-load-balancer-aws.md).
-   
-   ![](./static/create-autostopping-rules-aws-102.png)
+If you need to access the resources managed by this AutoStopping rule using an HTTP or HTTPS URL, you need to perform the following steps: 
 
-The list will populate the load balancer if the load balancer has previously been created in your environment but not yet mapped to Harness. In that case, you must [configure the DNS mapping settings](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/4-load-balancer/create-load-balancer-aws.md).
+Choose an Application Load Balancer or an AutoStopping Proxy load balancer (custom) from the dropdown list to set up access.
 
-  ![](./static/create-autostopping-rules-aws-103.png)
-
-Multiple instances and rules can use a single load balancer. It identifies instances based on hostnames and directs the HTTP traffic appropriately.
+### Use an Application Load Balancer
+  If you have not created a load balancer already, go to [Create an Application load balancer](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/4-load-balancer/create-load-balancer-aws.md).
 
 #### Enter Routing Configuration and Health Check Details
 
-1. Verify listeners information under the **Routing** tab. If the security groups are configured for the selected instances, then the routing information is auto-populated for those instances.  
-You can edit or delete the routing information. However, it is mandatory to have at least one port listed. For more information, see [Listeners](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html).
+1. If the security groups are configured for the selected instances, then the routing information is auto-populated for those instances.  
+You can edit or delete the routing information. However, it is mandatory to have at least one port listed. For more information, see [Listeners](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html). 
 
-  ![](./static/create-autostopping-rules-aws-104.png)
+  This is the load balancer routing configuration for the underlying application that is running on the cloud resources managed by this AutoStopping rule.
+
+
+  ![](./static/aws-alb-port-config.png)
+
 
 2. Click **Add** if you wish to add more ports. The following are some points to consider:  
 	  
@@ -277,16 +270,18 @@ You can edit or delete the routing information. However, it is mandatory to have
 	  
   * If you specify the server name, then the host will use the custom URL to access the resources. You cannot use an auto-generated URL to access the resources.
   
-    ![](./static/create-autostopping-rules-aws-105.png)
-3. Toggle the **Health check** button to configure the health check. Health check status should be successful for the AutoStopping rules to come into effect.  
-  
-By default, the health check is turned on.
-4. In PROTOCOL, select **http** or **https**.
+
+3. Toggle the **Health check** button to configure the health check. Health check status should be successful for the AutoStopping rules to come into effect. Set a health check for the underlying application that is running on the cloud resources managed by this AutoStopping rule. The load balancer periodically sends requests as per the settings below to the application. If your application does not support health check or you do not have any application running, you can disable the health check.
+
+  By default, the health check is turned on.
+
+  4. In Protocol, select **http** or **https**.
 5. Enter Path, port, and timeout details. For example, if you have configured port 80 and the timeout as 30 seconds for your instance, then the AutoStopping rule will check these specified parameters before bringing AutoStopping Rule into effect.
    
-     ![](./static/create-autostopping-rules-aws-106.png)
 
-#### Select the URL for Accessing the Resources
+   ![](./static/aws-load-balancer-healthcheck.png)
+
+#### Specify the URL to access the resources
 
 You can use either of the following methods:
 
@@ -308,33 +303,6 @@ AutoStopping rule can use multiple custom domains. In such a case, it should be 
 Enter the custom URL currently used to access the instances. The domain name should be entered without prefixing the scheme. A rule can have multiple URLs. You can enter comma-separated values into a custom URL to support multiple URLs.
 
 ![](./static/create-autostopping-rules-aws-108.png)
-
-**DNS Configuration for the AutoStopping Rule**
-
-Since you've chosen to use a custom URL to access the resources, you need to map your custom domain to the hostname generated by this AutoStopping Rule. Select your DNS Provider from the list (Route 53 or Others) to proceed with the mapping.
-
-![](./static/create-autostopping-rules-aws-109.png)
-
-**DNS configuration using Route 53**: If you select Route 53 account, AutoStopping manages Route 53 configuration automatically. You don’t have to do any changes manually when using Route 53.
-
-![](./static/create-autostopping-rules-aws-110.png)
-
-**DNS configuration using other providers:** 
-Perform the following steps:
-
-1. Select **Others**.
-   
-     ![](./static/create-autostopping-rules-aws-111.png)
-2. Click **Next**.
-3. In **Review**, verify all the configuration details and click **Save Rule**.
-4. From the [AutoStopping Rules dashboard](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/1-add-connectors/1-auto-stopping-rules.md), click the AutoStopping Rule that you just created.
-5. Copy the auto-generated hostname of the rule.
-6. In your DNS provider’s configuration page, add a CNAME record. See [Add DNS CNAME record](https://docs.aws.amazon.com/managedservices/latest/ctexguide/ex-dirserv-cname-record-add-col.html). For example:  
-  
-
-```
-CNAME yourcustomdomain.com -> allowed-snapper-c7bsac7jepl4q05rc1j0.autostopping.harness.io
-```
 
 #### Configure custom exclusions and inclusions
 
@@ -360,7 +328,63 @@ Requests from these IP addresses or to these paths do not disturb the idle time 
 
 Similarly, you can configure custom inclusions. Requests to the specified path or from the specified IP address alone can invoke the cloud resource managed by AutoStopping. Only these requests are detected as traffic by the AutoStopping rule.
 
-### Setup Access Using SSH/RDP
+### Use an AutoStopping Proxy load balancer
+If you have not created a load balancer already, go to [Create an AutoStopping Proxy load balancer].
+
+#### Enter Routing Configuration and Health Check Details
+
+1. If the security groups are configured for the selected instances, then the routing information is auto-populated for those instances.  
+You can edit or delete the routing information. However, it is mandatory to have at least one port listed. For more information, see [Listeners](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html). 
+
+  This is the load balancer routing configuration for the underlying application that is running on the cloud resources managed by this AutoStopping rule.
+
+
+  ![](./static/aws-proxy-port-config.png)
+
+
+2. Click **Add** if you wish to add more ports. The following are some points to consider:  
+	  
+  * If you are forwarding the same action to different ports, then specify the server name and/or path match.  
+	  
+  * If you specify the server name, then the host will use the custom URL to access the resources. You cannot use an auto-generated URL to access the resources.
+  
+
+3. Toggle the **Health check** button to configure the health check. Health check status should be successful for the AutoStopping rules to come into effect. Set a health check for the underlying application that is running on the cloud resources managed by this AutoStopping rule. The load balancer periodically sends requests as per the settings below to the application. If your application does not support health check or you do not have any application running, you can disable the health check.
+
+  By default, the health check is turned on.
+
+  4. In Protocol, select **http** or **https**.
+5. Enter Path, port, and timeout details. For example, if you have configured port 80 and the timeout as 30 seconds for your instance, then the AutoStopping rule will check these specified parameters before bringing AutoStopping Rule into effect.
+   
+
+   ![](./static/aws-proxy-healthcheck.png)
+
+#### Specify the URL to access the resources
+
+You can use either of the following methods:
+
+* Auto-generated URL
+* Custom URL
+
+**Auto-generated URL**
+
+Every AutoStopping rule will have an auto-generated URL. This URL will be a subdomain to the domain name specified for the [load balancer](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/4-load-balancer/create-load-balancer-aws.md). Since the load balancer configures a wildcard domain such as `*.autostopping.yourcompany.com`, the auto-generated URL will work automatically and point to the correct load balancer.
+
+Select **Use the auto-generated URL to access the resources managed by this AutoStopping Rule**.
+
+![](./static/create-autostopping-rules-aws-107.png)
+
+**Custom URL**
+
+AutoStopping rule can use multiple custom domains. In such a case, it should be configured in the DNS provider. AutoStopping Rules also allows you to use custom domains or change the root of your site's URL from the default, like,`autostop.harness.io`, to any domain you own. To point your site's default domain to a custom domain, you can set it up in your DNS provider.
+
+Enter the custom URL currently used to access the instances. The domain name should be entered without prefixing the scheme. A rule can have multiple URLs. You can enter comma-separated values into a custom URL to support multiple URLs.
+
+![](./static/create-autostopping-rules-aws-108.png)
+
+
+## Use the Harness CLI to access resources through SSH/RDP 
+
 
 SSH/RDP allows you to access the resources managed by the AutoStopping rule via SSH or RDP HTTPS URL. Select this option if the underlying applications running on the resources managed by AutoStopping Rule are accessed via SSH or RDP.
 
@@ -420,7 +444,7 @@ Run the following command to connect via private IP:
 ```
 harness rdp --host default-test-rdp-1.abc1000test.lightwingtest.com --internal-ip
 ```
-1. Click **Next**.
+Click **Next**.
 
 ### Review
 
