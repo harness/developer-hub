@@ -69,7 +69,7 @@ For more information on runtime inputs and expressions, go to [Fixed Values, Run
 
 In **Advanced**, you can use the following options:
 
-* [Delegate Selector](../../../platform/2_Delegates/delegate-guide/select-delegates-with-selectors.md)
+* [Delegate Selector](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors.md)
 * [Conditional Execution](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
 * [Failure Strategy](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
 * [Looping Strategy](../../..//platform/8_Pipelines/looping-strategies-matrix-repeat-and-parallelism.md)
