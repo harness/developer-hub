@@ -564,7 +564,7 @@ Currently, this feature is behind the feature flag `GITHUB_PACKAGES`. Contact [H
 
 You can use Github Packages as artifacts for deployments.
 
-Currently, Harness supports only the packageType as `docker(container)`. Support for npm, maven, rubygems, and nuget is coming soon.You connect to Github using a Harness Github Connector, username, and Personal Access Token (PAT).
+Currently, Harness supports only the packageType as `docker(container)`. Support for npm, maven, rubygems, and nuget is coming soon. You connect to Github using a Harness Github Connector, username, and Personal Access Token (PAT).
 
 Add an Artifact from Github PackagesIn **Artifacts**, click **Add Primary** **Artifact.**
 
@@ -572,7 +572,7 @@ In **Artifact Repository Type**, click **Github Package Registry**, and then cl
 
 In **Github Package Registry Repository**, select of create an Github Connector that connects to the Github account where the package repo is located. Click **Continue**.
 
-* **Github Permissions:** make sure the Personal Access Token (PAT) has the write:packages, read:packages permissions.
+* **Github Permissions:** make sure the Personal Access Token (PAT) has the `write:packages` and `read:packages` permissions.
 * **API access:** ensure that you enable API access. You can use the Harness secret with the same PAT that you used for user authentication.
 
 The **Artifact Details** settings appear.
