@@ -5,8 +5,9 @@ sidebar_position: 2
 ---
 
 The Terraform tool enables the management and provisioning of infrastructure through code. Using Terraform, you can easily build, modify, and version low-level components like compute instances, storage, and networking, as well as high-level components like DNS entries and SaaS features.
-Harness Terraform Providers is an integration between Harness and Terraform.
-In this integration, Harness Terraform Providers provide an abstraction layer on top of Harness’ API, allowing you to provision Harness infrastructure and resources using Terraform. You can administer and use Harness functionality from within your Terraform setup using Harness Terraform Provider.
+
+Harness Terraform Provider is a library that you can use to create Harness Infrastructure. You can administer and use Harness functionality from within your Terraform setup using Harness Terraform Provider. It serves as an interface to the Harness API, enabling you to create and manage Harness infrastructure using Terraform commands.
+
 
 In order to use the Harness Terraform Provider, you will need to do the following:
 - Install the Terraform CLI
