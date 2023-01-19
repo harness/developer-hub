@@ -46,7 +46,7 @@ Harness CCM provides two types of recommendations to optimize your EC2 instances
 
 ![](./static/ec2-recommendations-1.png)
 
-* **Decommissioning**: In this type of recommendation, the instance is terminated or decommissioned.  
+* **Decommissioning**: In this type of recommendation, the instance is terminated or decommissioned if not in use for a long time.
  
 
 ![](./static/ec2-recom-decommission.png)
@@ -56,9 +56,13 @@ Harness CCM provides two types of recommendations to optimize your EC2 instances
 ## Enable EC2 Recommendations
 
 
-If you are an existing customer, follow these steps to enable EC2 recommendations:
+
+:::note
+If you are an existing customer, you need to:
 * Edit the IAM Role in the AWS Connector corresponding to the account.
 * Add _ce:GetRightsizingRecommendation_ permission to the **HarnessEventsMonitoringPolicy**.
+:::
+
 
 
 You need to perform the following tasks on your AWS console to enable these recommendations.
@@ -92,13 +96,13 @@ You need to perform the following tasks on your AWS console to enable these reco
 
 5. You must install the Amazon CloudWatch agent on your EC2 instance to enable memory metrics.
 
-You need to perform the following steps on your Harness application:
+You need to perform the following steps in Harness:
 
 
 1. While creating a new AWS connector, select the **Inventory Management** feature to enable the recommendations. For more information, go to [Set up CCM for your AWS account.](https://developer.harness.io/docs/cloud-cost-management/onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-aws#choose-requirements)
 
  
-2. The required **Cost Explorer **permissions are added to the CCM template as shown in the screenshot below:
+2. Add the required **Cost Explorer** permissions to the CCM template as shown in the screenshot below:
 
     ![](./static/ec2-create-cross-account-role.png)
 
@@ -122,6 +126,8 @@ You need to perform the following steps on your Harness application:
 
 You can tune the recommendations by providing your preferred instance type. Select one of the following options:
 
+
+  ![](./static/ec2-tune-recommendations.png)
 
 
 * **Within the same instance family**: If you select this option, the recommendations stay within the same family.
