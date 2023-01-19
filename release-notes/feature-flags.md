@@ -33,7 +33,7 @@ This release does not include early access features.
   -  Improvements to how the metrics endpoint processes platform targets. (FFM-6392)
   -  Fixed a bug that caused an error due to incompatibility with an older version of OkHttp. (FFM-6442)
   
-- The Ruby SDK has been updated to version 1.0.6. This fixes dependency issues with OpenAPI that caused errors when trying to initialize the SDK. 
+- The Ruby SDK has been updated to version 1.0.6. This fixes dependency issues with OpenAPI that caused errors when trying to initialize the SDK. (FFM-6523)
 
 ## January 17, 2023
 
