@@ -20,6 +20,10 @@ The Harness Platform is a self-service CI/CD platform that enables end-to-end so
 
 Watch the following video to learn about some of the Harness modules:
 
+<!-- Video:
+https://youtu.be/GGrxv00jqWw-->
+<docvideo src="https://youtu.be/GGrxv00jqWw" />
+
 #### Harness Platform components
 
 The Harness Platform has two components:
