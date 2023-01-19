@@ -13,6 +13,28 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
 
+## January 19, 2023
+
+### What's new
+
+This release does not include new features.
+
+### Early access
+
+This release does not include early access features.
+
+### Fixed issues
+#### Feature Flag SDKs
+- The Javascript SDK has been updated to version 1.6.0. This includes the following changes:
+  - You can now customise the interval of how often metrics data is sent to the metrics endpoint. (FFM-6498)
+  - If the metrics data is not successfully posted to the endpoint after two attempts, the data is cleared to ensure the metrics data doesn't get too large and cause performance issues. (FFM-6509)
+
+- The Java SDK has been updated to version 1.1.10. This includes the following changes:
+  -  Improvements to how the metrics endpoint processes platform targets. (FFM-6392)
+  -  Fixed a bug that caused an error due to incompatibility with an older version of OkHttp. (FFM-6442)
+  
+- The Ruby SDK has been updated to version 1.0.6. This fixes dependency issues with OpenAPI that caused errors when trying to initialize the SDK. (FFM-6523)
+
 ## January 17, 2023
 
 ### What's new
