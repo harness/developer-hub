@@ -35,7 +35,7 @@ Perform the following steps to create an AutoStopping proxy for your resources i
 
 10.  Select the region where you have your cloud resources hosted.
 11.  Select the **VPC** from the dropdown list.
-12.  Select the instance family type from the available list.
+12.  Select the instance family type from the dropdown list.
 13.  Enter the **TLS Certificate Secret Version**: On the AWS console, go to **Secrets Manager**, and store a secret. You must choose the **Other type of secret** option. Go to [https://docs.aws.amazon.com/secretsmanager/latest/userguide/create_secret.html](https://docs.aws.amazon.com/secretsmanager/latest/userguide/create_secret.html) for more information. After successfully storing the secret, enter the **Secret ARN** in this field. 
 
 
