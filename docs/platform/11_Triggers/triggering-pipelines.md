@@ -37,8 +37,8 @@ For general Triggers reference, see [Triggers Reference](../8_Pipelines/w_pipeli
 Here's a two minute video showing you how to create and run a Trigger in response to Git events.
 
 <!-- Video:
-https://youtu.be/y8s351IJLXw-->
-<docvideo src="https://youtu.be/y8s351IJLXw" />
+https://www.youtube.com/watch?v=y8s351IJLXw-->
+<docvideo src="https://www.youtube.com/watch?v=y8s351IJLXw" />
 
 ### Step 1: Set Up Your Codebase
 
