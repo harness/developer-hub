@@ -2,11 +2,11 @@
 
 GitHub Actions let you create custom actions that can perform predefined tasks. These predefined tasks range from cloning a codebase to building a Docker image and security scanning images. Previously-created actions are present on the [GitHub marketplace](https://github.com/marketplace?type=actions), with a rich support of over 10k actions.
 
-Harness CI has added native `Action` step type for running GitHub Actions.
+Harness CI has added a native `Action` step type for running GitHub Actions.
 
 :::note
 
-Action step is supported only for cloud infrastructure.
+The Action step is supported in Harness Cloud build infrastructures only.
 
 :::
 
@@ -57,7 +57,7 @@ This step sets up a java environment for the following steps in the stage to use
 <TabItem value="Ruby" label="Setup Ruby">
 ```
 
-This step sets up a ruby environment for the following steps in the stage to use.
+This step sets up a Ruby environment for the following steps in the stage to use.
 
 ```yaml
               - step:
@@ -75,15 +75,15 @@ This step sets up a ruby environment for the following steps in the stage to use
 </Tabs>
 ```
 
-## Spec parameter reference
+## `spec` parameter reference
 
-1. `uses`: Refers to the GitHub repository of the action along with the branch or tag.
+1. `uses`: The GitHub repository of the action along with the branch or tag.
 2. `with`: A map with a key and value as string. These are action inputs.
 3. `env`: Environment variables passed to the action.
 
 ### Action step yaml in Github action vs Harness CI
 
-To create action step in harnessCI, copy the `uses`, `with` and `env` attributes from github action yaml and paste it in spec section of harness action step yaml
+To create action step in harnessCI, copy the `uses`, `with` and `env` attributes from the GitHub action YAML and paste it in spec section of harness action step yaml
 
 <table>
 <tr>
@@ -123,7 +123,7 @@ To create action step in harnessCI, copy the `uses`, `with` and `env` attributes
 
 ## Example pipeline
 
-This pipeline installs golang version 1.19.5 using action step, compiles the golang application and runs the tests.
+This pipeline installs golang version 1.19.5 using an Action step, compiles the golang application, and runs the tests.
 
 ```yaml
 pipeline:
