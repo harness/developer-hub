@@ -1,9 +1,8 @@
 ---
 id: azure-instance-memory-hog
-title: Azure Instance Memory Hog
+title: Azure instance memory hog
 ---
 
-## Introduction
 
 - Azure Instance Memory Hog contains chaos to disrupt the state of infra resources. The fault can induce stress chaos on Azure Instance using Azure Run Command, this is carried out by using bash scripts which are in-built in the fault for the given chaos scenario.
 - It causes Memory Hog chaos on Azure Instance using an bash script for a certain chaos duration.
@@ -12,20 +11,17 @@ title: Azure Instance Memory Hog
 ![Azure Instance Memory Hog](./static/images/azure-instance-memory-hog.png)
 :::
 
-## Uses
+## Usage
 
 ### Uses of the experiment
 
-:::info
 
 - The fault causes memory hog/stress on the target Azure Instance(s). The idea of this fault is to simulate issues when there is lack of memory for other runnning processes/applications resulting into degrading their performance.
 - Injecting a rogue process into a target Azure instance, we starve the main processes/applications (typically pid 1) of the resources allocated to it (where limits are defined) causing slowness in application traffic or in other cases unrestrained use can cause instance to exhaust resources leading to degradation in performance of processes/applications present on the instance. So this category of chaos fault helps to build the immunity on the application undergoing any such stress scenario.
 
-:::
 
 ## Prerequisites
 
-:::info
 
 ### Verify the prerequisites
 
@@ -61,17 +57,13 @@ stringData:
 
 - If you change the secret key name (from `azure.auth`) please also update the `AZURE_AUTH_LOCATION` ENV value in the ChaosExperiment CR with the same name.
 
-:::
 
-## Default Validations
-
-:::info
+## Default validations
 
 - Azure instance should be in healthy state.
 
-:::
 
-## Fault Tunables
+## Fault tunables
 
 <details>
 <summary>Check the Fault Tunables</summary>
@@ -149,13 +141,13 @@ stringData:
 
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common Fault Tunables
+### Common fault tunables
 
 Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
-### MEMORY CONSUMPTION IN MEGABYTES
+### Memory consumption in megabytes
 
 It defines the memory value to be utilised in megabytes on the Azure instance. It can be tuned via `MEMORY_CONSUMPTION` ENV.
 
@@ -186,7 +178,7 @@ spec:
           value: 'rg-azure'
 ```
 
-### MEMORY CONSUMPTION BY PERCENTAGE
+### Memory consumption by percentage
 
 It defines the memory percentage value to be utilised on the Azure instance. It can be tuned via `MEMORY_PERCENTAGE` ENV.
 
@@ -217,7 +209,7 @@ spec:
           value: 'rg-azure'
 ```
 
-### MULTIPLE Azure INSTANCES
+### Multiple Azure instances
 
 Multiple Azure instances can be targeted in one chaos run. It can be tuned via `AZURE_INSTANCE_NAMES` ENV.
 
@@ -246,7 +238,7 @@ spec:
           value: 'rg-azure'
 ```
 
-### MULTIPLE WORKERS
+### Multiple workers
 
 It defines the CPU threads to be run to spike the memory utilisation, this will increase the growth of memory consumption. It can be tuned via `NUMBER_OF_WORKERS` ENV.
 

@@ -1,17 +1,14 @@
 ---
 id: azure-web-app-access-restrict
-title: Azure Web App Access Restrict
+title: Azure web app access restrict
 ---
 
-## Introduction
 - Cause a split brain condition by restricting access to app-service instance and verify if requests are serviced and recovery is automated upon lifting restrictions
 - It helps to check the performance of the application/process running on the instance.
 
-:::tip Fault execution flow chart
 ![Azure Web App Access Restrict](./static/images/azure-web-app-access-restrict.png)
-:::
 
-## Uses
+## Usage
 <details>
 <summary>View the uses of the fault</summary>
 <div>
@@ -20,7 +17,6 @@ Coming soon.
 </details>
 
 ## Prerequisites
-:::info
 - Ensure that Kubernetes Version > 1.16
 - Ensure that you have sufficient Azure access to web apps 
 - We will use Azure [ file-based authentication ](https://docs.microsoft.com/en-us/azure/developer/go/azure-sdk-authorization#use-file-based-authentication) to connect with the instance using Azure GO SDK in the experiment. For generating auth file run `az ad sp create-for-rbac --sdk-auth > azure.auth` Azure CLI command.
@@ -47,12 +43,9 @@ stringData:
     }
 ```
 - If you change the secret key name (from `azure.auth`) please also update the `AZURE_AUTH_LOCATION` ENV value in the ChaosExperiment CR with the same name.
-:::
 
 ## Default Validations
-:::info
 - Azure target web app should be in running state.
-:::
 
 ## Fault Tunables
 <details>
