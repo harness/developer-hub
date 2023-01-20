@@ -101,7 +101,7 @@ Once you have the `ce:GetRightsizingRecommendation` permission added to the **Ha
 You need to perform the following steps in Harness:
 
 
-1. While creating a new AWS connector, select the **Inventory Management** feature to enable the recommendations. For more information, go to [Set up CCM for your AWS account.](https://developer.harness.io/docs/cloud-cost-management/onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-aws#choose-requirements)
+1. While creating a new AWS CCM connector, select the **Inventory Management** feature to enable recommendations. For more information, go to [Set up CCM for your AWS account.](https://developer.harness.io/docs/cloud-cost-management/onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-aws#choose-requirements)
 
  
 2. Add the required **Cost Explorer** permissions to the CCM template as shown in the screenshot below:
