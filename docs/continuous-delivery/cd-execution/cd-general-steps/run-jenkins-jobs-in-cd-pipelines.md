@@ -116,7 +116,7 @@ For example, `<+execution.steps.[step group Id].steps.[step Id].build.jobUrl>`.
 
 You can reference this Job information in subsequent steps in your pipeline or in another pipeline.
 
-To reference the Job information in another pipeline, use the full pipeline path to the build information. For example, `<+pipeline.stages.[stage_Id].spec.execution.steps.[step_Id].build.executionStatus>`.
+To reference the Job information in another stage in this pipeline, use the full pipeline path to the build information. For example, `<+pipeline.stages.[stage_Id].spec.execution.steps.[step_Id].build.executionStatus>`.
 
 ## Review: Multibranch Pipeline Support
 
