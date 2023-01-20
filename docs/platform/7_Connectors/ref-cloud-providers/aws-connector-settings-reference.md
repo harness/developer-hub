@@ -571,7 +571,7 @@ If you use the ​**Enable cross-account access (STS Role)** option in the AWS C
 
 The AWS CLI is not required for the other authentication methods.
 
-For steps on installing software with the Delegate, see [Run Initialization Scripts on Delegates](../../2_Delegates/delegate-guide/run-scripts-on-delegates.md).
+For steps on installing software with the Delegate, see [Run Initialization Scripts on Delegates](../../2_Delegates/configure-delegates/run-scripts-on-delegates.md).
 
 ### Switching Policies
 
@@ -685,7 +685,7 @@ eksctl create iamserviceaccount \
     --approve \  
     --override-existing-serviceaccounts —region=us-east-1
 ```
-In Harness, download the Harness Kubernetes Delegate YAML file. See [Install a Kubernetes Delegate](../../2_Delegates/delegate-guide/install-a-kubernetes-delegate.md).
+In Harness, download the Harness Kubernetes Delegate YAML file. See [Install a Kubernetes Delegate](../../2_Delegates/install-delegates/kubernetes-delegates/install-a-kubernetes-delegate.md).
 
 Open the Delegate YAML file in text editor.
 
@@ -721,7 +721,7 @@ Next, update StatefulSet spec with the new `serviceAccountName`.
 
 Save the Delegate YAML file.
 
-Install the Delegate in your EKS cluster and register the Delegate with Harness. See [Install a Kubernetes Delegate](../../2_Delegates/delegate-guide/install-a-kubernetes-delegate.md).
+Install the Delegate in your EKS cluster and register the Delegate with Harness. See [Install a Kubernetes Delegate](../../2_Delegates/install-delegates/kubernetes-delegates/install-a-kubernetes-delegate.md).
 
 
 :::note

@@ -1,6 +1,6 @@
 ---
 title: Sample harness-delegate.yaml with NFS volume mounted
-description: This sample harness-delegate.yaml declares a mounted NFS volume. apiVersion --  v1 kind --  Namespace metadata --  name --  harness-delegate-ng --- apiVersion --  rbac.authorization.k8s.io/v1 kind --  ClusterRoleBindi…
+description: This sample harness-delegate.yaml declares a mounted NFS volume. 
 # sidebar_position: 2
 helpdocs_topic_id: hipzqa4ntk
 helpdocs_category_id: vm60533pvt

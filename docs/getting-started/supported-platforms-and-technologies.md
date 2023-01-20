@@ -811,7 +811,7 @@ For Kubernetes deployments, the following SDKs/tools are included in the Delegat
 
 The versions can be found in this public GitHub repo: <https://github.com/harness/harness-core/tree/develop/960-api-services/src/main/java/io/harness/delegate/clienttools>
 
-For details on updating the default tool versions, go to [Install Software on the Delegate with Initialization Scripts](../platform/2_Delegates/delegate-guide/run-scripts-on-delegates.md).
+For details on updating the default tool versions, go to [Install Software on the Delegate with Initialization Scripts](../platform/2_Delegates/configure-delegates/run-scripts-on-delegates.md).
 
 For Kubernetes deployments, the following SDKs/tools are certified.
 
@@ -850,7 +850,7 @@ To support customization, Harness provides a Harness Delegate image that does no
 
 Using the No Tools Image and Delegate YAML, you can install the specific SDK versions you want. You install software on the Delegate using the `INIT_SCRIPT` environment variable in the Delegate YAML.
 
-For steps on using the No Tools Delegate image and installing specific SDK versions, see [Install a Delegate with 3rd Party Tool Custom Binaries](../platform/2_Delegates/delegate-guide/install-a-delegate-with-3-rd-party-tool-custom-binaries.md).
+For steps on using the No Tools Delegate image and installing specific SDK versions, see [Install a Delegate with 3rd Party Tool Custom Binaries](../platform/2_Delegates/advanced-installation/install-a-delegate-with-3-rd-party-tool-custom-binaries.md).
 
 ### Supported browsers
 

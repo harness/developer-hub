@@ -618,11 +618,7 @@ Harness Self-Managed Enterprise Edition installations do not currently support t
 
 ## Remove previous kustomization for ingress controller
 
-<!-- bad link
-**This option is only needed if you have installed Harness Self-Managed Enterprise Edition previously.** If this is a fresh install, you can go directly to [Configure Harness](#kubernetes-on-prem-existing-cluster-setup.md#step-4-configure_harness).
--->
-
-**This option is only needed if you have installed Harness Self-Managed Enterprise Edition previously.** If this is a fresh install, you can go directly to [Configure Harness](#step-4-configure_harness).
+**This option is only needed if you have installed Harness Self-Managed Enterprise Edition previously.** If this is a fresh install, you can go directly to [Configure Harness](kubernetes-on-prem-existing-cluster-setup.md#step-4-configure-harness).
 
 If you installed Harness Self-Managed Enterprise Edition before, you updated Harness manifests using kustomize for the ingress controller. This is no longer required.
 
