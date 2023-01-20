@@ -5,11 +5,13 @@ description: View the CCM recommendations
 ---
 
 
-An effective way to reduce the costs of your AWS EC2 instances is to make sure the VMs are optimally utilized by resizing the instances based on the tasks running on that instance and decommissioning the ones not used for an extended period.
+An effective way to reduce AWS EC2 instance costs is to optimize VM utilization. This involves resizing instances based on active tasks and decommissioning unused instances.
+
+Harness helps you reduce costs with recommendations.
 
 You can view the recommendations for all of your AWS accounts on the recommendations page. 
 
-You can also tune the recommendations displayed depending on the instance family you want to use. It could either be within the same instance family or across instance families.
+You can also tune these recommendations by instance family or across instance families (General Purpose, Compute Optimized, etc.).
 
 
 :::note
