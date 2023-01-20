@@ -203,6 +203,21 @@ const CIList: CardItem[] = [
     time: "10 min",
     link: "/tutorials/build-code/ci-github-action-step",
   },
+  {
+    title: "Build, test, and publish a Docker image for a sample React application",
+
+    module: "ci",
+    icon: "img/icon_ci.svg",
+    description: (
+      <>
+        Learn how to build and test a sample React application in a CI pipeline.
+      </>
+    ),
+    newDoc: true,
+    type: [docType.Documentation],
+    time: "20 min",
+    link: "/tutorials/build-code/ci-react-quickstart",
+  },
 ];
 
 const CDList: CardItem[] = [
