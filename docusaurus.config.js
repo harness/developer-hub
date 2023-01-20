@@ -453,6 +453,18 @@ const config = {
       },
     ],
     [
+      "@docusaurus/plugin-content-docs",
+      {
+        id: "kb",
+        path: "kb",
+        routeBasePath: "kb",
+        exclude: ["**/shared/**", "**/static/**"],
+        sidebarPath: require.resolve("./sidebars-kb.js"),
+        editUrl: "https://github.com/harness/developer-hub/tree/main",
+        // ... other options
+      },
+    ],
+    [
       path.resolve(__dirname, "./plugins/docs-rss-plugin"),
       {
         id: "release-notes",
