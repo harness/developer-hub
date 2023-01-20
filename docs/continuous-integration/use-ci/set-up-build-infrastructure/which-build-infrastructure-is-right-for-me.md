@@ -68,11 +68,11 @@ The table below shows the operating systems and arcitectures supported by each b
 <th >macOS</th>
 </tr>
 <tr>
-<th>amd64</td>
-<th>arm64</td>
-<th>amd64</td>
-<th>arm64</td>
-<th> arm64 </td>
+<th>amd64</th>
+<th>arm64</th>
+<th>amd64</th>
+<th>arm64</th>
+<th>arm64</th>
 </tr>
   <tr>
 <th>Cloud</th>
