@@ -67,7 +67,7 @@ If you are an existing customer, you need to:
 
 
 
-You need to perform the following tasks on your AWS console to enable these recommendations.
+Once you have the `ce:GetRightsizingRecommendation` permission added to the **HarnessEventsMonitoringPolicy** in the IAM role, perform the following tasks on your AWS console to enable recommendations.
 
 1. On your AWS console, go to the **Cost Explorer** service.
 
