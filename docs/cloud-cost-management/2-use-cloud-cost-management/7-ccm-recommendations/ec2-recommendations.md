@@ -61,8 +61,8 @@ Harness CCM provides two types of recommendations to optimize your EC2 instances
 
 :::note
 If you are an existing customer, you need to:
-* Edit the IAM Role in the AWS Connector corresponding to the account.
-* Add _ce:GetRightsizingRecommendation_ permission to the **HarnessEventsMonitoringPolicy**.
+* Edit the IAM role used by the Harness AWS Connector corresponding to the AWS account.
+* In the IAM role, add the `ce:GetRightsizingRecommendation` permission to the **HarnessEventsMonitoringPolicy**.
 :::
 
 
@@ -113,7 +113,7 @@ You need to perform the following steps in Harness:
 ### View your EC2 recommendations
 
 
-1. In the **Harness** application, go to **Cloud Costs**.
+1. In **Harness**, go to the **Cloud Costs** module.
 2. Click **Recommendations**.
 3. Click the filter icon.
 4. In the **Resource Type** dropdown list, select **EC2_INSTANCE**.
