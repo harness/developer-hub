@@ -1,7 +1,7 @@
 ---
 title: Security Testing Orchestration
 description: Provides an overview of new features and fixed issues.
-date: 2022-12-15T10:00
+date: 2022-10-31T10:00
 tags: [NextGen, "security testing orchestration"]
 sidebar_position: 8
 ---

@@ -16,9 +16,8 @@ Here are the requirements for each microservice.
 
 
 
-|  |  |  |  |  |  |
-| --- | --- | --- | --- | --- | --- |
 | **Microservice** | **Pods** | **CPU / Pod** | **Memory / Pod** | **Total CPU** | **Total Memory** |
+| :-- | :-: | :-: | :-: | :-: | :-: |
 | Manager | 2 | 2 | 4 | 4 | 8 |
 | Verification | 2 | 1 | 3 | 2 | 6 |
 | Machine Learning Engine | 1 | 8 | 2 | 8 | 2 |
@@ -30,7 +29,7 @@ Here are the requirements for each microservice.
 | KOTS Admin Pods |   |   |   | 4 | 8 |
 | **Total** |  |  |  | **37.5** | **73.5** |
 
-The KOTS Admin Pods requirements are for a full stack. In an existing cluster, they will likely be lower.
+The KOTS Admin Pods requirements support a full stack. In an existing cluster, they will likely be lower.
 
 ### Dev Installation
 
@@ -38,9 +37,8 @@ Here are the requirements for each microservice.
 
 
 
-|  |  |  |  |  |  |
-| --- | --- | --- | --- | --- | --- |
 | **Microservice** | **Pods** | **CPU / Pod** | **Memory / Pod** | **Total CPU** | **Total Memory** |
+| :-- | :-: | :-: | :-: | :-: | :-: |
 | Manager | 1 | 2 | 4 | 2 | 4 |
 | Verification | 1 | 1 | 3 | 1 | 3 |
 | Machine Learning Engine | 1 | 3 | 2 | 3 | 2 |
@@ -72,9 +70,9 @@ Harness uses a total 1000 GB of space distributed as:
 * Timescale DB - 1 pods \* 20 GB each = 20 GB
 * Redis: 30 GB total
 
-### Whitelist and Outbound Access Requirements
+### Allowlist and Outbound Access Requirements
 
-Whitelist the following URLs:
+Add the following URLs to your allowlist:
 
 * kots.io — Kots pulls the latest versions of the kubectl plugin and Kots admin console.
 * app.replicated.com — Kots admin console connects to check for the availability of releases according to your license
@@ -88,7 +86,7 @@ Outbound access to the following URLs:
 * app.replicated.com
 
 :::note
-The outbound access is required for a **connected install only**. If you have opted for [Airgap mode](https://kots.io/kotsadm/installing/airgap-packages/), this is not required.
+Outbound access is required only for **connected installation**. Outbound access is not required for air-gap installation. For more information on installing KOTS in an air-gapped environment, see [Installing on an Existng Cluster](https://kots.io/kotsadm/installing/airgap-packages/).
 :::
 
 If your cluster does not have direct outbound connectivity and needs a proxy for outbound connections, use these instructions: [https://docs.docker.com/network/proxy](https://docs.docker.com/network/proxy/) to set up a proxy on the node machines.
@@ -97,19 +95,21 @@ If your cluster does not have direct outbound connectivity and needs a proxy for
 
 The following diagram illustrates the simple cluster and networking architecture for an Harness Self-Managed Enterprise Edition - Kubernetes Cluster setup.
 
-![](./static/existing-cluster-kubernetes-on-prem-infrastructure-requirements-21.png)The following sections go into greater detail.
+![](./static/existing-cluster-kubernetes-on-prem-infrastructure-requirements-21.png)
+
+The following sections go into greater detail.
 
 ### Namespace Requirements
 
-In the examples in all Harness Self-Managed Enterprise Edition documentation, we use namespace named `harness`.
+In the examples in all Harness Self-Managed Enterprise Edition documentation, we use the `harness` namespace.
 
-If can use a different namespace, ensure that you update any spec samples provided by Harness.
+If you use a different namespace, make sure you update any `spec` samples provided by Harness.
 
 ### Load Balancer
 
-You need to set up a Load Balancer before installing Harness Self-Managed Enterprise Edition.
+You need to set up a load balancer before installing Harness Self-Managed Enterprise Edition.
 
-During installation, you will provide the Load Balancer URL in the KOTS admin console.
+During installation, you will provide the load balancer URL in the KOTS admin console.
 
 After Harness Self-Managed Enterprise Edition is installed, the load balancer is used to access the Harness Manager UI using a web browser.
 
@@ -117,17 +117,17 @@ Follow the steps on creating the load balancer as part of the process described 
 
 ##### Port Mapping for gRPC Traffic
 
-You also need to open port 9879 on the Load Balancer and map it to port 9879 on the Ingress controller. This is to support gRPC traffic.
+You must also open port 9879 on the load balancer and map it to port 9879 on the ingress controller. This is to support gRPC traffic.
 
 ### Trusted Certificate Requirement for Harness Self-Managed Enterprise Edition
 
-All connections to the Harness Manager can be secure or unencrypted according to the URL scheme you use when you configure the Load Balancer URL during installation (`https://` or `http://`):
+Connections to Harness Manager can be secure or unencrypted. This depends on the URL scheme you apply when you configure the load balancer URL during installation (`https://` or `http://`).
 
-![](./static/existing-cluster-kubernetes-on-prem-infrastructure-requirements-22.png)For secure connections from any integration into the Harness Manager (Github Webhooks, etc), including the **Harness Delegate**, you must use a publicly trusted certificate.
+![](./static/existing-cluster-kubernetes-on-prem-infrastructure-requirements-22.png)
 
-Harness does not support self-signed certificates for connections to the Harness Manager.
+To securely connect Harness Delegate and integrations like Github Webhooks to Harness Manager, you must use a publicly trusted certificate. Harness does not support self-signed certificates for connections to Harness Manager.
 
-For connections from the Harness Manager outbound to an integration, you can use a self-signed certificate. In this case, you must import the self-signed certificate into Harness Delegate's JRE keystore manually or using a Harness [Delegate Profile](../../firstgen-platform/account/manage-delegates/run-scripts-on-the-delegate-using-profiles.md).
+For connections from Harness Manager to an integration, you can use a self-signed certificate. In this case, you must import the self-signed certificate into the delegate's JRE keystore manually or by using a delegate profile. For information on the use of profiles, see [Run scripts on the delegate using profiles](../../firstgen-platform/account/manage-delegates/run-scripts-on-the-delegate-using-profiles.md).
 
 See [Add Self-Signed Certificates for Delegate Connections](../../firstgen-platform/account/manage-delegates/add-self-signed-certificates-for-delegate-connections.md).
 

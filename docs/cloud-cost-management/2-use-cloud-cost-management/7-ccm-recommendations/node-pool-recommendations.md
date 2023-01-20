@@ -96,54 +96,8 @@ Similarly, for memory, nodes will be the max number of nodes in the observation 
 
 Node pool recommendations also offer the flexibility of tuning the recommendations by setting the resource configuration preferences. See **Tune Recommendations**.
 
-## View Recommendations
 
-
-:::note
-After enabling CCM, it may take up to 48 hours for the recommendations to appear in Cloud Costs. It depends on the time at which CCM receives the utilization data for the workload.In **Cloud Costs**, click **Recommendations**.
-:::
-
-The recommendations page displays the following information:
-
-* A breakdown of all the available recommendations.
-* **Potential Monthly Savings** across your Kubernetes clusters if you apply the recommendations.
-* **Forecasted Monthly Spend** across your Kubernetes clusters if you do not apply the recommendations.
-* **Emissions that can be reduced** and **Potential Carbon Emissions** are features that track greenhouse gas emissions.
-
-The **Recommendation Breakdown** displays the following information:
-
-
-
-|  |  |
-| --- | --- |
-| **Monthly Savings** | Potential monthly savings for your resource, if you apply the recommendations. |
-| **Resource Name** | Name of the resource for which CCM displays the recommendation. |
-| **Monthly Saving** | Potential Monthly Savings for the resource, if you apply the recommendations. |
-| **Monthly Cost** | The monthly cost of the recommendation. |
-| **Recommendation Type** | Type of the recommendation for your resource. For example, **rightsizing** or **resizing**. Based on your resource type, CCM recommends rightsizing or resizing your CPU, memory, or node counts. |
-
-You can use a filter to select the resource or recommendation for which you want to view the details.
-
-![](./static/node-pool-recommendations-08.png)
-
-You can create and use filters to select resources and recommendations.
-
-You can filter by:
-
-* **Resource Name:** the name of the resource being monitored.
-* **Namespace**: each Kubernetes namespace in the cluster.
-* **Cluster Name**: each Kubernetes cluster in your infrastructure.
-* **Resource Type**: the type of resources for which the recommendation is displayed. Currently, CCM supports ECS service, node pool and workload.
-* **Savings**: enter the minimum monthly savings. For example, all the recommendations with potential monthly savings of more than $1000.
-* **Potential Spend**: filter by forecasted monthly spend greater than the specified amount. For example, all the recommendations with forecasted monthly spend of more than $1000.
-
-A recommendation for the selected resource is displayed.
-
-Within a recommendation, select the number of days to compute recommendations based on the utilization data. You can select the last day, 7 days, or 30 days.
-
-You can use this information to optimize your resources to potentially reduce your monthly cloud costs.
-
-### Step: Tune and Share Recommendations
+### Tune and Share Recommendations
 
 You can tune your recommendations by modifying the value of CPU, memory, node counts, and instances.
 

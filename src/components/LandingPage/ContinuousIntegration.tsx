@@ -144,6 +144,22 @@ const CIList: CardItem[] = [
     link: "/tutorials/build-code/ci-java-http-server",
   },
   {
+    title: "Build and push a container image to Amazon ECR",
+
+    module: "ci",
+    icon: "img/icon_ci.svg",
+    description: (
+      <>
+        Build, test, and publish a container image to AWS ECR.
+
+      </>
+    ),
+    newDoc: false,
+    type: [docType.Documentation],
+    time: "15 min",
+    link: "/tutorials/build-code/ci-build-push-to-ecr",
+  },
+  {
     title: "Get started with the fastest CI on the planet",
 
     module: "ci",
@@ -188,22 +204,37 @@ const CIList: CardItem[] = [
   type: [docType.Documentation],
   time: '15 min',
   link: '/tutorials/build-code/ci-tutorial-container-signing',
-},
-{
+},{
   title: "Build, test, and publish a Docker image for a sample React application",
-
   module: "ci",
   icon: "img/icon_ci.svg",
   description: (
     <>
-      Learn how to build and test a sample React application in a CI pipeline..
+      Learn how to build and test a sample React application in a CI pipeline.
+  
     </>
   ),
   newDoc: true,
   type: [docType.Documentation],
   time: "20 min",
   link: "/tutorials/build-code/ci-react-quickstart",
-},
+},{
+  title: "Github Action steps",
+  module: "ci",
+  icon: "img/icon_ci.svg",
+  description: (
+    <>
+
+     This guide shows how to run GitHub Actions natively with harness CI.
+
+    </>
+  ),
+  newDoc: true,
+  type: [docType.Documentation],
+
+  time: "10 min",
+  link: "/tutorials/build-code/ci-github-action-step",
+}
 ];
 
 export default function CI() {
