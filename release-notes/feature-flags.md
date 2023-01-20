@@ -1,6 +1,6 @@
 ---
 title: Feature Flags
-date: 2022-12-22T10:00
+date: 2023-01-19T10:00
 tags: [NextGen, "feature flags"]
 sidebar_position: 6
 ---
