@@ -47,5 +47,5 @@ Perform the following steps to create an AutoStopping proxy for your resources i
 15.  Select the **Security Group** of your instance.
 16.  Select the SSH key pair to connect to your VM.
 17.  Enter the **Secret ARN** in the **TLS Private Key Secret Version **field**.**
-18.  Enable **Allocate Static IP** if you need to access the VM outside the VPC. Ensure that the DNS resolves.
+18.  Enable **Allocate Static IP** if you need to assign an elastic IP address to make the instance publicly accessible.
 19.  Click **Save Load Balancer**.
