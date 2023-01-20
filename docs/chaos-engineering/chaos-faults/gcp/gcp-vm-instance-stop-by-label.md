@@ -1,30 +1,26 @@
 ---
 id: gcp-vm-instance-stop-by-label
-title: GCP VM Instance Stop By Label
+title: GCP VM instance stop by label
 ---
 
-## Introduction
 - It causes power-off of GCP VM instances filtered by a label before bringing it back to the running state after the specified chaos duration.
 - It helps to check the performance of the application/process running on the VM instance.
 - When the `MANAGED_INSTANCE_GROUP` is `enable` then the fault will not try to start the instances post chaos, instead it will check the addition of new instances to the instance group.
 
-:::tip Fault execution flow chart
 ![GCP VM Instance Stop By Label](./static/images/gcp-vm-instance-stop.png)
-:::
 
-## Uses
+## Usage
 <details>
-<summary>View the uses of the fault</summary>
+<summary>View fault usage</summary>
 <div>
 Coming soon.
 </div>
 </details>
 
 ## Prerequisites
-:::info
-- Ensure that Kubernetes Version > 1.16.
-- Ensure that you have sufficient GCP permissions to stop and start the GCP VM instances.
-- Ensure to create a Kubernetes secret having the GCP service account credentials in the default namespace. A sample secret file looks like:
+- Kubernetes > 1.16.
+- Adequate GCP permissions to stop and start the GCP VM instances.
+- Ensure to create a Kubernetes secret having the GCP service account credentials in the default namespace. Below is a sample secret file:
 ```yaml
 apiVersion: v1
 kind: Secret
@@ -43,14 +39,11 @@ stringData:
   auth_provider_x509_cert_url:
   client_x509_cert_url:
 ```
-:::
 
-## Default Validations
-:::info
+## Default validation
 - All the VM instances having the target label are in a healthy state.
-:::
 
-## Fault Tunables
+## Fault tunables
 <details>
     <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>
@@ -116,12 +109,12 @@ stringData:
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common Fault Tunables
+### Common fault tunables
 Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
-### Target GCP Instances
+### Target GCP instances
 
 It will stop all the instances with filtered by the label `INSTANCE_LABEL` and corresponding `ZONES` zone in `GCP_PROJECT_ID` project.
 
@@ -153,7 +146,7 @@ spec:
           VALUE: '60'
 ```
 
-### Manged Instance Group
+### Manged instance group
 
 If vm instances belong to a managed instance group then provide the `MANAGED_INSTANCE_GROUP` as `enable` else provided it as `disable`, which is the default value.
 

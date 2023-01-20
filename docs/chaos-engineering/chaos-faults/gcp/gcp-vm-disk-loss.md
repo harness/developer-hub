@@ -1,29 +1,25 @@
 ---
 id: gcp-vm-disk-loss
-title: GCP VM Disk Loss
+title: GCP VM disk loss
 ---
 
-## Introduction
 - It causes chaos to disrupt state of GCP persistent disk volume by detaching it from its VM instance for a certain chaos duration using the disk name.
 
-:::tip Fault execution flow chart
 ![GCP VM Disk Loss](./static/images/gcp-vm-disk-loss.png)
-:::
 
-## Uses
+## Usage
 <details>
-<summary>View the uses of the fault</summary>
+<summary>View fault usage</summary>
 <div>
 Coming soon.
 </div>
 </details>
 
 ## Prerequisites
-:::info
-- Ensure that Kubernetes Version > 1.16.
+- Kubernetes > 1.16.
 - Ensure that your service account has an editor access or owner access for the GCP project.
 - Ensure that the target disk volume is not a boot disk of any VM instance.
-- Ensure to create a Kubernetes secret having the GCP service account credentials in the default namespace. A sample secret file looks like:
+- Ensure to create a Kubernetes secret having the GCP service account credentials in the default namespace. Below is a sample secret file:
 ```yaml
 apiVersion: v1
 kind: Secret
@@ -42,14 +38,13 @@ stringData:
   auth_provider_x509_cert_url:
   client_x509_cert_url:
 ```
-:::
 
-## Default Validations
-:::info
+
+## Default validation
 - Disk volumes are attached to their respective instances.
-:::
 
-## Fault Tunables
+
+## Fault tunables
 <details>
     <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>
@@ -110,12 +105,12 @@ stringData:
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common Fault Tunables
+### Common fault tunables
 Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
-### Detach Volumes By Names
+### Detach volumes by names
 
 It contains comma separated list of volume names subjected to disk loss chaos. It will detach all the disks with the given `DISK_VOLUME_NAMES` disk names and corresponding `ZONES` zone names and the `DEVICE_NAMES` device names in `GCP_PROJECT_ID` project. It re-attaches the volume after waiting for the specified `TOTAL_CHAOS_DURATION` duration.
 

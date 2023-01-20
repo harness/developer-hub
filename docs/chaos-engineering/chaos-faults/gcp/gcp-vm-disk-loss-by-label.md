@@ -1,29 +1,25 @@
 ---
 id: gcp-vm-disk-loss-by-label
-title: GCP VM Disk Loss By Label
+title: GCP VM disk loss by label
 ---
 
-## Introduction
 - It causes chaos to disrupt the state of GCP persistent disk volume filtered using a label by detaching it from its VM instance for a certain chaos duration.
 
-:::tip Fault execution flow chart
 ![GCP VM Disk Loss By Label](./static/images/gcp-vm-disk-loss.png)
-:::
 
-## Uses
+## Usage
 <details>
-<summary>View the uses of the fault</summary>
+<summary>View fault usage</summary>
 <div>
 Coming soon.
 </div>
 </details>
 
 ## Prerequisites
-:::info
-- Ensure that Kubernetes Version > 1.16.
+- Kubernetes > 1.16.
 - Ensure that your service account has an editor access or owner access for the GCP project.
 - Ensure that the target disk volume is not a boot disk of any VM instance.
-- Ensure to create a Kubernetes secret having the GCP service account credentials in the default namespace. A sample secret file looks like:
+- Ensure to create a Kubernetes secret having the GCP service account credentials in the default namespace. Below is a sample secret file:
 ```yaml
 apiVersion: v1
 kind: Secret
@@ -42,14 +38,11 @@ stringData:
   auth_provider_x509_cert_url:
   client_x509_cert_url:
 ```
-:::
 
-## Default Validations
-:::info
+## Default validation
 - All the disk volumes having the target label are attached to their respective instances.
-:::
 
-## Fault Tunables
+## Fault tunables
 <details>
     <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>
@@ -110,12 +103,12 @@ stringData:
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common Fault Tunables
+### Common fault tunables
 Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
-### Detach Volumes By Label
+### Detach volumes by label
 
 It contains the label of disk volumes to be subjected to disk loss chaos. It will detach all the disks with the label `DISK_VOLUME_LABEL` in zone `ZONES` within the `GCP_PROJECT_ID` project.  It re-attaches the disk volume after waiting for the specified `TOTAL_CHAOS_DURATION` duration.
 

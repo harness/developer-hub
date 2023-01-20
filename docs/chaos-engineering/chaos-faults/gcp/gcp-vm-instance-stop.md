@@ -1,30 +1,26 @@
 ---
 id: gcp-vm-instance-stop
-title: GCP VM Instance Stop
+title: GCP VM instance stop
 ---
 
-## Introduction
 - It powers off of a GCP VM instance by instance name or list of instance names before bringing it back to the running state after the specified chaos duration.
 - It checks the performance of the application/process running on the VM instance.
 - When the `MANAGED_INSTANCE_GROUP` is `enable`, the fault doesn't start the instances after chaos. It checks the instance group for new instances.
 
-:::tip Fault execution flow chart
 ![GCP VM Instance Stop](./static/images/gcp-vm-instance-stop.png)
-:::
 
-## Uses
+## Usage
 <details>
-<summary>View the uses of the fault</summary>
+<summary>View fault usage</summary>
 <div>
 Coming soon.
 </div>
 </details>
 
 ## Prerequisites
-:::info
 - Kubernetes > 1.16.
-- GCP permissions to stop and start the GCP VM instances. 
-- Kubernetes secret that has the GCP service account credentials in the default namespace. A secret file looks like:
+- Adequate GCP permissions to stop and start the GCP VM instances. 
+- Kubernetes secret that has the GCP service account credentials in the default namespace. Below is a sample secret file:
 ```yaml
 apiVersion: v1
 kind: Secret
@@ -43,14 +39,11 @@ stringData:
   auth_provider_x509_cert_url:
   client_x509_cert_url:
 ```
-:::
 
-## Default Validations
-:::info
+## Default validation
 - The VM instances should be in a healthy state.
-:::
 
-## Fault Tunables
+## Fault tunables
 <details>
     <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>
@@ -111,12 +104,12 @@ stringData:
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common Fault Tunables
+### Common fault tunables
 Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
-### Target GCP Instances
+### Target GCP instances
 It stops all the instances with the given `VM_INSTANCE_NAMES` instance names and corresponding `ZONES` zone names in `GCP_PROJECT_ID` project. 
 
 `NOTE:` The `VM_INSTANCE_NAMES` contains multiple comma-separated VM instances. The comma-separated zone names should be provided in the same order as the instance names.
@@ -150,7 +143,7 @@ spec:
           value: 'project-id'
 ```
 
-### Managed Instance Group
+### Managed instance group
 
 If VM instances belong to a managed instance group, specify the `MANAGED_INSTANCE_GROUP` as `enable`, otherwise specify it as `disable`, which is the default value. 
 
@@ -189,7 +182,7 @@ spec:
           VALUE: '60'
 ```
 
-### Mutiple Iterations Of Chaos
+### Mutiple iterations of chaos
 
 You can tune different iterations of chaos by setting `CHAOS_INTERVAL` environment variable. It defines the delay between each iteration of chaos.
 
