@@ -190,13 +190,13 @@ const CIList: CardItem[] = [
   link: '/tutorials/build-code/ci-tutorial-container-signing',
 },
 {
-  title: "Build, Test, and Publish a Docker Image for a sample React application",
+  title: "Build, test, and publish a Docker image for a sample React application",
 
   module: "ci",
   icon: "img/icon_ci.svg",
   description: (
     <>
-      This build automation guide walks you through building and testing a sample React application in a CI Pipeline.
+      Learn how to build and test a sample React application in a CI pipeline..
     </>
   ),
   newDoc: true,
