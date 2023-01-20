@@ -40,7 +40,6 @@ Perform the following steps to create an AutoStopping proxy for your resources i
 
 
 
-
 ![](./static/aws-autoproxy-secrets-manager.png)
 
 14.  Enter the API key generated in Harness New Generation. Go to [Create an API Key](/docs/platform/16_APIs/api-quickstart.md) for more information.
