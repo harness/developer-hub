@@ -25,9 +25,7 @@ Coming soon.
 :::
 
 ## Default validation
-:::note
 The application pods should be running before and after injecting chaos.
-:::
 
 ## Implementation
 

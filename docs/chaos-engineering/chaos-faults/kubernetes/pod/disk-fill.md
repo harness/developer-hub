@@ -52,9 +52,7 @@ Disk fill is used to determine how the application behaves when the disk is unde
 :::
 
 ## Default validation
-:::note
 The application pods should be running before and after injecting chaos.
-:::
 
 ## Implementation
 
@@ -76,12 +74,12 @@ After successful setup of chaos infrastructure:
         </tr>
         <tr> 
           <td> FILL_PERCENTAGE </td>
-          <td> Percentage of the ephemeral storage limit to fill. </td>
+          <td> Percentage of the ephemeral storage limit to be filled. </td>
           <td> The value can be more than 100, that force evicts the pod. Ephemeral storage limits are set on the target pod.</td>
         </tr>
         <tr>
           <td> EPHEMERAL_STORAGE_MEBIBYTES </td>
-          <td> Ephemeral storage to be filled (in MiB)</td>
+          <td> Ephemeral storage to be filled (in MiB).</td>
           <td> <code>FILL_PERCENTAGE</code> and <code>EPHEMERAL_STORAGE_MEBIBYTES</code> are mutually exclusive.</td>
         </tr>
       </table>
@@ -114,38 +112,38 @@ After successful setup of chaos infrastructure:
         </tr> 
         <tr>
           <td> DATA_BLOCK_SIZE </td>
-          <td> It contains data block size used to fill the disk(in KB)</td>
-          <td> Defaults to 256, it supports unit as KB only</td>
+          <td> Data block size to use for filling the disk (in KB).</td>
+          <td> Defaults to 256 KB.</td>
         </tr> 
         <tr>
           <td> PODS_AFFECTED_PERC </td>
-          <td> The Percentage of total pods to target </td>
-          <td> Defaults to 0 (corresponds to 1 replica), provide numeric value only </td>
+          <td> Percentage of total pods that the chaos experiment targets (numeric values only). </td>
+          <td> Defaults to 0 (corresponds to 1 replica). </td>
         </tr> 
         <tr> 
           <td> CONTAINER_PATH </td>
           <td> Path to cotainer runtime used during disk fill </td>
-          <td> If not provided, the first container in the targeted pod will be subject to chaos </td>
+          <td> If the path hasn't been provided, the first container in the target pod is subject to chaos. </td>
         </tr>
         <tr>
           <td> LIB </td>
-          <td> The chaos lib used to inject the chaos </td>
-          <td> Defaults to `litmus` supported litmus only </td>
+          <td> The chaos library used to inject chaos. </td>
+          <td> Defaults to `litmus` (support litmus only). </td>
         </tr>
         <tr>
           <td> LIB_IMAGE </td>
-          <td> The image used to fill the disk </td>
+          <td> Image that uses the helper pod to inject chaos. </td>
           <td> Defaults to <code>litmuschaos/go-runner:latest</code> </td>
         </tr>
         <tr>
           <td> RAMP_TIME </td>
-          <td> Period to wait before injection of chaos in sec </td>
-          <td> Eg. 30 </td>
+          <td> Period to wait before injecting chaos (in seconds). </td>
+          <td> For example, 30s. </td>
         </tr>
         <tr>
           <td> SEQUENCE </td>
-          <td> It defines sequence of chaos execution for multiple target pods </td>
-          <td> Default value: parallel. Supported: serial, parallel </td>
+          <td> Sequence of chaos execution for multiple target pods. </td>
+          <td> Defaults to parallel. It supports serial sequence as well. </td>
         </tr>
       </table>
   </details>

@@ -24,9 +24,7 @@ Coming soon.
 :::
 
 ## Default validation
-:::note
 The application pods should be running before and after injecting chaos.
-:::
 
 ## Implementation
 
@@ -62,7 +60,7 @@ After successful setup of chaos infrastructure:
           <tr>
             <td> TOTAL_CHAOS_DURATION </td>
             <td> Timeout for the chaos fault (in seconds). </td>
-            <td> Defaults to 60 </td>
+            <td> Defaults to 60s </td>
           </tr>
           <tr>
             <td> LIB </td>
@@ -91,17 +89,12 @@ To validate the experiment you ran, execute the below commands on your terminal.
 kubectl get pods -n <namespace>
 ```
 
-* Exec into the microservice on which you will execute the chaos fault.
+* Keep a watch on the pod that you wish to replicate. This is the same pod that you specified in the 'Target application -> App Label'.
 ```
-kubectl exec -it <microservice_name> -n <namespace> sh
-``` 
-
-* This leads you into the pod, where you can execute the below command to check the workers running inside the pod.
-```
-/app # top
+watch kubectl get pods -n <namespace>
 ```
 
-This displays the number of stress ng workers running inside the pod during chaos. 
+When the chaos starts, the number of replicas of the specific pod increases (since there is only 1 pod to begin with) to the number you specified in the tunables. Once the chaos execution is complete, the number of pods comes back to its original number. 
 
 ### Common and pod specific tunables
 

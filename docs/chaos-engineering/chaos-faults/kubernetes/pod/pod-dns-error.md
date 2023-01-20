@@ -4,7 +4,7 @@ title: Pod DNS error
 ---
 Pod DNS error is a Kubernetes pod-level chaos fault that:
 - Injects chaos to disrupt DNS resolution in pods.
-- Removes access to services by blocking DNS resolution of host names (or domains).
+- Removes access to services by blocking the DNS resolution of host names (or domains).
 
 :::tip Fault execution flow chart
 ![Pod DNS Error](./static/images/dns-chaos.png)
@@ -24,9 +24,7 @@ Coming soon.
 :::
 
 ## Default validation
-:::note
 The application pods should be running before and after injecting chaos.
-:::
 
 ## Implementation
 
@@ -48,17 +46,17 @@ After successful setup of chaos infrastructure:
           </tr>
           <tr>
             <td> TARGET_CONTAINER </td>
-            <td> Name of container which is subjected to dns-error </td>
+            <td> Name of the container subject to DNS error. </td>
             <td> None </td>
           </tr>
           <tr>
             <td> TOTAL_CHAOS_DURATION </td>
-            <td> The time duration for chaos insertion (seconds) </td>
-            <td> Default (60s) </td>
+            <td> Duration to insert chaos (in seconds). </td>
+            <td> Defaults to 60s. </td>
           </tr>
           <tr>
             <td> TARGET_HOSTNAMES </td>
-            <td> List of the target hostnames or keywords eg. '["litmuschaos","chaosnative.com"]'</td>
+            <td> List of the target host names (or keywords). For example, '["litmuschaos","chaosnative.com"]'.</td>
             <td> If not provided, all hostnames/domains will be targeted</td>
           </tr>
           <tr>
@@ -123,17 +121,23 @@ kubectl get pods -n <namespace>
 kubectl exec -it <microservice_name> -n <namespace> sh
 ``` 
 
+* This leads you into the pod, where you can execute the below command to check the disk usage.
+```
+/app # ping <target_hostname>
+```
+When the chaos is in action, accessing the target_hostname leads to a 'bad address' error. 
+
 ## Fault examples
 
 ### Common and pod specific tunables
-Refer the [common attributes](../../common-tunables-for-all-faults) and [Pod specific tunable](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
+Refer to the [common attributes](../../common-tunables-for-all-faults) and [pod specific tunables](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
 
 ### Target host names
 
-It defines the comma-separated name of the target hosts subjected to chaos. It can be tuned with the `TARGET_HOSTNAMES` ENV.
-If `TARGET_HOSTNAMES`not provided then all hostnames/domains will be targeted.
+It defines the comma-separated name of the target hosts subject to chaos. You can tune it using the `TARGET_HOSTNAMES` environment variable.
+If `TARGET_HOSTNAMES` environment variable has not been provided, all host names (or domains) are targeted.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/pod-dns-error/target-hostnames.yaml yaml)
 ```yaml
@@ -196,7 +200,7 @@ spec:
           value: '60'
 ```
 
-### Container runtime socket path
+### Container runtime and socket path
 
 It defines the `CONTAINER_RUNTIME` and `SOCKET_PATH` ENV to set the container runtime and socket file path.
 

@@ -26,9 +26,7 @@ Stressing the disk with continuous and heavy IO for example can cause degradatio
 :::
 
 ## Default validation
-:::note
 The application pods should be running before and after injecting chaos.
-:::
 
 
 ## Implementation
@@ -42,7 +40,7 @@ After successful setup of chaos infrastructure:
 * Specify parameters for the **Target application**, **Tune fault**, and **Probes**;
     <details>
         <summary>Fault Tunables</summary>
-        <h2>Optional Fields</h2>
+        <h2>Populate one of the below fields (If both are populated, `FILESYSTEM_UTILIZATION_PERCENTAGE` takes precedence.) </h2>
         <table>
           <tr>
             <th> Variables </th>
@@ -51,71 +49,72 @@ After successful setup of chaos infrastructure:
           </tr>
           <tr>
             <td> FILESYSTEM_UTILIZATION_PERCENTAGE </td>
-            <td> Specify the size as percentage of free space on the file system </td>
-            <td> Default to 10%</td>
+            <td> Specify the size as a percentage of free space on the file system. </td>
+            <td> Defaults to 10 %. </td>
           </tr>
           <tr>
             <td> FILESYSTEM_UTILIZATION_BYTES </td>
-            <td> Specify the size in GigaBytes(GB). <code>FILESYSTEM_UTILIZATION_PERCENTAGE</code> & <code>FILESYSTEM_UTILIZATION_BYTES</code> are mutually exclusive. If both are provided, <code>FILESYSTEM_UTILIZATION_PERCENTAGE</code> is prioritized. </td>
+            <td> Specify the size of the files used (in GB). <code>FILESYSTEM_UTILIZATION_PERCENTAGE</code> and <code>FILESYSTEM_UTILIZATION_BYTES</code> are mutually exclusive. </td>
             <td> </td>
           </tr>
           <tr>
             <td> NUMBER_OF_WORKERS </td>
-            <td> It is the number of IO workers involved in IO disk stress </td>
-            <td> Default to 4 </td>
+            <td> Number of I/O workers involved in I/O stress. </td>
+            <td> Defaults to 4. </td>
           </tr> 
           <tr>
             <td> TOTAL_CHAOS_DURATION </td>
-            <td> The time duration for chaos (seconds) </td>
-            <td> Default to 120s </td>
+            <td> Duration to insert chaos (in seconds). </td>
+            <td> Defaults to 120s. </td>
           </tr>
           <tr>
             <td> VOLUME_MOUNT_PATH </td>
-            <td> Fill the given volume mount path</td>
+            <td> Memory required to fill the volume mount path provided.</td>
             <td> </td>
           </tr>  
           <tr>
             <td> LIB </td>
-            <td> The chaos lib used to inject the chaos </td>
-            <td> Default to <code>litmus</code>. Available litmus and pumba. </td>
+            <td> Chaos library you wish to use to inject chaos. </td>
+            <td> Defaults to <code>litmus</code>. Supports Pumba as well. </td>
           </tr>
           <tr>
             <td> LIB_IMAGE </td>
-            <td> Image used to run the stress command </td>
-            <td> Default to <code>litmuschaos/go-runner:latest</code> </td>
+            <td> Image that uses the helper pod to inject chaos. </td>
+            <td> Defaults to <code>litmuschaos/go-runner:latest</code> </td>
           </tr>  
           <tr>
             <td> TARGET_PODS </td>
-            <td> Comma separated list of application pod name subjected to pod io stress chaos</td>
-            <td> If not provided, it will select target pods randomly based on provided appLabels</td>
+            <td> Comma-separated list of application pod names subject to pod chaos. </td>
+            <td> If this is not provided, target pods are randomly selected based on appLabels provided. </td>
           </tr>  
           <tr>
             <td> PODS_AFFECTED_PERC </td>
-            <td> The Percentage of total pods to target </td>
-            <td> Defaults to 0 (corresponds to 1 replica), provide numeric value only </td>
+            <td> Percentage of total pods to target (numeric values only). </td>
+            <td> Defaults to 0 (corresponds to 1 replica). </td>
           </tr>
           <tr>
             <td> CONTAINER_RUNTIME </td>
-            <td> container runtime interface for the cluster</td>
-            <td> Defaults to docker, supported values: docker, containerd and crio for litmus and only docker for pumba LIB </td>
+            <td> Container runtime interface for the cluster. </td>
+            <td> Defaults to docker. It supports containerd and crio as well for litmus but only docker for the Pumba library. </td>
           </tr>
           <tr>
             <td> SOCKET_PATH </td>
-            <td> Path of the containerd/crio/docker socket file </td>
-            <td> Defaults to <code>/var/run/docker.sock</code> </td>
+            <td> Path to the containerd/crio/docker socket file. </td>
+            <td> Defaults to <code>/var/run/docker.sock.</code> </td>
           </tr>    
           <tr>
             <td> RAMP_TIME </td>
-            <td> Period to wait before and after injection of chaos in sec </td>
-            <td> Eg. 30 </td>
+            <td> Period to wait before and after injecting chaos (in seconds). </td>
+            <td> For example, 30s. </td>
           </tr>
           <tr>
             <td> SEQUENCE </td>
-            <td> It defines sequence of chaos execution for multiple target pods </td>
-            <td> Default value: parallel. Supported: serial, parallel </td>
+            <td> Sequence of chaos execution for multiple target pods. </td>
+            <td> Defaults to parallel. It supports serial as well. </td>
           </tr>
         </table>
     </details>
+
 * Close this pane by clicking on **X** at the top.
 * Set fault weights by clicking on **Set fault weights** tab present on top. 
 * Click **Run** to execute the experiment.
@@ -134,6 +133,13 @@ kubectl get pods -n <namespace>
 ```
 kubectl exec -it <microservice_name> -n <namespace> sh
 ``` 
+
+* This leads you into the pod, where you can execute the below command to check the workers running inside the pod.
+```
+/app # top
+```
+
+This displays the number of stress ng workers running inside the pod during chaos.
 
 ## Fault examples
 
@@ -211,7 +217,7 @@ spec:
           VALUE: '60'
 ```
 
-### Container runtime socket path
+### Container runtime and socket path
 
 It defines the `CONTAINER_RUNTIME` and `SOCKET_PATH` ENV to set the container runtime and socket file path.
 

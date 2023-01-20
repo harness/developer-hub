@@ -26,9 +26,7 @@ Injecting a rogue process into a target container, we starve the main microservi
 :::
 
 ## Default validation
-:::note
 The application pods should be running before and after injecting chaos.
-:::
 
 ## Implementation
 

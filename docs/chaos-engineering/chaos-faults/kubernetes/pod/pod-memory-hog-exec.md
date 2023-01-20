@@ -26,9 +26,8 @@ This fault launches a stress process within the target container - which can cau
 :::
 
 ## Default validation
-:::note
 The application pods should be running before and after injecting chaos.
-:::
+
 
 ## Implementation
 

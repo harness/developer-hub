@@ -3,9 +3,8 @@ id: pod-network-loss
 title: Pod network loss
 ---
 Pod network loss is a Kubernetes pod-level chaos fault that:
-
-- It injects packet loss on the specified container by starting a traffic control (tc) process with netem rules to add egress/ingress loss.
-- It can test the application's resilience to lossy/flaky network.
+- Causes packet loss in a specific container by starting a traffic control (tc) process with netem rules to add egress/ingress loss.
+- Tests the application's resilience to lossy (or flaky) network.
 
 :::tip Fault execution flow chart
 ![Pod Network Loss](./static/images/network-chaos.png)
@@ -25,9 +24,7 @@ Coming soon.
 :::
 
 ## Default validation
-:::note
 The application pods should be running before and after injecting chaos.
-:::
 
 ## Implementation
 
@@ -141,21 +138,18 @@ To validate the experiment you ran, execute the below commands on your terminal.
 kubectl get pods -n <namespace>
 ```
 
-* Exec into the microservice on which you will execute the chaos fault.
+* Display all the services of the application on which you will execute the chaos fault.
 ```
-kubectl exec -it <microservice_name> -n <namespace> sh
+kubectl get svc -n <dashboard_namespace>
 ``` 
 
 * Visit [this link](provide link) to set up Grafana dashboard to visualize the results before and after injecting chaos into the application. 
 
-* Here is a representation of how the CPU resource usage is, before chaos has been injected. You can execute the following command to check the CPU usage:
-```
-kubectl top pods <service name> -n <application namespace>
-```
+* Here is a representation of how network loss results in a delay while accessing the service, thereby disrupting the access during chaos.
 
 ![Before chaos](./static/images/nw-loss-validation.png)
 
-* Here is a representation of how the IP address becomes inaccessible during chaos.
+* Here is a representation of how the IP address (or service) becomes inaccessible during chaos.
 
 ![During chaos](./static/images/nw-loss-during-chaos.png)
 
@@ -165,13 +159,11 @@ kubectl top pods <service name> -n <application namespace>
 
 ![After chaos cart](./static/images/nw-loss-cart-service.png)
 
-* After the chaos experiment completes execution, the IP address is back to normal state.
+* After the chaos experiment completes execution, the IP address (or service) is back to normal state.
 
 ![After chaos](./static/images/nw-loss-after-chaos.png)
 
 ![After chaos visual](./static/images/nw-loss-after-chaos-dashboard.png)
-
-
 
 ## Fault examples
 
@@ -282,7 +274,7 @@ spec:
           value: '60'
 ```
 
-### Container runtime socket path
+### Container runtime and socket path
 
 It defines the `CONTAINER_RUNTIME` and `SOCKET_PATH` ENV to set the container runtime and socket file path.
 

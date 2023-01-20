@@ -24,9 +24,7 @@ Coming soon.
 :::
 
 ## Default validation
-:::note
 The application pods should be running before and after injecting chaos.
-:::
 
 ## Implementation
 
@@ -48,22 +46,22 @@ After successful setup of chaos infrastructure:
           </tr>
           <tr>
             <td> TARGET_CONTAINER </td>
-            <td> Name of container which is subjected to dns spoof </td>
+            <td> Name of container subject to DNS spoof. </td>
             <td> None </td>
           </tr>
           <tr>
             <td> TOTAL_CHAOS_DURATION </td>
-            <td> The time duration for chaos insertion (seconds) </td>
-            <td> Default (60s) </td>
+            <td> Duration to insert chaos (in seconds).</td>
+            <td> Defaults to 60s. </td>
           </tr>
           <tr>
             <td> SPOOF_MAP </td>
             <td> Map of the target hostnames eg. '&#123;"abc.com":"spoofabc.com"&#125;' where key is the hostname that needs to be spoofed and value is the hostname where it will be spoofed/redirected to.</td>
-            <td> If not provided, no hostnames/domains will be spoofed</td>
+            <td> If this is not provided, no host names (or domains) are spoofed. </td>
           </tr>
           <tr>
             <td> PODS_AFFECTED_PERC </td>
-            <td> The Percentage of total pods to target </td>
+            <td> Percentage of total pods to target </td>
             <td> Defaults to 0 (corresponds to 1 replica), provide numeric value only </td>
           </tr>
           <tr>
@@ -93,7 +91,7 @@ After successful setup of chaos infrastructure:
           </tr>
           <tr>
             <td> SEQUENCE </td>
-            <td> It defines sequence of chaos execution for multiple target pods </td>
+            <td> Sequence of chaos execution for multiple target pods. </td>
             <td> Default value: parallel. Supported: serial, parallel </td>
           </tr>
         </table>
@@ -118,14 +116,18 @@ kubectl get pods -n <namespace>
 kubectl exec -it <microservice_name> -n <namespace> sh
 ``` 
 
+* This leads you into the pod, where you can execute the below command to check the disk usage.
+```
+/app # nslookup <spoof map key>
+```
 ## Fault examples
 
 ### Common and pod specific tunables
-Refer the [common attributes](../../common-tunables-for-all-faults) and [Pod specific tunable](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
+Refer to the [common attributes](../../common-tunables-for-all-faults) and [pod specific tunables](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
 
 ### Spoof map
 
-It defines the map of the target hostnames eg. '{"abc.com":"spoofabc.com"}' where the key is the hostname that needs to be spoofed and value is the hostname where it will be spoofed/redirected to. It can be tuned via `SPOOF_MAP` ENV.
+It defines the map of the target host names. For example, '{"abc.com":"spoofabc.com"}' where the key is the host name that needs to be spoofed and the value is the host name to which the key is spoofed (or redirected). You can tune it using `SPOOF_MAP` environment variable.
 
 Use the following example to tune this:
 
@@ -156,14 +158,14 @@ spec:
           value: '60'
 ```
 
-### Container runtime socket path
+### Container runtime and socket path
 
-It defines the `CONTAINER_RUNTIME` and `SOCKET_PATH` ENV to set the container runtime and socket file path.
+It defines the `CONTAINER_RUNTIME` and `SOCKET_PATH` environment variables to set the container runtime and socket file path, respectively.
 
 - `CONTAINER_RUNTIME`: It supports `docker` runtime only.
-- `SOCKET_PATH`: It contains path of docker socket file by default(`/var/run/docker.sock`).
+- `SOCKET_PATH`: It contains path of the docker socket file, which by default, is `/var/run/docker.sock`.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/pod-dns-spoof/container-runtime-and-socket-path.yaml yaml)
 ```yaml

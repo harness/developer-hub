@@ -3,8 +3,6 @@ id: pod-memory-hog
 title: Pod memory hog
 ---
 Pod memory hog is a Kubernetes pod-level chaos fault that:
-
-Pod memory hog is a Kubernetes pod-level chaos fault that:
 - Consumes memory resources in excess, resulting in a significant spike in the memory usage of a pod.
 - Simulates a condition where the memory usage of an application spikes up unexpectedly.  
 
@@ -30,9 +28,7 @@ This fault launches a stress process within the target container - which can cau
 :::
 
 ## Default validation
-:::note
 The application pods should be running before and after injecting chaos.
-:::
 
 ## Implementation
 
@@ -223,7 +219,7 @@ spec:
           value: '60'
 ```
 
-### Container runtime socket path
+### Container runtime and socket path
 
 It defines the `CONTAINER_RUNTIME` and `SOCKET_PATH` ENV to set the container runtime and socket file path.
 

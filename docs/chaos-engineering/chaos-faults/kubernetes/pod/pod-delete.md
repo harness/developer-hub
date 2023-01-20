@@ -26,9 +26,7 @@ This fault helps to reproduce such a scenario with forced/graceful pod failure o
 :::
 
 ## Default validation
-:::note
 The application pods should be running before and after injecting chaos.
-:::
 
 ## Implementation
 
