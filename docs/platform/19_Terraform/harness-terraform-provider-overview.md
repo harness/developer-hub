@@ -79,5 +79,4 @@ Complex resource configurations can make it difficult to understand the meaning 
 
 
 ## Next step
-- [Onboard with Terraform Provider](../../../tutorials/platform/onboard-terraform-provider.md)
 - [Harness Provider](https://registry.terraform.io/providers/harness/harness/latest/docs)
