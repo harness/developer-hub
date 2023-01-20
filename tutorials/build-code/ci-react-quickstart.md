@@ -6,7 +6,7 @@ keywords: [Hosted Build, Continuous Integration, Developer Guide, CI Tutorial]
 
 # Build, test, and publish a Docker image for a sample React application
 
-## What is Continuous Integration
+## What is Continuous Integration?
 
 Continuous Integration is an approach to development of software where changes in the codebase are continuously merged into a shared repository or branch. The combined codebase is then built into a test application over which automated tests are run to find and track any potential bug. The discovered application defects are then turned back over to the developers to fix.
 
