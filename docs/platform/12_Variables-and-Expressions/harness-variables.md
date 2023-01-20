@@ -746,7 +746,7 @@ For example, here's how the common artifact expressions resolve for a Kubernetes
 * **<+artifact.tag>:** `stable`
 * **<+artifact.image>:** `index.docker.io/library/nginx:stable`
 * **<+artifact.imagePath>:** `library/nginx`
-* **<+artifact.imagePullSecret>:** `eJjcmV0em1hbiIsInBhc3N3b3JkIjoiIzhDNjk3QVhUdSJ9fQ==:`
+* **<+artifact.imagePullSecret>:** `secret-value`
 * **<+artifact.type>:** `DockerRegistry`
 * **<+artifact.connectorRef>:** `DockerHub`
 
@@ -769,7 +769,7 @@ Executing command ...
 artifact.tag: stable  
 artifact.image: index.docker.io/library/nginx:stable  
 artifact.imagePath: library/nginx  
-artifact.imagePullSecret: eyJodHRwczovL2luZGV4LmRvY2tlci5pby92MS8iOnsidXNlcm5hbWUiOiJjcmV0em1hbiIsInBhc3N3b3JkIjoiIzhDNjk3QVhUdSJ9fQ==  
+artifact.imagePullSecret: secret-value
 artifact.type: DockerRegistry  
 artifact.connectorRef: DockerHub  
 Command completed with ExitCode (0)
