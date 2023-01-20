@@ -41,7 +41,7 @@ Harness CCM provides two types of recommendations to optimize your EC2 instances
 
 
 
-* **Instance resizing**: In this type of recommendation, CCM recommends resizing your instance within the same instance family or a different instance family based on its usage. For information about the different instance families in AWS, go to [Available instance types](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/instance-types.html#AvailableInstanceTypes). 
+* **Instance resizing**: In this type of recommendation, CCM recommends resizing your instance within the same instance family or using a different instance family based on instance usage. For information about the different instance families in AWS, go to [Available instance types](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/instance-types.html#AvailableInstanceTypes). 
  
 
 
