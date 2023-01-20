@@ -1,26 +1,26 @@
 ---
 sidebar_position: 5
-description: This build automation guide walks you through building and testing a sample React application in a CI Pipeline
+description: Learn how to build and test a sample React application in a CI pipeline.
 keywords: [Hosted Build, Continuous Integration, Developer Guide, CI Tutorial]
 ---
 
-# Build, Test, and Publish a Docker Image for a sample React application
+# Build, test, and publish a Docker image for a sample React application
 
 ## What is Continuous Integration
 
-Continuous integration is an approach to development of software where changes in codebase are continuously merged into a shared repository or branch. The combined codebase is then built into a test application over which automated tests are run to find and track any potential bug. The discovered application defects are then turned back over to the developers to fix.
+Continuous Integration is an approach to development of software where changes in the codebase are continuously merged into a shared repository or branch. The combined codebase is then built into a test application over which automated tests are run to find and track any potential bug. The discovered application defects are then turned back over to the developers to fix.
 
 The objectives of any CI process is to:
-- Find Bugs Faster
-- Reduce time for software validation & releases
-- Higher Product Quality etc
+- Find bugs faster.
+- Reduce time for software validation and releases.
+- Ensure higher product quality.
 
-In this tutorial we'll be working on an react application hosted in Github. Checkout the codebase of the application [here](https://github.com/harnesscommunity/react-pipeline-sample).
+In this tutorial we'll be working on a React application hosted in GitHub. Check out the codebase of the application [here](https://github.com/harnesscommunity/react-pipeline-sample).
 
-Firstly we'll understand how we can build our application locally and push the docker image to DockerHub and then will create a Harness CI pipeline to automate the entire process implementing the following functions:
+First, we'll understand how we can build our application locally and push the Docker image to Docker Hub and then create a Harness CI pipeline to automate the entire process implementing the following functions:
 
-1. Build & test the sample react application
-2. Build the Docker image & Publish it on DockerHub
+1. Build and test the sample react application.
+2. Build the Docker image and publish it on Docker Hub.
 
 ```mdx-code-block
 import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
@@ -28,9 +28,9 @@ import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
 
 <CISignupTip />
 
-## How to Build the App Locally?
+## How to build the app locally
 
-To create a new React project you can use the tool npx, provided you have an npm version of at least 5.2. In this case we already have the project setup and the project structure is given below:
+To create a new React project you can use the tool npx, provided you have an npm version of at least 5.2. In this case we already have the project set up and the project structure is given below:
 
 ```bash
 react-sample-app
@@ -48,16 +48,16 @@ react-sample-app
 
 We'll need NPM and Docker to build and package our application. If you don’t have those runtimes, on a Windows Machine, you can use Chocolatey to install, or if using a Mac, Homebrew.
 
-In this guide we'll be using Docker to store our application as an image. Docker makes it very easy for other peers to use the application with the support of the different docker registries that are available in the market. Here we'll be using DockerHub as the Docker registry. If you do not have a registry available to you, you can create a Docker Hub account and create a repository, e.g "test-react".
+In this guide we'll be using Docker to store our application as an image. Docker makes it very easy for other peers to use the application with the support of the different Docker registries that are available in the market. Here we'll be using Docker Hub as the Docker registry. If you do not have a registry available to you, you can create a Docker Hub account and create a repository, for example, "test-react".
 
-Use the below command format to build you Docker image locally and then push the image to DockerHub registry
+Use the below command format to build you Docker image locally and then push the image to Docker Hub registry:
 
 ```
 docker build --tag your_user/repo:tag .
 docker push your_user/repo:tag
 ```
 
-E.g in my case, at the root of the project:
+For example, in my case, at the root of the project:
 
 ```
 docker build --tag harnesscommunity/test-react:latest .
@@ -65,7 +65,7 @@ docker push harnesscommunity/test-react:latest
 ```
 ![Docker Push](static/ci-react-quickstart/docker-log-two.png)
 
-Can validate that this has been placed into the Docker Registry.
+You can validate that this has been placed into the Docker Registry.
 
 ![Docker Hub](static/ci-react-quickstart/dockerhub.png)
 
@@ -84,23 +84,23 @@ import TabItem from '@theme/TabItem';
 <Tabs>
 <TabItem value="newaccount" label="New account" default>
 ```
-[Sign up](https://app.harness.io/auth/#/signup/?module=ci&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=ci-plg&utm_content=get-started) for a new Harness account. Select the **Continuous Integration** module after your initial sign in. This brings you to the **Get Started** wizard.
+3. [Sign up](https://app.harness.io/auth/#/signup/?module=ci&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=ci-plg&utm_content=get-started) for a new Harness account. Select the **Continuous Integration** module after your initial sign-in. This brings you to the **Get Started** wizard.
 ```mdx-code-block
 </TabItem>
 <TabItem value="existingaccount" label="Existing account">
 ```
-[Log in](https://app.harness.io/auth/#/signin) to your Harness account. You can either create a new project or select an existing project and then select the **Continuous Integration** module. In the **Project** pane, expand the **Project Setup** menu, and then select **Get Started**.
+3. [Log in](https://app.harness.io/auth/#/signin) to your Harness account. You can either create a new project or select an existing project, and then select the **Continuous Integration** module. In the **Project** pane, expand the **Project Setup** menu, and then select **Get Started**.
 ```mdx-code-block
 </TabItem>
 </Tabs>
 ```
 
-3. When you are prompted to select a repository, search for **react-pipeline-sample**, select the repository that you forked in the previous step, and then select **Configure Pipeline**.
-4. Select **Starter Pipeline**, and then click on **Create Pipeline**.
+4. When you are prompted to select a repository, search for **react-pipeline-sample**, select the repository that you forked in the previous step, and then select **Configure Pipeline**.
+5. Select **Starter Pipeline**, and then select **Create Pipeline**.
 
 ### Docker Hub connector
 
-You need a [Docker Hub](https://hub.docker.com/) connector. This connector is used to establish the communication between the Docker registry i.e DockerHub in this tutorial and Harness CI App.
+You need a [Docker Hub](https://hub.docker.com/) connector. This connector is used to establish the communication between the Docker registry, for example, Docker Hub in this tutorial and Harness CI App.
 
 If you have not created a Docker Hub connector yet, follow these steps.
 
@@ -124,9 +124,9 @@ The Docker connector needs an access token with **Read, Write, Delete** permissi
 
 ### Modify the pipeline
 
-From the left pane, select **Pipelines**, and then select your **react-pipeline-sample** pipeline from the list.
+1. From the left pane, select **Pipelines**, and then select your **react-pipeline-sample** pipeline from the list.
 
-Switch from the **Visual** view to the **YAML** view, and then select **Edit YAML**. (By default the YAML editor is on read mode. Here you'll need to enable the edit option for YAML editor)
+2. Switch from the **Visual** view to the **YAML** view, and then select **Edit YAML**. (By default the YAML editor is on read mode. Here you'll need to enable the edit option for YAML editor)
 
 A starter pipeline is created with a single stage. It should look similar to this:
 
@@ -167,7 +167,7 @@ pipeline:
         build: <+input>
 ```
 
-Replace the sample `stages` section with the following `variables` and `stages` sections:
+3. Replace the sample `stages` section with the following `variables` and `stages` sections:
 
 ```yaml
   variables:
@@ -229,7 +229,7 @@ This configuration requires the Docker Hub connector ID to be `Docker_Hub`. If y
 
 :::
 
-Select **Save** in the YAML editor.
+4. Select **Save** in the YAML editor.
 
 ## Run your pipeline
 
