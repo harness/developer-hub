@@ -24,9 +24,9 @@ Using recommendations without proper assessment could result in unexpected chang
 ## Before you begin
 
 
-* Sign up for your AWS cloud account and set up CCM for cost management. For more information, go to  [Set up cost visibility for AWS](https://developer.harness.io/docs/cloud-cost-management/onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-aws).
-* To obtain EC2 recommendations, configure an AWS CCM Connector with the Inventory Management feature enabled.
-* Go to [Perspectives](https://developer.harness.io/docs/cloud-cost-management/use-cloud-cost-management/ccm-perspectives/create-cost-perspectives) to learn how to create perspectives.
+* Connect your AWS cloud account in Harness and set up CCM for cost management. For more information, go to  [Set up cost visibility for AWS](https://developer.harness.io/docs/cloud-cost-management/onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-aws).
+* To obtain EC2 recommendations, configure a Harness AWS CCM connector with the Inventory Management feature enabled.
+* Go to [Perspectives](https://developer.harness.io/docs/cloud-cost-management/use-cloud-cost-management/ccm-perspectives/create-cost-perspectives) to learn how to create perspectives. Perspectives allow you to group your resources in ways that are more meaningful to your business needs.
 
 
 ## How are EC2 recommendations computed?
