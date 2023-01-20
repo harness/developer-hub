@@ -1,5 +1,6 @@
 ---
-title: Define a Local Build Infrastructure
+title: Define a local build infrastructure
+description: Define a CI build infra on local Linux/Windows/MacOS machine.
 description: You can define a CI build infrastructure on Linux, Windows and macOS machines. This is the simplest way to run self-hosted builds.
 sidebar_position: 15
 helpdocs_topic_id: xd8u17be5h
