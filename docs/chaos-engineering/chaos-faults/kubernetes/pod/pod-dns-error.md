@@ -6,9 +6,7 @@ Pod DNS error is a Kubernetes pod-level chaos fault that:
 - Injects chaos to disrupt DNS resolution in pods.
 - Removes access to services by blocking the DNS resolution of host names (or domains).
 
-:::tip Fault execution flow chart
 ![Pod DNS Error](./static/images/dns-chaos.png)
-:::
 
 ## Usage
 <details>
@@ -19,9 +17,7 @@ Coming soon.
 </details>
 
 ## Prerequisites
-:::info
 - Kubernetes > 1.16
-:::
 
 ## Default validation
 The application pods should be running before and after injecting chaos.

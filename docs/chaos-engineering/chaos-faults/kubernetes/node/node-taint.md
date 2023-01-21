@@ -1,14 +1,12 @@
 ---
 id: node-taint
-title: Node Taint
+title: Node taint
 ---
 
-## Introduction
 - It taints the node to apply the desired effect. The resources which contains the correspoing tolerations can only bypass the taints.
 
-:::tip Fault execution flow chart 
 ![Node Taint](./static/images/node-taint.png)
-:::
+
 
 ## Uses
 <details>
@@ -19,19 +17,15 @@ Coming soon.
 </details>
 
 ## Prerequisites
-:::info
 - Ensure that Kubernetes Version > 1.16.
 - Ensure that the node specified in the fault ENV variable <code>TARGET_NODE</code> (the node for which docker service need to be killed) should be cordoned before execution of the chaos fault to ensure that the fault resources are not scheduled on it or subjected to eviction. This can be achieved with the following steps:
   - Get node names against the applications pods: <code>kubectl get pods -o wide</code>
   - Cordon the node <code>kubectl cordon &lt;nodename&gt;</code>
-:::
 
-## Default Validations
-:::note
+## Default validation
 The target nodes should be in ready state before and after chaos injection.
-:::
 
-## Fault Tunables
+## Fault tunables
 <details>
     <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>
@@ -82,12 +76,12 @@ The target nodes should be in ready state before and after chaos injection.
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common and Node specific tunables
+### Common and node-specific tunables
 Refer the [common attributes](../../common-tunables-for-all-faults) and [Node specific tunable](./common-tunables-for-node-faults) to tune the common tunables for all faults and node specific tunables.
 
-### Taint Label
+### Taint label
 
 It contains label and effect to be tainted on application node. It can be tuned via `TAINT_LABEL` ENV.
 

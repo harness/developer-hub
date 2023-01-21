@@ -6,9 +6,7 @@ Pod delete is a Kubernetes pod-level chaos fault that:
 - Causes specific (or random) replicas of an application resource to fail forcibly (or gracefully).
 - Tests an application's deployment sanity (replica availability and uninterrupted service) and recovery workflow.
 
-:::tip Fault execution flow chart
 ![Pod Delete](./static/images/pod-delete.png)
-:::
 
 ## Usage
 <details>
@@ -21,9 +19,7 @@ This fault helps to reproduce such a scenario with forced/graceful pod failure o
 </details>
 
 ## Prerequisites
-:::info
 - Kubernetes > 1.16
-:::
 
 ## Default validation
 The application pods should be running before and after injecting chaos.

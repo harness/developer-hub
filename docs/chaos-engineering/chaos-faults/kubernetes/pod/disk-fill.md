@@ -8,9 +8,7 @@ Disk fill is a Kubernetes pod-level chaos fault that:
 - Tests the ephemeral storage limits and ensures that the parameters are sufficient.
 - Evaluates the application's resilience to disk stress (or replica) evictions.
 
-:::tip Fault execution flow chart
 ![Disk Fill](./static/images/disk-fill.png)
-:::
 
 ## Usage
 <details>
@@ -21,7 +19,6 @@ Disk fill is used to determine how the application behaves when the disk is unde
 </details>
 
 ## Prerequisites
-:::info
 - Kubernetes > 1.16
 - Specify ephemeral storage requests and limits for the application before fault implementation. An example specification is shown below:
     ```yaml
@@ -49,7 +46,6 @@ Disk fill is used to determine how the application behaves when the disk is unde
           limits:
             ephemeral-storage: "4Gi"
     ```
-:::
 
 ## Default validation
 The application pods should be running before and after injecting chaos.

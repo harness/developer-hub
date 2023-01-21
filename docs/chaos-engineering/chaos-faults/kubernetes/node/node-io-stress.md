@@ -1,9 +1,8 @@
 ---
-title: Node IO Stress
+title: Node IO stress
 id: node-io-stress
 ---
 
-## Introduction
 - This fault causes io stress on the Kubernetes node. The fault aims to verify the resiliency of applications that share this disk resource for ephemeral or persistent storage purposes.
 - The amount of io stress can be either specifed as the size in percentage of the total free space on the file system or simply in Gigabytes(GB). When provided both it will execute with the utilization percentage specified and non of them are provided it will execute with default value of 10%.
 - It tests application resiliency upon replica evictions caused due IO stress on the available Disk space.
@@ -21,16 +20,12 @@ Coming soon.
 </details>
 
 ## Prerequisites
-:::info
 - Ensure that Kubernetes Version > 1.16.
-:::
 
-## Default Validations
-:::note
+## Default validation
 The target nodes should be in ready state before and after chaos injection.
-:::
 
-## Fault Tunables
+## Fault tunables
 <details>
     <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>
@@ -116,12 +111,12 @@ The target nodes should be in ready state before and after chaos injection.
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common and Node specific tunables
+### Common and node-specific tunables
 Refer the [common attributes](../../common-tunables-for-all-faults) and [Node specific tunable](./common-tunables-for-node-faults) to tune the common tunables for all faults and node specific tunables.
 
-### Filesystem Utilization Percentage
+### Filesystem utilization percentage
 
 It stresses the `FILESYSTEM_UTILIZATION_PERCENTAGE` percentage of total free space available in the node. 
 
@@ -152,7 +147,7 @@ spec:
           VALUE: '60'
 ```
 
-### Filesystem Utilization Bytes
+### Filesystem utilization bytes
 
 It stresses the `FILESYSTEM_UTILIZATION_BYTES` GB of the i/o of the targeted node. 
 It is mutually exclusive with the `FILESYSTEM_UTILIZATION_PERCENTAGE` ENV. If `FILESYSTEM_UTILIZATION_PERCENTAGE` ENV is set then it will use the percentage for the stress otherwise, it will stress the i/o based on `FILESYSTEM_UTILIZATION_BYTES` ENV.
@@ -184,7 +179,7 @@ spec:
           VALUE: '60'
 ```
 
-### Limit CPU Utilization
+### Limit CPU utilization
 
 The CPU usage can be limit to `CPU` CPU while performing io stress. It can be tuned via `CPU` ENV.
 
@@ -213,7 +208,7 @@ spec:
           VALUE: '60'
 ```
 
-### Workers For Stress
+### Workers for stress
 
 The i/o and VM workers count for the stress can be tuned with `NUMBER_OF_WORKERS` and `VM_WORKERS` ENV respectively. 
 

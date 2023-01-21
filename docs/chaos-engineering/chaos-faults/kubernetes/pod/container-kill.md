@@ -7,9 +7,7 @@ Container kill is a Kubernetes pod-level chaos fault that:
 - Tests an application's deployment sanity (replica availability and uninterrupted service) and recovery workflow.
 - Tests the recovery of pods that possess sidecar containers.
 
-:::tip Fault execution flow chart
 ![Container Kill](./static/images/pod-delete.png)
-:::
 
 ## Usage
 <details>
@@ -20,9 +18,7 @@ Coming soon.
 </details>
 
 ## Prerequisites
-:::info
 - Kubernetes > 1.16
-:::
 
 ## Default validation
 The application pods should be running before and after injecting chaos.

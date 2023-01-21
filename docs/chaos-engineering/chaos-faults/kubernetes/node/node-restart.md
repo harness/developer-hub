@@ -1,9 +1,7 @@
 ---
 id: node-restart
-title: Node Restart
+title: Node restart
 ---
-
-## Introduction
 
 - It causes chaos to disrupt state of node by restarting it.
 - It tests deployment sanity (replica availability & uninterrupted service) and recovery workflows of the application pod.
@@ -21,11 +19,11 @@ Coming soon.
 </details>
 
 ## Prerequisites
-:::info
 - Ensure that Kubernetes Version > 1.16
 - Create a Kubernetes secret named `id-rsa` where the fault will run, where its contents will be the private SSH key for `SSH_USER` used to connect to the node that hosts the target pod in the secret field `ssh-privatekey`. A sample secret is shown below:
 
-        ```yaml
+        ```
+        yaml
         apiVersion: v1
         kind: Secret
         metadata:
@@ -48,14 +46,11 @@ Coming soon.
         ```
         
     For further details, please check this [documentation](https://www.ssh.com/ssh/keygen/). Once you have copied the public key to all nodes and created the secret described earlier, you are ready to start your fault.
-:::
 
-## Default Validations
-:::note
+## Default validation
 The target nodes should be in ready state before and after chaos injection.
-:::
 
-## Fault Tunables
+## Fault tunables
 <details>
     <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>
@@ -121,12 +116,12 @@ The target nodes should be in ready state before and after chaos injection.
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common and Node specific tunables
+### Common and node-specific tunables
 Refer the [common attributes](../../common-tunables-for-all-faults) and [Node specific tunable](./common-tunables-for-node-faults) to tune the common tunables for all faults and node specific tunables.
 
-### Reboot Command
+### Reboot command
 
 It defines the command used to restart the targeted node. It can be tuned via `REBOOT_COMMAND` ENV.
 
@@ -158,7 +153,7 @@ spec:
           VALUE: '60'
 ```
 
-### SSH User 
+### SSH user 
 
 It defines the name of the SSH user for the targeted node. It can be tuned via `SSH_USER` ENV.
 
@@ -190,7 +185,7 @@ spec:
           VALUE: '60'
 ```
 
-### Target Node Internal IP
+### Target node internal IP
 
 It defines the internal IP of the targeted node. It is an optional field, if internal IP is not provided then it will derive the internal IP of the targeted node. It can be tuned via `TARGET_NODE_IP` ENV.
 

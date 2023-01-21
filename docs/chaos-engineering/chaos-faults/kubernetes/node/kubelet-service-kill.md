@@ -1,16 +1,13 @@
 ---
 id: kubelet-service-kill
-title: Kubelet Service Kill
+title: Kubelet service kill
 ---
 
-## Introduction
 - This fault causes the application to become unreachable on account of node turning unschedulable (NotReady) due to kubelet service kill.
 - The kubelet service has been stopped/killed on a node to make it unschedulable for a certain duration i.e `TOTAL_CHAOS_DURATION`. The application node should be healthy after the chaos injection and the services should be re-accessible.
 - The application implies services. Can be reframed as: Test application resiliency upon replica getting unreachable caused due to kubelet service down.
 
-:::tip Fault execution flow chart 
 ![Kubelet Service Kill](./static/images/svc-kill.png)
-:::
 
 ## Uses
 <details>
@@ -21,19 +18,15 @@ Coming soon.
 </details>
 
 ## Prerequisites
-:::info
 - Ensure that Kubernetes Version > 1.16.
 - Ensure that the node specified in the fault ENV variable <code>TARGET_NODE</code> (the node for which docker service need to be killed) should be cordoned before execution of the chaos fault to ensure that the fault resources are not scheduled on it or subjected to eviction. This can be achieved with the following steps:
   - Get node names against the applications pods: <code>kubectl get pods -o wide</code>
   - Cordon the node <code>kubectl cordon &lt;nodename&gt;</code>
-:::
 
-## Default Validations
-:::note
+## Default validation
 The target nodes should be in ready state before and after chaos injection.
-:::
 
-## Fault Tunables
+## Fault tunables
 <details>
     <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>
@@ -84,12 +77,12 @@ The target nodes should be in ready state before and after chaos injection.
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common and Node specific tunables
+### Common and node-specific tunables
 Refer the [common attributes](../../common-tunables-for-all-faults) and [Node specific tunable](./common-tunables-for-node-faults) to tune the common tunables for all faults and node specific tunables.
 
-### Kill Kubelet Service
+### Kill kubelet service
 
 It contains name of target node subjected to the chaos. It can be tuned via `TARGET_NODE` ENV.
 

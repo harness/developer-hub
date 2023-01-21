@@ -7,9 +7,7 @@ Pod CPU hog is a Kubernetes pod-level chaos fault that:
 - Excessively consumes CPU resources, resulting in a significant increase in the CPU resource usage of a pod.
 - Simulates a situation where an application's CPU resource usage unexpectedly spikes.
 
-:::tip Fault execution flow chart
 ![Pod CPU Hog](./static/images/pod-stress.png)
-:::
 
 ## Usage
 <details>
@@ -22,10 +20,7 @@ Injecting a rogue process into a target container, we starve the main microservi
 </details>
 
 ## Prerequisites
-:::info
 - Kubernetes > 1.16
-:::
-
 
 ## Default validation
 The application pods should be running before and after injecting chaos.
@@ -69,11 +64,6 @@ After successful setup of chaos infrastructure:
             <td> TOTAL_CHAOS_DURATION </td>
             <td> The time duration for chaos insertion (seconds) </td>
             <td> Default to 60s </td>
-          </tr>
-          <tr>
-            <td> LIB </td>
-            <td> The chaos lib used to inject the chaos. Available libs are <code>litmus</code> and <code>pumba</code> </td>
-            <td> Default to <code>litmus</code> </td>
           </tr>
           <tr>
             <td> LIB_IMAGE </td>

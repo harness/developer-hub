@@ -7,9 +7,7 @@ Pod HTTP latency is a Kubernetes pod-level chaos fault that:
 - Injects the latency into the service whose port is specified using the `TARGET_SERVICE_PORT` environment variable.
 - Evaluates the application's resilience to lossy (or flaky) HTTP responses.
 
-:::tip Fault execution flow chart
 ![Pod HTTP Latency](./static/images/pod-http.png)
-:::
 
 ## Usage
 <details>
@@ -20,9 +18,7 @@ Coming soon.
 </details>
 
 ## Prerequisites
-:::info
 - Kubernetes > 1.16
-:::
 
 ## Default validation
 The application pods should be running before and after injecting chaos.

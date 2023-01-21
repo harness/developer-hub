@@ -1,12 +1,12 @@
 ---
 sidebar_position: 2
-title: Chaos Experiment from a Blank Canvas
-description: Create a Chaos Experiment from scratch.
+title: Chaos experiment from a blank canvas
+description: Create a chaos experiment from scratch.
 ---
 
 Welcome to this tutorial on creating Chaos Experiments from scratch. Here, you'll be constructing a chaos experiment from scratch in the Chaos Studio. Make sure you have completed the previous tutorial before starting.
 
-## Constructing a Chaos Experiment from Scratch
+## Constructing a chaos experiment from scratch
 
 In the previous tutorial we used the **Boutique cart delete** template to create our experiment. This time around, let us try to define the same experiment with minor changes from scratch. We will again be targeting the pods of the carts microservice with the Pod Delete fault. Right now, the cart page is healthy and accessible in the frontend, as seen at the `/cart` route.
 

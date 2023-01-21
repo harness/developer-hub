@@ -1,16 +1,14 @@
 ---
 id: node-cpu-hog
-title: Node CPU Hog
+title: Node CPU hog
 ---
 
-## Introduction
 - This fault causes CPU resource exhaustion on the Kubernetes node. The fault aims to verify resiliency of applications whose replicas may be evicted on account on nodes turning unschedulable (Not Ready) due to lack of CPU resources.
 - The CPU chaos is injected using a helper pod running the linux stress tool (a workload generator). The chaos is effected for a period equalling the `TOTAL_CHAOS_DURATION`
 Application implies services. Can be reframed as: Tests application resiliency upon replica evictions caused due to lack of CPU resources.
 
-:::tip Fault execution flow chart 
 ![Node CPU Hog](./static/images/node-stress.png)
-:::
+
 
 ## Uses
 <details>
@@ -21,16 +19,12 @@ Coming soon.
 </details>
 
 ## Prerequisites
-:::info
-- Ensure that Kubernetes Version > 1.16.
-:::
+- Kubernetes > 1.16.
 
-## Default Validations
-:::note
+## Default validation
 The target nodes should be in ready state before and after chaos injection.
-:::
 
-## Fault Tunables
+## Fault tunables
 <details>
     <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>
@@ -97,12 +91,12 @@ The target nodes should be in ready state before and after chaos injection.
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common and Node specific tunables
+### Common and node-specific tunables
 Refer the [common attributes](../../common-tunables-for-all-faults) and [Node specific tunable](./common-tunables-for-node-faults) to tune the common tunables for all faults and node specific tunables.
 
-### Node CPU Cores
+### Node CPU cores
 It contains number of cores of node CPU to be consumed. It can be tuned via `NODE_CPU_CORE` ENV.
 
 Use the following example to tune this:
@@ -130,7 +124,7 @@ spec:
           VALUE: '60'
 ```
 
-### Node CPU Load
+### Node CPU load
 
 It contains percentage of node CPU to be consumed. It can be tuned via `CPU_LOAD` ENV.
 

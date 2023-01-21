@@ -8,9 +8,7 @@ Pod memory hog is a Kubernetes pod-level chaos fault that:
 
 **Illustration of how pod memory hog is executed**
 
-:::tip Flow chart that describes how the fault is executed
 ![Pod memory hog](./static/images/pod-stress.png)
-:::
 
 ## Usage
 <details>
@@ -23,9 +21,7 @@ This fault launches a stress process within the target container - which can cau
 </details>
 
 ## Prerequisites
-:::info
 - Kubernetes > 1.16
-:::
 
 ## Default validation
 The application pods should be running before and after injecting chaos.

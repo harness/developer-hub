@@ -8,9 +8,7 @@ Pod HTTP modify body is a Kubernetes pod-level chaos fault that:
 - Can be used to overwrite the HTTP response body by providing the new body value as `RESPONSE_BODY`.
 - It can test the application's resilience to error or incorrect HTTP response body.
 
-:::tip Fault execution flow chart
 ![Pod HTTP Modify Body](./static/images/pod-http.png)
-:::
 
 ## Usage
 <details>
@@ -21,9 +19,7 @@ Coming soon.
 </details>
 
 ## Prerequisites
-:::info
 - Kubernetes > 1.17
-:::
 
 ## Default validation
 The application pods should be running before and after injecting chaos.

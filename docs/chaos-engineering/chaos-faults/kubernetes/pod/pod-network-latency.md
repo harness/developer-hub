@@ -7,9 +7,7 @@ Pod network latency is a Kubernetes pod-level chaos fault that:
 - It introduces latency (delay) to a specific container by initiating a traffic control (tc) process with netem rules to add egress delays.
 - It tests the application's resilience to lossy/flaky networks.
 
-:::tip Fault execution flow chart
 ![Pod Network Latency](./static/images/network-chaos.png)
-:::
 
 ## Usage
 <details>
@@ -24,10 +22,8 @@ The applications may stall or get corrupted while they wait endlessly for a pack
 </details>
 
 ## Prerequisites
-:::info
 - Kubernetes > 1.16
 - It is assumed that you already have the boutique app set up in a namespace. If not, follow [this](provide link) to set up your boutique application.
-:::
 
 ## Default validation
 The application pods should be running before and after injecting chaos.

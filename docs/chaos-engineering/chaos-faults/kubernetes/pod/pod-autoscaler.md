@@ -6,9 +6,7 @@ Pod autoscaler is a Kubernetes pod-level chaos fault that:
 - Determines whether nodes can accomodate multiple replicas of a given application pod.
 - Examines the node auto-scaling feature by determining whether the pods were successfully rescheduled within a specified time frame if the existing nodes are running at the specified limits.
 
-:::tip Fault execution flow chart
 ![Pod Autoscaler](./static/images/pod-autoscaler.png)
-:::
 
 ## Usage
 <details>
@@ -19,9 +17,7 @@ Coming soon.
 </details>
 
 ## Prerequisites
-:::info
 - Kubernetes > 1.16
-:::
 
 ## Default validation
 The application pods should be running before and after injecting chaos.

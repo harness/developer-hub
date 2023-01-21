@@ -6,9 +6,7 @@ Pod network loss is a Kubernetes pod-level chaos fault that:
 - Causes packet loss in a specific container by starting a traffic control (tc) process with netem rules to add egress/ingress loss.
 - Tests the application's resilience to lossy (or flaky) network.
 
-:::tip Fault execution flow chart
 ![Pod Network Loss](./static/images/network-chaos.png)
-:::
 
 ## Usage
 <details>
@@ -19,9 +17,7 @@ Coming soon.
 </details>
 
 ## Prerequisites
-:::info
 - Kubernetes > 1.16
-:::
 
 ## Default validation
 The application pods should be running before and after injecting chaos.

@@ -7,9 +7,7 @@ Pod network partition is a Kubernetes pod-level chaos fault that:
 - It blocks the 100% Ingress and Egress traffic of the target application by creating network policy.
 - It can test the application's resilience to lossy/flaky network.
 
-:::tip Fault execution flow chart
 ![Pod Network Partition](./static/images/network-chaos.png)
-:::
 
 ## Usage
 <details>
@@ -20,9 +18,7 @@ Coming soon.
 </details>
 
 ## Prerequisites
-:::info
 - Kubernetes > 1.16
-:::
 
 ## Default validation
 The application pods should be running before and after injecting chaos.

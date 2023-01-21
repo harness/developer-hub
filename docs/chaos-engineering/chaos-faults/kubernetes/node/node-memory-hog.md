@@ -1,17 +1,13 @@
 ---
 id: node-memory-hog
-title: Node Memory Hog
+title: Node memory hog
 ---
-
-## Introduction
 
 - This fault causes Memory resource exhaustion on the Kubernetes node. The fault aims to verify resiliency of applications whose replicas may be evicted on account on nodes turning unschedulable (Not Ready) due to lack of Memory resources.
 - The Memory chaos is injected using a helper pod running the linux stress-ng tool (a workload generator)- The chaos is effected for a period equalling the TOTAL_CHAOS_DURATION and up to <code>MEMORY_CONSUMPTION_PERCENTAGE</code> (out of 100) or <code>MEMORY_CONSUMPTION_MEBIBYTES</code> (in Mebibytes out of total available memory).
 - Application implies services. Can be reframed as: Tests application resiliency upon replica evictions caused due to lack of Memory resources.
 
-:::tip Fault execution flow chart 
 ![Node Memory Hog](./static/images/node-stress.png)
-:::
 
 ## Uses
 <details>
@@ -21,12 +17,10 @@ Coming soon.
 </div>
 </details>
 
-## Default Validations
-:::note
+## Default validation
 The target nodes should be in ready state before and after chaos injection.
-:::
 
-## Fault Tunables
+## Fault tunables
 <details>
     <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>
@@ -102,11 +96,11 @@ The target nodes should be in ready state before and after chaos injection.
     </table>
 </details>
 
-## Fault Examples
-### Common and Node specific tunables
+## Fault examples
+### Common and node-specific tunables
 Refer the [common attributes](../../common-tunables-for-all-faults) and [Node specific tunable](./common-tunables-for-node-faults) to tune the common tunables for all faults and node specific tunables.  
 
-### Memory Consumption Percentage
+### Memory consumption percentage
 
 It stresses the `MEMORY_CONSUMPTION_PERCENTAGE` percentage of total node capacity of the targeted node. 
 
@@ -137,9 +131,9 @@ spec:
           VALUE: '60'
 ```
 
-### Memory Consumption Mebibytes
+### Memory consumption mebibytes
 
-It stresses the `MEMORY_CONSUMPTION_MEBIBYTES` MiBi of the memory of the targeted node. 
+It stresses the `MEMORY_CONSUMPTION_MEBIBYTES` MiB of the memory of the targeted node. 
 It is mutually exclusive with the `MEMORY_CONSUMPTION_PERCENTAGE` ENV. If `MEMORY_CONSUMPTION_PERCENTAGE` ENV is set then it will use the percentage for the stress otherwise, it will stress the IO based on `MEMORY_CONSUMPTION_MEBIBYTES` ENV.
 
 Use the following example to tune this:
@@ -169,7 +163,7 @@ spec:
           VALUE: '60'
 ```
 
-### Workers For Stress
+### Workers for stress
 
 The workers count for the stress can be tuned with `NUMBER_OF_WORKERS` ENV.
 

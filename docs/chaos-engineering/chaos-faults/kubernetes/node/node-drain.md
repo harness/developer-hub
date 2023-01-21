@@ -1,8 +1,7 @@
 ---
 id: node-drain
-title: Node Drain
+title: Node drain
 ---
-## Introduction
 
 - It drain the node. The resources which are running on the target node should be reschedule on the other nodes.
 
@@ -19,19 +18,16 @@ Coming soon.
 </details>
 
 ## Prerequisites
-:::info
 - Ensure that Kubernetes Version > 1.16.
 - Ensure that the node specified in the fault ENV variable <code>TARGET_NODE</code> (the node for which docker service need to be killed) should be cordoned before execution of the chaos fault to ensure that the fault resources are not scheduled on it or subjected to eviction. This can be achieved with the following steps:
   - Get node names against the applications pods: <code>kubectl get pods -o wide</code>
   - Cordon the node <code>kubectl cordon &lt;nodename&gt;</code>
-:::
 
-## Default Validations
-:::note
+## Default validation
 The target nodes should be in ready state before and after chaos injection.
-:::
 
-## Fault Tunables
+
+## Fault tunables
 <details>
     <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>
@@ -77,11 +73,11 @@ The target nodes should be in ready state before and after chaos injection.
     </table>
 </details>
 
-## Fault Examples
-### Common and Node specific tunables
+## Fault examples
+### Common and node-specific tunables
 Refer the [common attributes](../../common-tunables-for-all-faults) and [Node specific tunable](./common-tunables-for-node-faults) to tune the common tunables for all faults and node specific tunables.  
 
-### Drain Node
+### Drain node
 
 It contains name of target node subjected to the chaos. It can be tuned via `TARGET_NODE` ENV.
 

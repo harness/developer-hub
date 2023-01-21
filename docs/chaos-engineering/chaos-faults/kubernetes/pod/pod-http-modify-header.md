@@ -3,13 +3,10 @@ id: pod-http-modify-header
 title: Pod HTTP modify header
 ---
 Pod HTTP modify header is a Kubernetes pod-level chaos fault that:
-
 - It injects http modify header on the service whose port is provided as `TARGET_SERVICE_PORT` by starting proxy server and then redirecting the traffic through the proxy server.
 - It can cause modification of headers of requests and responses of the service. This can be used to test service resilience towards incorrect or incomplete headers.
 
-:::tip Fault execution flow chart
 ![Pod HTTP Modify Header](./static/images/pod-http.png)
-:::
 
 ## Usage
 <details>
@@ -20,9 +17,7 @@ Coming soon.
 </details>
 
 ## Prerequisites
-:::info
 - Kubernetes > 1.16
-:::
 
 ## Default validation
 The application pods should be running before and after injecting chaos.

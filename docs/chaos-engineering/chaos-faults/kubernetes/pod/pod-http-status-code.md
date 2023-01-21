@@ -7,9 +7,7 @@ Pod HTTP status code is a Kubernetes pod-level chaos fault that:
 - It injects http status code chaos inside the pod which modifies the status code of the response from the provided application server to desired status code provided by user on the service whose port is provided as `TARGET_SERVICE_PORT` by starting proxy server and then redirecting the traffic through the proxy server.
 - It can test the application's resilience to error code http responses from the provided application server.
 
-:::tip Fault execution flow chart
 ![Pod HTTP Status Code](./static/images/pod-http.png)
-:::
 
 ## Usage
 <details>
@@ -20,9 +18,7 @@ Coming soon.
 </details>
 
 ## Prerequisites
-:::info
 - Kubernetes > 1.16
-:::
 
 ## Default validation
 The application pods should be running before and after injecting chaos.
