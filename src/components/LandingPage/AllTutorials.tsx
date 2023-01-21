@@ -204,6 +204,20 @@ const CIList: CardItem[] = [
     link: "/tutorials/build-code/ci-github-action-step",
   },
   {
+    title: "Publish allure report",
+    module: "ci",
+    icon: "img/icon_ci.svg",
+    description: (
+      <>
+        This guide shows how to publish allure report as an artifact in harness CI.
+      </>
+    ),
+    newDoc: true,
+    type: [docType.Documentation],
+    time: "10 min",
+    link: "/tutorials/build-code/ci-publish-allure-report",
+  },
+  {
     title: "Build, test, and publish a Docker image for a sample React application",
 
     module: "ci",
