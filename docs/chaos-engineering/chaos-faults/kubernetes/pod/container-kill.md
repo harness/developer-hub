@@ -25,9 +25,9 @@ The application pods should be running before and after injecting chaos.
 
 ## Implementation
 
-**NOTE:** It is assumed that you already have the boutique application set up in a namespace. If not, follow [this](provide link) to set up your boutique application.
+**NOTE:** It is assumed that you already have the boutique application set up in a namespace. If not, follow provide link to set up your boutique application.
 
-To execute container kill fault, [setup experiment](provide) and infrastructure.
+To execute container kill fault, setup experiment and infrastructure.
 
 After successful setup of chaos infrastructure:
 * Choose the **container-kill** fault from the list of Kubernetes faults available;
