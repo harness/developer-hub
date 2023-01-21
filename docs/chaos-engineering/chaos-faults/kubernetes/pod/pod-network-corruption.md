@@ -89,12 +89,6 @@ The application pods should be in running state before and after chaos injection
         <td> The Percentage of total pods to target </td>
         <td> Defaults to 0 (corresponds to 1 replica), provide numeric value only </td>
       </tr> 
-    <tr>
-        <td> LIB </td>
-        <td> The chaos lib used to inject the chaos </td>
-        <td> Default value: litmus, supported values: pumba and litmus </td>
-      </tr>
-      <tr>
         <td> TC_IMAGE </td>
         <td> Image used for traffic control in linux </td>
         <td> default value is `gaiadocker/iproute2` </td>
@@ -265,43 +259,4 @@ spec:
           value: '/var/run/docker.sock'
         - name: TOTAL_CHAOS_DURATION
           VALUE: '60'
-```
-
-### Pumba Chaos Library
-
-It specifies the Pumba chaos library for the chaos injection. It can be tuned via `LIB` ENV. The defaults chaos library is `litmus`.
-Provide the traffic control image via `TC_IMAGE` ENV for the pumba library.
-
-Use the following example to tune this:
-
-[embedmd]:# (./static/manifests/pod-network-corruption/pumba-lib.yaml yaml)
-```yaml
-# use pumba chaoslib for the network chaos
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: pod-network-corruption
-    spec:
-      components:
-        env:
-        # name of the chaoslib
-        # supports litmus and pumba lib
-        - name: LIB
-          value: 'pumba'
-        # image used for the traffic control in linux
-        # applicable for pumba lib only
-        - name: TC_IMAGE
-          value: 'gaiadocker/iproute2'
-        - name: TOTAL_CHAOS_DURATION
-          value: '60'
 ```

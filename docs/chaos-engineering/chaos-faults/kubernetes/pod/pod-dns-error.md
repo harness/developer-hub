@@ -74,11 +74,6 @@ The application pods should be in running state before and after chaos injection
         <td> Defaults to <code>/var/run/docker.sock</code> </td>
       </tr>
       <tr>
-        <td> LIB </td>
-        <td> The chaos lib used to inject the chaos </td>
-        <td> Default value: litmus, supported values: litmus </td>
-      </tr>
-      <tr>
         <td> LIB_IMAGE </td>
         <td> Image used to run the netem command </td>
         <td> Defaults to <code>litmuschaos/go-runner:latest</code> </td>

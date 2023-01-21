@@ -53,11 +53,6 @@ The application pods should be in running state before and after chaos injection
         <td> Default to 60s </td>
       </tr>
       <tr>
-        <td> LIB </td>
-        <td> The chaos lib used to inject the chaos. Available libs are <code>litmus</code> and <code>pumba</code> </td>
-        <td> Default to <code>litmus</code> </td>
-      </tr>
-      <tr>
         <td> LIB_IMAGE </td>
         <td> Image used to run the helper pod. </td>
         <td> Defaults to <code>litmuschaos/go-runner:1.13.8</code> </td>
@@ -217,42 +212,4 @@ spec:
           value: '/var/run/docker.sock'
         - name: TOTAL_CHAOS_DURATION
           VALUE: '60'
-```
-
-### Pumba Chaos Library
-
-It specifies the Pumba chaos library for the chaos injection. It can be tuned via `LIB` ENV. The defaults chaos library is `litmus`.
-Provide the stress image via `STRESS_IMAGE` ENV for the pumba library.
-
-Use the following example to tune this:
-
-[embedmd]:# (./static/manifests/pod-cpu-hog/pumba-lib.yaml yaml)
-```yaml
-# use pumba chaoslib for the stress
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: pod-cpu-hog
-    spec:
-      components:
-        env:
-        # name of chaos lib
-        # supports litmus and pumba
-        - name: LIB
-          value: 'pumba'
-        # stress image - applicable for pumba only
-        - name: STRESS_IMAGE
-          value: 'alexeiled/stress-ng:latest-ubuntu'
-        - name: TOTAL_CHAOS_DURATION
-          value: '60'
 ```
