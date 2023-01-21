@@ -2,6 +2,7 @@
 id: pod-network-duplication
 title: Pod network duplication
 ---
+
 Pod network duplication is a Kubernetes pod-level chaos fault that:
 
 - It injects chaos to disrupt network connectivity to kubernetes pods.
@@ -10,6 +11,7 @@ Pod network duplication is a Kubernetes pod-level chaos fault that:
 ![Pod Network Duplication](./static/images/network-chaos.png)
 
 ## Usage
+
 <details>
 <summary>View fault usage</summary>
 <div>
@@ -18,20 +20,23 @@ Coming soon.
 </details>
 
 ## Prerequisites
+
 - Kubernetes > 1.16
 
 ## Default validation
+
 The application pods should be running before and after injecting chaos.
 
 ## Implementation
 
-**NOTE:** It is assumed that you already have the boutique application set up in a namespace. If not, follow [this](provide link) to set up your boutique application.
+**NOTE:** It is assumed that you already have the boutique application set up in a namespace. If not, follow this to set up your boutique application.
 
-To execute pod network duplication fault, [setup experiment](provide) and infrastructure.
+To execute pod network duplication fault, setup experiment and infrastructure.
 
 After successful setup of chaos infrastructure:
-* Choose the **pod-network-duplication** fault from the list of Kubernetes faults available;
-* Specify parameters for the **Target application**, **Tune fault**, and **Probes**;
+
+- Choose the **pod-network-duplication** fault from the list of Kubernetes faults available;
+- Specify parameters for the **Target application**, **Tune fault**, and **Probes**;
     <details>
         <summary>Fault Tunables</summary>
         <h2>Optional Fields</h2>
@@ -121,37 +126,40 @@ After successful setup of chaos infrastructure:
         </table>
     </details>
 
-* Close this pane by clicking on **X** at the top.
-* Set fault weights by clicking on **Set fault weights** tab present on top. 
-* Click **Run** to execute the experiment.
-
+- Close this pane by clicking on **X** at the top.
+- Set fault weights by clicking on **Set fault weights** tab present on top.
+- Click **Run** to execute the experiment.
 
 ## Chaos fault validation
 
-To validate the experiment you ran, execute the below commands on your terminal. 
+To validate the experiment you ran, execute the below commands on your terminal.
 
-* Fetch all the pods in the boutique namespace (or the namespace where your application is housed).
+- Fetch all the pods in the boutique namespace (or the namespace where your application is housed).
+
 ```
 kubectl get pods -n <namespace>
 ```
 
-* Exec into the microservice on which you will execute the chaos fault.
+- Exec into the microservice on which you will execute the chaos fault.
+
 ```
 kubectl exec -it <microservice_name> -n <namespace> sh
-``` 
+```
 
 ## Fault examples
 
 ### Common and pod specific tunables
+
 Refer the [common attributes](../../common-tunables-for-all-faults) and [Pod specific tunable](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
 
 ### Network packet duplication
 
-It defines the network packet duplication percentage to be injected in the targeted application. It can be tuned via `NETWORK_PACKET_DUPLICATION_PERCENTAGE` ENV. 
+It defines the network packet duplication percentage to be injected in the targeted application. It can be tuned via `NETWORK_PACKET_DUPLICATION_PERCENTAGE` ENV.
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/pod-network-duplication/network-duplication.yaml yaml)
+[embedmd]: # "./static/manifests/pod-network-duplication/network-duplication.yaml yaml"
+
 ```yaml
 # it injects network-duplication for the egress traffic
 apiVersion: litmuschaos.io/v1alpha1
@@ -167,15 +175,15 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: pod-network-duplication
-    spec:
-      components:
-        env:
-        # network packet duplication percentage
-        - name: NETWORK_PACKET_DUPLICATION_PERCENTAGE
-          value: '100'
-        - name: TOTAL_CHAOS_DURATION
-          value: '60'
+    - name: pod-network-duplication
+      spec:
+        components:
+          env:
+            # network packet duplication percentage
+            - name: NETWORK_PACKET_DUPLICATION_PERCENTAGE
+              value: "100"
+            - name: TOTAL_CHAOS_DURATION
+              value: "60"
 ```
 
 ### Destination IPs and destination hosts
@@ -187,7 +195,8 @@ The network faults interrupt traffic for all the IPs/hosts by default. The inter
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/pod-network-duplication/destination-ips-and-hosts.yaml yaml)
+[embedmd]: # "./static/manifests/pod-network-duplication/destination-ips-and-hosts.yaml yaml"
+
 ```yaml
 # it injects the chaos for the egress traffic for specific ips/hosts
 apiVersion: litmuschaos.io/v1alpha1
@@ -203,18 +212,18 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: pod-network-duplication
-    spec:
-      components:
-        env:
-        # supports comma separated destination ips
-        - name: DESTINATION_IPS
-          value: '8.8.8.8,192.168.5.6'
-        # supports comma separated destination hosts
-        - name: DESTINATION_HOSTS
-          value: 'nginx.default.svc.cluster.local,google.com'
-        - name: TOTAL_CHAOS_DURATION
-          value: '60'
+    - name: pod-network-duplication
+      spec:
+        components:
+          env:
+            # supports comma separated destination ips
+            - name: DESTINATION_IPS
+              value: "8.8.8.8,192.168.5.6"
+            # supports comma separated destination hosts
+            - name: DESTINATION_HOSTS
+              value: "nginx.default.svc.cluster.local,google.com"
+            - name: TOTAL_CHAOS_DURATION
+              value: "60"
 ```
 
 ### Network interface
@@ -223,7 +232,8 @@ The defined name of the ethernet interface, which is considered for shaping traf
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/pod-network-duplication/network-interface.yaml yaml)
+[embedmd]: # "./static/manifests/pod-network-duplication/network-interface.yaml yaml"
+
 ```yaml
 # provide the network interface
 apiVersion: litmuschaos.io/v1alpha1
@@ -239,15 +249,15 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: pod-network-duplication
-    spec:
-      components:
-        env:
-        # name of the network interface 
-        - name: NETWORK_INTERFACE
-          value: 'eth0'
-        - name: TOTAL_CHAOS_DURATION
-          value: '60'
+    - name: pod-network-duplication
+      spec:
+        components:
+          env:
+            # name of the network interface
+            - name: NETWORK_INTERFACE
+              value: "eth0"
+            - name: TOTAL_CHAOS_DURATION
+              value: "60"
 ```
 
 ### Container runtime and socket path
@@ -259,7 +269,8 @@ It defines the `CONTAINER_RUNTIME` and `SOCKET_PATH` ENV to set the container ru
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/pod-network-duplication/container-runtime-and-socket-path.yaml yaml)
+[embedmd]: # "./static/manifests/pod-network-duplication/container-runtime-and-socket-path.yaml yaml"
+
 ```yaml
 ## provide the container runtime and socket file path
 apiVersion: litmuschaos.io/v1alpha1
@@ -275,19 +286,19 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: pod-network-duplication
-    spec:
-      components:
-        env:
-        # runtime for the container
-        # supports docker, containerd, crio
-        - name: CONTAINER_RUNTIME
-          value: 'docker'
-        # path of the socket file
-        - name: SOCKET_PATH
-          value: '/var/run/docker.sock'
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
+    - name: pod-network-duplication
+      spec:
+        components:
+          env:
+            # runtime for the container
+            # supports docker, containerd, crio
+            - name: CONTAINER_RUNTIME
+              value: "docker"
+            # path of the socket file
+            - name: SOCKET_PATH
+              value: "/var/run/docker.sock"
+            - name: TOTAL_CHAOS_DURATION
+              VALUE: "60"
 ```
 
 ### Pumba chaos library
@@ -297,7 +308,8 @@ Provide the traffic control image via `TC_IMAGE` ENV for the Pumba library.
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/pod-network-duplication/pumba-lib.yaml yaml)
+[embedmd]: # "./static/manifests/pod-network-duplication/pumba-lib.yaml yaml"
+
 ```yaml
 # use pumba chaoslib for the network chaos
 apiVersion: litmuschaos.io/v1alpha1
@@ -313,18 +325,18 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: pod-network-duplication
-    spec:
-      components:
-        env:
-        # name of the chaoslib
-        # supports litmus and pumba lib
-        - name: LIB
-          value: 'pumba'
-        # image used for the traffic control in linux
-        # applicable for pumba lib only
-        - name: TC_IMAGE
-          value: 'gaiadocker/iproute2'
-        - name: TOTAL_CHAOS_DURATION
-          value: '60'
+    - name: pod-network-duplication
+      spec:
+        components:
+          env:
+            # name of the chaoslib
+            # supports litmus and pumba lib
+            - name: LIB
+              value: "pumba"
+            # image used for the traffic control in linux
+            # applicable for pumba lib only
+            - name: TC_IMAGE
+              value: "gaiadocker/iproute2"
+            - name: TOTAL_CHAOS_DURATION
+              value: "60"
 ```

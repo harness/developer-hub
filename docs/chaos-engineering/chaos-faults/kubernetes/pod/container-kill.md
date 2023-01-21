@@ -2,7 +2,9 @@
 id: container-kill
 title: Container kill
 ---
+
 Container kill is a Kubernetes pod-level chaos fault that:
+
 - Results in container failure on specific (or random) application resource replicas.
 - Tests an application's deployment sanity (replica availability and uninterrupted service) and recovery workflow.
 - Tests the recovery of pods that possess sidecar containers.
@@ -10,6 +12,7 @@ Container kill is a Kubernetes pod-level chaos fault that:
 ![Container Kill](./static/images/pod-delete.png)
 
 ## Usage
+
 <details>
 <summary>View fault usage</summary>
 <div>
@@ -18,20 +21,23 @@ Coming soon.
 </details>
 
 ## Prerequisites
+
 - Kubernetes > 1.16
 
 ## Default validation
+
 The application pods should be running before and after injecting chaos.
 
 ## Implementation
 
-**NOTE:** It is assumed that you already have the boutique application set up in a namespace. If not, follow [this](provide link) to set up your boutique application.
+**NOTE:** It is assumed that you already have the boutique application set up in a namespace. If not, follow this to set up your boutique application.
 
-To execute container kill fault, [setup experiment](provide) and infrastructure.
+To execute container kill fault, setup experiment and infrastructure.
 
 After successful setup of chaos infrastructure:
-* Choose the **container-kill** fault from the list of Kubernetes faults available;
-* Specify parameters for the **Target application**, **Tune fault**, and **Probes**;
+
+- Choose the **container-kill** fault from the list of Kubernetes faults available;
+- Specify parameters for the **Target application**, **Tune fault**, and **Probes**;
     <details>
         <summary>Fault Tunables</summary>
         <h2>Optional Fields</h2>
@@ -104,34 +110,38 @@ After successful setup of chaos infrastructure:
         </table>
     </details>
 
-* Close this pane by clicking on **X** at the top.
-* Set fault weights by clicking on **Set fault weights** tab present on top. 
-* Click **Run** to execute the experiment.
+- Close this pane by clicking on **X** at the top.
+- Set fault weights by clicking on **Set fault weights** tab present on top.
+- Click **Run** to execute the experiment.
 
 ## Chaos fault validation
 
-To validate the experiment you ran, execute the below commands on your terminal. 
+To validate the experiment you ran, execute the below commands on your terminal.
 
-* Fetch all the pods in the boutique namespace (or the namespace where your application is housed).
+- Fetch all the pods in the boutique namespace (or the namespace where your application is housed).
+
 ```
 kubectl get pods -n <namespace>
 ```
 
-* Exec into the microservice on which you will execute the chaos fault.
+- Exec into the microservice on which you will execute the chaos fault.
+
 ```
 kubectl exec -it <microservice_name> -n <namespace> sh
-``` 
+```
 
 ## Fault examples
 
 ### Common and pod specific tunables
+
 Refer the [common attributes](../../common-tunables-for-all-faults) and [Pod specific tunable](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
 
 ### Kill specific container
 
 It defines the name of the targeted container subjected to chaos. It can be tuned via `TARGET_CONTAINER` ENV. If `TARGET_CONTAINER` is provided as empty then it will use the first container of the targeted pod.
 
-[embedmd]:# (./static/manifests/container-kill/kill-specific-container.yaml yaml)
+[embedmd]: # "./static/manifests/container-kill/kill-specific-container.yaml yaml"
+
 ```yaml
 # kill the specific target container
 apiVersion: litmuschaos.io/v1alpha1
@@ -147,15 +157,15 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: container-kill
-    spec:
-      components:
-        env:
-        # name of the target container
-        - name: TARGET_CONTAINER
-          value: 'nginx'
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
+    - name: container-kill
+      spec:
+        components:
+          env:
+            # name of the target container
+            - name: TARGET_CONTAINER
+              value: "nginx"
+            - name: TOTAL_CHAOS_DURATION
+              VALUE: "60"
 ```
 
 ### Container runtime and socket path
@@ -165,7 +175,8 @@ It defines the `CONTAINER_RUNTIME` and `SOCKET_PATH` ENV to set the container ru
 - `CONTAINER_RUNTIME`: It supports `docker`, `containerd`, and `crio` runtimes. The default value is `docker`.
 - `SOCKET_PATH`: It contains path of docker socket file by default(`/var/run/docker.sock`). For other runtimes provide the appropriate path.
 
-[embedmd]:# (./static/manifests/container-kill/container-runtime-and-socket-path.yaml yaml)
+[embedmd]: # "./static/manifests/container-kill/container-runtime-and-socket-path.yaml yaml"
+
 ```yaml
 ## provide the container runtime and socket file path
 apiVersion: litmuschaos.io/v1alpha1
@@ -181,26 +192,27 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: container-kill
-    spec:
-      components:
-        env:
-        # runtime for the container
-        # supports docker, containerd, crio
-        - name: CONTAINER_RUNTIME
-          value: 'docker'
-        # path of the socket file
-        - name: SOCKET_PATH
-          value: '/var/run/docker.sock'
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
+    - name: container-kill
+      spec:
+        components:
+          env:
+            # runtime for the container
+            # supports docker, containerd, crio
+            - name: CONTAINER_RUNTIME
+              value: "docker"
+            # path of the socket file
+            - name: SOCKET_PATH
+              value: "/var/run/docker.sock"
+            - name: TOTAL_CHAOS_DURATION
+              VALUE: "60"
 ```
 
 ### Signal for kill
 
 It defines the Linux signal passed while killing the container. It can be tuned via `SIGNAL` ENV. It defaults to the `SIGTERM`.
- 
-[embedmd]:# (./static/manifests/container-kill/signal.yaml yaml)
+
+[embedmd]: # "./static/manifests/container-kill/signal.yaml yaml"
+
 ```yaml
 # specific linux signal passed while kiiling container
 apiVersion: litmuschaos.io/v1alpha1
@@ -216,23 +228,24 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: container-kill
-    spec:
-      components:
-        env:
-        # signal passed while killing container
-        # defaults to SIGTERM
-        - name: SIGNAL
-          value: 'SIGKILL'
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
+    - name: container-kill
+      spec:
+        components:
+          env:
+            # signal passed while killing container
+            # defaults to SIGTERM
+            - name: SIGNAL
+              value: "SIGKILL"
+            - name: TOTAL_CHAOS_DURATION
+              VALUE: "60"
 ```
 
 ### Pumba chaos library
 
 It specifies the Pumba chaos library for the chaos injection. It can be tuned via `LIB` ENV. The defaults chaos library is `litmus`.
 
-[embedmd]:# (./static/manifests/container-kill/pumba.yaml yaml)
+[embedmd]: # "./static/manifests/container-kill/pumba.yaml yaml"
+
 ```yaml
 # pumba chaoslib used to kill the container
 apiVersion: litmuschaos.io/v1alpha1
@@ -248,14 +261,14 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: container-kill
-    spec:
-      components:
-        env:
-        # name of the lib
-        # supoorts pumba and litmus
-        - name: LIB
-          value: 'pumba'
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
+    - name: container-kill
+      spec:
+        components:
+          env:
+            # name of the lib
+            # supoorts pumba and litmus
+            - name: LIB
+              value: "pumba"
+            - name: TOTAL_CHAOS_DURATION
+              VALUE: "60"
 ```

@@ -2,13 +2,16 @@
 id: pod-autoscaler
 title: Pod autoscaler
 ---
+
 Pod autoscaler is a Kubernetes pod-level chaos fault that:
+
 - Determines whether nodes can accomodate multiple replicas of a given application pod.
 - Examines the node auto-scaling feature by determining whether the pods were successfully rescheduled within a specified time frame if the existing nodes are running at the specified limits.
 
 ![Pod Autoscaler](./static/images/pod-autoscaler.png)
 
 ## Usage
+
 <details>
 <summary>View fault usage</summary>
 <div>
@@ -17,20 +20,23 @@ Coming soon.
 </details>
 
 ## Prerequisites
+
 - Kubernetes > 1.16
 
 ## Default validation
+
 The application pods should be running before and after injecting chaos.
 
 ## Implementation
 
-**NOTE:** It is assumed that you already have the boutique application set up in a namespace. If not, follow [this](provide link) to set up your boutique application.
+**NOTE:** It is assumed that you already have the boutique application set up in a namespace. If not, follow this to set up your boutique application.
 
-To execute pod autoscaler fault, [setup experiment](provide) and infrastructure.
+To execute pod autoscaler fault, setup experiment and infrastructure.
 
 After successful setup of chaos infrastructure:
-* Choose the **pod-autoscaler**fault from the list of Kubernetes faults available;
-* Specify parameters for the **Target application**, **Tune fault**, and **Probes**;
+
+- Choose the **pod-autoscaler**fault from the list of Kubernetes faults available;
+- Specify parameters for the **Target application**, **Tune fault**, and **Probes**;
     <details>
         <summary> Fault Tunables</summary>
         <h2>Optional Fields</h2>
@@ -71,26 +77,27 @@ After successful setup of chaos infrastructure:
         </table>
     </details>
 
-* Close this pane by clicking on **X** at the top.
-* Set fault weights by clicking on **Set fault weights** tab present on top. 
-* Click **Run** to execute the experiment.
-
+- Close this pane by clicking on **X** at the top.
+- Set fault weights by clicking on **Set fault weights** tab present on top.
+- Click **Run** to execute the experiment.
 
 ## Chaos fault validation
 
-To validate the experiment you ran, execute the below commands on your terminal. 
+To validate the experiment you ran, execute the below commands on your terminal.
 
-* Fetch all the pods in the boutique namespace (or the namespace where your application is housed).
+- Fetch all the pods in the boutique namespace (or the namespace where your application is housed).
+
 ```
 kubectl get pods -n <namespace>
 ```
 
-* Keep a watch on the pod that you wish to replicate. This is the same pod that you specified in the 'Target application -> App Label'.
+- Keep a watch on the pod that you wish to replicate. This is the same pod that you specified in the 'Target application -> App Label'.
+
 ```
 watch kubectl get pods -n <namespace>
 ```
 
-When the chaos starts, the number of replicas of the specific pod increases (since there is only 1 pod to begin with) to the number you specified in the tunables. Once the chaos execution is complete, the number of pods comes back to its original number. 
+When the chaos starts, the number of replicas of the specific pod increases (since there is only 1 pod to begin with) to the number you specified in the tunables. Once the chaos execution is complete, the number of pods comes back to its original number.
 
 ### Common and pod specific tunables
 
@@ -102,9 +109,10 @@ It defines the number of replicas that are required to be present in the target 
 
 Use the following example to tune it:
 
-[embedmd]:# (./static/manifests/pod-autoscaler/replica-count.yaml yaml)
+[embedmd]: # "./static/manifests/pod-autoscaler/replica-count.yaml yaml"
+
 ```yaml
-# provide the number of replicas 
+# provide the number of replicas
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -118,13 +126,13 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: pod-autoscaler
-    spec:
-      components:
-        env:
-        # number of replica, needs to scale
-        - name: REPLICA_COUNT
-          value: '3'
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
+    - name: pod-autoscaler
+      spec:
+        components:
+          env:
+            # number of replica, needs to scale
+            - name: REPLICA_COUNT
+              value: "3"
+            - name: TOTAL_CHAOS_DURATION
+              VALUE: "60"
 ```

@@ -2,6 +2,7 @@
 id: pod-network-partition
 title: Pod network partition
 ---
+
 Pod network partition is a Kubernetes pod-level chaos fault that:
 
 - It blocks the 100% Ingress and Egress traffic of the target application by creating network policy.
@@ -10,6 +11,7 @@ Pod network partition is a Kubernetes pod-level chaos fault that:
 ![Pod Network Partition](./static/images/network-chaos.png)
 
 ## Usage
+
 <details>
 <summary>View fault usage</summary>
 <div>
@@ -18,20 +20,23 @@ Coming soon.
 </details>
 
 ## Prerequisites
+
 - Kubernetes > 1.16
 
 ## Default validation
+
 The application pods should be running before and after injecting chaos.
 
 ## Implementation
 
-**NOTE:** It is assumed that you already have the boutique application set up in a namespace. If not, follow [this](provide link) to set up your boutique application.
+**NOTE:** It is assumed that you already have the boutique application set up in a namespace. If not, follow this to set up your boutique application.
 
-To execute pod network partition fault, [setup experiment](provide) and infrastructure.
+To execute pod network partition fault, setup experiment and infrastructure.
 
 After successful setup of chaos infrastructure:
-* Choose the **pod-network-partition** fault from the list of Kubernetes faults available;
-* Specify parameters for the **Target application**, **Tune fault**, and **Probes**;
+
+- Choose the **pod-network-partition** fault from the list of Kubernetes faults available;
+- Specify parameters for the **Target application**, **Tune fault**, and **Probes**;
     <details>
         <summary>Fault Tunables</summary>
         <h2>Optional Fields</h2>
@@ -88,28 +93,30 @@ After successful setup of chaos infrastructure:
           </tr>
         </table>
     </details>
-* Close this pane by clicking on **X** at the top.
-* Set fault weights by clicking on **Set fault weights** tab present on top. 
-* Click **Run** to execute the experiment.
-
+- Close this pane by clicking on **X** at the top.
+- Set fault weights by clicking on **Set fault weights** tab present on top.
+- Click **Run** to execute the experiment.
 
 ## Chaos fault validation
 
-To validate the experiment you ran, execute the below commands on your terminal. 
+To validate the experiment you ran, execute the below commands on your terminal.
 
-* Fetch all the pods in the boutique namespace (or the namespace where your application is housed).
+- Fetch all the pods in the boutique namespace (or the namespace where your application is housed).
+
 ```
 kubectl get pods -n <namespace>
 ```
 
-* Exec into the microservice on which you will execute the chaos fault.
+- Exec into the microservice on which you will execute the chaos fault.
+
 ```
 kubectl exec -it <microservice_name> -n <namespace> sh
-``` 
+```
 
 ## Fault examples
 
 ### Common and pod specific tunables
+
 Refer the [common attributes](../../common-tunables-for-all-faults) and [Pod specific tunable](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
 
 ### Destination IPs and destination hosts
@@ -121,7 +128,8 @@ The network partition fault interrupt traffic for all the IPs/hosts by default. 
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/pod-network-partition/destination-ips-and-hosts.yaml yaml)
+[embedmd]: # "./static/manifests/pod-network-partition/destination-ips-and-hosts.yaml yaml"
+
 ```yaml
 # it injects the chaos for specific ips/hosts
 apiVersion: litmuschaos.io/v1alpha1
@@ -137,18 +145,18 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: pod-network-partition
-    spec:
-      components:
-        env:
-        # supports comma separated destination ips
-        - name: DESTINATION_IPS
-          value: '8.8.8.8,192.168.5.6'
-        # supports comma separated destination hosts
-        - name: DESTINATION_HOSTS
-          value: 'nginx.default.svc.cluster.local,google.com'
-        - name: TOTAL_CHAOS_DURATION
-          value: '60'
+    - name: pod-network-partition
+      spec:
+        components:
+          env:
+            # supports comma separated destination ips
+            - name: DESTINATION_IPS
+              value: "8.8.8.8,192.168.5.6"
+            # supports comma separated destination hosts
+            - name: DESTINATION_HOSTS
+              value: "nginx.default.svc.cluster.local,google.com"
+            - name: TOTAL_CHAOS_DURATION
+              value: "60"
 ```
 
 ### Target specific namespaces
@@ -157,7 +165,8 @@ The network partition fault interrupt traffic for all the namespaces by default.
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/pod-network-partition/namespace-selectors.yaml yaml)
+[embedmd]: # "./static/manifests/pod-network-partition/namespace-selectors.yaml yaml"
+
 ```yaml
 # it injects the chaos for specified namespaces, matched by labels
 apiVersion: litmuschaos.io/v1alpha1
@@ -173,23 +182,25 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: pod-network-partition
-    spec:
-      components:
-        env:
-        # labels of the destination namespace
-        - name: NAMESPACE_SELECTOR
-          value: 'key=value'
-        - name: TOTAL_CHAOS_DURATION
-          value: '60'
+    - name: pod-network-partition
+      spec:
+        components:
+          env:
+            # labels of the destination namespace
+            - name: NAMESPACE_SELECTOR
+              value: "key=value"
+            - name: TOTAL_CHAOS_DURATION
+              value: "60"
 ```
+
 ### Target specific pods
 
 The network partition fault interrupt traffic for all the external pods by default. The access to/from specific pod(s) can be allowed via providing pod labels inside `POD_SELECTOR` ENV.
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/pod-network-partition/pod-selectors.yaml yaml)
+[embedmd]: # "./static/manifests/pod-network-partition/pod-selectors.yaml yaml"
+
 ```yaml
 # it injects the chaos for specified pods, matched by labels
 apiVersion: litmuschaos.io/v1alpha1
@@ -205,15 +216,15 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: pod-network-partition
-    spec:
-      components:
-        env:
-        # labels of the destination pods
-        - name: POD_SELECTOR
-          value: 'key=value'
-        - name: TOTAL_CHAOS_DURATION
-          value: '60'
+    - name: pod-network-partition
+      spec:
+        components:
+          env:
+            # labels of the destination pods
+            - name: POD_SELECTOR
+              value: "key=value"
+            - name: TOTAL_CHAOS_DURATION
+              value: "60"
 ```
 
 ### Policy type
@@ -222,7 +233,8 @@ The network partition fault interrupt both ingress and egress traffic by default
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/pod-network-partition/policy-type.yaml yaml)
+[embedmd]: # "./static/manifests/pod-network-partition/policy-type.yaml yaml"
+
 ```yaml
 # inject network loss for only ingress or only egress or all traffics
 apiVersion: litmuschaos.io/v1alpha1
@@ -238,31 +250,32 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: pod-network-partition
-    spec:
-      components:
-        env:
-        # provide the network policy type
-        # it supports `ingress`, `egress`, and `all` values
-        # default value is `all`
-        - name: POLICY_TYPES
-          value: 'all'
-        - name: TOTAL_CHAOS_DURATION
-          value: '60'
+    - name: pod-network-partition
+      spec:
+        components:
+          env:
+            # provide the network policy type
+            # it supports `ingress`, `egress`, and `all` values
+            # default value is `all`
+            - name: POLICY_TYPES
+              value: "all"
+            - name: TOTAL_CHAOS_DURATION
+              value: "60"
 ```
 
 ### Destination ports
 
-The network partition fault interrupt traffic for all the external ports by default. Access to specific port(s) can be allowed by providing comma separated list of ports inside `PORTS` ENV. 
+The network partition fault interrupt traffic for all the external ports by default. Access to specific port(s) can be allowed by providing comma separated list of ports inside `PORTS` ENV.
 
-Note: 
+Note:
 
 - If `PORT` is not set and none of the pod-selector, namespace-selector and destination_ips are provided then it will block traffic for all ports for all pods/ips
 - If `PORT` is not set but any of the podselector, nsselector and destination ips are provided then it will allow all ports for all the pods/ips filtered by the specified selectors
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/pod-network-partition/ports.yaml yaml)
+[embedmd]: # "./static/manifests/pod-network-partition/ports.yaml yaml"
+
 ```yaml
 # it injects the chaos for specified ports
 apiVersion: litmuschaos.io/v1alpha1
@@ -278,14 +291,13 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: pod-network-partition
-    spec:
-      components:
-        env:
-        # comma separated list of ports
-        - name: PORTS
-          value: 'tcp: [8080,80], udp: [9000,90]'
-        - name: TOTAL_CHAOS_DURATION
-          value: '60'
+    - name: pod-network-partition
+      spec:
+        components:
+          env:
+            # comma separated list of ports
+            - name: PORTS
+              value: "tcp: [8080,80], udp: [9000,90]"
+            - name: TOTAL_CHAOS_DURATION
+              value: "60"
 ```
-

@@ -4,16 +4,18 @@ title: Your first chaos experiment
 description: Run a chaos experiment on Kubernetes for the first time.
 ---
 
-Welcome to Harness Chaos Engineering's **first tutorial** on running a **chaos experiment**. 
+Welcome to Harness Chaos Engineering's **first tutorial** on running a **chaos experiment**.
 
 In this tutorial, you will utilize an already exisiting application or create a new one, and
-1. Create environment, chaos infrastructure and enable chaos on the chaos infrastructure, 
-2. Create a chaos experiment,
-3. Run the chaos experiment on the application and observe the actions that take place to determine how resilient the application is, to unforeseen failures.   
 
-[First Goal IMAGE](./static/chaos-exp-with-kube-cluster/first-goal.png)
+1. Create environment, chaos infrastructure and enable chaos on the chaos infrastructure,
+2. Create a chaos experiment,
+3. Run the chaos experiment on the application and observe the actions that take place to determine how resilient the application is, to unforeseen failures.
+
+<!-- first goal image goes here -->
 
 ## Prerequisites
+
 1. Permissions to create a cluster (so that you can create the namespace, resources, etc.)
 2. Invite/sign up to prod2/qa
 3. ‘kubectl’ command-line tool
@@ -23,17 +25,21 @@ In this tutorial, you will utilize an already exisiting application or create a 
 Let us get started!
 
 ## 1. Choose your target application
+
 You can use an existing application of your choice or create a new boutique application.
 
 ### a. Choose an existing application
 
 ### b. Create a new boutique application
-1. To create a new boutique application, create a new namespace to house your application. 
+
+1. To create a new boutique application, create a new namespace to house your application.
+
 ```
 ❯ kubectl create ns <namespace_name>
 ```
 
-2. Execute the following commands to set up your boutique application inside the previously created namespace. 
+2. Execute the following commands to set up your boutique application inside the previously created namespace.
+
 ```
 ❯ kubectl apply -f https://raw.githubusercontent.com/chaosnative/harness-chaos-demo/main/boutique-app-manifests/manifest/app.yaml -n <namespace_name>
 ```
@@ -120,7 +126,7 @@ shippingservice                ClusterIP      10.8.28.118   <none>          5005
 
 ### a. Create an environment in the chaos center
 
-1. Navigate to app.harness.io, and sign up or contact Harness support to receive an invite to a specific project which will be your playground. 
+1. Navigate to app.harness.io, and sign up or contact Harness support to receive an invite to a specific project which will be your playground.
 
 2. Go to ‘**Chaos**’, and select the project where you wish to run your first chaos experiment.
 
@@ -130,7 +136,7 @@ shippingservice                ClusterIP      10.8.28.118   <none>          5005
 
 ![New Environment](./static/first-chaos/new-env.png)
 
-4. Specify the name of the environment, and the type of environment (production or non-production environment). Click on ‘**Create**’. 
+4. Specify the name of the environment, and the type of environment (production or non-production environment). Click on ‘**Create**’.
 
 Specify Environment](./static/chaos-exp-with-kube-cluster/specify-env.png)
 
@@ -141,7 +147,7 @@ This creates a new chaos environment, and automatically lands you inside your ch
 ### Create a Chaos Infrastructure
 
 1. A [chaos infrastructure](https://developer.harness.io/docs/chaos-engineering/technical-reference/chaos-infrastructures) is basically a Kubernetes infrastructure that provides the necessary resources to execute your chaos experiment.
-To enable chaos on a new chaos infrastructure, click on ‘**Enable Chaos**’, and click on ‘**Continue**’.
+   To enable chaos on a new chaos infrastructure, click on ‘**Enable Chaos**’, and click on ‘**Continue**’.
 
 Chaos Infrastructure](./static/chaos-exp-with-kube-cluster/chaos-infra.png)
 
@@ -158,6 +164,7 @@ Chaos Infrastructure Specifications](./static/chaos-exp-with-kube-cluster/chaos-
 Download YAML](./static/chaos-exp-with-kube-cluster/download-yaml.png)
 
 5. To deploy the chaos infrastructure, execute the command you just copied on your terminal. Ensure you are in the folder where this YAML file is present or specify the location of the YAML file. This YAML file creates the necessary configuration and environment required to set up your application and chaos access pods.
+
 ```
 ❯ kubectl apply -f <file-name.yaml>
 ```
@@ -208,6 +215,7 @@ Enable Chaos](./static/chaos-exp-with-kube-cluster/enable-chaos.png)
 ## 3. Create your Chaos Experiment
 
 ### Create a New Experiment
+
 1. To create a new chaos experiment and inject chaos, navigate to your chaos access center, and click on '**Chaos Experiments**'. Now click on ‘**New experiment**’.
 
 New Experiment Infrastructure](./static/chaos-exp-with-kube-cluster/new-experiment.png)
@@ -293,26 +301,27 @@ Boutique Dashboard](./static/chaos-exp-with-kube-cluster/dashboard.png)
 
 ### Visuals before Chaos is Injected
 
-Below is the visualization before chaos is injected into the application. 
+Below is the visualization before chaos is injected into the application.
 
 Results](./static/chaos-exp-with-kube-cluster/result.png)
 
+The next step in this tutorial is to configure the chaos control plane, i.e,
 
-The next step in this tutorial is to configure the chaos control plane, i.e, 
-1. Create a chaos environment, a chaos infrastructure; and 
+1. Create a chaos environment, a chaos infrastructure; and
 2. Deploy this infrastructure.
 
 ## Troubleshooting
 
 # Access Harness Chaos Engineering
 
- To access HCE, log in to app.harness.io, and click the **Chaos** tab.
+To access HCE, log in to app.harness.io, and click the **Chaos** tab.
 
 ## Create a Project
 
-Create a project or ask your administrator to add you to an existing project. 
+Create a project or ask your administrator to add you to an existing project.
 
 To create a project, do the following:
+
 1. In Harness, go to **Home** and click **Projects**.
 2. Click **+Project**.
 3. Enter a name for the project and select a color. The project ID, which is immutable for the life of the project, is generated automatically, and enables you to change the name of the project.
@@ -328,7 +337,7 @@ If your administrator has added you to a project, you can go to the Chaos tab an
 
 ## Add the chaos infrastructure
 
-Adding the target infrastructure resources enables Harness to access those resources. However, we must first create an environment to which to add those resources. 
+Adding the target infrastructure resources enables Harness to access those resources. However, we must first create an environment to which to add those resources.
 
 To create an environment, go to **Environments** in the sidebar menu, and choose a **New Environment**. Add environment name, and optionally a description and tags. Select the environment type, **Production** or **Non-Production**. Finally, click on **Create** to add the new environment.
 
@@ -349,6 +358,7 @@ Lastly, provided that you have access to your Kubernetes cluster via [kubectl](h
 ![Deploy Chaos Infrastructure](./static/first-chaos/deploy-chaos-infrastructure.png)
 
 It will take a while for the delegate to setup in the k8s cluster. Eventually all the pods in the `litmus` namespace should be in a running state, which you can optionally validate using the following command:
+
 ```bash
 ❯ kubectl get pods -n litmus
 ```
@@ -359,11 +369,12 @@ Otherwise, head to the created environment and as soon as the delegate is ready,
 
 ## Creating Demo Application and Observability Infrastructure
 
-Now we are all ready to target our Kubernetes resources. In this quick start document, we will be executing one of the most popular and simplest fault, **Pod Delete**. It simply deletes the pods of a deployment, statefulset, daemonset, etc. to validate the resiliency of a microservice application. 
+Now we are all ready to target our Kubernetes resources. In this quick start document, we will be executing one of the most popular and simplest fault, **Pod Delete**. It simply deletes the pods of a deployment, statefulset, daemonset, etc. to validate the resiliency of a microservice application.
 
 You can use your own application as a target, however, we will use the [Online Boutique](https://github.com/GoogleCloudPlatform/microservices-demo) microservices demo application as the target.
 
 Before we setup our chaos experiment, let us install the target application. Run the following commands to setup the target application microservices and observability infrastructure, including, Grafana, Prometheus and a BlackBox exporter. Installation of the observability infrastructure is optional as it doesn't have any role in executing the experiment, however, it will provide us with a dashboard which will help us validate the health of the constituent application microservices in real time.
+
 ```bash
 ❯ kubectl apply -f https://raw.githubusercontent.com/Adarshkumar14/boutique-app-monitoring/main/manifest/app.yaml -n litmus
 
@@ -373,6 +384,7 @@ Before we setup our chaos experiment, let us install the target application. Run
 We are deploying these resources in the existing `litmus` namespace, since we had specified the Namespace mode of installation.
 
 Eventually, we will have all the target application and observability infrastructure pods available in the `litmus` namespace:
+
 ```
 ❯ kubectl get pods -n litmus
 
@@ -399,6 +411,7 @@ workflow-controller-6d5d75dc7c-v9vqc           1/1     Running   0              
 ```
 
 You can list the services available in the `litmus` namespace as following:
+
 ```
 ❯ kubectl get services -n litmus
 
@@ -458,7 +471,7 @@ HTTP Probe](./static/first-chaos/http-probe.png)
 
 When done, simply close the overlay modal. We have added the Pod Delete fault now.
 
-In the last step, choose the **Set Fault Weight** tab. Here, we can observe that the default weight for the fault is 10, which we can use for calculating the resiliency score for the experiment run. 
+In the last step, choose the **Set Fault Weight** tab. Here, we can observe that the default weight for the fault is 10, which we can use for calculating the resiliency score for the experiment run.
 
 Set Fault Weight](./static/first-chaos/set-fault-weight.png)
 
@@ -468,7 +481,7 @@ When ready, start the experiment execution by selecting **Run** on the top right
 
 Experiment Executing](./static/first-chaos/experiment-executing.png)
 
-Once the fault is running, we can check for the detailed view of the experiment. We can follow the logs of the experiment run as it gets executed. 
+Once the fault is running, we can check for the detailed view of the experiment. We can follow the logs of the experiment run as it gets executed.
 
 Detailed Chaos Execution](./static/first-chaos/detailed-chaos-execution.png)
 
@@ -514,7 +527,7 @@ Before we analyze the experiment result, we can validate that the application is
 
 App Metrics Normalizing](./static/first-chaos/app-metrics-normalizing.png)
 
-We can now check the check the chaos result, where it can be observed that the fault verdict is **Failed** and the Probe Success Percentage is 50%. This is because although the default probe execution in Edge mode validated the target application to be healthy before and after the chaos, the cart service URL HTTP probe has failed. The failure of this probe can be attributed to the unavailability of the cart pod due to the injection of the Pod Delete fault.  
+We can now check the check the chaos result, where it can be observed that the fault verdict is **Failed** and the Probe Success Percentage is 50%. This is because although the default probe execution in Edge mode validated the target application to be healthy before and after the chaos, the cart service URL HTTP probe has failed. The failure of this probe can be attributed to the unavailability of the cart pod due to the injection of the Pod Delete fault.
 
 Experiment Result Failed](./static/first-chaos/experiment-result-failed.png)
 

@@ -2,13 +2,16 @@
 id: pod-http-reset-peer
 title: Pod HTTP reset peer
 ---
+
 Pod HTTP reset peer is a Kubernetes pod-level chaos fault that:
+
 - It injects http reset on the service whose port is provided as `TARGET_SERVICE_PORT` which stops outgoing http requests by resetting the TCP connection by starting proxy server and then redirecting the traffic through the proxy server.
 - It can test the application's resilience to lossy/flaky http connection.
 
 ![Pod HTTP Reset Peer](./static/images/pod-http.png)
 
 ## Usage
+
 <details>
 <summary>View fault usage</summary>
 <div>
@@ -17,20 +20,23 @@ Coming soon.
 </details>
 
 ## Prerequisites
+
 - Kubernetes > 1.16
 
 ## Default validation
+
 The application pods should be running before and after injecting chaos.
 
 ## Implementation
 
-**NOTE:** It is assumed that you already have the boutique application set up in a namespace. If not, follow [this](provide link) to set up your boutique application.
+**NOTE:** It is assumed that you already have the boutique application set up in a namespace. If not, follow this to set up your boutique application.
 
-To execute pod HTTP reset peer fault, [setup experiment](provide) and infrastructure.
+To execute pod HTTP reset peer fault, setup experiment and infrastructure.
 
 After successful setup of chaos infrastructure:
-* Choose the **pod-http-reset-peer** fault from the list of Kubernetes faults available;
-* Specify parameters for the **Target application**, **Tune fault**, and **Probes**;
+
+- Choose the **pod-http-reset-peer** fault from the list of Kubernetes faults available;
+- Specify parameters for the **Target application**, **Tune fault**, and **Probes**;
     <details>
         <summary>Fault Tunables</summary>
         <h2>Mandatory Fields</h2>
@@ -115,28 +121,30 @@ After successful setup of chaos infrastructure:
           </tr>
         </table>
     </details>
-* Close this pane by clicking on **X** at the top.
-* Set fault weights by clicking on **Set fault weights** tab present on top. 
-* Click **Run** to execute the experiment.
-
+- Close this pane by clicking on **X** at the top.
+- Set fault weights by clicking on **Set fault weights** tab present on top.
+- Click **Run** to execute the experiment.
 
 ## Chaos fault validation
 
-To validate the experiment you ran, execute the below commands on your terminal. 
+To validate the experiment you ran, execute the below commands on your terminal.
 
-* Fetch all the pods in the boutique namespace (or the namespace where your application is housed).
+- Fetch all the pods in the boutique namespace (or the namespace where your application is housed).
+
 ```
 kubectl get pods -n <namespace>
 ```
 
-* Exec into the microservice on which you will execute the chaos fault.
+- Exec into the microservice on which you will execute the chaos fault.
+
 ```
 kubectl exec -it <microservice_name> -n <namespace> sh
-``` 
+```
 
 ## Fault examples
 
 ### Common and pod specific tunables
+
 Refer the [common attributes](../../common-tunables-for-all-faults) and [Pod specific tunable](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
 
 ### Target service port
@@ -145,7 +153,8 @@ It defines the port of the targeted service that is being targeted. It can be tu
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/pod-http-reset-peer/target-service-port.yaml yaml)
+[embedmd]: # "./static/manifests/pod-http-reset-peer/target-service-port.yaml yaml"
+
 ```yaml
 ## provide the port of the targeted service
 apiVersion: litmuschaos.io/v1alpha1
@@ -161,22 +170,22 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: pod-http-reset-peer
-    spec:
-      components:
-        env:
-        # provide the port of the targeted service
-        - name: TARGET_SERVICE_PORT
-          value: "80"
+    - name: pod-http-reset-peer
+      spec:
+        components:
+          env:
+            # provide the port of the targeted service
+            - name: TARGET_SERVICE_PORT
+              value: "80"
 ```
-
 
 ### Proxy port
 
 It defines the port on which the proxy server will listen for requests. It can be tuned via `PROXY_PORT` ENV.
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/pod-http-reset-peer/proxy-port.yaml yaml)
+[embedmd]: # "./static/manifests/pod-http-reset-peer/proxy-port.yaml yaml"
+
 ```yaml
 ## provide the port for proxy server
 apiVersion: litmuschaos.io/v1alpha1
@@ -192,18 +201,17 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: pod-http-reset-peer
-    spec:
-      components:
-        env:
-        # provide the port for proxy server
-        - name: PROXY_PORT
-          value: '8080'
-        # provide the port of the targeted service
-        - name: TARGET_SERVICE_PORT
-          value: "80"
+    - name: pod-http-reset-peer
+      spec:
+        components:
+          env:
+            # provide the port for proxy server
+            - name: PROXY_PORT
+              value: "8080"
+            # provide the port of the targeted service
+            - name: TARGET_SERVICE_PORT
+              value: "80"
 ```
-
 
 ### Reset timeout
 
@@ -211,7 +219,8 @@ It defines the reset timeout value to be added to the http request. It can be tu
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/pod-http-reset-peer/reset-timeout.yaml yaml)
+[embedmd]: # "./static/manifests/pod-http-reset-peer/reset-timeout.yaml yaml"
+
 ```yaml
 ## provide the reset timeout value
 apiVersion: litmuschaos.io/v1alpha1
@@ -227,25 +236,27 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: pod-http-reset-peer
-    spec:
-      components:
-        env:
-        # reset timeout specifies after how much duration to reset the connection
-        - name: RESET_TIMEOUT #in ms
-          value: '2000'
-        # provide the port of the targeted service
-        - name: TARGET_SERVICE_PORT
-          value: "80"
+    - name: pod-http-reset-peer
+      spec:
+        components:
+          env:
+            # reset timeout specifies after how much duration to reset the connection
+            - name: RESET_TIMEOUT #in ms
+              value: "2000"
+            # provide the port of the targeted service
+            - name: TARGET_SERVICE_PORT
+              value: "80"
 ```
 
 ### Toxicity
+
 It defines the toxicity value to be added to the http request. It can be tuned via `TOXICITY` ENV.
 Toxicity value defines the percentage of the total number of http requests to be affected.
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/pod-http-reset-peer/toxicity.yaml yaml)
+[embedmd]: # "./static/manifests/pod-http-reset-peer/toxicity.yaml yaml"
+
 ```yaml
 ## provide the toxicity
 apiVersion: litmuschaos.io/v1alpha1
@@ -261,26 +272,28 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: pod-http-reset-peer
-    spec:
-      components:
-        env:
-        # toxicity is the probability of the request to be affected
-        # provide the percentage value in the range of 0-100
-        # 0 means no request will be affected and 100 means all request will be affected
-        - name: TOXICITY
-          value: "100"
-        # provide the port of the targeted service
-        - name: TARGET_SERVICE_PORT
-          value: "80"
+    - name: pod-http-reset-peer
+      spec:
+        components:
+          env:
+            # toxicity is the probability of the request to be affected
+            # provide the percentage value in the range of 0-100
+            # 0 means no request will be affected and 100 means all request will be affected
+            - name: TOXICITY
+              value: "100"
+            # provide the port of the targeted service
+            - name: TARGET_SERVICE_PORT
+              value: "80"
 ```
 
 ### Network interface
+
 It defines the network interface to be used for the proxy. It can be tuned via `NETWORK_INTERFACE` ENV.
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/pod-http-reset-peer/network-interface.yaml yaml)
+[embedmd]: # "./static/manifests/pod-http-reset-peer/network-interface.yaml yaml"
+
 ```yaml
 ## provide the network interface for proxy
 apiVersion: litmuschaos.io/v1alpha1
@@ -296,18 +309,17 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: pod-http-reset-peer
-    spec:
-      components:
-        env:
-        # provide the network interface for proxy
-        - name: NETWORK_INTERFACE
-          value: "eth0"
-        # provide the port of the targeted service
-        - name: TARGET_SERVICE_PORT
-          value: '80'
+    - name: pod-http-reset-peer
+      spec:
+        components:
+          env:
+            # provide the network interface for proxy
+            - name: NETWORK_INTERFACE
+              value: "eth0"
+            # provide the port of the targeted service
+            - name: TARGET_SERVICE_PORT
+              value: "80"
 ```
-
 
 ### Container runtime and socket path
 
@@ -318,7 +330,8 @@ It defines the `CONTAINER_RUNTIME` and `SOCKET_PATH` ENV to set the container ru
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/pod-http-reset-peer/container-runtime-and-socket-path.yaml yaml)
+[embedmd]: # "./static/manifests/pod-http-reset-peer/container-runtime-and-socket-path.yaml yaml"
+
 ```yaml
 ## provide the container runtime and socket file path
 apiVersion: litmuschaos.io/v1alpha1
@@ -334,18 +347,18 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: pod-http-reset-peer
-    spec:
-      components:
-        env:
-        # runtime for the container
-        # supports docker, containerd, crio
-        - name: CONTAINER_RUNTIME
-          value: 'docker'
-        # path of the socket file
-        - name: SOCKET_PATH
-          value: '/var/run/docker.sock'
-        # provide the port of the targeted service
-        - name: TARGET_SERVICE_PORT
-          value: "80"
+    - name: pod-http-reset-peer
+      spec:
+        components:
+          env:
+            # runtime for the container
+            # supports docker, containerd, crio
+            - name: CONTAINER_RUNTIME
+              value: "docker"
+            # path of the socket file
+            - name: SOCKET_PATH
+              value: "/var/run/docker.sock"
+            # provide the port of the targeted service
+            - name: TARGET_SERVICE_PORT
+              value: "80"
 ```

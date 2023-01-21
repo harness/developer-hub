@@ -2,35 +2,41 @@
 id: pod-memory-hog
 title: Pod memory hog
 ---
+
 Pod memory hog is a Kubernetes pod-level chaos fault that:
+
 - Consumes memory resources in excess, resulting in a significant spike in the memory usage of a pod.
-- Simulates a condition where the memory usage of an application spikes up unexpectedly.  
+- Simulates a condition where the memory usage of an application spikes up unexpectedly.
 
 **Illustration of how pod memory hog is executed**
 
 ![Pod memory hog](./static/images/pod-stress.png)
 
 ## Usage
+
 <details>
 <summary>View fault usage</summary>
 <div>
-Memory usage within containers is subject to various constraints in Kubernetes. If the limits are specified in their spec, exceeding them can cause termination of the container (due to OOMKill of the primary process, often pid 1) - the restart of the container by kubelet, subject to the policy specified. For containers with no limits placed, the memory usage is uninhibited until such time as the Node level OOM behavior takes over. In this case, containers on the node can be killed based on their oom_score and the QoS class a given pod belongs to (bestEffort ones are first to be targeted). This eval is extended to all pods running on the node - thereby causing a bigger blast radius. 
+Memory usage within containers is subject to various constraints in Kubernetes. If the limits are specified in their spec, exceeding them can cause termination of the container (due to OOMKill of the primary process, often pid 1) - the restart of the container by kubelet, subject to the policy specified. For containers with no limits placed, the memory usage is uninhibited until such time as the Node level OOM behavior takes over. In this case, containers on the node can be killed based on their oom_score and the QoS class a given pod belongs to (bestEffort ones are first to be targeted). This eval is extended to all pods running on the node - thereby causing a bigger blast radius.
 
 This fault launches a stress process within the target container - which can cause either the primary process in the container to be resource constrained in cases where the limits are enforced OR eat up available system memory on the node in cases where the limits are not specified.
+
 </div>
 </details>
 
 ## Prerequisites
+
 - Kubernetes > 1.16
 
 ## Default validation
+
 The application pods should be running before and after injecting chaos.
 
 ## Implementation
 
-**NOTE:** It is assumed that you already have the boutique application set up in a namespace. If not, follow [this](provide link) to set up your boutique application.
+**NOTE:** It is assumed that you already have the boutique application set up in a namespace. If not, follow this to set up your boutique application.
 
-To execute pod memory hog fault, [setup experiment](provide) and infrastructure.
+To execute pod memory hog fault, setup experiment and infrastructure.
 
 Once the infrastructure has been set up, it is essential to tweak a section of the **app.yaml**. In the **deployment** kind, for **cartservice**, uncomment the following lines.
 
@@ -45,8 +51,9 @@ resources:
 ```
 
 After successful setup of chaos infrastructure:
-* Choose the **pod-memory-hog** fault from the list of Kubernetes faults available;
-* Specify parameters for the **Target application**, **Tune fault**, and **Probes**;
+
+- Choose the **pod-memory-hog** fault from the list of Kubernetes faults available;
+- Specify parameters for the **Target application**, **Tune fault**, and **Probes**;
     <details>
         <summary>Fault Tunables</summary>
         <h2>Optional Fields</h2>
@@ -124,29 +131,30 @@ After successful setup of chaos infrastructure:
         </table>
     </details>
 
-* Close this pane by clicking on **X** at the top.
-* Set fault weights by clicking on **Set fault weights** tab present on top. 
-* Click **Run** to execute the experiment.
-
+- Close this pane by clicking on **X** at the top.
+- Set fault weights by clicking on **Set fault weights** tab present on top.
+- Click **Run** to execute the experiment.
 
 ## Chaos fault validation
 
-To validate the experiment you ran, execute the below commands on your terminal. 
+To validate the experiment you ran, execute the below commands on your terminal.
 
-* Fetch all the pods in the boutique namespace (or the namespace where your application is housed).
+- Fetch all the pods in the boutique namespace (or the namespace where your application is housed).
+
 ```
 kubectl get pods -n <namespace>
 ```
 
-* Exec into the microservice on which you will execute the chaos fault.
+- Exec into the microservice on which you will execute the chaos fault.
+
 ```
 kubectl exec -it <microservice_name> -n <namespace> sh
-``` 
-
+```
 
 ## Fault examples
 
 ### Common and pod-specific tunables
+
 Refer the [common attributes](../../common-tunables-for-all-faults) and [pod specific tunables](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
 
 ### Memory consumption
@@ -155,7 +163,8 @@ It stresses the `MEMORY_CONSUMPTION` MB memory of the targeted pod for the `TOTA
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/pod-memory-hog/memory-consumption.yaml yaml)
+[embedmd]: # "./static/manifests/pod-memory-hog/memory-consumption.yaml yaml"
+
 ```yaml
 # define the memory consumption in MB
 apiVersion: litmuschaos.io/v1alpha1
@@ -171,24 +180,25 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: pod-memory-hog
-    spec:
-      components:
-        env:
-        # memory consumption value
-        - name: MEMORY_CONSUMPTION
-          value: '500' #in MB
-        - name: TOTAL_CHAOS_DURATION
-          value: '60'
+    - name: pod-memory-hog
+      spec:
+        components:
+          env:
+            # memory consumption value
+            - name: MEMORY_CONSUMPTION
+              value: "500" #in MB
+            - name: TOTAL_CHAOS_DURATION
+              value: "60"
 ```
 
 ### Workers for stress
 
-The worker's count for the stress can be tuned with `NUMBER_OF_WORKERS` ENV. 
+The worker's count for the stress can be tuned with `NUMBER_OF_WORKERS` ENV.
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/pod-memory-hog/workers.yaml yaml)
+[embedmd]: # "./static/manifests/pod-memory-hog/workers.yaml yaml"
+
 ```yaml
 # number of workers used for the stress
 apiVersion: litmuschaos.io/v1alpha1
@@ -204,15 +214,15 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: pod-memory-hog
-    spec:
-      components:
-        env:
-        # number of workers for stress
-        - name: NUMBER_OF_WORKERS
-          value: '1'
-        - name: TOTAL_CHAOS_DURATION
-          value: '60'
+    - name: pod-memory-hog
+      spec:
+        components:
+          env:
+            # number of workers for stress
+            - name: NUMBER_OF_WORKERS
+              value: "1"
+            - name: TOTAL_CHAOS_DURATION
+              value: "60"
 ```
 
 ### Container runtime and socket path
@@ -229,7 +239,8 @@ Provide the stress image via `STRESS_IMAGE` ENV for the pumba library.
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/pod-memory-hog/pumba-lib.yaml yaml)
+[embedmd]: # "./static/manifests/pod-memory-hog/pumba-lib.yaml yaml"
+
 ```yaml
 # use the pumba lib for the memory stress
 apiVersion: litmuschaos.io/v1alpha1
@@ -245,17 +256,17 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: pod-memory-hog
-    spec:
-      components:
-        env:
-        # name of chaoslib
-        # it supports litmus and pumba lib
-        - name: LIB
-          value: 'pumba'
-        # stress image - applicable for pumba lib only
-        - name: STRESS_IMAGE
-          value: 'alexeiled/stress-ng:latest-ubuntu'
-        - name: TOTAL_CHAOS_DURATION
-          value: '60'
+    - name: pod-memory-hog
+      spec:
+        components:
+          env:
+            # name of chaoslib
+            # it supports litmus and pumba lib
+            - name: LIB
+              value: "pumba"
+            # stress image - applicable for pumba lib only
+            - name: STRESS_IMAGE
+              value: "alexeiled/stress-ng:latest-ubuntu"
+            - name: TOTAL_CHAOS_DURATION
+              value: "60"
 ```

@@ -2,13 +2,16 @@
 id: pod-dns-error
 title: Pod DNS error
 ---
+
 Pod DNS error is a Kubernetes pod-level chaos fault that:
+
 - Injects chaos to disrupt DNS resolution in pods.
 - Removes access to services by blocking the DNS resolution of host names (or domains).
 
 ![Pod DNS Error](./static/images/dns-chaos.png)
 
 ## Usage
+
 <details>
 <summary>View fault usage</summary>
 <div>
@@ -17,20 +20,23 @@ Coming soon.
 </details>
 
 ## Prerequisites
+
 - Kubernetes > 1.16
 
 ## Default validation
+
 The application pods should be running before and after injecting chaos.
 
 ## Implementation
 
-**NOTE:** It is assumed that you already have the boutique application set up in a namespace. If not, follow [this](provide link) to set up your boutique application.
+**NOTE:** It is assumed that you already have the boutique application set up in a namespace. If not, follow this to set up your boutique application.
 
-To execute pod DNS error fault, [setup experiment](provide) and infrastructure.
+To execute pod DNS error fault, setup experiment and infrastructure.
 
 After successful setup of chaos infrastructure:
-* Choose the **pod-dns-error** fault from the list of Kubernetes faults available;
-* Specify parameters for the **Target application**, **Tune fault**, and **Probes**;
+
+- Choose the **pod-dns-error** fault from the list of Kubernetes faults available;
+- Specify parameters for the **Target application**, **Tune fault**, and **Probes**;
     <details>
         <summary>Fault Tunables</summary>
         <h2>Optional Fields</h2>
@@ -98,34 +104,38 @@ After successful setup of chaos infrastructure:
         </table>
     </details>
 
-* Close this pane by clicking on **X** at the top.
-* Set fault weights by clicking on **Set fault weights** tab present on top. 
-* Click **Run** to execute the experiment.
-
+- Close this pane by clicking on **X** at the top.
+- Set fault weights by clicking on **Set fault weights** tab present on top.
+- Click **Run** to execute the experiment.
 
 ## Chaos fault validation
 
-To validate the experiment you ran, execute the below commands on your terminal. 
+To validate the experiment you ran, execute the below commands on your terminal.
 
-* Fetch all the pods in the boutique namespace (or the namespace where your application is housed).
+- Fetch all the pods in the boutique namespace (or the namespace where your application is housed).
+
 ```
 kubectl get pods -n <namespace>
 ```
 
-* Exec into the microservice on which you will execute the chaos fault.
+- Exec into the microservice on which you will execute the chaos fault.
+
 ```
 kubectl exec -it <microservice_name> -n <namespace> sh
-``` 
+```
 
-* This leads you into the pod, where you can execute the below command to check the disk usage.
+- This leads you into the pod, where you can execute the below command to check the disk usage.
+
 ```
 /app # ping <target_hostname>
 ```
-When the chaos is in action, accessing the target_hostname leads to a 'bad address' error. 
+
+When the chaos is in action, accessing the target_hostname leads to a 'bad address' error.
 
 ## Fault examples
 
 ### Common and pod specific tunables
+
 Refer to the [common attributes](../../common-tunables-for-all-faults) and [pod specific tunables](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
 
 ### Target host names
@@ -135,7 +145,8 @@ If `TARGET_HOSTNAMES` environment variable has not been provided, all host names
 
 Use the following example to tune it:
 
-[embedmd]:# (./static/manifests/pod-dns-error/target-hostnames.yaml yaml)
+[embedmd]: # "./static/manifests/pod-dns-error/target-hostnames.yaml yaml"
+
 ```yaml
 # contains the target host names for the dns error
 apiVersion: litmuschaos.io/v1alpha1
@@ -151,16 +162,16 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: pod-dns-error
-    spec:
-      components:
-        env:
-        ## comma separated list of host names
-        ## if not provided, all hostnames/domains will be targeted
-        - name: TARGET_HOSTNAMES
-          value: '["litmuschaos","chaosnative.com"]'
-        - name: TOTAL_CHAOS_DURATION
-          value: '60'
+    - name: pod-dns-error
+      spec:
+        components:
+          env:
+            ## comma separated list of host names
+            ## if not provided, all hostnames/domains will be targeted
+            - name: TARGET_HOSTNAMES
+              value: '["litmuschaos","chaosnative.com"]'
+            - name: TOTAL_CHAOS_DURATION
+              value: "60"
 ```
 
 ### Match scheme
@@ -169,7 +180,8 @@ It determines whether the DNS query has to match exactly with one of the targets
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/pod-dns-error/match-scheme.yaml yaml)
+[embedmd]: # "./static/manifests/pod-dns-error/match-scheme.yaml yaml"
+
 ```yaml
 # contains match scheme for the dns error
 apiVersion: litmuschaos.io/v1alpha1
@@ -185,15 +197,15 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: pod-dns-error
-    spec:
-      components:
-        env:
-        ## it supports 'exact' and 'substring' values
-        - name: MATCH_SCHEME
-          value: 'exact' 
-        - name: TOTAL_CHAOS_DURATION
-          value: '60'
+    - name: pod-dns-error
+      spec:
+        components:
+          env:
+            ## it supports 'exact' and 'substring' values
+            - name: MATCH_SCHEME
+              value: "exact"
+            - name: TOTAL_CHAOS_DURATION
+              value: "60"
 ```
 
 ### Container runtime and socket path
@@ -205,7 +217,8 @@ It defines the `CONTAINER_RUNTIME` and `SOCKET_PATH` ENV to set the container ru
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/pod-dns-error/container-runtime-and-socket-path.yaml yaml)
+[embedmd]: # "./static/manifests/pod-dns-error/container-runtime-and-socket-path.yaml yaml"
+
 ```yaml
 ## provide the container runtime and socket file path
 apiVersion: litmuschaos.io/v1alpha1
@@ -221,17 +234,17 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: pod-dns-error
-    spec:
-      components:
-        env:
-        # runtime for the container
-        # supports docker
-        - name: CONTAINER_RUNTIME
-          value: 'docker'
-        # path of the socket file
-        - name: SOCKET_PATH
-          value: '/var/run/docker.sock'
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
+    - name: pod-dns-error
+      spec:
+        components:
+          env:
+            # runtime for the container
+            # supports docker
+            - name: CONTAINER_RUNTIME
+              value: "docker"
+            # path of the socket file
+            - name: SOCKET_PATH
+              value: "/var/run/docker.sock"
+            - name: TOTAL_CHAOS_DURATION
+              VALUE: "60"
 ```

@@ -2,13 +2,16 @@
 id: pod-delete
 title: Pod delete
 ---
+
 Pod delete is a Kubernetes pod-level chaos fault that:
+
 - Causes specific (or random) replicas of an application resource to fail forcibly (or gracefully).
 - Tests an application's deployment sanity (replica availability and uninterrupted service) and recovery workflow.
 
 ![Pod Delete](./static/images/pod-delete.png)
 
 ## Usage
+
 <details>
 <summary>View fault usage</summary>
 <div>
@@ -19,20 +22,23 @@ This fault helps to reproduce such a scenario with forced/graceful pod failure o
 </details>
 
 ## Prerequisites
+
 - Kubernetes > 1.16
 
 ## Default validation
+
 The application pods should be running before and after injecting chaos.
 
 ## Implementation
 
-**NOTE:** It is assumed that you already have the boutique application set up in a namespace. If not, follow [this](provide link) to set up your boutique application.
+**NOTE:** It is assumed that you already have the boutique application set up in a namespace. If not, follow this to set up your boutique application.
 
-To execute pod delete fault, [setup experiment](provide) and infrastructure.
+To execute pod delete fault, setup experiment and infrastructure.
 
 After successful setup of chaos infrastructure:
-* Choose the **pod-delete** fault from the list of Kubernetes faults available;
-* Specify parameters for the **Target application**, **Tune fault**, and **Probes**;
+
+- Choose the **pod-delete** fault from the list of Kubernetes faults available;
+- Specify parameters for the **Target application**, **Tune fault**, and **Probes**;
     <details>
         <summary>Fault Tunables</summary>
         <h2>Optional Fields</h2>
@@ -85,29 +91,31 @@ After successful setup of chaos infrastructure:
         </table>
     </details>
 
-* Close this pane by clicking on **X** at the top.
-* Set fault weights by clicking on **Set fault weights** tab present on top. 
-* Click **Run** to execute the experiment.
-
+- Close this pane by clicking on **X** at the top.
+- Set fault weights by clicking on **Set fault weights** tab present on top.
+- Click **Run** to execute the experiment.
 
 ## Chaos fault validation
 
-To validate the experiment you ran, execute the below commands on your terminal. 
+To validate the experiment you ran, execute the below commands on your terminal.
 
-* Fetch all the pods in the boutique namespace (or the namespace where your application is housed).
+- Fetch all the pods in the boutique namespace (or the namespace where your application is housed).
+
 ```
 kubectl get pods -n <namespace>
 ```
 
-* Exec into the microservice on which you will execute the chaos fault.
+- Exec into the microservice on which you will execute the chaos fault.
+
 ```
 kubectl exec -it <microservice_name> -n <namespace> sh
-``` 
+```
 
 ## Fault examples
 
 ### Common and pod specific tunables
-Refer the [common attributes](../../common-tunables-for-all-faults) and [Pod specific tunable](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables. 
+
+Refer the [common attributes](../../common-tunables-for-all-faults) and [Pod specific tunable](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
 
 ### Force delete
 
@@ -115,7 +123,8 @@ The targeted pod can be deleted `forcefully` or `gracefully`. It can be tuned wi
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/pod-delete/force.yaml yaml)
+[embedmd]: # "./static/manifests/pod-delete/force.yaml yaml"
+
 ```yaml
 # tune the deletion of target pods forcefully or gracefully
 apiVersion: litmuschaos.io/v1alpha1
@@ -131,16 +140,16 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: pod-delete
-    spec:
-      components:
-        env:
-        # provided as true for the force deletion of pod
-        # supports true and false value
-        - name: FORCE
-          value: 'true'
-        - name: TOTAL_CHAOS_DURATION
-          value: '60'
+    - name: pod-delete
+      spec:
+        components:
+          env:
+            # provided as true for the force deletion of pod
+            # supports true and false value
+            - name: FORCE
+              value: "true"
+            - name: TOTAL_CHAOS_DURATION
+              value: "60"
 ```
 
 ### Random interval
@@ -153,7 +162,8 @@ The chaos interval can be tuned via `CHAOS_INTERVAL` ENV.
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/pod-delete/randomness-interval.yaml yaml)
+[embedmd]: # "./static/manifests/pod-delete/randomness-interval.yaml yaml"
+
 ```yaml
 # contains random chaos interval with lower and upper bound of range i.e [l,r]
 apiVersion: litmuschaos.io/v1alpha1
@@ -169,18 +179,18 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: pod-delete
-    spec:
-      components:
-        env:
-        # randomness enables iterations at random time interval
-        # it supports true and false value
-        - name: RANDOMNESS
-          value: 'true'
-        - name: TOTAL_CHAOS_DURATION
-          value: '60'
-        # it will select a random interval within this range
-        # if only one value is provided then it will select a random interval within 0-CHAOS_INTERVAL range
-        - name: CHAOS_INTERVAL
-          value: '5-10'
+    - name: pod-delete
+      spec:
+        components:
+          env:
+            # randomness enables iterations at random time interval
+            # it supports true and false value
+            - name: RANDOMNESS
+              value: "true"
+            - name: TOTAL_CHAOS_DURATION
+              value: "60"
+            # it will select a random interval within this range
+            # if only one value is provided then it will select a random interval within 0-CHAOS_INTERVAL range
+            - name: CHAOS_INTERVAL
+              value: "5-10"
 ```
