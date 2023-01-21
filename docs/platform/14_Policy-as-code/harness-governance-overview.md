@@ -26,7 +26,7 @@ Looking for the quickstart? See [Harness Policy As Code Quickstart](harness-gove
 
 Before learning about Harness Policy As Code, you should have an understanding of the following:
 
-* [Learn Harness' Key Concepts](https://docs.harness.io/article/hv2758ro4e-learn-harness-key-concepts)
+* [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md)
 
 ### How does Harness use OPA?
 
@@ -175,7 +175,7 @@ A Policy Set at the account level applies to all entities in the Orgs and Projec
 
 When you create a policy, you identify the Harness entities were the policy is applied.
 
-For example, here's a policy that applies the [Harness Approval](https://docs.harness.io/article/43pzzhrcbv-using-harness-approval-steps-in-cd-stages) steps:
+For example, here's a policy that applies the [Harness Approval](../../continuous-delivery/cd-advanced/approvals/using-harness-approval-steps-in-cd-stages.md) steps:
 
 ![](./static/harness-governance-overview-12.png)
 

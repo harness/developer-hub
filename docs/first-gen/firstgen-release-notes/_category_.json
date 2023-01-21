@@ -1,0 +1,14 @@
+{
+  "label": "FirstGen Release Notes",
+  "position": 70,
+  "collapsible": "true",
+  "collapsed": "true",
+  "className": "red",
+  "link": {
+    "type": "generated-index",
+    "title": "FirstGen Release Notes"
+  },
+  "customProps": {
+    "helpdocs_category_id": "h4k144tv5t"
+  }
+}

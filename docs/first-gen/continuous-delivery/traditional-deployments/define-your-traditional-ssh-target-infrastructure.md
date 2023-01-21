@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Harness [Infrastructure Definitions](https://docs.harness.io/article/v3l3wqovbe-infrastructure-definitions) specify the target deployment infrastructure for your Harness Services, and the specific infrastructure details for the deployment, like VPC settings.
+Harness [Infrastructure Definitions](../model-cd-pipeline/environments/infrastructure-definitions.md) specify the target deployment infrastructure for your Harness Services, and the specific infrastructure details for the deployment, like VPC settings.
 
 In this topic, we describe how to add an Infrastructure Definition for your Traditional (SSH) deployment.
 
@@ -17,7 +17,7 @@ In this topic, we describe how to add an Infrastructure Definition for your Trad
 
 * [Connect to Your Repos and Target SSH Platforms](connect-to-your-target-ssh-platform.md)
 * [Traditional Deployments Overview](traditional-deployments-overview.md)
-* [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts)
+* [Harness Key Concepts](../../starthere-firstgen/harness-key-concepts.md)
 
 ### Review: Target Host Requirements
 
@@ -61,7 +61,7 @@ You can install the required software by adding an **Exec** command to the Servi
 
 Environments represent one or more of the deployment infrastructures where you want to deploy your application package files. Within an Environment, you add an Infrastructure Definition for each specific deployment infrastructure, using a Cloud Provider and the specific infrastructure details for the deployment, like VPC settings.
 
-For details on creating an Environment, see  [Environments](https://docs.harness.io/article/n39w05njjv-environment-configuration).
+For details on creating an Environment, see  [Environments](../model-cd-pipeline/environments/environment-configuration.md).
 
 ### Step 2: Define Target Infrastructure
 
@@ -73,7 +73,7 @@ To add an Infrastructure Definition, do the following:
 2. In **Name**, enter the name you will use when you select this Infrastructure Definition in Workflows.
 3. In **Cloud Provider Type**, select the type of Cloud Provider that this Infrastructure Definition will use for connections. For example, select **Amazon Web Services** for AWS EC2 infrastructures.
 4. In **Deployment Type**, select the deployment type for the Services that will use this Infrastructure Definition. For example, if you are deploying SSH type Services like JAR, WAR, etc, you would select **Secure Shell (SSH)**.
-5. Click **Use Already Provisioned Infrastructure**. If you were using a Harness  [Infrastructure Provisioner](https://docs.harness.io/article/o22jx8amxb-add-an-infra-provisioner), you would select **Map Dynamically Provisioned Infrastructure**.
+5. Click **Use Already Provisioned Infrastructure**. If you were using a Harness  [Infrastructure Provisioner](../model-cd-pipeline/infrastructure-provisioner/add-an-infra-provisioner.md), you would select **Map Dynamically Provisioned Infrastructure**.
 6. In **Cloud Provider**, select the Cloud Provider you set up to connect Harness to your deployment infrastructure.
 7. Fill out the remaining settings. These settings will look different depending on the Cloud Provider you selected. For example, for an AWS Cloud Provider, you will see AWS-specific settings, such as **Region** and **Auto Scaling Group**.  
 When you select a region, more settings appear, such as **VPC** and **Tags**.
@@ -83,7 +83,7 @@ When you select a region, more settings appear, such as **VPC** and **Tags**.
 
 ##### Using Variable Expressions in Tags
 
-**Tags** support [Harness variable expressions](https://docs.harness.io/article/9dvxcegm90-variables) from Harness Services, Environment Overrides, Workflows, and secrets.
+**Tags** support [Harness variable expressions](../../firstgen-platform/techref-category/variables/variables.md) from Harness Services, Environment Overrides, Workflows, and secrets.
 
 **Tags** does not support file-based variable expressions.
 
@@ -91,7 +91,7 @@ For example, in **Tags**, `automation:${serviceVariable.automationValue}` and `a
 
 1. When you are finished, click **SUBMIT**. The Infrastructure Definition is added.
 
-For AWS Infrastructure Definitions, you can use [Workflow variables](https://docs.harness.io/article/766iheu1bk-add-workflow-variables-new-template) in the **Tags** setting. This allows you to parameterize the **Tags** setting, and enter or select the AWS tags to use when you deploy any Workflow that uses this Infrastructure Definition.### Option: Scope to Specific Service
+For AWS Infrastructure Definitions, you can use [Workflow variables](../model-cd-pipeline/workflows/add-workflow-variables-new-template.md) in the **Tags** setting. This allows you to parameterize the **Tags** setting, and enter or select the AWS tags to use when you deploy any Workflow that uses this Infrastructure Definition.### Option: Scope to Specific Service
 
 In **Scope to specific Services**, you can select the Service(s) that you want to use this Infrastructure Definition.
 
@@ -99,7 +99,7 @@ In **Scope to specific Services**, you can select the Service(s) that you want 
 
 When you set up the Infrastructure Definition in Harness to identify the target host(s) where your file will be deployed, you also add **Connection Attributes** that use a Harness SSH Key secret. This key is used by the Harness Delegate to SSH into the target host.
 
-For more information, see  [Add SSH Keys](https://docs.harness.io/article/gsp4s7abgc-add-ssh-keys).
+For more information, see  [Add SSH Keys](../../firstgen-platform/security/secrets-management/add-ssh-keys.md).
 
 ### See Also
 

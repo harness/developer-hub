@@ -37,8 +37,14 @@
 		margin-right: 12px;
 		border-radius: 5px;
     }
-	.coveo-main-section {
-		display: none;
+	.coveo-facet-column {
+		// display: none;
+	}
+	.coveo-dropdown-header-wrapper {
+		margin-top: 10px;
+		.coveo-facet-dropdown-header:hover {
+			color: var(--white);
+		}
 	}
 }
 
@@ -129,7 +135,11 @@
  .harness-search-source .CoveoFieldValue .coveo-clickable {
 	 color: #000;
 }
- .harness-search-module .CoveoFieldValue {
+.harness-search-module {
+	display: flex;
+    gap: 8px;
+}
+ .harness-search-module .CoveoFieldValue, .harness-search-module .CoveoFieldValue {
 	/* Module Colors/Feature Flags Management/100 */
 	/* Module Colors/Feature Flags Management/200 */
 	 background-color: #fafbfc;
@@ -258,6 +268,16 @@
 }
 .harness-search-module .CoveoFieldValue.CoveoFieldValueSRM .coveo-clickable {
     color: var(--mod-srm-300);
+}
+
+.harness-search-module .CoveoFieldValue.CoveoFieldValuePlatform {
+    &::before {
+        content: url('/img/icon_harness_s.svg');
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        margin-right: 4px;
+    }
 }
  .CoveoResult a.CoveoResultLink, .CoveoResultLink, a.CoveoResultLink {
 	 color: #000;
@@ -583,6 +603,13 @@
     }
     &[title="Service Reliability Management"]::before {
         content: url('/img/icon_srm_s.svg');
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        margin-right: 4px;
+    }
+    &[title="Harness Platform"]::before {
+        content: url('/img/icon_harness_s.svg');
         display: inline-block;
         width: 16px;
         height: 16px;

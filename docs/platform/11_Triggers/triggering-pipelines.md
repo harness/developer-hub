@@ -1,7 +1,7 @@
 ---
 title: Trigger Pipelines using Git Events
 description: You can trigger Pipelines in response to Git events automatically. For example, when a pull request or push event occurs on a Git repo, a CI or CD Pipeline can execute. Triggers enable event driven C…
-# sidebar_position: 2
+sidebar_position: 4
 helpdocs_topic_id: hndnde8usz
 helpdocs_category_id: oya6qhmmaw
 helpdocs_is_private: false
@@ -22,8 +22,8 @@ For general Triggers reference, see [Triggers Reference](../8_Pipelines/w_pipeli
 
 ### Before you begin
 
-* [Learn Harness' Key Concepts](https://docs.harness.io/article/hv2758ro4e-learn-harness-key-concepts)
-* [Kubernetes CD Quickstart](https://docs.harness.io/article/knunou9j30-kubernetes-cd-quickstart)
+* [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md)
+* [Kubernetes CD Quickstart](../../continuous-delivery/onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md)
 * [CI Pipeline Quickstart](../../continuous-integration/ci-quickstarts/ci-pipeline-quickstart.md)
 
 ### Limitations
@@ -35,6 +35,10 @@ For general Triggers reference, see [Triggers Reference](../8_Pipelines/w_pipeli
 ### Visual Summary
 
 Here's a two minute video showing you how to create and run a Trigger in response to Git events.
+
+<!-- Video:
+https://www.youtube.com/watch?v=y8s351IJLXw-->
+<docvideo src="https://www.youtube.com/watch?v=y8s351IJLXw" />
 
 ### Step 1: Set Up Your Codebase
 
@@ -62,7 +66,7 @@ Enter a name for the Trigger.
 
 In **Payload Type**, select your Git provider. This setting is populated with the provider you selected automatically.
 
-Select or create a Connector to the Git account for the Trigger repo. See [Code Repo Connectors](https://docs.harness.io/category/code-repo-connectors).
+Select or create a Connector to the Git account for the Trigger repo. See [Code Repo Connectors](/docs/category/code-repo-connectors).
 
 * **If you set up an account-level Code Repo Connector:** in **Repository Name**, enter the name of the repo in the account in the Connector.
 * **If you set up a repo-level Code Repo Connector:** the repo name cannot be edited.

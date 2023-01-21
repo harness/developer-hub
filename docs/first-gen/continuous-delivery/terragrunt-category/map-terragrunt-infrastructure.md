@@ -79,7 +79,7 @@ When you map a Terraform script output to a Harness Infrastructure Definition se
 
 ### Option 1: Map a Platform Agnostic Kubernetes Cluster
 
-Provisioning Kubernetes is supported with the Kubernetes Cluster Cloud Provider and Google Cloud Platform Cloud Provider only. For Azure and AWS, use the Kubernetes Cluster Cloud Provider.Harness supports platform-agnostic Kubernetes cluster connections using its [Kubernetes Cluster Cloud Provider](https://docs.harness.io/article/l68rujg6mp-add-kubernetes-cluster-cloud-provider).
+Provisioning Kubernetes is supported with the Kubernetes Cluster Cloud Provider and Google Cloud Platform Cloud Provider only. For Azure and AWS, use the Kubernetes Cluster Cloud Provider.Harness supports platform-agnostic Kubernetes cluster connections using its [Kubernetes Cluster Cloud Provider](../../firstgen-platform/account/manage-connectors/add-kubernetes-cluster-cloud-provider.md).
 
 When you set up an Infrastructure Definition using a Kubernetes Cluster Cloud Provider you can map your Terraform script outputs to the required Infrastructure Definition settings.
 
@@ -135,7 +135,7 @@ The Lambda deployment type requires the IAM Role and Region fields. The followin
 
 ![](./static/map-terragrunt-infrastructure-23\.png)
 
-See [AWS Lambda Quickstart](https://docs.harness.io/article/wy1rjh19ej-aws-lambda-deployments).
+See [AWS Lambda Quickstart](../../first-gen-quickstarts/aws-lambda-deployments.md).
 
 ### Option 6: ​Map a Secure Shell (SSH) Infrastructure
 
@@ -143,7 +143,7 @@ The Secure Shell (SSH) deployment type requires the **Region** and **Tags** 
 
 ![](./static/map-terragrunt-infrastructure-24\.png)
 
-See [Traditional (SSH) Quickstart](https://docs.harness.io/article/keodlyvsg5-traditional-ssh-quickstart).
+See [Traditional (SSH) Quickstart](../../first-gen-quickstarts/traditional-ssh-quickstart.md).
 
 ### Option 7: Map an Azure Web App
 

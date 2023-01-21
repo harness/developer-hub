@@ -1,0 +1,9 @@
+{
+    "label": "Continuous Delivery",
+    "collapsible": "true",
+    "collapsed": "true",
+    "link": {
+        "type": "generated-index",
+        "title": "Continuous Delivery"
+    }
+}

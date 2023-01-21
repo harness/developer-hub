@@ -17,9 +17,9 @@ Harness supports CRDs for both Kubernetes and OpenShift. There is no difference 
 
 ### Before You Begin
 
-* [Kubernetes Quickstart](https://docs.harness.io/article/7in9z2boh6-kubernetes-quickstart)
+* [Kubernetes Quickstart](../../first-gen-quickstarts/kubernetes-quickstart.md)
 * [Create a Kubernetes Rolling Deployment](create-a-kubernetes-rolling-deployment.md)
-* [Kubernetes Versioning and Annotations](https://docs.harness.io/article/ttn8acijrz-versioning-and-annotations)
+* [Kubernetes Versioning and Annotations](../../firstgen-platform/techref-category/cd-ref/platforms-ref/versioning-and-annotations.md)
 
 ### Limitations
 
@@ -77,7 +77,7 @@ spec:
         "harness.io/release-name": {{release}}  
 ...
 ```
-See Harness support for [JSON and XML Functors](https://docs.harness.io/article/wfvecw3yod-json-and-xml-functors).
+See Harness support for [JSON and XML Functors](../../firstgen-platform/techref-category/variables/json-and-xml-functors.md).
 
 If the `steadyStateCondition` fails, Harness logs the following error message:
 
@@ -225,13 +225,13 @@ For an example of a simple CRD setup, see [sample-controller](https://github.com
 
 ### Step 2: Define Custom Resource in Harness
 
-You add the manifest for your custom object in a Harness Service, along with the artifact you will deploy. See [Kubernetes Services](https://docs.harness.io/article/t6zrgqq0ny-kubernetes-services).
+You add the manifest for your custom object in a Harness Service, along with the artifact you will deploy. See [Kubernetes Services](/docs/continuous-delivery/cd-services/k8s-services/kubernetes-services).
 
 1. In your Harness Application, click **Services**, and then **Add Service**.
 2. Name your Service.
 3. In **Deployment Type**, select **Kubernetes**.
 4. Click Submit. The new Kubernetes Service appears.
-5. Add an artifact, as described in [Add a Docker Artifact Source](https://docs.harness.io/article/gxv9gj6khz-add-a-docker-image-service).
+5. Add an artifact, as described in [Add a Docker Artifact Source](../model-cd-pipeline/setup-services/add-a-docker-image-service.md).
 6. Next, you will add the manifest for the custom object In **Manifests**.
 7. You can add your manifest inline, remotely, or by uploading. See [Define Kubernetes Manifests](define-kubernetes-manifests.md). You can also use [Go templating](use-go-templating-in-kubernetes-manifests.md).
 8. Ensure your manifest has the required annotations and label, as described in [Required Custom Resource Annotations and Labels](#review_required_custom_resource_annotations_and_labels).
@@ -262,7 +262,7 @@ Only the Kubernetes Rolling deployment method is supported for CRDs. See [Create
 
 There is nothing to configure in this Workflow unless you want to add additional steps. The default **Rollout Deployment** step will deploy your custom object.
 
-You might want to run a [Shell Script](https://docs.harness.io/article/1fjrjbau7x-capture-shell-script-step-output) step to display additional Kubernetes information. See [Kubernetes Workflow Variables and Expressions](workflow-variables-expressions.md) for expressions you can use.
+You might want to run a [Shell Script](../model-cd-pipeline/workflows/capture-shell-script-step-output.md) step to display additional Kubernetes information. See [Kubernetes Workflow Variables and Expressions](workflow-variables-expressions.md) for expressions you can use.
 
 ### Step 5: Deploy Custom Resource
 

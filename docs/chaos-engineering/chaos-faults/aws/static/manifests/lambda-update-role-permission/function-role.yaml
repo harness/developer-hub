@@ -1,0 +1,19 @@
+# contains the role arn for the lambda function
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: lambda-update-role-permission
+    spec:
+      components:
+        env:
+        # provide the role arn 
+        - name: ROLE_ARN
+          value: 'arn:aws:iam::ACCOUNT_ID:role/service-role/chaos-role'
+        # provide the function name 
+        - name: FUNCTION_NAME
+          value: 'chaos-function' 

@@ -51,9 +51,9 @@ To add a Pipeline, perform the following steps:
 	 
 	 6. For **Runtime Input Settings**, see [Option: Runtime Input Settings](#option_runtime_input_settings).
 	 
-6. Select **Approval Step** to require approval before the next stage executes. You can use Harness UI, Jira, Custom Shell Script, or ServiceNow Approval mechanisms. For more information on Approvals, see [Add Approvals](https://docs.harness.io/category/add-approvals).
+6. Select **Approval Step** to require approval before the next stage executes. You can use Harness UI, Jira, Custom Shell Script, or ServiceNow Approval mechanisms. For more information on Approvals, see [Add Approvals](/docs/category/add-approvals).
 7. Click **Submit**. The Pipeline Stage and its steps are added to the Pipeline.![](./static/pipeline-configuration-02.png)
-8. You can add multiple Stages, and insert new Stages between the existing Stages. Pipelines Stages can be Workflows or Approvals. To add another stage to the Pipeline, in **Pipeline Stages**, click **+** and then follow the same [Steps](https://docs.harness.io/article/8j8yd7hky4-create-a-pipeline#step_1_add_a_pipeline).
+8. You can add multiple Stages, and insert new Stages between the existing Stages. Pipelines Stages can be Workflows or Approvals. To add another stage to the Pipeline, in **Pipeline Stages**, click **+** and then follow the same [Steps](pipeline-configuration.md#step-1-add-a-pipeline).
 
 #### Rollback on failure or approval rejection
 
@@ -88,7 +88,7 @@ Once you have set up a Pipeline, you can deploy it, running all the stages withi
 
    ![](./static/pipeline-configuration-06.png)
 
-   You can enter a value for the variable or use a Harness expression. See [What is a Harness Variable Expression?](https://docs.harness.io/article/9dvxcegm90-variables).
+   You can enter a value for the variable or use a Harness expression. See [What is a Harness Variable Expression?](../../../firstgen-platform/techref-category/variables/variables.md).
 		
 3. Click **Submit**. The Pipeline is deployed and the deployment details are displayed in the **Deployments** page. You can click each phase in the process to see logs and other details of the process.
 
@@ -103,12 +103,12 @@ For example, you might have an Approval step as part of the Workflow or Pipeline
 To do this, when you add an Execution Step stage to your Pipeline, use **Runtime Input Settings**.
 
 1. Select **Runtime Input** for each Workflow variable that you want to make a runtime input.
-2. For each variable value, enter a variable name or use a Harness expression. See [What is a Harness Variable Expression?](https://docs.harness.io/article/9dvxcegm90-variables). When the Pipeline is deployed, you can add runtime values.
+2. For each variable value, enter a variable name or use a Harness expression. See [What is a Harness Variable Expression?](../../../firstgen-platform/techref-category/variables/variables.md). When the Pipeline is deployed, you can add runtime values.
 3. In **Timeout**, enter how long Harness should wait for you to submit values before applying the selection in **Action after Timeout**.
 4. In **Action after Timeout**, select what Harness should do if the timeout occurs:
 	1. **End Execution:** This option will fail the stage of the deployment and initiate rollback.
 	2. **Continue with Default Values:** This option will use the values you entered in the Workflow Variable **Default Value** setting. If there are no default values, you must provide values.
-5. In **User Groups**, select the [Harness User Group(s)](https://docs.harness.io/article/ven0bvulsj-users-and-permissions) to notify of the time.
+5. In **User Groups**, select the [Harness User Group(s)](../../../firstgen-platform/security/access-management-howtos/users-and-permissions.md) to notify of the time.
 
 During Pipeline execution, you are prompted for any Workflow variables you selected as a **Runtime Input**.
 
@@ -152,7 +152,7 @@ Simply fix the Workflow and then deploy the Pipeline.
 
 ### Review: RBAC for Pipelines
 
-Pipeline follows standard Harness RBAC as described in [Managing Users and Groups (RBAC)](https://docs.harness.io/article/ven0bvulsj-users-and-permissions).
+Pipeline follows standard Harness RBAC as described in [Managing Users and Groups (RBAC)](../../../firstgen-platform/security/access-management-howtos/users-and-permissions.md).
 
 Your ability to read, create, delete, and update Pipelines depends on the **Pipeline** Application Permissions of your User Group.
 
@@ -165,6 +165,6 @@ Your ability to deploy Pipelines also depends on your **Deployments** Applicatio
 ### Next Steps
 
 * [Create Pipeline Templates](templatize-pipelines.md)
-* [Resume Pipeline Deployments](https://docs.harness.io/article/4dvyslwbun-resume-a-pipeline-deployment)
-* [Pipeline Governance](https://docs.harness.io/article/zhqccv0pff-pipeline-governance)
+* [Resume Pipeline Deployments](../../concepts-cd/deployments-overview/resume-a-pipeline-deployment.md)
+* [Pipeline Governance](../../../firstgen-platform/security/governance-howtos/pipeline-governance.md)
 

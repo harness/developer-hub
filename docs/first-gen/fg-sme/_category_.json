@@ -1,0 +1,15 @@
+{
+  "label": "Self-Managed Enterprise Edition FG",
+  "position": 80,
+  "collapsible": "true",
+  "collapsed": "true",
+  "className": "red",
+  "link": {
+    "type": "generated-index",
+    "title": "Self-Managed Enterprise Edition FG"
+  },
+  "customProps": {
+    "helpdocs_category_id": "xqs7h6dqu5",
+    "helpdocs_parent_category_id": "yj3d4lvxn0"
+  }
+}

@@ -69,7 +69,7 @@ You can inject environment variables into a container and use them in the **Comm
 
 You can also reference environment variables in the script by their name. For example, in Bash, this would be ( `$var_name` or `${var_name}`). In Windows PowerShell, the reference would be (`$Env:varName`).
 
-For **Value**, you may enter [Fixed Values, Runtime Inputs, and Expressions](https://docs.harness.io/article/f6yobn7iq0-runtime-inputs). For example, you can set **Value** as an expression and reference the value of some other setting in the stage or pipeline.
+For **Value**, you may enter [Fixed Values, Runtime Inputs, and Expressions](../../platform/20_References/runtime-inputs.md). For example, you can set **Value** as an expression and reference the value of some other setting in the stage or pipeline.
 
 ![](./static/background-step-settings-09.png)
 

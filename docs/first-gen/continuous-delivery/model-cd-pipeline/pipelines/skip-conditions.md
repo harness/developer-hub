@@ -26,7 +26,7 @@ You can also apply skip conditions to steps in a Workflow. See [Skip Workflow St
 * You can use the following variable expressions in **Assertion Expression**:
 	+ Approval input variables from earlier Approval Stages. This is described below.
 	+ Published output variables from Workflow [Shell Script](../workflows/capture-shell-script-step-output.md) and [HTTP](../workflows/using-the-http-command.md) steps that are scoped to **Pipeline**.
-	+ [Built-in Harness Application and Pipeline variable expressions](https://docs.harness.io/article/9dvxcegm90-variables). These are available because they are readable before deploying the Pipeline.
+	+ [Built-in Harness Application and Pipeline variable expressions](../../../firstgen-platform/techref-category/variables/variables.md). These are available because they are readable before deploying the Pipeline.
 * In **Assertion Expression**, you can only use variable expressions that Harness can resolve before Workflow deployment. Pipeline Skip Conditions are evaluated before the Workflow is deployed.   
 For example, artifact information is only readable when you select, or Harness pulls, the artifact at Workflow deployment runtime. Therefore, artifact expressions should not be used in the **Assertion Expression**.
 * The **Assertion Expression** setting allows you to test using multiple operators, not just equality. For example, `${release.test} > 1` would also be a valid **Assertion Expression** entry.

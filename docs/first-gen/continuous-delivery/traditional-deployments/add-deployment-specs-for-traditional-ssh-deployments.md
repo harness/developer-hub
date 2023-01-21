@@ -51,17 +51,17 @@ All of the scripts include tooltips to explain how to use them:
 
 ### Review: Download Artifact and Exec Scripts
 
-The Download Artifact script is supported for Amazon S3, Artifactory, SMB (PowerShell-only), SFTP (PowerShell-only), Azure DevOps artifacts, Nexus, Jenkins, and Bamboo. For other artifact sources, add a new command and use the Exec script to download the artifact. For more information, see  [Exec Script](https://docs.harness.io/article/qluiky79j8-service-types-and-artifact-sources#exec_script).
+The Download Artifact script is supported for Amazon S3, Artifactory, SMB (PowerShell-only), SFTP (PowerShell-only), Azure DevOps artifacts, Nexus, Jenkins, and Bamboo. For other artifact sources, add a new command and use the Exec script to download the artifact. For more information, see  [Exec Script](../model-cd-pipeline/setup-services/service-types-and-artifact-sources.md#exec-script).
 
 ### Review: Harness and Custom Variables
 
 You can use Harness built-in variables in your Service scripts, or add your own variables and reference them in your scripts.
 
-For information on Harness built-in variables, see  [What is a Harness Variable Expression?](https://docs.harness.io/article/9dvxcegm90-variables). For information on using variables in your scripts, see  [Add Service Config Variables](https://docs.harness.io/article/q78p7rpx9u-add-service-level-config-variables) and [Add Service Config Files](https://docs.harness.io/article/iwtoq9lrky-add-service-level-configuration-files).
+For information on Harness built-in variables, see  [What is a Harness Variable Expression?](../../firstgen-platform/techref-category/variables/variables.md). For information on using variables in your scripts, see  [Add Service Config Variables](../model-cd-pipeline/setup-services/add-service-level-config-variables.md) and [Add Service Config Files](../model-cd-pipeline/setup-services/add-service-level-configuration-files.md).
 
 ### See Also
 
-* [Set Default Application Directories as Variables](https://docs.harness.io/article/lgg12f0yry-set-default-application-directories-as-variables)
+* [Set Default Application Directories as Variables](../model-cd-pipeline/applications/set-default-application-directories-as-variables.md)
 * [Override Variables at the Infrastructure Definition Level](../kubernetes-deployments/override-variables-per-infrastructure-definition.md)
 
 ### Configure As Code

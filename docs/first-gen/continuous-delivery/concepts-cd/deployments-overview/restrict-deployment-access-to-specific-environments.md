@@ -8,7 +8,11 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io).By default, all Harness User Group members have full permissions on all Applications.
+:::note
+This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/continuous-delivery/cd-deployments-category/deployment-concepts).
+:::
+
+By default, all Harness User Group members have full permissions on all Applications.
 
 Using Harness RBAC functionality, you can restrict the deployments a User Group may perform to specific Harness Applications and their subordinate Environments.
 
@@ -18,9 +22,9 @@ Restricting a User Group's deployments to specific Environments enables you to m
 
 Ensure you are familiar with the following Harness features:
 
-* [Managing Users and Groups (RBAC)](https://docs.harness.io/article/ven0bvulsj-users-and-permissions)
-* [Create an Application](https://docs.harness.io/article/bucothemly-application-configuration)
-* [Add an Environment](https://docs.harness.io/article/n39w05njjv-environment-configuration)
+* [Managing Users and Groups (RBAC)](../../../firstgen-platform/security/access-management-howtos/users-and-permissions.md)
+* [Create an Application](../../model-cd-pipeline/applications/application-configuration.md)
+* [Add an Environment](../../model-cd-pipeline/environments/environment-configuration.md)
 
 ### Visual Summary
 
@@ -36,7 +40,7 @@ Harness User Groups are managed in **Security** > **Access Management** > **User
 
 Open a User Group. You will edit its **Application Permissions** to restrict its members deployment permissions to specific Application Environments.
 
-For steps on setting up a User Group, see [Managing Users and Groups (RBAC)](https://docs.harness.io/article/ven0bvulsj-users-and-permissions).
+For steps on setting up a User Group, see [Managing Users and Groups (RBAC)](../../../firstgen-platform/security/access-management-howtos/users-and-permissions.md).
 
 ### Option: Set Application Permissions
 
@@ -146,6 +150,6 @@ The following table lists the permissions of User Group members based on the Act
 
 ### Related
 
-* **Assign Permissions** in [Use Users and Groups API](https://docs.harness.io/article/p9ssx4cv5t-sample-queries-create-users-user-groups-and-assign-permissions)
-* [Manage User Notifications](https://docs.harness.io/article/kf828e347t-notification-groups)
+* **Assign Permissions** in [Use Users and Groups API](../../../firstgen-platform/techref-category/api/sample-queries-create-users-user-groups-and-assign-permissions.md)
+* [Manage User Notifications](../../../firstgen-platform/account/manage-notegroups/notification-groups.md)
 

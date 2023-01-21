@@ -1,0 +1,9 @@
+{
+    "position": "20", 
+    "label": "Install delegates", 
+    "collapsible": "true", 
+    "collapsed": "true", 
+    "className": "red", 
+    "link": {"type": "generated-index", "title": "Install delegates"}, 
+    "customProps": {"helpdocs_category_id":"seizygxv7b", "helpdocs_parent_category_id":""}
+}

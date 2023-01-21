@@ -10,11 +10,9 @@ helpdocs_is_published: true
 
 Using [ServiceNow](https://docs.servicenow.com/) (SNOW) tickets from one or more ServiceNow instances, you can track and audit the progress of Harness deployments and Pipelines, and can approve or reject Pipeline stages.
 
-### Video Summary
-
 ### ServiceNow Collaboration Provider
 
-To use ServiceNow integration in your Workflow or Pipeline, you must first add a ServiceNow account as a Harness Collaboration Provider. For instructions and required permissions, see [Add ServiceNow Collaboration Provider](https://docs.harness.io/article/vftxcr51xx-add-service-now-collaboration-provider).
+To use ServiceNow integration in your Workflow or Pipeline, you must first add a ServiceNow account as a Harness Collaboration Provider. For instructions and required permissions, see [Add ServiceNow Collaboration Provider](../../../firstgen-platform/account/manage-connectors/add-service-now-collaboration-provider.md).
 
 ![](./static/service-now-integration-159.png)Once you have added a ServiceNow account to Harness, you can integrate ServiceNow into your Workflows and Pipelines.
 
@@ -31,7 +29,7 @@ You can create and update ServiceNow tickets during the execution of a Harness P
 
 To use a ServiceNow ticket as part of a Workflow, do the following:
 
-1. Ensure that you have added a ServiceNow account as a Harness Collaboration Provider, as described in [Add ServiceNow Collaboration Provider](https://docs.harness.io/article/vftxcr51xx-add-service-now-collaboration-provider).
+1. Ensure that you have added a ServiceNow account as a Harness Collaboration Provider, as described in [Add ServiceNow Collaboration Provider](../../../firstgen-platform/account/manage-connectors/add-service-now-collaboration-provider.md).
 2. Open an existing Harness Workflow, or create a new one. In this example, we are using a Canary Deployment Workflow.
 3. In **Pre-deployment Steps**, click **Add Step**.
 4. In the **Add Command** dialog, click **ServiceNow**.
@@ -46,7 +44,7 @@ To use a ServiceNow ticket as part of a Workflow, do the following:
 
     * **Title** – By default, the step is titled ServiceNow. If you are creating a ServiceNow ticket, you might want to rename the step ServiceNow Creation, for example.
     * **Request Type** – Select **Create an Issue**. (The [Update an Issue](#update) and [Import Set](#import_set) options are discussed below.)
-    * **Connector** – Select the ServiceNow account to use, by selecting the ServiceNow Collaboration Provider set up for that account. For more information, see [ServiceNow](https://docs.harness.io/article/cv98scx8pj-collaboration-providers#service_now).  
+    * **Connector** – Select the ServiceNow account to use, by selecting the ServiceNow Collaboration Provider set up for that account. For more information, see [ServiceNow](../../../firstgen-platform/account/manage-connectors/collaboration-providers.md#service-now).  
       
         When you select the ServiceNow Collaboration Provider, any account-specific fields in that ServiceNow account are pulled into the dialog. For example, here are the **Impact** and **Urgency fields**, with their values displayed:
         
@@ -76,7 +74,7 @@ Presently, the only ServiceNow issue element you can reference is the issue ID, 
 Deploying Workflow: ${workflow.name}  
 Deployment URL: ${deploymentUrl}
 ```
-The variables will be replaced at runtime with deployment information. For more information on Harness variables, see [Variables and Expressions in Harness](https://docs.harness.io/article/9dvxcegm90-variables).
+The variables will be replaced at runtime with deployment information. For more information on Harness variables, see [Variables and Expressions in Harness](../../../firstgen-platform/techref-category/variables/variables.md).
 
 Once the Workflow is deployed, the Harness Manager **Deployments** page displays a link to the ServiceNow ticket that the ServiceNow step created:
 
@@ -156,7 +154,7 @@ Specifies the staging table that will be used to import Harness data into Servic
 
 Contains the JSON that this Workflow step will pass when it makes a call to ServiceNow's Import Set API. The example above creates a Change Request with comment based on the **u\_harness** table's transformation map.
 
-You can use [Harness variable expressions](https://docs.harness.io/article/9dvxcegm90-variables) in the JSON of **JSON Body**. For example, you could create a Workflow variable named `importset` and then reference it in **JSON Body** as `{"u_example":"${workflow.variables.importset}"}`.
+You can use [Harness variable expressions](../../../firstgen-platform/techref-category/variables/variables.md) in the JSON of **JSON Body**. For example, you could create a Workflow variable named `importset` and then reference it in **JSON Body** as `{"u_example":"${workflow.variables.importset}"}`.
 
 For details on the table requirements and naming, see [Create a table](https://docs.servicenow.com/en-US/bundle/sandiego-platform-administration/page/administer/table-administration/task/t_CreateATable.html) from ServiceNow.
 

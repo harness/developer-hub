@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-For [Build Workflows](https://docs.harness.io/article/wqytbv2bfd-ci-cd-with-the-build-workflow) or a  [Build and Deploy Pipeline](https://docs.harness.io/article/0tphhkfqx8-artifact-build-and-deploy-pipelines-overview), you can trigger deployments in response to a Git event using Webhooks. This is described in [Trigger Deployments using Git Events](trigger-a-deployment-on-git-event.md).
+For [Build Workflows](../../concepts-cd/deployment-types/ci-cd-with-the-build-workflow.md) or a  [Build and Deploy Pipeline](../../concepts-cd/deployment-types/artifact-build-and-deploy-pipelines-overview.md), you can trigger deployments in response to a Git event using Webhooks. This is described in [Trigger Deployments using Git Events](trigger-a-deployment-on-git-event.md).
 
 Once you have created a Harness [On Webhook Event](trigger-a-deployment-on-git-event.md) Trigger, Harness creates a Manual Trigger for it.
 
@@ -22,9 +22,9 @@ In this topic, we will cover using a REST call to get deployment status.
 
 ### Before You Begin
 
-* [API Keys](https://docs.harness.io/article/smloyragsm-api-keys)
-* [Build Workflows](https://docs.harness.io/article/wqytbv2bfd-ci-cd-with-the-build-workflow)
-* [Build and Deploy Pipeline](https://docs.harness.io/article/0tphhkfqx8-artifact-build-and-deploy-pipelines-overview)
+* [API Keys](../../../firstgen-platform/security/access-management-howtos/api-keys.md)
+* [Build Workflows](../../concepts-cd/deployment-types/ci-cd-with-the-build-workflow.md)
+* [Build and Deploy Pipeline](../../concepts-cd/deployment-types/artifact-build-and-deploy-pipelines-overview.md)
 * [Add a Service](../setup-services/service-configuration.md)
 * [Workflows](../workflows/workflow-configuration.md)
 * [Add Environment](../environments/environment-configuration.md)

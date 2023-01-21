@@ -25,17 +25,17 @@ This topic explains how to build a Feature Flag Pipeline.
 
 ## Before you begin
 
-You should be familiar with the [Harness' Key Concepts](../../../getting-started/learn-harness-key-concepts.md) and how to [Create Organizations and Projects](https://docs.harness.io/article/36fw2u92i4-create-an-organization).
+You should be familiar with the [Harness' Key Concepts](../../../getting-started/learn-harness-key-concepts.md) and how to [Create Organizations and Projects](../../../platform/1_Organizations-and-Projects/2-create-an-organization.md).
 
 ## Create a Pipeline
 
-This topic assumes you have a Harness Project set up. If not, go to [Create Organizations and Projects](https://docs.harness.io/article/36fw2u92i4-create-an-organization) to create one.
+This topic assumes you have a Harness Project set up. If not, go to [Create Organizations and Projects](../../../platform/1_Organizations-and-Projects/2-create-an-organization.md) to create one.
 
 This topic shows you how to create a Pipeline from the Feature Flags module.
 
 To do this, perform the following steps:
 
-1. Under **Feature Flags,** select an existing project or [Create a new project](https://docs.harness.io/article/36fw2u92i4-create-an-organization#step_3_create_a_project).
+1. Under **Feature Flags,** select an existing project or [Create a new project](../../../platform/1_Organizations-and-Projects/2-create-an-organization.md#step-3-create-a-project).
 2. Once the project is selected or created, navigate to **Pipelines** and **Create a Pipeline**.
 3. In **Name**, enter a name for your Pipeline. An ID will be generated automatically.
 4. Enter **Description** and **Tags** for your Pipeline.
@@ -49,13 +49,13 @@ Feature Flag pipeline is organized into stages. There has to be a minimum of one
 
 1. Click **Add Stage**. This gives you two options to select stage types: **Feature Flags** and **Approval**.
 2. **Approval Stage** type approves or rejects a Pipeline at any point in its execution. Approvals are added in between stages to prevent pipeline execution from proceeding without an approval. You can use Harness UI, Jira, Custom Shell Script, or ServiceNow Approval mechanisms.
-3. To add Approval Stage, go to [Manual Harness Approval Stages](https://docs.harness.io/article/fkvso46bok-adding-harness-approval-stages).
+3. To add Approval Stage, go to [Manual Harness Approval Stages](../../../platform/9_Approvals/adding-harness-approval-stages.md).
 4. To add a **Feature Flag** stage, select **Feature Flags.**
 5. In **About your Stage**, in **Name**, enter a name for your stage. Click **Set up Stage**.
 
 You can add a name when you create the stage, but you can edit the name in the **Overview** section of the stage anytime.
 
-Changing the stage name doesn't change the stage identifier (ID). The stage identifier is created when you first name the stage and it cannot be changed. For more information, go to [Entity Identifier Reference](https://docs.harness.io/article/li0my8tcz3-entity-identifier-reference).
+Changing the stage name doesn't change the stage identifier (ID). The stage identifier is created when you first name the stage and it cannot be changed. For more information, go to [Entity Identifier Reference](../../../platform/20_References/entity-identifier-reference.md).
 
 You can add multiple Stages, and insert new Stages between the existing Stages. To add another stage to the Pipeline, in **Pipeline Stages**, click **+** and then follow the same steps.
 
@@ -126,19 +126,19 @@ You can create notification rules to send notifications about the events on your
 
 You can notify your User Group members using Slack as one of the notification channels. You can add your User Group to a Notification Strategy and receive alert info in Slack.
 
-For more information, go to [Send Notifications using Slack](https://docs.harness.io/article/h5n2oj8y5y-send-notifications-using-slack).
+For more information, go to [Send Notifications using Slack](../../../platform/5_Notifications/send-notifications-using-slack.md).
 
 ### Email notification
 
 For email notifications, simply type in the email addresses that you want to notify.
 
-For more information, go to [Send Notifications using Email](https://docs.harness.io/article/4bor7kyimj-notify-users-of-pipeline-events#option_email_notifications).
+For more information, go to [Send Notifications using Email](../../../continuous-delivery/cd-advanced/cd-notifications/notify-users-of-pipeline-events.md#option-email-notifications).
 
 ### PagerDuty notification
 
 For PagerDuty notifications, enter the key for a PagerDuty Account/Service to which Harness can send notifications.
 
-For more information, go to [Send Notifications using PagerDuty](https://docs.harness.io/article/4bor7kyimj-notify-users-of-pipeline-events#option_pager_duty_notifications).
+For more information, go to [Send Notifications using PagerDuty](../../../continuous-delivery/cd-advanced/cd-notifications/notify-users-of-pipeline-events.md#option-pager-duty-notifications).
 
 ### Microsoft Teams notification
 
@@ -146,7 +146,7 @@ Harness notifies your User Groups of events in pipelines and general alerts.
 
 You can integrate your Harness User Group with Microsoft Teams and receive notifications in Teams channels.
 
-For more information, go to [Send Notifications using Microsoft Teams](https://docs.harness.io/article/xcb28vgn82-send-notifications-to-microsoft-teams).
+For more information, go to [Send Notifications using Microsoft Teams](../../../platform/5_Notifications/send-notifications-to-microsoft-teams.md).
 
 ## View a Pipeline using YAML
 
@@ -163,5 +163,5 @@ You can trigger Feature Flag Pipeline on a time schedule. You can select how oft
 
 All the cron jobs are executed in Universal Time Coordinated (UTC). Cron triggers allow you to create Pipelines that start on a specific time schedule.
 
-For more information, go to [Schedule Pipeline using triggers](https://docs.harness.io/article/4z9mf24m1b-schedule-pipelines-using-cron-triggers).
+For more information, go to [Schedule Pipeline using triggers](../../../platform/11_Triggers/schedule-pipelines-using-cron-triggers.md).
 

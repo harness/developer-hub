@@ -35,7 +35,7 @@ To add an ELK verification step to your Workflow:
 
 Select the server you added when you set up the ELK verification provider earlier in [Connect to Elasticsearch](1-elasticsearch-connection-setup.md).
 
-You can also enter [variable expressions](https://docs.harness.io/article/9dvxcegm90-variables), such as: `${serviceVariable.elk_connector_name}`.
+You can also enter [variable expressions](../../../firstgen-platform/techref-category/variables/variables.md), such as: `${serviceVariable.elk_connector_name}`.
 
 If the **Elasticsearch Server** field contains an expression, the **Index** field must also use an expression.
 
@@ -205,7 +205,7 @@ Click **Submit**.
 
 ##   Review: Harness Expression Support in CV Settings
 
-You can use expressions (`${...}`) for [Harness built-in variables](https://docs.harness.io/article/7bpdtvhq92-workflow-variables-expressions) and custom [Service](../../model-cd-pipeline/setup-services/service-configuration.md) and [Workflow](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md) variables in the settings of Harness Verification Providers.
+You can use expressions (`${...}`) for [Harness built-in variables](../../kubernetes-deployments/workflow-variables-expressions.md) and custom [Service](../../model-cd-pipeline/setup-services/service-configuration.md) and [Workflow](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md) variables in the settings of Harness Verification Providers.
 
 ![](./static/3-verify-deployments-with-elasticsearch-10.png)
 

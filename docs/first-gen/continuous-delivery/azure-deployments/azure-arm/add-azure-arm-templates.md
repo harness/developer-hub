@@ -29,7 +29,7 @@ In this topic:
 
 * Get an overview of provisioning with ARM in [Azure ARM and Blueprint Provisioning with Harness](../../concepts-cd/deployment-types/azure-arm-and-blueprint-provision-with-harness.md).
 * [Set Up Your Harness Account for Azure ARM](set-up-your-harness-account-for-azure-arm.md)
-* [Infrastructure Provisioners Overview](https://docs.harness.io/article/o22jx8amxb-add-an-infra-provisioner)
+* [Infrastructure Provisioners Overview](../../model-cd-pipeline/infrastructure-provisioner/add-an-infra-provisioner.md)
 
 ### Visual Summary
 
@@ -37,7 +37,7 @@ The following video shows you how to add an ARM template from [Azure's ARM templ
 
 ### Supported Platforms and Technologies
 
-See [Supported Platforms and Technologies](https://docs.harness.io/article/220d0ojx5y-supported-platforms).
+See [Supported Platforms and Technologies](../../../starthere-firstgen/supported-platforms.md).
 
 ### Step 1: Add Harness Delegate
 
@@ -51,7 +51,7 @@ Harness Source Repo Providers connect your Harness account with your Git platfor
 
 For Azure ARM templates, you add a Harness Source Repo Provider and connect it to the Git repo for your ARM templates.
 
-For steps on setting up a Source Repo Provider, see [Add Source Repo Providers](https://docs.harness.io/article/ay9hlwbgwa-add-source-repo-providers).
+For steps on setting up a Source Repo Provider, see [Add Source Repo Providers](../../../firstgen-platform/account/manage-connectors/add-source-repo-providers.md).
 
 For example, here an Azure ARM template created my Azure and hosted on Harness' Docs repo at `https://github.com/wings-software/harness-docs/101-vm-simple-windows/azuredeploy.json`.
 

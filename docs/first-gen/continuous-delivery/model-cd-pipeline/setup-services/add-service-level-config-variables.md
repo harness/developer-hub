@@ -14,13 +14,13 @@ During deployment, the Service Config variables are created as environment varia
 
 Only Service Config Variables are added as environment variables and can be output with `env`. Workflow and other variables are not added as environment variables.Service variables can be overwritten at the Environment level. See [Override a Service Configuration](../environments/environment-configuration.md#override-a-service-configuration).
 
-For information about how configuration variables and files are used in a Kubernetes deployment, see [Kubernetes Deployments Overview](https://docs.harness.io/article/pc6qglyp5h-kubernetes-deployments-overview). For information on using Harness variables and expressions, see [Variables and Expressions in Harness](https://docs.harness.io/article/9dvxcegm90-variables).
+For information about how configuration variables and files are used in a Kubernetes deployment, see [Kubernetes Deployments Overview](../../kubernetes-deployments/kubernetes-deployments-overview.md). For information on using Harness variables and expressions, see [Variables and Expressions in Harness](../../../firstgen-platform/techref-category/variables/variables.md).
 
 ### Before You Begin
 
 * Read the [Create an Application](../applications/application-configuration.md) topic to get an overview of how Harness organizes Services.
 * Read the [Add a Service](service-configuration.md) topic to understand the process to add a Service to an Application.
-* Read [Configuration as Code](https://docs.harness.io/article/htvzryeqjw-configuration-as-code) to see how you can quickly configure your Harness Service using your existing YAML in Git.
+* Read [Configuration as Code](../../../firstgen-platform/config-as-code/configuration-as-code.md) to see how you can quickly configure your Harness Service using your existing YAML in Git.
 
 ### Limitations
 
@@ -41,7 +41,7 @@ To use Service-level variables, do the following:
   
     If you selected **Text**, enter a string in **Value**. When you reference this variable in the Service configuration, you use `${serviceVariable.var_name}`.  
       
-    If you select **Encrypted Text**, the Value field becomes a drop-down and you can select any of the Encrypted Text you have configured in Secrets Management. For more information, see [Secrets Management](https://docs.harness.io/article/au38zpufhr-secret-management).  
+    If you select **Encrypted Text**, the Value field becomes a drop-down and you can select any of the Encrypted Text you have configured in Secrets Management. For more information, see [Secrets Management](../../../firstgen-platform/security/secrets-management/secret-management.md).  
     You can also click **Add New Encrypted Text** to create a new secret. This brings up the option of selecting the Secret Manager to use when storing the new encrypted variable.
 
     ![](./static/add-service-level-config-variables-28.png)
@@ -52,7 +52,7 @@ To use Service-level variables, do the following:
 
     ![](./static/add-service-level-config-variables-29.png)
 
-    For example, to add Workflow variables, enter `${workflow` and the available Workflow variables are displayed. For more information about variables, see [Variables and Expressions in Harness](https://docs.harness.io/article/9dvxcegm90-variables).
+    For example, to add Workflow variables, enter `${workflow` and the available Workflow variables are displayed. For more information about variables, see [Variables and Expressions in Harness](../../../firstgen-platform/techref-category/variables/variables.md).
   
 4. Click **SUBMIT**. The variable is added to **Config Variables**.
 
@@ -60,7 +60,7 @@ To use Service-level variables, do the following:
 
 ### Step 2: Reference Service Variables and Secrets
 
-Use a Service Variable either as a text or as a secret (using one of the secrets in [Secrets Management](https://docs.harness.io/article/au38zpufhr-secret-management)) in other Harness Application components such as Workflows by entering `${serviceVariable.` and selecting the variables.
+Use a Service Variable either as a text or as a secret (using one of the secrets in [Secrets Management](../../../firstgen-platform/security/secrets-management/secret-management.md)) in other Harness Application components such as Workflows by entering `${serviceVariable.` and selecting the variables.
 
 ![](./static/add-service-level-config-variables-30.png)
 
@@ -87,7 +87,7 @@ For example, if you have a Service Config Variable named **jarName**, Harness cr
 
 ### Override Values YAML
 
-For information on Helm Values YAML, see [Override Harness Kubernetes Service Settings](https://docs.harness.io/article/ycacqs7tlx-override-harness-kubernetes-service-settings) and [Helm Deployments Overview](https://docs.harness.io/article/ii558ppikj-helm-deployments-overview).
+For information on Helm Values YAML, see [Override Harness Kubernetes Service Settings](../../kubernetes-deployments/override-harness-kubernetes-service-settings.md) and [Helm Deployments Overview](../../helm-deployment/helm-deployments-overview.md).
 
 ### Notes
 

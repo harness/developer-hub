@@ -18,43 +18,50 @@ To test AutoStopping, you can use a sample nginx application. Perform the follow
 
 
 ```
-apiVersion: apps/v1  
-kind: Deployment  
-metadata:  
- name: autostopping-sample-app  
- namespace: autostopping-sample  
- labels:  
-  app: autostopping-sample-app  
-  spec:  
-  replicas: 3  
-  selector:  
-  matchLabels:  
-   app: autostopping-sample-app  
-  template:  
-    metadata:  
-     labels:  
-      app: autostopping-sample-app  
-    spec:  
-     containers:  
-     - name: autostopping-sample-app  
-      image: nginx:1.14.2  
-      ports:  
-      - containerPort: 80  
-  
----  
-  
-apiVersion: v1  
-kind: Service  
-metadata:  
- name: autostopping-sample-svc  
- namespace: autostopping-sample  
-spec:  
- selector:  
-   app: autostopping-sample-app  
-ports:  
- - protocol: TCP  
-   port: 80  
-   targetPort: 80
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: autostopping-sample
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: autostopping-sample-app
+  namespace: autostopping-sample
+  labels:
+    app: autostopping-sample-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: autostopping-sample-app
+  template:
+    metadata:
+      labels:
+        app: autostopping-sample-app
+    spec:
+      containers:
+      - name: autostopping-sample-app
+        image: nginx:1.14.2
+        ports:
+        - containerPort: 80
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: autostopping-sample-svc
+  namespace: autostopping-sample
+spec:
+  selector:
+    app: autostopping-sample-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
 ```
 This installs a demo application named `autostopping-sample-app` that runs three pods running nginx in the `autostopping-sample` namespace.​
 

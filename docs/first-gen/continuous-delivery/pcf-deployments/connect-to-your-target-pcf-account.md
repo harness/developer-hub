@@ -13,7 +13,7 @@ This topic sets up the Harness Delegate in your Tanzu Application Service (TAS, 
 
 ### Before You Begin
 
-* See [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts).
+* See [Harness Key Concepts](../../starthere-firstgen/harness-key-concepts.md).
 
 ### Step 1: Set Up the Harness Delegate
 
@@ -21,9 +21,9 @@ The Harness Delegate is a service you run in your local network or VPC to connec
 
 If you are running your TAS Cloud in AWS, you can use a Shell Script Delegate run on an EC2 instance in the same VPC and subnet as your TAS Cloud, or an ECS Delegate run in an ECS cluster in the same VPC.
 
-For information on setting up Harness Delegates, see [Harness Delegate Overview](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation).
+For information on setting up Harness Delegates, see [Harness Delegate Overview](../../firstgen-platform/account/manage-delegates/delegate-installation.md).
 
-If you want to install the CF CLI on the Delegate, use a Harness Delegate Profile and the script shown in [Cloud Foundry CLI](https://docs.harness.io/article/nxhlbmbgkj-common-delegate-profile-scripts#cloud_foundry_cli).
+If you want to install the CF CLI on the Delegate, use a Harness Delegate Profile and the script shown in [Cloud Foundry CLI](../../firstgen-platform/techref-category/account-ref/delegate-ref/common-delegate-profile-scripts.md#cloud-foundry-cli).
 
 ### Step 2: Add the Cloud Foundry CLI
 
@@ -71,7 +71,7 @@ Make sure the TAS user account is assigned Admin, Org Manager, or Space Manager 
 
 For more information, see [Orgs, Spaces, Roles, and Permissions](https://docs.pivotal.io/pivotalcf/2-3/concepts/roles.html) from Tanzu.
 
-For steps on setting up all Cloud Providers, see [Add Cloud Providers](https://docs.harness.io/article/whwnovprrb-cloud-providers).
+For steps on setting up all Cloud Providers, see [Add Cloud Providers](../../firstgen-platform/account/manage-connectors/cloud-providers.md).
 
 ### Next Steps
 

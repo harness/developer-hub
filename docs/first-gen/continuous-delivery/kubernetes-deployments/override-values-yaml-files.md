@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/article/t57uzu1i41).You can override the inline or remote values.yaml file(s) used in a Harness Kubernetes Service.
+This content is for Harness [FirstGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../continuous-delivery/cd-services/cd-services-general/propagate-and-override-cd-services.md).You can override the inline or remote values.yaml file(s) used in a Harness Kubernetes Service.
 
 You can override values.yaml at the Harness Service and Environment levels, and also use Workflow variables to replace values.yaml file names or values at deployment runtime.
 
@@ -80,7 +80,7 @@ The overwriting is granular. So if your first values.yaml file has a `key:value`
 
 ### Option: Use a Single Remote Override
 
-1. In **Source Repository**, select the Git repo you added as a [Source Repo Provider](https://docs.harness.io/article/ay9hlwbgwa-add-source-repo-providers).
+1. In **Source Repository**, select the Git repo you added as a [Source Repo Provider](../../firstgen-platform/account/manage-connectors/add-source-repo-providers.md).
 2. For **Commit ID**, select either **Latest from Branch** and enter in the branch name, or **Specific Commit ID** and enter in the **commit ID**.
 3. In **File Path(s)**, enter the path to the values.yaml file in the repo, including the repo name, like **helm/values.yaml**. This is a mandatory setting. You cannot leave **File Path(s)** empty.
 
@@ -92,7 +92,7 @@ You can specify multiple values.yaml files in a remote repo in your override.
 
 Let's look at an example:
 
-1. In **Source Repository**, select the Git repo you added as a [Source Repo Provider](https://docs.harness.io/article/ay9hlwbgwa-add-source-repo-providers).
+1. In **Source Repository**, select the Git repo you added as a [Source Repo Provider](../../firstgen-platform/account/manage-connectors/add-source-repo-providers.md).
 2. For **Commit ID**, select either **Latest from Branch** and enter in the branch name, or **Specific Commit ID** and enter in the **commit ID**.
 3. In **File Path(s)**, enter the paths to the values.yaml files in the repo, including the repo name, like **k8****s/values.yaml**. This is a mandatory setting. You cannot leave **File Path(s)** empty.
 
@@ -132,7 +132,7 @@ You can override the values.yaml settings of a Service in an Environment's **Ser
 2. In **Service(s)**, click **All Services** or the name of a specific **Service**.
 3. In **Override Type**, select **Values YAML**.![](./static/override-values-yaml-files-147.png)
 4. Select **Inline** or **Remote**. For **Inline**, enter the YAML you want to use to override the Service-level values.yaml file(s).
-5. For **Remote**, in **Git Connector**, select the Git repo you added as a [Source Repo Provider](https://docs.harness.io/article/ay9hlwbgwa-add-source-repo-providers).
+5. For **Remote**, in **Git Connector**, select the Git repo you added as a [Source Repo Provider](../../firstgen-platform/account/manage-connectors/add-source-repo-providers.md).
 6. Select either **Use** **latest commit from branch** and enter in the branch name, or **Use specific commit ID** and enter in the **commit ID**.
 7. In **Branch Name**, enter the branch name where the file(s) is located, such as **master**, **dev**, etc. Do not enter the full URL to the branch.
 8. In **File Path(s)**, enter the path(s) to the values.yaml file(s) in the repo, including the repo name, like **k8****s/values.yaml**. Multiple files can be applied, separated by commas, with the later ones taking priority.  
@@ -148,7 +148,7 @@ Click **Submit**. The override is listed in the **Service Configuration Override
 
 ### Option: Use Variable Expressions in Override File Settings
 
-You can use [Harness variable expressions](https://docs.harness.io/article/9dvxcegm90-variables), such as [Workflow variables](https://docs.harness.io/article/766iheu1bk-add-workflow-variables-new-template), in the names and values of the values.yaml files you use as overrides.
+You can use [Harness variable expressions](../../firstgen-platform/techref-category/variables/variables.md), such as [Workflow variables](../model-cd-pipeline/workflows/add-workflow-variables-new-template.md), in the names and values of the values.yaml files you use as overrides.
 
 For example, let's say you have listed three values.yaml files in the Service Configuration **Values YAML Override**.
 
@@ -175,6 +175,6 @@ Now, when you deploy the Workflow, you can provide the file path for that values
 ### Next Steps
 
 * [Define Kubernetes Manifests](define-kubernetes-manifests.md)
-* [Pass Variables between Workflows](https://docs.harness.io/article/gkmgrz9shh-how-to-pass-variables-between-workflows)
-* [Passing Variables into Workflows and Pipelines from Triggers](https://docs.harness.io/article/revc37vl0f-passing-variable-into-workflows)
+* [Pass Variables between Workflows](../model-cd-pipeline/expressions/how-to-pass-variables-between-workflows.md)
+* [Passing Variables into Workflows and Pipelines from Triggers](../model-cd-pipeline/expressions/passing-variable-into-workflows.md)
 

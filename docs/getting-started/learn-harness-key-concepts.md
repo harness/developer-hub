@@ -42,7 +42,7 @@ See a visual example![](./static/learn-harness-key-concepts-07.png)
 
 Project users have at least view access to all configuration and runtime data of a Project and share the same assets (Environments, Services, Infrastructure, etc).
 
-See [Projects and Organizations](https://docs.harness.io/article/7fibxie636-projects-and-organizations).
+See [Projects and Organizations](../platform/1_Organizations-and-Projects/1-projects-and-organizations.md).
 
 ### Product Modules
 
@@ -71,7 +71,7 @@ See a visual example
 | **Visual** | **YAML** |
 |  |  |
 
-See [Harness YAML Quickstart](https://docs.harness.io/article/1eishcolt3-harness-yaml-quickstart).
+See [Harness YAML Quickstart](../platform/8_Pipelines/harness-yaml-quickstart.md).
 
 Pipeline Studio guides you in setting up and running your Pipelines with ready-to-use steps.
 
@@ -87,7 +87,7 @@ Some stages, like a Deploy stage, use strategies that automatically add the nece
 
 See a visual example![](./static/learn-harness-key-concepts-12.png)
 
-See [Add a Stage](https://docs.harness.io/article/2chyf1acil-add-a-stage).
+See [Add a Stage](../platform/8_Pipelines/add-a-stage.md).
 
 ### Steps and Step Groups
 
@@ -97,7 +97,7 @@ Steps can be run in sequential and parallel order.
 
 A Step Group is a collection of steps that share the same logic such as the same rollback strategy.
 
-See a visual example![](./static/learn-harness-key-concepts-13.png)See [Run Steps in a Step Group](https://docs.harness.io/article/ihnuhrtxe3-run-steps-in-parallel-using-a-step-group).
+See a visual example![](./static/learn-harness-key-concepts-13.png)See [Run Steps in a Step Group](../continuous-delivery/cd-technical-reference/cd-gen-ref-category/step-groups.md).
 
 ### Services
 
@@ -123,7 +123,7 @@ You can also propagate and override a Service in subsequent stages by selecting 
 
 See a visual example![](./static/learn-harness-key-concepts-16.png)
 
-See [Monitor Deployments and Services in CD Dashboards](https://docs.harness.io/article/phiv0zaoex-monitor-cd-deployments).
+See [Monitor Deployments and Services in CD Dashboards](../continuous-delivery/cd-dashboards/monitor-cd-deployments.md).
 
 ### Environments
 
@@ -141,7 +141,7 @@ Harness uses Connectors at Pipeline runtime to authenticate and perform operatio
 
 For example, a GitHub Connector authenticates with a GitHub account and repo and fetches files as part of a build or deploy Stage in a Pipeline.
 
-See [Connectors How-tos](https://docs.harness.io/category/o1zhrfo8n5).
+See [Connectors How-tos](/docs/category/connectors).
 
 ### Secrets Management
 
@@ -149,7 +149,7 @@ Harness includes built-in Secrets Management to store your encrypted secrets, su
 
 See a visual example![](./static/learn-harness-key-concepts-17.png)
 
-See [Harness Secrets Management Overview](https://docs.harness.io/article/hngrlb7rd6-harness-secret-manager-overview).
+See [Harness Secrets Management Overview](../platform/6_Security/1-harness-secret-manager-overview.md).
 
 ### YAML and Git
 
@@ -157,7 +157,7 @@ You can sync your Harness account, orgs, and projects with your Git repo to mana
 
 Harness can respond to Git events to trigger Pipelines and pass in event data.
 
-See [Harness Git Experience Overview](https://docs.harness.io/article/utikdyxgfz-harness-git-experience-overview).
+See [Harness Git Experience Overview](../platform/10_Git-Experience/harness-git-experience-overview.md).
 
 ### Recap
 

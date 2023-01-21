@@ -29,7 +29,7 @@ To add Instana as a verification provider:
 | **Field** | **Description** |
 | **Display Name** | Enter a display name for the provider. If you are going to use multiple providers of the same type, ensure that you give each provider a different name. |
 | **Instana** **URL** | Enter the URL of the Instana server, such as:`https://integration-<your-company>.instana.io` |
-| **Encrypted** **API Token** | Select or create a new [Harness Encrypted Text secret](https://docs.harness.io/article/ygyvp998mu-use-encrypted-text-secrets) for your Instana API token. |
+| **Encrypted** **API Token** | Select or create a new [Harness Encrypted Text secret](../../../firstgen-platform/security/secrets-management/use-encrypted-text-secrets.md) for your Instana API token. |
 | **Usage Scope** | Usage scope is inherited from the secrets used in the settings. |
 
 To create an API key in Instana, do the following:

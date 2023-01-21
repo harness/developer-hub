@@ -38,7 +38,7 @@ The dialog has the following fields.
 | --- | --- |
 | **Field** | **Description** |
 | **Name** | Give your Workflow a name and description that tells users what it is deploying. |
-| **Workflow Type** | In this guide, we will do a simple Basic workflow. For a summary of workflow types, see [Add a Workflow](https://docs.harness.io/article/m220i1tnia-workflow-configuration#workflow_types). |
+| **Workflow Type** | In this guide, we will do a simple Basic workflow. For a summary of workflow types, see [Add a Workflow](../model-cd-pipeline/workflows/workflow-configuration.md#workflow-types). |
 | **Environment** | Select the environment you added. |
 | **Service** | Select your IIS Website service. |
 | **Infrastructure Definition** | Select the **Infrastructure Definition** you added. |
@@ -57,7 +57,7 @@ The **Node Select** dialog has the following fields.
 | --- | --- |
 | **Field** | **Description** |
 | **Select Specific hosts?** | Select **Yes** to enter the hostname(s) of the nodes where you want the website deployed.Select **No** to have Harness select the host(s) in the Infrastructure Definition based on the setup the in **Environment**. For AWS deployments, Tags are often used to help Harness select hosts. |
-| **Desired** **Instances** | Enter the number of instances you want deployed.You can also enter a variable expression in this setting, such as a Workflow variable:This turns the setting into a deployment parameter. When the Workflow is deployed (manually or by [Trigger](https://docs.harness.io/article/xerirloz9a-add-a-trigger-2)) you can provide a value for the parameter.See [Set Workflow Variables](https://docs.harness.io/article/766iheu1bk-add-workflow-variables-new-template) and [Variables and Expressions in Harness](https://docs.harness.io/article/9dvxcegm90-variables). |
+| **Desired** **Instances** | Enter the number of instances you want deployed.You can also enter a variable expression in this setting, such as a Workflow variable:This turns the setting into a deployment parameter. When the Workflow is deployed (manually or by [Trigger](../model-cd-pipeline/triggers/add-a-trigger-2.md)) you can provide a value for the parameter.See [Set Workflow Variables](../model-cd-pipeline/workflows/add-workflow-variables-new-template.md) and [Variables and Expressions in Harness](../../firstgen-platform/techref-category/variables/variables.md). |
 | **Instance Unit Type** | Identify if the number in **Instances** is a count or percentage.For example, if you select **10** in **Instances**, you can select **Count** and the artifact is deployed to **10** instances. Or you can enter 100 in **Instances** and select **Percent** and the artifact is deployed to **100%** of the instances in the Infrastructure Definition. |
 
 When you're finished, click **SUBMIT**.
@@ -119,7 +119,7 @@ Before deploying the IIS website, application, or virtual directory to your Wind
 
 Once you have workflows for your IIS website, application, and virtual directory set up, you can create a Harness pipeline that deploys them in the correct order. For IIS, you must deploy them in the order website, application, and then virtual directory.
 
-In you Harness application, click **Pipelines**. Follow the steps in [Add a Pipeline](https://docs.harness.io/article/zc1u96u6uj-pipeline-configuration) to add a stage for each of your workflows.
+In you Harness application, click **Pipelines**. Follow the steps in [Add a Pipeline](../model-cd-pipeline/pipelines/pipeline-configuration.md) to add a stage for each of your workflows.
 
 When you are done, the pipeline will look like this:
 

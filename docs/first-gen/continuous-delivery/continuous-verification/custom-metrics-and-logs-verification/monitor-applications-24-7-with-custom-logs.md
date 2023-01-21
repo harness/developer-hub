@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 Harness 24/7 Service Guard monitors your live applications, catching problems that surface minutes or hours following deployment. For more information, see  [24/7 Service Guard Overview](../continuous-verification-overview/concepts-cv/24-7-service-guard-overview.md).
 
-While Harness supports [all of the common logging tools](https://docs.harness.io/category/continuous-verification), you can add your Custom logging to Harness 24/7 Service Guard in your Harness Application Environment. For a setup overview, see  [Connect to Custom Verification for Custom Logs](connect-to-custom-verification-for-custom-logs.md).
+While Harness supports [all of the common logging tools](/docs/category/continuous-verification), you can add your Custom logging to Harness 24/7 Service Guard in your Harness Application Environment. For a setup overview, see  [Connect to Custom Verification for Custom Logs](connect-to-custom-verification-for-custom-logs.md).
 
 This section assumes you have a Harness Application set up, containing a Service and Environment. For steps on setting up a Harness Application, see  [Application Components](../../model-cd-pipeline/applications/application-configuration.md).
 

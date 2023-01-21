@@ -14,7 +14,7 @@ For details on refining analysis feedback for deployments and 24/7 Service Guard
 
 * [Refine 24/7 Service Guard Verification Analysis](../../tuning-tracking-verification/refine-24-7-service-guard-verification-analysis.md)
 * [Refine Deployment Verification Analysis](../../tuning-tracking-verification/refine-deployment-verification-analysis.md)
-* [Verification Event Classifications](https://docs.harness.io/article/339hy0kbnu-verification-event-classifications)
+* [Verification Event Classifications](../../../../firstgen-platform/techref-category/cv-reference/verification-event-classifications.md)
 
 ### Verification Feedback Summary
 
@@ -44,5 +44,5 @@ Verification Feedback is available for log analysis only. It is not available fo
 
 * [Refine 24/7 Service Guard Verification Analysis](../../tuning-tracking-verification/refine-24-7-service-guard-verification-analysis.md)
 * [Refine Deployment Verification Analysis](../../tuning-tracking-verification/refine-deployment-verification-analysis.md)
-* [Verification Event Classifications](https://docs.harness.io/article/339hy0kbnu-verification-event-classifications)
+* [Verification Event Classifications](../../../../firstgen-platform/techref-category/cv-reference/verification-event-classifications.md)
 

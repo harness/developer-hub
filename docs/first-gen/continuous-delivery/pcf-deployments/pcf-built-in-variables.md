@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-TAS was formerly Pivotal Cloud Foundry (PCF). The variables in this topic use `pcf` as a result. The variables work the same as before. There is no need to change any existing implementations.Harness includes the following variables to help you output TAS deployment information in your Workflows, such as in the [CF Command](run-cf-cli-commands-and-scripts-in-a-workflow.md#step-run-the-cf-cli-command) or the [Shell Script command](https://docs.harness.io/article/1fjrjbau7x-capture-shell-script-step-output).
+TAS was formerly Pivotal Cloud Foundry (PCF). The variables in this topic use `pcf` as a result. The variables work the same as before. There is no need to change any existing implementations.Harness includes the following variables to help you output TAS deployment information in your Workflows, such as in the [CF Command](run-cf-cli-commands-and-scripts-in-a-workflow.md#step-run-the-cf-cli-command) or the [Shell Script command](../model-cd-pipeline/workflows/capture-shell-script-step-output.md).
 
 This topic covers the following:
 

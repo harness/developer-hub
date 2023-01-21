@@ -2,7 +2,6 @@
 title: Choose a Client-Side or Server-Side SDK
 description: This topic will help you understand the difference between Harness Feature Flag's client-side and server-side SDKs.
 tags: 
-   - helpDocs
    - feature flag
    - SDK
 # sidebar_position: 2
@@ -46,8 +45,8 @@ The following table lists the differences between the client-side and server-sid
 |  |  |  |
 | --- | --- | --- |
 | **Parameter** | **Client Side SDK** | **Server Side SDK** |
-| **Users** | Designed to be used in applications, your users run directly on their own devices, such as mobile, desktop, and web applications. Optimized to be used by a single user and low bandwidth consumption.Examples: JavaScript, iOS, Android, React Native SDKs.  | Designed to be used in server-side applications such as web servers and backend services. Optimized to be used in multi-user and secure environments.Examples, Java, Go, and Python SDKs. |
-| **Security** | The SDKs are embedded in your applications and run on the browser or on mobile devices. Because of which these SDKs can be compromised by users when unpacking a mobile app or using the browser's developer tools to inspect the page. You should not use a server-side SDK key in client-side applications. Client-side SDKs only perform an evaluation of a flag and receive the result.  They don't store all data about a flag. | The SDKs are embedded in applications that run on your servers such as web servers or backend servers. These environments are comparatively safe.Server-side SDKs download all the feature flags that you have defined in a project and store them in memory. |
+| **Users** | Designed to be used in applications, your users run directly on their own devices, such as mobile, desktop, and web applications. Optimized to be used by a single user and provide low bandwidth consumption. Examples: JavaScript, iOS, Android, React Native SDKs.  | Designed to be used in server-side applications, such as web servers and backend services. Optimized to be used in multi-user and secure environments. Examples, Java, Go, and, Python SDKs. |
+| **Security** | The SDKs are embedded in your applications and run on the browser or on mobile devices. Therefore, these SDKs can be compromised by users when unpacking a mobile app or using the browser's developer tools to inspect the page. You should not use a server-side SDK key in client-side applications. Client-side SDKs only perform an evaluation of a flag and receive the result. They don't store all data about a flag. | The SDKs are embedded in applications that run on your servers, such as web servers or backend servers. These environments are comparatively safe. Server-side SDKs download all the feature flags that you have defined in a project and store them in memory. |
 | **Storage** | Client-side SDK has a local cache. It communicates with Harness more often | Server-side SDKs downloads and caches all flag rules and states and avoids most Harness communication |
 | **Connection state** | Client-side SDKs require a consistent connection to establish an evaluation decision. | Server-side SDKs can make an evaluation decision based on locally stored rules once instantiated. It requires a connection to pull or receive updates |
 | **Operation** | Feature evaluation happens on the server-side, and SDK only gets the evaluated results of the Flags. | Server SDKs sync Flag rulesets in the background and keep in-memory cache. When an application makes the call for Flag value, the evaluation happens locally, and no network call is made. Hence it is very fast and efficient. |
@@ -65,5 +64,5 @@ The following table lists the differences between the client-side and server-sid
 | [Flutter](../2-client-sdks/2-flutter-sdk-reference.md) | [Python](../3-server-sdks/7-python-sdk-reference.md) |
 | [React Native](../2-client-sdks/5-react-native-sdk-reference.md) | [Node.js](../3-server-sdks/5-node-js-sdk-reference.md) |
 | [Xamarin](../2-client-sdks/6-xamarin-sdk-reference.md) | [Ruby](../3-server-sdks/8-ruby-sdk-reference.md) |
-|  | [PHP](../3-server-sdks/6-php-sdk-reference.md) |
+| [React Client](../2-client-sdks/7-react-client.md) | [PHP](../3-server-sdks/6-php-sdk-reference.md) |
 |  | [Apex](../3-server-sdks/1-apex-sdk-reference.md)  |

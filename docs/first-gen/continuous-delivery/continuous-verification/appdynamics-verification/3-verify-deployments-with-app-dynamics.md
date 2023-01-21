@@ -19,7 +19,7 @@ Harness can analyze AppDynamics data to verify, rollback, and improve your deplo
 
 Add the AppDynamics Verification Provider to your Workflow only *after* you have run at least one successful Workflow deployment. This enables the AppDynamics integration to obtain the names of the host(s) or container(s) where your service is deployed.
 
-See [general limitations](https://docs.harness.io/article/9dvxcegm90-variables#limitations) on the Harness variable expressions that are presented as options below.
+See [general limitations](../../../firstgen-platform/techref-category/variables/variables.md#limitations) on the Harness variable expressions that are presented as options below.
 
 
 ### Step 1: Add Verification Step
@@ -40,7 +40,7 @@ To add an AppDynamics verification step to your Workflow:
 
 In the **AppDynamics Server** drop-down, select the server you added when you set up your [AppDynamics Verification Provider](1-app-dynamics-connection-setup.md).
 
-You can also enter variable expressions, such as: `${serviceVariable.appd_QA}`. Do not use hyphens (dashes) in variable expressions; also, see other [limitations on Harness variables](https://docs.harness.io/article/9dvxcegm90-variables#limitations).
+You can also enter variable expressions, such as: `${serviceVariable.appd_QA}`. Do not use hyphens (dashes) in variable expressions; also, see other [limitations on Harness variables](../../../firstgen-platform/techref-category/variables/variables.md#limitations).
 
 If the **AppDynamics Server** field contains an expression, the **Application Name** and **Tier Name** fields must also use an expression. [Templatized](#templatize) fields cannot take variable expressions, and cannot be edited. Using expressions or templatization will disable the **Test** button.
 ### Step 3: Application Name
@@ -51,7 +51,7 @@ This field's drop-down list is populated with the applications available on the 
 
 You can also enter variable expressions, such as: `${app.name}`.
 
-Do not use hyphens (dashes) in variable expressions. See other [limitations on Harness variables](https://docs.harness.io/article/9dvxcegm90-variables#limitations). If the **AppDynamics Server** field contains an expression, the **Application Name** and **Tier Name** fields must also use an expression. [Templatized](#templatize) fields cannot take variable expressions, and cannot be edited. Using expressions or templatization will disable the **Test** button.
+Do not use hyphens (dashes) in variable expressions. See other [limitations on Harness variables](../../../firstgen-platform/techref-category/variables/variables.md#limitations). If the **AppDynamics Server** field contains an expression, the **Application Name** and **Tier Name** fields must also use an expression. [Templatized](#templatize) fields cannot take variable expressions, and cannot be edited. Using expressions or templatization will disable the **Test** button.
 ### Step 4: Tier Name
 
 The field's drop-down list is populated with tiers from the AppDynamics application you selected. Pick the tier from which you want usage metrics, code exceptions, error conditions, and exit calls. In **AppDynamics**, the tiers are displayed in the **Tiers & Nodes** page.
@@ -60,7 +60,7 @@ The field's drop-down list is populated with tiers from the AppDynamics applicat
 
 You can also enter variable expressions, such as: `${service.name}`.
 
-Do not use hyphens (dashes) in variable expressions. See other [limitations on Harness variables](https://docs.harness.io/article/9dvxcegm90-variables#limitations). If the **Application Name** field contains an expression, the **Tier Name** field must also use an expression. [Templatized](#templatize) fields cannot take variable expressions, and cannot be edited. Using expressions or templatization will disable the **Test** button.For PCF deployments, application tiers will match tier information from the [application manifest file](https://docs.harness.io/article/3ekpbmpr4e-adding-and-editing-inline-pcf-manifest-files).
+Do not use hyphens (dashes) in variable expressions. See other [limitations on Harness variables](../../../firstgen-platform/techref-category/variables/variables.md#limitations). If the **Application Name** field contains an expression, the **Tier Name** field must also use an expression. [Templatized](#templatize) fields cannot take variable expressions, and cannot be edited. Using expressions or templatization will disable the **Test** button.For PCF deployments, application tiers will match tier information from the [application manifest file](../../pcf-deployments/adding-and-editing-inline-pcf-manifest-files.md).
 
 
 ### Step 5: Expression for Host/Container Name
@@ -127,7 +127,7 @@ ${host.pcfElement.displayName}_${host.pcfElement.instanceIndex}
 
 ![](./static/3-verify-deployments-with-app-dynamics-24.png)
 
-See [PCF Built-in Variables](https://docs.harness.io/article/ojd73hseby-pcf-built-in-variables).
+See [PCF Built-in Variables](../../pcf-deployments/pcf-built-in-variables.md).
 
 When you are setting up the Workflow for the first time, Harness will *not* be able to help you create an expression, because there has not been a host/container deployed yet. This is another reason why Harness recommends adding the **Verify Step** *after* you have done one successful deployment.
 ### Step 6: Analysis Time Duration
@@ -171,11 +171,11 @@ The **Test** button will be disabled if any of the **AppDynamics Server**, **App
 
 Once you have executed the Workflow, Harness performs the verification you configured and displays the results in the **Deployments** and **Continuous Verification** pages. Verification is executed in real time, quantifying the business impact of every production deployment.
 
-For a quick overview of the verification UI elements, see [Continuous Verification Tools](https://docs.harness.io/article/xldc13iv1y-meet-harness#continuous_verification_tools). For details about viewing and interpreting verification results, see [Verification Results Overview](../continuous-verification-overview/concepts-cv/deployment-verification-results.md).
+For a quick overview of the verification UI elements, see [Continuous Verification Tools](../../../starthere-firstgen/meet-harness.md#continuous-verification-tools). For details about viewing and interpreting verification results, see [Verification Results Overview](../continuous-verification-overview/concepts-cv/deployment-verification-results.md).
 
 ### Harness Expression Support in CV Settings
 
-You can use expressions (`${...}`) for [Harness built-in variables](https://docs.harness.io/article/7bpdtvhq92-workflow-variables-expressions) and custom [Service](../../model-cd-pipeline/setup-services/service-configuration.md) and [Workflow](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md) variables in the settings of Harness Verification Providers.
+You can use expressions (`${...}`) for [Harness built-in variables](../../kubernetes-deployments/workflow-variables-expressions.md) and custom [Service](../../model-cd-pipeline/setup-services/service-configuration.md) and [Workflow](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md) variables in the settings of Harness Verification Providers.
 
 Here is an example using Dynatrace, but it applies to all providers.
 

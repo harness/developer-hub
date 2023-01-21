@@ -15,7 +15,7 @@ Most APM and logging tools are added to Harness as Verification Providers. For S
 
 ### Before You Begin
 
-* See [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts).
+* See [Harness Key Concepts](../../../starthere-firstgen/harness-key-concepts.md).
 * See the [Stackdriver Verification Overview](../continuous-verification-overview/concepts-cv/stackdriver-and-harness-overview.md).
 
 
@@ -31,7 +31,7 @@ See [Access control](https://cloud.google.com/monitoring/access-control) from Go
 
 ### Step 2: Add GCP Cloud Provider for Stackdriver
 
-To add Stackdriver as a Cloud Provider, follow the steps for adding a [Google Cloud Platform](https://docs.harness.io/article/whwnovprrb-cloud-providers#google_cloud_platform_gcp) Cloud Provider.
+To add Stackdriver as a Cloud Provider, follow the steps for adding a [Google Cloud Platform](../../../firstgen-platform/account/manage-connectors/cloud-providers.md#google-cloud-platform-gcp) Cloud Provider.
 
 1. In Harness, click **Setup**, and then click **Cloud Providers**.
 2. Click **Add Cloud Provider** and select **Google Cloud Platform**.
@@ -40,7 +40,7 @@ To add Stackdriver as a Cloud Provider, follow the steps for adding a [Google Cl
    
 ### Step 3: Provide Google Cloud's Account Service Key File
 
-In **Select Encrypted Key**, select or create a new [Harness Encrypted Text secret](https://docs.harness.io/article/ygyvp998mu-use-encrypted-text-secrets) that contains the Google Cloud's Account Service Key File.
+In **Select Encrypted Key**, select or create a new [Harness Encrypted Text secret](../../../firstgen-platform/security/secrets-management/use-encrypted-text-secrets.md) that contains the Google Cloud's Account Service Key File.
 
 To obtain the Google Cloud's Account Service Key File, see [Creating and managing service account keys](https://cloud.google.com/iam/docs/creating-managing-service-account-keys) from Google.
 

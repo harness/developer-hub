@@ -10,14 +10,14 @@ helpdocs_is_published: true
 
 This topic describes how to add a Docker Artifact Source in a Harness Service.
 
-Do not use Docker Registry to connect to a Docker resource on Artifactory. See [Artifactory](https://docs.harness.io/article/7dghbx1dbl-configuring-artifact-server#artifactory).For details on using Docker with Kubernetes, see [Add Container Images for Kubernetes Deployments](https://docs.harness.io/article/6ib8n1n1k6-add-container-images-for-kubernetes-deployments). For details on using Docker with Helm, see [Helm Deployments Overview](https://docs.harness.io/article/583ojfgg49-helm-deployments-overview).
+Do not use Docker Registry to connect to a Docker resource on Artifactory. See [Artifactory](../../../firstgen-platform/account/manage-connectors/configuring-artifact-server.md#artifactory).For details on using Docker with Kubernetes, see [Add Container Images for Kubernetes Deployments](../../kubernetes-deployments/add-container-images-for-kubernetes-deployments.md). For details on using Docker with Helm, see [Helm Deployments Overview](../../concepts-cd/deployment-types/helm-deployments-overview.md).
 
 ### Before You Begin
 
 * Read the [Create an Application](../applications/application-configuration.md) topic to get an overview of how Harness organizes Services.
 * Read the [Add a Service](service-configuration.md) topic to understand the process to add a Service to an Application.
-* Read [Configuration as Code](https://docs.harness.io/article/htvzryeqjw-configuration-as-code) to see how you can quickly configure your Harness Service using your existing YAML in Git.
-* [Add Artifact Servers](https://docs.harness.io/article/7dghbx1dbl-configuring-artifact-server)
+* Read [Configuration as Code](../../../firstgen-platform/config-as-code/configuration-as-code.md) to see how you can quickly configure your Harness Service using your existing YAML in Git.
+* [Add Artifact Servers](../../../firstgen-platform/account/manage-connectors/configuring-artifact-server.md)
 
 ### Limitations
 
@@ -36,7 +36,7 @@ See [Service Types and Artifact Sources](service-types-and-artifact-sources.md).
 
 ### Review: Sorting of Artifacts
 
-You add a Docker image to Harness by connecting to your repo using a [Harness Artifact Server](https://docs.harness.io/article/7dghbx1dbl-configuring-artifact-server), and then by entering its name in a Harness Service's Artifact Source **Docker Image Name** setting.
+You add a Docker image to Harness by connecting to your repo using a [Harness Artifact Server](../../../firstgen-platform/account/manage-connectors/configuring-artifact-server.md), and then by entering its name in a Harness Service's Artifact Source **Docker Image Name** setting.
 
 Once you enter the name and click **Submit**, Harness checks to make sure the artifact exists. To verify the name, Harness collects all of the artifacts from the repo you entered.
 
@@ -54,13 +54,13 @@ A Docker Image artifact can be used in a number of different Harness Service typ
 
 To specify a Docker Image Artifact Source for your Harness Service, do the following:
 
-1. Ensure you have set up an Artifact Server. See [Add Artifact Servers](https://docs.harness.io/article/7dghbx1dbl-configuring-artifact-server).
+1. Ensure you have set up an Artifact Server. See [Add Artifact Servers](../../../firstgen-platform/account/manage-connectors/configuring-artifact-server.md).
 2. In the **Service Overview**, click **Add Artifact Source** and select the type of artifact source for your service.  
 The **Artifact Source** dialog appears with settings specific to the artifact source type you selected. For instructions on the artifact source you selected.
 
 ### Option 1: Docker Registry Artifact Source
 
-Do not use Docker Registry to connect to a Docker resource on Artifactory. Use  [Artifactory](https://docs.harness.io/article/7dghbx1dbl-configuring-artifact-server#artifactory).The Docker Registry Artifact Source has the following fields.
+Do not use Docker Registry to connect to a Docker resource on Artifactory. Use  [Artifactory](../../../firstgen-platform/account/manage-connectors/configuring-artifact-server.md#artifactory).The Docker Registry Artifact Source has the following fields.
 
 
 
@@ -68,7 +68,7 @@ Do not use Docker Registry to connect to a Docker resource on Artifactory. Use 
 | --- | --- |
 | **Field** | **Description** |
 | **Name** | You can enter a name or have Harness generate one for you automatically. |
-| **Source Server** | In **Source Server**, select the name of the artifact source server you added in [Add an Artifact Server](https://docs.harness.io/article/7dghbx1dbl-configuring-artifact-server). |
+| **Source Server** | In **Source Server**, select the name of the artifact source server you added in [Add an Artifact Server](../../../firstgen-platform/account/manage-connectors/configuring-artifact-server.md). |
 | **Docker Image Name** | Click in **Docker Image Name** and enter the name of the artifact you want to deploy, such as **library/tomcat**.Wildcards are not supported. |
 
 If you click **Artifact History,** you will see the build history that Harness pulled from the source server.
@@ -83,7 +83,7 @@ The ECR Artifact Source has the following fields.
 | --- | --- |
 | **Field** | **Description** |
 | **Name** | You can enter a name or have Harness generate one for you automatically. |
-| **Cloud Provider** | Select the name of the artifact source server you added in [Cloud Providers](https://docs.harness.io/article/whwnovprrb-infrastructure-providers). |
+| **Cloud Provider** | Select the name of the artifact source server you added in [Cloud Providers](../../../firstgen-platform/account/manage-connectors/cloud-providers.md). |
 | **Region** | Select the region where the artifact source is located. |
 | **Docker Image Name** | Click in **Docker Image Name** and select or enter the name of the artifact you want to deploy. By default, Harness automatically populates the field with the artifacts available from the ECR source server. Often, images in repos need to reference a path, for example: **app/myImage**. |
 
@@ -99,7 +99,7 @@ The Azure Container Registry Artifact Source has the following fields.
 | --- | --- |
 | **Field** | **Description** |
 | **Name** | You can enter a name or have Harness generate one for you automatically. |
-| **Cloud Provider** | Select the name of the artifact source server you added in [Cloud Providers](https://docs.harness.io/article/whwnovprrb-infrastructure-providers). |
+| **Cloud Provider** | Select the name of the artifact source server you added in [Cloud Providers](../../../firstgen-platform/account/manage-connectors/cloud-providers.md). |
 | **Subscription** | Harness will automatically pull the available GUIDs. Select an Azure Subscription GUID. If you don't see it, the API might have timed out. Enter the GUID and Harness will query for it. |
 | **Azure Registry Name** | Harness will automatically pull the available names. Select a name. If you don't see it, the API might have timed out. Enter its name and Harness will query for it. |
 | **Repository Name** | Harness will automatically pull the available repository names. Select a name. If you don't see it, the API might have timed out. Enter its name and Harness will query for it. |
@@ -116,7 +116,7 @@ The Google Cloud Container Registry (GCR) Artifact Source has the following fiel
 | --- | --- |
 | **Field** | **Description** |
 | **Display** **Name** | You can enter a name or have Harness generate one for you automatically. |
-| **Cloud Provider** | Select the name of the artifact source server you added in [Cloud Providers](https://docs.harness.io/article/whwnovprrb-infrastructure-providers). |
+| **Cloud Provider** | Select the name of the artifact source server you added in [Cloud Providers](../../../firstgen-platform/account/manage-connectors/cloud-providers.md). |
 | **Registry Host Name** | Once you select a Cloud Provider, the list of registries is populated automatically. Select the registry where the artifact source is located. |
 | **Docker Image Name** | Enter the name of the artifact you want to deploy. Images in repos need to reference a path starting with the project ID that the artifact is in, for example: **myproject-id/image-name**. |
 
@@ -128,9 +128,9 @@ If you click **Artifact History,** you will see the build history that Harness p
 
 ### Option 5: Artifactory Artifact Source
 
-See [Artifactory Artifact Sources](https://docs.harness.io/article/63gnfa6i8z-artifactory-artifact-sources).
+See [Artifactory Artifact Sources](../../../firstgen-platform/techref-category/cd-ref/artifacts-ref/artifactory-artifact-sources.md).
 
 ### Option 6: Nexus Artifact Source
 
-See [Nexus Artifact Sources](https://docs.harness.io/article/rdhndux2ab-nexus-artifact-sources).
+See [Nexus Artifact Sources](../../../firstgen-platform/techref-category/cd-ref/artifacts-ref/nexus-artifact-sources.md).
 

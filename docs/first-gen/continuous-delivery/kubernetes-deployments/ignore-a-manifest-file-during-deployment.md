@@ -19,7 +19,7 @@ Or you can simply ignore them until you wish to deploy them as part of the main 
 
 * [Define Kubernetes Manifests](define-kubernetes-manifests.md)
 * [Kubernetes Deployments Overview](../concepts-cd/deployment-types/kubernetes-overview.md)
-* [Kubernetes Versioning and Annotations](https://docs.harness.io/article/ttn8acijrz-versioning-and-annotations)
+* [Kubernetes Versioning and Annotations](../../firstgen-platform/techref-category/cd-ref/platforms-ref/versioning-and-annotations.md)
 
 ### Visual Summary
 
@@ -31,7 +31,7 @@ The following image shows how you can ignore a Jobs manifest and then apply it s
 
 To have a Workflow ignore a resource file in a Service **Manifests** section, you add the comment `# harness.io/skip-file-for-deploy` to the **top** of the file.
 
-For more information on `harness.io/skip-file-for-deploy`, see [Kubernetes Versioning and Annotations](https://docs.harness.io/article/ttn8acijrz-versioning-and-annotations).For example, here is a ConfigMap file using the comment:
+For more information on `harness.io/skip-file-for-deploy`, see [Kubernetes Versioning and Annotations](../../firstgen-platform/techref-category/cd-ref/platforms-ref/versioning-and-annotations.md).For example, here is a ConfigMap file using the comment:
 
 ![](./static/ignore-a-manifest-file-during-deployment-163.png)
 

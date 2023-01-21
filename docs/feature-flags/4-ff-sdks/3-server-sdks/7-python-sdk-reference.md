@@ -28,7 +28,7 @@ You should read and understand the following:
 
 ## Version
 
-The current version of this SDK is **1.1.2.**
+The current version of this SDK is **1.1.6.**
 
 ## Requirements
 
@@ -99,7 +99,7 @@ Regex: `^[A-Za-z0-9.@_-]*$`
 Must consist of only alphabetical characters, numbers, and the following symbols:  
 . (period)  
 @ (at sign)  
-- (dash)  
+-(dash)  
 \_ (underscore)  
   
 The characters can be lowercase or uppercase but cannot include accented letters, for example `Cafe_789`.  

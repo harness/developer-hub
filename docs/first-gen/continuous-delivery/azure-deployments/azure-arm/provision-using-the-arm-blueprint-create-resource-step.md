@@ -66,7 +66,7 @@ In **Overview**, in **Provisioner**, select the Infrastructure Provisioner for y
 
 In **Azure Cloud Provider**, enter the Cloud Provider for Harness to use when connecting to Azure and provisioning with the template.
 
-The Azure service account used with the Cloud Provider must have the Azure permissions needed to provision the resources in your template. See **Azure Resource Management (ARM)** in [Add Microsoft Azure Cloud Provider](https://docs.harness.io/article/4n3595l6in-add-microsoft-azure-cloud-provider).In **Subscription**, select the Azure subscription for the provisioned resources.
+The Azure service account used with the Cloud Provider must have the Azure permissions needed to provision the resources in your template. See **Azure Resource Management (ARM)** in [Add Microsoft Azure Cloud Provider](../../../firstgen-platform/account/manage-connectors/add-microsoft-azure-cloud-provider.md).In **Subscription**, select the Azure subscription for the provisioned resources.
 
 In **Resource Group**, select the resource group for the provisioned resources.
 
@@ -179,7 +179,7 @@ Here is an example of parameters using Workflow variables:
   }  
 }
 ```
-See [Set Workflow Variables](https://docs.harness.io/article/766iheu1bk-add-workflow-variables-new-template) and [Built-in Variables List](https://docs.harness.io/article/aza65y4af6-built-in-variables-list).
+See [Set Workflow Variables](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md) and [Built-in Variables List](../../../firstgen-platform/techref-category/variables/built-in-variables-list.md).
 
 ### Option: Use Template Outputs in Workflow Steps
 
