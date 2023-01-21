@@ -1,26 +1,20 @@
 ---
-title: Define a MacOS Build Infrastructure in AWS
-description: This topic describes how to set up a build infrastructure using VMs on an MacOS EC2.  Once you set up this infrastructure, your Harness Pipelines can use these VMs to build your software and run your tests safely and at scale.
+title: Define a MacOS Build Infrastructure
+description: Currently, this feature is behind the Feature Flag CI_VM_INFRASTRUCTURE Contact Harness Support to enable the feature. This topic describes how to set up virtualization on MacOS hardware platforms to…
 tags: 
    - helpDocs
-   - MacOS
-   - OSX
 sidebar_position: 40
-helpdocs_topic_id: mwzlb0x2mt
+helpdocs_topic_id: d79v3d2uwv
 helpdocs_category_id: rg8mrhqm95
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-:::note
-Currently, this feature is behind the Feature Flag `CI_VM_INFRASTRUCTURE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
-
-This topic describes how to set up a build infrastructure using VMs on an MacOS EC2. Once you set up this infrastructure, your Harness Pipelines can use these VMs to build your software and run your tests safely and at scale. You can also [define MacOS build infrastructures on hardware devices such as MacBook Pros and Mac minis](define-a-mac-os-build-infrastructure.md). 
+Currently, this feature is behind the Feature Flag `CI_VM_INFRASTRUCTURE` Contact [Harness Support](mailto:support@harness.io) to enable the feature.This topic describes how to set up virtualization on MacOS hardware platforms to run CI Pipelines. Once you complete this workflow, your Harness Pipelines can use VMs on your MacOS platform to test and build your software. You can also [define your MacOS build infrastructure in AWS](define-a-macos-build-infrastructure-in-aws.md).
 
 The following diagram shows the architecture of a CI build infrastructure on MacOS. The Delegate receives build requests from your Harness Manager. Then it forwards the requests to a Runner VM that starts, runs, and terminates the build VMs as needed.
 
-![](./static/define-a-macos-build-infrastructure-05.png)
+![](./static/define-a-mac-os-build-infrastructure-19.png)
 
 ### Before You Begin
 
@@ -32,74 +26,46 @@ This topic assumes you're familiar with the following:
 * [Learn Harness' Key Concepts](../../../getting-started/learn-harness-key-concepts.md)
 * [VM Runner](https://docs.drone.io/runner/vm/overview/)
 
-### Step 1: Set up the MacOS EC2 Instance
+#### Prerequisites
 
-#### AWS EC2 Requirements
+* Harness recommends the following for a CI build infrastructure:
+	+ Storage: 500GB or more.
+	+ RAM: 16GB or more.
+	+ CPU: 6 physical cores or more. You should be able to allocate at least 3 vCPUs per VM.
+* This workflow uses [Anka software](https://docs.veertu.com/anka/intel/) by [Veertu](https://veertu.com/) to create and manage VMs in MacOS.
+	+ Anka is [licensed](https://docs.veertu.com/anka/licensing/) software and requires a license key to activate. For a trial license, go to: <https://veertu.com/anka-build-trial/>
+	+ Use Anka Build version 2.5.x. Anka Build 2.5.x requires MacOS 10.15, 11.x, or 12.x. For more info, see [Installing Anka](https://docs.veertu.com/anka/intel/getting-started/installing-the-anka-virtualization-package/) in the Veertu docs.
+	+ If you want to set up your build infrastructure in AWS, Veertu maintains a set of Community AMIs that are preconfigured with all required hardware and software. See [Running on AWS EC2 Mac](https://docs.veertu.com/anka/intel/getting-started/aws-ec2-mac/) in the Veertu docs.
 
-* Each MacOS EC2 instance requires a [Dedicated Host](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-overview.html) fully dedicated to that EC2. See [Amazon EC2 Mac Instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-mac-instances.html) in the AWS docs for pricing information, additional requirements, and best practices.
-* EC2 instance type = **mac1.metal**
-* While not required, enabling **Instance auto-placement** can be useful if you have multiple available hosts and don’t want to explicitly specify the host for each EC2.
-* Minimum requirements for the root volume of your EC2:
-	+ Type: **gp3**
-	+ Size: **500GB**
-	+ IOPS: **6000**
-	+ Throughput: **256**
-* The EC2 should have TCP ports **22,** **5900**, and **9079** open to inbound connections from hosts that interact with the EC2.
-* This workflow uses [Anka software](https://docs.veertu.com/anka/intel/) by [Veertu](https://veertu.com/) to create and manage VMs on the EC2. Anka is [licensed](https://docs.veertu.com/anka/licensing/) software and requires a license key to activate. For a trial license, go to: <https://veertu.com/anka-build-trial/>  
-Veertu maintains a set of Anka Community AMIs in AWS. These AMIs are preconfigured with all required hardware and software to create and manage VMs using Anka. You can use Marketplace AMIs with an hourly billing option, in which case a license key is not required.  
-See [Running on AWS EC2 Mac](https://docs.veertu.com/anka/intel/getting-started/aws-ec2-mac/) in the Anka docs for more useful information.
+### Step 1: Set up the MacOS Host
 
-#### Set Up the EC2
-
-If you want to use a standard MacOS AMI, rather than an Anka Community AMI, do the following:
-
-* Launch a new EC2 based on the hardware and software requirements above.
-* SSH into the EC2.
-* Download and install the Anka software on the EC2:
-
-```
-FULL_FILE_NAME="$(curl -Ls -r 0-1 -o /dev/null -w %{url_effective} https://veertu.com/downloads/anka-virtualization-latest | cut -d/ -f5)" curl -S -L -o ./$FULL_FILE_NAME https://veertu.com/downloads/anka-virtualization-latest sudo installer -pkg $FULL_FILE_NAME -tgt /
-```
-
-The following steps are required for all EC2s, regardless of the AMI type, except as noted. Run these commands on the EC2 unless otherwise specified.
-
-* In some cases, your EC2's disk might be split into multiple volumes. Make sure that your EC2 can access all the storage in its attached volume. See [Increase the size of an EBS volume on your Mac instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-mac-instances.html#mac-instance-increase-volume) in the AWS docs.
-* Make sure your software is up to date:
+* Install Anka Build 2.5.x. You can download an installer from <https://veertu.com/download-anka-build>.
+* Open a CLI and fetch the OS installer needed to set up the VMs:
 ```
 # get the list of installers  
 softwareupdate --list-full-installers  
   
-# install the latest version, such as 12.4, 12.3.1, etc.  
-softwareupdate --fetch-full-installer --full-installer-version {LATEST_VERSION}
+# fetch the latest version, such as 12.4, 12.3.1, etc.  
+softwareupdate --fetch-full-installer --full-installer-version {VERSION}
 ```
-* Change the AWS EC2 password:
-```
-# To find the default password, search for "/usr/bin/dscl" in the install script output  
-sudo /usr/bin/dscl . -passwd /Users/ec2-user {DEFAULT_PASSWORD} {NEW_PASSWORD}
-```
-* Go to a separate terminal window (i.e., not SSH’d with your EC2). Then VNC into the EC2 with your new password:
-```
-open vnc://ec2-user:{NEW_PASSWORD}@{EC2_IP}
-```
-Leave this window open. You will use it to install Docker Desktop and the Drone Runner in a later step.
-* Activate your license key. Return to your SSH session with the EC2, activate your Anka license, and accept the EULA. Here's an example session.
+
+* Activate your license key and accept the EULA. Here's an example session.
 ```
 sudo anka license activate {LICENSE}  
 # License activated. The fulfillment ID: {FULFILLMENT_ID}
 ```
-* Save the fulfillment ID that gets returned. Veertu will request this if your EC2  gets terminated unexpectedly. See [Licensing](https://docs.veertu.com/anka/licensing/) in the Veertu docs.
+* Save the fulfillment ID that gets returned. This ID will make it much easier to retrieve your license if (for example) your Mac machine becomes unusable or gets reset to its factory defaults. See [Licensing](https://docs.veertu.com/anka/licensing/) in the Veertu docs.
 
-
-### Step 2: Create a VM on the EC2
+### Step 2: Create a Master VM
 
 In this step, you will create the VM that the Harness Runner will use to create new VMs. See also [Getting Started](https://docs.veertu.com/anka/intel/getting-started/) in the Anka 2.5.x docs.
 
 Note the following before you create this VM:
 
-* For the `--ram-size`, Harness recommends that you specify half the physical RAM on the host so it can run two VMs at once with reasonable performance. The following example assumes that the physical host has 16GB of RAM.
+* For the `--ram-size`  , Harness recommends that you specify half the physical RAM on the host so it can run two VMs at once with reasonable performance. The following example assumes that the physical host has 16GB of RAM.
 * To determine the path to your MacOS installer:
 	+ Go to the Mac UI > Finder > Applications folder. You should see an installer such as **Install MacOS Monterey** in the list.
-	+ Right-click on the Installer and choose **New Terminal at Folder**.
+	+ Right-click on the Installer and choose New Terminal at Folder.
 	+ In the terminal, enter `pwd`. Include the output as the `--app` argument value and include quotes if the path has spaces. For example: `--app "/Applications/Install macOS Monterey.app"`
 
 To create the master VM, open a CLI window in the Mac UI and enter the following:
@@ -108,9 +74,7 @@ To create the master VM, open a CLI window in the Mac UI and enter the following
 ```
 anka --debug  create {VM_NAME} --ram-size 8G --cpu-count 4 --disk-size 100G --app {PATH_TO_MACOS_INSTALLER}
 ```
-This process can take an hour or more. There will be extended periods where the script doesn't generate any messages or notifications. Be patient and do not kill the process. To verify that the create process is still running, open a new SSH session on the EC2 and enter `ps`.
-
-When the script finishes, enter `anka list` and `anka show {VM_UUID}` to confirm that the VM was created and is running. To start a VM, enter `anka start {VM_NAME}`. Here's an example session:
+This process can take an hour or more. There will be extended periods where the script doesn't generate any messages or notifications. Be patient and do not kill the process. To verify that the create process is still running, open a second CLI window and enter `ps`.When the script finishes, enter `anka list` and `anka show {VM_UUID}` to confirm that the VM was created and is running. To start a VM, enter `anka start {VM_NAME}`. Here's an example session:
 
 
 ```
@@ -147,15 +111,14 @@ anka show bc7210af-8fe8-48cd-82af-a994f5cf1bea
 +---------+-----------------------------------------+  
 
 ```
-### Step 3: Set Up the VM on the EC2
+### Step 3: Set Up the VM on the Host
 
-Return to the VNC window you opened previously. If you closed it, open a CLI on your local host (not SSH’d into the EC2) and enter: `open vnc://ec2-user:{NEW_PASSWORD}@{EC2_IP}`
+In the Mac UI, click the Launchpad button in the Dock (bottom). Then search for Anka (top) and click the Anka icon. The Welcome to Anka screen appears.
 
-In the VNC window, click the Launchpad button in the Dock (bottom). Then search for Anka (top) and click the Anka icon. The Welcome to Anka screen appears.
+![](./static/define-a-mac-os-build-infrastructure-20.png)In the Welcome to Anka screen, click the button for the VM you just created on the right. This opens a VNC window for the VM.
 
-![](./static/define-a-macos-build-infrastructure-06.png)In the Welcome to Anka screen, click the button for the VM you just created on the right. This opens a second VNC window, for the VM, within the VNC window for the EC2.
+![](./static/define-a-mac-os-build-infrastructure-21.png)
 
-![](./static/define-a-macos-build-infrastructure-07.png)
 
 In the new VNC window, do the following:
 
@@ -167,26 +130,29 @@ brew install wget
 * Open a browser window in the UI, go to the Docker website, and download Docker Desktop for Mac Intel Chip: <https://docs.docker.com/desktop/mac/install/>
 * Run the Docker installer and accept the EULA that appears at the end of the install process.
 
-  ![](./static/define-a-macos-build-infrastructure-08.png)
+![](./static/define-a-mac-os-build-infrastructure-22.png)
 
 * In a CLI, enter the following to make sure that Docker is running correctly: `docker run hello-world`
-* Install any additional tools that will be used by your builds on the VM, such xcode.
+* Install any additional tools that will be used by your builds on the VM, such Xcode.
 * Harness recommends that you suspend the master VM after you set it up. This will speed up the creation of new VMs.
 	+ On the VM, do this:
 		- Quit Docker Desktop.
-		- Open a CLI window and run the following:  
-		`docker kill $(docker ps -q)`  
-		`docker stop`
-		- On the host, run the following: `anka suspend {VM_NAME}`
-* Close the VM VNC window *but leave the EC2 VNC window open*. You will use this window in the next step.
+		- Open a CLI window and run the following:
+		```
+		docker kill $(docker ps -q)  
+		docker stop
+		```
+	+ On the host, run the following: `anka suspend {VM_NAME}`
 
-### Step 4: Install Docker Desktop and the Drone Runner on the EC2
+### Step 4: Install Docker Desktop and the Drone Runner on the Host
 
-In the EC2 VNC window, open a browser window in the UI, go to the Docker website, and download **Docker Desktop for Mac Intel Chip**: <https://docs.docker.com/desktop/mac/install/>
+In the Mac UI, open a browser window in the UI, go to the Docker website, and download **Docker Desktop for Mac Intel Chip**: <https://docs.docker.com/desktop/mac/install/>
 
 Run the installer and accept the Docker EULA that appears at the end of the install process.
 
 Open a CLI and enter the following to make sure that Docker is installed and running: `docker run hello-world`
+
+### Step 5: Install the Drone runner on the Host
 
 In the CLI, install tmux: `brew install tmux` 
 
@@ -194,10 +160,7 @@ In the browser window, go to the following page: <https://github.com/drone-runne
 
  Download the latest **drone-runner-aws-darwin-amd64** executable:
 
-![](./static/define-a-macos-build-infrastructure-09.png)
-
-Copy the binary from the Downloads folder and make sure it has the correct permissions to run. In a CLI, run the following:
-
+![](./static/define-a-mac-os-build-infrastructure-23.png)Copy the binary from the Downloads folder and make sure it has the correct permissions to run. In a CLI, run the following:
 
 ```
 mkdir ~/runner  
@@ -205,9 +168,8 @@ cd ~/runner
 cp ~/Downloads/drone-runner-aws-darwin-amd64 .  
 chmod +x drone-runner-aws-darwin-amd64
 ```
-### Step 5: Set Up Your Drone Environment on the EC2
 
-To start the Drone Runner, you need to specify your environment variables (`.env` file) and your runner pool definition (`pool.yml` file). You should save these in your `~/runner` folder.
+To start the Drone Runner, you need to specify your environment variables (`.env` file) and your runner pool definition (`pool.yml` file). You should save these in your `~/runner` folder.
 
 #### Environment File
 
@@ -248,7 +210,7 @@ instances:
 ```
 You can leave all fields at their defaults except for `username`, `password`, and `vm_id`. Note the `name` field: you will specify this name when you set up your Harness Pipeline.
 
-### Step 6: Start the Drone Runner on the EC2
+### Step 6: Start the Drone Runner on the Host
 
 In a CLI window, enter the following:
 
@@ -265,7 +227,7 @@ The Runner might take a few minutes before it is completely up and running. When
 DEBU[4334] got IP 192.168.64.5 cloud=anka name=droneRunnerName--4037200794235010051 pool=osx-anka  
 INFO[4335] Running script in VM cloud=anka name=droneRunnerName--4037200794235010051 pool=osx-anka
 ```
-### Step 7: Install the Harness Delegate on the EC2
+### Step 7: Install the Harness Delegate on the Host
 
 In the Harness UI, go to the project where you want to install the Delegate.
 
@@ -298,8 +260,8 @@ services:
       - "host.docker.internal:host-gateway"  
     # ----------------------------------------  
     environment:  
-      - ACCOUNT_ID=XXXXXXXXXXXXXXXX  
-      - DELEGATE_TOKEN=XXXXXXXXXXXXXXXX  
+      - ACCOUNT_ID=chPdAnQU6Xjm5MOD  
+      - DELEGATE_TOKEN=0003d4379696997173fd0b996dd65b32  
       - MANAGER_HOST_AND_PORT=https://app.harness.io  
       - WATCHER_STORAGE_URL=https://app.harness.io/public/prod/premium/watchers  
       - WATCHER_CHECK_LOCATION=current.version  
@@ -320,9 +282,9 @@ services:
       - INIT_SCRIPT=echo "Docker delegate init script executed."  
 
 ```
-Upload the modified `docker-compose.yml` file to your EC2 and move it to your `~/runner` folder.
+Save the modified `docker-compose.yml` file in your `~/runner` folder.
 
-Start the Delegate in the EC2. Run the following in the `/runner` folder:
+Start the Delegate. Run the following in the `/runner` folder:
 
 
 ```
@@ -344,5 +306,5 @@ In the Infrastructure tab of the Build Stage, define your infrastructure as foll
 * Pool Name = The `name` field in your `pool.yml` file.
 * OS = **MacOS**
 
-Your MacOS build infrastructure is set up. You can now run your Build Stages on MacOS VMs. 
+Your MacOS build infrastructure is set up. You can now run your Build Stages on your Mac platform. 
 
