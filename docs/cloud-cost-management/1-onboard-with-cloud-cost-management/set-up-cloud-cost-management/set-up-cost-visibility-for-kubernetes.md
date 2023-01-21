@@ -1,5 +1,5 @@
 ---
-title: Set up Cloud Cost Management for Kubernetes
+title: Set up CCM for Kubernetes
 description: This topic describes how to connect your Kubernetes cluster to CCM.
 # sidebar_position: 2
 helpdocs_topic_id: ltt65r6k39
