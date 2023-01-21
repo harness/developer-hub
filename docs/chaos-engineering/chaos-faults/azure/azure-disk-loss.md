@@ -2,22 +2,22 @@
 id: azure-disk-loss
 title: Azure disk loss
 ---
-
-- It causes detachment of virtual disk from an Azure instance before re-attaching it back to the instance after the specified chaos duration.
-- It helps to check the performance of the application/process running on the instance.
+Azure disk loss is a chaos fault that:
+- Detaches the virtual disk from an Azure instance before re-attaching it back to the instance after the specified chaos duration.
+- Checks the performance of the application (or process) running on the instance.
 
 ![Azure Disk Loss](./static/images/azure-disk-loss.png)
 
 ## Usage
 <details>
-<summary>View the uses of the fault</summary>
+<summary>View fault usage</summary>
 <div>
 Coming soon.
 </div>
 </details>
 
 ## Prerequisites
-- Ensure that Kubernetes Version > 1.16.
+- Kubernetes > 1.16.
 - Ensure that you have sufficient Azure access to detach and attach a disk. 
 - We will use Azure [ file-based authentication ](https://docs.microsoft.com/en-us/azure/developer/go/azure-sdk-authorization#use-file-based-authentication) to connect with the instance using Azure GO SDK in the fault. For generating auth file run `az ad sp create-for-rbac --sdk-auth > azure.auth` Azure CLI command.
 - Ensure to create a Kubernetes secret having the auth file created in the step in `CHAOS_NAMESPACE`. A sample secret file looks like:
@@ -45,8 +45,8 @@ stringData:
 - If you change the secret key name (from `azure.auth`) please also update the `AZURE_AUTH_LOCATION` ENV value in the ChaosExperiment CR with the same name.
 
 
-## Default validation
-- Azure Disk should be connected to an instance.
+## Default validations
+- Azure disk should be connected to an instance.
 
 ## Fault tunables
 <details>
@@ -104,13 +104,13 @@ stringData:
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common Fault Tunables
+### Common fault tunables
 
 Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
-### Detach Virtual Disks By Name
+### Detach virtual disks by name
 
 It contains comma separated list of disk names subjected to disk loss chaos. It can be tuned via `VIRTUAL_DISK_NAMES` ENV.
 
@@ -139,7 +139,7 @@ spec:
           value: 'rg-azure-disks'
 ```
 
-### Detach Virtual Disks Attached to Scale Set Instances By Name
+### Detach virtual disks attached to scale set instances by name
 
 It contains comma separated list of disk names attached to scale set instances subjected to disk loss chaos. It can be tuned via `VIRTUAL_DISK_NAMES` and `SCALE_SET` ENV.
 

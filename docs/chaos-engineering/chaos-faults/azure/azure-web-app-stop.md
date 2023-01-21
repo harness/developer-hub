@@ -46,7 +46,7 @@ stringData:
 ```
 - If you change the secret key name (from `azure.auth`) please also update the `AZURE_AUTH_LOCATION` ENV value in the ChaosExperiment CR with the same name.
 
-## Default validation
+## Default validations
 - Azure target web app should be in running state.
 
 ## Fault tunables

@@ -10,18 +10,17 @@ title: Azure instance CPU hog
 
 ## Usage
 
-### Uses of the experiment
-
-
+<details>
+<summary>View fault usage</summary>
+<div>
 - The fault causes CPU hog/stress on the target Azure Instance(s). The idea of this fault is to simulate issues when there is lack of CPU for other runnning processes/applications resulting into degrading their performance.
 - Injecting a rogue process into a target Azure instance, we starve the main processes/applications (typically pid 1) of the resources allocated to it (where limits are defined) causing slowness in application traffic or in other cases unrestrained use can cause instance to exhaust resources leading to degradation in performance of processes/applications present on the instance. So this category of chaos fault helps to build the immunity on the application undergoing any such stress scenario.
+</div>
+</details>
 
 ## Prerequisites
 
-- Ensure that Kubernetes Version >= 1.17
-
-**Azure Access Requirement:**
-
+- Kubernetes >= 1.17
 - Ensure that Azure Run Command agent is installed and running in the target Azure instance.
 - We will use Azure [file-based authentication](https://docs.microsoft.com/en-us/azure/developer/go/azure-sdk-authorization#use-file-based-authentication) to connect with the instance using Azure GO SDK in the fault. For generating auth file run `az ad sp create-for-rbac --sdk-auth > azure.auth` Azure CLI command.
 - Ensure to create a Kubernetes secret having the auth file created in the step in `CHAOS_NAMESPACE`. A sample secret file looks like:
@@ -51,8 +50,7 @@ stringData:
 - If you change the secret key name (from `azure.auth`) please also update the `AZURE_AUTH_LOCATION` ENV value in the ChaosExperiment CR with the same name.
 
 
-## Default validation
-
+## Default validations
 
 - Azure instance should be in healthy state.
 

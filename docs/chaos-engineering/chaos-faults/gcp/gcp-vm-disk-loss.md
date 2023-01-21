@@ -40,7 +40,7 @@ stringData:
 ```
 
 
-## Default validation
+## Default validations
 - Disk volumes are attached to their respective instances.
 
 

@@ -40,7 +40,7 @@ stringData:
   client_x509_cert_url:
 ```
 
-## Default validation
+## Default validations
 - All the VM instances having the target label are in a healthy state.
 
 ## Fault tunables

@@ -11,12 +11,13 @@ title: Azure instance IO stress
 
 ## Usage
 
-### Uses of the fault
-
-
+<details>
+<summary>View fault usage</summary>
+<div>
 - Filesystem read and write is another very common and frequent scenario we find with processes/applications that can result in the impact on its delivery. These problems are generally referred to as "Noisy Neighbour" problems.
 - Injecting a rogue process into a target Azure instance, we starve the main processes/applications (typically pid 1) of the resources allocated to it (where limits are defined) causing slowness in application traffic or in other cases unrestrained use can cause instance to exhaust resources leading to degradation in performance of processes/applications present on the instance. So this category of chaos fault helps to build the immunity on the application undergoing any such stress scenario.
-
+</div>
+</details>
 
 ## Prerequisites
 
@@ -54,7 +55,6 @@ stringData:
 
 
 ## Default validations
-
 
 - Azure instance should be in healthy state.
 

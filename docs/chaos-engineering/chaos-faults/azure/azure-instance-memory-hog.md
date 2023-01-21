@@ -13,12 +13,13 @@ title: Azure instance memory hog
 
 ## Usage
 
-### Uses of the experiment
-
-
+<details>
+<summary>View fault usage</summary>
+<div>
 - The fault causes memory hog/stress on the target Azure Instance(s). The idea of this fault is to simulate issues when there is lack of memory for other runnning processes/applications resulting into degrading their performance.
 - Injecting a rogue process into a target Azure instance, we starve the main processes/applications (typically pid 1) of the resources allocated to it (where limits are defined) causing slowness in application traffic or in other cases unrestrained use can cause instance to exhaust resources leading to degradation in performance of processes/applications present on the instance. So this category of chaos fault helps to build the immunity on the application undergoing any such stress scenario.
-
+</div>
+</details>
 
 ## Prerequisites
 
