@@ -89,6 +89,7 @@ The application pods should be in running state before and after chaos injection
         <td> The Percentage of total pods to target </td>
         <td> Defaults to 0 (corresponds to 1 replica), provide numeric value only </td>
       </tr> 
+      <tr>
         <td> TC_IMAGE </td>
         <td> Image used for traffic control in linux </td>
         <td> default value is `gaiadocker/iproute2` </td>

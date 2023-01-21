@@ -72,7 +72,8 @@ The application pods should be in running state before and after chaos injection
         <td> DESTINATION_HOSTS </td>
         <td> DNS Names/FQDN names of the services, the accessibility to which, is impacted </td>
         <td> if not provided, it will induce network chaos for all ips/destinations or DESTINATION_IPS if already defined</td>
-      </tr>      
+      </tr>   
+      <tr>   
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injection of chaos in sec </td>
         <td> Eg. 30 </td>
