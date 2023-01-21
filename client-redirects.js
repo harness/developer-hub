@@ -57,7 +57,7 @@ module.exports = {
     // Created by kat-enos for PR-2421 on Jan 13, 2023
        {
          from: "/docs/platform/Delegates/delegate-guide/delegate-how-tos",
-         to: "/docs/platform/Delegates/get-started-with-delegates/delegate-how-tos",
+         to: "/docs/platform/Delegates/get-started-with-delegates/delegates-overview",
        },
     
     // Created by kat-enos for PR-2421 on Jan 13, 2023
