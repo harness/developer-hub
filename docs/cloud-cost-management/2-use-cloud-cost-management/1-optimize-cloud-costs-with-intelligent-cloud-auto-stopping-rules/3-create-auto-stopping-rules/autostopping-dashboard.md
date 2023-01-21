@@ -27,10 +27,10 @@ You can also perform the following actions from the AutoStopping dashboard view:
 ![](./static/autostopping-dashboard-31.png)
 
 
-### Visual Summary
+### Visual summary
 <figure><iframe src="//fast.wistia.com/embed/iframe/b7i08zy2yt" width="560" height="315" frameborder="0" allowfullscreen=""></iframe></figure>
 
-### View the AutoStopping Rules Dashboard
+### View the AutoStopping Rules dashboard
 
 The **AutoStopping Summary of Rules dashboard** displays data as a chart and table. You can view, understand, and analyze your usage and cost data using either of them. However, the table allows you to view granular details.
 
@@ -72,11 +72,11 @@ The **AutoStopping Summary of Rules dashboard** displays data as a chart and t
 
   ![](./static/autostopping-dashboard-37.png)
 
-### Start the Instances from the Dashboard
+### Start the instances from the dashboard
 
 You can start an instance from the Summary of Rules Page or from the Details page of a selected rule.
 
-#### From the Summary of Rules Page
+#### From the Summary of Rules page
 
 1. In **AutoStopping Rules**, in **Summary of Rules**, click on the **Custom Domain** or **Hostname** of the selected instance.
    
@@ -88,7 +88,7 @@ You can start an instance from the Summary of Rules Page or from the Details pag
    
      ![](./static/autostopping-dashboard-40.png)
 
-#### From the Details Page
+#### From the Details page
 
 1. In **AutoStopping Rules**, in **Summary of Rules**, click the instance that you want to start.
 2. In **Details**, click the **Hostname** or **Domain name** to warm up the instance.
@@ -99,7 +99,7 @@ You can start an instance from the Summary of Rules Page or from the Details pag
 
 You can enable or disable an AutoStopping rule from the Summary of Rules Page or from the details page of a selected rule.
 
-#### From the Summary of Rules Page
+#### From the Summary of Rules page
 
 1. In **AutoStopping Rules**, in **Summary of Rules**, select the instance that you want to enable or disable.
 2. Click the three-dot menu and click **Disable**.
@@ -109,7 +109,7 @@ You can enable or disable an AutoStopping rule from the Summary of Rules Page or
    
      ![](./static/autostopping-dashboard-43.png)
 
-#### From the Details Page
+#### From the Details page
 
 1. In **AutoStopping Rules**, in **Summary of Rules**, click the instance that you want to enable or disable.
 2. Click the Toggle button to disable or enable the rule.
@@ -135,11 +135,11 @@ You can edit an AutoStopping rule from the Summary of Rules Page or from the det
    
      ![](./static/autostopping-dashboard-46.png)
 
-### Delete an AutoStopping Rule from the Dashboard
+### Delete an AutoStopping Rule from the dashboard
 
 You can delete an AutoStopping rule from the Summary of Rules Page or from the details page of a selected rule.
 
-#### From the Summary of Rules Page
+#### From the Summary of Rules page
 
 1. In **AutoStopping Rules**, in **Summary of Rules**, select the instance that you want to enable or disable.
 2. Click the three-dot menu and click **Delete**.
@@ -147,7 +147,7 @@ You can delete an AutoStopping rule from the Summary of Rules Page or from the d
      ![](./static/autostopping-dashboard-47.png)
 3. Click **Delete**.
 
-#### From the Details Page
+#### From the Details page
 
 1. In **AutoStopping Rules**, in **Summary of Rules**, click the instance that you want to delete.
 2. Click the **Delete** button.

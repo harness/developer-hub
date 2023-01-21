@@ -1,5 +1,5 @@
 ---
-title: Set up Cloud Cost Management for GCP
+title: Set up CCM for GCP
 description: This topic describes how to set up cost visibility for GCP.
 # sidebar_position: 2
 helpdocs_topic_id: kxnsritjls
