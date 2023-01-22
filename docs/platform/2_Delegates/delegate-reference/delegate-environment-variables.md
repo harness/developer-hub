@@ -226,37 +226,32 @@ A value of `true` indicates that the delegate registers in Harness NextGen; a va
 Enables or disables polling for delegate tasks.By default, the Delegate uses Secure WebSocket (WSS) for tasks. If the `PROXY\_\*` settings are used and the proxy or some intermediary does not allow WSS, then set `POLL\_FOR\_TASKS` to true to enable polling. 
 
 ```
-- name: POLL_FOR_TASKS``value: "false"` 
+- name: POLL_FOR_TASKS
+  value: "false" 
 ```
 
 ### PROXY_*
 
-Delegates include proxy settings you can use to change how the Delegate connects to Harness Manager.
+You can use delegate proxy settings to change how the delegate connects to Harness Manager.
 
-The `secretKeyRef` are named using the delegate name. 
+The `secretKeyRef` values are named using the delegate name. 
 
 ```
 - name: PROXY_HOST
-  value: ""
-  
-  - name: PROXY_PORT
-    value: ""
-    
+  value: "" 
+- name: PROXY_PORT
+    value: ""   
 - name: PROXY_SCHEME
-  value: ""
-  
+  value: "" 
 - name: NO_PROXY
   value: ""
-
 - name: PROXY_MANAGER
-  value: "true"
-  
+  value: "true"  
 - name: PROXY_USER
   valueFrom: 
     secretKeyRef:
     name: mydel-proxy
-    key: PROXY_USER
-  
+    key: PROXY_USER 
 - name: PROXY_PASSWORD
   valueFrom:
     secretKeyRef:
