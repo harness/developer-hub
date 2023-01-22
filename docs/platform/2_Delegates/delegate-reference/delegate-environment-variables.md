@@ -120,7 +120,7 @@ Tags are displayed on the delegate details page in Harness Manager. See [Tags Re
   value: ""
   
 - name: DELEGATE_TAGS
-  value: has_jq, has_gcloud` 
+  value: has_jq, has_gcloud 
 ```
 
 ### DELEGATE_TASK_LIMIT
