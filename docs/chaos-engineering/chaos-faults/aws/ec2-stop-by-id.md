@@ -84,7 +84,7 @@ If the target EC2 instance is a part of a managed node group, drain the target n
 ```
 </details>
 
-- Refer a [superset permission/policy](../policy-for-all-aws-faults) to execute all AWS faults.
+- Refer a [superset permission/policy](./policy-for-all-aws-faults) to execute all AWS faults.
 
 ## Default Validations
 

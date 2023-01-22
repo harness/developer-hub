@@ -96,7 +96,7 @@ You can pass the VM credentials as secrets or as an chaosengine environment vari
 ```
 </details>
 
-- Refer a [superset permission/policy](../policy-for-all-aws-faults) to execute all AWS faults.
+- Refer a [superset permission/policy](./policy-for-all-aws-faults) to execute all AWS faults.
 
 
 ## Default Validations
