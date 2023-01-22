@@ -10,12 +10,11 @@ helpdocs_is_published: true
 
 The following table describes environment variables you can specify in the delegate manifest. Some of these variables are included in the YAML by default; you can specify others based on use case.
 
-
 ### ACCOUNT_ID
 
 The ACCOUNT_ID environment variable specifies the Harness account Id of the account with which this delegate registers.
 
-This value is automatically added to the delegate configuration file (the application manifest of a Kubernetes delegate) when you add the delegate. 
+This value is automatically added to the delegate configuration file (the application manifest of a Kubernetes delegate) when you add the delegate.  
 
 ```
 ACCOUNT_ID: "H5W8iol5TNWc4G9h5A2MXg" 
