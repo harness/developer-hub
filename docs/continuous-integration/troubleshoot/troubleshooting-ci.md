@@ -34,12 +34,12 @@ The following steps describe the workflow.
 
    ![](./static/ci-rerun-build-in-debug-mode.png) 
 
-3. When the build finishes or fails, the log output provides links to access the build logs on the remote host. Follow one of these links to troubleshoot the build:
+3. When the Run step fails, the build stops and generates log output with web links and SSH keys to connect to the remote host. Follow one of these links to troubleshoot the build.
 
-   ![](./static/debug-remote-build-links.png)  
+4. When you're in the debug session, run **`ls`** or any other CLI commands to troubleshoot the issue on the remote host. 
 
-   
-  
+5. To terminate the debug session, abort the build and then run a new build to determine if the issue is resolved. 
+
 
 ### Test Suites
 
