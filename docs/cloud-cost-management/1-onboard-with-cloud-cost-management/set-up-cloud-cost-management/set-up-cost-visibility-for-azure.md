@@ -85,8 +85,11 @@ Billing export is used to get insights into your cloud infrastructure and Azure 
 2. In the Azure **Cost Management** portal, under **Settings**, in **Exports**, click **Add** to create a new export.
 3. In **Export details**, provide the following details:
 	1. Enter a name for your export.
-	2. In **Export type**, select **Daily export of month-to-date costs**.
-	3. In the **Start date**, leave the date as the current date.  
+	2. In **Metrics**, select one of the following cost type:
+	* **Actual cost** (Usage and Purchases) - Select to export standard usage and purchases
+    * **Amortized cost** (Usage and Purchases) - Select to export amortized costs for purchases like Azure reservations and Azure savings plan for compute.
+	3. In **Export type**, select **Daily export of month-to-date costs**.
+	4. In the **Start date**, leave the date as the current date.  
 	For example, if you are creating a new export on March 1, 2021, select the date as **Mon Mar 01 2021**.
 4. In **Storage**, you can select **Use existing** or **Create new**.
 	1. If you select **Use existing**, enter the following details:
@@ -96,6 +99,7 @@ Billing export is used to get insights into your cloud infrastructure and Azure 
 		4. In **Directory**, enter the directory path where the export is to be stored.
    
        ![](static/set-up-cost-visibility-for-azure-06.png)
+	   
 	2. If you select **Create new**, enter the following details:
 		1. In **Subscription**, select the **Subscription** of your storage account.
 		2. In the **Resource group**, select the group to place the storage account. You can also create a new resource group.  
@@ -160,7 +164,7 @@ Create a service principal and assign permissions by running the following comma
 
 Run the following **bash** commands using your **bash** terminal or Azure cloud shell:
 
-`az ad sp create``10034206-24bf-442b-968c-70a9c896a2f6`  
+`az ad sp create --id 0211763d-24fb-4d63-865d-92f86f77e908`  
 See **Azure client application ID**  in **Harness Platform** > **Connectors** > **Add a Microsoft Azure Cloud Connector** for more information.
 > **☆ NOTE —** If you encounter the following error message, proceed with assigning permissions to the storage account.  
   `Another object with the same value for property servicePrincipalNames already exists.`  
@@ -168,11 +172,14 @@ See **Azure client application ID**  in **Harness Platform** > **Connectors** > 
   
   
 #### Assign Permissions to the Storage Accounts
-Run the following **bash** commands using your **bash** terminal or Azure cloud shell:
+1. Run the following **bash** commands using your **bash** terminal or Azure cloud shell:
+
 
 ```
 SCOPE=`az storage account show --name <storage account name> --query "id" | xargs`
+
 ```
+
 
 Provides scope for your storage account. Each role assignment in Azure needs a scope on which the permissions or role is applied. The output of this command is used in the next step.
 
@@ -187,13 +194,20 @@ $ SCOPE=`az storage account show --name test --query "id" | xargs`
 $ echo $SCOPE  
 /subscriptions/XXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/<resourcegroupname>/providers/Microsoft.Storage/storageAccounts/<storage account name>
 ```
-1. `az role assignment create --assignee 10034206-24bf-442b-968c-70a9c896a2f6 --role 'Storage Blob Data Reader' --scope $SCOPE`: Provides Storage Blob Data Reader permission to the Harness application on the scope fetched in the previous step.  
-This is the ID of the Harness CCM client application. Use `10034206-24bf-442b-968c-70a9c896a2f6`
-4. (Optional) You need to run this command only if you have selected **Azure Optimization by AutoStopping** in the Choosing Requirements step.
-```
-az role assignment create --assignee 10034206-24bf-442b-968c-70a9c896a2f6 --role 'Contributor' --scope /subscriptions/123e4567-e89b-12d3-a456-9AC7CBDCEE52
-```
-5. Cick **Continue** in Harness.
+2.  `az role assignment create --assignee0211763d-24fb-4d63-865d-92f86f77e908--role 'Storage Blob Data Reader' --scope $SCOPE`
+
+  Provides Storage Blob Data Reader permission to the Harness application on the scope fetched in the previous step.  
+  This is the ID of the Harness CCM client application. Use `0211763d-24fb-4d63-865d-92f86f77e908`.
+
+3. `az role assignment create --assignee 0211763d-24fb-4d63-865d-92f86f77e908 --role 'Reader' --scope /subscriptions/<Subscription ID>`
+
+  (Optional) Run this command if you have opted for **Azure Inventory Management** in the Choosing Requirements step.
+
+4. `az role assignment create --assignee 0211763d-24fb-4d63-865d-92f86f77e908 --role 'Contributor' --scope /subscriptions/<Subscription ID>`
+
+ (Optional) You need to run this command only if you have selected **Azure Optimization by AutoStopping** in the Choosing Requirements step.
+ 
+5. Click **Continue** in Harness.
 
 ### Test Connection
 

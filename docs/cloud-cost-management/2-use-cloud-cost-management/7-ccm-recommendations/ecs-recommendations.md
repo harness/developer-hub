@@ -1,6 +1,6 @@
 ---
-title: Optimize AWS ECS Costs with Recommendations
-description: Optimize AWS ECS Costs with Recommendations
+title: Optimize AWS ECS costs with recommendations
+description: Optimize AWS ECS costs with recommendations
 # sidebar_position: 2
 helpdocs_topic_id: 7xxejpvs9w
 helpdocs_category_id: viib5j7fek
@@ -19,7 +19,7 @@ This topic describes how CCM computes ECS service recommendations and how you ca
 Before using recommendations in your ECS cluster environment, ensure that you evaluate their impact thoroughly. The person reviewing the recommendations should be able to understand the impacts identified in the recommendations, as well as the impact on the infrastructure and business.  
 Using recommendations without proper assessment could result in unexpected changes, such as issues with system performance or poor reliability.
 
-## Before You Begin
+## Before You begin
 
 * [CCM Perspectives](../2-ccm-perspectives/1-create-cost-perspectives.md)
 
@@ -30,7 +30,7 @@ To obtain ECS recommendations, configure an AWS CCM Connector with the Inventory
 No Delegate setup is required. All utilization metrics are obtained using a cross account IAM role.
 See [Set Up Cloud Cost Management for AWS](../../1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md).
 
-## How are Recommendations Computed?
+## How are recommendations computed?
 
 The recommendations are computed by analyzing the past utilization of CPU and memory of your service. ECS workloads are called services.
 
@@ -64,7 +64,7 @@ A histogram is used to account for the seasonality of high resource utilization 
 
 To avoid this, we use the histogram method and give equal weight to all previous days.
 
-## Types of Service Recommendations
+## Types of service recommendations
 
 The recommendations are categorized as the following:
 
@@ -88,7 +88,7 @@ The performance-optimized recommendations are computed using the 95th percentile
 
 The potential monthly spend and savings are calculated based on the 90th percentiles of CPU samples and memory peaks.
 
-## Tune and Share Recommendations
+## Tune and share recommendations
 
 You can tune your recommendations by adding a buffer to the resource preferences.
 
@@ -96,7 +96,7 @@ In **% Buffer to be considered for CPU/Memory values**, drag the slider to incr
 
 The resource recommendations are based on the percentage of the buffer you set.
 
-### Sharing Recommendations
+### Sharing recommendations
 
 When you tune a recommendation, the URL for the recommendation captures your changes.
 

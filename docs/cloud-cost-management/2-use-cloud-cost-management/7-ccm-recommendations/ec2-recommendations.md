@@ -55,7 +55,7 @@ Harness CCM provides two types of recommendations to optimize your EC2 instances
 
 
 
-## Enable EC2 Recommendations
+## Enable EC2 recommendations
 
 
 
@@ -137,7 +137,7 @@ You can tune the recommendations by providing your preferred instance type. Sele
 
 
 
-### Sharing Recommendations​
+### Sharing recommendations​
 
 
 When you tune a recommendation, the URL for the recommendation captures your changes.

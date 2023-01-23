@@ -13,7 +13,7 @@ To know how these recommendations are computed, see the following topics:
 * [Optimize Kubernetes Costs with Node Pool Recommendations](/docs/cloud-cost-management/2-use-cloud-cost-management/7-ccm-recommendations/node-pool-recommendations.md)
 * [Optimize Kubernetes Costs with Workload Recommendations](/docs/cloud-cost-management/2-use-cloud-cost-management/7-ccm-recommendations/workload-recommendations.md)
 
-## View Recommendations
+## View recommendations
 The Recommendations page displays the following information:
 
 ![](./static/Recommendations-home-page.png)
@@ -43,7 +43,7 @@ If you want to view the ignored recommendations in the table, select the **Ignor
 
 To remove a recommendation from the ignore list, click **Manage Ignore List**. Then, click **Remove**.
 
-## Apply Recommendations
+## Apply recommendations
 You can use the **Create a ticket** link to raise a JIRA ticket to apply the recommendations.
 
 ![](./static/Recommendations-Create-a-ticket.png)
@@ -64,7 +64,7 @@ You can use the **Create a ticket** link to raise a JIRA ticket to apply the rec
 
 
 
-### Create a Jira Connector
+### Create a Jira connector
 1. In the **Overview** step, enter the name. 
 2. Optionally, enter a short description and tags.
 3. In the **Details** step, enter the base URL. For example, https://mycompany.atlassian.net. For more information, go to [Configuring the base URL](https://confluence.atlassian.com/adminjiraserver071/configuring-the-base-url-802593107.html).
