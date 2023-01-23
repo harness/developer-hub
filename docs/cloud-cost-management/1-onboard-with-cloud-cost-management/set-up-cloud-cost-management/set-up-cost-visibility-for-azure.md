@@ -86,7 +86,7 @@ Billing export is used to get insights into your cloud infrastructure and Azure 
 3. In **Export details**, provide the following details:
 	1. Enter a name for your export.
 	2. In **Metrics**, select one of the following cost type:
-	* **Actual cost** (Usage and Purchases) - Select to export standard usage and purchases
+	* **Actual cost** (Usage and Purchases) - Select to export standard usage and purchases.
     * **Amortized cost** (Usage and Purchases) - Select to export amortized costs for purchases like Azure reservations and Azure savings plan for compute.
 	3. In **Export type**, select **Daily export of month-to-date costs**.
 	4. In the **Start date**, leave the date as the current date.  
