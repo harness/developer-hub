@@ -29,7 +29,7 @@ This release does not include early access features.
 
 - The Android SDK has been updated to version 1.0.17. This includes the following changes:
   - Fixed a bug that caused a 401 error when the SDK tried to send a request to the `stream` endpoint if the request was to a non-production environment. (FFM-4603)
-  -   Fixed a bug that caused the SDK to stop working if an identifier isn't provided during the SDK initialization. The SDK will now use the name if you don't provide an identifier. You will receive an error if you don't provide either a name or identifier as at least one of these are required for all client-side SDKs. (FFM-6396)
+  -   Fixed a bug that caused the SDK to stop working if an identifier isn't provided during the SDK initialization. The SDK will now use the name if you don't provide an identifier. You will receive an error if you don't provide either a name or identifier as at least one of these is required for all client-side SDKs. (FFM-6396)
 
 ## January 19, 2023
 
