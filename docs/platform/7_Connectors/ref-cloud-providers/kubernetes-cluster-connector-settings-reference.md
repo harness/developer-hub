@@ -166,7 +166,7 @@ When you select a Delegate, the Harness Delegate will inherit the Kubernetes ser
 
 The service account associated with the Delegate pod must have the Kubernetes `cluster-admin` role.
 
-See [Install a Kubernetes Delegate](../../2_Delegates/install-delegates/kubernetes-delegates/install-a-kubernetes-delegate.md).
+See [Install a Kubernetes Delegate](../../2_Delegates/advanced-installation/install-a-kubernetes-delegate.md).
 
 #### Master URL
 
@@ -328,7 +328,7 @@ AWS EKS is supported using the Inherit Delegate Credentials option in the Kubern
 To install a delegate in your AWS infrastructure, do the following:
 
 * Install a Harness Kubernetes Delegate in your EKS cluster.You must be logged in as an admin user when you run the `kubectl apply -f harness-delegate.yaml` command.
-* Give it a name that you can recognize as an EKS cluster Delegate. For information on installing a Kubernetes Delegate, see [Install a Kubernetes Delegate](../../2_Delegates/install-delegates/kubernetes-delegates/install-a-kubernetes-delegate.md).
+* Give it a name that you can recognize as an EKS cluster Delegate. For information on installing a Kubernetes Delegate, see [Install a Kubernetes Delegate](../../2_Delegates/advanced-installation/install-a-kubernetes-delegate.md).
 * In the Kubernetes Cluster Connector settings, select the Delegate.
 * When setting up the EKS cluster as the target Infrastructure, select the Kubernetes Cluster Connector.
 

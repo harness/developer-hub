@@ -32,7 +32,7 @@ Harness Delegate for Helm requires the following access and permissions:
 	+ A namespace to host Harness Delegate
 	+ [**Deployment**](https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/deployment-v1/) resources, including the [**StatefulSet**](https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/stateful-set-v1/) objects required to manage Harness Delegate
 
-For more information about the permissions you need to install a Delegate, see [Review: Delegate Role Requirements](/docs/platform/2_Delegates/install-delegates/kubernetes-delegates/install-a-kubernetes-delegate.md#review-delegate-role-requirements).
+For more information about the permissions you need to install a Delegate, see [Review: Delegate Role Requirements](/docs/platform/2_Delegates/advanced-installation/install-a-kubernetes-delegate.md#review-delegate-role-requirements).
 
 #### Compute Resources
 

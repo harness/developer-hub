@@ -29,7 +29,7 @@ Download the Delegate config file as part of its installation.
 For examples, see:
 
 * [Install a Docker Delegate](/docs/platform/2_Delegates/install-delegates/docker-delegates/install-a-docker-delegate.md)
-* [Install a Kubernetes Delegate](/docs/platform/2_Delegates/install-delegates/kubernetes-delegates/install-a-kubernetes-delegate.md)
+* [Install a Kubernetes Delegate](/docs/platform/2_Delegates/advanced-installation/install-a-kubernetes-delegate.md)
 
 ### Option: Pick a Non-Root Type
 
@@ -103,7 +103,7 @@ spec:
 Install the Delegate as described in topics such as the following:
 
 * [Install a Docker Delegate](/docs/platform/2_Delegates/install-delegates/docker-delegates/install-a-docker-delegate.md)
-* [Install a Kubernetes Delegate](/docs/platform/2_Delegates/install-delegates/kubernetes-delegates/install-a-kubernetes-delegate.md)
+* [Install a Kubernetes Delegate](/docs/platform/2_Delegates/advanced-installation/install-a-kubernetes-delegate.md)
 
 ### See also
 

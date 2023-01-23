@@ -16,7 +16,7 @@ Harness supports a version skew of up to *n*-2 delegate versions, for which *n* 
 
 Delegate auto-upgrade status and expiration dates are shown in Harness Manager for each installed delegate where they apply.
 
-For an introduction to delegates, see [Delegate Overview](/docs/platform/2_Delegates/get-started-with-delegates/delegates-overview.md). For more information about the delegate automatic update process, see [Delegate Auto-Update](/docs/platform/2_Delegates/get-started-with-delegates/delegate-auto-update.md).
+For an introduction to delegates, see [Delegate Overview](/docs/platform/2_Delegates/get-started-with-delegates/delegates-overview.md). For more information about the delegate automatic update process, see [Delegate Auto-Update](/docs/platform/2_Delegates/configure-delegates/delegate-auto-update.md).
 
 ### Install Process
 

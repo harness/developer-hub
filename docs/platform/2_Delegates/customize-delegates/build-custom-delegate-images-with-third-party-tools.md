@@ -18,7 +18,7 @@ This document explains how you can:
 * Build and host a custom delegate image that includes the tools you select.
 * Use your custom delegate in CI/CD pipelines.
 
-This is not a runtime process. For information on how to install tools on the delegate in runtime, see [Install Delegates with Third-Party Tools](/docs/platform/2_Delegates/get-started-with-delegates/install-delegates-with-third-party-tools.md).
+This is not a runtime process. For information on how to install tools on the delegate in runtime, see [Install Delegates with Third-Party Tools](/docs/platform/2_Delegates/customize-delegates/install-delegates-with-third-party-tools.md).
 
 ### Select the delegate image
 
@@ -26,9 +26,8 @@ You can build on either of the following Harness-provided images.
 
 
 
-|  |  |
-| --- | --- |
 | **Image** | **Description** |
+| --- | --- |
 | Harness Delegate Docker image | A publicly available Docker image providing Harness Delegate. |
 | Harness Minimal Delegate Docker image | A minimal delegate image available in Docker Hub at <https://hub.docker.com/r/harness/delegate/tags>. |
 

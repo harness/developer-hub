@@ -120,9 +120,9 @@ If you do not use a custom role, the **Owner** role must be assigned.
 
 Here are the options for connecting Harness to your target AKS cluster:
 
-* Install a [Kubernetes Delegate](../2_Delegates/install-delegates/kubernetes-delegates/install-a-kubernetes-delegate.md) in the target AKS cluster and use it for authentication in a Harness [Kubernetes Cluster Connector](add-a-kubernetes-cluster-connector.md). The Harness Kubernetes Cluster Connector is platform-agnostic.
+* Install a [Kubernetes Delegate](../2_Delegates/advanced-installation/install-a-kubernetes-delegate.md) in the target AKS cluster and use it for authentication in a Harness [Kubernetes Cluster Connector](add-a-kubernetes-cluster-connector.md). The Harness Kubernetes Cluster Connector is platform-agnostic.
 	+ You won't need to provide Microsoft Azure Service Principal or Managed Identity credentials.
-* Install a [Kubernetes Delegate](../2_Delegates/install-delegates/kubernetes-delegates/install-a-kubernetes-delegate.md) in the target AKS cluster and use it for authentication in a Harness **Microsoft Azure Cloud Connector**, as described in this topic.
+* Install a [Kubernetes Delegate](../2_Delegates/advanced-installation/install-a-kubernetes-delegate.md) in the target AKS cluster and use it for authentication in a Harness **Microsoft Azure Cloud Connector**, as described in this topic.
 	+ You'll need to provide the Microsoft Azure Environment.
 	+ If you use a User Assigned Managed Identity, you will need to provide the Application (client) Id.
 	+ If you use a System Assigned Managed Identity, you do not need to provide any Ids.

@@ -42,19 +42,19 @@ module.exports = {
          to: "/docs/platform/Delegates/get-started-with-delegates/delegate-installation-overview",
        },
     
-    // Created by kat-enos for PR-2421 on Jan 13, 2023
+    // Created by kat-enos for PR-2421 on Jan 13, 2023; modified Jan 22, 2023
        {
          from: "/docs/platform/Delegates/delegate-guide/build-custom-delegate-images-with-third-party-tools",
-         to: "/docs/platform/Delegates/get-started-with-delegates/build-custom-delegate-images-with-third-party-tools",
+         to: "/docs/platform/Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools",
        },
     
-    // Created by kat-enos for PR-2421 on Jan 13, 2023
+    // Created by kat-enos for PR-2421 on Jan 13, 2023; modified Jan 22, 2023
        {
          from: "/docs/platform/Delegates/delegate-guide/delegate-auto-update",
-         to: "/docs/platform/Delegates/get-started-with-delegates/delegate-auto-update",
+         to: "/docs/platform/Delegates/configure-delegates/delegate-auto-update",
        },
     
-    // Created by kat-enos for PR-2421 on Jan 13, 2023
+    // Created by kat-enos for PR-2421 on Jan 13, 2023; modified on Jan 21, 2023
        {
          from: "/docs/platform/Delegates/delegate-guide/delegate-how-tos",
          to: "/docs/platform/Delegates/get-started-with-delegates/delegates-overview",
@@ -72,28 +72,28 @@ module.exports = {
          to: "/docs/platform/Delegates/get-started-with-delegates/delegate-requirements-and-limitations",
        },
     
-    // Created by kat-enos for PR-2421 on Jan 13, 2023
+    // Created by kat-enos for PR-2421 on Jan 13, 2023; modified on Jan 22, 2023
        {
          from: "/docs/platform/Delegates/delegate-guide/enable-root-user-privileges-to-add-custom-binaries",
-         to: "/docs/platform/Delegates/get-started-with-delegates/enable-root-user-privileges-to-add-custom-binaries",
+         to: "/docs/platform/Delegates/customize-delegates/enable-root-user-privileges-to-add-custom-binaries",
        },
     
-    // Created by kat-enos for PR-2421 on Jan 13, 2023
+    // Created by kat-enos for PR-2421 on Jan 13, 2023; modified on Jan 22, 2023
        {
          from: "/docs/platform/Delegates/delegate-guide/install-delegates-with-third-party-tools",
-         to: "/docs/platform/Delegates/get-started-with-delegates/install-delegates-with-third-party-tools",
+         to: "/docs/platform/Delegates/customize-delegates/install-delegates-with-third-party-tools",
        },
     
-    // Created by kat-enos for PR-2421 on Jan 13, 2023
+    // Created by kat-enos for PR-2421 on Jan 13, 2023; modified on Jan 22, 2023
        {
          from: "/docs/platform/Delegates/delegate-guide/support-for-delegate-docker-images",
-         to: "/docs/platform/Delegates/get-started-with-delegates/support-for-delegate-docker-images",
+         to: "/docs/platform/Delegates/configure-delegates/support-for-delegate-docker-images",
        },
     
-    // Created by kat-enos for PR-2421 on Jan 13, 2023
+    // Created by kat-enos for PR-2421 on Jan 13, 2023; modified on Jan 22, 2023
        {
          from: "/docs/platform/Delegates/delegate-guide/install-a-kubernetes-delegate",
-         to: "/docs/platform/Delegates/install-delegates/kubernetes-delegates/install-a-kubernetes-delegate",
+         to: "/docs/platform/Delegates/advanced-installation/install-a-kubernetes-delegate",
        },
     
     // Created by kat-enos for PR-2421 on Jan 13, 2023
@@ -150,10 +150,10 @@ module.exports = {
          to: "/docs/platform/Delegates/configure-delegates/run-scripts-on-delegates",
        },
     
-     // Created by kat-enos for PR-2421 on Jan 13, 2023
+     // Created by kat-enos for PR-2421 on Jan 13, 2023; modified Jan 22, 2023
        {
          from: "/docs/platform/Delegates/delegate-guide/delegate-registration",
-         to: "/docs/platform/Delegates/manage-delegates/delegate-registration",
+         to: "/docs/platform/Delegates/get-started-with-delegates/delegate-registration",
        },
     
      // Created by kat-enos for PR-2421 on Jan 13, 2023
