@@ -120,9 +120,9 @@ If you do not use a custom role, the **Owner** role must be assigned.
 
 Here are the options for connecting Harness to your target AKS cluster:
 
-* Install a [Kubernetes Delegate](../2_Delegates/delegate-guide/install-a-kubernetes-delegate.md) in the target AKS cluster and use it for authentication in a Harness [Kubernetes Cluster Connector](add-a-kubernetes-cluster-connector.md). The Harness Kubernetes Cluster Connector is platform-agnostic.
+* Install a [Kubernetes Delegate](../2_Delegates/install-delegates/kubernetes-delegates/install-a-kubernetes-delegate.md) in the target AKS cluster and use it for authentication in a Harness [Kubernetes Cluster Connector](add-a-kubernetes-cluster-connector.md). The Harness Kubernetes Cluster Connector is platform-agnostic.
 	+ You won't need to provide Microsoft Azure Service Principal or Managed Identity credentials.
-* Install a [Kubernetes Delegate](../2_Delegates/delegate-guide/install-a-kubernetes-delegate.md) in the target AKS cluster and use it for authentication in a Harness **Microsoft Azure Cloud Connector**, as described in this topic.
+* Install a [Kubernetes Delegate](../2_Delegates/install-delegates/kubernetes-delegates/install-a-kubernetes-delegate.md) in the target AKS cluster and use it for authentication in a Harness **Microsoft Azure Cloud Connector**, as described in this topic.
 	+ You'll need to provide the Microsoft Azure Environment.
 	+ If you use a User Assigned Managed Identity, you will need to provide the Application (client) Id.
 	+ If you use a System Assigned Managed Identity, you do not need to provide any Ids.
@@ -281,7 +281,7 @@ In **Details**, you can select how you'd like Harness to authenticate with Azure
 
 If you have a Harness Delegate installed in your Azure subscription (preferably in your target AKS cluster) you can select **Use the credentials of a specific Harness Delegate**.
 
-For steps on installing a Delegate, see [Delegate Installation Overview](../2_Delegates/delegate-installation-overview.md).
+For steps on installing a Delegate, see [Delegate Installation Overview](/docs/platform/2_Delegates/get-started-with-delegates/delegate-installation-overview.md).
 
 ![](./static/add-a-microsoft-azure-connector-66.png)
 In **Environment**, select **Azure Global** or **US Government**.
@@ -362,7 +362,7 @@ For example, you could use a Harness Shell Script step and the expression like t
 ```
 export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH} kubectl get pods -n default
 ```
-Steps can be executed on any Delegate or you can select specific Delegates using the steps [Delegate Selector](../2_Delegates/delegate-guide/select-delegates-with-selectors.md) setting.
+Steps can be executed on any Delegate or you can select specific Delegates using the steps [Delegate Selector](../2_Delegates/manage-delegates/select-delegates-with-selectors.md) setting.
 
 For Azure deployments, note the following:
 

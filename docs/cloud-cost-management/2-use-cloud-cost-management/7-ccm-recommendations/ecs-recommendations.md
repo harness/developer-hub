@@ -1,6 +1,6 @@
 ---
-title: Optimize AWS ECS Costs with Recommendations
-description: Optimize AWS ECS Costs with Recommendations
+title: Optimize AWS ECS costs with recommendations
+description: Optimize AWS ECS costs with recommendations
 # sidebar_position: 2
 helpdocs_topic_id: 7xxejpvs9w
 helpdocs_category_id: viib5j7fek
@@ -12,14 +12,14 @@ One of the most impactful ways to reduce spend on AWS ECS infrastructure is to m
 
 The recommendations are computed by analyzing the past utilization of CPU and memory of your service. ECS workloads are called services.
 
-You can also tune recommendations by changing the percentage of cpu/memory requests buffer (in the **Buffer to be considered for CPU/Memory values** setting). ECS Services only have request and don't have limits.
+You can also tune recommendations by changing the percentage of CPU/memory requests buffer (in the **Buffer to be considered for CPU/Memory values** setting). ECS Services only have request and don't have limits.
 
 This topic describes how CCM computes ECS service recommendations and how you can use them to potentially reduce monthly costs.
 
 Before using recommendations in your ECS cluster environment, ensure that you evaluate their impact thoroughly. The person reviewing the recommendations should be able to understand the impacts identified in the recommendations, as well as the impact on the infrastructure and business.  
 Using recommendations without proper assessment could result in unexpected changes, such as issues with system performance or poor reliability.
 
-## Before You Begin
+## Before You begin
 
 * [CCM Perspectives](../2-ccm-perspectives/1-create-cost-perspectives.md)
 
@@ -30,7 +30,7 @@ To obtain ECS recommendations, configure an AWS CCM Connector with the Inventory
 No Delegate setup is required. All utilization metrics are obtained using a cross account IAM role.
 See [Set Up Cloud Cost Management for AWS](../../1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md).
 
-## How are Recommendations Computed?
+## How are recommendations computed?
 
 The recommendations are computed by analyzing the past utilization of CPU and memory of your service. ECS workloads are called services.
 
@@ -64,7 +64,7 @@ A histogram is used to account for the seasonality of high resource utilization 
 
 To avoid this, we use the histogram method and give equal weight to all previous days.
 
-## Types of Service Recommendations
+## Types of service recommendations
 
 The recommendations are categorized as the following:
 
@@ -88,49 +88,7 @@ The performance-optimized recommendations are computed using the 95th percentile
 
 The potential monthly spend and savings are calculated based on the 90th percentiles of CPU samples and memory peaks.
 
-## View Recommendations
-
-Once you enable CCM, it may take up to 48 hours for the recommendations to appear in Cloud Costs. It depends on the time at which CCM receives the utilization data for the service.In **Cloud Costs**, click **Recommendations**.
-
-The recommendations page displays the following information:
-
-* A breakdown of all the available recommendations.
-* **Potential Monthly Savings** across your ECS clusters if you apply the recommendations.
-* **Forecasted Monthly Spend** across your ECS clusters if you do not apply the recommendations.
-* **Emissions that can be reduced** and **Potential Carbon Emissions** are features that track greenhouse gas emissions.
-
-The **Recommendation Breakdown** displays the following information:
-
-
-
-|  |  |
-| --- | --- |
-| **Monthly Savings** | Potential monthly savings for your resource, if you apply the recommendations. |
-| **Resource Name** | Name of the resource for which CCM displays the recommendation. |
-| **Monthly Saving** | Potential Monthly Savings for the resource, if you apply the recommendations. |
-| **Monthly Cost** | The monthly cost of the recommendation. |
-| **Recommendation Type** | Type of the recommendation for your resource. For example, **rightsizing** or **resizing**. Based on your resource type, CCM recommends rightsizing or resizing your CPU, memory, or node counts. |
-
-You can create and use filters to select resources and recommendations.
-
-You can filter by:
-
-* **Resource Name:** the name of the resource being monitored.
-* **Namespace**: each namespace in the cluster.
-* **Cluster Name**: each cluster in your infrastructure.
-* **Resource Type**: the type of resources for which the recommendation is displayed. Currently, CCM supports ECS service, node pool and workload.
-* **Savings**: enter the minimum monthly savings. For example, all the recommendations with potential monthly savings of more than $1000.
-* **Potential Spend**: filter by forecasted monthly spend greater than the specified amount. For example, all the recommendations with forecasted monthly spend of more than $1000.
-
-The recommendation for the selected resource is displayed.
-
-Click a recommendation to view its details.
-
-Within a recommendation, select the number of days to compute recommendations based on the utilization data. You can select the last day, 7 days, or 30 days.
-
-You can use this information to optimize your resources to potentially reduce your monthly cloud costs.
-
-## Tune and Share Recommendations
+## Tune and share recommendations
 
 You can tune your recommendations by adding a buffer to the resource preferences.
 
@@ -138,7 +96,7 @@ In **% Buffer to be considered for CPU/Memory values**, drag the slider to incr
 
 The resource recommendations are based on the percentage of the buffer you set.
 
-### Sharing Recommendations
+### Sharing recommendations
 
 When you tune a recommendation, the URL for the recommendation captures your changes.
 

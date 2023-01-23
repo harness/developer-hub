@@ -40,7 +40,7 @@ This topic shows you how to import an Input Set to the CD module.
    
    The **Import Input Set From Git** settings appear.
    
-   ![](./static/import-input-sets-01.png)
+   ![](./static/importinputsetfromGit.png)
 
 4. Enter a **Name** for your Input Set.
 5. Harness fetches the following details and auto-fills them:

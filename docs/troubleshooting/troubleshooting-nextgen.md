@@ -90,7 +90,7 @@ Do not run multiple delegates on the same host, pod, or container. This will res
 
 #### Delegate setup
 
-Most often, Delegate errors are the result of delegate setup issues. Ensure you are familiar with how the delegate and Harness Manager work together. See [Delegate installation overview](../platform/2_Delegates/delegate-installation-overview.md).
+Most often, Delegate errors are the result of delegate setup issues. Ensure you are familiar with how the delegate and Harness Manager work together. See [Delegate installation overview](/docs/platform/2_Delegates/get-started-with-delegates/delegate-installation-overview.md).
 
 Another common issue is the SSH key used by the delegate to deploy to a target host is incorrect. This can happen if the SSH key in [Harness secrets management](../platform/6_Security/1-harness-secret-manager-overview.md) was set up incorrectly, or if it is not the correct key for the target host, or the target host is not set up to allow SSH connections.
 
@@ -123,7 +123,7 @@ For Kubernetes delegates, you can increase the number of replicas run using a si
 
 #### No delegates could reach the resource
 
-This error means that no delegate could meet the URL criteria for validation. For more information, see [How does Harness Manager pick delegates?](../platform/2_Delegates/delegates-overview.md#how-does-harness-manager-pick-delegates).
+This error means that no delegate could meet the URL criteria for validation. For more information, see [How does Harness Manager pick delegates?](/docs/platform/2_Delegates/get-started-with-delegates/delegates-overview.md#how-does-harness-manager-pick-delegates).
 
 #### Google Cloud Platform: cluster has unschedulable pods
 
@@ -228,7 +228,7 @@ This section lists common error and alert messages you might receive.
 
 #### No delegates could reach the resource
 
-This error means that no delegate could meet the URL validation criteria. When a task is ready to be assigned, Harness Manager first validates its lists of delegates to see which delegate should be assigned the task. It validates the delegate by using the URL in the task, such as an API call or SSH command. See [How does Harness Manager pick delegates?](../platform/2_Delegates/delegates-overview.md#how-does-harness-manager-pick-delegates).
+This error means that no delegate could meet the URL validation criteria. When a task is ready to be assigned, Harness Manager first validates its lists of delegates to see which delegate should be assigned the task. It validates the delegate by using the URL in the task, such as an API call or SSH command. See [How does Harness Manager pick delegates?](/docs/platform/2_Delegates/get-started-with-delegates/delegates-overview.md#how-does-harness-manager-pick-delegates).
 
 #### Harness SecretStore is not able to encrypt/decrypt
 

@@ -123,7 +123,7 @@ In **Specify Manifest Type**, select **Values YAML**, and click **Continue.**
 
 In **Specify Values YAML Store**, select the Git repo provider you're using and then create or select a Connector to that repo. The different Connectors are covered in [Connect to a Git Repo](../../../platform/7_Connectors/connect-to-code-repo.md).
 
-If you haven't set up a Harness Delegate, you can add one as part of the Connector setup. This process is described in [Kubernetes CD Quickstart](../../onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md), [Helm CD Quickstart](../../onboard-cd/cd-quickstarts/helm-cd-quickstart.md) and [Install a Kubernetes Delegate](../../../platform/2_Delegates/delegate-guide/install-a-kubernetes-delegate.md).
+If you haven't set up a Harness Delegate, you can add one as part of the Connector setup. This process is described in [Kubernetes CD Quickstart](../../onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md), [Helm CD Quickstart](../../onboard-cd/cd-quickstarts/helm-cd-quickstart.md) and [Install a Kubernetes Delegate](../../../platform/2_Delegates/install-delegates/kubernetes-delegates/install-a-kubernetes-delegate.md).
 
 Once you've selected a Connector, click **Continue**.
 
@@ -175,7 +175,7 @@ For the steps and settings of each option, see the [Connect to an Artifact Repo
 
 If you are using Google Cloud Storage or Amazon S3, see [Cloud Platform Connectors](/docs/category/cloud-platform-connectors).
 
-If you haven't set up a Harness Delegate, you can add one as part of the Connector setup. This process is described in [Helm CD Quickstart](../../onboard-cd/cd-quickstarts/helm-cd-quickstart.md) and [Install a Kubernetes Delegate](../../../platform/2_Delegates/delegate-guide/install-a-kubernetes-delegate.md).
+If you haven't set up a Harness Delegate, you can add one as part of the Connector setup. This process is described in [Helm CD Quickstart](../../onboard-cd/cd-quickstarts/helm-cd-quickstart.md) and [Install a Kubernetes Delegate](../../../platform/2_Delegates/install-delegates/kubernetes-delegates/install-a-kubernetes-delegate.md).
 
 Once your Helm chart is added, it appears in the **Manifests** section. For example:
 
@@ -564,7 +564,7 @@ Currently, this feature is behind the feature flag `GITHUB_PACKAGES`. Contact [H
 
 You can use Github Packages as artifacts for deployments.
 
-Currently, Harness supports only the packageType as `docker(container)`. Support for npm, maven, rubygems, and nuget is coming soon.You connect to Github using a Harness Github Connector, username, and Personal Access Token (PAT).
+Currently, Harness supports only the packageType as `docker(container)`. Support for npm, maven, rubygems, and nuget is coming soon. You connect to Github using a Harness Github Connector, username, and Personal Access Token (PAT).
 
 Add an Artifact from Github PackagesIn **Artifacts**, click **Add Primary** **Artifact.**
 
@@ -572,7 +572,7 @@ In **Artifact Repository Type**, click **Github Package Registry**, and then cl
 
 In **Github Package Registry Repository**, select of create an Github Connector that connects to the Github account where the package repo is located. Click **Continue**.
 
-* **Github Permissions:** make sure the Personal Access Token (PAT) has the write:packages, read:packages permissions.
+* **Github Permissions:** make sure the Personal Access Token (PAT) has the `write:packages` and `read:packages` permissions.
 * **API access:** ensure that you enable API access. You can use the Harness secret with the same PAT that you used for user authentication.
 
 The **Artifact Details** settings appear.

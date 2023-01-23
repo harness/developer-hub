@@ -1,5 +1,5 @@
 ---
-title: Set up Cloud Cost Management for GCP
+title: Set up CCM for GCP
 description: This topic describes how to set up cost visibility for GCP.
 # sidebar_position: 2
 helpdocs_topic_id: kxnsritjls
@@ -13,7 +13,7 @@ helpdocs_is_published: true
 import select_gcp from './static/set-up-cost-visibility-for-gcp-01.png'
 import create_dataset from './static/set-up-cost-visibility-for-gcp-02.png'
 import dataset_name from './static/set-up-cost-visibility-for-gcp-03.png'
-import dataset_permissions from './static/set-up-cost-visibility-for-gcp-09.png'
+import dataset_permissions from './static/data-permissions-gcp.png'
 ```
 
 Harness Cloud Cost Management (CCM) monitors the cloud costs of your GCP products, projects, SKUs, and location. As a first step, you need to connect Harness to your GCP account to get insights into your cloud infrastructure, and GCP services, Compute Engine, Cloud Storage, BigQuery, etc. CCM offers a wide range of features to track and control costs associated with your cloud resources.
@@ -114,11 +114,18 @@ Cloud Billing Export to BigQuery helps you export detailed Google Cloud billing
 3. Select your project in the left panel.
 4. Select your dataset. For more information on creating a dataset, see [Creating datasets](https://cloud.google.com/bigquery/docs/datasets).
 
-  ![](./static/set-up-cost-visibility-for-gcp-07.png)
-5. Click **SHARE DATASET**.
-6. In **Dataset permissions**, in **Add members**, enter the Harness service account as a member.  
+  ![](./static/gcp_billing_export_resource.png)
+5. Click the **more actions** icon (three vertical dots) against the dataset, and then click **Share.**
+
+   ![](./static/gcp-dataset-share.png)
+
+6. In **Dataset permissions**, in **Add Principals**, enter the Harness service account as a member.  
     Copy the service account detail from Harness. The service account is generated dynamically for your account.
-7. In **Select a** **role**, select **BigQuery Data Viewer**, and then click **Add**.
+
+  
+    ![](./static/Adding-principals-gcp.png)
+
+7. In **Select a role**, select **BigQuery Data Viewer**, and then click **Add**.
 8. Click **Done**.  
     When you are done, the following screen is displayed:
   
@@ -126,7 +133,9 @@ Cloud Billing Export to BigQuery helps you export detailed Google Cloud billing
 <img src={dataset_permissions} alt="A screenshot that illstrates how and where to enter the dataset name." height="500" width="600" />
 
 
+:::note
 To enable AutoStopping rules, you need to add more permissions. For more information, see [Create a GCP Connector for AutoStopping Rules](/docs/cloud-cost-management/use-cloud-cost-management/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/add-connectors/create-a-gcp-connector-for-auto-stopping-rules).
+:::
   
    
 9. Click **Continue** in Harness.

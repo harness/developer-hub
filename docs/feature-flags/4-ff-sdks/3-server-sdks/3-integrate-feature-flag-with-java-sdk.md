@@ -28,7 +28,7 @@ Make sure you read and understand:
 
 ## Version
 
-The current version of this SDK is **1.1.8.0.**
+The current version of this SDK is **1.1.10.**
 
 ## Requirements
 
@@ -45,7 +45,7 @@ To use this SDK, make sure you:  
 
 Install the Feature Flag SDK as a dependency in your application using your application's dependency manager. You can use Maven, Gradle, SBT, etc. for your application. 
 
-Below are the dependencies for Maven and Gradle that use Java SDK version 1.1.8.0 as an example:
+Below are the dependencies for Maven and Gradle that use Java SDK version 1.1.10 as an example:
 
 ### Install using Maven
 
@@ -56,7 +56,7 @@ Add the following dependency in your project's pom.xml file:
 <dependency>  
     <groupId>io.harness</groupId>  
     <artifactId>ff-java-server-sdk</artifactId>  
-    <version>1.1.8</version>  
+    <version>1.1.10</version>  
 </dependency>
 ```
 If you are using the Harness Java sample application from the [Java SDK GitHub repository](https://github.com/harness/ff-java-server-sdk), do not add the Maven dependency in the `pom.xml` file as it has already been added.
@@ -65,7 +65,7 @@ If you are using the Harness Java sample application from the [Java SDK GitHub 
 
 
 ```
-implementation group: 'io.harness', name: 'ff-java-server-sdk', version: '1.1.8.0'
+implementation group: 'io.harness', name: 'ff-java-server-sdk', version: '1.1.10'
 ```
 ## Initialize the SDK
 

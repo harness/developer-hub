@@ -8,13 +8,8 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-**Dashboards** are a collection of charts and data tables with filters that you can use to get at the data you're interested in. Dashboards serve as a platform for data modeling and analytics using a combination of available business metrics and operational data. You can use this data to make data-driven informed business decisions.
 
-:::note
-For information on core Dashboard functionality, see [Create Dashboards](../../../../platform/18_Dashboards/create-dashboards.md).
-:::
-
-Harness provides pre-loaded **By Harness** (pre-defined) and **Custom** (user-defined) Dashboards to visualize cloud cost data across clusters and cloud accounts. Using the **AWS EC2** **Instance Metrics** **Dashboard** you can:
+Harness provides preloaded **By Harness** (pre-defined) and **Custom** (user-defined) Dashboards to visualize cloud cost data across clusters and cloud accounts. Using the **AWS EC2** **Instance Metrics** **Dashboard** you can:
 
 * Discover new analytical insights into your AWS EC2 instances metrics
 * Track various cloud cost indicators across different zones and time range
@@ -46,7 +41,7 @@ Once you have set up cost visibility for the AWS cloud provider and the data i
 Perform the following steps to view AWS EC2 Instance Metrics Dashboard:
 
 1. In Harness, click **Dashboards**.
-2. In **All Dashboards**, click **AWS EC2 Instance Metrics Dashboard**.
+2. Click **AWS EC2 Instance Metrics Dashboard**.
 3. Select **EC2 Instance Id** from the drop-down list for which you want to view the details. You can select multiple IDs.
 4. In **Metrics start time date**, select the time duration. You can select the preset value or use custom.  
 By default, the **Last 30 Days** is selected.

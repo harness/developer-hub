@@ -1,7 +1,7 @@
 ---
 title: Trigger Pipelines using Git Events
 description: You can trigger Pipelines in response to Git events automatically. For example, when a pull request or push event occurs on a Git repo, a CI or CD Pipeline can execute. Triggers enable event driven C…
-# sidebar_position: 2
+sidebar_position: 4
 helpdocs_topic_id: hndnde8usz
 helpdocs_category_id: oya6qhmmaw
 helpdocs_is_private: false
@@ -35,6 +35,10 @@ For general Triggers reference, see [Triggers Reference](../8_Pipelines/w_pipeli
 ### Visual Summary
 
 Here's a two minute video showing you how to create and run a Trigger in response to Git events.
+
+<!-- Video:
+https://www.youtube.com/watch?v=y8s351IJLXw-->
+<docvideo src="https://www.youtube.com/watch?v=y8s351IJLXw" />
 
 ### Step 1: Set Up Your Codebase
 

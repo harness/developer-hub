@@ -17,7 +17,7 @@ The following steps build an image and push it to GCR.
 ### Before You Begin
 
 * [CI Pipeline Quickstart](../../ci-quickstarts/ci-pipeline-quickstart.md)
-* [Delegates Overview](../../../platform/2_Delegates/delegates-overview.md)
+* [Delegates Overview](/docs/platform/2_Delegates/get-started-with-delegates/delegates-overview.md)
 * [CI Stage Settings](../../ci-technical-reference/ci-stage-settings.md)
 * [Learn Harness' Key Concepts](../../../getting-started/learn-harness-key-concepts.md)
 

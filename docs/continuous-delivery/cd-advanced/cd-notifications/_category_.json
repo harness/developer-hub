@@ -1,6 +1,6 @@
 {
     "label": "Notifications",
-    "position": "200",
+    "position": "250",
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",

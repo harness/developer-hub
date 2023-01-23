@@ -1,0 +1,9 @@
+{
+    "position": "60", 
+    "label": "Secure delegates", 
+    "collapsible": "true", 
+    "collapsed": "true", 
+    "className": "red", 
+    "link": {"type": "generated-index", "title": "Secure delegates"}, 
+    "customProps": {"helpdocs_category_id": "", "helpdocs_parent_category_id":"m9iau0y3hv"}
+}

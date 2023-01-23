@@ -7,7 +7,7 @@ helpdocs_category_id: sy6sod35zi
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
-
+https://github.com/harness/developer-hub/pull/348/conflict?name=docs%252Fplatform%252F2_Delegates%252Fget-started-with-delegates%252Fdelegates-overview.md&base_oid=baa604d8cdda465b23b96113b36acd36873a6690&head_oid=7536ee0fb469428862f6274c9e4f080fa1ecf9a6
 Harness Delegate is a service you run in your local network or VPC to connect your artifacts, infrastructure, collaboration, verification and other providers, with Harness Manager.
 
 The first time you connect Harness to a third-party resource, the delegate is installed in your target infrastructure, for example, a Kubernetes cluster. 
@@ -15,7 +15,6 @@ The first time you connect Harness to a third-party resource, the delegate is in
 After the delegate is installed, you connect to third-party resources. The delegate performs all operations, including deployment and integration.
 
 Harness Delegate is built for parallelism and performs tasks and deployments in parallel. The following table includes performance benchmarks for one NextGen delegate executing perpetual tasks and parallel deployments in a Kubernetes environment.
-
 
 
 | **Delegate** | **Compute resources** | **Task type** | **Running in parallel** |
@@ -26,7 +25,7 @@ Harness Delegate is built for parallelism and performs tasks and deployments in 
 
 ### Limitations and requirements
 
-See [Delegate Requirements and Limitations](delegate-reference/delegate-requirements-and-limitations.md).
+See [Delegate Requirements and Limitations](/docs/platform/2_Delegates/get-started-with-delegates/delegate-requirements-and-limitations.md).
 
 ### Data the delegate sends to Harness Manager
 
@@ -60,16 +59,16 @@ If you want to add tools to the image, Harness recommends the creation of a cust
 
 For basic information on installing Harness Delegate, see the following topics:
 
-* [Install Harness Delegate on Kubernetes](install-delegates/kubernetes-delegates/install-harness-delegate-on-kubernetes.md)
-* [Install Harness Delegate Using Helm](install-delegates/kubernetes-delegates/install-harness-delegate-using-helm.md)
-* [Install a Docker Delegate](install-delegates/docker-delegates/install-a-docker-delegate.md)
-* [Install a Legacy Kubernetes Delegate](install-delegates/kubernetes-delegates/install-a-kubernetes-delegate.md)
+* [Install Harness Delegate on Kubernetes](/docs/platform/2_Delegates/install-delegates/kubernetes-delegates/install-harness-delegate-on-kubernetes.md)
+* [Install Harness Delegate using Helm](/docs/platform/2_Delegates/install-delegates/kubernetes-delegates/install-harness-delegate-using-helm.md)
+* [Install a Docker Delegate](/docs/platform/2_Delegates/install-delegates/docker-delegates/install-a-docker-delegate.md)
+* [Install a legacy Kubernetes delegate](/docs/platform/2_Delegates/advanced-installation/install-a-kubernetes-delegate.md)
 
 For advanced installation topics, see the following:
 
-* [Automate Delegate Installation](advanced-installation/automate-delegate-installation.md)
-* [Non-Root Delegate Installation](advanced-installation/non-root-delegate-installation.md)
-* [Install a Delegate with Third-Party Custom Tool Binaries](advanced-installation/install-a-delegate-with-3-rd-party-tool-custom-binaries.md)
+* [Automate Delegate Installation](/docs/platform/2_Delegates/advanced-installation/automate-delegate-installation.md)
+* [Non-Root Delegate Installation](/docs/platform/2_Delegates/advanced-installation/non-root-delegate-installation.md)
+* [Install a Delegate with Third-Party Custom Tool Binaries](/docs/platform/2_Delegates/advanced-installation/install-a-delegate-with-3-rd-party-tool-custom-binaries.md)
 
 ### Delegate sizes
 
@@ -83,11 +82,11 @@ The specified memory and CPU requirements support the delegate. The delegate hos
 
 Delegates are identified by Harness account ID. Some types of delegates use additional identification.
 
-For delegates running on virtual machines, such as the Shell Script and Docker Delegates running on an AWS EC2 instance, the delegate is identified by the combination of **Hostname** and **IP address**.
+For delegates running on virtual machines, such as the Shell Script and Docker delegates running on an AWS EC2 instance, the delegate is identified by the combination of **Hostname** and **IP address**.
 
 Therefore, if the hostname or IP address changes on the VM, the delegate cannot be identified by the Harness Manager. The IP address used is the private IP. The delegate connects to Harness Manager, but Harness Manager does not initiate a connection to the delegate. The delegate's public IP address is not typically required.
 
-For Kubernetes delegates, the IP address can change if a pod is rescheduled. Consequently, Kubernetes delegates are identified by a suffix using a unique six-letter code in their **Hostname** (the first six letters that occur in your account ID).
+For Kubernetes delegates, the IP address can change if a pod is rescheduled. To allow for changes in IP address, Kubernetes delegates are identified by a suffix using a unique six-letter code in their **Hostname** (the first six letters that occur in your account ID).
 
 ### How does Harness Manager pick delegates?
 
@@ -150,6 +149,61 @@ In addition to compute considerations, you can enable high availability (HA) for
 
 For example, your Kubernetes deployment could include two Kubernetes delegates, each running in its own pod in the same target cluster. To add delegates to your deployment, increase the desired count of delegate replica pods in the **spec** section of the harness-kubernetes.yaml file that you download from Harness:
 
+* **Connectors:** Connectors are used for all third-party connections.
+* **Pipeline Services and Infrastructure:** Connectors are used in Pipeline Service connections to repos and Pipeline Infrastructure connections to target environments (deployment targets, build farms, etc).
+* **Pipeline Steps:** you can select a Delegate in each Pipeline step to ensure that the step only uses that Delegate to perform its operation.
+
+In the case of all these Delegate uses, you can select that one or more specific Delegates to perform the operation (using Delegate Tags). If you do not specify specific Delegates, then Harness will assign the task to a Delegate.
+
+#### Task assignment
+
+In cases where you have selected specific Delegates to perform the task, Harness uses those Delegate only. If these Delegates cannot perform the task, Harness does not use another Delegate.
+
+In cases where you do not select specific Delegates, Harness uses any available Delegate to perform the task. Harness uses the follow process and criteria to pick a Delegate.
+
+When a task is ready to be assigned, the Harness Manager first validates its lists of Delegates to see which Delegate should be assigned the task.
+
+The following information describes how the Harness Manager validates and assigns tasks to a Delegate:
+
+* **Heartbeats**. Running Delegates send heartbeats to the Harness Manager in 1 minute intervals. If the Manager does not have a heartbeat for a Delegate when a task is ready to be assigned, it will not assign the task to that Delegate.
+* **Tags**. For more information, see [Select Delegates with Tags](/docs/platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md).
+* **Allowlisting**. Once a Delegate has been validated for a task, it is allowlisted for that task and will likely be used again for that task. The allowlisting criteria is the URL associated with the task, such as a connection to a cloud platform, repo, or API. A Delegate is allowlisted for all tasks using that URL. The Time-To-Live (TTL) for the allowlisting is 6 hours, and the TTL is reset with each successful task validation.
+* **Blocklisting**. If a Delegate fails to perform a task that Delegate is blocklisted for that task and will not be tried again. TTL is 5 minutes. This is true if there is only one Delegate and even if the Delegate is selected for that task with a Selector, such as with a Shell Script step in a Stage.
+
+#### Delegate selection in pipelines
+
+As stated above, Delegates are selected in Service and Infrastructure Connectors and in steps.
+
+For example, in the **Infrastructure** section of a stage, there is a **Connector** setting. For Harness CD, this is the Connector to the target infrastructure. For Harness CI, this is Connector to the build farm.
+
+![](./static/delegates-overview-02.png)
+When you add Connectors to Harness, you can select several or all Delegates for the Connector to use.
+
+Each CD step in the stage Execution has a **Delegate Selector** setting.
+
+![](./static/delegates-overview-03.png)
+Here you use Delegate Tags to select the Delegate(s) to use.
+
+#### Which delegate is used during pipeline execution?
+
+The Delegates assigned to Connectors and steps are used during Pipeline execution.
+
+If no Delegates are selected, then the Delegates are selected as described in [Task Assignment](/docs/platform/2_Delegates/get-started-with-delegates/delegates-overview.md#task-assignment).
+
+If no Delegates are selected for a CD step in its **Delegate Selector** setting, Harness prioritizes the Delegate used successfully for the Infrastructure Connector.
+
+Harness will try this Delegate first for the step task because this Delegate has been successful in the target environment.
+
+Most CI steps use Connectors to pull the image of the container where the step will run. The Delegates used for the step's Connector are not necessarily used for running the step. In general, the Delegate(s) used for the Connector in the **Infrastructure** build farm is used to run the step.
+
+### Delegate high availability (HA)
+
+You might need to install multiple Delegates depending on how many Continuous Delivery tasks you do concurrently, and on the compute resources you are providing to each Delegate. Typically, you will need one Delegate for every 300-500 service instances across your applications.
+
+In addition to compute considerations, you can enable High Availability (HA) for Harness Delegates. HA simply involves installing multiple Delegates in your environment.
+
+For example, your Kubernetes deployment could include two Kubernetes Delegates, each running in its own pod in the same target cluster. To add Delegates to your deployment, increase the desired count of Delegate replica pods in the **spec** section of the harness-kubernetes.yaml file that you download from Harness:
+
 
 ```
 ...  
@@ -170,7 +224,7 @@ spec:
 ...
 ```
 
-For the Kubernetes delegate, you need only one delegate in the cluster. Simply increase the number of replicas, and nothing else. Do not add another delegate to the cluster in an attempt to achieve HA. If you want to install Kubernetes delegates in separate clusters, do not use the same **harness-kubernetes.yaml** and name for both delegates. Download a new application manifest for each Delegate you want to install. This strategy prevents name conflicts. Delegates must be identical in terms of permissions, keys, connectivity, and so on. With two or more delegates running in the same target environment, high availability is provided by default. One delegate can fail without impacting Harness' ability to perform deployments. If you want more availability, you can set up three delegates to handle the loss of two delegates, and so on.
+For the Kubernetes delegate, you need only one delegate in the cluster. To create high availability, increase the number of replica pods. Do not add another delegate to the cluster. If you want to install Kubernetes delegates in separate clusters, do not use the same **harness-kubernetes.yaml** and name for both delegates. Download a new application manifest for each Delegate you want to install. This strategy prevents name conflicts. Delegates must be identical in terms of permissions, keys, connectivity, and so on. With two or more delegates running in the same target environment, high availability is provided by default. One delegate can fail without impacting Harness' ability to perform deployments. If you want more availability, you can set up three delegates to handle the loss of two delegates, and so on.
 
 Two delegates in different locations with different connectivity do not support high availability. For example, if you have a delegate in a development environment and another in a production environment, the development delegate will not communicate with the production delegate and vice versa. If one delegate fails, Harness ceases operation in that environment.
 
@@ -196,7 +250,7 @@ When Harness makes a connection using its delegates, it selects the best delegat
 
 To ensure a specific delegate is used by a Harness entity, you can add tags to the delegate and then reference the tags in commands and connectors.
 
-See [Select Delegates with Tags](delegate-guide/select-delegates-with-selectors.md).
+See [Select Delegates with Tags](/docs/platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md).
 
 ### Delegate log file
 
@@ -231,5 +285,5 @@ This means that if a role does not have these permissions, the user with that ro
 
 ### Third-party tools installed with the delegate
 
-See [Supported Platforms and Technologies](../../getting-started/supported-platforms-and-technologies.md).
+See [Supported Platforms and Technologies](/docs/getting-started/supported-platforms-and-technologies.md).
 

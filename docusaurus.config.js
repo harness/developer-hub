@@ -4,6 +4,7 @@
 // const lightCodeTheme = require("prism-react-renderer/themes/github");
 const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 const path = require("path");
+const clientRedirects = require("./client-redirects");
 
 const BASE_URL = process.env.BASE_URL || "/";
 
@@ -44,31 +45,12 @@ const config = {
           exclude: ["**/shared/**", "**/static/**"],
           routeBasePath: "docs", //CHANGE HERE
         },
-        // blog: {
-        //   //   showReadingTime: true,
-        //   editUrl: "https://github.com/harness/developer-hub/tree/main",
-        //   blogTitle: "Release Notes",
-        //   blogDescription: "Harness Platform Release Notes",
-        //   postsPerPage: "ALL",
-        //   blogSidebarTitle: "All Release Notes",
-        //   blogSidebarCount: "ALL",
-        //   feedOptions: {
-        //     type: "all",
-        //     copyright: `Copyright © ${new Date().getFullYear()} Harness, Inc.`,
-        //   },
-        //   // URL route for the blog section of your site.
-        //   // *DO NOT* include a trailing slash.
-        //   routeBasePath: "release-notes",
-        //   // Path to data on filesystem relative to site dir.
-        //   path: "release-notes",
-        //   include: ["**/*.{md,mdx}"],
-        //   exclude: ["**/shared/**", "**/static/**"],
-        // },
+
         theme: {
           customCss: require.resolve("./src/css/custom.css"), // we could also use scss here
         },
         gtag: {
-          trackingID: "G-46758J5H8P", //"G-Z62TFF68Z3", // , GTM-MJB7HPB is Prod - GTM-W895FNP is Pre-Prod
+          trackingID: "G-46758J5H8P",
           anonymizeIP: false,
         },
       }),
@@ -204,6 +186,10 @@ const config = {
                 to: "docs/first-gen",
               },
               {
+                label: "Release Notes",
+                href: "/release-notes/whats-new",
+              },
+              {
                 label: "FAQs",
                 to: "docs/frequently-asked-questions",
               },
@@ -219,53 +205,13 @@ const config = {
           },
           {
             // to: "release-notes",
-            label: "Release Notes",
+            label: "Certifications",
             position: "right",
             type: "dropdown",
             items: [
               {
-                label: "What's New",
-                to: "release-notes/whats-new",
-              },
-              {
-                label: "Early Access",
-                to: "release-notes/early-access",
-              },
-              {
-                label: "Continuous Integration",
-                to: "release-notes/continuous-integration",
-              },
-              {
-                label: "Continuous Delivery & GitOps",
-                to: "release-notes/continuous-delivery",
-              },
-              {
-                label: "Feature Flags",
-                to: "release-notes/feature-flags",
-              },
-              {
-                label: "Cloud Cost Management",
-                to: "release-notes/cloud-cost-management",
-              },
-              {
-                label: "Service Reliability Management",
-                to: "release-notes/service-reliability-management",
-              },
-              {
-                label: "Security Testing Orchestration",
-                to: "release-notes/security-testing-orchestration",
-              },
-              {
-                label: "Chaos Engineering",
-                to: "release-notes/chaos-engineering",
-              },
-              {
-                label: "Harness Platform",
-                to: "release-notes/harness-platform",
-              },
-              {
-                label: "Self-Managed Enterprise Edition",
-                to: "release-notes/self-managed-enterprise-edition",
+                label: "Software Delivery Foundations",
+                href: "https://university.harness.io/page/job-role-certifications",
               },
             ],
           },
@@ -390,31 +336,6 @@ const config = {
         theme: darkCodeTheme, // lightCodeTheme,
         darkTheme: darkCodeTheme,
       },
-      /*
-      algolia: {
-        // The application ID provided by Algolia
-        appId: "HPP2NHSWS8",
-
-        // Public API key: it is safe to commit it
-        apiKey: "26d5fe04a4fb8f356e8f9f79882544c5",
-
-        indexName: "dlp-docs",
-
-        // Optional: see doc section below
-        contextualSearch: true,
-
-        // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
-        // externalUrlRegex: "developer\\.harness\\.io",
-
-        // Optional: Algolia search parameters
-        searchParameters: {},
-
-        // Optional: path for search page that enabled by default (`false` to disable it)
-        searchPagePath: "search",
-
-        //... other Algolia params
-      },
-      */
       colorMode: {
         defaultMode: "light",
         disableSwitch: true,
@@ -430,6 +351,44 @@ const config = {
         isCloseable: true,
       },
       */
+      announcementBar: {
+        id: "announcementBar_cd_announcement",
+        content:
+          "<i class='fa-solid fa-circle-exclamation' style='color: #CF2318; margin-right: 4px;'></i><span style='color: #CF2318;'>Our FirstGen CD product will be phased out in about 12 months.</span> Learn more in our <a href='/docs/continuous-delivery/onboard-cd/upgrading/upgrade-nextgen-cd/' target='_self'>Upgrade Guide</a> . For any questions or concerns please reach out to <a href='https://support.harness.io' target='_blank'>support.harness.io</a>.",
+        backgroundColor: "#FFF5ED",
+        textColor: "#000000",
+        isCloseable: true,
+      },
+      announcementBarByPath: {
+        // list all pathnames in Regular expressions format
+        pathRegExp: [
+          // paths for md-doc pages
+          "^/docs/first-gen/continuous-delivery.*",
+          "^/docs/first-gen/first-gen-quickstarts.*",
+          // paths for category pages
+          "^/docs/category/quickstarts.*",
+          "^/docs/category/continuous-delivery.*",
+          "^/docs/category/continuous-delivery-overview.*",
+          "^/docs/category/general-deployment-features.*",
+          "^/docs/category/deployment-strategies-and-integrations.*",
+          "^/docs/category/aws-.*",
+          "^/docs/category/general-aws-.*",
+          "^/docs/category/azure-.*",
+          "^/docs/category/cicd-artifact-build-and-deploy-pipelines.*",
+          "^/docs/category/google-cloud.*",
+          "^/docs/category/native-helm-deployments.*",
+          "^/docs/category/iis-net-deployments.*",
+          "^/docs/category/kubernetes-deployments.*",
+          "^/docs/category/tanzu-application-service-formerly-pivotal.*",
+          "^/docs/category/terraform-1.*",
+          "^/docs/category/terragrunt.*",
+          "^/docs/category/traditional-deployments-ssh.*",
+          "^/docs/category/custom-deployments.*",
+          "^/docs/category/continuous-verification-1.*",
+          "^/docs/category/model-your-cd-pipeline.*",
+          "^/docs/category/harness-git-based-how-tos.*",
+        ],
+      },
       hotjar: {
         siteId: 3194971,
       },
@@ -453,33 +412,21 @@ const config = {
   plugins: [
     [
       "@docusaurus/plugin-client-redirects",
+      /* externalizing the redirects
       {
-        // fromExtensions: ['html', 'htm'], // /myPage.html -> /myPage
-        // toExtensions: ['exe', 'zip'], // /myAsset -> /myAsset.zip (if latter exists)
         redirects: [
           {
             from: "/release-notes",
             to: "/release-notes/whats-new",
           },
-          /* // Redirect from multiple old paths to the new path
           {
-            to: '/docs/newDoc2',
-            from: ['/docs/oldDocFrom2019', '/docs/legacyDocFrom2016'],
-          }, */
+            from: "/docs",
+            to: "/docs/category/documentation",
+          },
         ],
-        /*
-        createRedirects(existingPath) {
-          if (existingPath.includes('/community')) {
-            // Redirect from /docs/team/X to /community/X and /docs/support/X to /community/X
-            return [
-              existingPath.replace('/community', '/docs/team'),
-              existingPath.replace('/community', '/docs/support'),
-            ];
-          }
-          return undefined; // Return a falsy value: no redirect created
-        },
-        */
       },
+      */
+      clientRedirects,
     ],
     [
       "@docusaurus/plugin-content-docs",
@@ -489,6 +436,30 @@ const config = {
         routeBasePath: "tutorials",
         exclude: ["**/shared/**", "**/static/**"],
         sidebarPath: require.resolve("./sidebars-tutorials.js"),
+        editUrl: "https://github.com/harness/developer-hub/tree/main",
+        // ... other options
+      },
+    ],
+    [
+      "@docusaurus/plugin-content-docs",
+      {
+        id: "certifications",
+        path: "certifications",
+        routeBasePath: "certifications",
+        exclude: ["**/shared/**", "**/static/**"],
+        sidebarPath: require.resolve("./sidebars-certifications.js"),
+        editUrl: "https://github.com/harness/developer-hub/tree/main",
+        // ... other options
+      },
+    ],
+    [
+      "@docusaurus/plugin-content-docs",
+      {
+        id: "kb",
+        path: "kb",
+        routeBasePath: "kb",
+        exclude: ["**/shared/**", "**/static/**"],
+        sidebarPath: require.resolve("./sidebars-kb.js"),
         editUrl: "https://github.com/harness/developer-hub/tree/main",
         // ... other options
       },

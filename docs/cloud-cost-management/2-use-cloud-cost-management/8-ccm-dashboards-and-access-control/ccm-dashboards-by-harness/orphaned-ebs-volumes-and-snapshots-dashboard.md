@@ -13,12 +13,7 @@ import ebs_dashboard from './static/orphaned-ebs-volumes-and-snapshots-dashboard
 import custom_dashboard from './static/orphaned-ebs-volumes-and-snapshots-dashboard-77.png'
 ```
 
-**Dashboards** are a collection of charts and data tables with filters that you can use to get at the data you're interested in. Dashboards serve as a platform for data modeling and analytics using a combination of available business metrics and operational data. You can use this data to make data-driven informed business decisions.
-
-:::note
-For information on core Dashboard functionality, see [Create Dashboards](../../../../platform/18_Dashboards/create-dashboards.md).
-:::
-Harness provides pre-loaded **By Harness** (pre-defined) and **Custom** (user-defined) Dashboards to visualize cloud cost data across clusters and cloud accounts. Using the **Orphaned EBS Volumes and Snapshots** **Dashboard** you can:
+Harness provides preloaded **By Harness** (pre-defined) and **Custom** (user-defined) Dashboards to visualize cloud cost data across clusters and cloud accounts. Using the **Orphaned EBS Volumes and Snapshots** **Dashboard** you can:
 
 * Discover new analytical insights into your EBS volumes and snapshots
 * Explore the cloud cost data in a logical and structured manner
@@ -44,7 +39,7 @@ Once you have set up cost visibility for the [AWS](../../../1-onboard-with-cloud
 Perform the following steps to view Orphaned EBS Volumes and Snapshots Dashboard:
 
 1. In Harness, click **Dashboards**.
-2. In **All Dashboards**, click **Orphaned EBS Volumes and Snapshots Dashboard**.
+2. Click **Orphaned EBS Volumes and Snapshots Dashboard**.
 3. In **EBS Volume Creation Date**, select the date. You can add multiple OR conditions.
    
      ![](./static/orphaned-ebs-volumes-and-snapshots-dashboard-74.png)

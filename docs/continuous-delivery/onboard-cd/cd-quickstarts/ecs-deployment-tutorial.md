@@ -136,8 +136,8 @@ The Harness Delegate is a software service you install in your environment. It c
 If you're new to Harness, read [Harness Platform architecture](../../../getting-started/harness-platform-architecture.md) to learn about how Harness uses a Delegate to perform deployment tasks.
 
 1. Follow the steps here to install a Harness Delegate:
-	1. [Install a Docker Delegate](../../../platform/2_Delegates/delegate-install-docker/install-a-docker-delegate.md).
-	2. [Install Harness Delegate on Kubernetes](../../../platform/2_Delegates/delegate-install-kubernetes/install-harness-delegate-on-kubernetes.md).
+	1. [Install a Docker Delegate](/docs/platform/2_Delegates/install-delegates/docker-delegates/install-a-docker-delegate.md).
+	2. [Install Harness Delegate on Kubernetes](/docs/platform/2_Delegates/install-delegates/kubernetes-delegates/install-harness-delegate-on-kubernetes.md).
 
 When you are done setting up the Delegate and it has registered with Harness, you'll see the Delegate's tags on the Delegates list page:
 
@@ -603,6 +603,15 @@ To ensure that your deployments are successful, please follow the AWS schema syn
 * [RegisterScalableTarget](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_RegisterScalableTarget.html)
 * [PutScalingPolicy](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_PutScalingPolicy.html)
 * [RunTask](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_RunTask.html)
+
+### Supported stores for ECS manifests
+
+Harness can fetch your task definitions, service definitions, scalable target and scaling policy configurations (in JSON or YAML) from the following stores:
+
+- Harness File Store.
+- AWS S3 buckets. You can use the .Zip format or a direct path to the file in the S3 bucket.
+  - For S3, you use a Harness AWS Connector. The IAM role permissions required by Harness for S3 are described in [AWS Connector Settings Reference](../../../platform/connectors/../7_Connectors/ref-cloud-providers/aws-connector-settings-reference.md#aws-s3).
+- Git providers.
 
 ### AWS Auto Scaling with ECS
 

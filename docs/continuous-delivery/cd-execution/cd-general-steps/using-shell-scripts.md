@@ -158,7 +158,7 @@ In **Execution Target**, select **Specify on** **Target Host** or **On Delegate*
 
 In you select On Delegate, the script is executed on whichever Delegate runs the step. You can use **Delegate Selector** in **Advanced** to pick the Delegate(s) if needed.
 
-See [Select Delegates with Selectors](../../../platform/2_Delegates/delegate-guide/select-delegates-with-selectors.md).
+See [Select Delegates with Selectors](/docs/platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md).
 
 If you select **Target Host**, enter the following:
 

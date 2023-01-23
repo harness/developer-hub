@@ -47,8 +47,8 @@ export default function Home(): JSX.Element {
   return (
     <MDXContent>
       <Layout
-        title={`${siteConfig.title}`}
-        description="Description will go into a meta tag in <head />"
+        // title="Home" // {`${siteConfig.title}`}
+        description={`${siteConfig.tagline}`} // "Description will go into a meta tag in <head />"
       >
         <div className={styles.homepageWrapper}>
           <HomepageHeader />

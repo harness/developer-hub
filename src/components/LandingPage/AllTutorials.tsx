@@ -18,17 +18,6 @@ const FeaturedList: CardItem[] = [
     link: "/tutorials/deploy-services/helm-argocd-gitops-k8s",
   },
   {
-    title: "TypeScript and React Feature Flags",
-    module: "ff",
-    icon: "img/icon_ff.svg",
-    description:
-      "Walks you through adding JavaScript Feature Flags to a TypeScript and React Application.",
-    newDoc: true,
-    type: [docType.Documentation],
-    time: "10min",
-    link: "/tutorials/manage-feature-flags/typescript-react-first-feature-flag",
-  },
-  {
     title: "Get started with the fastest CI on the planet",
 
     module: "ci",
@@ -58,6 +47,22 @@ const FeaturedList: CardItem[] = [
     type: [docType.Documentation],
     time: "5 min",
     link: "/tutorials/platform/onboard-terraform-provider",
+  },
+  {
+    title: "Sign application containers",
+
+    module: "ci",
+    icon: "img/icon_ci.svg",
+    description: (
+      <>
+        This build automation guide describes how to sign a container image
+        using a CI pipeline.
+      </>
+    ),
+    newDoc: true,
+    type: [docType.Documentation],
+    time: "15 min",
+    link: "/tutorials/build-code/ci-tutorial-container-signing",
   },
 ];
 
@@ -91,6 +96,21 @@ const CIList: CardItem[] = [
     type: [docType.Documentation],
     time: "15 min",
     link: "/tutorials/build-code/ci-localstack-background-step",
+  },
+  {
+    title: "Build and Push a Container Image to Amazon ECR",
+    module: "ci",
+    icon: "img/icon_ci.svg",
+    description: (
+      <>
+        This guide shows how to build, test, and publish a container image to
+        AWS ECR
+      </>
+    ),
+    newDoc: false,
+    type: [docType.Documentation],
+    time: "15 min",
+    link: "/tutorials/build-code/ci-build-push-to-ecr",
   },
   {
     title: "Run Sauce Connect Proxy as a Service",
@@ -137,6 +157,66 @@ const CIList: CardItem[] = [
     type: [docType.Documentation],
     time: "5 min",
     link: "/tutorials/build-code/fastest-ci",
+  },
+  {
+    title: "Build Go application containers",
+
+    module: "ci",
+    icon: "img/logo.svg",
+    description: (
+      <>
+        This build automation guide describes building a Go container image in a
+        CI Pipeline.
+      </>
+    ),
+    newDoc: true,
+    type: [docType.Documentation],
+    time: "15 min",
+    link: "/tutorials/build-code/ci-tutorial-go-containers",
+  },
+  {
+    title: "Sign Application Containers",
+    module: "ci",
+    icon: "img/logo.svg",
+    description: (
+      <>
+        This build automation guide describes how to sign a container image
+        using a CI pipeline.
+      </>
+    ),
+    newDoc: true,
+    type: [docType.Documentation],
+    time: "15 min",
+    link: "/tutorials/build-code/ci-tutorial-container-signing",
+  },
+  {
+    title: "Github Action steps",
+    module: "ci",
+    icon: "img/icon_ci.svg",
+    description: (
+      <>
+        This guide shows how to run GitHub Actions natively with harness CI.
+      </>
+    ),
+    newDoc: true,
+    type: [docType.Documentation],
+    time: "10 min",
+    link: "/tutorials/build-code/ci-github-action-step",
+  },
+  {
+    title: "Build, test, and publish a Docker image for a sample React application",
+
+    module: "ci",
+    icon: "img/icon_ci.svg",
+    description: (
+      <>
+        Learn how to build and test a sample React application in a CI pipeline.
+      </>
+    ),
+    newDoc: true,
+    type: [docType.Documentation],
+    time: "20 min",
+    link: "/tutorials/build-code/ci-react-quickstart",
   },
 ];
 
@@ -189,16 +269,14 @@ const CDList: CardItem[] = [
     module: "cd",
     icon: "img/icon_cd.svg",
     description: (
-      <>
-        Build and deploy a simple nodejs application using Harness CI and CD.
-      </>
+      <>Build and deploy a simple nodejs application using Harness CI and CD.</>
     ),
     newDoc: false,
     type: [docType.Documentation],
     //type: [docType.Documentation, docType.Interactive, docType.Video],
     time: "10 min",
     link: "/tutorials/deploy-services/harness-cicd-tutorial",
-  },	
+  },
   {
     title: "Deploy a Helm Chart using CD Community Edition",
     module: "cd",
@@ -401,8 +479,8 @@ const PlatformList: CardItem[] = [
     icon: "img/logo.svg",
     description: (
       <>
-        Tutorial on how to set up a Kubernetes cluster on Azure 
-        and will serve as the foundation for your CI/CD pipeline infrastructure. 
+        Tutorial on how to set up a Kubernetes cluster on Azure and will serve
+        as the foundation for your CI/CD pipeline infrastructure.
       </>
     ),
     newDoc: true,

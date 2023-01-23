@@ -1,15 +1,78 @@
 ---
 title: Continuous Integration
 tags: [NextGen, "continuous integration"]
-date: 2022-12-15T10:00
+date: 2022-12-22T10:00
 sidebar_position: 3
 ---
 
-Harness Continuous Integration is updated regularly. Review the notes below for details about recent changes.
+Harness Continuous Integration is updated regularly in Harness SaaS. Review the notes below for details about recent changes.
 
 :::note
 Harness deploys updates progressively to different Harness SaaS clusters. You can identify the cluster hosting your account in your Account Overview page. The features and fixes in the release notes may not be available in your cluster immediately.
+
+Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
+
+## January 17, 2023, version 78215
+
+### What's new
+
+* This release includes two new CI steps for integrating your Harness CI pipelines with GitHub Actions and Bitrise. The following steps are available in Harness Cloud build infrastructures only. 
+   - An Actions step to run GitHub Actions.
+   - A Bitrise step to run Bitrise steps and workflows. (CI-6479)
+* Harness CI now supports remote debugging of remote builds in Harness Cloud, Kubernetes, and VMs in AWS, Azure, and other cloud platforms. If a build fails at a Run step, you can rerun the build in debug mode. This option is available in the **Builds**, **Execution**, and **Execution History** pages of the Harness UI. (CI-6350) 
+   
+  ![](./static/ci-rerun-build-in-debug-mode.png) 
+
+* You can now specify hostnames instead of IPs in Kubernetes build infrastructures. This enables your pipelines to communicate with external services using hostnames. The following Harness YAML snippet shows how to set up aliases for your cluster in the CI stage **Infrastructure** section. (CI-5996, ZD-36578)
+
+##### Defining hostnames to use in a Kubernetes build infrastructure
+
+``` yaml 
+infrastructure:
+    type: KubernetesDirect
+    spec:
+      connectorRef: account.test
+      namespace: harness-delegate
+    hostNames:
+      - abc.com
+      - xyz.com
+```
+
+### Early access features
+
+This release does not include early access features.
+
+### Fixed issues
+
+This release does not include fixed issues.
+
+## January 10, 2023, version 78105
+
+### What's new
+
+No new features are available in this release.
+
+### Early access features
+
+No early access features are available for this release.
+
+### Fixed issues
+
+* Fixed an issue in the onboarding UI. In some cases, the web UI did not connect with the specified git account immediately after OAuth setup. (CI-6518)
+
+* You can now use codebase fields as expressions. Previously, when the codebase repository name was defined by `<+pipeline.name>`, the built-in variables `<+codebase.branch>` and `<+codebase.commitSha>` returned null. (CI-6478, ZD-38122, ZD-38241)
+
+* Fixed an issue that prevented Azure connectors from connecting to repos with URLs that contained spaces or `%20`. (CI-6465)
+
+* Fixed an issue where CI reported an upload to an S3 as successful even if the upload failed. (CI-6420, ZD-37931)
+
+* Fixed an issue in the onboarding UI where the **Select Your Repository** progress bar was incorrect. (CI-6335)
+
+* Fixed an issue where a build did not run when a user selected **Run** in the **Pipeline Editor** UI. To run the build, the user needed to go to the YAML editor, save, and then run. (CI-6239)
+
+* Added a log entry when a CI step skips a directory when uploading to an S3 bucket. (CI-6205)
+
 
 ## December 22, 2022, version 77908
 
@@ -17,7 +80,7 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 
 * Customers on the free plan can now run 5 stages per day on the CI hosted infrastructure. Contact Harness Sales to upgrade your plan. (CI-6430)
 
-* The onboarding workflow now caters to customers who do not have a codebase with which to connect. (CI-6348)
+* The onboarding experience for new users has been enhanced. You can now create a sample "Hello-world" pipeline even without a repository selected/created.  (CI-6348)
 
 ### Early access features
 

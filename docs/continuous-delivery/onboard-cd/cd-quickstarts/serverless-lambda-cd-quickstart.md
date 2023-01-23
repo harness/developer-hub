@@ -467,7 +467,7 @@ Congratulations! You have successfully deployed a function using Serverless Lamb
 
 ## Clean up
 
-For steps on deleting the Delgate, go to [Delegate a delegate](../../../platform/2_Delegates/delegate-guide/delete-a-delegate.md).
+For steps on deleting the Delgate, go to [Delegate a delegate](../../../platform/2_Delegates/manage-delegates/delete-a-delegate.md).
 
 ## Notes
 
@@ -504,6 +504,17 @@ See:
 * [Add and Reference Text Secrets](../../../platform/6_Security/2-add-use-text-secrets.md)
 * [Built-in Harness Variables Reference](../../../platform/12_Variables-and-Expressions/harness-variables.md)
 * [Run Pipelines using Input Sets and Overlays](../../../platform/8_Pipelines/run-pipelines-using-input-sets-and-overlays.md)
+
+### Supported stores for Serverless Lambda YAML files
+
+Harness can fetch your YAML files and packaged code from the following stores:
+
+- AWS S3 buckets.
+  - You can store the serverless.yml and the artifact code in AWS S3, including in the same bucket.
+  - You can use the .Zip format to grab the serverless.yaml and the packaged code that has been bundled in .zip and published in S3.
+  - Harness will extrapolate the serverless.yaml file and use that for deployment.
+  - For S3, you use a Harness AWS Connector. The IAM role permissions required by Harness for S3 are described in [AWS Connector Settings Reference](../../../platform/connectors/../7_Connectors/ref-cloud-providers/aws-connector-settings-reference.md#aws-s3).
+- Git providers.
 
 ### Rollback timestamps
 
