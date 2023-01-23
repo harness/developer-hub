@@ -47,7 +47,7 @@ Executing builds in a Kubernetes cluster is useful when you want to run ephemera
 
 When running builds in a Kubernetes cluster, each CI stage executes in a pod, and the stage's steps share the pod's resources.
 
-To learn more about using Kubernetes cluster as build infrastructure, go to [Define a Kubernetes cluster build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure).
+To learn more about using a Kubernetes cluster as build infrastructure, go to [Define a Kubernetes cluster build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure).
 
 # Compatibility matrix
 
