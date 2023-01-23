@@ -30,7 +30,7 @@ Support each node with 8 cores vCPU and a minimum of 12 GB memory.
 The production environment requires the following resources.
 
 | **Modules** | **Pods** | **CPU** | **Memory (GB)** | **Storage (GB)** |
-| --- | --- | --- | --- | --- |
+| :-- | :-: | :-: | :-: | :-: |
 | Platform (including CD, GitOps, OPA) | 40 | 50.4 | 125.4 | 1090 |
 | CI | 2 | 2 | 12 | 0 |
 | STO | 4 | 3 | 7 | 0 |
@@ -41,7 +41,7 @@ The production environment requires the following resources.
 The development environment requires the following resources.
 
 | **Modules** | **Pods** | **CPU** | **Memory (GB)** | **Storage (GB)** |
-| --- | --- | --- | --- | --- |
+| :-- | :-: | :-: | :-: | :-: |
 | Platform (including CD, GitOps, OPA) | 22 | 23.9 | 60.6 | 550 |
 | CI | 1 | 1 | 6 | 0 |
 | STO | 2 | 1.5 | 3.5 | 0 |
