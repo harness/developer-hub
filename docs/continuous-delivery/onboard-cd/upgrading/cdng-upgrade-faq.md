@@ -71,13 +71,13 @@ Following are some CV features:
 
 ### Policy as code
 
-NextGen provides the following governance policy benefits:
+Harness NextGen includes Harness Policy as Code, a flexible and customized platform for policy-based control across the software development lifecycle. The feature is based on [Open Policy Agent (OPA)](https://www.openpolicyagent.org/), the open source industry standard. 
 
-- Harness Policy as code is a flexible and customized platform for policy-based control across the software development lifecycle.
+Harness Policy as Code does the following for you:
+
 - Provides visibility into regulated applications/environments and exposes which compliance rules were not followed.
 - Enforces policies when pipelines are saved or run.
-- Shift-left governance finds breaches as early as possible.
-- Based on [Open Policy Agent (OPA)](https://www.openpolicyagent.org/), the open source industry standard.
+- Finds breaches as early as possible through shift-left governance.
 
 ## Does upgrading impact Harness CD FirstGen usage?
 
@@ -89,7 +89,7 @@ You can selectively upgrade Harness applications to move over to NextGen and saf
 
 Your existing FirstGen delegates aren't impacted. They will not receive any Harness CD NextGen tasks for deployment. 
 
-Your FirstGen configuration (Applications, Services, Workflows, Pipelines, Triggers, etc.) will continue to operate and won’t be changed when upgrading.
+Your FirstGen configuration (applications, services, workflows, pipelines, triggers, etc.) will continue to operate and won’t be changed when upgrading.
 
 ## Does upgrading to Harness CD NextGen impact my licensing or billing?
 
@@ -187,7 +187,7 @@ Yes. NextGen has feature parity.
 
 Some deployment capabilities have been overhauled:
 - AWS ECS deployments have a significantly different experience from FirstGen.
-- Deployment templates has been extended. 
+- Deployment templates have been extended. 
 - Traditional (SSH and WinRM) deployments have a new configuration experience.
 - Infrastructure provisioners in FirstGen are now provisioning steps in NextGen. You can manage the entire infrastructure provisioning configuration in each step.
 
