@@ -11,7 +11,7 @@ title: Chaos Faults
 
 ### Kubernetes
 
-### Linux
+// ### Linux
 
 ### VMware
 
@@ -23,7 +23,7 @@ title: Chaos Faults
 
 ### Kube-Resilience
 
-### Boutique Shop
+// ### Boutique Shop
 
 ```mdx-code-block
 </div>
