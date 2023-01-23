@@ -1,7 +1,8 @@
 ---
 title: Define a Docker Build Infrastructure
 description: You can define a CI build infrastructure on any Linux or MacOS host. This is the simplest build infrastructure to set up and is well suited to developers who want to build on their laptops.
-sidebar_position: 15
+
+sidebar_position: 30
 helpdocs_topic_id: xd8u17be5h
 helpdocs_category_id: rg8mrhqm95
 helpdocs_is_private: false
