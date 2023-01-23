@@ -15,7 +15,7 @@ Harness Cloud is available for all CI plans.
 
 :::
 
-With Harness Cloud you can run builds in isolation on machines hosted and maintained by Harness. You can run builds at scale on Linux, Windows and macOS machines that are preinstalled with software commonly used in CI pipelines.
+With Harness Cloud you can run builds in isolation on machines hosted and maintained by Harness. You can run builds at scale on Linux, Windows, and macOS machines that are preinstalled with software commonly used in CI pipelines.
 
 Harness maintains and upgrades these machines so that you can focus on building great software instead of maintaining build infrastructure.
 
