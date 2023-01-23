@@ -36,13 +36,13 @@ For information on refining event analysis feedback, see:
 * [Harness Verification Feedback Overview](../continuous-verification-overview/concepts-cv/harness-verification-feedback-overview.md)
 * [Refine 24/7 Service Guard Verification Analysis](refine-24-7-service-guard-verification-analysis.md)
 * [Refine Deployment Verification Analysis](refine-deployment-verification-analysis.md)
-* [Verification Event Classifications](https://docs.harness.io/article/339hy0kbnu-verification-event-classifications)
+* [Verification Event Classifications](../../../firstgen-platform/techref-category/cv-reference/verification-event-classifications.md)
 
 ### Step 1: File a Jira Ticket on an Event
 
 To create a Jira ticket from an event item, do the following:
 
-1. To use Jira integration with your Harness deployment verifications and 24/7 Service Guard, you need to add a Jira account as a Harness Collaboration Provider, as described [Add Collaboration Providers](https://docs.harness.io/article/cv98scx8pj-collaboration-providers#jira).
+1. To use Jira integration with your Harness deployment verifications and 24/7 Service Guard, you need to add a Jira account as a Harness Collaboration Provider, as described [Add Collaboration Providers](../../../firstgen-platform/account/manage-connectors/collaboration-providers.md#jira).
 2. View a deployment verification in **Continuous Deployments** or a live production verification in **24/7 Service Guard**:
 	a. In a deployment, click a verify step to see its logs and events.
 	b. 24/7 Service Guard, click a heatmap entry to see its logs and events.
@@ -82,7 +82,7 @@ Fill out the remaining Jira ticket fields.
 
 ### Step 4: Jira Connector
 
-Select the Jira account to use by selecting the Jira Collaboration Provider set up for that account. For more information, see [Jira](https://docs.harness.io/article/cv98scx8pj-collaboration-providers#jira).
+Select the Jira account to use by selecting the Jira Collaboration Provider set up for that account. For more information, see [Jira](../../../firstgen-platform/account/manage-connectors/collaboration-providers.md#jira).
 
 ### Step 5: Project
 
@@ -138,4 +138,4 @@ The **Anomalous Event** tag is crossed out and the **Not a Risk** tag is attache
 
 ![](./static/jira-cv-ticket-11.png)
 
-For details about event priorities and classifications, see [Verification Event Classifications](https://docs.harness.io/article/339hy0kbnu-verification-event-classifications).
+For details about event priorities and classifications, see [Verification Event Classifications](../../../firstgen-platform/techref-category/cv-reference/verification-event-classifications.md).

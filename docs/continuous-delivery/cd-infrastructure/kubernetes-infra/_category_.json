@@ -1,0 +1,14 @@
+{
+    "label": "Kubernetes Infrastructures",
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "link": {
+        "type": "generated-index",
+        "title": "Kubernetes Infrastructures"
+    },
+    "customProps": {
+        "position": "100",
+        "helpdocs_category_id": "y2cksg5q0x"
+    }
+}

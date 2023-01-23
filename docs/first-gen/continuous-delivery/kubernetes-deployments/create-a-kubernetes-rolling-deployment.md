@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/article/xsla71qg8t).
+This content is for Harness [FirstGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../continuous-delivery/cd-execution/kubernetes-executions/create-a-kubernetes-rolling-deployment.md).
 
 A rolling update strategy updates Kubernetes deployments with zero downtime by incrementally updating pods instances with new ones. New Pods are scheduled on nodes with available resources.
 
@@ -23,7 +23,7 @@ For a detailed explanation of Kubernetes rolling updates, see [Performing a Roll
 
 ### Review: What Workloads Can I Deploy?
 
-See [What Can I Deploy in Kubernetes?](https://docs.harness.io/article/6ujb3c70fh).
+See [What Can I Deploy in Kubernetes?](../../firstgen-platform/techref-category/cd-ref/platforms-ref/what-can-i-deploy-in-kubernetes.md).
 
 #### Multiple Managed Workloads
 
@@ -141,7 +141,7 @@ If you enable this option, Harness does the following at runtime:
 
 If **Export Manifest** is enabled, the manifests are not deployed. You can use the **Inherit Manifest** option in a subsequent Kubernetes step to deploy a copy of the exported manifests.
 
-The exported manifests can be written to storage on the Delegate where the step is run. For example, you can add a [Shell Script](https://docs.harness.io/article/1fjrjbau7x-capture-shell-script-step-output) step to echo and write the manifest to a file:
+The exported manifests can be written to storage on the Delegate where the step is run. For example, you can add a [Shell Script](../model-cd-pipeline/workflows/capture-shell-script-step-output.md) step to echo and write the manifest to a file:
 
 
 ```
@@ -175,7 +175,7 @@ In these cases, you shouldn't add a Delegate Selector to any step in the Workflo
 
 If your Workflow Infrastructure Definition's Cloud Provider isn't using a Delegate Selector, and you want this Workflow step to use a specific Delegate, do the following:
 
-In **Delegate Selector**, select the Selector for the Delegate(s) you want to use. You add Selectors to Delegates to make sure that they're used to execute the command. For more information, see [Select Delegates for Specific Tasks with Selectors](https://docs.harness.io/article/c3fvixpgsl-select-delegates-for-specific-tasks-with-selectors).
+In **Delegate Selector**, select the Selector for the Delegate(s) you want to use. You add Selectors to Delegates to make sure that they're used to execute the command. For more information, see [Select Delegates for Specific Tasks with Selectors](../../firstgen-platform/account/manage-delegates/select-delegates-for-specific-tasks-with-selectors.md).
 
 Harness will use Delegates matching the Selectors you add.
 
@@ -283,7 +283,7 @@ replicaset.apps/harness-example-deployment-5674658766  2         2         2    
 ```
 ### Kubernetes Rollback
 
-See [Kubernetes Rollback](https://docs.harness.io/article/v41e8oo00e-kubernetes-rollback).
+See [Kubernetes Rollback](../../firstgen-platform/techref-category/cd-ref/platforms-ref/kubernetes-rollback.md).
 
 You can add a **Rollback Deployment** command to the **Rollback Steps** in your Workflow to roll back the workloads deployed by the **Rollout Deployment** step.
 

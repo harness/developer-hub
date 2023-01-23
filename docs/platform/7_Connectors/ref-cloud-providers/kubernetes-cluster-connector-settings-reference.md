@@ -12,7 +12,7 @@ This topic provides settings and permissions for the Kubernetes Cluster Connecto
 
 The Kubernetes Cluster Connector is a platform-agnostic connection to a Kubernetes cluster located anywhere.
 
-For cloud platform-specific connections, see platform [Cloud Connectors](https://docs.harness.io/category/cloud-platform-connectors).
+For cloud platform-specific connections, see platform [Cloud Connectors](/docs/category/cloud-platform-connectors).
 
 Looking for the How-to? See [Add a Kubernetes Cluster Connector](../add-a-kubernetes-cluster-connector.md).
 
@@ -166,7 +166,7 @@ When you select a Delegate, the Harness Delegate will inherit the Kubernetes ser
 
 The service account associated with the Delegate pod must have the Kubernetes `cluster-admin` role.
 
-See [Install a Kubernetes Delegate](../../2_Delegates/delegate-guide/install-a-kubernetes-delegate.md).
+See [Install a Kubernetes Delegate](../../2_Delegates/install-delegates/kubernetes-delegates/install-a-kubernetes-delegate.md).
 
 #### Master URL
 
@@ -184,7 +184,7 @@ Basic (Username and Password) authentication is not recommended. Basic authentic
 
 Username and password for the Kubernetes cluster. For example, **admin** or **john@example.com**, and a Basic authentication password.
 
-You can use an inline username or a Harness [Encrypted Text secret](https://docs.harness.io/article/ygyvp998mu-use-encrypted-text-secrets).
+You can use an inline username or a Harness [Encrypted Text secret](../../../first-gen/firstgen-platform/security/secrets-management/use-encrypted-text-secrets.md).
 
 For the password, select or create a new Harness Encrypted Text secret.
 
@@ -328,7 +328,7 @@ AWS EKS is supported using the Inherit Delegate Credentials option in the Kubern
 To install a delegate in your AWS infrastructure, do the following:
 
 * Install a Harness Kubernetes Delegate in your EKS cluster.You must be logged in as an admin user when you run the `kubectl apply -f harness-delegate.yaml` command.
-* Give it a name that you can recognize as an EKS cluster Delegate. For information on installing a Kubernetes Delegate, see [Install a Kubernetes Delegate](../../2_Delegates/delegate-guide/install-a-kubernetes-delegate.md).
+* Give it a name that you can recognize as an EKS cluster Delegate. For information on installing a Kubernetes Delegate, see [Install a Kubernetes Delegate](../../2_Delegates/install-delegates/kubernetes-delegates/install-a-kubernetes-delegate.md).
 * In the Kubernetes Cluster Connector settings, select the Delegate.
 * When setting up the EKS cluster as the target Infrastructure, select the Kubernetes Cluster Connector.
 

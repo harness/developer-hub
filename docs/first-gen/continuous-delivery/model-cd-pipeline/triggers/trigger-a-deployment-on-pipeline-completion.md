@@ -21,7 +21,7 @@ For example, you might create a Pipeline to test a deployment in one environment
 
 ### Supported Platforms and Technologies
 
-See  [Supported Platforms and Technologies](https://docs.harness.io/article/220d0ojx5y-supported-platforms).
+See  [Supported Platforms and Technologies](../../../starthere-firstgen/supported-platforms.md).
 
 ### Step 1: Add a Trigger
 

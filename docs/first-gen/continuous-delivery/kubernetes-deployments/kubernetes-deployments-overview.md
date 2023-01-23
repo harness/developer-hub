@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/category/qfj6m1k2c4).
+This content is for Harness [FirstGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/category/kubernetes).
 
 The following How-tos guide you through some common Kubernetes tasks.
 
@@ -22,11 +22,11 @@ The following How-tos guide you through some common Kubernetes tasks.
 * [Create a Kubernetes Rolling Deployment](create-a-kubernetes-rolling-deployment.md)
 * [Create a Kubernetes Blue/Green Deployment](create-a-kubernetes-blue-green-deployment.md)
 
-For more How-tos, see [Kubernetes How-tos](https://docs.harness.io/category/kubernetes-deployments).
+For more How-tos, see [Kubernetes How-tos](/docs/category/kubernetes-deployments).
 
-To see a summary of the changes in Harness Kubernetes Deployment Version 2, see [Harness Kubernetes V2 Changes](https://docs.harness.io/article/g3bzgg4rsw-summary-of-changes-in-kubernetes-deployments-version-2).
+<!-- TBD DOC-2412 To see a summary of the changes in Harness Kubernetes Deployment Version 2, see [Harness Kubernetes V2 Changes ](https://docs.harness.io/article/g3bzgg4rsw-summary-of-changes-in-kubernetes-deployments-version-2). -->
 
 ### Review: What Workloads Can I Deploy?
 
-See [What Can I Deploy in Kubernetes?](https://docs.harness.io/article/6ujb3c70fh).
+See [What Can I Deploy in Kubernetes?](../../firstgen-platform/techref-category/cd-ref/platforms-ref/what-can-i-deploy-in-kubernetes.md).
 

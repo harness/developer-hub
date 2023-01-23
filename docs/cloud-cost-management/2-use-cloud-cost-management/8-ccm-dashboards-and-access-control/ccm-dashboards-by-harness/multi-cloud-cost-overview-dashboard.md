@@ -8,11 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-**Dashboards** are a collection of charts and data tables with filters that you can use to get at the data you're interested in. Dashboards serve as a platform for data modeling and analytics using a combination of available business metrics and operational data. You can use this data to make data-driven informed business decisions.
 
-:::note
-For information on core Dashboard functionality, see [Create Dashboards](https://docs.harness.io/article/ardf4nbvcy-create-dashboards).
-:::
 
 Harness provides **By Harness** (pre-defined) and **Custom** (user-defined) Dashboards to visualize cloud cost data across cloud providers. Using the **Multi-cloud Cost Overview Dashboard** you can:
 
@@ -42,7 +38,7 @@ Once you have set up cost visibility for your clusters and cloud accounts and t
 Perform the following steps to view the Multi-cloud Cost Overview Dashboard:
 
 1. In **Harness**, click **Dashboard****s**.
-2. In **All Dashboards**, select **By Harness** and click **Multi-cloud Cost Overview Dashboard**.
+2. Select **By Harness** and click **Multi-cloud Cost Overview Dashboard**.
    
      ![](./static/multi-cloud-cost-overview-dashboard-15.png)
 	 
@@ -79,13 +75,13 @@ Perform the following steps to view the Multi-cloud Cost Overview Dashboard:
 
 Once you have set up cost visibility for your Kubernetes clusters, AWS, GCP, and Azure cloud providers, you can create your own Dashboards. Refer to the following topics to create your own Dashboard and chart data.
 
-* [Create Dashboards](https://docs.harness.io/article/ardf4nbvcy-create-dashboards)
-* [Create Visualizations and Graphs](https://docs.harness.io/article/n2jqctdt7c-create-visualizations-and-graphs)
+* [Create Dashboards](../../../../platform/18_Dashboards/create-dashboards.md)
+* [Create Visualizations and Graphs](../../../../platform/18_Dashboards/create-visualizations-and-graphs.md)
 
 ### Next Steps
 
-* [Use Dashboard Actions](https://docs.harness.io/article/y1oh7mkwmh-use-dashboard-actions)
-* [Download Dashboard Data](https://docs.harness.io/article/op59lb1pxv-download-dashboard-data)
-* [Create Conditional Alerts](https://docs.harness.io/article/ro0i58mvby-create-conditional-alerts)
-* [Schedule and Share Dashboards](https://docs.harness.io/article/35gfke0rl8-share-dashboards)
+* [Use Dashboard Actions](../../../../platform/18_Dashboards/use-dashboard-actions.md)
+* [Download Dashboard Data](../../../../platform/18_Dashboards/download-dashboard-data.md)
+* [Create Conditional Alerts](../../../../platform/18_Dashboards/create-conditional-alerts.md)
+* [Schedule and Share Dashboards](../../../../platform/18_Dashboards/share-dashboards.md)
 

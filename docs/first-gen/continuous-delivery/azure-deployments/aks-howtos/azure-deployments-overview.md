@@ -8,11 +8,11 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/article/m7nkbph0ac).This guide will walk you through deploying a Docker image in an Azure Container Registry (ACR) repo to an Azure Kubernetes Service (AKS) cluster. This scenario is very popular and a walkthrough of all the steps involved will help you set up this scenario in Harness for your own microservices and apps.
+This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../../continuous-delivery/onboard-cd/cd-quickstarts/azure-cd-quickstart.md).This guide will walk you through deploying a Docker image in an Azure Container Registry (ACR) repo to an Azure Kubernetes Service (AKS) cluster. This scenario is very popular and a walkthrough of all the steps involved will help you set up this scenario in Harness for your own microservices and apps.
 
 ### Deployment Summary
 
-For a general overview of how Harness works, see [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts). For a vendor-agnostic, Harness Docker-to-Kubernetes deployment, see our [Kubernetes Quickstart](https://docs.harness.io/article/7in9z2boh6-kubernetes-quickstart) doc.
+For a general overview of how Harness works, see [Harness Key Concepts](../../../starthere-firstgen/harness-key-concepts.md). For a vendor-agnostic, Harness Docker-to-Kubernetes deployment, see our [Kubernetes Quickstart](../../../first-gen-quickstarts/kubernetes-quickstart.md) doc.
 
 |  |  |
 | --- | --- |
@@ -53,11 +53,11 @@ In this guide, we create separate connections for AKS and ACR because, in some i
 7. **Deploy** the Workflow to AKS. The deployment will pull the Docker image from ACR at runtime.
 8. Advanced options not covered in this guide:
 
-	1. Create a Harness **Pipeline** for your deployment, including Workflows and Approval steps. For more information, see [Pipelines](https://docs.harness.io/article/zc1u96u6uj-pipeline-configuration).
+	1. Create a Harness **Pipeline** for your deployment, including Workflows and Approval steps. For more information, see [Pipelines](../../model-cd-pipeline/pipelines/pipeline-configuration.md).
 	
-	2. Create a Harness **Trigger** to automatically deploy your Workflows or Pipeline according to your criteria. For more information, see [Triggers](https://docs.harness.io/article/xerirloz9a-add-a-trigger-2).
+	2. Create a Harness **Trigger** to automatically deploy your Workflows or Pipeline according to your criteria. For more information, see [Triggers](../../model-cd-pipeline/triggers/add-a-trigger-2.md).
 	
-	3. Create Harness **Infrastructure Provisioners** for your deployment environments. For more information, see [Infrastructure Provisioners](https://docs.harness.io/article/o22jx8amxb-add-an-infra-provisioner).
+	3. Create Harness **Infrastructure Provisioners** for your deployment environments. For more information, see [Infrastructure Provisioners](../../model-cd-pipeline/infrastructure-provisioner/add-an-infra-provisioner.md).
 
 #### What Are We Going to Do?
 

@@ -57,7 +57,7 @@ HTTPS is mandatory for Dynatrace connections.
 
 ### Step 4: API Token
 
-For secrets and other sensitive settings, select or create a new [Harness Encrypted Text secret](https://docs.harness.io/article/ygyvp998mu-use-encrypted-text-secrets).In **Encrypted API Token**, enter in the API token you created in Dynatrace, described above.
+For secrets and other sensitive settings, select or create a new [Harness Encrypted Text secret](../../../firstgen-platform/security/secrets-management/use-encrypted-text-secrets.md).In **Encrypted API Token**, enter in the API token you created in Dynatrace, described above.
 
 ### Step 5: Display Name
 

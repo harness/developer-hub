@@ -10,13 +10,13 @@ helpdocs_is_published: true
 
 This topic describes the concept of a Harness ECS deployment by describing the high-level steps involved.
 
-For a quick tutorial, see [AWS ECS Quickstart](https://docs.harness.io/article/j39azkrevm-aws-ecs-deployments).
+For a quick tutorial, see [AWS ECS Quickstart](../../../first-gen-quickstarts/aws-ecs-deployments.md).
 
-For detailed instructions on using ECS in Harness, see the [AWS ECS How-tos](https://docs.harness.io/category/aws-ecs-deployments).
+For detailed instructions on using ECS in Harness, see the [AWS ECS How-tos](/docs/category/aws-ecs-deployments).
 
 ### Before You Begin
 
-Before learning about Harness ECS deployments, you should have an understanding of [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts).
+Before learning about Harness ECS deployments, you should have an understanding of [Harness Key Concepts](../../../starthere-firstgen/harness-key-concepts.md).
 
 ### What Does Harness Need Before You Start?
 
@@ -25,8 +25,8 @@ A Harness ECS deployment requires the following:
 1. Artifact: For example, a Docker image of NGINX from Docker Hub.
 2. One or more existing ECS clusters:
 	* You will need an ECS cluster to deploy your ECS services using Harness.
-	* If you use a Harness ECS Delegate (recommended), you will need an ECS cluster for the Delegate. The steps for setting up an ECS Delegate are in [AWS ECS Quickstart](https://docs.harness.io/article/j39azkrevm-aws-ecs-deployments).
-3. IAM Role for the Harness Cloud Provider connection to AWS. The policies are listed in [AWS ECS Quickstart](https://docs.harness.io/article/j39azkrevm-aws-ecs-deployments).
+	* If you use a Harness ECS Delegate (recommended), you will need an ECS cluster for the Delegate. The steps for setting up an ECS Delegate are in [AWS ECS Quickstart](../../../first-gen-quickstarts/aws-ecs-deployments.md).
+3. IAM Role for the Harness Cloud Provider connection to AWS. The policies are listed in [AWS ECS Quickstart](../../../first-gen-quickstarts/aws-ecs-deployments.md).
 
 ### What Does Harness Deploy?
 
@@ -48,7 +48,7 @@ The following list describes the major steps of a Harness ECS deployment:
 | 5 | Create the Harness **Service** using the Amazon EC2 Container Services (ECS) Deployment Type. | Add your ECS specs and any config variables and files.You can define specs for the following: <br />&bull;&nbsp; Replica Strategy   <br />&bull;&nbsp; Daemon Strategy   <br />&bull;&nbsp; awsvpc Network Mode   <br />&bull;&nbsp; Service Discovery |
 | 6 | Create the Harness **Environment** and Infrastructure Definition for your target Kubernetes clusters), and any overrides. | Using the Harness Cloud Provider you set up, you can select the target Kubernetes cluster and namespace for your deployment.You can also override any Service settings, such as manifest values. This enables you to use a single Service with multiple Harness Environments. |
 | 7 | Create the Canary, Blue/Green, or Rollout deployment Harness **Workflow**. | The Workflow deploys the artifact(s) and Kubernetes workloads defined in the Harness Service to the cluster and namespace in the Harness Infrastructure Definition. |
-| 8 | Deploy the Workflow. | Once you've deployed a Workflow, learn how to improve your Kubernetes CD: <br />&bull;&nbsp; [Workflows](https://docs.harness.io/article/m220i1tnia-workflow-configuration) <br />&bull;&nbsp; [Triggers](https://docs.harness.io/article/xerirloz9a-add-a-trigger-2) <br />&bull;&nbsp; [Infrastructure Definitions](https://docs.harness.io/article/v3l3wqovbe-infrastructure-definitions) |
+| 8 | Deploy the Workflow. | Once you've deployed a Workflow, learn how to improve your Kubernetes CD: <br />&bull;&nbsp; [Workflows](../../model-cd-pipeline/workflows/workflow-configuration.md) <br />&bull;&nbsp; [Triggers](../../model-cd-pipeline/triggers/add-a-trigger-2.md) <br />&bull;&nbsp; [Infrastructure Definitions](../../model-cd-pipeline/environments/infrastructure-definitions.md) |
 
 ### Component Overview
 
@@ -59,8 +59,8 @@ The following table lists the ECS components and where they are set up in Harnes
 |  |  |  |
 | --- | --- | --- |
 | **Component** | **Description** | **Harness Location** |
-| Harness Delegate | A software service you run in the same VPC as the ECS cluster to enable Harness to perform deployment operations. The Delegate does not need root privileges, and it only makes an outbound HTTPS connection to the Harness platform. | [AWS ECS Quickstart](https://docs.harness.io/article/j39azkrevm-aws-ecs-deployments) |
-| Harness Cloud Provider | A Cloud Provider is a logical representation of your AWS infrastructure. Typically, a Cloud Provider is mapped to a AWS account, Kubernetes cluster, Google service account, Azure subscription, or a data center. | [AWS ECS Quickstart](https://docs.harness.io/article/j39azkrevm-aws-ecs-deployments) |
+| Harness Delegate | A software service you run in the same VPC as the ECS cluster to enable Harness to perform deployment operations. The Delegate does not need root privileges, and it only makes an outbound HTTPS connection to the Harness platform. | [AWS ECS Quickstart](../../../first-gen-quickstarts/aws-ecs-deployments.md) |
+| Harness Cloud Provider | A Cloud Provider is a logical representation of your AWS infrastructure. Typically, a Cloud Provider is mapped to a AWS account, Kubernetes cluster, Google service account, Azure subscription, or a data center. | [AWS ECS Quickstart](../../../first-gen-quickstarts/aws-ecs-deployments.md) |
 | ECS Task Definition | Describes the Docker containers to run (CPU, memory, environment variables, ports, etc) and represents your application. | Specified in the Harness Service, in Container Specification. |
 | ECS Task | Instance of a Task Definition. Multiple Tasks can be created by one Task Definition, as demand requires. |  |
 | ECS Service | Defines the minimum and maximum Tasks from one Task Definition to run at any given time, autoscaling, and load balancing. | This is specified in the Harness Service, in Service Specification. |
@@ -76,6 +76,6 @@ The following table lists the ECS components and where they are set up in Harnes
 
 Read the following topics to build on what you've learned:
 
-* [AWS ECS Quickstart](https://docs.harness.io/article/j39azkrevm-aws-ecs-deployments).
-* [AWS ECS How-tos](https://docs.harness.io/category/aws-ecs-deployments).
+* [AWS ECS Quickstart](../../../first-gen-quickstarts/aws-ecs-deployments.md).
+* [AWS ECS How-tos](/docs/category/aws-ecs-deployments).
 

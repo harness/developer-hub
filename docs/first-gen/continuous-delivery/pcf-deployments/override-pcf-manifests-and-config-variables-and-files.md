@@ -35,7 +35,7 @@ To overwrite a Service variable, do the following:
 5. In **Configuration Variable**, select the variable you want to overwrite.
 6. In **Override Scope**, the only option is **Entire Environment**, currently.
 7. In **Type**, select **Text** or **Encrypted Text**.
-8. In **Override Value**, if you selected **Text** in **Type**, enter a new value. If you selected **Encrypted Text**, select an existing Encrypted Text secret. Encrypted Text secrets are set up in Harness [Secrets Management](https://docs.harness.io/article/au38zpufhr-secret-management).  
+8. In **Override Value**, if you selected **Text** in **Type**, enter a new value. If you selected **Encrypted Text**, select an existing Encrypted Text secret. Encrypted Text secrets are set up in Harness [Secrets Management](../../firstgen-platform/security/secrets-management/secret-management.md).  
   
 	When you are done, the dialog will look something like this:
 
@@ -121,7 +121,7 @@ If multiple variables of the same name are defined in different places, such as 
 3. Variables in a Service **Config Variables** section.
 4. Variables defined in inline or remote files in Service **Manifests** section.
 
-For more information, see [Override a Service Configuration](https://docs.harness.io/article/n39w05njjv-environment-configuration#override_a_service_configuration).
+For more information, see [Override a Service Configuration](../model-cd-pipeline/environments/environment-configuration.md#override-a-service-configuration).
 
 Variable precedence is different from app or autoscalar manifest precedence.
 

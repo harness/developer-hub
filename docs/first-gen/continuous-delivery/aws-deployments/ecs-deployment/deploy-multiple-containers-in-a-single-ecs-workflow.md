@@ -19,7 +19,7 @@ Harness deploys all containers and images as defined in the specs.
 
 This topic assumes you have read or performed the following:
 
-* [AWS ECS Quickstart](https://docs.harness.io/article/j39azkrevm-aws-ecs-deployments)
+* [AWS ECS Quickstart](../../../first-gen-quickstarts/aws-ecs-deployments.md)
 * [AWS ECS Deployments Overview](../../concepts-cd/deployment-types/aws-ecs-deployments-overview.md)
 * [ECS Workflows](ecs-workflows.md)
 * [ECS Blue/Green Workflows](ecs-blue-green-workflows.md)
@@ -339,7 +339,7 @@ In a Harness ECS deployment, the container that points to the main artifact bein
 
 In the container spec, the `${CONTAINER_NAME}` and `${DOCKER_IMAGE_NAME}` placeholders identifies the Main Container. At deployment runtime, the placeholder is replaced with a name generated using the artifact name.
 
-When you add verification steps to the **Verify** section of your Harness Workflow, Harness performs verification on your Main Container only. The sidecar containers are not verified using Harness [Continuous Verification](https://docs.harness.io/article/ina58fap5y-what-is-cv).
+When you add verification steps to the **Verify** section of your Harness Workflow, Harness performs verification on your Main Container only. The sidecar containers are not verified using Harness [Continuous Verification](../../continuous-verification/continuous-verification-overview/concepts-cv/what-is-cv.md).
 
 The Main Container is identified by Harness using the AWS Tag **HARNESS\_DEPLOYED\_MAIN\_CONTAINER**.
 
@@ -367,7 +367,7 @@ Do not edit or remove this tag.You will see the same Main Container tag when you
 
 In the container spec, the `${CONTAINER_NAME}` and `${DOCKER_IMAGE_NAME}` placeholders identifies the Main Container. These placeholders must be present.
 
-For the sidecar specs, you can hardcode the name and image values, or you can use Harness [Workflow variable expressions](https://docs.harness.io/article/766iheu1bk-add-workflow-variables-new-template).
+For the sidecar specs, you can hardcode the name and image values, or you can use Harness [Workflow variable expressions](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md).
 
 When you use Workflow variable expressions, you provide the values for the spec when the Workflow is deployed.
 
@@ -429,7 +429,7 @@ If a single container fails, the task fails.
 
 #### Display Host and Container Information
 
-You can use [Harness built-inn variables expressions](https://docs.harness.io/article/9dvxcegm90-variables) and a [Shell Script](https://docs.harness.io/article/1fjrjbau7x-capture-shell-script-step-output) step in your Workflow to display useful information about the deployed containers and hosts.
+You can use [Harness built-inn variables expressions](../../../firstgen-platform/techref-category/variables/variables.md) and a [Shell Script](../../model-cd-pipeline/workflows/capture-shell-script-step-output.md) step in your Workflow to display useful information about the deployed containers and hosts.
 
 Here is an example:
 
@@ -449,5 +449,5 @@ echo ec2Instance.privateIpAddress: ${instance.host.ec2Instance.privateIpAddress}
 ```
 ### Next Steps
 
-* [Harness built-in AWS ECS variable expressions](https://docs.harness.io/article/9dvxcegm90-variables#aws_ecs).
+* [Harness built-in AWS ECS variable expressions](../../../firstgen-platform/techref-category/variables/variables.md#aws-ecs).
 

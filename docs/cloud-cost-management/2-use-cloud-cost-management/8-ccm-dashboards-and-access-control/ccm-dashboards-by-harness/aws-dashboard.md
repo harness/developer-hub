@@ -8,14 +8,8 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Dashboards help you model and analyze business metrics and operational data. You can use this data to make data-driven business decisions. Using charts, data tables, and filters, Dashboards help you get the most useful cost data.
 
-
-:::note
-For information on core Dashboard functionality, see [Create Dashboards](https://docs.harness.io/article/ardf4nbvcy-create-dashboards).
-:::
-
-Harness provides pre-loaded **By Harness** (pre-defined) and **Custom** (user-defined) Dashboards to visualize cloud cost data across clusters and cloud accounts. Using the **AWS Cost Dashboard** you can:
+Harness provides pre-loaded **By Harness** (pre-defined) and **Custom** (user-defined) dashboards to visualize cloud cost data across clusters and cloud accounts. Using the **AWS Cost Dashboard** you can:
 
 * Discover new analytical insights into your AWS cloud costs
 * Track various cloud cost indicators across different zones and time range
@@ -28,7 +22,7 @@ This topic describes how to view the **By Harness AWS Cost Dashboard** and get m
 
 ## Prerequisites
 
-* Ensure that you have **Dashboard-All View** permissions assigned. See [Manage Access Control for CCM Dashboards](https://ngdocs.harness.io/article/ng6yaxqi2r-manage-access-control-for-ccm-dashboards).
+* Ensure that you have **Dashboard-All View** permissions assigned. See [Manage Access Control for CCM Dashboards](../access-control/manage-access-control-for-ccm-dashboards.md).
 * Ensure that you have set up Cloud Cost Management (CCM) for the [AWS](../../../1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md) cloud provider.
 * Ensure that you have added all the required permissions for your cloud provider. The data available in the Dashboard depends on the permissions you provided to the AWS cloud provider when setting up the CCM. For more information, see Select Features in [Set up cost visibility for AWS](../../../1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md).
 
@@ -41,17 +35,16 @@ After setting up cost visibility for the [AWS](../../../1-onboard-with-cloud-cos
 Perform the following steps to view AWS Cost Dashboard:
 
 1. In Harness, click **Dashboards**.
-2. In **All Dashboards**, select **By Harness** and click **AWS Cost Dashboard**.
-   
-     ![](./static/aws-dashboard-01.png)
-   
-   The AWS Cost Dashboard is displayed:  
+2. Select **By Harness** and then, click **AWS Cost Dashboard**.
+      
+  
+    The AWS Cost Dashboard is displayed.
   
 | **Dimensions** | **Description** | **Context and Visibility** |
 |---|---|---|
 | Total Cost | The total AWS cost with cost trend. | ![](./static/aws-dashboard-14.png) |
-| Forecasted Cost  |The forecasted cloud cost with cost trend. Forecasted cost is the prediction based on your historical cost data and it is predicted for the same future time period as your selected time range.   | ![](./static/aws-dashboard-15.png)  |   
-| Cost by AWS Account | The cost of each AWS account you are using to connect Harness to AWS via a Harness AWS Cloud Provider. | ![](./static/aws-dashboard-03.png) |
+| Forecasted Cost  |The forecasted cloud cost with cost trend. Forecasted cost is the prediction based on your historical cost data, and it is predicted for the same future time period as your selected time range.   | ![](./static/aws-dashboard-15.png)  |   
+| Top 20 AWS accounts | The cost of the top 20 AWS account you are using to connect Harness to AWS via a Harness AWS Cloud Provider. | ![](./static/aws-dashboard-03.png) |
 | Top Cost Trend by Services | The top AWS services by cost increase or decrease | ![](./static/aws-dashboard-17.png) |
 | Historical and Forecasted Cost | The historical and forecasted AWS cost. Forecasted cost is the prediction based on your historical cost data and it is predicted for the same future time period as your selected time range. | ![](./static/aws-dashboard-16.png) |
 | Current Period vs Last Period | The cost of the current and previous time range. | ![](./static/aws-dashboard-18.png) |
@@ -61,10 +54,10 @@ Perform the following steps to view AWS Cost Dashboard:
 	* Last 7 Days
 	* Last 30 Days
 	* Last 90 Days
-	* Last year
-4. Once you have selected the Time Range filter, click **Reload**. The data is refreshed with the latest data from the database.
+	* Last 12 months
+	* Last 24 months
+4. After selecting the Time Range filter, click the **Refresh** icon. The data is refreshed with the latest data from the database.
    
-     ![](./static/aws-dashboard-02.png)
 5. Hover on the chart to see the cost details.
    
      ![](./static/aws-dashboard-03.png)
@@ -75,38 +68,34 @@ Perform the following steps to view AWS Cost Dashboard:
    
      ![](./static/aws-dashboard-05.png)
 	 
-	 The cost for the selected Time period is displayed.
+	 The cost for the selected Time period is displayed. You can toggle between the **Visualization** tab that displays the data in the form of a graph and the **Table** tab that displays the actual cost. You can download this data to your local system.
 	 
 	   ![](./static/aws-dashboard-06.png)
 8. In **Most Expensive Services by Month**, click on the chart to further drill into the cost details:
-	* by Time Period/Week
-	* by Time Period/Date
-	* by Time Period/Time
   
-    ![](./static/aws-dashboard-07.png)
 	
+	  	  	   ![](./static/aws-dashboard-07.png)
+
 	The cost data for the selected filter is displayed.
-	
 
-     ![](./static/aws-dashboard-08.png)
-9. You can further drill into **by Time Period/Date** and **by Time Period/Time** cost details in the resulting dashboard.
-    
-	  ![](./static/aws-dashboard-09.png)
-	  
-	  The cost data for the selected filter is displayed.
-	  
-    ![](./static/aws-dashboard-10.png)
+	  	   ![](./static/aws-dashboard-08.png)
 
-10. You can further drill into **by Time Period/Time** cost details in the resulting dashboard.
+		
+	![](./static/aws-dashboard-09.png)
+
+	  
+
+9.  You can further drill into **by Time Period/Time** cost details in the resulting dashboard.
     
 	  ![](./static/aws-dashboard-11.png)
 	
-	The cost data for the selected filter is displayed.
-	
-	  ![](./static/aws-dashboard-12.png)
-11. Click **Back** to go back to the previous page in the Dashboard.
-12. Click **Download** to download the Dashboard. See [Download Dashboard Data](https://docs.harness.io/article/op59lb1pxv-download-dashboard-data).
-13. Click the **Filter** icon to hide or show the filters.
+	  The cost data for the selected filter is displayed.
+
+    ![](./static/aws-dashboard-12.png)
+
+
+10. Click **Download** to download the Dashboard. See [Download Dashboard Data](../../../../platform/18_Dashboards/download-dashboard-data.md).
+11. Click the **Filter** icon to hide or show the filters.
     
 	  ![](./static/aws-dashboard-13.png)
 
@@ -114,13 +103,13 @@ Perform the following steps to view AWS Cost Dashboard:
 
 Once you have set up cost visibility for your Kubernetes clusters, AWS, GCP, and Azure cloud providers, you can create your own Dashboards. Refer to the following topics to create your own Dashboard and chart data.
 
-* [Create Dashboards](https://docs.harness.io/article/ardf4nbvcy-create-dashboards)
-* [Create Visualizations and Graphs](https://docs.harness.io/article/n2jqctdt7c-create-visualizations-and-graphs)
+* [Create Dashboards](../../../../platform/18_Dashboards/create-dashboards.md)
+* [Create Visualizations and Graphs](../../../../platform/18_Dashboards/create-visualizations-and-graphs.md)
 
 ### Next Steps
 
-* [Use Dashboard Actions](https://docs.harness.io/article/y1oh7mkwmh-use-dashboard-actions)
-* [Download Dashboard Data](https://docs.harness.io/article/op59lb1pxv-download-dashboard-data)
-* [Create Conditional Alerts](https://docs.harness.io/article/ro0i58mvby-create-conditional-alerts)
-* [Schedule and Share Dashboards](https://docs.harness.io/article/35gfke0rl8-share-dashboards)
+* [Use Dashboard Actions](../../../../platform/18_Dashboards/use-dashboard-actions.md)
+* [Download Dashboard Data](../../../../platform/18_Dashboards/download-dashboard-data.md)
+* [Create Conditional Alerts](../../../../platform/18_Dashboards/create-conditional-alerts.md)
+* [Schedule and Share Dashboards](../../../../platform/18_Dashboards/share-dashboards.md)
 

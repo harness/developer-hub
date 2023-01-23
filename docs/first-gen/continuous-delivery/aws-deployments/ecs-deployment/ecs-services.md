@@ -24,7 +24,7 @@ This topic covers setting up a Harness Application and Service for an ECS Deploy
 
 ### Create the Harness ECS Application
 
-The Harness Application represents a logical group of the ECS setup and release process, including the ECS service and task definitions, ECS cluster environment, and deployment workflow steps particular to each service you are deploying. For more information on Harness Applications, see [Application Checklist](https://docs.harness.io/article/bucothemly-application-configuration).
+The Harness Application represents a logical group of the ECS setup and release process, including the ECS service and task definitions, ECS cluster environment, and deployment workflow steps particular to each service you are deploying. For more information on Harness Applications, see [Application Checklist](../../model-cd-pipeline/applications/application-configuration.md).
 
 To create a new Application, do the following:
 
@@ -36,7 +36,7 @@ To create a new Application, do the following:
 
 You can add a Harness Infrastructure Provisioner for CloudFormation or Terraform to your Harness Application and use the Infrastructure Provisioner to define the ECS infrastructure on the fly.
 
-For more information, see [Infrastructure Provisioners Overview](https://docs.harness.io/article/o22jx8amxb-add-an-infra-provisioner).
+For more information, see [Infrastructure Provisioners Overview](../../model-cd-pipeline/infrastructure-provisioner/add-an-infra-provisioner.md).
 
 ### Add a Harness ECS Service
 
@@ -63,7 +63,7 @@ To create a Harness Service for ECS, do the following:
 Next, we will add the artifact source for the service, a sample app publicly hosted on Docker Hub.
 8. Click **Add Artifact Source**, and click **Docker Registry**.
 9. The **Artifact Source** dialog appears.![](./static/ecs-services-40.png)
-10. In **Source Server**, select the Harness Artifact Server for the Docker Registry. For information on setting up a Harness Artifact Server, see [Add Artifact Servers](https://docs.harness.io/article/7dghbx1dbl-configuring-artifact-server).
+10. In **Source Server**, select the Harness Artifact Server for the Docker Registry. For information on setting up a Harness Artifact Server, see [Add Artifact Servers](../../../firstgen-platform/account/manage-connectors/configuring-artifact-server.md).
 11. In **Docker Image Name**, enter the name of the image.
 12. Click **SUBMIT**. The Artifact Source is added.
 
@@ -180,7 +180,7 @@ If you are not very familiar with task and service definitions, see these exampl
 
 Currently, this feature is behind the Feature Flag `ECS_REGISTER_TASK_DEFINITION_TAGS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. Harness will remove Feature Flags for Harness Professional and Essentials editions. Once the feature is released to a general audience, it's available for Trial and Community Editions.You can add ECS tags to your task definition just as you would in the AWS console or CLI.
 
-You can use Harness [Service](https://docs.harness.io/article/q78p7rpx9u-add-service-level-config-variables) and [Workflow variables](https://docs.harness.io/article/766iheu1bk-add-workflow-variables-new-template) in both keys and values.
+You can use Harness [Service](../../model-cd-pipeline/setup-services/add-service-level-config-variables.md) and [Workflow variables](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md) in both keys and values.
 
 For example:
 
@@ -280,7 +280,7 @@ If you add networking settings ([Network configuration](https://docs.aws.amazon.
 
 Currently, this feature is behind the Feature Flag `ECS_REGISTER_TASK_DEFINITION_TAGS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. Harness will remove Feature Flags for Harness Professional and Essentials editions. Once the feature is released to a general audience, it's available for Trial and Community Editions.You can add ECS tags to your service definition just as you would in the AWS console or CLI.
 
-You can use Harness [Service](https://docs.harness.io/article/q78p7rpx9u-add-service-level-config-variables) and [Workflow variables](https://docs.harness.io/article/766iheu1bk-add-workflow-variables-new-template) in both keys and values.
+You can use Harness [Service](../../model-cd-pipeline/setup-services/add-service-level-config-variables.md) and [Workflow variables](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md) in both keys and values.
 
 For example:
 
@@ -395,7 +395,7 @@ To specify the Service Discovery Service in the Harness **Service Definition**, 
   
 ],
 ```
-In this example, the Harness variable `${serviceVariable.containerPort}` is used for the `containerPort` value. You can simply enter the port number instead, such as **8080**. The `${serviceVariable.containerPort}` variable is created in the **Config Variables** section of the Service as **containerPort**, and referenced as **${serviceVariable.containerPort}** in the **Service Definition**. Using a **Config Variable** allows you to override the variable value when configuring the Harness Workflow that deploys the Service. For more information, see [Workflow Phases](https://docs.harness.io/article/m220i1tnia-workflow-configuration#workflow_phases).
+In this example, the Harness variable `${serviceVariable.containerPort}` is used for the `containerPort` value. You can simply enter the port number instead, such as **8080**. The `${serviceVariable.containerPort}` variable is created in the **Config Variables** section of the Service as **containerPort**, and referenced as **${serviceVariable.containerPort}** in the **Service Definition**. Using a **Config Variable** allows you to override the variable value when configuring the Harness Workflow that deploys the Service. For more information, see [Workflow Phases](../../model-cd-pipeline/workflows/workflow-configuration.md#workflow-phases).
 
 The following list describes the fields and values needed for a Service Discovery Service in the Harness **Service Definition**:
 
@@ -403,7 +403,7 @@ The following list describes the fields and values needed for a Service Discover
 * `containerName` - The `containerName` field is the container name value to be used for your Service Discovery Service, and already specified in the task definition in **Task Definition**. Typically, you simply use the variable `${CONTAINER_NAME}`. Harness verifies that the container name is specified in **Task Definition**.
 * `containerPort` - The port value to be used for your Service Discovery Service.
 
-You can override Services variables in the Harness Environment and Workflow. For more information see [Override a Service Configuration](https://docs.harness.io/article/n39w05njjv-environment-configuration#override_a_service_configuration) and [Workflow Phases](https://docs.harness.io/article/m220i1tnia-workflow-configuration#workflow_phases).
+You can override Services variables in the Harness Environment and Workflow. For more information see [Override a Service Configuration](../../model-cd-pipeline/environments/environment-configuration.md#override-a-service-configuration) and [Workflow Phases](../../model-cd-pipeline/workflows/workflow-configuration.md#workflow-phases).
 
 ##### Which Service Parameters Do I Use?
 
@@ -457,7 +457,7 @@ The value for containerPort is 8080.
   
     } ],
 ```
-You can use Harness Environment variables to override the Service variables used in the Service Definition, thereby using the same Harness Service in multiple deployment environments. For more information, see [Override a Service Configuration](https://docs.harness.io/article/n39w05njjv-environment-configuration#override_a_service_configuration).#### Using Private Docker Registry Authentication
+You can use Harness Environment variables to override the Service variables used in the Service Definition, thereby using the same Harness Service in multiple deployment environments. For more information, see [Override a Service Configuration](../../model-cd-pipeline/environments/environment-configuration.md#override-a-service-configuration).#### Using Private Docker Registry Authentication
 
 In the Harness Service, you can add the `RepositoryCredentials` property type in the **Task Definition** to specify the repository credentials for private registry authentication.
 
@@ -523,7 +523,7 @@ You must use either inline or remote task and service definitions. You cannot us
 
 To use remote task and service definitions:
 
-1. Ensure you have set up a Harness Source Repo Provider connection to your Git repo. See [Add Source Repo Providers](https://docs.harness.io/article/ay9hlwbgwa-add-source-repo-providers).
+1. Ensure you have set up a Harness Source Repo Provider connection to your Git repo. See [Add Source Repo Providers](../../../firstgen-platform/account/manage-connectors/add-source-repo-providers.md).
 2. In your Harness ECS Service, in **Deployment Specification**, click more options (︙), and then click **Link Remote Definitions**.
 
 ### Review: Task Definitions and Amazon ECS Service Quotas

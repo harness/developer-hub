@@ -1,7 +1,7 @@
 ---
 title: Zed Attack Proxy (ZAP) Scanner Reference
 description: ​Zed Attack Proxy (ZAP) is a free, open-source penetration tool for testing web applications. You can use ZAP to run penetration testing to simulate a malicious external attack and use the results to protect your app from unauthorized access and denial-of-service attack.
-sidebar_position: 60
+sidebar_position: 80
 helpdocs_topic_id: m9494vxwac
 helpdocs_category_id: m01pu2ubai
 helpdocs_is_private: false
@@ -15,7 +15,7 @@ helpdocs_is_published: true
 STO supports the following scan policy types for ZAP:
 
 * `orchestratedScan`  — A Security step in the pipeline runs the scan and ingests the results. This is easier to set up and supports scans with default or predefined settings.
-* `ingestionOnly` — Run the scan in a Run step, or outside the pipeline, and then ingest the results. This is useful for advanced workflows that address specific security needs. See [Ingest scan results into an STO pipeline](https://docs.harness.io/article/ijkyokxrot).
+* `ingestionOnly` — Run the scan in a Run step, or outside the pipeline, and then ingest the results. This is useful for advanced workflows that address specific security needs. See [Ingest scan results into an STO pipeline](/docs/security-testing-orchestration/use-sto/ingest-scan-results-into-an-sto-pipeline.md).
 
 ### Required Settings
 

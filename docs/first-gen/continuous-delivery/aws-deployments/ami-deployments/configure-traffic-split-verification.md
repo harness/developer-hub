@@ -52,8 +52,8 @@ Approval steps are very useful because they enable you to cancel a deployment an
 
 In the **Route Update** section, after each traffic split step, you can add the verification step for one of the following:
 
-* **Performance Monitoring**—**AppDynamics**: For more information on configuring AppDynamics verification, see [Verify Deployments with AppDynamics](https://docs.harness.io/article/ehezyvz163-3-verify-deployments-with-app-dynamics).
-* **Log Analysis**—**ELK**: For more information on configuring ELK verification see [Verify Deployments with Elasticsearch](https://docs.harness.io/article/e2eghvcyas-3-verify-deployments-with-elasticsearch).
+* **Performance Monitoring**—**AppDynamics**: For more information on configuring AppDynamics verification, see [Verify Deployments with AppDynamics](../../continuous-verification/appdynamics-verification/3-verify-deployments-with-app-dynamics.md).
+* **Log Analysis**—**ELK**: For more information on configuring ELK verification see [Verify Deployments with Elasticsearch](../../continuous-verification/elk-elasticsearch-verification/3-verify-deployments-with-elasticsearch.md).
 
 Make sure you add the verification steps for traffic split only in the **Route Update** section.![](./static/configure-traffic-split-verification-01.png)
 
@@ -65,6 +65,6 @@ Traffic split analysis will be performed only if the new traffic percentage is l
 
 Once you have executed the Workflow, Harness performs the verification you configured and displays the results in the **Deployments** and **Continuous Verification** pages. Verification is executed in real time, quantifying the business impact of every production deployment.
 
-For a quick overview of the verification UI elements, see [Continuous Verification Tools](https://docs.harness.io/article/xldc13iv1y-meet-harness#continuous_verification_tools). For details about viewing and interpreting verification results, see [Verification Results Overview](https://docs.harness.io/article/2la30ysdz7-deployment-verification-results).
+For a quick overview of the verification UI elements, see [Continuous Verification Tools](../../../starthere-firstgen/meet-harness.md#continuous-verification-tools). For details about viewing and interpreting verification results, see [Verification Results Overview](../../continuous-verification/continuous-verification-overview/concepts-cv/deployment-verification-results.md).
 
 ![](./static/configure-traffic-split-verification-02.png)

@@ -23,7 +23,7 @@ Fixed Values are the values that you enter while configuring the template. These
 
 Runtime inputs are values that you are prompted to enter while using the template. When you set a field as Runtime input, it becomes a placeholder for values that you need to provide while using the template to create a monitored health service.  
 
-For more information see [Fixed Values, Runtime Inputs, and Expressions](https://docs.harness.io/article/f6yobn7iq0-runtime-inputs#fixed-values-runtime-inputs-and-expressions).
+For more information see [Fixed Values, Runtime Inputs, and Expressions](../../../platform/20_References/runtime-inputs.md#fixed-values-runtime-inputs-and-expressions).
 
 ### Create a Monitored Service Template
 

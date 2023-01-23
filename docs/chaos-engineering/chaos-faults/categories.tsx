@@ -14,12 +14,12 @@ export const categories: FaultCardItem[] = [
     faults: KubernetesExperiments.length,
     category: "kubernetes",
   },
-  //{
-  //  title: "Linux",
-  //  description: <>Short description about this</>,
-  //  faults: 36,
-  //  category: "linux",
-  //},
+//  {
+//    title: "Linux",
+//    description: <>Short description about this</>,
+//    faults: 36,
+//    category: "linux",
+//  },
   {
     title: "VMware",
     description: <>Achieve cost transparency and cut costs</>,
@@ -51,7 +51,7 @@ export const categories: FaultCardItem[] = [
     category: "kube-resilience",
   },
 //  {
-//   title: "Boutique Shop",
+//    title: "Boutique Shop",
 //    description: <>Ensure app and infrastructure resilience</>,
 //    category: "boutique",
 //  },

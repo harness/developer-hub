@@ -14,13 +14,13 @@ Once you set up an Artifact Server, Harness can pull artifacts and add them to t
 
 ### Before You Begin
 
-* See [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts).
+* See [Harness Key Concepts](../../starthere-firstgen/harness-key-concepts.md).
 * See [Connect to Your Target Tanzu Account](connect-to-your-target-pcf-account.md).
-* [Tanzu Application Service (TAS) Quickstart](https://docs.harness.io/article/hy819vmsux-pivotal-cloud-foundry-quickstart)
+* [Tanzu Application Service (TAS) Quickstart](../../first-gen-quickstarts/pivotal-cloud-foundry-quickstart.md)
 
 ### Step 1: Add an Artifact Server
 
-For steps on setting up an Artifact Server, [Add Artifact Servers](https://docs.harness.io/article/7dghbx1dbl-configuring-artifact-server).
+For steps on setting up an Artifact Server, [Add Artifact Servers](../../firstgen-platform/account/manage-connectors/configuring-artifact-server.md).
 
 1. In Harness, click **Setup,** and then click **Connectors**.
 2. Click **Artifact Servers**, and then click **Add Artifact Server**. Enter the following settings.
@@ -47,7 +47,7 @@ Enter the Username/Password if the repo is not anonymous.
 
 Click **Test** and the **Submit**.
 
-If the test fails, that means the [Delegate](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation) can't connect to the Artifact Server URL.
+If the test fails, that means the [Delegate](../../firstgen-platform/account/manage-delegates/delegate-installation.md) can't connect to the Artifact Server URL.
 
 Make sure that the host running the Delegate can make outbound connections to the Artifact Server URL.
 
@@ -105,7 +105,7 @@ Harness supports any single file (non-folder) deployed using `cf push`. TAR, WAR
 
     Harness uses artifact metadata only. During deployment runtime, Harness passes the metadata to the target host(s) where it is used to obtain the artifact.
 
-    Ensure that the target host has network connectivity to the Artifact Server. For more information, see [Service Types and Artifact Sources](https://docs.harness.io/article/qluiky79j8-service-types-and-artifact-sources).
+    Ensure that the target host has network connectivity to the Artifact Server. For more information, see [Service Types and Artifact Sources](../model-cd-pipeline/setup-services/service-types-and-artifact-sources.md).
 
 3. Click **Submit**. The artifact is added to the Service.
 

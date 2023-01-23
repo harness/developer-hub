@@ -34,7 +34,7 @@ Enter **https://api.bugsnag.com/**. This is the URL for the Bugsnag API.
 
 ### Step 3: Encrypted Auth Token
 
-For secrets and other sensitive settings, select or create a new [Harness Encrypted Text secret](https://docs.harness.io/article/ygyvp998mu-use-encrypted-text-secrets).Enter the **Data Access API** personal auth token for your Bugsnag account. Here is how you get the token in Bugsnag:
+For secrets and other sensitive settings, select or create a new [Harness Encrypted Text secret](../../../firstgen-platform/security/secrets-management/use-encrypted-text-secrets.md).Enter the **Data Access API** personal auth token for your Bugsnag account. Here is how you get the token in Bugsnag:
 
 1. In **Bugsnag**, click your account icon in the top-right of any page, and then click **Settings**.
 

@@ -52,7 +52,7 @@ Add the Build Workflow as the first stage in the Pipeline:
 The Workflows are run in succession. First, the Build Workflow is run. Click the **Artifact Collection** step to see the metadata collected by Harness, including the build number.
 ![](./static/6-artifact-build-and-deploy-pipelines-18.png)
 You can see the same build number in Jenkins.  
-In this document, Jenkins job artifact is used as an example but Harness supports all the common [artifact source](https://docs.harness.io/article/7dghbx1dbl-configuring-artifact-server) and [custom sources](https://docs.harness.io/article/jizsp5tsms-custom-artifact-source).
+In this document, Jenkins job artifact is used as an example but Harness supports all the common [artifact source](../../firstgen-platform/account/manage-connectors/configuring-artifact-server.md) and [custom sources](../model-cd-pipeline/setup-services/custom-artifact-source.md).
 
 ![](./static/6-artifact-build-and-deploy-pipelines-19.png)
 
@@ -64,7 +64,7 @@ The Pipeline has run successfully. You can now build and deploy artifacts by run
 
 ### See Also
 
-[Trigger Workflows and Pipelines](https://docs.harness.io/article/xerirloz9a-add-a-trigger-2) — Triggers automate deployments using a variety of conditions, such as Git events, new artifacts, schedules, and the success of other Pipelines.
+[Trigger Workflows and Pipelines](../model-cd-pipeline/triggers/add-a-trigger-2.md) — Triggers automate deployments using a variety of conditions, such as Git events, new artifacts, schedules, and the success of other Pipelines.
 
 Now that you have an Artifact Build and Deploy Pipeline, you can create a Harness Trigger that runs the Pipeline in response to a Git push to the source repo. The Trigger provides a Webhook URL you can add to your Git repo.
 

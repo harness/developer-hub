@@ -15,7 +15,7 @@ This topic will explain the steps to create and manage Roles within Harness.
 
 ### Before you begin
 
-* [Learn Harness' Key Concepts](https://ngdocs.harness.io/article/hv2758ro4e-learn-harness-key-concepts)
+* [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md)
 * Make sure you have Create/Edit/Delete Permissions for Roles.
 
 The **Account Admin** Role has permissions for all the resources within the Account scope as well as its child scope (Organizations and Projects within this Account).

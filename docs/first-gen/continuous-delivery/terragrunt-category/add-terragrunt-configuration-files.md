@@ -55,7 +55,7 @@ Click **Next**. The **Script Repository** section appears. This is where you 
 
 ### Step 2: Select Your Terragrunt Script Repo
 
-In **Script Repository**, in **Git Repository**, select the [Source Repo Provider](https://docs.harness.io/article/ay9hlwbgwa-add-source-repo-providers) you added for the Git repo where your script is located. See [Set Up Your Harness Account for Terragrunt](set-up-your-harness-account-for-terragrunt.md).
+In **Script Repository**, in **Git Repository**, select the [Source Repo Provider](../../firstgen-platform/account/manage-connectors/add-source-repo-providers.md) you added for the Git repo where your script is located. See [Set Up Your Harness Account for Terragrunt](set-up-your-harness-account-for-terragrunt.md).
 
 In **Commit**, select **Latest from Branch** or **Specific Commit ID**:
 
@@ -80,13 +80,13 @@ When the Workflow is deployed, you are prompted to provide values for the Workfl
 
 This allows the same Terragrunt Provisioner to be used by multiple Workflows, where each Workflow can use a different branch and path for the **Script Repository**.
 
-See [Set Workflow Variables](https://docs.harness.io/article/766iheu1bk-add-workflow-variables-new-template).
+See [Set Workflow Variables](../model-cd-pipeline/workflows/add-workflow-variables-new-template.md).
 
 ### Step 3: Select Secret Manager for Terragrunt Plan
 
 In **Terraform Plan Storage Configuration**, select a Secrets Manager to use for encrypting/decrypting and saving the Terraform plan file.
 
-See [Add a Secrets Manager](https://docs.harness.io/article/uuer539u3l-add-a-secrets-manager).
+See [Add a Secrets Manager](../../firstgen-platform/security/secrets-management/add-a-secrets-manager.md).
 
 A Terraform plan is a sensitive file that could be misused to alter cloud provider resources if someone has access to it. Harness avoids this issue by never passing the Terraform plan file as plain text.
 

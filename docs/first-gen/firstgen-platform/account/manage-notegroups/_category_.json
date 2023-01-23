@@ -1,0 +1,14 @@
+{
+  "label": "Manage Notifications FirstGen",
+  "position": 30,
+  "collapsible": "true",
+  "collapsed": "true",
+  "className": "red",
+  "link": {
+    "type": "generated-index",
+    "title": "Manage Notifications FirstGen"
+  },
+  "customProps": {
+    "helpdocs_category_id": "fmttl9hxzc"
+  }
+}

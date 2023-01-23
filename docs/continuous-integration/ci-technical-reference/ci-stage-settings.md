@@ -22,7 +22,7 @@ The unique name for this Stage.
 
 ### ID
 
-See [Entity Identifier Reference](https://docs.harness.io/article/li0my8tcz3-entity-identifier-reference).
+See [Entity Identifier Reference](../../platform/20_References/entity-identifier-reference.md).
 
 ### Description
 
@@ -38,7 +38,7 @@ If you don't select the option here, you can select it in **Stage Details**.
 
 ### Configure Codebase
 
-These settings specify the codebase for the Stage. See [Edit Codebase Configuration](https://docs.harness.io/article/6vks5ym7sq-edit-a-ci-pipeline-codebase-configuration).
+These settings specify the codebase for the Stage. See [Edit Codebase Configuration](../use-ci/codebase-configuration/create-and-configure-a-codebase.md).
 
 ### Connector
 
@@ -62,7 +62,7 @@ Text string.
 
 #### Tags
 
-See [Tags Reference](https://docs.harness.io/article/i8t053o0sq-tags-reference).
+See [Tags Reference](../../platform/20_References/tags-reference.md).
 
 #### Clone Codebase
 
@@ -102,7 +102,7 @@ The Kubernetes namespace in the target cluster to use.
 
 By default, Harness pulls certain images from public Docker Hub repos that are needed to run a build. You can override this by using a Connector that downloads these images from the Harness Container Image Registry instead. This option is useful when your default Delegate cannot access the public registry (due to security policies in your organization, for example, or if your infrastructure is running in a private cloud).
 
-To override how the Build Stage pulls these images, create a Connector as described in [Connect to Harness Container Image Registry Using Docker Connector](https://ngdocs.harness.io/article/my8n93rxnw).
+To override how the Build Stage pulls these images, create a Connector as described in [Connect to Harness Container Image Registry Using Docker Connector](../../platform/7_Connectors/connect-to-harness-container-image-registry-using-docker-connector.md).
 
 ### Advanced
 
@@ -186,7 +186,7 @@ A list of [`tolerations`](https://kubernetes.io/docs/concepts/scheduling-evictio
 
 The Execution section is where you add the steps that are performed in this stage.
 
-See [CI Technical Reference](https://docs.harness.io/category/ci-technical-reference).
+See [CI Technical Reference](/docs/category/ci-technical-reference).
 
 ### Build Stage YAML Example
 
@@ -234,6 +234,6 @@ Here's an example of a Build Stage definition taken from a Pipeline YAML:
 ```
 ### See Also
 
-* [CI Technical Reference](https://docs.harness.io/category/ci-technical-reference)
+* [CI Technical Reference](/docs/category/ci-technical-reference)
 * [Run Step Settings](run-step-settings.md)
 

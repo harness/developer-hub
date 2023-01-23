@@ -74,20 +74,51 @@ Select the cloud resources that you want to manage using this rule. AutoStopping
 1. In **Select the resources to be managed by the rule**, select **ECS Service**, and then click **Add an ECS Service**.
    
      ![](./static/create-auto-stopping-rules-for-ecs-05.png)
-2. In **Select ECS Service**, select a region and a cluster to see all the services:
-	1. Select the region where your cluster is hosted from the **All** **Regions** drop-down list.
-	2. Select your cluster from the **All Clusters** drop-down list.
-	3. Select the ECS Service for which you want to enable AutoStopping Rule and click **Add Selected**.![](./static/create-auto-stopping-rules-for-ecs-06.png)
-3. In **Desired Task Count**, specify the desired task count for the selected ECS service. This is the number of tasks that Harness will instantiate when your service is up and running. For more information, see [Amazon ECS service quotas](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-quotas.html).
+2. In **Select ECS Service**, select one of the following options:
+   * ECS Service Name.
+   * ECS Service Tags.
+   
+    
 
-### (Optional) Set Up Advanced Configuration
+  If you chose **ECS Service Name**, select a region and a cluster to see all of their services:
+  1. Select the region where your cluster is hosted from the **Select Region** dropdown list.
+  2. Select your cluster from the **Select Cluster** dropdown list.
+  3. Select the ECS Service where you want to enable the AutoStopping Rule. 
+  4. Click **Add Selected**.
+   
+   ![](./static/aws-ecs-tags.png)
+   
+If you chose **ECS Service Tags**, select the region, cluster, and the tag associated with the service. Once you create a rule using this option, the rule is applied automatically to the most recently created ECS service using the tag. 
+1. Select the region where your cluster is hosted from the **Select Region** dropdown list.
+2. Select your cluster from the **Select Cluster** dropdown list.
+3. Select the tag key and the tag value from the dropdown lists. If you want to learn how to add tags to your service, go to [Tagging your Amazon ECS Resources](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html).
+   
+     You can view the list of ECS services using this tag. 
+
+4. Click **Continue**.  
+
+:::note
+* If you have added the same tag to multiple ECS services, the AutoStopping rule is applied to the most recently created service.
+* If there are no services with the selected tag, the following error message is displayed: 
+  "There is no ECS service that contains the selected tag. Create a service with the selected tag to proceed."
+:::
+
+
+
+![](./static/aws-ecs-use-tags.png)
+
+   
+### **Specify the desired task count**
+In **Desired Task Count**, specify the desired task count for the selected ECS service. This is the number of tasks that Harness will instantiate when your service is up and running. For more information, see [Amazon ECS service quotas](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-quotas.html).
+
+### (Optional) Set Up advanced configuration
 
 In this step, you can configure the following settings:
 
 * **Add Dependency**: Set dependencies between two or more AutoStopping Rules when you want one Rule to make one or more Rules to be active based on the traffic that it receives. See [Add Dependency](create-autostopping-rules-aws.md).
 * **Fixed Schedules**: Create fixed uptime or downtime schedules for the resources managed by this AutoStopping Rule. When a resource is configured to go up or down on a fixed schedule, it is unaffected by activity or idleness during that time period. See [Fixed Schedules](create-autostopping-rules-aws.md).
 
-### (Optional) Setup Access Using DNS Link
+### (Optional) Setup access using DNS Link
 
 :::note
 You can skip this step in the following scenarios:  
@@ -124,7 +155,7 @@ You can use either of the following methods:
 
 **Auto-generated URL**
 
-Every AutoStopping rule will have an auto-generated URL. This URL will be a subdomain to the domain name specified for the [load balancer](https://ngdocs.harness.io/article/eba1bn2jm6-create-load-balancer-aws). Since the load balancer configures a wildcard domain such as `*.autostopping.yourcompany.com`, the auto-generated URL will work automatically and point to the correct load balancer.
+Every AutoStopping rule will have an auto-generated URL. This URL will be a subdomain to the domain name specified for the [load balancer](../4-load-balancer/create-load-balancer-aws.md). Since the load balancer configures a wildcard domain such as `*.autostopping.yourcompany.com`, the auto-generated URL will work automatically and point to the correct load balancer.
 
 Select **Use the auto-generated URL to access the resources managed by this AutoStopping Rule**.
 
@@ -157,7 +188,7 @@ If you've chosen to use a **custom URL** to access the resources, you need to ma
 
 In Review, verify all the configuration details and click **Save Rule**. To edit any of the configuration settings, click **EDIT** and modify the settings.
 
-Your AutoStopping rule is listed under the [AutoStopping Rules dashboard](https://ngdocs.harness.io/article/ehmi6kiynl-autostopping-dashboard).
+Your AutoStopping rule is listed under the [AutoStopping Rules dashboard](autostopping-dashboard.md).
 
 ### Create AutoStopping Rules with Terraform for ECS Services
 

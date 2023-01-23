@@ -1,0 +1,14 @@
+{
+  "label": "Continuous Verification Tech Ref FirstGen",
+  "position": 50,
+  "collapsible": "true",
+  "collapsed": "true",
+  "className": "red",
+  "link": {
+    "type": "generated-index",
+    "title": "Continuous Verification Tech Ref FirstGen"
+  },
+  "customProps": {
+    "helpdocs_category_id": "ugsf6ny1bk"
+  }
+}

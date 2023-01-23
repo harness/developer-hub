@@ -32,7 +32,7 @@ Harness 24/7 Service Guard gives DevOps operational visibility across all your m
 
 ### Combined with Workflow Verifications
 
-24/7 Service Guard is an addition to Harness' basic deployment verification functionality, which is described in [Continuous Verification](https://docs.harness.io/article/myw4h9u05l-verification-providers-list). Harness Workflow verification steps provide verification of Harness deployments and the running microservice for the first 15-30 minutes. 24/7 Service Guard provides detection of your microservices from then on, catching problems that surface minutes or hours following deployment.
+24/7 Service Guard is an addition to Harness' basic deployment verification functionality, which is described in [Continuous Verification](what-is-cv.md). Harness Workflow verification steps provide verification of Harness deployments and the running microservice for the first 15-30 minutes. 24/7 Service Guard provides detection of your microservices from then on, catching problems that surface minutes or hours following deployment.
 
 The following image shows how the Continuous Verification dashboard includes both 24/7 Service Guard and Harness Deployments verification.
 
@@ -80,7 +80,7 @@ Let's look at the dashboard in detail. The following image describes the 24/7 Se
 
 ![](./static/24-7-service-guard-overview-70.png)
 
-1. **Monitoring sources:** Verification and metrics providers, such as AppDynamics, etc. For a list of the verification providers supported by Harness, see [Continuous Verification](https://docs.harness.io/article/myw4h9u05l-verification-providers-list).
+1. **Monitoring sources:** Verification and metrics providers, such as AppDynamics, etc. For a list of the verification providers supported by Harness, see [Continuous Verification](what-is-cv.md).
 2. **Heat map:** The heat map is generated using the application and the monitoring sources. Each square is a time segment.
 3. **Time resolution:** You can go high-level (for example, 30 days) or low-level (12 hours).
 4. **Performance regressions:** Red and yellow are used to highlight regressions and anomalies. The colors indicate the Overall Risk Level for the monitoring segment.

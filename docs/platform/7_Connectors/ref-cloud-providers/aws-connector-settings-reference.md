@@ -388,7 +388,7 @@ There are three authentication options for the AWS Connector when used for AWS E
 * [Enable cross-account access (STS Role)](#enable-cross-account-access-sts-role)
 	+ Requires that the AWS CLI is installed on the Delegate. See [Serverless and ​Enable cross-account access (STS Role)](#serverless-and-​enable-cross-account-access-sts-role).
 
-For steps on Serverless Lambda deployments, see [Serverless Lambda CD Quickstart](https://docs.harness.io/article/5fnx4hgwsa-serverless-lambda-cd-quickstart).
+For steps on Serverless Lambda deployments, see [Serverless Lambda CD Quickstart](../../../continuous-delivery/onboard-cd/cd-quickstarts/serverless-lambda-cd-quickstart.md).
 
 
 :::warning
@@ -571,7 +571,7 @@ If you use the ​**Enable cross-account access (STS Role)** option in the AWS C
 
 The AWS CLI is not required for the other authentication methods.
 
-For steps on installing software with the Delegate, see [Run Initialization Scripts on Delegates](../../2_Delegates/delegate-guide/run-scripts-on-delegates.md).
+For steps on installing software with the Delegate, see [Run Initialization Scripts on Delegates](../../2_Delegates/configure-delegates/run-scripts-on-delegates.md).
 
 ### Switching Policies
 
@@ -591,7 +591,7 @@ The unique name for this Connector.
 
 #### ID
 
-See [Entity Identifier Reference](https://newdocs.helpdocs.io/article/li0my8tcz3-entity-identifier-reference).
+See [Entity Identifier Reference](../../20_References/entity-identifier-reference.md).
 
 #### Description
 
@@ -599,7 +599,7 @@ Text string.
 
 #### Tags
 
-See [Tags Reference](https://newdocs.helpdocs.io/article/i8t053o0sq-tags-reference).
+See [Tags Reference](../../20_References/tags-reference.md).
 
 #### Credentials
 
@@ -685,7 +685,7 @@ eksctl create iamserviceaccount \
     --approve \  
     --override-existing-serviceaccounts —region=us-east-1
 ```
-In Harness, download the Harness Kubernetes Delegate YAML file. See [Install a Kubernetes Delegate](../../2_Delegates/delegate-guide/install-a-kubernetes-delegate.md).
+In Harness, download the Harness Kubernetes Delegate YAML file. See [Install a Kubernetes Delegate](../../2_Delegates/install-delegates/kubernetes-delegates/install-a-kubernetes-delegate.md).
 
 Open the Delegate YAML file in text editor.
 
@@ -721,7 +721,7 @@ Next, update StatefulSet spec with the new `serviceAccountName`.
 
 Save the Delegate YAML file.
 
-Install the Delegate in your EKS cluster and register the Delegate with Harness. See [Install a Kubernetes Delegate](../../2_Delegates/delegate-guide/install-a-kubernetes-delegate.md).
+Install the Delegate in your EKS cluster and register the Delegate with Harness. See [Install a Kubernetes Delegate](../../2_Delegates/install-delegates/kubernetes-delegates/install-a-kubernetes-delegate.md).
 
 
 :::note
@@ -803,7 +803,7 @@ You cannot access AWS GovCloud with standard AWS credentials. Likewise, you cann
 
 ### Troubleshooting
 
-See [Troubleshooting Harness](https://docs.harness.io/article/jzklic4y2j-troubleshooting).
+See [Troubleshooting Harness](../../../troubleshooting/troubleshooting-nextgen.md).
 
 
 :::warning

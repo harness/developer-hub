@@ -28,7 +28,7 @@ Make sure you read and understand:
 
 ## Version
 
-The current version of this SDK is **1.4.14.**
+The current version of this SDK is **1.6.0.**
 
 ## Requirements
 
@@ -79,14 +79,14 @@ Run the following script:
 
 ```
 <script type="module">  
-  import { initialize, Event } from 'https://unpkg.com/@harnessio/ff-javascript-client-sdk@1.4.10/dist/sdk.client.js'  
+  import { initialize, Event } from 'https://unpkg.com/@harnessio/ff-javascript-client-sdk@1.6.0/dist/sdk.client.js'  
 </script>
 ```
 Make sure you install the latest version of the SDK, which you can view in [GitHub](https://github.com/harness/ff-javascript-client-sdk) and in [Version](#version).If you need to support browsers that no longer support ES modules, run the following script instead:
 
 
 ```
-<script src="https://unpkg.com/@harnessio/ff-javascript-client-sdk@1.4.10/dist/sdk.client.js"></script>  
+<script src="https://unpkg.com/@harnessio/ff-javascript-client-sdk@1.6.0/dist/sdk.client.js"></script>  
 <script>  
   var initialize = HarnessFFSDK.initialize  
   var Event = HarnessFFSDK.Event  
@@ -136,7 +136,7 @@ Regex: `^[A-Za-z0-9.@_-]*$`
 Must consist of only alphabetical characters, numbers, and the following symbols:  
 . (period)  
 @ (at sign)  
-- (dash)  
+-(dash)  
 \_ (underscore)  
   
 The characters can be lowercase or uppercase but cannot include accented letters, for example `Cafe_789`.  

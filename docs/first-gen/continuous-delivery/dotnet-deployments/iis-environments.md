@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 This topic describes how to add Harness Infrastructure Definitions for target deployment environments in AWS and Azure.
 
-For more information, see [Add an Environment](https://docs.harness.io/article/n39w05njjv-environment-configuration).
+For more information, see [Add an Environment](../model-cd-pipeline/environments/environment-configuration.md).
 
 ### Create an Environment
 
@@ -61,7 +61,7 @@ This following table describes the fields for an AWS EC2 Infrastructure Definiti
 | **Cloud Provider Type** | Select the type of Cloud Provider you added earlier, such as Amazon Web Services. |
 | **Deployment Type** | Select **Windows Remote Management (WinRM)**. |
 | **Cloud Provider** | Select the Cloud Provider you added. |
-| **Provision Type** | If you have a Windows instance running in your Cloud Provider, click **Already Provisioned**. If you need to set up an instance, create the instance in your Cloud Provider, and then return to the Harness environment set up.If you have an Infrastructure Provisioner configured, select **Dynamically Provisioned**. This guide does not cover Harness Infrastructure Provisioners. For more information, see [Add an Infra Provisioner](https://docs.harness.io/article/o22jx8amxb-add-an-infra-provisioner). |
+| **Provision Type** | If you have a Windows instance running in your Cloud Provider, click **Already Provisioned**. If you need to set up an instance, create the instance in your Cloud Provider, and then return to the Harness environment set up.If you have an Infrastructure Provisioner configured, select **Dynamically Provisioned**. This guide does not cover Harness Infrastructure Provisioners. For more information, see [Add an Infra Provisioner](../model-cd-pipeline/infrastructure-provisioner/add-an-infra-provisioner.md). |
 | **Region** | Region for the VPC. |
 | **Load Balancer** | The load balancer used by the VPC. |
 | **WinRM** **Connection Attributes** | Select the name of the WinRM Connection you created. This is the value you entered in **Name** when you created the WinRM Connection in **Secrets Management**. |
@@ -99,7 +99,7 @@ Currently, support for Config Files override is behind a Feature Flag. Contact [
 
 ![](./static/iis-environments-18.png)
 
-For more information, see [Override a Service Configuration in an Environment](https://docs.harness.io/article/4m2kst307m-override-service-files-and-variables-in-environments).
+For more information, see [Override a Service Configuration in an Environment](../model-cd-pipeline/environments/override-service-files-and-variables-in-environments.md).
 
 ### Next Step
 

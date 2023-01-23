@@ -17,12 +17,7 @@ title: RDS Instance Reboot
 
 :::info
 
-- Kubernetes >= 1.17
-
-**AWS RDS Access Requirement:**
-
-- AWS access to reboot RDS instances.
-
+- Ensure that Kubernetes Version >= 1.17
 - Kubernetes secret that has the AWS access configuration(key) in the `CHAOS_NAMESPACE`. A sample secret file looks like:
 
 ```yaml
@@ -41,6 +36,32 @@ stringData:
 
 - If you change the secret key name (from `cloud_config.yml`), update the `AWS_SHARED_CREDENTIALS_FILE` environment variable value in the ChaosExperiment CR with the same name.
 
+## Permission Requirement
+
+- Here is an example AWS policy to execute this fault.
+
+<details>
+<summary>View policy for this fault</summary>
+
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "ec2:DescribeInstanceStatus",
+                "ec2:DescribeInstances",
+                "rds:DescribeDBClusters",
+                "rds:DescribeDBInstances",
+                "rds:RebootDBInstance"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+```
+</details>
 
 ## Default Validations
 

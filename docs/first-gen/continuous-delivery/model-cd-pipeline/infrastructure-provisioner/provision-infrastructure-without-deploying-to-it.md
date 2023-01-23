@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Typically, when you provision infrastructure using Harness, you do it as part of a deployment, as described in [Terraform How-tos](https://docs.harness.io/article/9pvvgcdbjh-terrform-provisioner), [CloudFormation How-tos](https://docs.harness.io/article/78g32khjcu-cloud-formation-provisioner), and [Shell Script Provisioner](../infrastructure-provisioner/ssh-provisioner-category/shell-script-provisioner.md).
+Typically, when you provision infrastructure using Harness, you do it as part of a deployment, as described in [Terraform How-tos](../../terraform-category/terrform-provisioner.md), [CloudFormation How-tos](../../aws-deployments/cloudformation-category/cloud-formation-provisioner.md), and [Shell Script Provisioner](../infrastructure-provisioner/ssh-provisioner-category/shell-script-provisioner.md).
 
 Here's an illustration using Terraform:
 
@@ -25,18 +25,18 @@ This topic explains how to perform Terraform provisioning without deploying any 
 If you want to reproduce the steps in this topic, ensure you have the following:
 
 * You must have a working Terraform of CloudFormation setup (scripts, templates, etc).
-* Configure a Harness [Terraform](https://docs.harness.io/article/9pvvgcdbjh-terrform-provisioner). [CloudFormation](https://docs.harness.io/article/78g32khjcu-cloud-formation-provisioner), or [Shell Script](../infrastructure-provisioner/ssh-provisioner-category/shell-script-provisioner.md) Infrastructure Provisioner.
+* Configure a Harness [Terraform](../../terraform-category/terrform-provisioner.md). [CloudFormation](../../aws-deployments/cloudformation-category/cloud-formation-provisioner.md), or [Shell Script](../infrastructure-provisioner/ssh-provisioner-category/shell-script-provisioner.md) Infrastructure Provisioner.
 * Harness Application.
 
 ### Review: Harness Infrastructure Provisioning
 
 Please review the Harness documentation on provisioning infrastructure:
 
-* [Terraform Provisioning with Harness](https://docs.harness.io/article/hh52ews03d-terraform-provisioning-with-harness)
-* [CloudFormation Provisioning with Harness](https://docs.harness.io/article/qj0ems5hmg-cloud-formation-provisioning-with-harness)
-* [Shell Script Provisioning with Harness](https://docs.harness.io/article/drculfgwwn-shell-script-provisioning-with-harness)
+* [Terraform Provisioning with Harness](../../concepts-cd/deployment-types/terraform-provisioning-with-harness.md)
+* [CloudFormation Provisioning with Harness](../../concepts-cd/deployment-types/cloud-formation-provisioning-with-harness.md)
+* [Shell Script Provisioning with Harness](../../concepts-cd/deployment-types/shell-script-provisioning-with-harness.md)
 
-For those interested in provisioning a Kubernetes cluster, see [Provision Kubernetes Infrastructures](https://docs.harness.io/article/huajnezo0r-provision-kubernetes-infrastructures).
+For those interested in provisioning a Kubernetes cluster, see [Provision Kubernetes Infrastructures](../../kubernetes-deployments/provision-kubernetes-infrastructures.md).
 
 ### Step 1: Set Up Pre-deployment Steps
 
@@ -52,9 +52,9 @@ All of the following Workflow steps are added to the **Pre-deployment Steps** se
 **Deployment Strategies Supported** — For most deployments, Harness Infrastructure Provisioners are only supported in Canary and Multi-Service types. For AMI/ASG and ECS deployments, Infrastructure Provisioners are also supported in Blue/Green deployments.
 :::
 
-2. Add the [Terraform Provision Step](https://docs.harness.io/article/uxwih21ps1-terraform-provisioner-step) to the **Pre-deployment Steps** section.
+2. Add the [Terraform Provision Step](../../terraform-category/terraform-provisioner-step.md) to the **Pre-deployment Steps** section.
 
-3. Set the Terraform Provision step as the Terraform plan using the **Set as Terraform Plan** option. See [Perform a Terraform Dry Run](https://docs.harness.io/article/xthfj92dys-terraform-dry-run).
+3. Set the Terraform Provision step as the Terraform plan using the **Set as Terraform Plan** option. See [Perform a Terraform Dry Run](../../terraform-category/terraform-dry-run.md).
 
   When you're done, the step will look something like this:
 
@@ -62,7 +62,7 @@ All of the following Workflow steps are added to the **Pre-deployment Steps** se
 
 4. Add an Approval step after the Terraform plan step. See [Jira Approvals](../approvals/jira-based-approvals.md), [ServiceNow Approvals](../approvals/service-now-ticketing-system.md), and [Harness UI Approvals](../approvals/approvals.md). When the Workflow is deployed, a user will need to verify that the Terraform plan is correct before applying the new resources via a Terraform Apply step.
 
-5. Add the [Terraform Apply Step](https://docs.harness.io/article/jaxppd8w9j-using-the-terraform-apply-command) after the Approval step to provision the infrastructure. Ensure the **Inherit following configurations from Terraform Plan** option is selected.
+5. Add the [Terraform Apply Step](../../terraform-category/using-the-terraform-apply-command.md) after the Approval step to provision the infrastructure. Ensure the **Inherit following configurations from Terraform Plan** option is selected.
 
 Your Workflow should now look something like this:
 
@@ -88,7 +88,7 @@ Here is the Workflow Post-Deployment step we will create:
 
 ![](./static/provision-infrastructure-without-deploying-to-it-05.png)
 
-1. In **Post-deployment Steps**, add a [Terraform Destroy](https://docs.harness.io/article/4egyxnse9r-terraform-destroy) step.
+1. In **Post-deployment Steps**, add a [Terraform Destroy](../../terraform-category/terraform-destroy.md) step.
 2. Next, click more options (︙) in the **Pre-deployment Steps** heading, and in **Execution**, select **Conditional**.
 
    ![](./static/provision-infrastructure-without-deploying-to-it-06.png)
@@ -144,6 +144,6 @@ You should be able to view the plan, apply, and destroy steps.
 
 ### Next Steps
 
-* Review [Terraform documentation](https://docs.harness.io/article/9pvvgcdbjh-terrform-provisioner) on Harness.
+* Review [Terraform documentation](../../terraform-category/terrform-provisioner.md) on Harness.
 * Check out our Community article on Harness and Terraform:  [Harness ❤️ Terraform](https://community.harness.io/t/harness-terraform/232)
 

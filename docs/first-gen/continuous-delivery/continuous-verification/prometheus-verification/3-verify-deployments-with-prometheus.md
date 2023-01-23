@@ -142,7 +142,7 @@ query=container_cpu_usage_seconds_total{pod_name="$hostName", container_name="PO
 ```
 ### Review: Harness Expression Support in CV Settings
 
-You can use expressions (`${...}`) for [Harness built-in variables](https://docs.harness.io/article/7bpdtvhq92-workflow-variables-expressions) and custom [Service](../../model-cd-pipeline/setup-services/service-configuration.md) and [Workflow](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md) variables in the settings of Harness Verification Providers.
+You can use expressions (`${...}`) for [Harness built-in variables](../../kubernetes-deployments/workflow-variables-expressions.md) and custom [Service](../../model-cd-pipeline/setup-services/service-configuration.md) and [Workflow](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md) variables in the settings of Harness Verification Providers.
 
 ![](./static/3-verify-deployments-with-prometheus-09.png)
 
@@ -160,10 +160,10 @@ Here is an example of a deployment Pipeline Stage verified using Prometheus.
 
 Under **Prometheus**, you can see that all Prometheus metrics have been validated by the Harness machine learning algorithms. Green indicates that there are no anomalies or regressions identified and the deployment is operating within its normal range.
 
-To see an overview of the verification UI elements, see [Continuous Verification Tools](https://docs.harness.io/article/xldc13iv1y-meet-harness#-continuous-verification-tools-).
+To see an overview of the verification UI elements, see [Continuous Verification Tools](../../../starthere-firstgen/meet-harness.md#-continuous-verification-tools-).
 
 ### Next Steps
 
-* [Configuration as Code](https://docs.harness.io/article/htvzryeqjw-configuration-as-code)
-* [Managing Users and Groups (RBAC)](https://docs.harness.io/article/ven0bvulsj-users-and-permissions)
+* [Configuration as Code](../../../firstgen-platform/config-as-code/configuration-as-code.md)
+* [Managing Users and Groups (RBAC)](../../../firstgen-platform/security/access-management-howtos/users-and-permissions.md)
 

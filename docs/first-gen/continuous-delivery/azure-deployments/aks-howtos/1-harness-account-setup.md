@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/article/m7nkbph0ac).This topic describes how to set up your Harness account settings to support an Azure deployment.
+This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../../continuous-delivery/onboard-cd/cd-quickstarts/azure-cd-quickstart.md).This topic describes how to set up your Harness account settings to support an Azure deployment.
 
 ### Limitations
 
@@ -23,7 +23,7 @@ The Azure permissions and roles required for each of the Harness connections to 
 * **Harness Kubernetes Delegate** - The Harness Kubernetes Delegate is installed in the AKS cluster where you plan to deploy. You simply need to log into your AKS cluster and install it. No additional role is required.
 	+ The Harness Kubernetes Delegate install file will create a pod in the cluster and make an outbound connection to the Harness Manager. No Azure permissions are required.
 	+ The minimum Delegate resource requirements in the AKS cluster are 8GB RAM and 6GB Disk Space. Your AKS cluster will need enough resources to run the Delegate and your app. For the example in this guide, we created a cluster with 4 cores and 16GB of total memory.
-	+ For information about Harness Delegates, see [Delegate Installation and Management](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation), [Delegate Server Requirements](https://docs.harness.io/article/70zh6cbrhg-harness-requirements), and [Delegate Connection Requirements](https://docs.harness.io/article/11hjhpatqz-connectivity-and-permissions-requirements).
+	+ For information about Harness Delegates, see [Delegate Installation and Management](../../../firstgen-platform/account/manage-delegates/delegate-installation.md), [Delegate Server Requirements](../../../firstgen-platform/account/manage-delegates/delegate-requirements-and-limitations.md), and [Delegate Connection Requirements](../../../firstgen-platform/techref-category/account-ref/delegate-ref/connectivity-and-permissions-requirements.md).
 * **Harness Kubernetes Cluster Cloud Provider** - You will use the credentials of the Harness Kubernetes Delegate you installed in AKS for the Kubernetes Cluster Cloud Provider. No Azure permissions are required.
 
 :::note

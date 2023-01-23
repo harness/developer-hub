@@ -1,0 +1,14 @@
+{
+  "label": "Metrics",
+  "position": 30,
+  "collapsible": "true",
+  "collapsed": "true",
+  "className": "red",
+  "link": {
+    "type": "generated-index",
+    "title": "Metrics"
+  },
+  "customProps": {
+    "helpdocs_category_id": "5sdx6n8yqa"
+  }
+}

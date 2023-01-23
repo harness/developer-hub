@@ -68,7 +68,7 @@ Within Harness, you'll need to set up the following resources. (Some of these ar
 * A [Spotinst Cloud Provider](#spotinst_cloud_provider), which connects to your Spotinst account using your credentials on that account.
 * A Harness Application,
 * An AMI-based [Service](#service).
-* An Environment with an [Infrastructure Definition](https://docs.harness.io/article/v3l3wqovbe-infrastructure-definitions) that specifies your Load Balancer(s).  
+* An Environment with an [Infrastructure Definition](../../model-cd-pipeline/environments/infrastructure-definitions.md) that specifies your Load Balancer(s).  
   
 For Blue/Green Deployments, the Infrastructure Definition will also specify Stage and Prod Target Groups. You import this configuration from your Elastigroup, as outlined below in [Define the Infrastructure](#infrastructure_definition).At deploy time, Harness will override much of the above base configuration with the instance and capacity targets that you specify in your Workflow.
 
@@ -79,7 +79,7 @@ Set up your Harness Service as we document for a Harness AMI Basic Deployment in
 
 After you create your Service, you have the option of using the [User Data](ami-deployment.md#deployment-specification-user-data) link to enter configuration scripts and directives that your AWS instance will run upon launch.
 
-You can also specify [Config Variables](https://docs.harness.io/article/eb3kfl8uls-service-configuration#config_variables), and then reference them in your [Infrastructure Definitions](#infrastructure_definition).
+You can also specify [Config Variables](../../model-cd-pipeline/setup-services/service-configuration.md#config-variables), and then reference them in your [Infrastructure Definitions](#infrastructure_definition).
 
 
 ## Set Up Cloud Providers
@@ -98,14 +98,14 @@ The Delegate must be in the same AWS VPC and subnet that you plan to use for you
 
 ### Spotinst Cloud Provider
 
-To set up the Spotinst Cloud Provider, follow the steps in [Spotinst Cloud Provider](https://docs.harness.io/article/whwnovprrb-cloud-providers).
+To set up the Spotinst Cloud Provider, follow the steps in [Spotinst Cloud Provider](../../../firstgen-platform/account/manage-connectors/cloud-providers.md).
 
 Keep the Spotinst Console open to [copy its configuration](#add_elastigroup_config) into your Harness Infrastructure Definition.
 
 
 ### Define the Infrastructure
 
-The [Infrastructure Definition](https://docs.harness.io/article/v3l3wqovbe-infrastructure-definitions) is where you specify the target infrastructure for your deployments. You'll configure your Infrastructure Definition for Elastigroup in this section (working in both Harness Manager and the Spotinst Console). You'll then select this Infrastructure Definition as your target deployment environment when you later create a [Blue/Green](#blue_green) or [Canary](#canary) Workflow.
+The [Infrastructure Definition](../../model-cd-pipeline/environments/infrastructure-definitions.md) is where you specify the target infrastructure for your deployments. You'll configure your Infrastructure Definition for Elastigroup in this section (working in both Harness Manager and the Spotinst Console). You'll then select this Infrastructure Definition as your target deployment environment when you later create a [Blue/Green](#blue_green) or [Canary](#canary) Workflow.
 
 
 ### Add the Infrastructure Definition
@@ -117,7 +117,7 @@ The [Infrastructure Definition](https://docs.harness.io/article/v3l3wqovbe-infra
 5. In **Deployment Type**, select **Amazon Machine Image**. This expands the **Infrastructure Definition** dialog's top section to look something like this:![](./static/ami-elastigroup-82.png)
 6. Select the check box labeled **Use Spotinst Elastigroup to Manage Infrastructure**.
 7. For this example, accept the default **Use** **Already Provisioned Infrastucture** option.  
-If you have configured an [Infrastructure Provisioner](https://docs.harness.io/article/o22jx8amxb-add-an-infra-provisioner) in Harness, you can use that configuration by instead selecting the **Dynamically Provisioned** option. For details, see our AMI Blue/Green Deployment Guide's [Infrastructure Provisioners](#infrastructure_provisioners), and our AMI [CloudFormation](ami-blue-green.md#infrastructure-provisioners) and [Terraform](../../terraform-category/terrform-provisioner.md#ami-and-auto-scaling-group) examples.
+If you have configured an [Infrastructure Provisioner](../../model-cd-pipeline/infrastructure-provisioner/add-an-infra-provisioner.md) in Harness, you can use that configuration by instead selecting the **Dynamically Provisioned** option. For details, see our AMI Blue/Green Deployment Guide's [Infrastructure Provisioners](#infrastructure_provisioners), and our AMI [CloudFormation](ami-blue-green.md#infrastructure-provisioners) and [Terraform](../../terraform-category/terrform-provisioner.md#ami-and-auto-scaling-group) examples.
 8. Select the **AWS** **Cloud Provider** that you [created earlier](#aws_cloud_provider).
 9. Select the **Spotinst** **Cloud Provider** that you [created earlier](#spotinst_cloud_provider).
 10. Select the **Region** that you configured earlier in [AWS](#aws_prereq) and [Spotinst](#spotinst_prereq). The dialog's center section will now look something like this:![](./static/ami-elastigroup-83.png)
@@ -158,7 +158,7 @@ You also have the option to use Harness variables within your Infrastructure De
 
 Infrastructure Definitions do not currently support auto-fill for expressions. So you must manually type Service variables into the JSON, in this format: `${serviceVariable.<var_name>`}Create the variables in your [Service](#service)’s **Config Variables** section.
 
-Then insert them in the **Elastigroup Configuration** JSON using the format above. For further details, see [Add Service Config Variables](https://docs.harness.io/article/q78p7rpx9u-add-service-level-config-variables).
+Then insert them in the **Elastigroup Configuration** JSON using the format above. For further details, see [Add Service Config Variables](../../model-cd-pipeline/setup-services/add-service-level-config-variables.md).
 
 
 ## Basic Workflow and Deployment
@@ -177,9 +177,9 @@ Elastigroups perform the functions that Auto Scaling Groups perform in standard 
 
 Harness preconfigures only the first two steps. Below, we outline those steps' defaults and options, with examples of the deployment logs' contents at each step.
 
-The remaining two steps are placeholders, to which you can add integrations and commands. For details on adding **Verify Staging** integrations, see [Continuous Verification](https://docs.harness.io/article/myw4h9u05l-verification-providers-list).
+The remaining two steps are placeholders, to which you can add integrations and commands. For details on adding **Verify Staging** integrations, see [Continuous Verification](../../continuous-verification/continuous-verification-overview/concepts-cv/what-is-cv.md).
 
-Your Workflows can use Harness' built-in `${artifact.metadata.tag}` variable to refer to tagged AMIs. For example, if an AMI has an AWS tag named `harness`, you can refer to that AMI within Harness as `${artifact.metadata.harness}`. For details about this convention, see [Variables and Expressions in Harness](https://docs.harness.io/article/9dvxcegm90-variables#variables_list). This can be useful in [triggering Workflows and Pipelines](https://docs.harness.io/article/xerirloz9a-add-a-trigger-2#add_a_trigger).
+Your Workflows can use Harness' built-in `${artifact.metadata.tag}` variable to refer to tagged AMIs. For example, if an AMI has an AWS tag named `harness`, you can refer to that AMI within Harness as `${artifact.metadata.harness}`. For details about this convention, see [Variables and Expressions in Harness](../../../firstgen-platform/techref-category/variables/variables.md#variables-list). This can be useful in [triggering Workflows and Pipelines](../../model-cd-pipeline/triggers/add-a-trigger-2.md#add-a-trigger).
 
 ### Create a Basic Workflow
 
@@ -377,7 +377,7 @@ The weight for the **other** TG is automatically set to the remaining percentage
 
 You keep adding **Shift Traffic Weight** steps until the weight of the TG for the new Elastigroup is 100.
 
-You can manipulate traffic shifting using as many **Shift Traffic Weight** steps as you like.Typically, you add [Approval](https://docs.harness.io/article/0ajz35u2hy-approvals) steps between each **Shift Traffic Weight** step to ensure that everything is running smoothly. For example, you can test the new feature(s) of your app before approving. This is a simple way to incorporate A/B testing into your Workflow.
+You can manipulate traffic shifting using as many **Shift Traffic Weight** steps as you like.Typically, you add [Approval](../../model-cd-pipeline/approvals/approvals.md) steps between each **Shift Traffic Weight** step to ensure that everything is running smoothly. For example, you can test the new feature(s) of your app before approving. This is a simple way to incorporate A/B testing into your Workflow.
 
 Approval steps are very useful because they enable you to cancel a deployment and return to the pre-deployment traffic weighting with a single step.The Workflow looks something like the following. Here the names of the **Shift Traffic Weight** steps have been changed to describe the weights they are assigning (10%, 100%):
 
@@ -419,7 +419,7 @@ This step creates the new Elastigroup. In this step, you name the new Elastigrou
 4. In **Production Listener Rule ARN**, select the ARN for the rule to use. You can find the ARN by its number in the AWS console.
 5. Click **Submit**.
 
-Most of the settings support [Workflow variable expressions](https://docs.harness.io/article/766iheu1bk-add-workflow-variables-new-template). You can use these to template this step and then allow its values to be specified at deployment runtime. You can even pass in the values using a Harness [Trigger](https://docs.harness.io/article/revc37vl0f-passing-variable-into-workflows).When you deploy this Workflow, the output for the step will show the Elastigroup creation and load balancer assignments:
+Most of the settings support [Workflow variable expressions](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md). You can use these to template this step and then allow its values to be specified at deployment runtime. You can even pass in the values using a Harness [Trigger](../../model-cd-pipeline/expressions/passing-variable-into-workflows.md).When you deploy this Workflow, the output for the step will show the Elastigroup creation and load balancer assignments:
 
 
 ```
@@ -455,13 +455,13 @@ This is the step where you shift traffic from the TG for the previous Elastigrou
 1. In **Name**, it can helpful to name the step after the traffic shift percentage it will apply, such as **10%**. You might also choose to name it according to its position, like **Shift Step 1**.
 2. In **New Elastigroup Weight**, enter the percentage of traffic you want shifted from the previous Elastigroup to the new Elastigroup you are deploying.
 
-Most of the settings support [Workflow variable expressions](https://docs.harness.io/article/766iheu1bk-add-workflow-variables-new-template). You can use these to template this step and then allow its values to be specified at deployment runtime. You can even pass in the values using a Harness [Trigger](https://docs.harness.io/article/revc37vl0f-passing-variable-into-workflows).Here is an example of what this step looks like when it shifts traffic 10% during deployment:
+Most of the settings support [Workflow variable expressions](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md). You can use these to template this step and then allow its values to be specified at deployment runtime. You can even pass in the values using a Harness [Trigger](../../model-cd-pipeline/expressions/passing-variable-into-workflows.md).Here is an example of what this step looks like when it shifts traffic 10% during deployment:
 
 ![](./static/ami-elastigroup-113.png)
 
 You can see that the New Elastigroup is receiving 10% of traffic and the old Elastigroup is receiving 90%.
 
-Next, you will likely want to follow the Shift Traffic Weight step with an [Approval step](https://docs.harness.io/article/0ajz35u2hy-approvals). This way you can test the new Elastigroup before shifting more traffic to it.
+Next, you will likely want to follow the Shift Traffic Weight step with an [Approval step](../../model-cd-pipeline/approvals/approvals.md). This way you can test the new Elastigroup before shifting more traffic to it.
 
 Add more **Shift Traffic Weight** and **Approval** steps until you shift traffic to 100.
 
@@ -512,7 +512,7 @@ By default, AMI Elastigroup Blue/Green Workflows in Harness have five steps:
 
 Harness preconfigures the **Setup**, **Deploy**, and **Swap Routes** steps. Below, we outline those steps' defaults and options, with examples of the deployment logs' contents at each step.
 
-The **Verify Staging** and **Wrap Up** steps are placeholders, to which you can add integrations and commands. For details on adding **Verify Staging** integrations, see [Continuous Verification](https://docs.harness.io/article/myw4h9u05l-verification-providers-list).
+The **Verify Staging** and **Wrap Up** steps are placeholders, to which you can add integrations and commands. For details on adding **Verify Staging** integrations, see [Continuous Verification](../../continuous-verification/continuous-verification-overview/concepts-cv/what-is-cv.md).
 
 
 #### Create the Blue/Green Workflow
@@ -702,7 +702,7 @@ Click **Add Step**, and then locate these options.
 
 ![](./static/ami-elastigroup-134.png)
 
-For information on setting these up, see [Verify Deployments with AppDynamics](https://docs.harness.io/article/ehezyvz163-3-verify-deployments-with-app-dynamics) and [Verify Deployments with Elasticsearch](https://docs.harness.io/article/e2eghvcyas-3-verify-deployments-with-elasticsearch).
+For information on setting these up, see [Verify Deployments with AppDynamics](../../continuous-verification/appdynamics-verification/3-verify-deployments-with-app-dynamics.md) and [Verify Deployments with Elasticsearch](../../continuous-verification/elk-elasticsearch-verification/3-verify-deployments-with-elasticsearch.md).
 
 
 ### Canary Workflow and Deployment
@@ -736,7 +736,7 @@ Here are the phases and steps we'll build:
 1. [Phase 1: Canary](#phase_1)
    * [Elastigroup Setup](#setup_asg): Specify how many EC2 instances to launch in the Elastigroup that Harness deploys at the end of the Workflow. This step also specifies the steady state timeout.
    * [Deploy Service](#upgrade_asg_1): Specify the percentage of instances to deploy in this phase. When you add additional phases, each phase automatically includes a Deploy Service step, which you must configure with the count or percentage of instances you want deployed in that phase.
-   * [Verify Staging](#verify_service_1): This is a stub, while Harness adds support for [Verification Providers](https://docs.harness.io/article/myw4h9u05l-verification-providers-list) in Elastigroup Canary deployments.
+   * [Verify Staging](#verify_service_1): This is a stub, while Harness adds support for [Verification Providers](../../continuous-verification/continuous-verification-overview/concepts-cv/what-is-cv.md) in Elastigroup Canary deployments.
    * [Rollback Steps](#rollback_1): Roll back the ASG if deployment fails. (Rollback steps are automatically added here, and to each of the remaining phases. This guide covers them only in this first phase.)
 2. [Phase 2: Canary](#phase_2)
    * [Deploy Service](#upgrade_asg_2): Upgrade the Elastigroup to a higher percentage of instances.
@@ -749,14 +749,14 @@ Ready to deploy? Let's configure and execute this sample Workflow's three Deploy
 
 ### Phase 1: Canary
 
-This example Workflow's first phase defines your Elastigroup, upgrades it to a 25% Canary deployment, and evaluates this partial deployment using (in this example) [CloudWatch](https://docs.harness.io/article/q6ti811nck-cloud-watch-verification-overview) verification.
+This example Workflow's first phase defines your Elastigroup, upgrades it to a 25% Canary deployment, and evaluates this partial deployment using (in this example) [CloudWatch](../../continuous-verification/continuous-verification-overview/concepts-cv/cloud-watch-verification-overview.md) verification.
 
 To add a Canary Phase:
 
 1. In **Deployment Phases**, click **Add Phase**.
 2. In **Service**, select the Service you previously [set up](#service) for this AMI.
 3. Select the [Infrastructure Definition](#add_infra_def) that you previously configured.
-4. In **Service Variable Overrides**, you can add values to overwrite any variables in the Service you selected. Click **Add**, then enter the **Name** of the variable to override, and the override **Value**. (For details, see [Workflow Phases](https://docs.harness.io/article/m220i1tnia-workflow-configuration#workflow_phases).)  
+4. In **Service Variable Overrides**, you can add values to overwrite any variables in the Service you selected. Click **Add**, then enter the **Name** of the variable to override, and the override **Value**. (For details, see [Workflow Phases](../../model-cd-pipeline/workflows/workflow-configuration.md#workflow-phases).)  
    The **Workflow Phase** dialog will now look something like this:
    ![](./static/ami-elastigroup-138.png)
 5. Click **Submit**. The new Phase is created.![](./static/ami-elastigroup-139.png)
@@ -832,7 +832,7 @@ Elastigroup: [sig-054f224d] reached steady state
 
 #### Step 3: Verify Staging
 
-Harness does not yet support [Verification Providers](https://docs.harness.io/article/myw4h9u05l-verification-providers-list) in Elastigroup Canary deployments.Once Continuous Verification support is added for Elastigroup, a Canary Workflow's Canary phases are the ideal places to add verification steps, using the [Canary Analysis strategy](https://docs.harness.io/article/0avzb5255b-cv-strategies-and-best-practices#canary_analysis). If the Canary phases are verified, you can assume that the Primary phase will proceed successfully.
+Harness does not yet support [Verification Providers](../../continuous-verification/continuous-verification-overview/concepts-cv/what-is-cv.md) in Elastigroup Canary deployments.Once Continuous Verification support is added for Elastigroup, a Canary Workflow's Canary phases are the ideal places to add verification steps, using the [Canary Analysis strategy](../../continuous-verification/continuous-verification-overview/concepts-cv/cv-strategies-and-best-practices.md#canary-analysis). If the Canary phases are verified, you can assume that the Primary phase will proceed successfully.
 
 For an example of how a **Verify Staging** step appears in the Harness Deployments page (and its **Details** panel), see our (non-Elastigroup) AMI Canary Deployment Guide's [Step 3: Verify Service](ami-canary.md#verify-service-1).
 
@@ -930,7 +930,7 @@ No deployment error. Execution success.
 
 #### Step 2: Verify Staging
 
-Once Harness adds [Continuous Verification](https://docs.harness.io/article/myw4h9u05l-verification-providers-list) support for Elastigroup deployments, you could use this step to verify this second Canary phase using any Harness-supported [Verification Provider](https://docs.harness.io/article/myw4h9u05l-verification-providers-list#supported_providers).
+Once Harness adds [Continuous Verification](../../continuous-verification/continuous-verification-overview/concepts-cv/what-is-cv.md) support for Elastigroup deployments, you could use this step to verify this second Canary phase using any Harness-supported [Verification Provider](../../continuous-verification/continuous-verification-overview/concepts-cv/what-is-cv.md#supported-providers).
 
 
 ### Phase 3: Primary
@@ -1017,5 +1017,5 @@ Yes. Assign an appropriate port in your Workflow's [Elastigroup Setup](#setup_as
 
 ### Next Steps
 
-* Add monitoring to your AMI deployment and running instances: see [Continuous Verification](https://docs.harness.io/article/myw4h9u05l-verification-providers-list) and [24/7 Service Guard Overview](https://docs.harness.io/article/dajt54pyxd-24-7-service-guard-overview).
+* Add monitoring to your AMI deployment and running instances: see [Continuous Verification](../../continuous-verification/continuous-verification-overview/concepts-cv/what-is-cv.md) and [24/7 Service Guard Overview](../../continuous-verification/continuous-verification-overview/concepts-cv/24-7-service-guard-overview.md).
 

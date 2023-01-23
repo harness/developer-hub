@@ -29,6 +29,7 @@ You can start the Relay Proxy by pulling the `harness/ff-proxy` image from [Dock
 1. Pull the latest Relay Proxy [Docker image](https://hub.docker.com/r/harness/ff-proxy).  
   
 `docker pull harness/ff-proxy`
+
 2. View the configuration variables by running the following command:  
   
 `docker run harness/ff-proxy`  
@@ -150,11 +151,11 @@ The Relay Proxy obtains a list of all Environments and associated API keys for t
 
 The following are the required configuration variables to connect to the Feature Flags service:
 
-* **admin-service-token**: Enter the Service Account details. An auth token that lets the proxy communicate with Feature Flags. For more information on how to create a Service Account, go to [Create a Service Account](https://docs.harness.io/article/e5p4hdq6bd-add-and-manage-service-account#create_a_service_account).
+* **admin-service-token**: Enter the Service Account details. An auth token that lets the proxy communicate with Feature Flags. For more information on how to create a Service Account, go to [Create a Service Account](../../../platform/4_Role-Based-Access-Control/6-add-and-manage-service-account.md#create-a-service-account).
 * **account-identifier**: Enter your account identifier for which you want to retrieve the config. You can copy the account ID from the Harness Manager. In Harness Manager's address bar, copy the **Harness account ID** from your Harness URL. The Harness account ID comes after `account` in the URL. For example in the following URL, the account ID is `1a2b3c`: `https://app.harness.io/#/account/1a2b3c`.
-* **org-identifier**: Enter your organization identifier for which you want to retrieve the config. For more information, go to [Create a Harness Organization](https://docs.harness.io/article/36fw2u92i4-create-an-organization#step_1_create_a_harness_org).
+* **org-identifier**: Enter your organization identifier for which you want to retrieve the config. For more information, go to [Create a Harness Organization](../../../platform/1_Organizations-and-Projects/2-create-an-organization.md#step-1-create-a-harness-org).
 * **api-keys**: Enter you server SDK key. For more information, go to [Add and Manage API Keys](../1-ff-creating-flag/4-create-a-feature-flag.md#step-3-create-an-sdk-key).
-* **auth-secret**: Enter your authentication secret details. A secret that is used by the proxy to sign the [JWTs](https://jwt.io/) that it sends to the SDKs. For more information, go to [Add a Secrets Manager](https://docs.harness.io/article/bo4qbrcggv-add-secrets-manager).
+* **auth-secret**: Enter your authentication secret details. A secret that is used by the proxy to sign the [JWTs](https://jwt.io/) that it sends to the SDKs. For more information, go to [Add a Secrets Manager](../../../platform/6_Security/5-add-secrets-manager.md).
 1. Specify your configuration details and Docker run the proxy image. The following are the examples:
 	1. Here is an example of a Docker Relay Proxy image with the required configuration details:  
 	  

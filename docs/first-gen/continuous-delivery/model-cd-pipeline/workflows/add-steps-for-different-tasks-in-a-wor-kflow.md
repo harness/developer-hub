@@ -25,7 +25,7 @@ To add steps, do the following:
 
    ![](./static/add-steps-for-different-tasks-in-a-wor-kflow-101.png)
    
-2. To use a template, click **Add Step**, and then click **Template Library**. For more information, see [Use Templates](https://docs.harness.io/article/ygi6d8epse-use-templates).
+2. To use a template, click **Add Step**, and then click **Template Library**. For more information, see [Use Templates](../../concepts-cd/deployment-types/use-templates.md).
 3. If a step has multiple commands, you can arrange them. **Mouseover** the command and then click the **down arrow**.
 4. You can also control how the multiple commands and steps are executed. Click the vertical ellipsis next to a step with multiple steps. The execution drop-down appears.
 

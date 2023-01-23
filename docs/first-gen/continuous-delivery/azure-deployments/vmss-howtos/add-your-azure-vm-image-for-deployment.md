@@ -25,14 +25,14 @@ In this topic:
 
 * [Azure Virtual Machine Scale Set Deployments Overview](azure-virtual-machine-scale-set-deployments.md)
 * [Connect to Azure for VMSS Deployments](connect-to-your-azure-vmss.md)
-* [Harness Delegate Overview](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation)
-* [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts)
+* [Harness Delegate Overview](../../../firstgen-platform/account/manage-delegates/delegate-installation.md)
+* [Harness Key Concepts](../../../starthere-firstgen/harness-key-concepts.md)
 
 Ensure you have connected Harness to your Azure subscription as described in [Connect to Azure for VMSS Deployments](connect-to-your-azure-vmss.md).
 
 ### Supported Platforms and Technologies
 
-See [Supported Platforms and Technologies](https://docs.harness.io/article/220d0ojx5y-supported-platforms).
+See [Supported Platforms and Technologies](../../../starthere-firstgen/supported-platforms.md).
 
 ### Step 1: Ensure You Have an Image Definition
 
@@ -53,7 +53,7 @@ You can also see this information in the gallery **Properties**.
 
 ### Step 2: Create the Harness VMSS Service
 
-1. In Harness, create or open an Application. See [Create an Application](https://docs.harness.io/article/bucothemly-application-configuration).
+1. In Harness, create or open an Application. See [Create an Application](../../model-cd-pipeline/applications/application-configuration.md).
 2. Select **Services**, and then click **Add Service**.
 3. In the **Add Service** settings, name your Service.
 4. In **Deployment Type**, select **Azure Virtual Machine Scale Set**.

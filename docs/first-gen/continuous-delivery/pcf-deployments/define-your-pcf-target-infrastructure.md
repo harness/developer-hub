@@ -8,10 +8,10 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-In the Environment, you create [Infrastructure Definitions](https://docs.harness.io/article/v3l3wqovbe-infrastructure-definitions) that describe your target deployment environments. Tanzu Application Service (TAS, formerly PCF) Infrastructure Definitions specify the following:
+In the Environment, you create [Infrastructure Definitions](../model-cd-pipeline/environments/infrastructure-definitions.md) that describe your target deployment environments. Tanzu Application Service (TAS, formerly PCF) Infrastructure Definitions specify the following:
 
 * The TAS deployment type.
-* The TAS Cloud Provider that you added, as described in [Add Cloud Providers](https://docs.harness.io/article/whwnovprrb-infrastructure-providers#pivotal_cloud_foundry_pcf).
+* The TAS Cloud Provider that you added, as described in [Add Cloud Providers](../../firstgen-platform/account/manage-connectors/cloud-providers.md#pivotal-cloud-foundry-pcf).
 * The TAS organization to use.
 * The target TAS space that the app you are deploying is scoped to.
 * Any specific Harness Services that you want to scope the Infrastructure Definition to. If you choose not to scope to specific Services, the Infrastructure Definition may be used with any TAS Service.
@@ -43,7 +43,7 @@ Select **Pivotal Cloud Foundry**.
 
 ### Step 5: Cloud Provider
 
-Select the Cloud Provider to use to connect to the foundation. This will be one of the TAS Cloud Providers you set up in [Add Cloud Providers](https://docs.harness.io/article/whwnovprrb-infrastructure-providers#pivotal_cloud_foundry_pcf).
+Select the Cloud Provider to use to connect to the foundation. This will be one of the TAS Cloud Providers you set up in [Add Cloud Providers](../../firstgen-platform/account/manage-connectors/cloud-providers.md#pivotal-cloud-foundry-pcf).
 
 The roles associated with the TAS user account used in the Cloud Provider determine what orgs will appear in the **Organization** setting.
 

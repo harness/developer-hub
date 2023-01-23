@@ -23,7 +23,7 @@ The other approval mechanisms are:
 * [Workflows](../workflows/workflow-configuration.md)
 * [Pipelines](../pipelines/pipeline-configuration.md)
 * [Create Pipeline Templates](../pipelines/templatize-pipelines.md)
-* [Use Variable Expressions](https://docs.harness.io/category/use-variable-expressions)
+* [Use Variable Expressions](/docs/category/use-variable-expressions)
 
 ### Step: Add an Approval Step
 
@@ -33,7 +33,7 @@ The other approval mechanisms are:
    
 2. Select **Approval Step**.
 3. Select **Jira** in the **Ticketing System**.
-4. Select the Jira account in **Jira Connector** that you want to use by selecting the Collaboration Provider you added for the account. For more information, see [Add Jira Collaboration Provider](https://docs.harness.io/article/bhpffyx0co-add-jira-collaboration-provider).
+4. Select the Jira account in **Jira Connector** that you want to use by selecting the Collaboration Provider you added for the account. For more information, see [Add Jira Collaboration Provider](../../../firstgen-platform/account/manage-connectors/add-jira-collaboration-provider.md).
 5. Select the Jira **Project** containing the Jira issue you want to use for approval. You can enter text and expressions together.
 6. Enter the **Key/Issue ID**. It is the output variable for a Jira issue created in a Workflow, for example `${Jiravar.issueId}`. You can enter the Jira Key/Issue ID for any Jira issue in the Jira project. You can also enter text and expressions together.
 7. Enter the time duration in **Timeout** that Harness should wait for the approval or rejection before failing the deployment. You can use `**w**`  for week, `**d**`  for day, `**h**`  for hour, `**m**`  for minutes, `**s**`  for seconds and `**ms**` for milliseconds. For example, 1d for one day.The maximum is 3w 3d 20h 30m.

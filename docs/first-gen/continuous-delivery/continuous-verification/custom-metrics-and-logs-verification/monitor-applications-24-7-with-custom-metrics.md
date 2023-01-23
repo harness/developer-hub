@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 Harness 24/7 Service Guard monitors your live applications, catching problems that surface minutes or hours following deployment. For more information, see  [24/7 Service Guard Overview](../continuous-verification-overview/concepts-cv/24-7-service-guard-overview.md).
 
-While Harness supports  [all of the common metrics tools](https://docs.harness.io/category/continuous-verification), you can add your Custom metrics to Harness 24/7 Service Guard in your Harness Application Environment. For a setup overview, see  [Connect to Custom Verification for Custom Metrics](connect-to-custom-verification-for-custom-metrics.md).
+While Harness supports  [all of the common metrics tools](/docs/category/continuous-verification), you can add your Custom metrics to Harness 24/7 Service Guard in your Harness Application Environment. For a setup overview, see  [Connect to Custom Verification for Custom Metrics](connect-to-custom-verification-for-custom-metrics.md).
 
 This section assumes you have a Harness Application set up, containing a Service and Environment. For steps on setting up a Harness Application, see  [Application Components](../../model-cd-pipeline/applications/application-configuration.md).
 
@@ -128,7 +128,7 @@ Select **GET** or **POST**. If you select **POST**, the **Metric Collection Body
 
 In **Metric Collection Body**, enter the JSON body to send as a payload when making a REST call to the APM Provider. The requirements of the JSON body will depend on your APM provider.
 
-You can use variables you created in the Service and Workflow in the JSON, as well as [Harness built-in variables](https://docs.harness.io/article/9dvxcegm90-variables).
+You can use variables you created in the Service and Workflow in the JSON, as well as [Harness built-in variables](../../../firstgen-platform/techref-category/variables/variables.md).
 
 ### Step 11: Response Mapping
 

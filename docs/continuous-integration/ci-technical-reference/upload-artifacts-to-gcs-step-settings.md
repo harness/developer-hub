@@ -18,11 +18,11 @@ The unique name for this Connector.
 
 ### ID
 
-See [Entity Identifier Reference](https://docs.harness.io/article/li0my8tcz3-entity-identifier-reference).
+See [Entity Identifier Reference](../../platform/20_References/entity-identifier-reference.md).
 
 ### GCP Connector
 
-The Harness Connector for the GCP account where you want to upload the artifact. See [Google Cloud Platform (GCP) Connector Settings Reference](https://docs.harness.io/article/yykfduond6-gcs-connector-settings-reference).
+The Harness Connector for the GCP account where you want to upload the artifact. See [Google Cloud Platform (GCP) Connector Settings Reference](../../platform/7_Connectors/ref-cloud-providers/gcs-connector-settings-reference.md).
 
 ### Bucket
 
@@ -60,6 +60,6 @@ Timeout for the step. Once the timeout is reached, the step fails, and the Pipel
 
 ### See Also
 
-* [Step Skip Condition Settings](https://docs.harness.io/article/i36ibenkq2-step-skip-condition-settings)
-* [Step Failure Strategy Settings](https://docs.harness.io/article/htrur23poj-step-failure-strategy-settings)
+* [Step Skip Condition Settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+* [Step Failure Strategy Settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
 

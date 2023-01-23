@@ -1,7 +1,7 @@
 ---
 title: Harness API Quickstart
 description: This document explains the steps to get started with Harness NG APIs.
-# sidebar_position: 2
+sidebar_position: 2
 helpdocs_topic_id: f0aqiv3td7
 helpdocs_category_id: pm96bpz4kf
 helpdocs_is_private: false
@@ -33,7 +33,7 @@ The API requests in this topic use curl, but Harness supports multiple languages
 
 ### Before you begin
 
-* [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts)
+* [Harness Key Concepts](../../first-gen/starthere-firstgen/harness-key-concepts.md)
 * [Access Management(RBAC) Overview](../4_Role-Based-Access-Control/1-rbac-in-harness.md)
 * This quickstart walks you through adding the Harness API keys needed to authenticate with the API. To review Harness API keys, see [Add and Manage API Keys](../4_Role-Based-Access-Control/7-add-and-manage-api-keys.md).
 * Make sure your Harness account has the required permissions to Create, Edit, Delete, and View the Harness resources you are creating via API. Any of the following default roles are sufficient: Account Administrator, Organization Admin, Project Admin. For more, see [Permissions Reference](../4_Role-Based-Access-Control/ref-access-management/permissions-reference.md).
@@ -100,7 +100,7 @@ You can also use a Service Account Tokens instead of PAT. See [Add and Manage Se
 
 ### Step 2: Create a Project via API
 
-Now that we have our token, we can create a Harness Project. A Harness [Project](https://docs.harness.io/article/hv2758ro4e-learn-harness-key-concepts#organizations_and_projects) is a group of Harness modules and their Pipelines.
+Now that we have our token, we can create a Harness Project. A Harness [Project](../../getting-started/learn-harness-key-concepts.md#organizations-and-projects) is a group of Harness modules and their Pipelines.
 
 To send the API request, you will need your Harness account Id and the token you created.
 

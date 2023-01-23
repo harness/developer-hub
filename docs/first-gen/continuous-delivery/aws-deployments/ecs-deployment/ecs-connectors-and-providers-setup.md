@@ -19,7 +19,7 @@ If your artifacts are in AWS along with your target ECS cluster, you can simply 
 
 Harness integrates with many different types of repositories and artifact providers. We call these Artifact Servers, and they help you pull your artifacts into your Harness Applications.
 
-Add an Artifact Server for your artifact repository to your Harness account as described in [Add Artifact Servers](https://docs.harness.io/article/7dghbx1dbl-configuring-artifact-server).
+Add an Artifact Server for your artifact repository to your Harness account as described in [Add Artifact Servers](../../../firstgen-platform/account/manage-connectors/configuring-artifact-server.md).
 
 Later, when you set up a Harness Service, you will use the Artifact Server to select the artifact you want to deploy:
 
@@ -40,7 +40,7 @@ Adding a Delegate Selector to your Delegate was discussed earlier in [Harness EC
 7. In **Delegate Selector**, enter the Selector you gave the ECS Delegate listed in the **Harness Installations** page.
 8. Click **SUBMIT**. The Cloud Provider is added.
 
-For more information about setting up an AWS Cloud Provider, see [Add Cloud Providers](https://docs.harness.io/article/whwnovprrb-cloud-providers).
+For more information about setting up an AWS Cloud Provider, see [Add Cloud Providers](../../../firstgen-platform/account/manage-connectors/cloud-providers.md).
 
 ### Next Step
 

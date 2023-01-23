@@ -1,0 +1,14 @@
+{
+    "label": "CD Basics",
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "link": {
+        "type": "generated-index",
+        "title": "CD Basics"
+    },
+    "customProps": {
+        "position": "100",
+        "helpdocs_category_id": "dxej4ug0n5"
+    }
+}

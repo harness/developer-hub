@@ -78,6 +78,19 @@ To create a Target, pass in arguments for the following:
 | Name | Name for this Target. This does not have to be unique. Note: If you don’t provide a value, Harness uses the ID as the name.  | Optional | `.name('Harness')` |
 
 
+<details>
+<summary> Regex requirements for target names and identifiers </summary>
+
+**Identifier** 
+
+Regex: `^[A-Za-z0-9.@_-]*$`  
+Must consist of only alphabetical characters, numbers, and the following symbols:  
+. (period)  
+@ (at sign)  
+-(dash)  
+\_ (underscore)  
+</details>
+
 For example:
 
 `FFTarget target = FFTarget.builder().identifier('Harness').name('Harness').build();`
@@ -131,7 +144,7 @@ FFClient client = new FFClient('Your SDK Key', target, config);
 ```
  
 
-### Evaluating a Flag
+## Evaluating a flag
 
 Evaluating a Flag is when the SDK processes all Flag rules and returns the correct Variation of that Flag for the Target you provide. 
 
@@ -153,11 +166,11 @@ System.debug('Feature flag ' + flag + ' is '+ value + ' for this user');
 ```
  
 
-### Test your app is connected to Harness
+## Test your app is connected to Harness
 
 When you receive a response showing the current status of your Feature Flag, go to the Harness Platform and toggle the Flag on and off. Then, check your app to verify if the Flag Variation displayed is updated with the Variation you toggled.
 
-### Sample code for an Apex application
+## Sample code for an Apex application
 
 
 ```

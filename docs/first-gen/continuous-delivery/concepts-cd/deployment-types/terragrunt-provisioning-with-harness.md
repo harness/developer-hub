@@ -74,16 +74,16 @@ As a summary, you will need to manage the following permissions:
 	+ **Application:** All Applications that you want to use with Terragrunt.
 	+ **Filter:** All Provisioners.
 	+ **Action:** Create, Read, Update, Delete.  
-	  See [Managing Users and Groups (RBAC)](https://docs.harness.io/article/ven0bvulsj-users-and-permissions).
+	  See [Managing Users and Groups (RBAC)](../../../firstgen-platform/security/access-management-howtos/users-and-permissions.md).
 	  ![](./static/terragrunt-provisioning-with-harness-38.png)
-* **Delegate**: the Harness Delegate will require permissions according to the deployment platform. It will use any access, secret, and SSH keys you configure in Harness [Secrets Management](https://docs.harness.io/article/au38zpufhr-secret-management) to perform deployment operations. For ECS Delegates, you can add an IAM role to the ECS Delegate task definition. For more information, see  [Trust Relationships and Roles](../../aws-deployments/ecs-deployment/harness-ecs-delegate.md#trust-relationships-and-roles).
+* **Delegate**: the Harness Delegate will require permissions according to the deployment platform. It will use any access, secret, and SSH keys you configure in Harness [Secrets Management](../../../firstgen-platform/security/secrets-management/secret-management.md) to perform deployment operations. For ECS Delegates, you can add an IAM role to the ECS Delegate task definition. For more information, see  [Trust Relationships and Roles](../../aws-deployments/ecs-deployment/harness-ecs-delegate.md#trust-relationships-and-roles).
 * **Cloud Provider**: the Harness Cloud Provider must have access permissions for the resources you are planning to create using Terragrunt and Terraform. For some Harness Cloud Providers, you can use the installed Delegate and have the Cloud Provider assume the permissions used by the Delegate. For others, you can enter cloud platform account information.
 :::note 
 The account used for the Cloud Provider will require platform-specific permissions for creating infrastructure. For example, to create EC2 AMIs the account requires the **AmazonEC2FullAccess** policy.
 :::
-* **Git Repo**: you will add the Git repo(s) where the Terragrunt and Terraform files are located to Harness as a Source Repo Provider. For more information, see  [Add Source Repo Providers](https://docs.harness.io/article/ay9hlwbgwa-add-source-repo-providers).
-* **Access and Secret Keys**: if needed, these are set up in Harness [Secrets Management](https://docs.harness.io/article/au38zpufhr-secret-management) and then used as variable values when you add a Provisioner step to a Workflow.
-* **SSH Key**: in some cases, in order for the Delegate to copy artifacts to the provisioned instances, it will need an SSH key. You set this up in Harness Secrets Management and then reference it in the Harness Environment Infrastructure Definition. See [Secrets Management](https://docs.harness.io/article/au38zpufhr-secret-management).
+* **Git Repo**: you will add the Git repo(s) where the Terragrunt and Terraform files are located to Harness as a Source Repo Provider. For more information, see  [Add Source Repo Providers](../../../firstgen-platform/account/manage-connectors/add-source-repo-providers.md).
+* **Access and Secret Keys**: if needed, these are set up in Harness [Secrets Management](../../../firstgen-platform/security/secrets-management/secret-management.md) and then used as variable values when you add a Provisioner step to a Workflow.
+* **SSH Key**: in some cases, in order for the Delegate to copy artifacts to the provisioned instances, it will need an SSH key. You set this up in Harness Secrets Management and then reference it in the Harness Environment Infrastructure Definition. See [Secrets Management](../../../firstgen-platform/security/secrets-management/secret-management.md).
 * **Platform Security Groups**: security groups are associated with EC2 and other cloud platform instances and provide security at the protocol and port access level. If needed, you will need to define security groups in your provisioner scripts and ensure that they allow the Delegate to connect to the provisioned instances.
 
 ### Supported Terraform Versions with Terragrunt

@@ -1,7 +1,7 @@
 ---
 title: Manage Input Sets and Triggers in Git Experience
 description: Once you have saved your Pipeline in your repo, you can set up your Input Sets and Triggers. You can set up your Input Set definitions in your repo along with your Pipeline. You can then set up your…
-# sidebar_position: 2
+sidebar_position: 9
 helpdocs_topic_id: 8tdwp6ntwz
 helpdocs_category_id: rv2jo2hoiy
 helpdocs_is_private: false
@@ -20,7 +20,7 @@ This topic covers a simple workflow for setting up your Input Sets and Triggers.
 You'll need the following:
 
 * A Git repo with at least one branch and a Personal Access Token (PAT) for your account. Harness needs the PAT to use the Git platform APIs. The PAT is encrypted using a Harness Secret Manager. Your Git Personal Access Token is stored in your Harness secret and is a private key to which only you have access. This secret cannot be accessed or referenced by any other user.Make sure your repo has at least one branch, such as main or master. For most Git providers, you simply add a README file to the repo, and the branch is created.
-* A Harness Pipeline with Git Experience enabled. In this how-to, you will cross-check your updates in both your codebase and in the Harness UI. See [Harness Git Experience QuickStart](https://newdocs.helpdocs.io/article/grfeel98am/preview).
+* A Harness Pipeline with Git Experience enabled. In this how-to, you will cross-check your updates in both your codebase and in the Harness UI. See [Harness Git Experience QuickStart](configure-git-experience-for-harness-entities.md).
 
 ### Initial setup
 

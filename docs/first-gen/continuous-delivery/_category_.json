@@ -1,6 +1,6 @@
 {
   "label": "Continuous Delivery",
-  "position": 10,
+  "position": 30,
   "collapsible": "true",
   "collapsed": "true",
   "className": "red",

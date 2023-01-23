@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-The permissions and ports listed in this topic are for all of the integrations Harness supports across its FirstGen and CurrentGen product suites. For more information, see [Harness FirstGen vs Harness NextGen](https://docs.harness.io/article/1fjmm4by22-harness-first-gen-vs-harness-next-gen).The following table lists the permissions and ports needed for the Harness Delegate to access Connectors such as artifact servers, cloud providers, verification, and security providers. You configure these settings in the Harness Manager.
+The permissions and ports listed in this topic are for all of the integrations Harness supports across its FirstGen and CurrentGen product suites. For more information, see [Harness FirstGen vs Harness NextGen](../../getting-started/harness-first-gen-vs-harness-next-gen.md).The following table lists the permissions and ports needed for the Harness Delegate to access Connectors such as artifact servers, cloud providers, verification, and security providers. You configure these settings in the Harness Manager.
 
 * **Artifact servers:** The Delegate pulls artifacts and metadata from artifact servers using the account and ports required by the artifact server.
 * **Deployments:** Most Harness deployments to Virtual Machines (for example, AWS, GCP, Azure, Datacenter) are performed using SSH over port 22. The VPC firewall setting might also require additional open ports for administration, such as HTTP 443.

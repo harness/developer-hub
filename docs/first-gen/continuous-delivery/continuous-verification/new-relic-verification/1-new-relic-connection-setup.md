@@ -14,9 +14,16 @@ A Harness Verification Provider is a connection to monitoring tools such as New 
 
 ### Before You Begin
 
-* See the [New Relic Verification Overview](../continuous-verification-overview/concepts-cv/new-relic-verification-overview.md).
+See the [New Relic Verification Overview](../continuous-verification-overview/concepts-cv/new-relic-verification-overview.md).
 
-### Step 1: Add New Relic Verification Provider
+:::important
+
+Harness uses Insights query API to query metric data from New Relic. For more information, go to [Insights query API](https://docs.newrelic.com/docs/apis/insights-apis/query-insights-event-data-api/). 
+
+:::
+
+
+### Step 1: Add New Relic verification provider
 
 To connect a verification provider, do the following:
 
@@ -28,16 +35,16 @@ To connect a verification provider, do the following:
    
 4. Complete the following fields of the **Add New Relic Verification Provider** dialog.
 
-### Step 2: Encrypted API Key
+### Step 2: Encrypted API key
 
-For secrets and other sensitive settings, select or create a new [Harness Encrypted Text secret](https://docs.harness.io/article/ygyvp998mu-use-encrypted-text-secrets).Enter the API key needed to connect with the server. For information on API keys, see [Access to REST API keys](https://docs.newrelic.com/docs/apis/getting-started/intro-apis/access-rest-api-keys) from New Relic.
+For secrets and other sensitive settings, select or create a new [Harness Encrypted Text secret](../../../firstgen-platform/security/secrets-management/use-encrypted-text-secrets.md). Enter the API key needed to connect with the server. To learn more about API keys, go to [Access to REST API keys](https://docs.newrelic.com/docs/apis/getting-started/intro-apis/access-rest-api-keys).
 
 1. Log into New Relic.
 2. On the home page, click your account name, and then click **Account Settings**.
 
    [![](./static/1-new-relic-connection-setup-25.png)](./static/1-new-relic-connection-setup-25.png)
    
-3. Click the left menu, under **Integrations**, click **API keys**.
+3. Click the left menu, and then under **Integrations**, click **API keys**.
 
    [![](./static/1-new-relic-connection-setup-27.png)](./static/1-new-relic-connection-setup-27.png)
    
@@ -51,17 +58,17 @@ For secrets and other sensitive settings, select or create a new [Harness Encryp
 
 To get the account ID for your New Relic account, in the New Relic Dashboard, copy the number after the **/accounts/** portion of the URL.
 
-### Step 4: Display Name
+### Step 4: Display name
 
-Enter a display name for the provider. If you are going to use multiple providers of the same type, ensure you give each provider a different name.
+Enter a display name for the provider. If you plan to use multiple providers of the same type, enter a different name for each provider.
 
-### Step 5: Usage Scope
+### Step 5: Usage scope
 
 Usage scope is inherited from the secrets used in the settings.
 
-Pro or higher subscription level needed. For more information, see [Introduction to New Relic's REST API Explorer](https://docs.newrelic.com/docs/apis/rest-api-v2/api-explorer-v2/introduction-new-relics-rest-api-explorer) from New Relic.
+Pro or higher subscription level needed. For more information, go to [Introduction to New Relic's REST API Explorer](https://docs.newrelic.com/docs/apis/rest-api-v2/api-explorer-v2/introduction-new-relics-rest-api-explorer) from New Relic.
 
-### Next Steps
+### Next steps
 
 * [Monitor Applications 24/7 with New Relic](2-24-7-service-guard-for-new-relic.md)
 * [New Relic Deployment Marker](3-new-relic-deployment-marker.md)

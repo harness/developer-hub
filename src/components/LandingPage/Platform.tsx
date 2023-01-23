@@ -1,6 +1,7 @@
 import React from "react";
-import Link from "@docusaurus/Link";
-import clsx from "clsx";
+// import Link from "@docusaurus/Link";
+// import clsx from "clsx";
+// import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import styles from "./styles.module.scss";
 import TutorialCard, { CardItem, docType } from "./TutorialCard";
 
@@ -9,7 +10,7 @@ const FeaturedList: CardItem[] = [
   {
     title: "Install Delegate",
     module: "platform",
-    icon: "/img/logo.svg",
+    icon: "img/logo.svg",
     description: <>Install a Docker or Kubernetes Delegate.</>,
     newDoc: false,
     type: [docType.Documentation],
@@ -22,7 +23,7 @@ const PlatformList: CardItem[] = [
   {
     title: "Install Delegate",
     module: "platform",
-    icon: "/img/logo.svg",
+    icon: "img/logo.svg",
     description: (
       <>Install a Docker or Kubernetes Delegate on your infrastructure.</>
     ),
@@ -34,7 +35,7 @@ const PlatformList: CardItem[] = [
   {
     title: "Onboard with Terraform",
     module: "platform",
-    icon: "/img/logo.svg",
+    icon: "img/logo.svg",
     description: (
       <>
         Automate lifecycle management of orgs, projects, services, environments,
@@ -46,9 +47,25 @@ const PlatformList: CardItem[] = [
     time: "5 min",
     link: "/tutorials/platform/onboard-terraform-provider",
   },
+  {
+    title: "Provision Azure Infrastructure for Harness Delegate",
+    module: "platform",
+    icon: "img/logo.svg",
+    description: (
+      <>
+        Tutorial on how to set up a Kubernetes cluster on Azure 
+        and will serve as the foundation for your CI/CD pipeline infrastructure. 
+      </>
+    ),
+    newDoc: true,
+    type: [docType.Documentation],
+    time: "3 min",
+    link: "/tutorials/platform/provision-azure-infrastructure",
+  },
 ];
 
 export default function Platform() {
+  // const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   return (
     // <Layout title="CD" description="CD">
     //   <ul className={styles.breadCrumb}>

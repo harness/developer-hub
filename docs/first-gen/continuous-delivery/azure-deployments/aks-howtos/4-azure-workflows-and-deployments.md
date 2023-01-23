@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/article/m7nkbph0ac).This section will walk you through creating a Kubernetes Workflow in Harness and what the Workflow steps deployment logs include:
+This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../../continuous-delivery/onboard-cd/cd-quickstarts/azure-cd-quickstart.md).This section will walk you through creating a Kubernetes Workflow in Harness and what the Workflow steps deployment logs include:
 
 * [Workflow Setup](4-azure-workflows-and-deployments.md#workflow-setup)
 	+ [Initialize](4-azure-workflows-and-deployments.md#initialize)
@@ -23,7 +23,7 @@ This content is for Harness [FirstGen](../../../../getting-started/harness-first
 
 In this guide, the Workflow performs a simple Rolling Deployment, which is a Kubernetes Rolling Update. For a detailed explanation, see [Performing a Rolling Update](https://kubernetes.io/docs/tutorials/kubernetes-basics/update/update-intro/) from Kubernetes.
 
-For information on other Workflow types, see [Kubernetes Deployments](https://docs.harness.io/category/kubernetes-deployments).To create a Rolling Workflow for Kubernetes, do the following:
+For information on other Workflow types, see [Kubernetes Deployments](/docs/category/kubernetes-deployments).To create a Rolling Workflow for Kubernetes, do the following:
 
 1. In your Application, click **Workflows**.
 2. Click **Add Workflow**. The **Workflow** dialog appears.
@@ -134,7 +134,7 @@ Note the `imagePullSecrets` settings. Harness used the Go templating in Service 
 
 The Prepare section identifies the resources used and versions any for release history. Every Harness deployment creates a new release with an incrementally increasing number. Release history is stored in the Kubernetes cluster in a ConfigMap. This ConfigMap is essential for release tracking, versioning and rollback.
 
-For more information, see [Releases and Versioning](https://docs.harness.io/article/ttn8acijrz-versioning-and-annotations#releases_and_versioning).
+For more information, see [Releases and Versioning](../../../firstgen-platform/techref-category/cd-ref/platforms-ref/versioning-and-annotations.md#releases-and-versioning).
 
 
 ```

@@ -1,0 +1,14 @@
+{
+  "label": "Access Management FirstGen ",
+  "position": 10,
+  "collapsible": "true",
+  "collapsed": "true",
+  "className": "red",
+  "link": {
+    "type": "generated-index",
+    "title": "Access Management FirstGen "
+  },
+  "customProps": {
+    "helpdocs_category_id": "49yov609ez"
+  }
+}

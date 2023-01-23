@@ -42,16 +42,16 @@ Harness supports Terraform, CloudFormation, and custom Shell Script provisioning
 
 * [Terraform Provisioner](../../terraform-category/terrform-provisioner.md)
 * [CloudFormation Provisioner](../cloudformation-category/cloud-formation-provisioner.md)
-* [Shell Script Provisioner](https://docs.harness.io/article/1m3p7phdqo-shell-script-provisioner)
+* [Shell Script Provisioner](../../model-cd-pipeline/infrastructure-provisioner/ssh-provisioner-category/shell-script-provisioner.md)
 
-If you are using a configured Harness [Infrastructure Provisioner](https://docs.harness.io/article/o22jx8amxb-add-an-infra-provisioner), instead select **Map Dynamically Provisioned Infrastructure**, select the Harness Infrastructure Provisioner you set up, and click **Submit**.
+If you are using a configured Harness [Infrastructure Provisioner](../../model-cd-pipeline/infrastructure-provisioner/add-an-infra-provisioner.md), instead select **Map Dynamically Provisioned Infrastructure**, select the Harness Infrastructure Provisioner you set up, and click **Submit**.
 ##### Define a Provisioned Infrastructure
 
 Harness supports Terraform, CloudFormation, and custom Shell Script provisioning. Learn about each option here:
 
 * [Terraform Provisioner](../../terraform-category/terrform-provisioner.md)
 * [CloudFormation Provisioner](../cloudformation-category/cloud-formation-provisioner.md)
-* [Shell Script Provisioner](https://docs.harness.io/article/1m3p7phdqo-shell-script-provisioner)
+* [Shell Script Provisioner](../../model-cd-pipeline/infrastructure-provisioner/ssh-provisioner-category/shell-script-provisioner.md)
 
 To fill out the **Infrastructure Definition** dialog's lower section:
 

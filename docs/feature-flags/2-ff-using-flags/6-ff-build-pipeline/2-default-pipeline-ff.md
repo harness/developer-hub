@@ -10,7 +10,9 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-> **☆ NOTE —** This feature is available to use only by Project Admins.
+:::note
+ This feature is available to use only by Project Admins.
+:::
 
 You can add a Pipeline to your Flags that will be applied when you or your team make the following changes:
 
@@ -21,7 +23,7 @@ Using a default Pipeline means that you can ensure your Flag changes can go thro
 
 ## Before you begin
 
-* You should understand how to create a Pipeline. For more information about Pipelines, go to [Pipelines and Stages](https://docs.harness.io/category/kncngmy17o-pipelines).
+* You should understand how to create a Pipeline. For more information about Pipelines, go to [Pipelines and Stages](/docs/category/pipelines).
 * You should have a Project set up with Feature Flags added to it.
 
 ## Important things to consider
@@ -48,7 +50,9 @@ To add a default Pipeline: 
 
 5. Click **Apply Changes**. After you have added the Flag Step, you can then add any other Pipeline stages or steps you want to include in your Pipeline, for example, a Jira approval stage.
 
-> **☆ NOTE —** Currently, you can’t include build or deploy stages.
+:::note
+ Currently, you can’t include build or deploy stages.
+:::
 
 ## Apply the default Pipeline to a Flag
 

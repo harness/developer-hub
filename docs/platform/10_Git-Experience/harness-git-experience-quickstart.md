@@ -1,18 +1,21 @@
 ---
 title: Harness Git Experience Quickstart (Deprecated)
 description: This quickstart shows you how to enable and use Harness Git Experience.
-# sidebar_position: 2
+sidebar_position: 12
 helpdocs_topic_id: dm69dkv34g
 helpdocs_category_id: w6r9f17pk3
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This version of Harness Git Experience has been deprecated. To try out the latest version of Git Experience, see [Harness Git Experience Quickstart](configure-git-experience-for-harness-entities.md).This quickstart shows you how to enable and use Harness Git Experience.
+:::important
+**Important** End-of-Life/Support Announcement: This version of Harness Git Experience is deprecated and will be out of support on January 31, 2023. Harness will not fix issues or add new features in the current version of Git Experience. To ensure uninterrupted support, please upgrade to the latest version of Git Experience before January 31, 2023. Harness provides support for migrating your existing projects from the older version to the latest version. Please contact Harness Support to schedule your migration.
+To learn more about the latest version of Git Experience, see [Harness Git Experience Quickstart](configure-git-experience-for-harness-entities.md).
+:::
 
 Harness Git Experience integrates your Harness Projects, Pipelines, and resources with your Git repos. You can manage and run your Harness Pipelines and resources entirely from Git or use a hybrid method. With Harness Git Experience, your Git repos are always the single source of truth.
 
-See also: [Git Experience How-tos](https://docs.harness.io/article/soavr3jh0i-git-experience-how-tos), [Harness Git Experience Overview](harness-git-experience-overview.md).### Objectives
+See also: [Git Experience How-tos](git-experience-overview.md), [Harness Git Experience Overview](harness-git-experience-overview.md).### Objectives
 
 You'll learn how to:
 
@@ -82,7 +85,7 @@ In **Repository name**, enter a name for the repo. It doesn't have to be the sam
 For example, here's the **Repository name** `GitExpDocExample` after Harness Git Experience is enabled:
 
 ![](./static/harness-git-experience-quickstart-58.png)
-In **Select Connector**, select or create a Git Connector to the repo for your Project. For steps, see [Code Repo Connectors](https://docs.harness.io/category/code-repo-connectors).
+In **Select Connector**, select or create a Git Connector to the repo for your Project. For steps, see [Code Repo Connectors](/docs/category/code-repo-connectors).
 
 Important: Connector must use the Enable API access option and Token**Important:** the Connector must use the **Enable API access** option and Username and **Token** authentication. Harness needs the PAT to access the Git platform APIs. Generate the token in your account on the Git provider and add it to Harness as a Secret. Next, use the token in the credentials for the Git Connector. For details on source code manager settings, see [Source Code Manager Settings](../7_Connectors/ref-source-repo-provider/source-code-manager-settings.md).
 
@@ -90,7 +93,7 @@ Important: Connector must use the Enable API access option and Token**Important:
 For GitHub, the token must have the following scopes:
 
 ![](./static/harness-git-experience-quickstart-60.png)
-For other Git providers, see [Code Repo Connectors](https://docs.harness.io/category/code-repo-connectors).
+For other Git providers, see [Code Repo Connectors](/docs/category/code-repo-connectors).
 
 Here's an example of a GitHub Connector that has the correct settings:
 
@@ -130,7 +133,7 @@ When you're ready, click **Save**.
 In **Select Connectivity Mode**, you have two options:
 
 * **Connect Through Manager:** Harness SaaS will connect to your Git repo whenever you make a change and Git and Harness sync.
-* **Connect Through Delegate:** Harness will make all connections using the Harness Delegate. This option is used for [Harness On-Prem](https://docs.harness.io/article/tb4e039h8x-harness-on-premise-overview) frequently, but it is also used for Harness SaaS.Secrets: if you select **Connect Through Manager**, the Harness Manager decrypts the secrets you have set up in the Harness Secrets Manager. This is different than **Connect Through Delegate** where only the Harness Delegate, which sits in your private network, has access to your key management system. See Harness Secrets Manager Overview.For this quickstart, select **Connect Through Manager**, and then click **Save and Continue.**  
+* **Connect Through Delegate:** Harness will make all connections using the Harness Delegate. This option is used for [Harness On-Prem](../../self-managed-enterprise-edition/introduction/harness-self-managed-enterprise-edition-overview.md) frequently, but it is also used for Harness SaaS.Secrets: if you select **Connect Through Manager**, the Harness Manager decrypts the secrets you have set up in the Harness Secrets Manager. This is different than **Connect Through Delegate** where only the Harness Delegate, which sits in your private network, has access to your key management system. See Harness Secrets Manager Overview.For this quickstart, select **Connect Through Manager**, and then click **Save and Continue.**  
 Harness Git Experience is enabled and the new repo and folder are listed:![](./static/harness-git-experience-quickstart-64.png)
 
 ### Step 3: Review the Harness Git Experience in your Project
@@ -185,7 +188,7 @@ In **About Your Stage**, enter the name **helloworld**.
 
 Enable **Clone Codebase**.
 
-In **Connector**, select or create a Git Connector to the repo for your Project. For steps, see [Code Repo Connectors](https://docs.harness.io/category/code-repo-connectors).
+In **Connector**, select or create a Git Connector to the repo for your Project. For steps, see [Code Repo Connectors](/docs/category/code-repo-connectors).
 
 Click **Set Up Stage**.
 
@@ -300,6 +303,6 @@ Congratulations! You now have Harness Git Experience set up, synced with your Gi
 Next, explore other Harness features:
 
 * [CI Pipeline Quickstart](../../continuous-integration/ci-quickstarts/ci-pipeline-quickstart.md)
-* [Kubernetes CD Quickstart](https://docs.harness.io/article/knunou9j30-kubernetes-cd-quickstart)
-* [Git Experience How-tos](https://docs.harness.io/article/soavr3jh0i-git-experience-how-tos)
+* [Kubernetes CD Quickstart](../../continuous-delivery/onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md)
+* [Git Experience How-tos](git-experience-overview.md)
 
