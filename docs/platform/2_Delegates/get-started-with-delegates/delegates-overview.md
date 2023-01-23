@@ -109,7 +109,7 @@ When a task is ready to be assigned, the Harness Manager first validates its lis
 The following information describes how the Harness Manager validates and assigns tasks to a delegate:
 
 * **Heartbeats**. Running delegates send heartbeats to the Harness Manager in one-minute intervals. If the Manager does not have a heartbeat for a delegate when a task is ready to be assigned, it will not assign the task to that delegate.
-* **Tags**. For more information, see [Select delegates with tags](delegate-guide/select-delegates-with-selectors.md).
+* **Tags**. For more information, see [Select delegates with tags](/docs/platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md).
 * **Allowlisting**. Once a delegate is validated for a task, it is allow-listed for that task and will likely be used again for that task. The allow-listing criteria is the URL associated with the task, such as a connection to a cloud platform, repository, or API. A delegate is allow-listed for all tasks using that URL. The time-to-live (TTL) for the allow-listing is six hours, and the TTL is reset with each successful task validation.
 * **Blocklisting**. If a delegate fails to perform a task that delegate is blocklisted for that task and will not be tried again. The TTL is 5 minutes. This is true if there is only one delegate and even if the delegate is selected for that task with a selector, such as with a shell script step in a stage.
 
@@ -133,7 +133,7 @@ Here you use delegate tags to select the delegates to use.
 
 The delegates assigned to Connectors and steps are used during Pipeline execution.
 
-If no delegates are selected, the delegates are selected as described in [Task Assignment](delegates-overview.md#task-assignment).
+If no delegates are selected, the delegates are selected as described in [Task Assignment](/docs/platform/2_Delegates/get-started-with-delegates/delegates-overview.md#task-assignment).
 
 If no delegates are selected for a CD step in its **Delegate Selector** setting, Harness prioritizes the delegate used successfully for the Infrastructure Connector.
 
