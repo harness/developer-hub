@@ -18,6 +18,11 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
 ### What's new
 
+  This release does not include new features.
+
+### Early access
+
+  This release does not include early access features.
 
 ### Fixed issues
 * The potential monthly savings displayed on the UI did not match with the Spot or On-Demand recommendations. (CCM-10698)
@@ -68,8 +73,8 @@ This release does not include fixed issues.
   
 ### Early access
 
-This release does not include early access features.
 
+  
 
 ### Fixed issues
 
