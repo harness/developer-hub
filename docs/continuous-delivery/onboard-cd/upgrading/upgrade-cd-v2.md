@@ -1,7 +1,7 @@
 ---
 title: Upgrade to service and environment v2
 description: Learn about the v2 enhanced experience
-sidebar_position: 2
+sidebar_position: 3
 ---
 
 :::info
