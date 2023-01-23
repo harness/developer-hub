@@ -7,7 +7,7 @@ helpdocs_category_id: sy6sod35zi
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
-https://github.com/harness/developer-hub/pull/348/conflict?name=docs%252Fplatform%252F2_Delegates%252Fget-started-with-delegates%252Fdelegates-overview.md&base_oid=baa604d8cdda465b23b96113b36acd36873a6690&head_oid=7536ee0fb469428862f6274c9e4f080fa1ecf9a6
+
 Harness Delegate is a service you run in your local network or VPC to connect your artifacts, infrastructure, collaboration, verification and other providers, with Harness Manager.
 
 The first time you connect Harness to a third-party resource, the delegate is installed in your target infrastructure, for example, a Kubernetes cluster. 
@@ -108,8 +108,8 @@ When a task is ready to be assigned, the Harness Manager first validates its lis
 
 The following information describes how the Harness Manager validates and assigns tasks to a delegate:
 
-* **Heartbeats**. Running delegates send heartbeats to the Harness Manager in one-minute intervals. If the Manager does not have a heartbeat for a delegate when a task is ready to be assigned, it will not assign the task to that Delegate.
-* **Tags**. For more information, see [Select Delegates with Tags](delegate-guide/select-delegates-with-selectors.md).
+* **Heartbeats**. Running delegates send heartbeats to the Harness Manager in one-minute intervals. If the Manager does not have a heartbeat for a delegate when a task is ready to be assigned, it will not assign the task to that delegate.
+* **Tags**. For more information, see [Select delegates with tags](delegate-guide/select-delegates-with-selectors.md).
 * **Allowlisting**. Once a delegate is validated for a task, it is allow-listed for that task and will likely be used again for that task. The allow-listing criteria is the URL associated with the task, such as a connection to a cloud platform, repository, or API. A delegate is allow-listed for all tasks using that URL. The time-to-live (TTL) for the allow-listing is six hours, and the TTL is reset with each successful task validation.
 * **Blocklisting**. If a delegate fails to perform a task that delegate is blocklisted for that task and will not be tried again. The TTL is 5 minutes. This is true if there is only one delegate and even if the delegate is selected for that task with a selector, such as with a shell script step in a stage.
 
@@ -133,11 +133,11 @@ Here you use delegate tags to select the delegates to use.
 
 The delegates assigned to Connectors and steps are used during Pipeline execution.
 
-If no Delegates are selected, then the Delegates are selected as described in [Task Assignment](delegates-overview.md#task-assignment).
+If no delegates are selected, the delegates are selected as described in [Task Assignment](delegates-overview.md#task-assignment).
 
 If no delegates are selected for a CD step in its **Delegate Selector** setting, Harness prioritizes the delegate used successfully for the Infrastructure Connector.
 
-Harness will try this Delegate first for the step task because this delegate was successful in the target environment.
+Harness will try this delegate first for the step task because this delegate was successful in the target environment.
 
 Most CI steps use connectors to pull the image of the container where the step will run. The delegates that are used for the step connector are not necessarily used for running the step. In general, the delegate that is used for the connector in the **Infrastructure** build farm is used to run the step.
 
@@ -151,58 +151,58 @@ For example, your Kubernetes deployment could include two Kubernetes delegates, 
 
 * **Connectors:** Connectors are used for all third-party connections.
 * **Pipeline Services and Infrastructure:** Connectors are used in Pipeline Service connections to repos and Pipeline Infrastructure connections to target environments (deployment targets, build farms, etc).
-* **Pipeline Steps:** you can select a Delegate in each Pipeline step to ensure that the step only uses that Delegate to perform its operation.
+* **Pipeline Steps:** you can select a delegate in each Pipeline step to ensure that the step only uses that delegate to perform its operation.
 
-In the case of all these Delegate uses, you can select that one or more specific Delegates to perform the operation (using Delegate Tags). If you do not specify specific Delegates, then Harness will assign the task to a Delegate.
+In the case of all these delegate uses, you can select that one or more specific delegates to perform the operation (using delegate tags). If you do not specify specific delegates, then Harness will assign the task to a delegate.
 
 #### Task assignment
 
-In cases where you have selected specific Delegates to perform the task, Harness uses those Delegate only. If these Delegates cannot perform the task, Harness does not use another Delegate.
+In cases where you select specific delegates to perform the task, Harness uses only those delegates. If those delegates cannot perform the task, Harness does not use another delegate.
 
-In cases where you do not select specific Delegates, Harness uses any available Delegate to perform the task. Harness uses the follow process and criteria to pick a Delegate.
+In cases where you do not select specific delegates, Harness uses any available delegate to perform the task. Harness uses the follow process and criteria to pick a delegate.
 
-When a task is ready to be assigned, the Harness Manager first validates its lists of Delegates to see which Delegate should be assigned the task.
+When a task is ready to be assigned, the Harness Manager first validates its lists of delegates to see which delegate should be assigned the task.
 
-The following information describes how the Harness Manager validates and assigns tasks to a Delegate:
+The following information describes how the Harness Manager validates and assigns tasks to a delegate:
 
-* **Heartbeats**. Running Delegates send heartbeats to the Harness Manager in 1 minute intervals. If the Manager does not have a heartbeat for a Delegate when a task is ready to be assigned, it will not assign the task to that Delegate.
-* **Tags**. For more information, see [Select Delegates with Tags](/docs/platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md).
-* **Allowlisting**. Once a Delegate has been validated for a task, it is allowlisted for that task and will likely be used again for that task. The allowlisting criteria is the URL associated with the task, such as a connection to a cloud platform, repo, or API. A Delegate is allowlisted for all tasks using that URL. The Time-To-Live (TTL) for the allowlisting is 6 hours, and the TTL is reset with each successful task validation.
-* **Blocklisting**. If a Delegate fails to perform a task that Delegate is blocklisted for that task and will not be tried again. TTL is 5 minutes. This is true if there is only one Delegate and even if the Delegate is selected for that task with a Selector, such as with a Shell Script step in a Stage.
+* **Heartbeats**. Running delegates send heartbeats to the Harness Manager in 1 minute intervals. If the Manager does not have a heartbeat for a delegate when a task is ready to be assigned, it will not assign the task to that delegate.
+* **Tags**. For more information, see [Select delegates with tags](/docs/platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md).
+* **Allowlisting**. After a delegate is validated for a task, it is allowlisted for that task and will likely be used to complete that task again. The allowlisting criteria is the URL associated with the task, such as a connection to a cloud platform, repo, or API. A delegate is allowlisted for all tasks using that URL. The time to live (TTL) for the allowlisting is 6 hours, and the TTL is reset with each successful task validation.
+* **Blocklisting**. If a delegate fails to perform a task that delegate is blocklisted for that task and will not be tried again. TTL is 5 minutes. This is true if there is only one delegate and even if the delegate is selected for that task with a selector, such as with a Shell Script step in a stage.
 
 #### Delegate selection in pipelines
 
-As stated above, Delegates are selected in Service and Infrastructure Connectors and in steps.
+As stated above, delegates are selected in Service and Infrastructure Connectors and in steps.
 
 For example, in the **Infrastructure** section of a stage, there is a **Connector** setting. For Harness CD, this is the Connector to the target infrastructure. For Harness CI, this is Connector to the build farm.
 
 ![](./static/delegates-overview-02.png)
-When you add Connectors to Harness, you can select several or all Delegates for the Connector to use.
+When you add connectors to Harness, you can select several or all delegates for the connector to use.
 
 Each CD step in the stage Execution has a **Delegate Selector** setting.
 
 ![](./static/delegates-overview-03.png)
-Here you use Delegate Tags to select the Delegate(s) to use.
+Here you use delegate tags to select the delegates to use.
 
 #### Which delegate is used during pipeline execution?
 
-The Delegates assigned to Connectors and steps are used during Pipeline execution.
+The delegates assigned to Connectors and steps are used during Pipeline execution.
 
-If no Delegates are selected, then the Delegates are selected as described in [Task Assignment](/docs/platform/2_Delegates/get-started-with-delegates/delegates-overview.md#task-assignment).
+If no delegates are selected, then the delegates are selected as described in [Task Assignment](/docs/platform/2_Delegates/get-started-with-delegates/delegates-overview.md#task-assignment).
 
-If no Delegates are selected for a CD step in its **Delegate Selector** setting, Harness prioritizes the Delegate used successfully for the Infrastructure Connector.
+If no delegates are selected for a CD step in its **Delegate Selector** setting, Harness prioritizes the delegate used successfully for the Infrastructure Connector.
 
-Harness will try this Delegate first for the step task because this Delegate has been successful in the target environment.
+Harness tries this delegate first for the step task because the delegate was successful in the target environment.
 
-Most CI steps use Connectors to pull the image of the container where the step will run. The Delegates used for the step's Connector are not necessarily used for running the step. In general, the Delegate(s) used for the Connector in the **Infrastructure** build farm is used to run the step.
+Most CI steps use connectors to pull the image of the container where the step will run. The delegates used for the step's connector are not necessarily used for running the step. In general, the delegates used for the connector in the **Infrastructure** build farm is used to run the step.
 
 ### Delegate high availability (HA)
 
-You might need to install multiple Delegates depending on how many Continuous Delivery tasks you do concurrently, and on the compute resources you are providing to each Delegate. Typically, you will need one Delegate for every 300-500 service instances across your applications.
+You might need to install multiple delegates depending on how many Continuous Delivery tasks you do concurrently, and on the compute resources you are providing to each delegate. Typically, you need one delegate for every 300 to 500 service instances across your applications.
 
-In addition to compute considerations, you can enable High Availability (HA) for Harness Delegates. HA simply involves installing multiple Delegates in your environment.
+In addition to compute considerations, you can enable high availability (HA) for delegates. HA simply involves installing multiple delegates in your environment.
 
-For example, your Kubernetes deployment could include two Kubernetes Delegates, each running in its own pod in the same target cluster. To add Delegates to your deployment, increase the desired count of Delegate replica pods in the **spec** section of the harness-kubernetes.yaml file that you download from Harness:
+For example, your Kubernetes deployment could include two Kubernetes delegates, each running in its own pod in the same target cluster. To add delegates to your deployment, increase the desired count of delegate replica pods in the **spec** section of the harness-kubernetes.yaml file that you download from Harness:
 
 
 ```
@@ -224,7 +224,7 @@ spec:
 ...
 ```
 
-For the Kubernetes delegate, you need only one delegate in the cluster. To create high availability, increase the number of replica pods. Do not add another delegate to the cluster. If you want to install Kubernetes delegates in separate clusters, do not use the same **harness-kubernetes.yaml** and name for both delegates. Download a new application manifest for each Delegate you want to install. This strategy prevents name conflicts. Delegates must be identical in terms of permissions, keys, connectivity, and so on. With two or more delegates running in the same target environment, high availability is provided by default. One delegate can fail without impacting Harness' ability to perform deployments. If you want more availability, you can set up three delegates to handle the loss of two delegates, and so on.
+For the Kubernetes delegate, you need only one delegate in the cluster. To create high availability, increase the number of replica pods. Do not add another delegate to the cluster. If you want to install Kubernetes delegates in separate clusters, do not use the same **harness-kubernetes.yaml** and name for both delegates. Download a new application manifest for each delegate you want to install. This strategy prevents name conflicts. Delegates must be identical in terms of permissions, keys, connectivity, and so on. With two or more delegates running in the same target environment, high availability is provided by default. One delegate can fail without impacting Harness' ability to perform deployments. If you want more availability, you can set up three delegates to handle the loss of two delegates, and so on.
 
 Two delegates in different locations with different connectivity do not support high availability. For example, if you have a delegate in a development environment and another in a production environment, the development delegate will not communicate with the production delegate and vice versa. If one delegate fails, Harness ceases operation in that environment.
 
