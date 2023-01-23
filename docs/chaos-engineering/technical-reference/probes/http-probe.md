@@ -91,20 +91,166 @@ Probe schema for HTTP Probe with common properties shared across all probes and 
    </td>
   </tr>
   <tr>
-   <td>… so on
+   <td>url
    </td>
-   <td>
+   <td>Flag to hold the URL for the httpProbe
    </td>
-   <td>
+   <td>Mandatory
    </td>
-   <td>
+   <td>N/A <code>type: string</code>
    </td>
-   <td>
+   <td>The <code>url</code> contains the URL which the experiment uses to gauge health/service availability (or other custom conditions) as part of the entry/exit criteria.
+   </td>
+  </tr>
+  <tr>
+   <td>insecureSkipVerify
+   </td>
+   <td>Flag to hold the flag to skip certificate checks for the httpProbe
+   </td>
+   <td>Optional
+   </td>
+   <td>true, false
+   </td>
+   <td>The <code>insecureSkipVerify</code> contains flag to skip certificate checks.
+   </td>
+  </tr>
+  <tr>
+   <td>responseTimeout
+   </td>
+   <td>Flag to hold the flag to response timeout for the httpProbe
+   </td>
+   <td>Optional
+   </td>
+   <td>N/A <code>type: integer</code>
+   </td>
+   <td>The <code>responseTimeout</code> contains flag to provide the response timeout for the http Get/Post request.
    </td>
   </tr>
 </table>
 
-## Run Properties
+### Method
+
+Probe properties for method GET and POST.
+
+#### GET
+
+<table>
+  <tr>
+   <td><strong>Field</strong>
+   </td>
+   <td><strong>Description</strong>
+   </td>
+   <td><strong>Type</strong>
+   </td>
+   <td><strong>Range</strong>
+   </td>
+   <td><strong>Notes</strong>
+   </td>
+  </tr>
+  <tr>
+   <td>criteria
+   </td>
+   <td>Flag to hold the criteria for the http get request
+   </td>
+   <td>Mandatory
+   </td>
+   <td><code>==, !=, oneOf</code>
+   </td>
+   <td>The <code>criteria</code> contains criteria to match the http get request's response code with the expected responseCode, which need to be fulfill as part of httpProbe run
+   </td>
+  </tr>
+  <tr>
+   <td>responseCode
+   </td>
+   <td>Flag to hold the expected response code for the get request
+   </td>
+   <td>Mandatory
+   </td>
+   <td>HTTP_RESPONSE_CODE
+   </td>
+   <td>The <code>responseCode</code> contains the expected response code for the http get request as part of httpProbe run
+   </td>
+  </tr>
+</table>
+
+#### POST
+
+<table>
+  <tr>
+   <td><strong>Field</strong>
+   </td>
+   <td><strong>Description</strong>
+   </td>
+   <td><strong>Type</strong>
+   </td>
+   <td><strong>Range</strong>
+   </td>
+   <td><strong>Notes</strong>
+   </td>
+  </tr>
+  <tr>
+   <td>criteria
+   </td>
+   <td>Flag to hold the criteria for the http post request
+   </td>
+   <td>Mandatory
+   </td>
+   <td><code>==, !=, oneOf</code>
+   </td>
+   <td>The <code>criteria</code> contains criteria to match the http post request's response code with the expected responseCode, which need to be fulfill as part of httpProbe run
+   </td>
+  </tr>
+  <tr>
+   <td>responseCode
+   </td>
+   <td>Flag to hold the expected response code for the post request
+   </td>
+   <td>Mandatory
+   </td>
+   <td>HTTP_RESPONSE_CODE
+   </td>
+   <td>The <code>responseCode</code> contains the expected response code for the http post request as part of httpProbe run
+   </td>
+  </tr>
+  <tr>
+   <td>contentType
+   </td>
+   <td>Flag to hold the content type of the post request
+   </td>
+   <td>Mandatory
+   </td>
+   <td>N/A <code>type: string</code>
+   </td>
+   <td>The <code>contentType</code> contains the content type of the http body data, which need to be passed for the http post request
+   </td>
+  </tr>
+  <tr>
+   <td>body
+   </td>
+   <td>Flag to hold the body of the http post request
+   </td>
+   <td>Mandatory
+   </td>
+   <td>N/A <code>type: string</code>
+   </td>
+   <td>The <code>body</code> contains the http body, which is required for the http post request. It is used for the simple http body. If the http body is complex then use <code>bodyPath</code> field.
+   </td>
+  </tr>
+  <tr>
+   <td>bodyPath
+   </td>
+   <td>Flag to hold the path of the http body, required for the http post request
+   </td>
+   <td>Optional
+   </td>
+   <td>N/A <code>type: string</code>
+   </td>
+   <td>The <code>bodyPath</code> This field is used in case of complex POST request in which the body spans multiple lines, the bodyPath attribute can be used to provide the path to a file consisting of the same. This file can be made available to the experiment pod via a ConfigMap resource, with the ConfigMap name being defined in the ChaosEngine OR the ChaosExperiment CR.
+   </td>
+  </tr>
+</table>
+
+### Run Properties
 
 Probe run properties for HTTP Probe.
 
@@ -158,15 +304,39 @@ Probe run properties for HTTP Probe.
    </td>
   </tr>
   <tr>
-   <td>… so on
+   <td>probePollingInterval
    </td>
-   <td>
+   <td>Flag to hold the polling interval for the probes(applicable for <code>Continuous</code> mode only)
    </td>
-   <td>
+   <td>Optional
    </td>
-   <td>
+   <td>N/A <code>type: integer</code>
    </td>
-   <td>
+   <td>The <code>probePollingInterval</code> contains the time interval for which continuous probe should be sleep after each iteration
+   </td>
+  </tr>
+  <tr>
+   <td>initialDelaySeconds
+   </td>
+   <td>Flag to hold the initial delay interval for the probes
+   </td>
+   <td>Optional
+   </td>
+   <td>N/A <code>type: integer</code>
+   </td>
+   <td>The <code>initialDelaySeconds</code> represents the initial waiting time interval for the probes.
+   </td>
+  </tr>
+  <tr>
+   <td>stopOnFailure
+   </td>
+   <td>Flags to hold the stop or continue the experiment on probe failure
+   </td>
+   <td>Optional
+   </td>
+   <td>N/A <code>type: boolean</code>
+   </td>
+   <td>The <code>stopOnFailure</code> can be set to true/false to stop or continue the experiment execution after probe fails
    </td>
   </tr>
 </table>
