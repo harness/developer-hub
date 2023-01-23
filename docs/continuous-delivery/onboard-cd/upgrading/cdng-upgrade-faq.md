@@ -12,13 +12,13 @@ For information on the differences between Harness FirstGen and NextGen, go to [
 
 ## What is Harness Continuous Delivery NextGen?
 
-Harness has reimagined Continuous Delivery (CD) and built a new version of our CD product. 
+Harness has reimagined Continuous Delivery (CD) and built a new version of its CD product. 
 
 Continuous Delivery is now part of a broader platform known as the Harness Software Delivery Platform. 
 
 We intend for the platform to improve the developer experience. 
 
-NextGen is designed to empower developers to build, deploy, and manage all aspects of their software with ease. 
+Harness NextGen is designed to empower developers to build, deploy, and manage all aspects of their software with ease. 
 
 We took all our research and user feedback from Harness CD FirstGen and redesigned our CD product from the ground up. 
 
@@ -38,7 +38,7 @@ Harness CD NextGen offers a new suite of features and integrations that further 
 
 ### Automated deployment strategies
 
-Harness provides out-of-the-box Canary, Blue Green, and Rolling deployment capabilities for any tech stack.
+Harness provides out-of-the-box canary, blue-green, and rolling deployment capabilities for any technology stack.
 
 ### Revamped template library experience
 
@@ -63,11 +63,11 @@ Harness CV integrates with your APMs and logging tools to:
 - Verify that the deployed service is running safely and perform automatic rollbacks.
 - Apply machine learning to every deployment to identify and flag anomalies in future deployments.
 
-Some CV features:
+Following are some CV features:
 
 - Harness includes a **Verify** step that queries logging and metrics providers from multiple sources at once.
 - Next, Harness uses its AI/ML-driven verification capability to automatically validate deployment quality. This capability reduces risk and provides a safety net when code is deployed to production.
-- Integrations include Prometheus, Splunk, Google Cloud Operations, Datadog, and other leading logging and metric providers.
+- Integrations include Prometheus, Splunk, Google Cloud Operations, Datadog, and other leading logging and metrics providers.
 
 ### Policy as code
 
@@ -95,7 +95,7 @@ Your FirstGen configuration (Applications, Services, Workflows, Pipelines, Trigg
 
 No. Upgrading to Harness CD NextGen will not impact your current plan. Your current billing plan will remain the same. 
 
-## What is not upgraded from CD FirstGen?
+## What is not upgraded from Harness CD FirstGen?
 
 The following FirstGen entities and configurations are not upgraded in NextGen:
 
@@ -107,19 +107,19 @@ The following FirstGen entities and configurations are not upgraded in NextGen:
 - **Triggers**. Harness won’t upgrade FirstGen triggers. You will need to reconfigure triggers for any upgraded pipelines.
   
   - For details on NextGen triggers, go to [Triggers](https://developer.harness.io/docs/category/triggers).
-- **Infrastructure provisioners**. Harness CD NextGen is no longer providing the construct of **Infrastructure Provisioners** as it did in FirstGen.
+- **Infrastructure provisioners**. Harness CD NextGen no longer provides the construct of infrastructure provisioners as it did in FirstGen.
     
-    Infrastructure provisioner capabilities are condensed into execution steps in NextGen. Harness can orchestrate infrastructure using Terraform, Terragrunt, CloudFormation, shell script provisioning, and Azure ARM and Blueprint.
+    Infrastructure provisioner capabilities are condensed into execution steps in NextGen. Harness can orchestrate infrastructure by using Terraform, Terragrunt, CloudFormation, shell script provisioning, and Azure ARM and Blueprint.
   
   - For details on NextGen infrastructure provisioning, go to [Terraform](https://developer.harness.io/docs/category/terraform) and [CloudFormation](https://developer.harness.io/docs/category/cloudformation).
 - **AWS ECS**. FirstGen ECS deployments can't migrate to NextGen ECS pipelines because the NextGen ECS integration is redesigned.
     
-    NextGen now supports Rolling, Canary, and load balancer-based Blue Green deployments. We have deprecated the FirstGen Service Setup and Wait for Steady State steps. Harness NextGen can still use your existing service and infrastructure configurations.
+    NextGen now supports rolling, canary, and load balancer–based blue-green deployments. We have deprecated the FirstGen Service Setup and Wait for Steady State steps. Harness NextGen can still use your existing service and infrastructure configurations.
 
   - For details on NextGen ECS integration, go to [ECS deployment tutorial](../cd-quickstarts/ecs-deployment-tutorial.md).
 - **Variable references in manifests and steps**. The Harness variable reference format has changed in NextGen.
     
-    In FirstGen, variables were formatted using the `${...}` format. In NextGen, the `<+...>` is used. You will need to upgrade your references using to the new format.
+    In FirstGen, variables use the `${...}` format. In NextGen, variables use the `<+...>` format. You must upgrade your references to the new format.
  
   - For details on NextGen variables, go to [Variables and expressions](https://developer.harness.io/docs/category/variables-and-expressions).
 - **Tag management**. Harness CD NextGen does not use tag management in the same way as Harness FirstGen.
@@ -127,20 +127,20 @@ The following FirstGen entities and configurations are not upgraded in NextGen:
     NextGen does support tags, but there is not a centralized management feature for them as in FirstGen.
 
   - For details on NextGen tags, go to [Tags reference](https://developer.harness.io/docs/platform/References/tags-reference).
-- **SSO providers**. NextGen still supports the same SSO providers as FirstGen, but you must reconfigure the SSO provider setup in NextGen.
+- **SSO providers**. NextGen supports the same SSO providers as FirstGen, but you must reconfigure the SSO provider setup in NextGen.
 
   - For details on NextGen SSO providers, go to [Authentication overview](https://developer.harness.io/docs/platform/Authentication/authentication-overview).
-- **Deployment history for CD dashboards**. Harness NextGen does not retain the deployment data from FirstGen. Harness will recalculate the deployment stats and metrics using NextGen CD deployments.
+- **Deployment history for CD dashboards**. Harness NextGen does not retain the deployment data from FirstGen. Harness will recalculate the deployment stats and metrics by using NextGen CD deployments.
 
   - For details on NextGen dashboards, go to [Monitor deployments and services in CD dashboards](https://developer.harness.io/docs/continuous-delivery/cd-dashboards/monitor-cd-deployments).
-- **API Automation**. Harness will not upgrade API automation built with FirstGen GraphQL APIs.
+- **API automation**. Harness will not upgrade API automation built with FirstGen GraphQL APIs.
     
-    GraphQL APIs are not used in NextGen. They are replaced with REST APIs. The API endpoints are different and take different arguments. You will need to rewrite API-based automation to reintegrate with Harness NextGen.
+    GraphQL APIs are not used in NextGen. They are replaced with REST APIs. The API endpoints are different and take different arguments. You must rewrite API-based automation to reintegrate with Harness NextGen.
 
   - For details on NextGen APIs, go to [APIs](https://developer.harness.io/docs/category/apis).
-- **Artifact Collection**. Harness will not migrate the artifact history of a FirstGen artifact source to NextGen.
+- **Artifact collection**. Harness will not migrate the artifact history of a FirstGen artifact source to NextGen.
     
-    Harness NextGen does not perform artifact polling to collect the list of artifacts and maintain a history for future selection. NextGen now fetches the list of tags at pipeline runtime. 
+    Harness NextGen does not perform artifact polling to collect the list of artifacts and maintain a history for future selection. NextGen fetches the list of tags at pipeline runtime. 
 
   - For details on NextGen artifact collection, review the artifact sources covered in [Harness Kubernetes services](https://developer.harness.io/docs/continuous-delivery/cd-services/k8s-services/kubernetes-services).
 
@@ -148,38 +148,38 @@ The following FirstGen entities and configurations are not upgraded in NextGen:
 
 There are two Harness CD NextGen upgrade options.
 
-### Option 1: Harness assisted upgrade (recommended)
+### Option 1: Harness-assisted upgrade (recommended)
 
-1. Customers schedule a meeting with the Harness team to help plan for an automated upgrade.
-2. Harness reviews the CD FirstGen account and goes over a proposed upgrade plan with customers.
-3. Harness upgrades the configuration to CD NextGen using our upgrade APIs. This process will not impact your CD FirstGen setup.
-4. Customers and the Harness team review the upgraded configuration.
-5. Customers build their new CD NextGen pipelines and validate the deployed apps through those pipelines. Harness provides guidance as needed.
-6. Customers and the Harness team work together to ensure a smooth upgrade and hit the agreed upon upgrade timeline.
+1. You schedule a meeting with the Harness team to help plan for an automated upgrade.
+2. Harness reviews the CD FirstGen account and proposes an upgrade plan to you.
+3. Harness upgrades the configuration to CD NextGen by using its upgrade APIs. This process will not impact your CD FirstGen setup.
+4. You and the Harness team review the upgraded configuration.
+5. You build your new CD NextGen pipelines and validate the apps deployed through those pipelines. Harness provides guidance as needed.
+6. You and the Harness team work together to ensure a smooth upgrade and meet the agreed upon upgrade timeline.
 
 #### Timeline
 
-With the Harness upgrade team involved, the estimated timeline for a complete upgrade is about 6 weeks. Here is the upgrade process and the timeline per each stage.
+With the Harness upgrade team involved, the estimated timeline for a complete upgrade is about six weeks. Here is the upgrade process and the timeline for each stage.
 
 ![picture 1](static/362da5ad5713ca1d3a30786f24eb71f6ce60ec094a00abf7e93b02bb8c2e0422.png)
 
 ### Option 2: Self-service upgrade
 
-1. Customers access Harness CD NextGen from the homepage of Harness FirstGen.
+1. You access Harness CD NextGen from the home page of Harness FirstGen.
 
     ![picture 2](static/d70937e8aa1a50af75650d5a64bfdb0e9e2bfc2278ff6fb7d4c5019b1487ef17.png)  
 
-2. Customers pick the FirstGen applications to recreate in NextGen.
+2. You pick the FirstGen applications to re-create in NextGen.
    
-   This includes the connectors, delegates, services, environments, workflows, and pipelines.
-3. Customers deploy and test the new pipeline(s) in Harness CD NextGen.
-4. Once customers are comfortable deploying with Harness CD NextGen, they can remove the application from FirstGen.
+   This includes connectors, delegates, services, environments, workflows, and pipelines.
+3. You deploy and test the new pipelines in Harness CD NextGen.
+4. When you are comfortable deploying with Harness CD NextGen, you can remove the application from FirstGen.
 
-Customers can reach out to Harness for review and validation of their Harness CD NextGen pipelines.
+You can reach out to Harness for review and validation of your Harness CD NextGen pipelines.
 
 #### Timeline 
 
-Harness customers share the start date and end date for the upgrade, including the final cutover date. This enables the Harness upgrade team to provide any assistance needed during customers' self-service upgrade.
+You share the start date and end date for the upgrade, including the final cutover date. This enables the Harness upgrade team to provide any assistance needed during your self-service upgrade.
 
 ## Are all features from FirstGen available in NextGen?
 
@@ -189,7 +189,7 @@ Some deployment capabilities have been overhauled:
 - AWS ECS deployments have a significantly different experience from FirstGen.
 - Deployment templates has been extended. 
 - Traditional (SSH and WinRM) deployments have a new configuration experience.
-- FirstGen Infrastructure Provisioners are now NextGen provisioning steps. You can manage the entire infrastructure provisioning configuration in each step.
+- Infrastructure provisioners in FirstGen are now provisioning steps in NextGen. You can manage the entire infrastructure provisioning configuration in each step.
 
 ## What major benefits have upgraded customers noticed in NextGen?
 
@@ -198,7 +198,7 @@ Some deployment capabilities have been overhauled:
 - OPA-based governance helps enforce policies in pipeline designs.
 - Standardized deployment processes using shareable templates.
 - Reduction in workflow and pipeline management as more common components can be shared.
-- Hybrid (multi-cloud deployment) pipelines and ad-hoc jobs are easier to configure and manage.
+- Hybrid (multicloud deployment) pipelines and ad-hoc jobs are easier to configure and manage.
 - Multi-service and multi-environment deployments at scale.
 - Visibility and reporting into software delivery performance.
 - Extended support for custom deployments.
