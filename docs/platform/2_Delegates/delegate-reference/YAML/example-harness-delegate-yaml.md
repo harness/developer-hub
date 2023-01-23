@@ -1,5 +1,5 @@
 ---
-title: Example -- harness-delegate.yaml
+title: Example harness-delegate.yaml
 description: This example harness-delegate.yaml file implements the approach of using the Kubernetes emptyDir object with an initialization ( INIT ) container to move binaries to the delegate image. For more info…
 # sidebar_position: 2
 helpdocs_topic_id: 2ayo3dqret
@@ -47,7 +47,7 @@ data:
   
 ---  
   
-# If delegate needs to use a proxy, please follow instructions available in the documentation  
+# If the delegate must use a proxy, follow the instructions in the documentation at 
 # https://developer.harness.io/docs/first-gen/firstgen-platform/account/manage-delegates/configure-delegate-proxy-settings/ 
   
 apiVersion: apps/v1  

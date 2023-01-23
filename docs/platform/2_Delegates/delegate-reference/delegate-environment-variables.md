@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-The following table describes environment variables you can specify in the delegate manifest. Some of these variables are included in the YAML by default; you can specify others based on use case.
+This document describes the environment variables you can specify in the delegate manifest. Some of these variables are included in the YAML by default; you can specify others based on use case.
 
 ### ACCOUNT_ID
 
@@ -64,9 +64,6 @@ This value is not specified when delegate creation is automated. Instead, a scri
 - name: DELEGATE_NAME
   value: qa 
 ```
-
-
-
 
 
 ### DELEGATE_NAMESPACE 

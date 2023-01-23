@@ -154,7 +154,7 @@ For more information about the Kubernetes emptyDir volume, see [emptyDir](https:
 
 #### Example
 
-The following example includes a segment of the delegate YAML file that contains the required changes. For the complete file, see the sample [harness-delegate.yaml](/docs/platform/2_Delegates/delegate-reference/example-harness-delegate-yaml.md).
+The following example includes a segment of the delegate YAML file that contains the required changes. For the complete file, see the sample [harness-delegate.yaml](/docs/platform/2_Delegates/delegate-reference/YAML/example-harness-delegate-yaml.md).
 
 
 ```
