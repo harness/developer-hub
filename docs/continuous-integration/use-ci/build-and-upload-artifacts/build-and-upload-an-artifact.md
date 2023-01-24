@@ -152,7 +152,7 @@ After the Pipeline runs you'll see a Build ID:
 
 ![](./static/build-and-upload-an-artifact-15.png)
 
-And this Build ID tags the image you push in one stage of your Pipeline, and pull in the image in future stages of your Pipeline.
+This Build ID tags the image you push in one stage of your Pipeline, and pulls the image in future stages of your Pipeline.
 
 
 You'll also see the ID as the tag on the image in your repo:
