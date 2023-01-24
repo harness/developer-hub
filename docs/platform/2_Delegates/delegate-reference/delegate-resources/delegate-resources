@@ -12,10 +12,10 @@ Harness API provides the following RESTful resources for working with NextGen de
 
 | Resource | Operations |
 | :-- | :-- |
-| Delegate download resource<br />`download-delegates` |Download YAML files for Kubernetes and Docker delegates.|
-| Delegate group tags resource<br />`delegate-group-tags` | Add, retrieve, remove, delete, and list one or more descriptive tags from groups of one or more delegates.|
-| Delegate setup resource<br />`delegate-setup` | Perform setup tasks including generating a Helm values YAML file and delegate deletion.| 
-| Delegate token resource<br />`delegate-token-ng` | Create or revoke delegate tokens, retrieve delegate tokens by different account and project parameters, and list delegates by token.|
+| Delegate download resource<br />`download-delegates` | Download YAML files for Kubernetes and Docker delegates. |
+| Delegate group tags resource<br />`delegate-group-tags` | Add, retrieve, remove, delete, and list one or more descriptive tags from groups of one or more delegates. |
+| Delegate setup resource<br />`delegate-setup` | Perform setup tasks including generating a Helm values YAML file and delegate deletion. | 
+| Delegate token resource<br />`delegate-token-ng` | Create or revoke delegate tokens, retrieve delegate tokens by different account and project parameters, and list delegates by token. |
 
 ## Use cases for delegate resources
 
@@ -23,12 +23,12 @@ The delegate resources target the following use cases.
 
 | Use case | Resource |
 | :-- | :-- |
-| Delegate download resource<br />`download-delegates` | Pipeline automation, delegate lifecycle management, GitOps|
+| Delegate download resource<br />`download-delegates` | Pipeline automation, delegate lifecycle management, GitOps |
 | Delegate group tags resource<br />`delegate-group-tags` | Pipeline automation, delegate lifecycle management, GitOps |
-| Delegate setup resource<br />`delegate-setup` |Pipeline automation, Helm-based installation, delegate lifecycle management|
+| Delegate setup resource<br />`delegate-setup` | Pipeline automation, Helm-based installation, delegate lifecycle management |
 | Delegate token resource<br />`delegate-token-ng` |Pipeline automation, delegate lifecycle management, security enforcement |
 
-For information on the basic steps involved in automating delegate installation, see [Automate delegate installation](/docs/platform/2_Delegates/advanced-installation/automate-delegate-installation.md. 
+For information on the basic steps involved in automating delegate installation, see [Automate delegate installation](/docs/platform/2_Delegates/advanced-installation/automate-delegate-installation.md).
 
 ## Security
 
@@ -44,7 +44,7 @@ curl -i -X DELETE \
 
 ## Delegate API host and base URL
 
-Delegate resources use the HTTPS addressing scheme with the app.harness.io/gateway host. The base URL is https://app.harness.io/gateway. 
+Delegate resources use the HTTPS addressing scheme with the `app.harness.io/gateway` host. The base URL is https://app.harness.io/gateway. 
 
 ```
 https://app.harness.io/gateway/ng/api/delegate-resource-name
@@ -58,12 +58,6 @@ The operations of the delegate resources return with standard HTTP status codes 
 
 | **Status code** | **Message body** |
 | :-- | :-- |
-| `HTTP 200` | The standard success response.<br /><br /> 
-
-Depending on the request, the response body may include an entity containing further results. |
-| `HTTP 400` |The server is unable to process the request.<br /><br />
-
-This response code typically indicates a client error including a malformed or incorrectly framed request or improper routing. |
-| `HTTP 500` | The server is unable to process the request.<br /><br />
-
-This response code typically indicates a client error including a malformed or incorrectly framed request or improper routing.|
+| `HTTP 200` | The standard success response.<br /><br />Depending on the request, the response body may include an entity containing further results. |
+| `HTTP 400` |The server is unable to process the request.<br /><br />This response code typically indicates a client error including a malformed or incorrectly framed request or improper routing. |
+| `HTTP 500` | The server is unable to process the request.<br /><br />This response code typically indicates a client error including a malformed or incorrectly framed request or improper routing.|
