@@ -417,5 +417,5 @@ A successful request returns with `HTTP status code 200 OK`. You can check the m
 ```
 In this example, the `status` field indicates that the token is revoked.
 
-Confirm the revocation of the delegate token by sending a second request to retrieve delegate tokens. For information on how to delete a delegate see [Delete a delegate](/docs/platform/2_Delegates/delegate-guide/delete-a-delegate.md).
+Confirm the revocation of the delegate token by sending a second request to retrieve delegate tokens. For information on how to delete a delegate see [Delete a delegate](/docs/platform/2_Delegates/get-started-with-delegates/delete-a-delegate.md).
 
