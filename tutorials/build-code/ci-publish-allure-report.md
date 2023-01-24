@@ -98,7 +98,7 @@ pipeline:
                     connectorRef: gcpconnector
                     bucket: demo-allure-report
                     sourcePath: target/allure-report/complete.html
-                    target: index.html
+                    target: <+pipeline.sequenceId>/index.html
               - step:
                   type: Plugin
                   name: publish metadata for allure report
@@ -107,7 +107,7 @@ pipeline:
                     connectorRef: harnessImage
                     image: plugins/artifact-metadata-publisher
                     settings:
-                      file_urls: https://storage.googleapis.com/demo-allure-report/index.html
+                      file_urls: https://storage.googleapis.com/demo-allure-report/<+pipeline.sequenceId>/index.html
                       artifact_file: artifact.txt
           serviceDependencies: []
           infrastructure:
