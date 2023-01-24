@@ -16,4 +16,4 @@ You can use the delegate resources to build operators that create, install, and 
 |Confirm the creation of the tokens | To see a list of the tokens associated with the account and optionally filtered by other parameters, use `getDelegateTokens`. Alternatively, you can retrieve a list of delegates that were assigned a specific token by using the `getDelegateGroupsUsingToken` operation. You can also find delegate tokens listed in Harness Manager. See **account resources**. |
 | [TBD] | [TBD] |
 | [TBD] | [TBD] |
-| [TBD] | For information on using Harness Manager or `kubectl` to delete a delegate, see [Delete a delegate](). |
+| [TBD] | For information on using Harness Manager or `kubectl` to delete a delegate, see [Delete a delegate](/docs/platform/2_Delegates/manage-delegates/delete-a-delegate.md). |
