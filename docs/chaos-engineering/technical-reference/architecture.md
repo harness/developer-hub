@@ -22,15 +22,3 @@ The diagram below gives a peek into the HCE architecture.
 ### Chaos Infrastructure
 
 **Chaos infrastructure** is a service that runs within your target environment to aid HCE in accessing the target resources and injecting chaos at cloud-native scale. It can be setup with a cluster-wide access or with a single namespace scope. It maintains an active connection with the control plane and exchanges information such as the experiment logs and results, service health status, etc. Upon running an experiment from the control plane, chaos infrastructure executes it within the target environment. The experiment execution is the execution of individual faults and any other custom operations defined as part of the experiment. Multiple chaos infrastructures can exist as part of a single deployment environment, to target all the different resources present in an environment.
-
-- Overview
-
-1. Environments
-2. Infrastructure
-3. Chaos Hubs
-4. Experiments
-5. Faults --> Probe
-6. Glossary
-
-- Architecture
-- Probes
