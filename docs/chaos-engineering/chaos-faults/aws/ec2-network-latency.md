@@ -128,7 +128,7 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
         </tr>
         <tr>
             <td> NETWORK_INTERFACE </td>
-            <td> Name of ethernet interface considered for shaping traffic	</td>
+            <td> Name of the network interface considered for shaping traffic	</td>
             <td> Defaults to `eth0` </td>
         </tr>
         <tr>

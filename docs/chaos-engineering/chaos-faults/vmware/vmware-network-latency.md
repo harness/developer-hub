@@ -5,7 +5,7 @@ title: VMware Network Latency
 
 ## Introduction
 - It injects network packet latency from the VMware VM(s) into the application (or service) and results in flaky access. 
-- It checks the performance of the application (or process) running on the VMWare VM(s).
+- It checks the performance of the application (or process) running on the VMware VM(s).
 
 :::tip Fault execution flow chart
 ![VMware Network Latency](./static/images/vmware-network-chaos.png)

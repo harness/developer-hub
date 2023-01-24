@@ -5,7 +5,7 @@ title: VMware Process kill
 
 ## Introduction
 - VMware Process Kill fault kills the target processes running as part of a Linux OS based VMware VM to determine the application/process resilience.
-- It helps to check the performance of the application/process running on the VMWare VMs.
+- It helps to check the performance of the application/process running on the VMware VMs.
 
 :::tip Fault execution flow chart
 ![VMware Process kill](./static/images/vmware-process-kill.png)
@@ -106,7 +106,7 @@ Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/vmware-process-kill/vmware-process-kill.yaml yaml)
 ```yaml
-# Process kill in the VMWare VM
+# Process kill in the VMware VM
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:

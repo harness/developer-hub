@@ -3,8 +3,8 @@ id: pod-dns-error
 title: Pod DNS Error
 ---
 ## Introduction
-- Pod-dns-error injects chaos to disrupt dns resolution in kubernetes pods.
-- It causes loss of access to services by blocking dns resolution of hostnames/domains.
+- This fault injects chaos to disrupt DNS resolution in kubernetes pods.
+- It causes loss of access to services by blocking DNS resolution of hostnames/domains.
 
 :::tip Fault execution flow chart
 ![Pod DNS Error](./static/images/dns-chaos.png)
@@ -45,7 +45,7 @@ The application pods should be in running state before and after chaos injection
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The time duration for chaos insertion (seconds) </td>
+        <td> The duration for chaos injection (in seconds) </td>
         <td> Default (60s) </td>
       </tr>
       <tr>
@@ -55,17 +55,17 @@ The application pods should be in running state before and after chaos injection
       </tr>
       <tr>
         <td> MATCH_SCHEME </td>
-        <td> Determines whether the dns query has to match exactly with one of the targets or can have any of the targets as substring. Can be either <code>exact</code> or <code>substring</code> </td>
+        <td> Determines whether the DNS query has to match exactly with one of the targets or can have any of the targets as substring. Can be either <code>exact</code> or <code>substring</code> </td>
         <td> if not provided, it will be set as <code>exact</code></td>
       </tr>
       <tr>
         <td> PODS_AFFECTED_PERC </td>
-        <td> The Percentage of total pods to target </td>
+        <td> The percentage of total pods to target </td>
         <td> Defaults to 0 (corresponds to 1 replica), provide numeric value only </td>
       </tr>
       <tr>
         <td> CONTAINER_RUNTIME </td>
-        <td> container runtime interface for the cluster</td>
+        <td> Container runtime interface for the cluster</td>
         <td> Defaults to docker, supported values: docker</td>
       </tr>
       <tr>
@@ -105,7 +105,7 @@ Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/pod-dns-error/target-hostnames.yaml yaml)
 ```yaml
-# contains the target host names for the dns error
+# contains the target host names for the DNS error
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -139,7 +139,7 @@ Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/pod-dns-error/match-scheme.yaml yaml)
 ```yaml
-# contains match scheme for the dns error
+# contains match scheme for the DNS error
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:

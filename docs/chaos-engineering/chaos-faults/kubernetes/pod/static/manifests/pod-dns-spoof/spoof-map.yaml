@@ -1,4 +1,4 @@
-# contains the spoof map for the dns spoofing
+# contains the spoof map for the DNS spoofing
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:

@@ -4,8 +4,8 @@ title: Pod Memory Hog Exec
 ---
 
 ## Introduction
-- This fault consumes the Memory resources on the application container on specified memory in megabytes.
-- It simulates conditions where app pods experience Memory spikes either due to expected/undesired processes thereby testing how the overall application stack behaves when this occurs.
+- This fault consumes the memory resources on the application container on specified memory in megabytes.
+- It simulates conditions where app pods experience memory spikes either due to expected or undesired processes thereby testing how the overall application stack behavior.
 
 :::tip Fault execution flow chart
 ![Pod Memory Hog Exec](./static/images/pod-stress.png)
@@ -15,7 +15,7 @@ title: Pod Memory Hog Exec
 <details>
 <summary>View the uses of the fault</summary>
 <div>
-Memory usage within containers is subject to various constraints in Kubernetes. If the limits are specified in their spec, exceeding them can cause termination of the container (due to OOMKill of the primary process, often pid 1) - the restart of the container by kubelet, subject to the policy specified. For containers with no limits placed, the memory usage is uninhibited until such time as the Node level OOM Behaviour takes over. In this case, containers on the node can be killed based on their oom_score and the QoS class a given pod belongs to (bestEffort ones are first to be targeted). This eval is extended to all pods running on the node - thereby causing a bigger blast radius. 
+Memory usage within containers is subject to various constraints in Kubernetes. If the limits are specified in their spec, exceeding them can cause termination of the container (due to OOMKill of the primary process, often pid 1) - the restart of the container by kubelet, subject to the policy specified. For containers with no limits placed, the memory usage is uninhibited until such time as the Node level OOM behavior takes over. In this case, containers on the node can be killed based on their oom_score and the QoS class a given pod belongs to (bestEffort ones are first to be targeted). This eval is extended to all pods running on the node - thereby causing a bigger blast radius. 
 
 This fault launches a stress process within the target container - which can cause either the primary process in the container to be resource constrained in cases where the limits are enforced OR eat up available system memory on the node in cases where the limits are not specified.
 </div>
@@ -47,12 +47,12 @@ The application pods should be in running state before and after chaos injection
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The time duration for chaos insertion (seconds) </td>
+        <td> The duration for chaos injection (in seconds) </td>
         <td> Defaults to 60s </td>
       </tr>
       <tr>
         <td> TARGET_PODS </td>
-        <td> Comma separated list of application pod name subjected to pod memory hog chaos</td>
+        <td> Comma separated application pod names which will be subjected to pod memory hog chaos</td>
         <td> If not provided, it will select target pods randomly based on provided appLabels</td>
       </tr>
       <tr> 
@@ -67,12 +67,12 @@ The application pods should be in running state before and after chaos injection
       </tr>
       <tr>
         <td> PODS_AFFECTED_PERC </td>
-        <td> The Percentage of total pods to target </td>
+        <td> The percentage of total pods to target </td>
         <td> Defaults to 0 (corresponds to 1 replica), provide numeric value only </td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
-        <td> Period to wait before injection of chaos in sec </td>
+        <td> Period to wait before and after the injection of chaos (in seconds) </td>
         <td> Eg. 30 </td>
       </tr>
       <tr>

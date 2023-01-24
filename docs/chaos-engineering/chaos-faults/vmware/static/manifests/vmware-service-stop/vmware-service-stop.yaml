@@ -1,4 +1,4 @@
-# Service Stop in the VMWare VM
+# Service Stop in the VMware VM
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:

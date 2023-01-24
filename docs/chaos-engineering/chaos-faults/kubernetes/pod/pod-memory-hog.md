@@ -4,8 +4,8 @@ title: Pod Memory Hog
 ---
 
 ## Introduction
-- This fault consumes the Memory resources on the application container on specified memory in megabytes.
-- It simulates conditions where app pods experience Memory spikes either due to expected/undesired processes thereby testing how the overall application stack behaves when this occurs.
+- This fault consumes the memory resources on the application container on specified memory in megabytes.
+- It simulates conditions where app pods experience memory spikes either due to expected or undesired processes thereby testing how the overall application stack behavior.
 
 :::tip Fault execution flow chart
 ![Pod Memory Hog](./static/images/pod-stress.png)
@@ -53,7 +53,7 @@ The application pods should be in running state before and after chaos injection
       </tr>  
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The time duration for chaos insertion (seconds) </td>
+        <td> The duration for chaos injection (in seconds) </td>
         <td> Defaults to 60s </td>
       </tr>
       <tr>
@@ -62,13 +62,8 @@ The application pods should be in running state before and after chaos injection
         <td> Defaults to <code>litmuschaos/go-runner:1.13.8</code> </td>
       </tr>
       <tr>
-        <td> STRESS_IMAGE </td>
-        <td> Container run on the node at runtime by the pumba lib to inject stressors. Only used in LIB <code>pumba</code></td>
-        <td> Default to <code>alexeiled/stress-ng:latest-ubuntu</code> </td>
-      </tr>
-      <tr>
         <td> TARGET_PODS </td>
-        <td> Comma separated list of application pod name subjected to pod memory hog chaos</td>
+        <td> Comma separated application pod names which will be subjected to pod memory hog chaos</td>
         <td> If not provided, it will select target pods randomly based on provided appLabels</td>
       </tr>
       <tr>
@@ -78,8 +73,8 @@ The application pods should be in running state before and after chaos injection
       </tr>   
       <tr>
         <td> CONTAINER_RUNTIME </td>
-        <td> container runtime interface for the cluster</td>
-        <td> Defaults to docker, supported values: docker, containerd and crio for litmus and only docker for pumba LIB </td>
+        <td> Container runtime interface for the cluster</td>
+        <td> Defaults to docker, supported values: docker, containerd and crio </td>
       </tr>
       <tr>
         <td> SOCKET_PATH </td>
@@ -88,12 +83,12 @@ The application pods should be in running state before and after chaos injection
       </tr>        
       <tr>
         <td> PODS_AFFECTED_PERC </td>
-        <td> The Percentage of total pods to target </td>
+        <td> The percentage of total pods to target </td>
         <td> Defaults to 0 (corresponds to 1 replica), provide numeric value only </td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
-        <td> Period to wait before injection of chaos in sec </td>
+        <td> Period to wait before and after the injection of chaos (in seconds) </td>
         <td> Eg. 30 </td>
       </tr>
       <tr>

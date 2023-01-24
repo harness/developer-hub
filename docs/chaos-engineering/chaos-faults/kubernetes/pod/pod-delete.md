@@ -44,7 +44,7 @@ The application pods should be in running state before and after chaos injection
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The time duration for chaos insertion (in sec) </td>
+        <td> The duration for chaos injection (in sec) </td>
         <td> Defaults to 15s, <b>NOTE:</b> Overall run duration of the fault may exceed the <code>TOTAL_CHAOS_DURATION</code> by a few min </td>
       </tr>
       <tr>
@@ -64,12 +64,12 @@ The application pods should be in running state before and after chaos injection
       </tr>
       <tr>
         <td> TARGET_PODS </td>
-        <td> Comma separated list of application pod name subjected to pod delete chaos</td>
+        <td> Comma separated application pod names which will be subjected to pod delete chaos</td>
         <td> If not provided, it will select target pods randomly based on provided appLabels</td>
       </tr>
       <tr>
         <td> PODS_AFFECTED_PERC </td>
-        <td> The Percentage of total pods to target </td>
+        <td> The percentage of total pods to target </td>
         <td> Defaults to 0 (corresponds to 1 replica), provide numeric value only </td>
       </tr>
       <tr>

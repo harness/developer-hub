@@ -124,7 +124,7 @@ Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/vmware-io-stress/vm-io-stress-filesystem-utilization-percenatge.yaml yaml)
 ```yaml
-# io-stress in the VMWare VM
+# io-stress in the VMware VM
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -177,7 +177,7 @@ Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/vmware-io-stress/vm-io-stress-filesystem-mount-path.yaml yaml)
 ```yaml
-# io-stress in the VMWare VM
+# io-stress in the VMware VM
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -205,7 +205,7 @@ The worker's count for the stress can be tuned with `NUMBER_OF_WORKERS` ENV.
 
 [embedmd]:# (./static/manifests/vmware-io-stress/vm-io-stress-filesystem-worker.yaml yaml)
 ```yaml
-# io-stress in the VMWare VM
+# io-stress in the VMware VM
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:

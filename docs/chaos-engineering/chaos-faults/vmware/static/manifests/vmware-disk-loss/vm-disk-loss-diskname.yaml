@@ -1,4 +1,4 @@
-# Disk loss in the VMWare VM
+# Disk loss in the VMware VM
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:

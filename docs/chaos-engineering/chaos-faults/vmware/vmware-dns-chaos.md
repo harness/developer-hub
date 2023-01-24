@@ -4,8 +4,8 @@ title: VMware DNS Chaos
 ---
 
 ## Introduction
-- It causes DNS errors in the VMWare VMs for a specified chaos duration.
-- It checks the performance of the application/process running on the VMWare VMs.
+- It causes DNS errors in the VMware VMs for a specified chaos duration.
+- It checks the performance of the application/process running on the VMware VMs.
 
 :::tip Fault execution flow chart
 ![VMware DNS Chaos](./static/images/vmware-dns-chaos.png)
@@ -111,12 +111,12 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
       </tr>
       <tr>
         <td> MATCH_SCHEME </td>
-        <td> Determines whether the dns query has to match exactly with one of the targets or can have any of the targets as substring. Can be either exact or substring </td>
+        <td> Determines whether the DNS query has to match exactly with one of the targets or can have any of the targets as substring. Can be either exact or substring </td>
         <td> if not provided, it will be set as exact</td>
       </tr>
       <tr>
         <td> UPSTREAM_SERVER </td>
-        <td> Custom upstream server to which intercepted dns requests will be forwarded </td>
+        <td> Custom upstream server to which intercepted DNS requests will be forwarded </td>
         <td> defaults to the server mentioned in resolv.conf </td>
       </tr>
     </table>
@@ -163,7 +163,7 @@ Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/vmware-dns-chaos/vmware-dns-port.yaml yaml)
 ```yaml
-# induces dns chaos on the VMWare VM
+# induces DNS chaos on the VMware VM
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -194,7 +194,7 @@ Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/vmware-dns-chaos/vmware-dns-target-hostnames.yaml yaml)
 ```yaml
-# induces dns chaos on the VMware VMs
+# induces DNS chaos on the VMware VMs
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -221,13 +221,13 @@ spec:
 
 ### Run DNS Chaos With Match scheme
 
-It determines whether the dns query has to match exactly with one of the targets or can have any of the targets as substring. It can be either exact or substring. The value can be provided using `MATCH_SCHEME` Env.
+It determines whether the DNS query has to match exactly with one of the targets or can have any of the targets as substring. It can be either exact or substring. The value can be provided using `MATCH_SCHEME` Env.
 
 Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/vmware-dns-chaos/vmware-dns-match-scheme.yaml yaml)
 ```yaml
-# induces dns chaos on the VMware VMs
+# induces DNS chaos on the VMware VMs
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -254,13 +254,13 @@ spec:
 
 ### Run DNS Chaos With Upstream server
 
-It contains the custom upstream server to which intercepted dns requests will be forwarded. It is defaults to the server mentioned in resolv.conf. The value can be provided using `UPSTREAM_SERVER` Env.
+It contains the custom upstream server to which intercepted DNS requests will be forwarded. It is defaults to the server mentioned in resolv.conf. The value can be provided using `UPSTREAM_SERVER` Env.
 
 Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/vmware-dns-chaos/vmware-dns-upstream-server.yaml yaml)
 ```yaml
-# induces dns chaos on the VMware VMs
+# induces DNS chaos on the VMware VMs
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:

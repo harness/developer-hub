@@ -75,17 +75,17 @@ The target nodes should be in ready state before and after chaos injection.
       </tr>
       <tr>
         <td> CPU </td>
-        <td> Number of core of CPU to be used </td>
+        <td> Number of CPU cores to target </td>
         <td> Defaults to 1 </td>
       </tr>    
       <tr>
         <td> NUMBER_OF_WORKERS </td>
-        <td> It is the number of IO workers involved in IO disk stress </td>
+        <td> Number of IO workers involved in IO disk stress </td>
         <td> Defaults to 4 </td>
       </tr> 
       <tr>
         <td> VM_WORKERS </td>
-        <td> It is the number vm workers involved in IO disk stress </td>
+        <td> Number of vm workers involved in IO disk stress </td>
         <td> Defaults to 1 </td>
       </tr> 
       <tr>    

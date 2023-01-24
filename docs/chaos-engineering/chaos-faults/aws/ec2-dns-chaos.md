@@ -119,12 +119,12 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
       </tr>
       <tr>
         <td> MATCH_SCHEME </td>
-        <td> Determines whether the dns query has to match exactly with one of the targets or can have any of the targets as substring. Can be either exact or substring </td>
+        <td> Determines whether the DNS query has to match exactly with one of the targets or can have any of the targets as substring. Can be either exact or substring </td>
         <td> if not provided, it will be set as exact</td>
       </tr>
       <tr>
         <td> UPSTREAM_SERVER </td>
-        <td> Custom upstream server to which intercepted dns requests will be forwarded </td>
+        <td> Custom upstream server to which intercepted DNS requests will be forwarded </td>
         <td> defaults to the server mentioned in resolv.conf </td>
       </tr>
     </table>
@@ -143,7 +143,7 @@ Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/ec2-dns-chaos/ec2-dns-port.yaml yaml)
 ```yaml
-# induces dns chaos on the EC2 Instances
+# induces DNS chaos on the EC2 Instances
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -173,7 +173,7 @@ Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/ec2-dns-chaos/ec2-dns-target-hostnames.yaml yaml)
 ```yaml
-# induces dns chaos on the EC2 Instances
+# induces DNS chaos on the EC2 Instances
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -198,13 +198,13 @@ spec:
 
 ### Run DNS Chaos With Match scheme
 
-It determines whether the dns query has to match exactly with one of the targets or can have any of the targets as substring. It can be either exact or substring. The value can be provided using `MATCH_SCHEME` Env.
+It determines whether the DNS query has to match exactly with one of the targets or can have any of the targets as substring. It can be either exact or substring. The value can be provided using `MATCH_SCHEME` Env.
 
 Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/ec2-dns-chaos/ec2-dns-match-scheme.yaml yaml)
 ```yaml
-# induces dns chaos on the EC2 Instances
+# induces DNS chaos on the EC2 Instances
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -229,13 +229,13 @@ spec:
 
 ### Run DNS Chaos With Upstream server
 
-It contains the custom upstream server to which intercepted dns requests will be forwarded. It is defaults to the server mentioned in resolv.conf. The value can be provided using `UPSTREAM_SERVER` Env.
+It contains the custom upstream server to which intercepted DNS requests will be forwarded. It is defaults to the server mentioned in resolv.conf. The value can be provided using `UPSTREAM_SERVER` Env.
 
 Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/ec2-dns-chaos/ec2-dns-upstream-server.yaml yaml)
 ```yaml
-# induces dns chaos on the EC2 Instances
+# induces DNS chaos on the EC2 Instances
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:

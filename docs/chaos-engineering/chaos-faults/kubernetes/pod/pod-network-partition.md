@@ -40,7 +40,7 @@ The application pods should be in running state before and after chaos injection
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The time duration for chaos insertion (seconds) </td>
+        <td> The duration for chaos injection (in seconds) </td>
         <td> Default (60s) </td>
       </tr>
       <tr>

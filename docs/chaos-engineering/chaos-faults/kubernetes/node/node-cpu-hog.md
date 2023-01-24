@@ -5,7 +5,8 @@ title: Node CPU Hog
 
 ## Introduction
 - This fault causes CPU resource exhaustion on the Kubernetes node. The fault aims to verify resiliency of applications whose replicas may be evicted on account on nodes turning unschedulable (Not Ready) due to lack of CPU resources.
-- The CPU chaos is injected using a helper pod running the linux stress tool (a workload generator). The chaos is effected for a period equalling the `TOTAL_CHAOS_DURATION`
+- The CPU chaos is injected using a helper pod running the linux stress tool (a workload generator). The chaos is effected for a period equalling the `TOTAL_CHAOS_DURATION`.
+
 Application implies services. Can be reframed as: Tests application resiliency upon replica evictions caused due to lack of CPU resources.
 
 :::tip Fault execution flow chart 
@@ -47,8 +48,8 @@ The target nodes should be in ready state before and after chaos injection.
       </tr>
       <tr>
         <td> NODE_LABEL </td>
-        <td> It contains node label, which will be used to filter the target nodes if TARGET_NODES ENV is not set </td>
-        <td>It is mutually exclusive with the TARGET_NODES ENV. If both are provided then it will use the TARGET_NODES</td>
+        <td> It contains node label, which will be used to filter the target nodes if <code>TARGET_NODES</code> ENV is not set </td>
+        <td>It is mutually exclusive with the <code>TARGET_NODES</code> ENV. If both are provided then it will use the TARGET_NODES</td>
       </tr>
     </table>
     <h2>Optional Fields</h2>
@@ -60,7 +61,7 @@ The target nodes should be in ready state before and after chaos injection.
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The time duration for chaos insertion (seconds) </td>
+        <td> The duration for chaos injection (in seconds) </td>
         <td> Defaults to 60 </td>
       </tr>
         <tr>

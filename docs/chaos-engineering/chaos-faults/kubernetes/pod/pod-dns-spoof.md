@@ -4,8 +4,8 @@ title: Pod DNS Spoof
 ---
 
 ## Introduction
-- Pod-dns-spoof injects chaos to spoof dns resolution in kubernetes pods.
-- It causes dns resolution of target hostnames/domains to wrong IPs as specified by SPOOF_MAP in the engine config.
+- Pod-dns-spoof injects chaos to spoof DNS resolution in kubernetes pods.
+- It causes DNS resolution of target hostnames/domains to wrong IPs as specified by SPOOF_MAP in the engine config.
 
 :::tip Fault execution flow chart
 ![Pod DNS Spoof](./static/images/dns-chaos.png)
@@ -41,12 +41,12 @@ The application pods should be in running state before and after chaos injection
       </tr>
       <tr>
         <td> TARGET_CONTAINER </td>
-        <td> Name of container which is subjected to dns spoof </td>
+        <td> Name of container which is subjected to DNS spoof </td>
         <td> None </td>
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The time duration for chaos insertion (seconds) </td>
+        <td> The duration for chaos injection (in seconds) </td>
         <td> Default (60s) </td>
       </tr>
       <tr>
@@ -56,12 +56,12 @@ The application pods should be in running state before and after chaos injection
       </tr>
       <tr>
         <td> PODS_AFFECTED_PERC </td>
-        <td> The Percentage of total pods to target </td>
+        <td> The percentage of total pods to target </td>
         <td> Defaults to 0 (corresponds to 1 replica), provide numeric value only </td>
       </tr>
       <tr>
         <td> CONTAINER_RUNTIME </td>
-        <td> container runtime interface for the cluster</td>
+        <td> Container runtime interface for the cluster</td>
         <td> Defaults to docker, supported values: docker</td>
       </tr>
       <tr>
@@ -100,7 +100,7 @@ Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/pod-dns-spoof/spoof-map.yaml yaml)
 ```yaml
-# contains the spoof map for the dns spoofing
+# contains the spoof map for the DNS spoofing
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:

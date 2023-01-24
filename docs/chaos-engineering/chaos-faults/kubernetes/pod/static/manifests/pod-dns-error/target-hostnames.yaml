@@ -1,4 +1,4 @@
-# contains the target host names for the dns error
+# contains the target host names for the DNS error
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:

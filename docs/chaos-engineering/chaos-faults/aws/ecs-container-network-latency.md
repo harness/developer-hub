@@ -127,7 +127,7 @@ stringData:
       </tr>
       <tr>
           <td> NETWORK_INTERFACE  </td>
-          <td> Name of ethernet interface considered for shaping traffic </td>
+          <td> Name of the network interface considered for shaping traffic </td>
           <td> Defaults to <code>eth0</code> </td>
       </tr>
       <tr> 

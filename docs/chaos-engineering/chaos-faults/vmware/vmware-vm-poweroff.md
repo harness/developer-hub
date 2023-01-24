@@ -4,8 +4,8 @@ title: VMware VM-Poweroff
 ---
 
 ## Introduction
-- It stops/powers off the VMWare VMs before bringing them back to power-on state after a specific chaos duration using the VMWare APIs.
-- It checks the performance of the application running on the VMWare VMs.
+- It stops/powers off the VMware VMs before bringing them back to power-on state after a specific chaos duration using the VMware APIs.
+- It checks the performance of the application running on the VMware VMs.
 
 :::tip Fault execution flow chart
 ![VMware VM Poweroff](./static/images/vm-poweroff.png)
@@ -113,7 +113,7 @@ Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/vm-poweroff/app-vm-moid.yaml yaml)
 ```yaml
-# power-off the VMWare VM
+# power-off the VMware VM
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:

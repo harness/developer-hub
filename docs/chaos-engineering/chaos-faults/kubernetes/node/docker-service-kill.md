@@ -4,7 +4,7 @@ title: Docker Service Kill
 ---
 
 ## Introduction
-- This fault causes the application to become unreachable on account of node turning unschedulable (NotReady) due to docker service kill
+- This fault causes the application to become unreachable on account of node turning unschedulable (NotReady) due to docker service kill.
 - The docker service has been stopped/killed on a node to make it unschedulable for a certain duration i.e `TOTAL_CHAOS_DURATION`. The application node should be healthy after the chaos injection and the services should be re-accessible.
 - The application implies services. Can be reframed as: Test application resiliency upon replica getting unreachable caused due to docker service down.
 
@@ -63,12 +63,12 @@ The target nodes should be in ready state before and after chaos injection.
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The time duration for chaos insertion (seconds) </td>
+        <td> The duration for chaos injection (in seconds) </td>
         <td> Defaults to 60s </td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
-        <td> Period to wait before injection of chaos in sec </td>
+        <td> Period to wait before and after the injection of chaos (in seconds) </td>
         <td> Eg. 30 </td>
       </tr>
     </table>

@@ -101,7 +101,7 @@ Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/vmware-disk-loss/vm-disk-loss-diskname.yaml yaml)
 ```yaml
-# Disk loss in the VMWare VM
+# Disk loss in the VMware VM
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:

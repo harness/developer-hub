@@ -6,7 +6,7 @@ title: Pod CPU Hog Exec
 ## Introduction
 - This fault consumes the CPU resources of the application container.
 
-- It simulates conditions where app pods experience CPU spikes either due to expected/undesired processes thereby testing how the overall application stack behaves when this occurs.
+- It simulates conditions where app pods experience CPU spikes either due to expected or undesired processes, thereby testing how the overall application stack behavior.
 
 :::tip Fault execution flow chart
 ![Pod CPU Hog Exec](./static/images/pod-stress.png)
@@ -16,9 +16,9 @@ title: Pod CPU Hog Exec
 <details>
 <summary>View the uses of the fault</summary>
 <div>
-Disk Pressure or CPU hogs is another very common and frequent scenario we find in kubernetes applications that can result in the eviction of the application replica and impact its delivery. Such scenarios that can still occur despite whatever availability aids K8s provides. These problems are generally referred to as "Noisy Neighbor"  problems.
+Disk Pressure or CPU hogs is another very common and frequent scenario we find in kubernetes applications that can result in the eviction of the application replica and impact its delivery. Such scenarios that can still occur despite whatever availability aids K8s provides. These problems are generally referred to as "Noisy Neighbor" problems.
 
-Injecting a rogue process into a target container, we starve the main microservice process (typically pid 1) of the resources allocated to it (where limits are defined) causing slowness in application traffic or in other cases unrestrained use can cause node to exhaust resources leading to eviction of all pods. So this category of chaos fault helps to build the immunity of the application undergoing any such stress scenario.
+By injecting a rogue process into the target container, we starve the main microservice process (typically pid 1) of the resources allocated to it (where limits are defined) causing slowness in application traffic or in other cases unrestrained use can cause node to exhaust resources leading to eviction of all pods. Therefore, this category of chaos fault helps in building immunity of the application undergoing any such stress scenario.
 </div>
 </details>
 
@@ -49,12 +49,12 @@ The application pods should be in running state before and after chaos injection
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The time duration for chaos insertion (seconds) </td>
+        <td> The duration for chaos injection (in seconds) </td>
         <td> Default to 60s </td>
       </tr>
       <tr>
         <td> TARGET_PODS </td>
-        <td> Comma separated list of application pod name subjected to pod CPU hog chaos</td>
+        <td> Comma separated application pod names which will be subjected to pod CPU hog chaos</td>
         <td> If not provided, it will select target pods randomly based on provided appLabels</td>
       </tr> 
       <tr> 
@@ -64,7 +64,7 @@ The application pods should be in running state before and after chaos injection
       </tr> 
       <tr>
         <td> PODS_AFFECTED_PERC </td>
-        <td> The Percentage of total pods to target </td>
+        <td> The percentage of total pods to target </td>
         <td> Defaults to 0 (corresponds to 1 replica), provide numeric value only </td>
       </tr>
       <tr>
@@ -79,7 +79,7 @@ The application pods should be in running state before and after chaos injection
       </tr>
       <tr>
         <td> RAMP_TIME </td>
-        <td> Period to wait before injection of chaos in sec </td>
+        <td> Period to wait before and after the injection of chaos (in seconds) </td>
         <td> Eg. 30 </td>
       </tr>
       <tr>

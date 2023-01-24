@@ -96,12 +96,12 @@ The application pods should be in running state before and after chaos injection
       </tr>
       <tr> 
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The time duration for chaos insertion (sec) </td>
+        <td> The duration for chaos injection (sec) </td>
         <td> Defaults to 60s </td>
       </tr>
       <tr>
         <td> TARGET_PODS </td>
-        <td> Comma separated list of application pod name subjected to disk fill chaos</td>
+        <td> Comma separated application pod names which will be subjected to disk fill chaos</td>
         <td> If not provided, it will select target pods randomly based on provided appLabels</td>
       </tr> 
       <tr>
@@ -111,7 +111,7 @@ The application pods should be in running state before and after chaos injection
       </tr> 
       <tr>
         <td> PODS_AFFECTED_PERC </td>
-        <td> The Percentage of total pods to target </td>
+        <td> The percentage of total pods to target </td>
         <td> Defaults to 0 (corresponds to 1 replica), provide numeric value only </td>
       </tr> 
       <tr>
@@ -121,7 +121,7 @@ The application pods should be in running state before and after chaos injection
       </tr>
       <tr>
         <td> RAMP_TIME </td>
-        <td> Period to wait before injection of chaos in sec </td>
+        <td> Period to wait before and after the injection of chaos (in seconds) </td>
         <td> Eg. 30 </td>
       </tr>
       <tr>

@@ -5,7 +5,7 @@ title: Pod Network Corruption
 
 ## Introduction
 - It injects packet corruption on the specified container by starting a traffic control (tc) process with netem rules to add egress packet corruption.
-- It can test the application's resilience to lossy/flaky network.
+- It can test the application's resilience to lossy or flaky network.
 
 :::tip Fault execution flow chart
 ![Pod Network Corruption](./static/images/network-chaos.png)
@@ -41,8 +41,8 @@ The application pods should be in running state before and after chaos injection
       </tr>
       <tr>
         <td> NETWORK_INTERFACE </td>
-        <td> Name of ethernet interface considered for shaping traffic </td>
-        <td> </td>
+        <td> Name of the network interface considered for shaping traffic </td>
+        <td> Defaults to <code>eth0</code> </td>
       </tr>
       <tr>
         <td> TARGET_CONTAINER </td>
@@ -56,8 +56,8 @@ The application pods should be in running state before and after chaos injection
       </tr>
       <tr>
         <td> CONTAINER_RUNTIME </td>
-        <td> container runtime interface for the cluster</td>
-        <td> Defaults to docker, supported values: docker, containerd and crio for litmus and only docker for pumba LIB </td>
+        <td> Container runtime interface for the cluster</td>
+        <td> Defaults to docker, supported values: docker, containerd and crio </td>
       </tr>
       <tr>
         <td> SOCKET_PATH </td>
@@ -66,12 +66,12 @@ The application pods should be in running state before and after chaos injection
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The time duration for chaos insertion (seconds) </td>
+        <td> The duration for chaos injection (in seconds) </td>
         <td> Default (60s) </td>
       </tr>
       <tr>
         <td> TARGET_PODS </td>
-        <td> Comma separated list of application pod name subjected to pod network corruption chaos</td>
+        <td> Comma separated application pod names which will be subjected to pod network corruption chaos</td>
         <td> If not provided, it will select target pods randomly based on provided appLabels</td>
       </tr> 
       <tr>
@@ -86,7 +86,7 @@ The application pods should be in running state before and after chaos injection
       </tr>      
       <tr>
         <td> PODS_AFFECTED_PERC </td>
-        <td> The Percentage of total pods to target </td>
+        <td> The percentage of total pods to target </td>
         <td> Defaults to 0 (corresponds to 1 replica), provide numeric value only </td>
       </tr> 
       <tr>
@@ -227,7 +227,7 @@ spec:
 It defines the `CONTAINER_RUNTIME` and `SOCKET_PATH` ENV to set the container runtime and socket file path.
 
 - `CONTAINER_RUNTIME`: It supports `docker`, `containerd`, and `crio` runtimes. The default value is `docker`.
-- `SOCKET_PATH`: It contains path of docker socket file by default(`/var/run/docker.sock`). For other runtimes provide the appropriate path.
+- `SOCKET_PATH`: It contains path of docker socket file by default(`/var/run/docker.sock`). For other runtimes, provide the appropriate path.
 
 Use the following example to tune this:
 

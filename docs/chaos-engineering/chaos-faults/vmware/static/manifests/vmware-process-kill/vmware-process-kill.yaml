@@ -1,4 +1,4 @@
-# Process kill in the VMWare VM
+# Process kill in the VMware VM
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:

@@ -88,7 +88,7 @@ stringData:
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The time duration for chaos insertion (sec) </td>
+        <td> The duration for chaos injection (sec) </td>
         <td> Defaults to 30s </td>
       </tr>
       <tr>

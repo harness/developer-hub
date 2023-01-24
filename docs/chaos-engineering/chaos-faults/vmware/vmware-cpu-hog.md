@@ -5,7 +5,7 @@ title: VMware CPU Hog
 
 ## Introduction
 - VMware CPU hog fault consumes the CPU resources on Linux OS based VMware VM .
-- It helps to check the performance of the application running on the VMWare VMs.
+- It helps to check the performance of the application running on the VMware VMs.
 
 :::tip Fault execution flow chart
 ![VMware Cpu Hog](./static/images/vmware-cpu-hog.png)
@@ -111,7 +111,7 @@ Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/vmware-cpu-hog/vm-cpu-hog-core.yaml yaml)
 ```yaml
-# CPU hog in the VMWare VM
+# CPU hog in the VMware VM
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -138,7 +138,7 @@ Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/vmware-cpu-hog/vm-cpu-hog-load.yaml yaml)
 ```yaml
-# CPU hog in the VMWare VM
+# CPU hog in the VMware VM
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:

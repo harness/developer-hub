@@ -1,4 +1,4 @@
-# contains match scheme for the dns error
+# contains match scheme for the DNS error
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:

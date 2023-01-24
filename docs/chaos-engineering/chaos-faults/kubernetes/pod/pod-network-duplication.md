@@ -4,8 +4,8 @@ title: Pod Network Duplication
 ---
 
 ## Introduction
-- It injects chaos to disrupt network connectivity to kubernetes pods.
-- It causes Injection of network duplication on the specified container by starting a traffic control (tc) process with netem rules to add egress delays. It Can test the application's resilience to duplicate network.
+- It injects chaos to disrupt network connectivity to Kubernetes pods.
+- It causes injection of network duplication on the specified container by starting a traffic control (tc) process with netem rules to add egress delays. It can test the application's resilience to duplicate network.
 
 :::tip Fault execution flow chart
 ![Pod Network Duplication](./static/images/network-chaos.png)
@@ -41,8 +41,8 @@ The application pods should be in running state before and after chaos injection
       </tr>
       <tr>
         <td> NETWORK_INTERFACE </td>
-        <td> Name of ethernet interface considered for shaping traffic </td>
-        <td> </td>
+        <td> Name of the network interface considered for shaping traffic </td>
+        <td> Defaults to <code>eth0</code> </td>
       </tr>
       <tr>
         <td> TARGET_CONTAINER </td>
@@ -58,8 +58,8 @@ The application pods should be in running state before and after chaos injection
       </tr>
       <tr>
         <td> CONTAINER_RUNTIME </td>
-        <td> container runtime interface for the cluster</td>
-        <td> Defaults to docker, supported values: docker, containerd and crio for litmus and only docker for pumba LIB </td>
+        <td> Container runtime interface for the cluster</td>
+        <td> Defaults to docker, supported values: docker, containerd and crio </td>
       </tr>
       <tr>
         <td> SOCKET_PATH </td>
@@ -68,12 +68,12 @@ The application pods should be in running state before and after chaos injection
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The time duration for chaos insertion (seconds) </td>
+        <td> The duration for chaos injection (in seconds) </td>
         <td> Default (60s) </td>
       </tr>
       <tr>
         <td> TARGET_PODS </td>
-        <td> Comma separated list of application pod name subjected to pod network corruption chaos</td>
+        <td> Comma separated application pod names which will be subjected to pod network corruption chaos</td>
         <td> If not provided, it will select target pods randomly based on provided appLabels</td>
       </tr> 
       <tr>
@@ -88,7 +88,7 @@ The application pods should be in running state before and after chaos injection
       </tr>      
       <tr>
         <td> PODS_AFFECTED_PERC </td>
-        <td> The Percentage of total pods to target </td>
+        <td> The percentage of total pods to target </td>
         <td> Defaults to 0 (corresponds to 1 replica), provide numeric value only </td>
       </tr> 
       <tr>

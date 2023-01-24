@@ -1,4 +1,4 @@
-# Memory hog in the VMWare VM
+# Memory hog in the VMware VM
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:

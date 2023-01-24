@@ -1,4 +1,4 @@
-# induces dns chaos on the VMWare VM
+# induces DNS chaos on the VMware VM
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:

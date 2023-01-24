@@ -5,7 +5,7 @@ title: VMware Service Stop
 
 ## Introduction
 - VMware Service Stop fault stops the target systemd services running on Linux OS based VMware VM to determine the application/service resilience.
-- It helps to check the performance of the application/service running on the VMWare VMs.
+- It helps to check the performance of the application/service running on the VMware VMs.
 
 :::tip Fault execution flow chart
 ![VMware ServiceStop](./static/images/vmware-service-stop.png)
@@ -112,7 +112,7 @@ Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/vmware-service-stop/vmware-service-stop.yaml yaml)
 ```yaml
-# Service Stop in the VMWare VM
+# Service Stop in the VMware VM
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:

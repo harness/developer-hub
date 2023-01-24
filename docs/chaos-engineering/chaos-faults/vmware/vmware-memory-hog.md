@@ -5,7 +5,7 @@ title: VMware Memory Hog
 
 ## Introduction
 - VMware memory hog fault consumes the Memory resources on Linux OS based VMware VM .
-- It helps to check the performance of the application running on the VMWare VMs.
+- It helps to check the performance of the application running on the VMware VMs.
 
 :::tip Fault execution flow chart
 ![VMware Memory Hog](./static/images/vmware-memory-hog.png)
@@ -116,7 +116,7 @@ Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/vmware-memory-hog/vm-memory-hog-memoryconsumption.yaml yaml)
 ```yaml
-# Memory hog in the VMWare VM
+# Memory hog in the VMware VM
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -143,7 +143,7 @@ Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/vmware-memory-hog/vm-memory-hog-worker.yaml yaml)
 ```yaml
-# Memory hog in the VMWare VM
+# Memory hog in the VMware VM
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
