@@ -24,12 +24,11 @@ This release does not include new features.
 This release does not include early access features.
 
 ### Fixed issues
+#### Feature Flag SDKs
 - The Android SDK has been updated to version 1.0.18. This fixes a bug that caused unhandled exception errors due to duplicate callbacks during the SDK initialization. (FFM-6395)
 - The Flutter SDK has been updated to version 1.0.8. This includes the following:
   - Fixed a bug that caused applications to shut down in response to API errors caused by no internet connection. (FFM-6395)
   - Fixed a bug that caused streaming to stop working if internet connectivity was lost. (FFM-6395) 
-
-#### Feature Flag SDKs
 
 ## January 23, 2023
 
