@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Harness [Connectors](/docs/category/connectors) integrate Harness with your cloud platforms, codebase and artifact repos, and collaboration and monitoring tools.
+Harness [Connectors](https://docs.harness.io/category/connectors) integrate Harness with your cloud platforms, codebase and artifact repos, and collaboration and monitoring tools.
 
 You can add Connectors using the Harness GUI or via YAML using the Harness YAML Builder.
 
@@ -17,7 +17,7 @@ This topic shows you how to add a Connector using the YAML Builder.
 
 ### Before you begin
 
-* [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md)
+* [Learn Harness' Key Concepts](https://docs.harness.io/article/hv2758ro4e-learn-harness-key-concepts)
 
 ### Step 1: Create Secrets or Keys
 
@@ -49,7 +49,7 @@ secret:
 ```
 The `identifier` value (in this example, `docsdockerhubpassword`) is what you'll reference when you add your Connector in YAML.
 
-For steps on other types of secrets, see [Secrets and Secret Management](/docs/category/security).
+For steps on other types of secrets, see [Secrets and Secret Management](https://docs.harness.io/category/security).
 
 ### Step 2: Create the Connector
 

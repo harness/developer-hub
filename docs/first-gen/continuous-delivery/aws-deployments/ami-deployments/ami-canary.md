@@ -14,7 +14,7 @@ This guide will walk you through configuring and executing an AMI (Amazon Machin
 
 ### Before You Begin
 
-* [AWS AMI Quickstart](../../../first-gen-quickstarts/aws-ami-deployments.md)
+* [AWS AMI Quickstart](https://docs.harness.io/article/wfk9o0tsjb-aws-ami-deployments)
 * [AMI Basic Deployment](ami-deployment.md)
 
 
@@ -36,7 +36,7 @@ Otherwise, please use the following links to the [AMI Basic deployment prerequi
 * A working AMI that Harness will use to create your instances.
 * A base [Auto Scaling Group](https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-asg.html) (ASG) that Harness will use as a template for the Auto Scaling Group it will create and deploy. For information on launch configuration and launch template support, see [Launch Configuration and Launch Template Support](ami-deployment.md#launch-configuration-and-launch-template-support).
 * An AWS instance or ECS cluster in which to install the Harness Delegate(s).
-* IAM role for the Harness Cloud Provider connection to AWS. Typically, you will set up the Harness Cloud Provider to assume the roles used by the installed Harness Delegate, whether that's an ECS or a Shell Script Delegate. The required policies for an ECS connection are listed in [ECS (Existing Cluster)](../../../firstgen-platform/account/manage-connectors/cloud-providers.md#ecs-existing-cluster).
+* IAM role for the Harness Cloud Provider connection to AWS. Typically, you will set up the Harness Cloud Provider to assume the roles used by the installed Harness Delegate, whether that's an ECS or a Shell Script Delegate. The required policies for an ECS connection are listed in [ECS (Existing Cluster)](https://docs.harness.io/article/whwnovprrb-infrastructure-providers#ecs_existing_cluster).
 
 Within Harness, you'll need the following resources:
 
@@ -91,7 +91,7 @@ Here are the phases and steps we'll build:
 1. [Phase 1: Canary](#phase_1)
    * [Set Up AutoScaling Group](#setup_asg): Specify how many EC2 instances to launch in the ASG that Harness deploys at the end of the Workflow. This step also specifies their resizing order and their steady state timeout.
    * [Deploy Service](#upgrade_asg_1): Specify the percentage of instances to deploy in this phase. When you add additional phases, each phase automatically includes a Deploy Service step, which you must configure with the count or percentage of instances you want deployed in that phase.
-   * [Verify Service](#verify_service_1): This example uses CloudWatch verification. (You can add any [Verification Provider](../../continuous-verification/continuous-verification-overview/concepts-cv/what-is-cv.md) that Harness supports.)
+   * [Verify Service](#verify_service_1): This example uses CloudWatch verification. (You can add any [Verification Provider](https://docs.harness.io/article/myw4h9u05l-verification-providers-list) that Harness supports.)
    * [Rollback Steps](#rollback_1): Roll back the ASG if deployment fails. (Rollback steps are automatically added here, and to each of the remaining phases. This guide covers them only in this first phase.)
 2. [Phase 2: Canary](#phase_2)
    * [Deploy Service](#upgrade_asg_2): Upgrade the ASG to a higher percentage of instances.
@@ -104,7 +104,7 @@ Ready to deploy? Let's examine the configuration and execution of each of the Wo
 
 ### Phase 1: Canary
 
-This example Workflow's first phase defines your Auto Scaling Group, upgrades it to a 25% Canary deployment, and evaluates this partial deployment using (in this example) [CloudWatch](../../continuous-verification/continuous-verification-overview/concepts-cv/cloud-watch-verification-overview.md) verification.
+This example Workflow's first phase defines your Auto Scaling Group, upgrades it to a 25% Canary deployment, and evaluates this partial deployment using (in this example) [CloudWatch](https://docs.harness.io/article/q6ti811nck-cloud-watch-verification-overview) verification.
 
 To add a Canary Phase:
  
@@ -112,7 +112,7 @@ To add a Canary Phase:
    ![](./static/ami-canary-160.png)
 2. In **Service**, select the Service you previously [set up](ami-deployment.md#service) for this AMI.
 3. Select the Infrastructure Definition that specifies your base Auto Scaling Group
-4. In **Service Variable Overrides**, you can add values to overwrite any variables in the Service you selected. Click **Add**, then enter the **Name** of the variable to override, and the override **Value**. (For details, see [Workflow Phases](../../model-cd-pipeline/workflows/workflow-configuration.md#workflow-phases).)
+4. In **Service Variable Overrides**, you can add values to overwrite any variables in the Service you selected. Click **Add**, then enter the **Name** of the variable to override, and the override **Value**. (For details, see [Workflow Phases](https://docs.harness.io/article/m220i1tnia-workflow-configuration#workflow_phases).)
 5. Click **SUBMIT**. The new Phase is created.
 
    ![](./static/ami-canary-161.png)
@@ -130,7 +130,7 @@ In Step 1, select **AWS AutoScaling Group Setup** to open a dialog where you def
 
 ![](./static/ami-canary-163.png)
 
-The **Instances** settings support [Harness variable expressions](../../../firstgen-platform/techref-category/variables/variables.md), such as [Workflow variable expressions](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md).For details about this dialog's fields, see the corresponding [AMI Basic Workflow instructions](ami-deployment.md#basic-setup-asg). For this Workflow, we've selected **Fixed Instances**, and have set **Max Instances** to **10** and **Desired Instances** to **4**.
+The **Instances** settings support [Harness variable expressions](https://docs.harness.io/article/9dvxcegm90-variables), such as [Workflow variable expressions](https://docs.harness.io/article/766iheu1bk-add-workflow-variables-new-template).For details about this dialog's fields, see the corresponding [AMI Basic Workflow instructions](ami-deployment.md#basic-setup-asg). For this Workflow, we've selected **Fixed Instances**, and have set **Max Instances** to **10** and **Desired Instances** to **4**.
 
 All Canary counts or percentages specified later in the Workflow are based on the **Desired Instances** setting. So, when we later deploy **25%** in this phase's [Upgrade Autoscaling Group](#upgrade_asg_1) step, that will be 25% of this **Desired Instances** setting.
 ##### Setup AutoScaling Group in Deployment
@@ -199,13 +199,13 @@ AutoScaling Group resize operation completed with status:[SUCCESS]
 Any **percent** references that appear in such AWS log data refer *only* to percentages of pending AWS tasks. They're unrelated to the Canary percentage targets we've set in any Harness **Upgrade AutoScaling Group** steps.
 #### Step 3: Verify Service
 
-In Step 3, select **Add Verification** to open a dialog where you can add Harness [Continuous Verification](../../continuous-verification/continuous-verification-overview/concepts-cv/what-is-cv.md) monitoring for your Canary phase.
+In Step 3, select **Add Verification** to open a dialog where you can add Harness [Continuous Verification](https://docs.harness.io/article/myw4h9u05l-verification-providers-list) monitoring for your Canary phase.
 
-In this example, we've selected [CloudWatch](../../continuous-verification/continuous-verification-overview/concepts-cv/cloud-watch-verification-overview.md) verification, with monitoring for a single EC2 metric:
+In this example, we've selected [CloudWatch](https://docs.harness.io/article/q6ti811nck-cloud-watch-verification-overview) verification, with monitoring for a single EC2 metric:
 
 ![](./static/ami-canary-167.png)
 
-Within a Canary Workflow, Canary phases are the ideal places to add verification steps, using the [Canary Analysis strategy](../../continuous-verification/continuous-verification-overview/concepts-cv/cv-strategies-and-best-practices.md#canary-analysis). It's pointless to defer verification until the Primary (final) phase—because if the Canary phases are verified, you can assume that the Primary phase will proceed successfully.
+Within a Canary Workflow, Canary phases are the ideal places to add verification steps, using the [Canary Analysis strategy](https://docs.harness.io/article/0avzb5255b-cv-strategies-and-best-practices#canary_analysis). It's pointless to defer verification until the Primary (final) phase—because if the Canary phases are verified, you can assume that the Primary phase will proceed successfully.
 ##### Verify Service Step in Deployment
 
 Using the configuration shown above, here is the **Verify Service** step in the Harness Deployments page:
@@ -233,7 +233,7 @@ For details about this step's **Rollback all phases at once** option, see the c
 
 ![](./static/ami-canary-169.png)
 
-The Rollback step's default presence here is unlike the default for other Harness Canary Workflows, such as [Kubernetes Canary](docs/first-gen/continuous-delivery/kubernetes-deployments/create-a-kubernetes-canary-deployment.md). If an AMI Canary phase fails to deploy, its Rollback step will roll back the whole Workflow to its state prior to this deployment. This will delete its newly created instances, conserving AWS resources and costs.
+The Rollback step's default presence here is unlike the default for other Harness Canary Workflows, such as [Kubernetes Canary](https://docs.harness.io/article/wkvsglxmzy-kubernetes-canary-workflows). If an AMI Canary phase fails to deploy, its Rollback step will roll back the whole Workflow to its state prior to this deployment. This will delete its newly created instances, conserving AWS resources and costs.
 
 ![](./static/ami-canary-170.png)
 
@@ -305,7 +305,7 @@ AutoScaling Group resize operation completed with status:[SUCCESS]
 
 In this example Workflow, we've defined Phase 2's **Verify Service** step identically to [Phase 1's Step 3](#verify_service_1). (See specific instructions there.) This specifies a second round of CloudWatch monitoring.
 
-In Workflows that you build, you could select other Harness [Continuous Verification](../../continuous-verification/continuous-verification-overview/concepts-cv/what-is-cv.md) providers for monitoring, or you could choose to omit verification in this Canary phase.
+In Workflows that you build, you could select other Harness [Continuous Verification](https://docs.harness.io/article/myw4h9u05l-verification-providers-list) providers for monitoring, or you could choose to omit verification in this Canary phase.
 
 
 ##### Verify Service Step in Deployment

@@ -73,7 +73,7 @@ Bootstrapping helps generate the initial call graph for Test Intelligence. Once 
 
 Configure the Webhook.
 
-You can trigger Pipelines in response to Git events automatically. For configuring the webhook for the Trigger, see [Add a Trigger](../../../platform/11_Triggers/triggering-pipelines.md#step-1-add-a-trigger-to-a-pipeline). 
+You can trigger Pipelines in response to Git events automatically. For configuring the webhook for the Trigger, see [Add a Trigger](https://ngdocs.harness.io/article/hndnde8usz-triggering-pipelines#step_1_add_a_trigger_to_a_pipeline). 
 
 Open the PR.
 

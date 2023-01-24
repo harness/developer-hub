@@ -1,23 +1,26 @@
 ---
 id: lambda-update-function-memory
-title: Lambda update function memory
+title: Lambda Update Function Memory
 ---
-Lambda update function memory is an AWS fault that:
-- Updates the memory of a Lambda function to a specific value during a chaos duration.
-- Checks the performance of the application (or service) running with a new memory limit thereby determining a safe overall memory limit value for the function. The Lambda function takes longer to execute if the memory limit is reduced.
+
+## Introduction
+
+- It causes the memory of a lambda function to be updated to a specified value for a certain chaos duration.
+- It checks the performance of the application/service running with a new memory limit and also helps to determine a safe overall memory limit value for the function.
+- Smaller the memory limit higher will be the time taken by the lambda function under load.
 
 :::tip Fault execution flow chart
 ![Lambda Update Function Memory](./static/images/lambda-update-function-memory.png)
 :::
 
-## Usage
+## Uses
 
 <details>
-<summary>View fault usage</summary>
+<summary>View the uses of the fault</summary>
 <div>
-Hitting a memory limit is a common scenario with Lambda functions that slows down the service and impacts their delivery. Such scenarios occur despite the availability aids provided by AWS or determined by users.
+Hitting a memory limit is a very common and frequent scenario we find with lambda functions that can slow down the service and impacts their delivery. Such scenarios can still occur despite whatever availability aids AWS provides or we determine.
 
-Running out of memory due to a small limit interrupts the flow of the given function. This chaos fault helps the application build immunity against such scenarios.
+Running out of memory due to a smaller limit interrupts the flow of the given function. So this category of chaos fault helps you to build immunity on the application undergoing any such scenarios.
 </div>
 </details>
 
@@ -26,7 +29,8 @@ Running out of memory due to a small limit interrupts the flow of the given func
 :::info
 
 - Kubernetes >= 1.17
-- Kubernetes secret that has AWS access configuration (key) in the `CHAOS_NAMESPACE`. Below is a sample secret file:
+- Access for operating AWS Lambda functions.
+- Kubernetes secret that has AWS access configuration(key) in the `CHAOS_NAMESPACE`. A secret file looks like this:
 
 ```yaml
 apiVersion: v1
@@ -42,39 +46,9 @@ stringData:
     aws_secret_access_key = XXXXXXXXXXXXXXX
 ```
 
-- If you change the secret key name (from `cloud_config.yml`), ensure that you update the `AWS_SHARED_CREDENTIALS_FILE` environment variable value on `experiment.yaml` with the same name.
-:::
+- If you change the secret key name (from `cloud_config.yml`), update the `AWS_SHARED_CREDENTIALS_FILE` environment variable value on `experiment.yaml` with the same name.
 
-## Permissions required
-
-- Here is an example AWS policy to execute the Lambda update function memory fault.
-
-<details>
-<summary>View policy for this fault</summary>
-
-```json
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": [
-                "lambda:UpdateFunctionConfiguration",
-                "lambda:GetFunctionConcurrency",
-                "lambda:GetFunction",
-                "lambda:DeleteFunctionConcurrency",
-                "lambda:PutFunctionConcurrency"
-            ],
-            "Resource": "*"
-        }
-    ]
-}
-```
-</details>
-
-- Refer to the [superset permission (or policy)](./policy-for-all-aws-faults) to execute all AWS faults.
-
-## Default validation
+## Default Validations
 
 :::info
 
@@ -82,16 +56,10 @@ stringData:
 
 :::
 
-## Chaos injection validation
-
-:::info
-- You can validate the Lambda update function memory fault from the general configuration section of the target Lambda function in the AWS console. While inecting chaos, the function memory is updated with the value you provide.
-:::
-
-## Experiment tunables
+## Experiment Tunables
 
 <details>
-    <summary>Fault tunables</summary>
+    <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>
     <table>
       <tr>
@@ -101,18 +69,18 @@ stringData:
       </tr>
       <tr>
         <td> FUNCTION_NAME </td>
-        <td> Name of the target Lambda function. It supports a single function name.</td>
-        <td> For example, <code>test-function</code>. </td>
+        <td> Function name of the target lambda function. It supports single function name.</td>
+        <td> Eg: <code>test-function</code> </td>
       </tr>
       <tr>
         <td> MEMORY_IN_MEGABYTES </td>
-        <td> Memory limit of a function (in MB).</td>
-        <td> Memory range of the Lambda function is 128 MB to 10240 MB. </td>
+        <td> Provide the value of the memory limit of a function in megabytes.</td>
+        <td> The minimum value of the memory limit on a lambda function is 128Mb and the maximum upto 10240Mb </td>
       </tr>
       <tr>
         <td> REGION </td>
-        <td> Region name of the target Lambda function. </td>
-        <td> For example, <code>us-east-2</code>. </td>
+        <td> The region name of the target lambda function</td>
+        <td> Eg: <code>us-east-2</code> </td>
       </tr>
     </table>
     <h2>Optional Fields</h2>
@@ -124,38 +92,38 @@ stringData:
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> Duration to insert chaos (in seconds). </td>
-        <td> Defaults to 30s. </td>
+        <td> The total time duration for chaos insertion in seconds </td>
+        <td> Defaults to 30s </td>
       </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>
-        <td> Time interval between two successive instance terminations (in seconds).</td>
-        <td> Defaults to 30s. </td>
+        <td> The interval (in seconds) between successive instance termination.</td>
+        <td> Defaults to 30s </td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
-        <td> Sequence of chaos execution for multiple instances.</td>
-        <td> Defaults to parallel. Supports serial sequence as well. </td>
+        <td> It defines sequence of chaos execution for multiple instance</td>
+        <td> Default value: parallel. Supported: serial, parallel </td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
-        <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> For example, 30s. </td>
+        <td> Period to wait before and after injection of chaos in seconds </td>
+        <td> Eg. 30 </td>
       </tr>
     </table>
 </details>
 
-## Fault examples
+## Fault Examples
 
 ### Common and AWS specific tunables
 
-Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and AWS specific tunables.
+Refer the [common attributes](../common-tunables-for-all-faults) and [AWS specific tunable](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
 
-### Memory limit
+### Memory Limit
 
-You can update the value of the Lambda function memory limit using the `MEMORY_IN_MEGABYTES` environment variable.
+It can update the lambda function memory limit to a newer value by using `MEMORY_IN_MEGABYTES` ENV as shown below.
 
-Use the following example to tune it:
+Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/lambda-update-function-memory/function-memory.yaml yaml)
 ```yaml

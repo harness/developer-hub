@@ -89,7 +89,7 @@ To run steps on multiple target hosts, such as in a CD stage that performs a Dep
 repeat:  
   items: <+stage.output.hosts>
 ```
-For more information, go to [Run a step on multiple target instances](../../continuous-delivery/cd-execution/cd-general-steps/run-a-script-on-multiple-target-instances.md).
+For more information, go to [Run a step on multiple target instances](https://docs.harness.io/article/c5mcm36cp8-run-a-script-on-multiple-target-instances).
 
 ### See also
 

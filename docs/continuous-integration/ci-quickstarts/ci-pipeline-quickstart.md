@@ -128,7 +128,7 @@ You can create Connectors for GitHub accounts or specific repos. If you use an a
 
 ##### Connector Credentials
 
-Now you need to specify the username and Personal Access Token for the Connector to use. Harness secrets are safe. They're stored in the [Harness Secret Manager](../../platform/6_Security/1-harness-secret-manager-overview.md). You can also use your own Secret Manager with Harness.
+Now you need to specify the username and Personal Access Token for the Connector to use. Harness secrets are safe. They're stored in the [Harness Secret Manager](https://docs.harness.io/article/hngrlb7rd6-harness-secret-manager-overview). You can also use your own Secret Manager with Harness.
 
 * **Username:** The username for your GitHub account.
 * **Personal Access Token:** Create a Harness Secret for the Personal Access Token you use for your GitHub repo.

@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../../continuous-delivery/cd-execution/cd-general-steps/run-jenkins-jobs-in-cd-pipelines.md).Harness integrates with [Jenkins](https://jenkins.io/), enabling you to run Jenkins jobs, to dynamically capture output variables from the jobs, and to pull artifacts from Jenkins. 
+This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/article/as4dtppasg).Harness integrates with [Jenkins](https://jenkins.io/), enabling you to run Jenkins jobs, to dynamically capture output variables from the jobs, and to pull artifacts from Jenkins. 
 
 Harness' integration requires Jenkins version 2.130 or higher.
 
@@ -24,7 +24,7 @@ When executing a job, you can also *dynamically capture* the output from the job
 
 The **Shell Script** workflow command step can also set and capture shell session information and publish it as output variables. For more information, see [Using Shell Script Commands](capture-shell-script-step-output.md).### What Information is Available to Capture?
 
-Any Jenkins job information in the particular shell session of the Workflow can be captured and output using one or more Jenkins steps in that Workflow. In addition, you can capture information available using the built-in Harness variables. For more information, see [Variables and Expressions in Harness](../../../firstgen-platform/techref-category/variables/variables.md).
+Any Jenkins job information in the particular shell session of the Workflow can be captured and output using one or more Jenkins steps in that Workflow. In addition, you can capture information available using the built-in Harness variables. For more information, see [Variables and Expressions in Harness](https://docs.harness.io/article/9dvxcegm90-variables).
 
 Capturing and exporting output in the Jenkins step can be very powerful. For example, a Jenkins step could capture Jenkins build information in a Workflow, and a Harness service could echo the build information and use it in a complex function, and then export the output down the Pipeline for further evaluation.
 
@@ -35,12 +35,12 @@ For Harness to capture Jenkins environment variables, your Jenkins configuration
 ## Before You Begin
 
 * [Add a Workflow](workflow-configuration.md)
-* [Variables and Expressions in Harness](../../../firstgen-platform/techref-category/variables/variables.md)
+* [Variables and Expressions in Harness](https://docs.harness.io/article/9dvxcegm90-variables)
 * [Using Shell Script Commands](capture-shell-script-step-output.md)
 
 ## Use the Jenkins Command Step
 
-Before you can use this command, you need to add your Jenkins server as a Harness Artifact Server. See [Add Artifact Servers](../../../firstgen-platform/account/manage-connectors/configuring-artifact-server.md).The following procedure adds and configures a Jenkins command step in a Workflow, and captures and publishes Jenkins output in a variable. Later, we will show you how to use the published variable in a Harness service.
+Before you can use this command, you need to add your Jenkins server as a Harness Artifact Server. See [Add Artifact Servers](https://docs.harness.io/article/7dghbx1dbl-configuring-artifact-server).The following procedure adds and configures a Jenkins command step in a Workflow, and captures and publishes Jenkins output in a variable. Later, we will show you how to use the published variable in a Harness service.
 
 To use the Jenkins command step, do the following:
 
@@ -55,7 +55,7 @@ The Jenkins command step has the following settings.
 
 ### Jenkins Server
 
-Select the Jenkins server you added as a Harness Artifact Server. For more information, see the [Jenkins Artifact Server](../../../firstgen-platform/account/manage-connectors/add-jenkins-artifact-servers.md) setup.
+Select the Jenkins server you added as a Harness Artifact Server. For more information, see the [Jenkins Artifact Server](https://docs.harness.io/article/qa7lewndxq-add-jenkins-artifact-servers) setup.
 
 You can turn this setting into a deployment runtime parameter by clicking the template button (**[T]**). Clicking the button turns the setting into a variable expression, such as `${Jenkins_Server}`. You can change the name of the expression.
 
@@ -65,7 +65,7 @@ The Workflow now has a [Workflow variable](add-workflow-variables-new-template.m
 
 If you template the setting, Harness cannot pull the list of Jobs from a server. You must manually enter the Job name in **Job Name**.
 
-When you deploy the Workflow, you must select a Jenkins server for the Jenkins Server setting Workflow variable. In **Value**, you can select one of the [Jenkins Artifact Servers](../../../firstgen-platform/account/manage-connectors/add-jenkins-artifact-servers.md) you have set up in Harness.
+When you deploy the Workflow, you must select a Jenkins server for the Jenkins Server setting Workflow variable. In **Value**, you can select one of the [Jenkins Artifact Servers](https://docs.harness.io/article/qa7lewndxq-add-jenkins-artifact-servers) you have set up in Harness.
 
 ![](./static/_jenkins-srvr2.png)
 

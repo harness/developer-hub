@@ -8,9 +8,9 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/platform/2_Delegates/get-started-with-delegates/delegate-how-tos.md).Large enterprises are highly regulated and auditing the deployments happening in their environments is critical. These audits might take into account deployment information across years.
+This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/article/0slo2gklsy).Large enterprises are highly regulated and auditing the deployments happening in their environments is critical. These audits might take into account deployment information across years.
 
-Harness provides advanced auditing in the Harness Manager, as described in [Audit Trail](../../../firstgen-platform/security/auditing-howtos/audit-trail.md), and deployment information in the **Deployments** page and [dashboards](../../../firstgen-platform/fg-monitoring/main-and-services-dashboards.md), but large enterprises want to save deployment information to their centralized archives for years to come.
+Harness provides advanced auditing in the Harness Manager, as described in [Audit Trail](https://docs.harness.io/article/kihlcbcnll-audit-trail), and deployment information in the **Deployments** page and [dashboards](https://docs.harness.io/article/c3s245o7z8-main-and-services-dashboards), but large enterprises want to save deployment information to their centralized archives for years to come.
 
 Harness includes deployment exports to serve this need. Deployment exports give you control over what is stored and audited and allows you to save deployment information in your archives.
 
@@ -20,10 +20,10 @@ Harness also provides an API for deployment exports, enabling you to extract log
 
 Familiarize yourself with the different ways Harness displays deployment information:
 
-* [Custom Dashboards](../../../firstgen-platform/fg-monitoring/custom-dashboards.md)
-* [Main and Services Dashboards](../../../firstgen-platform/fg-monitoring/main-and-services-dashboards.md)
-* [Audit Trail](../../../firstgen-platform/security/auditing-howtos/audit-trail.md)
-* [Harness API](../../../firstgen-platform/techref-category/api/harness-api.md)
+* [Custom Dashboards](https://docs.harness.io/article/rxlbhvwe6q-custom-dashboards)
+* [Main and Services Dashboards](https://docs.harness.io/article/c3s245o7z8-main-and-services-dashboards)
+* [Audit Trail](https://docs.harness.io/article/kihlcbcnll-audit-trail)
+* [Harness API](https://docs.harness.io/article/tm0w6rruqv-harness-api)
 
 ### Limitations
 
@@ -71,7 +71,7 @@ Once you have the deployments you want to export, you can begin the export proce
    ![](./static/export-deployment-logs-22.png)
 2. In **Export Deployment Logs**, specify the Harness User Groups to notify when the log file is ready.
    ![](./static/export-deployment-logs-23.png)
-   The User Groups are notified using their email and/or Slack settings, as described in [Manage User Notifications](../../../firstgen-platform/account/manage-notegroups/notification-groups.md).
+   The User Groups are notified using their email and/or Slack settings, as described in [Manage User Notifications](https://docs.harness.io/article/kf828e347t-notification-groups).
 3. Click **Submit**.
 
 #### Download Log File
@@ -127,7 +127,7 @@ mutation {
   }  
 }
 ```
-The `clientMutationId` option is simply used here to demonstrate the case where multiple clients are making updates.Note the use of `userGroupIds` to indicate which Harness User Group to notify via its [Notification Settings](../../../firstgen-platform/account/manage-notegroups/notification-groups.md). You can get the ID using the API queries `userGroup` or `userGroupByName` or from the Harness Manager URL when looking at the User Group.
+The `clientMutationId` option is simply used here to demonstrate the case where multiple clients are making updates.Note the use of `userGroupIds` to indicate which Harness User Group to notify via its [Notification Settings](https://docs.harness.io/article/kf828e347t-notification-groups). You can get the ID using the API queries `userGroup` or `userGroupByName` or from the Harness Manager URL when looking at the User Group.
 
 Here is the example response:
 

@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../../continuous-delivery/cd-advanced/cloudformation-howto/cloud-formation-how-tos.md).Harness has first-class support for [AWS CloudFormation](https://aws.amazon.com/cloudformation/) as an infrastructure provisioner.
+This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/article/vynj4hxt98).Harness has first-class support for [AWS CloudFormation](https://aws.amazon.com/cloudformation/) as an infrastructure provisioner.
 
 See the following CloudFormation How-tos:
 

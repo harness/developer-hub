@@ -20,7 +20,7 @@ Looking for specific secret managers? See:
 
 ### Before you begin
 
-* [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md)
+* [Learn Harness' Key Concepts](https://docs.harness.io/article/hv2758ro4e-learn-harness-key-concepts)
 * [Harness Secret Management Overview](../6_Security/1-harness-secret-manager-overview.md)
 
 ### Step 1: Configure Secret Manager

@@ -113,11 +113,6 @@ The target nodes should be in ready state before and after chaos injection.
         <td> Period to wait before and after injection of chaos in sec </td>
         <td> Eg. 30 </td>
       </tr>
-      <tr>
-        <td> LIB </td>
-        <td> The chaos lib used to inject the chaos </td>
-        <td> Defaults to <code>litmus</code> supported litmus only </td>
-      </tr>
     </table>
 </details>
 

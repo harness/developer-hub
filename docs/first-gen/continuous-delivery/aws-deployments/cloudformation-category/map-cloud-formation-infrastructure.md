@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../../continuous-delivery/cd-advanced/cloudformation-howto/cloud-formation-how-tos.md).To enable Harness to deploy to the provisioned infrastructure you defined in [Add CloudFormation Templates](add-cloud-formation-templates.md), you map outputs from your CloudFormation template to the Harness Infrastructure Definition settings Harness requires for provisioning.
+This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/article/vynj4hxt98).To enable Harness to deploy to the provisioned infrastructure you defined in [Add CloudFormation Templates](add-cloud-formation-templates.md), you map outputs from your CloudFormation template to the Harness Infrastructure Definition settings Harness requires for provisioning.
 
 Mappings provide Harness with the minimum settings needed to provision using your template.
 
@@ -72,7 +72,7 @@ You map the CloudFormation template outputs using this syntax, where `exact_nam
 ```
 ${cloudformation.*exact\_name*}
 ```
-When you map a CloudFormation template output to a Harness Infrastructure Definition setting, the expression for the output, `${cloudformation.exact_name​}`, can be used anywhere in the Workflow that uses that CloudFormation Provisioner. This can be useful if you want to echo the outputs in a [Shell Script step](../../model-cd-pipeline/workflows/capture-shell-script-step-output.md) for example.
+When you map a CloudFormation template output to a Harness Infrastructure Definition setting, the expression for the output, `${cloudformation.exact_name​}`, can be used anywhere in the Workflow that uses that CloudFormation Provisioner. This can be useful if you want to echo the outputs in a [Shell Script step](https://docs.harness.io/article/1fjrjbau7x-capture-shell-script-step-output) for example.
 
 ### Option 1: Map an AWS AMI/ASG Infrastructure
 
@@ -104,7 +104,7 @@ The ECS deployment type has two **Launch Type** options:
 
 ![](./static/map-cloud-formation-infrastructure-08.png)
 
-See [AWS ECS Deployments Overview](../../concepts-cd/deployment-types/aws-ecs-deployments-overview.md) and [AWS ECS Quickstart](../../../first-gen-quickstarts/aws-ecs-deployments.md).
+See [AWS ECS Deployments Overview](../../concepts-cd/deployment-types/aws-ecs-deployments-overview.md) and [AWS ECS Quickstart](https://docs.harness.io/article/j39azkrevm-aws-ecs-deployments).
 
 ### Option 3: Map an AWS Lambda Infrastructure
 
@@ -114,11 +114,11 @@ Here is an Infrastructure Definition example for Lambda.
 
 ![](./static/map-cloud-formation-infrastructure-09.png)
 
-See [Lambda Deployment Overview](../lambda-deployments/lambda-deployment-overview.md) and [AWS Lambda Quickstart](../../../first-gen-quickstarts/aws-lambda-deployments.md).
+See [Lambda Deployment Overview](../lambda-deployments/lambda-deployment-overview.md) and [AWS Lambda Quickstart](https://docs.harness.io/article/wy1rjh19ej-aws-lambda-deployments).
 
 ### Option 4: Map a Secure Shell (SSH) Infrastructure on AWS
 
-The Secure Shell (SSH) deployment type is supported with CloudFormation on AWS only. To use SSH with a datacenter, see [Shell Script Provisioner](../../model-cd-pipeline/infrastructure-provisioner/ssh-provisioner-category/shell-script-provisioner.md).The Secure Shell (SSH) deployment type has two **AWS Node Type** options: **AWS Instance** and **AWS Autoscaling Group**.
+The Secure Shell (SSH) deployment type is supported with CloudFormation on AWS only. To use SSH with a datacenter, see [Shell Script Provisioner](https://docs.harness.io/article/1m3p7phdqo-shell-script-provisioner).The Secure Shell (SSH) deployment type has two **AWS Node Type** options: **AWS Instance** and **AWS Autoscaling Group**.
 
 For the **AWS Instance**, only AWS tags are required. Here is an example mapping both VPCs and AWS tags:
 

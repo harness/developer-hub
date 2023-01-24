@@ -49,7 +49,7 @@ Bugsnag is particularly useful for browser-based apps, as it collects browser in
 
 ![](./static/bugsnag-verification-overview-06.png)
 
-Once you have deployed your app via Harness, you can add host/node-focused verification to your Harness workflow using another [Verification Provider](what-is-cv.md), and use Bugsnag to focus on browser-based issues. Here is an example of a Harness verification where other verification tools have been used to verify host/node issues, and Bugsnag is added as the last verification step to capture browser-based issues:
+Once you have deployed your app via Harness, you can add host/node-focused verification to your Harness workflow using another [Verification Provider](https://docs.harness.io/article/myw4h9u05l-verification-providers-list), and use Bugsnag to focus on browser-based issues. Here is an example of a Harness verification where other verification tools have been used to verify host/node issues, and Bugsnag is added as the last verification step to capture browser-based issues:
 
 ![](./static/bugsnag-verification-overview-07.png)
 

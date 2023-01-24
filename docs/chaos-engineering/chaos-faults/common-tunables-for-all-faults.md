@@ -229,7 +229,7 @@ spec:
     spec:
       components:
         env:
-        # nane of the lib image
+        # name of the lib image
         - name: LIB_IMAGE
           value: 'litmuschaos/go-runner:latest'
 ```

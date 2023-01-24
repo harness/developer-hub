@@ -24,9 +24,9 @@ Perform the following steps to create AutoStopping Rules for Terraform.
 
 To use Terraform you first need to install it. To install Terraform, download the appropriate package for your Operating System:
 
-* Darwin: <https://lightwing-downloads.s3.ap-southeast-1.amazonaws.com/terraform-provider/3.0.1/tf_3.0.1_darwin_amd64.zip>
-* Linux: <https://lightwing-downloads.s3.ap-southeast-1.amazonaws.com/terraform-provider/3.0.1/tf_3.0.1_linux_amd64.zip>
-* Windows: <https://lightwing-downloads.s3.ap-southeast-1.amazonaws.com/terraform-provider/3.0.1/tf_3.0.1_windows_amd64.zip>
+* Darwin: <https://lightwing-downloads.s3.ap-southeast-1.amazonaws.com/terraform-provider/1.1.2/tf_1.1.2_darwin_amd64.zip>
+* Linux: <https://lightwing-downloads.s3.ap-southeast-1.amazonaws.com/terraform-provider/1.1.2/tf_1.1.2_linux_amd64.zip>
+* Windows: <https://lightwing-downloads.s3.ap-southeast-1.amazonaws.com/terraform-provider/1.1.2/tf_1.1.2_windows_amd64.zip>
 
 For more information on installing Terraform, see [Install Terraform for AWS](https://learn.hashicorp.com/tutorials/terraform/install-cli?in=terraform/aws-get-started) and [Install Terraform for Azure](https://learn.hashicorp.com/tutorials/terraform/install-cli?in=terraform/azure-get-started).
 

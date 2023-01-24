@@ -16,7 +16,7 @@ Harness also supports [Google KMS as a secrets manager](../6_Security/10-add-go
 
 ### Before you begin
 
-* See [Harness Key Concepts](../../getting-started/learn-harness-key-concepts.md)
+* See [Harness Key Concepts](https://docs.harness.io/article/hv2758ro4e)
 * See [Secrets Management Overview](../6_Security/1-harness-secret-manager-overview.md)
 
 ### Limitations
@@ -33,7 +33,7 @@ Harness also supports [Google KMS as a secrets manager](../6_Security/10-add-go
 
 ### Supported Platforms and Technologies
 
-See [Supported Platforms and Technologies](../../getting-started/supported-platforms-and-technologies.md).
+See [Supported Platforms and Technologies](https://docs.harness.io/article/1e536z41av5y-supported-platforms).
 
 ### Permissions
 
@@ -85,7 +85,7 @@ You can also create a new [File Secret](./3-add-file-secrets.md) here and add th
 
 ### Step 4: Setup delegates
 
-1. In **Delegates** **Setup**, enter [**Selectors**](../2_Delegates/manage-delegates/select-delegates-with-selectors.md#option-select-a-delegate-for-a-connector-using-tags) for specific delegates that you want to allow to connect to this connector.
+1. In **Delegates** **Setup**, enter [**Selectors**](../2_Delegates/delegate-guide/select-delegates-with-selectors.md#option-select-a-delegate-for-a-connector-using-tags) for specific delegates that you want to allow to connect to this connector.
 2. Click **Save and** **Continue**.
 
 ### Step 5: Test connection

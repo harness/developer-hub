@@ -8,6 +8,12 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+**Dashboards** are a collection of charts and data tables with filters that you can use to get at the data you're interested in. Dashboards serve as a platform for data modeling and analytics using a combination of available business metrics and operational data. You can use this data to make data-driven informed business decisions.
+
+
+:::note
+For information on core Dashboard functionality, see [Create Dashboards](https://docs.harness.io/article/ardf4nbvcy-create-dashboards).
+:::
 
 Harness provides **By Harness** (pre-defined) and **Custom** (user-defined) Dashboards to visualize cloud cost data across cloud providers. Using the Cluster Cost Dashboard you can:
 
@@ -40,10 +46,12 @@ Once you have set up cost visibility for the Kubernetes clusters and the data is
 
 Perform the following steps to view Cluster Cost Dashboard:
 
-1. In the Harness application, click **Dashboards**.
-2. Select **By Harness** and then, click **Cluster Cost Dashboard**.
+1. In Harness, click **Dashboards**.
+2. In **All Dashboards**, select **By Harness** and click **Cluster Cost Dashboard**.
    
-   The Cluster Cost Dashboard is displayed.
+     ![](./static/cluster-cost-dashboard-64.png)
+   
+   The Cluster Cost Dashboard is displayed:  
 
 | **Dimensions** | **Description** |
 | --- | --- |
@@ -60,12 +68,11 @@ Perform the following steps to view Cluster Cost Dashboard:
 | Most Expensive Namespaces | The cost of the most expensive Kubernetes namespaces in the cluster.  |
 | Most Expensive Workloads | The cost of the most expensive Kubernetes workloads in the cluster. |
 | Most Expensive Nodes | The cost of the most expensive Kubernetes nodes in the cluster. |
-1. Select **Time Range** to filter the data based on pre-defined time range filters. The available filters are:
+3. Select **Time Range** to filter the data based on pre-defined time range filters. The available filters are:
 	* Last 7 Days
 	* Last 30 Days
 	* Last 90 Days
-	* Last 12 months
-	* last 24 months
+	* Last year
 4. Select **Resource** to filter the data based on pre-defined resource filters. The available filters are:
 	* Cluster
 	* Namespace
@@ -106,15 +113,15 @@ Perform the following steps to view Cluster Cost Dashboard:
 
 Once you have set up cost visibility for your Kubernetes clusters, AWS, GCP, and Azure cloud providers, you can create your own Dashboards. Refer to the following topics to create your own Dashboard and chart data.
 
-* [Create Dashboards](../../../../platform/18_Dashboards/create-dashboards.md)
-* [Create Visualizations and Graphs](../../../../platform/18_Dashboards/create-visualizations-and-graphs.md)
+* [Create Dashboards](https://docs.harness.io/article/ardf4nbvcy-create-dashboards)
+* [Create Visualizations and Graphs](https://docs.harness.io/article/n2jqctdt7c-create-visualizations-and-graphs)
 
 ### Next Steps
 
-* [Use Dashboard Actions](../../../../platform/18_Dashboards/use-dashboard-actions.md)
-* [Download Dashboard Data](../../../../platform/18_Dashboards/download-dashboard-data.md)
-* [Create Conditional Alerts](../../../../platform/18_Dashboards/create-conditional-alerts.md)
-* [Schedule and Share Dashboards](../../../../platform/18_Dashboards/share-dashboards.md)
+* [Use Dashboard Actions](https://docs.harness.io/article/y1oh7mkwmh-use-dashboard-actions)
+* [Download Dashboard Data](https://docs.harness.io/article/op59lb1pxv-download-dashboard-data)
+* [Create Conditional Alerts](https://docs.harness.io/article/ro0i58mvby-create-conditional-alerts)
+* [Schedule and Share Dashboards](https://docs.harness.io/article/35gfke0rl8-share-dashboards)
 * [View AWS Cost Dashboard](aws-dashboard.md)
 
 

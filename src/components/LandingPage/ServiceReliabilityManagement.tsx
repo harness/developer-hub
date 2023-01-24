@@ -1,7 +1,6 @@
 import React from "react";
 import Link from "@docusaurus/Link";
 import clsx from "clsx";
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import styles from "./styles.module.scss";
 import TutorialCard, { CardItem, docType } from "./TutorialCard";
 
@@ -10,7 +9,7 @@ const FeaturedList: CardItem[] = [
   {
     title: "Introduction to SLO Management with Prometheus",
     module: "srm",
-    icon: "img/icon_srm.svg",
+    icon: "/img/icon_srm.svg",
     description: (
       <>
         Introducing SLOs and how to measure and manage your SLOs leveraging
@@ -28,7 +27,7 @@ const SRMList: CardItem[] = [
   {
     title: "Introduction to SLO Management with Prometheus",
     module: "srm",
-    icon: "img/icon_srm.svg",
+    icon: "/img/icon_srm.svg",
     description: (
       <>
         Introducing SLOs and how to measure and manage your SLOs leveraging
@@ -43,7 +42,7 @@ const SRMList: CardItem[] = [
   {
     title: "Introduction to Java Exception Management",
     module: "srm",
-    icon: "img/icon_srm.svg",
+    icon: "/img/icon_srm.svg",
     description: (
       <>
         Finding and fixing caught, uncaught, and swallowed Java exceptions.
@@ -58,16 +57,16 @@ const SRMList: CardItem[] = [
 ];
 
 export default function SRM() {
-  const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   return (
     <div className="container">
+      <img src="/img/srm.svg" />
       <div className={styles.SectionName}>
         <h3>Manage Service Reliability</h3>
       </div>
       <div className={styles.topSection}>
         <div className={styles.spaceBetween}>
           <div className={styles.moduleTitle}>
-            <img src={`${baseUrl}img/icon_srm.svg`} />
+            <img src="/img/icon_srm.svg" />
             <h1>Service Reliability Management</h1>
           </div>
           <div>
@@ -79,7 +78,7 @@ export default function SRM() {
                   styles.btnLight
                 )}
               >
-                <img src={`${baseUrl}img/icon_document.png`} /> Documentation
+                <img src="/img/icon_document.png" /> Documentation
               </button>
             </Link>
           </div>
@@ -97,16 +96,16 @@ export default function SRM() {
                 className={clsx("button button--lg", styles.btn, styles.btnSRM)}
                 to="#all-tutorials"
               >
-                Tutorials
-                <img src={`${baseUrl}img/Stroke.svg`} />
+                SRM Tutorials
+                <img src="/img/Stroke.svg" />
               </Link>
               <Link href="https://harness.io/products/service-reliability-management">
-                <button className={styles.link}>Learn more</button>
+                <button className={styles.link}>Learn more about SRM</button>
               </Link>
             </div>
           </div>
           <div>
-            <img src={`${baseUrl}img/srm.svg`} />
+            <img src="/img/srm_flow.svg" />
           </div>
         </div>
       </div>

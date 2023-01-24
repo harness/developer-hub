@@ -24,7 +24,7 @@ Coming soon.
 ## Prerequisites
 
 :::info
-- Ensure that Kubernetes Version > 1.17
+- Ensure that Kubernetes Version > 1.16.
 - Ensure that you have sufficient AWS access to stop and start an EC2 instance. 
 - Ensure to create a Kubernetes secret having the AWS access configuration(key) in the `CHAOS_NAMESPACE`. A sample secret file looks like:
 ```yaml
@@ -46,41 +46,6 @@ stringData:
 
 If the target EC2 instance is a part of a self-managed nodegroup then make sure to drain the target node if any application is running on it and also ensure to cordon the target node before running the fault so that the fault pods do not schedule on it.
 :::
-
-## Permission Requirement
-
-- Here is an example AWS policy to execute this fault.
-
-<details>
-<summary>View policy for this fault</summary>
-
-```json
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": [
-                "ec2:StartInstances",
-                "ec2:StopInstances",
-                "ec2:DescribeInstanceStatus",
-                "ec2:DescribeInstances"
-            ],
-            "Resource": "*"
-        },
-        {
-            "Effect": "Allow",
-            "Action": [
-                "autoscaling:DescribeAutoScalingInstances"
-            ],
-            "Resource": "*"
-        }
-    ]
-}
-```
-</details>
-
-- Refer a [superset permission/policy](./policy-for-all-aws-faults) to execute all AWS faults.
 
 ## Default Validations
 

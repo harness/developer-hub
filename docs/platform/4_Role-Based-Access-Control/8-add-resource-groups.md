@@ -14,7 +14,7 @@ This topic will explain the steps to create and manage Resource Groups within Ha
 
 ### Before you begin
 
-* [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md)
+* [Learn Harness' Key Concepts](https://ngdocs.harness.io/article/hv2758ro4e-learn-harness-key-concepts)
 * Make sure you have **Create/Edit/Delete** Permissions for Resource Groups.
 
 ### Visual Summary

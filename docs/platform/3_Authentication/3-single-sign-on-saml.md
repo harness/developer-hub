@@ -12,7 +12,7 @@ Harness supports Single Sign-On (SSO) with SAML, integrating with your SAML SSO 
 
 
 :::note
-If the [Harness Self-Managed Enterprise Edition](../../self-managed-enterprise-edition/introduction/harness-self-managed-enterprise-edition-overview.md) version is not accessed using the HTTPS load balancer, SAML authentication will fail. Make sure you access the Harness Self-Managed Enterprise Edition version using an HTTPS load balancer, and not an HTTP load balancer.
+If the [Harness Self-Managed Enterprise Edition](https://docs.harness.io/article/tb4e039h8x-harness-on-premise-overview) version is not accessed using the HTTPS load balancer, SAML authentication will fail. Make sure you access the Harness Self-Managed Enterprise Edition version using an HTTPS load balancer, and not an HTTP load balancer.
 :::
 
 
@@ -319,7 +319,7 @@ Next, you will use the **SAML SSO Provider** settings in Harness to set up your 
 
 
 :::note
-For [Harness Self-Managed Enterprise Edition](../../self-managed-enterprise-edition/introduction/harness-self-managed-enterprise-edition-overview.md), replace **app.harness.io** with your custom URL.  
+For [Harness Self-Managed Enterprise Edition](https://docs.harness.io/article/tb4e039h8x-harness-on-premise-overview), replace **app.harness.io** with your custom URL.  
 If you use a custom Harness subdomain in any Harness version, like **example.harness.io**, use that URL.
 :::
 

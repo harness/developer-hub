@@ -8,11 +8,11 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../../continuous-delivery/onboard-cd/cd-quickstarts/serverless-lambda-cd-quickstart.md).Setting up a Lambda deployment is as simple as adding your function zip file, configuring function compute settings, and adding aliases and tags. Harness takes care of the rest of the deployment, making it consistent, reusable, and safe with automatic rollback.
+This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/article/5fnx4hgwsa).Setting up a Lambda deployment is as simple as adding your function zip file, configuring function compute settings, and adding aliases and tags. Harness takes care of the rest of the deployment, making it consistent, reusable, and safe with automatic rollback.
 
 ![](./static/aws-lambda-overview-14.png)
 
-For a general overview of how Harness works, see [Harness Key Concepts](../../../starthere-firstgen/harness-key-concepts.md) and [Application Components](../../model-cd-pipeline/applications/application-configuration.md).Basically, the Harness setup for Lambda is akin to using the AWS CLI [aws lambda](https://docs.aws.amazon.com/cli/latest/reference/lambda/index.html#cli-aws-lambda) [create-function](https://docs.aws.amazon.com/cli/latest/reference/lambda/create-function.html), [update-function-code](https://docs.aws.amazon.com/cli/latest/reference/lambda/update-function-code.html), and [update-function-configuration](https://docs.aws.amazon.com/cli/latest/reference/lambda/update-function-configuration.html) commands, as well as the many other commands that are needed.
+For a general overview of how Harness works, see [Harness Architecture](https://docs.harness.io/article/de9t8iiynt-harness-architecture) and [Application Components](https://docs.harness.io/article/bucothemly-application-configuration).Basically, the Harness setup for Lambda is akin to using the AWS CLI [aws lambda](https://docs.aws.amazon.com/cli/latest/reference/lambda/index.html#cli-aws-lambda) [create-function](https://docs.aws.amazon.com/cli/latest/reference/lambda/create-function.html), [update-function-code](https://docs.aws.amazon.com/cli/latest/reference/lambda/update-function-code.html), and [update-function-configuration](https://docs.aws.amazon.com/cli/latest/reference/lambda/update-function-configuration.html) commands, as well as the many other commands that are needed.
 
 The benefit with Harness is that you can set up your Lambda deployment once, with no scripting, and then have your Lambda functions deployed automatically as they are updated in your AWS S3 bucket. You can even templatize the deployment Environment and Workflow for use by other devops and developers in your team.
 
@@ -33,17 +33,17 @@ You can also add your Lambda Aliases and Tags as part of the Workflow.
 8. Advanced options not covered in this guide:
 	1. **Harness Pipeline** - Create a Harness Pipeline for your deployment, including Workflows and Approval steps. Typically, Harness customers will deploy Lambda Pipelines with a Workflow for Dev, QA, Stage, etc:
 	   ![](./static/aws-lambda-overview-15.png)
-	   This example doesn't show Approval steps between Pipeline stages, which are also common. For more information, see our [Pipelines](../../model-cd-pipeline/pipelines/pipeline-configuration.md) and [Approvals](../../model-cd-pipeline/approvals/approvals.md) topics.
+	   This example doesn't show Approval steps between Pipeline stages, which are also common. For more information, see our [Pipelines](https://docs.harness.io/article/zc1u96u6uj-pipeline-configuration) and [Approvals](https://docs.harness.io/article/0ajz35u2hy-approvals) topics.
 	2. **Harness Trigger** - Create a Harness Trigger to automatically deploy your Workflows or Pipeline according to your criteria. Typically, customers use a Trigger to execute a Lambda Pipeline using the Trigger's **On New Artifact** condition. Each time the Lambda artifact, such as a zip file, is updated in the artifact repository (AWS S3), the Pipeline is executed and the new Lambda function is deployed.  
-	For more information, see [Triggers](../../model-cd-pipeline/triggers/add-a-trigger-2.md).
-	3. **Harness Infrastructure Provisioners** - Create Harness Infrastructure Provisioners, such as CloudFormation and Terraform, for your deployment environments. For more information, see [Infrastructure Provisioners](../../model-cd-pipeline/infrastructure-provisioner/add-an-infra-provisioner.md).
+	For more information, see [Triggers](https://docs.harness.io/article/xerirloz9a-add-a-trigger-2).
+	3. **Harness Infrastructure Provisioners** - Create Harness Infrastructure Provisioners, such as CloudFormation and Terraform, for your deployment environments. For more information, see [Infrastructure Provisioners](https://docs.harness.io/article/o22jx8amxb-add-an-infra-provisioner).
 	4. Continuous Verification:
-		1. **Deployment Verification** - Once you have successfully deployed you can add your APM and logging apps as Verification Providers, and then add Verify Steps to your Workflows. Harness will use its machine-learning to find anomalies in your deployments. For more information, see [Continuous Verification](../../continuous-verification/continuous-verification-overview/concepts-cv/what-is-cv.md).
-		2. **24/7 Service Guard** - Monitor your live applications, catching problems that surface minutes or hours following deployment. For more information, see [24/7 Service Guard](../../continuous-verification/continuous-verification-overview/concepts-cv/24-7-service-guard-overview.md).
+		1. **Deployment Verification** - Once you have successfully deployed you can add your APM and logging apps as Verification Providers, and then add Verify Steps to your Workflows. Harness will use its machine-learning to find anomalies in your deployments. For more information, see [Continuous Verification](https://docs.harness.io/article/myw4h9u05l-verification-providers-list).
+		2. **24/7 Service Guard** - Monitor your live applications, catching problems that surface minutes or hours following deployment. For more information, see [24/7 Service Guard](https://docs.harness.io/article/dajt54pyxd-24-7-service-guard-overview).
 
-Harness fully-integrates with **AWS CloudWatch** to apply Harness machine learning to CloudWatches monitoring and operational data. See [CloudWatch Verification](../../continuous-verification/continuous-verification-overview/concepts-cv/cloud-watch-verification-overview.md).
+Harness fully-integrates with **AWS CloudWatch** to apply Harness machine learning to CloudWatches monitoring and operational data. See [CloudWatch Verification](https://docs.harness.io/article/q6ti811nck-cloud-watch-verification-overview).
 
 ### Next Steps
 
-* [Troubleshooting AWS Lambda Deployments](../../../firstgen-troubleshooting/troubleshooting-harness.md#aws-lambda)
+* [Troubleshooting AWS Lambda Deployments](https://docs.harness.io/article/g9o2g5jbye-troubleshooting-harness#aws_lambda)
 
