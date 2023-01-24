@@ -115,11 +115,6 @@ The application pods should be in running state before and after chaos injection
         <td> Defaults to 0 (corresponds to 1 replica), provide numeric value only </td>
       </tr> 
       <tr>
-        <td> LIB </td>
-        <td> The chaos lib used to inject the chaos </td>
-        <td> Defaults to `litmus` supported litmus only </td>
-      </tr>
-      <tr>
         <td> LIB_IMAGE </td>
         <td> The image used to fill the disk </td>
         <td> Defaults to <code>litmuschaos/go-runner:latest</code> </td>

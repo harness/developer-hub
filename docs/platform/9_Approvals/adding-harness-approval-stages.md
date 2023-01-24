@@ -16,7 +16,7 @@ For example, in a [Build Pipeline](../../continuous-integration/ci-quickstarts/c
 
 Other approval methods are:
 
-* [Manual Harness Approval Steps in CD Stages](../../continuous-delivery/cd-advanced/approvals/using-harness-approval-steps-in-cd-stages.md): add Approval steps to a stage for manual intervention.
+* [Manual Harness Approval Steps in CD Stages](https://docs.harness.io/article/43pzzhrcbv-using-harness-approval-steps-in-cd-stages): add Approval steps to a stage for manual intervention.
 * [Adding Jira Approval Stages and Steps](adding-jira-approval-stages.md): add Jira Approval stages and steps.
 
 ### Before you begin
@@ -130,10 +130,10 @@ See:
 
 * [Step Skip Condition Settings](../8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
 * [Step Failure Strategy Settings](../8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
-* [Select Delegates with Selectors](../2_Delegates/manage-delegates/select-delegates-with-selectors.md)
+* [Select Delegates with Selectors](../2_Delegates/delegate-guide/select-delegates-with-selectors.md)
 
 ### See also
 
-* [Using Manual Harness Approval Steps in CD Stages](../../continuous-delivery/cd-advanced/approvals/using-harness-approval-steps-in-cd-stages.md)
-* [Update Jira Issues in CD Stages](../../continuous-delivery/cd-advanced/ticketing-systems-category/update-jira-issues-in-cd-stages.md)
+* [Using Manual Harness Approval Steps in CD Stages](https://docs.harness.io/article/43pzzhrcbv-using-harness-approval-steps-in-cd-stages)
+* [Update Jira Issues in CD Stages](https://docs.harness.io/article/urdkli9e74-update-jira-issues-in-cd-stages)
 

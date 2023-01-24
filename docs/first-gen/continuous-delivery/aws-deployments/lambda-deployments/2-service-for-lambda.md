@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../../continuous-delivery/onboard-cd/cd-quickstarts/serverless-lambda-cd-quickstart.md).This topic describes how to create a Harness Application and adds a Service that uses a function file, runtime, and handler information to define the Lambda function to deploy.
+This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/article/5fnx4hgwsa).This topic describes how to create a Harness Application and adds a Service that uses a function file, runtime, and handler information to define the Lambda function to deploy.
 
 In this topic:
 
@@ -28,11 +28,11 @@ In this topic:
 
 Harness supports the following artifact sources with Lambda:
 
-* [Jenkins](../../../firstgen-platform/account/manage-connectors/add-jenkins-artifact-servers.md)
-* [Artifactory](../../../firstgen-platform/account/manage-connectors/add-artifactory-servers.md)
+* [Jenkins](https://docs.harness.io/article/qa7lewndxq-add-jenkins-artifact-servers)
+* [Artifactory](https://docs.harness.io/article/nj3p1t7v3x-add-artifactory-servers)
 * [AWS S3](1-delegate-and-connectors-for-lambda.md)
-* [Nexus](../../../firstgen-platform/techref-category/cd-ref/artifacts-ref/nexus-artifact-sources.md)
-* [Custom Artifact Source](../../model-cd-pipeline/setup-services/custom-artifact-source.md)
+* [Nexus](https://docs.harness.io/article/rdhndux2ab-nexus-artifact-sources)
+* [Custom Artifact Source](https://docs.harness.io/article/jizsp5tsms-custom-artifact-source)
 
 ### Step 1: Create a Harness Lambda Service
 
@@ -54,7 +54,7 @@ An Artifact Source in a Lambda Service is the Lambda function file you want to d
 
 To add an Artifact Source to this Service, do the following:
 
-1. In your Lambda Service, click **Add Artifact Source**, and then click **Amazon S3**. For information on using a Custom Artifact Source, see [Custom Artifact Source](../../model-cd-pipeline/setup-services/custom-artifact-source.md). 
+1. In your Lambda Service, click **Add Artifact Source**, and then click **Amazon S3**. For information on using a Custom Artifact Source, see [Custom Artifact Source](https://docs.harness.io/article/jizsp5tsms-custom-artifact-source). 
 
    The **Amazon S3 Artifact Source** dialog appears.
 
@@ -115,7 +115,7 @@ When you are done, click **Submit**. Your function is added to the Service.
 
 ### Option: Lambda Environment Variables using Service Config Variables
 
-You can use [Config Variables](../../model-cd-pipeline/setup-services/add-service-level-config-variables.md) in your Service to create [Lambda Environment Variables](https://docs.aws.amazon.com/lambda/latest/dg/configuration-envvars.html).
+You can use [Config Variables](https://docs.harness.io/article/q78p7rpx9u-add-service-level-config-variables) in your Service to create [Lambda Environment Variables](https://docs.aws.amazon.com/lambda/latest/dg/configuration-envvars.html).
 
 Encrypted Config Variables will appear as plaintext Environment Variables in Lambda.
 
@@ -125,5 +125,5 @@ When you deploy your function, Harness replaces any existing Environment variabl
 
 * [Define your Lambda Target Infrastructure](3-lambda-environments.md)
 * [Create a Basic Lambda Deployment](4-lambda-workflows-and-deployments.md)
-* [Troubleshooting AWS Lambda Deployments](../../../firstgen-troubleshooting/troubleshooting-harness.md#aws-lambda)
+* [Troubleshooting AWS Lambda Deployments](https://docs.harness.io/article/g9o2g5jbye-troubleshooting-harness#aws_lambda)
 

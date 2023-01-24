@@ -10,12 +10,6 @@ keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial]
 
 [Sauce Labs](https://saucelabs.com/) is a web and mobile application automated testing platform. Sauce Connect Proxy can run as a Background step in your Harness CI pipeline, and act as a proxy server between a Sauce Labs' infrastructure and your CI pipeline.
 
-```mdx-code-block
-import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
-```
-
-<CISignupTip />
-
 ## Create your pipeline
 
 ### Docker Hub connector

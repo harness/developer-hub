@@ -16,10 +16,6 @@ spec:
     spec:
       components:
         env:
-        # name of chaos lib
-        # supports litmus and pumba
-        - name: LIB
-          value: 'pumba'
         # stress image - applicable for pumba only
         - name: STRESS_IMAGE
           value: 'alexeiled/stress-ng:latest-ubuntu'

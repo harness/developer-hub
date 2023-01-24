@@ -113,7 +113,7 @@ You can create alerts to receive notifications when an anomaly is detected. To c
      ![](./static/detect-cloud-cost-anomalies-with-ccm-03.png)
 3. Select the **Perspective** for which you want to create an alert.
 4. Click **add channel** to add anomaly alert channels.
-5. Select **Slack Webhook URL** or **Email** and enter the details to receive notifications. To learn how to create a Slack webhook URL, see [Send Notifications Using Slack](../../../platform/5_Notifications/send-notifications-using-slack.md#step-1-create-a-slack-app-and-webhook-for-your-channel).
+5. Select **Slack Webhook URL** or **Email** and enter the details to receive notifications. To learn how to create a Slack webhook URL, see [Send Notifications Using Slack](https://docs.harness.io/article/h5n2oj8y5y-send-notifications-using-slack#step_1_create_a_slack_app_and_webhook_for_your_channel).
 6. Click **Save and Continue**.  
    An anomaly alert is created. Click the alert to view the anomalies on the **Perspectives** page.
 

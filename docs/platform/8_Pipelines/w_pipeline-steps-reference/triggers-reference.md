@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 This topic provides settings information for Triggers. Triggers are used to initiate the execution of Pipelines.
 
-For steps on setting up different types of Triggers, see [Triggers Howtos](/docs/category/triggers).
+For steps on setting up different types of Triggers, see [Triggers Howtos](https://docs.harness.io/category/triggers).
 
 ### Name
 
@@ -42,7 +42,7 @@ Whenever you regenerate a secure token, any preceding tokens become invalid. Upd
 
 Select the Code Repo Connector that connects to your Git provider account.
 
-See [Code Repo Connectors Tech Ref](/docs/category/code-repo-connectors).
+See [Code Repo Connectors Tech Ref](https://docs.harness.io/category/code-repo-connectors).
 
 ### Repository Name
 

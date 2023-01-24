@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../../continuous-delivery/onboard-cd/cd-quickstarts/serverless-lambda-cd-quickstart.md).Add the required policies to the Execution Role for the Lambda function to view your Lambda functions in the Serverless Functions Dashboard.
+This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/article/5fnx4hgwsa).Add the required policies to the Execution Role for the Lambda function to view your Lambda functions in the Serverless Functions Dashboard.
 
 In this topic:
 
@@ -43,9 +43,9 @@ Here is an individual Lambda deployment and how it is displayed on the Serverles
 
 ![](./static/view-lamba-deployments-in-the-serverless-functions-dashboard-28.png)
 
-See [Serverless Functions Dashboard](../../../firstgen-platform/techref-category/monitoring-ref/serverless-functions-dashboard.md).
+See [Serverless Functions Dashboard](https://docs.harness.io/article/vlj9xbj315-serverless-functions-dashboard).
 
 ### Next Steps
 
-* [Troubleshooting AWS Lambda Deployments](../../../firstgen-troubleshooting/troubleshooting-harness.md#aws-lambda)
+* [Troubleshooting AWS Lambda Deployments](https://docs.harness.io/article/g9o2g5jbye-troubleshooting-harness#aws_lambda)
 

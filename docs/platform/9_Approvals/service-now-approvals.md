@@ -14,7 +14,7 @@ During deployment, a ServiceNow ticket's fields are evaluated according to the c
 
 Approvals can be added as stages or in-between stage steps to prevent stage execution from proceeding without approval.
 
-For example, in a [Kubernetes Blue Green Deployment](../../continuous-delivery/cd-execution/kubernetes-executions/create-a-kubernetes-blue-green-deployment.md), you might want to add an approval step between the Stage Deployment step, where the new app version is deployed to the staging environment, and the Swap Primary with Stage step, where production traffic is routed to the pods for the new version.
+For example, in a [Kubernetes Blue Green Deployment](https://docs.harness.io/article/mog5tnk5pi-create-a-kubernetes-blue-green-deployment), you might want to add an approval step between the Stage Deployment step, where the new app version is deployed to the staging environment, and the Swap Primary with Stage step, where production traffic is routed to the pods for the new version.
 
 ### Before you begin
 
@@ -95,7 +95,7 @@ The start and end times use the time zone set in the ServiceNow account selected
 
 In **Advanced**, you can use the following options:
 
-* [Delegate Selector](../2_Delegates/manage-delegates/select-delegates-with-selectors.md#option-select-a-delegate-for-a-step-using-tags)
+* [Delegate Selector](../2_Delegates/delegate-guide/select-delegates-with-selectors.md#option-select-a-delegate-for-a-step-using-tags)
 * [Step Skip Condition Settings](../8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
 * [Step Failure Strategy Settings](../8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
 
@@ -122,5 +122,5 @@ For example, `<+ticket.state.displayValue> == "New"` in the Approval Criteria,
 ### See also
 
 * [Using Manual Harness Approval Stages](adding-harness-approval-stages.md)
-* [Using Manual Harness Approval Steps in CD Stages](../../continuous-delivery/cd-advanced/approvals/using-harness-approval-steps-in-cd-stages.md)
+* [Using Manual Harness Approval Steps in CD Stages](https://docs.harness.io/article/43pzzhrcbv-using-harness-approval-steps-in-cd-stages)
 

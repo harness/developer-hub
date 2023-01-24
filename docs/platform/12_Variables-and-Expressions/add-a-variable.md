@@ -24,7 +24,7 @@ For details on Harness built-in variables, see [Built-in Harness Variables Refer
 
 ### Before you begin
 
-* [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md).
+* [Learn Harness' Key Concepts](https://ngdocs.harness.io/article/hv2758ro4e-learn-harness-key-concepts).
 * Make sure you have [all permissions](../4_Role-Based-Access-Control/9-add-manage-roles.md) on Variables to add and manage Variables.
   
   ![](./static/add-a-variable-00.png)
@@ -128,7 +128,7 @@ Let us add the Variable in a Pipeline now.
 
 In Harness go to a Pipeline in the same Org as the variable you created.
 
-In **Execution**, add a [Shell Script](../../continuous-delivery/cd-execution/cd-general-steps/using-shell-scripts.md) step and reference the variables:
+In **Execution**, add a [Shell Script](https://docs.harness.io/article/k5lu0u6i1i-using-shell-scripts) step and reference the variables:
 
 
 ```

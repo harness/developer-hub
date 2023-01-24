@@ -53,11 +53,6 @@ The application pods should be in running state before and after chaos injection
         <td> Default to 60s </td>
       </tr>
       <tr>
-        <td> LIB </td>
-        <td> The chaos lib used to inject the chaos. Available libs are <code>litmus</code></td>
-        <td> Default to <code>litmus</code> </td>
-      </tr>
-      <tr>
         <td> TARGET_PODS </td>
         <td> Comma separated list of application pod name subjected to pod CPU hog chaos</td>
         <td> If not provided, it will select target pods randomly based on provided appLabels</td>

@@ -1,5 +1,5 @@
 ---
-title: Set up CCM for Azure
+title: Set Up Cloud Cost Management for Azure
 description: This topic describes how to set up cost visibility for Azure.
 # sidebar_position: 2
 helpdocs_topic_id: v682mz6qfd
@@ -22,7 +22,7 @@ Harness Cloud Cost Management (CCM) monitors the cloud costs of your Azure servi
 
 ## Azure Connector requirements
 
-* The same connector cannot be used in NextGen and FirstGen. For information on creating an Azure connector in the FirstGen see [Set Up Cost Visibility for Azure](../../../first-gen/cloud-cost-management/setup-cost-visibility/set-up-cost-visibility-for-azure.md).
+* The same connector cannot be used in NextGen and FirstGen. For information on creating an Azure connector in the FirstGen see [Set Up Cost Visibility for Azure](https://docs.harness.io/article/7idbmchsim-set-up-cost-visibility-for-azure).
 * For CCM, Azure connectors are available only at the Account level in Harness.
 * You can create multiple Azure connectors for each Harness Account.
 * You can create multiple Azure connectors per Azure Tenant with unique subscription IDs. You have to create separate connectors for subscriptions that 

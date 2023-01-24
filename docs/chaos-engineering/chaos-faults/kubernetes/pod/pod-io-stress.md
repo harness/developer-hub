@@ -64,11 +64,6 @@ The application pods should be in running state before and after chaos injection
         <td> VOLUME_MOUNT_PATH </td>
         <td> Fill the given volume mount path</td>
         <td> </td>
-      </tr>  
-      <tr>
-        <td> LIB </td>
-        <td> The chaos lib used to inject the chaos </td>
-        <td> Default to <code>litmus</code>. Available litmus and pumba. </td>
       </tr>
       <tr>
         <td> LIB_IMAGE </td>
@@ -286,40 +281,6 @@ spec:
         # number of io workers 
         - name: NUMBER_OF_WORKERS
           value: '4'
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
-```
-
-### Pumba Chaos Library
-
-It specifies the Pumba chaos library for the chaos injection. It can be tuned via `LIB` ENV. The defaults chaos library is `litmus`.
-
-Use the following example to tune this:
-
-[embedmd]:# (./static/manifests/pod-io-stress/pumba.yaml yaml)
-```yaml
-# use the pumba lib for io stress
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: pod-io-stress
-    spec:
-      components:
-        env:
-        # name of lib
-        # it supports litmus and pumba lib
-        - name: LIB
-          value: 'pumba'
         - name: TOTAL_CHAOS_DURATION
           VALUE: '60'
 ```

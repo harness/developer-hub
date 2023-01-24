@@ -1,7 +1,6 @@
 import React from "react";
 import Link from "@docusaurus/Link";
 import clsx from "clsx";
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import styles from "./styles.module.scss";
 import TutorialCard, { CardItem, docType } from "./TutorialCard";
 
@@ -10,7 +9,7 @@ const FeaturedList: CardItem[] = [
   {
     title: "Deploy a Helm Chart using Harness GitOps for Argo CD",
     module: "cd",
-    icon: "img/icon_cd.svg",
+    icon: "/img/icon_cd.svg",
     description: <>Get started with Harness GitOps for Argo CD.</>,
     newDoc: true,
     type: [docType.Documentation],
@@ -20,7 +19,7 @@ const FeaturedList: CardItem[] = [
   {
     title: "Deploy a Helm Chart using CD Community Edition",
     module: "cd",
-    icon: "img/icon_cd.svg",
+    icon: "/img/icon_cd.svg",
     description: (
       <>
         Use the 100% free, source-available, self-managed Harness CD Community
@@ -38,7 +37,7 @@ const CDList: CardItem[] = [
   {
     title: "Deploy a Kubernetes Manifest",
     module: "cd",
-    icon: "img/icon_cd.svg",
+    icon: "/img/icon_cd.svg",
     description: (
       <>
         Deploying your first set of Kubernetes Services in a CD Pipline with
@@ -54,7 +53,7 @@ const CDList: CardItem[] = [
   {
     title: "Deploy a Helm Chart",
     module: "cd",
-    icon: "img/icon_cd.svg",
+    icon: "/img/icon_cd.svg",
     description: (
       <>
         Deploying your first set of Kubernetes Resources in a CD Pipeline with
@@ -69,7 +68,7 @@ const CDList: CardItem[] = [
   {
     title: "Deploy a Helm Chart using Harness GitOps for Argo CD",
     module: "cd",
-    icon: "img/icon_cd.svg",
+    icon: "/img/icon_cd.svg",
     description: (
       <>Learn about GitOps and how to leverage your own GitOps Pipeline.</>
     ),
@@ -79,24 +78,9 @@ const CDList: CardItem[] = [
     link: "/tutorials/deploy-services/helm-argocd-gitops-k8s",
   },
   {
-    title: "Build and Deploy a NodeJS App to Kubernetes",
-    module: "cd",
-    icon: "img/icon_cd.svg",
-    description: (
-      <>
-        Build and deploy a simple nodejs application using Harness CI and CD.
-      </>
-    ),
-    newDoc: false,
-    type: [docType.Documentation],
-    //type: [docType.Documentation, docType.Interactive, docType.Video],
-    time: "10 min",
-    link: "/tutorials/deploy-services/harness-cicd-tutorial",
-  },
-  {
     title: "Deploy a Helm Chart using CD Community Edition",
     module: "cd",
-    icon: "img/icon_cd.svg",
+    icon: "/img/icon_cd.svg",
     description: (
       <>
         Use the 100% free, source-available, self-managed Harness CD Community
@@ -111,7 +95,7 @@ const CDList: CardItem[] = [
   {
     title: "Deploy a Docker Image to Amazon ECS ",
     module: "cd",
-    icon: "img/icon_cd.svg",
+    icon: "/img/icon_cd.svg",
     description: <>Deploy a Docker image to Amazon ECS using a CD Pipeline.</>,
     newDoc: false,
     type: [docType.Documentation],
@@ -121,7 +105,7 @@ const CDList: CardItem[] = [
   {
     title: "Deploy a Private Image in Amazon ECR to Kubernetes ",
     module: "cd",
-    icon: "img/icon_cd.svg",
+    icon: "/img/icon_cd.svg",
     description: (
       <>
         Deploy a Docker image from a private Amazon ECR Repository to
@@ -136,7 +120,6 @@ const CDList: CardItem[] = [
 ];
 
 export default function CD() {
-  const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   return (
     // <Layout title="CD" description="CD">
     //   <ul className={styles.breadCrumb}>
@@ -144,13 +127,14 @@ export default function CD() {
     //     <li>Deploy services</li>
     //   </ul>
     <div className="container">
+      <img src="/img/cd.svg" />
       <div className={styles.SectionName}>
         <h3>Deploy services</h3>
       </div>
       <div className={styles.topSection}>
         <div className={styles.spaceBetween}>
           <div className={styles.moduleTitle}>
-            <img src={`${baseUrl}img/icon_cd.svg`} />
+            <img src="/img/icon_cd.svg" />
             <h1>Continuous Delivery & GitOps</h1>
           </div>
           <div>
@@ -162,7 +146,7 @@ export default function CD() {
                   styles.btnLight
                 )}
               >
-                <img src={`${baseUrl}img/icon_document.png`} /> Documentation
+                <img src="/img/icon_document.png" /> Documentation
               </button>
             </Link>
           </div>
@@ -170,7 +154,7 @@ export default function CD() {
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
             <p>
-              Harness CD & GitOps focuses on delivery and deployment of
+              Continuous Delivery & GitOps focuses on delivery and deployment of
               application and infrastructure changes in a safe and sustainable
               way. Your Continuous Delivery pipeline should automate all of the
               steps necessary to get your changes into production.
@@ -180,18 +164,18 @@ export default function CD() {
                 className={clsx("button button--lg", styles.btn, styles.btnCD)}
                 to="#all-tutorials"
               >
-                Tutorials
-                <img src={`${baseUrl}img/Stroke.svg`} />
+                CD & GitOps Tutorials
+                <img src="/img/Stroke.svg" />
               </Link>
               <Link href="https://harness.io/products/continuous-delivery">
                 <button className={styles.link}>
-                  Learn more
+                  Learn more about CD & GitOps
                 </button>
               </Link>
             </div>
           </div>
           <div>
-            <img src={`${baseUrl}img/cd.svg`} />
+            <img src="/img/cd_flow.svg" />
           </div>
         </div>
       </div>

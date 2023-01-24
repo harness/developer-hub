@@ -8,11 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-:::note
-This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/continuous-delivery/cd-deployments-category/deployment-concepts).
-:::
-
-You can resume Pipeline deployment executions that meet the following criteria:
+This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io).You can resume Pipeline deployment executions that meet the following criteria:
 
 * Failed
 * Aborted
@@ -28,9 +24,9 @@ The stages after the resumed stage are executed. Stages preceding the stage you 
 
 ### Before You Begin
 
-* [Pipelines](../../model-cd-pipeline/pipelines/pipeline-configuration.md)
-* [Create Pipeline Templates](../../model-cd-pipeline/pipelines/templatize-pipelines.md)
-* [Pipeline Skip Conditions](../../model-cd-pipeline/pipelines/skip-conditions.md)
+* [Pipelines](https://docs.harness.io/article/zc1u96u6uj-pipeline-configuration)
+* [Create Pipeline Templates](https://docs.harness.io/article/60j7391eyy-templatize-pipelines)
+* [Pipeline Skip Conditions](https://docs.harness.io/article/6kefu7s7ne-skip-conditions)
 
 ### Limitations
 

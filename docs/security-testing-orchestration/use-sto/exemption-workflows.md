@@ -14,7 +14,7 @@ Developers and SecOps users can request Ignore rules, but only SecOps users can 
 
 This topic assumes that you have the following:
 
-* An STO pipeline as described in [Set up Harness for STO](../onboard-sto/set-up-harness-for-sto.md).
+* An STO pipeline as described in [Set up Harness for STO](../onboard-sto/20-set-up-harness-for-sto.md).
 * The pipeline has a Security Scan step with a configured `fail_on_severity` setting.
 * At least one successful build with a set of detected security issues.  
 

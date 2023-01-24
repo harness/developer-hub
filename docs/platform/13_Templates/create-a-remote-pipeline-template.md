@@ -27,7 +27,7 @@ This topic walks you through the steps to create a Remote Pipeline Template.​�
 
 ### Before you begin
 
-* Review [Harness Key Concepts​​](../../first-gen/starthere-firstgen/harness-key-concepts.md)
+* Review [Harness Key Concepts​​](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts)
 * See [Templates Overview​](template.md)
 * See [CIE Quickstarts​​](../../continuous-integration/ci-quickstarts/ci-pipeline-quickstart.md)
 
@@ -74,7 +74,7 @@ You can create a Stage Template from your Account, Org or Project. ​This topic
 4. In **Name**, enter a name for the Template.​​
 5. In **Version Label**, enter a version for the Template.​​
 6. Click **Remote**.​
-7. In **Git Connector**, select or create a Git Connector to the repo for your Project.​ For steps, see [Code Repo Connectors](/docs/category/code-repo-connectors).Important: Connector must use the Enable API access option and TokenThe Connector must use the Enable API access option and Username and Token authentication. ​Harness requires the token for API access. Generate the token in your account on the Git provider and add it to Harness as a Secret. Next, use the token in the credentials for the Git Connector.​​  
+7. In **Git Connector**, select or create a Git Connector to the repo for your Project.​ For steps, see [Code Repo Connectors](https://docs.harness.io/category/code-repo-connectors).Important: Connector must use the Enable API access option and TokenThe Connector must use the Enable API access option and Username and Token authentication. ​Harness requires the token for API access. Generate the token in your account on the Git provider and add it to Harness as a Secret. Next, use the token in the credentials for the Git Connector.​​  
 ![](./static/create-a-remote-pipeline-template-24.png)  
 For GitHub, the token must have the following scopes:​  
 ![](./static/create-a-remote-pipeline-template-25.png)
@@ -105,7 +105,7 @@ The **Execution Strategies** settings appear.
 
 1. In **Execution Strategies**, select the deployment strategy for your Pipeline Template.​  
 This topic uses the example of Rolling deployment.​  
-For more information on different execution strategies, see [Deployment Concepts and Strategies.](../../continuous-delivery/cd-deployments-category/deployment-concepts.md)
+For more information on different execution strategies, see [Deployment Concepts and Strategies.](https://docs.harness.io/article/0zsf97lo3c-deployment-concepts)
 2. Click **Use Strategy**.​
 3. Click **Save**. The **Save Template to Git** settings appear.![](./static/create-a-remote-pipeline-template-26.png)
 

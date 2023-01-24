@@ -163,7 +163,7 @@ Enter the AssumeRole Session Duration. See Session Duration in the [AssumeRole A
 
 ### Step 4: Setup Delegates
 
-In **Setup Delegates,** enter [**Selectors**](../2_Delegates/manage-delegates/select-delegates-with-selectors.md#option-select-a-delegate-for-a-connector-using-tags) for specific **Delegates** that you want to allow to connect to this Connector.
+In **Setup Delegates,** enter [**Selectors**](../2_Delegates/delegate-guide/select-delegates-with-selectors.md#option-select-a-delegate-for-a-connector-using-tags) for specific **Delegates** that you want to allow to connect to this Connector.
 
 ### Step 5: Test Connection
 

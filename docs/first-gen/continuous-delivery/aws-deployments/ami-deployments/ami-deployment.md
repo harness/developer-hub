@@ -13,7 +13,7 @@ This guide explains how to use existing Amazon Machine Images (AMIs) and AWS Aut
 
 ### Deployment Overview
 
-For a general overview of how Harness works, see [Harness Key Concepts](../../../starthere-firstgen/harness-key-concepts.md).
+For a general overview of how Harness works, see [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts).
 
 This guide will cover the following major steps:
 
@@ -33,7 +33,7 @@ For a Basic deployment, you'll need:
 * A working AMI that Harness will use to create your instances.
 * A working Auto Scaling Group (ASG), as a template for the Auto Scaling Group that Harness will create.
 * An AWS Instance in which to install a Harness Delegate (covered in the next section).
-* IAM Role for the Harness Cloud Provider connection to AWS. The required policy is **AmazonEC2FullAccess** and it is listed in [AWS EC2](../../../firstgen-platform/account/manage-connectors/cloud-providers.md#aws-ec2).
+* IAM Role for the Harness Cloud Provider connection to AWS. The required policy is **AmazonEC2FullAccess** and it is listed in [AWS EC2](https://docs.harness.io/article/whwnovprrb-infrastructure-providers#aws_ec2).
 
 If the User Data you define in Harness or your launch configurations is going to perform actions that require permissions beyond those covered by **AmazonEC2FullAccess**, ensure that the IAM role assigned to the Harness Delegate(s) has the required roles and policies.We will walk you through setting up a Harness Delegate, connections to your AWS account (using the Harness AWS Cloud Provider), Harness Services, Infrastructure Definition, and Workflows.
 
@@ -46,10 +46,10 @@ If the User Data you define in Harness or your launch configurations is going to
 
 ### Install and Run the Harness Delegate
 
-In your AWS instance, install and run either a Harness Shell Script Delegate (the simplest option) or a Harness ECS Delegate. For basic installation steps, see [Delegate Installation and Management](../../../firstgen-platform/account/manage-delegates/delegate-installation.md#ecs-delegate). For simplicity, Harness further recommends:
+In your AWS instance, install and run either a Harness Shell Script Delegate (the simplest option) or a Harness ECS Delegate. For basic installation steps, see [Delegate Installation and Management](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation#ecs_delegate). For simplicity, Harness further recommends:
 
 * Run the Delegate in the same subnet as your Auto Scaling Group, using the same security group and the same key pair.
-* Once the Delegate shows up in Harness Manager's **Delegates** page, assign it a [Selector](../../../firstgen-platform/account/manage-delegates/delegate-installation.md#delegate-tags) (for example, **AMI-Delegate**). You will use this Delegate Selector when you set up the AWS Cloud Provider to assume the IAM role used by the Delegate.
+* Once the Delegate shows up in Harness Manager's **Delegates** page, assign it a [Selector](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation#delegate_tags) (for example, **AMI-Delegate**). You will use this Delegate Selector when you set up the AWS Cloud Provider to assume the IAM role used by the Delegate.
 
 
 ### AWS Cloud Provider Setup
@@ -71,7 +71,7 @@ Add an AWS Cloud Provider as follows:
 
 The following procedure creates a Harness Application for your AMI deployments.
 
-An Application in Harness represents a logical group of one or more entities, including Services, Environments, Workflows, Pipelines, Triggers, and Infrastructure Provisioners. Applications organize all of the entities and configurations in Harness CI/CD. For more about Applications, see [Harness Key Concepts](../../../starthere-firstgen/harness-key-concepts.md).
+An Application in Harness represents a logical group of one or more entities, including Services, Environments, Workflows, Pipelines, Triggers, and Infrastructure Provisioners. Applications organize all of the entities and configurations in Harness CI/CD. For more about Applications, see [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts).
 
 To create a new Application:
 
@@ -135,7 +135,7 @@ If your User Data is going to perform actions that require permissions beyond th
 
 #### Configuration Variables
 
-**Config Variables** is supported for the AMI Service, but **Config Files** is not supported.In the Service's **Configuration** section, you can add Service-level variables and files. For details about the options here, see Harness' [Configuration Variables and Files](../../model-cd-pipeline/setup-services/service-configuration.md#configuration-variables-and-files) topic.
+**Config Variables** is supported for the AMI Service, but **Config Files** is not supported.In the Service's **Configuration** section, you can add Service-level variables and files. For details about the options here, see Harness' [Configuration Variables and Files](https://docs.harness.io/article/eb3kfl8uls-service-configuration#configuration_variables_and_files) topic.
 
 ![](./static/ami-deployment-18.png)
 
@@ -169,7 +169,7 @@ The following procedure creates an Environment for the AMI Service you've config
 
 #### Add an Infrastructure Definition
 
-An [Infrastructure Definition](../../model-cd-pipeline/environments/environment-configuration.md#add-an-infrastructure-definition) specifies a target infrastructure for deployments. When you create a Harness Workflow, you will pick the Infrastructure Definition you want to use as the target deployment environment.
+An [Infrastructure Definition](https://docs.harness.io/article/n39w05njjv-environment-configuration#add_an_infrastructure_definition) specifies a target infrastructure for deployments. When you create a Harness Workflow, you will pick the Infrastructure Definition you want to use as the target deployment environment.
 
 For AMI deployments, you build your Infrastructure Definition using an AWS Auto Scaling Group. To add the Infrastructure Definition:
 
@@ -179,7 +179,7 @@ For AMI deployments, you build your Infrastructure Definition using an AWS Auto�
 4. In **Deployment Type**, select **Amazon Machine Image**. This expands the **Infrastructure Definition** dialog to look something like this:![](./static/ami-deployment-23.png)
 5. For this example, accept the default **Use Already Provisioned Infrastructure** option.
 :::note 
-(If you have configured an [Infrastructure Provisioner](../../model-cd-pipeline/infrastructure-provisioner/add-an-infra-provisioner.md) in Harness, you can use that configuration by instead selecting the **Map** **Dynamically Provisioned Infrastructure** option. For details, see our AMI [CloudFormation](ami-blue-green.md#infrastructure-provisioners) and [Terraform](../../terraform-category/terrform-provisioner.md#ami-and-auto-scaling-group-2) examples.)
+(If you have configured an [Infrastructure Provisioner](https://docs.harness.io/article/o22jx8amxb-add-an-infra-provisioner) in Harness, you can use that configuration by instead selecting the **Map** **Dynamically Provisioned Infrastructure** option. For details, see our AMI [CloudFormation](ami-blue-green.md#infrastructure-provisioners) and [Terraform](../../terraform-category/terrform-provisioner.md#ami-and-auto-scaling-group-2) examples.)
 :::
 6. In **Cloud Provider**, select the Cloud Provider you added earlier in [AWS Cloud Provider Setup](#cloud_provider).
 7. Select the **Region** where your Auto Scaling Group (ASG) is located.
@@ -236,7 +236,7 @@ For Infrastructure Provisioner details, see our AMI [CloudFormation](ami-blue-g
 
 You direct Harness to start a new ASG numbering series each time you select a new base ASG by enabling **Reset ASG revision numbers each time a new base ASG is selected**.
 
-Deploying the new ASG with a new numbering series prevents existing, unrelated ASGs from being downscaled. Within Harness, each combination of a Service with a new base ASG creates a new [Service Infrastructure Mapping](../../model-cd-pipeline/environments/infrastructure-definitions.md#service-infrastructure-mapping).
+Deploying the new ASG with a new numbering series prevents existing, unrelated ASGs from being downscaled. Within Harness, each combination of a Service with a new base ASG creates a new [Service Infrastructure Mapping](https://docs.harness.io/article/v3l3wqovbe-infrastructure-definitions#service_infrastructure_mapping).
 
 If you select the **Map Dynamically Provisioned Infrastructure** option along with the **Reset ASG revision numbers...** option, Harness will automatically create a new numbering series based on the new value for the base ASG that your [Infrastructure Provisioner](ami-blue-green.md#infrastructure-provisioners) outputs in a variable expression. This is the most common option.
 
@@ -267,7 +267,7 @@ Optionally, your Environment can override Config Variables and Config Files set 
 
 ![](./static/ami-deployment-27.png)
 
-As an example, you might use a single Service across separate Environments for QA versus Production, and vary Service path variables depending on the Environment. For details, see [Override a Service Configuration](../../model-cd-pipeline/environments/environment-configuration.md#override-a-service-configuration).
+As an example, you might use a single Service across separate Environments for QA versus Production, and vary Service path variables depending on the Environment. For details, see [Override a Service Configuration](https://docs.harness.io/article/n39w05njjv-environment-configuration#override_a_service_configuration).
 
 You can also overwrite Service variables at the Phase level of a multiple-Phase Workflow, such as Canary.
 ### Basic Workflow and Deployment
@@ -281,9 +281,9 @@ This section walks you through creating an AMI Basic Workflow in Harness. By def
 
 Harness preconfigures only the first two steps. Below, we outline those steps' defaults and options, with examples of the deployment logs' contents at each step.
 
-The remaining two steps are placeholders, to which you can add integrations and commands. For details on adding **Verify Service** integrations, see [Continuous Verification](../../continuous-verification/continuous-verification-overview/concepts-cv/what-is-cv.md).
+The remaining two steps are placeholders, to which you can add integrations and commands. For details on adding **Verify Service** integrations, see [Continuous Verification](https://docs.harness.io/article/myw4h9u05l-verification-providers-list).
 
-Your Workflows can use Harness' built-in `${artifact.metadata.tag}` variable to refer to tagged AMIs. For example, if an AMI has an AWS tag named `harness`, you can refer to that AMI within Harness as `${artifact.metadata.harness}`. For details about this convention, see [Variables and Expressions in Harness](../../../firstgen-platform/techref-category/variables/variables.md#variables-list). This can be useful in [triggering Workflows and Pipelines](../../model-cd-pipeline/triggers/add-a-trigger-2.md#add-a-trigger).
+Your Workflows can use Harness' built-in `${artifact.metadata.tag}` variable to refer to tagged AMIs. For example, if an AMI has an AWS tag named `harness`, you can refer to that AMI within Harness as `${artifact.metadata.harness}`. For details about this convention, see [Variables and Expressions in Harness](https://docs.harness.io/article/9dvxcegm90-variables#variables_list). This can be useful in [triggering Workflows and Pipelines](https://docs.harness.io/article/xerirloz9a-add-a-trigger-2#add_a_trigger).
 #### Create a Basic Workflow
 
 To create a Basic Workflow for AMI deployment, do the following:
@@ -327,7 +327,7 @@ Many of the ASG's settings are mirrored from the ASG selected in the Workflow's 
 | **Resize Strategy** | Select whether to resize new ASGs upward first, or to resize old ASGs downward first. The typical production selection is **Resize New First**, to maintain the highest availability. The **Downsize Old First** option constrains usage and costs, especially during testing. |
 | **Auto Scaling Steady State Timeout (mins)** | Enter how long Harness should wait for ASGs to register and reach steady state. This setting (which is internal to Harness) also defines the interval that Harness will wait before downsizing old ASGs and deregistering them from the Target Group(s). |
 
-The **Instances** settings support [Harness variable expressions](../../../firstgen-platform/techref-category/variables/variables.md), such as [Workflow variable expressions](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md).Certain settings in this dialog correspond to AWS Console options, as shown here:
+The **Instances** settings support [Harness variable expressions](https://docs.harness.io/article/9dvxcegm90-variables), such as [Workflow variable expressions](https://docs.harness.io/article/766iheu1bk-add-workflow-variables-new-template).Certain settings in this dialog correspond to AWS Console options, as shown here:
 
 ![](./static/ami-deployment-32.png)
 ##### Setup AutoScaling Group in Deployment
@@ -426,7 +426,7 @@ When you create an AMI Workflow, its **Rollback Steps** section automatically in
 
 ![](./static/ami-deployment-41.png)
 
-The configuration options available here depend on the deployment type. For general information about Rollback options, see [Workflows](../../model-cd-pipeline/workflows/workflow-configuration.md#rollback-steps).
+The configuration options available here depend on the deployment type. For general information about Rollback options, see [Workflows](https://docs.harness.io/article/m220i1tnia-workflow-configuration#rollback_steps).
 
 
 #### Multi-Service Rollback
@@ -478,7 +478,7 @@ To correct this:
 Harness Manager will prevent you from simply removing a misconfigured Infrastructure Definition, if it's referenced by any of your Application's Workflows. So in some cases, you might find it easiest to create a new Infrastructure Definition, reconfigure your Workflow to use that new infrastructure, and then delete the broken Infrastructure Definition(s).
 ### Next Steps
 
-* See [Continuous Verification](../../continuous-verification/continuous-verification-overview/concepts-cv/what-is-cv.md) and [24/7 Service Guard Overview](../../continuous-verification/continuous-verification-overview/concepts-cv/24-7-service-guard-overview.md) to add Verification Providers to your AMI deployment and running services.
+* See [Continuous Verification](https://docs.harness.io/article/myw4h9u05l-verification-providers-list) and [24/7 Service Guard Overview](https://docs.harness.io/article/dajt54pyxd-24-7-service-guard-overview) to add Verification Providers to your AMI deployment and running services.
 * [AMI Blue/Green Deployment](ami-blue-green.md).
 * [AMI Canary Deployment](ami-canary.md).
 

@@ -26,11 +26,11 @@ The following section lists the support for Kubernetes clusters for AutoStopping
 
 ## Prerequisites
 
-* Ingress controller installed. For more information, go to [Supported Ingress Controllers for Kubernetes AutoStopping](../../../../getting-started/supported-platforms-and-technologies.md#cloud-cost-management).
+* Ingress controller installed. For more information, go to [Supported Ingress Controllers for Kubernetes AutoStopping](https://docs.harness.io/article/1e536z41av-supported-platforms-and-technologies#cloud_cost_management).
 * Ensure that you have Cluster Autoscaler enabled for EKS with managed node groups.
 * For EKS:
-	+ Ensure that you have access to (Cost Usage Report) CUR. See [Review: Cost and Usage Reports (CUR) and CCM Requirements](../../../1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md#review-cost-and-usage-reports-cur-and-ccm-requirements)
-	+ Permissions to create a cross-account role. See [AWS Access Permissions](../../../1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md#aws-resource-optimization-using-auto-stopping-rules)
+	+ Ensure that you have access to (Cost Usage Report) CUR. See [Review: Cost and Usage Reports (CUR) and CCM Requirements](https://newdocs.helpdocs.io/article/80vbt5jv0q-set-up-cost-visibility-for-aws#review_cost_and_usage_reports_cur_and_ccm_requirements)
+	+ Permissions to create a cross-account role. See [AWS Access Permissions](https://newdocs.helpdocs.io/article/80vbt5jv0q-set-up-cost-visibility-for-aws#aws_resource_optimization_using_auto_stopping_rules)
 
 ## Step 1: Add a Cloud Provider
 
