@@ -1,7 +1,7 @@
 ---
 title: Upgrade to CD NextGen
 description: Learn about the new Harness CD
-sidebar_position: 1
+sidebar_position: 2
 ---
 
 :::info

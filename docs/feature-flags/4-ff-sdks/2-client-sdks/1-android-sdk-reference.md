@@ -31,7 +31,7 @@ Make sure you read and understand:
 
 ## Version
 
-The current version of this SDK is **1.0.15.** To use this version of the SDK, you also need to use Android API level 19 or higher.
+The current version of this SDK is **1.0.18.** To use this version of the SDK, you also need to use Android API level 19 or higher.
 
 ## Requirements
 
@@ -64,7 +64,7 @@ Then, in your app module's `build.gradle` file, add the following dependency f
 
 
 ```
-implementation 'io.harness:ff-android-client-sdk:1.0.14'
+implementation 'io.harness:ff-android-client-sdk:1.0.18'
 ```
 ## Initialize the SDK
 
