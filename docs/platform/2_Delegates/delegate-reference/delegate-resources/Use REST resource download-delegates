@@ -8,6 +8,8 @@ helpdocs_is_private:
 helpdocs_is_published: false
 ---
 
+
+# Use REST resource download-delegates
 `/ng/api/download-delegates/kubernetes`
 `/ng/api/download-delegates/docker`
 

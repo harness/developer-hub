@@ -1,12 +1,13 @@
 ---
-title: Use REST resource delegate-token-ng
-description: Describes the use of the delegate-token-ng REST resource.
+title: Workflow: Automate Kubernetes delegate installation
+description: Provides a workflow to automate delegate installation.
 # sidebar_position: 2
 helpdocs_topic_id: 
 helpdocs_category_id: 
 helpdocs_is_private: 
 helpdocs_is_published: false
 ---
+
 
 You can use the delegate resources to build operators that create, install, and manage delegates. The following table provides a sample workflow.
 

@@ -8,10 +8,11 @@ helpdocs_is_private:
 helpdocs_is_published: false
 ---
 
+
+# Use REST resource delegate-group-tags
 `/ng/api/delegate-group-tags`
 `/ng/api/delegate-group-tags/delegate-groups`
 
-##### Applies to Harness Delegate
 
 Use the operations of the **Delegate Group Tags Resource** to add, list or delete tags from the specified delegate, to replace a set of tags with another for the specified delegate, or to list the delegates that have the specified tags.
 
