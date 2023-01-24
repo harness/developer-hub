@@ -2,10 +2,6 @@
 title: Delegate resources
 description: Introduces delegate RESTful resources and the operations they provide.
 # sidebar_position: 2
-helpdocs_topic_id: 
-helpdocs_category_id: 
-helpdocs_is_private: 
-helpdocs_is_published: false
 ---
 
 Harness API provides the following RESTful resources for working with NextGen delegates. This section introduces the resources and provides information about their requirements and possible workflows. For detailed usage information, see [Harness NextGen Platform API Reference](https://apidocs.harness.io/).
