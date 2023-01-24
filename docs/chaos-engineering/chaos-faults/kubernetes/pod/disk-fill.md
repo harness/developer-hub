@@ -92,7 +92,7 @@ The application pods should be in running state before and after chaos injection
       <tr> 
         <td> CONTAINER_PATH </td>
         <td> Storage Location of containers</td>
-        <td> Defaults to '/var/lib/docker/containers' </td>
+        <td> Defaults to <code>'/var/lib/docker/containers'</code> </td>
       </tr>
       <tr> 
         <td> TOTAL_CHAOS_DURATION </td>
@@ -106,7 +106,7 @@ The application pods should be in running state before and after chaos injection
       </tr> 
       <tr>
         <td> DATA_BLOCK_SIZE </td>
-        <td> It contains data block size used to fill the disk(in KB)</td>
+        <td> It contains data block size used to fill the disk (in KB)</td>
         <td> Defaults to 256, it supports unit as KB only</td>
       </tr> 
       <tr>

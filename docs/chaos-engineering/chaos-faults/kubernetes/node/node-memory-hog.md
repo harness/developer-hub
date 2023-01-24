@@ -81,7 +81,7 @@ The target nodes should be in ready state before and after chaos injection.
       </tr>  
       <tr>
         <td> NUMBER_OF_WORKERS </td>
-        <td> It is the number of VM workers involved in IO disk stress </td>
+        <td> It is the number of VM workers involved in memory hog stress </td>
         <td> Default to 1 </td>
       </tr>
       <tr>
