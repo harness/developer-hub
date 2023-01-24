@@ -8,11 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-:::note
-This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/continuous-delivery/cd-deployments-category/deployment-concepts).
-:::
-
-Most Harness customers deploy the same service to multiple infrastructures, such as infrastructures for different stages of the release process (QA, Prod) or in different regions. However, by default, Workflows only have one target infrastructure configured, defined as its Infrastructure Definition.
+This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io).Most Harness customers deploy the same service to multiple infrastructures, such as infrastructures for different stages of the release process (QA, Prod) or in different regions. However, by default, Workflows only have one target infrastructure configured, defined as its Infrastructure Definition.
 
 Having only one infrastructure configured can pose certain challenges:
 
@@ -24,8 +20,8 @@ To solve these challenges, Harness lets you deploy a single Workflow to several 
 
 ### Before You Begin
 
-* [Templatize a Workflow](../../model-cd-pipeline/workflows/templatize-a-workflow-new-template.md)
-* [Create Pipeline Templates](../../model-cd-pipeline/pipelines/templatize-pipelines.md)
+* [Templatize a Workflow](https://docs.harness.io/article/bov41f5b7o-templatize-a-workflow-new-template)
+* [Create Pipeline Templates](https://docs.harness.io/article/60j7391eyy-templatize-pipelines)
 
 ### Visual Summary
 
@@ -52,7 +48,7 @@ You must use a single Environment for these Infrastructure Definitions. You can 
 
 Later, when you deploy the Pipeline, you will select from the list of multiple Infrastructure Definitions in the Environment.
 
-See [Add an Infrastructure Definition](../../model-cd-pipeline/environments/infrastructure-definitions.md).
+See [Add an Infrastructure Definition](https://docs.harness.io/article/v3l3wqovbe-infrastructure-definitions).
 
 ### Step 2: Template Workflow Infrastructure Definitions
 
@@ -60,17 +56,17 @@ In order for a Workflow to deploy to multiple infrastructures, you must template
 
 You can only use multi-infrastructure deployments on Workflows with one phase. See [Limitations](#limitations) below.
 
-For steps on templating the Infrastructure Definition setting in a Workflow, see [Templatize a Workflow](../../model-cd-pipeline/workflows/templatize-a-workflow-new-template.md).
+For steps on templating the Infrastructure Definition setting in a Workflow, see [Templatize a Workflow](https://docs.harness.io/article/bov41f5b7o-templatize-a-workflow-new-template).
 
 ### Step 3: Template Pipeline Infrastructure Definitions
 
 You can only deploy a Workflow to multiple infrastructures as part of a Pipeline. You cannot deploy a Workflow to multiple infrastructures by itself.
 
-Add the Workflow that you want to deploy to multiple infrastructures to a Pipeline. See [Create a Pipeline](../../model-cd-pipeline/pipelines/pipeline-configuration.md).
+Add the Workflow that you want to deploy to multiple infrastructures to a Pipeline. See [Create a Pipeline](https://docs.harness.io/article/zc1u96u6uj-pipeline-configuration).
 
 When you add your Workflow to the Pipeline, you must template its Infrastructure Definition setting. If, instead, you select an Infrastructure Definition, you cannot select multiple Infrastructure Definition later when you deploy.
 
-For steps on templating the Infrastructure Definitions in a Pipeline, as well as other Pipeline settings, see [Create Pipeline Templates](../../model-cd-pipeline/pipelines/templatize-pipelines.md). You simply need to enter in a variable expression, such as `${infrastructure}`.
+For steps on templating the Infrastructure Definitions in a Pipeline, as well as other Pipeline settings, see [Create Pipeline Templates](https://docs.harness.io/article/60j7391eyy-templatize-pipelines). You simply need to enter in a variable expression, such as `${infrastructure}`.
 
 Here is an example where the Workflow Infrastructure Definition setting is templated with the `${infrastructure}` expression and then, when deployed, the `infrastructure` Workflow variable is given multiple infrastructures.
 
@@ -104,7 +100,7 @@ When you create a Trigger for the Pipeline, you must select the multiple Infrast
 
 The Trigger will execute the Pipeline and deploy to both infrastructures just as it did when you deployed the Pipeline on its own.
 
-See [Trigger Workflows and Pipelines](../../model-cd-pipeline/triggers/add-a-trigger-2.md).
+See [Trigger Workflows and Pipelines](https://docs.harness.io/article/xerirloz9a-add-a-trigger-2).
 
 ### Option: Use Multiple Infrastructure Definitions in the API
 
@@ -138,7 +134,7 @@ Or by Infrastructure Definition ID:
     }  
 ...
 ```
-See [Trigger Workflows or Pipelines Using GraphQL API](../../../firstgen-platform/techref-category/api/trigger-workflow-or-a-pipeline-using-api.md).
+See [Trigger Workflows or Pipelines Using GraphQL API](https://docs.harness.io/article/s3leksekny-trigger-workflow-or-a-pipeline-using-api).
 
 ### Review: Rollback
 

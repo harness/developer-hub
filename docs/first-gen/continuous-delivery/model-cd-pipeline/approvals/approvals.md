@@ -21,8 +21,8 @@ The other approval mechanisms are:
 * [Workflows](../workflows/workflow-configuration.md)
 * [Pipelines](../pipelines/pipeline-configuration.md)
 * [Create Pipeline Templates](../pipelines/templatize-pipelines.md)
-* [User Notifications and Alert Settings](../../../firstgen-platform/account/manage-notegroups/notification-groups.md)
-* [Managing Users and Groups (RBAC)](../../../firstgen-platform/security/access-management-howtos/users-and-permissions.md)
+* [User Notifications and Alert Settings](https://docs.harness.io/article/kf828e347t-notification-groups)
+* [Managing Users and Groups (RBAC)](https://docs.harness.io/article/ven0bvulsj-users-and-permissions)
 
 ### Review: Approval Options
 
@@ -82,11 +82,11 @@ In **Publish Variable Name**, enter a unique parent name for all of the output v
 
 For example, if you add `info` in **Publish Variable Name**, and you have an Input Variable named `foo`, you can reference it in subsequent steps using the expression `{context.info.foo}`.
 
-Do not use reserved words in **Publish Variable Name**, such as `var`. See [Variable Expression Limitations and Restrictions](../../../firstgen-platform/techref-category/variables/variable-expression-name-restrictions.md).Select **Auto-Reject previous deployments paused in this stage on approval** to reject previous deployments of this Pipeline with the same Services before this approval stage. This will prohibit older Pipelines from being approved and older builds from being deployed in the Environment.
+Do not use reserved words in **Publish Variable Name**, such as `var`. See [Variable Expression Limitations and Restrictions](https://docs.harness.io/article/9ob3r6v9tg-variable-expression-name-restrictions).Select **Auto-Reject previous deployments paused in this stage on approval** to reject previous deployments of this Pipeline with the same Services before this approval stage. This will prohibit older Pipelines from being approved and older builds from being deployed in the Environment.
 
 Currently, Auto-Reject previous deployments is behind the Feature Flag `AUTO_REJECT_PREVIOUS_APPROVALS`. Contact Harness Support to enable the feature.Click **Submit**.
 
-Deploy the Pipeline. When you deploy your Pipeline, the **Approval Stage** notifies the selected User Group(s), via their configured [notification settings](../../../firstgen-platform/account/manage-notegroups/notification-groups.md#notification-settings-for-user-groups) to approve or reject the deployment.
+Deploy the Pipeline. When you deploy your Pipeline, the **Approval Stage** notifies the selected User Group(s), via their configured [notification settings](https://docs.harness.io/article/kf828e347t-notification-groups#notification_settings_for_user_groups) to approve or reject the deployment.
 
 In **Deployments** page, the **Approval Stage** displays the following information:
 

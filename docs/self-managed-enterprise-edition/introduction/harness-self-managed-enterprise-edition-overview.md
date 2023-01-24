@@ -40,7 +40,7 @@ The following tables provide a summary of key differences between Harness SaaS a
 | Security Testing Orchestration | **✓** | X |  |
 | Service Reliability Management | **✓** | **✓** | Error Tracking is not included. |
 | Continuous Integration | **✓** | **✓** |  |
-| Feature Flags | **✓** | **✓** |  |
+| Feature Flags | X | **✓** |  |
 | Cloud Costs Management | X | X |  |
 | Harness Chaos Engineering | X | X |  |
 | Harness Platform | **✓** | **✓** | Policy as Code (Harness Policy Engine) and Custom Dashboards are not included. |
@@ -60,8 +60,9 @@ Harness Self-Managed Enterprise Edition is installed on virtual machines (VMs) i
 
 
 
-| **GCP Architecture** | **AWS Architecture** |
+|  |  |
 | :-: | :-: |
+| **GCP Architecture** | **AWS Architecture** |
 | ![](./static/gcp_architecture_smpOverview.png) | ![](./static/aws_architecture_smpOverview.png) |
 
 To install Harness Self-Managed Enterprise Edition on a virtual machine, see the following topics:

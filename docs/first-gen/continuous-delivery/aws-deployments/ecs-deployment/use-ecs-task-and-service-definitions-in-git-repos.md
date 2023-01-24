@@ -12,12 +12,12 @@ As an alternative to entering your [ECS task and/or service definitions inline](
 
 This remote definition support enables you to leverage the build tooling and scripts you use currently for updating the definitions in your repos.
 
-You can also use a Git repo for your entire Harness Application, and sync it unidirectionally or bidirectionally. For more information, see  [Configuration as Code](../../../firstgen-platform/config-as-code/configuration-as-code.md). There is no conflict between the Git repo used for remote definition files and the Git repo used for the entire Harness Application.
+You can also use a Git repo for your entire Harness Application, and sync it unidirectionally or bidirectionally. For more information, see  [Configuration as Code](https://docs.harness.io/article/htvzryeqjw-configuration-as-code). There is no conflict between the Git repo used for remote definition files and the Git repo used for the entire Harness Application.
 
 ### Before You Begin
 
-* [Add Source Repo Providers](../../../firstgen-platform/account/manage-connectors/add-source-repo-providers.md)
-* [AWS ECS Quickstart](../../../first-gen-quickstarts/aws-ecs-deployments.md)
+* [Add Source Repo Providers](https://docs.harness.io/article/ay9hlwbgwa-add-source-repo-providers)
+* [AWS ECS Quickstart](https://docs.harness.io/article/j39azkrevm-aws-ecs-deployments)
 
 ### Limitations
 
@@ -31,13 +31,13 @@ You can also use a Git repo for your entire Harness Application, and sync it uni
 
 ### Supported Platforms and Technologies
 
-See  [Supported Platforms and Technologies](../../../starthere-firstgen/supported-platforms.md).
+See  [Supported Platforms and Technologies](https://docs.harness.io/article/220d0ojx5y-supported-platforms).
 
 ### Step 1: Link Harness to Your Repo
 
 Add a Harness Source Repo Provider to connect Harness to the repo where your ECS definitions are located.
 
-See [Add Source Repo Providers](../../../firstgen-platform/account/manage-connectors/add-source-repo-providers.md).
+See [Add Source Repo Providers](https://docs.harness.io/article/ay9hlwbgwa-add-source-repo-providers).
 
 ### Step 2: Link Remote Definitions
 
@@ -111,7 +111,7 @@ You can also use Config Variables for values in your remote definitions, but thi
 
 If you have used Service Config Variables in the Task Definitions settings, you can override these values at the Harness Environment level.
 
-See [Override a Service Configuration in an Environment](../../model-cd-pipeline/environments/override-service-files-and-variables-in-environments.md) for details.
+See [Override a Service Configuration in an Environment](https://docs.harness.io/article/4m2kst307m-override-service-files-and-variables-in-environments) for details.
 
 Basically, you select the Service Config variable and provide a new value:
 
@@ -119,7 +119,7 @@ Basically, you select the Service Config variable and provide a new value:
 
 ### Option 3: Override Remote Paths in Workflows
 
-To override a path in a Workflow, you can use a [Workflow variable](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md) in the Harness ECS Service's **Task Definition** settings.
+To override a path in a Workflow, you can use a [Workflow variable](https://docs.harness.io/article/766iheu1bk-add-workflow-variables-new-template) in the Harness ECS Service's **Task Definition** settings.
 
 First, you create a Workflow variable in the Workflow that will deploy the Harness ECS Service that uses a remote task definition. For example, `${workflow.variables.new_path}`.
 
@@ -129,7 +129,7 @@ Next, in the Harness ECS Service's **Task Definition** settings, you add the Wor
 
 When you deploy the Workflow (independently or in a Pipeline), you are prompted to provide a value for the Workflow variable.
 
-You can also pass in a Workflow variable value using a Trigger or between Workflows in a Pipeline. See [Passing Variables into Workflows and Pipelines from Triggers](../../model-cd-pipeline/expressions/passing-variable-into-workflows.md) and [Pass Variables between Workflows](../../model-cd-pipeline/expressions/how-to-pass-variables-between-workflows.md).
+You can also pass in a Workflow variable value using a Trigger or between Workflows in a Pipeline. See [Passing Variables into Workflows and Pipelines from Triggers](https://docs.harness.io/article/revc37vl0f-passing-variable-into-workflows) and [Pass Variables between Workflows](https://docs.harness.io/article/gkmgrz9shh-how-to-pass-variables-between-workflows).
 
 ### Configure As Code
 

@@ -1,7 +1,6 @@
 import React from "react";
 import Link from "@docusaurus/Link";
 import clsx from "clsx";
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import styles from "./styles.module.scss";
 import TutorialCard, { CardItem, docType } from "./TutorialCard";
 
@@ -10,7 +9,7 @@ const FeaturedList: CardItem[] = [
   {
     title: "Optimizing Kubernetes Cloud Costs 101",
     module: "ccm",
-    icon: "img/icon_ccm.svg",
+    icon: "/img/icon_ccm.svg",
     description: (
       <>
         This guide will walk through how start to optimize your Kubernetes Costs
@@ -28,7 +27,7 @@ const CCMList: CardItem[] = [
   {
     title: "Optimizing Kubernetes Cloud Costs 101",
     module: "ccm",
-    icon: "img/icon_ccm.svg",
+    icon: "/img/icon_ccm.svg",
     description: (
       <>
         This guide will walk through how start to optimize your Kubernetes Costs
@@ -43,7 +42,6 @@ const CCMList: CardItem[] = [
 ];
 
 export default function CCM() {
-  const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   return (
     // <Layout title="CCM" description="CCM">
     //   <ul className={styles.breadCrumb}>
@@ -51,13 +49,14 @@ export default function CCM() {
     //     <li>Optimize Cloud Costs</li>
     //   </ul>
     <div className="container">
+      <img src="/img/ccm.svg" />
       <div className={styles.SectionName}>
         <h3>Optimize Cloud Costs</h3>
       </div>
       <div className={styles.topSection}>
         <div className={styles.spaceBetween}>
           <div className={styles.moduleTitle}>
-            <img src={`${baseUrl}img/icon_ccm.svg`} />
+            <img src="/img/icon_ccm.svg" />
             <h1>Cloud Cost Management</h1>
           </div>
           <div>
@@ -69,7 +68,7 @@ export default function CCM() {
                   styles.btnLight
                 )}
               >
-                <img src={`${baseUrl}img/icon_document.png`} /> Documentation
+                <img src="/img/icon_document.png" /> Documentation
               </button>
             </Link>
           </div>
@@ -77,7 +76,7 @@ export default function CCM() {
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
             <p>
-              Harness CCM is an intelligent cloud cost
+              Harness Cloud Cost Management (CCM) is an intelligent cloud cost
               management solution for FinOps, Infrastructure, and Engineering
               teams. Harness CCM provides:
               <ul>
@@ -96,16 +95,16 @@ export default function CCM() {
                 className={clsx("button button--lg", styles.btn, styles.btnCCM)}
                 to="#all-tutorials"
               >
-                Tutorials
-                <img src={`${baseUrl}img/Stroke.svg`} />
+                CCM Tutorials
+                <img src="/img/Stroke.svg" />
               </Link>
               <Link href="https://harness.io/products/cloud-cost">
-                <button className={styles.link}>Learn more</button>
+                <button className={styles.link}>Learn more about CCM</button>
               </Link>
             </div>
           </div>
           <div>
-            <img src={`${baseUrl}img/ccm.svg`} />
+            <img src="/img/ccm_flow.svg" />
           </div>
         </div>
       </div>

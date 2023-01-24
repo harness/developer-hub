@@ -10,16 +10,16 @@ helpdocs_is_published: true
 
 This topic provides settings and permissions for the HTTP Helm Repo Connector.
 
-You can add a Helm Chart Repository as an Artifact Server and then use it in Harness Kubernetes and Helm deployments. See [Helm CD Quickstart](../../../continuous-delivery/onboard-cd/cd-quickstarts/helm-cd-quickstart.md).
+You can add a Helm Chart Repository as an Artifact Server and then use it in Harness Kubernetes and Helm deployments. See [Helm CD Quickstart](https://docs.harness.io/article/cifa2yb19a-helm-cd-quickstart).
 
 A Helm chart repository is an HTTP server that houses an **index.yaml** file and, if needed, packaged charts. For details, see [The Chart Repository Guide](https://helm.sh/docs/topics/chart_repository/) from Helm.
 
-For instructions on how to use this Connector to perform specific tasks, see [Helm CD Quickstart](../../../continuous-delivery/onboard-cd/cd-quickstarts/helm-cd-quickstart.md).
+For instructions on how to use this Connector to perform specific tasks, see [Helm CD Quickstart](https://docs.harness.io/article/cifa2yb19a-helm-cd-quickstart).
 
 
 ### Limitations
 
-For Helm charts stored in repos such as **Amazon S3** or **GCS** (Google Cloud Storage), you will need a Cloud Provider for that account. For more information, see [Cloud Platform Connectors](/docs/category/cloud-platform-connectors).
+For Helm charts stored in repos such as **Amazon S3** or **GCS** (Google Cloud Storage), you will need a Cloud Provider for that account. For more information, see [Cloud Platform Connectors](https://docs.harness.io/category/cloud-platform-connectors).
 
 ### Name
 

@@ -18,7 +18,7 @@ You can also deploy to multiple infrastructures without using Rancher. See [Depl
 ### Before You Begin
 
 * This topic assumes you are familiar with Rancher and have set up Kubernetes clusters in its UI. If you are new to Rancher, see [Setting up Kubernetes Clusters in Rancher](https://rancher.com/docs/rancher/v2.5/en/cluster-provisioning/) from Rancher.
-* This topic assumes you are familiar with Harness Kubernetes deployments. See [Kubernetes Quickstart](../../first-gen-quickstarts/kubernetes-quickstart.md).
+* This topic assumes you are familiar with Harness Kubernetes deployments. See [Kubernetes Quickstart](https://docs.harness.io/article/7in9z2boh6-kubernetes-quickstart).
 
 ### Visual Summary
 
@@ -44,7 +44,7 @@ The Harness Delegate does not need to be a Kubernetes Delegate and it does not n
 
 The Harness Delegate does need to be able to connect to the Rancher URL endpoint and to connect to the target Kubernetes clusters.
 
-See [Harness Delegate Overview](../../firstgen-platform/account/manage-delegates/delegate-installation.md).
+See [Harness Delegate Overview](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation).
 
 ### Review: Cluster Labels and Harness Infrastructure Definitions
 
@@ -82,7 +82,7 @@ Now that the cluster has labels, you can identify it in Harness as a target clus
 
 To connect Harness to your Rancher account, you must set up a Harness Rancher Cloud Provider.
 
-See [Add Rancher Cloud Providers](../../firstgen-platform/account/manage-connectors/add-rancher-cloud-providers.md).
+See [Add Rancher Cloud Providers](https://docs.harness.io/article/dipgqjn5pq-add-rancher-cloud-providers).
 
 ### Step 3: Add a Rancher Infrastructure Definition
 
@@ -98,7 +98,7 @@ Enter the following settings:
 
 * In **Cloud Provider Type**, select **Rancher**.
 * In **Deployment Type**, select **Kubernetes**.
-* In **Cloud Provider**, select the Rancher Cloud Provider you added using the steps in [Add Rancher Cloud Providers](../../firstgen-platform/account/manage-connectors/add-rancher-cloud-providers.md).
+* In **Cloud Provider**, select the Rancher Cloud Provider you added using the steps in [Add Rancher Cloud Providers](https://docs.harness.io/article/dipgqjn5pq-add-rancher-cloud-providers).
 * In **Namespace**, enter the target namespace for the deployments.
 	+ You can only enter one namespace. When you deploy to multiple clusters, the target namespaces must be the same.
 	+ You can also use a Harness variable expression to reference Kubernetes namespaces in Harness Infrastructure Definitions. When a Workflow is run, the namespace in the Infrastructure Definition is applied to all manifests in the Service. See [Select Kubernetes Namespaces based on InfraMapping](create-kubernetes-namespaces-based-on-infra-mapping.md).
@@ -120,10 +120,10 @@ You can use Harness built-in and Workflow variables in **Cluster Selection Crite
 
 See:
 
-* [Built-in Variables List](../../firstgen-platform/techref-category/variables/built-in-variables-list.md)
-* [Set Workflow Variables](../model-cd-pipeline/workflows/add-workflow-variables-new-template.md)
-* [Pass Variables between Workflows](../model-cd-pipeline/expressions/how-to-pass-variables-between-workflows.md)
-* [Passing Variables into Workflows and Pipelines from Triggers](../model-cd-pipeline/expressions/passing-variable-into-workflows.md)
+* [Built-in Variables List](https://docs.harness.io/article/aza65y4af6-built-in-variables-list)
+* [Set Workflow Variables](https://docs.harness.io/article/766iheu1bk-add-workflow-variables-new-template)
+* [Pass Variables between Workflows](https://docs.harness.io/article/gkmgrz9shh-how-to-pass-variables-between-workflows)
+* [Passing Variables into Workflows and Pipelines from Triggers](https://docs.harness.io/article/revc37vl0f-passing-variable-into-workflows)
 
 ### Step 4: Create a Workflow
 

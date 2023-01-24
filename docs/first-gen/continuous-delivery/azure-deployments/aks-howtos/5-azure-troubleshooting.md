@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../../continuous-delivery/onboard-cd/cd-quickstarts/azure-cd-quickstart.md).The following troubleshooting steps should help address common issues.
+This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/article/m7nkbph0ac).The following troubleshooting steps should help address common issues.
 
 #### Failed to pull image
 
@@ -31,7 +31,7 @@ createImagePullSecret: true
 ```
 ### Next Steps
 
-* [Kubernetes Deployments](/docs/category/kubernetes-deployments)
-* [Secrets Management](../../../firstgen-platform/security/secrets-management/secret-management.md)
-* [Continuous Verification](../../continuous-verification/continuous-verification-overview/concepts-cv/what-is-cv.md)
+* [Kubernetes Deployments](https://docs.harness.io/category/kubernetes-deployments)
+* [Secrets Management](https://docs.harness.io/article/au38zpufhr-secret-management)
+* [Continuous Verification](https://docs.harness.io/article/myw4h9u05l-verification-providers-list)
 

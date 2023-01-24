@@ -67,11 +67,6 @@ The target nodes should be in ready state before and after chaos injection.
         <td> Defaults to 60s </td>
       </tr>
       <tr>
-        <td> LIB </td>
-        <td> The chaos lib used to inject the chaos </td>
-        <td> Defaults to <code>litmus</code> </td>
-      </tr>
-      <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before injection of chaos in sec </td>
         <td> Eg. 30 </td>

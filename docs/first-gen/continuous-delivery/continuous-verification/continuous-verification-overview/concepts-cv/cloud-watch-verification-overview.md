@@ -39,7 +39,7 @@ You set up CloudWatch and Harness in the following way:
 ![](./static/cloud-watch-verification-overview-33.png)
 
 1. **CloudWatch** - Using CloudWatch, you monitor the EC2 and ELB used to run your microservice or application.
-2. **Cloud Provider** - In Harness, you connect Harness to your AWS account, adding AWS as a [Cloud Provider](../../../../firstgen-platform/account/manage-connectors/cloud-providers.md).
+2. **Cloud Provider** - In Harness, you connect Harness to your AWS account, adding AWS as a [Cloud Provider](https://docs.harness.io/article/whwnovprrb-infrastructure-providers).
 3. **Harness Application** - Create a Harness Application with a Service and an Environment. We do not cover Application setup in this sequence. See [Application Components](../../../model-cd-pipeline/applications/application-configuration.md).
 4. **​24/7 Service Guard Setup****-** In the Environment, set up 24/7 Service Guard to monitor your live, production application.
 5. ​**Verify Deployments**:

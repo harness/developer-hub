@@ -54,10 +54,10 @@ Here is a quick overview of Harness Terraform Provider:
 You declare all the resources that represent your infrastructure objects in this file.  
 For more details, see [Configuration Language](https://www.terraform.io/language).
 * Next, you initialize, plan, and apply your resources using the following commands:
-	+ `terraform init`
-	+ `terraform plan`
-	+ `terraform apply`
-* Once you confirm Terraform apply, a state file `terraform.tfstate` is generated.
+	+ `Terraform init`
+	+ `Terraform plan`
+	+ `Terraform apply`
+* Once you confirm Terraform apply, a state file .statetf is generated.
 * Your resources are provisioned successfully.![](./static/harness-terraform-provider-00.png)
 
 ### Install Harness Terraform Provider
@@ -81,15 +81,14 @@ terraform {
         harness = {  
             source = "harness/harness"  
             version = "<version_number>"  
+           }  
         }  
     }  
-}
-
 provider "harness" {  
     endpoint   = "https://app.harness.io/gateway"  
     account_id = "<your_harness_accountid"  
     platform_api_key    = "your_pat"  
-}
+   }
 ```
 ### Add Harness Resource configurations to Terraform files
 

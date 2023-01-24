@@ -16,7 +16,7 @@ This topic explains how to set up the GCP Connector.
 
 ### Before you begin
 
-* [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md)
+* [Learn Harness' Key Concepts](https://ngdocs.harness.io/article/hv2758ro4e-learn-harness-key-concepts)
 
 ### Limitations
 
@@ -26,7 +26,7 @@ If you use a version prior to GKE 1.19, please enable Basic Authentication. If B
 
 ### Supported Platforms and Technologies
 
-For a list of the platforms and technologies supported by Harness, see [Supported Platforms and Technologies](../../getting-started/supported-platforms-and-technologies.md).
+For a list of the platforms and technologies supported by Harness, see [Supported Platforms and Technologies](https://docs.harness.io/article/1e536z41av-supported-platforms-and-technologies).
 
 ### Review: Connecting to Kubernetes Clusters
 
@@ -52,7 +52,7 @@ When you switch or modify the IAM role, it might take up to 5 minutes to take ef
 
 ### Review: GCP Workload Identity
 
-If you installed the Harness [Kubernetes Delegate](/docs/first-gen/firstgen-platform/account/manage-delegates/install-kubernetes-delegate/) in a Kubernetes cluster (in GKE) that has [GCP Workload Identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity?hl=tr#enable_on_cluster) enabled and uses the same service account and node pool annotation, the Google Cloud Platform (GCP) Connector will inherit these credentials if it uses that Delegate.
+If you installed the Harness [Kubernetes Delegate](https://docs.harness.io/article/4ax6q6dxa4-install-an-immutable-kubernetes-delegate) in a Kubernetes cluster (in GKE) that has [GCP Workload Identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity?hl=tr#enable_on_cluster) enabled and uses the same service account and node pool annotation, the Google Cloud Platform (GCP) Connector will inherit these credentials if it uses that Delegate.
 
 ### Step 1: Add a GCP Connector
 
@@ -83,11 +83,11 @@ All of the settings for these options are described in detail in [Google Cloud P
 
 Harness uses GCP Connectors at Pipeline runtime to authenticate and perform operations with GCP. Authentications and operations are performed by Harness Delegates.
 
-You can select **Any Available Harness Delegate** and Harness will select the Delegate. For a description of how Harness picks Delegates, see [Delegates Overview](/docs/platform/2_Delegates/get-started-with-delegates/delegates-overview.md).
+You can select **Any Available Harness Delegate** and Harness will select the Delegate. For a description of how Harness picks Delegates, see [Delegates Overview](../2_Delegates/delegates-overview.md).
 
-You can use Delegate Tags to select one or more Delegates. For details on Delegate Tags, see [Select Delegates with Tags](/docs/platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md).
+You can use Delegate Tags to select one or more Delegates. For details on Delegate Tags, see [Select Delegates with Tags](../2_Delegates/delegate-guide/select-delegates-with-selectors.md).
 
-If you need to install a Delegate, see [Delegate Installation Overview](/docs/platform/2_Delegates/get-started-with-delegates/delegate-installation-overview.md).
+If you need to install a Delegate, see [Delegate Installation Overview](https://docs.harness.io/article/re8kk0ex4k-delegate-installation-overview).
 
 Click **Save and Continue**.
 

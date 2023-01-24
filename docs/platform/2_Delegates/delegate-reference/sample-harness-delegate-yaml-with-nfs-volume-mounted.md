@@ -1,6 +1,6 @@
 ---
 title: Sample harness-delegate.yaml with NFS volume mounted
-description: This sample harness-delegate.yaml declares a mounted NFS volume. 
+description: This sample harness-delegate.yaml declares a mounted NFS volume. apiVersion --  v1 kind --  Namespace metadata --  name --  harness-delegate-ng --- apiVersion --  rbac.authorization.k8s.io/v1 kind --  ClusterRoleBindi…
 # sidebar_position: 2
 helpdocs_topic_id: hipzqa4ntk
 helpdocs_category_id: vm60533pvt
@@ -46,7 +46,7 @@ data:
 ---  
   
 # If delegate needs to use a proxy, please follow instructions available in the documentation  
-# https://developer.harness.io/docs/first-gen/firstgen-platform/account/manage-delegates/configure-delegate-proxy-settings/  
+# https://ngdocs.harness.io/article/5ww21ewdt8-configure-delegate-proxy-settings  
   
 apiVersion: apps/v1  
 kind: Deployment  

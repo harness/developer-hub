@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../continuous-delivery/onboard-cd/cd-quickstarts/native-helm-quickstart.md).
+This content is for Harness [FirstGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/article/lbhf2h71at).
 
 For Kubernetes deployments that use Helm charts, see [Upgrade to Helm 3 Charts in Kubernetes Services](../kubernetes-deployments/upgrade-to-helm-3-charts-in-kubernetes-services.md).When you create your native [Helm deployments](helm-deployments-overview.md) in Harness, you can choose to use Helm 2 or [Helm 3](https://helm.sh/blog/helm-3-released/).
 
@@ -45,8 +45,8 @@ Once you are done migrating, follow the steps below.
 If you are upgrading your native Helm deployments to Helm 3, you will need to add a new Harness Delegate.
 
 1. Install and run a new Kubernetes Cluster Delegate or Helm Delegate in your target cluster, or install a new Helm Delegate using the Kubernetes management platform, Rancher. For steps on setting up a new Delegate, use one of the following:
-* [Delegate Installation and Management](../../firstgen-platform/account/manage-delegates/delegate-installation.md)
-* [Using the Helm Delegate](../../firstgen-platform/account/manage-delegates/using-the-helm-delegate.md)
+* [Delegate Installation and Management](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation)
+* [Using the Helm Delegate](https://docs.harness.io/article/6n7fon8rit-using-the-helm-delegate)
 
 You do not need to add a Delegate Profile for Helm 3. Harness includes Helm 3 support in any Delegate that can connect to the target Kubernetes cluster.
 
@@ -70,7 +70,7 @@ That's it. Now your Harness Service is upgraded for Helm 3 and you can start usi
 
 Harness ships Helm binaries with all Harness Delegates.
 
-If you want the Delegate to use a specific Helm binary, see the steps in [Use Custom Helm Binaries on Harness Delegates](../../firstgen-platform/account/manage-delegates/use-custom-helm-binaries-on-harness-delegates.md).
+If you want the Delegate to use a specific Helm binary, see the steps in [Use Custom Helm Binaries on Harness Delegates](https://docs.harness.io/article/ymw96mf8wy-use-custom-helm-binaries-on-harness-delegates).
 
 ### Troubleshooting
 

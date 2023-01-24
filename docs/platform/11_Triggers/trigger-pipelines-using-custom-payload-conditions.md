@@ -1,7 +1,7 @@
 ---
 title: Trigger Pipelines using Git Event Payload Conditions
 description: You can trigger Pipelines in response to Git events that match specific payload conditions you set up in the Harness Trigger. For example, when a pull request or push event occurs on a Git repo and y…
-sidebar_position: 5
+# sidebar_position: 2
 helpdocs_topic_id: 10y3mvkdvk
 helpdocs_category_id: oya6qhmmaw
 helpdocs_is_private: false
@@ -18,8 +18,8 @@ This topic covers payload conditions in detail. For a general overview of creati
 
 ### Before you begin
 
-* [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md)
-* [Kubernetes CD Quickstart](../../continuous-delivery/onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md)
+* [Learn Harness' Key Concepts](https://ngdocs.harness.io/article/hv2758ro4e-learn-harness-key-concepts)
+* [Kubernetes CD Quickstart](https://ngdocs.harness.io/article/knunou9j30-kubernetes-cd-quickstart)
 * [CI Pipeline Quickstart](../../continuous-integration/ci-quickstarts/ci-pipeline-quickstart.md)
 * [Trigger Pipelines using Git Events](triggering-pipelines.md)
 
@@ -49,7 +49,7 @@ In the Configuration tab of the new Trigger, specify the following:
 
 * **Name** and **Description**
 * **Payload Type:** This should match your Git SaaS provider.
-* **Connector:** A [Connector](/docs/category/code-repo-connectors) to your Git SaaS provider. (This is required for all Git trigger types except **Custom**.) In the Credentials page of the Connector setup wizard, make sure that API access is selected with the correct permissions.  
+* **Connector:** A [Connector](https://docs.harness.io/category/code-repo-connectors) to your Git SaaS provider. (This is required for all Git trigger types except **Custom**.) In the Credentials page of the Connector setup wizard, make sure that API access is selected with the correct permissions.  
 A Connector is required for all Git trigger types except Custom. For Custom Triggers, you set up the external tool to send paylods to to the Trigger URL. The specific steps to do this vary depending on the external tool
 * **Event:** Select the Git event type for the Webhook.  
 If the event type you select results in the **Actions** settings appearing, select the actions for the Webhook or select **Any Actions**.

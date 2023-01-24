@@ -14,5 +14,5 @@ The following topics provide information about using KOTS Admin Console to insta
 * [Installation](kubernetes-cluster-on-prem-kubernetes-cluster-setup.md)
 * [Add Ingress Controller Annotations](kubernetes-cluster-self-managed-add-ingress-controller-service-annotations.md)
 
-For instructions on using Helm to install Self-Managed Enterprise Edition, see [Install Harness Self-Managed Enterprise Edition Using Helm](/docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-harness-self-managed-enterprise-edition-using-helm-ga).
+For instructions on using Helm to install Self-Managed Enterprise Edition, see [Install Harness Self-Managed Enterprise Edition Using Helm](https://docs.harness.io/article/gqoqinkhck).
 

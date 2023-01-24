@@ -1,5 +1,5 @@
 ---
-title: Common delegate initialization scripts
+title: Common Delegate Initialization Scripts
 description: This functionality is limited temporarily to the platforms and settings you can see. More functionality for this feature in coming soon. This topic provides information on script availability and som…
 # sidebar_position: 2
 helpdocs_topic_id: auveebqv37
@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 You can run scripts on Harness Delegate pods, hosts, and containers to install applications or run commands.
 
-For more information about running scripts, see [Install Software on the Delegate with Initialization Scripts](/docs/platform/2_Delegates/configure-delegates/run-scripts-on-delegates.md).This topic provides information on script availability and some common delegate initialization scripts.
+For more information about running scripts, see [Install Software on the Delegate with Initialization Scripts](../delegate-guide/run-scripts-on-delegates.md).This topic provides information on script availability and some common delegate initialization scripts.
 
 ### Limitations
 
