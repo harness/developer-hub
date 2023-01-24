@@ -20,13 +20,15 @@ For example, a **Service** uses your Kubernetes manifests and Docker image, an *
 
 ![](./static/cd-pipeline-modeling-overview-02.png)
 
-You can model visually, using code, or via the REST API.
+The image above shows you the order for modeling a CD stage:
 
-(1) Deployment Pipelines Menu
-(2) Deployment Stage Icon
-(3) Service Selection
-(4) Infrastructure and Environment Selection
-(5) Execution Steps
+1. Create a pipeline.
+2. Add a CD stage.
+3. Define a service.
+4. Target an environment and infrastructure.
+5. Select execution steps.
+
+You can model visually, using code, or via the REST API.
 
 #### Visual Studio
 
