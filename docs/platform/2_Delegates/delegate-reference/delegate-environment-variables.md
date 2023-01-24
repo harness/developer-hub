@@ -283,7 +283,7 @@ Makes the delegate use a CDN for new versions.
 
 
 ### VERSION_CHECK_DISABLED
-By default, the delegate always checks for new versions (via the Watcher). 
+By default, the delegate always checks for new versions (through the Watcher). 
 ```
 - name: VERSION_CHECK_DISABLED
   value: "false"
