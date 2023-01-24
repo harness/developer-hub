@@ -90,7 +90,7 @@ Or you can use a Kubernetes manifest.
 
 ![](./static/install-harness-delegate-on-kubernetes-14.png)
 
-1. Select the installer you prefer and click **Continue**.
+8. Select the installer you prefer and click **Continue**.
 
 ### Install by Helm Chart
 
@@ -98,7 +98,7 @@ Some delegate values are configured in the harness-delegate-values.yml file. You
 
 ![](./static/install-harness-delegate-on-kubernetes-15.png)
 
-1. (Optional) To download the harness-delegate-values.yml file, click **Download YAML file**.  
+1. To download the harness-delegate-values.yml file, click **Download YAML file**.  
    
    For detailed information about configuring a proxy for the delegate, see [Configure Delegate Proxy Settings](../delegate-guide/configure-delegate-proxy-settings.md). 
 
