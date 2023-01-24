@@ -1,8 +1,8 @@
 ---
 title: Glossary
-sidebar_position: 5
+sidebar_position: 4
 ---
-![Component Relationship](./static/component-relationship.png)
+![Component Relationship](./static/glossary/component-relationship.png)
 
 - **Chaos Experiment:** A chaos experiment, simply referred as experiment, injects one or more chaos faults into a specified chaos infrastructure and summarizes the result of the chaos execution. The experiment can be defined using the Chaos Studio via the guided UI or by uploading the Workflow CR manifest.
 - **Chaos Fault:** A chaos fault, or simply fault, refers to the failures injected into the chaos infrastructure as part of a chaos experiment. Every fault is scoped to a particular target resource and can be customized using the fault tunables, which are defined as part of the ChaosExperiment CR and ChaosEngine CR. Optionally, one or more probes can be defined as part of a chaos fault.
@@ -24,8 +24,8 @@ sidebar_position: 5
 - **ChaosExperiment CR:** ChaosExperiment CR contains the low-level execution  information for the execution of a Chaos Fault. The CR holds granular details of a fault such as the container image, library, necessary permissions, and chaos parameters among others. Most of the ChaosExperiment CR parameters are tunables that can be overridden from the ChaosEngine CR.
 - **Workflow CR:** A Workflow CR is used to define a number of “operations” which are coupled together in a specific sequence to achieve a desired chaos impact. These operations are either chaos faults or any other custom action related to the experiment, such as load generation.
 
-## Chaos Execution Sequence
-![Component Execution Sequence](./static/component-execution-sequence.png)
+## Experiment Execution
+![Experiment Execution](./static/glossary/experiment-sequence.png)
 
 1. The user attempts to create a new chaos experiment in the Chaos Control Plane.
 2. The Control plane prompts the user to input the required information for the creation a new experiment, such as
