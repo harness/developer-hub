@@ -1,6 +1,6 @@
 ---
 title: Feature Flags
-date: 2023-01-23T10:00
+date: 2023-01-24T10:00
 tags: [NextGen, "feature flags"]
 sidebar_position: 6
 ---
@@ -12,6 +12,24 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
+
+## January 24, 2023
+
+### What's new
+
+This release does not include new features.
+
+### Early access
+
+This release does not include early access features.
+
+### Fixed issues
+- The Android SDK has been updated to version 1.0.18. This fixes a bug that caused unhandled exception errors due to duplicate callbacks during the SDK initialization. (FFM-6395)
+- The Flutter SDK has been updated to version 1.0.8. This includes the following:
+  - Fixed a bug that caused applications to shut down in response to API errors caused by no internet connection. (FFM-6395)
+  - Fixed a bug that caused streaming to stop working if internet connectivity was lost. (FFM-6395) 
+
+#### Feature Flag SDKs
 
 ## January 23, 2023
 
