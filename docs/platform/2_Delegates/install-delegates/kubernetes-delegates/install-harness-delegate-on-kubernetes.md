@@ -136,6 +136,8 @@ If you require additional assistance, contact Harness Support.
 
 When installation is complete, check Harness Manager to verify the status of the delegate auto-update feature. If auto-update is not enabled, confirm the delegate date of expiration.
 
+When the delegate comes up for the first time, Delegate goes in to the SYNCHRONIZING state to check the recent Delegate version. The delegate can be used in the synchronized state.
+
 You can find auto-update information in Harness Manager. Check the list of delegates by name.
 
 ![](static/install-harness-delegate-on-kubernetes-19.png)
