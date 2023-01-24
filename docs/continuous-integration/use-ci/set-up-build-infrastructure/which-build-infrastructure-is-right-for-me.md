@@ -9,7 +9,11 @@ You can run builds on Harness-hosted machines or your own infrastructure. Self-h
 
 # Harness Cloud (Harness-hosted options)
 
-**Available in all CI plans.**
+:::info
+
+Available with all CI plans.
+
+:::
 
 With Harness Cloud you can run builds in isolation on machines hosted and maintained by Harness. You can run builds at scale on Linux, Windows, and macOS machines that are preinstalled with software commonly used in CI pipelines.
 
@@ -21,7 +25,11 @@ To use Harness Cloud, go to [Get started with Harness Cloud](https://developer.h
 
 ## Local
 
-**Available in all CI plans.**
+:::info
+
+Available with all CI plans.
+
+:::
 
 With the Local runner (also known as the Docker runner) you can run builds on a local machine. You can execute build steps in Docker containers or directly on the host machine.
 
@@ -29,7 +37,11 @@ To learn more, go to [Define a local build infrastructure](https://developer.har
 
 ## Kubernetes cluster
 
-**Available only in paid CI plans.**
+:::info
+
+Available only with paid CI plans.
+
+:::
 
 Executing builds in a Kubernetes cluster is useful when you want to run ephemeral builds at scale in your own infrastructure.
 
