@@ -162,7 +162,7 @@ stringData:
 ```
 </details>
 
-- Refer a [superset permission/policy](../policy-for-all-aws-faults) to execute all AWS faults.
+- Refer a [superset permission/policy](./policy-for-all-aws-faults) to execute all AWS faults.
 
 ## Default Validations
 
