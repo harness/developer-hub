@@ -63,7 +63,7 @@ Here is an example AWS superset policy to execute all AWS faults.
                 "ecs:DeregisterContainerInstance",
                 "ecs:DescribeContainerInstances",
                 "ecs:ListTasks",
-                "ecs:DescribeClusters"
+                "ecs:DescribeClusters",
                 "ecs:ListServices",
                 "ecs:StopTask",
                 "ecs:DescribeServices",
@@ -106,7 +106,7 @@ Here is an example AWS superset policy to execute all AWS faults.
             "Action": [
                 "iam:ListAttachedRolePolicies",
                 "iam:DetachRolePolicy",
-                "iam:AttachRolePolicy"
+                "iam:AttachRolePolicy",
                 "iam:GetRolePolicy"
             ],
             "Resource": "*"
