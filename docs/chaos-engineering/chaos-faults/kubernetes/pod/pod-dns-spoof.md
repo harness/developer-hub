@@ -2,13 +2,16 @@
 id: pod-dns-spoof
 title: Pod DNS spoof
 ---
+
 Pod DNS spoof is a Kubernetes pod-level chaos fault that:
+
 - Injects chaos into pods to mimic DNS resolution.
 - Resolves DNS target host names (or domains) to other IPs as specified in the `SPOOF_MAP` environment variable in the chaosengine configuration.
 
 ![Pod DNS Spoof](./static/images/dns-chaos.png)
 
 ## Usage
+
 <details>
 <summary>View fault usage</summary>
 <div>
@@ -17,20 +20,23 @@ Coming soon.
 </details>
 
 ## Prerequisites
+
 - Kubernetes > 1.16
 
 ## Default validation
+
 The application pods should be running before and after injecting chaos.
 
 ## Implementation
 
-**NOTE:** It is assumed that you already have the boutique application set up in a namespace. If not, follow [this](provide link) to set up your boutique application.
+**NOTE:** It is assumed that you already have the boutique application set up in a namespace. If not, follow this to set up your boutique application.
 
-To execute pod DNS spoof fault, [setup experiment](provide) and infrastructure.
+To execute pod DNS spoof fault, setup experiment and infrastructure.
 
 After successful setup of chaos infrastructure:
-* Choose the **pod-dns-spoof** fault from the list of Kubernetes faults available;
-* Specify parameters for the **Target application**, **Tune fault**, and **Probes**;
+
+- Choose the **pod-dns-spoof** fault from the list of Kubernetes faults available;
+- Specify parameters for the **Target application**, **Tune fault**, and **Probes**;
     <details>
         <summary>Fault Tunables</summary>
         <h2>Optional Fields</h2>
@@ -93,32 +99,36 @@ After successful setup of chaos infrastructure:
         </table>
     </details>
 
-* Close this pane by clicking on **X** at the top.
-* Set fault weights by clicking on **Set fault weights** tab present on top. 
-* Click **Run** to execute the experiment.
-
+- Close this pane by clicking on **X** at the top.
+- Set fault weights by clicking on **Set fault weights** tab present on top.
+- Click **Run** to execute the experiment.
 
 ## Chaos fault validation
 
-To validate the experiment you ran, execute the below commands on your terminal. 
+To validate the experiment you ran, execute the below commands on your terminal.
 
-* Fetch all the pods in the boutique namespace (or the namespace where your application is housed).
+- Fetch all the pods in the boutique namespace (or the namespace where your application is housed).
+
 ```
 kubectl get pods -n <namespace>
 ```
 
-* Exec into the microservice on which you will execute the chaos fault.
+- Exec into the microservice on which you will execute the chaos fault.
+
 ```
 kubectl exec -it <microservice_name> -n <namespace> sh
-``` 
+```
 
-* This leads you into the pod, where you can execute the below command to check the disk usage.
+- This leads you into the pod, where you can execute the below command to check the disk usage.
+
 ```
 /app # nslookup <spoof map key>
 ```
+
 ## Fault examples
 
 ### Common and pod specific tunables
+
 Refer to the [common attributes](../../common-tunables-for-all-faults) and [pod specific tunables](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
 
 ### Spoof map
@@ -127,7 +137,8 @@ It defines the map of the target host names. For example, '{"abc.com":"spoofabc.
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/pod-dns-spoof/spoof-map.yaml yaml)
+[embedmd]: # "./static/manifests/pod-dns-spoof/spoof-map.yaml yaml"
+
 ```yaml
 # contains the spoof map for the dns spoofing
 apiVersion: litmuschaos.io/v1alpha1
@@ -143,15 +154,15 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: pod-dns-spoof
-    spec:
-      components:
-        env:
-        # map of host names
-        - name: SPOOF_MAP
-          value: '{"abc.com":"spoofabc.com"}'
-        - name: TOTAL_CHAOS_DURATION
-          value: '60'
+    - name: pod-dns-spoof
+      spec:
+        components:
+          env:
+            # map of host names
+            - name: SPOOF_MAP
+              value: '{"abc.com":"spoofabc.com"}'
+            - name: TOTAL_CHAOS_DURATION
+              value: "60"
 ```
 
 ### Container runtime and socket path
@@ -163,7 +174,8 @@ It defines the `CONTAINER_RUNTIME` and `SOCKET_PATH` environment variables to se
 
 Use the following example to tune it:
 
-[embedmd]:# (./static/manifests/pod-dns-spoof/container-runtime-and-socket-path.yaml yaml)
+[embedmd]: # "./static/manifests/pod-dns-spoof/container-runtime-and-socket-path.yaml yaml"
+
 ```yaml
 ## provide the container runtime and socket file path
 apiVersion: litmuschaos.io/v1alpha1
@@ -179,20 +191,20 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: pod-dns-spoof
-    spec:
-      components:
-        env:
-        # runtime for the container
-        # supports docker
-        - name: CONTAINER_RUNTIME
-          value: 'docker'
-        # path of the socket file
-        - name: SOCKET_PATH
-          value: '/var/run/docker.sock'
-        # map of host names
-        - name: SPOOF_MAP
-          value: '{"abc.com":"spoofabc.com"}'
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
+    - name: pod-dns-spoof
+      spec:
+        components:
+          env:
+            # runtime for the container
+            # supports docker
+            - name: CONTAINER_RUNTIME
+              value: "docker"
+            # path of the socket file
+            - name: SOCKET_PATH
+              value: "/var/run/docker.sock"
+            # map of host names
+            - name: SPOOF_MAP
+              value: '{"abc.com":"spoofabc.com"}'
+            - name: TOTAL_CHAOS_DURATION
+              VALUE: "60"
 ```

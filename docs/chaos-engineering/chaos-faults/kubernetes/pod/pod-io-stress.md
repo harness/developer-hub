@@ -2,39 +2,44 @@
 id: pod-io-stress
 title: Pod IO stress
 ---
+
 Pod I/O stress is a Kubernetes pod-level chaos fault that:
+
 - Causes disk stress on the application pod.
 - Aims to verify the resiliency of applications that share this disk resource for ephemeral (or persistent) storage.
 
 ![Pod IO Stress](./static/images/pod-stress.png)
 
 ## Usage
+
 <details>
 <summary>View fault usage</summary>
 <div>
 Disk Pressure or CPU hogs is another very common and frequent scenario we find in kubernetes applications that can result in the eviction of the application replica and impact its delivery. Such scenarios that can still occur despite whatever availability aids K8s provides. These problems are generally referred to as "Noisy Neighbour" problems.
 
-Stressing the disk with continuous and heavy IO for example can cause degradation in reads written by other microservices that use this shared disk for example modern storage solutions for Kubernetes use the concept of storage pools out of which virtual volumes/devices are carved out. Another issue is the amount of scratch space eaten up on a node which leads to  the lack of space for newer containers to get scheduled (kubernetes too gives up by applying an "eviction" taint like "disk-pressure") and causes a wholesale movement of all pods to other nodes.
+Stressing the disk with continuous and heavy IO for example can cause degradation in reads written by other microservices that use this shared disk for example modern storage solutions for Kubernetes use the concept of storage pools out of which virtual volumes/devices are carved out. Another issue is the amount of scratch space eaten up on a node which leads to the lack of space for newer containers to get scheduled (kubernetes too gives up by applying an "eviction" taint like "disk-pressure") and causes a wholesale movement of all pods to other nodes.
+
 </div>
 </details>
 
 ## Prerequisites
+
 - Kubernetes > 1.16
 
-
 ## Default validation
-The application pods should be running before and after injecting chaos.
 
+The application pods should be running before and after injecting chaos.
 
 ## Implementation
 
-**NOTE:** It is assumed that you already have the boutique application set up in a namespace. If not, follow [this](provide link) to set up your boutique application.
+**NOTE:** It is assumed that you already have the boutique application set up in a namespace. If not, follow this to set up your boutique application.
 
-To execute pod I/O stress fault, [setup experiment](provide) and infrastructure.
+To execute pod I/O stress fault, setup experiment and infrastructure.
 
 After successful setup of chaos infrastructure:
-* Choose the **pod-io-stress** fault from the list of Kubernetes faults available;
-* Specify parameters for the **Target application**, **Tune fault**, and **Probes**;
+
+- Choose the **pod-io-stress** fault from the list of Kubernetes faults available;
+- Specify parameters for the **Target application**, **Tune fault**, and **Probes**;
     <details>
         <summary>Fault Tunables</summary>
         <h2>Populate one of the below fields (If both are populated, `FILESYSTEM_UTILIZATION_PERCENTAGE` takes precedence.) </h2>
@@ -112,26 +117,28 @@ After successful setup of chaos infrastructure:
         </table>
     </details>
 
-* Close this pane by clicking on **X** at the top.
-* Set fault weights by clicking on **Set fault weights** tab present on top. 
-* Click **Run** to execute the experiment.
-
+- Close this pane by clicking on **X** at the top.
+- Set fault weights by clicking on **Set fault weights** tab present on top.
+- Click **Run** to execute the experiment.
 
 ## Chaos fault validation
 
-To validate the experiment you ran, execute the below commands on your terminal. 
+To validate the experiment you ran, execute the below commands on your terminal.
 
-* Fetch all the pods in the boutique namespace (or the namespace where your application is housed).
+- Fetch all the pods in the boutique namespace (or the namespace where your application is housed).
+
 ```
 kubectl get pods -n <namespace>
 ```
 
-* Exec into the microservice on which you will execute the chaos fault.
+- Exec into the microservice on which you will execute the chaos fault.
+
 ```
 kubectl exec -it <microservice_name> -n <namespace> sh
-``` 
+```
 
-* This leads you into the pod, where you can execute the below command to check the workers running inside the pod.
+- This leads you into the pod, where you can execute the below command to check the workers running inside the pod.
+
 ```
 /app # top
 ```
@@ -141,17 +148,19 @@ This displays the number of stress ng workers running inside the pod during chao
 ## Fault examples
 
 ### Common and pod specific tunables
+
 Refer the [common attributes](../../common-tunables-for-all-faults) and [Pod specific tunable](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
 
 ### Filesystem utilization percentage
 
-It stresses the `FILESYSTEM_UTILIZATION_PERCENTAGE` percentage of total free space available in the pod. 
+It stresses the `FILESYSTEM_UTILIZATION_PERCENTAGE` percentage of total free space available in the pod.
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/pod-io-stress/filesystem-utilization-percentage.yaml yaml)
+[embedmd]: # "./static/manifests/pod-io-stress/filesystem-utilization-percentage.yaml yaml"
+
 ```yaml
-# stress the i/o of the targeted pod with FILESYSTEM_UTILIZATION_PERCENTAGE of total free space 
+# stress the i/o of the targeted pod with FILESYSTEM_UTILIZATION_PERCENTAGE of total free space
 # it is mutually exclusive with the FILESYSTEM_UTILIZATION_BYTES.
 # if both are provided then it will use FILESYSTEM_UTILIZATION_PERCENTAGE for stress
 apiVersion: litmuschaos.io/v1alpha1
@@ -167,25 +176,26 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: pod-io-stress
-    spec:
-      components:
-        env:
-        # percentage of free space of file system, need to be stressed
-        - name: FILESYSTEM_UTILIZATION_PERCENTAGE
-          value: '10' #in GB
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
+    - name: pod-io-stress
+      spec:
+        components:
+          env:
+            # percentage of free space of file system, need to be stressed
+            - name: FILESYSTEM_UTILIZATION_PERCENTAGE
+              value: "10" #in GB
+            - name: TOTAL_CHAOS_DURATION
+              VALUE: "60"
 ```
 
 ### Filesystem utilization bytes
 
-It stresses the `FILESYSTEM_UTILIZATION_BYTES` GB of the i/o of the targeted pod. 
+It stresses the `FILESYSTEM_UTILIZATION_BYTES` GB of the i/o of the targeted pod.
 It is mutually exclusive with the `FILESYSTEM_UTILIZATION_PERCENTAGE` ENV. If `FILESYSTEM_UTILIZATION_PERCENTAGE` ENV is set then it will use the percentage for the stress otherwise, it will stress the i/o based on `FILESYSTEM_UTILIZATION_BYTES` ENV.
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/pod-io-stress/filesystem-utilization-bytes.yaml yaml)
+[embedmd]: # "./static/manifests/pod-io-stress/filesystem-utilization-bytes.yaml yaml"
+
 ```yaml
 # stress the i/o of the targeted pod with given FILESYSTEM_UTILIZATION_BYTES
 # it is mutually exclusive with the FILESYSTEM_UTILIZATION_PERCENTAGE.
@@ -203,15 +213,15 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: pod-io-stress
-    spec:
-      components:
-        env:
-        # size of io to be stressed
-        - name: FILESYSTEM_UTILIZATION_BYTES
-          value: '1' #in GB
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
+    - name: pod-io-stress
+      spec:
+        components:
+          env:
+            # size of io to be stressed
+            - name: FILESYSTEM_UTILIZATION_BYTES
+              value: "1" #in GB
+            - name: TOTAL_CHAOS_DURATION
+              VALUE: "60"
 ```
 
 ### Container runtime and socket path
@@ -223,7 +233,8 @@ It defines the `CONTAINER_RUNTIME` and `SOCKET_PATH` ENV to set the container ru
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/pod-io-stress/container-runtime-and-socket-path.yaml yaml)
+[embedmd]: # "./static/manifests/pod-io-stress/container-runtime-and-socket-path.yaml yaml"
+
 ```yaml
 ## provide the container runtime and socket file path
 apiVersion: litmuschaos.io/v1alpha1
@@ -239,28 +250,29 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: pod-io-stress
-    spec:
-      components:
-        env:
-        # runtime for the container
-        # supports docker, containerd, crio
-        - name: CONTAINER_RUNTIME
-          value: 'docker'
-        # path of the socket file
-        - name: SOCKET_PATH
-          value: '/var/run/docker.sock'
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
+    - name: pod-io-stress
+      spec:
+        components:
+          env:
+            # runtime for the container
+            # supports docker, containerd, crio
+            - name: CONTAINER_RUNTIME
+              value: "docker"
+            # path of the socket file
+            - name: SOCKET_PATH
+              value: "/var/run/docker.sock"
+            - name: TOTAL_CHAOS_DURATION
+              VALUE: "60"
 ```
 
 ### Mount path
 
-The volume mount path, which needs to be filled. It can be tuned with `VOLUME_MOUNT_PATH` ENV. 
+The volume mount path, which needs to be filled. It can be tuned with `VOLUME_MOUNT_PATH` ENV.
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/pod-io-stress/mount-path.yaml yaml)
+[embedmd]: # "./static/manifests/pod-io-stress/mount-path.yaml yaml"
+
 ```yaml
 # provide the volume mount path, which needs to be filled
 apiVersion: litmuschaos.io/v1alpha1
@@ -276,24 +288,25 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: pod-io-stress
-    spec:
-      components:
-        env:
-        # path need to be stressed/filled
-        - name: VOLUME_MOUNT_PATH
-          value: '/some-dir-in-container'
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
+    - name: pod-io-stress
+      spec:
+        components:
+          env:
+            # path need to be stressed/filled
+            - name: VOLUME_MOUNT_PATH
+              value: "/some-dir-in-container"
+            - name: TOTAL_CHAOS_DURATION
+              VALUE: "60"
 ```
 
 ### Workers for stress
 
-The worker's count for the stress can be tuned with `NUMBER_OF_WORKERS` ENV. 
+The worker's count for the stress can be tuned with `NUMBER_OF_WORKERS` ENV.
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/pod-io-stress/workers.yaml yaml)
+[embedmd]: # "./static/manifests/pod-io-stress/workers.yaml yaml"
+
 ```yaml
 # number of workers for the stress
 apiVersion: litmuschaos.io/v1alpha1
@@ -309,15 +322,15 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: pod-io-stress
-    spec:
-      components:
-        env:
-        # number of io workers 
-        - name: NUMBER_OF_WORKERS
-          value: '4'
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
+    - name: pod-io-stress
+      spec:
+        components:
+          env:
+            # number of io workers
+            - name: NUMBER_OF_WORKERS
+              value: "4"
+            - name: TOTAL_CHAOS_DURATION
+              VALUE: "60"
 ```
 
 ### Pumba chaos library
@@ -326,7 +339,8 @@ It specifies the Pumba chaos library for the chaos injection. It can be tuned vi
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/pod-io-stress/pumba.yaml yaml)
+[embedmd]: # "./static/manifests/pod-io-stress/pumba.yaml yaml"
+
 ```yaml
 # use the pumba lib for io stress
 apiVersion: litmuschaos.io/v1alpha1
@@ -342,14 +356,14 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: pod-io-stress
-    spec:
-      components:
-        env:
-        # name of lib
-        # it supports litmus and pumba lib
-        - name: LIB
-          value: 'pumba'
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
+    - name: pod-io-stress
+      spec:
+        components:
+          env:
+            # name of lib
+            # it supports litmus and pumba lib
+            - name: LIB
+              value: "pumba"
+            - name: TOTAL_CHAOS_DURATION
+              VALUE: "60"
 ```

@@ -2,13 +2,16 @@
 id: pod-network-loss
 title: Pod network loss
 ---
+
 Pod network loss is a Kubernetes pod-level chaos fault that:
+
 - Causes packet loss in a specific container by starting a traffic control (tc) process with netem rules to add egress/ingress loss.
 - Tests the application's resilience to lossy (or flaky) network.
 
 ![Pod Network Loss](./static/images/network-chaos.png)
 
 ## Usage
+
 <details>
 <summary>View fault usage</summary>
 <div>
@@ -17,20 +20,23 @@ Coming soon.
 </details>
 
 ## Prerequisites
+
 - Kubernetes > 1.16
 
 ## Default validation
+
 The application pods should be running before and after injecting chaos.
 
 ## Implementation
 
-**NOTE:** It is assumed that you already have the boutique application set up in a namespace. If not, follow [this](provide link) to set up your boutique application.
+**NOTE:** It is assumed that you already have the boutique application set up in a namespace. If not, follow this to set up your boutique application.
 
-To execute pod network loss fault, [setup experiment](provide) and infrastructure.
+To execute pod network loss fault, setup experiment and infrastructure.
 
 After successful setup of chaos infrastructure:
-* Choose the **pod-network-loss** fault from the list of Kubernetes faults available;
-* Specify parameters for the **Target application**, **Tune fault**, and **Probes**;
+
+- Choose the **pod-network-loss** fault from the list of Kubernetes faults available;
+- Specify parameters for the **Target application**, **Tune fault**, and **Probes**;
     <details>
         <summary>Fault Tunables</summary>
         <h2>Optional Fields</h2>
@@ -120,42 +126,43 @@ After successful setup of chaos infrastructure:
         </table>
     </details>
 
-* Close this pane by clicking on **X** at the top.
-* Set fault weights by clicking on **Set fault weights** tab present on top. 
-* Click **Run** to execute the experiment.
-
+- Close this pane by clicking on **X** at the top.
+- Set fault weights by clicking on **Set fault weights** tab present on top.
+- Click **Run** to execute the experiment.
 
 ## Chaos fault validation
 
-To validate the experiment you ran, execute the below commands on your terminal. 
+To validate the experiment you ran, execute the below commands on your terminal.
 
-* Fetch all the pods in the boutique namespace (or the namespace where your application is housed).
+- Fetch all the pods in the boutique namespace (or the namespace where your application is housed).
+
 ```
 kubectl get pods -n <namespace>
 ```
 
-* Display all the services of the application on which you will execute the chaos fault.
+- Display all the services of the application on which you will execute the chaos fault.
+
 ```
 kubectl get svc -n <dashboard_namespace>
-``` 
+```
 
-* Visit [this link](provide link) to set up Grafana dashboard to visualize the results before and after injecting chaos into the application. 
+- Visit [this link](provide link) to set up Grafana dashboard to visualize the results before and after injecting chaos into the application.
 
-* Here is a representation of how network loss results in a delay while accessing the service, thereby disrupting the access during chaos.
+- Here is a representation of how network loss results in a delay while accessing the service, thereby disrupting the access during chaos.
 
 ![Before chaos](./static/images/nw-loss-validation.png)
 
-* Here is a representation of how the IP address (or service) becomes inaccessible during chaos.
+- Here is a representation of how the IP address (or service) becomes inaccessible during chaos.
 
 ![During chaos](./static/images/nw-loss-during-chaos.png)
 
 ![During chaos visual](./static/images/nw-loss-during-chaos-dashboard.png)
 
-* When the IP address is inspected, you can see that the status is **pending**. 
+- When the IP address is inspected, you can see that the status is **pending**.
 
 ![After chaos cart](./static/images/nw-loss-cart-service.png)
 
-* After the chaos experiment completes execution, the IP address (or service) is back to normal state.
+- After the chaos experiment completes execution, the IP address (or service) is back to normal state.
 
 ![After chaos](./static/images/nw-loss-after-chaos.png)
 
@@ -164,15 +171,17 @@ kubectl get svc -n <dashboard_namespace>
 ## Fault examples
 
 ### Common and pod specific tunables
+
 Refer the [common attributes](../../common-tunables-for-all-faults) and [Pod specific tunable](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
 
 ### Network packet loss
 
-It defines the network packet loss percentage to be injected in the targeted application. It can be tuned via `NETWORK_PACKET_LOSS_PERCENTAGE` ENV. 
+It defines the network packet loss percentage to be injected in the targeted application. It can be tuned via `NETWORK_PACKET_LOSS_PERCENTAGE` ENV.
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/pod-network-loss/network-loss.yaml yaml)
+[embedmd]: # "./static/manifests/pod-network-loss/network-loss.yaml yaml"
+
 ```yaml
 # it injects network-loss for the egress traffic
 apiVersion: litmuschaos.io/v1alpha1
@@ -188,16 +197,17 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: pod-network-loss
-    spec:
-      components:
-        env:
-        # network packet loss percentage
-        - name: NETWORK_PACKET_LOSS_PERCENTAGE
-          value: '100'
-        - name: TOTAL_CHAOS_DURATION
-          value: '60'
+    - name: pod-network-loss
+      spec:
+        components:
+          env:
+            # network packet loss percentage
+            - name: NETWORK_PACKET_LOSS_PERCENTAGE
+              value: "100"
+            - name: TOTAL_CHAOS_DURATION
+              value: "60"
 ```
+
 ### Destination IPs and destination hosts
 
 The network faults interrupt traffic for all the IPs/hosts by default. The interruption of specific IPs/Hosts can be tuned via `DESTINATION_IPS` and `DESTINATION_HOSTS` ENV.
@@ -207,7 +217,8 @@ The network faults interrupt traffic for all the IPs/hosts by default. The inter
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/pod-network-loss/destination-ips-and-hosts.yaml yaml)
+[embedmd]: # "./static/manifests/pod-network-loss/destination-ips-and-hosts.yaml yaml"
+
 ```yaml
 # it injects the chaos for the egress traffic for specific ips/hosts
 apiVersion: litmuschaos.io/v1alpha1
@@ -223,18 +234,18 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: pod-network-loss
-    spec:
-      components:
-        env:
-        # supports comma separated destination ips
-        - name: DESTINATION_IPS
-          value: '8.8.8.8,192.168.5.6'
-        # supports comma separated destination hosts
-        - name: DESTINATION_HOSTS
-          value: 'nginx.default.svc.cluster.local,google.com'
-        - name: TOTAL_CHAOS_DURATION
-          value: '60'
+    - name: pod-network-loss
+      spec:
+        components:
+          env:
+            # supports comma separated destination ips
+            - name: DESTINATION_IPS
+              value: "8.8.8.8,192.168.5.6"
+            # supports comma separated destination hosts
+            - name: DESTINATION_HOSTS
+              value: "nginx.default.svc.cluster.local,google.com"
+            - name: TOTAL_CHAOS_DURATION
+              value: "60"
 ```
 
 ### Network interface
@@ -243,7 +254,8 @@ The defined name of the ethernet interface, which is considered for shaping traf
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/pod-network-loss/network-interface.yaml yaml)
+[embedmd]: # "./static/manifests/pod-network-loss/network-interface.yaml yaml"
+
 ```yaml
 # provide the network interface
 apiVersion: litmuschaos.io/v1alpha1
@@ -259,15 +271,15 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: pod-network-loss
-    spec:
-      components:
-        env:
-        # name of the network interface 
-        - name: NETWORK_INTERFACE
-          value: 'eth0'
-        - name: TOTAL_CHAOS_DURATION
-          value: '60'
+    - name: pod-network-loss
+      spec:
+        components:
+          env:
+            # name of the network interface
+            - name: NETWORK_INTERFACE
+              value: "eth0"
+            - name: TOTAL_CHAOS_DURATION
+              value: "60"
 ```
 
 ### Container runtime and socket path
@@ -279,7 +291,8 @@ It defines the `CONTAINER_RUNTIME` and `SOCKET_PATH` ENV to set the container ru
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/pod-network-loss/container-runtime-and-socket-path.yaml yaml)
+[embedmd]: # "./static/manifests/pod-network-loss/container-runtime-and-socket-path.yaml yaml"
+
 ```yaml
 ## provide the container runtime and socket file path
 apiVersion: litmuschaos.io/v1alpha1
@@ -295,19 +308,19 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: pod-network-loss
-    spec:
-      components:
-        env:
-        # runtime for the container
-        # supports docker, containerd, crio
-        - name: CONTAINER_RUNTIME
-          value: 'docker'
-        # path of the socket file
-        - name: SOCKET_PATH
-          value: '/var/run/docker.sock'
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
+    - name: pod-network-loss
+      spec:
+        components:
+          env:
+            # runtime for the container
+            # supports docker, containerd, crio
+            - name: CONTAINER_RUNTIME
+              value: "docker"
+            # path of the socket file
+            - name: SOCKET_PATH
+              value: "/var/run/docker.sock"
+            - name: TOTAL_CHAOS_DURATION
+              VALUE: "60"
 ```
 
 ### Pumba chaos library
@@ -317,7 +330,8 @@ Provide the traffic control image via `TC_IMAGE` ENV for the Pumba library.
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/pod-network-loss/pumba-lib.yaml yaml)
+[embedmd]: # "./static/manifests/pod-network-loss/pumba-lib.yaml yaml"
+
 ```yaml
 # use pumba chaoslib for the network chaos
 apiVersion: litmuschaos.io/v1alpha1
@@ -333,18 +347,18 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: pod-network-loss
-    spec:
-      components:
-        env:
-        # name of the chaoslib
-        # supports litmus and pumba lib
-        - name: LIB
-          value: 'pumba'
-        # image used for the traffic control in linux
-        # applicable for pumba lib only
-        - name: TC_IMAGE
-          value: 'gaiadocker/iproute2'
-        - name: TOTAL_CHAOS_DURATION
-          value: '60'
+    - name: pod-network-loss
+      spec:
+        components:
+          env:
+            # name of the chaoslib
+            # supports litmus and pumba lib
+            - name: LIB
+              value: "pumba"
+            # image used for the traffic control in linux
+            # applicable for pumba lib only
+            - name: TC_IMAGE
+              value: "gaiadocker/iproute2"
+            - name: TOTAL_CHAOS_DURATION
+              value: "60"
 ```

@@ -2,6 +2,7 @@
 id: pod-http-status-code
 title: Pod HTTP status code
 ---
+
 Pod HTTP status code is a Kubernetes pod-level chaos fault that:
 
 - It injects http status code chaos inside the pod which modifies the status code of the response from the provided application server to desired status code provided by user on the service whose port is provided as `TARGET_SERVICE_PORT` by starting proxy server and then redirecting the traffic through the proxy server.
@@ -10,6 +11,7 @@ Pod HTTP status code is a Kubernetes pod-level chaos fault that:
 ![Pod HTTP Status Code](./static/images/pod-http.png)
 
 ## Usage
+
 <details>
 <summary>View fault usage</summary>
 <div>
@@ -18,20 +20,23 @@ Coming soon.
 </details>
 
 ## Prerequisites
+
 - Kubernetes > 1.16
 
 ## Default validation
+
 The application pods should be running before and after injecting chaos.
 
 ## Implementation
 
-**NOTE:** It is assumed that you already have the boutique application set up in a namespace. If not, follow [this](provide link) to set up your boutique application.
+**NOTE:** It is assumed that you already have the boutique application set up in a namespace. If not, follow this to set up your boutique application.
 
-To execute pod HTTP status code fault, [setup experiment](provide) and infrastructure.
+To execute pod HTTP status code fault, setup experiment and infrastructure.
 
 After successful setup of chaos infrastructure:
-* Choose the **pod-http-status-code** fault from the list of Kubernetes faults available;
-* Specify parameters for the **Target application**, **Tune fault**, and **Probes**;
+
+- Choose the **pod-http-status-code** fault from the list of Kubernetes faults available;
+- Specify parameters for the **Target application**, **Tune fault**, and **Probes**;
     <details>
         <summary>Fault Tunables</summary>
         <h2>Mandatory Fields</h2>
@@ -140,28 +145,30 @@ After successful setup of chaos infrastructure:
         </table>
     </details>
 
-* Close this pane by clicking on **X** at the top.
-* Set fault weights by clicking on **Set fault weights** tab present on top. 
-* Click **Run** to execute the experiment.
-
+- Close this pane by clicking on **X** at the top.
+- Set fault weights by clicking on **Set fault weights** tab present on top.
+- Click **Run** to execute the experiment.
 
 ## Chaos fault validation
 
-To validate the experiment you ran, execute the below commands on your terminal. 
+To validate the experiment you ran, execute the below commands on your terminal.
 
-* Fetch all the pods in the boutique namespace (or the namespace where your application is housed).
+- Fetch all the pods in the boutique namespace (or the namespace where your application is housed).
+
 ```
 kubectl get pods -n <namespace>
 ```
 
-* Exec into the microservice on which you will execute the chaos fault.
+- Exec into the microservice on which you will execute the chaos fault.
+
 ```
 kubectl exec -it <microservice_name> -n <namespace> sh
-``` 
+```
 
 ## Fault examples
 
 ### Common and pod specific tunables
+
 Refer the [common attributes](../../common-tunables-for-all-faults) and [Pod specific tunable](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
 
 ### Target service port
@@ -171,7 +178,8 @@ This should be the port where the application runs at the pod level, not at the 
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/pod-http-status-code/target-service-port.yaml yaml)
+[embedmd]: # "./static/manifests/pod-http-status-code/target-service-port.yaml yaml"
+
 ```yaml
 ## provide the port of the targeted service
 apiVersion: litmuschaos.io/v1alpha1
@@ -187,24 +195,26 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: pod-http-status-code
-    spec:
-      components:
-        env:
-        # provide the port of the targeted service
-        - name: TARGET_SERVICE_PORT
-          value: "80"
-        # modified status code for the http response
-        - name: STATUS_CODE
-          value: '500'
+    - name: pod-http-status-code
+      spec:
+        components:
+          env:
+            # provide the port of the targeted service
+            - name: TARGET_SERVICE_PORT
+              value: "80"
+            # modified status code for the http response
+            - name: STATUS_CODE
+              value: "500"
 ```
+
 ### Proxy port
 
 It defines the port on which the proxy server will listen for requests. It can be tuned via `PROXY_PORT` ENV.
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/pod-http-status-code/proxy-port.yaml yaml)
+[embedmd]: # "./static/manifests/pod-http-status-code/proxy-port.yaml yaml"
+
 ```yaml
 ## provide the port for proxy server
 apiVersion: litmuschaos.io/v1alpha1
@@ -220,19 +230,19 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: pod-http-status-code
-    spec:
-      components:
-        env:
-        # provide the port for proxy server
-        - name: PROXY_PORT
-          value: '8080'
-        # provide the port of the targeted service
-        - name: TARGET_SERVICE_PORT
-          value: "80"
-        # modified status code for the http response
-        - name: STATUS_CODE
-          value: '500'
+    - name: pod-http-status-code
+      spec:
+        components:
+          env:
+            # provide the port for proxy server
+            - name: PROXY_PORT
+              value: "8080"
+            # provide the port of the targeted service
+            - name: TARGET_SERVICE_PORT
+              value: "80"
+            # modified status code for the http response
+            - name: STATUS_CODE
+              value: "500"
 ```
 
 ### Status code
@@ -241,7 +251,8 @@ It defines the status code value for the http response. It can be tuned via `STA
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/pod-http-status-code/status-code.yaml yaml)
+[embedmd]: # "./static/manifests/pod-http-status-code/status-code.yaml yaml"
+
 ```yaml
 ## modified status code for the http response
 apiVersion: litmuschaos.io/v1alpha1
@@ -257,20 +268,20 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: pod-http-status-code
-    spec:
-      components:
-        env:
-        # modified status code for the http response
-        # if no value is provided, a random status code from the supported code list will selected
-        # if multiple comma separated values are provided, then a random value from the provided list will be selected
-        # if an invalid status code is provided, the fault will fail
-        # supported status code list: [200, 201, 202, 204, 300, 301, 302, 304, 307, 400, 401, 403, 404, 500, 501, 502, 503, 504]
-        - name: STATUS_CODE
-          value: '500'
-        # provide the port of the targeted service
-        - name: TARGET_SERVICE_PORT
-          value: "80"
+    - name: pod-http-status-code
+      spec:
+        components:
+          env:
+            # modified status code for the http response
+            # if no value is provided, a random status code from the supported code list will selected
+            # if multiple comma separated values are provided, then a random value from the provided list will be selected
+            # if an invalid status code is provided, the fault will fail
+            # supported status code list: [200, 201, 202, 204, 300, 301, 302, 304, 307, 400, 401, 403, 404, 500, 501, 502, 503, 504]
+            - name: STATUS_CODE
+              value: "500"
+            # provide the port of the targeted service
+            - name: TARGET_SERVICE_PORT
+              value: "80"
 ```
 
 ### Modify response body
@@ -279,7 +290,8 @@ It defines whether to modify the respone body with a pre-defined template to mat
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/pod-http-status-code/modify-body-with-response-pre-defined.yaml yaml)
+[embedmd]: # "./static/manifests/pod-http-status-code/modify-body-with-response-pre-defined.yaml yaml"
+
 ```yaml
 ##  whether to modify the body as per the status code provided
 apiVersion: litmuschaos.io/v1alpha1
@@ -295,19 +307,19 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: pod-http-status-code
-    spec:
-      components:
-        env:
-        #  whether to modify the body as per the status code provided
-        - name: "MODIFY_RESPONSE_BODY"
-          value: "true"
-        # modified status code for the http response
-        - name: STATUS_CODE
-          value: '500'
-        # provide the port of the targeted service
-        - name: TARGET_SERVICE_PORT
-          value: "80"
+    - name: pod-http-status-code
+      spec:
+        components:
+          env:
+            #  whether to modify the body as per the status code provided
+            - name: "MODIFY_RESPONSE_BODY"
+              value: "true"
+            # modified status code for the http response
+            - name: STATUS_CODE
+              value: "500"
+            # provide the port of the targeted service
+            - name: TARGET_SERVICE_PORT
+              value: "80"
 ```
 
 ### Toxicity
@@ -317,7 +329,8 @@ Toxicity value defines the percentage of the total number of http requests to be
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/pod-http-status-code/toxicity.yaml yaml)
+[embedmd]: # "./static/manifests/pod-http-status-code/toxicity.yaml yaml"
+
 ```yaml
 ## provide the toxicity
 apiVersion: litmuschaos.io/v1alpha1
@@ -333,18 +346,18 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: pod-http-status-code
-    spec:
-      components:
-        env:
-        # toxicity is the probability of the request to be affected
-        # provide the percentage value in the range of 0-100
-        # 0 means no request will be affected and 100 means all request will be affected
-        - name: TOXICITY
-          value: "100"
-        # provide the port of the targeted service
-        - name: TARGET_SERVICE_PORT
-          value: "80"
+    - name: pod-http-status-code
+      spec:
+        components:
+          env:
+            # toxicity is the probability of the request to be affected
+            # provide the percentage value in the range of 0-100
+            # 0 means no request will be affected and 100 means all request will be affected
+            - name: TOXICITY
+              value: "100"
+            # provide the port of the targeted service
+            - name: TARGET_SERVICE_PORT
+              value: "80"
 ```
 
 ### Response body
@@ -354,7 +367,8 @@ The `MODIFY_RESPONSE_BODY` ENV should be set to `true` to enable this feature.
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/pod-http-status-code/modify-body-with-response.yaml yaml)
+[embedmd]: # "./static/manifests/pod-http-status-code/modify-body-with-response.yaml yaml"
+
 ```yaml
 ## provide the response body value
 apiVersion: litmuschaos.io/v1alpha1
@@ -370,22 +384,22 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: pod-http-status-code
-    spec:
-      components:
-        env:
-        # provide the body string to overwrite the response body. This will be used only if MODIFY_RESPONSE_BODY is set to true
-        - name: RESPONSE_BODY
-          value: '<h1>Hello World</h1>'
-        #  whether to modify the body as per the status code provided
-        - name: "MODIFY_RESPONSE_BODY"
-          value: "true"
-        # modified status code for the http response
-        - name: STATUS_CODE
-          value: '500'
-        # provide the port of the targeted service
-        - name: TARGET_SERVICE_PORT
-          value: "80"
+    - name: pod-http-status-code
+      spec:
+        components:
+          env:
+            # provide the body string to overwrite the response body. This will be used only if MODIFY_RESPONSE_BODY is set to true
+            - name: RESPONSE_BODY
+              value: "<h1>Hello World</h1>"
+            #  whether to modify the body as per the status code provided
+            - name: "MODIFY_RESPONSE_BODY"
+              value: "true"
+            # modified status code for the http response
+            - name: STATUS_CODE
+              value: "500"
+            # provide the port of the targeted service
+            - name: TARGET_SERVICE_PORT
+              value: "80"
 ```
 
 ### Content encoding and content type
@@ -394,6 +408,7 @@ It defines the content encoding and content type of the response body. It can be
 
 Use the following example to tune this:
 [embedmd]:# (./static/manifests/pod-http-status-code/modify-body-with-encoding-type.yaml yaml)
+
 ```yaml
 ##  whether to modify the body as per the status code provided
 apiVersion: litmuschaos.io/v1alpha1
@@ -409,27 +424,27 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: pod-http-status-code
-    spec:
-      components:
-        env:
-        # provide the encoding type for the response body
-        # currently supported value are gzip, deflate
-        # if empty no encoding will be applied
-        - name: CONTENT_ENCODING
-          value: 'gzip'
-        # provide the content type for the response body
-        - name: CONTENT_TYPE
-          value: 'text/html'
-        #  whether to modify the body as per the status code provided
-        - name: "MODIFY_RESPONSE_BODY"
-          value: "true"
-        # modified status code for the http response
-        - name: STATUS_CODE
-          value: '500'
-        # provide the port of the targeted service
-        - name: TARGET_SERVICE_PORT
-          value: "80"
+    - name: pod-http-status-code
+      spec:
+        components:
+          env:
+            # provide the encoding type for the response body
+            # currently supported value are gzip, deflate
+            # if empty no encoding will be applied
+            - name: CONTENT_ENCODING
+              value: "gzip"
+            # provide the content type for the response body
+            - name: CONTENT_TYPE
+              value: "text/html"
+            #  whether to modify the body as per the status code provided
+            - name: "MODIFY_RESPONSE_BODY"
+              value: "true"
+            # modified status code for the http response
+            - name: STATUS_CODE
+              value: "500"
+            # provide the port of the targeted service
+            - name: TARGET_SERVICE_PORT
+              value: "80"
 ```
 
 ### Network interface
@@ -438,7 +453,8 @@ It defines the network interface to be used for the proxy. It can be tuned via `
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/pod-http-status-code/network-interface.yaml yaml)
+[embedmd]: # "./static/manifests/pod-http-status-code/network-interface.yaml yaml"
+
 ```yaml
 ## provide the network interface for proxy
 apiVersion: litmuschaos.io/v1alpha1
@@ -454,19 +470,19 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: pod-http-status-code
-    spec:
-      components:
-        env:
-        # provide the network interface for proxy
-        - name: NETWORK_INTERFACE
-          value: "eth0"
-        # provide the port of the targeted service
-        - name: TARGET_SERVICE_PORT
-          value: '80'
-        # modified status code for the http response
-        - name: STATUS_CODE
-          value: '500'
+    - name: pod-http-status-code
+      spec:
+        components:
+          env:
+            # provide the network interface for proxy
+            - name: NETWORK_INTERFACE
+              value: "eth0"
+            # provide the port of the targeted service
+            - name: TARGET_SERVICE_PORT
+              value: "80"
+            # modified status code for the http response
+            - name: STATUS_CODE
+              value: "500"
 ```
 
 ### Container runtime and socket path
@@ -478,7 +494,8 @@ It defines the `CONTAINER_RUNTIME` and `SOCKET_PATH` ENV to set the container ru
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/pod-http-status-code/container-runtime-and-socket-path.yaml yaml)
+[embedmd]: # "./static/manifests/pod-http-status-code/container-runtime-and-socket-path.yaml yaml"
+
 ```yaml
 ## provide the container runtime and socket file path
 apiVersion: litmuschaos.io/v1alpha1
@@ -494,21 +511,21 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: pod-http-status-code
-    spec:
-      components:
-        env:
-        # runtime for the container
-        # supports docker, containerd, crio
-        - name: CONTAINER_RUNTIME
-          value: 'docker'
-        # path of the socket file
-        - name: SOCKET_PATH
-          value: '/var/run/docker.sock'
-        # provide the port of the targeted service
-        - name: TARGET_SERVICE_PORT
-          value: "80"
-        # modified status code for the http response
-        - name: STATUS_CODE
-          value: '500'
+    - name: pod-http-status-code
+      spec:
+        components:
+          env:
+            # runtime for the container
+            # supports docker, containerd, crio
+            - name: CONTAINER_RUNTIME
+              value: "docker"
+            # path of the socket file
+            - name: SOCKET_PATH
+              value: "/var/run/docker.sock"
+            # provide the port of the targeted service
+            - name: TARGET_SERVICE_PORT
+              value: "80"
+            # modified status code for the http response
+            - name: STATUS_CODE
+              value: "500"
 ```

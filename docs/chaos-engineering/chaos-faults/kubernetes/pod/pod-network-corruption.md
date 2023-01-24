@@ -2,13 +2,16 @@
 id: pod-network-corruption
 title: Pod network corruption
 ---
+
 Pod network corruption is a Kubernetes pod-level chaos fault that:
+
 - Injects corrupted packets of data into the specified container by starting a traffic control (tc) process with netem rules to add egress packet corruption.
 - Tests the application's resilience to lossy (or flaky) network.
 
 ![Pod Network Corruption](./static/images/network-chaos.png)
 
 ## Usage
+
 <details>
 <summary>View fault usage</summary>
 <div>
@@ -17,20 +20,23 @@ Coming soon.
 </details>
 
 ## Prerequisites
+
 - Kubernetes > 1.16
 
 ## Default validation
+
 The application pods should be running before and after injecting chaos.
 
 ## Implementation
 
-**NOTE:** It is assumed that you already have the boutique application set up in a namespace. If not, follow [this](provide link) to set up your boutique application.
+**NOTE:** It is assumed that you already have the boutique application set up in a namespace. If not, follow this to set up your boutique application.
 
-To execute pod network corruption fault, [setup experiment](provide) and infrastructure.
+To execute pod network corruption fault, setup experiment and infrastructure.
 
 After successful setup of chaos infrastructure:
-* Choose the **pod-network-corruption** fault from the list of Kubernetes faults available;
-* Specify parameters for the **Target application**, **Tune fault**, and **Probes**;
+
+- Choose the **pod-network-corruption** fault from the list of Kubernetes faults available;
+- Specify parameters for the **Target application**, **Tune fault**, and **Probes**;
     <details>
         <summary>Fault Tunables</summary>
         <h2>Optional Fields</h2>
@@ -118,26 +124,28 @@ After successful setup of chaos infrastructure:
         </table>
     </details>
 
-* Close this pane by clicking on **X** at the top.
-* Set fault weights by clicking on **Set fault weights** tab present on top. 
-* Click **Run** to execute the experiment.
-
+- Close this pane by clicking on **X** at the top.
+- Set fault weights by clicking on **Set fault weights** tab present on top.
+- Click **Run** to execute the experiment.
 
 ## Chaos fault validation
 
-To validate the experiment you ran, execute the below commands on your terminal. 
+To validate the experiment you ran, execute the below commands on your terminal.
 
-* Fetch all the pods in the boutique namespace (or the namespace where your application is housed).
+- Fetch all the pods in the boutique namespace (or the namespace where your application is housed).
+
 ```
 kubectl get pods -n <namespace>
 ```
 
-* Exec into the microservice on which you will execute the chaos fault.
+- Exec into the microservice on which you will execute the chaos fault.
+
 ```
 kubectl exec -it <microservice_name> -n <namespace> sh
-``` 
+```
 
-* This leads you into the pod, where you can execute the below command to check the disk usage.
+- This leads you into the pod, where you can execute the below command to check the disk usage.
+
 ```
 /app # ping <destination ip>
 ```
@@ -147,15 +155,17 @@ When chaos starts, trying to access the above specified `destination ip` leads t
 ## Fault examples
 
 ### Common and pod specific tunables
+
 Refer the [common attributes](../../common-tunables-for-all-faults) and [Pod specific tunable](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
 
 ### Network packet corruption
 
-It defines the network packet corruption percentage that is injected in the target application. You can tune it using the `NETWORK_PACKET_CORRUPTION_PERCENTAGE` environment variable. 
+It defines the network packet corruption percentage that is injected in the target application. You can tune it using the `NETWORK_PACKET_CORRUPTION_PERCENTAGE` environment variable.
 
 Use the following example to tune it:
 
-[embedmd]:# (./static/manifests/pod-network-corruption/network-corruption.yaml yaml)
+[embedmd]: # "./static/manifests/pod-network-corruption/network-corruption.yaml yaml"
+
 ```yaml
 # it injects network-corruption for the egress traffic
 apiVersion: litmuschaos.io/v1alpha1
@@ -171,15 +181,15 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: pod-network-corruption
-    spec:
-      components:
-        env:
-        # network packet corruption percentage
-        - name: NETWORK_PACKET_CORRUPTION_PERCENTAGE
-          value: '100' #in percentage
-        - name: TOTAL_CHAOS_DURATION
-          value: '60'
+    - name: pod-network-corruption
+      spec:
+        components:
+          env:
+            # network packet corruption percentage
+            - name: NETWORK_PACKET_CORRUPTION_PERCENTAGE
+              value: "100" #in percentage
+            - name: TOTAL_CHAOS_DURATION
+              value: "60"
 ```
 
 ### Destination IPs and destination hosts
@@ -191,7 +201,8 @@ By default, network faults interrupt traffic for all the IPs (or hosts). You can
 
 Use the following example to tune it:
 
-[embedmd]:# (./static/manifests/pod-network-corruption/destination-ips-and-hosts.yaml yaml)
+[embedmd]: # "./static/manifests/pod-network-corruption/destination-ips-and-hosts.yaml yaml"
+
 ```yaml
 # it injects the chaos for the egress traffic for specific ips/hosts
 apiVersion: litmuschaos.io/v1alpha1
@@ -207,18 +218,18 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: pod-network-corruption
-    spec:
-      components:
-        env:
-        # supports comma separated destination ips
-        - name: DESTINATION_IPS
-          value: '8.8.8.8,192.168.5.6'
-        # supports comma separated destination hosts
-        - name: DESTINATION_HOSTS
-          value: 'nginx.default.svc.cluster.local,google.com'
-        - name: TOTAL_CHAOS_DURATION
-          value: '60'
+    - name: pod-network-corruption
+      spec:
+        components:
+          env:
+            # supports comma separated destination ips
+            - name: DESTINATION_IPS
+              value: "8.8.8.8,192.168.5.6"
+            # supports comma separated destination hosts
+            - name: DESTINATION_HOSTS
+              value: "nginx.default.svc.cluster.local,google.com"
+            - name: TOTAL_CHAOS_DURATION
+              value: "60"
 ```
 
 ### Network interface
@@ -227,7 +238,8 @@ The name of the ethernet interface considered to shape the traffic. You can tune
 
 Use the following example to tune it:
 
-[embedmd]:# (./static/manifests/pod-network-corruption/network-interface.yaml yaml)
+[embedmd]: # "./static/manifests/pod-network-corruption/network-interface.yaml yaml"
+
 ```yaml
 # provide the network interface
 apiVersion: litmuschaos.io/v1alpha1
@@ -243,15 +255,15 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: pod-network-corruption
-    spec:
-      components:
-        env:
-        # name of the network interface 
-        - name: NETWORK_INTERFACE
-          value: 'eth0'
-        - name: TOTAL_CHAOS_DURATION
-          value: '60'
+    - name: pod-network-corruption
+      spec:
+        components:
+          env:
+            # name of the network interface
+            - name: NETWORK_INTERFACE
+              value: "eth0"
+            - name: TOTAL_CHAOS_DURATION
+              value: "60"
 ```
 
 ### Container runtime and socket path
@@ -263,7 +275,8 @@ It defines the `CONTAINER_RUNTIME` and `SOCKET_PATH` environment variables to se
 
 Use the following example to tune it:
 
-[embedmd]:# (./static/manifests/pod-network-corruption/container-runtime-and-socket-path.yaml yaml)
+[embedmd]: # "./static/manifests/pod-network-corruption/container-runtime-and-socket-path.yaml yaml"
+
 ```yaml
 ## provide the container runtime and socket file path
 apiVersion: litmuschaos.io/v1alpha1
@@ -279,19 +292,19 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: pod-network-corruption
-    spec:
-      components:
-        env:
-        # runtime for the container
-        # supports docker, containerd, crio
-        - name: CONTAINER_RUNTIME
-          value: 'docker'
-        # path of the socket file
-        - name: SOCKET_PATH
-          value: '/var/run/docker.sock'
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
+    - name: pod-network-corruption
+      spec:
+        components:
+          env:
+            # runtime for the container
+            # supports docker, containerd, crio
+            - name: CONTAINER_RUNTIME
+              value: "docker"
+            # path of the socket file
+            - name: SOCKET_PATH
+              value: "/var/run/docker.sock"
+            - name: TOTAL_CHAOS_DURATION
+              VALUE: "60"
 ```
 
 ### Pumba chaos library
@@ -301,7 +314,8 @@ Provide the traffic control image via `TC_IMAGE` ENV for the pumba library.
 
 Use the following example to tune it:
 
-[embedmd]:# (./static/manifests/pod-network-corruption/pumba-lib.yaml yaml)
+[embedmd]: # "./static/manifests/pod-network-corruption/pumba-lib.yaml yaml"
+
 ```yaml
 # use pumba chaoslib for the network chaos
 apiVersion: litmuschaos.io/v1alpha1
@@ -317,18 +331,18 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: pod-network-corruption
-    spec:
-      components:
-        env:
-        # name of the chaoslib
-        # supports litmus and pumba lib
-        - name: LIB
-          value: 'pumba'
-        # image used for the traffic control in linux
-        # applicable for pumba lib only
-        - name: TC_IMAGE
-          value: 'gaiadocker/iproute2'
-        - name: TOTAL_CHAOS_DURATION
-          value: '60'
+    - name: pod-network-corruption
+      spec:
+        components:
+          env:
+            # name of the chaoslib
+            # supports litmus and pumba lib
+            - name: LIB
+              value: "pumba"
+            # image used for the traffic control in linux
+            # applicable for pumba lib only
+            - name: TC_IMAGE
+              value: "gaiadocker/iproute2"
+            - name: TOTAL_CHAOS_DURATION
+              value: "60"
 ```

@@ -2,38 +2,44 @@
 id: pod-memory-hog-exec
 title: Pod memory hog exec
 ---
+
 Pod memory hog exec is a Kubernetes pod-level chaos fault that:
+
 - Consumes Memory resources on the application container on specified memory in megabytes.
 - It simulates conditions where app pods experience Memory spikes either due to expected/undesired processes thereby testing how the overall application stack behaves when this occurs.
 
 ![Pod Memory Hog Exec](./static/images/pod-stress.png)
 
 ## Usage
+
 <details>
 <summary>View fault usage</summary>
 <div>
-Memory usage within containers is subject to various constraints in Kubernetes. If the limits are specified in their spec, exceeding them can cause termination of the container (due to OOMKill of the primary process, often pid 1) - the restart of the container by kubelet, subject to the policy specified. For containers with no limits placed, the memory usage is uninhibited until such time as the Node level OOM Behaviour takes over. In this case, containers on the node can be killed based on their oom_score and the QoS class a given pod belongs to (bestEffort ones are first to be targeted). This eval is extended to all pods running on the node - thereby causing a bigger blast radius. 
+Memory usage within containers is subject to various constraints in Kubernetes. If the limits are specified in their spec, exceeding them can cause termination of the container (due to OOMKill of the primary process, often pid 1) - the restart of the container by kubelet, subject to the policy specified. For containers with no limits placed, the memory usage is uninhibited until such time as the Node level OOM Behaviour takes over. In this case, containers on the node can be killed based on their oom_score and the QoS class a given pod belongs to (bestEffort ones are first to be targeted). This eval is extended to all pods running on the node - thereby causing a bigger blast radius.
 
 This fault launches a stress process within the target container - which can cause either the primary process in the container to be resource constrained in cases where the limits are enforced OR eat up available system memory on the node in cases where the limits are not specified.
+
 </div>
 </details>
 
 ## Prerequisites
+
 - Kubernetes > 1.16
 
 ## Default validation
-The application pods should be running before and after injecting chaos.
 
+The application pods should be running before and after injecting chaos.
 
 ## Implementation
 
-**NOTE:** It is assumed that you already have the boutique application set up in a namespace. If not, follow [this](provide link) to set up your boutique application.
+**NOTE:** It is assumed that you already have the boutique application set up in a namespace. If not, follow this to set up your boutique application.
 
-To execute pod memory hog exec fault, [setup experiment](provide) and infrastructure.
+To execute pod memory hog exec fault, setup experiment and infrastructure.
 
 After successful setup of chaos infrastructure:
-* Choose the **pod-memory-hog-exec** fault from the list of Kubernetes faults available;
-* Specify parameters for the **Target application**, **Tune fault**, and **Probes**;
+
+- Choose the **pod-memory-hog-exec** fault from the list of Kubernetes faults available;
+- Specify parameters for the **Target application**, **Tune fault**, and **Probes**;
   <details>
       <summary>Fault Tunables</summary>
       <table>
@@ -90,28 +96,30 @@ After successful setup of chaos infrastructure:
       </table>
   </details>
 
-* Close this pane by clicking on **X** at the top.
-* Set fault weights by clicking on **Set fault weights** tab present on top. 
-* Click **Run** to execute the experiment.
-
+- Close this pane by clicking on **X** at the top.
+- Set fault weights by clicking on **Set fault weights** tab present on top.
+- Click **Run** to execute the experiment.
 
 ## Chaos fault validation
 
-To validate the experiment you ran, execute the below commands on your terminal. 
+To validate the experiment you ran, execute the below commands on your terminal.
 
-* Fetch all the pods in the boutique namespace (or the namespace where your application is housed).
+- Fetch all the pods in the boutique namespace (or the namespace where your application is housed).
+
 ```
 kubectl get pods -n <namespace>
 ```
 
-* Exec into the microservice on which you will execute the chaos fault.
+- Exec into the microservice on which you will execute the chaos fault.
+
 ```
 kubectl exec -it <microservice_name> -n <namespace> sh
-``` 
+```
 
 ## Fault examples
 
 ### Common and pod specific tunables
+
 Refer the [common attributes](../../common-tunables-for-all-faults) and [Pod specific tunable](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
 
 ### Memory consumption
@@ -121,7 +129,8 @@ The memory consumption limit is 2000MB
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/pod-memory-hog-exec/memory-consumption.yaml yaml)
+[embedmd]: # "./static/manifests/pod-memory-hog-exec/memory-consumption.yaml yaml"
+
 ```yaml
 # memory to be stressed in MB
 apiVersion: litmuschaos.io/v1alpha1
@@ -137,16 +146,16 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: pod-memory-hog
-    spec:
-      components:
-        env:
-        # memory consumption value in MB
-        # it is limited to 2000MB
-        - name: MEMORY_CONSUMPTION
-          value: '500' #in MB
-        - name: TOTAL_CHAOS_DURATION
-          value: '60'
+    - name: pod-memory-hog
+      spec:
+        components:
+          env:
+            # memory consumption value in MB
+            # it is limited to 2000MB
+            - name: MEMORY_CONSUMPTION
+              value: "500" #in MB
+            - name: TOTAL_CHAOS_DURATION
+              value: "60"
 ```
 
 ### Chaos kill commands
@@ -154,11 +163,12 @@ spec:
 It defines the `CHAOS_KILL_COMMAND` ENV to set the chaos kill command.
 Default values of `CHAOS_KILL_COMMAND` command:
 
-- `CHAOS_KILL_COMMAND`: "kill $(find /proc -name exe -lname '*/dd' 2>&1 | grep -v 'Permission denied' | awk -F/ '{print $(NF-1)}' | head -n 1)"
+- `CHAOS_KILL_COMMAND`: "kill $(find /proc -name exe -lname '\*/dd' 2>&1 | grep -v 'Permission denied' | awk -F/ '{print $(NF-1)}' | head -n 1)"
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/pod-memory-hog-exec/kill-command.yaml yaml)
+[embedmd]: # "./static/manifests/pod-memory-hog-exec/kill-command.yaml yaml"
+
 ```yaml
 # provide the chaos kill command used to kill the chaos process
 apiVersion: litmuschaos.io/v1alpha1
@@ -174,14 +184,14 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: pod-memory-hog-exec
-    spec:
-      components:
-        env:
-        # command to kill the dd process
-        # alternative command: "kill -9 $(ps afx | grep \"[dd] if=/dev/zero\" | awk '{print $1}' | tr '\n' ' ')"
-        - name: CHAOS_KILL_COMMAND
-          value: "kill $(find /proc -name exe -lname '*/dd' 2>&1 | grep -v 'Permission denied' | awk -F/ '{print $(NF-1)}' | head -n 1)"
-        - name: TOTAL_CHAOS_DURATION
-          value: '60'
+    - name: pod-memory-hog-exec
+      spec:
+        components:
+          env:
+            # command to kill the dd process
+            # alternative command: "kill -9 $(ps afx | grep \"[dd] if=/dev/zero\" | awk '{print $1}' | tr '\n' ' ')"
+            - name: CHAOS_KILL_COMMAND
+              value: "kill $(find /proc -name exe -lname '*/dd' 2>&1 | grep -v 'Permission denied' | awk -F/ '{print $(NF-1)}' | head -n 1)"
+            - name: TOTAL_CHAOS_DURATION
+              value: "60"
 ```

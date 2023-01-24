@@ -2,7 +2,9 @@
 id: disk-fill
 title: Disk fill
 ---
+
 Disk fill is a Kubernetes pod-level chaos fault that:
+
 - Applies disk stress by filling the pod's ephemeral storage on a node.
 - Evicts the application pod if its capacity exceeds the pod's ephemeral storage limit.
 - Tests the ephemeral storage limits and ensures that the parameters are sufficient.
@@ -11,6 +13,7 @@ Disk fill is a Kubernetes pod-level chaos fault that:
 ![Disk Fill](./static/images/disk-fill.png)
 
 ## Usage
+
 <details>
 <summary>View fault usage</summary>
 <div>
@@ -19,20 +22,21 @@ Disk fill is used to determine how the application behaves when the disk is unde
 </details>
 
 ## Prerequisites
+
 - Kubernetes > 1.16
 - Specify ephemeral storage requests and limits for the application before fault implementation. An example specification is shown below:
-    ```yaml
-    apiVersion: v1
-    kind: Pod
-    metadata:
-      name: frontend
-    spec:
-      containers:
+  ```yaml
+  apiVersion: v1
+  kind: Pod
+  metadata:
+    name: frontend
+  spec:
+    containers:
       - name: db
         image: mysql
         env:
-        - name: MYSQL_ROOT_PASSWORD
-          value: "password"
+          - name: MYSQL_ROOT_PASSWORD
+            value: "password"
         resources:
           requests:
             ephemeral-storage: "2Gi"
@@ -45,20 +49,22 @@ Disk fill is used to determine how the application behaves when the disk is unde
             ephemeral-storage: "2Gi"
           limits:
             ephemeral-storage: "4Gi"
-    ```
+  ```
 
 ## Default validation
+
 The application pods should be running before and after injecting chaos.
 
 ## Implementation
 
-**NOTE:** It is assumed that you already have the boutique application set up in a namespace. If not, follow [this](provide link) to set up your boutique application.
+**NOTE:** It is assumed that you already have the boutique application set up in a namespace. If not, follow this to set up your boutique application.
 
-To execute disk fill fault, [setup experiment](provide) and infrastructure.
+To execute disk fill fault, setup experiment and infrastructure.
 
 After successful setup of chaos infrastructure:
-* Choose the **disk-fill** fault from the list of Kubernetes faults available;
-* Specify parameters for the **Target application**, **Tune fault**, and **Probes**;
+
+- Choose the **disk-fill** fault from the list of Kubernetes faults available;
+- Specify parameters for the **Target application**, **Tune fault**, and **Probes**;
     <details>
       <summary>Fault Tunables</summary>
       <h2>Populate one of the below fields (If both are populated, `FILL_PERCENTAGE` takes precedence.) </h2>
@@ -144,46 +150,50 @@ After successful setup of chaos infrastructure:
       </table>
   </details>
 
-* Close this pane by clicking on **X** at the top.
-* Set fault weights by clicking on **Set fault weights** tab present on top. 
-* Click **Run** to execute the experiment.
+- Close this pane by clicking on **X** at the top.
+- Set fault weights by clicking on **Set fault weights** tab present on top.
+- Click **Run** to execute the experiment.
 
 ## Chaos fault validation
 
-To validate the experiment you ran, execute the below commands on your terminal. 
+To validate the experiment you ran, execute the below commands on your terminal.
 
-* Fetch all the pods in the boutique namespace (or the namespace where your application is housed).
+- Fetch all the pods in the boutique namespace (or the namespace where your application is housed).
+
 ```
 kubectl get pods -n <namespace>
 ```
 
-* Exec into the microservice on which you will execute the chaos fault.
+- Exec into the microservice on which you will execute the chaos fault.
+
 ```
 kubectl exec -it <microservice_name> -n <namespace> sh
-``` 
+```
 
-* This leads you into the pod, where you can execute the below command to check the disk usage.
+- This leads you into the pod, where you can execute the below command to check the disk usage.
+
 ```
 /app # df -h
 ```
 
-This displays the amount of storage consumed by the application during chaos. 
+This displays the amount of storage consumed by the application during chaos.
 
 ## Fault examples
 
 ### Common and pod specific tunables
 
-Refer to the [common attributes](../../common-tunables-for-all-faults) and [pod specific tunables](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables. 
+Refer to the [common attributes](../../common-tunables-for-all-faults) and [pod specific tunables](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
 
 ### Disk fill percentage
 
-It fills the `FILL_PERCENTAGE` parameter of the ephemeral storage limit specified at `resource.limits.ephemeral-storage` within the target application. 
+It fills the `FILL_PERCENTAGE` parameter of the ephemeral storage limit specified at `resource.limits.ephemeral-storage` within the target application.
 
 Use the following example to tune it:
 
-[embedmd]:# (./static/manifests/disk-fill/fill-percentage.yaml yaml)
+[embedmd]: # "./static/manifests/disk-fill/fill-percentage.yaml yaml"
+
 ```yaml
-## percentage of ephemeral storage limit specified at `resource.limits.ephemeral-storage` inside target application 
+## percentage of ephemeral storage limit specified at `resource.limits.ephemeral-storage` inside target application
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -197,25 +207,26 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: disk-fill
-    spec:
-      components:
-        env:
-        ## percentage of ephemeral storage limit, which needs to be filled
-        - name: FILL_PERCENTAGE
-          value: '80' # in percentage
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
+    - name: disk-fill
+      spec:
+        components:
+          env:
+            ## percentage of ephemeral storage limit, which needs to be filled
+            - name: FILL_PERCENTAGE
+              value: "80" # in percentage
+            - name: TOTAL_CHAOS_DURATION
+              VALUE: "60"
 ```
 
 ### Disk fill mebibytes
 
-It fills the `EPHEMERAL_STORAGE_MEBIBYTES` parameter of ephemeral storage in the target pod. 
+It fills the `EPHEMERAL_STORAGE_MEBIBYTES` parameter of ephemeral storage in the target pod.
 It is mutually exclusive with the `FILL_PERCENTAGE` environment variable. If `FILL_PERCENTAGE` environment variable is set, it uses the percentage for the fill. Otherwise, it fills the ephemeral storage based on `EPHEMERAL_STORAGE_MEBIBYTES` environment variable.
 
 Use the following example to tune it:
 
-[embedmd]:# (./static/manifests/disk-fill/ephemeral-storage-mebibytes.yaml yaml)
+[embedmd]: # "./static/manifests/disk-fill/ephemeral-storage-mebibytes.yaml yaml"
+
 ```yaml
 # ephemeral storage which needs to fill in will application
 # if ephemeral-storage limits is not specified inside target application
@@ -232,15 +243,15 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: disk-fill
-    spec:
-      components:
-        env:
-        ## ephemeral storage size, which needs to be filled
-        - name: EPHEMERAL_STORAGE_MEBIBYTES
-          value: '256' #in MiBi
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
+    - name: disk-fill
+      spec:
+        components:
+          env:
+            ## ephemeral storage size, which needs to be filled
+            - name: EPHEMERAL_STORAGE_MEBIBYTES
+              value: "256" #in MiBi
+            - name: TOTAL_CHAOS_DURATION
+              VALUE: "60"
 ```
 
 ### Data block size
@@ -250,7 +261,8 @@ The default value of `DATA_BLOCK_SIZE` is `256`.
 
 Use the following example to tune it:
 
-[embedmd]:# (./static/manifests/disk-fill/data-block-size.yaml yaml)
+[embedmd]: # "./static/manifests/disk-fill/data-block-size.yaml yaml"
+
 ```yaml
 # size of the data block used to fill the disk
 apiVersion: litmuschaos.io/v1alpha1
@@ -266,26 +278,27 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: disk-fill
-    spec:
-      components:
-        env:
-        ## size of data block used to fill the disk
-        - name: DATA_BLOCK_SIZE
-          value: '256' #in KB
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
+    - name: disk-fill
+      spec:
+        components:
+          env:
+            ## size of data block used to fill the disk
+            - name: DATA_BLOCK_SIZE
+              value: "256" #in KB
+            - name: TOTAL_CHAOS_DURATION
+              VALUE: "60"
 ```
 
 ### Container path
 
-It defines the storage location of the containers inside the host (node or VM). You can tune it using the `CONTAINER_PATH` environment variable. 
+It defines the storage location of the containers inside the host (node or VM). You can tune it using the `CONTAINER_PATH` environment variable.
 
 Use the following example to tune it:
 
-[embedmd]:# (./static/manifests/disk-fill/container-path.yaml yaml)
+[embedmd]: # "./static/manifests/disk-fill/container-path.yaml yaml"
+
 ```yaml
-# path inside node/vm where containers are present 
+# path inside node/vm where containers are present
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -299,13 +312,13 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: disk-fill
-    spec:
-      components:
-        env:
-        # storage location of the containers
-        - name: CONTAINER_PATH
-          value: '/var/lib/docker/containers'
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
+    - name: disk-fill
+      spec:
+        components:
+          env:
+            # storage location of the containers
+            - name: CONTAINER_PATH
+              value: "/var/lib/docker/containers"
+            - name: TOTAL_CHAOS_DURATION
+              VALUE: "60"
 ```
