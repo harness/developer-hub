@@ -4,8 +4,7 @@ title: Container kill
 ---
 
 Container kill is a Kubernetes pod-level chaos fault that:
-
-- Results in container failure on specific (or random) application resource replicas.
+- Causes container failure on specific (or random) replicas of an application resource.
 - Tests an application's deployment sanity (replica availability and uninterrupted service) and recovery workflow.
 - Tests the recovery of pods that possess sidecar containers.
 
@@ -16,7 +15,7 @@ Container kill is a Kubernetes pod-level chaos fault that:
 <details>
 <summary>View fault usage</summary>
 <div>
-Coming soon.
+
 </div>
 </details>
 
@@ -24,7 +23,7 @@ Coming soon.
 
 - Kubernetes > 1.16
 
-## Default validation
+## Default validations
 
 The application pods should be running before and after injecting chaos.
 
@@ -132,13 +131,13 @@ kubectl exec -it <microservice_name> -n <namespace> sh
 
 ## Fault examples
 
-### Common and pod specific tunables
+### Common and pod-specific tunables
 
-Refer the [common attributes](../../common-tunables-for-all-faults) and [Pod specific tunable](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
+Refer to the [common attributes](../../common-tunables-for-all-faults) and [pod-specific tunables](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
 
 ### Kill specific container
 
-It defines the name of the targeted container subjected to chaos. It can be tuned via `TARGET_CONTAINER` ENV. If `TARGET_CONTAINER` is provided as empty then it will use the first container of the targeted pod.
+It defines the name of the target container which is subject to chaos. You can tune it using `TARGET_CONTAINER` environment variable. If `TARGET_CONTAINER` environment variable is set to empty, the fault uses the first container of the target pod.
 
 [embedmd]: # "./static/manifests/container-kill/kill-specific-container.yaml yaml"
 
@@ -236,39 +235,6 @@ spec:
             # defaults to SIGTERM
             - name: SIGNAL
               value: "SIGKILL"
-            - name: TOTAL_CHAOS_DURATION
-              VALUE: "60"
-```
-
-### Pumba chaos library
-
-It specifies the Pumba chaos library for the chaos injection. It can be tuned via `LIB` ENV. The defaults chaos library is `litmus`.
-
-[embedmd]: # "./static/manifests/container-kill/pumba.yaml yaml"
-
-```yaml
-# pumba chaoslib used to kill the container
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-    - name: container-kill
-      spec:
-        components:
-          env:
-            # name of the lib
-            # supoorts pumba and litmus
-            - name: LIB
-              value: "pumba"
             - name: TOTAL_CHAOS_DURATION
               VALUE: "60"
 ```
