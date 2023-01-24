@@ -40,7 +40,7 @@ Self-hosted local build infrastructure is available with all CI plans. To learn 
 
 :::info
 
-Available only with paid CI plans.
+This option is available only with paid CI plans.
 
 :::
 
