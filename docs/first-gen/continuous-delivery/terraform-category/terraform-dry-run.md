@@ -47,7 +47,7 @@ The Terraform Plan is stored in the default Harness Secrets Manager as encrypted
 
 The Terraform plan size must not exceed the secret size limit for secrets in your default Secret Manager. AWS Secrets Manager has a limitation of 64KB. Other supported Secrets Managers support larger file size.
 
-See [Add a Secrets Manager](https://docs.harness.io/article/uuer539u3l-add-a-secrets-manager).
+See [Add a Secrets Manager](../../firstgen-platform/security/secrets-management/add-a-secrets-manager.md).
 
 ### Step 1: Set Terraform Step as Plan
 
@@ -63,7 +63,7 @@ In the subsequent Terraform Provision or Terraform Apply steps, you will select 
 
 This is just like running the `terraform plan` command before a `terraform apply` command.
 
-You can use expressions after a Terraform plan step (Terraform Apply step with **Set as Terraform Plan** enabled) to see the number of resources added, changed, or destroyed. For details, go to [Terraform Plan and Terraform Destroy Changes](https://docs.harness.io/article/aza65y4af6-built-in-variables-list#terraform_plan_and_terraform_destroy_changes).### Option: Export Terraform Plan to Apply Step
+You can use expressions after a Terraform plan step (Terraform Apply step with **Set as Terraform Plan** enabled) to see the number of resources added, changed, or destroyed. For details, go to [Terraform Plan and Terraform Destroy Changes](../../firstgen-platform/techref-category/variables/built-in-variables-list.md#terraform-plan-and-terraform-destroy-changes).### Option: Export Terraform Plan to Apply Step
 
 This option supports [Terraform version 12](https://www.terraform.io/upgrade-guides/0-12.html) only.When you use **Set as Terraform Plan** in the Terraform Provision or Terraform Apply steps and then use **Inherit following configurations from Terraform Plan** in a subsequent Terraform Provision or Terraform Apply step, Harness does the following:
 
@@ -74,13 +74,13 @@ Technically, this is a different plan. If you want use the actual plan because o
 ##### Notes
 
 * If the **Export Terraform Plan to Apply Step** option is enabled in two consecutive Terraform Provision steps, the second Terraform Provision step overwrites the plan from the first Terraform Provision step.
-* Harness uses the [Harness Secret Manager](https://docs.harness.io/article/uuer539u3l-add-a-secrets-manager) you have selected as your default in the export process. As a result, the size of the plan you can export is limited to the size of secret that Secret Manager allows.
+* Harness uses the [Harness Secret Manager](../../firstgen-platform/security/secrets-management/add-a-secrets-manager.md) you have selected as your default in the export process. As a result, the size of the plan you can export is limited to the size of secret that Secret Manager allows.
 
 If Harness detects that a Terraform plan produces no changes then the actual generated Terraform plan file is not be uploaded to the Secret Manager regardless of whether the Terraform Apply step has **Export Terraform Plan to Apply Step** enabled.
 
 ### Step 2: Add Approval Step
 
-Harness Workflow Approval steps can be done using Jira, ServiceNow, or the Harness UI. You can even use custom shell scripts. See [Approvals](https://docs.harness.io/article/0ajz35u2hy-approvals).
+Harness Workflow Approval steps can be done using Jira, ServiceNow, or the Harness UI. You can even use custom shell scripts. See [Approvals](../model-cd-pipeline/approvals/approvals.md).
 
 Add the Approval step after the Terraform Provision or Terraform Apply step where you selected the **Set as Terraform Plan** option.
 
@@ -115,7 +115,7 @@ Deploy your Workflow and see the `terraform plan` executed in the first Terraf
 
 ### Review: Terraform Plan Output Variable
 
-If you select the **Set as Terraform Plan** option, you can display the output of the plan using the variable expression `${terraformApply.tfplan}`. For example, you can display the plan output in a [Shell Script](https://docs.harness.io/article/1fjrjbau7x-capture-shell-script-step-output) step.
+If you select the **Set as Terraform Plan** option, you can display the output of the plan using the variable expression `${terraformApply.tfplan}`. For example, you can display the plan output in a [Shell Script](../model-cd-pipeline/workflows/capture-shell-script-step-output.md) step.
 
 For help in parsing the plan output, see [Parsing Terraform Plan Output](https://community.harness.io/t/parsing-terraform-plan-output/545) on Harness Community.
 
@@ -127,7 +127,7 @@ Currently, this feature is behind the Feature Flag `OPTIMIZED_TF_PLAN`. Contact 
 
 The `${terraformPlan.jsonFilePath()}` expression outputs the path to the Terraform plan file on the Harness Delegate that executed the step.
 
-For example, you can display the plan output in a [Shell Script](https://docs.harness.io/article/1fjrjbau7x-capture-shell-script-step-output) step:
+For example, you can display the plan output in a [Shell Script](../model-cd-pipeline/workflows/capture-shell-script-step-output.md) step:
 
 
 ```

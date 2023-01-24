@@ -54,7 +54,7 @@ Enter the URL for accessing the REST API on the Splunk server. Include the port 
 
 ### Step 4: Username and Encrypted Password
 
-For secrets and other sensitive settings, select or create a new [Harness Encrypted Text secret](https://docs.harness.io/article/ygyvp998mu-use-encrypted-text-secrets).Enter the account credentials to authenticate with the server. A user role that is **not** authenticated with SAML is required. You do not need an admin role.
+For secrets and other sensitive settings, select or create a new [Harness Encrypted Text secret](../../../firstgen-platform/security/secrets-management/use-encrypted-text-secrets.md).Enter the account credentials to authenticate with the server. A user role that is **not** authenticated with SAML is required. You do not need an admin role.
 
 ### Step 5: Display Name
 

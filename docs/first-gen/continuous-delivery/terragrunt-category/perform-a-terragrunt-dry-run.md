@@ -45,7 +45,7 @@ The Terragrunt and Terraform Plans are stored in the default Harness Secrets Man
 
 The plan size must not exceed the secret size limit for secrets in your default Secret Manager. AWS Secrets Manager has a limitation of 64KB. Other supported Secrets Managers support larger file size.
 
-See [Add a Secrets Manager](https://docs.harness.io/article/uuer539u3l-add-a-secrets-manager).
+See [Add a Secrets Manager](../../firstgen-platform/security/secrets-management/add-a-secrets-manager.md).
 
 ### Step 1: Set Terragrunt Step as Plan
 
@@ -76,11 +76,11 @@ Technically, this is a different plan. If you want use the actual plan because
 ##### Notes
 
 * If the **Export Terragrunt Plan to next Terragrunt Provision step** option is enabled in two consecutive Terragrunt Provision steps, the second Terragrunt Provision step overwrites the plan from the first Terragrunt Provision step.
-* Harness uses the [Harness Secret Manager](https://docs.harness.io/article/uuer539u3l-add-a-secrets-manager) you have selected as your default in the export process. As a result, the size of the plan you can export is limited to the size of secret that Secret Manager allows.
+* Harness uses the [Harness Secret Manager](../../firstgen-platform/security/secrets-management/add-a-secrets-manager.md) you have selected as your default in the export process. As a result, the size of the plan you can export is limited to the size of secret that Secret Manager allows.
 
 ### Step 2: Add Approval Step
 
-Harness Workflow Approval steps can be done using Jira, ServiceNow, or the Harness UI. You can even use custom shell scripts. See [Approvals](https://docs.harness.io/article/0ajz35u2hy).
+Harness Workflow Approval steps can be done using Jira, ServiceNow, or the Harness UI. You can even use custom shell scripts. See [Approvals](../model-cd-pipeline/approvals/approvals.md).
 
 Add the Approval step after the Terragrunt Provision where you selected the **Set as Terragrunt Plan** option.
 

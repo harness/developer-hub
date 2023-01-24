@@ -14,7 +14,7 @@ Currently, this feature is behind the Feature Flag `AZURE_WEBAPP`. Contact [Har
 
 #### Rollback Limitations for both Azure Container and Non-Containerized Rollbacks
 
-For Non-Containerized artifacts deployments, see [Add Non-Containerized Artifacts for Azure Web App Deployment](add-a-non-containerized-artifacts-for-azure-web-app-deployment.md).* **Harness Post-Deployment Rollback:** to see if Post-Production Rollback is supported for Azure Web App deployments, see [Rollback Production Deployments](https://docs.harness.io/article/2f36rsbrve-post-deployment-rollback).
+For Non-Containerized artifacts deployments, see [Add Non-Containerized Artifacts for Azure Web App Deployment](add-a-non-containerized-artifacts-for-azure-web-app-deployment.md).* **Harness Post-Deployment Rollback:** to see if Post-Production Rollback is supported for Azure Web App deployments, see [Rollback Production Deployments](../../model-cd-pipeline/workflows/post-deployment-rollback.md).
 * Rollback only restores the state of the **stage** slot. If a step that follows the **Swap Slot** step fails, such as a failed Approval or Shell Script step, Harness only rolls back the **stage** slot. The target slot is not changed.
 
 #### Rollback Limitations for Non-Containerized Rollbacks
@@ -25,7 +25,7 @@ Rollback for Non-Containerized artifact deployments is not supported for the fir
 
 You might face timeout issues as a result of limitations with streaming Web App slot deployment logs. For example, you might see `java.net.SocketTimeoutException: timeout` or some other socket errors as a result of the Azure SDK client.
 
-Harness is working with the Azure team for a resolution (see [issue 27221](https://github.com/Azure/azure-sdk-for-java/issues/27221)). At this time, you can use a Harness [HTTP step](https://docs.harness.io/article/m8ksas9f71-using-the-http-command) to verify that the slot is up and ready.
+Harness is working with the Azure team for a resolution (see [issue 27221](https://github.com/Azure/azure-sdk-for-java/issues/27221)). At this time, you can use a Harness [HTTP step](../../model-cd-pipeline/workflows/using-the-http-command.md) to verify that the slot is up and ready.
 
 ### Rollback Summary
 

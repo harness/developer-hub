@@ -1,0 +1,15 @@
+{
+  "label": "Account Setup FirstGen",
+  "position": 10,
+  "collapsible": "true",
+  "collapsed": "true",
+  "className": "red",
+  "link": {
+    "type": "generated-index",
+    "title": "Account Setup FirstGen"
+  },
+  "customProps": {
+    "helpdocs_category_id": "3err8eu6x3",
+    "helpdocs_parent_category_id": "pa3v189a2b"
+  }
+}

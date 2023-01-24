@@ -13,9 +13,11 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-> **☆ NOTE —** Currently, this feature is behind the Feature Flags `OPA_PIPELINE_GOVERNANCE`, `CUSTOM_POLICY_STEP`, and `OPA_FF_GOVERNANCE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. 
+:::note
+ Currently, this feature is behind the Feature Flags `OPA_PIPELINE_GOVERNANCE`, `CUSTOM_POLICY_STEP`, and `OPA_FF_GOVERNANCE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. 
+:::
 
-Harness Policy Engine uses [Open Policy Agency (OPA)](https://www.openpolicyagent.org/docs/latest/) to store policies that you can then enforce on your Feature Flags. You can use Harness Policy Engine with the following [Harness entities](https://docs.harness.io/article/tygjin99y9-harness-entity-reference) on the Harness Platform:
+Harness Policy Engine uses [Open Policy Agency (OPA)](https://www.openpolicyagent.org/docs/latest/) to store policies that you can then enforce on your Feature Flags. You can use Harness Policy Engine with the following [Harness entities](../../platform/20_References/harness-entity-reference.md) on the Harness Platform:
 
 * Flag
 * Target
@@ -32,7 +34,9 @@ For example, you can use policies to ensure your Feature Flags: 
 
 This topic provides an overview of how Harness Policy Engine works with Feature Flags.
 
-> **☆ NOTE —** For steps to set up your policies on the Harness Platform, go to [Use Harness Policy Engine for Feature Flags.](https://docs.harness.io/article/vb6ilyz194-using-harness-policy-engine-for-feature-flags)
+:::note
+ For steps to set up your policies on the Harness Platform, go to [Use Harness Policy Engine for Feature Flags.](../../platform/14_Policy-as-code/using-harness-policy-engine-for-feature-flags.md)
+:::
 
 ## Before you begin
 
@@ -74,7 +78,7 @@ deny[sprintf("feature flag name '%s' doesn't match regex", [input.flag.name])] {
 ```
 3. Run the policy against your Feature Flags.
 
-When you create the policy you can choose whether a Feature Flag receives only a warning message, or receives an error and can’t be saved when the policy isn’t met. For more information about how to do this, go to [Creating a Policy](https://docs.harness.io/article/vb6ilyz194-using-harness-policy-engine-for-feature-flags#step_1_creating_a_policy).
+When you create the policy you can choose whether a Feature Flag receives only a warning message, or receives an error and can’t be saved when the policy isn’t met. For more information about how to do this, go to [Creating a Policy](../../platform/14_Policy-as-code/using-harness-policy-engine-for-feature-flags.md#step-1-creating-a-policy).
 
 * **Success**: You create a Feature Flag and name it `ABC-567`, which matches the naming regex you set. When you save the flag, the policy rule is evaluated, returns `Flag created`, and the flag is saved.
 * **Warning**: You create a Feature Flag and name it `Flag2`, which doesn’t match the naming regex you set. The flag is saved but you receive the following warning message:
@@ -87,5 +91,5 @@ When you create the policy you can choose whether a Feature Flag receives only a
 
 ## Next step
 
-To understand how to add policies for Feature Flags, go to [Use Harness Policy Engine for Feature Flags](https://docs.harness.io/article/vb6ilyz194-using-harness-policy-engine-for-feature-flags).
+To understand how to add policies for Feature Flags, go to [Use Harness Policy Engine for Feature Flags](../../platform/14_Policy-as-code/using-harness-policy-engine-for-feature-flags.md).
 

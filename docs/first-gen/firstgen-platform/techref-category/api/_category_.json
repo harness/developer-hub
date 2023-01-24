@@ -1,0 +1,14 @@
+{
+  "label": "Harness API FirstGen",
+  "position": 10,
+  "collapsible": "true",
+  "collapsed": "true",
+  "className": "red",
+  "link": {
+    "type": "generated-index",
+    "title": "Harness API FirstGen"
+  },
+  "customProps": {
+    "helpdocs_category_id": "l2p3i03l4a"
+  }
+}

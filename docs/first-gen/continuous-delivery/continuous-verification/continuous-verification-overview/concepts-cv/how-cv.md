@@ -53,7 +53,7 @@ For example, if Phase 1 deploys to 25% of your nodes, the metrics received for t
 
 The metrics are taken for the period of time defined in **Analysis Time duration**.
 
-Harness supports Canary Analysis only on [Canary deployments](https://docs.harness.io/article/325x7awntc-deployment-concepts-and-strategies#canary_deployment).
+Harness supports Canary Analysis only on [Canary deployments](../../../concepts-cd/deployment-types/deployment-concepts-and-strategies.md#canary-deployment).
 ### Next Up
 
 Next, see our integrations:

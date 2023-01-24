@@ -26,7 +26,7 @@ You'll learn how to: 
 
 ### Before you begin
 
-* Review [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts)
+* Review [Harness Key Concepts](../../first-gen/starthere-firstgen/harness-key-concepts.md)
 * See [Templates Overview](template.md).
 * See [CIE Quickstarts](../../continuous-integration/ci-quickstarts/ci-pipeline-quickstart.md)
 
@@ -80,7 +80,7 @@ You can create a Step Template from your Account, Org or Project. This topic exp
 4. In **Name**, enter a name for the Template.
 5. In **Version Label**, enter a version for the Template.
 6. Click **Remote**.
-7. In **Git Connector**, select or create a Git Connector to the repo for your Project. For steps, see [Code Repo Connectors](https://docs.harness.io/category/code-repo-connectors).Important: Connector must use the Enable API access option and TokenImportant: The Connector must use the Enable API access option and Username and Token authentication. Harness requires the token for API access. Generate the token in your account on the Git provider and add it to Harness as a Secret. Next, use the token in the credentials for the Git Connector.​​  
+7. In **Git Connector**, select or create a Git Connector to the repo for your Project. For steps, see [Code Repo Connectors](/docs/category/code-repo-connectors).Important: Connector must use the Enable API access option and TokenImportant: The Connector must use the Enable API access option and Username and Token authentication. Harness requires the token for API access. Generate the token in your account on the Git provider and add it to Harness as a Secret. Next, use the token in the credentials for the Git Connector.​​  
 ![](./static/create-a-remote-step-template-18.png)For GitHub, the token must have the following scopes:​  
 ![](./static/create-a-remote-step-template-19.png)
 8. In **Repository**, select your repository. If your repository isn't listed, enter its name since only a select few repositories are filled here.​Create the repository in Git before entering it in Select Repository. Harness does not create the repository for you.
@@ -97,7 +97,7 @@ The **Step Parameters** settings appear.​
 3. Specify your **Input** **Variables** and **Output** **Variables**.
 4. In **Execution Target**,​ specify where you want to execute the script.  
 You can select **Specify on Target Host** or **On Delegate**.  
-For more information, see [Using Shell Scripts in CD Stages](https://docs.harness.io/article/k5lu0u6i1i-using-shell-scripts).
+For more information, see [Using Shell Scripts in CD Stages](../../continuous-delivery/cd-execution/cd-general-steps/using-shell-scripts.md).
 5. Click **Save**. The **Save Template to Git** settings appear.![](./static/create-a-remote-step-template-21.png)
 6. In **Select Branch to Commit**, You can select one of the following:
 	1. **Commit to an existing branch**: you can start a pull request if you like.​

@@ -1,0 +1,14 @@
+{
+    "label": "GitOps",
+    "position": "600",
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "link": {
+        "type": "generated-index",
+        "title": "GitOps"
+    },
+    "customProps": {
+        "helpdocs_category_id": "013h04sxex"
+    }
+}

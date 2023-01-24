@@ -44,7 +44,7 @@ With this option selected (the default), a Build clones the default codebase int
 
 ### Step 2: Define the Build Farm Infrastructure
 
-In the CI stage Infrastructure, define the build farm for the codebase. See [Set Up Build Infrastructure](https://docs.harness.io/category/set-up-build-infrastructure).
+In the CI stage Infrastructure, define the build farm for the codebase. See [Set Up Build Infrastructure](/docs/category/set-up-build-infrastructure).
 
 ### Step 4: Add Run Steps to Clone Additional Repos
 
@@ -199,5 +199,5 @@ pipeline:
 * [Create and Configure a Codebase](../codebase-configuration/create-and-configure-a-codebase.md)
 * [CI Run Step Settings](../../ci-technical-reference/run-step-settings.md)
 * [CI Build Stage Settings](../../ci-technical-reference/ci-stage-settings.md)
-* [Build and Upload Artifacts](https://docs.harness.io/category/build-and-upload-artifacts)
+* [Build and Upload Artifacts](/docs/category/build-and-upload-artifacts)
 

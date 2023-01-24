@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-The Deploy Workflow takes the artifact build you built in [Create the Build Workflow for Build and Deploy Pipelines](3-build-workflow.md) by using the Service you created for the Artifact Source. Then the Deploy Workflow installs the build into the nodes in the Environment. See the supported [Workflow Types](https://docs.harness.io/article/m220i1tnia-workflow-configuration#workflow_types).
+The Deploy Workflow takes the artifact build you built in [Create the Build Workflow for Build and Deploy Pipelines](3-build-workflow.md) by using the Service you created for the Artifact Source. Then the Deploy Workflow installs the build into the nodes in the Environment. See the supported [Workflow Types](../model-cd-pipeline/workflows/workflow-configuration.md#workflow-types).
 
 ### Before You Begin
 

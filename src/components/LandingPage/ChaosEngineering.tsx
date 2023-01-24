@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "@docusaurus/Link";
 import clsx from "clsx";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import styles from "./styles.module.scss";
 import TutorialCard, { CardItem, docType } from "./TutorialCard";
 
@@ -9,7 +10,7 @@ const FeaturedList: CardItem[] = [
   {
     title: "Your First Chaos Experiment on Kubernetes",
     module: "ce",
-    icon: "/img/icon_ce.svg",
+    icon: "img/icon_ce.svg",
     description: (
       <>Running a Chaos Experiment on Kubernetes for the first time.</>
     ),
@@ -24,7 +25,7 @@ const CEList: CardItem[] = [
   {
     title: "Your First Chaos Experiment on Kubernetes",
     module: "ce",
-    icon: "/img/icon_ce.svg",
+    icon: "img/icon_ce.svg",
     description: (
       <>Running a Chaos Experiment on Kubernetes for the first time.</>
     ),
@@ -36,7 +37,7 @@ const CEList: CardItem[] = [
   {
     title: "Chaos Experiment from a Blank Canvas",
     module: "ce",
-    icon: "/img/icon_ce.svg",
+    icon: "img/icon_ce.svg",
     description: (
       <>Create, run, observe and evaluate a custom chaos experiment.</>
     ),
@@ -48,7 +49,7 @@ const CEList: CardItem[] = [
   {
     title: "Integration with Harness CD",
     module: "ce",
-    icon: "/img/icon_ce.svg",
+    icon: "img/icon_ce.svg",
     description: (
       <>
         Execute a chaos experiment as part of a Harness CD pipeline for
@@ -63,6 +64,7 @@ const CEList: CardItem[] = [
 ];
 
 export default function CE() {
+  const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   return (
     // <Layout title="CE" description="CE">
     //   <ul className={styles.breadCrumb}>
@@ -70,14 +72,13 @@ export default function CE() {
     //     <li>Run chaos experiments</li>
     //   </ul>
     <div className="container">
-      <img src="/img/ce.svg" />
       <div className={styles.SectionName}>
         <h3>Run chaos experiments</h3>
       </div>
       <div className={styles.topSection}>
         <div className={styles.spaceBetween}>
           <div className={styles.moduleTitle}>
-            <img src="/img/icon_ce.svg" />
+            <img src={`${baseUrl}img/icon_ce.svg`} />
             <h1>Chaos Engineering</h1>
           </div>
           <div>
@@ -89,7 +90,7 @@ export default function CE() {
                   styles.btnLight
                 )}
               >
-                <img src="/img/icon_document.png" /> Documentation
+                <img src={`${baseUrl}img/icon_document.png`} /> Documentation
               </button>
             </Link>
           </div>
@@ -108,16 +109,16 @@ export default function CE() {
                 className={clsx("button button--lg", styles.btn, styles.btnCE)}
                 to="#all-tutorials"
               >
-                CE Tutorials
-                <img src="/img/Stroke.svg" />
+                Tutorials
+                <img src={`${baseUrl}img/Stroke.svg`} />
               </Link>
               <Link href="https://harness.io/products/chaos-engineering">
-                <button className={styles.link}>Learn more about CE</button>
+                <button className={styles.link}>Learn more</button>
               </Link>
             </div>
           </div>
           <div>
-            <img src="/img/ce_flow.svg" />
+            <img src={`${baseUrl}img/ce.svg`} />
           </div>
         </div>
       </div>

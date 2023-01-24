@@ -41,7 +41,7 @@ See [Provision and Deploy to ARM Provisioned Infrastructure](target-azure-arm-or
 
 ### Azure Roles Required
 
-See **Azure Resource Management (ARM)** in [Add Microsoft Azure Cloud Provider](https://docs.harness.io/article/4n3595l6in-add-microsoft-azure-cloud-provider).
+See **Azure Resource Management (ARM)** in [Add Microsoft Azure Cloud Provider](../../../firstgen-platform/account/manage-connectors/add-microsoft-azure-cloud-provider.md).
 
 ### Harness Permissions Required
 

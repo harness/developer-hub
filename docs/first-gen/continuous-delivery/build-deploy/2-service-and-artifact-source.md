@@ -12,7 +12,7 @@ The first step in Artifact Build and Deploy pipeline is to create a Harness Serv
 
 This Service is used by the **Artifact Collection** command in [Create the Deploy Workflow for Build and Deploy Pipelines](5-deploy-workflow.md), the Environment's [target infrastructure](4-environment.md), and in the set up of the [Deploy Workflow](5-deploy-workflow.md).
 
-In this document, Shell Script Service and a Jenkins job artifact is used as an example but Harness supports all the common [artifact source](https://docs.harness.io/article/7dghbx1dbl-configuring-artifact-server) and [custom sources](https://docs.harness.io/article/jizsp5tsms-custom-artifact-source).
+In this document, Shell Script Service and a Jenkins job artifact is used as an example but Harness supports all the common [artifact source](../../firstgen-platform/account/manage-connectors/configuring-artifact-server.md) and [custom sources](../model-cd-pipeline/setup-services/custom-artifact-source.md).
 
 ### Before You Begin
 
@@ -24,7 +24,7 @@ Harness Services represent your microservices/apps. You define where the artifac
 
 To create the Service, perform the following steps:
 
-1. In your Harness Application, click **Services**. To create a Harness Application, see [Application Components](https://docs.harness.io/article/bucothemly-application-configuration).
+1. In your Harness Application, click **Services**. To create a Harness Application, see [Application Components](../model-cd-pipeline/applications/application-configuration.md).
 2. Click **Add Service**. The **Add Services** settings appear.
 3. In **Name**, enter a name for your Service. In this example, **ToDo List WAR** is used because ToDo List app is built and packaged it in a WAR file.
 4. In **Deployment Type**, select **Secure Shell (SSH)**.
@@ -44,7 +44,7 @@ To add an Artifact Source, perform the following steps:
 
 1. In your Service, click **Add Artifact Source**, and select **Jenkins**. The **Jenkins** settings appear.
 2. In **Source Server**, select the Jenkins Artifact Server you set up in [Harness Account Setup](1-harness-accountsetup.md). Once you select the Source Server, the **Job Name** field loads all of the Jenkins jobs from the Source Server.
-3. In **Job Name**, select the job you want to run to build your artifact. Harness also supports [Jenkins Multibranch Pipelines](https://docs.harness.io/article/5fzq9w0pq7-using-the-jenkins-command#multibranch_pipeline_support).
+3. In **Job Name**, select the job you want to run to build your artifact. Harness also supports [Jenkins Multibranch Pipelines](../model-cd-pipeline/workflows/using-the-jenkins-command.md#multibranch-pipeline-support).
 4. Select the **Meta-data Only** setting. Typically, metadata is sufficient as it contains enough information for the target host(s) to obtain the artifact. Harness stores the metadata and, during runtime, the Harness Delegate passes the metadata to the target host(s) where it is used to obtain the artifact(s) from the source repo. Ensure that the target host has network connectivity to the Artifact Server.
 5. In **Artifact Path**, select the path and name of the artifact. In this example, **target/todolist.war** is used.  
   
@@ -64,7 +64,7 @@ Next, let's see the artifact history that Harness can pull from Jenkins.
 5. Click **Submit**.
 6. Click **Artifact History** again. The history for the build you specified is displayed.![](./static/2-service-and-artifact-source-13.png)
 
- For more information on Service settings, see [Services](https://docs.harness.io/article/eb3kfl8uls-service-configuration).
+ For more information on Service settings, see [Services](../model-cd-pipeline/setup-services/service-configuration.md).
 
 Now, that the Service is complete, we can create the Build Workflow to build the next version of the artifact.
 

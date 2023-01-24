@@ -20,7 +20,7 @@ Testing is an important part of Continuous Integration. Testing safeguards the q
 
 ### Looping Strategies
 
-[Looping strategies](https://docs.harness.io/article/eh4azj73m4) enable you to run a Stage or Step multiple times with different inputs. This eliminates the need to copy the same Stage or Step for each variation you need. It also makes the Pipeline more readable, clean, and easy to maintain. Looping strategies enable use cases such as:
+[Looping strategies](../../platform/8_Pipelines/looping-strategies-matrix-repeat-and-parallelism.md) enable you to run a Stage or Step multiple times with different inputs. This eliminates the need to copy the same Stage or Step for each variation you need. It also makes the Pipeline more readable, clean, and easy to maintain. Looping strategies enable use cases such as:
 
 * You want to test a UI feature in multiple browsers and platforms. You can define a matrix that specifies the browsers and platforms to test.
 * You want to build artifacts for multiple JDK versions in the same Build Stage.

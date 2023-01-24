@@ -8,9 +8,9 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-To go to the 24/7 Service Guard setup for a specific tool, see its listing in [Continuous Verification](https://docs.harness.io/category/continuous-verification).
+To go to the 24/7 Service Guard setup for a specific tool, see its listing in [Continuous Verification](/docs/category/continuous-verification).
 
-To see the list of all the APM and logging tools Harness supports, see [CV Summary and Provider Support](https://docs.harness.io/article/myw4h9u05l-verification-providers-list).
+To see the list of all the APM and logging tools Harness supports, see [CV Summary and Provider Support](../continuous-verification-overview/concepts-cv/what-is-cv.md).
 
 For information on analysis strategies and best practices, see [CV Strategies, Tuning, and Best Practices](../continuous-verification-overview/concepts-cv/cv-strategies-and-best-practices.md).
 
@@ -34,7 +34,7 @@ You scope the Delegate by adding a Delegate Scope that uses the **Service Guard*
 
 Harness recommends you use a Delegate for no more than 40 Continuous Verification setups.
 
-For more information, see [Scope Delegates to Harness Components and Commands](https://docs.harness.io/article/hw56f9nz7q-scope-delegates-to-harness-components-and-commands).
+For more information, see [Scope Delegates to Harness Components and Commands](../../../firstgen-platform/account/manage-delegates/scope-delegates-to-harness-components-and-commands.md).
 
 ### 24/7 Service Guard is for Production Environments
 
@@ -50,7 +50,7 @@ Here are the high-level steps for setting up 24/7 Service Guard using one or mor
 
 1. Connect each of your APM and logging tools to Harness as Verification Providers. Verification Providers contain the APM and logging tool account information Harness will use to access the tools via their APIs.
 
-For information on setting up a Verification Provider, see [Add Verification Providers](https://docs.harness.io/article/r6ut6tldy0-verification-providers).1. Create a Harness Application. The Application will identify the application you want to monitor, will identify the production environment where the application is running, and will allow you to use Harness RBAC to control who can set up 24/7 Service Guard.
+For information on setting up a Verification Provider, see [Add Verification Providers](../../../firstgen-platform/account/manage-connectors/verification-providers.md).1. Create a Harness Application. The Application will identify the application you want to monitor, will identify the production environment where the application is running, and will allow you to use Harness RBAC to control who can set up 24/7 Service Guard.
 
 For more information on setting up a Harness Application, see [Application Checklist](../../model-cd-pipeline/applications/application-configuration.md).1. Add a Harness Service to your Application. The Service is a logical representation of your production application. You will add a Service for each application you want to monitor with 24/7 Service Guard.
 2. Add a Harness Environment to your Application. The Environment represents the production environments for one or more applications.
@@ -82,7 +82,7 @@ The slider's scale represents the Overall Risk Level that Harness evaluates, bas
 
 ![](./static/set-up-service-guard-09.png)
 
-By default, the notifications that you configure here will appear under Harness Manager's bell-shaped **Alerts** indicator, and will also be sent to your [Catch-All Notification User Group](https://docs.harness.io/article/kf828e347t-notification-groups#catch_all_notification_rule). However, you can also configure detailed conditions that [route alert notifications to other User Groups](https://docs.harness.io/article/kf828e347t-notification-groups#alert_thresholds). This dialog includes a link to Harness Manager's corresponding **Notification Settings** controls.
+By default, the notifications that you configure here will appear under Harness Manager's bell-shaped **Alerts** indicator, and will also be sent to your [Catch-All Notification User Group](../../../firstgen-platform/account/manage-notegroups/notification-groups.md#catch-all-notification-rule). However, you can also configure detailed conditions that [route alert notifications to other User Groups](../../../firstgen-platform/account/manage-notegroups/notification-groups.md#alert-thresholds). This dialog includes a link to Harness Manager's corresponding **Notification Settings** controls.
 
 
 ##### Suspending (Snoozing) Alerts

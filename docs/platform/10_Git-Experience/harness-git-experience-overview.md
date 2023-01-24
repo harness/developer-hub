@@ -1,14 +1,22 @@
 ---
 title: Harness Git Experience Overview (Deprecated)
 description: A summary of Harness Git Experience.
-# sidebar_position: 2
+sidebar_position: 11
 helpdocs_topic_id: utikdyxgfz
 helpdocs_category_id: sy6sod35zi
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This version of Harness Git Experience has been deprecated. To try out the latest version of Git Experience, see [Harness Git Experience Quickstart](configure-git-experience-for-harness-entities.md).​Harness Git Sync provides seamless integration between your Harness Projects, Pipelines, and resources and your Git repos. You can work entirely from Git or use a hybrid method of Git and the Harness Manager. With Harness Git Sync you can synchronize your configurations with Git and keep them up-to-date.
+
+
+:::important
+**Important** End-of-Life/Support Announcement: This version of Harness Git Experience is deprecated and will be out of support on January 31, 2023. Harness will not fix issues or add new features in the current version of Git Experience. To ensure uninterrupted support, please upgrade to the latest version of Git Experience before January 31, 2023. Harness provides support for migrating your existing projects from the older version to the latest version. Please contact Harness Support to schedule your migration.
+To learn more about the latest version of Git Experience, see [Harness Git Experience Quickstart](configure-git-experience-for-harness-entities.md).
+:::
+
+
+​Harness Git Sync provides seamless integration between your Harness Projects, Pipelines, and resources and your Git repos. You can work entirely from Git or use a hybrid method of Git and the Harness Manager. With Harness Git Sync you can synchronize your configurations with Git and keep them up-to-date.
 
 Git Sync enables to:
 
@@ -137,13 +145,13 @@ A **Harness SCM** is required to sync entities from Harness to Git. If you try
 
 The Harness SCM stores your user profile information like username and PAT to connect to the Git provider. When you sync a Project with a repo, these credentials are used for the sync.
 
-For detailed steps to add an SCM, see [Add Source Code Managers](https://docs.harness.io/article/p92awqts2x-add-source-code-managers).
+<!--  TBD DOC-2410 For detailed steps to add an SCM, see  * [Add Source Code Managers ](https://docs.harness.io/article/p92awqts2x-add-source-code-managers). -->
 
-Any commit activities you perform when you make changes to the Project in Harness require your SCM credentials. Additional tasks, such as registering a webhook, require your Git Connector credentials.Git ConnectorA Harness Git Connector is used to sync your Harness Project with your Git repo. You can set up a [Git Connector](https://docs.harness.io/category/code-repo-connectors) first and simply select it when setting up Git Experience, or you can create a Git Connector as part of the Git Experience setup.
+Any commit activities you perform when you make changes to the Project in Harness require your SCM credentials. Additional tasks, such as registering a webhook, require your Git Connector credentials.Git ConnectorA Harness Git Connector is used to sync your Harness Project with your Git repo. You can set up a [Git Connector](/docs/category/code-repo-connectors) first and simply select it when setting up Git Experience, or you can create a Git Connector as part of the Git Experience setup.
 
 You will need a Harness Git Connector to connect with the Git provider and perform operations like generating a webhook. Your Git Connector credentials are used to commit to Git when operations are performed using API.
 
-**Important:** The Connector must use the **Enable API access** option and Username and **Token** authentication. Harness requires the token to access the Git API. Generate the token in your account on the Git provider and add it to Harness as a Secret. Next, use the token in the credentials for the Git Connector.For detailed steps to add a Git Connector, see [Code Repo Connectors](https://docs.harness.io/category/code-repo-connectors).
+**Important:** The Connector must use the **Enable API access** option and Username and **Token** authentication. Harness requires the token to access the Git API. Generate the token in your account on the Git provider and add it to Harness as a Secret. Next, use the token in the credentials for the Git Connector.For detailed steps to add a Git Connector, see [Code Repo Connectors](/docs/category/code-repo-connectors).
 
 #### Repository
 
@@ -176,11 +184,9 @@ Harness Folders can reside anywhere in Git repos and their subdirectories.
 
 Create the folder in your repo before setting up Git Experience. You will enter the name of the folder in Harness. Harness does not create the folder for you.### How is Harness NextGen Git Support Different from FirstGen?
 
-Not sure if you are using FirstGen or NextGen? See [Harness FirstGen vs Harness NextGen](https://docs.harness.io/article/1fjmm4by22).Harness NextGen Git Experience functionality is different than Harness FirstGen Harness Git Sync. If you used FirstGen Git Sync, you will find the Harness NextGen Git Experience setup and usage different and improved.
+Not sure if you are using FirstGen or NextGen? See [Harness FirstGen vs Harness NextGen](../../getting-started/harness-first-gen-vs-harness-next-gen.md).Harness NextGen Git Experience functionality is different than Harness FirstGen Harness Git Sync. If you used FirstGen Git Sync, you will find the Harness NextGen Git Experience setup and usage different and improved.
 
 If you're a Harness FirstGen user, you're likely familiar with Harness Git Sync. The following table shows the differences between Harness FirstGen Git Sync and NextGen Harness Git Experience:
-
-
 
 |  |  |  |
 | --- | --- | --- |
@@ -204,6 +210,6 @@ The following blog post walks you through Harness Git Experience:
 ### Next steps
 
 * [Harness Git Experience Quickstart](harness-git-experience-quickstart.md)
-* [Git Experience How-tos](https://docs.harness.io/article/soavr3jh0i-git-experience-how-tos)
-* [Diagnose and Fix Git Sync Errors](https://ngdocs.harness.io/article/24ehx5oa94-git-sync-errors)
+* [Git Experience How-tos](git-experience-overview.md)
+<!-- TBD DOC-2409 * [Diagnose and Fix Git Sync Errors ](https://docs.harness.io/article/24ehx5oa94-git-sync-errors) -->
 

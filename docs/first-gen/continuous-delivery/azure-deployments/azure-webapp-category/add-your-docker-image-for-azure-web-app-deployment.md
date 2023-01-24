@@ -28,17 +28,17 @@ https://harness-1.wistia.com/medias/rpv5vwzpxz-->
 
 ### Supported Platforms and Technologies
 
-See [Supported Platforms and Technologies](https://docs.harness.io/article/220d0ojx5y-supported-platforms).
+See [Supported Platforms and Technologies](../../../starthere-firstgen/supported-platforms.md).
 
 ### Limitations
 
 The Harness Azure Web Application Service type supports the following repos:
 
-* **Docker Registry:** see [Add Docker Registry Artifact Servers](https://docs.harness.io/article/tdj2ghkqb0-add-docker-registry-artifact-servers).
-* **Artifactory:** see [Add Artifactory Servers](https://docs.harness.io/article/nj3p1t7v3x-add-artifactory-servers).
-* **Azure Container Registry:** see [Add Microsoft Azure Cloud Provider](https://docs.harness.io/article/4n3595l6in-add-microsoft-azure-cloud-provider).
-* **Amazon S3:** see [Add Amazon Web Services (AWS) Cloud Provider](https://docs.harness.io/article/wt1gnigme7-add-amazon-web-services-cloud-provider).
-* **Jenkins:** see [Add Jenkins Artifact Servers](https://docs.harness.io/article/qa7lewndxq-add-jenkins-artifact-servers).
+* **Docker Registry:** see [Add Docker Registry Artifact Servers](../../../firstgen-platform/account/manage-connectors/add-docker-registry-artifact-servers.md).
+* **Artifactory:** see [Add Artifactory Servers](../../../firstgen-platform/account/manage-connectors/add-artifactory-servers.md).
+* **Azure Container Registry:** see [Add Microsoft Azure Cloud Provider](../../../firstgen-platform/account/manage-connectors/add-microsoft-azure-cloud-provider.md).
+* **Amazon S3:** see [Add Amazon Web Services (AWS) Cloud Provider](../../../firstgen-platform/account/manage-connectors/add-amazon-web-services-cloud-provider.md).
+* **Jenkins:** see [Add Jenkins Artifact Servers](../../../firstgen-platform/account/manage-connectors/add-jenkins-artifact-servers.md).
 
 ### Step 1: Create the Harness Service
 
@@ -68,11 +68,11 @@ Select the Artifact Server type.
 
 Fill out the Artifact Source settings.
 
-For details on configuring the supported Artifact Source types, see [Add a Docker Image](https://docs.harness.io/article/gxv9gj6khz-add-a-docker-image-service).
+For details on configuring the supported Artifact Source types, see [Add a Docker Image](../../model-cd-pipeline/setup-services/add-a-docker-image-service.md).
 
 The settings for the Harness Artifact Server and Artifact Source are a combination of the container settings in your Azure Web App.
 
-Here's the Harness [Docker Registry Artifact Server](https://docs.harness.io/article/tdj2ghkqb0-add-docker-registry-artifact-servers):
+Here's the Harness [Docker Registry Artifact Server](../../../firstgen-platform/account/manage-connectors/add-docker-registry-artifact-servers.md):
 
 ![](./static/add-your-docker-image-for-azure-web-app-deployment-12.png)
 

@@ -1,0 +1,15 @@
+{
+  "label": "Virtual Machine FG",
+  "position": 20,
+  "collapsible": "true",
+  "collapsed": "true",
+  "className": "red",
+  "link": {
+    "type": "generated-index",
+    "title": "Virtual Machine FG"
+  },
+  "customProps": {
+    "helpdocs_category_id": "872aodnvl1",
+    "helpdocs_parent_category_id": "xqs7h6dqu5"
+  }
+}

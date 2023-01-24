@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/article/vynj4hxt98).Harness lets you use AWS CloudFormation to provision infrastructure as part of your deployment process. Harness can provision any resource that is supported by [CloudFormation](https://aws.amazon.com/cloudformation/).
+This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../../continuous-delivery/cd-advanced/cloudformation-howto/cloud-formation-how-tos.md).Harness lets you use AWS CloudFormation to provision infrastructure as part of your deployment process. Harness can provision any resource that is supported by [CloudFormation](https://aws.amazon.com/cloudformation/).
 
 In this topic:
 
@@ -39,11 +39,11 @@ You simply need to map some of the output variables in the template to the requi
 
 The permissions required for Harness to use your provisioner and successfully deploy to the provisioned instances depends on the deployment platform you provision. The permissions are discussed in this topic in the configuration steps where they are applied, but, as a summary, you will need to manage the following permissions:
 
-* **Delegate** - The Delegate will require permissions according to the deployment platform. It will use the access, secret, and SSH keys you configure in Harness [Secrets Management](https://docs.harness.io/article/au38zpufhr-secret-management) to perform deployment operations. For ECS Delegates, you can add an IAM role to the ECS Delegate task definition. For more information, see [Trust Relationships and Roles](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation#trust_relationships_and_roles).
+* **Delegate** - The Delegate will require permissions according to the deployment platform. It will use the access, secret, and SSH keys you configure in Harness [Secrets Management](../../../firstgen-platform/security/secrets-management/secret-management.md) to perform deployment operations. For ECS Delegates, you can add an IAM role to the ECS Delegate task definition. For more information, see [Trust Relationships and Roles](../../../firstgen-platform/account/manage-delegates/delegate-installation.md#trust-relationships-and-roles).
 * **Cloud Provider** - The AWS Cloud Provider must have **create** permissions for the resources you are planning to create in the CloudFormation template. For Harness AWS Cloud Providers, you can install the Delegate in your AWS VPC and have the Cloud Provider assume the permissions used by the Delegate.
 
-The account used for the Cloud Provider will require platform-specific permissions for creating infrastructure. For example, to create EC2 AMI instances the account requires the **AmazonEC2FullAccess** policy.* **S3 Bucket** - You can use an AWS S3 bucket to point to the provisioner template. The AWS Cloud Provider can be used to access S3 also. The IAM role used by the Cloud Provider simply needs the S3 Bucket policy, described in [Add Cloud Providers](https://docs.harness.io/article/whwnovprrb-cloud-providers#amazon_s3).
-* **Access and Secret Keys** - These are set up in Harness [Secrets Management](https://docs.harness.io/article/au38zpufhr-secret-management) and then used as inout values when you add a CloudFormation Provisioner step to a Workflow.
+The account used for the Cloud Provider will require platform-specific permissions for creating infrastructure. For example, to create EC2 AMI instances the account requires the **AmazonEC2FullAccess** policy.* **S3 Bucket** - You can use an AWS S3 bucket to point to the provisioner template. The AWS Cloud Provider can be used to access S3 also. The IAM role used by the Cloud Provider simply needs the S3 Bucket policy, described in [Add Cloud Providers](../../../firstgen-platform/account/manage-connectors/cloud-providers.md#amazon-s3).
+* **Access and Secret Keys** - These are set up in Harness [Secrets Management](../../../firstgen-platform/security/secrets-management/secret-management.md) and then used as inout values when you add a CloudFormation Provisioner step to a Workflow.
 
 ### No Artifact Required
 

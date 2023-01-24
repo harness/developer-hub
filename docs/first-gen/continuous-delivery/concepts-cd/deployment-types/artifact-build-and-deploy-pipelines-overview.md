@@ -12,11 +12,11 @@ This topic describes the concept of a Harness Build and Deploy Pipeline deployme
 
 For detailed instructions on using build and deploy pipelines in Harness, see
 
-* [Artifact Build and Deploy Pipelines How-tos](https://docs.harness.io/category/cicd-artifact-build-and-deploy-pipelines)
+* [Artifact Build and Deploy Pipelines How-tos](/docs/category/cicd-artifact-build-and-deploy-pipelines)
 
 ### Before You Begin
 
-Before learning about Build and Deploy Pipelines, you should have an understanding of [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts).
+Before learning about Build and Deploy Pipelines, you should have an understanding of [Harness Key Concepts](../../../starthere-firstgen/harness-key-concepts.md).
 
 ### Visual Summary
 
@@ -49,7 +49,7 @@ A simple Artifact Build and Deploy Deployment for a file-based artifact like a W
 
 1. **Service referencing the artifact repo** - Create a Harness Service for the WAR file, including the Artifact Source that points to the artifact repo. Later, in the Build Workflow, when you set up the Artifact Collection command, you will reference this Artifact Source as the location of the artifact repo.
 2. **Build Workflow**
-	1. **Jenkins command** - Runs the Jenkins job to build the WAR file and push it to the artifact repo (such as Artifactory, etc). You configure an output variable, such as Jenkins, so that the Artifact Collection step can get the new build number and collect the built artifact (typically, just the metadata). You can also use a Shell Script command to run a job and create an output variable. For more information on the Jenkins command, see [Using the Jenkins Command](https://docs.harness.io/article/5fzq9w0pq7-using-the-jenkins-command).
+	1. **Jenkins command** - Runs the Jenkins job to build the WAR file and push it to the artifact repo (such as Artifactory, etc). You configure an output variable, such as Jenkins, so that the Artifact Collection step can get the new build number and collect the built artifact (typically, just the metadata). You can also use a Shell Script command to run a job and create an output variable. For more information on the Jenkins command, see [Using the Jenkins Command](../../model-cd-pipeline/workflows/using-the-jenkins-command.md).
 	2. **Artifact Collection command** - Grabs the artifact from the repo using the output variable and build environment variables and deposits it in Harness.
 3. **Environment** - Define the target deployment infrastructure where the Deploy Workflow will deploy the built artifact, such as an AWS VPC.
 4. **Deploy Workflow**
@@ -66,5 +66,5 @@ For an AMI Artifact Build and Deploy Pipeline, the only difference from the File
 
 Read the following topics to build on what you've learned:
 
-* [Artifact Build and Deploy Pipelines How-tos](https://docs.harness.io/category/cicd-artifact-build-and-deploy-pipelines)
+* [Artifact Build and Deploy Pipelines How-tos](/docs/category/cicd-artifact-build-and-deploy-pipelines)
 

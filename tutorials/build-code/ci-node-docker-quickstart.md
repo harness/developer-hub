@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_position: 2
 description: This build automation guide walks you through building a NodeJS and Docker Application in a CI Pipeline
 keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial]
 ---
@@ -19,6 +19,12 @@ Continuous Integration is automated builds that can be triggered by some sort of
 However, more than the compiled source code can go into a build. The end product for Continuous Integration is a release candidate. A release candidate is the final form of an artifact to be deployed. There could be quality steps taken to produce the artifact, such as finding bugs, and identifying their fix. Packaging, distribution, and configuration all go into a release candidate.
 
 According to [Paul Duvall](https://www.oreilly.com/library/view/continuous-integration-improving/9780321336385/), co-author of Continuous Integration, in a nutshell, CI will improve quality and reduce risk. Having a Continuous Integration approach frees teams from the burden of manual builds and also makes builds more repeatable, consistent, and available. If you are unfamiliar with CI, this guide will get you started on your first automated build.
+
+```mdx-code-block
+import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
+```
+
+<CISignupTip />
 
 ## Your Local Build - Onramp to Continuous Integration
 

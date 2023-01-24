@@ -27,7 +27,7 @@ You should read and understand the following:
 
 ## Version
 
-The current version of this SDK is **1.0.2**.
+The current version of this SDK is **1.0.5**.
 
 ## Requirements
 
@@ -120,7 +120,7 @@ To add a Target, build it and pass in arguments for the following:
 | --- | --- | --- | --- |
 | **Parameter** | **Description** | **Required?** | **Example** |
 | `identifier` | Unique ID for the Target.Read **Regex requirements for Target names and identifiers** below for accepted characters. | Required | `identifier="HT_1"` |
-| `name` | Name for this Target. This does not have to be unique. **Note**: If you don’t provide a value, Harness generates the name based on the ID.Read **Regex requirements for Target names and identifiers** below for accepted characters. | Optional**Note**: If you don't want to send a name, don't send the parameter. Sending an empty argument will cause an error. | `("Harness_Target_1")` |
+| `name` | Name for this target. This does not have to be unique. **Note**: If you don’t provide a value, Harness generates the name based on the ID. Read **Regex requirements for target names and identifiers** below for accepted characters. | Optional **Note**: If you don't want to send a name, don't send the parameter. Sending an empty argument causes an error. | `("Harness_Target_1")` |
 | `attributes` | Additional data you can store for a Target, such as email addresses or location. | Optional | `attributes={"email": "demo@harness.io"})` |
 
 <details>
@@ -132,7 +132,7 @@ Regex: `^[A-Za-z0-9.@_-]*$`
 Must consist of only alphabetical characters, numbers, and the following symbols:  
 . (period)  
 @ (at sign)  
-- (dash)  
+-(dash)  
 \_ (underscore)  
   
 The characters can be lowercase or uppercase but cannot include accented letters, for example `Cafe_789`.  

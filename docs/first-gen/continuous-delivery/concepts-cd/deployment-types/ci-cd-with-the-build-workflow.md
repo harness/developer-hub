@@ -16,7 +16,7 @@ Unlike other Workflow types, Build Workflows do not perform deployments. Build W
 
 Build Workflows enable you to model your entire CI/CD process in one place: Harness.
 
-This topic discusses the concept of a Harness CI/CD process using the Build Workflow. Use the [CI/CD: Artifact Build and Deploy Pipelines](https://docs.harness.io/category/cicd-artifact-build-and-deploy-pipelines) guide for a step-by-step walkthrough of a CI/CD deployment.
+This topic discusses the concept of a Harness CI/CD process using the Build Workflow. Use the [CI/CD: Artifact Build and Deploy Pipelines](/docs/category/cicd-artifact-build-and-deploy-pipelines) guide for a step-by-step walkthrough of a CI/CD deployment.
 
 ### Without a Build Workflow
 
@@ -36,11 +36,11 @@ Rather than having a decoupled CI and CD process, Harness provides the Build Wor
 
 When you want to view your entire CI/CD flow in the Harness dashboard, use the Build Workflow as a proxy for the CI stage of the CI/CD pipeline.
 
-You can trigger a Pipeline in Harness in many ways, such as a code commit in your Git repository. The [Harness Trigger](https://docs.harness.io/article/xerirloz9a-add-a-trigger-2) will initiate a Pipeline in Harness with the Build Workflow as first stage in the Pipeline.
+You can trigger a Pipeline in Harness in many ways, such as a code commit in your Git repository. The [Harness Trigger](../../model-cd-pipeline/triggers/add-a-trigger-2.md) will initiate a Pipeline in Harness with the Build Workflow as first stage in the Pipeline.
 
 ### Summary of CI/CD Pipeline
 
-The [CI/CD: Artifact Build and Deploy Pipelines](https://docs.harness.io/category/cicd-artifact-build-and-deploy-pipelines) guide provides a lengthy walkthrough of a CI/CD deployment, but let's look at a quick summary.
+The [CI/CD: Artifact Build and Deploy Pipelines](/docs/category/cicd-artifact-build-and-deploy-pipelines) guide provides a lengthy walkthrough of a CI/CD deployment, but let's look at a quick summary.
 
 Here is a simple Harness CI/CD Pipeline:
 
@@ -89,5 +89,5 @@ Build Workflows do not use Harness Services. Consequently, Service variables and
 
 ### Next Steps
 
-Use the [CI/CD: Artifact Build and Deploy Pipelines](https://docs.harness.io/category/cicd-artifact-build-and-deploy-pipelines) guide to walk through a CI/CD deployment.
+Use the [CI/CD: Artifact Build and Deploy Pipelines](/docs/category/cicd-artifact-build-and-deploy-pipelines) guide to walk through a CI/CD deployment.
 

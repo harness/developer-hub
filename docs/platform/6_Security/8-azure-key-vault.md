@@ -20,7 +20,7 @@ To store and use encrypted secrets (such as access keys) and files, you can add 
 
 ### Review: Secret Manager Overview
 
-For a full overview of how your secrets are used with the Secrets Managers you configure in Harness, please see [Harness Secrets Management Overview](../6_Security/1-harness-secret-manager-overview.md) and [Harness Security FAQs](https://docs.harness.io/article/320domdle1-harness-security-faqs).
+For a full overview of how your secrets are used with the Secrets Managers you configure in Harness, please see [Harness Secrets Management Overview](../6_Security/1-harness-secret-manager-overview.md) and [Harness Security FAQs](../../frequently-asked-questions/harness-faqs/harness-security-faqs.md).
 
 Here's a visual summary:
 
@@ -162,7 +162,7 @@ This is your only chance to view this key's value in Azure. Store the value some
 
 ### Step 4: Setup Delegates
 
-In **Delegates** **Setup**, enter [**Selectors**](../2_Delegates/delegate-guide/select-delegates-with-selectors.md#option-select-a-delegate-for-a-connector-using-tags) for specific **Delegates** that you want to allow to connect to this Connector. Click **Continue**.
+In **Delegates** **Setup**, enter [**Selectors**](../2_Delegates/manage-delegates/select-delegates-with-selectors.md#option-select-a-delegate-for-a-connector-using-tags) for specific **Delegates** that you want to allow to connect to this Connector. Click **Continue**.
 
 ### Step 5: Setup Vault
 

@@ -1,0 +1,14 @@
+{
+  "label": "Configuration as Code",
+  "position": 40,
+  "collapsible": "true",
+  "collapsed": "true",
+  "className": "red",
+  "link": {
+    "type": "generated-index",
+    "title": "Configuration as Code"
+  },
+  "customProps": {
+    "helpdocs_category_id": "2ea2y01kgz"
+  }
+}

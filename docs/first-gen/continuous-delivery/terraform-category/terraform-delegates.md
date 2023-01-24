@@ -16,11 +16,11 @@ Once your account is set up, you can begin integrating your Terraform scripts. S
 
 ### Before You Begin
 
-* [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts)
+* [Harness Key Concepts](../../starthere-firstgen/harness-key-concepts.md)
 * Get an overview of how Harness integrates Terraform: [Terraform Provisioning with Harness](../concepts-cd/deployment-types/terraform-provisioning-with-harness.md)
-* [Delegate Installation and Management](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation)
-* [Add Cloud Providers](https://docs.harness.io/article/whwnovprrb-cloud-providers)
-* [Add Source Repo Providers](https://docs.harness.io/article/ay9hlwbgwa-add-source-repo-providers)
+* [Delegate Installation and Management](../../firstgen-platform/account/manage-delegates/delegate-installation.md)
+* [Add Cloud Providers](../../firstgen-platform/account/manage-connectors/cloud-providers.md)
+* [Add Source Repo Providers](../../firstgen-platform/account/manage-connectors/add-source-repo-providers.md)
 
 ### Step 1: Set Up Harness Delegates
 
@@ -32,7 +32,7 @@ A Harness Delegate performs the Terraform provisioning in your Terraform scripts
 * While all Harness Delegates can use Terraform, you might want to select a Delegate type (Shell Script, Kubernetes, ECS, etc) similar to the type of infrastructure you are provisioning.
 * If you are provisioning AWS AMIs and ASGs, you'll likely use Shell Script Delegates on EC2 instances or ECS Delegates.
 * If you are provisioning Kubernetes clusters, you will likely use Kubernetes Delegates.
-1. To install a Delegate, follow the steps in [Delegate Installation and Management](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation). Once the Delegate is installed, it will be listed on the Harness Delegates page.
+1. To install a Delegate, follow the steps in [Delegate Installation and Management](../../firstgen-platform/account/manage-delegates/delegate-installation.md). Once the Delegate is installed, it will be listed on the Harness Delegates page.
 
 #### Delegate Selectors
 
@@ -40,7 +40,7 @@ If needed, add a Delegate Selector to your Delegates. When you add a **Terraform
 
 If you do not specify a Selector in the **Terraform Provisioner** step, Harness will try all Delegates and then assign the Terraform tasks to the Delegates with Terraform installed.
 
-To add Selectors, see [Delegate Installation and Management](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation).
+To add Selectors, see [Delegate Installation and Management](../../firstgen-platform/account/manage-delegates/delegate-installation.md).
 
 #### Permissions
 
@@ -48,15 +48,15 @@ The Harness Delegate requires permissions according to the deployment platform a
 
 In many cases, all credentials are provided by the account used to set up the Harness Cloud Provider.
 
-In some cases, access keys, secrets, and SSH keys are needed. You can add these in Harness [Secrets Management](https://docs.harness.io/article/au38zpufhr-secret-management). You can then select them in the **Terraform Provisioner** step in your Harness Workflows.
+In some cases, access keys, secrets, and SSH keys are needed. You can add these in Harness [Secrets Management](../../firstgen-platform/security/secrets-management/secret-management.md). You can then select them in the **Terraform Provisioner** step in your Harness Workflows.
 
-For ECS Delegates, you can add an IAM role to the ECS Delegate task definition. For more information, see  [Trust Relationships and Roles](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation#trust_relationships_and_roles).
+For ECS Delegates, you can add an IAM role to the ECS Delegate task definition. For more information, see  [Trust Relationships and Roles](../../firstgen-platform/account/manage-delegates/delegate-installation.md#trust-relationships-and-roles).
 
 ### Step 2: Install Terraform on Delegates
 
 Terraform must be installed on the Delegate to use a Harness Terraform Provisioner. You can install Terraform manually or use the `INIT_SCRIPT` environment variable in the Delegate YAML.
 
-See [Run Initialization Scripts on Delegates](https://docs.harness.io/article/ul6qktixip-run-initialization-scripts-on-delegates).
+See [Run Initialization Scripts on Delegates](../../firstgen-platform/account/manage-delegates/run-initialization-scripts-on-delegates.md).
 
 
 ```
@@ -70,7 +70,7 @@ terraform --version
 ```
 Terraform is now installed on the Delegate.
 
-If you will be using a Cloud Provider that uses Delegate Selectors to identify Delegates (AWS Cloud Provider), add a Selector to this Delegate. For more information, see [Delegate Installation and Management](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation).
+If you will be using a Cloud Provider that uses Delegate Selectors to identify Delegates (AWS Cloud Provider), add a Selector to this Delegate. For more information, see [Delegate Installation and Management](../../firstgen-platform/account/manage-delegates/delegate-installation.md).
 
 The Delegate needs to be able to obtain the Terraform provider you specify in the modules in your Terraform script. For example, `provider "acme"`. On the Delegate, Terraform will download and initialize any providers that are not already initialized.
 
@@ -82,13 +82,13 @@ Later, when you use Terraform to define a Harness Infrastructure Definition, you
 
 When you create the Cloud Provider, you can enter the platform account information for the Cloud Provider to use as credentials, or you can use the Delegate(s) running in the infrastructure to provide the credentials for the Cloud Provider.
 
-If you are provisioning infrastructure on a platform that requires specific permissions, such as AWS AMIs, the account used by the Cloud Provider needs the required policies. For example, to create AWS EC2 AMIs, the account needs the **AmazonEC2FullAccess** policy. See the list of policies in [Add Cloud Providers](https://docs.harness.io/article/whwnovprrb-cloud-providers). For steps on adding an AWS Cloud Provider, see [Amazon Web Services (AWS) Cloud](https://docs.harness.io/article/whwnovprrb-cloud-providers#amazon_web_services_aws_cloud).
+If you are provisioning infrastructure on a platform that requires specific permissions, such as AWS AMIs, the account used by the Cloud Provider needs the required policies. For example, to create AWS EC2 AMIs, the account needs the **AmazonEC2FullAccess** policy. See the list of policies in [Add Cloud Providers](../../firstgen-platform/account/manage-connectors/cloud-providers.md). For steps on adding an AWS Cloud Provider, see [Amazon Web Services (AWS) Cloud](../../firstgen-platform/account/manage-connectors/cloud-providers.md#amazon-web-services-aws-cloud).
 
 When the Cloud Provider uses the installed Delegate for credentials (via its Delegate Selector), it assumes the permissions/roles used by the Delegate.
 
 ### Step 4: Connect Harness to Your Script Repo
 
-To use your Terraform script in Harness, you host the script in a Git repo and add a Harness Source Repo Provider that connects Harness to the repo. For steps on adding the Source Repo Provider, see [Add Source Repo Providers](https://docs.harness.io/article/ay9hlwbgwa-add-source-repo-providers).
+To use your Terraform script in Harness, you host the script in a Git repo and add a Harness Source Repo Provider that connects Harness to the repo. For steps on adding the Source Repo Provider, see [Add Source Repo Providers](../../firstgen-platform/account/manage-connectors/add-source-repo-providers.md).
 
 Here is an example of a Source Repo Provider and the GitHub repo it is using:
 

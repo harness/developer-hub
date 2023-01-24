@@ -1,0 +1,14 @@
+{
+  "label": "FirstGen Monitoring",
+  "position": 10,
+  "collapsible": "true",
+  "collapsed": "true",
+  "className": "red",
+  "link": {
+    "type": "generated-index",
+    "title": "FirstGen Monitoring"
+  },
+  "customProps": {
+    "helpdocs_category_id": "bl6dov8qq4"
+  }
+}

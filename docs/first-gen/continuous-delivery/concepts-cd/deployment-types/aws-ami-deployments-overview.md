@@ -10,13 +10,13 @@ helpdocs_is_published: true
 
 This topic describes the concept of a Harness AWS AMI deployment by describing the high-level steps involved.
 
-For a quick tutorial, see the [AWS AMI Quickstart](https://docs.harness.io/article/wfk9o0tsjb-aws-ami-deployments).
+For a quick tutorial, see the [AWS AMI Quickstart](../../../first-gen-quickstarts/aws-ami-deployments.md).
 
-For detailed instructions on using AWS AMI in Harness, see the [AWS AMI How-tos](https://docs.harness.io/category/aws-ami-deployments).
+For detailed instructions on using AWS AMI in Harness, see the [AWS AMI How-tos](/docs/category/aws-ami-deployments).
 
 ### Before You Begin
 
-Before learning about Harness AWS AMI deployments, you should have an understanding of [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts).
+Before learning about Harness AWS AMI deployments, you should have an understanding of [Harness Key Concepts](../../../starthere-firstgen/harness-key-concepts.md).
 
 ### What Does Harness Need Before You Start?
 
@@ -48,9 +48,9 @@ The following list describes the major steps of a Harness AWS AMI deployment:
 | 4 | Create the Harness **Service** using the Amazon Machine Image Deployment Type. | Add an AMI as an artifact in a Harness Service, add any AMI User Data, and any config variables and files. |
 | 5 | Create the Harness **Environment** and Infrastructure Definition for your deployment, and any overrides. | Using the Harness AWS Cloud Provider you set up, you can select the base ASG and target environment for your deployment.You can also override any Service settings, such as User Data values. This enables you to use a single Service with multiple Harness Environments. |
 | 6 | Create the Basic, Canary, and Blue/Green deployments in Harness **Workflows**. | The Workflow deploys the new ASG and AMI instances defined in the Harness Service to the environment in the Harness Infrastructure Definition. |
-| 7 | Deploy the Workflow. | Once you've deployed a Workflow, learn how to improve your AWS AMI CD:* [Workflows](https://docs.harness.io/article/m220i1tnia-workflow-configuration)
-* [Triggers](https://docs.harness.io/article/xerirloz9a-add-a-trigger-2)
-* [Infrastructure Provisioners Overview](https://docs.harness.io/article/o22jx8amxb-add-an-infra-provisioner)
+| 7 | Deploy the Workflow. | Once you've deployed a Workflow, learn how to improve your AWS AMI CD:* [Workflows](../../model-cd-pipeline/workflows/workflow-configuration.md)
+* [Triggers](../../model-cd-pipeline/triggers/add-a-trigger-2.md)
+* [Infrastructure Provisioners Overview](../../model-cd-pipeline/infrastructure-provisioner/add-an-infra-provisioner.md)
  |
 
 ### How Does Harness Downsize Old ASGs?
@@ -96,6 +96,6 @@ If you do not want a previously deployed ASG to be downsized, then you must use 
 
 Read the following topics to build on what you've learned:
 
-* [AWS AMI Quickstart](https://docs.harness.io/article/wfk9o0tsjb-aws-ami-deployments)
-* [AWS AMI How-tos](https://docs.harness.io/category/aws-ami-deployments)
+* [AWS AMI Quickstart](../../../first-gen-quickstarts/aws-ami-deployments.md)
+* [AWS AMI How-tos](/docs/category/aws-ami-deployments)
 

@@ -5,7 +5,7 @@ title: Lambda Delete Event Source Mapping
 
 ## Introduction
 
-- It removes the event source mapping from an AWS Lambda function for a certain chaos duration.
+- It removes the event source mapping from an AWS Lambda function for a specified chaos duration, causing failed invocation of the function.
 - It checks the performance of the running application/service without the event source mapping which can cause, for example, missing entries on a database.
 
 :::tip Fault execution flow chart
@@ -27,7 +27,7 @@ It helps understand if you have proper error handling or auto recovery configure
 
 :::info
 
-- Kubernetes >= 1.17
+- Ensure that Kubernetes Version >= 1.17
 - AWS Lambda event source mapping attached to the lambda function.
 - Kubernetes secret that has AWS access configuration(key) in the `CHAOS_NAMESPACE`. A secret file looks like this:
 
@@ -46,6 +46,39 @@ stringData:
 ```
 
 - If you change the secret key name (from `cloud_config.yml`), update the `AWS_SHARED_CREDENTIALS_FILE` environment variable value on `experiment.yaml` with the same name.
+
+## Permission Requirement
+
+- Here is an example AWS policy to execute this fault.
+
+<details>
+<summary>View policy for this fault</summary>
+
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "lambda:ListEventSourceMappings",
+                "lambda:DeleteEventSourceMapping",
+                "lambda:UpdateEventSourceMapping",
+                "lambda:CreateEventSourceMapping",
+                "lambda:UpdateFunctionConfiguration",
+                "lambda:GetFunctionConcurrency",
+                "lambda:GetFunction",
+                "lambda:DeleteFunctionConcurrency",
+                "lambda:PutFunctionConcurrency"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+```
+</details>
+
+- Refer a [superset permission/policy](./policy-for-all-aws-faults) to execute all AWS faults.
 
 ## Default Validations
 

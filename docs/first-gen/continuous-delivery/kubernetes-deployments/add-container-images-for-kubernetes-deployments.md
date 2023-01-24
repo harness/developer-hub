@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/category/qfj6m1k2c4).
+This content is for Harness [FirstGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/category/kubernetes).
 
 To add container images to Harness for your Kubernetes deployments, you add a Harness **Artifact Server**. The Artifact Server uses your container registry account to connect to your container registry (Docker registry, AWS ECR, Google GCR, Azure Container Registry, etc).
 
@@ -26,7 +26,7 @@ Ensure you have reviewed and set up the following:
 
 Harness supports all of the popular container registries. You add your container registry account as a Harness Artifact Server.
 
-For steps on setting up each container registry, see [Add Artifact Servers](https://docs.harness.io/article/7dghbx1dbl-configuring-artifact-server).
+For steps on setting up each container registry, see [Add Artifact Servers](../../firstgen-platform/account/manage-connectors/configuring-artifact-server.md).
 
 In the following step, we use the Docker Registry Artifact Server.
 
@@ -46,7 +46,7 @@ In the following step, we use the Docker Registry Artifact Server.
 
 To demonstrate how to add the Artifact Source, we use a Docker Registry Artifact Server.
 
-For the settings for all Artifact Sources, see [Add Artifact Servers](https://docs.harness.io/article/7dghbx1dbl-configuring-artifact-server).
+For the settings for all Artifact Sources, see [Add Artifact Servers](../../firstgen-platform/account/manage-connectors/configuring-artifact-server.md).
 
 1. In the Harness Kubernetes Service, click **Add** **Artifact Source**, and select **Docker Registry**. The **Docker Registry** settings appear. Enter the following settings:
   * In **Name**, let Harness generate a name for the source or enter a custom name.
@@ -58,7 +58,7 @@ For the settings for all Artifact Sources, see [Add Artifact Servers](https://do
 
 [![](./static/add-container-images-for-kubernetes-deployments-138.png)](./static/add-container-images-for-kubernetes-deployments-138.png)
 
-In addition to artifact sources taken from Artifact Servers, you can use a Shell Script to query a custom artifact repository. See [Custom Artifact Source](https://docs.harness.io/article/jizsp5tsms-custom-artifact-source).
+In addition to artifact sources taken from Artifact Servers, you can use a Shell Script to query a custom artifact repository. See [Custom Artifact Source](../model-cd-pipeline/setup-services/custom-artifact-source.md).
 
 ### Next Steps
 

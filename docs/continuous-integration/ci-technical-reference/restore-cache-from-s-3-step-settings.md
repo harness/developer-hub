@@ -18,13 +18,13 @@ The unique name for this step.
 
 ### ID
 
-See [Entity Identifier Reference](https://docs.harness.io/article/li0my8tcz3-entity-identifier-reference).
+See [Entity Identifier Reference](../../platform/20_References/entity-identifier-reference.md).
 
 ### AWS Connector
 
 The Harness Connector to use when restoring the cache from AWS S3. Typically, this is the same Connector used when you saved the cache. See [Save Cache to S3 Step Settings](save-cache-to-s-3-step-settings.md).
 
-The AWS IAM roles and policies associated with the account used in the Harness AWS Connector must be able to read from S3. See [AWS Connector Settings Reference](https://newdocs.helpdocs.io/article/m5vkql35ca-aws-connector-settings-reference).
+The AWS IAM roles and policies associated with the account used in the Harness AWS Connector must be able to read from S3. See [AWS Connector Settings Reference](../../platform/7_Connectors/ref-cloud-providers/aws-connector-settings-reference.md).
 
 ### Region
 
@@ -89,6 +89,6 @@ Timeout for the step. Once the timeout is reached, the step fails and the Pipeli
 
 ### See Also
 
-* [Step Skip Condition Settings](https://newdocs.helpdocs.io/article/i36ibenkq2-step-skip-condition-settings)
-* [Step Failure Strategy Settings](https://newdocs.helpdocs.io/article/htrur23poj-step-failure-strategy-settings)
+* [Step Skip Condition Settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+* [Step Failure Strategy Settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
 

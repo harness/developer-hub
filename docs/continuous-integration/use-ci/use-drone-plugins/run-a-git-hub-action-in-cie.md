@@ -25,7 +25,7 @@ In this topic, we cover using GitHub Actions in the Plugin step with one of the 
 
 * [CI Pipeline Quickstart](../../ci-quickstarts/ci-pipeline-quickstart.md)
 * [CI Stage Settings](../../ci-technical-reference/ci-stage-settings.md)
-* [Set Up Build Infrastructure](https://docs.harness.io/category/set-up-build-infrastructure)
+* [Set Up Build Infrastructure](/docs/category/set-up-build-infrastructure)
 * [Learn Harness' Key Concepts](../../../getting-started/learn-harness-key-concepts.md)
 
 ### Step 1: Create the CI Stage
@@ -34,7 +34,7 @@ In your Harness Pipeline, click Add Stage, and then click CI.
 
 ### Step 2: Add the Codebase
 
-In Connector, select an existing Connector to your codebase repo, or create a new one. See [Code Repo Connectors](https://ngdocs.harness.io/category/xyexvcc206-ref-source-repo-provider).
+In Connector, select an existing Connector to your codebase repo, or create a new one. See [Code Repo Connectors](/docs/category/code-repo-connectors).
 
 You can see the URL for the repo account below **Repository Name**. Don't add the URL into Repository Name.
 
@@ -48,9 +48,9 @@ In the CI stage Infrastructure, define the build farm for the codebase.
 
 The following example uses a Kubernetes cluster build farm. You can use AWS for your build infrastructure as well. See [Set Up an AWS VM Build Infrastructure](../set-up-build-infrastructure/set-up-an-aws-vm-build-infrastructure.md). 
 
-In **Select a Kubernetes Cluster**, select, or create, a Kubernetes Connector. See [Kubernetes Cluster Connector Settings Reference](https://ngdocs.harness.io/article/sjjik49xww-kubernetes-cluster-connector-settings-reference). This Connector connects Harness to the cluster to use as the build farm.
+In **Select a Kubernetes Cluster**, select, or create, a Kubernetes Connector. See [Kubernetes Cluster Connector Settings Reference](../../../platform/7_Connectors/ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md). This Connector connects Harness to the cluster to use as the build farm.
 
-In **Namespace**, enter the Kubernetes namespace to use. You can use a Runtime Input (`<+input>`) or expression also. See [Runtime Inputs](https://ngdocs.harness.io/article/f6yobn7iq0-runtime-inputs).
+In **Namespace**, enter the Kubernetes namespace to use. You can use a Runtime Input (`<+input>`) or expression also. See [Runtime Inputs](../../../platform/20_References/runtime-inputs.md).
 
 See [Define a Kubernetes Cluster Build Infrastructure](../set-up-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md) for more information.
 
@@ -88,7 +88,7 @@ For example, for the Upload Cloud Storage Action, the attributes are as follows:
    * `destination`: `cie-demo-pipeline/github-action`
    * `credentials`: `<+stage.variables.GCP_SECRET_KEY_BASE64>`
 
-The `<+stage.variables.GCP_SECRET_KEY_BASE64>` setting uses a Stage variable and a Harness Secret. See [Add a Stage](https://docs.harness.io/article/2chyf1acil-add-a-stage).
+The `<+stage.variables.GCP_SECRET_KEY_BASE64>` setting uses a Stage variable and a Harness Secret. See [Add a Stage](../../../platform/8_Pipelines/add-a-stage.md).
 
 Here's an example:
 
@@ -97,6 +97,25 @@ Here's an example:
 
 For the step settings on CI Plugins, see [Plugin Step Settings](../../ci-technical-reference/plugin-step-settings-reference.md).
 
+
+##### Private Actions
+
+If you are trying to use an action composite that is located in a private repository, you will need to set a `GITHUB_TOKEN` environment variable on the plugin step. Make sure the token has pull permissions to the target repository.
+
+```
+- step:
+   type: Plugin
+   name: private action
+   identifier: private_action
+   spec:
+     connectorRef: dockerhub
+     image: plugins/github-actions
+     privileged: true
+     settings:
+       uses: myorg/private-action-step@v1
+     envVariables:
+       GITHUB_TOKEN: <+secrets.getValue("github_pat")>
+```
 
 ### Step 5: View the Results
 

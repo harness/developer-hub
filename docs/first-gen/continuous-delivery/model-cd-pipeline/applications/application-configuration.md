@@ -23,7 +23,7 @@ Keep this diagram in mind when setting up your Harness Application.
 
 ### Before You Begin
 
-* [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts)
+* [Harness Key Concepts](../../../starthere-firstgen/harness-key-concepts.md)
 
 
 ### Step 1: Set up the Application
@@ -49,7 +49,7 @@ Currently, this feature is behind the Feature Flag `GITHUB_WEBHOOK_AUTHENTICATIO
 
 #### Option: Set up Git Sync
 
-Select **Set up Git Sync** to sync your Application to a Git repo. You must also select a Git Connector and Branch Name that you want to use for Git Sync. For more information, see [Harness Application-Level Git Sync](https://docs.harness.io/article/6mr74fm55h-harness-application-level-sync).
+Select **Set up Git Sync** to sync your Application to a Git repo. You must also select a Git Connector and Branch Name that you want to use for Git Sync. For more information, see [Harness Application-Level Git Sync](../../../firstgen-platform/config-as-code/harness-application-level-sync.md).
 
 ![](./static/application-configuration-11.png)
 

@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/article/w6i5f7cpc9).Harness lets you use Terraform to provision infrastructure as part of your deployment process. Harness can provision any resource that is supported by a Terraform  [provider or plugin](https://www.terraform.io/docs/configuration/providers.html).
+This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../../continuous-delivery/cd-advanced/terraform-category/terraform-how-tos.md).Harness lets you use Terraform to provision infrastructure as part of your deployment process. Harness can provision any resource that is supported by a Terraform  [provider or plugin](https://www.terraform.io/docs/configuration/providers.html).
 
 Looking for How-tos? See [Terraform How-tos](../../terraform-category/terrform-provisioner.md).
 
@@ -49,12 +49,12 @@ The permissions required for Harness to use your provisioner and successfully de
 
 As a summary, you will need to manage the following permissions:
 
-* **Delegate** - The Harness Delegate will require permissions according to the deployment platform. It will use the access, secret, and SSH keys you configure in Harness  [Secrets Management](https://docs.harness.io/article/au38zpufhr-secret-management) to perform deployment operations. For ECS Delegates, you can add an IAM role to the ECS Delegate task definition. For more information, see  [Trust Relationships and Roles](../../aws-deployments/ecs-deployment/harness-ecs-delegate.md#trust-relationships-and-roles).
+* **Delegate** - The Harness Delegate will require permissions according to the deployment platform. It will use the access, secret, and SSH keys you configure in Harness  [Secrets Management](../../../firstgen-platform/security/secrets-management/secret-management.md) to perform deployment operations. For ECS Delegates, you can add an IAM role to the ECS Delegate task definition. For more information, see  [Trust Relationships and Roles](../../aws-deployments/ecs-deployment/harness-ecs-delegate.md#trust-relationships-and-roles).
 * **Cloud Provider** - The Harness Cloud Provider must have access permissions for the resources you are planning to create in the Terraform script. For some Harness Cloud Providers, you can use the installed Delegate and have the Cloud Provider assume the permissions used by the Delegate. For others, you can enter cloud platform account information.
 
-The account used for the Cloud Provider will require platform-specific permissions for creating infrastructure. For example, to create EC2 AMIs the account requires the **AmazonEC2FullAccess** policy.* **Git Repo** - You will add the Git repo where the provisioner script is located to Harness as a Source Repo Provider. For more information, see  [Add Source Repo Providers](https://docs.harness.io/article/ay9hlwbgwa-add-source-repo-providers).
-* **Access and Secret Keys** - These are set up in Harness  [Secrets Management](https://docs.harness.io/article/au38zpufhr-secret-management) and then used as variable values when you add a Provisioner step to a Workflow.
-* **SSH Key** - In order for the Delegate to copy artifacts to the provisioned instances, it will need an SSH key. You set this up in Harness Secrets Management and then reference it in the Harness Environment Infrastructure Definition. See [Secrets Management](https://docs.harness.io/article/au38zpufhr-secret-management).
+The account used for the Cloud Provider will require platform-specific permissions for creating infrastructure. For example, to create EC2 AMIs the account requires the **AmazonEC2FullAccess** policy.* **Git Repo** - You will add the Git repo where the provisioner script is located to Harness as a Source Repo Provider. For more information, see  [Add Source Repo Providers](../../../firstgen-platform/account/manage-connectors/add-source-repo-providers.md).
+* **Access and Secret Keys** - These are set up in Harness  [Secrets Management](../../../firstgen-platform/security/secrets-management/secret-management.md) and then used as variable values when you add a Provisioner step to a Workflow.
+* **SSH Key** - In order for the Delegate to copy artifacts to the provisioned instances, it will need an SSH key. You set this up in Harness Secrets Management and then reference it in the Harness Environment Infrastructure Definition. See [Secrets Management](../../../firstgen-platform/security/secrets-management/secret-management.md).
 * **Platform Security Groups** - Security groups are associated with EC2 and other cloud platform instances and provide security at the protocol and port access level. You will need to define security groups in your provisioner scripts and ensure that they allow the Delegate to connect to the provisioned instances.
 
 ### No Artifact Required

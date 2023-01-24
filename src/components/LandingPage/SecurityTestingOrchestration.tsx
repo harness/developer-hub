@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "@docusaurus/Link";
 import clsx from "clsx";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import styles from "./styles.module.scss";
 import TutorialCard, { CardItem, docType } from "./TutorialCard";
 
@@ -9,7 +10,7 @@ const FeaturedList: CardItem[] = [
   {
     title: "Scanning a NodeJS Application",
     module: "sto",
-    icon: "/img/icon_sto.svg",
+    icon: "img/icon_sto.svg",
     description: (
       <>Scanning a NodeJS Application and prioritizing scan results.</>
     ),
@@ -24,7 +25,7 @@ const STOList: CardItem[] = [
   {
     title: "Scanning a NodeJS Application",
     module: "sto",
-    icon: "/img/icon_sto.svg",
+    icon: "img/icon_sto.svg",
     description: (
       <>Scanning a NodeJS Application and prioritizing scan results.</>
     ),
@@ -36,6 +37,7 @@ const STOList: CardItem[] = [
 ];
 
 export default function STO() {
+  const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   return (
     // <Layout title="STO" description="STO">
     //   <ul className={styles.breadCrumb}>
@@ -43,14 +45,13 @@ export default function STO() {
     //     <li>Orchestrate security tests</li>
     //   </ul>
     <div className="container">
-      <img src="/img/sto.svg" />
       <div className={styles.SectionName}>
         <h3>Orchestrate security tests</h3>
       </div>
       <div className={styles.topSection}>
         <div className={styles.spaceBetween}>
           <div className={styles.moduleTitle}>
-            <img src="/img/icon_sto.svg" />
+            <img src={`${baseUrl}img/icon_sto.svg`} />
             <h1>Security Testing Orchestration</h1>
           </div>
           <div>
@@ -62,7 +63,7 @@ export default function STO() {
                   styles.btnLight
                 )}
               >
-                <img src="/img/icon_document.png" /> Documentation
+                <img src={`${baseUrl}img/icon_document.png`} /> Documentation
               </button>
             </Link>
           </div>
@@ -70,8 +71,7 @@ export default function STO() {
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
             <p>
-              Harness Security Testing Orchestration (STO) enables DevOps and
-              DevSecOps teams to left shift security testing. STO orchestrates
+              Harness STO enables DevOps and Security teams teams to left shift security testing as a key outcome of their DevSecOps initiative. STO orchestrates
               scanning, intelligently deduplicating scanner output, prioritizing
               remediations, and enforcing governance into your Pipeline. STO
               puts scanning directly into your Pipelines to ensure that
@@ -83,16 +83,16 @@ export default function STO() {
                 className={clsx("button button--lg", styles.btn, styles.btnSTO)}
                 to="#all-tutorials"
               >
-                STO Tutorials
-                <img src="/img/Stroke.svg" />
+                Tutorials
+                <img src={`${baseUrl}img/Stroke.svg`} />
               </Link>
               <Link href="https://harness.io/products/security-testing-orchestration">
-                <button className={styles.link}>Learn more about STO</button>
+                <button className={styles.link}>Learn more</button>
               </Link>
             </div>
           </div>
           <div>
-            <img src="/img/sto_flow.svg" />
+            <img src={`${baseUrl}img/sto.svg`} />
           </div>
         </div>
       </div>

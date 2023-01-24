@@ -17,11 +17,11 @@ Once you set your account for Blueprint, you can begin integrating your Blueprin
 
 ### Before You Begin
 
-* [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts)
+* [Harness Key Concepts](../../../starthere-firstgen/harness-key-concepts.md)
 * Get an overview of provisioning with Blueprint in [Azure ARM and Blueprint Provisioning with Harness](../../concepts-cd/deployment-types/azure-arm-and-blueprint-provision-with-harness.md).
-* [Delegate Installation and Management](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation)
-* [Add Cloud Providers](https://docs.harness.io/article/whwnovprrb-cloud-providers)
-* [Add Source Repo Providers](https://docs.harness.io/article/ay9hlwbgwa-add-source-repo-providers)
+* [Delegate Installation and Management](../../../firstgen-platform/account/manage-delegates/delegate-installation.md)
+* [Add Cloud Providers](../../../firstgen-platform/account/manage-connectors/cloud-providers.md)
+* [Add Source Repo Providers](../../../firstgen-platform/account/manage-connectors/add-source-repo-providers.md)
 
 ### Limitations
 
@@ -34,17 +34,17 @@ A Harness Delegate performs the Blueprint provisioning in your Blueprint definit
 * The Delegate must also be able to connect to your definition repo. The Delegate will pull the definition at deployment runtime.
 * All Harness Delegates types can use Blueprint.
 
-To install a Delegate, follow the steps in [Delegate Installation and Management](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation). Once you install the Delegate and it registers with Harness, you'll see it on the Harness Delegates page.
+To install a Delegate, follow the steps in [Delegate Installation and Management](../../../firstgen-platform/account/manage-delegates/delegate-installation.md). Once you install the Delegate and it registers with Harness, you'll see it on the Harness Delegates page.
 
 ### Step 2: Set Up the Azure Cloud Provider
 
 A Harness Azure Cloud Provider connects to your Azure subscription using your Client ID and Tenant ID.
 
-Follow the steps in [Add Microsoft Azure Cloud Provider](https://docs.harness.io/article/4n3595l6in-add-microsoft-azure-cloud-provider) to connect Harness to Azure.
+Follow the steps in [Add Microsoft Azure Cloud Provider](../../../firstgen-platform/account/manage-connectors/add-microsoft-azure-cloud-provider.md) to connect Harness to Azure.
 
 The Azure service account for the Azure Cloud Provider will need the roles required for the Azure resources you are provisioning.
 
-See **Azure Blueprint** in [Add Microsoft Azure Cloud Provider](https://docs.harness.io/article/4n3595l6in-add-microsoft-azure-cloud-provider).
+See **Azure Blueprint** in [Add Microsoft Azure Cloud Provider](../../../firstgen-platform/account/manage-connectors/add-microsoft-azure-cloud-provider.md).
 
 ### Step 3: Set Up Source Repo Provider
 
@@ -54,7 +54,7 @@ Add a Harness Source Repo Provider to connect Harness to the Git account/repo fo
 
 If Source Repo Provider connects to a Git account, you can specify the repo in each Infrastructure Provisioner that uses that Source Repo Provider.
 
-See [Add Source Repo Providers](https://docs.harness.io/article/ay9hlwbgwa-add-source-repo-providers).
+See [Add Source Repo Providers](../../../firstgen-platform/account/manage-connectors/add-source-repo-providers.md).
 
 ### Next Step
 

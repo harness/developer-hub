@@ -115,7 +115,7 @@ For all Service types, the Exec script can be added to the Service to use the ar
 	
 	![](./static/service-types-and-artifact-sources-12.png)
 	
-	For information on using the Template Library, see [Use Templates](https://docs.harness.io/article/ygi6d8epse-use-templates).
+	For information on using the Template Library, see [Use Templates](../../concepts-cd/deployment-types/use-templates.md).
 	
 2. Hover over the **Add** button to see the available scripts.
 
@@ -139,7 +139,7 @@ When you create a Workflow using this Service, such as a Basic Workflow, it will
 
 ![](./static/service-types-and-artifact-sources-17.png)
 
-For a list of artifact-related built-in variables, see **Artifact** in the table in [Variables List](https://docs.harness.io/article/9dvxcegm90-variables#variables_list).
+For a list of artifact-related built-in variables, see **Artifact** in the table in [Variables List](../../../firstgen-platform/techref-category/variables/variables.md#variables-list).
 
 ### Copy Artifact vs Download Artifact
 
@@ -182,7 +182,7 @@ To add a Copy Artifact script in a Service, do the following:
 
    ![](./static/service-types-and-artifact-sources-23.png)
 
-   The `$WINGS_RUNTIME_PATH` is the destination path for the artifact. The variable is a constant used at runtime. For more information, see [Constants](https://docs.harness.io/article/9dvxcegm90-variables#constants).
+   The `$WINGS_RUNTIME_PATH` is the destination path for the artifact. The variable is a constant used at runtime. For more information, see [Constants](../../../firstgen-platform/techref-category/variables/variables.md#constants).
    
 3. In **Source**, select **Application Artifacts**, and click **SUBMIT**. The **Copy** script is added to the Service.
 
@@ -200,11 +200,11 @@ Here are the Download Artifact script settings:
 
 ![](./static/service-types-and-artifact-sources-25.png)
 
-In **Artifact Download Directory**, a path using [Harness variable expressions](https://docs.harness.io/article/9dvxcegm90-variables) points to the **Application Defaults** variables.
+In **Artifact Download Directory**, a path using [Harness variable expressions](../../../firstgen-platform/techref-category/variables/variables.md) points to the **Application Defaults** variables.
 
 ![](./static/service-types-and-artifact-sources-26.png)
 
-You can add an Application Defaults variable for the artifact sources that will be referenced by the Download Artifact script, and then use it wherever Download Artifact is used. For more information, see [Application Defaults Variables](https://docs.harness.io/article/9dvxcegm90-variables#application_default_variables).
+You can add an Application Defaults variable for the artifact sources that will be referenced by the Download Artifact script, and then use it wherever Download Artifact is used. For more information, see [Application Defaults Variables](../../../firstgen-platform/techref-category/variables/variables.md#application-default-variables).
 
 You can also enter a path in **Artifact Download Directory** manually.
 

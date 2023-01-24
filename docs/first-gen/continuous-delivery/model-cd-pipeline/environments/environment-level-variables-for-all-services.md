@@ -16,14 +16,14 @@ For example, let's say you have many Services using Tomcat that all connect to a
 
 ### Before You Begin
 
-* [Built-in Variables List](https://docs.harness.io/article/aza65y4af6-built-in-variables-list)
+* [Built-in Variables List](../../../firstgen-platform/techref-category/variables/built-in-variables-list.md)
 * [Override a Service Configuration in an Environment](override-service-files-and-variables-in-environments.md)
 * [Add Service Config Variables](../setup-services/add-service-level-config-variables.md)
 * [Add Service Config Files](../setup-services/add-service-level-configuration-files.md)
 
 ### Supported Platforms and Technologies
 
-See [Supported Platforms and Technologies](https://docs.harness.io/article/220d0ojx5y-supported-platforms).
+See [Supported Platforms and Technologies](../../../starthere-firstgen/supported-platforms.md).
 
 ### Step 1: Create a Service Configuration Override for All Services
 
@@ -44,7 +44,7 @@ This is the name you will use to reference this variable later using the express
 ### Option: File Override
 
 1. Click **Choose File**, and then select the file to add.  
-To select a Harness [Encrypted Text file](https://docs.harness.io/article/nt5vchhka4-use-encrypted-file-secrets), click **Encrypt File**, and then select the file.
+To select a Harness [Encrypted Text file](../../../firstgen-platform/security/secrets-management/use-encrypted-file-secrets.md), click **Encrypt File**, and then select the file.
 2. In **Relative File Path**, enter the name of the file. You can also enter the path where it will be placed on the target host(s).  
 This is the name you will use to reference this file later using the expression `${configFile.getAsString("RelativeFilePathName")}`.
 3. Click **Submit**.

@@ -24,7 +24,7 @@ Text string.
 
 Select the Harness Artifactory Connector to use for this upload.
 
-See [Artifactory Connector Settings Reference](https://docs.harness.io/article/euueiiai4m-artifactory-connector-settings-reference).
+See [Artifactory Connector Settings Reference](../../platform/7_Connectors/ref-cloud-providers/artifactory-connector-settings-reference.md).
 
 ### Target
 
@@ -62,5 +62,5 @@ Timeout for the step. Once the timeout is reached, the step fails, and the Pipel
 
 ### See Also
 
-* [Step Skip Condition Settings](https://docs.harness.io/article/i36ibenkq2-step-skip-condition-settings)
+* [Step Skip Condition Settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
 

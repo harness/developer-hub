@@ -30,9 +30,10 @@
         font-size: 14px;
         line-height: 22px;
         color: #6B6D85;
+        display: flex;
         img{
             width: 14px;
-            margin-right: 13.5px;
+            margin-right: 8px;
         }
     }
     h4{
@@ -130,15 +131,12 @@
     }
 }
 .featuredCard{
-    border: 1px solid #D9DAE5;
-    box-shadow: none;
+    // border: 1px solid #D9DAE5;
+    box-shadow: 0px 1px 3px rgb(40 41 61 / 16%), 0px 0px 2px rgb(40 41 61 / 16%);
     width: 47%;
     .newDoc{
         right: 0;
     }
-    // &:last-child {
-    //     margin-right: 0;
-    // }
 }
 
 // @media screen and (max-width: 996px) {
@@ -146,11 +144,27 @@
     .tutorialCard{
         width: 47%;
     }
+    .allTutorials{
+        .featuredCard{
+            width: 47%;
+        }
+        .tutorialCard{
+            width: 47%;
+        }
+    }
 }
 
 @media screen and (max-width: 393px) {
     /* for mobile */
     .tutorialCard{
         width: unset;
+    }
+    .allTutorials{
+        .featuredCard{
+            width: unset;
+        }
+        .tutorialCard{
+            width: unset;
+        }
     }
 }

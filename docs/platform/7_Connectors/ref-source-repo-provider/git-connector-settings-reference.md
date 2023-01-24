@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic provides settings and permissions for the platform-agnostic Git Connector. For Connectors to popular Git platforms like GitHub, see [Code Repo Connectors](https://docs.harness.io/category/code-repo-connectors).
+This topic provides settings and permissions for the platform-agnostic Git Connector. For Connectors to popular Git platforms like GitHub, see [Code Repo Connectors](/docs/category/code-repo-connectors).
 
 ### Limitations
 
@@ -82,5 +82,5 @@ If you selected **SSH** as the connection protocol, you must add the **Usernam
 
 You can select **Connect via any available delegate** or **Connect only via delegates which has all of the following tags**.
 
-You need to enter **Selectors** to connect via specific delegates. For more information see [Select Delegates with Tags](../../2_Delegates/delegate-guide/select-delegates-with-selectors.md).
+You need to enter **Selectors** to connect via specific delegates. For more information see [Select Delegates with Tags](../../2_Delegates/manage-delegates/select-delegates-with-selectors.md).
 

@@ -1,0 +1,14 @@
+{
+  "label": "Monitoring Reference FirstGen",
+  "position": 50,
+  "collapsible": "true",
+  "collapsed": "true",
+  "className": "red",
+  "link": {
+    "type": "generated-index",
+    "title": "Monitoring Reference FirstGen"
+  },
+  "customProps": {
+    "helpdocs_category_id": "36pjokv13r"
+  }
+}

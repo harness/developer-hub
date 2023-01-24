@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 This example harness-delegate.yaml file implements the approach of using the Kubernetes `emptyDir` object with an initialization (`INIT`) container to move binaries to the delegate image.
 
-For more information, see [Install Delegates with Third-Party Tools](../delegate-guide/install-delegates-with-third-party-tools.md) in the *Delegate Guide*.
+For more information, see [Install Delegates with Third-Party Tools](/docs/platform/2_Delegates/get-started-with-delegates/install-delegates-with-third-party-tools.md).
 
 
 ```
@@ -48,7 +48,7 @@ data:
 ---  
   
 # If delegate needs to use a proxy, please follow instructions available in the documentation  
-# https://ngdocs.harness.io/article/5ww21ewdt8-configure-delegate-proxy-settings  
+# https://developer.harness.io/docs/first-gen/firstgen-platform/account/manage-delegates/configure-delegate-proxy-settings/ 
   
 apiVersion: apps/v1  
 kind: Deployment  

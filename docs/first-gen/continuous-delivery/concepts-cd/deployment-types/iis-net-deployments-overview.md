@@ -10,13 +10,13 @@ helpdocs_is_published: true
 
 This topic describes the concept of a Harness IIS (.NET) deployment by describing the high-level steps involved.
 
-For a quick tutorial, see [IIS (.NET) Quickstart](https://docs.harness.io/article/2oo63r9rwb-iis-net-quickstart).
+For a quick tutorial, see [IIS (.NET) Quickstart](../../../first-gen-quickstarts/iis-net-quickstart.md).
 
-For detailed instructions on using IIS (.NET) in Harness, see the [IIS (.NET)](https://docs.harness.io/category/iis-(https://docs.harness.io.net)-deployments) How-tos.
+For detailed instructions on using IIS (.NET) in Harness, see the [IIS (.NET)](docs/category/iis-net-deployments) How-tos.
 
 ### Before You Begin
 
-Before learning about Harness IIS (.NET) deployments, you should have an understanding of [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts).
+Before learning about Harness IIS (.NET) deployments, you should have an understanding of [Harness Key Concepts](../../../starthere-firstgen/harness-key-concepts.md).
 
 ### Video Summary
 
@@ -58,12 +58,12 @@ The following list describes the major steps of a Harness IIS (.NET) deployment:
 | 5 | Create the Harness **Service** using the **Windows Remote Management (WinRM)** Deployment Type. | Add an IIS website, application, or virtual directory template in a Harness Service, revise the Deployment Specification, and any config variables and files. |
 | 6 | Create the Harness **Environment** and Infrastructure Definition for your deployment, and any overrides. | Using the Harness Cloud Provider you set up, you can select the target environment for your deployment.You can also override any Service settings. This enables you to use a single Service with multiple Harness Environments. |
 | 7 | Create the Website, Application, and Virtual Directory deployments in Harness Basic **Workflows**. | The Workflow deploys the Website, Application, and Virtual Directory templates defined in the Harness Service to the environment in the Harness Infrastructure Definition. |
-| 8 | Deploy the Workflow. | Once you've deployed a Workflow, learn how to improve your IIS (.NET) CD: <br />&bull;&nbsp; [Workflows](https://docs.harness.io/article/m220i1tnia-workflow-configuration) <br />&bull;&nbsp; [Triggers](https://docs.harness.io/article/xerirloz9a-add-a-trigger-2) <br />&bull;&nbsp; [Infrastructure Provisioners Overview](https://docs.harness.io/article/o22jx8amxb-add-an-infra-provisioner) |
+| 8 | Deploy the Workflow. | Once you've deployed a Workflow, learn how to improve your IIS (.NET) CD: <br />&bull;&nbsp; [Workflows](../../model-cd-pipeline/workflows/workflow-configuration.md) <br />&bull;&nbsp; [Triggers](../../model-cd-pipeline/triggers/add-a-trigger-2.md) <br />&bull;&nbsp; [Infrastructure Provisioners Overview](../../model-cd-pipeline/infrastructure-provisioner/add-an-infra-provisioner.md) |
 
 ### Next Steps
 
 Read the following topics to build on what you've learned:
 
-* [IIS (.NET) Quickstart](https://docs.harness.io/article/2oo63r9rwb-iis-net-quickstart)
-* [IIS (.NET)](https://docs.harness.io/category/iis-(https://docs.harness.io.net)-deployments) How-tos
+* [IIS (.NET) Quickstart](../../../first-gen-quickstarts/iis-net-quickstart.md)
+* [IIS (.NET)](docs/category/iis-net-deployments) How-tos
 

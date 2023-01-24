@@ -12,8 +12,8 @@ Triggers automate deployments using a variety of conditions, such as Git events,
 
 ### Important Notes
 
-* To trigger Workflows and Pipeline using the Harness GraphQL API, see [Trigger Workflows or Pipelines Using GraphQL API](https://docs.harness.io/article/s3leksekny-trigger-workflow-or-a-pipeline-using-api).
-* Currently, [YAML-based Triggers](https://docs.harness.io/article/21kgaw4h86-harness-yaml-code-reference#triggers) are behind the feature flag `TRIGGER_YAML`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+* To trigger Workflows and Pipeline using the Harness GraphQL API, see [Trigger Workflows or Pipelines Using GraphQL API](../../../firstgen-platform/techref-category/api/trigger-workflow-or-a-pipeline-using-api.md).
+* Currently, [YAML-based Triggers](../../../firstgen-platform/techref-category/configuration-as-code-yaml/harness-yaml-code-reference.md#triggers) are behind the feature flag `TRIGGER_YAML`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 
 You can always execute a Workflow or Pipeline manually, and a Trigger does not change any approval requirements in a Workflow or Pipeline.
@@ -39,4 +39,4 @@ To prevent too many Workflows or Pipelines from being deployed to the same infra
 
 ### Troubleshooting Trigger Permissions
 
-See [Triggers and RBAC](https://docs.harness.io/article/su0wpdarqi-triggers-and-rbac) and [Troubleshooting](https://docs.harness.io/article/g9o2g5jbye-troubleshooting-harness).
+See [Triggers and RBAC](../../concepts-cd/deployment-types/triggers-and-rbac.md) and [Troubleshooting](../../../firstgen-troubleshooting/troubleshooting-harness.md).

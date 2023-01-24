@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/article/vynj4hxt98).The CloudFormation output variables you use to map CloudFormation template outputs in an Infrastructure Definition can also be output in other Workflow commands.
+This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../../continuous-delivery/cd-advanced/cloudformation-howto/cloud-formation-how-tos.md).The CloudFormation output variables you use to map CloudFormation template outputs in an Infrastructure Definition can also be output in other Workflow commands.
 
 For example, if you use `${cloudformation.Region}` to map a region output to the AWS region in an Infrastructure Definition, you can add a Shell Script step in your Workflow and use `echo ${cloudformation.Region}` to print the value.
 
@@ -53,7 +53,7 @@ This topic assumes you have a Workflow that uses an Infrastructure Definition th
 
 For details, see [Map CloudFormation Infrastructure](map-cloud-formation-infrastructure.md).
 
-Add a Workflow step where you want to use the CloudFormation template output value. Typically, this is a [Shell Script](https://docs.harness.io/article/1fjrjbau7x-capture-shell-script-step-output) step.
+Add a Workflow step where you want to use the CloudFormation template output value. Typically, this is a [Shell Script](../../model-cd-pipeline/workflows/capture-shell-script-step-output.md) step.
 
 ### Step 2: Enter the Output Variable Expression
 

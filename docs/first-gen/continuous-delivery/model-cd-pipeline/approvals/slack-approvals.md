@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 Currently, this feature is behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature. Feature Flags can only be removed for Harness Professional and Essentials editions. Once the feature is released to a general audience, it's available for Trial and Community Editions.Harness users can approve or reject Workflows and Pipelines directly from Slack.
 
-To configure Harness notifications to Slack *without* enabling deployment approvals from Slack, see [Send Notifications Using Slack](https://docs.harness.io/article/4blpfqwfdc-send-notification-using-slack) and [Send Slack Messages from Workflows](https://docs.harness.io/article/4zd81qhhiu-slack-notifications).
+To configure Harness notifications to Slack *without* enabling deployment approvals from Slack, see [Send Notifications Using Slack](../../../firstgen-platform/account/manage-notegroups/send-notification-using-slack.md) and [Send Slack Messages from Workflows](../../../firstgen-platform/account/manage-notegroups/slack-notifications.md).
 
 ### Step 1: Create Slack App
 
@@ -65,14 +65,14 @@ Now, you're ready to set up notifications for the Harness User Group, and the Sl
 Enabling Slack notifications in Harness is straightforward, but there are some important considerations:
 
 * Select a Harness User Group that has appropriate permissions. These permissions must include **Application: Execute Workflow** and **Execute Pipeline** permissions for all relevant Applications.  
-See [Application Permissions](https://docs.harness.io/article/ven0bvulsj#application_permissions) in [Managing Users and Groups (RBAC)](https://docs.harness.io/article/ven0bvulsj-users-and-permissions).
+See [Application Permissions](../../../firstgen-platform/security/access-management-howtos/users-and-permissions.md#application-permissions) in [Managing Users and Groups (RBAC)](../../../firstgen-platform/security/access-management-howtos/users-and-permissions.md).
 * You must create a Slack channel that has the same members as the User Group.
 * You must manually keep the Slack channel's membership synchronized with the User Group's membership.
 * You should normally configure this as a private Slack channel.
 
 Any member of the Slack channel that you configure will be able to approve or reject deployments. This is why Harness emphasizes the importance of using a private channel, and of manually maintaining synchronization between your Harness User Group's membership and the Slack channel's membership.Once you have selected the appropriate User Group and Slack channel to use:
 
-1. Open the User Group's notification settings. See [Add Notification Settings for User Groups](https://docs.harness.io/article/kf828e347t#step_add_notification_settings_for_user_groups).
+1. Open the User Group's notification settings. See [Add Notification Settings for User Groups](../../../firstgen-platform/account/manage-notegroups/notification-groups.md#step-add-notification-settings-for-user-groups).
 2. In **Notification Settings**, specify the **Slack Channel Name**.
 3. Paste in the **Slack Webhook URL** you copied above in [Step 2: Configure Harness API Endpoint in Slack](slack-approvals.md#step-2-configure-harness-api-endpoint-in-slack).![](./static/slack-approvals-07.png)
 
@@ -104,7 +104,7 @@ To see how approval of this step works in practice, see [Harness UI Approvals](a
 
 ### See Also
 
-* [Send Notifications Using Slack](https://docs.harness.io/article/4blpfqwfdc-send-notification-using-slack)
-* [Send Slack Messages from Workflows](https://docs.harness.io/article/4zd81qhhiu-slack-notifications)
-* [Set Up Slack Notifications for CE](https://docs.harness.io/article/5xiwejal3p-set-up-slack-notifications)
+* [Send Notifications Using Slack](../../../firstgen-platform/account/manage-notegroups/send-notification-using-slack.md)
+* [Send Slack Messages from Workflows](../../../firstgen-platform/account/manage-notegroups/slack-notifications.md)
+* [Set Up Slack Notifications for CE](../../../cloud-cost-management/cost-report/set-up-slack-notifications.md)
 

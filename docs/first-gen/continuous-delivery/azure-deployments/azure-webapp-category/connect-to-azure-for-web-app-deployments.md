@@ -26,24 +26,24 @@ In this topic:
 ### Before You Begin
 
 * [Azure Web App Deployments Overview](azure-web-app-deployments-overview.md)
-* [Harness Delegate Overview](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation)
-* [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts)
+* [Harness Delegate Overview](../../../firstgen-platform/account/manage-delegates/delegate-installation.md)
+* [Harness Key Concepts](../../../starthere-firstgen/harness-key-concepts.md)
 
 ### Supported Platforms and Technologies
 
-See  [Supported Platforms and Technologies](https://docs.harness.io/article/220d0ojx5y-supported-platforms).
+See  [Supported Platforms and Technologies](../../../starthere-firstgen/supported-platforms.md).
 
 ### Review: Azure Connection Options
 
-As covered in [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts), you need to install a Harness Delegate in your infrastructure before setting up your Harness deployment.
+As covered in [Harness Key Concepts](../../../starthere-firstgen/harness-key-concepts.md), you need to install a Harness Delegate in your infrastructure before setting up your Harness deployment.
 
-There are several types of Delegates you can use for an Azure App Service deployment, described in [Delegate Installation Overview](https://docs.harness.io/article/igftn7rrtg-delegate-installation-overview).
+There are several types of Delegates you can use for an Azure App Service deployment, described in [Delegate Installation Overview](../../../firstgen-platform/account/manage-delegates/delegate-installation-overview.md).
 
 Shell Script, Docker, Kubernetes, and Helm Delegates are all options.
 
 ### Step 1: Install a Harness Delegate
 
-Follow the installation steps for the Harness Delegate you want to install. See [Delegate Installation Overview](https://docs.harness.io/article/igftn7rrtg-delegate-installation-overview) for the available options.
+Follow the installation steps for the Harness Delegate you want to install. See [Delegate Installation Overview](../../../firstgen-platform/account/manage-delegates/delegate-installation-overview.md) for the available options.
 
 Make sure this Delegate is in, or can connect to, the resource group for your Azure Web App.
 
@@ -51,7 +51,7 @@ Make sure this Delegate is in, or can connect to, the resource group for your Az
 
 A Harness Azure Cloud Provider connects to your Azure subscription using your Client ID and Tenant ID.
 
-Follow the steps in [Add Microsoft Azure Cloud Provider](https://docs.harness.io/article/4n3595l6in-add-microsoft-azure-cloud-provider) to connect Harness to Azure.
+Follow the steps in [Add Microsoft Azure Cloud Provider](../../../firstgen-platform/account/manage-connectors/add-microsoft-azure-cloud-provider.md) to connect Harness to Azure.
 
 That's all the setup you need to connect Harness to your account and start your deployment.
 
@@ -63,15 +63,15 @@ If you store the Docker image in Azure Container Registry, then you can use the 
 
 The Harness Azure Web Application Service type supports the following repos:
 
-* **Docker Registry:** see [Add Docker Registry Artifact Servers](https://docs.harness.io/article/tdj2ghkqb0-add-docker-registry-artifact-servers).
-* **Artifactory:** see [Add Artifactory Servers](https://docs.harness.io/article/nj3p1t7v3x-add-artifactory-servers).
-* **Azure Container Registry:** see [Add Microsoft Azure Cloud Provider](https://docs.harness.io/article/4n3595l6in-add-microsoft-azure-cloud-provider). You can use the Azure Cloud Provider you set up in the previous step.
-* **Amazon S3:** see [Add Amazon Web Services (AWS) Cloud Provider](https://docs.harness.io/article/wt1gnigme7-add-amazon-web-services-cloud-provider).
-* **Jenkins:** see [Add Jenkins Artifact Servers](https://docs.harness.io/article/qa7lewndxq-add-jenkins-artifact-servers).
+* **Docker Registry:** see [Add Docker Registry Artifact Servers](../../../firstgen-platform/account/manage-connectors/add-docker-registry-artifact-servers.md).
+* **Artifactory:** see [Add Artifactory Servers](../../../firstgen-platform/account/manage-connectors/add-artifactory-servers.md).
+* **Azure Container Registry:** see [Add Microsoft Azure Cloud Provider](../../../firstgen-platform/account/manage-connectors/add-microsoft-azure-cloud-provider.md). You can use the Azure Cloud Provider you set up in the previous step.
+* **Amazon S3:** see [Add Amazon Web Services (AWS) Cloud Provider](../../../firstgen-platform/account/manage-connectors/add-amazon-web-services-cloud-provider.md).
+* **Jenkins:** see [Add Jenkins Artifact Servers](../../../firstgen-platform/account/manage-connectors/add-jenkins-artifact-servers.md).
 
 For example, here are the Docker Hub settings in an Azure Web App:
 
-Here's the Harness [Docker Registry Artifact Server](https://docs.harness.io/article/tdj2ghkqb0-add-docker-registry-artifact-servers):
+Here's the Harness [Docker Registry Artifact Server](../../../firstgen-platform/account/manage-connectors/add-docker-registry-artifact-servers.md):
 
 ![](./static/connect-to-azure-for-web-app-deployments-22.png)
 
