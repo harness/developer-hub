@@ -1,5 +1,5 @@
 ---
-title: Workflow: Automate Kubernetes delegate installation
+title: Workflow to automate Kubernetes delegate installation
 description: Provides a workflow to automate delegate installation.
 # sidebar_position: 2
 helpdocs_topic_id: 
