@@ -2,6 +2,7 @@
 title: How Feature Flag SDKs Receive Changes From the Feature Flag Client
 description: This topic describes how the SDKs communicate with Harness Feature Flags to receive flag changes.
 tags: 
+   - helpDocs
    - feature flag
    - SDK
 # sidebar_position: 2

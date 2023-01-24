@@ -17,18 +17,18 @@ This topic describes how to build a SCIM endpoint using OKTA and integrate it wi
 ### Before you begin
 
 * This topic assumes you understand System for Cross-domain Identity Management (SCIM). For an overview, see the article [Introduction to System for Cross-domain Identity Management (SCIM)](https://medium.com/@pamodaaw/system-for-cross-domain-identity-management-scim-def45ea83ae7).
-* [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md)
+* [Learn Harness' Key Concepts](https://docs.harness.io/article/hv2758ro4e-learn-harness-key-concepts)
 * [Access Management (RBAC) Overview](../4_Role-Based-Access-Control/1-rbac-in-harness.md)
 * Make sure you are an Administrator in your Okta account and have the **Account Admin** permissions in Harness.
 * Make sure you have a Harness [API Key](../4_Role-Based-Access-Control/7-add-and-manage-api-keys.md) and a valid Token under it. The API Key must have all permissions on the Users and User Groups.
 
-### Review: Harness Okta SCIM integration
+### Review: Harness Okta SCIM Integration
 
 By using Okta as your identity provider, you can efficiently provision and manage users in your Harness Account, Org and Project. Harness' [SCIM](https://www.okta.com/blog/2017/01/what-is-scim/) integration enables Okta to serve as a single identity manager, for adding and removing users, and for provisioning User Groups. This is especially efficient for managing many users.
 
 In exchange for the convenience of Okta-provisioned users and groups, you must configure several aspects of Okta, as described in the following sections. You will also have restrictions on modifying Okta-provisioned users and groups natively within Harness, as described in [Limitations](#limitations).
 
-#### Supported features
+#### Features Supported
 
 Once you have set up the SCIM integration between Okta and Harness (as described below), Administrators will be able to perform the following Harness actions within Okta:
 
@@ -56,13 +56,9 @@ Where a User Group has been provisioned from Okta, you cannot use Harness Manag
 
 You must use Okta to assign these users to other User Groups (to grant corresponding permissions). You must also use Okta to delete these users from Harness, by removing them from the corresponding Okta app.
 
-
-:::note
 When you use Okta to directly assign users to Harness, those users initially have no User Group assignments in Harness. With this method, you are free to use Harness Manager to add and modify User Group assignments.
-:::
 
-
-### Step 1: Create app integration in Okta
+### Step 1: Create App Integration in Okta
 
 To automate the provisioning of users and groups, you must add a Harness app to your Okta administrator account. To do that perform the following steps
 
@@ -100,8 +96,7 @@ Click **General** and then click **Edit** in **App Settings.**
 Select **Enable SCIM provisioning** in **Provisioning**. Click **Save**.
 
 ![](./static/provision-users-with-okta-scim-09.png)
-
-### Step 2: Authorize Okta integration
+### Step 2: Authorize Okta Integration
 
 In your Okta administrator account and click **Applications > Applications**.
 
@@ -134,7 +129,7 @@ Next, click **To App** settings in **Provisioning** and enable **Create Users**,
 ![](./static/provision-users-with-okta-scim-12.png)
 Click **Save**.
 
-### Option: Create users
+### Option: Create Users
 
 To directly assign your Harness app to individual (existing) Okta users, thereby provisioning the users in your Harness Account perform the following steps:
 
@@ -158,8 +153,7 @@ You can edit or delete users from here.
 The user is now listed in your Harness account.
 
 ![](./static/provision-users-with-okta-scim-14.png)
-
-### Option: Assign groups
+### Option: Assign Groups
 
 To assign the Harness app to Okta-defined groups of users, perform the following steps:
 
@@ -179,39 +173,25 @@ Groups with the Harness app assignment now appear in **Groups**.
 
 You can edit or delete users from here.
 
-#### Push assigned groups to Harness
+#### Group Push to Harness
 
 To provision your application's assigned groups in Harness:
 
 Click **Push Groups** in your application, then select **Push Groups** > **Find Groups by Name.**
 
 ![](./static/provision-users-with-okta-scim-15.png)
-
 Search for the group(s) you want to provision.
 
 ![](./static/provision-users-with-okta-scim-16.png)
-
 Click **Save**. You can see the status of this Push Group in your application.
 
 ![](./static/provision-users-with-okta-scim-17.png)
-
-
-:::note
-If an error prevents adding, deleting, or updating an individual user to Harness, you must retry provisioning the user later, after resolving the issues. For more information, see [Troubleshooting Group Push](https://help.okta.com/en-us/Content/Topics/users-groups-profiles/usgp-group-push-troubleshoot.htm).
-:::
-
-
-This group is now listed in your Harness account.
+If an error prevents adding, deleting, or updating an individual user to Harness, you must retry provisioning the user in Okta later, after resolving the issues. For more information, see [Troubleshooting Group Push](https://help.okta.com/en-us/Content/Topics/users-groups-profiles/usgp-group-push-troubleshoot.htm).This group is now listed in your Harness account.
 
 ![](./static/provision-users-with-okta-scim-18.png)
-
-
-:::note
  When provisioning user groups through SCIM, Harness replaces any `.`,`-`, or a space in your user group name and uses it as the group identifier. For example, if your group name is `example-group` in your SCIM provider, its identifier in Harness would be `example_group`.
-
-:::
  
- ### Option: Update user attributes
+ ### Option: Update User Attributes
 
 You can edit a user's profile in Okta to update the following attribute values for the corresponding user in Harness:
 
@@ -228,18 +208,10 @@ To update user attributes:
 3. Click the **Profile** tab, then click the **Edit** button.
 4. Update the desired attributes, then click **Save**.![](./static/provision-users-with-okta-scim-19.png)
 
+Only the five fields listed at the top of this section will be synced to Harness users. You can update values in other fields, but those values will be saved for this user only in Okta. They won't be reflected in Harness.  
+The Display name in Okta is displayed as the user name in Harness.
 
-:::note
-Only the five fields listed at the top of this section are synced to Harness users. You can update values in other fields, but those values are saved for this user in Okta only and are not updated in Harness.
-
-Enable the feature flag UPDATE_EMAILS_VIA_SCIM to reflect changes to the email address in the SCIM provider.
-
-The Display name in Okta is displayed as the user name in Harness. 
-
-:::
-
-
-#### Deactivate users
+#### Deactivate Users
 
 You can deactivate users in Okta to delete their Harness accounts, as follows:
 
@@ -247,23 +219,13 @@ You can deactivate users in Okta to delete their Harness accounts, as follows:
 2. From that user's profile, select **More Actions** > **Deactivate**.
 3. Click **Deactivate** in the resulting confirmation dialog.
 
-
-:::note
 Deactivating a user removes them from all their provisioned apps, including Harness. While a user account is deactivated, you cannot make changes to it. However, as shown below, you can reactivate users by clicking **Activate** on their profile page.
 
-:::
-
-### What if I already have app integration for Harness FirstGen?
+### What If I Already Have App Integration for Harness FirstGen?
 
 If you currently have a Harness FirstGen App Integration setup in your IDP and are now trying to set up one for Harness NextGen, make sure the user information is also included in the FirstGen App Integration before attempting to log into Harness NextGen through SSO.
 
-
-:::note
-Harness authenticates users using either the FirstGen App Integration or the NextGen App Integration. If you have set up both, Harness continues to use your existing App Integration in FirstGen to authenticate users that attempt to log in using SSO.
-
-:::
-
-Let us look at the following example:
+Harness authenticates users using either the FirstGen App Integration or the NextGen App Integration. If you have set up both, Harness continues to use your existing App Integration in FirstGen to authenticate users that attempt to log in using SSO.Let us look at the following example:
 
 1. An App Integration is already set up for FirstGen with 2 users as members:  
 `user1@example.com` and `user2@example.com`.
@@ -274,7 +236,7 @@ Let us look at the following example:
 `user1@example.com` is a member of the FirstGen App Integration and hence is authenticated and successfully logged in to Harness NextGen.  
 `user_2@example.com` is not a member of the FirstGen App Integration, hence the authentication fails and the user cannot log in to Harness NextGen.![](./static/provision-users-with-okta-scim-20.png)
 
-### Assigning permissions post-provisioning
+### Assigning Permissions Post-Provisioning
 
 Permissions can be assigned manually or via the Harness API:
 

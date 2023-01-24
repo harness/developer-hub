@@ -224,7 +224,7 @@ Initialize terraform. This will download the Harness Provider onto your machine.
 terraform init
 ```
 
-Run the following step to see exactly the changes terraform is going to make on your behalf.
+Run the following step to see exactly the changes terraform is going to make on your behaf.
 ```
 terraform plan
 ```

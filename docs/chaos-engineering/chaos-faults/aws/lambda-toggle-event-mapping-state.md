@@ -5,7 +5,7 @@ title: Lambda Toggle Event Mapping State
 
 ## Introduction
 
-- It toggles the event source mapping state to <code>disable</code> for a lambda function during a specified chaos duration, causing failed invocation of the function.
+- It toggles the event source mapping state to <code>disable</code> for a lambda function during a certain chaos duration.
 - It checks the performance of the running application/service when the event source mapping is not enabled which can cause, for example, missing entries on a database.
 
 :::tip Fault execution flow chart
@@ -27,7 +27,7 @@ It helps understand if you have proper error handling or auto recovery configure
 
 :::info
 
-- Ensure that Kubernetes Version >= 1.17
+- Kubernetes >= 1.17
 - AWS Lambda event source mapping attached to the lambda function.
 - Kubernetes secret that has AWS access configuration(key) in the `CHAOS_NAMESPACE`. A secret file looks like this:
 
@@ -46,39 +46,6 @@ stringData:
 ```
 
 - If you change the secret key name (from `cloud_config.yml`), update the `AWS_SHARED_CREDENTIALS_FILE` environment variable value on `experiment.yaml` with the same name.
-
-## Permission Requirement
-
-- Here is an example AWS policy to execute this fault.
-
-<details>
-<summary>View policy for this fault</summary>
-
-```json
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": [
-                "lambda:ListEventSourceMappings",
-                "lambda:DeleteEventSourceMapping",
-                "lambda:UpdateEventSourceMapping",
-                "lambda:CreateEventSourceMapping",
-                "lambda:UpdateFunctionConfiguration",
-                "lambda:GetFunctionConcurrency",
-                "lambda:GetFunction",
-                "lambda:DeleteFunctionConcurrency",
-                "lambda:PutFunctionConcurrency"
-            ],
-            "Resource": "*"
-        }
-    ]
-}
-```
-</details>
-
-- Refer a [superset permission/policy](./policy-for-all-aws-faults) to execute all AWS faults.
 
 ## Default Validations
 

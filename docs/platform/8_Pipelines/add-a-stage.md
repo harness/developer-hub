@@ -16,7 +16,7 @@ The module you select determines the stage settings.
 
 ### Before you begin
 
-* [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md)
+* [Learn Harness' Key Concepts](https://docs.harness.io/article/hv2758ro4e-learn-harness-key-concepts)
 * [Create Organizations and Projects](../1_Organizations-and-Projects/2-create-an-organization.md)
 
 ### Step 1: Create a Pipeline

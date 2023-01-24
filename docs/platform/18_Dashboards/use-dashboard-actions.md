@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic describes how to use different dashboard actions. The document uses [AWS Cost Dashboard](../../cloud-cost-management/2-use-cloud-cost-management/8-ccm-dashboards-and-access-control/ccm-dashboards-by-harness/aws-dashboard.md) as an example. You can use **Dashboard actions** in the same way for other **By Harness Dashboards** too. For example, [GCP Cost Dashboard](../../cloud-cost-management/2-use-cloud-cost-management/8-ccm-dashboards-and-access-control/ccm-dashboards-by-harness/gcp-dashboard.md), [Azure Cost Dashboard](../../cloud-cost-management/2-use-cloud-cost-management/8-ccm-dashboards-and-access-control/ccm-dashboards-by-harness/azure-cost-dashboard.md), [Cluster Cost Dashboard](../../cloud-cost-management/2-use-cloud-cost-management/8-ccm-dashboards-and-access-control/ccm-dashboards-by-harness/cluster-cost-dashboard.md), and so on.
+This topic describes how to use different dashboard actions. The document uses [AWS Cost Dashboard](https://docs.harness.io/article/u3yxrebj6r-aws-dashboard) as an example. You can use **Dashboard actions** in the same way for other **By Harness Dashboards** too. For example, [GCP Cost Dashboard](https://docs.harness.io/article/tk55quhfi4-gcp-dashboard), [Azure Cost Dashboard](https://docs.harness.io/article/n7vpieto0n-azure-cost-dashboard), [Cluster Cost Dashboard](https://docs.harness.io/article/uai4ud1ibi-cluster-cost-dashboard), and so on.
 
 ### Step: Use Dashboard Actions
 

@@ -16,7 +16,10 @@ title: EC2 HTTP Modify Header
 
 :::info
 
-- Ensure that Kubernetes Version > 1.17
+- Kubernetes >= 1.17
+
+**AWS EC2 Access Requirement:**
+
 - SSM agent is installed and running in the target EC2 instance.
 - Kubernetes secret with AWS Access Key ID and Secret Access Key credentials in the `CHAOS_NAMESPACE`. A secret file looks like:
 
@@ -40,64 +43,6 @@ stringData:
 
 You can pass the VM credentials as secrets or as an chaosengine environment variable.
 :::
-
-## Permission Requirement
-
-- Here is an example AWS policy to execute ec2-modify-header fault.
-
-<details>
-<summary>View policy for this fault</summary>
-
-```json
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": [
-                "ssm:GetDocument",
-                "ssm:DescribeDocument",
-                "ssm:GetParameter",
-                "ssm:GetParameters",
-                "ssm:SendCommand",
-                "ssm:CancelCommand",
-                "ssm:CreateDocument",
-                "ssm:DeleteDocument",
-                "ssm:GetCommandInvocation",          
-                "ssm:UpdateInstanceInformation",
-                "ssm:DescribeInstanceInformation"
-            ],
-            "Resource": "*"
-        },
-        {
-            "Effect": "Allow",
-            "Action": [
-                "ec2messages:AcknowledgeMessage",
-                "ec2messages:DeleteMessage",
-                "ec2messages:FailMessage",
-                "ec2messages:GetEndpoint",
-                "ec2messages:GetMessages",
-                "ec2messages:SendReply"
-            ],
-            "Resource": "*"
-        },
-        {
-            "Effect": "Allow",
-            "Action": [
-                "ec2:DescribeInstanceStatus",
-                "ec2:DescribeInstances"
-            ],
-            "Resource": [
-                "*"
-            ]
-        }
-    ]
-}
-```
-</details>
-
-- Refer a [superset permission/policy](./policy-for-all-aws-faults) to execute all AWS faults.
-
 
 ## Default Validations
 

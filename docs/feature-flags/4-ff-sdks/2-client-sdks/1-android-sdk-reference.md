@@ -31,7 +31,7 @@ Make sure you read and understand:
 
 ## Version
 
-The current version of this SDK is **1.0.15.** To use this version of the SDK, you also need to use Android API level 19 or higher.
+The current version of this SDK is **1.0.13.** To use this version of the SDK, you also need to use Android API level 19 or higher.
 
 ## Requirements
 
@@ -64,7 +64,7 @@ Then, in your app module's `build.gradle` file, add the following dependency f
 
 
 ```
-implementation 'io.harness:ff-android-client-sdk:1.0.14'
+implementation 'io.harness:ff-android-client-sdk:1.0.13'
 ```
 ## Initialize the SDK
 
@@ -103,7 +103,7 @@ Regex: `^[A-Za-z0-9.@_-]*$`
 Must consist of only alphabetical characters, numbers, and the following symbols:  
 . (period)  
 @ (at sign)  
--(dash)  
+- (dash)  
 \_ (underscore)  
   
 The characters can be lowercase or uppercase but cannot include accented letters, for example `Cafe_789`.  
@@ -189,9 +189,7 @@ There are different methods for the different Variation types and for each metho
 * Identifier of the Flag you want to evaluate
 * The default Variation
 
-:::note
-The Flag is evaluated against the Target you pass in when initializing the SDK.
-:::
+> **☆ NOTE —** The Flag is evaluated against the Target you pass in when initializing the SDK.
 
 ### Evaluate a boolean Variation
 

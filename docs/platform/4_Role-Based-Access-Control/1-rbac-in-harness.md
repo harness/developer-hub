@@ -219,6 +219,7 @@ The following blog post walks you through User and Role Management in Harness:
 
 ### Next steps
 
+* [Get Started with RBAC](https://docs.harness.io/article/e1ww0jmacp-getting-started-with-rbac)
 * [Add and Manage Users](../4_Role-Based-Access-Control/3-add-users.md)
 * [Add and Manage User Groups](../4_Role-Based-Access-Control/4-add-user-groups.md)
 * [Add and Manage Service Accounts](../4_Role-Based-Access-Control/6-add-and-manage-service-account.md)

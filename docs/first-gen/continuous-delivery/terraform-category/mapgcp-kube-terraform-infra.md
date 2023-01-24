@@ -62,7 +62,7 @@ When you map a Terraform script output to a Harness Infrastructure Definition se
 
 ### Option 1: Map an Agnostic Kubernetes Cluster
 
-Provisioning Kubernetes is supported with the Kubernetes Cluster Cloud Provider and Google Cloud Platform Cloud Provider, but not the Azure Cloud Provider.Harness supports platform-agnostic Kubernetes cluster connections using its [Kubernetes Cluster Cloud Provider](../../firstgen-platform/account/manage-connectors/add-kubernetes-cluster-cloud-provider.md).
+Provisioning Kubernetes is supported with the Kubernetes Cluster Cloud Provider and Google Cloud Platform Cloud Provider, but not the Azure Cloud Provider.Harness supports platform-agnostic Kubernetes cluster connections using its [Kubernetes Cluster Cloud Provider](https://docs.harness.io/article/l68rujg6mp-add-kubernetes-cluster-cloud-provider).
 
 When you set up an Infrastructure Definition using a Kubernetes Cluster Cloud Provider you can map your Terraform script outputs to the required Infrastructure Definition settings.
 

@@ -59,7 +59,7 @@ See [Add a GitHub Connector](add-a-git-hub-connector.md).
 
 ### Add AWS CodeCommit Repo
 
-For details on settings and permissions, see [AWS CodeCommit Connector Settings Reference](ref-cloud-providers/aws-connector-settings-reference.md).
+For details on settings and permissions, see [AWS CodeCommit Connector Settings Reference](https://docs.harness.io/article/jed9he2i45-aws-code-commit-connector-settings-reference).
 
 
 :::note

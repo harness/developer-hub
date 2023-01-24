@@ -12,11 +12,11 @@ In this tutorial, you will create a Harness CI pipeline for a Java HTTP server a
 3. Pull the published Docker image, then pull and run it as a [Background step](/docs/continuous-integration/ci-technical-reference/background-step-settings).
 4. Run a connectivity test against the running application.
 
-```mdx-code-block
-import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
-```
+:::tip
 
-<CISignupTip />
+For a comprehensive guide on application testing, Harness provides O'Reilly's **Full Stack Testing** book for free at https://harness.io/resources/oreilly-full-stack-testing.
+
+:::
 
 ## Create your pipeline
 
@@ -27,22 +27,16 @@ import TabItem from '@theme/TabItem';
 
 1. Fork the repository https://github.com/keen-software/jhttp into your GitHub account.
 2. Follow the **Get Started** wizard in Harness CI.
-
-```mdx-code-block
-<Tabs>
-<TabItem value="newaccount" label="New account" default>
-```
-[Sign up](https://app.harness.io/auth/#/signup/?module=ci&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=ci-plg&utm_content=get-started) for a new Harness account. Select the **Continuous Integration** module after your initial sign in. This brings you to the **Get Started** wizard.
-```mdx-code-block
-</TabItem>
-<TabItem value="existingaccount" label="Existing account">
-```
-[Log in](https://app.harness.io/auth/#/signin) to your Harness account. You can either create a new project or select an existing project, and then select the **Continuous Integration** module. In the **Project** pane, expand the **Project Setup** menu, and then select **Get Started**.
-```mdx-code-block
-</TabItem>
-</Tabs>
-```
-
+   ```mdx-code-block
+   <Tabs>
+     <TabItem value="newaccount" label="New account" default>
+       If you are signing in to Harness for the first time, select the <strong>Continuous Integration</strong> module after your initial sign in. This brings you to the <strong>Get Started</strong> wizard.
+     </TabItem>
+     <TabItem value="existingaccount" label="Existing account">
+       If you have an existing Harness account, either create a new project or select an existing project, and then select the <strong>Continuous Integration</strong> module. In the <strong>Project</strong> pane, expand the <strong>Project Setup</strong> menu, and then select <strong>Get Started</strong>.
+     </TabItem>
+   </Tabs>
+   ```
 3. When you are prompted to select a repository, search for **jhttp**, select the repository that you forked in the earlier step, and then select **Configure Pipeline**.
 4. Select **Starter Pipeline**, and then select **Create Pipeline**.
 
@@ -220,9 +214,3 @@ Select **Save** in the YAML editor.
 4. Observe each step of the pipeline execution. When the first stage completes, test results appear on the **Tests** tab.
 
    When the second stage completes, you should see the successful `curl` command in the **Test Connection to Java HTTP Server** step.
-
-:::tip
-
-For a comprehensive guide on application testing, Harness provides O'Reilly's **Full Stack Testing** book for free at https://harness.io/resources/oreilly-full-stack-testing.
-
-:::

@@ -141,5 +141,5 @@ At runtime, Harness will replace the variable with the runtime value.
 
 ### See also
 
-* [Platform Technical Reference](/docs/category/references)
+* [Platform Technical Reference](https://docs.harness.io/category/akr4ga1dfq-platform-technical-reference)
 

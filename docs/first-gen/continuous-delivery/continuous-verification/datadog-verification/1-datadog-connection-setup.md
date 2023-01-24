@@ -47,7 +47,7 @@ The trailing forward slash after `v1` (`v1/`) in mandatory.
 
 ### Step 4: Encrypted API Key
 
-For secrets and other sensitive settings, select or create a new [Harness Encrypted Text secret](../../../firstgen-platform/security/secrets-management/use-encrypted-text-secrets.md).Enter the API key for API calls.
+For secrets and other sensitive settings, select or create a new [Harness Encrypted Text secret](https://docs.harness.io/article/ygyvp998mu-use-encrypted-text-secrets).Enter the API key for API calls.
 
 To create an API key in Datadog, do the following:
 
@@ -64,7 +64,7 @@ To create an API key in Datadog, do the following:
 
 ### Step 5: Encrypted Application Key
 
-For secrets and other sensitive settings, select or create a new [Harness Encrypted Text secret](../../../firstgen-platform/security/secrets-management/use-encrypted-text-secrets.md).Enter the application key.
+For secrets and other sensitive settings, select or create a new [Harness Encrypted Text secret](https://docs.harness.io/article/ygyvp998mu-use-encrypted-text-secrets).Enter the application key.
 
 To create an application key in Datadog, do the following:
 

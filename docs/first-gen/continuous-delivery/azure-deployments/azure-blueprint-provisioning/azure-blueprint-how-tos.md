@@ -87,7 +87,7 @@ If the version does not exist, the deployment process (creating or updating Blue
 
 ### Azure Roles Required
 
-See **Azure Blueprint** in [Add Microsoft Azure Cloud Provider](../../../firstgen-platform/account/manage-connectors/add-microsoft-azure-cloud-provider.md).
+See **Azure Blueprint** in [Add Microsoft Azure Cloud Provider](https://docs.harness.io/article/4n3595l6in-add-microsoft-azure-cloud-provider).
 
 ### Harness Permissions Required
 

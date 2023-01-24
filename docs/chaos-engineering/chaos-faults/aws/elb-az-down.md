@@ -26,10 +26,9 @@ Detaching the AZ from the load balancer will disrupt an application's performanc
 ## Prerequisites
 
 :::info
-- Ensure that Kubernetes Version >= 1.17
+- Kubernetes > 1.17
 - AWS access to attach or detach an AZ from ELB.
 - Minimum number of AZ is attached to the ELB, else the fault fails to detach the given AZ.
-- Ensure that the target ELB is a classic load balancer as the experiment right now only supports classic load balancer.
 - Kubernetes secret that has the AWS access configuration(key) in the `CHAOS_NAMESPACE`. A sample secret file looks like:
 ```yaml
 apiVersion: v1
@@ -46,36 +45,6 @@ stringData:
 ```
 - If you change the secret key name (from `cloud_config.yml`), update the `AWS_SHARED_CREDENTIALS_FILE` environment variable value on `fault.yaml`with the same name.
 :::
-
-## Permission Requirement
-
-- Here is an example AWS policy to execute this fault.
-
-<details>
-<summary>View policy for this fault</summary>
-
-```json
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": [
-                "ec2:DescribeInstanceStatus",
-                "ec2:DescribeInstances",
-                "ec2:DescribeSubnets",
-                "elasticloadbalancing:DetachLoadBalancerFromSubnets",
-                "elasticloadbalancing:AttachLoadBalancerToSubnets",
-                "elasticloadbalancing:DescribeLoadBalancers"
-            ],
-            "Resource": "*"
-        }
-    ]
-}
-```
-</details>
-
-- Refer a [superset permission/policy](./policy-for-all-aws-faults) to execute all AWS faults.
 
 ## Default Validations
 

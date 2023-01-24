@@ -1,5 +1,5 @@
 ---
-title: Set up CCM for AWS
+title: Set Up Cloud Cost Management for AWS
 description: This topic describes how to set up cost visibility for AWS.
 # sidebar_position: 2
 helpdocs_topic_id: 80vbt5jv0q
@@ -291,12 +291,18 @@ When you are done with the **Report content** step, it will look something lik
   ![](./static/set-up-cost-visibility-for-aws-27.png)
 7. In the **S3 bucket**, click **Configure**.
 8. In **Configure S3 Bucket**, in **Create a bucket**, enter the **S3 bucket name**. This is the cost and usage S3 bucket name that you need to enter in Harness. For more information on S3 bucket naming requirements, see [Amazon S3 Bucket Naming Requirements](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-s3-bucket-naming-requirements.html).
-9.  Enter the report path prefix that you want to be prepended to the name of your report.
-10. Select **Hourly** in **Time granularity**.
-11. Select **Overwrite Existing Report** in **Report versioning**.
-12. Do not select any value in **Enable report data integration for**.
-13. Select **GZIP** in the **Compression type**.
-14. Click **Next**.  
+9. Select **Region** from the drop-down list and click **Next**. It is recommended to select **US East** (**N. Virginia**).
+    
+      ![](./static/set-up-cost-visibility-for-aws-28.png)
+10. In **Verify policy**, select the checkbox **I have confirmed that this policy is correct** and click **Save**.
+    
+      ![](./static/set-up-cost-visibility-for-aws-29.png)
+11. Enter the report path prefix that you want to be prepended to the name of your report.
+12. Select **Hourly** in **Time granularity**.
+13. Select **Overwrite Existing Report** in **Report versioning**.
+14. Do not select any value in **Enable report data integration for**.
+15. Select **GZIP** in the **Compression type**.
+16. Click **Next**.  
 When you are done with the **Delivery options** step, it will look something like this:
 
   ![](./static/set-up-cost-visibility-for-aws-30.png)

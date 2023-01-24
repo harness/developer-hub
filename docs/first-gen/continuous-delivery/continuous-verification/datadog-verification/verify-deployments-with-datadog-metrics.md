@@ -120,13 +120,13 @@ Check this checkbox to run this verification step in parallel with the previous 
 
 ### Review: Datadog and ECS
 
-For [ECS-based deployments](../../aws-deployments/ecs-deployment/ecs-deployments-overview.md), Datadog uses the container ID to fetch data for both metrics and logs. Harness can fetch the container ID if the Harness Delegate is running on same ECS cluster as the container or the Delegate must be in same AWS VPC and **port 51678** must be open for incoming traffic.
+For [ECS-based deployments](https://docs.harness.io/article/08whoizbps-ecs-deployments-overview), Datadog uses the container ID to fetch data for both metrics and logs. Harness can fetch the container ID if the Harness Delegate is running on same ECS cluster as the container or the Delegate must be in same AWS VPC and **port 51678** must be open for incoming traffic.
 
 Getting the container ID is available when you are using some of the later versions of ECS agents in your container instances. AWS documentation does not explicitly mention what agent version is needed. Hence, Harness first looks the version up, and if it there, Harness can proceed. If it is not there, Harness queries the port as a backup to get the container ID.
 
 ### Review: Harness Expression Support in CV Settings
 
-You can use expressions (`${...}`) for [Harness built-in variables](../../kubernetes-deployments/workflow-variables-expressions.md) and custom [Service](../../model-cd-pipeline/setup-services/service-configuration.md) and [Workflow](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md) variables in the settings of Harness Verification Providers.
+You can use expressions (`${...}`) for [Harness built-in variables](https://docs.harness.io/article/7bpdtvhq92-workflow-variables-expressions) and custom [Service](../../model-cd-pipeline/setup-services/service-configuration.md) and [Workflow](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md) variables in the settings of Harness Verification Providers.
 
 Expression support lets you template your Workflow verification steps. You can add custom expressions for settings, and then provide values for those settings at deployment runtime. Or you can use Harness built-in variable expressions and Harness will provide values at deployment runtime automatically.
 
@@ -186,7 +186,7 @@ To learn about the verification analysis features, see the following sections.
 
 ### Next Steps
 
-* [Configuration as Code](../../../firstgen-platform/config-as-code/configuration-as-code.md)
-* [Users and Permissions](../../../firstgen-platform/security/access-management-howtos/users-and-permissions.md)
+* [Configuration as Code](https://docs.harness.io/article/htvzryeqjw-configuration-as-code)
+* [Users and Permissions](https://docs.harness.io/article/ven0bvulsj-users-and-permissions)
 * [CV Strategies, Tuning, and Best Practice](../continuous-verification-overview/concepts-cv/cv-strategies-and-best-practices.md#algorithm-sensitivity-and-failure-criteria)
 

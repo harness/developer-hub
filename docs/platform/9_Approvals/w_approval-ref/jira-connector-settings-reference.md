@@ -14,7 +14,7 @@ You can connect Harness to Jira using a Harness Jira Connector. This Connector a
 
 For instructions on how to set up this Connector, see [Connect to Jira](../../7_Connectors/connect-to-jira.md).
 
-Looking for How-tos? See [Create Jira Issues in CD Stages](../../../continuous-delivery/cd-advanced/ticketing-systems-category/create-jira-issues-in-cd-stages.md), [Update Jira Issues in CD Stages](../../../continuous-delivery/cd-advanced/ticketing-systems-category/update-jira-issues-in-cd-stages.md), and [Adding Jira Approval Stages and Steps](../adding-jira-approval-stages.md).
+Looking for How-tos? See [Create Jira Issues in CD Stages](https://docs.harness.io/article/yu40zr6cvm-create-jira-issues-in-cd-stages), [Update Jira Issues in CD Stages](https://newdocs.helpdocs.io/article/urdkli9e74-update-jira-issues-in-cd-stages), and [Adding Jira Approval Stages and Steps](../adding-jira-approval-stages.md).
 
 ### Limitations
 
@@ -38,8 +38,8 @@ Enter your credentials. For **API Key**, use a Harness [Text Secret](../../6_Sec
 
 ### See also
 
-* [Create Jira Issues in CD Stages](../../../continuous-delivery/cd-advanced/ticketing-systems-category/create-jira-issues-in-cd-stages.md)
-* [Update Jira Issues in CD Stages](../../../continuous-delivery/cd-advanced/ticketing-systems-category/update-jira-issues-in-cd-stages.md)
-* [Using Jira Approval Steps in CD Stages](../../../continuous-delivery/cd-advanced/ticketing-systems-category/update-jira-issues-in-cd-stages.md)
+* [Create Jira Issues in CD Stages](https://docs.harness.io/article/yu40zr6cvm-create-jira-issues-in-cd-stages)
+* [Update Jira Issues in CD Stages](https://docs.harness.io/article/urdkli9e74-update-jira-issues-in-cd-stages)
+* [Using Jira Approval Steps in CD Stages](https://newdocs.helpdocs.io/article/urdkli9e74-update-jira-issues-in-cd-stages)
 * [Adding Jira Approval Stages](../adding-jira-approval-stages.md)
 

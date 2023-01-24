@@ -63,12 +63,7 @@ The target nodes should be in ready state before and after chaos injection.
         <td> The time duration for chaos insertion (seconds) </td>
         <td> Defaults to 60 </td>
       </tr>
-      <tr>
-        <td> LIB </td>
-        <td> The chaos lib used to inject the chaos </td>
-        <td> Defaults to <code>litmus</code> </td>
-      </tr>
-      <tr>
+        <tr>
         <td> LIB_IMAGE </td>
         <td> Image used to run the stress command </td>
         <td> Defaults to <code>litmuschaos/go-runner:latest</code> </td>

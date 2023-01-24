@@ -36,7 +36,7 @@ Ensure you meet the Self-Managed Enterprise Edition - Virtual Machine version an
 
 Automated backup and recovery is supported in the following Self-Managed Enterprise Edition - Virtual Machine versions:
 
-* 670XX and later
+* 670XX and later.
 
 #### Storage required
 
@@ -67,28 +67,20 @@ Storage destinations are described in the [KOTS documentation](https://kots.io/k
 1. Log into the Self-Managed Enterprise Edition - Virtual Machine KOTS admin tool.
 2. Click **Snapshots**.
 3. Click **Settings & Schedule**.
-4. In **Storage**, select the storage method to use.
-
-   ![](./static/virtual-machine-on-prem-backup-and-recovery-01.png)
-   
-   In **Amazon S3** and **Other S3-Compatible Storage**, enter the location and credentials.  
-   For details on these settings, see [Compatible Backend Stores](https://kots.io/kotsadm/snapshots/storage-destinations/) from KOTS.
-5. Click **Update storage settings**. The settings are updated.
+4. In **Storage**, select the storage method to use.![](./static/virtual-machine-on-prem-backup-and-recovery-01.png)
+5. For **Amazon S3** and **Other S3-Compatible Storage**, enter in the location and credentials.  
+For details on these settings, see [Compatible Backend Stores](https://kots.io/kotsadm/snapshots/storage-destinations/) from KOTS.
+6. Click **Update storage settings**. The settings are updated.
 
 Now that you have storage for your snapshots, you can create the snapshots.
 
 ### Step 2: Create full or partial snapshots
 
 1. In the KOTS admin tool, click **Full Snapshots (Instance)** or **Partial Snapshots (Application)**.
-2. Click **Start a snapshot**. The progress of the snapshot is shown on the screen:
- 
-  ![](./static/virtual-machine-on-prem-backup-and-recovery-02.png)
-  
+2. Click **Start a snapshot**. The snapshot begins. You can see its progress:![](./static/virtual-machine-on-prem-backup-and-recovery-02.png)
 3. Click the **more options** (**︙**) button. The details of the snapshot appear.
 
-![](./static/virtual-machine-on-prem-backup-and-recovery-03.png)
-
-Retain the snapshot for recovery operations.
+![](./static/virtual-machine-on-prem-backup-and-recovery-03.png)That's it! You now have a snapshot you can use for recovery.
 
 ### Option: Automating snapshots
 
@@ -112,14 +104,7 @@ The retention policy is described by KOTS:
 You can perform a full or partial restore from a Full Snapshot. This is why KOTS recommends Full Snapshots.
 
 1. Click **Full Snapshots (Instance)**.
-2. Click the restore button.
-
-   ![](./static/virtual-machine-on-prem-backup-and-recovery-04.png)
-   
-   **Restore from backup** appears.
-   
-   ![](./static/virtual-machine-on-prem-backup-and-recovery-05.png)
-   
+2. Click the restore button.![](./static/virtual-machine-on-prem-backup-and-recovery-04.png)**Restore from backup** appears.![](./static/virtual-machine-on-prem-backup-and-recovery-05.png)
 3. Select **Full restore** or **Partial restore**.
 4. For **Full restore**, do the following:
 	a. Copy the provided command and run it on any master node. You might need to log into the admin tool again after the restore.
@@ -133,11 +118,7 @@ You can perform a full or partial restore from a Full Snapshot. This is why KOTS
 You can perform a partial restore using a Full or Partial Snapshot. The Full Snapshot steps are described above.
 
 1. Click **Partial snapshots**.
-2. Click the restore button.
-
-   ![](./static/virtual-machine-on-prem-backup-and-recovery-06.png)
-   
-   **Restore from Partial backup (Application)** appears.
+2. Click the restore button.![](./static/virtual-machine-on-prem-backup-and-recovery-06.png)**Restore from Partial backup (Application)** appears.
 3. Enter the slug **harness**.
 4. Click **Confirm and restore**. You might need to log into the admin tool again after the restore.
 

@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../../continuous-delivery/cd-advanced/cloudformation-howto/cloud-formation-how-tos.md).This topic describes how to provision infrastructure using the Workflow CloudFormation Create Stack step.
+This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/article/vynj4hxt98).This topic describes how to provision infrastructure using the Workflow CloudFormation Create Stack step.
 
 Once you have [created a CloudFormation Infrastructure Provisioner](add-cloud-formation-templates.md) and [added it to a Harness Infrastructure Definition](map-cloud-formation-infrastructure.md), you add that Infrastructure Definition to a Workflow.
 
@@ -103,14 +103,14 @@ To add the CloudFormation Create Stack step, do the following:
 You need to select an AWS Cloud Provider even if the CloudFormation Infrastructure Provisioner you selected uses a manually-entered template body. Harness needs access to the AWS API for CloudFormation via the credentials in the AWS Cloud Provider. Ensure that the AWS Cloud Provider has the credentials described in [Set Up Your Harness Account for CloudFormation](cloud-formation-account-setup.md).
 :::
 5. In **Region**, select the region where you will be provisioning your resources.  
-You can use a [Harness variable expression](../../../firstgen-platform/techref-category/variables/variables.md) in the Region setting, such as a [Workflow variable](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md). This allows you to select the AWS region for the provisioning when you deploy your Workflow.
+You can use a [Harness variable expression](https://docs.harness.io/article/9dvxcegm90-variables) in the Region setting, such as a [Workflow variable](https://docs.harness.io/article/766iheu1bk-add-workflow-variables-new-template). This allows you to select the AWS region for the provisioning when you deploy your Workflow.
 :::note 
 Currently, expressions in the Region setting is in Beta and behind a Feature Flag. Contact [Harness Support](https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=support@harness.io) to enable the feature. Feature Flags can only be removed for Harness Professional and Essentials editions. Once the feature is released to a general audience, it is available for Trial and Community Editions.
 :::
 6. To name your stack, select **Use Custom Stack Name** and enter a name for your stack. If you do not select this option, Harness will automatically generate a unique name for your stack prefixed with `HarnessStack`and the ID for your Harness Environment, such as `HarnessStack-7HklGe0N6AvviJmZ`.  
    If you plan on using the [CloudFormation Delete Stack](cloudformation-delete-stack.md) step later in this Workflow, it is a good idea to name your stack.
 7. In **Role ARN**, enter the Amazon Resource Name (ARN) of an AWS IAM role that CloudFormation assumes to create the stack. If you don't specify a value, Harness uses the credentials you provided via **AWS Cloud Provider**. This allows you to tune the step for provisioning a specific AWS resource. For example, if you will only provision AWS S3, then you can use a role that is limited to S3.  
-   You can also use [Harness variable expressions](../../../firstgen-platform/techref-category/variables/variables.md) in **Role ARN**. For example, you can create a Service or Workflow variable and then enter its expression in **Role ARN**, such as `${serviceVariables.roleARN}` or `${workflow.variables.roleArn}`.
+   You can also use [Harness variable expressions](https://docs.harness.io/article/9dvxcegm90-variables) in **Role ARN**. For example, you can create a Service or Workflow variable and then enter its expression in **Role ARN**, such as `${serviceVariables.roleARN}` or `${workflow.variables.roleArn}`.
 8. To acknowledge the capabilities in the CloudFormation template, enable **Specify Capabilities**.  
    This acknowledges that the template contains certain capabilities (for example, `CAPABILITY_AUTO_EXPAND`), giving AWS CloudFormation the specified capabilities before it creates the stack. This is the same as using the `--capabilities` option in the `aws cloudformation create-stack` CLI command. See [create-stack](https://docs.aws.amazon.com/cli/latest/reference/cloudformation/create-stack.html).  
    In **Capabilities**, select one or more of the capabilities from the spec.
@@ -130,7 +130,7 @@ Currently, expressions in the Region setting is in Beta and behind a Feature Fla
 		  
 	The tags you add here are applied to all of the resources in the stack. AWS has a limit of 50 unique tags for each stack.  
 		  
-	You can use Harness variable expressions in the keys and values. See [Built-in Variables List](../../../firstgen-platform/techref-category/variables/built-in-variables-list.md) and [Set Workflow Variables](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md).
+	You can use Harness variable expressions in the keys and values. See [Built-in Variables List](https://docs.harness.io/article/aza65y4af6-built-in-variables-list) and [Set Workflow Variables](https://docs.harness.io/article/766iheu1bk-add-workflow-variables-new-template).
 10. In **Skip based on Stack Status**, you can add the stack states that will not prevent provisioning.
 :::note 
 Harness checks if the stack is in ROLLBACK\_COMPLETE state before the deployment. If present, Harness deletes the stack and then triggers the deployment.
@@ -187,7 +187,7 @@ In the **cf-files** repo folder there is a file named **parameters.json**. So, i
 
 ### Encrypted Text Secrets
 
-Use can use Harness encrypted text secrets in **Path to Parameters.json**. See [Use Encrypted Text Secrets](../../../firstgen-platform/security/secrets-management/use-encrypted-text-secrets.md).
+Use can use Harness encrypted text secrets in **Path to Parameters.json**. See [Use Encrypted Text Secrets](https://docs.harness.io/article/ygyvp998mu-use-encrypted-text-secrets).
 
 ![](./static/provision-cloudformation-create-stack-15.png)
 
@@ -207,7 +207,7 @@ You can use Harness Workflow variables in **Path to Parameters.json**.
 
 When the Workflow is deployed, by itself, in a Pipeline, or in a Trigger, you will provide values for the Workflow variables. This allows you to templatize the path.
 
-See [Set Workflow Variables](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md) and [Templatize a Workflow](../../model-cd-pipeline/workflows/templatize-a-workflow-new-template.md).
+See [Set Workflow Variables](https://docs.harness.io/article/766iheu1bk-add-workflow-variables-new-template) and [Templatize a Workflow](https://docs.harness.io/article/bov41f5b7o-templatize-a-workflow-new-template).
 
 ### Workflow Variable Expressions in Files
 
@@ -240,7 +240,7 @@ Enter or select a value for each variable in **Input Values**. For encrypted tex
 
 ![](./static/provision-cloudformation-create-stack-17.png)
 
-For more information, see [Use Encrypted Text Secrets](../../../firstgen-platform/security/secrets-management/use-encrypted-text-secrets.md).
+For more information, see [Use Encrypted Text Secrets](https://docs.harness.io/article/ygyvp998mu-use-encrypted-text-secrets).
 
 Click **Submit**. The **CloudFormation Create Stack** step is added to your Workflow.
 

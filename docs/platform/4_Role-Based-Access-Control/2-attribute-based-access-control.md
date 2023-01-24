@@ -8,13 +8,13 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Harness Attribute-Based Access Control (ABAC) lets you grant access to your Resources based on the attributes associated with your Harness Resources.
+Harness Attribute-Based Access Control (ABAC) lets you grant access to your Resources based on attributes associated with the your Harness Resources.
 
 This topic shows you how to configure ABAC in Harness.
 
 ### Before you begin
 
-* [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md)
+* [Learn Harness' Key Concepts](https://docs.harness.io/article/hv2758ro4e-learn-harness-key-concepts)
 * [Create Organizations and Projects​](../1_Organizations-and-Projects/2-create-an-organization.md)
 * Make sure you have Admin rights for the Account/Org/Project where you want to configure Access Management.​
 

@@ -8,7 +8,7 @@ A probe explores the behavior of a system in a chaotic or unpredictable manner a
 ## Before You Begin
 
 - [Probe Overview](/docs/chaos-engineering/technical-reference/probes/overview)
-- [Chaos Faults](/docs/chaos-engineering/technical-reference/faults)
+- [Chaos Faults](/docs/chaos-engineering/chaos-faults)
 
 ## Prerequisites
 

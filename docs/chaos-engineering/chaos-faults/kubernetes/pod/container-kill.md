@@ -71,11 +71,6 @@ The application pods should be in running state before and after chaos injection
         <td> Defaults to <code>litmuschaos/go-runner:latest</code></td>
       </tr>
       <tr>
-        <td> LIB </td>
-        <td> The category of lib use to inject chaos </td>
-        <td> Default value: litmus, supported values: pumba and litmus </td>
-      </tr>
-      <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before injection of chaos in sec </td>
         <td> Eg. 30 </td>
@@ -205,38 +200,6 @@ spec:
         # defaults to SIGTERM
         - name: SIGNAL
           value: 'SIGKILL'
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
-```
-
-### Pumba Chaos Library
-
-It specifies the Pumba chaos library for the chaos injection. It can be tuned via `LIB` ENV. The defaults chaos library is `litmus`.
-
-[embedmd]:# (./static/manifests/container-kill/pumba.yaml yaml)
-```yaml
-# pumba chaoslib used to kill the container
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: container-kill
-    spec:
-      components:
-        env:
-        # name of the lib
-        # supoorts pumba and litmus
-        - name: LIB
-          value: 'pumba'
         - name: TOTAL_CHAOS_DURATION
           VALUE: '60'
 ```
