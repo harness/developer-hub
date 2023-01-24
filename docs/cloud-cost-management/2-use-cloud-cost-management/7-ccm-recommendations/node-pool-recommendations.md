@@ -1,5 +1,5 @@
 ---
-title: Optimize Kubernetes Costs with Node Pool Recommendations
+title: Optimize Kubernetes costs with node pool recommendations
 description: Harness Cloud Cost Management (CCM) provides recommendations for your Kubernetes clusters. This topic describes how CCM computes node pool recommendations and how you can use them to potentially reduce monthly costs.
 # sidebar_position: 2
 helpdocs_topic_id: x75xp0xime
@@ -21,7 +21,7 @@ Before using recommendations in your cluster environment, ensure that you evalua
 Using recommendations without proper assessment could result in unexpected changes, such as issues with system performance or poor reliability.
 :::
 
-## Before You Begin
+## Before You begin
 
 * [Set Up Cloud Cost Management for Kubernetes](/docs/cloud-cost-management/1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-kubernetes.md)
 * [CCM Perspectives](/docs/cloud-cost-management/2-use-cloud-cost-management/2-ccm-perspectives/1-create-cost-perspectives.md)
@@ -38,7 +38,7 @@ Harness CCM uses labels to process node pool recommendations. Make sure to add o
 | Google Cloud Platform (GCP) |  <ul><li>`cloud.google.com/gke-nodepool`</li><li> `node-pool-name​`</li><li> `kops.k8s.io/instancegroup`</li></ul>|
 | Microsoft Azure | <ul><li> `Agentpool​`</li><li> `node-pool-name​` </li><li>`kops.k8s.io/instancegroup`</li></ul>|
 
-## How are Node Pool Recommendations Computed?
+## How are node pool recommendations computed?
 
 The node pool recommendations are computed by analyzing historical utilization data and requests metrics of Pods. CCM recommends the optimal resource configurations for the Spot and On-demand instances. It uses the following parameters to determine the maximum node counts:
 
@@ -97,7 +97,7 @@ Similarly, for memory, nodes will be the max number of nodes in the observation 
 Node pool recommendations also offer the flexibility of tuning the recommendations by setting the resource configuration preferences. See **Tune Recommendations**.
 
 
-### Tune and Share Recommendations
+### Tune and share recommendations
 
 You can tune your recommendations by modifying the value of CPU, memory, node counts, and instances.
 
@@ -112,7 +112,7 @@ To tune your recommendations, set your preferences for the following resources:
 * Preferred Minimum Node count
 * Preferred Instance families
 
-#### Option: Preferred Resource Needs
+#### Option: Preferred resource needs
 
 The value for CPU and memory is auto-populated by aggregating the resource utilization and request across all pods running across nodes in the node pool. 
 
@@ -126,19 +126,19 @@ By default, the recommendation computation adds a 15% buffer to the recommended 
 
 Once you apply the preferences, modified values are used for calculating the recommendations.
 
-#### Option: Largest Workload Requirements
+#### Option: Largest workload requirements
 
 The maximum workload that is observed based on the historical utilization that is scheduled on the nodes is used to calculate the value for this field. You can customize your CPU (vCPU) and RAM options (GiB).
 
 ![](./static/node-pool-recommendations-10.png)
 
-#### Option: Preferred Minimum Node Count
+#### Option: Preferred minimum node count
 
 This option allows you to set the number of minimum nodes that are used for the recommendation. Use the **+** button to increase the node count and click **-** to decrease the node count.
 
 ![](./static/node-pool-recommendations-11.png)
 
-#### Option: Preferred Instance families
+#### Option: Preferred instance families
 
 You can use this option to limit the recommendations to a certain machine type/instance family. For example, you have RIs/commitments on a specific machine type and only want to use that instance family.
 
@@ -152,7 +152,7 @@ Once, you've made all the changes, click **Apply Preferences** or click **Reset 
 
 ![](./static/node-pool-recommendations-13.png)
 
-#### Sharing Recommendations
+#### Sharing recommendations
 
 When you tune a recommendation, the URL for the recommendation captures your changes.
 
@@ -160,7 +160,7 @@ You can see the changes following `details?` in the URL. For example, `details?b
 
 Capturing your changes in the URL enables you to share your tuned recommendation and ensure others can see you tuning. Simply tune the recommendation and then share the URL.
 
-### Next Steps
+### Next steps
 
 * [Optimize Kubernetes Costs with Workload Recommendations](/docs/cloud-cost-management/2-use-cloud-cost-management/7-ccm-recommendations/workload-recommendations.md)
 

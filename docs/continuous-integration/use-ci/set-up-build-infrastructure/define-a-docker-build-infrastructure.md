@@ -1,6 +1,6 @@
 ---
-title: Define a Docker Build Infrastructure
-description: You can define a CI build infrastructure on any Linux or MacOS host. This is the simplest build infrastructure to set up and is well suited to developers who want to build on their laptops.
+title: Define a local build infrastructure
+description: Define a CI build infra on local Linux/Windows/macOS machine.
 sidebar_position: 15
 helpdocs_topic_id: xd8u17be5h
 helpdocs_category_id: rg8mrhqm95
@@ -8,15 +8,17 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-You can define a CI build infrastructure on any Linux or MacOS host. This is the simplest build infrastructure to set up, and is well-suited for developers who want to run builds on a local host such as a laptop.
+With the Local runner (also known as the Docker runner) you can run builds on self-hosted Linux, Windows, and macOS machines. This allows you to re-use machines that you run builds on. If Docker Engine is available, you can choose whether to execute build steps directly on the host machine or in Docker containers.
+
+
 
 ### Important Notes
 
+* To set up a local build environment, you must run a Docker Compose file that installs a Harness Delegate and the Local runner.
 * The Docker Delegate has the following system requirements:
 	+ Default 0.5 CPU.
 	+ Default 1.5GB. Ensure that you provide the minimum memory for the Delegate and enough memory for the host/node system.
-* You need to download and install a Drone runner in addition to the delegate.
-* The Docker delegate is bound by the total amount of memory and CPU on the local host. If you run multiple builds and the host runs out of CPU or memory, some builds will time out and fail.
+* The Docker Delegate is limited by the total amount of memory and CPU on the local host. Builds can fail if the host runs out of CPU or memory when running multiple builds.
 
 ### Install the Delegate
 

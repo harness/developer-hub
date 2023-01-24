@@ -29,7 +29,7 @@ You should read and understand the following:
 
 ## Version
 
-The current version of this SDK is **1.0.4.**
+The current version of this SDK is **1.0.8.**
 
 ## Requirements
 
@@ -54,7 +54,7 @@ To install the SDK, add the Feature Flag Flutter SDK dependency into the `pubspe
 
 
 ```
-ff_flutter_client_sdk: ^1.0.4
+ff_flutter_client_sdk: ^1.0.8
 ```
 Then import the following packages into your project:
 

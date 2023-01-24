@@ -28,7 +28,7 @@ Make sure you read and understand:
 
 ## Version
 
-The current version of this SDK is **1.6.0.**
+The current version of this SDK is **1.7.0.**
 
 ## Requirements
 
@@ -79,14 +79,14 @@ Run the following script:
 
 ```
 <script type="module">  
-  import { initialize, Event } from 'https://unpkg.com/@harnessio/ff-javascript-client-sdk@1.6.0/dist/sdk.client.js'  
+  import { initialize, Event } from 'https://unpkg.com/@harnessio/ff-javascript-client-sdk@1.7.0/dist/sdk.client.js'  
 </script>
 ```
 Make sure you install the latest version of the SDK, which you can view in [GitHub](https://github.com/harness/ff-javascript-client-sdk) and in [Version](#version).If you need to support browsers that no longer support ES modules, run the following script instead:
 
 
 ```
-<script src="https://unpkg.com/@harnessio/ff-javascript-client-sdk@1.6.0/dist/sdk.client.js"></script>  
+<script src="https://unpkg.com/@harnessio/ff-javascript-client-sdk@1.7.0/dist/sdk.client.js"></script>  
 <script>  
   var initialize = HarnessFFSDK.initialize  
   var Event = HarnessFFSDK.Event  

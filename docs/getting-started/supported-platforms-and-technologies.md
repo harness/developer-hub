@@ -381,7 +381,7 @@ Helm chart dependencies are not supported in Git source repositories (Harness [C
 
 Harness uses **Metadata only** when downloading artifact sources.
 
-For pulling Docker images from Docker repos, Harness has a limit of 10000 for private Docker repos, and 250 for public (no username or password required) Docker repos.
+For pulling Docker images from Docker repos, Harness is restricted by the limits of the Docker repo. For example, [Dockerhub limits](https://docs.docker.com/docker-hub/download-rate-limit/).
 
 The following table lists Harness integrations and their artifact source support:
 

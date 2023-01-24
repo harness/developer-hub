@@ -8,16 +8,17 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-The following table describes environment variables you can specify in the delegate manifest. Some of these variables are included in the YAML by default; you can specify others based on use case.
+The following environment variables are available for use in the delegate manifest. Some of these variables are included in the YAML by default; you can specify others based on use case.
 
 ### ACCOUNT_ID
 
-The ACCOUNT_ID environment variable specifies the Harness account Id of the account with which this delegate registers.
+The Harness account Id of the account with which this delegate registers.
 
 This value is automatically added to the delegate configuration file (the application manifest of a Kubernetes delegate) when you add the delegate.  
 
 ```
-ACCOUNT_ID: "H5W8iol5TNWc4G9h5A2MXg" 
+- name: ACCOUNT_ID
+  value: H5W8iol5TNWc4G9h5A2MXg 
 ```
 
 ### ACCOUNT_SECRET
@@ -31,6 +32,7 @@ The Harness account token that is used to register the delegate.
 
 ### CDN_URL
 The CDN URL for delegate versions. 
+
 ```
 - name: CDN_URL
   value: https://app.harness.io
@@ -65,21 +67,20 @@ This value is not specified when delegate creation is automated. Instead, a scri
   value: qa 
 ```
 
-
-
-
-
 ### DELEGATE_NAMESPACE 
+
 The namespace for the delegate is taken from the `StatefulSet` namespace. 
 
 ```
 - name: DELEGATE_NAMESPACE
-  valueFrom:``fieldRef:``fieldPath: metadata.namespace` 
+  valueFrom:
+    fieldRef:
+      fieldPath: metadata.namespace 
 ```
 
 ### DELEGATE_ORG_IDENTIFIER
 
-The Harness Organization [Identifier](../../20_References/entity-identifier-reference.md) in which the delegate registers.
+The Harness organization [Identifier](../../20_References/entity-identifier-reference.md) in which the delegate registers.
 
 Delegates at the account level do not have a value for this variable. 
 
@@ -90,7 +91,7 @@ Delegates at the account level do not have a value for this variable.
 
 ### DELEGATE_PROJECT_IDENTIFIER
 
-The Harness Project [Identifier](../../20_References/entity-identifier-reference.md) in which the delegate registers. 
+The Harness project [Identifier](../../20_References/entity-identifier-reference.md) in which the delegate registers. 
 
 Delegates at the account or organization level do not have a value for this variable.
 
@@ -110,23 +111,23 @@ The URL location at which published delegate JAR files are stored.
 
 ### DELEGATE_TAGS
 
-Delegate tags are descriptors that are added to the delegate before the registration process, in Harness Manager or in YAML. Harness generates tags based on the delegate name but you can add others. You can specify multiple tags in YAML as a comma-separated list.
+Delegate tags are descriptors that are added to the delegate before the registration process, in Harness Manager or in YAML. Harness generates tags based on the delegate name; you can add others. You can specify multiple tags in YAML as a comma-separated list.
 
-Tags appear in the delegate details page in Harness Manager. See [Tags Reference](../../20_References/tags-reference.md) and [Select Delegates with Tags](/docs/platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md). 
+Tags are displayed on the delegate details page in Harness Manager. See [Tags Reference](../../20_References/tags-reference.md) and [Select Delegates with Tags](/docs/platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md). 
 
 ```
 - name: DELEGATE_TAGS
   value: ""
   
 - name: DELEGATE_TAGS
-  value: has_jq, has_gcloud` 
+  value: has_jq, has_gcloud 
 ```
 
 ### DELEGATE_TASK_LIMIT
 
 The maximum number of tasks the delegate can concurrently perform.
 
-The operations that the delegate performs are categorized as different types of tasks.
+Delegate operations are categorized as different types of tasks.
 
 ```
 - name: DELEGATE_TASK_LIMIT
@@ -164,17 +165,16 @@ By default, the delegate requires HTTP/2 for gRPC (remote procedure calls) to be
 
 ### HELM_DESIRED_VERSION
 
-By default, Harness Delegates are installed with and use Helm 3. You can set the Helm version in the delegate YAML file using the HELM\_DESIRED\_VERSION environment property. Include the "v" with the version. For example, HELM\_DESIRED\_VERSION: v2.13.0. 
+By default, Harness Delegates are installed with and use Helm 3. You can set the Helm version in the delegate YAML file using the `HELM\_DESIRED\_VERSION` environment property. Include the "v" with the version. For example, `HELM\_DESIRED\_VERSION: v2.13.0`. 
 
+```
 - name: HELM_DESIRED_VERSION
   value: ""
-
+```
 
 ### INIT_SCRIPT
 
-You can run scripts on the delegate using `INIT\_SCRIPT`. `INIT\_SCRIPT` is not typically used for delegates.
-
-For the delegate, initialization should be baked into the image; not executed on startup.
+Used to specify a script that runs when the delegate is initialized. You can use this environment variable to run scripts on the delegate but this is not a best practice. Delegate initialization should be built into the image; not determined on startup.
 
 ```
 - name: INIT_SCRIPT
@@ -182,19 +182,18 @@ For the delegate, initialization should be baked into the image; not executed on
   apt-get install wget
   echo wget installed
 ```
+
 ### JAVA_OPTS 
 
 Use the `JAVA_OPTS` environment variable to add or override JVM parameters. The delegate accepts the following JVM options.
 
 ```
-
 - name: JAVA_OPTS
-  value: "-XX:+UnlockExperimentalVMOptions" 
-         "-XX:+UseCGroupMemoryLimitForHeap"
-         "-XX:MaxRAMFraction=2 -Xms64M"
+  value: "-XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -XX:MaxRAMFraction=2 -Xms64M"
 ``` 
 
 ### JRE_VERSION
+
 The Java Runtime Environment (JRE) version that the delegate uses.
 
 ```
@@ -205,7 +204,7 @@ The Java Runtime Environment (JRE) version that the delegate uses.
 
 ### MANAGER_HOST_AND_PORT
 
-The Harness SaaS manager URL. HTTPS indicates port 443. 
+The Harness SaaS manager URL. The specification of HTTPS in the URL indicates the use of port 443. 
 
 ```
 - name: MANAGER_HOST_AND_PORT
@@ -214,7 +213,7 @@ The Harness SaaS manager URL. HTTPS indicates port 443.
 
 ### NEXT_GEN
 
-A value of `true` indicates that the delegate registers in Harness NextGen; a value of `false` indicates that the delegate registers in FirstGen. 
+Whether the delegate is registers in Harness NextGen or FirstGen. A value of `true` indicates that the delegate registers in Harness NextGen; a value of `false` indicates that the delegate registers in FirstGen. 
 
 ```
 - name: NEXT_GEN
@@ -226,42 +225,37 @@ A value of `true` indicates that the delegate registers in Harness NextGen; a va
 Enables or disables polling for delegate tasks.By default, the Delegate uses Secure WebSocket (WSS) for tasks. If the `PROXY\_\*` settings are used and the proxy or some intermediary does not allow WSS, then set `POLL\_FOR\_TASKS` to true to enable polling. 
 
 ```
-- name: POLL_FOR_TASKS``value: "false"` 
+- name: POLL_FOR_TASKS
+  value: "false" 
 ```
 
 ### PROXY_*
 
-Delegates include proxy settings you can use to change how the Delegate connects to Harness Manager.
+You can use delegate proxy settings to change how the delegate connects to Harness Manager.
 
-The `secretKeyRef` are named using the delegate name. 
+The `secretKeyRef` values are named based on delegate name. 
 
 ```
 - name: PROXY_HOST
-  value: ""
-  
-  - name: PROXY_PORT
-    value: ""
-    
+  value: "" 
+- name: PROXY_PORT
+  value: ""   
 - name: PROXY_SCHEME
-  value: ""
-  
+  value: "" 
 - name: NO_PROXY
   value: ""
-
 - name: PROXY_MANAGER
-  value: "true"
-  
+  value: "true"  
 - name: PROXY_USER
   valueFrom: 
     secretKeyRef:
-    name: mydel-proxy
-    key: PROXY_USER
-  
+      name: mydel-proxy
+      key: PROXY_USER 
 - name: PROXY_PASSWORD
   valueFrom:
     secretKeyRef:
-    name: mydel-proxy
-    key: PROXY_PASSWORD
+      name: mydel-proxy
+      key: PROXY_PASSWORD
 ```
 
 ### REMOTE_WATCHER_URL_CDN 
@@ -283,7 +277,9 @@ Makes the delegate use a CDN for new versions.
 
 
 ### VERSION_CHECK_DISABLED
-By default, the delegate always checks for new versions (through the Watcher). 
+
+By default, the delegate checks for new versions, obtaining the information from the Watcher. 
+
 ```
 - name: VERSION_CHECK_DISABLED
   value: "false"
@@ -291,10 +287,12 @@ By default, the delegate always checks for new versions (through the Watcher).
 
 
 ### WATCHER_CHECK_LOCATION
+
 The delegate version location that the Watcher checks for.
+
 ```
-name: WATCHER_CHECK_LOCATION
-value: current.version` 
+- name: WATCHER_CHECK_LOCATION
+  value: current.version` 
 ```
 
 ### WATCHER_STORAGE_URL
@@ -303,5 +301,5 @@ The URL for the Watcher versions. See [Delegate Installation Overview](/docs/pla
 
 ```
 - name: WATCHER_STORAGE_URL
-  value: https://app.harness.io/public/prod/premium/watchers` 
+  value: https://app.harness.io/public/prod/premium/watchers 
 ```
