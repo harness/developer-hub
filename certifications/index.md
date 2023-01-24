@@ -7,6 +7,8 @@ id: certifications
 slug: /
 ---
 
-# Certifications Coming Soon
+<!-- Custom component -->
 
-Certifications are coming to the Harness Developer Hub. 
+import Certifications from '@site/src/components/Certifications/LandingPage';
+
+<Certifications />
