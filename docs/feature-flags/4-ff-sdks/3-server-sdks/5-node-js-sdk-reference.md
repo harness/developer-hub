@@ -1,6 +1,6 @@
 ---
 title: Node.js SDK Reference
-description: This topic describes how to use the Harness Feature Flags Java SDK for your Java application. For getting started quickly, you can use our sample code from the Node.js SDK README. You can also clone…
+description: This topic describes how to use the Harness Feature Flags Node.js SDK for your Node.js application. For getting started quickly, you can use our sample code from the Node.js SDK README. You can also clone…
 tags: 
    - helpDocs
 # sidebar_position: 2
@@ -10,7 +10,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic describes how to use the Harness Feature Flags Java SDK for your Java application.
+This topic describes how to use the Harness Feature Flags Node.js SDK for your Node.js application.
 
 For getting started quickly, you can use our [sample code from the Node.js SDK README](https://github.com/harness/ff-nodejs-server-sdk/blob/main/README.md). You can also [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) and run a sample application from the [Node.js SDK GitHub Repository.](https://github.com/harness/ff-nodejs-server-sdk)
 
@@ -33,7 +33,7 @@ To use this SDK, make sure you:  
 
 * Install Node.js version 12 or newer
 * [Download the SDK from our GitHub repository](https://github.com/harness/ff-nodejs-server-sdk)
-* Create a Java application, or [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) our [sample application](https://github.com/harness/ff-python-server-sdk).
+* Create a Node.js application, or [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) our [sample application](https://github.com/harness/ff-nodejs-server-sdk).
 * [Create a Feature Flag on the Harness Platform](../../2-ff-using-flags/1-ff-creating-flag/4-create-a-feature-flag.md). If you are following along with the SDK README sample code, make sure your flag is called `harnessappdemodarkmode`
 * [Create an SDK key and make a copy of it](../../2-ff-using-flags/1-ff-creating-flag/4-create-a-feature-flag.md#step-3-create-an-sdk-key)
 
