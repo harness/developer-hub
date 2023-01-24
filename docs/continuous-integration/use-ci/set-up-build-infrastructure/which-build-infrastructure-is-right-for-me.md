@@ -15,7 +15,7 @@ Available with all CI plans.
 
 :::
 
-With Harness Cloud you can run builds in isolation on machines hosted and maintained by Harness. You can run builds at scale on Linux, Windows, and macOS machines that are preinstalled with software commonly used in CI pipelines.
+With Harness Cloud you can run builds in isolation on machines that Harness hosts and maintains. You can run builds at scale on Linux, Windows, and macOS machines that are preinstalled with software commonly used in CI pipelines.
 
 Harness maintains and upgrades these machines so that you can focus on building great software instead of maintaining build infrastructure.
 
@@ -31,7 +31,7 @@ Available with all CI plans.
 
 :::
 
-With the Local runner (also known as the Docker runner) you can run builds on a local machine. You can execute build steps in Docker containers or directly on the host machine.
+With the local runner, which is also known as the Docker runner, you can run builds on a local machine. You can execute build steps in Docker containers or directly on the host machine.
 
 To learn more, go to [Define a local build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure).
 
@@ -51,7 +51,7 @@ To learn more about using a Kubernetes cluster as build infrastructure, go to [D
 
 # Compatibility matrix
 
-The following table shows which operating systems and architectures are supported by each build infrastructure option.
+The following table shows which operating systems and architectures that each build infrastructure option supports.
 
 | Operating system | Architecture | Harness Cloud | Self-hosted local | Self-hosted Kubernetes cluster |
 | -  | - | - | - | - |
