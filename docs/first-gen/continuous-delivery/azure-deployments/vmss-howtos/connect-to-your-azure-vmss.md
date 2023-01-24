@@ -22,18 +22,18 @@ In this topic:
 ### Before You Begin
 
 * [Azure Virtual Machine Scale Set Deployments Overview](azure-virtual-machine-scale-set-deployments.md)
-* [Harness Delegate Overview](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation)
-* [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts)
+* [Harness Delegate Overview](../../../firstgen-platform/account/manage-delegates/delegate-installation.md)
+* [Harness Key Concepts](../../../starthere-firstgen/harness-key-concepts.md)
 
 ### Supported Platforms and Technologies
 
-See  [Supported Platforms and Technologies](https://docs.harness.io/article/220d0ojx5y-supported-platforms).
+See  [Supported Platforms and Technologies](../../../starthere-firstgen/supported-platforms.md).
 
 ### Review: Azure Connection Options
 
-As covered in [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts), you need to install a Harness Delegate in your target infrastructure before setting up your Harness deployment.
+As covered in [Harness Key Concepts](../../../starthere-firstgen/harness-key-concepts.md), you need to install a Harness Delegate in your target infrastructure before setting up your Harness deployment.
 
-There are several types of Delegates you can use for a virtual machine scale set deployment, described in [Delegate Installation Overview](https://docs.harness.io/article/igftn7rrtg-delegate-installation-overview).
+There are several types of Delegates you can use for a virtual machine scale set deployment, described in [Delegate Installation Overview](../../../firstgen-platform/account/manage-delegates/delegate-installation-overview.md).
 
 Shell Script, Docker, Kubernetes, and Helm Delegates are all options.
 
@@ -41,7 +41,7 @@ The simplest option for most users is to install the Harness Shell Script Delega
 
 ### Step 1: Install a Harness Delegate
 
-Follow the installation steps for the Harness Delegate you want to install. See [Delegate Installation Overview](https://docs.harness.io/article/igftn7rrtg-delegate-installation-overview) for the available options.
+Follow the installation steps for the Harness Delegate you want to install. See [Delegate Installation Overview](../../../firstgen-platform/account/manage-delegates/delegate-installation-overview.md) for the available options.
 
 Ensure this Delegate is in or can connect to the resource group, virtual network, and subnet where your virtual machine scale set will be deployed.
 
@@ -49,7 +49,7 @@ Ensure this Delegate is in or can connect to the resource group, virtual network
 
 A Harness Azure Cloud Provider connects to your Azure using your Client ID and Tenant ID.
 
-Follow the steps in [Add Microsoft Azure Cloud Provider](https://docs.harness.io/article/4n3595l6in-add-microsoft-azure-cloud-provider) to connect Harness to Azure.
+Follow the steps in [Add Microsoft Azure Cloud Provider](../../../firstgen-platform/account/manage-connectors/add-microsoft-azure-cloud-provider.md) to connect Harness to Azure.
 
 That's all the setup you need to connect Harness to your account and start your virtual machine scale set deployment.
 

@@ -1,5 +1,6 @@
 /* eslint-disable no-undef */
 import React, { useEffect, useRef, useState } from "react";
+import { useHistory } from "react-router-dom";
 import Head from "@docusaurus/Head";
 import "./CoveoSearch.scss";
 
@@ -9,6 +10,9 @@ const CoveoSearch = () => {
   const searchBoxEl = useRef(null);
   const searchResultsEl = useRef(null);
   const [isCoveoLoaded, setIsCoveoLoaded] = useState(false);
+  const {
+    location: { pathname },
+  } = useHistory();
   const checkCoveo = () => {
     const coveoJustLoaded = !isCoveoLoaded && !!window.Coveo;
     if (coveoJustLoaded) {
@@ -29,6 +33,13 @@ const CoveoSearch = () => {
       elemSearchResultConainer.getElementsByClassName("coveo-search-results")
         .length < 1
     ) {
+      /*
+      const elemSearchMask = document.getElementById("coveo-search-mask");
+      if (elemSearchMask) {
+        console.warn("elemSearchMask is already there!");
+        return;
+      }
+      */
       // setTimeout(() => {
       // document.addEventListener("DOMContentLoaded", () => {
       (async () => {
@@ -41,7 +52,6 @@ const CoveoSearch = () => {
         if (elemSearchResultConainer) {
           elemSearchResultConainer.appendChild(searchRoot);
         }
-
         searchboxRoot.innerHTML = `
             <div class='CoveoSearchbox' data-enable-omnibox='true' data-placeholder='Search...' data-trigger-query-on-clear='true' data-query-suggest-character-threshold='1'>
                 <div class="CoveoAnalytics" data-search-hub="WebsiteSearch"></div>
@@ -53,9 +63,9 @@ const CoveoSearch = () => {
                 <div class="CoveoFolding"></div>
                 <div class="CoveoAnalytics" data-search-hub="WebsiteSearch"></div>
                 <div class="coveo-main-section">
-                    <!div class="coveo-facet-column">
+                    <div class="coveo-facet-column">
                         <div class="CoveoDynamicFacet" data-title="Source" data-field="@commonsource" data-tab="All" data-enable-facet-search="false" data-number-of-values="10" data-custom-sort="Harness Hub"></div>
-                        <div class="CoveoDynamicFacet" data-title="Category" data-field="@categoryname" data-tab="All" data-enable-facet-search="false" data-number-of-values="15"></div>
+                        <div class="CoveoDynamicFacet" data-title="Content Type" data-field="@categoryname" data-tab="All" data-enable-facet-search="false" data-number-of-values="15"></div>
                         <div class="CoveoDynamicFacet" data-title="Module" data-field="@commonmodule" data-tab="All" data-enable-facet-search="false" data-number-of-values="10"></div>
                     </div>
                     <div class="coveo-results-column">
@@ -100,24 +110,41 @@ const CoveoSearch = () => {
         const apiToken = dataToken?.apiKey;
         Coveo.SearchEndpoint.configureCloudV2Endpoint(orgId, apiToken);
 
+        const elemSearchMask = document.getElementById("coveo-search-mask");
         const elemDocusaurusRoot = document.getElementById("__docusaurus");
         const searchMask = document.createElement("div");
         searchMask.setAttribute("id", "coveo-search-mask");
         searchMask.setAttribute("style", "display: none;");
-        if (elemDocusaurusRoot) {
+        if (elemDocusaurusRoot && !elemSearchMask) {
           elemDocusaurusRoot.appendChild(searchMask);
+        }
+
+        const handleCloseSearchResult = () => {
+          const elemClearSearchButton =
+            searchboxRoot.getElementsByClassName("magic-box-clear")[0];
+          if (elemClearSearchButton) {
+            elemClearSearchButton.click();
+          } else {
+            console.warn("elemClearSearchButton not found!");
+          }
+        };
+        const activeSearchMask = elemSearchMask || searchMask;
+        if (activeSearchMask.addEventListener) {
+          activeSearchMask.addEventListener("click", handleCloseSearchResult);
+        } else if (activeSearchMask.attachEvent) {
+          activeSearchMask.attachEvent("onclick", handleCloseSearchResult);
         }
         Coveo.$$(coveoRoot).on("doneBuildingQuery", function (e, args) {
           let q = args.queryBuilder.expression.build();
           if (q) {
             searchRoot.style.display = "block";
-            searchMask.style.display = "block";
+            activeSearchMask.style.display = "block";
             // if (elmContent) {
             //   elmContent.style.display = "none";
             // }
           } else {
             searchRoot.style.display = "none";
-            searchMask.style.display = "none";
+            activeSearchMask.style.display = "none";
             // if (elmContent) {
             //   elmContent.style.display = "block";
             // }
@@ -125,9 +152,11 @@ const CoveoSearch = () => {
         });
         Coveo.$$(coveoRoot).on("afterInitialization", function (e, args) {
           Coveo.state(coveoRoot, "f:@commonsource", ["Developer Hub"]);
+          /* disable auto-focus @2022-12-12
           document
             .querySelector(".CoveoSearchbox .magic-box-input input")
             .focus();
+          */
 
           // hacked into Coveo searchbox
           const elemSearchbox = searchboxRoot.getElementsByTagName("input")[0];
@@ -153,26 +182,6 @@ const CoveoSearch = () => {
           } else {
             console.warn("elemSearchbox not found!");
           }
-
-          const elemSearchMask = document.getElementById("coveo-search-mask");
-          if (elemSearchMask) {
-            const handleCloseSearchResult = () => {
-              const elemClearSearchButton =
-                searchboxRoot.getElementsByClassName("magic-box-clear")[0];
-              if (elemClearSearchButton) {
-                elemClearSearchButton.click();
-              } else {
-                console.warn("elemClearSearchButton not found!");
-              }
-            };
-            if (elemSearchMask.addEventListener) {
-              elemSearchMask.addEventListener("click", handleCloseSearchResult);
-            } else if (button.attachEvent) {
-              elemSearchMask.attachEvent("onclick", handleCloseSearchResult);
-            }
-          } else {
-            console.warn("elemSearchMask not found!");
-          }
         });
 
         // Coveo.$$(coveoRoot).on("newQuery", function (e, args) {
@@ -189,7 +198,7 @@ const CoveoSearch = () => {
       // }, 900);
       // }, false);
     }
-  }, [isCoveoLoaded]);
+  }, [isCoveoLoaded, pathname]);
   return (
     <div>
       <Head>
@@ -205,7 +214,7 @@ const CoveoSearch = () => {
       </Head>
       {isCoveoLoaded && (
         <Head>
-          <script src="https://cdn.jsdelivr.net/gh/wei-harness/cdn/js/coveo_template.js"></script>
+          <script src="https://cdn.jsdelivr.net/gh/wei-harness/cdn@v0.2.1/js/coveo_template.js"></script>
         </Head>
       )}
       <div id="searchBoxCoveo" ref={searchBoxEl}></div>

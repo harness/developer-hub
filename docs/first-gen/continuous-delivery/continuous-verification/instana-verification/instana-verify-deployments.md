@@ -75,7 +75,7 @@ To add an Instana verification step to your Workflow:
 
 ### Harness Expression Support in CV Settings
 
-You can use expressions (`${...}`) for [Harness built-in variables](https://docs.harness.io/article/7bpdtvhq92-workflow-variables-expressions) and custom [Service](../../model-cd-pipeline/setup-services/service-configuration.md) and [Workflow](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md) variables in the settings of Harness Verification Providers.
+You can use expressions (`${...}`) for [Harness built-in variables](../../kubernetes-deployments/workflow-variables-expressions.md) and custom [Service](../../model-cd-pipeline/setup-services/service-configuration.md) and [Workflow](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md) variables in the settings of Harness Verification Providers.
 
 ![](./static/instana-verify-deployments-09.png)
 
@@ -99,6 +99,6 @@ To explore and interpret verification analysis results, see [Verification Result
 
 ### Next Steps
 
-* [Configuration as Code](https://docs.harness.io/article/htvzryeqjw-configuration-as-code)
-* [Users and Permissions](https://docs.harness.io/article/ven0bvulsj-users-and-permissions)
+* [Configuration as Code](../../../firstgen-platform/config-as-code/configuration-as-code.md)
+* [Users and Permissions](../../../firstgen-platform/security/access-management-howtos/users-and-permissions.md)
 

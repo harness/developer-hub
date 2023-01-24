@@ -66,7 +66,7 @@ You can keep the same port and use host header names to host multiple IIS sites 
 
 ### Next Steps
 
-Now that you have a working deployment, you can use the Harness Continuous Verification machine learning to verify and improve your deployments. For more information, see [Continuous Verification](https://docs.harness.io/article/myw4h9u05l-verification-providers-list).
+Now that you have a working deployment, you can use the Harness Continuous Verification machine learning to verify and improve your deployments. For more information, see [Continuous Verification](../continuous-verification/continuous-verification-overview/concepts-cv/what-is-cv.md).
 
-Enhance your IIS deployment workflow(s) with the multiple options available, including Failure Strategy, Rollback Steps, Barriers, and templating. For more information, see [Add a Workflow](https://docs.harness.io/article/m220i1tnia-workflow-configuration).
+Enhance your IIS deployment workflow(s) with the multiple options available, including Failure Strategy, Rollback Steps, Barriers, and templating. For more information, see [Add a Workflow](../model-cd-pipeline/workflows/workflow-configuration.md).
 

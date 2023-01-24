@@ -33,12 +33,12 @@ In this topic:
 * [Azure Virtual Machine Scale Set Deployments Overview](azure-virtual-machine-scale-set-deployments.md)
 * [Add Your Azure VM Image for Deployment](add-your-azure-vm-image-for-deployment.md)
 * [Connect to Azure for VMSS Deployments](connect-to-your-azure-vmss.md)
-* [Harness Delegate Overview](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation)
-* [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts)
+* [Harness Delegate Overview](../../../firstgen-platform/account/manage-delegates/delegate-installation.md)
+* [Harness Key Concepts](../../../starthere-firstgen/harness-key-concepts.md)
 
 ### Supported Platforms and Technologies
 
-See [Supported Platforms and Technologies](https://docs.harness.io/article/220d0ojx5y-supported-platforms).
+See [Supported Platforms and Technologies](../../../starthere-firstgen/supported-platforms.md).
 
 ### Step 1: Create an Environment
 
@@ -96,7 +96,7 @@ Select **Password** or **SSH Public Key**.
 
 For **Password**, enter the password for the new VMs Harness will create.
 
-For **SSH Public Key**, select an SSH key that you have added to Harness. See [Add SSH Keys](https://docs.harness.io/article/gsp4s7abgc-add-ssh-keys).
+For **SSH Public Key**, select an SSH key that you have added to Harness. See [Add SSH Keys](../../../firstgen-platform/security/secrets-management/add-ssh-keys.md).
 
 Creating the SSH key in Azure is covered in [Quick steps: Create and use an SSH public-private key pair for Linux VMs in Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/mac-create-ssh-keys) from Azure.
 
@@ -104,7 +104,7 @@ Creating the SSH key in Azure is covered in [Quick steps: Create and use an SSH 
 
 The **Scope to specific Services** setting in the Infrastructure Definition enables you to scope this Infrastructure Definition to specific Harness Services.
 
-See [Add an Infrastructure Definition](https://docs.harness.io/article/v3l3wqovbe-infrastructure-definitions).
+See [Add an Infrastructure Definition](../../model-cd-pipeline/environments/infrastructure-definitions.md).
 
 ### Next Steps
 

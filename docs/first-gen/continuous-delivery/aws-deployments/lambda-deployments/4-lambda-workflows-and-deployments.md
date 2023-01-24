@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/article/5fnx4hgwsa).By default, Harness Basic Workflows for Lambda have two steps:
+This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../../continuous-delivery/onboard-cd/cd-quickstarts/serverless-lambda-cd-quickstart.md).By default, Harness Basic Workflows for Lambda have two steps:
 
 * **AWS Lambda** - This step deploys the function and also sets the Lambda aliases and tags for the function.
 * **Rollback AWS Lambda** - If a deployment fails, this step uses aliases to roll back to the last successful version of a Lambda function.
@@ -46,7 +46,7 @@ To create a Basic Workflow for Lambda, do the following:
 
 When you deploy the Workflow, the AWS Lambda step creates the Lambda functions defined in the Service you attached to the Workflow. This is the equivalent of the [aws lambda create-function](https://docs.aws.amazon.com/cli/latest/reference/lambda/create-function.html) API command.
 
-The next time you run the Workflow, manually or as the result of a [Trigger](https://docs.harness.io/article/xerirloz9a-add-a-trigger-2), the AWS Lambda step updates the Lambda functions. This is the equivalent of the [aws lambda update-function-configuration](https://docs.aws.amazon.com/cli/latest/reference/lambda/update-function-configuration.html) API command.
+The next time you run the Workflow, manually or as the result of a [Trigger](../../model-cd-pipeline/triggers/add-a-trigger-2.md), the AWS Lambda step updates the Lambda functions. This is the equivalent of the [aws lambda update-function-configuration](https://docs.aws.amazon.com/cli/latest/reference/lambda/update-function-configuration.html) API command.
 
 In the Workflow, click the **AWS Lambda** step. The **AWS Lambda** dialog appears.
 
@@ -220,5 +220,5 @@ $ aws lambda get-function --function-name ExampleApp-aws-lambda-Lambda-my-functi
 ```
 ### Next Steps
 
-* [Troubleshoot AWS Lambda Deployments](https://docs.harness.io/article/g9o2g5jbye-troubleshooting-harness#aws_lambda)
+* [Troubleshoot AWS Lambda Deployments](../../../firstgen-troubleshooting/troubleshooting-harness.md#aws-lambda)
 

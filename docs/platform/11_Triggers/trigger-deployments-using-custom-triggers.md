@@ -1,41 +1,44 @@
 ---
 title: Trigger Deployments using Custom Triggers
-description: Harness includes Triggers for Git providers, artifact providers,. Trigger a Deployment using cURL Get Deployment Status using REST
-# sidebar_position: 2
+description: Trigger deployments using cURL and Webhooks
+sidebar_position: 6
 helpdocs_topic_id: qghequ5vxu
 helpdocs_category_id: oya6qhmmaw
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic shows you how to create and run Custom Triggers for your Harness pipelines using platform-agnostic Webhooks and cURL commands.
+This topic shows you how to create and run custom triggers for your Harness pipelines using platform-agnostic Webhooks and cURL commands.
 
-### Overview
+## Overview
 
-In addition to Triggers that use Git providers, artifact providers, manifests, and cron scheduling, Harness includes Custom Triggers that you can use to run Pipelines via a platform-agnostic Webhook.
+In addition to triggers that use Git providers, artifact providers, manifests, and cron scheduling, Harness includes custom triggers that you can use to run pipelines via cURL or a platform-agnostic Webhook.
 
-Once you create a Custom Trigger, Harness provides the Webhook URL and cURL command to initiate the Trigger.
+Once you create a custom trigger, Harness provides the Webhook URL and cURL command to initiate the trigger.
 
 ![](./static/trigger-deployments-using-custom-triggers-00.png)
-You can do the following with a Custom Trigger:
+
+You can do the following with a custom trigger:
 
 * Start a deployment using a cURL command.
 * Use a REST call to get deployment status.
-* Start a deployment using a URL provided by Harness.
+* Start a deployment using a Webhook URL provided by Harness.
 
-### Create the custom trigger
+## Create the custom trigger
 
-1. In your Harness Pipeline in Pipeline Studio, click **Triggers**.
+1. In your Harness pipeline in pipeline studio, click **Triggers**.
 2. Click **New Trigger**.
 3. In **Webhook**, click **Custom**.  
-![](./static/trigger-deployments-using-custom-triggers-01.png)
+   
+   ![](./static/trigger-deployments-using-custom-triggers-01.png)
+
 4. Name the new Trigger and click **Continue**.
 
-The **Payload Type** is set as Custom. If this were a Git provider Trigger, you would specify the repo URL and events for the Trigger.
+The **Payload Type** is set as Custom. If this were a Git provider trigger, you would specify the repo URL and events for the trigger.
 
 For more details, see [Trigger Pipelines using Git Event Payload Conditions](trigger-pipelines-using-custom-payload-conditions.md) and [Trigger Pipelines using Git Events](triggering-pipelines.md).
 
-### Conditions
+## Conditions
 
 Conditions specify criteria in addition to events and actions.
 
@@ -43,38 +46,47 @@ Conditions help to form the overall set of criteria to trigger a Pipeline based 
 
 For example:
 
-* Execute Pipeline if the source/target branch name matches a pattern.
-* Execute Pipeline if the event is sent for file changes from specific directories in the Git repo. This is very useful when working with a monorepo (mono repository). It ensures that only specific Pipelines are triggered in response to a change.
+* Execute pipeline if the source/target branch name matches a pattern.
+* Execute pipeline if the event is sent for file changes from specific directories in the Git repo. This is very useful when working with a monorepo (mono repository). It ensures that only specific Pipelines are triggered in response to a change.
 
-Conditions support Harness built-in expressions for accessing Trigger settings, Git payload data and headers.
+Conditions support Harness built-in expressions for accessing trigger settings, Git payload data and headers.
 
 JEXL expressions are also supported.
 
 For details on these settings, see [Triggers Reference](../8_Pipelines/w_pipeline-steps-reference/triggers-reference.md).
 
-Conditions are ANDed together (boolean AND operation). All Conditions must match an event payload for it to execute the Trigger.### Pipeline Input
+Conditions are ANDed together (boolean AND operation). All Conditions must match an event payload for it to execute the trigger.
+
+## Pipeline input
 
 Pipelines often have [Runtime Inputs](../20_References/runtime-inputs.md) like codebase branch names or artifact versions and tags.
 
-Provide values for the inputs. You can also use [Input Sets](../8_Pipelines/input-sets.md).
+1. Provide values for the inputs. You can also use [input sets](../8_Pipelines/input-sets.md).
+2. Click **Create Trigger**.
 
-Click **Create Trigger**.
+The trigger is now added to the Triggers page.
 
-The Trigger is now added to the Triggers page.
+## Trigger a deployment using cURL
 
-### Trigger a deployment using cURL
-
-1. On the Triggers page, in the **Webhook** column, click the link icon for your Trigger and then click **Copy as cURL Command**.
+1. On the **Triggers** page, in the **Webhook** column, click the link icon for your trigger and then click **Copy as cURL Command**.
 
 ![](./static/trigger-deployments-using-custom-triggers-02.png)
+
 Here's an example of the cURL command:
 
+```
+curl -X POST -H 'content-type: application/json' -H 'X-Api-Key: sample_api_key' --url 'https://app.harness.io/gateway/pipeline/api/webhook/custom/v2?accountIdentifier=H5W8iol5TNWc4G9h5A2MXg&orgIdentifier=default&projectIdentifier=CD_Docs&pipelineIdentifier=Custom&triggerIdentifier=Custom' -d '{"sample_key": "sample_value"}'
+```
 
-```
-curl -X POST  -H 'content-type: application/json' --url 'https://app.harness.io/gateway/pipeline/api/webhook/custom/v2?accountIdentifier=H5W8iol5TNWc4G9h5A2MXg&orgIdentifier=default&projectIdentifier=CD_Docs&pipelineIdentifier=Triggers&triggerIdentifier=Custom' -d '{"sample_key": "sample_value"}'
-```
+:::note
+
+The `-H 'X-Api-Key: sample_api_key'` parameter is used to authorize custom triggers. You can use [Harness API keys](../4_Role-Based-Access-Control/7-add-and-manage-api-keys.md) with this parameter. This is described below in [Custom trigger authorization using API keys](#custom-trigger-authorization-using-api-keys).
+
+To skip authorization, omit the `-H 'X-Api-Key: sample_api_key'` parameter.
+
+:::
+
 Run this command in a Terminal to trigger a Pipeline execution. The response will look something like this:
-
 
 ```
 {  
@@ -89,13 +101,14 @@ Run this command in a Terminal to trigger a Pipeline execution. The response wil
    "correlationId":"5f86c64b-b1a2-4385-88b0-2eaf1085c310"  
 }
 ```
-The Execution History page shows that the execution was triggered by a Custom Trigger:
+
+The **Execution History** page shows that the execution was triggered by a custom trigger:
 
 ![](./static/trigger-deployments-using-custom-triggers-03.png)
-### Links in the response
 
-The JSON response of the Custom Trigger cURL command contains several links.
+## Links in the response
 
+The JSON response of the custom trigger cURL command contains several links.
 
 ```
 {  
@@ -112,14 +125,14 @@ The JSON response of the Custom Trigger cURL command contains several links.
 ```
 The following section describe each link and what you can do with them.
 
-#### apiUrl
+### apiUrl
 
 **apiUrl** can be used to track deployment status programmatically, such as using a REST call.
 
-See [Get Deployment Status using REST](#get-deployment-status-using-rest) below.
+For more information, go to [Get Deployment Status using REST](#get-deployment-status-using-rest) below.
 
 
-#### uiUrl
+### uiUrl
 
 The **uiUrl** from the cURL command output can be used directly in a browser.
 
@@ -127,11 +140,11 @@ To run a deployment from a browser, paste the URL from **uiUrl** into the brow
 
 The browser will open **app.harness.io** and display the running deployment.
 
-#### uiSetupUrl
+### uiSetupUrl
 
-In the JSON response of a Pipeline executed by a Custom Trigger, the **uiSetupUrl** label displays the URL or the Pipeline that was run.
+In the JSON response of a Pipeline executed by a custom trigger, the **uiSetupUrl** label displays the URL or the pipeline that was run.
 
-### Get Deployment Status using REST
+## Get deployment status using REST
 
 The **apiUrl** property in the JSON response can be used to track deployment status programmatically, such as using a REST call.
 
@@ -141,14 +154,13 @@ The `eventCorrelationId` contains the same Id as the URL in `apiUrl`.To get depl
 ```
 curl -X GET --url "API_URL"
 ```
-For example:
 
+For example:
 
 ```
 curl -X GET --url "https://app.harness.io/gateway/pipeline/api/webhook/triggerExecutionDetails/632394c7b018985c661747be?accountIdentifier=H5W8iol5TNWc4G9h5A2MXg"
 ```
 The response from the cURL command will contain the status of the deployment. For example: 
-
 
 ```
 {  
@@ -332,11 +344,71 @@ The response from the cURL command will contain the status of the deployment. Fo
    "correlationId":"4b76cec6-c4b3-408c-b66b-7e14540c6e14"  
 }
 ```
-### Custom Trigger authorization using API keys
 
-You can use Harness API keys in your cURL command
+## Custom trigger authorization using API keys
 
-#### Adding authorization to custom webhook Triggers
+:::note
 
-#### Enforcing authorization for custom webhook Triggers
+Currently, this functionality is behind the feature flag `NG_SETTINGS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+You can use [Harness API keys](../4_Role-Based-Access-Control/7-add-and-manage-api-keys.md) in your cURL command to authorize the execution of a trigger.
+
+You can see the `-H 'X-Api-Key: sample_api_key'` parameter in the cURL command you copy from Harness.
+
+```
+curl -X POST -H 'content-type: application/json' -H 'X-Api-Key: sample_api_key' --url 'https://qa.harness.io/gateway/pipeline/api/webhook/custom/v2?accountIdentifier=px7xd_BFRCi-pfWPYXVjvw&orgIdentifier=default&projectIdentifier=Docs&pipelineIdentifier=Custom&triggerIdentifier=Custom' -d '{"sample_key": "sample_value"}'
+```
+
+You can use this parameter with a Harness API key in your cURL command to authorize the execution of a trigger. You can also enforce the use of API keys for all custom triggers.
+
+:::note
+
+To skip authorization omit the `-H 'X-Api-Key: sample_api_key'` parameter.
+
+:::
+
+### Adding authorization to custom triggers
+
+1. Create the [Harness API key](../4_Role-Based-Access-Control/7-add-and-manage-api-keys.md) you want to use for authorization.
+2. Save the token from the key. Please make sure to copy and store your token value somewhere safe. You won't be able to see it again after you create it.
+3. Copy the cURL command for your custom trigger. For example:
+
+   ```
+   curl -X POST -H 'content-type: application/json' -H 'X-Api-Key: sample_api_key' --url 'https://qa.harness.io/gateway/pipeline/api/webhook/custom/v2?accountIdentifier=px7xd_BFRCi-pfWPYXVjvw&orgIdentifier=default&projectIdentifier=Docs&pipelineIdentifier=Custom&triggerIdentifier=Custom' -d '{"sample_key": "sample_value"}'
+   ```
+4. Replace `sample_api_key` with the API key you created. For example:
+   
+   ```
+   curl -X POST -H 'content-type: application/json' -H 'X-Api-Key: pat.px7xd_BFRCi-12345.63bc6f8bed8ecc38a51965ba.qybothN6MJv6XETxKQjD' --url 'https://app.harness.io/gateway/pipeline/api/webhook/custom/v2?accountIdentifier=px7xd_BFRCi-pfWPYXVjvw&orgIdentifier=default&projectIdentifier=Docs&pipelineIdentifier=Custom&triggerIdentifier=Custom' -d '{"sample_key": "sample_value"}'
+   ```
+5. Use the cURL command. A `SUCCESS` status will look something like this:
+   
+   ```
+   {"status":"SUCCESS","data":{"eventCorrelationId":"63bc6fe5ffaf786364414258","apiUrl":"https://app.harness.io/gateway/pipeline/api/webhook/triggerExecutionDetails/63bc6fe5ffaf786364414258?accountIdentifier=px7xd_BFRCi-pfWPYXVjvw","uiUrl":"https://app.harness.io/ng/#/account/px7xd_BFRCi-pfWPYXVjvw/cd/orgs/default/projects/Docs/deployments?pipelineIdentifier=Custom&page=0","uiSetupUrl":"https://app.harness.io/ng/#/account/px7xd_BFRCi-pfWPYXVjvw/cd/orgs/default/projects/Docs/pipelines/Custom/pipeline-studio/"},"metaData":null,"correlationId":"ef3da895-bd19-4187-be25-e813af14408b"}
+   ```
+
+### Enforcing authorization for custom triggers
+
+You can require that all custom triggers in this Harness account use API key tokens.
+
+1. In your Harness account, click **Account Settings**.
+2. Click **Account Resources**.
+3. Click **Default Settings**.
+4. In **General**, set **Mandate Authorization for Custom Webhook Triggers** to **true**.
+
+Now all custom triggers in this account must use an API key token or an authorization error is thrown when the cURL command is run.
+
+```
+{"status":"ERROR","code":"INVALID_REQUEST","message":"Invalid request: Authorization is mandatory for custom triggers in px7xd_BFRCi-pfWPYXVjvw:default:Docs. Please add X-Api-Key header in the request","correlationId":"465d6463-152b-4211-8cb5-6bcc2538afa8","detailedMessage":null,"responseMessages":[{"code":"INVALID_REQUEST","level":"ERROR","message":"Invalid request: Authorization is mandatory for custom triggers in px7xd_BFRCi-pfWPYXVjvw:default:Docs. Please add X-Api-Key header in the request","exception":null,"failureTypes":[]}],"metadata":null}
+```
+
+##### Allow overrides
+When the **Allow Overrides** box is checked at the account level, Harness users are able to select a different value for this setting at project level. 
+
+In a project, in **Default Settings** > **General**, you can set a different value for **Mandate Authorization for Custom Webhook Triggers**.
+
+If **Allow Overrides** is unchecked, then the value of the setting is propagated to all projects in the account.
+
 

@@ -14,7 +14,7 @@ This topic describes how to add an AWS KMS Secret Manager in Harness.
 
 ### Before you begin
 
-* [Learn Harness' Key Concepts](https://docs.harness.io/article/hv2758ro4e-learn-harness-key-concepts).
+* [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md).
 * [Harness Secret Manager Overview](../6_Security/1-harness-secret-manager-overview.md).
 
 ### Step 1: Add a Secret Manager
@@ -101,7 +101,7 @@ This is the AssumeRole Session Duration. See Session Duration in the [AssumeRol
 
 ### Step 3: Setup Delegates
 
-In **Delegates** **Setup**, enter [**Selectors**](../2_Delegates/delegate-guide/select-delegates-with-selectors.md#option-select-a-delegate-for-a-connector-using-tags) for specific **Delegates** that you want to allow to connect to this Connector. Click **Save and Continue**.
+In **Delegates** **Setup**, enter [**Selectors**](../2_Delegates/manage-delegates/select-delegates-with-selectors.md#option-select-a-delegate-for-a-connector-using-tags) for specific **Delegates** that you want to allow to connect to this Connector. Click **Save and Continue**.
 
 ### Step 4: Test Connection
 

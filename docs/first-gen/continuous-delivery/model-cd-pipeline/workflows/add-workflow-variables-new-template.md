@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 You can set variables in the **Workflow Variables** section of your Workflow, and use them in the Workflow step commands and settings.
 
-New to Harness Variables? See [What is a Harness Variable Expression?](https://docs.harness.io/article/9dvxcegm90-variables)
+New to Harness Variables? See [What is a Harness Variable Expression?](../../../firstgen-platform/techref-category/variables/variables.md)
 
 You can also use them in some Harness Service settings in order to have their values replaced at the Workflow level.
 
@@ -19,8 +19,8 @@ You provide values for Workflow variables at deployment runtime for the Workflow
 ### Before You Begin
 
 * [Workflows](workflow-configuration.md)
-* [What is a Harness Variable Expression?](https://docs.harness.io/article/9dvxcegm90-variables)
-* [Variable Override Priority](https://docs.harness.io/article/benvea28uq-variable-override-priority)
+* [What is a Harness Variable Expression?](../../../firstgen-platform/techref-category/variables/variables.md)
+* [Variable Override Priority](../../../firstgen-platform/techref-category/variables/variable-override-priority.md)
 
 ### Review: Variable Types
 

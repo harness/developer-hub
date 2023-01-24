@@ -25,7 +25,7 @@ This topic walks you through the steps to create a Pipeline Template.
 
 * Review [Templates Overview](template.md) to understand different concepts of Templates.
 * Review [Permissions Reference](../4_Role-Based-Access-Control/ref-access-management/permissions-reference.md) to know about the permissions required to create a Template at various scopes.
-* Review [Pipelines and Stages](https://docs.harness.io/category/pipelines).
+* Review [Pipelines and Stages](/docs/category/pipelines).
 
 ### Limitations
 
@@ -138,7 +138,7 @@ Click **Next**. The **Execution Strategies** settings appear.
 
 ### Step 5: Define Execution Strategies
 
-In **Execution Strategies**, select the deployment strategy for your Pipeline Template. We've used **Rolling** in this document. For more information on different execution strategies, see [Deployment Concepts and Strategies](https://docs.harness.io/article/0zsf97lo3c-deployment-concepts).
+In **Execution Strategies**, select the deployment strategy for your Pipeline Template. We've used **Rolling** in this document. For more information on different execution strategies, see [Deployment Concepts and Strategies](../../continuous-delivery/cd-deployments-category/deployment-concepts.md).
 
 Click **Use Strategy**.
 

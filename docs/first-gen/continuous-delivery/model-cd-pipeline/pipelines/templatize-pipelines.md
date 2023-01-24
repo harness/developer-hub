@@ -16,7 +16,7 @@ You template a Pipeline by replacing these settings with variable expressions. E
 
 * [Pipelines](pipeline-configuration.md)
 * [Workflows](../workflows/workflow-configuration.md)
-* [Variables and Expressions in Harness](https://docs.harness.io/article/9dvxcegm90-variables)
+* [Variables and Expressions in Harness](../../../firstgen-platform/techref-category/variables/variables.md)
 
 ### Visual Summary
 
@@ -163,5 +163,5 @@ Simply change the Environment expression to match the other Environment expressi
 ### Next Steps
 
 * [Passing Variables into Workflows and Pipelines from Triggers](../expressions/passing-variable-into-workflows.md)
-* [Deploy a Workflow to Multiple Infrastructures Simultaneously](https://docs.harness.io/article/bc65k2imoi-deploy-to-multiple-infrastructures)
+* [Deploy a Workflow to Multiple Infrastructures Simultaneously](../../concepts-cd/deployments-overview/deploy-to-multiple-infrastructures.md)
 

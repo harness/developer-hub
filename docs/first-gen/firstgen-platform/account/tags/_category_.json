@@ -1,0 +1,14 @@
+{
+  "label": "Manage Tags FirstGen",
+  "position": 60,
+  "collapsible": "true",
+  "collapsed": "true",
+  "className": "red",
+  "link": {
+    "type": "generated-index",
+    "title": "Manage Tags FirstGen"
+  },
+  "customProps": {
+    "helpdocs_category_id": "5havnl8qad"
+  }
+}

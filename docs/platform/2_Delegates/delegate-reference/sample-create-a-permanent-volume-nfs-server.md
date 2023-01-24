@@ -1,6 +1,6 @@
 ---
 title: Sample - Create a permanent volume - NFS server
-description: This Kubernetes manifest creates a permanent volume for NFS. apiVersion --  apps/v1 kind --  Deployment metadata --  name --  nfs-server spec --  replicas --  1 selector --  matchLabels --  role --  nfs-server template --  metada…
+description: This Kubernetes manifest creates a permanent volume for NFS. 
 # sidebar_position: 2
 helpdocs_topic_id: 3onmos2n3v
 helpdocs_category_id: vm60533pvt

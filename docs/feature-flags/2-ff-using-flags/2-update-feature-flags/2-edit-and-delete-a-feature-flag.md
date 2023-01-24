@@ -34,8 +34,8 @@ To edit a Flag:
 
 1. In Harness, go to **Feature Flags**.
 2. In your Project, click **Feature Flags**. All your current Flags are listed.
-3. Next to the Flag you want to edit, click **more** **options (****︙****).**
-4. Click **Edit**. The Flag details page appears, then click **more** **options (****︙****).**
+3. Next to the Flag you want to edit, click **more options︙**.
+4. Click **Edit**. The Flag details page appears, then click **more options︙**.
 
 
 ![A screenshot of the Flag details page, with the more options icon highlighted.](./static/2-edit-and-delete-a-feature-flag-05.png)
@@ -62,6 +62,6 @@ You can also:
 
 * [Edit your Flag Variations](3-manage-variations.md)
 * [Add Prerequisite Flags](../3-add-prerequisites-to-feature-flag.md)
-* [Manage Your Targets](https://docs.harness.io/category/manage-feature-flag-targets)
+* [Manage Your Targets](/docs/category/manage-feature-flag-targets)
 
 

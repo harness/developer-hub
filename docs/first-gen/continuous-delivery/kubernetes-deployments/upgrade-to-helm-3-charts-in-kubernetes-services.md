@@ -67,5 +67,5 @@ You can add charts using one of the following options:
 
 ### Next Steps
 
-* [Configuration as Code](https://docs.harness.io/article/htvzryeqjw-configuration-as-code)
+* [Configuration as Code](../../firstgen-platform/config-as-code/configuration-as-code.md)
 

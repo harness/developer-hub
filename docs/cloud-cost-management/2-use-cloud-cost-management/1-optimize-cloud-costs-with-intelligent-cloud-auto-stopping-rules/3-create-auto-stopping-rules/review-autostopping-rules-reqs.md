@@ -22,8 +22,8 @@ Review the following prerequisites and set up related questions.
 The following prerequisites are needed:
 
 * Ensure that you have AWS EC2 VMs or Auto Scaling Groups created
-* Ensure that you have access to CUR. See [Review: Cost and Usage Reports (CUR) and CCM Requirements](https://ngdocs.harness.io/article/80vbt5jv0q-set-up-cost-visibility-for-aws#review_cost_and_usage_reports_cur_and_ccm_requirements)
-* Permissions to create a cross-account role. See [AWS Access Permissions](https://ngdocs.harness.io/article/80vbt5jv0q-set-up-cost-visibility-for-aws#aws_resource_optimization_using_auto_stopping_rules)
+* Ensure that you have access to CUR. See [Review: Cost and Usage Reports (CUR) and CCM Requirements](../../../1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md#review-cost-and-usage-reports-cur-and-ccm-requirements)
+* Permissions to create a cross-account role. See [AWS Access Permissions](../../../1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md#aws-resource-optimization-using-auto-stopping-rules)
 
 #### Questionnaire
 
@@ -132,7 +132,7 @@ Review the following prerequisites and set up related questions.
 
 The following prerequisites are needed:
 
-* Ingress controller installed. For more information, go to [Supported Ingress Controllers for Kubernetes AutoStopping](https://docs.harness.io/article/1e536z41av-supported-platforms-and-technologies#cloud_cost_management).
+* Ingress controller installed. For more information, go to [Supported Ingress Controllers for Kubernetes AutoStopping](../../../../getting-started/supported-platforms-and-technologies.md#cloud-cost-management).
 * Ensure that you have Cluster Autoscaler enabled for EKS with managed node groups
 * For EKS:
 	+ Ensure that you have access to (Cost Usage Report) CUR. See [Review: Cost and Usage Reports (CUR) and CCM Requirements](../../../1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md)

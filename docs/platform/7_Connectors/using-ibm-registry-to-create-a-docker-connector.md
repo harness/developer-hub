@@ -16,7 +16,7 @@ This topic explains how to use the Harness Docker Registry Connector to connect 
 ### Before you begin
 
 * [CI Enterprise Concepts](../../continuous-integration/ci-quickstarts/ci-concepts.md)
-* [Harness Delegate Overview](../2_Delegates/delegates-overview.md)
+* [Harness Delegate Overview](/docs/platform/2_Delegates/get-started-with-delegates/delegates-overview.md)
 
 ### Review: Managing IAM Policies in IBM Cloud
 
@@ -28,7 +28,7 @@ When you switch or modify the IAM role, it might take up to 5 minutes to take ef
 
 ### Supported Platforms and Technologies
 
-For a list of the platforms and technologies supported by Harness, see [Supported Platforms and Technologies](https://ngdocs.harness.io/article/1e536z41av-supported-platforms-and-technologies).
+For a list of the platforms and technologies supported by Harness, see [Supported Platforms and Technologies](../../getting-started/supported-platforms-and-technologies.md).
 
 ### Step 1: Generate an API Key in IBM Cloud Console
 
@@ -81,11 +81,11 @@ Click **Save**, and **Continue**.
 
 Harness uses Docker Registry Connectors at Pipeline runtime to authenticate and perform operations with IBM Cloud Registry. Authentications and operations are performed by Harness Delegates.
 
-You can select Any Available Harness Delegate and Harness will select the Delegate. For a description of how Harness picks Delegates, see [Delegates Overview](../2_Delegates/delegates-overview.md).
+You can select Any Available Harness Delegate and Harness will select the Delegate. For a description of how Harness picks Delegates, see [Delegates Overview](/docs/platform/2_Delegates/get-started-with-delegates/delegates-overview.md).
 
-You can use Delegate Tags to select one or more Delegates. For details on Delegate Tags, see [Select Delegates with Tags](../2_Delegates/delegate-guide/select-delegates-with-selectors.md).
+You can use Delegate Tags to select one or more Delegates. For details on Delegate Tags, see [Select Delegates with Tags](/docs/platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md).
 
-If you need to install a Delegate, see [Delegate Installation Overview](https://ngdocs.harness.io/article/re8kk0ex4k-delegate-installation-overview).
+If you need to install a Delegate, see [Delegate Installation Overview](/docs/platform/2_Delegates/get-started-with-delegates/delegate-installation-overview.md).
 
 The Delegate(s) you use must have networking connectivity to the IBM Cloud Container Registry.
 

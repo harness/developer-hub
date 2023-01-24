@@ -30,7 +30,7 @@ In Harness CCM, the workload recommendations are computed by analyzing the past 
 
 The computation adds a 15% buffer to the recommended resources by default. CCM also allows you to add any additional buffer using the Tune recommendations option.
 
-When you enable [Cost Visibility](../../1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-kubernetes.md) for your [Kubernetes Cluster](https://ngdocs.harness.io/article/1gaud2efd4-add-a-kubernetes-cluster-connector), the [Delegate](https://ngdocs.harness.io/article/2k7lnc7lvl-delegates-overview) associated with your Connector starts collecting CPU and memory resource utilization metrics for every node and pod (including individual containers) present in the cluster every minute using a metrics server.  CCM relies on the Metrics Server and initializes recommendations after an initial data collection of 24-48 hours. The Metrics Server is queried by the controller every minute for utilization data.
+When you enable [Cost Visibility](../../1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-kubernetes.md) for your [Kubernetes Cluster](../../../platform/7_Connectors/add-a-kubernetes-cluster-connector.md), the [Delegate](/docs/platform/2_Delegates/get-started-with-delegates/delegates-overview.md) associated with your Connector starts collecting CPU and memory resource utilization metrics for every node and pod (including individual containers) present in the cluster every minute using a metrics server.  CCM relies on the Metrics Server and initializes recommendations after an initial data collection of 24-48 hours. The Metrics Server is queried by the controller every minute for utilization data.
 
 The utilization data collected every minute is then aggregated in the Delegate for a 20-minute window. The 20-minute aggregated data is then sent to Harness:
 
@@ -109,47 +109,6 @@ requests:
 ```
 The current resources are provisioned using `8Gi memory` and `1 CPU`, the recommended resources require only `3.5Gi memory` and `1.1m CPU` for limits and requests both.
 
-## View Recommendations
-
-Once you enable CCM, it may take up to 48 hours for the recommendations to appear in Cloud Costs. It depends on the time at which CCM receives the utilization data for the workload.In **Cloud Costs**, click **Recommendations**.
-
-The recommendations page displays the following information:
-
-* A breakdown of all the available recommendations.
-* **Potential Monthly Savings** across your Kubernetes clusters if you apply the recommendations.
-* **Forecasted Monthly Spend** across your Kubernetes clusters if you do not apply the recommendations.
-* **Emissions that can be reduced** and **Potential Carbon Emissions** are features that track greenhouse gas emissions.
-
-The **Recommendation Breakdown** displays the following information:
-
-
-
-|  |  |
-| --- | --- |
-| **Monthly Savings** | Potential monthly savings for your resource, if you apply the recommendations. |
-| **Resource Name** | Name of the resource for which CCM displays the recommendation. |
-| **Monthly Saving** | Potential Monthly Savings for the resource, if you apply the recommendations. |
-| **Monthly Cost** | The monthly cost of the recommendation. |
-| **Recommendation Type** | Type of the recommendation for your resource. For example, **rightsizing** or **resizing**. Based on your resource type, CCM recommends rightsizing or resizing your CPU, memory, or node counts. |
-
-You can create and use filters to select resources and recommendations.
-
-You can filter by:
-
-* **Resource Name:** the name of the resource being monitored.
-* **Namespace**: each Kubernetes namespace in the cluster.
-* **Cluster Name**: each Kubernetes cluster in your infrastructure.
-* **Resource Type**: the type of resources for which the recommendation is displayed. Currently, CCM supports ECS service, node pool and workload.
-* **Savings**: enter the minimum monthly savings. For example, all the recommendations with potential monthly savings of more than $1000.
-* **Potential Spend**: filter by forecasted monthly spend greater than the specified amount. For example, all the recommendations with forecasted monthly spend of more than $1000.
-
-The recommendation for the selected resource is displayed.
-
-Click a recommendation to view its details.
-
-Within a recommendation, select the number of days to compute recommendations based on the utilization data. You can select the last day, 7 days, or 30 days.
-
-You can use this information to optimize your resources to potentially reduce your monthly cloud costs.
 
 ## Step: Tune and Share Recommendations
 

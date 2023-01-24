@@ -33,7 +33,7 @@ In this topic, we will walk through a simple Job deployment. Here is the complet
 
 Workflows include an **Apply** step that allows you to deploy *any resource* you have set up in the Service **Manifests** section.
 
-For details on what you can deploy in different Harness Workflow types, see [What Can I Deploy in Kubernetes?](https://docs.harness.io/article/6ujb3c70fh-what-can-i-deploy-in-kubernetes).
+For details on what you can deploy in different Harness Workflow types, see [What Can I Deploy in Kubernetes?](../../firstgen-platform/techref-category/cd-ref/platforms-ref/what-can-i-deploy-in-kubernetes.md).
 
 The Apply step can deploy *all workload types*, including Jobs in any Workflow type.
 
@@ -82,7 +82,7 @@ spec:
 ```
 In your Harness Service, in **Manifests**, you simply add the Job in a manifest file. Let's walk through adding the manifest and the values.yaml file.
 
-First, we add a [CentOS Docker Image](https://hub.docker.com/_/centos) as the [Docker Registry Artifact Source](https://docs.harness.io/article/gxv9gj6khz-add-a-docker-image-service) for the Service.
+First, we add a [CentOS Docker Image](https://hub.docker.com/_/centos) as the [Docker Registry Artifact Source](../model-cd-pipeline/setup-services/add-a-docker-image-service.md) for the Service.
 
 ![](./static/run-kubernetes-jobs-63.png)
 
@@ -129,7 +129,7 @@ In these cases, you shouldn't add a Delegate Selector to any step in the Workflo
 
 If your Workflow Infrastructure Definition's Cloud Provider isn't using a Delegate Selector, and you want this Workflow step to use a specific Delegate, do the following:
 
-In **Delegate Selector**, select the Selector for the Delegate(s) you want to use. You add Selectors to Delegates to make sure that they're used to execute the command. For more information, see [Select Delegates with Selectors](https://docs.harness.io/article/c3fvixpgsl-select-delegates-for-specific-tasks-with-selectors).
+In **Delegate Selector**, select the Selector for the Delegate(s) you want to use. You add Selectors to Delegates to make sure that they're used to execute the command. For more information, see [Select Delegates with Selectors](../../firstgen-platform/account/manage-delegates/select-delegates-for-specific-tasks-with-selectors.md).
 
 Harness will use Delegates matching the Selectors you add.
 
@@ -244,7 +244,7 @@ Finally, in the **Delete** step, you can see the countdown Job deleted.
 
 ### Option: Showing Job Output
 
-To view Job output after the Apply step, you can use a simple script in a [Shell Script](https://docs.harness.io/article/1fjrjbau7x-capture-shell-script-step-output) step:
+To view Job output after the Apply step, you can use a simple script in a [Shell Script](../model-cd-pipeline/workflows/capture-shell-script-step-output.md) step:
 
 
 ```
@@ -278,7 +278,7 @@ Now you can obtain the output via the variable expression `${context.checkjob.jo
 
 For information on these collaboration tools, see:
 
-* [Jira Integration](https://docs.harness.io/article/077hwokrpr-jira-integration)
-* [ServiceNow Integration](https://docs.harness.io/article/7vsqnt0gch-service-now-integration)
-* [Add Collaboration Providers](https://docs.harness.io/article/cv98scx8pj-collaboration-providers)
+* [Jira Integration](../model-cd-pipeline/workflows/jira-integration.md)
+* [ServiceNow Integration](../model-cd-pipeline/workflows/service-now-integration.md)
+* [Add Collaboration Providers](../../firstgen-platform/account/manage-connectors/collaboration-providers.md)
 

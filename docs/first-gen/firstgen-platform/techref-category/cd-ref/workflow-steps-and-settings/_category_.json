@@ -1,0 +1,14 @@
+{
+  "label": "Workflow Steps and Settings Tech Ref FirstGen",
+  "position": 10,
+  "collapsible": "true",
+  "collapsed": "true",
+  "className": "red",
+  "link": {
+    "type": "generated-index",
+    "title": "Workflow Steps and Settings Tech Ref FirstGen"
+  },
+  "customProps": {
+    "helpdocs_category_id": "idvvqrrfr9"
+  }
+}

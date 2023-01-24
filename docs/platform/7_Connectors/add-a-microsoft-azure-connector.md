@@ -10,12 +10,12 @@ helpdocs_is_published: true
 
 This topic explains how to connect Harness to the Microsoft Azure cloud. Using this Connector, you can pull Azure artifacts and deploy your applications to Azure using Harness.
 
-Using Harness **Cloud Cost Management (CCM)**? See [Set Up Cloud Cost Management for Azure](https://docs.harness.io/article/v682mz6qfd-set-up-cost-visibility-for-azure).
+Using Harness **Cloud Cost Management (CCM)**? See [Set Up Cloud Cost Management for Azure](../../cloud-cost-management/1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-azure.md).
 
 ### Before you begin
 
-* [Learn Harness' Key Concepts](https://docs.harness.io/article/hv2758ro4e-learn-harness-key-concepts)
-* [CD Pipeline Basics](https://docs.harness.io/article/cqgeblt4uh-cd-pipeline-basics)
+* [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md)
+* [CD Pipeline Basics](../../continuous-delivery/onboard-cd/cd-concepts/cd-pipeline-basics.md)
 
 ### Limitations
 
@@ -120,9 +120,9 @@ If you do not use a custom role, the **Owner** role must be assigned.
 
 Here are the options for connecting Harness to your target AKS cluster:
 
-* Install a [Kubernetes Delegate](../2_Delegates/delegate-guide/install-a-kubernetes-delegate.md) in the target AKS cluster and use it for authentication in a Harness [Kubernetes Cluster Connector](add-a-kubernetes-cluster-connector.md). The Harness Kubernetes Cluster Connector is platform-agnostic.
+* Install a [Kubernetes Delegate](../2_Delegates/install-delegates/kubernetes-delegates/install-a-kubernetes-delegate.md) in the target AKS cluster and use it for authentication in a Harness [Kubernetes Cluster Connector](add-a-kubernetes-cluster-connector.md). The Harness Kubernetes Cluster Connector is platform-agnostic.
 	+ You won't need to provide Microsoft Azure Service Principal or Managed Identity credentials.
-* Install a [Kubernetes Delegate](../2_Delegates/delegate-guide/install-a-kubernetes-delegate.md) in the target AKS cluster and use it for authentication in a Harness **Microsoft Azure Cloud Connector**, as described in this topic.
+* Install a [Kubernetes Delegate](../2_Delegates/install-delegates/kubernetes-delegates/install-a-kubernetes-delegate.md) in the target AKS cluster and use it for authentication in a Harness **Microsoft Azure Cloud Connector**, as described in this topic.
 	+ You'll need to provide the Microsoft Azure Environment.
 	+ If you use a User Assigned Managed Identity, you will need to provide the Application (client) Id.
 	+ If you use a System Assigned Managed Identity, you do not need to provide any Ids.
@@ -281,7 +281,7 @@ In **Details**, you can select how you'd like Harness to authenticate with Azure
 
 If you have a Harness Delegate installed in your Azure subscription (preferably in your target AKS cluster) you can select **Use the credentials of a specific Harness Delegate**.
 
-For steps on installing a Delegate, see [Delegate Installation Overview](https://docs.harness.io/article/re8kk0ex4k-delegate-installation-overview).
+For steps on installing a Delegate, see [Delegate Installation Overview](/docs/platform/2_Delegates/get-started-with-delegates/delegate-installation-overview.md).
 
 ![](./static/add-a-microsoft-azure-connector-66.png)
 In **Environment**, select **Azure Global** or **US Government**.
@@ -362,7 +362,7 @@ For example, you could use a Harness Shell Script step and the expression like t
 ```
 export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH} kubectl get pods -n default
 ```
-Steps can be executed on any Delegate or you can select specific Delegates using the steps [Delegate Selector](../2_Delegates/delegate-guide/select-delegates-with-selectors.md) setting.
+Steps can be executed on any Delegate or you can select specific Delegates using the steps [Delegate Selector](../2_Delegates/manage-delegates/select-delegates-with-selectors.md) setting.
 
 For Azure deployments, note the following:
 
@@ -371,6 +371,6 @@ For Azure deployments, note the following:
 
 ### See also
 
-* [Azure ACR to AKS CD Quickstart](https://docs.harness.io/article/m7nkbph0ac-azure-cd-quickstart)
-* [Kubernetes CD Quickstart](https://docs.harness.io/article/knunou9j30-kubernetes-cd-quickstart)
+* [Azure ACR to AKS CD Quickstart](../../continuous-delivery/onboard-cd/cd-quickstarts/azure-cd-quickstart.md)
+* [Kubernetes CD Quickstart](../../continuous-delivery/onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md)
 

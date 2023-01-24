@@ -72,7 +72,7 @@ The execution context changes according to the verification step selected. For e
 
 ![](./static/deployment-verification-results-44.png)
 
-The log analysis shows a [built-in Harness variable](https://docs.harness.io/article/9dvxcegm90-variables) expression used as part of the query `${host.hostname}`, and the metric analysis shows the `${host.ec2InstanceinstanceId}` expression that identifies the target AWS AMI used for gathering metrics.
+The log analysis shows a [built-in Harness variable](../../../../firstgen-platform/techref-category/variables/variables.md) expression used as part of the query `${host.hostname}`, and the metric analysis shows the `${host.ec2InstanceinstanceId}` expression that identifies the target AWS AMI used for gathering metrics.
 
 ### Feedback
 

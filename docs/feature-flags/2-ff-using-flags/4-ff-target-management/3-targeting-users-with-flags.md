@@ -27,11 +27,15 @@ For example:
 4. You enable the Feature Flag.
 5. The feature is available to the QA team but is not available to the Non-QA team.
 
-> **☆ NOTE —** A Flag can have values in each Environment. For example, if you have a QA Environment and a Production Environment within a single Project on the Harness Platform, the Flag could be toggled ON in QA but toggled OFF in Production. 
+:::note
+ A Flag can have values in each Environment. For example, if you have a QA Environment and a Production Environment within a single Project on the Harness Platform, the Flag could be toggled ON in QA but toggled OFF in Production. 
+:::
 
 This topic describes how to set up Targeting for a Feature Flag you’ve created. 
 
-> **☆ NOTE —** To edit the default Variations that are served to Targets, go to [Changing the Variations of Your Flags](../2-update-feature-flags/3-manage-variations.md).
+:::note
+ To edit the default Variations that are served to Targets, go to [Changing the Variations of Your Flags](../2-update-feature-flags/3-manage-variations.md).
+:::
 
 ## Target specific users or Target Groups when a Flag is enabled
 

@@ -14,7 +14,7 @@ This topic describes how to create the IIS website, application, and virtual dir
 
 ### Add Harness Application
 
-[A Harness Application](https://docs.harness.io/article/bucothemly-application-configuration) is a logical grouping of the Services, Environments, and Workflows for your IIS website deployment. First, we will create the Harness Application, and then each of the IIS Services.
+[A Harness Application](../model-cd-pipeline/applications/application-configuration.md) is a logical grouping of the Services, Environments, and Workflows for your IIS website deployment. First, we will create the Harness Application, and then each of the IIS Services.
 
 To add the Harness Application, do the following:
 
@@ -24,7 +24,7 @@ To add the Harness Application, do the following:
 
 ### Add IIS Website Service
 
-Services include artifact sources, deployment specifications, and configuration variables. For more information, see [Add a Service](https://docs.harness.io/article/eb3kfl8uls-service-configuration).
+Services include artifact sources, deployment specifications, and configuration variables. For more information, see [Add a Service](../model-cd-pipeline/setup-services/service-configuration.md).
 
 In this procedure you will define which artifact(s) to use for your IIS Website. Harness will then create a Deployment Specification using PowerShell.
 
@@ -165,7 +165,7 @@ Write-Host "Done."
 ```
 Note the following:
 
-* The `$releaseId` variable has the value `${workflow.ReleaseNo}`. This is one of the builtin Harness variables. For more information, see [Variables and Expressions in Harness](https://docs.harness.io/article/9dvxcegm90-variables).
+* The `$releaseId` variable has the value `${workflow.ReleaseNo}`. This is one of the builtin Harness variables. For more information, see [Variables and Expressions in Harness](../../firstgen-platform/techref-category/variables/variables.md).
 * The `$VirtualDirPath` variable shows you where your IIS directory will be deployed.
 
 When you deploy this service as part of your workflow, you will see these variables used in the Harness deployment dashboard:

@@ -19,7 +19,7 @@ The following steps run SSH commands and push the artifacts to JFrog Artifactory
 
 * [CI Pipeline Quickstart](../../ci-quickstarts/ci-pipeline-quickstart.md)
 * [CI Stage Settings](../../ci-technical-reference/ci-stage-settings.md)
-* [Set Up Build Infrastructure](https://docs.harness.io/category/set-up-build-infrastructure)
+* [Set Up Build Infrastructure](/docs/category/set-up-build-infrastructure)
 * [Learn Harness' Key Concepts](../../../getting-started/learn-harness-key-concepts.md)
 
 ### Step 1: Create the CI Stage
@@ -40,7 +40,7 @@ In the CI Artifact, select **Upload Artifacts to JFrog Artifactory**.
 
 In this step, configure the Harness Artifactory Connector, enter the source file/path, and the target path. 
 
-The JFrog Account associated with the Connector must have read/write permission. See [Connector Settings Reference](https://ngdocs.harness.io/article/euueiiai4m-artifactory-connector-settings-reference).
+The JFrog Account associated with the Connector must have read/write permission. See [Connector Settings Reference](../../../platform/7_Connectors/ref-cloud-providers/artifactory-connector-settings-reference.md).
 
 For the step Settings, see [Upload Artifacts to JFrog Artifactory](../../ci-technical-reference/upload-artifacts-to-jfrog-artifactory-step-settings.md).
 

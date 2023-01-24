@@ -16,14 +16,14 @@ In this topic, we will show you how to create the Service for your application p
 
 * [Connect to Your Repos and Target SSH Platforms](connect-to-your-target-ssh-platform.md)
 * [Traditional Deployments Overview](traditional-deployments-overview.md)
-* [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts)
+* [Harness Key Concepts](../../starthere-firstgen/harness-key-concepts.md)
 
 ### Step 1: Create a Harness SSH Service
 
 To create a Service for an application package, do the following:
 
 1. In your Application, click **Services**, and then click **Add Service**. The **Add Service** settings appear.
-2. In **Name**, enter a name for the Service. You will use this name when selecting this Service in Harness Environments, Workflows, and other components. For more information, see  [Services](https://docs.harness.io/article/eb3kfl8uls-service-configuration).
+2. In **Name**, enter a name for the Service. You will use this name when selecting this Service in Harness Environments, Workflows, and other components. For more information, see  [Services](../model-cd-pipeline/setup-services/service-configuration.md).
 3. In **Deployment Type**, select **Secure Shell (SSH)**. All file-based Services are Secure Shell (SSH) deployments.The **Artifact Type** and **Application Stack** settings appear.
 
 ### Step 2: Select an Artifact Type
@@ -44,7 +44,7 @@ When the Service is created, it contains the scripts need to install the applica
 
 ![](./static/add-artifacts-for-ssh-deployments-00\.png)
 
-If you are deploying to an existing instance that already has an app stack installed, you can leave **Application Stack** empty. For more information, see  [Add Application Stacks](https://docs.harness.io/article/g26sp2ay68-catalog).
+If you are deploying to an existing instance that already has an app stack installed, you can leave **Application Stack** empty. For more information, see  [Add Application Stacks](../../firstgen-platform/account/manage-appstacks/catalog.md).
 
 ### Review: Secure Shell Service Sections
 
@@ -84,7 +84,7 @@ If your artifact files are located on cloud platform storage like AWS S3, GCP St
 
 If the files are located in a repo such as Artifactory or an automation server such as Jenkins, you can create an Artifact Server.
 
-For more information, see  [Add Artifact Servers](https://docs.harness.io/article/7dghbx1dbl-configuring-artifact-server) and  [Add Cloud Providers](https://docs.harness.io/article/whwnovprrb-cloud-providers).
+For more information, see  [Add Artifact Servers](../../firstgen-platform/account/manage-connectors/configuring-artifact-server.md) and  [Add Cloud Providers](../../firstgen-platform/account/manage-connectors/cloud-providers.md).
 
 To add an artifact source, do the following:
 
@@ -94,7 +94,7 @@ To add an artifact source, do the following:
 4. In **Artifact Path**, click the artifact Harness located in the bucket you selected in Bucket. If the artifact is at the root of the bucket, then just the filename is provided. If the artifact is in a folder, the file path is provided also.  
 Harness uses **Metadata Only** to download the file on the target host.  
 Metadata is sufficient as it contains enough information for the target host(s) to obtain or build the artifact. Harness stores the metadata.   
-During runtime, Harness passes the metadata to the target host(s) where it is used to obtain the artifact(s). Ensure that the target host has network connectivity to the Artifact Server. For more information, see  [Service Types and Artifact Sources](https://docs.harness.io/article/qluiky79j8-service-types-and-artifact-sources).
+During runtime, Harness passes the metadata to the target host(s) where it is used to obtain the artifact(s). Ensure that the target host has network connectivity to the Artifact Server. For more information, see  [Service Types and Artifact Sources](../model-cd-pipeline/setup-services/service-types-and-artifact-sources.md).
 5. Click SUBMIT. The artifact source is listed.
 
 ### Option: View Artifact History

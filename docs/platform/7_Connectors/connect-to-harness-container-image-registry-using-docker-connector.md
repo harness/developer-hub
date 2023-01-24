@@ -32,7 +32,7 @@ If you choose to override the `harnessImageConnector`, you may also avoid trigge
 ### Before you begin
 
 * [CI Enterprise Concept](../../continuous-integration/ci-quickstarts/ci-concepts.md)
-* [Harness Delegate Overview](../2_Delegates/delegates-overview.md)
+* [Harness Delegate Overview](/docs/platform/2_Delegates/get-started-with-delegates/delegates-overview.md)
 * [Docker Connector Settings Reference](ref-cloud-providers/docker-registry-connector-settings-reference.md)
 
 ### Review: Allowlist app.harness.io
@@ -43,7 +43,7 @@ In the case that app.harness.io is not allowlisted, please allowlist it before p
 
 
 :::note
-In general, and as a Best Practice, you should allowlist Harness Domains and IPs. See **Allowlist Harness Domains and IPs** in [Delegate Requirements and Limitations](../2_Delegates/delegate-reference/delegate-requirements-and-limitations.md).
+In general, and as a Best Practice, you should allowlist Harness Domains and IPs. See **Allowlist Harness Domains and IPs** in [Delegate Requirements and Limitations](../2_Delegates/get-started-with-delegates/delegate-requirements-and-limitations.md).
 
 :::
 
@@ -89,11 +89,11 @@ Click **Continue**.
 
 ### Step 3: Set Up Delegates
 
-Harness uses Docker Registry Connectors at Pipeline runtime to pull images and perform operations. You can select Any Available Harness Delegate and Harness will select the best Delegate at runtime. For a description of how Harness picks Delegates, see [Delegates Overview](../2_Delegates/delegates-overview.md).
+Harness uses Docker Registry Connectors at Pipeline runtime to pull images and perform operations. You can select Any Available Harness Delegate and Harness will select the best Delegate at runtime. For a description of how Harness picks Delegates, see [Delegates Overview](/docs/platform/2_Delegates/get-started-with-delegates/delegates-overview.md).
 
-You can use Delegate Tags to select one or more Delegates. For details on Delegate Tags, see [Select Delegates with Tags](../2_Delegates/delegate-guide/select-delegates-with-selectors.md).
+You can use Delegate Tags to select one or more Delegates. For details on Delegate Tags, see [Select Delegates with Tags](/docs/platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md).
 
-If you need to install a Delegate, see [Delegate Installation Overview](https://ngdocs.harness.io/article/re8kk0ex4k-delegate-installation-overview).
+If you need to install a Delegate, see [Delegate Installation Overview](/docs/platform/2_Delegates/get-started-with-delegates/delegate-installation-overview.md).
 
 Click **Save and Continue**.
 

@@ -35,7 +35,7 @@ You'll learn how to:
 ### Before you begin
 
 * **What you don't need:** this quickstart is only intended to show you how Pipeline governance works and so we use a simple Pipeline that only contains an Approval stage. You do not need a Kubernetes cluster or other host as a CD deployment target or CI build farm. You do not need a running Harness Delegate.
-* Review [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts) to establish a general understanding of Harness.
+* Review [Harness Key Concepts](../../first-gen/starthere-firstgen/harness-key-concepts.md) to establish a general understanding of Harness.
 * The [Harness Policy As Code Overview](harness-governance-overview.md) provides a concise overview of Harness Policy As Code.
 * **New to OPA Policy Authoring?** OPA policies are written in OPA's Rego policy language. We'll provide the policy you need for this quickstart, but it's also helpful to have some familiarity with Rego before writing and reading policies.
 	+ **Highly recommend:** Free online course on Rego from Styra founder and OPA co-creator Tim Hendricks: [OPA Policy Authoring](https://academy.styra.com/courses/opa-rego).
@@ -141,7 +141,7 @@ We use the **Quickstart** `projectIdentifier` and the **default** `orgIdentifier
 
 Click **Save**. The Pipeline is now saved.
 
-Click **Visual** and you can see it's a simple Pipeline with a manual [Approval stage](../9_Approvals/adding-harness-approval-stages.md) and one [Shell Script](https://docs.harness.io/article/k5lu0u6i1i-using-shell-scripts) step that echoes `hello`.
+Click **Visual** and you can see it's a simple Pipeline with a manual [Approval stage](../9_Approvals/adding-harness-approval-stages.md) and one [Shell Script](../../continuous-delivery/cd-execution/cd-general-steps/using-shell-scripts.md) step that echoes `hello`.
 
 ![](./static/harness-governance-quickstart-60.png)
 
@@ -365,7 +365,7 @@ Add a new line before the `- step:` for the **Shell Script** step.
 
 ![](./static/harness-governance-quickstart-75.png)
 
-On the new line, paste the YAML for a [Manual Approval](https://docs.harness.io/article/43pzzhrcbv-using-harness-approval-steps-in-cd-stages) step:
+On the new line, paste the YAML for a [Manual Approval](../../continuous-delivery/cd-advanced/approvals/using-harness-approval-steps-in-cd-stages.md) step:
 
 
 ```

@@ -10,13 +10,13 @@ helpdocs_is_published: true
 
 This topic explains how to configure the Select Nodes step in a Rolling deployment Workflow.
 
-Rolling deployments are supported for most platforms. This topic is only concerned with the Rolling deployment Workflows that include the **Select Nodes** step. For a list of all platforms that support Rolling deployments, see [Supported Platforms and Technologies](https://docs.harness.io/article/220d0ojx5y-supported-platforms).
+Rolling deployments are supported for most platforms. This topic is only concerned with the Rolling deployment Workflows that include the **Select Nodes** step. For a list of all platforms that support Rolling deployments, see [Supported Platforms and Technologies](../../../starthere-firstgen/supported-platforms.md).
 
 
 ### Before You Begin
 
-* [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts)
-* [Deployment Concepts and Strategies](https://docs.harness.io/article/325x7awntc-deployment-concepts-and-strategies)
+* [Harness Key Concepts](../../../starthere-firstgen/harness-key-concepts.md)
+* [Deployment Concepts and Strategies](../../concepts-cd/deployment-types/deployment-concepts-and-strategies.md)
 
 ### Step 1: Create a Rolling Workflow
 
@@ -63,6 +63,6 @@ You can also enter [Workflow variable expressions](add-workflow-variables-new-te
 
 ### Next Steps
 
-* [Traditional Deployments Overview](https://docs.harness.io/article/6pwni5f9el-traditional-deployments-overview)
-* [IIS (.NET) Quickstart](https://docs.harness.io/article/2oo63r9rwb-iis-net-quickstart)
+* [Traditional Deployments Overview](../../traditional-deployments/traditional-deployments-overview.md)
+* [IIS (.NET) Quickstart](../../../first-gen-quickstarts/iis-net-quickstart.md)
 

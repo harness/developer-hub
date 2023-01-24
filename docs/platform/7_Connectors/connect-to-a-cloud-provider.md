@@ -16,7 +16,7 @@ Harness uses Connectors at Pipeline runtime to authenticate and perform operatio
 
 ### Before you begin
 
-* [Learn Harness' Key Concepts](https://ngdocs.harness.io/article/hv2758ro4e-learn-harness-key-concepts)
+* [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md)
 
 ### Add a Cloud Provider Connector
 
@@ -48,6 +48,6 @@ For steps on setting up a Microsoft Azure Cloud Connector, see [Add a Microsoft 
 
 ### See also
 
-* [Install a Kubernetes Delegate](../2_Delegates/delegate-guide/install-a-kubernetes-delegate.md)
-* [Select Delegates with Selectors](../2_Delegates/delegate-guide/select-delegates-with-selectors.md)
+* [Install a Kubernetes Delegate](../2_Delegates/install-delegates/kubernetes-delegates/install-a-kubernetes-delegate.md)
+* [Select Delegates with Selectors](../2_Delegates/manage-delegates/select-delegates-with-selectors.md)
 

@@ -55,7 +55,7 @@ You can find the Dynatrace service in Dynatrace search:
 
 [![](./static/3-verify-deployments-with-dynatrace-03.png)](./static/3-verify-deployments-with-dynatrace-03.png)
 
-You can also enter a built-in [Harness variable expression](https://docs.harness.io/article/9dvxcegm90-variables) or custom variable, such as a [Service](../../model-cd-pipeline/setup-services/service-configuration.md) or [Workflow variable](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md):
+You can also enter a built-in [Harness variable expression](../../../firstgen-platform/techref-category/variables/variables.md) or custom variable, such as a [Service](../../model-cd-pipeline/setup-services/service-configuration.md) or [Workflow variable](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md):
 
 [![](./static/3-verify-deployments-with-dynatrace-05.png)](./static/3-verify-deployments-with-dynatrace-05.png)
 
@@ -99,7 +99,7 @@ Once your configuration tests successfully, click **Submit**. The **Dynatrace** 
 
 ### Review: Harness Expression Support in CV Settings
 
-You can use expressions (`${...}`) for [Harness built-in variables](https://docs.harness.io/article/7bpdtvhq92-workflow-variables-expressions) and custom [Service](../../model-cd-pipeline/setup-services/service-configuration.md) and [Workflow](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md) variables in the settings of Harness Verification Providers.
+You can use expressions (`${...}`) for [Harness built-in variables](../../kubernetes-deployments/workflow-variables-expressions.md) and custom [Service](../../model-cd-pipeline/setup-services/service-configuration.md) and [Workflow](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md) variables in the settings of Harness Verification Providers.
 
 ![](./static/3-verify-deployments-with-dynatrace-12.png)
 
@@ -151,6 +151,6 @@ To learn about the verification analysis features, see the following sections.
 
 ### Next Steps
 
-* [Configuration as Code](https://docs.harness.io/article/htvzryeqjw-configuration-as-code)
-* [Managing Users and Groups (RBAC)](https://docs.harness.io/article/ven0bvulsj-users-and-permissions)
+* [Configuration as Code](../../../firstgen-platform/config-as-code/configuration-as-code.md)
+* [Managing Users and Groups (RBAC)](../../../firstgen-platform/security/access-management-howtos/users-and-permissions.md)
 

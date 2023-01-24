@@ -33,7 +33,7 @@ To verify your deployment with Stackdriver, do the following:
 2. In your Workflow, under **Verify Service**, click **Add Step**.
 3. In the resulting **Add Step** settings, select **Performance Monitoring** > **Stackdriver**.
 4. Click **Next**. The **Configure****Stackdriver** settings appear.
-5. In **GCP Cloud Provider**, select the [Google Cloud Platform (GCP) Cloud Provider](https://docs.harness.io/article/whwnovprrb-cloud-providers#google_cloud_platform_gcp) you set up in Harness.
+5. In **GCP Cloud Provider**, select the [Google Cloud Platform (GCP) Cloud Provider](../../../firstgen-platform/account/manage-connectors/cloud-providers.md#google-cloud-platform-gcp) you set up in Harness.
 6. You can also enter variable expressions, such as: `${serviceVariable.stackdriver_connector_name}`.
 
 ### Step 2: Metrics to Monitor
@@ -126,7 +126,7 @@ The Stackdriver verification step is added to your Workflow.
 
 ### Review: Harness Expression Support in CV Settings
 
-You can use expressions (`${...}`) for [Harness built-in variables](https://docs.harness.io/article/7bpdtvhq92-workflow-variables-expressions) and custom [Service](../../model-cd-pipeline/setup-services/service-configuration.md) and [Workflow](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md) variables in the settings of Harness Verification Providers.
+You can use expressions (`${...}`) for [Harness built-in variables](../../kubernetes-deployments/workflow-variables-expressions.md) and custom [Service](../../model-cd-pipeline/setup-services/service-configuration.md) and [Workflow](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md) variables in the settings of Harness Verification Providers.
 
 ![](./static/verify-deployments-with-stackdriver-metrics-27.png)
 
@@ -148,7 +148,7 @@ You can also see the evaluation in the **Continuous Verification** dashboard. Th
 
 ### Next Steps
 
-* [Configuration as Code](https://docs.harness.io/article/htvzryeqjw-configuration-as-code)
-* [Users and Permissions](https://docs.harness.io/article/ven0bvulsj-users-and-permissions)
+* [Configuration as Code](../../../firstgen-platform/config-as-code/configuration-as-code.md)
+* [Users and Permissions](../../../firstgen-platform/security/access-management-howtos/users-and-permissions.md)
 * [CV Strategies, Tuning, and Best Practices](../continuous-verification-overview/concepts-cv/cv-strategies-and-best-practices.md)
 

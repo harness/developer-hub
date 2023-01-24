@@ -43,7 +43,7 @@ Enter the URL of the server.
 
 In **Encrypted API Token**, 
 
-For secrets and other sensitive settings, select or create a new [Harness Encrypted Text secret](https://docs.harness.io/article/ygyvp998mu-use-encrypted-text-secrets) for the token.
+For secrets and other sensitive settings, select or create a new [Harness Encrypted Text secret](../../../firstgen-platform/security/secrets-management/use-encrypted-text-secrets.md) for the token.
 
 For details, see Logz.io's [Announcing the Logz.io Search API](https://logz.io/blog/announcing-the-logz-io-search-api/) tutorial, [Managing API Tokens](https://docs.logz.io/user-guide/tokens/api-tokens.html) topic, and [Authentication](https://docs.logz.io/api/#section/Authentication) API documentation.
 ### Step 5: Usage Scope

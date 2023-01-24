@@ -33,7 +33,7 @@ To verify your deployment with Stackdriver, do the following:
 2. In your Workflow, under **Verify Service**, click **Add Step**.
 3. In the resulting **Add Step** settings, select **Log Analysis** > **Stackdriver**.
 4. Click **Next**. The **Configure****Stackdriver** settings appear.
-5. In **GCP Cloud Provider**, select the [Google Cloud Platform (GCP) Cloud Provider](https://docs.harness.io/article/whwnovprrb-cloud-providers#google_cloud_platform_gcp) you set up in Harness.  
+5. In **GCP Cloud Provider**, select the [Google Cloud Platform (GCP) Cloud Provider](../../../firstgen-platform/account/manage-connectors/cloud-providers.md#google-cloud-platform-gcp) you set up in Harness.  
    You can also enter variable expressions, such as: `${serviceVariable.stackdriver_connector_name}`.
 
    If the **GCP Cloud Provider** field contains an expression, the **Region** field must also use an expression.1. In **Region**, select the GCP [region](https://cloud.google.com/compute/docs/regions-zones/) where the application is hosted. The Stackdriver API uses a service-specific notion of location. Harness uses the name of a region. You can find the region in Stackdriver Metrics Explorer by selecting the **location** column:
@@ -140,7 +140,7 @@ The Stackdriver verification step is added to your Workflow.
 
 ### Review: Harness Expression Support in CV Settings
 
-You can use expressions (`${...}`) for [Harness built-in variables](https://docs.harness.io/article/7bpdtvhq92-workflow-variables-expressions) and custom [Service](../../model-cd-pipeline/setup-services/service-configuration.md) and [Workflow](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md) variables in the settings of Harness Verification Providers.
+You can use expressions (`${...}`) for [Harness built-in variables](../../kubernetes-deployments/workflow-variables-expressions.md) and custom [Service](../../model-cd-pipeline/setup-services/service-configuration.md) and [Workflow](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md) variables in the settings of Harness Verification Providers.
 
 ![](./static/3-verify-deployments-with-stackdriver-14.png)
 
@@ -163,7 +163,7 @@ You can also see the evaluation in the **Continuous Verification** dashboard. Th
 ### Next Steps
 
 * [Verify Deployments with Stackdriver Metrics](verify-deployments-with-stackdriver-metrics.md)
-* [Configuration as Code](https://docs.harness.io/article/htvzryeqjw-configuration-as-code)
-* [Users and Permissions](https://docs.harness.io/article/ven0bvulsj-users-and-permissions)
+* [Configuration as Code](../../../firstgen-platform/config-as-code/configuration-as-code.md)
+* [Users and Permissions](../../../firstgen-platform/security/access-management-howtos/users-and-permissions.md)
 * [CV Strategies, Tuning, and Best Practices](../continuous-verification-overview/concepts-cv/cv-strategies-and-best-practices.md#algorithm-sensitivity-and-failure-criteria)
 

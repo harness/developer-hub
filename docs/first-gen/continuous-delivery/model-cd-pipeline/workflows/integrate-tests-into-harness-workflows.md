@@ -15,7 +15,7 @@ In this topic we will walk you through common test integrations.
 ### Before You Begin
 
 * **Application used in this topic** — This topic uses a simple Java application that exposes a REST endpoint: the [Hello World Quarkus app](https://quarkus.io/guides/getting-started). It includes unit tests using the [REST Assured](http://rest-assured.io/) Java DSL.
-* [Artifact Build and Deploy Pipelines](https://docs.harness.io/category/j1q21aler1-build-deploy) — Review these How-tos to learn about CI/CD integration in Harness.
+* [Artifact Build and Deploy Pipelines](docs/category/cicd-artifact-build-and-deploy-pipelines) — Review these How-tos to learn about CI/CD integration in Harness.
 
 ### Visual Summary
 
@@ -33,7 +33,7 @@ You can use Harness to run a build or test process via Jenkins, Bamboo, Shell Sc
 
 First, you need to connect Harness with Jenkins, Bamboo, or other CI tool.
 
-For Jenkins and Bamboo connections, see [Add Artifact Servers](https://docs.harness.io/article/7dghbx1dbl-configuring-artifact-server).
+For Jenkins and Bamboo connections, see [Add Artifact Servers](../../../firstgen-platform/account/manage-connectors/configuring-artifact-server.md).
 
 For integrating CI using Shell Scripts, see [Using the Shell Script Command](capture-shell-script-step-output.md).
 
@@ -49,13 +49,13 @@ Let's look at a Jenkins pipeline execution that uses parameters to skip the buil
 
 In Harness, we'll execute this Jenkins pipeline as part of a deployment Workflow.
 
-The first step is to add a Jenkins Artifact Server in Harness, as described in [Add Artifact Servers](https://docs.harness.io/article/7dghbx1dbl-configuring-artifact-server).
+The first step is to add a Jenkins Artifact Server in Harness, as described in [Add Artifact Servers](../../../firstgen-platform/account/manage-connectors/configuring-artifact-server.md).
 
 In this example, we are running Jenkins locally:
 
 ![](./static/integrate-tests-into-harness-workflows-60.png)
 
-We will create a Harness SSH deployment. This is also called a [Traditional deployment](https://docs.harness.io/article/6pwni5f9el-traditional-deployments-overview).
+We will create a Harness SSH deployment. This is also called a [Traditional deployment](../../traditional-deployments/traditional-deployments-overview.md).
 
 The same approach works for other types of deployments, such as Kubernetes, ECS, Helm, Pivotal, and so on. For deployments, you would use the corresponding Cloud Providers, and Service and Workflow deployment types.Next, we create the Harness Application with the following components:
 
@@ -95,7 +95,7 @@ This Environment configuration enables the same Workflow to run using different 
 	 
 4. Add values for the job parameters Harness automatically populates.
 
-You can use Harness variable expressions for values. For example, Service or Workflow variables. Users can assign values when the Workflow is deployed. See [Variables and Expressions in Harness](https://docs.harness.io/article/9dvxcegm90-variables).
+You can use Harness variable expressions for values. For example, Service or Workflow variables. Users can assign values when the Workflow is deployed. See [Variables and Expressions in Harness](../../../firstgen-platform/techref-category/variables/variables.md).
 
 Let's look at the Workflow execution.
 
@@ -285,7 +285,7 @@ This could be all the hosts configured Infrastructure Definition, a percentage s
 
   ![](./static/integrate-tests-into-harness-workflows-72.png)
 	
-* Run the tests on a specific test node using the **Target Host** option and the built-in Harness `${instance.hostName}` expression. See [Variables and Expressions in Harness](https://docs.harness.io/article/9dvxcegm90-variables).
+* Run the tests on a specific test node using the **Target Host** option and the built-in Harness `${instance.hostName}` expression. See [Variables and Expressions in Harness](../../../firstgen-platform/techref-category/variables/variables.md).
 
   ![](./static/integrate-tests-into-harness-workflows-73.png)
 
@@ -355,7 +355,7 @@ The Artifact Source in the Service is named **quarkus-test-image**. It uses a Ha
 
 The Docker image is referenced in the **run maven test** Exec command script as `${artifact.source.repositoryName}`.
 
-You can modify the script to specify image tag/version using `${artifact.buildNo}`. See [Variables and Expressions in Harness](https://docs.harness.io/article/9dvxcegm90-variables).
+You can modify the script to specify image tag/version using `${artifact.buildNo}`. See [Variables and Expressions in Harness](../../../firstgen-platform/techref-category/variables/variables.md).
 
 We is using the latest image (the default). The REST API endpoint listed in the script is at `${demo.MYHOST}`. This is a variable published from a Shell Script step in the previous Workflow in the Pipeline. `${demo.MYHOST}` is the hostname of the instance where the application was deployed.
 
@@ -423,5 +423,5 @@ This article showed you some of the benefits of integrated testing in Harness:
 
 ### Next Steps
 
-* [Artifact Build and Deploy Pipelines Overview](https://docs.harness.io/article/0tphhkfqx8-artifact-build-and-deploy-pipelines-overview)
+* [Artifact Build and Deploy Pipelines Overview](../../concepts-cd/deployment-types/artifact-build-and-deploy-pipelines-overview.md)
 

@@ -10,13 +10,13 @@ helpdocs_is_published: true
 
 Typically, Harness Kubernetes deployments using Helm charts involve adding your artifact (image) to Harness in addition to your chart. The chart refers to the artifact you added to Harness (via its values.yaml). During deployment, Harness deploys the artifact you added to Harness and uses the chart to manage it.
 
-For the standard Harness Kubernetes and Native Helm deployments using Helm charts, see [Use a Helm Repository with Kubernetes](use-a-helm-repository-with-kubernetes.md) and [Helm Quickstart](https://docs.harness.io/article/2aaevhygep-helm-quickstart).In addition to this method, you can also simply deploy the Helm chart without adding your artifact to Harness. Instead, the *Helm chart is the artifact*. The Helm chart you provide contains the hardcoded link to the artifact.
+For the standard Harness Kubernetes and Native Helm deployments using Helm charts, see [Use a Helm Repository with Kubernetes](use-a-helm-repository-with-kubernetes.md) and [Helm Quickstart](../../first-gen-quickstarts/helm-quickstart.md).In addition to this method, you can also simply deploy the Helm chart without adding your artifact to Harness. Instead, the *Helm chart is the artifact*. The Helm chart you provide contains the hardcoded link to the artifact.
 
 Harness installs the chart, gets the artifact from the repo, and then installs the artifact. We call this a *Helm chart deployment*.
 
 This topic covers the second method: a Helm chart deployment.
 
-Looking for the API? You can use the Harness GraphQL to run a Helm chart deployment. See [Deploy Helm Charts Using the API](https://docs.harness.io/article/sbvn6uwcq1-deploy-helm-charts-using-api).New to Harness Kubernetes and Native Helm Deployments?Harness includes both [Kubernetes](https://docs.harness.io/article/7in9z2boh6-kubernetes-quickstart) and [Native Helm](../concepts-cd/deployment-types/helm-deployments-overview.md) deployments, and you can use Helm charts in both. Here's the difference:  
+Looking for the API? You can use the Harness GraphQL to run a Helm chart deployment. See [Deploy Helm Charts Using the API](../../firstgen-platform/techref-category/api/deploy-helm-charts-using-api.md).New to Harness Kubernetes and Native Helm Deployments?Harness includes both [Kubernetes](../../first-gen-quickstarts/kubernetes-quickstart.md) and [Native Helm](../concepts-cd/deployment-types/helm-deployments-overview.md) deployments, and you can use Helm charts in both. Here's the difference:  
 • **Harness Kubernetes Deployments** allow you to use your own Kubernetes manifests or a Helm chart (remote or local), and Harness executes the Kubernetes API calls to build everything without Helm and Tiller needing to be installed in the target cluster.  
 • Harness Kubernetes deployments also support all deployment strategies (Canary, Blue/Green, Rolling, etc).  
 • For **Harness Native Helm Deployments**, you must always have Helm and Tiller running on one pod in your target cluster. Tiller makes the API calls to Kubernetes in these cases.  
@@ -24,7 +24,7 @@ Looking for the API? You can use the Harness GraphQL to run a Helm chart deploym
 
 ### Before You Begin
 
-* [Kubernetes Quickstart](https://docs.harness.io/article/7in9z2boh6-kubernetes-quickstart)
+* [Kubernetes Quickstart](../../first-gen-quickstarts/kubernetes-quickstart.md)
 * [Use a Helm Repository with Kubernetes](use-a-helm-repository-with-kubernetes.md)
 * [Native Helm Deployments Overview](../concepts-cd/deployment-types/helm-deployments-overview.md)
 * [The Chart Template Developer's Guide](https://helm.sh/docs/chart_template_guide/) from Helm.
@@ -36,7 +36,7 @@ Looking for the API? You can use the Harness GraphQL to run a Helm chart deploym
 
 ### Permissions Required
 
-The Harness User Group must have the following [Application Permissions](https://docs.harness.io/article/ven0bvulsj-users-and-permissions) for the Service (or All Services):
+The Harness User Group must have the following [Application Permissions](../../firstgen-platform/security/access-management-howtos/users-and-permissions.md) for the Service (or All Services):
 
 * Create
 * Read
@@ -45,7 +45,7 @@ The Harness User Group must have the following [Application Permissions](https:/
 
 ### Supported Platforms and Technologies
 
-See [Supported Platforms and Technologies](https://docs.harness.io/article/220d0ojx5y-supported-platforms).
+See [Supported Platforms and Technologies](../../starthere-firstgen/supported-platforms.md).
 
 #### ChartMuseum Binaries
 
@@ -99,7 +99,7 @@ If no version is entered, Harness does not check for a match.
 
 You connect Harness to a Helm Chart Repository as a Harness Artifact Server and then use it in Kubernetes and Native Helm Services **Manifest Source** settings.
 
-To add the Helm Repository Artifact Server for your chart repo, follow the steps in [Add Helm Repository Artifact Servers](https://docs.harness.io/article/0hrzb1zkog-add-helm-repository-servers).
+To add the Helm Repository Artifact Server for your chart repo, follow the steps in [Add Helm Repository Artifact Servers](../../firstgen-platform/account/manage-connectors/add-helm-repository-servers.md).
 
 ### Step 2: Create Service and Select Artifact from Manifest
 
@@ -206,7 +206,7 @@ This enables you to have a Service keep its settings but change them when the Se
 
 For example, you might have a single Service but an Environment for QA and an Environment for Production, and you want to overwrite the `namespace` setting in the Service's **Values YAML Override** values.yaml depending on the Environment.
 
-You can also overwrite Service variables at the Phase-level of a multiple Phase Workflow.If you add a values.yaml in **Service Configuration Overrides** and you have a values.yaml in your chart already, then Harness will merge them at runtime. The values.yaml in **Service Configuration Overrides** overrides at a `key:value` level, not a file level. If you have a values.yaml in your chart with `key:value` pairs you do not want, you must remove them from that file or override them in the values.yaml in **Service Configuration Overrides**. See [Variable Override Priority](https://docs.harness.io/article/benvea28uq-variable-override-priority).For details, see [Override Harness Kubernetes Service Settings](override-harness-kubernetes-service-settings.md) or [Helm Environments](../helm-deployment/3-helm-environments.md).
+You can also overwrite Service variables at the Phase-level of a multiple Phase Workflow.If you add a values.yaml in **Service Configuration Overrides** and you have a values.yaml in your chart already, then Harness will merge them at runtime. The values.yaml in **Service Configuration Overrides** overrides at a `key:value` level, not a file level. If you have a values.yaml in your chart with `key:value` pairs you do not want, you must remove them from that file or override them in the values.yaml in **Service Configuration Overrides**. See [Variable Override Priority](../../firstgen-platform/techref-category/variables/variable-override-priority.md).For details, see [Override Harness Kubernetes Service Settings](override-harness-kubernetes-service-settings.md) or [Helm Environments](../helm-deployment/3-helm-environments.md).
 
 1. In the Harness Environment, in **Service Configuration Overrides**, click **Add Configuration Overrides**.
 2. In **Service**, select the Harness Service where you added your remote Helm chart.
@@ -333,7 +333,7 @@ Harness includes several built-in variable expressions that you can use to outpu
 * `${helmChart.name}` - The `name` in the chart.
 * `${helmChart.version}` - The version of the chart that was deployed.
 
-You can use these expressions in a [Shell Script](https://docs.harness.io/article/1fjrjbau7x-capture-shell-script-step-output) Workflow step after the deployment step in the Workflow:
+You can use these expressions in a [Shell Script](../model-cd-pipeline/workflows/capture-shell-script-step-output.md) Workflow step after the deployment step in the Workflow:
 
 
 ```
@@ -361,7 +361,7 @@ Version: 2.14.0
 ```
 ### Review: Helm Artifacts in Pipelines and Triggers
 
-You can add your Workflow to a stage in a Harness [Pipeline](https://docs.harness.io/article/zc1u96u6uj-pipeline-configuration) or have it executed by a Harness [Trigger](https://docs.harness.io/article/xerirloz9a-add-a-trigger-2).
+You can add your Workflow to a stage in a Harness [Pipeline](../model-cd-pipeline/pipelines/pipeline-configuration.md) or have it executed by a Harness [Trigger](../model-cd-pipeline/triggers/add-a-trigger-2.md).
 
 In both cases, you can select the Helm chart version you want to deploy.
 

@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: HCE Release Guide
+title: Chaos engineering release guide
 ---
 
 # Introduction 
@@ -10,7 +10,7 @@ The release of the Harness Chaos Engineering (HCE) module provides a **functiona
 The chaos module is built on the open source CNCF project LitmusChaos, with additional features to enhance the user experience. 
 Below is a list of actions that you (user) can perform as a part of the release (Nov 14th, 2022). 
 
-## Managing Access to Chaos Resources
+## Managing access to chaos resources
 
 You will have the permissions to perform operations on the “chaos resources” platform due to the module’s ability to leverage the powerful access control capability in the Harness platform. The chaos resources include:
 
@@ -23,7 +23,7 @@ You can **view**, **create/edit**, and **delete** the chaos resources using the 
 
 Learn more about how to set up access control rules for chaos resources [here](https://developer.harness.io/docs/chaos-engineering/technical-reference/chaos-dashboard/#user-management).
 
-## Configuring Chaos Artifact Source (a.k.a ChaosHubs) 
+## Configuring chaos artifact source (ChaosHub) 
 
 The module equips each project with an embedded “Enterprise ChaosHub” that contains fault templates (and corresponding experiment definitions) for different infrastructure target types. You can also connect to your own chaos hub that supports the following operations: 
   
@@ -35,11 +35,11 @@ The module equips each project with an embedded “Enterprise ChaosHub” that c
 
 Learn more about how to connect chaos hubs [here](https://developer.harness.io/docs/chaos-engineering/user-guides/add-chaos-hub). 
 
-## Connecting Targets to the Chaos Control Plane (a.k.a Chaos Infrastructure)
+## Connecting targets to the chaos control plane (Chaos infrastructure)
 
 By deploying specific Kubernetes resources (which establishes connectivity with the Harness control plane, relay instructions and events from/to it, respectively), you can attach target clusters or namespaces (where the chaos business logic is executed on discovered workloads) to the chaos module.
  
-These target clusters/namespaces are referenced within the module through the “Chaos Infrastructure” platform resource. This chaos infrastructure belongs either to a pre-prod or prod [environment](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts#environments) within the Harness platform. 
+These target clusters/namespaces are referenced within the module through the “Chaos Infrastructure” platform resource. This chaos infrastructure belongs either to a pre-prod or prod [environment](../../first-gen/starthere-firstgen/harness-key-concepts.md#environments) within the Harness platform. 
 
 You can connect your chaos infrastructure by applying a YAML manifest that is generated from the module dashboard by providing some simple inputs, such as: 
 
@@ -53,7 +53,7 @@ You can disconnect from the chaos infrastructure(s) when required. To reconnect,
 
 Learn more about how to connect chaos infrastructure [here](https://developer.harness.io/docs/chaos-engineering/user-guides/connect-chaos-infrastructures). 
 
-## Constructing and Executing Chaos Experiments 
+## Constructing and executing chaos experiments 
 
 You can choose to construct and run chaos experiments (recurring or otherwise) on a given chaos infrastructure from the following options:
 
@@ -65,7 +65,7 @@ You can choose to construct and run chaos experiments (recurring or otherwise) o
 
 Learn more about how to construct and execute chaos experiments [here](https://developer.harness.io/docs/chaos-engineering/user-guides/construct-and-run-custom-chaos-experiments). 
 
-## Chaos Experiments Lifecycle Management 
+## Chaos experiments lifecycle management 
 
 The Harness Chaos Engineering module provides a rich set of options to manage the experiment definitions, which include:  
 

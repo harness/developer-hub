@@ -8,9 +8,9 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/category/qfj6m1k2c4).
+This content is for Harness [FirstGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/category/kubernetes).
 
-Typically, If the Docker artifact source is in a private registry, Harness has access to that registry using the credentials set up in the Harness [Add Artifact Servers](https://docs.harness.io/article/7dghbx1dbl-configuring-artifact-server).
+Typically, If the Docker artifact source is in a private registry, Harness has access to that registry using the credentials set up in the Harness [Add Artifact Servers](../../firstgen-platform/account/manage-connectors/configuring-artifact-server.md).
 
 In some cases, your Kubernetes cluster might not have the permissions needed to access a private Docker registry. For these cases, the default values.yaml file in Service **Manifests** section contains `dockercfg: ${artifact.source.dockerconfig}` . This key will import the credentials from the Docker credentials file in the artifact.
 
@@ -50,7 +50,7 @@ With these requirements met, the cluster import the credentials from the Docker 
 
 ### Notes
 
-* Any secrets in the manifest are sanitized when they are displayed in the deployment logs. See [Secrets and Log Sanitization](https://docs.harness.io/article/o5ec7vvtju-secrets-and-log-sanitization).
+* Any secrets in the manifest are sanitized when they are displayed in the deployment logs. See [Secrets and Log Sanitization](../../firstgen-platform/techref-category/techref-security/secrets-and-log-sanitization.md).
 * When you are using a public repo, the `dockercfg: ${artifact.source.dockerconfig}` in values.yaml is ignored by Harness. You do not need to remove it.
 * If you want to use a private repo and no imagePullSecret, then set `dockercfg` to empty in values.yaml.
 * **Legacy imagePullSecret Method** — Previously, Harness used a `createImagePullSecret` value in values.yaml that could be set to `true` or `false`, and `dockercfg: ${artifact.source.dockerconfig}` to obtain the credentials. If `createImagePullSecret` was set to `true`, the following default Secret object in deployment.yaml would be used:
