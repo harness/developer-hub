@@ -81,7 +81,7 @@ The response contains the `delegateGroupDetails` array of objects, each of which
 
 **[Arpit says the responseMessages field should be empty for this one too]**
 
-For the API specification, see [List delegate groups that are using the specified token](https://apidocs.harness.io/tag/Delegate-Token-Resource#operation/getDelegateGroupsUsingToken) in [Harness NextGen Platform API Reference]()https://apidocs.harness.io/.
+For the API specification, see [List delegate groups that are using the specified token](https://apidocs.harness.io/tag/Delegate-Token-Resource#operation/getDelegateGroupsUsingToken) in [Harness NextGen Platform API Reference](https://apidocs.harness.io/).
 
 
 ## Retrieve tokens

@@ -20,7 +20,7 @@ To find the delegate identifier, navigate to **Account Settings > Account Resour
 
 ![](static/use-rest-resource-delegate-group-tags-01.png)
 
-For detailed information on constructing requests, see [Delegate Group Tags Resource]().
+For detailed information on constructing requests, see Delegate Group Tags Resource.
 
 ## Use case
 
