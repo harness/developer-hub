@@ -51,7 +51,7 @@ If the chart version is not included, Harness will fetch the `latest` version.
 
 The `HELM_LOCAL_REPOSITORY` environment variable is the same for both Delegate types.
 
-For information on Delegate types, go to [Install a Kubernetes Delegate](../../../platform/2_Delegates/advanced-installation/install-a-kubernetes-delegate.md) or [Install a Docker Delegate](../../../platform/2_Delegates/install-delegates/docker-delegates/install-a-docker-delegate.md).
+For information on delegate types, go to [Install a Kubernetes Delegate](../../../platform/2_Delegates/advanced-installation/install-a-kubernetes-delegate.md) or [Install a Docker Delegate](../../../platform/2_Delegates/install-delegates/docker-delegates/install-a-docker-delegate.md).
 
 ### Important notes
 
