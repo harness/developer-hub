@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../../continuous-delivery/cd-advanced/cloudformation-howto/cloud-formation-how-tos.md).The first step in integrating your CloudFormation templates and processes is setting up the necessary Harness account components: Delegates, Cloud Providers, and Source Repo Providers.
+This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/article/vynj4hxt98).The first step in integrating your CloudFormation templates and processes is setting up the necessary Harness account components: Delegates, Cloud Providers, and Source Repo Providers.
 
 This topic describes how to set up these components for CloudFormation.
 
@@ -17,11 +17,11 @@ Once your account is set up, you can begin integrating your CloudFormation templ
 
 ### Before You Begin
 
-* [Harness Key Concepts](../../../starthere-firstgen/harness-key-concepts.md)
+* [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts)
 * [CloudFormation Provisioning with Harness](../../concepts-cd/deployment-types/cloud-formation-provisioning-with-harness.md)
-* [Delegate Installation and Management](../../../firstgen-platform/account/manage-delegates/delegate-installation.md)
-* [Add Cloud Providers](../../../firstgen-platform/account/manage-connectors/cloud-providers.md)
-* [Add Source Repo Providers](../../../firstgen-platform/account/manage-connectors/add-source-repo-providers.md)
+* [Delegate Installation and Management](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation)
+* [Add Cloud Providers](https://docs.harness.io/article/whwnovprrb-cloud-providers)
+* [Add Source Repo Providers](https://docs.harness.io/article/ay9hlwbgwa-add-source-repo-providers)
 
 ### Visual Summary
 
@@ -40,7 +40,7 @@ Once your Harness account is set up, CloudFormation provisioning in Harness is a
 
 There are many types of Delegates, but for CloudFormation, the Shell Script and ECS Delegates are used most often.
 
-The Harness AWS Cloud Provider can connect Harness to your AWS account, and Source Repo if needed, using these Delegates. For more information, see [Delegate Installation and Management](../../../firstgen-platform/account/manage-delegates/delegate-installation.md) and [Add Cloud Providers](../../../firstgen-platform/account/manage-connectors/cloud-providers.md).
+The Harness AWS Cloud Provider can connect Harness to your AWS account, and Source Repo if needed, using these Delegates. For more information, see [Delegate Installation and Management](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation) and [Add Cloud Providers](https://docs.harness.io/article/whwnovprrb-cloud-providers).
 
 The Delegate should be installed where it can connect to the provisioned environment it creates.
 
@@ -48,9 +48,9 @@ Ideally, this is the same subnet as the instances you will provision, but if you
 
 To set up the Delegate, do the following:
 
-1. Install the Delegate on a host where it will have connectivity to your provisioned instances. To install a Delegate, follow the steps in [Delegate Installation and Management](../../../firstgen-platform/account/manage-delegates/delegate-installation.md) using a Shell Script or ECS Delegate. Once the Delegate is installed, it will be listed on the **Harness Delegates** page.
+1. Install the Delegate on a host where it will have connectivity to your provisioned instances. To install a Delegate, follow the steps in [Delegate Installation and Management](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation) using a Shell Script or ECS Delegate. Once the Delegate is installed, it will be listed on the **Harness Delegates** page.
    ![](./static/cloud-formation-account-setup-01.png)
-2. When you add a Harness AWS Cloud Provider, you will set up the Cloud Provider to assume the IAM role used by the Delegate. This is done using a Delegate Selector. For steps on installing a Delegate Selector, see [Delegate Installation and Management](../../../firstgen-platform/account/manage-delegates/delegate-installation.md).
+2. When you add a Harness AWS Cloud Provider, you will set up the Cloud Provider to assume the IAM role used by the Delegate. This is done using a Delegate Selector. For steps on installing a Delegate Selector, see [Delegate Installation and Management](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation).
 
 When you are done, the Delegate listing will look something like this:
 
@@ -60,7 +60,7 @@ When you are done, the Delegate listing will look something like this:
 
 The Delegate requires permissions according to the target deployment service (ECS, EC2, Lambda).
 
-For ECS Delegates, you can add an IAM role to the ECS Delegate task definition. For more information, see  [Trust Relationships and Roles](../../../firstgen-platform/account/manage-delegates/delegate-installation.md#trust-relationships-and-roles).
+For ECS Delegates, you can add an IAM role to the ECS Delegate task definition. For more information, see  [Trust Relationships and Roles](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation#trust_relationships_and_roles).
 
 If you will use AWS S3 as the source for your CloudFormation templates, then the IAM role used by the Delegate will also need policies to read templates from AWS S3. This is described below in [Step 3: Add Template Resource](#step_3_add_template_resource).
 
@@ -79,9 +79,9 @@ With CloudFormation, you are building an infrastructure on a platform that requi
 
 For example, to create AWS EC2 AMI instances, the account/role needs the **AmazonEC2FullAccess** policy.
 
-See the list of policies in [Add Cloud Providers](../../../firstgen-platform/account/manage-connectors/cloud-providers.md).
+See the list of policies in [Add Cloud Providers](https://docs.harness.io/article/whwnovprrb-cloud-providers).
 
-For steps on adding an AWS Cloud Provider, see [Amazon Web Services (AWS) Cloud](../../../firstgen-platform/account/manage-connectors/cloud-providers.md#amazon-web-services-aws-cloud).
+For steps on adding an AWS Cloud Provider, see [Amazon Web Services (AWS) Cloud](https://docs.harness.io/article/whwnovprrb-cloud-providers#amazon_web_services_aws_cloud).
 
 When the AWS Cloud Provider uses the installed Delegate for credentials via the Delegate's Selector, it assumes the IAM role used to add the Delegate.
 
@@ -180,7 +180,7 @@ If you want to use an S3 bucket that is in a separate account than the account u
     ]  
 }
 ```
-See [Add Cloud Providers](../../../firstgen-platform/account/manage-connectors/cloud-providers.md).
+See [Add Cloud Providers](https://docs.harness.io/article/whwnovprrb-cloud-providers).
 
 The policies can be added to the AWS account you use to set up the AWS Cloud Provider. If the AWS Cloud Provider is using the Delegate for credentials, then the role applied to the Delegate host must have the policies.
 
@@ -193,7 +193,7 @@ The following links provide useful information for ensuring access between EC2 i
 
 If you want to use a Git repo as the source of your CloudFormation templates, you need to add a connection to your repo as a Harness Source Repo Provider.
 
-See [Add Source Repo Providers](../../../firstgen-platform/account/manage-connectors/add-source-repo-providers.md).
+See [Add Source Repo Providers](https://docs.harness.io/article/ay9hlwbgwa-add-source-repo-providers).
 
 ### Next Steps
 

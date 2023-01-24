@@ -1,5 +1,5 @@
 ---
-title: Set up CCM for GCP
+title: Set up Cloud Cost Management for GCP
 description: This topic describes how to set up cost visibility for GCP.
 # sidebar_position: 2
 helpdocs_topic_id: kxnsritjls
@@ -54,12 +54,6 @@ Perform the following tasks in the **GCP Connector** wizard:
 ### GCP Billing Export
 
 Cloud Billing export to BigQuery enables you to export detailed Google Cloud billing data (such as usage and cost estimate data) automatically throughout the day to a BigQuery dataset that you specify.
-
-
-:::important
-Make sure that you have enabled **Detailed Usage Cost** on the **Billing Export** page on your GCP console. For more information, see [ Enable Cloud Billing export to the BigQuery dataset](https://cloud.google.com/billing/docs/how-to/export-data-bigquery-setup#enable-bq-export).
-:::
-
 
 1. In **GCP Billing Export**, click **Launch GCP console**.
 2. In the GCP **Explorer** window, in the pinned projects section, click **your project ID** to open the project. If you see an overflow menu (:) next to your project ID, click the menu and select **Open**.

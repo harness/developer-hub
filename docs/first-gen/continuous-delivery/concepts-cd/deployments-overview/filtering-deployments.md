@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../../continuous-delivery/cd-dashboards/monitor-cd-deployments.md).You can filter deployments on the the Deployments page according to multiple criteria.
+This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/article/phiv0zaoex).You can filter deployments on the the Deployments page according to multiple criteria.
 
 You can save these filters as a quick way to filter deployments in the future.
 
@@ -16,7 +16,7 @@ You can save these filters as a quick way to filter deployments in the future.
 ### Before You Begin
 
 * [Deployments Overview](deployments-overview.md)
-* [Harness Key Concepts](../../../starthere-firstgen/harness-key-concepts.md)
+* [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts)
 
 ### Limitations
 
@@ -36,7 +36,7 @@ In **Filter by Deployment Tag**, enter one or more Tags in your account's **Tags
 
 You can enter a Tag name, name:value pair, or evaluated expression.
 
-See [Assign Metadata Using Tags](../../../firstgen-platform/account/tags/tags.md), [Use Expressions in Workflow and Pipeline Tags](../../../firstgen-platform/account/tags/use-expressions-in-workflow-and-pipeline-tags.md), and [Apply Filters Using Tags](../../../firstgen-platform/account/tags/apply-filters-using-tags.md).
+See [Assign Metadata Using Tags](https://docs.harness.io/article/nrxfix3i58-tags), [Use Expressions in Workflow and Pipeline Tags](https://docs.harness.io/article/285bu842gb-use-expressions-in-workflow-and-pipeline-tags), and [Apply Filters Using Tags](https://docs.harness.io/article/nyxf7g8erd-apply-filters-using-tags).
 
 ### Option 2: Filter by Applications
 

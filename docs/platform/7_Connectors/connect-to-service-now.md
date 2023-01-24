@@ -12,7 +12,7 @@ You can connect Harness to ServiceNow using a Harness ServiceNow Connector. This
 
 ### Before you begin
 
-* [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md)
+* [Learn Harness' Key Concepts](https://docs.harness.io/article/hv2758ro4e-learn-harness-key-concepts)
 
 ### Limitations
 

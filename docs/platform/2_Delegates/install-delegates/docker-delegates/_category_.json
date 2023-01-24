@@ -1,9 +1,0 @@
-{
-    "position": "20",
-    "label": "Docker delegates", 
-    "collapsible": "true", 
-    "collapsed": "true", 
-    "className": "red", 
-    "link": {"type": "generated-index", "title": "Docker delegates"}, 
-    "customProps": {"helpdocs_category_id": "cybg19aoxt", "helpdocs_parent_category_id":"seizygxv7b"}
-}

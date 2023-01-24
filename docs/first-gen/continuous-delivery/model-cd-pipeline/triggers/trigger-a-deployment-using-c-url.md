@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-For GitHub, GitLab, and Bitbucket, you can trigger [Build Workflows](../../concepts-cd/deployment-types/ci-cd-with-the-build-workflow.md) or a [Build and Deploy Pipeline](../../concepts-cd/deployment-types/artifact-build-and-deploy-pipelines-overview.md) in response to a Git event using Webhooks using a Harness [On Webhook Event](trigger-a-deployment-on-git-event.md) Trigger.
+For GitHub, GitLab, and Bitbucket, you can trigger [Build Workflows](https://docs.harness.io/article/wqytbv2bfd-ci-cd-with-the-build-workflow) or a [Build and Deploy Pipeline](https://docs.harness.io/article/0tphhkfqx8-artifact-build-and-deploy-pipelines-overview) in response to a Git event using Webhooks using a Harness [On Webhook Event](trigger-a-deployment-on-git-event.md) Trigger.
 
 For Custom Git providers, you can trigger any type of Workflow using a Harness [On Webhook Event](trigger-a-deployment-on-git-event.md) Trigger. This is described in [Trigger Deployments using Git Events](trigger-a-deployment-on-git-event.md).
 
@@ -28,8 +28,8 @@ For GitHub, GitLab, and Bitbucket, this option is used to execute a Build Workf
 
 ### Before You Begin
 
-* [Build Workflows](../../concepts-cd/deployment-types/ci-cd-with-the-build-workflow.md)
-* [Build and Deploy Pipeline](../../concepts-cd/deployment-types/artifact-build-and-deploy-pipelines-overview.md)
+* [Build Workflows](https://docs.harness.io/article/wqytbv2bfd-ci-cd-with-the-build-workflow)
+* [Build and Deploy Pipeline](https://docs.harness.io/article/0tphhkfqx8-artifact-build-and-deploy-pipelines-overview)
 * [Add a Service](../setup-services/service-configuration.md)
 * [Workflows](../workflows/workflow-configuration.md)
 * [Add Environment](../environments/environment-configuration.md)
@@ -187,7 +187,7 @@ By using Harness API keys in your cURL commands, you can enforce **authorization
 
 #### Permissions Required
 
-* **Account Permissions:** to enforce API keys for manual triggers, your Harness User account must belong to a User Group with the **Manage Applications** Account Permissions option enabled. See [Managing Users and Groups (RBAC)](../../../firstgen-platform/security/access-management-howtos/users-and-permissions.md).
+* **Account Permissions:** to enforce API keys for manual triggers, your Harness User account must belong to a User Group with the **Manage Applications** Account Permissions option enabled. See [Managing Users and Groups (RBAC)](https://docs.harness.io/article/ven0bvulsj-users-and-permissions).
 * **Application Permissions:** to initiate any manual triggers (with or without using API keys), the Harness User account must belong to a User Group with the **Deployments** Permission Type and the **Execute Workflow** and/or **Execute Pipeline** Application Permissions.
 
 #### Enforce API Keys for Manual Triggers
@@ -196,7 +196,7 @@ To enforce API keys for manual triggers, do the following:
 
 In Harness, in **Security**, click **Access Management**.
 
-Click **API Keys**, and then follow the steps in [API Keys](../../../firstgen-platform/security/access-management-howtos/api-keys.md) to create an API key. Or you can select an existing key.
+Click **API Keys**, and then follow the steps in [API Keys](https://docs.harness.io/article/smloyragsm-api-keys) to create an API key. Or you can select an existing key.
 
 Make sure your API key is assigned a User Group that only contains the Harness Users that you want to use this API key to run the Manual Trigger cURL command.
 

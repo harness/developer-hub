@@ -18,9 +18,9 @@ Harness has two versions of its product suite.
 
 ![](./static/harness-first-gen-vs-harness-next-gen-19.png)
 
-Documentation for FirstGen features is located under the [FirstGen Docs](/docs/first-gen) section of docs.harness.io. The documentation in all other sections applies only to NextGen features.Review the following supported platforms and technologies topics to see which version to use today:
+Documentation for FirstGen features is located under the [FirstGen Docs](https://docs.harness.io/category/yj3d4lvxn0-harness-firstgen) section of docs.harness.io. The documentation in all other sections applies only to NextGen features.Review the following supported platforms and technologies topics to see which version to use today:
 
-* [FirstGen Supported Platforms and Technologies](../first-gen/starthere-firstgen/supported-platforms.md)
+* [FirstGen Supported Platforms and Technologies](https://docs.harness.io/article/220d0ojx5y-supported-platforms)
 * [NextGen Supported Platforms and Technologies](supported-platforms-and-technologies.md#continuous-delivery-cd)
 
 ### Mapping FirstGen to NextGen entities

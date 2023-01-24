@@ -12,11 +12,11 @@ Many Harness entities and resources include a unique Id (entity Identifier) that
 
 Identifiers provide a permanent way to refer to an entity, and avoid issues that can arise when a name is changed.
 
-### Identifier limits and requirements
+### Identifier Limits and Requirements
 
 Identifiers have naming and usage limitations that you should be aware of.
 
-#### Identifier creation
+#### Identifier Creation
 
 When you name an entity, Harness automatically generates its identifier.
 
@@ -28,15 +28,15 @@ The generated Identifier is based on the entity name and meets the identifier na
 
 If an entity name cannot be used because it's already occupied by another entity, Harness automatically adds a prefix in the form of `-1`, `-2`, etc.
 
-#### Entities use identifiers to interact with each other
+#### Entities use Identifiers to Interact with Each Other
 
 The `identifier` field is immutable because Harness Entities use this field to interact with each other. If you delete an Entity, or create a copy with a new identifier, references to that Entity will not get updated. For example, each Trigger has a `pipelineIdentifier` field that specifies the Pipeline for that Trigger. If you create a copy of the original Pipeline (with a new identifier) and then delete the original, any Triggers that reference the original will no longer work.
 
-#### Identifier restrictions
+#### Identifier Restrictions
 
 Identifiers have the following restrictions:
 
-* Identifiers must start with a-z, A-Z, or \_. Identifiers can then be followed by 0-9, a-z, A-Z, \_ or $.
+* Identifiers must start with a-z, A-Z, \_ or . Identifiers can then be followed by 0-9, a-z, A-Z, \_ or $.
 * Identifiers shouldn't be any of the following words
 	+ or
 	+ and
@@ -63,7 +63,7 @@ Identifiers have the following restrictions:
 
 * Identifiers aren't case-sensitive. For example, the Identifiers `myIdentifier` and `myidentifier` are the same.
 
-#### Identifier uniqueness
+#### Identifier Uniqueness
 
 Identifiers are unique for the scope in which they are created.
 
@@ -79,11 +79,11 @@ If you want to edit the Identifier before you save the new entity or resource, y
 
 If you edit an identifier so that it is not unique or invalid, Harness will alert you.
 
-#### Identifier reuse
+#### Identifier Reuse
 
 Identifiers cannot be reused within the same scope, even if one entity was deleted.
 
-### Identifier examples
+### Identifier Examples
 
 Here's a secret with its Identifier in both the Visual and YAML editors.
 
@@ -101,7 +101,7 @@ secret:
     secretManagerIdentifier: harnessSecretManager  
     valueType: Inline
 ```
-### References
+### Related Reference Material
 
 * [Harness Entity Reference](harness-entity-reference.md)
 

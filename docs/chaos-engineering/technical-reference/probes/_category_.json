@@ -1,9 +1,0 @@
-{
-  "position": 5,
-  "label": "Probes",
-  "collapsible": true,
-  "collapsed": true,
-  "customProps": {
-    "description": "Chaos Probes reference"
-  }
-}

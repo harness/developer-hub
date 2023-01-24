@@ -13,7 +13,7 @@ Pipeline executions can be viewed in Console View and you can quickly search the
 
 ### Before you begin
 
-Before you can search execution logs, you need to run a Pipeline. See [Quickstarts](../../getting-started/quickstarts.md) to set up and run a Pipeline in minutes.
+Before you can search execution logs, you need to run a Pipeline. See [Quickstarts](https://docs.harness.io/article/u8lgzsi7b3-quickstarts) to set up and run a Pipeline in minutes.
 
 ### Step: Search the Execution Step Logs
 

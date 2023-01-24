@@ -5,8 +5,9 @@ title: ECS Instance Stop
 
 ## Introduction
 
-- It inject chaos to stop the ECS instance based on id and checks the app availability.
-- The instances may get into terminated state as managed by an autoscaler and a new instance will come up.
+- ECS Instance Stop can induce an EC2 instance stop chaos on AWS ECS cluster. It derives the instance under chaos from ECS cluster.
+
+- It causes EC2 instance to stopped and further gets deleted on ECS cluster for a certain chaos duration.
 
 :::tip Fault execution flow chart
 ![ECS Instance Stop](./static/images/ecs-instance-stop.png)
@@ -29,6 +30,8 @@ Killing the EC2 instance container will distrupt the performance of it and impac
 
 - Ensure that Kubernetes Version >= 1.17
 
+**AWS EC2 Access Requirement:**
+
 - Ensure that you have sufficient AWS access to stop and start an EC2 instance.
 
 - Ensure to create a Kubernetes secret having the AWS access configuration(key) in the `CHAOS_NAMESPACE`. A sample secret file looks like:
@@ -49,51 +52,6 @@ stringData:
 
 - If you change the secret key name (from `cloud_config.yml`) please also update the `AWS_SHARED_CREDENTIALS_FILE` ENV value in the ChaosExperiment CR with the same name.
 :::
-
-## Permission Requirement
-
-- Here is an example AWS policy to execute this fault.
-
-<details>
-<summary>View policy for this fault</summary>
-
-```json
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Sid": "VisualEditor0",
-            "Effect": "Allow",
-            "Action": [
-                "ecs:ListContainerInstances",
-                "ecs:DescribeContainerInstances"
-
-            ],
-            "Resource": "*"
-        },
-        {
-            "Effect": "Allow",
-            "Action": [
-                "ec2:StartInstances",
-                "ec2:StopInstances",
-                "ec2:DescribeInstanceStatus",
-                "ec2:DescribeInstances"
-            ],
-            "Resource": "*"
-        },
-        {
-            "Effect": "Allow",
-            "Action": [
-                "autoscaling:DescribeAutoScalingInstances"
-            ],
-            "Resource": "*"
-        }
-    ]
-}
-```
-</details>
-
-- Refer a [superset permission/policy](./policy-for-all-aws-faults) to execute all AWS faults.
 
 ## Default Validations
 
