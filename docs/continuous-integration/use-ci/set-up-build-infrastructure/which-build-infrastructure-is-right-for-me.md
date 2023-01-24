@@ -5,37 +5,38 @@ description: Compare Harness-hosted and self-hosted CI build infrastructure opti
 sidebar_position: 10
 ---
 
-You can run builds on Harness-hosted machines or your own infrastructure. Self-hosted build infrastructure can be local or in a Kubernetes cluster.
+You can run builds on Harness-hosted machines or your own infrastructure.
 
-# Harness Cloud (Harness-hosted options)
+# Harness Cloud (Harness-hosted option)
 
-:::info
+With Harness Cloud you can run builds in isolation on Harness-hosted machines. You can run builds at scale on Linux, Windows, and macOS machines that are preinstalled with software commonly used in CI pipelines.
 
-Available with all CI plans.
+Harness hosts, maintains, and upgrades these machines so that you can focus on building great software instead of maintaining build infrastructure.
 
-:::
-
-With Harness Cloud you can run builds in isolation on machines that Harness hosts and maintains. You can run builds at scale on Linux, Windows, and macOS machines that are preinstalled with software commonly used in CI pipelines.
-
-Harness maintains and upgrades these machines so that you can focus on building great software instead of maintaining build infrastructure.
-
-To use Harness Cloud, go to [Get started with Harness Cloud](https://developer.harness.io/docs/continuous-integration/ci-quickstarts/hosted-builds-on-virtual-machines-quickstart/).
+Harness Cloud is available with all CI plans. To use Harness Cloud, go to [Get started with Harness Cloud](https://developer.harness.io/docs/continuous-integration/ci-quickstarts/hosted-builds-on-virtual-machines-quickstart/).
 
 # Self-hosted options
 
-## Local
+Self-hosted build infrastructure can be local or in a Kubernetes cluster.
 
-:::info
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
 
-Available with all CI plans.
-
-:::
+```mdx-code-block
+<Tabs>
+  <TabItem value="local" label="Local" default>
+```
 
 With the local runner, which is also known as the Docker runner, you can run builds on a local machine. You can execute build steps in Docker containers or directly on the host machine.
 
-To learn more, go to [Define a local build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure).
+Self-hosted local build infrastructure is available with all CI plans. To learn more, go to [Define a local build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure).
 
-## Kubernetes cluster
+```mdx-code-block
+  </TabItem>
+  <TabItem value="k8s" label="Kubernetes cluster">
+```
 
 :::info
 
@@ -48,6 +49,11 @@ Executing builds in a Kubernetes cluster is useful when you want to run ephemera
 When running builds in a Kubernetes cluster, each CI stage executes in a pod, and the stage's steps share the pod's resources.
 
 To learn more about using a Kubernetes cluster as build infrastructure, go to [Define a Kubernetes cluster build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure).
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
 
 # Compatibility matrix
 
