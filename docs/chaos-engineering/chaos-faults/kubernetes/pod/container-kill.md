@@ -4,12 +4,12 @@ title: Container Kill
 ---
 
 ## Introduction
-Container kill fault causes container failure of specific/random replicas of an application resources.
+- Container Kill fault causes container failure of specific or random pods of an application.
 - It tests the deployment sanity (replica availability & uninterrupted service) and recovery workflow of the application.
 - It is also useful for testing the recovery of pods having side-car containers.
 
 :::tip Fault execution flow chart
-![Container Kill](./static/images/pod-delete.png)
+![Container Kill](./static/images/container-kill.png)
 :::
 
 ## Uses
@@ -47,7 +47,7 @@ The application pods should be in running state before and after chaos injection
       </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>
-        <td> Time interval b/w two successive container kill (in sec) </td>
+        <td> Time interval between two successive container kills (in sec) </td>
         <td> If the CHAOS_INTERVAL is not provided it will take the default value of 10s </td>
       </tr>
       <tr>
@@ -98,7 +98,7 @@ The application pods should be in running state before and after chaos injection
       <tr>
         <td> CONTAINER_RUNTIME </td>
         <td> container runtime interface for the cluster</td>
-        <td>  Defaults to docker, supported values: docker, containerd and crio for litmus and only docker for pumba LIB </td>
+        <td> Defaults to docker, supported values: docker, containerd and crio for litmus and only docker for pumba LIB </td>
       </tr>
     </table>
 </details>

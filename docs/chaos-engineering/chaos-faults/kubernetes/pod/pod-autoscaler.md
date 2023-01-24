@@ -4,9 +4,9 @@ title: Pod Autoscaler
 ---
 
 ## Introduction
-- The fault aims to check the ability of nodes to accommodate the number of replicas a given application pod.
+- The fault aims to check the ability of nodes to accommodate the number of replicas of a given application pod.
 
-- This fault can be used for other scenarios as well, such as for checking the Node auto-scaling feature. For example, check if the pods are successfully rescheduled within a specified period in cases where the existing nodes are already running at the specified limits.
+- The fault can be used for other scenarios as well, such as for checking the node auto-scaling feature. For example, it can be used to check if the pods are successfully re-scheduled within a specified period in cases where the existing nodes are already running at the specified limits.
 
 :::tip Fault execution flow chart
 ![Pod Autoscaler](./static/images/pod-autoscaler.png)
@@ -42,7 +42,7 @@ The application pods should be in running state before and after chaos injection
       </tr>
       <tr>
         <td> REPLICA_COUNT </td>
-        <td> Number of replicas upto which we want to scale </td>
+        <td> Number of replicas up to which we want to scale </td>
         <td> <code>nil</code> </td>
       </tr>
     </table>
@@ -55,7 +55,7 @@ The application pods should be in running state before and after chaos injection
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The timeout for the chaos fault (in seconds) </td>
+        <td> The time duration for chaos injection (in seconds) </td>
         <td> Defaults to 60 </td>
       </tr>
       <tr>
