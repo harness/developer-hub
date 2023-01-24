@@ -51,7 +51,7 @@ For steps on using the `INIT_SCRIPT` environment variable, see [Run Scripts on
 
 You can see all of the environment variables for the Delegates in the following topics:
 
-* [Install a Kubernetes Delegate](/docs/platform/2_Delegates/install-delegates/kubernetes-delegates/install-a-kubernetes-delegate.md)
+* [Install a Kubernetes Delegate](/docs/platform/2_Delegates/advanced-installation/install-a-kubernetes-delegate.md)
 * [Install a Docker Delegate](/docs/platform/2_Delegates/install-delegates/docker-delegates/install-a-docker-delegate.md)
 
 ### Option: Add a delegate image
@@ -78,7 +78,7 @@ ENV key=value
 ```
 You can see all of the environment variables for the Delegates in the following topics:
 
-* [Install a Kubernetes Delegate](/docs/platform/2_Delegates/install-delegates/kubernetes-delegates/install-a-kubernetes-delegate.md)
+* [Install a Kubernetes Delegate](/docs/platform/2_Delegates/advanced-installation/install-a-kubernetes-delegate.md)
 * [Install a Docker Delegate](/docs/platform/2_Delegates/install-delegates/docker-delegates/install-a-docker-delegate.md)
 
 

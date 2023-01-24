@@ -19,7 +19,7 @@ This topic describes how to limit the truststore used with Harness Delegates and
 ### Before you begin
 
 * [Delegates Overview](/docs/platform/2_Delegates/get-started-with-delegates/delegates-overview.md)
-* [Install a Kubernetes Delegate](/docs/platform/2_Delegates/install-delegates/kubernetes-delegates/install-a-kubernetes-delegate.md)
+* [Install a Kubernetes Delegate](/docs/platform/2_Delegates/advanced-installation/install-a-kubernetes-delegate.md)
 
 ### Required: Harness trusted certificate
 

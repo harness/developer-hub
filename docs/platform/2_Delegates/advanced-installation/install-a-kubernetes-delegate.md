@@ -183,7 +183,7 @@ In the Delegate installation settings, you also have the option to select cluste
 ![](static/install-a-kubernetes-delegate-14.png)
 ### Step 6: Verify
 
-For an overview of verification, see [Delegate Registration and Verification](/docs/platform/2_Delegates/manage-delegates/delegate-registration.md).
+For an overview of verification, see [Delegate Registration and Verification](/docs/platform/2_Delegates/get-started-with-delegates/delegate-registration.md).
 
 In the Delegate wizard, click **Verify** and Harness will verify that it is receiving heartbeats from the Delegate.
 

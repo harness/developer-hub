@@ -685,7 +685,7 @@ eksctl create iamserviceaccount \
     --approve \  
     --override-existing-serviceaccounts —region=us-east-1
 ```
-In Harness, download the Harness Kubernetes Delegate YAML file. See [Install a Kubernetes Delegate](../../2_Delegates/install-delegates/kubernetes-delegates/install-a-kubernetes-delegate.md).
+In Harness, download the Harness Kubernetes Delegate YAML file. See [Install a Kubernetes Delegate](../../2_Delegates/advanced-installation/install-a-kubernetes-delegate.md).
 
 Open the Delegate YAML file in text editor.
 
@@ -721,7 +721,7 @@ Next, update StatefulSet spec with the new `serviceAccountName`.
 
 Save the Delegate YAML file.
 
-Install the Delegate in your EKS cluster and register the Delegate with Harness. See [Install a Kubernetes Delegate](../../2_Delegates/install-delegates/kubernetes-delegates/install-a-kubernetes-delegate.md).
+Install the Delegate in your EKS cluster and register the Delegate with Harness. See [Install a Kubernetes Delegate](../../2_Delegates/advanced-installation/install-a-kubernetes-delegate.md).
 
 
 :::note
