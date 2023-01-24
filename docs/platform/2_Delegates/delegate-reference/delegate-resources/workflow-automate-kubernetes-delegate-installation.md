@@ -1,4 +1,3 @@
-
 ---
 title: Use REST resource delegate-token-ng
 description: Describes the use of the delegate-token-ng REST resource.
