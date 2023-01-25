@@ -79,12 +79,12 @@ stringData:
         <tr> 
         <td> CLUSTER_NAME </td>
         <td> Name of the target ECS cluster</td>
-        <td> For Example: cluster-1 </td>
+        <td> For Example: <code>cluster-1</code> </td>
         </tr>
         <tr>
         <td> REGION </td>
         <td> The region name of the target ECS cluster</td>
-        <td> For Example: us-east-1 </td>
+        <td> For Example: <code>us-east-1</code> </td>
         </tr>
     </table>
     <h2>Optional Fields</h2>
@@ -137,7 +137,7 @@ stringData:
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injection of chaos (in seconds) </td>
-        <td> For Example: 30 </td>
+        <td> For Example: <code>30</code> </td>
       </tr>
     </table>
 </details>

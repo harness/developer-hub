@@ -62,12 +62,12 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
       <tr>
         <td> HOST_NAME </td>
         <td> The name of the target host </td>
-        <td> For Example: host-1 </td>
+        <td> For Example: <code>host-1</code> </td>
       </tr>
       <tr>
         <td> HOST_DATACENTER </td>
         <td> The name of the datacenter to which the host belongs </td>
-        <td> For Example: datacenter-1 </td>
+        <td> For Example: <code>datacenter-1</code> </td>
       </tr>
       <tr>
         <td> HIGH_AVAILABILITY_CLUSTER </td>
@@ -85,7 +85,7 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injection of chaos (in seconds) </td>
-        <td> For Example: 30 </td>
+        <td> For Example: <code>30</code> </td>
       </tr>
     </table>
 </details>

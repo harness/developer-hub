@@ -51,17 +51,17 @@ The application pods should be in running state before and after chaos injection
       <tr>
         <td> POD_SELECTOR </td>
         <td> Contains labels of the destination pods </td>
-        <td> For Example: app=cart </td>
+        <td> For Example: <code>app=cart</code> </td>
       </tr>
       <tr>
         <td> NAMESPACE_SELECTOR </td>
         <td> Contains labels of the destination namespaces </td>
-        <td> For Example: env=prod </td>
+        <td> For Example: <code>env=prod</code> </td>
       </tr>
       <tr>
         <td> PORTS </td>
         <td> Comma separated list of the targeted ports </td>
-        <td> For Example: 80,443,22 </td>
+        <td> For Example: <code>80,443,22</code> </td>
       </tr>
       <tr>
         <td> DESTINATION_IPS </td>
@@ -76,7 +76,7 @@ The application pods should be in running state before and after chaos injection
       <tr>   
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injection of chaos (in seconds) </td>
-        <td> For Example: 30 </td>
+        <td> For Example: <code>30</code> </td>
       </tr>
     </table>
 </details>

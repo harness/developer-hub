@@ -141,12 +141,12 @@ You can pass the VM credentials as a secret or as a chaosengine environment vari
       <tr>
         <td> GOVC_USERNAME </td>
         <td> Provide the username of vCenter Server.</td>
-        <td> This environment variable is used for authentiation purposes and is setup using a secret.</td>
+        <td> This environment variable is used for authentication purposes and is setup using a secret.</td>
       </tr>
       <tr>
         <td> GOVC_PASSWORD </td>
         <td> Provide the password of vCenter Server. </td>
-        <td> This environment variable is used for authentiation purposes and is setup using a secret.</td>
+        <td> This environment variable is used for authentication purposes and is setup using a secret.</td>
       </tr>
       <tr>
         <td> GOVC_INSECURE </td>

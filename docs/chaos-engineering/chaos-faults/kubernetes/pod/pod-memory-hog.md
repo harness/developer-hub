@@ -4,7 +4,7 @@ title: Pod Memory Hog
 ---
 
 ## Introduction
-- This fault consumes the memory resources on the application container on specified memory in megabytes.
+- This fault can stress the memory resources on the application container on specified memory in megabytes.
 - It simulates conditions where app pods experience memory spikes either due to expected or undesired processes thereby testing how the overall application stack behavior.
 
 :::tip Fault execution flow chart
@@ -89,7 +89,7 @@ The application pods should be in running state before and after chaos injection
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after the injection of chaos (in seconds) </td>
-        <td> For Example: 30 </td>
+        <td> For Example: <code>30</code> </td>
       </tr>
       <tr>
         <td> SEQUENCE </td>

@@ -4,7 +4,7 @@ title: Pod CPU Hog
 ---
 
 ## Introduction
-- This fault consumes the CPU resources of the application container.
+- This fault can stress the CPU resources of the application container.
 - It simulates conditions where application pods experience CPU usage spikes either due to expected or undesired processes, thereby testing how the overall application stack behavior.
 - It can test the application's resilience to potential slowness or unavailability of some replicas due to high CPU load.
 
@@ -85,7 +85,7 @@ The application pods should be in running state before and after chaos injection
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after the injection of chaos (in seconds) </td>
-        <td> For Example: 30 </td>
+        <td> For Example: <code>30</code> </td>
       </tr>
       <tr>
         <td> SEQUENCE </td>

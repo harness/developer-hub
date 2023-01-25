@@ -5,7 +5,7 @@ title: EC2 HTTP Modify Body
 
 ## Introduction
 
-- It injects HTTP chaos which affects the request/response by modifying the status code or the body or the headers by starting proxy server and redirecting the traffic through the proxy server.
+- It injects HTTP chaos which affects the request or response by modifying the status code or the body or the headers by starting proxy server and redirecting the traffic through the proxy server.
 - It can test the application's resilience to error or incorrect HTTP response body.
 
 :::tip Fault execution flow chart

@@ -4,7 +4,7 @@ title: VMware CPU Hog
 ---
 
 ## Introduction
-- VMware CPU hog fault consumes the CPU resources on Linux OS based VMware VM .
+- VMware CPU hog fault can stress the CPU resources on Linux OS based VMware VM .
 - It helps to check the performance of the application running on the VMware VMs.
 
 :::tip Fault execution flow chart
@@ -89,7 +89,7 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injection of chaos (in seconds) </td>
-        <td> For Example: 30 </td>
+        <td> For Example: <code>30</code> </td>
       </tr>
       <tr>
         <td> SEQUENCE </td>

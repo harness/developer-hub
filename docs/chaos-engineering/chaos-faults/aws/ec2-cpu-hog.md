@@ -111,7 +111,7 @@ stringData:
         </tr>
         <tr>
             <td> CPU_CORE </td>
-            <td> Provide the number of CPU cores to consume</td>
+            <td> Provide the number of CPU cores to stress</td>
             <td> Defaults to 0 </td>
         </tr>
         <tr>
