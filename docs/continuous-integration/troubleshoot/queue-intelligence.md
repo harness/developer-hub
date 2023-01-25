@@ -14,7 +14,7 @@ The maximum number of concurrent builds you can run is determined by your CI lic
 
 If you're using a Docker build infrastructure, you also have the following restraints: 
 
-* Resource limits per delegate – For example, a MacOS or Docker delegate might have just enough RAM and CPU to run two builds concurrently. (Harness Cloud, Kubernetes, and VM-based build infrastructures can scale up if needed and don't have this constraint.)
+* Resource limits per delegate – For example, a delegate installed on your laptop might have just enough RAM and CPU to run two builds concurrently. (Harness Cloud, Kubernetes, and VM-based build infrastructures can scale up if needed and don't have this constraint.)
 
 * Limit setting per delegate – The docker-compose.yaml file supports a `Max_Concurrency_Limit` if you want to limit the number of concurrent jobs for that delegate. You cannot specify a higher limit than the maximum defined in your license. 
 
