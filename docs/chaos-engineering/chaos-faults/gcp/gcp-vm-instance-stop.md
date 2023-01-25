@@ -130,10 +130,10 @@ spec:
     spec:
       components:
         env:
-        # comma separated list of vm instance names
+        # comma-separated list of vm instance names
         - name: VM_INSTANCE_NAMES
           value: 'instance-01,instance-02'
-        # comma separated list of zone names corresponds to the VM_INSTANCE_NAMES
+        # comma-separated list of zone names corresponds to the VM_INSTANCE_NAMES
         # it should be provided in same order of VM_INSTANCE_NAMES
         - name: ZONES
           value: 'zone-01,zone-02'
@@ -167,10 +167,10 @@ spec:
         # supports: enable, disable. default: disable
         - name: MANAGED_INSTANCE_GROUP
           value: 'enable'
-        # comma separated list of vm instance names
+        # comma-separated list of vm instance names
         - name: VM_INSTANCE_NAMES
           value: 'instance-01,instance-02'
-        # comma separated list of zone names corresponds to the VM_INSTANCE_NAMES
+        # comma-separated list of zone names corresponds to the VM_INSTANCE_NAMES
         # it should be provided in same order of VM_INSTANCE_NAMES
         - name: ZONES
           value: 'zone-01,zone-02'
@@ -206,7 +206,7 @@ spec:
         # delay between each iteration of chaos
         - name: CHAOS_INTERVAL
           value: '15'
-        # time duration for the chaos execution
+        # duration for the chaos execution
         - name: TOTAL_CHAOS_DURATION
           VALUE: '60'
         - name: VM_INSTANCE_NAMES
