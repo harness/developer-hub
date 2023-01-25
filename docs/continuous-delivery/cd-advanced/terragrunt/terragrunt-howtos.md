@@ -136,7 +136,7 @@ There are two options:
 
 :::info
 
-  Terragrunt Apply and Destroy steps do not support inheriting from a Terragrunt Plan step when **All Modules** is selected the Terragrunt Plan step's **Module Configuration**.
+  Terragrunt Apply and Destroy steps do not support inheriting from a Terragrunt Plan step when **All Modules** is selected in the Terragrunt Plan step's **Module Configuration**.
 
 :::
 
@@ -178,216 +178,9 @@ When the plan is applied, the Harness manager passes the encrypted data to the d
 
 The delegate decrypts the encrypted plan and runs it.
 
-#### Configuration File Repository
-
-**Configuration File Repository** is where you add a connection to the Terragrunt script repo hosting the scripts and files for this step.
-
-1. Click **Specify Config File** or click the edit icon. The **Terragrunt Config File Store** settings appear.
-2. Click the provider where your files are hosted.
-    
-    ![picture 4](static/2c7889d9dbae6966e8899d90310b0564b4552af33f2fffb553d30d11d96298d7.png)
-3. Select or create a [Git connector](https://developer.harness.io/docs/platform/Connectors/connect-to-code-repo) for your repo.
-4. Once you have selected a connector, click **Continue**.
-   
-   In **Config File Details**, provide the Git repo details.
-5. In **Git Fetch Type**, select **Latest from Branch** or **Specific Commit Id**.
-   
-   When you run the Pipeline, Harness will fetch the script from the repo.
-   
-   **Specific Commit Id** also supports Git tags. If you think the script might change often, you might want to use **Specific Commit Id**. For example, if you are going to be fetching the script multiple times in your pipeline, Harness will fetch the script each time. If you select **Latest from Branch** and the branch changes between fetches, different scripts are run.
-6. In **Branch**, enter the name of the branch to use.
-7. In **File Path**, enter the path from the root of the repo to the file containing the script.
-8. Click **Submit**.
-
 Your Terragrunt Plan step is now ready. 
 
 You can now configure a Terragrunt Apply, Destroy, or Rollback step to use the Terragrunt script from this Terragrunt Plan step.
-
-The following sections cover common Terragrunt Plan step options.
-
-#### Module Configuration
-
-Use this setting to specify the Terraform modules you want Terragrunt to use.
-
-In **Module Configuration**, you are telling Harness where to locate your [terragrunt.hcl file](https://terragrunt.gruntwork.io/docs/getting-started/configuration/). The terragrunt.hcl itself will point to a Terraform module using the source parameter like this:
-
-```
-locals {  
-}  
-  
-terraform {  
-//  source = "git::git@github.com:Tathagat-289/terraformResources.git//module3"  
-  source = "github.com/Tathagat-289/terraformResources//module3"  
-}  
-  
-# Include all settings from the root terragrunt.hcl file  
-include {  
-  path = find_in_parent_folders()  
-}  
-  
-inputs = {  
-  tfmodule3 = "tfmodule4"  
-  slmodule3 = "sleepmodule4"  
-  tfv = "tfversion1"  
-  sl = "sl1"  
-}
-```
-
-You have two options:
-
-- **All Modules**. Harness will use all of the terragrunt.hcl files starting from the *folder* you specify in **Path**.
-  
-  If you select **All Modules**, you might want to use **Backend Configuration** to store your state file. Harness will not sync with the current state when **All Modules** is selected. Instead, Harness simply applies the terragrunt.hcl files.
-
-  :::info
-  
-   - When **All Modules** is selected, the **Export JSON representation of Terragrunt Plan** option is not supported.
-   - Terragrunt Apply and Destroy steps do not support inheriting from a Terragrunt Plan step when **All Modules** is selected the Terragrunt Plan step's **Module Configuration**.
-  
-  :::
-- **Specific Module**. Harness will use a single terragrunt.hcl file in the folder you specify in **Path**.
-
-The **Path** setting supports [fixed values, runtime inputs, and expressions](https://developer.harness.io/docs/platform/references/runtime-inputs/).
-
-
-#### Workspace
-
-Harness supports Terraform workspaces.
-
-A Terraform workspace allows you to maintain separate state files for different environments, such as dev, staging, and production. This way, you can run Terraform commands for each environment without impacting the state of the other environments.
-
-When you use Terragrunt with Terraform workspaces, Terragrunt automatically creates and switches between the workspaces for each environment based on the configuration specified in the terragrunt.hcl file.
-
-Workspaces are useful when testing changes before moving to a production infrastructure. To test the changes, you create separate workspaces for Dev and Production.
-
-A workspace is really a different state file. Each workspace isolates its state from other workspaces. For more information, see [When to use Multiple Workspaces](https://www.terraform.io/docs/state/workspaces.html#when-to-use-multiple-workspaces) from Hashicorp.
-
-Here is an example script where a local value names two workspaces, default and production, and associates different instance counts with each:
-
-```
-locals {  
-  counts = {  
-      "default"=1  
-      "production"=3  
-  }  
-}  
-  
-resource "aws_instance" "my_service" {  
-  ami="ami-7b4d7900"  
-  instance_type="t2.micro"  
-  count="${lookup(local.counts, terraform.workspace, 2)}"  
-  tags {  
-         Name = "${terraform.workspace}"  
-    }  
-}
-```
-
-In the workspace interpolation sequence you can see the count is assigned by applying it to the workspace variable (`terraform.workspace`) and that the tag is applied using the variable also.
-
-1. In **Workspace**, enter the name of the workspace to use.
-
-    Harness will pass the workspace name you provide to the `terraform.workspace` variable, thus determining the count. Using the example above, if you provide the name `production`, the count will be 3.
-
-    You can also set **Workspace** as a [runtime inputs or expression](https://developer.harness.io/docs/platform/references/runtime-inputs/) and use a different workspace name each time the pipeline is run.
-
-
-#### Terraform Var Files
-
-1. In **Terraform Var Files**, provide values for the Terraform input variables in the Terraform module (config.tf) that your Terragrunt config file uses.
-
-For example, here's a Terraform config.tf file with variables for access and secret key:
-
-```
-variable "access_key" {}
-variable "secret_key" {}  
-  
-provider "aws" {  
-  access_key = var.access_key  
-  secret_key = var.secret_key  
-  region = "us-east-1"  
-}  
-...
-```
-
-You can use inline or remote tfvar settings.
-
-If you use inline, you can paste in the input variables, like this:
-
-```
-count_of_null_resources = "7"
-file_message = "testing tvar"
-```
-
-You can Harness [variable](https://developer.harness.io/docs/platform/Variables-and-Expressions/harness-variables) and [secret](https://developer.harness.io/docs/first-gen/firstgen-platform/security/secrets-management/use-encrypted-text-secrets) expressions in the inputs also.
-
-
-#### Backend Configuration
-
-Depending on which platform you store your remote state data, Terragrunt and Terraform allow you to pass many different credentials and configuration settings, such as access and secret keys. 
-
-For example:
-
-```
-resource_group_name  = "tfResourceGroup"
-storage_account_name = "myterraformremoteback"
-container_name       = "azure-backend"
-```
-
-For examples, see the settings available for [AWS S3](https://www.terraform.io/docs/backends/types/s3.html#configuration) from Terraform and review [Keep your remote state configuration DRY](https://terragrunt.gruntwork.io/docs/features/keep-your-remote-state-configuration-dry/) from Terragrunt.
-
-1. In **Backend Configuration**, enter values for each backend config (remote state variable) in the Terragrunt config (.hcl) or Terraform script (config.tf) file.
-
-#### Targets
-
-1. In **Target**, target one or more specific modules in your Terraform script, just like using the `terraform plan -target` command. See [Resource Targeting](https://www.terraform.io/docs/commands/plan.html#resource-targeting) from Terraform.
-
-  If you have multiple modules in your script and you do not select one in **Targets**, all modules are used.
-
-  You can also use [runtime inputs or expressions](https://developer.harness.io/docs/platform/references/runtime-inputs/) for your targets. 
-
-  For example, you can create a stage variable named `module` and then enter the variable `<+stage.variables.module>` in **Targets**. 
-
-#### Environment Variables
-
-In **Environment Variables**, you can reference additional environment variables in the Terraform script ultimately used by the Terragrunt plan. These are in addition to any variables already in the script.
-
-1. Click **Add** and enter a name and value for the environment variable.
-    
-    For example, the name `TF_LOG` and the value `TRACE`, or the name `ARM_CLIENT_ID` and the value `<+secrets.getValue("account.tg_azure_client_id")>`.
-
-You can use Harness variables and secrets for the name and value.
-
-Environment variables can also be deleted using the Terragrunt Destroy step.
-
-#### Export JSON representation of Terragrunt Plan
-
-:::info
-
-When **All Modules** is selected in **Module Configuration**, the **Export JSON representation of Terragrunt Plan** option is not supported.
-
-:::
-
-Enable this setting to use a JSON representation of the plan implemented in this Terragrunt Plan step.
-
-In subsequent **Execution** steps, such as a Shell Script step, you can reference the plan using this expression format:
-
-```
-<+execution.steps.[Terragrunt Plan step Id].plan.jsonFilePath>
-```
-
-For example, if you had a Terragrunt Plan step with the Id `Plan_Step`, you could use the expression in a Shell Script step like this:
-
-```
-cat "<+execution.steps.Plan_Step.plan.jsonFilePath>"
-```
-
-##### Scope of expression
-
-**Export JSON representation of the Terragrunt Plan** is available only between the Terragrunt Plan step and subsequent Terragrunt Apply step. The expression will fail to resolve if used after the Terragrunt Apply step.
-
-If used across stages, the Terragrunt Plan step can be used in one stage and the Terragrunt Apply step can be used in a subsequent stage. The expression will resolve successfully in this case.
-
-The JSON of the Terragrunt Plan step is not available after Rollback.
 
 ```mdx-code-block
   </TabItem>
@@ -438,7 +231,7 @@ There are two options:
 
 :::info
 
-  Terragrunt Apply and Destroy steps do not support inheriting from a Terragrunt Plan step when **All Modules** is selected the Terragrunt Plan step's **Module Configuration**.
+  Terragrunt Apply and Destroy steps do not support inheriting from a Terragrunt Plan step when **All Modules** is selected in the Terragrunt Plan step's **Module Configuration**.
 
 :::
 
@@ -471,22 +264,6 @@ The **Provisioner Identifier** is a project-wide setting. You can reference it a
 
 For this reason, it's important that all your project members know the provisioner identifiers. Sharing this information will prevent one member building a pipeline from accidentally impacting the provisioning of another member's pipeline.
 
-#### Secret Manager
-
-The **Secret Manager** setting helps you protect your Terragrunt information.
-
-1. Select a Harness [secrets manager](https://developer.harness.io/docs/platform/Security/harness-secret-manager-overview) to use for encrypting/decrypting and saving the Terragrunt plan file.
-
-The Terragrunt Apply step will perform a `terraform plan` command before applying.
-
-A Terragrunt plan is a sensitive file that could be misused to alter resources if someone has access to it. Harness avoids this issue by never passing the Terragrunt plan file as plain text.
-
-Harness only passes the Terragrunt plan between the Harness Manager and delegate as an encrypted file using a secrets manager.
-
-When the terragrunt plan command runs on the Harness delegate, the delegate encrypts the plan and saves it to the secrets manager you selected. The encrypted data is passed to the Harness Manager.
-
-When the plan is applied, the Harness manager passes the encrypted data to the delegate.
-
 #### Configuration File Repository
 
 **Configuration File Repository** is where the Terragrunt script and files you want to use are located.
@@ -513,13 +290,172 @@ Your Terragrunt Apply step is now ready.
 
 You can now configure a Terragrunt [Destroy](terragrunt-destroy.md) or [Rollback](terragrunt-rollback.md) step to use the Terragrunt provisioning from this Terragrunt Apply step.
 
-The following sections cover common Terragrunt Plan step options.
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Terragrunt Destroy" label="Terragrunt Destroy">
+```
 
-#### Module Configuration
+To add a Terragrunt Plan step, do the following:
+
+1. In your CD stage **Execution**, click **Add Step**, and then click **Terragrunt Destroy**.
+2. Enter the following Terragrunt Destroy settings.
+
+#### Name
+
+1. In Name, enter a name for the step. Use a name that describes the infrastructure the step plans to provision.
+
+#### Timeout
+
+1. Enter how long you want Harness to try to complete the step before failing and initiating the stage or step [failure strategy](https://developer.harness.io/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps/).
+
+   You can use:
+
+   - `w` for weeks.
+   - `d` for days.
+   - `h` for hours.
+   - `m` for minutes.
+   - `s` for seconds.
+   - `ms` for milliseconds.
+
+   The maximum is `53w`.
+
+   Timeouts can be set at the pipeline-level also, **Advanced Options**.
+
+Destroying resources can be time-consuming. Use at least `5m`.
+
+#### Configuration Type
+
+You can add a Terragrunt Destroy step to remove any provisioned infrastructure, just like running the `terragrunt run-all destroy` command. See [destroy](https://terragrunt.gruntwork.io/docs/features/execute-terraform-commands-on-multiple-modules-at-once/#the-run-all-command) from Terragrunt.
+
+1. In **Configuration Type**, select how you want to destroy resources:
+
+- **Inherit From Plan**. Destroy the resources from a Terraform Plan step.
+  - Using the Terragrunt Destroy step with a previous Terragrunt Plan step is the same as using the `terragrunt plan` command with the `-destroy` flag.
+  - To use this Terraform Destroy step with a Terraform Plan step, you must select **Destroy** in the **Command** setting of the **Terraform Plan** step.
+- **Inherit From Apply**. Destroy the resources from a Terraform Apply step.
+  - Using the Terragrunt Destroy step with a previous Terragrunt Apply step is the same as using the `terragrunt apply` command with the `-destroy` flag.
+- **Inline**. Destroy any resources using a Terragrunt script.
+
+#### Provisioner Identifier
+
+There are two options for **Provisioner Identifier**:
+
+- If you are destroying the resources from a previous Terragrunt Plan or Terragrunt Apply step, enter the **Provisioner Identifier** from that step in **Provisioner Identifier** in this Terragrunt Destroy step.
+- If you are using the **Inline** option in **Configuration Type**, enter a unique value in **Provisioner Identifier**.
+
+The most common use of **Provisioner Identifier** is to destroy resources from a Terragrunt Plan or Terragrunt Apply step. 
+
+Here's an example of how the **Provisioner Identifier** is used across steps:
+
+<!-- ![](./static/2161eed44e5b1ef3369542d40747af39160c7a25b71f03f160ce1e29329c6bab.png) -->
+
+<docimage path={require('./static/2161eed44e5b1ef3369542d40747af39160c7a25b71f03f160ce1e29329c6bab.png')} />
+
+##### Provisioner Identifier scope
+
+The **Provisioner Identifier** is a project-wide setting. You can reference it across pipelines in the same project.
+
+For this reason, it's important that all your project members know the provisioner identifiers. Sharing this information will prevent one member building a pipeline from accidentally impacting the provisioning of another member's pipeline.
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Terragrunt Rollback" label="Terragrunt Rollback">
+```
+
+To add a Terragrunt Rollback step, do the following:
+
+1. In your CD stage Execution, click Rollback.
+2. Click **Add Step**, and then click **Terragrunt Rollback**.
+3. Enter the following Terragrunt Rollback settings.
+
+#### Name
+
+1. In **Name**, enter a name for the step. Use a name that describes the infrastructure the step plans to roll back.
+
+#### Timeout
+
+1. Enter how long you want Harness to try to complete the step before failing and initiating the stage or step [failure strategy](https://developer.harness.io/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps/).
+
+   You can use:
+
+   - `w` for weeks.
+   - `d` for days.
+   - `h` for hours.
+   - `m` for minutes.
+   - `s` for seconds.
+   - `ms` for milliseconds.
+
+   The maximum is `53w`.
+
+   Timeouts can be set at the pipeline-level also, **Advanced Options**.
+
+Provisioning can be time-consuming so use at least `5m`.
+
+#### Provisioner Identifier
+
+1. Enter the **Provisioner Identifier** from a previous Terragrunt Plan or Apply step to roll back its provisioning.
+
+Here's an example of how the **Provisioner Identifier** is used across steps:
+
+<!-- ![](./static/2161eed44e5b1ef3369542d40747af39160c7a25b71f03f160ce1e29329c6bab.png) -->
+
+<docimage path={require('./static/2161eed44e5b1ef3369542d40747af39160c7a25b71f03f160ce1e29329c6bab.png')} />
+
+##### Provisioner Identifier scope
+
+The **Provisioner Identifier** is a project-wide setting. You can reference it across pipelines in the same project.
+
+For this reason, it's important that all your project members know the provisioner identifiers. Sharing this information will prevent one member building a pipeline from accidentally impacting the provisioning of another member's pipeline.
+
+#### Notes
+
+The following notes discuss Terragrunt rollback scenarios.
+
+- Deployment rollback.
+  - If you have successfully deployed Terraform modules and on the next deployment there is an error that initiates a rollback, Harness will roll back the provisioned infrastructure to the previous, successful version of the Terraform state.
+  - Harness will not increment the serial in the state, but perform a hard rollback to the exact version of the state provided.
+- Rollback limitations.
+  - If you deployed two modules successfully already, module1 and module2, and then attempted to deploy module3, but failed, Harness will roll back to the successful state of module1 and module2.
+  - However, let's look at the situation where module3 succeeds and now you have module1, module2, and module3 deployed. If the next deployment fails, the rollback will only roll back to the Terraform state with module3 deployed. Module1 and module2 were not in the previous Terraform state, so the rollback excludes them.
+
+```mdx-code-block
+  </TabItem>    
+</Tabs>
+```
+## Settings common to all steps
+
+The following settings are common to the Terragrunt Plan, Apply, and Destroy steps.
+
+These settings are always available in the Terragrunt Plan step, and available in the Apply and Destroy steps when **Inline** is selected in **Configuration Type**.
+
+### Configuration File Repository
+
+**Configuration File Repository** is where you add a connection to the Terragrunt script repo hosting the scripts and files for this step.
+
+The **Configuration File Repository** setting is available in the Terragrunt Plan step. It is available in the Terragrunt Apply and Destroy steps when **Inline** is selected in **Configuration Type**. 
+
+1. Click **Specify Config File** or click the edit icon. The **Terragrunt Config File Store** settings appear.
+2. Click the provider where your files are hosted.
+    
+    ![picture 4](static/2c7889d9dbae6966e8899d90310b0564b4552af33f2fffb553d30d11d96298d7.png)
+3. Select or create a [Git connector](https://developer.harness.io/docs/platform/Connectors/connect-to-code-repo) for your repo.
+4. Once you have selected a connector, click **Continue**.
+   
+   In **Config File Details**, provide the Git repo details.
+5. In **Git Fetch Type**, select **Latest from Branch** or **Specific Commit Id**.
+   
+   When you run the Pipeline, Harness will fetch the script from the repo.
+   
+   **Specific Commit Id** also supports Git tags. If you think the script might change often, you might want to use **Specific Commit Id**. For example, if you are going to be fetching the script multiple times in your pipeline, Harness will fetch the script each time. If you select **Latest from Branch** and the branch changes between fetches, different scripts are run.
+6. In **Branch**, enter the name of the branch to use.
+7. In **File Path**, enter the path from the root of the repo to the file containing the script.
+8. Click **Submit**.
+
+### Module Configuration
 
 Use this setting to specify the Terraform modules you want Terragrunt to use.
 
-In **Module Configuration**, you are telling Harness where to locate your terragrunt.hcl file. The terragrunt.hcl itself will point to a Terraform module using the source parameter like this:
+In **Module Configuration**, you are telling Harness where to locate your [terragrunt.hcl file](https://terragrunt.gruntwork.io/docs/getting-started/configuration/). The terragrunt.hcl itself will point to a Terraform module using the source parameter like this:
 
 ```
 locals {  
@@ -552,7 +488,7 @@ You have two options:
   :::info
   
    - When **All Modules** is selected, the **Export JSON representation of Terragrunt Plan** option is not supported.
-   - Terragrunt Apply and Destroy steps do not support inheriting from a Terragrunt Plan step when **All Modules** is selected the Terragrunt Plan step's **Module Configuration**.
+   - Terragrunt Apply and Destroy steps do not support inheriting from a Terragrunt Plan step when **All Modules** is selected in the Terragrunt Plan step's **Module Configuration**.
   
   :::
 - **Specific Module**. Harness will use a single terragrunt.hcl file in the folder you specify in **Path**.
@@ -560,9 +496,13 @@ You have two options:
 The **Path** setting supports [fixed values, runtime inputs, and expressions](https://developer.harness.io/docs/platform/references/runtime-inputs/).
 
 
-#### Workspace
+### Workspace
 
-Harness supports Terraform workspaces. A Terraform workspace is a logical representation of one your infrastructures, such as Dev, QA, Stage, Production.
+Harness supports Terraform workspaces.
+
+A Terraform workspace allows you to maintain separate state files for different environments, such as dev, staging, and production. This way, you can run Terraform commands for each environment without impacting the state of the other environments.
+
+When you use Terragrunt with Terraform workspaces, Terragrunt automatically creates and switches between the workspaces for each environment based on the configuration specified in the terragrunt.hcl file.
 
 Workspaces are useful when testing changes before moving to a production infrastructure. To test the changes, you create separate workspaces for Dev and Production.
 
@@ -592,19 +532,19 @@ In the workspace interpolation sequence you can see the count is assigned by app
 
 1. In **Workspace**, enter the name of the workspace to use.
 
-Harness will pass the workspace name you provide to the `terraform.workspace` variable, thus determining the count. Using the example above, if you provide the name `production`, the count will be 3.
+    Harness will pass the workspace name you provide to the `terraform.workspace` variable, thus determining the count. Using the example above, if you provide the name `production`, the count will be 3.
 
-You can also set **Workspace** as a [runtime inputs or expression](https://developer.harness.io/docs/platform/references/runtime-inputs/) and use a different workspace name each time the pipeline is run.
+    You can also set **Workspace** as a [runtime inputs or expression](https://developer.harness.io/docs/platform/references/runtime-inputs/) and use a different workspace name each time the pipeline is run.
 
-#### Terraform Var Files
+
+### Terraform Var Files
 
 1. In **Terraform Var Files**, provide values for the Terraform input variables in the Terraform module (config.tf) that your Terragrunt config file uses.
 
 For example, here's a Terraform config.tf file with variables for access and secret key:
 
 ```
-variable "access_key" {}  
-  
+variable "access_key" {}
 variable "secret_key" {}  
   
 provider "aws" {  
@@ -615,11 +555,9 @@ provider "aws" {
 ...
 ```
 
-You provide values for these variables in **Terraform Var Files**.
-
 You can use inline or remote tfvar settings.
 
-If you use inline, you can simply paste in the input variables, like this:
+If you use inline, you can paste in the input variables, like this:
 
 ```
 count_of_null_resources = "7"
@@ -629,7 +567,7 @@ file_message = "testing tvar"
 You can Harness [variable](https://developer.harness.io/docs/platform/Variables-and-Expressions/harness-variables) and [secret](https://developer.harness.io/docs/first-gen/firstgen-platform/security/secrets-management/use-encrypted-text-secrets) expressions in the inputs also.
 
 
-#### Backend Configuration
+### Backend Configuration
 
 Depending on which platform you store your remote state data, Terragrunt and Terraform allow you to pass many different credentials and configuration settings, such as access and secret keys. 
 
@@ -641,21 +579,21 @@ storage_account_name = "myterraformremoteback"
 container_name       = "azure-backend"
 ```
 
-For example, see the settings available for [AWS S3](https://www.terraform.io/docs/backends/types/s3.html#configuration) from Terraform and review [Keep your remote state configuration DRY](https://terragrunt.gruntwork.io/docs/features/keep-your-remote-state-configuration-dry/) from Terragrunt.
+For examples, see the settings available for [AWS S3](https://www.terraform.io/docs/backends/types/s3.html#configuration) from Terraform and review [Keep your remote state configuration DRY](https://terragrunt.gruntwork.io/docs/features/keep-your-remote-state-configuration-dry/) from Terragrunt.
 
 1. In **Backend Configuration**, enter values for each backend config (remote state variable) in the Terragrunt config (.hcl) or Terraform script (config.tf) file.
 
-#### Targets
+### Targets
 
-1. In **Target**, target one or more specific modules in your Terraform script, just like using the `terraform plan -target` command. See [Resource Targeting](https://www.terraform.io/docs/commands/plan.html#resource-targeting) from Terraform.
+1. In **Target**, target one or more specific modules in your Terraform script, just like using the `terraform plan -target`, `terraform apply -target`, or `terraform destory -target` commands. See [Resource Targeting](https://www.terraform.io/docs/commands/plan.html#resource-targeting) from Terraform.
 
-If you have multiple modules in your script and you do not select one in **Targets**, all modules are used.
+  If you have multiple modules in your script and you do not select one in **Targets**, all modules are used.
 
-You can also use [runtime inputs or expressions](https://developer.harness.io/docs/platform/references/runtime-inputs/) for your targets. 
+  You can also use [runtime inputs or expressions](https://developer.harness.io/docs/platform/references/runtime-inputs/) for your targets. 
 
-For example, you can create a stage variable named `module` and then enter the variable `<+stage.variables.module>` in **Targets**. 
+  For example, you can create a stage variable named `module` and then enter the variable `<+stage.variables.module>` in **Targets**. 
 
-#### Environment Variables
+### Environment Variables
 
 In **Environment Variables**, you can reference additional environment variables in the Terraform script ultimately used by the Terragrunt plan. These are in addition to any variables already in the script.
 
@@ -665,9 +603,9 @@ In **Environment Variables**, you can reference additional environment variables
 
 You can use Harness variables and secrets for the name and value.
 
-Environment variables can also be deleted using the Terragrunt [Destroy](terragrunt-destroy.md) step.
+Environment variables can also be deleted using the Terragrunt Destroy step.
 
-#### Export JSON representation of Terragrunt Plan
+### Export JSON representation of Terragrunt Plan
 
 :::info
 
@@ -675,12 +613,12 @@ When **All Modules** is selected in **Module Configuration**, the **Export JSON 
 
 :::
 
-Enable this setting to use a JSON representation of the plan that is implemented in this Terragrunt Plan step.
+Enable this setting to use a JSON representation of the plan implemented in this step.
 
-In subsequent Execution steps, such as a Shell Script step, you can reference the plan using this expression format:
+In subsequent **Execution** steps, such as a Shell Script step, you can reference the plan using this expression format:
 
 ```
-<+execution.steps.[Terragrunt Plan step Id].plan.jsonFilePath>
+<+execution.steps.[Terragrunt step Id].plan.jsonFilePath>
 ```
 
 For example, if you had a Terragrunt Plan step with the Id `Plan_Step`, you could use the expression in a Shell Script step like this:
@@ -689,42 +627,22 @@ For example, if you had a Terragrunt Plan step with the Id `Plan_Step`, you coul
 cat "<+execution.steps.Plan_Step.plan.jsonFilePath>"
 ```
 
-
 ##### Scope of expression
 
-**Export JSON representation of the Terragrunt Plan** is available only between the Terragrunt Plan step and subsequent Terragrunt Apply step. The expression will fail to resolve if used after the Terragrunt Apply step.
+**Export JSON representation of the Terragrunt Plan** is available only between the Terragrunt Plan step and subsequent Terragrunt Apply or Destroy steps. The expression will fail to resolve if used after the Terragrunt Apply or Destroy steps.
 
-If used across stages, the Terragrunt Plan step can be used in one stage and the Terragrunt Apply step can be used in a subsequent stage. The expression will resolve successfully in this case.
+If used across stages, the Terragrunt Plan step can be used in one stage and the Terragrunt Apply or Destroy step can be used in a subsequent stage. The expression will resolve successfully in this case.
 
-The JSON of the Terragrunt Plan step is not available after Rollback.
+The JSON of the Terragrunt Plan step is not available after rollback.
 
-```
-...
-```
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Terragrunt Destroy" label="Terragrunt Destroy">
-```
-Terragrunt Destroy
-...
-```
-...
-```
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Terragrunt Rollback" label="Terragrunt Rollback">
-```
+## Advanced settings
 
-Terragrunt Rollback
-...
+In **Advanced**, you can use the following options:
 
-```
-...
-```
-```mdx-code-block
-  </TabItem>    
-</Tabs>
-```
+* [Delegate Selector](../../../platform/2_Delegates/delegate-guide/select-delegates-with-selectors.md)
+* [Conditional Execution](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+* [Failure Strategy](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+* [Looping Strategy](../../..//platform/8_Pipelines/looping-strategies-matrix-repeat-and-parallelism.md)
 
 ## YAML examples
 
@@ -738,41 +656,118 @@ import TabItem2 from '@theme/TabItem';
 <Tabs2>
   <TabItem2 value="Terragrunt Plan" label="Terragrunt Plan" default>
 ```
-1. .
-2. .
+
+Here is an example of the YAML for a Terragrunt Plan step:
+
+```yaml
+              - step:
+                  type: TerragruntPlan
+                  name: Terragrunt Plan_1
+                  identifier: TerragruntPlan_1
+                  spec:
+                    configuration:
+                      command: Apply
+                      configFiles:
+                        store:
+                          type: Github
+                          spec:
+                            gitFetchType: Branch
+                            connectorRef: vlprerequisites
+                            branch: main
+                            folderPath: terragrunt/
+                      moduleConfig:
+                        terragruntRunType: RunModule
+                        path: qa/local-file-resource
+                      secretManagerRef: harnessSecretManager
+                      backendConfig:
+                        type: Inline
+                        spec:
+                          content: |-
+                            resource_group_name  = "tfResourceGroup"
+                            storage_account_name = "vlicaterraformremoteback"
+                            container_name       = "azure-backend"
+                      environmentVariables:
+                        - name: ARM_CLIENT_ID
+                          value: <+secrets.getValue("account.vl_tg_azure_client_id")>
+                          type: String
+                        - name: ARM_CLIENT_SECRET
+                          value: <+secrets.getValue("account.vl_tg_azure_client_secret")>
+                          type: String
+                        - name: ARM_TENANT_ID
+                          value: <+secrets.getValue("account.vl_tg_azure_tenant_id")>
+                          type: String
+                      varFiles:
+                        - varFile:
+                            identifier: vasd12312311
+                            spec:
+                              content: |-
+                                count_of_null_resources = "7"
+                                file_message = "testing inherit 111"
+                            type: Inline
+                    provisionerIdentifier: planinherit123aa1
+                  timeout: 10m
+```
 
 ```mdx-code-block
   </TabItem2>
   <TabItem2 value="Terragrunt Apply" label="Terragrunt Apply">
 ```
 
-1. Click **YAML**.
-2. Paste the following YAML example:
+Here is an example of the YAML for a Terragrunt Apply step that inherits from the previous Terragrunt Plan step:
+
+```yaml
+              - step:
+                  type: TerragruntApply
+                  name: Terragrunt Apply_1
+                  identifier: TerragruntApply_1
+                  spec:
+                    configuration:
+                      type: InheritFromPlan
+                    provisionerIdentifier: planinherit123aa1
+                  timeout: 10m
 ```
-...
-```
+
 ```mdx-code-block
   </TabItem2>
   <TabItem2 value="Terragrunt Destroy" label="Terragrunt Destroy">
 ```
 
-1. Click **YAML**.
-2. Paste the following YAML example:
+Here is an example of the YAML for a Terragrunt Destroy step that inherits from the previous Terragrunt Apply step:
+
+```yaml
+              - step:
+                  type: TerragruntDestroy
+                  name: Terragrunt Destroy_1
+                  identifier: TerragruntDestroy_1
+                  spec:
+                    provisionerIdentifier: planinherit123aa1
+                    configuration:
+                      type: InheritFromApply
+                  timeout: 10m
 ```
-...
-```
+
 ```mdx-code-block
   </TabItem2>
   <TabItem2 value="Terragrunt Rollback" label="Terragrunt Rollback">
 ```
+Here is an example of the YAML for a Terragrunt Rollback step:
 
-1. Click **YAML**.
-2. Paste the following YAML example:
+```yaml
+            rollbackSteps:
+              - step:
+                  type: TerragruntRollback
+                  name: Terragrunt Rollback_1
+                  identifier: TerragruntRollback_1
+                  spec:
+                    provisionerIdentifier: abc123abc
+                    delegateSelectors: []
+                  timeout: 10m
 ```
-...
-```
+
+
 ```mdx-code-block
   </TabItem2>
 
 </Tabs2>
 ```
+
