@@ -66,11 +66,13 @@ To chain pipelines in Harness, perform the following steps:
 ![](./static/pipeline-chain-list.png)
 
 4. Click **Apply Selected**.
+
+5. You can use outputs from child pipelines in other stages in parent pipelines by clicking **Outputs**.
    
 
-5. Repeat this process for any additional pipelines that you want to chain.
+6. Repeat this process for any additional pipelines that you want to chain.
 
-6. In the final pipeline, you can add a **Deploy** step to deploy the application to the desired environment.
+7. In the final pipeline, you can add a **Deploy** step to deploy the application to the desired environment.
    You can also add "Rollback" step in case of any failure.
    Once you have completed chaining the pipelines, you can run the parent pipeline to start the process.
    
