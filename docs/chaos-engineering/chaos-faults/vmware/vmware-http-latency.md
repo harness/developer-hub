@@ -1,21 +1,19 @@
 ---
-id: vmware-http-latency
+id: VMware-http-latency
 title: VMware HTTP Latency
 ---
 
-## Introduction
 - It injects HTTP response latency on the service whose port is provided as `TARGET_SERVICE_PORT` by starting the proxy server and redirecting the traffic through the proxy server.
 - It tests the application's resilience to lossy/flaky HTTP responses.
 
-:::tip Fault execution flow chart
-![VMware HTTP Latency](./static/images/vmware-http-latency.png)
-:::
+
+![VMware HTTP Latency](./static/images/VMware-http-latency.png)
+
 
 ## Prerequisites
-:::info
 - Kubernetes >= 1.17
 - Vcenter access to stop and start the VM.
-- Kubernetes secret that has the Vcenter credentials in the `CHAOS_NAMESPACE`. A sample secret file looks like:
+- Kubernetes secret that has the Vcenter credentials in the `CHAOS_NAMESPACE`. Below is a sample secret file:
 
 ```yaml
 apiVersion: v1
@@ -30,19 +28,19 @@ stringData:
     VCENTERPASS: XXXXXXXXXXXXX
 ```
 
-### NOTE
-You can pass the VM credentials as a secret or as a chaosengine environment variable.
-:::
+### Note
+You can pass the VM credentials as secrets or as a `ChaosEngine` environment variable.
 
-## Default Validations
-:::info
+
+## Default validations
+info
 - The VM should be in a healthy state.
-:::
 
-## Fault Tunables
+
+## Fault tunables
 
 <details>
-    <summary>Check the Fault Tunables</summary>
+    <summary>Fault tunables</summary>
     <h2>Mandatory Fields</h2>
     <table>
         <tr>
@@ -99,7 +97,9 @@ You can pass the VM credentials as a secret or as a chaosengine environment vari
             <td> The default value is 'parallel', and it supports 'serial' value too. </td>
         </tr>
         <tr>
-            <td> RAMP_TIME </td>
+            <td> <td> RAMP_TIME </td>
+        <td> Period to wait before and after injecting chaos (in seconds). </td>
+        <td> For example, 30s. </td>ME </td>
             <td> Period to wait before and after injection of chaos (in seconds). </td>
             <td> For example: 30 </td>
         </tr>
@@ -126,9 +126,11 @@ You can pass the VM credentials as a secret or as a chaosengine environment vari
     </table>
 </details>
 
-## Fault Examples
+        <td> Default value: parallel. Supported: serial, parallel </td>
+## Fault examples
 
-### Common Fault Tunables
+        <td> Default value: parallel. Supported: serial, parallel </td>
+### Common fault tunables
 
 Refer to the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
@@ -149,7 +151,7 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: vmware-http-latency
+  - name: VMware-http-latency
     spec:
       components:
         env:
@@ -175,7 +177,7 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: vmware-http-latency
+  - name: VMware-http-latency
     spec:
       components:
         env:
@@ -204,7 +206,7 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: vmware-http-latency
+  - name: VMware-http-latency
     spec:
       components:
         env:
@@ -234,7 +236,7 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: vmware-http-latency
+  - name: VMware-http-latency
     spec:
       components:
         env:
@@ -265,7 +267,7 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: vmware-http-latency
+  - name: VMware-http-latency
     spec:
       components:
         env:

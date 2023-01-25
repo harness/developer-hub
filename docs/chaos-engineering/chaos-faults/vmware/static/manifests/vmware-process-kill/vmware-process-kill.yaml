@@ -1,4 +1,4 @@
-# Process kill in the VMWare VM
+# Process kill in the VMware VM
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -7,7 +7,7 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-    - name: vmware-process-kill
+    - name: VMware-process-kill
       spec:
         components:
           env:

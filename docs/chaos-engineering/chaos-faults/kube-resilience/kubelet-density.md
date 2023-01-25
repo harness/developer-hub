@@ -2,7 +2,7 @@
 id: kubelet-density
 title: Kubelet density
 ---
-- Kubelet density determines the resilience of the kubelet by creating pods on a specific node. 
+Kubelet density determines the resilience of the kubelet by creating pods on a specific node. 
 - It helps determine how resilient an application is to the unplanned scaling of K8s pods.
 - It also helps determine the performance of the kubelet for a specific node.
 

@@ -1,33 +1,31 @@
 ---
-id: vmware-process-kill
+id: VMware-process-kill
 title: VMware Process kill
 ---
 
 ## Introduction
 - VMware Process Kill fault kills the target processes running as part of a Linux OS based VMware VM to determine the application/process resilience.
-- It helps to check the performance of the application/process running on the VMWare VMs.
+- It helps to check the performance of the application/process running on the VMware VMs.
 
-:::tip Fault execution flow chart
-![VMware Process kill](./static/images/vmware-process-kill.png)
-:::
 
-## Uses
+![VMware Process kill](./static/images/VMware-process-kill.png)
+
+
+## Usage
 <details>
-<summary>View the uses of the fault</summary>
+<summary>View fault usage</summary>
 <div>
 Disrupt the application critical processes such as databases or message queues running in the VMware VM by killing their underlying processes or threads.
 </div>
 </details>
 
 ## Prerequisites
-:::info
-- Ensure that Kubernetes Version > 1.16
+- Kubernetes > 1.16
+- Execution plane is connected to vCenter and the hosts on port 443. 
+- VMware tool is installed on the target VM with remote execution enabled.
+- Adequate vCenter permissions to access the hosts and the VMs.
+- Create a Kubernetes secret that has the Vcenter credentials in the `CHAOS_NAMESPACE`. Below is a sample secret file:
 
-** vCenter Requirements **
-- Ensure the connectivity of execution plane with vCenter and the hosts over 443 port. 
-- Ensure that VMware tool is installed on the target VM with remote execution enabled.
-- Ensure that you have sufficient vCenter permission to access hosts and VMs.
-- Ensure to create a Kubernetes secret having the Vcenter credentials in the `CHAOS_NAMESPACE`. A sample secret file looks like:
 ```yaml
 apiVersion: v1
 kind: Secret
@@ -41,20 +39,18 @@ stringData:
     VCENTERPASS: XXXXXXXXXXXXX
 ```
 
-### NOTE
-You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
-:::
+### Note
+You can pass the VM credentials as secrets or as a `ChaosEngine` environment variable.
 
-
-## Default Validations
-:::info
+## Default validations
+info
 - VM should be in healthy state.
 - The target processes should exist in the VM.
-:::
 
-## Fault Tunables
+
+## Fault tunables
 <details>
-    <summary>Check the Fault Tunables</summary>
+    <summary>Fault tunables</summary>
     <h2>Mandatory Fields</h2>
     <table>
       <tr>
@@ -87,15 +83,17 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
       </tr>
       <tr>
         <td> RAMP_TIME </td>
-        <td> Period to wait before and after injection of chaos in sec </td>
-        <td> Eg. 30 </td>
+        <td> Period to wait before and after injecting chaos (in seconds). </td>
+        <td> For example, 30s. </td>
       </tr>
     </table>
 </details>
 
-## Fault Examples
+        <td> Default value: parallel. Supported: serial, parallel </td>
+## Fault examples
 
-### Common Fault Tunables
+        <td> Default value: parallel. Supported: serial, parallel </td>
+### Common fault tunables
 Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
 ### PROCESS_IDS
@@ -104,9 +102,9 @@ It contains the target process Ids running on a particular VM
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/vmware-process-kill/vmware-process-kill.yaml yaml)
+[embedmd]:# (./static/manifests/VMware-process-kill/VMware-process-kill.yaml yaml)
 ```yaml
-# Process kill in the VMWare VM
+# Process kill in the VMware VM
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -115,7 +113,7 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-    - name: vmware-process-kill
+    - name: VMware-process-kill
       spec:
         components:
           env:

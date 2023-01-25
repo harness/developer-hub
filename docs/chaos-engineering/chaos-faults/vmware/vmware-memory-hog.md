@@ -1,25 +1,23 @@
 ---
-id: vmware-memory-hog
+id: VMware-memory-hog
 title: VMware Memory Hog
 ---
 
 ## Introduction
 - VMware memory hog fault consumes the Memory resources on Linux OS based VMware VM .
-- It helps to check the performance of the application running on the VMWare VMs.
+- It helps to check the performance of the application running on the VMware VMs.
 
-:::tip Fault execution flow chart
-![VMware Memory Hog](./static/images/vmware-memory-hog.png)
-:::
+
+![VMware Memory Hog](./static/images/VMware-memory-hog.png)
+
 
 ## Prerequisites
-:::info
-- Ensure that Kubernetes Version > 1.16
+- Kubernetes > 1.16
+- Execution plane is connected to vCenter and the hosts on port 443. 
+- VMware tool is installed on the target VM with remote execution enabled.
+- Adequate vCenter permissions to access the hosts and the VMs.
+- Create a Kubernetes secret that has the Vcenter credentials in the `CHAOS_NAMESPACE`. Below is a sample secret file:
 
-** vCenter Requirements **
-- Ensure the connectivity of execution plane with vCenter and the hosts over 443 port. 
-- Ensure that VMware tool is installed on the target VM with remote execution enabled.
-- Ensure that you have sufficient vCenter permission to access hosts and VMs.
-- Ensure to create a Kubernetes secret having the Vcenter credentials in the `CHAOS_NAMESPACE`. A sample secret file looks like:
 ```yaml
 apiVersion: v1
 kind: Secret
@@ -33,19 +31,19 @@ stringData:
     VCENTERPASS: XXXXXXXXXXXXX
 ```
 
-### NOTE
-You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
-:::
+### Note
+You can pass the VM credentials as secrets or as a `ChaosEngine` environment variable.
 
 
-## Default Validations
-:::info
+
+## Default validations
+info
 - VM should be in healthy state.
-:::
 
-## Fault Tunables
+
+## Fault tunables
 <details>
-    <summary>Check the Fault Tunables</summary>
+    <summary>Fault tunables</summary>
     <h2>Mandatory Fields</h2>
     <table>
       <tr>
@@ -95,18 +93,21 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
         <td> SEQUENCE </td>
         <td> It defines sequence of chaos execution for multiple instance </td>
         <td> Default value: parallel. Supported: serial, parallel </td>
+        <td> Defaults to parallel. Supports serial sequence as well. </td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
-        <td> Period to wait before and after injection of chaos in sec </td>
-        <td> Eg. 30 </td>
+        <td> Period to wait before and after injecting chaos (in seconds). </td>
+        <td> For example, 30s. </td>
       </tr>
     </table>
 </details>
 
-## Fault Examples
+        <td> Default value: parallel. Supported: serial, parallel </td>
+## Fault examples
 
-### Common Fault Tunables
+        <td> Default value: parallel. Supported: serial, parallel </td>
+### Common fault tunables
 Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
 ### MEMORY_CONSUMPTION_MEBIBYTES
@@ -114,9 +115,9 @@ It stresses the MEMORY_CONSUMPTION MB memory of the targeted VM for the TOTAL_CH
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/vmware-memory-hog/vm-memory-hog-memoryconsumption.yaml yaml)
+[embedmd]:# (./static/manifests/VMware-memory-hog/vm-memory-hog-memoryconsumption.yaml yaml)
 ```yaml
-# Memory hog in the VMWare VM
+# Memory hog in the VMware VM
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -125,7 +126,7 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-    - name: vmware-memory-hog
+    - name: VMware-memory-hog
       spec:
         components:
           env:
@@ -141,9 +142,9 @@ The worker's count for the stress can be tuned with NUMBER_OF_WORKERS ENV.
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/vmware-memory-hog/vm-memory-hog-worker.yaml yaml)
+[embedmd]:# (./static/manifests/VMware-memory-hog/vm-memory-hog-worker.yaml yaml)
 ```yaml
-# Memory hog in the VMWare VM
+# Memory hog in the VMware VM
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -152,7 +153,7 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-    - name: vmware-memory-hog
+    - name: VMware-memory-hog
       spec:
         components:
           env:

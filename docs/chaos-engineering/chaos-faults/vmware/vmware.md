@@ -1,5 +1,5 @@
 ---
-id: vmware
+id: VMware
 title: Chaos Faults for VMware
 ---
 
@@ -11,19 +11,19 @@ import { experiments } from "./experiments"
 
 <!-- Heading Description -->
 
-VMware faults disrupt the resources running on a VMware cluster. They can be categorized into Pod-level faults and Node-level faults.
+VMware faults disrupt the resources running on a VMware cluster. 
 
 <!-- Experiment List and Search Bar (every experimen  t added below, need to be added in this file also) -->
 
 <ExperimentListSection experiments={experiments} />
 
-## Faults Introduction
+## Introduction
 
 Learn intelligent software delivery skills with step-by-step tutorials, interactive labs, videos and reference docs.
 
 <!-- Code for Fault Card starts from here -->
 
-<FaultDetailsCard category="vmware">
+<FaultDetailsCard category="VMware">
 
 <!-- please specify category in above tag to generate correct experiment icons and links by itself, if links are broken please contact @Sahil, that's me -->
 

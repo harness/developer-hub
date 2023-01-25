@@ -1,5 +1,5 @@
 ---
-id: vmware-http-reset-peer
+id: VMware-http-reset-peer
 title: VMware HTTP Reset Peer
 ---
 
@@ -8,17 +8,17 @@ title: VMware HTTP Reset Peer
 - It injects HTTP reset on the service whose port is provided as `TARGET_SERVICE_PORT`. It stops outgoing HTTP requests by resetting the TCP connection for the requests.
 - It tests the application's resilience to lossy or flaky HTTP connection.
 
-:::tip Fault execution flow chart
-![VMware HTTP Reset Peer](./static/images/vmware-http-reset-peer.png)
-:::
+
+![VMware HTTP Reset Peer](./static/images/VMware-http-reset-peer.png)
+
 
 ## Prerequisites
 
-:::info
+info
 
 - Kubernetes >= 1.17
 - Vcenter access to stop and start the VM.
-- Kubernetes secret that has the Vcenter credentials in the `CHAOS_NAMESPACE`. A sample secret file looks like:
+- Kubernetes secret that has the Vcenter credentials in the `CHAOS_NAMESPACE`. Below is a sample secret file:
 
 ```yaml
 apiVersion: v1
@@ -33,23 +33,22 @@ stringData:
     VCENTERPASS: XXXXXXXXXXXXX
 ```
 
-### NOTE
+### Note
+You can pass the VM credentials as secrets or as a `ChaosEngine` environment variable.
 
-You can pass the VM credentials as a secret or as a chaosengine environment variable.
-:::
 
-## Default Validations
+## Default validations
 
-:::info
+info
 
 - The VM should be in a healthy state.
 
-:::
 
-## Fault Tunables
+
+## Fault tunables
 
 <details>
-    <summary>Check the Fault Tunables</summary>
+    <summary>Fault tunables</summary>
     <h2>Mandatory Fields</h2>
     <table>
         <tr>
@@ -106,7 +105,9 @@ You can pass the VM credentials as a secret or as a chaosengine environment vari
             <td> Its default value is 'parallel', and it supports 'serial' value too. </td>
         </tr>
         <tr>
-            <td> RAMP_TIME </td>
+            <td> <td> RAMP_TIME </td>
+        <td> Period to wait before and after injecting chaos (in seconds). </td>
+        <td> For example, 30s. </td>ME </td>
             <td> Period to wait before and after injection of chaos (in seconds). </td>
             <td> For example: 30. </td>
         </tr>
@@ -133,9 +134,11 @@ You can pass the VM credentials as a secret or as a chaosengine environment vari
     </table>
 </details>
 
-## Fault Examples
+        <td> Default value: parallel. Supported: serial, parallel </td>
+## Fault examples
 
-### Common Fault Tunables
+        <td> Default value: parallel. Supported: serial, parallel </td>
+### Common fault tunables
 
 Refer to the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
@@ -156,7 +159,7 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: vmware-http-reset-peer
+  - name: VMware-http-reset-peer
     spec:
       components:
         env:
@@ -182,7 +185,7 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: vmware-http-reset-peer
+  - name: VMware-http-reset-peer
     spec:
       components:
         env:
@@ -211,7 +214,7 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: vmware-http-reset-peer
+  - name: VMware-http-reset-peer
     spec:
       components:
         env:
@@ -241,7 +244,7 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: vmware-http-reset-peer
+  - name: VMware-http-reset-peer
     spec:
       components:
         env:
@@ -272,7 +275,7 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: vmware-http-reset-peer
+  - name: VMware-http-reset-peer
     spec:
       components:
         env:

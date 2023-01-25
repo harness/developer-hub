@@ -1,19 +1,19 @@
 ---
-id: vmware-network-loss
+id: VMware-network-loss
 title: VMware Network Loss
 ---
 
 ## Introduction
 - It injects network packet loss from the VMware VM(s) into the application (or service) and results in flaky access. 
-- It checks the performance of the application (or process) running on the VMWare VM(s).
+- It checks the performance of the application (or process) running on the VMware VM(s).
 
-:::tip Fault execution flow chart
-![VMware Network Loss](./static/images/vmware-network-chaos.png)
-:::
 
-## Uses
+![VMware Network Loss](./static/images/VMware-network-chaos.png)
+
+
+## Usage
 <details>
-<summary>View the uses of the fault</summary>
+<summary>View fault usage</summary>
 <div>
 
 The fault results in network degradation without the VM being marked unhealthy (or unworthy) of traffic. The goal of this fault is to simulate issues within your VM network or microservice communication across services in different hosts etc.
@@ -27,10 +27,10 @@ The VM may stall or get corrupted while it waits endlessly for a packet. The fau
 </details>
 
 ## Prerequisites
-:::info
+
 - Kubernetes > 1.16 
 - Vcenter access to stop and start the VM.
-- Kubernetes secret that has Vcenter credentials in the `CHAOS_NAMESPACE`. A sample secret file looks like:
+- Kubernetes secret that has Vcenter credentials in the `CHAOS_NAMESPACE`. Below is a sample secret file:
 ```yaml
 apiVersion: v1
 kind: Secret
@@ -44,19 +44,17 @@ stringData:
     VCENTERPASS: XXXXXXXXXXXXX
 ```
 
-### NOTE
-You can pass the VM credentials as a secret or as a chaosengine environment variable.
-:::
+### Note
+You can pass the VM credentials as secrets or as a `ChaosEngine` environment variable.
 
-
-## Default Validations
-:::info
+## Default validations
+info
 - The VM should be in a healthy state before and after chaos.
-:::
 
-## Fault Tunables
+
+## Fault tunables
 <details>
-    <summary>Check the Fault Tunables</summary>
+    <summary>Fault tunables</summary>
     <h2>Mandatory Fields</h2>
     <table>
       <tr>
@@ -118,7 +116,9 @@ You can pass the VM credentials as a secret or as a chaosengine environment vari
         <td> Its default value is 'parallel', and supports 'serial' value too. </td>
       </tr>
       <tr>
-        <td> RAMP_TIME </td>
+        <td> <td> RAMP_TIME </td>
+        <td> Period to wait before and after injecting chaos (in seconds). </td>
+        <td> For example, 30s. </td>ME </td>
         <td> Period to wait before and after injection of chaos (in seconds). </td>
         <td> For example, 30s.</td>
       </tr>
@@ -153,9 +153,11 @@ You can pass the VM credentials as a secret or as a chaosengine environment vari
      </table>
 </details>
 
-## Fault Examples
+        <td> Default value: parallel. Supported: serial, parallel </td>
+## Fault examples
 
-### Common Fault Tunables
+        <td> Default value: parallel. Supported: serial, parallel </td>
+### Common fault tunables
 Refer to the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
 ### Network Packet Loss
@@ -164,17 +166,17 @@ It defines the network packet loss percentage that is injected to the VM. You ca
 
 Use the following example to tune it:
 
-[embedmd]:# (./static/manifests/vmware-network-loss/network-packet-loss-percentage.yaml yaml)
+[embedmd]:# (./static/manifests/VMware-network-loss/network-packet-loss-percentage.yaml yaml)
 ```yaml
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
-  name: vmware-engine
+  name: VMware-engine
 spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: vmware-network-loss
+  - name: VMware-network-loss
     spec:
       components:
         env:
@@ -198,18 +200,18 @@ The network faults interrupt traffic for all the IPs/hosts by default. You can t
 
 Use the following example to tune it:
 
-[embedmd]:# (./static/manifests/vmware-network-loss/destination-host-and-ip.yaml yaml)
+[embedmd]:# (./static/manifests/VMware-network-loss/destination-host-and-ip.yaml yaml)
 ```yaml
 ## it injects the chaos for the egress traffic for specific ips/hosts
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
-  name: vmware-engine
+  name: VMware-engine
 spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: vmware-network-loss
+  - name: VMware-network-loss
     spec:
       components:
         env:
@@ -233,18 +235,18 @@ The name of the ethernet interface that shapes the traffic. You can tune it usin
 
 Use the following example to tune it:
 
-[embedmd]:# (./static/manifests/vmware-network-loss/network-interface.yaml yaml)
+[embedmd]:# (./static/manifests/VMware-network-loss/network-interface.yaml yaml)
 ```yaml
 ## it injects the chaos for the egress traffic for specific ips/hosts
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
-  name: vmware-engine
+  name: VMware-engine
 spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: vmware-network-loss
+  - name: VMware-network-loss
     spec:
       components:
         env:
