@@ -2,8 +2,7 @@
 id: gcp-vm-disk-loss-by-label
 title: GCP VM disk loss by label
 ---
-GCP VM disk loss by label
-- It causes chaos to disrupt the state of GCP persistent disk volume filtered using a label by detaching it from its VM instance for a certain chaos duration.
+GCP VM disk loss by label disrupts the state of GCP persistent disk volume filtered using a label by detaching it from its VM instance for a specific duration.
 
 ![GCP VM Disk Loss By Label](./static/images/gcp-vm-disk-loss.png)
 
@@ -17,9 +16,9 @@ Coming soon.
 
 ## Prerequisites
 - Kubernetes > 1.16.
-- Ensure that your service account has an editor access or owner access for the GCP project.
-- Ensure that the target disk volume is not a boot disk of any VM instance.
-- Ensure to create a Kubernetes secret having the GCP service account credentials in the default namespace. Below is a sample secret file:
+- Service account should have editor access (or owner access) to the GCP project.
+- Target disk volume should not be a boot disk of any VM instance.
+- Kubernetes secret that has the GCP service account credentials in the default namespace. Below is a sample secret file:
 ```yaml
 apiVersion: v1
 kind: Secret
@@ -40,11 +39,11 @@ stringData:
 ```
 
 ## Default validations
-- All the disk volumes having the target label are attached to their respective instances.
+- All the disk volumes that have the target label are attached to their respective instances.
 
 ## Fault tunables
 <details>
-    <summary>Check the Fault Tunables</summary>
+    <summary>Fault tunables</summary>
     <h2>Mandatory Fields</h2>
     <table>
       <tr>
@@ -54,18 +53,18 @@ stringData:
       </tr>
       <tr>
         <td> GCP_PROJECT_ID </td>
-        <td> The ID of the GCP Project of which the disk volumes are a part of </td>
-        <td> All the target disk volumes should belong to a single GCP Project </td>
+        <td> The ID of the GCP project, of which the disk volumes are a part. </td>
+        <td> All the target disk volumes should belong to a single GCP project. </td>
       </tr>
       <tr>
         <td> DISK_VOLUME_LABEL </td>
-        <td>Label of the targeted non-boot persistent disk volume</td>
-        <td> The <code>DISK_VOLUME_LABEL</code> should be provided as <code>key:value</code> or <code>key</code> if the corresponding value is empty ex: <code>disk:target-disk</code> </td>
+        <td>Label of the target non-boot persistent disk volume. </td>
+        <td> This value is provided as a <code>key:value</code> pair or as a <code>key</code> if the corresponding value is empty. For example, <code>disk:target-disk</code>. </td>
       </tr>
       <tr>
         <td> ZONES </td>
-        <td> The zone of target disk volumes </td>
-        <td> Only one zone can be provided i.e. all target disks should lie in the same zone </td>
+        <td> The zone of the target disk volumes. </td>
+        <td> Only one zone is provided, which indicates that all target disks reside in the same zone. </td>
       </tr>
     </table>
     <h2>Optional Fields</h2>
@@ -77,28 +76,28 @@ stringData:
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The total time duration for chaos insertion (sec) </td>
-        <td> Defaults to 30s </td>
+        <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
+        <td> Defaults to 30s. </td>
       </tr>
        <tr>
         <td> CHAOS_INTERVAL </td>
-        <td> The interval (in sec) between the successive chaos iterations (sec) </td>
-        <td> Defaults to 30s </td>
+        <td> Time interval between two successive chaos iterations (in seconds). </td>
+        <td> Defaults to 30s. </td>
       </tr>
       <tr>
         <td> DISK_AFFECTED_PERC </td>
-        <td> The percentage of total disks filtered using the label to target </td>
-        <td> Defaults to 0 (corresponds to 1 disk), provide numeric value only </td>
+        <td> Percentage of total disks that are filtered using the target label (specify numeric values only. </td>
+        <td> Defaults to 0 (that corresponds to 1 disk). </td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
-        <td> It defines sequence of chaos execution for multiple disks </td>
-        <td> Default value: parallel. Supported: serial, parallel </td>
+        <td> Sequence of chaos execution for multiple target disks. </td>
+        <td> Defaults to parallel. It supports serial sequence as well. </td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
-        <td> Period to wait before and after injection of chaos in sec </td>
-        <td> Eg. 30 </td>
+        <td> Period to wait before and after injecting chaos (in seconds).</td>
+        <td> For example, 30s. </td>
       </tr>
     </table>
 </details>
@@ -106,15 +105,15 @@ stringData:
 ## Fault examples
 
 ### Common fault tunables
-Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
+Refer to the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
 ### Detach volumes by label
 
-It contains the label of disk volumes to be subjected to disk loss chaos. It will detach all the disks with the label `DISK_VOLUME_LABEL` in zone `ZONES` within the `GCP_PROJECT_ID` project.  It re-attaches the disk volume after waiting for the specified `TOTAL_CHAOS_DURATION` duration.
+It contains the label of disk volumes that are subject to disk loss. It detaches all the disks with the `DISK_VOLUME_LABEL` label in the `ZONES` zone within the `GCP_PROJECT_ID` project. It re-attaches the disk volume after waiting for the duration specified by `TOTAL_CHAOS_DURATION` environment variable.
 
-`NOTE:` The `DISK_VOLUME_LABEL` accepts only one label and `ZONES` also accepts only one zone name. Therefore, all the disks must lie in the same zone.
+`NOTE:` The `DISK_VOLUME_LABEL` accepts only one label and `ZONES` accepts only one zone name. Therefore, all the disks must reside in the same zone.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/gcp-vm-disk-loss-by-label/gcp-disk-loss.yaml yaml)
 ```yaml

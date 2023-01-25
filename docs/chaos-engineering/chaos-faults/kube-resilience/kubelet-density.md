@@ -1,18 +1,13 @@
 ---
 id: kubelet-density
-title: Kubelet Density
+title: Kubelet density
 ---
+Kubelet density determines the resilience of the kubelet by creating pods on a specific node. It helps determine how resilient an application is to the unplanned scaling of K8s pods.
+It also helps determine the performance of the kubelet for a specific node.
 
-## Introduction
-
-- It checks the resilience of the kubelet by creating pods on the specified node.
-- It helps to check the performance of the kubelet for the specified node
-
-:::tip Fault execution flow chart
 ![Kubelet Density](./static/images/kubelet-density.png)
-:::
 
-## Uses
+## Usage
 
 <details>
 <summary>View the uses of the fault</summary>
@@ -23,24 +18,16 @@ Coming soon.
 
 ## Prerequisites
 
-:::info
+- Kubernetes > 1.16.
 
-- Ensure that Kubernetes Version > 1.16.
+## Default validations
 
-:::
-
-## Default Validations
-
-:::info
-
-- The target nodes should be in healthy state before and after chaos injection.
-
-:::
+- The target nodes should be in a healthy state before and after injecting chaos.
 
 ## Fault Tunables
 
 <details>
-    <summary>Check the Fault Tunables</summary>
+    <summary>Fault tunables</summary>
     <h2>Mandatory Fields</h2>
     <table>
       <tr>
@@ -50,8 +37,8 @@ Coming soon.
       </tr>
       <tr>
         <td> TARGET_NODE </td>
-        <td> name of the target node</td>
-        <td> it selects a random target node, if this env is not set</td>
+        <td> Name of the target node. </td>
+        <td> If this environment variable isn't set, a random target node is selected. </td>
       </tr>
     </table>
     <h2>Optional Fields</h2>
@@ -63,33 +50,33 @@ Coming soon.
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The total time duration for chaos insertion (sec) </td>
-        <td> Defaults to 90s </td>
+        <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
+        <td> Defaults to 90s. </td>
       </tr>
       <tr>
         <td> POD_COUNT </td>
-        <td> total number of pods, which needs to be created during chaos</td>
-        <td> Defaults to 50 </td>
+        <td> Total number of pods that are created during chaos. </td>
+        <td> Defaults to 50. </td>
       </tr>
       <tr>
         <td> TARGET_NAMESPACE </td>
-        <td> namespace where pods needs to be created</td>
-        <td> Defaults to same as CHAOS_NAMESPACE </td>
+        <td> Namespace where the pods are created. </td>
+        <td> Defaults to the namespace specified in <code>CHAOS_NAMESPACE</code>. </td>
       </tr>
       <tr>
         <td> POD_TEMPLATE_CM </td>
-        <td> name of the config map, which contains pod template</td>
+        <td> Name of the config map that contains the pod template. </td>
         <td> </td>
       </tr>
       <tr>
         <td> POD_TEMPLATE_PATH </td>
-        <td> path where pod-template configMap is mounted</td>
-        <td> Default to <code>/templates/pod.yml</code> </td>
+        <td> Path to the pod template configMap mount. </td>
+        <td> Defaults to <code>/templates/pod.yml</code> </td>
       </tr>
       <tr>
         <td> POD_SELECTOR </td>
-        <td> label selectors of the pods</td>
-        <td> Defaults to <code>&#123;name: kubelet-density-app&#125;</code> </td>
+        <td> Labels of destination pods.</td>
+        <td> Defaults to <code>&#123;name: kubelet-density-app&#125;</code>. </td>
       </tr>
       <tr>
         <td> POD_IMAGE </td>
@@ -98,24 +85,23 @@ Coming soon.
       </tr>
       <tr>
         <td> RAMP_TIME </td>
-        <td> Period to wait before and after injection of chaos in sec </td>
-        <td> Eg. 30 </td>
+        <td> Period to wait before and after injecting chaos (in seconds). </td>
+        <td> For example, 30s </td>
       </tr>
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common Fault Tunables
+### Common fault tunables
 
-Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
+Refer to the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
-### Pod Template provided as CM
+### Pod template provided as CM
 
-Experiment creates pods on the target node during chaos. Template of the pod can be provided by mounting pod-template via configmap and
-pass its name and mountPath via `POD_TEMPLATE_CM` and `POD_TEMPLATE_PATH` ENV respectively.
+A chaos experiment creates pods on the target node during execution. The template for the pod is provided by mounting the pod-template using the configmap and passing the name and mountPath of the pod using the `POD_TEMPLATE_CM` and `POD_TEMPLATE_PATH` environment variables, respectively.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]: # "./static/manifests/kubelet-density/pod-template.yaml yaml"
 
@@ -144,11 +130,11 @@ spec:
               value: "node1"
 ```
 
-### Pod Count
+### Pod count
 
-It contains the number of the pods, which should be created on the target node. It can be tuned via `POD_COUNT` ENV.
+It specifies the number of the pods that will be created on the target node. You can tune it using the `POD_COUNT` environment variable.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]: # "./static/manifests/kubelet-density/pod-count.yaml yaml"
 
@@ -174,11 +160,11 @@ spec:
               value: "node1"
 ```
 
-### Target Namespace
+### Target namespace
 
-It contains the namespace where pods need to be created. It can be tuned via `TARGET_NAMESPACE` ENV.
+It specifies the namespace where the pods are created. You can tune it using the `TARGET_NAMESPACE` environment variable.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]: # "./static/manifests/kubelet-density/target-namespace.yaml yaml"
 
@@ -204,11 +190,11 @@ spec:
               value: "node1"
 ```
 
-### Pod Image and Pod Selectors
+### Pod image and pod selectors
 
-Pod image and label selectors can be tuned via `POD_IMAGE` and `POD_SELECTOR` ENV respectively.
+You can tune pod image and label selectors using the `POD_IMAGE` and `POD_SELECTOR` environment variables, respectively.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]: # "./static/manifests/kubelet-density/pod-image-and-selectors.yaml yaml"
 

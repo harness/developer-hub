@@ -5,7 +5,7 @@ Experiment tunables are common to all the experiments and these tunables are pro
 
 ### Duration of the Chaos
 
-It defines the total duration of the chaos injection. You can tune it using the `TOTAL_CHAOS_DURATION` environment variable. The unit of measurement is seconds.
+It defines the duration through which chaos is injected into the target resource (in seconds). You can tune it using the `TOTAL_CHAOS_DURATION` environment variable.
 
 Use the following example to tune it:
 

@@ -3,25 +3,25 @@ import { ExperimentDetails } from "@site/src/components/ChaosEngineering/Experim
 export const experiments: ExperimentDetails[] = [
   {
     name: "GCP VM disk loss by label",
-    description: "This is a description of experiment 1",
+    description: "It disrupts the state of GCP persistent disk volume filtered using a label by detaching the disk volume from its VM instance for a specific duration.",
     tags: ["gcp", "disk loss", "label"],
     category: "gcp",
   },
   {
     name: "GCP VM disk loss",
-    description: "This is a description of experiment 1",
+    description: "It disrupts the state of GCP persistent disk volume by detaching the disk volume from its VM instance using the disk name for a specific duration.",
     tags: ["gcp", "disk loss"],
     category: "gcp",
   },
   {
     name: "GCP VM instance stop by label",
-    description: "This is a description of experiment 1",
+    description: "It powers off a GCP VM instances (that are filtered by a label) for a specific duration.",
     tags: ["gcp", "instance stop", "label"],
     category: "gcp",
   },
   {
     name: "GCP VM instance stop",
-    description: "This is a description of experiment 1",
+    description: "It powers off a GCP VM instance based on the instance name (or list of instance names) for a specific duration.",
     tags: ["gcp", "instance stop"],
     category: "gcp",
   },
