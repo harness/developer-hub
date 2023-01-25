@@ -100,7 +100,7 @@ https://harness-1.wistia.com/medias/rpv5vwzpxz-->
 
 * Ensure your Kubernetes cluster meets the build infrastructure requirements in [CI Cluster Requirement](../../../platform/7_Connectors/ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md#harness-ci-cluster-requirements).
 * For Harness-specific permission requirements, see [permission required](../../../platform/7_Connectors/ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md#permissions-required) for CI.
-* Install the Harness Kubernetes Delegate on the same cluster you use as your build infrastructure. Make sure that the cluster has enough memory and CPU for the Delegate you are installing.Harness Kubernetes Delegates can be in a different [namespace](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) than the one you provide while defining the build farm infrastructure for the CI Pipeline.
+* Install the Harness Kubernetes Delegate on the same cluster you use as your build infrastructure. Make sure that the cluster has enough memory and CPU for the Delegate you are installing. Harness Kubernetes Delegates can be in a different [namespace](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) than the one you provide while defining the build farm infrastructure for the CI Pipeline.
 
 To create a new Kubernetes cluster, see:
 
