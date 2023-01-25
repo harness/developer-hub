@@ -36,7 +36,8 @@ STO supports the following `policy_type` settings for Aqua-Trivy:
 The following settings are also required, depending on the container type:
 + if `container_type` = `docker_v2`
 	- `container_access_id`: Username
-	- `container_access_token`: Password/Tokenif `container_type` = `aws_ecr`
+	- `container_access_token`: Password/Token
++ if `container_type` = `aws_ecr`
 	- `container_access_id`: Username
 	- `container_access_token`: Password/Token
 	- `container_region`: Image registry AWS region

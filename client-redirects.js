@@ -180,6 +180,24 @@ module.exports = {
          to: "/docs/platform/Delegates/secure-delegates/trust-store-override-for-delegates",
        },  
 
+    // Created by kat-enos on Jan 22, 2023
+       {
+         from: "/docs/platform/Delegates/delegate-reference/example-kubernetes-manifest-harness-delegate",
+         to: "/docs/platform/Delegates/delegate-reference/YAML/example-kubernetes-manifest-harness-delegate",
+       },  
+
+    // Created by kat-enos on Jan 22, 2023
+       {
+        from: "/docs/platform/Delegates/delegate-reference/example-harness-delegate-yaml",
+        to: "/docs/platform/Delegates/delegate-reference/YAML/example-harness-delegate-yaml",
+       },
+
+
+    // Created by kat-enos on Jan 22, 2023
+    {
+      from: "/docs/platform/Delegates/delegate-reference/sample-create-a-permanent-volume-nfs-server",
+      to: "/docs/platform/Delegates/delegate-reference/YAML/sample-create-a-permanent-volume-nfs-server",
+     },
   ],
 };
 

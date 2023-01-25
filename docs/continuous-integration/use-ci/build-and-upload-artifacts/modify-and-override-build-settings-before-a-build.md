@@ -37,7 +37,7 @@ In this example, we create a new **Text Secret** named: **settingsXML**.
 
 ### Step 2: Run the Referenced Secrets
 
-Both text and file secrets are always referenced using their Id, not their name.In this step, you create a new **settings.xml** file in the Harness working directory and assign the values of your Text Secret to **settings.xml**.
+Both text and file secrets are always referenced using their Id, not their name. In this step, you create a new **settings.xml** file in the Harness working directory and assign the values of your Text Secret to **settings.xml**.
 
 Once the **settings.xml** file is created in the Harness working directory, Maven can read your Secret from this file.
 

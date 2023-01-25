@@ -1,5 +1,5 @@
 ---
-title: Sample - Create a permanent volume - NFS server
+title: Sample permanent volume - NFS server
 description: This Kubernetes manifest creates a permanent volume for NFS. 
 # sidebar_position: 2
 helpdocs_topic_id: 3onmos2n3v

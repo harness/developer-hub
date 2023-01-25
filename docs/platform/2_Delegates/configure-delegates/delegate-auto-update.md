@@ -10,6 +10,8 @@ helpdocs_is_published: true
 
 Harness Delegate is installed with automatic updates enabled. Harness recommends that you accept automatic updates to the delegate image. 
 
+Delegate updates do not affect pipelines. Before an update is made, the delegate finishes the tasks that are underway. The delegate then gracefully shuts down. 
+
 If you prefer to disable auto-update, use one of the following options:
 
 * Modify the delegate YAML to prevent installation of the auto-update component.
@@ -36,5 +38,5 @@ Harness does not recommend the use of delegate images that are not current. Howe
 1. Replace **delegate name** with the name you gave your delegate. The Harness Delegate image is the latest release image by default.
 2. Replace **account id** with your Harness account ID.
 
-For an example of a complete Delegate YAML file, see [Example Kubernetes Manifest: Harness Delegate](/docs/platform/2_Delegates/delegate-reference/example-kubernetes-manifest-harness-delegate.md).
+For an example of a complete Delegate YAML file, see [Example Kubernetes Manifest: Harness Delegate](/docs/platform/2_Delegates/delegate-reference/YAML/example-kubernetes-manifest-harness-delegate.md).
 

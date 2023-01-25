@@ -30,11 +30,11 @@ See [Install Software on the Delegate with Initialization Scripts](../../../pla
 
 ```bash
 # Install TF  
-microdnf install -y unzip  
-curl -O -L  https://releases.hashicorp.com/terraform/0.12.25/terraform_0.12.25_linux_amd64.zip  
-unzip terraform_0.12.25_linux_amd64.zip  
-mv ./terraform /usr/bin/  
-# Check TF install  
+microdnf install unzip
+curl -O -L https://releases.hashicorp.com/terraform/1.3.5/terraform_1.3.5_darwin_amd64.zip
+unzip terraform_1.3.5_darwin_amd64.zip
+mv ./terraform /usr/bin/
+# Check TF install
 terraform --version
 ```
 

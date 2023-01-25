@@ -695,29 +695,74 @@ There are two sections in the Delegate YAML that you must update.
 
 First, update the `ClusterRoleBinding` by adding replacing the subject name `default` with the name of the service account with the attached IAM role.
 
+Old `ClusterRoleBinding`:
 
+```
+---  
+apiVersion: rbac.authorization.k8s.io/v1beta1  
+kind: ClusterRoleBinding  
+metadata:  
+  name: harness-delegate-cluster-admin  
+subjects:  
+  - kind: ServiceAccount  
+    name: default  
+    namespace: harness-delegate-ng 
+roleRef:  
+  kind: ClusterRole  
+  name: cluster-admin  
+  apiGroup: rbac.authorization.k8s.io  
+---
+```
 
-|  |  |
-| --- | --- |
-| Old `ClusterRoleBinding`: | New `ClusterRoleBinding` (for example, using the name `iamserviceaccount`): |
-| --- <br/> apiVersion: rbac.authorization.k8s.io/v1beta1 <br/> kind: ClusterRoleBinding <br/>metadata:  <br/> &nbsp;name: harness-delegate-cluster-admin <br/>subjects:  <br/> &nbsp;- kind: ServiceAccount    <br/>name: default    <br/>namespace: harness-delegate-ng <br/>roleRef: <br/> &nbsp; kind: ClusterRole  <br/>name: cluster-admin  <br/>apiGroup: rbac.authorization.k8s.io <br/>--- | ---<br/>apiVersion: rbac.authorization.k8s.io/v1beta1 <br/>kind: ClusterRoleBinding <br/>metadata:  <br/>&nbsp;name: harness-delegate-cluster-admin <br/>subjects:  - kind: ServiceAccount    <br/>name: iamserviceaccount   <br/> namespace: harness-delegate-ng<br/>roleRef:  <br/>kind: ClusterRole  <br/>name: cluster-admin  <br/>apiGroup: rbac.authorization.k8s.io <br/>---|
+New `ClusterRoleBinding` (for example, using the name `iamserviceaccount`):
+
+```
+---  
+apiVersion: rbac.authorization.k8s.io/v1beta1  
+kind: ClusterRoleBinding  
+metadata:  
+  name: harness-delegate-cluster-admin  
+subjects:  
+  - kind: ServiceAccount  
+    name: iamserviceaccount
+    namespace: harness-delegate-ng
+roleRef:  
+  kind: ClusterRole  
+  name: cluster-admin  
+  apiGroup: rbac.authorization.k8s.io  
+---
+```
 
 Next, update StatefulSet spec with the new `serviceAccountName`.
 
+Old StatefulSet spec `serviceAccountName`:
 
+```
+...  
+    spec:  
+      containers:  
+      - image: harness/delegate:latest  
+        imagePullPolicy: Always  
+        name: harness-delegate-instance  
+        ports:  
+          - containerPort: 8080  
+...
+```
 
-|  |  |
-| --- | --- |
-| Old StatefulSet spec `serviceAccountName`: | New StatefulSet spec serviceAccountName (for example, using the name `iamserviceaccount`): |
-| 
+New StatefulSet spec serviceAccountName (for example, using the name `iamserviceaccount`):
+
 ```
-...    spec:      containers:      - image: harness/delegate:latest        imagePullPolicy: Always        name: harness-delegate-instance        ports:          - containerPort: 8080...
+...  
+    spec:  
+      serviceAccountName: iamserviceaccount
+      containers:  
+      - image: harness/delegate:latest  
+        imagePullPolicy: Always  
+        name: harness-delegate-instance  
+        ports:  
+          - containerPort: 8080  
+...
 ```
- | 
-```
-...    spec:      serviceAccountName: iamserviceaccount      containers:      - image: harness/delegate:latest        imagePullPolicy: Always        name: harness-delegate-instance        ports:          - containerPort: 8080...
-```
- |
 
 Save the Delegate YAML file.
 

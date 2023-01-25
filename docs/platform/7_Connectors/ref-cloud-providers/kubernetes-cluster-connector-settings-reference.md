@@ -20,6 +20,10 @@ Looking for the How-to? See [Add a Kubernetes Cluster Connector](../add-a-kubern
 
 Here's a 10min video that walks you through adding a Harness Kubernetes Cluster Connector and Harness Kubernetes Delegate. The Delegate is added to the target cluster and then the Kubernetes Cluster Connector uses the Delegate to connect to the cluster:
 
+<!-- Video:
+https://www.youtube.com/watch?v=wUC23lmqfnY-->
+<docvideo src="https://www.youtube.com/watch?v=wUC23lmqfnY" />
+
 ### Kubernetes Cluster Connector vs Platform Connectors
 
 The Kubernetes Cluster Connector is platform-agnostic. Use it to access a cluster on any platform.

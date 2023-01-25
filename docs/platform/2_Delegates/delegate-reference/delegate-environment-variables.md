@@ -8,6 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+
 The following environment variables are available for use in the delegate manifest. Some of these variables are included in the YAML by default; you can specify others based on use case.
 
 ### ACCOUNT_ID
@@ -199,6 +200,15 @@ The Java Runtime Environment (JRE) version that the delegate uses.
 ```
 - name: JRE_VERSION
   value: 1.8.0_242
+```
+
+### LOG_STREAMING_SERVICE_URL
+
+Use this variable to specify the endpoint for your log service in Harness NextGen. This variable is not used in Harness FirstGen.
+
+```
+- name: LOG_STREAMING_SERVICE_URL
+  value: "YOUR_MANAGER_ENDPOINT/log-service/"
 ```
 
 

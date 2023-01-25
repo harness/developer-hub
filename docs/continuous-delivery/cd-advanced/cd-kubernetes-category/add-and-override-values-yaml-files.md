@@ -130,6 +130,7 @@ We'll cover this option below.
 10. In **Git Fetch Type**, select a branch or commit Id for the manifest, and then enter the Id or branch.
 11.  For **Specific Commit ID**, you can also use a [Git commit tag](https://git-scm.com/book/en/v2/Git-Basics-Tagging).
 12. In **File Path**, enter the path to the values.yaml file in the repo.
+
     
     You can enter multiple values file paths by clicking **Add File**. At runtime, Harness will compile the files into one values file.
     
