@@ -68,11 +68,6 @@ stringData:
         <td> The zone of the target disk volumes. </td>
         <td> Only one zone is provided, which indicates that all target disks should reside in the same zone. </td>
       </tr>
-      <tr>
-        <td> DEVICE_NAMES </td>
-        <td> The device names of respective target disk volumes </td>
-        <td> Provide the device name for every target disk name as deviceName1,deviceName2... and so on, in the same order as <code>DISK_VOLUME_NAMES</code>. </td>
-      </tr> 
     </table>
     <h2>Optional Fields</h2>
     <table>
@@ -111,7 +106,7 @@ Refer to the [common attributes](../common-tunables-for-all-faults) to tune the 
 
 ### Detach volumes by names
 
-It contains a comma-separated list of volume names that are subject to disk loss. This fault detaches all the disks with the given `DISK_VOLUME_NAMES` disk names in the `ZONES` zone and the `DEVICE_NAMES` device names in the `GCP_PROJECT_ID` project. It re-attaches the disk volume after waiting for the duration specified by `TOTAL_CHAOS_DURATION` environment variable.
+It contains a comma-separated list of volume names that are subject to disk loss. This fault detaches all the disks with the given `DISK_VOLUME_NAMES` disk names in the `ZONES` zone in the `GCP_PROJECT_ID` project. It re-attaches the disk volume after waiting for the duration specified by `TOTAL_CHAOS_DURATION` environment variable.
 
 `NOTE:` `DISK_VOLUME_NAMES` environment variable contains multiple comma-separated disk names. The comma-separated zone names should be provided in the same order as disk names.
 

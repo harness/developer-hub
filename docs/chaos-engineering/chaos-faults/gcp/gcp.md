@@ -3,9 +3,6 @@ id: gcp
 title: Chaos faults for GCP
 ---
 
-GCP faults disrupt the resources that run on a GCP cluster. Different faults disrupt various aspects of the GCP cluster, based on which GCP faults are categorized into different types.
-Fault execution is triggered when the chaosengine resource is created. Chaosengines are embedded within the steps of a chaos fault, but you can also create the chaosengine manually, and the chaos operator reconciles this resource and triggers the fault execution.
-
 <!-- Import statement for Custom Components -->
 
 import FaultDetailsCard from "@site/src/components/ChaosEngineering/FaultDetailsCard";
@@ -18,6 +15,10 @@ import { experiments } from "./experiments"
 
 <ExperimentListSection experiments={experiments} />
 
+## Introduction
+
+GCP faults disrupt the resources that run on a GCP cluster. Different faults disrupt various aspects of the GCP cluster, based on which GCP faults are categorized into different types.
+Fault execution is triggered when the chaosengine resource is created. Chaosengines are embedded within the steps of a chaos fault, but you can also create the chaosengine manually, and the chaos operator reconciles this resource and triggers the fault execution.
 
 <!-- Code for Fault Card starts from here -->
 

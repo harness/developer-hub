@@ -14,7 +14,9 @@ title: Kubelet density
 <summary>View the uses of the fault</summary>
 <div>
 This fault helps determine how resilient an application is to the unplanned scaling of K8s pods.
-</div>
+In distributed systems like Kube resilience, application replicas may not be sufficient to manage the traffic (indicated by SLIs) during any kind of failures (system or application failure). In such cases, the application needs to meet the SLOs (service level objectives). For this purpose, it is important to ensure that the application has a minimum number of replicas available. 
+A common application failure is when the pressure on other replicas increases, how the horizontal pod autoscaler (HPA) scales based on the observed resource utilization, and the amount of time the persistent volume takes to mount on rescheduling.
+  </div>
 </details>
 
 ## Prerequisites
@@ -61,13 +63,13 @@ This fault helps determine how resilient an application is to the unplanned scal
       </tr>
       <tr>
         <td> TARGET_NAMESPACE </td>
-        <td> Namespace where the pods are created. </td>
+        <td> Namespace where the pods will be created. </td>
         <td> Defaults to the namespace specified in <code>CHAOS_NAMESPACE</code>. </td>
       </tr>
       <tr>
         <td> POD_TEMPLATE_CM </td>
         <td> Name of the config map that contains the pod template. </td>
-        <td> </td>
+        <td> For example: <code>stress-app-manifest</code>. </td>
       </tr>
       <tr>
         <td> POD_TEMPLATE_PATH </td>
