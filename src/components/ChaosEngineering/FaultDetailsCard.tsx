@@ -19,7 +19,7 @@ export default function FaultDetailsCard(props) {
           />
           {heading}
         </div>
-        <BackToTopButton href="#faults-introduction" />
+        <BackToTopButton href="#introduction" />
       </div>
       {rest}
       <ViewDetails
