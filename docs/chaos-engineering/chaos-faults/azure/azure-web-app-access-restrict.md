@@ -1,30 +1,26 @@
 ---
 id: azure-web-app-access-restrict
-title: Azure Web App Access Restrict
+title: Azure web app access restrict
 ---
+Azure web app access restrict cause a split brain condition by restricting the access to an application service instance.
+- This fault checks if the requests have been serviced and recovery is automated after the restrictions have been lifted.
+- It checks the performance of the application (or process) running on the instance.
 
-## Introduction
-- Cause a split brain condition by restricting access to app-service instance and verify if requests are serviced and recovery is automated upon lifting restrictions
-- It helps to check the performance of the application/process running on the instance.
-
-:::tip Fault execution flow chart
 ![Azure Web App Access Restrict](./static/images/azure-web-app-access-restrict.png)
-:::
 
-## Uses
+## Usage
 <details>
-<summary>View the uses of the fault</summary>
+<summary>View fault usage</summary>
 <div>
-Coming soon.
+This fault determines the resilience of an application when access to a specific app-service instance has been restricted.
 </div>
 </details>
 
 ## Prerequisites
-:::info
-- Ensure that Kubernetes Version > 1.16
-- Ensure that you have sufficient Azure access to web apps 
-- We will use Azure [ file-based authentication ](https://docs.microsoft.com/en-us/azure/developer/go/azure-sdk-authorization#use-file-based-authentication) to connect with the instance using Azure GO SDK in the experiment. For generating auth file run `az ad sp create-for-rbac --sdk-auth > azure.auth` Azure CLI command.
-- Ensure to create a Kubernetes secret having the auth file created in the step in `CHAOS_NAMESPACE`. A sample secret file looks like:
+- Kubernetes > 1.16
+- Adequate Azure access to web apps 
+- Use Azure [ file-based authentication ](https://docs.microsoft.com/en-us/azure/developer/go/azure-sdk-authorization#use-file-based-authentication) to connect to the instance using Azure GO SDK. To generate the auth file, run `az ad sp create-for-rbac --sdk-auth > azure.auth` Azure CLI command.
+- Create a Kubernetes secret that has the auth file created in the previous step in the `CHAOS_NAMESPACE`. Below is a sample secret file:
 ```yaml
 apiVersion: v1
 kind: Secret
@@ -46,17 +42,14 @@ stringData:
       "managementEndpointUrl": "XXXXXXXXX"
     }
 ```
-- If you change the secret key name (from `azure.auth`) please also update the `AZURE_AUTH_LOCATION` ENV value in the ChaosExperiment CR with the same name.
-:::
+- If you change the secret key name (from `azure.auth`), ensure that you update the `AZURE_AUTH_LOCATION` environment variable in the chaos experiment with the new name.
 
-## Default Validations
-:::info
-- Azure target web app should be in running state.
-:::
+## Default validations
+- Azure target web app should be in the running state.
 
-## Fault Tunables
+## Fault tunables
 <details>
-    <summary>Check the Fault tunables</summary>
+<summary>Fault tunables</summary>
     <h2>Mandatory Fields</h2>
     <table>
         <tr>
@@ -66,13 +59,13 @@ stringData:
         </tr>
         <tr> 
             <td> AZURE_WEB_APP_NAMES </td>
-            <td> Name of Azure web app services to target.</td>
-            <td> Provide comma-separated names of the web apps </td>
+            <td> Name of Athe zure web app services to target.</td>
+            <td> Comma-separated names of the web applications. </td>
         </tr>
         <tr>
             <td> RESOURCE_GROUP </td>
-            <td> The resource group of the target web app</td>
-            <td> </td>
+            <td> The name of the resource group for the target web app</td>
+            <td> For example, <code>TeamDevops</code>. </td>
         </tr> 
     </table>
     <h2>Optional Fields</h2>
@@ -84,58 +77,58 @@ stringData:
         </tr>
         <tr>
             <td> RULE_NAME </td>
-            <td> Provide the rule name that should be added as part of chaos injection</td>
-            <td> If not provided it will use a default name <code>litmus-experiment-rule</code></td>
+            <td> Rule name that is added as a part of the chaos injection. </td>
+            <td> If this is not provided, the fault uses the default name, i.e. <code>litmus-experiment-rule</code>. </td>
         </tr>
         <tr>
             <td> IP_ADDRESS_BLOCK </td>
-            <td> Provide the IP address/CIDR Range for the rule</td>
-            <td>  Default is <code>0.0.0.0/0</code></td>
+            <td> IP address (or CIDR range) for the rule. </td>
+            <td>  Defaults to <code>0.0.0.0/0</code>. </td>
         </tr>
         <tr>
             <td> ACTION </td>
-            <td> Provide the action you want to perfrom with the rule</td>
-            <td> Accepts "allow"/"deny". Default is "deny"</td>
+            <td> Action you wish to perfrom with the rule. </td>
+            <td> Defaults to deny. Supports allow action as well. </td>
         </tr>
         <tr>
             <td> PRIORITY </td>
-            <td> Provide the priority of the rule. Lower the number higher the priority and vice versa</td>
-            <td>  Default is "300". For more info <a href="https://learn.microsoft.com/en-us/azure/virtual-network/network-security-groups-overview">refer</a></td>
+            <td> Priority of the rule, wherein lower the number, higher is the priority and vice-versa. </td>
+            <td> Defaults to 300. For more information, refer <a href="https://learn.microsoft.com/en-us/azure/virtual-network/network-security-groups-overview">here</a>. </td>
         </tr>
         <tr> 
             <td> TOTAL_CHAOS_DURATION </td>
-            <td> The total time duration for chaos insertion (sec) </td>
-            <td> Defaults to 30s </td>
+            <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
+            <td> Defaults to 30s. </td>
         </tr>
         <tr> 
             <td> CHAOS_INTERVAL </td>
-            <td> The interval (in sec) between successive instance poweroff.</td>
-            <td> Defaults to 30s </td>
+            <td> Time interval between two successive instance power offs.</td>
+            <td> Defaults to 30s. </td>
         </tr>
         <tr>
             <td> SEQUENCE </td>
-            <td> It defines sequence of chaos execution for multiple instance</td>
-            <td> Default value: parallel. Supported: serial, parallel </td>
+            <td> Sequence of chaos execution for multiple instances. </td>
+        <td> Defaults to parallel. Supports serial sequence as well. </td>
         </tr>
         <tr>
             <td> RAMP_TIME </td>
-            <td> Period to wait before and after injection of chaos in sec </td>
-            <td> Eg: 30 </td>
+            <td> Period to wait before and after injecting chaos (in seconds). </td>
+            <td> For example, 30s. </td>
         </tr>
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common Fault Tunables
+### Common fault tunables
 
-Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the experiments.
+Refer to the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the experiments.
 
-### Web App Access Restrict By Name
+### Web app access restrict by name
 
-It contains comma separated list of web app names subjected to chaos. It can be tuned via `AZURE_WEB_APP_NAMES` ENV.
+It contains a comma-separated list of web application names that will be subject to chaos. You can tune it using the `AZURE_WEB_APP_NAMES` environment variable.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/azure-web-access-restrict/azure-web-app-name.yaml yaml)
 ```yaml
@@ -164,11 +157,11 @@ spec:
 ```
 
 
-### Access Restrict For A Certain CIDR Range
+### Access restrict for a certain CIDR range
 
-It contains a CIDR range to be used in rule. It can be tuned via `IP_ADDRESS_BLOCK`.
+It contains a CIDR range that is used in the rule. You can tune it using the `IP_ADDRESS_BLOCK` environment variable.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/azure-web-access-restrict/ip-address-block.yaml yaml)
 ```yaml
@@ -196,11 +189,11 @@ spec:
           VALUE: '60'
 ```
 
-### Access Restrict With Action
+### Access restrict with action
 
-You can tune if you want to allow or deny traffic for the provided rule using `ACTION` ENV. By default it is set to deny.
+It helps you allow or deny the traffic for the rule provided. You can tune it using the `ACTION` environment variable. By default, it is set to deny.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/azure-web-access-restrict/action.yaml yaml)
 ```yaml
@@ -221,16 +214,16 @@ spec:
         # Provide the action for a rule
         - name: ACTION
           value: 'deny'
-         # time duration for the chaos execution
+         # duration for the chaos execution
         - name: TOTAL_CHAOS_DURATION
           VALUE: '60'
 ```
 
-### Access Restrict With Priority
+### Access restrict with priority
 
-You can define the priority of the network rule created by fault using `PRIORITY` ENV. By default it is set to `300`.
+It helps define the priority of the network rule that is created by the fault. You can tune it using the `PRIORITY` environment variable. By default, it is set to 300.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/azure-web-access-restrict/priority.yaml yaml)
 ```yaml
@@ -251,16 +244,16 @@ spec:
         # Provide the priority for a rule
         - name: PRIORITY
           value: '300'
-         # time duration for the chaos execution
+         # duration for the chaos execution
         - name: TOTAL_CHAOS_DURATION
           VALUE: '60'
 ```
 
-### Access Restrict With Custom Rule Name
+### Access restrict with custom rule name
 
-You can define a custom rule name for this chaos using `RULE_NAME` ENV. This rule will be added for a period of chaos duration. If not provided it will by default use `litmus-experiment-rule`.
+It defines a custom rule name for the chaos. This rule is added to the chaos for a specific duration. You can tune it using the `RULE_NAME` environment variable.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/azure-web-access-restrict/rule-name.yaml yaml)
 ```yaml
