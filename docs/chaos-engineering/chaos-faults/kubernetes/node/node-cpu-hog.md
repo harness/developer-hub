@@ -72,7 +72,7 @@ The target nodes should be in ready state before and after chaos injection.
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before & after injection of chaos in sec </td>
-        <td> Eg. 30 </td>
+        <td> For Example: 30 </td>
       </tr>
       <tr>
         <td> NODE_CPU_CORE </td>

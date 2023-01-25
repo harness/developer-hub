@@ -66,17 +66,17 @@ stringData:
       <tr>
         <td> LOAD_BALANCER_NAME </td>
         <td> Provide the name of load balancer whose AZ has to be detached</td>
-        <td> Eg. <code>elb-name</code> </td>
+        <td> For Example: <code>elb-name</code> </td>
       </tr>
       <tr>
         <td> ZONES </td>
         <td> Provide the target zones that have to be detached from ELB</td>
-        <td> Eg. <code>us-east-1a</code> </td>
+        <td> For Example: <code>us-east-1a</code> </td>
       </tr>
       <tr>
         <td> REGION </td>
         <td> The region name for the target volumes</td>
-        <td> Eg. <code>us-east-1</code> </td>
+        <td> For Example: <code>us-east-1</code> </td>
       </tr>
     </table>
     <h2>Optional Fields</h2>

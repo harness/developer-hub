@@ -72,7 +72,7 @@ stringData:
       <tr>
         <td> REGION </td>
         <td> The region name for all the target volumes</td>
-        <td> Eg. us-east-1 </td>
+        <td> For Example: us-east-1 </td>
       </tr>
     </table>
     <h2>Optional Fields</h2>

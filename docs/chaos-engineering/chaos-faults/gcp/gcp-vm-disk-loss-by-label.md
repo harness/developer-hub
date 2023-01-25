@@ -67,7 +67,7 @@ stringData:
       <tr>
         <td> DISK_VOLUME_LABEL </td>
         <td>Label of the targeted non-boot persistent disk volume</td>
-        <td> The <code>DISK_VOLUME_LABEL</code> should be provided as <code>key:value</code> or <code>key</code> if the corresponding value is empty ex: <code>disk:target-disk</code> </td>
+        <td> The <code>DISK_VOLUME_LABEL</code> should be provided as <code>key:value</code> or <code>key</code> if the corresponding value is empty. For Example: <code>disk:target-disk</code> </td>
       </tr>
       <tr>
         <td> ZONES </td>
@@ -105,7 +105,7 @@ stringData:
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injection of chaos (in seconds) </td>
-        <td> Eg. 30 </td>
+        <td> For Example: 30 </td>
       </tr>
     </table>
 </details>

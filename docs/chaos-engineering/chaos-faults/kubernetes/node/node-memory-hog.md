@@ -39,7 +39,7 @@ The target nodes should be in ready state before and after chaos injection.
       <tr>
         <td> TARGET_NODES </td>
         <td> Comma separated list of nodes, subjected to node memory hog chaos</td>
-        <td> Eg. node-1,node-2 </td>
+        <td> For Example: node-1,node-2 </td>
       </tr>
       <tr>
         <td> NODE_LABEL </td>
@@ -72,7 +72,7 @@ The target nodes should be in ready state before and after chaos injection.
       <tr>
         <td> MEMORY_CONSUMPTION_MEBIBYTES </td>
         <td> The size in Mebibytes of total available memory. When using this we need to keep <code>MEMORY_CONSUMPTION_PERCENTAGE</code> empty as the percentage have more precedence</td>
-        <td> Eg. 256 </td>
+        <td> For Example: 256 </td>
       </tr>  
       <tr>
         <td> NUMBER_OF_WORKERS </td>
@@ -82,7 +82,7 @@ The target nodes should be in ready state before and after chaos injection.
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injection of chaos (in seconds) </td>
-        <td> Eg. 30 </td>
+        <td> For Example: 30 </td>
       </tr>
       <tr>
         <td> NODES_AFFECTED_PERC </td>

@@ -46,7 +46,7 @@ The target nodes should be in ready state before and after chaos injection.
       <tr>
         <td> TARGET_NODE </td>
         <td> Name of the target node</td>
-        <td> Eg. node-1 </td>
+        <td> For Example: node-1 </td>
       </tr>
       <tr>
         <td> NODE_LABEL </td>
@@ -69,7 +69,7 @@ The target nodes should be in ready state before and after chaos injection.
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after the injection of chaos (in seconds) </td>
-        <td> Eg. 30 </td>
+        <td> For Example: 30 </td>
       </tr>
     </table>
 </details>

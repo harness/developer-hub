@@ -111,7 +111,7 @@ If the target EC2 instance is a part of a managed node group, drain the target n
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injection of chaos (in seconds) </td>
-        <td> Eg. 30 </td>
+        <td> For Example: 30 </td>
       </tr>
     </table>
 </details>

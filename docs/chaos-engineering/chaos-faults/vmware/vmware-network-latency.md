@@ -113,7 +113,7 @@ You can pass the VM credentials as a secret or as a chaosengine environment vari
       <tr>
         <td> DESTINATION_HOSTS </td>
         <td> DNS Names of the services whose accessibility is impacted. </td>
-        <td> If it is not provided, it induces network chaos for all IPs/destinations or `DESTINATION_IPS` if already defined. </td>
+        <td> If it is not provided, it induces network chaos for all IPs/destinations or <code>DESTINATION_IPS</code> if already defined. </td>
       </tr>
       <tr>
         <td> SEQUENCE </td>

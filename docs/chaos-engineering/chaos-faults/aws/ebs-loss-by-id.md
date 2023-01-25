@@ -64,12 +64,12 @@ stringData:
       <tr>
         <td> EBS_VOLUME_ID </td>
         <td> Comma separated EBS volume IDs which will be subjected to EBS detach chaos</td>
-        <td> Eg. ebs-vol-1,ebs-vol-2 </td>
+        <td> For Example: ebs-vol-1,ebs-vol-2 </td>
       </tr>
       <tr>
         <td> REGION </td>
         <td> The region name where the target EBS volumes are created</td>
-        <td> Eg. us-east-1 </td>
+        <td> For Example: us-east-1 </td>
       </tr>
     </table>
     <h2>Optional Fields</h2>
