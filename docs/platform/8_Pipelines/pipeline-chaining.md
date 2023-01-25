@@ -26,7 +26,7 @@ For example, you could have a pipeline that deploys an application to a test env
 
 - At this point, there is no matrix on the parent pipeline at the pipeline stage.
 
-- Pipeline stage does not support auto expressions in **Outputs**.
+- The pipeline stage does not support auto expressions in **Outputs**.
 
 
 
