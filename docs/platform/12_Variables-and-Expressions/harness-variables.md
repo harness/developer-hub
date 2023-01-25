@@ -437,6 +437,10 @@ See [Add Account, Org, and Project-level Variables](add-a-variable.md).
 
 Here's a quick video that explains how to create and reference Pipeline, Stage, and Service variables:
 
+<!-- Video:
+https://www.youtube.com/watch?v=lqbmO6EVGuU-->
+<docvideo src="https://www.youtube.com/watch?v=lqbmO6EVGuU" />
+
 #### <+pipeline.identifier>
 
 The [Entity Identifier](../20_References/entity-identifier-reference.md) (Id) for the Pipeline.
@@ -518,6 +522,10 @@ You must use the expression after the step in Execution.
 #### Stage-level variables
 
 Here's a quick video that explains how to create and reference Pipeline, Stage, and Service variables:
+
+<!-- Video:
+https://www.youtube.com/watch?v=lqbmO6EVGuU-->
+<docvideo src="https://www.youtube.com/watch?v=lqbmO6EVGuU" />
 
 Once you've created a stage, its settings are in the **Overview** tab. For example, here's the **Overview** tab for a Deploy stage:
 
@@ -601,6 +609,11 @@ For example, `<+serviceVariables.myvar>`.
 #### Service-level variables for service v1
 
 Here's a quick video that explains how to create and reference Pipeline, Stage, and Service variables:
+
+
+<!-- Video:
+https://www.youtube.com/watch?v=lqbmO6EVGuU-->
+<docvideo src="https://www.youtube.com/watch?v=lqbmO6EVGuU" />
 
 #### <+serviceConfig.serviceDefinition.spec.variables.[var\_name]>
 
