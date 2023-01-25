@@ -1,17 +1,14 @@
 ---
 id: azure-web-app-access-restrict
-title: Azure Web App Access Restrict
+title: Azure web app access restrict
 ---
 
-## Introduction
 - Cause a split brain condition by restricting access to app-service instance and verify if requests are serviced and recovery is automated upon lifting restrictions
 - It helps to check the performance of the application/process running on the instance.
 
-:::tip Fault execution flow chart
 ![Azure Web App Access Restrict](./static/images/azure-web-app-access-restrict.png)
-:::
 
-## Uses
+## Usage
 <details>
 <summary>View the uses of the fault</summary>
 <div>
@@ -20,7 +17,6 @@ Coming soon.
 </details>
 
 ## Prerequisites
-:::info
 - Ensure that Kubernetes Version > 1.16
 - Ensure that you have sufficient Azure access to web apps 
 - We will use Azure [ file-based authentication ](https://docs.microsoft.com/en-us/azure/developer/go/azure-sdk-authorization#use-file-based-authentication) to connect with the instance using Azure GO SDK in the experiment. For generating auth file run `az ad sp create-for-rbac --sdk-auth > azure.auth` Azure CLI command.
@@ -47,14 +43,11 @@ stringData:
     }
 ```
 - If you change the secret key name (from `azure.auth`) please also update the `AZURE_AUTH_LOCATION` ENV value in the ChaosExperiment CR with the same name.
-:::
 
-## Default Validations
-:::info
+## Default validations
 - Azure target web app should be in running state.
-:::
 
-## Fault Tunables
+## Fault tunables
 <details>
     <summary>Check the Fault tunables</summary>
     <h2>Mandatory Fields</h2>
@@ -125,13 +118,13 @@ stringData:
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common Fault Tunables
+### Common fault tunables
 
 Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the experiments.
 
-### Web App Access Restrict By Name
+### Web app access restrict by name
 
 It contains comma separated list of web app names subjected to chaos. It can be tuned via `AZURE_WEB_APP_NAMES` ENV.
 
@@ -164,7 +157,7 @@ spec:
 ```
 
 
-### Access Restrict For A Certain CIDR Range
+### Access restrict for a certain CIDR range
 
 It contains a CIDR range to be used in rule. It can be tuned via `IP_ADDRESS_BLOCK`.
 
@@ -196,7 +189,7 @@ spec:
           VALUE: '60'
 ```
 
-### Access Restrict With Action
+### Access restrict with action
 
 You can tune if you want to allow or deny traffic for the provided rule using `ACTION` ENV. By default it is set to deny.
 
@@ -226,7 +219,7 @@ spec:
           VALUE: '60'
 ```
 
-### Access Restrict With Priority
+### Access restrict with priority
 
 You can define the priority of the network rule created by fault using `PRIORITY` ENV. By default it is set to `300`.
 
@@ -256,7 +249,7 @@ spec:
           VALUE: '60'
 ```
 
-### Access Restrict With Custom Rule Name
+### Access restrict with custom rule name
 
 You can define a custom rule name for this chaos using `RULE_NAME` ENV. This rule will be added for a period of chaos duration. If not provided it will by default use `litmus-experiment-rule`.
 

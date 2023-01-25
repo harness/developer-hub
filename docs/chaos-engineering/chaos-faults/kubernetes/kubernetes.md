@@ -86,8 +86,3 @@ Learn intelligent software delivery skills with step-by-step tutorials, interact
 <!-- ensure to enclose all markdown inside the <FaultDetailsCard/> tag-->
 
 </FaultDetailsCard>
-
-<!-- Code for Fault Card ends here -->
-
-<!-- Code for Fault Card starts from here -->
-

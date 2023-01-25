@@ -1,33 +1,25 @@
 ---
 id: azure-instance-io-stress
-title: Azure Instance IO Stress
+title: Azure instance IO stress
 ---
 
-## Introduction
 
 - Azure Instance IO Stress contains chaos to disrupt the state of infra resources. The fault can induce stress chaos on Azure Instance using Azure Run Command, this is carried out by using bash scripts which are in-built in the fault for the given chaos scenario.
 - It causes IO Stress chaos on Azure Instance using an bash script for a certain chaos duration.
 
-:::tip Fault execution flow chart
 ![Azure Instances IO Stress](./static/images/azure-instance-io-stress.png)
-:::
 
-## Uses
+## Usage
 
-### Uses of the fault
-
-:::info
-
+<details>
+<summary>View fault usage</summary>
+<div>
 - Filesystem read and write is another very common and frequent scenario we find with processes/applications that can result in the impact on its delivery. These problems are generally referred to as "Noisy Neighbour" problems.
 - Injecting a rogue process into a target Azure instance, we starve the main processes/applications (typically pid 1) of the resources allocated to it (where limits are defined) causing slowness in application traffic or in other cases unrestrained use can cause instance to exhaust resources leading to degradation in performance of processes/applications present on the instance. So this category of chaos fault helps to build the immunity on the application undergoing any such stress scenario.
-
-:::
+</div>
+</details>
 
 ## Prerequisites
-
-:::info
-
-### Verify the prerequisites
 
 - Ensure that Kubernetes Version >= 1.17
 
@@ -61,17 +53,13 @@ stringData:
 
 - If you change the secret key name (from `azure.auth`) please also update the `AZURE_AUTH_LOCATION` ENV value in the ChaosExperiment CR with the same name.
 
-:::
 
-## Default Validations
-
-:::info
+## Default validations
 
 - Azure instance should be in healthy state.
 
-:::
 
-## Fault Tunables
+## Fault tunables
 
 <details>
 <summary>Check the Fault Tunables</summary>
@@ -163,13 +151,13 @@ stringData:
 
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common Fault Tunables
+### Common fault tunables
 
 Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
-### FILESYSTEM UTILIZATION IN MEGABYTES
+### Filesystem utilization in megabytes
 
 It defines the filesytem value to be utilised in megabytes on the Azure instance. It can be tuned via `FILESYSTEM_UTILIZATION_BYTES` ENV.
 
@@ -200,7 +188,7 @@ spec:
           value: 'rg-azure'
 ```
 
-### FILESYSTEM UTILIZATION IN PERCENTAGE
+### Filesystem utilization in percentage
 
 It defines the filesytem percentage to be utilised on the Azure instance. It can be tuned via `FILESYSTEM_UTILIZATION_PERCENTAGE` ENV.
 
@@ -231,7 +219,7 @@ spec:
           value: 'rg-azure'
 ```
 
-### MULTIPLE WORKERS
+### Multiple workers
 
 It defines the CPU threads to be run to spike the filesystem utilisation, this will increase the growth of filesystem consumption. It can be tuned via `NUMBER_OF_WORKERS` ENV.
 
@@ -262,7 +250,7 @@ spec:
           value: 'rg-azure'
 ```
 
-### VOLUME MOUNT PATH
+### Volume mount path
 
 It defines volume mount path to target attached to the Azure instance. It can be tuned via `VOLUME_MOUNT_PATH` ENV.
 
@@ -293,7 +281,7 @@ spec:
           value: 'rg-azure'
 ```
 
-### MULTIPLE Azure INSTANCES
+### Multiple Azure instances
 
 Multiple Azure instances can be targeted in one chaos run. It can be tuned via `AZURE_INSTANCE_NAMES` ENV.
 

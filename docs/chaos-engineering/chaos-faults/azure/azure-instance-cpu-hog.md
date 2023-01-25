@@ -1,36 +1,26 @@
 ---
 id: azure-instance-cpu-hog
-title: Azure Instance CPU Hog
+title: Azure instance CPU hog
 ---
-
-## Introduction
 
 - Azure Instance CPU Hog contains chaos to disrupt the state of infra resources. The fault can induce stress chaos on Azure Azure Instance using Azure Run Command, this is carried out by using bash scripts which are in-built in the fault for the given chaos scenario.
 - It causes CPU Hog chaos on Azure Instance using an bash script for a certain chaos duration.
 
-:::tip Fault execution flow chart
 ![Azure Instance CPU Hog](./static/images/azure-instance-cpu-hog.png)
-:::
 
-## Uses
+## Usage
 
-### Uses of the experiment
-
-:::info
-
+<details>
+<summary>View fault usage</summary>
+<div>
 - The fault causes CPU hog/stress on the target Azure Instance(s). The idea of this fault is to simulate issues when there is lack of CPU for other runnning processes/applications resulting into degrading their performance.
 - Injecting a rogue process into a target Azure instance, we starve the main processes/applications (typically pid 1) of the resources allocated to it (where limits are defined) causing slowness in application traffic or in other cases unrestrained use can cause instance to exhaust resources leading to degradation in performance of processes/applications present on the instance. So this category of chaos fault helps to build the immunity on the application undergoing any such stress scenario.
-
-:::
+</div>
+</details>
 
 ## Prerequisites
 
-:::info
-
-- Ensure that Kubernetes Version >= 1.17
-
-**Azure Access Requirement:**
-
+- Kubernetes >= 1.17
 - Ensure that Azure Run Command agent is installed and running in the target Azure instance.
 - We will use Azure [file-based authentication](https://docs.microsoft.com/en-us/azure/developer/go/azure-sdk-authorization#use-file-based-authentication) to connect with the instance using Azure GO SDK in the fault. For generating auth file run `az ad sp create-for-rbac --sdk-auth > azure.auth` Azure CLI command.
 - Ensure to create a Kubernetes secret having the auth file created in the step in `CHAOS_NAMESPACE`. A sample secret file looks like:
@@ -59,17 +49,13 @@ stringData:
 
 - If you change the secret key name (from `azure.auth`) please also update the `AZURE_AUTH_LOCATION` ENV value in the ChaosExperiment CR with the same name.
 
-:::
 
-## Default Validations
-
-:::info
+## Default validations
 
 - Azure instance should be in healthy state.
 
-:::
 
-## Fault Tunables
+## Fault tunables
 
 <details>
     <summary>Check the Fault Tunables</summary>
@@ -146,13 +132,13 @@ stringData:
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common Fault Tunables
+### Common fault tunables
 
 Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
-### CPU CORE
+### CPU core
 
 It defines the CPU core value to be utilised on the Azure instance. It can be tuned via `CPU_CORE` ENV.
 
@@ -183,7 +169,7 @@ spec:
           value: 'rg-azure'
 ```
 
-### CPU PERCENTAGE
+### CPU percentage
 
 It defines the CPU percentage value to be utilised on the Azure instance. It can be tuned via `CPU_LOAD` ENV.
 
@@ -214,7 +200,7 @@ spec:
           value: 'rg-azure'
 ```
 
-### MULTIPLE Azure INSTANCES
+### Multiple Azure instances
 
 Multiple Azure instances can be targeted in one chaos run. It can be tuned via `AZURE_INSTANCE_NAMES` ENV.
 
@@ -243,7 +229,7 @@ spec:
           value: 'rg-azure'
 ```
 
-### CPU CORE WITH PERCENTAGE CONSUMPTION
+### CPU core with percentage consumption
 
 It defines how many CPU cores to utilise with percentage of utilisation on the Azure instance. It can be tuned via `CPU_CORE` and `CPU_LOAD` ENV.
 
