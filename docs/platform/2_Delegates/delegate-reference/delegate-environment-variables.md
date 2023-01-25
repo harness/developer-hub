@@ -202,6 +202,15 @@ The Java Runtime Environment (JRE) version that the delegate uses.
   value: 1.8.0_242
 ```
 
+### LOG_STREAMING_SERVICE_URL
+
+Use this variable to specify the endpoint for your log service in Harness NextGen. This variable is not used in Harness FirstGen.
+
+```
+- name: LOG_STREAMING_SERVICE_URL
+  value: "YOUR_MANAGER_ENDPOINT/log-service/"
+```
+
 
 ### MANAGER_HOST_AND_PORT
 
