@@ -63,12 +63,14 @@ To chain pipelines in Harness, perform the following steps:
    
    For more information on access, see [Role-based access control](../4_Role-Based-Access-Control/1-rbac-in-harness.md)
 
-![](./static/pipeline-chain-list.png)
+   ![](./static/pipeline-chain-list.png)
 
 4. Click **Apply Selected**.
 
 5. You can use outputs from child pipelines in other stages in parent pipelines by clicking **Outputs**.
-   
+   The variables you select in the output tab can be referred to at a later stage.
+
+   For example, you can use the build image in the subsequent deployment stage.
 
 6. Repeat this process for any additional pipelines that you want to chain.
 
