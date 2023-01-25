@@ -141,7 +141,7 @@ stringData:
         <tr>
             <td> RAMP_TIME </td>
             <td> Period to wait before and after injection of chaos (in seconds) </td>
-            <td> Eg: 30 </td>
+            <td> For Example: <code>30</code> </td>
         </tr>
     </table>
 </details>
