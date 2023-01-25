@@ -3,6 +3,8 @@ id: kube-resilience
 title: Chaos faults for Kube resilience
 ---
 
+Kubelet density determines the resilience of the kubelet by creating pods on a specific node. It helps determine how resilient an application is to the unplanned scaling of K8s pods.
+
 <!-- Import statement for Custom Components -->
 
 import FaultDetailsCard from "@site/src/components/ChaosEngineering/FaultDetailsCard";
@@ -15,13 +17,9 @@ import { experiments } from "./experiments"
 
 <ExperimentListSection experiments={experiments} />
 
-## Introduction to faults
-
-- Kubelet density determines the resilience of the kubelet by creating pods on a specific node. It helps determine how resilient an application is to the unplanned scaling of K8s pods.
-
 <!-- Code for Fault Card starts from here -->
 
-<FaultDetailsCard category="kube-resilience">
+<FaultDetailsCard category="kubelet-density">
 
 <!-- please specify category in above tag to generate correct experiment icons and links by itself, if links are broken please contact @Sahil, that's me -->
 
@@ -35,7 +33,7 @@ import { experiments } from "./experiments"
 
 <accordion color="green">
     <summary>Fault usage</summary>
-    WIP
+    This fault helps determine how resilient an application is to the unplanned scaling of K8s pods.
 </accordion>
 
 </FaultDetailsCard>

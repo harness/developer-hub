@@ -2,8 +2,9 @@
 id: kubelet-density
 title: Kubelet density
 ---
-Kubelet density determines the resilience of the kubelet by creating pods on a specific node. It helps determine how resilient an application is to the unplanned scaling of K8s pods.
-It also helps determine the performance of the kubelet for a specific node.
+- Kubelet density determines the resilience of the kubelet by creating pods on a specific node. 
+- It helps determine how resilient an application is to the unplanned scaling of K8s pods.
+- It also helps determine the performance of the kubelet for a specific node.
 
 ![Kubelet Density](./static/images/kubelet-density.png)
 
@@ -12,7 +13,7 @@ It also helps determine the performance of the kubelet for a specific node.
 <details>
 <summary>View the uses of the fault</summary>
 <div>
-Coming soon.
+This fault helps determine how resilient an application is to the unplanned scaling of K8s pods.
 </div>
 </details>
 
@@ -80,13 +81,13 @@ Coming soon.
       </tr>
       <tr>
         <td> POD_IMAGE </td>
-        <td> image of the pod</td>
-        <td> Defaults to <code>gcr.io/google_containers/pause-amd64:3.0</code> </td>
+        <td> Pod image used to create multiple pods. </td>
+        <td> Defaults to <code>gcr.io/google_containers/pause-amd64:3.0</code>. </td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> For example, 30s </td>
+        <td> For example, 30s. </td>
       </tr>
     </table>
 </details>
@@ -97,9 +98,9 @@ Coming soon.
 
 Refer to the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
-### Pod template provided as CM
+### Pod template provided as configmap
 
-A chaos experiment creates pods on the target node during execution. The template for the pod is provided by mounting the pod-template using the configmap and passing the name and mountPath of the pod using the `POD_TEMPLATE_CM` and `POD_TEMPLATE_PATH` environment variables, respectively.
+A chaos experiment creates pods on the target node during execution. The template for the pod is provided by mounting the pod template using the configmap and passing the name and mountPath of the pod using the `POD_TEMPLATE_CM` and `POD_TEMPLATE_PATH` environment variables, respectively.
 
 Use the following example to tune it:
 

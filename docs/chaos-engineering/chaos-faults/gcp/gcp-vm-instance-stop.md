@@ -12,7 +12,7 @@ GCP VM instance stop powers off from a GCP VM instance using the instance name (
 <details>
 <summary>View fault usage</summary>
 <div>
-This fault determines the performance of an application that runs on a VM instance.
+This fault determines the resilience of an application that runs on a VM instance when a VM instance unexpectedly stops (or fails).
 </div>
 </details>
 

@@ -10,7 +10,7 @@ GCP VM disk loss by label disrupts the state of GCP persistent disk volume filte
 <details>
 <summary>View fault usage</summary>
 <div>
-Coming soon.
+This fault can be used to determine the resilience of the GKE infrastructure. It helps determine how quickly a node can recover when a persistent disk volume is detached from the VM instance associated with it.
 </div>
 </details>
 
