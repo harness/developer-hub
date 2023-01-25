@@ -42,10 +42,12 @@ stringData:
       "managementEndpointUrl": "XXXXXXXXX"
     }
 ```
+
 - If you change the secret key name (from `azure.auth`), ensure that you update the `AZURE_AUTH_LOCATION` environment variable in the chaos experiment with the new name.
 
 ## Default validations
 - Azure disk should be connected to an instance.
+
 
 ## Fault tunables
 <details>
@@ -111,7 +113,7 @@ Refer to the [common attributes](../common-tunables-for-all-faults) to tune the 
 
 ### Detach virtual disks by name
 
-It contains comma-separated list of disk names that are subject to disk loss. You can tune it using the `VIRTUAL_DISK_NAMES` environment variable.
+It contains a comma-separated list of disk names that are subject to disk loss. You can tune it using the `VIRTUAL_DISK_NAMES` environment variable.
 
 Use the following example to tune it:
 
@@ -140,7 +142,7 @@ spec:
 
 ### Detach virtual disks attached to scale set instances by name
 
-It contains comma-separated list of disk names attached to scale set instances subject to disk loss. You can tune it using the `VIRTUAL_DISK_NAMES` and `SCALE_SET` environment variables, respectively.
+It contains a comma-separated list of disk names attached to Scale Set instances subject to disk loss. You can tune it using the `VIRTUAL_DISK_NAMES` and `SCALE_SET` environment variables, respectively.
 
 Use the following example to tune it:
 

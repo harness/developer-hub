@@ -1,7 +1,10 @@
 ---
 id: gcp
-title: Chaos Faults for Gcp
+title: Chaos faults for GCP
 ---
+
+GCP faults disrupt the resources that run on a GCP cluster. Different faults disrupt various aspects of the GCP cluster, based on which GCP faults are categorized into different types.
+Fault execution is triggered when the chaosengine resource is created. Chaosengines are embedded within the steps of a chaos fault, but you can also create the chaosengine manually, and the chaos operator reconciles this resource and triggers the fault execution.
 
 <!-- Import statement for Custom Components -->
 
@@ -11,42 +14,91 @@ import { experiments } from "./experiments"
 
 <!-- Heading Description -->
 
-Gcp faults disrupt the resources running on a Gcp cluster. They can be categorized into Pod-level faults and Node-level faults.
-
 <!-- Experiment List and Search Bar (every experiment added below, need to be added in this file also) -->
 
 <ExperimentListSection experiments={experiments} />
 
-## Faults Introduction
-
-Learn intelligent software delivery skills with step-by-step tutorials, interactive labs, videos and reference docs.
 
 <!-- Code for Fault Card starts from here -->
 
 <FaultDetailsCard category="gcp">
 
-<!-- please specify category in above tag to generate correct experiment icons and links by itself, if links are broken please contact @Sahil, that's me -->
-
-### GCP VM Disk Loss By Label
+### GCP VM disk loss by label
 
 <!-- Need above heading in markdown ### for it to populate right navigation bar and generate links -->
 
-- This experiment Causes the application to become unreachable on account of node turning unschedulable (NotReady) due to docker service kill
-- The docker service has been stopped/killed on a node to make it unschedulable for a certain duration i.e TOTAL_CHAOS_DURATION. The application node should be healthy after the chaos injection and the services should be re-accessible.
-- The application implies services. Can be reframed as: Test application resiliency upon replica getting unreachable caused due to docker service down.
+It disrupts the state of GCP persistent disk volume filtered using a label by detaching the disk volume from its VM instance for a specific duration.
 
 <!-- <accordion color='green'/> has same usage as details but green in color -->
 
 <accordion color="green">
-    <summary>View the uses of the experiment</summary>
-    In the distributed system like Gcp it is very likely that your application replicas may not be sufficient to manage the traffic (indicated by SLIs) when some of the replicas are unavailable due to any failure (can be system or application) the application needs to meet the SLO(service level objectives) for this, we need to make sure that the applications have minimum number of available replicas. One of the common application failures is when the pressure on other replicas increases then to how the horizontal pod autoscaler scales based on observed resource utilization and also how much PV mount takes time upon rescheduling. The other important aspects to test are the MTTR for the application replica, re-elections of leader or follower like in kafka application the selection of broker leader, validating minimum quorum to run the application for example in applications like percona, resync/redistribution of data.
+    <summary>Fault usage</summary>
+    This fault can be used to determine the resilience of the GKE infrastructure. It helps determine how quickly a node can recover when a persistent disk volume is detached from the VM instance associated with it.
 </accordion>
 
-<!-- <accordion /> has same usage as details with default blue color -->
+<!-- ensure to enclose all markdown inside the <FaultDetailsCard/> tag-->
 
-<accordion>
-    <summary>View the uses of the experiment</summary>
-    In the distributed system like Gcp it is very likely that your application replicas may not be sufficient to manage the traffic (indicated by SLIs) when some of the replicas are unavailable due to any failure (can be system or application) the application needs to meet the SLO(service level objectives) for this, we need to make sure that the applications have minimum number of available replicas. One of the common application failures is when the pressure on other replicas increases then to how the horizontal pod autoscaler scales based on observed resource utilization and also how much PV mount takes time upon rescheduling. The other important aspects to test are the MTTR for the application replica, re-elections of leader or follower like in kafka application the selection of broker leader, validating minimum quorum to run the application for example in applications like percona, resync/redistribution of data.
+</FaultDetailsCard>
+
+<!-- Code for Fault Card ends here -->
+
+<!-- Code for Fault Card starts from here -->
+
+<FaultDetailsCard category="gcp">
+
+### GCP VM disk loss
+
+<!-- Need above heading in markdown ### for it to populate right navigation bar and generate links -->
+
+It disrupts the state of GCP persistent disk volume by detaching the disk volume from its VM instance using the disk name for a specific duration.
+
+<!-- <accordion color='green'/> has same usage as details but green in color -->
+
+<accordion color="green">
+    <summary>Fault usage</summary>
+    This fault can be used to determine the resilience of the GKE infrastructure. It helps determine how quickly a node can recover when a persistent disk volume is detached from the VM instance associated with it.
+</accordion>
+
+<!-- ensure to enclose all markdown inside the <FaultDetailsCard/> tag-->
+
+</FaultDetailsCard>
+
+<!-- Code for Fault Card ends here -->
+
+<FaultDetailsCard category="gcp">
+
+### GCP VM instance stop by label
+
+<!-- Need above heading in markdown ### for it to populate right navigation bar and generate links -->
+
+It powers off GCP VM instances (that are filtered by a label) for a specific duration.
+
+<!-- <accordion color='green'/> has same usage as details but green in color -->
+
+<accordion color="green">
+    <summary>Fault usage</summary>
+    This fault determines the resilience of an application that runs on a VM instance when a VM instance unexpectedly stops (or fails).
+</accordion>
+
+<!-- ensure to enclose all markdown inside the <FaultDetailsCard/> tag-->
+
+</FaultDetailsCard>
+
+<!-- Code for Fault Card ends here -->
+
+<FaultDetailsCard category="gcp">
+
+### GCP VM instance stop
+
+<!-- Need above heading in markdown ### for it to populate right navigation bar and generate links -->
+
+It powers off a GCP VM instance based on the instance name (or list of instance names) for a specific duration.
+
+<!-- <accordion color='green'/> has same usage as details but green in color -->
+
+<accordion color="green">
+    <summary>Fault usage</summary>
+This fault determines the resilience of an application that runs on a VM instance when a VM instance unexpectedly stops (or fails).
 </accordion>
 
 <!-- ensure to enclose all markdown inside the <FaultDetailsCard/> tag-->

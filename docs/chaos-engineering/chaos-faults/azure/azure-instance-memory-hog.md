@@ -8,8 +8,8 @@ Azure instance memory hog disrupts the state of infrastructure resources.
 - This command is executed using the bash scripts that are in-built in the fault.
 - It utilizes memory in excess on the Azure Instance using the bash script for a specific duration.
 
-![Azure Instance Memory Hog](./static/images/azure-instance-memory-hog.png)
 
+![Azure Instance Memory Hog](./static/images/azure-instance-memory-hog.png)
 
 ## Usage
 
@@ -51,7 +51,6 @@ stringData:
 ```
 
 - If you change the secret key name (from `azure.auth`), ensure that you update the `AZURE_AUTH_LOCATION` environment variable in the chaos experiment with the new name.
-
 
 ## Default validations
 - Azure instance should be in a healthy state.

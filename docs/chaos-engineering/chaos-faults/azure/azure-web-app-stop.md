@@ -8,7 +8,6 @@ Azure web app stop shuts down the application.
 
 ![Azure Web App Stop](./static/images/azure-web-app-stop.png)
 
-
 ## Usage
 <details>
 <summary>View fault usage</summary>
@@ -22,6 +21,7 @@ This fault determines the resilience of a web application to unplanned halts (or
 - Adequate Azure access to stop and start the web applications. 
 - Use Azure [ file-based authentication ](https://docs.microsoft.com/en-us/azure/developer/go/azure-sdk-authorization#use-file-based-authentication) to connect to the instance using Azure GO SDK. To generate the auth file, run `az ad sp create-for-rbac --sdk-auth > azure.auth` Azure CLI command.
 - Create a Kubernetes secret that has the auth file created in the previous step in the `CHAOS_NAMESPACE`. Below is a sample secret file:
+
 ```yaml
 apiVersion: v1
 kind: Secret
@@ -46,7 +46,7 @@ stringData:
 - If you change the secret key name (from `azure.auth`), ensure that you update the `AZURE_AUTH_LOCATION` environment variable in the chaos experiment with the new name.
 
 ## Default validations
-- Azure target web app should be in the running state.
+- Azure target web application should be in the running state.
 
 ## Fault tunables
 <details>

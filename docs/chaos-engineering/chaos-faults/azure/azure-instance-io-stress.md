@@ -7,7 +7,6 @@ Azure instance I/O stress disrupts the state of infra resources.
 - This fault induces stress on the Azure instance using the Azure Run command. This command is executed using the bash scripts that are in-built in the fault.
 - It causes I/O stress on the Azure Instance using the bash script for a specific duration.
 
-
 ![Azure Instances IO Stress](./static/images/azure-instance-io-stress.png)
 
 ## Usage
@@ -186,7 +185,6 @@ spec:
 ```
 
 ### Filsystem utilization by percentage
-
 It defines the filesytem value that will be utilised on the Azure instance. You can tune it using the `FILESYSTEM_UTILIZATION_PERCENTAGE` environment variable.
 
 Use the following example to tune it:

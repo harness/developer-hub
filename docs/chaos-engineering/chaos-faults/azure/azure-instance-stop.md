@@ -5,9 +5,7 @@ title: Azure instance stop
 Azure instance stop powers off from an Azure instance during a specific duration.
 - It checks the performance of the application (or process) running on the instance.
 
-:::tip Fault execution flow chart
 ![Azure Instance Stop](./static/images/azure-instance-stop.png)
-:::
 
 ## Usage
 

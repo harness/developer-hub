@@ -21,9 +21,8 @@ Coming soon.
 </details>
 
 ## Prerequisites
-:::info
 - Ensure that Kubernetes Version > 1.16.
-:::
+
 
 ## Default Validations
 :::note

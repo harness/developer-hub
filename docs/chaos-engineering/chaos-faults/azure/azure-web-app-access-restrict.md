@@ -2,7 +2,7 @@
 id: azure-web-app-access-restrict
 title: Azure web app access restrict
 ---
-Azure web app access restrict cause a split brain condition by restricting the access to an application service instance.
+Azure web app access restrict causes a split brain condition by restricting the access to an application service instance.
 - This fault checks if the requests have been serviced and recovery is automated after the restrictions have been lifted.
 - It checks the performance of the application (or process) running on the instance.
 
@@ -21,6 +21,7 @@ This fault determines the resilience of an application when access to a specific
 - Adequate Azure access to web apps 
 - Use Azure [ file-based authentication ](https://docs.microsoft.com/en-us/azure/developer/go/azure-sdk-authorization#use-file-based-authentication) to connect to the instance using Azure GO SDK. To generate the auth file, run `az ad sp create-for-rbac --sdk-auth > azure.auth` Azure CLI command.
 - Create a Kubernetes secret that has the auth file created in the previous step in the `CHAOS_NAMESPACE`. Below is a sample secret file:
+
 ```yaml
 apiVersion: v1
 kind: Secret
@@ -45,7 +46,7 @@ stringData:
 - If you change the secret key name (from `azure.auth`), ensure that you update the `AZURE_AUTH_LOCATION` environment variable in the chaos experiment with the new name.
 
 ## Default validations
-- Azure target web app should be in the running state.
+- Azure target web application should be in the running state.
 
 ## Fault tunables
 <details>
