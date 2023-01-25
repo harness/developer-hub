@@ -24,7 +24,7 @@ For example, you could have a pipeline that deploys an application to a test env
 
 - The run pipeline form does not support validation of child pipelines during the pre-flight check of the parent pipeline.
 
-- At this point, there is no matrix on the parent pipeline at the pipeline stage.
+- At this time, there is no matrix on the parent pipeline at the pipeline stage.
 
 - The pipeline stage does not support auto expressions in **Outputs**.
 
