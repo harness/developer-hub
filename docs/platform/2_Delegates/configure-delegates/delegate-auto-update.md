@@ -10,6 +10,8 @@ helpdocs_is_published: true
 
 Harness Delegate is installed with automatic updates enabled. Harness recommends that you accept automatic updates to the delegate image. 
 
+Delegate updates do not affect pipelines. Before an update is made, the delegate finishes the tasks that are underway. The delegate then gracefully shuts down. 
+
 If you prefer to disable auto-update, use one of the following options:
 
 * Modify the delegate YAML to prevent installation of the auto-update component.
