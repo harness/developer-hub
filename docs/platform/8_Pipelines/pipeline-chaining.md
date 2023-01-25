@@ -79,6 +79,6 @@ To chain pipelines in Harness, perform the following steps:
 
 7. In the final pipeline, you can add a **Deploy** step to deploy the application to the desired environment.
    You can also add "Rollback" step in case of any failure.
-   Once you have completed chaining the pipelines, you can run the parent pipeline to start the process.
+   After you have chained the pipelines, you can run the parent pipeline.
    
 Harness recommends testing the pipeline before executing it in production.
