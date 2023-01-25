@@ -20,6 +20,16 @@ For example, you could have a pipeline that deploys an application to a test env
 
 - Make sure you have read permissions for the child pipeline and edit permissions for the parent pipeline to add a pipeline stage to a parent pipeline.
 
+- Whenever you change the runtime input fields in a chained pipeline, select **Inputs** in the parent pipeline to see the changes.
+
+- The run pipeline form does not support validation of child pipelines during the pre-flight check of the parent pipeline.
+
+- At this point, there is no matrix on the parent pipeline at the pipeline stage.
+
+- Pipeline stage does not support auto expressions in **Outputs**.
+
+
+
 ## Benefits of pipeline chaining
 
 - Automation: Pipeline chaining allows you to automate the deployment process and make sure that the application is deployed and tested properly before deploying to production.
