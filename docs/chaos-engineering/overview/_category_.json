@@ -1,9 +1,9 @@
 {
   "position": 1,
-  "label": "Introduction",
+  "label": "Overview",
   "collapsible": true,
   "collapsed": true,
   "customProps": {
-    "description": "Introduction to Chaos Engineering"
+    "description": "Overview of Harness Chaos Engineering"
   }
 }
