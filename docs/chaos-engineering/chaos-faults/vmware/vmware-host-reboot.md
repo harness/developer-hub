@@ -2,7 +2,7 @@
 id: VMware-host-reboot
 title: VMware host reboot
 ---
-VMware Host reboot reboots a VMware host that is attached to the Vcenter.
+VMware host reboot reboots a VMware host that is attached to the Vcenter.
 - It helps determine the VMware infrastructure resilience when the host reboots.
 - It also measures the infrastructure resilience in case of an high availability (HA) cluster.
 

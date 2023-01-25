@@ -1,6 +1,6 @@
 ---
-id: VMware
-title: Chaos Faults for VMware
+id: vmware
+title: Chaos faults for VMware
 ---
 
 <!-- Import statement for Custom Components -->
@@ -11,23 +11,33 @@ import { experiments } from "./experiments"
 
 <!-- Heading Description -->
 
-VMware faults disrupt the resources running on a VMware cluster. 
+## Introduction
 
-<!-- Experiment List and Search Bar (every experimen  t added below, need to be added in this file also) -->
+VMware faults disrupt the resources running on a VMware cluster. Depending on the type of instance the fault targets, VMware faults are categorized into various types.
 
 <ExperimentListSection experiments={experiments} />
 
-## Introduction
 
-Learn intelligent software delivery skills with step-by-step tutorials, interactive labs, videos and reference docs.
-
-<!-- Code for Fault Card starts from here -->
-
-<FaultDetailsCard category="VMware">
+<FaultDetailsCard category="vmware">
 
 <!-- please specify category in above tag to generate correct experiment icons and links by itself, if links are broken please contact @Sahil, that's me -->
 
-### VMware CPU Hog
+### VMware CPU hog
+
+VMware CPU hog applies stress on the CPU resources on Linux OS based VMware VM. It checks the performance of the application running on the VMware VMs.
+
+<accordion color="green">
+<summary>View fault usage</summary>
+This fault helps determine how resilient an application is when stress is applied on the CPU resources of a VMware virtual machine.
+</accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="vmware">
+
+<!-- please specify category in above tag to generate correct experiment icons and links by itself, if links are broken please contact @Sahil, that's me -->
+
+### VMware disk loss
 
 <!-- Need above heading in markdown ### for it to populate right navigation bar and generate links -->
 
@@ -38,16 +48,33 @@ Learn intelligent software delivery skills with step-by-step tutorials, interact
 <!-- <accordion color='green'/> has same usage as details but green in color -->
 
 <accordion color="green">
-    <summary>View the uses of the experiment</summary>
+    <summary>View fault usage</summary>
     In the distributed system like VMware it is very likely that your application replicas may not be sufficient to manage the traffic (indicated by SLIs) when some of the replicas are unavailable due to any failure (can be system or application) the application needs to meet the SLO(service level objectives) for this, we need to make sure that the applications have minimum number of available replicas. One of the common application failures is when the pressure on other replicas increases then to how the horizontal pod autoscaler scales based on observed resource utilization and also how much PV mount takes time upon rescheduling. The other important aspects to test are the MTTR for the application replica, re-elections of leader or follower like in kafka application the selection of broker leader, validating minimum quorum to run the application for example in applications like percona, resync/redistribution of data.
 </accordion>
 
 <!-- <accordion /> has same usage as details with default blue color -->
 
-<accordion>
-    <summary>View the uses of the experiment</summary>
-    In the distributed system like VMware it is very likely that your application replicas may not be sufficient to manage the traffic (indicated by SLIs) when some of the replicas are unavailable due to any failure (can be system or application) the application needs to meet the SLO(service level objectives) for this, we need to make sure that the applications have minimum number of available replicas. One of the common application failures is when the pressure on other replicas increases then to how the horizontal pod autoscaler scales based on observed resource utilization and also how much PV mount takes time upon rescheduling. The other important aspects to test are the MTTR for the application replica, re-elections of leader or follower like in kafka application the selection of broker leader, validating minimum quorum to run the application for example in applications like percona, resync/redistribution of data.
+<!-- ensure to enclose all markdown inside the <FaultDetailsCard/> tag-->
+
+</FaultDetailsCard>
+
+<!-- Code for Fault Card ends here -->
+
+<FaultDetailsCard category="vmware">
+
+<!-- please specify category in above tag to generate correct experiment icons and links by itself, if links are broken please contact @Sahil, that's me -->
+
+### VMware DNS chaos
+
+VMware DNS chaos causes DNS errors in the VMware VMs for a specific duration.
+- It checks the performance of the application (or process) running on the VMware VMs.
+
+<accordion color="green">
+    <summary>View fault usage</summary>
+This fault causes DNS errors on the target VMs which results in unavailability (or distorted) network connectivity from the VM to the target hosts. This fault provides a hypothesis wherein certain services of an application could be unreachable from the VM. This fault determines how DNS errors impact the infrastructure and standalone tasks in the application.
 </accordion>
+
+<!-- <accordion /> has same usage as details with default blue color -->
 
 <!-- ensure to enclose all markdown inside the <FaultDetailsCard/> tag-->
 

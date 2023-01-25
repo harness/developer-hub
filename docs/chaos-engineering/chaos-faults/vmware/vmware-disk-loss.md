@@ -7,6 +7,15 @@ VMware disk loss detaches the disks that are attached to a Linux OS based VMware
 
 ![VMware Disk Loss](./static/images/VMware-disk-loss.png)
 
+## Usage
+
+<details>
+<summary>View the uses of the fault</summary>
+<div>
+This fault helps determine how resilient an application is to the unplanned scaling of K8s pods.
+</div>
+</details>
+
 ## Prerequisites
 - Kubernetes > 1.16
 - Execution plane is connected to vCenter and the hosts on port 443. 

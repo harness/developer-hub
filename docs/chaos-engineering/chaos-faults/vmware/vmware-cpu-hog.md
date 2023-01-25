@@ -1,5 +1,5 @@
 ---
-id: VMware-cpu-hog
+id: vmware-cpu-hog
 title: VMware CPU hog
 ---
 
@@ -8,6 +8,14 @@ VMware CPU hog applies stress on the CPU resources on Linux OS based VMware VM.
 
 ![VMware Cpu Hog](./static/images/VMware-cpu-hog.png)
 
+## Usage
+
+<details>
+<summary>View the uses of the fault</summary>
+<div>
+This fault helps determine how resilient an application is when stress is applied on the CPU resources of a VMware virtual machine.
+</div>
+</details>
 
 ## Prerequisites
 - Kubernetes > 1.16
