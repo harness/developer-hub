@@ -51,13 +51,13 @@ For example, you could have a pipeline that deploys an application to a test env
 ## Chain pipelines 
 To chain pipelines in Harness, perform the following steps: 
 
-1. Create a [pipeline](../8_Pipelines/add-a-stage.md#step-1-create-a-pipeline) and configure it with the desired settings, such as triggers, environment variables, and deployment steps.
-   This is your parent pipeline.
+1. Create your parent [pipeline](../8_Pipelines/add-a-stage.md#step-1-create-a-pipeline) and configure it with the desired settings, such as triggers, environment variables, and deployment steps.
+
 2. Select **Add Stage** and then select **Pipeline**.
    
    ![](./static/pipeline-chain-option.png)
 
-3. Select a pipeline from the list. This is your first child pipeline. You can select any pipeline from different organizations and projects, subject to access permissions, and add it to your parent pipeline.
+3. Select the pipeline from the list. You can select any pipeline across different orgs and projects corresponding to your access and permissions and chain it to your parent pipeline.
    
    For more information on access, see [Role-based access control](../4_Role-Based-Access-Control/1-rbac-in-harness.md)
 
@@ -78,7 +78,6 @@ To chain pipelines in Harness, perform the following steps:
 6. Repeat this process for any additional pipelines that you want to chain.
 
 7. In the final pipeline, you can add a **Deploy** step to deploy the application to the desired environment.
-   You can also add "Rollback" step in case of any failure.
    After you have chained the pipelines, you can run the parent pipeline.
    
 Harness recommends testing the pipeline before executing it in production.
