@@ -1,6 +1,6 @@
 ---
 title: Pipeline chaining in Harness
-description: Chain your pipelines in Harness to easily create complex workflows.
+description: Chain your pipelines in Harness to create complex workflows.
 sidebar_position: 12
 ---
 
