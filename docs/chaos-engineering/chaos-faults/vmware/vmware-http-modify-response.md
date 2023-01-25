@@ -61,17 +61,17 @@ You can pass the VM credentials as a secret or as a chaosengine environment vari
         <tr>
             <td> VM_NAME </td>
             <td> Name of VMware VM</td>
-            <td> For example: test-vm </td>
+            <td> For example: <code>test-vm</code> </td>
         </tr>
         <tr>
             <td> VM_USER_NAME </td>
             <td> Username with sudo privileges.</td>
-            <td> For example: vm-user</td>
+            <td> For example: <code>vm-user</code> </td>
         </tr>
         <tr>
             <td> VM_PASSWORD </td>
             <td> User password </td>
-            <td> For example: 1234</td>
+            <td> For example: <code>test-password</code> </td>
         </tr>
         <tr>
             <td> TARGET_SERVICE_PORT </td>
@@ -150,7 +150,7 @@ You can pass the VM credentials as a secret or as a chaosengine environment vari
         </tr>
         <tr>
             <td> INSTALL_DEPENDENCY </td>
-            <td> Whether to install the dependancy to run the experiment </td>
+            <td> Whether to install the dependency to run the experiment </td>
             <td> If the dependency already exists, you can turn it off. Its default value is 'True'.</td>
         </tr>
         <tr>

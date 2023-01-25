@@ -229,7 +229,7 @@ spec:
 
 The network faults interrupt traffic for all the IPs/hosts by default. You can tune this using the `DESTINATION_IPS` and `DESTINATION_HOSTS` environment variables.
 
-`DESTINATION_IPS`: It contains the IP addresses of the services or the CIDR blocks(range of IPs) that impacts its accessibility.
+`DESTINATION_IPS`: It contains the IP addresses of the services or the CIDR blocks (range of IPs) that impacts its accessibility.
 `DESTINATION_HOSTS`: It contains the DNS Names of the services that impacts its accessibility.
 
 Use the following example to tune it:

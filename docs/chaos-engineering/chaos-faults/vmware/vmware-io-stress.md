@@ -54,7 +54,7 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
       <tr>
         <td> VM_NAME </td>
         <td> Name of the target VM </td>
-        <td> ubuntu-vm-1 </td>
+        <td> For Example: <code>ubuntu-vm-1</code> </td>
       </tr>
     </table>
     <h2>Optional Fields</h2>
@@ -122,7 +122,7 @@ It stresses the `FILESYSTEM_UTILIZATION_PERCENTAGE` percentage of total free spa
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/vmware-io-stress/vm-io-stress-filesystem-utilization-percenatge.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-io-stress/vm-io-stress-filesystem-utilization-percentage.yaml yaml)
 ```yaml
 # io-stress in the VMware VM
 apiVersion: litmuschaos.io/v1alpha1

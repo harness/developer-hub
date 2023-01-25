@@ -56,7 +56,7 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
       <tr>
         <td> VM_NAME </td>
         <td> Name of the target VM </td>
-        <td> ubuntu-vm-1 </td>
+        <td> For Example: <code>ubuntu-vm-1</code> </td>
       </tr>
     </table>
     <h2>Optional Fields</h2>
