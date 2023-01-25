@@ -248,7 +248,7 @@ Next, try Harness [Continuous Integration](docs/continuous-integration) to build
 
 ## Clean Up
 
-For steps on deleting the Delgate, go to [Delegate a delegate](../../../platform/2_Delegates/manage-delegates/delete-a-delegate.md).
+For steps on deleting the Delgate, go to [Delete a delegate](../../../platform/2_Delegates/manage-delegates/delete-a-delegate.md).
 
 ## Next Steps
 
