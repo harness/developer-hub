@@ -4,7 +4,7 @@ description: Convert existing inline entities to remote and save them in Git
 sidebar_position: 9
 ---
 
-You can move your inline entities to Git. 
+You can move your inline pipelines and input sets to Git. 
 
 Moving inline entities like pipelines to a Git repository can provide several benefits, including:
 
@@ -19,8 +19,6 @@ Moving inline entities like pipelines to a Git repository can provide several be
 - Flexibility: The pipelines can be run from different environments by using a CI/CD pipeline.
   
 - Security: Only authorized users can access them.
-
-All your inline entities now have the option **Move to Git**.
 
 This section explains steps to move an [inline pipeline](../8_Pipelines/add-a-stage.md#step-1-create-a-pipeline) and its associated input sets to Git.
 
