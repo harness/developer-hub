@@ -5,7 +5,7 @@ description: Running a Chaos Experiment on Kubernetes for the first time via Cha
 ---
 
 Welcome to Harness Chaos Engineering's tutorial on running a chaos experiment via Chaos APIs. In this tutorial you'll be running a Chaos Experiment on Kubernetes for the first time via Chaos APIs!
-You can access the Harness Chaos Engineering API doc here <Harness-CE-API-Doc-link>. We will make use of publicly available [Harness CE Postman collection](https://elements.getpostman.com/redirect?entityId=25469526-59b35825-6240-4b45-9974-6bb869741318&entityType=collection) to explain the Chaos APIs used in this tutorial!
+You can access the Harness API doc here https://apidocs.harness.io/ . We will make use of publicly available [Harness CE Postman collection](https://elements.getpostman.com/redirect?entityId=25469526-59b35825-6240-4b45-9974-6bb869741318&entityType=collection) to explain the Chaos APIs used in this tutorial!
 
 ## What is Chaos Engineering?
 Cloud Native applications are, by definition, highly distributed, elastic, resistant to failure and loosely coupled. That's easy to say, and even diagram. But how do we validate that our applications will perform as expected under different failure conditions?
@@ -813,5 +813,8 @@ We can also observe that the fail step says "Probe execution result didn't met t
 
 ![Fail Step Result](./static/first-chaos/fail-step-result.png)
 
-With that, we have successfully run our first chaos experiment! If you're wondering that how we can remediate our application so that it passes the experiment run and probe checks, it's as simple as bumping up the experiment pods to at least two, such that at least one deployment pod survives the Pod Delete fault and help the application stay afloat. Do try to run it on your own now!
+With that, we have successfully run our first chaos experiment! If you're wondering that how we can remediate our application so that it passes the experiment run and probe checks, it's as simple as bumping up the experiment pods to at least two, such that at least one deployment pod survives the Pod Delete fault and help the application stay afloat.
 
+In order to rerun the above pod delete experiment after bumping up the experiment pods to at least two, you can just re-trigger [RunChaosExperiment](#run-a-chaos-experiment) with the existing `workflow Id` and then use [ListWorkflowRun](#observing-chaos-execution-using-api) to observe the experiment.
+
+Do try to run it on your own now!
