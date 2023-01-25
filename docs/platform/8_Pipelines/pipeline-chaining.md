@@ -48,8 +48,6 @@ For example, you could have a pipeline that deploys an application to a test env
  
 - Better compliance: By automating the deployment process, pipeline chaining can help to ensure compliance with regulatory requirements and industry best practices.
 
-- Fast rollback: It makes it easy to roll back to previous stages in case of any issues.
-
 ## Chain pipelines 
 To chain pipelines in Harness, perform the following steps: 
 
