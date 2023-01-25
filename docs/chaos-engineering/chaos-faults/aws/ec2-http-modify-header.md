@@ -6,7 +6,7 @@ title: EC2 HTTP Modify Header
 ## Introduction
 
 - It injects HTTP chaos which affects the request/response by modifying the status code or the body or the headers by starting proxy server and redirecting the traffic through the proxy server.
-- It can cause modification of headers of requests and responses of the service. This can be used to test service resilience towards incorrect or incomplete headers
+- It can cause modification of headers of requests and responses of the service. This can be used to test service resilience towards incorrect or incomplete headers.
 
 :::tip Fault execution flow chart
 ![EC2 HTTP Modify Response](./static/images/ec2-http-modify-header.png)
@@ -98,12 +98,12 @@ You can pass the VM credentials as secrets or as an chaosengine environment vari
         </tr>
         <tr>
             <td> TOTAL_CHAOS_DURATION </td>
-            <td> The total time duration for chaos insertion (in sec) </td>
+            <td> The total duration for chaos injection (in seconds) </td>
             <td> Defaults to 30s </td>
         </tr>
         <tr>
             <td> CHAOS_INTERVAL </td>
-            <td> The interval (in sec) between successive instance termination </td>
+            <td> The interval (in seconds) between successive instance termination </td>
             <td> Defaults to 30s </td>
         </tr>
         <tr>
@@ -118,7 +118,7 @@ You can pass the VM credentials as secrets or as an chaosengine environment vari
         </tr>
         <tr>
             <td> RAMP_TIME </td>
-            <td> Period to wait before and after injection of chaos (in sec) </td>
+            <td> Period to wait before and after injection of chaos (in seconds) </td>
             <td> For example: 30 </td>
         </tr>
         <tr>

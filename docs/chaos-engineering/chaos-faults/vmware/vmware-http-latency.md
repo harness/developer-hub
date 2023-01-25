@@ -5,7 +5,7 @@ title: VMware HTTP Latency
 
 ## Introduction
 - It injects HTTP response latency on the service whose port is provided as `TARGET_SERVICE_PORT` by starting the proxy server and redirecting the traffic through the proxy server.
-- It tests the application's resilience to lossy/flaky HTTP responses.
+- It tests the application's resilience to lossy or flaky HTTP responses.
 
 :::tip Fault execution flow chart
 ![VMware HTTP Latency](./static/images/vmware-http-latency.png)

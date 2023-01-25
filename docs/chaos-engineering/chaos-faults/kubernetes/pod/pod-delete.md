@@ -44,12 +44,12 @@ The application pods should be in running state before and after chaos injection
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The duration for chaos injection (in sec) </td>
+        <td> The duration for chaos injection (in seconds) </td>
         <td> Defaults to 15s, <b>NOTE:</b> Overall run duration of the fault may exceed the <code>TOTAL_CHAOS_DURATION</code> by a few min </td>
       </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>
-        <td> Time interval b/w two successive pod failures (in sec) </td>
+        <td> Time interval b/w two successive pod failures (in seconds) </td>
         <td> Defaults to 5s </td>
       </tr>
       <tr>
@@ -74,7 +74,7 @@ The application pods should be in running state before and after chaos injection
       </tr>
       <tr>
         <td> RAMP_TIME </td>
-        <td> Period to wait before and after injection of chaos in sec </td>
+        <td> Period to wait before and after injection of chaos (in seconds) </td>
         <td> Eg. 30 </td>
       </tr>
       <tr>

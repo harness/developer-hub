@@ -48,7 +48,7 @@ The application pods should be in running state before and after chaos injection
       <tr>
         <td> FILESYSTEM_UTILIZATION_BYTES </td>
         <td> Specify the size in GigaBytes(GB). <code>FILESYSTEM_UTILIZATION_PERCENTAGE</code> & <code>FILESYSTEM_UTILIZATION_BYTES</code> are mutually exclusive. If both are provided, <code>FILESYSTEM_UTILIZATION_PERCENTAGE</code> is prioritized. </td>
-        <td> </td>
+        <td> For Example: <code>100</code> </td>
       </tr>
       <tr>
         <td> NUMBER_OF_WORKERS </td>
@@ -57,13 +57,13 @@ The application pods should be in running state before and after chaos injection
       </tr> 
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The time duration for chaos (seconds) </td>
+        <td> The duration for chaos (in seconds) </td>
         <td> Default to 120s </td>
       </tr>
       <tr>
         <td> VOLUME_MOUNT_PATH </td>
         <td> Fill the given volume mount path</td>
-        <td> </td>
+        <td> For Example: <code>/User/admin/disk-02</code> </td>
       </tr>
       <tr>
         <td> LIB_IMAGE </td>
@@ -92,7 +92,7 @@ The application pods should be in running state before and after chaos injection
       </tr>    
       <tr>
         <td> RAMP_TIME </td>
-        <td> Period to wait before and after injection of chaos in sec </td>
+        <td> Period to wait before and after injection of chaos (in seconds) </td>
         <td> Eg. 30 </td>
       </tr>
       <tr>

@@ -1,4 +1,4 @@
-# cpu load for the stress
+# CPU load for the stress
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -12,7 +12,7 @@ spec:
     spec:
       components:
         env:
-        # provide the cpu load percentage
+        # provide the CPU load percentage
         - name: CPU_LOAD
           value: '100'
         - name: CPU_CORE

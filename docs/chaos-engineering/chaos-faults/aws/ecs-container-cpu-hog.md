@@ -98,12 +98,12 @@ stringData:
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The total time duration for chaos insertion (sec) </td>
+        <td> The total duration for chaos injection (in seconds) </td>
         <td> Defaults to 30s </td>
       </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>
-        <td> The interval (in sec) between successive instance termination.</td>
+        <td> The interval (in seconds) between successive instance termination.</td>
         <td> Defaults to 30s </td>
       </tr>
       <tr> 
@@ -113,12 +113,12 @@ stringData:
       </tr>
       <tr> 
         <td> CPU_CORE </td>
-        <td> Provide the number of cpu core to consume</td>
+        <td> Provide the number of CPU cores to be stressed</td>
         <td> Defaults to 0 </td>
       </tr>
       <tr> 
         <td> CPU_LOAD </td>
-        <td> Provide the percentage of CPU to be consumed</td>
+        <td> Provide the percentage of load to be exerted on each CPU core</td>
         <td> Defaults to 100 </td>
       </tr>
       <tr>
@@ -128,7 +128,7 @@ stringData:
       </tr>
       <tr>
         <td> RAMP_TIME </td>
-        <td> Period to wait before and after injection of chaos in sec </td>
+        <td> Period to wait before and after injection of chaos (in seconds) </td>
         <td> Eg. 30 </td>
       </tr>
     </table>
@@ -142,13 +142,13 @@ Refer the [common attributes](../common-tunables-for-all-faults) and [AWS specif
 
 ### CPU Cores
 
-It contains the cores of CPU to hog for the target container instances. It can be tuned via ` CPU_CORE` ENV. `0` core means all the available CPU resources should be consumed.
+It contains the cores of CPU to hog for the target container instances. It can be tuned via ` CPU_CORE` ENV. `0` core means all the available CPU resources should be stressed.
 
 Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/ecs-stress-chaos/cpu-core.yaml yaml)
 ```yaml
-# cpu cores for the stress
+# CPU cores for the stress
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -162,7 +162,7 @@ spec:
     spec:
       components:
         env:
-        # provide the cpu core to be hogged
+        # provide the CPU core to be hogged
         - name: CPU_CORE
           value: '0'
         - name: REGION
@@ -173,13 +173,13 @@ spec:
 
 ### CPU Load
 
-It contains the percentage of CPU to be consumed for the target container instances. It can be tuned via ` CPU_LOAD` ENV. CPU Load `100` means 100% per cpu core provided.
+It contains the percentage of CPU to be stressed for the target container instances. It can be tuned via ` CPU_LOAD` ENV. CPU Load `100` means 100% per CPU core provided.
 
 Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/ecs-stress-chaos/cpu-load.yaml yaml)
 ```yaml
-# cpu load for the stress
+# CPU load for the stress
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -193,7 +193,7 @@ spec:
     spec:
       components:
         env:
-        # provide the cpu load percentage
+        # provide the CPU load percentage
         - name: CPU_LOAD
           value: '100'
         - name: CPU_CORE

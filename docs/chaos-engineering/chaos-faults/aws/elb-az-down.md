@@ -93,7 +93,7 @@ stringData:
       </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>
-        <td> The time duration between the attachment and detachment of the volumes (sec) </td>
+        <td> The duration between the attachment and detachment of the volumes (in seconds) </td>
         <td> Defaults to 30s </td>
       </tr>
       <tr>
@@ -103,7 +103,7 @@ stringData:
       </tr>
       <tr>
         <td> RAMP_TIME </td>
-        <td> Period to wait before and after injection of chaos in sec </td>
+        <td> Period to wait before and after injection of chaos (in seconds) </td>
         <td> Eg: 30 </td>
       </tr>
     </table>

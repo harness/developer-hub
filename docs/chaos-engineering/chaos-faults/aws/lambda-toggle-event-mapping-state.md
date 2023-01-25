@@ -91,7 +91,7 @@ stringData:
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The total time duration for chaos insertion in seconds </td>
+        <td> The total duration for chaos injection (in seconds) </td>
         <td> Defaults to 30s </td>
       </tr>
       <tr>
@@ -101,7 +101,7 @@ stringData:
       </tr>
       <tr>
         <td> RAMP_TIME </td>
-        <td> Period to wait before and after injection of chaos in sec </td>
+        <td> Period to wait before and after injection of chaos (in seconds) </td>
         <td> Eg. 30 </td>
       </tr>
     </table>

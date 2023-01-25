@@ -44,7 +44,7 @@ The target nodes should be in ready state before and after chaos injection.
       <tr>
         <td> TARGET_NODE </td>
         <td> Name of the node to be tainted</td>
-        <td> </td>
+        <td> For Example: <code>node01</code> </td>
       </tr>
       <tr>
         <td> NODE_LABEL </td>
@@ -54,7 +54,7 @@ The target nodes should be in ready state before and after chaos injection.
       <tr>
         <td> TAINT_LABEL </td>
         <td> Label and effect to be tainted on application node </td>
-        <td> </td>
+        <td> For Example: <code>team:devops</code> </td>
       </tr>
     </table>
     <h2>Optional Fields</h2>

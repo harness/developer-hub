@@ -67,8 +67,8 @@ The target nodes should be in ready state before and after chaos injection.
       </tr>
       <tr>
         <td> TARGET_NODE </td>
-        <td> Name of target node, subjected to chaos. If not provided it will select the random node</td>
-        <td> </td>
+        <td> Name of the target node which will be subjected to chaos. If not provided, it will select a random node</td>
+        <td> For Example: <code>node01</code> </td>
       </tr>
       <tr>
         <td> NODE_LABEL </td>
@@ -105,12 +105,12 @@ The target nodes should be in ready state before and after chaos injection.
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The duration for chaos injection (sec) </td>
+        <td> The duration for chaos injection (in seconds) </td>
         <td> Defaults to 30s </td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
-        <td> Period to wait before and after injection of chaos in sec </td>
+        <td> Period to wait before and after injection of chaos (in seconds) </td>
         <td> Eg. 30 </td>
       </tr>
     </table>

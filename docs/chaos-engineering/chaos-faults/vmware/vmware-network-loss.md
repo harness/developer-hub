@@ -132,17 +132,17 @@ You can pass the VM credentials as a secret or as a chaosengine environment vari
       </tr>
       <tr>
         <td> GOVC_URL </td>
-        <td> Provide the VMCenter Server URL. </td>
+        <td> Provide the vCenter Server URL. </td>
         <td> It is used to perform the VMware API calls using the 'govc' command and is derived from sceret.</td>
       </tr>
       <tr>
         <td> GOVC_USERNAME </td>
-        <td> Provide the username of VMCenter Server. </td>
+        <td> Provide the username of vCenter Server. </td>
         <td> This environment variable is used for authentication purposes and is setup using a secret.</td>
       </tr>
       <tr>
         <td> GOVC_PASSWORD </td>
-        <td> Provide the password of VMCenter Server. </td>
+        <td> Provide the password of vCenter Server. </td>
         <td> This environment variable is used for authentication purposes and is setup using a secret.</td>
       </tr>
       <tr>

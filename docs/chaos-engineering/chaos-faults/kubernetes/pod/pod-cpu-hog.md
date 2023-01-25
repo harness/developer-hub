@@ -134,7 +134,7 @@ spec:
 ```
 
 ### CPU Load
-It contains percentage of pod CPU to be consumed. It can be tuned via `CPU_LOAD` ENV.
+It contains the percentage load exerted on each target pod's CPU. It can be tuned via `CPU_LOAD` ENV.
 
 Use the following example to tune this:
 

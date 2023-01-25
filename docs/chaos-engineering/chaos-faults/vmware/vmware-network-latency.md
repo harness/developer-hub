@@ -64,7 +64,7 @@ You can pass the VM credentials as a secret or as a chaosengine environment vari
       </tr>
       <tr>
         <td> VM_NAMES </td>
-        <td> Provide the target VM names.</td>
+        <td> Provide comma target VM names.</td>
         <td> You can provide multiple VM names as comma separated values, for example: vm-1,vm-2. </td>
       </tr>
       <tr>
@@ -135,17 +135,17 @@ You can pass the VM credentials as a secret or as a chaosengine environment vari
       </tr>
       <tr>
         <td> GOVC_URL </td>
-        <td> Provide the VMCenter Server URL. </td>
+        <td> Provide the vCenter Server URL. </td>
         <td> It is used to perform the VMware API calls using the 'govc' command and is derived from a secret.</td>
       </tr>
       <tr>
         <td> GOVC_USERNAME </td>
-        <td> Provide the username of VMCenter Server.</td>
+        <td> Provide the username of vCenter Server.</td>
         <td> This environment variable is used for authentiation purposes and is setup using a secret.</td>
       </tr>
       <tr>
         <td> GOVC_PASSWORD </td>
-        <td> Provide the password of VMCenter Server. </td>
+        <td> Provide the password of vCenter Server. </td>
         <td> This environment variable is used for authentiation purposes and is setup using a secret.</td>
       </tr>
       <tr>

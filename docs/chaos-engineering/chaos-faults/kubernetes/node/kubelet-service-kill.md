@@ -46,7 +46,7 @@ The target nodes should be in ready state before and after chaos injection.
       <tr>
         <td> TARGET_NODE </td>
         <td> Name of the target node</td>
-        <td> </td>
+        <td> For Example: <code>node01</code> </td>
       </tr>
       <tr>
         <td> NODE_LABEL </td>

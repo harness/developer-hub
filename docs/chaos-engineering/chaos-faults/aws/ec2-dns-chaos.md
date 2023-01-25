@@ -15,7 +15,7 @@ title: EC2 DNS Chaos
 <details>
 <summary>View the uses of the fault</summary>
 <div>
-The fault causes DNS errors on the target EC2 instances which can result in unavailability/distorted network connectivity from the VM to the target hosts. This will also help to produce a hypothesis where some services of an application are unreachable from the EC2 instance. This will help the user to think the mitigation steps that should be taken to overcome such situation. This fault can also be used to know how the DNS error can impact your infra and standalone tasks as well.
+The fault causes DNS errors on the target EC2 instances which can result in unavailability or distorted network connectivity from the VM to the target hosts. This will also help to produce a hypothesis where some services of an application are unreachable from the EC2 instance. This will help the user to validate the mitigation steps that should be taken to overcome such situation. This fault can also be used to know how the DNS error can impact your infra and standalone tasks as well.
 </div>
 </details>
 
@@ -25,7 +25,7 @@ The fault causes DNS errors on the target EC2 instances which can result in unav
 
 **AWS EC2 Access Requirement:**
 
-- Ensure that SSM agent is installed and running in the target EC2 instance.
+- Ensure that the SSM agent is installed and running in the target EC2 instance.
 - Ensure to create a Kubernetes secret having the AWS Access Key ID and Secret Access Key credentials in the `CHAOS_NAMESPACE`. A sample secret file looks like:
 
 ```yaml
@@ -89,12 +89,12 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The total time duration for chaos insertion (sec) </td>
+        <td> The total duration for chaos injection (in seconds) </td>
         <td> Defaults to 30s </td>
       </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>
-        <td> The interval (in sec) between successive instance termination </td>
+        <td> The interval (in seconds) between successive instance termination </td>
         <td> Defaults to 30s </td>
       </tr>
       <tr>
@@ -104,7 +104,7 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
       </tr>
       <tr>
         <td> RAMP_TIME </td>
-        <td> Period to wait before and after injection of chaos in sec </td>
+        <td> Period to wait before and after injection of chaos (in seconds) </td>
         <td> Eg. 30 </td>
       </tr>
       <tr>

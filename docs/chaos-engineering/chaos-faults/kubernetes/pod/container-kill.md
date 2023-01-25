@@ -47,7 +47,7 @@ The application pods should be in running state before and after chaos injection
       </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>
-        <td> Time interval between two successive container kills (in sec) </td>
+        <td> Time interval between two successive container kills (in seconds) </td>
         <td> If the CHAOS_INTERVAL is not provided it will take the default value of 10s </td>
       </tr>
       <tr>

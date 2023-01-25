@@ -29,7 +29,7 @@ spec:
     spec:
       components:
         env:
-        # time duration for the chaos execution
+        # duration for the chaos execution
         - name: TOTAL_CHAOS_DURATION
           VALUE: '60'
 ```

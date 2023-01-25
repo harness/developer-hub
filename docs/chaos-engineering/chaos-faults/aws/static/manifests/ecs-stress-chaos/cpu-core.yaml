@@ -1,4 +1,4 @@
-# cpu cores for the stress
+# CPU cores for the stress
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -12,7 +12,7 @@ spec:
     spec:
       components:
         env:
-        # provide the cpu core to be hogged
+        # provide the CPU core to be hogged
         - name: CPU_CORE
           value: '0'
         - name: REGION

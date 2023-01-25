@@ -78,7 +78,7 @@ If the target EC2 instance is a part of a managed node group, drain the target n
       <tr>
         <td> REGION </td>
         <td> The region name of the target instance</td>
-        <td> </td>
+        <td> For Example: <code>us-east-1</code> </td>
       </tr>
     </table>
     <h2>Optional Fields</h2>
@@ -90,12 +90,12 @@ If the target EC2 instance is a part of a managed node group, drain the target n
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The total time duration for chaos insertion (sec) </td>
+        <td> The total duration for chaos injection (in seconds) </td>
         <td> Defaults to 30s </td>
       </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>
-        <td> The interval (in sec) between successive instance termination.</td>
+        <td> The interval (in seconds) between successive instance termination.</td>
         <td> Defaults to 30s </td>
       </tr>
       <tr>
@@ -110,7 +110,7 @@ If the target EC2 instance is a part of a managed node group, drain the target n
       </tr>
       <tr>
         <td> RAMP_TIME </td>
-        <td> Period to wait before and after injection of chaos in sec </td>
+        <td> Period to wait before and after injection of chaos (in seconds) </td>
         <td> Eg. 30 </td>
       </tr>
     </table>

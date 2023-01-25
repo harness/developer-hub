@@ -4,9 +4,9 @@ title: EBS Loss By ID
 ---
 
 ## Introduction
-- It causes chaos to disrupt state of EBS volume by detaching it from the node/EC2 instance for a certain chaos duration using volume id.
-- In case of EBS persistent volumes, the volumes can get self-attached and the re-attachment step is skipped.
-Tests deployment sanity (replica availability & uninterrupted service) and recovery workflows of the application pod.
+- This fault disrupts the state of an EBS volume by detaching it from a Kubernetes node or EC2 instance for a certain duration using its volume ID.
+- In case of EBS persistent volumes, they can get self-attached and the re-attachment step is skipped.
+- It tests the deployment sanity (replica availability & uninterrupted service) and recovery workflows of the application pod.
 
 :::tip Fault execution flow chart
 ![EBS Loss By ID](./static/images/ebs-loss.png)
@@ -25,6 +25,7 @@ Coming soon.
 
 :::info
 - Ensure that Kubernetes Version > 1.16.
+- All the target EBS volumes should be in the same AWS region.
 - Ensure that you have sufficient AWS access to attach or detach an EBS volume for the instance. 
 - Ensure to create a Kubernetes secret having the AWS access configuration(key) in the `CHAOS_NAMESPACE`. A sample secret file looks like:
 ```yaml
@@ -62,12 +63,12 @@ stringData:
       </tr>
       <tr>
         <td> EBS_VOLUME_ID </td>
-        <td> Comma separated list of volume IDs subjected to EBS detach chaos</td>
+        <td> Comma separated EBS volume IDs which will be subjected to EBS detach chaos</td>
         <td> Eg. ebs-vol-1,ebs-vol-2 </td>
       </tr>
       <tr>
         <td> REGION </td>
-        <td> The region name for the target volumes</td>
+        <td> The region name where the target EBS volumes are created</td>
         <td> Eg. us-east-1 </td>
       </tr>
     </table>
@@ -80,12 +81,12 @@ stringData:
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The duration for chaos injection (sec) </td>
+        <td> The duration for chaos injection (in seconds) </td>
         <td> Defaults to 30s </td>
       </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>
-        <td> The time duration between the attachment and detachment of the volumes (sec) </td>
+        <td> The duration between the attachment and detachment of a single EBS volumes (in seconds) </td>
         <td> Defaults to 30s </td>
       </tr>
       <tr>
@@ -95,7 +96,7 @@ stringData:
       </tr>
       <tr>
         <td> RAMP_TIME </td>
-        <td> Period to wait before and after injection of chaos in sec </td>
+        <td> Period to wait before and after injection of chaos (in seconds) </td>
         <td> Eg: 30 </td>
       </tr>
     </table>

@@ -44,7 +44,7 @@ The target nodes should be in ready state before and after chaos injection.
       <tr>
         <td> TARGET_NODES </td>
         <td> Comma separated list of nodes, subjected to node CPU hog chaos</td>
-        <td> </td>
+        <td> For Example: <code>node01,node02</code> </td>
       </tr>
       <tr>
         <td> NODE_LABEL </td>
@@ -73,11 +73,10 @@ The target nodes should be in ready state before and after chaos injection.
         <td> RAMP_TIME </td>
         <td> Period to wait before & after injection of chaos in sec </td>
         <td> Eg. 30 </td>
-        <td> </td>
       </tr>
       <tr>
         <td> NODE_CPU_CORE </td>
-        <td> Number of cores of node CPU to be consumed </td>
+        <td> Number of node CPU cores to be stressed </td>
         <td> Defaults to <code>2</code> </td>
       </tr>  
         <tr>
@@ -99,7 +98,7 @@ The target nodes should be in ready state before and after chaos injection.
 Refer the [common attributes](../../common-tunables-for-all-faults) and [Node specific tunable](./common-tunables-for-node-faults) to tune the common tunables for all faults and node specific tunables.
 
 ### Node CPU Cores
-It contains number of cores of node CPU to be consumed. It can be tuned via `NODE_CPU_CORE` ENV.
+It contains the number of node CPU cores to be stressed. It can be tuned via `NODE_CPU_CORE` ENV.
 
 Use the following example to tune this:
 
@@ -128,7 +127,7 @@ spec:
 
 ### Node CPU Load
 
-It contains percentage of node CPU to be consumed. It can be tuned via `CPU_LOAD` ENV.
+It contains percentage of node CPU cores to be stressed. It can be tuned via `CPU_LOAD` ENV.
 
 Use the following example to tune this:
 

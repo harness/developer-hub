@@ -71,8 +71,8 @@ stringData:
         </tr>
         <tr>
             <td> RESOURCE_GROUP </td>
-            <td> The resource group of the target disk(s)</td>
-            <td> </td>
+            <td> The name of the resource group for the target disk(s)</td>
+            <td> For Example: <code>TeamDevops</code> </td>
         </tr>
     </table>
     <h2>Optional Fields</h2>
@@ -89,12 +89,12 @@ stringData:
         </tr>
         <tr>
             <td> TOTAL_CHAOS_DURATION </td>
-            <td> The total time duration for chaos insertion (sec) </td>
+            <td> The total duration for chaos injection (in seconds) </td>
             <td> Defaults to 30s </td>
         </tr>
         <tr>
             <td> CHAOS_INTERVAL </td>
-            <td> The interval (in sec) between successive instance poweroff.</td>
+            <td> The interval (in seconds) between successive instance poweroff.</td>
             <td> Defaults to 30s </td>
         </tr>
         <tr>
@@ -104,7 +104,7 @@ stringData:
         </tr>
         <tr>
             <td> RAMP_TIME </td>
-            <td> Period to wait before and after injection of chaos in sec </td>
+            <td> Period to wait before and after injection of chaos (in seconds) </td>
             <td> Eg: 30 </td>
         </tr>
     </table>

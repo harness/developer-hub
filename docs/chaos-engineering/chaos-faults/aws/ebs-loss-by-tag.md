@@ -26,6 +26,7 @@ Coming soon.
 :::info
 
 - Ensure that Kubernetes Version > 1.16.
+- All the target EBS volumes should be in the same AWS region.
 - Ensure that you have sufficient AWS access to attach or detach an EBS volume for the instance. 
 - Ensure to create a Kubernetes secret having the AWS access configuration(key) in the `CHAOS_NAMESPACE`. A sample secret file looks like:
 ```yaml
@@ -65,12 +66,12 @@ stringData:
       </tr>
       <tr>
         <td> EBS_VOLUME_TAG </td>
-        <td> Provide the common tag for target volumes. It'll be in form of <code>key:value</code> (Ex: 'team:devops')</td>
-        <td> </td>
+        <td> Provide a common tag for all the target volumes. It should be in the form of <code>key:value</code> </td>
+        <td> For example: <code>team:devops</code> </td>
       </tr>
       <tr>
         <td> REGION </td>
-        <td> The region name for the target volumes</td>
+        <td> The region name for all the target volumes</td>
         <td> Eg. us-east-1 </td>
       </tr>
     </table>
@@ -88,12 +89,12 @@ stringData:
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The duration for chaos injection (sec) </td>
+        <td> The duration for chaos injection (in seconds) </td>
         <td> Defaults to 30s </td>
       </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>
-        <td> The time duration between the attachment and detachment of the volumes (sec) </td>
+        <td> The duration between the attachment and detachment of the volumes (in seconds) </td>
         <td> Defaults to 30s </td>
       </tr>
       <tr>
@@ -103,7 +104,7 @@ stringData:
       </tr>
       <tr>
         <td> RAMP_TIME </td>
-        <td> Period to wait before and after injection of chaos in sec </td>
+        <td> Period to wait before and after injection of chaos (in seconds) </td>
         <td> Eg: 30 </td>
       </tr>
     </table>

@@ -5,8 +5,8 @@ title: Kubelet Density
 
 ## Introduction
 
-- It checks the resilience of the kubelet by creating pods on the specified node.
-- It helps to check the performance of the kubelet for the specified node
+- This fault checks the resiliency of the kubelet by creating pods on the specified node.
+- It helps in checking the performance of the kubelet for the specified node.
 
 :::tip Fault execution flow chart
 ![Kubelet Density](./static/images/kubelet-density.png)
@@ -63,23 +63,23 @@ Coming soon.
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The total time duration for chaos insertion (sec) </td>
+        <td> The total duration for chaos injection (in seconds) </td>
         <td> Defaults to 90s </td>
       </tr>
       <tr>
         <td> POD_COUNT </td>
-        <td> total number of pods, which needs to be created during chaos</td>
+        <td> Total number of pods which needs to be created during the chaos</td>
         <td> Defaults to 50 </td>
       </tr>
       <tr>
         <td> TARGET_NAMESPACE </td>
-        <td> namespace where pods needs to be created</td>
+        <td> Namespace where the pods need to be created</td>
         <td> Defaults to same as CHAOS_NAMESPACE </td>
       </tr>
       <tr>
         <td> POD_TEMPLATE_CM </td>
-        <td> name of the config map, which contains pod template</td>
-        <td> </td>
+        <td> Name of the config map which contains the pod template</td>
+        <td> For Example: <code>stress-app-manifest</code> </td>
       </tr>
       <tr>
         <td> POD_TEMPLATE_PATH </td>
@@ -98,7 +98,7 @@ Coming soon.
       </tr>
       <tr>
         <td> RAMP_TIME </td>
-        <td> Period to wait before and after injection of chaos in sec </td>
+        <td> Period to wait before and after injection of chaos (in seconds) </td>
         <td> Eg. 30 </td>
       </tr>
     </table>

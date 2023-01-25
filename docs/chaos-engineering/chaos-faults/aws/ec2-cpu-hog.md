@@ -18,7 +18,7 @@ title: EC2 CPU Hog
 
 :::info
 
-> The fault causes CPU hog/stress on the target AWS EC2 Instance(s). The idea of this fault is to simulate issues when there is lack of cpu for other running processes/applications resulting into degrading their performance.
+> The fault causes CPU hog/stress on the target AWS EC2 Instance(s). The idea of this fault is to simulate issues when there is lack of CPU for other running processes/applications resulting into degrading their performance.
 > By injecting a rogue process into a target EC2 instance, we starve the main processes/applications (typically pid 1) of the resources allocated to it (where limits are defined) causing slowness in application traffic or in other cases unrestrained use can cause instance to exhaust resources leading to degradation in performance of processes/applications present on the instance. So this category of chaos fault helps to build the immunity on the application undergoing any such stress scenario.
 
 :::
@@ -91,12 +91,12 @@ stringData:
         </tr>
         <tr>
             <td> TOTAL_CHAOS_DURATION </td>
-            <td> The total time duration for chaos injection (sec) </td>
+            <td> The total duration for chaos injection (in seconds) </td>
             <td> Defaults to 30s </td>
         </tr>
         <tr>
             <td> CHAOS_INTERVAL </td>
-            <td> The interval (in sec) between successive chaos injection</td>
+            <td> The interval (in seconds) between successive chaos injection</td>
             <td> Defaults to 60s </td>
         </tr>
         <tr>
@@ -116,7 +116,7 @@ stringData:
         </tr>
         <tr>
             <td> CPU_LOAD </td>
-            <td> Provide the percentage of a single CPU core to be consumed</td>
+            <td> Provide the percentage load to be exerted on a single CPU core</td>
             <td> Defaults to 100 </td>
         </tr>
         <tr>
@@ -126,7 +126,7 @@ stringData:
         </tr>
         <tr>
             <td> RAMP_TIME </td>
-            <td> Period to wait before and after injection of chaos in sec </td>
+            <td> Period to wait before and after injection of chaos (in seconds) </td>
             <td> Eg: 30 </td>
         </tr>
     </table>
