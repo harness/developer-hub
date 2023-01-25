@@ -458,11 +458,6 @@ The **Provisioner Identifier** can be used with other steps to perform common Te
 - Roll back the provisioning performed by this Terragrunt Apply step:
   - Use the same **Provisioner Identifier** in this Terragrunt Apply step and a Terragrunt Rollback step (in the **Rollback** section of **Execution**).
 
-The most common use of **Provisioner Identifier** is between the Terragrunt Plan and Terragrunt Apply or Terragrunt Destroy steps. 
-
-For the Terragrunt Apply step to apply the plan from the Terragrunt Plan step, it uses the same **Provisioner Identifier**.
-
-For the Terragrunt Destroy step to destroy the plan from the Terragrunt Plan step, it uses the same **Provisioner Identifier**.
 
 Here's an example of how the **Provisioner Identifier** is used across steps:
 
@@ -478,17 +473,19 @@ For this reason, it's important that all your project members know the provision
 
 #### Secret Manager
 
+The **Secret Manager** setting helps you protect your Terragrunt information.
+
 1. Select a Harness [secrets manager](https://developer.harness.io/docs/platform/Security/harness-secret-manager-overview) to use for encrypting/decrypting and saving the Terragrunt plan file.
+
+The Terragrunt Apply step will perform a `terraform plan` command before applying.
 
 A Terragrunt plan is a sensitive file that could be misused to alter resources if someone has access to it. Harness avoids this issue by never passing the Terragrunt plan file as plain text.
 
 Harness only passes the Terragrunt plan between the Harness Manager and delegate as an encrypted file using a secrets manager.
 
-When the `terragrunt plan` command runs on the Harness delegate, the delegate encrypts the plan and saves it to the secrets manager you selected. The encrypted data is passed to the Harness Manager.
+When the terragrunt plan command runs on the Harness delegate, the delegate encrypts the plan and saves it to the secrets manager you selected. The encrypted data is passed to the Harness Manager.
 
 When the plan is applied, the Harness manager passes the encrypted data to the delegate.
-
-The delegate decrypts the encrypted plan and runs it.
 
 #### Configuration File Repository
 
@@ -502,20 +499,19 @@ Here, you'll add a connection to the Terragrunt script repo.
     ![picture 4](static/2c7889d9dbae6966e8899d90310b0564b4552af33f2fffb553d30d11d96298d7.png)
 3. Select or create a [Git connector](https://developer.harness.io/docs/platform/Connectors/connect-to-code-repo) for your repo.
 4. Once you have selected a connector, click **Continue**.
-   
-   In **Config File Details**, provide the Git repo details.
-5. In **Git Fetch Type**, select **Latest from Branch** or **Specific Commit Id**.
+5. In **Config File Details**, provide the Git repo details.
+6. In **Git Fetch Type**, select **Latest from Branch** or **Specific Commit Id**.
    
    When you run the Pipeline, Harness will fetch the script from the repo.
    
    **Specific Commit Id** also supports Git tags. If you think the script might change often, you might want to use **Specific Commit Id**. For example, if you are going to be fetching the script multiple times in your pipeline, Harness will fetch the script each time. If you select **Latest from Branch** and the branch changes between fetches, different scripts are run.
-6. In **Branch**, enter the name of the branch to use.
-7. In **File Path**, enter the path from the root of the repo to the file containing the script.
-8. Click **Submit**.
+7. In **Branch**, enter the name of the branch to use.
+8. In **File Path**, enter the path from the root of the repo to the file containing the script.
+9. Click **Submit**.
 
-Your Terragrunt Plan step is now ready. 
+Your Terragrunt Apply step is now ready. 
 
-You can now configure a Terragrunt [Apply](terragrunt-apply.md), [Destroy](terragrunt-destroy.md), or [Rollback](terragrunt-rollback.md) step to use the Terragrunt script from this Terragrunt Plan step.
+You can now configure a Terragrunt [Destroy](terragrunt-destroy.md) or [Rollback](terragrunt-rollback.md) step to use the Terragrunt provisioning from this Terragrunt Apply step.
 
 The following sections cover common Terragrunt Plan step options.
 
