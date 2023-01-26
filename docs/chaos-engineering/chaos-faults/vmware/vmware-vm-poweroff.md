@@ -1,31 +1,29 @@
 ---
-id: vmware-vmpoweroff
-title: VMware VM-Poweroff
+id: VMware-vm-power-off
+title: VMware VM power off
 ---
 
-## Introduction
-- It stops/powers off the VMWare VMs before bringing them back to power-on state after a specific chaos duration using the VMWare APIs.
-- It checks the performance of the application running on the VMWare VMs.
+VMware VM poweroff stops (or powers off) the VMware VMs for a specific duration.
+- After the duration, the VMs are back to original state.
+- It checks the performance of the application running on the VMware VMs.
 
-:::tip Fault execution flow chart
+
 ![VMware VM Poweroff](./static/images/vm-poweroff.png)
-:::
 
-## Uses
+
+## Usage
 <details>
-<summary>View the uses of the fault</summary>
+<summary>View fault usage</summary>
 <div>
-Coming soon.
+This fault helps determine how resilient an application is to random power failures. It determines how efficiently an application recovers and restarts the services.
 </div>
 </details>
 
 ## Prerequisites
 
-:::info
-
 - Kubernetes >= 1.17
 - Vcenter access to stop and start the VM.
-- Kubernetes secret that has the Vcenter credentials in the `CHAOS_NAMESPACE`. A sample secret file looks like:
+- Kubernetes secret that has the Vcenter credentials in the `CHAOS_NAMESPACE`. Below is a sample secret file:
 
 ```yaml
 apiVersion: v1
@@ -40,24 +38,17 @@ stringData:
     VCENTERPASS: XXXXXXXXXXXXX
 ```
 
-### NOTE
+### Note
+You can pass the VM credentials as secrets or as a `ChaosEngine` environment variable.
 
-You can pass the VM credentials as a secret or as a chaosengine environment variable.
-:::
 
-## Default Validations
-
-:::info
-
+## Default validations
 - The VM should be in a healthy state.
 
-:::
-
-## Fault Tunables
-
+## Fault tunables
 <details>
-    <summary>Check the Fault Tunables</summary>
-    <h2>Mandatory Fields</h2>
+    <summary>Fault tunables</summary>
+    <h2>Mandatory fields</h2>
     <table>
       <tr>
         <th> Variables </th>
@@ -66,11 +57,11 @@ You can pass the VM credentials as a secret or as a chaosengine environment vari
       </tr>
       <tr>
         <td> APP_VM_MOIDS </td>
-        <td> MOIDs of the VMware instance</td>
-        <td> Once you open the VM in VCenter WebClient, you can find MOID in address field (VirtualMachine:vm-5365). Alternatively you can use the CLI to fetch the MOID. For example, vm-5365. </td>
+        <td> MOIDs of the VMware instance. After you open the VM in VCenter WebClient, you can find the MOID in the address field (VirtualMachine:vm-5365). Alternatively you can use the CLI to fetch the MOID. </td>
+        <td> For example, <code>vm-5365</code>. </td>
       </tr>
     </table>
-    <h2>Optional Fields</h2>
+    <h2>Optional fields</h2>
     <table>
       <tr>
         <th> Variables </th>
@@ -79,41 +70,41 @@ You can pass the VM credentials as a secret or as a chaosengine environment vari
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The total duration to insert chaos (in seconds). </td>
-        <td> Defaults to 30s </td>
+        <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
+        <td> Defaults to 30s. </td>
       </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>
-        <td> The interval between successive instance terminations (in seconds). </td>
-        <td> Defaults to 30s </td>
+        <td> Time interval between two successive instance terminations (in seconds). </td>
+        <td> Defaults to 30s. </td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
-        <td> It defines sequence of chaos execution for multiple instances. </td>
-        <td> The default value is 'parallel', and it supports 'serial' value too. </td>
+       <td> Sequence of chaos execution for multiple instances. </td>
+        <td> Defaults to parallel. Supports serial sequence as well. </td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
-        <td> Period to wait before and after injection of chaos (in seconds). </td>
-        <td> For example, 30 seconds</td>
+        <td> Period to wait before and after injecting chaos (in seconds). </td>
+        <td> For example, 30s. </td>
       </tr>
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common Fault Tunables
+### Common fault tunables
 Refer to the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
-### Stop/Poweroff the VM By MOID
+### Stop/Poweroff the VM by MOID
 
-It contains MOID of the VM instance. You can tune it using the `APP_VM_MOIDS` environment variable.
+It contains the MOID of the VM instance. You can tune it using the `APP_VM_MOIDS` environment variable.
 
 Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/vm-poweroff/app-vm-moid.yaml yaml)
 ```yaml
-# power-off the VMWare VM
+# power-off the VMware VM
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
