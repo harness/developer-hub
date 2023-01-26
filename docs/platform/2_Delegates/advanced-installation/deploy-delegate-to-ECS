@@ -253,6 +253,6 @@ For more information, see [EC2 instance types](https://aws.amazon.com/ec2/instan
  4. Then register the service definition:
  
     ```
-    aws esc create-service --cli-input-json file://service.json
+    aws ecs create-service --cli-input-json file://service.json
     ```
 
