@@ -1,7 +1,8 @@
 ---
 title: Define a CI Build Infrastructure in Google Cloud Platform
 description: This topic describes how to set up a CI build infrastructure in Google Cloud Platform. You will create an Ubuntu VM and install a CI Delegate and Drone Runner on it. The Delegate creates VMs dynamically in response to CI build requests.
-# sidebar_position: 2
+
+sidebar_position: 95
 helpdocs_topic_id: k5rvvhw49i
 helpdocs_category_id: rg8mrhqm95
 helpdocs_is_private: true
