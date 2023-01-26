@@ -79,6 +79,13 @@ Harness Policy as Code does the following for you:
 - Enforces policies when pipelines are saved or run.
 - Finds breaches as early as possible through shift-left governance.
 
+### Delegate
+
+Harness NextGen supports improved Delegate which uses a new type of [image](https://developer.harness.io/docs/platform/Delegates/get-started-with-delegates/delegate-image-types) and supports the below features:
+
+-> Deploy delegate images with or without third-party client tools. Recommendation for security conscious customers is to use the delegate minimal image.
+-> Delegate is auto updated by default with an option to disable it.
+
 ## Does upgrading impact Harness CD FirstGen usage?
 
 No. Upgrading to Harness CD NextGen does not impact your existing FirstGen usage. 
