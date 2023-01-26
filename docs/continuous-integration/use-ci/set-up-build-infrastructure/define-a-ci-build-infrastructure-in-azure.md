@@ -3,7 +3,7 @@ title: Define a CI Build Infrastructure in Microsoft Azure
 description: This topic describes how to set up a CI build infrastructure in Microsoft Azure. You will create a VM and install a CI Delegate and Drone Runner on it. The Delegate creates VMs dynamically in response to CI build requests.
 tags: 
    - helpDocs
-sidebar_position: 30
+sidebar_position: 50
 helpdocs_topic_id: rhs0wi4l0q
 helpdocs_category_id: rg8mrhqm95
 helpdocs_is_private: false

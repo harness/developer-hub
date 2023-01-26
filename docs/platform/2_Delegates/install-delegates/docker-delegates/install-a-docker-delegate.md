@@ -70,7 +70,7 @@ CONTAINER ID        IMAGE                     COMMAND                  CREATED  
 ```
 #### Verification
 
-For an overview of verification, see [Delegate Registration and Verification](/docs/platform/2_Delegates/manage-delegates/delegate-registration.md).
+For an overview of verification, see [Delegate Registration and Verification](/docs/platform/2_Delegates/get-started-with-delegates/delegate-registration.md).
 
 In the Delegate wizard, click **Verify** and Harness will verify that it is receiving heartbeats from the Delegate.
 

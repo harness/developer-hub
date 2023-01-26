@@ -20,6 +20,10 @@ Looking for the How-to? See [Add a Kubernetes Cluster Connector](../add-a-kubern
 
 Here's a 10min video that walks you through adding a Harness Kubernetes Cluster Connector and Harness Kubernetes Delegate. The Delegate is added to the target cluster and then the Kubernetes Cluster Connector uses the Delegate to connect to the cluster:
 
+<!-- Video:
+https://www.youtube.com/watch?v=wUC23lmqfnY-->
+<docvideo src="https://www.youtube.com/watch?v=wUC23lmqfnY" />
+
 ### Kubernetes Cluster Connector vs Platform Connectors
 
 The Kubernetes Cluster Connector is platform-agnostic. Use it to access a cluster on any platform.
@@ -166,7 +170,7 @@ When you select a Delegate, the Harness Delegate will inherit the Kubernetes ser
 
 The service account associated with the Delegate pod must have the Kubernetes `cluster-admin` role.
 
-See [Install a Kubernetes Delegate](../../2_Delegates/install-delegates/kubernetes-delegates/install-a-kubernetes-delegate.md).
+See [Install a Kubernetes Delegate](../../2_Delegates/advanced-installation/install-a-kubernetes-delegate.md).
 
 #### Master URL
 
@@ -328,7 +332,7 @@ AWS EKS is supported using the Inherit Delegate Credentials option in the Kubern
 To install a delegate in your AWS infrastructure, do the following:
 
 * Install a Harness Kubernetes Delegate in your EKS cluster.You must be logged in as an admin user when you run the `kubectl apply -f harness-delegate.yaml` command.
-* Give it a name that you can recognize as an EKS cluster Delegate. For information on installing a Kubernetes Delegate, see [Install a Kubernetes Delegate](../../2_Delegates/install-delegates/kubernetes-delegates/install-a-kubernetes-delegate.md).
+* Give it a name that you can recognize as an EKS cluster Delegate. For information on installing a Kubernetes Delegate, see [Install a Kubernetes Delegate](../../2_Delegates/advanced-installation/install-a-kubernetes-delegate.md).
 * In the Kubernetes Cluster Connector settings, select the Delegate.
 * When setting up the EKS cluster as the target Infrastructure, select the Kubernetes Cluster Connector.
 

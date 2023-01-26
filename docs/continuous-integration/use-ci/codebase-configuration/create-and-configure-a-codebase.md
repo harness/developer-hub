@@ -54,7 +54,7 @@ In this step, you'll create the Codebase for a new Pipeline in Harness CIE.
 	2. Click New Connector and select the Connector type based on your repo hosting service: GitHub, GitLab, BitBucket, AWS CodeCommit, or Git (if you're using another provider).
 6. Click through the setup wizard and configure the Codebase Connector Settings as needed.
 
-The CodeCommit, Bitbucker, GitHub, and GitLab Connectors have authorization settings as required by their respective providers. The Git Connector can connect with any provider using Basic authentication over HTTPS.
+The CodeCommit, Bitbucket, GitHub, and GitLab Connectors have authorization settings as required by their respective providers. The Git Connector can connect with any provider using Basic authentication over HTTPS.
 
 * [AWS CodeCommit Connector Settings Reference](../../../platform/7_Connectors/ref-cloud-providers/aws-connector-settings-reference.md)
 * [Bitbucket Connector Settings Reference](../../../platform/7_Connectors/ref-source-repo-provider/bitbucket-connector-settings-reference.md)
@@ -62,7 +62,7 @@ The CodeCommit, Bitbucker, GitHub, and GitLab Connectors have authorization sett
 * [GitHub Connector Settings Reference](../../../platform/7_Connectors/ref-source-repo-provider/git-hub-connector-settings-reference.md)
 * [GitLab Connector Settings Reference](../../../platform/7_Connectors/ref-source-repo-provider/git-lab-connector-settings-reference.md)
 
-After you set up and configure the Connector, Harness will use the configured repo to clone your source code and to test and build your Pipeline.
+After you set up and configure the Connector, Harness will use the configured repo to clone your source code so that the pipeline can perform actions upon it.
 
 You can also view the list of your saved connectors in **Connectors** under **Project Setup**.
 

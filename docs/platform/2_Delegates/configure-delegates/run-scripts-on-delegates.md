@@ -100,7 +100,7 @@ Follow the remaining Delegate installation steps.
 
 See:
 
-* [Install a Kubernetes delegate](/docs/platform/2_Delegates/install-delegates/kubernetes-delegates/install-a-kubernetes-delegate.md)
+* [Install a Kubernetes delegate](/docs/platform/2_Delegates/advanced-installation/install-a-kubernetes-delegate.md)
 * [Install a Docker delegate](/docs/platform/2_Delegates/install-delegates/docker-delegates/install-a-docker-delegate.md)
 
 ### Step 4: Verify the script

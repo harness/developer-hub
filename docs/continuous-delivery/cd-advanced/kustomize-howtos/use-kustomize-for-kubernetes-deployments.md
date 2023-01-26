@@ -486,7 +486,7 @@ name: KUSTOMIZE_PATH
 value: "<path>"  
 ...
 ```
-See [Install a Kubernetes Delegate](../../../platform/2_Delegates/install-delegates/kubernetes-delegates/install-a-kubernetes-delegate.md).
+See [Install a Kubernetes Delegate](../../../platform/2_Delegates/advanced-installation/install-a-kubernetes-delegate.md).
 
 ### Docker Delegate
 
@@ -496,7 +496,7 @@ Add the Kustomize path environment variable in the Delegate Docker compose file:
 ```yaml
 - KUSTOMIZE_PATH=<path>
 ```
-See [Install the Docker Delegate](../../../platform/2_Delegates/install-delegates/docker-delegates//install-a-docker-delegate.md).
+See [Install the Docker Delegate](../../../platform/2_Delegates/install-delegates/docker-delegates/install-a-docker-delegate.md).
 
 ## Next Steps
 

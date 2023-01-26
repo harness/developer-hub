@@ -1,5 +1,5 @@
 ---
-title: Sample harness-delegate.yaml with NFS volume mounted
+title: Sample mounted NFS volume
 description: This sample harness-delegate.yaml declares a mounted NFS volume. 
 # sidebar_position: 2
 helpdocs_topic_id: hipzqa4ntk
@@ -45,7 +45,7 @@ data:
   
 ---  
   
-# If delegate needs to use a proxy, please follow instructions available in the documentation  
+# If the delegate must use a proxy, follow the instructions in the documentation at  
 # https://developer.harness.io/docs/first-gen/firstgen-platform/account/manage-delegates/configure-delegate-proxy-settings/  
   
 apiVersion: apps/v1  

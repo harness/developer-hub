@@ -128,7 +128,7 @@ You can see the logs for the GitHub GCP Upload Action in the Pipeline as it runs
 
 ### Configure As Code: YAML
 
-To configure your pipeline as YAML in CI, go to Harness **Pipeline Studio** and click **YAML**. Here’s is a working example of GitHub Action Cloud Storage Upload to GCP in CI. Modify the YAML attributes such as name, identifiers, codebase, connector ref, environment variables based on your Pipeline requirements.
+To configure your pipeline as YAML in CI, go to Harness **Pipeline Studio** and select **YAML**. The following is a working example of GitHub Action Cloud Storage Upload to GCP in CI. Modify the YAML attributes such as name, identifiers, codebase, connector ref, and environment variables based on your pipeline requirements.
 
 
 ```
