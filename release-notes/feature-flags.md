@@ -25,12 +25,12 @@ This release does not include early access features.
 
 ### Fixed issues
 #### Feature Flag SDKs
-- The React Client SDK has been updated to 1.1.0. This includes the following changes:
+- The React Client SDK has been updated to version 1.1.0. This includes the following changes:
   - You can now listen for errors that are caused by network issues. For more information about this, go to [the SDK's readme file.](https://github.com/harness/ff-react-client-sdk/blob/main/README.md) (FFM-6578)
-  - You can now provide the SDK with a set of evaluations which it can serve instantly on initialization. For more information about this, go to [the SDK's readme file.](https://github.com/harness/ff-react-client-sdk/blob/main/README.md) (FFM-6578) 
+  - You can now provide the SDK with a set of evaluations that it can serve instantly on initialization. For more information about this, go to [the SDK's readme file.](https://github.com/harness/ff-react-client-sdk/blob/main/README.md) (FFM-6578) 
 
-- The Javascript SDK has been updated to 1.8.0. This includes the following changes:
-  - You can now provide the SDK with a set of evaluations which it can serve instantly on initialization. For more information about this, go to [the SDK's readme file.](https://github.com/harness/ff-javascript-client-sdk/blob/main/README.md) (FFM-6489) 
+- The Javascript SDK has been updated to version 1.8.0. This includes the following changes:
+  - You can now provide the SDK with a set of evaluations that it can serve instantly on initialization. For more information about this, go to [the SDK's readme file.](https://github.com/harness/ff-javascript-client-sdk/blob/main/README.md) (FFM-6489) 
 
 ## January 24, 2023
 
