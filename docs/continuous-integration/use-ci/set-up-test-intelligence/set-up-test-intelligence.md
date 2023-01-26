@@ -58,7 +58,7 @@ The following screenshot explains the various parameters of **Configure Run Test
 | --- | --- |
 | **Name** | Enter a unique name for the step. |
 | **Description** | Enter a description for the step. |
-| **Container Registry** | The Harness connector for a container registry. This is the container registry that Harness will pull the image from to run build commands on (e.g. DockerHub). |
+| **Container Registry** | The Harness connector for a container registry. This is the container registry from which Harness pulls the image to run build commands on, for example, DockerHub. |
 | **Image** | The name of the Docker image to use for running the build commands. Enter a Fully Qualified Image Name(FQIN) when using a private container registry. |
 | **Arguments** | Enter the [arguments](../../ci-technical-reference/configure-run-tests-step-settings.md) for the build tool. These are used as input for the build tool choice. |
 | **Build Tool** | Enter the build automation tool. Currently, Harness supports the following:*<p></p><p>**Java:** [Bazel](https://bazel.build/), [Maven](https://maven.apache.org/), and [Gradle](https://gradle.org/).</p><p>**.NET:** .[NET CLI](https://docs.microsoft.com/en-us/dotnet/core/tools/) and [Nunit](https://nunit.org/).</p>|
