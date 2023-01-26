@@ -203,6 +203,7 @@ This fault helps determine how resilient an application is to random halts. It d
 </accordion>
 
 </FaultDetailsCard>
+
 <FaultDetailsCard category="vmware">
 
 ### VMware VM power off

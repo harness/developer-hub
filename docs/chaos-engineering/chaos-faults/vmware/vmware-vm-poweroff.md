@@ -1,9 +1,9 @@
 ---
-id: VMware-vmpoweroff
-title: VMware VM-poweroff
+id: VMware-vm-power-off
+title: VMware VM power off
 ---
 
-VMware VM-poweroff stops (or powers off) the VMware VMs for a specific duration.
+VMware VM poweroff stops (or powers off) the VMware VMs for a specific duration.
 - After the duration, the VMs are back to original state.
 - It checks the performance of the application running on the VMware VMs.
 
