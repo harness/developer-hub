@@ -4,6 +4,12 @@ description: Harness has first-class support for Terragrunt as an infrastructure
 sidebar_position: 1
 ---
 
+:::note
+
+Currently, Terragrunt support is behind the feature flag `TERRAGRUNT_PROVISION_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
 Harness has first-class support for [Terragrunt](https://terragrunt.gruntwork.io/docs/) as an infrastructure provisioner.
 
 This topic describes each of the Terragrunt steps you can use in you CD stage, and how these steps are commonly used together.
@@ -532,7 +538,9 @@ In the workspace interpolation sequence you can see the count is assigned by app
 
 1. In **Workspace**, enter the name of the workspace to use.
 
-    Harness will pass the workspace name you provide to the `terraform.workspace` variable, thus determining the count. Using the example above, if you provide the name `production`, the count will be 3.
+    Terraform will pass the workspace name you provide to the `terraform.workspace` variable, thus determining the count. This is the same as the `terraform workspace select` command.
+    
+    Using the example above, if you provide the name `production`, the count will be 3.
 
     You can also set **Workspace** as a [runtime inputs or expression](https://developer.harness.io/docs/platform/references/runtime-inputs/) and use a different workspace name each time the pipeline is run.
 

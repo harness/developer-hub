@@ -14,6 +14,12 @@ Currently, this feature is behind the feature flag `CLOUDFORMATION_NG`. Contact 
 
 :::
 
+:::info
+
+Dynamic provisioning is only supported in [Service and Environments v1](../../onboard-cd/upgrading/upgrade-cd-v2). Dynamic provisioning will be added to Service and Environments v2 soon. Until then, you can create a stage to provision the target infrastructure and then a subsequent stage to deploy to that provisioned infrastructure.
+
+:::
+
 This topic describes how to provision a CD stage's deployment infrastructure resources using the CloudFormation **Create Stack**, **Delete Stack**, and **Rollback Stack** steps.
 
 You can use these steps in a CD stage's **Execution** section as part of the deployment process, but this topic describes how to use them in the **Infrastructure** section to provision resources before deployment.
