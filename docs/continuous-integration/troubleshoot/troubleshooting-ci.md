@@ -15,7 +15,7 @@ If you cannot find a resolution, please contact [Harness Support](mailto:suppor
 
 ### Troubleshooting remote builds
 
-Harness CI includes a Re-run in Debug Mode command for troubleshooting remote builds. This command is available only for the following build types:
+The Harness CI **Re-run in Debug Mode** feature can troubleshoot remote builds. This command is available only for the following build types:
 
 * This feature is available only for builds in remote infrastructures: Harness Cloud, Kubernetes, or VMs on remote hosts.
 
