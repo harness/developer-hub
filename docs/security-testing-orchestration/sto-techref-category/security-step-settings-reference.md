@@ -264,7 +264,7 @@ When `product_name` is set to `checkmarx`
 	+ Accepted values(s): `default`
 * When `policy_type` is set to `orchestratedScan`
 	+ `tool_args`
-	   You can use this field to run the [Checkmarx plugin](https://www.jenkins.io/doc/pipeline/steps/checkmarx/#checkmarx-plugin) with specific command-line arguments. To run an incremental scan, for example, specify `tool_args` = `-incremental`.  
+	   You can use this field to run the [Checkmarx plugin](https://checkmarx.com/resource/documents/en/34965-8152-running-scans-from-the-cli.html) with specific command-line arguments. To run an incremental scan, for example, specify `tool_args` = `-incremental`.  
 
 #### Running incremental scans with Checkmarx
 
