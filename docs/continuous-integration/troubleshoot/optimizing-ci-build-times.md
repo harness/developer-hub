@@ -30,7 +30,7 @@ Testing is an important part of Continuous Integration. Testing safeguards the q
 
 The following practices can reduce your build times significantly: 
 
-* Pre-build images that include all required dependencies. If most of the build time is spent downloading dependencies, you sh ould pre-build an image with all required dependencies in a separate pipeline. Set up a periodic pipeline that builds the image with all the latest dependencies and pushes it to the registry. This image will be used by all the build pipelines.  
+* Pre-build images that include all required dependencies. If most of the build time is spent downloading dependencies, you should pre-build an image with all required dependencies in a separate pipeline. Set up a periodic pipeline that builds the image with all the latest dependencies and pushes it to the registry. This image will be used by all the build pipelines.  
 Pre-building images with all required dependencies is more efficient than downloading them to a baseline image as part of the Build setup. This is especially true if you update your images often to ensure that they include all the latest updates.
 * Exclude unnecessary files and packages from your images. In addition to reducing build times, this makes the resulting images smaller, simpler, and more portable. You can use [dockerignore](https://docs.docker.com/engine/reference/builder/#dockerignore-file) files to exclude unnecessary files and folders from your images.
 * Sort multi-line arguments in your Dockerfile alphabetically. This makes it easier to update and avoid duplicate packages.
