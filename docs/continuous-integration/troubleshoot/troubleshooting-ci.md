@@ -27,7 +27,7 @@ The following steps describe the workflow.
   
 1. Navigate to the **Builds**, **Execution**, or **Execution History** page in the Harness UI.
 
-2. Choose **Re-run in Debug Mode** in the pull-down menu (**&equiv;**) for the build you want to troubleshoot.
+2. Choose **Re-run in Debug Mode** in the options menu (**&vellip;**) for the build you want to troubleshoot.
 
    ![](./static/ci-rerun-build-in-debug-mode.png) 
 
