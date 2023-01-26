@@ -11,78 +11,121 @@ import { experiments } from "./experiments"
 
 <!-- Heading Description -->
 
-Kubernetes faults disrupt the resources running on a Kubernetes cluster. They can be categorized into Pod-level faults and Node-level faults.
 
 <!-- Experiment List and Search Bar (every experiment added below, need to be added in this file also) -->
 
 <ExperimentListSection experiments={experiments} />
 
-## Faults Introduction
+## Introduction
 
-Learn intelligent software delivery skills with step-by-step tutorials, interactive labs, videos and reference docs.
+Kubernetes faults disrupt the resources running on a Kubernetes cluster. They can be categorized into pod-level faults and node-level faults.
 
 <!-- Code for Fault Card starts from here -->
 
 <FaultDetailsCard category="kubernetes" subCategory="pod">
 
-<!-- please specify category in above tag to generate correct experiment icons and links by itself, if links are broken please contact @Sahil, that's me -->
+### Docker service kill
 
-### Pod Delete
-
-<!-- Need above heading in markdown ### for it to populate right navigation bar and generate links -->
-
-- This experiment Causes the application to become unreachable on account of node turning unschedulable (NotReady) due to docker service kill
-- The docker service has been stopped/killed on a node to make it unschedulable for a certain duration i.e TOTAL_CHAOS_DURATION. The application node should be healthy after the chaos injection and the services should be re-accessible.
-- The application implies services. Can be reframed as: Test application resiliency upon replica getting unreachable caused due to docker service down.
-
-<!-- <accordion color='green'/> has same usage as details but green in color -->
+Docker service kill makes the application unreachable on the account of the node turning unschedulable (NotReady).
+- Docker service is stopped (or killed) on a node to make it unschedulable for a specific duration defined by the `TOTAL_CHAOS_DURATION` environment variable. 
+- The application node goes back to normal state and services are resumed after the chaos duration. 
 
 <accordion color="green">
-    <summary>View the uses of the experiment</summary>
-    In the distributed system like kubernetes it is very likely that your application replicas may not be sufficient to manage the traffic (indicated by SLIs) when some of the replicas are unavailable due to any failure (can be system or application) the application needs to meet the SLO(service level objectives) for this, we need to make sure that the applications have minimum number of available replicas. One of the common application failures is when the pressure on other replicas increases then to how the horizontal pod autoscaler scales based on observed resource utilization and also how much PV mount takes time upon rescheduling. The other important aspects to test are the MTTR for the application replica, re-elections of leader or follower like in kafka application the selection of broker leader, validating minimum quorum to run the application for example in applications like percona, resync/redistribution of data.
+    <summary>View fault usage</summary>
+This fault determines the resilience of an application when a node becomes unschedulable, i.e. NotReady state.
 </accordion>
-
-<!-- <accordion /> has same usage as details with default blue color -->
-
-<accordion>
-    <summary>View the uses of the experiment</summary>
-    In the distributed system like kubernetes it is very likely that your application replicas may not be sufficient to manage the traffic (indicated by SLIs) when some of the replicas are unavailable due to any failure (can be system or application) the application needs to meet the SLO(service level objectives) for this, we need to make sure that the applications have minimum number of available replicas. One of the common application failures is when the pressure on other replicas increases then to how the horizontal pod autoscaler scales based on observed resource utilization and also how much PV mount takes time upon rescheduling. The other important aspects to test are the MTTR for the application replica, re-elections of leader or follower like in kafka application the selection of broker leader, validating minimum quorum to run the application for example in applications like percona, resync/redistribution of data.
-</accordion>
-
-<!-- ensure to enclose all markdown inside the <FaultDetailsCard/> tag-->
 
 </FaultDetailsCard>
 
-<!-- Code for Fault Card ends here -->
+<FaultDetailsCard category="kubernetes" subCategory="node">
 
-<!-- Code for Fault Card starts from here -->
+### Kubelet service kill
+
+Docker service kill makes the application unreachable on the account of the node turning unschedulable (NotReady).
+- Docker service is stopped (or killed) on a node to make it unschedulable for a specific duration defined by the `TOTAL_CHAOS_DURATION` environment variable. 
+- The application node goes back to normal state and services are resumed after the chaos duration. 
+
+<accordion color="green">
+    <summary>View fault usage</summary>
+This fault determines the resilience of an application when a node becomes unschedulable, i.e. NotReady state.
+</accordion>
+
+</FaultDetailsCard>
 
 <FaultDetailsCard category="kubernetes" subCategory="node">
 
-<!-- please specify category in above tag to generate correct experiment icons and links by itself, if links are broken please contact @Sahil, that's me -->
+### Node CPU hog
 
-### Docker Service Kill
-
-<!-- Need above heading in markdown ### for it to populate right navigation bar and generate links -->
-
-- This experiment Causes the application to become unreachable on account of node turning unschedulable (NotReady) due to docker service kill
-- The docker service has been stopped/killed on a node to make it unschedulable for a certain duration i.e TOTAL_CHAOS_DURATION. The application node should be healthy after the chaos injection and the services should be re-accessible.
-- The application implies services. Can be reframed as: Test application resiliency upon replica getting unreachable caused due to docker service down.
-
-<!-- <accordion color='green'/> has same usage as details but green in color -->
+Node CPU hog exhausts the CPU resources on a Kubernetes node. The CPU chaos is injected using a helper pod running the Linux stress tool (a workload generator). The chaos affects the application for a period defined by the `TOTAL_CHAOS_DURATION` environment variable.
 
 <accordion color="green">
-    <summary>View the uses of the experiment</summary>
-    In the distributed system like kubernetes it is very likely that your application replicas may not be sufficient to manage the traffic (indicated by SLIs) when some of the replicas are unavailable due to any failure (can be system or application) the application needs to meet the SLO(service level objectives) for this, we need to make sure that the applications have minimum number of available replicas. One of the common application failures is when the pressure on other replicas increases then to how the horizontal pod autoscaler scales based on observed resource utilization and also how much PV mount takes time upon rescheduling. The other important aspects to test are the MTTR for the application replica, re-elections of leader or follower like in kafka application the selection of broker leader, validating minimum quorum to run the application for example in applications like percona, resync/redistribution of data.
+    <summary>View fault usage</summary>
+The fault aims to verify resiliency of applications whose replicas may be evicted on account on nodes turning unschedulable (Not Ready) due to lack of CPU resources.
 </accordion>
 
-<!-- <accordion /> has same usage as details with default blue color -->
+</FaultDetailsCard>
 
-<accordion>
-    <summary>View the uses of the experiment</summary>
-    In the distributed system like kubernetes it is very likely that your application replicas may not be sufficient to manage the traffic (indicated by SLIs) when some of the replicas are unavailable due to any failure (can be system or application) the application needs to meet the SLO(service level objectives) for this, we need to make sure that the applications have minimum number of available replicas. One of the common application failures is when the pressure on other replicas increases then to how the horizontal pod autoscaler scales based on observed resource utilization and also how much PV mount takes time upon rescheduling. The other important aspects to test are the MTTR for the application replica, re-elections of leader or follower like in kafka application the selection of broker leader, validating minimum quorum to run the application for example in applications like percona, resync/redistribution of data.
+<FaultDetailsCard category="kubernetes" subCategory="node">
+
+### Node drain
+ 
+Node drain drains the node of all its resources running on it. Due to this, services running on the target node should be rescheduled to run on other nodes. 
+
+<accordion color="green">
+    <summary>View fault usage</summary>
+This fault determines the resilience of the application when the nodes are deprived of resources. 
 </accordion>
 
-<!-- ensure to enclose all markdown inside the <FaultDetailsCard/> tag-->
+</FaultDetailsCard>
+
+<FaultDetailsCard category="kubernetes" subCategory="node">
+
+### Node IO stress
+
+Node IO stress causes I/O stress on the Kubernetes node. The amount of I/O stress is specifed as the size in percentage of the total free space available on the file system using `FILESYSTEM_UTILIZATION_PERCENTAGE` environment variable or in gigabytes(GB) using `FILESYSTEM_UTILIZATION_BYTES` environment variable. When both the values are provided, `FILESYSTEM_UTILIZATION_PERCENTAGE` takes precendence. It tests application resiliency on replica evictions that occur due I/O stress on the available disk space.
+
+<accordion color="green">
+    <summary>View fault usage</summary>
+The fault aims to verify the resilience of applications that share the disk resource for ephemeral or persistent storage purposes.
+</accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="kubernetes" subCategory="node">
+
+### Node memory hog
+
+Node memory hog causes memory resource exhaustion on the Kubernetes node. It is injected using a helper pod running the Linux stress-ng tool (a workload generator). The chaos affects the application foe a duration specified by the `TOTAL_CHAOS_DURATION` environment variable.
+
+<accordion color="green">
+    <summary>View fault usage</summary>
+Node memory hog causes memory resource exhaustion on the Kubernetes node. The fault aims to verify resilience of applications whose replicas may be evicted on account on nodes becoming unschedulable (Not Ready) due to lack of memory resources.
+</accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="kubernetes" subCategory="node">
+
+### Node restart
+
+Node restart disrupts the state of the node by restarting it. It tests deployment sanity (replica availability and uninterrupted service) and recovery workflows of the application pod.
+
+<accordion color="green">
+    <summary>View fault usage</summary>
+This fault determines the deployment sanity (replica availability and uninterrupted service) and recovery workflows of the application pod.
+</accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="kubernetes" subCategory="node">
+
+### Node taint
+
+Node taint taints (contaminates) the node by applying the desired effect. The resources that contain the corresponding tolerations only can bypass the taints.
+
+<accordion color="green">
+    <summary>View fault usage</summary>
+The fault aims to verify resiliency of applications when the nodes of a container (or deployment) are contaminated.
+</accordion>
 
 </FaultDetailsCard>

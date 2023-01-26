@@ -1,32 +1,30 @@
 ---
 id: node-restart
-title: Node Restart
+title: Node restart
 ---
 
-## Introduction
+Node restart disrupts the state of the node by restarting it.
+- It tests deployment sanity (replica availability and uninterrupted service) and recovery workflows of the application pod.
 
-- It causes chaos to disrupt state of node by restarting it.
-- It tests deployment sanity (replica availability & uninterrupted service) and recovery workflows of the application pod.
 
-:::tip Fault execution flow chart 
 ![Node Restart](./static/images/node-restart.png)
-:::
 
-## Uses
+
+## Usage
 <details>
 <summary>View the uses of the fault</summary>
 <div>
-Coming soon.
+This fault determines the deployment sanity (replica availability and uninterrupted service) and recovery workflows of the application pod.
 </div>
 </details>
 
 ## Prerequisites
-:::info
-- Ensure that Kubernetes Version > 1.16
-- Create a Kubernetes secret named `id-rsa` where the fault will run, where its contents will be the private SSH key for `SSH_USER` used to connect to the node that hosts the target pod in the secret field `ssh-privatekey`. A sample secret is shown below:
 
-        ```yaml
-        apiVersion: v1
+- Kubernetes > 1.16
+- Create a Kubernetes secret named `id-rsa` where the fault will be executed. The contents of the secret will be the private SSH key for `SSH_USER` that will be used to connect to the node that hosts the target pod in the secret field `ssh-privatekey`. Below is a sample secret file:
+
+```yaml
+apiVersion: v1
         kind: Secret
         metadata:
           name: id-rsa
@@ -34,31 +32,31 @@ Coming soon.
         stringData:
           ssh-privatekey: |-
             # SSH private key for ssh contained here
-        ```
+```
 
-    Creating the RSA key pair for remote SSH access should be a trivial exercise for those who are already familiar with an ssh client, which entails the following actions:
+Creating the RSA key pair for remote SSH access for those who are already familiar with an SSH client, has been summarized below.
         
-    1. Create a new key pair and store the keys in a file named `my-id-rsa-key` and `my-id-rsa-key.pub` for the private and public keys respectively: 
-        ```
-        ssh-keygen -f ~/my-id-rsa-key -t rsa -b 4096
-        ```
-    2. For each node available, run this following command to copy the public key of `my-id-rsa-key`:
-        ```
-        ssh-copy-id -i my-id-rsa-key user@node
-        ```
+1. Create a new key pair and store the keys in a file named `my-id-rsa-key` and `my-id-rsa-key.pub` for the private and public keys respectively: 
+```
+ssh-keygen -f ~/my-id-rsa-key -t rsa -b 4096
+```
+2. For each available node, run the below command that copies the public key of `my-id-rsa-key`:
+```
+ssh-copy-id -i my-id-rsa-key user@node
+```
         
-    For further details, please check this [documentation](https://www.ssh.com/ssh/keygen/). Once you have copied the public key to all nodes and created the secret described earlier, you are ready to start your fault.
-:::
+For further details, refer to [this](https://www.ssh.com/ssh/keygen/) documentation. After copying the public key to all nodes and creating the secret, you are all set to execute the fault.
 
-## Default Validations
-:::note
-The target nodes should be in ready state before and after chaos injection.
-:::
 
-## Fault Tunables
+## Default validations
+
+The target nodes should be in the ready state before and after injecting chaos.
+
+
+## Fault tunables
 <details>
-    <summary>Check the Fault Tunables</summary>
-    <h2>Mandatory Fields</h2>
+    <summary>Fault tunables</summary>
+    <h2>Mandatory fields</h2>
     <table>
       <tr>
         <th> Variables </th>
@@ -67,56 +65,56 @@ The target nodes should be in ready state before and after chaos injection.
       </tr>
       <tr>
         <td> TARGET_NODE </td>
-        <td> Name of target node, subjected to chaos. If not provided it will select the random node</td>
+        <td> Name of the target node subject to chaos. If this is not provided, a random node is selected. </td>
         <td> </td>
       </tr>
       <tr>
         <td> NODE_LABEL </td>
-        <td> It contains node label, which will be used to filter the target node if TARGET_NODE ENV is not set </td>
-        <td>It is mutually exclusive with the TARGET_NODE ENV. If both are provided then it will use the TARGET_NODE</td>
+       <td> It contains the node label that is used to filter the target nodes.</td>
+        <td>It is mutually exclusive with the <code>TARGET_NODES</code> environment variable. If both are provided, <code>TARGET_NODES</code> takes precedence.</td>
       </tr>
     </table>
-    <h2>Optional Fields</h2>
+    <h2>Optional fields</h2>
     <table>
       <tr>
         <th> Variables </th>
         <th> Description </th>
         <th> Notes </th>
       </tr>
-       <tr>
+       <tr>    
         <td> LIB_IMAGE </td>
-        <td> The image used to restart the node </td>
-        <td> Defaults to <code>litmuschaos/go-runner:latest</code> </td>
+        <td> Image used to run the stress command. </td>
+        <td> Defaults to <code>litmuschaos/go-runner:latest</code>. </td>
       </tr>
       <tr>
         <td> SSH_USER </td>
-        <td> name of ssh user </td>
-        <td> Defaults to <code>root</code> </td>
+        <td> Name of the SSH user. </td>
+        <td> Defaults to <code>root</code>. </td>
       </tr>
       <tr>
         <td> TARGET_NODE_IP </td>
-        <td> Internal IP of the target node, subjected to chaos. If not provided, the fault will lookup the node IP of the <code>TARGET_NODE</code> node</td>
-        <td> Defaults to empty </td>
+        <td> Internal IP of the target node subject to chaos. If not provided, the fault uses the node IP of the <code>TARGET_NODE</code>. </td>
+        <td> Defaults to empty. </td>
       </tr>
       <tr>
         <td> REBOOT_COMMAND </td>
-        <td> Command used for reboot </td>
-        <td> Defaults to <code>sudo systemctl reboot</code> </td>
+        <td> Command used to reboot. </td>
+        <td> Defaults to <code>sudo systemctl reboot</code>. </td>
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The time duration for chaos insertion (sec) </td>
-        <td> Defaults to 30s </td>
+        <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
+        <td> Default to 120s. </td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
-        <td> Period to wait before and after injection of chaos in sec </td>
-        <td> Eg. 30 </td>
+        <td> Period to wait before and after injecting chaos (in seconds). </td>
+        <td> For example, 30s. </td>
       </tr>
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
 ### Common and Node specific tunables
 Refer the [common attributes](../../common-tunables-for-all-faults) and [Node specific tunable](./common-tunables-for-node-faults) to tune the common tunables for all faults and node specific tunables.

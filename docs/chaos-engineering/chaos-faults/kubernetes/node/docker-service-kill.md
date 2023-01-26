@@ -1,42 +1,40 @@
 ---
 id: docker-service-kill
-title: Docker Service Kill
+title: Docker service kill
 ---
 
-## Introduction
-- This fault causes the application to become unreachable on account of node turning unschedulable (NotReady) due to docker service kill
-- The docker service has been stopped/killed on a node to make it unschedulable for a certain duration i.e `TOTAL_CHAOS_DURATION`. The application node should be healthy after the chaos injection and the services should be re-accessible.
-- The application implies services. Can be reframed as: Test application resiliency upon replica getting unreachable caused due to docker service down.
+Docker service kill makes the application unreachable on the account of the node turning unschedulable (NotReady).
+- Docker service is stopped (or killed) on a node to make it unschedulable for a specific duration defined by the `TOTAL_CHAOS_DURATION` environment variable. 
+- The application node goes back to normal state and services are resumed after the chaos duration. 
 
-:::tip Fault execution flow chart 
 ![Docker Service Kill](./static/images/svc-kill.png)
-:::
 
-## Uses
+
+## Usage
 <details>
-<summary>View the uses of the fault</summary>
+<summary>View fault usage</summary>
 <div>
-Coming soon.
+This fault determines the resilience of an application when a node becomes unschedulable, i.e. NotReady state.
 </div>
 </details>
 
 ## Prerequisites
-:::info
-- Ensure that Kubernetes Version > 1.16
-- Ensure that the node specified in the fault ENV variable <code>TARGET_NODE</code> (the node for which docker service need to be killed) should be cordoned before execution of the chaos fault to ensure that the fault resources are not scheduled on it or subjected to eviction. This can be achieved with the following steps:
-  - Get node names against the applications pods: <code>kubectl get pods -o wide</code>
-  - Cordon the node <code>kubectl cordon &lt;nodename&gt;</code>
-:::
 
-## Default Validations
-:::note
-The target nodes should be in ready state before and after chaos injection.
-:::
+- Kubernetes > 1.16
+- Node specified in the <code>TARGET_NODE</code> environment variable (the node for which Docker service would be killed) should be cordoned before executing the chaos fault. This ensures that the fault resources are not scheduled on it (or subject to eviction). This is achieved by the following steps:
+  - Get node names against the applications pods using command <code>kubectl get pods -o wide</code>.
+  - Cordon the node using command <code>kubectl cordon &lt;nodename&gt;</code>.
 
-## Fault Tunables
+
+## Default validations
+
+The target nodes should be in the ready state before and after injecting chaos.
+
+
+## Fault tunables
 <details>
-    <summary>Check the Fault Tunables</summary>
-    <h2>Mandatory Fields</h2>
+    <summary>Fault tunables</summary>
+    <h2>Mandatory fields</h2>
     <table>
       <tr>
         <th> Variables </th>
@@ -45,13 +43,13 @@ The target nodes should be in ready state before and after chaos injection.
       </tr>
       <tr>
         <td> TARGET_NODE </td>
-        <td> Name of the target node</td>
-        <td> Eg. node-1 </td>
+        <td> Name of the target node. </td>
+        <td> For example, <code>node-1</code>. </td>
       </tr>
       <tr>
         <td> NODE_LABEL </td>
         <td> It contains node label, which will be used to filter the target node if TARGET_NODE ENV is not set </td>
-        <td> It is mutually exclusive with the TARGET_NODE ENV. If both are provided then it will use the <code>TARGET_NODE</code> </td>
+        <td> It is mutually exclusive with the TARGET_NODE ENV. If both are provided then it will use the <code>TARGET_NODE</code>. </td>
       </tr>
     </table>
     <h2>Optional Fields</h2>
@@ -63,27 +61,27 @@ The target nodes should be in ready state before and after chaos injection.
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The time duration for chaos insertion (seconds) </td>
-        <td> Defaults to 60s </td>
+        <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
+        <td> Defaults to 60s. </td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before injection of chaos in sec </td>
-        <td> Eg. 30 </td>
+        <td> For example, 30s. </td>
       </tr>
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common and Node specific tunables
-Refer the [common attributes](../../common-tunables-for-all-faults) and [Node specific tunable](./common-tunables-for-node-faults) to tune the common tunables for all faults and node specific tunables.  
+### Common and node-specific tunables
+Refer to the [common attributes](../../common-tunables-for-all-faults) and [node-specific tunables](./common-tunables-for-node-faults) to tune the common tunables for all faults and node specific tunables.  
 
-### Kill Docker Service
+### Kill docker service
 
-It contains name of target node subjected to the chaos. It can be tuned via `TARGET_NODE` ENV.
+It contains the name of the target node subject to the chaos. You can tune it using the `TARGET_NODE` environment variable.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/docker-service-kill/docker-service-kill.yaml yaml)
 ```yaml
