@@ -1,20 +1,25 @@
 ---
 id: VMware-http-reset-peer
-title: VMware HTTP Reset Peer
+title: VMware HTTP reset peer
 ---
 
-## Introduction
+VMware HTTP reset peer injects HTTP reset chaos that stops the outgoing HTTP requests by resetting the TCP connection for the requests.
+- The service whose port is affected is specified using the `TARGET_SERVICE_PORT` environment variable. 
+- It tests the application's resilience to lossy (or flaky) HTTP connections.
 
-- It injects HTTP reset on the service whose port is provided as `TARGET_SERVICE_PORT`. It stops outgoing HTTP requests by resetting the TCP connection for the requests.
-- It tests the application's resilience to lossy or flaky HTTP connection.
 
+![VMware HTTP Reset Peer](./static/images/vmware-http-reset-peer.png)
 
-![VMware HTTP Reset Peer](./static/images/VMware-http-reset-peer.png)
+## Usage
 
+<details>
+<summary>View the uses of the fault</summary>
+<div>
+This fault helps determine how resilient an application is when outgoing HTTP requests are halted unexpectly. It determines how quickly and efficiently an application recovers from these unexpected halts. 
+</div>
+</details>
 
 ## Prerequisites
-
-info
 
 - Kubernetes >= 1.17
 - Vcenter access to stop and start the VM.
@@ -38,18 +43,14 @@ You can pass the VM credentials as secrets or as a `ChaosEngine` environment var
 
 
 ## Default validations
-
-info
-
 - The VM should be in a healthy state.
-
 
 
 ## Fault tunables
 
 <details>
     <summary>Fault tunables</summary>
-    <h2>Mandatory Fields</h2>
+    <h2>Mandatory fields</h2>
     <table>
         <tr>
             <th> Variables </th>
@@ -58,28 +59,28 @@ info
         </tr>
         <tr>
             <td> VM_NAME </td>
-            <td> Name of VMware VM. </td>
-            <td> For example: test-vm. </td>
+            <td> Name of the VMware VM. </td>
+            <td> For example, <code>test-vm</code>. </td>
         </tr>
-        <tr>
+       <tr>
             <td> VM_USER_NAME </td>
-            <td> Username with sudo priviliges.</td>
-            <td> For example: vm-user</td>
+            <td> Username with sudo privileges.</td>
+            <td> For example, <code>vm-user</code>.</td>
         </tr>
         <tr>
             <td> VM_PASSWORD </td>
             <td> User password. </td>
-            <td> For example: 1234. </td>
+            <td> For example, <code>1234</code>. </td>
         </tr>
         <tr>
             <td> RESET_TIMEOUT  </td>
             <td> It specifies the duration after which the connect is reset. </td>
-            <td> Its default value is 0. </td>
+            <td> Defaults to 0. </td>
         </tr>
         <tr>
             <td> TARGET_SERVICE_PORT </td>
             <td> Service port to target </td>
-            <td> Its default value is port 80. </td>
+            <td> Defaults to port 80. </td>
         </tr>
     </table>
     <h2>Optional Fields</h2>
@@ -91,58 +92,54 @@ info
         </tr>
         <tr>
             <td> TOTAL_CHAOS_DURATION </td>
-            <td> The total duration to insert chaos (in seconds). </td>
-            <td> Its default value is 30s. </td>
+            <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
+            <td> Defaults to 30s. </td>
         </tr>
         <tr>
             <td> CHAOS_INTERVAL </td>
-            <td> The interval between successive instance terminations (in seconds). </td>
-            <td> Its default value is 30s. </td>
+            <td> Time interval between two successive instance terminations (in seconds). </td>
+            <td> Defaults to 30s. </td>
         </tr>
         <tr>
             <td> SEQUENCE </td>
-            <td> It defines sequence of chaos execution for multiple instance </td>
-            <td> Its default value is 'parallel', and it supports 'serial' value too. </td>
+            <td> Sequence of chaos execution for multiple instances. </td>
+        <td> Defaults to parallel. Supports serial sequence as well. </td>
         </tr>
         <tr>
-            <td> <td> RAMP_TIME </td>
+            <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> For example, 30s. </td>ME </td>
-            <td> Period to wait before and after injection of chaos (in seconds). </td>
-            <td> For example: 30. </td>
+            <td> For example, 30s. </td>
         </tr>
         <tr>
             <td> INSTALL_DEPENDENCY </td>
-            <td> Whether to install the dependancy to run the experiment. </td>
-            <td> If the dependency already exists, you can turn it off. Its default value is 'True'.</td>
+            <td> Specify whether you wish to install the dependency to run the experiment. </td>
+            <td> Defaults to true. If the dependency already exists, you can turn it off. </td>
         </tr>
         <tr>
             <td> PROXY_PORT  </td>
             <td> Port where the proxy listens for requests.</td>
-            <td> Its default value is 20000. </td>
+            <td> Defaults to 20000. </td>
         </tr>
         <tr>
             <td> TOXICITY </td>
-            <td> Percentage of HTTP requests affected. </td>
-            <td> Its default value is 100. </td>
+            <td> Percentage of HTTP requests that are affected. </td>
+            <td> Defaults to 100. </td>
         </tr>
         <tr>
           <td> NETWORK_INTERFACE  </td>
           <td> Network interface used for the proxy. </td>
-          <td> Its default value is `eth0`. </td>
+          <td> Defaults to eth0. </td>
         </tr>
     </table>
 </details>
 
-        <td> Default value: parallel. Supported: serial, parallel </td>
 ## Fault examples
 
-        <td> Default value: parallel. Supported: serial, parallel </td>
 ### Common fault tunables
 
 Refer to the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
-### Target Service Port
+### Target service port
 
 It defines the port of the target service. You can tune it using the `TARGET_SERVICE_PORT` environment variable.
 
@@ -168,7 +165,7 @@ spec:
           value: "80"
 ```
 
-### Proxy Port
+### Proxy port
 
 It defines the port where proxy server listens for requests. You can tune it using the `PROXY_PORT` environment variable.
 
@@ -197,7 +194,7 @@ spec:
           value: "80"
 ```
 
-### Reset Timeout
+### Reset timeout
 
 It defines the reset timeout value that is added to the HTTP request. You can tune it using the `RESET_TIMEOUT` environment variable.
 
@@ -228,8 +225,7 @@ spec:
 
 ### Toxicity
 
-It defines the toxicity value that is added to the HTTP request. You can tune it using the `TOXICITY` environment variable.
-It defines the percentage of the total number of HTTP requests that are affected.
+It defines the toxicity value, i.e the percentage of the total number of HTTP requests that are affected. You can tune it using the `TOXICITY` environment variable.
 
 Use the following example to tune it:
 
@@ -258,7 +254,7 @@ spec:
           value: "80"
 ```
 
-### Network Interface
+### Network interface
 
 It defines the network interface that is used for the proxy. You can tune it using the `NETWORK_INTERFACE` environment variable.
 

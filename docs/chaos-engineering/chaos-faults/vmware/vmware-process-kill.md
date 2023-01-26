@@ -1,21 +1,19 @@
 ---
 id: VMware-process-kill
-title: VMware Process kill
+title: VMware process kill
 ---
 
-## Introduction
-- VMware Process Kill fault kills the target processes running as part of a Linux OS based VMware VM to determine the application/process resilience.
-- It helps to check the performance of the application/process running on the VMware VMs.
+VMware process kill kills the target processes that are running as a part of a Linux OS based VMware VM.
+- It helps determine the resilience of an application (or process) running on the VMware VMs.
 
-
-![VMware Process kill](./static/images/VMware-process-kill.png)
+![VMware Process kill](./static/images/vmware-process-kill.png)
 
 
 ## Usage
 <details>
 <summary>View fault usage</summary>
 <div>
-Disrupt the application critical processes such as databases or message queues running in the VMware VM by killing their underlying processes or threads.
+This fault disrupts critical processes running within the application, such as databases or message queues. These services may be running in the VMware VM, and this fault kills their underlying processes or threads. Such faults help determine how efficiently and quickly the VMware instance recovers from the unexpected disruption.
 </div>
 </details>
 
@@ -43,15 +41,14 @@ stringData:
 You can pass the VM credentials as secrets or as a `ChaosEngine` environment variable.
 
 ## Default validations
-info
-- VM should be in healthy state.
-- The target processes should exist in the VM.
+- The VM should be in a healthy state.
+- The target processes should exist inside the VM.
 
 
 ## Fault tunables
 <details>
     <summary>Fault tunables</summary>
-    <h2>Mandatory Fields</h2>
+    <h2>Mandatory fields</h2>
     <table>
       <tr>
         <th> Variables </th>
@@ -60,16 +57,16 @@ info
       </tr>
       <tr>
         <td> VM_NAME </td>
-        <td> Name of the VM in which the target processes reside </td>
-        <td> ubuntu-vm-1 </td>
+        <td> Name of the VM where the target processes reside. </td>
+        <td> For example, <code>ubuntu-vm-1</code>. </td>
       </tr>
       <tr>
         <td> PROCESS_IDS </td>
-        <td> Process IDs of the target processes provided as comma separated values </td>
-        <td> 183,253,857 </td>
+        <td> Process IDs of the target processes that are provided as comma-separated values. </td>
+        <td> For example, <code>183,253,857</code>. </td>
       </tr>
     </table>
-    <h2>Optional Fields</h2>
+    <h2>Optional fields</h2>
     <table>
       <tr>
         <th> Variables </th>
@@ -78,8 +75,8 @@ info
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The total time duration for chaos insertion (sec) </td>
-        <td> Defaults to 30s </td>
+        <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
+        <td> Defaults to 30s. </td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
@@ -89,20 +86,17 @@ info
     </table>
 </details>
 
-        <td> Default value: parallel. Supported: serial, parallel </td>
 ## Fault examples
 
-        <td> Default value: parallel. Supported: serial, parallel </td>
 ### Common fault tunables
-Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
+Refer to the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
-### PROCESS_IDS
-It contains the target process Ids running on a particular VM
+### Process IDs
+It contains the target process IDs running on a particular VM. You can tune it using the `PROCESS_IDS` environment variable.
 
+Use the following example to tune it:
 
-Use the following example to tune this:
-
-[embedmd]:# (./static/manifests/VMware-process-kill/VMware-process-kill.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-process-kill/VMware-process-kill.yaml yaml)
 ```yaml
 # Process kill in the VMware VM
 apiVersion: litmuschaos.io/v1alpha1

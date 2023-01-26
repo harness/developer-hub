@@ -7,7 +7,7 @@ VMware host reboot reboots a VMware host that is attached to the Vcenter.
 - It also measures the infrastructure resilience in case of an high availability (HA) cluster.
 
 
-![VMware Host Reboot](./static/images/VMware-host-reboot.png)
+![VMware Host Reboot](./static/images/vmware-host-reboot.png)
 
 ## Usage
 <details>
@@ -46,7 +46,7 @@ You can pass the VM credentials as secrets or as a `ChaosEngine` environment var
 ## Fault tunables
 <details>
     <summary>Fault tunables</summary>
-    <h2>Mandatory Fields</h2>
+    <h2>Mandatory fields</h2>
     <table>
       <tr>
         <th> Variables </th>
@@ -69,7 +69,7 @@ You can pass the VM credentials as secrets or as a `ChaosEngine` environment var
         <td> Defaults to disable. Supports enable as well. </td>
       </tr>
     </table>
-    <h2>Optional Fields</h2>
+    <h2>Optional fields</h2>
     <table>
       <tr>
         <th> Variables </th>
@@ -94,7 +94,7 @@ It reboots a vCenter host.
 
 Use the following example to tune it:
 
-[embedmd]:# (./static/manifests/VMware-host-reboot/host-reboot.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-host-reboot/host-reboot.yaml yaml)
 ```yaml
 # vCenter host reboot
 apiVersion: litmuschaos.io/v1alpha1
@@ -123,7 +123,7 @@ It reboots a vCenter host which is a part of a high availability cluster.
 
 Use the following example to tune it:
 
-[embedmd]:# (./static/manifests/VMware-host-reboot/ha-host-reboot.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-host-reboot/ha-host-reboot.yaml yaml)
 ```yaml
 # vCenter HA cluster host reboot
 apiVersion: litmuschaos.io/v1alpha1

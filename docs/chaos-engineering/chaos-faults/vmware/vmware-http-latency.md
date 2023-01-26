@@ -1,14 +1,21 @@
 ---
 id: VMware-http-latency
-title: VMware HTTP Latency
+title: VMware HTTP latency
 ---
+VMware HTTP latency injects HTTP response latency into the service whose port is specified using the `TARGET_SERVICE_PORT` environment variable. This is achieved by starting the proxy server and redirecting the traffic through the proxy server.
+- It helps determine the application's resilience to lossy (or flaky) HTTP responses.
 
-- It injects HTTP response latency on the service whose port is provided as `TARGET_SERVICE_PORT` by starting the proxy server and redirecting the traffic through the proxy server.
-- It tests the application's resilience to lossy/flaky HTTP responses.
 
+![VMware HTTP Latency](./static/images/vmware-http-latency.png)
 
-![VMware HTTP Latency](./static/images/VMware-http-latency.png)
+## Usage
 
+<details>
+<summary>View the uses of the fault</summary>
+<div>
+This fault helps determine how resilient an application is to HTTP latency. It helps determine how the system recovers or fetches the responses when there is a delay in accessing the service.
+</div>
+</details>
 
 ## Prerequisites
 - Kubernetes >= 1.17
@@ -33,7 +40,6 @@ You can pass the VM credentials as secrets or as a `ChaosEngine` environment var
 
 
 ## Default validations
-info
 - The VM should be in a healthy state.
 
 
@@ -41,7 +47,7 @@ info
 
 <details>
     <summary>Fault tunables</summary>
-    <h2>Mandatory Fields</h2>
+    <h2>Mandatory fields</h2>
     <table>
         <tr>
             <th> Variables </th>
@@ -50,31 +56,31 @@ info
         </tr>
         <tr>
             <td> VM_NAME </td>
-            <td> Name of VMware VM</td>
-            <td> For example: test-vm </td>
+            <td> Name of the VMware VM.</td>
+            <td> For example, test-vm. </td>
         </tr>
         <tr>
             <td> VM_USER_NAME </td>
-            <td> Username with sudo priviliges.</td>
-            <td> For example: vm-user</td>
+            <td> Username with sudo privileges.</td>
+            <td> For example, vm-user. </td>
         </tr>
         <tr>
             <td> VM_PASSWORD </td>
-            <td> User password </td>
-            <td> For example: 1234</td>
+            <td> User password. </td>
+            <td> For example, 1234. </td>
         </tr>
         <tr>
             <td> LATENCY </td>
-            <td> Provide latency that is added to the request (in milliseconds).</td>
-            <td> For example: 1000. </td>
+            <td> Delay added to the request (in milliseconds).</td>
+            <td> For example, 1000ms. </td>
         </tr>
         <tr>
             <td> TARGET_SERVICE_PORT </td>
-            <td> Service port to target </td>
-            <td> Its default value is port 80. </td>
+            <td> Service port to target. </td>
+            <td> Defaults to port 80. </td>
         </tr>
     </table>
-    <h2>Optional Fields</h2>
+    <h2>Optional fields</h2>
     <table>
         <tr>
             <th> Variables </th>
@@ -83,25 +89,23 @@ info
         </tr>
         <tr>
             <td> TOTAL_CHAOS_DURATION </td>
-            <td> The total duration to insert chaos (in seconds). </td>
-            <td> Its default value is 30s. </td>
+            <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
+            <td> Defaults to 30s. </td>
         </tr>
         <tr>
             <td> CHAOS_INTERVAL </td>
-            <td> The interval between successive instance terminations (in seconds). </td>
-            <td> Its default value is 30s. </td>
+            <td> Time interval between two successive instance terminations (in seconds). </td>
+            <td> Defaults to 30s. </td>
         </tr>
         <tr>
             <td> SEQUENCE </td>
-            <td> It defines the sequence of chaos execution for multiple instances </td>
-            <td> The default value is 'parallel', and it supports 'serial' value too. </td>
+            <td> Sequence of chaos execution for multiple instances. </td>
+        <td> Defaults to parallel. Supports serial sequence as well. </td>
         </tr>
         <tr>
-            <td> <td> RAMP_TIME </td>
+        <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> For example, 30s. </td>ME </td>
-            <td> Period to wait before and after injection of chaos (in seconds). </td>
-            <td> For example: 30 </td>
+        <td> For example, 30s. </td>
         </tr>
         <tr>
             <td> INSTALL_DEPENDENCY </td>
@@ -111,30 +115,28 @@ info
         <tr>
             <td> PROXY_PORT </td>
             <td> Port where the proxy listens for requests.</td>
-            <td> Its default value is 20000 </td>
+            <td> Defaults to 20000. </td>
         </tr>
         <tr>
             <td> TOXICITY </td>
             <td> Percentage of HTTP requests affected. </td>
-            <td> Its default value is 100 </td>
+            <td> Defaults to 100. </td>
         </tr>
         <tr>
           <td> NETWORK_INTERFACE  </td>
           <td> Network interface used for the proxy. </td>
-          <td> Its default value is `eth0` </td>
+          <td> Defaults to eth0. </td>
         </tr>
     </table>
 </details>
 
-        <td> Default value: parallel. Supported: serial, parallel </td>
 ## Fault examples
 
-        <td> Default value: parallel. Supported: serial, parallel </td>
 ### Common fault tunables
 
 Refer to the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
-### Target Service Port
+### Target service port
 
 It defines the port of the target service. You can tune it using the `TARGET_SERVICE_PORT` environment variable.
 
@@ -220,8 +222,7 @@ spec:
 
 ### Toxicity
 
-It defines the toxicity value added to the HTTP request. You can tune it using the `TOXICITY` environment variable.
-Toxicity value defines the percentage of the total number of HTTP requests that are affected.
+It defines the toxicity value added to the HTTP request. Toxicity value defines the percentage of the total number of HTTP requests that are affected. You can tune it using the `TOXICITY` environment variable.
 
 Use the following example to tune it:
 
@@ -250,7 +251,7 @@ spec:
           value: "80"
 ```
 
-### Network Interface
+### Network interface
 
 It defines the network interface to be used for the proxy. You can tune it using the `NETWORK_INTERFACE` environment variable.
 

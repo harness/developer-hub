@@ -6,7 +6,7 @@ VMware DNS chaos causes DNS errors in the VMware VMs for a specific duration.
 - It checks the performance of the application (or process) running on the VMware VMs.
 
 
-![VMware DNS Chaos](./static/images/VMware-DNS-chaos.png)
+![VMware DNS Chaos](./static/images/vmware-dns-chaos.png)
 
 ## Usage
 <details>
@@ -46,7 +46,7 @@ You can pass the VM credentials as secrets or as a `ChaosEngine` environment var
 ## Fault tunables
 <details>
     <summary>Fault tunables</summary>
-    <h2>Mandatory Fields</h2>
+    <h2>Mandatory fields</h2>
     <table>
       <tr>
         <th> Variables </th>
@@ -69,7 +69,7 @@ You can pass the VM credentials as secrets or as a `ChaosEngine` environment var
         <td> Defaults to 54 </td>
       </tr>
     </table>
-    <h2>Optional Fields</h2>
+    <h2>Optional fields</h2>
     <table>
       <tr>
         <th> Variables </th>
@@ -121,7 +121,7 @@ You can pass the VM credentials as secrets or as a `ChaosEngine` environment var
       </tr>
       <tr>
         <td> GOVC_URL </td>
-        <td> vCenter server URL used to perform API calls using the govc commad.</td>
+        <td> vCenter server URL used to perform API calls using the govc command.</td>
         <td> It is derived from a secret.</td>
       </tr>
       <tr>
@@ -153,7 +153,7 @@ It specifies the DNS port where DNS chaos is injected. You can tune it using the
 
 Use the following example to tune it:
 
-[embedmd]:# (./static/manifests/VMware-DNS-chaos/VMware-DNS-port.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-dns-chaos/vmware-dns-port.yaml yaml)
 ```yaml
 # induces DNS chaos on the VMware VM
 apiVersion: litmuschaos.io/v1alpha1
@@ -184,7 +184,7 @@ It contains the list of the target host names into which DNS chaos is injected. 
 
 Use the following example to tune it:
 
-[embedmd]:# (./static/manifests/VMware-DNS-chaos/VMware-DNS-target-hostnames.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-dns-chaos/vmware-dns-target-hostnames.yaml yaml)
 ```yaml
 # induces DNS chaos on the VMware VMs
 apiVersion: litmuschaos.io/v1alpha1
@@ -217,7 +217,7 @@ It determines whether the DNS query should exactly match the targets or can be a
 
 Use the following example to tune it:
 
-[embedmd]:# (./static/manifests/VMware-DNS-chaos/VMware-DNS-match-scheme.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-dns-chaos/vmware-dns-match-scheme.yaml yaml)
 ```yaml
 # induces DNS chaos on the VMware VMs
 apiVersion: litmuschaos.io/v1alpha1
@@ -250,7 +250,7 @@ It specifies the custom upstream server to which the intercepted DNS requests ar
 
 Use the following example to tune it:
 
-[embedmd]:# (./static/manifests/VMware-DNS-chaos/VMware-DNS-upstream-server.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-dns-chaos/vmware-dns-upstream-server.yaml yaml)
 ```yaml
 # induces DNS chaos on the VMware VMs
 apiVersion: litmuschaos.io/v1alpha1

@@ -6,7 +6,7 @@ title: VMware CPU hog
 VMware CPU hog applies stress on the CPU resources on Linux OS based VMware VM.
 - It checks the performance of the application running on the VMware VMs.
 
-![VMware Cpu Hog](./static/images/VMware-cpu-hog.png)
+![VMware Cpu Hog](./static/images/vmware-cpu-hog.png)
 
 ## Usage
 
@@ -47,7 +47,7 @@ You can pass the VM credentials as secrets or as a `ChaosEngine` environment var
 ## Fault tunables
 <details>
     <summary>Fault tunables</summary>
-    <h2>Mandatory Fields</h2>
+    <h2>Mandatory fields</h2>
     <table>
       <tr>
         <th> Variables </th>
@@ -60,7 +60,7 @@ You can pass the VM credentials as secrets or as a `ChaosEngine` environment var
         <td> For example, <code>ubuntu-vm-1</code>code>. </td>
       </tr>
     </table>
-    <h2>Optional Fields</h2>
+    <h2>Optional fields</h2>
     <table>
       <tr>
         <th> Variables </th>
@@ -110,7 +110,7 @@ It stresses the `CPU_CORE` of the target VM for the duration defined by the `TOT
 
 Use the following example to tune it:
 
-[embedmd]:# (./static/manifests/VMware-cpu-hog/vm-cpu-hog-core.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-cpu-hog/vm-cpu-hog-core.yaml yaml)
 ```yaml
 # CPU hog in the VMware VM
 apiVersion: litmuschaos.io/v1alpha1
@@ -137,7 +137,7 @@ It specifies the load exerted on each VM CPU core (in percentage). You can tune 
 
 Use the following example to tune it:
 
-[embedmd]:# (./static/manifests/VMware-cpu-hog/vm-cpu-hog-load.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-cpu-hog/vm-cpu-hog-load.yaml yaml)
 ```yaml
 # CPU hog in the VMware VM
 apiVersion: litmuschaos.io/v1alpha1

@@ -5,7 +5,7 @@ title: VMware disk loss
 
 VMware disk loss detaches the disks that are attached to a Linux OS based VMware VM.
 
-![VMware Disk Loss](./static/images/VMware-disk-loss.png)
+![VMware Disk Loss](./static/images/vmware-disk-loss.png)
 
 ## Usage
 
@@ -44,7 +44,7 @@ stringData:
 ## Fault tunables
 <details>
     <summary>Fault tunables</summary>
-    <h2>Mandatory Fields</h2>
+    <h2>Mandatory fields</h2>
     <table>
       <tr>
         <th> Variables </th>
@@ -53,8 +53,8 @@ stringData:
       </tr>
       <tr>
         <td> APP_VM_MOIDS </td>
-        <td> Once you open the VM in vCenter WebClient, you can find MOID in the address field (VirtualMachine:vm-5365). You can also use the CLI to fetch the MOID. </td>
-        <td> For example, vm-5365. </td>
+        <td> MOIDs of the VMware instance. After you open the VM in VCenter WebClient, you can find the MOID in the address field (VirtualMachine:vm-5365). Alternatively you can use the CLI to fetch the MOID. </td>
+        <td> For example, <code>vm-5365</code>. </td>
       </tr>
       <tr>
         <td> VIRTUAL_DISK_NAMES </td>
@@ -62,7 +62,7 @@ stringData:
         <td> For example, <code>disk-1.vmdk,disk-2.vmdk</code>. </td>
       </tr>
     </table>
-    <h2>Optional Fields</h2>
+    <h2>Optional fields</h2>
     <table>
       <tr>
         <th> Variables </th>
@@ -102,7 +102,7 @@ It contains the name of the target disks attached to a particular VM. You can tu
 
 Use the following example to tune it:
 
-[embedmd]:# (./static/manifests/VMware-disk-loss/vm-disk-loss-diskname.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-disk-loss/vm-disk-loss-diskname.yaml yaml)
 ```yaml
 # Disk loss in the VMware VM
 apiVersion: litmuschaos.io/v1alpha1

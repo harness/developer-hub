@@ -1,10 +1,10 @@
 ---
 id: VMware-vmpoweroff
-title: VMware VM-Poweroff
+title: VMware VM-poweroff
 ---
 
-## Introduction
-- It stops/powers off the VMware VMs before bringing them back to power-on state after a specific chaos duration using the VMware APIs.
+VMware VM-poweroff stops (or powers off) the VMware VMs for a specific duration.
+- After the duration, the VMs are back to original state.
 - It checks the performance of the application running on the VMware VMs.
 
 
@@ -15,13 +15,11 @@ title: VMware VM-Poweroff
 <details>
 <summary>View fault usage</summary>
 <div>
-Coming soon.
+This fault helps determine how resilient an application is to random power failures. It determines how efficiently an application recovers and restarts the services.
 </div>
 </details>
 
 ## Prerequisites
-
-info
 
 - Kubernetes >= 1.17
 - Vcenter access to stop and start the VM.
@@ -41,7 +39,6 @@ stringData:
 ```
 
 ### Note
-
 You can pass the VM credentials as secrets or as a `ChaosEngine` environment variable.
 
 
@@ -49,10 +46,9 @@ You can pass the VM credentials as secrets or as a `ChaosEngine` environment var
 - The VM should be in a healthy state.
 
 ## Fault tunables
-
 <details>
     <summary>Fault tunables</summary>
-    <h2>Mandatory Fields</h2>
+    <h2>Mandatory fields</h2>
     <table>
       <tr>
         <th> Variables </th>
@@ -61,11 +57,11 @@ You can pass the VM credentials as secrets or as a `ChaosEngine` environment var
       </tr>
       <tr>
         <td> APP_VM_MOIDS </td>
-        <td> MOIDs of the VMware instance</td>
-        <td> Once you open the VM in VCenter WebClient, you can find MOID in address field (VirtualMachine:vm-5365). Alternatively you can use the CLI to fetch the MOID. For example, vm-5365. </td>
+        <td> MOIDs of the VMware instance. After you open the VM in VCenter WebClient, you can find the MOID in the address field (VirtualMachine:vm-5365). Alternatively you can use the CLI to fetch the MOID. </td>
+        <td> For example, <code>vm-5365</code>. </td>
       </tr>
     </table>
-    <h2>Optional Fields</h2>
+    <h2>Optional fields</h2>
     <table>
       <tr>
         <th> Variables </th>
@@ -74,39 +70,35 @@ You can pass the VM credentials as secrets or as a `ChaosEngine` environment var
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The total duration to insert chaos (in seconds). </td>
-        <td> Defaults to 30s </td>
+        <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
+        <td> Defaults to 30s. </td>
       </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>
-        <td> The interval between successive instance terminations (in seconds). </td>
-        <td> Defaults to 30s </td>
+        <td> Time interval between two successive instance terminations (in seconds). </td>
+        <td> Defaults to 30s. </td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
-        <td> It defines sequence of chaos execution for multiple instances. </td>
-        <td> The default value is 'parallel', and it supports 'serial' value too. </td>
+       <td> Sequence of chaos execution for multiple instances. </td>
+        <td> Defaults to parallel. Supports serial sequence as well. </td>
       </tr>
       <tr>
-        <td> <td> RAMP_TIME </td>
+        <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> For example, 30s. </td>ME </td>
-        <td> Period to wait before and after injection of chaos (in seconds). </td>
-        <td> For example, 30 seconds</td>
+        <td> For example, 30s. </td>
       </tr>
     </table>
 </details>
 
-        <td> Default value: parallel. Supported: serial, parallel </td>
 ## Fault examples
 
-        <td> Default value: parallel. Supported: serial, parallel </td>
 ### Common fault tunables
 Refer to the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
-### Stop/Poweroff the VM By MOID
+### Stop/Poweroff the VM by MOID
 
-It contains MOID of the VM instance. You can tune it using the `APP_VM_MOIDS` environment variable.
+It contains the MOID of the VM instance. You can tune it using the `APP_VM_MOIDS` environment variable.
 
 Use the following example to tune it:
 

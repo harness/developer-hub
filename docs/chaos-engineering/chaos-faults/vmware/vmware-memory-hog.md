@@ -1,14 +1,22 @@
 ---
 id: VMware-memory-hog
-title: VMware Memory Hog
+title: VMware memory hog
 ---
 
-## Introduction
-- VMware memory hog fault consumes the Memory resources on Linux OS based VMware VM .
-- It helps to check the performance of the application running on the VMware VMs.
+VMware memory hog fault consumes excessive memory resources on Linux OS based VMware VMs.
+- It determines the performance of the application running on the VMware VMs.
 
 
-![VMware Memory Hog](./static/images/VMware-memory-hog.png)
+![VMware Memory Hog](./static/images/vmware-memory-hog.png)
+
+## Usage
+
+<details>
+<summary>View the uses of the fault</summary>
+<div>
+This fault helps determine how resilient an application is when excessive memory is unexpectedly consumed by resources.
+</div>
+</details>
 
 
 ## Prerequisites
@@ -34,17 +42,13 @@ stringData:
 ### Note
 You can pass the VM credentials as secrets or as a `ChaosEngine` environment variable.
 
-
-
 ## Default validations
-info
-- VM should be in healthy state.
-
+- The VM should be in a healthy state.
 
 ## Fault tunables
 <details>
     <summary>Fault tunables</summary>
-    <h2>Mandatory Fields</h2>
+    <h2>Mandatory fields</h2>
     <table>
       <tr>
         <th> Variables </th>
@@ -53,11 +57,11 @@ info
       </tr>
       <tr>
         <td> VM_NAME </td>
-        <td> Name of the target VM </td>
-        <td> ubuntu-vm-1 </td>
+        <td> Name of the target VM. </td>
+        <td> For example, <code>ubuntu-vm-1</code>. </td>
       </tr>
     </table>
-    <h2>Optional Fields</h2>
+    <h2>Optional fields</h2>
     <table>
       <tr>
         <th> Variables </th>
@@ -66,33 +70,32 @@ info
       </tr>
      <tr>
         <td> MEMORY_CONSUMPTION_MEBIBYTES </td>
-        <td> The amount of memory used of hogging VMware VMs(megabytes) </td>
-        <td> </td>
+        <td> Amount of memory consumed by VMware VMs (in MiB). </td>
+        <td> For example, <code>4024</code>.</td>
       </tr>
       <tr>
         <td> MEMORY_CONSUMPTION_PERCENTAGE </td>
-        <td> Percentage of memory to be consumed </td>
-        <td> Default to 100 </td>
+        <td> Amount of total memory to be consumed (in percentage). </td>
+        <td> Default to 100. </td>
       </tr>
       <tr>
         <td> NUMBER_OF_WORKERS </td>
-        <td> The number of workers used to run the stress process </td>
-        <td> Default to 4 </td>
+        <td> Number of workers used to run the stress process. </td>
+        <td> Defaults to 4. </td>
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The total time duration for chaos insertion (sec) </td>
-        <td> Defaults to 30s </td>
+        <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
+        <td> Defaults to 30s. </td>
       </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>
-        <td> The interval (in sec) between successive instance termination </td>
-        <td> Defaults to 30s </td>
+        <td> Time interval between two successive instance terminations (in seconds). </td>
+        <td> Defaults to 30s. </td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
-        <td> It defines sequence of chaos execution for multiple instance </td>
-        <td> Default value: parallel. Supported: serial, parallel </td>
+        <td> Sequence of chaos execution for multiple instances. </td>
         <td> Defaults to parallel. Supports serial sequence as well. </td>
       </tr>
       <tr>
@@ -103,19 +106,17 @@ info
     </table>
 </details>
 
-        <td> Default value: parallel. Supported: serial, parallel </td>
 ## Fault examples
 
-        <td> Default value: parallel. Supported: serial, parallel </td>
 ### Common fault tunables
-Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
+Refer to the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
-### MEMORY_CONSUMPTION_MEBIBYTES
-It stresses the MEMORY_CONSUMPTION MB memory of the targeted VM for the TOTAL_CHAOS_DURATION duration.
+### Memory consumption in mebibytes
+It defines the memory consumed by the target VM in mebibytes (MiB) for a duration specified by `TOTAL_CHAOS_DURATION` environment variable. You can tune it using the `MEMORY_CONSUMPTION_MEBIBYTES` environment variable.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
-[embedmd]:# (./static/manifests/VMware-memory-hog/vm-memory-hog-memoryconsumption.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-memory-hog/vm-memory-hog-memoryconsumption.yaml yaml)
 ```yaml
 # Memory hog in the VMware VM
 apiVersion: litmuschaos.io/v1alpha1
@@ -137,12 +138,13 @@ spec:
             - name: MEMORY_CONSUMPTION_MEBIBYTES
               value: '500'
 ```
-### Workers For Stress
-The worker's count for the stress can be tuned with NUMBER_OF_WORKERS ENV.
 
-Use the following example to tune this:
+### Workers for stress
+It specifies the worker's count for stress. You can tune it using the `NUMBER_OF_WORKERS` environment variable.
 
-[embedmd]:# (./static/manifests/VMware-memory-hog/vm-memory-hog-worker.yaml yaml)
+Use the following example to tune it:
+
+[embedmd]:# (./static/manifests/vmware-memory-hog/vm-memory-hog-worker.yaml yaml)
 ```yaml
 # Memory hog in the VMware VM
 apiVersion: litmuschaos.io/v1alpha1
