@@ -1,40 +1,37 @@
 ---
 id: node-taint
-title: Node Taint
+title: Node taint
 ---
 
-## Introduction
-- It taints the node to apply the desired effect. The resources which contains the correspoing tolerations can only bypass the taints.
+Node taint taints (contaminates) the node by applying the desired effect. 
+- The resources that contain the corresponding tolerations only can bypass the taints.
 
-:::tip Fault execution flow chart 
 ![Node Taint](./static/images/node-taint.png)
-:::
 
-## Uses
+## Usage
 <details>
 <summary>View the uses of the fault</summary>
 <div>
-Coming soon.
+The fault aims to verify resiliency of applications when the nodes of a container (or deployment) are contaminated.
 </div>
 </details>
 
 ## Prerequisites
-:::info
-- Ensure that Kubernetes Version > 1.16.
-- Ensure that the node specified in the fault ENV variable <code>TARGET_NODE</code> (the node for which docker service need to be killed) should be cordoned before execution of the chaos fault to ensure that the fault resources are not scheduled on it or subjected to eviction. This can be achieved with the following steps:
-  - Get node names against the applications pods: <code>kubectl get pods -o wide</code>
-  - Cordon the node <code>kubectl cordon &lt;nodename&gt;</code>
-:::
 
-## Default Validations
-:::note
-The target nodes should be in ready state before and after chaos injection.
-:::
+- Kubernetes > 1.16
+- Node specified in the <code>TARGET_NODE</code> environment variable (the node for which Docker service would be killed) should be cordoned before executing the chaos fault. This ensures that the fault resources are not scheduled on it (or subject to eviction). This is achieved by the following steps:
+  - Get node names against the applications pods using command <code>kubectl get pods -o wide</code>.
+  - Cordon the node using command <code>kubectl cordon &lt;nodename&gt;</code>.
 
-## Fault Tunables
+
+## Default validations
+
+The target nodes should be in the ready state before and after injecting chaos.
+
+## Fault tunables
 <details>
-    <summary>Check the Fault Tunables</summary>
-    <h2>Mandatory Fields</h2>
+    <summary>Fault tunables</summary>
+    <h2>Mandatory fields</h2>
     <table>
       <tr>
         <th> Variables </th>
@@ -43,21 +40,21 @@ The target nodes should be in ready state before and after chaos injection.
       </tr>
       <tr>
         <td> TARGET_NODE </td>
-        <td> Name of the node to be tainted</td>
+        <td> Name of the node to be tainted. </td>
         <td> </td>
       </tr>
       <tr>
-        <td> NODE_LABEL </td>
-        <td> It contains node label, which will be used to filter the target node if <code>TARGET_NODE</code> ENV is not set </td>
-        <td>It is mutually exclusive with the <code>TARGET_NODE</code> ENV. If both are provided then it will use the <code>TARGET_NODE</code> </td>
+         <td> NODE_LABEL </td>
+        <td> It contains node label, which will be used to filter the target nodes if <code>TARGET_NODES</code> ENV is not set </td>
+        <td>It is mutually exclusive with the <code>TARGET_NODES</code> ENV. If both are provided then it will use the <code>TARGET_NODES</code>. </td>
       </tr>
       <tr>
         <td> TAINT_LABEL </td>
-        <td> Label and effect to be tainted on application node </td>
+        <td> Label and the effect to be tainted on the application node. </td>
         <td> </td>
       </tr>
     </table>
-    <h2>Optional Fields</h2>
+    <h2>Optional fields</h2>
     <table>
       <tr>
         <th> Variables </th>
@@ -66,27 +63,27 @@ The target nodes should be in ready state before and after chaos injection.
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The time duration for chaos insertion (seconds) </td>
-        <td> Defaults to 60s </td>
+        <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
+        <td> Defaults to 60s. </td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
-        <td> Period to wait before injection of chaos in sec </td>
-        <td> Eg. 30 </td>
+        <td> Period to wait before and after injecting chaos (in seconds). </td>
+        <td> For example, 30s. </td>
       </tr>
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common and Node specific tunables
-Refer the [common attributes](../../common-tunables-for-all-faults) and [Node specific tunable](./common-tunables-for-node-faults) to tune the common tunables for all faults and node specific tunables.
+### Common and node-specific tunables
+Refer to the [common attributes](../../common-tunables-for-all-faults) and [node-specific tunables](./common-tunables-for-node-faults) to tune the common tunables for all faults and node specific tunables.
 
-### Taint Label
+### Taint label
 
-It contains label and effect to be tainted on application node. It can be tuned via `TAINT_LABEL` ENV.
+It contains the label and the effect to be tainted on the application node. You can tune it using the `TAINT_LABEL` environment variable.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/node-taint/taint-labels.yaml yaml)
 ```yaml

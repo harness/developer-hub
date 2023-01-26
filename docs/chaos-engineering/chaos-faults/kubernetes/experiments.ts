@@ -1,61 +1,53 @@
 import { ExperimentDetails } from "@site/src/components/ChaosEngineering/ExperimentListSection";
 
 export const experiments: ExperimentDetails[] = [
-  {
-    name: "Pod Delete",
-    description: "This is a description of experiment 1",
-    tags: ["tag1", "pod"],
+{
+    name: "Docker service kill",
+    description: "Docker service kill makes the application unreachable on the account of the node turning unschedulable (NotReady).",
+    tags: [ "node"],
     category: "kubernetes",
   },
   {
-    name: "Docker Service Kill",
-    description:
-      "This is a description of experiment 2. This is a description of experiment 2. This is a description of experiment 2. This is a description of experiment 2",
-    tags: ["node", "tag2"],
+    name: "Kubelet Service Kill",
+    description:"Kubelet service kill makes the application unreachable on the account of the node turning unschedulable (NotReady).",
+    tags: ["node"],
+    category: "kubernetes",
+  },
+{
+    name: "Node CPU hog",
+    description:"Node CPU hog exhausts the CPU resources on a Kubernetes node.",
+    tags: ["node"],
     category: "kubernetes",
   },
   {
-    name: "Definitely Not Pod Delete",
-    description: "This is a description of experiment 2",
-    tags: ["tag3", "pod"],
+    name: "Node drain",
+    description:"Node drain drains the node of all its resources running on it.",
+    tags: ["node"],
     category: "kubernetes",
   },
   {
-    name: "Pod Delete",
-    description: "This is a description of experiment 1",
-    tags: ["tag1", "pod"],
+    name: "Node IO stress",
+    description:"Node IO stress causes I/O stress on the Kubernetes node. ",
+    tags: ["node"],
     category: "kubernetes",
   },
   {
-    name: "Docker Service Kill",
-    description:
-      "This is a description of experiment 2. This is a description of experiment 2. This is a description of experiment 2. This is a description of experiment 2",
-    tags: ["node", "tag2"],
+    name: "Node memory hog",
+    description:"Node memory hog causes memory resource exhaustion on the Kubernetes node. ",
+    tags: ["node"],
     category: "kubernetes",
   },
   {
-    name: "Definitely Not Pod Delete",
-    description: "This is a description of experiment 2",
-    tags: ["tag3", "pod"],
+    name: "Node restart",
+    description:"Node restart disrupts the state of the node by restarting it.",
+    tags: ["node"],
     category: "kubernetes",
   },
   {
-    name: "Pod Delete 1",
-    description: "This is a description of experiment 1",
-    tags: ["tag1", "pod"],
+    name: "Node taint",
+    description:"Node taint taints (contaminates) the node by applying the desired effect. ",
+    tags: ["node"],
     category: "kubernetes",
   },
-  {
-    name: "Docker Service Kill 2",
-    description:
-      "This is a description of experiment 2. This is a description of experiment 2. This is a description of experiment 2. This is a description of experiment 2",
-    tags: ["node", "tag2"],
-    category: "kubernetes",
-  },
-  {
-    name: "Definitely Not Pod Delete 2",
-    description: "This is a description of experiment 2",
-    tags: ["tag3", "pod"],
-    category: "kubernetes",
-  },
+
 ];
