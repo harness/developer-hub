@@ -294,7 +294,7 @@ Here, you'll add a connection to the Terragrunt script repo.
 
 Your Terragrunt Apply step is now ready. 
 
-You can now configure a Terragrunt [Destroy](terragrunt-destroy.md) or [Rollback](terragrunt-rollback.md) step to use the Terragrunt provisioning from this Terragrunt Apply step.
+You can now configure a Terragrunt Destroy or Rollback step to use the Terragrunt provisioning from this Terragrunt Apply step.
 
 ```mdx-code-block
   </TabItem>
@@ -647,10 +647,10 @@ The JSON of the Terragrunt Plan step is not available after rollback.
 
 In **Advanced**, you can use the following options:
 
-* [Delegate Selector](../../../platform/2_Delegates/delegate-guide/select-delegates-with-selectors.md)
-* [Conditional Execution](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Failure Strategy](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
-* [Looping Strategy](../../..//platform/8_Pipelines/looping-strategies-matrix-repeat-and-parallelism.md)
+* [Delegate Selector](https://developer.harness.io/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
+* [Conditional Execution](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
+* [Failure Strategy](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
+* [Looping Strategy](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
 
 ## YAML examples
 
