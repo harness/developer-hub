@@ -36,7 +36,7 @@ Pre-building images with all required dependencies is more efficient than downlo
 * Sort multi-line arguments in your Dockerfile alphabetically. This makes it easier to update and avoid duplicate packages.
 
 For more best practices, see [Best Practices for Writing Dockerfiles](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/) in the Docker documentation.
-
+ 
 ### Enable Docker Layer Caching in Build Steps
 
 Remote Docker Layer Caching can dramatically improve build times by sharing layers across Pipelines, Stages, and Steps. You can set up Docker Layer Caching in the following Build Steps:
@@ -55,11 +55,39 @@ The following practices can reduce your testing and resulting build times:
 * Look for unnecessary `sleep` statements in your unit test code.
 * Order your tests so that the tests most likely to fail come first.
 
-### Cache and Reuse the Data for Your Fetch Operations
+### Cache and Reuse Data for Your Fetch Operations
 
-Caching and reusing can be useful for data that your builds need to fetch, but that you cannot include in an optimized image as described above. Caching ensures faster job execution by reusing the expensive fetch operation data from previous jobs. See the following for end-to-end-workflow descriptions:  
+Caching and reusing can be useful for data that your builds need to fetch, but that you cannot include in an optimized image as described above. Caching ensures faster job execution by reusing the expensive fetch operation data from previous jobs. For an comprehensive overview, go to [Harness CI for UI Builds](https://harness.io/blog/continuous-integration/harness-cie-ui-builds/). 
 
-* [Harness CI for UI Builds](https://harness.io/blog/continuous-integration/harness-cie-ui-builds/)
+#### Automatic Caching
+
+You can set up your pipeline to cache your build artifacts automatically. Note the following:  
+
+* Automatic caching is currently supported for the following. 
+  - Harness Cloud build infrastructures
+  - Basel, Maven, Gradle, Yarn, and Node frameworks
+* You can implement [manual caching](#manual-caching) for other infrastructures, frameworks, and languages. 
+* Harness Cloud can cache up to 2GB of data per account. All pipelines in the account can use the same cache. 
+* Cache retention window is 15 days, which resets whenever the cache gets updated.
+
+To enable automatic caching on a CI Build stage, add the following lines to  the stage YAML definition: 
+
+```yaml
+    - stage:
+        name: Build Jhttp
+        identifier: Build_Jhttp
+        description: ""
+        type: CI
+        spec:
+          caching:          # --------------- ADD LINE
+            enabled: true   # ----------------ADD LINE
+          cloneCodebase: true
+```
+
+#### Manual Caching
+
+You can set up manual caching in pipelines where [automatical caching](#manual-caching) is not yet available. See the following for end-to-end-workflow descriptions:  
+
 * [Save and Restore Cache from S3](../use-ci/caching-ci-data/saving-cache.md)
 * [Save and Restore Cache from GCS](../use-ci/caching-ci-data/save-cache-in-gcs.md)
 
