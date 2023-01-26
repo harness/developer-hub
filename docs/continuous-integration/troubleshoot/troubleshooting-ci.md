@@ -1,6 +1,6 @@
 ---
 title: Troubleshooting Continuous Integration (CI)
-description: This topic contains general troubleshooting information for error messages and other issues that can arise. 
+description: Troubleshoot common CI issues. 
 # sidebar_position: 2
 helpdocs_topic_id: jx7ew69ypa
 helpdocs_category_id: 99m8m1s55y
