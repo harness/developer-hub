@@ -22,7 +22,7 @@ Kubernetes faults disrupt the resources running on a Kubernetes cluster. They ca
 
 <!-- Code for Fault Card starts from here -->
 
-<FaultDetailsCard category="kubernetes" subCategory="nod">
+<FaultDetailsCard category="kubernetes" subCategory="node">
 
 ### Docker service kill
 
