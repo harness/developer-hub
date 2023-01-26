@@ -118,7 +118,7 @@ Use the following steps to create a service.
    
    Replace `service-name` with the unique name of your service. Replace `task-definition` with the task definition that the service runs. 
    
-   For information on the specification of ECS service parameters, see [`create-service`]{https://docs.aws.amazon.com/cli/latest/reference/ecs/create-service.html). Replace `SERVICE_NAME` with [TBD]. Replace `task-definition` with [TBD].
+   For information on the specification of ECS service parameters, see [`create-service`]{https://docs.aws.amazon.com/cli/latest/reference/ecs/create-service.html).
    
 2. Use the following instruction to increase the count of replica pods to the desired number:
 
