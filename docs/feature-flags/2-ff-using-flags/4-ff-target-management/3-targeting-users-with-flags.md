@@ -45,11 +45,11 @@ You should understand how the Harness platform prioritizes targets and target gr
    - You create a rule that enables a flag for all targets in `Group_A`, but disables that same flag for `Target_1`.
    - `Target_1` is also a part of `Group_A`.
    - The flag will be disabled for `Target_1`, as it has been added individually to the `Disabled` rule. 
-2. Targets are prioritized in the order they are added to a target group, starting from 0. Each subsequent group the target is added to, its prioritization is incremented by 1. For example, you add `Target_1` to `Group_A`, then `Group_B`, then `Group_C`. The target is prioritized as `0` in `Group_A`, `1` in `Group_B`, then as `2` in `Group_C`. 
+2. Target groups are prioritized in the order they are added to a flag, starting from 0. Each subsequent group that is added to the flag has its prioritization incremented by 1. So if you add `Group_A`, then `Group_B`, then `Group_C`. `Group_A` is prioritized as `0 , then `1` for `Group_B`, then as `2` for `Group_C`.
 3. When a target is part of two target groups that have conflicting targeting rules, the lowest priority is given precedence, for example:
    - You added `Target_1` to `Group_A`, then `Group_B`, then `Group_C`.
    - You create a rule that enables a flag for all targets in `Group_C`, but disables that same flag for `Group_A`. 
-   - As the prioritization of the target in `Group_A` is `0`, and the prioritization of the target in `Group_C` is `2`, the flag is disabled for `Target_1`. This is because the lower-numbered priority, `0`, takes precedent. 
+   - As the target group prioritization of `Group_A` is `0`, and the target group prioritization of `Group_C` is `2`, the flag is disabled for `Target_1`. This is because the lower-numbered target group priority, `0`, takes precedent. 
 
 ## Target specific users or Target Groups when a Flag is enabled
 
