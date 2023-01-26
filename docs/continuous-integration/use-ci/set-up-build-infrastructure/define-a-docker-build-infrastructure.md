@@ -1,7 +1,7 @@
 ---
 title: Define a local build infrastructure
 description: Define a CI build infra on local Linux/Windows/macOS machine.
-sidebar_position: 30
+sidebar_position: 15
 helpdocs_topic_id: xd8u17be5h
 helpdocs_category_id: rg8mrhqm95
 helpdocs_is_private: false

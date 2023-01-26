@@ -10,9 +10,9 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Test Intelligence (TI) dramatically improves test time by running only those tests required to confirm the quality of the code changes which triggered the build. You can enable Test Intelligence for your build in your CI stages using the Run Tests step.
+Test Intelligence (TI) dramatically improves test time by running only those tests required to confirm the quality of the code changes which triggered the build. You can enable Test Intelligence for your build in your CI stages using the Run Tests steps.
 
-In this topic, we'll cover how to set up Test Intelligence in a Harness CI Stage.
+In this topic, we'll cover how to set up Test Intelligence in Harness CI Stage.
 
 ### Before You Begin
 
@@ -58,7 +58,7 @@ The following screenshot explains the various parameters of **Configure Run Test
 | --- | --- |
 | **Name** | Enter a unique name for the step. |
 | **Description** | Enter a description for the step. |
-| **Container Registry** | The Harness connector for a container registry. This is the container registry from which Harness pulls the image to run build commands on, for example, DockerHub. |
+| **Container Registry** | The Harness connector for a container registry. This is the container registry for the image Harness will use run build command on, such as Docker Hub. |
 | **Image** | The name of the Docker image to use for running the build commands. Enter a Fully Qualified Image Name(FQIN) when using a private container registry. |
 | **Arguments** | Enter the [arguments](../../ci-technical-reference/configure-run-tests-step-settings.md) for the build tool. These are used as input for the build tool choice. |
 | **Build Tool** | Enter the build automation tool. Currently, Harness supports the following:*<p></p><p>**Java:** [Bazel](https://bazel.build/), [Maven](https://maven.apache.org/), and [Gradle](https://gradle.org/).</p><p>**.NET:** .[NET CLI](https://docs.microsoft.com/en-us/dotnet/core/tools/) and [Nunit](https://nunit.org/).</p>|

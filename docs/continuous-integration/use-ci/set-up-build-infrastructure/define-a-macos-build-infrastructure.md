@@ -5,7 +5,7 @@ tags:
    - helpDocs
    - MacOS
    - OSX
-sidebar_position: 70
+sidebar_position: 40
 helpdocs_topic_id: mwzlb0x2mt
 helpdocs_category_id: rg8mrhqm95
 helpdocs_is_private: false

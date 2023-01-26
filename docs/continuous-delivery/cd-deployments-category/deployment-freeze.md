@@ -4,6 +4,12 @@ description: Set freeze windows for deployments.
 sidebar_position: 8
 ---
 
+:::note
+
+Currently, Deployment Freeze is behind the feature flag `NG_DEPLOYMENT_FREEZE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
 ## Deployment freeze summary
 
 If you are new to deployment freezes, review the following summary.

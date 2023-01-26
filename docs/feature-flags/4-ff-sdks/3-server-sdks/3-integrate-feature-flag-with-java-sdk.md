@@ -157,7 +157,6 @@ You can configure the following features of the SDK through the `baseConfig`:
 | pollInterval | `BaseConfig.pollIntervalInSeconds(60))` | The interval **in seconds** that we poll for changes when you are not using stream mode. | `60` (seconds) |
 | streamEnabled | `BaseConfig.streamEnabled(false)` | Set to `true` to enable streaming mode.Set to `false` to disable streaming mode. | `true` |
 | analyticsEnabled | `BaseConfig.analyticsEnabled(true)` | Set to `true` to enable analytics.Set to `false` to disable analytics.**Note**: When enabled, analytics data is posted every 60 seconds. | `true` |
-| frequency | `BaseConfig.frequency(60))` | The interval **in seconds** of how often to send metrics data.  | `60` |
 
 
 ```

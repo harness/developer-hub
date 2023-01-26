@@ -1,10 +1,9 @@
 ---
 title: Define a MacOS Build Infrastructure
 description: Currently, this feature is behind the Feature Flag CI_VM_INFRASTRUCTURE Contact Harness Support to enable the feature. This topic describes how to set up virtualization on MacOS hardware platforms to…
-
 tags: 
    - helpDocs
-sidebar_position: 60
+sidebar_position: 40
 helpdocs_topic_id: d79v3d2uwv
 helpdocs_category_id: rg8mrhqm95
 helpdocs_is_private: false

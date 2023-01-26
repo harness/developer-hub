@@ -1,10 +1,9 @@
 ---
 title: Define an AWS VM Build Infrastructure
 description: Set up a CI Build Infrastructure using AWS VMs
-
 tags: 
    - helpDocs
-sidebar_position: 40
+sidebar_position: 20
 helpdocs_topic_id: z56wmnris8
 helpdocs_category_id: rg8mrhqm95
 helpdocs_is_private: false

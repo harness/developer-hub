@@ -1,10 +1,9 @@
 ---
 title: Define a Kubernetes Cluster Build Infrastructure
 description: This topic describes how to set up a Kubernetes cluster build infrastructure for a Harness CI stage. The codebase and tests you add to a Harness CI Stage are built and run using a build infrastructur…
-
 tags: 
    - helpDocs
-sidebar_position: 20
+sidebar_position: 10
 helpdocs_topic_id: ia5dwx5ya8
 helpdocs_category_id: rg8mrhqm95
 helpdocs_is_private: false
