@@ -37,7 +37,7 @@ In the Overview tab for the new Build Stage, configure the Stage as follows:
 * Under Shared Paths, add the following:
 	+ `/var/run`
 	+ `/var/lib/docker`
-* Under Advanced, add a Stage Variables for your Docker Hub Personal Access Token and any other fields you want to parameterize. For passwords and Personal Access Tokens, select Secret as the variable type.
+* Under Advanced, add Stage Variables for your Docker Hub Personal Access Token and any other fields you want to parameterize. For passwords and Personal Access Tokens, select Secret as the variable type.
 
 ### Step 2: Define the Build Farm Infrastructure
 
@@ -45,7 +45,7 @@ In the CI Build stage > **Infrastructure** tab, define the build infrastructure 
 
 ### Step 3: Add a dind Background step
 
-In the Execution tab, add a [Background Step](../../ci-technical-reference/background-step-settings.md) and configure it as follows:
+In the Execution tab, add a [Service Dependency Step](../../ci-technical-reference/configure-service-dependency-step-settings.md) and configure it as follows:
 
 * **Name:** dind_Service.
 * **Container Registry:** A connector to your Docker registry.
