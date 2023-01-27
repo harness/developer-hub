@@ -247,7 +247,8 @@ Some operators work on single values and some work on multiple values:
 
 **Multiple values:** `in`, `not in`.
 
-The **IN** and **NOT IN** operators don't support Regex.
+The **IN** and **NOT IN** operators can take comma-separated values. You can also use regex as a value. For example, `Not In master,release/.*`.
+
 
 ### Pipeline Input
 
