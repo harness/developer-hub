@@ -1,3 +1,9 @@
+---
+sidebar_position: 70
+description: Build and push container images to Amazon ECR
+slug: /build-code/ci-build-push-to-ecr
+---
+
 # Build and push a container image to Amazon ECR
 
 Docker made a revolution with containerization. It truly helped to bridge the gap between Dev and Ops teams. Similarly, the cloud providers introduced their own container registries to provide more security and governance. For example, Amazon has Elastic Container Registry (ECR), Microsoft has Azure Container Registry (ACR), and Google has a Google Container Registry (GCR). Container registries have become an integral part of any CI/CD pipeline to store images, metadata, and other important artifacts. In addition, they provide a secure way to store and share container images across a distributed system to help development teams build their software efficiently. In this article, we will explore the Amazon ECR container registry and see how to use it to push container images.

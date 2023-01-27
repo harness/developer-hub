@@ -1,6 +1,6 @@
 ---
-sidebar_position: 5
-description: This build automation guide describes how to build and push an application container to Google Artifact Registry using a CI pipeline.
+sidebar_position: 110
+description: Build and push an application container to Google Artifact Registry using a CI pipeline.
 keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial, Go, GCP]
 ---
 
