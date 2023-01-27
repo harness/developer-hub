@@ -4,7 +4,7 @@ description: Create a CI pipeline that runs a Maven test and generates an Allure
 keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial, maven, Allure]
 ---
 
-# Publish an allure report to the Artifacts tab 
+# Publish an Allure Report to the Artifacts tab 
 
 This tutorial provides an example pipeline that builds a Java maven application and generates an allure report that you can view in the Harness UI. 
 
