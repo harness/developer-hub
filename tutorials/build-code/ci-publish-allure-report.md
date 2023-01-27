@@ -31,11 +31,15 @@ We will use [allure-combine](https://pypi.org/project/allure-combine/) tool to c
 
 Uploads the combined Allure HTML report to GCS. It is required to make the GCS bucket public in order to view the uploaded file directly in browser.
 
+Update the bucket name and gcp connector in the step.
+
 #### Step 5: Publish upload report url in artifact tab
 
 `plugins/artifact-metadata-publisher` plugin adds the input urls to artifact tab in Harness UI.
 
 We have provided URL of html file uploaded as part of step 4 to the plugin to show the report URL in artifacts tab. On clicking the URL in artifact tab, it displays the allure report in browser.
+
+Update the url mentioned in the `file_urls` matching the public gcs url of file uploaded in step 4.
 
 ```yaml
 pipeline:
