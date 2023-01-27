@@ -34,8 +34,6 @@ For example, you could have a pipeline that deploys an application to a test env
 
 Chaining pipelines in Harness offers the following benefits:
 
-- Automation of the deployment process ensures that the application is deployed and tested properly before deployment to production.
-
 - Development of complex workflows involving multiple stages of deployment, testing, and verification.
 
 - Ease of handling errors. Visibility into the deployment process makes it easier to identify and troubleshoot issues.
