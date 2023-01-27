@@ -1,7 +1,7 @@
 ---
 title: Define a Failure Strategy on Stages and Steps
 description: Currently, only the All Errors Failure Type is supported. A failure strategy defines how your stages and steps handle different failure conditions. The failure strategy contains error conditions that…
-# sidebar_position: 2
+sidebar_position: 11
 helpdocs_topic_id: 0zvnn5s1ph
 helpdocs_category_id: kncngmy17o
 helpdocs_is_private: false
