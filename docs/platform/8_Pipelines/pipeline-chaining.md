@@ -63,7 +63,8 @@ To chain pipelines in Harness, perform the following steps:
 
 4. Click **Apply Selected**.
 
-5. You can use outputs from child pipelines in other stages in parent pipelines by clicking **Outputs**.
+5. To use the output of a child pipeline in subsequent stages of the parent pipeline, click **Outputs**.
+
    The variables you select in the output tab can be referred to at a later stage.
 
    For example, you can use the build image in a subsequent deployment stage.
