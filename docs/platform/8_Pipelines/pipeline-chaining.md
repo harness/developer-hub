@@ -32,21 +32,21 @@ For example, you could have a pipeline that deploys an application to a test env
 
 ## Benefits of pipeline chaining
 
-- Automation: Pipeline chaining allows you to automate the deployment process and make sure that the application is deployed and tested properly before deploying to production.
- 
-- Creation of complex workflows: It allows you to create complex workflows that involve multiple stages of deployment, testing, and verification.
- 
-- Error Handling: You can easily handle errors and rollback to previous stages in case of any issues.
- 
-- Visibility: It provides better visibility into the deployment process and makes it easier to identify and troubleshoot issues.
- 
-- Enhanced efficiency: By automating the deployment process, pipeline chaining can improve the efficiency and speed of deployments.
- 
-- Reusability: The pipelines can be reused across multiple applications and environments, reducing the need to recreate the same steps for each deployment.
- 
-- Better collaboration: By separating deployments into smaller, manageable stages, pipeline chaining allows different teams to work on different stages of the deployment process, improving collaboration and communication.
- 
-- Better compliance: By automating the deployment process, pipeline chaining can help to ensure compliance with regulatory requirements and industry best practices.
+Chaining pipelines in Harness offers the following benefits:
+
+- Automation of the deployment process ensures that the application is deployed and tested properly before deployment to production.
+
+- Development of complex workflows involving multiple stages of deployment, testing, and verification.
+
+- Ease of handling errors. Visibility into the deployment process makes it easier to identify and troubleshoot issues.
+
+- Faster and more efficient deployment.
+
+- Reusability of the pipeline across multiple applications and environments, reducing the need to recreate the same steps for each deployment.
+
+- Improved collaboration and communication by allowing different teams to work on different stages of the deployment process. 
+
+- Enable greater compliance with regulatory requirements and industry best practices through automatic deployments.
 
 ## Chain pipelines 
 To chain pipelines in Harness, perform the following steps: 
