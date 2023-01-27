@@ -26,7 +26,7 @@ Coming soon.
 
 :::info
 
-- Ensure that Kubernetes Version > 1.17
+- Kubernetes >= 1.17
 - Access to start and stop an EC2 instance in AWS.
 - Kubernetes secret that has AWS access configuration(key) in the `CHAOS_NAMESPACE`. A secret file looks like:
 
@@ -50,41 +50,6 @@ stringData:
 
 If the target EC2 instance is a part of a managed node group, drain the target node of any application running on it. Isolate the target node before running the fault so that the fault pods are not scheduled on it.
 :::
-
-## Permission Requirement
-
-- Here is an example AWS policy to execute this fault.
-
-<details>
-<summary>View policy for this fault</summary>
-
-```json
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": [
-                "ec2:StartInstances",
-                "ec2:StopInstances",
-                "ec2:DescribeInstanceStatus",
-                "ec2:DescribeInstances"
-            ],
-            "Resource": "*"
-        },
-        {
-            "Effect": "Allow",
-            "Action": [
-                "autoscaling:DescribeAutoScalingInstances"
-            ],
-            "Resource": "*"
-        }
-    ]
-}
-```
-</details>
-
-- Refer a [superset permission/policy](../policy-for-all-aws-faults) to execute all AWS faults.
 
 ## Default Validations
 

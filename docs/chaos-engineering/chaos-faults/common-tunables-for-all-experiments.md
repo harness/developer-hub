@@ -5,7 +5,7 @@ Experiment tunables are common to all the experiments and these tunables are pro
 
 ### Duration of the Chaos
 
-It defines the total duration of the chaos injection. You can tune it using the `TOTAL_CHAOS_DURATION` environment variable. The unit of measurement is seconds.
+It defines the duration through which chaos is injected into the target resource (in seconds). You can tune it using the `TOTAL_CHAOS_DURATION` environment variable.
 
 Use the following example to tune it:
 
@@ -105,39 +105,6 @@ spec:
           VALUE: '60'
 ```
 
-### Chaos Library Name
-
-It defines the name of the chaos library used for the chaos injection. You can tune it using the `LIB` environment variable.
-
-Use the following example to tune it:
-
-[embedmd]:# (https://raw.githubusercontent.com/litmuschaos/litmus/master/mkdocs/docs/experiments/categories/common/lib.yaml yaml)
-```yaml
-# lib for the chaos injection
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: pod-delete-sa
-  experiments:
-  - name: pod-delete
-    spec:
-      components:
-        env:
-        # defines the name of the chaoslib used for the experiment
-        - name: LIB
-          value: 'litmus'
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
-```
-
 ### Instance ID
 
 It defines a user-defined string that holds metadata about the current chaos run/instance. For example, 04-05-2020-9-00. This string is appended as a suffix in the chaosresult CR name. You can tune it using the `INSTANCE_ID` environment variable.
@@ -200,7 +167,7 @@ spec:
     spec:
       components:
         env:
-        # nane of the lib image
+        # name of the lib image
         - name: LIB_IMAGE
           value: 'litmuschaos/go-runner:latest'
         - name: TOTAL_CHAOS_DURATION

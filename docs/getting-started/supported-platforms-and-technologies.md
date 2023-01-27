@@ -14,8 +14,6 @@ This topic lists Harness support for platforms, methodologies, and related techn
 
 The following table lists Harness support for deployment platforms, artifacts, strategies, and related technologies.
 
-
-
 <table class="blueTable">
 <thead>
   <tr>
@@ -352,26 +350,26 @@ See [What Can I Deploy in Kubernetes?](../continuous-delivery/cd-technical-refer
 
 The following versions are tested and supported for Kubernetes Canary, Rolling, and Blue/Green deployments:
 
-* 1.13.0
-* 1.14.0
-* 1.15.0
-* 1.16.0
-* 1.17.0
-* 1.18.0
-* 1.19.4
-* 1.20.0
-* 1.21.0
-* 1.22.0
-* 1.23.0
-* 1.24.3
+- 1.13.0
+- 1.14.0
+- 1.15.0
+- 1.16.0
+- 1.17.0
+- 1.18.0
+- 1.19.4
+- 1.20.0
+- 1.21.0
+- 1.22.0
+- 1.23.0
+- 1.24.3
 
 For details on other tools and version included in Harness, see [SDKs installed with the Delegate](#sd_ks_installed_with_the_delegate).
 
 Guidelines:
 
-* Harness will officially support 3 previous versions from the last stable release. For example, the current most recent stable release is 1.24.3, and so Harness supports 1.23, 1.22, and 1.21.
-* Harness supports any other versions of Kubernetes you are using on a best effort basis.
-* Harness commits to support new minor versions within 3 months of the first stable release. For example, if the stable release of 1.24.3 occurs on August 15th, we will support it for compatibility by November 15th.
+- Harness will officially support 3 previous versions from the last stable release. For example, the current most recent stable release is 1.24.3, and so Harness supports 1.23, 1.22, and 1.21.
+- Harness supports any other versions of Kubernetes you are using on a best effort basis.
+- Harness commits to support new minor versions within 3 months of the first stable release. For example, if the stable release of 1.24.3 occurs on August 15th, we will support it for compatibility by November 15th.
 
 ##### Helm
 
@@ -385,40 +383,36 @@ For pulling Docker images from Docker repos, Harness is restricted by the limits
 
 The following table lists Harness integrations and their artifact source support:
 
-
-
-|  |  |  |  |  |  |  |  |  |  |  |  |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-|  | **Docker Hub** | **ECR** | **GCR** | **ACR** | **Artifactory** | **Nexus 3** | **Custom**  | **Google Artifact Registry** | **Github Artifact Registry** | **Jenkins** | **AWS S3** |
-| **Kubernetes** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |  |  |
-| **Helm** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |  |  |  |  |
-| **AWS ECS** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |  |  |  |  |
-| **Azure Web Apps** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |  |  |  |  |  |
-| **SSH** |  |  |  |  | ✅ | ✅ | ✅ |  |  | ✅ | ✅ |
-| **WinRM** |  |  |  |  | ✅ | ✅ | ✅ |  |  | ✅ | ✅ |
-| **Serverless** |  | ✅ |  |  | ✅ |  |  |  |  |  | ✅ |
+|                    |                |         |         |         |                 |             |            |                              |                              |             |            |
+| ------------------ | -------------- | ------- | ------- | ------- | --------------- | ----------- | ---------- | ---------------------------- | ---------------------------- | ----------- | ---------- |
+|                    | **Docker Hub** | **ECR** | **GCR** | **ACR** | **Artifactory** | **Nexus 3** | **Custom** | **Google Artifact Registry** | **Github Artifact Registry** | **Jenkins** | **AWS S3** |
+| **Kubernetes**     | ✅             | ✅      | ✅      | ✅      | ✅              | ✅          | ✅         | ✅                           | ✅                           |             |            |
+| **Helm**           | ✅             | ✅      | ✅      | ✅      | ✅              | ✅          | ✅         |                              |                              |             |            |
+| **AWS ECS**        | ✅             | ✅      | ✅      | ✅      | ✅              | ✅          | ✅         |                              |                              |             |            |
+| **Azure Web Apps** | ✅             | ✅      | ✅      | ✅      | ✅              | ✅          |            |                              |                              |             |            |
+| **SSH**            |                |         |         |         | ✅              | ✅          | ✅         |                              |                              | ✅          | ✅         |
+| **WinRM**          |                |         |         |         | ✅              | ✅          | ✅         |                              |                              | ✅          | ✅         |
+| **Serverless**     |                | ✅      |         |         | ✅              |             |            |                              |                              |             | ✅         |
 
 ##### Manifest and Config file Store Support
 
 The following table lists where you can store your manifests or config files for each integration.
 
-
-
-|  |  |  |  |  |  |  |  |  |  |  |  |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-|  | **Github** | **Gitlab** | **Bitbucket** | **Harness Filestore** | **Any Git** | **OCI Helm** | **HTTP Helm** | **AWS S3** | **Custom** | **Google Cloud Storage** | **Inherit from manifest** |
-| **Kubernetes** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| **Values YAML** | ✅ | ✅ | ✅ | ✅ | ✅ |  |  |  | ✅ |  | ✅ |
-| **Kustomize** | ✅ | ✅ | ✅ | ✅ | ✅ |  |  |  |  |  |  |
-| **Kustomize****Patches** | ✅ | ✅ | ✅ | ✅ | ✅ |  |  |  |  |  | ✅ |
-| **Openshift****Template** | ✅ | ✅ | ✅ | ✅ | ✅ |  |  |  | ✅ |  |  |
-| **Openshift****Params** | ✅ | ✅ | ✅ | ✅ | ✅ |  |  |  | ✅ |  |  |
-| **AWS ECS** | ✅ | ✅ | ✅ | ✅ | ✅ |  |  |  |  |  | ✅ |
-| **Helm Chart** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| **Serverless.com** | ✅ | ✅ | ✅ |  | ✅ |  |  |  |  |  |  |
-| **SSH** |  |  |  | ✅ |  |  |  |  |  |  |  |
-| **WinRM** |  |  |  | ✅ |  |  |  |  |  |  |  |
-| **Azure Web Apps** |  |  |  | ✅ |  |  |  |  |  |  |  |
+|                               |            |            |               |                       |             |              |               |            |            |                          |                           |
+| ----------------------------- | ---------- | ---------- | ------------- | --------------------- | ----------- | ------------ | ------------- | ---------- | ---------- | ------------------------ | ------------------------- |
+|                               | **Github** | **Gitlab** | **Bitbucket** | **Harness Filestore** | **Any Git** | **OCI Helm** | **HTTP Helm** | **AWS S3** | **Custom** | **Google Cloud Storage** | **Inherit from manifest** |
+| **Kubernetes**                | ✅         | ✅         | ✅            | ✅                    | ✅          | ✅           | ✅            | ✅         | ✅         | ✅                       | ✅                        |
+| **Values YAML**               | ✅         | ✅         | ✅            | ✅                    | ✅          |              |               |            | ✅         |                          | ✅                        |
+| **Kustomize**                 | ✅         | ✅         | ✅            | ✅                    | ✅          |              |               |            |            |                          |                           |
+| **Kustomize\*\***Patches\*\*  | ✅         | ✅         | ✅            | ✅                    | ✅          |              |               |            |            |                          | ✅                        |
+| **Openshift\*\***Template\*\* | ✅         | ✅         | ✅            | ✅                    | ✅          |              |               |            | ✅         |                          |                           |
+| **Openshift\*\***Params\*\*   | ✅         | ✅         | ✅            | ✅                    | ✅          |              |               |            | ✅         |                          |                           |
+| **AWS ECS**                   | ✅         | ✅         | ✅            | ✅                    | ✅          |              |               |            |            |                          | ✅                        |
+| **Helm Chart**                | ✅         | ✅         | ✅            | ✅                    | ✅          | ✅           | ✅            | ✅         | ✅         | ✅                       | ✅                        |
+| **Serverless.com**            | ✅         | ✅         | ✅            |                       | ✅          |              |               |            |            |                          |                           |
+| **SSH**                       |            |            |               | ✅                    |             |              |               |            |            |                          |                           |
+| **WinRM**                     |            |            |               | ✅                    |             |              |               |            |            |                          |                           |
+| **Azure Web Apps**            |            |            |               | ✅                    |             |              |               |            |            |                          |                           |
 
 ##### Terraform version support
 
@@ -426,17 +420,17 @@ Harness does not include Terraform on the Harness Delegate. You must install Ter
 
 Harness supports the following Terraform versions:
 
-* v1.3.5
-* v1.1.9
-* v1.0.0
-* v0.15.5
-* v0.15.0
-* v0.14.0
+- v1.3.5
+- v1.1.9
+- v1.0.0
+- v0.15.5
+- v0.15.0
+- v0.14.0
 
 Here's an example install script for the Harness delegate:
 
 ```bash
-# Install TF  
+# Install TF
 microdnf install unzip
 curl -O -L https://releases.hashicorp.com/terraform/1.3.5/terraform_1.3.5_darwin_amd64.zip
 unzip terraform_1.3.5_darwin_amd64.zip
@@ -461,23 +455,23 @@ Harness GitOps lets you perform GitOps deployments in Harness. You define the de
 
 GitOps supports the following:
 
-* Source Repositories:
-	+ All Git providers.
-	+ HTTP Helm repos.
-* Target clusters:
-	+ Kubernetes clusters hosted on any platform:
-		- GKE.
-		- AKS.
-		- EKS.
-		- Other Kubernetes-compliant clusters.
-		- OpenShift version 3.11, 4.x.
-		- Minikube.
-		- Kubernetes Operations (kops).
-* Repository Certificates:
-	+ TLS Certificate (PEM format).
-	+ SSH Known Host Entry.
-* GnuPG Keys:
-	+ GnuPG Public Key Data (ASCII-armored).
+- Source Repositories:
+  - All Git providers.
+  - HTTP Helm repos.
+- Target clusters:
+  - Kubernetes clusters hosted on any platform:
+    - GKE.
+    - AKS.
+    - EKS.
+    - Other Kubernetes-compliant clusters.
+    - OpenShift version 3.11, 4.x.
+    - Minikube.
+    - Kubernetes Operations (kops).
+- Repository Certificates:
+  - TLS Certificate (PEM format).
+  - SSH Known Host Entry.
+- GnuPG Keys:
+  - GnuPG Public Key Data (ASCII-armored).
 
 See [Harness GitOps Basics](../continuous-delivery/cd-gitops/harness-git-ops-basics.md) and [Harness CD GitOps Quickstart](../continuous-delivery/cd-gitops/harness-cd-git-ops-quickstart.md)
 
@@ -541,7 +535,7 @@ The following table lists Harness support for CI platforms, repos, registries, a
   </tbody>
 </table>
 
- More frameworks will be supported soon. 
+More frameworks will be supported soon.
 
 ### Continuous Verification
 
@@ -551,31 +545,27 @@ Harness supports the following metrics and logging platforms.
 
 The following table lists Harness support for metrics platforms (APMs).
 
-
-
-|  Metrics Provider Name |  Metric Pack |  Deployment Verification |
-| --- | --- | --- |
-| [AppDynamics](../continuous-delivery/cd-execution/cv-category/verify-deployments-with-app-dynamics.md) |  Business Transactions |  Yes |
-| [AppDynamics](../continuous-delivery/cd-execution/cv-category/verify-deployments-with-app-dynamics.md) |  JVM and Infra Metrics | Supported via Custom Metrics |
-| [New Relic](../continuous-delivery/cd-execution/cv-category/verify-deployments-with-new-relic.md) |  Business Transactions |  Yes |
-|  New Relic |  Insights | Supported via Custom Metrics |
-| [Google Cloud Operations (GCP)](../continuous-delivery/cd-execution/cv-category/verify-deployments-with-google-cloud-operations.md) |  Infrastructure Metrics |  Yes |
-|  Google Cloud Operations (GCP) |  Custom metrics from explorer | No |
-| [Prometheus](../continuous-delivery/cd-execution/cv-category/verify-deployment-with-prometheus.md) |  Custom metrics from Prometheus |  Yes |
-| [Datadog](../continuous-delivery/cd-execution/cv-category/verify-deployments-with-datadog.md) |  Docker Infra Metrics |  Yes |
-| [Dynatrace](../continuous-delivery/cd-execution/cv-category/verify-deployments-with-dynatrace.md) |  Performance |  Yes |
+| Metrics Provider Name                                                                                                               | Metric Pack                    | Deployment Verification      |
+| ----------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ | ---------------------------- |
+| [AppDynamics](../continuous-delivery/cd-execution/cv-category/verify-deployments-with-app-dynamics.md)                              | Business Transactions          | Yes                          |
+| [AppDynamics](../continuous-delivery/cd-execution/cv-category/verify-deployments-with-app-dynamics.md)                              | JVM and Infra Metrics          | Supported via Custom Metrics |
+| [New Relic](../continuous-delivery/cd-execution/cv-category/verify-deployments-with-new-relic.md)                                   | Business Transactions          | Yes                          |
+| New Relic                                                                                                                           | Insights                       | Supported via Custom Metrics |
+| [Google Cloud Operations (GCP)](../continuous-delivery/cd-execution/cv-category/verify-deployments-with-google-cloud-operations.md) | Infrastructure Metrics         | Yes                          |
+| Google Cloud Operations (GCP)                                                                                                       | Custom metrics from explorer   | No                           |
+| [Prometheus](../continuous-delivery/cd-execution/cv-category/verify-deployment-with-prometheus.md)                                  | Custom metrics from Prometheus | Yes                          |
+| [Datadog](../continuous-delivery/cd-execution/cv-category/verify-deployments-with-datadog.md)                                       | Docker Infra Metrics           | Yes                          |
+| [Dynatrace](../continuous-delivery/cd-execution/cv-category/verify-deployments-with-dynatrace.md)                                   | Performance                    | Yes                          |
 
 #### Log providers
 
 Most logging platforms are also supported.
 
-
-
-|  |  |
-| --- | --- |
-| **Log Provider Name** | **Deployment Verification** |
-| [Splunk](../continuous-delivery/cd-execution/cv-category/verify-deployments-with-splunk.md) | Yes |
-| [Google Cloud Operations (GCP)](../continuous-delivery/cd-execution/cv-category/verify-deployments-with-google-cloud-operations.md) | Yes |
+|                                                                                                                                     |                             |
+| ----------------------------------------------------------------------------------------------------------------------------------- | --------------------------- |
+| **Log Provider Name**                                                                                                               | **Deployment Verification** |
+| [Splunk](../continuous-delivery/cd-execution/cv-category/verify-deployments-with-splunk.md)                                         | Yes                         |
+| [Google Cloud Operations (GCP)](../continuous-delivery/cd-execution/cv-category/verify-deployments-with-google-cloud-operations.md) | Yes                         |
 
 #### Custom health sources
 
@@ -589,16 +579,14 @@ See [Verify Deployments with Custom Health Source](../continuous-delivery/cd-exe
 
 The following section lists the support for the Kubernetes management platform for CCM:
 
-
-
-|  |  |  |
-| --- | --- | --- |
-| **Technology** | **Supported Platform** | **Pricing** |
-| OpenShift 3.11 | GCP | GCP |
-| OpenShift 4.3 | AWSOn-Prem | AWSCustom-rate\* |
-| Rancher | AWS | Custom-rate\*\* |
-| Kops (Kubernetes Operations) | AWS | AWS |
-| Tanzu Kubernetes Grid Integrated Edition (TKGI) | On-Prem | Custom-rate\*\*\* |
+|                                                 |                        |                   |
+| ----------------------------------------------- | ---------------------- | ----------------- |
+| **Technology**                                  | **Supported Platform** | **Pricing**       |
+| OpenShift 3.11                                  | GCP                    | GCP               |
+| OpenShift 4.3                                   | AWSOn-Prem             | AWSCustom-rate\*  |
+| Rancher                                         | AWS                    | Custom-rate\*\*   |
+| Kops (Kubernetes Operations)                    | AWS                    | AWS               |
+| Tanzu Kubernetes Grid Integrated Edition (TKGI) | On-Prem                | Custom-rate\*\*\* |
 
 \*Cost data is supported for On-Prem OpenShift 4.3. This uses a custom rate.
 
@@ -610,16 +598,14 @@ The following section lists the support for the Kubernetes management platform f
 
 The following table lists the ingress controllers supported for Kubernetes AutoStopping:
 
-
-
-|  |  |
-| --- | --- |
-| **Ingress Controller** | **Extent of Support** |
-| Nginx ingress controller | Fully supported |
-| HAProxy ingress controller | Fully supported |
+|                            |                                                                    |
+| -------------------------- | ------------------------------------------------------------------ |
+| **Ingress Controller**     | **Extent of Support**                                              |
+| Nginx ingress controller   | Fully supported                                                    |
+| HAProxy ingress controller | Fully supported                                                    |
 | Traefik as ingress gateway | Supported using ingress routes and manually configured middlewares |
-| Istio as API gateway | Fully supported |
-| Ambassador as API gateway | Supported by manually editing the mapping |
+| Istio as API gateway       | Fully supported                                                    |
+| Ambassador as API gateway  | Supported by manually editing the mapping                          |
 
 #### Feature Support Matrix
 
@@ -627,39 +613,33 @@ This section lists the feature support matrix for the supported cloud platforms:
 
 ##### AWS Service
 
-
-
-|  |  |  |  |
-| --- | --- | --- | --- |
-|  | **Inventory Dashboard** | **Recommendations** | **AutoStopping** |
-| **EC2** | Yes | Coming soon | Yes (With Spot Orchestration) |
-| **ECS** | Yes | Coming soon | Yes |
-| **EKS** | Yes | Yes | Yes |
-| **RDS** | Yes | No | Yes |
-| **EBS** | Yes | No | No |
-| **Snapshots** | Yes | No | NA |
-| **Elastic** **IPs** | Yes | No | NA |
-| **ASGs** | No | No | Yes (With Spot Orchestration) |
+|                     |                         |                     |                               |
+| ------------------- | ----------------------- | ------------------- | ----------------------------- |
+|                     | **Inventory Dashboard** | **Recommendations** | **AutoStopping**              |
+| **EC2**             | Yes                     | Coming soon         | Yes (With Spot Orchestration) |
+| **ECS**             | Yes                     | Coming soon         | Yes                           |
+| **EKS**             | Yes                     | Yes                 | Yes                           |
+| **RDS**             | Yes                     | No                  | Yes                           |
+| **EBS**             | Yes                     | No                  | No                            |
+| **Snapshots**       | Yes                     | No                  | NA                            |
+| **Elastic** **IPs** | Yes                     | No                  | NA                            |
+| **ASGs**            | No                      | No                  | Yes (With Spot Orchestration) |
 
 ##### GCP Product
 
-
-
-|  |  |  |  |
-| --- | --- | --- | --- |
-|  | **Inventory Dashboard** | **Recommendations** | **AutoStopping** |
-| **GCE VMs** | Yes | Coming soon | Coming soon |
-| **GKE** | Yes | Yes | Yes |
+|             |                         |                     |                  |
+| ----------- | ----------------------- | ------------------- | ---------------- |
+|             | **Inventory Dashboard** | **Recommendations** | **AutoStopping** |
+| **GCE VMs** | Yes                     | Coming soon         | Coming soon      |
+| **GKE**     | Yes                     | Yes                 | Yes              |
 
 ##### Azure Product
 
-
-
-|  |  |  |  |
-| --- | --- | --- | --- |
-|  | **Inventory Dashboard** | **Recommendations** | **AutoStopping** |
-| **Virtual Machine** | Coming soon | Coming soon | Yes (With Spot Orchestration) |
-| **AKS** | Yes | Yes | Yes |
+|                     |                         |                     |                               |
+| ------------------- | ----------------------- | ------------------- | ----------------------------- |
+|                     | **Inventory Dashboard** | **Recommendations** | **AutoStopping**              |
+| **Virtual Machine** | Coming soon             | Coming soon         | Yes (With Spot Orchestration) |
+| **AKS**             | Yes                     | Yes                 | Yes                           |
 
 ### Service Reliability Management
 
@@ -667,7 +647,7 @@ Harness supports the following Health Sources and Change Sources.
 
 #### Health sources
 
- A Health Source monitors changes in health trends of the Service using metrics and logs collected from an APM and log provider respectively.
+A Health Source monitors changes in health trends of the Service using metrics and logs collected from an APM and log provider respectively.
 
 Harness offers support for all major APM vendors, but there are cases where a customized APM is needed. The [Custom Health Source](../continuous-delivery/cd-execution/cv-category/verify-deployments-with-custom-health-metrics.md) lets you customize APMs of your choice.
 
@@ -675,14 +655,14 @@ Harness offers support for all major APM vendors, but there are cases where a cu
 
 Currently, Harness supports the following APMs and logging tools:
 
-* AppDynamics
-* Prometheus
-* Dynatrace
-* Splunk
-* Custom Health Source
-* Google Cloud Operations (formerly Stackdriver)
-* New Relic
-* Datadog
+- AppDynamics
+- Prometheus
+- Dynatrace
+- Splunk
+- Custom Health Source
+- Google Cloud Operations (formerly Stackdriver)
+- New Relic
+- Datadog
 
 More tools will be added soon.
 
@@ -690,9 +670,9 @@ More tools will be added soon.
 
 A Change Source monitors change events related to deployments, infrastructure changes, and incidents. Following Change Sources are supported:
 
-* Harness CD NextGen
-* Harness CD
-* PagerDuty
+- Harness CD NextGen
+- Harness CD
+- PagerDuty
 
 ### Security Testing Orchestration
 
@@ -706,38 +686,34 @@ Harness Feature Flags support [client-side and server-side SDKs](../feature-flag
 
 The following table lists the Client-side Feature Flag SDKs Harness supports.
 
-
-
-|  SDK |  Documentation |
-| --- | --- |
-| [Android](https://github.com/harness/ff-android-client-sdk) | [Android SDK Reference](../feature-flags/4-ff-sdks/2-client-sdks/1-android-sdk-reference.md) |
-| [iOS](https://github.com/harness/ff-ios-client-sdk) | [iOS SDK Reference](../feature-flags/4-ff-sdks/2-client-sdks/3-ios-sdk-reference.md) |
-| [Flutter](https://github.com/harness/ff-flutter-client-sdk) | [Flutter SDK Reference](../feature-flags/4-ff-sdks/2-client-sdks/2-flutter-sdk-reference.md) |
-| [Javascript](https://github.com/harness/ff-javascript-client-sdk) | [Javascript SDK Reference](../feature-flags/4-ff-sdks/2-client-sdks/4-java-script-sdk-references.md) |
+| SDK                                                                   | Documentation                                                                                          |
+| --------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| [Android](https://github.com/harness/ff-android-client-sdk)           | [Android SDK Reference](../feature-flags/4-ff-sdks/2-client-sdks/1-android-sdk-reference.md)           |
+| [iOS](https://github.com/harness/ff-ios-client-sdk)                   | [iOS SDK Reference](../feature-flags/4-ff-sdks/2-client-sdks/3-ios-sdk-reference.md)                   |
+| [Flutter](https://github.com/harness/ff-flutter-client-sdk)           | [Flutter SDK Reference](../feature-flags/4-ff-sdks/2-client-sdks/2-flutter-sdk-reference.md)           |
+| [Javascript](https://github.com/harness/ff-javascript-client-sdk)     | [Javascript SDK Reference](../feature-flags/4-ff-sdks/2-client-sdks/4-java-script-sdk-references.md)   |
 | [React Native](https://github.com/harness/ff-react-native-client-sdk) | [React Native SDK Reference](../feature-flags/4-ff-sdks/2-client-sdks/5-react-native-sdk-reference.md) |
-| [Xamarin](https://github.com/harness/ff-xamarin-client-sdk) | [Xamarin SDK Reference](../feature-flags/4-ff-sdks/2-client-sdks/6-xamarin-sdk-reference.md) |
+| [Xamarin](https://github.com/harness/ff-xamarin-client-sdk)           | [Xamarin SDK Reference](../feature-flags/4-ff-sdks/2-client-sdks/6-xamarin-sdk-reference.md)           |
 
-####  Server-side SDKs
+#### Server-side SDKs
 
 The following table lists the Server-side Feature Flag SDKs Harness supports.
 
-
-
-|  SDK |  Documentation |
-| --- | --- |
-| [.NET](https://github.com/harness/ff-dotnet-server-sdk) | [.NET SDK Reference](../feature-flags/4-ff-sdks/3-server-sdks/4-net-sdk-reference.md) |
-| [Go](https://github.com/harness/ff-golang-server-sdk) | [Go SDK Reference](../feature-flags/4-ff-sdks/3-server-sdks/2-feature-flag-sdks-go-application.md) |
-| [Java](https://github.com/harness/ff-java-server-sdk) | [Java SDK Reference](../feature-flags/4-ff-sdks/3-server-sdks/3-integrate-feature-flag-with-java-sdk.md) |
-| [Node.js](https://github.com/harness/ff-nodejs-server-sdk) | [Node.js SDK Reference](../feature-flags/4-ff-sdks/3-server-sdks/5-node-js-sdk-reference.md) |
-| [Python](https://github.com/harness/ff-python-server-sdk) | [Python SDK Reference](../feature-flags/4-ff-sdks/3-server-sdks/7-python-sdk-reference.md) |
-| [Ruby](https://github.com/harness/ff-ruby-server-sdk) | [Ruby SDK Reference](../feature-flags/4-ff-sdks/3-server-sdks/8-ruby-sdk-reference.md) |
-| [PHP](https://github.com/harness/ff-php-server-sdk) | [PHP SDK Reference](../feature-flags/4-ff-sdks/3-server-sdks/6-php-sdk-reference.md) |
+| SDK                                                        | Documentation                                                                                            |
+| ---------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| [.NET](https://github.com/harness/ff-dotnet-server-sdk)    | [.NET SDK Reference](../feature-flags/4-ff-sdks/3-server-sdks/4-net-sdk-reference.md)                    |
+| [Go](https://github.com/harness/ff-golang-server-sdk)      | [Go SDK Reference](../feature-flags/4-ff-sdks/3-server-sdks/2-feature-flag-sdks-go-application.md)       |
+| [Java](https://github.com/harness/ff-java-server-sdk)      | [Java SDK Reference](../feature-flags/4-ff-sdks/3-server-sdks/3-integrate-feature-flag-with-java-sdk.md) |
+| [Node.js](https://github.com/harness/ff-nodejs-server-sdk) | [Node.js SDK Reference](../feature-flags/4-ff-sdks/3-server-sdks/5-node-js-sdk-reference.md)             |
+| [Python](https://github.com/harness/ff-python-server-sdk)  | [Python SDK Reference](../feature-flags/4-ff-sdks/3-server-sdks/7-python-sdk-reference.md)               |
+| [Ruby](https://github.com/harness/ff-ruby-server-sdk)      | [Ruby SDK Reference](../feature-flags/4-ff-sdks/3-server-sdks/8-ruby-sdk-reference.md)                   |
+| [PHP](https://github.com/harness/ff-php-server-sdk)        | [PHP SDK Reference](../feature-flags/4-ff-sdks/3-server-sdks/6-php-sdk-reference.md)                     |
 
 ### Harness Chaos Engineering
 
 Perform chaos experiments on applications in your infrastructure, such as a Kubernetes cluster. Use predefined or custom, Workflow templates.
 
-See [Introduction to Chaos Module](../chaos-engineering/introduction/introduction-to-chaos-module.md), [HCE Release Guide](../chaos-engineering/introduction/hce-beta-release-guide.md).
+See [Introduction to Chaos Module](../chaos-engineering/overview/introduction-to-chaos-module.md).
 
 ### Collaboration
 
@@ -745,20 +721,18 @@ The following table lists Harness support for collaboration tools.
 
 Most providers are used in both Pipeline Notification Strategies and User Group notifications:
 
-* [Add a Pipeline Notification Strategy](../continuous-delivery/cd-advanced/cd-notifications/notify-users-of-pipeline-events.md)
-* [Send Notifications Using Slack](../platform/5_Notifications/send-notifications-using-slack.md)
-* [Send Notifications to Microsoft Teams](../platform/5_Notifications/send-notifications-to-microsoft-teams.md)
+- [Add a Pipeline Notification Strategy](../continuous-delivery/cd-advanced/cd-notifications/notify-users-of-pipeline-events.md)
+- [Send Notifications Using Slack](../platform/5_Notifications/send-notifications-using-slack.md)
+- [Send Notifications to Microsoft Teams](../platform/5_Notifications/send-notifications-to-microsoft-teams.md)
 
-
-
-|  Provider Name |  Notification |  Approval/Change Management |
-| --- | --- | --- |
-| [Microsoft Teams](../platform/5_Notifications/send-notifications-to-microsoft-teams.md) |  Yes |  N/A |
-| [Email](../continuous-delivery/cd-advanced/cd-notifications/notify-users-of-pipeline-events.md) |  Yes |  N/A |
-| [Slack](../platform/5_Notifications/send-notifications-using-slack.md) |  Yes |  N/A |
-| [Jira](../platform/9_Approvals/adding-jira-approval-stages.md) |  Yes |  Yes |
-| [ServiceNow](../platform/9_Approvals/service-now-approvals.md) |  N/A |  Yes |
-| [PagerDuty](../continuous-delivery/cd-advanced/cd-notifications/notify-users-of-pipeline-events.md) |  Yes |  N/A |
+| Provider Name                                                                                       | Notification | Approval/Change Management |
+| --------------------------------------------------------------------------------------------------- | ------------ | -------------------------- |
+| [Microsoft Teams](../platform/5_Notifications/send-notifications-to-microsoft-teams.md)             | Yes          | N/A                        |
+| [Email](../continuous-delivery/cd-advanced/cd-notifications/notify-users-of-pipeline-events.md)     | Yes          | N/A                        |
+| [Slack](../platform/5_Notifications/send-notifications-using-slack.md)                              | Yes          | N/A                        |
+| [Jira](../platform/9_Approvals/adding-jira-approval-stages.md)                                      | Yes          | Yes                        |
+| [ServiceNow](../platform/9_Approvals/service-now-approvals.md)                                      | N/A          | Yes                        |
+| [PagerDuty](../continuous-delivery/cd-advanced/cd-notifications/notify-users-of-pipeline-events.md) | Yes          | N/A                        |
 
 ### Access control
 
@@ -766,23 +740,21 @@ The following table lists Harness support for SSO protocols and tools.
 
 See [Add and Manage Access Control](../feature-flags/1-ff-onboarding/3-ff-security-compliance/1-manage-access-control.md).
 
-
-
-|  SSO Type |  SSO Providers |  Authentication Supported |  Authorization (Group Linking) Supported |  SCIM Provisioning |
-| --- | --- | --- | --- | --- |
-| [SAML 2.0](../platform/3_Authentication/3-single-sign-on-saml.md) |  Okta |  Yes |  Yes |  Yes |
-|  |  Azure Active Directory |  Yes |  Yes |  Yes |
-|  |  Others |  Yes |  Yes | No |
-|  |  OneLogin |  Yes |  Yes |  Yes |
-| [OAuth 2.0](../platform/3_Authentication/4-single-sign-on-sso-with-oauth.md) |  Github |  Yes |  No |  N/A |
-|  |  GitLab |  Yes |  No |  N/A |
-|  |  Bitbucket |  Yes |  No |  N/A |
-|  |  Google |  Yes |  No |  N/A |
-|  |  Azure |  Yes |  No |  N/A |
-|  |  LinkedIn |  Yes |  No |  N/A |
-| LDAP (Delegate connectivity needed) |  Active Directory |  Coming soon |  Coming soon |  N/A |
-|  |  Open LDAP |  Coming soon |  Coming soon |  N/A |
-|  |  Oracle LDAP |  Coming soon |  Coming soon |  N/A |
+| SSO Type                                                                     | SSO Providers          | Authentication Supported | Authorization (Group Linking) Supported | SCIM Provisioning |
+| ---------------------------------------------------------------------------- | ---------------------- | ------------------------ | --------------------------------------- | ----------------- |
+| [SAML 2.0](../platform/3_Authentication/3-single-sign-on-saml.md)            | Okta                   | Yes                      | Yes                                     | Yes               |
+|                                                                              | Azure Active Directory | Yes                      | Yes                                     | Yes               |
+|                                                                              | Others                 | Yes                      | Yes                                     | No                |
+|                                                                              | OneLogin               | Yes                      | Yes                                     | Yes               |
+| [OAuth 2.0](../platform/3_Authentication/4-single-sign-on-sso-with-oauth.md) | Github                 | Yes                      | No                                      | N/A               |
+|                                                                              | GitLab                 | Yes                      | No                                      | N/A               |
+|                                                                              | Bitbucket              | Yes                      | No                                      | N/A               |
+|                                                                              | Google                 | Yes                      | No                                      | N/A               |
+|                                                                              | Azure                  | Yes                      | No                                      | N/A               |
+|                                                                              | LinkedIn               | Yes                      | No                                      | N/A               |
+| LDAP (Delegate connectivity needed)                                          | Active Directory       | Coming soon              | Coming soon                             | N/A               |
+|                                                                              | Open LDAP              | Coming soon              | Coming soon                             | N/A               |
+|                                                                              | Oracle LDAP            | Coming soon              | Coming soon                             | N/A               |
 
 ### Secret management
 
@@ -790,24 +762,22 @@ The following table lists Harness support for cloud platform secrets management 
 
 See [Harness Secrets Management Overview](../platform/6_Security/1-harness-secret-manager-overview.md).
 
-|  Provider Name |  Key Encryption Support |  Encrypted Data Storaged with Harness |  Support for Referencing Existing Secrets |
-| --- | --- | --- | --- |
-| [AWS KMS](../platform/6_Security/7-add-an-aws-kms-secrets-manager.md) |  Yes |  Yes |  No |
-| [AWS Secret Manager](../platform/6_Security/6-add-an-aws-secret-manager.md) |  Yes |  No |  Yes |
-| [Hashicorp Vault](../platform/6_Security/12-add-hashicorp-vault.md) |  Yes |  No |  Yes |
-| [Azure Key Vault](../platform/6_Security/8-azure-key-vault.md) |  Yes |  No |  Yes |
-| [Google KMS](../platform/6_Security/10-add-google-kms-secrets-manager.md) |  Yes |  Yes |  No |
+| Provider Name                                                               | Key Encryption Support | Encrypted Data Storaged with Harness | Support for Referencing Existing Secrets |
+| --------------------------------------------------------------------------- | ---------------------- | ------------------------------------ | ---------------------------------------- |
+| [AWS KMS](../platform/6_Security/7-add-an-aws-kms-secrets-manager.md)       | Yes                    | Yes                                  | No                                       |
+| [AWS Secret Manager](../platform/6_Security/6-add-an-aws-secret-manager.md) | Yes                    | No                                   | Yes                                      |
+| [Hashicorp Vault](../platform/6_Security/12-add-hashicorp-vault.md)         | Yes                    | No                                   | Yes                                      |
+| [Azure Key Vault](../platform/6_Security/8-azure-key-vault.md)              | Yes                    | No                                   | Yes                                      |
+| [Google KMS](../platform/6_Security/10-add-google-kms-secrets-manager.md)   | Yes                    | Yes                                  | No                                       |
 
 ### Harness Self-Managed Enterprise Edition
 
 The following table lists the major support features for Harness Self-Managed Enterprise Edition offerings.
 
-
-
-|  Solution |  Supported Platform |  Connected\* |  HA Supported\*\* |  Monitoring |  Disaster Recovery |  Auto Restart |  Features Under Controlled Release |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| [Kubernetes Cluster](/docs/category/kubernetes) |  Kubernetes - GKE - AKS - EKS |  Yes |  Yes | Prometheus, Grafana | Supported | Supported |  |
-| [Virtual Machine (VM)](/docs/category/install-on-virtual-machine) |  Linux VM (3 VM minimum) |  Yes |  Yes | Prometheus, Grafana | Supported | Supported |  |
+| Solution                                                          | Supported Platform           | Connected\* | HA Supported\*\* | Monitoring          | Disaster Recovery | Auto Restart | Features Under Controlled Release |
+| ----------------------------------------------------------------- | ---------------------------- | ----------- | ---------------- | ------------------- | ----------------- | ------------ | --------------------------------- |
+| [Kubernetes Cluster](/docs/category/kubernetes)                   | Kubernetes - GKE - AKS - EKS | Yes         | Yes              | Prometheus, Grafana | Supported         | Supported    |                                   |
+| [Virtual Machine (VM)](/docs/category/install-on-virtual-machine) | Linux VM (3 VM minimum)      | Yes         | Yes              | Prometheus, Grafana | Supported         | Supported    |                                   |
 
 ### SDKs installed with the Delegate
 
@@ -817,10 +787,10 @@ Harness Delegate includes binaries for the SDKs that are required for deployment
 
 For Kubernetes deployments, the following SDKs/tools are included in the Delegate.
 
-* kubectl: v1.13, v1.19
-* Helm: v2.13.1, v3.1.2, v3.8.0
-* Kustomize: v3.5.4, v4.0.0
-* OpenShift: v4.2.16
+- kubectl: v1.13, v1.19
+- Helm: v2.13.1, v3.1.2, v3.8.0
+- Kustomize: v3.5.4, v4.0.0
+- OpenShift: v4.2.16
 
 The versions can be found in this public GitHub repo: <https://github.com/harness/harness-core/tree/develop/960-api-services/src/main/java/io/harness/delegate/clienttools>
 
@@ -828,34 +798,30 @@ For details on updating the default tool versions, go to [Install Software on th
 
 For Kubernetes deployments, the following SDKs/tools are certified.
 
-
-
-|  |  |  |
-| --- | --- | --- |
-| **Manifest Type** | **Required Tool/SDK** | **Certified Version** |
-| Kubernetes | kubectl | v1.24.3 |
-|  | go-template | v0.4 |
-| Helm | kubectl | v1.24.3 |
-|  | helm | v3.9.2 |
-| Helm (chart is stored in GCS or S3) | kubectl | v1.24.3 |
-|  | helm | v3.9.2 |
-|  | chartmuseum | v0.8.2 and v0.12.0 |
-| Kustomize | kubectl | v1.24.3 |
-|  | kustomize | v4.5.4 |
-| OpenShift | kubectl | v1.24.3 |
-|  | oc | v4 |
+|                                     |                       |                       |
+| ----------------------------------- | --------------------- | --------------------- |
+| **Manifest Type**                   | **Required Tool/SDK** | **Certified Version** |
+| Kubernetes                          | kubectl               | v1.24.3               |
+|                                     | go-template           | v0.4                  |
+| Helm                                | kubectl               | v1.24.3               |
+|                                     | helm                  | v3.9.2                |
+| Helm (chart is stored in GCS or S3) | kubectl               | v1.24.3               |
+|                                     | helm                  | v3.9.2                |
+|                                     | chartmuseum           | v0.8.2 and v0.12.0    |
+| Kustomize                           | kubectl               | v1.24.3               |
+|                                     | kustomize             | v4.5.4                |
+| OpenShift                           | kubectl               | v1.24.3               |
+|                                     | oc                    | v4                    |
 
 ##### Native Helm deployments
 
 For [Native Helm deployments](../continuous-delivery/onboard-cd/cd-quickstarts/native-helm-quickstart.md), the following SDKs/tools are certified.
 
-
-
-|  |  |  |
-| --- | --- | --- |
-| **Manifest Type** | **Required Tool/SDK** | **Certified Version** |
-| Helm Chart | helm | v3.9.2 |
-|  | kubectlRequired if Kubernetes version is 1.16+. | v1.24.3 |
+|                   |                                                 |                       |
+| ----------------- | ----------------------------------------------- | --------------------- |
+| **Manifest Type** | **Required Tool/SDK**                           | **Certified Version** |
+| Helm Chart        | helm                                            | v3.9.2                |
+|                   | kubectlRequired if Kubernetes version is 1.16+. | v1.24.3               |
 
 ##### Install a Delegate with custom SDK and 3rd-party tool binaries
 
@@ -869,10 +835,10 @@ For steps on using the No Tools Delegate image and installing specific SDK versi
 
 The following browsers are supported:
 
-* **Chrome**: latest version
-* **Firefox**: latest version
-* **Safari**: latest version
-* All Chromium-based browsers.
+- **Chrome**: latest version
+- **Firefox**: latest version
+- **Safari**: latest version
+- All Chromium-based browsers.
 
 Mobile browsers are not supported.
 
@@ -883,9 +849,9 @@ Minimum supported screen resolution is 1440x900.
 <p id="see-also"></p>
 ### See Also
 
-* [Kubernetes](/docs/category/kubernetes)
-* [Helm v3.0](../continuous-delivery/onboard-cd/cd-quickstarts/helm-cd-quickstart.md)
-* [Serverless Lambda](../continuous-delivery/onboard-cd/cd-quickstarts/serverless-lambda-cd-quickstart.md)
-* [Azure Web App](../continuous-delivery/onboard-cd/cd-quickstarts/azure-web-apps-tutorial.md)
-* [Secure Shell (SSH](../continuous-delivery/onboard-cd/cd-quickstarts/ssh-ng.md)
-* [AWS ECS](../continuous-delivery/onboard-cd/cd-quickstarts/ecs-deployment-tutorial.md)
+- [Kubernetes](/docs/category/kubernetes)
+- [Helm v3.0](../continuous-delivery/onboard-cd/cd-quickstarts/helm-cd-quickstart.md)
+- [Serverless Lambda](../continuous-delivery/onboard-cd/cd-quickstarts/serverless-lambda-cd-quickstart.md)
+- [Azure Web App](../continuous-delivery/onboard-cd/cd-quickstarts/azure-web-apps-tutorial.md)
+- [Secure Shell (SSH](../continuous-delivery/onboard-cd/cd-quickstarts/ssh-ng.md)
+- [AWS ECS](../continuous-delivery/onboard-cd/cd-quickstarts/ecs-deployment-tutorial.md)

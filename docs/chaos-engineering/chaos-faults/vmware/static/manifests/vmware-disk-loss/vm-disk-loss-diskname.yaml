@@ -1,4 +1,4 @@
-# Disk loss in the VMWare VM
+# Disk loss in the VMware VM
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -7,7 +7,7 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: vmware-disk-loss
+  - name: VMware-disk-loss
     spec:
       components:
         env:

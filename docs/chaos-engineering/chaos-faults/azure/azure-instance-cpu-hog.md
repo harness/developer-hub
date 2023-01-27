@@ -1,39 +1,29 @@
 ---
 id: azure-instance-cpu-hog
-title: Azure Instance CPU Hog
+title: Azure instance CPU hog
 ---
 
-## Introduction
+Azure instance CPU hog disrupts the state of infrastructure resources. 
+- This fault induces stress on the Azure instance using the Azure Run Command. This command is executed using the bash scripts that are in-built in the fault.
+- It utilizes the CPU in excess on the Azure instance using the bash script for a specific duration.
 
-- Azure Instance CPU Hog contains chaos to disrupt the state of infra resources. The fault can induce stress chaos on Azure Azure Instance using Azure Run Command, this is carried out by using bash scripts which are in-built in the fault for the given chaos scenario.
-- It causes CPU Hog chaos on Azure Instance using an bash script for a certain chaos duration.
-
-:::tip Fault execution flow chart
 ![Azure Instance CPU Hog](./static/images/azure-instance-cpu-hog.png)
-:::
 
-## Uses
+## Usage
 
-### Uses of the experiment
-
-:::info
-
-- The fault causes CPU hog/stress on the target Azure Instance(s). The idea of this fault is to simulate issues when there is lack of CPU for other runnning processes/applications resulting into degrading their performance.
-- Injecting a rogue process into a target Azure instance, we starve the main processes/applications (typically pid 1) of the resources allocated to it (where limits are defined) causing slowness in application traffic or in other cases unrestrained use can cause instance to exhaust resources leading to degradation in performance of processes/applications present on the instance. So this category of chaos fault helps to build the immunity on the application undergoing any such stress scenario.
-
-:::
+<details>
+<summary>View fault usage</summary>
+<div>
+This fault determines the resilience of an Azure instance when CPU resources are utilized in excess, unexpectedly. It determines how Azure scales the CPU resources to maintain the application when it is under stress. 
+</div>
+</details>
 
 ## Prerequisites
 
-:::info
-
-- Ensure that Kubernetes Version >= 1.17
-
-**Azure Access Requirement:**
-
-- Ensure that Azure Run Command agent is installed and running in the target Azure instance.
-- We will use Azure [file-based authentication](https://docs.microsoft.com/en-us/azure/developer/go/azure-sdk-authorization#use-file-based-authentication) to connect with the instance using Azure GO SDK in the fault. For generating auth file run `az ad sp create-for-rbac --sdk-auth > azure.auth` Azure CLI command.
-- Ensure to create a Kubernetes secret having the auth file created in the step in `CHAOS_NAMESPACE`. A sample secret file looks like:
+- Kubernetes >= 1.17
+- Azure Run Command agent is installed and running in the target Azure instance.
+- Use Azure [file-based authentication](https://docs.microsoft.com/en-us/azure/developer/go/azure-sdk-authorization#use-file-based-authentication) to connect to the instance using Azure GO SDK. To generate the auth file, run `az ad sp create-for-rbac --sdk-auth > azure.auth` Azure CLI command.
+- Create a Kubernetes secret that contains the auth file created in the previous step in the `CHAOS_NAMESPACE`. Below is a sample secret file:
 
 ```yaml
 apiVersion: v1
@@ -57,22 +47,16 @@ stringData:
     }
 ```
 
-- If you change the secret key name (from `azure.auth`) please also update the `AZURE_AUTH_LOCATION` ENV value in the ChaosExperiment CR with the same name.
 
-:::
+- If you change the secret key name (from `azure.auth`), ensure that you update the `AZURE_AUTH_LOCATION` environment variable in the chaos experiment with the new name.
 
-## Default Validations
+## Default validations
+- Azure instance should be in a healthy state.
 
-:::info
-
-- Azure instance should be in healthy state.
-
-:::
-
-## Fault Tunables
+## Fault tunables
 
 <details>
-    <summary>Check the Fault Tunables</summary>
+  <summary>Fault tunables</summary>
     <h2>Mandatory Fields</h2>
     <table>
         <tr>
@@ -82,13 +66,13 @@ stringData:
         </tr>
         <tr>
             <td> AZURE_INSTANCE_NAMES </td>
-            <td> Names of the target Azure instances </td>
-            <td> Multiple values can be provided as comma-separated string. Eg: instance-1,instance-2 </td>
+            <td> Names of the target Azure instances. </td>
+            <td> Multiple values can be provided as comma-separated strings. For example, instance-1,instance-2. </td>
         </tr>
         <tr>
             <td> RESOURCE_GROUP </td>
-            <td> The Azure Resource Group name where the instances has been created </td>
-            <td> All the instances must be from the same resource group </td>
+            <td> The Azure Resource Group name where the instances will be created. </td>
+            <td> All the instances must be from the same resource group. </td>
         </tr>
     </table>
     <h2>Optional Fields</h2>
@@ -100,63 +84,63 @@ stringData:
         </tr>
         <tr>
             <td> TOTAL_CHAOS_DURATION </td>
-            <td> The total time duration for chaos injection (sec) </td>
-            <td> Defaults to 30s </td>
+            <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
+            <td> Defaults to 30s. </td>
         </tr>
         <tr>
             <td> CHAOS_INTERVAL </td>
-            <td> The interval (in sec) between successive chaos injection</td>
-            <td> Defaults to 60s </td>
+            <td> Time interval between two successive container kills (in seconds).</td>
+            <td> Defaults to 60s. </td>
         </tr>
         <tr>
           <td> AZURE_AUTH_LOCATION </td>
-          <td> Provide the name of the Azure secret credentials files</td>
-          <td> Defaults to <code>azure.auth</code> </td>
+          <td> Name of the Azure secret credentials files</td>
+          <td> Defaults to <code>azure.auth</code>. </td>
         </tr>
         <tr>
             <td> SCALE_SET </td>
-            <td> Whether the Instance are part of ScaleSet or not. It can be either disable or enable</td>
-            <td> Defaults to <code>disable</code> </td>
+            <td> Check if the instance is a part of Scale Set.</td>
+            <td> Defaults to <code>disable</code>. Supports enable as well. </td>
         </tr>
         <tr>
             <td> INSTALL_DEPENDENCIES </td>
-            <td> Select to install dependencies used to run the CPU chaos. It can be either True or False</td>
-            <td> Defaults to True </td>
+            <td> Install dependencies to run the chaos. </td>
+            <td> Defaults to true. Supports false as well.</td>
         </tr>
         <tr>
             <td> CPU_CORE </td>
-            <td> Provide the number of CPU cores to consume</td>
-            <td> Defaults to 0 </td>
+            <td> Number of CPU cores that will be subject to stress.</td>
+            <td> Defaults to 0. </td>
         </tr>
         <tr>
             <td> CPU_LOAD </td>
-            <td> Provide the percentage of a single CPU core to be consumed</td>
-            <td> Defaults to 100 </td>
+            <td> Percentage load exerted on a single CPU core. </td>
+            <td> Defaults to 100. </td>
         </tr>
         <tr>
             <td> SEQUENCE </td>
-            <td> It defines sequence of chaos execution for multiple instance</td>
-            <td> Default value: parallel. Supported: serial, parallel </td>
+            <td> Sequence of chaos execution for multiple target pods.</td>
+            <td> Defaults to parallel. Supports serial sequence as well. </td>
         </tr>
         <tr>
             <td> RAMP_TIME </td>
-            <td> Period to wait before and after injection of chaos in sec </td>
-            <td> Eg: 30 </td>
+            <td> Period to wait before and after injecting chaos (in seconds).</td>
+            <td> For example, 30s. </td>
         </tr>
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common Fault Tunables
+### Common fault tunables
 
-Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
+Refer to the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
-### CPU CORE
+### CPU core
 
-It defines the CPU core value to be utilised on the Azure instance. It can be tuned via `CPU_CORE` ENV.
+It defines the CPU core value that is utilised on the Azure instance. You can tune it using the `CPU_CORE` environment variable.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/azure-instance-cpu-hog/cpu-core.yaml yaml)
 ```yaml
@@ -183,11 +167,11 @@ spec:
           value: 'rg-azure'
 ```
 
-### CPU PERCENTAGE
+### CPU percentage
 
-It defines the CPU percentage value to be utilised on the Azure instance. It can be tuned via `CPU_LOAD` ENV.
+It defines the CPU percentage value that is utilised on the Azure instance. You can tune it using the `CPU_LOAD` environment variable.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/azure-instance-cpu-hog/cpu-percentage.yaml yaml)
 ```yaml
@@ -214,11 +198,11 @@ spec:
           value: 'rg-azure'
 ```
 
-### MULTIPLE Azure INSTANCES
+### Multiple Azure instances
 
-Multiple Azure instances can be targeted in one chaos run. It can be tuned via `AZURE_INSTANCE_NAMES` ENV.
+Multiple Azure instances can be targeted in a single chaos run. You can tune it using the `AZURE_INSTANCE_NAMES` environment variable.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/azure-instance-cpu-hog/multiple-instances.yaml yaml)
 ```yaml
@@ -243,11 +227,11 @@ spec:
           value: 'rg-azure'
 ```
 
-### CPU CORE WITH PERCENTAGE CONSUMPTION
+### CPU core with percentage consumption
 
-It defines how many CPU cores to utilise with percentage of utilisation on the Azure instance. It can be tuned via `CPU_CORE` and `CPU_LOAD` ENV.
+It defines the number of CPU cores that will be utilised (in percentage) by the Azure instance. You can tune it using the `CPU_CORE` and `CPU_LOAD` environment variables, respectively.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/azure-instance-cpu-hog/cpu-core-with-percentage.yaml yaml)
 ```yaml

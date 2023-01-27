@@ -1,35 +1,32 @@
 ---
 id: node-memory-hog
-title: Node Memory Hog
+title: Node memory hog
 ---
 
-## Introduction
+Node memory hog causes memory resource exhaustion on the Kubernetes node. 
+- It is injected using a helper pod running the Linux stress-ng tool (a workload generator).
+- The chaos affects the application foe a duration specified by the `TOTAL_CHAOS_DURATION` environment variable.
 
-- This fault causes Memory resource exhaustion on the Kubernetes node. The fault aims to verify resiliency of applications whose replicas may be evicted on account on nodes turning unschedulable (Not Ready) due to lack of Memory resources.
-- The Memory chaos is injected using a helper pod running the linux stress-ng tool (a workload generator)- The chaos is effected for a period equalling the TOTAL_CHAOS_DURATION and up to <code>MEMORY_CONSUMPTION_PERCENTAGE</code> (out of 100) or <code>MEMORY_CONSUMPTION_MEBIBYTES</code> (in Mebibytes out of total available memory).
-- Application implies services. Can be reframed as: Tests application resiliency upon replica evictions caused due to lack of Memory resources.
-
-:::tip Fault execution flow chart 
 ![Node Memory Hog](./static/images/node-stress.png)
-:::
 
-## Uses
+
+## Usage
 <details>
-<summary>View the uses of the fault</summary>
+<summary>View fault usage</summary>
 <div>
-Coming soon.
+Node memory hog causes memory resource exhaustion on the Kubernetes node. The fault aims to verify resilience of applications whose replicas may be evicted on account on nodes becoming unschedulable (Not Ready) due to lack of memory resources.
 </div>
 </details>
 
-## Default Validations
-:::note
-The target nodes should be in ready state before and after chaos injection.
-:::
+## Default validations
 
-## Fault Tunables
+The target nodes should be in the ready state before and after injecting chaos.
+
+
+## Fault tunables
 <details>
-    <summary>Check the Fault Tunables</summary>
-    <h2>Mandatory Fields</h2>
+    <summary>Fault tunables</summary>
+    <h2>Mandatory fields</h2>
     <table>
       <tr>
         <th> Variables </th>
@@ -38,16 +35,16 @@ The target nodes should be in ready state before and after chaos injection.
       </tr>
       <tr>
         <td> TARGET_NODES </td>
-        <td> Comma separated list of nodes, subjected to node memory hog chaos</td>
-        <td> Eg. node-1,node-2 </td>
+        <td> Comma-separated list of nodes subject to node I/O stress.</td>
+        <td> For example, <code>node-1,node-2</code>. </td>
       </tr>
       <tr>
         <td> NODE_LABEL </td>
-        <td> It contains node label, which will be used to filter the target nodes if <code>TARGET_NODES</code> ENV is not set </td>
-        <td>It is mutually exclusive with the <code>TARGET_NODES</code> ENV. If both are provided then it will use the <code>TARGET_NODES</code> </td>
+       <td> It contains the node label that is used to filter the target nodes.</td>
+        <td>It is mutually exclusive with the <code>TARGET_NODES</code> environment variable. If both are provided, <code>TARGET_NODES</code> takes precedence.</td>
       </tr>
     </table>
-    <h2>Optional Fields</h2>
+    <h2>Optional fields</h2>
     <table>
       <tr>
         <th> Variables </th>
@@ -56,59 +53,54 @@ The target nodes should be in ready state before and after chaos injection.
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The time duration for chaos insertion (in seconds) </td>
-        <td> Defaults to 120 </td>
+        <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
+        <td> Default to 120s. </td>
       </tr>
-      <tr>
-        <td> LIB </td>
-        <td> The chaos lib used to inject the chaos </td>
-        <td> Defaults to `litmus` </td>
-      </tr>
-      <tr>
+      <tr>    
         <td> LIB_IMAGE </td>
-        <td> Image used to run the stress command </td>
-        <td> Defaults to <code>litmuschaos/go-runner:latest</code> </td>
+        <td> Image used to run the stress command. </td>
+        <td> Defaults to <code>litmuschaos/go-runner:latest</code>.</td>
       </tr>
       <tr>
         <td> MEMORY_CONSUMPTION_PERCENTAGE </td>
-        <td> Percent of the total node memory capacity </td>
-        <td> Defaults to 30 </td>
+        <td> Percent of the total node memory capacity. </td>
+        <td> Defaults to 30. </td>
       </tr>
       <tr>
         <td> MEMORY_CONSUMPTION_MEBIBYTES </td>
-        <td> The size in Mebibytes of total available memory. When using this we need to keep <code>MEMORY_CONSUMPTION_PERCENTAGE</code> empty as the percentage have more precedence</td>
-        <td> Eg. 256 </td>
+        <td> Amount of the total available memory (in mebibytes). It is mutually exclusive with <code>MEMORY_CONSUMPTION_PERCENTAGE</code>. </td>
+        <td> For example, 256. </td>
       </tr>  
       <tr>
         <td> NUMBER_OF_WORKERS </td>
-        <td> It is the number of VM workers involved in IO disk stress </td>
-        <td> Default to 1 </td>
-      </tr>
+        <td> Number of VM workers involved in the stress. </td>
+        <td> Defaults to 1. </td>
+      </tr> 
       <tr>
         <td> RAMP_TIME </td>
-        <td> Period to wait before and after injection of chaos in sec </td>
-        <td> Eg. 30 </td>
+        <td> Period to wait before and after injecting chaos (in seconds). </td>
+        <td> For example, 30s. </td>
       </tr>
       <tr>
         <td> NODES_AFFECTED_PERC </td>
-        <td> The Percentage of total nodes to target </td>
-        <td> Defaults to 0 (corresponds to 1 node), provide numeric value only </td>
+        <td> Percentage of the total nodes to target. It takes numeric values only. </td>
+        <td> Defaults to 0 (corresponds to 1 node). </td>
       </tr> 
       <tr>
         <td> SEQUENCE </td>
-        <td> It defines sequence of chaos execution for multiple target pods </td>
-        <td> Default value: parallel. Supported: serial, parallel </td>
+        <td> Sequence of chaos execution for multiple target pods.</td>
+        <td> Defaults to parallel. Supports serial sequence as well. </td>
       </tr>
     </table>
 </details>
 
-## Fault Examples
-### Common and Node specific tunables
-Refer the [common attributes](../../common-tunables-for-all-faults) and [Node specific tunable](./common-tunables-for-node-faults) to tune the common tunables for all faults and node specific tunables.  
+## Fault examples
+### Common and node-specific tunables
+Refer to the [common attributes](../../common-tunables-for-all-faults) and [node-specific tunables](./common-tunables-for-node-faults) to tune the common tunables for all faults and node specific tunables.  
 
-### Memory Consumption Percentage
+### Memory consumption percentage
 
-It stresses the `MEMORY_CONSUMPTION_PERCENTAGE` percentage of total node capacity of the targeted node. 
+It specifies the amount of memory consumed (in percentage). You can tune it using the `MEMORY_CONSUMPTION_PERCENTAGE` environment variable.
 
 Use the following example to tune this:
 
@@ -137,12 +129,11 @@ spec:
           VALUE: '60'
 ```
 
-### Memory Consumption Mebibytes
+### Memory consumption mebibytes
 
-It stresses the `MEMORY_CONSUMPTION_MEBIBYTES` MiBi of the memory of the targeted node. 
-It is mutually exclusive with the `MEMORY_CONSUMPTION_PERCENTAGE` ENV. If `MEMORY_CONSUMPTION_PERCENTAGE` ENV is set then it will use the percentage for the stress otherwise, it will stress the IO based on `MEMORY_CONSUMPTION_MEBIBYTES` ENV.
+It specifies the amount of memory available. You can tune it using the `MEMORY_CONSUMPTION_MEBIBYTES` environment variable. It is mutually exclusive with the `MEMORY_CONSUMPTION_PERCENTAGE` environment variable. If `MEMORY_CONSUMPTION_PERCENTAGE` environment variable is set, then it uses this value for the stress.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/node-memory-hog/memory-consumption-mebibytes.yaml yaml)
 ```yaml
@@ -169,11 +160,11 @@ spec:
           VALUE: '60'
 ```
 
-### Workers For Stress
+### Workers for stress
 
-The workers count for the stress can be tuned with `NUMBER_OF_WORKERS` ENV.
+It specifies the number of workers for stress. You can tune it using the `NUMBER_OF_WORKERS` environment variable.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/node-memory-hog/workers.yaml yaml)
 ```yaml

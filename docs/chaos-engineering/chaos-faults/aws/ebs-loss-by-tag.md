@@ -25,7 +25,7 @@ Coming soon.
 
 :::info
 
-- Ensure that Kubernetes Version > 1.17
+- Ensure that Kubernetes Version > 1.16.
 - Ensure that you have sufficient AWS access to attach or detach an EBS volume for the instance. 
 - Ensure to create a Kubernetes secret having the AWS access configuration(key) in the `CHAOS_NAMESPACE`. A sample secret file looks like:
 ```yaml
@@ -43,45 +43,6 @@ stringData:
 ```
 - If you change the secret key name (from `cloud_config.yml`) please also update the `AWS_SHARED_CREDENTIALS_FILE` ENV value in the ChaosExperiment CR with the same name.
 :::
-
-## Permission Requirement
-
-- Here is an example AWS policy to execute ebs loss fault.
-
-<details>
-<summary>View policy for this fault</summary>
-
-```json
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": [
-                "ec2:AttachVolume",
-                "ec2:DetachVolume"
-            ],
-            "Resource": "*"
-        },
-        {
-            "Effect": "Allow",
-            "Action": "ec2:DescribeVolumes",
-            "Resource": "*"
-        },
-        {
-            "Effect": "Allow",
-            "Action": [
-                "ec2:DescribeInstanceStatus",
-                "ec2:DescribeInstances"
-            ],
-            "Resource": "*"
-        }
-    ]
-}
-```
-</details>
-
-- Refer a [superset permission/policy](../policy-for-all-aws-faults) to execute all AWS faults.
 
 ## Default Validations
 

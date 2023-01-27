@@ -1,29 +1,25 @@
 ---
 id: gcp-vm-disk-loss
-title: GCP VM Disk Loss
+title: GCP VM disk loss
 ---
+GCP VM disk loss disrupts the state of GCP persistent disk volume using the disk name by detaching the disk volume from its VM instance for a specific duration.
 
-## Introduction
-- It causes chaos to disrupt state of GCP persistent disk volume by detaching it from its VM instance for a certain chaos duration using the disk name.
-
-:::tip Fault execution flow chart
 ![GCP VM Disk Loss](./static/images/gcp-vm-disk-loss.png)
-:::
 
-## Uses
+## Usage
 <details>
-<summary>View the uses of the fault</summary>
+<summary>View fault usage</summary>
 <div>
-Coming soon.
+This fault can be used to determine the resilience of the GKE infrastructure. It helps determine how quickly a node can recover when a persistent disk volume is detached from the VM instance associated with it.
 </div>
 </details>
 
 ## Prerequisites
-:::info
-- Ensure that Kubernetes Version > 1.16.
-- Ensure that your service account has an editor access or owner access for the GCP project.
-- Ensure that the target disk volume is not a boot disk of any VM instance.
-- Ensure to create a Kubernetes secret having the GCP service account credentials in the default namespace. A sample secret file looks like:
+- Kubernetes > 1.16.
+- Service account should have editor access (or owner access) to the GCP project.
+- Target disk volume should not be a boot disk of any VM instance.
+- Kubernetes secret that has the GCP service account credentials in the default namespace. Below is a sample secret file:
+
 ```yaml
 apiVersion: v1
 kind: Secret
@@ -42,16 +38,14 @@ stringData:
   auth_provider_x509_cert_url:
   client_x509_cert_url:
 ```
-:::
 
-## Default Validations
-:::info
-- Disk volumes are attached to their respective instances.
-:::
 
-## Fault Tunables
+## Default validations
+- All the disk volumes are attached to their respective instances.
+
+## Fault tunables
 <details>
-    <summary>Check the Fault Tunables</summary>
+    <summary>Fault tunables</summary>
     <h2>Mandatory Fields</h2>
     <table>
       <tr>
@@ -61,24 +55,19 @@ stringData:
       </tr>
       <tr>
         <td> GCP_PROJECT_ID </td>
-        <td> The ID of the GCP Project of which the disk volumes are a part of </td>
-        <td> All the target disk volumes should belong to a single GCP Project </td>
+        <td> The ID of the GCP project, of which the disk volumes are a part. </td>
+        <td> All the target disk volumes should belong to a single GCP project. </td>
       </tr>
       <tr>
         <td> DISK_VOLUME_NAMES </td>
-        <td> Target non-boot persistent disk volume names</td>
-        <td> Multiple disk volume names can be provided as disk1,disk2,... </td>
+        <td> Nmaes of the target non-boot persistent disk volume.</td>
+        <td> Multiple disk volume names can be provided as disk1,disk2,.. and so on. </td>
       </tr>
       <tr>
         <td> ZONES </td>
-        <td> The zones of respective target disk volumes </td>
-        <td> Provide the zone for every target disk name as zone1,zone2... in the respective order of <code>DISK_VOLUME_NAMES</code> </td>
+        <td> The zone of the target disk volumes. </td>
+        <td> Only one zone is provided, which indicates that all target disks should reside in the same zone. </td>
       </tr>
-      <tr>
-        <td> DEVICE_NAMES </td>
-        <td> The device names of respective target disk volumes </td>
-        <td> Provide the device name for every target disk name as deviceName1,deviceName2... in the respective order of <code>DISK_VOLUME_NAMES</code> </td>
-      </tr> 
     </table>
     <h2>Optional Fields</h2>
     <table>
@@ -89,39 +78,39 @@ stringData:
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The total time duration for chaos insertion (sec) </td>
-        <td> Defaults to 30s </td>
+        <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
+        <td> Defaults to 30s. </td>
       </tr>
        <tr>
         <td> CHAOS_INTERVAL </td>
-        <td> The interval (in sec) between the successive chaos iterations (sec) </td>
-        <td> Defaults to 30s </td>
+        <td> Time interval between two successive chaos iterations (in seconds). </td>
+        <td> Defaults to 30s. </td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
-        <td> It defines sequence of chaos execution for multiple disks </td>
-        <td> Default value: parallel. Supported: serial, parallel </td>
+        <td> Sequence of chaos execution for multiple target disks. </td>
+        <td> Defaults to parallel. It supports serial sequence as well. </td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
-        <td> Period to wait before and after injection of chaos in sec </td>
-        <td> Eg. 30 </td>
+        <td> Period to wait before and after injecting chaos (in seconds).</td>
+        <td> For example, 30s. </td>
       </tr>
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common Fault Tunables
-Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
+### Common fault tunables
+Refer to the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
-### Detach Volumes By Names
+### Detach volumes by names
 
-It contains comma separated list of volume names subjected to disk loss chaos. It will detach all the disks with the given `DISK_VOLUME_NAMES` disk names and corresponding `ZONES` zone names and the `DEVICE_NAMES` device names in `GCP_PROJECT_ID` project. It re-attaches the volume after waiting for the specified `TOTAL_CHAOS_DURATION` duration.
+It contains a comma-separated list of volume names that are subject to disk loss. This fault detaches all the disks with the given `DISK_VOLUME_NAMES` disk names in the `ZONES` zone in the `GCP_PROJECT_ID` project. It re-attaches the disk volume after waiting for the duration specified by `TOTAL_CHAOS_DURATION` environment variable.
 
-`NOTE:` The `DISK_VOLUME_NAMES` contains multiple comma-separated disk names. The comma-separated zone names should be provided in the same order as disk names.
+`NOTE:` `DISK_VOLUME_NAMES` environment variable contains multiple comma-separated disk names. The comma-separated zone names should be provided in the same order as disk names.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/gcp-vm-disk-loss/gcp-disk-loss.yaml yaml)
 ```yaml

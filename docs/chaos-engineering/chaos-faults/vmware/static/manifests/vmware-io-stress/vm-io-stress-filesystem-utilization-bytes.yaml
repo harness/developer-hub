@@ -6,7 +6,7 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: vmware-io-stress
+  - name: VMware-io-stress
     spec:
       components:
         env:

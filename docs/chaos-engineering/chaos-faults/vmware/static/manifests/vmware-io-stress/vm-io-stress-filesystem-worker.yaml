@@ -1,4 +1,4 @@
-# io-stress in the VMWare VM
+# io-stress in the VMware VM
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -7,7 +7,7 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: vmware-io-stress
+  - name: VMware-io-stress
     spec:
       components:
         env:

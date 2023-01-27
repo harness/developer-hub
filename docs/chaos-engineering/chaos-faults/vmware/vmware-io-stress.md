@@ -1,24 +1,27 @@
 ---
-id: vmware-io-stress
-title: VMware IO Stress
+id: VMware-io-stress
+title: VMware IO stress
 ---
+VMware IO stress causes disk stress on the target VMware VMs. It aims to verify the resilience of applications that share this disk resource with the VM. 
 
-## Introduction
-- This fault causes disk stress on the target VMware VMs. It aims to verify the resiliency of applications that share this disk resource to the VM. 
-
-:::tip Fault execution flow chart
 ![VMware IO Stress](./static/images/vmware-io-stress.png)
-:::
+
+## Usage
+
+<details>
+<summary>View the uses of the fault</summary>
+<div>
+This fault helps determine how resilient an application is to unexpected spikes in resources. It determines how well an application handles unexpected stress at a given point in time.
+</div>
+</details>
 
 ## Prerequisites
-:::info
-- Ensure that Kubernetes Version > 1.16
+- Kubernetes > 1.16
+- Execution plane is connected to vCenter and the hosts on port 443. 
+- VMware tool is installed on the target VM with remote execution enabled.
+- Adequate vCenter permissions to access the hosts and the VMs.
+- Create a Kubernetes secret that has the Vcenter credentials in the `CHAOS_NAMESPACE`. Below is a sample secret file:
 
-** vCenter Requirements **
-- Ensure the connectivity of  execution plane with vCenter and the hosts over 443 port. 
-- Ensure that VMware tool is installed on the target VM with remote execution enabled.
-- Ensure that you have sufficient vCenter permission to access hosts and VMs.
-- Ensure to create a Kubernetes secret having the Vcenter credentials in the `CHAOS_NAMESPACE`. A sample secret file looks like:
 ```yaml
 apiVersion: v1
 kind: Secret
@@ -31,20 +34,17 @@ stringData:
     VCENTERUSER: XXXXXXXXXXXXX
     VCENTERPASS: XXXXXXXXXXXXX
 ```
-### NOTE
-You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
-:::
+### Note
+You can pass the VM credentials as secrets or as a `ChaosEngine` environment variable.
+
+## Default validations
+- The VM should be in a healthy state.
 
 
-## Default Validations
-:::info
-- VM should be in healthy state.
-:::
-
-## Fault Tunables
+## Fault tunables
 <details>
-    <summary>Check the Fault Tunables</summary>
-    <h2>Mandatory Fields</h2>
+    <summary>Fault tunables</summary>
+    <h2>Mandatory fields</h2>
     <table>
       <tr>
         <th> Variables </th>
@@ -53,11 +53,11 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
       </tr>
       <tr>
         <td> VM_NAME </td>
-        <td> Name of the target VM </td>
-        <td> ubuntu-vm-1 </td>
+        <td> Name of the target VM. </td>
+        <td> For example, <code>ubuntu-vm-1</code>. </td>
       </tr>
     </table>
-    <h2>Optional Fields</h2>
+    <h2>Optional fields</h2>
     <table>
       <tr>
         <th> Variables </th>
@@ -66,65 +66,65 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
       </tr>
        <tr>
         <td> FILESYSTEM_UTILIZATION_PERCENTAGE </td>
-        <td> Specify the size as percentage of free space on the file system </td>
-        <td> </td>
+        <td> Specify the size as a percentage of free space on the file system. </td>
+        <td> For example, <code>40</code>. </td>
       </tr>   
        <tr>
         <td> FILESYSTEM_UTILIZATION_BYTES </td>
-        <td> Specify the size in GigaBytes(GB). FILESYSTEM_UTILIZATION_PERCENTAGE & FILESYSTEM_UTILIZATION_BYTES are mutually exclusive. If both are provided, FILESYSTEM_UTILIZATION_PERCENTAGE is prioritized. </td>
-        <td> </td>
+        <td> Specify the size in gigabytes(GB). FILESYSTEM_UTILIZATION_PERCENTAGE and FILESYSTEM_UTILIZATION_BYTES environment variables are mutually exclusive. If both are provided, FILESYSTEM_UTILIZATION_PERCENTAGE takes precedence. </td>
+        <td> For example, <code>100</code></td>
       </tr>  
        <tr>
         <td> NUMBER_OF_WORKERS </td>
-        <td> It is the number of IO workers involved in IO disk stress </td>
-        <td> Default to 4 </td>
+        <td> Number of I/O workers involved in I/O disk stress. </td>
+        <td> Defaults to 4 </td>
       </tr>
        <tr>
         <td> VOLUME_MOUNT_PATH </td>
-        <td> Fill the given volume mount path </td>
-        <td> </td>
+        <td> Location that points to the volume mount path used in I/O stress. </td>
+        <td> For example, <code>/Users/admin/disk-02</code>. </td>
       </tr>   
       <tr>
         <td> CPU_CORES </td>
-        <td> Number of the CPU cores subjected to CPU stress </td>
-        <td> Default to 1 </td>
+        <td> Number of CPU cores that are subject to CPU stress.</td>
+        <td> Defaults to 1.</td>
         </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The total time duration for chaos insertion (sec) </td>
-        <td> Defaults to 30s </td>
+        <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
+        <td> Defaults to 30s. </td>
       </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>
-        <td> The interval (in sec) between successive instance termination </td>
-        <td> Defaults to 30s </td>
+        <td> Time interval between two successive instance terminations (in seconds). </td>
+        <td> Defaults to 30s. </td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
-        <td> It defines sequence of chaos execution for multiple instance </td>
-        <td> Default value: parallel. Supported: serial, parallel </td>
+       <td> Sequence of chaos execution for multiple instances. </td>
+        <td> Defaults to parallel. Supports serial sequence as well. </td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
-        <td> Period to wait before and after injection of chaos in sec </td>
-        <td> Eg. 30 </td>
+        <td> Period to wait before and after injecting chaos (in seconds). </td>
+        <td> For example, 30s. </td>
       </tr>
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common Fault Tunables
-Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
+### Common fault tunables
+Refer to the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
-### FILESYSTEM_UTILIZATION_PERCENTAGE
-It stresses the `FILESYSTEM_UTILIZATION_PERCENTAGE` percentage of total free space available in the VM.
+### Filesystem utilization percentage
+It specifes the size as a percentage of free space on the file system. You can tune it using the `FILESYSTEM_UTILIZATION_PERCENTAGE` environment variable. 
 
-Use the following example to tune this:
+Use the following example to tune it:
 
-[embedmd]:# (./static/manifests/vmware-io-stress/vm-io-stress-filesystem-utilization-percenatge.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-io-stress/vm-io-stress-filesystem-utilization-percentage.yaml yaml)
 ```yaml
-# io-stress in the VMWare VM
+# io-stress in the VMware VM
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -133,7 +133,7 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: vmware-io-stress
+  - name: VMware-io-stress
     spec:
       components:
         env:
@@ -144,10 +144,11 @@ spec:
         - name: FILESYSTEM_UTILIZATION_PERCENTAGE
           value: '10'
 ```
-### Filesystem Utilization Bytes
-It stresses the `FILESYSTEM_UTILIZATION_BYTES` GB of the i/o of the targeted VM. It is mutually exclusive with the FILESYSTEM_UTILIZATION_PERCENTAGE ENV. If FILESYSTEM_UTILIZATION_PERCENTAGE ENV is set then it will use the percentage for the stress otherwise, it will stress the i/o based on FILESYSTEM_UTILIZATION_BYTES ENV.
 
-Use the following example to tune this:
+### Filesystem utilization bytes
+It specifies the amount of free space on the file system in gigabytes(GB). You can tune it using the `FILESYSTEM_UTILIZATION_BYTES` environment variable. `FILESYSTEM_UTILIZATION_BYTES` is mutually exclusive with the `FILESYSTEM_UTILIZATION_PERCENTAGE` environment variable. If both `FILESYSTEM_UTILIZATION_PERCENTAGE` and `FILESYSTEM_UTILIZATION_BYTES` environment variables are set, `FILESYSTEM_UTILIZATION_PERCENTAGE` takes precendence.
+
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/vmware-io-stress/vm-io-stress-filesystem-utilization-bytes.yaml yaml)
 ```yaml
@@ -159,7 +160,7 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: vmware-io-stress
+  - name: VMware-io-stress
     spec:
       components:
         env:
@@ -170,14 +171,14 @@ spec:
         - name: FILESYSTEM_UTILIZATION_BYTES
           value: '1' #in GB
 ```
-### Mount Path
-The volume mount path, which needs to be filled. It can be tuned with `VOLUME_MOUNT_PATH` ENV
+### Mount path
+It specifies the location that points to the volume mount path used in I/O stress. You can tune it using the  `VOLUME_MOUNT_PATH` environment variable.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/vmware-io-stress/vm-io-stress-filesystem-mount-path.yaml yaml)
 ```yaml
-# io-stress in the VMWare VM
+# io-stress in the VMware VM
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -186,7 +187,7 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: vmware-io-stress
+  - name: VMware-io-stress
     spec:
       components:
         env:
@@ -200,12 +201,13 @@ spec:
         - name: FILESYSTEM_UTILIZATION_BYTES
           value: '1' #in GB
 ```
-### Workers For Stress
-The worker's count for the stress can be tuned with `NUMBER_OF_WORKERS` ENV.
+### Workers for stress
+It specifies the worker's count for stress. You can tune it using the `NUMBER_OF_WORKERS` environment variable.
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/vmware-io-stress/vm-io-stress-filesystem-worker.yaml yaml)
 ```yaml
-# io-stress in the VMWare VM
+# io-stress in the VMware VM
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -214,7 +216,7 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: vmware-io-stress
+  - name: VMware-io-stress
     spec:
       components:
         env:

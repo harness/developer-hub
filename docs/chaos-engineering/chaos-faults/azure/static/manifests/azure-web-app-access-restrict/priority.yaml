@@ -15,6 +15,6 @@ spec:
         # Provide the priority for a rule
         - name: PRIORITY
           value: '300'
-         # time duration for the chaos execution
+         # duration for the chaos execution
         - name: TOTAL_CHAOS_DURATION
           VALUE: '60'
