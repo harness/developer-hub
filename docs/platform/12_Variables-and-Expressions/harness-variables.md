@@ -920,10 +920,10 @@ Artifact rollback variable expressions output information on the artifact used f
 
 To copy and use the expressions from an executed pipeline, do the following:
 
-1. In a CD pipeline deployment, click **Infrastructure Section**.
-2. In **Infrastructure Section**, click the **Output** tab.
+1. In a CD pipeline deployment, select **Infrastructure Section**.
+2. In **Infrastructure Section**, select the **Output** tab.
 3. View the names and values in **Artifact Rollback**.
-4. Click **Copy** for any **Output Name** to copy the expression.
+4. select **Copy** for any **Output Name** to copy the expression.
 
 The following is an example for an ECS deployment using a Docker image in Artifactory:
 
