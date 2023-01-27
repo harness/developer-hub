@@ -15,6 +15,9 @@
     /* width: 100%; */
     // flex-basis: 70%;
     flex-grow: 1;
+    a:hover {
+      color: unset;
+    }
     .getStartItem {
       width: 270px; // 250px;
       height: 230px;
@@ -26,9 +29,6 @@
       border-radius: 8px;
       margin: 0 32px 32px 0;
       padding: 32px 0 24px 0;
-      a {
-        // color: #000;
-      }
       .titleAndDesc {
         height: 96px;
       }
@@ -89,6 +89,11 @@
       }
     }
   }
+}
+.btnContainer {
+  display: flex;
+  justify-content: center;
+  padding-top: 24px;
 }
 
 .featureSvg {

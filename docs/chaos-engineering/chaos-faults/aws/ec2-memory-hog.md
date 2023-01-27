@@ -5,7 +5,7 @@ title: EC2 Memory Hog
 
 ## Introduction
 
-- EC2 Memory Hog contains chaos to disrupt the state of infra resources. The experiment can induce stress chaos on AWS EC2 Instance using Amazon SSM Run Command, this is carried out by using SSM Docs which is in-built in the experiment for the give chaos scenario.
+- EC2 Memory Hog contains chaos to disrupt the state of infra resources. The fault can induce stress chaos on AWS EC2 Instance using Amazon SSM Run Command, this is carried out by using SSM Docs which is in-built in the fault for the give chaos scenario.
 - It causes Memory Hog chaos on EC2 Instance using an SSM doc for a certain chaos duration.
 
 :::tip Fault execution flow chart
@@ -14,12 +14,12 @@ title: EC2 Memory Hog
 
 ## Uses
 
-### Uses of the experiment
+### Uses of the fault
 
 :::info
 
-- The experiment causes memory hog/stress on the target AWS EC2 Instance(s). The idea of this experiment is to simulate issues when there is lack of memory for other runnning processes/applications resulting into degrading their performance.
-- Injecting a rogue process into a target ec2 instance, we starve the main processes/applications (typically pid 1) of the resources allocated to it (where limits are defined) causing slowness in application traffic or in other cases unrestrained use can cause instance to exhaust resources leading to degradation in performance of processes/applications present on the instance. So this category of chaos experiment helps to build the immunity on the application undergoing any such stress scenario.
+- The fault causes memory hog/stress on the target AWS EC2 Instance(s). The idea of this fault is to simulate issues when there is lack of memory for other runnning processes/applications resulting into degrading their performance.
+- Injecting a rogue process into a target EC2 instance, we starve the main processes/applications (typically pid 1) of the resources allocated to it (where limits are defined) causing slowness in application traffic or in other cases unrestrained use can cause instance to exhaust resources leading to degradation in performance of processes/applications present on the instance. So this category of chaos fault helps to build the immunity on the application undergoing any such stress scenario.
 
 :::
 
@@ -30,9 +30,6 @@ title: EC2 Memory Hog
 ### Verify the prerequisites
 
 - Ensure that Kubernetes Version >= 1.17
-
-**AWS EC2 Access Requirement:**
-
 - Ensure that SSM agent is installed and running in the target EC2 instance.
 - Ensure to create a Kubernetes secret having the AWS Access Key ID and Secret Access Key credentials in the `CHAOS_NAMESPACE`. A sample secret file looks like:
 
@@ -54,6 +51,63 @@ stringData:
 
 :::
 
+## Permission Requirement
+
+- Here is an example AWS policy to execute ec2-memory-hog fault.
+
+<details>
+<summary>View policy for this fault</summary>
+
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "ssm:GetDocument",
+                "ssm:DescribeDocument",
+                "ssm:GetParameter",
+                "ssm:GetParameters",
+                "ssm:SendCommand",
+                "ssm:CancelCommand",
+                "ssm:CreateDocument",
+                "ssm:DeleteDocument",
+                "ssm:GetCommandInvocation",          
+                "ssm:UpdateInstanceInformation",
+                "ssm:DescribeInstanceInformation"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "ec2messages:AcknowledgeMessage",
+                "ec2messages:DeleteMessage",
+                "ec2messages:FailMessage",
+                "ec2messages:GetEndpoint",
+                "ec2messages:GetMessages",
+                "ec2messages:SendReply"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "ec2:DescribeInstanceStatus",
+                "ec2:DescribeInstances"
+            ],
+            "Resource": [
+                "*"
+            ]
+        }
+    ]
+}
+```
+</details>
+
+- Refer a [superset permission/policy](../policy-for-all-aws-faults) to execute all AWS faults.
+
 ## Default Validations
 
 :::info
@@ -62,10 +116,10 @@ stringData:
 
 :::
 
-## Experiment tunables
+## Fault Tunables
 
 <details>
-<summary>Check the experiment tunables</summary>
+<summary>Check the Fault Tunables</summary>
 <h2>Mandatory Fields</h2>
 <table>
     <tr>
@@ -113,17 +167,17 @@ stringData:
     </tr>
     <tr>
         <td> MEMORY_CONSUMPTION </td>
-        <td> The amount of memory to be hogged in the ec2 instance in terms of mega bytes </td>
+        <td> The amount of memory to be hogged in the EC2 instance in terms of mega bytes </td>
         <td> Defaults to 500MB </td>
     </tr>
     <tr>
         <td> MEMORY_PERCENTAGE </td>
-        <td> The amount of memory to be hogged in the ec2 instance in terms of percentage</td>
+        <td> The amount of memory to be hogged in the EC2 instance in terms of percentage</td>
         <td> Defaults to 0 </td>
     </tr>
     <tr>
         <td> NUMBER_OF_WORKERS </td>
-        <td> The number of workers used to run the stress process  </td>
+        <td> The number of workers used to run the stress process </td>
         <td> Defaults to 1 </td>
     </tr>
     <tr>
@@ -140,11 +194,11 @@ stringData:
 
 </details>
 
-## Experiment Examples
+## Fault Examples
 
-### Common Experiment Tunables
+### Common Fault Tunables
 
-Refer the [common attributes](../common-tunables-for-all-experiments) to tune the common tunables for all the experiments.
+Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
 ### MEMORY CONSUMPTION IN MEGABYTES
 
@@ -169,10 +223,10 @@ spec:
         env:
         - name: MEMORY_CONSUMPTION
           VALUE: '1024'
-        # id of the ec2 instance
+        # ID of the EC2 instance
         - name: EC2_INSTANCE_ID
           value: 'instance-1'
-        # region for the ec2 instance
+        # region for the EC2 instance
         - name: REGION
           value: 'us-east-1'
 ```
@@ -200,10 +254,10 @@ spec:
         env:
         - name: MEMORY_PERCENTAGE
           VALUE: '50'
-        # id of the ec2 instance
+        # ID of the EC2 instance
         - name: EC2_INSTANCE_ID
           value: 'instance-1'
-        # region for the ec2 instance
+        # region for the EC2 instance
         - name: REGION
           value: 'us-east-1'
 ```
@@ -229,10 +283,10 @@ spec:
     spec:
       components:
         env:
-        # ids of the ec2 instances
+        # ids of the EC2 instances
         - name: EC2_INSTANCE_ID
           value: 'instance-1,instance-2,instance-3'
-        # region for the ec2 instance
+        # region for the EC2 instance
         - name: REGION
           value: 'us-east-1'
 ```
@@ -260,10 +314,10 @@ spec:
         env:
         - name: NUMBER_OF_WORKERS
           VALUE: '3'
-        # id of the ec2 instance
+        # ID of the EC2 instance
         - name: EC2_INSTANCE_ID
           value: 'instance-1'
-        # region for the ec2 instance
+        # region for the EC2 instance
         - name: REGION
           value: 'us-east-1'
 ```

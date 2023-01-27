@@ -12,7 +12,7 @@ title: GCP VM Disk Loss
 
 ## Uses
 <details>
-<summary>View the uses of the experiment</summary>
+<summary>View the uses of the fault</summary>
 <div>
 Coming soon.
 </div>
@@ -49,9 +49,9 @@ stringData:
 - Disk volumes are attached to their respective instances.
 :::
 
-## Experiment tunables
+## Fault Tunables
 <details>
-    <summary>Check the Experiment Tunables</summary>
+    <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>
     <table>
       <tr>
@@ -72,13 +72,13 @@ stringData:
       <tr>
         <td> ZONES </td>
         <td> The zones of respective target disk volumes </td>
-        <td> Provide the zone for every target disk name as zone1,zone2... in the respective order of <code>DISK_VOLUME_NAMES</code>  </td>
+        <td> Provide the zone for every target disk name as zone1,zone2... in the respective order of <code>DISK_VOLUME_NAMES</code> </td>
       </tr>
       <tr>
         <td> DEVICE_NAMES </td>
         <td> The device names of respective target disk volumes </td>
-        <td> Provide the device name for every target disk name as deviceName1,deviceName2... in the respective order of <code>DISK_VOLUME_NAMES</code>  </td>
-      </tr>
+        <td> Provide the device name for every target disk name as deviceName1,deviceName2... in the respective order of <code>DISK_VOLUME_NAMES</code> </td>
+      </tr> 
     </table>
     <h2>Optional Fields</h2>
     <table>
@@ -110,14 +110,14 @@ stringData:
     </table>
 </details>
 
-## Experiment Examples
+## Fault Examples
 
-### Common Experiment Tunables
-Refer the [common attributes](../common-tunables-for-all-experiments) to tune the common tunables for all the experiments.
+### Common Fault Tunables
+Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
 ### Detach Volumes By Names
 
-It contains comma separated list of volume names subjected to disk loss chaos. It will detach all the disks with the given `DISK_VOLUME_NAMES` disk names and corresponding `ZONES` zone names and the `DEVICE_NAMES` device names in `GCP_PROJECT_ID` project.  It reattached the volume after waiting for the specified `TOTAL_CHAOS_DURATION` duration.
+It contains comma separated list of volume names subjected to disk loss chaos. It will detach all the disks with the given `DISK_VOLUME_NAMES` disk names and corresponding `ZONES` zone names and the `DEVICE_NAMES` device names in `GCP_PROJECT_ID` project. It re-attaches the volume after waiting for the specified `TOTAL_CHAOS_DURATION` duration.
 
 `NOTE:` The `DISK_VOLUME_NAMES` contains multiple comma-separated disk names. The comma-separated zone names should be provided in the same order as disk names.
 
@@ -125,7 +125,7 @@ Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/gcp-vm-disk-loss/gcp-disk-loss.yaml yaml)
 ```yaml
-## details of the gcp disk
+## details of the GCP disk
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -145,11 +145,7 @@ spec:
         # it should be provided in same order of DISK_VOLUME_NAMES
         - name: ZONES
           value: 'zone-01,zone-02'
-        # comma separated list of device names corresponds to the DISK_VOLUME_NAMES
-        # it should be provided in same order of DISK_VOLUME_NAMES
-        - name: DEVICE_NAMES
-          value: 'device-01,device-02'
-        # gcp project id to which disk volume belongs
+        # GCP project ID to which disk volume belongs
         - name: GCP_PROJECT_ID
           value: 'project-id'
         - name: TOTAL_CHAOS_DURATION

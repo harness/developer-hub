@@ -27,7 +27,7 @@ To go through this workflow, you need the following:
 
 * A familiarity with basic Harness CI concepts:
 	+ [CI Pipeline Tutorial](../../ci-quickstarts/ci-pipeline-quickstart.md)
-	+ [Learn Harness' Key Concepts](https://ngdocs.harness.io/article/hv2758ro4e-learn-harness-key-concepts)
+	+ [Learn Harness' Key Concepts](../../../getting-started/learn-harness-key-concepts.md)
 * A familiarity with Build Stage settings:
 	+ [CI Build Stage Settings](../../ci-technical-reference/ci-stage-settings.md)
 * A familiarity with how Pipelines use Codebases:
@@ -44,7 +44,7 @@ With this option selected (the default), a Build clones the default codebase int
 
 ### Step 2: Define the Build Farm Infrastructure
 
-In the CI stage Infrastructure, define the build farm for the codebase. See [Set Up Build Infrastructure](https://docs.harness.io/category/set-up-build-infrastructure).
+In the CI stage Infrastructure, define the build farm for the codebase. See [Set Up Build Infrastructure](/docs/category/set-up-build-infrastructure).
 
 ### Step 4: Add Run Steps to Clone Additional Repos
 
@@ -98,7 +98,9 @@ Now the Dockerfile is in the correct location to build the image:
 
 Now that the files from your repos are in one common workspace, you can add a Build Step (in this case, Build and Push an Image to Docker Registry) to your Stage.
 
-![](./static/clone-and-process-multiple-codebases-in-the-same-pipeline-03.png)### Step 5: Run the Pipeline
+![](./static/clone-and-process-multiple-codebases-in-the-same-pipeline-03.png)
+
+### Step 5: Run the Pipeline
 
 Now you can run your Pipeline.
 
@@ -197,5 +199,5 @@ pipeline:
 * [Create and Configure a Codebase](../codebase-configuration/create-and-configure-a-codebase.md)
 * [CI Run Step Settings](../../ci-technical-reference/run-step-settings.md)
 * [CI Build Stage Settings](../../ci-technical-reference/ci-stage-settings.md)
-* [Build and Upload Artifacts](https://docs.harness.io/category/build-and-upload-artifacts)
+* [Build and Upload Artifacts](/docs/category/build-and-upload-artifacts)
 

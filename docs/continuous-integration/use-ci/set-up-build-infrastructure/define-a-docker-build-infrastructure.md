@@ -12,11 +12,11 @@ You can define a CI build infrastructure on any Linux or macOS host. This is the
 
 ### Important Notes
 
+* To set up a local build environment, you must run a Docker Compose file that installs a Harness Delegate and the Local runner.
 * The Docker Delegate has the following system requirements:
 	+ Default 0.5 CPU.
 	+ Default 1.5GB. Ensure that you provide the minimum memory for the Delegate and enough memory for the host/node system.
-* You need to download and install a Drone runner in addition to the delegate.
-* The Docker delegate is bound by the total amount of memory and CPU on the local host. If you run multiple builds and the host runs out of CPU or memory, some builds will time out and fail.
+* The Docker Delegate is limited by the total amount of memory and CPU on the local host. Builds can fail if the host runs out of CPU or memory when running multiple builds.
 
 ### Install the Delegate
 

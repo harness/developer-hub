@@ -1,0 +1,14 @@
+{
+  "label": "Add Approvals",
+  "position": 80,
+  "collapsible": "true",
+  "collapsed": "true",
+  "className": "red",
+  "link": {
+    "type": "generated-index",
+    "title": "Add Approvals"
+  },
+  "customProps": {
+    "helpdocs_category_id": "4edbfn50l8"
+  }
+}

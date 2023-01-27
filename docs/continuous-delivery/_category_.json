@@ -1,0 +1,15 @@
+{
+    "label": "Continuous Delivery",
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "link": {
+        "type": "generated-index",
+        "title": "Continuous Delivery"
+    },
+    "customProps": {
+        "position": "To position the category, enter a number and move this to the root level.",
+        "helpdocs_category_id": "pfzgb4tg05",
+        "helpdocs_parent_category_id": ""
+    }
+}

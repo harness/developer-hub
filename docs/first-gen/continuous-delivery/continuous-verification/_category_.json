@@ -1,0 +1,15 @@
+{
+  "label": "Continuous Verification",
+  "position": 400,
+  "collapsible": "true",
+  "collapsed": "true",
+  "className": "red",
+  "link": {
+    "type": "generated-index",
+    "title": "Continuous Verification"
+  },
+  "customProps": {
+    "helpdocs_category_id": "gurgsl2gqt",
+    "helpdocs_parent_category_id": "1qtels4t8p"
+  }
+}

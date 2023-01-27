@@ -5,7 +5,7 @@ title: Azure Instance IO Stress
 
 ## Introduction
 
-- Azure Instance IO Stress contains chaos to disrupt the state of infra resources. The experiment can induce stress chaos on Azure Instance using Azure Run Command, this is carried out by using bash scripts which are in-built in the experiment for the given chaos scenario.
+- Azure Instance IO Stress contains chaos to disrupt the state of infra resources. The fault can induce stress chaos on Azure Instance using Azure Run Command, this is carried out by using bash scripts which are in-built in the fault for the given chaos scenario.
 - It causes IO Stress chaos on Azure Instance using an bash script for a certain chaos duration.
 
 :::tip Fault execution flow chart
@@ -14,12 +14,12 @@ title: Azure Instance IO Stress
 
 ## Uses
 
-### Uses of the experiment
+### Uses of the fault
 
 :::info
 
 - Filesystem read and write is another very common and frequent scenario we find with processes/applications that can result in the impact on its delivery. These problems are generally referred to as "Noisy Neighbour" problems.
-- Injecting a rogue process into a target azure instance, we starve the main processes/applications (typically pid 1) of the resources allocated to it (where limits are defined) causing slowness in application traffic or in other cases unrestrained use can cause instance to exhaust resources leading to degradation in performance of processes/applications present on the instance. So this category of chaos experiment helps to build the immunity on the application undergoing any such stress scenario.
+- Injecting a rogue process into a target Azure instance, we starve the main processes/applications (typically pid 1) of the resources allocated to it (where limits are defined) causing slowness in application traffic or in other cases unrestrained use can cause instance to exhaust resources leading to degradation in performance of processes/applications present on the instance. So this category of chaos fault helps to build the immunity on the application undergoing any such stress scenario.
 
 :::
 
@@ -34,7 +34,7 @@ title: Azure Instance IO Stress
 **Azure Access Requirement:**
 
 - Ensure that Azure Run Command agent is installed and running in the target Azure instance.
-- We will use azure [file-based authentication](https://docs.microsoft.com/en-us/azure/developer/go/azure-sdk-authorization#use-file-based-authentication) to connect with the instance using azure GO SDK in the experiment. For generating auth file run `az ad sp create-for-rbac --sdk-auth > azure.auth` Azure CLI command.
+- We will use Azure [file-based authentication](https://docs.microsoft.com/en-us/azure/developer/go/azure-sdk-authorization#use-file-based-authentication) to connect with the instance using Azure GO SDK in the fault. For generating auth file run `az ad sp create-for-rbac --sdk-auth > azure.auth` Azure CLI command.
 - Ensure to create a Kubernetes secret having the auth file created in the step in `CHAOS_NAMESPACE`. A sample secret file looks like:
 
 ```yaml
@@ -59,7 +59,7 @@ stringData:
     }
 ```
 
-- If you change the secret key name (from `azure.auth`) please also update the `AZURE_AUTH_LOCATION` ENV value on `experiment.yaml` with the same name.
+- If you change the secret key name (from `azure.auth`) please also update the `AZURE_AUTH_LOCATION` ENV value in the ChaosExperiment CR with the same name.
 
 :::
 
@@ -71,10 +71,10 @@ stringData:
 
 :::
 
-## Experiment tunables
+## Fault Tunables
 
 <details>
-<summary>Check the experiment tunables</summary>
+<summary>Check the Fault Tunables</summary>
 
 <h2>Mandatory Fields</h2>
 
@@ -116,7 +116,7 @@ stringData:
     </tr>
     <tr>
         <td> AZURE_AUTH_LOCATION </td>
-        <td> Provide the name of the azure secret credentials files</td>
+        <td> Provide the name of the Azure secret credentials files</td>
         <td> Defaults to <code>azure.auth</code> </td>
     </tr>
     <tr>
@@ -137,7 +137,7 @@ stringData:
     <tr>
         <td> FILESYSTEM_UTILIZATION_BYTES </td>
         <td> Specify the size in GigaBytes(GB). <code>FILESYSTEM_UTILIZATION_PERCENTAGE</code> & <code>FILESYSTEM_UTILIZATION_BYTES</code> are mutually exclusive. If both are provided, <code>FILESYSTEM_UTILIZATION_PERCENTAGE</code> is prioritized. </td>
-        <td> Default to 0GB, which will result in 1 GB Utilization  </td>
+        <td> Default to 0GB, which will result in 1 GB Utilization </td>
     </tr>
     <tr>
         <td> NUMBER_OF_WORKERS </td>
@@ -163,11 +163,11 @@ stringData:
 
 </details>
 
-## Experiment Examples
+## Fault Examples
 
-### Common Experiment Tunables
+### Common Fault Tunables
 
-Refer the [common attributes](../common-tunables-for-all-experiments) to tune the common tunables for all the experiments.
+Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
 ### FILESYSTEM UTILIZATION IN MEGABYTES
 
@@ -192,10 +192,10 @@ spec:
         env:
         - name: FILESYSTEM_UTILIZATION_BYTES
           VALUE: '1024'
-        # name of the azure instance
+        # name of the Azure instance
         - name: AZURE_INSTANCE_NAMES
           value: 'instance-1'
-        # resource group for the azure instance
+        # resource group for the Azure instance
         - name: RESOURCE_GROUP
           value: 'rg-azure'
 ```
@@ -223,10 +223,10 @@ spec:
         env:
         - name: FILESYSTEM_UTILIZATION_PERCENTAGE
           VALUE: '50'
-        # name of the azure instance
+        # name of the Azure instance
         - name: AZURE_INSTANCE_NAMES
           value: 'instance-1'
-        # resource group for the azure instance
+        # resource group for the Azure instance
         - name: RESOURCE_GROUP
           value: 'rg-azure'
 ```
@@ -254,10 +254,10 @@ spec:
         env:
         - name: NUMBER_OF_WORKERS
           VALUE: '3'
-        # name of the azure instance
+        # name of the Azure instance
         - name: AZURE_INSTANCE_NAMES
           value: 'instance-1'
-        # resource group for the azure instance
+        # resource group for the Azure instance
         - name: RESOURCE_GROUP
           value: 'rg-azure'
 ```
@@ -285,10 +285,10 @@ spec:
         env:
         - name: VOLUME_MOUNT_PATH
           VALUE: '/tmp'
-        # name of the azure instance
+        # name of the Azure instance
         - name: AZURE_INSTANCE_NAMES
           value: 'instance-1'
-        # resource group for the azure instance
+        # resource group for the Azure instance
         - name: RESOURCE_GROUP
           value: 'rg-azure'
 ```
@@ -316,10 +316,10 @@ spec:
         env:
         - name: MEMORY_CONSUMPTION
           VALUE: '1024'
-        # names of the azure instance
+        # names of the Azure instance
         - name: AZURE_INSTANCE_NAMES
           value: 'instance-1,instance-2'
-        # resource group for the azure instance
+        # resource group for the Azure instance
         - name: RESOURCE_GROUP
           value: 'rg-azure'
 ```

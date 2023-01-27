@@ -87,7 +87,9 @@ Pipelines are a collection of one or more stages. They manage and automate build
 * Click **Pipelines** and then **Create a Pipeline**.
 * Enter the name **CI Pipeline** and click **Start**.
 
-As you enter a name for the Pipeline, the ID for the Pipeline is created. A Pipeline name can change, but an ID is permanent. The ID is how you can reference subordinate elements of a Pipeline, such as the names of variables within the Pipeline.### Step 2: Set Up the Build Stage
+As you enter a name for the Pipeline, the ID for the Pipeline is created. A Pipeline name can change, but an ID is permanent. The ID is how you can reference subordinate elements of a Pipeline, such as the names of variables within the Pipeline.
+
+### Step 2: Set Up the Build Stage
 
 The "work horse" of most CI Pipelines is the Build Stage. This is where you specify the end-to-end workflow for your build: the codebase to build, the infrastructure to build it, where to post the finished artifact, and any additional tasks (such as automated tests or validations) you want the build to run.
 
@@ -126,7 +128,7 @@ You can create Connectors for GitHub accounts or specific repos. If you use an a
 
 ##### Connector Credentials
 
-Now you need to specify the username and Personal Access Token for the Connector to use. Harness secrets are safe. They're stored in the [Harness Secret Manager](https://docs.harness.io/article/hngrlb7rd6-harness-secret-manager-overview). You can also use your own Secret Manager with Harness.
+Now you need to specify the username and Personal Access Token for the Connector to use. Harness secrets are safe. They're stored in the [Harness Secret Manager](../../platform/6_Security/1-harness-secret-manager-overview.md). You can also use your own Secret Manager with Harness.
 
 * **Username:** The username for your GitHub account.
 * **Personal Access Token:** Create a Harness Secret for the Personal Access Token you use for your GitHub repo.
@@ -287,7 +289,7 @@ Next, you'll add a step to build your container and push it to your Docker Hub r
 		- Create a `ciquickstart`repository in your Docker Hub account.
 		- Then enter`<your_repo>/ciquickstart`where *`<your_repo>`* is your Docker Hub username.
 	+ **Tags:** `<+pipeline.sequenceId>`  
-	This tag is a built-in Harness variable that represents the Build ID number, for example `Build ID: 9`. The pipeline uses the Build ID to tag the image that it pushes in stage 1 and pulls in stage 2. You will see the Build ID when you run the pipeline. You will also this variable to identify the image location when you set up the [Configure Service Dependency](../ci-technical-reference/configure-service-dependency-step-settings.md) step in the next stage.
+	This tag is a built-in Harness variable that represents the Build ID number, for example `Build ID: 9`. The pipeline uses the Build ID to tag the image that it pushes in stage 1 and pulls in stage 2. You will see the Build ID when you run the pipeline. You will also use this variable to identify the image location when you set up the [Configure Service Dependency](../ci-technical-reference/configure-service-dependency-step-settings.md) step in the next stage.
     ![](./static/ci-pipeline-quickstart-25.png)
 	+ Click **Apply Changes** to return to the Pipeline Studio.
 * Click **Save** to save the Pipeline. You can run the Pipeline now, or you can continue and add the Integration Test stage.

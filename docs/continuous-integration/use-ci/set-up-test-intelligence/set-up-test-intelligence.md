@@ -10,9 +10,9 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Test Intelligence (TI) dramatically improves test time by running only those tests required to confirm the quality of the code changes which triggered the build. You can enable Test Intelligence for your build in your CI stages using the Run Tests steps.
+Test Intelligence (TI) dramatically improves test time by running only those tests required to confirm the quality of the code changes which triggered the build. You can enable Test Intelligence for your build in your CI stages using the Run Tests step.
 
-In this topic, we'll cover how to set up Test Intelligence in Harness CI Stage.
+In this topic, we'll cover how to set up Test Intelligence in a Harness CI Stage.
 
 ### Before You Begin
 
@@ -23,7 +23,9 @@ In this topic, we'll cover how to set up Test Intelligence in Harness CI Stage.
 
 Test Intelligence is supported for Java and .NET Core codebases only at this time.
 
-Currently, Test Intelligence for .NET is behind the Feature Flag `TI_DOTNET`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.### Step 1: Create the CI Stage
+Currently, Test Intelligence for .NET is behind the Feature Flag `TI_DOTNET`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+### Step 1: Create the CI Stage
 
 In your Harness Pipeline, click **Add Stage**, and then click Build.
 
@@ -56,7 +58,7 @@ The following screenshot explains the various parameters of **Configure Run Test
 | --- | --- |
 | **Name** | Enter a unique name for the step. |
 | **Description** | Enter a description for the step. |
-| **Container Registry** | The Harness connector for a container registry. This is the container registry for the image Harness will use run build command on, such as Docker Hub. |
+| **Container Registry** | The Harness connector for a container registry. This is the container registry from which Harness pulls the image to run build commands on, for example, DockerHub. |
 | **Image** | The name of the Docker image to use for running the build commands. Enter a Fully Qualified Image Name(FQIN) when using a private container registry. |
 | **Arguments** | Enter the [arguments](../../ci-technical-reference/configure-run-tests-step-settings.md) for the build tool. These are used as input for the build tool choice. |
 | **Build Tool** | Enter the build automation tool. Currently, Harness supports the following:*<p></p><p>**Java:** [Bazel](https://bazel.build/), [Maven](https://maven.apache.org/), and [Gradle](https://gradle.org/).</p><p>**.NET:** .[NET CLI](https://docs.microsoft.com/en-us/dotnet/core/tools/) and [Nunit](https://nunit.org/).</p>|
@@ -71,7 +73,7 @@ Bootstrapping helps generate the initial call graph for Test Intelligence. Once 
 
 Configure the Webhook.
 
-You can trigger Pipelines in response to Git events automatically. For configuring the webhook for the Trigger, see [Add a Trigger](https://ngdocs.harness.io/article/hndnde8usz-triggering-pipelines#step_1_add_a_trigger_to_a_pipeline). 
+You can trigger Pipelines in response to Git events automatically. For configuring the webhook for the Trigger, see [Add a Trigger](../../../platform/11_Triggers/triggering-pipelines.md#step-1-add-a-trigger-to-a-pipeline). 
 
 Open the PR.
 

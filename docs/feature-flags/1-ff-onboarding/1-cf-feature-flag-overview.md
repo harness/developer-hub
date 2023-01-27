@@ -1,6 +1,6 @@
 ---
 title: Feature Flags Overview
-description: This article shows you how to build Feature Management Feature management solutions enable businesses to dynamically control the availability of application features to end-users. In simple terms, a…
+description: An overview of how Harness Feature Flags work
 tags: 
    - helpDocs
 # sidebar_position: 2
@@ -21,17 +21,9 @@ if(HarnessFeatureFlag["newamazingfeature"] == true) {
 A Feature Flag is a decision point in your code that can change the behavior of your software. It can help you plan the following strategies:
 
 * Who gets access to the feature first
-* Who can beta test the changes
+* Who can test the changes
 * Progressive rollouts of the feature
 * Turn on a feature on a specific date
-
-## Blog posts
-
-You can read our blog posts to introduce you to Feature Flags:
-
-* [Introducing Harness Feature Flags](https://harness.io/blog/product-updates/introducing-harness-feature-flags/)
-* [Feature Flags: What They Are & How To Use Them](https://harness.io/blog/feature-flags/what-are-feature-flags/)
-* [Implement Your First Feature Flag](https://harness.io/blog/feature-flags/implement-your-first-feature-flag/)
 
 ## Reasons to use Feature Flags
 
@@ -53,5 +45,8 @@ In a percentage-based rollout, small numbers of users are selected to test the n
 
 ### User feedback
 
-The ability to release changes to a limited set of users makes it much easier to gather feedback about the product. You can create a beta group of users and target feature flags specifically to that group. Testing new features with a subset of users allows developers to find and address the bugs before the major release.
+The ability to release changes to a limited set of users makes it much easier to gather feedback about the product. You can create a group of users and target feature flags specifically to that group. Testing new features with a subset of users allows developers to find and address the bugs before the major release.
 
+:::tip
+You can also learn more using our [Feature Flag tutorials](https://developer.harness.io/tutorials/manage-feature-flags).
+:::

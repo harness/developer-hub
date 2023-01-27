@@ -1,0 +1,14 @@
+{
+  "label": "Platforms Tech Ref FirstGen",
+  "position": 40,
+  "collapsible": "true",
+  "collapsed": "true",
+  "className": "red",
+  "link": {
+    "type": "generated-index",
+    "title": "Platforms Tech Ref FirstGen"
+  },
+  "customProps": {
+    "helpdocs_category_id": "yp3yaavhla"
+  }
+}

@@ -23,7 +23,7 @@ Coming soon.
 :::info
 - Ensure that Kubernetes Version > 1.16
 - Ensure that you have sufficient Azure access to web apps 
-- We will use azure [ file-based authentication ](https://docs.microsoft.com/en-us/azure/developer/go/azure-sdk-authorization#use-file-based-authentication) to connect with the instance using Azure GO SDK in the experiment. For generating auth file run `az ad sp create-for-rbac --sdk-auth > azure.auth` Azure CLI command.
+- We will use Azure [ file-based authentication ](https://docs.microsoft.com/en-us/azure/developer/go/azure-sdk-authorization#use-file-based-authentication) to connect with the instance using Azure GO SDK in the experiment. For generating auth file run `az ad sp create-for-rbac --sdk-auth > azure.auth` Azure CLI command.
 - Ensure to create a Kubernetes secret having the auth file created in the step in `CHAOS_NAMESPACE`. A sample secret file looks like:
 ```yaml
 apiVersion: v1
@@ -46,7 +46,7 @@ stringData:
       "managementEndpointUrl": "XXXXXXXXX"
     }
 ```
-- If you change the secret key name (from `azure.auth`) please also update the `AZURE_AUTH_LOCATION` ENV value on `experiment.yaml`with the same name.
+- If you change the secret key name (from `azure.auth`) please also update the `AZURE_AUTH_LOCATION` ENV value in the ChaosExperiment CR with the same name.
 :::
 
 ## Default Validations
@@ -54,7 +54,7 @@ stringData:
 - Azure target web app should be in running state.
 :::
 
-## Fault tunables
+## Fault Tunables
 <details>
     <summary>Check the Fault tunables</summary>
     <h2>Mandatory Fields</h2>
@@ -66,7 +66,7 @@ stringData:
         </tr>
         <tr> 
             <td> AZURE_WEB_APP_NAMES </td>
-            <td> Name of azure web app services to target.</td>
+            <td> Name of Azure web app services to target.</td>
             <td> Provide comma-separated names of the web apps </td>
         </tr>
         <tr>
@@ -129,7 +129,7 @@ stringData:
 
 ### Common Fault Tunables
 
-Refer the [common attributes](../common-tunables-for-all-experiments) to tune the common tunables for all the experiments.
+Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the experiments.
 
 ### Web App Access Restrict By Name
 

@@ -61,13 +61,15 @@ Enable this option to run the container with escalated privileges. This is the e
 
 The path to the file(s) that store results in the JUnit XML format. Regex is supported.
 
-This variable must be set for the background step to publish test results.#### Environment Variables
+This variable must be set for the background step to publish test results.
+
+#### Environment Variables
 
 You can inject environment variables into a container and use them in the **Command** script. You need to enter a **Name** and **Value** for each variable.
 
 You can also reference environment variables in the script by their name. For example, in Bash, this would be ( `$var_name` or `${var_name}`). In Windows PowerShell, the reference would be (`$Env:varName`).
 
-For **Value**, you may enter [Fixed Values, Runtime Inputs, and Expressions](https://docs.harness.io/article/f6yobn7iq0-runtime-inputs). For example, you can set **Value** as an expression and reference the value of some other setting in the stage or pipeline.
+For **Value**, you may enter [Fixed Values, Runtime Inputs, and Expressions](../../platform/20_References/runtime-inputs.md). For example, you can set **Value** as an expression and reference the value of some other setting in the stage or pipeline.
 
 ![](./static/background-step-settings-09.png)
 

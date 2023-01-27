@@ -1,4 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap");
+@import "fontawesome/css/fontawesome.min.css";
+@import "fontawesome/css/solid.min.css";
 /**
  * Any CSS included here will be global. The classic template
  * bundles Infima by default. Infima is a CSS framework designed to
@@ -7,226 +9,257 @@
 
 /* You can override the default Infima variables here. */
 :root {
-	/* ============ Harness Colors ============ */
-	/* Primary colors - for links, buttons, etc. */
-    /* --primary-10: #1a1a1a; */
-    --primary-10: #07182B;
-	--primary-9: #0a3364; /* Darker Primary */
-	--primary-8: #004ba4;
-	--primary-7: #0278d5; /* Main Primary */
-	--primary-6: #0092e4; /* rgb(0 146 228 / 0.7) */
-	--primary-5: #00ade4; /* Brand Primary */
-	--primary-4: #3dc7f6;
-	--primary-3: #a3e9ff; /* Lighter Primary */
-	--primary-2: #cdf4fe;
-	--primary-1: #effbff;
-	/* Text & Background - Gray Scale */
-	--gray-1000: #000000;
-	--gray-900: #0b0b0d;
-	--gray-800: #22222a;
-	--gray-700: #383946;
-	--gray-600: #4f5162;
-	--gray-500: #6b6d85; /* Main */
-	--gray-400: #9293ab;
-	--gray-300: #b0b1c4;
-	--gray-200: #d9dae5;
-	--gray-100: #f3f3fa;
-	--gray-50: #fafbfc; /* Background */
-	--gray-0: #ffffff;
-	/* Alerts & Statues - Green */
-	--green-900: #1e5c1f;
-	--green-800: #1b841d;
-	--green-700: #299b2c;
-	--green-600: #42ab45;
-	--green-500: #4dc952; /* Main */
-	--green-400: #86d981;
-	--green-300: #a2e29b;
-	--green-200: #bdeab7;
-	--green-100: #d8f3d4;
-	--green-50: #e4f7e1; /* Background */
-	/* Alerts & Statues - Cornflower Blue */
-	--blue-900: #2d376d;
-	--blue-800: #39478f;
-	--blue-700: #4c5cb0;
-	--blue-600: #6374d0;
-	--blue-500: #798bec; /* Main */
-	--blue-400: #8598ff;
-	--blue-300: #97a7ff;
-	--blue-200: #b1beff;
-	--blue-100: #dae0ff;
-	--blue-50: #f4f6ff; /* Background */
-	/* Alerts & Statues - Yellow */
-	--yellow-900: #fcb519;
-	--yellow-800: #fcc026;
-	--yellow-700: #fcc62d;
-	--yellow-600: #fdcc35;
-	--yellow-500: #fdd13b; /* Main */
-	--yellow-400: #fedf76;
-	--yellow-300: #fee89d;
-	--yellow-200: #fef1c4;
-	--yellow-100: #fff9e7;
-	--yellow-50: #fffbee; /* Background */
-	/* Alerts & Statues - Orange */
-	--orange-900: #ff5310;
-	--orange-800: #ff661a;
-	--orange-700: #ff7020;
-	--orange-600: #ff7b26;
-	--orange-500: #ff832b; /* Main */
-	--orange-400: #ffa86b;
-	--orange-300: #ffc195;
-	--orange-200: #ffdabf;
-	--orange-100: #fff0e6;
-	--orange-50: #fff5ed; /* Background */
-	/* Alerts & Statues - Red */
-	--red-900: #b41710;
-	--red-800: #c41f17;
-	--red-700: #cf2318;
-	--red-600: #da291d;
-	--red-500: #e43326; /* Main */
-	--red-400: #ee5f54;
-	--red-300: #ef9790;
-	--red-200: #f5c0bc;
-	--red-100: #fbe6e4;
-	--red-50: #fcedec; /* Background */
-	/* Secondary & Charts - Teal */
-	--teal-900: #07a0ab;
-	--teal-800: #05aab6;
-	--teal-700: #06b7c4;
-	--teal-600: #03c0cd;
-	--teal-500: #0bc8d6; /* Main */
-	--teal-400: #47d5df;
-	--teal-300: #73dfe7;
-	--teal-200: #a9eff2;
-	--teal-100: #c0fbfe;
-	--teal-50: #d3fcfe; /* Background */
-	/* Secondary & Charts - Lime Green */
-	--lime-900: #487a34;
-	--lime-800: #558b2f;
-	--lime-700: #689f38;
-	--lime-600: #76af34;
-	--lime-500: #7fb800; /* Main */
-	--lime-400: #9ccc65;
-	--lime-300: #aadc72;
-	--lime-200: #c5e1a5;
-	--lime-100: #eaf8db;
-	--lime-50: #f1fae6; /* Background */
-	/* Secondary & Charts - Purple */
-	--purple-900: #4d0b8f;
-	--purple-800: #4d278f;
-	--purple-700: #592baa;
-	--purple-600: #6938c0;
-	--purple-500: #6938c0; /* Main */
-	--purple-400: #ae82fc;
-	--purple-300: #c19eff;
-	--purple-200: #cfb4ff;
-	--purple-100: #e1d0ff;
-	--purple-50: #eadeff; /* Background */
-	/* Secondary & Charts - Magenta */
-	--magenta-900: #ca136c;
-	--magenta-800: #d91f79;
-	--magenta-700: #ee2a89;
-	--magenta-600: #f53693;
-	--magenta-500: #ff479f; /* Main */
-	--magenta-400: #ff8ac1;
-	--magenta-300: #ffabd3;
-	--magenta-200: #ffcde4;
-	--magenta-100: #ffeef7;
-	--magenta-50: #fff3f9; /* Background */
+  /* ============ Harness Colors ============ */
+  /* Primary colors - for links, buttons, etc. */
+  /* --primary-10: #1a1a1a; */
+  --primary-10: #07182b;
+  --primary-9: #0a3364; /* Darker Primary */
+  --primary-8: #004ba4;
+  --primary-7: #0278d5; /* Main Primary */
+  --primary-6: #0092e4; /* rgb(0 146 228 / 0.7) */
+  --primary-5: #00ade4; /* Brand Primary */
+  --primary-4: #3dc7f6;
+  --primary-3: #a3e9ff; /* Lighter Primary */
+  --primary-2: #cdf4fe;
+  --primary-1: #effbff;
+  /* Text & Background - Gray Scale */
+  --gray-1000: #000000;
+  --gray-900: #0b0b0d;
+  --gray-800: #22222a;
+  --gray-700: #383946;
+  --gray-600: #4f5162;
+  --gray-500: #6b6d85; /* Main */
+  --gray-400: #9293ab;
+  --gray-300: #b0b1c4;
+  --gray-200: #d9dae5;
+  --gray-100: #f3f3fa;
+  --gray-50: #fafbfc; /* Background */
+  --gray-0: #ffffff;
+  /* Alerts & Statues - Green */
+  --green-900: #1e5c1f;
+  --green-800: #1b841d;
+  --green-700: #299b2c;
+  --green-600: #42ab45;
+  --green-500: #4dc952; /* Main */
+  --green-400: #86d981;
+  --green-300: #a2e29b;
+  --green-200: #bdeab7;
+  --green-100: #d8f3d4;
+  --green-50: #e4f7e1; /* Background */
+  /* Alerts & Statues - Cornflower Blue */
+  --blue-900: #2d376d;
+  --blue-800: #39478f;
+  --blue-700: #4c5cb0;
+  --blue-600: #6374d0;
+  --blue-500: #798bec; /* Main */
+  --blue-400: #8598ff;
+  --blue-300: #97a7ff;
+  --blue-200: #b1beff;
+  --blue-100: #dae0ff;
+  --blue-50: #f4f6ff; /* Background */
+  /* Alerts & Statues - Yellow */
+  --yellow-900: #fcb519;
+  --yellow-800: #fcc026;
+  --yellow-700: #fcc62d;
+  --yellow-600: #fdcc35;
+  --yellow-500: #fdd13b; /* Main */
+  --yellow-400: #fedf76;
+  --yellow-300: #fee89d;
+  --yellow-200: #fef1c4;
+  --yellow-100: #fff9e7;
+  --yellow-50: #fffbee; /* Background */
+  /* Alerts & Statues - Orange */
+  --orange-900: #ff5310;
+  --orange-800: #ff661a;
+  --orange-700: #ff7020;
+  --orange-600: #ff7b26;
+  --orange-500: #ff832b; /* Main */
+  --orange-400: #ffa86b;
+  --orange-300: #ffc195;
+  --orange-200: #ffdabf;
+  --orange-100: #fff0e6;
+  --orange-50: #fff5ed; /* Background */
+  /* Alerts & Statues - Red */
+  --red-900: #b41710;
+  --red-800: #c41f17;
+  --red-700: #cf2318;
+  --red-600: #da291d;
+  --red-500: #e43326; /* Main */
+  --red-400: #ee5f54;
+  --red-300: #ef9790;
+  --red-200: #f5c0bc;
+  --red-100: #fbe6e4;
+  --red-50: #fcedec; /* Background */
+  /* Secondary & Charts - Teal */
+  --teal-900: #07a0ab;
+  --teal-800: #05aab6;
+  --teal-700: #06b7c4;
+  --teal-600: #03c0cd;
+  --teal-500: #0bc8d6; /* Main */
+  --teal-400: #47d5df;
+  --teal-300: #73dfe7;
+  --teal-200: #a9eff2;
+  --teal-100: #c0fbfe;
+  --teal-50: #d3fcfe; /* Background */
+  /* Secondary & Charts - Lime Green */
+  --lime-900: #487a34;
+  --lime-800: #558b2f;
+  --lime-700: #689f38;
+  --lime-600: #76af34;
+  --lime-500: #7fb800; /* Main */
+  --lime-400: #9ccc65;
+  --lime-300: #aadc72;
+  --lime-200: #c5e1a5;
+  --lime-100: #eaf8db;
+  --lime-50: #f1fae6; /* Background */
+  /* Secondary & Charts - Purple */
+  --purple-900: #4d0b8f;
+  --purple-800: #4d278f;
+  --purple-700: #592baa;
+  --purple-600: #6938c0;
+  --purple-500: #6938c0; /* Main */
+  --purple-400: #ae82fc;
+  --purple-300: #c19eff;
+  --purple-200: #cfb4ff;
+  --purple-100: #e1d0ff;
+  --purple-50: #eadeff; /* Background */
+  /* Secondary & Charts - Magenta */
+  --magenta-900: #ca136c;
+  --magenta-800: #d91f79;
+  --magenta-700: #ee2a89;
+  --magenta-600: #f53693;
+  --magenta-500: #ff479f; /* Main */
+  --magenta-400: #ff8ac1;
+  --magenta-300: #ffabd3;
+  --magenta-200: #ffcde4;
+  --magenta-100: #ffeef7;
+  --magenta-50: #fff3f9; /* Background */
 
-	/* ================================== *
+  /* ================================== *
    * ===== Style Variable Aliases ===== *
    * ================================== */
 
-	/* ----- Colors ----- */
-	--white: var(--gray-0);
-	--black: var(--gray-1000);
-	--gray: var(--gray-500);
-	--gray-bg: var(--gray-50);
+  /* ----- Colors ----- */
+  --white: var(--gray-0);
+  --black: var(--gray-1000);
+  --gray: var(--gray-500);
+  --gray-bg: var(--gray-50);
 
-	--primary-darker: var(--primary-9);
-	--primary-main: var(--primary-7);
-	--primary: var(--primary-main);
-	--primary-brand: var(--primary-5);
-	--primary-lighter: var(--primary-3);
-	--primary-bg: #fafcff;
-	--green: var(--green-500);
-	--green-bg: var(--green-50);
-	--blue: var(--blue-500);
-	--blue-bg: var(--blue-50);
-	--yellow: var(--yellow-500);
-	--yellow-bg: var(--yellow-50);
-	--yellow: var(--yellow-500);
-	--yellow-bg: var(--yellow-50);
-	--red: var(--red-500);
-	--red-bg: var(--red-50);
-	--teal: var(--teal-500);
-	--teal-bg: var(--teal-50);
-	--lime: var(--lime-500);
-	--lime-bg: var(--lime-50);
-	--purple: var(--purple-500);
-	--purple-bg: var(--purple-50);
-	--magenta: var(--magenta-500);
-	--magenta-bg: var(--magenta-50);
+  --primary-darker: var(--primary-9);
+  --primary-main: var(--primary-7);
+  --primary: var(--primary-main);
+  --primary-brand: var(--primary-5);
+  --primary-lighter: var(--primary-3);
+  --primary-bg: #fafcff;
+  --green: var(--green-500);
+  --green-bg: var(--green-50);
+  --blue: var(--blue-500);
+  --blue-bg: var(--blue-50);
+  --yellow: var(--yellow-500);
+  --yellow-bg: var(--yellow-50);
+  --yellow: var(--yellow-500);
+  --yellow-bg: var(--yellow-50);
+  --red: var(--red-500);
+  --red-bg: var(--red-50);
+  --teal: var(--teal-500);
+  --teal-bg: var(--teal-50);
+  --lime: var(--lime-500);
+  --lime-bg: var(--lime-50);
+  --purple: var(--purple-500);
+  --purple-bg: var(--purple-50);
+  --magenta: var(--magenta-500);
+  --magenta-bg: var(--magenta-50);
 
-	/* Module Colors/Continuous Delivery/300 */
-	--mod-cd-300: #30841f;
-	/* Module Colors/Continuous Delivery/200 */
-	--mod-cd-200: #5fb34e;
-	/* Module Colors/Continuous Delivery/100 */
-	--mod-cd-100: #f6fff2;
+  /* Module Colors/Continuous Delivery/300 */
+  --mod-cd-300: #30841f;
+  /* Module Colors/Continuous Delivery/200 */
+  --mod-cd-200: #5fb34e;
+  /* Module Colors/Continuous Delivery/100 */
+  --mod-cd-100: #f6fff2;
 
-	/* Module Colors/Continuous Integration/300 */
-	--mod-ci-300: #0672b6;
-	/* Module Colors/Continuous Integration/200 */
-	--mod-ci-200: #2bb1f2;
-	/* Module Colors/Continuous Integration/100 */
-	--mod-ci-100: #e2f5ff;
+  /* Module Colors/Continuous Integration/300 */
+  --mod-ci-300: #0672b6;
+  /* Module Colors/Continuous Integration/200 */
+  --mod-ci-200: #2bb1f2;
+  /* Module Colors/Continuous Integration/100 */
+  --mod-ci-100: #e2f5ff;
 
-	/* Module Colors/Cloud Cost/300 */
-	--mod-ccm-300: #24807f;
-	/* Module Colors/Cloud Cost/200 */
-	--mod-ccm-200: #01c9cc;
-	/* Module Colors/Cloud Cost/100 */
-	--mod-100: #ecffff;
+  /* Module Colors/Cloud Cost/300 */
+  --mod-ccm-300: #24807f;
+  /* Module Colors/Cloud Cost/200 */
+  --mod-ccm-200: #01c9cc;
+  /* Module Colors/Cloud Cost/100 */
+  --mod-100: #ecffff;
 
-	/* Module Colors/Feature Flags/300 */
-	--mod-ff-300: #c05809;
-	/* Module Colors/Feature Flags/200 */
-	--mod-ff-200: #ee8625;
-	/* Module Colors/Feature Flags/100 */
-	--mod-ff-100: #fcf4e3;
+  /* Module Colors/Feature Flags/300 */
+  --mod-ff-300: #c05809;
+  /* Module Colors/Feature Flags/200 */
+  --mod-ff-200: #ee8625;
+  /* Module Colors/Feature Flags/100 */
+  --mod-ff-100: #fcf4e3;
 
-	/* Module Colors/STO/200 */
-	--mod-sto-200: #2660ff;
+  --mod-sto-300: #1947ec;
+  /* Module Colors/STO/200 */
+  --mod-sto-200: #2660ff;
+  --mod-sto-100: #ebefff;
 
-	/* Module Colors/SRM/200 */
-	--mod-srm-200: #8b73ce;
+  --mod-srm-300: #6938c0;
+  /* Module Colors/SRM/200 */
+  --mod-srm-200: #8b73ce;
+  --mod-srm-100: #f6f1ff;
 
-	/* Module Colors/Chaos Engineering/200 */
-	--mod-ce-200: #cd0056;
+  --mod-ce-300: #cd0056;
+  /* Module Colors/Chaos Engineering/200 */
+  --mod-ce-200: #ff006a;
+  --mod-ce-100: #fff1f7;
 
+  /* ----- */
+  --ifm-link-decoration: none;
 
-	/* ----- */
-	--ifm-link-decoration: none;
+  --ifm-color-primary: var(--primary-7);
+  --ifm-color-primary-dark: var(--primary-8);
+  --ifm-color-primary-darker: var(--primary-9);
+  --ifm-color-primary-darkest: var(--primary-10);
+  --ifm-color-primary-light: var(--primary-5);
+  --ifm-color-primary-lighter: var(--primary-4);
+  --ifm-color-primary-lightest: var(--primary-3);
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 
-	--ifm-color-primary: var(--primary-7);
-	--ifm-color-primary-dark: var(--primary-8);
-	--ifm-color-primary-darker: var(--primary-9);
-	--ifm-color-primary-darkest: var(--primary-10);
-	--ifm-color-primary-light: var(--primary-5);
-	--ifm-color-primary-lighter: var(--primary-4);
-	--ifm-color-primary-lightest: var(--primary-3);
-	--ifm-code-font-size: 95%;
-	--docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --ifm-link-color: var(--ifm-color-primary);
 
-	--ifm-link-color: var(--ifm-color-primary);
+  --ifm-navbar-padding-vertical: calc(var(--ifm-spacing-vertical) * 0.75);
+  --ifm-navbar-height: 4.25rem;
 
-	--ifm-navbar-padding-vertical: calc(var(--ifm-spacing-vertical) * 0.75);
-	--ifm-navbar-height: 4.25rem;
+  --harness-font-family: Inter, sans-serif, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+html {
+  font-size: 16px;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  text-rendering: optimizeLegibility;
+  text-size-adjust: 100%;
+
+  box-sizing: border-box;
+  min-height: 100vh;
+}
+html *,
+html *:before,
+html *:after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: var(--harness-font-family) !important;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
-[data-theme='dark'] {
+[data-theme="dark"] {
   --ifm-color-primary: var(--primary-5);
   --ifm-color-primary-dark: var(--primary-6);
   --ifm-color-primary-darker: var(--primary-7);
@@ -239,35 +272,127 @@
   --ifm-link-color: var(--ifm-color-primary);
 }
 
-.button--cta {
-	background-color: var(--primary-7);
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 24px;
-    color: var(--white);
+.button--cta,
+.button--primary {
+  background-color: var(--primary-7);
+  border-color: var(--primary-7);
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--white);
 }
-.button--cta:hover {
-	background-color: var(--primary-5);
+.button--cta:hover,
+.button--primary:hover {
+  background-color: var(--primary-5);
+  border-color: var(--primary-5);
+}
+.button--primary {
+  height: 48px;
+  padding-left: 2em;
+  padding-right: 2em;
 }
 
 /* style overwriting temporarily for the beta icon */
 .navbar__brand {
-	margin-right: 0;
+  margin-right: 0;
 }
 .navbar__title {
-	display: none;
+  display: none;
 }
-.navbar__item img[alt='BETA'] {
-	margin-left: -0.25rem;
-	margin-top: 10px;
-	width: 36px;
-	height: auto;
+.navbar__item img[alt="BETA"] {
+  margin-left: -0.25rem;
+  margin-top: 10px;
+  width: 36px;
+  height: auto;
+}
+.theme-doc-markdown h3 {
+  display: flex;
+}
+.theme-doc-markdown h3 > img {
+  margin-right: 0.2em;
 }
 
-/* hide the algolia logo */
-.DocSearch-Logo, a[aria-label="Search by Algolia"] {
-	display: none;
+/* #DLP-36 styles for details + summary */
+.alert--info {
+  --ifm-alert-background-color: var(--primary-1);
+  --ifm-alert-border-color: var(--primary-3);
+  --ifm-tabs-color-active: var(--primary);
+  --ifm-tabs-color-active-border: var(--primary);
 }
+details summary {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 140%;
+}
+details summary::before {
+  border-left-color: var(--black) !important;
+}
+.tabs {
+  border-bottom: 1px solid var(--gray-200);
+}
+.tabs__item--active {
+  border-bottom-color: var(--primary);
+}
+
+.color-ci {
+  color: var(--mod-ci-200);
+}
+.color-cd {
+  color: var(--mod-cd-200);
+}
+.color-ff {
+  color: var(--mod-ff-200);
+}
+.color-ccm {
+  color: var(--mod-ccm-200);
+}
+.color-srm {
+  color: var(--mod-srm-200);
+}
+.color-sto {
+  color: var(--mod-sto-200);
+}
+.color-ce {
+  color: var(--mod-ce-200);
+}
+.table-of-contents ul li span[class*="color-"] {
+  color: unset;
+}
+.theme-doc-markdown h3 {
+  display: flex;
+}
+.theme-doc-markdown h3 > img {
+  margin-right: 0.2em;
+}
+
+.color-ci {
+  color: var(--mod-ci-200);
+}
+.color-cd {
+  color: var(--mod-cd-200);
+}
+.color-ff {
+  color: var(--mod-ff-200);
+}
+.color-ccm {
+  color: var(--mod-ccm-200);
+}
+.color-srm {
+  color: var(--mod-srm-200);
+}
+.color-sto {
+  color: var(--mod-sto-200);
+}
+.color-ce {
+  color: var(--mod-ce-200);
+}
+
+/* hide the algolia logo
+.DocSearch-Logo,
+a[aria-label="Search by Algolia"] {
+  display: none;
+}
+*/
 
 .flexContainer {
   display: flex;
@@ -279,84 +404,107 @@
 
 /* for 3rd-party libs */
 .rc-tooltip-inner {
-	text-transform: capitalize;
+  text-transform: capitalize;
 }
 .rc-tooltip-hidden {
-	display: none !important;
+  display: none !important;
 }
 button[title="Copy"] {
-	opacity: 0.6 !important;
+  opacity: 0.6 !important;
 }
 .tooltip-max-width {
-	max-width: 200px;
-	padding: 0.5em;
-	margin: 0;
+  max-width: 200px;
+  padding: 0.5em;
+  margin: 0;
 }
 .searchBar .DocSearch-Button {
-	border-radius: 4px;
-	background: var(--white);
-	border: 1px solid var(--gray-500);
+  border-radius: 4px;
+  background: var(--white);
+  border: 1px solid var(--gray-500);
 }
 .searchBar .DocSearch-Button .DocSearch-Search-Icon {
-	color: var(--gray-600);
+  color: var(--gray-600);
 }
 .searchBar .DocSearch-Button .DocSearch-Button-Key {
-	background: none;
-	box-shadow: none;
-	border: 1px solid var(--gray-400);
-	width: 22px;
-	height: 22px;
-	padding: 0;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+  background: none;
+  box-shadow: none;
+  border: 1px solid var(--gray-400);
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 body.DocSearch--active #__docusaurus > div[class*="announcementBar"] {
-	/* hide the announcement bar while the search bar called out */
-	display: none;
+  /* hide the announcement bar while the search bar called out */
+  display: none;
 }
 
+.theme-doc-sidebar-container .sidebar-item-rss > a {
+  display: flex;
+  align-items: center;
+}
+.theme-doc-sidebar-container .sidebar-item-rss > a > svg {
+  display: none;
+}
+.theme-doc-sidebar-container .sidebar-item-rss > a::after {
+  content: url(/img/icon_rss.svg);
+  margin-left: 0.3em;
+}
+
+.CoveoSearchInterface {
+  font-family: var(--harness-font-family) !important;
+}
 
 /* customize LHS menu items */
-aside nav.menu > ul > li > div > a, aside nav.menu > ul > li > ul > li > div > a, aside nav.menu > ul > li > a, aside nav.menu > ul > li > ul > li > a {
-	font-size: 13px;
-	line-height: 20px;
-	font-weight: 600;
+aside nav.menu > ul > li > div > a,
+aside nav.menu > ul > li > ul > li > div > a,
+aside nav.menu > ul > li > a,
+aside nav.menu > ul > li > ul > li > a {
+  font-size: 13px;
+  line-height: 20px;
+  font-weight: 600;
 }
-aside nav.menu > ul > li > ul > li ul > li > div > a, aside nav.menu > ul > li > ul > li ul > li > a {
-	font-weight: 500;
-	font-size: 12px;
-	line-height: 18px;
+aside nav.menu > ul > li > ul > li ul > li > div > a,
+aside nav.menu > ul > li > ul > li ul > li > a {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 18px;
 }
-.menu__link--sublist-caret:after, .menu__caret:before {
-	/* width: 0.7rem;
+.menu__link--sublist-caret:after,
+.menu__caret:before {
+  /* width: 0.7rem;
 	height: 0.7rem;
 	min-width: 0.7rem;
 	min-height: 0.7rem; */
-	/* background: var(--ifm-menu-link-sublist-icon) 50% / 1.25rem 1.25rem; */
-	background-size: 1.25rem 1.25rem;
+  /* background: var(--ifm-menu-link-sublist-icon) 50% / 1.25rem 1.25rem; */
+  background-size: 1.25rem 1.25rem;
 }
 
-@media screen and (min-width: 1080px) {
-/* style for the search bar in higher resolution */
-	.searchBar {
-		width: calc(100vw - 925px);
-	}
-	.searchBar .DocSearch-Button {
-		width: 100%;
-	}
+@media screen and (min-width: 1200px) {
+  /* style for the search bar in higher resolution */
+  .searchBar {
+    width: calc(100vw - 1040px); /* - 925px */
+  }
+  .searchBar .DocSearch-Button {
+    width: 100%;
+  }
 }
 
-@media screen and (max-width: 1079px) {
-/* for tablet */
-	.navbar__item img[alt='BETA'] {
-		display: none
-	}
+@media screen and (max-width: 1199px) {
+  /* for tablet */
+  .navbar__item img[alt="BETA"] {
+    display: none;
+  }
+  .searchBar {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 393px) {
-/* for mobile */
-	.navbar__logo {
-		max-width: calc(100% - 44px);
-	}
+  /* for mobile */
+  .navbar__logo {
+    max-width: calc(100% - 44px);
+  }
 }

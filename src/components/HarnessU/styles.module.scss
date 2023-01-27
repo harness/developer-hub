@@ -47,6 +47,9 @@
     align-items: center;
     gap: 32px;
     padding-left: 0;
+    a:hover {
+      color: unset;
+    }
     li {
       box-sizing: border-box;
 

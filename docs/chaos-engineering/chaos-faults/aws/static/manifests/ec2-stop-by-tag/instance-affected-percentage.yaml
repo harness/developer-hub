@@ -1,4 +1,4 @@
-# percentage of ec2 instances, needs to terminate with provided tags
+# percentage of EC2 instances, needs to terminate with provided tags
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -11,12 +11,12 @@ spec:
     spec:
       components:
         env:
-        # percentage of ec2 instance filtered by tags
+        # percentage of EC2 instance filtered by tags
         - name: INSTANCE_AFFECTED_PERC
           value: '100'
-        # tag of the ec2 instance
+        # tag of the EC2 instance
         - name: INSTANCE_TAG
           value: 'key:value'
-        # region for the ec2 instance
+        # region for the EC2 instance
         - name: REGION
           value: 'us-east-1'

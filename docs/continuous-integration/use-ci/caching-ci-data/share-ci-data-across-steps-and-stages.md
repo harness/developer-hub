@@ -20,14 +20,16 @@ You can declare Shared Paths for a Stage. Any Step in the Stage can create, retr
 
 To declare a Shared Path, open the Stage, go to the Overview tab, click **Shared Paths**, and add the subfolder such as `/root/.m2`. Once you do this, any Step can then access `/root/.m2`.
 
-![](./static/share-ci-data-across-steps-and-stages-01.png)### Share Data Across Stages
+![](./static/share-ci-data-across-steps-and-stages-01.png)
+
+### Share Data Across Stages
 
 You can share data across Stages using AWS or GCS buckets:
 
 1. Save your cache using [Save Cache to S3](../../ci-technical-reference/save-cache-to-s-3-step-settings.md) or [Save Cache to GCS](../../ci-technical-reference/save-cache-to-gcs-step-settings.md).
 2. Retrieve your cache using [Restore Cache from S3](../../ci-technical-reference/restore-cache-from-s-3-step-settings.md) or [Restore Cache from GCS](../../ci-technical-reference/restore-cache-from-gcs-settings.md).
 
-You cannot share access credentials or other [Text Secrets](https://ngdocs.harness.io/article/osfw70e59c-add-use-text-secrets) across Stages.For complete end-to-end examples, see the following how-tos:
+You cannot share access credentials or other [Text Secrets](../../../platform/6_Security/2-add-use-text-secrets.md) across Stages.For complete end-to-end examples, see the following how-tos:
 
 * [Save and Restore Cache from S3](saving-cache.md)
 * [Save and Restore Cache from GCS](save-cache-in-gcs.md)

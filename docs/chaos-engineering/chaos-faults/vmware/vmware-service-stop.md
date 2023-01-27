@@ -4,7 +4,7 @@ title: VMware Service Stop
 ---
 
 ## Introduction
-- VMware Service Stop experiment stops the target systemd services running on Linux OS based VMware VM to determine the application/service resilience.
+- VMware Service Stop fault stops the target systemd services running on Linux OS based VMware VM to determine the application/service resilience.
 - It helps to check the performance of the application/service running on the VMWare VMs.
 
 :::tip Fault execution flow chart
@@ -16,8 +16,8 @@ title: VMware Service Stop
 - Ensure that Kubernetes Version > 1.16
 
 ** vCenter Requirements **
-- Ensure the connectivity of execution plane with vCenter and the hosts over 443 port.
-- Ensure that Vmware tool is installed on the target VM with remote execution enabled.
+- Ensure the connectivity of execution plane with vCenter and the hosts over 443 port. 
+- Ensure that VMware tool is installed on the target VM with remote execution enabled.
 - Ensure that you have sufficient vCenter permission to access hosts and VMs.
 - Ensure to create a Kubernetes secret having the Vcenter credentials in the `CHAOS_NAMESPACE`. A sample secret file looks like:
 ```yaml
@@ -43,9 +43,9 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
 - The target services should exist in the VM.
 :::
 
-## Experiment tunables
+## Fault Tunables
 <details>
-    <summary>Check the Experiment Tunables</summary>
+    <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>
     <table>
       <tr>
@@ -99,10 +99,10 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
     </table>
 </details>
 
-## Experiment Examples
+## Fault Examples
 
-### Common Experiment Tunables
-Refer the [common attributes](../common-tunables-for-all-experiments) to tune the common tunables for all the experiments.
+### Common Fault Tunables
+Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
 ### SERVICE_NAME
 It contains the target service running on a particular VM

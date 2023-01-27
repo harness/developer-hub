@@ -22,6 +22,6 @@ spec:
         # it should be provided in same order of VM_INSTANCE_NAMES
         - name: ZONES
           value: 'zone-01,zone-02'
-        # gcp project id to which vm instance belongs
+        # GCP project ID to which vm instance belongs
         - name: GCP_PROJECT_ID
           value: 'project-id'

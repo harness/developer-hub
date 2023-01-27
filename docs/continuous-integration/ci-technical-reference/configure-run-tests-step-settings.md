@@ -18,7 +18,7 @@ The unique name for this step.
 
 ### ID
 
-See [Entity Identifier Reference](https://ngdocs.harness.io/article/li0my8tcz3-entity-identifier-reference).
+See [Entity Identifier Reference](../../platform/20_References/entity-identifier-reference.md).
 
 ### Description
 
@@ -88,7 +88,9 @@ Enter the commands used for cleaning up the environment after running the tests.
 
 The path to the file(s) that store results in the JUnit XML format. You can enter multiple paths. [Glob](https://en.wikipedia.org/wiki/Glob_(programming)) is supported.
 
-This variable must be set for the Run Tests tep to publish test results.### Environment Variables
+This variable must be set for the Run Tests tep to publish test results.
+
+### Environment Variables
 
 Variables passed to the container as environment variables and used in the Commands.
 
@@ -152,6 +154,6 @@ Timeout for the step. Once the timeout is reached, the step fails and the Pipeli
 
 ### See Also
 
-* [Step Skip Condition Settings](https://ngdocs.harness.io/article/i36ibenkq2-step-skip-condition-settings)
-* [Step Failure Strategy Settings](https://ngdocs.harness.io/article/htrur23poj-step-failure-strategy-settings)
+* [Step Skip Condition Settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+* [Step Failure Strategy Settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
 

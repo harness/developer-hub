@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: Introduction to Chaos Module
+title: Introduction to chaos module
 ---
 
 Cloud native applications are highly distributed, elastic, resistant to failure, and loosely coupled. That being said, an important question arises. How would you ensure that your application performs as expected under different failure conditions?
@@ -46,4 +46,4 @@ Harness Chaos Engineering module takes a holistic-approach to chaos engieering, 
 5. Native integration with Harness CD (Continuous Delivery) pipelines.
 6. Hypothesis validation using probes and SLO management using integration with Harness CV (Continuous Verification).
 7. Guided gameday execution with detailed analytics and reporting based on experiment execution and application resilience.
-8. Chaos events, metrics and logs (audit, execution) to aid in the instrumentation of APM dashboards with chaos context.
+8. Chaos events, metrics and logs (audit and execution) to aid in the instrumentation of APM dashboards with chaos context.

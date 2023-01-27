@@ -4,7 +4,7 @@ title: Pod CPU Hog
 ---
 
 ## Introduction
-- This experiment consumes the CPU resources of the application container.
+- This fault consumes the CPU resources of the application container.
 - It simulates conditions where app pods experience CPU spikes either due to expected/undesired processes thereby testing how the overall application stack behaves when this occurs.
 - It can test the application's resilience to potential slowness/unavailability of some replicas due to high CPU load.
 
@@ -14,11 +14,11 @@ title: Pod CPU Hog
 
 ## Uses
 <details>
-<summary>View the uses of the experiment</summary>
+<summary>View the uses of the fault</summary>
 <div>
 Disk Pressure or CPU hogs is another very common and frequent scenario we find in kubernetes applications that can result in the eviction of the application replica and impact its delivery. Such scenarios that can still occur despite whatever availability aids K8s provides. These problems are generally referred to as "Noisy Neighbour" problems.
     
-Injecting a rogue process into a target container, we starve the main microservice process (typically pid 1) of the resources allocated to it (where limits are defined) causing slowness in application traffic or in other cases unrestrained use can cause node to exhaust resources leading to eviction of all pods.So this category of chaos experiment helps to build the immunity on the application undergoing any such stress scenario.
+Injecting a rogue process into a target container, we starve the main microservice process (typically pid 1) of the resources allocated to it (where limits are defined) causing slowness in application traffic or in other cases unrestrained use can cause node to exhaust resources leading to eviction of all pods. So this category of chaos fault helps to build the immunity on the application undergoing any such stress scenario.
 </div>
 </details>
 
@@ -32,8 +32,9 @@ Injecting a rogue process into a target container, we starve the main microservi
 The application pods should be in running state before and after chaos injection.
 :::
 
+## Fault Tunables
 <details>
-    <summary>Check the Experiment Tunables</summary>
+    <summary>Check the Fault Tunables</summary>
     <h2>Optional Fields</h2>
     <table>
       <tr>
@@ -43,12 +44,12 @@ The application pods should be in running state before and after chaos injection
       </tr>
       <tr>
         <td> CPU_CORES </td>
-        <td> Number of the cpu cores subjected to CPU stress  </td>
+        <td> Number of the CPU cores subjected to CPU stress </td>
         <td> Default to 1 </td>
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The time duration for chaos insertion (seconds)  </td>
+        <td> The time duration for chaos insertion (seconds) </td>
         <td> Default to 60s </td>
       </tr>
       <tr>
@@ -62,13 +63,13 @@ The application pods should be in running state before and after chaos injection
         <td> Defaults to <code>litmuschaos/go-runner:1.13.8</code> </td>
       </tr>
       <tr>
-        <td> STRESS_IMAGE  </td>
+        <td> STRESS_IMAGE </td>
         <td> Container run on the node at runtime by the pumba lib to inject stressors. Only used in LIB <code>pumba</code></td>
         <td> Default to <code>alexeiled/stress-ng:latest-ubuntu</code> </td>
       </tr>
       <tr>
         <td> TARGET_PODS </td>
-        <td> Comma separated list of application pod name subjected to pod cpu hog chaos</td>
+        <td> Comma separated list of application pod name subjected to pod CPU hog chaos</td>
         <td> If not provided, it will select target pods randomly based on provided appLabels</td>
       </tr> 
       <tr> 
@@ -78,7 +79,7 @@ The application pods should be in running state before and after chaos injection
       </tr> 
       <tr>
         <td> PODS_AFFECTED_PERC </td>
-        <td> The Percentage of total pods to target  </td>
+        <td> The Percentage of total pods to target </td>
         <td> Defaults to 0 (corresponds to 1 replica), provide numeric value only </td>
       </tr>
       <tr>
@@ -104,10 +105,10 @@ The application pods should be in running state before and after chaos injection
     </table>
 </details>
 
-## Experiment Examples
+## Fault Examples
  
 ### Common and Pod specific tunables
-Refer the [common attributes](../../common-tunables-for-all-experiments) and [Pod specific tunable](./common-tunables-for-pod-experiments) to tune the common tunables for all experiments and pod specific tunables.
+Refer the [common attributes](../../common-tunables-for-all-faults) and [Pod specific tunable](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
 
 ### CPU Cores
 
@@ -117,7 +118,7 @@ Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/pod-cpu-hog/cpu-cores.yaml yaml)
 ```yaml
-# cpu cores for the stress
+# CPU cores for the stress
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -135,7 +136,7 @@ spec:
     spec:
       components:
         env:
-        # cpu cores for stress
+        # CPU cores for stress
         - name: CPU_CORES
           value: '1'
         - name: TOTAL_CHAOS_DURATION
@@ -149,7 +150,7 @@ Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/pod-cpu-hog/cpu-load.yaml yaml)
 ```yaml
-# cpu load for the stress
+# CPU load for the stress
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -167,11 +168,11 @@ spec:
     spec:
       components:
         env:
-        # cpu load in percentage for the stress
+        # CPU load in percentage for the stress
         - name: CPU_LOAD
           value: '100'
-        # cpu core should be provided as 0 for cpu load
-        # to work, otherwise it will take cpu core as priority
+        # CPU core should be provided as 0 for CPU load
+        # to work, otherwise it will take CPU core as priority
         - name: CPU_CORES
           value: '0'
         - name: TOTAL_CHAOS_DURATION

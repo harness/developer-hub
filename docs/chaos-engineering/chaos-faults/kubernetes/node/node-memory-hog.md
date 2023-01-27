@@ -5,7 +5,7 @@ title: Node Memory Hog
 
 ## Introduction
 
-- This experiment causes Memory resource exhaustion on the Kubernetes node. The experiment aims to verify resiliency of applications whose replicas may be evicted on account on nodes turning unschedulable (Not Ready) due to lack of Memory resources.
+- This fault causes Memory resource exhaustion on the Kubernetes node. The fault aims to verify resiliency of applications whose replicas may be evicted on account on nodes turning unschedulable (Not Ready) due to lack of Memory resources.
 - The Memory chaos is injected using a helper pod running the linux stress-ng tool (a workload generator)- The chaos is effected for a period equalling the TOTAL_CHAOS_DURATION and up to <code>MEMORY_CONSUMPTION_PERCENTAGE</code> (out of 100) or <code>MEMORY_CONSUMPTION_MEBIBYTES</code> (in Mebibytes out of total available memory).
 - Application implies services. Can be reframed as: Tests application resiliency upon replica evictions caused due to lack of Memory resources.
 
@@ -15,7 +15,7 @@ title: Node Memory Hog
 
 ## Uses
 <details>
-<summary>View the uses of the experiment</summary>
+<summary>View the uses of the fault</summary>
 <div>
 Coming soon.
 </div>
@@ -26,9 +26,9 @@ Coming soon.
 The target nodes should be in ready state before and after chaos injection.
 :::
 
-## Experiment tunables
+## Fault Tunables
 <details>
-    <summary>Check the Experiment Tunables</summary>
+    <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>
     <table>
       <tr>
@@ -102,9 +102,9 @@ The target nodes should be in ready state before and after chaos injection.
     </table>
 </details>
 
-## Experiment Examples
+## Fault Examples
 ### Common and Node specific tunables
-Refer the [common attributes](../../common-tunables-for-all-experiments) and [Node specific tunable](./common-tunables-for-node-experiments) to tune the common tunables for all experiments and node specific tunables.  
+Refer the [common attributes](../../common-tunables-for-all-faults) and [Node specific tunable](./common-tunables-for-node-faults) to tune the common tunables for all faults and node specific tunables.  
 
 ### Memory Consumption Percentage
 

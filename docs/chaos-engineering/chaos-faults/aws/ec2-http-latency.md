@@ -5,7 +5,7 @@ title: EC2 HTTP Latency
 
 ## Introduction
 
-- EC2 HTTP latency has chaos to disrupt the state of infra resources. This experiment induces HTTP chaos on an AWS EC2 instance using the Amazon SSM Run Command, carried out using SSM Docs that is in-built in the experiment for the given chaos scenario.
+- EC2 HTTP latency has chaos to disrupt the state of infra resources. This fault induces HTTP chaos on an AWS EC2 instance using the Amazon SSM Run Command, carried out using SSM Docs that is in-built in the fault for the given chaos scenario.
 - It injects HTTP response latency to the service whose port is specified using `TARGET_SERVICE_PORT` by starting the proxy server and redirecting the traffic through the proxy server.
 - It introduces HTTP latency chaos on the EC2 instance using an SSM doc for a certain chaos duration.
 
@@ -17,10 +17,7 @@ title: EC2 HTTP Latency
 
 :::info
 
-- Kubernetes >= 1.17
-
-**AWS EC2 Access Requirements:**
-
+- Ensure that Kubernetes Version > 1.17
 - SSM agent is installed and running in the target EC2 instance.
 - Kubernetes secret with AWS Access Key ID and Secret Access Key credentials in the `CHAOS_NAMESPACE`. A secret file looks like:
 
@@ -38,12 +35,70 @@ stringData:
     aws_secret_access_key = XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ```
 
-- If you change the secret, update the `experiment.yml` environment values to extract the relevant data from the secret. Also account for the path at which this secret is mounted as a file in the manifest environment variable `AWS_SHARED_CREDENTIALS_FILE`.
+- If you change the secret key name (from `cloud_config.yml`) please also update the `AWS_SHARED_CREDENTIALS_FILE` ENV value in the ChaosExperiment CR with the same name.
 
 ### NOTE
 
 You can pass the VM credentials as secrets or as a chaosengine environment variable.
 :::
+
+## Permission Requirement
+
+- Here is an example AWS policy to execute ec2-http-latency fault.
+
+<details>
+<summary>View policy for this fault</summary>
+
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "ssm:GetDocument",
+                "ssm:DescribeDocument",
+                "ssm:GetParameter",
+                "ssm:GetParameters",
+                "ssm:SendCommand",
+                "ssm:CancelCommand",
+                "ssm:CreateDocument",
+                "ssm:DeleteDocument",
+                "ssm:GetCommandInvocation",          
+                "ssm:UpdateInstanceInformation",
+                "ssm:DescribeInstanceInformation"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "ec2messages:AcknowledgeMessage",
+                "ec2messages:DeleteMessage",
+                "ec2messages:FailMessage",
+                "ec2messages:GetEndpoint",
+                "ec2messages:GetMessages",
+                "ec2messages:SendReply"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "ec2:DescribeInstanceStatus",
+                "ec2:DescribeInstances"
+            ],
+            "Resource": [
+                "*"
+            ]
+        }
+    ]
+}
+```
+</details>
+
+- Refer a [superset permission/policy](../policy-for-all-aws-faults) to execute all AWS faults.
+
 
 ## Default Validations
 
@@ -53,10 +108,10 @@ You can pass the VM credentials as secrets or as a chaosengine environment varia
 
 :::
 
-## Experiment Tunables
+## Fault Tunables
 
 <details>
-    <summary>Check the Experiment Tunables</summary>
+    <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>
     <table>
         <tr>
@@ -119,7 +174,7 @@ You can pass the VM credentials as secrets or as a chaosengine environment varia
         </tr>
         <tr>
             <td> INSTALL_DEPENDENCY </td>
-            <td> Whether to install the dependency to run the experiment </td>
+            <td> Whether to install the dependency to run the fault </td>
             <td> If the dependency already exists, you can turn it off (defaults to True)</td>
         </tr>
         <tr>
@@ -140,11 +195,11 @@ You can pass the VM credentials as secrets or as a chaosengine environment varia
     </table>
 </details>
 
-## Experiment Examples
+## Fault Examples
 
-### Common Experiment Tunables
+### Common Fault Tunables
 
-Refer to the [common attributes](../common-tunables-for-all-experiments) to tune the common tunables for all the experiments.
+Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
 ### Target Service Port
 

@@ -18,7 +18,7 @@ The unique name for this step.
 
 ### ID
 
-See [Entity Identifier Reference](https://docs.harness.io/article/li0my8tcz3-entity-identifier-reference).
+See [Entity Identifier Reference](../../platform/20_References/entity-identifier-reference.md).
 
 ### GCP Connector
 
@@ -53,11 +53,15 @@ A list of the files/folders to cache. Add each file/folder separately.
 
 Select the archive format.
 
-The default archive format is TAR.#### Override Cache
+The default archive format is TAR.
+
+#### Override Cache
 
 Select this option to override the cache if the key already exists.
 
-By default, the **Override Cache** option is set to False (unchecked).#### Run as User
+By default, the **Override Cache** option is set to False (unchecked).
+
+#### Run as User
 
 Set the value to specify the user id for all processes in the pod, running in containers. See [Set the security context for a pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod).
 
@@ -79,6 +83,6 @@ Timeout for the step. Once the timeout is reached, the step fails, and the Pipel
 
 ### See Also
 
-* [Step Skip Condition Settings](https://docs.harness.io/article/i36ibenkq2-step-skip-condition-settings)
-* [Step Failure Strategy Settings](https://docs.harness.io/article/htrur23poj-step-failure-strategy-settings)
+* [Step Skip Condition Settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+* [Step Failure Strategy Settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
 

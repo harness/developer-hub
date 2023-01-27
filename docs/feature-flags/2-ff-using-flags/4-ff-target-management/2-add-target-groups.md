@@ -2,7 +2,7 @@
 title: Add or Exclude a Target in a Target Group
 description: This topic describes how to add a Target Group to your Environment, add Targets to the group, and apply the Target Group to a Feature Flag. 
 tags: 
-   - helpDocs
+   - feature flags
 # sidebar_position: 2
 helpdocs_topic_id: 5qz1qrugyk
 helpdocs_category_id: xw2hz815l8
@@ -18,7 +18,9 @@ import target_group_4 from './static/2-add-target-groups-09.png'
 import target_group_5 from './static/2-add-target-groups-10.png' 
 ```
 
-> **☆ NOTE —** While we refer to targeting users, when you create a Target you give it a name and a unique identifier, so a Target can be anything that can be uniquely identified. For example, a Target can be a user, an application, a system, a machine, or any resource uniquely identified by an IP address, email ID, user ID, etc.
+:::note
+ While we refer to targeting users, when you create a Target you give it a name and a unique identifier, so a Target can be anything that can be uniquely identified. For example, a Target can be a user, an application, a system, a machine, or any resource uniquely identified by an IP address, email ID, user ID, etc.
+:::
 
 Target Groups are a collection of [Targets](1-add-targets.md) that allow you to serve Feature Flag Variations to a list of users in bulk. You can group Targets into a group either by picking individual Targets or by defining rules that automatically map Targets to a Target Group. For example, you can add individual Targets `joe@harness.io` and `jane@harness.io` to the QA internal users group or you can define a rule that all the emails ending with `@harness.io` are added to the QA internal users group.
 
@@ -70,7 +72,9 @@ You can include or exclude specific Targets, or you can set rules to add Targets
 
 #### Add Targets based on conditions
 
-> **☆ NOTE —** When you create a Target based on Conditions, on the Target overview page the Group isn't displayed under the **Target Groups** column.
+:::note 
+When you create a Target based on Conditions, on the Target overview page the Group isn't displayed under the **Target Groups** column.
+:::
 
 In addition to targeting individual users, Harness Feature Flags also allows you to target a group based on the conditions you set. You can add conditions by constructing rules using the following:
 
@@ -114,7 +118,9 @@ To add Targets based on conditions:
 ```
 *Figure 6: Viewing the condition for adding a Target*
 
-When you add Targets based on conditions, on the **Target Management:Targets** page, the Target Group is **not** displayed in the **Target Groups** column.### Add or exclude Targets from Target settings
+When you add Targets based on conditions, on the **Target Management:Targets** page, the Target Group is **not** displayed in the **Target Groups** column.
+
+### Add or exclude Targets from Target settings
 
 You can use Target Settings to include or exclude Targets from a Target Group. Complete the following steps to include or exclude Targets using the Target Settings:
 

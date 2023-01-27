@@ -20,13 +20,15 @@ The unique name for this step.
 
 ### Docker Connector
 
-The Harness Docker Registry Connector to use for uploading the image. See [Docker Connector Settings Reference](https://docs.harness.io/article/u9bsd77g5a-docker-registry-connector-settings-reference).
+The Harness Docker Registry Connector to use for uploading the image. See [Docker Connector Settings Reference](../../platform/7_Connectors/ref-cloud-providers/docker-registry-connector-settings-reference.md).
 
 ### Docker Repository
 
 The name of the Repository. For example, `<hub-user>/<repo-name>`.
 
-When using private Docker registries, use a fully qualified repo name.### Tags
+When using private Docker registries, use a fully qualified repo name.
+
+### Tags
 
 [Docker build tag](https://docs.docker.com/engine/reference/commandline/build/#tag-an-image--t) (`-t`).
 
@@ -50,7 +52,9 @@ Context represents a directory containing a Dockerfile which kaniko will use to 
 
 Kaniko requires root access to build the docker image. If you have not already enabled root access, you will receive the following error:  
   
-`failed to create docker config file: open/kaniko/ .docker/config.json: permission denied`#### Labels
+`failed to create docker config file: open/kaniko/ .docker/config.json: permission denied`
+
+#### Labels
 
 [Docker object labels](https://docs.docker.com/config/labels-custom-metadata/) to add metadata to the Docker image.
 
@@ -58,7 +62,9 @@ Kaniko requires root access to build the docker image. If you have not already e
 
 The [Docker build-time variables](https://docs.docker.com/engine/reference/commandline/build/#set-build-time-variables---build-arg) (`--build-arg`).
 
-![](./static/build-and-push-to-docker-hub-step-settings-11.png)#### Target
+![](./static/build-and-push-to-docker-hub-step-settings-11.png)
+
+#### Target
 
 The [Docker target build stage](https://docs.docker.com/engine/reference/commandline/build/#specifying-target-build-stage---target) (`--target`).
 
@@ -102,6 +108,6 @@ Timeout for the step. Once the timeout is reached, the step fails, and the Pipel
 
 ### See Also
 
-* [Step Skip Condition Settings](https://docs.harness.io/article/i36ibenkq2-step-skip-condition-settings)
-* [Step Failure Strategy Settings](https://docs.harness.io/article/htrur23poj-step-failure-strategy-settings)
+* [Step Skip Condition Settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+* [Step Failure Strategy Settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
 

@@ -18,7 +18,9 @@ This topic describes how to use the Harness Feature Flags Android SDK for your A
 
 For getting started quickly, you can use our [sample code from the SDK README](https://github.com/harness/ff-android-client-sdk/blob/main/README.md). You can also [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) and run a sample application from the [Android SDK GitHub Repository.](https://github.com/harness/ff-android-client-sdk)
 
-The SDK caches your Feature Flags. If the cache can't be accessed, the `defaultValue` is used.### Before you begin
+The SDK caches your Feature Flags. If the cache can't be accessed, the `defaultValue` is used.
+
+### Before you begin
 
 Make sure you read and understand:
 
@@ -29,7 +31,7 @@ Make sure you read and understand:
 
 ## Version
 
-The current version of this SDK is **1.0.13.** To use this version of the SDK, you also need to use Android API level 19 or higher.
+The current version of this SDK is **1.0.18.** To use this version of the SDK, you also need to use Android API level 19 or higher.
 
 ## Requirements
 
@@ -62,7 +64,7 @@ Then, in your app module's `build.gradle` file, add the following dependency f
 
 
 ```
-implementation 'io.harness:ff-android-client-sdk:1.0.13'
+implementation 'io.harness:ff-android-client-sdk:1.0.18'
 ```
 ## Initialize the SDK
 
@@ -101,7 +103,7 @@ Regex: `^[A-Za-z0-9.@_-]*$`
 Must consist of only alphabetical characters, numbers, and the following symbols:  
 . (period)  
 @ (at sign)  
-- (dash)  
+-(dash)  
 \_ (underscore)  
   
 The characters can be lowercase or uppercase but cannot include accented letters, for example `Cafe_789`.  
@@ -187,7 +189,9 @@ There are different methods for the different Variation types and for each metho
 * Identifier of the Flag you want to evaluate
 * The default Variation
 
-> **☆ NOTE —** The Flag is evaluated against the Target you pass in when initializing the SDK.
+:::note
+The Flag is evaluated against the Target you pass in when initializing the SDK.
+:::
 
 ### Evaluate a boolean Variation
 
@@ -314,7 +318,9 @@ Alternatively, to use the Android [log class](https://developer.android.com/ref
 ```
 CfLog.runtimeModeOn()
 ```
-Standard Android logging is the default logging strategy, so turning on runtime mode is not required.#### Use our public API methods
+Standard Android logging is the default logging strategy, so turning on runtime mode is not required.
+
+#### Use our public API methods
 
 Our public API exposes the following methods that you can use:
 

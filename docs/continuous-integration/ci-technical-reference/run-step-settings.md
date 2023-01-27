@@ -22,7 +22,7 @@ The unique name for this step.
 
 ### ID
 
-See [Entity Identifier Reference](https://docs.harness.io/article/li0my8tcz3-entity-identifier-reference).
+See [Entity Identifier Reference](../../platform/20_References/entity-identifier-reference.md).
 
 ### Description
 
@@ -73,11 +73,11 @@ Environment variables may be injected into the container and used in the script 
 
 You may also reference environment variables in the script by their name. For example, in Bash, this would be ( `$var_name` or `${var_name}`). In Windows PowerShell, the reference would be (`$Env:varName`).
 
-For **Value**, you may enter [Fixed Values, Runtime Inputs, and Expressions](https://docs.harness.io/article/f6yobn7iq0-runtime-inputs). For example, you can set **Value** as an expression and reference the value of some other setting in the stage or pipeline.
+For **Value**, you may enter [Fixed Values, Runtime Inputs, and Expressions](../../platform/20_References/runtime-inputs.md). For example, you can set **Value** as an expression and reference the value of some other setting in the stage or pipeline.
 
 ![](./static/run-step-settings-04.png)
 
-See [Built-in Harness Variables Reference](https://docs.harness.io/article/lml71vhsim-harness-variables).
+See [Built-in Harness Variables Reference](../../platform/12_Variables-and-Expressions/harness-variables.md).
 
 #### Output Variables
 
@@ -112,7 +112,9 @@ The syntax for referencing output variables between steps in different stages lo
 
 `<+stages.[stageID].execution.steps.[stepID].output.outputVariables.[varName]>`
 
-The subsequent build job fails when exit 0 is present along with output variables.##### Accessing Environment Variables Between Stages
+The subsequent build job fails when exit 0 is present along with output variables.
+
+##### Accessing Environment Variables Between Stages
 
 If you would like to access environment variables between stages, use an expression similar to the example listed below.
 
@@ -122,7 +124,9 @@ You may also output the step variable to the stage/pipeline variable as they are
 
 `<+pipeline.stages.[stage Id].variables.BUILD_NUM>`
 
-Environment variables may also be accessed when selecting the auto-suggest/ auto-complete feature in the Harness UI.#### Image Pull Policy
+Environment variables may also be accessed when selecting the auto-suggest/ auto-complete feature in the Harness UI.
+
+#### Image Pull Policy
 
 Select an option to set the pull policy for the image.
 
@@ -158,6 +162,6 @@ The timeout for the step. Once the timeout is reached, the step fails, and the p
 
 ### See Also
 
-* [Step Skip Condition Settings](https://docs.harness.io/article/i36ibenkq2-step-skip-condition-settings)
-* [Step Failure Strategy Settings](https://docs.harness.io/article/htrur23poj-step-failure-strategy-settings)
+* [Step Skip Condition Settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+* [Step Failure Strategy Settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
 

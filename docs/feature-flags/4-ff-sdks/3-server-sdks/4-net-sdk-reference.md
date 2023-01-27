@@ -13,10 +13,12 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-> :warning: **Warning:** In Version 1.1.3 of the .NET SDK, the package name for installing the SDK changed from **ff-netF48-server-sdk** to f**f-dotnet-server-sdk**. To use this version, make sure you remove the old package name and use the new one.You can do this by using the following commands:  
+:::caution 
+In Version 1.1.3 of the .NET SDK, the package name for installing the SDK changed from **ff-netF48-server-sdk** to **ff-dotnet-server-sdk**. To use this version, make sure you remove the old package name and use the new one. You can do this by using the following commands:  
 **Remove the old package**  
 `dotnet remove package ff-netF48-server-sdk`  
 **Add the new package**`dotnet add package ff-dotnet-server-sdk`
+:::
 
 This topic describes how to use the Harness Feature Flags .NET SDK for your .Net application.
 
@@ -33,7 +35,9 @@ Make sure you read and understand:
 
 ## Version
 
-The current version of this SDK is **1.1.5.**If you are using an older version of the .NET Framework, it may not default the security protocol to TLS 1.2. For compatibility with this SDK, set the protocol to TLS 1.2 by using the following:
+The current version of this SDK is **1.1.6.**
+
+If you are using an older version of the .NET Framework, it may not default the security protocol to TLS 1.2. For compatibility with this SDK, set the protocol to TLS 1.2 by using the following:
 
 
 ```
@@ -57,12 +61,14 @@ Install the SDK by using the `dotnet add package` command, for example: 
 
 
 ```
-dotnet add package ff-dotnet-server-sdk --version 1.1.4
+dotnet add package ff-dotnet-server-sdk --version 1.1.6
 ```
-> :warning: **Warning:** In Version 1.1.3 of the .NET SDK, the package name for installing the SDK changed from **ff-netF48-server-sdk** to f**f-dotnet-server-sdk**. To use this version, make sure you remove the old package name and use the new one.You can do this by using the following commands:  
+:::caution
+In Version 1.1.3 of the .NET SDK, the package name for installing the SDK changed from **ff-netF48-server-sdk** to **ff-dotnet-server-sdk**. To use this version, make sure you remove the old package name and use the new one. You can do this by using the following commands:  
 **Remove the old package**  
 `dotnet remove package ff-netF48-server-sdk`  
 **Add the new package**`dotnet add package ff-dotnet-server-sdk`
+:::
 
 To initialize the .NET SDK, you need to:
 
@@ -109,7 +115,7 @@ Regex: `^[A-Za-z0-9.@_-]*$`
 Must consist of only alphabetical characters, numbers, and the following symbols:  
 . (period)  
 @ (at sign)  
-- (dash)  
+-(dash)  
 \_ (underscore)  
   
 The characters can be lowercase or uppercase but cannot include accented letters, for example `Cafe_789`.  
@@ -153,7 +159,7 @@ You can configure the following base features of the SDK:
 | **Name** | **Example** | **Description** | **Default Value** |
 | configUrl | `ConfigUrl("https://config.ff.harness.io/api/1.0")` | The URL used to fetch Feature Flag Evaluations. When using the Relay Proxy, change this to: `http://localhost:7000` | `https://config.ff.harness.io/api/1.0` |
 | eventUrl | `EventUrl("https://events.ff.harness.io/api/1.0")` | The URL for posting metrics data to the Feature Flag service. When using the Relay Proxy, change this to: `http://localhost:7000` | `https://events.ff.harness.io/api/1.0` |
-| pollInterval | `SetPollingInterval(20)` | The interval **in seconds** that we poll for changes when you are using stream mode. | `20` (seconds) |
+| pollInterval | `SetPollingInterval(60)` | The interval **in seconds** that we poll for changes when you are using stream mode. | `60` (seconds) |
 | streamEnabled | `SetStreamEnabled(true)` | Set to `true` to enable streaming mode.Set to `false` to disable streaming mode. | `true` |
 | analyticsEnabled | `SetAnalyticsEnabled(true)` | Set to `true` to enable analytics.Set to `false` to disable analytics.**Note**: When enabled, analytics data is posted every 60 seconds. | `true` |
 

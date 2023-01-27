@@ -1,0 +1,14 @@
+{
+  "label": "Manage Template Libraries FirstGen",
+  "position": 50,
+  "collapsible": "true",
+  "collapsed": "true",
+  "className": "red",
+  "link": {
+    "type": "generated-index",
+    "title": "Manage Template Libraries FirstGen"
+  },
+  "customProps": {
+    "helpdocs_category_id": "wha9wf4lk9"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "label": "Harness Services Tech Ref FirstGen",
+  "position": 30,
+  "collapsible": "true",
+  "collapsed": "true",
+  "className": "red",
+  "link": {
+    "type": "generated-index",
+    "title": "Harness Services Tech Ref FirstGen"
+  },
+  "customProps": {
+    "helpdocs_category_id": "xbu33o5q99"
+  }
+}

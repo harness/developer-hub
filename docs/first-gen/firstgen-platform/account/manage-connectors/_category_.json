@@ -1,0 +1,15 @@
+{
+  "label": "Manage Connectors FirstGen",
+  "position": 20,
+  "collapsible": "true",
+  "collapsed": "true",
+  "className": "red",
+  "link": {
+    "type": "generated-index",
+    "title": "Manage Connectors FirstGen"
+  },
+  "customProps": {
+    "helpdocs_category_id": "ll7h8ktlwe",
+    "helpdocs_parent_category_id": "3err8eu6x3"
+  }
+}

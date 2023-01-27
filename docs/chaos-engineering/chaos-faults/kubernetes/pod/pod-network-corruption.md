@@ -13,7 +13,7 @@ title: Pod Network Corruption
 
 ## Uses
 <details>
-<summary>View the uses of the experiment</summary>
+<summary>View the uses of the fault</summary>
 <div>
 Coming soon.
 </div>
@@ -29,9 +29,9 @@ Coming soon.
 The application pods should be in running state before and after chaos injection.
 :::
 
-## Experiment tunables
+## Fault Tunables
 <details>
-    <summary>Check the Experiment Tunables</summary>
+    <summary>Check the Fault Tunables</summary>
     <h2>Optional Fields</h2>
     <table>
       <tr>
@@ -86,7 +86,7 @@ The application pods should be in running state before and after chaos injection
       </tr>      
       <tr>
         <td> PODS_AFFECTED_PERC </td>
-        <td> The Percentage of total pods to target  </td>
+        <td> The Percentage of total pods to target </td>
         <td> Defaults to 0 (corresponds to 1 replica), provide numeric value only </td>
       </tr> 
     <tr>
@@ -117,10 +117,10 @@ The application pods should be in running state before and after chaos injection
     </table>
 </details>
 
-## Experiment Examples
+## Fault Examples
 
 ### Common and Pod specific tunables
-Refer the [common attributes](../../common-tunables-for-all-experiments) and [Pod specific tunable](./common-tunables-for-pod-experiments) to tune the common tunables for all experiments and pod specific tunables.
+Refer the [common attributes](../../common-tunables-for-all-faults) and [Pod specific tunable](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
 
 ### Network Packet Corruption
 
@@ -157,7 +157,7 @@ spec:
 
 ### Destination IPs And Destination Hosts
 
-The network experiments interrupt traffic for all the IPs/hosts by default. The interruption of specific IPs/Hosts can be tuned via `DESTINATION_IPS` and `DESTINATION_HOSTS` ENV.
+The network faults interrupt traffic for all the IPs/hosts by default. The interruption of specific IPs/Hosts can be tuned via `DESTINATION_IPS` and `DESTINATION_HOSTS` ENV.
 
 - `DESTINATION_IPS`: It contains the IP addresses of the services or pods or the CIDR blocks(range of IPs), the accessibility to which is impacted.
 - `DESTINATION_HOSTS`: It contains the DNS Names/FQDN names of the services, the accessibility to which, is impacted.

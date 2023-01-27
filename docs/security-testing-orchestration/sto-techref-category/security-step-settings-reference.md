@@ -39,7 +39,9 @@ The following scanners are supported.
 |  [Docker Content Trust (DCT)](#docker-content-trust-dct) | container | orchestratedScan, ingestionOnly |
 |  [Docker Content Trust (clair)](#docker-content-trust-clair) | container | orchestratedScan, ingestionOnly |
 |  [External (JSON upload v2)](../use-sto/ingesting-issues-from-other-scanners.md) | container, repository, instance, configuration | ingestionOnly |
+|  [Fortify](#fortify) | repository | ingestionOnly |
 |  [Fortify on Demand](#fortify-on-demand) | repository | orchestratedScan, dataLoad, ingestionOnly |
+|  [Grype](grype-scanner-reference.md) | container, repository | orchestratedScan, ingestionOnly |
 |  [Mend (formerly WhiteSource)](#mend-formerly-whitesource) | repository | orchestratedScan, ingestionOnly |
 |  [Metasploit](#metasploit) | instance | orchestratedScan, ingestionOnly |
 |  [Nessus](#nessus) | instance | orchestratedScan, ingestionOnly |
@@ -260,6 +262,17 @@ When `product_name` is set to `checkmarx`
 	+ `product_project_name`
 * `product_config_name`
 	+ Accepted values(s): `default`
+* When `policy_type` is set to `orchestratedScan`
+	+ `tool_args`
+	   You can use this field to run the [Checkmarx plugin](https://checkmarx.com/resource/documents/en/34965-8152-running-scans-from-the-cli.html) with specific command-line arguments. To run an incremental scan, for example, specify `tool_args` = `-incremental`.  
+
+#### Running incremental scans with Checkmarx
+
+In some cases, you might want to run an incremental rather than a full scan with Checkmarx due to time or licensing limits.  An incremental scan evaluates only new or changed code in a merge or pull request. Incremental scans are faster than full scans, but become less accurate over time. 
+
+:::note 
+You should consider carefully when to run incremental vs. full scans. See [When should I use Incremental Scans vs Full Scans in CxSAST?](https://support.checkmarx.com/s/article/When-should-I-use-an#:~:text=An%20incremental%20scan%20is%20a,interface%2C%20Cx%20plugins%20and%20CLI) in the Checkmarx docs.
+:::
 
 [↑ Scanners](#scanners-target-types-and-scan-approach)
 
@@ -314,21 +327,21 @@ Go to [Ingesting issues from other scanners](../use-sto/ingesting-issues-from-ot
 
 [↑ Scanners](#scanners-target-types-and-scan-approach)
 
+
 ### Fortify
 
-When `product_name` is set to `fortify`
+When `product_name` is set to `fortify`
 
 * `scan_type`
-	+ accepted value(s): `repository`
+	+ accepted value(s): `repository`
 * `policy_type`
-	+ accepted value(s): `orchestratedScan`, `ingestionOnly`
-* When `policy_type` is set to `orchestratedScan`
-	+ `product_license_path`: see `customer_artifacts`
+	+ accepted value(s): `ingestionOnly`
 * `product_config_name`
 	+ Accepted values(s):
 		- `default`
 
 [↑ Scanners](#scanners-target-types-and-scan-approach)
+
 
 ### Fortify on Demand
 
@@ -366,30 +379,29 @@ When `product_name` is set to `fortifyondemand`
 
 When `product_name` is set to `whitesource`
 
-* `scan_type`
-	+ accepted value(s): `repository`
-* `policy_type`
-	+ accepted value(s): `ingestionOnly`, `dataLoad`, `orchestratedScan`
-* When `policy_type` is set to `orchestratedScan`
-	+ `product_domain` (*optional*) — The default is `https://saas.whitesourcesoftware.com/api`
-	+ `product_access_id`
-	+ `product_access_token`
-	+ `product_include`
-	+ `product_exclude`
-	+ `product_lookup_type`(*optional*)
-		- Accepted value(s): Not Set, `byName`, `byTokens`, `appendToProductByToken`, `appendToProductByName`, `whitesource-agent`
-	+ `product_product_name`
-	+ `product_project_name`
-	+ `product_product_token`
-	+ `product_project_token`
-* `dataload`
-	+ accepted value(s): `byTokens`, `byNames`
-* `orchestratedScan`
-	+ accepted value(s): `ppendToProductByToken`, `appendToProductByName`
-* `orchestratedScan`
-	+ default value(s): `https://saas.whitesourcesoftware.com/api`
-* `product_config_name`
-	+ Accepted values(s):`default`
+  * `scan_type`
+	  - Accepted value(s): `ingestionOnly`, `dataLoad`, `orchestratedScan`
+	* `product_domain` (*optional*) — The default is `https://saas.whitesourcesoftware.com/api`
+	* `product_access_id`
+	* `product_access_token`
+	* `product_include`
+	* `product_config_name` = `default`
+	* `product_lookup_type`(*optional*)
+		- Accepted value(s) when policy_type is set to `dataLoad`: 
+		  - `byName`
+			- `byTokens`
+		- Accepted value(s) when policy_type is set to `orchestratedScan`: 
+			- `appendToProductByToken`
+			- `appendToProductByName`
+		
+:::note
+You must configure the following settings depending on the product lookup type  — i.e., whether you are using the names or tokens to reference the Mend product:
+:::
+	* `product_product_name`
+	* `product_project_name`
+	* `product_project_token`
+	* `product_project_token`
+	
 
 [↑ Scanners](#scanners-target-types-and-scan-approach)
 

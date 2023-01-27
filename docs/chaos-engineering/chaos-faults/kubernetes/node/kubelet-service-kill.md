@@ -4,7 +4,7 @@ title: Kubelet Service Kill
 ---
 
 ## Introduction
-- This experiment Causes the application to become unreachable on account of node turning unschedulable (NotReady) due to kubelet service kill.
+- This fault causes the application to become unreachable on account of node turning unschedulable (NotReady) due to kubelet service kill.
 - The kubelet service has been stopped/killed on a node to make it unschedulable for a certain duration i.e `TOTAL_CHAOS_DURATION`. The application node should be healthy after the chaos injection and the services should be re-accessible.
 - The application implies services. Can be reframed as: Test application resiliency upon replica getting unreachable caused due to kubelet service down.
 
@@ -14,7 +14,7 @@ title: Kubelet Service Kill
 
 ## Uses
 <details>
-<summary>View the uses of the experiment</summary>
+<summary>View the uses of the fault</summary>
 <div>
 Coming soon.
 </div>
@@ -23,7 +23,7 @@ Coming soon.
 ## Prerequisites
 :::info
 - Ensure that Kubernetes Version > 1.16.
-- Ensure that the node specified in the experiment ENV variable <code>TARGET_NODE</code> (the node for which docker service need to be killed) should be cordoned before execution of the chaos experiment to ensure that the experiment resources are not scheduled on it or subjected to eviction. This can be achieved with the following steps:
+- Ensure that the node specified in the fault ENV variable <code>TARGET_NODE</code> (the node for which docker service need to be killed) should be cordoned before execution of the chaos fault to ensure that the fault resources are not scheduled on it or subjected to eviction. This can be achieved with the following steps:
   - Get node names against the applications pods: <code>kubectl get pods -o wide</code>
   - Cordon the node <code>kubectl cordon &lt;nodename&gt;</code>
 :::
@@ -33,9 +33,9 @@ Coming soon.
 The target nodes should be in ready state before and after chaos injection.
 :::
 
-## Experiment tunables
+## Fault Tunables
 <details>
-    <summary>Check the Experiment Tunables</summary>
+    <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>
     <table>
       <tr>
@@ -63,7 +63,7 @@ The target nodes should be in ready state before and after chaos injection.
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The time duration for chaos insertion (seconds)  </td>
+        <td> The time duration for chaos insertion (seconds) </td>
         <td> Defaults to 60s </td>
       </tr>
       <tr>
@@ -84,10 +84,10 @@ The target nodes should be in ready state before and after chaos injection.
     </table>
 </details>
 
-## Experiment Examples
+## Fault Examples
 
 ### Common and Node specific tunables
-Refer the [common attributes](../../common-tunables-for-all-experiments) and [Node specific tunable](./common-tunables-for-node-experiments) to tune the common tunables for all experiments and node specific tunables.
+Refer the [common attributes](../../common-tunables-for-all-faults) and [Node specific tunable](./common-tunables-for-node-faults) to tune the common tunables for all faults and node specific tunables.
 
 ### Kill Kubelet Service
 

@@ -1,0 +1,15 @@
+{
+  "label": "FirstGen Docs",
+  "position": 100,
+  "collapsible": "true",
+  "collapsed": "true",
+  "className": "red",
+  "link": {
+    "type": "generated-index",
+    "title": "FirstGen Docs"
+  },
+  "customProps": {
+    "helpdocs_category_id": "FirstGen Docs",
+    "helpdocs_parent_category_id": "yj3d4lvxn0"
+  }
+}

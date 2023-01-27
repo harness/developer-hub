@@ -1,0 +1,14 @@
+{
+  "label": "Instana Verification",
+  "position": 150,
+  "collapsible": "true",
+  "collapsed": "true",
+  "className": "red",
+  "link": {
+    "type": "generated-index",
+    "title": "Instana Verification"
+  },
+  "customProps": {
+    "helpdocs_category_id": "hb98hpyemv"
+  }
+}

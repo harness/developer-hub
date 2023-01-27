@@ -1,0 +1,19 @@
+# contains the memory limit value for the lambda function
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: lambda-update-function-memory
+    spec:
+      components:
+        env:
+        # provide the function memory limit
+        - name: MEMORY_IN_MEGABYTES
+          value: '10'
+        # provide the function name for timeout chaos
+        - name: FUNCTION_NAME
+          value: 'chaos-function'

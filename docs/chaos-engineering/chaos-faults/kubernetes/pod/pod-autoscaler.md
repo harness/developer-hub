@@ -4,9 +4,9 @@ title: Pod Autoscaler
 ---
 
 ## Introduction
-- The experiment aims to check the ability of nodes to accommodate the number of replicas a given application pod.
+- The fault aims to check the ability of nodes to accommodate the number of replicas a given application pod.
 
-- This experiment can be used for other scenarios as well, such as for checking the Node auto-scaling feature. For example, check if the pods are successfully rescheduled within a specified period in cases where the existing nodes are already running at the specified limits.
+- This fault can be used for other scenarios as well, such as for checking the Node auto-scaling feature. For example, check if the pods are successfully rescheduled within a specified period in cases where the existing nodes are already running at the specified limits.
 
 :::tip Fault execution flow chart
 ![Pod Autoscaler](./static/images/pod-autoscaler.png)
@@ -14,7 +14,7 @@ title: Pod Autoscaler
 
 ## Uses
 <details>
-<summary>View the uses of the experiment</summary>
+<summary>View the uses of the fault</summary>
 <div>
 Coming soon.
 </div>
@@ -30,9 +30,9 @@ Coming soon.
 The application pods should be in running state before and after chaos injection.
 :::
 
-## Experiment tunables
+## Fault Tunables
 <details>
-    <summary>Check the Experiment Tunables</summary>
+    <summary>Check the Fault Tunables</summary>
     <h2>Optional Fields</h2>
     <table>
       <tr>
@@ -41,7 +41,7 @@ The application pods should be in running state before and after chaos injection
         <th> Notes </th>
       </tr>
       <tr>
-        <td> REPLICA_COUNT  </td>
+        <td> REPLICA_COUNT </td>
         <td> Number of replicas upto which we want to scale </td>
         <td> <code>nil</code> </td>
       </tr>
@@ -55,7 +55,7 @@ The application pods should be in running state before and after chaos injection
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The timeout for the chaos experiment (in seconds) </td>
+        <td> The timeout for the chaos fault (in seconds) </td>
         <td> Defaults to 60 </td>
       </tr>
       <tr>
@@ -71,10 +71,10 @@ The application pods should be in running state before and after chaos injection
     </table>
 </details>
 
-## Experiment Examples
+## Fault Examples
 
 ### Common and Pod specific tunables
-Refer the [common attributes](../../common-tunables-for-all-experiments) and [Pod specific tunable](./common-tunables-for-pod-experiments) to tune the common tunables for all experiments and pod specific tunables.
+Refer the [common attributes](../../common-tunables-for-all-faults) and [Pod specific tunable](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
 
 ### Replica counts
 

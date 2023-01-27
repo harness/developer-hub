@@ -18,7 +18,7 @@ Test Intelligence is supported for Java and .NET Core codebases only at this tim
 
 Before learning about Test Intelligence, you should understand the following:
 
-* [Harness Key Concepts](https://ngdocs.harness.io/article/hv2758ro4e-learn-harness-key-concepts)
+* [Harness Key Concepts](../../getting-started/learn-harness-key-concepts.md)
 * [Run a script in CI Stage](../use-ci/run-ci-scripts/run-a-script-in-a-ci-stage.md)
 
 ### Visual Summary

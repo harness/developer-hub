@@ -5,7 +5,7 @@ title: EC2 IO Stress
 
 ## Introduction
 
-- EC2 IO Stress contains chaos to disrupt the state of infra resources. The experiment can induce a stress chaos on AWS EC2 Instance using Amazon SSM Run Command, this is carried out by using SSM Docs which is in-built in the experiment for the give chaos scenario.
+- EC2 IO Stress contains chaos to disrupt the state of infra resources. The fault can induce a stress chaos on AWS EC2 Instance using Amazon SSM Run Command, this is carried out by using SSM Docs which is in-built in the fault for the give chaos scenario.
 - It causes IO Stress chaos on EC2 Instance using an SSM doc for a certain chaos duration.
 
 :::tip Fault execution flow chart
@@ -14,12 +14,12 @@ title: EC2 IO Stress
 
 ## Uses
 
-### Uses of the experiment
+### Uses of the fault
 
 :::info
 
 - Filesystem read and write is another very common and frequent scenario we find with processes/applications that can result in the impact on its delivery. These problems are generally referred to as "Noisy Neighbour" problems.
-- Injecting a rogue process into a target ec2 instance, we starve the main processes/applications (typically pid 1) of the resources allocated to it (where limits are defined) causing slowness in application traffic or in other cases unrestrained use can cause instance to exhaust resources leading to degradation in performance of processes/applications present on the instance. So this category of chaos experiment helps to build the immunity on the application undergoing any such stress scenario.
+- Injecting a rogue process into a target EC2 instance, we starve the main processes/applications (typically pid 1) of the resources allocated to it (where limits are defined) causing slowness in application traffic or in other cases unrestrained use can cause instance to exhaust resources leading to degradation in performance of processes/applications present on the instance. So this category of chaos fault helps to build the immunity on the application undergoing any such stress scenario.
 
 :::
 
@@ -30,9 +30,6 @@ title: EC2 IO Stress
 ### Verify the prerequisites
 
 - Ensure that Kubernetes Version >= 1.17
-
-**AWS EC2 Access Requirement:**
-
 - Ensure that SSM agent is installed and running in the target EC2 instance.
 - Ensure to create a Kubernetes secret having the AWS Access Key ID and Secret Access Key credentials in the `CHAOS_NAMESPACE`. A sample secret file looks like:
 
@@ -54,6 +51,63 @@ stringData:
 
 :::
 
+## Permission Requirement
+
+- Here is an example AWS policy to execute ec2-io-stress fault.
+
+<details>
+<summary>View policy for this fault</summary>
+
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "ssm:GetDocument",
+                "ssm:DescribeDocument",
+                "ssm:GetParameter",
+                "ssm:GetParameters",
+                "ssm:SendCommand",
+                "ssm:CancelCommand",
+                "ssm:CreateDocument",
+                "ssm:DeleteDocument",
+                "ssm:GetCommandInvocation",          
+                "ssm:UpdateInstanceInformation",
+                "ssm:DescribeInstanceInformation"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "ec2messages:AcknowledgeMessage",
+                "ec2messages:DeleteMessage",
+                "ec2messages:FailMessage",
+                "ec2messages:GetEndpoint",
+                "ec2messages:GetMessages",
+                "ec2messages:SendReply"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "ec2:DescribeInstanceStatus",
+                "ec2:DescribeInstances"
+            ],
+            "Resource": [
+                "*"
+            ]
+        }
+    ]
+}
+```
+</details>
+
+- Refer a [superset permission/policy](../policy-for-all-aws-faults) to execute all AWS faults.
+
 ## Default Validations
 
 :::info
@@ -62,10 +116,10 @@ stringData:
 
 :::
 
-## Experiment tunables
+## Fault Tunables
 
 <details>
-<summary>Check the experiment tunables</summary>
+<summary>Check the Fault Tunables</summary>
 
 <h2>Mandatory Fields</h2>
 
@@ -123,7 +177,7 @@ stringData:
     <tr>
         <td> FILESYSTEM_UTILIZATION_BYTES </td>
         <td> Specify the size in GigaBytes(GB). <code>FILESYSTEM_UTILIZATION_PERCENTAGE</code> & <code>FILESYSTEM_UTILIZATION_BYTES</code> are mutually exclusive. If both are provided, <code>FILESYSTEM_UTILIZATION_PERCENTAGE</code> is prioritized. </td>
-        <td> Default to 0GB, which will result in 1 GB Utilization  </td>
+        <td> Default to 0GB, which will result in 1 GB Utilization </td>
     </tr>
     <tr>
         <td> NUMBER_OF_WORKERS </td>
@@ -149,11 +203,11 @@ stringData:
 
 </details>
 
-## Experiment Examples
+## Fault Examples
 
-### Common Experiment Tunables
+### Common Fault Tunables
 
-Refer the [common attributes](../common-tunables-for-all-experiments) to tune the common tunables for all the experiments.
+Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
 ### FILESYSTEM UTILIZATION IN MEGABYTES
 
@@ -178,10 +232,10 @@ spec:
         env:
         - name: FILESYSTEM_UTILIZATION_BYTES
           VALUE: '1024'
-        # id of the ec2 instance
+        # ID of the EC2 instance
         - name: EC2_INSTANCE_ID
           value: 'instance-1'
-        # region for the ec2 instance
+        # region for the EC2 instance
         - name: REGION
           value: 'us-east-1'
 ```
@@ -209,10 +263,10 @@ spec:
         env:
         - name: FILESYSTEM_UTILIZATION_PERCENTAGE
           VALUE: '50'
-        # id of the ec2 instance
+        # ID of the EC2 instance
         - name: EC2_INSTANCE_ID
           value: 'instance-1'
-        # region for the ec2 instance
+        # region for the EC2 instance
         - name: REGION
           value: 'us-east-1'
 ```
@@ -240,10 +294,10 @@ spec:
         env:
         - name: NUMBER_OF_WORKERS
           VALUE: '3'
-        # id of the ec2 instance
+        # ID of the EC2 instance
         - name: EC2_INSTANCE_ID
           value: 'instance-1'
-        # region for the ec2 instance
+        # region for the EC2 instance
         - name: REGION
           value: 'us-east-1'
 ```
@@ -271,10 +325,10 @@ spec:
         env:
         - name: VOLUME_MOUNT_PATH
           VALUE: '/tmp'
-        # id of the ec2 instance
+        # ID of the EC2 instance
         - name: EC2_INSTANCE_ID
           value: 'instance-1'
-        # region for the ec2 instance
+        # region for the EC2 instance
         - name: REGION
           value: 'us-east-1'
 ```
@@ -300,10 +354,10 @@ spec:
     spec:
       components:
         env:
-        # ids of the ec2 instances
+        # ids of the EC2 instances
         - name: EC2_INSTANCE_ID
           value: 'instance-1,instance-2'
-        # region for the ec2 instance
+        # region for the EC2 instance
         - name: REGION
           value: 'us-east-1'
 ```

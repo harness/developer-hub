@@ -23,7 +23,11 @@ Targets are used to control which users see which Variation of a Feature Flag, f
 This topic describes how to add Targets to an Environment. After you’ve added the Target, you can add it to a [Target Group](2-add-target-groups.md) or to a [Feature Flag](3-targeting-users-with-flags.md). 
 
 
-> **☆ NOTE —** You can add a Target using Harness UI. Alternatively, you can add a Target and define its attributes in your application's code directly [using a Feature Flag SDK](https://docs.harness.io/category/rtce97j1wu-ff-sdks). The Targets added in your code are discovered automatically and populated in the Harness UI.
+
+:::note
+ You can add a Target using Harness UI. Alternatively, you can add a Target and define its attributes in your application's code directly [using a Feature Flag SDK](https://docs.harness.io/category/rtce97j1wu-ff-sdks). The Targets added in your code are discovered automatically and populated in the Harness UI.
+:::
+
 
 ### Regex requirements for Target names and identifiers
 

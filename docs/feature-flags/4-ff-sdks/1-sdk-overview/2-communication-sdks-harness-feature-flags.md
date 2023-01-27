@@ -2,7 +2,6 @@
 title: How Feature Flag SDKs Receive Changes From the Feature Flag Client
 description: This topic describes how the SDKs communicate with Harness Feature Flags to receive flag changes.
 tags: 
-   - helpDocs
    - feature flag
    - SDK
 # sidebar_position: 2
@@ -54,7 +53,9 @@ Streaming provides a persistent connection to the SDKs. Harness Feature Flags us
 
 In polling mode, you can define the interval of time at which you want to receive updates of Flag states from the Feature Flag. The SDK will then make HTTP requests to Feature Flags to retrieve flag state changes.
 
-It is important to know that the Harness Feature Flag does not send any information as part of these requests, it is simply a query to update the status of a flag on the SDK side.#### Communication loop between Harness and the SDKs
+It is important to know that the Harness Feature Flag does not send any information as part of these requests, it is simply a query to update the status of a flag on the SDK side.
+
+#### Communication loop between Harness and the SDKs
 
 
 

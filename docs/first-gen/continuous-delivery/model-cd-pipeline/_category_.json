@@ -1,0 +1,15 @@
+{
+  "label": "Model Your CD Pipeline",
+  "position": 500,
+  "collapsible": "true",
+  "collapsed": "true",
+  "className": "red",
+  "link": {
+    "type": "generated-index",
+    "title": "Model Your CD Pipeline"
+  },
+  "customProps": {
+    "helpdocs_category_id": "ywqzeje187",
+    "helpdocs_parent_category_id": "1qtels4t8p"
+  }
+}

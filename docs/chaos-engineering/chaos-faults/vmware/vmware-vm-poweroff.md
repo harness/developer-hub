@@ -4,8 +4,8 @@ title: VMware VM-Poweroff
 ---
 
 ## Introduction
-- It causes VMWare VMs to Stop/Power-off before bringing them back to Powered-on state after a specified chaos duration using the VMWare APIs to start/stop the target VM.
-- It helps to check the performance of the application/process running on the VMWare VMs.
+- It stops/powers off the VMWare VMs before bringing them back to power-on state after a specific chaos duration using the VMWare APIs.
+- It checks the performance of the application running on the VMWare VMs.
 
 :::tip Fault execution flow chart
 ![VMware VM Poweroff](./static/images/vm-poweroff.png)
@@ -13,7 +13,7 @@ title: VMware VM-Poweroff
 
 ## Uses
 <details>
-<summary>View the uses of the experiment</summary>
+<summary>View the uses of the fault</summary>
 <div>
 Coming soon.
 </div>
@@ -23,9 +23,9 @@ Coming soon.
 
 :::info
 
-- Ensure that Kubernetes Version >= 1.17
-- Ensure that you have sufficient Vcenter access to stop and start the VM.
-- Ensure to create a Kubernetes secret having the Vcenter credentials in the `CHAOS_NAMESPACE`. A secret file looks like:
+- Kubernetes >= 1.17
+- Vcenter access to stop and start the VM.
+- Kubernetes secret that has the Vcenter credentials in the `CHAOS_NAMESPACE`. A sample secret file looks like:
 
 ```yaml
 apiVersion: v1
@@ -42,21 +42,21 @@ stringData:
 
 ### NOTE
 
-You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
+You can pass the VM credentials as a secret or as a chaosengine environment variable.
 :::
 
 ## Default Validations
 
 :::info
 
-- VM should be in healthy state.
+- The VM should be in a healthy state.
 
 :::
 
-## Experiment tunables
+## Fault Tunables
 
 <details>
-    <summary>Check the Experiment Tunables</summary>
+    <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>
     <table>
       <tr>
@@ -66,8 +66,8 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
       </tr>
       <tr>
         <td> APP_VM_MOIDS </td>
-        <td> MOIDs of the vmware instance</td>
-        <td> Once you open VM in vCenter WebClient, you can find MOID in address field (VirtualMachine:vm-5365). Alternatively you can use the CLI to fetch the MOID. Eg: vm-5365 </td>
+        <td> MOIDs of the VMware instance</td>
+        <td> Once you open the VM in VCenter WebClient, you can find MOID in address field (VirtualMachine:vm-5365). Alternatively you can use the CLI to fetch the MOID. For example, vm-5365. </td>
       </tr>
     </table>
     <h2>Optional Fields</h2>
@@ -79,37 +79,37 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The total time duration for chaos insertion (sec) </td>
+        <td> The total duration to insert chaos (in seconds). </td>
         <td> Defaults to 30s </td>
       </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>
-        <td> The interval (in sec) between successive instance termination </td>
+        <td> The interval between successive instance terminations (in seconds). </td>
         <td> Defaults to 30s </td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
-        <td> It defines sequence of chaos execution for multiple instance </td>
-        <td> Default value: parallel. Supported: serial, parallel </td>
+        <td> It defines sequence of chaos execution for multiple instances. </td>
+        <td> The default value is 'parallel', and it supports 'serial' value too. </td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
-        <td> Period to wait before and after injection of chaos in sec </td>
-        <td> Eg. 30 </td>
+        <td> Period to wait before and after injection of chaos (in seconds). </td>
+        <td> For example, 30 seconds</td>
       </tr>
     </table>
 </details>
 
-## Experiment Examples
+## Fault Examples
 
-### Common Experiment Tunables
-Refer the [common attributes](../common-tunables-for-all-experiments) to tune the common tunables for all the experiments.
+### Common Fault Tunables
+Refer to the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
-### Stop/Poweroff VM By MOID
+### Stop/Poweroff the VM By MOID
 
-It contains MOID of the vm instance. It can be tuned via `APP_VM_MOIDS` ENV.
+It contains MOID of the VM instance. You can tune it using the `APP_VM_MOIDS` environment variable.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/vm-poweroff/app-vm-moid.yaml yaml)
 ```yaml

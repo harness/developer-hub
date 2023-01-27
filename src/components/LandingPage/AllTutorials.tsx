@@ -1,100 +1,83 @@
 import React from "react";
-// import Layout from '@theme/Layout';
-import Link from "@docusaurus/Link";
 import clsx from "clsx";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import TutorialCard, { CardItem, docType } from "./TutorialCard";
 import styles from "./styles.module.scss";
-import moduleStyles from "./ModuleCard.module.scss";
-import ModuleCard from "./ModuleCard";
+import moduleStyles from "./TutorialCard.module.scss";
 
-enum docType {
-  Documentation = "doc",
-  Interactive = "interactive",
-  Video = "video",
-}
-
-export type FeatureItem = {
-  title: string;
-  module: string;
-  description: JSX.Element;
-  type: docType[];
-  Svg: string;
-  ribbon: boolean;
-  time: string;
-  link?: string;
-  featureCard?: boolean;
-};
-
-const FeaturedList: FeatureItem[] = [
+/* Define the cards here */
+const FeaturedList: CardItem[] = [
   {
-    title: 'Deploy a Helm Chart using Harness GitOps for Argo CD',
-    module: 'cd',
-    Svg: '/img/icon_cd.svg',
-    description: (
-      <>
-        Get started with Harness GitOps for Argo CD.
-      </>
-    ),
-    ribbon: true,
+    title: "Deploy a Helm Chart using Harness GitOps for Argo CD",
+    module: "cd",
+    icon: "img/icon_cd.svg",
+    description: <>Get started with Harness GitOps for Argo CD.</>,
+    newDoc: true,
     type: [docType.Documentation],
-    time: '8min',
-    link: '/tutorials/deploy-services/helm-argocd-gitops-k8s',
+    time: "8min",
+    link: "/tutorials/deploy-services/helm-argocd-gitops-k8s",
   },
   {
-    title: "TypeScript and React Feature Flags",
-    module: "ff",
-    Svg: "/img/icon_ff.svg",
+    title: "Get started with the fastest CI on the planet",
+
+    module: "ci",
+    icon: "img/icon_ci.svg",
     description: (
       <>
-        Walks you through adding JavaScript Feature Flags to a TypeScript and
-        React Application.
+        This tutorial helps you get started with Harness CI and explore some of
+        the features that make it four times faster than the leading competitor.
       </>
     ),
-    ribbon: true,
+    newDoc: true,
     type: [docType.Documentation],
-    time: "10min",
-    link: "/tutorials/manage-feature-flags/typescript-react-first-feature-flag",
-  },
-  {
-    title: "Scan a NodeJS Application",
-    module: "sto",
-    Svg: "/img/icon_sto.svg",
-    description: (
-      <>Scanning a NodeJS Application and prioritizing scan results.</>
-    ),
-    ribbon: false,
-    type: [docType.Documentation],
-    time: "10min",
-    link: "/tutorials/orchestrate-security-tests/nodejs-firstscan",
+    time: "5 min",
+    link: "/tutorials/build-code/fastest-ci",
   },
   {
     title: "Onboard with Terraform",
     module: "platform",
-    Svg: "/img/logo.svg",
+    icon: "img/logo.svg",
     description: (
       <>
         Automate lifecycle management of orgs, projects, services, environments,
         connectors and pipelines using the Harness Terraform Provider.
       </>
     ),
-    ribbon: true,
+    newDoc: true,
     type: [docType.Documentation],
     time: "5 min",
     link: "/tutorials/platform/onboard-terraform-provider",
   },
+  {
+    title: "Sign application containers",
+
+    module: "ci",
+    icon: "img/icon_ci.svg",
+    description: (
+      <>
+        This build automation guide describes how to sign a container image
+        using a CI pipeline.
+      </>
+    ),
+    newDoc: true,
+    type: [docType.Documentation],
+    time: "15 min",
+    link: "/tutorials/build-code/ci-tutorial-container-signing",
+  },
 ];
 
-const CIList: FeatureItem[] = [
+const CIList: CardItem[] = [
   {
     title: "Node and Docker Pipeline",
     module: "ci",
-    Svg: "/img/icon_ci.svg",
+    icon: "img/icon_ci.svg",
     description: (
       <>
         This build automation guide walks you through building a NodeJS and
         Docker Application in a CI Pipeline.
       </>
     ),
-    ribbon: false,
+    newDoc: false,
     type: [docType.Documentation],
     time: "15 min",
     link: "/tutorials/build-code/ci-node-docker-quickstart",
@@ -102,155 +85,304 @@ const CIList: FeatureItem[] = [
   {
     title: "Run LocalStack as a Service",
     module: "ci",
-    Svg: "/img/icon_ci.svg",
+    icon: "img/icon_ci.svg",
     description: (
       <>
-        This build automation guide shows how to run LocalStack as a Service
-        Dependency in a CI Pipeline
+        This build automation guide shows how to run LocalStack as a Background
+        step in a CI Pipeline
       </>
     ),
-    ribbon: true,
+    newDoc: false,
     type: [docType.Documentation],
     time: "15 min",
-    link: "/tutorials/build-code/ci-localstack-service-dependency",
+    link: "/tutorials/build-code/ci-localstack-background-step",
+  },
+  {
+    title: "Build and Push a Container Image to Amazon ECR",
+    module: "ci",
+    icon: "img/icon_ci.svg",
+    description: (
+      <>
+        This guide shows how to build, test, and publish a container image to
+        AWS ECR
+      </>
+    ),
+    newDoc: false,
+    type: [docType.Documentation],
+    time: "15 min",
+    link: "/tutorials/build-code/ci-build-push-to-ecr",
+  },
+  {
+    title: "Run Sauce Connect Proxy as a Service",
+    module: "ci",
+    icon: "img/icon_ci.svg",
+    description: (
+      <>
+        This build automation guide walks you through running Sauce Connect
+        Proxy as a Background step in a CI Pipeline
+      </>
+    ),
+    newDoc: true,
+    type: [docType.Documentation],
+    time: "15 min",
+    link: "/tutorials/build-code/ci-saucelabs-background-step",
+  },
+  {
+    title: "Build and publish a Java HTTP Server",
+    module: "ci",
+    icon: "img/icon_ci.svg",
+    description: (
+      <>
+        Build, test, and publish a Docker image for a Java HTTP server
+        application
+      </>
+    ),
+    newDoc: false,
+    type: [docType.Documentation],
+    time: "20 min",
+    link: "/tutorials/build-code/ci-java-http-server",
+  },
+  {
+    title: "Get started with the fastest CI on the planet",
+
+    module: "ci",
+    icon: "img/icon_ci.svg",
+    description: (
+      <>
+        This tutorial helps you get started with Harness CI and explore some of
+        the features that make it four times faster than the leading competitor.
+      </>
+    ),
+    newDoc: true,
+    type: [docType.Documentation],
+    time: "5 min",
+    link: "/tutorials/build-code/fastest-ci",
+  },
+  {
+    title: "Build Go application containers",
+
+    module: "ci",
+    icon: "img/logo.svg",
+    description: (
+      <>
+        This build automation guide describes building a Go container image in a
+        CI Pipeline.
+      </>
+    ),
+    newDoc: true,
+    type: [docType.Documentation],
+    time: "15 min",
+    link: "/tutorials/build-code/ci-tutorial-go-containers",
+  },
+  {
+    title: "Sign Application Containers",
+    module: "ci",
+    icon: "img/logo.svg",
+    description: (
+      <>
+        This build automation guide describes how to sign a container image
+        using a CI pipeline.
+      </>
+    ),
+    newDoc: true,
+    type: [docType.Documentation],
+    time: "15 min",
+    link: "/tutorials/build-code/ci-tutorial-container-signing",
+  },
+  {
+    title: "Github Action steps",
+    module: "ci",
+    icon: "img/icon_ci.svg",
+    description: (
+      <>
+        This guide shows how to run GitHub Actions natively with harness CI.
+      </>
+    ),
+    newDoc: true,
+    type: [docType.Documentation],
+    time: "10 min",
+    link: "/tutorials/build-code/ci-github-action-step",
+  },
+  {
+    title: "Build, test, and publish a Docker image for a sample React application",
+
+    module: "ci",
+    icon: "img/icon_ci.svg",
+    description: (
+      <>
+        Learn how to build and test a sample React application in a CI pipeline.
+      </>
+    ),
+    newDoc: true,
+    type: [docType.Documentation],
+    time: "20 min",
+    link: "/tutorials/build-code/ci-react-quickstart",
+  },
+  {
+    title: 'Push application containers to Google Artifact Registry',
+
+    module: 'ci',
+    icon: "img/icon_ci.svg",
+    description: (
+      <>
+        This build automation guide describes how to build and push an application container image to Google Artifact Registry using a CI pipeline.
+
+      </>
+    ),
+    newDoc: true,
+    type: [docType.Documentation],
+    time: '15 min',
+    link: '/tutorials/build-code/ci-tutorial-push-to-gar',
   },
 ];
 
-const CDList: FeatureItem[] = [{
-  title: 'Deploy a Kubernetes Manifest',
-  module: 'cd',
-  Svg: '/img/icon_cd.svg',
-  description: (
-    <>
-      Deploying your first set of Kubernetes Services in a CD Pipline with Kubernetes Manifests. 
-    </>
-  ),
-  ribbon: false,
-  type: [docType.Documentation],
-  //type: [docType.Documentation, docType.Interactive, docType.Video],
-  time: '10 min',
-  link: '/tutorials/deploy-services/microservice-manifest-k8s',
-},
-{
-  title: 'Deploy a Helm Chart',
-  module: 'cd',
-  Svg: '/img/icon_cd.svg',
-  description: (
-    <>
-      Deploying your first set of Kubernetes Resources in a CD Pipeline with Helm, a popular Kubernetes Package Manager.
-    </>
-  ),
-  ribbon: false,
-  type: [docType.Documentation],
-  time: '10min',
-  link: '/tutorials/deploy-services/helm-k8s',
-},
-{
-  title: 'Deploy a Helm Chart using Harness GitOps for Argo CD',
-  module: 'cd',
-  Svg: '/img/icon_cd.svg',
-  description: (
-    <>
-      Learn about GitOps and how to leverage your own GitOps Pipeline.
-    </>
-  ),
-  ribbon: true,
-  type: [docType.Documentation],
-  time: '10min',
-  link: '/tutorials/deploy-services/helm-argocd-gitops-k8s',
-},
-{
-  title: 'Deploy a Helm Chart using CD Community Edition',
-  module: 'cd',
-  Svg: '/img/icon_cd.svg',
-  description: (
-    <>
-      Use the 100% free, source-available, self-managed Harness CD Community Edition to automate Helm Chart deployments.
-    </>
-  ),
-  ribbon: true,
-  type: [docType.Documentation],
-  time: '10min',
-  link: '/tutorials/deploy-services/helm-argocd-gitops-k8s',
-},
-{
-  title: 'Deploy a Docker Image to Amazon ECS ',
-  module: 'cd',
-  Svg: '/img/icon_cd.svg',
-  description: (
-    <>
-      Deploy a Docker image to Amazon ECS using a CD Pipeline.
-    </>
-  ),
-  ribbon: false,
-  type: [docType.Documentation],
-  time: '15min',
-  link: '/tutorials/deploy-services/docker-ecs',
-},
-{
-  title: 'Deploy a Private Image in Amazon ECR to Kubernetes ',
-  module: 'cd',
-  Svg: '/img/icon_cd.svg',
-  description: (
-    <>
-      Deploy a Docker image from a private Amazon ECR Repository to Kubernetes. 
-    </>
-  ),
-  ribbon: false,
-  type: [docType.Documentation],
-  time: '15min',
-  link: '/tutorials/deploy-services/docker-ecr-k8s',
-},
+const CDList: CardItem[] = [
+  {
+    title: "Deploy a Kubernetes Manifest",
+    module: "cd",
+    icon: "img/icon_cd.svg",
+    description: (
+      <>
+        Deploying your first set of Kubernetes Services in a CD Pipline with
+        Kubernetes Manifests.
+      </>
+    ),
+    newDoc: false,
+    type: [docType.Documentation],
+    //type: [docType.Documentation, docType.Interactive, docType.Video],
+    time: "10 min",
+    link: "/tutorials/deploy-services/microservice-manifest-k8s",
+  },
+  {
+    title: "Deploy a Helm Chart",
+    module: "cd",
+    icon: "img/icon_cd.svg",
+    description: (
+      <>
+        Deploying your first set of Kubernetes Resources in a CD Pipeline with
+        Helm, a popular Kubernetes Package Manager.
+      </>
+    ),
+    newDoc: false,
+    type: [docType.Documentation],
+    time: "10min",
+    link: "/tutorials/deploy-services/helm-k8s",
+  },
+  {
+    title: "Deploy a Helm Chart using Harness GitOps for Argo CD",
+    module: "cd",
+    icon: "img/icon_cd.svg",
+    description: (
+      <>Learn about GitOps and how to leverage your own GitOps Pipeline.</>
+    ),
+    newDoc: true,
+    type: [docType.Documentation],
+    time: "10min",
+    link: "/tutorials/deploy-services/helm-argocd-gitops-k8s",
+  },
+  {
+    title: "Build and Deploy a NodeJS App to Kubernetes",
+    module: "cd",
+    icon: "img/icon_cd.svg",
+    description: (
+      <>Build and deploy a simple nodejs application using Harness CI and CD.</>
+    ),
+    newDoc: false,
+    type: [docType.Documentation],
+    //type: [docType.Documentation, docType.Interactive, docType.Video],
+    time: "10 min",
+    link: "/tutorials/deploy-services/harness-cicd-tutorial",
+  },
+  {
+    title: "Deploy a Helm Chart using CD Community Edition",
+    module: "cd",
+    icon: "img/icon_cd.svg",
+    description: (
+      <>
+        Use the 100% free, source-available, self-managed Harness CD Community
+        Edition to automate Helm Chart deployments.
+      </>
+    ),
+    newDoc: true,
+    type: [docType.Documentation],
+    time: "10min",
+    link: "/tutorials/deploy-services/helm-argocd-gitops-k8s",
+  },
+  {
+    title: "Deploy a Docker Image to Amazon ECS ",
+    module: "cd",
+    icon: "img/icon_cd.svg",
+    description: <>Deploy a Docker image to Amazon ECS using a CD Pipeline.</>,
+    newDoc: false,
+    type: [docType.Documentation],
+    time: "15min",
+    link: "/tutorials/deploy-services/docker-ecs",
+  },
+  {
+    title: "Deploy a Private Image in Amazon ECR to Kubernetes ",
+    module: "cd",
+    icon: "img/icon_cd.svg",
+    description: (
+      <>
+        Deploy a Docker image from a private Amazon ECR Repository to
+        Kubernetes.
+      </>
+    ),
+    newDoc: false,
+    type: [docType.Documentation],
+    time: "15min",
+    link: "/tutorials/deploy-services/docker-ecr-k8s",
+  },
 ];
 
-const FFList: FeatureItem[] = [
+const FFList: CardItem[] = [
   {
     title: "TypeScript and React Feature Flags",
     module: "ff",
-    Svg: "/img/icon_ff.svg",
+    icon: "img/icon_ff.svg",
     description: (
       <>
         Walks you through adding JavaScript Feature Flags to a TypeScript and
         React Application.
       </>
     ),
-    ribbon: true,
+    newDoc: true,
     type: [docType.Documentation],
     time: "10min",
     link: "/tutorials/manage-feature-flags/typescript-react-first-feature-flag",
   },
 ];
 
-const CCMList: FeatureItem[] = [
+const CCMList: CardItem[] = [
   {
     title: "Optimizing Kubernetes Cloud Costs 101",
     module: "ccm",
-    Svg: "/img/icon_ccm.svg",
+    icon: "img/icon_ccm.svg",
     description: (
       <>
         This guide will walk through how start to optimize your Kubernetes Costs
         on a public cloud provider.
       </>
     ),
-    ribbon: false,
+    newDoc: false,
     type: [docType.Documentation],
     time: "10min",
     link: "/tutorials/manage-cloud-costs/ccm-first-kubernetes-tutorial",
   },
 ];
 
-const SRMList: FeatureItem[] = [
+const SRMList: CardItem[] = [
   {
     title: "Introduction to SLO Management with Prometheus",
     module: "srm",
-    Svg: "/img/icon_srm.svg",
+    icon: "img/icon_srm.svg",
     description: (
       <>
         Introducing SLOs and how to measure and manage your SLOs leveraging
         Prometheus.
       </>
     ),
-    ribbon: false,
+    newDoc: false,
     type: [docType.Documentation],
     time: "15min",
     link: "/tutorials/manage-service-reliability/intro-to-srm",
@@ -258,44 +390,44 @@ const SRMList: FeatureItem[] = [
   {
     title: "Introduction to Java Exception Management",
     module: "srm",
-    Svg: "/img/icon_srm.svg",
+    icon: "img/icon_srm.svg",
     description: (
       <>
         Finding and fixing caught, uncaught, and swallowed Java exceptions.
         Learn the process and find the right tooling.
       </>
     ),
-    ribbon: false,
+    newDoc: false,
     type: [docType.Interactive, docType.Video],
     time: "10min",
     link: "/tutorials/manage-service-reliability/intro-java-exception-management",
   },
 ];
 
-const STOList: FeatureItem[] = [
+const STOList: CardItem[] = [
   {
     title: "Scan a NodeJS Application",
     module: "sto",
-    Svg: "/img/icon_sto.svg",
+    icon: "img/icon_sto.svg",
     description: (
       <>Scanning a NodeJS Application and prioritizing scan results.</>
     ),
-    ribbon: false,
+    newDoc: false,
     type: [docType.Documentation],
     time: "10min",
     link: "/tutorials/orchestrate-security-tests/nodejs-firstscan",
   },
 ];
 
-const CEList: FeatureItem[] = [
+const CEList: CardItem[] = [
   {
     title: "Your First Chaos Experiment on Kubernetes",
     module: "ce",
-    Svg: "/img/icon_ce.svg",
+    icon: "img/icon_ce.svg",
     description: (
       <>Running a Chaos Experiment on Kubernetes for the first time.</>
     ),
-    ribbon: false,
+    newDoc: false,
     type: [docType.Documentation],
     time: "10min",
     link: "/tutorials/run-chaos-experiments/first-chaos-engineering",
@@ -303,26 +435,41 @@ const CEList: FeatureItem[] = [
   {
     title: "Chaos Experiment from a Blank Canvas",
     module: "ce",
-    Svg: "/img/icon_ce.svg",
+    icon: "img/icon_ce.svg",
     description: (
       <>Create, run, observe and evaluate a custom chaos experiment.</>
     ),
-    ribbon: false,
+    newDoc: false,
     type: [docType.Documentation],
     time: "5min",
     link: "/tutorials/run-chaos-experiments/chaos-experiment-from-blank-canvas",
   },
+  {
+    title: "Integration with Harness CD",
+    module: "ce",
+    icon: "img/icon_ce.svg",
+    description: (
+      <>
+        Execute a chaos experiment as part of a Harness CD pipeline for
+        continuous resilience.
+      </>
+    ),
+    newDoc: false,
+    type: [docType.Documentation],
+    time: "15min",
+    link: "/tutorials/run-chaos-experiments/integration-with-harness-cd",
+  },
 ];
 
-const PlatformList: FeatureItem[] = [
+const PlatformList: CardItem[] = [
   {
     title: "Install Delegate",
     module: "platform",
-    Svg: "/img/logo.svg",
+    icon: "img/logo.svg",
     description: (
       <>Install a Docker or Kubernetes Delegate on your infrastructure.</>
     ),
-    ribbon: false,
+    newDoc: false,
     type: [docType.Documentation],
     time: "5 min",
     link: "/tutorials/platform/install-delegate",
@@ -330,21 +477,37 @@ const PlatformList: FeatureItem[] = [
   {
     title: "Onboard with Terraform",
     module: "platform",
-    Svg: "/img/logo.svg",
+    icon: "img/logo.svg",
     description: (
       <>
         Automate lifecycle management of orgs, projects, services, environments,
         connectors and pipelines using the Harness Terraform Provider.
       </>
     ),
-    ribbon: true,
+    newDoc: true,
     type: [docType.Documentation],
     time: "5 min",
     link: "/tutorials/platform/onboard-terraform-provider",
   },
+  {
+    title: "Provision Azure Infrastructure for Harness Delegate",
+    module: "platform",
+    icon: "img/logo.svg",
+    description: (
+      <>
+        Tutorial on how to set up a Kubernetes cluster on Azure and will serve
+        as the foundation for your CI/CD pipeline infrastructure.
+      </>
+    ),
+    newDoc: true,
+    type: [docType.Documentation],
+    time: "3 min",
+    link: "/tutorials/platform/provision-azure-infrastructure",
+  },
 ];
 
 export default function AllTutorials() {
+  const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   return (
     // <Layout title="All Tutorials" description="All Tutorials">
     //   <ul className={styles.breadCrumb}>
@@ -361,63 +524,63 @@ export default function AllTutorials() {
       </div>
       <div className={styles.subSection}>
         <h3>Featured Tutorials</h3>
-        <ModuleCard FeatureList={FeaturedList} featureCard={true} />
+        <TutorialCard FeatureList={FeaturedList} featuredCard={true} />
       </div>
       <div className={styles.subSection}>
         <div className={styles.SectionName}>
-          <img src="/img/icon_ci.svg" />
+          <img src={`${baseUrl}img/icon_ci.svg`} />
           <h3>Build & Test Code</h3>
         </div>
-        <ModuleCard FeatureList={CIList} />
+        <TutorialCard FeatureList={CIList} />
       </div>
       <div className={styles.subSection}>
         <div className={styles.SectionName}>
-          <img src="/img/icon_cd.svg" />
+          <img src={`${baseUrl}img/icon_cd.svg`} />
           <h3>Deploy Services</h3>
         </div>
-        <ModuleCard FeatureList={CDList} />
+        <TutorialCard FeatureList={CDList} />
       </div>
       <div className={styles.subSection}>
         <div className={styles.SectionName}>
-          <img src="/img/icon_ff.svg" />
+          <img src={`${baseUrl}img/icon_ff.svg`} />
           <h3>Manage Feature Flags</h3>
         </div>
-        <ModuleCard FeatureList={FFList} />
+        <TutorialCard FeatureList={FFList} />
       </div>
       <div className={styles.subSection}>
         <div className={styles.SectionName}>
-          <img src="/img/icon_ccm.svg" />
+          <img src={`${baseUrl}img/icon_ccm.svg`} />
           <h3>Optimize Cloud Costs</h3>
         </div>
-        <ModuleCard FeatureList={CCMList} />
+        <TutorialCard FeatureList={CCMList} />
       </div>
       <div className={styles.subSection}>
         <div className={styles.SectionName}>
-          <img src="/img/icon_srm.svg" />
+          <img src={`${baseUrl}img/icon_srm.svg`} />
           <h3>Manage Service Reliability</h3>
         </div>
-        <ModuleCard FeatureList={SRMList} />
+        <TutorialCard FeatureList={SRMList} />
       </div>
       <div className={styles.subSection}>
         <div className={styles.SectionName}>
-          <img src="/img/icon_sto.svg" />
+          <img src={`${baseUrl}img/icon_sto.svg`} />
           <h3>Orchestrate Security Tests</h3>
         </div>
-        <ModuleCard FeatureList={STOList} />
+        <TutorialCard FeatureList={STOList} />
       </div>
       <div className={styles.subSection}>
         <div className={styles.SectionName}>
-          <img src="/img/icon_ce.svg" />
+          <img src={`${baseUrl}img/icon_ce.svg`} />
           <h3>Run Chaos Experiments</h3>
         </div>
-        <ModuleCard FeatureList={CEList} />
+        <TutorialCard FeatureList={CEList} />
       </div>
       <div className={styles.subSection}>
         <div className={styles.SectionName}>
-          <img src="/img/logo.svg" />
+          <img src={`${baseUrl}img/logo.svg`} />
           <h3>Administer Harness Platform</h3>
         </div>
-        <ModuleCard FeatureList={PlatformList} />
+        <TutorialCard FeatureList={PlatformList} />
       </div>
     </div>
     // </Layout>

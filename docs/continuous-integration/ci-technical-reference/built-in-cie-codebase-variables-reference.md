@@ -10,11 +10,11 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-In Harness, you set up your [Codebase](../use-ci/codebase-configuration/create-and-configure-a-codebase.md) through a [Harness connector](https://docs.harness.io/article/zbhehjzsnv-connect-to-code-repo) to a Git repo to clone the code you want to build and test in your Pipeline. Once a Pipeline is executed, Harness also fetches your Git details and displays them in your **Build**. You can reference the various attributes of your Codebase in Harness stages using Harness built-in expressions. These variables are available for GitHub, Bitbucket, and GitLab codebases.
+In Harness, you set up your [Codebase](../use-ci/codebase-configuration/create-and-configure-a-codebase.md) through a [Harness connector](../../platform/7_Connectors/connect-to-code-repo.md) to a Git repo to clone the code you want to build and test in your Pipeline. Once a Pipeline is executed, Harness also fetches your Git details and displays them in your **Build**. You can reference the various attributes of your Codebase in Harness stages using Harness built-in expressions. These variables are available for GitHub, Bitbucket, and GitLab codebases.
 
 This topic describes the default built-in Harness expressions to refer to your Codebase attributes.
 
-For the list of all Harness built-in expressions, see [Built-in and Custom Harness Variables Reference](https://docs.harness.io/article/lml71vhsim-harness-variables).
+For the list of all Harness built-in expressions, see [Built-in and Custom Harness Variables Reference](../../platform/12_Variables-and-Expressions/harness-variables.md).
 
 ### How and When Codebase Variables Get Resolved
 
@@ -22,7 +22,7 @@ If you want to use Codebase variables in your Pipelines, you need to be aware of
 
 Codebase variables are based on the Codebase defined for the Pipeline and the information in the Triggers and Input Sets used to start a Build. A Codebase variable is resolved only if the Build has the relevant information. For example, a variable like `<+codebase.prNumber>` gets resolved only if there is a Pull Request associated with the Build. 
 
-To return codebase variables to Harness, the Connector must use the Enable API access option and Username and Token authentication. See [Connect to a Git Repo](https://ngdocs.harness.io/article/zbhehjzsnv). Codebase variables are local to the Stage that ran the Build. Thus if your Pipeline includes a CI Build Stage and a CD Deploy Stage, the Codebase variables are accessible in the CI Stage only.  The following use cases specify which Codebase variables get resolved and when.
+To return codebase variables to Harness, the Connector must use the Enable API access option and Username and Token authentication. See [Connect to a Git Repo](../../platform/7_Connectors/connect-to-code-repo.md). Codebase variables are local to the Stage that ran the Build. Thus if your Pipeline includes a CI Build Stage and a CD Deploy Stage, the Codebase variables are accessible in the CI Stage only.  The following use cases specify which Codebase variables get resolved and when.
 
 #### Manual Builds
 
@@ -44,7 +44,7 @@ The most common use case for triggering CI Builds is in response to a Git event.
 A Build cannot always use webhook payloads to set Codebase variables. These Builds are considered manual. Thus you'll get [Manual Branch Build](#manual-branch-build), [Manual Tag Build](#manual-tag-build), or [Manual Pull Request](#manual-pull-request-build) variables, based on the Input Set defined for the Trigger. Here are some examples of when this might happen:
 
 * You can set up a Cron Trigger to start a new Build every night at midnight. In this case, the incoming payload has no information about a specific Git event.
-* You have a Run Step that clones a repo, then builds and pushes an image using Docker-in-Docker commands. This repo is not specified in the Codebase for the Build Stage. In this case, the Codebase variables will not apply to this repo. If a Git event arrives from this repo and triggers a build, the [Trigger variables](https://ngdocs.harness.io/article/rset0jry8q) will describe this build.
+* You have a Run Step that clones a repo, then builds and pushes an image using Docker-in-Docker commands. This repo is not specified in the Codebase for the Build Stage. In this case, the Codebase variables will not apply to this repo. If a Git event arrives from this repo and triggers a build, the [Trigger variables](../../platform/8_Pipelines/w_pipeline-steps-reference/triggers-reference.md) will describe this build.
 
 ### Expression Example
 
@@ -214,7 +214,7 @@ State of the Git working directory.
 
 ### Pull Request Webhook Event
 
-You can configure [Triggers](https://docs.harness.io/category/oya6qhmmaw-trigger-category) in Harness for events in your Git repo. Harness automatically triggers a build whenever there's a new action on your Git repo. A **Pull Request Webhook Event** is when your build is automatically triggered in Harness due to a new pull event on your Git repo. See [Trigger Pipelines using Git Events](https://docs.harness.io/article/hndnde8usz-triggering-pipelines) to set up a **Trigger** in Harness.
+You can configure [Triggers](/docs/category/triggers) in Harness for events in your Git repo. Harness automatically triggers a build whenever there's a new action on your Git repo. A **Pull Request Webhook Event** is when your build is automatically triggered in Harness due to a new pull event on your Git repo. See [Trigger Pipelines using Git Events](../../platform/11_Triggers/triggering-pipelines.md) to set up a **Trigger** in Harness.
 
 You can refer to the webhook pull request in Harness with the expression`<+codebase.build.type> == “PR”`.
 
@@ -294,7 +294,7 @@ State of the Git working directory.
 
 ### Push Webhook Event
 
-You can configure [Trigger](https://docs.harness.io/category/oya6qhmmaw-trigger-category) in Harness for an event on your Git repo, and Harness will automatically trigger a build whenever there is a new action on your Git repo. A **Push Webhook Event** is when your build is automatically triggered in Harness due to a new push action on your Git repo. See [Trigger Pipelines using Git Events](https://docs.harness.io/article/hndnde8usz-triggering-pipelines) to set up a **Trigger** in Harness.
+You can configure [Trigger](/docs/category/triggers) in Harness for an event on your Git repo, and Harness will automatically trigger a build whenever there is a new action on your Git repo. A **Push Webhook Event** is when your build is automatically triggered in Harness due to a new push action on your Git repo. See [Trigger Pipelines using Git Events](../../platform/11_Triggers/triggering-pipelines.md) to set up a **Trigger** in Harness.
 
 You can refer to the webhook pull request in Harness with the expression`<+codebase.build.type> == “Push”`.
 
@@ -336,7 +336,9 @@ User name of the Git account for the Push webhook event. 
 
 User avatar of the Git account for the Push webhook event.
 
-For Bitbucket PR builds (whether by Trigger, Manual, or PR Number), the variable `<+codebase.commitSha>` returns a short sha. This is due to the Bitbucket webhook payload only sending short sha.### See Also
+For Bitbucket PR builds (whether by Trigger, Manual, or PR Number), the variable `<+codebase.commitSha>` returns a short sha. This is due to the Bitbucket webhook payload only sending short sha.
 
-[Built-in Git Trigger Reference](https://docs.harness.io/article/rset0jry8q-triggers-reference#built_in_git_trigger_and_payload_expressions)
+### See Also
+
+[Built-in Git Trigger Reference](../../platform/8_Pipelines/w_pipeline-steps-reference/triggers-reference.md#built-in-git-trigger-and-payload-expressions)
 

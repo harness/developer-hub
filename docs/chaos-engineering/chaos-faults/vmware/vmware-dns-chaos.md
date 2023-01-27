@@ -4,8 +4,8 @@ title: VMware DNS Chaos
 ---
 
 ## Introduction
-- It causes DNS errors in the provided VMWare VMs for a specified chaos duration.
-- It helps to check the performance of the application/process running on the VMWare VMs.
+- It causes DNS errors in the VMWare VMs for a specified chaos duration.
+- It checks the performance of the application/process running on the VMWare VMs.
 
 :::tip Fault execution flow chart
 ![VMware DNS Chaos](./static/images/vmware-dns-chaos.png)
@@ -13,17 +13,21 @@ title: VMware DNS Chaos
 
 ## Uses
 <details>
-<summary>View the uses of the experiment</summary>
+<summary>View the uses of the fault</summary>
 <div>
-The experiment causes DNS errors on the target VMs which can result in unavailability/distorted network connectivity from the VM to the target hosts. This will also help to produce a hypothesis where some services of an application are unreachable from the VM. This will help the user to think the mitigation steps that should be taken to overcome such situation. This experiment can also be used to know how the DNS error can impact your infra and standalone tasks as well.
+The fault causes DNS errors on the target VMs which results in unavailability/distorted network connectivity from the VM to the target hosts. This will also help produce a hypothesis where certain services of an application are unreachable from the VM. This will help the user take mitigation steps to overcome such situation. This fault also helps understand how the DNS error can impact your infrastructure and standalone tasks.
 </div>
 </details>
 
 ## Prerequisites
 :::info
-- Ensure that Kubernetes Version > 1.16 
-- Ensure that you have sufficient Vcenter access to stop and start the VM.
-- (Optional) Ensure to create a Kubernetes secret having the Vcenter credentials in the `CHAOS_NAMESPACE`. A secret file looks like:
+- Kubernetes > 1.16
+
+**vCenter Requirements**
+- Ensure the connectivity of execution plane with vCenter and the hosts over 443 port. 
+- Ensure that VMware tool is installed on the target VM with remote execution enabled.
+- Ensure that you have sufficient vCenter permission to access hosts and VMs.
+- Ensure to create a Kubernetes secret having the Vcenter credentials in the `CHAOS_NAMESPACE`. A sample secret file looks like:
 ```yaml
 apiVersion: v1
 kind: Secret
@@ -47,9 +51,9 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
 - VM should be in healthy state before and after chaos.
 :::
 
-## Experiment tunables
+## Fault Tunables
 <details>
-    <summary>Check the Experiment Tunables</summary>
+    <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>
     <table>
       <tr>
@@ -126,7 +130,7 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
       <tr>
         <td> GOVC_URL </td>
         <td> Provide the VMCenter Server URL</td>
-        <td> It is used to perform the vmware api calls using govc command and is derived from sceret.</td>
+        <td> It is used to perform the VMware API calls using govc command and is derived from secret.</td>
       </tr>
       <tr>
         <td> GOVC_USERNAME </td>
@@ -146,10 +150,10 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
      </table>
 </details>
 
-## Experiment Examples
+## Fault Examples
 
-### Common Experiment Tunables
-Refer the [common attributes](../common-tunables-for-all-experiments) to tune the common tunables for all the experiments.
+### Common Fault Tunables
+Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
 ### Run DNS Chaos With Port
 
@@ -279,4 +283,3 @@ spec:
         - name: VM_PASSWORD
           value: '123,123'
 ```
-

@@ -12,7 +12,7 @@ title: Pod Network Partition
 
 ## Uses
 <details>
-<summary>View the uses of the experiment</summary>
+<summary>View the uses of the fault</summary>
 <div>
 Coming soon.
 </div>
@@ -28,9 +28,9 @@ Coming soon.
 The application pods should be in running state before and after chaos injection.
 :::
 
-## Experiment tunables
+## Fault Tunables
 <details>
-    <summary>Check the Experiment Tunables</summary>
+    <summary>Check the Fault Tunables</summary>
     <h2>Optional Fields</h2>
     <table>
       <tr>
@@ -86,14 +86,14 @@ The application pods should be in running state before and after chaos injection
     </table>
 </details>
 
-## Experiment Examples
+## Fault Examples
 
 ### Common and Pod specific tunables
-Refer the [common attributes](../../common-tunables-for-all-experiments) and [Pod specific tunable](./common-tunables-for-pod-experiments) to tune the common tunables for all experiments and pod specific tunables.
+Refer the [common attributes](../../common-tunables-for-all-faults) and [Pod specific tunable](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
 
 ### Destination IPs And Destination Hosts
 
-The network partition experiment interrupt traffic for all the IPs/hosts by default. The interruption of specific IPs/Hosts can be tuned via `DESTINATION_IPS` and `DESTINATION_HOSTS` ENV.
+The network partition fault interrupt traffic for all the IPs/hosts by default. The interruption of specific IPs/Hosts can be tuned via `DESTINATION_IPS` and `DESTINATION_HOSTS` ENV.
 
 - `DESTINATION_IPS`: It contains the IP addresses of the services or pods or the CIDR blocks(range of IPs), the accessibility to which is impacted.
 - `DESTINATION_HOSTS`: It contains the DNS Names/FQDN names of the services, the accessibility to which, is impacted.
@@ -132,7 +132,7 @@ spec:
 
 ### Target Specific Namespace(s)
 
-The network partition experiment interrupt traffic for all the namespaces by default. The access to/from pods in specific namespace can be allowed via providing namespace labels inside `NAMESPACE_SELECTOR` ENV.
+The network partition fault interrupt traffic for all the namespaces by default. The access to/from pods in specific namespace can be allowed via providing namespace labels inside `NAMESPACE_SELECTOR` ENV.
 
 Use the following example to tune this:
 
@@ -164,7 +164,7 @@ spec:
 ```
 ### Target Specific Pod(s)
 
-The network partition experiment interrupt traffic for all the external pods by default. The access to/from specific pod(s) can be allowed via providing pod labels inside `POD_SELECTOR` ENV.
+The network partition fault interrupt traffic for all the external pods by default. The access to/from specific pod(s) can be allowed via providing pod labels inside `POD_SELECTOR` ENV.
 
 Use the following example to tune this:
 
@@ -197,7 +197,7 @@ spec:
 
 ### Policy Type
 
-The network partition experiment interrupt both ingress and egress traffic by default. The interruption of either `ingress` or `egress` traffic can be tuned via `POLICY_TYPES` ENV.
+The network partition fault interrupt both ingress and egress traffic by default. The interruption of either `ingress` or `egress` traffic can be tuned via `POLICY_TYPES` ENV.
 
 Use the following example to tune this:
 
@@ -232,7 +232,7 @@ spec:
 
 ### Destination Ports
 
-The network partition experiment interrupt traffic for all the external ports by default. Access to specific port(s) can be allowed by providing comma separated list of ports inside `PORTS` ENV. 
+The network partition fault interrupt traffic for all the external ports by default. Access to specific port(s) can be allowed by providing comma separated list of ports inside `PORTS` ENV. 
 
 Note: 
 

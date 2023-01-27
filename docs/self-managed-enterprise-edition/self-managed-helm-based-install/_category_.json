@@ -1,0 +1,14 @@
+{
+    "label":"Install with Helm",
+    "position": 20,
+    "collapsible":"true",
+    "collapsed":"true",
+    "className":"red",
+    "link":{
+       "type":"generated-index",
+       "title":"Install with Helm"
+    },
+    "customProps":{
+       "helpdocs_category_id":"66qbyn7ugu"
+    }
+ }

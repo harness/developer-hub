@@ -4,7 +4,7 @@ id: node-io-stress
 ---
 
 ## Introduction
-- This experiment causes io stress on the Kubernetes node. The experiment aims to verify the resiliency of applications that share this disk resource for ephemeral or persistent storage purposes.
+- This fault causes io stress on the Kubernetes node. The fault aims to verify the resiliency of applications that share this disk resource for ephemeral or persistent storage purposes.
 - The amount of io stress can be either specifed as the size in percentage of the total free space on the file system or simply in Gigabytes(GB). When provided both it will execute with the utilization percentage specified and non of them are provided it will execute with default value of 10%.
 - It tests application resiliency upon replica evictions caused due IO stress on the available Disk space.
 
@@ -14,7 +14,7 @@ id: node-io-stress
 
 ## Uses
 <details>
-<summary>View the uses of the experiment</summary>
+<summary>View the uses of the fault</summary>
 <div>
 Coming soon.
 </div>
@@ -30,9 +30,9 @@ Coming soon.
 The target nodes should be in ready state before and after chaos injection.
 :::
 
-## Experiment tunables
+## Fault Tunables
 <details>
-    <summary>Check the Experiment Tunables</summary>
+    <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>
     <table>
       <tr>
@@ -65,13 +65,13 @@ The target nodes should be in ready state before and after chaos injection.
       </tr>
       <tr>
         <td> FILESYSTEM_UTILIZATION_PERCENTAGE </td>
-        <td> Specify the size as percentage of free space on the file system  </td>
+        <td> Specify the size as percentage of free space on the file system </td>
         <td> Default to 10%</td>
       </tr>
       <tr>
         <td> FILESYSTEM_UTILIZATION_BYTES </td>
         <td> Specify the size in GigaBytes(GB). <code>FILESYSTEM_UTILIZATION_PERCENTAGE</code> & <code>FILESYSTEM_UTILIZATION_BYTES</code> are mutually exclusive. If both are provided, <code>FILESYSTEM_UTILIZATION_PERCENTAGE</code> is prioritized. </td>
-        <td>  </td>
+        <td> </td>
       </tr>
       <tr>
         <td> CPU </td>
@@ -105,7 +105,7 @@ The target nodes should be in ready state before and after chaos injection.
       </tr>
       <tr>
         <td> NODES_AFFECTED_PERC </td>
-        <td> The Percentage of total nodes to target  </td>
+        <td> The Percentage of total nodes to target </td>
         <td> Defaults to 0 (corresponds to 1 node), provide numeric value only </td>
       </tr> 
       <tr>
@@ -116,10 +116,10 @@ The target nodes should be in ready state before and after chaos injection.
     </table>
 </details>
 
-## Experiment Examples
+## Fault Examples
 
 ### Common and Node specific tunables
-Refer the [common attributes](../../common-tunables-for-all-experiments) and [Node specific tunable](./common-tunables-for-node-experiments) to tune the common tunables for all experiments and node specific tunables.
+Refer the [common attributes](../../common-tunables-for-all-faults) and [Node specific tunable](./common-tunables-for-node-faults) to tune the common tunables for all faults and node specific tunables.
 
 ### Filesystem Utilization Percentage
 
@@ -186,13 +186,13 @@ spec:
 
 ### Limit CPU Utilization
 
-The CPU usage can be limit to `CPU` cpu while performing io stress. It can be tuned via `CPU` ENV.
+The CPU usage can be limit to `CPU` CPU while performing io stress. It can be tuned via `CPU` ENV.
 
 Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/node-io-stress/limit-cpu-utilization.yaml yaml)
 ```yaml
-# limit the cpu uses to the provided value while performing io stress
+# limit the CPU uses to the provided value while performing io stress
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -206,7 +206,7 @@ spec:
     spec:
       components:
         env:
-        # number of cpu cores to be stressed
+        # number of CPU cores to be stressed
         - name: CPU
           value: '1' 
         - name: TOTAL_CHAOS_DURATION
