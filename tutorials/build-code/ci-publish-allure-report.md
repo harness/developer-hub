@@ -10,7 +10,7 @@ This tutorial provides an example pipeline that builds a Java Maven application 
 
 :::note
 
-Artifact tab publishing is supported in Kubernetes infrastructure only.
+Artifact tab publishing is supported in the Kubernetes infrastructure only.
 
 :::
 
@@ -20,19 +20,19 @@ This pipeline has five steps that do the following:
 
 1. Runs the Maven tests present in the project. 
 
-2. Generates the allure report using the `allure-results` generated as part of step 1. The Allure tool is present in the `solutis/allure:2.9.0` docker image used as part of the step.
+2. Generates the Allure Report using the `allure-results` generated as part of step 1. The Allure tool is present in the `solutis/allure:2.9.0` Docker image used as part of the step.
 
-3. Combines the allure report to a single HTML file.
+3. Combines the Allure Report into a single HTML file.
    
-   Viewing an allure report in browser requires running a web server via `allure open` command. But this won't allow viewing the report after the CI pipeline is complete.
+   Viewing an Allure Report in a browser requires running a web server via the `allure open` command. But this won't allow viewing the report after the CI pipeline is complete.
 
-   We will use [allure-combine](https://pypi.org/project/allure-combine/) tool to convert the allure report into a single HTML file. Running `allure-combine .` inside `allure-report` will generate `complete.html` file. This step uses `shubham149/allure-combine:latest` docker image with `allure-combine` tool present in it.
+   Use the [allure-combine](https://pypi.org/project/allure-combine/) tool to convert the Allure Report into a single HTML file. Running `allure-combine .` inside `allure-report` generates the `complete.html` file. This step uses the  `shubham149/allure-combine:latest` Docker image with the `allure-combine` tool present in it.
 
 4. Publishes the report to a  Google Cloud Storage (GCS) bucket.
  
-5. Uses static web hosting in GCS to display the allure report in the **Artifacts** tab. 
+5. Uses static web hosting in GCS to display the Allure Report on the **Artifacts** tab. 
    
-   `plugins/artifact-metadata-publisher` plugin adds the input urls to artifact tab in Harness UI.
+   The `plugins/artifact-metadata-publisher` plugin adds the input URLs to the **Artifacts** tab in the Harness UI.
 
 
 ### Pipeline requirements
