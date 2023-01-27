@@ -1,13 +1,13 @@
 ---
 title: Common Pod Fault Tunables
 ---
-Fault tunables which are common for all pod-level faults. These tunables can be provided at `.spec.experiment[*].spec.components.env` in chaosengine.
+Fault tunables which are common to all pod-level faults are listed here. These tunables can be provided at `.spec.experiment[*].spec.components.env` in chaosengine.
 
-### Target Specific Pods
+### Target specific pods
 
-It defines the comma-separated name of the target pods subjected to chaos. The target pods can be tuned via `TARGET_PODS` ENV.
+It defines the comma-separated name of the target pods subject to chaos. You can tune it using the `TARGET_PODS` environment variable.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/common/target-pods.yaml yaml)
 ```yaml
@@ -34,11 +34,11 @@ spec:
           value: 'pod1,pod2'
 ```
 
-### Pod Affected Percentage
+### Pod affected percentage
 
-It defines the percentage of pods subjected to chaos with matching labels provided at `.spec.appinfo.applabel` inside chaosengine. It can be tuned with `PODS_AFFECTED_PERC` ENV. If `PODS_AFFECTED_PERC` is provided as `empty` or `0` then it will target a minimum of one pod.
+It defines the percentage of pods subject to chaos with matching labels provided at `.spec.appinfo.applabel` inside the chaosengine. You can tune it using the `PODS_AFFECTED_PERC` environment variable. If `PODS_AFFECTED_PERC` is set to `empty` or `0`, then it targets a minimum of one pod.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/common/pod-affected-percentage.yaml yaml)
 ```yaml
@@ -66,11 +66,11 @@ spec:
           value: '100'
 ```
 
-### Target Specific Container
+### Target specific container
 
-It defines the name of the targeted container subjected to chaos. It can be tuned via `TARGET_CONTAINER` ENV. If `TARGET_CONTAINER` is provided as empty then it will use the first container of the targeted pod.
+It defines the name of the target container subject to chaos. You can tune it using the `TARGET_CONTAINER` environment variable. If `TARGET_CONTAINER` is set to `empty`, then it uses the first container of the target pod.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/common/target-container.yaml yaml)
 ```yaml
@@ -98,11 +98,11 @@ spec:
           value: 'nginx'
 ```
 
-### Default Application Health Check
+### Default application health check
 
-It defines the default application status checks as a tunable. It is helpful for the scenarios where you don’t want to validate the application status as a mandatory check during pre & post chaos. It can be tuned via `DEFAULT_APP_HEALTH_CHECK` ENV. If `DEFAULT_APP_HEALTH_CHECK` is not provided by default it is set to `true`.
+It defines the default application status checks as a tunable. It is helpful in cases where you do not wish to validate the application status as a mandatory check before and after chaos. You can tune it using the `DEFAULT_APP_HEALTH_CHECK` environment variable. If `DEFAULT_APP_HEALTH_CHECK` is not provided, it is set to `true`.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/common/default-app-health-check.yaml yaml)
 ```yaml
@@ -128,11 +128,11 @@ spec:
           value: 'false'
 ```
 
-### Node Label Filter For Selecting The Target Pods
+### Node label filter for selecting the target pods
 
-It defines the target application pod selection from a specific node. It is helpful for the scenarios where you want to select the pods scheduled on specific nodes as chaos candidates considering the pod affected percentage. It can be tuned via `NODE_LABEL` ENV.
+It defines the target application pod selection from a specific node. It is helpful in cases where you do not wish to select the pods scheduled on specific nodes as chaos candidates considering the pod affected percentage. You can tune it using the `NODE_LABEL` environment variable.
 
-<b>NOTE: This feature requires having node-level permission or clusterrole service account for filtering pods on a specific node.</b>
+<b>NOTE: This feature requires having node-level permission or cluster role service account to filter pods on a specific node.</b>
 
 <table>
   <tr>
@@ -145,13 +145,13 @@ It defines the target application pod selection from a specific node. It is help
     <td>Provided</td>
     <td>Provided</td>
     <td>Provided</td>
-    <td>The target pods that are filtered from applabel and resides on node containing the given node label and also provided in TARGET_PODS env is selected</td>
+    <td>The target pods that are filtered from applabel and reside on the node containing the given node label, provided in the TARGET_PODS environment variable is selected. </td>
   </tr>
    <tr>
     <td>Provided</td>
     <td>Not Provided</td>
     <td>Provided</td>
-    <td>The pods that are filtered from applabel and resides on node containing the given node label is selected </td>
+    <td>The pods that are filtered from applabel and reside on the node containing the given node label is selected. </td>
   </tr>
    <tr>
     <td>Not Provided</td>
@@ -173,7 +173,7 @@ It defines the target application pod selection from a specific node. It is help
   </tr>
 </table>
 
-Use the following example to tune this:
+Use the following example to tune it:
 [embedmd]:# (./static/manifests/common/node-label-filter.yaml yaml)
 ```yaml
 ## node label to filter target pods

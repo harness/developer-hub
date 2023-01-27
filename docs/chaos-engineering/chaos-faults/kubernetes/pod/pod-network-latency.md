@@ -1,19 +1,19 @@
 ---
 id: pod-network-latency
-title: Pod Network Latency
+title: Pod network latency
 ---
 
-## Introduction
-- It injects latency on the specified container by starting a traffic control (tc) process with netem rules to add egress delays.
-- It can test the application's resilience to lossy/flaky network.
+Pod network latency is a Kubernetes pod-level chaos fault that:
 
-:::tip Fault execution flow chart
+- It introduces latency (delay) to a specific container by initiating a traffic control (tc) process with netem rules to add egress delays.
+- It tests the application's resilience to lossy/flaky networks.
+
 ![Pod Network Latency](./static/images/network-chaos.png)
-:::
 
-## Uses
+
+## Usage
 <details>
-<summary>View the uses of the fault</summary>
+<summary>View fault usage</summary>
 <div>
 The fault causes network degradation without the pod being marked unhealthy/unworthy of traffic by kube-proxy (unless you have a liveness probe of sorts that measures latency and restarts/crashes the container). The idea of this fault is to simulate issues within your pod network OR microservice communication across services in different availability zones/regions etc. 
 
@@ -24,24 +24,24 @@ The applications may stall or get corrupted while they wait endlessly for a pack
 </details>
 
 ## Prerequisites
-:::info
-- Ensure that Kubernetes Version > 1.16.
-:::
 
-## Default Validations
-:::note
+- Kubernetes> 1.16.
+
+
+## Default validations
+
 The application pods should be in running state before and after chaos injection.
-:::
 
-## Fault Tunables
+
+## Fault tunables
 <details>
-    <summary>Check the Fault Tunables</summary>
-    <h2>Optional Fields</h2>
+    <summary>Fault tunables</summary>
+    <h2>Optional fields</h2>
     <table>
       <tr>
         <th> Variables </th>
         <th> Description </th>
-        <th> Notes </th>
+        <th> s </th>
       </tr>
       <tr>
         <td> NETWORK_INTERFACE </td>
@@ -111,7 +111,7 @@ The application pods should be in running state before and after chaos injection
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injection of chaos in sec </td>
-        <td> Eg. 30 </td>
+        <td> For example, 30 </td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
@@ -121,18 +121,19 @@ The application pods should be in running state before and after chaos injection
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common and Pod specific tunables
+### Common and pod-specific tunables
 Refer the [common attributes](../../common-tunables-for-all-faults) and [Pod specific tunable](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
 
-### Network Latency
+### Network latency
 
-It defines the network latency(in ms) to be injected in the targeted application. It can be tuned via `NETWORK_LATENCY` ENV. 
+It defines the network latency(in ms) to be injected in the targeted application. It can be tuned via `NETWORK_LATENCY` ENV.
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/pod-network-latency/network-latency.yaml yaml)
+[embedmd]: # "./static/manifests/pod-network-latency/network-latency.yaml yaml"
+
 ```yaml
 # it injects network-latency for the egress traffic
 apiVersion: litmuschaos.io/v1alpha1
@@ -148,18 +149,18 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: pod-network-latency
-    spec:
-      components:
-        env:
-        # network latency to be injected
-        - name: NETWORK_LATENCY
-          value: '2000' #in ms
-        - name: TOTAL_CHAOS_DURATION
-          value: '60'
+    - name: pod-network-latency
+      spec:
+        components:
+          env:
+            # network latency to be injected
+            - name: NETWORK_LATENCY
+              value: "2000" #in ms
+            - name: TOTAL_CHAOS_DURATION
+              value: "60"
 ```
 
-### Destination IPs And Destination Hosts
+### Destination IPs and destination hosts
 
 The network faults interrupt traffic for all the IPs/hosts by default. The interruption of specific IPs/Hosts can be tuned via `DESTINATION_IPS` and `DESTINATION_HOSTS` ENV.
 
@@ -168,7 +169,8 @@ The network faults interrupt traffic for all the IPs/hosts by default. The inter
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/pod-network-latency/destination-ips-and-hosts.yaml yaml)
+[embedmd]: # "./static/manifests/pod-network-latency/destination-ips-and-hosts.yaml yaml"
+
 ```yaml
 # it injects the chaos for the egress traffic for specific ips/hosts
 apiVersion: litmuschaos.io/v1alpha1
@@ -184,27 +186,28 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: pod-network-latency
-    spec:
-      components:
-        env:
-        # supports comma separated destination ips
-        - name: DESTINATION_IPS
-          value: '8.8.8.8,192.168.5.6'
-        # supports comma separated destination hosts
-        - name: DESTINATION_HOSTS
-          value: 'nginx.default.svc.cluster.local,google.com'
-        - name: TOTAL_CHAOS_DURATION
-          value: '60'
+    - name: pod-network-latency
+      spec:
+        components:
+          env:
+            # supports comma separated destination ips
+            - name: DESTINATION_IPS
+              value: "8.8.8.8,192.168.5.6"
+            # supports comma separated destination hosts
+            - name: DESTINATION_HOSTS
+              value: "nginx.default.svc.cluster.local,google.com"
+            - name: TOTAL_CHAOS_DURATION
+              value: "60"
 ```
 
-### Network Interface
+### Network interface
 
 The defined name of the ethernet interface, which is considered for shaping traffic. It can be tuned via `NETWORK_INTERFACE` ENV. Its default value is `eth0`.
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/pod-network-latency/network-interface.yaml yaml)
+[embedmd]: # "./static/manifests/pod-network-latency/network-interface.yaml yaml"
+
 ```yaml
 # provide the network interface
 apiVersion: litmuschaos.io/v1alpha1
@@ -220,15 +223,15 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: pod-network-latency
-    spec:
-      components:
-        env:
-        # name of the network interface 
-        - name: NETWORK_INTERFACE
-          value: 'eth0'
-        - name: TOTAL_CHAOS_DURATION
-          value: '60'
+    - name: pod-network-latency
+      spec:
+        components:
+          env:
+            # name of the network interface
+            - name: NETWORK_INTERFACE
+              value: "eth0"
+            - name: TOTAL_CHAOS_DURATION
+              value: "60"
 ```
 
 ### Jitter
@@ -237,7 +240,8 @@ It defines the jitter (in ms), a parameter that allows introducing a network del
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/pod-network-latency/network-latency-jitter.yaml yaml)
+[embedmd]: # "./static/manifests/pod-network-latency/network-latency-jitter.yaml yaml"
+
 ```yaml
 # provide the network latency jitter
 apiVersion: litmuschaos.io/v1alpha1
@@ -253,16 +257,16 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: pod-network-latency
-    spec:
-      components:
-        env:
-        # value of the network latency jitter (in ms) 
-        - name: JITTER
-          value: '200'
+    - name: pod-network-latency
+      spec:
+        components:
+          env:
+            # value of the network latency jitter (in ms)
+            - name: JITTER
+              value: "200"
 ```
 
-### Container Runtime Socket Path
+### Container runtime and socket path
 
 It defines the `CONTAINER_RUNTIME` and `SOCKET_PATH` ENV to set the container runtime and socket file path.
 
@@ -271,7 +275,8 @@ It defines the `CONTAINER_RUNTIME` and `SOCKET_PATH` ENV to set the container ru
 
 Use the following example to tune this:
 
-[embedmd]:# (./static/manifests/pod-network-latency/container-runtime-and-socket-path.yaml yaml)
+[embedmd]: # "./static/manifests/pod-network-latency/container-runtime-and-socket-path.yaml yaml"
+
 ```yaml
 ## provide the container runtime and socket file path
 apiVersion: litmuschaos.io/v1alpha1
@@ -287,17 +292,17 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: pod-network-latency
-    spec:
-      components:
-        env:
-        # runtime for the container
-        # supports docker, containerd, crio
-        - name: CONTAINER_RUNTIME
-          value: 'docker'
-        # path of the socket file
-        - name: SOCKET_PATH
-          value: '/var/run/docker.sock'
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
+    - name: pod-network-latency
+      spec:
+        components:
+          env:
+            # runtime for the container
+            # supports docker, containerd, crio
+            - name: CONTAINER_RUNTIME
+              value: "docker"
+            # path of the socket file
+            - name: SOCKET_PATH
+              value: "/var/run/docker.sock"
+            - name: TOTAL_CHAOS_DURATION
+              VALUE: "60"
 ```
