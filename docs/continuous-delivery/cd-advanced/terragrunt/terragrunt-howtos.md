@@ -301,7 +301,7 @@ You can now configure a Terragrunt Destroy or Rollback step to use the Terragrun
   <TabItem value="Terragrunt Destroy" label="Terragrunt Destroy">
 ```
 
-To add a Terragrunt Plan step, do the following:
+To add a Terragrunt Destroy step, do the following:
 
 1. In your CD stage **Execution**, click **Add Step**, and then click **Terragrunt Destroy**.
 2. Enter the following Terragrunt Destroy settings.
