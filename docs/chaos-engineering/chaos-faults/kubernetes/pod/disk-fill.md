@@ -1,29 +1,28 @@
 ---
 id: disk-fill
-title: Disk Fill
+title: Disk fill
 ---
-## Introduction
-- It causes Disk Stress by filling up the ephemeral storage of the pod on any given node.
-- It causes the application pod to get evicted if the capacity filled exceeds the pod's ephemeral storage limit.
-- It tests the Ephemeral Storage Limits, to ensure those parameters are sufficient.
-- It tests the application's resiliency to disk stress/replica evictions.
 
-:::tip Fault execution flow chart
+Disk fill is a Kubernetes pod-level chaos fault that applies disk stress by filling the pod's ephemeral storage on a node.
+- It evicts the application pod if its capacity exceeds the pod's ephemeral storage limit.
+- It tests the ephemeral storage limits and ensures that the parameters are sufficient.
+- It evaluates the application's resilience to disk stress (or replica) evictions.
+
 ![Disk Fill](./static/images/disk-fill.png)
-:::
 
-## Uses
+
+## Usage
 <details>
-<summary>View the uses of the fault</summary>
+<summary>View fault usage</summary>
 <div>
-Coming soon.
+This fault tests the ephemeral storage limits and determines the resilience of the application to unexpected storage exhaustions.
 </div>
 </details>
 
 ## Prerequisites
-:::info
-- Ensure that Kubernetes Version > 1.16.
-- Appropriate Ephemeral Storage Requests and Limits should be set for the application before running the fault. An example specification is shown below:
+
+- Kubernetes > 1.16.
+- Adequate Ephemeral storage requests and limits should be set for the application before running the fault. An example specification is shown below:
     ```yaml
     apiVersion: v1
     kind: Pod
@@ -49,17 +48,17 @@ Coming soon.
           limits:
             ephemeral-storage: "4Gi"
     ```
-:::
 
-## Default Validations
-:::note
-The application pods should be in running state before and after chaos injection.
-:::
 
-## Fault Tunables
+## Default validations
+
+The application pods should be running before and after injecting chaos.
+
+
+## Fault tunables
 <details>
-    <summary>Check the Fault Tunables</summary>
-    <h2>Optional Fields</h2>
+    <summary>Fault tunables</summary>
+    <h2>Optional fields</h2>
     <table>
       <tr>
         <th> Variables </th>
@@ -68,16 +67,16 @@ The application pods should be in running state before and after chaos injection
       </tr>
       <tr> 
         <td> FILL_PERCENTAGE </td>
-        <td> Percentage to fill the Ephemeral storage limit </td>
-        <td> Can be set to more than 100 also, to force evict the pod. The ephemeral-storage limits must be set in targeted pod to use this ENV.</td>
+        <td> Percentage to fill the ephemeral storage limit. This limit is set in the target pod. </td>
+        <td> It can be set to more than 100, that will force evict the pod.</td>
       </tr>
       <tr>
         <td> EPHEMERAL_STORAGE_MEBIBYTES </td>
-        <td> Ephemeral storage which need to fill (unit: MiBi)</td>
-        <td>It is mutually exclusive with the <code>FILL_PERCENTAGE</code> ENV. If both are provided then it will use the <code>FILL_PERCENTAGE</code></td>
+        <td> Ephemeral storage required to be filled (in mebibytes). It is mutually exclusive with <code>FILL_PERCENTAGE</code> environment variable. If both are provided, <code>FILL_PERCENTAGE</code> takes precedence.</td>
+        <td> </td>
       </tr>
     </table>
-    <h2>Optional Fields</h2>
+    <h2>Optional fields</h2>
     <table>
       <tr>
         <th> Variables </th>
@@ -86,12 +85,12 @@ The application pods should be in running state before and after chaos injection
       </tr>
       <tr> 
         <td> TARGET_CONTAINER </td>
-        <td> Name of container which is subjected to disk-fill </td>
-        <td> If not provided, the first container in the targeted pod will be subject to chaos </td>
+        <td> Name of the container subject to disk fill. </td>
+        <td> If it is not provided, the first container in the target pod will be subject to chaos. </td>
       </tr>
       <tr> 
         <td> CONTAINER_PATH </td>
-        <td> Storage Location of containers</td>
+        <td> Storage location of containers</td>
         <td> Defaults to '/var/lib/docker/containers' </td>
       </tr>
       <tr> 
@@ -122,7 +121,7 @@ The application pods should be in running state before and after chaos injection
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before injection of chaos in sec </td>
-        <td> Eg. 30 </td>
+        <td> For example, 30 </td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
@@ -132,20 +131,21 @@ The application pods should be in running state before and after chaos injection
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common and Pod specific tunables
-Refer the [common attributes](../../common-tunables-for-all-faults) and [Pod specific tunable](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables. 
+### Common and pod-specific tunables
+Refer to the [common attributes](../../common-tunables-for-all-faults) and [pod-specific tunables](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables. 
 
-### Disk Fill Percentage
+### Disk fill percentage
 
-It fills the `FILL_PERCENTAGE` percentage of the ephemeral-storage limit specified at `resource.limits.ephemeral-storage` inside the target application. 
+It fills the `FILL_PERCENTAGE` parameter of the ephemeral storage limit specified at `resource.limits.ephemeral-storage` within the target application.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
-[embedmd]:# (./static/manifests/disk-fill/fill-percentage.yaml yaml)
+[embedmd]: # "./static/manifests/disk-fill/fill-percentage.yaml yaml"
+
 ```yaml
-## percentage of ephemeral storage limit specified at `resource.limits.ephemeral-storage` inside target application 
+## percentage of ephemeral storage limit specified at `resource.limits.ephemeral-storage` inside target application
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -159,25 +159,26 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: disk-fill
-    spec:
-      components:
-        env:
-        ## percentage of ephemeral storage limit, which needs to be filled
-        - name: FILL_PERCENTAGE
-          value: '80' # in percentage
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
+    - name: disk-fill
+      spec:
+        components:
+          env:
+            ## percentage of ephemeral storage limit, which needs to be filled
+            - name: FILL_PERCENTAGE
+              value: "80" # in percentage
+            - name: TOTAL_CHAOS_DURATION
+              VALUE: "60"
 ```
 
-### Disk Fill Mebibytes
+### Disk fill mebibytes
 
-It fills the `EPHEMERAL_STORAGE_MEBIBYTES` MiBi of ephemeral storage of the targeted pod. 
-It is mutually exclusive with the `FILL_PERCENTAGE` ENV. If `FILL_PERCENTAGE` ENV is set then it will use the percentage for the fill otherwise, it will fill the ephemeral storage based on `EPHEMERAL_STORAGE_MEBIBYTES` ENV.
+It fills the `EPHEMERAL_STORAGE_MEBIBYTES` parameter of ephemeral storage in the target pod.
+It is mutually exclusive with the `FILL_PERCENTAGE` environment variable. If `FILL_PERCENTAGE` environment variable is set, it uses the percentage for the fill. Otherwise, it fills the ephemeral storage based on `EPHEMERAL_STORAGE_MEBIBYTES` environment variable.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
-[embedmd]:# (./static/manifests/disk-fill/ephemeral-storage-mebibytes.yaml yaml)
+[embedmd]: # "./static/manifests/disk-fill/ephemeral-storage-mebibytes.yaml yaml"
+
 ```yaml
 # ephemeral storage which needs to fill in will application
 # if ephemeral-storage limits is not specified inside target application
@@ -194,25 +195,26 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: disk-fill
-    spec:
-      components:
-        env:
-        ## ephemeral storage size, which needs to be filled
-        - name: EPHEMERAL_STORAGE_MEBIBYTES
-          value: '256' #in MiBi
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
+    - name: disk-fill
+      spec:
+        components:
+          env:
+            ## ephemeral storage size, which needs to be filled
+            - name: EPHEMERAL_STORAGE_MEBIBYTES
+              value: "256" #in MiBi
+            - name: TOTAL_CHAOS_DURATION
+              VALUE: "60"
 ```
 
-### Data Block Size
+### Data block size
 
-It defines the size of the data block used to fill the ephemeral storage of the targeted pod. It can be tuned via `DATA_BLOCK_SIZE` ENV. Its unit is `KB`.
+It defines the size of the data block required to fill the ephemeral storage of the target pod. You can tune it using the `DATA_BLOCK_SIZE` environment variable. It is in terms of `KB`.
 The default value of `DATA_BLOCK_SIZE` is `256`.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
-[embedmd]:# (./static/manifests/disk-fill/data-block-size.yaml yaml)
+[embedmd]: # "./static/manifests/disk-fill/data-block-size.yaml yaml"
+
 ```yaml
 # size of the data block used to fill the disk
 apiVersion: litmuschaos.io/v1alpha1
@@ -228,26 +230,27 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: disk-fill
-    spec:
-      components:
-        env:
-        ## size of data block used to fill the disk
-        - name: DATA_BLOCK_SIZE
-          value: '256' #in KB
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
+    - name: disk-fill
+      spec:
+        components:
+          env:
+            ## size of data block used to fill the disk
+            - name: DATA_BLOCK_SIZE
+              value: "256" #in KB
+            - name: TOTAL_CHAOS_DURATION
+              VALUE: "60"
 ```
 
-### Container Path
+### Container path
 
-It defines the storage location of the containers inside the host(node/VM). It can be tuned via `CONTAINER_PATH` ENV. 
+It defines the storage location of the containers inside the host (node or VM). You can tune it using the `CONTAINER_PATH` environment variable.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
-[embedmd]:# (./static/manifests/disk-fill/container-path.yaml yaml)
+[embedmd]: # "./static/manifests/disk-fill/container-path.yaml yaml"
+
 ```yaml
-# path inside node/vm where containers are present 
+# path inside node/vm where containers are present
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -261,13 +264,13 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: disk-fill
-    spec:
-      components:
-        env:
-        # storage location of the containers
-        - name: CONTAINER_PATH
-          value: '/var/lib/docker/containers'
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
+    - name: disk-fill
+      spec:
+        components:
+          env:
+            # storage location of the containers
+            - name: CONTAINER_PATH
+              value: "/var/lib/docker/containers"
+            - name: TOTAL_CHAOS_DURATION
+              VALUE: "60"
 ```

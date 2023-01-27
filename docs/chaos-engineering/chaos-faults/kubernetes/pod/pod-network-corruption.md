@@ -1,38 +1,36 @@
 ---
 id: pod-network-corruption
-title: Pod Network Corruption
+title: Pod network corruption
 ---
 
-## Introduction
-- It injects packet corruption on the specified container by starting a traffic control (tc) process with netem rules to add egress packet corruption.
-- It can test the application's resilience to lossy/flaky network.
+Pod network corruption is a Kubernetes pod-level chaos fault that injects corrupted packets of data into the specified container by starting a traffic control (tc) process with netem rules to add egress packet corruption.
+- It tests the application's resilience to lossy (or flaky) network.
 
-:::tip Fault execution flow chart
 ![Pod Network Corruption](./static/images/network-chaos.png)
-:::
 
-## Uses
+
+## Usage
 <details>
-<summary>View the uses of the fault</summary>
+<summary>View fault usage</summary>
 <div>
-Coming soon.
+This fault tests the application's resilience to lossy (or flaky) network.
 </div>
 </details>
 
 ## Prerequisites
-:::info
-- Ensure that Kubernetes Version > 1.16.
-:::
 
-## Default Validations
-:::note
+- Kubernetes> 1.16.
+
+
+## Default validations
+
 The application pods should be in running state before and after chaos injection.
-:::
 
-## Fault Tunables
+
+## Fault tunables
 <details>
-    <summary>Check the Fault Tunables</summary>
-    <h2>Optional Fields</h2>
+    <summary>Fault tunables</summary>
+    <h2>Optional fields</h2>
     <table>
       <tr>
         <th> Variables </th>
@@ -102,7 +100,7 @@ The application pods should be in running state before and after chaos injection
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injection of chaos in sec </td>
-        <td> Eg. 30 </td>
+        <td> For example, 30 </td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
@@ -112,16 +110,16 @@ The application pods should be in running state before and after chaos injection
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common and Pod specific tunables
-Refer the [common attributes](../../common-tunables-for-all-faults) and [Pod specific tunable](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
+### Common and pod-specific tunables
+Refer to the [common attributes](../../common-tunables-for-all-faults) and [pod-specific tunables](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
 
-### Network Packet Corruption
+### Network packet corruption
 
-It defines the network packet corruption percentage to be injected in the targeted application. It can be tuned via `NETWORK_PACKET_CORRUPTION_PERCENTAGE` ENV. 
+It defines the network packet corruption (in percentage) that is injected into the target application. You can tune it using the `NETWORK_PACKET_CORRUPTION_PERCENTAGE` environment variable. 
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/pod-network-corruption/network-corruption.yaml yaml)
 ```yaml
@@ -150,14 +148,14 @@ spec:
           value: '60'
 ```
 
-### Destination IPs And Destination Hosts
+### Destination IPs and destination hosts
 
-The network faults interrupt traffic for all the IPs/hosts by default. The interruption of specific IPs/Hosts can be tuned via `DESTINATION_IPS` and `DESTINATION_HOSTS` ENV.
+The network faults interrupt traffic for all the IPs (or hosts) by default. You can tune it using the `DESTINATION_IPS` and `DESTINATION_HOSTS` environment variabes, respectively.
 
-- `DESTINATION_IPS`: It contains the IP addresses of the services or pods or the CIDR blocks(range of IPs), the accessibility to which is impacted.
-- `DESTINATION_HOSTS`: It contains the DNS Names/FQDN names of the services, the accessibility to which, is impacted.
+- `DESTINATION_IPS`: It contains the IP addresses of the services (or pods or the CIDR blocks(range of IPs)) whose accessibility is impacted.
+- `DESTINATION_HOSTS`: It contains the DNS names (or FQDN names) of the services whose accessibility is impacted.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/pod-network-corruption/destination-ips-and-hosts.yaml yaml)
 ```yaml
@@ -189,11 +187,11 @@ spec:
           value: '60'
 ```
 
-### Network Interface
+### Network interface
 
-The defined name of the ethernet interface, which is considered for shaping traffic. It can be tuned via `NETWORK_INTERFACE` ENV. Its default value is `eth0`.
+It defines the name of the ethernet interface that is considered to shape traffic. You can tune it using the `NETWORK_INTERFACE` environment variable. Its default value is `eth0`.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/pod-network-corruption/network-interface.yaml yaml)
 ```yaml
@@ -222,14 +220,14 @@ spec:
           value: '60'
 ```
 
-### Container Runtime Socket Path
+### Container runtime and socket path
 
-It defines the `CONTAINER_RUNTIME` and `SOCKET_PATH` ENV to set the container runtime and socket file path.
+It defines the `CONTAINER_RUNTIME` and `SOCKET_PATH` environment variables to set the container runtime and socket file path, respectively.
 
 - `CONTAINER_RUNTIME`: It supports `docker`, `containerd`, and `crio` runtimes. The default value is `docker`.
-- `SOCKET_PATH`: It contains path of docker socket file by default(`/var/run/docker.sock`). For other runtimes provide the appropriate path.
+- `SOCKET_PATH`: It contains path of docker socket file by default(`/var/run/docker.sock`). For `containerd`, specify path as `/var/containerd/containerd.sock`. For `crio`, speecify path as `/var/run/crio/crio.sock`.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/pod-network-corruption/container-runtime-and-socket-path.yaml yaml)
 ```yaml

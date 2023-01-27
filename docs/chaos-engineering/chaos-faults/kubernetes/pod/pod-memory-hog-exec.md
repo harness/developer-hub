@@ -1,39 +1,37 @@
 ---
 id: pod-memory-hog-exec
-title: Pod Memory Hog Exec
+title: Pod memory hog exec
 ---
-
-## Introduction
-- This fault consumes the Memory resources on the application container on specified memory in megabytes.
+Pod memory hog exec is a Kubernetes pod-level chaos fault that consumes memory resources on the application container in megabytes.
 - It simulates conditions where app pods experience Memory spikes either due to expected/undesired processes thereby testing how the overall application stack behaves when this occurs.
 
-:::tip Fault execution flow chart
 ![Pod Memory Hog Exec](./static/images/pod-stress.png)
-:::
 
-## Uses
+
+## Usage
 <details>
-<summary>View the uses of the fault</summary>
+<summary>View fault usage</summary>
 <div>
-Memory usage within containers is subject to various constraints in Kubernetes. If the limits are specified in their spec, exceeding them can cause termination of the container (due to OOMKill of the primary process, often pid 1) - the restart of the container by kubelet, subject to the policy specified. For containers with no limits placed, the memory usage is uninhibited until such time as the Node level OOM Behaviour takes over. In this case, containers on the node can be killed based on their oom_score and the QoS class a given pod belongs to (bestEffort ones are first to be targeted). This eval is extended to all pods running on the node - thereby causing a bigger blast radius. 
+Memory usage within containers is subject to various constraints in Kubernetes. If the limits are specified in their spec, exceeding them results in termination of the container (due to OOMKill of the primary process, often pid 1).
+This restarts container dependng on policy specified. For containers with no limits on memory, node can be killed based on their oom_score. This results in a bigger blast radius. 
 
-This fault launches a stress process within the target container - which can cause either the primary process in the container to be resource constrained in cases where the limits are enforced OR eat up available system memory on the node in cases where the limits are not specified.
+This fault causes stress within the target container, which may result in the primary process in the container to be constrained or eat up the available system memory on the node.
 </div>
 </details>
 
 ## Prerequisites
-:::info
-- Ensure that Kubernetes Version > 1.16.
-:::
 
-## Default Validations
-:::note
+- Kubernetes > 1.16.
+
+
+## Default validations
+
 The application pods should be in running state before and after chaos injection.
-:::
 
-## Fault Tunables
+
+## Fault tunables
 <details>
-    <summary>Check the Fault Tunables</summary>
+    <summary>Fault tunables</summary>
     <table>
       <tr>
         <th> Variables </th>
@@ -73,7 +71,7 @@ The application pods should be in running state before and after chaos injection
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before injection of chaos in sec </td>
-        <td> Eg. 30 </td>
+        <td> For example, 30s. </td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
@@ -83,19 +81,20 @@ The application pods should be in running state before and after chaos injection
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common and Pod specific tunables
-Refer the [common attributes](../../common-tunables-for-all-faults) and [Pod specific tunable](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
+### Common and pod-specific tunables
+Refer to the [common attributes](../../common-tunables-for-all-faults) and [pod-specific tunables](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
 
-### Memory Consumption
+### Memory consumption
 
-It stresses the `MEMORY_CONSUMPTION` MB memory of the targeted pod for the `TOTAL_CHAOS_DURATION` duration.
-The memory consumption limit is 2000MB
+It specifies the amount of memory consumed by the tatget pod for a duration specified by the `TOTAL_CHAOS_DURATION` environment variable. You can tune it using the `MEMORY_CONSUMPTION` environment variable.
+The memory consumption limit is 2000 MB.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
-[embedmd]:# (./static/manifests/pod-memory-hog-exec/memory-consumption.yaml yaml)
+[embedmd]: # "./static/manifests/pod-memory-hog-exec/memory-consumption.yaml yaml"
+
 ```yaml
 # memory to be stressed in MB
 apiVersion: litmuschaos.io/v1alpha1
@@ -111,28 +110,28 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: pod-memory-hog
-    spec:
-      components:
-        env:
-        # memory consumption value in MB
-        # it is limited to 2000MB
-        - name: MEMORY_CONSUMPTION
-          value: '500' #in MB
-        - name: TOTAL_CHAOS_DURATION
-          value: '60'
+    - name: pod-memory-hog
+      spec:
+        components:
+          env:
+            # memory consumption value in MB
+            # it is limited to 2000MB
+            - name: MEMORY_CONSUMPTION
+              value: "500" #in MB
+            - name: TOTAL_CHAOS_DURATION
+              value: "60"
 ```
 
-### Chaos Kill Commands
+### Chaos kill commands
 
-It defines the `CHAOS_KILL_COMMAND` ENV to set the chaos kill command.
-Default values of `CHAOS_KILL_COMMAND` command:
+It defines kill command that is set to exhaust the resources. Ypu can tune it using the `CHAOS_KILL_COMMAND` environment variable.
 
-- `CHAOS_KILL_COMMAND`: "kill $(find /proc -name exe -lname '*/dd' 2>&1 | grep -v 'Permission denied' | awk -F/ '{print $(NF-1)}' | head -n 1)"
+- `CHAOS_KILL_COMMAND`: "kill $(find /proc -name exe -lname '\*/dd' 2>&1 | grep -v 'Permission denied' | awk -F/ '{print $(NF-1)}' | head -n 1)"
 
-Use the following example to tune this:
+Use the following example to tune it:
 
-[embedmd]:# (./static/manifests/pod-memory-hog-exec/kill-command.yaml yaml)
+[embedmd]: # "./static/manifests/pod-memory-hog-exec/kill-command.yaml yaml"
+
 ```yaml
 # provide the chaos kill command used to kill the chaos process
 apiVersion: litmuschaos.io/v1alpha1
@@ -148,14 +147,14 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: pod-memory-hog-exec
-    spec:
-      components:
-        env:
-        # command to kill the dd process
-        # alternative command: "kill -9 $(ps afx | grep \"[dd] if=/dev/zero\" | awk '{print $1}' | tr '\n' ' ')"
-        - name: CHAOS_KILL_COMMAND
-          value: "kill $(find /proc -name exe -lname '*/dd' 2>&1 | grep -v 'Permission denied' | awk -F/ '{print $(NF-1)}' | head -n 1)"
-        - name: TOTAL_CHAOS_DURATION
-          value: '60'
+    - name: pod-memory-hog-exec
+      spec:
+        components:
+          env:
+            # command to kill the dd process
+            # alternative command: "kill -9 $(ps afx | grep \"[dd] if=/dev/zero\" | awk '{print $1}' | tr '\n' ' ')"
+            - name: CHAOS_KILL_COMMAND
+              value: "kill $(find /proc -name exe -lname '*/dd' 2>&1 | grep -v 'Permission denied' | awk -F/ '{print $(NF-1)}' | head -n 1)"
+            - name: TOTAL_CHAOS_DURATION
+              value: "60"
 ```

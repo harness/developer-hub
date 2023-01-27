@@ -1,45 +1,44 @@
 ---
 id: pod-memory-hog
-title: Pod Memory Hog
+title: Pod memory hog
 ---
 
-## Introduction
-- This fault consumes the Memory resources on the application container on specified memory in megabytes.
-- It simulates conditions where app pods experience Memory spikes either due to expected/undesired processes thereby testing how the overall application stack behaves when this occurs.
+Pod memory hog is a Kubernetes pod-level chaos fault that consumes memory resources in excess, resulting in a significant spike in the memory usage of a pod.
+- Simulates a condition where the memory usage of an application spikes up unexpectedly.
 
-:::tip Fault execution flow chart
 ![Pod Memory Hog](./static/images/pod-stress.png)
-:::
 
-## Uses
+
+## Usage
 <details>
-<summary>View the uses of the fault</summary>
+<summary>View fault usage</summary>
 <div>
-Memory usage within containers is subject to various constraints in Kubernetes. If the limits are specified in their spec, exceeding them can cause termination of the container (due to OOMKill of the primary process, often pid 1) - the restart of the container by kubelet, subject to the policy specified. For containers with no limits placed, the memory usage is uninhibited until such time as the Node level OOM behavior takes over. In this case, containers on the node can be killed based on their oom_score and the QoS class a given pod belongs to (bestEffort ones are first to be targeted). This eval is extended to all pods running on the node - thereby causing a bigger blast radius. 
+Memory usage within containers is subject to various constraints in Kubernetes. If the limits are specified in their spec, exceeding them results in termination of the container (due to OOMKill of the primary process, often pid 1).
+This restarts container dependng on policy specified. For containers with no limits on memory, node can be killed based on their oom_score. This results in a bigger blast radius. 
 
-This fault launches a stress process within the target container - which can cause either the primary process in the container to be resource constrained in cases where the limits are enforced OR eat up available system memory on the node in cases where the limits are not specified.
+This fault causes stress within the target container, which may result in the primary process in the container to be constrained or eat up the available system memory on the node.
 </div>
 </details>
 
 ## Prerequisites
-:::info
-- Ensure that Kubernetes Version > 1.16.
-:::
 
-## Default Validations
-:::note
+- Kubernetes> 1.16.
+
+
+## Default validations
+
 The application pods should be in running state before and after chaos injection.
-:::
 
-## Fault Tunables
+
+## Fault tunables
 <details>
-    <summary>Check the Fault Tunables</summary>
-    <h2>Optional Fields</h2>
+    <summary>Fault tunables</summary>
+    <h2>Optional fields</h2>
     <table>
       <tr>
         <th> Variables </th>
         <th> Description </th>
-        <th> Notes </th>
+        <th> s </th>
       </tr>
       <tr>
         <td> MEMORY_CONSUMPTION </td>
@@ -94,7 +93,7 @@ The application pods should be in running state before and after chaos injection
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before injection of chaos in sec </td>
-        <td> Eg. 30 </td>
+        <td> For example, 30 </td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
@@ -104,18 +103,19 @@ The application pods should be in running state before and after chaos injection
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common and Pod specific tunables
-Refer the [common attributes](../../common-tunables-for-all-faults) and [Pod specific tunable](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
+### Common and pod-specific tunables
+Refer to the [common attributes](../../common-tunables-for-all-faults) and [pod-specific tunables](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
 
-### Memory Consumption
+### Memory consumption
 
-It stresses the `MEMORY_CONSUMPTION` MB memory of the targeted pod for the `TOTAL_CHAOS_DURATION` duration.
+It specifies the amount of memory consumed by the target pod for a duration specified by `TOTAL_CHAOS_DURATION` environment variable. You can tune it using the `MEMORY_CONSUMPTION` environment variable.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
-[embedmd]:# (./static/manifests/pod-memory-hog/memory-consumption.yaml yaml)
+[embedmd]: # "./static/manifests/pod-memory-hog/memory-consumption.yaml yaml"
+
 ```yaml
 # define the memory consumption in MB
 apiVersion: litmuschaos.io/v1alpha1
@@ -131,24 +131,25 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: pod-memory-hog
-    spec:
-      components:
-        env:
-        # memory consumption value
-        - name: MEMORY_CONSUMPTION
-          value: '500' #in MB
-        - name: TOTAL_CHAOS_DURATION
-          value: '60'
+    - name: pod-memory-hog
+      spec:
+        components:
+          env:
+            # memory consumption value
+            - name: MEMORY_CONSUMPTION
+              value: "500" #in MB
+            - name: TOTAL_CHAOS_DURATION
+              value: "60"
 ```
 
-### Workers For Stress
+### Workers for stress
 
-The worker's count for the stress can be tuned with `NUMBER_OF_WORKERS` ENV. 
+It specifies the number of workers used to stress the resources. You can tune it using the `NUMBER_OF_WORKERS` environment variable.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
-[embedmd]:# (./static/manifests/pod-memory-hog/workers.yaml yaml)
+[embedmd]: # "./static/manifests/pod-memory-hog/workers.yaml yaml"
+
 ```yaml
 # number of workers used for the stress
 apiVersion: litmuschaos.io/v1alpha1
@@ -164,20 +165,20 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: pod-memory-hog
-    spec:
-      components:
-        env:
-        # number of workers for stress
-        - name: NUMBER_OF_WORKERS
-          value: '1'
-        - name: TOTAL_CHAOS_DURATION
-          value: '60'
+    - name: pod-memory-hog
+      spec:
+        components:
+          env:
+            # number of workers for stress
+            - name: NUMBER_OF_WORKERS
+              value: "1"
+            - name: TOTAL_CHAOS_DURATION
+              value: "60"
 ```
 
-### Container Runtime Socket Path
+### Container runtime and socket path
 
-It defines the `CONTAINER_RUNTIME` and `SOCKET_PATH` ENV to set the container runtime and socket file path.
+It defines the `CONTAINER_RUNTIME` and `SOCKET_PATH` envrionment variables to set the container runtime and socket file path, respectively.
 
 - `CONTAINER_RUNTIME`: It supports `docker`, `containerd`, and `crio` runtimes. The default value is `docker`.
-- `SOCKET_PATH`: It contains path of docker socket file by default(`/var/run/docker.sock`). For other runtimes provide the appropriate path.
+- `SOCKET_PATH`: It contains path of docker socket file by default(`/var/run/docker.sock`). For `containerd`, specify path as `/var/containerd/containerd.sock`. For `crio`, speecify path as `/var/run/crio/crio.sock`.

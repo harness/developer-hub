@@ -1,42 +1,41 @@
 ---
 id: pod-dns-error
-title: Pod DNS Error
+title: Pod DNS error
 ---
-## Introduction
-- Pod-dns-error injects chaos to disrupt dns resolution in kubernetes pods.
-- It causes loss of access to services by blocking dns resolution of hostnames/domains.
 
-:::tip Fault execution flow chart
+Pod DNS error is a Kubernetes pod-level chaos fault that injects chaos to disrupt DNS resolution in pods.
+- It removes access to services by blocking the DNS resolution of host names (or domains).
+
 ![Pod DNS Error](./static/images/dns-chaos.png)
-:::
 
-## Uses
+
+## Usage
 <details>
-<summary>View the uses of the fault</summary>
+<summary>View fault usage</summary>
 <div>
-Coming soon.
+This fault determines the resilience of an application to DNS errors. It determines how quickly an application can resolve the host names and recover from the failure. 
 </div>
 </details>
 
 ## Prerequisites
-:::info
-- Ensure that Kubernetes Version > 1.16.
-:::
 
-## Default Validations
-:::note
+- Kubernetes> 1.16.
+
+
+## Default validations
+
 The application pods should be in running state before and after chaos injection.
-:::
 
-## Fault Tunables
+
+## Fault tunables
 <details>
-    <summary>Check the Fault Tunables</summary>
-    <h2>Optional Fields</h2>
+    <summary>Fault tunables</summary>
+    <h2>Optional fields</h2>
     <table>
       <tr>
         <th> Variables </th>
         <th> Description  </th>
-        <th> Notes </th>
+        <th> s </th>
       </tr>
       <tr>
         <td> TARGET_CONTAINER </td>
@@ -50,7 +49,7 @@ The application pods should be in running state before and after chaos injection
       </tr>
       <tr>
         <td> TARGET_HOSTNAMES </td>
-        <td> List of the target hostnames or keywords eg. '["litmuschaos","chaosnative.com"]'</td>
+        <td> List of the target hostnames or keywords For example, '["litmuschaos","chaosnative.com"]'</td>
         <td> If not provided, all hostnames/domains will be targeted</td>
       </tr>
       <tr>
@@ -81,7 +80,7 @@ The application pods should be in running state before and after chaos injection
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injection of chaos in sec </td>
-        <td> Eg. 30 </td>
+        <td> For example, 30 </td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
@@ -91,17 +90,17 @@ The application pods should be in running state before and after chaos injection
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common and Pod specific tunables
-Refer the [common attributes](../../common-tunables-for-all-faults) and [Pod specific tunable](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
+### Common and pod-specific tunables
+Refer to the [common attributes](../../common-tunables-for-all-faults) and [pod-specific tunables](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
 
 ### Target Host Names
 
 It defines the comma-separated name of the target hosts subjected to chaos. It can be tuned with the `TARGET_HOSTNAMES` ENV.
 If `TARGET_HOSTNAMES`not provided then all hostnames/domains will be targeted.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/pod-dns-error/target-hostnames.yaml yaml)
 ```yaml
@@ -135,7 +134,7 @@ spec:
 
 It determines whether the DNS query has to match exactly with one of the targets or can have any of the targets as a substring. It can be tuned with `MATCH_SCHEME` ENV. It supports `exact` or `substring` values.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/pod-dns-error/match-scheme.yaml yaml)
 ```yaml
@@ -164,14 +163,14 @@ spec:
           value: '60'
 ```
 
-### Container Runtime Socket Path
+### Container runtime and socket path
 
 It defines the `CONTAINER_RUNTIME` and `SOCKET_PATH` ENV to set the container runtime and socket file path.
 
 - `CONTAINER_RUNTIME`: It supports `docker` runtime only.
 - `SOCKET_PATH`: It contains path of docker socket file by default(`/var/run/docker.sock`).
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/pod-dns-error/container-runtime-and-socket-path.yaml yaml)
 ```yaml

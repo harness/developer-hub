@@ -1,41 +1,38 @@
 ---
 id: pod-cpu-hog-exec
-title: Pod CPU Hog Exec
+title: Pod CPU hog exec
 ---
 
-## Introduction
-- This fault consumes the CPU resources of the application container.
+Pod CPU hog exec is a Kubernetes pod-level chaos fault that consumes excess CPU resources of the application container.
+- It simulates conditions where the application pods experience CPU spikes due to expected (or undesired) processes thereby testing the behaviour of application stack.
 
-- It simulates conditions where app pods experience CPU spikes either due to expected/undesired processes thereby testing how the overall application stack behaves when this occurs.
-
-:::tip Fault execution flow chart
 ![Pod CPU Hog Exec](./static/images/pod-stress.png)
-:::
 
-## Uses
+
+## Usage
 <details>
-<summary>View the uses of the fault</summary>
+<summary>View fault usage</summary>
 <div>
-Disk Pressure or CPU hogs is another very common and frequent scenario we find in kubernetes applications that can result in the eviction of the application replica and impact its delivery. Such scenarios that can still occur despite whatever availability aids K8s provides. These problems are generally referred to as "Noisy Neighbor"  problems.
+Disk pressure or CPU hog affects Kubernetes applications that results in the eviction of the application replica and impacts its delivery. These issues are referred to as "noisy neighbour" problems.
 
-Injecting a rogue process into a target container, we starve the main microservice process (typically pid 1) of the resources allocated to it (where limits are defined) causing slowness in application traffic or in other cases unrestrained use can cause node to exhaust resources leading to eviction of all pods. So this category of chaos fault helps to build the immunity of the application undergoing any such stress scenario.
+Injecting a rogue process into a target container starves the main microservice (typically pid 1) of the resources allocated to it (where limits are defined). This slows down the application traffic or exhausts the resources leading to eviction of all pods. These faults helps build immunity to such stress cases.
 </div>
 </details>
 
 ## Prerequisites
-:::info
-- Ensure that Kubernetes Version > 1.16.
-:::
 
-## Default Validations
-:::note
+- Kubernetes> 1.16.
+
+
+## Default validations
+
 The application pods should be in running state before and after chaos injection.
-:::
 
-## Fault Tunables
+
+## Fault tunables
 <details>
-    <summary>Check the Fault Tunables</summary>
-    <h2>Optional Fields</h2>
+    <summary>Fault tunables</summary>
+    <h2>Optional fields</h2>
     <table>
       <tr>
         <th> Variables </th>
@@ -80,7 +77,7 @@ The application pods should be in running state before and after chaos injection
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before injection of chaos in sec </td>
-        <td> Eg. 30 </td>
+        <td> For example, 30 </td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
@@ -90,18 +87,19 @@ The application pods should be in running state before and after chaos injection
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common and Pod specific tunables
-Refer the [common attributes](../../common-tunables-for-all-faults) and [Pod specific tunable](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
+### Common and pod-specific tunables
+Refer to the [common attributes](../../common-tunables-for-all-faults) and [pod-specific tunables](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
 
-### CPU Cores
+### CPU cores
 
-It stresses the `CPU_CORE` CPU cores of the targeted pod for the `TOTAL_CHAOS_DURATION` duration.
+It specifies the number of CPU cores to target for a duration specified by `TOTAL_CHAOS_DURATION` environment variable. You can tune it using the `CPU_CORE` environment variable. 
 
-Use the following example to tune this:
+Use the following example to tune it:
 
-[embedmd]:# (./static/manifests/pod-cpu-hog-exec/cpu-cores.yaml yaml)
+[embedmd]: # "./static/manifests/pod-cpu-hog-exec/cpu-cores.yaml yaml"
+
 ```yaml
 # CPU cores for the stress
 apiVersion: litmuschaos.io/v1alpha1
@@ -117,28 +115,29 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: pod-cpu-hog-exec
-    spec:
-      components:
-        env:
-        # CPU cores for stress
-        - name: CPU_CORES
-          value: '1'
-        - name: TOTAL_CHAOS_DURATION
-          value: '60'
+    - name: pod-cpu-hog-exec
+      spec:
+        components:
+          env:
+            # CPU cores for stress
+            - name: CPU_CORES
+              value: "1"
+            - name: TOTAL_CHAOS_DURATION
+              value: "60"
 ```
 
-### Chaos Inject and Kill Commands
+### Chaos inject and kill commands
 
-It defines the `CHAOS_INJECT_COMMAND` and `CHAOS_KILL_COMMAND` ENV to set the chaos inject and chaos kill commands respectively.
+It defines the `CHAOS_INJECT_COMMAND` and `CHAOS_KILL_COMMAND` environment variables to set the chaos inject and chaos kill commands, respectively.
 Default values of commands:
 
 - `CHAOS_INJECT_COMMAND`: "md5sum /dev/zero"
-- `CHAOS_KILL_COMMAND`: "kill $(find /proc -name exe -lname '*/md5sum' 2>&1 | grep -v 'Permission denied' | awk -F/ '{print $(NF-1)}')"
+- `CHAOS_KILL_COMMAND`: "kill $(find /proc -name exe -lname '\*/md5sum' 2>&1 | grep -v 'Permission denied' | awk -F/ '{print $(NF-1)}')"
 
-Use the following example to tune this:
+Use the following example to tune it:
 
-[embedmd]:# (./static/manifests/pod-cpu-hog-exec/inject-and-kill-commands.yaml yaml)
+[embedmd]: # "./static/manifests/pod-cpu-hog-exec/inject-and-kill-commands.yaml yaml"
+
 ```yaml
 # provide the chaos kill, used to kill the chaos process
 apiVersion: litmuschaos.io/v1alpha1
@@ -154,17 +153,17 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: pod-cpu-hog-exec
-    spec:
-      components:
-        env:
-        # command to create the md5sum process to stress the cpu
-        - name: CHAOS_INJECT_COMMAND
-          value: 'md5sum /dev/zero'
-        # command to kill the md5sum process
-        # alternative command: "kill -9 $(ps afx | grep \"[md5sum] /dev/zero\" | awk '{print$1}' | tr '\n' ' ')"
-        - name: CHAOS_KILL_COMMAND
-          value: "kill $(find /proc -name exe -lname '*/md5sum' 2>&1 | grep -v 'Permission denied' | awk -F/ '{print $(NF-1)}')"
-        - name: TOTAL_CHAOS_DURATION
-          value: '60'
+    - name: pod-cpu-hog-exec
+      spec:
+        components:
+          env:
+            # command to create the md5sum process to stress the cpu
+            - name: CHAOS_INJECT_COMMAND
+              value: "md5sum /dev/zero"
+            # command to kill the md5sum process
+            # alternative command: "kill -9 $(ps afx | grep \"[md5sum] /dev/zero\" | awk '{print$1}' | tr '\n' ' ')"
+            - name: CHAOS_KILL_COMMAND
+              value: "kill $(find /proc -name exe -lname '*/md5sum' 2>&1 | grep -v 'Permission denied' | awk -F/ '{print $(NF-1)}')"
+            - name: TOTAL_CHAOS_DURATION
+              value: "60"
 ```
