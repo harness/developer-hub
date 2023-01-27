@@ -13,6 +13,26 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
 
+## January 27, 2023, version 783xx
+
+### What's new
+
+* Linux ARM is now supported in Harness Cloud build infrastructures. (CI-5787)
+* The build UI now shows a detailed "Image version outdated" warning if the build is using unsupported Harness CI images. (CI-6721)
+* Free customers can now use their Kubernetes delegates to run CI builds. Previously, free customers were limited to building in their Harness Cloud infrastructures. 
+  Kubernetes delegates are behind a feature flag for free CI accounts. Contact Harness Support to enable this feature. (CI-6482) 
+
+### Early access features
+
+This release does not include early access features.
+
+### Fixed issues
+
+* Fixed an issue where  RedisTimeoutExceptions were causing CI services to restart. (CI-6728)
+* Improved the error message that appears in the UI when a Git test connection fails. (CI-6889)
+* Fixed an issue where feature flags would sometimes not work with CI due to a backwards-compatibility issue. (CI-6687)
+* Fixed an issue where the Commits tab would show a 404 error in the CD build UI. (CI-6632)
+
 ## January 17, 2023, version 78215
 
 ### What's new
