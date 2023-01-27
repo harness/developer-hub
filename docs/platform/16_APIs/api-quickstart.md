@@ -294,5 +294,8 @@ To explore the Harness API, see [Harness API Reference Docs](https://harness.io/
 | 402 - Request Failed | The request cannot be processed. |
 | 403 - Forbidden | The API Key does not have permission to perform the request. |
 | 404 - Not Found | The requested resource does not exist. |
+| 429 - Server Errors | The rate limit exceeded. |
 | 500, 502, 503, 504 - Server Errors | The Harness server encountered an unexpected error. |
+
+
 
