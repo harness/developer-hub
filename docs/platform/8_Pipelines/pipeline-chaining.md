@@ -14,7 +14,7 @@ Pipeline chaining involves using the output of one pipeline as input for another
 
 In Harness, you can create a pipeline chain by linking pipelines together using a pipeline trigger. A pipeline trigger is a specific event or condition that triggers the next pipeline in the chain. 
 
-For example, you could have a pipeline that deploys an application to a test environment. This is followed by another pipeline that runs a set of integration tests, and finally another pipeline that deploys the application to production. Each pipeline in the chain is triggered by the completion of the previous pipeline. The output of each pipeline is passed on to the next pipeline in the chain. This way, you can automate the whole process and make sure that the application is deployed and tested properly before deploying to production.
+For example, you could have a pipeline that deploys an application to a test environment. This could be followed by a pipeline that runs a set of integration tests and, finally, a pipeline that deploys the application to production. Each pipeline in the chain is triggered by the completion of the previous pipeline. The output of each pipeline is passed to the next pipeline in the chain. This way, you can automate the whole process and make sure that the application is tested properly before deploying to production.
 
 ## Important
 
