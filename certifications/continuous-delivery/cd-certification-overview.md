@@ -1,15 +1,15 @@
 ---
 sidebar_position: 1
-description: Continuous Delivery Certification Overview
+hide_table_of_contents: true
+hide_title: true
+id: "continuous-delivery"
 title: Certification Overview
+description: Continuous Delivery Certification Overview
+slug: "/continuous-delivery"
 ---
 
-# Continuous Delievery Certification Overview
+<!-- Custom component -->
 
-Learn more about the Harness CD Certification Levels. 
+import CertificationsCD from '@site/src/components/Certifications/CertificationsCD';
 
-## CD Certification Levels
-
-* Certified Developer
-* Certified Admin
-* Certified Architect
+<CertificationsCD />
