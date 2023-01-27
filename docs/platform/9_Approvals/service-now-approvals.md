@@ -119,6 +119,12 @@ For example, `<+ticket.state.displayValue> == "New"` in the Approval Criteria,
 
 `state` is a ticket field. You can use any ticket field.
 
+
+:::caution
+Create requests are retried when ServiceNow encounters connection errors. ServiceNow may respond with connection exceptions, but in edge cases, the tickets will still be created in ServiceNow. This results in the creation of duplicate tickets.
+:::
+
+
 ### See also
 
 * [Using Manual Harness Approval Stages](adding-harness-approval-stages.md)
