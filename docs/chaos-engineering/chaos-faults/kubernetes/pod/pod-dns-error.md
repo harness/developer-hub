@@ -93,7 +93,7 @@ The application pods should be in running state before and after chaos injection
 ## Fault examples
 
 ### Common and pod-specific tunables
-Refer the [common attributes](../../common-tunables-for-all-faults) and [Pod specific tunable](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
+Refer to the [common attributes](../../common-tunables-for-all-faults) and [pod-specific tunables](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
 
 ### Target Host Names
 

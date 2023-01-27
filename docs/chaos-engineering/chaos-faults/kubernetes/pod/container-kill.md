@@ -137,7 +137,7 @@ spec:
 It defines the `CONTAINER_RUNTIME` and `SOCKET_PATH` environment variable that help set the container runtime and socket file path, respectively.
 
 - `CONTAINER_RUNTIME`: It supports `docker`, `containerd`, and `crio` runtimes. The default value is `docker`.
-- `SOCKET_PATH`: It contains the path of the docker socket file by default(`/var/run/docker.sock`). For `containerd`, use `/var/containerd/containerd.sock`, and for `crio`, use 
+- `SOCKET_PATH`: It contains the path of the docker socket file by default(`/var/run/docker.sock`). For `containerd`, specify path as `/var/containerd/containerd.sock`. For `crio`, speecify path as `/var/run/crio/crio.sock`.
 
 [embedmd]: # "./static/manifests/container-kill/container-runtime-and-socket-path.yaml yaml"
 

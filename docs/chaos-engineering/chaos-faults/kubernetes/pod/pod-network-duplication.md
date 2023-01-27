@@ -14,7 +14,7 @@ Pod network duplication is a Kubernetes pod-level chaos fault that injects chaos
 <details>
 <summary>View fault usage</summary>
 <div>
-Coming soon.
+It determines the application's resilience to duplicate network.
 </div>
 </details>
 
@@ -231,7 +231,7 @@ spec:
 It defines the `CONTAINER_RUNTIME` and `SOCKET_PATH` ENV to set the container runtime and socket file path.
 
 - `CONTAINER_RUNTIME`: It supports `docker`, `containerd`, and `crio` runtimes. The default value is `docker`.
-- `SOCKET_PATH`: It contains path of docker socket file by default(`/var/run/docker.sock`). For other runtimes provide the appropriate path.
+- `SOCKET_PATH`: It contains path of docker socket file by default(`/var/run/docker.sock`). For `containerd`, specify path as `/var/containerd/containerd.sock`. For `crio`, speecify path as `/var/run/crio/crio.sock`.
 
 Use the following example to tune this:
 
