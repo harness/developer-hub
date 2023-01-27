@@ -97,11 +97,11 @@ Decrypting a secret sometimes requires its meta-data. When such meta-data change
 
 This happens in the following cases:
 
-- The secret manager is KMS (GCP KMS, AWS KMS): **EncryptedRecordData** contains encrypted secret values and encryption keys. When this gets cached, the cached values are always decrypted, resulting in the older value.
+- The secret manager is KMS (GCP KMS, AWS KMS).
 
-- The secret manager is GCP Secret Manager: In this case, **EncryptedRecordData** contains version information. Every time the inline secret is edited, the incremented version is updated in the database. However, because **EncryptedRecordData** is cached, and it has older version information, the older value keeps getting retrieved.
+- The secret manager is GCP Secret Manager.
 
-- Secret is of reference type: If a secret's reference path is changed during editing, it will update in the database, but the cache value still holds the older path, so it will fetch the secret from the older path.
+- Secret is of reference type.
 
 The same does not happen for secret managers who do not use KMS. The secrets for non-KMS secret managers are inline, and no meta-data is used to retrieve the value. 
 
