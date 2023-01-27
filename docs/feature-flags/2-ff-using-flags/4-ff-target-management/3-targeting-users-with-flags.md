@@ -50,6 +50,10 @@ You should understand how the Harness platform prioritizes targets and target gr
    - You added `Target_1` to `Group_A`, then `Group_B`, then `Group_C`.
    - You create a rule that enables a flag for all targets in `Group_C`, but disables that same flag for `Group_A`. 
    - As the target group prioritization of `Group_A` is `0`, and the target group prioritization of `Group_C` is `2`, the flag is disabled for `Target_1`. This is because the lower-numbered target group priority, `0`, takes precedent. 
+   
+:::note
+If you have Git Experience set up with Feature Flags, you can manually edit the `priority` field of a flag via your YAML file. For more information about this, go to [Manage Your Flags Using Git Experience](../5-manage-featureflags-in-git-repos.md).
+:::
 
 ## Target specific users or Target Groups when a Flag is enabled
 
