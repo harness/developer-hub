@@ -3,7 +3,10 @@ id: kube-resilience
 title: Chaos faults for Kube resilience
 ---
 
-Kubelet density determines the resilience of the kubelet by creating pods on a specific node. 
+## Introduction
+
+Kubelet density determines the resilience of the kubelet by creating pods on a specific node.
+
 - It helps determine how resilient an application is to the unplanned scaling of K8s pods.
 
 <!-- Import statement for Custom Components -->
@@ -27,6 +30,7 @@ import { experiments } from "./experiments"
 ### Kubelet density
 
 <!-- Need above heading in markdown ### for it to populate right navigation bar and generate links -->
+
 - Kubelet density determines the resilience of the kubelet by creating pods on a specific node.
 - It also helps determine the performance of the kubelet for a specific node.
 

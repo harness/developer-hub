@@ -1,31 +1,25 @@
 ---
 id: elb-az-down
-title: ELB AZ Down
+title: ELB AZ down
 ---
 
-## Introduction
-- It takes AZ down chaos on a target ELB for a specified duration. It causes access restrictions for certain availability zones.
-- It tests application sanity, availability, and recovery workflows of the application pod attached to the load balancer.
+ELB AZ down takes down the AZ (availability zones) on a target ELB for a specific duration. 
+- It restricts access to certain availability zones for a specific duration.
+- It tests the application sanity, availability, and recovery workflows of the application pod attached to the load balancer.
 
-:::tip Fault execution flow chart
 ![ELB AZ Down](./static/images/elb-az-down.png)
-:::
 
 ## Uses
 
 <details>
 <summary>View the uses of the fault</summary>
 <div>
-AZ down is another very common and frequent scenario we find with ELB that can break the connectivity with the given zones and impacts their delivery. Such scenarios can still occur despite whatever availability aids AWS provides.
-
-Detaching the AZ from the load balancer will disrupt an application's performance and impact its smooth working. So this category of chaos fault helps build immunity in the application undergoing such scenarios.
-
+This fault breaks the connectivity with the given zones and impacts their delivery. Detaching the AZ from the load balancer disrupts an application's performance. 
 </div>
 </details>
 
 ## Prerequisites
 
-:::info
 - Kubernetes > 1.17
 - AWS access to attach or detach an AZ from ELB.
 - Minimum number of AZ is attached to the ELB, else the fault fails to detach the given AZ.
@@ -44,13 +38,10 @@ stringData:
     aws_secret_access_key = XXXXXXXXXXXXXXX
 ```
 - If you change the secret key name (from `cloud_config.yml`), update the `AWS_SHARED_CREDENTIALS_FILE` environment variable value on `fault.yaml`with the same name.
-:::
 
-## Default Validations
+## Default validations
 
-:::info
 - The ELB is attached to the given availability zones.
-:::
 
 ## Fault tunables
 
@@ -109,15 +100,15 @@ stringData:
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common and AWS specific tunables
+### Common and AWS-specific tunables
 
-Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS specific tunable](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
+Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
 
-### Target Zones
+### Target zones
 
-It contains comma separated list of target zones. It can be tuned via `ZONES` environment variable.
+It contains comma-separated list of target zones. You can tune it using the `ZONES` environment variable.
 
 Use the following example to tune it:
 

@@ -1,37 +1,26 @@
 ---
 id: ecs-agent-stop
-title: ECS Agent Stop
+title: ECS agent stop
 ---
 
-## Introduction
+ECS agent stop disrupts the state of infrastructure resources. 
+- The fault induces an agent stop chaos on AWS ECS using Amazon SSM Run command, this is carried out by using SSM Docs which is in-built in the fault for the give chaos scenario.
+- It causes agent container stop on ECS with a given `CLUSTER_NAME` envrionment variable using an SSM docs for a specific duration.
 
-- ECS Agent Stop contains chaos to disrupt the state of infra resources. The fault can induce an agent stop chaos on AWS ECS using Amazon SSM Run Command, this is carried out by using SSM Docs which is in-built in the fault for the give chaos scenario.
-
-- It causes agent container stop on ECS with a given `CLUSTER_NAME` using an SSM docs for a certain chaos duration.
-
-:::tip Fault execution flow chart
 ![ECS Agent Stop](./static/images/ecs-agent-stop.png)
-:::
 
-## Uses
+
+## Usage
 
 <details>
 <summary>View the uses of the fault</summary>
 <div>
-Agent chaos stop is another very common and frequent scenario we find with ECS clusters that can break an agent that manages the task container on the ECS cluster and impacts their delivery. Such scenarios can still occur despite whatever availability aids docker provides.
-
-Killing the agent container will distrupt the performance of it and impact to smooth working of task containers. So this category of chaos fault helps to build the immunity on the application undergoing any such scenarios.
-
+Agent chaos stop stops the ECS clusters that break an agent that used to manage the task container on the ECS cluster, thereby impacting its delivery. Killing the agent container disrupts the performance of task containers.
 </div>
 </details>
 
 ## Prerequisites
-
-:::info
-
-- Ensure that Kubernetes Version >= 1.17
-
-**AWS EC2 Access Requirement:**
+- Kubernetes >= 1.17
 
 - Ensure that the ECS container metadata is enabled this feature is disabled by default. To enable it please follow the aws docs to [Enabling container metadata](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-metadata.html). If you have your task running prior this activity you may need to restart it to get the metadata directory as mentioned in the docs.
 
@@ -54,15 +43,15 @@ stringData:
 ```
 
 - If you change the secret key name (from `cloud_config.yml`) please also update the `AWS_SHARED_CREDENTIALS_FILE` ENV value in the ChaosExperiment CR with the same name.
-:::
 
-## Default Validations
 
-:::info
+## Default validations
+
+
 
 - ECS container instance should be in healthy state.
 
-:::
+
 
 ## Fault Tunables
 
@@ -121,7 +110,7 @@ stringData:
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
 ### Common and AWS specific tunables
 

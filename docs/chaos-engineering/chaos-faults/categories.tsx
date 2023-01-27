@@ -10,7 +10,7 @@ import { experiments as VMWareExperiments } from "./vmware/experiments";
 export const categories: FaultCardItem[] = [
   {
     title: "Kubernetes",
-    description: <>Short description about this</>,
+    description: <>Build production ready and resilient applications. </>,
     faults: KubernetesExperiments.length,
     category: "kubernetes",
   },
@@ -22,25 +22,25 @@ export const categories: FaultCardItem[] = [
   },
   {
     title: "AWS",
-    description: <>Create SLOs. track error budgets, govern pipelines</>,
+    description: <>Create SLOs, track error budgets, and govern pipelines. </>,
     faults: AwsExperiments.length,
     category: "aws",
   },
   {
     title: "GCP",
-    description: <>Scan your code, containers and apps</>,
+    description: <>Scan your code, containers and applications.</>,
     faults: GcpExperiments.length,
     category: "gcp",
   },
   {
     title: "Azure",
-    description: <>Ensure app and infrastructure resilience</>,
+    description: <>Ensure application and infrastructure resilience. </>,
     faults: AzureExperiments.length,
     category: "azure",
   },
   {
     title: "Kube-Resilience",
-    description: <>Ensure app and infrastructure resilience</>,
+    description: <>Ensure application and infrastructure resilience. </>,
     faults: KubeResilienceExperiments.length,
     category: "kube-resilience",
   },

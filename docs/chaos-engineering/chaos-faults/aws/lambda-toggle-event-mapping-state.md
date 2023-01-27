@@ -1,25 +1,21 @@
 ---
 id: lambda-toggle-event-mapping-state
-title: Lambda Toggle Event Mapping State
+title: Lambda toggle event mapping state
 ---
 
-## Introduction
+Lambda toggle event mapping state toggles (or sets) the event source mapping state to `disable` for a Lambda function during a specific duration.
+- It checks the performance of the running application (or service) when the event source mapping is not enabled which may cause missing entries in a database.
 
-- It toggles the event source mapping state to <code>disable</code> for a lambda function during a certain chaos duration.
-- It checks the performance of the running application/service when the event source mapping is not enabled which can cause, for example, missing entries on a database.
 
-:::tip Fault execution flow chart
 ![Lambda Toggle Event Mapping State](./static/images/lambda-toggle-event-mapping-state.png)
-:::
 
-## Uses
+
+## Usage
 
 <details>
-<summary>View the uses of the fault</summary>
+<summary>View fault usage</summary>
 <div>
- Toggling between different states of event source mapping from a lambda function is critical. It can lead to scenarios such as failure to update the database on an event trigger which can break the service and impact their delivery. Such scenarios can occur despite  availability aids provided by AWS or determined by you.
-
-It helps understand if you have proper error handling or auto recovery configured for such cases. Hence, this category of chaos fault helps build the immunity of the application.
+Toggling between different states of event source mapping from a Lambda function may lead to failures in updating the database on an event trigger. This can break the service and impact its delivery. It helps determine if the application has proper error handling or auto recovery actions configured.
 </div>
 </details>
 

@@ -1,33 +1,27 @@
 ---
 id: lambda-update-function-memory
-title: Lambda Update Function Memory
+title: Lambda update function memory
 ---
 
-## Introduction
+Lambda update function memory causes the memory of a Lambda function to be updated to a specified value for a certain duration.
+- It checks the performance of the application (or service) running with a new memory limit.
+- It helps determine a safe overall memory limit value for the function.
+- Smaller the memory limit higher will be the time taken by the Lambda function under load.
 
-- It causes the memory of a lambda function to be updated to a specified value for a certain chaos duration.
-- It checks the performance of the application/service running with a new memory limit and also helps to determine a safe overall memory limit value for the function.
-- Smaller the memory limit higher will be the time taken by the lambda function under load.
 
-:::tip Fault execution flow chart
 ![Lambda Update Function Memory](./static/images/lambda-update-function-memory.png)
-:::
 
-## Uses
+
+## Usage
 
 <details>
-<summary>View the uses of the fault</summary>
+<summary>View fault usage</summary>
 <div>
-Hitting a memory limit is a very common and frequent scenario we find with lambda functions that can slow down the service and impacts their delivery. Such scenarios can still occur despite whatever availability aids AWS provides or we determine.
-
-Running out of memory due to a smaller limit interrupts the flow of the given function. So this category of chaos fault helps you to build immunity on the application undergoing any such scenarios.
+Hitting a memory limit with Lambda functions may slow down the service and impact their delivery. Running out of memory due to smaller limits may interrupt the flow of the given function. These fault helps build resilience to such unexpected scenarios.
 </div>
 </details>
 
 ## Prerequisites
-
-:::info
-
 - Kubernetes >= 1.17
 - Access for operating AWS Lambda functions.
 - Kubernetes secret that has AWS access configuration(key) in the `CHAOS_NAMESPACE`. A secret file looks like this:
@@ -48,15 +42,10 @@ stringData:
 
 - If you change the secret key name (from `cloud_config.yml`), update the `AWS_SHARED_CREDENTIALS_FILE` environment variable value on `experiment.yaml` with the same name.
 
-## Default Validations
-
-:::info
-
+## Default validations
 - The Lambda function should be up and running.
 
-:::
-
-## Experiment Tunables
+## Fault tunables
 
 <details>
     <summary>Check the Fault Tunables</summary>
@@ -113,17 +102,17 @@ stringData:
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common and AWS specific tunables
+### Common and AWS-specific tunables
 
-Refer the [common attributes](../common-tunables-for-all-faults) and [AWS specific tunable](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
+Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
 
-### Memory Limit
+### Memory limit
 
-It can update the lambda function memory limit to a newer value by using `MEMORY_IN_MEGABYTES` ENV as shown below.
+It can update the Lambda function memory limit to a newer value by using `MEMORY_IN_MEGABYTES` environment variable as shown below.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/lambda-update-function-memory/function-memory.yaml yaml)
 ```yaml

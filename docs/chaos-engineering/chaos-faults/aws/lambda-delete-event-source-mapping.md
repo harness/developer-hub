@@ -1,32 +1,26 @@
 ---
 id: lambda-delete-event-source-mapping
-title: Lambda Delete Event Source Mapping
+title: Lambda delete event source mapping
 ---
 
-## Introduction
+Lambda delete event source mapping removes the event source mapping from an AWS Lambda function for a specific duration.
+- It checks the performance of the application (or service) without the event source mapping which may cause missing entries in a database.
 
-- It removes the event source mapping from an AWS Lambda function for a certain chaos duration.
-- It checks the performance of the running application/service without the event source mapping which can cause, for example, missing entries on a database.
 
-:::tip Fault execution flow chart
 ![Lambda Delete Event Source Mapping](./static/images/lambda-delete-event-source-mapping.png)
-:::
 
-## Uses
+
+## Usage
 
 <details>
-<summary>View the uses of the fault</summary>
+<summary>View fault usage</summary>
 <div>
-Deleting an event source mapping from a lambda function is critical. It can lead to scenarios such as failure to update the database on an event trigger which can break the service and impact their delivery. Such scenarios can occur despite  availability aids provided by AWS or determined by you.
-
-It helps understand if you have proper error handling or auto recovery configured for such cases. Hence, this category of chaos fault helps build the immunity of the application.
+Deleting an event source mapping from a Lambda function is critical. It can lead to scenarios such as failure to update the database on an event trigger, which can break the service. 
+Such faults determine if proper error handling or auto recovery options have been configured for the application.
 </div>
 </details>
 
 ## Prerequisites
-
-:::info
-
 - Kubernetes >= 1.17
 - AWS Lambda event source mapping attached to the lambda function.
 - Kubernetes secret that has AWS access configuration(key) in the `CHAOS_NAMESPACE`. A secret file looks like this:

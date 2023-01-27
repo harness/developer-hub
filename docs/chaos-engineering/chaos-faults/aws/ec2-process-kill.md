@@ -1,32 +1,24 @@
 ---
 id: ec2-process-kill
-title: EC2 Process Kill
+title: EC2 process kill
 ---
+EC2 process kill fault kills the target processes running on an EC2 instance.
+- It checks the performance of the application/process running on the EC2 instance(s).
 
-## Introduction
-- EC2 Process Kill fault kills the target processes running on EC2 instance to determine the application/process resilience.
-- It helps to check the performance of the application/process running on the EC2 instance(s).
-
-:::tip Fault execution flow chart
 ![EC2 Process Kill](./static/images/ec2-process-kill.png)
-:::
 
-## Uses
+## Usage
 <details>
-<summary>View the uses of the fault</summary>
+<summary>View fault usage</summary>
 <div>
-Disrupt the application critical processes such as databases or message queues running in the EC2 instance by killing their underlying processes or threads.
+This fault disrupts the application critical processes such as databases or message queues running on the EC2 instance by killing their underlying processes or threads. This fault determines the resilience of applications when processes on EC2 instances are unexpectedly killed (or disrupted).
 </div>
 </details>
 
 ## Prerequisites
-:::info
-- Ensure that Kubernetes Version > 1.16
-
-**AWS EC2 Access Requirement:**
-
-- Ensure that SSM agent is installed and running in the target EC2 instance.
-- Ensure to create a Kubernetes secret having the AWS Access Key ID and Secret Access Key credentials in the `CHAOS_NAMESPACE`. A sample secret file looks like:
+- Kubernetes > 1.16
+- SSM agent is installed and running in the target EC2 instance.
+- Create a Kubernetes secret that has the AWS Access Key ID and Secret Access Key credentials in the `CHAOS_NAMESPACE`. Below is the sample secret file:
 
 ```yaml
 apiVersion: v1
@@ -42,23 +34,21 @@ stringData:
     aws_secret_access_key = XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ```
 
-- If you change the secret name then please also update the `experiment.yml` ENV values for deriving the respective data from the secret. Also account for the path at which this secret is mounted as a file in the manifest ENV `AWS_SHARED_CREDENTIALS_FILE`.
+- If you change the secret name, ensure that you update the `experiment.yml` environment variable to derive the respective data from the secret. Also account for the path at which this secret is mounted as a file in the manifest ENV `AWS_SHARED_CREDENTIALS_FILE`.
 
-### NOTE
-You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
-:::
+### Note
+You can pass the VM credentials as secrets or as a chaos-engine environment variable.
 
+## Default validations
 
-## Default Validations
-:::info
 - EC2 instance should be in healthy state
 - The target processes should exist in the VM.
-:::
 
-## Fault Tunables
+
+## Fault tunables
 <details>
-    <summary>Check the Fault Tunables</summary>
-    <h2>Mandatory Fields</h2>
+    <summary>Fault tunables</summary>
+    <h2>Mandatory fields</h2>
     <table>
       <tr>
         <th> Variables </th>
@@ -67,21 +57,21 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
       </tr>
       <tr>
         <td> EC2_INSTANCE_ID </td>
-        <td> ID of the target EC2 instance </td>
-        <td> For example: <code>i-044d3cb4b03b8af1f</code> </td>
+        <td> ID of the target EC2 instance. </td>
+        <td> For example, <code>i-044d3cb4b03b8af1f</code>. </td>
       </tr>
       <tr>
         <td> REGION </td>
-        <td> The AWS region ID where the EC2 instance has been created </td>
-        <td> For example: <code>us-east-1</code> </td>
+        <td> The AWS region ID where the EC2 instance has been created. </td>
+        <td> For example, <code>us-east-1</code>. </td>
       </tr>
       <tr>
         <td> PROCESS_IDS </td>
-        <td> Process IDs of the target processes provided as comma separated values </td>
-        <td> 183,253,857 </td>
+        <td> Process IDs of the target processes provided as comma separated values. </td>
+        <td> For example, 183,253,857. </td>
       </tr>
     </table>
-    <h2>Optional Fields</h2>
+    <h2>Optional fields</h2>
     <table>
       <tr>
         <th> Variables </th>
@@ -90,27 +80,26 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The total time duration for chaos insertion (sec) </td>
-        <td> Defaults to 30s </td>
+        <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
+        <td> Defaults to 30s. </td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
-        <td> Period to wait before and after injection of chaos in sec </td>
-        <td> Eg. 30 </td>
+        <td> Period to wait before and after injecting chaos (in seconds).  </td>
+        <td> For example, 30 </td>
       </tr>
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common Fault Tunables
-Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
+### Common fault tunables
+Refer to the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
-### PROCESS_IDS
-It contains the target process Ids running on a particular EC2 instance
+### Process IDs
+It contains the target process IDs running on a particular EC2 instance.
 
-
-Use the following example to tune this:
+You can tune it using the following example:
 
 [embedmd]:# (./static/manifests/ec2-process-kill/ec2-process-kill-processid.yaml yaml)
 ```yaml
@@ -135,5 +124,3 @@ spec:
         - name: REGION
           value: 'us-west-2'
 ```
-
-

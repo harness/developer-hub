@@ -1,28 +1,28 @@
 ---
 id: rds-instance-delete
-title: RDS Instance Delete
+title: RDS instance delete
 ---
 
-## Introduction
+RDS instance delete removes an instances from AWS RDS cluster. 
+- This makes the cluster unavailable for a specific duration.
+- It determines how quickly an application can recover from an unexpected cluster deletion. 
 
-- RDS Instance delete induces an RDS instance delete chaos on the AWS RDS cluster. It derives the instance under chaos from the RDS cluster.
 
-
-:::tip Fault execution flow chart
 ![RDS Instance Delete](./static/images/rds-instance-delete.png)
-:::
 
+## Usage
+
+<details>
+<summary>View fault usage</summary>
+<div>
+It determines how quickly an application can recover from an unexpected cluster deletion. 
+</div>
+</details>
 
 ## Prerequisites
 
-:::info
-
 - Kubernetes >= 1.17
-
-**AWS RDS Access Requirement:**
-
 - AWS access to delete RDS instances.
-
 - Kubernetes secret that has the AWS access configuration(key) in the `CHAOS_NAMESPACE`. A sample secret file looks like:
 
 ```yaml
@@ -41,13 +41,10 @@ stringData:
 
 - If you change the secret key name (from `cloud_config.yml`), update the `AWS_SHARED_CREDENTIALS_FILE` environment variable value in the ChaosExperiment CR with the same name.
 
-## Default Validations
-
-:::info
+## Default validations
 
 - The RDS instance should be in a healthy state.
 
-:::
 
 ## Fault tunables
 
@@ -111,7 +108,7 @@ stringData:
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
 ### Common and AWS specific tunables
 

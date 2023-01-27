@@ -1,46 +1,35 @@
 ---
 id: ecs-container-memory-hog
-title: ECS Container Memory Hog
+title: ECS container memory hog
 ---
 
-## Introduction
+ECS container memory hog disrupts the state of infrastructure resources. It induces stress on the AWS ECS container using Amazon SSM Run command, which is carried out using SSM docs which is in-built into the fault.
+- It causes memory stress on the containers of the ECS task using the given `CLUSTER_NAME` environment variable for a specific duration.
+- To select the Task Under Chaos (TUC), use the service name associated with the task. If you provide the service name along with the cluster name, all the tasks associated with the given service will be selected as chaos targets.
+- It tests the ECS task sanity (service availability) and recovery of the task containers subject to memory stress.
 
-- ECS Container Memory hog contains chaos to disrupt the state of infra resources. The fault can induce a stress chaos on AWS ECS container using Amazon SSM Run Command, this is carried out by using SSM Docs which is in-built in the fault for the give chaos scenario.
 
-- It causes memory chaos on containers of ECS task with given cluster name using an SSM docs for a certain chaos duration.
-
-- To select the Task Under Chaos (TUC) you can make use of servie name associated with the task that is, if you provide the service name along with cluster name only all the tasks associated with the given service will be selected as chaos targets.
-
-- It tests the ECS task sanity (service availability) and recovery of the task containers subjected to memory stress.
-
-:::tip Fault execution flow chart
 ![ECS Container Memory Hog](./static/images/ecs-stress-chaos.png)
-:::
 
-## Uses
+
+## Usage
 
 <details>
-<summary>View the uses of the fault</summary>
+<summary>View fault usage</summary>
 <div>
-Memory usage within containers is subject to various constraints. If the limits are specified in their spec, exceeding them can cause termination of the container (due to OOMKill of the primary process, often pid 1) - the restart of the container by docker, subject to the policy specified. For containers with no limits placed, the memory usage is uninhibited until such time as the VM level OOM Behaviour takes over. In this case, containers on the Instance can be killed based on their oom_score. This eval is extended to all task containers running on the instance - thereby causing a bigger blast radius.
-
-This fault launches a stress process within the target container - which can cause either the primary process in the container to be resource constrained in cases where the limits are enforced OR eat up available system memory on the instance in cases where the limits are not specified.
+Memory usage inside containers is subject to constraints. If the limits are specified, exceeding them can result in termination of the container (due to OOMKill of the primary process, often pid 1).
+The container is restarted, depending on the policy specified.
+When there are no limits on the memory consumption of containers, containers on the instance can be killed based on their oom_score, which extends to all the task containers running on the instance. This results in a bigger blast radius.  
+This fault launches a stress process within the target container, that causes the primary process in the container to have constraints based on resources or eat up the available system memory on the instance when limits on resources are not specified. 
 </div>
 </details>
 
 ## Prerequisites
 
-:::info
-
-- Ensure that Kubernetes Version >= 1.17
-
-**AWS EC2 Access Requirement:**
-
-- Ensure that the ECS container metadata is enabled this feature is disabled by default. To enable it please follow the aws docs to [Enabling container metadata](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-metadata.html). If you have your task running prior this activity you may need to restart it to get the metadata directory as mentioned in the docs.
-
-- Ensure that both you and ECS cluster instances have a Role with required AWS access to do SSM and ECS operations. Refer the below mentioned sample policy for the fault (please note that the sample policy can be minimised further). To know more checkout [Systems Manager Docs](https://docs.aws.amazon.com/systems-manager/latest/userguide/setup-launch-managed-instance.html). Also, please refer the below mentioned policy required for the experiment.
-
-- Ensure to create a Kubernetes secret having the AWS access configuration(key) in the `CHAOS_NAMESPACE`. A sample secret file looks like:
+- Kubernetes >= 1.17
+- ECS container metadata is enabled (disabled by default). To enable it, refer to this [docs](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-metadata.html). If your task is running from before, you may need to restart it to get the metadata directory.
+- You and the ECS cluster instances have a role with the required AWS access to perform the SSM and ECS operations. Refer to [systems manager docs](https://docs.aws.amazon.com/systems-manager/latest/userguide/setup-launch-managed-instance.html).
+- Create a Kubernetes secret that has the AWS access configuration(key) in the `CHAOS_NAMESPACE`. Below is a sample secret file:
 
 ```yaml
 apiVersion: v1
@@ -56,22 +45,19 @@ stringData:
     aws_secret_access_key = XXXXXXXXXXXXXXX
 ```
 
-- If you change the secret key name (from `cloud_config.yml`) please also update the `AWS_SHARED_CREDENTIALS_FILE` ENV value in the ChaosExperiment CR with the same name.
-:::
+- If you change the secret key name (from `cloud_config.yml`), ensure that you update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the chaos experiment with the new name.
 
-## Default Validations
 
-:::info
+## Default validations
 
-- ECS container instance should be in healthy state.
+- ECS container instance should be in a healthy state.
 
-:::
 
-## Fault Tunables
+## Fault tunables
 
 <details>
-    <summary>Check the Fault Tunables</summary>
-    <h2>Mandatory Fields</h2>
+    <summary>Fault tunables</summary>
+    <h2>Mandatory fields</h2>
     <table>
         <tr>
         <th> Variables </th>
@@ -80,16 +66,16 @@ stringData:
         </tr>
         <tr> 
         <td> CLUSTER_NAME </td>
-        <td> Name of the target ECS cluster</td>
-        <td> Eg. cluster-1 </td>
+        <td> Name of the target ECS cluster.</td>
+        <td> For example, <code>cluster-1</code>. </td>
         </tr>
         <tr>
         <td> REGION </td>
-        <td> The region name of the target ECS cluster</td>
-        <td> Eg. us-east-1 </td>
+        <td> Region name of the target ECS cluster.</td>
+        <td> For example, <code>us-east-1</code>. </td>
         </tr>
     </table>
-    <h2>Optional Fields</h2>
+    <h2>Optional fields</h2>
     <table>
       <tr>
         <th> Variables </th>
@@ -98,53 +84,53 @@ stringData:
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The total time duration for chaos insertion (sec) </td>
-        <td> Defaults to 30s </td>
+        <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
+        <td> Defaults to 30s. </td>
       </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>
-        <td> The interval (in sec) between successive instance termination.</td>
-        <td> Defaults to 30s </td>
+        <td> The interval between successive instance terminations (in seconds).</td>
+        <td> Defaults to 30s. </td>
       </tr>
       <tr> 
         <td> AWS_SHARED_CREDENTIALS_FILE </td>
-        <td> Provide the path for aws secret credentials</td>
-        <td> Defaults to <code>/tmp/cloud_config.yml</code> </td>
+        <td> Path to the AWS secret credentials.</td>
+      <td> Defaults to <code>/tmp/cloud_config.yml</code>. </td>
       </tr>
       <tr> 
-        <td>  MEMORY_CONSUMPTION </td>
-        <td> Provide the value of memory consumption in Mebibytes	</td>
-        <td> Defaults to 100 </td>
+        <td> MEMORY_CONSUMPTION </td>
+        <td> Memory consumed (in mebibytes).</td>
+        <td> Defaults to 100. </td>
       </tr>
       <tr> 
-        <td>  MEMORY_PERCENTAGE </td>
-        <td> Provide the value of memory consumption in Percentage	</td>
-        <td> Defaults to 0 </td>
+        <td> MEMORY_PERCENTAGE </td>
+        <td> Memory consumed (in percentage).	</td>
+        <td> Defaults to 0. </td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
-        <td> It defines sequence of chaos execution for multiple instance</td>
-        <td> Default value: parallel. Supported: serial, parallel </td>
+        <td> Sequence of chaos execution for multiple instances.</td>
+        <td> Defaults to parallel. Supports serial sequence as well. </td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
-        <td> Period to wait before and after injection of chaos in sec </td>
-        <td> Eg. 30 </td>
+        <td> Period to wait before and after injecting chaos (in seconds).  </td>
+        <td> For example, 30s. </td>
       </tr>
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common and AWS specific tunables
+### Common and AWS-specific tunables
 
-Refer the [common attributes](../common-tunables-for-all-faults) and [AWS specific tunable](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
+Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS specific tunable](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
 
-### Memory Percentage
+### Memory percentage
 
-It stresses the `MEMORY_PERCENTAGE` percent of memory from the targeted container for the `TOTAL_CHAOS_DURATION` duration.
+It specifies the memory consumed by the target container (in terms of percenage) for a duration specified by `TOTAL_CHAOS_DURATION` environment variable. You can tune it using the `MEMORY_PERCENTAGE` environment variable.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/ecs-stress-chaos/memory-percentage.yaml yaml)
 ```yaml
@@ -169,11 +155,11 @@ spec:
           value: '60'
 ```
 
-### Memory Consumption
+### Memory consumption
 
-It stresses the `MEMORY_CONSUMPTION` MB memory of the targeted container for the `TOTAL_CHAOS_DURATION` duration.
+It specifies the memory consumed by the target container (in terms of mebibytes) for a duration specified by `TOTAL_CHAOS_DURATION` environment variable. You can tune it using the `MEMORY_CONSUMPTION` environment variable. 
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/ecs-stress-chaos/memory-consumption.yaml yaml)
 ```yaml
@@ -198,11 +184,11 @@ spec:
           value: '60'
 ```
 
-### Workers For Stress
 
-The worker's count for the stress can be tuned with `NUMBER_OF_WORKERS` ENV
+### Workers for stress
 
-Use the following example to tune this:
+It specifies the worker's count to apply stress. You can tune it using the `NUMBER_OF_WORKERS` environment variable.
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/ecs-stress-chaos/memory-number-of-worker.yaml yaml)
 ```yaml

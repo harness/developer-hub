@@ -1,31 +1,27 @@
 ---
 id: lambda-update-function-timeout
-title: Lambda Update Function Timeout
+title: Lambda update function timeout
 ---
 
-## Introduction
+Lambda update function timeout causes timeout of a Lambda function to be updated to a specified value for a certain duration.
+- It checks the performance of the application (or service) running with a new timeout.
+- It also helps determine a safe overall timeout value for the function.
 
-- It causes the timeout of a lambda function to be updated to a specified value for a certain chaos duration.
-- It checks the performance of the application/service running with a new timeout and also helps to determine a safe overall timeout value for the function.
 
-:::tip Fault execution flow chart
 ![Lambda Update Function Timeout](./static/images/lambda-update-function-timeout.png)
-:::
 
-## Uses
+
+## Usage
 
 <details>
-<summary>View the uses of the fault</summary>
+<summary>View fault usage</summary>
 <div>
 Hitting a timeout is a very common and frequent scenario we find with lambda functions that can break the service and impacts their delivery. Such scenarios can still occur despite whatever availability aids AWS provides or we determine.
-
 Getting timeout errors interrupts the flow of the given function. So this category of chaos fault helps you to build the immunity of the application undergoing any such scenarios.
 </div>
 </details>
 
 ## Prerequisites
-
-:::info
 
 - Kubernetes >= 1.17
 - Access to operate AWS Lambda service.
@@ -49,11 +45,7 @@ stringData:
 
 ## Default Validations
 
-:::info
-
-- The Lambda function should be up and running.
-
-:::
+- Lambda function should be up and running.
 
 ## Experiment Tunables
 

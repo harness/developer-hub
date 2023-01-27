@@ -1,45 +1,36 @@
 ---
 id: ecs-container-network-loss
-title: ECS Container Network Loss
+title: ECS container network loss
 ---
 
-## Introduction
-
-- ECS Container Network Loss contains chaos to disrupt the state of infra resources. The fault can induce chaos on AWS ECS container using Amazon SSM Run Command, this is carried out by using SSM Docs which is in-built in the fault for the give chaos scenario.
-
-- It causes network chaos on containers of ECS task with given cluster name using an SSM docs for a certain chaos duration.
-
-- To select the Task Under Chaos (TUC) you can make use of servie name associated with the task that is, if you provide the service name along with cluster name only all the tasks associated with the given service will be selected as chaos targets.
-
+ECS container network loss disrupts the state of infrastructure resources. 
+- The fault induces chaos on the AWS ECS container using Amazon SSM Run command, which is carried out using SSM docs that comes in-built in the fault.
+- It causes network disruption on containers of the ECS task in the cluster name.
+- To select the Task Under Chaos (TUC), use the service name associated with the task. If you provide the service name along with cluster name, all the tasks associated with the given service will be selected as chaos targets.
 - It tests the ECS task sanity (service availability) and recovery of the task containers subjected to network chaos.
 
-:::tip Fault execution flow chart
-![ECS Container Network Loss](./static/images/ecs-network-chaos.png)
-:::
 
-## Uses
+![ECS Container Network Loss](./static/images/ecs-network-chaos.png)
+
+
+## Usage
 
 <details>
-<summary>View the uses of the fault</summary>
+<summary>View fault usage</summary>
 <div>
-The fault causes network degradation of the task container without the container being marked unhealthy/unworthy of traffic from outside. The idea of this fault is to simulate issues within your ECS task network OR communication across services in different availability zones/regions etc.
-
-Mitigation (in this case keep the timeout i.e., network loss value low) could be via some middleware that can switch traffic based on some SLOs/perf parameters. If such an arrangement is not available the next best thing would be to verify if such a degradation is highlighted via notification/alerts etc,. so the admin/SRE has the opportunity to investigate and fix things. Another utility of the test would be to see what the extent of impact caused to the end-user OR the last point in the app stack on account of degradation in access to a downstream/dependent microservice. Whether it is acceptable OR breaks the system to an unacceptable degree. The fault provides NETWORK_PACKET_LOSS_PERCENTAGE so that you can control the chaos against specific services within or outside the cluster.
-
-The task may stall or get corrupted while they wait endlessly for a packet. The fault limits the impact (blast radius) to only the traffic you want to test by specifying service to find TUC (Task Under Chaos). This fault will help to improve the resilience of your services over time.
+This degrades the network of the task container without the container being marked as unhealthy/ (or unworthy) of traffic. It simulates issues within the ECS task network or communication across services in different availability zones (or regions).
+This can be resolved using middleware that switches traffic based on certain SLOs (or performance parameters).
+This can also be resolved by highlighting the degradation using notifications (or alerts).
+It also determines the impact of the fault on the microservice. 
+The task may stall or get corrupted while waiting endlessly for a packet. The fault limits the impact (blast radius) to only the traffic you wish to test by specifying the service to find TUC (Task Under Chaos). This fault helps improve the resilience of the services over time.
 </div>
 </details>
 
 ## Prerequisites
 
-:::info
-
-- Ensure that Kubernetes Version >= 1.17
-
-**AWS EC2 Access Requirement:**
-
-- Ensure that you have sufficient AWS access to stop and start an EC2 instance.
-- Ensure to create a Kubernetes secret having the AWS access configuration(key) in the `CHAOS_NAMESPACE`. A sample secret file looks like:
+- Kubernetes >= 1.17
+- Adequate AWS access to stop and start an EC2 instance.
+- Create a Kubernetes secret that has the AWS access configuration(key) in the `CHAOS_NAMESPACE`. Below is a sample secret file:
 
 ```yaml
 apiVersion: v1
@@ -55,21 +46,18 @@ stringData:
     aws_secret_access_key = XXXXXXXXXXXXXXX
 ```
 
-- If you change the secret key name (from `cloud_config.yml`) please also update the `AWS_SHARED_CREDENTIALS_FILE` ENV value in the ChaosExperiment CR with the same name.
-:::
+- If you change the secret key name (from `cloud_config.yml`), ensure that you update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the chaos experiment with the new name.
 
-## Default Validations
 
-:::info
+## Default validations
+- ECS container instance should be in a healthy state.
 
-- EC2 instance should be in healthy state.
-:::
 
-## Fault Tunables
+## Fault tunables
 
 <details>
-    <summary>Check the Fault Tunables</summary>
-    <h2>Mandatory Fields</h2>
+    <summary>Fault tunables</summary>
+    <h2>Mandatory fields</h2>
     <table>
         <tr>
         <th> Variables </th>
@@ -79,15 +67,15 @@ stringData:
         <tr> 
         <td> CLUSTER_NAME </td>
         <td> Name of the target ECS cluster</td>
-        <td> Eg. cluster-1 </td>
+        <td> For example, cluster-1 </td>
         </tr>
         <tr>
         <td> REGION </td>
         <td> The region name of the target ECS cluster</td>
-        <td> Eg. us-east-1 </td>
+        <td> For example, us-east-1 </td>
         </tr>
     </table>
-    <h2>Optional Fields</h2>
+    <h2>Optional fields</h2>
     <table>
       <tr>
         <th> Variables </th>
@@ -96,8 +84,8 @@ stringData:
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The total time duration for chaos insertion (sec) </td>
-        <td> Defaults to 30s </td>
+        <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
+        <td> Defaults to 30s. </td>
       </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>
@@ -132,27 +120,27 @@ stringData:
       <tr>
         <td> SEQUENCE </td>
         <td> It defines sequence of chaos execution for multiple instance</td>
-        <td> Default value: parallel. Supported: serial, parallel </td>
+        <td> Defaults to parallel. Supports serial sequence as well. </td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
-        <td> Period to wait before and after injection of chaos in sec </td>
-        <td> Eg. 30 </td>
+        <td> Period to wait before and after injecting chaos (in seconds).  </td>
+        <td> For example, 30 </td>
       </tr>
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common and AWS specific tunables
+### Common and AWS-specific tunables
 
-Refer the [common attributes](../common-tunables-for-all-faults) and [AWS specific tunable](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
+Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS specific tunable](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
 
 ### Network loss
 
-It defines the network loss(in ms) to be injected in the targeted container. It can be tuned via `NETWORK_PACKET_LOSS_PERCENTAGE` ENV.
+It defines the network loss(in ms) to be injected in the targeted container. You can tune it using the `NETWORK_PACKET_LOSS_PERCENTAGE` ENV.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/ecs-network-chaos/network-loss.yaml yaml)
 ```yaml
@@ -177,11 +165,11 @@ spec:
           value: '60'
 ```
 
-### Network Interface
+### Network interface
 
-The defined name of the ethernet interface, which is considered for shaping traffic. It can be tuned via `NETWORK_INTERFACE` ENV. Its default value is `eth0`.
+The defined name of the ethernet interface, which is considered for shaping traffic. You can tune it using the `NETWORK_INTERFACE` ENV. Its default value is `eth0`.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/ecs-network-chaos/loss-network-interface.yaml yaml)
 ```yaml
@@ -207,14 +195,14 @@ spec:
 ```
 
 
-### Destination IPs And Destination Hosts
+### Destination IPs and destination hosts
 
 The network faults interrupt traffic for all the IPs/hosts by default. The interruption of specific IPs/Hosts can be tuned via `DESTINATION_IPS` and `DESTINATION_HOSTS` ENV.
 
 - `DESTINATION_IPS`: It contains the IP addresses of the services or pods or the CIDR blocks(range of IPs), the accessibility to which is impacted.
 - `DESTINATION_HOSTS`: It contains the DNS Names/FQDN names of the services, the accessibility to which, is impacted.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/ecs-network-chaos/loss-destination-ip-and-hosts.yaml yaml)
 ```yaml
