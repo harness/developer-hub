@@ -2,9 +2,7 @@
 id: pod-memory-hog-exec
 title: Pod memory hog exec
 ---
-Pod memory hog exec is a Kubernetes pod-level chaos fault that:
-
-- Consumes Memory resources on the application container on specified memory in megabytes.
+Pod memory hog exec is a Kubernetes pod-level chaos fault that consumes memory resources on the application container on specified memory in megabytes.
 - It simulates conditions where app pods experience Memory spikes either due to expected/undesired processes thereby testing how the overall application stack behaves when this occurs.
 
 ![Pod Memory Hog Exec](./static/images/pod-stress.png)
@@ -14,15 +12,16 @@ Pod memory hog exec is a Kubernetes pod-level chaos fault that:
 <details>
 <summary>View fault usage</summary>
 <div>
-Memory usage within containers is subject to various constraints in Kubernetes. If the limits are specified in their spec, exceeding them can cause termination of the container (due to OOMKill of the primary process, often pid 1) - the restart of the container by kubelet, subject to the policy specified. For containers with no limits placed, the memory usage is uninhibited until such time as the Node level OOM Behaviour takes over. In this case, containers on the node can be killed based on their oom_score and the QoS class a given pod belongs to (bestEffort ones are first to be targeted). This eval is extended to all pods running on the node - thereby causing a bigger blast radius. 
+Memory usage within containers is subject to various constraints in Kubernetes. If the limits are specified in their spec, exceeding them results in termination of the container (due to OOMKill of the primary process, often pid 1).
+This restarts container dependng on policy specified. For containers with no limits on memory, node can be killed based on their oom_score. This results in a bigger blast radius. 
 
-This fault launches a stress process within the target container - which can cause either the primary process in the container to be resource constrained in cases where the limits are enforced OR eat up available system memory on the node in cases where the limits are not specified.
+This fault causes stress within the target container, which may result in the primary process in the container to be constrained or eat up the available system memory on the node.
 </div>
 </details>
 
 ## Prerequisites
 
-- Kubernetes> 1.16.
+- Kubernetes > 1.16.
 
 
 ## Default validations
@@ -72,7 +71,7 @@ The application pods should be in running state before and after chaos injection
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before injection of chaos in sec </td>
-        <td> For example, 30 </td>
+        <td> For example, 30s. </td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
@@ -90,7 +89,7 @@ Refer to the [common attributes](../../common-tunables-for-all-faults) and [pod-
 ### Memory consumption
 
 It specifies the amount of memory consumed by the tatget pod for a duration specified by the `TOTAL_CHAOS_DURATION` environment variable. You can tune it using the `MEMORY_CONSUMPTION` environment variable.
-The memory consumption limit is 2000MB
+The memory consumption limit is 2000 MB.
 
 Use the following example to tune it:
 

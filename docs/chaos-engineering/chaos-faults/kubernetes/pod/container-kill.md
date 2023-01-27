@@ -19,7 +19,7 @@ It tests an application's deployment sanity (replica availability and uninterrup
 </details>
 
 ## Prerequisites
-- Kubernetes> 1.16.
+- Kubernetes > 1.16.
 
 
 ## Default validations
@@ -39,13 +39,13 @@ The application pods should be in running state before and after chaos injection
       </tr>
       <tr>
         <td> TARGET_CONTAINER </td>
-        <td> Name of the container to be killed inside the pod </td>
+        <td> Name of the container that is killed inside the pod. </td>
         <td> If it is not provided, the fault deletes first container. </td>
       </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>
-        <td> Time interval b/w two successive container kill (in sec) </td>
-        <td> If the CHAOS_INTERVAL is not provided it will take the default value of 10s </td>
+        <td> Time interval between two successive container kills (in seconds). </td>
+        <td> Defaults to 10s. </td>
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
@@ -59,18 +59,18 @@ The application pods should be in running state before and after chaos injection
       </tr> 
       <tr>
         <td> TARGET_PODS </td>
-        <td> Comma separated list of application pod name subjected to container kill chaos</td>
-        <td> If not provided, it will select target pods randomly based on provided appLabels</td>
+        <td> Comma-separated list of application pod name subject to container kill.</td>
+        <td> If it is not provided, target pods are randomly based on appLabels provided. </td>
       </tr>
       <tr>
         <td> LIB_IMAGE </td>
-        <td> LIB Image used to kill the container </td>
-        <td> Defaults to <code>litmuschaos/go-runner:latest</code></td>
+        <td> Image used to kill the container. </td>
+        <td> Defaults to <code>litmuschaos/go-runner:latest</code>. </td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
-        <td> Period to wait before injection of chaos in sec </td>
-        <td> For example, 30 </td>
+        <td> Period to wait before injecting chaos (in seconds). </td>
+        <td> For example, 30s. </td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
@@ -80,17 +80,17 @@ The application pods should be in running state before and after chaos injection
       <tr>
         <td> SIGNAL </td>
         <td> It contains termination signal used for container kill </td>
-        <td> Default value: SIGKILL </td>
+        <td> Defaults to SIGKILL. </td>
       </tr>
       <tr>
         <td> SOCKET_PATH </td>
-        <td> Path of the containerd/crio/docker socket file </td>
-        <td> Defaults to `/var/run/docker.sock` </td>
+        <td> Path to the <code>containerd/crio/docker</code> socket file. </td>
+        <td> Defaults to <code>/var/run/docker.sock</code>. </td>
       </tr>
       <tr>
         <td> CONTAINER_RUNTIME </td>
-        <td> container runtime interface for the cluster</td>
-        <td>  Defaults to docker, supported values: docker, containerd and crio for litmus and only docker for pumba LIB </td>
+        <td> Container runtime interface for the cluster. </td>
+        <td> Defaults to docker. Supported docker, containerd and crio.</td>
       </tr>
     </table>
 </details>
@@ -134,10 +134,10 @@ spec:
 
 ### Container runtime and socket path
 
-It defines the `CONTAINER_RUNTIME` and `SOCKET_PATH` ENV to set the container runtime and socket file path:
+It defines the `CONTAINER_RUNTIME` and `SOCKET_PATH` environment variable that help set the container runtime and socket file path, respectively.
 
 - `CONTAINER_RUNTIME`: It supports `docker`, `containerd`, and `crio` runtimes. The default value is `docker`.
-- `SOCKET_PATH`: It contains path of docker socket file by default(`/var/run/docker.sock`). For other runtimes provide the appropriate path.
+- `SOCKET_PATH`: It contains the path of the docker socket file by default(`/var/run/docker.sock`). For `containerd`, use `/var/containerd/containerd.sock`, and for `crio`, use 
 
 [embedmd]: # "./static/manifests/container-kill/container-runtime-and-socket-path.yaml yaml"
 
@@ -173,7 +173,7 @@ spec:
 
 ### Signal for kill
 
-It defines the Linux signal passed while killing the container. You can tune it using the `SIGNAL` ENV. It defaults to the `SIGTERM`.
+It defines the Linux signal passed while killing the container. You can tune it using the `SIGNAL` environment variable. Its default value is set to `SIGTERM`.
 
 [embedmd]: # "./static/manifests/container-kill/signal.yaml yaml"
 

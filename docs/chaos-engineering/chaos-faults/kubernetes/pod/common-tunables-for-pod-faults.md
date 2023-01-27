@@ -1,7 +1,7 @@
 ---
-title: Common Pod Fault Tunables
+title: Common pod fault tunables
 ---
-Fault tunables which are common to all pod-level faults are listed here. These tunables can be provided at `.spec.experiment[*].spec.components.env` in chaosengine.
+Fault tunables which are common to all pod-level faults are listed here. These tunables can be provided at `.spec.experiment[*].spec.components.env` in the chaosengine.
 
 ### Target specific pods
 
@@ -36,7 +36,7 @@ spec:
 
 ### Pod affected percentage
 
-It defines the percentage of pods subject to chaos with matching labels provided at `.spec.appinfo.applabel` inside the chaosengine. You can tune it using the `PODS_AFFECTED_PERC` environment variable. If `PODS_AFFECTED_PERC` is set to `empty` or `0`, then it targets a minimum of one pod.
+It defines the percentage of pods subject to chaos with matching the labels provided at `.spec.appinfo.applabel` inside the chaosengine. You can tune it using the `PODS_AFFECTED_PERC` environment variable. If `PODS_AFFECTED_PERC` is set to `empty` or `0`, it targets a minimum of one pod.
 
 Use the following example to tune it:
 
@@ -68,7 +68,7 @@ spec:
 
 ### Target specific container
 
-It defines the name of the target container subject to chaos. You can tune it using the `TARGET_CONTAINER` environment variable. If `TARGET_CONTAINER` is set to `empty`, then it uses the first container of the target pod.
+It defines the name of the target container subject to chaos. You can tune it using the `TARGET_CONTAINER` environment variable. If `TARGET_CONTAINER` is set to `empty`, it uses the first container of the target pod.
 
 Use the following example to tune it:
 
@@ -132,7 +132,7 @@ spec:
 
 It defines the target application pod selection from a specific node. It is helpful in cases where you do not wish to select the pods scheduled on specific nodes as chaos candidates considering the pod affected percentage. You can tune it using the `NODE_LABEL` environment variable.
 
-<b>NOTE: This feature requires having node-level permission or cluster role service account to filter pods on a specific node.</b>
+<b>This feature requires node-level permission or cluster role service account to filter pods on a specific node.</b>
 
 <table>
   <tr>
@@ -145,30 +145,30 @@ It defines the target application pod selection from a specific node. It is help
     <td>Provided</td>
     <td>Provided</td>
     <td>Provided</td>
-    <td>The target pods that are filtered from applabel and reside on the node containing the given node label, provided in the TARGET_PODS environment variable is selected. </td>
+    <td>The target pods that are filtered from applabel which reside on the node containing the given node label. It is specified using the <code>TARGET_PODS</code> environment variable. </td>
   </tr>
    <tr>
     <td>Provided</td>
     <td>Not Provided</td>
     <td>Provided</td>
-    <td>The pods that are filtered from applabel and reside on the node containing the given node label is selected. </td>
+    <td>The pods filtered from applabel that reside on the node containing the given node label is selected. </td>
   </tr>
    <tr>
-    <td>Not Provided</td>
+    <td>Not provided</td>
     <td>Provided</td>
     <td>Provided</td>
-    <td>The target pods are selected that resides on node with given node label </td>
+    <td>The target pods that are selected reside on the node with given node label. </td>
   </tr>
   <tr>
-    <td>Not Provided</td>
-    <td>Not Provided</td>
+    <td>Not provided</td>
+    <td>Not provided</td>
     <td>Provided</td>
     <td>Invalid</td>
   </tr>
   <tr>
-    <td>Not Provided</td>
-    <td>Not Provided</td>
-    <td>Not Provided</td>
+    <td>Not provided</td>
+    <td>Not provided</td>
+    <td>Not provided</td>
     <td>Invalid</td>
   </tr>
 </table>

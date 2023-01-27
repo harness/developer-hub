@@ -2,11 +2,9 @@
 id: pod-network-partition
 title: Pod network partition
 ---
-## Introduction
-- It blocks the 100% Ingress and Egress traffic of the target application by creating network policy.
-- It can test the application's resilience to lossy/flaky network.
+Pod network partition is a Kubernetes pod-level fault that blocks 100% ingress and egress traffic of the target application by creating network policy.
+- It can test the application's resilience to lossy (or flaky) network.
 
-tip Fault execution flow chart
 ![Pod Network Partition](./static/images/network-chaos.png)
 
 
@@ -14,13 +12,13 @@ tip Fault execution flow chart
 <details>
 <summary>View fault usage</summary>
 <div>
-Coming soon.
+It can test the application's resilience to lossy (or flaky) network.
 </div>
 </details>
 
 ## Prerequisites
 
-- Kubernetes> 1.16.
+- Kubernetes > 1.16.
 
 
 ## Default validations
@@ -84,7 +82,7 @@ The application pods should be in running state before and after chaos injection
 ## Fault examples
 
 ### Common and pod-specific tunables
-Refer the [common attributes](../../common-tunables-for-all-faults) and [Pod specific tunable](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
+Refer to the [common attributes](../../common-tunables-for-all-faults) and [pod-specific tunables](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
 
 ### Destination IPs and destination hosts
 
@@ -233,8 +231,6 @@ spec:
 ### Destination ports
 
 The network partition fault interrupt traffic for all the external ports by default. Access to specific port(s) can be allowed by providing comma separated list of ports inside `PORTS` ENV.
-
-Note:
 
 - If `PORT` is not set and none of the pod-selector, namespace-selector and destination_ips are provided then it will block traffic for all ports for all pods/ips
 - If `PORT` is not set but any of the podselector, nsselector and destination ips are provided then it will allow all ports for all the pods/ips filtered by the specified selectors

@@ -15,13 +15,13 @@ Disk fill is a Kubernetes pod-level chaos fault that applies disk stress by fill
 <details>
 <summary>View fault usage</summary>
 <div>
-This fault tests the ephemeral storage limits and ensures that the parameters are sufficient.
+This fault tests the ephemeral storage limits and determines the resilience of the application to unexpected storage exhaustions.
 </div>
 </details>
 
 ## Prerequisites
 
-- Kubernetes> 1.16.
+- Kubernetes > 1.16.
 - Adequate Ephemeral storage requests and limits should be set for the application before running the fault. An example specification is shown below:
     ```yaml
     apiVersion: v1

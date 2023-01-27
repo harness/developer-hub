@@ -3,9 +3,9 @@ id: pod-http-status-code
 title: Pod HTTP status code
 ---
 
-## Introduction
-- It injects http status code chaos inside the pod which modifies the status code of the response from the provided application server to desired status code provided by user on the service whose port is provided as `TARGET_SERVICE_PORT` by starting proxy server and then redirecting the traffic through the proxy server.
-- It can test the application's resilience to error code http responses from the provided application server.
+Pod HTTP status code is a Kubernetes pod-level fault injects chaos inside the pod by modifying the status code of the response from the application server to the desired status code provided by the user.
+- The port for the service is specified using the `TARGET_SERVICE_PORT` environment variable by starting the proxy server and redirecting the traffic through the proxy server.
+- It tests the application's resilience to error code HTTP responses from the provided application server.
 
 tip Fault execution flow chart
 ![Pod HTTP Status Code](./static/images/pod-http.png)
@@ -15,7 +15,7 @@ tip Fault execution flow chart
 <details>
 <summary>View fault usage</summary>
 <div>
-Coming soon.
+It tests the application's resilience to error code HTTP responses from the provided application server.
 </div>
 </details>
 
@@ -141,7 +141,7 @@ The application pods should be in running state before and after chaos injection
 ## Fault examples
 
 ### Common and pod-specific tunables
-Refer the [common attributes](../../common-tunables-for-all-faults) and [Pod specific tunable](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
+Refer to the [common attributes](../../common-tunables-for-all-faults) and [pod-specific tunables](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
 
 ### Target service port
 

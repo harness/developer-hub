@@ -3,10 +3,8 @@ id: pod-network-latency
 title: Pod network latency
 ---
 
-Pod network latency is a Kubernetes pod-level chaos fault that:
-
-- It introduces latency (delay) to a specific container by initiating a traffic control (tc) process with netem rules to add egress delays.
-- It tests the application's resilience to lossy/flaky networks.
+Pod network latency is a Kubernetes pod-level chaos fault that introduces latency (delay) to a specific container by initiating a traffic control (tc) process with netem rules to add egress delays.
+- It tests the application's resilience to lossy (or flaky) networks.
 
 ![Pod Network Latency](./static/images/network-chaos.png)
 
@@ -15,11 +13,12 @@ Pod network latency is a Kubernetes pod-level chaos fault that:
 <details>
 <summary>View fault usage</summary>
 <div>
-The fault causes network degradation without the pod being marked unhealthy/unworthy of traffic by kube-proxy (unless you have a liveness probe of sorts that measures latency and restarts/crashes the container). The idea of this fault is to simulate issues within your pod network OR microservice communication across services in different availability zones/regions etc. 
+The fault degrades the network without the pod being marked as unhealthy (or unworthy) of traffic by kube-proxy (unless there is a liveness probe that measures thw latency and restarts (or crashes) the container). This fault simulates issues within the pod network (or microservice communication) across services in different availability zones(or regions). 
 
-Mitigation (in this case keep the timeout i.e., access latency low) could be via some middleware that can switch traffic based on some SLOs/perf parameters. If such an arrangement is not available the next best thing would be to verify if such a degradation is highlighted via notification/alerts etc., so the admin/SRE has the opportunity to investigate and fix things. Another utility of the test would be to see what the extent of impact caused to the end-user OR the last point in the app stack on account of degradation in access to a downstream/dependent microservice. Whether it is acceptable OR breaks the system to an unacceptable degree. The fault provides `DESTINATION_IPS` or `DESTINATION_HOSTS` so that you can control the chaos against specific services within or outside the cluster.
+This can be resolved by using middleware that switches traffic based on certain SLOs or performance parameters. 
+Another way is to set up alerts and notifications to highlight a degradation, so that it can be addressed, and fixed. Another way is to understand the impact of the failure and determine the last point in the application stack before degradation. 
 
-The applications may stall or get corrupted while they wait endlessly for a packet. The fault limits the impact (blast radius) to only the traffic you want to test by specifying IP addresses or application information. This fault will help to improve the resilience of your services over time.
+The applications may stall or get corrupted while waiting endlessly for a packet. This fault limits the impact (blast radius) to only the traffic that you wish to test by specifying the IP addresses. This fault will help to improve the resilience of your services over time.
 </div>
 </details>
 
@@ -124,7 +123,7 @@ The application pods should be in running state before and after chaos injection
 ## Fault examples
 
 ### Common and pod-specific tunables
-Refer the [common attributes](../../common-tunables-for-all-faults) and [Pod specific tunable](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
+Refer to the [common attributes](../../common-tunables-for-all-faults) and [pod-specific tunables](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
 
 ### Network latency
 

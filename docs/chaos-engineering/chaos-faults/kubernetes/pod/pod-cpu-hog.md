@@ -3,9 +3,7 @@ id: pod-cpu-hog
 title: Pod CPU hog
 ---
 
-Pod CPU hog is a Kubernetes pod-level chaos fault that:
-
-- Excessively consumes CPU resources, resulting in a significant increase in the CPU resource usage of a pod.
+Pod CPU hog is a Kubernetes pod-level chaos fault that excessively consumes CPU resources, resulting in a significant increase in the CPU resource usage of a pod.
 - Simulates a situation where an application's CPU resource usage unexpectedly spikes.
 
 ![Pod CPU Hog](./static/images/pod-stress.png)
@@ -15,9 +13,9 @@ Pod CPU hog is a Kubernetes pod-level chaos fault that:
 <details>
 <summary>View fault usage</summary>
 <div>
-Disk Pressure or CPU hogs is another very common and frequent scenario we find in kubernetes applications that can result in the eviction of the application replica and impact its delivery. Such scenarios that can still occur despite whatever availability aids K8s provides. These problems are generally referred to as "Noisy Neighbour" problems.
-    
-Injecting a rogue process into a target container, we starve the main microservice process (typically pid 1) of the resources allocated to it (where limits are defined) causing slowness in application traffic or in other cases unrestrained use can cause node to exhaust resources leading to eviction of all pods. So this category of chaos fault helps to build the immunity on the application undergoing any such stress scenario.
+Disk pressure or CPU hog affects Kubernetes applications that results in the eviction of the application replica and impacts its delivery. These issues are referred to as "noisy neighbour" problems.
+
+Injecting a rogue process into a target container starves the main microservice (typically pid 1) of the resources allocated to it (where limits are defined). This slows down the application traffic or exhausts the resources leading to eviction of all pods. These faults helps build immunity to such stress cases.
 </div>
 </details>
 
