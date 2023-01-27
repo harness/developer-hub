@@ -18,12 +18,17 @@ Ensure the connected user account has the following permissions in the Nexus Ser
 * Nexus UI: Repository Browser
 
 ![](./static/nexus-connector-settings-reference-05.png)
-If used as a Docker Repo, the user needs:
+
+For Nexus 2, when used as a Docker Repo, the user needs:
 
 * List images and tags
 * Pull images
 
 See [Nexus Managing Security](https://help.sonatype.com/display/NXRM2/Managing+Security).
+
+For Nexus 3, when used as a Docker Repo, the user needs:
+
+- A role with the `nx-repository-view-*_*_*` privilege.
 
 ### Artifact Type Support
 
