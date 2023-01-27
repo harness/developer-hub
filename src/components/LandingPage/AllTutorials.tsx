@@ -460,11 +460,11 @@ const CEList: CardItem[] = [
     link: "/tutorials/run-chaos-experiments/integration-with-harness-cd",
   },
   {
-    title: "Your First Chaos Experiment Run Via APIs",
+    title: "Your first chaos experiment execution using APIs",
     module: "ce",
     icon: "/img/icon_ce.svg",
     description: (
-      <>Running a Chaos Experiment on Kubernetes for the first time via Chaos APIs.</>
+      <>Executing a chaos experiment on Kubernetes for the first time using APIs.</>
     ),
     newDoc: false,
     type: [docType.Documentation],
