@@ -1,6 +1,6 @@
 ---
 sidebar_position: 120
-description: Create a CI pipeline that runs a maven test and generates an allure report that you can view in the Harness UI.
+description: Create a CI pipeline that runs a Maven test and generates an Allure Report that you can view in the Harness UI.
 keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial, maven, Allure]
 ---
 
