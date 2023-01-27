@@ -6,7 +6,7 @@ keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial, maven, All
 
 # Publish an Allure Report to the Artifacts tab 
 
-This tutorial provides an example pipeline that builds a Java maven application and generates an allure report that you can view in the Harness UI. 
+This tutorial provides an example pipeline that builds a Java Maven application and generates an Allure Report that you can view in the Harness UI. 
 
 :::note
 
