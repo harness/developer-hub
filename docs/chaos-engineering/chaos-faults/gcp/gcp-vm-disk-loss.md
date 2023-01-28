@@ -41,7 +41,7 @@ stringData:
 
 
 ## Default validations
-- All the disk volumes are attached to their respective instances.
+All the disk volumes are attached to their respective instances.
 
 ## Fault tunables
 <details>

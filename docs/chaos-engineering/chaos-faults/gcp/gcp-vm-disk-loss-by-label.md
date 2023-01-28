@@ -39,7 +39,7 @@ stringData:
 ```
 
 ## Default validations
-- All the disk volumes that have the target label are attached to their respective instances.
+All the disk volumes that have the target label are attached to their respective instances.
 
 ## Fault tunables
 <details>

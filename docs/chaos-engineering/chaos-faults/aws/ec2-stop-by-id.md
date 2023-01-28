@@ -40,16 +40,49 @@ stringData:
     aws_secret_access_key = XXXXXXXXXXXXXXX
 ```
 
-- If you change the secret key name (from `cloud_config.yml`), ensure that you update the `AWS_SHARED_CREDENTIALS_FILE` environment variable value on `experiment.yaml` with the new name.
+- If you change the secret key name (from `cloud_config.yml`), ensure that you update the `AWS_SHARED_CREDENTIALS_FILE` environment variable on `experiment.yaml` with the new name.
 
 ### WARNING
 
 If the target EC2 instance is a part of a managed node group, drain the target node of any application running on it. Isolate the target node before running the fault so that the fault pods are not scheduled on it.
 
+## Permissions required
+
+Here is an example AWS policy to execute the fault.
+
+<details>
+<summary>View policy for the fault</summary>
+
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "ec2:StartInstances",
+                "ec2:StopInstances",
+                "ec2:DescribeInstanceStatus",
+                "ec2:DescribeInstances"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "autoscaling:DescribeAutoScalingInstances"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+```
+</details>
+
+Refer to the [superset permission/policy](./policy-for-all-aws-faults) to execute all AWS faults.
+
 ## Default validations
-
-
-- The EC2 instance should be in a healthy state.
+The EC2 instance should be in a healthy state.
 
 
 ## Fault tunables
@@ -113,7 +146,7 @@ If the target EC2 instance is a part of a managed node group, drain the target n
 
 ### Common and AWS-specific tunables
 
-Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS specific tunable](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
+Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
 
 ### Stop Instances By ID
 

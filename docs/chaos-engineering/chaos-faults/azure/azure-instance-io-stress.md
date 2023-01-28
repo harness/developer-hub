@@ -52,7 +52,7 @@ stringData:
 
 ## Default validations
 
-- Azure instance should be in a healthy state.
+Azure instance should be in a healthy state.
 
 
 ## Fault tunables

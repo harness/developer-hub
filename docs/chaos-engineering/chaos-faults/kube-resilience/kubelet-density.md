@@ -27,7 +27,7 @@ A common application failure is when the pressure on other replicas increases, h
 
 ## Default validations
 
-- The target nodes should be in a healthy state before and after injecting chaos.
+The target nodes should be in a healthy state before and after injecting chaos.
 
 ## Fault Tunables
 

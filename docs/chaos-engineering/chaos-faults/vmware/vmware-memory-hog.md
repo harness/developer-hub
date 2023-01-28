@@ -43,7 +43,7 @@ stringData:
 You can pass the VM credentials as secrets or as a `ChaosEngine` environment variable.
 
 ## Default validations
-- The VM should be in a healthy state.
+The VM should be in a healthy state.
 
 ## Fault tunables
 <details>

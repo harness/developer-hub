@@ -41,7 +41,7 @@ You can pass the VM credentials as secrets or as a `ChaosEngine` environment var
 
 
 ## Default validations
-- The VM should be in a healthy state.
+The VM should be in a healthy state.
 
 
 ## Fault tunables

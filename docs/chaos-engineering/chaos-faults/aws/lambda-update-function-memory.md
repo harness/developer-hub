@@ -42,8 +42,37 @@ stringData:
 
 - If you change the secret key name (from `cloud_config.yml`), update the `AWS_SHARED_CREDENTIALS_FILE` environment variable value on `experiment.yaml` with the same name.
 
+## Permissions required
+
+Here is an example AWS policy to execute the fault.
+
+<details>
+<summary>View policy for the fault</summary>
+
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "lambda:UpdateFunctionConfiguration",
+                "lambda:GetFunctionConcurrency",
+                "lambda:GetFunction",
+                "lambda:DeleteFunctionConcurrency",
+                "lambda:PutFunctionConcurrency"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+```
+</details>
+
+Refer to the [superset permission/policy](./policy-for-all-aws-faults) to execute all AWS faults.
+
 ## Default validations
-- The Lambda function should be up and running.
+The Lambda function should be up and running.
 
 ## Fault tunables
 
@@ -59,7 +88,7 @@ stringData:
       <tr>
         <td> FUNCTION_NAME </td>
         <td> Function name of the target lambda function. It supports single function name.</td>
-        <td> Eg: <code>test-function</code> </td>
+        <td> For example, <code>test-function</code> </td>
       </tr>
       <tr>
         <td> MEMORY_IN_MEGABYTES </td>
@@ -69,7 +98,7 @@ stringData:
       <tr>
         <td> REGION </td>
         <td> The region name of the target lambda function</td>
-        <td> Eg: <code>us-east-2</code> </td>
+        <td> For example, <code>us-east-2</code> </td>
       </tr>
     </table>
     <h2>Optional fields</h2>

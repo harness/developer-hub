@@ -51,7 +51,7 @@ stringData:
 - If you change the secret key name (from `azure.auth`), ensure that you update the `AZURE_AUTH_LOCATION` environment variable in the chaos experiment with the new name.
 
 ## Default validations
-- Azure instance should be in a healthy state.
+Azure instance should be in a healthy state.
 
 ## Fault tunables
 

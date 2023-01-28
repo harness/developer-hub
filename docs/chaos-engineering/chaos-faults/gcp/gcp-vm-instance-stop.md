@@ -40,7 +40,7 @@ stringData:
 ```
 
 ## Default validations
-- The VM instances should be in a healthy state.
+The VM instances should be in a healthy state.
 
 ## Fault tunables
 <details>

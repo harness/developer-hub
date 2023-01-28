@@ -40,7 +40,7 @@ stringData:
 You can pass the VM credentials as secrets or as a `ChaosEngine` environment variable.
 
 ## Default validations
-- The VM should be in a healthy state before and after injecting chaos.
+The VM should be in a healthy state before and after injecting chaos.
 
 
 ## Fault tunables

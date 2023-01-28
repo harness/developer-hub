@@ -39,7 +39,7 @@ stringData:
 ```
 
 ## Default validations
-- All the VM instances that contain the target label are in a healthy state.
+All the VM instances that contain the target label are in a healthy state.
 
 ## Fault tunables
 <details>
