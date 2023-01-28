@@ -13,6 +13,46 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
 
+## December 23, 2022, version 0.6
+
+## What’s new
+
+* Error boundary to avoid page crash (Chaos-843)
+    * This release adds an error boundary that avoids crashing the page when a component on the user interface is missing due to incompatibilities. Instead of the page crash, the component field is empty. 
+
+* Optimized listWorkflow and listWorkflowRun queries in the chaos manager (Chaos-860)
+    * This release optimizes the listWorkflow and listWorkflowRun queries in the chaos manager by only fetching those experiments that the user requests, instead of loading all the experiments at once.
+
+* Pagination on the faults and experiments screen (Chaos-689)
+    * This release adds pagination on the faults and experiment screen in ChaosHub that allows you to scroll and navigate through the experiments by pages. 
+
+* Enable save and run buttons on the experiment builder (Chaos-913)
+    * This release enables the save and run buttons after you tune the application by specifying the parameters on the user interface. As a consequence, the default weight is set to 10 since the user would not move to the next step of setting fault weights.
+ 
+* Experiment can be viewed during execution (Chaos-835)
+    * This release allows you to view the experiment even when it is being executed. Previously, an experiment could be viewed only after the run was complete.  
+
+* Edit chaos experiment is separated into two action components (Chaos-685)
+    * This release divides the edit experiment action into two actions: edit experiment and clone experiment. The edit experiment action helps you make changes to the current (or selected) experiment. The clone experiment action helps the user create a new experiment from an already existing experiment. The cloned experiment retains the same configuration as the original experiment with the ability to tune the configurations if required.
+
+## Early access
+* There are no early access features in this release. 
+
+## Fixed issues
+* Experiments executed and triggered by respective categories (a pipeline, a scheduled CRON job, or a user) are correctly shown. (Chaos-800)
+* When a chaos experiment contains characters such as ‘ ‘, ‘/’, and so on, logs are correctly parsed and displayed on the screen. The execution is encoded before being sent to the control plane and decoded after being received by the user interface. (Chaos-854)
+* After deleting a chaos experiment from a particular page, the pagination is reset and only shows the available experiments. (Chaos-923)
+* When a chaos infrastructure is deleted, details on the user interface wrongly showed the infrastructure ID instead of the infrastructure name. This is now fixed. (Chaos-952)
+* When a chaos experiment was pushed to the chaos hub, only a single fault associated with the experiment was being pushed, rather than all the faults. This is now fixed. (Chaos-973)
+* When a chaos experiment was deleted, only the most recent run was deleted, and the previous runs were retained in the cluster. Now it has been fixed such that when a chaos experiment is deleted, all the runs associated with it are deleted from the cluster. 
+* When a chaos experiment was deleted, the fault running within the experiment was not stopped). Now it has been fixed such that, when an experiment is deleted, the chaos fault running on the Kubernetes cluster is halted, the fault is deleted, and the experiment (as a whole) is deleted. (Chaos-782)
+
+* While 
+When a chaos experiment was running, the user interface incorrectly showed probes that were still being executed as failed probes. Now it has been fixed so that the interface shows the correct status of the probes being executed. (Chaos-911)
+* The term “agent” was changed to “infrastructure”. While selecting (or creating) an infrastructure, the search bar showed all available infrastructures irrespective of the search string entered by the user in the search bar. (Chaos-920) 
+* When a CRON experiment was stopped by the user, the current run used to stop, but the upcoming (and subsequent) runs were not being affected by the stop. It has been fixed now so that stopping an experiment will stop the upcoming schedules as well. (Chaos-713)
+
+
 ## December 2, 2022, version 0.4.2
 
 ### What’s new
