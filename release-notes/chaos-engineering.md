@@ -15,7 +15,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
 ## December 23, 2022, version 0.6
 
-## What’s new
+### What’s new
 
 * Error boundary to avoid page crash (Chaos-843)
     * This release adds an error boundary that avoids crashing the page when a component on the user interface is missing due to incompatibilities. Instead of the page crash, the component field is empty. 
@@ -35,10 +35,10 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 * Edit chaos experiment is separated into two action components (Chaos-685)
     * This release divides the edit experiment action into two actions: edit experiment and clone experiment. The edit experiment action helps you make changes to the current (or selected) experiment. The clone experiment action helps the user create a new experiment from an already existing experiment. The cloned experiment retains the same configuration as the original experiment with the ability to tune the configurations if required.
 
-## Early access
+### Early access
 * There are no early access features in this release. 
 
-## Fixed issues
+### Fixed issues
 * Experiments executed and triggered by respective categories (a pipeline, a scheduled CRON job, or a user) are correctly shown. (Chaos-800)
 * When a chaos experiment contains characters such as ‘ ‘, ‘/’, and so on, logs are correctly parsed and displayed on the screen. The execution is encoded before being sent to the control plane and decoded after being received by the user interface. (Chaos-854)
 * After deleting a chaos experiment from a particular page, the pagination is reset and only shows the available experiments. (Chaos-923)
