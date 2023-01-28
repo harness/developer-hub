@@ -128,9 +128,9 @@ export const experiments: ExperimentDetails[] = [
     category: "aws",
   },
   {
-    name: "ECS container IO hog",
+    name: "ECS container IO stress",
     description:
-      "ECS container IO hog disrupts the state of infrastructure resources. It induces stress on the AWS ECS container using Amazon SSM Run command, which is carried out using SSM docs which is in-built into the fault.",
+      "ECS container IO stress disrupts the state of infrastructure resources. It induces stress on the AWS ECS container using Amazon SSM Run command, which is carried out using SSM docs which is in-built into the fault.",
     tags: [],
     category: "aws",
   },
@@ -163,6 +163,13 @@ export const experiments: ExperimentDetails[] = [
     category: "aws",
   },
   {
+    name: "ECS task stop",
+    description:
+      "ECS task stop injects chaos to stop the ECS tasks based on the services or task replica ID and checks the task availability.",
+    tags: [],
+    category: "aws",
+  },
+  {
     name: "ELB AZ down",
     description:
       "ELB AZ down takes down the availability zones on a target ELB for a specific duration. ",
@@ -177,6 +184,13 @@ export const experiments: ExperimentDetails[] = [
     category: "aws",
   },
   {
+    name: "Lambda delete function concurrency",
+    description:
+      "Lambda delete function concurrency deletes the Lambda function's reserved concurrency, thereby ensuring that the function has adequate unreserved concurrency to run.",
+    tags: [],
+    category: "aws",
+  },
+  {
     name: "Lambda toggle event mapping state",
     description:
       "Lambda toggle event mapping state toggles (or sets) the event source mapping state to `disable` for a Lambda function during a specific duration.",
@@ -187,6 +201,13 @@ export const experiments: ExperimentDetails[] = [
     name: "Lambda update function memory",
     description:
       "Lambda update function memory causes the memory of a Lambda function to be updated to a specified value for a certain duration.",
+    tags: [],
+    category: "aws",
+  },
+  {
+    name: "Lambda update role permission",
+    description:
+      "  Lambda update role permission is an AWS fault that modifies the role policies associated with a Lambda function.",
     tags: [],
     category: "aws",
   },

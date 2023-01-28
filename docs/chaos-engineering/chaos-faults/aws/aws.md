@@ -290,7 +290,7 @@ Injecting a rogue process into a target container starves the main microservice 
 
 ### ECS container IO stress
 
-ECS container IO hog disrupts the state of infrastructure resources. It induces stress on the AWS ECS container using Amazon SSM Run command, which is carried out using SSM docs which is in-built into the fault.
+ECS container IO stress disrupts the state of infrastructure resources. It induces stress on the AWS ECS container using Amazon SSM Run command, which is carried out using SSM docs which is in-built into the fault.
 
 - It causes I/O stress on the containers of the ECS task using the given `CLUSTER_NAME` environment variable for a specific duration.
 - To select the Task Under Chaos (TUC), use the servie name associated with the task. If you provide the service name along with the cluster name, all the tasks associated with the given service will be selected as chaos targets.
@@ -379,6 +379,19 @@ EC2 instance stop breaks the agent that manages the task container on ECS cluste
 
 <FaultDetailsCard category="aws">
 
+### ECS task stop
+
+ECS task stop is an AWS fault that injects chaos to stop the ECS tasks based on the services or task replica ID and checks the task availability.
+- This fault results in the unavailability of the application running on the tasks.
+
+<accordion color="green">
+    <summary>View fault usage</summary>
+This fault determines the resilience of an application when ECS tasks unexpectedly stop due to task being unavailable.
+</accordion>
+</FaultDetailsCard>
+
+<FaultDetailsCard category="aws">
+
 ### ELB AZ down
 
 ELB AZ down takes down the availability zones on a target ELB for a specific duration.
@@ -449,6 +462,34 @@ Lambda update function timeout causes timeout of a Lambda function to be updated
 <accordion color="green">
     <summary>View fault usage</summary>
 Hitting a memory limit with Lambda functions may slow down the service and impact their delivery. Running out of memory due to smaller limits may interrupt the flow of the given function. These fault helps build resilience to such unexpected scenarios.
+</accordion>
+</FaultDetailsCard>
+
+<FaultDetailsCard category="aws">
+
+### Lambda update role permission
+
+Lambda update role permission is an AWS fault that modifies the role policies associated with a Lambda function.
+- It verifies the handling mechanism for function failures.
+- It can also be used to update the role attached to a Lambda function.
+- It checks the performance of the running lambda application in case it does not have enough permissions.
+
+<accordion color="green">
+    <summary>View fault usage</summary>
+Lambda functions sometimes depend on services such as RDS, DynamoDB, S3, etc. In such cases, certain permissions are required to access these services. This chaos fault helps understand how your application would behave when a Lambda function does not have enough permissions to access the services.
+</accordion>
+</FaultDetailsCard>
+
+<FaultDetailsCard category="aws">
+
+### Lambda delete function concurrency
+
+Lambda delete function concurrency is an AWS fault that deletes the Lambda function's reserved concurrency, thereby ensuring that the function has adequate unreserved concurrency to run.
+- Examines the performance of the running Lambda application, if the Lambda function lacks sufficient concurrency.
+
+<accordion color="green">
+    <summary>View fault usage</summary>
+When there is no unreserved concurrency left to run the Lambda function, this chaos fault can be used to check how your application behaves.
 </accordion>
 </FaultDetailsCard>
 
