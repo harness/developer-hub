@@ -68,7 +68,7 @@ Here is an example AWS policy to execute the fault.
 ```
 </details>
 
-Refer to the [superset permission/policy](../policy-for-all-aws-faults) to execute all AWS faults.
+Refer to the [superset permission/policy](./policy-for-all-aws-faults) to execute all AWS faults.
 
 ## Default validations
 
