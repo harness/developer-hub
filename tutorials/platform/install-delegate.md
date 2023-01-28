@@ -12,7 +12,7 @@ import TabItem from '@theme/TabItem';
 
 ## What is a Delegate?
 
-[Harness Delegate](https://docs.harness.io/article/2k7lnc7lvl-delegates-overview) is a lightweight worker process that is installed on your infrastructure and communicates only via outbound HTTP/HTTPS to the Harness Platform. This enables the Harness Platform to leverage the delegate for executing the CI/CD and other tasks on your behalf, without any of your secrets leaving your network.
+[Harness Delegate](https://developer.harness.io/docs/platform/Delegates/get-started-with-delegates/delegates-overview) is a lightweight worker process that is installed on your infrastructure and communicates only via outbound HTTP/HTTPS to the Harness Platform. This enables the Harness Platform to leverage the delegate for executing the CI/CD and other tasks on your behalf, without any of your secrets leaving your network.
 
 You can install the Harness Delegate on either Docker or Kubernetes. 
 
@@ -22,6 +22,7 @@ You can install the Harness Delegate on either Docker or Kubernetes.
 Login to the Harness Platform and go to Account Settings -> Account Resources -> Delegates. Click on the Tokens tab. Click +New Token and give your token a name `firstdeltoken`. When you click Apply, a new token is generated for you. Click on the copy button to copy and store the token in a temporary file for now. You will provide this token as an input parameter in the next delegation installation step. The delegate will use this token to authenticate with the Harness Platform.
 
 <h3> Get Your Harness Account ID </h3>
+
 Along with the delegate token, you will also need to provde your Harness accountId as an input parameter to the delegate installation. This accountId is present in every Harness URL. For example, in the following URL
 
 ```
@@ -74,6 +75,7 @@ harness/delegate:22.11.77436
 <h3> Verify Docker Delegate Connectivity </h3>
 
 Click Continue and in a few moments after the health checks pass, your Docker Delegate will be available for you to leverage. Click Done and can verify your new Delegate is on the list.
+
 
 ![Delegate Available](static/install-delegate/docker_available.png)
 

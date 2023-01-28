@@ -1,7 +1,7 @@
 ---
 title: View and Compare Pipeline Executions
 description: view and compare the Harness Pipeline YAML used for each Pipeline execution
-# sidebar_position: 2
+sidebar_position: 9
 helpdocs_topic_id: n39cwsfvmj
 helpdocs_category_id: kncngmy17o
 helpdocs_is_private: false

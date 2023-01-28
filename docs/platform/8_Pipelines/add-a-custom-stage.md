@@ -1,7 +1,7 @@
 ---
 title: Add a Custom Stage
 description: The Custom stage provides flexibility to support any use case that doesn't require the pre-defined settings of CI, CD, or Approvals.
-# sidebar_position: 2
+sidebar_position: 4
 helpdocs_topic_id: o60eizonnn
 helpdocs_category_id: kncngmy17o
 helpdocs_is_private: false

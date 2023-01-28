@@ -1,7 +1,7 @@
 ---
 title: Run a Stage or Step Multiple Times using a Matrix
 description: A matrix enables you to run the same Stage or Step multiple times with different parameters.  Matrix strategies also make your Pipelines more readable, clean, and easy to maintain.
-# sidebar_position: 2
+sidebar_position: 6
 helpdocs_topic_id: kay7z1bi01
 helpdocs_category_id: kncngmy17o
 helpdocs_is_private: false
