@@ -25,7 +25,7 @@ carried out against different targets.
 
 <img width="544" alt="Screenshot 2022-10-10 at 4 23 22 PM" src="https://user-images.githubusercontent.com/21166217/194850472-0f4dda25-74f5-4dbb-86e8-45e09258de73.png"></img>
 
-## Left-Shift Chaos Engineering
+## Left-shift chaos engineering
 
 The initial principles of chaos engineering advocate performing experiments in production (which is relevant and recommended), which is being viewed as a means to validate resilience beforehand, that is, as a quality gate for big deployment environments.
 Generally, this is fueled by a need to build confidence in a highly dynamic environment in which application services _and_ infrastructure
@@ -34,7 +34,7 @@ are subject to frequent, and independent upgrades. The resulting paradigm is:
 - Increased ad-hoc/exploratory chaos testing by application developers and QA teams;
 - Automating chaos experiments within continuous delivery (CD) pipelines.
 
-## Benefits of Harness Chaos Engineering
+## Benefits of Harness Chaos Engineering (HCE)
 
 Harness Chaos Engineering module takes a holistic-approach to chaos engineering, and doesn't merely focus on fault-injection. It is designed to help users setup a fully-operational chaos function that is based on the original [principles of chaos](https://principlesofchaos.org/) as well as addressing several enterprise needs around its practice, which include:
 

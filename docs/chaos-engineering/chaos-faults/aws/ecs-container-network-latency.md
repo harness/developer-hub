@@ -103,7 +103,7 @@ stringData:
       <tr> 
           <td> DESTINATION_IPS </td>
           <td> IP addresses of the services or the CIDR blocks(range of IPs), the accessibility to which is impacted </td>
-          <td> Comma separated IP(S) or CIDR(S) can be provided. if not provided, it will induce network chaos for all ips/destinations </td>
+          <td> comma-separated IP(S) or CIDR(S) can be provided. if not provided, it will induce network chaos for all ips/destinations </td>
       </tr>
       <tr> 
           <td> DESTINATION_HOSTS </td>
@@ -248,10 +248,10 @@ spec:
     spec:
       components:
         env:
-        # supports comma separated destination ips
+        # supports comma-separated destination ips
         - name: DESTINATION_IPS
           value: '8.8.8.8,192.168.5.6'
-        # supports comma separated destination hosts
+        # supports comma-separated destination hosts
         - name: DESTINATION_HOSTS
           value: 'nginx.default.svc.cluster.local,google.com'
         - name: TOTAL_CHAOS_DURATION

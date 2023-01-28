@@ -52,7 +52,7 @@ You can pass the VM credentials as secrets or as a `ChaosEngine` environment var
 
 <details>
     <summary>Fault tunables</summary>
-    <h2>Mandatory Fields</h2>
+    <h2>Mandatory fields</h2>
     <table>
         <tr>
             <th> Variables </th>
@@ -80,7 +80,7 @@ You can pass the VM credentials as secrets or as a `ChaosEngine` environment var
             <td> Defaults to port 80. </td>
         </tr>
     </table>
-    <h2>Optional Fields</h2>
+    <h2>Optional fields</h2>
     <table>
         <tr>
             <th> Variables </th>

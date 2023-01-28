@@ -67,7 +67,7 @@ You can pass the VM credentials as secrets or as a chaos-engine environment vari
       </tr>
       <tr>
         <td> PROCESS_IDS </td>
-        <td> Process IDs of the target processes provided as comma separated values. </td>
+        <td> Process IDs of the target processes provided as comma-separated values. </td>
         <td> For example, 183,253,857. </td>
       </tr>
     </table>

@@ -68,7 +68,7 @@ stringData:
             <td> For example: <code>us-east-1</code> </td>
         </tr>
     </table>
-    <h2>Optional Fields</h2>
+    <h2>Optional fields</h2>
     <table>
         <tr>
             <th> Variables </th>

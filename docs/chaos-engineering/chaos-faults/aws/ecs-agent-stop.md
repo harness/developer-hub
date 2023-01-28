@@ -47,17 +47,15 @@ stringData:
 
 ## Default validations
 
-
-
 - ECS container instance should be in healthy state.
 
 
 
-## Fault Tunables
+## Fault tunables
 
 <details>
-    <summary>Check the Fault Tunables</summary>
-    <h2>Mandatory Fields</h2>
+    <summary>Fault tunables</summary>
+    <h2>Mandatory fields</h2>
     <table>
         <tr>
           <th> Variables </th>
@@ -75,7 +73,7 @@ stringData:
           <td> Eg: <code>us-east-2</code></td>
         </tr>
     </table>
-    <h2>Optional Fields</h2>
+    <h2>Optional fields</h2>
     <table>
       <tr>
         <th> Variables </th>
@@ -105,7 +103,7 @@ stringData:
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injection of chaos in sec </td>
-        <td> Eg. 30 </td>
+        <td> For example, 30 </td>
       </tr>
     </table>
 </details>

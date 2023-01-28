@@ -2,14 +2,14 @@
 sidebar_position: 3
 title: Powered by LitmusChaos
 ---
-# Harness Chaos Engineering Powered by LitmusChaos
+# Harness Chaos Engineering powered by LitmusChaos
 
 The chaos engineering module in the Harness platform is powered by the open source CNCF chaos engineering project [LitmusChaos](https://github.com/litmuschaos/litmus). Harness module adds additional features to make the practice of chaos engineering for enterprises easy.
 
 ![Harness Chaos Engineering Module](../static/overview/HCE-image.png)
 
 ## Common capabilities with LitmusChaos
-Following are the common features between Litmus and Harness Chaos Engineering
+Following are the common features between Litmus and Harness Chaos Engineering:
 
 1. Scalable Platform
 2. Declarative chaos fault archtecture
@@ -24,7 +24,7 @@ Following are the common features between Litmus and Harness Chaos Engineering
 
 ## Additional capabilities
 
-Harness chaos engineering module adds the following additional capabilities 
+Harness chaos engineering module adds the following additional capabilities:
 
 1. Kubelet Density Chaos Fault
 2. VMware Chaos Faults
@@ -36,7 +36,7 @@ Harness chaos engineering module adds the following additional capabilities
 
 ## Integrations
 
-In addition to the above features, the chaos engineering module has the following integrations in the Harness platform
+In addition to the above features, the chaos engineering module has the following integrations in the Harness platform:
 
 - Harness Continuous Delivery (CD)
 

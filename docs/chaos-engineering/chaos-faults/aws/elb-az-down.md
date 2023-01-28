@@ -46,8 +46,8 @@ stringData:
 ## Fault tunables
 
 <details>
-    <summary>Check the Fault Tunables</summary>
-    <h2>Mandatory Fields</h2>
+    <summary>Fault tunables</summary>
+    <h2>Mandatory fields</h2>
     <table>
       <tr>
         <th> Variables </th>
@@ -57,20 +57,20 @@ stringData:
       <tr>
         <td> LOAD_BALANCER_NAME </td>
         <td> Provide the name of load balancer whose AZ has to be detached</td>
-        <td> Eg. <code>elb-name</code> </td>
+        <td> For example, <code>elb-name</code> </td>
       </tr>
       <tr>
         <td> ZONES </td>
         <td> Provide the target zones that have to be detached from ELB</td>
-        <td> Eg. <code>us-east-1a</code> </td>
+        <td> For example, <code>us-east-1a</code> </td>
       </tr>
       <tr>
         <td> REGION </td>
         <td> The region name for the target volumes</td>
-        <td> Eg. <code>us-east-1</code> </td>
+        <td> For example, <code>us-east-1</code> </td>
       </tr>
     </table>
-    <h2>Optional Fields</h2>
+    <h2>Optional fields</h2>
     <table>
       <tr>
         <th> Variables </th>

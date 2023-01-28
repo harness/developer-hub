@@ -199,7 +199,7 @@ spec:
 
 ### Multiple EC2 instances
 
-Multiple EC2 instances can be targeted in one chaos run by providing comma separated instance IDs. You can tune it using the `EC2_INSTANCE_ID` environment variable.
+Multiple EC2 instances can be targeted in one chaos run by providing comma-separated instance IDs. You can tune it using the `EC2_INSTANCE_ID` environment variable.
 
 You can tune it using the following example:
 

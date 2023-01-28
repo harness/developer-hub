@@ -117,7 +117,7 @@ Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS spe
 
 ### Stop Instances By ID
 
-It contains a comma separated list of instance IDs subjected to EC2 stop chaos. You can tune it using the `EC2_INSTANCE_ID` environment variable.
+It contains a comma-separated list of instance IDs subjected to EC2 stop chaos. You can tune it using the `EC2_INSTANCE_ID` environment variable.
 
 You can tune it using the following example.
 

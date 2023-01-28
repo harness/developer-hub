@@ -79,7 +79,7 @@ You can pass the VM credentials as secrets or as a `ChaosEngine` environment var
             <td> If no value is provided, the response will be an empty body (defaults to empty body). </td>
         </tr>
     </table>
-    <h2>Optional Fields</h2>
+    <h2>Optional fields</h2>
     <table>
         <tr>
             <th> Variables </th>
