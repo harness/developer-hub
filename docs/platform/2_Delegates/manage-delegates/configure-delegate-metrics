@@ -4,3 +4,18 @@ description: This topic describes how to configure Prometheus and Grafana for de
 # sidebar_position: 2
 ---
 
+## About delegate metrics
+
+Harness captures delegate agent metrics for delegates that are immutable. The following metrics are recorded:
+
+| **Metric name** | **Description** |
+| :-- | :-- |
+| task_execution_time | The time it takes to complete a task. |
+| tasks_currently_executing | The number of tasks underway. |
+| tasks_in_queue | The number of tasks that are waiting in the queue. |
+| task_timeout | The number of tasks that time out before completion. |
+
+## Configure Prometheus database
+
+You can use Prometheus to collect delegate metrics. Prometheus “scrapes” metrics from the delegate replica pods you deploy in a cluster. To collect delegate metrics, Prometheus must be configured with the following settings. The configuration of Prometheus is specified as a Kubernetes ConfigMap and saved as a prometheus.yml file. For a prometheus.yml file configured with the settings described in this document, see the last section.
+
