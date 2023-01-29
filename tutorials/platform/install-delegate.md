@@ -12,14 +12,14 @@ import TabItem from '@theme/TabItem';
 
 ## What is a Delegate?
 
-[Harness Delegate](https://developer.harness.io/docs/platform/Delegates/get-started-with-delegates/delegates-overview) is a lightweight worker process that is installed on your infrastructure and communicates only via outbound HTTP/HTTPS to the Harness Platform. This enables the Harness Platform to leverage the delegate for executing the CI/CD and other tasks on your behalf, without any of your secrets leaving your network.
+Harness Delegate is a lightweight worker process that is installed on your infrastructure and uses outbound HTTP/HTTPS to communicate with Harness Platform. This enables Harness Platform to use the delegate to execute CI/CD and other tasks on your behalf, without your secrets leaving your network. For a general introduction to delegates, see [Delegate overview](https://developer.harness.io/docs/platform/Delegates/get-started-with-delegates/delegates-overview).
 
-You can install the Harness Delegate on either Docker or Kubernetes. 
+You can install Harness Delegate on Docker or Kubernetes. 
 
 ## Install Delegate
 
 <h3> Create New Delegate Token </h3>
-Login to the Harness Platform and go to Account Settings -> Account Resources -> Delegates. Click on the Tokens tab. Click +New Token and give your token a name `firstdeltoken`. When you click Apply, a new token is generated for you. Click on the copy button to copy and store the token in a temporary file for now. You will provide this token as an input parameter in the next delegation installation step. The delegate will use this token to authenticate with the Harness Platform.
+Login to Harness Platform and go to Account Settings > Account Resources > Delegates. Click on the **Tokens** tab. Click **+ New Token** and give your token a name `firstdeltoken`. When you click **Apply**, a new token is generated for you. Click **Copy** to copy and store the token in a temporary file. You'll use this token as an input parameter in the next delegate installation step. The delegate uses this token to authenticate with Harness Platform.
 
 <h3> Get Your Harness Account ID </h3>
 
