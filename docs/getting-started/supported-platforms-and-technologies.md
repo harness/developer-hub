@@ -632,8 +632,8 @@ This section lists the feature support matrix for the supported cloud platforms:
 |  |  |  |  |
 | --- | --- | --- | --- |
 |  | **Inventory Dashboard** | **Recommendations** | **AutoStopping** |
-| **EC2** | Yes | Coming soon | Yes (With Spot Orchestration) |
-| **ECS** | Yes | Coming soon | Yes |
+| **EC2** | Yes | Yes | Yes (With Spot Orchestration) |
+| **ECS** | Yes | Yes | Yes |
 | **EKS** | Yes | Yes | Yes |
 | **RDS** | Yes | No | Yes |
 | **EBS** | Yes | No | No |
@@ -658,7 +658,7 @@ This section lists the feature support matrix for the supported cloud platforms:
 |  |  |  |  |
 | --- | --- | --- | --- |
 |  | **Inventory Dashboard** | **Recommendations** | **AutoStopping** |
-| **Virtual Machine** | Coming soon | Coming soon | Yes (With Spot Orchestration) |
+| **Virtual Machine** | Yes | Coming soon | Yes (With Spot Orchestration) |
 | **AKS** | Yes | Yes | Yes |
 
 ### Service Reliability Management
@@ -688,7 +688,7 @@ More tools will be added soon.
 
 #### Change sources
 
-A Change Source monitors change events related to deployments, infrastructure changes, and incidents. Following Change Sources are supported:
+A Change Source monitors change events related to deployments, infrastructure changes, and incidents. The following Change Sources are supported:
 
 * Harness CD NextGen
 * Harness CD
