@@ -9,7 +9,7 @@ const normaliseForImagePath = (string: string): string => {
 };
 
 const getCategoryDetails = (category: string): Record<string, string> => {
-  const path = "/img/chaos/";
+  const path = "/img/chaos";
   const details = {
     icon: "",
     link: "",
