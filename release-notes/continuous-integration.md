@@ -28,7 +28,6 @@ This release does not include early access features.
 
 ### Fixed issues
 
-* Fixed an issue where  RedisTimeoutExceptions were causing CI services to restart. (CI-6728)
 * Improved the error message that appears in the UI when a Git test connection fails. (CI-6889)
 * Fixed an issue where feature flags would sometimes not work with CI due to a backwards-compatibility issue. (CI-6687)
 * Fixed an issue where the Commits tab would show a 404 error in the CD build UI. (CI-6632)
