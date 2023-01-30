@@ -333,14 +333,14 @@ Destroying resources can be time-consuming. Use at least `5m`.
 
 You can add a Terragrunt Destroy step to remove any provisioned infrastructure, just like running the `terragrunt run-all destroy` command. See [destroy](https://terragrunt.gruntwork.io/docs/features/execute-terraform-commands-on-multiple-modules-at-once/#the-run-all-command) from Terragrunt.
 
-1. In **Configuration Type**, select how you want to destroy resources:
+* In **Configuration Type**, select how you want to destroy resources:
 
-- **Inherit From Plan**. Destroy the resources from a Terraform Plan step.
-  - Using the Terragrunt Destroy step with a previous Terragrunt Plan step is the same as using the `terragrunt plan` command with the `-destroy` flag.
-  - To use this Terraform Destroy step with a Terraform Plan step, you must select **Destroy** in the **Command** setting of the **Terraform Plan** step.
-- **Inherit From Apply**. Destroy the resources from a Terraform Apply step.
-  - Using the Terragrunt Destroy step with a previous Terragrunt Apply step is the same as using the `terragrunt apply` command with the `-destroy` flag.
-- **Inline**. Destroy any resources using a Terragrunt script.
+    - **Inherit From Plan**. Destroy the resources from a Terraform Plan step.
+        - Using the Terragrunt Destroy step with a previous Terragrunt Plan step is the same as using the `terragrunt plan` command with the `-destroy` flag.
+        - To use this Terraform Destroy step with a Terraform Plan step, you must select **Destroy** in the **Command** setting of the **Terraform Plan** step.
+     - **Inherit From Apply**. Destroy the resources from a Terraform Apply step.
+        - Using the Terragrunt Destroy step with a previous Terragrunt Apply step is the same as using the `terragrunt apply` command with the `-destroy` flag.
+    - **Inline**. Destroy any resources using a Terragrunt script.
 
 #### Provisioner Identifier
 
@@ -376,11 +376,11 @@ To add a Terragrunt Rollback step, do the following:
 
 #### Name
 
-1. In **Name**, enter a name for the step. Use a name that describes the infrastructure the step plans to roll back.
+* In **Name**, enter a name for the step. Use a name that describes the infrastructure the step plans to roll back.
 
 #### Timeout
 
-1. Enter how long you want Harness to try to complete the step before failing and initiating the stage or step [failure strategy](https://developer.harness.io/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps/).
+* Enter how long you want Harness to try to complete the step before failing and initiating the stage or step [failure strategy](https://developer.harness.io/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps/).
 
    You can use:
 
@@ -399,7 +399,7 @@ Provisioning can be time-consuming so use at least `5m`.
 
 #### Provisioner Identifier
 
-1. Enter the **Provisioner Identifier** from a previous Terragrunt Plan or Apply step to roll back its provisioning.
+* Enter the **Provisioner Identifier** from a previous Terragrunt Plan or Apply step to roll back its provisioning.
 
 Here's an example of how the **Provisioner Identifier** is used across steps:
 
@@ -536,7 +536,7 @@ resource "aws_instance" "my_service" {
 
 In the workspace interpolation sequence you can see the count is assigned by applying it to the workspace variable (`terraform.workspace`) and that the tag is applied using the variable also.
 
-1. In **Workspace**, enter the name of the workspace to use.
+* In **Workspace**, enter the name of the workspace to use.
 
     Terraform will pass the workspace name you provide to the `terraform.workspace` variable, thus determining the count. This is the same as the `terraform workspace select` command.
     
@@ -547,7 +547,7 @@ In the workspace interpolation sequence you can see the count is assigned by app
 
 ### Terraform Var Files
 
-1. In **Terraform Var Files**, provide values for the Terraform input variables in the Terraform module (config.tf) that your Terragrunt config file uses.
+* In **Terraform Var Files**, provide values for the Terraform input variables in the Terraform module (config.tf) that your Terragrunt config file uses.
 
 For example, here's a Terraform config.tf file with variables for access and secret key:
 
@@ -589,11 +589,11 @@ container_name       = "azure-backend"
 
 For examples, see the settings available for [AWS S3](https://www.terraform.io/docs/backends/types/s3.html#configuration) from Terraform and review [Keep your remote state configuration DRY](https://terragrunt.gruntwork.io/docs/features/keep-your-remote-state-configuration-dry/) from Terragrunt.
 
-1. In **Backend Configuration**, enter values for each backend config (remote state variable) in the Terragrunt config (.hcl) or Terraform script (config.tf) file.
+* In **Backend Configuration**, enter values for each backend config (remote state variable) in the Terragrunt config (.hcl) or Terraform script (config.tf) file.
 
 ### Targets
 
-1. In **Target**, target one or more specific modules in your Terraform script, just like using the `terraform plan -target`, `terraform apply -target`, or `terraform destory -target` commands. See [Resource Targeting](https://www.terraform.io/docs/commands/plan.html#resource-targeting) from Terraform.
+* In **Target**, target one or more specific modules in your Terraform script, just like using the `terraform plan -target`, `terraform apply -target`, or `terraform destory -target` commands. See [Resource Targeting](https://www.terraform.io/docs/commands/plan.html#resource-targeting) from Terraform.
 
   If you have multiple modules in your script and you do not select one in **Targets**, all modules are used.
 
@@ -605,7 +605,7 @@ For examples, see the settings available for [AWS S3](https://www.terraform.io/d
 
 In **Environment Variables**, you can reference additional environment variables in the Terraform script ultimately used by the Terragrunt plan. These are in addition to any variables already in the script.
 
-1. Click **Add** and enter a name and value for the environment variable.
+* Click **Add** and enter a name and value for the environment variable.
     
     For example, the name `TF_LOG` and the value `TRACE`, or the name `ARM_CLIENT_ID` and the value `<+secrets.getValue("account.tg_azure_client_id")>`.
 
