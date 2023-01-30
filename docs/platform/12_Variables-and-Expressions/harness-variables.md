@@ -914,7 +914,45 @@ Here are the sidecar expressions:
 * `<+artifacts.sidecars.[sidecar_identifier].tag>`
 * `<+artifacts.sidecars.[sidecar_identifier].connectorRef>`
 
+### Artifact rollback variables
+
+Artifact rollback variable expressions output information on the artifact used for a deployment rollback.
+
+To copy and use the expressions from an executed pipeline, do the following:
+
+1. In a CD pipeline deployment, select **Infrastructure Section**.
+2. In **Infrastructure Section**, select the **Output** tab.
+3. View the names and values in **Artifact Rollback**.
+4. Select **Copy** for any **Output Name** to copy the expression.
+
+The following is an example for an ECS deployment using a Docker image in Artifactory:
+
+![artifact rollback](static/156302d5dbad242d2faf55205335ec9f152dd13462666bfc197707bfd1d6c393.png)  
+
+For example, if you added a Shell Script step and included both `<+artifact.displayName>` and `<+rollbackArtifact.description>`, you would get the name of the artifact being deployed and the artifact that will be used in case of rollback.
+
+If the output of `<+artifact.displayName>` was `harness/todolist-sample_11_0702794`, then the output of `<+rollbackArtifact.description>` would be the previous release that would be used in case of rollback: `harness/todolist-sample_10_0702581`.
+
+Harness pulls rollback artifact information from the last successful deployment. If there's no previous, successful deployment, then the rollback artifact returns null.
+
+The following is the list of the rollback artifact variables. Review the [artifact variables](#artifact) for definitions of each variable.
+
+- `<+rollbackArtifact.bucketName>`
+- `<+rollbackArtifact.buildNo>`
+- `<+rollbackArtifact.buildFullDisplayName>`
+- `<+rollbackArtifact.ArtifactPath>`
+- `<+rollbackArtifact.description>`
+- `<+rollbackArtifact.displayName>`
+- `<+rollbackArtifact.fileName>`
+- `<+rollbackArtifact.key>`
+- `<+rollbackArtifact.metadata.image>`
+- `<+rollbackArtifact.metadata.tag>`
+- `<+rollbackArtifact.source.registryUrl>`
+- `<+rollbackArtifact.url>`
+
 ### Environment
+
+This section contains common variable expressions for environments.
 
 #### Environment-level variables for service v2
 
