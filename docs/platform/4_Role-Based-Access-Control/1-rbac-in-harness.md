@@ -18,7 +18,12 @@ For example, certain users may have permission to execute pipelines, whereas oth
 
 Harness RBAC is an authorization system that provides fine-grained access management of Harness resources.
 
-### Visual Summary
+This video provides a quick overview of how you can manage access to your resources using Harness RBAC.
+
+<docvideo src="https://www.youtube.com/embed/vIQfpRrES44?feature=oembed"/>
+
+
+### Visual summary
 
 Here is a quick overview of Harness RBAC:
 
@@ -30,7 +35,7 @@ Here is a quick overview of Harness RBAC:
 * Each User Group and Service Account can have multiple role assignments.
 * You can assign roles at any [scope](#rbac-scope).![](./static/rbac-in-harness-00.png)
 
-### Harness RBAC Components
+### Harness RBAC components
 
 * **Users:** These are individual users within the Harness system. One User can belong to many user groups.  
 For more information on creating a new User, see [Add and Manage Users](../4_Role-Based-Access-Control/3-add-users.md).
@@ -44,7 +49,7 @@ For more information on creating a new Resource Group, see [Add and Manage Resou
 For more information on creating a new Role, see [Add and Manage Roles](../4_Role-Based-Access-Control/9-add-manage-roles.md).
 * **Principal:** A principal can be a **User**, **User Group,** or **Service Account** to which you provide access. [Role assignments](#role-assignment) are done on any of these principals, also known as **Subjects**.![](./static/rbac-in-harness-01.png)
 
-### What Can You do with RBAC?
+### What can you do with RBAC?
 
 Here are a few examples of what RBAC can be used for:
 
@@ -52,7 +57,7 @@ Here are a few examples of what RBAC can be used for:
 * Allow Users, User Groups, or Service Accounts to view the resources through the Account/Org/Project Viewer role.
 * Allow Users, User Groups, or Service Accounts to manage and access specific resources through Custom Roles.
 
-### How Does RBAC Work?
+### How does RBAC work?
 
 The way you control access to resources using RBAC is to assign permissions to users and groups to manage resources.
 
@@ -61,7 +66,7 @@ The way you control access to resources using RBAC is to assign permissions to u
 * An account administrator assigns a Role and Resource Group to a Principal - User or User Group or Service Account. This assignment is called [Role Assignment](#role-assignment).
 * Role Assignment grants the Principal the permissions from the Role on the set of resources in the Resource Group.
 
-### RBAC Scope
+### RBAC scope
 
 Harness Accounts allow you to group Organizations and Projects that share the same goal. These have their own scope of access.
 
@@ -87,7 +92,7 @@ The following table shows what it means to add users and resources at different 
 
 To know more about Organizations and Projects, see [Create Organizations and Projects](../1_Organizations-and-Projects/2-create-an-organization.md).
 
-### Resource Group
+### Resource group
 
 A Resource Group is a collection of resources that are all managed by the same set of users and have the same access control policies.
 
@@ -138,7 +143,7 @@ Harness provides the following default roles at the Account, Org, and Project sc
 
 For more information, see [Add and Manage Roles](../4_Role-Based-Access-Control/9-add-manage-roles.md).
 
-### Role Assignment
+### Role assignment
 
 A role assignment consists of the following elements:
 
@@ -156,6 +161,7 @@ Following are a few key points for role assignment in Harness:
 * Depending on where you wish to set up access control, you may assign roles at the Account, Org, or Project scope.
 
 ![](./static/rbac-in-harness-04.png)
+
 The following list explains the different role assignments with the default roles and resource groups:
 
 
@@ -163,40 +169,37 @@ The following list explains the different role assignments with the default role
 |  |  |
 | --- | --- |
 | **Role Assignment (Default Role + Default Resource Group)** | **Description** |
-| **Account Admin +** **All Resources Including Child Scopes** | A User Group with this role assignment has the following permissions:* All permissions on all the resources in the Account scope as well as Organizations and Project scopes within the entire Account.
+| **Account Admin +** **All Resources Including Child Scopes** | A User Group with this role assignment has the following permissions:<li> All permissions on all the resources in the Account scope as well as Organizations and Project scopes within the entire Account.</li>
  |
-| **Account Admin +** **All Account Level Resources** | A User Group with this role assignment has the following permissions:* All permissions on all the resources in the Account scope only.
+| **Account Admin +** **All Account Level Resources** | A User Group with this role assignment has the following permissions:<li> All permissions on all the resources in the Account scope only.</li>
  |
-| **Account Viewer +** **All Resources Including Child Scopes** | A User Group with this role assignment has the following permissions:* View permissions on all the resources in the Account as well as Organizations and Projects scopes within the entire Account.
+| **Account Viewer +** **All Resources Including Child Scopes** | A User Group with this role assignment has the following permissions:<li> View permissions on all the resources in the Account as well as Organizations and Projects scopes within the entire Account.</li>
  |
-| **Account Viewer +** **All Account Level Resources** | A User Group with this role assignment has the following permissions:* View permissions on all the resources in the Account scope only.
+| **Account Viewer +** **All Account Level Resources** | A User Group with this role assignment has the following permissions:<li>View permissions on all the resources in the Account scope only.</li>
  |
-| **Feature Flag Manage Role +** **All Resources Including Child Scopes** | A User Group with this role assignment has the following permissions:* Create/Edit permissions on Feature Flags and Target Management in the Account as well as Organizations and Projects scopes within the entire Account.
+| **Feature Flag Manage Role +** **All Resources Including Child Scopes** | A User Group with this role assignment has the following permissions:<li> Create/Edit permissions on Feature Flags and Target Management in the Account as well as Organizations and Projects scopes within the entire Account.</li>
  |
-| **Feature Flag Manage Role +** **All Account Level Resources** | A User Group with this role assignment has the following permissions:* Create/Edit permissions on Feature Flags and Target Management in the Account scope only.
+| **Feature Flag Manage Role +** **All Account Level Resources** | A User Group with this role assignment has the following permissions:<li> Create/Edit permissions on Feature Flags and Target Management in the Account scope only.</li>
  |
-| **Organization Admin +** **All Resources Including Child Scopes** | A User Group with this role assignment has the following permissions:* All permissions on all the resources in the Organization as well as Projects within the Organization.
+| **Organization Admin +** **All Resources Including Child Scopes** | A User Group with this role assignment has the following permissions:<li> All permissions on all the resources in the Organization as well as Projects within the Organization.</li>
  |
-| **Organization Admin + All Organization Level Resources** | A User Group with this role assignment has the following permissions:* All permissions on all the resources in the Organization scope only.
+| **Organization Admin + All Organization Level Resources** | A User Group with this role assignment has the following permissions:<li> All permissions on all the resources in the Organization scope only.</li>
  |
-| **Organization Viewer +** **All Resources Including Child Scopes** | A User Group with this role assignment has the following permissions:* View permissions on all the resources in the Organization as well as Projects within the Organization.
+| **Organization Viewer +** **All Resources Including Child Scopes** | A User Group with this role assignment has the following permissions:<li> View permissions on all the resources in the Organization as well as Projects within the Organization.</li>
  |
-| **Organization Viewer + All Organization Level Resources** | A User Group with this role assignment has the following permissions:* View permissions on all the resources in the Organization scope only.
+| **Organization Viewer + All Organization Level Resources** | A User Group with this role assignment has the following permissions:<li> View permissions on all the resources in the Organization scope only.</li>
  |
-| **Feature Flag Manage Role +** **All Resources Including Child Scopes** | A User Group with this role assignment has the following permissions:* Create/Edit permissions on Feature Flags and Target Management in the Organizations, and Projects within the entire Organization.
+| **Feature Flag Manage Role +** **All Resources Including Child Scopes** | A User Group with this role assignment has the following permissions:<li> Create/Edit permissions on Feature Flags and Target Management in the Organizations, and Projects within the entire Organization.</li>
  |
-| **Feature Flag Manage Role + All Organization Level Resources** | A User Group with this role assignment has the following permissions:* Create/Edit permissions for Feature Flags and Target Management in the Organization scope only.
+| **Feature Flag Manage Role + All Organization Level Resources** | A User Group with this role assignment has the following permissions:<li> Create/Edit permissions for Feature Flags and Target Management in the Organization scope only.</li>
  |
-| **Project Admin + All Project Level Resources** | A User Group with this role assignment has the following permissions:* All permissions on all the resources within the Project scope.
+| **Project Admin + All Project Level Resources** | A User Group with this role assignment has the following permissions:<li> All permissions on all the resources within the Project scope.</li>
  |
-| **Project Viewer + All Project Level Resources** | A User Group with this role assignment has the following permissions:* View permissions on all the resources in the Project.
+| **Project Viewer + All Project Level Resources** | A User Group with this role assignment has the following permissions:<li> View permissions on all the resources in the Project.</li>
  |
-| **Feature Flag Manage + All Project Level Resources** | A User Group with this role assignment has the following permissions:* Create/Edit permissions for Feature Flags and Target Management within the Project scope.
+| **Feature Flag Manage + All Project Level Resources** | A User Group with this role assignment has the following permissions:<li>Create/Edit permissions for Feature Flags and Target Management within the Project scope.</li>
  |
-| **Pipeline Executor + All Project Level Resources** | A User Group with this role assignment has the following permissions:* View permission on Resource Group, Project, Users, User Groups, and Roles
-* View and Access permissions on Secrets, Connectors, Environments, Services
-* View and Execute permissions on Pipelines
- |
+| **Pipeline Executor + All Project Level Resources** | A User Group with this role assignment has the following permissions:<li> View permission on Resource Group, Project, Users, User Groups, and Roles</li><li> View and Access permissions on Secrets, Connectors, Environments, Services</li><li> View and Execute permissions on Pipelines</li>|
 
 ### Permissions
 
@@ -211,7 +214,7 @@ The sum of these role assignments is effectively the **Account Admin** role for 
 
 By default, users will have **View** permissions for all resources at all scopes (Account/Org/Project).
 
-### Blog Post
+### Blog post
 
 The following blog post walks you through User and Role Management in Harness:
 

@@ -9,7 +9,7 @@ A delegate is a Harness service that performs the tasks of a pipeline. Delegates
 
 This tutorial explains how to create a Kubernetes cluster on a free Microsoft Azure account. The cluster you create is the foundation of your CI/CD pipeline infrastructure. After you prepare the infrastructure, you can install a delegate.
 
-For additional information about delegates, see [Delegate overview](https://docs.harness.io/article/2k7lnc7lvl-delegates-overview).
+For additional information about delegates, see [Delegate overview](https://developer.harness.io/docs/platform/Delegates/get-started-with-delegates/delegates-overview).
 
 
 ## Requirements
