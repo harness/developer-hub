@@ -15,7 +15,7 @@ EC2 memory hog disrupts the state of infrastructure resources.
 <details>
 <summary>View fault usage</summary>
 <div>
-The fault causes memory stress on the target AWS EC2 instance(s). It simulates the situation of memory leaks in the deployment of microservices, application slowness due to memory starvation, and noisy neighbour problems due to hogging. 
+The fault causes memory stress on the target AWS EC2 instance(s). It simulates the situation of memory leaks in the deployment of microservices, application slowness due to memory starvation, and noisy neighbour problems due to hogging. It verifies pod priority and QoS setting for eviction purposes. It also verifies application restarts on OOM kills. 
 Injecting a rogue process into the target EC2 instance starves the main processes (or applications) (typically pid 1) of the resources allocated to it. This slows down the application traffic or exhausts the resources leading to degradation in performance of processes on the instance. These faults build resilience to such stress cases. 
 
 
