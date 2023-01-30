@@ -81,10 +81,10 @@ Harness Policy as Code does the following for you:
 
 ### Delegate
 
-Harness NextGen supports improved Delegate which uses a new type of [image](https://developer.harness.io/docs/platform/Delegates/get-started-with-delegates/delegate-image-types) and supports the below features:
+Harness NextGen supports an improved delegate. It uses a new type of [image](https://developer.harness.io/docs/platform/Delegates/get-started-with-delegates/delegate-image-types) and supports the following features:
 
--> Deploy delegate images with or without third-party client tools. Recommendation for security conscious customers is to use the delegate minimal image.
--> Delegate is auto updated by default with an option to disable it.
+- Deploy delegate images with or without third-party client tools. We recommend you use the delegate minimal image for added security.
+- By default,  the delegate is automatically updated. There is an option to disable automatic updates.
 
 ## Does upgrading impact Harness CD FirstGen usage?
 
