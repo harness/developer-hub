@@ -69,7 +69,7 @@ When a chaos experiment was running, the user interface incorrectly showed probe
 
 No early access features are available in this release.
 
-### Fixed Issues
+### Fixed issues
 
 1. Fixes Enterprise ChaosHub shown irrespective of searched terms by the users.
 2. Fixes httpProbe schema in UI to add support for new response timeout changes for HTTP probe. Now, probeTimeout for HTTP probes will be treated as response timeout & should be provided in seconds.
@@ -96,7 +96,7 @@ The Harness Chaos Engineering (HCE) module, which you can use to perform chaos e
 1. Github is the only Git provider for chaoshubs.
 2. Details for an already connected chaoshub can’t be updated.
 
-#### Chaos Infrastructure
+#### Chaos infrastructure
 
 1. Chaos infrastructure can't be installed through Harness Delegate.
 2. Logs for chaos infrastructure can’t be viewed.
@@ -104,7 +104,7 @@ The Harness Chaos Engineering (HCE) module, which you can use to perform chaos e
 4. The properties of the environment to which the chaos infrastructure belongs can’t be updated.
 5. Configuring chaos infrastructure doesn’t provide support for Linux and Windows.
 
-#### Chaos Experiments
+#### Chaos experiments
 
 1. Experiments with parallel faults can’t be created.
 2. Probe tunables can’t be updated or edited.
