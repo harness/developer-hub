@@ -14,8 +14,7 @@ EC2 HTTP latency disrupts the state of infrastructure resources. This fault indu
 <details>
 <summary>View fault usage</summary>
 <div>
-This fault results in DNS errors on the target EC2 instances. This results in unavailability (or distorted) network connectivity from the VM to the target hosts. This fault determines the impact of DNS chaos on the infrastructure and standalone tasks.
-
+This fault results in delays on the target EC2 instances. This results in delayed network connectivity from the VM to the target hosts.
 It simulates latency to specific API services for (or from) a given microservice. It also simulates a slow response on specific third party (or dependent) components (or services). 
 </div>
 </details>

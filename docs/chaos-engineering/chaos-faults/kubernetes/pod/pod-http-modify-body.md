@@ -15,7 +15,7 @@ Pod HTTP modify body is a Kubernetes pod-level chaos fault that injects chaos on
 <details>
 <summary>View fault usage</summary>
 <div>
-It can test the application's resilience to error or incorrect HTTP response body.
+It can test the application's resilience to erroneous or incorrect HTTP response body.
 </div>
 </details>
 

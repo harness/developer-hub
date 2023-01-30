@@ -14,7 +14,7 @@ ELB AZ down takes down the AZ (availability zones) on a target ELB for a specifi
 <details>
 <summary>View the uses of the fault</summary>
 <div>
-This fault breaks the connectivity with the given zones and impacts their delivery. Detaching the AZ from the load balancer disrupts an application's performance. 
+This fault breaks the connectivity of an ELB with the given zones and impacts their delivery. Detaching the AZ from the load balancer disrupts an application's performance. 
 </div>
 </details>
 

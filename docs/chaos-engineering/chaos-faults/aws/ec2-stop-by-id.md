@@ -16,7 +16,7 @@ EC2 stop by ID stops an EC2 instance using the provided instance ID or list of i
 <details>
 <summary>View fault usage</summary>
 <div>
-This fault determines the resilience of an application to unexpected halts in the EC2 instance.
+This fault determines the resilience of an application to unexpected halts in the EC2 instance by validating its failover capabilities.
 </div>
 </details>
 

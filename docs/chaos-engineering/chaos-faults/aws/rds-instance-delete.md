@@ -15,7 +15,7 @@ RDS instance delete removes an instances from AWS RDS cluster.
 <details>
 <summary>View fault usage</summary>
 <div>
-It determines how quickly an application can recover from an unexpected cluster deletion. 
+This fault determines how quickly an application can recover from an unexpected RDS cluster deletion. 
 </div>
 </details>
 

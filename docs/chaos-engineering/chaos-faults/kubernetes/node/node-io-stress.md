@@ -16,7 +16,7 @@ Node IO stress causes I/O stress on the Kubernetes node.
 <details>
 <summary>View the uses of the fault</summary>
 <div>
-The fault aims to verify the resilience of applications that share the disk resource for ephemeral or persistent storage purposes.
+The fault aims to verify the resilience of applications that share the disk resource for ephemeral or persistent storage purposes during high disk I/O usage.
 It simulates slower disk operations by the application and nosiy neighbour problems by hogging the disk bandwidth. It also verifies the disk performance on increasing I/O threads and varying I/O block sizes. It checks if the application functions under high disk latency conditions, when I/O traffic is very high and includes large I/O blocks, and when other services monopolize the I/O disks. 
 
 </div>

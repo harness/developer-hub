@@ -14,7 +14,7 @@ Container kill is a Kubernetes pod-level chaos fault that causes container failu
 <details>
 <summary>View fault usage</summary>
 <div>
-It tests an application's deployment sanity (replica availability and uninterrupted service) and recovery workflow.
+It tests an application's deployment sanity (replica availability and uninterrupted service) and recovery workflow when certain replicas are not available.
 </div>
 </details>
 

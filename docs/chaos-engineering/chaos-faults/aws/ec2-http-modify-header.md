@@ -13,7 +13,7 @@ EC2 HTTP modify header injects HTTP chaos which affects the request (or response
 <details>
 <summary>View fault usage</summary>
 <div>
-This fault results in DNS errors on the target EC2 instances. This results in unavailability (or distorted) network connectivity from the VM to the target hosts. This fault determines the impact of DNS chaos on the infrastructure and standalone tasks.
+This can be used to test service resilience towards incorrect or incomplete headers.
 </div>
 </details>
 

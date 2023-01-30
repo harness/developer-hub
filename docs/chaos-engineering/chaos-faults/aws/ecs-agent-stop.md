@@ -13,9 +13,9 @@ ECS agent stop disrupts the state of infrastructure resources.
 ## Usage
 
 <details>
-<summary>View the uses of the fault</summary>
+<summary>View fault usage</summary>
 <div>
-Agent chaos stop stops the ECS clusters that break an agent that used to manage the task container on the ECS cluster, thereby impacting its delivery. Killing the agent container disrupts the performance of task containers.
+ECS agent stop chaos stops the agent that manages the task container on the ECS cluster, thereby impacting its delivery. Killing the agent container disrupts the performance of the task containers.
 </div>
 </details>
 

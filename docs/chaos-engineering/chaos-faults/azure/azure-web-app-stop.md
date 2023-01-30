@@ -12,7 +12,7 @@ Azure web app stop shuts down the application.
 <details>
 <summary>View fault usage</summary>
 <div>
-This fault determines the resilience of a web application to unplanned halts (or stops). It determines the resilience based on how quicly (and efficiently) the application recovers from the failure by re-routing the traffic to a different instance on the same application service. 
+This fault determines the resilience of a web application to unplanned halts (or stops). It determines the resilience based on how quickly (and efficiently) the application recovers from the failure by re-routing the traffic to a different instance on the same application service. 
 </div>
 </details>
 

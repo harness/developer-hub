@@ -3,7 +3,7 @@ id: node-taint
 title: Node taint
 ---
 
-Node taint taints (contaminates) the node by applying the desired effect. 
+Node taint taints the node by applying the desired effect. 
 - The resources that contain the corresponding tolerations only can bypass the taints.
 
 ![Node Taint](./static/images/node-taint.png)
@@ -12,7 +12,7 @@ Node taint taints (contaminates) the node by applying the desired effect.
 <details>
 <summary>View the uses of the fault</summary>
 <div>
-The fault aims to verify resiliency of applications when the nodes of a container (or deployment) are contaminated.
+The fault aims to verify the resiliency of applications when a certain taint is added to a node. It simulates loss of critical services (or node-crash). It verifies resource budgeting on cluster nodes (whether request(or limit) settings honored on available nodes), and whether topology constraints are adhered to (node selectors, tolerations, zone distribution, affinity(or anti-affinity) policies) or not.
 </div>
 </details>
 
