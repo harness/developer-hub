@@ -119,6 +119,10 @@ In **Type**, select **Normal** or **Emergency**.
 
 ![](./static/create-service-now-tickets-in-cd-stages-13.png)
 
+:::caution
+Create requests are retried when ServiceNow encounters connection errors. ServiceNow may respond with connection exceptions, but in edge cases, the tickets will still be created in ServiceNow. This results in the creation of duplicate tickets.
+:::
+
 ## See Also
 
 * [Update ServiceNow Tickets in CD Stages](update-service-now-tickets-in-cd-stages.md)
