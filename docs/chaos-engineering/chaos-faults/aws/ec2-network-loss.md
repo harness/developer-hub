@@ -11,7 +11,16 @@ EC2 network loss causes flaky access to the application (or services) by injecti
 <details>
 <summary>View fault usage</summary>
 <div>
-This fault degrades the network without the EC2 instance being marked as unhealthy (or unworthy) of traffic. This can be resolved by using a middleware that switches traffic based on some SLOs (performance parameters). The EC2 instance may stall or get corrupted while waiting endlessly for a packet. This fault limits the impact (blast radius) to only the traffic that you wish to test, by specifying the IP addresses. This fault will help to improve the resilience of your services over time.
+This fault degrades the network without the EC2 instance being marked as unhealthy (or unworthy) of traffic. This can be resolved by using a middleware that switches traffic based on some SLOs (performance parameters). The EC2 instance may stall or get corrupted while waiting endlessly for a packet. This fault limits the impact (blast radius) to only the traffic that you wish to test, by specifying the IP addresses. 
+
+
+
+It simulates degraded network with varied percentages of dropped packets between microservices, loss of access to specific third party (or dependent) services (or components), blackhole against traffic to a given AZ (failure simulation of availability zones), and network partitions (split-brain) between peer replicas for a stateful application. 
+To enable screen reader support, press ⌘+Option+Z To learn about keyboard shortcuts, press ⌘slash
+
+
+
+This fault helps improve the resilience of your services over time.
 </div>
 </details>
 

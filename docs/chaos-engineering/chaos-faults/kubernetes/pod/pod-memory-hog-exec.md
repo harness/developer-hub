@@ -14,7 +14,7 @@ Pod memory hog exec is a Kubernetes pod-level chaos fault that consumes memory r
 <div>
 Memory usage within containers is subject to various constraints in Kubernetes. If the limits are specified in their spec, exceeding them results in termination of the container (due to OOMKill of the primary process, often pid 1).
 This restarts container dependng on policy specified. For containers with no limits on memory, node can be killed based on their oom_score. This results in a bigger blast radius. 
-
+It simulates the situation of memory leaks in the deployment of microservices, application slowness due to memory starvation, and noisy neighbour problems due to hogging. It verifies pod priority and QoS setting for eviction purposes. It also verifies application restarts on OOM kills. 
 This fault causes stress within the target container, which may result in the primary process in the container to be constrained or eat up the available system memory on the node.
 </div>
 </details>

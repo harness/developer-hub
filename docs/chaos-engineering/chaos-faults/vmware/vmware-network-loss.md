@@ -16,7 +16,8 @@ VMware network loss injects network packet loss from the VMware VM(s) into the a
 <div>
 This fault simulates issues within the VM network (or microservice) communication across services in different hosts.
 It helps determine the impact of degradation while accessing a microservice. 
-The VM may stall (or get corrupted) while waiting endlessly for a packet. The fault limits the impact (blast radius) to the traffic that you wish to test by specifying the IP addresses.
+The VM may stall (or get corrupted) while waiting endlessly for a packet. The fault limits the impact (blast radius) to the traffic that you wish to test by specifying the IP addresses. It simulates degraded network with varied percentages of dropped packets between microservices, loss of access to specific third party (or dependent) services (or components), blackhole against traffic to a given AZ (failure simulation of availability zones), and network partitions (split-brain) between peer replicas for a stateful application. 
+
 </div>
 </details>
 

@@ -19,6 +19,8 @@ This can be resolved by using middleware that switches traffic based on certain 
 Another way is to set up alerts and notifications to highlight a degradation, so that it can be addressed, and fixed. Another way is to understand the impact of the failure and determine the last point in the application stack before degradation. 
 
 The applications may stall or get corrupted while waiting endlessly for a packet. This fault limits the impact (blast radius) to only the traffic that you wish to test by specifying the IP addresses. This fault will help to improve the resilience of your services over time.
+
+It simulates a consistently slow network connection between microservices (for example, cross-region connectivity between active-active peers of a given service or across services or poor cni-performance in the inter-pod-communication network). It also simulates jittery connection with transient latency spikes between microservices, slow response on specific third party (or dependent) components (or services), and degraded data-plane of service-mesh infrastructure.  
 </div>
 </details>
 

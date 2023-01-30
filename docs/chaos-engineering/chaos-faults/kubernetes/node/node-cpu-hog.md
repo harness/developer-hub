@@ -15,6 +15,8 @@ Node CPU hog exhausts the CPU resources on a Kubernetes node.
 <summary>View the uses of the fault</summary>
 <div>
 The fault aims to verify resiliency of applications whose replicas may be evicted on account on nodes turning unschedulable (Not Ready) due to lack of CPU resources.
+The fault causes CPU stress on the target node(s). It simulates the situation of lack of CPU for processes running on the application, which degrades their performance. It also helps verify metrics-based horizontal pod autoscaling as well as vertical autoscale, i.e. demand based CPU addition. It helps scalability of nodes based on growth beyond budgeted pods. It verifies the autopilot functionality of (cloud) managed clusters. 
+It benefits include verifying multi-tenant load issues (when the load increases on one container, it does not cause downtime in other containers). 
 </div>
 </details>
 

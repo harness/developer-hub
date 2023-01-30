@@ -13,7 +13,8 @@ Pod network loss is a Kubernetes pod-level chaos fault that causes packet loss i
 <details>
 <summary>View fault usage</summary>
 <div>
-It tests the application's resilience to lossy (or flaky) network.
+It tests the application's resilience to lossy (or flaky) network. It simulates degraded network with varied percentages of dropped packets between microservices, loss of access to specific third party (or dependent) services (or components), blackhole against traffic to a given AZ (failure simulation of availability zones), and network partitions (split-brain) between peer replicas for a stateful application. 
+
 </div>
 </details>
 

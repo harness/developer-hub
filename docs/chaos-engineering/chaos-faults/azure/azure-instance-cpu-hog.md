@@ -14,7 +14,9 @@ Azure instance CPU hog disrupts the state of infrastructure resources.
 <details>
 <summary>View fault usage</summary>
 <div>
-This fault determines the resilience of an Azure instance when CPU resources are utilized in excess, unexpectedly. It determines how Azure scales the CPU resources to maintain the application when it is under stress. 
+This fault determines the resilience of an Azure instance when CPU resources are utilized in excess, unexpectedly. It determines how Azure scales the CPU resources to maintain the application when it is under stress. It causes CPU stress on the Azure instance(s). It simulates the situation of lack of CPU for processes running on the application, which degrades their performance. It also helps verify metrics-based horizontal pod autoscaling as well as vertical autoscale, i.e. demand based CPU addition. It helps scalability of nodes based on growth beyond budgeted pods. It verifies the autopilot functionality of (cloud) managed clusters. 
+It benefits include verifying multi-tenant load issues (when the load increases on one container, it does not cause downtime in other containers). 
+
 </div>
 </details>
 

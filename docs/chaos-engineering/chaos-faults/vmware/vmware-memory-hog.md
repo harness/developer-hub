@@ -15,6 +15,7 @@ VMware memory hog fault consumes excessive memory resources on Linux OS based VM
 <summary>View the uses of the fault</summary>
 <div>
 This fault helps determine how resilient an application is when excessive memory is unexpectedly consumed by resources.
+It simulates the situation of memory leaks in the deployment of microservices, application slowness due to memory starvation, and noisy neighbour problems due to hogging. It verifies pod priority and QoS setting for eviction purposes. It also verifies application restarts on OOM kills. 
 </div>
 </details>
 

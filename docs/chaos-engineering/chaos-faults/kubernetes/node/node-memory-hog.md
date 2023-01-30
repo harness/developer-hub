@@ -15,6 +15,7 @@ Node memory hog causes memory resource exhaustion on the Kubernetes node.
 <summary>View fault usage</summary>
 <div>
 Node memory hog causes memory resource exhaustion on the Kubernetes node. The fault aims to verify resilience of applications whose replicas may be evicted on account on nodes becoming unschedulable (Not Ready) due to lack of memory resources.
+It simulates the situation of memory leaks in the deployment of microservices, application slowness due to memory starvation, and noisy neighbour problems due to hogging. It verifies pod priority and QoS setting for eviction purposes. It also verifies application restarts on OOM kills. 
 </div>
 </details>
 

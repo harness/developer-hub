@@ -12,6 +12,8 @@ EC2 network latency causes flaky access to the application (or services) by inje
 <summary>View fault usage</summary>
 <div>
 This fault degrades the network without the EC2 instance being marked as unhealthy (or unworthy) of traffic. This can be resolved by using a middleware that switches traffic based on some SLOs (performance parameters). The EC2 instance may stall or get corrupted while waiting endlessly for a packet. This fault limits the impact (blast radius) to only the traffic that you wish to test, by specifying the IP addresses. This fault will help to improve the resilience of your services over time.
+It simulates a consistently slow network connection between microservices (for example, cross-region connectivity between active-active peers of a given service or across services or poor cni-performance in the inter-pod-communication network). It also simulates jittery connection with transient latency spikes between microservices, slow response on specific third party (or dependent) components (or services), and degraded data-plane of service-mesh infrastructure.  
+
 </div>
 </details>
 
