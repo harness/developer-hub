@@ -111,11 +111,11 @@ To add a Terragrunt Plan step, do the following:
 
 #### Name
 
-1. In **Name**, enter a name for the step. Use a name that describes the infrastructure the step plans to provision.
+* In **Name**, enter a name for the step. Use a name that describes the infrastructure the step plans to provision.
 
 #### Timeout
 
-1. Enter how long you want Harness to try to complete the step before failing and initiating the stage or step [failure strategy](https://developer.harness.io/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps/).
+* Enter how long you want Harness to try to complete the step before failing and initiating the stage or step [failure strategy](https://developer.harness.io/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps/).
 
    You can use:
 
@@ -150,7 +150,7 @@ There are two options:
 
 You use the **Provisioner Identifier** in subsequent steps to refer to the plan run in this step.
 
-1. Enter a unique value in Provisioner Identifier.
+* Enter a unique value in Provisioner Identifier.
 
 The most common use of **Provisioner Identifier** is between the Terragrunt Plan and Terragrunt Apply or Terragrunt Destroy steps. 
 
@@ -172,7 +172,7 @@ For this reason, it's important that all your project members know the provision
 
 #### Secret Manager
 
-1. Select a Harness [secrets manager](https://developer.harness.io/docs/platform/Security/harness-secret-manager-overview) to use for encrypting/decrypting and saving the Terragrunt plan file.
+* Select a Harness [secrets manager](https://developer.harness.io/docs/platform/Security/harness-secret-manager-overview) to use for encrypting/decrypting and saving the Terragrunt plan file.
 
 A Terragrunt plan is a sensitive file that could be misused to alter resources if someone has access to it. Harness avoids this issue by never passing the Terragrunt plan file as plain text.
 
@@ -201,11 +201,11 @@ To add a Terragrunt Apply step, do the following:
 
 #### Name
 
-1. In **Name**, enter a name for the step. Use a name that describes the infrastructure the step plans to provision.
+* In **Name**, enter a name for the step. Use a name that describes the infrastructure the step plans to provision.
 
 #### Timeout
 
-1. Enter how long you want Harness to try to complete the step before failing and initiating the stage or step [failure strategy](https://developer.harness.io/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps/).
+* Enter how long you want Harness to try to complete the step before failing and initiating the stage or step [failure strategy](https://developer.harness.io/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps/).
 
    You can use:
 
@@ -245,7 +245,7 @@ There are two options:
 
 The **Provisioner Identifier** identifies the provisioning performed in this step.
 
-1. Enter a unique value in **Provisioner Identifier**.
+* Enter a unique value in **Provisioner Identifier**.
 
 The **Provisioner Identifier** can be used with other steps to perform common Terragrunt tasks:
 
@@ -308,11 +308,11 @@ To add a Terragrunt Destroy step, do the following:
 
 #### Name
 
-1. In Name, enter a name for the step. Use a name that describes the infrastructure the step plans to provision.
+* In Name, enter a name for the step. Use a name that describes the infrastructure the step plans to provision.
 
 #### Timeout
 
-1. Enter how long you want Harness to try to complete the step before failing and initiating the stage or step [failure strategy](https://developer.harness.io/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps/).
+* Enter how long you want Harness to try to complete the step before failing and initiating the stage or step [failure strategy](https://developer.harness.io/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps/).
 
    You can use:
 
